@@ -4,77 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8B06C77B72
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 23:36:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C641C76195
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 23:37:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=QN3VBPIGb3rOSd+0jNY6Clws16ZGwPI612DSnOTxph8=; b=bEcJQCDuB43l8oNl74yQab2h0O
-	VHNn7uiHuZzVS6ZBtz/Ah2Mf8IaCd7DH8VZMDiTZInDLwln5AowB0F7Czbv7mkqOcGcVMW7ojOI30
-	3BvEjA2+Bpi57sDPFcsUNv3pAieZf8BOFj4ljPdNJorsoKrm3i/2mVtScIWwOev/gIVK4lpzaJhk6
-	gXKKDXnsFExKT57IsK0nx7D0WzYs7V9aMi9417I+kAF3/+MSa8C4E9l2wiphhlmR4iC1/TjgSYAdm
-	ZkI76PHjH4GDvVm1y4/OYy/M3HR+CWXdJys7S+/DgdeavGcsRzzt3eg+EgixwLcQb69g3rKKDNh16
-	xn/P4uOg==;
+	bh=o4XTbDitSJ3rKysE1DLB9E8NyDF7QczD+upv2sRYh/A=; b=v7peMvphtwEZFOdyzb6lx30Fkq
+	8poFm0x8qeo4o+kxltr3WJ9UUEZzRUyCqOCxiYDQzt08aP0pDsTeAni6hogPn8U/hgvEXMu5BVj8/
+	Ffhwg/RFxiFYvUWFG9MatrCyJ1akbqMU73qM9HVWvnRDtWWf3QY+Y16VyDk4GGCjiaFCg+JwV/FdZ
+	rt0DJEhEqimMAA/cSDErGYQbzIpCKjn7lMaKXKi4aRwIqpzTTxdq0/0ux/MuxfGsuFvDh396AX32V
+	s7Js8y2NvHlpL+Tgz7cGFY9ekV16Byk4UtU8pYVGmDDf9qRd5JI8wTqjotvV03Cpd9aM0BnfVCn/O
+	rs/NWaUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdJcp-003gEY-37;
-	Fri, 17 Mar 2023 23:36:44 +0000
-Received: from mail-io1-f43.google.com ([209.85.166.43])
+	id 1pdJdV-003ggA-1p;
+	Fri, 17 Mar 2023 23:37:25 +0000
+Received: from mail-il1-f179.google.com ([209.85.166.179])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdJck-003g8E-0z;
-	Fri, 17 Mar 2023 23:36:41 +0000
-Received: by mail-io1-f43.google.com with SMTP id f14so3004734iow.5;
-        Fri, 17 Mar 2023 16:36:33 -0700 (PDT)
+	id 1pdJcs-003gBF-08;
+	Fri, 17 Mar 2023 23:36:51 +0000
+Received: by mail-il1-f179.google.com with SMTP id h5so3547293ile.13;
+        Fri, 17 Mar 2023 16:36:45 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679096192;
+        d=1e100.net; s=20210112; t=1679096205;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=QN3VBPIGb3rOSd+0jNY6Clws16ZGwPI612DSnOTxph8=;
-        b=RoiJ0cVzyDEsFxi0TPNAXRuEFLbzVUKnsFvqNu1nDy5puDOiyXdhxTRRtVsAHUwfnb
-         /JI0e0St65O+Je/ZXvxtzfLITgG2W8UaPSU35CT6CES28HgePZWWW7xAHt094mrEA/jp
-         LY/UlnlK88DVj4q/5Dzp/lZG/pOxqSKpPzxkYP95xu5qocB8EehyUTLlW3DWqsCbh532
-         AQT5ZePhB/oh6l1wv05GSSpApBdLVzeLtwlIOf5EPuj4hL4oxBBUh+6gg6nN3d+3B6ax
-         Eez1xuuuPbwkUv1d5TFjH0KlfOlgvm5NLxna+Cg0pr/ehtGOxMFUcs7y7VthQYQZRz4c
-         u1PA==
-X-Gm-Message-State: AO0yUKU1qq7i0KHaR3eRmDrbtZuLNpls53f4gOGIwMrG5gUPa9xyctYy
-	JZdVBATLnw5PzR6VoyQKWg==
-X-Google-Smtp-Source: AK7set8wdY61KiB6Q4yMM2jI4EjrFkioINzI1ifBEABr06zavTE55dY/Squs0NvmzTRjzWzfPSUmPw==
-X-Received: by 2002:a5e:d909:0:b0:746:1c75:233a with SMTP id n9-20020a5ed909000000b007461c75233amr203302iop.20.1679096192171;
-        Fri, 17 Mar 2023 16:36:32 -0700 (PDT)
+        bh=o4XTbDitSJ3rKysE1DLB9E8NyDF7QczD+upv2sRYh/A=;
+        b=J7RcFDZ66dQr3sd2wlq1kbeq9tmTmr+BhVhao6/8HD702I+EyItDkZu90HWOeHSCgz
+         /guHq+aM6aBzAzknOXwbj+GZhTlyje7PcCrUAb2gTc17UvUJTICIq8UbUbcOSO9Vn00q
+         n9Qu4odPXHbwTz1/xdnszfmLcmLTfISI80JVXWeAbH2owJTrADc8wUv6ZouCqF4a+Yg/
+         wmvagkBfS8jGiqshDk+Ij00tnR34f5OensJ4X0VHBaPj/sa4Dw7kSbZol/576TbkNSUU
+         AEeObNCFJsS3+U5An3jWNE0xZrC/ScOmg0nDi29lAPuaT9UEjjZbxpYYSaPfrcISQzJc
+         7EPA==
+X-Gm-Message-State: AO0yUKWzuLWj/YlJqAjTNnelIfemQUfU9nQARwx4DTYCABay3JTQBhMR
+	YBKTW+wUXkSwgs2hZMn5pw==
+X-Google-Smtp-Source: AK7set8aHEa/CzpkLLAxRrITL3AbBi24Em4TUycz18OMjy74rr/iSfbAP+RwpGIsk3i1yF/MYXGnsg==
+X-Received: by 2002:a05:6e02:1ca3:b0:323:5d8:57d2 with SMTP id x3-20020a056e021ca300b0032305d857d2mr180521ill.4.1679096205572;
+        Fri, 17 Mar 2023 16:36:45 -0700 (PDT)
 Received: from robh_at_kernel.org ([64.188.179.249])
-        by smtp.gmail.com with ESMTPSA id a22-20020a6b6616000000b007530bbfa577sm883819ioc.18.2023.03.17.16.36.29
+        by smtp.gmail.com with ESMTPSA id y19-20020a056e02119300b0031830e2c987sm962469ili.20.2023.03.17.16.36.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 17 Mar 2023 16:36:31 -0700 (PDT)
-Received: (nullmailer pid 3968465 invoked by uid 1000);
-	Fri, 17 Mar 2023 23:36:28 -0000
+        Fri, 17 Mar 2023 16:36:45 -0700 (PDT)
+Received: (nullmailer pid 3968975 invoked by uid 1000);
+	Fri, 17 Mar 2023 23:36:42 -0000
 From: Rob Herring <robh@kernel.org>
-To: Robin van der Gracht <robin@protonic.nl>, Miguel Ojeda <ojeda@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, David Airlie <airlied@gmail.com>, 
-	Daniel Vetter <daniel@ffwll.ch>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Rob Clark <robdclark@gmail.com>, 
-	Abhinav Kumar <quic_abhinavk@quicinc.com>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, 
-	Sean Paul <sean@poorly.run>, Thierry Reding <thierry.reding@gmail.com>, 
-	Sam Ravnborg <sam@ravnborg.org>, Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
-	Jonathan Hunter <jonathanh@nvidia.com>, Jyri Sarha <jyri.sarha@iki.fi>, 
-	Tomi Valkeinen <tomba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Chen-Yu Tsai <wens@csie.org>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
+	Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, 
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>, Shawn Guo <shawnguo@kernel.org>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
+	Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
+	Claudiu Beznea <claudiu.beznea@microchip.com>, Andy Gross <agross@kernel.org>, 
+	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
+	Masami Hiramatsu <mhiramat@kernel.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Vincent Shih <vincent.sunplus@gmail.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org, linux-tegra@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Subject: [PATCH] dt-bindings: display: Drop unneeded quotes
-Date: Fri, 17 Mar 2023 18:36:24 -0500
-Message-Id: <20230317233626.3968358-1-robh@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org, asahi@lists.linux.dev, linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-mediatek@lists.infradead.org
+Subject: [PATCH] dt-bindings: nvmem: Drop unneeded quotes
+Date: Fri, 17 Mar 2023 18:36:39 -0500
+Message-Id: <20230317233640.3968821-1-robh@kernel.org>
 X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230317_163638_381134_7305C28D 
-X-CRM114-Status: GOOD (  16.79  )
+X-CRM114-CacheID: sfid-20230317_163646_097490_3280F351 
+X-CRM114-Status: GOOD (  10.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,420 +96,260 @@ checking for this can be enabled in yamllint.
 
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- .../bindings/auxdisplay/holtek,ht16k33.yaml    |  2 +-
- .../bindings/display/bridge/nxp,ptn3460.yaml   |  2 +-
- .../display/bridge/toshiba,tc358767.yaml       |  2 +-
- .../bindings/display/dp-aux-bus.yaml           |  2 +-
- .../display/mediatek/mediatek,hdmi.yaml        |  2 +-
- .../display/msm/dsi-controller-main.yaml       |  8 ++++----
- .../bindings/display/msm/dsi-phy-10nm.yaml     |  2 +-
- .../bindings/display/panel/ronbo,rb070d30.yaml |  2 +-
- .../bindings/display/renesas,du.yaml           |  4 ++--
- .../display/tegra/nvidia,tegra114-mipi.yaml    |  2 +-
- .../display/tegra/nvidia,tegra124-sor.yaml     | 12 ++++++------
- .../display/tegra/nvidia,tegra186-dc.yaml      |  4 ++--
- .../tegra/nvidia,tegra186-dsi-padctl.yaml      |  2 +-
- .../display/tegra/nvidia,tegra20-dsi.yaml      | 12 ++++++------
- .../display/tegra/nvidia,tegra20-hdmi.yaml     |  6 +++---
- .../bindings/display/ti/ti,am65x-dss.yaml      |  2 +-
- .../display/xylon,logicvc-display.yaml         | 18 +++++++++---------
- 17 files changed, 42 insertions(+), 42 deletions(-)
+ .../devicetree/bindings/nvmem/allwinner,sun4i-a10-sid.yaml      | 2 +-
+ Documentation/devicetree/bindings/nvmem/apple,efuses.yaml       | 2 +-
+ Documentation/devicetree/bindings/nvmem/brcm,nvram.yaml         | 2 +-
+ Documentation/devicetree/bindings/nvmem/fsl,layerscape-sfp.yaml | 2 +-
+ Documentation/devicetree/bindings/nvmem/imx-iim.yaml            | 2 +-
+ Documentation/devicetree/bindings/nvmem/imx-ocotp.yaml          | 2 +-
+ .../devicetree/bindings/nvmem/ingenic,jz4780-efuse.yaml         | 2 +-
+ Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml     | 2 +-
+ .../devicetree/bindings/nvmem/microchip,sama7g5-otpc.yaml       | 2 +-
+ Documentation/devicetree/bindings/nvmem/mxs-ocotp.yaml          | 2 +-
+ Documentation/devicetree/bindings/nvmem/nintendo-otp.yaml       | 2 +-
+ Documentation/devicetree/bindings/nvmem/qcom,qfprom.yaml        | 2 +-
+ Documentation/devicetree/bindings/nvmem/qcom,spmi-sdam.yaml     | 2 +-
+ Documentation/devicetree/bindings/nvmem/rmem.yaml               | 2 +-
+ Documentation/devicetree/bindings/nvmem/rockchip-efuse.yaml     | 2 +-
+ .../devicetree/bindings/nvmem/socionext,uniphier-efuse.yaml     | 2 +-
+ Documentation/devicetree/bindings/nvmem/st,stm32-romem.yaml     | 2 +-
+ .../devicetree/bindings/nvmem/sunplus,sp7021-ocotp.yaml         | 2 +-
+ 18 files changed, 18 insertions(+), 18 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/auxdisplay/holtek,ht16k33.yaml b/Documentation/devicetree/bindings/auxdisplay/holtek,ht16k33.yaml
-index fc4873deb76f..4f6ffb8182a9 100644
---- a/Documentation/devicetree/bindings/auxdisplay/holtek,ht16k33.yaml
-+++ b/Documentation/devicetree/bindings/auxdisplay/holtek,ht16k33.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Robin van der Gracht <robin@protonic.nl>
+diff --git a/Documentation/devicetree/bindings/nvmem/allwinner,sun4i-a10-sid.yaml b/Documentation/devicetree/bindings/nvmem/allwinner,sun4i-a10-sid.yaml
+index 14c170c6a86e..296001e7f498 100644
+--- a/Documentation/devicetree/bindings/nvmem/allwinner,sun4i-a10-sid.yaml
++++ b/Documentation/devicetree/bindings/nvmem/allwinner,sun4i-a10-sid.yaml
+@@ -11,7 +11,7 @@ maintainers:
+   - Maxime Ripard <mripard@kernel.org>
  
  allOf:
--  - $ref: "/schemas/input/matrix-keymap.yaml#"
-+  - $ref: /schemas/input/matrix-keymap.yaml#
+-  - $ref: "nvmem.yaml#"
++  - $ref: nvmem.yaml#
  
  properties:
    compatible:
-diff --git a/Documentation/devicetree/bindings/display/bridge/nxp,ptn3460.yaml b/Documentation/devicetree/bindings/display/bridge/nxp,ptn3460.yaml
-index 107dd138e6c6..cdeb67bc05f0 100644
---- a/Documentation/devicetree/bindings/display/bridge/nxp,ptn3460.yaml
-+++ b/Documentation/devicetree/bindings/display/bridge/nxp,ptn3460.yaml
-@@ -18,7 +18,7 @@ properties:
-     maxItems: 1
+diff --git a/Documentation/devicetree/bindings/nvmem/apple,efuses.yaml b/Documentation/devicetree/bindings/nvmem/apple,efuses.yaml
+index 5ec8f2bdb3a5..e0860b6b85f3 100644
+--- a/Documentation/devicetree/bindings/nvmem/apple,efuses.yaml
++++ b/Documentation/devicetree/bindings/nvmem/apple,efuses.yaml
+@@ -15,7 +15,7 @@ maintainers:
+   - Sven Peter <sven@svenpeter.dev>
  
-   edid-emulation:
--    $ref: "/schemas/types.yaml#/definitions/uint32"
-+    $ref: /schemas/types.yaml#/definitions/uint32
-     description:
-       The EDID emulation entry to use
-       Value  Resolution  Description
-diff --git a/Documentation/devicetree/bindings/display/bridge/toshiba,tc358767.yaml b/Documentation/devicetree/bindings/display/bridge/toshiba,tc358767.yaml
-index 140927884418..e1494b5007cb 100644
---- a/Documentation/devicetree/bindings/display/bridge/toshiba,tc358767.yaml
-+++ b/Documentation/devicetree/bindings/display/bridge/toshiba,tc358767.yaml
-@@ -23,7 +23,7 @@ properties:
-         i2c address of the bridge, 0x68 or 0x0f, depending on bootstrap pins
+ allOf:
+-  - $ref: "nvmem.yaml#"
++  - $ref: nvmem.yaml#
  
-   clock-names:
--    const: "ref"
-+    const: ref
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/nvmem/brcm,nvram.yaml b/Documentation/devicetree/bindings/nvmem/brcm,nvram.yaml
+index 25033de3ef6b..36def7128fca 100644
+--- a/Documentation/devicetree/bindings/nvmem/brcm,nvram.yaml
++++ b/Documentation/devicetree/bindings/nvmem/brcm,nvram.yaml
+@@ -20,7 +20,7 @@ maintainers:
+   - Rafał Miłecki <rafal@milecki.pl>
  
-   clocks:
-     maxItems: 1
-diff --git a/Documentation/devicetree/bindings/display/dp-aux-bus.yaml b/Documentation/devicetree/bindings/display/dp-aux-bus.yaml
-index 5e4afe9f98fb..0ece7b01790b 100644
---- a/Documentation/devicetree/bindings/display/dp-aux-bus.yaml
-+++ b/Documentation/devicetree/bindings/display/dp-aux-bus.yaml
-@@ -26,7 +26,7 @@ description:
+ allOf:
+-  - $ref: "nvmem.yaml#"
++  - $ref: nvmem.yaml#
+ 
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/nvmem/fsl,layerscape-sfp.yaml b/Documentation/devicetree/bindings/nvmem/fsl,layerscape-sfp.yaml
+index 3b4e6e94cb81..70fb2ad25103 100644
+--- a/Documentation/devicetree/bindings/nvmem/fsl,layerscape-sfp.yaml
++++ b/Documentation/devicetree/bindings/nvmem/fsl,layerscape-sfp.yaml
+@@ -14,7 +14,7 @@ description: |
+   unique identifier per part.
+ 
+ allOf:
+-  - $ref: "nvmem.yaml#"
++  - $ref: nvmem.yaml#
+ 
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/nvmem/imx-iim.yaml b/Documentation/devicetree/bindings/nvmem/imx-iim.yaml
+index 7aac1995cfaf..e9d9d8df4811 100644
+--- a/Documentation/devicetree/bindings/nvmem/imx-iim.yaml
++++ b/Documentation/devicetree/bindings/nvmem/imx-iim.yaml
+@@ -14,7 +14,7 @@ description: |
+   i.MX25, i.MX27, i.MX31, i.MX35, i.MX51 and i.MX53 SoCs.
+ 
+ allOf:
+-  - $ref: "nvmem.yaml#"
++  - $ref: nvmem.yaml#
+ 
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/nvmem/imx-ocotp.yaml b/Documentation/devicetree/bindings/nvmem/imx-ocotp.yaml
+index d0a239d7e199..9876243ff1e8 100644
+--- a/Documentation/devicetree/bindings/nvmem/imx-ocotp.yaml
++++ b/Documentation/devicetree/bindings/nvmem/imx-ocotp.yaml
+@@ -15,7 +15,7 @@ description: |
+   i.MX7D/S, i.MX7ULP, i.MX8MQ, i.MX8MM, i.MX8MN and i.MX8MP SoCs.
+ 
+ allOf:
+-  - $ref: "nvmem.yaml#"
++  - $ref: nvmem.yaml#
+ 
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/nvmem/ingenic,jz4780-efuse.yaml b/Documentation/devicetree/bindings/nvmem/ingenic,jz4780-efuse.yaml
+index fe2cd7f1afba..e89fd879c968 100644
+--- a/Documentation/devicetree/bindings/nvmem/ingenic,jz4780-efuse.yaml
++++ b/Documentation/devicetree/bindings/nvmem/ingenic,jz4780-efuse.yaml
+@@ -10,7 +10,7 @@ maintainers:
+   - PrasannaKumar Muralidharan <prasannatsmkumar@gmail.com>
+ 
+ allOf:
+-  - $ref: "nvmem.yaml#"
++  - $ref: nvmem.yaml#
+ 
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+index 75e0a516e59a..d16d42fb98b6 100644
+--- a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
++++ b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+@@ -15,7 +15,7 @@ maintainers:
+   - Lala Lin <lala.lin@mediatek.com>
+ 
+ allOf:
+-  - $ref: "nvmem.yaml#"
++  - $ref: nvmem.yaml#
  
  properties:
    $nodename:
--    const: "aux-bus"
-+    const: aux-bus
- 
-   panel:
-     $ref: panel/panel-common.yaml#
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,hdmi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,hdmi.yaml
-index 8afdd67d6780..b90b6d18a828 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,hdmi.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,hdmi.yaml
-@@ -50,7 +50,7 @@ properties:
-       - const: hdmi
- 
-   mediatek,syscon-hdmi:
--    $ref: '/schemas/types.yaml#/definitions/phandle-array'
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-     items:
-       - items:
-           - description: phandle to system configuration registers
-diff --git a/Documentation/devicetree/bindings/display/msm/dsi-controller-main.yaml b/Documentation/devicetree/bindings/display/msm/dsi-controller-main.yaml
-index e75a3efe4dac..2188d7c9b0bb 100644
---- a/Documentation/devicetree/bindings/display/msm/dsi-controller-main.yaml
-+++ b/Documentation/devicetree/bindings/display/msm/dsi-controller-main.yaml
-@@ -74,7 +74,7 @@ properties:
- 
-   syscon-sfpb:
-     description: A phandle to mmss_sfpb syscon node (only for DSIv2).
--    $ref: "/schemas/types.yaml#/definitions/phandle"
-+    $ref: /schemas/types.yaml#/definitions/phandle
- 
-   qcom,dual-dsi-mode:
-     type: boolean
-@@ -105,14 +105,14 @@ properties:
-     type: object
- 
-   ports:
--    $ref: "/schemas/graph.yaml#/properties/ports"
-+    $ref: /schemas/graph.yaml#/properties/ports
-     description: |
-       Contains DSI controller input and output ports as children, each
-       containing one endpoint subnode.
- 
-     properties:
-       port@0:
--        $ref: "/schemas/graph.yaml#/$defs/port-base"
-+        $ref: /schemas/graph.yaml#/$defs/port-base
-         unevaluatedProperties: false
-         description: |
-           Input endpoints of the controller.
-@@ -128,7 +128,7 @@ properties:
-                   enum: [ 0, 1, 2, 3 ]
- 
-       port@1:
--        $ref: "/schemas/graph.yaml#/$defs/port-base"
-+        $ref: /schemas/graph.yaml#/$defs/port-base
-         unevaluatedProperties: false
-         description: |
-           Output endpoints of the controller.
-diff --git a/Documentation/devicetree/bindings/display/msm/dsi-phy-10nm.yaml b/Documentation/devicetree/bindings/display/msm/dsi-phy-10nm.yaml
-index 3ec466c3ab38..e6b00d7387ce 100644
---- a/Documentation/devicetree/bindings/display/msm/dsi-phy-10nm.yaml
-+++ b/Documentation/devicetree/bindings/display/msm/dsi-phy-10nm.yaml
-@@ -58,7 +58,7 @@ properties:
-       maximum: 31
- 
-   qcom,phy-drive-ldo-level:
--    $ref: "/schemas/types.yaml#/definitions/uint32"
-+    $ref: /schemas/types.yaml#/definitions/uint32
-     description:
-       The PHY LDO has an amplitude tuning feature to adjust the LDO output
-       for the HSTX drive. Use supported levels (mV) to offset the drive level
-diff --git a/Documentation/devicetree/bindings/display/panel/ronbo,rb070d30.yaml b/Documentation/devicetree/bindings/display/panel/ronbo,rb070d30.yaml
-index d67617f6f74a..95ce22c6787a 100644
---- a/Documentation/devicetree/bindings/display/panel/ronbo,rb070d30.yaml
-+++ b/Documentation/devicetree/bindings/display/panel/ronbo,rb070d30.yaml
-@@ -37,7 +37,7 @@ properties:
- 
-   backlight:
-     description: Backlight used by the panel
--    $ref: "/schemas/types.yaml#/definitions/phandle"
-+    $ref: /schemas/types.yaml#/definitions/phandle
- 
- required:
-   - compatible
-diff --git a/Documentation/devicetree/bindings/display/renesas,du.yaml b/Documentation/devicetree/bindings/display/renesas,du.yaml
-index d4830f52c512..c5b9e6812bce 100644
---- a/Documentation/devicetree/bindings/display/renesas,du.yaml
-+++ b/Documentation/devicetree/bindings/display/renesas,du.yaml
-@@ -76,7 +76,7 @@ properties:
-     unevaluatedProperties: false
- 
-   renesas,cmms:
--    $ref: "/schemas/types.yaml#/definitions/phandle-array"
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-     items:
-       maxItems: 1
-     description:
-@@ -84,7 +84,7 @@ properties:
-       available DU channel.
- 
-   renesas,vsps:
--    $ref: "/schemas/types.yaml#/definitions/phandle-array"
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-     items:
-       items:
-         - description: phandle to VSP instance that serves the DU channel
-diff --git a/Documentation/devicetree/bindings/display/tegra/nvidia,tegra114-mipi.yaml b/Documentation/devicetree/bindings/display/tegra/nvidia,tegra114-mipi.yaml
-index d5ca8cf86e8e..f448624dd779 100644
---- a/Documentation/devicetree/bindings/display/tegra/nvidia,tegra114-mipi.yaml
-+++ b/Documentation/devicetree/bindings/display/tegra/nvidia,tegra114-mipi.yaml
-@@ -38,7 +38,7 @@ properties:
-     description: The number of cells in a MIPI calibration specifier.
-       Should be 1. The single cell specifies a bitmask of the pads that
-       need to be calibrated for a given device.
--    $ref: "/schemas/types.yaml#/definitions/uint32"
-+    $ref: /schemas/types.yaml#/definitions/uint32
-     const: 1
- 
- additionalProperties: false
-diff --git a/Documentation/devicetree/bindings/display/tegra/nvidia,tegra124-sor.yaml b/Documentation/devicetree/bindings/display/tegra/nvidia,tegra124-sor.yaml
-index 907fb0baccae..70f0e45c71d6 100644
---- a/Documentation/devicetree/bindings/display/tegra/nvidia,tegra124-sor.yaml
-+++ b/Documentation/devicetree/bindings/display/tegra/nvidia,tegra124-sor.yaml
-@@ -69,12 +69,12 @@ properties:
-   # Tegra186 and later
-   nvidia,interface:
-     description: index of the SOR interface
--    $ref: "/schemas/types.yaml#/definitions/uint32"
-+    $ref: /schemas/types.yaml#/definitions/uint32
- 
-   nvidia,ddc-i2c-bus:
-     description: phandle of an I2C controller used for DDC EDID
-       probing
--    $ref: "/schemas/types.yaml#/definitions/phandle"
-+    $ref: /schemas/types.yaml#/definitions/phandle
- 
-   nvidia,hpd-gpio:
-     description: specifies a GPIO used for hotplug detection
-@@ -82,23 +82,23 @@ properties:
- 
-   nvidia,edid:
-     description: supplies a binary EDID blob
--    $ref: "/schemas/types.yaml#/definitions/uint8-array"
-+    $ref: /schemas/types.yaml#/definitions/uint8-array
- 
-   nvidia,panel:
-     description: phandle of a display panel, required for eDP
--    $ref: "/schemas/types.yaml#/definitions/phandle"
-+    $ref: /schemas/types.yaml#/definitions/phandle
- 
-   nvidia,xbar-cfg:
-     description: 5 cells containing the crossbar configuration.
-       Each lane of the SOR, identified by the cell's index, is
-       mapped via the crossbar to the pad specified by the cell's
-       value.
--    $ref: "/schemas/types.yaml#/definitions/uint32-array"
-+    $ref: /schemas/types.yaml#/definitions/uint32-array
- 
-   # optional when driving an eDP output
-   nvidia,dpaux:
-     description: phandle to a DispayPort AUX interface
--    $ref: "/schemas/types.yaml#/definitions/phandle"
-+    $ref: /schemas/types.yaml#/definitions/phandle
+diff --git a/Documentation/devicetree/bindings/nvmem/microchip,sama7g5-otpc.yaml b/Documentation/devicetree/bindings/nvmem/microchip,sama7g5-otpc.yaml
+index c3c96fd0baac..a296d348adb4 100644
+--- a/Documentation/devicetree/bindings/nvmem/microchip,sama7g5-otpc.yaml
++++ b/Documentation/devicetree/bindings/nvmem/microchip,sama7g5-otpc.yaml
+@@ -15,7 +15,7 @@ description: |
+   settings, chip identifiers) or user specific data could be stored.
  
  allOf:
-   - if:
-diff --git a/Documentation/devicetree/bindings/display/tegra/nvidia,tegra186-dc.yaml b/Documentation/devicetree/bindings/display/tegra/nvidia,tegra186-dc.yaml
-index 265a60d79d89..ce4589466a18 100644
---- a/Documentation/devicetree/bindings/display/tegra/nvidia,tegra186-dc.yaml
-+++ b/Documentation/devicetree/bindings/display/tegra/nvidia,tegra186-dc.yaml
-@@ -60,13 +60,13 @@ properties:
-   nvidia,outputs:
-     description: A list of phandles of outputs that this display
-       controller can drive.
--    $ref: "/schemas/types.yaml#/definitions/phandle-array"
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
+-  - $ref: "nvmem.yaml#"
++  - $ref: nvmem.yaml#
  
-   nvidia,head:
-     description: The number of the display controller head. This
-       is used to setup the various types of output to receive
-       video data from the given head.
--    $ref: "/schemas/types.yaml#/definitions/uint32"
-+    $ref: /schemas/types.yaml#/definitions/uint32
- 
- additionalProperties: false
- 
-diff --git a/Documentation/devicetree/bindings/display/tegra/nvidia,tegra186-dsi-padctl.yaml b/Documentation/devicetree/bindings/display/tegra/nvidia,tegra186-dsi-padctl.yaml
-index e5a6145c8c53..da75b71e8ece 100644
---- a/Documentation/devicetree/bindings/display/tegra/nvidia,tegra186-dsi-padctl.yaml
-+++ b/Documentation/devicetree/bindings/display/tegra/nvidia,tegra186-dsi-padctl.yaml
-@@ -29,7 +29,7 @@ properties:
-       - const: dsi
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/nvmem/mxs-ocotp.yaml b/Documentation/devicetree/bindings/nvmem/mxs-ocotp.yaml
+index ff317fd7c15b..8938eec22b52 100644
+--- a/Documentation/devicetree/bindings/nvmem/mxs-ocotp.yaml
++++ b/Documentation/devicetree/bindings/nvmem/mxs-ocotp.yaml
+@@ -10,7 +10,7 @@ maintainers:
+   - Anson Huang <Anson.Huang@nxp.com>
  
  allOf:
--  - $ref: "/schemas/reset/reset.yaml"
-+  - $ref: /schemas/reset/reset.yaml
+-  - $ref: "nvmem.yaml#"
++  - $ref: nvmem.yaml#
  
- additionalProperties: false
- 
-diff --git a/Documentation/devicetree/bindings/display/tegra/nvidia,tegra20-dsi.yaml b/Documentation/devicetree/bindings/display/tegra/nvidia,tegra20-dsi.yaml
-index 511cbe74e729..59e1dc0813e7 100644
---- a/Documentation/devicetree/bindings/display/tegra/nvidia,tegra20-dsi.yaml
-+++ b/Documentation/devicetree/bindings/display/tegra/nvidia,tegra20-dsi.yaml
-@@ -59,12 +59,12 @@ properties:
-     description: Should contain a phandle and a specifier specifying
-       which pads are used by this DSI output and need to be
-       calibrated. See nvidia,tegra114-mipi.yaml for details.
--    $ref: "/schemas/types.yaml#/definitions/phandle-array"
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
- 
-   nvidia,ddc-i2c-bus:
-     description: phandle of an I2C controller used for DDC EDID
-       probing
--    $ref: "/schemas/types.yaml#/definitions/phandle"
-+    $ref: /schemas/types.yaml#/definitions/phandle
- 
-   nvidia,hpd-gpio:
-     description: specifies a GPIO used for hotplug detection
-@@ -72,19 +72,19 @@ properties:
- 
-   nvidia,edid:
-     description: supplies a binary EDID blob
--    $ref: "/schemas/types.yaml#/definitions/uint8-array"
-+    $ref: /schemas/types.yaml#/definitions/uint8-array
- 
-   nvidia,panel:
-     description: phandle of a display panel
--    $ref: "/schemas/types.yaml#/definitions/phandle"
-+    $ref: /schemas/types.yaml#/definitions/phandle
- 
-   nvidia,ganged-mode:
-     description: contains a phandle to a second DSI controller to
-       gang up with in order to support up to 8 data lanes
--    $ref: "/schemas/types.yaml#/definitions/phandle"
-+    $ref: /schemas/types.yaml#/definitions/phandle
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/nvmem/nintendo-otp.yaml b/Documentation/devicetree/bindings/nvmem/nintendo-otp.yaml
+index f93bc50c40d7..6c26800f8b79 100644
+--- a/Documentation/devicetree/bindings/nvmem/nintendo-otp.yaml
++++ b/Documentation/devicetree/bindings/nvmem/nintendo-otp.yaml
+@@ -17,7 +17,7 @@ maintainers:
+   - Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
  
  allOf:
--  - $ref: "../dsi-controller.yaml#"
-+  - $ref: ../dsi-controller.yaml#
-   - if:
-       properties:
-         compatible:
-diff --git a/Documentation/devicetree/bindings/display/tegra/nvidia,tegra20-hdmi.yaml b/Documentation/devicetree/bindings/display/tegra/nvidia,tegra20-hdmi.yaml
-index f65e59cfffa7..f77197e4869f 100644
---- a/Documentation/devicetree/bindings/display/tegra/nvidia,tegra20-hdmi.yaml
-+++ b/Documentation/devicetree/bindings/display/tegra/nvidia,tegra20-hdmi.yaml
-@@ -68,7 +68,7 @@ properties:
-   nvidia,ddc-i2c-bus:
-     description: phandle of an I2C controller used for DDC EDID
-       probing
--    $ref: "/schemas/types.yaml#/definitions/phandle"
-+    $ref: /schemas/types.yaml#/definitions/phandle
+-  - $ref: "nvmem.yaml#"
++  - $ref: nvmem.yaml#
  
-   nvidia,hpd-gpio:
-     description: specifies a GPIO used for hotplug detection
-@@ -76,11 +76,11 @@ properties:
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/nvmem/qcom,qfprom.yaml b/Documentation/devicetree/bindings/nvmem/qcom,qfprom.yaml
+index 2173fe82317d..e952907ad1d5 100644
+--- a/Documentation/devicetree/bindings/nvmem/qcom,qfprom.yaml
++++ b/Documentation/devicetree/bindings/nvmem/qcom,qfprom.yaml
+@@ -10,7 +10,7 @@ maintainers:
+   - Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
  
-   nvidia,edid:
-     description: supplies a binary EDID blob
--    $ref: "/schemas/types.yaml#/definitions/uint8-array"
-+    $ref: /schemas/types.yaml#/definitions/uint8-array
+ allOf:
+-  - $ref: "nvmem.yaml#"
++  - $ref: nvmem.yaml#
  
-   nvidia,panel:
-     description: phandle of a display panel
--    $ref: "/schemas/types.yaml#/definitions/phandle"
-+    $ref: /schemas/types.yaml#/definitions/phandle
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/nvmem/qcom,spmi-sdam.yaml b/Documentation/devicetree/bindings/nvmem/qcom,spmi-sdam.yaml
+index e08504ef3b6e..34818683f80c 100644
+--- a/Documentation/devicetree/bindings/nvmem/qcom,spmi-sdam.yaml
++++ b/Documentation/devicetree/bindings/nvmem/qcom,spmi-sdam.yaml
+@@ -15,7 +15,7 @@ description: |
+   to/from the PBUS.
  
-   "#sound-dai-cells":
-     const: 0
-diff --git a/Documentation/devicetree/bindings/display/ti/ti,am65x-dss.yaml b/Documentation/devicetree/bindings/display/ti/ti,am65x-dss.yaml
-index 5c7d2cbc4aac..4247280d6c3c 100644
---- a/Documentation/devicetree/bindings/display/ti/ti,am65x-dss.yaml
-+++ b/Documentation/devicetree/bindings/display/ti/ti,am65x-dss.yaml
-@@ -88,7 +88,7 @@ properties:
-           The DSS DPI output port node from video port 2
+ allOf:
+-  - $ref: "nvmem.yaml#"
++  - $ref: nvmem.yaml#
  
-   ti,am65x-oldi-io-ctrl:
--    $ref: "/schemas/types.yaml#/definitions/phandle"
-+    $ref: /schemas/types.yaml#/definitions/phandle
-     description:
-       phandle to syscon device node mapping OLDI IO_CTRL registers.
-       The mapped range should point to OLDI_DAT0_IO_CTRL, map it and
-diff --git a/Documentation/devicetree/bindings/display/xylon,logicvc-display.yaml b/Documentation/devicetree/bindings/display/xylon,logicvc-display.yaml
-index fc02c5d50ce4..87404d72ea37 100644
---- a/Documentation/devicetree/bindings/display/xylon,logicvc-display.yaml
-+++ b/Documentation/devicetree/bindings/display/xylon,logicvc-display.yaml
-@@ -89,25 +89,25 @@ properties:
-     description: Display output colorspace (C_DISPLAY_COLOR_SPACE).
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/nvmem/rmem.yaml b/Documentation/devicetree/bindings/nvmem/rmem.yaml
+index a4a755dcfc43..38a39c9b8c1c 100644
+--- a/Documentation/devicetree/bindings/nvmem/rmem.yaml
++++ b/Documentation/devicetree/bindings/nvmem/rmem.yaml
+@@ -10,7 +10,7 @@ maintainers:
+   - Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
  
-   xylon,display-depth:
--    $ref: "/schemas/types.yaml#/definitions/uint32"
-+    $ref: /schemas/types.yaml#/definitions/uint32
-     description: Display output depth (C_PIXEL_DATA_WIDTH).
+ allOf:
+-  - $ref: "nvmem.yaml#"
++  - $ref: nvmem.yaml#
  
-   xylon,row-stride:
--    $ref: "/schemas/types.yaml#/definitions/uint32"
-+    $ref: /schemas/types.yaml#/definitions/uint32
-     description: Fixed number of pixels in a framebuffer row (C_ROW_STRIDE).
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.yaml b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.yaml
+index febee8129aa9..c5403e149080 100644
+--- a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.yaml
++++ b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.yaml
+@@ -10,7 +10,7 @@ maintainers:
+   - Heiko Stuebner <heiko@sntech.de>
  
-   xylon,dithering:
--    $ref: "/schemas/types.yaml#/definitions/flag"
-+    $ref: /schemas/types.yaml#/definitions/flag
-     description: Dithering module is enabled (C_XCOLOR)
+ allOf:
+-  - $ref: "nvmem.yaml#"
++  - $ref: nvmem.yaml#
  
-   xylon,background-layer:
--    $ref: "/schemas/types.yaml#/definitions/flag"
-+    $ref: /schemas/types.yaml#/definitions/flag
-     description: |
-       The last layer is used to display a black background (C_USE_BACKGROUND).
-       The layer must still be registered.
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/nvmem/socionext,uniphier-efuse.yaml b/Documentation/devicetree/bindings/nvmem/socionext,uniphier-efuse.yaml
+index dc790d2cd9f0..b8bca0599c45 100644
+--- a/Documentation/devicetree/bindings/nvmem/socionext,uniphier-efuse.yaml
++++ b/Documentation/devicetree/bindings/nvmem/socionext,uniphier-efuse.yaml
+@@ -11,7 +11,7 @@ maintainers:
+   - Kunihiko Hayashi <hayashi.kunihiko@socionext.com>
  
-   xylon,layers-configurable:
--    $ref: "/schemas/types.yaml#/definitions/flag"
-+    $ref: /schemas/types.yaml#/definitions/flag
-     description: |
-       Configuration of layers' size, position and offset is enabled
-       (C_USE_SIZE_POSITION).
-@@ -131,7 +131,7 @@ properties:
-             maxItems: 1
+ allOf:
+-  - $ref: "nvmem.yaml#"
++  - $ref: nvmem.yaml#
  
-           xylon,layer-depth:
--            $ref: "/schemas/types.yaml#/definitions/uint32"
-+            $ref: /schemas/types.yaml#/definitions/uint32
-             description: Layer depth (C_LAYER_X_DATA_WIDTH).
+ properties:
+   "#address-cells": true
+diff --git a/Documentation/devicetree/bindings/nvmem/st,stm32-romem.yaml b/Documentation/devicetree/bindings/nvmem/st,stm32-romem.yaml
+index 172597cc5c63..a69de3e92282 100644
+--- a/Documentation/devicetree/bindings/nvmem/st,stm32-romem.yaml
++++ b/Documentation/devicetree/bindings/nvmem/st,stm32-romem.yaml
+@@ -16,7 +16,7 @@ maintainers:
+   - Fabrice Gasnier <fabrice.gasnier@foss.st.com>
  
-           xylon,layer-colorspace:
-@@ -151,19 +151,19 @@ properties:
-             description: Alpha mode for the layer (C_LAYER_X_ALPHA_MODE).
+ allOf:
+-  - $ref: "nvmem.yaml#"
++  - $ref: nvmem.yaml#
  
-           xylon,layer-base-offset:
--            $ref: "/schemas/types.yaml#/definitions/uint32"
-+            $ref: /schemas/types.yaml#/definitions/uint32
-             description: |
-               Offset in number of lines (C_LAYER_X_OFFSET) starting from the
-               video RAM base (C_VMEM_BASEADDR), only for version 3.
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/nvmem/sunplus,sp7021-ocotp.yaml b/Documentation/devicetree/bindings/nvmem/sunplus,sp7021-ocotp.yaml
+index a7644ebbc2ca..8877c2283e9e 100644
+--- a/Documentation/devicetree/bindings/nvmem/sunplus,sp7021-ocotp.yaml
++++ b/Documentation/devicetree/bindings/nvmem/sunplus,sp7021-ocotp.yaml
+@@ -11,7 +11,7 @@ maintainers:
+   - Vincent Shih <vincent.sunplus@gmail.com>
  
-           xylon,layer-buffer-offset:
--            $ref: "/schemas/types.yaml#/definitions/uint32"
-+            $ref: /schemas/types.yaml#/definitions/uint32
-             description: |
-               Offset in number of lines (C_BUFFER_*_OFFSET) starting from the
-               layer base offset for the second buffer used in double-buffering.
+ allOf:
+-  - $ref: "nvmem.yaml#"
++  - $ref: nvmem.yaml#
  
-           xylon,layer-primary:
--            $ref: "/schemas/types.yaml#/definitions/flag"
-+            $ref: /schemas/types.yaml#/definitions/flag
-             description: |
-               Layer should be registered as a primary plane (exactly one is
-               required).
+ properties:
+   compatible:
 -- 
 2.39.2
 
