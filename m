@@ -4,84 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B5BEC74A5B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 12:35:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24EDDC74A5B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 15:08:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=thMf+lug8NwzjJ8UrWmYkebi5ayFtZtj8+KQizln9XY=; b=nTRZLMJANXPMA8ydX0hYhwbhLo
-	qC9SIQ+K4Ibos3EA3qohWOGKYPbs9OSMgNkXM7O3NIj/Ko2O7JHtkVFpx4W59j1HeuU0KQj1vyii9
-	MruvWJwIqnC2jBMAcXqWStNel+Avt5w3Vb+HYAJGxhHbaM0Lbd8hboEmzQaea9rgYpIP1c96uWSQa
-	hXLyOsShNvHsUJTm6Jo3PRhXLy9FLQ08lMSUv7RfuMFwn0NKHvgMdPaI6sZHzOSo3K9sRxYR4aEId
-	+t6XgNGJaESeAoxxNAh3DSALwdjRuDk93rlWFj0Bbj1WnQRzs+gafJ6B0BRbzbDY6QYa892pM3wHX
-	2IibB5IA==;
+	bh=mBHyN5k50ARa0cYCmXTiykWHStQgBCEIqWhfcjVfemY=; b=2VTRxjEr0N0aDfNH2QAtWDKPDz
+	78rlWkqxgGYbL+qnQQ4Y/D4lyhKKJWM19fWQFb7pCLrHA5P+Ol6Ldt0p3LACD7hHzP85IvYB4cqZ4
+	ZBXfGI2VClLLduFnMmNTmtNp5z7F9/0LYGLYZ2bMvqK2FM3UArNgB++paL3irSuSFC40Z5ptOYXn6
+	KAjX7wyfa+RTCniznTQ6EUvvTzZZpz5HRbVC4az8OQAfdZK4jsKlbY4xX7CqwTvv8GQK1+IKNAxmO
+	sScp3sQvhv8BmbXZDHLrG6GQC6iij4mJ7m/i6V2sq6x5rEqQQyZ6qncQzEcMx6sPJPsvGxVDu263x
+	PFelzLVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pd9Ii-002DRo-1M;
-	Fri, 17 Mar 2023 12:35:16 +0000
-Received: from mail-oa1-x2d.google.com ([2001:4860:4864:20::2d])
+	id 1pdBgW-002Ypd-0S;
+	Fri, 17 Mar 2023 15:08:00 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pd9If-002DQS-0D
-	for linux-mediatek@lists.infradead.org;
-	Fri, 17 Mar 2023 12:35:14 +0000
-Received: by mail-oa1-x2d.google.com with SMTP id 586e51a60fabf-17ac5ee3f9cso5522122fac.12
-        for <linux-mediatek@lists.infradead.org>; Fri, 17 Mar 2023 05:35:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1679056509;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=thMf+lug8NwzjJ8UrWmYkebi5ayFtZtj8+KQizln9XY=;
-        b=xmfw8yR+09QFjq8j8pD21JCCAbazLOrVVwkXx1uQOnrsMhQ56LaTqz7iofglA+G4YA
-         XfVcmSQjfkaPKV5kiDToJk0K/tAg2frbid7zBizW7wmcCWRFpXBx7RCmGUcZlGk7oZb/
-         b3EX6cdBQgxMYrL6vJY0bJ0UgFa1ER0tTx7yhA5xvFDZLerC/J2V9cbX5OhDhsT74mUR
-         bDsTNr4cyQkk7Fib1uj1jTU797Ij9r+Yyf2xSgja8yc4Hz4ziuufP5/2b7z1Jv7sDBpQ
-         IOoZUV3r3H+0KD+js1JmHQM0z97//loglRePmJYZ0aObiGUVpXR5SIay1ZGSgOxkHFYZ
-         +iJg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679056509;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=thMf+lug8NwzjJ8UrWmYkebi5ayFtZtj8+KQizln9XY=;
-        b=Fmq4u6KifrXnLKmNKYRXEZEX4f9jATNBHl0iYlVnZSiLUvpRWkuJjZ/N8j92vG5+PW
-         n18ryw5bGHIkEWbZQrA5eEXReoPc2xHhuiGVYcOFT37D+xoCTgryUNumv4qNczVvi2n2
-         wKPKyoOcapdjbD+VbvALvR+EiT/QqezUwvaJAFsoaVt6anFjafQrr6TSA8YAY9cpWiJo
-         WjnBewh+5UJNdJbOCBSIXmlG0ozpQvZJ67ejTqi4iLjzvnap9JH/1PocP92e4xZiP25E
-         cufCoGFRbgmEPMzqV373kMGVSSvFJ67bjjWB9VQiiwd7rzI9XE3gAkgxw/sAxMFBp8xW
-         Up0w==
-X-Gm-Message-State: AO0yUKW8J3HO1LvKYCjRAm+yL1kVhyy2zt38tPGe98j/wA2RJ0NXEbvJ
-	M/6Evc+KPPC/XDbcHh+ZDjfIMxsLx7cv+qVmzddB0Q==
-X-Google-Smtp-Source: AK7set/Ipwo0vFR/sCF+tDORfKSTUbgHqFFe4H0pGWPJ3eeNy9t52Zo2aJ2GyN3NAEbtCN4lI2/IPaKVe6oKYMf2UTE=
-X-Received: by 2002:a05:6870:be99:b0:17a:ac8f:57fb with SMTP id
- nx25-20020a056870be9900b0017aac8f57fbmr6036066oab.6.1679056508771; Fri, 17
- Mar 2023 05:35:08 -0700 (PDT)
+	id 1pdBgJ-002Yhq-2n;
+	Fri, 17 Mar 2023 15:07:56 +0000
+Received: from notapiano (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8162C66030B9;
+	Fri, 17 Mar 2023 15:07:43 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1679065665;
+	bh=oDkOpASujwD4omvYh15ZgVx02nJzDslcJUvtWJE8YGA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Y+3fXThjONEiG2GDz0f94e6hUKgev5us7WM1wv9muoN55JAJ1EkRRiy7/AdAYYnjz
+	 xu+Cm92GqsrWm/eWOnBuouHfl0ZSju9jqP1SrRpqNYfRstB5dsC8+leTYDz6fPqs0u
+	 o/tzh3xzeO7eEnI9g036SAR6q/5FHncyeCYHXKN3Jv+NlSp2zHAnkRwCBU6ubBeQaT
+	 SfOrRKRZfYJ6gAl95bWAaqOQ+xW3lOGroCn8UpskrV1boNQ6YQbqp6jGjmXLIBwyar
+	 +l7qlVpWRtnYa2XciTvIvz9cpxssH/HhYPAqZcAiwb4QyQPcnMiQ5QBLmHLk+bwWQw
+	 N0NyKQIgAMceQ==
+Date: Fri, 17 Mar 2023 11:07:39 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	Nicolas Dufresne <nicolas@ndufresne.ca>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Hsin-Yi Wang <hsinyi@chromium.org>,
+	Fritz Koenig <frkoenig@chromium.org>,
+	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v4,1/2] media: mediatek: vcodec: Force capture queue
+ format to MM21
+Message-ID: <20230317150739.wmrik43dols5ju3a@notapiano>
+References: <20230317030833.16836-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
-References: <20230317080942.183514-1-yanchao.yang@mediatek.com> <20230317080942.183514-2-yanchao.yang@mediatek.com>
-In-Reply-To: <20230317080942.183514-2-yanchao.yang@mediatek.com>
-From: Loic Poulain <loic.poulain@linaro.org>
-Date: Fri, 17 Mar 2023 13:34:32 +0100
-Message-ID: <CAMZdPi9_xYO_MQ0BpxcqDci761uu=ZoczGMg81qkEDeOsP6apw@mail.gmail.com>
-Subject: Re: [PATCH net-next v4 01/10] net: wwan: tmi: Add PCIe core
-To: Yanchao Yang <yanchao.yang@mediatek.com>
-Cc: Sergey Ryazanov <ryazanov.s.a@gmail.com>, Johannes Berg <johannes@sipsolutions.net>, 
-	"David S . Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, netdev ML <netdev@vger.kernel.org>, 
-	kernel ML <linux-kernel@vger.kernel.org>, Intel experts <linuxwwan@intel.com>, 
-	Chetan <m.chetan.kumar@intel.com>, MTK ML <linux-mediatek@lists.infradead.org>, 
-	Liang Lu <liang.lu@mediatek.com>, Haijun Liu <haijun.liu@mediatek.com>, 
-	Hua Yang <hua.yang@mediatek.com>, Ting Wang <ting.wang@mediatek.com>, 
-	Felix Chen <felix.chen@mediatek.com>, Mingliang Xu <mingliang.xu@mediatek.com>, 
-	Min Dong <min.dong@mediatek.com>, Aiden Wang <aiden.wang@mediatek.com>, 
-	Guohao Zhang <guohao.zhang@mediatek.com>, Chris Feng <chris.feng@mediatek.com>, 
-	Lambert Wang <lambert.wang@mediatek.com>, Mingchuang Qiao <mingchuang.qiao@mediatek.com>, 
-	Xiayu Zhang <xiayu.zhang@mediatek.com>, Haozhe Chang <haozhe.chang@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230317030833.16836-1-yunfei.dong@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230317_053513_115562_D2762A13 
-X-CRM114-Status: GOOD (  26.41  )
+X-CRM114-CacheID: sfid-20230317_080748_138226_9BC1DD98 
+X-CRM114-Status: GOOD (  12.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,155 +85,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yanchao,
+On Fri, Mar 17, 2023 at 11:08:32AM +0800, Yunfei Dong wrote:
+> While the decoder can produce frames in both MM21 and MT21C formats, only MM21
+> is currently supported by userspace tools (like gstreamer and libyuv). In order
+> to ensure userspace keeps working after the SCP firmware is updated to support
+> both MM21 and MT21C formats, force the MM21 format for the capture queue.
+> 
+> This is meant as a stopgap solution while dynamic format switching between
+> MM21 and MT21C isn't implemented in the driver.
+> 
+> Fixes: 7501edef6b1f ("media: mediatek: vcodec: Different codec using different capture format")
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-On Fri, 17 Mar 2023 at 09:10, Yanchao Yang <yanchao.yang@mediatek.com> wrote:
->
-> Registers the TMI device driver with the kernel. Set up all the fundamental
-> configurations for the device: PCIe layer, Modem Host Cross Core Interface
-> (MHCCIF), Reset Generation Unit (RGU), modem common control operations and
-> build infrastructure.
->
-> * PCIe layer code implements driver probe and removal, MSI-X interrupt
-> initialization and de-initialization, and the way of resetting the device.
-> * MHCCIF provides interrupt channels to communicate events such as handshake,
-> PM and port enumeration.
-> * RGU provides interrupt channels to generate notifications from the device
-> so that the TMI driver could get the device reset.
-> * Modem common control operations provide the basic read/write functions of
-> the device's hardware registers, mask/unmask/get/clear functions of the
-> device's interrupt registers and inquiry functions of the device's status.
->
-> Signed-off-by: Yanchao Yang <yanchao.yang@mediatek.com>
-> Signed-off-by: Ting Wang <ting.wang@mediatek.com>
-> ---
->  drivers/net/wwan/Kconfig                 |  14 +
->  drivers/net/wwan/Makefile                |   1 +
->  drivers/net/wwan/mediatek/Makefile       |   8 +
->  drivers/net/wwan/mediatek/mtk_dev.h      | 203 ++++++
->  drivers/net/wwan/mediatek/pcie/mtk_pci.c | 887 +++++++++++++++++++++++
->  drivers/net/wwan/mediatek/pcie/mtk_pci.h | 144 ++++
->  drivers/net/wwan/mediatek/pcie/mtk_reg.h |  69 ++
->  7 files changed, 1326 insertions(+)
->  create mode 100644 drivers/net/wwan/mediatek/Makefile
->  create mode 100644 drivers/net/wwan/mediatek/mtk_dev.h
->  create mode 100644 drivers/net/wwan/mediatek/pcie/mtk_pci.c
->  create mode 100644 drivers/net/wwan/mediatek/pcie/mtk_pci.h
->  create mode 100644 drivers/net/wwan/mediatek/pcie/mtk_reg.h
->
+Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Tested-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-[...]
 
-> +static int mtk_pci_get_virq_id(struct mtk_md_dev *mdev, int irq_id)
-> +{
-> +       struct pci_dev *pdev = to_pci_dev(mdev->dev);
-> +       int nr = 0;
-> +
-> +       if (pdev->msix_enabled)
-> +               nr = irq_id % mdev->msi_nvecs;
-> +
-> +       return pci_irq_vector(pdev, nr);
-> +}
-> +
-> +static int mtk_pci_register_irq(struct mtk_md_dev *mdev, int irq_id,
-> +                               int (*irq_cb)(int irq_id, void *data), void *data)
-> +{
-> +       struct mtk_pci_priv *priv = mdev->hw_priv;
-> +
-> +       if (unlikely((irq_id < 0 || irq_id >= MTK_IRQ_CNT_MAX) || !irq_cb))
-> +               return -EINVAL;
-> +
-> +       if (priv->irq_cb_list[irq_id]) {
-> +               dev_err(mdev->dev,
-> +                       "Unable to register irq, irq_id=%d, it's already been register by %ps.\n",
-> +                       irq_id, priv->irq_cb_list[irq_id]);
-> +               return -EFAULT;
-> +       }
-> +       priv->irq_cb_list[irq_id] = irq_cb;
-> +       priv->irq_cb_data[irq_id] = data;
+With this patch and the new firmware [1], I was able to run fluster using the
+VP8, VP9 and H.264 codecs on both MT8192 and MT8195:
 
-So it looks like you re-implement your own irq chip internally. What
-about creating a new irq-chip/domain for this (cf irq_domain_add_simple)?
-That would allow the client code to use the regular irq interface and helpers
-and it should simply code and improve its debuggability (/proc/irq...).
+MT8192:
+	        VP8: 59/61
+	        VP9: 250/303
+		     0/6 (HIGH)
+	        H.264: 92/135
+		       27/69 (JVT-FR-EXT)
 
-[...]
+MT8195:
+	        VP8: 59/61
+	        VP9: 276/303
+		     0/6 (HIGH)
+	        H.264: 95/135
+		       27/69 (JVT-FR-EXT)
 
-> +static int mtk_mhccif_register_evt(struct mtk_md_dev *mdev, u32 chs,
-> +                                  int (*evt_cb)(u32 status, void *data), void *data)
-> +{
-> +       struct mtk_pci_priv *priv = mdev->hw_priv;
-> +       struct mtk_mhccif_cb *cb;
-> +       unsigned long flag;
-> +       int ret = 0;
-> +
-> +       if (!chs || !evt_cb)
-> +               return -EINVAL;
-> +
-> +       spin_lock_irqsave(&priv->mhccif_lock, flag);
+[1] https://lore.kernel.org/linux-firmware/a43524a089a783f70adbe89b83eeb01fbd405d04.camel@mediatek.com/T/#mb0591267d7921bbfada7c06ee2bda128db554648
 
-Why spinlock here and not mutex. AFAIU, you always take this lock in a
-non-atomic/process context.
-
-> +       list_for_each_entry(cb, &priv->mhccif_cb_list, entry) {
-> +               if (cb->chs & chs) {
-> +                       ret = -EFAULT;
-> +                       dev_err(mdev->dev,
-> +                               "Unable to register evt, chs=0x%08X&0x%08X registered_cb=%ps\n",
-> +                               chs, cb->chs, cb->evt_cb);
-> +                       goto err;
-> +               }
-> +       }
-> +       cb = devm_kzalloc(mdev->dev, sizeof(*cb), GFP_ATOMIC);
-> +       if (!cb) {
-> +               ret = -ENOMEM;
-> +               goto err;
-> +       }
-> +       cb->evt_cb = evt_cb;
-> +       cb->data = data;
-> +       cb->chs = chs;
-> +       list_add_tail(&cb->entry, &priv->mhccif_cb_list);
-> +
-> +err:
-> +       spin_unlock_irqrestore(&priv->mhccif_lock, flag);
-> +
-> +       return ret;
-> +}
-
-[...]
-
-> +
-> +MODULE_LICENSE("GPL");
-> diff --git a/drivers/net/wwan/mediatek/pcie/mtk_pci.h b/drivers/net/wwan/mediatek/pcie/mtk_pci.h
-> new file mode 100644
-> index 000000000000..b487ca9b302e
-> --- /dev/null
-> +++ b/drivers/net/wwan/mediatek/pcie/mtk_pci.h
-
-Why a separated header file, isn't the content (e.g. mtk_pci_priv)
-used only from mtk_pci.c?
-
-> @@ -0,0 +1,144 @@
-> +/* SPDX-License-Identifier: BSD-3-Clause-Clear
-> + *
-> + * Copyright (c) 2022, MediaTek Inc.
-> + */
-> +
-> +#ifndef __MTK_PCI_H__
-> +#define __MTK_PCI_H__
-> +
-> +#include <linux/pci.h>
-> +#include <linux/spinlock.h>
-> +
-> +#include "../mtk_dev.h"
-> +
-> +enum mtk_atr_type {
-> +       ATR_PCI2AXI = 0,
-> +       ATR_AXI2PCI
-> +};
-
-[...]
-
-Regards,
-Loic
+Thanks,
+Nícolas
 
