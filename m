@@ -4,57 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF0B3C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Mar 2023 03:57:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABEB3C74A5B
+	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Mar 2023 03:57:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=w7qxzHJ9OUqVOD3dN5cCe1joMzyhA01hfu1aWr/0RaU=; b=bgT5OkYBRTufEmaUmuiO3fjSbI
-	wNPebfo906rwi4nze7N04SoGu04RTj49GQydj71TMREXdI8JMFMDC4V5t/kLh94f2N94tRyUCaB8M
-	snypB7CBoOWtF+c1KDYJ10ktYsc6dB8XtLWTYwU9M6BeZgg4gz9KnuTpg22Wd7TNOpxLRN7AmREoX
-	f2iZmsRYdZQRjxrA904H8a7x+WnUkCzELn7KDSP1XkKDpMrR0tf7MElqPHSMkXB9Q+7ulimREh+Xw
-	aVYLaGvlu+lQ++o9jy5GoyckY8In8eKZ6yigQNFhlXronpKWm+TCNRfNQ33aiG2eStUywqwe9H3lO
-	fVTjYhEQ==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nmAJCU4vEFZ4NeWXnt6p2mWQtYOq1ViTVxlUuDegioA=; b=BQLrkYQVvCV0fTEly749ouH6Dq
+	elP0DPAG/CUNFqr3jtBPM3pNEzhQhrMN7c2f3LIgsF4+SQ3lCQdNo9DUBRvGJtHfFwrHeltqkHQWz
+	/6PUEKUIapcPrtPN5mjCeXhNrFhg//WiaSLRCRVvIXVm26GJbMEr3EPUHsD7RwQrvLChUBwjA1+e8
+	IAtG9PguCiz44KQGc5IvU8msWX49g+BaQ6WOdw+0d8oXoH+MovM2t6scQWz/k8/D5SPvoEnrB8uw+
+	7TtD5HMeikdSwlStj0a7GxksKdtCvX0Ii7dyhA5sq/LAAVQnP0AYgH0E2pkhgtvW1AXuGp/OW4RWC
+	SdTdjAzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdNgn-00439A-18;
-	Sat, 18 Mar 2023 03:57:05 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pdNgq-0043AV-2g;
+	Sat, 18 Mar 2023 03:57:08 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdNgl-00438a-04;
-	Sat, 18 Mar 2023 03:57:04 +0000
-X-UUID: ed88772cc54011edb5598346aad47b14-20230317
+	id 1pdNgn-00438y-1g;
+	Sat, 18 Mar 2023 03:57:06 +0000
+X-UUID: ee1335a6c54011ed86fbcd8805c7ac66-20230317
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=w7qxzHJ9OUqVOD3dN5cCe1joMzyhA01hfu1aWr/0RaU=;
-	b=rXMaKEqBmJKsDZANeYJEHu4SiT1TqZjm4BGfZiTh1lsSkhioqRQiQtcmPTR5pAsAuQzHSnH0dX+flL1/3oiNGiH4NiKAuK/HKoUEuaxWUSP0WMpKE3RXSKy7nCJN0DNmbZIYguf+enWaH8JQ2+I3xHn2U5lnFcXPKm0C+1G3OxI=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=nmAJCU4vEFZ4NeWXnt6p2mWQtYOq1ViTVxlUuDegioA=;
+	b=mUnXwjIHecHwq0H64ZqLKaszh2gy0bEjtDM6kj3uvV26/ZO2K8QfZAijBqdqptI12QDZuO5ETr0RFHaMd7qZsf4vPNNJJtctMDGMqv4nLMo3GQ5Ym9AX+Wm4tKJ5AbnMmTsw8HfWOQjwCfm++VblH47Zj1/A8TbVfyY0bQ900II=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.21,REQID:c07252c3-4b32-49d4-99fe-b18aba90cf5e,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:95
-X-CID-INFO: VERSION:1.1.21,REQID:c07252c3-4b32-49d4-99fe-b18aba90cf5e,IP:0,URL
-	:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTION
-	:quarantine,TS:95
-X-CID-META: VersionHash:83295aa,CLOUDID:b8042af6-ddba-41c3-91d9-10eeade8eac7,B
-	ulkID:230318115658PBZ9ZYBT,BulkQuantity:0,Recheck:0,SF:38|29|28|17|19|48,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-	,OSI:0,OSA:0,AV:0
+X-CID-O-INFO: VERSION:1.1.21,REQID:ecbaac9d-9a97-40db-bf67-9328a19025ca,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:83295aa,CLOUDID:135e9cb3-beed-4dfc-bd9c-e1b22fa6ccc4,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-UUID: ed88772cc54011edb5598346aad47b14-20230317
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+X-UUID: ee1335a6c54011ed86fbcd8805c7ac66-20230317
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 609640727; Fri, 17 Mar 2023 20:56:57 -0700
+	with ESMTP id 1888947711; Fri, 17 Mar 2023 20:56:58 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Sat, 18 Mar 2023 11:56:54 +0800
+ 15.2.1118.25; Sat, 18 Mar 2023 11:56:55 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Sat, 18 Mar 2023 11:56:53 +0800
+ 15.2.1118.25 via Frontend Transport; Sat, 18 Mar 2023 11:56:54 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
 	Nicolas Dufresne <nicolas@ndufresne.ca>, Hans Verkuil
@@ -70,17 +66,19 @@ CC: Matthias Brugger <matthias.bgg@gmail.com>, Hsin-Yi Wang
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v5,1/2] media: mediatek: vcodec: Make MM21 the default capture format
-Date: Sat, 18 Mar 2023 11:56:50 +0800
-Message-ID: <20230318035651.27454-1-yunfei.dong@mediatek.com>
+Subject: [PATCH v5,2/2] media: mediatek: vcodec: Force capture queue format to MM21
+Date: Sat, 18 Mar 2023 11:56:51 +0800
+Message-ID: <20230318035651.27454-2-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230318035651.27454-1-yunfei.dong@mediatek.com>
+References: <20230318035651.27454-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230317_205703_068759_B198F7B3 
-X-CRM114-Status: GOOD (  12.68  )
+X-CRM114-CacheID: sfid-20230317_205705_567336_7D18CBC7 
+X-CRM114-Status: GOOD (  15.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,56 +93,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Given that only the MM21 capture format is supported by userspace tools (like
-gstreamer and libyuv), make it the default capture format.
+While the decoder can produce frames in both MM21 and MT21C formats, only MM21
+is currently supported by userspace tools (like gstreamer and libyuv). In order
+to ensure userspace keeps working after the SCP firmware is updated to support
+both MM21 and MT21C formats, force the MM21 format for the capture queue.
 
-This allows us to force the MM21 format even when a MM21 and MT21C capable
-firmware is available (which is needed while dynamic format switching isn't
-implemented in the driver), without causing the following regressions on
-v4l2-compliance:
-
-        fail: v4l2-test-formats.cpp(478): pixelformat 3132544d (MT21) for buftype 9 not reported by ENUM_FMT
-    test VIDIOC_G_FMT: FAIL
-        fail: v4l2-test-formats.cpp(478): pixelformat 3132544d (MT21) for buftype 9 not reported by ENUM_FMT
-    test VIDIOC_TRY_FMT: FAIL
-        fail: v4l2-test-formats.cpp(478): pixelformat 3132544d (MT21) for buftype 9 not reported by ENUM_FMT
-    test VIDIOC_S_FMT: FAIL
+This is meant as a stopgap solution while dynamic format switching between
+MM21 and MT21C isn't implemented in the driver.
 
 Fixes: 7501edef6b1f ("media: mediatek: vcodec: Different codec using different capture format")
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 Reviewed-by: Nicolas F. R. A. Prado <nfraprado@collabora.com>
 Tested-by: Nicolas F. R. A. Prado <nfraprado@collabora.com>
 ---
-changed with v4:
-- change the patch order.
-- re-write the title and commit message for patch 1.
----
- .../platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c   | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ .../platform/mediatek/vcodec/mtk_vcodec_dec.c | 24 +++----------------
+ 1 file changed, 3 insertions(+), 21 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
-index 04beb3f08eea..3000db975e5f 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
-@@ -392,14 +392,14 @@ static void mtk_vcodec_get_supported_formats(struct mtk_vcodec_ctx *ctx)
- 	if (num_formats)
- 		return;
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+index 641f533c417f..c99705681a03 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+@@ -39,10 +39,9 @@ static bool mtk_vdec_get_cap_fmt(struct mtk_vcodec_ctx *ctx, int format_index)
+ {
+ 	const struct mtk_vcodec_dec_pdata *dec_pdata = ctx->dev->vdec_pdata;
+ 	const struct mtk_video_fmt *fmt;
+-	struct mtk_q_data *q_data;
+ 	int num_frame_count = 0, i;
+-	bool ret = true;
  
--	if (ctx->dev->dec_capability & MTK_VDEC_FORMAT_MM21) {
--		mtk_vcodec_add_formats(V4L2_PIX_FMT_MM21, ctx);
--		cap_format_count++;
--	}
- 	if (ctx->dev->dec_capability & MTK_VDEC_FORMAT_MT21C) {
- 		mtk_vcodec_add_formats(V4L2_PIX_FMT_MT21C, ctx);
- 		cap_format_count++;
++	fmt = &dec_pdata->vdec_formats[format_index];
+ 	for (i = 0; i < *dec_pdata->num_formats; i++) {
+ 		if (dec_pdata->vdec_formats[i].type != MTK_FMT_FRAME)
+ 			continue;
+@@ -50,27 +49,10 @@ static bool mtk_vdec_get_cap_fmt(struct mtk_vcodec_ctx *ctx, int format_index)
+ 		num_frame_count++;
  	}
-+	if (ctx->dev->dec_capability & MTK_VDEC_FORMAT_MM21) {
-+		mtk_vcodec_add_formats(V4L2_PIX_FMT_MM21, ctx);
-+		cap_format_count++;
-+	}
- 	if (ctx->dev->dec_capability & MTK_VDEC_FORMAT_H264_SLICE) {
- 		mtk_vcodec_add_formats(V4L2_PIX_FMT_H264_SLICE, ctx);
- 		out_format_count++;
+ 
+-	if (num_frame_count == 1)
++	if (num_frame_count == 1 || fmt->fourcc == V4L2_PIX_FMT_MM21)
+ 		return true;
+ 
+-	fmt = &dec_pdata->vdec_formats[format_index];
+-	q_data = &ctx->q_data[MTK_Q_DATA_SRC];
+-	switch (q_data->fmt->fourcc) {
+-	case V4L2_PIX_FMT_VP8_FRAME:
+-		if (fmt->fourcc == V4L2_PIX_FMT_MM21)
+-			ret = true;
+-		break;
+-	case V4L2_PIX_FMT_H264_SLICE:
+-	case V4L2_PIX_FMT_VP9_FRAME:
+-		if (fmt->fourcc == V4L2_PIX_FMT_MM21)
+-			ret = false;
+-		break;
+-	default:
+-		ret = true;
+-		break;
+-	}
+-
+-	return ret;
++	return false;
+ }
+ 
+ static struct mtk_q_data *mtk_vdec_get_q_data(struct mtk_vcodec_ctx *ctx,
 -- 
 2.25.1
 
