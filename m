@@ -4,88 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1012C74A5B
-	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Mar 2023 14:15:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82799C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Mar 2023 18:35:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Jn7MTuccQB8AO3nxo6ArCG9xE/ImFLp3unk+n10M6yo=; b=PNJaOpkmlMcXJCnGtm8Oz0vAFU
-	eaSSerITtZ7UwZs1NUzUCSXWW4QmLeGlOElQBZqpbp+F93km+TlEO7CMjIBzJ1xgzawEnu8gxx9u8
-	EbJzOk7Hg03K/5RuMeL44aCDfxR2h2q/rYLiC1PEwgipLfNC34MJrhBXIhPyegYgMFhcI7JCREcvR
-	lOYH4FTxwepLw6q7EH/Nmc8Jrjh5aSpNKMAvoem2YCWQ34cqwFE5RzHieZE3wT4xy4QjavpnWY7wa
-	a2vbxhTMnwXDrae0b9YHe3Fd7vnziu1HbkTM6DAWhWLuLXLDAUXO+KsquBtBWdApYHNhvcQlnLiG7
-	5ZZrykxw==;
+	bh=BFKYNp+Neuov7KhL6+FviygGAp7uK5yQBy9Jg2JEZ9Y=; b=DiapaOKYDF9jqv+KyGCo1ov/In
+	qUC6T6EXAZ6y6K46yeAS2FoAvOdCgWDjUg6mThDoRRJH8NqpYopOwz2A6PTnZG03vMM79U7IWkRrK
+	Y5EG7/zD/Ci66oxsR7L2XhWU2ppoDG1TjFl5G1lg8DFL13WasJmAovhwN3A0BNgC9mQ4Pn/B5Vcxl
+	BycSzqhRhMOiZGGLtqgxFQ/n9oTxTPIH6I/iIjpuH1kL+aJzf0GAnavmzMcI4+j8wPetxgFOknO8p
+	aFUHa+HIWkWiKU/YJ6CkFBTOYjjOCKVvL9lOsxh/yXVjzKCVhOvi4tRY272oEHpmuTAgTGufestxz
+	eeHkRVPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdXLK-004rHG-22;
-	Sat, 18 Mar 2023 14:15:34 +0000
-Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
+	id 1pdbP5-005ALF-1N;
+	Sat, 18 Mar 2023 18:35:43 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdXKi-004r0X-1N;
-	Sat, 18 Mar 2023 14:14:59 +0000
-Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
-	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id E41D018839C7;
-	Sat, 18 Mar 2023 14:12:46 +0000 (UTC)
-Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
-	by mailout.gigahost.dk (Postfix) with ESMTP id DB0C325002BC;
-	Sat, 18 Mar 2023 14:12:46 +0000 (UTC)
-Received: by smtp.gigahost.dk (Postfix, from userid 1000)
-	id D13B49B403E2; Sat, 18 Mar 2023 14:12:46 +0000 (UTC)
-X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
-Received: from fujitsu.vestervang (2-104-116-184-cable.dk.customer.tdc.net [2.104.116.184])
-	by smtp.gigahost.dk (Postfix) with ESMTPSA id 1B3E49B403E1;
-	Sat, 18 Mar 2023 14:12:46 +0000 (UTC)
-From: "Hans J. Schultz" <netdev@kapio-technology.com>
-To: davem@davemloft.net,
-	kuba@kernel.org
-Cc: netdev@vger.kernel.org,
-	"Hans J. Schultz" <netdev@kapio-technology.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Eric Dumazet <edumazet@google.com>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	UNGLinuxDriver@microchip.com (maintainer:MICROCHIP KSZ SERIES ETHERNET SWITCH DRIVER),
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	=?UTF-8?q?Cl=C3=A9ment=20L=C3=A9ger?= <clement.leger@bootlin.com>,
-	Jiri Pirko <jiri@resnulli.us>,
-	Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
-	Shuah Khan <shuah@kernel.org>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Ido Schimmel <idosch@nvidia.com>,
-	linux-kernel@vger.kernel.org (open list),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
-	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
-	linux-renesas-soc@vger.kernel.org (open list:RENESAS RZ/N1 A5PSW SWITCH DRIVER),
-	bridge@lists.linux-foundation.org (moderated list:ETHERNET BRIDGE),
-	linux-kselftest@vger.kernel.org (open list:KERNEL SELFTEST FRAMEWORK)
-Subject: [PATCH v2 net-next 6/6] selftests: forwarding: add dynamic FDB test
-Date: Sat, 18 Mar 2023 15:10:10 +0100
-Message-Id: <20230318141010.513424-7-netdev@kapio-technology.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230318141010.513424-1-netdev@kapio-technology.com>
-References: <20230318141010.513424-1-netdev@kapio-technology.com>
+	id 1pdbP0-005AKW-11;
+	Sat, 18 Mar 2023 18:35:40 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id D2E7460EF6;
+	Sat, 18 Mar 2023 18:35:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45902C4339C;
+	Sat, 18 Mar 2023 18:35:35 +0000 (UTC)
+Date: Sat, 18 Mar 2023 14:35:33 -0400
+From: Steven Rostedt <rostedt@goodmis.org>
+To: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
+Cc: Masami Hiramatsu <mhiramat@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, "Tom Zanussi"
+ <zanussi@kernel.org>, <Bobule.chang@mediatek.com>,
+ <wsd_upstream@mediatek.com>, Tze-nan Wu <Tze-nan.Wu@mediatek.com>,
+ <stable@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-trace-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH] tracing: Fix use-after-free and double-free on last_cmd
+Message-ID: <20230318143533.1890d9bc@rorschach.local.home>
+In-Reply-To: <20230317053044.13828-1-cheng-jui.wang@mediatek.com>
+References: <20230317053044.13828-1-cheng-jui.wang@mediatek.com>
+X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Organization: Westermo Network Technologies AB
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230318_071456_638906_EA83A99B 
-X-CRM114-Status: UNSURE (   9.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230318_113538_396089_47158422 
+X-CRM114-Status: GOOD (  21.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,74 +70,119 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Test FDB ageing of user entry created by
+On Fri, 17 Mar 2023 13:30:44 +0800
+Cheng-Jui Wang <cheng-jui.wang@mediatek.com> wrote:
 
-bridge fdb replace ADDR dev <DEV> master dynamic
+> From: "Tze-nan Wu" <Tze-nan.Wu@mediatek.com>
 
-Use LOW_AGEING_TIME variable in forwarding.config to set a low ageing time.
-Beware, DSA might not accept the ageing time you want. Check the
-age_time_coeff value for your driver.
+Hi!
 
-Signed-off-by: Hans J. Schultz <netdev@kapio-technology.com>
----
- .../net/forwarding/bridge_locked_port.sh      | 36 +++++++++++++++++++
- 1 file changed, 36 insertions(+)
+Thanks for the report and the patch. Some nits below.
 
-diff --git a/tools/testing/selftests/net/forwarding/bridge_locked_port.sh b/tools/testing/selftests/net/forwarding/bridge_locked_port.sh
-index dc92d32464f6..dbc7017fd45d 100755
---- a/tools/testing/selftests/net/forwarding/bridge_locked_port.sh
-+++ b/tools/testing/selftests/net/forwarding/bridge_locked_port.sh
-@@ -14,6 +14,7 @@ ALL_TESTS="
- NUM_NETIFS=4
- CHECK_TC="no"
- source lib.sh
-+source tc_common.sh
- 
- h1_create()
- {
-@@ -319,6 +320,41 @@ locked_port_mab_flush()
- 	log_test "Locked port MAB FDB flush"
- }
- 
-+# Test of dynamic FDB entries.
-+locked_port_dyn_fdb()
-+{
-+	local mac=00:01:02:03:04:05
-+	local ageing_time
-+
-+	RET=0
-+	ageing_time=$(bridge_ageing_time_get br0)
-+	tc qdisc add dev $swp2 clsact
-+	ip link set dev br0 type bridge ageing_time $LOW_AGEING_TIME
-+	bridge link set dev $swp1 learning on locked on
-+
-+	bridge fdb replace $mac dev $swp1 master dynamic
-+	tc filter add dev $swp2 egress protocol ip pref 1 handle 1 flower \
-+		dst_ip 192.0.2.2 ip_proto udp dst_port 12345 action pass
-+
-+	$MZ $swp1 -c 1 -p 128 -t udp "sp=54321,dp=12345" \
-+		-a $mac -b `mac_get $h2` -A 192.0.2.1 -B 192.0.2.2 -q
-+	tc_check_packets "dev $swp2 egress" 1 1
-+	check_err $? "Packet not seen on egress after adding dynamic FDB"
-+
-+	sleep $((LOW_AGEING_TIME / 100 + 10))
-+
-+	$MZ $swp1 -c 1 -p 128 -t udp "sp=54321,dp=12345" \
-+		-a $mac -b `mac_get $h2` -A 192.0.2.1 -B 192.0.2.2 -q
-+	tc_check_packets "dev $swp2 egress" 1 1
-+	check_fail $? "Dynamic FDB entry did not age out"
-+
-+	ip link set dev br0 type bridge ageing_time $ageing_time
-+	bridge link set dev $swp1 learning off locked off
-+	tc qdisc del dev $swp2 clsact
-+
-+	log_test "Locked port dyn FDB"
-+}
-+
- trap cleanup EXIT
- 
- setup_prepare
--- 
-2.34.1
+Also change the subject to:
 
+	tracing/synthetic: Fix races on freeing last_cmd
+
+> ---
+>  kernel/trace/trace_events_synth.c | 23 +++++++++++++++++++----
+>  1 file changed, 19 insertions(+), 4 deletions(-)
+> 
+> diff --git a/kernel/trace/trace_events_synth.c b/kernel/trace/trace_events_synth.c
+> index 46d0abb32d0f..ce438eccab2e 100644
+> --- a/kernel/trace/trace_events_synth.c
+> +++ b/kernel/trace/trace_events_synth.c
+> @@ -42,16 +42,25 @@ enum { ERRORS };
+>  #undef C
+>  #define C(a, b)		b
+>  
+> +static DEFINE_MUTEX(lastcmd_mutex);
+> +
+>  static const char *err_text[] = { ERRORS };
+>  
+>  static char *last_cmd;
+
+Please keep the mutex and the variable it protects next to each other:
+
+static DEFINE_MUTEX(lastcmd_mutex);
+static char *last_cmd;
+
+>  
+>  static int errpos(const char *str)
+>  {
+> -	if (!str || !last_cmd)
+> -		return 0;
+> +	int ret = 0;
+> +
+> +	mutex_lock(&lastcmd_mutex);
+> +	if (!str || !last_cmd) {
+
+Change this to just:
+
+	if (!str || !last_cmd)
+		goto out;
+
+> +		mutex_unlock(&lastcmd_mutex);
+> +		return ret;
+
+> +	}
+>  
+> -	return err_pos(last_cmd, str);
+> +	ret = err_pos(last_cmd, str);
+
+Add:
+
+ out:
+
+> +	mutex_unlock(&lastcmd_mutex);
+> +	return ret;
+>  }
+>  
+>  static void last_cmd_set(const char *str)
+> @@ -59,18 +68,24 @@ static void last_cmd_set(const char *str)
+>  	if (!str)
+>  		return;
+>  
+> +	mutex_lock(&lastcmd_mutex);
+>  	kfree(last_cmd);
+>  
+
+In this case, you can remove the space:
+
+	mutex_lock(&lastcmd_mutex);
+	kfree(last_cmd);
+	last_cmd = kstrdup(str, GFP_KERNEL);
+	mutex_unlock(&lastcmd_mutex);
+
+>  	last_cmd = kstrdup(str, GFP_KERNEL);
+> +	mutex_unlock(&lastcmd_mutex);
+>  }
+>  
+>  static void synth_err(u8 err_type, u16 err_pos)
+>  {
+> -	if (!last_cmd)
+> +	mutex_lock(&lastcmd_mutex);
+> +	if (!last_cmd) {
+
+This should be:
+
+	if (!last_cmd)
+		goto out;
+
+> +		mutex_unlock(&lastcmd_mutex);
+>  		return;
+> +	}
+>  
+>  	tracing_log_err(NULL, "synthetic_events", last_cmd, err_text,
+>  			err_type, err_pos);
+
+ out:
+
+> +	mutex_unlock(&lastcmd_mutex);
+>  }
+>  
+>  static int create_synth_event(const char *raw_command);
+
+Thanks,
+
+-- Steve
 
