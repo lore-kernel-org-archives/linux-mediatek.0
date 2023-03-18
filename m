@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABDEBC74A5B
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAFB6C61DA4
 	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Mar 2023 14:15:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nvQhOK/QPuImHmKLl0Curblaw0E4oPGU/6PGqxBXU98=; b=hZffpUiWtVczFIlypwl1upmLA6
-	ODZo3yLad0gwHIkOJNy7hEGFSW5h0JwbNCu1iyhuaVWsNBxW02BCKrBTANijvxiPZsLI5GENWuedt
-	elnZ9NJKdxvkqkMbBqItAcVs96TkCItev8P7eUvUq4+EJvFBXJ1oxizqmzvv94/K9s1qCbd2YWfRQ
-	D42csC8L1BPe8VsVMlMWaGfCmvsAyPvqyo8D3EiGhI0m2pQunpi4z6iPOOyFZJ13qSt5IYskBtuS0
-	oqgvB1UUin9Z7I6TJTuetM78yc+m1PIfCHkbBvh7Cq1XVPDa5Qk15ZlTDNOcy77ktF+U+BWoev4Nf
-	tgwhH0sA==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=KQZlNTcb+8Y4cokcv0BCEibLFfLtT0n9iOf/NnD0uuo=; b=v9l6hVOE9aYh4JwWNeXPCCjFdD
+	O9XCqx+KAa/c0z3AZnaiX/zxeE+RqhugMzFCULwn67SDiiyvUCpcTym+qH/W/aZz07g99dRYJA7ij
+	rKhN6p3erthfphGIFpNqjUc1J3pnoLa6a5lJIN+eNzWY4+m/ICqmzRYL4verJVS40TFb0lF9+4L5w
+	XNrq+NOTh6cfjfMZ0j4JFFg1qMk5ielV5eTiL1fQOKn1Rzzrkw1CsBtvqt2QEcCmQJXU4DvzUChEA
+	rlsiXY0hSYhSWZB9+xRSVDXWp73uGnYWA0biq8GMF2g6afScyB5lcsXhc+L6fGQh7jv0a92kL2ZJj
+	+/MkCsdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdXKk-004r1e-2l;
+	id 1pdXKk-004r1P-1O;
 	Sat, 18 Mar 2023 14:14:58 +0000
 Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdXKd-004qtm-1M;
+	id 1pdXKd-004qtg-1N;
 	Sat, 18 Mar 2023 14:14:55 +0000
 Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
-	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 63259188398F;
-	Sat, 18 Mar 2023 14:12:43 +0000 (UTC)
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id B7F2918838A8;
+	Sat, 18 Mar 2023 14:12:42 +0000 (UTC)
 Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
-	by mailout.gigahost.dk (Postfix) with ESMTP id 5299225002BC;
-	Sat, 18 Mar 2023 14:12:43 +0000 (UTC)
+	by mailout.gigahost.dk (Postfix) with ESMTP id 9E47E25002BC;
+	Sat, 18 Mar 2023 14:12:42 +0000 (UTC)
 Received: by smtp.gigahost.dk (Postfix, from userid 1000)
-	id 4764D9B403E4; Sat, 18 Mar 2023 14:12:43 +0000 (UTC)
+	id 929E49B403E4; Sat, 18 Mar 2023 14:12:42 +0000 (UTC)
 X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
 Received: from fujitsu.vestervang (2-104-116-184-cable.dk.customer.tdc.net [2.104.116.184])
-	by smtp.gigahost.dk (Postfix) with ESMTPSA id 91AFB9B403E2;
-	Sat, 18 Mar 2023 14:12:42 +0000 (UTC)
+	by smtp.gigahost.dk (Postfix) with ESMTPSA id D42DE91201E3;
+	Sat, 18 Mar 2023 14:12:41 +0000 (UTC)
 From: "Hans J. Schultz" <netdev@kapio-technology.com>
 To: davem@davemloft.net,
 	kuba@kernel.org
@@ -73,18 +73,16 @@ Cc: netdev@vger.kernel.org,
 	linux-renesas-soc@vger.kernel.org (open list:RENESAS RZ/N1 A5PSW SWITCH DRIVER),
 	bridge@lists.linux-foundation.org (moderated list:ETHERNET BRIDGE),
 	linux-kselftest@vger.kernel.org (open list:KERNEL SELFTEST FRAMEWORK)
-Subject: [PATCH v2 net-next 1/6] net: bridge: add dynamic flag to switchdev notifier
-Date: Sat, 18 Mar 2023 15:10:05 +0100
-Message-Id: <20230318141010.513424-2-netdev@kapio-technology.com>
+Subject: [PATCH v2 net-next 0/6] ATU and FDB synchronization on locked ports
+Date: Sat, 18 Mar 2023 15:10:04 +0100
+Message-Id: <20230318141010.513424-1-netdev@kapio-technology.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230318141010.513424-1-netdev@kapio-technology.com>
-References: <20230318141010.513424-1-netdev@kapio-technology.com>
 MIME-Version: 1.0
 Organization: Westermo Network Technologies AB
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230318_071451_627545_CD4F0BE6 
-X-CRM114-Status: GOOD (  11.04  )
+X-CRM114-CacheID: sfid-20230318_071451_771202_BB0BED2C 
+X-CRM114-Status: GOOD (  18.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,39 +97,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-To be able to add dynamic FDB entries to drivers from userspace, the
-dynamic flag must be added when sending RTM_NEWNEIGH events down.
+This patch set makes it possible to have synchronized dynamic ATU and FDB
+entries on locked ports. As locked ports are not able to automatically
+learn, they depend on userspace added entries, where userspace can add
+static or dynamic entries. The lifetime of static entries are completely
+dependent on userspace intervention, and thus not of interest here. We
+are only concerned with dynamic entries, which can be added with a
+command like:
 
-Signed-off-by: Hans J. Schultz <netdev@kapio-technology.com>
----
- include/net/switchdev.h   | 1 +
- net/bridge/br_switchdev.c | 1 +
- 2 files changed, 2 insertions(+)
+bridge fdb replace ADDR dev <DEV> master dynamic
 
-diff --git a/include/net/switchdev.h b/include/net/switchdev.h
-index ca0312b78294..aaf918d4ba67 100644
---- a/include/net/switchdev.h
-+++ b/include/net/switchdev.h
-@@ -249,6 +249,7 @@ struct switchdev_notifier_fdb_info {
- 	u8 added_by_user:1,
- 	   is_local:1,
- 	   locked:1,
-+	   is_dyn:1,
- 	   offloaded:1;
- };
- 
-diff --git a/net/bridge/br_switchdev.c b/net/bridge/br_switchdev.c
-index de18e9c1d7a7..9707d3fdb396 100644
---- a/net/bridge/br_switchdev.c
-+++ b/net/bridge/br_switchdev.c
-@@ -134,6 +134,7 @@ static void br_switchdev_fdb_populate(struct net_bridge *br,
- 	item->added_by_user = test_bit(BR_FDB_ADDED_BY_USER, &fdb->flags);
- 	item->offloaded = test_bit(BR_FDB_OFFLOADED, &fdb->flags);
- 	item->is_local = test_bit(BR_FDB_LOCAL, &fdb->flags);
-+	item->is_dyn = !test_bit(BR_FDB_STATIC, &fdb->flags);
- 	item->locked = false;
- 	item->info.dev = (!p || item->is_local) ? br->dev : p->dev;
- 	item->info.ctx = ctx;
+We choose only to support this feature on locked ports, as it involves
+utilizing the CPU to handle ATU related switchcore events (typically
+interrupts) and thus can result in significant performance loss if
+exposed to heavy traffic.
+
+On locked ports it is important for userspace to know when an authorized
+station has become silent, hence not breaking the communication of a
+station that has been authorized based on the MAC-Authentication Bypass
+(MAB) scheme. Thus if the station keeps being active after authorization,
+it will continue to have an open port as long as it is active. Only after
+a silent period will it have to be reauthorized. As the ageing process in
+the ATU is dependent on incoming traffic to the switchcore port, it is
+necessary for the ATU to signal that an entry has aged out, so that the
+FDB can be updated at the correct time.
+
+This patch set includes a solution for the Marvell mv88e6xxx driver, where
+for this driver we use the Hold-At-One feature so that an age-out
+violation interrupt occurs when a station has been silent for the
+system-set age time. The age out violation interrupt allows the switchcore
+driver to remove both the ATU and the FDB entry at the same time.
+
+It is up to the maintainers of other switchcore drivers to implement the
+feature for their specific driver.
+
+LOG:
+	V2:	Ensure the port is locked when using the feature as we
+		must ensure that learning is enabled at all times for
+		the interrupts to occur. This was missed in the previous
+		version.
+
+		Instead of ignoring unsupported flags, ensure that
+		drivers are only called when supporting the feature.
+		As 'dynamic' flag is legacy, all drivers support it at
+		least by their previous handling.
+
+Hans J. Schultz (6):
+  net: bridge: add dynamic flag to switchdev notifier
+  net: dsa: propagate flags down towards drivers
+  drivers: net: dsa: add fdb entry flags incoming to switchcore drivers
+  net: bridge: ensure FDB offloaded flag is handled as needed
+  net: dsa: mv88e6xxx: implementation of dynamic ATU entries
+  selftests: forwarding: add dynamic FDB test
+
+ drivers/net/dsa/b53/b53_common.c              |  4 +-
+ drivers/net/dsa/b53/b53_priv.h                |  4 +-
+ drivers/net/dsa/hirschmann/hellcreek.c        |  4 +-
+ drivers/net/dsa/lan9303-core.c                |  4 +-
+ drivers/net/dsa/lantiq_gswip.c                |  4 +-
+ drivers/net/dsa/microchip/ksz_common.c        |  6 +-
+ drivers/net/dsa/mt7530.c                      |  4 +-
+ drivers/net/dsa/mv88e6xxx/chip.c              | 20 ++++--
+ drivers/net/dsa/mv88e6xxx/chip.h              |  9 ++-
+ drivers/net/dsa/mv88e6xxx/global1_atu.c       | 21 +++++++
+ drivers/net/dsa/mv88e6xxx/port.c              |  6 +-
+ drivers/net/dsa/mv88e6xxx/switchdev.c         | 61 +++++++++++++++++++
+ drivers/net/dsa/mv88e6xxx/switchdev.h         |  5 ++
+ drivers/net/dsa/mv88e6xxx/trace.h             |  5 ++
+ drivers/net/dsa/ocelot/felix.c                |  4 +-
+ drivers/net/dsa/qca/qca8k-common.c            |  4 +-
+ drivers/net/dsa/qca/qca8k.h                   |  4 +-
+ drivers/net/dsa/rzn1_a5psw.c                  |  4 +-
+ drivers/net/dsa/sja1105/sja1105_main.c        | 11 ++--
+ include/net/dsa.h                             |  9 ++-
+ include/net/switchdev.h                       |  1 +
+ net/bridge/br_fdb.c                           |  5 +-
+ net/bridge/br_switchdev.c                     |  1 +
+ net/dsa/dsa.c                                 |  6 ++
+ net/dsa/port.c                                | 28 +++++----
+ net/dsa/port.h                                |  8 +--
+ net/dsa/slave.c                               | 20 ++++--
+ net/dsa/switch.c                              | 26 +++++---
+ net/dsa/switch.h                              |  1 +
+ .../net/forwarding/bridge_locked_port.sh      | 36 +++++++++++
+ 30 files changed, 258 insertions(+), 67 deletions(-)
+
 -- 
 2.34.1
 
