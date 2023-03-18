@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6946DC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Mar 2023 14:15:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A56C6C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Mar 2023 14:15:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=udkfE5AGgODktIFrioK4oAiciDUmiVrHHoP+0eTpPW4=; b=pemm10gzS8hzfgbXDfQEjvBOLn
-	jaNkejfl8jg75l1PkkIBGTMMKXeOQ3iLMMN0dPRkl+R5jEpJSodvqRbUlABArAJ5cJu2olx/KE7zR
-	4PnnC+9KTuRh4xnmAihIgnaex5uelvUQ/BCwfNozcKhTSPR1n7HflU6GOPtYuYftPYIxAzDClSnSD
-	gb2SyYnGaSg5eoTLx9J2vT7K7qrWMH2kQwDC5PJkt4dlHlwrGBgQN6zej5hS4DQYO0WS96p7knoeV
-	jI5D2jE16JtrOZtsJj72zHodcJ1qwnuocqFBmMw0cyxxVKjYOGZKZyw3FllQLXDPDm4WTY1UpXpSV
-	ScJ1Ighg==;
+	bh=OLObOcji3t94kS4H7ATv9ju463zlUdZziSHWI8iSlds=; b=Bsu0Hg+0S7F/3nJ4ZcRTdrHtX4
+	Ug7xTU4BSxfvRKnPxglThdCfhe3wKhWXarYJou9ErBzjec8zBjerZCxCYqgMF7/+tYup8eZmPFTgO
+	1cwrqjeu5nYk8fQJ8R94RBsOykjxCIxh3eJFxFSOiDiwsjgCndPPAbEq/40a8j5n88crUsAx6QxbJ
+	f2sgd2MmVMuvyU9jxt2zMpl4uKiAPLfbohHpaRYDG6kviFbA7J5jBNeHWajypgqkiBlH88cTiznP7
+	+3Y9zTonPMN6oc8r8SWon1nrak1X0ac44JpaApRnhV/zU4Tme5Nh73ogtB/27+VYVVSs7tLckZqr6
+	y8vKsIaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdXL5-004r9h-36;
-	Sat, 18 Mar 2023 14:15:19 +0000
+	id 1pdXLD-004rDK-2O;
+	Sat, 18 Mar 2023 14:15:27 +0000
 Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdXKf-004qtf-0s;
-	Sat, 18 Mar 2023 14:14:58 +0000
+	id 1pdXKi-004r0W-1L;
+	Sat, 18 Mar 2023 14:14:59 +0000
 Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
-	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 3A0CD18839A5;
-	Sat, 18 Mar 2023 14:12:44 +0000 (UTC)
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 472E818839BB;
+	Sat, 18 Mar 2023 14:12:46 +0000 (UTC)
 Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
-	by mailout.gigahost.dk (Postfix) with ESMTP id 2FF1425002BC;
-	Sat, 18 Mar 2023 14:12:44 +0000 (UTC)
+	by mailout.gigahost.dk (Postfix) with ESMTP id 4066E25002BC;
+	Sat, 18 Mar 2023 14:12:46 +0000 (UTC)
 Received: by smtp.gigahost.dk (Postfix, from userid 1000)
-	id 1AB059B403F6; Sat, 18 Mar 2023 14:12:44 +0000 (UTC)
+	id 20D1B9B403E4; Sat, 18 Mar 2023 14:12:46 +0000 (UTC)
 X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
 Received: from fujitsu.vestervang (2-104-116-184-cable.dk.customer.tdc.net [2.104.116.184])
-	by smtp.gigahost.dk (Postfix) with ESMTPSA id 43D949B403E1;
-	Sat, 18 Mar 2023 14:12:43 +0000 (UTC)
+	by smtp.gigahost.dk (Postfix) with ESMTPSA id 6F8869B403E2;
+	Sat, 18 Mar 2023 14:12:45 +0000 (UTC)
 From: "Hans J. Schultz" <netdev@kapio-technology.com>
 To: davem@davemloft.net,
 	kuba@kernel.org
@@ -73,9 +73,9 @@ Cc: netdev@vger.kernel.org,
 	linux-renesas-soc@vger.kernel.org (open list:RENESAS RZ/N1 A5PSW SWITCH DRIVER),
 	bridge@lists.linux-foundation.org (moderated list:ETHERNET BRIDGE),
 	linux-kselftest@vger.kernel.org (open list:KERNEL SELFTEST FRAMEWORK)
-Subject: [PATCH v2 net-next 2/6] net: dsa: propagate flags down towards drivers
-Date: Sat, 18 Mar 2023 15:10:06 +0100
-Message-Id: <20230318141010.513424-3-netdev@kapio-technology.com>
+Subject: [PATCH v2 net-next 5/6] net: dsa: mv88e6xxx: implementation of dynamic ATU entries
+Date: Sat, 18 Mar 2023 15:10:09 +0100
+Message-Id: <20230318141010.513424-6-netdev@kapio-technology.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230318141010.513424-1-netdev@kapio-technology.com>
 References: <20230318141010.513424-1-netdev@kapio-technology.com>
@@ -83,8 +83,8 @@ MIME-Version: 1.0
 Organization: Westermo Network Technologies AB
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230318_071453_612038_D41F18E6 
-X-CRM114-Status: GOOD (  23.19  )
+X-CRM114-CacheID: sfid-20230318_071456_770835_3287F78F 
+X-CRM114-Status: GOOD (  23.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,359 +99,270 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dynamic FDB flag needs to be propagated through the DSA layer to be
-added to drivers.
-Use a u16 for fdb flags for future use, so that other flags can also be
-sent the same way without having to change function interfaces. If we
-have unsupported flags in the new flags, we do not do unnecessary work
-and so we return at once. This ensures that the drivers are not called
-with unsupported flags, so that the drivers do not need to check the
-new flags. As the dynamic flag is a legacy flag, all drivers support it
-by default at least as they have done hitherto.
-Ensure that the dynamic FDB flag is only set when added from userspace,
-as the feature it supports is to be handled from userspace.
+For 802.1X or MAB security authed hosts we want to have these hosts authed
+by adding dynamic FDB entries, so that if an authed host goes silent for
+a time period it's FDB entry will be removed and it must reauth when
+wanting to communicate again.
+In the mv88e6xxx offloaded case, we can use the HoldAt1 feature, that
+gives an age out interrupt when the FDB entry is about to age out, so
+that userspace can be notified of the entry being deleted with the help
+of an SWITCHDEV_FDB_DEL_TO_BRIDGE event.
+When adding a dynamic entry the bridge must be informed that the driver
+takes care of the ageing be sending an SWITCHDEV_FDB_OFFLOADED event,
+telling the bridge that this added FDB entry will be handled by the
+driver.
+With this implementation, trace events for age out interrupts are also
+added.
+
+note: A special case arises with the age out interrupt, as the entry
+state/spid (source port id) value read from the registers will be zero.
+Thus we need to extract the source port from the port vector instead.
 
 Signed-off-by: Hans J. Schultz <netdev@kapio-technology.com>
 ---
- include/net/dsa.h |  5 +++++
- net/dsa/dsa.c     |  6 ++++++
- net/dsa/port.c    | 28 ++++++++++++++++------------
- net/dsa/port.h    |  8 ++++----
- net/dsa/slave.c   | 20 ++++++++++++++++----
- net/dsa/switch.c  | 18 ++++++++++++------
- net/dsa/switch.h  |  1 +
- 7 files changed, 60 insertions(+), 26 deletions(-)
+ drivers/net/dsa/mv88e6xxx/chip.c        | 16 ++++++-
+ drivers/net/dsa/mv88e6xxx/chip.h        |  9 +++-
+ drivers/net/dsa/mv88e6xxx/global1_atu.c | 21 +++++++++
+ drivers/net/dsa/mv88e6xxx/port.c        |  6 ++-
+ drivers/net/dsa/mv88e6xxx/switchdev.c   | 61 +++++++++++++++++++++++++
+ drivers/net/dsa/mv88e6xxx/switchdev.h   |  5 ++
+ drivers/net/dsa/mv88e6xxx/trace.h       |  5 ++
+ 7 files changed, 119 insertions(+), 4 deletions(-)
 
-diff --git a/include/net/dsa.h b/include/net/dsa.h
-index a15f17a38eca..9e98c4fe1520 100644
---- a/include/net/dsa.h
-+++ b/include/net/dsa.h
-@@ -437,6 +437,9 @@ struct dsa_switch {
- 	 */
- 	u32			fdb_isolation:1;
+diff --git a/drivers/net/dsa/mv88e6xxx/chip.c b/drivers/net/dsa/mv88e6xxx/chip.c
+index 6848fa0e5979..843ed02da9a2 100644
+--- a/drivers/net/dsa/mv88e6xxx/chip.c
++++ b/drivers/net/dsa/mv88e6xxx/chip.c
+@@ -42,6 +42,7 @@
+ #include "ptp.h"
+ #include "serdes.h"
+ #include "smi.h"
++#include "switchdev.h"
  
-+	/* Supported fdb flags going from the bridge to drivers */
-+	u16			supported_fdb_flags;
+ static void assert_reg_lock(struct mv88e6xxx_chip *chip)
+ {
+@@ -2726,14 +2727,23 @@ static int mv88e6xxx_port_fdb_add(struct dsa_switch *ds, int port,
+ 				  const unsigned char *addr, u16 vid,
+ 				  u16 flags, struct dsa_db db)
+ {
++	bool is_dynamic = !!(flags & DSA_FDB_FLAG_DYNAMIC);
+ 	struct mv88e6xxx_chip *chip = ds->priv;
++	u8 state;
+ 	int err;
+ 
++	is_dynamic &= chip->ports[port].locked;
++	state = MV88E6XXX_G1_ATU_DATA_STATE_UC_STATIC;
++	if (is_dynamic)
++		state = MV88E6XXX_G1_ATU_DATA_STATE_UC_AGE_7_NEWEST;
 +
- 	/* Listener for switch fabric events */
- 	struct notifier_block	nb;
+ 	mv88e6xxx_reg_lock(chip);
+-	err = mv88e6xxx_port_db_load_purge(chip, port, addr, vid,
+-					   MV88E6XXX_G1_ATU_DATA_STATE_UC_STATIC);
++	err = mv88e6xxx_port_db_load_purge(chip, port, addr, vid, state);
+ 	mv88e6xxx_reg_unlock(chip);
  
-@@ -818,6 +821,8 @@ static inline bool dsa_port_tree_same(const struct dsa_port *a,
- 	return a->ds->dst == b->ds->dst;
- }
- 
-+#define DSA_FDB_FLAG_DYNAMIC		BIT(0)
++	if (is_dynamic && !err)
++		mv88e6xxx_set_fdb_offloaded(ds, port, addr, vid);
 +
- typedef int dsa_fdb_dump_cb_t(const unsigned char *addr, u16 vid,
- 			      bool is_static, void *data);
- struct dsa_switch_ops {
-diff --git a/net/dsa/dsa.c b/net/dsa/dsa.c
-index e5f156940c67..c07a2e225ae5 100644
---- a/net/dsa/dsa.c
-+++ b/net/dsa/dsa.c
-@@ -626,6 +626,12 @@ static int dsa_switch_setup(struct dsa_switch *ds)
+ 	return err;
+ }
  
- 	ds->configure_vlan_while_not_filtering = true;
- 
-+	/* Since dynamic FDB entries are legacy, all switch drivers should
-+	 * support the flag at least by just installing a static entry and
-+	 * letting the bridge age it.
-+	 */
-+	ds->supported_fdb_flags = DSA_FDB_FLAG_DYNAMIC;
+@@ -6679,6 +6689,8 @@ static int mv88e6xxx_port_bridge_flags(struct dsa_switch *ds, int port,
+ 		err = mv88e6xxx_port_set_lock(chip, port, locked);
+ 		if (err)
+ 			goto out;
 +
- 	err = ds->ops->setup(ds);
- 	if (err < 0)
- 		goto unregister_notifier;
-diff --git a/net/dsa/port.c b/net/dsa/port.c
-index 67ad1adec2a2..9a7c1265546d 100644
---- a/net/dsa/port.c
-+++ b/net/dsa/port.c
-@@ -976,12 +976,13 @@ int dsa_port_mtu_change(struct dsa_port *dp, int new_mtu)
- }
- 
- int dsa_port_fdb_add(struct dsa_port *dp, const unsigned char *addr,
--		     u16 vid)
-+		     u16 vid, u16 flags)
- {
- 	struct dsa_notifier_fdb_info info = {
- 		.dp = dp,
- 		.addr = addr,
- 		.vid = vid,
-+		.flags = flags,
- 		.db = {
- 			.type = DSA_DB_BRIDGE,
- 			.bridge = *dp->bridge,
-@@ -999,12 +1000,13 @@ int dsa_port_fdb_add(struct dsa_port *dp, const unsigned char *addr,
- }
- 
- int dsa_port_fdb_del(struct dsa_port *dp, const unsigned char *addr,
--		     u16 vid)
-+		     u16 vid, u16 flags)
- {
- 	struct dsa_notifier_fdb_info info = {
- 		.dp = dp,
- 		.addr = addr,
- 		.vid = vid,
-+		.flags = flags,
- 		.db = {
- 			.type = DSA_DB_BRIDGE,
- 			.bridge = *dp->bridge,
-@@ -1019,12 +1021,13 @@ int dsa_port_fdb_del(struct dsa_port *dp, const unsigned char *addr,
- 
- static int dsa_port_host_fdb_add(struct dsa_port *dp,
- 				 const unsigned char *addr, u16 vid,
--				 struct dsa_db db)
-+				 u16 flags, struct dsa_db db)
- {
- 	struct dsa_notifier_fdb_info info = {
- 		.dp = dp,
- 		.addr = addr,
- 		.vid = vid,
-+		.flags = flags,
- 		.db = db,
- 	};
- 
-@@ -1042,11 +1045,11 @@ int dsa_port_standalone_host_fdb_add(struct dsa_port *dp,
- 		.dp = dp,
- 	};
- 
--	return dsa_port_host_fdb_add(dp, addr, vid, db);
-+	return dsa_port_host_fdb_add(dp, addr, vid, 0, db);
- }
- 
--int dsa_port_bridge_host_fdb_add(struct dsa_port *dp,
--				 const unsigned char *addr, u16 vid)
-+int dsa_port_bridge_host_fdb_add(struct dsa_port *dp, const unsigned char *addr,
-+				 u16 vid, u16 flags)
- {
- 	struct net_device *master = dsa_port_to_master(dp);
- 	struct dsa_db db = {
-@@ -1065,17 +1068,18 @@ int dsa_port_bridge_host_fdb_add(struct dsa_port *dp,
- 			return err;
++		mv88e6xxx_port_set_locked(chip, port, locked);
  	}
+ out:
+ 	mv88e6xxx_reg_unlock(chip);
+diff --git a/drivers/net/dsa/mv88e6xxx/chip.h b/drivers/net/dsa/mv88e6xxx/chip.h
+index da6e1339f809..bf61eb54c091 100644
+--- a/drivers/net/dsa/mv88e6xxx/chip.h
++++ b/drivers/net/dsa/mv88e6xxx/chip.h
+@@ -281,8 +281,9 @@ struct mv88e6xxx_port {
+ 	char serdes_irq_name[64];
+ 	struct devlink_region *region;
  
--	return dsa_port_host_fdb_add(dp, addr, vid, db);
-+	return dsa_port_host_fdb_add(dp, addr, vid, flags, db);
- }
- 
- static int dsa_port_host_fdb_del(struct dsa_port *dp,
- 				 const unsigned char *addr, u16 vid,
--				 struct dsa_db db)
-+				 u16 flags, struct dsa_db db)
- {
- 	struct dsa_notifier_fdb_info info = {
- 		.dp = dp,
- 		.addr = addr,
- 		.vid = vid,
-+		.flags = flags,
- 		.db = db,
- 	};
- 
-@@ -1093,11 +1097,11 @@ int dsa_port_standalone_host_fdb_del(struct dsa_port *dp,
- 		.dp = dp,
- 	};
- 
--	return dsa_port_host_fdb_del(dp, addr, vid, db);
-+	return dsa_port_host_fdb_del(dp, addr, vid, 0, db);
- }
- 
--int dsa_port_bridge_host_fdb_del(struct dsa_port *dp,
--				 const unsigned char *addr, u16 vid)
-+int dsa_port_bridge_host_fdb_del(struct dsa_port *dp, const unsigned char *addr,
-+				 u16 vid, u16 flags)
- {
- 	struct net_device *master = dsa_port_to_master(dp);
- 	struct dsa_db db = {
-@@ -1112,7 +1116,7 @@ int dsa_port_bridge_host_fdb_del(struct dsa_port *dp,
- 			return err;
- 	}
- 
--	return dsa_port_host_fdb_del(dp, addr, vid, db);
-+	return dsa_port_host_fdb_del(dp, addr, vid, flags, db);
- }
- 
- int dsa_port_lag_fdb_add(struct dsa_port *dp, const unsigned char *addr,
-diff --git a/net/dsa/port.h b/net/dsa/port.h
-index 9c218660d223..88a9dfed3bce 100644
---- a/net/dsa/port.h
-+++ b/net/dsa/port.h
-@@ -47,17 +47,17 @@ int dsa_port_vlan_msti(struct dsa_port *dp,
- 		       const struct switchdev_vlan_msti *msti);
- int dsa_port_mtu_change(struct dsa_port *dp, int new_mtu);
- int dsa_port_fdb_add(struct dsa_port *dp, const unsigned char *addr,
--		     u16 vid);
-+		     u16 vid, u16 flags);
- int dsa_port_fdb_del(struct dsa_port *dp, const unsigned char *addr,
--		     u16 vid);
-+		     u16 vid, u16 flags);
- int dsa_port_standalone_host_fdb_add(struct dsa_port *dp,
- 				     const unsigned char *addr, u16 vid);
- int dsa_port_standalone_host_fdb_del(struct dsa_port *dp,
- 				     const unsigned char *addr, u16 vid);
- int dsa_port_bridge_host_fdb_add(struct dsa_port *dp, const unsigned char *addr,
--				 u16 vid);
-+				 u16 vid, u16 flags);
- int dsa_port_bridge_host_fdb_del(struct dsa_port *dp, const unsigned char *addr,
--				 u16 vid);
-+				 u16 vid, u16 flags);
- int dsa_port_lag_fdb_add(struct dsa_port *dp, const unsigned char *addr,
- 			 u16 vid);
- int dsa_port_lag_fdb_del(struct dsa_port *dp, const unsigned char *addr,
-diff --git a/net/dsa/slave.c b/net/dsa/slave.c
-index 6957971c2db2..20d2d1c000ea 100644
---- a/net/dsa/slave.c
-+++ b/net/dsa/slave.c
-@@ -39,6 +39,7 @@ struct dsa_switchdev_event_work {
- 	 */
- 	unsigned char addr[ETH_ALEN];
- 	u16 vid;
-+	u16 fdb_flags;
- 	bool host_addr;
+-	/* MacAuth Bypass control flag */
++	/* Locked and MacAuth Bypass control flags */
+ 	bool mab;
++	bool locked;
  };
  
-@@ -3331,6 +3332,7 @@ static void dsa_slave_switchdev_event_work(struct work_struct *work)
- 		container_of(work, struct dsa_switchdev_event_work, work);
- 	const unsigned char *addr = switchdev_work->addr;
- 	struct net_device *dev = switchdev_work->dev;
-+	u16 flags = switchdev_work->fdb_flags;
- 	u16 vid = switchdev_work->vid;
- 	struct dsa_switch *ds;
- 	struct dsa_port *dp;
-@@ -3342,11 +3344,12 @@ static void dsa_slave_switchdev_event_work(struct work_struct *work)
- 	switch (switchdev_work->event) {
- 	case SWITCHDEV_FDB_ADD_TO_DEVICE:
- 		if (switchdev_work->host_addr)
--			err = dsa_port_bridge_host_fdb_add(dp, addr, vid);
-+			err = dsa_port_bridge_host_fdb_add(dp, addr,
-+							   vid, flags);
- 		else if (dp->lag)
- 			err = dsa_port_lag_fdb_add(dp, addr, vid);
- 		else
--			err = dsa_port_fdb_add(dp, addr, vid);
-+			err = dsa_port_fdb_add(dp, addr, vid, flags);
- 		if (err) {
- 			dev_err(ds->dev,
- 				"port %d failed to add %pM vid %d to fdb: %d\n",
-@@ -3358,11 +3361,12 @@ static void dsa_slave_switchdev_event_work(struct work_struct *work)
+ enum mv88e6xxx_region_id {
+@@ -795,6 +796,12 @@ static inline bool mv88e6xxx_is_invalid_port(struct mv88e6xxx_chip *chip, int po
+ 	return (chip->info->invalid_port_mask & BIT(port)) != 0;
+ }
  
- 	case SWITCHDEV_FDB_DEL_TO_DEVICE:
- 		if (switchdev_work->host_addr)
--			err = dsa_port_bridge_host_fdb_del(dp, addr, vid);
-+			err = dsa_port_bridge_host_fdb_del(dp, addr,
-+							   vid, flags);
- 		else if (dp->lag)
- 			err = dsa_port_lag_fdb_del(dp, addr, vid);
- 		else
--			err = dsa_port_fdb_del(dp, addr, vid);
-+			err = dsa_port_fdb_del(dp, addr, vid, flags);
- 		if (err) {
- 			dev_err(ds->dev,
- 				"port %d failed to delete %pM vid %d from fdb: %d\n",
-@@ -3400,6 +3404,7 @@ static int dsa_slave_fdb_event(struct net_device *dev,
- 	struct dsa_port *dp = dsa_slave_to_port(dev);
- 	bool host_addr = fdb_info->is_local;
- 	struct dsa_switch *ds = dp->ds;
-+	u16 flags = 0;
- 
- 	if (ctx && ctx != dp)
- 		return 0;
-@@ -3437,6 +3442,12 @@ static int dsa_slave_fdb_event(struct net_device *dev,
- 			return -EOPNOTSUPP;
- 	}
- 
-+	if (fdb_info->is_dyn && fdb_info->added_by_user)
-+		flags |= DSA_FDB_FLAG_DYNAMIC;
++static inline void mv88e6xxx_port_set_locked(struct mv88e6xxx_chip *chip,
++					     int port, bool locked)
++{
++	chip->ports[port].locked = locked;
++}
 +
-+	if (flags & ~ds->supported_fdb_flags)
-+		return 0;
+ static inline void mv88e6xxx_port_set_mab(struct mv88e6xxx_chip *chip,
+ 					  int port, bool mab)
+ {
+diff --git a/drivers/net/dsa/mv88e6xxx/global1_atu.c b/drivers/net/dsa/mv88e6xxx/global1_atu.c
+index ce3b3690c3c0..c95f8cffba41 100644
+--- a/drivers/net/dsa/mv88e6xxx/global1_atu.c
++++ b/drivers/net/dsa/mv88e6xxx/global1_atu.c
+@@ -432,6 +432,27 @@ static irqreturn_t mv88e6xxx_g1_atu_prob_irq_thread_fn(int irq, void *dev_id)
+ 
+ 	spid = entry.state;
+ 
++	if (val & MV88E6XXX_G1_ATU_OP_AGE_OUT_VIOLATION) {
++		unsigned long port = 0;
++		unsigned long portvec = entry.portvec;
 +
- 	switchdev_work = kzalloc(sizeof(*switchdev_work), GFP_ATOMIC);
- 	if (!switchdev_work)
- 		return -ENOMEM;
-@@ -3454,6 +3465,7 @@ static int dsa_slave_fdb_event(struct net_device *dev,
- 	ether_addr_copy(switchdev_work->addr, fdb_info->addr);
- 	switchdev_work->vid = fdb_info->vid;
- 	switchdev_work->host_addr = host_addr;
-+	switchdev_work->fdb_flags = flags;
++		port = find_first_bit(&portvec, MV88E6XXX_MAX_PVT_PORTS);
++		if (port >= MV88E6XXX_MAX_PVT_PORTS) {
++			dev_err(chip->dev,
++				"ATU err: mac: %pM. Port not in portvec: %x\n",
++				entry.mac, entry.portvec);
++			goto out;
++		}
++
++		spid = port;
++		trace_mv88e6xxx_atu_age_out_violation(chip->dev, spid,
++						      entry.portvec, entry.mac,
++						      fid);
++
++		err = mv88e6xxx_handle_age_out_violation(chip, spid,
++							 &entry, fid);
++	}
++
+ 	if (val & MV88E6XXX_G1_ATU_OP_MEMBER_VIOLATION) {
+ 		trace_mv88e6xxx_atu_member_violation(chip->dev, spid,
+ 						     entry.portvec, entry.mac,
+diff --git a/drivers/net/dsa/mv88e6xxx/port.c b/drivers/net/dsa/mv88e6xxx/port.c
+index f79cf716c541..5225971b9a33 100644
+--- a/drivers/net/dsa/mv88e6xxx/port.c
++++ b/drivers/net/dsa/mv88e6xxx/port.c
+@@ -1255,7 +1255,11 @@ int mv88e6xxx_port_set_lock(struct mv88e6xxx_chip *chip, int port,
  
- 	dsa_schedule_work(&switchdev_work->work);
+ 	reg &= ~MV88E6XXX_PORT_ASSOC_VECTOR_LOCKED_PORT;
+ 	if (locked)
+-		reg |= MV88E6XXX_PORT_ASSOC_VECTOR_LOCKED_PORT;
++		reg |= MV88E6XXX_PORT_ASSOC_VECTOR_LOCKED_PORT |
++			MV88E6XXX_PORT_ASSOC_VECTOR_REFRESH_LOCKED |
++			MV88E6XXX_PORT_ASSOC_VECTOR_IGNORE_WRONG |
++			MV88E6XXX_PORT_ASSOC_VECTOR_INT_AGE_OUT |
++			MV88E6XXX_PORT_ASSOC_VECTOR_HOLD_AT_1;
  
-diff --git a/net/dsa/switch.c b/net/dsa/switch.c
-index d5bc4bb7310d..0f5626a425b6 100644
---- a/net/dsa/switch.c
-+++ b/net/dsa/switch.c
-@@ -239,7 +239,7 @@ static int dsa_port_do_mdb_del(struct dsa_port *dp,
+ 	return mv88e6xxx_port_write(chip, port, MV88E6XXX_PORT_ASSOC_VECTOR, reg);
  }
+diff --git a/drivers/net/dsa/mv88e6xxx/switchdev.c b/drivers/net/dsa/mv88e6xxx/switchdev.c
+index 4c346a884fb2..76f7f8cc1835 100644
+--- a/drivers/net/dsa/mv88e6xxx/switchdev.c
++++ b/drivers/net/dsa/mv88e6xxx/switchdev.c
+@@ -12,6 +12,25 @@
+ #include "global1.h"
+ #include "switchdev.h"
  
- static int dsa_port_do_fdb_add(struct dsa_port *dp, const unsigned char *addr,
--			       u16 vid, struct dsa_db db)
-+			       u16 vid, u16 flags, struct dsa_db db)
- {
- 	struct dsa_switch *ds = dp->ds;
- 	struct dsa_mac_addr *a;
-@@ -283,7 +283,7 @@ static int dsa_port_do_fdb_add(struct dsa_port *dp, const unsigned char *addr,
++void mv88e6xxx_set_fdb_offloaded(struct dsa_switch *ds, int port,
++				 const unsigned char *addr, u16 vid)
++{
++	struct switchdev_notifier_fdb_info info = {
++		.addr = addr,
++		.vid = vid,
++		.offloaded = true,
++	};
++	struct net_device *brport;
++	struct dsa_port *dp;
++
++	dp = dsa_to_port(ds, port);
++	brport = dsa_port_to_bridge_port(dp);
++
++	if (brport)
++		call_switchdev_notifiers(SWITCHDEV_FDB_OFFLOADED,
++					 brport, &info.info, NULL);
++}
++
+ struct mv88e6xxx_fid_search_ctx {
+ 	u16 fid_search;
+ 	u16 vid_found;
+@@ -81,3 +100,45 @@ int mv88e6xxx_handle_miss_violation(struct mv88e6xxx_chip *chip, int port,
+ 
+ 	return err;
  }
++
++int mv88e6xxx_handle_age_out_violation(struct mv88e6xxx_chip *chip, int port,
++				       struct mv88e6xxx_atu_entry *entry,
++				       u16 fid)
++{
++	struct switchdev_notifier_fdb_info info = {
++		.addr = entry->mac,
++	};
++	struct net_device *brport;
++	struct dsa_port *dp;
++	u16 vid;
++	int err;
++
++	err = mv88e6xxx_find_vid(chip, fid, &vid);
++	if (err)
++		return err;
++
++	info.vid = vid;
++	entry->portvec &= ~BIT(port);
++	entry->state = MV88E6XXX_G1_ATU_DATA_STATE_UC_UNUSED;
++	entry->trunk = false;
++
++	mv88e6xxx_reg_lock(chip);
++	err = mv88e6xxx_g1_atu_loadpurge(chip, fid, entry);
++	mv88e6xxx_reg_unlock(chip);
++	if (err)
++		return err;
++
++	dp = dsa_to_port(chip->ds, port);
++
++	rtnl_lock();
++	brport = dsa_port_to_bridge_port(dp);
++	if (!brport) {
++		rtnl_unlock();
++		return -ENODEV;
++	}
++	err = call_switchdev_notifiers(SWITCHDEV_FDB_DEL_TO_BRIDGE,
++				       brport, &info.info, NULL);
++	rtnl_unlock();
++
++	return err;
++}
+diff --git a/drivers/net/dsa/mv88e6xxx/switchdev.h b/drivers/net/dsa/mv88e6xxx/switchdev.h
+index 62214f9d62b0..5af6ac6a490a 100644
+--- a/drivers/net/dsa/mv88e6xxx/switchdev.h
++++ b/drivers/net/dsa/mv88e6xxx/switchdev.h
+@@ -12,8 +12,13 @@
  
- static int dsa_port_do_fdb_del(struct dsa_port *dp, const unsigned char *addr,
--			       u16 vid, struct dsa_db db)
-+			       u16 vid, u16 flags, struct dsa_db db)
- {
- 	struct dsa_switch *ds = dp->ds;
- 	struct dsa_mac_addr *a;
-@@ -410,7 +410,9 @@ static int dsa_switch_host_fdb_add(struct dsa_switch *ds,
- 								info->db);
- 			} else {
- 				err = dsa_port_do_fdb_add(dp, info->addr,
--							  info->vid, info->db);
-+							  info->vid,
-+							  info->flags,
-+							  info->db);
- 			}
- 			if (err)
- 				break;
-@@ -438,7 +440,9 @@ static int dsa_switch_host_fdb_del(struct dsa_switch *ds,
- 								info->db);
- 			} else {
- 				err = dsa_port_do_fdb_del(dp, info->addr,
--							  info->vid, info->db);
-+							  info->vid,
-+							  info->flags,
-+							  info->db);
- 			}
- 			if (err)
- 				break;
-@@ -457,7 +461,8 @@ static int dsa_switch_fdb_add(struct dsa_switch *ds,
- 	if (!ds->ops->port_fdb_add)
- 		return -EOPNOTSUPP;
+ #include "chip.h"
  
--	return dsa_port_do_fdb_add(dp, info->addr, info->vid, info->db);
-+	return dsa_port_do_fdb_add(dp, info->addr, info->vid,
-+				   info->flags, info->db);
- }
++void mv88e6xxx_set_fdb_offloaded(struct dsa_switch *ds, int port,
++				 const unsigned char *addr, u16 vid);
+ int mv88e6xxx_handle_miss_violation(struct mv88e6xxx_chip *chip, int port,
+ 				    struct mv88e6xxx_atu_entry *entry,
+ 				    u16 fid);
++int mv88e6xxx_handle_age_out_violation(struct mv88e6xxx_chip *chip, int port,
++				       struct mv88e6xxx_atu_entry *entry,
++				       u16 fid);
  
- static int dsa_switch_fdb_del(struct dsa_switch *ds,
-@@ -469,7 +474,8 @@ static int dsa_switch_fdb_del(struct dsa_switch *ds,
- 	if (!ds->ops->port_fdb_del)
- 		return -EOPNOTSUPP;
+ #endif /* _MV88E6XXX_SWITCHDEV_H_ */
+diff --git a/drivers/net/dsa/mv88e6xxx/trace.h b/drivers/net/dsa/mv88e6xxx/trace.h
+index f59ca04768e7..c6b32abf68a5 100644
+--- a/drivers/net/dsa/mv88e6xxx/trace.h
++++ b/drivers/net/dsa/mv88e6xxx/trace.h
+@@ -40,6 +40,11 @@ DECLARE_EVENT_CLASS(mv88e6xxx_atu_violation,
+ 		  __entry->addr, __entry->fid)
+ );
  
--	return dsa_port_do_fdb_del(dp, info->addr, info->vid, info->db);
-+	return dsa_port_do_fdb_del(dp, info->addr, info->vid,
-+				   info->flags, info->db);
- }
- 
- static int dsa_switch_lag_fdb_add(struct dsa_switch *ds,
-diff --git a/net/dsa/switch.h b/net/dsa/switch.h
-index 15e67b95eb6e..2c3bf4020158 100644
---- a/net/dsa/switch.h
-+++ b/net/dsa/switch.h
-@@ -55,6 +55,7 @@ struct dsa_notifier_fdb_info {
- 	const struct dsa_port *dp;
- 	const unsigned char *addr;
- 	u16 vid;
-+	u16 flags;
- 	struct dsa_db db;
- };
- 
++DEFINE_EVENT(mv88e6xxx_atu_violation, mv88e6xxx_atu_age_out_violation,
++	     TP_PROTO(const struct device *dev, int spid, u16 portvec,
++		      const unsigned char *addr, u16 fid),
++	     TP_ARGS(dev, spid, portvec, addr, fid));
++
+ DEFINE_EVENT(mv88e6xxx_atu_violation, mv88e6xxx_atu_member_violation,
+ 	     TP_PROTO(const struct device *dev, int spid, u16 portvec,
+ 		      const unsigned char *addr, u16 fid),
 -- 
 2.34.1
 
