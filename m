@@ -4,75 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE633C761A6
-	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Mar 2023 05:50:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE668C74A5B
+	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Mar 2023 07:06:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VFfs0orbN5y3bQTlAEEE7QQO+hZJLVfovULcq9xsK0I=; b=ZYWMBomQ/dbX+JU861pKuhlzu/
-	CHXDbo6/1SSxhMU4KHgbbx7gJRWUbqrUcarjKPw/fQbkWOT32PAgNwUGTXny7ZyNj/gBJBTNop3jb
-	IH3ve3suw8Ai8IOxYI7/zY5ikIXD+P9j+ED7JOPvRhclc8mGe7UpNZeERIwWuSoIvH9+QTkID/OsB
-	i0AwM1FPPwd8M5HWbRbOAdoao0TCMe8acYpiuGMkECY1IpCsytWtMRUf2zhR+Y+iWamE3syMzVoc0
-	PXVz8otgB8bZNzRV1lSEiUFjtP+tIUWnZhZtlwQYIgwZ2f9hSJBid0fDUi25FphDRyvPuNzISi0UM
-	KwhlXV2Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JWFM+Dh8+kTnPKQvi/wa8SGhrnGPY72pf6dcj+OJFOo=; b=U0ULL7k9d75KaPKwvDLHpEZb0x
+	syMmaMpPTBQiYKPxY72nT94Ijl6ce2yD1ee7z1mM5dAAupRNhm0dMfxw/dCEwBU33Ro0CncsUvapi
+	u882ebkA2nC2e7D9SidC9wv6H/8S1IJgK2pwpnfqIvALfWWfg+eXo3JklkOQn30DctuAmN1JycfgW
+	Waw3NmP5eGeoQjgmwx4OJPYqnAj5+FgCgk6RtjcZvEXvw77dlPS5Ke9iVVqIhaG6ASMSgfLtXpAih
+	Fy5jrXCj/t2OsdhQpCF06H33frs4xRNBXSlc2Xc7ocs7kMSTMOUgxjUlk92tYvdetJBDJGY4At4bt
+	ahg9eErQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdPSX-004Cvi-1X;
-	Sat, 18 Mar 2023 05:50:29 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1pdQe2-004Ix2-0u;
+	Sat, 18 Mar 2023 07:06:26 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdPSS-004CtX-1E;
-	Sat, 18 Mar 2023 05:50:25 +0000
+	id 1pdQdy-004IwB-0C;
+	Sat, 18 Mar 2023 07:06:23 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 92FE9B82795;
-	Sat, 18 Mar 2023 05:50:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 2AE0BC4339B;
-	Sat, 18 Mar 2023 05:50:21 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 96528606DC;
+	Sat, 18 Mar 2023 07:06:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 52137C433EF;
+	Sat, 18 Mar 2023 07:06:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1679118621;
-	bh=X9jLTCOj/QrhXJoewqZu3CTZ44CLvQuS3K66vUbZFv4=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=uV0TU/xThuEgCMUeDSs4ydAC88Ludz25HMWjJyB+/549XIuT4qSdKih/5mhlyU3r5
-	 pxP+mAvntE8uES1EW5jqfL5jpQlN2tfFmlNKGOMGuX4LbNQHqvVbz306XMcMJZ6hLK
-	 25JBdXquercnJNoG6rIlB04ffB3YhUm2vD0HMoxZcx2/iaPX6fbCSHU1X9jBKP9ERs
-	 YopQDc3BaLLdd0YhL0gRS251ibCn+S67ENX7kFYCazUh22cU+Uh886dI3ZNHDzfrqw
-	 gThS6bWZ2syqU5FxjOP95UcwWtnZM3yB988CQis5TnqcsutlMHoMMDXraB36BAYkiM
-	 ZlD8xNivrP2xw==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 1984CE2A03A;
-	Sat, 18 Mar 2023 05:50:21 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1679123179;
+	bh=49KA3iNvSyleR2UVuJjsn11DXyb3q1V2rfZ2s1YjuCg=;
+	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
+	b=PGVY03EK8gdnEB1pOuQ9qT81m5rreHG+0YJsainUKyEGrqiuh0GPB1hf7iA7qXRCP
+	 4mRQavKUVsh5I04bxF70f9qjj+a/vJ1867uGlJ4zPaV2ObclItHfLCXE5GZmJxJ4s/
+	 zeCtWZCg+rvMtuXLzWK6STUZwzqJH/o520nHUdjdDEXNxbYCkSmE0ELE5a9WHAxi2W
+	 cgnR/vHgs6Q9NAkBXIWPrcu0Y1xbLWU3u5gXsiamDETdL69OsScc1yDl8Bqnbh/7d4
+	 UsAyiUskYk7Ru7GkEv9NcvzVXzNyGC6Jm2Av6jliMEa1hXHlG43KcaL/W9U9+AwyFS
+	 0d7Rw40oSnF9w==
+From: Kalle Valo <kvalo@kernel.org>
+To: Nick Morrow <morrownr@gmail.com>
+Cc: Reese Russell <git@qrsnap.io>,  Felix Fietkau <nbd@nbd.name>,  Lorenzo Bianconi <lorenzo@kernel.org>,  Ryder Lee <ryder.lee@mediatek.com>,  Shayne Chen <shayne.chen@mediatek.com>,  Sean Wang <sean.wang@mediatek.com>,  "David S. Miller" <davem@davemloft.net>,  Eric Dumazet <edumazet@google.com>,  Jakub Kicinski <kuba@kernel.org>,  Paolo Abeni <pabeni@redhat.com>,  Matthias Brugger <matthias.bgg@gmail.com>,  Deren Wu <deren.wu@mediatek.com>,  YN Chen <YN.Chen@mediatek.com>,  Ben Greear <greearb@candelatech.com>,  linux-wireless@vger.kernel.org,  netdev@vger.kernel.org,  linux-arm-kernel@lists.infradead.org,  linux-mediatek@lists.infradead.org,  linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] Added Netgear AXE3000 (A8000) usb_device_id to mt7921u_device_table[]
+References: <20230123090555.21415-1-git@qrsnap.io>
+	<CAFktD2eFdaCAdE=zxVx05QYWPRcr5StompKr+ehn7piYpQHjzA@mail.gmail.com>
+Date: Sat, 18 Mar 2023 09:06:09 +0200
+In-Reply-To: <CAFktD2eFdaCAdE=zxVx05QYWPRcr5StompKr+ehn7piYpQHjzA@mail.gmail.com>
+	(Nick Morrow's message of "Fri, 17 Mar 2023 14:49:56 -0500")
+Message-ID: <87wn3ev8ri.fsf@kernel.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next v8] wwan: core: Support slicing in port TX flow of
- WWAN subsystem
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id:  <167911862110.13068.1126672029561988812.git-patchwork-notify@kernel.org>
-Date: Sat, 18 Mar 2023 05:50:21 +0000
-References: <20230316095826.181904-1-haozhe.chang@mediatek.com>
-In-Reply-To: <20230316095826.181904-1-haozhe.chang@mediatek.com>
-To: =?utf-8?b?SGFvemhlIENoYW5nICjluLjmtanlk7IpIDxoYW96aGUuY2hhbmdAbWVkaWF0ZWsu?=@ci.codeaurora.org,
-	=?utf-8?b?Y29tPg==?=@ci.codeaurora.org
-Cc: m.chetan.kumar@intel.com, linuxwwan@intel.com, loic.poulain@linaro.org,
- ryazanov.s.a@gmail.com, johannes@sipsolutions.net, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, stephan@gerhold.net,
- chandrashekar.devegowda@intel.com, chiranjeevi.rapolu@linux.intel.com,
- haijun.liu@mediatek.com, ricardo.martinez@linux.intel.com,
- gregkh@linuxfoundation.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, oneukum@suse.com,
- shangxiaojing@huawei.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-remoteproc@vger.kernel.org,
- linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, lambert.wang@mediatek.com,
- xiayu.zhang@mediatek.com, hua.yang@mediatek.com
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230317_225024_582173_422BD076 
-X-CRM114-Status: GOOD (  10.01  )
+X-CRM114-CacheID: sfid-20230318_000622_205081_517B9A27 
+X-CRM114-Status: GOOD (  23.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,29 +73,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Nick Morrow <morrownr@gmail.com> writes:
 
-This patch was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+>> Issue: Though the Netgear AXE3000 (A8000) is based on the mt7921
+>> chipset because of the unique USB VID:PID combination this device
+>> does not initialize/register. Thus making it not plug and play.
+>>
+>> Fix: Adds support for the Netgear AXE3000 (A8000) based on the Mediatek
+>> mt7921au chipset. The method of action is adding the USD VID/PID
+>> pair to the mt7921u_device_table[] array.
+>>
+>> Notes: A retail sample of the Netgear AXE3000 (A8000) yeilds the following
+>> from lsusb D 0846:9060 NetGear, Inc. Wireless_Device. This pair
+>> 0846:9060 VID:PID has been reported by other users on Github.
+>>
+>> Signed-off-by: Reese Russell <git@qrsnap.io>
+>> ---
+>>  drivers/net/wireless/mediatek/mt76/mt7921/usb.c | 2 ++
+>>  1 file changed, 2 insertions(+)
+>>
+>> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
+>> index 5321d20dcdcb..62e9728588f8 100644
+>> --- a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
+>> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
+>> @@ -15,6 +15,8 @@
+>>  static const struct usb_device_id mt7921u_device_table[] = {
+>>         { USB_DEVICE_AND_INTERFACE_INFO(0x0e8d, 0x7961, 0xff, 0xff, 0xff),
+>>                 .driver_info = (kernel_ulong_t)MT7921_FIRMWARE_WM },
+>> +       { USB_DEVICE_AND_INTERFACE_INFO(0x0846, 0x9060, 0xff, 0xff, 0xff),
+>> +               .driver_info = (kernel_ulong_t)MT7921_FIRMWARE_WM },
+>>         { },
+>>  };
+>>
+>> --
+>> 2.37.2
+>
+>
+> I can confirm this VID/PID needs to go into 6.1 LTS and the current
+> testing version of the kernel as I am getting an increasing amount of
+> traffic from users that have purchased the Netgear A8000.
+>
+> My site is github.com/morrownr/USB-WiFi
+>
+> Helping Linux users with USB WiFi is what we do.
+>
+> The OP could have added a comment to the patch showing the adapter
+> that is causing this patch to be submitted. Maybe he can submit a v2
+> that can be expedited?
+>
+> Guidance?
 
-On Thu, 16 Mar 2023 17:58:20 +0800 you wrote:
-> From: haozhe chang <haozhe.chang@mediatek.com>
-> 
-> wwan_port_fops_write inputs the SKB parameter to the TX callback of
-> the WWAN device driver. However, the WWAN device (e.g., t7xx) may
-> have an MTU less than the size of SKB, causing the TX buffer to be
-> sliced and copied once more in the WWAN device driver.
-> 
-> [...]
+I assigned this to me on patchwork, I'll queue this for v6.3 and change
+the commit log to below. Felix&Lorenzo, ack?
 
-Here is the summary with links:
-  - [net-next,v8] wwan: core: Support slicing in port TX flow of WWAN subsystem
-    https://git.kernel.org/netdev/net-next/c/36bd28c1cb0d
+wifi: mt76: mt7921: add Netgear AXE3000 (A8000)
 
-You are awesome, thank you!
+Add support for the Netgear AXE3000 (A8000) based on the Mediatek
+mt7921au chipset. A retail sample of the Netgear AXE3000 (A8000) yeilds
+the following from lsusb D 0846:9060 NetGear, Inc. Wireless_Device. This
+has been reported by other users on Github.
+
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+https://patchwork.kernel.org/project/linux-wireless/list/
 
-
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
