@@ -4,79 +4,181 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C641C76195
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 23:37:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C7E7C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Mar 2023 03:48:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=o4XTbDitSJ3rKysE1DLB9E8NyDF7QczD+upv2sRYh/A=; b=v7peMvphtwEZFOdyzb6lx30Fkq
-	8poFm0x8qeo4o+kxltr3WJ9UUEZzRUyCqOCxiYDQzt08aP0pDsTeAni6hogPn8U/hgvEXMu5BVj8/
-	Ffhwg/RFxiFYvUWFG9MatrCyJ1akbqMU73qM9HVWvnRDtWWf3QY+Y16VyDk4GGCjiaFCg+JwV/FdZ
-	rt0DJEhEqimMAA/cSDErGYQbzIpCKjn7lMaKXKi4aRwIqpzTTxdq0/0ux/MuxfGsuFvDh396AX32V
-	s7Js8y2NvHlpL+Tgz7cGFY9ekV16Byk4UtU8pYVGmDDf9qRd5JI8wTqjotvV03Cpd9aM0BnfVCn/O
-	rs/NWaUg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RMsIvrO7WJXo800bdQhr6Cd3mUl6G9OJ4WZFm7iXMOo=; b=kn8giTPC4uKctFipmC4dekufEj
+	DavjZe5NyfNDe2Mo2Jz5ZvwpHhe8GjMgUOa7ylyxktl0/PmRiycL9oubEcf+/+Q5ARLLRGYhZq/nj
+	jUyiA7QwgkivoAo6/tiWSu9ebPhqYXNWlP2fTbUhlVrr5NWqD9s7H3dO0ViCeQTwGxP7I43F6vY9S
+	f93ld5fCJrF1JH1/bihQOVfgDWbn3kmTJ4f6S5uAuYAPEL8bWNdyb5GF0NYpsVynGaX4RV9YcxJ91
+	7g++7JvUac7/oepyGD4ING9ulIlWOU+FdxcsoNnbn7rDkxjIamiCGJR0gw1wHScWtRlDQKuKpKGDW
+	duXHaqfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdJdV-003ggA-1p;
-	Fri, 17 Mar 2023 23:37:25 +0000
-Received: from mail-il1-f179.google.com ([209.85.166.179])
+	id 1pdNYH-0041uA-22;
+	Sat, 18 Mar 2023 03:48:17 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdJcs-003gBF-08;
-	Fri, 17 Mar 2023 23:36:51 +0000
-Received: by mail-il1-f179.google.com with SMTP id h5so3547293ile.13;
-        Fri, 17 Mar 2023 16:36:45 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679096205;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=o4XTbDitSJ3rKysE1DLB9E8NyDF7QczD+upv2sRYh/A=;
-        b=J7RcFDZ66dQr3sd2wlq1kbeq9tmTmr+BhVhao6/8HD702I+EyItDkZu90HWOeHSCgz
-         /guHq+aM6aBzAzknOXwbj+GZhTlyje7PcCrUAb2gTc17UvUJTICIq8UbUbcOSO9Vn00q
-         n9Qu4odPXHbwTz1/xdnszfmLcmLTfISI80JVXWeAbH2owJTrADc8wUv6ZouCqF4a+Yg/
-         wmvagkBfS8jGiqshDk+Ij00tnR34f5OensJ4X0VHBaPj/sa4Dw7kSbZol/576TbkNSUU
-         AEeObNCFJsS3+U5An3jWNE0xZrC/ScOmg0nDi29lAPuaT9UEjjZbxpYYSaPfrcISQzJc
-         7EPA==
-X-Gm-Message-State: AO0yUKWzuLWj/YlJqAjTNnelIfemQUfU9nQARwx4DTYCABay3JTQBhMR
-	YBKTW+wUXkSwgs2hZMn5pw==
-X-Google-Smtp-Source: AK7set8aHEa/CzpkLLAxRrITL3AbBi24Em4TUycz18OMjy74rr/iSfbAP+RwpGIsk3i1yF/MYXGnsg==
-X-Received: by 2002:a05:6e02:1ca3:b0:323:5d8:57d2 with SMTP id x3-20020a056e021ca300b0032305d857d2mr180521ill.4.1679096205572;
-        Fri, 17 Mar 2023 16:36:45 -0700 (PDT)
-Received: from robh_at_kernel.org ([64.188.179.249])
-        by smtp.gmail.com with ESMTPSA id y19-20020a056e02119300b0031830e2c987sm962469ili.20.2023.03.17.16.36.43
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 17 Mar 2023 16:36:45 -0700 (PDT)
-Received: (nullmailer pid 3968975 invoked by uid 1000);
-	Fri, 17 Mar 2023 23:36:42 -0000
-From: Rob Herring <robh@kernel.org>
-To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Chen-Yu Tsai <wens@csie.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, 
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
-	Claudiu Beznea <claudiu.beznea@microchip.com>, Andy Gross <agross@kernel.org>, 
-	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
-	Masami Hiramatsu <mhiramat@kernel.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Vincent Shih <vincent.sunplus@gmail.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org, asahi@lists.linux.dev, linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-mediatek@lists.infradead.org
-Subject: [PATCH] dt-bindings: nvmem: Drop unneeded quotes
-Date: Fri, 17 Mar 2023 18:36:39 -0500
-Message-Id: <20230317233640.3968821-1-robh@kernel.org>
-X-Mailer: git-send-email 2.39.2
+	id 1pdNYC-0041tQ-30;
+	Sat, 18 Mar 2023 03:48:15 +0000
+X-UUID: b04e1908c53f11ed86fbcd8805c7ac66-20230317
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=RMsIvrO7WJXo800bdQhr6Cd3mUl6G9OJ4WZFm7iXMOo=;
+	b=GH/LTm2pR4aA/8ph2xwo9otUxHuw8xrens+CV1W6IXPEBJjAe5CzOHxzGIY3yncOQondCethTKNv8WI4ji8LFAX0hJYWw+yDtCUjWLoKTGFoxkKVRuu6esQfvwXv2RzQnFLRvJcCu9qQY0v1qdeI1xtPi3C7GJQt1BuFpUvGlqw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.21,REQID:db23ac25-00d0-4e5c-923c-28c7b955b6d5,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:45,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:40
+X-CID-INFO: VERSION:1.1.21,REQID:db23ac25-00d0-4e5c-923c-28c7b955b6d5,IP:0,URL
+	:0,TC:0,Content:-5,EDM:0,RT:0,SF:45,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:40
+X-CID-META: VersionHash:83295aa,CLOUDID:e76bbb28-564d-42d9-9875-7c868ee415ec,B
+	ulkID:230318001638IX7363I7,BulkQuantity:11,Recheck:0,SF:29|28|17|19|48|102
+	,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:
+	0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: b04e1908c53f11ed86fbcd8805c7ac66-20230317
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1418565567; Fri, 17 Mar 2023 20:48:04 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Sat, 18 Mar 2023 11:48:02 +0800
+Received: from APC01-TYZ-obe.outbound.protection.outlook.com (172.21.101.239)
+ by mtkmbs10n1.mediatek.com (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Sat, 18 Mar 2023 11:48:02 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=ja9PC+578CqVRRMbaneWwF8j+x9TiJIKaJv3fiKOyZcO+YeIfCh3d0NIrTeX/nolimLy4Txcyo+4xA4h0MRoMDlJJakdFuFMgblV9KsiKrZZSuupqgPr7eZE4CRe5rbGIYXD+oIXgjh7q2lG7EybifJ9rSbybcq+8lHNiIXvbV+K4g5i+Xxxp3cSNgVTWKsXo+JaaSXOZgTqsfkp9UiwHQS+lsaTCin3fnML9A+W23/vBrmxcZx7yHoyWTHORGGzWvzKnKDjDwWb3/7I1L9AvL9rKLLXco8o61QxoEPlHJQvfZixW+rrX5ON1BNcxv1bWwzrTjcYoejVVT5riW58Vg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=RMsIvrO7WJXo800bdQhr6Cd3mUl6G9OJ4WZFm7iXMOo=;
+ b=VlwtuOE5wExiegC4qx3abs1gvsN+8XdgU67ljh+2TyqKDO7o6sIWqmo8j6UmgeErTM+QO69YbyWM7B1rCvPrBpfzZDJaTG1jkK99X7OulwgSAWnQ7UYIng3ww06AkE5649hz42ZE/GanBKUYidl+jR1OO28Ym24B6hDFQBQIYG5InHLlmiVWp/mH54tIH2O+ey1VedQLtBWFWfbHBxcHKKTGv+eYpLONgyClBjf/oodOlLJkX+n8wuXogdRI7GOqcsel8pCX2rpuAh5cS5uylsvU4h4EK4RajriCK7KMwvSxDtV4jzwDluW8BLWL3/rN4DypIGusfJYaE5m0StHoPA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=RMsIvrO7WJXo800bdQhr6Cd3mUl6G9OJ4WZFm7iXMOo=;
+ b=avQegxJlfEIelDRIg75Dxz0+ittovPbY55ieEgDBmRupxYtUIBK2IjaOHama+DzZ1Yd7nAI9HbPvSVUVZQMAueCqsRZyDUt9MebsHsRT0uBUpmHgTu/kl01YW81CdoFsoAXGtM0nHsJ3EDmEP4FBep4e/yeIkSJp/O5AiUP+JDE=
+Received: from SL2PR03MB4153.apcprd03.prod.outlook.com (2603:1096:100:4e::10)
+ by PUZPR03MB7134.apcprd03.prod.outlook.com (2603:1096:301:11f::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.31; Sat, 18 Mar
+ 2023 03:47:59 +0000
+Received: from SL2PR03MB4153.apcprd03.prod.outlook.com
+ ([fe80::be91:ad71:bc02:f8f2]) by SL2PR03MB4153.apcprd03.prod.outlook.com
+ ([fe80::be91:ad71:bc02:f8f2%5]) with mapi id 15.20.6178.035; Sat, 18 Mar 2023
+ 03:47:59 +0000
+From: =?utf-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>
+To: "nfraprado@collabora.com" <nfraprado@collabora.com>
+CC: "nicolas@ndufresne.ca" <nicolas@ndufresne.ca>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"frkoenig@chromium.org" <frkoenig@chromium.org>, "stevecho@chromium.org"
+	<stevecho@chromium.org>, "wenst@chromium.org" <wenst@chromium.org>,
+	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"daniel@ffwll.ch" <daniel@ffwll.ch>, Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	"benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>,
+	"hverkuil-cisco@xs4all.nl" <hverkuil-cisco@xs4all.nl>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "hsinyi@chromium.org"
+	<hsinyi@chromium.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v4,2/2] media: mediatek: vcodec: Using MM21 as the default
+ capture format
+Thread-Topic: [PATCH v4,2/2] media: mediatek: vcodec: Using MM21 as the
+ default capture format
+Thread-Index: AQHZWH3uUFw6pTFC9Uaz+3NZdRwxlK7/JqiAgADBNoA=
+Date: Sat, 18 Mar 2023 03:47:58 +0000
+Message-ID: <771f84f81eddee63a8f4887d00eb0f10f6573525.camel@mediatek.com>
+References: <20230317030833.16836-1-yunfei.dong@mediatek.com>
+	 <20230317030833.16836-2-yunfei.dong@mediatek.com>
+	 <20230317161625.x6hm6cxr36hnhmcz@notapiano>
+In-Reply-To: <20230317161625.x6hm6cxr36hnhmcz@notapiano>
+Accept-Language: zh-CN, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SL2PR03MB4153:EE_|PUZPR03MB7134:EE_
+x-ms-office365-filtering-correlation-id: 0df025d7-289d-46ee-fb2a-08db27639084
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: d5s8Xx2mclccZaWDehQJ5O+rMCV4rllmqqRZt/qZEtn+3bh6pp+qV1ABqY179SFHfFZziGDRlUh+fh3thr9apJ1U4tZXT0H9i+HrC4v1X1sffRT8RfLk96+q330IJLPy+5XXnD1lM+EYlMsffX6H0CwjIOp8vgVfJkWxQZLilTcNLlsuTYVWDLe62khaoYlkzbVSLqQlrq6RC6XwaNn9fDZKUBPes/HTDF7gJuu9gE0yeNntCc+j6XIeHGkfYgIZYwJZj+hUHk4KQu4LY+4M8A/0b7sl0Ydq6Z/OKeyjAf36VLEkXT+ZA5zRKdW7GyEEDzLh+Q+mk4qqZeF8kLey23e7khtVAmD34iKPzhKFREhxsMLBpnPW1exwXBp48DHWH3Te7n7Bvk7xBamcWZnkiTphOrNUgicWNXGPI19j5OVZJ2thWbJGGXHEj0994A62uqKXw5uILXp+GQNtWMv8PNQdVWrqS7PwI1naMb57pvJpcRzpiFf8+5Bi9l2SXMvQcI/Lh4WjU9RlLpmF+jJeT1DLBlK0CX2QDo2oNv+GXSdnxC3+DHkOMI9/rGSDa8kb2QgxRl86u/99oJ3izKbi9JBqSL9CPLqMt2NCB24rMvuV+RYvFf+Vc2I1FaXVc3aKTDUokzXUQUOhpVNq5vjWnbmFyZkHNvKIG18NrT9vrAgkVtOhgAGztXqL3x+ITX2aRQ3Z7KVQflwDvcZozz/KvQWdjzsDCjJyiJ1pEADik6o=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SL2PR03MB4153.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(4636009)(136003)(346002)(376002)(39860400002)(396003)(366004)(451199018)(36756003)(122000001)(6916009)(6486002)(85182001)(6512007)(186003)(83380400001)(5660300002)(41300700001)(4326008)(86362001)(26005)(2616005)(7416002)(91956017)(316002)(66446008)(478600001)(76116006)(6506007)(66476007)(66946007)(38100700002)(8676002)(2906002)(54906003)(71200400001)(8936002)(66556008)(38070700005)(64756008)(99106002);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?T3NRVm1tNnhYV0ozcXZzVGNiMEVSeHIvQkFmT1Vqakw0a3JwVTlaTEg1dkZQ?=
+ =?utf-8?B?SXgzaG9Ud2lrTVNYMExzaVM3YWVqVE90K2V3R2V5MXBGR0l5NE1SL0NaQUJP?=
+ =?utf-8?B?cU9KeXVvZm9GcCs5eGVGS2JWcFRjRWR4S3g1ZUIyWU5HcmhuMjBwUFBkUExH?=
+ =?utf-8?B?My93VGFjNVVjQkRva2dGbVZLOEJSMGpOWFVmcW9oWTB3a2N1bEZRNVFzOXU3?=
+ =?utf-8?B?QnFGTVVyQThoOWdpOGUrZEZkdmExMGJMcGwxWDdsSTNFd0E5aVY0U1dkeFU0?=
+ =?utf-8?B?M2E3Q2g4WFBOWFptMU51dXgyQ2xTbDFyODV3OGlTUGhHaDhUQmlpT3hDSHBo?=
+ =?utf-8?B?NFREazQ0RC9UT2tEbUR5aVJBUmxFS1BFVm1IMlhuWVdjZjQzSVBXeWpON1pB?=
+ =?utf-8?B?WVA0ZkJKbmlGc2VqcTlMLzZKUGtidExJam92Sk5QTm52NkZjS2p4djlqYzFi?=
+ =?utf-8?B?eUxGajlPWTE4UDRhT1AzdzNuYTFhSjcwTnFHdnRacWduczJ1bVd1Qmwwbk00?=
+ =?utf-8?B?M0VvOXVXWUc5OUhFZy9OK0RqUEtYeTlyMEtNUU1GbVRSWTJwb0I5N0x2OWtY?=
+ =?utf-8?B?c1gveXVFRVRLMkpLUlRkVHRkWkpHcUJQWEV3S01qT25neWRtTklVa0FMaGRI?=
+ =?utf-8?B?YlNSaWVTL0RWaWZJZnptalBjQ1FMbjRxRGhCaW55OVdMcnE1OS9zZWJualVr?=
+ =?utf-8?B?alFaUFlRUU41TGtaZ3NOWTlGZ0c0Q05Rb2Z2MVlKUWowZk1JV3N3T2U2REdI?=
+ =?utf-8?B?UWsreFZYdCtlZDdBRllQMGo0bkhUeVdyWjkrWThPdk5JWVJvcXRpdWVPVS9r?=
+ =?utf-8?B?ZTJ0TXQ3ajlXeFVGcmNOYUN5NStsWW9OZ3lSTXlqWndpL0VjMzlRc3F5VklR?=
+ =?utf-8?B?KzR4eDNGQkIxVlJXTEFrNk1GWlVpQkFXTHhZVjYreS92M1UxalRzcEdXR0hI?=
+ =?utf-8?B?Y1FQUS8vMElQSERHUjNwaUFPVTN6ZnFsUXRIbDgrZGxobW9OMnBaN3N1RUU1?=
+ =?utf-8?B?ZlA0YnZpQ0tXdnJxRVRSRmxwQmdBMGFzS2dkSGhieXFWYmwxblFVRmd1c3Y4?=
+ =?utf-8?B?TG9QY1pHZ0l6YUNFbmxwZVRKeFlhVEZiQ1lMb0wvdjBOMkFSRzVaNlF5NEF1?=
+ =?utf-8?B?eVRxOHNYSE1PelgrVmd4TTFSZC9vSWpYbmpnbERGVnJIZzE2QVUrZ3Y1VThE?=
+ =?utf-8?B?Rms5b1M2S1NMWktWcnZjU2g0eTBjS3ZZdGFFWFJmdllRdjE5eWJmNkhYNmdy?=
+ =?utf-8?B?NzYyYjhiZlFyYmI4bE1BMnpVSWo1WHRmb2c3dExYZnA0VWRRSGtaTmtGSEJO?=
+ =?utf-8?B?NzJLSDNJR2RYa2VYSXNhcVpJRXBQVlV1NEJ4VjRIR3FTdGZmTFY5bS9hcW9M?=
+ =?utf-8?B?MFN0OUZRbG5aT1FDQnQvZWRwUUVKQkJwS3l2bEExN0VCM29EZENMLzd6ZEVR?=
+ =?utf-8?B?Qk9MVG1tWU42NVU4dGZOK0tXYllTUlF5a1E0eFduNDkwQ2xkVWhJOGFSLzRy?=
+ =?utf-8?B?RHlZNHExMXRJVm56R2c5RDlUVk5qQVA4ai96YTlDeFEwUXJWd29nZUJsNFZp?=
+ =?utf-8?B?L1hwS0ZXNmpEc3U2TEFpdlF4NzNHMkVOalkrQlRCNDlDZUovZG1GMSsyY1B2?=
+ =?utf-8?B?SzcvMm83SGJLZlBjb0hkVDB2T1lrakoxRk9KRXRadDZSTk9OUkVOZHIwWEE5?=
+ =?utf-8?B?Q3NnV2tnZTZaNzZJYmFaTVZuZ0RRNzlBMDR1ZnZTZngxL3p0Y295dmxWLzdL?=
+ =?utf-8?B?MTBYRXFvNHRtdzZoUEYwRENqNWpBclZ6UWZ0MTJtbGU2YnhwbHFQNWdJVy9o?=
+ =?utf-8?B?a3gvQ2txRWcwU1lCcE02MkpvTldFSDdNMlE5Qnh1SFp6bW1WRDVxYlo3MmRv?=
+ =?utf-8?B?Z3VTQXNPbkUzYzlqekxEaExxcFh3YjcxaWNhekFUZm1OajV2bTlQYmt2WWJu?=
+ =?utf-8?B?QUtZMTNtbitqYUFGNnpjQm9jWkdOQi9CcWlLdkJUekV3amJrRW0raUwzQVI4?=
+ =?utf-8?B?Y3JFWldEQzJQZmEreTFuMkZWUXM5c0hBM0RDN3NBRENmMjJ4UzEzRGdWNTV0?=
+ =?utf-8?B?L0l5V01tMnFIYWUxOTNvVk4rbDFVeXY5Yy9STjY0VHoweUZJbXRWVTBzazhS?=
+ =?utf-8?B?dSthWDRMTWhSUDVWRExoYWl2ZXFaM3dNT3hFSkNXaUV1cXNwNVYrMmhTN0tZ?=
+ =?utf-8?B?Mnc9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <6752E375D2AD54489FF239821242113C@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SL2PR03MB4153.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0df025d7-289d-46ee-fb2a-08db27639084
+X-MS-Exchange-CrossTenant-originalarrivaltime: 18 Mar 2023 03:47:58.2624
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 2oCgbr2klq8xzdVodpuTNNCsQ2/3cgxG8RXqAhCFbwc+o6Wi+UC/mLwQ0fIFM4EXJGZg9SnMilme3nRsXXXydeu7tPGYCJkhyTc/VJXwWys=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PUZPR03MB7134
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230317_163646_097490_3280F351 
-X-CRM114-Status: GOOD (  10.23  )
+X-CRM114-CacheID: sfid-20230317_204813_368426_72EB465A 
+X-CRM114-Status: GOOD (  22.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,266 +193,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Cleanup bindings dropping unneeded quotes. Once all these are fixed,
-checking for this can be enabled in yamllint.
-
-Signed-off-by: Rob Herring <robh@kernel.org>
----
- .../devicetree/bindings/nvmem/allwinner,sun4i-a10-sid.yaml      | 2 +-
- Documentation/devicetree/bindings/nvmem/apple,efuses.yaml       | 2 +-
- Documentation/devicetree/bindings/nvmem/brcm,nvram.yaml         | 2 +-
- Documentation/devicetree/bindings/nvmem/fsl,layerscape-sfp.yaml | 2 +-
- Documentation/devicetree/bindings/nvmem/imx-iim.yaml            | 2 +-
- Documentation/devicetree/bindings/nvmem/imx-ocotp.yaml          | 2 +-
- .../devicetree/bindings/nvmem/ingenic,jz4780-efuse.yaml         | 2 +-
- Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml     | 2 +-
- .../devicetree/bindings/nvmem/microchip,sama7g5-otpc.yaml       | 2 +-
- Documentation/devicetree/bindings/nvmem/mxs-ocotp.yaml          | 2 +-
- Documentation/devicetree/bindings/nvmem/nintendo-otp.yaml       | 2 +-
- Documentation/devicetree/bindings/nvmem/qcom,qfprom.yaml        | 2 +-
- Documentation/devicetree/bindings/nvmem/qcom,spmi-sdam.yaml     | 2 +-
- Documentation/devicetree/bindings/nvmem/rmem.yaml               | 2 +-
- Documentation/devicetree/bindings/nvmem/rockchip-efuse.yaml     | 2 +-
- .../devicetree/bindings/nvmem/socionext,uniphier-efuse.yaml     | 2 +-
- Documentation/devicetree/bindings/nvmem/st,stm32-romem.yaml     | 2 +-
- .../devicetree/bindings/nvmem/sunplus,sp7021-ocotp.yaml         | 2 +-
- 18 files changed, 18 insertions(+), 18 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/nvmem/allwinner,sun4i-a10-sid.yaml b/Documentation/devicetree/bindings/nvmem/allwinner,sun4i-a10-sid.yaml
-index 14c170c6a86e..296001e7f498 100644
---- a/Documentation/devicetree/bindings/nvmem/allwinner,sun4i-a10-sid.yaml
-+++ b/Documentation/devicetree/bindings/nvmem/allwinner,sun4i-a10-sid.yaml
-@@ -11,7 +11,7 @@ maintainers:
-   - Maxime Ripard <mripard@kernel.org>
- 
- allOf:
--  - $ref: "nvmem.yaml#"
-+  - $ref: nvmem.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/nvmem/apple,efuses.yaml b/Documentation/devicetree/bindings/nvmem/apple,efuses.yaml
-index 5ec8f2bdb3a5..e0860b6b85f3 100644
---- a/Documentation/devicetree/bindings/nvmem/apple,efuses.yaml
-+++ b/Documentation/devicetree/bindings/nvmem/apple,efuses.yaml
-@@ -15,7 +15,7 @@ maintainers:
-   - Sven Peter <sven@svenpeter.dev>
- 
- allOf:
--  - $ref: "nvmem.yaml#"
-+  - $ref: nvmem.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/nvmem/brcm,nvram.yaml b/Documentation/devicetree/bindings/nvmem/brcm,nvram.yaml
-index 25033de3ef6b..36def7128fca 100644
---- a/Documentation/devicetree/bindings/nvmem/brcm,nvram.yaml
-+++ b/Documentation/devicetree/bindings/nvmem/brcm,nvram.yaml
-@@ -20,7 +20,7 @@ maintainers:
-   - Rafał Miłecki <rafal@milecki.pl>
- 
- allOf:
--  - $ref: "nvmem.yaml#"
-+  - $ref: nvmem.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/nvmem/fsl,layerscape-sfp.yaml b/Documentation/devicetree/bindings/nvmem/fsl,layerscape-sfp.yaml
-index 3b4e6e94cb81..70fb2ad25103 100644
---- a/Documentation/devicetree/bindings/nvmem/fsl,layerscape-sfp.yaml
-+++ b/Documentation/devicetree/bindings/nvmem/fsl,layerscape-sfp.yaml
-@@ -14,7 +14,7 @@ description: |
-   unique identifier per part.
- 
- allOf:
--  - $ref: "nvmem.yaml#"
-+  - $ref: nvmem.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/nvmem/imx-iim.yaml b/Documentation/devicetree/bindings/nvmem/imx-iim.yaml
-index 7aac1995cfaf..e9d9d8df4811 100644
---- a/Documentation/devicetree/bindings/nvmem/imx-iim.yaml
-+++ b/Documentation/devicetree/bindings/nvmem/imx-iim.yaml
-@@ -14,7 +14,7 @@ description: |
-   i.MX25, i.MX27, i.MX31, i.MX35, i.MX51 and i.MX53 SoCs.
- 
- allOf:
--  - $ref: "nvmem.yaml#"
-+  - $ref: nvmem.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/nvmem/imx-ocotp.yaml b/Documentation/devicetree/bindings/nvmem/imx-ocotp.yaml
-index d0a239d7e199..9876243ff1e8 100644
---- a/Documentation/devicetree/bindings/nvmem/imx-ocotp.yaml
-+++ b/Documentation/devicetree/bindings/nvmem/imx-ocotp.yaml
-@@ -15,7 +15,7 @@ description: |
-   i.MX7D/S, i.MX7ULP, i.MX8MQ, i.MX8MM, i.MX8MN and i.MX8MP SoCs.
- 
- allOf:
--  - $ref: "nvmem.yaml#"
-+  - $ref: nvmem.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/nvmem/ingenic,jz4780-efuse.yaml b/Documentation/devicetree/bindings/nvmem/ingenic,jz4780-efuse.yaml
-index fe2cd7f1afba..e89fd879c968 100644
---- a/Documentation/devicetree/bindings/nvmem/ingenic,jz4780-efuse.yaml
-+++ b/Documentation/devicetree/bindings/nvmem/ingenic,jz4780-efuse.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - PrasannaKumar Muralidharan <prasannatsmkumar@gmail.com>
- 
- allOf:
--  - $ref: "nvmem.yaml#"
-+  - $ref: nvmem.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-index 75e0a516e59a..d16d42fb98b6 100644
---- a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-+++ b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-@@ -15,7 +15,7 @@ maintainers:
-   - Lala Lin <lala.lin@mediatek.com>
- 
- allOf:
--  - $ref: "nvmem.yaml#"
-+  - $ref: nvmem.yaml#
- 
- properties:
-   $nodename:
-diff --git a/Documentation/devicetree/bindings/nvmem/microchip,sama7g5-otpc.yaml b/Documentation/devicetree/bindings/nvmem/microchip,sama7g5-otpc.yaml
-index c3c96fd0baac..a296d348adb4 100644
---- a/Documentation/devicetree/bindings/nvmem/microchip,sama7g5-otpc.yaml
-+++ b/Documentation/devicetree/bindings/nvmem/microchip,sama7g5-otpc.yaml
-@@ -15,7 +15,7 @@ description: |
-   settings, chip identifiers) or user specific data could be stored.
- 
- allOf:
--  - $ref: "nvmem.yaml#"
-+  - $ref: nvmem.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/nvmem/mxs-ocotp.yaml b/Documentation/devicetree/bindings/nvmem/mxs-ocotp.yaml
-index ff317fd7c15b..8938eec22b52 100644
---- a/Documentation/devicetree/bindings/nvmem/mxs-ocotp.yaml
-+++ b/Documentation/devicetree/bindings/nvmem/mxs-ocotp.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Anson Huang <Anson.Huang@nxp.com>
- 
- allOf:
--  - $ref: "nvmem.yaml#"
-+  - $ref: nvmem.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/nvmem/nintendo-otp.yaml b/Documentation/devicetree/bindings/nvmem/nintendo-otp.yaml
-index f93bc50c40d7..6c26800f8b79 100644
---- a/Documentation/devicetree/bindings/nvmem/nintendo-otp.yaml
-+++ b/Documentation/devicetree/bindings/nvmem/nintendo-otp.yaml
-@@ -17,7 +17,7 @@ maintainers:
-   - Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
- 
- allOf:
--  - $ref: "nvmem.yaml#"
-+  - $ref: nvmem.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/nvmem/qcom,qfprom.yaml b/Documentation/devicetree/bindings/nvmem/qcom,qfprom.yaml
-index 2173fe82317d..e952907ad1d5 100644
---- a/Documentation/devicetree/bindings/nvmem/qcom,qfprom.yaml
-+++ b/Documentation/devicetree/bindings/nvmem/qcom,qfprom.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
- 
- allOf:
--  - $ref: "nvmem.yaml#"
-+  - $ref: nvmem.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/nvmem/qcom,spmi-sdam.yaml b/Documentation/devicetree/bindings/nvmem/qcom,spmi-sdam.yaml
-index e08504ef3b6e..34818683f80c 100644
---- a/Documentation/devicetree/bindings/nvmem/qcom,spmi-sdam.yaml
-+++ b/Documentation/devicetree/bindings/nvmem/qcom,spmi-sdam.yaml
-@@ -15,7 +15,7 @@ description: |
-   to/from the PBUS.
- 
- allOf:
--  - $ref: "nvmem.yaml#"
-+  - $ref: nvmem.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/nvmem/rmem.yaml b/Documentation/devicetree/bindings/nvmem/rmem.yaml
-index a4a755dcfc43..38a39c9b8c1c 100644
---- a/Documentation/devicetree/bindings/nvmem/rmem.yaml
-+++ b/Documentation/devicetree/bindings/nvmem/rmem.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
- 
- allOf:
--  - $ref: "nvmem.yaml#"
-+  - $ref: nvmem.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.yaml b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.yaml
-index febee8129aa9..c5403e149080 100644
---- a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.yaml
-+++ b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Heiko Stuebner <heiko@sntech.de>
- 
- allOf:
--  - $ref: "nvmem.yaml#"
-+  - $ref: nvmem.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/nvmem/socionext,uniphier-efuse.yaml b/Documentation/devicetree/bindings/nvmem/socionext,uniphier-efuse.yaml
-index dc790d2cd9f0..b8bca0599c45 100644
---- a/Documentation/devicetree/bindings/nvmem/socionext,uniphier-efuse.yaml
-+++ b/Documentation/devicetree/bindings/nvmem/socionext,uniphier-efuse.yaml
-@@ -11,7 +11,7 @@ maintainers:
-   - Kunihiko Hayashi <hayashi.kunihiko@socionext.com>
- 
- allOf:
--  - $ref: "nvmem.yaml#"
-+  - $ref: nvmem.yaml#
- 
- properties:
-   "#address-cells": true
-diff --git a/Documentation/devicetree/bindings/nvmem/st,stm32-romem.yaml b/Documentation/devicetree/bindings/nvmem/st,stm32-romem.yaml
-index 172597cc5c63..a69de3e92282 100644
---- a/Documentation/devicetree/bindings/nvmem/st,stm32-romem.yaml
-+++ b/Documentation/devicetree/bindings/nvmem/st,stm32-romem.yaml
-@@ -16,7 +16,7 @@ maintainers:
-   - Fabrice Gasnier <fabrice.gasnier@foss.st.com>
- 
- allOf:
--  - $ref: "nvmem.yaml#"
-+  - $ref: nvmem.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/nvmem/sunplus,sp7021-ocotp.yaml b/Documentation/devicetree/bindings/nvmem/sunplus,sp7021-ocotp.yaml
-index a7644ebbc2ca..8877c2283e9e 100644
---- a/Documentation/devicetree/bindings/nvmem/sunplus,sp7021-ocotp.yaml
-+++ b/Documentation/devicetree/bindings/nvmem/sunplus,sp7021-ocotp.yaml
-@@ -11,7 +11,7 @@ maintainers:
-   - Vincent Shih <vincent.sunplus@gmail.com>
- 
- allOf:
--  - $ref: "nvmem.yaml#"
-+  - $ref: nvmem.yaml#
- 
- properties:
-   compatible:
--- 
-2.39.2
-
+SGkgTmljb2xhcywNCg0KVGhhbmtzIGZvciB5b3VyIHN1Z2dlc3Rpb24gYW5kIHRlc3QgcmVzdWx0
+Lg0KT24gRnJpLCAyMDIzLTAzLTE3IGF0IDEyOjE2IC0wNDAwLCBOw61jb2xhcyBGLiBSLiBBLiBQ
+cmFkbyB3cm90ZToNCj4gSGkgWXVuZmVpLA0KPiANCj4gdGhhbmtzIGZvciB0aGUgcGF0Y2guDQo+
+IA0KPiBUaGUgY29tbWl0IHRpdGxlIHNob3VsZCBiZSBpbiBpbXBlcmF0aXZlLCBzbyBJIHN1Z2dl
+c3Q6DQo+IA0KPiAJbWVkaWE6IG1lZGlhdGVrOiB2Y29kZWM6IE1ha2UgTU0yMSB0aGUgZGVmYXVs
+dCBjYXB0dXJlIGZvcm1hdA0KPiANCkFjY2VwdGVkIGluIG5leHQgcGF0Y2ggdjQuDQo+IE9uIEZy
+aSwgTWFyIDE3LCAyMDIzIGF0IDExOjA4OjMzQU0gKzA4MDAsIFl1bmZlaSBEb25nIHdyb3RlOg0K
+PiA+IEZvciB0aGUgY2FwdHVyZSBxdWV1ZSBvbmx5IHN1cHBvcnQgTU0yMSBmb3JtYXQgd2l0aCBM
+aWJZdXYsIG5lZWQgdG8NCj4gPiBzZXQgTU0yMSBhcyB0aGUNCj4gPiBkZWZhdWx0IGZvcm1hdC4N
+Cj4gDQo+IEFnYWluLCBJIHRoaW5rIHRoaXMgY29tbWl0IG1lc3NhZ2UgY291bGQgYmUgaW1wcm92
+ZWQgYSBiaXQuIEhlcmUncyBhDQo+IHN1Z2dlc3Rpb246DQo+IA0KPiAJR2l2ZW4gdGhhdCBvbmx5
+IHRoZSBNTTIxIGNhcHR1cmUgZm9ybWF0IGlzIHN1cHBvcnRlZCBieQ0KPiB1c2Vyc3BhY2UgdG9v
+bHMgKGxpa2UNCj4gCWdzdHJlYW1lciBhbmQgbGlieXV2KSwgbWFrZSBpdCB0aGUgZGVmYXVsdCBj
+YXB0dXJlIGZvcm1hdC4NCj4gDQo+IAlUaGlzIGFsbG93cyB1cyB0byBmb3JjZSB0aGUgTU0yMSBm
+b3JtYXQgZXZlbiB3aGVuIGEgTU0yMSBhbmQNCj4gTVQyMUMgY2FwYWJsZQ0KPiAJZmlybXdhcmUg
+aXMgYXZhaWxhYmxlICh3aGljaCBpcyBuZWVkZWQgd2hpbGUgZHluYW1pYyBmb3JtYXQNCj4gc3dp
+dGNoaW5nIGlzbid0DQo+IAlpbXBsZW1lbnRlZCBpbiB0aGUgZHJpdmVyKSwgd2l0aG91dCBjYXVz
+aW5nIHRoZSBmb2xsb3dpbmcNCj4gcmVncmVzc2lvbnMgb24NCj4gCXY0bDItY29tcGxpYW5jZToN
+Cj4gDQo+IAkJCQlmYWlsOiB2NGwyLXRlc3QtZm9ybWF0cy5jcHAoNDc4KToNCj4gcGl4ZWxmb3Jt
+YXQgMzEzMjU0NGQgKE1UMjEpIGZvciBidWZ0eXBlIDkgbm90IHJlcG9ydGVkIGJ5IEVOVU1fRk1U
+DQo+IAkJCXRlc3QgVklESU9DX0dfRk1UOiBGQUlMDQo+IAkJCQlmYWlsOiB2NGwyLXRlc3QtZm9y
+bWF0cy5jcHAoNDc4KToNCj4gcGl4ZWxmb3JtYXQgMzEzMjU0NGQgKE1UMjEpIGZvciBidWZ0eXBl
+IDkgbm90IHJlcG9ydGVkIGJ5IEVOVU1fRk1UDQo+IAkJCXRlc3QgVklESU9DX1RSWV9GTVQ6IEZB
+SUwNCj4gCQkJCWZhaWw6IHY0bDItdGVzdC1mb3JtYXRzLmNwcCg0NzgpOg0KPiBwaXhlbGZvcm1h
+dCAzMTMyNTQ0ZCAoTVQyMSkgZm9yIGJ1ZnR5cGUgOSBub3QgcmVwb3J0ZWQgYnkgRU5VTV9GTVQN
+Cj4gCQkJdGVzdCBWSURJT0NfU19GTVQ6IEZBSUwNCj4gDQo+IEFsc28sIEkgdGhpbmsgaXQgd291
+bGQgYmUgc2xpZ2h0bHkgYmV0dGVyIGlmIHRoaXMgd2FzIHRoZSBmaXJzdCBwYXRjaA0KPiBpbiB0
+aGUNCj4gc2VyaWVzLCBzbyB0aGF0IHY0bDItY29tcGxpYW5jZSBkb2Vzbid0IGZhaWwgaW4gYmV0
+d2VlbiB0aGUgcGF0Y2hlcy4NCj4gDQpBY2NlcHRlZCBpbiBuZXh0IHBhdGNoIHY0Lg0KDQpCZXN0
+IFJlZ2FyZHMsDQpZdW5mZWkgRG9uZw0KPiA+IA0KPiA+IEZpeGVzOiA3NTAxZWRlZjZiMWYgKCJt
+ZWRpYTogbWVkaWF0ZWs6IHZjb2RlYzogRGlmZmVyZW50IGNvZGVjDQo+ID4gdXNpbmcgZGlmZmVy
+ZW50IGNhcHR1cmUgZm9ybWF0IikNCj4gPiBTaWduZWQtb2ZmLWJ5OiBZdW5mZWkgRG9uZyA8eXVu
+ZmVpLmRvbmdAbWVkaWF0ZWsuY29tPg0KPiANCj4gV2l0aCB0aGlzIGNoYW5nZSBJJ3ZlIGNvbmZp
+cm1lZCB0aGF0IGFsbCB2NGwyLWNvbXBsaWFuY2UgdGVzdHMgYXJlDQo+IHBhc3NpbmcgYWdhaW46
+DQo+IA0KPiBUb3RhbCBmb3IgbXRrLXZjb2RlYy1kZWMgZGV2aWNlIC9kZXYvdmlkZW8yOiA0Niwg
+U3VjY2VlZGVkOiA0NiwNCj4gRmFpbGVkOiAwLCBXYXJuaW5nczogMA0KPiANCj4gU28sIGFmdGVy
+IHRoZSBhYm92ZSBjb21tZW50cyBhcmUgYWRkcmVzc2VkLA0KPiANCj4gUmV2aWV3ZWQtYnk6IE7D
+rWNvbGFzIEYuIFIuIEEuIFByYWRvIDxuZnJhcHJhZG9AY29sbGFib3JhLmNvbT4NCj4gVGVzdGVk
+LWJ5OiBOw61jb2xhcyBGLiBSLiBBLiBQcmFkbyA8bmZyYXByYWRvQGNvbGxhYm9yYS5jb20+DQo+
+IA0KPiBUaGFua3MsDQo+IE7DrWNvbGFzDQo=
 
