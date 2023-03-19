@@ -4,95 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA2F3C7618A
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Mar 2023 14:11:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D572EC6FD1F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Mar 2023 15:00:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Mxfg9kgQ8xTY4kfBNMCHJxuv4+U4pmpKqJi9ZEPAVGs=; b=NNRt1NnTrstKQziEC6u/wXHfxz
-	ps0gNHjoL+5IpUhd/8JFg/fLZmTEav5hLlF+m5kSG/cMsJhvj/zYNZ6W8pAkqZcJxm5ikfSKMaTu8
-	2sk7fuIO3b4dCiD2mT2tTntahf3fdkijTHukyKuuwwDUvFEhqhNU3e0EfucidaiN+iw58YyPABi91
-	YINW+kNNj7kPlzgOgl2CFStEdeimVZm1ksdqP+F/dFsKIR0Rdw4jEtkH4MF0BgO21DxzS5N3VOyXe
-	PR4XeWPa1Tgs1829pr3BfiZGD2E+tGHzV6WV8BQK+iigEBUWaOpGsN7N8mUx9WLTfLpWbYSyR3U1d
-	s1RTv5jQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:
+	Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FaY0Xl4jfnqhSvRMHOlCX3MBxMkltd1/bLTF73k4weg=; b=iFGN0+x2GnIpf9VgWRgIuMifWp
+	UKCVxHg7lGs1inHSU6js20hCuDPWiahyUiN2kZVcJNKpPRIlm0CrZRAH0thZDvXdQPZMehg4ntkW6
+	B9zZ2dYHNNI0gdfwefbQO5hCwmPaE8ytzEHqzLHPeHIWb159zpxs2gzzOuc8CxfU/WMxNo0h0aStv
+	ecyHWzdqIbY9VDN/D32ELOanOdh+xVsSTAOt6RmFuITb8JAs4vli64GfU71aF6fz1Pjc2/f6mWb6Q
+	hRIFY1qim695SI4GXwMZqZoQ1oPIgpLpVUodfZXwURgNwNwEIB87YvvcP71Jpee2HzRnqOBTpykRp
+	PyAcSuyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdtke-006qXp-14;
-	Sun, 19 Mar 2023 14:11:12 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1pduW6-006tJe-2b;
+	Sun, 19 Mar 2023 15:00:15 +0000
+Received: from mout.gmx.net ([212.227.15.19])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdtkY-006qWQ-2e
-	for linux-mediatek@lists.infradead.org;
-	Sun, 19 Mar 2023 14:11:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1679235063;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=Mxfg9kgQ8xTY4kfBNMCHJxuv4+U4pmpKqJi9ZEPAVGs=;
-	b=Abmfty+6siissClr1knlEe7KVj+Vs+6FG0LlKKYh81uLxWnpOmsqxfEnlx2tI8jfTANl83
-	KdMfzggPM722JCixpDBGw1PFJi6YcYWrtKMg9dzhmdbLH8ILIRmfUrXVqRKxTJ9fmkg/X6
-	UsdttU3bpiimp4Vjvb224MOrCuTY3BY=
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-607-AEol7L_lNmWtD2Ih6QcrtA-1; Sun, 19 Mar 2023 10:11:02 -0400
-X-MC-Unique: AEol7L_lNmWtD2Ih6QcrtA-1
-Received: by mail-qk1-f198.google.com with SMTP id b34-20020a05620a272200b007460c05a463so4482762qkp.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 19 Mar 2023 07:11:02 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679235061;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Mxfg9kgQ8xTY4kfBNMCHJxuv4+U4pmpKqJi9ZEPAVGs=;
-        b=72Pp5aKxvKmVdyWt7/ENrFOMN3R848BC6Xf2NDCYxVzYbQM/0lwjONF4Cd6e3k94d1
-         kbDT5Kt2EjX0q0gfYC+etXZl3AcAgXeDKowQuFsYooGEAcxmenwmxgd4Yb1JkidpAEuk
-         HAAZ4FRGan3P51IV5in4h7K/ixFFjuoBz6eROTcXIjIryJm1R3FVbtbs4qtEZCAdTDgS
-         SyyT4rzbyJU/rJRWV7s2apaHqbKQjFUZ3BFk8KML+5ZZFdYqpwYW3ZXgvXNrKRtO1HvY
-         gc1gEg1/U7xXBRqm06nSkWQpBcIF9abtGrsF6lZgIbT15Dui7f1QxRImgEiMU+ePWEuB
-         2PVg==
-X-Gm-Message-State: AO0yUKVSVLkW5jg8EPvofzPVBfTfihf3q79oF5WI08Ltw7SIYUeh1vxC
-	3XN15Bi5xkE5OcZ+2qgIBjLm7kxG2JSJCoec3o32M1Yb4AsuzN9GFeCbv9GneiYKDS0vqb/1eUH
-	XasjzCFEptLohqVHC/kubTocd1eL8DZgu
-X-Received: by 2002:a05:622a:1356:b0:3db:6f27:60b9 with SMTP id w22-20020a05622a135600b003db6f2760b9mr11743884qtk.15.1679235061625;
-        Sun, 19 Mar 2023 07:11:01 -0700 (PDT)
-X-Google-Smtp-Source: AK7set82QnetAWI+F3gcmRcjmUamYUEWEUr1FY8V21h15oRUvVodbHhYtRBiyrHKXmDFomTxkbB5rQ==
-X-Received: by 2002:a05:622a:1356:b0:3db:6f27:60b9 with SMTP id w22-20020a05622a135600b003db6f2760b9mr11743843qtk.15.1679235061327;
-        Sun, 19 Mar 2023 07:11:01 -0700 (PDT)
-Received: from dell-per740-01.7a2m.lab.eng.bos.redhat.com (nat-pool-bos-t.redhat.com. [66.187.233.206])
-        by smtp.gmail.com with ESMTPSA id p11-20020a05620a22ab00b0074583bda590sm5492950qkh.10.2023.03.19.07.11.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 19 Mar 2023 07:11:01 -0700 (PDT)
-From: Tom Rix <trix@redhat.com>
-To: linux@roeck-us.net,
-	heikki.krogerus@linux.intel.com,
-	gregkh@linuxfoundation.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	nathan@kernel.org,
-	ndesaulniers@google.com
-Cc: linux-usb@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	llvm@lists.linux.dev,
-	Tom Rix <trix@redhat.com>
-Subject: [PATCH] usb: typec: tcpci_mt6360: remove unused mt6360_tcpc_read16 function
-Date: Sun, 19 Mar 2023 10:10:53 -0400
-Message-Id: <20230319141053.1703937-1-trix@redhat.com>
-X-Mailer: git-send-email 2.27.0
+	id 1pduVy-006tGL-05;
+	Sun, 19 Mar 2023 15:00:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
+	s=s31663417; t=1679237974; i=frank-w@public-files.de;
+	bh=FaY0Xl4jfnqhSvRMHOlCX3MBxMkltd1/bLTF73k4weg=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=m+78KDG7Mmcwc7gj18tQBa5KlnttrpkmTbH5ILg4BO57oA/iIFDrmKTGogVyvT0At
+	 3NXfJtLhYF08QYSW58FIVQilQLC6uEN860tc7QQ0HNONXFVUF/SU5ZnxudwUmctBlA
+	 1dzbg+GY1aUSTqPNFbWzy4nCgEu59+hILd8JJ0XcAdK/4jOyV7G9TweEKRFrFLXxk8
+	 L/0samKM+ZUHOs2piwAUOUFUlBDYV4xQjH9ZfmnZZFivYPEaukRvU5FKw8M+JUe0Qv
+	 gVafW+DOXWiz/Rx5SGvuCVKjBDBNqfIMfvXaWEz7URPR6lSwOg+M0zbRHvnSYMNyXG
+	 tV03zE+CicDgw==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [217.61.158.68] ([217.61.158.68]) by web-mail.gmx.net
+ (3c-app-gmx-bs27.server.lan [172.19.170.79]) (via HTTP); Sun, 19 Mar 2023
+ 15:59:34 +0100
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"; x-default=true
+Message-ID: <trinity-0a0531c9-44c0-4171-9d5b-3607df6175d4-1679237974351@3c-app-gmx-bs27>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Russell
+ King <linux@armlinux.org.uk>, Heiner Kallweit <hkallweit1@gmail.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, DENG Qingfang
+ <dqfext@gmail.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang
+ <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>, Jakub Kicinski
+ <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>, "David S. Miller"
+ <davem@davemloft.net>, Vladimir Oltean <olteanv@gmail.com>, Florian
+ Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Vladimir
+ Oltean <vladimir.oltean@nxp.com>, =?UTF-8?Q?Bj=C3=B8rn_Mork?=
+ <bjorn@mork.no>, Alexander Couzens <lynxis@fe80.eu>
+Subject: Aw: [PATCH net-next v14 8/9] net: ethernet: mtk_eth_soc: switch to
+ external PCS driver
+Content-Type: text/plain; charset=UTF-8
+Date: Sun, 19 Mar 2023 15:59:34 +0100
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <3979b99300067c595a4406dbb0dec3ca9ba14952.1679230025.git.daniel@makrotopia.org>
+References: <cover.1679230025.git.daniel@makrotopia.org>
+ <3979b99300067c595a4406dbb0dec3ca9ba14952.1679230025.git.daniel@makrotopia.org>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:sU97e+lgcCfTk1IjrHuZB3vZAMLNfgAeGL8Gt84Pf1cml7G8cpK40yiE5ipilxbyng1/N
+ Mgsp56itmfUxpBaGUbCJhbnTtPcUEpk9qwGxhGvYfEwKlxip/NqrxQc8qNpqhFpQlvdIrehVd0Wl
+ J+2YTMELPeGRjBw6j/y+/EuD1GnG3BdM7DIgqFDcQLytk38JmOVNp/TTM5wc7CsbCUyBE9IsI168
+ TV0FSDv4Go74vG9Q/w6oZg9uiy568Sjd/3G2B/qvfBFS7xCBVsIXZu0Hvz9rvNrg+H1Ah1oN+jro
+ sc=
+UI-OutboundReport: notjunk:1;M01:P0:F+KgMaH38GA=;QHG/JQQ7xTXbN5KWA50Q7bm/nls
+ UmA8y9ZKTD+xKs3Zgq8yKQgg1V7m7dYVxUulOqVHyfaJ6OUWHjMo8EEt4XsmwOTHW5Vf5EuJH
+ 0wDqQrruFU+U8m7q+RvWeS8uZy9kQc+gNIGaRGyrIG4VY7CyA+Juc6NKZ7vy3N2TKBlLcvG7k
+ PDNUr1mPa0/MxCQ6GNtVeRzrmfnXf+ACOhgUaL789SROQlrGcnWtoBHY0iJ6JWxj9MlbGZlGX
+ gccYchrjZSSzDCbyTjcmPX5IQ5Hj2tQEd+EO887fFh85jcsKzjQAcRCmVcZjKGS+xVrIXdgPA
+ jc+bYaI+Hnpxz1LxAfp0JGQYIE9glaqWfZ/W0b5QY7+TNRACjEZ075+dbBQdw+clC5fQNanOC
+ m1z8W6mRIVvYCPQSE7c0CxCsplJ6QcQi6pJCMevdZOXWvXW3Oo7tLqNUiRAZjQyw1edCFw5Yk
+ BKXf4msGfffE1horaTG+mXrKgaijbtcGvg2g2vCpCPLeuyqpQoPSGsBUSYW1m55yReUTlksCe
+ pjppl/Ww/EctJFjBwTlgwN0FEfG/FFhwvSCo0O5mu/NQHcU0+ahO9HyZVWqLQ+W/ahRpF+YDr
+ BxJK3fCN9Fe9BIC66iJ8PQ8l9YQ9CMQSWuIkulftmgjaZFo0+8L48ITdC1zzTrH9COPsh/DFG
+ SXnMlVHemBigLD1E1ROzpfMqlBc8m4Oq3S0QDF3fW0UMXMOgdL64Zvgn+3FaZ+VsP62WHB+/y
+ HIcl4cVM7og24z9TuYNcLsQb0cIBg814K7nssCSl8+JlkzBbeQyYFj6uGm25/TrV3oFxK/Fnh
+ V8VqpqRHPqFA4SpyPda4wFBA==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230319_071106_956960_583C12A1 
-X-CRM114-Status: UNSURE (   7.33  )
+X-CRM114-CacheID: sfid-20230319_080006_457438_A0EB6DD0 
+X-CRM114-Status: UNSURE (   6.51  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -108,36 +105,9 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-clang with W=1 reports
-drivers/usb/typec/tcpm/tcpci_mt6360.c:46:19: error: unused function
-  'mt6360_tcpc_read16' [-Werror,-Wunused-function]
-static inline int mt6360_tcpc_read16(struct regmap *regmap,
-                  ^
-This function is not used, so remove it.
+as Patches are the same as v13
 
-Signed-off-by: Tom Rix <trix@redhat.com>
----
- drivers/usb/typec/tcpm/tcpci_mt6360.c | 6 ------
- 1 file changed, 6 deletions(-)
+Tested-By: Frank Wunderlich <frank-w@public-files.de>
 
-diff --git a/drivers/usb/typec/tcpm/tcpci_mt6360.c b/drivers/usb/typec/tcpm/tcpci_mt6360.c
-index 1b7c31278ebb..6fa8fd5c8041 100644
---- a/drivers/usb/typec/tcpm/tcpci_mt6360.c
-+++ b/drivers/usb/typec/tcpm/tcpci_mt6360.c
-@@ -43,12 +43,6 @@ struct mt6360_tcpc_info {
- 	int irq;
- };
- 
--static inline int mt6360_tcpc_read16(struct regmap *regmap,
--				     unsigned int reg, u16 *val)
--{
--	return regmap_raw_read(regmap, reg, val, sizeof(u16));
--}
--
- static inline int mt6360_tcpc_write16(struct regmap *regmap,
- 				      unsigned int reg, u16 val)
- {
--- 
-2.27.0
-
+regards Frank
 
