@@ -4,67 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1B99C7618A
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Mar 2023 21:00:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FC86C6FD1F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Mar 2023 21:15:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jwAO0z9En6mLxOF3Ju75lHjUXBw+TZ9xk9DabZ0leYY=; b=q4tXB39D+tnbdt
-	7EGpRDQm4zXw9TVYPmvT/sT3xtimI0OpLNHsTBVnxCbUB3WZvS+lDhKlwFTjsMnAxWCpqF4xDtQ8C
-	pBP+X3qWsLYf8wVJjZa8T/fFmoq8kjUx1VZ3SwikBmNzgTyPsc60c6z1YwhG6FvIUthXueql+JxdV
-	mY6nsa3GnSNPCpwMSA2RBhmxijKswv/5fYBp8CcaUHxgnFgWAYxX96R2lubzTLvv6s4d3HlHsvoW0
-	ijUsj7dShpU6fnE71/cYadfhWDV9rbaArBU67pT4CTaEbH0QC0OAOD7zvUzsh+tFikqzFWJemE/P0
-	gLm9saVbXNN3ZdHG7Ipw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=o0iorqXQgWfUsmZ323+Wyn0oeyKtqb16TQ+B351+3qA=; b=Q2gVJsalx+v1Y5ZJvppn+INTLu
+	l2T9mvYP9fIEoAL4/jEYfHNGLYWmhtblu0MVjTUi6vHOjQoHXmRgnj8MvkagjJK4l5cHFLgmow56O
+	KPx3aKxlfUIThcnowDRw6wnMWdIaBUShkpFF9mMN5sBfALIG6x2lVVyEgZwcKv0fGsH0ihIXC38tg
+	+hyUMfbJauM0sDqF6OTbzqcRFRIo9/xH/0BJWZxUsJLDEAaw9nCauEeJPn7AzAnTqIjR26vws72lc
+	S5YQcFmCLDE4Ooi0yqhA1ShMhlI5zTUv5Sh7GhurokEMmZg2MYhdvNHf50zSYrjEbwcseTyFcm+b5
+	ua0nNZ/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pe08f-007Qa1-1f;
-	Sun, 19 Mar 2023 21:00:25 +0000
-Received: from sender4-op-o10.zoho.com ([136.143.188.10])
+	id 1pe0Mp-007SL3-07;
+	Sun, 19 Mar 2023 21:15:03 +0000
+Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pe08Z-007QYh-2J;
-	Sun, 19 Mar 2023 21:00:23 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1679259590; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=naJvgxfc7mo6cG95E8IVzExgl38hmPTl3Dg8QD7cpxvy/GOj++FhCIUTQpJvoK7WF+tv7MhFrDCtJFzfRffDGNK3PjzuGjNjYHPNx7BtPc+c1F/zF4QoGtBP0qVVJ9//7BR5mL1byBcu3M9Lly52bmY2Bc06wL5C3QD8w65UV+k=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1679259590; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=jwAO0z9En6mLxOF3Ju75lHjUXBw+TZ9xk9DabZ0leYY=; 
-	b=mN3SK0xIJuOmOEaGxG6TGO/YhSRERPCOXaeAqYuQtPnACHI6CxvJ+2vttCI804IbvYFx2wFlgLGuEbk417ZC7QGEh4/jHEWGW7bqGWyTHZYWEb2e/qbqLAne8fn62OOyzPPn919pAyCcYU3q/YA/oNAYg36LGv6WkfN/vrt5s4I=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1679259590;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=jwAO0z9En6mLxOF3Ju75lHjUXBw+TZ9xk9DabZ0leYY=;
-	b=S1gNH/qjIJ3Rn11Tb0cC4wAdVehaPSBKBzmHCyDXSzUHUXSqRG50yIG4gFcoL43w
-	QDMy2Q6jQSpUtVynindMK846Id2HgMVmxybXSmKJiNLpU0rl3IF85VclIE3tsG7de+O
-	8Wn9cJa7DAZXqv/FOsuJGjyZrj54OrDMI5pVFj7M=
-Received: from [10.10.10.3] (149.91.1.15 [149.91.1.15]) by mx.zohomail.com
-	with SMTPS id 1679259589012624.8771487940448; Sun, 19 Mar 2023 13:59:49 -0700 (PDT)
-Message-ID: <e9e6ad87-2db5-9767-ff39-64a302b06185@arinc9.com>
-Date: Sun, 19 Mar 2023 23:59:40 +0300
+	id 1pe0Mm-007SIg-2x
+	for linux-mediatek@lists.infradead.org;
+	Sun, 19 Mar 2023 21:15:02 +0000
+Received: by mail-yb1-xb2c.google.com with SMTP id p203so10822060ybb.13
+        for <linux-mediatek@lists.infradead.org>; Sun, 19 Mar 2023 14:15:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1679260500;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=o0iorqXQgWfUsmZ323+Wyn0oeyKtqb16TQ+B351+3qA=;
+        b=PqJlDX0gTYbEtn8Inp0Uq9s7u/HTYqGjD1dgyn2nK1HN81qzYpJ9YK87P3/GK9pyjS
+         NIox5xD6dYqMCgOx32vaNV7CStlqriTHBcn+xVBoWVHv64f9OkeU7yqIs+ePEjrucDlf
+         hLYQeSFr+uU2/M2tfVJ5lrNZIIQBGZMUOQR/x/Pb64/87ScadQHktjIXmYzf0soAd8Cm
+         1/vXcIPIvmyXhvwjyg9zJXzO53/CrLg2sarThltEBai116bRrT//SIC4+loKJSCgmFoX
+         qFt40qfje7rzwaijTzBX1bDxUpXmUPSUnzUEnrOEFINsNM2XFX8efE0qIlI4ANoUsKOX
+         jQCg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679260500;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=o0iorqXQgWfUsmZ323+Wyn0oeyKtqb16TQ+B351+3qA=;
+        b=VKAc7ToCEFZNt8yTvZqx4sehSRtxOe1SmJ/26OCSvEOeOb7JldcZ57v5axJ519qO4h
+         MQdx/CRHInE9hfH/bE4VLvHNZYmZ1HTz0g1JGsX4MoIYex4m8k9M9+8lExj9E4ryUPeE
+         MVr6aG+Hk1wf9Ubml8rnir1y1ugmogj7wJQpKpMFRuKRUenS978y5VBIgwQZ/G6eNLD9
+         +u7Ff9aatZMsdu88VzyCp1lsceXdhxE5qiC2Qf6IZwtH8jbnMSiqyP0N37X8wOLYoYlP
+         6lQ9xSLLGvH52Hd0Zf2yfASiYlYMZVFORVIii69EcrcVfTtvtcccKVjWCI+NW9rdgk4X
+         9i4g==
+X-Gm-Message-State: AO0yUKVGZts8UxOlsPHNoXDCAJi5MEUkIV+N+Q96iFmQ4s7eekRwvkCd
+	ggoBG5Gkl5MphlAWZ0CfGKnszPr6e8G4s6ZrzF4uWw==
+X-Google-Smtp-Source: AK7set88lgxJVA166ieuR2TTLZeS1J0rp7AfomiAt3xMAZzNkfr7DVMxQnogtWZ9zBjTSPGk/rTQReVq7hLkbmXRmbU=
+X-Received: by 2002:a05:6902:1143:b0:aa9:bd2e:3746 with SMTP id
+ p3-20020a056902114300b00aa9bd2e3746mr2997588ybu.4.1679260499808; Sun, 19 Mar
+ 2023 14:14:59 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH v3 00/21] pinctrl: ralink: fix ABI, improve driver, move
- to mediatek, improve dt-bindings
-To: Linus Walleij <linus.walleij@linaro.org>
-References: <20230317213011.13656-1-arinc.unal@arinc9.com>
- <CACRpkdbWmtBtpkW2=DUX2v6CR7aJz52R6y5mJ=W+VDena+Fzng@mail.gmail.com>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <CACRpkdbWmtBtpkW2=DUX2v6CR7aJz52R6y5mJ=W+VDena+Fzng@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+References: <20230317233623.3968172-1-robh@kernel.org>
+In-Reply-To: <20230317233623.3968172-1-robh@kernel.org>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Sun, 19 Mar 2023 22:14:48 +0100
+Message-ID: <CACRpkdYFJ-q9OT2b7U-CP08XGfdoD-qN3k3C2KBHhnuBdfSi7A@mail.gmail.com>
+Subject: Re: [PATCH] dt-bindings: pinctrl: Drop unneeded quotes
+To: Rob Herring <robh@kernel.org>
+Cc: =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
+	Manivannan Sadhasivam <mani@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Samuel Holland <samuel@sholland.org>, Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, 
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, 
+	Damien Le Moal <damien.lemoal@wdc.com>, Charles Keepax <ckeepax@opensource.cirrus.com>, 
+	Richard Fitzgerald <rf@opensource.cirrus.com>, Dong Aisheng <aisheng.dong@nxp.com>, 
+	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	NXP Linux Team <linux-imx@nxp.com>, Sean Wang <sean.wang@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andy Gross <agross@kernel.org>, 
+	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Heiko Stuebner <heiko@sntech.de>, 
+	Tomasz Figa <tomasz.figa@gmail.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
+	Masami Hiramatsu <mhiramat@kernel.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Emil Renner Berthing <kernel@esmil.dk>, 
+	Jianlong Huang <jianlong.huang@starfivetech.com>, Dvorkin Dmitry <dvorkin@tibbo.com>, 
+	Wells Lu <wellslutw@gmail.com>, Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, 
+	Michal Simek <michal.simek@xilinx.com>, linux-arm-kernel@lists.infradead.org, 
+	linux-actions@lists.infradead.org, linux-gpio@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-sunxi@lists.linux.dev, asahi@lists.linux.dev, 
+	linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org, 
+	linux-riscv@lists.infradead.org, patches@opensource.cirrus.com, 
+	alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
+	linux-stm32@st-md-mailman.stormreply.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230319_140019_833566_B56FA17C 
-X-CRM114-Status: GOOD (  10.20  )
+X-CRM114-CacheID: sfid-20230319_141501_024321_28FB5D03 
+X-CRM114-Status: UNSURE (   8.57  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,24 +114,21 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org, Daniel Santos <daniel.santos@pobox.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, erkin.bozoglu@xeront.com, =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>, Sergio Paracuellos <sergio.paracuellos@gmail.com>, linux-mips@vger.kernel.org, devicetree@vger.kernel.org, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Andy Teng <andy.teng@mediatek.com>, Hui Liu <hui.liu@mediatek.com>, Luiz Angelo Daros de Luca <luizluca@gmail.com>, DENG Qingfang <dqfext@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Del Regno <angelogioacchino.delregno@collabora.com>, linux-gpio@vger.kernel.org, Zhiyong Tao <zhiyong.tao@mediatek.com>, Sean Wang <sean.wang@kernel.org>, Daniel Golle <daniel@makrotopia.org>, William Dean <williamsukatube@gmail.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 19.03.2023 23:49, Linus Walleij wrote:
-> On Fri, Mar 17, 2023 at 10:30 PM <arinc9.unal@gmail.com> wrote:
-> 
->> This is an ambitious effort I've been wanting to do for months.
-> 
-> I don't see any major missing ACKs so I just applied the patches, we
-> can fix any remaining issues in-tree.
-> 
-> Good work!
+On Sat, Mar 18, 2023 at 12:36=E2=80=AFAM Rob Herring <robh@kernel.org> wrot=
+e:
 
-Music to my ears. It was pretty final so I don't expect more issues.
+> Cleanup bindings dropping unneeded quotes. Once all these are fixed,
+> checking for this can be enabled in yamllint.
+>
+> Signed-off-by: Rob Herring <robh@kernel.org>
 
-Thanks for applying them.
+Less bad examples =3D good.
 
-Cheers.
-Arınç
+Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+
+Yours,
+Linus Walleij
 
