@@ -4,104 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FC86C6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Mar 2023 21:15:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FE8BC6FD1F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Mar 2023 21:20:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=o0iorqXQgWfUsmZ323+Wyn0oeyKtqb16TQ+B351+3qA=; b=Q2gVJsalx+v1Y5ZJvppn+INTLu
-	l2T9mvYP9fIEoAL4/jEYfHNGLYWmhtblu0MVjTUi6vHOjQoHXmRgnj8MvkagjJK4l5cHFLgmow56O
-	KPx3aKxlfUIThcnowDRw6wnMWdIaBUShkpFF9mMN5sBfALIG6x2lVVyEgZwcKv0fGsH0ihIXC38tg
-	+hyUMfbJauM0sDqF6OTbzqcRFRIo9/xH/0BJWZxUsJLDEAaw9nCauEeJPn7AzAnTqIjR26vws72lc
-	S5YQcFmCLDE4Ooi0yqhA1ShMhlI5zTUv5Sh7GhurokEMmZg2MYhdvNHf50zSYrjEbwcseTyFcm+b5
-	ua0nNZ/g==;
+	bh=1xVIksZcR76edI4z8mmPrpSpOfu0/pVV80WudQ/Vavs=; b=SPC6gB9Umnp5UF6p8Flblf2O9I
+	B+vZrxbZy5Np469f6gQ5lbCbHGBH0k8dm/UBhxm8grYdVHngn7Wzx0q/fpjG2fPCYaQAUYdKZeHUK
+	q96q6L13VjZPiIh37IEIcC2mhE/JKFene/d7bIHLqybULn/mHY88Lf/x9GMSxGMX+U/qVqS8HXvOu
+	ZJoZvi9Uy1wyPHOhR/f1qKyLn7fOwMy6n5Ws03HYne8UD8uB1u8e028LAogMHaHAYfMKPtdodlXLB
+	LbKJT/HkQrHul/W23xEFirXB/alJAVnpgAOQzrd2IgnU+8tr4MU3vV7TqXrcOvdBV2j0rt8p5Yx0C
+	hnEVHM7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pe0Mp-007SL3-07;
-	Sun, 19 Mar 2023 21:15:03 +0000
-Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c])
+	id 1pe0SR-007TDm-2a;
+	Sun, 19 Mar 2023 21:20:51 +0000
+Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pe0Mm-007SIg-2x
+	id 1pe0SO-007TCI-0R
 	for linux-mediatek@lists.infradead.org;
-	Sun, 19 Mar 2023 21:15:02 +0000
-Received: by mail-yb1-xb2c.google.com with SMTP id p203so10822060ybb.13
-        for <linux-mediatek@lists.infradead.org>; Sun, 19 Mar 2023 14:15:00 -0700 (PDT)
+	Sun, 19 Mar 2023 21:20:49 +0000
+Received: by mail-yw1-x1131.google.com with SMTP id 00721157ae682-5418d54d77bso192458887b3.12
+        for <linux-mediatek@lists.infradead.org>; Sun, 19 Mar 2023 14:20:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1679260500;
+        d=linaro.org; s=google; t=1679260846;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=o0iorqXQgWfUsmZ323+Wyn0oeyKtqb16TQ+B351+3qA=;
-        b=PqJlDX0gTYbEtn8Inp0Uq9s7u/HTYqGjD1dgyn2nK1HN81qzYpJ9YK87P3/GK9pyjS
-         NIox5xD6dYqMCgOx32vaNV7CStlqriTHBcn+xVBoWVHv64f9OkeU7yqIs+ePEjrucDlf
-         hLYQeSFr+uU2/M2tfVJ5lrNZIIQBGZMUOQR/x/Pb64/87ScadQHktjIXmYzf0soAd8Cm
-         1/vXcIPIvmyXhvwjyg9zJXzO53/CrLg2sarThltEBai116bRrT//SIC4+loKJSCgmFoX
-         qFt40qfje7rzwaijTzBX1bDxUpXmUPSUnzUEnrOEFINsNM2XFX8efE0qIlI4ANoUsKOX
-         jQCg==
+        bh=1xVIksZcR76edI4z8mmPrpSpOfu0/pVV80WudQ/Vavs=;
+        b=yxYOpG1BTRH8mP4CO9pabOiIVp8JZr5VwAuFO8HU6vbaqpTxWmCE4iIgG/OVL1bC1K
+         h3LhfvJ9Emngr37qgSs4y3135OyBRvx5CQrGOhqBQ1h52Thw6LlPUCXerXAafRWoy3r/
+         FDFDT9ERbcJkGc+2G4eLkbvA5KcKtQ6KYbmnVg4lq1vniUExZ2sFYpXbvCD7hKDVMLon
+         QLx20N80Tf488Dgbj44gJ9XeDYP2w0y+6+La+/a0ASo0Dh+zkjSg2/P4RcnR2PKoZR8Z
+         jdQ+VbU+0FFOQcGsff14UjVnV15EfKcDuX6yib3W9b/IG0H6KARxUCDOXylMZHreZLWk
+         0npg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679260500;
+        d=1e100.net; s=20210112; t=1679260846;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=o0iorqXQgWfUsmZ323+Wyn0oeyKtqb16TQ+B351+3qA=;
-        b=VKAc7ToCEFZNt8yTvZqx4sehSRtxOe1SmJ/26OCSvEOeOb7JldcZ57v5axJ519qO4h
-         MQdx/CRHInE9hfH/bE4VLvHNZYmZ1HTz0g1JGsX4MoIYex4m8k9M9+8lExj9E4ryUPeE
-         MVr6aG+Hk1wf9Ubml8rnir1y1ugmogj7wJQpKpMFRuKRUenS978y5VBIgwQZ/G6eNLD9
-         +u7Ff9aatZMsdu88VzyCp1lsceXdhxE5qiC2Qf6IZwtH8jbnMSiqyP0N37X8wOLYoYlP
-         6lQ9xSLLGvH52Hd0Zf2yfASiYlYMZVFORVIii69EcrcVfTtvtcccKVjWCI+NW9rdgk4X
-         9i4g==
-X-Gm-Message-State: AO0yUKVGZts8UxOlsPHNoXDCAJi5MEUkIV+N+Q96iFmQ4s7eekRwvkCd
-	ggoBG5Gkl5MphlAWZ0CfGKnszPr6e8G4s6ZrzF4uWw==
-X-Google-Smtp-Source: AK7set88lgxJVA166ieuR2TTLZeS1J0rp7AfomiAt3xMAZzNkfr7DVMxQnogtWZ9zBjTSPGk/rTQReVq7hLkbmXRmbU=
-X-Received: by 2002:a05:6902:1143:b0:aa9:bd2e:3746 with SMTP id
- p3-20020a056902114300b00aa9bd2e3746mr2997588ybu.4.1679260499808; Sun, 19 Mar
- 2023 14:14:59 -0700 (PDT)
+        bh=1xVIksZcR76edI4z8mmPrpSpOfu0/pVV80WudQ/Vavs=;
+        b=AgJfSY0CBl0Sbnj4LOwsucf6MyVT86N4OfG3mkkjYFlfntQ7VwKAtv8fPREcO0wXNx
+         KqsEre/blpxnOpGdJHKyexzoXAqAorpFdOXu24nXrP/Ji+3jdjA6pOoRI4Wb7ulsarnH
+         68spMzn3Av/2QjQFcFc8FqJzMWR2C3WR6eTaJUJ8ZwhvKcoKc9iVP79FG8A93khzEpP1
+         7nGZy8tSTyN94+VBkgtKWdo7vq2DsjhHGuXdF0HHX404Oj6N1pePIvrrkixO4BkYZhPS
+         3R8gxBL5/qdxoMwAh8lzTIx1jnLTxwLKPdzbPVNEs7pnwNTEuRQ/j9A+/QImvEWh0blw
+         RNYg==
+X-Gm-Message-State: AO0yUKXiz1XSVhG1kQ4LHO+W3MtCEQ9eNcZLOELW+Qk5A5vOcG5vSyOM
+	08JaJ3x1RcqPE9Gd0scuylgFLdj0duXmtSStB3dR/Q==
+X-Google-Smtp-Source: AK7set/4tcKb2KcMcmhkFSECkX9UEXl6Q7CPyM6DmVWY/gBDswc6Du79KNPC9UhC3cNpQzNAw1FAAnNdRAYmdab1914=
+X-Received: by 2002:a81:ae5f:0:b0:532:e887:2c23 with SMTP id
+ g31-20020a81ae5f000000b00532e8872c23mr9029129ywk.9.1679260846054; Sun, 19 Mar
+ 2023 14:20:46 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230317233623.3968172-1-robh@kernel.org>
-In-Reply-To: <20230317233623.3968172-1-robh@kernel.org>
+References: <20230319115925.1317654-1-sensor1010@163.com>
+In-Reply-To: <20230319115925.1317654-1-sensor1010@163.com>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Sun, 19 Mar 2023 22:14:48 +0100
-Message-ID: <CACRpkdYFJ-q9OT2b7U-CP08XGfdoD-qN3k3C2KBHhnuBdfSi7A@mail.gmail.com>
-Subject: Re: [PATCH] dt-bindings: pinctrl: Drop unneeded quotes
-To: Rob Herring <robh@kernel.org>
-Cc: =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
-	Manivannan Sadhasivam <mani@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>, Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, 
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, 
-	Damien Le Moal <damien.lemoal@wdc.com>, Charles Keepax <ckeepax@opensource.cirrus.com>, 
-	Richard Fitzgerald <rf@opensource.cirrus.com>, Dong Aisheng <aisheng.dong@nxp.com>, 
-	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	NXP Linux Team <linux-imx@nxp.com>, Sean Wang <sean.wang@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andy Gross <agross@kernel.org>, 
-	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Heiko Stuebner <heiko@sntech.de>, 
-	Tomasz Figa <tomasz.figa@gmail.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
-	Masami Hiramatsu <mhiramat@kernel.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Emil Renner Berthing <kernel@esmil.dk>, 
-	Jianlong Huang <jianlong.huang@starfivetech.com>, Dvorkin Dmitry <dvorkin@tibbo.com>, 
-	Wells Lu <wellslutw@gmail.com>, Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, 
-	Michal Simek <michal.simek@xilinx.com>, linux-arm-kernel@lists.infradead.org, 
-	linux-actions@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-sunxi@lists.linux.dev, asahi@lists.linux.dev, 
-	linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org, 
-	linux-riscv@lists.infradead.org, patches@opensource.cirrus.com, 
-	alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
-	linux-stm32@st-md-mailman.stormreply.com
+Date: Sun, 19 Mar 2023 22:20:35 +0100
+Message-ID: <CACRpkdbxSNCKNfous7h2dBQ_AW9KS9qyxPfPxOO=3PMDsDxcng@mail.gmail.com>
+Subject: Re: [PATCH v2] drivers/gpio : Remove redundant platform_set_drvdata().
+To: Lizhe <sensor1010@163.com>
+Cc: brgl@bgdev.pl, geert+renesas@glider.be, info@metux.net, rjui@broadcom.com, 
+	bcm-kernel-feedback-list@broadcom.com, f.fainelli@gmail.com, 
+	sbranden@broadcom.com, shc_work@mail.ru, j-keerthy@ti.com, 
+	hoan@os.amperecomputing.com, fancer.lancer@gmail.com, orsonzhai@gmail.com, 
+	baolin.wang@linux.alibaba.com, zhang.lyra@gmail.com, shawnguo@kernel.org, 
+	s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com, 
+	linux-imx@nxp.com, kaloz@openwrt.org, khalasa@piap.pl, 
+	keguang.zhang@gmail.com, daniel@thingy.jp, romain.perier@gmail.com, 
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+	thierry.reding@gmail.com, u.kleine-koenig@pengutronix.de, 
+	grygorii.strashko@ti.com, ssantosh@kernel.org, khilman@kernel.org, 
+	mani@kernel.org, ludovic.desroches@microchip.com, andy@kernel.org, 
+	palmer@dabbelt.com, paul.walmsley@sifive.com, jonathanh@nvidia.com, 
+	sathyanarayanan.kuppuswamy@linux.intel.com, michal.simek@xilinx.com, 
+	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-pwm@vger.kernel.org, 
+	linux-omap@vger.kernel.org, linux-unisoc@lists.infradead.org, 
+	linux-riscv@lists.infradead.org, linux-tegra@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230319_141501_024321_28FB5D03 
-X-CRM114-Status: UNSURE (   8.57  )
+X-CRM114-CacheID: sfid-20230319_142048_172048_54BDEB23 
+X-CRM114-Status: UNSURE (   9.50  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -117,17 +106,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Mar 18, 2023 at 12:36=E2=80=AFAM Rob Herring <robh@kernel.org> wrot=
-e:
+On Sun, Mar 19, 2023 at 1:02=E2=80=AFPM Lizhe <sensor1010@163.com> wrote:
 
-> Cleanup bindings dropping unneeded quotes. Once all these are fixed,
-> checking for this can be enabled in yamllint.
+> platform_set_drvdata() is redundant in these functions.
+> the purpose of calling this function is to place data
+> in *driver_data. but the data is not retrieved in these
+> functions
 >
-> Signed-off-by: Rob Herring <robh@kernel.org>
+> Signed-off-by: Lizhe <sensor1010@163.com>
 
-Less bad examples =3D good.
-
-Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+You have to also ascertain that the data is not used elsewhere
+like in some callbacks or even in other drivers in some odd cases.
 
 Yours,
 Linus Walleij
