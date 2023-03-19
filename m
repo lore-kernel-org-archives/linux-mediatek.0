@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D572EC6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Mar 2023 15:00:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70F13C7618A
+	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Mar 2023 15:00:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:
 	Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FaY0Xl4jfnqhSvRMHOlCX3MBxMkltd1/bLTF73k4weg=; b=iFGN0+x2GnIpf9VgWRgIuMifWp
-	UKCVxHg7lGs1inHSU6js20hCuDPWiahyUiN2kZVcJNKpPRIlm0CrZRAH0thZDvXdQPZMehg4ntkW6
-	B9zZ2dYHNNI0gdfwefbQO5hCwmPaE8ytzEHqzLHPeHIWb159zpxs2gzzOuc8CxfU/WMxNo0h0aStv
-	ecyHWzdqIbY9VDN/D32ELOanOdh+xVsSTAOt6RmFuITb8JAs4vli64GfU71aF6fz1Pjc2/f6mWb6Q
-	hRIFY1qim695SI4GXwMZqZoQ1oPIgpLpVUodfZXwURgNwNwEIB87YvvcP71Jpee2HzRnqOBTpykRp
-	PyAcSuyw==;
+	bh=FaY0Xl4jfnqhSvRMHOlCX3MBxMkltd1/bLTF73k4weg=; b=IDv1QugLRvdxQhUHgG1kLOuVYn
+	xMShVn+UAOL2AHVXSs/cfnBmH8oaulwvObF6SSJbOqdAu42P9wa93/CGKUiGGR0cHGLBIuwjMOfs2
+	F/VZDsgij7ryMEIXGu0ElDH4Jv5dn6nis7U96E1+4UCfhi4XP+X1CH3V4/rjbXx4fx2qqkn/0+Suu
+	n7ySbozr3w4I7omc9/TkvZttO03vcDsRVMvfoRIOAbXYI0lQ3AUzL072DyOtoeOQHvReuSYYAy2cz
+	ZAhOzPybmmRgLjaS1YI7OR9maZ0vVHneKFH7EOgOS4RBz9RbT7YeGSIdjQU7Sh2dMvenX9F8Y/HbJ
+	snp+ILuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pduW6-006tJe-2b;
-	Sun, 19 Mar 2023 15:00:15 +0000
+	id 1pduWF-006tNe-2v;
+	Sun, 19 Mar 2023 15:00:23 +0000
 Received: from mout.gmx.net ([212.227.15.19])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pduVy-006tGL-05;
-	Sun, 19 Mar 2023 15:00:07 +0000
+	id 1pduW3-006tI8-1w;
+	Sun, 19 Mar 2023 15:00:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1679237974; i=frank-w@public-files.de;
+	s=s31663417; t=1679237989; i=frank-w@public-files.de;
 	bh=FaY0Xl4jfnqhSvRMHOlCX3MBxMkltd1/bLTF73k4weg=;
 	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=m+78KDG7Mmcwc7gj18tQBa5KlnttrpkmTbH5ILg4BO57oA/iIFDrmKTGogVyvT0At
-	 3NXfJtLhYF08QYSW58FIVQilQLC6uEN860tc7QQ0HNONXFVUF/SU5ZnxudwUmctBlA
-	 1dzbg+GY1aUSTqPNFbWzy4nCgEu59+hILd8JJ0XcAdK/4jOyV7G9TweEKRFrFLXxk8
-	 L/0samKM+ZUHOs2piwAUOUFUlBDYV4xQjH9ZfmnZZFivYPEaukRvU5FKw8M+JUe0Qv
-	 gVafW+DOXWiz/Rx5SGvuCVKjBDBNqfIMfvXaWEz7URPR6lSwOg+M0zbRHvnSYMNyXG
-	 tV03zE+CicDgw==
+	b=tZJsnxpbx8mj1ojXRBCtyzKk/vRDE8bWU8MjIVkvmjWpFfcIpABLv21lwVAASEuRm
+	 TzPiGxRYLFGFuqIqF0JT11RTJfWqbIQXwAmgD0EtdXjPqnSnVYONfXR/vdGCGLyXxq
+	 XzgHAPHK/SCjuqyJvy85wwhEVkfEdS118OSbVAhP/ZsrbvMPpMuDE2RgH6z3WaBXPV
+	 aSjIT3Suz8GO3ApN+Tn/SkzJUMdDj3rlxyi4G7CsRGUQ9fpj8CC4FZCht0Gb8FzKtw
+	 DufBNMp2t8B1oVcjq0O/Bs+E8qEHyxjsMhoKhSJdi4fiYaxBopuIH+h1oKGm7tKKse
+	 VR6ZOWNOznA2Q==
 X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
 Received: from [217.61.158.68] ([217.61.158.68]) by web-mail.gmx.net
  (3c-app-gmx-bs27.server.lan [172.19.170.79]) (via HTTP); Sun, 19 Mar 2023
- 15:59:34 +0100
+ 15:59:48 +0100
 MIME-Version: 1.0
-Message-ID: <trinity-0a0531c9-44c0-4171-9d5b-3607df6175d4-1679237974351@3c-app-gmx-bs27>
+Message-ID: <trinity-74490009-c9ba-4ac4-bc4b-8f613902f698-1679237988949@3c-app-gmx-bs27>
 From: Frank Wunderlich <frank-w@public-files.de>
 To: Daniel Golle <daniel@makrotopia.org>
 Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
@@ -58,38 +58,38 @@ Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
  Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Vladimir
  Oltean <vladimir.oltean@nxp.com>, =?UTF-8?Q?Bj=C3=B8rn_Mork?=
  <bjorn@mork.no>, Alexander Couzens <lynxis@fe80.eu>
-Subject: Aw: [PATCH net-next v14 8/9] net: ethernet: mtk_eth_soc: switch to
- external PCS driver
+Subject: Aw: [PATCH net-next v14 9/9] net: dsa: mt7530: use external PCS
+ driver
 Content-Type: text/plain; charset=UTF-8
-Date: Sun, 19 Mar 2023 15:59:34 +0100
+Date: Sun, 19 Mar 2023 15:59:48 +0100
 Importance: normal
 Sensitivity: Normal
-In-Reply-To: <3979b99300067c595a4406dbb0dec3ca9ba14952.1679230025.git.daniel@makrotopia.org>
+In-Reply-To: <a770f39662182c5dd494d98717820f5bd98a47e2.1679230025.git.daniel@makrotopia.org>
 References: <cover.1679230025.git.daniel@makrotopia.org>
- <3979b99300067c595a4406dbb0dec3ca9ba14952.1679230025.git.daniel@makrotopia.org>
+ <a770f39662182c5dd494d98717820f5bd98a47e2.1679230025.git.daniel@makrotopia.org>
 X-UI-Message-Type: mail
 X-Priority: 3
-X-Provags-ID: V03:K1:sU97e+lgcCfTk1IjrHuZB3vZAMLNfgAeGL8Gt84Pf1cml7G8cpK40yiE5ipilxbyng1/N
- Mgsp56itmfUxpBaGUbCJhbnTtPcUEpk9qwGxhGvYfEwKlxip/NqrxQc8qNpqhFpQlvdIrehVd0Wl
- J+2YTMELPeGRjBw6j/y+/EuD1GnG3BdM7DIgqFDcQLytk38JmOVNp/TTM5wc7CsbCUyBE9IsI168
- TV0FSDv4Go74vG9Q/w6oZg9uiy568Sjd/3G2B/qvfBFS7xCBVsIXZu0Hvz9rvNrg+H1Ah1oN+jro
- sc=
-UI-OutboundReport: notjunk:1;M01:P0:F+KgMaH38GA=;QHG/JQQ7xTXbN5KWA50Q7bm/nls
- UmA8y9ZKTD+xKs3Zgq8yKQgg1V7m7dYVxUulOqVHyfaJ6OUWHjMo8EEt4XsmwOTHW5Vf5EuJH
- 0wDqQrruFU+U8m7q+RvWeS8uZy9kQc+gNIGaRGyrIG4VY7CyA+Juc6NKZ7vy3N2TKBlLcvG7k
- PDNUr1mPa0/MxCQ6GNtVeRzrmfnXf+ACOhgUaL789SROQlrGcnWtoBHY0iJ6JWxj9MlbGZlGX
- gccYchrjZSSzDCbyTjcmPX5IQ5Hj2tQEd+EO887fFh85jcsKzjQAcRCmVcZjKGS+xVrIXdgPA
- jc+bYaI+Hnpxz1LxAfp0JGQYIE9glaqWfZ/W0b5QY7+TNRACjEZ075+dbBQdw+clC5fQNanOC
- m1z8W6mRIVvYCPQSE7c0CxCsplJ6QcQi6pJCMevdZOXWvXW3Oo7tLqNUiRAZjQyw1edCFw5Yk
- BKXf4msGfffE1horaTG+mXrKgaijbtcGvg2g2vCpCPLeuyqpQoPSGsBUSYW1m55yReUTlksCe
- pjppl/Ww/EctJFjBwTlgwN0FEfG/FFhwvSCo0O5mu/NQHcU0+ahO9HyZVWqLQ+W/ahRpF+YDr
- BxJK3fCN9Fe9BIC66iJ8PQ8l9YQ9CMQSWuIkulftmgjaZFo0+8L48ITdC1zzTrH9COPsh/DFG
- SXnMlVHemBigLD1E1ROzpfMqlBc8m4Oq3S0QDF3fW0UMXMOgdL64Zvgn+3FaZ+VsP62WHB+/y
- HIcl4cVM7og24z9TuYNcLsQb0cIBg814K7nssCSl8+JlkzBbeQyYFj6uGm25/TrV3oFxK/Fnh
- V8VqpqRHPqFA4SpyPda4wFBA==
+X-Provags-ID: V03:K1:+v+uKNdg0PstN/8SJfDHeTZE6Mum0N2MMgrG6r9wnuu8npcGDS19dKHlr+4z910/kn4ha
+ p6ZPtCdf0TmZg3E4qK5FcBtPlzrS/N4eAyK2lS2/GChhhBvhEq7zy9dfsQ5wjonj/O621mnX2nVW
+ P6HnC17Z69WOF/6ZH8BLhr6d4itqShstcAC7fDzPiPn9HUoM+fqE4wADrnvqK9vL+pMKIHcn1gay
+ cmahC8uh31l+ugPj/wP/8BqXU0JSEmsw0/8awGqQG9XOivmDQwplpaHFCOSKmsNYbxf8OvAF6s0K
+ uY=
+UI-OutboundReport: notjunk:1;M01:P0:Mv/Q0HQ28M8=;N2EnFaqiI3lWUB7Lb5ETkVJmKfb
+ z4DGVQB44ibOLG7T5GpqgysxIbH4Oo5kinSx2P523Poyc++ir05S/w6xo71JzHtgLB1JLUr90
+ zo/ujXaL/Hz7RhGywZE6IQ1yvtBhbnlbm8zu/wSeQfja3x/tSo3FpbEGL31cuhfYLaM5b2DWM
+ p2vi3EyM21CLncvkSqho2R3Pqb78UIy5ZmwicqxBRvZQj75YDHaDyqQg6AAbx+Cv1tIz/rAwt
+ ZhUXbNKe2RjlgugZv9m+msihYstPWMQG52Wbr9xZYcpA7kOnC+NkuPE078rWa1Ek8kBH+3BiR
+ lEZ5VDCpwfzH2i5c5G/yivHTALvYMemTL5NRb8zlXWT8GGZzyRQlda1gTr4G8KLPhUL9Ek5T6
+ uDrRMi33dYOiFyYVpVNIG7SPlX4lScbnGS1rtTbuUPlOgvpRrGDIBod5fEoFQf1s1upGIZY5f
+ PCLvwaifHi8evBzNue7o9pyFJ+fEbFE/EetldsNN/JF/yP1yWkpX1MolED4eaQbjrEzrm+Xm1
+ tM3BXU24wSDFekXHXNfA4GXtuncTERQyJnY1JArkkfQXg4sttwo01lbOGhRJdzhEz+ioARfv8
+ 6B7CA292RmUD4BGFRu3shaLzsu/3+RdhfiSgZxZbW+GLagh9wO9Ue6wFOLifCja7yAeKSehRE
+ PiLSPL3ZkiPbbqQl9GCBbehJsr/0+JE/MfL1yDqFU3s776r8HjtnsrNzuB1cbCqryFxrqAPe/
+ gniwuNT1hQojgeV2Zxdoh2aXlZMyZ8XP0DapQM/yIHHNWLCzi02sgQ+Y21vaqEXEzBSKfAIWO
+ PqEQQlut0h/iiAWrT86ovVPILuK2tZ/evTWRSOBSvuvzo=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230319_080006_457438_A0EB6DD0 
-X-CRM114-Status: UNSURE (   6.51  )
+X-CRM114-CacheID: sfid-20230319_080012_000714_5CAAE301 
+X-CRM114-Status: UNSURE (   6.31  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
