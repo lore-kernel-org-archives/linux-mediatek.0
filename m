@@ -4,84 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FBCAC7618A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Mar 2023 07:15:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04D8BC7618A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Mar 2023 08:01:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vAIfZI5MtANB1KC8EoacpIKHc7OoMMemT9OkZVfmoAQ=; b=cws+gM1GWDY9ey7b6pXPxmIwhR
-	NXX05WEbYSHXrbvuIuCZhWAe1RoDJ5X4DTPOaDqSua2IWFlYrlb9TJHxEgMrR8fliM/uyCS+3tJ+K
-	xOfC0PkTV01JfO1svxei/yIj2CRzVmTZ6Pg6Ql6ZgYYveg6K86KkidyCmFilNtv0r9Jewpv37SeFU
-	rmj9ukretN+jkd17j/UhczCJeOhNj5IfOT2/k3+2FpSsS49XWKLje3EC17dOWjsrq5pvvh1N5QQCR
-	7ZW8w7iMTdghVBT21SsNyWZBHn/qkWMkBI0YEoSQpz6Td8u61zVI5WNWMktSePwiBiyab+4SkzVV8
-	L0+c22sA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9YDU8IzF0EsSpDkzRDjzs/d7Q1NfYw1Ou2xNB8kfdm8=; b=zp/PAAY3/NdZ6tCvafZXzqECDc
+	+lctAjmEkFwPQScyCaAblUpboj1Oz45vNI4Gcjk/5wrS0udMGDjkYgvI1z4wowMpRI/hB8nAWuj78
+	3OC8r5s2Hv09RLwCOdQ7cgg2+LFLHkf6DX0En8mCvD22xtq3+we24leQOFxnR1ayfe6JagpRS35ag
+	2iVwRkkX7bh/5xaTgIYxSiLh/MI81CqkhD5gKpRHaObC96vh0lsd6+FoXB+tt0QA5O7CTmo9mcLm6
+	Zz40sHt4StXsC73ou5pWZETYK3FO8W4Fd+YGbX9cgoUFTXx/zgq/bqMqwKD3tWNuhzy7anBHf5Zgq
+	5YweQFhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pe9k7-008Hrp-1g;
-	Mon, 20 Mar 2023 07:15:43 +0000
-Received: from mga04.intel.com ([192.55.52.120])
+	id 1peASK-008L41-1V;
+	Mon, 20 Mar 2023 08:01:24 +0000
+Received: from mail-qt1-f171.google.com ([209.85.160.171])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pe9k4-008Hqz-0b;
-	Mon, 20 Mar 2023 07:15:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1679296540; x=1710832540;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=96gp98CgPmdI61qm0TB29Gzv3LWLZoLSpLgfOEYGVIo=;
-  b=FxDCrjFOsjB+zh082ihP8pUX9rHoDUE5hnX1Ls0/HCKdijBv18i5/p4y
-   Nz0WpvDV0YNymY2iz+1SEMZyu0L4L+X9U7ikgyVMYvU7AQjnjVWcNWWmf
-   DgpKckF9P5E3PGuv4A+E2Uc5Nw4Q69rAX/Im3hUZpJocaVWlj8vBIzepr
-   mBJtdz/wh6SamxYhY8gqOc6i0cYVXPNdLGf5aTXIcHEJh/IKCOIHaxLPg
-   tA8dROPvxM7f66C4Vy8aV7A7nvsVR0N9Wm4Wb/uSw00yBt0ZTmUDiBFax
-   QQTjpe29FobntXvxrDJT9ZkMeWYa44Gcy7ObszrJOK+HY7q/ac78x5NMs
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10654"; a="337308498"
-X-IronPort-AV: E=Sophos;i="5.98,274,1673942400"; 
-   d="scan'208";a="337308498"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
-  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Mar 2023 00:15:37 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10654"; a="1010362285"
-X-IronPort-AV: E=Sophos;i="5.98,274,1673942400"; 
-   d="scan'208";a="1010362285"
-Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
-  by fmsmga005.fm.intel.com with ESMTP; 20 Mar 2023 00:15:33 -0700
-Received: from kbuild by b613635ddfff with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1pe9jx-000AtG-0G;
-	Mon, 20 Mar 2023 07:15:33 +0000
-Date: Mon, 20 Mar 2023 15:15:26 +0800
-From: kernel test robot <lkp@intel.com>
-To: Yongqiang Niu <yongqiang.niu@mediatek.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, CK Hu <ck.hu@mediatek.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
-	Yongqiang Niu <yongqiang.niu@mediatek.com>,
-	linaro-mm-sig@lists.linaro.org, linux-mediatek@lists.infradead.org,
-	Maxime Ripard <maxime@cerno.tech>,
-	Hsin-Yi Wang <hsinyi@chromium.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-media@vger.kernel.org, Sumit Semwal <sumit.semwal@linaro.org>,
-	linux-arm-kernel@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [v3, PATCH] drm/mediatek: add dma buffer control for drm plane
- disable
-Message-ID: <202303201543.ahrAhliY-lkp@intel.com>
-References: <20230320030449.5397-1-yongqiang.niu@mediatek.com>
+	id 1peASH-008L3J-1r;
+	Mon, 20 Mar 2023 08:01:23 +0000
+Received: by mail-qt1-f171.google.com with SMTP id c10so894914qtj.10;
+        Mon, 20 Mar 2023 01:01:17 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679299276;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=9YDU8IzF0EsSpDkzRDjzs/d7Q1NfYw1Ou2xNB8kfdm8=;
+        b=yzW5HqODszzZ5DqS3i4oUNHY9MsszLeDUxDT+sCs8TWZwZH6+KYKAjJ8xa/Ij2/WQv
+         34Hlzu39yEg3nBn6VxCkbH03T8LnJ+YHoFdXbEtPi8ZxRGw6+yzZhD4p9PjaE3iwVdA7
+         1nXk8cM+ogYNDgfa6V4JyUyWuFyIZb24xa0bXnV+piaelX7ktzJBEPRiAt5F6LCviNqA
+         jveZdiRuuQDLhnl+t1J5XhxrAiziR+VghvyBSsdHtspBW0XspS95lPW2TCI5u8H2Hd1c
+         V6RiscWrFi13/Saizrnhn6RSYsg+lTcIxdx6qxGKgIYcvWs/0sXvwoABNhE/H3UpBMop
+         1Cdw==
+X-Gm-Message-State: AO0yUKUEZTU+1OBflZwMqZsFGTpvGv1xdaoSsj6kaIf+FStzSnoqtkrV
+	gPW0ofHvCvAWQPyQOylMyLW/L5Hh0ovBRw==
+X-Google-Smtp-Source: AK7set9jihBmEMOCg2Npts+vugkN9dvU9cgaSOU7tOIyLer53+gKQH+T3aJGg0Au1xhcy5gu77QUuw==
+X-Received: by 2002:ac8:5792:0:b0:3e0:d161:29ad with SMTP id v18-20020ac85792000000b003e0d16129admr4775187qta.28.1679299276653;
+        Mon, 20 Mar 2023 01:01:16 -0700 (PDT)
+Received: from mail-yw1-f179.google.com (mail-yw1-f179.google.com. [209.85.128.179])
+        by smtp.gmail.com with ESMTPSA id b13-20020ac844cd000000b003b8484fdfccsm5990418qto.42.2023.03.20.01.01.14
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 20 Mar 2023 01:01:15 -0700 (PDT)
+Received: by mail-yw1-f179.google.com with SMTP id 00721157ae682-5416b0ab0ecso209454247b3.6;
+        Mon, 20 Mar 2023 01:01:14 -0700 (PDT)
+X-Received: by 2002:a81:e508:0:b0:544:5fc7:f01f with SMTP id
+ s8-20020a81e508000000b005445fc7f01fmr9057012ywl.4.1679299274592; Mon, 20 Mar
+ 2023 01:01:14 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230320030449.5397-1-yongqiang.niu@mediatek.com>
+References: <20230310144721.1544669-1-robh@kernel.org> <CAMuHMdUaeyHs9fQxS+16F62uHaifJYMXKJpL2-xi-SL5HCrTHQ@mail.gmail.com>
+ <CAMuHMdX1=+WwWjfiWDYOjSzTjcYBEY+QR=XKuU+o5_SCyU7rag@mail.gmail.com> <CACRpkdaw7TodD0hr3vD8cGB80k0qtEiaC1ne-ivCj6YEefi44w@mail.gmail.com>
+In-Reply-To: <CACRpkdaw7TodD0hr3vD8cGB80k0qtEiaC1ne-ivCj6YEefi44w@mail.gmail.com>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Mon, 20 Mar 2023 09:01:02 +0100
+X-Gmail-Original-Message-ID: <CAMuHMdVgWne0goeJ3A1=v8FZCz3hmHC2j_UEYPn51gD1jz-9uA@mail.gmail.com>
+Message-ID: <CAMuHMdVgWne0goeJ3A1=v8FZCz3hmHC2j_UEYPn51gD1jz-9uA@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: Use of_property_present() for testing DT
+ property presence
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: Rob Herring <robh@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
+	Tony Lindgren <tony@atomide.com>, Haojian Zhuang <haojian.zhuang@linaro.org>, 
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Chen-Yu Tsai <wens@csie.org>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-omap@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, 
+	linux-renesas-soc@vger.kernel.org, linux-sunxi@lists.linux.dev
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230320_001540_254273_CE7C06F4 
-X-CRM114-Status: GOOD (  11.64  )
+X-CRM114-CacheID: sfid-20230320_010121_640444_856F7F94 
+X-CRM114-Status: GOOD (  34.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,45 +95,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yongqiang,
+Hi Linus,
 
-Thank you for the patch! Yet something to improve:
+On Sun, Mar 19, 2023 at 9:55=E2=80=AFPM Linus Walleij <linus.walleij@linaro=
+.org> wrote:
+> On Mon, Mar 13, 2023 at 12:00=E2=80=AFPM Geert Uytterhoeven
+> <geert@linux-m68k.org> wrote:
+> > On Mon, Mar 13, 2023 at 10:00=E2=80=AFAM Geert Uytterhoeven
+> > <geert@linux-m68k.org> wrote:
+> > > On Fri, Mar 10, 2023 at 3:56=E2=80=AFPM Rob Herring <robh@kernel.org>=
+ wrote:
+> > > > It is preferred to use typed property access functions (i.e.
+> > > > of_property_read_<type> functions) rather than low-level
+> > > > of_get_property/of_find_property functions for reading properties. =
+As
+> > > > part of this, convert of_get_property/of_find_property calls to the
+> > > > recently added of_property_present() helper when we just want to te=
+st
+> > > > for presence of a property and nothing more.
+> > > >
+> > > > Signed-off-by: Rob Herring <robh@kernel.org>
+> > >
+> > > Thanks for your patch!
+> > >
+> > > > --- a/drivers/pinctrl/renesas/pinctrl.c
+> > > > +++ b/drivers/pinctrl/renesas/pinctrl.c
+> > > > @@ -125,8 +125,8 @@ static int sh_pfc_dt_subnode_to_map(struct pinc=
+trl_dev *pctldev,
+> > > >          * inside a subnode nor across subnodes.
+> > > >          */
+> > > >         if (!pmx->func_prop_name) {
+> > > > -               if (of_find_property(np, "groups", NULL) ||
+> > > > -                   of_find_property(np, "pins", NULL)) {
+> > > > +               if (of_property_present(np, "groups")||
+> > > > +                   of_property_present(np, "pins")) {
+> > > >                         pmx->func_prop_name =3D "function";
+> > > >                         pmx->groups_prop_name =3D "groups";
+> > > >                         pmx->pins_prop_name =3D "pins";
+> > >
+> > > Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
+> > >
+> > > This check is used to auto-detect if the standard property names
+> > > should be used, or the "renesas,"-prefixed ones.
+> > > As the last users of the latter were removed from DTS in v4.10,
+> > > perhaps I should just remove these checks instead?
+> >
+> > Sent a patch just doing that, so you can drop this chunk.
+> > https://lore.kernel.org/linux-renesas-soc/ff9c14781110bbf19b56b45dd1f01=
+e6da90319ad.1678704441.git.geert+renesas@glider.be
+>
+> So I need a new version of this patch before I can apply it
+> I guess, or there will be conflict with Reseas stuff?
 
-[auto build test ERROR on drm-misc/drm-misc-next]
-[also build test ERROR on linus/master v6.3-rc3 next-20230320]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+It would be a minor conflict, though, and you would have to resolve
+that yourself, when merging my renesas-pinctrl PR.  So when you
+will send a PR to The Other Linus, there won't be a conflict anymore,
+and no angriness ;-)
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Yongqiang-Niu/drm-mediatek-add-dma-buffer-control-for-drm-plane-disable/20230320-110649
-base:   git://anongit.freedesktop.org/drm/drm-misc drm-misc-next
-patch link:    https://lore.kernel.org/r/20230320030449.5397-1-yongqiang.niu%40mediatek.com
-patch subject: [v3, PATCH] drm/mediatek: add dma buffer control for drm plane disable
-config: arm64-randconfig-r001-20230320 (https://download.01.org/0day-ci/archive/20230320/202303201543.ahrAhliY-lkp@intel.com/config)
-compiler: clang version 17.0.0 (https://github.com/llvm/llvm-project 67409911353323ca5edf2049ef0df54132fa1ca7)
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # install arm64 cross compiling tool for clang build
-        # apt-get install binutils-aarch64-linux-gnu
-        # https://github.com/intel-lab-lkp/linux/commit/ae19fefd6d548a2766bc6d1902c46d5baa39a202
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Yongqiang-Niu/drm-mediatek-add-dma-buffer-control-for-drm-plane-disable/20230320-110649
-        git checkout ae19fefd6d548a2766bc6d1902c46d5baa39a202
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm64 olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm64 SHELL=/bin/bash
+Thanks!
 
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Link: https://lore.kernel.org/oe-kbuild-all/202303201543.ahrAhliY-lkp@intel.com/
+Gr{oetje,eeting}s,
 
-All errors (new ones prefixed by >>, old ones prefixed by <<):
+                        Geert
 
->> ERROR: modpost: module mediatek-drm uses symbol dma_buf_put from namespace DMA_BUF, but does not import it.
+--=20
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
+.org
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+In personal conversations with technical people, I call myself a hacker. Bu=
+t
+when I'm talking to journalists I just say "programmer" or something like t=
+hat.
+                                -- Linus Torvalds
 
