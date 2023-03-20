@@ -4,78 +4,146 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 979C5C6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Mar 2023 13:26:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3986AC6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Mar 2023 13:27:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=vDfXw8n+plfaogBjIL2pZ2EWfG8n/n4snUHtV8b5Viw=; b=x0I2KlzA2Q9UEFcmBK6/iN3D1n
-	ZImYG50aWh0f9C68JO6ULzWJH95XFCMy+rVb6w/XxXg9n3CfROyC3emk3F3nV7mi3h+TucfNFZj+e
-	YjjWLH2LAza0BtrVZIpGVvjYMgITzl/SAhKEOVHa/cv1d+f5GjDSenkBMOX/VbtaIJwo4Ghd6Y3/q
-	jfJZdsS9iz+BgSO+4Ti/ZEzlNWFQFJEaKrdjnPGYdUnPaOw0gQ9nNgQFwVgOciVAect/QaDd+tmLW
-	UPUJJ+xTda513oh5KpYX6rv9MpQpXelMkVeu/4tJNFsfeekfvvanS7zYEjkmtiQ5zLfRXEW4sfFIR
-	m4X51YyA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2Ok1DuOvJ93CbELVy/ByvQlweU5vJbTjXQuLHs068S8=; b=X4DGrP6laQfdAEWG9EcT8l8vbz
+	oZi8hJZAL+NU8FXlq61lZUkMnVWw2NCua7FBFuscOmGTqRsAVZ7w7nuWE1r0EOqY7YeNtgaDEN/lM
+	WeQ33GPMqkKbdclqvslNZPgWzIuH1oLVuCl010wwkSO8Un0ETxhyAw3KUWZhKMxXcJQ/nP5R1meWi
+	CiXnT6c//6kgSicAi1vVtx0e4uv8QUQox1HZmFoI0is1lGQQ7yDl/2mF+CPNYe/V8t8Js2vbSO7QF
+	KweNzU6IdF5V9tN9a/Hxz92XCm8EJDj3znmmDEKE1GEzvMKCDaq0z+yjCZDuJdl3gTFgwXCqeePo+
+	LaXmeQ8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1peFX9-0099V6-07;
-	Mon, 20 Mar 2023 13:26:43 +0000
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+	id 1peFXV-0099aN-05;
+	Mon, 20 Mar 2023 13:27:05 +0000
+Received: from mail-mw2nam12on20615.outbound.protection.outlook.com ([2a01:111:f400:fe5a::615] helo=NAM12-MW2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1peFX4-0099TY-2D;
-	Mon, 20 Mar 2023 13:26:40 +0000
-Received: by mail-ed1-x52e.google.com with SMTP id x3so46644305edb.10;
-        Mon, 20 Mar 2023 06:26:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679318797;
-        h=message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=vDfXw8n+plfaogBjIL2pZ2EWfG8n/n4snUHtV8b5Viw=;
-        b=TK24hBgvtg6ItCpuhcywrfVa7qGcJHXRiQu+H4BC19kNZKV80fTwXzNZXYs/MGtsSL
-         xidhfMRdQ3Ow/iOcTrVtdIRkil7Ie339b+l+4SQepJ89IPiS0i6ZWwGDtIADlUTEjqZ6
-         1lnplEniFlBc1neWPlpkXoYwVSG91v+zR7GlmDjH/xe3bsSm40Mxh9cJND0Qc0HlFETe
-         KE5zHnaSzvHAKC2WMpPwWKHwBuf2X3LcOV1bkP0d7aiZ2a90r02UbrwOubsO1YuOzz1I
-         kLuFJE+OdglrKxyMYRdTVm9VR6QZyz08ShJOTHcTh5GL5koIapzUvqRdQ7yjQVrD0VVB
-         9xsw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679318797;
-        h=message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=vDfXw8n+plfaogBjIL2pZ2EWfG8n/n4snUHtV8b5Viw=;
-        b=LRnvrJGxe1tVqQYsFstvV3eedo9jum2+af9qD1Gpv/STwHcd5/s4hyi2dJVn+BDkWQ
-         YFz8e3NIaEIbhAauKId8Yog1fFb70Q0dBzwquxYjG9uElRL3JMgnZjFGo8oFdSMNqsKJ
-         h8ysjn4Y911D+45jRJZ6kVt7h4TBteqfUOdu4sGpHiYBHwN+tEbPFudQIrMZloIl7EDq
-         /D1qoIIWcGRTdXRjUDFK2hDCtJHLDTd25ko/ESPnbhrTJFHBFq9Dvkb6WKfUDV0BS3zG
-         cocIfyEqZMib5xel5aIORD7AnXeIW2+XvtpvuoeNlKPzCqV8ID68pOCvKJ6TXKwe5nAi
-         zp5A==
-X-Gm-Message-State: AO0yUKW16xEjQCws+QHsSoY9SIhOEWGL2StFjyJRTCzSxabqkanj6MDv
-	KsRRcIIIDWUKhy+lgWjNuR4=
-X-Google-Smtp-Source: AK7set9LYsrc6rSGVPOo2WixyVETc+tPy5GdWlw9Og9E8PmO2dLEFAp0dxhnAFPXzTX++ZwHvPz24g==
-X-Received: by 2002:aa7:c1d6:0:b0:4fb:78a0:eac2 with SMTP id d22-20020aa7c1d6000000b004fb78a0eac2mr12517447edp.31.1679318796724;
-        Mon, 20 Mar 2023 06:26:36 -0700 (PDT)
-Received: from felia.fritz.box ([2a02:810d:2a40:1104:394b:6c53:31d8:7b18])
-        by smtp.gmail.com with ESMTPSA id sd24-20020a170906ce3800b00931024e96c5sm4492691ejb.99.2023.03.20.06.26.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 Mar 2023 06:26:36 -0700 (PDT)
-From: Lukas Bulwahn <lukas.bulwahn@gmail.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Russell King <linux@armlinux.org.uk>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: kernel-janitors@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	Lukas Bulwahn <lukas.bulwahn@gmail.com>
-Subject: [PATCH] ARM: mediatek: Remove unused configs MACH_MT6592 and MACH_MT6592
-Date: Mon, 20 Mar 2023 14:26:34 +0100
-Message-Id: <20230320132634.17331-1-lukas.bulwahn@gmail.com>
-X-Mailer: git-send-email 2.17.1
+	id 1peFXQ-0099YW-2A;
+	Mon, 20 Mar 2023 13:27:02 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Rnsq/X63b31pca5NexZcDSVGfBgDg/+b3ZsZKYFW+zeC3IGIjzfiT6RJ/3wO5PSC+j6snUioaftIrCI+Na2pJQHDIJWQrrWvKdqXDw0qgjG7bKkJ/qg1ZiAAU7IswlBMFs6OJjXRs0ca0NedDl8OfQdX+x4FfWfGAytwyJeveN1kEtrjL0QOLhRGGBxvBaQX0JdGJbTDFV/E5xQ/bTVK8CfYCVXnBfKV8ZPsIk363FUusUbq1zddsKtugphYLx/TuPsPuoiTWbe7f0HE3YuseooaI/3UscS6fRDHbZv9ORgDUkqyXtM5rfN/KOYrI91+V535EWN7c2DA1jTBSo6XJw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=2Ok1DuOvJ93CbELVy/ByvQlweU5vJbTjXQuLHs068S8=;
+ b=hn6LpIxFXX1QjvbT2+b/ypnARfuf1KFFFYAvYuGMshsM6a4b5FKXWt9Z/kjkV3nKy+D0SPmmp0EH8ZEkJ63b8LTKTMsIn7h+RevzeeEjRQdxu97LToVMKDxuJI+1Yfijwq9IGL+OlEwztOyyQ832m52IB+zuykp0KL5DwgDpYhL6UeMRFo3yqNP7M7d2Q3KX7raPTNx5mNmYiUzLVv3uX7g20qSXqab25T9OTX8TC76Zlt0CsTd9692JzSBX7a5vKWf+XGCUhQRLAQgVrHG1UZHp30+z1MORxMIc7DRubQRQM780imTud3PJ9uEuTOI6/FIJuUVIZTT7OQE5cpYVwA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=2Ok1DuOvJ93CbELVy/ByvQlweU5vJbTjXQuLHs068S8=;
+ b=Yp4s/s+7SFpdar8rr7tdakFvOs7uNJHVnYVPnBgyXG4KjiS2RBZxFTcrisE+MTels6cmdppl6jruDGMLscIbwYNRirO04v2eoJEPM/vZWhVafxSYQORzCt7llSPfZsYsf79t8OW0HBJ+LHWc9Ymm6swsAL2aFTMUXn0newvMuuw=
+Received: from MN0PR12MB6101.namprd12.prod.outlook.com (2603:10b6:208:3cb::10)
+ by PH7PR12MB5620.namprd12.prod.outlook.com (2603:10b6:510:137::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.37; Mon, 20 Mar
+ 2023 13:26:55 +0000
+Received: from MN0PR12MB6101.namprd12.prod.outlook.com
+ ([fe80::a4e:62dd:d463:5614]) by MN0PR12MB6101.namprd12.prod.outlook.com
+ ([fe80::a4e:62dd:d463:5614%9]) with mapi id 15.20.6178.037; Mon, 20 Mar 2023
+ 13:26:55 +0000
+From: "Limonciello, Mario" <Mario.Limonciello@amd.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder
+ Lee <ryder.lee@mediatek.com>
+CC: "Tsao, Anson" <anson.tsao@amd.com>, Shayne Chen
+	<shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Kalle Valo
+	<kvalo@kernel.org>, "David S. Miller" <davem@davemloft.net>, Eric Dumazet
+	<edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+	<pabeni@redhat.com>, "linux-wireless@vger.kernel.org"
+	<linux-wireless@vger.kernel.org>, "netdev@vger.kernel.org"
+	<netdev@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Subject: RE: [PATCH] wifi: mt76: mt7921e: Set memory space enable in
+ PCI_COMMAND if unset
+Thread-Topic: [PATCH] wifi: mt76: mt7921e: Set memory space enable in
+ PCI_COMMAND if unset
+Thread-Index: AQHZU3HKMb/q0Atlp0eQyQVMh+RQAq8DuDNA
+Date: Mon, 20 Mar 2023 13:26:55 +0000
+Message-ID:  <MN0PR12MB6101B914FFDEA3882E8BB232E2809@MN0PR12MB6101.namprd12.prod.outlook.com>
+References: <20230310170002.200-1-mario.limonciello@amd.com>
+In-Reply-To: <20230310170002.200-1-mario.limonciello@amd.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: MSIP_Label_d4243a53-6221-4f75-8154-e4b33a5707a1_Enabled=true;
+ MSIP_Label_d4243a53-6221-4f75-8154-e4b33a5707a1_SetDate=2023-03-20T13:26:54Z;
+ MSIP_Label_d4243a53-6221-4f75-8154-e4b33a5707a1_Method=Privileged;
+ MSIP_Label_d4243a53-6221-4f75-8154-e4b33a5707a1_Name=Public-AIP 2.0;
+ MSIP_Label_d4243a53-6221-4f75-8154-e4b33a5707a1_SiteId=3dd8961f-e488-4e60-8e11-a82d994e183d;
+ MSIP_Label_d4243a53-6221-4f75-8154-e4b33a5707a1_ActionId=f095a2a6-ad32-47e5-8ad5-ea60227963c6;
+ MSIP_Label_d4243a53-6221-4f75-8154-e4b33a5707a1_ContentBits=1
+msip_label_d4243a53-6221-4f75-8154-e4b33a5707a1_enabled: true
+msip_label_d4243a53-6221-4f75-8154-e4b33a5707a1_setdate: 2023-03-20T13:26:54Z
+msip_label_d4243a53-6221-4f75-8154-e4b33a5707a1_method: Privileged
+msip_label_d4243a53-6221-4f75-8154-e4b33a5707a1_name: Public-AIP 2.0
+msip_label_d4243a53-6221-4f75-8154-e4b33a5707a1_siteid:  3dd8961f-e488-4e60-8e11-a82d994e183d
+msip_label_d4243a53-6221-4f75-8154-e4b33a5707a1_actionid:  4155efb8-77ad-44f8-8cc5-9638c62a6d5e
+msip_label_d4243a53-6221-4f75-8154-e4b33a5707a1_contentbits: 0
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=amd.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: MN0PR12MB6101:EE_|PH7PR12MB5620:EE_
+x-ms-office365-filtering-correlation-id: 7dd49771-8aad-4dc1-e4f3-08db2946c61f
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info:  qFZQ4KD0jPFu43D3XAlYbvhTt5lWL1f/3GtXLsomYGVsQLtSa2V7Agx0GRLlsTyHOIC0rnEaNFnjmblb36CqxM91ECmkOnDxQanlU+jSe/MBTTMiiRx0trE6iVDmIULq1d/RCeG+UpeL8JAPN15s/gCtuFfsWf/Zy9IMUaRej+0WUmlSGEuzT7mk3ZTBjWM+1mYDoBVcJIYPTZCdBTNhPLmsSwsuaaqM/qPhTRBS54ckeSWuXfJpAeR+4jowG/UVm6RdNhybMf7jhjv1tiISgWmIw8IGY3JR8bORDMgTaLl9PabCZ4qlzLAiJ2VkWpUaARExXZM2XydOsBi5InG8uSC8lKuigzwCtGvr4DSmkqyTTJ1r45Uqup1r8nj4gtZoRyGZfhrS/ML+jR81bWa3586dfelTjfiuy+GMuzMXocPkXaO9lYCX6C6IZqJxcDvQIAOPkopeZZIWWUsPK0tL4lUkck5qrroT+LYFMjC6WhhP+WYQTz04i9MUrSPSzPDy0KP4Pb+LizOyNVroxGY1ZZhzrNKxNGv7BMXeoMgkhDjd4e1spjkO24fIMtemub+BdS9h1URHQM5dR3VcGi13lTYnI7GsCFzU+WA1zfqskEQ7iPK58G+bBzAq8TOpRbB8G/fvqiz25LiY9vPBJr8dQPikQajGsYVZeBN7brqpKamVJauIdMuq/Ao07e8T0yd+10HWIn13buCJpZYusR5ykw==
+x-forefront-antispam-report:  CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN0PR12MB6101.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(4636009)(396003)(39860400002)(366004)(376002)(136003)(346002)(451199018)(8936002)(6506007)(53546011)(26005)(52536014)(5660300002)(478600001)(41300700001)(33656002)(55016003)(71200400001)(76116006)(66946007)(66556008)(64756008)(66446008)(66476007)(8676002)(38070700005)(4326008)(83380400001)(7696005)(38100700002)(54906003)(122000001)(186003)(9686003)(316002)(2906002)(110136005)(86362001)(7416002);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0:  =?us-ascii?Q?gWsij5fo/iGLKuewp+C/rNcUbSBu6BD0pFLL0WXHlag0x5JWpMKM4v5w3zHd?=
+ =?us-ascii?Q?5f6TH7Qn9/FRMaQFKfHD3Gaswx0CR9sYUBcL9Zww96nkOP0h7TuadkvXO8ss?=
+ =?us-ascii?Q?X8886y1nyy2mB8IFwroEr2Am4X+pd/V2vFFHyAC6tjLj/ibRCVg7sGbGzljO?=
+ =?us-ascii?Q?LPlv1VpTE6PQuYiHPVY13r7sPRJVvfs1Wf17AYOSk1NePS27N1R5Rl927+6q?=
+ =?us-ascii?Q?v9p4C+Jt4qJX8rfRZIvExsuwRkkCyN+F7XTHDk+oGgxN3sgaB0fwVBR0c6OP?=
+ =?us-ascii?Q?+WuqyDU7o3hskR3Fkas/eiIjmcO049ks4SlsiHM4f507JtFUj+ht6/eCFdCo?=
+ =?us-ascii?Q?CHukz+usPxZ38nd0kT51qGLQ11YyqRrq5cQUSzGOqRBSABniJQDIDj3HWuYx?=
+ =?us-ascii?Q?O4+4260IHxJOsNPn3+ERZpNEylBKUxB5IXOPdD4B/mg0u0IHwqN6vcKaFyhR?=
+ =?us-ascii?Q?gsaYIARbUOZ++aroOb2XsxrxdCVkcIL0M0X67RvCONAONEXbFrmr3qguxf9T?=
+ =?us-ascii?Q?n84Al1+lr4GsdJDVuGMiU8SOYbC2OXUwcYc/wXHJXDsQc65xVucjRqxCEOw6?=
+ =?us-ascii?Q?x22ok+6ddVeriolhMikynJz7iHNmQ8nFw3D8GKidosnJLiacTlc9S5cp+UPq?=
+ =?us-ascii?Q?ouqhpBYlrabsHlZqFwZ3vPDZ3yVi6/JpDhXadUKSB3vmPPChAZF+lWYQjzcw?=
+ =?us-ascii?Q?5xro/WP+uIX+b6WNZCImjsdXT+2ARHdRIPTgDdDF7OVuNlesM/4W1KtrpR4+?=
+ =?us-ascii?Q?+zIyz1y8Ks9v1NZlIWSLLH3FoVqFEqIrgQMFkAxSLjoadOuu1G5gdFcZDbDk?=
+ =?us-ascii?Q?FRdAztWZAMPBquMqFVoMQUwXhEEIBxCy/SG2WhR7s3dEgBKdbbGCEsln49py?=
+ =?us-ascii?Q?8YUKoQXrUWBtvt1zz+qObVNJqUKtKb3ybUtefJYnZVEwWQ8pNUFxXxdPvA2w?=
+ =?us-ascii?Q?QSPrZh+H8m0ZUtqHgzVh+LMMrPpQ/tSjWT/bu+VzeCVD7cG10eukaWFaC+ZP?=
+ =?us-ascii?Q?RI/sg1iFYnku4mJW6fDOYeAFU5JDzU0fz0TAEMg3GSwZ9AKw0MdO4hDZC9BS?=
+ =?us-ascii?Q?t7dcFBj1i5Lcf/BxcLcM8Oj+kuTlx4S7jC78w9M+HW+VuP2MGyRgYbz12LFW?=
+ =?us-ascii?Q?zDj1Q9nvLceS9xPgapd9kTchpTjGVbFfB7REZ4k+qOzJaEUm6BjKv7pUn6vE?=
+ =?us-ascii?Q?BLvXM4lnSOc5CQ8Od7DKO3Lo+lEdm42NfHcxYU7sz6rL3Cm4s/fCgAqVBk/a?=
+ =?us-ascii?Q?v9NCG0+g4FKTC/aqWyeswvsC5bdFdB472qBtDYD6qZZXySmwcDcrbi71lba3?=
+ =?us-ascii?Q?UcbHwm5vh4rnHxZVB0D0f/Drd8eKOe4ZWG/deqCPnGCFZtVgEUEXG0DQw+bs?=
+ =?us-ascii?Q?lSMY3cgFAYV6Eh4qEnumKLVhrOMYiWNpoDCuax3y04fb9cletopdvlrW1t0+?=
+ =?us-ascii?Q?Kp8ilHzopeMUDDSCRiyWgNscThaD22SMEhef2zD1I+a0jXdK+aaczGR1YGCG?=
+ =?us-ascii?Q?v3ypVIIEf1qoZ66K5Ea3F5pi+fRPU0NopNmcIta1RfnLBH4NPYL3ULEuZ8GF?=
+ =?us-ascii?Q?bE8mslmKGNS4UoqHAFc=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: MN0PR12MB6101.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7dd49771-8aad-4dc1-e4f3-08db2946c61f
+X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Mar 2023 13:26:55.1329
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: jwJ+spTLnTEqY7fzUpVF27NP+PZ6LfRlnZBpNPy8pg1Z3CrcO6587DdSv9PsOqe1XspYRx/nlKK1P0HuMSMuwQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR12MB5620
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230320_062638_744020_780FEC5A 
-X-CRM114-Status: UNSURE (   9.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230320_062700_730690_512F2F52 
+X-CRM114-Status: GOOD (  16.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,39 +158,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Commit ad8a221e1f49 ("ARM: mediatek: Add config options for mediatek SoCs.")
-adds four configs MACH_MT6592, MACH_MT6592, MACH_MT8127 and MACH_MT8127 for
-foreseen future use in the MediaTek pinctrl driver. As of now, nine years
-after that commit, the configs MACH_MT8127 and MACH_MT8127 are used for
-that purpose, but tconfigs MACH_MT6592 and MACH_MT6592 have not been used.
+[Public]
 
-Remove the unused configs MACH_MT6592 and MACH_MT6592.
 
-Signed-off-by: Lukas Bulwahn <lukas.bulwahn@gmail.com>
----
- arch/arm/mach-mediatek/Kconfig | 8 --------
- 1 file changed, 8 deletions(-)
 
-diff --git a/arch/arm/mach-mediatek/Kconfig b/arch/arm/mach-mediatek/Kconfig
-index 35a3430c7942..521af13a79d8 100644
---- a/arch/arm/mach-mediatek/Kconfig
-+++ b/arch/arm/mach-mediatek/Kconfig
-@@ -15,14 +15,6 @@ config MACH_MT2701
- 	bool "MediaTek MT2701 SoCs support"
- 	default ARCH_MEDIATEK
- 
--config MACH_MT6589
--	bool "MediaTek MT6589 SoCs support"
--	default ARCH_MEDIATEK
--
--config MACH_MT6592
--	bool "MediaTek MT6592 SoCs support"
--	default ARCH_MEDIATEK
--
- config MACH_MT7623
- 	bool "MediaTek MT7623 SoCs support"
- 	default ARCH_MEDIATEK
--- 
-2.17.1
+> -----Original Message-----
+> From: Limonciello, Mario <Mario.Limonciello@amd.com>
+> Sent: Friday, March 10, 2023 11:00
+> To: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: Limonciello, Mario <Mario.Limonciello@amd.com>; Tsao, Anson
+> <anson.tsao@amd.com>; Felix Fietkau <nbd@nbd.name>; Lorenzo Bianconi
+> <lorenzo@kernel.org>; Ryder Lee <ryder.lee@mediatek.com>; Shayne Chen
+> <shayne.chen@mediatek.com>; Sean Wang <sean.wang@mediatek.com>;
+> Kalle Valo <kvalo@kernel.org>; David S. Miller <davem@davemloft.net>; Eri=
+c
+> Dumazet <edumazet@google.com>; Jakub Kicinski <kuba@kernel.org>;
+> Paolo Abeni <pabeni@redhat.com>; linux-wireless@vger.kernel.org;
+> netdev@vger.kernel.org; linux-arm-kernel@lists.infradead.org; linux-
+> mediatek@lists.infradead.org; linux-kernel@vger.kernel.org
+> Subject: [PATCH] wifi: mt76: mt7921e: Set memory space enable in
+> PCI_COMMAND if unset
+>=20
+> When the BIOS has been configured for Fast Boot, systems with mt7921e
+> have non-functional wifi.  Turning on Fast boot caused both bus master
+> enable and memory space enable bits in PCI_COMMAND not to get
+> configured.
+>=20
+> The mt7921 driver already sets bus master enable, but explicitly check
+> and set memory access enable as well to fix this problem.
+>=20
+> Tested-by: Anson Tsao <anson.tsao@amd.com>
+> Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 6 ++++++
+>  1 file changed, 6 insertions(+)
 
+Hi Felix, Lorenzo, Ryder,
+
+Any comments please?
+
+Thanks,
+
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+> b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+> index 8a53d8f286db..24a2aafa6e2a 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+> @@ -256,6 +256,7 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
+>  	struct mt7921_dev *dev;
+>  	struct mt76_dev *mdev;
+>  	int ret;
+> +	u16 cmd;
+>=20
+>  	ret =3D pcim_enable_device(pdev);
+>  	if (ret)
+> @@ -265,6 +266,11 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
+>  	if (ret)
+>  		return ret;
+>=20
+> +	pci_read_config_word(pdev, PCI_COMMAND, &cmd);
+> +	if (!(cmd & PCI_COMMAND_MEMORY)) {
+> +		cmd |=3D PCI_COMMAND_MEMORY;
+> +		pci_write_config_word(pdev, PCI_COMMAND, cmd);
+> +	}
+>  	pci_set_master(pdev);
+>=20
+>  	ret =3D pci_alloc_irq_vectors(pdev, 1, 1, PCI_IRQ_ALL_TYPES);
+> --
+> 2.34.1
 
