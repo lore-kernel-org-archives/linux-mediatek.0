@@ -4,113 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33193C6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Mar 2023 18:09:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05AA4C7619A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Mar 2023 18:17:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9Ym0Aa6IJr35fCbX8wJyITkzyONp9K1eXcn9gLrMKEM=; b=MDNezr2VO5iJZUFp7Lmx6dSSRn
-	MXe/tQyXBAMFQj2pAq4JdMDy4Efsw/4BDSPp96IFGP8uT6Y9w2CKaZrDGHvyFPc5S5CzDVpinKaf6
-	FWUjEhvazDGLWqlqDvEbO0Nj2kkzawtaIshJmebp/Td3He24EAAi+YGkPR1YV2nvyhPjsq+FOzIDA
-	2Au4q00UN4FKx98ulgn2LnuNNha4DnxCPI43/8z5yBJGp2dwxwfH4BDB2nyhNgJzRircCp259wIbS
-	H5nV0/WL/Gum6JNHzH3+Rmg4HucBS4F/o22K4+ikiLezNSYSeyskH1Pb0cpkpgVDoqCSn+5E3FBwn
-	t5WdFW9Q==;
+	bh=WqGMNpSipRdw8b7apACOFeIJhF2ZQ6XFL4UFhdRmF+g=; b=gcRicROlFuZ8niEmPrUuQQ7OUo
+	Oi+YED1Xu4s0IbBie0LV0ew096+e23saZ0Y4tIjxA1VosgYW21F1m1C3k33Fh/BrJf1X9FuxMazg7
+	Nt1wMianal3RqmofVLN0YP2bSMF2xSW0m0UJKQXkHd+aryn4Q+hLIKWn1PdXd0jHvGU8DnlxwiDDw
+	ziFXH8FvtpgxK8lNH+ZapfQmGE6DCnHh0OGiTV9WA3u0L5RsoX0tvutH/xw66YG5Y75y20igi6SO4
+	2oJNFIPKvEuHiE2SCr12a7vjiVGcqU+raKD5pMYlQE94tBpc+/fyf/C5TQw36Xr5ObhHFCPOhhge3
+	Lg9RsN+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1peJwm-00A5u1-1Q;
-	Mon, 20 Mar 2023 18:09:28 +0000
-Received: from mail-qt1-x82a.google.com ([2607:f8b0:4864:20::82a])
+	id 1peK4m-00A7BE-0R;
+	Mon, 20 Mar 2023 18:17:44 +0000
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1peJwi-00A5s2-1f;
-	Mon, 20 Mar 2023 18:09:25 +0000
-Received: by mail-qt1-x82a.google.com with SMTP id c18so14163840qte.5;
-        Mon, 20 Mar 2023 11:09:24 -0700 (PDT)
+	id 1peK4i-00A79h-0W
+	for linux-mediatek@lists.infradead.org;
+	Mon, 20 Mar 2023 18:17:42 +0000
+Received: by mail-ed1-x52f.google.com with SMTP id i5so3441158eda.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 20 Mar 2023 11:17:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679335763;
+        d=linaro.org; s=google; t=1679336256;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=9Ym0Aa6IJr35fCbX8wJyITkzyONp9K1eXcn9gLrMKEM=;
-        b=jV+wT9G9dMq++VXoHOITcaMwSKfT7Ne8l6voVfiCeH20VK0uzRJIf9CA2v8jn1mE42
-         9De/qJTXiN3NlwKDdk7NArH7WT5H+4m7s71wZTV+2BygDTiQuwk+mRLMpRhBukxFua9x
-         67hE9fL+3OgJ1dTRBMXtTwDXEznGIlnqEuoH6BXNz+DtDWm5LZSaKbCnlxFhePXKvQQw
-         biWPqZK1eoCZ6HeXFY1w+DmsNHS4W090fENE/el13ZE/cuRLHNVC7Li/p30/Ai1N8xhv
-         3ejM9NTyAoTh9dtKbufIgtWOwd6srKtNAzDZ9KiKE0PTE7Lb1wYokPUbe9HLqHLVnTp7
-         mdLA==
+        bh=WqGMNpSipRdw8b7apACOFeIJhF2ZQ6XFL4UFhdRmF+g=;
+        b=lK2MANal4tGXZhZKtbwxNpYuaIxXP80lnIUqRmeI6tM4jNqHnMrEQ4RgAvzryFYH9X
+         v2Iw/xhqQ/k18W/US5lxoaCSJf/FdMbLZf8q2oICuglzCKfApDUmlE2B9HJVKO3UWng9
+         XC4d04UaO0dITzy6u+HkTg5XHyEC3vGO7QGbHts3QZUKoascyrnkSKq0Wb079VwT6Asd
+         hMcc2dOFb6V+zQDu0AyE4f1t+iFb55Z8zV0S/tCD/RrPwhG0b0kU/1ZrpoK1YKV7vTMc
+         DHDV8fQZmQVfzF7nc03y4ev7Ju8gfRJTfbXPp7maJrOb+UnMZHVwF+Ga7F6Y/zBIFdpn
+         nH5g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679335763;
+        d=1e100.net; s=20210112; t=1679336256;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=9Ym0Aa6IJr35fCbX8wJyITkzyONp9K1eXcn9gLrMKEM=;
-        b=sFkUNlnrkHnFnvMNZ3QRDc2FcexzBNm1/jeMvqxqccCPvSSjiAZW9QWB3PUOTikTBz
-         4+7qgU4D7iapSYX1uRnN3sZ94tU3CQFc/+I0LlJdRUJpAcmY/UM5sWttEMVWXv6BBv23
-         +LDIJXqUFPwPwv1kYA3Pi10vbicTeK4MD3J/CtGju10Sxs+RDpMOL/98CXElAMdyaxNi
-         kpG0WZLFegNmdYkDgbJjPV6nvEMk3m207WHKWLEQEIcDmnw8EOimBijBWfzEIQU0ITYW
-         jifXRmGB5TY3B0/iV1Tq5S+gI46WX0ZMywWtfJp2Bhdzb9v7Bb1+tBCag2EDEJmYCqO5
-         1VCQ==
-X-Gm-Message-State: AO0yUKVGtYxi9GyZuPJiiiBTuLvzf9KG+GafxvonnoLxC7lwMs7yLfCE
-	2anSK/t3UIxRavOgyZq1Gno=
-X-Google-Smtp-Source: AK7set/rOHA8qVlayMALPx0FGjCcSWh/Kq1WvV8aodxfR3XsSBymHa1dS0evHblRHeVucdEeSCUF5g==
-X-Received: by 2002:a05:622a:190e:b0:3d7:1979:829e with SMTP id w14-20020a05622a190e00b003d71979829emr125230qtc.27.1679335763440;
-        Mon, 20 Mar 2023 11:09:23 -0700 (PDT)
-Received: from [10.67.48.245] ([192.19.223.252])
-        by smtp.googlemail.com with ESMTPSA id l16-20020ac84a90000000b003d4ee7879d0sm2042741qtq.56.2023.03.20.11.09.00
+        bh=WqGMNpSipRdw8b7apACOFeIJhF2ZQ6XFL4UFhdRmF+g=;
+        b=AcmGNaIrQgwBnXlNHh45kYAJPgkch03mAIcaGP3AY8wi3AG0UFrPy6AUqiAURBDeWP
+         Ou1ephjQ7NpJn0j6kJA9xMyTdXbz0J5BJmRIx5vtBmYjCYMXr1jvfkcuFHzYyQOqbb2L
+         Yt8Pg998sasIRMP1Lm6Elq0bRbRmdxMCA8MYtRrujys5NJ64K9wYvbj7vVDjCZ+AJniZ
+         xn0s2El8lQ5+uJe5rPP1zKM1XwxqMamTNKQaSHR89fjOpleQzn4z3K7KsZGT2n4+NBj2
+         CohTQasRNKjTaG69c79oGv3M/Ur8ASf13nfM5fhbPmz/QKGeG4PvH72r+mQ9FosyjHcb
+         kK2w==
+X-Gm-Message-State: AO0yUKWjyvh+feWI6IQNVYOnJYW1HEQAd20vN9wka/8iSuvf03HYqB0e
+	F/sQ9EC7lFBCjupJZYU/G255rA==
+X-Google-Smtp-Source: AK7set+jAxInWPfvKmfjeCoZgX+UENXYh0g85MPxYm3aRy8olqD8AUQWKYAOvbqHO1Llh2UldffmbA==
+X-Received: by 2002:aa7:d7c7:0:b0:4fa:e1fd:5a30 with SMTP id e7-20020aa7d7c7000000b004fae1fd5a30mr529020eds.19.1679336256291;
+        Mon, 20 Mar 2023 11:17:36 -0700 (PDT)
+Received: from [192.168.1.195] ([5.133.47.210])
+        by smtp.googlemail.com with ESMTPSA id w3-20020a50c443000000b004ac54d4da22sm5302952edf.71.2023.03.20.11.17.34
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 20 Mar 2023 11:09:22 -0700 (PDT)
-Message-ID: <82ae9fd5-a4f9-89a6-8040-c64d22a85ebb@gmail.com>
-Date: Mon, 20 Mar 2023 11:08:56 -0700
+        Mon, 20 Mar 2023 11:17:35 -0700 (PDT)
+Message-ID: <da49e690-326d-4a94-b4c7-58de25159c6d@linaro.org>
+Date: Mon, 20 Mar 2023 18:17:31 +0000
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH] dt-bindings: net: Drop unneeded quotes
+ Thunderbird/102.8.0
+Subject: Re: [PATCH] dt-bindings: nvmem: Drop unneeded quotes
 Content-Language: en-US
-To: Rob Herring <robh@kernel.org>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>,
+To: Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>,
- Manivannan Sadhasivam <mani@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>, Joel Stanley <joel@jms.id.au>,
- Andrew Jeffery <andrew@aj.id.au>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
- <rafal@milecki.pl>,
- Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>,
- Appana Durga Kedareswara rao <appana.durga.rao@xilinx.com>,
- Naga Sureshkumar Relli <naga.sureshkumar.relli@xilinx.com>,
- Wolfgang Grandegger <wg@grandegger.com>,
- Marc Kleine-Budde <mkl@pengutronix.de>,
- Michal Simek <michal.simek@xilinx.com>, Andrew Lunn <andrew@lunn.ch>,
- Vladimir Oltean <olteanv@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>,
- Russell King <linux@armlinux.org.uk>,
- Tobias Waldekranz <tobias@waldekranz.com>,
- Lars Povlsen <lars.povlsen@microchip.com>,
- Steen Hegelund <Steen.Hegelund@microchip.com>,
- Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com,
- Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>, Hector Martin <marcan@marcan.st>,
+ Sven Peter <sven@svenpeter.dev>, Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Claudiu Beznea <claudiu.beznea@microchip.com>, Andy Gross
+ <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
  Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+ Masami Hiramatsu <mhiramat@kernel.org>,
  Maxime Coquelin <mcoquelin.stm32@gmail.com>,
  Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Vincent Shih <vincent.sunplus@gmail.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-actions@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-sunxi@lists.linux.dev,
- linux-aspeed@lists.ozlabs.org, linux-can@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
+ asahi@lists.linux.dev, linux-arm-msm@vger.kernel.org,
+ linux-rockchip@lists.infradead.org,
  linux-stm32@st-md-mailman.stormreply.com, linux-mediatek@lists.infradead.org
-References: <20230317233605.3967621-1-robh@kernel.org>
-From: Florian Fainelli <f.fainelli@gmail.com>
-In-Reply-To: <20230317233605.3967621-1-robh@kernel.org>
+References: <20230317233640.3968821-1-robh@kernel.org>
+From: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+In-Reply-To: <20230317233640.3968821-1-robh@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230320_110924_552642_4D45A56E 
-X-CRM114-Status: GOOD (  10.37  )
+X-CRM114-CacheID: sfid-20230320_111740_199279_94E8657A 
+X-CRM114-Status: GOOD (  15.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,22 +114,271 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 3/17/23 16:36, Rob Herring wrote:
+
+
+On 17/03/2023 23:36, Rob Herring wrote:
 > Cleanup bindings dropping unneeded quotes. Once all these are fixed,
 > checking for this can be enabled in yamllint.
 > 
 > Signed-off-by: Rob Herring <robh@kernel.org>
+
+
+Applied thanks,
+
+--srini
 > ---
->   .../devicetree/bindings/net/actions,owl-emac.yaml  |  2 +-
->   .../bindings/net/allwinner,sun4i-a10-emac.yaml     |  2 +-
->   .../bindings/net/allwinner,sun4i-a10-mdio.yaml     |  2 +-
->   .../devicetree/bindings/net/altr,tse.yaml          |  2 +-
->   .../bindings/net/aspeed,ast2600-mdio.yaml          |  2 +-
->   .../devicetree/bindings/net/brcm,amac.yaml         |  2 +-
->   .../devicetree/bindings/net/brcm,systemport.yaml   |  2 +-
-
-Acked-by: Florian Fainelli <f.fainelli@gmail.com>
--- 
-Florian
-
+>   .../devicetree/bindings/nvmem/allwinner,sun4i-a10-sid.yaml      | 2 +-
+>   Documentation/devicetree/bindings/nvmem/apple,efuses.yaml       | 2 +-
+>   Documentation/devicetree/bindings/nvmem/brcm,nvram.yaml         | 2 +-
+>   Documentation/devicetree/bindings/nvmem/fsl,layerscape-sfp.yaml | 2 +-
+>   Documentation/devicetree/bindings/nvmem/imx-iim.yaml            | 2 +-
+>   Documentation/devicetree/bindings/nvmem/imx-ocotp.yaml          | 2 +-
+>   .../devicetree/bindings/nvmem/ingenic,jz4780-efuse.yaml         | 2 +-
+>   Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml     | 2 +-
+>   .../devicetree/bindings/nvmem/microchip,sama7g5-otpc.yaml       | 2 +-
+>   Documentation/devicetree/bindings/nvmem/mxs-ocotp.yaml          | 2 +-
+>   Documentation/devicetree/bindings/nvmem/nintendo-otp.yaml       | 2 +-
+>   Documentation/devicetree/bindings/nvmem/qcom,qfprom.yaml        | 2 +-
+>   Documentation/devicetree/bindings/nvmem/qcom,spmi-sdam.yaml     | 2 +-
+>   Documentation/devicetree/bindings/nvmem/rmem.yaml               | 2 +-
+>   Documentation/devicetree/bindings/nvmem/rockchip-efuse.yaml     | 2 +-
+>   .../devicetree/bindings/nvmem/socionext,uniphier-efuse.yaml     | 2 +-
+>   Documentation/devicetree/bindings/nvmem/st,stm32-romem.yaml     | 2 +-
+>   .../devicetree/bindings/nvmem/sunplus,sp7021-ocotp.yaml         | 2 +-
+>   18 files changed, 18 insertions(+), 18 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/nvmem/allwinner,sun4i-a10-sid.yaml b/Documentation/devicetree/bindings/nvmem/allwinner,sun4i-a10-sid.yaml
+> index 14c170c6a86e..296001e7f498 100644
+> --- a/Documentation/devicetree/bindings/nvmem/allwinner,sun4i-a10-sid.yaml
+> +++ b/Documentation/devicetree/bindings/nvmem/allwinner,sun4i-a10-sid.yaml
+> @@ -11,7 +11,7 @@ maintainers:
+>     - Maxime Ripard <mripard@kernel.org>
+>   
+>   allOf:
+> -  - $ref: "nvmem.yaml#"
+> +  - $ref: nvmem.yaml#
+>   
+>   properties:
+>     compatible:
+> diff --git a/Documentation/devicetree/bindings/nvmem/apple,efuses.yaml b/Documentation/devicetree/bindings/nvmem/apple,efuses.yaml
+> index 5ec8f2bdb3a5..e0860b6b85f3 100644
+> --- a/Documentation/devicetree/bindings/nvmem/apple,efuses.yaml
+> +++ b/Documentation/devicetree/bindings/nvmem/apple,efuses.yaml
+> @@ -15,7 +15,7 @@ maintainers:
+>     - Sven Peter <sven@svenpeter.dev>
+>   
+>   allOf:
+> -  - $ref: "nvmem.yaml#"
+> +  - $ref: nvmem.yaml#
+>   
+>   properties:
+>     compatible:
+> diff --git a/Documentation/devicetree/bindings/nvmem/brcm,nvram.yaml b/Documentation/devicetree/bindings/nvmem/brcm,nvram.yaml
+> index 25033de3ef6b..36def7128fca 100644
+> --- a/Documentation/devicetree/bindings/nvmem/brcm,nvram.yaml
+> +++ b/Documentation/devicetree/bindings/nvmem/brcm,nvram.yaml
+> @@ -20,7 +20,7 @@ maintainers:
+>     - Rafał Miłecki <rafal@milecki.pl>
+>   
+>   allOf:
+> -  - $ref: "nvmem.yaml#"
+> +  - $ref: nvmem.yaml#
+>   
+>   properties:
+>     compatible:
+> diff --git a/Documentation/devicetree/bindings/nvmem/fsl,layerscape-sfp.yaml b/Documentation/devicetree/bindings/nvmem/fsl,layerscape-sfp.yaml
+> index 3b4e6e94cb81..70fb2ad25103 100644
+> --- a/Documentation/devicetree/bindings/nvmem/fsl,layerscape-sfp.yaml
+> +++ b/Documentation/devicetree/bindings/nvmem/fsl,layerscape-sfp.yaml
+> @@ -14,7 +14,7 @@ description: |
+>     unique identifier per part.
+>   
+>   allOf:
+> -  - $ref: "nvmem.yaml#"
+> +  - $ref: nvmem.yaml#
+>   
+>   properties:
+>     compatible:
+> diff --git a/Documentation/devicetree/bindings/nvmem/imx-iim.yaml b/Documentation/devicetree/bindings/nvmem/imx-iim.yaml
+> index 7aac1995cfaf..e9d9d8df4811 100644
+> --- a/Documentation/devicetree/bindings/nvmem/imx-iim.yaml
+> +++ b/Documentation/devicetree/bindings/nvmem/imx-iim.yaml
+> @@ -14,7 +14,7 @@ description: |
+>     i.MX25, i.MX27, i.MX31, i.MX35, i.MX51 and i.MX53 SoCs.
+>   
+>   allOf:
+> -  - $ref: "nvmem.yaml#"
+> +  - $ref: nvmem.yaml#
+>   
+>   properties:
+>     compatible:
+> diff --git a/Documentation/devicetree/bindings/nvmem/imx-ocotp.yaml b/Documentation/devicetree/bindings/nvmem/imx-ocotp.yaml
+> index d0a239d7e199..9876243ff1e8 100644
+> --- a/Documentation/devicetree/bindings/nvmem/imx-ocotp.yaml
+> +++ b/Documentation/devicetree/bindings/nvmem/imx-ocotp.yaml
+> @@ -15,7 +15,7 @@ description: |
+>     i.MX7D/S, i.MX7ULP, i.MX8MQ, i.MX8MM, i.MX8MN and i.MX8MP SoCs.
+>   
+>   allOf:
+> -  - $ref: "nvmem.yaml#"
+> +  - $ref: nvmem.yaml#
+>   
+>   properties:
+>     compatible:
+> diff --git a/Documentation/devicetree/bindings/nvmem/ingenic,jz4780-efuse.yaml b/Documentation/devicetree/bindings/nvmem/ingenic,jz4780-efuse.yaml
+> index fe2cd7f1afba..e89fd879c968 100644
+> --- a/Documentation/devicetree/bindings/nvmem/ingenic,jz4780-efuse.yaml
+> +++ b/Documentation/devicetree/bindings/nvmem/ingenic,jz4780-efuse.yaml
+> @@ -10,7 +10,7 @@ maintainers:
+>     - PrasannaKumar Muralidharan <prasannatsmkumar@gmail.com>
+>   
+>   allOf:
+> -  - $ref: "nvmem.yaml#"
+> +  - $ref: nvmem.yaml#
+>   
+>   properties:
+>     compatible:
+> diff --git a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+> index 75e0a516e59a..d16d42fb98b6 100644
+> --- a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+> +++ b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+> @@ -15,7 +15,7 @@ maintainers:
+>     - Lala Lin <lala.lin@mediatek.com>
+>   
+>   allOf:
+> -  - $ref: "nvmem.yaml#"
+> +  - $ref: nvmem.yaml#
+>   
+>   properties:
+>     $nodename:
+> diff --git a/Documentation/devicetree/bindings/nvmem/microchip,sama7g5-otpc.yaml b/Documentation/devicetree/bindings/nvmem/microchip,sama7g5-otpc.yaml
+> index c3c96fd0baac..a296d348adb4 100644
+> --- a/Documentation/devicetree/bindings/nvmem/microchip,sama7g5-otpc.yaml
+> +++ b/Documentation/devicetree/bindings/nvmem/microchip,sama7g5-otpc.yaml
+> @@ -15,7 +15,7 @@ description: |
+>     settings, chip identifiers) or user specific data could be stored.
+>   
+>   allOf:
+> -  - $ref: "nvmem.yaml#"
+> +  - $ref: nvmem.yaml#
+>   
+>   properties:
+>     compatible:
+> diff --git a/Documentation/devicetree/bindings/nvmem/mxs-ocotp.yaml b/Documentation/devicetree/bindings/nvmem/mxs-ocotp.yaml
+> index ff317fd7c15b..8938eec22b52 100644
+> --- a/Documentation/devicetree/bindings/nvmem/mxs-ocotp.yaml
+> +++ b/Documentation/devicetree/bindings/nvmem/mxs-ocotp.yaml
+> @@ -10,7 +10,7 @@ maintainers:
+>     - Anson Huang <Anson.Huang@nxp.com>
+>   
+>   allOf:
+> -  - $ref: "nvmem.yaml#"
+> +  - $ref: nvmem.yaml#
+>   
+>   properties:
+>     compatible:
+> diff --git a/Documentation/devicetree/bindings/nvmem/nintendo-otp.yaml b/Documentation/devicetree/bindings/nvmem/nintendo-otp.yaml
+> index f93bc50c40d7..6c26800f8b79 100644
+> --- a/Documentation/devicetree/bindings/nvmem/nintendo-otp.yaml
+> +++ b/Documentation/devicetree/bindings/nvmem/nintendo-otp.yaml
+> @@ -17,7 +17,7 @@ maintainers:
+>     - Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+>   
+>   allOf:
+> -  - $ref: "nvmem.yaml#"
+> +  - $ref: nvmem.yaml#
+>   
+>   properties:
+>     compatible:
+> diff --git a/Documentation/devicetree/bindings/nvmem/qcom,qfprom.yaml b/Documentation/devicetree/bindings/nvmem/qcom,qfprom.yaml
+> index 2173fe82317d..e952907ad1d5 100644
+> --- a/Documentation/devicetree/bindings/nvmem/qcom,qfprom.yaml
+> +++ b/Documentation/devicetree/bindings/nvmem/qcom,qfprom.yaml
+> @@ -10,7 +10,7 @@ maintainers:
+>     - Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+>   
+>   allOf:
+> -  - $ref: "nvmem.yaml#"
+> +  - $ref: nvmem.yaml#
+>   
+>   properties:
+>     compatible:
+> diff --git a/Documentation/devicetree/bindings/nvmem/qcom,spmi-sdam.yaml b/Documentation/devicetree/bindings/nvmem/qcom,spmi-sdam.yaml
+> index e08504ef3b6e..34818683f80c 100644
+> --- a/Documentation/devicetree/bindings/nvmem/qcom,spmi-sdam.yaml
+> +++ b/Documentation/devicetree/bindings/nvmem/qcom,spmi-sdam.yaml
+> @@ -15,7 +15,7 @@ description: |
+>     to/from the PBUS.
+>   
+>   allOf:
+> -  - $ref: "nvmem.yaml#"
+> +  - $ref: nvmem.yaml#
+>   
+>   properties:
+>     compatible:
+> diff --git a/Documentation/devicetree/bindings/nvmem/rmem.yaml b/Documentation/devicetree/bindings/nvmem/rmem.yaml
+> index a4a755dcfc43..38a39c9b8c1c 100644
+> --- a/Documentation/devicetree/bindings/nvmem/rmem.yaml
+> +++ b/Documentation/devicetree/bindings/nvmem/rmem.yaml
+> @@ -10,7 +10,7 @@ maintainers:
+>     - Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+>   
+>   allOf:
+> -  - $ref: "nvmem.yaml#"
+> +  - $ref: nvmem.yaml#
+>   
+>   properties:
+>     compatible:
+> diff --git a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.yaml b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.yaml
+> index febee8129aa9..c5403e149080 100644
+> --- a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.yaml
+> +++ b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.yaml
+> @@ -10,7 +10,7 @@ maintainers:
+>     - Heiko Stuebner <heiko@sntech.de>
+>   
+>   allOf:
+> -  - $ref: "nvmem.yaml#"
+> +  - $ref: nvmem.yaml#
+>   
+>   properties:
+>     compatible:
+> diff --git a/Documentation/devicetree/bindings/nvmem/socionext,uniphier-efuse.yaml b/Documentation/devicetree/bindings/nvmem/socionext,uniphier-efuse.yaml
+> index dc790d2cd9f0..b8bca0599c45 100644
+> --- a/Documentation/devicetree/bindings/nvmem/socionext,uniphier-efuse.yaml
+> +++ b/Documentation/devicetree/bindings/nvmem/socionext,uniphier-efuse.yaml
+> @@ -11,7 +11,7 @@ maintainers:
+>     - Kunihiko Hayashi <hayashi.kunihiko@socionext.com>
+>   
+>   allOf:
+> -  - $ref: "nvmem.yaml#"
+> +  - $ref: nvmem.yaml#
+>   
+>   properties:
+>     "#address-cells": true
+> diff --git a/Documentation/devicetree/bindings/nvmem/st,stm32-romem.yaml b/Documentation/devicetree/bindings/nvmem/st,stm32-romem.yaml
+> index 172597cc5c63..a69de3e92282 100644
+> --- a/Documentation/devicetree/bindings/nvmem/st,stm32-romem.yaml
+> +++ b/Documentation/devicetree/bindings/nvmem/st,stm32-romem.yaml
+> @@ -16,7 +16,7 @@ maintainers:
+>     - Fabrice Gasnier <fabrice.gasnier@foss.st.com>
+>   
+>   allOf:
+> -  - $ref: "nvmem.yaml#"
+> +  - $ref: nvmem.yaml#
+>   
+>   properties:
+>     compatible:
+> diff --git a/Documentation/devicetree/bindings/nvmem/sunplus,sp7021-ocotp.yaml b/Documentation/devicetree/bindings/nvmem/sunplus,sp7021-ocotp.yaml
+> index a7644ebbc2ca..8877c2283e9e 100644
+> --- a/Documentation/devicetree/bindings/nvmem/sunplus,sp7021-ocotp.yaml
+> +++ b/Documentation/devicetree/bindings/nvmem/sunplus,sp7021-ocotp.yaml
+> @@ -11,7 +11,7 @@ maintainers:
+>     - Vincent Shih <vincent.sunplus@gmail.com>
+>   
+>   allOf:
+> -  - $ref: "nvmem.yaml#"
+> +  - $ref: nvmem.yaml#
+>   
+>   properties:
+>     compatible:
 
