@@ -4,82 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 134A2C7618A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Mar 2023 18:49:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37E1EC7618E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Mar 2023 19:05:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=L0WXBKFncXttiHWwMYkyoyndkZ2+vuPq03GRqkgEqWE=; b=g6Kd27wshqlBF2Pq+8goZKhxXJ
-	S/g9MfM2KsLUtNp/HEyUZ9oGRaGjoePUmb2uFDZfVKJn/d86gPIyaoherc2ls08NFMJ1/vDmD1+zp
-	SBAW+26uHx1x6dluleY21kj/anS0MtaMpiCC2YV1goYnRI1GCqZwdlcqIzt9P/nbQGP8VMwEfQlYl
-	oXfK9bUaWkBjLv0BSOvfIHtQeiPdzU9A/4DKyUbht7GxfsAiCsuZOX+P5/2f3vdOw+Lfdt1AxZWw7
-	I23GyxqQOr6Qijb2/85pWS0mwaBwg08xcZ52J9JhmQGR55ZBMo4dHx0Xk9iGUTfh3vsdn8J0aSTAC
-	G2zAhChg==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=YykBqXCsqVFmj8+kisgWDwmfkfKS3HT+dd2C7bsfUoo=; b=JKUzwFkHEDWVw3PbuuHWbjCB73
+	OBG6scFIMa7Qypval/UAoHnvLw7XFwHB17VnGbERBkHRFcOaC1LFPEQbeKF1YBwwmWCz499Vt2hDs
+	Gp82mCewDZdwq3vBMrcOzXSgJTkjI9ZUBmjmh1p713OCNqTETKWaJ9Ch/oKpq+01yZ20YaeMoLe1c
+	7H7XNrNF6UFgVCewts+BHk9G0v3hcQeN08PIVvdvvwPysm5esRbV4eHBt28YOFIrBhItMvvZuQLeN
+	vnA76eU4ox9hqao5ywc0wSJ2bI3xGLh19GVe4NjKp9SIytHJr37GRs+Oe3/6xg8hWuI25Em/rGCS9
+	nLvkK+og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1peKZQ-00AB8b-0m;
-	Mon, 20 Mar 2023 18:49:24 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1peKp9-00ADqZ-2i;
+	Mon, 20 Mar 2023 19:05:39 +0000
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1peKZM-00AB6M-1D;
-	Mon, 20 Mar 2023 18:49:21 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 934CF617B8;
-	Mon, 20 Mar 2023 18:49:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 99AAFC433EF;
-	Mon, 20 Mar 2023 18:49:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1679338159;
-	bh=CZ1ZHhw3PAwUSr1RFLcjb3EwDHIuncqBo8djo22GoX0=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=EYP4qmc6qfu6EjAznMtGQhzvJWIyu3VfimKLlctzdcfkx90GWy1byGmGknYl4Wy5g
-	 f+OLUhEcWq38tykmJqJIVnJz28QPzTaDnJ6XIYxqlkkp+9L2WfLHuAXUFWnBl5fsGx
-	 vVlpIjPg+eps9cXh5RCYhPtsN+fzjAfxxyGhriaE+Agzrw6x5xDP+/cxv++/m3krAL
-	 10jcJcCFpfXnnqwkt5hSPWszQX0vG7p+Eaw4x7M1nSqDFRZYaA6zPrTgxkQpLW1txu
-	 Mnw2mcHnjmIvUVv9qyzJ9JAlzkduVPg+8OWsNvJv0HSL8W707B0ZYzsevQ0j3gwXua
-	 oC8ObwL0L1waA==
-From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Support Opensource <support.opensource@diasemi.com>, 
- Benson Leung <bleung@chromium.org>, Guenter Roeck <groeck@chromium.org>, 
- Bartosz Golaszewski <brgl@bgdev.pl>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Saravanan Sekar <sravanhome@gmail.com>, 
- Jagan Teki <jagan@amarulasolutions.com>, Andy Gross <agross@kernel.org>, 
- Bjorn Andersson <andersson@kernel.org>, 
- Konrad Dybcio <konrad.dybcio@linaro.org>, 
- Florian Fainelli <f.fainelli@gmail.com>, 
- Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
- Masami Hiramatsu <mhiramat@kernel.org>, 
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
- Alexandre Torgue <alexandre.torgue@foss.st.com>, 
- Robert Marko <robert.marko@sartura.hr>, 
- Luka Perkov <luka.perkov@sartura.hr>, Rob Herring <robh@kernel.org>
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
- chrome-platform@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
- linux-rpi-kernel@lists.infradead.org, 
- linux-stm32@st-md-mailman.stormreply.com, patches@opensource.cirrus.com
-In-Reply-To: <20230317233616.3968003-1-robh@kernel.org>
-References: <20230317233616.3968003-1-robh@kernel.org>
-Subject: Re: [PATCH] regulator: dt-bindings: Drop unneeded quotes
-Message-Id: <167933815234.201304.14593009652707828902.b4-ty@kernel.org>
-Date: Mon, 20 Mar 2023 18:49:12 +0000
+	id 1peKp4-00ADnO-1u;
+	Mon, 20 Mar 2023 19:05:36 +0000
+Received: by mail-ed1-x532.google.com with SMTP id h8so50845976ede.8;
+        Mon, 20 Mar 2023 12:05:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1679339129;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=YykBqXCsqVFmj8+kisgWDwmfkfKS3HT+dd2C7bsfUoo=;
+        b=jZ2KesgkC91l24IKaQadLFtqtYslMEdG2FjYTrbwtCCX9TMGr/C9ZtOb94aezroTPo
+         T0aoIz7AAbLJsGXuwny3uLpqlJaYdpJ13ZwXZ/oZtgI6vt4ARJwxC7X5GMi5mXeyyU+X
+         BndHFIyt3GanEmHztlupUMf5WPhkP/5kZndT0GmeeTJ6tJIijOf7+C2wJ6qp5J2CZIfI
+         Xa2KEL7Wss9d3GN+AeO80Bemi9PnEGwAfRCulT0P9/wwFuTxhQcY1LSdtaaiPKXb8WE0
+         bM4TIX7jktTCocYU+Np43ps22OWYKVC0vIOr0NM0wSmbSaxbHBFCkId+0c2CMKrnBBjs
+         wJvw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679339129;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=YykBqXCsqVFmj8+kisgWDwmfkfKS3HT+dd2C7bsfUoo=;
+        b=WGA8sLBY0t5pJKAYoCuf/Y6YOz6rRa23h2yXwrnC3UV4Lq1HJ4JDUvqHheHgRtP/i5
+         IhUsfdNXxzfvwNKWJC0m3CFLvN3MJ9O5mQcmzh8F0IAWcB4SuXIrIsQDVDqpS679qNIG
+         ZzvWZuna7/ZvQyd8u8sCrUtZeCkrE+pZtxWAI21V9XE2E0A0tKuc8/1RbpMjGJ6Z0NKl
+         OMkz7F5nk6vhguJePpcD1PWX/DNEXtem2exeg/o7XTyNCLHJxWTiINdq4kHphsLkd0Y/
+         Wj9BKppBElVgAMoaWIHE7qTExUJCru5NDkYc/Nm2zuJbSHBtvNU0p46OEbK0EUvTHeZm
+         MLfw==
+X-Gm-Message-State: AO0yUKW/A8kNiaRANfK/bPRHX0+fESh5TDzYbiJoYsuh6ZrIqKXh++/G
+	WZAvEIdzfpFlgGBUEzJ89w0=
+X-Google-Smtp-Source: AK7set9dVfGS7DvJfrsRnE0pnsR7d6zDTc3DJmsQZ5rE5ztbD5RzoICFU1n+w/Pn+oZEW0lmTuqGtg==
+X-Received: by 2002:a17:906:2a19:b0:92e:efa:b9be with SMTP id j25-20020a1709062a1900b0092e0efab9bemr155015eje.18.1679339129158;
+        Mon, 20 Mar 2023 12:05:29 -0700 (PDT)
+Received: from arinc9-PC.lan ([149.91.1.15])
+        by smtp.gmail.com with ESMTPSA id hy22-20020a1709068a7600b008e53874f8d8sm4717848ejc.180.2023.03.20.12.05.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 20 Mar 2023 12:05:28 -0700 (PDT)
+From: arinc9.unal@gmail.com
+X-Google-Original-From: arinc.unal@arinc9.com
+To: Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
+	erkin.bozoglu@xeront.com,
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net 1/3] net: dsa: mt7530: move enabling disabling core clock to mt7530_pll_setup()
+Date: Mon, 20 Mar 2023 22:05:18 +0300
+Message-Id: <20230320190520.124513-1-arinc.unal@arinc9.com>
+X-Mailer: git-send-email 2.37.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.13-dev-bd1bf
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230320_114920_455905_184C1EB2 
-X-CRM114-Status: GOOD (  12.83  )
+X-CRM114-CacheID: sfid-20230320_120534_628932_90894BEC 
+X-CRM114-Status: GOOD (  13.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,38 +104,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 17 Mar 2023 18:36:14 -0500, Rob Herring wrote:
-> Cleanup bindings dropping unneeded quotes. Once all these are fixed,
-> checking for this can be enabled in yamllint.
-> 
-> 
+From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-Applied to
+Split the code that enables and disables TRGMII clocks and core clock.
+Move enabling and disabling core clock to mt7530_pll_setup() as it's
+supposed to be run there.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
+Add 20 ms delay before enabling the core clock as seen on the U-Boot
+MediaTek ethernet driver.
 
-Thanks!
+Change the comment for enabling and disabling TRGMII clocks as the code
+seems to affect both TXC and RXC.
 
-[1/1] regulator: dt-bindings: Drop unneeded quotes
-      commit: cff5c895137cb5c3d48811881f111b17c444e2d5
+Tested rgmii and trgmii modes of port 6 and rgmii mode of port 5 on MCM
+MT7530 on MT7621AT Unielec U7621-06 and standalone MT7530 on MT7623NI
+Bananapi BPI-R2.
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
+Link: https://source.denx.de/u-boot/u-boot/-/blob/29a48bf9ccba45a5e560bb564bbe76e42629325f/drivers/net/mtk_eth.c#L589
+Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+---
+ drivers/net/dsa/mt7530.c | 18 ++++++++++++------
+ 1 file changed, 12 insertions(+), 6 deletions(-)
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index c2d81b7a429d..d4a559007973 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -396,6 +396,9 @@ mt7530_fdb_write(struct mt7530_priv *priv, u16 vid,
+ /* Set up switch core clock for MT7530 */
+ static void mt7530_pll_setup(struct mt7530_priv *priv)
+ {
++	/* Disable core clock */
++	core_clear(priv, CORE_TRGMII_GSW_CLK_CG, REG_GSWCK_EN);
++
+ 	/* Disable PLL */
+ 	core_write(priv, CORE_GSWPLL_GRP1, 0);
+ 
+@@ -409,6 +412,11 @@ static void mt7530_pll_setup(struct mt7530_priv *priv)
+ 		   RG_GSWPLL_EN_PRE |
+ 		   RG_GSWPLL_POSDIV_200M(2) |
+ 		   RG_GSWPLL_FBKDIV_200M(32));
++
++	udelay(20);
++
++	/* Enable core clock */
++	core_set(priv, CORE_TRGMII_GSW_CLK_CG, REG_GSWCK_EN);
+ }
+ 
+ /* Setup TX circuit including relevant PAD and driving */
+@@ -466,9 +474,8 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
+ 			mt7530_write(priv, MT7530_TRGMII_TD_ODT(i),
+ 				     TD_DM_DRVP(8) | TD_DM_DRVN(8));
+ 
+-		/* Disable MT7530 core and TRGMII Tx clocks */
+-		core_clear(priv, CORE_TRGMII_GSW_CLK_CG,
+-			   REG_GSWCK_EN | REG_TRGMIICK_EN);
++		/* Disable the MT7530 TRGMII clocks */
++		core_clear(priv, CORE_TRGMII_GSW_CLK_CG, REG_TRGMIICK_EN);
+ 
+ 		/* Setup the MT7530 TRGMII Tx Clock */
+ 		core_write(priv, CORE_PLL_GROUP5, RG_LCDDS_PCW_NCPO1(ncpo1));
+@@ -485,9 +492,8 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
+ 			   RG_LCDDS_PCW_NCPO_CHG | RG_LCCDS_C(3) |
+ 			   RG_LCDDS_PWDB | RG_LCDDS_ISO_EN);
+ 
+-		/* Enable MT7530 core and TRGMII Tx clocks */
+-		core_set(priv, CORE_TRGMII_GSW_CLK_CG,
+-			 REG_GSWCK_EN | REG_TRGMIICK_EN);
++		/* Enable the MT7530 TRGMII clocks */
++		core_set(priv, CORE_TRGMII_GSW_CLK_CG, REG_TRGMIICK_EN);
+ 	} else {
+ 		for (i = 0 ; i < NUM_TRGMII_CTRL; i++)
+ 			mt7530_rmw(priv, MT7530_TRGMII_RD(i),
+-- 
+2.37.2
 
 
