@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37E1EC7618E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Mar 2023 19:05:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BA2DC7618A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Mar 2023 19:05:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=YykBqXCsqVFmj8+kisgWDwmfkfKS3HT+dd2C7bsfUoo=; b=JKUzwFkHEDWVw3PbuuHWbjCB73
-	OBG6scFIMa7Qypval/UAoHnvLw7XFwHB17VnGbERBkHRFcOaC1LFPEQbeKF1YBwwmWCz499Vt2hDs
-	Gp82mCewDZdwq3vBMrcOzXSgJTkjI9ZUBmjmh1p713OCNqTETKWaJ9Ch/oKpq+01yZ20YaeMoLe1c
-	7H7XNrNF6UFgVCewts+BHk9G0v3hcQeN08PIVvdvvwPysm5esRbV4eHBt28YOFIrBhItMvvZuQLeN
-	vnA76eU4ox9hqao5ywc0wSJ2bI3xGLh19GVe4NjKp9SIytHJr37GRs+Oe3/6xg8hWuI25Em/rGCS9
-	nLvkK+og==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=garNebGGDyvyBMATQaX/1lhxEv3banNkHxmIaDOYQf4=; b=KVII7X95lMZ7Y1iOOA8WuW0++Q
+	g2NjIxkiTxpp1yd5NpUCHkqCMgvknmGM0kTA3DNWUCurwYyD+F5rJbUieRJ6HRkRfIjAh9wAjBNoZ
+	P1ozNcTtf5EhxLM+lUE02QHFaQIGYB/RN1mfaiR16QYcswJNr1ReR1mw1qNFr2dPykvDPzy6o4ZXV
+	wXvsuJrpt77Lmk0cCMH39eQlfFmBOQnFom2rZC+PEz4lIf88PWoSZemG7Kz/n1qBYlP55bfEbbsbj
+	9JZ/LBsYYS2yE3ijpTC9wf0itpj04NExFgBLlY+5wi0QsDdwlRw9F1yKZuLoHLqXBZLj3lLlbx0yI
+	wRMT7RPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1peKp9-00ADqZ-2i;
-	Mon, 20 Mar 2023 19:05:39 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	id 1peKpA-00ADqm-0p;
+	Mon, 20 Mar 2023 19:05:40 +0000
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1peKp4-00ADnO-1u;
+	id 1peKp4-00ADnv-2O;
 	Mon, 20 Mar 2023 19:05:36 +0000
-Received: by mail-ed1-x532.google.com with SMTP id h8so50845976ede.8;
-        Mon, 20 Mar 2023 12:05:30 -0700 (PDT)
+Received: by mail-ed1-x52b.google.com with SMTP id eg48so50757338edb.13;
+        Mon, 20 Mar 2023 12:05:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679339129;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=YykBqXCsqVFmj8+kisgWDwmfkfKS3HT+dd2C7bsfUoo=;
-        b=jZ2KesgkC91l24IKaQadLFtqtYslMEdG2FjYTrbwtCCX9TMGr/C9ZtOb94aezroTPo
-         T0aoIz7AAbLJsGXuwny3uLpqlJaYdpJ13ZwXZ/oZtgI6vt4ARJwxC7X5GMi5mXeyyU+X
-         BndHFIyt3GanEmHztlupUMf5WPhkP/5kZndT0GmeeTJ6tJIijOf7+C2wJ6qp5J2CZIfI
-         Xa2KEL7Wss9d3GN+AeO80Bemi9PnEGwAfRCulT0P9/wwFuTxhQcY1LSdtaaiPKXb8WE0
-         bM4TIX7jktTCocYU+Np43ps22OWYKVC0vIOr0NM0wSmbSaxbHBFCkId+0c2CMKrnBBjs
-         wJvw==
+        d=gmail.com; s=20210112; t=1679339131;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=garNebGGDyvyBMATQaX/1lhxEv3banNkHxmIaDOYQf4=;
+        b=LzdJDtIeTF7AZbGh4JgVbxVd9p4iLmSw0oJHgTEZonaQgV3vnRzql67y6AjYpCQx9Q
+         dI2WSaLvHXfGQJjJFHCHVk2Pc+i1UJXTx0YgGiL5IMVghXjsolNc0u3ssqjNZuQuGGWj
+         RH7D9RdYW4syYlDgJeTwWM0Ri8DZXvYNotFuaeJGIqUsPfEgqpkoTprySd5ug0Jn2Rcl
+         MYIIjAiP7AgaR9TRnjfd8MBmGew+8PpZ27D+p9NvgWlxVSmBlZF4VV0HhX1kW/diiyOd
+         uN5CEpdNhEfsBGtZwoR7/CGjh2DCX/zfPLZIzM6F52Ke3X1+9t2sd5pJRDbdNB7UxBGz
+         PqCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679339129;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=YykBqXCsqVFmj8+kisgWDwmfkfKS3HT+dd2C7bsfUoo=;
-        b=WGA8sLBY0t5pJKAYoCuf/Y6YOz6rRa23h2yXwrnC3UV4Lq1HJ4JDUvqHheHgRtP/i5
-         IhUsfdNXxzfvwNKWJC0m3CFLvN3MJ9O5mQcmzh8F0IAWcB4SuXIrIsQDVDqpS679qNIG
-         ZzvWZuna7/ZvQyd8u8sCrUtZeCkrE+pZtxWAI21V9XE2E0A0tKuc8/1RbpMjGJ6Z0NKl
-         OMkz7F5nk6vhguJePpcD1PWX/DNEXtem2exeg/o7XTyNCLHJxWTiINdq4kHphsLkd0Y/
-         Wj9BKppBElVgAMoaWIHE7qTExUJCru5NDkYc/Nm2zuJbSHBtvNU0p46OEbK0EUvTHeZm
-         MLfw==
-X-Gm-Message-State: AO0yUKW/A8kNiaRANfK/bPRHX0+fESh5TDzYbiJoYsuh6ZrIqKXh++/G
-	WZAvEIdzfpFlgGBUEzJ89w0=
-X-Google-Smtp-Source: AK7set9dVfGS7DvJfrsRnE0pnsR7d6zDTc3DJmsQZ5rE5ztbD5RzoICFU1n+w/Pn+oZEW0lmTuqGtg==
-X-Received: by 2002:a17:906:2a19:b0:92e:efa:b9be with SMTP id j25-20020a1709062a1900b0092e0efab9bemr155015eje.18.1679339129158;
-        Mon, 20 Mar 2023 12:05:29 -0700 (PDT)
+        d=1e100.net; s=20210112; t=1679339131;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=garNebGGDyvyBMATQaX/1lhxEv3banNkHxmIaDOYQf4=;
+        b=2GpV/D2kU7A6pidmQsdvis/5Yigl8wkkFJJIEqRQrc8dDy0t41BZitukVJFd5oOyKv
+         UYxWckKA/IfmhzwItNWTUN+17xjxmUvGIXf/0XG+NFryBU9oj9s8ECU4xKvkAYMJxGAO
+         tao1SInq+XbCuxvfU1QvHv1UkU9m+xs1EOn14XS334m09fq3yxtJ55xf4pZ32S+sGwYA
+         rr5iJF2PXyur5xzQRc8IiW0WTWJLPx+zfKSqmS9alMUpyChZdl7uh8999QE2TtjP7zqT
+         rDai88GuiVJTq0IuiPTxKyr2UK3SzbI7pUrH0cUw+4TCCSiIx1L6oG7qQQR8RJkqvOCq
+         PfMQ==
+X-Gm-Message-State: AO0yUKU2mdk9qvt3fgImFI++1g9mGquMKw8WVHdZX22cfbUTCNRAOOcL
+	q2hunpjQerFa53nuis2/wuI=
+X-Google-Smtp-Source: AK7set+fE9X45glHrxmqzs0a9utURfqo2TKrILqXwvMhSA4OriGwRzvmJAulLj6/G0utGQUQdFQucw==
+X-Received: by 2002:a17:906:a855:b0:930:963b:63a6 with SMTP id dx21-20020a170906a85500b00930963b63a6mr87662ejb.66.1679339131404;
+        Mon, 20 Mar 2023 12:05:31 -0700 (PDT)
 Received: from arinc9-PC.lan ([149.91.1.15])
-        by smtp.gmail.com with ESMTPSA id hy22-20020a1709068a7600b008e53874f8d8sm4717848ejc.180.2023.03.20.12.05.27
+        by smtp.gmail.com with ESMTPSA id hy22-20020a1709068a7600b008e53874f8d8sm4717848ejc.180.2023.03.20.12.05.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 Mar 2023 12:05:28 -0700 (PDT)
+        Mon, 20 Mar 2023 12:05:31 -0700 (PDT)
 From: arinc9.unal@gmail.com
 X-Google-Original-From: arinc.unal@arinc9.com
 To: Sean Wang <sean.wang@mediatek.com>,
@@ -80,16 +81,18 @@ Cc: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH net 1/3] net: dsa: mt7530: move enabling disabling core clock to mt7530_pll_setup()
-Date: Mon, 20 Mar 2023 22:05:18 +0300
-Message-Id: <20230320190520.124513-1-arinc.unal@arinc9.com>
+Subject: [PATCH net 2/3] net: dsa: mt7530: move lowering TRGMII driving to mt7530_setup()
+Date: Mon, 20 Mar 2023 22:05:19 +0300
+Message-Id: <20230320190520.124513-2-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.37.2
+In-Reply-To: <20230320190520.124513-1-arinc.unal@arinc9.com>
+References: <20230320190520.124513-1-arinc.unal@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230320_120534_628932_90894BEC 
-X-CRM114-Status: GOOD (  13.05  )
+X-CRM114-CacheID: sfid-20230320_120534_781975_21958BD5 
+X-CRM114-Status: GOOD (  21.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,78 +109,102 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-Split the code that enables and disables TRGMII clocks and core clock.
-Move enabling and disabling core clock to mt7530_pll_setup() as it's
-supposed to be run there.
+Move lowering the TRGMII Tx clock driving to mt7530_setup(), after setting
+the core clock, as seen on the U-Boot MediaTek ethernet driver.
 
-Add 20 ms delay before enabling the core clock as seen on the U-Boot
-MediaTek ethernet driver.
+Move the code which looks like it lowers the TRGMII Rx clock driving to
+after the TRGMII Tx clock driving is lowered. This is run after lowering
+the Tx clock driving on the U-Boot MediaTek ethernet driver as well.
 
-Change the comment for enabling and disabling TRGMII clocks as the code
-seems to affect both TXC and RXC.
+This way, the switch should consume less power regardless of port 6 being
+used.
+
+Update the comment explaining mt7530_pad_clk_setup().
 
 Tested rgmii and trgmii modes of port 6 and rgmii mode of port 5 on MCM
 MT7530 on MT7621AT Unielec U7621-06 and standalone MT7530 on MT7623NI
 Bananapi BPI-R2.
 
 Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
-Link: https://source.denx.de/u-boot/u-boot/-/blob/29a48bf9ccba45a5e560bb564bbe76e42629325f/drivers/net/mtk_eth.c#L589
+Link: https://source.denx.de/u-boot/u-boot/-/blob/29a48bf9ccba45a5e560bb564bbe76e42629325f/drivers/net/mtk_eth.c#L682
 Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- drivers/net/dsa/mt7530.c | 18 ++++++++++++------
- 1 file changed, 12 insertions(+), 6 deletions(-)
+
+I asked this before, MT7530 DSA driver maintainers, please explain the code
+I mentioned on the second paragraph.
+
+I intend to send a patch to remove the maintainers, Sean Wang, Landen Chao
+DENG Qingfang, listed on the MAINTAINERS file and change the status to
+orphan if none of them respond to this question or review the patches.
+
+I think a full week is a reasonable amount of time to receive a response
+from a maintainer.
+
+Arınç
+
+---
+ drivers/net/dsa/mt7530.c | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index c2d81b7a429d..d4a559007973 100644
+index d4a559007973..8831bd409a40 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -396,6 +396,9 @@ mt7530_fdb_write(struct mt7530_priv *priv, u16 vid,
- /* Set up switch core clock for MT7530 */
- static void mt7530_pll_setup(struct mt7530_priv *priv)
- {
-+	/* Disable core clock */
-+	core_clear(priv, CORE_TRGMII_GSW_CLK_CG, REG_GSWCK_EN);
-+
- 	/* Disable PLL */
- 	core_write(priv, CORE_GSWPLL_GRP1, 0);
- 
-@@ -409,6 +412,11 @@ static void mt7530_pll_setup(struct mt7530_priv *priv)
- 		   RG_GSWPLL_EN_PRE |
- 		   RG_GSWPLL_POSDIV_200M(2) |
- 		   RG_GSWPLL_FBKDIV_200M(32));
-+
-+	udelay(20);
-+
-+	/* Enable core clock */
-+	core_set(priv, CORE_TRGMII_GSW_CLK_CG, REG_GSWCK_EN);
+@@ -419,12 +419,12 @@ static void mt7530_pll_setup(struct mt7530_priv *priv)
+ 	core_set(priv, CORE_TRGMII_GSW_CLK_CG, REG_GSWCK_EN);
  }
  
- /* Setup TX circuit including relevant PAD and driving */
-@@ -466,9 +474,8 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
- 			mt7530_write(priv, MT7530_TRGMII_TD_ODT(i),
- 				     TD_DM_DRVP(8) | TD_DM_DRVN(8));
+-/* Setup TX circuit including relevant PAD and driving */
++/* Setup port 6 interface mode and TRGMII TX circuit */
+ static int
+ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
+ {
+ 	struct mt7530_priv *priv = ds->priv;
+-	u32 ncpo1, ssc_delta, trgint, i, xtal;
++	u32 ncpo1, ssc_delta, trgint, xtal;
  
--		/* Disable MT7530 core and TRGMII Tx clocks */
--		core_clear(priv, CORE_TRGMII_GSW_CLK_CG,
--			   REG_GSWCK_EN | REG_TRGMIICK_EN);
-+		/* Disable the MT7530 TRGMII clocks */
-+		core_clear(priv, CORE_TRGMII_GSW_CLK_CG, REG_TRGMIICK_EN);
+ 	xtal = mt7530_read(priv, MT7530_MHWTRAP) & HWTRAP_XTAL_MASK;
  
- 		/* Setup the MT7530 TRGMII Tx Clock */
- 		core_write(priv, CORE_PLL_GROUP5, RG_LCDDS_PCW_NCPO1(ncpo1));
-@@ -485,9 +492,8 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
- 			   RG_LCDDS_PCW_NCPO_CHG | RG_LCCDS_C(3) |
- 			   RG_LCDDS_PWDB | RG_LCDDS_ISO_EN);
+@@ -469,11 +469,6 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
+ 		   P6_INTF_MODE(trgint));
  
--		/* Enable MT7530 core and TRGMII Tx clocks */
--		core_set(priv, CORE_TRGMII_GSW_CLK_CG,
--			 REG_GSWCK_EN | REG_TRGMIICK_EN);
-+		/* Enable the MT7530 TRGMII clocks */
-+		core_set(priv, CORE_TRGMII_GSW_CLK_CG, REG_TRGMIICK_EN);
- 	} else {
- 		for (i = 0 ; i < NUM_TRGMII_CTRL; i++)
- 			mt7530_rmw(priv, MT7530_TRGMII_RD(i),
+ 	if (trgint) {
+-		/* Lower Tx Driving for TRGMII path */
+-		for (i = 0 ; i < NUM_TRGMII_CTRL ; i++)
+-			mt7530_write(priv, MT7530_TRGMII_TD_ODT(i),
+-				     TD_DM_DRVP(8) | TD_DM_DRVN(8));
+-
+ 		/* Disable the MT7530 TRGMII clocks */
+ 		core_clear(priv, CORE_TRGMII_GSW_CLK_CG, REG_TRGMIICK_EN);
+ 
+@@ -494,10 +489,6 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
+ 
+ 		/* Enable the MT7530 TRGMII clocks */
+ 		core_set(priv, CORE_TRGMII_GSW_CLK_CG, REG_TRGMIICK_EN);
+-	} else {
+-		for (i = 0 ; i < NUM_TRGMII_CTRL; i++)
+-			mt7530_rmw(priv, MT7530_TRGMII_RD(i),
+-				   RD_TAP_MASK, RD_TAP(16));
+ 	}
+ 
+ 	return 0;
+@@ -2207,6 +2198,15 @@ mt7530_setup(struct dsa_switch *ds)
+ 
+ 	mt7530_pll_setup(priv);
+ 
++	/* Lower Tx driving for TRGMII path */
++	for (i = 0; i < NUM_TRGMII_CTRL; i++)
++		mt7530_write(priv, MT7530_TRGMII_TD_ODT(i),
++			     TD_DM_DRVP(8) | TD_DM_DRVN(8));
++
++	for (i = 0; i < NUM_TRGMII_CTRL; i++)
++		mt7530_rmw(priv, MT7530_TRGMII_RD(i),
++			   RD_TAP_MASK, RD_TAP(16));
++
+ 	/* Enable port 6 */
+ 	val = mt7530_read(priv, MT7530_MHWTRAP);
+ 	val &= ~MHWTRAP_P6_DIS & ~MHWTRAP_PHY_ACCESS;
 -- 
 2.37.2
 
