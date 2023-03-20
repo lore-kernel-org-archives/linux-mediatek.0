@@ -4,82 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74871C7618A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Mar 2023 10:49:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C02B9C7618D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Mar 2023 11:36:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PRlLNM8ERP7NINB4lD68gxCWnKzgU2w5yy3xxtNVMFU=; b=LPYEB9Fe5ZiFnaOE8e2KGvV2nt
-	FhZGSQ2P4SEHNIxLUOkSJWKJ7ZrZjoMRgR2Rq7CN0iyZEZH4atstPfBmXXi8+8yjCeYL4UECG6fwJ
-	jZ/8Mr2SDXBoK0hZy0EE1cVSGXXVsafaYvEk2eWBq+2gqtMXSkczEDcads23MPc5R62/ClhjcBIfb
-	VZeJu8CI3+0cLf7sYA/08fYv4f5p0cHeFfnYGkWcxIrfZNkgWQMJOX6FtoSvKV1/gSUgv4xuUayWI
-	W4eT1EP/W9JUziJvaLdb8jBDJtDyPnGyAs1gaLIDIdu7OAFHQrfIPP1wfKDy0/Y2hhtFv+4ETZ91y
-	yZ5DoN5w==;
+	bh=iRTZNFFSmU9YtlnKP/gP6G+hlOopz2sFf8wKiS7Yzzk=; b=jfKZyFAPlEv6+tGaoJPZuN7HLi
+	D/jdhdmejs3ND2R4OfwWBYpEh/NxO82UUx6Fa0rjY/Xf8Xn9jY68FFrTBeqhWgJYefLIyovqpBsYT
+	KxVKQmCgy6HYswL66Pvm+U+8NT9zoG+FeL7iXH+43zHmTVeAkdJpuWEQcgDskgIoToDktdLna3uum
+	rCG4MzgXLnoXhZLCkjMufHBHuqM3o3d4MbCc70eSJ2KUAMQdGVTcxazj/uCtNHsJTK1VsqQIz1H4M
+	kbVSU+gIMYh6FQv2vpuwKG19Me33c1MU6PcNpB6xo4eeRvFSdfgb2icvc7OKQr2a+OEvIM8APQDJ1
+	uTKRlMgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1peD53-008hc1-38;
-	Mon, 20 Mar 2023 10:49:33 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1peDnx-008plq-2E;
+	Mon, 20 Mar 2023 11:35:57 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1peD50-008hZl-2k;
-	Mon, 20 Mar 2023 10:49:32 +0000
-X-UUID: e0c08af2c70c11ed86fbcd8805c7ac66-20230320
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=PRlLNM8ERP7NINB4lD68gxCWnKzgU2w5yy3xxtNVMFU=;
-	b=LFz/6booB2XWh4MyffnXYQ9qbg0bl4Y54adq+8FcFxUAhB94sivGniEWud9y+O1NqiOvQ7zuOyxoJmlcFMz5PQ1E3yfmJqqYwBZJ5TBrMN9QjfEXd0uPyBbGgw7vwrD5vdJI4/6qFw1kKrZKgZ+rbLBliNR/zn+Zcx4ibKFOyUI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:fb96c5f1-df7b-4208-b6da-67c053172204,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:120426c,CLOUDID:4be6c8b3-beed-4dfc-bd9c-e1b22fa6ccc4,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: e0c08af2c70c11ed86fbcd8805c7ac66-20230320
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1900590812; Mon, 20 Mar 2023 03:49:24 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Mon, 20 Mar 2023 18:28:46 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Mon, 20 Mar 2023 18:28:45 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
-	Nicolas Dufresne <nicolas@ndufresne.ca>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>,
-	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, Hsin-Yi Wang
-	<hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter
-	<daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH 6/6 RESEND] media: mediatek: vcodec: Add encode to support dbgfs
-Date: Mon, 20 Mar 2023 18:28:38 +0800
-Message-ID: <20230320102838.8313-7-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230320102838.8313-1-yunfei.dong@mediatek.com>
-References: <20230320102838.8313-1-yunfei.dong@mediatek.com>
+	id 1peDns-008pkC-2d
+	for linux-mediatek@lists.infradead.org;
+	Mon, 20 Mar 2023 11:35:54 +0000
+Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1peDmk-0005Mb-3u; Mon, 20 Mar 2023 12:34:42 +0100
+Received: from pengutronix.de (unknown [IPv6:2a00:20:c04b:45e4:1953:f0f4:6a85:b0])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(Client did not present a certificate)
+	(Authenticated sender: mkl-all@blackshift.org)
+	by smtp.blackshift.org (Postfix) with ESMTPSA id 05ADB19732D;
+	Mon, 20 Mar 2023 09:23:50 +0000 (UTC)
+Date: Mon, 20 Mar 2023 10:23:49 +0100
+From: Marc Kleine-Budde <mkl@pengutronix.de>
+To: Rob Herring <robh@kernel.org>
+Cc: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>, Joel Stanley <joel@jms.id.au>,
+	Andrew Jeffery <andrew@aj.id.au>,
+	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Appana Durga Kedareswara rao <appana.durga.rao@xilinx.com>,
+	Naga Sureshkumar Relli <naga.sureshkumar.relli@xilinx.com>,
+	Wolfgang Grandegger <wg@grandegger.com>,
+	Michal Simek <michal.simek@xilinx.com>,
+	Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Tobias Waldekranz <tobias@waldekranz.com>,
+	Lars Povlsen <lars.povlsen@microchip.com>,
+	Steen Hegelund <Steen.Hegelund@microchip.com>,
+	Daniel Machon <daniel.machon@microchip.com>,
+	UNGLinuxDriver@microchip.com, Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-actions@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-sunxi@lists.linux.dev, linux-aspeed@lists.ozlabs.org,
+	linux-can@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] dt-bindings: net: Drop unneeded quotes
+Message-ID: <20230320092349.7eqjqiblksjpw3fb@pengutronix.de>
+References: <20230317233605.3967621-1-robh@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="5rfbuzw7ieky3r2g"
+Content-Disposition: inline
+In-Reply-To: <20230317233605.3967621-1-robh@kernel.org>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:b01:1d::7b
+X-SA-Exim-Mail-From: mkl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230320_034930_895639_233A0F09 
-X-CRM114-Status: UNSURE (   9.69  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230320_043552_853570_E7A1767E 
+X-CRM114-Status: GOOD (  13.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,34 +111,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add encode to support dbgfs.
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
----
- drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c | 2 ++
- 1 file changed, 2 insertions(+)
+--5rfbuzw7ieky3r2g
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c
-index 9095186d5495..94703c66da74 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c
-@@ -353,6 +353,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 		goto err_enc_reg;
- 	}
- 
-+	mtk_vcodec_dbgfs_init(dev, false);
- 	mtk_v4l2_debug(0, "encoder %d registered as /dev/video%d",
- 		       dev->venc_pdata->core_id, vfd_enc->num);
- 
-@@ -463,6 +464,7 @@ static int mtk_vcodec_enc_remove(struct platform_device *pdev)
- 	if (dev->vfd_enc)
- 		video_unregister_device(dev->vfd_enc);
- 
-+	mtk_vcodec_dbgfs_deinit(dev);
- 	v4l2_device_unregister(&dev->v4l2_dev);
- 	pm_runtime_disable(dev->pm.dev);
- 	mtk_vcodec_fw_release(dev->fw_handler);
--- 
-2.25.1
+On 17.03.2023 18:36:03, Rob Herring wrote:
+> Cleanup bindings dropping unneeded quotes. Once all these are fixed,
+> checking for this can be enabled in yamllint.
+>=20
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+[...]
+>  .../devicetree/bindings/net/can/xilinx,can.yaml    |  6 +++---
 
+Acked-by: Marc Kleine-Budde <mkl@pengutronix.de> # for bindings/net/can
+
+Marc
+
+--=20
+Pengutronix e.K.                 | Marc Kleine-Budde           |
+Embedded Linux                   | https://www.pengutronix.de  |
+Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-5555 |
+
+--5rfbuzw7ieky3r2g
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEDs2BvajyNKlf9TJQvlAcSiqKBOgFAmQYJiIACgkQvlAcSiqK
+BOhjVQf/acPAkVlZAgSx2EeDlEf8hS1lf2sRkjDcvxt3kTD2h5jAh5U3kLV5DTD4
+MjEV9UTZecOll5eioSnCl1DrrqCemegxaoOeML/pQDa4hNYWmm5JHZFLOKdQbL0T
+B9Jl3hxOtVzm95NTggCnKp31A7Q7ft8wfQgSN//1++W90f7Yot/HEv/oPR68ElzX
+J2GyX741B6AfKBqEztJ6OYDWiB2lHw6zzIxacqqM+zn9vjVteFg2FsbKvCRAbUCV
+Bxg0WyzixKLhUf2Of1QOnEW70UfVtICWJ25BjPXp9+WGomovd5nb0MbV+2lou9kk
+0u595tSMCR5sWDa8jKOahMLP+4ZClA==
+=xkke
+-----END PGP SIGNATURE-----
+
+--5rfbuzw7ieky3r2g--
 
