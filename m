@@ -4,65 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C0C3C6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Mar 2023 15:00:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03A6FC6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Mar 2023 15:00:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Td4fd+tFhYBcKTIKKiS5dIBjeWLYiTrtksW7Kwz+PiU=; b=yYlD95H4ZrflEm
-	ieH9/vWBgK5LC5M/ywSpp88pmVBwFcao9kPd3zyTVJ7rteP0tlZqU78mDmJQLs1wIXJxkiHwRScNk
-	E0d0bvFq9MYS28zLDNU1ntUV0re1Q3EOtQgpLUpXuEE9odkISctUVD4ubhqhgrLXGBYLYroOQNhJi
-	E1DDtqH+c9RqBMeCTe5B1p9f+++r/wDEm9HpGR6fQby71ZzaskiWIDjo+A+TAz6JLcLVziOcikRox
-	wJ9b+Wg5TkW1jJp6JD05CgcmrMccxfDCsR810q3FlxzxNMtGUYhsz/4Td1Q6vr1Z3+n6EoB334DG/
-	I5749Uh180fm2TeHk1Lg==;
+	List-Owner; bh=XM1UW3ErtM0Ekrm/4kPEENpRJnR0/SCQbqHQEc+DzDo=; b=S91D1ZjNttBH5j
+	7ds0ac0pPyrWeKxJzj5GTJV/VxoCqQchg2TgoxH7u/vTCBHk3r0LYwPF+W0ie2STcEIDZ8s2Iasv9
+	vFW/bjhPSOOzQA6/oUI9PVw3fFVyqf5DegF4KWanOb0a/h8eAgWIchUwpteObplOP5cEQ1wGIIYXq
+	7QmCmeV63g1IKAvGSaCvi9TfJWUUc5yckeQvOzfBmByHahMr09gdAGunQ8oHzWS3s0xePQGJ2UpGj
+	KZZHOIWzJHBucnLOEObeGcUo4rpjZqUdSti1eKYiVj+M436IK+QWEKEEJXY22yUEK5fsQ0yHDuH9l
+	XzM9MN1ADynPRugb8jZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1peGzt-009Rbw-1s;
-	Mon, 20 Mar 2023 15:00:29 +0000
+	id 1peH02-009RgI-1P;
+	Mon, 20 Mar 2023 15:00:38 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1peGzd-009RU1-13;
-	Mon, 20 Mar 2023 15:00:14 +0000
+	id 1peGzy-009ReE-3D;
+	Mon, 20 Mar 2023 15:00:36 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id CF766660212C;
-	Mon, 20 Mar 2023 15:00:09 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 47A0B6602173;
+	Mon, 20 Mar 2023 15:00:32 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1679324411;
-	bh=69r7ZJ7lFz8tBgGhwZoAQpSTq3WnA5tKdeH7p99cqsg=;
+	s=mail; t=1679324433;
+	bh=AfixiP+8HtjjvMIA24QWs2GNAgmS/cAvbsYFMd2V1R8=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=FXf6S4YEmmMAIySgVsoRQJfX1gpJGGnOTA1pmvDKiMkygZcbGxRYV8B2kkwoGMO1P
-	 UEoyuLFZYh16TQ0EDqps/0OaHYp0ZPC25L8JrF0/y0HQXSf3JLYigFpLzNqx28Dfy8
-	 yIYd2oyKoyYNPeCNzEmu4ZzEZjAbpfxHg0Rab2X1yTH2TvbWMUzFQgD4BJ4joSQuBs
-	 9TWNRYBHurfikKt3tjxT/FRZukfXP8pMD0WxRiYFPtZuUtnbARWzqAyrpoeC7I6KsB
-	 GQFN+Mwi/45P47Suv4Mh3B/vKsl2M9bneGds8zAFi1CECZTyc0jW4n1ilBcUbbCBIV
-	 NIgIlTI2irtbw==
-Message-ID: <1d0c0e49-4f50-7fc8-d514-b19cf4054066@collabora.com>
-Date: Mon, 20 Mar 2023 16:00:06 +0100
+	b=lGZKoKJxulxhXT27+WHTQ+D3jlwfNFNNGlfa364Q4mk2q1N9H4KmoaTaDyUmAY+PK
+	 g5K9dzh3EqHGF5Hcuy0xo+uTHp8TF0LvQ7hagbAuZhREWCG79YJmzP7kjQHQShKYO8
+	 HskdECNhT4ha3jDhD5NUjeFKZUkg9Gk4SHl1g71s+arA9SYUlGXoHQdrPHmqGsJ/R0
+	 FFRytE5zUKlv29DQO5ksvTNSV6QKI1Z+mJrII540pU/bTMm10lf4Yixtex3xaes4JU
+	 c+X2xcpw7ifZCuI48Gu2lt35+InR0TgHPJ72E462Ytm+6G7eqc66eIvM6bBbdx0daB
+	 9/Ce92kV9ANgQ==
+Message-ID: <a19a4310-3228-c6b5-8eec-ed7f35eb5e13@collabora.com>
+Date: Mon, 20 Mar 2023 16:00:30 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.9.0
-Subject: Re: [PATCH v3 20/21] dt-bindings: pinctrl: mediatek: mt7620: split
- binding
+Subject: Re: [PATCH v3 11/21] dt-bindings: pinctrl: mediatek: mt8186: rename
+ to mediatek,mt8186-pinctrl
 Content-Language: en-US
 To: arinc9.unal@gmail.com, Linus Walleij <linus.walleij@linaro.org>,
  Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
 References: <20230317213011.13656-1-arinc.unal@arinc9.com>
- <20230317213011.13656-21-arinc.unal@arinc9.com>
+ <20230317213011.13656-12-arinc.unal@arinc9.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230317213011.13656-21-arinc.unal@arinc9.com>
+In-Reply-To: <20230317213011.13656-12-arinc.unal@arinc9.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230320_080013_496768_F7DEDDAB 
-X-CRM114-Status: GOOD (  13.14  )
+X-CRM114-CacheID: sfid-20230320_080035_173074_359B3071 
+X-CRM114-Status: UNSURE (   8.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,39 +82,13 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Il 17/03/23 22:30, arinc9.unal@gmail.com ha scritto:
 > From: Arınç ÜNAL <arinc.unal@arinc9.com>
 > 
-> The MT7628 and MT7688 SoCs contain different pin muxing information,
-> therefore, should be split. This can be done now that there are compatible
-> strings to distinguish them from other SoCs.
-> 
-> Split the schema out to mediatek,mt76x8-pinctrl.yaml.
-> 
-> Remove mediatek,mt76x8-pinctrl from mt7620.
+> Rename pinctrl-mt8186.yaml to mediatek,mt8186-pinctrl.yaml to be on par
+> with the compatible string and other mediatek dt-binding schemas.
 > 
 > Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> Reviewed-by: Rob Herring <robh@kernel.org>
-> ---
->   .../pinctrl/mediatek,mt7620-pinctrl.yaml      | 379 +--------------
->   .../pinctrl/mediatek,mt76x8-pinctrl.yaml      | 450 ++++++++++++++++++
+> Acked-by: Rob Herring <robh@kernel.org>
 
-AFAIK, wildcards aren't allowed, so the new file should instead be called
-"mediatek,mt7628-pinctrl.yaml", the compatible string "ralink,mt76x8-pinctrl"
-should be deprecated (but still present as to not break ABI), and the driver
-updated to accept the compatible string "ralink,mt7628-pinctrl".
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-At that point, you could update the devicetrees as well: for MT7628, you'd
-have a node using
-
-compatible = "ralink,mt7628-pinctrl";
-
-while for MT7688, you'd have
-
-compatible = "ralink,mt7688-pinctrl", "ralink,mt7628-pinctrl";
-
-If you don't want to go through those lengths, you could still do the
-cleanup that you wanted to perform, but with a filename containing no
-wildcards - anyway.
-
-Regards,
-Angelo
 
 
