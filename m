@@ -4,111 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37A59C7618A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Mar 2023 11:38:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AF0DC6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Mar 2023 11:40:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zGLzDQkG6KSjYKi7uuPER6fatoxAaQTWwyFIcRCkjxY=; b=BfVmyxUm/A0v0pKrSzenoYE99Z
-	otU6o+cVb3pnIG1rckjuZScfqS67V6hz3X6e39+/Qw/VC0qPKTkoL88rS/MA+xeAoDPA/KCI0EXnz
-	7GYt6Oqe4ebSQyjaHpMnKX/PHPdsFo7FY96ca6+hJPEpfoXdSDFYjNCZ3FaPxQxDUwUvc9IkyHT+W
-	Bcju2kn/dJEX1jZsSm88uMXey0GyVnIh4dek+VP9VEEZQD56U/CPLUd3nhSWtAJs31sZc7EcRmT4o
-	7nbu91nF69oTTX9wBR1UtB6H0NfbqnTxVaRgrL4tz9ng9lX+tXGYWJADaQf/qanqCLI7swRU/rrZ+
-	uU4js0hw==;
+	bh=mMu5YLP/jkTdIj0tnEnlgPK0Nfp3Fpp+6udewmgirXw=; b=b2T+DxrWzVnEDFqYNQ6oisoFFX
+	o7H8Vs1+u9jbzI5oL6qzfkSdnwZhTQfnDx2maBus+aK3fH5BE+wyJ1eNwMddQPUHma/fH0JDeuVqc
+	OmId65DkY5fKeyhyeZf1eTYDsEOkj5LwdkqF62TTqc1RQWMhqlbaCVLY4jMaE+1JPq4uunekBclQI
+	Cknya+/83R7FhCBibJNDB18yx37YGyFn4vP7QAOqOZgoQUAOKv2B9a3pqmF5Klfm9NQSLASEaiCsQ
+	JsIzFx5MUrbJErtVbrEwDHgZ483O3GRYli+erfSAJhTVjKt4eYqQmVNbx2e93mltRNEA126knC2jC
+	YOYohLKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1peDqZ-008qEe-1M;
-	Mon, 20 Mar 2023 11:38:39 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1peDrr-008qVc-2l;
+	Mon, 20 Mar 2023 11:39:59 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1peDqV-008qDg-1B;
-	Mon, 20 Mar 2023 11:38:36 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id DF99FB80E56;
-	Mon, 20 Mar 2023 11:38:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 714C1C433EF;
-	Mon, 20 Mar 2023 11:38:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1679312311;
-	bh=YfQJfApGvnHfGU8gi0gNukjaGzsg84xu5lWbeqt0lnw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Eb0R3e1JjZqoZgzBIBGjddsyzF5oRvdKqX4zJzfcsM0/DnTdJPwvylLD+N+LKBRzx
-	 IUP4xObd68HKq8F/Qvpt1W8+ib5Odyumu8IK77yOV7UrOlBps49shv9e9/SC/xo2kz
-	 m0aAW+ll4AWGsB8I2maII0LRP6fC/xl2FJLRDWSewz86h49su8evjRUcjYOvGhEqEP
-	 OqxjJPCWzSjGCbGJ72Q91R07MKL6mi3EU3EI8GH5XvBh3WyMEz82QnPL2OuhZKfQhY
-	 kOBto01PJnNfY6OWt0wG8oiBvRdeyp56uvftv10KL3GXZXlc50hUNdkT6jkk/wjKoa
-	 ZZVIoO4TNk3KQ==
-Date: Mon, 20 Mar 2023 17:08:27 +0530
-From: Vinod Koul <vkoul@kernel.org>
-To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Kishon Vijay Abraham I <kishon@kernel.org>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Andre Przywara <andre.przywara@arm.com>,
-	Wolfram Sang <wsa+renesas@sang-engineering.com>,
-	Icenowy Zheng <uwu@icenowy.me>, Justin Chen <justinpopo6@gmail.com>,
-	Al Cooper <alcooperx@gmail.com>, Pratyush Yadav <p.yadav@ti.com>,
-	Rahul T R <r-ravikumar@ti.com>,
-	Swapnil Jakhade <sjakhade@cadence.com>,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Liu Ying <victor.liu@nxp.com>, Yuan Can <yuancan@huawei.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	Allison Randal <allison@lohutok.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Miaoqian Lin <linmq006@gmail.com>, Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Amelie Delaunay <amelie.delaunay@foss.st.com>,
-	Dan Carpenter <error27@gmail.com>,
-	Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
-	JC Kuo <jckuo@nvidia.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Roger Quadros <rogerq@kernel.org>, Matt Ranostay <mranostay@ti.com>,
-	Sinthu Raja <sinthu.raja@ti.com>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Tanmay Patil <t-patil@ti.com>,
-	Siddharth Vadapalli <s-vadapalli@ti.com>,
-	Lv Ruyi <lv.ruyi@zte.com.cn>, linux-phy@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	kernel@pengutronix.de,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-tegra@vger.kernel.org
-Subject: Re: [PATCH 00/31] phy: Convert to platform remove callback returning
- void
-Message-ID: <ZBhFsyXyN4wHV5BB@matsya>
-References: <20230307115900.2293120-1-u.kleine-koenig@pengutronix.de>
+	id 1peDro-008qTv-0Y;
+	Mon, 20 Mar 2023 11:39:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=mMu5YLP/jkTdIj0tnEnlgPK0Nfp3Fpp+6udewmgirXw=; b=rQVL0WSfI6DDRuaDEwJjml822x
+	KtD2v3CIHFYriDuEcS/4jsw7sMIu29l3YxeOvPW7AQVStBSosRBnhpzGCtNJTqKhaOXH3g/Hs2VEp
+	QiBBkJ0iwG9hePCrAi4tGgO3CJcfKk5uKSTzB8faTx2U0JEueCpcj3K8D815BgfQZHivCxTqgCuQH
+	5VGpiCW36UCDPR1FAcRswaokuMIeG8Q8VH3PGLYwRJxkHKHsM4QFwa5o5SNDpdOqlhGBAx/arsTuk
+	EU9ES962mB0vkzSC1W8rXTGIO23j+FLDvlaUseE2G8SA8BQE3+mhQy82SJxgvmvxVcFBQ5EuGz89y
+	T6gVTt3w==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:37718)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1peDrb-0007HS-54; Mon, 20 Mar 2023 11:39:43 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1peDrP-0006UF-Dn; Mon, 20 Mar 2023 11:39:31 +0000
+Date: Mon, 20 Mar 2023 11:39:31 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Daniel Golle <daniel@makrotopia.org>
+Subject: Re: [PATCH net-next v14 7/9] net: pcs: add driver for MediaTek SGMII
+ PCS
+Message-ID: <ZBhF88FtX7ERqrw7@shell.armlinux.org.uk>
+References: <cover.1679230025.git.daniel@makrotopia.org>
+ <cf8a52216cfe4651695669936bd4bb1b9500c57b.1679230025.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230307115900.2293120-1-u.kleine-koenig@pengutronix.de>
+In-Reply-To: <cf8a52216cfe4651695669936bd4bb1b9500c57b.1679230025.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230320_043835_704856_23512E0B 
-X-CRM114-Status: GOOD (  16.48  )
+X-CRM114-CacheID: sfid-20230320_043956_213722_3AA46ED5 
+X-CRM114-Status: GOOD (  13.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,31 +72,31 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <vladimir.oltean@nxp.com>, Eric Dumazet <edumazet@google.com>, Florian Fainelli <f.fainelli@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Alexander Couzens <lynxis@fe80.eu>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, =?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 07-03-23, 12:58, Uwe Kleine-König wrote:
-> Hello,
+On Sun, Mar 19, 2023 at 12:57:50PM +0000, Daniel Golle wrote:
+> The SGMII core found in several MediaTek SoCs is identical to what can
+> also be found in MediaTek's MT7531 Ethernet switch IC.
+> As this has not always been clear, both drivers developed different
+> implementations to deal with the PCS.
+> Recently Alexander Couzens pointed out this fact which lead to the
+> development of this shared driver.
 > 
-> this patch series adapts the platform drivers below drivers/phy to use the
-> .remove_new() callback. Compared to the traditional .remove() callback
-> .remove_new() returns no value. This is a good thing because the driver core
-> doesn't (and cannot) cope for errors during remove. The only effect of a
-> non-zero return value in .remove() is that the driver core emits a warning. The
-> device is removed anyhow and an early return from .remove() usually yields a
-> resource leak.
+> Add a dedicated driver, mostly by copying the code now found in the
+> Ethernet driver. The now redundant code will be removed by a follow-up
+> commit.
 > 
-> By changing the remove callback to return void driver authors cannot
-> reasonably assume any more that there is some kind of cleanup later.
-> 
-> All drivers in drivers/spmi returned zero unconditionally in their remove
-> callback, so they could all be converted trivially to .remove_new().
-> 
-> Note that this series depends on commit 5c5a7680e67b ("platform: Provide
-> a remove callback that returns no value") which is included in v6.3-rc1.
+> Suggested-by: Alexander Couzens <lynxis@fe80.eu>
+> Suggested-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
-Applied, thanks
+Reviewed-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+
+Thanks!
 
 -- 
-~Vinod
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
