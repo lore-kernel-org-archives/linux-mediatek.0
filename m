@@ -4,75 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAEFDC6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Mar 2023 16:59:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33193C6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Mar 2023 18:09:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yX3X6XUUIZJHDMdzSW16zvJ7y/lCtQTDcoWIHMDryz8=; b=mr/9617LzSLADRS6IlviSaVBn5
-	gb0ZdunZ4jrPoISzbrN+80WEozTNvte4Abp6BOFxvcEOZmBTUsCrKJHam3sjSniPfLZLiDeQvGHMr
-	HEn9dQsCgMZJIkxaGrfCUBMNWrWr7YxFXJV40+ze6aOoZPYb6M5vBexfWo23dhbejoeN/zzART7t1
-	o9UDSfpP2PxbhJBT/5A71aBt6y22h19hapIiZaHy38Ls4Z0GRfzjkR6D3rVx0H6NfLskmFpUS2fVn
-	MfX7fQgbZUpa2Qoy6+4aj4mwZtXZkax44UgaKdgFJEIi331zpjCa8dF4mgIlWMbE+/6bX/245lzLB
-	8FhykUwA==;
+	bh=9Ym0Aa6IJr35fCbX8wJyITkzyONp9K1eXcn9gLrMKEM=; b=MDNezr2VO5iJZUFp7Lmx6dSSRn
+	MXe/tQyXBAMFQj2pAq4JdMDy4Efsw/4BDSPp96IFGP8uT6Y9w2CKaZrDGHvyFPc5S5CzDVpinKaf6
+	FWUjEhvazDGLWqlqDvEbO0Nj2kkzawtaIshJmebp/Td3He24EAAi+YGkPR1YV2nvyhPjsq+FOzIDA
+	2Au4q00UN4FKx98ulgn2LnuNNha4DnxCPI43/8z5yBJGp2dwxwfH4BDB2nyhNgJzRircCp259wIbS
+	H5nV0/WL/Gum6JNHzH3+Rmg4HucBS4F/o22K4+ikiLezNSYSeyskH1Pb0cpkpgVDoqCSn+5E3FBwn
+	t5WdFW9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1peIr8-009u8M-0f;
-	Mon, 20 Mar 2023 16:59:34 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1peJwm-00A5u1-1Q;
+	Mon, 20 Mar 2023 18:09:28 +0000
+Received: from mail-qt1-x82a.google.com ([2607:f8b0:4864:20::82a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1peIr3-009u6P-3A
-	for linux-mediatek@lists.infradead.org;
-	Mon, 20 Mar 2023 16:59:31 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 7C140616DD;
-	Mon, 20 Mar 2023 16:59:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8B860C433D2;
-	Mon, 20 Mar 2023 16:59:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1679331568;
-	bh=erXq85FyIZtloI+86moWAdAbuiYWCHhJtUTWTR5zF24=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=u6Yew46aNS37ilruUDPlt8PDEPagkM02hjjuYvwmCyha0ErZGzm+AnrYwU4QfSneu
-	 aVhngWEpjFKmnzW/ounuNw2VTPBYK4UVmX8666/kyvzx4MvPPWvIXSuo7ty1fSrpqy
-	 EX3RTHitTqmOuAENKuqWmy+Wdj9oPbECvfe4MbQFZ7Xjl3Fdz6HucCyw2CwowTc8rZ
-	 ToR74R+tKAslNphht+kW1LWEEtow7yyvayizvEUUwtY52+nkSy6g5qRQ0RAmBw5rE2
-	 PC7E4NPpSULVp1NCM8fVAB66RJFwZvCIJ15jlo4d4P3tBnHbs8tNTQpeliwS2Fpx1Y
-	 G4KaBPh8WWIvQ==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: netdev@vger.kernel.org
-Cc: davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	matthias.bgg@gmail.com,
-	linux-mediatek@lists.infradead.org,
-	nbd@nbd.name,
-	john@phrozen.org,
-	sean.wang@mediatek.com,
-	Mark-MC.Lee@mediatek.com,
-	lorenzo.bianconi@redhat.com,
-	daniel@makrotopia.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	robh+dt@kernel.org,
-	devicetree@vger.kernel.org
-Subject: [PATCH net-next 10/10] arm64: dts: mt7986: move dlm in a dedicated node
-Date: Mon, 20 Mar 2023 17:58:04 +0100
-Message-Id: <d74e38de00ad1b858b59a7ef6cb02321b0faf750.1679330630.git.lorenzo@kernel.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <cover.1679330630.git.lorenzo@kernel.org>
-References: <cover.1679330630.git.lorenzo@kernel.org>
+	id 1peJwi-00A5s2-1f;
+	Mon, 20 Mar 2023 18:09:25 +0000
+Received: by mail-qt1-x82a.google.com with SMTP id c18so14163840qte.5;
+        Mon, 20 Mar 2023 11:09:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1679335763;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=9Ym0Aa6IJr35fCbX8wJyITkzyONp9K1eXcn9gLrMKEM=;
+        b=jV+wT9G9dMq++VXoHOITcaMwSKfT7Ne8l6voVfiCeH20VK0uzRJIf9CA2v8jn1mE42
+         9De/qJTXiN3NlwKDdk7NArH7WT5H+4m7s71wZTV+2BygDTiQuwk+mRLMpRhBukxFua9x
+         67hE9fL+3OgJ1dTRBMXtTwDXEznGIlnqEuoH6BXNz+DtDWm5LZSaKbCnlxFhePXKvQQw
+         biWPqZK1eoCZ6HeXFY1w+DmsNHS4W090fENE/el13ZE/cuRLHNVC7Li/p30/Ai1N8xhv
+         3ejM9NTyAoTh9dtKbufIgtWOwd6srKtNAzDZ9KiKE0PTE7Lb1wYokPUbe9HLqHLVnTp7
+         mdLA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679335763;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=9Ym0Aa6IJr35fCbX8wJyITkzyONp9K1eXcn9gLrMKEM=;
+        b=sFkUNlnrkHnFnvMNZ3QRDc2FcexzBNm1/jeMvqxqccCPvSSjiAZW9QWB3PUOTikTBz
+         4+7qgU4D7iapSYX1uRnN3sZ94tU3CQFc/+I0LlJdRUJpAcmY/UM5sWttEMVWXv6BBv23
+         +LDIJXqUFPwPwv1kYA3Pi10vbicTeK4MD3J/CtGju10Sxs+RDpMOL/98CXElAMdyaxNi
+         kpG0WZLFegNmdYkDgbJjPV6nvEMk3m207WHKWLEQEIcDmnw8EOimBijBWfzEIQU0ITYW
+         jifXRmGB5TY3B0/iV1Tq5S+gI46WX0ZMywWtfJp2Bhdzb9v7Bb1+tBCag2EDEJmYCqO5
+         1VCQ==
+X-Gm-Message-State: AO0yUKVGtYxi9GyZuPJiiiBTuLvzf9KG+GafxvonnoLxC7lwMs7yLfCE
+	2anSK/t3UIxRavOgyZq1Gno=
+X-Google-Smtp-Source: AK7set/rOHA8qVlayMALPx0FGjCcSWh/Kq1WvV8aodxfR3XsSBymHa1dS0evHblRHeVucdEeSCUF5g==
+X-Received: by 2002:a05:622a:190e:b0:3d7:1979:829e with SMTP id w14-20020a05622a190e00b003d71979829emr125230qtc.27.1679335763440;
+        Mon, 20 Mar 2023 11:09:23 -0700 (PDT)
+Received: from [10.67.48.245] ([192.19.223.252])
+        by smtp.googlemail.com with ESMTPSA id l16-20020ac84a90000000b003d4ee7879d0sm2042741qtq.56.2023.03.20.11.09.00
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 20 Mar 2023 11:09:22 -0700 (PDT)
+Message-ID: <82ae9fd5-a4f9-89a6-8040-c64d22a85ebb@gmail.com>
+Date: Mon, 20 Mar 2023 11:08:56 -0700
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH] dt-bindings: net: Drop unneeded quotes
+Content-Language: en-US
+To: Rob Herring <robh@kernel.org>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>,
+ Manivannan Sadhasivam <mani@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>, Joel Stanley <joel@jms.id.au>,
+ Andrew Jeffery <andrew@aj.id.au>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
+ <rafal@milecki.pl>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>,
+ Appana Durga Kedareswara rao <appana.durga.rao@xilinx.com>,
+ Naga Sureshkumar Relli <naga.sureshkumar.relli@xilinx.com>,
+ Wolfgang Grandegger <wg@grandegger.com>,
+ Marc Kleine-Budde <mkl@pengutronix.de>,
+ Michal Simek <michal.simek@xilinx.com>, Andrew Lunn <andrew@lunn.ch>,
+ Vladimir Oltean <olteanv@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>,
+ Russell King <linux@armlinux.org.uk>,
+ Tobias Waldekranz <tobias@waldekranz.com>,
+ Lars Povlsen <lars.povlsen@microchip.com>,
+ Steen Hegelund <Steen.Hegelund@microchip.com>,
+ Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com,
+ Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-actions@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-sunxi@lists.linux.dev,
+ linux-aspeed@lists.ozlabs.org, linux-can@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-mediatek@lists.infradead.org
+References: <20230317233605.3967621-1-robh@kernel.org>
+From: Florian Fainelli <f.fainelli@gmail.com>
+In-Reply-To: <20230317233605.3967621-1-robh@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230320_095930_090237_920D150B 
-X-CRM114-Status: UNSURE (   9.74  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230320_110924_552642_4D45A56E 
+X-CRM114-Status: GOOD (  10.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,84 +125,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since the dlm memory region is not part of the RAM SoC, move dlm in a
-deidicated syscon node.
-This patch helps to keep backward-compatibility with older version of
-uboot codebase where we have a limit of 8 reserved-memory dts child
-nodes.
+On 3/17/23 16:36, Rob Herring wrote:
+> Cleanup bindings dropping unneeded quotes. Once all these are fixed,
+> checking for this can be enabled in yamllint.
+> 
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+>   .../devicetree/bindings/net/actions,owl-emac.yaml  |  2 +-
+>   .../bindings/net/allwinner,sun4i-a10-emac.yaml     |  2 +-
+>   .../bindings/net/allwinner,sun4i-a10-mdio.yaml     |  2 +-
+>   .../devicetree/bindings/net/altr,tse.yaml          |  2 +-
+>   .../bindings/net/aspeed,ast2600-mdio.yaml          |  2 +-
+>   .../devicetree/bindings/net/brcm,amac.yaml         |  2 +-
+>   .../devicetree/bindings/net/brcm,systemport.yaml   |  2 +-
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 30 ++++++++++++-----------
- 1 file changed, 16 insertions(+), 14 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-index a0d96d232ee5..0ae6aa59d3c6 100644
---- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-@@ -93,16 +93,6 @@ wo_data: wo-data@4fd80000 {
- 			reg = <0 0x4fd80000 0 0x240000>;
- 			no-map;
- 		};
--
--		wo_dlm0: wo-dlm@151e8000 {
--			reg = <0 0x151e8000 0 0x2000>;
--			no-map;
--		};
--
--		wo_dlm1: wo-dlm@151f8000 {
--			reg = <0 0x151f8000 0 0x2000>;
--			no-map;
--		};
- 	};
- 
- 	timer {
-@@ -444,10 +434,11 @@ wed0: wed@15010000 {
- 			reg = <0 0x15010000 0 0x1000>;
- 			interrupt-parent = <&gic>;
- 			interrupts = <GIC_SPI 205 IRQ_TYPE_LEVEL_HIGH>;
--			memory-region = <&wo_emi0>, <&wo_dlm0>, <&wo_data>;
--			memory-region-names = "wo-emi", "wo-dlm", "wo-data";
-+			memory-region = <&wo_emi0>, <&wo_data>;
-+			memory-region-names = "wo-emi", "wo-data";
- 			mediatek,wo-ccif = <&wo_ccif0>;
- 			mediatek,wo-ilm = <&wo_ilm0>;
-+			mediatek,wo-dlm = <&wo_dlm0>;
- 			mediatek,wo-cpuboot = <&wo_cpuboot>;
- 		};
- 
-@@ -457,10 +448,11 @@ wed1: wed@15011000 {
- 			reg = <0 0x15011000 0 0x1000>;
- 			interrupt-parent = <&gic>;
- 			interrupts = <GIC_SPI 206 IRQ_TYPE_LEVEL_HIGH>;
--			memory-region = <&wo_emi1>, <&wo_dlm1>, <&wo_data>;
--			memory-region-names = "wo-emi", "wo-dlm", "wo-data";
-+			memory-region = <&wo_emi1>, <&wo_data>;
-+			memory-region-names = "wo-emi", "wo-data";
- 			mediatek,wo-ccif = <&wo_ccif1>;
- 			mediatek,wo-ilm = <&wo_ilm1>;
-+			mediatek,wo-dlm = <&wo_dlm1>;
- 			mediatek,wo-cpuboot = <&wo_cpuboot>;
- 		};
- 
-@@ -488,6 +480,16 @@ wo_ilm1: syscon@151f0000 {
- 			reg = <0 0x151f0000 0 0x8000>;
- 		};
- 
-+		wo_dlm0: syscon@151e8000 {
-+			compatible = "mediatek,mt7986-wo-dlm", "syscon";
-+			reg = <0 0x151e8000 0 0x2000>;
-+		};
-+
-+		wo_dlm1: syscon@151f8000 {
-+			compatible = "mediatek,mt7986-wo-dlm", "syscon";
-+			reg = <0 0x151f8000 0 0x2000>;
-+		};
-+
- 		wo_cpuboot: syscon@15194000 {
- 			compatible = "mediatek,mt7986-wo-cpuboot", "syscon";
- 			reg = <0 0x15194000 0 0x1000>;
+Acked-by: Florian Fainelli <f.fainelli@gmail.com>
 -- 
-2.39.2
+Florian
 
 
