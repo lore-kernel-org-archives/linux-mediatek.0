@@ -4,86 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A954C7618A
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Mar 2023 23:34:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F499C7618A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Mar 2023 03:15:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=51L3MHl4gEziOUXQiRya6xIKGnnRh6qXtZOfJGSmU+k=; b=Ib/RxwyFKXAkTm2bH76kwPx8c5
-	BPmaYDQyLEPzsTnYw6MYOlJYWxE+8fqHc2bLFjviWNlVd6LxAC0BWFKYBD1xR6padqr+/ToL9kIPv
-	Z+YreBlEQPOBbFnXb09+iy6OFN/XhO4FDAXwULQQ8GdOYjjoa1WyJYJ3d24wCkSZllpetP58VcVQn
-	JocULJuvwLpZwu5TVf9HkYnLdui8zFxzI88UexmtJtCayIujs2WQV/wGrGSxgdGHxYaQtk0i9ffAb
-	Wf30XNonEzFm14STfpNxBUbw/hRpN0233EFtespFJdPr2rRJfiaj4UYzybEBuTxTj+4avQebxs32i
-	cLKoRdpw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=dhSguipfVuOwhnwPVARXbd5hUAv5jBoB9wW98IOJQHQ=; b=ooyyToxIg6XZ6hgCoYJBGrz0ew
+	FHC++/NYsDKHcg32GbiJILfAUZ5lMdxq9ACCGl54mbARuUlAiempHHxjK/xBq0MOf5UcANIbEG6HG
+	JsjFWHn3ZUZzpe0NkRLfRGQvKxCWcHkJg87H/Lfw8nboShdrcHL+f17oL6xj5wP3eahHQGJbX8NqG
+	FxikwK6AeHh2SURXCENPZ0/8cZfHTb/i0/NO8/3eHtqDUi7ZbRa4/LlpvGgZneFY8HcEmm8jovMrc
+	L5GcNdfE8TeRX994ajV71neKKssa02rpMIm1ulE7aI+Eqof94bVJgPquqtpSYwyiRYpVS9KCT0ZdI
+	Tz6ex2pQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pe2XN-007eLj-2r;
-	Sun, 19 Mar 2023 23:34:05 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1pe5zI-007ydS-0a;
+	Mon, 20 Mar 2023 03:15:08 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pe2XB-007eGR-2Z;
-	Sun, 19 Mar 2023 23:33:55 +0000
-Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 289A11449;
-	Mon, 20 Mar 2023 00:33:52 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1679268832;
-	bh=l2p4ZDBneAwEGOLjso6EkHUNvJxzex1xBmjmxf7QRGk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=aLcAv49AFw0OYSHbmnljKSRWyI2EloW7N3ryboN/dLV3MR3iF00oAyaxNlPwAjbTA
-	 TRmqA5Cwa86orRcNH7geU2YfHVDB4sIM45GO+ZPVBETuvTSCzeVyunEXiZOfr0a/Jr
-	 GPXVEd+Pz7pKmMVUVySEGmPANB3jS0kMSWW6MFxo=
-Date: Mon, 20 Mar 2023 01:33:58 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Cc: David Laight <David.Laight@ACULAB.COM>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	"tfiga@chromium.org" <tfiga@chromium.org>,
-	"m.szyprowski@samsung.com" <m.szyprowski@samsung.com>,
-	"mchehab@kernel.org" <mchehab@kernel.org>,
-	"ming.qian@nxp.com" <ming.qian@nxp.com>,
-	"shijie.qin@nxp.com" <shijie.qin@nxp.com>,
-	"eagle.zhou@nxp.com" <eagle.zhou@nxp.com>,
-	"bin.liu@mediatek.com" <bin.liu@mediatek.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>,
-	"tiffany.lin@mediatek.com" <tiffany.lin@mediatek.com>,
-	"andrew-ct.chen@mediatek.com" <andrew-ct.chen@mediatek.com>,
-	"yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>,
-	"stanimir.k.varbanov@gmail.com" <stanimir.k.varbanov@gmail.com>,
-	"quic_vgarodia@quicinc.com" <quic_vgarodia@quicinc.com>,
-	"agross@kernel.org" <agross@kernel.org>,
-	"andersson@kernel.org" <andersson@kernel.org>,
-	"konrad.dybcio@linaro.org" <konrad.dybcio@linaro.org>,
-	"ezequiel@vanguardiasur.com.ar" <ezequiel@vanguardiasur.com.ar>,
-	"p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
-	"daniel.almeida@collabora.com" <daniel.almeida@collabora.com>,
-	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
-	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
-	"kernel@collabora.com" <kernel@collabora.com>
-Subject: Re: [RFC 2/4] media: videobuf2: Replace bufs array by a list
-Message-ID: <20230319233358.GD20234@pendragon.ideasonboard.com>
-References: <20230313135916.862852-1-benjamin.gaignard@collabora.com>
- <20230313135916.862852-3-benjamin.gaignard@collabora.com>
- <20230313181155.GC22646@pendragon.ideasonboard.com>
- <86df05244d974416903e919d387a0a0b@AcuMS.aculab.com>
- <e704b505-86d8-c6f2-8546-adccdab72622@xs4all.nl>
- <dc04d48e34ed40e58f43badd001a81d0@AcuMS.aculab.com>
- <cbf34cf1-e065-8136-8344-89ca1864f637@xs4all.nl>
+	id 1pe5zF-007ycT-1p;
+	Mon, 20 Mar 2023 03:15:07 +0000
+X-UUID: 631f4dc0c6cd11ed86fbcd8805c7ac66-20230319
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=dhSguipfVuOwhnwPVARXbd5hUAv5jBoB9wW98IOJQHQ=;
+	b=AuqHOWjJhMB4n+M+dhIR+jv/3dSjfWPpeeapOPeVOKiL+0t1mnz7DnWfDBNbnNx7S2D9ipRERMYRzTp9hjyG5Yj+9uA1WCZyNthRiD5prv6uEzhqj6TTJmsYyWK5AVlH2hSnAKi5IVvofpiG6yG7sE8FumaA9MKUL2JQdF65rsU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.21,REQID:e541d9cb-9907-4d2d-8a3a-85d3eb165741,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:83295aa,CLOUDID:ac6848f6-ddba-41c3-91d9-10eeade8eac7,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: 631f4dc0c6cd11ed86fbcd8805c7ac66-20230319
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <yongqiang.niu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1338330594; Sun, 19 Mar 2023 20:14:55 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Mon, 20 Mar 2023 11:04:51 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Mon, 20 Mar 2023 11:04:51 +0800
+From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, CK Hu <ck.hu@mediatek.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>
+CC: David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Sumit Semwal
+	<sumit.semwal@linaro.org>, Maxime Ripard <maxime@cerno.tech>, Thomas
+ Zimmermann <tzimmermann@suse.de>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-media@vger.kernel.org>,
+	<linaro-mm-sig@lists.linaro.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Hsin-Yi Wang
+	<hsinyi@chromium.org>, Yongqiang Niu <yongqiang.niu@mediatek.com>
+Subject: [v3, PATCH] drm/mediatek: add dma buffer control for drm plane disable
+Date: Mon, 20 Mar 2023 11:04:49 +0800
+Message-ID: <20230320030449.5397-1-yongqiang.niu@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <cbf34cf1-e065-8136-8344-89ca1864f637@xs4all.nl>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230319_163353_982362_C1FF4BEA 
-X-CRM114-Status: GOOD (  20.29  )
+X-CRM114-CacheID: sfid-20230319_201505_614465_29668CC4 
+X-CRM114-Status: GOOD (  15.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,48 +89,129 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Hans,
+Fixes: 41016fe1028e4 (drm: Rename plane->state variables in atomic update and disable)
+dma buffer release before overlay disable, that will cause
+m4u translation fault warning.
 
-On Tue, Mar 14, 2023 at 11:42:46AM +0100, Hans Verkuil wrote:
-> On 3/14/23 11:11, David Laight wrote:
-> > From: Hans Verkuil
-> >> Sent: 14 March 2023 08:55
-> > ...
-> >> Why not start with a dynamically allocated array of 32 vb2_buffer pointers?
-> >> And keep doubling the size (reallocing) whenever more buffers are needed,
-> >> up to some maximum (1024 would be a good initial value for that, I think).
-> >> This max could be even a module option.
+add dma buffer control flow in mediatek driver:
+get dma buffer when drm plane disable
+put dma buffer when overlay really disable
 
-The kernel has IDR and IDA APIs, why not use them instead of reinventing
-the wheel ?
+Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c  | 25 ++++++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_plane.c | 17 ++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_plane.h |  1 +
+ 3 files changed, 43 insertions(+)
 
-> > I don't know the typical uses (or the code at all).
-> > But it might be worth having a small array in the structure itself.
-> > Useful if there are typically always (say) less than 8 buffers.
-> > For larger sizes use the (IIRC) kmalloc_size() to find the actual
-> > size of the structure that will be allocate and set the array
-> > size appropriately.
-> 
-> The typical usage is that applications allocate N buffers with the
-> VIDIOC_REQBUFS ioctl, and in most cases that's all they use.
-
-Note that once we get DELETE_BUF (or DELETE_BUFS) support I'd like to
-encourage applications to use the new API, and deprecate REQBUFS
-(dropping it isn't on my radar, as it would take forever before no
-userspace uses it anymore).
-
-> The
-> current max is 32 buffers, so allocating that initially (usually
-> during probe()) will cover all current cases with a single one-time
-> kzalloc.
-
-Pre-allocating for the most common usage patterns is fine with me.
-
-> Only if the application wants to allocate more than 32 buffers will
-> there be a slight overhead.
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index 5071f1263216..9cf1c1778868 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -4,6 +4,7 @@
+  */
+ 
+ #include <linux/clk.h>
++#include <linux/dma-buf.h>
+ #include <linux/dma-mapping.h>
+ #include <linux/mailbox_controller.h>
+ #include <linux/pm_runtime.h>
+@@ -282,6 +283,23 @@ struct mtk_ddp_comp *mtk_drm_ddp_comp_for_plane(struct drm_crtc *crtc,
+ 	return NULL;
+ }
+ 
++static void mtk_drm_dma_buf_put(struct mtk_drm_crtc *mtk_crtc)
++{
++	unsigned int i;
++
++	for (i = 0; i < mtk_crtc->layer_nr; i++) {
++		struct drm_plane *plane = &mtk_crtc->planes[i];
++		struct mtk_plane_state *plane_state;
++
++		plane_state = to_mtk_plane_state(plane->state);
++
++		if (plane_state && plane_state->pending.dma_buf) {
++			dma_buf_put(plane_state->pending.dma_buf);
++			plane_state->pending.dma_buf = NULL;
++		}
++	}
++}
++
+ #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+ static void ddp_cmdq_cb(struct mbox_client *cl, void *mssg)
+ {
+@@ -322,6 +340,8 @@ static void ddp_cmdq_cb(struct mbox_client *cl, void *mssg)
+ 		mtk_crtc->pending_async_planes = false;
+ 	}
+ 
++	mtk_drm_dma_buf_put(mtk_crtc);
++
+ 	mtk_crtc->cmdq_vblank_cnt = 0;
+ 	wake_up(&mtk_crtc->cb_blocking_queue);
+ }
+@@ -614,9 +634,14 @@ static void mtk_crtc_ddp_irq(void *data)
+ 	else if (mtk_crtc->cmdq_vblank_cnt > 0 && --mtk_crtc->cmdq_vblank_cnt == 0)
+ 		DRM_ERROR("mtk_crtc %d CMDQ execute command timeout!\n",
+ 			  drm_crtc_index(&mtk_crtc->base));
++
++	if (!mtk_crtc->cmdq_client.chan)
++		mtk_drm_dma_buf_put(mtk_crtc);
+ #else
+ 	if (!priv->data->shadow_register)
+ 		mtk_crtc_ddp_config(crtc, NULL);
++
++	mtk_drm_dma_buf_put(mtk_crtc);
+ #endif
+ 	mtk_drm_finish_page_flip(mtk_crtc);
+ }
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+index d54fbf34b000..c169ca49129c 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+@@ -12,6 +12,7 @@
+ #include <drm/drm_framebuffer.h>
+ #include <drm/drm_gem_atomic_helper.h>
+ #include <linux/align.h>
++#include <linux/dma-buf.h>
+ 
+ #include "mtk_drm_crtc.h"
+ #include "mtk_drm_ddp_comp.h"
+@@ -280,6 +281,22 @@ static void mtk_plane_atomic_disable(struct drm_plane *plane,
+ 	struct drm_plane_state *new_state = drm_atomic_get_new_plane_state(state,
+ 									   plane);
+ 	struct mtk_plane_state *mtk_plane_state = to_mtk_plane_state(new_state);
++	struct drm_plane_state *old_state = drm_atomic_get_old_plane_state(state,
++									   plane);
++
++	if (old_state && old_state->fb) {
++		struct drm_gem_object *gem = old_state->fb->obj[0];
++
++		if (mtk_plane_state->pending.dma_buf) {
++			dma_buf_put(mtk_plane_state->pending.dma_buf);
++			mtk_plane_state->pending.dma_buf = NULL;
++		}
++
++		if (gem && gem->dma_buf) {
++			get_dma_buf(gem->dma_buf);
++			mtk_plane_state->pending.dma_buf = gem->dma_buf;
++		}
++	}
+ 	mtk_plane_state->pending.enable = false;
+ 	wmb(); /* Make sure the above parameter is set before update */
+ 	mtk_plane_state->pending.dirty = true;
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.h b/drivers/gpu/drm/mediatek/mtk_drm_plane.h
+index 8f39011cdbfc..b724e56b7283 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_plane.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.h
+@@ -33,6 +33,7 @@ struct mtk_plane_pending_state {
+ 	bool				async_dirty;
+ 	bool				async_config;
+ 	enum drm_color_encoding		color_encoding;
++	struct dma_buf			*dma_buf;
+ };
+ 
+ struct mtk_plane_state {
 -- 
-Regards,
+2.25.1
 
-Laurent Pinchart
 
