@@ -4,62 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD8C0C6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Mar 2023 03:00:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53D4CC74A5B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Mar 2023 04:27:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:
-	References:Date:Message-Id:From:Subject:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iZ/96idCML7uaJw0ZnIcKugxOLH5KYql+CqPcOncwCc=; b=VrADfxTEONQwivqxUDgOkhXHP8
-	csE+p7/TQB/S2vMQn4LFusPNBM2Lx4m8kUT9N6nCo66yr3ymzDHruq7BL0NK2KADroYQu3NPEL7vg
-	ODwDx4ZKepuVxL5k/rjqcKNkVJrZWkA5SqOv1sbKSCYOYtA2mjVC8yEHVEcf/zoywPt/IUrztuEc0
-	mwHN5eqi5VtBZ40nTleS1sEHR29MTsrIcHnp2PfT/fURxsThXkmLDxILrnXshXTf0EkcdwDeJrdNI
-	MaDlZv1xdzt8D3XJYBUgKVGOtbOcWF+/dLZS6tKTlkCIxJVDo8z8sVehfLKfUdg7rZY3BUUo4ZBqC
-	OEhNA3GA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=B7LU1YRsXhbsqmPzCrst4NJ9fxlJXbbFdC3pa6Aj3+g=; b=tpOqqpxsO3dczsEqQLrfSPGcX+
+	LS9G0mMMIhBihztgoQL4h38t1FsXM1Vp0o+josLiieCw+exeSY9Cyc7YNJ6PWI+qVRk6D9r2Yy9lx
+	VUIwWZKgoF3eDfQuoOiLjie4HDgJFLg0tYIFjA5VInRpxVh0is0FawJM3I3GOsfhNQTeNUpW+WrQ4
+	sKYUmvk7vVLUgUSv0lMqfw286tMI1Wv+ORWQQjf2MGVOHBpdVx9EDRqisrhG4H2IMQaVtxtwzuuVO
+	VlzjfgLDf+BfNl6tw2RpnbHxiKyherAyzWJM+fOcjjKTGr4MqlDDWkPDL0JUf2yVKafWIyBf+/yiv
+	BTtoNpyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1peSEf-00B3tk-2l;
-	Tue, 21 Mar 2023 03:00:29 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1peTaM-00BBjz-3D;
+	Tue, 21 Mar 2023 04:26:59 +0000
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1peSEc-00B3sF-0H;
-	Tue, 21 Mar 2023 03:00:27 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 1CA8761948;
-	Tue, 21 Mar 2023 03:00:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 7627CC4339B;
-	Tue, 21 Mar 2023 03:00:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1679367620;
-	bh=tG3nR/BNTPFfBhbWT130BlqQjCEkjCYaupmLUe7Z3KI=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=dmZSXPC0b0Pe5MUZDeqoGnap4EwddUaBK0H6Bruu+VpCVi/QApHbCre8vsOmXOGb5
-	 YNEeUd++DZ73hql8rXVqB7S10mBPjV8e602/6OykY8OIRMKljxfiNRSopfMyRuQioj
-	 /cdle9VRRBnt3nCCqSfN/qf0X5owMUw9EnsOAYgmL4yIthCBKfTyz28UQSUQYn/D/R
-	 HHEuFU49olOKVeGq09Z0WJmcq2kIzh1dCw7hc/HJqJgsFQplAaNq6620K64FN6KkDf
-	 Ob5sG1eMkW/EgOf175qSBNWj3Jrz5JeTDQUES2UWAuXII6RS/1HvVz7+Cn7PjC8ecI
-	 dJgKkpmP546RQ==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 545C9E68C18;
-	Tue, 21 Mar 2023 03:00:20 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next v14 0/9] net: ethernet: mtk_eth_soc: various
- enhancements
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id:  <167936762033.19471.10695862996613870183.git-patchwork-notify@kernel.org>
-Date: Tue, 21 Mar 2023 03:00:20 +0000
-References: <cover.1679230025.git.daniel@makrotopia.org>
-In-Reply-To: <cover.1679230025.git.daniel@makrotopia.org>
-To: Daniel Golle <daniel@makrotopia.org>
+	id 1peTaJ-00BBiY-2e;
+	Tue, 21 Mar 2023 04:26:57 +0000
+Received: by mail-ed1-x533.google.com with SMTP id ek18so54922773edb.6;
+        Mon, 20 Mar 2023 21:26:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1679372807;
+        h=message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=B7LU1YRsXhbsqmPzCrst4NJ9fxlJXbbFdC3pa6Aj3+g=;
+        b=KgpA/xvxWtTEC+5M243SNSSdQ/sR5n8aNFQoCvZB980MdYygUQ3vXzNPhDGv+OEZHU
+         dJ8Vz0raQjqD76uK2yidCiOhvAH8/mLJrnkDZMFlCWLuWkWS7J0OVpyXsuxUwsg0nuMn
+         5yLRwbKNtmjoBK2L/3peR99Cl76PmC+Fpb5ZUUdHMHzmA858hwdrTIx6GHngMZlTKFx3
+         ryOsDFwKGAa/5fIw+vXxDPfSFz71jBUWNJb2wTnNW5NcqmIa3yZHq8ZpfTs4Y45x5qOq
+         qWbb6fMfAJsDFbdSFWpvnCvD2eiiiZTwTwmkMcX3/L3P8nXQsZwpgsB6ZsisfNzJCIkj
+         V8eA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679372807;
+        h=message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=B7LU1YRsXhbsqmPzCrst4NJ9fxlJXbbFdC3pa6Aj3+g=;
+        b=R3ZzvHz0NtRGHHe4kjKDTK00bliTSpcFBdUHnlqX9YJse4tIJAnZadtMM8Idj3EXoX
+         6Ge7ldnI7LfDDsFQdtd6f+4ThJsT2H/c3hsNzC4gixTYZY5BFnfiTwZC+vW5HhfkZopz
+         ihYt9VTzzUGSsG4NW2rm5jkLwNlsX463PcsKni2UvXnlLxS0zi12Igw950/ThGezDBOr
+         8toIYWYv4jQVmJWfot5oJR5DJVeou1V34Y5BkHzmOxuFXgTM9M4Hc3CHvcFGSRi+BkF4
+         XTL5k4xg4unqVSPwOC6W1mPryAexKSAhwlPkJEPPzq4CMgG9hi3ai8hefiuRB9bBFpqu
+         2q7w==
+X-Gm-Message-State: AO0yUKVhuvQjH0relVCzIOG3d7CSq+5n+sh4Wq8e6RdKHKLFgEuR+EPL
+	/DvaGKLbsjJ8aYUzeRgwzoQ=
+X-Google-Smtp-Source: AK7set/w/ExYAxonQFR20l6IlWAqcYeWwQuLWKpIzZRcDzIPrF57OQOXOYBsPxDLANdchya0fH5i5A==
+X-Received: by 2002:a17:906:5e43:b0:932:4990:2563 with SMTP id b3-20020a1709065e4300b0093249902563mr1496687eju.24.1679372807043;
+        Mon, 20 Mar 2023 21:26:47 -0700 (PDT)
+Received: from felia.fritz.box ([2a02:810d:2a40:1104:6c2c:25d2:96b3:40e6])
+        by smtp.gmail.com with ESMTPSA id s17-20020a170906961100b009316783c92csm5290434ejx.12.2023.03.20.21.26.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 20 Mar 2023 21:26:46 -0700 (PDT)
+From: Lukas Bulwahn <lukas.bulwahn@gmail.com>
+To: Owen Chen <owen.chen@mediatek.com>,
+	Mars Cheng <mars.cheng@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-clk@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: kernel-janitors@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Lukas Bulwahn <lukas.bulwahn@gmail.com>
+Subject: [PATCH] clk: mediatek: Remove unused configs with COMMON_CLK_MT6765 prefix
+Date: Tue, 21 Mar 2023 05:26:41 +0100
+Message-Id: <20230321042641.21592-1-lukas.bulwahn@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230320_200026_194808_29B47203 
-X-CRM114-Status: GOOD (  13.43  )
+X-CRM114-CacheID: sfid-20230320_212655_863234_C6CB391B 
+X-CRM114-Status: UNSURE (   8.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,53 +92,87 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: andrew@lunn.ch, vladimir.oltean@nxp.com, edumazet@google.com, krzysztof.kozlowski+dt@linaro.org, f.fainelli@gmail.com, linux@armlinux.org.uk, kuba@kernel.org, pabeni@redhat.com, lorenzo@kernel.org, Mark-MC.Lee@mediatek.com, devicetree@vger.kernel.org, Landen.Chao@mediatek.com, sean.wang@mediatek.com, dqfext@gmail.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, john@phrozen.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com, olteanv@gmail.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, lynxis@fe80.eu, hkallweit1@gmail.com, davem@davemloft.net, bjorn@mork.no, nbd@nbd.name
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Commit 1aca9939bf72 ("clk: mediatek: Add MT6765 clock support") adds
+fourteen configs with COMMON_CLK_MT6765 prefix, but only uses seven of them
+to configure inclusion of drivers.
 
-This series was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+Remove the seven unused COMMON_CLK_MT6765 configs.
 
-On Sun, 19 Mar 2023 12:56:07 +0000 you wrote:
-> This series brings a variety of fixes and enhancements for mtk_eth_soc,
-> adds support for the MT7981 SoC and facilitates sharing the SGMII PCS
-> code between mtk_eth_soc and mt7530.
-> 
-> The whole series has been tested on MT7622+MT7531 (BPi-R64),
-> MT7623+MT7530 (BPi-R2), MT7981+GPY211 (GL.iNet GL-MT3000) and
-> MT7986+MT7531 (BPi-R3). On the BananaPi R3 a variete of SFP modules
-> have been tested, all of them (some SGMII with PHY, others 2500Base-X
-> or 1000Base-X without PHY) are working well now, however, some of them
-> need manually disabling of autonegotiation for the link to come up.
-> 
-> [...]
+Signed-off-by: Lukas Bulwahn <lukas.bulwahn@gmail.com>
+---
+ drivers/clk/mediatek/Kconfig | 42 ------------------------------------
+ 1 file changed, 42 deletions(-)
 
-Here is the summary with links:
-  - [net-next,v14,1/9] net: ethernet: mtk_eth_soc: add support for MT7981 SoC
-    https://git.kernel.org/netdev/net-next/c/f5d43ddd334b
-  - [net-next,v14,2/9] dt-bindings: net: mediatek,net: add mt7981-eth binding
-    https://git.kernel.org/netdev/net-next/c/e3ac1c270466
-  - [net-next,v14,3/9] dt-bindings: arm: mediatek: sgmiisys: Convert to DT schema
-    https://git.kernel.org/netdev/net-next/c/d4f08a703565
-  - [net-next,v14,4/9] dt-bindings: net: pcs: mediatek,sgmiisys: add MT7981 SoC
-    https://git.kernel.org/netdev/net-next/c/4f7eb19c4f44
-  - [net-next,v14,5/9] net: ethernet: mtk_eth_soc: set MDIO bus clock frequency
-    https://git.kernel.org/netdev/net-next/c/c0a440031d43
-  - [net-next,v14,6/9] net: ethernet: mtk_eth_soc: ppe: add support for flow accounting
-    https://git.kernel.org/netdev/net-next/c/3fbe4d8c0e53
-  - [net-next,v14,7/9] net: pcs: add driver for MediaTek SGMII PCS
-    https://git.kernel.org/netdev/net-next/c/4765a9722e09
-  - [net-next,v14,8/9] net: ethernet: mtk_eth_soc: switch to external PCS driver
-    https://git.kernel.org/netdev/net-next/c/2a3ec7ae3133
-  - [net-next,v14,9/9] net: dsa: mt7530: use external PCS driver
-    https://git.kernel.org/netdev/net-next/c/5b89aeae6e00
-
-You are awesome, thank you!
+diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+index 2d14855dd37e..ec87762bfb18 100644
+--- a/drivers/clk/mediatek/Kconfig
++++ b/drivers/clk/mediatek/Kconfig
+@@ -144,12 +144,6 @@ config COMMON_CLK_MT6765_CAMSYS
+        help
+          This driver supports MediaTek MT6765 camsys clocks.
+ 
+-config COMMON_CLK_MT6765_GCESYS
+-       bool "Clock driver for MediaTek MT6765 gcesys"
+-       depends on COMMON_CLK_MT6765
+-       help
+-         This driver supports MediaTek MT6765 gcesys clocks.
+-
+ config COMMON_CLK_MT6765_MMSYS
+        bool "Clock driver for MediaTek MT6765 mmsys"
+        depends on COMMON_CLK_MT6765
+@@ -168,48 +162,12 @@ config COMMON_CLK_MT6765_VCODECSYS
+        help
+          This driver supports MediaTek MT6765 vcodecsys clocks.
+ 
+-config COMMON_CLK_MT6765_MFGSYS
+-       bool "Clock driver for MediaTek MT6765 mfgsys"
+-       depends on COMMON_CLK_MT6765
+-       help
+-         This driver supports MediaTek MT6765 mfgsys clocks.
+-
+ config COMMON_CLK_MT6765_MIPI0ASYS
+        bool "Clock driver for MediaTek MT6765 mipi0asys"
+        depends on COMMON_CLK_MT6765
+        help
+          This driver supports MediaTek MT6765 mipi0asys clocks.
+ 
+-config COMMON_CLK_MT6765_MIPI0BSYS
+-       bool "Clock driver for MediaTek MT6765 mipi0bsys"
+-       depends on COMMON_CLK_MT6765
+-       help
+-         This driver supports MediaTek MT6765 mipi0bsys clocks.
+-
+-config COMMON_CLK_MT6765_MIPI1ASYS
+-       bool "Clock driver for MediaTek MT6765 mipi1asys"
+-       depends on COMMON_CLK_MT6765
+-       help
+-         This driver supports MediaTek MT6765 mipi1asys clocks.
+-
+-config COMMON_CLK_MT6765_MIPI1BSYS
+-       bool "Clock driver for MediaTek MT6765 mipi1bsys"
+-       depends on COMMON_CLK_MT6765
+-       help
+-         This driver supports MediaTek MT6765 mipi1bsys clocks.
+-
+-config COMMON_CLK_MT6765_MIPI2ASYS
+-       bool "Clock driver for MediaTek MT6765 mipi2asys"
+-       depends on COMMON_CLK_MT6765
+-      help
+-         This driver supports MediaTek MT6765 mipi2asys clocks.
+-
+-config COMMON_CLK_MT6765_MIPI2BSYS
+-       bool "Clock driver for MediaTek MT6765 mipi2bsys"
+-       depends on COMMON_CLK_MT6765
+-       help
+-         This driver supports MediaTek MT6765 mipi2bsys clocks.
+-
+ config COMMON_CLK_MT6779
+ 	tristate "Clock driver for MediaTek MT6779"
+ 	depends on (ARCH_MEDIATEK && ARM64) || COMPILE_TEST
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.17.1
 
 
