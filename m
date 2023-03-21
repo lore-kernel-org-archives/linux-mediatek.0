@@ -4,64 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4593BC6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Mar 2023 08:55:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81318C6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Mar 2023 08:55:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7OaGged9qc7ro/fZyAzl1CDuNL9LOfWCFRxfh5t1k3o=; b=UnsQTlMHgk/9kG18IsUNiX6uOO
-	Tcv0K5wLSoLMFLE6Ug2oG7CZAGti0vkEKYdY5WvPd66P+bCdHEH2ChcsEDMI+KtFLcUPQH1J+3qLF
-	j8Owe2es/GhKtPJMCTEu0eoUtYCtF25UI175ZkZjetQRfEN4UdV92KA36am4U5CkZWHCGHrr84sMo
-	GH/+VrZowP6m3jp8XxTh855hnvprA8QUH9tSGcmdOVVnfugEUDBS9OPwjrAh2IOo85AzOmo5nHEgu
-	0GpWeCPVhhgP842zjCpt0cqXLz4OkT2hpCUv/dO1sYddimF5OnCgk7ydbJVKx8VjIav5FLX7usI5P
-	p5tXpZLg==;
+	bh=eNZv/7ubVIgZMXS98h7XDMTdxwDgmwsW9oCI5Fx2wto=; b=H4USEFVq6Zqiiq9PWVy0Hfilw4
+	k5LV2CzqQoiXO2cCOGef87UOuXmhqtD2SaCOEnlD/brC7cBblDrnQLYgOw1zjEOy1lGfzauAVp7TG
+	XFbz4CGZoAPBYKCZhNnK1ifOfqittVy7bhePXU9QouI0GZxN+IipgxaGfDkNClkbrWlZfBkwtIYai
+	VVVtS4jcDnjku4+vI4zzPTDLX7RWT1NpNuL4N7t3k0dY3JAj95ZeUBOTMGJql63hkQSI9Co7UwTKt
+	JWJTKy9RjmQbQ8g9v+bCyTDkBXOq3JVwDm41w5dvt5x3NSfwmdYEA4VvoHM9p8E1C5ldRZI3TBp5J
+	RNlNlqXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1peXlh-00BnZq-1b;
-	Tue, 21 Mar 2023 08:54:57 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1peXmT-00Bnmq-23;
+	Tue, 21 Mar 2023 08:55:45 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1peXlc-00BnY6-1t;
-	Tue, 21 Mar 2023 08:54:54 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1peXmO-00BnkL-2x;
+	Tue, 21 Mar 2023 08:55:42 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 2B94DB81330;
-	Tue, 21 Mar 2023 08:54:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D91A0C433D2;
-	Tue, 21 Mar 2023 08:54:45 +0000 (UTC)
-Message-ID: <6b368ae8-7c9b-70b6-9858-025743c2bf7f@xs4all.nl>
-Date: Tue, 21 Mar 2023 09:54:44 +0100
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 13C3666030D5;
+	Tue, 21 Mar 2023 08:55:39 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1679388939;
+	bh=0ekjo5nMc8NxHpvolEsvhky3PM6gq3HIZIVq67wsqrA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=TlSedSI7TwYWON33HGI22cJ3b9NT1kNDMPLt/7jwSvxu1yymyMCtzV0csrbZ9HjBQ
+	 lODVQ7mBB4G6NWNFX9IEUcwrv560Je2K/o91drzoXNQMhUrlURIMmaG8PUoXMF/Ryi
+	 bxV3zIJCnpOlC0hf3Z/ZzUyHq0HqSUe+f351Lu/yTlH0EiVel0fhyveGkKQw/+jTn4
+	 N66Zz6ZaYzusNuYOjfj3FPo6b8vFFbseM0//jucfSOoJBQ3qPPlgcLKl4F/S1jxHRB
+	 6q7/L7qMarMwGwOOBibGCSR8Mhbhhq8lYYH4NunGm90ggjHsjw0p9hl7uQ/flC3v0K
+	 kLXNxdh0zJ2JA==
+Message-ID: <98c0a46d-05da-7863-1a30-51727c20da23@collabora.com>
+Date: Tue, 21 Mar 2023 09:55:36 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH v5 00/11] Adjust the dma-ranges for MTK IOMMU
+ Thunderbird/102.9.0
+Subject: Re: [PATCH] clk: mediatek: Remove unused configs with
+ COMMON_CLK_MT6765 prefix
 Content-Language: en-US
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>
-Cc: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- nfraprado@collabora.com, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- iommu@lists.linux.dev,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- mingyuan.ma@mediatek.com, yf.wang@mediatek.com, jianjiao.zeng@mediatek.com,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>,
- chengci.xu@mediatek.com, youlin.pei@mediatek.com, anan.sun@mediatek.com
-References: <20230307023507.13306-1-yong.wu@mediatek.com>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-In-Reply-To: <20230307023507.13306-1-yong.wu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
+To: Lukas Bulwahn <lukas.bulwahn@gmail.com>,
+ Owen Chen <owen.chen@mediatek.com>, Mars Cheng <mars.cheng@mediatek.com>,
+ Macpaul Lin <macpaul.lin@mediatek.com>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+References: <20230321042641.21592-1-lukas.bulwahn@gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230321042641.21592-1-lukas.bulwahn@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230321_015452_917091_99BF1188 
-X-CRM114-Status: GOOD (  23.49  )
+X-CRM114-CacheID: sfid-20230321_015541_092034_CE8F890F 
+X-CRM114-Status: UNSURE (   8.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,73 +82,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 07/03/2023 03:34, Yong Wu wrote:
-> After commit f1ad5338a4d5 ("of: Fix "dma-ranges" handling for bus
-> controllers"), the dma-ranges is not allowed for dts leaf node.
-> but we still would like to separate the different masters into
-> different iova regions. Thus we adjust the internal flow, separate
-> the 16GB iova range by the master HW larbid/portid and add the
-> dma-ranges property in the parent "soc" node. This also could avoid
-> the users forget/abuse the iova regions.
+Il 21/03/23 05:26, Lukas Bulwahn ha scritto:
+> Commit 1aca9939bf72 ("clk: mediatek: Add MT6765 clock support") adds
+> fourteen configs with COMMON_CLK_MT6765 prefix, but only uses seven of them
+> to configure inclusion of drivers.
 > 
-> The commit f1ad5338a4d5 did affect the mt8195 venc, But it is not
-> a fatal issue, it could also work well at 0-4GB iova. thus I don't
-> add "Fixes:" tag.
+> Remove the seven unused COMMON_CLK_MT6765 configs.
 > 
-> In this series, I add functions for mt8192/mt8195/mt8186, mt8188 will
-> be in its special patchset. and the previous mt8173/mt8183...support
-> 0-4GB only, no need this function.
-> 
-> Change note:
-> v5: Nothing change. Just rebase on v6.3-rc1.
-> 
-> v4: https://lore.kernel.org/linux-mediatek/20230215062544.8677-1-yong.wu@mediatek.com/
->     Improve the comment in the code from AngeloGioacchino.
-> 
-> v3: https://lore.kernel.org/linux-mediatek/20230214031114.926-1-yong.wu@mediatek.com/
->    Add a new patch only for comment more in the code.
-> 
-> v2: https://lore.kernel.org/linux-mediatek/20230208053643.28249-1-yong.wu@mediatek.com/
->    a) Base on next-20230206 since mt8195 jpeg node is applied which affect
->       this patch.
->    b) Reword the commit message [1/10][2/10] to explain effect.
-> 
-> v1: https://lore.kernel.org/linux-mediatek/20230113060133.9394-1-yong.wu@mediatek.com/
->    Base on v6.2-rc3.
-> 
-> Yong Wu (11):
->   dt-bindings: media: mediatek,vcodec: Remove dma-ranges property
->   dt-bindings: media: mediatek,jpeg: Remove dma-ranges property
+> Signed-off-by: Lukas Bulwahn <lukas.bulwahn@gmail.com>
 
-I assume that these two media bindings patches be pulled in through the iommu subsystem?
-Or are they independent and can I take them?
-
-Either is fine with me, I just need to know.
+Please add the required Fixes tag (you even reference the commit to fix already!),
+then you'll get my R-b at v2 :-)
 
 Regards,
+Angelo
 
-	Hans
-
->   iommu/mediatek: Improve comment for the current region/bank
->   iommu/mediatek: Get regionid from larb/port id
->   iommu/mediatek: mt8192: Add iova_region_larb_msk
->   iommu/mediatek: mt8195: Add iova_region_larb_msk
->   iommu/mediatek: mt8186: Add iova_region_larb_msk
->   iommu/mediatek: Add a gap for the iova regions
->   arm64: dts: mt8195: Add dma-ranges for the parent "soc" node
->   arm64: dts: mt8195: Remove the unnecessary dma-ranges
->   arm64: dts: mt8186: Add dma-ranges for the parent "soc" node
-> 
->  .../media/mediatek,mt8195-jpegdec.yaml        |   7 -
->  .../media/mediatek,mt8195-jpegenc.yaml        |   7 -
->  .../media/mediatek,vcodec-decoder.yaml        |   5 -
->  .../media/mediatek,vcodec-encoder.yaml        |   5 -
->  .../media/mediatek,vcodec-subdev-decoder.yaml |   7 -
->  .../bindings/media/mediatek-jpeg-encoder.yaml |   5 -
->  arch/arm64/boot/dts/mediatek/mt8186.dtsi      |   1 +
->  arch/arm64/boot/dts/mediatek/mt8195.dtsi      |   4 +-
->  drivers/iommu/mtk_iommu.c                     | 143 ++++++++++++++----
->  9 files changed, 114 insertions(+), 70 deletions(-)
-> 
 
 
