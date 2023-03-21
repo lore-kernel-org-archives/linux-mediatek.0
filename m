@@ -4,95 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 834F7C6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Mar 2023 09:55:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CDC0C74A5B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Mar 2023 10:29:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TPoyNaazAzBhUR7kJh1z3BOvT4FbuySkllJfbosl7k0=; b=iHpc/yVZlq6mRzgPamk/AlAdVs
-	Ext1ghgxO4Gpy1vayYjxlp0Dxs5ZQG5DjwrI4wK6BpqgSrYMAqeqoP9C/nDvZNp0La7ysuYtAl3U8
-	OHXDeiyp21kKYuetaBjzwT+iECOtccpwbr+W92PImwk7urWnTXqFqNv5VEBl4dA2IU1dpGITJRqAa
-	cugQ91G0I+UxCW+7xFNirketxE8b1r5DaxZnDyuhgZrgSZbKZLHEnHol/UbHUP3hcE/lDjNVLvasK
-	0bM2G7gPL70sxLj4PZSsxbU0VIBOUUHh3/9sLxClTg51JeB9yLidlB/uJeACYPTk5oT+z/qBKonw6
-	A3s1ZXaw==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=d92WRNuStgTh2w70ACGAJg4igJkmRROu1ITqpBfYdG0=; b=EBbgLKejfHk+L41YRpLjj4whm+
+	E0nQsKRimQGcmxXsc5dpv8LZZk+Ka4QwrA7OsVdRs2wsR/48EdbdLQECDlHTWl3YmWMg8twvydSUZ
+	BpDdFbBlo73in4YxRy38Ad/tCtCB3jpYNK1eAEY0uYQmI+eujANFSlOG9Exfiwqdbsm1tYsQIBk3v
+	wWcWkFIDDv4IxfdrIwJMcRbFsKudIzRXr9ej/UHa06i1hhuxk6gWAM3H1i6cRR8tmDmDW8oJRdXRA
+	Cj2dqzqt7F6wNkO9WkwHr0w04PwoJQCInrARveFjAGK7TNA48Vdh2jVem2aZ0LldGXbDgDpaI8U6D
+	NY21VyZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1peYhu-00Bwt6-11;
-	Tue, 21 Mar 2023 09:55:06 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1peZF0-00C1mO-2G;
+	Tue, 21 Mar 2023 10:29:18 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1peYho-00Bwpi-04;
-	Tue, 21 Mar 2023 09:55:03 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	id 1peZEt-00C1g2-0v;
+	Tue, 21 Mar 2023 10:29:12 +0000
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:f5ef:1040:e3c1:3d00])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 35C4F66030DA;
-	Tue, 21 Mar 2023 09:54:54 +0000 (GMT)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6900266030DA;
+	Tue, 21 Mar 2023 10:29:07 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1679392495;
-	bh=1JltmLgRNV4IHmYEsNUnZUzP3ExsG4axYz1jkhP27SY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Owh7RWhB7Db/pjY5RqGj1SkTPYKhoygsU7DooP1X/gCOchYEMhLFV/Uf88sVaShzh
-	 leEbyY5ujLEw9bBnOrQ2DGZvSI9bnX0JDvQFCb3AfqKBO7xzJZUSU1anJsD3YRTHdI
-	 in2uy0sTPQEjMPv9OyT030GpbpkQESfRo4zjqOuTDzYIQrQ0USzlrY3XQeFisjCKq7
-	 AYWUu68nxWsP44n2mIPqXfmMaHBCDtlJW2UmDNITmMRth6N9D+K7g0VM2v7sBniZJP
-	 TCuWeTQinerSBuHT2+PKepMLfAYmmo9N7W9nm/pCV1SSJq56wqhp6ZR7GkuuPM/5VN
-	 tlJiaAiAXHSgQ==
-Message-ID: <cac08caf-a5ef-08d7-ac90-cd852cd63e3c@collabora.com>
-Date: Tue, 21 Mar 2023 10:54:51 +0100
+	s=mail; t=1679394548;
+	bh=thP50rZe85eKdLn09P/bJZIXTEK1LuBUDkCFuB2KNec=;
+	h=From:To:Cc:Subject:Date:From;
+	b=WANier/NNPyE0Tv/3S9lJSi5ZYSmzU0VgJo+nRTJVSmYgRQ7lVfT014TDpr5IZxDe
+	 Ekzaiy1mtjb/2ANsIToKpM8WO7QfkSspjxYUj4JUoY/Cov+A6nkJLafapGCI8PcFWO
+	 m8uM6LMu3dRbEC2h5lsGhKz3sJ4zRt0QE+YQso0OtHxhIBnPvB89xcAdbjLH17BsLi
+	 9EAC/w+2NIaN2gCS12NwzyF15MXCVZ/Qwls8e0n52FNRbm9b5M6zmR85n3eZfd8Lt7
+	 CWDq1ix3An5x04XiwjW4SfVMhUqFeUmVVbLXAenVCYC42YkdyOEiPKPBS0fiJ+taMH
+	 c/Jg7F9DXYEsA==
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: tfiga@chromium.org,
+	m.szyprowski@samsung.com,
+	mchehab@kernel.org,
+	ming.qian@nxp.com,
+	shijie.qin@nxp.com,
+	eagle.zhou@nxp.com,
+	bin.liu@mediatek.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	tiffany.lin@mediatek.com,
+	andrew-ct.chen@mediatek.com,
+	yunfei.dong@mediatek.com,
+	stanimir.k.varbanov@gmail.com,
+	quic_vgarodia@quicinc.com,
+	agross@kernel.org,
+	andersson@kernel.org,
+	konrad.dybcio@linaro.org,
+	ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de,
+	daniel.almeida@collabora.com,
+	hverkuil-cisco@xs4all.nl,
+	laurent.pinchart@ideasonboard.com,
+	jernel@kernel.org
+Cc: linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v2 0/8] Add DELETE_BUF ioctl
+Date: Tue, 21 Mar 2023 11:28:47 +0100
+Message-Id: <20230321102855.346732-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH v29 1/7] dt-bindings: mediatek: add ethdr definition for
- mt8195
-Content-Language: en-US
-To: =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- =?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>,
- "nathan@kernel.org" <nathan@kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "daniel@ffwll.ch" <daniel@ffwll.ch>, =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?=
- <ck.hu@mediatek.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "clang-built-linux@googlegroups.com" <clang-built-linux@googlegroups.com>,
- "ndesaulniers@google.com" <ndesaulniers@google.com>
-References: <20221227081011.6426-1-nancy.lin@mediatek.com>
- <20221227081011.6426-2-nancy.lin@mediatek.com>
- <4aff6a7a3b606f26ec793192d9c75774276935e0.camel@mediatek.com>
- <2700bd6c-f00d-fa99-b730-2fcdf89089fa@linaro.org>
- <1d65e8b2de708db18b5f7a0faaa53834e1002d9f.camel@mediatek.com>
- <b04eb48e-c9aa-0404-33ec-bef623b8282f@linaro.org>
- <e5ceec9e-d51b-2aeb-1db7-b79b151bd44c@collabora.com>
- <0ebf187d-972e-4228-d8a0-8c0ce02f642d@linaro.org>
- <72cf6344a1c5942bff0872d05dce82b787b49b76.camel@mediatek.com>
- <4027714e-b4e8-953b-68e2-f74f7a7f0e8e@linaro.org>
- <fdd0a157-eedb-bf21-c632-79b02a4cd6b0@collabora.com>
- <5695b8e5ab8339764c646ee581529cb6cee04346.camel@mediatek.com>
- <34c758c0-cbbb-da11-6263-e7b084040ed6@collabora.com>
- <74dca3fa90d5cd78286281e2ced45842bee21f91.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <74dca3fa90d5cd78286281e2ced45842bee21f91.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230321_025500_436985_CB327389 
-X-CRM114-Status: GOOD (  19.88  )
+X-CRM114-CacheID: sfid-20230321_032911_484982_04647443 
+X-CRM114-Status: GOOD (  11.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,194 +98,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 21/03/23 06:33, Nancy Lin (林欣螢) ha scritto:
-> Dear Angelo,
-> 
-> Sorry for late reply.
-> 
-> On Fri, 2023-03-17 at 10:58 +0100, AngeloGioacchino Del Regno wrote:
->> Il 17/03/23 10:52, Nancy Lin (林欣螢) ha scritto:
->>> On Fri, 2023-03-17 at 10:37 +0100, AngeloGioacchino Del Regno
->>> wrote:
->>>> Il 17/03/23 10:03, Krzysztof Kozlowski ha scritto:
->>>>> On 17/03/2023 08:55, Nancy Lin (林欣螢) wrote:
->>>>>> On Thu, 2023-03-16 at 12:36 +0100, Krzysztof Kozlowski wrote:
->>>>>>> On 16/03/2023 10:53, AngeloGioacchino Del Regno wrote:
->>>>>>>
->>>>>>>> Hello Krzysztof, Nancy,
->>>>>>>>
->>>>>>>> Since this series has reached v29, can we please reach an
->>>>>>>> agreement
->>>>>>>> on the bindings
->>>>>>>> to use here, so that we can get this finally upstreamed?
->>>>>>>>
->>>>>>>> I will put some examples to try to get this issue
->>>>>>>> resolved.
->>>>>>>>
->>>>>>>> ### Example 1: Constrain the number of GCE entries to
->>>>>>>> *seven*
->>>>>>>> array
->>>>>>>> elements (7x4!)
->>>>>>>>
->>>>>>>>       mediatek,gce-client-reg:
->>>>>>>>         $ref: /schemas/types.yaml#/definitions/phandle-
->>>>>>>> array
->>>>>>>>         maxItems: 1
->>>>>>>>         description: The register of display function
->>>>>>>> block to
->>>>>>>> be set
->>>>>>>> by gce.
->>>>>>>>           There are 4 arguments in this property, gce
->>>>>>>> node,
->>>>>>>> subsys id,
->>>>>>>> offset and
->>>>>>>>           register size. The subsys id is defined in the
->>>>>>>> gce
->>>>>>>> header of
->>>>>>>> each chips
->>>>>>>>           include/dt-bindings/gce/<chip>-gce.h, mapping to
->>>>>>>> the
->>>>>>>> register of display
->>>>>>>>           function block.
->>>>>>>>         items:
->>>>>>>>           minItems: 28
->>>>>>>>           maxItems: 28
->>>>>>>>           items:                     <----- this block
->>>>>>>> doesn't
->>>>>>>> seem to
->>>>>>>> get checked :\
->>>>>>>>             - description: phandle of GCE
->>>>>>>>             - description: GCE subsys id
->>>>>>>>             - description: register offset
->>>>>>>>             - description: register size
->>>>>>>
->>>>>>> This is what we would like to have but it requires
->>>>>>> exception in
->>>>>>> dtschema. Thus:
->>>>>>>
->>>>>>>>
->>>>>>>>
->>>>>>>> ### Example 2: Don't care about constraining the number
->>>>>>>> of
->>>>>>>> arguments
->>>>>>>>
->>>>>>>>       mediatek,gce-client-reg:
->>>>>>>>         $ref: /schemas/types.yaml#/definitions/phandle-
->>>>>>>> array
->>>>>>>>         maxItems: 1
->>>>>>>>         description: The register of display function
->>>>>>>> block to
->>>>>>>> be set
->>>>>>>> by gce.
->>>>>>>>           There are 4 arguments in this property, gce
->>>>>>>> node,
->>>>>>>> subsys id,
->>>>>>>> offset and
->>>>>>>>           register size. The subsys id is defined in the
->>>>>>>> gce
->>>>>>>> header of
->>>>>>>> each chips
->>>>>>>>           include/dt-bindings/gce/<chip>-gce.h, mapping to
->>>>>>>> the
->>>>>>>> register of display
->>>>>>>>           function block.
->>>>>>>
->>>>>>> use this.
->>>>>>>
->>>>>>> Best regards,
->>>>>>> Krzysztof
->>>>>>
->>>>>>
->>>>>> Hi Krzysztof, Angelo,
->>>>>>
->>>>>> Thanks for the comment.
->>>>>> The Example 2 can pass dt_binding_check.
->>>>>>
->>>>>> But the example in the binding has 7 items [1] and dts [2].
->>>>>> Does
->>>>>> the
->>>>>> "maxItems: 1" affect any other schema or dts check?
->>>>>
->>>>> Ah, then it should be maxItems: 7, not 1.
->>>>>
->>>>
->>>> Keep in mind for your v30:
->>>>
->>>> maxItems: 7 will pass - but only if minItems is *not* 7 :-)
->>>>
->>>> -> (so, do not declare minItems, as default is 1) <-
->>>>
->>>> Regards,
->>>> Angelo
->>>>
->>>
->>> Hi Angelo,
->>>
->>> I still have one message [1] when runing dt_binding_check for
->>> "example
->>> 2 + maxItems: 7" [2].
->>>
->>> [1]
->>> /proj/mtk19347/cros/src/third_party/kernel/v5.10/Documentation/devi
->>> cetr
->>> ee/bindings/display/mediatek/mediatek,ethdr.example.dtb:
->>> hdr-engine@1c114000: mediatek,gce-client-reg: [[4294967295, 7,
->>> 16384,
->>> 4096, 4294967295, 7, 20480, 4096, 4294967295, 7, 28672, 4096,
->>> 4294967295, 7, 36864, 4096, 4294967295, 7, 40960, 4096, 4294967295,
->>> 7,
->>> 45056, 4096, 4294967295, 7, 49152, 4096]] is too short
->>>
->>>
->>> [2]
->>>      mediatek,gce-client-reg:
->>>        $ref: /schemas/types.yaml#/definitions/phandle-array
->>>        maxItems: 7
->>>        description: The register of display function block to be set
->>> by
->>> gce.
->>>          There are 4 arguments in this property, gce node, subsys
->>> id,
->>> offset and
->>>          register size. The subsys id is defined in the gce header
->>> of
->>> each chips
->>>          include/dt-bindings/gce/<chip>-gce.h, mapping to the
->>> register of
->>> display
->>>          function block.
->>>
->>
->> Maybe I'm wrong about the "do not declare minItems"... try with
->>
->> minItems: 1
->> maxItems: 7
->>
->>
->> ...does it work now?
->>
-> 
-> Yes, It works well with "example2 + minItems:1 + maxItems: 7" [1]
-> 
-> [1]
->    mediatek,gce-client-reg:
->      $ref: /schemas/types.yaml#/definitions/phandle-array
->      minItems: 1
->      maxItems: 7
->      description: The register of display function block to be set by
-> gce.
->        There are 4 arguments in this property, gce node, subsys id,
-> offset and
->        register size. The subsys id is defined in the gce header of each
-> chips
->        include/dt-bindings/gce/<chip>-gce.h, mapping to the register of
-> display
->        function block.
-> 
+VP9 dynamic resolution change use case requires to change resolution
+without doing stream off/on to keep references frames.
+In consequence the numbers of buffers increase until all 'old'
+reference frames are deprecated.
+To make it possible this series remove the 32 buffers limit per queue
+and introduce DELETE_BUF ioctl to delete buffers from a queue without
+doing stream off/on sequence.
 
-Please send a v30 with that solution ASAP then, so that we may perhaps *finally*
-get it in for v6.4.
+change in version 2:
+- Use a dynamic array and not a list to keep trace of allocated buffers.
+  Not use IDR interface because it is marked as deprecated in kernel
+  documentation.
+- Add a module parameter to limit the number of buffer per queue.
+- Add DELETE_BUF ioctl and m2m helpers.
 
-Regards,
-Angelo
+Benjamin Gaignard (8):
+  media: videobuf2: Access vb2_queue bufs array through helper functions
+  media: videobuf2: Make bufs array dynamic allocated
+  media: videobuf2: Add a module param to limit vb2 queue buffer storage
+  media: videobuf2: Stop define VB2_MAX_FRAME as global
+  media: v4l2: Add DELETE_BUF ioctl
+  media: v4l2: Add mem2mem helpers for DELETE_BUF ioctl
+  media: vim2m: Use v4l2-mem2mem helpers for VIDIOC_DELETE_BUF ioctl
+  media: verisilicon: Use v4l2-mem2mem helpers for VIDIOC_DELETE_BUF
+    ioctl
+
+ .../userspace-api/media/v4l/user-func.rst     |   1 +
+ .../media/v4l/vidioc-delete-buf.rst           |  51 ++++++
+ .../media/common/videobuf2/videobuf2-core.c   | 168 +++++++++++++-----
+ .../media/common/videobuf2/videobuf2-v4l2.c   |  23 ++-
+ drivers/media/platform/amphion/vdec.c         |   1 +
+ drivers/media/platform/amphion/vpu_dbg.c      |   4 +-
+ .../platform/mediatek/jpeg/mtk_jpeg_core.c    |   2 +-
+ .../vcodec/vdec/vdec_vp9_req_lat_if.c         |   4 +-
+ drivers/media/platform/qcom/venus/hfi.h       |   2 +
+ .../media/platform/verisilicon/hantro_hw.h    |   2 +
+ .../media/platform/verisilicon/hantro_v4l2.c  |   1 +
+ drivers/media/test-drivers/vim2m.c            |   1 +
+ drivers/media/test-drivers/visl/visl-dec.c    |  16 +-
+ drivers/media/v4l2-core/v4l2-dev.c            |   1 +
+ drivers/media/v4l2-core/v4l2-ioctl.c          |  10 ++
+ drivers/media/v4l2-core/v4l2-mem2mem.c        |  20 +++
+ .../staging/media/atomisp/pci/atomisp_ioctl.c |   2 +-
+ drivers/staging/media/ipu3/ipu3-v4l2.c        |   2 +
+ include/media/v4l2-ioctl.h                    |   4 +
+ include/media/v4l2-mem2mem.h                  |  12 ++
+ include/media/videobuf2-core.h                |  84 ++++++++-
+ include/media/videobuf2-v4l2.h                |  15 +-
+ include/uapi/linux/videodev2.h                |   1 +
+ 23 files changed, 353 insertions(+), 74 deletions(-)
+ create mode 100644 Documentation/userspace-api/media/v4l/vidioc-delete-buf.rst
+
+-- 
+2.34.1
+
 
