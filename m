@@ -4,84 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BD50C6FD20
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Mar 2023 20:07:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4C3BC6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Mar 2023 20:40:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yXypTfRCeOtQs2NJaN5EHuImSRKZD2MrYmU5dOoSRyg=; b=4KkwoLi/2SzYJi6e0JaBP5J9VK
-	d+hmSWs2tiExWpJIorwv/cKzdw74MNB5zT69au4i05un2R92CtiucqgcPrhtGrsgnr5GhwTceyk4W
-	MoDXDsb7OB/1DcrD8ZBUaMuM2hd9UMWgLHLR09zG3zvKf6kTMzMRSUd4k4jfDVfZqgvU0jY8IcPPf
-	VfXc09v/Z1ebGoUUzm5IWDwhl2oNbTq1eYb6mF8xDzCkusiz1kvYx8rPfsl6NqXg9pA2tTo+9KNJ5
-	pQ1fgMh9/M37vsS2dR5kPODxB/381dCG6h543Si5skTIrMS+WM1NFStzNitwuJfFe72+6ZT/MnUyu
-	vlXwnmOQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rnJYCIHb3YOLk6h7F2Xo1WPCj6zYYjtkpvkZ8wpoQJs=; b=IKG/cT92iyyobFFg1VH6XPK/xu
+	s8ypfB+C4GdzBWxNFFuL9Xgsd9SLk2x1V+puZtT+KPV7Xswa09PNgX4sbo3zNkOBHeVZ8jVubCdME
+	D+Lj3WcOn/+jaERitB6M2MgQ74t05MjxeUgAOsk+hkua+FQTtNyqjKfoJAwdqGRrUBtwDTL4bZvlg
+	6UONzaQW/9/aTsFFihnyYWcxxlMnUmgqRcfzqjHzAoZGScOHgkVUvCuHGOlGsrYiqldjpyaNHDE5d
+	tLkyndLkEgZ/O7esKk++3xC6bNyu6bXSLrVNAPHQDnNwKLl0rYT32pIK3nHE+kkDXP/H6FXI9FxPM
+	150sI9zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1peiGH-00DbdE-1M;
-	Tue, 21 Mar 2023 20:07:13 +0000
-Received: from mga14.intel.com ([192.55.52.115])
+	id 1peimb-00Dixd-0s;
+	Tue, 21 Mar 2023 20:40:37 +0000
+Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1peiGA-00DbbI-35;
-	Tue, 21 Mar 2023 20:07:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1679429226; x=1710965226;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=uC522O9FjPHxQ+tXnnlO/+TRKCyn/oGdK6IwgAN1Jjc=;
-  b=UexMTVtMRyZmlAmvxm/mv9JWFXXmVCitmlGxwkVEGPKPjOfZaDs2ltkn
-   Q6ArDtpc7TR8SoyT7VbL01HnnbLQ6UQFdKfwmP/XlkdfmYmFlEUp5SpyR
-   /tCOXDV6CRta4TB9jfjs6DO9Lv0LkeGO4lYZsYK40SxcVoidbKEmTw5z1
-   bTquLoPRTsu3XsOj3+BGlgXTaydgs7t15TJuj09CRYMcHpyOrlMVc29MG
-   Q45iyU/WjwOAiTyVkyS9fs3/dnfbSIL2KqI25lN6ycVz8HXeLxY4gcaBS
-   8V8ccwgaZIqzRvdYh+CW5duvD4QBjRzBssj9fWxFKvgCqDlluUlB2NZzf
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10656"; a="339088146"
-X-IronPort-AV: E=Sophos;i="5.98,279,1673942400"; 
-   d="scan'208";a="339088146"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Mar 2023 13:07:00 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10656"; a="714123916"
-X-IronPort-AV: E=Sophos;i="5.98,279,1673942400"; 
-   d="scan'208";a="714123916"
-Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
-  by orsmga001.jf.intel.com with ESMTP; 21 Mar 2023 13:06:52 -0700
-Received: from kbuild by b613635ddfff with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1peiFv-000CMs-2J;
-	Tue, 21 Mar 2023 20:06:51 +0000
-Date: Wed, 22 Mar 2023 04:06:38 +0800
-From: kernel test robot <lkp@intel.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, tfiga@chromium.org,
-	m.szyprowski@samsung.com, mchehab@kernel.org, ming.qian@nxp.com,
-	shijie.qin@nxp.com, eagle.zhou@nxp.com, bin.liu@mediatek.com,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com,
-	yunfei.dong@mediatek.com, stanimir.k.varbanov@gmail.com,
-	quic_vgarodia@quicinc.com, agross@kernel.org, andersson@kernel.org,
-	konrad.dybcio@linaro.org, ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de, daniel.almeida@collabora.com,
-	hverkuil-cisco@xs4all.nl, laurent.pinchart@ideasonboard.com,
-	jernel@kernel.org
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v2 5/8] media: v4l2: Add DELETE_BUF ioctl
-Message-ID: <202303220359.f1UOGBNV-lkp@intel.com>
-References: <20230321102855.346732-6-benjamin.gaignard@collabora.com>
+	id 1peimR-00Ditv-1L;
+	Tue, 21 Mar 2023 20:40:28 +0000
+Received: by mail-yb1-xb34.google.com with SMTP id y5so18802488ybu.3;
+        Tue, 21 Mar 2023 13:40:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1679431223;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=rnJYCIHb3YOLk6h7F2Xo1WPCj6zYYjtkpvkZ8wpoQJs=;
+        b=jLlwwP11Eqd3QcuN1GuSMsYw65pUik7rYOLx5A1BPNTMKYJnucTWfSjnqUytJNHQXy
+         GlAFJL6HyR3XP707iPGwPLT9NY80fMZ/hCISBwSyJBwHfz7eX+lK3CL2OIHoNHXO5Kyz
+         no+vIz2/4ucVrHHNXkTOmblHIkWNlzdaISIxpB3ZjQRTD5u2I/FgqtMhRgiy9YzTWTcX
+         waavRaNlKiFGoog+iFNJImDr8t2BuR/0PLfTa74EW/SK1wMrTJ1l2qBB/fA5N5Y/t28Q
+         /rPFIaJLKvcae0dQ9PRxX/RisjwpluW3tmFgSdLMjx7xzAexmNpGqZa2XA5/3IwG7ffU
+         1+CQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679431223;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=rnJYCIHb3YOLk6h7F2Xo1WPCj6zYYjtkpvkZ8wpoQJs=;
+        b=df+u4nUSqos5nSEccyORFJkWbF5xyTS4rbtWd4UvCc1O00yTvrD09hmPbTyr3XlSbe
+         a+0ZQxZh2FPKNc0I1EHlKCDmC25rYygjrED4UJQyMgXTVAj8B4JMPe7nmyofIE7Fzl8W
+         OObT/I33Sq9+7fjwDSkA9ZTVY6N+Wk6Z0KSjk+ijtS+radSOs0zHCIFHPzQuqygTC8aw
+         10GWJBheMTOTZNPsKpFCafzyNHqLUH2xpy9iIm+Z81MnS1ZyGO9iTXRE8b6w8kZ8foDG
+         F+g6L30SI8O8mTAFSI75XIy5O/u7jS838Zfoi6tqQaM5hLc4cKXivjXNgyz4b85NDc1b
+         quSw==
+X-Gm-Message-State: AAQBX9fmNH8LFt/olpKj9sIHOznSeuReRi6cVzdjiblVWcg90G3rX7r7
+	r5jPYVHGhEdE5Av3JlxDDVKc02IbCIn6PwDmZdI=
+X-Google-Smtp-Source: AKy350Yr0lFcvlrRV/aUYAmitKBlF/YIDHoHGNgfQJQ9fN+jGmA0gMeojAbcNNdTi/SlMNF7cHZPfM6jxoOO65XX8gM=
+X-Received: by 2002:a05:6902:6:b0:b5c:f48:3083 with SMTP id
+ l6-20020a056902000600b00b5c0f483083mr2322649ybh.11.1679431223686; Tue, 21 Mar
+ 2023 13:40:23 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230321102855.346732-6-benjamin.gaignard@collabora.com>
+References: <20230320233823.2919475-1-robh@kernel.org>
+In-Reply-To: <20230320233823.2919475-1-robh@kernel.org>
+From: Miguel Ojeda <miguel.ojeda.sandonis@gmail.com>
+Date: Tue, 21 Mar 2023 21:40:12 +0100
+Message-ID: <CANiq72m+cNuGiU_J9xU9QKmQK-ncD=1Y5imskrFNFSezzmjq8A@mail.gmail.com>
+Subject: Re: [PATCH v2] dt-bindings: display: Drop unneeded quotes
+To: Rob Herring <robh@kernel.org>
+Cc: Robin van der Gracht <robin@protonic.nl>, Miguel Ojeda <ojeda@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, David Airlie <airlied@gmail.com>, 
+	Daniel Vetter <daniel@ffwll.ch>, Kevin Hilman <khilman@baylibre.com>, 
+	Jerome Brunet <jbrunet@baylibre.com>, 
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+	Andrzej Hajda <andrzej.hajda@intel.com>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, 
+	Lucas Stach <l.stach@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	NXP Linux Team <linux-imx@nxp.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	Rob Clark <robdclark@gmail.com>, Abhinav Kumar <quic_abhinavk@quicinc.com>, 
+	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, Sean Paul <sean@poorly.run>, 
+	Thierry Reding <thierry.reding@gmail.com>, Sam Ravnborg <sam@ravnborg.org>, 
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
+	Jonathan Hunter <jonathanh@nvidia.com>, Jyri Sarha <jyri.sarha@iki.fi>, 
+	Tomi Valkeinen <tomba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+	freedreno@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org, 
+	linux-tegra@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230321_130707_214632_62EA6121 
-X-CRM114-Status: GOOD (  11.71  )
+X-CRM114-CacheID: sfid-20230321_134027_479868_E37FECA7 
+X-CRM114-Status: UNSURE (   6.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,43 +113,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Benjamin,
+On Tue, Mar 21, 2023 at 12:38=E2=80=AFAM Rob Herring <robh@kernel.org> wrot=
+e:
+>
+>  .../bindings/auxdisplay/holtek,ht16k33.yaml   |  2 +-
 
-I love your patch! Yet something to improve:
+Acked-by: Miguel Ojeda <ojeda@kernel.org>
 
-[auto build test ERROR on media-tree/master]
-[also build test ERROR on linus/master v6.3-rc3 next-20230321]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Benjamin-Gaignard/media-videobuf2-Access-vb2_queue-bufs-array-through-helper-functions/20230321-183154
-base:   git://linuxtv.org/media_tree.git master
-patch link:    https://lore.kernel.org/r/20230321102855.346732-6-benjamin.gaignard%40collabora.com
-patch subject: [PATCH v2 5/8] media: v4l2: Add DELETE_BUF ioctl
-config: x86_64-randconfig-a002-20230320 (https://download.01.org/0day-ci/archive/20230322/202303220359.f1UOGBNV-lkp@intel.com/config)
-compiler: clang version 14.0.6 (https://github.com/llvm/llvm-project f28c006a5895fc0e329fe15fead81e37457cb1d1)
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/c33ab7329647eb04482423ac9945dee579038e84
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Benjamin-Gaignard/media-videobuf2-Access-vb2_queue-bufs-array-through-helper-functions/20230321-183154
-        git checkout c33ab7329647eb04482423ac9945dee579038e84
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=x86_64 olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=x86_64 SHELL=/bin/bash
-
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Link: https://lore.kernel.org/oe-kbuild-all/202303220359.f1UOGBNV-lkp@intel.com/
-
-All errors (new ones prefixed by >>, old ones prefixed by <<):
-
->> ERROR: modpost: "vb2_core_delete_buf" [drivers/media/common/videobuf2/videobuf2-v4l2.ko] undefined!
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+Cheers,
+Miguel
 
