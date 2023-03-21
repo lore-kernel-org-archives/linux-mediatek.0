@@ -4,99 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48CF5C6FD20
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Mar 2023 19:35:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BD50C6FD20
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Mar 2023 20:07:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=sTFP7rFj7PoQYIQqVLl29eI1F69PKp3dt2RLflziUnU=; b=Q8yFaGI252uXwhpF0dHRDy7rrE
-	PBpe69IaxIj9LQYKz5PohWIFbNoweJ6IfssQjmGZgKwJ169PxrftugDmCybS2/N5trYFNjSHCvlXz
-	2Xr9x+CiP+7Xa1rtDkjyZTP/wiEUR20Eh9LnUPqz4OEODt6NIloC2a/3UO5RNVQHSfFXO5mPmjc1z
-	w/Kse+d9Eitdz1ORVrTbb40jX82x+GG6iNDPaBr+IzEMkfpz77me1N9e7D1iauBqBTBhlbqYY1R6B
-	fQcQIzgCzC+lT1ujSeIynE1UWaS0eK0UEXmW2zDYX4L36N1bN1Pi9eQyCxwkTSlUdYrynIfQOv30C
-	2y4X0eqA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yXypTfRCeOtQs2NJaN5EHuImSRKZD2MrYmU5dOoSRyg=; b=4KkwoLi/2SzYJi6e0JaBP5J9VK
+	d+hmSWs2tiExWpJIorwv/cKzdw74MNB5zT69au4i05un2R92CtiucqgcPrhtGrsgnr5GhwTceyk4W
+	MoDXDsb7OB/1DcrD8ZBUaMuM2hd9UMWgLHLR09zG3zvKf6kTMzMRSUd4k4jfDVfZqgvU0jY8IcPPf
+	VfXc09v/Z1ebGoUUzm5IWDwhl2oNbTq1eYb6mF8xDzCkusiz1kvYx8rPfsl6NqXg9pA2tTo+9KNJ5
+	pQ1fgMh9/M37vsS2dR5kPODxB/381dCG6h543Si5skTIrMS+WM1NFStzNitwuJfFe72+6ZT/MnUyu
+	vlXwnmOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pehlG-00DWBy-1V;
-	Tue, 21 Mar 2023 19:35:10 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1peiGH-00DbdE-1M;
+	Tue, 21 Mar 2023 20:07:13 +0000
+Received: from mga14.intel.com ([192.55.52.115])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pehlC-00DW93-1u
-	for linux-mediatek@lists.infradead.org;
-	Tue, 21 Mar 2023 19:35:08 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pehiZ-0008Dw-NB; Tue, 21 Mar 2023 20:32:23 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pehiT-005l5h-9t; Tue, 21 Mar 2023 20:32:17 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pehiS-006qxf-Je; Tue, 21 Mar 2023 20:32:16 +0100
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
-	=?utf-8?q?Pali_Roh=C3=A1r?= <pali@kernel.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Joyce Ooi <joyce.ooi@intel.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Jim Quinlan <jim2101024@gmail.com>,
-	Nicolas Saenz Julienne <nsaenz@kernel.org>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Tom Joseph <tjoseph@cadence.com>,
-	Shawn Guo <shawn.guo@linaro.org>,
-	Rahul Tanwar <rtanwar@maxlinear.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Serge Semin <Sergey.Semin@baikalelectronics.ru>,
-	Vidya Sagar <vidyas@nvidia.com>,
-	Jisheng Zhang <jszhang@kernel.org>,
-	Miaoqian Lin <linmq006@gmail.com>,
-	Ray Jui <rjui@broadcom.com>,
-	Scott Branden <sbranden@broadcom.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Toan Le <toan@os.amperecomputing.com>
-Cc: Rob Herring <robh@kernel.org>,
-	linux-pci@vger.kernel.org,
+	id 1peiGA-00DbbI-35;
+	Tue, 21 Mar 2023 20:07:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1679429226; x=1710965226;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=uC522O9FjPHxQ+tXnnlO/+TRKCyn/oGdK6IwgAN1Jjc=;
+  b=UexMTVtMRyZmlAmvxm/mv9JWFXXmVCitmlGxwkVEGPKPjOfZaDs2ltkn
+   Q6ArDtpc7TR8SoyT7VbL01HnnbLQ6UQFdKfwmP/XlkdfmYmFlEUp5SpyR
+   /tCOXDV6CRta4TB9jfjs6DO9Lv0LkeGO4lYZsYK40SxcVoidbKEmTw5z1
+   bTquLoPRTsu3XsOj3+BGlgXTaydgs7t15TJuj09CRYMcHpyOrlMVc29MG
+   Q45iyU/WjwOAiTyVkyS9fs3/dnfbSIL2KqI25lN6ycVz8HXeLxY4gcaBS
+   8V8ccwgaZIqzRvdYh+CW5duvD4QBjRzBssj9fWxFKvgCqDlluUlB2NZzf
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10656"; a="339088146"
+X-IronPort-AV: E=Sophos;i="5.98,279,1673942400"; 
+   d="scan'208";a="339088146"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Mar 2023 13:07:00 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10656"; a="714123916"
+X-IronPort-AV: E=Sophos;i="5.98,279,1673942400"; 
+   d="scan'208";a="714123916"
+Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
+  by orsmga001.jf.intel.com with ESMTP; 21 Mar 2023 13:06:52 -0700
+Received: from kbuild by b613635ddfff with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1peiFv-000CMs-2J;
+	Tue, 21 Mar 2023 20:06:51 +0000
+Date: Wed, 22 Mar 2023 04:06:38 +0800
+From: kernel test robot <lkp@intel.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, tfiga@chromium.org,
+	m.szyprowski@samsung.com, mchehab@kernel.org, ming.qian@nxp.com,
+	shijie.qin@nxp.com, eagle.zhou@nxp.com, bin.liu@mediatek.com,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com,
+	yunfei.dong@mediatek.com, stanimir.k.varbanov@gmail.com,
+	quic_vgarodia@quicinc.com, agross@kernel.org, andersson@kernel.org,
+	konrad.dybcio@linaro.org, ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de, daniel.almeida@collabora.com,
+	hverkuil-cisco@xs4all.nl, laurent.pinchart@ideasonboard.com,
+	jernel@kernel.org
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	kernel@pengutronix.de,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	linux-rpi-kernel@lists.infradead.org,
-	linux-omap@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-tegra@vger.kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH 00/15] PCI: Convert to platform remove callback returning void
-Date: Tue, 21 Mar 2023 20:31:53 +0100
-Message-Id: <20230321193208.366561-1-u.kleine-koenig@pengutronix.de>
-X-Mailer: git-send-email 2.39.2
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v2 5/8] media: v4l2: Add DELETE_BUF ioctl
+Message-ID: <202303220359.f1UOGBNV-lkp@intel.com>
+References: <20230321102855.346732-6-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3608; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=R+5LbNfI6fKiy6X0dtpgsEo+8R1pdW2pwTWUMnz3+QQ=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBkGgYLRsLzqyEbvu3VAJNJ+oXLpkkATksJ+mhRk m2Azv/YPFyJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZBoGCwAKCRCPgPtYfRL+ ThmBB/4usOcusxcKm8bzqeDny7jlfyp6JXzDfI5d0+YR6TSbJQflwlOnBkyQvAFNtJzQwgGNu2D BJlqgjGe3xEtIGOU2r4rKY7m+y9u41GugRRXvrsjdNtsPIkTWEw4cjJXoR/TSd2qZb8ZuOE3sjB uNQr8PE0KhtjpplR2zAlse3jtykoQxhN/qYXuZzOTWZFWyT8p0RORCGszYX5Z471/MdAqLXjkhv HoRLxiX1jiwJhmZZvqd03sOeXhk6rfiO5throSaEY8q4/q2UYdsLPsQhFmXbUjMuqBaoEMMqnsP wOUSbpoxpW4Bka12AJYEvNLE8GnI7lHsJPR3jpsh74MlG9iq
-X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230321102855.346732-6-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230321_123506_701086_39277A8B 
-X-CRM114-Status: GOOD (  11.91  )
+X-CRM114-CacheID: sfid-20230321_130707_214632_62EA6121 
+X-CRM114-Status: GOOD (  11.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,75 +96,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
+Hi Benjamin,
 
-this series adapts the platform drivers below drivers/pci to use the
-.remove_new() callback. Compared to the traditional .remove() callback
-.remove_new() returns no value. This is a good thing because the driver core
-doesn't (and cannot) cope for errors during remove. The only effect of a
-non-zero return value in .remove() is that the driver core emits a warning. The
-device is removed anyhow and an early return from .remove() usually yields a
-resource leak.
+I love your patch! Yet something to improve:
 
-By changing the remove callback to return void driver authors cannot
-reasonably assume any more that there is some kind of cleanup later.
+[auto build test ERROR on media-tree/master]
+[also build test ERROR on linus/master v6.3-rc3 next-20230321]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-All drivers were easy to convert as they all returned zero in their
-remove callback. Only for iproc the conversion wasn't trivial, the other
-were converted using coccinelle.
+url:    https://github.com/intel-lab-lkp/linux/commits/Benjamin-Gaignard/media-videobuf2-Access-vb2_queue-bufs-array-through-helper-functions/20230321-183154
+base:   git://linuxtv.org/media_tree.git master
+patch link:    https://lore.kernel.org/r/20230321102855.346732-6-benjamin.gaignard%40collabora.com
+patch subject: [PATCH v2 5/8] media: v4l2: Add DELETE_BUF ioctl
+config: x86_64-randconfig-a002-20230320 (https://download.01.org/0day-ci/archive/20230322/202303220359.f1UOGBNV-lkp@intel.com/config)
+compiler: clang version 14.0.6 (https://github.com/llvm/llvm-project f28c006a5895fc0e329fe15fead81e37457cb1d1)
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://github.com/intel-lab-lkp/linux/commit/c33ab7329647eb04482423ac9945dee579038e84
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Benjamin-Gaignard/media-videobuf2-Access-vb2_queue-bufs-array-through-helper-functions/20230321-183154
+        git checkout c33ab7329647eb04482423ac9945dee579038e84
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=x86_64 olddefconfig
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=x86_64 SHELL=/bin/bash
 
-There are no interdependencies between these patches. So even if there
-are some concerns for individual patches, I ask you to apply the
-remaining set. Then I only have to care for the review feedback of the
-refused patches. (Having said that I don't expect any serious objection,
-just things like squashing or separating patches, or maybe I picked a
-wrong subject prefix.)
+If you fix the issue, kindly add following tag where applicable
+| Reported-by: kernel test robot <lkp@intel.com>
+| Link: https://lore.kernel.org/oe-kbuild-all/202303220359.f1UOGBNV-lkp@intel.com/
 
-Best regards
-Uwe
+All errors (new ones prefixed by >>, old ones prefixed by <<):
 
-Uwe Kleine-König (15):
-  PCI: aardvark: Convert to platform remove callback returning void
-  PCI: altera: Convert to platform remove callback returning void
-  PCI: altera-msi: Convert to platform remove callback returning void
-  PCI: brcmstb: Convert to platform remove callback returning void
-  PCI: cadence/j721e: Convert to platform remove callback returning void
-  PCI: dwc/*: Convert to platform remove callback returning void
-  PCI: hisi-error: Convert to platform remove callback returning void
-  PCI: iproc: Convert to platform remove callback returning void
-  PCI: mediatek: Convert to platform remove callback returning void
-  PCI: mediatek-gen3: Convert to platform remove callback returning void
-  PCI: mt7621: Convert to platform remove callback returning void
-  PCI: mvebu: Convert to platform remove callback returning void
-  PCI: rockchip-host: Convert to platform remove callback returning void
-  PCI: tegra: Convert to platform remove callback returning void
-  PCI: xgene-msi: Convert to platform remove callback returning void
+>> ERROR: modpost: "vb2_core_delete_buf" [drivers/media/common/videobuf2/videobuf2-v4l2.ko] undefined!
 
- drivers/pci/controller/cadence/pci-j721e.c   | 6 ++----
- drivers/pci/controller/dwc/pcie-bt1.c        | 6 ++----
- drivers/pci/controller/dwc/pcie-histb.c      | 6 ++----
- drivers/pci/controller/dwc/pcie-intel-gw.c   | 6 ++----
- drivers/pci/controller/dwc/pcie-qcom-ep.c    | 8 +++-----
- drivers/pci/controller/dwc/pcie-tegra194.c   | 8 +++-----
- drivers/pci/controller/pci-aardvark.c        | 6 ++----
- drivers/pci/controller/pci-mvebu.c           | 6 ++----
- drivers/pci/controller/pci-tegra.c           | 6 ++----
- drivers/pci/controller/pci-xgene-msi.c       | 6 ++----
- drivers/pci/controller/pcie-altera-msi.c     | 5 ++---
- drivers/pci/controller/pcie-altera.c         | 6 ++----
- drivers/pci/controller/pcie-brcmstb.c        | 6 ++----
- drivers/pci/controller/pcie-hisi-error.c     | 6 ++----
- drivers/pci/controller/pcie-iproc-platform.c | 6 +++---
- drivers/pci/controller/pcie-iproc.c          | 4 +---
- drivers/pci/controller/pcie-iproc.h          | 2 +-
- drivers/pci/controller/pcie-mediatek-gen3.c  | 6 ++----
- drivers/pci/controller/pcie-mediatek.c       | 6 ++----
- drivers/pci/controller/pcie-mt7621.c         | 6 ++----
- drivers/pci/controller/pcie-rockchip-host.c  | 6 ++----
- 21 files changed, 43 insertions(+), 80 deletions(-)
-
-base-commit: fe15c26ee26efa11741a7b632e9f23b01aca4cc6
 -- 
-2.39.2
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
 
