@@ -4,82 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DE75C6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Mar 2023 08:53:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4593BC6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Mar 2023 08:55:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PzxReiqrQNoI8PcyTyCXk9Yl9l/U56tYVUt1t+CsGnI=; b=B6CnwOVkFl9lkKE15iCVcbTFn9
-	hPQwbuTP4yKntjpn0/RZsJKA+nlkVyLtN23SCx8YajE65c0Z9if07fYkmu/+A7pyOKGDgWA+1O1qC
-	2qIQkp8GS6uPx4p0nO+adYlfBx8VR6Ytfg7GTgpAiT3zY9NITZ9k7/u39tmftL6a3bkhA1edxQb1q
-	amfEB3+HE/TxjebMkbTWAwSl2rXF47p+HyAp5XT58IytoxfzKl5tzGO9LGj7/gN6HYQdc4RKIh1bk
-	8JK0aLvc3twCUyFMXj7jmLDJn4nyPaNn4yWVNJy2MbB6eHpoyajFF+d+zzn0utI9Yfqwa4juQY1qU
-	ngoxLTXQ==;
+	bh=7OaGged9qc7ro/fZyAzl1CDuNL9LOfWCFRxfh5t1k3o=; b=UnsQTlMHgk/9kG18IsUNiX6uOO
+	Tcv0K5wLSoLMFLE6Ug2oG7CZAGti0vkEKYdY5WvPd66P+bCdHEH2ChcsEDMI+KtFLcUPQH1J+3qLF
+	j8Owe2es/GhKtPJMCTEu0eoUtYCtF25UI175ZkZjetQRfEN4UdV92KA36am4U5CkZWHCGHrr84sMo
+	GH/+VrZowP6m3jp8XxTh855hnvprA8QUH9tSGcmdOVVnfugEUDBS9OPwjrAh2IOo85AzOmo5nHEgu
+	0GpWeCPVhhgP842zjCpt0cqXLz4OkT2hpCUv/dO1sYddimF5OnCgk7ydbJVKx8VjIav5FLX7usI5P
+	p5tXpZLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1peXk0-00BnGc-2g;
-	Tue, 21 Mar 2023 08:53:12 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1peXlh-00BnZq-1b;
+	Tue, 21 Mar 2023 08:54:57 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1peXjt-00BnEJ-2w;
-	Tue, 21 Mar 2023 08:53:07 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1peXlc-00BnY6-1t;
+	Tue, 21 Mar 2023 08:54:54 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1F74A6602FA0;
-	Tue, 21 Mar 2023 08:53:01 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1679388781;
-	bh=m8krUlfEMzWvYG3Z7812/SraCrcFCYtiocAiyGHHk50=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=odF+CO0D/NjEfMrngDbx4lrjRMM8eYnCD5bRYAqzygx6g1eisJAG8QrJixU868bYP
-	 Sg90JXu87V/cgunFX+wAmkj8LeVtXjofOrXwGOuOHWbmm6rANrgxomdVjIf6S+RI/I
-	 4DQLVuPQi2yn5Vot4PNkUmi2a6nLhCAegprNr8FHvs9FyXlwFMXL2ruLg+ovwKmr1n
-	 C8rjGtKm2MndGIqfbeeggEe+MRMpnY1UdHoQCMyYbLzPtDS2B8vrQBBW/O2JO+vH6a
-	 zhsHcymVgn5LzMsBjvqF5eRPg7uaHgg5Sx63Aeidofs49TwH1C47/4RRPzjwRtXpEP
-	 jCvOHRXVf77Aw==
-Message-ID: <287bb13f-5a4b-7769-7f3f-a94ee7ca645d@collabora.com>
-Date: Tue, 21 Mar 2023 09:52:58 +0100
+	by ams.source.kernel.org (Postfix) with ESMTPS id 2B94DB81330;
+	Tue, 21 Mar 2023 08:54:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D91A0C433D2;
+	Tue, 21 Mar 2023 08:54:45 +0000 (UTC)
+Message-ID: <6b368ae8-7c9b-70b6-9858-025743c2bf7f@xs4all.nl>
+Date: Tue, 21 Mar 2023 09:54:44 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH v9 2/7] iommu/mediatek: Fix two IOMMU share pagetable
- issue
-To: =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>
-Cc: "linux-mediatek@lists.infradead.org"
- <linux-mediatek@lists.infradead.org>, "robh+dt@kernel.org"
- <robh+dt@kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- =?UTF-8?B?SmlhbmppYW8gWmVuZyAo5pu+5YGl5aejKQ==?=
- <Jianjiao.Zeng@mediatek.com>, "robin.murphy@arm.com" <robin.murphy@arm.com>,
- "joro@8bytes.org" <joro@8bytes.org>,
- =?UTF-8?B?Q2hlbmdjaSBYdSAo6K645om/6LWQKQ==?= <Chengci.Xu@mediatek.com>,
- =?UTF-8?B?WUYgV2FuZyAo546L5LqR6aOeKQ==?= <YF.Wang@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
- "iommu@lists.linux.dev" <iommu@lists.linux.dev>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- =?UTF-8?B?TWluZ3l1YW4gTWEgKOmprOm4o+i/nCk=?= <Mingyuan.Ma@mediatek.com>,
- "will@kernel.org" <will@kernel.org>
-References: <20230317085541.20447-1-yong.wu@mediatek.com>
- <20230317085541.20447-3-yong.wu@mediatek.com>
- <47cac7a6-c069-64a2-7979-b879b075058f@collabora.com>
- <e724eb4b63901fd2ba9f7957d1a3cd6fdd234bf4.camel@mediatek.com>
+ Thunderbird/102.8.0
+Subject: Re: [PATCH v5 00/11] Adjust the dma-ranges for MTK IOMMU
 Content-Language: en-US
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <e724eb4b63901fd2ba9f7957d1a3cd6fdd234bf4.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>
+Cc: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ nfraprado@collabora.com, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ iommu@lists.linux.dev,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ mingyuan.ma@mediatek.com, yf.wang@mediatek.com, jianjiao.zeng@mediatek.com,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>,
+ chengci.xu@mediatek.com, youlin.pei@mediatek.com, anan.sun@mediatek.com
+References: <20230307023507.13306-1-yong.wu@mediatek.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+In-Reply-To: <20230307023507.13306-1-yong.wu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230321_015306_538565_EDE451C1 
-X-CRM114-Status: GOOD (  24.23  )
+X-CRM114-CacheID: sfid-20230321_015452_917091_99BF1188 
+X-CRM114-Status: GOOD (  23.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,69 +76,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 21/03/23 07:50, Yong Wu (吴勇) ha scritto:
-> On Fri, 2023-03-17 at 10:34 +0100, AngeloGioacchino Del Regno wrote:
->> Il 17/03/23 09:55, Yong Wu ha scritto:
->>> From: "Chengci.Xu" <chengci.xu@mediatek.com>
->>>
->>> Prepare for mt8188 to fix a two IOMMU HWs share pagetable issue.
->>>
->>> We have two MM IOMMU HWs in mt8188, one is VPP-IOMMU, another is
->>> VDO-IOMMU.
->>> The 2 MM IOMMU HWs share pagetable don't work in this case:
->>>    a) VPP-IOMMU probe firstly.
->>>    b) VDO-IOMMU probe.
->>>    c) The master for VDO-IOMMU probe (means frstdata is vpp-iommu).
->>>    d) The master in another domain probe. No matter it is vdo or
->>> vpp.
->>> Then it still create a new pagetable in step d). The problem is
->>> "frstdata->bank[0]->m4u_dom" was not initialized. Then when d)
->>> enter, it
->>> still create a new one.
->>>
->>> In this patch, we create a new variable "share_dom" for this share
->>> pgtable case, it should be helpful for readable. and put all the
->>> share
->>> pgtable logic in the mtk_iommu_domain_finalise.
->>>
->>> In mt8195, the master of VPP-IOMMU probes before than VDO-IOMMU
->>> from its dtsi node sequence, we don't see this issue in it. Prepare
->>> for
->>> mt8188.
->>>
->>> Signed-off-by: Chengci.Xu <chengci.xu@mediatek.com>
->>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
->>
->> I'm not sure whether this is *not* a fix... if a specific platform
->> wasn't
->> affected, this may still be a logic mistake... to be cautious, I
->> would
->> still add a Fixes tag to this one.
+On 07/03/2023 03:34, Yong Wu wrote:
+> After commit f1ad5338a4d5 ("of: Fix "dma-ranges" handling for bus
+> controllers"), the dma-ranges is not allowed for dts leaf node.
+> but we still would like to separate the different masters into
+> different iova regions. Thus we adjust the internal flow, separate
+> the 16GB iova range by the master HW larbid/portid and add the
+> dma-ranges property in the parent "soc" node. This also could avoid
+> the users forget/abuse the iova regions.
 > 
-> I think you are right. If we need add the Fixes tag, it should fix this
-> one: 645b87c190c9 ("iommu/mediatek: Fix 2 HW sharing pgtable issue").
+> The commit f1ad5338a4d5 did affect the mt8195 venc, But it is not
+> a fatal issue, it could also work well at 0-4GB iova. thus I don't
+> add "Fixes:" tag.
 > 
-> Before I thought the code flow was changed a lot. I added the bank
-> structure and removed the mtk_iommu.h, I'm a bit afraid that this fix
-> patch can not be applied clean, then it will introduce confuse when
-> applying to the previous version for the maintainers.
+> In this series, I add functions for mt8192/mt8195/mt8186, mt8188 will
+> be in its special patchset. and the previous mt8173/mt8183...support
+> 0-4GB only, no need this function.
 > 
-> Meanwhile, After mt8195, mt8186/mt6795/m8365/6795 were merged in
-> upstream. All of them don't have this sharing case, thus I thought this
-> fix it is not so necessary.
+> Change note:
+> v5: Nothing change. Just rebase on v6.3-rc1.
 > 
-> What's your opinion? and should I send this one separately if I add the
-> fixes tag?
+> v4: https://lore.kernel.org/linux-mediatek/20230215062544.8677-1-yong.wu@mediatek.com/
+>     Improve the comment in the code from AngeloGioacchino.
 > 
+> v3: https://lore.kernel.org/linux-mediatek/20230214031114.926-1-yong.wu@mediatek.com/
+>    Add a new patch only for comment more in the code.
+> 
+> v2: https://lore.kernel.org/linux-mediatek/20230208053643.28249-1-yong.wu@mediatek.com/
+>    a) Base on next-20230206 since mt8195 jpeg node is applied which affect
+>       this patch.
+>    b) Reword the commit message [1/10][2/10] to explain effect.
+> 
+> v1: https://lore.kernel.org/linux-mediatek/20230113060133.9394-1-yong.wu@mediatek.com/
+>    Base on v6.2-rc3.
+> 
+> Yong Wu (11):
+>   dt-bindings: media: mediatek,vcodec: Remove dma-ranges property
+>   dt-bindings: media: mediatek,jpeg: Remove dma-ranges property
 
-Well, it would be nicer to send it separately but, realistically, the
-described issue does *not* happen on the previous kernel releases for
-the supported SoCs... so it's not necessary to split this.
+I assume that these two media bindings patches be pulled in through the iommu subsystem?
+Or are they independent and can I take them?
 
-Add the Fixes tag and send this again inside of this series, that's
-going to be fine.
+Either is fine with me, I just need to know.
 
-Thanks!
-Angelo
+Regards,
+
+	Hans
+
+>   iommu/mediatek: Improve comment for the current region/bank
+>   iommu/mediatek: Get regionid from larb/port id
+>   iommu/mediatek: mt8192: Add iova_region_larb_msk
+>   iommu/mediatek: mt8195: Add iova_region_larb_msk
+>   iommu/mediatek: mt8186: Add iova_region_larb_msk
+>   iommu/mediatek: Add a gap for the iova regions
+>   arm64: dts: mt8195: Add dma-ranges for the parent "soc" node
+>   arm64: dts: mt8195: Remove the unnecessary dma-ranges
+>   arm64: dts: mt8186: Add dma-ranges for the parent "soc" node
+> 
+>  .../media/mediatek,mt8195-jpegdec.yaml        |   7 -
+>  .../media/mediatek,mt8195-jpegenc.yaml        |   7 -
+>  .../media/mediatek,vcodec-decoder.yaml        |   5 -
+>  .../media/mediatek,vcodec-encoder.yaml        |   5 -
+>  .../media/mediatek,vcodec-subdev-decoder.yaml |   7 -
+>  .../bindings/media/mediatek-jpeg-encoder.yaml |   5 -
+>  arch/arm64/boot/dts/mediatek/mt8186.dtsi      |   1 +
+>  arch/arm64/boot/dts/mediatek/mt8195.dtsi      |   4 +-
+>  drivers/iommu/mtk_iommu.c                     | 143 ++++++++++++++----
+>  9 files changed, 114 insertions(+), 70 deletions(-)
+> 
 
 
