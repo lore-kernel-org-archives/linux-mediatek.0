@@ -4,97 +4,133 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2F90C74A5B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Mar 2023 07:21:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC4C0C6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Mar 2023 08:12:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n1ju9SHjn0EjnX+WJqAHc/qHXQe1M1fQAhQ9irmoRLI=; b=xOrs76jTdR07QWad+/MlEoBgFw
-	n7AtnQoDLqvwXG/vXZsJCoYPEId3OY6t+rWzF4a402XA86Ru+E3kuqVM5NUPWHnSH5rfoID2PH1U8
-	sMV6ImQa0wA6DaYcT2vFGpfhZD9zu+PgvIfdpmImAwsf7ML3tgQPbt0WyVujK93IzG6fFYYu+3qCU
-	bUbqnuwtxFtFkbKPXEdg8Bvw2qUPwPKUyphgzDLH4vCU6nQByRLzoS/bHPtrIc9W6BMxkJylSLLf1
-	r8X1GupM8RIYeX5maNmqZ1fambM9immbGhpFWwXTm9W+WiBcZw40K52aeDknko6KEgmkOnHUe/6EI
-	+2OSbJWQ==;
+	Content-Type:Subject:To:From:Date:References:In-Reply-To:Message-Id:
+	Mime-Version:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=p6c5VTiMv6AfZVBMNz3DxVLxCSIdNaJFVMcQk71zPTY=; b=wS7rOrvKUsJ7yddq+j9O2futZy
+	Vupl2A2gyaUqS6TRDp+iC01Q3Hdg3UGYAiiZ4nATJVlukdMKOK3Fu32xy1nonEtR/FbqLayGIfBSm
+	HYe5bf/FcLXEh5U9V/+A4LJzbDYMMB/y9u2bWc6iarp722ihVVyOm4mzOeneYbMGnVLp7dYw03+IZ
+	dhXEC73T2W16ZO+XfZY6Ok14WMs8GGxxZdoVSfGFAYl1uUFFxrhNy+J8cYJ/6a7cHUOgBDtO9vrqL
+	PCrHWKXodJIeVFw/WGal/Oc7lV2bZwZaDN0Bplp1ilTFq8fnccgx8fKtbcqClAXuu2hKGkPmVyt75
+	5v2ZTh4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1peWIh-00BVt0-1j;
-	Tue, 21 Mar 2023 07:20:55 +0000
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+	id 1peX6R-00BdR6-2l;
+	Tue, 21 Mar 2023 08:12:19 +0000
+Received: from wnew1-smtp.messagingengine.com ([64.147.123.26])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1peWIe-00BVro-1g
-	for linux-mediatek@lists.infradead.org;
-	Tue, 21 Mar 2023 07:20:53 +0000
-Received: by mail-ed1-x531.google.com with SMTP id w9so55989200edc.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 21 Mar 2023 00:20:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1679383251;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=n1ju9SHjn0EjnX+WJqAHc/qHXQe1M1fQAhQ9irmoRLI=;
-        b=G6ekUazE6TcVZTpMdj9FhFeFggQPVT2VFUWaVtSaXIXTASqF++fMNxdF9KK8E6jaSL
-         ZxuQCYzENQ9eYwWdylaKVB8cU5qUsu4R5sIwD0IIrNZX+Oo0AX814EHrHOZ4nB7WYMax
-         YUWo1MqBTLRXOMVVr9tYCNrgu923Xrw6URPxwNxkAEkDp7epE2F8hgxV4cZiji7lOREJ
-         niygwQoFXhUPEUDsSetV6Edn47C9sgSWqXDTI3Dz/fCXVRaHBilN6IPoShYT9gKzSq2h
-         v+dykiWM/hzx+RdJMIfdogOBRMX12snNrk7GfqZ43S8HyiNmdwkPfVFwvscVb/2iLiXG
-         aCuA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679383251;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=n1ju9SHjn0EjnX+WJqAHc/qHXQe1M1fQAhQ9irmoRLI=;
-        b=fhFRAyGapU1j8JUOJht+5zhaHzxMAZAKzU4jMEvz3ZUbYItv0dPXWgNb4YUqCCCTBx
-         xIzqEL6hjIYSav+kOVNl0OCKPeXBjxbUaIHiw5veyj7Xxvn43186K840U3Gp4NxF7CGp
-         qZy+HBNEGvpjxYMBvePQhpCOFcvzoUMx4mouCUys1oP5bIMmONrrHHExWhhoItDmEovg
-         u14bUY0oC4c/v+3Lvxcoxe8ppuOWIQUqp9kh35dOfGLDtPRpYGwA2LJq8tRiU/3+VXl2
-         PAdKtcElHv81UyXWxZ97A97cZwrSQMhobgF3rnkcq5G770XOyfWkghTKOt/BXHlrGsxw
-         i77Q==
-X-Gm-Message-State: AO0yUKVNJI1lQkDQ10dbYPIzOyY4FUdCrv58IGUMOe86dMjSEaM/qANF
-	r/FDYYtmV319+n+hw2kCjbwkXg==
-X-Google-Smtp-Source: AK7set9ajV2h8MoJNZmNzFZ4RL5J57SDG8cMw8WnAC78cNBMYl3mTmrve+NyaqmHOj1gJroxcZnYrQ==
-X-Received: by 2002:a17:906:607:b0:932:be78:a728 with SMTP id s7-20020a170906060700b00932be78a728mr1688168ejb.68.1679383251026;
-        Tue, 21 Mar 2023 00:20:51 -0700 (PDT)
-Received: from ?IPV6:2a02:810d:15c0:828:2142:d8da:5ae4:d817? ([2a02:810d:15c0:828:2142:d8da:5ae4:d817])
-        by smtp.gmail.com with ESMTPSA id qn17-20020a170907211100b0093048a8bd31sm5385926ejb.68.2023.03.21.00.20.49
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 21 Mar 2023 00:20:50 -0700 (PDT)
-Message-ID: <cc45efa0-e2c6-525a-e3f3-7f87e8762e2e@linaro.org>
-Date: Tue, 21 Mar 2023 08:20:49 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH] dt-bindings: usb: Drop unneeded quotes
-Content-Language: en-US
-To: Rob Herring <robh@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Justin Chen <justinpopo6@gmail.com>, Al Cooper <alcooperx@gmail.com>,
- Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>
-Cc: linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-tegra@vger.kernel.org
-References: <20230320233904.2920197-1-robh@kernel.org>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230320233904.2920197-1-robh@kernel.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+	id 1peX6L-00BdOV-3C;
+	Tue, 21 Mar 2023 08:12:15 +0000
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
+	by mailnew.west.internal (Postfix) with ESMTP id 052262B0769F;
+	Tue, 21 Mar 2023 04:12:03 -0400 (EDT)
+Received: from imap51 ([10.202.2.101])
+  by compute6.internal (MEProxy); Tue, 21 Mar 2023 04:12:07 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
+	:content-transfer-encoding:content-type:content-type:date:date
+	:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:sender:subject:subject:to:to; s=fm1; t=
+	1679386323; x=1679393523; bh=p6c5VTiMv6AfZVBMNz3DxVLxCSIdNaJFVMc
+	Qk71zPTY=; b=uVCWvJx6nGWx/5u3VSJfVJjj/h5Ng2P2Yhqie0BJHMjvjzYTE1H
+	S3000Ce0+mrEAYEo+fTrrkOwrGIyGM/RtSIJpIl+AMe3IaZe/M9yfHnG9yQfEsGB
+	osDTshQUiWc3Ls9qw2Zw7uWeyKKv9pZtQgUyAYyK61kK6H6zm7ZRw1iyIFDATAh6
+	bngnkf2pqjCtTHy18W2iC0jMSPclRhXy7pawiFxq3uFJa37/Dw0UOVfoCTYIxNid
+	kVhGUwaRgeQY4B8o9mWH+SDBN77zX5XpwykUHuqV16i9fCmBftgO42riFzH6w1Ei
+	GyD4hF/a4GlUL9X/bR9I68HXVhkZhUlJJ3w==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-transfer-encoding:content-type
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1679386323; x=
+	1679393523; bh=p6c5VTiMv6AfZVBMNz3DxVLxCSIdNaJFVMcQk71zPTY=; b=s
+	1KchFhGt52dzXyN5O79HxuLj6FqmtaoRirc8tC8IgABafDJR6lWnVdeusmW3YgwN
+	FJAf+yx/n1aoiR0A753RChyEfaoIpIQzkZeE9GElnDfGMGVe4oIkqtFw9qR7h1WP
+	zxqQpmzCduK4QJMEm9wue/7sWeCfuf6P6YHLtFguSITKE6rIm8h05WV74PgknMBG
+	2bAxDrbC+Le26NytxoV2l9iQeICkXFr8qbpiOdPcrl+yCtPjEeppm+ecm6oJOczI
+	x/6d20UEibueIHsAvJp1EBg4CLfe3Tl1BSAVsdcOQAbqRbpMjYLiXHNTVklS4axM
+	ckago2w0Vsl5TtYiY3MpQ==
+X-ME-Sender: <xms:0GYZZJjZT4P_yV-Mx_Quzl7wy0YQtEhKnVKu2qt6FAe5g0Nu5umXIw>
+    <xme:0GYZZOBRlFaFGXG_FQkcgQEutyw7RZhEAYkiTJLcbFTaKAx0oZHJTkyPwuMSM-9_n
+    _kFQQURc5ACQt9CvsA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrvdefledguddugecutefuodetggdotefrod
+    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+    necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+    enucfjughrpefofgggkfgjfhffhffvufgtgfesthhqredtreerjeenucfhrhhomhepfdet
+    rhhnugcuuegvrhhgmhgrnhhnfdcuoegrrhhnugesrghrnhgusgdruggvqeenucggtffrrg
+    htthgvrhhnpeffkedtffejkeeihedtffevtedvhfdvhfehfffgleekgffgveeftdefgeek
+    vedvjeenucffohhmrghinhepkhgvrhhnvghlrdhorhhgnecuvehluhhsthgvrhfuihiivg
+    eptdenucfrrghrrghmpehmrghilhhfrhhomheprghrnhgusegrrhhnuggsrdguvg
+X-ME-Proxy: <xmx:0GYZZJF0ltCZr-3PUVxWiK0aO1a98gJRJ1RIE6_3xBjMQmp3OqMi_Q>
+    <xmx:0GYZZORTWXWGlKctJD6dpm53uhz2MzndLAhOFP-b7JCl5028QMmYHA>
+    <xmx:0GYZZGxU24J2mJwqKURxfuq2oxh3zplPa2ump9UmR_oOSDgOlsWU1w>
+    <xmx:02YZZGNbMwV1BEbfQ41yDSjvKrVTgq4nxJ1za-0qfoPrs4jKp0pJRPjrGNk>
+Feedback-ID: i56a14606:Fastmail
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+	id B3F8BB60086; Tue, 21 Mar 2023 04:12:00 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.9.0-alpha0-221-gec32977366-fm-20230306.001-gec329773
+Mime-Version: 1.0
+Message-Id: <86431868-488b-4a72-944b-231b6d0382b0@app.fastmail.com>
+In-Reply-To: <20230312131318.351173-20-krzysztof.kozlowski@linaro.org>
+References: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
+ <20230312131318.351173-20-krzysztof.kozlowski@linaro.org>
+Date: Tue, 21 Mar 2023 09:11:36 +0100
+From: "Arnd Bergmann" <arnd@arndb.de>
+To: "Krzysztof Kozlowski" <krzysztof.kozlowski@linaro.org>,
+ "Joe Tessler" <jrt@google.com>,
+ "Hans Verkuil" <hverkuil-cisco@xs4all.nl>,
+ "Mauro Carvalho Chehab" <mchehab@kernel.org>,
+ "Neil Armstrong" <neil.armstrong@linaro.org>,
+ "Kevin Hilman" <khilman@baylibre.com>,
+ "Jerome Brunet" <jbrunet@baylibre.com>,
+ "Martin Blumenstingl" <martin.blumenstingl@googlemail.com>,
+ "Thierry Reding" <thierry.reding@gmail.com>,
+ "Jon Hunter" <jonathanh@nvidia.com>,
+ "Manivannan Sadhasivam" <mani@kernel.org>,
+ "Michael Tretter" <m.tretter@pengutronix.de>,
+ "Pengutronix Kernel Team" <kernel@pengutronix.de>,
+ "Jacopo Mondi" <jacopo+renesas@jmondi.org>,
+ "Kieran Bingham" <kieran.bingham+renesas@ideasonboard.com>,
+ "Laurent Pinchart" <laurent.pinchart+renesas@ideasonboard.com>,
+ =?UTF-8?Q?Niklas_S=C3=B6derlund?=
+ <niklas.soderlund+renesas@ragnatech.se>,
+ "Rui Miguel Silva" <rmfrfs@gmail.com>,
+ "Wenyou Yang" <wenyou.yang@microchip.com>,
+ "Bin Liu" <bin.liu@mediatek.com>,
+ "Matthias Brugger" <matthias.bgg@gmail.com>,
+ "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
+ "Minghsiu Tsai" <minghsiu.tsai@mediatek.com>,
+ "Houlong Wei" <houlong.wei@mediatek.com>,
+ "Andrew-CT Chen" <andrew-ct.chen@mediatek.com>,
+ "Andrzej Pietrasiewicz" <andrzejtp2010@gmail.com>,
+ "Jacek Anaszewski" <jacek.anaszewski@gmail.com>,
+ "Sylwester Nawrocki" <s.nawrocki@samsung.com>,
+ "Patrice Chotard" <patrice.chotard@foss.st.com>,
+ "Yong Deng" <yong.deng@magewell.com>,
+ "Paul Kocialkowski" <paul.kocialkowski@bootlin.com>,
+ "Chen-Yu Tsai" <wens@csie.org>,
+ "Jernej Skrabec" <jernej.skrabec@gmail.com>,
+ "Samuel Holland" <samuel@sholland.org>,
+ Prabhakar <prabhakar.csengg@gmail.com>,
+ "Ezequiel Garcia" <ezequiel@vanguardiasur.com.ar>,
+ "Philipp Zabel" <p.zabel@pengutronix.de>, "Sean Young" <sean@mess.org>,
+ linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org,
+ oushixiong <oushixiong@kylinos.cn>
+Subject: Re: [PATCH 20/28] media: platform: jpeg: always reference OF data
+Content-Type: text/plain;charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230321_002052_562465_26D8FA12 
-X-CRM114-Status: UNSURE (   8.37  )
+X-CRM114-CacheID: sfid-20230321_011214_359423_96E3BDC5 
+X-CRM114-Status: UNSURE (   8.66  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -110,15 +146,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 21/03/2023 00:39, Rob Herring wrote:
-> Cleanup bindings dropping unneeded quotes. Once all these are fixed,
-> checking for this can be enabled in yamllint.
-> 
-> Signed-off-by: Rob Herring <robh@kernel.org>
+On Sun, Mar 12, 2023, at 14:13, Krzysztof Kozlowski wrote:
+> The driver can match only via the DT table so the table should be alwa=
+ys
+> used and the of_match_ptr does not have any sense (this also allows AC=
+PI
+> matching via PRP0001, even though it might not be relevant here).  This
+> also fixes !CONFIG_OF error:
+>
+>   drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c:1890:38: error:=20
+> =E2=80=98mtk8195_jpegdec_drvdata=E2=80=99 defined but not used=20
+> [-Werror=3Dunused-const-variable=3D]
+>
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+I see now that we both submitted the same patch, but now Hans
+merged a worse fix [1] without a changelog text.
 
-Best regards,
-Krzysztof
+    Arnd
 
+https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/comm=
+it/?h=3D4ae47770d57bff01
 
