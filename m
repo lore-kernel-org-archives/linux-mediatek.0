@@ -4,70 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 886D3C74A5B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Mar 2023 13:54:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E1D9C6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Mar 2023 14:33:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jRstWHrJY5Wdhhw75cFpAjwRgyvJoZeOUa5/fUotJ9s=; b=VItII8eXnmMCrh8DoNeR6UY4kI
-	gH6D4YwxdaeJ9LQ1W4j278HaEHsvsUdIin/gUcxMQoKbyUbAOh5XmDDFBUOdpfspxPtRzMf08GSGI
-	J4aopQ6NCPPJdFFKbUqJ7Qrt7ByYS/qGVcljUczG7rsrKDncmLJN9vIc1xFA9hXxqyBukTnFlBGe8
-	FwgeAt9IjDEoQkG/8eL5abCRHl6o5BABP8RDriZyQXd02mLJmbWaE1AxO8bAL9/DxVcjY1nvUPt5K
-	m+SalSwoV4n70iF8s6s4rcz2HtMinaWpI/LJZ5aPBASIuvXQt3V+CdHzGLHHx6bNbLBjCmhvRAZpt
-	N0Xwegcg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=suQv81JVdkbrTz7UP6Wm7TtO08Fa9KN1FrDGsVFyI98=; b=vVldxgGUreJ5WZgBsid5iWY31C
+	8A4BXX/KnTCbfxuisN7/Ef1y/2NWwBx+Mzz03FSymyNPqZ7Vh+G+UR1IUmsurPKy88bT6hx3JEsbZ
+	z/MuZiB5BPHtZcboOCyEUPT6ZbB2LOxtIfwvrjiNBHnN5EiiRZlClJzikNtA3M7xPGdGBRUamddX1
+	q+dfs+IinI8cPVP7+wbCKUtTSg0dBocdWX2SukO221PZLzQWnrxEi4TYKYUbLhywYe1pSfWdKs1QS
+	xeboCfary0R16eIbAgT+iAg50/iuMzvh/rR/g8v3K0LPyIcODit/ylv0yEQ3hmIT/t/7j34oxnuaD
+	JXrQl5jQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pecRa-00CcRo-36;
-	Tue, 21 Mar 2023 13:54:31 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1ped3R-00CkWb-1J;
+	Tue, 21 Mar 2023 14:33:37 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pecRX-00CcPg-15
-	for linux-mediatek@lists.infradead.org;
-	Tue, 21 Mar 2023 13:54:29 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1ped3M-00CkU7-1U;
+	Tue, 21 Mar 2023 14:33:34 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 7FFA761BBA;
-	Tue, 21 Mar 2023 13:54:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6F7E9C433EF;
-	Tue, 21 Mar 2023 13:54:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1679406865;
-	bh=sLwXEUpXzwGTKCNG2RTmaVz2tpCNp4oAQ+9c+0qNAPI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=P6ZTvsXN6sEGNLHViZE8UiBJlkzlMu0GZOFo5s/ofNtlJk884f+PBy8qJDh2Y+i9O
-	 VmNOVST7oeHB4NtEfkW8wTFGEMwkVo5aK5h06kUp941HHO1kJwUlqiqw73S+HcsYOG
-	 ssdW7aqVKaPU6HpUEUqiarl/dxbhAK64Yr4M3au8+C0bfu19pPc2xLACyPE2SQ1rxO
-	 8tOdQKSnxMtoHklZAWgac87QQSVlCvWvLRGFteXYVW1qRNwWIbhpEuMNBWNpjSb7o7
-	 yQNU6+2sDgio/0K9BQByDIH7TdQuTuS+uMXFFpeBjq+D/hiXfy6YZ53rPnjxrYfXaT
-	 lttv7P+xrcH3Q==
-Date: Tue, 21 Mar 2023 14:54:22 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Rob Herring <robh@kernel.org>
-Cc: daniel@makrotopia.org, netdev@vger.kernel.org, matthias.bgg@gmail.com,
-	linux-mediatek@lists.infradead.org, sean.wang@mediatek.com,
-	devicetree@vger.kernel.org, edumazet@google.com,
-	davem@davemloft.net, krzysztof.kozlowski+dt@linaro.org,
-	lorenzo.bianconi@redhat.com, Mark-MC.Lee@mediatek.com,
-	john@phrozen.org, nbd@nbd.name, kuba@kernel.org, pabeni@redhat.com,
-	robh+dt@kernel.org
-Subject: Re: [PATCH net-next 06/10] dt-bindings: soc: mediatek: move ilm in a
- dedicated dts node
-Message-ID: <ZBm3DvjvvHC+3EAH@lore-desk>
-References: <cover.1679330630.git.lorenzo@kernel.org>
- <c9b65ef3aeb28a50cec45d1f98aec72d8016c828.1679330630.git.lorenzo@kernel.org>
- <167940235606.530981.2024563505368619498.robh@kernel.org>
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1EE7966030D8;
+	Tue, 21 Mar 2023 14:33:27 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1679409207;
+	bh=hfOZhZvwpqq4ufYx8Sox86gnGr5bS6DeOHGjzIeVHPo=;
+	h=From:To:Cc:Subject:Date:From;
+	b=QjFR76b5ozWwX+fQ0Mlt67ZpeSPuvj5YdKFce9CbrSGWw2Sy62WzQ+jmobznEWm3o
+	 DudEvYaKi02PXXhtXEsll5xLZCNVlCCCCeg2Uzj/AR0Hxlw0i2n6gPH+GmuIyTEoe8
+	 6PzCP5dU2w7P1ZceoHlpwalnFBVJkKeZahOJgeVHvMMUf6t/nOX1AQANWaxyBfP+sC
+	 iMgvfajHEkUD8m0r8Kg3jHjZLceKfeT9vfOhU6XDwg8Y44hczyK+P/Yt2V2MNRJAc5
+	 tcVMb6FYKHsBqKAnKI8xuXquq0l/Ej7/Bz2NJrVySMGjnAAQjqDpMjK+LgrKqkNZLA
+	 xWtY4kxZFDc9A==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: srinivas.kandagatla@linaro.org
+Cc: wenst@chromium.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	kernel@collabora.com
+Subject: [PATCH] nvmem: mtk-efuse: Support postprocessing for GPU speed binning data
+Date: Tue, 21 Mar 2023 15:33:19 +0100
+Message-Id: <20230321143319.333803-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.40.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="JpkRWRtszDHfbi1x"
-Content-Disposition: inline
-In-Reply-To: <167940235606.530981.2024563505368619498.robh@kernel.org>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230321_065427_627439_6A6D5322 
-X-CRM114-Status: GOOD (  24.06  )
+X-CRM114-CacheID: sfid-20230321_073332_729175_7EBE4797 
+X-CRM114-Status: GOOD (  19.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,86 +75,120 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On some MediaTek SoCs GPU speed binning data is available for read
+in the SoC's eFuse array but it has a format that is incompatible
+with what the OPP API expects, as we read a number from 0 to 7 but
+opp-supported-hw is expecting a bitmask to enable an OPP entry:
+being what we read limited to 0-7, it's straightforward to simply
+convert the value to BIT(value) as a post-processing action.
 
---JpkRWRtszDHfbi1x
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+So, introduce post-processing support and enable it by evaluating
+the newly introduced platform data's `uses_post_processing` member,
+currently enabled only for MT8186.
 
->=20
-> On Mon, 20 Mar 2023 17:58:00 +0100, Lorenzo Bianconi wrote:
-> > Since the cpuboot memory region is not part of the RAM SoC, move ilm in
-> > a deidicated syscon node.
-> > This patch helps to keep backward-compatibility with older version of
-> > uboot codebase where we have a limit of 8 reserved-memory dts child
-> > nodes.
-> >=20
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > ---
-> >  .../arm/mediatek/mediatek,mt7622-wed.yaml     | 14 +++---
-> >  .../soc/mediatek/mediatek,mt7986-wo-ilm.yaml  | 45 +++++++++++++++++++
-> >  2 files changed, 53 insertions(+), 6 deletions(-)
-> >  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/medi=
-atek,mt7986-wo-ilm.yaml
-> >=20
->=20
-> My bot found errors running 'make DT_CHECKER_FLAGS=3D-m dt_binding_check'
-> on your patch (DT_CHECKER_FLAGS is new in v5.13):
->=20
-> yamllint warnings/errors:
->=20
-> dtschema/dtc warnings/errors:
-> Error: Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-wed=
-=2Eexample.dts:63.59-60 syntax error
-> FATAL ERROR: Unable to parse input tree
-> make[1]: *** [scripts/Makefile.lib:419: Documentation/devicetree/bindings=
-/arm/mediatek/mediatek,mt7622-wed.example.dtb] Error 1
-> make[1]: *** Waiting for unfinished jobs....
-> make: *** [Makefile:1512: dt_binding_check] Error 2
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/nvmem/mtk-efuse.c | 53 +++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 51 insertions(+), 2 deletions(-)
 
-Hi Rob,
+diff --git a/drivers/nvmem/mtk-efuse.c b/drivers/nvmem/mtk-efuse.c
+index a08e0aedd21c..b36cd0dcc8c7 100644
+--- a/drivers/nvmem/mtk-efuse.c
++++ b/drivers/nvmem/mtk-efuse.c
+@@ -10,6 +10,11 @@
+ #include <linux/io.h>
+ #include <linux/nvmem-provider.h>
+ #include <linux/platform_device.h>
++#include <linux/property.h>
++
++struct mtk_efuse_pdata {
++	bool uses_post_processing;
++};
+ 
+ struct mtk_efuse_priv {
+ 	void __iomem *base;
+@@ -29,6 +34,37 @@ static int mtk_reg_read(void *context,
+ 	return 0;
+ }
+ 
++static int mtk_efuse_gpu_speedbin_pp(void *context, const char *id, int index,
++				     unsigned int offset, void *data, size_t bytes)
++{
++	u8 *val = data;
++
++	if (val[0] < 8)
++		val[0] = BIT(val[0]);
++
++	return 0;
++}
++
++static void mtk_efuse_fixup_cell_info(struct nvmem_device *nvmem,
++				      struct nvmem_layout *layout,
++				      struct nvmem_cell_info *cell)
++{
++	size_t sz = strlen(cell->name);
++
++	/*
++	 * On some SoCs, the GPU speedbin is not read as bitmask but as
++	 * a number with range [0-7] (max 3 bits): post process to use
++	 * it in OPP tables to describe supported-hw.
++	 */
++	if (cell->nbits <= 3 &&
++	    strncmp(cell->name, "gpu-speedbin", min(sz, strlen("gpu-speedbin"))) == 0)
++		cell->read_post_process = mtk_efuse_gpu_speedbin_pp;
++}
++
++static struct nvmem_layout mtk_efuse_layout = {
++	.fixup_cell_info = mtk_efuse_fixup_cell_info,
++};
++
+ static int mtk_efuse_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+@@ -36,6 +72,7 @@ static int mtk_efuse_probe(struct platform_device *pdev)
+ 	struct nvmem_device *nvmem;
+ 	struct nvmem_config econfig = {};
+ 	struct mtk_efuse_priv *priv;
++	const struct mtk_efuse_pdata *pdata;
+ 
+ 	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
+ 	if (!priv)
+@@ -45,20 +82,32 @@ static int mtk_efuse_probe(struct platform_device *pdev)
+ 	if (IS_ERR(priv->base))
+ 		return PTR_ERR(priv->base);
+ 
++	pdata = device_get_match_data(dev);
+ 	econfig.stride = 1;
+ 	econfig.word_size = 1;
+ 	econfig.reg_read = mtk_reg_read;
+ 	econfig.size = resource_size(res);
+ 	econfig.priv = priv;
+ 	econfig.dev = dev;
++	if (pdata->uses_post_processing)
++		econfig.layout = &mtk_efuse_layout;
+ 	nvmem = devm_nvmem_register(dev, &econfig);
+ 
+ 	return PTR_ERR_OR_ZERO(nvmem);
+ }
+ 
++static const struct mtk_efuse_pdata mtk_mt8186_efuse_pdata = {
++	.uses_post_processing = true,
++};
++
++static const struct mtk_efuse_pdata mtk_efuse_pdata = {
++	.uses_post_processing = false,
++};
++
+ static const struct of_device_id mtk_efuse_of_match[] = {
+-	{ .compatible = "mediatek,mt8173-efuse",},
+-	{ .compatible = "mediatek,efuse",},
++	{ .compatible = "mediatek,mt8173-efuse", .data = &mtk_efuse_pdata },
++	{ .compatible = "mediatek,mt8186-efuse", .data = &mtk_mt8186_efuse_pdata },
++	{ .compatible = "mediatek,efuse", .data = &mtk_efuse_pdata },
+ 	{/* sentinel */},
+ };
+ MODULE_DEVICE_TABLE(of, mtk_efuse_of_match);
+-- 
+2.40.0
 
-I think it is just a typo in a patch in the middle of the series that I fix=
-ed
-in the latest one (before posting I compiled the dts schema with the full s=
-eries
-applied and not incrementally). I will fix it in v2. Thanks.
-
-Regards,
-Lorenzo
-
->=20
-> doc reference errors (make refcheckdocs):
->=20
-> See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/c9b65e=
-f3aeb28a50cec45d1f98aec72d8016c828.1679330630.git.lorenzo@kernel.org
->=20
-> The base for the series is generally the latest rc1. A different dependen=
-cy
-> should be noted in *this* patch.
->=20
-> If you already ran 'make dt_binding_check' and didn't see the above
-> error(s), then make sure 'yamllint' is installed and dt-schema is up to
-> date:
->=20
-> pip3 install dtschema --upgrade
->=20
-> Please check and re-submit after running the above command yourself. Note
-> that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-> your schema. However, it must be unset to test all examples with your sch=
-ema.
->=20
-
---JpkRWRtszDHfbi1x
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZBm3DgAKCRA6cBh0uS2t
-rIT4AQDJ0/RUcQ7x5fJKWJaVZ1iajTTGklMAnLOvSiTd8H9wdwD/YtZTqKWECe5o
-5y6JQDle8/SY+VNgY1swVG/Mppt+Jwc=
-=kpaY
------END PGP SIGNATURE-----
-
---JpkRWRtszDHfbi1x--
 
