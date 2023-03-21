@@ -4,73 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A72C2C6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Mar 2023 10:51:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B728C7618D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Mar 2023 11:05:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:References:In-Reply-To:Subject:To:
-	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qswG2/ZBW7aTCsKI3gXz0TlSSCCucbrgwXXHtDYCg7M=; b=iBriw6kqQj6zqjyPbQHFLaEEjE
-	MWZNoxYcS/2JUQZj+uk/3JXjsl13chjFADg3IOmEWqktOSiH1h1bt320xOAypP7Z3XNrxAvcSE43x
-	cTRE/f6+zHeWptC3LGMITzolvI9bLzaxBjGCAP++spm8n7XxDFHSqyU1he+4g2s7MAx+9uWEYsQET
-	YxMs2+vHyEXAfjSNFrPImDgSC092iPvsHUJnpnM1XD/VXeHyqneYS3QvoOV0C28dt3cqWDNko+c65
-	XS6wEa/XhOWOCwY5W3SRQwsfJSYkXH9eHk3OSdDf04RNYdyvU7qYSAQg9Ae4JdjbYT6G8qLFIOYjD
-	rPjVKlbg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=mdqNGlxEp7pDLOgt43rQf5lzDoIlr9ne3YAiYLzanzo=; b=0P/rPjYiUWD0P2UpRn9Oip9P/R
+	C7kiTD9Ap6RjJ/M6MhjVtKMUf/tpTBR/sPGmI/0XnkMdPxfHfQvg8/xnr2ss5OzuzgawmiMAxNP/S
+	w6UZmlqcLaRRnvOye0SeQMVxItrzvbveiQW2iiiFAD1JKs4OcKWwGGvbohpiu0n+HN+XiXjM2u4fR
+	a0VyPdDPpkYSoWyO3wb4aWz9GR+1xBuXuSeupcy3oohQkCTE4h+UKiSXVAwC373eDlRYMFyZTgVPq
+	QD7zfb+T4ALmR+9FxWWFOn8o1++qHA3eE+w5xrVlXNRJiju41MeqqmwSyF5gutT0nE3mEBbarNYKt
+	czn095Yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1peZam-00C6WL-0E;
-	Tue, 21 Mar 2023 10:51:48 +0000
-Received: from mail-pl1-f170.google.com ([209.85.214.170])
+	id 1peZo2-00C8B0-3D;
+	Tue, 21 Mar 2023 11:05:31 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1peZaj-00C6V8-1M
-	for linux-mediatek@lists.infradead.org;
-	Tue, 21 Mar 2023 10:51:46 +0000
-Received: by mail-pl1-f170.google.com with SMTP id o2so8147409plg.4
-        for <linux-mediatek@lists.infradead.org>; Tue, 21 Mar 2023 03:51:43 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679395903;
-        h=content-transfer-encoding:mime-version:message-id:date:references
-         :in-reply-to:subject:to:from:x-gm-message-state:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=qswG2/ZBW7aTCsKI3gXz0TlSSCCucbrgwXXHtDYCg7M=;
-        b=oSLYhIt0o5wPqCkyqD6i09hZpw8rla/tx56Ed2UHxwEbgub+qraRN4vMk46bJc/Efu
-         W1JPMUP2boXNBTxwdRmucasSxBvqukmKuHCP5WDVO2cfour0Ab5rDR4FGyuMYB71jykw
-         PtR0iqgRGi7wChNj4fGSZ/FfiFAdTaO+vzAQZvHICu/NT0Up3n7Jxt9zdfJltJMeWbE/
-         dhOXYIqGzmcw3PyiPAv6jup9A2CHn4xieYs4UD2zW8qpP8cJgA7I6NHJuVCXZLVyhKSQ
-         tI7Ja1MfJe0RzFGqbp2VnkuFIeiS4zBX9uN5ddszObGbfJd1JtYBedy7Yw3tTXFg2zID
-         VANg==
-X-Gm-Message-State: AO0yUKWr05+LZv6foNF1hhWuaaVV4t5jUXR557MnH9VMEXqC9e1wwvHs
-	73f23x4s1M/CxLgG+wsxvqrdkpgUjh4s/SbGHetwRg==
-X-Google-Smtp-Source: AK7set/9jppZ/8fvwHpwmrSJGSCQmBWnfdRTrTdLhtDmmxg2bsp/b1grQinpEEOPKC3NJrRBf73Yag==
-X-Received: by 2002:a17:903:3092:b0:1a1:a706:5df3 with SMTP id u18-20020a170903309200b001a1a7065df3mr1614761plc.15.1679395903364;
-        Tue, 21 Mar 2023 03:51:43 -0700 (PDT)
-Received: from localhost (63-228-113-140.tukw.qwest.net. [63.228.113.140])
-        by smtp.gmail.com with ESMTPSA id g2-20020a170902c38200b001960706141fsm8408525plg.149.2023.03.21.03.51.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 Mar 2023 03:51:42 -0700 (PDT)
-From: Kevin Hilman <khilman@kernel.org>
-To: Bernhard =?utf-8?Q?Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-serial@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, angelogioacchino.delregno@collabora.com,
- matthias.bgg@gmail.com, gregkh@linuxfoundation.org,
- krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org, maz@kernel.org,
- tglx@linutronix.de
-Subject: Re: [PATCH v11 3/3] arm64: dts: mediatek: Initial mt8365-evk support
-In-Reply-To: <20230309213501.794764-4-bero@baylibre.com>
-References: <20230309213501.794764-1-bero@baylibre.com>
- <20230309213501.794764-4-bero@baylibre.com>
-Date: Tue, 21 Mar 2023 03:51:41 -0700
-Message-ID: <7h8rfqwf5u.fsf@baylibre.com>
+	id 1peZny-00C89q-1J;
+	Tue, 21 Mar 2023 11:05:28 +0000
+X-UUID: 44052b56c7d811ed8687db9d93187ff1-20230321
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=mdqNGlxEp7pDLOgt43rQf5lzDoIlr9ne3YAiYLzanzo=;
+	b=JBcVHiunIjNJiZmDiy5N0KI1NMn9DgtjIHjrHf1GKMBUTJEGBBqVlAnkDW5ZecOZjIjqP8yT84tFjWlNnCw4QtPfcHWbAstswbIWZQhBPDXJhxJ6OJ/8WtBoq20m1AxKiaizu69lp/IEJthRszhA9jKBp7yqkhoZJkJolUKittk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22,REQID:dc59d693-0188-4dbb-a88b-97e6166227c0,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:-35
+X-CID-META: VersionHash:120426c,CLOUDID:735de8b3-beed-4dfc-bd9c-e1b22fa6ccc4,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:2,IP:nil,UR
+	L:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: 44052b56c7d811ed8687db9d93187ff1-20230321
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <tze-nan.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1198610219; Tue, 21 Mar 2023 04:05:18 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Tue, 21 Mar 2023 19:05:16 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Tue, 21 Mar 2023 19:05:16 +0800
+From: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
+To: Steven Rostedt <rostedt@goodmis.org>, Masami Hiramatsu
+	<mhiramat@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Tom
+ Zanussi" <zanussi@kernel.org>
+CC: <bobule.chang@mediatek.com>, <Tze-nan.Wu@mediatek.com>,
+	<cheng-jui.wang@mediatek.com>, <wsd_upstream@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, <stable@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-trace-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>
+Subject: [PATCH] tracing/synthetic: Fix races on freeing last_cmd
+Date: Tue, 21 Mar 2023 19:04:43 +0800
+Message-ID: <20230321110444.1587-1-Tze-nan.Wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230321_035145_476051_641E4F12 
-X-CRM114-Status: UNSURE (   6.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230321_040526_612863_03EFC914 
+X-CRM114-Status: GOOD (  13.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,27 +84,178 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Bernhard Rosenkr=C3=A4nzer <bero@baylibre.com> writes:
+From: "Tze-nan Wu" <Tze-nan.Wu@mediatek.com>
 
-> From: Fabien Parent <fparent@baylibre.com>
->
-> This adds minimal support for the Mediatek 8365 SOC and the EVK reference
-> board, allowing the board to boot to initramfs with serial port I/O.
->
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> [bero@baylibre.com: Removed parts depending on drivers that aren't upstre=
-am yet, cleanups, add CPU cache layout, add systimer, fix GIC]
-> Signed-off-by: Bernhard Rosenkr=C3=A4nzer <bero@baylibre.com>
-> [aouledameur@baylibre.com: Fix systimer properties]
-> Signed-off-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-> Tested-by: Kevin Hilman <khilman@baylibre.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
+Currently, the "last_cmd" variable can be accessed by multiple processes
+asynchronously when multiple users manipulate synthetic_events node
+at the same time, it could lead to use-after-free or double-free.
 
-Tested (again) and things are working well.  This is the last patch
-remaining to be merged.  As soon as this lands in linux-next, I'll add
-this board to my KernelCI lab.
+This patch add "lastcmd_mutex" to prevent "last_cmd" from being accessed
+asynchronously.
 
-Kevin
+================================================================
+
+It's easy to reproduce in the KASAN environment by running the two
+scripts below in different shells.
+
+script 1:
+        while :
+        do
+                echo -n -e '\x88' > /sys/kernel/tracing/synthetic_events
+        done
+
+script 2:
+        while :
+        do
+                echo -n -e '\xb0' > /sys/kernel/tracing/synthetic_events
+        done
+
+================================================================
+double-free scenario:
+
+    process A                       process B
+-------------------               ---------------
+1.kstrdup last_cmd
+                                  2.free last_cmd
+3.free last_cmd(double-free)
+
+================================================================
+use-after-free scenario:
+
+    process A                       process B
+-------------------               ---------------
+1.kstrdup last_cmd
+                                  2.free last_cmd
+3.tracing_log_err(use-after-free)
+
+================================================================
+
+Appendix 1. KASAN report double-free:
+
+BUG: KASAN: double-free in kfree+0xdc/0x1d4
+Free of addr ***** by task sh/4879
+Call trace:
+        ...
+        kfree+0xdc/0x1d4
+        create_or_delete_synth_event+0x60/0x1e8
+        trace_parse_run_command+0x2bc/0x4b8
+        synth_events_write+0x20/0x30
+        vfs_write+0x200/0x830
+        ...
+
+Allocated by task 4879:
+        ...
+        kstrdup+0x5c/0x98
+        create_or_delete_synth_event+0x6c/0x1e8
+        trace_parse_run_command+0x2bc/0x4b8
+        synth_events_write+0x20/0x30
+        vfs_write+0x200/0x830
+        ...
+
+Freed by task 5464:
+        ...
+        kfree+0xdc/0x1d4
+        create_or_delete_synth_event+0x60/0x1e8
+        trace_parse_run_command+0x2bc/0x4b8
+        synth_events_write+0x20/0x30
+        vfs_write+0x200/0x830
+        ...
+
+================================================================
+Appendix 2. KASAN report use-after-free:
+
+BUG: KASAN: use-after-free in strlen+0x5c/0x7c
+Read of size 1 at addr ***** by task sh/5483
+sh: CPU: 7 PID: 5483 Comm: sh
+        ...
+        __asan_report_load1_noabort+0x34/0x44
+        strlen+0x5c/0x7c
+        tracing_log_err+0x60/0x444
+        create_or_delete_synth_event+0xc4/0x204
+        trace_parse_run_command+0x2bc/0x4b8
+        synth_events_write+0x20/0x30
+        vfs_write+0x200/0x830
+        ...
+
+Allocated by task 5483:
+        ...
+        kstrdup+0x5c/0x98
+        create_or_delete_synth_event+0x80/0x204
+        trace_parse_run_command+0x2bc/0x4b8
+        synth_events_write+0x20/0x30
+        vfs_write+0x200/0x830
+        ...
+
+Freed by task 5480:
+        ...
+        kfree+0xdc/0x1d4
+        create_or_delete_synth_event+0x74/0x204
+        trace_parse_run_command+0x2bc/0x4b8
+        synth_events_write+0x20/0x30
+        vfs_write+0x200/0x830
+        ...
+
+Fixes: 27c888da9867 ("tracing: Remove size restriction on synthetic event cmd error logging")
+Cc: stable@vger.kernel.org
+Signed-off-by: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
+---
+ kernel/trace/trace_events_synth.c | 19 +++++++++++++++----
+ 1 file changed, 15 insertions(+), 4 deletions(-)
+
+diff --git a/kernel/trace/trace_events_synth.c b/kernel/trace/trace_events_synth.c
+index 46d0abb32d0f..f0ff730125bf 100644
+--- a/kernel/trace/trace_events_synth.c
++++ b/kernel/trace/trace_events_synth.c
+@@ -44,14 +44,21 @@ enum { ERRORS };
+ 
+ static const char *err_text[] = { ERRORS };
+ 
++DEFINE_MUTEX(lastcmd_mutex);
+ static char *last_cmd;
+ 
+ static int errpos(const char *str)
+ {
++	int ret = 0;
++
++	mutex_lock(&lastcmd_mutex);
+ 	if (!str || !last_cmd)
+-		return 0;
++		goto out;
+ 
+-	return err_pos(last_cmd, str);
++	ret = err_pos(last_cmd, str);
++ out:
++	mutex_unlock(&lastcmd_mutex);
++	return ret;
+ }
+ 
+ static void last_cmd_set(const char *str)
+@@ -59,18 +66,22 @@ static void last_cmd_set(const char *str)
+ 	if (!str)
+ 		return;
+ 
++	mutex_lock(&lastcmd_mutex);
+ 	kfree(last_cmd);
+-
+ 	last_cmd = kstrdup(str, GFP_KERNEL);
++	mutex_unlock(&lastcmd_mutex);
+ }
+ 
+ static void synth_err(u8 err_type, u16 err_pos)
+ {
++	mutex_lock(&lastcmd_mutex);
+ 	if (!last_cmd)
+-		return;
++		goto out;
+ 
+ 	tracing_log_err(NULL, "synthetic_events", last_cmd, err_text,
+ 			err_type, err_pos);
++ out:
++	mutex_unlock(&lastcmd_mutex);
+ }
+ 
+ static int create_synth_event(const char *raw_command);
+-- 
+2.18.0
+
 
