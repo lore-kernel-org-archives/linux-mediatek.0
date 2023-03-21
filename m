@@ -4,71 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A831C74A5B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Mar 2023 06:48:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90CBBC6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Mar 2023 06:48:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mssbRTMm5yno6PJfKDc1E8Bdud++L0/ZiunrGkpbE4Y=; b=2DkSi+Dv7BKy6Qr+pwu6a/eqxS
-	6Bf8WJ5//vQ3UBrry5goiNdA6ZVDyzWEh9mCv9YTh7Zr5g5z/KhEgUMxOv06cj+CvXEICX5gEtj1B
-	nobBVVEtwmIvaRE82iug8hvmQdfpQ0z05gHQ+mhh7XPGnRd8CV0zkYNI+4yTUWPog1cD+3ItPzAlt
-	zAiVQmKCt01ar8XMKYMMIsXQz/gM92lWEVIUXf6T4ly+qs55zkbGtnSs0Oiem5HnDav6OoIeYXQSN
-	tfLaJkIlB0e/dWx1GTMoAGGcFRkTonaEGtAT2LD0Tbqr5NKqP6hBtKdfxUzdkezUF1g6PvD0FhK2e
-	ahzqO3sQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UFoe7s9Q5oVaduws1BX9RSp/Mxew6VmyW+6mh+7NIWw=; b=eKq2BKTDVEnjoSingXhRfO/VeF
+	gkNdpibiOa8D+Vrv6Obwn1W3UxNPeNfdaySG+6OrhZLgHjD/8fMKUEV22WHTrY8WCR+1Mx0JFOnar
+	nNTjV5jntSPF0WIN3rfSSGUjH/JLEAeikiDLhvH7Ygr4MwlQa/KZdrQxBMCaTrGPI+I9NPkxf+Acz
+	BnyuuucvqSc01ApNrgEpdlOFxBTdgKCFzFzffgRIwUPEv96H+BTsm2CCFXWKfloWHoNx2y/37P9Kg
+	I4qI2K+ModudeJfrz1u+HdINk6h5lZQJfadCXeRxskK+enNa859ou85C6ozH1ebyCAocCKVklgUBB
+	eSewkSzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1peVn5-00BQLu-1w;
-	Tue, 21 Mar 2023 06:48:15 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1peVna-00BQZ6-0I;
+	Tue, 21 Mar 2023 06:48:46 +0000
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1peVn1-00BQJD-1U;
-	Tue, 21 Mar 2023 06:48:12 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id E3445B80A25;
-	Tue, 21 Mar 2023 06:48:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1ADE5C4339B;
-	Tue, 21 Mar 2023 06:48:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1679381288;
-	bh=zAhzNf2FVAMCkoGYjb8wdeS65X5jjVy8UxYtpveB0zE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=sOw/Uepo1U1ivrWB97hISCKv3yY9dsEm8dxwFQrKZ3GldmWCG0BhJ/BoAfKnvWtlF
-	 aArOfVhruKPz6PWvBdiVHs5cpBWhACYEAgPhnzJ6SqID2x+VyV2GKgdK94hY4f5I4Q
-	 95m9GRi8KSNsLWVMssBMAso2VNKNNjrye6HHqdfI=
-Date: Tue, 21 Mar 2023 07:48:05 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Rob Herring <robh@kernel.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Justin Chen <justinpopo6@gmail.com>,
-	Al Cooper <alcooperx@gmail.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>, linux-usb@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org
-Subject: Re: [PATCH] dt-bindings: usb: Drop unneeded quotes
-Message-ID: <ZBlTJbdAmh5H3PD0@kroah.com>
-References: <20230320233904.2920197-1-robh@kernel.org>
+	id 1peVnX-00BQVp-0z
+	for linux-mediatek@lists.infradead.org;
+	Tue, 21 Mar 2023 06:48:44 +0000
+Received: by mail-ed1-x533.google.com with SMTP id b20so22770984edd.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 20 Mar 2023 23:48:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1679381319;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=UFoe7s9Q5oVaduws1BX9RSp/Mxew6VmyW+6mh+7NIWw=;
+        b=Nq14bAe/7qrYwW9E3lwH7ZXnBkDGRSza7nWGbI/11Q9h+J2wI9hEnnLkHMri+Bwsvg
+         Icr81XSgnEdcDL73Ef8DtWnQkhZhco1d9KN1htcXJkBOJ3D7Z3B9T1yHH8C0AORiKwWe
+         yUBEDaT6tnFr3lZq6HUUBPUq6TWUOvOUHerW43jH41RJkhH3c2fAm8qBpGpNicDe24gQ
+         QYT2xkEsWId/ccw0XnimKvo06FaP7fyKVuomNG/qNCLOJVCiVcn40U0JgIADl8wxp2RB
+         jBtqO59GSwENrPOL5PHYTbN7as45zOJgpsxg+6r+z4vDQ2jR9nuKiJmWMix3QZ7MOICD
+         ivMg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679381319;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=UFoe7s9Q5oVaduws1BX9RSp/Mxew6VmyW+6mh+7NIWw=;
+        b=nt5fMMyPZ62jvEDQwNeClv96r0FK8mlnomrqL+JIDQTsJjbtsiXImW0oVPExQoQmOe
+         xVnzkZ5/KWJtfyRkUmfTT9aKi1VK2Kir2JkGygtIfrHvHd+1+znYPje3Dw7jIxppWh6B
+         hdaGnk899HnF2X9mt1It4g7lJ6rysr1gESeJSueA+ex/6XSu3zP8wQEnGIEpTC8/ctnm
+         xogG+rJIkFiPDR1/syWnLuO86CYXgsmobBART6CNij0fxZpQxDm5CAb2PggixaDQGmVE
+         gdTa8cwQlskPTTYJHYGkPccfLKD2dvQHC8BLGuRXYT9GEX9rzGtWL3wPXNv3oyaFgzpt
+         53pg==
+X-Gm-Message-State: AO0yUKWKvvEFBPNQZJZdWwkSsTORWBwdjZe3Wv7CPCuhPmEy6wc7e6Oa
+	tLlQjsrnr08MfbFQPanjkC+s3Q==
+X-Google-Smtp-Source: AK7set+arCBZj7aBwChVJp1qpaFp3zJGEwSWUXpgXXMCV1rRlFEmQ2IAEjYU/K7IDI/supfKITLtfA==
+X-Received: by 2002:a17:907:2ccc:b0:933:499e:62a7 with SMTP id hg12-20020a1709072ccc00b00933499e62a7mr1761803ejc.49.1679381319141;
+        Mon, 20 Mar 2023 23:48:39 -0700 (PDT)
+Received: from ?IPV6:2a02:810d:15c0:828:2142:d8da:5ae4:d817? ([2a02:810d:15c0:828:2142:d8da:5ae4:d817])
+        by smtp.gmail.com with ESMTPSA id a27-20020a170906245b00b008d173604d72sm5438573ejb.174.2023.03.20.23.48.38
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 20 Mar 2023 23:48:38 -0700 (PDT)
+Message-ID: <77848bab-e7a7-4df6-17d3-c15e3e206ae8@linaro.org>
+Date: Tue, 21 Mar 2023 07:48:37 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230320233904.2920197-1-robh@kernel.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH] dt-bindings: input: Drop unneeded quotes
+Content-Language: en-US
+To: Rob Herring <robh@kernel.org>, Dmitry Torokhov
+ <dmitry.torokhov@gmail.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Benson Leung <bleung@chromium.org>, Guenter Roeck <groeck@chromium.org>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Mattijs Korpershoek <mkorpershoek@baylibre.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-input@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, chrome-platform@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230320234718.2930154-1-robh@kernel.org>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230320234718.2930154-1-robh@kernel.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230320_234811_644200_2D0CF821 
-X-CRM114-Status: GOOD (  10.13  )
+X-CRM114-CacheID: sfid-20230320_234843_424329_F8EA5057 
+X-CRM114-Status: UNSURE (   8.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,18 +105,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 20, 2023 at 06:39:02PM -0500, Rob Herring wrote:
+On 21/03/2023 00:47, Rob Herring wrote:
 > Cleanup bindings dropping unneeded quotes. Once all these are fixed,
 > checking for this can be enabled in yamllint.
 > 
 > Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
 
-Acked-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Or do you want me to take this through the USB tree?  if so, just let me
-know.
+Best regards,
+Krzysztof
 
-thanks,
-
-greg k-h
 
