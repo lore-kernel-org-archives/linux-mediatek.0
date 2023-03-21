@@ -4,84 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49958C6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Mar 2023 17:43:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B5FFC6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Mar 2023 18:16:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SY+feXY9bVA6c+H3byt4VK08LPbDYVle7QNso9GVvbk=; b=Ec1OV7TRDFDcZczDR8OEzL4SN7
-	Kg5diRtwYIlWuw3NhjWtuXxxEvBgPzJO4rejCj+TmgzzIy0+VQjq9wiTaJI4/JawTGJuwNe3fQCts
-	uVhD+7eD2IS0g97/JYSCvWzlFzexrmccnlD+8XVjynBb+nqyjhRAsAXOfvbKmaFqvG/ga87zHweJv
-	K0uPtpPB3lJUMvBFam/l6/PDxe98K2SvTGFYWJvRCeb8ZU1vpeSPl31nj1fW5aikLcGtyBsy5qa0P
-	9ipluqKtoptIGT6WI0fITCoSg6DPFMo9KQ9xew77FDnTbLsekucVelGfxeSLa/DFQK3wxGB198O4h
-	tCXHrMfg==;
+	bh=oS7ikpLo8MFCdlJeU/PbWeIEEgPV5xwKINtINSD0g0A=; b=GRbszt45jIlEHBskaTobi3hTB1
+	DCOrIMPIpaP12ZtL21xL6cObCi17bIT+5LYVK20S5iGCqOma38oUsxVK6OrCKoQXb8IScYcLg7x/0
+	7DFw/lB613BjvW8kht9VGWLLQOAguwucramTIWrSPJuTD32fgkkg511KH8hID3c9LKYgSugUpk4nv
+	rhQQMjaPlZSVu3EDRgTBXcJRzoTJef+gFN42YPHY55LMGjSFQasby/mWntTCnZkgD6TAAm3gm9mpK
+	dSEL4A6zAm2LsPkaYGXnd+BxFjrVHBiYlNZKBEAHCO+o2eBCDg0vUxKuN5Sg83K1A3WORzagjSSLJ
+	MNIk2ZfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1peg0o-00DGRc-0U;
-	Tue, 21 Mar 2023 17:43:06 +0000
-Received: from mga09.intel.com ([134.134.136.24])
+	id 1pegWt-00DKCc-2B;
+	Tue, 21 Mar 2023 18:16:15 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1peg0j-00DGQB-1x;
-	Tue, 21 Mar 2023 17:43:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1679420581; x=1710956581;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=+pjwBEmDe+T56Sgwt4qimQ2CIBOYEqSjWw1uHZNKv6U=;
-  b=i6AFaOoN5+fIUaLSrvnXyodqWbWNNM9n6wBcIwMf3VSZVLrvkEhvJIW8
-   KcxWr0DPFyX5jVlMveArrocm9HgehlSWA78OElm5D5cRPD8Qm/kRA/36n
-   /yfxR4YKQMPs3hmwJa25L3lwIdZMPfeNuVOKqoVkOUIQ87phtxlaxwGgh
-   IrcZg4gSmIy6ncyWmMUUnOe681RzjCsNHrheOQ7NcNeLNRKHQWcEDQ4fv
-   jfsQ5K2Oohlm4xI1iUMp6OEavl1Q4sXTN+mJDohCgW/M+VMqK1gJLbQZI
-   IQLqWoOKTJiwKutQp3wrEqO2OlLZ8e6ntothFgBMbZ3VhtGhwQQNV6iAi
-   A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10656"; a="340553600"
-X-IronPort-AV: E=Sophos;i="5.98,279,1673942400"; 
-   d="scan'208";a="340553600"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
-  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Mar 2023 10:42:49 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10656"; a="805503023"
-X-IronPort-AV: E=Sophos;i="5.98,279,1673942400"; 
-   d="scan'208";a="805503023"
-Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
-  by orsmga004.jf.intel.com with ESMTP; 21 Mar 2023 10:42:43 -0700
-Received: from kbuild by b613635ddfff with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1peg0Q-000CDT-1d;
-	Tue, 21 Mar 2023 17:42:42 +0000
-Date: Wed, 22 Mar 2023 01:42:34 +0800
-From: kernel test robot <lkp@intel.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, tfiga@chromium.org,
-	m.szyprowski@samsung.com, mchehab@kernel.org, ming.qian@nxp.com,
-	shijie.qin@nxp.com, eagle.zhou@nxp.com, bin.liu@mediatek.com,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com,
-	yunfei.dong@mediatek.com, stanimir.k.varbanov@gmail.com,
-	quic_vgarodia@quicinc.com, agross@kernel.org, andersson@kernel.org,
-	konrad.dybcio@linaro.org, ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de, daniel.almeida@collabora.com,
-	hverkuil-cisco@xs4all.nl, laurent.pinchart@ideasonboard.com,
-	jernel@kernel.org
-Cc: oe-kbuild-all@lists.linux.dev, linux-media@vger.kernel.org,
+	id 1pegWo-00DKAo-1F;
+	Tue, 21 Mar 2023 18:16:12 +0000
+Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 460FAFB;
+	Tue, 21 Mar 2023 19:16:04 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1679422564;
+	bh=YYbBI+yZSSJbYGhSeo7clHqjJfv86VCoUJSEWpYXO+Y=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=et96KRBewPZzizQfexOFCLJXkqb5wSeGgSv6hB9T2tVkzio8N0HVTy7cx7cQxPgeJ
+	 xkoMRqVvU70aL6Gb9D3BeLPHdljMgL/LuwnNWcLW5bf0+XFhvoWCKgy4EI5/1+occk
+	 4d/lA/Yw7mIY0BWH9k+99HYvgqDCoH4KUE2+nYE4=
+Date: Tue, 21 Mar 2023 20:16:10 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: tfiga@chromium.org, m.szyprowski@samsung.com, mchehab@kernel.org,
+	ming.qian@nxp.com, shijie.qin@nxp.com, eagle.zhou@nxp.com,
+	bin.liu@mediatek.com, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, tiffany.lin@mediatek.com,
+	andrew-ct.chen@mediatek.com, yunfei.dong@mediatek.com,
+	stanimir.k.varbanov@gmail.com, quic_vgarodia@quicinc.com,
+	agross@kernel.org, andersson@kernel.org, konrad.dybcio@linaro.org,
+	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+	daniel.almeida@collabora.com, hverkuil-cisco@xs4all.nl,
+	jernel@kernel.org, linux-media@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
 	linux-rockchip@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v2 1/8] media: videobuf2: Access vb2_queue bufs array
- through helper functions
-Message-ID: <202303220154.ioaH1XLM-lkp@intel.com>
-References: <20230321102855.346732-2-benjamin.gaignard@collabora.com>
+Subject: Re: [PATCH v2 2/8] media: videobuf2: Make bufs array dynamic
+ allocated
+Message-ID: <20230321181610.GE20234@pendragon.ideasonboard.com>
+References: <20230321102855.346732-1-benjamin.gaignard@collabora.com>
+ <20230321102855.346732-3-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20230321102855.346732-2-benjamin.gaignard@collabora.com>
+In-Reply-To: <20230321102855.346732-3-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230321_104301_706016_E395CDE8 
-X-CRM114-Status: GOOD (  14.96  )
+X-CRM114-CacheID: sfid-20230321_111610_592703_CEA08384 
+X-CRM114-Status: GOOD (  23.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,95 +80,146 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi Benjamin,
 
-I love your patch! Yet something to improve:
+Thank you for the patch.
 
-[auto build test ERROR on media-tree/master]
-[also build test ERROR on linus/master v6.3-rc3 next-20230321]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+On Tue, Mar 21, 2023 at 11:28:49AM +0100, Benjamin Gaignard wrote:
+> Instead of a static array change bufs to a dynamically allocated array.
+> This will allow to store more video buffer if needed.
+> Protect the array with a spinlock.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Benjamin-Gaignard/media-videobuf2-Access-vb2_queue-bufs-array-through-helper-functions/20230321-183154
-base:   git://linuxtv.org/media_tree.git master
-patch link:    https://lore.kernel.org/r/20230321102855.346732-2-benjamin.gaignard%40collabora.com
-patch subject: [PATCH v2 1/8] media: videobuf2: Access vb2_queue bufs array through helper functions
-config: x86_64-allyesconfig (https://download.01.org/0day-ci/archive/20230322/202303220154.ioaH1XLM-lkp@intel.com/config)
-compiler: gcc-11 (Debian 11.3.0-8) 11.3.0
-reproduce (this is a W=1 build):
-        # https://github.com/intel-lab-lkp/linux/commit/625d46c1c1fe8e3229a780134d21bcd4a017cfdd
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Benjamin-Gaignard/media-videobuf2-Access-vb2_queue-bufs-array-through-helper-functions/20230321-183154
-        git checkout 625d46c1c1fe8e3229a780134d21bcd4a017cfdd
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        make W=1 O=build_dir ARCH=x86_64 olddefconfig
-        make W=1 O=build_dir ARCH=x86_64 SHELL=/bin/bash drivers/staging/
+I think I asked in the review of v1 why we couldn't use the kernel
+IDA/IDR APIs to allocate buffer IDs and register buffers, but I don't
+think I've received a reply. Wouldn't it be better than rolling out our
+own mechanism ?
 
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Link: https://lore.kernel.org/oe-kbuild-all/202303220154.ioaH1XLM-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-   drivers/staging/media/atomisp/pci/atomisp_ioctl.c: In function 'atomisp_dqbuf_wrapper':
->> drivers/staging/media/atomisp/pci/atomisp_ioctl.c:1098:33: error: incompatible type for argument 1 of 'vb2_get_buffer'
-    1098 |         vb = vb2_get_buffer(pipe->vb_queue, buf->index);
-         |                             ~~~~^~~~~~~~~~
-         |                                 |
-         |                                 struct vb2_queue
-   In file included from include/media/videobuf2-v4l2.h:16,
-                    from drivers/staging/media/atomisp//pci/ia_css_frame_public.h:23,
-                    from drivers/staging/media/atomisp/pci/sh_css_legacy.h:22,
-                    from drivers/staging/media/atomisp/pci/atomisp_internal.h:34,
-                    from drivers/staging/media/atomisp/pci/atomisp_cmd.h:30,
-                    from drivers/staging/media/atomisp/pci/atomisp_ioctl.c:27:
-   include/media/videobuf2-core.h:1239:67: note: expected 'struct vb2_queue *' but argument is of type 'struct vb2_queue'
-    1239 | static inline struct vb2_buffer *vb2_get_buffer(struct vb2_queue *q,
-         |                                                 ~~~~~~~~~~~~~~~~~~^
-
-
-vim +/vb2_get_buffer +1098 drivers/staging/media/atomisp/pci/atomisp_ioctl.c
-
-  1083	
-  1084	static int atomisp_dqbuf_wrapper(struct file *file, void *fh, struct v4l2_buffer *buf)
-  1085	{
-  1086		struct video_device *vdev = video_devdata(file);
-  1087		struct atomisp_video_pipe *pipe = atomisp_to_video_pipe(vdev);
-  1088		struct atomisp_sub_device *asd = pipe->asd;
-  1089		struct atomisp_device *isp = video_get_drvdata(vdev);
-  1090		struct ia_css_frame *frame;
-  1091		struct vb2_buffer *vb;
-  1092		int ret;
-  1093	
-  1094		ret = vb2_ioctl_dqbuf(file, fh, buf);
-  1095		if (ret)
-  1096			return ret;
-  1097	
-> 1098		vb = vb2_get_buffer(pipe->vb_queue, buf->index);
-  1099		frame = vb_to_frame(vb);
-  1100	
-  1101		buf->reserved = asd->frame_status[buf->index];
-  1102	
-  1103		/*
-  1104		 * Hack:
-  1105		 * Currently frame_status in the enum type which takes no more lower
-  1106		 * 8 bit.
-  1107		 * use bit[31:16] for exp_id as it is only in the range of 1~255
-  1108		 */
-  1109		buf->reserved &= 0x0000ffff;
-  1110		if (!(buf->flags & V4L2_BUF_FLAG_ERROR))
-  1111			buf->reserved |= frame->exp_id;
-  1112		buf->reserved2 = pipe->frame_config_id[buf->index];
-  1113	
-  1114		dev_dbg(isp->dev,
-  1115			"dqbuf buffer %d (%s) for asd%d with exp_id %d, isp_config_id %d\n",
-  1116			buf->index, vdev->name, asd->index, buf->reserved >> 16,
-  1117			buf->reserved2);
-  1118		return 0;
-  1119	}
-  1120	
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> ---
+>  .../media/common/videobuf2/videobuf2-core.c   |  8 +++
+>  include/media/videobuf2-core.h                | 49 ++++++++++++++++---
+>  2 files changed, 49 insertions(+), 8 deletions(-)
+> 
+> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+> index 79e90e338846..ae9d72f4d181 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-core.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
+> @@ -2452,6 +2452,13 @@ int vb2_core_queue_init(struct vb2_queue *q)
+>  	mutex_init(&q->mmap_lock);
+>  	init_waitqueue_head(&q->done_wq);
+>  
+> +	q->max_num_bufs = 32;
+> +	q->bufs = kmalloc_array(q->max_num_bufs, sizeof(*q->bufs), GFP_KERNEL | __GFP_ZERO);
+> +	if (!q->bufs)
+> +		return -ENOMEM;
+> +
+> +	spin_lock_init(&q->bufs_lock);
+> +
+>  	q->memory = VB2_MEMORY_UNKNOWN;
+>  
+>  	if (q->buf_struct_size == 0)
+> @@ -2479,6 +2486,7 @@ void vb2_core_queue_release(struct vb2_queue *q)
+>  	mutex_lock(&q->mmap_lock);
+>  	__vb2_queue_free(q, q->num_buffers);
+>  	mutex_unlock(&q->mmap_lock);
+> +	kfree(q->bufs);
+>  }
+>  EXPORT_SYMBOL_GPL(vb2_core_queue_release);
+>  
+> diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
+> index 5b1e3d801546..397dbf6e61e1 100644
+> --- a/include/media/videobuf2-core.h
+> +++ b/include/media/videobuf2-core.h
+> @@ -558,6 +558,8 @@ struct vb2_buf_ops {
+>   * @dma_dir:	DMA mapping direction.
+>   * @bufs:	videobuf2 buffer structures
+>   * @num_buffers: number of allocated/used buffers
+> + * @bufs_lock: lock to protect bufs access
+> + * @max_num_bufs: max number of buffers storable in bufs
+>   * @queued_list: list of buffers currently queued from userspace
+>   * @queued_count: number of buffers queued and ready for streaming.
+>   * @owned_by_drv_count: number of buffers owned by the driver
+> @@ -619,8 +621,10 @@ struct vb2_queue {
+>  	struct mutex			mmap_lock;
+>  	unsigned int			memory;
+>  	enum dma_data_direction		dma_dir;
+> -	struct vb2_buffer		*bufs[VB2_MAX_FRAME];
+> +	struct vb2_buffer		**bufs;
+>  	unsigned int			num_buffers;
+> +	spinlock_t			bufs_lock;
+> +	size_t				max_num_bufs;
+>  
+>  	struct list_head		queued_list;
+>  	unsigned int			queued_count;
+> @@ -1239,9 +1243,16 @@ static inline void vb2_clear_last_buffer_dequeued(struct vb2_queue *q)
+>  static inline struct vb2_buffer *vb2_get_buffer(struct vb2_queue *q,
+>  						unsigned int index)
+>  {
+> -	if (index < q->num_buffers)
+> -		return q->bufs[index];
+> -	return NULL;
+> +	struct vb2_buffer *vb = NULL;
+> +
+> +	spin_lock(&q->bufs_lock);
+> +
+> +	if (index < q->max_num_bufs)
+> +		vb = q->bufs[index];
+> +
+> +	spin_unlock(&q->bufs_lock);
+> +
+> +	return vb;
+>  }
+>  
+>  /**
+> @@ -1251,12 +1262,30 @@ static inline struct vb2_buffer *vb2_get_buffer(struct vb2_queue *q,
+>   */
+>  static inline bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb)
+>  {
+> -	if (vb->index < VB2_MAX_FRAME) {
+> +	bool ret = false;
+> +
+> +	spin_lock(&q->bufs_lock);
+> +
+> +	if (vb->index >= q->max_num_bufs) {
+> +		struct vb2_buffer **tmp;
+> +
+> +		tmp = krealloc_array(q->bufs, q->max_num_bufs * 2, sizeof(*q->bufs), GFP_KERNEL);
+> +		if (!tmp)
+> +			goto realloc_failed;
+> +
+> +		q->max_num_bufs *= 2;
+> +		q->bufs = tmp;
+> +	}
+> +
+> +	if (vb->index < q->max_num_bufs) {
+>  		q->bufs[vb->index] = vb;
+> -		return true;
+> +		ret = true;
+>  	}
+>  
+> -	return false;
+> +realloc_failed:
+> +	spin_unlock(&q->bufs_lock);
+> +
+> +	return ret;
+>  }
+>  
+>  /**
+> @@ -1266,8 +1295,12 @@ static inline bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *
+>   */
+>  static inline void vb2_queue_remove_buffer(struct vb2_queue *q, struct vb2_buffer *vb)
+>  {
+> -	if (vb->index < VB2_MAX_FRAME)
+> +	spin_lock(&q->bufs_lock);
+> +
+> +	if (vb->index < q->max_num_bufs)
+>  		q->bufs[vb->index] = NULL;
+> +
+> +	spin_unlock(&q->bufs_lock);
+>  }
+>  
+>  /*
 
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+Regards,
+
+Laurent Pinchart
 
