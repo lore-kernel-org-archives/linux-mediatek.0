@@ -4,135 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7043C6FD1C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Mar 2023 10:02:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88ECBC7619A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Mar 2023 12:12:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Gta6DeZfb/Xau68OA4+XAVPoV3SlTyjlH7iq8FkVbq0=; b=Z0PoLhwFlm7lKCoZD/5/0kQLRf
-	0BL+YnIjZeGfnWT3rq01HWqVwFVem5naHXNjHoJzOFpelCU4VeU6Ggb9TcCf1RW2DIsUMzDb+H8AK
-	ZtWWvUWYmKIReMoBSYoSnAsjHEkPNQZsojkabDEEuV4cZd2Acn06NRcxLXaCF4gGLJX9w+zZp0PBe
-	sdk4WtoSpzB187ufNk/S7NSaRz0cmvdSYc8XfLOGb9ufVzSBjEdIZiQaPGbLXSODaGYN1Uim0ZLAw
-	JKakWeeWOsgCoTr4hkiRvqYrXqn2zpgervE5muPLRQzYkOSDB94aSGMFWc72wqVPhE+OZKKZ55sgF
-	S6un2e8w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ib3UWmZEnImrDMx++pWyzLfYKTUvb4CgMHIkVCfcUbY=; b=eJpiD1bE2wDuntV6ZomPpxOx9V
+	OX8vzhoja9Mw3pLuAb7R7aaWeNex7e0UR12HcdAqdzz8Z3uAm40a20cfEaS+l0zYjsbvGMnSSmuPm
+	Jwtn/UN+MBdH6JHgqnQVVivbXIppGD7wFTRNB7ODYwmVUyxfyo029CNClhIEGPh6HZ2U8zQDEJL6L
+	PSgOKljR9on3ZF6K1CSfTf+hyxKA0kBC9LqnK91Jq49y2yRA+D7+wSArr+0kLKgUGtKb9RjjgLUEY
+	vM2FIdK689Zf3G1bZZXdEw46kA8fzust+t8crNfLB3Vg2l/PmHzCyJiJNyurdXIOHlmqv+vvB50fF
+	LAcnU+oA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pevIT-00FZNB-1I;
-	Wed, 22 Mar 2023 10:02:21 +0000
-Received: from wnew2-smtp.messagingengine.com ([64.147.123.27])
+	id 1pexKW-00FsuP-1C;
+	Wed, 22 Mar 2023 12:12:36 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pevIP-00FZKD-0f;
-	Wed, 22 Mar 2023 10:02:18 +0000
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
-	by mailnew.west.internal (Postfix) with ESMTP id 3B7282B06B3B;
-	Wed, 22 Mar 2023 06:02:01 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
-  by compute2.internal (MEProxy); Wed, 22 Mar 2023 06:02:12 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
-	:cc:content-type:content-type:date:date:from:from:in-reply-to
-	:in-reply-to:message-id:mime-version:references:reply-to:sender
-	:subject:subject:to:to; s=fm3; t=1679479320; x=1679486520; bh=Gt
-	a6DeZfb/Xau68OA4+XAVPoV3SlTyjlH7iq8FkVbq0=; b=NorTwVKQADW6KDf4kx
-	gTnHWfLbpN0EHokeoC3DrOhiZ8CU+KJABXVU+NCa4piYXo6HpTy5HuzRNiFF7tvk
-	kS1uF/ZP394MUuAXVna9Fpn5iDdg0QWtevomnrNhpIe8AFZeNrF8jhIQTLTrI4Ez
-	F8Qq3dke4/3ZmogeOMWjTD3G0qEPqcWsVr1d4vEZWddG5PYi4J+p82qo/RJd1+Pc
-	D0wApM8Ce7YBSMxA8ajCR6phnmYRwiQ+O0944pCsdBUvTlzEsCNbSTwkGxjs5mkS
-	NFc+f7bGpNjIchGEdl3yn7/xBjiqmaS6rxVy3+SCY/EzwAAydjJ28Yv1QCgqUXW5
-	bw3w==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:content-type:date:date
-	:feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
-	:x-sasl-enc; s=fm2; t=1679479320; x=1679486520; bh=Gta6DeZfb/Xau
-	68OA4+XAVPoV3SlTyjlH7iq8FkVbq0=; b=hSHnolcwH3t3bdKswDish1u/kHXRm
-	GBRI+wa61UtRx0Zfrdsmq8CnsjhuT0V4tk4WhsMm/dY76LIFlaULjvwZ2Is4sByR
-	wnxq6k16NmOke2GgTmcYxC0a6B4M8NbJbdxhf7RYClD05krVRz4oMtNmPPFUz6R8
-	X7AoD2/fmudieEE2qro35wOUjhLadWUNt4yny+XeRhuzuTRtnQEOj4VK4BUdxU/D
-	zi0g/ITaWRhuRN9kFMW6pQhMC12Gxcd91h/lhV8gMs1zfdQ6CWUNBs/ZUdzW133y
-	7r1y/0Q0UW2r7+wW+iKmkbtAUEOh+P4wH5qpItfTivzwuUxdDObXugLGA==
-X-ME-Sender: <xms:FtIaZH_cP3JOYJvAj5oXSd2OXcDDKRtpMgnneLT8maCrLgFT1uQ4nw>
-    <xme:FtIaZDsYVbTOawAhmoa1oHa1uoPNqdzfMuj7H8tTDpE_F1DWS5baFq1_V5RMtYsKY
-    9ZpEjgEFQHUDWVr4rk>
-X-ME-Received: <xmr:FtIaZFCrxLPEjFjrYQZiYYmsseQcWkD9OS0c3-ySi7agJ-uGVLqJDI9_JpnBVpkVO-euEIby8gsGmxPlhwdU9mKdE7Bvs1g>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrvdegvddguddtucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhepfffhvfevuffkfhggtggujgesghdtreertddtvdenucfhrhhomhepofgrgihi
-    mhgvucftihhprghrugcuoehmrgigihhmvgestggvrhhnohdrthgvtghhqeenucggtffrrg
-    htthgvrhhnpeetfefffefgkedtfefgledugfdtjeefjedvtddtkeetieffjedvgfehheff
-    hfevudenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
-    hmrgigihhmvgestggvrhhnohdrthgvtghh
-X-ME-Proxy: <xmx:FtIaZDc9Ss_19xgb6mhlQrLE2QXKvFoiIL34VGbsSSZIH4FlYiJYkQ>
-    <xmx:FtIaZMM-k1IhWCLqsm0aMt16t2CzF1nOejsm53Durk41tY8K7upzcA>
-    <xmx:FtIaZFmHv-kP0VetVBA3YfQuGBF9hqOu-s8l7lOOTdqLpGXLYmgqsQ>
-    <xmx:GNIaZAV9AZ4qhuQDCpvviTReJqZxJZ2jgJo22F_udVCHmNFQ2Gz5SS1iyA8>
-Feedback-ID: i8771445c:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 22 Mar 2023 06:01:56 -0400 (EDT)
-Date: Wed, 22 Mar 2023 11:01:53 +0100
-From: Maxime Ripard <maxime@cerno.tech>
-To: Stephen Boyd <sboyd@kernel.org>
-Cc: Abel Vesa <abelvesa@kernel.org>,	Alessandro Zummo <a.zummo@towertech.it>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Charles Keepax <ckeepax@opensource.cirrus.com>,
-	Chen-Yu Tsai <wens@csie.org>, Chunyan Zhang <zhang.lyra@gmail.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@gmail.com>,
-	David Lechner <david@lechnology.com>,	Dinh Nguyen <dinguyen@kernel.org>,
-	Fabio Estevam <festevam@gmail.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,	Mark Brown <broonie@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Michael Turquette <mturquette@baylibre.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Orson Zhai <orsonzhai@gmail.com>,	Paul Cercueil <paul@crapouillou.net>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Peter De Schrijver <pdeschrijver@nvidia.com>,
-	Prashant Gaikwad <pgaikwad@nvidia.com>,
-	Richard Fitzgerald <rf@opensource.cirrus.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>, Sekhar Nori <nsekhar@ti.com>,
-	Shawn Guo <shawnguo@kernel.org>, Takashi Iwai <tiwai@suse.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Ulf Hansson <ulf.hansson@linaro.org>, Vinod Koul <vkoul@kernel.org>,
-	linux-stm32@st-md-mailman.stormreply.com,	alsa-devel@alsa-project.org,
- linux-mediatek@lists.infradead.org,	linux-phy@lists.infradead.org,
- linux-mips@vger.kernel.org,	linux-renesas-soc@vger.kernel.org,
-	linux-actions@lists.infradead.org, linux-clk@vger.kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	patches@opensource.cirrus.com, linux-tegra@vger.kernel.org,
-	linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org
-Subject: Re: [PATCH v2 00/65] clk: Make determine_rate mandatory for muxes
-Message-ID: <20230322100153.gzyznaukbdngcvko@houat>
-References: <20221018-clk-range-checks-fixes-v2-0-f6736dec138e@cerno.tech>
- <f804380a14c346fdbbf3286bcb40b3c2.sboyd@kernel.org>
+	id 1pexKR-00Fssn-25;
+	Wed, 22 Mar 2023 12:12:33 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C0D7F66018CB;
+	Wed, 22 Mar 2023 12:12:26 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1679487147;
+	bh=ZOtaZyVnu/uBtZEaZewxTNOHLS2qqXJGInNUpjI+hIA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ZUNaB6uMVZimiXGmerDGwTb7om+tBBR/ewI16XEqa2Z/heAJ5OUIB1lmtrX+Dn0xW
+	 IPwyMi7ezC1Tx4Ft9mNmJ98n29+tfe9npY1Mpons7T0uU+3k2XW1jo4DimmW9fT5Qy
+	 0+/d2irC6l91QqIEMijH/QAJAS1+Usj9aXUMiqYlcjbOIzqPqji4GItD951SgKnbV7
+	 Li/Iik6D+BkpLzp69IrNtL/NPpdjcQ4Y4UITzOl6615blAbifAAByZWRpQhXZYK5jK
+	 Ih6FbIETmnYb20nOxD7JeE6Eet+HNptpwihq+/ESBHsj+Ffo9xGIOuuuS4u220q7Z7
+	 PsN7bmSTzZLyQ==
+Message-ID: <66cb5a95-4646-87d1-0acf-ebd473f3c653@collabora.com>
+Date: Wed, 22 Mar 2023 13:12:24 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="vv4zkvfgrnplpmur"
-Content-Disposition: inline
-In-Reply-To: <f804380a14c346fdbbf3286bcb40b3c2.sboyd@kernel.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH v2,5/7] media: mediatek: vcodec: Get get each instance
+ format type
+Content-Language: en-US
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai
+ <wenst@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?= <nfraprado@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20230322094617.19410-1-yunfei.dong@mediatek.com>
+ <20230322094617.19410-6-yunfei.dong@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230322094617.19410-6-yunfei.dong@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230322_030217_410662_D793F50C 
-X-CRM114-Status: GOOD (  25.56  )
+X-CRM114-CacheID: sfid-20230322_051231_913024_D4E69902 
+X-CRM114-Status: GOOD (  13.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -147,53 +86,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Il 22/03/23 10:46, Yunfei Dong ha scritto:
+> Adding echo command to get capture and output queue format
+> type:'echo -format > vdec'
+> 
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> ---
+>   .../mediatek/vcodec/mtk_vcodec_dbgfs.c        | 48 +++++++++++++++++++
+>   .../mediatek/vcodec/mtk_vcodec_dbgfs.h        |  1 +
+>   2 files changed, 49 insertions(+)
+> 
+> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
+> index 19a1dc068efd..1b1b4301a83d 100644
+> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
+> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
+> @@ -10,6 +10,48 @@
+>   #include "mtk_vcodec_drv.h"
+>   #include "mtk_vcodec_util.h"
+>   
+> +static void mtk_vdec_dbgfs_get_format_type(struct mtk_vcodec_ctx *ctx, char *buf,
+> +					   int *used, int total)
+> +{
+> +	int curr_len;
+> +
+> +	switch (ctx->current_codec) {
+> +	case V4L2_PIX_FMT_H264_SLICE:
+> +		curr_len = snprintf(buf + *used, total - *used,
+> +				    "\toutput format: h264 slice\n");
 
---vv4zkvfgrnplpmur
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Isn't this the same information that's also given by the VIDIOC_ENUM_FMT ioctl?
 
-Hi Stephen,
+Check functions v4l_enum_fmt(), v4l_fill_fmtdesc().
 
-On Tue, Mar 21, 2023 at 04:55:03PM -0700, Stephen Boyd wrote:
-> Quoting Maxime Ripard (2022-11-04 06:17:17)
-> > Hi,
-> >=20
-> > This is a follow-up to a previous series that was printing a warning
-> > when a mux has a set_parent implementation but is missing
-> > determine_rate().
-> >=20
-> > The rationale is that set_parent() is very likely to be useful when
-> > changing the rate, but it's determine_rate() that takes the parenting
-> > decision. If we're missing it, then the current parent is always going
-> > to be used, and thus set_parent() will not be used. The only exception
-> > being a direct call to clk_set_parent(), but those are fairly rare
-> > compared to clk_set_rate().
-> >=20
-> > Stephen then asked to promote the warning to an error, and to fix up all
-> > the muxes that are in that situation first. So here it is :)
-> >=20
-> > Let me know what you think,
->=20
-> What's the plan here? Are you going to resend?
+Regards,
+Angelo
 
-It wasn't clear to me whether or not this was something that you wanted,
-and I got some pushback on the drivers so I kind of forgot about it.
-
-If you do want it (and it looks like you do), I'll resend it.
-
-Maxime
-
---vv4zkvfgrnplpmur
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZBrSEQAKCRDj7w1vZxhR
-xbTqAQDfuo+7won5pWzakHyWfnltaYo2jqEYfAWn/jNs6cp2QwD9EUEVxPQOk0xp
-CPNSu0go9roDa7ZOHrlkqTVTbZM0DQo=
-=JaLV
------END PGP SIGNATURE-----
-
---vv4zkvfgrnplpmur--
 
