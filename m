@@ -4,65 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 936F8C6FD1C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Mar 2023 09:24:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1455C6FD1C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Mar 2023 09:27:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GL6LH+BfCpPhnQFTnfx9E9mchRzyAcCrxMpSJkmF0aE=; b=I9KyXn7//x1fjUaNYYo3K9V7AY
-	Ao162kShBqaPiO1RHcxA1oI9QA2f1koCrkHUwSA8TV4APyIiGdSJwrXg7Cl/tXJd4YUDbFF3K02uL
-	6gEUO0U0/TjP6dgt+bfBMlZhBTdZle6/c5Xi0kYBxOoGBBVSdggnuQ+uLlPUJT2MP1S8cOboAF7tO
-	CtLtEhcBgMS/kQydRIpCFVv5k9bLQiWIfCv6l8cDis+P3b/Gex/k8tATjkYFK4VBwmJD7g/zMm/BX
-	cJ8GAbe313Y6rI54zaO1ThwsLmcTzdV7ej7gz5m15OEIy23GOXewxxoaSDRA3Q5FSyc5NGo7fM1Lh
-	aRcm/P1w==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JCpbJJa/3YWythHIeMEMRIxdl4fiLuWiHN0nIR7uJkE=; b=eVcUNj/e598AVzVtCIOiq7uaMj
+	Y0sDQwgG2nRddclCdpwQfk3ng+PvMS/AgBqHH3MpnyNVz6gi0yehJMucH9DLLimnsUGzktcec8gI2
+	ZsE659/RvHk1axeaxXOrZn3rw85xcmEcqq1K38Q8giRPiBWV0hBksy7rtJHMMpoEnrTUn7H/QpUK8
+	eIDDWjWiPr6t+tjNkFWuQLlkSR0OaDTjH6q0Wqnhl5aEfIUYG6ONynep5gwoRPNug88psV6z/WrC6
+	AZRLE1lPUe4SjSWy73uMRPcSexEjPxcPcGcm9pWonqPLr4iCkwuR4UN3k7LnbaN4+UeJbcxxtHe2c
+	/O2DGO7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1peuhR-00FOBm-0u;
-	Wed, 22 Mar 2023 09:24:05 +0000
+	id 1peukp-00FPNv-2c;
+	Wed, 22 Mar 2023 09:27:35 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1peuhO-00FO9z-0W
-	for linux-mediatek@lists.infradead.org;
-	Wed, 22 Mar 2023 09:24:04 +0000
-Received: from [IPV6:2a01:e0a:120:3210:cd0d:1462:ffab:ab3a] (unknown [IPv6:2a01:e0a:120:3210:cd0d:1462:ffab:ab3a])
+	id 1peukk-00FPLL-0g;
+	Wed, 22 Mar 2023 09:27:33 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 52A896602E3A
-	for <linux-mediatek@lists.infradead.org>; Wed, 22 Mar 2023 09:23:59 +0000 (GMT)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 286D566030E5;
+	Wed, 22 Mar 2023 09:27:28 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1679477039;
-	bh=5gl4/myBd+EDbET3jKaPs1WJ5OJGv7vlkzRyxtnLbg0=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=UKGcqJU/c3UIPDr/SlXqH231atMz++MplNpsvswSb8W0n5YX8gvU8jXkPiNfrO3U+
-	 CFPT817+DW4r/LmYfawNsEDxgYsiPg6rYOPVsKACnnFxHOfCsjXpjcb0wuJZu+Tuxv
-	 7pUC+O0o6xA4qfVVOdcWjg5GOYoEAPrlDfZZ+rZbIw/eTiT4+pxklh02GRn8bKh3TZ
-	 qIyGmqkx7cj6fLZZgp7PcMVcENH/xCZG2gwVdgEFKFk44noVSCol8T10VneaAgLr+2
-	 ibQS0AEgTj8UwAwlsQ+H+FWdvvv88YoYiFVBtub4p/zTsIYobTW2Qjnl7GzZ/gjud8
-	 brrRJVXeVDzWg==
-Message-ID: <8029aef8-ec8f-9ffc-a47e-1d9ee29b0192@collabora.com>
-Date: Wed, 22 Mar 2023 10:23:56 +0100
+	s=mail; t=1679477248;
+	bh=tm5AC8oAxj/BLJH6P7jdDgG/1QqkIQicoTd5DZz6WME=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=MgA/2lFUfyd5k/VBWnuu40eTYWS2U1TrrofgOMA0I9jVpdy3eEamqWcf4tagLMjHR
+	 EYG/Dt6rR/CXT5QPXB2XGairw7NZ2vJCFTiZN697ZjU9mBhuR+1jIwTZefhoaLWlDK
+	 IioRzVI4LUF9Xb0aUoln0A4Wfn4KFUNMQOdmen5CL1mdqaxXlr70en5Rgjk8S++LDi
+	 Q0rUGgJJ5+ebU1NWOdfgRTaiSLobW7Zl4UsgTdJ6LMafovrR9E9Y/VTbCenyiGT6Mh
+	 rAtqlpa++uhnmOtjEPtFRybdL2w7YOFX7V0OGBtvN5z6PXidEdYSooaBfd+nwFBCUM
+	 cDXjooq2zQlDw==
+Message-ID: <7b9b09fe-1049-26b6-7bec-0051e7304b5b@collabora.com>
+Date: Wed, 22 Mar 2023 10:27:25 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [EXT] [PATCH v2 3/8] media: videobuf2: Add a module param to
- limit vb2 queue buffer storage
+ Thunderbird/102.9.0
+Subject: Re: [PATCH v1 1/2] dt-bindings: reset: mt8188: Add reset control for
+ DSI0
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Shawn Sung <shawn.sung@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
+ Jason-JH Lin <jason-jh.lin@mediatek.com>
+References: <20230322032202.12598-1-shawn.sung@mediatek.com>
+ <20230322032202.12598-2-shawn.sung@mediatek.com>
+ <83eb4c5c-b4ea-1fee-7212-c88821b90771@linaro.org>
 Content-Language: en-US
-To: linux-mediatek@lists.infradead.org
-References: <20230321102855.346732-1-benjamin.gaignard@collabora.com>
- <20230321102855.346732-4-benjamin.gaignard@collabora.com>
- <AM6PR04MB6341CDD7A104C7BC6667C100E7869@AM6PR04MB6341.eurprd04.prod.outlook.com>
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-In-Reply-To: <AM6PR04MB6341CDD7A104C7BC6667C100E7869@AM6PR04MB6341.eurprd04.prod.outlook.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <83eb4c5c-b4ea-1fee-7212-c88821b90771@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230322_022402_556916_1F96EA38 
-X-CRM114-Status: GOOD (  19.04  )
+X-CRM114-CacheID: sfid-20230322_022731_833202_98A37B7B 
+X-CRM114-Status: GOOD (  12.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,137 +86,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-Le 22/03/2023 à 07:22, Ming Qian a écrit :
->
-> Hi Benjamin,
->
->> Add module parameter "max_vb_buffer_per_queue" to be able to limit the
->> number of vb2 buffers store in queue.
+Il 22/03/23 09:34, Krzysztof Kozlowski ha scritto:
+> On 22/03/2023 04:22, Shawn Sung wrote:
+>> Add reset control for DSI0.
 >>
->> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+>> Signed-off-by: Shawn Sung <shawn.sung@mediatek.com>
 >> ---
->> drivers/media/common/videobuf2/videobuf2-core.c | 15 +++------------
->> include/media/videobuf2-core.h                  | 11 +++++++++--
->> 2 files changed, 12 insertions(+), 14 deletions(-)
+>>   include/dt-bindings/reset/mt8188-resets.h | 3 +++
+>>   1 file changed, 3 insertions(+)
 >>
->> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c
->> b/drivers/media/common/videobuf2/videobuf2-core.c
->> index ae9d72f4d181..f4da917ccf3f 100644
->> --- a/drivers/media/common/videobuf2/videobuf2-core.c
->> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
->> @@ -34,6 +34,8 @@
->> static int debug;
->> module_param(debug, int, 0644);
+>> diff --git a/include/dt-bindings/reset/mt8188-resets.h b/include/dt-bindings/reset/mt8188-resets.h
+>> index 377cdfda82a9..5c9e74130ef0 100644
+>> --- a/include/dt-bindings/reset/mt8188-resets.h
+>> +++ b/include/dt-bindings/reset/mt8188-resets.h
+>> @@ -33,4 +33,7 @@
 >>
->> +module_param(max_vb_buffer_per_queue, ulong, 0644);
->> +
->> #define dprintk(q, level, fmt, arg...)                                 \
->>         do {                                                            \
->>                 if (debug >= level)                                     \
->> @@ -412,10 +414,6 @@ static int __vb2_queue_alloc(struct vb2_queue *q,
->> enum vb2_memory memory,
->>         struct vb2_buffer *vb;
->>         int ret;
+>>   #define MT8188_TOPRGU_SW_RST_NUM               24
 >>
->> -       /* Ensure that q->num_buffers+num_buffers is below VB2_MAX_FRAME
->> */
->> -       num_buffers = min_t(unsigned int, num_buffers,
->> -                           VB2_MAX_FRAME - q->num_buffers);
->> -
->>         for (buffer = 0; buffer < num_buffers; ++buffer) {
->>                 /* Allocate vb2 buffer structures */
->>                 vb = kzalloc(q->buf_struct_size, GFP_KERNEL); @@ -801,9 +799,7
->> @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
->>         /*
->>          * Make sure the requested values and current defaults are sane.
->>          */
->> -       WARN_ON(q->min_buffers_needed > VB2_MAX_FRAME);
->>         num_buffers = max_t(unsigned int, *count, q->min_buffers_needed);
->> -       num_buffers = min_t(unsigned int, num_buffers, VB2_MAX_FRAME);
->>         memset(q->alloc_devs, 0, sizeof(q->alloc_devs));
->>         /*
->>          * Set this now to ensure that drivers see the correct q->memory value
->> @@ -919,11 +915,6 @@ int vb2_core_create_bufs(struct vb2_queue *q,
->> enum vb2_memory memory,
->>         bool no_previous_buffers = !q->num_buffers;
->>         int ret;
->>
->> -       if (q->num_buffers == VB2_MAX_FRAME) {
->> -               dprintk(q, 1, "maximum number of buffers already allocated\n");
->> -               return -ENOBUFS;
->> -       }
->> -
->>         if (no_previous_buffers) {
->>                 if (q->waiting_in_dqbuf && *count) {
->>                         dprintk(q, 1, "another dup()ped fd is waiting for a buffer\n");
->> @@ -948,7 +939,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum
->> vb2_memory memory,
->>                         return -EINVAL;
->>         }
->>
->> -       num_buffers = min(*count, VB2_MAX_FRAME - q->num_buffers);
->> +       num_buffers = *count;
->>
->>         if (requested_planes && requested_sizes) {
->>                 num_planes = requested_planes; diff --git
->> a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h index
->> 397dbf6e61e1..b8b34a993e04 100644
->> --- a/include/media/videobuf2-core.h
->> +++ b/include/media/videobuf2-core.h
->> @@ -12,6 +12,7 @@
->> #ifndef _MEDIA_VIDEOBUF2_CORE_H
->> #define _MEDIA_VIDEOBUF2_CORE_H
->>
->> +#include <linux/minmax.h>
->> #include <linux/mm_types.h>
->> #include <linux/mutex.h>
->> #include <linux/poll.h>
->> @@ -48,6 +49,8 @@ struct vb2_fileio_data;  struct vb2_threadio_data;  struct
->> vb2_buffer;
->>
->> +static size_t max_vb_buffer_per_queue = 1024;
->> +
->> /**
->>   * struct vb2_mem_ops - memory handling/memory allocator operations.
->>   * @alloc:     allocate video memory and, optionally, allocator private data,
->> @@ -1268,12 +1271,16 @@ static inline bool vb2_queue_add_buffer(struct
->> vb2_queue *q, struct vb2_buffer *
->>
->>         if (vb->index >= q->max_num_bufs) {
->>                 struct vb2_buffer **tmp;
->> +               int cnt = min(max_vb_buffer_per_queue, q->max_num_bufs *
->> + 2);
->> +
->> +               if (cnt >= q->max_num_bufs)
->> +                       goto realloc_failed;
->>
-> Is it likely that goto realloc_failed directly?
-> The cnt is likely equal to q->max_num_bufs * 2, and it will greater than q->max_num_bufs.
-> For example, the default value of q->max_num_bufs is 32, when vb->index comes to 32, cnt is 64,  it's greater than 32, then goto recalloc_failed?
+>> +/* VDOSYS0 */
+>> +#define MT8188_VDO0_RST_DSI0                   21
+> 
+> Why this is not 0? IDs start from 0.
+> 
 
-I had in mind to check that we don't realloc more than
-max_vb_buffer_per_queue buffer so I will remove this test and check
-if vb->index < max_vb_buffer_per_queue instead.
+Because mtk-mmsys needs to be fixed, bindings IDs are *again* 1:1 with HW bits,
+there's no mapping like the one that was "recently" done in clk/mediatek resets.
 
-Thanks for your review.
+Since VDO0/1 have got lots of holes in reset bit mapping, it's definitely time
+to fix this situation now.....
 
-Benjamin
+Shawn, please fix.
+For your reference, look at [1] and [2].
 
->
->> -               tmp = krealloc_array(q->bufs, q->max_num_bufs * 2, sizeof(*q-
->>> bufs), GFP_KERNEL);
->> +               tmp = krealloc_array(q->bufs, cnt, sizeof(*q->bufs),
->> + GFP_KERNEL);
->>                 if (!tmp)
->>                         goto realloc_failed;
->>
->> -               q->max_num_bufs *= 2;
->> +               q->max_num_bufs = cnt;
->>                 q->bufs = tmp;
->>         }
->>
->> --
->> 2.34.1
->
+[1]: https://lore.kernel.org/all/20220523060056.24396-9-rex-bc.chen@mediatek.com/
+[2]: https://lore.kernel.org/all/20220523060056.24396-15-rex-bc.chen@mediatek.com/
+
+Regards,
+Angelo
+
+
+> 
+
 
