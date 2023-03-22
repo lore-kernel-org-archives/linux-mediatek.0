@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4352C6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Mar 2023 09:47:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4834BC6FD1C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Mar 2023 09:47:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=92mZB/j/7Hzvh1H2FdnRJuSeAz4j/NGjfxLL97rb2Tg=; b=S1+Mf8ZDp4vwOrYhzb9Od1y28U
-	VdpXxKFAjsVSbIt98GvDTKUAxJhaOI0axK2+GOLi+7c6xZ5ZhyLJjlzlg+o/+DrLsQM+Cud7feDBQ
-	AqXtNdByxDBbeO6K0lN0Uoq7wrcAAPi9iaSoHps7rCKVOJv6NJu92K8/Dc7JSOEyNDZDHuUYVOeua
-	nDn0flF3J3AUpLXcpKBbasgtO8QHQAb0ZIbTcNH3nxaulnmMHp1H1o3VrJzy1xwE9OG5ma03+Fl31
-	xpFgBnrKhePzOOMz71pUu23FqjMM0CRoXSCYcxj56dZQDWYjmLvn/heRTxYKBHQWCf1UtsAHigWfZ
-	gynHjx0A==;
+	bh=QZ5uBL9yfgd1NIw9cHlnnPWSdj4uOU4U2/td14iVscM=; b=iOZ4sR0VphHAMm1/D9ARaqK7tB
+	rkCzsDPxbmBrWb79gKZ9F0uZrKLE1BGCQhHFoklOPhCej7bThcLoXJeLUw0M0lw7G9sQFXY5mF05t
+	34SCan7GVmzO4odZd9Fzu4mY9a8BEw52iZo17PRFvKz7jTEK9qGbRv95ORvJlpwqeBkYiNu2Mftx4
+	/vWUbsdKTXMgzHg/p597VM6JXaPzbniXPFEhhahx4LPqupBd5s3KAYlc8uFQZE2+BzK7UpUba0TBY
+	b6ERZ8bL+tkA9AOWyJqcLplbMnJbyOJTPThVOc1ukny6QZsDOMBkvx9ZyVMG+sRrOIyQwFeVt2ujJ
+	34IO4XHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pev3x-00FVV9-09;
-	Wed, 22 Mar 2023 09:47:21 +0000
+	id 1pev47-00FVbS-2A;
+	Wed, 22 Mar 2023 09:47:31 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pev3i-00FVLi-0i;
-	Wed, 22 Mar 2023 09:47:07 +0000
-X-UUID: 7c477136c89611edb7d8d11f642b8e78-20230322
+	id 1pev3i-00FVLO-0h;
+	Wed, 22 Mar 2023 09:47:09 +0000
+X-UUID: 7ca9ea46c89611edb7d8d11f642b8e78-20230322
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=92mZB/j/7Hzvh1H2FdnRJuSeAz4j/NGjfxLL97rb2Tg=;
-	b=Um9mVRTZSHRLxezgCD3rQQvKTnn9K+JDhyxA7i4rKDhOx3o59f3V7FSDbZPs+KVH2y2uGOv0EU2HHETKaEQp6n8cAXXPPFWzU/KokjC5bVf53YikkLxMjXxJTzSmrfoLtBXEpMu6XAgJ+8P8fkS2pvreXq2+rC9sJQSYyAPkOnU=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=QZ5uBL9yfgd1NIw9cHlnnPWSdj4uOU4U2/td14iVscM=;
+	b=F+k3V6X2OL49MtBhgoDYG9dKfU1E+eltP6HnA3BWhmu3iv6IBWUQWdlerDic7cW7nUBYFGWleEOt19LzBItSK9ID4vgDPwmf0qnQconlU87xM57HkHFCDtG+QWexQZm643Opak4++YqMllnmK2pN6FUfAYP6udmE0rVVMBRDtSY=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:b8c5c3c9-f312-4f76-b375-96afee89b8dd,IP:0,U
+X-CID-O-INFO: VERSION:1.1.22,REQID:008e693c-4088-4491-93e4-1c72f1ec3efb,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-25
-X-CID-META: VersionHash:120426c,CLOUDID:2e1a93f6-ddba-41c3-91d9-10eeade8eac7,B
+X-CID-META: VersionHash:120426c,CLOUDID:738305b4-beed-4dfc-bd9c-e1b22fa6ccc4,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
-X-UUID: 7c477136c89611edb7d8d11f642b8e78-20230322
+X-UUID: 7ca9ea46c89611edb7d8d11f642b8e78-20230322
 Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1858337327; Wed, 22 Mar 2023 02:46:57 -0700
+	with ESMTP id 954870270; Wed, 22 Mar 2023 02:46:58 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Wed, 22 Mar 2023 17:46:22 +0800
+ 15.2.1118.25; Wed, 22 Mar 2023 17:46:24 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Wed, 22 Mar 2023 17:46:21 +0800
+ 15.2.1118.25 via Frontend Transport; Wed, 22 Mar 2023 17:46:23 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
 	Nicolas Dufresne <nicolas@ndufresne.ca>, Hans Verkuil
@@ -66,9 +66,9 @@ CC: Matthias Brugger <matthias.bgg@gmail.com>, Hsin-Yi Wang
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v2,2/7] media: mediatek: vcodec: Add debug params to control different log level
-Date: Wed, 22 Mar 2023 17:46:12 +0800
-Message-ID: <20230322094617.19410-3-yunfei.dong@mediatek.com>
+Subject: [PATCH v2,4/7] media: mediatek: vcodec: Get each context resolution information
+Date: Wed, 22 Mar 2023 17:46:14 +0800
+Message-ID: <20230322094617.19410-5-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230322094617.19410-1-yunfei.dong@mediatek.com>
 References: <20230322094617.19410-1-yunfei.dong@mediatek.com>
@@ -77,8 +77,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230322_024706_281636_14A628C7 
-X-CRM114-Status: GOOD (  11.98  )
+X-CRM114-CacheID: sfid-20230322_024706_291411_D24FECFC 
+X-CRM114-Status: GOOD (  13.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,91 +93,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add parameter mtk_vcodec_dbg to open each codec log.
-Add parameter mtk_v4l2_dbg_level to open each instance log according to
-the parameter value.
+Will store the string to temp buffer like "echo '-picinfo' > vdec" when
+user want to get needed information.
+
+Then getting debug information using command 'cat vdec' calling mtk_vdec_dbgfs_read
+to analysis the temp buffer.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- .../mediatek/vcodec/mtk_vcodec_dbgfs.c        |  2 ++
- .../mediatek/vcodec/mtk_vcodec_util.c         |  8 ++++++
- .../mediatek/vcodec/mtk_vcodec_util.h         | 25 ++++++++++++++++---
- 3 files changed, 32 insertions(+), 3 deletions(-)
+ .../mediatek/vcodec/mtk_vcodec_dbgfs.c        | 44 +++++++++++++++++++
+ .../mediatek/vcodec/mtk_vcodec_dbgfs.h        |  8 ++++
+ 2 files changed, 52 insertions(+)
 
 diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
-index fb9edd379af5..b5093e4e4aa2 100644
+index 49f0891e4923..19a1dc068efd 100644
 --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
 +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
-@@ -20,6 +20,8 @@ void mtk_vcodec_dbgfs_init(struct mtk_vcodec_dev *vcodec_dev)
- 			IS_ERR(vcodec_dev->dbgfs.vcodec_root));
- 
- 	vcodec_root = vcodec_dev->dbgfs.vcodec_root;
-+	debugfs_create_x32("mtk_v4l2_dbg_level", 0644, vcodec_root, &mtk_v4l2_dbg_level);
-+	debugfs_create_x32("mtk_vcodec_dbg", 0644, vcodec_root, &mtk_vcodec_dbg);
+@@ -27,9 +27,53 @@ static ssize_t mtk_vdec_dbgfs_write(struct file *filp, const char __user *ubuf,
+ 	return len;
  }
- EXPORT_SYMBOL_GPL(mtk_vcodec_dbgfs_init);
  
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.c
-index ace78c4b5b9e..f214e6f67005 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.c
-@@ -13,6 +13,14 @@
- #include "mtk_vcodec_drv.h"
- #include "mtk_vcodec_util.h"
- 
-+#if defined(CONFIG_DEBUG_FS)
-+int mtk_vcodec_dbg;
-+EXPORT_SYMBOL(mtk_vcodec_dbg);
++static ssize_t mtk_vdec_dbgfs_read(struct file *filp, char __user *ubuf,
++				   size_t count, loff_t *ppos)
++{
++	struct mtk_vcodec_dev *vcodec_dev = filp->private_data;
++	struct mtk_vcodec_dbgfs *dbgfs = &vcodec_dev->dbgfs;
++	struct mtk_vcodec_dbgfs_inst *dbgfs_inst;
++	struct mtk_vcodec_ctx *ctx;
++	int total_len = 100 * (dbgfs->inst_count == 0 ? 1 : dbgfs->inst_count);
++	int used_len = 0, curr_len, ret;
++	bool dbgfs_index[MTK_VDEC_DBGFS_MAX] = {0};
++	char *buf = kmalloc(total_len, GFP_KERNEL);
 +
-+int mtk_v4l2_dbg_level;
-+EXPORT_SYMBOL(mtk_v4l2_dbg_level);
-+#endif
++	if (!buf)
++		return -ENOMEM;
 +
- void __iomem *mtk_vcodec_get_reg_addr(struct mtk_vcodec_ctx *data,
- 					unsigned int reg_idx)
- {
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.h
-index 71956627a0e2..938f03cab3c9 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.h
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.h
-@@ -35,15 +35,34 @@ struct mtk_vcodec_dev;
- 	pr_err("[MTK_VCODEC][ERROR][%d]: " fmt "\n",		\
- 	       ((struct mtk_vcodec_ctx *)(h)->ctx)->id, ##args)
- 
-+#if defined(CONFIG_DEBUG_FS)
-+extern int mtk_v4l2_dbg_level;
-+extern int mtk_vcodec_dbg;
- 
--#define mtk_v4l2_debug(level, fmt, args...) pr_debug(fmt, ##args)
-+#define mtk_v4l2_debug(level, fmt, args...)				 \
-+	do {								 \
-+		if (mtk_v4l2_dbg_level >= level)			 \
-+			pr_info("[MTK_V4L2] level=%d %s(),%d: " fmt "\n", \
-+				level, __func__, __LINE__, ##args);	 \
-+	} while (0)
- 
--#define mtk_v4l2_debug_enter()  mtk_v4l2_debug(3, "+")
--#define mtk_v4l2_debug_leave()  mtk_v4l2_debug(3, "-")
-+#define mtk_vcodec_debug(h, fmt, args...)				\
-+	do {								\
-+		if (mtk_vcodec_dbg)					\
-+			pr_info("[MTK_VCODEC][%d]: %s() " fmt "\n",	\
-+				((struct mtk_vcodec_ctx *)h->ctx)->id,  \
-+				__func__, ##args);			\
-+	} while (0)
-+#else
-+#define mtk_v4l2_debug(level, fmt, args...) pr_debug(fmt, ##args)
- 
- #define mtk_vcodec_debug(h, fmt, args...)			\
- 	pr_debug("[MTK_VCODEC][%d]: " fmt "\n",			\
- 		((struct mtk_vcodec_ctx *)(h)->ctx)->id, ##args)
-+#endif
++	if (strstr(dbgfs->dbgfs_buf, "-picinfo"))
++		dbgfs_index[MTK_VDEC_DBGFS_PICINFO] = true;
 +
-+#define mtk_v4l2_debug_enter()  mtk_v4l2_debug(3, "+")
-+#define mtk_v4l2_debug_leave()  mtk_v4l2_debug(3, "-")
++	mutex_lock(&dbgfs->dbgfs_lock);
++	list_for_each_entry(dbgfs_inst, &dbgfs->dbgfs_head, node) {
++		ctx = dbgfs_inst->vcodec_ctx;
++
++		curr_len = snprintf(buf + used_len, total_len - used_len,
++				    "inst[%d]:\n ", ctx->id);
++		used_len += curr_len;
++
++		if (dbgfs_index[MTK_VDEC_DBGFS_PICINFO]) {
++			curr_len = snprintf(buf + used_len, total_len - used_len,
++					    "\treal(%dx%d)=>align(%dx%d)\n",
++					    ctx->picinfo.pic_w, ctx->picinfo.pic_h,
++					    ctx->picinfo.buf_w, ctx->picinfo.buf_h);
++			used_len += curr_len;
++		}
++	}
++	mutex_unlock(&dbgfs->dbgfs_lock);
++
++	buf[used_len + 1] = '\0';
++	ret = simple_read_from_buffer(ubuf, count, ppos, buf, used_len);
++
++	kfree(buf);
++	return ret;
++}
++
+ static const struct file_operations vdec_fops = {
+ 	.open = simple_open,
+ 	.write = mtk_vdec_dbgfs_write,
++	.read = mtk_vdec_dbgfs_read,
+ };
  
- #define mtk_vcodec_debug_enter(h)  mtk_vcodec_debug(h, "+")
- #define mtk_vcodec_debug_leave(h)  mtk_vcodec_debug(h, "-")
+ void mtk_vcodec_dbgfs_create(struct mtk_vcodec_ctx *ctx)
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.h
+index 47c0a986877d..de886d79ad01 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.h
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.h
+@@ -10,6 +10,14 @@
+ struct mtk_vcodec_dev;
+ struct mtk_vcodec_ctx;
+ 
++/*
++ * enum mtk_vdec_dbgfs_log_index  - used to get different debug information
++ */
++enum mtk_vdec_dbgfs_log_index {
++	MTK_VDEC_DBGFS_PICINFO,
++	MTK_VDEC_DBGFS_MAX,
++};
++
+ /**
+  * struct mtk_vcodec_dbgfs_inst  - debugfs informatiaoin for each inst
+  * @node: list node for each inst
 -- 
 2.18.0
 
