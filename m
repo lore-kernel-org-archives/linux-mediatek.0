@@ -4,82 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE8CFC6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Mar 2023 12:51:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 378B9C6FD1F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Mar 2023 12:56:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=z7uInAiqpQblW1FuguJKCYpcZGazuZcNpStJm/HJYwE=; b=NWTuYMnSJPnUGIhC00RcBdfANQ
-	REuVQdlH2W+MZ+DeB5nAxEdbTgpfwmyfkK27C0usryCYW7hIWBj0SjrEa36ZRVwZrazXiXPyhzYU0
-	C6ZVUi5fVuJio3bh8I8bF/QUl+arxYK/e/tsFu+qsO8zUnm4dtJLCB9BZDdBaSHz4BALtIuiNMGJV
-	L2qiRnEL68hDYaWhKdBTKrzSk7KtG/K2p7RuFdlE+obYUkWXuYWonJgG+k/fQaOMGf7oMyqKH3rP7
-	shf8xJcfrTQjV5GwlMUb4dWBEbRVJgCko93RaaKvYvsntzLvQHNKaqTfsJvqaGJnPOSD1R7qpDMFd
-	BMZ0kW4Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=iWutgyze2foXifBJdblIUuyRcM/hTwcNm07Al/lIIAo=; b=XuVXtJv74tdVVRIur4kXJmSTd9
+	SwLGiRzLWVdmy72KX83Sa69pxAWZYWxCxs8NKlBhR6VTWaaC4rm0luEagQ1vpDAoivbsyMz39696R
+	JeI30r4g305hllLqFiJn3GmbU2nfLtsJYP1UBuvfD4jCJYrQ1xe+/GTApum+Wuf6l5pygkxRAft5A
+	40nG3ELN7x4Eh5D3CJMoi6A1VN8G5rV97yQc/7lAD/M6qNPSkVmNw49gGo5Vqt3LBWvj+SPQPdqvx
+	GaYz64sJn4v+1tJJjON8fKT182t/z8zemPIFYW6y0VJBFqtr/5H0GOfwXaj2Q5WMfJUetxGgO37Kl
+	KK8N/t9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pexwJ-00G0oW-1s;
-	Wed, 22 Mar 2023 12:51:39 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1pey0Z-00G1yz-2I;
+	Wed, 22 Mar 2023 12:56:03 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pexwG-00G0my-0V
-	for linux-mediatek@lists.infradead.org;
-	Wed, 22 Mar 2023 12:51:37 +0000
-Received: by mail-ed1-x534.google.com with SMTP id o12so72453345edb.9
-        for <linux-mediatek@lists.infradead.org>; Wed, 22 Mar 2023 05:51:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1679489495;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=z7uInAiqpQblW1FuguJKCYpcZGazuZcNpStJm/HJYwE=;
-        b=eQ+8m1BOPPny9D5aNyxbHYGTiCf8Na3k/SMUqrCxaa1Yd6GYecb6qZPcSNejvrGTLh
-         K2tNopHoQ+IXxsJ3Z/xQnfFtL0q0ndPimIrANSMeWDBSrX/roRZA7g4cDspQdSjlTqYO
-         ST0FoVApsvyQx4KLgzGClpGOdlW5k0tRafn6Bi6bY5+mz0yLtL72We2GmJAb5QQ+kYYe
-         IesM6YsnG3KC2VBYu5t3XjhDCr80TdEgGVarrxOWZTFYXfXlzOXXqgB+SxHxbjNmxrcf
-         xvFNepmdn5r+oAq6AWo8ad7eTxr6LF1M25wuqgQgFPKvVkQ0UoqGT+da4ojmX6Z/EwHv
-         B85Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679489495;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=z7uInAiqpQblW1FuguJKCYpcZGazuZcNpStJm/HJYwE=;
-        b=mKvVcJVj9S8Qfq4p9FVnP9VC5uqyPpmWUatM1XIAqNv4oz4aAbJsbhqPrhLJ1Yznv0
-         y6Y8XJ/DsCRjbhOau8j5UUS0vTnLhU0GOOvzbCQyLdSom4+k3b7OyW9UYLGnaC4mVxVs
-         41gqPYHe3WvpDqhQBv4M+P9NyqMsxQK8/qbsnuwysOPZ4F9JqyU0suKEdtj7nIzkvC83
-         qCxqK0nZf1UK27aj7oIbnAvnKyLQbJlsaTExWyZwpgIbNMQR8Uf6HHHi1tgR9jUIiKiH
-         BFVA8i0N2oHP4abypsyj0fW0+lJ6yGgbMPa47VG22dAutgn/M9+Q2yWlnhSNUDeStphe
-         Midg==
-X-Gm-Message-State: AO0yUKV4AkwIsDBFCFXS75eKPmuQvql2MiphwdimBT7pzMicWoA89w6o
-	UxKDFlHosxAn1G5aXY2osWnDIqQtdKAaglO42kU/JQ==
-X-Google-Smtp-Source: AK7set+H54h9AIkF40JfLtjJco8DQSGdF2j7ywDCKthKg0qqriwpU2mABmcujmqJNtXCow1utP9NeQroR4FDuRCo+94=
-X-Received: by 2002:a05:6402:3496:b0:4ad:739c:b38e with SMTP id
- v22-20020a056402349600b004ad739cb38emr1580205edc.1.1679489494871; Wed, 22 Mar
- 2023 05:51:34 -0700 (PDT)
+	id 1pey0X-00G1xO-0P;
+	Wed, 22 Mar 2023 12:56:02 +0000
+X-UUID: e1d567d2c8b011edb7d8d11f642b8e78-20230322
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=iWutgyze2foXifBJdblIUuyRcM/hTwcNm07Al/lIIAo=;
+	b=qPEbrPnmNITgjZM3JN8X7z6eJBAqYZK/nL+vLQ4xpiCpdtlQnYi949b48tqF9ZsCKW6CDZ/zGEVRr49/hDxrnG9hwxICXixCT6YXPwqcMvC8NUMq69bDjyg/y57nROwe2+BJg/qvoPpBWUDIhi4U13JNczyV6Y0GUYDlaivkSYk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22,REQID:dd25be6b-c9f2-4204-9a8b-7637bccd12f6,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:120426c,CLOUDID:7b2d2829-564d-42d9-9875-7c868ee415ec,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: e1d567d2c8b011edb7d8d11f642b8e78-20230322
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <mark-pk.tsai@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 877013031; Wed, 22 Mar 2023 05:55:54 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Wed, 22 Mar 2023 20:45:51 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Wed, 22 Mar 2023 20:45:51 +0800
+From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+To: Marc Zyngier <maz@kernel.org>, Thomas Gleixner <tglx@linutronix.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+CC: Johan Hovold <johan+linaro@kernel.org>, <stable@vger.kernel.org>, Greg
+ Kroah-Hartman <gregkh@linuxfoundation.org>, Mark-PK Tsai
+	<mark-pk.tsai@mediatek.com>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH 5.4 1/3] irqdomain: Look for existing mapping only once
+Date: Wed, 22 Mar 2023 20:45:48 +0800
+Message-ID: <20230322124550.29812-1-mark-pk.tsai@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20230307154524.118541-1-bchihi@baylibre.com> <CAGXv+5F6yFk+VMUe50YfV11Bx3qnQ=FHymeAM=dgfrqwLGrG7Q@mail.gmail.com>
-In-Reply-To: <CAGXv+5F6yFk+VMUe50YfV11Bx3qnQ=FHymeAM=dgfrqwLGrG7Q@mail.gmail.com>
-From: Balsam CHIHI <bchihi@baylibre.com>
-Date: Wed, 22 Mar 2023 13:50:58 +0100
-Message-ID: <CAGuA+oqLi-b7YuUVYzCDQWbztPy7WOVEch6dbrbWzdPkRBOwcg@mail.gmail.com>
-Subject: Re: [PATCH 0/4] Add LVTS's AP thermal domain support for mt8195
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: daniel.lezcano@linaro.org, angelogioacchino.delregno@collabora.com, 
-	rafael@kernel.org, amitk@kernel.org, rui.zhang@intel.com, 
-	matthias.bgg@gmail.com, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
-	rdunlap@infradead.org, ye.xingchen@zte.com.cn, p.zabel@pengutronix.de, 
-	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	devicetree@vger.kernel.org, khilman@baylibre.com, james.lo@mediatek.com, 
-	rex-bc.chen@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230322_055136_197374_5423A55C 
-X-CRM114-Status: GOOD (  13.14  )
+X-CRM114-CacheID: sfid-20230322_055601_173303_4BB4EF5A 
+X-CRM114-Status: GOOD (  17.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,55 +82,134 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 10, 2023 at 4:22=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org> w=
-rote:
->
-> On Tue, Mar 7, 2023 at 11:45=E2=80=AFPM <bchihi@baylibre.com> wrote:
-> >
-> > From: Balsam CHIHI <bchihi@baylibre.com>
-> >
-> > Add AP thermal domain support to LVTS Driver for MediaTek MT8195 SoC.
-> >
-> > This series is a continuation of the original series "Add LVTS Thermal =
-Architecture" v14 :
-> >     https://patchwork.kernel.org/project/linux-pm/cover/20230209105628.=
-50294-1-bchihi@baylibre.com/
-> >
-> > Based on top of thermal/linux-next :
-> >     base-commit: 6828e402d06f7c574430b61c05db784cd847b19f
-> >
-> > Depends on these patches as they are not yet applyied to thermal/linux-=
-next branch :
-> >     [v14,3/6] arm64: dts: mt8195: Add efuse node to mt8195 (already inc=
-luded in linux master branch)
-> >     https://patchwork.kernel.org/project/linux-pm/patch/20230209105628.=
-50294-4-bchihi@baylibre.com/
-> >     [v14,5/6] arm64: dts: mediatek: mt8195: Add thermal zones and therm=
-al nodes
-> >     https://patchwork.kernel.org/project/linux-pm/patch/20230209105628.=
-50294-6-bchihi@baylibre.com/
-> >     [v14,6/6] arm64: dts: mediatek: mt8195: Add temperature mitigation =
-threshold
-> >     https://patchwork.kernel.org/project/linux-pm/patch/20230209105628.=
-50294-7-bchihi@baylibre.com/
-> >
-> > Balsam CHIHI (4):
-> >   dt-bindings: thermal: mediatek: Add AP domain to LVTS thermal
-> >     controllers for mt8195
-> >   thermal/drivers/mediatek/lvts_thermal: Add AP domain for mt8195
-> >   arm64: dts: mediatek: mt8195: Add AP domain thermal zones
-> >   arm64: dts: mediatek: mt8195: Add AP domain temperature thresholds
->
-> Whole series is
->
-> Tested-by: Chen-Yu Tsai <wenst@chromium.org>
->
-> on MT8195 Tomato Chromebook.
+From: Johan Hovold <johan+linaro@kernel.org>
 
-Hi Chen-Yu Tsai,
+commit 6e6f75c9c98d2d246d90411ff2b6f0cd271f4cba upstream.
 
-Thank you very much for testing it!
+Avoid looking for an existing mapping twice when creating a new mapping
+using irq_create_fwspec_mapping() by factoring out the actual allocation
+which is shared with irq_create_mapping_affinity().
 
-Best regards,
-Balsam
+The new helper function will also be used to fix a shared-interrupt
+mapping race, hence the Fixes tag.
+
+Fixes: b62b2cf5759b ("irqdomain: Fix handling of type settings for existing mappings")
+Cc: stable@vger.kernel.org      # 4.8
+Tested-by: Hsin-Yi Wang <hsinyi@chromium.org>
+Tested-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+Signed-off-by: Johan Hovold <johan+linaro@kernel.org>
+Signed-off-by: Marc Zyngier <maz@kernel.org>
+Link: https://lore.kernel.org/r/20230213104302.17307-5-johan+linaro@kernel.org
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+---
+ kernel/irq/irqdomain.c | 62 +++++++++++++++++++++++-------------------
+ 1 file changed, 34 insertions(+), 28 deletions(-)
+
+diff --git a/kernel/irq/irqdomain.c b/kernel/irq/irqdomain.c
+index d40ae18fe661..8d85eeb0f078 100644
+--- a/kernel/irq/irqdomain.c
++++ b/kernel/irq/irqdomain.c
+@@ -672,6 +672,34 @@ unsigned int irq_create_direct_mapping(struct irq_domain *domain)
+ }
+ EXPORT_SYMBOL_GPL(irq_create_direct_mapping);
+ 
++static unsigned int __irq_create_mapping_affinity(struct irq_domain *domain,
++						  irq_hw_number_t hwirq,
++						  const struct irq_affinity_desc *affinity)
++{
++	struct device_node *of_node = irq_domain_get_of_node(domain);
++	int virq;
++
++	pr_debug("irq_create_mapping(0x%p, 0x%lx)\n", domain, hwirq);
++
++	/* Allocate a virtual interrupt number */
++	virq = irq_domain_alloc_descs(-1, 1, hwirq, of_node_to_nid(of_node),
++				      affinity);
++	if (virq <= 0) {
++		pr_debug("-> virq allocation failed\n");
++		return 0;
++	}
++
++	if (irq_domain_associate(domain, virq, hwirq)) {
++		irq_free_desc(virq);
++		return 0;
++	}
++
++	pr_debug("irq %lu on domain %s mapped to virtual irq %u\n",
++		hwirq, of_node_full_name(of_node), virq);
++
++	return virq;
++}
++
+ /**
+  * irq_create_mapping_affinity() - Map a hardware interrupt into linux irq space
+  * @domain: domain owning this hardware interrupt or NULL for default domain
+@@ -684,49 +712,27 @@ EXPORT_SYMBOL_GPL(irq_create_direct_mapping);
+  * on the number returned from that call.
+  */
+ unsigned int irq_create_mapping_affinity(struct irq_domain *domain,
+-				       irq_hw_number_t hwirq,
+-				       const struct irq_affinity_desc *affinity)
++					 irq_hw_number_t hwirq,
++					 const struct irq_affinity_desc *affinity)
+ {
+-	struct device_node *of_node;
+ 	int virq;
+ 
+-	pr_debug("irq_create_mapping(0x%p, 0x%lx)\n", domain, hwirq);
+-
+-	/* Look for default domain if nececssary */
++	/* Look for default domain if necessary */
+ 	if (domain == NULL)
+ 		domain = irq_default_domain;
+ 	if (domain == NULL) {
+ 		WARN(1, "%s(, %lx) called with NULL domain\n", __func__, hwirq);
+ 		return 0;
+ 	}
+-	pr_debug("-> using domain @%p\n", domain);
+-
+-	of_node = irq_domain_get_of_node(domain);
+ 
+ 	/* Check if mapping already exists */
+ 	virq = irq_find_mapping(domain, hwirq);
+ 	if (virq) {
+-		pr_debug("-> existing mapping on virq %d\n", virq);
++		pr_debug("existing mapping on virq %d\n", virq);
+ 		return virq;
+ 	}
+ 
+-	/* Allocate a virtual interrupt number */
+-	virq = irq_domain_alloc_descs(-1, 1, hwirq, of_node_to_nid(of_node),
+-				      affinity);
+-	if (virq <= 0) {
+-		pr_debug("-> virq allocation failed\n");
+-		return 0;
+-	}
+-
+-	if (irq_domain_associate(domain, virq, hwirq)) {
+-		irq_free_desc(virq);
+-		return 0;
+-	}
+-
+-	pr_debug("irq %lu on domain %s mapped to virtual irq %u\n",
+-		hwirq, of_node_full_name(of_node), virq);
+-
+-	return virq;
++	return __irq_create_mapping_affinity(domain, hwirq, affinity);
+ }
+ EXPORT_SYMBOL_GPL(irq_create_mapping_affinity);
+ 
+@@ -866,7 +872,7 @@ unsigned int irq_create_fwspec_mapping(struct irq_fwspec *fwspec)
+ 			return 0;
+ 	} else {
+ 		/* Create mapping */
+-		virq = irq_create_mapping(domain, hwirq);
++		virq = __irq_create_mapping_affinity(domain, hwirq, NULL);
+ 		if (!virq)
+ 			return virq;
+ 	}
+-- 
+2.18.0
+
 
