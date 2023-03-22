@@ -4,70 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 378B9C6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Mar 2023 12:56:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2756C6FD1C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Mar 2023 13:49:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=iWutgyze2foXifBJdblIUuyRcM/hTwcNm07Al/lIIAo=; b=XuVXtJv74tdVVRIur4kXJmSTd9
-	SwLGiRzLWVdmy72KX83Sa69pxAWZYWxCxs8NKlBhR6VTWaaC4rm0luEagQ1vpDAoivbsyMz39696R
-	JeI30r4g305hllLqFiJn3GmbU2nfLtsJYP1UBuvfD4jCJYrQ1xe+/GTApum+Wuf6l5pygkxRAft5A
-	40nG3ELN7x4Eh5D3CJMoi6A1VN8G5rV97yQc/7lAD/M6qNPSkVmNw49gGo5Vqt3LBWvj+SPQPdqvx
-	GaYz64sJn4v+1tJJjON8fKT182t/z8zemPIFYW6y0VJBFqtr/5H0GOfwXaj2Q5WMfJUetxGgO37Kl
-	KK8N/t9w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7oYN9AaYlHRIzqG9QUA4UghxLq9/+4HZ5fSaNUhd2zI=; b=fStlIp9B+HDukkMXB7MdKLFdaD
+	T+l7sXi1XUPbqWTGi3RMeLLo7sWpfpYds6xAB5/ghkMA7LKmWKVzfEl+C9oJ9MuBeYqJCvZJDEHts
+	uH2NaudGQgWBs1XTD0Yd5vxunRrbq8zayH3k+CdgxDaYwSX7b08o/Vc3bK87/uyFXCT9LY8fxX+gg
+	dxKi+GucKNBrg1VS669QT5hLwRfLxUAiqCZ61DRLsiNEDOIiNlEgns6J+/B6LhEzxe/SH9SUJ7wv1
+	Y06802ogaX7fGOt85tyNSkiDnLJ3392zZCSTyWpxo2/tVu1YHglt62Rvx3BSCz/mJYNiBGbdyDZwT
+	Tmhs7y6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pey0Z-00G1yz-2I;
-	Wed, 22 Mar 2023 12:56:03 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1peyqU-00GAtq-0C;
+	Wed, 22 Mar 2023 13:49:42 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pey0X-00G1xO-0P;
-	Wed, 22 Mar 2023 12:56:02 +0000
-X-UUID: e1d567d2c8b011edb7d8d11f642b8e78-20230322
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=iWutgyze2foXifBJdblIUuyRcM/hTwcNm07Al/lIIAo=;
-	b=qPEbrPnmNITgjZM3JN8X7z6eJBAqYZK/nL+vLQ4xpiCpdtlQnYi949b48tqF9ZsCKW6CDZ/zGEVRr49/hDxrnG9hwxICXixCT6YXPwqcMvC8NUMq69bDjyg/y57nROwe2+BJg/qvoPpBWUDIhi4U13JNczyV6Y0GUYDlaivkSYk=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:dd25be6b-c9f2-4204-9a8b-7637bccd12f6,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:120426c,CLOUDID:7b2d2829-564d-42d9-9875-7c868ee415ec,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-UUID: e1d567d2c8b011edb7d8d11f642b8e78-20230322
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <mark-pk.tsai@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 877013031; Wed, 22 Mar 2023 05:55:54 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Wed, 22 Mar 2023 20:45:51 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Wed, 22 Mar 2023 20:45:51 +0800
-From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-To: Marc Zyngier <maz@kernel.org>, Thomas Gleixner <tglx@linutronix.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-CC: Johan Hovold <johan+linaro@kernel.org>, <stable@vger.kernel.org>, Greg
- Kroah-Hartman <gregkh@linuxfoundation.org>, Mark-PK Tsai
-	<mark-pk.tsai@mediatek.com>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH 5.4 1/3] irqdomain: Look for existing mapping only once
-Date: Wed, 22 Mar 2023 20:45:48 +0800
-Message-ID: <20230322124550.29812-1-mark-pk.tsai@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1peyqQ-00GAsV-0P;
+	Wed, 22 Mar 2023 13:49:39 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A70B066030AF;
+	Wed, 22 Mar 2023 13:49:34 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1679492975;
+	bh=k+p/TCLm1pU60S6WbL0PB2Wsj8ktyGE4is14E/7Ssi0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=NR9PRTxii7LTFiTCoWxJrKwkQ4O5KiU/uySb2c0w68SB+wTAfo/fb0zrq2fM1DFA0
+	 sPRSmGZ/8zDbw8HqYMWG/58ipbxA1EOZ/OOlqX9cN0Nkb8iOPeUCX+ravrs0vEkE8R
+	 +5KZjXAqRXm731h3qI61uM3kpcnsG9CNnEbaLkpXU07QrQQqZPgse1qXWKHpSQ+Vba
+	 4UK5qlRM5mgAcNSQIcoBmyJn6+kkebIFSs4RibT1APSmmk76CLzFov65z4nUscRWSx
+	 lThcuBVkNNipzC+PRr2IWNn2OBzfvlvMJVlxBwHvz5O0Q3ujaPWBCJ2ZdpZXmzuhPG
+	 lDcfKJm6pZJYA==
+Message-ID: <4da63f5b-87f3-89be-31fc-f574a1d7c9bd@collabora.com>
+Date: Wed, 22 Mar 2023 14:49:32 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH v2,2/7] media: mediatek: vcodec: Add debug params to
+ control different log level
+Content-Language: en-US
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai
+ <wenst@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?= <nfraprado@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20230322094617.19410-1-yunfei.dong@mediatek.com>
+ <20230322094617.19410-3-yunfei.dong@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230322094617.19410-3-yunfei.dong@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230322_055601_173303_4BB4EF5A 
-X-CRM114-Status: GOOD (  17.91  )
+X-CRM114-CacheID: sfid-20230322_064938_374458_21260798 
+X-CRM114-Status: GOOD (  18.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,134 +86,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Johan Hovold <johan+linaro@kernel.org>
+Il 22/03/23 10:46, Yunfei Dong ha scritto:
+> Add parameter mtk_vcodec_dbg to open each codec log.
+> Add parameter mtk_v4l2_dbg_level to open each instance log according to
+> the parameter value.
+> 
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> ---
+>   .../mediatek/vcodec/mtk_vcodec_dbgfs.c        |  2 ++
+>   .../mediatek/vcodec/mtk_vcodec_util.c         |  8 ++++++
+>   .../mediatek/vcodec/mtk_vcodec_util.h         | 25 ++++++++++++++++---
+>   3 files changed, 32 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
+> index fb9edd379af5..b5093e4e4aa2 100644
+> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
+> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
+> @@ -20,6 +20,8 @@ void mtk_vcodec_dbgfs_init(struct mtk_vcodec_dev *vcodec_dev)
+>   			IS_ERR(vcodec_dev->dbgfs.vcodec_root));
+>   
+>   	vcodec_root = vcodec_dev->dbgfs.vcodec_root;
+> +	debugfs_create_x32("mtk_v4l2_dbg_level", 0644, vcodec_root, &mtk_v4l2_dbg_level);
+> +	debugfs_create_x32("mtk_vcodec_dbg", 0644, vcodec_root, &mtk_vcodec_dbg);
+>   }
+>   EXPORT_SYMBOL_GPL(mtk_vcodec_dbgfs_init);
+>   
+> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.c
+> index ace78c4b5b9e..f214e6f67005 100644
+> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.c
+> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.c
+> @@ -13,6 +13,14 @@
+>   #include "mtk_vcodec_drv.h"
+>   #include "mtk_vcodec_util.h"
+>   
+> +#if defined(CONFIG_DEBUG_FS)
+> +int mtk_vcodec_dbg;
+> +EXPORT_SYMBOL(mtk_vcodec_dbg);
+> +
+> +int mtk_v4l2_dbg_level;
+> +EXPORT_SYMBOL(mtk_v4l2_dbg_level);
+> +#endif
+> +
+>   void __iomem *mtk_vcodec_get_reg_addr(struct mtk_vcodec_ctx *data,
+>   					unsigned int reg_idx)
+>   {
+> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.h
+> index 71956627a0e2..938f03cab3c9 100644
+> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.h
+> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.h
+> @@ -35,15 +35,34 @@ struct mtk_vcodec_dev;
+>   	pr_err("[MTK_VCODEC][ERROR][%d]: " fmt "\n",		\
+>   	       ((struct mtk_vcodec_ctx *)(h)->ctx)->id, ##args)
+>   
+> +#if defined(CONFIG_DEBUG_FS)
+> +extern int mtk_v4l2_dbg_level;
+> +extern int mtk_vcodec_dbg;
+>   
+> -#define mtk_v4l2_debug(level, fmt, args...) pr_debug(fmt, ##args)
+> +#define mtk_v4l2_debug(level, fmt, args...)				 \
+> +	do {								 \
+> +		if (mtk_v4l2_dbg_level >= level)			 \
+> +			pr_info("[MTK_V4L2] level=%d %s(),%d: " fmt "\n", \
 
-commit 6e6f75c9c98d2d246d90411ff2b6f0cd271f4cba upstream.
+These shall still be *debug* and not *info*, even if you're controlling the
+log level from debugfs, as these are anyway debugging prints which can be
+automatically optimized out for a kernel build with *no debug at all*.
 
-Avoid looking for an existing mapping twice when creating a new mapping
-using irq_create_fwspec_mapping() by factoring out the actual allocation
-which is shared with irq_create_mapping_affinity().
+The loglevel control is a commodity that should be meant to avoid too much
+spam for readability and/or selectively enable "components" logging, because
+then there's also the tracing framework providing maximum verbosity.
 
-The new helper function will also be used to fix a shared-interrupt
-mapping race, hence the Fixes tag.
+Besides, I'd be happy if this finally becomes dev_dbg instead of pr_debug.
 
-Fixes: b62b2cf5759b ("irqdomain: Fix handling of type settings for existing mappings")
-Cc: stable@vger.kernel.org      # 4.8
-Tested-by: Hsin-Yi Wang <hsinyi@chromium.org>
-Tested-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-Signed-off-by: Johan Hovold <johan+linaro@kernel.org>
-Signed-off-by: Marc Zyngier <maz@kernel.org>
-Link: https://lore.kernel.org/r/20230213104302.17307-5-johan+linaro@kernel.org
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
----
- kernel/irq/irqdomain.c | 62 +++++++++++++++++++++++-------------------
- 1 file changed, 34 insertions(+), 28 deletions(-)
+Regards,
+Angelo
 
-diff --git a/kernel/irq/irqdomain.c b/kernel/irq/irqdomain.c
-index d40ae18fe661..8d85eeb0f078 100644
---- a/kernel/irq/irqdomain.c
-+++ b/kernel/irq/irqdomain.c
-@@ -672,6 +672,34 @@ unsigned int irq_create_direct_mapping(struct irq_domain *domain)
- }
- EXPORT_SYMBOL_GPL(irq_create_direct_mapping);
- 
-+static unsigned int __irq_create_mapping_affinity(struct irq_domain *domain,
-+						  irq_hw_number_t hwirq,
-+						  const struct irq_affinity_desc *affinity)
-+{
-+	struct device_node *of_node = irq_domain_get_of_node(domain);
-+	int virq;
-+
-+	pr_debug("irq_create_mapping(0x%p, 0x%lx)\n", domain, hwirq);
-+
-+	/* Allocate a virtual interrupt number */
-+	virq = irq_domain_alloc_descs(-1, 1, hwirq, of_node_to_nid(of_node),
-+				      affinity);
-+	if (virq <= 0) {
-+		pr_debug("-> virq allocation failed\n");
-+		return 0;
-+	}
-+
-+	if (irq_domain_associate(domain, virq, hwirq)) {
-+		irq_free_desc(virq);
-+		return 0;
-+	}
-+
-+	pr_debug("irq %lu on domain %s mapped to virtual irq %u\n",
-+		hwirq, of_node_full_name(of_node), virq);
-+
-+	return virq;
-+}
-+
- /**
-  * irq_create_mapping_affinity() - Map a hardware interrupt into linux irq space
-  * @domain: domain owning this hardware interrupt or NULL for default domain
-@@ -684,49 +712,27 @@ EXPORT_SYMBOL_GPL(irq_create_direct_mapping);
-  * on the number returned from that call.
-  */
- unsigned int irq_create_mapping_affinity(struct irq_domain *domain,
--				       irq_hw_number_t hwirq,
--				       const struct irq_affinity_desc *affinity)
-+					 irq_hw_number_t hwirq,
-+					 const struct irq_affinity_desc *affinity)
- {
--	struct device_node *of_node;
- 	int virq;
- 
--	pr_debug("irq_create_mapping(0x%p, 0x%lx)\n", domain, hwirq);
--
--	/* Look for default domain if nececssary */
-+	/* Look for default domain if necessary */
- 	if (domain == NULL)
- 		domain = irq_default_domain;
- 	if (domain == NULL) {
- 		WARN(1, "%s(, %lx) called with NULL domain\n", __func__, hwirq);
- 		return 0;
- 	}
--	pr_debug("-> using domain @%p\n", domain);
--
--	of_node = irq_domain_get_of_node(domain);
- 
- 	/* Check if mapping already exists */
- 	virq = irq_find_mapping(domain, hwirq);
- 	if (virq) {
--		pr_debug("-> existing mapping on virq %d\n", virq);
-+		pr_debug("existing mapping on virq %d\n", virq);
- 		return virq;
- 	}
- 
--	/* Allocate a virtual interrupt number */
--	virq = irq_domain_alloc_descs(-1, 1, hwirq, of_node_to_nid(of_node),
--				      affinity);
--	if (virq <= 0) {
--		pr_debug("-> virq allocation failed\n");
--		return 0;
--	}
--
--	if (irq_domain_associate(domain, virq, hwirq)) {
--		irq_free_desc(virq);
--		return 0;
--	}
--
--	pr_debug("irq %lu on domain %s mapped to virtual irq %u\n",
--		hwirq, of_node_full_name(of_node), virq);
--
--	return virq;
-+	return __irq_create_mapping_affinity(domain, hwirq, affinity);
- }
- EXPORT_SYMBOL_GPL(irq_create_mapping_affinity);
- 
-@@ -866,7 +872,7 @@ unsigned int irq_create_fwspec_mapping(struct irq_fwspec *fwspec)
- 			return 0;
- 	} else {
- 		/* Create mapping */
--		virq = irq_create_mapping(domain, hwirq);
-+		virq = __irq_create_mapping_affinity(domain, hwirq, NULL);
- 		if (!virq)
- 			return virq;
- 	}
--- 
-2.18.0
 
 
