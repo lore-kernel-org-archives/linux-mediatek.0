@@ -4,73 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C5B3C76196
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Mar 2023 15:18:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8418FC6FD1C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Mar 2023 18:49:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lw5XP9TPQayQXiO1kQFHfUd13BPx+daWASsup6hTihU=; b=IMTQ7jf1qS8lshyg4WYpoy6kRc
-	WJ6kW5XQAlhKFUvdkaR76OXg9i3UOcuZVz2YuzeDvYB9pi9bnEAavxJ42pMG39DmJcN+Rk9QMWN+o
-	Au/dMyB/bZEhkO4OhBqU9BApgsTLevRx+FADciYq4459uTsfzA4p15i2h3tPDq1GNUuBJS7q66Bvv
-	a5cRvIz3pC9vxJIl72/AXXr4wKUFanPcuKmiGclYgAllF1hQcWuGeXaz33aTjK6T9MN5EqYOoj4p7
-	FrH9LFNS9B2e2pYyH+Gf1SwDCQ7Oza5tsKLq1l6//WdAzhc/LPfhcnORaeSB2yJQJglSKkg7jzeaU
-	i/f4Nnww==;
+	bh=UaAtIRtOu++U0RXXy05q7KocYfCm4/E/CZEqe2Ect2k=; b=N/DtEDGxHYhT5khWv0NS9xaJCg
+	QSa3TRXZpccWh2ms8JEGV8N4InNuBPICVn7SZhhs9n8EWGgNBH4tN5+9wqOOTgSjeQcvin8nIf+8y
+	zT0UixejribR+vEINd8Kq+OlG3OnZrGuwzQfgOkZgq7DXXmVQoPAi2lt41DiVY2HES5yD3woWYEyH
+	LghDsM+1d/u1w79BtLtcLGSYzV7OnGwua4nxDxlK8a4hb8rSlUQtf9WZUrym2YzZqUdJMONMfMwMx
+	NReZo+rQMRsjMnS8TVxQGhxcdii3OjCtGGPhCf4xwIAtNS2nRSxW12ToHDrul5P5TBsW7NAs6t3zT
+	p+bgjooQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfMhu-002KPv-1A;
-	Thu, 23 Mar 2023 15:18:26 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pfPzx-002kwi-0e;
+	Thu, 23 Mar 2023 18:49:17 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfMhq-002KOL-0S;
-	Thu, 23 Mar 2023 15:18:23 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id B168C6278C;
-	Thu, 23 Mar 2023 15:18:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 97A1FC433D2;
-	Thu, 23 Mar 2023 15:18:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1679584701;
-	bh=Ot5j+e02uJgVNJB1slYlPg2ieWZZtdLFrPg+gk+GtR8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=n0kQfA1TUx4841Dq9a/DC61t5fJPvk/9GatAS59QD4fZN21plBCclCYXZs7XXNp7P
-	 G7wpnN+17ZnkJa4TcbQbG08LozmjY3Z25PtYrY1YVz4Eu2Uie1zi43iC0x5i0Ha16j
-	 wKQL38EVfy4ZBmzk1QCX9Tj2jnLn5Jx55FmjulveaqC9B1zPz6Xd/1UnR+4Fz0YNx1
-	 aaHYqPsNURZhAvMOxkF+9fJqXJ60/QA9/oxOw8cLVLNDuc9HOWXYylCha8mprE9+0Z
-	 QnAyXcxd+Gd0dyKQXLSNIQa9j/Zl0tXW/V+o6oza1YEljmUoYmZMvCc8IJSwZ8Yvai
-	 6MLuLJBnUwSQg==
-Date: Thu, 23 Mar 2023 15:18:15 +0000
-From: Lee Jones <lee@kernel.org>
-To: Bagas Sanjaya <bagasdotme@gmail.com>
-Cc: Linux Documentation <linux-doc@vger.kernel.org>,
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
-	Linux ARM <linux-arm-kernel@lists.infradead.org>,
-	Linux MediaTek <linux-mediatek@lists.infradead.org>,
-	Linux LEDs <linux-leds@vger.kernel.org>,
-	Jonathan Corbet <corbet@lwn.net>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Shuah Khan <skhan@linuxfoundation.org>,
-	ChiaEn Wu <chiaen_wu@richtek.com>,
-	ChiYuan Huang <cy_huang@richtek.com>,
-	kernel test robot <lkp@intel.com>
-Subject: Re: [PATCH 3/3] Documentation: leds: MT6370: Use bullet lists for
- timing variables
-Message-ID: <20230323151815.GR2673958@google.com>
-References: <20230319074903.13075-1-bagasdotme@gmail.com>
- <20230319074903.13075-4-bagasdotme@gmail.com>
+	id 1pfPzs-002kul-31;
+	Thu, 23 Mar 2023 18:49:14 +0000
+Received: by mail-wm1-x334.google.com with SMTP id l15-20020a05600c4f0f00b003ed58a9a15eso1724687wmq.5;
+        Thu, 23 Mar 2023 11:49:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1679597348;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=UaAtIRtOu++U0RXXy05q7KocYfCm4/E/CZEqe2Ect2k=;
+        b=h2ivD7hcvtWe9brHOPv+jqBpm0raSc80vwDnXEhu5IdMrXiSPdjv0esN1GT7ewwyYG
+         H2y8Eqn4Mo60ywPRXJTn8XgB+fMxZVA7Ct7E9JHORCpJmeCIzHvdrGjUdnE+vxLGYPiz
+         VllmEBVE8pnA4884rTJfjjv+EJ0V+uVKTLuKCdadwNglfs7N/eccLAUNRpSrEf1I0/Hg
+         dxzYcGpTFKNcuWyNeoJKlNn2EdqUnIIf8IbDhN28vDqEqCqgpCdS+JbajSk8ldfUqupS
+         L6eoIE7x1bDdqffvBZdtYyGHZKEJjlBUFneI5JFhM147Bl5C24i2CFWn5q43MEwWX9Re
+         KG+Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679597348;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=UaAtIRtOu++U0RXXy05q7KocYfCm4/E/CZEqe2Ect2k=;
+        b=xYgQMOkN2xDt5qRmdnekuBzw+j4N8P1VRd1njREZPCj3v0YbH7VKhiGnhcTC0yNnnD
+         dLeOI2uOihTN6aIfonJ8PeR96CSMpm4BryAGHeryrYLbfofitOFR7V5ns6QTNzOD7lzt
+         SKpLU0/3pIlD384gsJJD4iG9uUHiDftWN5HlitiH2C77VlZR9ZGI2ovQP2axO+lgcMwa
+         SnTfT7dNaBFo+b4Lf7a/PpSHzT/r3PgFIzOjctk/JnFjpO6BCIJhFwPTYG6VkiuqScLJ
+         AaqIK1TBg83bqXC0XFRDxtxmGSB1Mx0dHmxucKf6seZmesYvQsRQI2HgyvfEfXZ5iHhc
+         nimQ==
+X-Gm-Message-State: AO0yUKUlHOxF8zs4c/SJx3sp1ATGat4rzlb9Y1nfIJ3i/MQKtkWCe0Tf
+	mES7gvE1Dz8d0MrE5dki8uA=
+X-Google-Smtp-Source: AK7set8iPShWRfidqt9I4Gp4+eMynjPzq6WpxgPllmii/Bx8E6MpO7U6wLeZYbAleSLfDLFNMZa2Gg==
+X-Received: by 2002:a7b:cd88:0:b0:3ee:7061:1bdd with SMTP id y8-20020a7bcd88000000b003ee70611bddmr481614wmj.4.1679597348358;
+        Thu, 23 Mar 2023 11:49:08 -0700 (PDT)
+Received: from jernej-laptop.localnet (82-149-1-233.dynamic.telemach.net. [82.149.1.233])
+        by smtp.gmail.com with ESMTPSA id n17-20020a1c7211000000b003edf2dc7ca3sm2621024wmc.34.2023.03.23.11.49.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 23 Mar 2023 11:49:07 -0700 (PDT)
+From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Chen-Yu Tsai <wens@csie.org>, Samuel Holland <samuel@sholland.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Joe Tessler <jrt@google.com>, Dongchun Zhu <dongchun.zhu@mediatek.com>,
+ Jacopo Mondi <jacopo+renesas@jmondi.org>,
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+ Niklas =?ISO-8859-1?Q?S=F6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Robert Foss <rfoss@kernel.org>, Todor Tomov <todor.too@gmail.com>,
+ Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Stanimir Varbanov <stanimir.k.varbanov@gmail.com>,
+ Vikash Garodia <quic_vgarodia@quicinc.com>, Heiko Stuebner <heiko@sntech.de>,
+ Benoit Parrot <bparrot@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Rob Herring <robh@kernel.org>
+Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] media: dt-bindings: Drop unneeded quotes
+Date: Thu, 23 Mar 2023 19:49:05 +0100
+Message-ID: <5657054.DvuYhMxLoT@jernej-laptop>
+In-Reply-To: <20230320233944.2920964-1-robh@kernel.org>
+References: <20230320233944.2920964-1-robh@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230319074903.13075-4-bagasdotme@gmail.com>
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230323_081822_219042_2FA2803A 
-X-CRM114-Status: GOOD (  13.70  )
+X-CRM114-CacheID: sfid-20230323_114912_973008_A9940DE9 
+X-CRM114-Status: GOOD (  10.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,25 +119,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 19 Mar 2023, Bagas Sanjaya wrote:
-
-> The timing description contains list of timing pattern variables, but it
-> uses code block without indentation instead. Switch to bullet list as it
-> is better fit for this purpose.
->
-> While at it, substitute "load" for "duty" because the variables control
-> timing for current load into the device.
->
-> Link: https://lore.kernel.org/oe-kbuild-all/202303182310.tB1mUzU7-lkp@intel.com/
-> Fixes: 4ba9df04b7ac66 ("docs: leds: Add MT6370 RGB LED pattern document")
-> Reported-by: kernel test robot <lkp@intel.com>
-> Signed-off-by: Bagas Sanjaya <bagasdotme@gmail.com>
+Dne torek, 21. marec 2023 ob 00:39:42 CET je Rob Herring napisal(a):
+> Cleanup bindings dropping unneeded quotes. Once all these are fixed,
+> checking for this can be enabled in yamllint.
+> 
+> Signed-off-by: Rob Herring <robh@kernel.org>
 > ---
->  Documentation/leds/leds-mt6370-rgb.rst | 18 +++++++++---------
->  1 file changed, 9 insertions(+), 9 deletions(-)
+>  .../devicetree/bindings/media/allwinner,sun4i-a10-ir.yaml | 2 +-
+>  .../bindings/media/allwinner,sun50i-h6-vpu-g2.yaml        | 4 ++--
 
-Applied, thanks
+For Allwinner:
+Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
 
---
-Lee Jones [李琼斯]
+Best regards,
+Jernej
+
+>  .../devicetree/bindings/media/amlogic,axg-ge2d.yaml       | 4 ++--
+>  .../devicetree/bindings/media/amlogic,gx-vdec.yaml        | 4 ++--
+>  .../devicetree/bindings/media/amlogic,meson-ir-tx.yaml    | 4 ++--
+>  .../devicetree/bindings/media/i2c/chrontel,ch7322.yaml    | 4 ++--
+>  .../devicetree/bindings/media/i2c/dongwoon,dw9768.yaml    | 6 +++---
+>  .../devicetree/bindings/media/i2c/maxim,max9286.yaml      | 2 +-
+>  .../devicetree/bindings/media/i2c/ovti,ov02a10.yaml       | 2 +-
+>  .../devicetree/bindings/media/mediatek,mdp3-rdma.yaml     | 2 +-
+>  .../bindings/media/mediatek,vcodec-subdev-decoder.yaml    | 4 ++--
+>  .../devicetree/bindings/media/microchip,sama5d4-vdec.yaml | 4 ++--
+>  .../devicetree/bindings/media/nxp,imx8mq-vpu.yaml         | 4 ++--
+>  .../devicetree/bindings/media/qcom,msm8916-camss.yaml     | 4 ++--
+>  .../devicetree/bindings/media/qcom,msm8916-venus.yaml     | 8 ++++----
+>  .../devicetree/bindings/media/qcom,msm8996-camss.yaml     | 4 ++--
+>  .../devicetree/bindings/media/qcom,msm8996-venus.yaml     | 4 ++--
+>  .../devicetree/bindings/media/qcom,sc7180-venus.yaml      | 4 ++--
+>  .../devicetree/bindings/media/qcom,sc7280-venus.yaml      | 4 ++--
+>  .../devicetree/bindings/media/qcom,sdm660-camss.yaml      | 4 ++--
+>  .../devicetree/bindings/media/qcom,sdm660-venus.yaml      | 4 ++--
+>  .../devicetree/bindings/media/qcom,sdm845-camss.yaml      | 4 ++--
+>  .../devicetree/bindings/media/qcom,sdm845-venus-v2.yaml   | 4 ++--
+>  .../devicetree/bindings/media/qcom,sdm845-venus.yaml      | 4 ++--
+>  .../devicetree/bindings/media/qcom,sm8250-camss.yaml      | 4 ++--
+>  .../devicetree/bindings/media/qcom,sm8250-venus.yaml      | 4 ++--
+>  Documentation/devicetree/bindings/media/rc.yaml           | 2 +-
+>  .../devicetree/bindings/media/rockchip,rk3568-vepu.yaml   | 4 ++--
+>  Documentation/devicetree/bindings/media/rockchip-vpu.yaml | 4 ++--
+>  Documentation/devicetree/bindings/media/ti,cal.yaml       | 2 +-
+>  30 files changed, 57 insertions(+), 57 deletions(-)
+
+
+
 
