@@ -4,70 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3110C6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Mar 2023 10:36:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15436C6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Mar 2023 11:06:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wiqhdnXIk/NcU6/Bf3sB3AeFGAs+Gfdj17owfU9DjgE=; b=qhlrEdoEi3qnLlzdcZk0+lmNnz
-	s0jieT/UetTEC+9UdXQKrvOOovY6RKS6AK/Vl/qCVgUIV6SgvNfrH+Fb24C5CXW1Gn9OeW0dnU5Oe
-	iO5FH0eD7gVCbTYgFsf6B7A1VQmKumjAvjunwSA+RiUQGsObWztaamf3YY0XTWF6iXrLUFcjcZzVB
-	YImZbrkivLemf5B01gMkC1lcAz7Pk3Vps1P20VNA5WRg+v0Qil50KgLMFYuKOokmnzP18VNjBLwVC
-	lJPQWX6v+gGaPT3AH910r2cV8a3k5VWFZTb5PZEpa16pQ3UPj+2Gw1DfmWTw+An900Aa+afDQWwzz
-	cYnCx/1Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=hofKIKZrcWEIKxsuY6is+jJOL7WfUkIDD9e2ocwx6b8=; b=D+Ow0brtqeWXJ5mqYld7brbhXk
+	x5Xf8iDuOGNdtw3h8Wau4S61PxSfA3FGb4JNRegsJTVAI4ny89TkDevs+FtihDVJcB/8Ed17umA18
+	hicn/+oAExOKuxLVqV6v3uvngf1nzEoSFs0vYg2dJZa78S0RQBgtjacrRwKHmcFjMlAeaOMTZC9jM
+	SN0gC5znM9gbnHmXldxxj+K3MgvhvSrwjJGQqqvdeF8blACMchFEHiv2gN/IPDG9WTv1hWJrvE8ql
+	UJkdpEAmtiZhPFJyhYsKA6JStSlyIvJ0aDnnX0N+qQFlydoZGCjwZXuV/f6EUcP+j1Ak0OXDQN3n/
+	vxpN4sMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfIJF-001axs-35;
-	Thu, 23 Mar 2023 10:36:41 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pfIlz-001fVe-0h;
+	Thu, 23 Mar 2023 11:06:23 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfIJB-001avU-1L;
-	Thu, 23 Mar 2023 10:36:38 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7961B6600880;
-	Thu, 23 Mar 2023 10:36:35 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1679567795;
-	bh=jIgvWhgm+9PSBUraP9OHdAeWySoS60VL5lcO1FVaiPE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ZgAFdYU6N/IMlq31x3w8mwWPvHi+WpJRNzhP7yxXN0vyJ62hCLzwJKfrKgaGBlsw1
-	 AuxjcEYNFgW8RxvPYBvVikeb1WB/iUWR4cz0Uf84/qfnpLjzMS0cU1FL9OEVX9Sn9g
-	 cAR3jceK+HJUkOu240zcRAHFWFbSJQ+WDpcO43Nd/5lbqbnRW65o/IN2ckfYYaZaG2
-	 HYmpkAfydxohZatq9HdVqQwKsKo7yKsOZ8CjA4Rq7HmXryG4Pi8iqzImACS9t6Vb3W
-	 W9OEPEh1NVpxd3ohFqamstu2DKfX7KxmIrY8abPHOhM9WB2aQzTXYUgx4g/StTcCKf
-	 yNemXg1Cq7gWw==
-Message-ID: <e90dcc00-7685-befd-2a93-aed4ea8b1b2a@collabora.com>
-Date: Thu, 23 Mar 2023 11:36:32 +0100
+	id 1pfIlw-001fV6-1d;
+	Thu, 23 Mar 2023 11:06:21 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1pfIlm-0002bz-3B;
+	Thu, 23 Mar 2023 12:06:11 +0100
+Date: Thu, 23 Mar 2023 11:04:23 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Viresh Kumar <viresh.kumar@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Sam Shih <sam.shih@mediatek.com>, John Crispin <john@phrozen.org>
+Subject: [PATCH] cpufreq: mediatek: guard error paths to avoid kernel panic
+Message-ID: <ZBwyN7NwZ2zqHygr@makrotopia.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH v4 00/19] Enable GPU with DVFS support on MediaTek SoCs
-Content-Language: en-US
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Chen-Yu Tsai <wenst@chromium.org>
-References: <20230301095523.428461-1-angelogioacchino.delregno@collabora.com>
- <b4fc6bd8-e300-0f40-4216-8b99589c21cc@gmail.com>
- <895abaa2-5fd3-9928-4e53-86ce160fbad8@collabora.com>
- <CAGXv+5EPVhH-O+ZdoLeW4OZVcEtS824oracmu3jHTa8k-tEU0A@mail.gmail.com>
- <e5302c3e-f985-b020-5f8c-fba876768eaf@gmail.com>
- <CAGXv+5FR5unBbdp0MDZY1TtSMoTtxzi2F4tO=3qZsh=3b3Ru9w@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAGXv+5FR5unBbdp0MDZY1TtSMoTtxzi2F4tO=3qZsh=3b3Ru9w@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230323_033637_585672_19BCFC76 
-X-CRM114-Status: GOOD (  11.37  )
+X-CRM114-CacheID: sfid-20230323_040620_558854_F0D4FC66 
+X-CRM114-Status: GOOD (  10.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,43 +63,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 07/03/23 10:27, Chen-Yu Tsai ha scritto:
-> On Thu, Mar 2, 2023 at 7:28 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
->> On 02/03/2023 11:11, Chen-Yu Tsai wrote:
->>> On Thu, Mar 2, 2023 at 6:10 PM AngeloGioacchino Del Regno
->>> <angelogioacchino.delregno@collabora.com> wrote:
->>>>
->>>> Il 02/03/23 10:36, Matthias Brugger ha scritto:
->>>>> Series looks good but from my understanding has a dependency on:
->>>>> [PATCH v4 00/12] Panfrost: Improve and add MediaTek SoCs support
->>>>> (https://lore.kernel.org/linux-mediatek/20230228102610.707605-1-angelogioacchino.delregno@collabora.com/)
->>>>>
->>>>> Did I get that right?
->>>>>
->>>>
->>>> Yes you got it right - without the mentioned series, this one will do nothing
->>>> at all (and will also fail binding checks, as the bindings are introduced in
->>>> that other series).
->>>
->>> Please also let me test them on MT8183 and MT8186 before merging them.
->>>
->>
->> Of course, I'll wait for your tested-by tags then.
->> Thanks for testing!
-> 
-> Tested-by: Chen-Yu Tsai <wenst@chromium.org>
-> 
-> on MT8183, MT8186, MT8192 and MT8195 Chromebooks.
-> 
+Guard pointer access in error path of mtk_cpu_dvfs_info_init() to
+make sure info->proc_reg and info->sram_reg are valid pointers before
+accessing them, which would result in kernel panic e.g. in case of
+them being set to -EPROBE_DEFER.
 
-Hello Matthias,
+Fixes: 4b9ceb757bbb ("cpufreq: mediatek: Enable clocks and regulators")
+Reported-by: Sam Shih <sam.shih@mediatek.com>
+Suggested-by: Sam Shih <sam.shih@mediatek.com>
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ drivers/cpufreq/mediatek-cpufreq.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
-The Panfrost driver patches were just queued to drm-misc-next [1], can you please
-pick this fully reviewed and fully tested series, so that we get them both to land
-at the same time?
+diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
+index 4466d0c91a6a..980a31ddd0f2 100644
+--- a/drivers/cpufreq/mediatek-cpufreq.c
++++ b/drivers/cpufreq/mediatek-cpufreq.c
+@@ -579,10 +579,12 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
+ 	dev_pm_opp_of_cpumask_remove_table(&info->cpus);
+ 
+ out_free_resources:
+-	if (regulator_is_enabled(info->proc_reg))
+-		regulator_disable(info->proc_reg);
+-	if (info->sram_reg && regulator_is_enabled(info->sram_reg))
+-		regulator_disable(info->sram_reg);
++	if (!IS_ERR(info->proc_reg))
++		if (regulator_is_enabled(info->proc_reg))
++			regulator_disable(info->proc_reg);
++	if (!IS_ERR(info->sram_reg))
++		if (info->sram_reg && regulator_is_enabled(info->sram_reg))
++			regulator_disable(info->sram_reg);
+ 
+ 	if (!IS_ERR(info->proc_reg))
+ 		regulator_put(info->proc_reg);
+-- 
+2.40.0
 
-[1]: https://patchwork.kernel.org/comment/25265910/
-
-Many thanks!
-Angelo
 
