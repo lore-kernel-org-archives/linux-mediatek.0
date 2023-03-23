@@ -4,80 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9207C6FD1C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Mar 2023 09:05:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8395C6FD1C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Mar 2023 09:05:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ER5BSCr9JV00PaqEK5UpQdMYow41x054A0NzdPKRFxo=; b=OKlmIYrZRyuzyloEavE8l8Bs6w
-	sOiSWOFAI76kZ8nMIkNkizJw0CWIOpvco07VYVL1enAYWBb7BaVYecQYlRolSMisdqe5dAOO6qVdA
-	/uGTd6Pqro9/PcpUXv/WSeEOHqGJnXKafzMWWByZLg2TqU9ObgL3orI1/rQTGxCXIHoVpfFS389Rf
-	5dBho+F/d3n0Bch7c3n/U61RuxS4OIXn/xXYpPCBDTQ4S6O413IBGy89IqPRvJTEFdHzFEvZitd5+
-	ZTrnzR6yV4jDDAiRsrG+TN2O0lXf1yHUjVRPqwMlY6lfHPv45ma7nbxv8QHik4+9ZhabF6YrzBeW6
-	+OM+XtFA==;
+	bh=tSGMZ0DXxSMkETvQUMza3l/dMCnNL+ukYiI0PwAfIfc=; b=KWac6z+qrCF9+R5U9vmSTNpV76
+	cj+j5NiCrMTW82XDG8umXgruXP6jFCF3hez3C4h5b0x/odefHddZkX5sd8iDA2sM9hWx3WeSOXl4B
+	oXLzT7yy26KrJzfTqMMPqU/qZPqw5exR/3CuPtdQrhSwj73996v8XPxmjeuvE6MwZxx0+7RKD0QpK
+	E0aCAOn4oM/9kEwrP6zIcX8ODNNdZYH0iUE6Qa3FL19+kjQkzkbsLfV2D5/btjyKoa0sT6Ky2oHy4
+	OGYu1MiNNvL1+CDXo95kUqeRnXS+tUMNui/o2cuSw8HY/nmG96rX2sNJAL90R6Ji4ywHmPungRACC
+	j31elixQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfGsa-001Mij-1B;
-	Thu, 23 Mar 2023 09:05:04 +0000
-Received: from mail-ua1-x932.google.com ([2607:f8b0:4864:20::932])
+	id 1pfGtB-001Mv8-0m;
+	Thu, 23 Mar 2023 09:05:41 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfGsU-001MfF-1n
-	for linux-mediatek@lists.infradead.org;
-	Thu, 23 Mar 2023 09:05:01 +0000
-Received: by mail-ua1-x932.google.com with SMTP id 89so14522694uao.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 23 Mar 2023 02:04:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1679562295;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ER5BSCr9JV00PaqEK5UpQdMYow41x054A0NzdPKRFxo=;
-        b=cTjDYAWCMEbcsqF6rG9P/DV5MiBYk+2MTPuya2dk52/SvB4hjaQIL9hP5GxKBi3bxZ
-         rbu9QMoZoFYtR54ZOowHAVGIN5y+DPM8Ii8TGsN6q82qqKpx9K/0HwH0BLiB7wZvSv6Z
-         JOClzLV/+Zt8HBq0JiXVL450GKr5XKfuV0nX4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679562295;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ER5BSCr9JV00PaqEK5UpQdMYow41x054A0NzdPKRFxo=;
-        b=bGiSPZV3ddZBzy9yiDNTdC9SZGTJdAQ2YXFVcgVqRdYDCVJlH1wAbGKW4o25g/iXGr
-         Kk/QE/C+x084zgSkPcsPcuhTZjXH+nHd7smc0HdykjTsLVrhBbo9IVCX3V/xiq7b9Z7T
-         3TQF7p3Lq45XYNnERCDJgIyouREw9SDWkXob5LLdY+f30mM4+0YMk1O6Z/5JpJo8+0G9
-         w0/2MmYJPa6Lm1Ns3fF8LIahETugR8+/C+HSe0Ts1qW+pSlC7L4RBpMvF0fQsL9pWZkq
-         BeOWjrOFL+HKz9b8WpHYgyYipi5pppM2zw7N8yeFZ8ZQ0tvX1smJXY0uXvnnS85Thzc1
-         Vs2g==
-X-Gm-Message-State: AAQBX9eK72/LQsF2HvBnLi13Dibwp/GXiQ27eg40Ph3NH7piICVDLYIp
-	8gpOteFupfEDqVwpX8/E9nukpmfsx053TthVkqH+Mf5n5a9x/0Ey
-X-Google-Smtp-Source: AKy350aBwAARZFXCKTypUlkAy7+CkD3eOoHJIRlhaqu5olHys60B5m/DMcr9xhAwDThW+C/Sce5ce0an2hZ4w2+3tgE=
-X-Received: by 2002:a05:6130:913:b0:68e:33d7:7e6b with SMTP id
- bu19-20020a056130091300b0068e33d77e6bmr5361851uab.1.1679562294902; Thu, 23
- Mar 2023 02:04:54 -0700 (PDT)
+	id 1pfGt7-001MsE-14;
+	Thu, 23 Mar 2023 09:05:38 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0E43866030B7;
+	Thu, 23 Mar 2023 09:05:33 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1679562333;
+	bh=wwINqe29kiBtmq4po2HZOBPJxJovHBx9wl35mDz0eHA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=UEZnifG9ZX7v5DHzmaog9mbNJaM9MNnXyW5cYBM1yhc20gaYpj95pjQglnTVLKPkN
+	 H7dr5DbBuw3EOBUP6hOvhMkd4sGhN7gSWRu/dh1ilMxGUyPwbR7dTJJzoZ2pWEJ5bv
+	 OpJ89TPNAzNQDT2GvaDBqL4BW/6nRXrjMicFjFDjS0Ow3fb7i+WUrnzp9Bvl7alNuq
+	 PeygCLTgOod7dR/hk2Hf2UTTJnapZ5aEuGvyAIt/DDKHYqhr8rmeOUgVwZMxdRk7iP
+	 Tw2AZA3mV8+D40ZP+4evhb9q2xSchBLcAyZv4NA47rvzAx5wr6Jq4JLLXmFF8ZKKQ2
+	 5UjCLVLIDCL7w==
+Message-ID: <99e1d5b2-509f-3291-f327-2050f1bd9aa3@collabora.com>
+Date: Thu, 23 Mar 2023 10:05:30 +0100
 MIME-Version: 1.0
-References: <20230321121859.2355-1-nancy.lin@mediatek.com> <17831605-5c9d-9c92-d190-04f91060ace4@collabora.com>
-In-Reply-To: <17831605-5c9d-9c92-d190-04f91060ace4@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 23 Mar 2023 17:04:43 +0800
-Message-ID: <CAGXv+5F82Ctz0pit4LsR5mQizPq-v2k3OVfiRhsGnG0a2J=Dyg@mail.gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
 Subject: Re: [PATCH v30 0/7] Add MediaTek SoC DRM (vdosys1) support for mt8195
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: "Nancy.Lin" <nancy.lin@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, krzysztof.kozlowski+dt@linaro.org, 
-	devicetree@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com, 
-	singo.chang@mediatek.com, Nick Desaulniers <ndesaulniers@google.com>, 
-	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	Nathan Chancellor <nathan@kernel.org>, clang-built-linux@googlegroups.com, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Language: en-US
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: "Nancy.Lin" <nancy.lin@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, singo.chang@mediatek.com,
+ Nick Desaulniers <ndesaulniers@google.com>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, Nathan Chancellor <nathan@kernel.org>,
+ clang-built-linux@googlegroups.com, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20230321121859.2355-1-nancy.lin@mediatek.com>
+ <17831605-5c9d-9c92-d190-04f91060ace4@collabora.com>
+ <CAGXv+5F82Ctz0pit4LsR5mQizPq-v2k3OVfiRhsGnG0a2J=Dyg@mail.gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <CAGXv+5F82Ctz0pit4LsR5mQizPq-v2k3OVfiRhsGnG0a2J=Dyg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230323_020458_612146_2CC38423 
-X-CRM114-Status: UNSURE (   9.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230323_020537_502092_B3E0C287 
+X-CRM114-Status: GOOD (  11.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,22 +85,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 23, 2023 at 4:58=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 21/03/23 13:18, Nancy.Lin ha scritto:
-> > The hardware path of vdosys1 with DPTx output need to go through by sev=
-eral modules, such as, OVL_ADAPTOR and MERGE.
-> >
-> > Add DRM and these modules support by the patches below:
-> >
->
-> I've tested v30 again on MT8173, MT8192 and MT8195 based Chromebooks.
-> Green light from me.
->
-> Chun-Kuang, can you please pick it?
+Il 23/03/23 10:04, Chen-Yu Tsai ha scritto:
+> On Thu, Mar 23, 2023 at 4:58 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+>>
+>> Il 21/03/23 13:18, Nancy.Lin ha scritto:
+>>> The hardware path of vdosys1 with DPTx output need to go through by several modules, such as, OVL_ADAPTOR and MERGE.
+>>>
+>>> Add DRM and these modules support by the patches below:
+>>>
+>>
+>> I've tested v30 again on MT8173, MT8192 and MT8195 based Chromebooks.
+>> Green light from me.
+>>
+>> Chun-Kuang, can you please pick it?
+> 
+> It was picked up a few hours ago.
+> 
+> ChenYu
 
-It was picked up a few hours ago.
+Sorry, I didn't receive that email. Perfect!
 
-ChenYu
+Thanks!
+Angelo
 
