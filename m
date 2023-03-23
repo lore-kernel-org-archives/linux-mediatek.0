@@ -4,90 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BF81C6FD1C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Mar 2023 12:36:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D0CFC6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Mar 2023 13:26:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sG86IN3Vdawja4OTBqoAaDLMM3BOtyeRil5sAAAYa64=; b=PueNLAKAHvyEQFBXEoX/XDYSpW
-	0bqOWB0mWnHF2h/Jm7zJnt6ckmgcw4QoQX5PjrpL6vlN6tSF38kt+Ux46WxVwQ4UUsxcQTIrwQqLo
-	A4oAdlOxJOItTrKETs/ADqFTNJIJz0fKDuoC4QrivhzTM5iXSaItP5g2o03BuNvm/K1eaxBEP+2+e
-	bMGFLfgjFOatt0qq38l4U02YGwkYKNrlH8nLgAYUzcS52ioKkoJ6dwqBv0rdWJ12Kt4O7G3Q+7/5z
-	+HxsacR+Lm6yku0tXQokIJREnjUs6QzBB0jJoQtleHI1IV09mRJFOs6Fm0ry4KQMnKpGLlFIgpa5+
-	DH6OBYDw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=53aoUx/eajGfKz5QbYcA0RNXDeeI1Ths6w7UfrzctiM=; b=gb4UApgu8yAWcNGNueL1O61llZ
+	7xIQ4HP+/x71RdehZJNTwbGXFs7lkBwWM9ImOA69zca/BP866Pe+CYsuaKhiqyT4SE4YcuPlQpMUu
+	4vNLfdKDIak2Dq4Md8GV2OGQYRe+/2y0w2eD2WwDeL+C8XTC1QudRg1vqMRSyd/c6nUqOmTg1+kfK
+	tBi454PVPVGWL2GNySWG3PiHFX6oGm8G0FBbmJFFglZeLOr21yi0GHSkR8kAwQ7/XBGqy7dkbaWTj
+	yv4lsO5Tw8hCIral3Y+drhjSFVvkBE543MUJv72SRdGH+1gmGeyQmSl4A3zxo1nUuKoyP5isttFHH
+	PEU3fE3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfKAb-001vqR-2O;
-	Thu, 23 Mar 2023 12:35:53 +0000
-Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
+	id 1pfKxn-0022qE-2y;
+	Thu, 23 Mar 2023 13:26:43 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfKAY-001vpP-0j;
-	Thu, 23 Mar 2023 12:35:51 +0000
-Received: by mail-pf1-x42e.google.com with SMTP id y2so8632122pfw.9;
-        Thu, 23 Mar 2023 05:35:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679574949;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=sG86IN3Vdawja4OTBqoAaDLMM3BOtyeRil5sAAAYa64=;
-        b=MCd2aKuMluyeMycgMxfOfXwDXdozXv1ihRZOW33fFiVruAoiAWtLyNGnl6cNTBPgXp
-         i/P03egxQrgYgCdLv9Gej5SxaQQycqd8PvT0CJa7wc5TYm1qoQpwrbd/SDNK4Xnghi7v
-         jEnCXO2veOSvRIuvRtE7hwuHw3mGKTnhZ++jMb9pmGpI8+m/T+qIztVMyOSYy9w69Xc3
-         G95Haw4pQeXYCcuq6AG7yQmaVJ/dWmxeR2xcswmu4lQpp3RbUy96zmdHu4zXSI43t4JJ
-         0/bGfxZYvQusQPql062GdE+wTJ4oYryyeTiDWIf1DxM45fdd5p2OuMrxplV+V2KSKk6H
-         V0cw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679574949;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=sG86IN3Vdawja4OTBqoAaDLMM3BOtyeRil5sAAAYa64=;
-        b=ubDdHE9B7ZRUbnvb0LUcud5BwEItjmIbSDxJ2i52MUtdCg2BuypXaSjR3Koxowf+yD
-         kAgO9BdomD2Qdj2EttdNJcTjWMAaGI9Jmu1v6WwBClqGpvL3VR9bZAJxZAwJHm/Gqlou
-         UZV3WuXxLP6zMIg+EBvA6jcWUDKzIgQREO+VV3fwT45POU3ziDzihG2jDT7e5DMJdD42
-         JjhjNg0J75+K6EP31BvgKxEMd7AJHi5GFph+cZWd93/epQAScUIwFO9I8hjLPjiEIFrq
-         4XDorzZxrJ+8IHEjJOZrB8D6b3MGpcZU8bTzVvenqQW7yTYSxpdjPB2JnZrunBWIWqEV
-         cOhw==
-X-Gm-Message-State: AO0yUKU7/K0p5d58+xflk98NOEQv8/UWcsfKK3FU9M0QDubhdRarV2tj
-	Hokzvy3FxUFWbUfq9IE9svo=
-X-Google-Smtp-Source: AK7set9BVqV8PjBMAXZJ191R5TCitQaa6ikl1gIzN0x3OiW36GBmgTQUJOqoJoSAPKIdMPo+We9ROA==
-X-Received: by 2002:aa7:954a:0:b0:628:642:c533 with SMTP id w10-20020aa7954a000000b006280642c533mr7091222pfq.31.1679574949055;
-        Thu, 23 Mar 2023 05:35:49 -0700 (PDT)
-Received: from [192.168.43.80] (subs28-116-206-12-43.three.co.id. [116.206.12.43])
-        by smtp.gmail.com with ESMTPSA id w4-20020a654104000000b0049f5da82b12sm11359254pgp.93.2023.03.23.05.35.45
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 23 Mar 2023 05:35:48 -0700 (PDT)
-Message-ID: <da9d9bca-23d5-aaa8-a815-5a9421c05a3d@gmail.com>
-Date: Thu, 23 Mar 2023 19:35:42 +0700
+	id 1pfKxf-0022oV-30
+	for linux-mediatek@lists.infradead.org;
+	Thu, 23 Mar 2023 13:26:39 +0000
+X-UUID: 4e8062a6c97e11ed8687db9d93187ff1-20230323
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=53aoUx/eajGfKz5QbYcA0RNXDeeI1Ths6w7UfrzctiM=;
+	b=S6mCwEE955e0WZuogwkT0f0IspgQ9VXYmky1EDlDR4FI9b2XxHLXcgAJOYmTI6dbWLYS1l1kf/M4LDl8f4dW/Fe+K2FC5dRIutQG3PKqcrETmRAeKb5ipuPYaAA1ziwS5KG1Hg/+N9E+36Qc7DCjZBTOhvIAjS81GeJYMRkh4lU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22,REQID:1052a287-6d81-4d59-88d3-b642f457b900,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:120426c,CLOUDID:e75128b4-beed-4dfc-bd9c-e1b22fa6ccc4,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: 4e8062a6c97e11ed8687db9d93187ff1-20230323
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <deren.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1952796915; Thu, 23 Mar 2023 06:26:23 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Thu, 23 Mar 2023 21:26:21 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Thu, 23 Mar 2023 21:26:21 +0800
+From: Deren Wu <deren.wu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
+CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
+	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, Leon Yen
+	<Leon.Yen@mediatek.com>, Eric-SY Chang <Eric-SY.Chang@mediatek.com>, KM Lin
+	<km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
+	<ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Stella Chang
+	<Stella.Chang@mediatek.com>, Quan Zhou <quan.zhou@mediatek.com>, Ryder Lee
+	<ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+	linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
+Subject: [PATCH] wifi: mt76: fix 6GHz high channel not be scanned
+Date: Thu, 23 Mar 2023 21:26:12 +0800
+Message-ID: <81dd14e7cf0da4ef770b807d9d8801d5ad3b2261.1679576520.git.deren.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH 0/3] Documentation fixes for MT6370 RGB
-Content-Language: en-US
-To: Lee Jones <lee@kernel.org>
-Cc: Linux Documentation <linux-doc@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Linux MediaTek <linux-mediatek@lists.infradead.org>,
- Linux LEDs <linux-leds@vger.kernel.org>, Jonathan Corbet <corbet@lwn.net>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Shuah Khan <skhan@linuxfoundation.org>, ChiaEn Wu <chiaen_wu@richtek.com>,
- ChiYuan Huang <cy_huang@richtek.com>
-References: <20230319074903.13075-1-bagasdotme@gmail.com>
- <2b8667b5-ea54-2ef4-f069-a86acd28ecea@gmail.com>
- <20230323123156.GL2673958@google.com>
-From: Bagas Sanjaya <bagasdotme@gmail.com>
-In-Reply-To: <20230323123156.GL2673958@google.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230323_053550_262082_93D41576 
-X-CRM114-Status: GOOD (  17.84  )
+X-CRM114-CacheID: sfid-20230323_062635_979313_7729B879 
+X-CRM114-Status: GOOD (  12.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,36 +87,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 3/23/23 19:31, Lee Jones wrote:
->> ping
-> 
-> a) Don't do that!
-> 
-> b) Especually don't do that 4 days after submission!
-> 
-> The usual expectation is 2 full weeks before submitting a [RESEND].
-> 
-> Mark Brown says it best:
-> 
-> "
-> Please don't send content free pings and please allow a reasonable time
-> for review.  People get busy, go on holiday, attend conferences and so
-> on so unless there is some reason for urgency (like critical bug fixes)
-> please allow at least a couple of weeks for review.  If there have been
-> review comments then people may be waiting for those to be addressed.
-> 
-> Sending content free pings adds to the mail volume (if they are seen at
-> all) which is often the problem and since they can't be reviewed
-> directly if something has gone wrong you'll have to resend the patches
-> anyway, so sending again is generally a better approach though there are
-> some other maintainers who like them - if in doubt look at how patches
-> for the subsystem are normally handled.
-> "
-> 
+From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 
-Ah! I triggered the wrong message at the wrong time. Thanks anyway!
+mt76 scan command only support 64 channels currently. If the
+channel count is larger than 64(for 2+5+6GHz), some channels will
+not be scanned. Hence change the scan type to full channel scan
+in case of the command cannot include proper list for chip.
 
+Fixes: 399090ef9605 ("mt76: mt76_connac: move hw_scan and sched_scan routine in mt76_connac_mcu module")
+Reported-by: Ben Greear <greearb@candelatech.com>
+Tested-by: Isaac Konikoff <konikofi@candelatech.com>
+Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+---
+ .../net/wireless/mediatek/mt76/mt76_connac_mcu.c    | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index efb9bfaa187f..01f9c080d889 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -1675,8 +1675,16 @@ int mt76_connac_mcu_hw_scan(struct mt76_phy *phy, struct ieee80211_vif *vif,
+ 	req->channel_min_dwell_time = cpu_to_le16(duration);
+ 	req->channel_dwell_time = cpu_to_le16(duration);
+ 
+-	req->channels_num = min_t(u8, sreq->n_channels, 32);
+-	req->ext_channels_num = min_t(u8, ext_channels_num, 32);
++	if (sreq->n_channels == 0 || sreq->n_channels > 64) {
++		req->channel_type = 0;
++		req->channels_num = 0;
++		req->ext_channels_num = 0;
++	} else {
++		req->channel_type = 4;
++		req->channels_num = min_t(u8, sreq->n_channels, 32);
++		req->ext_channels_num = min_t(u8, ext_channels_num, 32);
++	}
++
+ 	for (i = 0; i < req->channels_num + req->ext_channels_num; i++) {
+ 		if (i >= 32)
+ 			chan = &req->ext_channels[i - 32];
+@@ -1696,7 +1704,6 @@ int mt76_connac_mcu_hw_scan(struct mt76_phy *phy, struct ieee80211_vif *vif,
+ 		}
+ 		chan->channel_num = scan_list[i]->hw_value;
+ 	}
+-	req->channel_type = sreq->n_channels ? 4 : 0;
+ 
+ 	if (sreq->ie_len > 0) {
+ 		memcpy(req->ies, sreq->ie, sreq->ie_len);
 -- 
-An old man doll... just what I always wanted! - Clara
+2.18.0
 
 
