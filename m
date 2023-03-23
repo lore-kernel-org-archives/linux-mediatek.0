@@ -4,71 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E43BAC6FD1C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Mar 2023 08:33:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCD0DC6FD1C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Mar 2023 08:38:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cxxADGM7ougpcYQ83aeznKVeHn9174ZSNJoBCrMRZW4=; b=A0nQALyDFzmsu5EysDzwNUNyUn
-	Xng8BWLSp01KZyuGv+URsodU8d6Y+BAT/T7gFrdhQQ9XqVPMusKD3rjRpBvUfATNnT7dHfTuAA52k
-	JNIpN5ilVlL5DZkzloyAo9gNsSQsmzOxm1SSkZJzZyyF8U13dk69265NftIr9dgH4oh/RtyoYGYKR
-	EpqoriHl3i6tnb5MSV7eGDi2863UHkQa8hr+B+HncF1ghmmx1Hraygd5MDp3St6n24YGG3FZcHTXc
-	Pj0vGWvO5fF9eP9HbI6ltG3iFa6QA9eJitpXq4vcnEm9hZifIUuc4F4Y+mp39Rf+/D3kd30ADR3U3
-	/VqeFj9A==;
+	bh=ts6l4q35PJyZVvbtUPUcE0vDkunILKSFRvvJ+IL6obs=; b=Y5QlOe4b12Vt/CNMlIPNXTDgru
+	VRt+h3JIE60B6Hd5YRp2ciZerSttLIYvHb2hrpAZo4qO5/gNJZPZ00jHLLCFDE9mZygz7Q6vkK/7q
+	iSRPIQEJ9Gy4NcBhEojBv6ECDpVbcsp7SfkWFnaGwFHx/7FXGOO4arXzP1IHqzFP8TOc/tmJSmnrP
+	AzyUT9bui4LYHE1Ngky6Gc8KoWZF8i9tHvifwCrGTOdXPcQNJOLeSODNhQbDnBKR+oaNgU21Zb/qx
+	EK+mfLP/n6Jj+jf1KzfURHCQ0f+Duq9NHU12RAjZjiwjPo/d9eYd/SLJi8L/hlrYxaPIFIlrNnYn4
+	2cMz/noQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfGNo-001HBU-0f;
-	Thu, 23 Mar 2023 08:33:16 +0000
-Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
+	id 1pfGSe-001IGP-0C;
+	Thu, 23 Mar 2023 08:38:16 +0000
+Received: from mail-qt1-f178.google.com ([209.85.160.178])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfGNk-001HA5-09
-	for linux-mediatek@lists.infradead.org;
-	Thu, 23 Mar 2023 08:33:14 +0000
-Received: by mail-yw1-x1130.google.com with SMTP id 00721157ae682-536af432ee5so383788087b3.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 23 Mar 2023 01:33:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1679560387;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=cxxADGM7ougpcYQ83aeznKVeHn9174ZSNJoBCrMRZW4=;
-        b=BTbo8CJVXRcdmDMOM4UfP124qgFd+Dy8GJUF6z0c3o+Y+FsK72/6RlC3M/w1pIQDbw
-         GOY8S+I+6J0LGanKOboWWqcovlIQQS8iN/HozNnyX3v3CItJW7atXtnUQwr15/DLiuAH
-         0OQ5HGlVelykx478Yy98SmI3GhHbB3/Gc0hTt+1aUfJyKuZTP0gTDwChy29fpSpMZJPK
-         /ttN/GdglwV3yLoS/q2TOwUwVFd6kczeZQZYr6LD5uyerO40xK+zmw+YyxY7LaWGPidO
-         2WMcTauKGs3pReavYjS1Roat157c8dqXUdRR8/3M+780QB+JvBjGJuVYLd/aq9/LfUow
-         2O2Q==
+	id 1pfGSa-001IEb-1m;
+	Thu, 23 Mar 2023 08:38:13 +0000
+Received: by mail-qt1-f178.google.com with SMTP id n2so25772341qtp.0;
+        Thu, 23 Mar 2023 01:38:11 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679560387;
+        d=1e100.net; s=20210112; t=1679560690;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=cxxADGM7ougpcYQ83aeznKVeHn9174ZSNJoBCrMRZW4=;
-        b=k/wQdI8rdWaKE4KNfVJsLO/DmWNtNpgYjvlw4+2YPxV00kEhlHv/oV3LI5YGQ0oY7m
-         mOHeMolXa13id9w2lWaZSeZQ1VHVq7xdd72ib5IfK+23+cg13EqgGUvjkWQIIVE488kr
-         lQyX9z2/zhKU0iJ+pdMPNkjz1jFnYZmIjK8x+w2Om0S+ihT8+rQw57B2szM8hkJaOUk+
-         r0csClGjhmtXBbFj438jcCKQFF46EkFTKweAy9jbTcch9bjT7OvLdf9UBUiTBYGNjzdn
-         pCpQka5LhsPQf57FwUC7sPDXgIxHwclFxgiixUuy8vt+GSy2T9OiF81JwJ/1tjs6Zhg9
-         /aEA==
-X-Gm-Message-State: AAQBX9ecIFLWzLpY5P+M4ZsMHjenXx5x85oUaLDvuu1XoAMGV4HB3TKI
-	7+mEeG9sQjX8wkC7eA/KprrdGb8moIWkwvluQYwMBQ==
-X-Google-Smtp-Source: AKy350beNfKqYmxZD6Py6G2/x4UomJShnG3A20iBsq0qiIUpVjYvYk7dcPiC73v8tqDiLG/XhlxCs6p4eoqkD5syZ9E=
-X-Received: by 2002:a81:ed09:0:b0:545:8202:bbcf with SMTP id
- k9-20020a81ed09000000b005458202bbcfmr1373175ywm.9.1679560386843; Thu, 23 Mar
- 2023 01:33:06 -0700 (PDT)
+        bh=ts6l4q35PJyZVvbtUPUcE0vDkunILKSFRvvJ+IL6obs=;
+        b=BlOYfG7uEB9+f94rAxRB6WosIJ8pv18VfO0Rld2GFM/RjDDG3eK1rG5wXliM3gWrZ2
+         gI652U5hOkcnQoqi7wJDHpU7WTZiXFz53MCQfBtcZYJHJt2NL9V8t2KW8XJtL/5NTOCI
+         48C04bnoNToDhaQkd0qra7dGnilxSiH6KP1yis9tOqvcfbuOg6wf6gHWEC23gotYt9dC
+         0g4r0FmpJCPpEJZsL0FCbmKcg7ZCQXBY8BKyBnDxLLqAfSCzjLyrhGJZr930aS45h7nY
+         LA3s2XnKg9CgGfHu3mDZXEA1SKD9aGoNcrLE3fgIe/gtZmaI3NLWsgtKEXdVvcVCogUC
+         +Myw==
+X-Gm-Message-State: AO0yUKUAGySsVW0Zfx43AV/kcSKdP+EkhZPvlKcsTZZDVWqC6tTUKzfl
+	jlu5ELzaqld0PMS5A/fiTZHMe7R+5SLa2A==
+X-Google-Smtp-Source: AK7set903Q8Hjaawp3szxl5OQNQPo1QqIP1hSxbvhPbXQtQf38KjoOghBN/46P6d2gk9cSBjDXZ/wA==
+X-Received: by 2002:ac8:5a0c:0:b0:3ba:1f09:94ab with SMTP id n12-20020ac85a0c000000b003ba1f0994abmr10124734qta.57.1679560690132;
+        Thu, 23 Mar 2023 01:38:10 -0700 (PDT)
+Received: from mail-yw1-f181.google.com (mail-yw1-f181.google.com. [209.85.128.181])
+        by smtp.gmail.com with ESMTPSA id y5-20020ac87085000000b003e014845d9esm7789413qto.74.2023.03.23.01.38.09
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 23 Mar 2023 01:38:09 -0700 (PDT)
+Received: by mail-yw1-f181.google.com with SMTP id 00721157ae682-5445009c26bso382891787b3.8;
+        Thu, 23 Mar 2023 01:38:09 -0700 (PDT)
+X-Received: by 2002:a81:af02:0:b0:544:8bc1:a179 with SMTP id
+ n2-20020a81af02000000b005448bc1a179mr1425037ywh.4.1679560688960; Thu, 23 Mar
+ 2023 01:38:08 -0700 (PDT)
 MIME-Version: 1.0
 References: <20230322173549.3972106-1-robh@kernel.org>
 In-Reply-To: <20230322173549.3972106-1-robh@kernel.org>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Thu, 23 Mar 2023 09:32:55 +0100
-Message-ID: <CACRpkdaWJX6Dgk5DeVS2uyFuL863jdAgBj2_+dhriiek0zPkKw@mail.gmail.com>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Thu, 23 Mar 2023 09:37:57 +0100
+X-Gmail-Original-Message-ID: <CAMuHMdXUtnngE4Jk6P0iLF7MXnp+7jw9XXOZsbSutDtbO77d=Q@mail.gmail.com>
+Message-ID: <CAMuHMdXUtnngE4Jk6P0iLF7MXnp+7jw9XXOZsbSutDtbO77d=Q@mail.gmail.com>
 Subject: Re: [PATCH] dt-bindings: clock: Drop unneeded quotes
 To: Rob Herring <robh@kernel.org>
-Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+Cc: Linus Walleij <linus.walleij@linaro.org>, Michael Turquette <mturquette@baylibre.com>, 
+	Stephen Boyd <sboyd@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
 	Geert Uytterhoeven <geert+renesas@glider.be>, Sylwester Nawrocki <s.nawrocki@samsung.com>, 
 	Tomasz Figa <tomasz.figa@gmail.com>, Chanwoo Choi <cw00.choi@samsung.com>, 
 	Alim Akhtar <alim.akhtar@samsung.com>, Orson Zhai <orsonzhai@gmail.com>, 
@@ -82,9 +78,8 @@ Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230323_013312_087027_B32535A5 
-X-CRM114-Status: UNSURE (   8.38  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230323_013812_584668_46FC6669 
+X-CRM114-Status: GOOD (  15.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,14 +96,28 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 On Wed, Mar 22, 2023 at 6:35=E2=80=AFPM Rob Herring <robh@kernel.org> wrote=
 :
-
 > Cleanup bindings dropping unneeded quotes. Once all these are fixed,
 > checking for this can be enabled in yamllint.
 >
 > Signed-off-by: Rob Herring <robh@kernel.org>
 
-Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+>  Documentation/devicetree/bindings/clock/renesas,cpg-mssr.yaml | 4 ++--
+>  .../bindings/clock/renesas,rcar-usb2-clock-sel.yaml           | 4 ++--
+>  .../devicetree/bindings/clock/renesas,rzg2l-cpg.yaml          | 4 ++--
 
-Yours,
-Linus Walleij
+Acked-by: Geert Uytterhoeven <geert+renesas@glider.be>
+
+Gr{oetje,eeting}s,
+
+                        Geert
+
+--=20
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
+.org
+
+In personal conversations with technical people, I call myself a hacker. Bu=
+t
+when I'm talking to journalists I just say "programmer" or something like t=
+hat.
+                                -- Linus Torvalds
 
