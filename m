@@ -4,56 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25CBAC6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Mar 2023 11:51:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2ECEC76195
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Mar 2023 12:32:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9HsirmLZfh83ZppZd4P6agJP7HFtClqC4IIjsTD+5gg=; b=oS0FFEQ85AP8nS2tVhn5dz6MbH
-	6zH+PH9lybmVQlzH+pzgTMW6KrRew66CI1Nt9cbSnYB54afDBf8yfgxWhIXeLeKb0/JW+razj62I6
-	XpiF8fnJ5YI8mdk57CJmKztaA5C8UgIFQUGnL3OsJ4vwwH0DwtiGIf4bDwMJHt7fcowEh0ZXHcXWs
-	LFADVn883HPt/CI9FSHjvUceicxEHRm8jNpJPt24GH538M7GrAMhlv4pMpANb9zgdOp/fxo0veLxp
-	2jlw3VES6A5dbqxdj7BUxTSCTuXC4WnT940UT80xboEdhzpMTeJ4UHuL8fTcm/mVF2p9YQCod0T6j
-	qmoJzzow==;
+	bh=q3oFc7HG40RazzjRowLgAFEZAzRcKjLWZeAzXfwUoSw=; b=0hH6H7s06zVlDQ5HyB1t+eKXzo
+	Tmje6IAn/sUmu4g22RRs2ST0oNOsHQJXUN6r88/56VB2G0oGwYA3G0b+jjc6NzWfPJltXEz/OW33p
+	hCRcHw6I8mGXDiqI6z0Ll4lfCFlUnNU/ZzDnF1gWm37l0My1v6YtBNwygc6UGHMUS0vT9lrzCELYw
+	s2MT2VA7YBAiJlBpJQ/16OO3bktRZ5Ssc9c/IENZ4X6zhWRQG7PRtAYqJfEhtODueRXZxAJ6A5kNp
+	TRVnqooT612QXReEDNnWgxFFpECmAOeh7W5UL6b0pwHZrdRNNvhT3SADEH7Hq82CyAkx79rEONW5T
+	0mkJC57g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfJTX-001mfD-0T;
-	Thu, 23 Mar 2023 11:51:23 +0000
-Received: from jabberwock.ucw.cz ([46.255.230.98])
+	id 1pfK6y-001v1M-1b;
+	Thu, 23 Mar 2023 12:32:08 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfJTT-001mdv-27;
-	Thu, 23 Mar 2023 11:51:20 +0000
-Received: by jabberwock.ucw.cz (Postfix, from userid 1017)
-	id 3CC8C1C0E52; Thu, 23 Mar 2023 12:51:18 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ucw.cz; s=gen1;
-	t=1679572278;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=9HsirmLZfh83ZppZd4P6agJP7HFtClqC4IIjsTD+5gg=;
-	b=VDzP8vhLVbiM03kiwTbrtmCkM6uJshzgOpe1AVmbiSWh2TGpW/KF04GXjaOKxmIV/ltGGQ
-	NCnRqpq4S0We6kpQfMhjwu1guevbQaujqgosigcbj9iHlLkzUEDL8Y63XoAmFiH7BoqoOK
-	VUM46x8HhGRih5b1WCqNvhdOYPICoL0=
-Date: Thu, 23 Mar 2023 12:51:17 +0100
-From: Pavel Machek <pavel@ucw.cz>
-To: Liang He <windhl@126.com>
-Cc: matthias.bgg@gmail.com, gene_chen@richtek.com,
-	linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] leds: mt6360: Add missing fwnode_handle_put()
-Message-ID: <ZBw9NXkC0mgIJhBq@duo.ucw.cz>
-References: <20230322034128.1856117-1-windhl@126.com>
+	id 1pfK6u-001v0A-0q;
+	Thu, 23 Mar 2023 12:32:05 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 49E3762672;
+	Thu, 23 Mar 2023 12:32:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2FF62C433EF;
+	Thu, 23 Mar 2023 12:31:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1679574722;
+	bh=EYf6786yE/sBEJ5kVxCWKnQjuC3+cnNr9QYBjueYbts=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=J++0vaReFWwPOwPXGP+Po4zvrxhwh5She2/Ec56VQSyU/fB7On301Z7qGfUhVnUyX
+	 SdO5C25BT+xlwKrVGf5EnOQLRMO0ivqJ2a1v86lLTJn0ok331QoJwer4z39XS8p4Tv
+	 UWf3+tr8QcyH2hsSvavwjncNpjTVFvkGGC9IXuf9140dHvo6FawidhHQRWGdMaF8wQ
+	 fcFQXvjQ/lzngUvaOsH6tJBNoNLxkfsvI7wRhhU9EUYNnrTZhsSc7mDc3J2u7PqPVf
+	 MF9uFDrtjjga7TBZG1HIgr2H3KboAaLcQttd83XsXeOrQUjR+94n4RpXrBUoAzQqYo
+	 rdLJcSSaPByGQ==
+Date: Thu, 23 Mar 2023 12:31:56 +0000
+From: Lee Jones <lee@kernel.org>
+To: Bagas Sanjaya <bagasdotme@gmail.com>
+Cc: Linux Documentation <linux-doc@vger.kernel.org>,
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+	Linux ARM <linux-arm-kernel@lists.infradead.org>,
+	Linux MediaTek <linux-mediatek@lists.infradead.org>,
+	Linux LEDs <linux-leds@vger.kernel.org>,
+	Jonathan Corbet <corbet@lwn.net>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Shuah Khan <skhan@linuxfoundation.org>,
+	ChiaEn Wu <chiaen_wu@richtek.com>,
+	ChiYuan Huang <cy_huang@richtek.com>
+Subject: Re: [PATCH 0/3] Documentation fixes for MT6370 RGB
+Message-ID: <20230323123156.GL2673958@google.com>
+References: <20230319074903.13075-1-bagasdotme@gmail.com>
+ <2b8667b5-ea54-2ef4-f069-a86acd28ecea@gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="aCKLs85SJyDKK/4M"
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20230322034128.1856117-1-windhl@126.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <2b8667b5-ea54-2ef4-f069-a86acd28ecea@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230323_045119_842477_B4726A15 
-X-CRM114-Status: GOOD (  14.13  )
+X-CRM114-CacheID: sfid-20230323_053204_336348_599434EF 
+X-CRM114-Status: GOOD (  17.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,65 +83,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, 23 Mar 2023, Bagas Sanjaya wrote:
 
---aCKLs85SJyDKK/4M
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> On 3/19/23 14:49, Bagas Sanjaya wrote:
+> > kernel test robot recently reported htmldocs warnings on documentation
+> > for MT6370 RGB LED. So here are the fixes.
+> >
+> > Bagas Sanjaya (3):
+> >   Documentation: leds: Add MT6370 doc to the toctree
+> >   Documentation: leds: MT6370: Properly wrap hw_pattern chart
+> >   Documentation: leds: MT6370: Use bullet lists for timing variables
+> >
+> >  Documentation/leds/index.rst           |  1 +
+> >  Documentation/leds/leds-mt6370-rgb.rst | 42 +++++++++++++-------------
+> >  2 files changed, 22 insertions(+), 21 deletions(-)
+> >
+> >
+> > base-commit: 4ba9df04b7ac66d2d000ed7ae2d8136302d99a57
+>
+> ping
 
-Hi!
+a) Don't do that!
 
-> In mt6360_init_isnk_properties(), we should add
-> fwnode_handle_put() when break out of the iteration
-> fwnode_for_each_child_node() as it will automatically
-> increase and decrease the refcounter.
->=20
-> Fixes: 679f8652064b ("leds: Add mt6360 driver")
-> Signed-off-by: Liang He <windhl@126.com>
+b) Especually don't do that 4 days after submission!
 
-I believe you got indentation wrong on }.
+The usual expectation is 2 full weeks before submitting a [RESEND].
 
-With that fixed:
+Mark Brown says it best:
 
-Acked-by: Pavel Machek <pavel@ucw.cz>
+"
+Please don't send content free pings and please allow a reasonable time
+for review.  People get busy, go on holiday, attend conferences and so
+on so unless there is some reason for urgency (like critical bug fixes)
+please allow at least a couple of weeks for review.  If there have been
+review comments then people may be waiting for those to be addressed.
 
-BR,
-							Pavel
+Sending content free pings adds to the mail volume (if they are seen at
+all) which is often the problem and since they can't be reviewed
+directly if something has gone wrong you'll have to resend the patches
+anyway, so sending again is generally a better approach though there are
+some other maintainers who like them - if in doubt look at how patches
+for the subsystem are normally handled.
+"
 
-> +++ b/drivers/leds/flash/leds-mt6360.c
-> @@ -637,14 +637,17 @@ static int mt6360_init_isnk_properties(struct mt636=
-0_led *led,
-> =20
->  			ret =3D fwnode_property_read_u32(child, "reg", &reg);
->  			if (ret || reg > MT6360_LED_ISNK3 ||
-> -			    priv->leds_active & BIT(reg))
-> +			    priv->leds_active & BIT(reg)) {
-> +				fwnode_handle_put(child);
->  				return -EINVAL;
-> +				}
-> =20
->  			ret =3D fwnode_property_read_u32(child, "color", &color);
->  			if (ret) {
->  				dev_err(priv->dev,
->  					"led %d, no color specified\n",
->  					led->led_no);
-> +				fwnode_handle_put(child);
->  				return ret;
->  			}
-> =20
-
---=20
-People of Russia, stop Putin before his war on Ukraine escalates.
-
---aCKLs85SJyDKK/4M
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EABECAB0WIQRPfPO7r0eAhk010v0w5/Bqldv68gUCZBw9NQAKCRAw5/Bqldv6
-8pWjAKCMT6x5/ny7hy/V3/9d6D/s3O4S9ACePHeL63oOu34UZFaGj3bjaEcWAHo=
-=/GiA
------END PGP SIGNATURE-----
-
---aCKLs85SJyDKK/4M--
+--
+Lee Jones [李琼斯]
 
