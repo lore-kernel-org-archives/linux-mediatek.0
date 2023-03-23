@@ -4,93 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95E1CC6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Mar 2023 14:18:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6CB8C6FD1C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Mar 2023 15:16:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KwWlt/KOKKTZV5IfSjGfyeDxmoG3w+1dWejJirL87Kc=; b=CgK1Jg6BfEuQci3zX9TWlHauHw
-	iuQIlxYe04dtewoZljrpWecS7ZvN27fwwV3bJMR9CmClzod14nKYN6NIMQ9V76xyArl7G6zDWyUy1
-	mLBOsMVX97T6/0V9qRYeF4voyHWg1nHCExkwhiKgT1PgrO2/7QOVHGxrnIXKfUSwbUABFXuSELHQZ
-	6CDAaDHYLZPv6mZc2drP5O9rzXtMnUudVtsEB8Wu3Mf/ptjw9HKhT49cxIFjPjprjsfuH0NgJUTAZ
-	4Hpnttd9pHZMTw89LZlk1ZUHM7e1ANVZjGLLrpOISxe1olLhfUFbi8c7GaaVBWJxadWdRv5DJsPvp
-	PEKlt3tw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AQjzyKbxIwbvAq7i9D8ITwlfd8ipaObnXYwxzfn+nxU=; b=Qr7i47qh3eJBG1GznOVuKaKc44
+	tUChPDmHanUg29+6RogRGtpR0/e364vIonMz3H3SToBNhIWDY0moplm9DaVuQIC+wd/cUdOw8DvR6
+	caRUKrpmK8o8Po/j43WS6eMNrktzqA1CbwJb79LZno+aal8x8DNWpDxaRbLjo7BeqRHTgFS10xR7p
+	XDrohE/vHHQln6lkLxeb3IlOoASUt9sk/7ChcLdj/sfozJLPl5m7yJdXni5ID9BGUWGlz76GqneZB
+	T7l5aYeA37PV602na+UNnbYYAhSW+bJmVPlWneyS4kPBJDpNhyKc3z64CNcmgsgiz8f6Z8nbYZbrU
+	QwqwRWKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfLlN-0029Mf-2R;
-	Thu, 23 Mar 2023 14:17:57 +0000
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
+	id 1pfMfu-002K2C-3D;
+	Thu, 23 Mar 2023 15:16:23 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfLlJ-0029Kj-2f;
-	Thu, 23 Mar 2023 14:17:55 +0000
-Received: by mail-pj1-x1029.google.com with SMTP id qe8-20020a17090b4f8800b0023f07253a2cso2205060pjb.3;
-        Thu, 23 Mar 2023 07:17:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679581070;
-        h=content-transfer-encoding:in-reply-to:content-language:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=KwWlt/KOKKTZV5IfSjGfyeDxmoG3w+1dWejJirL87Kc=;
-        b=ShXIgySZUj17n8AichZ6BuKTikQIsXDd6ZVTquByVrE6Vbrd5xJvxmzFeGybkzJQw+
-         2dvPVykT31PVMXZkQI4/V1PrLosJ8/G81+bLf7guHi0hoaBYJbF4P4oFsacqNyGOGzl0
-         KWAIfcfULvOuAvq54WwijhDLokXsbuMfLjGNKadLpchF8Xh1u2lk9enjxA9BLLWIOWEu
-         sNxTYRawdnA2VypiKSGiKAadBU691K9veJ+xX+PPKmFrf9bhOcFw5otLG9wahtG3Sl1x
-         1QbMXbM+gOxUpC+3yWS7L272rcBPzaRxoZNn6I4m1UlenvHfLy+sDQLGpknXl3R0oztV
-         pQ/Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679581070;
-        h=content-transfer-encoding:in-reply-to:content-language:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=KwWlt/KOKKTZV5IfSjGfyeDxmoG3w+1dWejJirL87Kc=;
-        b=OoKJ6rubf501GPxZoMkj/Z7yRXuihxkm7CTa5445B0l/5bgPvDGh/EK4+EwwyaVTMp
-         P5Q4jgDAlh3bOHAgHQxHB2SX0T+AA9K++ctmn3NHo+3KZkhkgFwHcLjvmxLBIC4NvqtR
-         wCuz5cVd99zjaMkO6CQvjO/h30q/0HqGW86ERKeJT8IBV0T8ggCLjuQQQG9JP36ZPFyJ
-         R4J/VhUpw/+NPUajxeaFXOdJS/Llyj0nA46aJnICRDRE8yQ0dFltaGheDzE2bOhsc2b2
-         TD67cuky5hwY/+Et1/0EJbAV6uk8iLRtpZAoQYhk0H/PL8u1SJsBPRl+UgpU8HUQ1SrE
-         BqGw==
-X-Gm-Message-State: AO0yUKXf3sSy8ey9humjq+KACtdGkx076QIRSxJ90/GME8vlPaa39/G6
-	Us0hcwkDUYqPswRBjqHtQUE=
-X-Google-Smtp-Source: AK7set8s8aOBz3BhSS+2TpYUEhRf2Zwajb86+z7vpmqctX+tEU+jGLlvaa7kumROlD7GK1yDG+Y7Ag==
-X-Received: by 2002:a05:6a20:a914:b0:d7:6b87:94b8 with SMTP id cd20-20020a056a20a91400b000d76b8794b8mr2981901pzb.18.1679581069864;
-        Thu, 23 Mar 2023 07:17:49 -0700 (PDT)
-Received: from [172.30.1.36] ([14.32.163.5])
-        by smtp.gmail.com with ESMTPSA id d18-20020aa78692000000b0062a515874b4sm1237790pfo.32.2023.03.23.07.17.44
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 23 Mar 2023 07:17:49 -0700 (PDT)
-Message-ID: <81425aaa-8c41-8d9d-ddc4-f951039bc516@gmail.com>
-Date: Thu, 23 Mar 2023 23:17:42 +0900
+	id 1pfMfq-002K1C-1n;
+	Thu, 23 Mar 2023 15:16:19 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id E2EF862754;
+	Thu, 23 Mar 2023 15:16:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DD38CC433D2;
+	Thu, 23 Mar 2023 15:16:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1679584577;
+	bh=UAGXMd7qHQxvTeJ3ngAjhXp0j0EEZ5bXpvg6k1yIYuc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=GvRkr1o1RIzXOG5vuSqux6xLPrE3g6IOAmh2G92oDA0OvmhjPf/VTembJirigwo5K
+	 rozJO50LKhXPv296i/HSI8VQuHVWMxQ78O0bkdAQkImpySnLpfYgP5YbpJS3zBLB3i
+	 9kCY5kqo/a9uTGgOrEy5Kl+AJ/XpAlNzrxq3idlxUKRBgP7DW6TZZavtUP0x5vOUWO
+	 iXR4lm3IwiaTLdkeXF/qXz6MM6uIJg0fEViwKBA0a7NaefK772uKgzVz+b5gFRk5se
+	 ZY5mnD0XOrOqs/zRATFDt/P0BxBdLhdnBvTl0T3nDKZMAl4xbnKH9D4Pd3AuSxRle+
+	 58sFa7tuUB27A==
+Date: Thu, 23 Mar 2023 15:16:11 +0000
+From: Lee Jones <lee@kernel.org>
+To: Bagas Sanjaya <bagasdotme@gmail.com>
+Cc: Linux Documentation <linux-doc@vger.kernel.org>,
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+	Linux ARM <linux-arm-kernel@lists.infradead.org>,
+	Linux MediaTek <linux-mediatek@lists.infradead.org>,
+	Linux LEDs <linux-leds@vger.kernel.org>,
+	Jonathan Corbet <corbet@lwn.net>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Shuah Khan <skhan@linuxfoundation.org>,
+	ChiaEn Wu <chiaen_wu@richtek.com>,
+	ChiYuan Huang <cy_huang@richtek.com>,
+	kernel test robot <lkp@intel.com>
+Subject: Re: [PATCH 1/3] Documentation: leds: Add MT6370 doc to the toctree
+Message-ID: <20230323151611.GP2673958@google.com>
+References: <20230319074903.13075-1-bagasdotme@gmail.com>
+ <20230319074903.13075-2-bagasdotme@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH] dt-bindings: clock: Drop unneeded quotes
-To: Rob Herring <robh@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Sylwester Nawrocki <s.nawrocki@samsung.com>,
- Tomasz Figa <tomasz.figa@gmail.com>, Chanwoo Choi <cw00.choi@samsung.com>,
- Alim Akhtar <alim.akhtar@samsung.com>, Orson Zhai <orsonzhai@gmail.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <20230322173549.3972106-1-robh@kernel.org>
-From: Chanwoo Choi <cwchoi00@gmail.com>
-Content-Language: en-US
-In-Reply-To: <20230322173549.3972106-1-robh@kernel.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230319074903.13075-2-bagasdotme@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230323_071753_886567_AF6F74CC 
-X-CRM114-Status: GOOD (  10.84  )
+X-CRM114-CacheID: sfid-20230323_081618_634132_1C6831FB 
+X-CRM114-Status: GOOD (  12.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,28 +84,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 23. 3. 23. 02:35, Rob Herring wrote:
-> Cleanup bindings dropping unneeded quotes. Once all these are fixed,
-> checking for this can be enabled in yamllint.
-> 
-> Signed-off-by: Rob Herring <robh@kernel.org>
+On Sun, 19 Mar 2023, Bagas Sanjaya wrote:
+
+> Commit 4ba9df04b7ac66 ("docs: leds: Add MT6370 RGB LED pattern document")
+> adds documentation for Mediatek MT6370 RGB LED device, but forgets to
+> include it to leds toctree index.
+>
+> Add the missing entry.
+>
+> Link: https://lore.kernel.org/oe-kbuild-all/202303182310.tB1mUzU7-lkp@intel.com/
+> Fixes: 4ba9df04b7ac66 ("docs: leds: Add MT6370 RGB LED pattern document")
+> Reported-by: kernel test robot <lkp@intel.com>
+> Signed-off-by: Bagas Sanjaya <bagasdotme@gmail.com>
 > ---
->  Documentation/devicetree/bindings/clock/arm,syscon-icst.yaml  | 4 ++--
->  .../devicetree/bindings/clock/mediatek,apmixedsys.yaml        | 4 ++--
->  .../devicetree/bindings/clock/mediatek,topckgen.yaml          | 4 ++--
->  Documentation/devicetree/bindings/clock/renesas,cpg-mssr.yaml | 4 ++--
->  .../bindings/clock/renesas,rcar-usb2-clock-sel.yaml           | 4 ++--
->  .../devicetree/bindings/clock/renesas,rzg2l-cpg.yaml          | 4 ++--
->  .../devicetree/bindings/clock/samsung,exynos850-clock.yaml    | 2 +-
->  Documentation/devicetree/bindings/clock/sprd,sc9863a-clk.yaml | 4 ++--
->  Documentation/devicetree/bindings/clock/sprd,ums512-clk.yaml  | 4 ++--
->  .../devicetree/bindings/clock/xlnx,clocking-wizard.yaml       | 4 ++--
->  10 files changed, 19 insertions(+), 19 deletions(-)
-Reviewed-by: Chanwoo Choi <cw00.choi@samsung.com>
+>  Documentation/leds/index.rst | 1 +
+>  1 file changed, 1 insertion(+)
 
--- 
-Best Regards,
-Samsung Electronics
-Chanwoo Choi
+Applied, thanks
 
+--
+Lee Jones [李琼斯]
 
