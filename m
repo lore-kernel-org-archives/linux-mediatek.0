@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69A19C6FD20
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Mar 2023 17:56:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4BFBC76195
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Mar 2023 17:56:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rRlhXpmF5WBQ5RFYJHMl1+/rHN/Gr+M+OSpfa2VXetU=; b=YxJi+uiaW2URbtKsh5O6SvkWa8
-	OLWrIyYJX749/7baGXUtl0lvIaaL15p7AJwW9dRAWGN3QYVObJJanmW/R10qsi7oV3A8/gggi/B66
-	j7hy/oRbJSgiGccBN5XvY+KAaYR48n3IrFMGHe/37iA1YoysdDtY4+leYjkK9cWXy3l4R6PF/WS54
-	OydoxArIfw3M5wkA8HhiByHpF+a+Vp68JstMKN7HKNHMSP3naxxA4NQqUE4PahWDRtTqtMXTBQD+3
-	0kaA5KnTy/vxCOaDgodSIg3+p3Zgs/NsV7vjnMKs+fua+GD75Cw7YIzSIJtLvw1EYFaVhwrGXLpRN
-	qXoSFFlQ==;
+	bh=et9IXXnwuJj8gBw2w84nxQj+qW6lVRl9tm6flakAp/I=; b=NOWFBEzOwg20QSEnFIrOyaiTQi
+	dSZNONanViKp6si1ktrGSwOKx42FJwRdCHo8dL/rEgJNq2JwnL4vZn0xJakV7LKgDfwFaT3511W5Y
+	9XFlBpQeNnLbLhvpeAblx2t9mbKSoXP1W1LFlR4DxTlQLSVZ3x1P5COM9UwO3L1YWi6VDUEqNLaZe
+	06WbAE5UILpgUz6LMLEDDZA42ZOQZPydCKtzeYSzZCb3GmXanko4V0aB7+TVLdPPvfG4erJSfuJGD
+	faPSC0nebzsoYYUldhfwRH4ggUzpKlbLU2y6/uwEGu1aSF+aXnq4lcKe6wNT0AZp2S91JsnlOO1Re
+	QyT20h1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfleB-005B0l-2y;
-	Fri, 24 Mar 2023 17:56:15 +0000
+	id 1pfleV-005BGC-0R;
+	Fri, 24 Mar 2023 17:56:35 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfld8-005AJX-1X;
-	Fri, 24 Mar 2023 17:55:13 +0000
+	id 1pfldA-005AKv-0Y;
+	Fri, 24 Mar 2023 17:55:15 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 42AC56603138;
-	Fri, 24 Mar 2023 17:55:07 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id DA32F6603143;
+	Fri, 24 Mar 2023 17:55:09 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1679680507;
-	bh=79SRAEZIsqA1w8ffxfqJojjIjl/rGpvi5yKZsaYoD3Y=;
+	s=mail; t=1679680510;
+	bh=klZ1wIb0qi8AUCKdFQaQFYLZ3ZlhvULeIjT368zNwRg=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=JeDk7jRo9Zp69g/fdXby/lWxfqhg1ZBpaYYFgNk1qhAKO641JMLmnFmdQKTa89mc1
-	 +KL2ULoix/PVs9jnjTi2XIFnQLdk7VQRwJKWw6PISZKGbIm3GOtny8Y/upaJn7T0hl
-	 LCMsXhtqZ7Nan76juVi59GxZ+5KYirvzod9LkmhHvX8YbfuNnOqapyCsvHjBXrgR2w
-	 oKFWzRaYzDne3mrHO+KvsXp6AZogYRXwjYnyIoZN/D8EYS7SWQUSaAU6p2jMdlpMWc
-	 TMdEhxHZ9LSpwwuYKQr2hBrvx0lzygDum/DI2Kc4n1ne0uFQu5l+tdZvpjWDqv4rFK
-	 Ryy+0rKFk619g==
+	b=S3wo2L/WbIXRtUL5Frry1upxALnlEdZImgYbyWsWSbznlxp0XuL5HR17x/tbBs0fP
+	 A9xyNIzHJYqC3xVp+g4AvO7GXjeSKAXOApHB3QYpJ5OcvOkjv5dTEFd07MFciqzEgY
+	 z+bu6qqVncKe1kYxh3ca2LfAG97wRIdo/z1F1mDcFoSxynCUqlWzKjwmTRxJUPhieH
+	 UJRVNn3oITsuGGNIpt+jcdYzfjqF5iXfNc7GOLK1+OyfWhNrns3acRMPqHHfNP2ZT7
+	 UjIWSnDu1aRUs9Kp7odBTvPOfFOwxLIOkWfhlmf1kmSOQovcyVf0ayaKDlrJqbtWSA
+	 dDgfDjUNabFGg==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: qii.wang@mediatek.com,
@@ -59,17 +59,18 @@ Cc: qii.wang@mediatek.com,
 	phone-devel@vger.kernel.org,
 	~postmarketos/upstreaming@lists.sr.ht,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v1 08/18] dt-bindings: gce: Add header for MT6795's GCE mailbox
-Date: Fri, 24 Mar 2023 18:54:46 +0100
-Message-Id: <20230324175456.219954-9-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v1 11/18] arm64: dts: mediatek: mt6795: Add VDECSYS and VENCSYS clocks
+Date: Fri, 24 Mar 2023 18:54:49 +0100
+Message-Id: <20230324175456.219954-12-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.40.0
 In-Reply-To: <20230324175456.219954-1-angelogioacchino.delregno@collabora.com>
 References: <20230324175456.219954-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230324_105510_811791_905031A9 
-X-CRM114-Status: GOOD (  10.18  )
+X-CRM114-CacheID: sfid-20230324_105512_372397_51384AE1 
+X-CRM114-Status: UNSURE (   7.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,144 +85,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the GCE header file to define the GCE subsystem IDs, hardware
-event IDs and thread priority IDs for the MT6795 Helio X10 SoC.
+In prepration for adding the IOMMUs and LARBs of this SoC, add the
+VDECSYS and VENCSYS clock controller nodes, providing clocks for the
+vcodec stateful decoder and stateful decoder hardware.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- include/dt-bindings/gce/mediatek,mt6795-gce.h | 123 ++++++++++++++++++
- 1 file changed, 123 insertions(+)
- create mode 100644 include/dt-bindings/gce/mediatek,mt6795-gce.h
+ arch/arm64/boot/dts/mediatek/mt6795.dtsi | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/include/dt-bindings/gce/mediatek,mt6795-gce.h b/include/dt-bindings/gce/mediatek,mt6795-gce.h
-new file mode 100644
-index 000000000000..97d5ba2d2b44
---- /dev/null
-+++ b/include/dt-bindings/gce/mediatek,mt6795-gce.h
-@@ -0,0 +1,123 @@
-+/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
-+/*
-+ * Copyright (c) 2023 Collabora Ltd.
-+ * Author: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+ */
-+#ifndef _DT_BINDINGS_GCE_MT6795_H
-+#define _DT_BINDINGS_GCE_MT6795_H
+diff --git a/arch/arm64/boot/dts/mediatek/mt6795.dtsi b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
+index b721971d4e5e..a8b2c4517e79 100644
+--- a/arch/arm64/boot/dts/mediatek/mt6795.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
+@@ -647,5 +647,17 @@ mmsys: syscon@14000000 {
+ 				 <&gce 1 CMDQ_THR_PRIO_HIGHEST>;
+ 			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0 0x1000>;
+ 		};
 +
-+/* GCE HW thread priority */
-+#define CMDQ_THR_PRIO_LOWEST			0
-+#define CMDQ_THR_PRIO_NORMAL			1
-+#define CMDQ_THR_PRIO_NORMAL_2			2
-+#define CMDQ_THR_PRIO_MEDIUM			3
-+#define CMDQ_THR_PRIO_MEDIUM_2			4
-+#define CMDQ_THR_PRIO_HIGH			5
-+#define CMDQ_THR_PRIO_HIGHER			6
-+#define CMDQ_THR_PRIO_HIGHEST			7
++		vdecsys: clock-controller@16000000 {
++			compatible = "mediatek,mt6795-vdecsys";
++			reg = <0 0x16000000 0 0x1000>;
++			#clock-cells = <1>;
++		};
 +
-+/* GCE SUBSYS */
-+#define SUBSYS_1300XXXX				0
-+#define SUBSYS_1400XXXX				1
-+#define SUBSYS_1401XXXX				2
-+#define SUBSYS_1402XXXX				3
-+#define SUBSYS_1500XXXX				4
-+#define SUBSYS_1600XXXX				5
-+#define SUBSYS_1700XXXX				6
-+#define SUBSYS_1800XXXX				7
-+#define SUBSYS_1000XXXX				8
-+#define SUBSYS_1001XXXX				9
-+#define SUBSYS_1002XXXX				10
-+#define SUBSYS_1003XXXX				11
-+#define SUBSYS_1004XXXX				12
-+#define SUBSYS_1005XXXX				13
-+#define SUBSYS_1020XXXX				14
-+#define SUBSYS_1021XXXX				15
-+#define SUBSYS_1120XXXX				16
-+#define SUBSYS_1121XXXX				17
-+#define SUBSYS_1122XXXX				18
-+#define SUBSYS_1123XXXX				19
-+#define SUBSYS_1124XXXX				20
-+#define SUBSYS_1125XXXX				21
-+#define SUBSYS_1126XXXX				22
-+
-+/* GCE HW EVENT */
-+#define CMDQ_EVENT_MDP_RDMA0_SOF		0
-+#define CMDQ_EVENT_MDP_RDMA1_SOF		1
-+#define CMDQ_EVENT_MDP_DSI0_TE_SOF		2
-+#define CMDQ_EVENT_MDP_DSI1_TE_SOF		3
-+#define CMDQ_EVENT_MDP_MVW_SOF			4
-+#define CMDQ_EVENT_MDP_TDSHP0_SOF		5
-+#define CMDQ_EVENT_MDP_TDSHP1_SOF		6
-+#define CMDQ_EVENT_MDP_WDMA_SOF			7
-+#define CMDQ_EVENT_MDP_WROT0_SOF		8
-+#define CMDQ_EVENT_MDP_WROT1_SOF		9
-+#define CMDQ_EVENT_MDP_CROP_SOF			10
-+#define CMDQ_EVENT_DISP_OVL0_SOF		11
-+#define CMDQ_EVENT_DISP_OVL1_SOF		12
-+#define CMDQ_EVENT_DISP_RDMA0_SOF		13
-+#define CMDQ_EVENT_DISP_RDMA1_SOF		14
-+#define CMDQ_EVENT_DISP_RDMA2_SOF		15
-+#define CMDQ_EVENT_DISP_WDMA0_SOF		16
-+#define CMDQ_EVENT_DISP_WDMA1_SOF		17
-+#define CMDQ_EVENT_DISP_COLOR0_SOF		18
-+#define CMDQ_EVENT_DISP_COLOR1_SOF		19
-+#define CMDQ_EVENT_DISP_AAL_SOF			20
-+#define CMDQ_EVENT_DISP_GAMMA_SOF		21
-+#define CMDQ_EVENT_DISP_UFOE_SOF		22
-+#define CMDQ_EVENT_DISP_PWM0_SOF		23
-+#define CMDQ_EVENT_DISP_PWM1_SOF		24
-+#define CMDQ_EVENT_DISP_OD_SOF			25
-+#define CMDQ_EVENT_MDP_RDMA0_EOF		26
-+#define CMDQ_EVENT_MDP_RDMA1_EOF		27
-+#define CMDQ_EVENT_MDP_RSZ0_EOF			28
-+#define CMDQ_EVENT_MDP_RSZ1_EOF			29
-+#define CMDQ_EVENT_MDP_RSZ2_EOF			30
-+#define CMDQ_EVENT_MDP_TDSHP0_EOF		31
-+#define CMDQ_EVENT_MDP_TDSHP1_EOF		32
-+#define CMDQ_EVENT_MDP_WDMA_EOF			33
-+#define CMDQ_EVENT_MDP_WROT0_WRITE_EOF		34
-+#define CMDQ_EVENT_MDP_WROT0_READ_EOF		35
-+#define CMDQ_EVENT_MDP_WROT1_WRITE_EOF		36
-+#define CMDQ_EVENT_MDP_WROT1_READ_EOF		37
-+#define CMDQ_EVENT_MDP_CROP_EOF			38
-+#define CMDQ_EVENT_DISP_OVL0_EOF		39
-+#define CMDQ_EVENT_DISP_OVL1_EOF		40
-+#define CMDQ_EVENT_DISP_RDMA0_EOF		41
-+#define CMDQ_EVENT_DISP_RDMA1_EOF		42
-+#define CMDQ_EVENT_DISP_RDMA2_EOF		43
-+#define CMDQ_EVENT_DISP_WDMA0_EOF		44
-+#define CMDQ_EVENT_DISP_WDMA1_EOF		45
-+#define CMDQ_EVENT_DISP_COLOR0_EOF		46
-+#define CMDQ_EVENT_DISP_COLOR1_EOF		47
-+#define CMDQ_EVENT_DISP_AAL_EOF			48
-+#define CMDQ_EVENT_DISP_GAMMA_EOF		49
-+#define CMDQ_EVENT_DISP_UFOE_EOF		50
-+#define CMDQ_EVENT_DISP_DPI0_EOF		51
-+#define CMDQ_EVENT_MUTEX0_STREAM_EOF		52
-+#define CMDQ_EVENT_MUTEX1_STREAM_EOF		53
-+#define CMDQ_EVENT_MUTEX2_STREAM_EOF		54
-+#define CMDQ_EVENT_MUTEX3_STREAM_EOF		55
-+#define CMDQ_EVENT_MUTEX4_STREAM_EOF		56
-+#define CMDQ_EVENT_MUTEX5_STREAM_EOF		57
-+#define CMDQ_EVENT_MUTEX6_STREAM_EOF		58
-+#define CMDQ_EVENT_MUTEX7_STREAM_EOF		59
-+#define CMDQ_EVENT_MUTEX8_STREAM_EOF		60
-+#define CMDQ_EVENT_MUTEX9_STREAM_EOF		61
-+#define CMDQ_EVENT_DISP_RDMA0_UNDERRUN		62
-+#define CMDQ_EVENT_DISP_RDMA1_UNDERRUN		63
-+#define CMDQ_EVENT_DISP_RDMA2_UNDERRUN		64
-+#define CMDQ_EVENT_ISP_PASS2_2_EOF		129
-+#define CMDQ_EVENT_ISP_PASS2_1_EOF		130
-+#define CMDQ_EVENT_ISP_PASS2_0_EOF		131
-+#define CMDQ_EVENT_ISP_PASS1_1_EOF		132
-+#define CMDQ_EVENT_ISP_PASS1_0_EOF		133
-+#define CMDQ_EVENT_CAMSV_2_PASS1_EOF		134
-+#define CMDQ_EVENT_CAMSV_1_PASS1_EOF		135
-+#define CMDQ_EVENT_SENINF_CAM1_2_3_FIFO_FULL	136
-+#define CMDQ_EVENT_SENINF_CAM0_FIFO_FULL	137
-+#define CMDQ_EVENT_JPGENC_PASS2_EOF		257
-+#define CMDQ_EVENT_JPGENC_PASS1_EOF		258
-+#define CMDQ_EVENT_JPGDEC_EOF			259
-+
-+#endif
++		vencsys: clock-controller@18000000 {
++			compatible = "mediatek,mt6795-vencsys";
++			reg = <0 0x18000000 0 0x1000>;
++			#clock-cells = <1>;
++		};
+ 	};
+ };
 -- 
 2.40.0
 
