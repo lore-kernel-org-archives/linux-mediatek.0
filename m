@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FD25C6FD1C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Mar 2023 17:55:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EBC9C76196
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Mar 2023 17:56:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Leyd8D2nRHtjpbORXUngUPB1GU9NSyALdF0HPadNxJM=; b=xtgL3feHEUdS1Cszhn/2HuOMdT
-	ZFyBjx+9rW7Cccgf2vMS24kjVRTq0EOjfBnP/+ZHdKk/1xifoUAA1Els9OqY8a2DfRFEMlmRsNvlE
-	VeraoS/OPAOgqmOZ7bgSKXqh7CFLqWzU7LSSamNM0Fj0W6UlAAwnJd4r4P6TxYIQIzg6Olcw4FMet
-	W/PG7shsxEY7ReawF4QEmmK05Jp5qnVnwLj9r1Csj50ZD9e+V+1yGm45RedTFJ2q/a+MR3b687zr8
-	gbPqX7VIYzbZmLw4qfEBKLNxs/T+QsiT4qPATZLPxdrM/632Q+ix3nuez/+mO9iq57OITb+7USR97
-	fxpLjRXA==;
+	bh=lKQKijOdUiigB7V+qhesqEPmmRUk6ghJg7RcSlGl7yM=; b=IH87reKhZGM9eOvobTAhxcj6dp
+	u0cWFk78833aUsGETvryZx9Fjgyub3YBdGuaa8sfDDju6rRlvW/0DncKEkgEaYeaZOLunwU/1BG7H
+	WKXUYNq+jcxUxqycfIwOVTNNlzsPUiIug+8asHBuYxijlz+w0qSv1PelxL/DJKSSS8HY5Jmjfdctw
+	eTt0Pfj520cVjLCaT+73eFzmdF5t3vZviue7eBe6AW359TM4VbZSJ+9Ty+cWvE5caaZyMT5E0Z5Qn
+	Fbbray5F09ck2Te6h4nSIqCAsAiuBYibKmRk739ovdHiIrzBkKrwSJEmaOkOAQOzRBgXBbzFZeiWU
+	DFAkVyxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pflde-005Acl-0f;
-	Fri, 24 Mar 2023 17:55:42 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pfldq-005AlU-2f;
+	Fri, 24 Mar 2023 17:55:54 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfld6-005AHT-0h;
-	Fri, 24 Mar 2023 17:55:10 +0000
+	id 1pfld8-005AJU-1P;
+	Fri, 24 Mar 2023 17:55:12 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id DCDCF6603130;
-	Fri, 24 Mar 2023 17:55:02 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 610DB6603135;
+	Fri, 24 Mar 2023 17:55:06 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1679680503;
-	bh=WzRAN9wdA273tqZEI1XBRQYQ34kkvCmE+TRLQXkcUfI=;
+	s=mail; t=1679680507;
+	bh=2enXSm0ptY4CwPbz2HSp5qKZ+sl1iJxLWmqzjB76U+U=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Ams36ojBJMVxIc5HvWzMXt7fadVAKmNvyNvXbDr1SIfjjcsxhR4/t1n+E4o1iFfdy
-	 26HgPV3F0T6mZ4xOt2/mfaxLVmw7QYwVKWyIUtu2xvfaOt0nNaR2sL1ewdrA8WgIxC
-	 6RTt244duGpb3yHRXLx2MEHWuBo+JFl53MfcueyylPi3jFZfp8aQ5N6QbEC1T406Ou
-	 3LyK3q7E7S5Trc+zfmiqj4yE2MqC2GX50uUjEIsaxSUFugk7ogyNaVj5pbmebJh/Y3
-	 PANgRk+LyR73AEPhxc2Xe7OypsHaWi7xWDB8UKtMFWyxsYK+0BnEvcoa53jn/3lDpm
-	 BFqx4y3RzMdpQ==
+	b=JINiSdsrozBUJnWD6wki041qRowaEi6AaIVOYCGmgM4prCeWNheUAtTf7tTTSaPih
+	 p+8jOc5mJHarcjC7wD3ybEOsC2NndascA+7efOlnrub7cY8OJZ517vOk8Xw06CsiIb
+	 d31g6PMAhUYBBYeKE35mtLKusBHLQhUTkK8vd82lE6f4NiC46hYclYD3j9tewH/T/o
+	 jIXLllVcCrmhoj8hpLrtEggwIH0WSqi4TG7S/fAjH1iyA6i+LlEG3FPTwuSE9R3FNV
+	 PUVGLHoJ9tIu0r152qY/oFca4G8PVkV07CkWAVmxc0X5TfiW618/QyUPvY7F6OU76x
+	 HkrSSSQ55yFXQ==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: qii.wang@mediatek.com,
@@ -59,17 +59,17 @@ Cc: qii.wang@mediatek.com,
 	phone-devel@vger.kernel.org,
 	~postmarketos/upstreaming@lists.sr.ht,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v1 03/18] arm64: dts: mediatek: mt6795: xperia-m5: Enable Frequency Hopping
-Date: Fri, 24 Mar 2023 18:54:41 +0100
-Message-Id: <20230324175456.219954-4-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v1 07/18] dt-bindings: mailbox: mediatek,gce-mailbox: Add compatible for MT6795
+Date: Fri, 24 Mar 2023 18:54:45 +0100
+Message-Id: <20230324175456.219954-8-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.40.0
 In-Reply-To: <20230324175456.219954-1-angelogioacchino.delregno@collabora.com>
 References: <20230324175456.219954-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230324_105508_389905_D29D1029 
-X-CRM114-Status: UNSURE (   8.21  )
+X-CRM114-CacheID: sfid-20230324_105510_618281_12739BAD 
+X-CRM114-Status: UNSURE (   7.51  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,49 +85,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable FHCTL with Spread Spectrum for MAINPLL, MPLL and MSDCPLL
-as found on the downstream kernel for this smartphone.
-Which one to enable, and at what SSC percentage, was found by
-dumping the debugging data from a running downstream kernel and
-checking the downstream code.
-
-/proc/freqhopping # cat status
-FH status:
-===============================================
-id == fh_status == pll_status == setting_id == curr_freq == user_defined
- 0           0             1             0      1599000         0
- 1           0             1             0      1716000         0
- 2           1             1             2      1092000         0
- 3           1             1             2      2912000         0
- 4           1             0             2      1600000         0
- 5           0             0             0            0         0
- 6           0             1             0      1518002         0
- 7           0             0             0            0         0
- 8           0             0             0            0         0
+Add a compatible string for the MT6795 Helio X10 SoC which: this SoC
+can use MT8173 bindings.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts | 7 +++++++
- 1 file changed, 7 insertions(+)
+ .../mailbox/mediatek,gce-mailbox.yaml         | 20 +++++++++++--------
+ 1 file changed, 12 insertions(+), 8 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts b/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
-index d3415527d389..52ce3284a46f 100644
---- a/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
-@@ -48,6 +48,13 @@ bootloader-region@46000000 {
- 	};
- };
+diff --git a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
+index d383b2ab3ce8..cef9d7601398 100644
+--- a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
++++ b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
+@@ -16,14 +16,18 @@ description:
  
-+&fhctl {
-+	clocks = <&apmixedsys CLK_APMIXED_MAINPLL>, <&apmixedsys CLK_APMIXED_MPLL>,
-+		 <&apmixedsys CLK_APMIXED_MSDCPLL>;
-+	mediatek,hopping-ssc-percent = <8>, <5>, <8>;
-+	status = "okay";
-+};
-+
- &pio {
- 	uart0_pins: uart0-pins {
- 		pins-rx {
+ properties:
+   compatible:
+-    enum:
+-      - mediatek,mt6779-gce
+-      - mediatek,mt8173-gce
+-      - mediatek,mt8183-gce
+-      - mediatek,mt8186-gce
+-      - mediatek,mt8188-gce
+-      - mediatek,mt8192-gce
+-      - mediatek,mt8195-gce
++    oneOf:
++      - enum:
++          - mediatek,mt6779-gce
++          - mediatek,mt8173-gce
++          - mediatek,mt8183-gce
++          - mediatek,mt8186-gce
++          - mediatek,mt8188-gce
++          - mediatek,mt8192-gce
++          - mediatek,mt8195-gce
++      - items:
++          - const: mediatek,mt6795-gce
++          - const: mediatek,mt8173-gce
+ 
+   "#mbox-cells":
+     const: 2
 -- 
 2.40.0
 
