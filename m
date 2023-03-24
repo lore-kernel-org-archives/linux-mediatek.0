@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F13CC6FD1C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Mar 2023 17:56:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60A5DC6FD20
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Mar 2023 17:57:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NOqreX7XF8DKvjr7/VqipD5E1R/31uSR58zGdE5OIT0=; b=uIo6y+WpTxtjNRlKgyAHnLnmYX
-	AuumOhMfIqEafhY1vm4CsDuRoXZO1kdgBVRXdkOpIO7APjGwqaO2MPPWM59yfTPARx6UeWYrmWzJ9
-	iqWVhfBB9shsvFg/gaf//NLVqPhkdTA3tYAvvY5gm6/Ylfqe1u6iAYCDXURYSWzkOGFMwPfbyQbl0
-	Rzx7tBtJ0fW0sKfkTmMpCwfEfLMlM25XZzw1ukHTQL+8Ek48Wg+l4keUqdUtoXf4nAeFVV3ODyuab
-	/Ef6DNP2fHSVuwOlLo6fXfJvD4kJgv5dmbWOdL0k8lmHtk+yOX/XXjYfbAGDx/RkjHHGHSBcSFyiN
-	899mXg7Q==;
+	bh=VqwlyrcWthPgDj5Mlnz71SSD/KhEZCHWRkRhnh/1Jgg=; b=j0X8Lopz5mRaAlnwailibD/lIm
+	nS7atJ3ONz0QJhl5uMgL4yNI0ZFiJKAgTiZ/pXP7zqjQN2Ep55HJ+zrv6BMW9djjJlD1vPXs3CIDx
+	ffCusu9adW13F9KtuRD0F3HT24BHsiJm3ZBSJvAmbWSfdn/sC3bfe5jRg06Mls/FIj29dBH9DPVPw
+	yPK9OTC+gkVXk8+keJOAt2TgEeI8G7T0f72owQAfGTiGC16wJBZVV6MylxhuH6VHg5wO7ltXzrpwX
+	CkqIkNcMgkfNUx5xEmnJJPk66Tku2ocTJEOC29ecf7M0/vwvbm2DZ1uNe0K+Ob2KKBcBrrGsI/aDf
+	hzO4TkhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pflej-005BRG-0u;
-	Fri, 24 Mar 2023 17:56:49 +0000
+	id 1pflet-005Ba7-1Q;
+	Fri, 24 Mar 2023 17:56:59 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfldA-005AL4-2R;
+	id 1pfldB-005ALt-20;
 	Fri, 24 Mar 2023 17:55:16 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id BAD126603144;
-	Fri, 24 Mar 2023 17:55:10 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 997DF660313A;
+	Fri, 24 Mar 2023 17:55:11 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1679680511;
-	bh=torr26qWRhLp7GlQbJK2hxugth9DFBivC+4DPBvc1uc=;
+	s=mail; t=1679680512;
+	bh=cWKkAzJmflHlylToMK1QImQEca35moH/Qy5BEXPVfYQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=L3ZZKiKm3+PqBLtHMP6XADAJoC3wlhD4wWCRqaFpodWmWrKud6De4T31T9Vhaaeou
-	 m3r0veeZ/x6W19vulURUNMlYJvD2fel5/vY5B5+DGVeabD0yvI7sWZMVUyHeQazH7Q
-	 /KGWNnDgwzAfy/Ah9tj9EpU9Y/y9oAEDci1QvqckQiv+DHjz/dZR5JaVH9RmBcw5uk
-	 FdjUTnq2M/ivmZo9ffvBSplvcxRmjSlgiT+MW1pDcP/nXRvbceFw5LOqGwa+0GOhx0
-	 UP6YI4nwuQXEyZIPPLS9BLiqCikchjHCjXOh+xTF5N0rIR+WayV74MbMLGqaMMlXgq
-	 EtIIyeXvflOxQ==
+	b=i9xkCyeWIsLtYEjjp94iVfDR4aC8F0rHjKCupNZfUdossrimrGdGe5MNC+DlYv3+L
+	 nH//JL767JRXZyx8FxlyNjKbvy2LVwMNagkbC0aazJBVfiOFEAf32Aakwr9t+DOG6Z
+	 bj6JfIpqtP0tR9sD1pn1midXV72TC7uMGP95TihQV5QwyZUGVA6KxaC3vqpZbLtszd
+	 onXiuu8YE/gr0yD43danNu4JdPmim/GOdwiWgY0pn5voVxq4iqNw1aA64tZT4L9lgs
+	 O/MNYGxiemM57/1oYT2PGfjukB+KhRzgk02nbF8sTt93DFblr5Qxxo0J0lIcE+K7Is
+	 uQoZEgvOr1P/Q==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: qii.wang@mediatek.com,
@@ -59,17 +59,17 @@ Cc: qii.wang@mediatek.com,
 	phone-devel@vger.kernel.org,
 	~postmarketos/upstreaming@lists.sr.ht,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v1 12/18] arm64: dts: mediatek: mt6795: Add support for IOMMU and LARBs
-Date: Fri, 24 Mar 2023 18:54:50 +0100
-Message-Id: <20230324175456.219954-13-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v1 13/18] arm64: dts: mediatek: mt6795-xperia-m5: Enable I2C 0-3 busses
+Date: Fri, 24 Mar 2023 18:54:51 +0100
+Message-Id: <20230324175456.219954-14-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.40.0
 In-Reply-To: <20230324175456.219954-1-angelogioacchino.delregno@collabora.com>
 References: <20230324175456.219954-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230324_105512_953045_66C12D59 
-X-CRM114-Status: UNSURE (   8.58  )
+X-CRM114-CacheID: sfid-20230324_105513_828523_812306EC 
+X-CRM114-Status: UNSURE (   7.83  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,101 +85,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add nodes for the multimedia IOMMU and its LARBs: this includes all but
-the MJC LARB, which cannot currently be used and will be added later.
+Properly configure and enable the three i2c controllers that have
+devices attached on the Sony Xperia M5 smartphone.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt6795.dtsi | 59 ++++++++++++++++++++++++
- 1 file changed, 59 insertions(+)
+ .../dts/mediatek/mt6795-sony-xperia-m5.dts    | 64 +++++++++++++++++++
+ 1 file changed, 64 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6795.dtsi b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-index a8b2c4517e79..a580ddb51a0e 100644
---- a/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-@@ -390,6 +390,17 @@ systimer: timer@10200670 {
- 			clock-names = "clk13m";
- 		};
- 
-+		iommu: iommu@10205000 {
-+			compatible = "mediatek,mt6795-m4u";
-+			reg = <0 0x10205000 0 0x1000>;
-+			clocks = <&infracfg CLK_INFRA_M4U>;
-+			clock-names = "bclk";
-+			interrupts = <GIC_SPI 146 IRQ_TYPE_LEVEL_LOW>;
-+			mediatek,larbs = <&larb0 &larb1 &larb2 &larb3>;
-+			power-domains = <&spm MT6795_POWER_DOMAIN_MM>;
-+			#iommu-cells = <1>;
-+		};
-+
- 		apmixedsys: syscon@10209000 {
- 			compatible = "mediatek,mt6795-apmixedsys", "syscon";
- 			reg = <0 0x10209000 0 0x1000>;
-@@ -648,16 +659,64 @@ mmsys: syscon@14000000 {
- 			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0 0x1000>;
- 		};
- 
-+		larb0: larb@14021000 {
-+			compatible = "mediatek,mt6795-smi-larb";
-+			reg = <0 0x14021000 0 0x1000>;
-+			clocks = <&mmsys CLK_MM_SMI_COMMON>, <&mmsys CLK_MM_SMI_LARB0>;
-+			clock-names = "apb", "smi";
-+			mediatek,smi = <&smi_common>;
-+			mediatek,larb-id = <0>;
-+			power-domains = <&spm MT6795_POWER_DOMAIN_MM>;
-+		};
-+
-+		smi_common: smi@14022000 {
-+			compatible = "mediatek,mt6795-smi-common";
-+			reg = <0 0x14022000 0 0x1000>;
-+			power-domains = <&spm MT6795_POWER_DOMAIN_MM>;
-+			clocks = <&infracfg CLK_INFRA_SMI>, <&mmsys CLK_MM_SMI_COMMON>;
-+			clock-names = "apb", "smi";
-+		};
-+
-+		larb2: larb@15001000 {
-+			compatible = "mediatek,mt6795-smi-larb";
-+			reg = <0 0x15001000 0 0x1000>;
-+			clocks = <&mmsys CLK_MM_SMI_COMMON>, <&infracfg CLK_INFRA_SMI>;
-+			clock-names = "apb", "smi";
-+			mediatek,smi = <&smi_common>;
-+			mediatek,larb-id = <2>;
-+			power-domains = <&spm MT6795_POWER_DOMAIN_ISP>;
-+		};
-+
- 		vdecsys: clock-controller@16000000 {
- 			compatible = "mediatek,mt6795-vdecsys";
- 			reg = <0 0x16000000 0 0x1000>;
- 			#clock-cells = <1>;
- 		};
- 
-+		larb1: larb@16010000 {
-+			compatible = "mediatek,mt6795-smi-larb";
-+			reg = <0 0x16010000 0 0x1000>;
-+			mediatek,smi = <&smi_common>;
-+			mediatek,larb-id = <1>;
-+			clocks = <&vdecsys CLK_VDEC_CKEN>, <&vdecsys CLK_VDEC_LARB_CKEN>;
-+			clock-names = "apb", "smi";
-+			power-domains = <&spm MT6795_POWER_DOMAIN_VDEC>;
-+		};
-+
- 		vencsys: clock-controller@18000000 {
- 			compatible = "mediatek,mt6795-vencsys";
- 			reg = <0 0x18000000 0 0x1000>;
- 			#clock-cells = <1>;
- 		};
-+
-+		larb3: larb@18001000 {
-+			compatible = "mediatek,mt6795-smi-larb";
-+			reg = <0 0x18001000 0 0x1000>;
-+			clocks = <&vencsys CLK_VENC_VENC>, <&vencsys CLK_VENC_LARB>;
-+			clock-names = "apb", "smi";
-+			mediatek,smi = <&smi_common>;
-+			mediatek,larb-id = <3>;
-+			power-domains = <&spm MT6795_POWER_DOMAIN_VENC>;
-+		};
- 	};
+diff --git a/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts b/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
+index 52ce3284a46f..6df1c848e2d5 100644
+--- a/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
++++ b/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
+@@ -55,7 +55,71 @@ &fhctl {
+ 	status = "okay";
  };
+ 
++&i2c0 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&i2c0_pins>;
++	status = "okay";
++};
++
++&i2c1 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&i2c1_pins>;
++	status = "okay";
++};
++
++&i2c2 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&i2c2_pins>;
++	status = "okay";
++};
++
++&i2c3 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&i2c3_pins>;
++	status = "okay";
++};
++
+ &pio {
++	i2c0_pins: i2c0-pins {
++		pins-bus {
++			pinmux = <PINMUX_GPIO45__FUNC_SDA0>,
++				 <PINMUX_GPIO46__FUNC_SCL0>;
++			input-enable;
++		};
++	};
++
++	i2c1_pins: i2c1-pins {
++		pins-bus {
++			pinmux = <PINMUX_GPIO125__FUNC_SDA1>,
++				 <PINMUX_GPIO126__FUNC_SCL1>;
++			bias-disable;
++		};
++	};
++
++	i2c2_pins: i2c2-pins {
++		pins-bus {
++			pinmux = <PINMUX_GPIO43__FUNC_SDA2>,
++				 <PINMUX_GPIO44__FUNC_SCL2>;
++			bias-disable;
++		};
++	};
++
++	i2c3_pins: i2c3-pins {
++		pins-bus {
++			pinmux = <PINMUX_GPIO136__FUNC_SDA3>,
++				 <PINMUX_GPIO137__FUNC_SCL3>;
++			bias-disable;
++		};
++	};
++
++	i2c4_pins: i2c4-pins {
++		pins-bus {
++			pinmux = <PINMUX_GPIO100__FUNC_SDA4>,
++				 <PINMUX_GPIO101__FUNC_SCL4>;
++			bias-disable;
++		};
++	};
++
+ 	uart0_pins: uart0-pins {
+ 		pins-rx {
+ 			pinmux = <PINMUX_GPIO113__FUNC_URXD0>;
 -- 
 2.40.0
 
