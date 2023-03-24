@@ -4,143 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 280DAC6FD20
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Mar 2023 11:20:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 331BCC6FD20
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Mar 2023 11:52:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jnhC/DvfTlyZcOnZuUe9LuHIarcRp2uTbbPObwOvLtk=; b=DnWjUrpLMeHdtJl6z3h/Bp6GOX
-	D34oN1Lp+ShBz10es/VAKSQHN1RoIlOYDIoRXTxIgT7bhQKpUx4SEgruCnosA27LwsHHjKw9by2pW
-	aXdRxirbdIvEKGATBPbR1jGUEbMzlM9Jnd3FVzuUzDK7BKa+Odhu4YI48l6YG5Dn+md86CNCT24MW
-	wqt8FFW+TMF4uNk6ajziAKDi7Cgk1TqBnq/YsiUl7a5PytSJJAWNVtfrQEe9GdDu7c84YeJ1elQBo
-	NLEU91GtHYZ98EoncZ/fknPHDQPBQkH9P2AACrU6gI0Cwb7ZQc78qF4fKfmr9m7o9Rb9EL4Zk3R7H
-	+GIDmk7w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gvt5DL6fQG6Plq4wISGGK/VENRuOiPuD8pNsuXpIl+8=; b=FljND4nwZLNrQgOYRJx96Xeu+z
+	AO7AbfQMpB0OD64x8kd6QwgofNnFcRjFk7YKLttoOYfgPpwM9CqPtyTVip8kry66TktQt+XLWDsyx
+	EIvxn6DWggs3wzo31pO+MDn57552u1uWoyy6oU0Xp7vVflMm9NIUkbil7wt9W3slE+Sz4nYIWsf8s
+	eq4AFKMS7UIjBgUerQ37HjVIiF3Z90UZfK4q5aAUjFefO/HXzfnLDNkrDbcWaGMHBh2DvZ4Ai1+tA
+	/KYQ2+dGAKwEbqGxFGw61xwTgDxpm5d694yZCr2a/XOK3Q+d3yQk2+qIFjwsfeRNA2OEi1x+RAc5d
+	/7BZKacA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pffSy-004EZg-1b;
-	Fri, 24 Mar 2023 11:20:16 +0000
-Received: from new2-smtp.messagingengine.com ([66.111.4.224])
+	id 1pffyJ-004HsT-1W;
+	Fri, 24 Mar 2023 11:52:39 +0000
+Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pffSt-004EXn-0R;
-	Fri, 24 Mar 2023 11:20:13 +0000
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
-	by mailnew.nyi.internal (Postfix) with ESMTP id 02E8758211D;
-	Fri, 24 Mar 2023 07:20:06 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
-  by compute6.internal (MEProxy); Fri, 24 Mar 2023 07:20:06 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
-	:cc:content-type:content-type:date:date:from:from:in-reply-to
-	:in-reply-to:message-id:mime-version:references:reply-to:sender
-	:subject:subject:to:to; s=fm3; t=1679656805; x=1679664005; bh=jn
-	hC/DvfTlyZcOnZuUe9LuHIarcRp2uTbbPObwOvLtk=; b=RINbDJrDavr91qApxS
-	4BIapnsTSMpJsQcMuiekOJ4buZfgO1V5bxZUX92x96X+70RG5pM597H6X6A8ze2Q
-	J3K3HTIk9bh/ZbHNJcL4cY9CXoNlp9BFd+TTAQzaGhbL4Q/xS5FNx1TElQW6xvG7
-	0pWgXxxHWJn2xo8oKO6WZBtJ8/apSTxWaFgzT4XANpTX/yFywGqPfreFSFA+SxYy
-	DVWfFOmgiUFFAwcBCuUS5l1GOHRlbwP6IKA226oMHwgNZfpxX+vE/kqqplzGKxN6
-	3CA6w8YfKEc956VkNbvyMcVk4fjXMyE6jZ/K83ddG+CzpHvsr07jRCCCdY737Omz
-	uzeA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:content-type:date:date
-	:feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
-	:x-sasl-enc; s=fm2; t=1679656805; x=1679664005; bh=jnhC/DvfTlyZc
-	OnZuUe9LuHIarcRp2uTbbPObwOvLtk=; b=G4KWdAq5u3yOdbhwSK/77/yGH7IQB
-	2xysJ+4DHASMDHD4DpUNSh0qiUQ7PoZ0HeB31FPCqa3ypIcHnjDyiqx4+OASl4vt
-	YII+0RiTBeUGCTuHiRp/2zrlkY7JsRYyob4hyT9jfvFspEvX+TWDxi6HeqVtkkkI
-	EIEz+43mJMF3TccMFqhY9/s2d2q0Bnzb5506eHVsiiRibRjc0JM/OyGd5+joNcoL
-	b2y+9ja4sW5wabUkTzlsQiAxcTUWRGjZRPmuIIWmJFWEdsTq0+X56oaR8GkrkVqB
-	dX4i5J533jmuMxkiG1iqzEHijtLWz0ghQXTKvlKaafFgHLlEw3jiDRZ4g==
-X-ME-Sender: <xms:YocdZJLt50SkjajEyhHxYSSrkPY2nLRG7oaF9-PbUsC11O7ePH7evw>
-    <xme:YocdZFJvv5yKSgbbCu2PjUCjA3iwB3zBFKv-CakFAJTI01X8NjMVPj3knfOKgALZS
-    iMcO2SYsLNKDxAxjx0>
-X-ME-Received: <xmr:YocdZBtqfm5ufo2nxuPX_n4UUydUMdQkmyrCYSBkP5S6uLxOjnGe7GgKlZv5k0gAuEdnyA>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrvdegiedgvdejucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhepfffhvfevuffkfhggtggujgesghdtreertddtvdenucfhrhhomhepofgrgihi
-    mhgvucftihhprghrugcuoehmrgigihhmvgestggvrhhnohdrthgvtghhqeenucggtffrrg
-    htthgvrhhnpeetfefffefgkedtfefgledugfdtjeefjedvtddtkeetieffjedvgfehheff
-    hfevudenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
-    hmrgigihhmvgestggvrhhnohdrthgvtghh
-X-ME-Proxy: <xmx:YocdZKbb7h5XVzEGX4iPtxOkH5TmcsjFZOlhmJTWiCjxSzGBF3gLdQ>
-    <xmx:YocdZAZuVnKbOWnxm7JK_ixmWayh3DAJUGZTPl_6A4AyOaeCS8MgPA>
-    <xmx:YocdZODYFHhXEhG6sanelWXub-LDcHvfMUzvrDzXEPo_cfiaikGjCA>
-    <xmx:ZYcdZJnXIuUKCYqWP9MzEN0pWHGV9cxtt8SL0wrI9YqOxIudpLjjYg>
-Feedback-ID: i8771445c:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
- 24 Mar 2023 07:20:01 -0400 (EDT)
-Date: Fri, 24 Mar 2023 12:19:59 +0100
-From: Maxime Ripard <maxime@cerno.tech>
-To: Aidan MacDonald <aidanmacdonald.0x0@gmail.com>
-Cc: Stephen Boyd <sboyd@kernel.org>, Paul Cercueil <paul@crapouillou.net>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Chen-Yu Tsai <wens@csie.org>, Daniel Vetter <daniel@ffwll.ch>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jaroslav Kysela <perex@perex.cz>, Shawn Guo <shawnguo@kernel.org>,
-	Fabio Estevam <festevam@gmail.com>,	Ulf Hansson <ulf.hansson@linaro.org>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Dinh Nguyen <dinguyen@kernel.org>,	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>,
-	Jonathan Hunter <jonathanh@nvidia.com>,	Abel Vesa <abelvesa@kernel.org>,
-	Charles Keepax <ckeepax@opensource.cirrus.com>,
-	Alessandro Zummo <a.zummo@towertech.it>,
-	Peter De Schrijver <pdeschrijver@nvidia.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Prashant Gaikwad <pgaikwad@nvidia.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Richard Fitzgerald <rf@opensource.cirrus.com>,
-	Vinod Koul <vkoul@kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
-	Sekhar Nori <nsekhar@ti.com>,	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,	Takashi Iwai <tiwai@suse.com>,
- David Airlie <airlied@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	David Lechner <david@lechnology.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,	Mark Brown <broonie@kernel.org>,
- Max Filippov <jcmvbkbc@gmail.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	linux-stm32@st-md-mailman.stormreply.com,	alsa-devel@alsa-project.org,
- linux-mediatek@lists.infradead.org,	linux-phy@lists.infradead.org,
- linux-mips@vger.kernel.org,	linux-renesas-soc@vger.kernel.org,
-	linux-actions@lists.infradead.org, linux-clk@vger.kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	patches@opensource.cirrus.com, linux-tegra@vger.kernel.org,
-	linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org
-Subject: Re: [PATCH v2 56/65] clk: ingenic: cgu: Switch to determine_rate
-Message-ID: <20230324111959.frjf4neopbs67ugd@houat>
-References: <20221018-clk-range-checks-fixes-v2-0-f6736dec138e@cerno.tech>
- <20221018-clk-range-checks-fixes-v2-56-f6736dec138e@cerno.tech>
- <80VTKR.CE8RVN8M3ZYK3@crapouillou.net>
- <20221104145946.orsyrhiqvypisl5j@houat>
- <cp7Yh29ndlOOi1yW8KwCcpzoLPLxm1vR@localhost>
- <20221107085417.xrsh6xy3ouwdkp4z@houat>
- <ucJ6KSBqdPTxfxUQqLUr9C9RGiQRnY1I@localhost>
- <20221109110045.j24vwkaq3s4yzoy3@houat>
- <06a293adc75990ed3e297b076fc38d8a.sboyd@kernel.org>
- <xpKMzGb1sOsucWMTlJIMzrT5KjLlZ7JP@localhost>
+	id 1pffyE-004Hq0-2P;
+	Fri, 24 Mar 2023 11:52:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
+	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=gvt5DL6fQG6Plq4wISGGK/VENRuOiPuD8pNsuXpIl+8=; b=sA6C8V9ZJy8Cw9Z97ezmTW/sgH
+	NmTBPFOw0MRkJwOOUGXbDPQwA30CKckbI6PcIeCyNvuKIx0mRkXcwDEK8oteS0mO0ThDPfvvgX6UQ
+	r99XB6VGPJQ90DCglcNMxZp0AMUiaZxKkcT9xz/I4Hl407hR2wR6MiR18BcYBvTU2r4U=;
+Received: from p54ae9730.dip0.t-ipconnect.de ([84.174.151.48] helo=nf.local)
+	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.94.2)
+	(envelope-from <nbd@nbd.name>)
+	id 1pffxq-006LMe-2v; Fri, 24 Mar 2023 12:52:10 +0100
+Message-ID: <4462a0c2-f7ea-c81c-e12f-ec629113fc40@nbd.name>
+Date: Fri, 24 Mar 2023 12:52:09 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ygvujwxxgbycerm7"
-Content-Disposition: inline
-In-Reply-To: <xpKMzGb1sOsucWMTlJIMzrT5KjLlZ7JP@localhost>
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.9.0
+Subject: Re: Aw: Re: [BUG] MTK SoC Ethernet throughput TX only ~620Mbit/s
+ since 6.2-rc1
+Content-Language: en-US
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Daniel Golle <daniel@makrotopia.org>, Mark Lee
+ <Mark-MC.Lee@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, John Crispin <john@phrozen.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+References: <trinity-92c3826f-c2c8-40af-8339-bc6d0d3ffea4-1678213958520@3c-app-gmx-bs16>
+ <4a229d53-f058-115a-afc6-dd544a0dedf2@nbd.name>
+ <ZBBs/xE0+ULtJNIJ@makrotopia.org>
+ <trinity-b2506855-d27f-4e5c-bd20-d3768fa7505d-1679077409691@3c-app-gmx-bap25>
+ <trinity-e199fc72-77d9-47f3-acb6-e11fbf66360b-1679144877213@3c-app-gmx-bs63>
+From: Felix Fietkau <nbd@nbd.name>
+In-Reply-To: <trinity-e199fc72-77d9-47f3-acb6-e11fbf66360b-1679144877213@3c-app-gmx-bs63>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230324_042012_024103_BAFB5FB5 
-X-CRM114-Status: GOOD (  46.57  )
+X-CRM114-CacheID: sfid-20230324_045234_863595_FCA5EFA3 
+X-CRM114-Status: GOOD (  28.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -155,120 +84,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 18.03.23 14:07, Frank Wunderlich wrote:
+>> Gesendet: Freitag, 17. März 2023 um 19:23 Uhr
+>> Von: "Frank Wunderlich" <frank-w@public-files.de>
+>> An: "Daniel Golle" <daniel@makrotopia.org>
+>> Cc: "Felix Fietkau" <nbd@nbd.name>, "Mark Lee" <Mark-MC.Lee@mediatek.com>, "Sean Wang" <sean.wang@mediatek.com>, "Lorenzo Bianconi" <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>, "Eric Dumazet" <edumazet@google.com>, "Jakub Kicinski" <kuba@kernel.org>, "Paolo Abeni" <pabeni@redhat.com>, "Matthias Brugger" <matthias.bgg@gmail.com>, "John Crispin" <john@phrozen.org>, "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+>> Betreff: Aw: Re: [BUG] MTK SoC Ethernet throughput TX only ~620Mbit/s since 6.2-rc1
+>>
+>> Hi,
+>> > Gesendet: Dienstag, 14. März 2023 um 13:47 Uhr
+>> > Von: "Daniel Golle" <daniel@makrotopia.org>
+>> > An: "Felix Fietkau" <nbd@nbd.name>
+>> > Cc: "Frank Wunderlich" <frank-w@public-files.de>, "Mark Lee" <Mark-MC.Lee@mediatek.com>, "Sean Wang" <sean.wang@mediatek.com>, "Lorenzo Bianconi" <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>, "Eric Dumazet" <edumazet@google.com>, "Jakub Kicinski" <kuba@kernel.org>, "Paolo Abeni" <pabeni@redhat.com>, "Matthias Brugger" <matthias.bgg@gmail.com>, "John Crispin" <john@phrozen.org>, "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+>> > Betreff: Re: [BUG] MTK SoC Ethernet throughput TX only ~620Mbit/s since 6.2-rc1
+>> >
+>> > Hi Felix,
+>> > 
+>> > On Tue, Mar 14, 2023 at 11:30:53AM +0100, Felix Fietkau wrote:
+>> > > On 07.03.23 19:32, Frank Wunderlich wrote:
+>> > > > Hi,
+>> > > > 
+>> > > > i've noticed that beginning on 6.2-rc1 the throughput on my Bananapi-R2 and Bananapi-R3 goes from 940Mbit/s down do 620Mbit/s since 6.2-rc1.
+>> > > > Only TX (from SBC PoV) is affected, RX is still 940Mbit/s.
+>> > > > 
+>> > > > i bisected this to this commit:
+>> > > > 
+>> > > > f63959c7eec3151c30a2ee0d351827b62e742dcb ("net: ethernet: mtk_eth_soc: implement multi-queue support for per-port queues")
+>> > > > 
+>> > > > Daniel reported me that this is known so far and they need assistance from MTK and i should report it officially.
+>> > > > 
+>> > > > As far as i understand it the commit should fix problems with clients using non-GBE speeds (10/100 Mbit/s) on the Gbit-capable dsa
+>> > > > interfaces (mt753x connected) behind the mac, but now the Gigabit speed is no more reached.
+>> > > > I see no CRC/dropped packets, retransmitts or similar.
+>> > > > 
+>> > > > after reverting the commit above i get 940Mbit like in rx direction, but this will introduce the problems mentioned above so this not a complete fix.
+>> > > I don't have a BPI-R2, but I tested on BPI-R3 and can't reproduce this
+>> > > issue. Do you see it on all ports, or only on specific ones?
+>> > 
+>> > I also can't reproduce this if unsing any of the gigE ports wired via
+>> > MT7531 on the R3. However, I can reproduce the issue if using a 1 GBit/s
+>> > SFP module in slot SFP1 of the R3 (connected directly to GMAC2/eth1).
+>> > 
+>> > Users have reported this also to be a problem also on MT7622 on devices
+>> > directly connecting a PHY (and not using MT7531).
+>> > 
+>> > In all cases, reverting the commit above fixes the issue.
+>> 
+>> 
+>> made quick test with 6.3-rc1 on r3 without reverting the patch above and can confirm daniels test
+>> 
+>> it seems the problem is no more on switch-ports, but on eth1 i have massive packet loss...seems this caused by the same patch because i tested with reverted version and have no issue there.
+> 
+> on BPI-R2 the eth0/gmac0 (tested with wan-port) is affected. here i have in TX-Direction only 620Mbit.
+> 
+> I have no idea yet why there the gmac0 is affected and on r3 only gmac1.
+> 
+> But it looks differently...on r3 the gmac1 is nearly completely broken.
+Please try this patch and let me know if it resolves the regression:
 
---ygvujwxxgbycerm7
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+---
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -718,8 +718,6 @@ static void mtk_mac_link_up(struct phyli
+  		break;
+  	}
+  
+-	mtk_set_queue_speed(mac->hw, mac->id, speed);
+-
+  	/* Configure duplex */
+  	if (duplex == DUPLEX_FULL)
+  		mcr |= MAC_MCR_FORCE_DPX;
 
-Hi,
 
-On Thu, Mar 23, 2023 at 03:35:30PM +0000, Aidan MacDonald wrote:
->=20
-> Stephen Boyd <sboyd@kernel.org> writes:
->=20
-> > Quoting Maxime Ripard (2022-11-09 03:00:45)
-> >> On Mon, Nov 07, 2022 at 08:57:22PM +0000, Aidan MacDonald wrote:
-> >> >
-> >> > Maxime Ripard <maxime@cerno.tech> writes:
-> >> >
-> >> > > Hi,
-> >> > >
-> >> > > On Fri, Nov 04, 2022 at 05:35:29PM +0000, Aidan MacDonald wrote:
-> >> >
-> >> > Assigning the parent clock in the DT works once, at boot, but going =
-off
-> >> > what you wrote in the commit message, if the clock driver has a
-> >> > .determine_rate() implementation that *can* reparent clocks then it
-> >> > probably *will* reparent them, and the DT assignment will be lost.
-> >>
-> >> Yes, indeed, but assigned-clock-parents never provided any sort of
-> >> guarantee on whether or not the clock was allowed to reparent or not.
-> >> It's just a one-off thing, right before probe, and a clk_set_parent()
-> >> call at probe will override that just fine.
-> >>
-> >> Just like assigned-clock-rates isn't permanent.
-> >>
-> >> > What I'm suggesting is a runtime constraint that the clock subsystem
-> >> > would enforce, and actively prevent drivers from changing the parent.
-> >> > Either explicitly with clk_set_parent() or due to .determine_rate().
-> >> >
-> >> > That way you could write a .determine_rate() implementation that *ca=
-n*
-> >> > select a better parent, but if the DT applies a constraint to fix the
-> >> > clock to a particular parent, the clock subsystem will force that pa=
-rent
-> >> > to be used so you can be sure the clock is never reparented by accid=
-ent.
-> >>
-> >> Yeah, that sounds like a good idea, and CLK_SET_RATE_NO_REPARENT isn't
-> >> too far off from this, it's just ignored by clk_set_parent() for now. I
-> >> guess we could rename CLK_SET_RATE_NO_REPARENT to CLK_NO_REPARENT, make
-> >> clk_set_parent handle it, and set that flag whenever
-> >> assigned-clock-parents is set on a clock.
-> >>
-> >> It's out of scope for this series though, and I certainly don't want to
-> >> deal with all the regressions it might create :)
-> >>
-> >
-> > This sounds like a new dt binding that says the assigned parent should
-> > never change. It sounds sort of like gpio hogs. A clock-hogs binding?
->=20
-> Ideally we want the clock driver to be able to reparent clocks freely
-> to get the best rate. But we also need some control over that to stop
-> consumers from being reparented in undesired ways. Eg. you might want
-> to make sure the GPU gets its own PLL so it can be reclocked easily,
-> and putting another device on the GPU's PLL could prevent that.
->=20
-> The only way to achieve this today is (1) never do any reparenting in
-> the clock driver; and (2) use assigned-clock-parents in the DT to set
-> up the entire clock tree manually.
->=20
-> Maxime said that (2) is basically wrong -- if assigned-clock-parents
-> provides no guarantee on what the OS does "after boot" then the OS is
-> pretty much free to ignore it.
-
-I didn't really say it's wrong, just that it never provided the
-guarantee you expect it to provide. I can't really say whether it's an
-issue or not on your platform.
-
-It's mostly unrelated to this series though, none of these patches
-affect that behavior in one way or the other.
-
-> My suggestion: add a per-clock bitmap to keep track of which parents
-> are allowed. Any operation that would select a parent clock not on the
-> whitelist should fail. Automatic reparenting should only select from
-> clocks on the whitelist. And we need new DT bindings for controlling
-> the whitelist, for example:
->=20
->     clock-parents-0 =3D <&clk1>, <&pll_c>;
->     clock-parents-1 =3D <&clk2>, <&pll_a>, <&pll_b>;
->=20
-> This means that clk1 can only have pll_c as a parent, while clk2 can
-> have pll_a or pll_b as parents. By default every clock will be able
-> to use any parent, so a list is only needed if the machine needs a
-> more restrictive policy.
->=20
-> assigned-clock-parents should disable automatic reparenting, but allow
-> explicit clk_set_parent(). This will allow clock drivers to start doing
-> reparenting without breaking old DTs.
-
-I'm generally not a fan of putting all these policies in the device
-tree. Do you have an example where it wouldn't be possible to do exactly
-this from the driver itself?
-
-Maxime
-
---ygvujwxxgbycerm7
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZB2HXwAKCRDj7w1vZxhR
-xSbnAQCJvmVlpJgunPtELVTvf4BU6vbdciJ5jecqJV2UslBqNAEA3GtvUaTD5e0p
-e0nSvm2EbCQGLtQFj+xVrIWIaKTMYAc=
-=GgBk
------END PGP SIGNATURE-----
-
---ygvujwxxgbycerm7--
 
