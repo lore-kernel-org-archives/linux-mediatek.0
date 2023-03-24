@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9486BC6FD20
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Mar 2023 09:42:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A0C3C76196
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Mar 2023 09:43:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SQzjv3Rpp0mPgw+11mJogeS+dziK+/+f/mGK4klr9ns=; b=XeDETkMxlR3Lzj8n5x33uAIzn+
-	hFuF/18SRWLFWTLlt4tj+xJ9spzoiZsvGdN9GJ6Ap6Qi4j59W6v6oUxBeDPwzYPePqeFMtfO0Q6FU
-	MVN8syuOW/9/W3LiqsCccBLeqozYAfnJUJ98IZnAmcZ8RrZBaw7shqdJdgOUVttYmptOXZ7+NuokZ
-	eLRMOxV7SDPwUHLQIztTynpOlCBH7IvWTuvLCzxZERJZ7ELBsA8eT2O0h2VrShS0cKADYBnjjaf1u
-	mNu4OW8SgU55dSHGe98/tpXPvgaHbNcSt+1Y/nuHOUDecpZJL5WSB2CIhFekOtUGNWsRmChvebUyy
-	nTC8pWZg==;
+	bh=Z61+0a0C8lwBTj5YJRrhNuZhH4QGG3viPOQy1ikmUR4=; b=3VzllFAz5kdWiHq8jc2nNlFWZt
+	8baw6HdESIO/G3TW+UWLgePiBaoAMiG09b8Cw3c4qTEUqi5oPQ8fa5QlKq24rij2zf68DQiJYYIrw
+	SPq0sSgGDFMHDeC1OINb24gpx1LvTcjVDrORkYcCCrsRelARvewNBYCV3UeeiHqIRZZAjq4kQQFvX
+	R5uH2NTflY77rDhA+QjAmdPUh4ch6wcAE8WDw3Qu8gn8HoNsZjnTnF4aS7pwJSYmgeeqlI/nECLJN
+	SHJwFu2Ycb63eoonMIvtvx3y+LSeqr9tewLWvtTq1hd4Ymh3oM7W/0/7AyYI/5RX7inkj46TJxyiT
+	Gb4IfsFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfdwf-0043oq-0n;
-	Fri, 24 Mar 2023 09:42:49 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pfdwz-0043zS-02;
+	Fri, 24 Mar 2023 09:43:09 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfdwB-0043b9-24;
-	Fri, 24 Mar 2023 09:42:21 +0000
+	id 1pfdwB-0043bA-26;
+	Fri, 24 Mar 2023 09:42:22 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C20A16603116;
-	Fri, 24 Mar 2023 09:42:14 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 94F0B6603118;
+	Fri, 24 Mar 2023 09:42:15 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1679650935;
-	bh=uPt2ekOUU4OrWa4bXI3WCTu8A736wA5awt8ihZXf3HM=;
+	s=mail; t=1679650936;
+	bh=WdXcGK3CsaHTkqYryGIVfgOynuLMpMlln7V83aW3v68=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=LRt0XMYJc0tZffnjZeQrDM63d2iYy9N+K1NNJT4yjz5HIswfUyzqmH19Mw84D6RrO
-	 WrcWe4g9Yc2Y3H/RIHxKCf0rC1KGDIG5U2Edq80RF5C6bk771/AawQRGotm2ogcBDY
-	 dPGyNG6TrpfxEhOkT6bGZh6+wAjNJ3dTUNn7Kk9p/r5rpVF7k25ShPqPvRLBNANX+N
-	 6G5REi4H2Eq27mnxj8+Y30JXYQeilbhKy5rAVf0xCapc+jU0+ptXOmyyj4/tho8R5J
-	 Lj85+gNs8YNaW1L1Mrl+TOuuWIDJNjQMb6yXP0Y1nwYZeIfw5VXYC4xXss+0BQUGuW
-	 wnIZwVhEcsf8A==
+	b=D/Ns1tOEGIFCwhXfF1KaM9kjzvr1Ia5vKjoiRKGlhj50bDwcBsZNZcEcxxAsXdOsY
+	 uw7JHy/SdJO80hIi4WG0SmUvO3fGh6MmzMoX/MsqeedwgIwwCTn0JpiEw/ShrJgGbr
+	 groZT5C3ygdod8jV6RImH9Z++mHDGXRAC7olcfeSUJN5Ay0mumVGbcMs/EAHwxdoP+
+	 lCOA3m/0Dh1P+Pb7zB9VP5ce0Sx1mr5cpcp7IChSWdO+9kp+PP1ICJvBbfmMLh62MM
+	 +bkoTLe2o7C+ilPlMU8X5ceXARoJtVm4Ty6IJvDACteuVlXwi3GhacmSSGS8vdGdKZ
+	 ylI+7ra8dI9kg==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: robh+dt@kernel.org,
@@ -57,18 +57,17 @@ Cc: robh+dt@kernel.org,
 	phone-devel@vger.kernel.org,
 	~postmarketos/upstreaming@lists.sr.ht,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2 5/6] soc: mediatek: mtk-pmic-wrap: Add support for MT6331 w/ MT6332 companion
-Date: Fri, 24 Mar 2023 10:42:04 +0100
-Message-Id: <20230324094205.33266-6-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 6/6] soc: mediatek: pwrap: Add support for MT6795 Helio X10
+Date: Fri, 24 Mar 2023 10:42:05 +0100
+Message-Id: <20230324094205.33266-7-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.40.0
 In-Reply-To: <20230324094205.33266-1-angelogioacchino.delregno@collabora.com>
 References: <20230324094205.33266-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230324_024219_806015_7ED2C93F 
-X-CRM114-Status: UNSURE (   9.80  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230324_024219_977359_7AFE81DF 
+X-CRM114-Status: GOOD (  14.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,92 +82,205 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for the MT6331 PMIC and for its companion MT6332 PMIC.
+Add the necessary bits to support the MT6795 Helio X10 smartphone SoC:
+this is always paired with a MT6331 PMIC, with MT6332 companion.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/soc/mediatek/mtk-pmic-wrap.c | 47 ++++++++++++++++++++++++++++
- 1 file changed, 47 insertions(+)
+ drivers/soc/mediatek/mtk-pmic-wrap.c | 131 ++++++++++++++++++++++++++-
+ 1 file changed, 130 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index 366e40b802e4..ceeac43f7bd1 100644
+index ceeac43f7bd1..20d32328382a 100644
 --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
 +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -170,6 +170,40 @@ static const u32 mt6323_regs[] = {
- 	[PWRAP_DEW_RDDMY_NO] =		0x01a4,
+@@ -639,6 +639,91 @@ static int mt6779_regs[] = {
+ 	[PWRAP_WACS2_VLDCLR] =		0xC28,
  };
  
-+static const u32 mt6331_regs[] = {
-+	[PWRAP_DEW_DIO_EN] =		0x018c,
-+	[PWRAP_DEW_READ_TEST] =		0x018e,
-+	[PWRAP_DEW_WRITE_TEST] =	0x0190,
-+	[PWRAP_DEW_CRC_SWRST] =		0x0192,
-+	[PWRAP_DEW_CRC_EN] =		0x0194,
-+	[PWRAP_DEW_CRC_VAL] =		0x0196,
-+	[PWRAP_DEW_MON_GRP_SEL] =	0x0198,
-+	[PWRAP_DEW_CIPHER_KEY_SEL] =	0x019a,
-+	[PWRAP_DEW_CIPHER_IV_SEL] =	0x019c,
-+	[PWRAP_DEW_CIPHER_EN] =		0x019e,
-+	[PWRAP_DEW_CIPHER_RDY] =	0x01a0,
-+	[PWRAP_DEW_CIPHER_MODE] =	0x01a2,
-+	[PWRAP_DEW_CIPHER_SWRST] =	0x01a4,
-+	[PWRAP_DEW_RDDMY_NO] =		0x01a6,
++static int mt6795_regs[] = {
++	[PWRAP_MUX_SEL] =		0x0,
++	[PWRAP_WRAP_EN] =		0x4,
++	[PWRAP_DIO_EN] =		0x8,
++	[PWRAP_SIDLY] =			0xc,
++	[PWRAP_RDDMY] =			0x10,
++	[PWRAP_SI_CK_CON] =		0x14,
++	[PWRAP_CSHEXT_WRITE] =		0x18,
++	[PWRAP_CSHEXT_READ] =		0x1c,
++	[PWRAP_CSLEXT_START] =		0x20,
++	[PWRAP_CSLEXT_END] =		0x24,
++	[PWRAP_STAUPD_PRD] =		0x28,
++	[PWRAP_STAUPD_GRPEN] =		0x2c,
++	[PWRAP_EINT_STA0_ADR] =		0x30,
++	[PWRAP_EINT_STA1_ADR] =		0x34,
++	[PWRAP_STAUPD_MAN_TRIG] =	0x40,
++	[PWRAP_STAUPD_STA] =		0x44,
++	[PWRAP_WRAP_STA] =		0x48,
++	[PWRAP_HARB_INIT] =		0x4c,
++	[PWRAP_HARB_HPRIO] =		0x50,
++	[PWRAP_HIPRIO_ARB_EN] =		0x54,
++	[PWRAP_HARB_STA0] =		0x58,
++	[PWRAP_HARB_STA1] =		0x5c,
++	[PWRAP_MAN_EN] =		0x60,
++	[PWRAP_MAN_CMD] =		0x64,
++	[PWRAP_MAN_RDATA] =		0x68,
++	[PWRAP_MAN_VLDCLR] =		0x6c,
++	[PWRAP_WACS0_EN] =		0x70,
++	[PWRAP_INIT_DONE0] =		0x74,
++	[PWRAP_WACS0_CMD] =		0x78,
++	[PWRAP_WACS0_RDATA] =		0x7c,
++	[PWRAP_WACS0_VLDCLR] =		0x80,
++	[PWRAP_WACS1_EN] =		0x84,
++	[PWRAP_INIT_DONE1] =		0x88,
++	[PWRAP_WACS1_CMD] =		0x8c,
++	[PWRAP_WACS1_RDATA] =		0x90,
++	[PWRAP_WACS1_VLDCLR] =		0x94,
++	[PWRAP_WACS2_EN] =		0x98,
++	[PWRAP_INIT_DONE2] =		0x9c,
++	[PWRAP_WACS2_CMD] =		0xa0,
++	[PWRAP_WACS2_RDATA] =		0xa4,
++	[PWRAP_WACS2_VLDCLR] =		0xa8,
++	[PWRAP_INT_EN] =		0xac,
++	[PWRAP_INT_FLG_RAW] =		0xb0,
++	[PWRAP_INT_FLG] =		0xb4,
++	[PWRAP_INT_CLR] =		0xb8,
++	[PWRAP_SIG_ADR] =		0xbc,
++	[PWRAP_SIG_MODE] =		0xc0,
++	[PWRAP_SIG_VALUE] =		0xc4,
++	[PWRAP_SIG_ERRVAL] =		0xc8,
++	[PWRAP_CRC_EN] =		0xcc,
++	[PWRAP_TIMER_EN] =		0xd0,
++	[PWRAP_TIMER_STA] =		0xd4,
++	[PWRAP_WDT_UNIT] =		0xd8,
++	[PWRAP_WDT_SRC_EN] =		0xdc,
++	[PWRAP_WDT_FLG] =		0xe0,
++	[PWRAP_DEBUG_INT_SEL] =		0xe4,
++	[PWRAP_DVFS_ADR0] =		0xe8,
++	[PWRAP_DVFS_WDATA0] =		0xec,
++	[PWRAP_DVFS_ADR1] =		0xf0,
++	[PWRAP_DVFS_WDATA1] =		0xf4,
++	[PWRAP_DVFS_ADR2] =		0xf8,
++	[PWRAP_DVFS_WDATA2] =		0xfc,
++	[PWRAP_DVFS_ADR3] =		0x100,
++	[PWRAP_DVFS_WDATA3] =		0x104,
++	[PWRAP_DVFS_ADR4] =		0x108,
++	[PWRAP_DVFS_WDATA4] =		0x10c,
++	[PWRAP_DVFS_ADR5] =		0x110,
++	[PWRAP_DVFS_WDATA5] =		0x114,
++	[PWRAP_DVFS_ADR6] =		0x118,
++	[PWRAP_DVFS_WDATA6] =		0x11c,
++	[PWRAP_DVFS_ADR7] =		0x120,
++	[PWRAP_DVFS_WDATA7] =		0x124,
++	[PWRAP_SPMINF_STA] =		0x128,
++	[PWRAP_CIPHER_KEY_SEL] =	0x12c,
++	[PWRAP_CIPHER_IV_SEL] =		0x130,
++	[PWRAP_CIPHER_EN] =		0x134,
++	[PWRAP_CIPHER_RDY] =		0x138,
++	[PWRAP_CIPHER_MODE] =		0x13c,
++	[PWRAP_CIPHER_SWRST] =		0x140,
++	[PWRAP_DCM_EN] =		0x144,
++	[PWRAP_DCM_DBC_PRD] =		0x148,
++	[PWRAP_EXT_CK] =		0x14c,
 +};
 +
-+static const u32 mt6332_regs[] = {
-+	[PWRAP_DEW_DIO_EN] =		0x80f6,
-+	[PWRAP_DEW_READ_TEST] =		0x80f8,
-+	[PWRAP_DEW_WRITE_TEST] =	0x80fa,
-+	[PWRAP_DEW_CRC_SWRST] =		0x80fc,
-+	[PWRAP_DEW_CRC_EN] =		0x80fe,
-+	[PWRAP_DEW_CRC_VAL] =		0x8100,
-+	[PWRAP_DEW_MON_GRP_SEL] =	0x8102,
-+	[PWRAP_DEW_CIPHER_KEY_SEL] =	0x8104,
-+	[PWRAP_DEW_CIPHER_IV_SEL] =	0x8106,
-+	[PWRAP_DEW_CIPHER_EN] =		0x8108,
-+	[PWRAP_DEW_CIPHER_RDY] =	0x810a,
-+	[PWRAP_DEW_CIPHER_MODE] =	0x810c,
-+	[PWRAP_DEW_CIPHER_SWRST] =	0x810e,
-+	[PWRAP_DEW_RDDMY_NO] =		0x8110,
-+};
+ static int mt6797_regs[] = {
+ 	[PWRAP_MUX_SEL] =		0x0,
+ 	[PWRAP_WRAP_EN] =		0x4,
+@@ -1230,6 +1315,7 @@ enum pwrap_type {
+ 	PWRAP_MT2701,
+ 	PWRAP_MT6765,
+ 	PWRAP_MT6779,
++	PWRAP_MT6795,
+ 	PWRAP_MT6797,
+ 	PWRAP_MT6873,
+ 	PWRAP_MT7622,
+@@ -1650,6 +1736,20 @@ static void pwrap_init_chip_select_ext(struct pmic_wrapper *wrp, u8 hext_write,
+ static int pwrap_common_init_reg_clock(struct pmic_wrapper *wrp)
+ {
+ 	switch (wrp->master->type) {
++	case PWRAP_MT6795:
++		if (wrp->slave->type == PMIC_MT6331) {
++			const u32 *dew_regs = wrp->slave->dew_regs;
 +
- static const u32 mt6351_regs[] = {
- 	[PWRAP_DEW_DIO_EN] =		0x02F2,
- 	[PWRAP_DEW_READ_TEST] =		0x02F4,
-@@ -1182,6 +1216,8 @@ static int mt8186_regs[] = {
++			pwrap_write(wrp, dew_regs[PWRAP_DEW_RDDMY_NO], 0x8);
++
++			if (wrp->slave->comp_type == PMIC_MT6332) {
++				dew_regs = wrp->slave->comp_dew_regs;
++				pwrap_write(wrp, dew_regs[PWRAP_DEW_RDDMY_NO], 0x8);
++			}
++		}
++		pwrap_writel(wrp, 0x88, PWRAP_RDDMY);
++		pwrap_init_chip_select_ext(wrp, 15, 15, 15, 15);
++		break;
+ 	case PWRAP_MT8173:
+ 		pwrap_init_chip_select_ext(wrp, 0, 4, 2, 2);
+ 		break;
+@@ -1744,6 +1844,7 @@ static int pwrap_init_cipher(struct pmic_wrapper *wrp)
+ 	case PWRAP_MT2701:
+ 	case PWRAP_MT6765:
+ 	case PWRAP_MT6779:
++	case PWRAP_MT6795:
+ 	case PWRAP_MT6797:
+ 	case PWRAP_MT8173:
+ 	case PWRAP_MT8186:
+@@ -1914,6 +2015,19 @@ static int pwrap_mt2701_init_soc_specific(struct pmic_wrapper *wrp)
+ 	return 0;
+ }
  
- enum pmic_type {
- 	PMIC_MT6323,
-+	PMIC_MT6331,
-+	PMIC_MT6332,
- 	PMIC_MT6351,
- 	PMIC_MT6357,
- 	PMIC_MT6358,
-@@ -2041,6 +2077,16 @@ static const struct pwrap_slv_type pmic_mt6323 = {
- 		PWRAP_SLV_CAP_SECURITY,
++static int pwrap_mt6795_init_soc_specific(struct pmic_wrapper *wrp)
++{
++	pwrap_writel(wrp, 0xf, PWRAP_STAUPD_GRPEN);
++
++	if (wrp->slave->type == PMIC_MT6331)
++		pwrap_writel(wrp, 0x1b4, PWRAP_EINT_STA0_ADR);
++
++	if (wrp->slave->comp_type == PMIC_MT6332)
++		pwrap_writel(wrp, 0x8112, PWRAP_EINT_STA1_ADR);
++
++	return 0;
++}
++
+ static int pwrap_mt7622_init_soc_specific(struct pmic_wrapper *wrp)
+ {
+ 	pwrap_writel(wrp, 0, PWRAP_STAUPD_PRD);
+@@ -1949,7 +2063,8 @@ static int pwrap_init(struct pmic_wrapper *wrp)
+ 	if (wrp->rstc_bridge)
+ 		reset_control_reset(wrp->rstc_bridge);
+ 
+-	if (wrp->master->type == PWRAP_MT8173) {
++	if (wrp->master->type == PWRAP_MT8173 ||
++	    wrp->master->type == PWRAP_MT6795) {
+ 		/* Enable DCM */
+ 		pwrap_writel(wrp, 3, PWRAP_DCM_EN);
+ 		pwrap_writel(wrp, 0, PWRAP_DCM_DBC_PRD);
+@@ -2185,6 +2300,19 @@ static const struct pmic_wrapper_type pwrap_mt6779 = {
+ 	.init_soc_specific = NULL,
  };
  
-+static const struct pwrap_slv_type pmic_mt6331 = {
-+	.dew_regs = mt6331_regs,
-+	.type = PMIC_MT6331,
-+	.comp_dew_regs = mt6332_regs,
-+	.comp_type = PMIC_MT6332,
-+	.regops = &pwrap_regops16,
-+	.caps = PWRAP_SLV_CAP_SPI | PWRAP_SLV_CAP_DUALIO |
-+		PWRAP_SLV_CAP_SECURITY,
++static const struct pmic_wrapper_type pwrap_mt6795 = {
++	.regs = mt6795_regs,
++	.type = PWRAP_MT6795,
++	.arb_en_all = 0x3f,
++	.int_en_all = ~(u32)(BIT(31) | BIT(2) | BIT(1)),
++	.int1_en_all = 0,
++	.spi_w = PWRAP_MAN_CMD_SPI_WRITE,
++	.wdt_src = PWRAP_WDT_SRC_MASK_NO_STAUPD,
++	.caps = PWRAP_CAP_RESET | PWRAP_CAP_DCM,
++	.init_reg_clock = pwrap_common_init_reg_clock,
++	.init_soc_specific = pwrap_mt6795_init_soc_specific,
 +};
 +
- static const struct pwrap_slv_type pmic_mt6351 = {
- 	.dew_regs = mt6351_regs,
- 	.type = PMIC_MT6351,
-@@ -2086,6 +2132,7 @@ static const struct pwrap_slv_type pmic_mt6397 = {
- 
- static const struct of_device_id of_slave_match_tbl[] = {
- 	{ .compatible = "mediatek,mt6323", .data = &pmic_mt6323 },
-+	{ .compatible = "mediatek,mt6331", .data = &pmic_mt6331 },
- 	{ .compatible = "mediatek,mt6351", .data = &pmic_mt6351 },
- 	{ .compatible = "mediatek,mt6357", .data = &pmic_mt6357 },
- 	{ .compatible = "mediatek,mt6358", .data = &pmic_mt6358 },
+ static const struct pmic_wrapper_type pwrap_mt6797 = {
+ 	.regs = mt6797_regs,
+ 	.type = PWRAP_MT6797,
+@@ -2318,6 +2446,7 @@ static const struct of_device_id of_pwrap_match_tbl[] = {
+ 	{ .compatible = "mediatek,mt2701-pwrap", .data = &pwrap_mt2701 },
+ 	{ .compatible = "mediatek,mt6765-pwrap", .data = &pwrap_mt6765 },
+ 	{ .compatible = "mediatek,mt6779-pwrap", .data = &pwrap_mt6779 },
++	{ .compatible = "mediatek,mt6795-pwrap", .data = &pwrap_mt6795 },
+ 	{ .compatible = "mediatek,mt6797-pwrap", .data = &pwrap_mt6797 },
+ 	{ .compatible = "mediatek,mt6873-pwrap", .data = &pwrap_mt6873 },
+ 	{ .compatible = "mediatek,mt7622-pwrap", .data = &pwrap_mt7622 },
 -- 
 2.40.0
 
