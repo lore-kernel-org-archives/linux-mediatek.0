@@ -4,64 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0F35C76195
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Mar 2023 08:28:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7394CC76195
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Mar 2023 08:31:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b0iDpjE1Sj9VjFN8ZUnZ50606mtZYBiZIlowQsDkafc=; b=kLXpG9WWrCSEwltSo1Pr6dmU6R
-	OtvCXdwHyADs/U36ZuIz3Lb8aC8D3HntTpHdlKP+P1Twhn+q8xyFqUOJSIN8DBsb+/z4kHcH7EI3V
-	F/EJmloy3GUVCgD3ndywvnsdZeJVnEPxxNYo38cSgVAxpAgX4P7rCvasc/DV8bcn0tUF96pYCG0Dk
-	M7rKoOWmhxbT2ys51wvcrTcZFtAPGCvoXkyPD1ofeKxGn0XiZzdwXPpYkVHA8bdTYR3AZZD15Z377
-	S8JYYGd/R3/LzOCETrPbq5mYz1yBmc8LIbCiHbpoyXw5jT/Pcx2geWc5x5DmEPtsW1uH/7YQH6VA0
-	mU5yLq/w==;
+	bh=Z2prpVn6BNZMFoZAR5+q0DkyXfqW6a2kk2kp5ZOOO6I=; b=ySmAz4058Nlr4SXybFQq50w5tT
+	6SABNHdSWmiFRGOwfPs7GlVVhREpAmwNnC2A5cCN1n22itUV+ny5/L3jc5I81vAnz/VA7qvYAMwXM
+	Hcu7YGsZ2encM1IauoSdjPRmcbYQgY6VUBaX1Oj14hWbb8O6g9McDrbJVCmakZWN+kbVNsg9gUHIC
+	BK0XzfYR3lVCeF7pVcP3Me/pvijaxbx69xFyMBY+22c/mce4/XRGA30KdSpj6jDUvohQvEJQaS/NV
+	gzY/v6UYVWrPWEKryeNVLnzd4oaSWqPSsdrcRxNBGjPK6z4H42Jzv6XIj8UAP3TaK7x9gsoXduX5J
+	j23Ko+iQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfcmU-003sFH-19;
-	Fri, 24 Mar 2023 08:28:14 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pfcpx-003sm2-14;
+	Fri, 24 Mar 2023 08:31:49 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfcmQ-003sEI-2f;
-	Fri, 24 Mar 2023 08:28:12 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1pfcps-003sjl-0G;
+	Fri, 24 Mar 2023 08:31:46 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C07DB6603103;
-	Fri, 24 Mar 2023 08:28:07 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1679646488;
-	bh=OSwLd13ABDNH1gGaWUK5KSnyz988zi7C1RttukscA54=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Ou2NdNkkb7pLdAkRWSCBxGmVGnfSDgJCLQm4JCEeXffSRjOSweFQHdCYcUlQdBsni
-	 ufpIFuXAaTQ1EU1ccvxC/7RPqNcwFxS8+6iGpyPot/PH3LmeUSdpOT2zO/9+Nxm6TU
-	 ipgBjTYph2G+1cA+KDTLieTuwU1bulKNnHrnS3CdP/PIs+/kvBF45e6P4EbMMcKMVR
-	 bJYP7NQ/fcGRc+2XwW2ppKesuVz14Mp8ztTalJi4jOLH9UlicJaIgYvoigHnJDWIqx
-	 nXh7KjJ24Ywt4l20BhvWxv0xyVvrqa3tX/rhLrFABqNk2a3a4uetV+Fz6Eqg5lzYdR
-	 hoY1cRNr1YZfQ==
-Message-ID: <4f9d243c-0029-fee6-5caa-a4463dfe2b77@collabora.com>
-Date: Fri, 24 Mar 2023 09:28:04 +0100
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 0E9D462990;
+	Fri, 24 Mar 2023 08:31:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 069FAC433D2;
+	Fri, 24 Mar 2023 08:31:36 +0000 (UTC)
+Message-ID: <b0018f7b-0556-0ac1-d2fa-89787a27fba1@xs4all.nl>
+Date: Fri, 24 Mar 2023 09:31:35 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH] soc: mediatek: mutex: Use dev_err_probe()
-To: ye.xingchen@zte.com.cn, matthias.bgg@gmail.com
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <202303241017290414354@zte.com.cn>
+ Thunderbird/102.8.0
+Subject: Re: [PATCH v2 2/8] media: videobuf2: Make bufs array dynamic
+ allocated
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Dan Carpenter <error27@gmail.com>, oe-kbuild@lists.linux.dev,
+ tfiga@chromium.org, m.szyprowski@samsung.com, mchehab@kernel.org,
+ ming.qian@nxp.com, shijie.qin@nxp.com, eagle.zhou@nxp.com,
+ bin.liu@mediatek.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, tiffany.lin@mediatek.com,
+ andrew-ct.chen@mediatek.com, yunfei.dong@mediatek.com,
+ stanimir.k.varbanov@gmail.com, quic_vgarodia@quicinc.com, agross@kernel.org,
+ andersson@kernel.org, konrad.dybcio@linaro.org,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ daniel.almeida@collabora.com, laurent.pinchart@ideasonboard.com
+Cc: lkp@intel.com, oe-kbuild-all@lists.linux.dev,
+ linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ kernel@collabora.com
+References: <4e2cb832-de83-4ba6-bd8a-119a19038cfe@kili.mountain>
+ <a88b93cc-a81f-6186-09fc-02223867e677@collabora.com>
 Content-Language: en-US
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <202303241017290414354@zte.com.cn>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <a88b93cc-a81f-6186-09fc-02223867e677@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230324_012811_012985_2B0B98A2 
-X-CRM114-Status: UNSURE (   7.37  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230324_013144_217073_AAF7FC0F 
+X-CRM114-Status: GOOD (  14.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,14 +80,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 24/03/23 03:17, ye.xingchen@zte.com.cn ha scritto:
-> From: Ye Xingchen <ye.xingchen@zte.com.cn>
+On 24/03/2023 09:11, Benjamin Gaignard wrote:
 > 
-> Replace the open-code with dev_err_probe() to simplify the code.
+> Le 24/03/2023 à 06:01, Dan Carpenter a écrit :
+>> Hi Benjamin,
+>>
+>> https://git-scm.com/docs/git-format-patch#_base_tree_information]
+>>
+>> url:    https://github.com/intel-lab-lkp/linux/commits/Benjamin-Gaignard/media-videobuf2-Access-vb2_queue-bufs-array-through-helper-functions/20230321-183154
+>> base:   git://linuxtv.org/media_tree.git master
+>> patch link:    https://lore.kernel.org/r/20230321102855.346732-3-benjamin.gaignard%40collabora.com
+>> patch subject: [PATCH v2 2/8] media: videobuf2: Make bufs array dynamic allocated
+>> config: arm64-randconfig-m041-20230319 (https://download.01.org/0day-ci/archive/20230324/202303240148.lKRnUqW9-lkp@intel.com/config)
+>> compiler: aarch64-linux-gcc (GCC) 12.1.0
+>>
+>> If you fix the issue, kindly add following tag where applicable
+>> | Reported-by: kernel test robot <lkp@intel.com>
+>> | Reported-by: Dan Carpenter <error27@gmail.com>
+>> | Link: https://lore.kernel.org/r/202303240148.lKRnUqW9-lkp@intel.com/
+>>
+>> smatch warnings:
+>> include/media/videobuf2-core.h:1272 vb2_queue_add_buffer() warn: sleeping in atomic context
+>> drivers/media/common/videobuf2/videobuf2-core.c:2456 vb2_core_queue_init() warn: Please consider using kcalloc instead of kmalloc_array
+>>
+>> vim +1272 include/media/videobuf2-core.h
+>>
+>> 625d46c1c1fe8e Benjamin Gaignard 2023-03-21  1263  static inline bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb)
+>> 625d46c1c1fe8e Benjamin Gaignard 2023-03-21  1264  {
+>> 487d3f14d12ecf Benjamin Gaignard 2023-03-21  1265      bool ret = false;
+>> 487d3f14d12ecf Benjamin Gaignard 2023-03-21  1266
+>> 487d3f14d12ecf Benjamin Gaignard 2023-03-21  1267      spin_lock(&q->bufs_lock);
+>>                                                          ^^^^^^^^^^^^^^^^^^^^^^^
+>> Holding a spin lock.
+>>
+>> 487d3f14d12ecf Benjamin Gaignard 2023-03-21  1268
+>> 487d3f14d12ecf Benjamin Gaignard 2023-03-21  1269      if (vb->index >= q->max_num_bufs) {
+>> 487d3f14d12ecf Benjamin Gaignard 2023-03-21  1270          struct vb2_buffer **tmp;
+>> 487d3f14d12ecf Benjamin Gaignard 2023-03-21  1271
+>> 487d3f14d12ecf Benjamin Gaignard 2023-03-21 @1272          tmp = krealloc_array(q->bufs, q->max_num_bufs * 2, sizeof(*q->bufs), GFP_KERNEL);
+>>                                                                                                                                       ^^^^^^^^^^
+>> Sleeping allocation.  GFP_ATOMIC?  Or is there a way to move the
+>> allocation outside the lock?
 > 
-> Signed-off-by: Ye Xingchen <ye.xingchen@zte.com.cn>
+> I will add GFP_ATOMIC flag in next version.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+No need. Instead, don't use realloc here, just allocate a new array, copy over all
+the data from the old, and then switch q->bufs with the spinlock held. Then you
+can free the old one.
 
+It's only when you update q->bufs that you need the lock.
+
+Regards,
+
+	Hans
+
+> 
+> Thanks for your help,
+> Benjamin
+> 
+>>
+>> 487d3f14d12ecf Benjamin Gaignard 2023-03-21  1273          if (!tmp)
+>> 487d3f14d12ecf Benjamin Gaignard 2023-03-21  1274              goto realloc_failed;
+>> 487d3f14d12ecf Benjamin Gaignard 2023-03-21  1275
+>> 487d3f14d12ecf Benjamin Gaignard 2023-03-21  1276          q->max_num_bufs *= 2;
+>> 487d3f14d12ecf Benjamin Gaignard 2023-03-21  1277          q->bufs = tmp;
+>> 487d3f14d12ecf Benjamin Gaignard 2023-03-21  1278      }
+>> 487d3f14d12ecf Benjamin Gaignard 2023-03-21  1279
+>> 487d3f14d12ecf Benjamin Gaignard 2023-03-21  1280      if (vb->index < q->max_num_bufs) {
+>> 625d46c1c1fe8e Benjamin Gaignard 2023-03-21  1281          q->bufs[vb->index] = vb;
+>> 487d3f14d12ecf Benjamin Gaignard 2023-03-21  1282          ret = true;
+>> 625d46c1c1fe8e Benjamin Gaignard 2023-03-21  1283      }
+>> 625d46c1c1fe8e Benjamin Gaignard 2023-03-21  1284
+>> 487d3f14d12ecf Benjamin Gaignard 2023-03-21  1285  realloc_failed:
+>> 487d3f14d12ecf Benjamin Gaignard 2023-03-21  1286      spin_unlock(&q->bufs_lock);
+>> 487d3f14d12ecf Benjamin Gaignard 2023-03-21  1287
+>> 487d3f14d12ecf Benjamin Gaignard 2023-03-21  1288      return ret;
+>> 625d46c1c1fe8e Benjamin Gaignard 2023-03-21  1289  }
+>>
 
 
