@@ -4,77 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83B72C6FD20
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Mar 2023 13:03:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5638AC6FD20
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Mar 2023 13:09:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H1rTPCT0JRH171gB57nXMD2YZ/LVQCyO8TbslkuqCTs=; b=ZJWXCj6TVJtkT1HnbwdcfUTlv3
-	D9K7dk/wHoEsI4txWgl8fdnxHOT4NUp4GEnXKDNSE6gvg00lQO6iBlxOdR5s0mJhVj+mz8CZbKNI1
-	7ghnI/IS5iVsz7YUD6QTotc8xcRBXZA+hSRn28Ol7O662cuSu8QcbrnM5TYz0RguLmypU80K1+X7o
-	D/2muIZ2Z2XDKdfZUQJPlLDwzYO2ltzZlEWSfLLV8lq6fI+Q32DhYd7XFYDoUI3qtaKK4M+4qmXpB
-	PmsmWNCq8DhWltdHdZNuXV5fXweEZhijxRSTETgbSDGthobhA0uRREvNkvgWvU9R4Hahv7uBBXKl1
-	lu6pEJgw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oT+acvdU6eO+amZb5hvogxi4+aOhqk3FEjsaaJ0DV7c=; b=TE1W/0vyuONs8ZVL/E8jN3j2MN
+	fzvCNSHKMBspVL6rFoobpCLhh+mB23QVz/2+tNjWD/pWlXrEYngLHGSaNqYXjeF1lLS+Gu4mk0wqj
+	07l+BgCMHj35qmL1G6AF0N83PnEdbwKwMSLVlnsTM5iaF4RCaB4Y4dDVBd36TTzPPR+zGMzJxBccb
+	gCGqQjMk5MHKLfRMgtURYLfeEemdo3w76r2TIy3qND4QLg7uvrZy+kexE2v+OmWRGsG51rOhRp/me
+	t7nRzCyqoyuN76tOD0cHGqzEuBqp/AK5lHZemJCMYHSd/bEYZRfnRO8h9eh2usT6cAJzUIVAzKAQ5
+	kp1MYVxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfh4L-004R4x-0v;
-	Fri, 24 Mar 2023 13:02:57 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pfhAx-004Rn9-1Z;
+	Fri, 24 Mar 2023 13:09:47 +0000
+Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfh4G-004R3H-1s;
-	Fri, 24 Mar 2023 13:02:54 +0000
-Received: from [192.168.2.179] (109-252-120-116.nat.spd-mgts.ru [109.252.120.116])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: dmitry.osipenko)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8A0A16602E0E;
-	Fri, 24 Mar 2023 13:02:42 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1679662964;
-	bh=kpqXq6UeGgXsVu6TLQM8ko29kV7748olljvXmD9n2oU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=fJhdF/6EuVwtZqtUK9BHmxcGAPcgYm67pizoTOiLS9liSDI+PCTMcPyPeBk8giObt
-	 6N51SXsvFnXt++WjdZLVZiBKxkCrEf3urnxFeWOwQaHqT1pxqh9M8a1IxjtCcKhU3d
-	 k7MFMRzZ8bzXLYC9jwq5TkCmdptLjCRdWSe/uQlUXSFwpLLJ+5u+GpP+UO16L2DpnU
-	 dUl+S4RWnEFc5tSuWFJT1WKLt5N+xstLYPLcN+K3CMNL8f7DKjRxEAEXTsDnaS7aYL
-	 Vr7Tog2S9Zg7P9ovovoOE1lojrwScdl3WKEZhgPXKrTnRJeD1wG6PV7NEvTvYlcqBm
-	 r1IDDo9CdQSqw==
-Message-ID: <5a16edd7-3e68-1f94-0ff1-24668fc43501@collabora.com>
-Date: Fri, 24 Mar 2023 16:02:39 +0300
+	id 1pfhAu-004RWO-1i
+	for linux-mediatek@lists.infradead.org;
+	Fri, 24 Mar 2023 13:09:45 +0000
+Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id B303418837C2;
+	Fri, 24 Mar 2023 13:07:21 +0000 (UTC)
+Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
+	by mailout.gigahost.dk (Postfix) with ESMTP id ACC3F2500B57;
+	Fri, 24 Mar 2023 13:07:21 +0000 (UTC)
+Received: by smtp.gigahost.dk (Postfix, from userid 1000)
+	id A23749B403F4; Fri, 24 Mar 2023 13:07:21 +0000 (UTC)
+X-Screener-Id: e32ae469fa6e394734d05373d3a705875723cf1e
+Received: from fujitsu (2-104-116-184-cable.dk.customer.tdc.net [2.104.116.184])
+	by smtp.gigahost.dk (Postfix) with ESMTPSA id B3AEB9B403E2;
+	Fri, 24 Mar 2023 13:07:20 +0000 (UTC)
+From: Hans Schultz <netdev@kapio-technology.com>
+To: Ido Schimmel <idosch@nvidia.com>
+Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
+ Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Vladimir
+ Oltean <olteanv@gmail.com>, Eric Dumazet <edumazet@google.com>, Paolo
+ Abeni <pabeni@redhat.com>, Kurt Kanzenbach <kurt@linutronix.de>, Hauke
+ Mehrtens <hauke@hauke-m.de>, Woojung Huh <woojung.huh@microchip.com>,
+ "maintainer:MICROCHIP KSZ SERIES ETHERNET SWITCH DRIVER"
+ <UNGLinuxDriver@microchip.com>, Sean Wang <sean.wang@mediatek.com>, Landen
+ Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Claudiu Manoil
+ <claudiu.manoil@nxp.com>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, =?utf-8?Q?Cl=C3=A9ment_L=C3=A9ger?=
+ <clement.leger@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
+ <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
+ <razor@blackwall.org>, Shuah Khan <shuah@kernel.org>, Christian Marangi
+ <ansuelsmth@gmail.com>, open list <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>, "open list:RENESAS RZ/N1
+ A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>, "moderated
+ list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>, "open
+ list:KERNEL SELFTEST FRAMEWORK" <linux-kselftest@vger.kernel.org>
+Subject: Re: [PATCH v2 net-next 1/6] net: bridge: add dynamic flag to
+ switchdev notifier
+In-Reply-To: <ZBgd1mgO36umXqoj@shredder>
+References: <20230318141010.513424-1-netdev@kapio-technology.com>
+ <20230318141010.513424-2-netdev@kapio-technology.com>
+ <ZBgd1mgO36umXqoj@shredder>
+Date: Fri, 24 Mar 2023 14:04:45 +0100
+Message-ID: <87h6ua5mhe.fsf@kapio-technology.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH v2 2/8] media: videobuf2: Make bufs array dynamic
- allocated
-Content-Language: en-US
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, tfiga@chromium.org,
- m.szyprowski@samsung.com, mchehab@kernel.org, ming.qian@nxp.com,
- shijie.qin@nxp.com, eagle.zhou@nxp.com, bin.liu@mediatek.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com,
- yunfei.dong@mediatek.com, stanimir.k.varbanov@gmail.com,
- quic_vgarodia@quicinc.com, agross@kernel.org, andersson@kernel.org,
- konrad.dybcio@linaro.org, ezequiel@vanguardiasur.com.ar,
- p.zabel@pengutronix.de, daniel.almeida@collabora.com,
- hverkuil-cisco@xs4all.nl, laurent.pinchart@ideasonboard.com,
- jernel@kernel.org
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- kernel@collabora.com
-References: <20230321102855.346732-1-benjamin.gaignard@collabora.com>
- <20230321102855.346732-3-benjamin.gaignard@collabora.com>
-From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-In-Reply-To: <20230321102855.346732-3-benjamin.gaignard@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230324_060252_838586_0B5E1217 
-X-CRM114-Status: UNSURE (   6.14  )
+X-CRM114-CacheID: sfid-20230324_060944_712794_BDF994DE 
+X-CRM114-Status: UNSURE (   9.87  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,16 +91,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 3/21/23 13:28, Benjamin Gaignard wrote:
-> +	q->bufs = kmalloc_array(q->max_num_bufs, sizeof(*q->bufs), GFP_KERNEL | __GFP_ZERO);
-> +	if (!q->bufs)
-> +		return -ENOMEM;
-> +
+On Mon, Mar 20, 2023 at 10:48, Ido Schimmel <idosch@nvidia.com> wrote:
+>
+> I was under the impression that the consensus was to rename this to
+> 'is_static' so that it is consistent with other flags.
+>
 
-Use kcalloc()
+I think the consensus was that the bridge maintainers would decide if it
+should be changed, this according to Oltean. I still think that
+is_dyn is more secure codewise in the long run and it is logical as that
+is what the feature the flag concerns.
 
--- 
-Best regards,
-Dmitry
-
+When you say consistent with other flags, I don't understand the
+inconsistency. Could you please explain.
 
