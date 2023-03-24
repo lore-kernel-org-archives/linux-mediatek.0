@@ -4,91 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87A36C6FD1C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Mar 2023 20:21:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1129FC6FD20
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Mar 2023 22:04:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:In-reply-to:Date:Subject:Cc:To:From:References:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+41H+u5uAl0m+UcX498wxmnes9MKT6I82vmNwXK2FZg=; b=H96OwJ01cCHarAOjuBf+Rp5u2D
-	0UCHBjmQ11Huvzz5bWNOD9gSVhxNM3Asf+R3JUnlWCmRXpUN8pk0D/6heiZYjlnE3JVfGcB/mIm9Z
-	qYgfLRc9kRbTz6DAIyqGoZ4mo2ge8kBApf+2ppH6+R3Q4Kl/bF6Xy5F5UnqEphSoR+NKwiqx+oG0t
-	E5LL5RxTAieKALFKAfAInfMcft4KYrnaeNAzxUY4WJS/ANZV3uk8aKD9AOVwjbrEeQXfiD4oXiJCm
-	jP+1aHsR4XnYyprxYjVWV+xbzd9fEnhab0iQP3xTNE4IpDcx87FxnrsvnZUmUNJyabF3b8Rcy/gbv
-	ZeTQ7UUw==;
+	bh=eQ3RSbBi4GxRzlwFNletxU5cxz92xG3Lj6FTyrjdc0o=; b=M48GHLHO7htS9ryO4+KUlapeT2
+	go1ZBrSXAbKNvyKRhdLE/qkaATIIO+hozX6+hQ9HWfjzOOwMaXEQwb9cKJ3MC3RRvuaTlbTda4YpX
+	k3V1IFHT+1fFpO6RGtTJXY7f1I7Ay/lQ5Ovbe2zoXnekgzzEiMlRihsw+ZxRfmPkSJb+u+TOYdtlR
+	DRhBslWtnWHoTPpTqpiw7DLz9O6J2BYXFnz6BW2Aot1Sv3NB8mVVeouo8dQvQwsOGLsjYiyc4TB7k
+	B0am40JXIVpeQZpeZ8Z8JK2rxCTXyJg2s5XR2GOhvo+FjuOznaICXUvuZ8drZHwgtzu0FFapTAl+o
+	0cdeMMZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfnuy-005Wmq-11;
-	Fri, 24 Mar 2023 20:21:44 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1pfpW1-005hmk-13;
+	Fri, 24 Mar 2023 22:04:05 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfnut-005Wkg-31;
-	Fri, 24 Mar 2023 20:21:41 +0000
-Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id B21B2A58;
-	Fri, 24 Mar 2023 21:21:35 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1679689295;
-	bh=k082uSrt6jNQq0wYKw9dlktMyGfVT1a6X+VmeRopIhQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KjQE14OQG/1rdUOuBbJvohFSBegnyZS9jPYY5Lhj5m5xjVQ1OJPx/QPJJxHmEGiXk
-	 oxQ6r8iqbugo67bppEFw0YuiMMMT9fwCwGbS8mMgppoOdT1QGXkMOAVYQ8ww48etkK
-	 37OWSXgkj0n17Xxk29IxOG2ZMCYZdkbUbUbV7Czo=
-Date: Fri, 24 Mar 2023 22:21:42 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Nicolas Dufresne <nicolas@ndufresne.ca>
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	David Laight <David.Laight@ACULAB.COM>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	"tfiga@chromium.org" <tfiga@chromium.org>,
-	"m.szyprowski@samsung.com" <m.szyprowski@samsung.com>,
-	"mchehab@kernel.org" <mchehab@kernel.org>,
-	"ming.qian@nxp.com" <ming.qian@nxp.com>,
-	"shijie.qin@nxp.com" <shijie.qin@nxp.com>,
-	"eagle.zhou@nxp.com" <eagle.zhou@nxp.com>,
-	"bin.liu@mediatek.com" <bin.liu@mediatek.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>,
-	"tiffany.lin@mediatek.com" <tiffany.lin@mediatek.com>,
-	"andrew-ct.chen@mediatek.com" <andrew-ct.chen@mediatek.com>,
-	"yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>,
-	"stanimir.k.varbanov@gmail.com" <stanimir.k.varbanov@gmail.com>,
-	"quic_vgarodia@quicinc.com" <quic_vgarodia@quicinc.com>,
-	"agross@kernel.org" <agross@kernel.org>,
-	"andersson@kernel.org" <andersson@kernel.org>,
-	"konrad.dybcio@linaro.org" <konrad.dybcio@linaro.org>,
-	"ezequiel@vanguardiasur.com.ar" <ezequiel@vanguardiasur.com.ar>,
-	"p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
-	"daniel.almeida@collabora.com" <daniel.almeida@collabora.com>,
-	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
-	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
-	"kernel@collabora.com" <kernel@collabora.com>
-Subject: Re: [RFC 2/4] media: videobuf2: Replace bufs array by a list
-Message-ID: <20230324202142.GB23868@pendragon.ideasonboard.com>
-References: <86df05244d974416903e919d387a0a0b@AcuMS.aculab.com>
- <e704b505-86d8-c6f2-8546-adccdab72622@xs4all.nl>
- <dc04d48e34ed40e58f43badd001a81d0@AcuMS.aculab.com>
- <cbf34cf1-e065-8136-8344-89ca1864f637@xs4all.nl>
- <20230319233358.GD20234@pendragon.ideasonboard.com>
- <f085aa9225c573df906bdc7ff032a8fd591b18b3.camel@ndufresne.ca>
- <20230322150153.GO20234@pendragon.ideasonboard.com>
- <2d6480e36ce061a63440d1e11d52b02e57ba746d.camel@ndufresne.ca>
- <68ba7b3f-57f5-3969-5036-2c8d08273548@xs4all.nl>
- <6f2979d33526e5ccdc32cf096415d8309fc91d3d.camel@ndufresne.ca>
+	id 1pfpVv-005hlB-2u;
+	Fri, 24 Mar 2023 22:04:04 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id h17so3124850wrt.8;
+        Fri, 24 Mar 2023 15:03:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1679695435;
+        h=mime-version:message-id:in-reply-to:date:subject:cc:to:from
+         :references:from:to:cc:subject:date:message-id:reply-to;
+        bh=eQ3RSbBi4GxRzlwFNletxU5cxz92xG3Lj6FTyrjdc0o=;
+        b=T3F8aNz2ox9uoURQlE0mq2sXW4z262BpvG7ZxRtAtIbFhPc/TQEpQM0a0SgR+TrqHO
+         CLYGJXT6hxHwzdY9UN32CZG2dOkIF2LFvXUPmwkIF/2GkwmMW7kb6axItHjQcEjAF96P
+         YoZ2Q3loL8sCvN2e52vHQqe+AQbmZyqmh9t2+HCpPytsWAA2sxbaBc61b92bJ1dDr0QQ
+         Tdx2iHxB/Aa/m/jyDHMcs00O0mdizZduxSlMQxMVQw/7cAeVdYgYGEV+MFN8ajK6+qK2
+         SFuRxlx0kY19AQ86OkmU5aCJ9GqDDqrZ45+h67Pz4nAn4V4ElL3E8abtemphkRCVy/gF
+         HzMg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679695435;
+        h=mime-version:message-id:in-reply-to:date:subject:cc:to:from
+         :references:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=eQ3RSbBi4GxRzlwFNletxU5cxz92xG3Lj6FTyrjdc0o=;
+        b=XhDA4ltszStSg+DXIvZEt2WjSHucn+P03albY/NgcDihYDT5L7+3iNuYfmQmAMlv1O
+         9RzjikPW13X0xHp5YI21m5tR3IxQ6Pt1ElDLOIs7QSRZ9Sj9eDca7H7eQxmMevPXl7Nk
+         f3qOZfSM2AyZoeANGsHVGvWyVxCntSWRg4souJUazY9h/51/sjWiKOFaXG6EtTFJfe3m
+         JQbG0GVlh/fnpszknpA5fd4hp7wD68ooHrhbOOTvVKXy68XZJB96xVAMEbFm0qWCoDd7
+         vHiMmoSuG7d1TzShMQYQHGFpjL0OnzkM6WYt3HI5ftlomotNH/vW0NsMjkzfWb3WdF2Y
+         c5dw==
+X-Gm-Message-State: AAQBX9d51viBXAsOwbvzrm6bF6mmjQGTK5v2ATt9rPmh7WMFLMhpIWIL
+	RUlT/c2mKp+lfbwgzt6vcSE=
+X-Google-Smtp-Source: AKy350bTnEgVdoWb1kTWyTj04kbZ8RkYf2o8/EHnYZiiSg63myut6K0B/vHtQugbPkbZgvwsB8kF9A==
+X-Received: by 2002:adf:e905:0:b0:2ce:a096:3ff2 with SMTP id f5-20020adfe905000000b002cea0963ff2mr3187613wrm.63.1679695434807;
+        Fri, 24 Mar 2023 15:03:54 -0700 (PDT)
+Received: from localhost (94.197.5.156.threembb.co.uk. [94.197.5.156])
+        by smtp.gmail.com with ESMTPSA id e9-20020adffc49000000b002be5bdbe40csm19237361wrs.27.2023.03.24.15.03.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 24 Mar 2023 15:03:54 -0700 (PDT)
+References: <20221018-clk-range-checks-fixes-v2-0-f6736dec138e@cerno.tech>
+ <20221018-clk-range-checks-fixes-v2-56-f6736dec138e@cerno.tech>
+ <80VTKR.CE8RVN8M3ZYK3@crapouillou.net>
+ <20221104145946.orsyrhiqvypisl5j@houat>
+ <cp7Yh29ndlOOi1yW8KwCcpzoLPLxm1vR@localhost>
+ <20221107085417.xrsh6xy3ouwdkp4z@houat>
+ <ucJ6KSBqdPTxfxUQqLUr9C9RGiQRnY1I@localhost>
+ <20221109110045.j24vwkaq3s4yzoy3@houat>
+ <06a293adc75990ed3e297b076fc38d8a.sboyd@kernel.org>
+ <xpKMzGb1sOsucWMTlJIMzrT5KjLlZ7JP@localhost>
+ <20230324111959.frjf4neopbs67ugd@houat>
+From: Aidan MacDonald <aidanmacdonald.0x0@gmail.com>
+To: Maxime Ripard <maxime@cerno.tech>
+Cc: Stephen Boyd <sboyd@kernel.org>, Paul Cercueil <paul@crapouillou.net>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Nicolas Ferre
+ <nicolas.ferre@microchip.com>, Thierry Reding <thierry.reding@gmail.com>,
+ Jaroslav Kysela <perex@perex.cz>, Shawn Guo <shawnguo@kernel.org>, Fabio
+ Estevam <festevam@gmail.com>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Claudiu Beznea <claudiu.beznea@microchip.com>, Michael Turquette
+ <mturquette@baylibre.com>, Dinh Nguyen <dinguyen@kernel.org>, Chunyan
+ Zhang <zhang.lyra@gmail.com>, Manivannan Sadhasivam <mani@kernel.org>,
+ Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>, Jonathan Hunter
+ <jonathanh@nvidia.com>,
+ Abel Vesa <abelvesa@kernel.org>, Charles Keepax
+ <ckeepax@opensource.cirrus.com>, Alessandro Zummo <a.zummo@towertech.it>,
+ Peter De Schrijver <pdeschrijver@nvidia.com>, Orson Zhai
+ <orsonzhai@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Prashant Gaikwad <pgaikwad@nvidia.com>, Liam Girdwood
+ <lgirdwood@gmail.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Samuel Holland <samuel@sholland.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Richard Fitzgerald <rf@opensource.cirrus.com>,
+ Vinod Koul <vkoul@kernel.org>, NXP Linux Team <linux-imx@nxp.com>, Sekhar
+ Nori <nsekhar@ti.com>, Kishon Vijay Abraham I <kishon@kernel.org>, Linus
+ Walleij <linus.walleij@linaro.org>, Takashi Iwai <tiwai@suse.com>, David
+ Airlie <airlied@gmail.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>, Pengutronix Kernel Team
+ <kernel@pengutronix.de>, Baolin Wang <baolin.wang@linux.alibaba.com>,
+ David Lechner <david@lechnology.com>, Sascha Hauer
+ <s.hauer@pengutronix.de>, Mark Brown <broonie@kernel.org>, Max Filippov
+ <jcmvbkbc@gmail.com>, Geert Uytterhoeven <geert+renesas@glider.be>,
+ linux-stm32@st-md-mailman.stormreply.com, alsa-devel@alsa-project.org,
+ linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
+ linux-mips@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+ linux-actions@lists.infradead.org, linux-clk@vger.kernel.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ patches@opensource.cirrus.com, linux-tegra@vger.kernel.org,
+ linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org
+Subject: Re: [PATCH v2 56/65] clk: ingenic: cgu: Switch to determine_rate
+Date: Fri, 24 Mar 2023 20:58:48 +0000
+In-reply-to: <20230324111959.frjf4neopbs67ugd@houat>
+Message-ID: <rTJKpeLOBeu3eOLW5z3P5fEpcOJJLrGs@localhost>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <6f2979d33526e5ccdc32cf096415d8309fc91d3d.camel@ndufresne.ca>
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230324_132140_120253_2830D498 
-X-CRM114-Status: GOOD (  31.01  )
+X-CRM114-CacheID: sfid-20230324_150359_938678_6A1DE991 
+X-CRM114-Status: GOOD (  42.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,62 +133,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 24, 2023 at 11:34:48AM -0400, Nicolas Dufresne wrote:
-> Le vendredi 24 mars 2023 à 16:18 +0100, Hans Verkuil a écrit :
-> > On 24/03/2023 16:14, Nicolas Dufresne wrote:
-> > > Le mercredi 22 mars 2023 à 17:01 +0200, Laurent Pinchart a écrit :
-> > > > On Wed, Mar 22, 2023 at 10:50:52AM -0400, Nicolas Dufresne wrote:
-> > > > > Le lundi 20 mars 2023 à 01:33 +0200, Laurent Pinchart a écrit :
-> > > > > > > The typical usage is that applications allocate N buffers with the
-> > > > > > > VIDIOC_REQBUFS ioctl, and in most cases that's all they use.
-> > > > > > 
-> > > > > > Note that once we get DELETE_BUF (or DELETE_BUFS) support I'd like to
-> > > > > > encourage applications to use the new API, and deprecate REQBUFS
-> > > > > > (dropping it isn't on my radar, as it would take forever before no
-> > > > > > userspace uses it anymore).
-> > > > > 
-> > > > > I was wondering if you can extend on this. I'm worried the count semantic might
-> > > > > prevent emulating it over create_bufs() ops, but if that works, did you meant to
-> > > > > emulate it so driver no longer have to implement reqbufs() if they have
-> > > > > create_bufs() ?
-> > > > 
-> > > > For drivers it should be fairly simply, as the reqbufs and create_bufs
-> > > > ioctl handlers should just point to the corresponding videobuf2 helpers.
-> > > > 
-> > > > What I meant is that I'd like to encourage userspace to use the
-> > > > VIDIOC_CREATE_BUFS ioctl instead of VIDIOC_REQBUFS.
-> > > > 
-> > > 
-> > > I'm not sure what rationale I can give implementer to "encourage" them to use a
-> > > more complex API that needs to copy over the FMT (which has just been set),
-> > > specially in the initial pre-allocation case. For most, CREATE_BUFS after SMT
-> > > will look like a very redundant and counter intuitive thing. Maybe you have a
-> > > more optimistic view on the matter ? Or you have a better idea how we could give
-> > > a meaning to having a fmt there on the initial case where the allocation matches
-> > > the queue FMT ?
-> > 
-> > I wouldn't mind if we can make a much nicer CREATE_BUFS variant with just the
-> > size instead of a format. That was in hindsight a really bad idea, terrible
-> > over-engineering.
-> 
-> Note that all DRM allocators also includes width/height and some format related
-> info (or the full info). This is because the driver deals with the alignment
-> requirements. In some use cases (I have inter frame dynamic control in mind
-> here) the fmt could be a mean to feedback the alignment (like bytesperline) back
-> to the application where the stream is no longer homogeneous on the FMT.
-> 
-> That being said, If we move toward a size base allocator API, we could also just
-> point back to an existing HEAP (or export an new heap if none are valid). And
-> define the sizeimage(s) is now that information you need from the FMT to
-> allocate anything + which heap needs to be used for the current setup.
 
-If we could move away from allocating buffers within V4L2 to only
-importing buffers allocated through the DMA heaps API, I'd be very
-happy. That won't be simple though. Maybe a good candidate for
-discussions during the media summit in Prague this year ?
+Maxime Ripard <maxime@cerno.tech> writes:
 
--- 
-Regards,
+> On Thu, Mar 23, 2023 at 03:35:30PM +0000, Aidan MacDonald wrote:
+>>
+>> Stephen Boyd <sboyd@kernel.org> writes:
+>>
+>> > Quoting Maxime Ripard (2022-11-09 03:00:45)
+>> >> On Mon, Nov 07, 2022 at 08:57:22PM +0000, Aidan MacDonald wrote:
+>> >> >
+>> >> > Maxime Ripard <maxime@cerno.tech> writes:
+>> >> >
+>> >> > > Hi,
+>> >> > >
+>> >> > > On Fri, Nov 04, 2022 at 05:35:29PM +0000, Aidan MacDonald wrote:
+>> >> >
+>> >> > Assigning the parent clock in the DT works once, at boot, but going off
+>> >> > what you wrote in the commit message, if the clock driver has a
+>> >> > .determine_rate() implementation that *can* reparent clocks then it
+>> >> > probably *will* reparent them, and the DT assignment will be lost.
+>> >>
+>> >> Yes, indeed, but assigned-clock-parents never provided any sort of
+>> >> guarantee on whether or not the clock was allowed to reparent or not.
+>> >> It's just a one-off thing, right before probe, and a clk_set_parent()
+>> >> call at probe will override that just fine.
+>> >>
+>> >> Just like assigned-clock-rates isn't permanent.
+>> >>
+>> >> > What I'm suggesting is a runtime constraint that the clock subsystem
+>> >> > would enforce, and actively prevent drivers from changing the parent.
+>> >> > Either explicitly with clk_set_parent() or due to .determine_rate().
+>> >> >
+>> >> > That way you could write a .determine_rate() implementation that *can*
+>> >> > select a better parent, but if the DT applies a constraint to fix the
+>> >> > clock to a particular parent, the clock subsystem will force that parent
+>> >> > to be used so you can be sure the clock is never reparented by accident.
+>> >>
+>> >> Yeah, that sounds like a good idea, and CLK_SET_RATE_NO_REPARENT isn't
+>> >> too far off from this, it's just ignored by clk_set_parent() for now. I
+>> >> guess we could rename CLK_SET_RATE_NO_REPARENT to CLK_NO_REPARENT, make
+>> >> clk_set_parent handle it, and set that flag whenever
+>> >> assigned-clock-parents is set on a clock.
+>> >>
+>> >> It's out of scope for this series though, and I certainly don't want to
+>> >> deal with all the regressions it might create :)
+>> >>
+>> >
+>> > This sounds like a new dt binding that says the assigned parent should
+>> > never change. It sounds sort of like gpio hogs. A clock-hogs binding?
+>>
+>> Ideally we want the clock driver to be able to reparent clocks freely
+>> to get the best rate. But we also need some control over that to stop
+>> consumers from being reparented in undesired ways. Eg. you might want
+>> to make sure the GPU gets its own PLL so it can be reclocked easily,
+>> and putting another device on the GPU's PLL could prevent that.
+>>
+>> The only way to achieve this today is (1) never do any reparenting in
+>> the clock driver; and (2) use assigned-clock-parents in the DT to set
+>> up the entire clock tree manually.
+>>
+>> Maxime said that (2) is basically wrong -- if assigned-clock-parents
+>> provides no guarantee on what the OS does "after boot" then the OS is
+>> pretty much free to ignore it.
+>
+> I didn't really say it's wrong, just that it never provided the
+> guarantee you expect it to provide. I can't really say whether it's an
+> issue or not on your platform.
+>
+> It's mostly unrelated to this series though, none of these patches
+> affect that behavior in one way or the other.
 
-Laurent Pinchart
+I know. Sorry for derailing your patch :(
+
+>> My suggestion: add a per-clock bitmap to keep track of which parents
+>> are allowed. Any operation that would select a parent clock not on the
+>> whitelist should fail. Automatic reparenting should only select from
+>> clocks on the whitelist. And we need new DT bindings for controlling
+>> the whitelist, for example:
+>>
+>>     clock-parents-0 = <&clk1>, <&pll_c>;
+>>     clock-parents-1 = <&clk2>, <&pll_a>, <&pll_b>;
+>>
+>> This means that clk1 can only have pll_c as a parent, while clk2 can
+>> have pll_a or pll_b as parents. By default every clock will be able
+>> to use any parent, so a list is only needed if the machine needs a
+>> more restrictive policy.
+>>
+>> assigned-clock-parents should disable automatic reparenting, but allow
+>> explicit clk_set_parent(). This will allow clock drivers to start doing
+>> reparenting without breaking old DTs.
+>
+> I'm generally not a fan of putting all these policies in the device
+> tree. Do you have an example where it wouldn't be possible to do exactly
+> this from the driver itself?
+>
+> Maxime
+
+I'm confused. What's implicit in the example is clk1 and clk2 might
+have *other* possible choices of parent clock and the device tree is
+limiting what the OS is allowed to choose.
+
+Why would you put such arbitrary limitations into the driver? They
+would be different from machine to machine, unless the clock tree is
+so simple there is only *one* meaningful way to configure it. Most
+SoCs are complicated enough that there will be tradeoffs depending
+on what peripherals you are using (typically a single machine will
+not use *every* peripheral device provided by the SoC).
 
