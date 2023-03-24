@@ -4,56 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FD27C6FD1C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Mar 2023 14:14:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96A09C6FD1C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Mar 2023 14:34:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=YvN1UGooUE/IAB3ayV7UWNinTBve+ZB5gICOFA/akWE=; b=baaPxBa6TShtnPQr9uEAzRbP8U
-	mUh02flK5TOBF2JMbUHou7ydpNteuZhkua8we6sHsf9ROTvYl/ZxLcoE8oepU7EXxZFi3EUk1qn7U
-	HJ9pkyXdW0chQcM8J/7uyTIEDXTGy+BWWBTjm91/fDUpZQFufqVtscH6ijxHNWF2y3AdiWWjotiNn
-	9poOaJToPsPmgLCtRMLDI+BDnSkvo1cNdm01t4EQBkQomqz5SJQhCQlHnQgBweC9oZnKAMfg1pz6z
-	cJddbnPLMEYDarIzJVTj3dYT1+nAWxENMjCO3cabXADXb4Yc4dO7exjk9MvHUUQ6bmtyvBaY+t598
-	m0zDjRrw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ozq+vH75mAjNkKi3jfaobvjryF3L2Ni1S1Tn6tmagvQ=; b=S81SA+Ra1EkcnRCQFuWwndteYk
+	g2n3EGW9On3D7683LJf1hAayEmnFEelmL97ijN1FtpBkPDc9HYKxil6HQDfJahh/9nFc7lUUuQIY8
+	zMsHmvvA5QWEkwLEP+bhSk+t9EgcBUbyKcbwY0/i8nVXlq14SDDXb2tupPNAsP8fTxhlnjlJdsPis
+	lt7l/H4flTcY9Nw8p7L2wKp9OMOW831UwGh54HnLEW/xtQQN4c18rHS3uD0/15IQw8jgM1ISKni26
+	MALrLTNR9nxbAEjCirBv1+Cme/Kf4/iYVWZb0vRoWGb96TRdU83MHVV8q6NVsrhTuDALMdhUsH9My
+	qEzGrHmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfiB5-004bbh-1O;
-	Fri, 24 Mar 2023 14:13:59 +0000
-Received: from mg.richtek.com ([220.130.44.152])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfiB0-004bYl-2h;
-	Fri, 24 Mar 2023 14:13:57 +0000
-X-MailGates: (flag:4,DYNAMIC,BADHELO,RELAY,NOHOST:PASS)(compute_score:DE
-	LIVER,40,3)
-Received: from 192.168.10.47
-	by mg.richtek.com with MailGates ESMTP Server V5.0(26690:0:AUTH_RELAY)
-	(envelope-from <chiaen_wu@richtek.com>); Fri, 24 Mar 2023 22:13:05 +0800 (CST)
-Received: from ex3.rt.l (192.168.10.46) by ex4.rt.l (192.168.10.47) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.25; Fri, 24 Mar
- 2023 22:13:05 +0800
-Received: from linuxcarl2.richtek.com (192.168.10.154) by ex3.rt.l
- (192.168.10.45) with Microsoft SMTP Server id 15.2.1118.25 via Frontend
- Transport; Fri, 24 Mar 2023 22:13:05 +0800
-From: ChiaEn Wu <chiaen_wu@richtek.com>
-To: <jic23@kernel.org>, <lars@metafoo.de>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>
-CC: <linux-iio@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<peterwu.pub@gmail.com>, <cy_huang@richtek.com>, ChiaEn Wu
-	<chiaen_wu@richtek.com>
-Subject: [PATCH] iio: adc: mt6370: Fix ibus and ibat scaling value of some specific vendor ID chips
-Date: Fri, 24 Mar 2023 22:12:47 +0800
-Message-ID: <1679667167-16261-1-git-send-email-chiaen_wu@richtek.com>
-X-Mailer: git-send-email 1.8.3.1
+	id 1pfiUo-004eA8-2w;
+	Fri, 24 Mar 2023 14:34:22 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pfiUl-004e8n-0R;
+	Fri, 24 Mar 2023 14:34:20 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id B1E5162B30;
+	Fri, 24 Mar 2023 14:34:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1F55BC4339B;
+	Fri, 24 Mar 2023 14:34:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1679668455;
+	bh=ozq+vH75mAjNkKi3jfaobvjryF3L2Ni1S1Tn6tmagvQ=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=ZnhWOCjRHBVl6jMFyTdz2uJBPpSM2kij2cHeCYfnvMal7mOe3nevgli12nKSVyo1+
+	 rZlC/eiRp+q6eYz1wuvLbURRo4cOa1ihg2sXmqlhxeiwE/5uyDJZb5KiFkbR81W5wr
+	 Mihu8blBLIIPZzPzXG+mtcNvBqAxymxPA4pqExAf5yA8RL9wTslmj93FUvsxYqap4Q
+	 U4sDe3114VPd8xkzxxSl3wiRrlADe7/VvdzGpRwnCFQhUCrAMQiONqvicHZNOAzuqU
+	 qvkUUlLWORUAOjqfuxV3S76W62ttb0Hz0+kSU2MB9UaOHxxmARqzQALHu2NEdEOapF
+	 9LgGCEDTVE4Ew==
+Received: by mail-pj1-f54.google.com with SMTP id lr16-20020a17090b4b9000b0023f187954acso1774580pjb.2;
+        Fri, 24 Mar 2023 07:34:15 -0700 (PDT)
+X-Gm-Message-State: AAQBX9cCaCh33idEPY16hIzR8BY0iUcYDw2kMosNwt9hCUvAs5nVKILs
+	XvSROnNIj6BO6615rXOMMzSuk9pN5SYtY8qdFw==
+X-Google-Smtp-Source: AKy350Y57cQ3/TzcctMtJeBkZVGy3RaGVnEiqyzqBxcgVPo3gFc72P+HHXJ3tIgI+qnw4mjDX3xPaiNQsV4yB10ee/Y=
+X-Received: by 2002:a81:b149:0:b0:543:9065:b225 with SMTP id
+ p70-20020a81b149000000b005439065b225mr1122523ywh.5.1679668433642; Fri, 24 Mar
+ 2023 07:33:53 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
+References: <20230317233623.3968172-1-robh@kernel.org> <CACRpkdYq4jE7Qn1w8iPeGz7vxj_CeZ+H48B0TVYmeF4Tt=kHgA@mail.gmail.com>
+In-Reply-To: <CACRpkdYq4jE7Qn1w8iPeGz7vxj_CeZ+H48B0TVYmeF4Tt=kHgA@mail.gmail.com>
+From: Rob Herring <robh@kernel.org>
+Date: Fri, 24 Mar 2023 09:33:42 -0500
+X-Gmail-Original-Message-ID: <CAL_JsqL+nF_WwZ-EDpUSD2yrxPLZWxaeb=WpTtPnnbpgcXT7qA@mail.gmail.com>
+Message-ID: <CAL_JsqL+nF_WwZ-EDpUSD2yrxPLZWxaeb=WpTtPnnbpgcXT7qA@mail.gmail.com>
+Subject: Re: [PATCH] dt-bindings: pinctrl: Drop unneeded quotes
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
+	Manivannan Sadhasivam <mani@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Samuel Holland <samuel@sholland.org>, Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, 
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, 
+	Damien Le Moal <damien.lemoal@wdc.com>, Charles Keepax <ckeepax@opensource.cirrus.com>, 
+	Richard Fitzgerald <rf@opensource.cirrus.com>, Dong Aisheng <aisheng.dong@nxp.com>, 
+	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	NXP Linux Team <linux-imx@nxp.com>, Sean Wang <sean.wang@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andy Gross <agross@kernel.org>, 
+	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Heiko Stuebner <heiko@sntech.de>, 
+	Tomasz Figa <tomasz.figa@gmail.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
+	Masami Hiramatsu <mhiramat@kernel.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Emil Renner Berthing <kernel@esmil.dk>, 
+	Jianlong Huang <jianlong.huang@starfivetech.com>, Dvorkin Dmitry <dvorkin@tibbo.com>, 
+	Wells Lu <wellslutw@gmail.com>, Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, 
+	Michal Simek <michal.simek@xilinx.com>, linux-arm-kernel@lists.infradead.org, 
+	linux-actions@lists.infradead.org, linux-gpio@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-sunxi@lists.linux.dev, asahi@lists.linux.dev, 
+	linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org, 
+	linux-riscv@lists.infradead.org, patches@opensource.cirrus.com, 
+	alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
+	linux-stm32@st-md-mailman.stormreply.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230324_071355_327965_96BC171C 
-X-CRM114-Status: GOOD (  15.30  )
+X-CRM114-CacheID: sfid-20230324_073419_270140_323A97C7 
+X-CRM114-Status: GOOD (  13.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,131 +109,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The scale value of ibus and ibat on the datasheet is incorrect due to the
-customer report after the experimentation with some specific vendor ID
-chips.
+On Thu, Mar 23, 2023 at 3:40=E2=80=AFAM Linus Walleij <linus.walleij@linaro=
+.org> wrote:
+>
+> On Sat, Mar 18, 2023 at 12:36=E2=80=AFAM Rob Herring <robh@kernel.org> wr=
+ote:
+>
+> > Cleanup bindings dropping unneeded quotes. Once all these are fixed,
+> > checking for this can be enabled in yamllint.
+> >
+> > Signed-off-by: Rob Herring <robh@kernel.org>
+>
+> Should I queue this patch by the way, or do you need it to go into some
+> DT-related tree?
 
-Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
----
- drivers/iio/adc/mt6370-adc.c | 48 ++++++++++++++++++++++++++++++++++++++++++--
- 1 file changed, 46 insertions(+), 2 deletions(-)
+Stands on its own. You can take it.
 
-diff --git a/drivers/iio/adc/mt6370-adc.c b/drivers/iio/adc/mt6370-adc.c
-index bc62e5a..eea7223 100644
---- a/drivers/iio/adc/mt6370-adc.c
-+++ b/drivers/iio/adc/mt6370-adc.c
-@@ -19,6 +19,7 @@
- 
- #include <dt-bindings/iio/adc/mediatek,mt6370_adc.h>
- 
-+#define MT6370_REG_DEV_INFO		0x100
- #define MT6370_REG_CHG_CTRL3		0x113
- #define MT6370_REG_CHG_CTRL7		0x117
- #define MT6370_REG_CHG_ADC		0x121
-@@ -27,6 +28,7 @@
- #define MT6370_ADC_START_MASK		BIT(0)
- #define MT6370_ADC_IN_SEL_MASK		GENMASK(7, 4)
- #define MT6370_AICR_ICHG_MASK		GENMASK(7, 2)
-+#define MT6370_VENID_MASK		GENMASK(7, 4)
- 
- #define MT6370_AICR_100_mA		0x0
- #define MT6370_AICR_150_mA		0x1
-@@ -47,6 +49,10 @@
- #define ADC_CONV_TIME_MS		35
- #define ADC_CONV_POLLING_TIME_US	1000
- 
-+#define MT6370_VID_RT5081		0x8
-+#define MT6370_VID_RT5081A		0xA
-+#define MT6370_VID_MT6370		0xE
-+
- struct mt6370_adc_data {
- 	struct device *dev;
- 	struct regmap *regmap;
-@@ -55,6 +61,7 @@ struct mt6370_adc_data {
- 	 * from being read at the same time.
- 	 */
- 	struct mutex adc_lock;
-+	int vid;
- };
- 
- static int mt6370_adc_read_channel(struct mt6370_adc_data *priv, int chan,
-@@ -98,6 +105,26 @@ static int mt6370_adc_read_channel(struct mt6370_adc_data *priv, int chan,
- 	return ret;
- }
- 
-+static int mt6370_adc_get_ibus_scale(struct mt6370_adc_data *priv)
-+{
-+	if (priv->vid == MT6370_VID_RT5081  ||
-+	    priv->vid == MT6370_VID_RT5081A ||
-+	    priv->vid == MT6370_VID_MT6370)
-+		return 3350;
-+	else
-+		return 3875;
-+}
-+
-+static int mt6370_adc_get_ibat_scale(struct mt6370_adc_data *priv)
-+{
-+	if (priv->vid == MT6370_VID_RT5081  ||
-+	    priv->vid == MT6370_VID_RT5081A ||
-+	    priv->vid == MT6370_VID_MT6370)
-+		return 2680;
-+	else
-+		return 3870;
-+}
-+
- static int mt6370_adc_read_scale(struct mt6370_adc_data *priv,
- 				 int chan, int *val1, int *val2)
- {
-@@ -123,7 +150,7 @@ static int mt6370_adc_read_scale(struct mt6370_adc_data *priv,
- 		case MT6370_AICR_250_mA:
- 		case MT6370_AICR_300_mA:
- 		case MT6370_AICR_350_mA:
--			*val1 = 3350;
-+			*val1 = mt6370_adc_get_ibus_scale(priv);
- 			break;
- 		default:
- 			*val1 = 5000;
-@@ -150,7 +177,7 @@ static int mt6370_adc_read_scale(struct mt6370_adc_data *priv,
- 		case MT6370_ICHG_600_mA:
- 		case MT6370_ICHG_700_mA:
- 		case MT6370_ICHG_800_mA:
--			*val1 = 2680;
-+			*val1 = mt6370_adc_get_ibat_scale(priv);
- 			break;
- 		default:
- 			*val1 = 5000;
-@@ -251,6 +278,19 @@ static const struct iio_chan_spec mt6370_adc_channels[] = {
- 	MT6370_ADC_CHAN(TEMP_JC, IIO_TEMP, 12, BIT(IIO_CHAN_INFO_OFFSET)),
- };
- 
-+static int mt6370_get_vendor_info(struct mt6370_adc_data *priv)
-+{
-+	unsigned int dev_info;
-+	int ret;
-+
-+	ret = regmap_read(priv->regmap, MT6370_REG_DEV_INFO, &dev_info);
-+	if (ret)
-+		return ret;
-+
-+	priv->vid = FIELD_GET(MT6370_VENID_MASK, dev_info);
-+	return 0;
-+}
-+
- static int mt6370_adc_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
-@@ -263,6 +303,10 @@ static int mt6370_adc_probe(struct platform_device *pdev)
- 	if (!regmap)
- 		return dev_err_probe(dev, -ENODEV, "Failed to get regmap\n");
- 
-+	ret = mt6370_get_vendor_info(priv);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "Failed to get vid\n");
-+
- 	indio_dev = devm_iio_device_alloc(dev, sizeof(*priv));
- 	if (!indio_dev)
- 		return -ENOMEM;
--- 
-2.7.4
-
+Rob
 
