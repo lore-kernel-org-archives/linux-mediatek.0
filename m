@@ -4,97 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96A09C6FD1C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Mar 2023 14:34:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E336C6FD20
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Mar 2023 15:15:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ozq+vH75mAjNkKi3jfaobvjryF3L2Ni1S1Tn6tmagvQ=; b=S81SA+Ra1EkcnRCQFuWwndteYk
-	g2n3EGW9On3D7683LJf1hAayEmnFEelmL97ijN1FtpBkPDc9HYKxil6HQDfJahh/9nFc7lUUuQIY8
-	zMsHmvvA5QWEkwLEP+bhSk+t9EgcBUbyKcbwY0/i8nVXlq14SDDXb2tupPNAsP8fTxhlnjlJdsPis
-	lt7l/H4flTcY9Nw8p7L2wKp9OMOW831UwGh54HnLEW/xtQQN4c18rHS3uD0/15IQw8jgM1ISKni26
-	MALrLTNR9nxbAEjCirBv1+Cme/Kf4/iYVWZb0vRoWGb96TRdU83MHVV8q6NVsrhTuDALMdhUsH9My
-	qEzGrHmA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BlgJl6q6nmXLwoducihQkeA4VjkQWrKTU/XpmLER5K8=; b=rR8+sxdyt1+pXsQvHcq33yXtb0
+	d5T1vjsUplU9m3yd6MPVp2fgGh74IkXqZAwac5veXF+YQs5cxeOScbE47rnCI/txwhsx+BWNjw8CS
+	eeBtV+dTo83Knl8P2iVnGU+7bZUaJbOzIjLagixFydKI+7Ukqgm6LfiSn1yK+Sv5jliJzOkiHK2kM
+	86q1t0rgXm4cn273Mnr1vHEyIEeWiWh/LkVWugncgBl66ZcCtKychmPm7uNNELILDDYXP5/0MFwyA
+	a1uPxW7Tgu/BOVCgAJSA3A73h12Tu82PuLolA5iThTnF5RH9Z/pJy+vE/vrvz/LTuC8tr+eyS1WWZ
+	2cXZAZ3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfiUo-004eA8-2w;
-	Fri, 24 Mar 2023 14:34:22 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pfj89-004nie-2N;
+	Fri, 24 Mar 2023 15:15:01 +0000
+Received: from mail-qt1-x82a.google.com ([2607:f8b0:4864:20::82a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfiUl-004e8n-0R;
-	Fri, 24 Mar 2023 14:34:20 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id B1E5162B30;
-	Fri, 24 Mar 2023 14:34:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1F55BC4339B;
-	Fri, 24 Mar 2023 14:34:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1679668455;
-	bh=ozq+vH75mAjNkKi3jfaobvjryF3L2Ni1S1Tn6tmagvQ=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=ZnhWOCjRHBVl6jMFyTdz2uJBPpSM2kij2cHeCYfnvMal7mOe3nevgli12nKSVyo1+
-	 rZlC/eiRp+q6eYz1wuvLbURRo4cOa1ihg2sXmqlhxeiwE/5uyDJZb5KiFkbR81W5wr
-	 Mihu8blBLIIPZzPzXG+mtcNvBqAxymxPA4pqExAf5yA8RL9wTslmj93FUvsxYqap4Q
-	 U4sDe3114VPd8xkzxxSl3wiRrlADe7/VvdzGpRwnCFQhUCrAMQiONqvicHZNOAzuqU
-	 qvkUUlLWORUAOjqfuxV3S76W62ttb0Hz0+kSU2MB9UaOHxxmARqzQALHu2NEdEOapF
-	 9LgGCEDTVE4Ew==
-Received: by mail-pj1-f54.google.com with SMTP id lr16-20020a17090b4b9000b0023f187954acso1774580pjb.2;
-        Fri, 24 Mar 2023 07:34:15 -0700 (PDT)
-X-Gm-Message-State: AAQBX9cCaCh33idEPY16hIzR8BY0iUcYDw2kMosNwt9hCUvAs5nVKILs
-	XvSROnNIj6BO6615rXOMMzSuk9pN5SYtY8qdFw==
-X-Google-Smtp-Source: AKy350Y57cQ3/TzcctMtJeBkZVGy3RaGVnEiqyzqBxcgVPo3gFc72P+HHXJ3tIgI+qnw4mjDX3xPaiNQsV4yB10ee/Y=
-X-Received: by 2002:a81:b149:0:b0:543:9065:b225 with SMTP id
- p70-20020a81b149000000b005439065b225mr1122523ywh.5.1679668433642; Fri, 24 Mar
- 2023 07:33:53 -0700 (PDT)
-MIME-Version: 1.0
-References: <20230317233623.3968172-1-robh@kernel.org> <CACRpkdYq4jE7Qn1w8iPeGz7vxj_CeZ+H48B0TVYmeF4Tt=kHgA@mail.gmail.com>
-In-Reply-To: <CACRpkdYq4jE7Qn1w8iPeGz7vxj_CeZ+H48B0TVYmeF4Tt=kHgA@mail.gmail.com>
-From: Rob Herring <robh@kernel.org>
-Date: Fri, 24 Mar 2023 09:33:42 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqL+nF_WwZ-EDpUSD2yrxPLZWxaeb=WpTtPnnbpgcXT7qA@mail.gmail.com>
-Message-ID: <CAL_JsqL+nF_WwZ-EDpUSD2yrxPLZWxaeb=WpTtPnnbpgcXT7qA@mail.gmail.com>
-Subject: Re: [PATCH] dt-bindings: pinctrl: Drop unneeded quotes
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
-	Manivannan Sadhasivam <mani@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>, Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, 
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, 
-	Damien Le Moal <damien.lemoal@wdc.com>, Charles Keepax <ckeepax@opensource.cirrus.com>, 
-	Richard Fitzgerald <rf@opensource.cirrus.com>, Dong Aisheng <aisheng.dong@nxp.com>, 
-	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	NXP Linux Team <linux-imx@nxp.com>, Sean Wang <sean.wang@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andy Gross <agross@kernel.org>, 
-	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Heiko Stuebner <heiko@sntech.de>, 
-	Tomasz Figa <tomasz.figa@gmail.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
-	Masami Hiramatsu <mhiramat@kernel.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Emil Renner Berthing <kernel@esmil.dk>, 
-	Jianlong Huang <jianlong.huang@starfivetech.com>, Dvorkin Dmitry <dvorkin@tibbo.com>, 
-	Wells Lu <wellslutw@gmail.com>, Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, 
-	Michal Simek <michal.simek@xilinx.com>, linux-arm-kernel@lists.infradead.org, 
-	linux-actions@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-sunxi@lists.linux.dev, asahi@lists.linux.dev, 
-	linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org, 
-	linux-riscv@lists.infradead.org, patches@opensource.cirrus.com, 
-	alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
-	linux-stm32@st-md-mailman.stormreply.com
+	id 1pfj85-004ne3-1h
+	for linux-mediatek@lists.infradead.org;
+	Fri, 24 Mar 2023 15:15:00 +0000
+Received: by mail-qt1-x82a.google.com with SMTP id s12so1726491qtq.11
+        for <linux-mediatek@lists.infradead.org>; Fri, 24 Mar 2023 08:14:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20210112.gappssmtp.com; s=20210112; t=1679670894;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=BlgJl6q6nmXLwoducihQkeA4VjkQWrKTU/XpmLER5K8=;
+        b=QAEyb3y2Vs1mSwY136+bu6SS016Otbf3KKfs9Mlyynm1gBzKn8IBg7DKKBORGVgyRL
+         Wz6AisMNEwAkdbvXM7zJ93PyYVnHMRLt+SqV2+KIzgZGBKfSEA/SvYbGi1DbKwG8+t3X
+         EnXZZz4q60ZBfI96mKWDnSZ2+1OtBHBRk9yySy0hupZdJ1YJ07CTHjT6hQzPp0un5Zi4
+         ZMc2Z4n2f2EN3LAB+6ExoNkdtMUvrlZM9biFAE3RvcusV/CPEzZ0QodUUN6PBVj+S7q1
+         VeHHAUt7o/Jx+ffoh+LeHf8+aj5khtrxdEJIKejig4N0viMRuvBtbR/GYyPRluiAV9Ca
+         /PWw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679670894;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=BlgJl6q6nmXLwoducihQkeA4VjkQWrKTU/XpmLER5K8=;
+        b=yEfVx5zhGM4plcDwepo4Gv0DIQ4HfTkY76+8TBeF3yTbKvpdaWhGwDPF9xTNdDMHb5
+         D/YDXg/T3evVIgsCWos1ltG9+ZdFpghWd9Q1gHAF8ty2sHOI5IVW/2gVQyYHjEX06Wf6
+         G8SYumqPRW/tOvT6Xf3F0Y55HU2AueD530iqt6ig6Uy4uc3Aeso1lD3noV9w8Y6zVJIj
+         M6iM9BbboWWnQzponDgBoh9nTyFqqHCim+voralwXpjsoIq22YCbaEzD4gcZPI7oz6cN
+         uapjZc7dL0EI0sky0ltLUfhk8pO2oGFHaEKxeR8W6jqO8LcOxk+WuzngJoOKY16yPTpu
+         norQ==
+X-Gm-Message-State: AAQBX9dv7Bl3VLb3mYc6pDqQH0eJ9RKSOaF8V0eXry6RmXHUbuSfIuWQ
+	DJpz2SrY7b/bBGh7BP74vZ56mw==
+X-Google-Smtp-Source: AKy350bCWxvUk1MaT4pqUixyno5lVt9EBSSrGyxJa0A4C2Bz3kyCAOSzYiktlm5Ro2rq0tSjC73bYQ==
+X-Received: by 2002:a05:622a:1181:b0:3e3:90f7:b33c with SMTP id m1-20020a05622a118100b003e390f7b33cmr5002528qtk.7.1679670894617;
+        Fri, 24 Mar 2023 08:14:54 -0700 (PDT)
+Received: from nicolas-tpx395.localdomain (192-222-136-102.qc.cable.ebox.net. [192.222.136.102])
+        by smtp.gmail.com with ESMTPSA id n14-20020ac8674e000000b003d65e257f10sm4230146qtp.79.2023.03.24.08.14.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 24 Mar 2023 08:14:54 -0700 (PDT)
+Message-ID: <2d6480e36ce061a63440d1e11d52b02e57ba746d.camel@ndufresne.ca>
+Subject: Re: [RFC 2/4] media: videobuf2: Replace bufs array by a list
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>, David Laight
+ <David.Laight@ACULAB.COM>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>,  "tfiga@chromium.org"
+ <tfiga@chromium.org>, "m.szyprowski@samsung.com"
+ <m.szyprowski@samsung.com>,  "mchehab@kernel.org" <mchehab@kernel.org>,
+ "ming.qian@nxp.com" <ming.qian@nxp.com>,  "shijie.qin@nxp.com"
+ <shijie.qin@nxp.com>, "eagle.zhou@nxp.com" <eagle.zhou@nxp.com>, 
+ "bin.liu@mediatek.com" <bin.liu@mediatek.com>, "matthias.bgg@gmail.com"
+ <matthias.bgg@gmail.com>,  "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>, "tiffany.lin@mediatek.com"
+ <tiffany.lin@mediatek.com>, "andrew-ct.chen@mediatek.com"
+ <andrew-ct.chen@mediatek.com>, "yunfei.dong@mediatek.com"
+ <yunfei.dong@mediatek.com>, "stanimir.k.varbanov@gmail.com"
+ <stanimir.k.varbanov@gmail.com>, "quic_vgarodia@quicinc.com"
+ <quic_vgarodia@quicinc.com>, "agross@kernel.org" <agross@kernel.org>, 
+ "andersson@kernel.org" <andersson@kernel.org>, "konrad.dybcio@linaro.org"
+ <konrad.dybcio@linaro.org>,  "ezequiel@vanguardiasur.com.ar"
+ <ezequiel@vanguardiasur.com.ar>, "p.zabel@pengutronix.de"
+ <p.zabel@pengutronix.de>, "daniel.almeida@collabora.com"
+ <daniel.almeida@collabora.com>, "linux-media@vger.kernel.org"
+ <linux-media@vger.kernel.org>, "linux-kernel@vger.kernel.org"
+ <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
+ "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+ "kernel@collabora.com" <kernel@collabora.com>
+Date: Fri, 24 Mar 2023 11:14:52 -0400
+In-Reply-To: <20230322150153.GO20234@pendragon.ideasonboard.com>
+References: <20230313135916.862852-1-benjamin.gaignard@collabora.com>
+	 <20230313135916.862852-3-benjamin.gaignard@collabora.com>
+	 <20230313181155.GC22646@pendragon.ideasonboard.com>
+	 <86df05244d974416903e919d387a0a0b@AcuMS.aculab.com>
+	 <e704b505-86d8-c6f2-8546-adccdab72622@xs4all.nl>
+	 <dc04d48e34ed40e58f43badd001a81d0@AcuMS.aculab.com>
+	 <cbf34cf1-e065-8136-8344-89ca1864f637@xs4all.nl>
+	 <20230319233358.GD20234@pendragon.ideasonboard.com>
+	 <f085aa9225c573df906bdc7ff032a8fd591b18b3.camel@ndufresne.ca>
+	 <20230322150153.GO20234@pendragon.ideasonboard.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.46.4 (3.46.4-1.fc37) 
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230324_073419_270140_323A97C7 
-X-CRM114-Status: GOOD (  13.71  )
+X-CRM114-CacheID: sfid-20230324_081457_768509_46E8669A 
+X-CRM114-Status: GOOD (  20.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,21 +126,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 23, 2023 at 3:40=E2=80=AFAM Linus Walleij <linus.walleij@linaro=
-.org> wrote:
->
-> On Sat, Mar 18, 2023 at 12:36=E2=80=AFAM Rob Herring <robh@kernel.org> wr=
-ote:
->
-> > Cleanup bindings dropping unneeded quotes. Once all these are fixed,
-> > checking for this can be enabled in yamllint.
-> >
-> > Signed-off-by: Rob Herring <robh@kernel.org>
->
-> Should I queue this patch by the way, or do you need it to go into some
-> DT-related tree?
+Le mercredi 22 mars 2023 =C3=A0 17:01 +0200, Laurent Pinchart a =C3=A9crit=
+=C2=A0:
+> On Wed, Mar 22, 2023 at 10:50:52AM -0400, Nicolas Dufresne wrote:
+> > Hi Laurent,
+> >=20
+> > Le lundi 20 mars 2023 =C3=A0 01:33 +0200, Laurent Pinchart a =C3=A9crit=
+=C2=A0:
+> > > > The typical usage is that applications allocate N buffers with the
+> > > > VIDIOC_REQBUFS ioctl, and in most cases that's all they use.
+> > >=20
+> > > Note that once we get DELETE_BUF (or DELETE_BUFS) support I'd like to
+> > > encourage applications to use the new API, and deprecate REQBUFS
+> > > (dropping it isn't on my radar, as it would take forever before no
+> > > userspace uses it anymore).
+> >=20
+> > I was wondering if you can extend on this. I'm worried the count semant=
+ic might
+> > prevent emulating it over create_bufs() ops, but if that works, did you=
+ meant to
+> > emulate it so driver no longer have to implement reqbufs() if they have
+> > create_bufs() ?
+>=20
+> For drivers it should be fairly simply, as the reqbufs and create_bufs
+> ioctl handlers should just point to the corresponding videobuf2 helpers.
+>=20
+> What I meant is that I'd like to encourage userspace to use the
+> VIDIOC_CREATE_BUFS ioctl instead of VIDIOC_REQBUFS.
+>=20
 
-Stands on its own. You can take it.
+I'm not sure what rationale I can give implementer to "encourage" them to u=
+se a
+more complex API that needs to copy over the FMT (which has just been set),
+specially in the initial pre-allocation case. For most, CREATE_BUFS after S=
+MT
+will look like a very redundant and counter intuitive thing. Maybe you have=
+ a
+more optimistic view on the matter ? Or you have a better idea how we could=
+ give
+a meaning to having a fmt there on the initial case where the allocation ma=
+tches
+the queue FMT ?
 
-Rob
+Nicolas
+
 
