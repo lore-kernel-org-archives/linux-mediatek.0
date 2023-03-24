@@ -4,116 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73B59C6FD20
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Mar 2023 15:35:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3FE2C6FD20
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Mar 2023 16:14:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7FyBbkUlSzWUDUg7FSl6pltsSXVFIHYA7e4KXdYYzK0=; b=mcjqFyVNjvV5+vlH3/bbN0AsJE
-	+cr+SlV0DuUIsvDy4kptzSQVtzpJ9yVH29BX+UJ8YYR+xWyc+F1UWckBDuy1/GcSM24RNegPLH0kZ
-	8aRJdtbHWdx/FCWsaM4kt2fQ3paHMK/6C1G7ApLXUKTADxIalnRj4doToT5Xm+7Av1dSyf4/1Jd89
-	4CBBVouch9afktOB4hXp5R3oYcRlT8pfogE8/cVqtQr/K5jJU72PPHsXLaDWnAEW8/EaLUz7n46Zl
-	0MYT8bB7Vul83QnUVAh0w/OT4kbRX8GWON6VVyqTGmhZhQb9yQWP2R/OlT5p9wfH9OxZtRkOu2/hz
-	oX2tWySA==;
+	bh=LTW1c1/smVDQUVSHmVRBvkva9xau/+0SDaiKBflkSJc=; b=IwkDtCwSJGDgNncyvBla/Jkofs
+	vm+Lowe5pcACBwT+7v+OoNp87hpiztMg5ZSXIO/uyIqgPEOIdTqyWLCymnx7B+4MHcs1U3Rd7Ul/M
+	Z73ebFhA1eNaqcMNo1GB9vFcYL6C8PVBIMU9dQ2DFFmoF5mrpfTMQ/nY/FPC5QywR0VjrCj6Kyh75
+	/aJr6WqYijKzhJDf0aGaVNaJH+Ntby39u7EfcgmGe3dZKfDi+1jaOLTOZdNryjwqQw9KhrBvnwwzG
+	mZQjKP0MQVDkXAmgo3VCXvz1J22ewoQl5u86T+kqs2QIjdQluArqASccHXrI0v7AJ0P3+ThSizOsB
+	J69kFFYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfjRQ-004s6U-1G;
-	Fri, 24 Mar 2023 15:34:56 +0000
-Received: from mail-qt1-x82c.google.com ([2607:f8b0:4864:20::82c])
+	id 1pfk3j-004xi8-28;
+	Fri, 24 Mar 2023 16:14:31 +0000
+Received: from mga02.intel.com ([134.134.136.20])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfjRM-004s4w-2h
-	for linux-mediatek@lists.infradead.org;
-	Fri, 24 Mar 2023 15:34:54 +0000
-Received: by mail-qt1-x82c.google.com with SMTP id n2so1839429qtp.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 24 Mar 2023 08:34:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20210112.gappssmtp.com; s=20210112; t=1679672091;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=7FyBbkUlSzWUDUg7FSl6pltsSXVFIHYA7e4KXdYYzK0=;
-        b=MeRC33lk6v1nX1CaLMpuOD7McLymhdBaxID6EIllMJ/odTnOgZ3Ls7Ufy+LF90tZc3
-         Rukbh2vhZd09yzD7IbWoKlFToE7vKOFmwn1MlDeyeK2QwZRl3EaVkSQlWGqiEQlqMsp7
-         +9v2PHmuFRGG9NieLrA0J6+yO3Y+KmaQ1RDeU1+L6KYByp+SPGdB4x5pwH1MnsWM0ylM
-         u8RqbExRZdZwI4k+Yxkf1E1Ncu/Jj4EjQsyS+95WiNCaJHSGdxvcEnqY5rb+M9AJs79D
-         Hq3hRsBDyx/SQLzfVXCtTwZyf2mN6bBbx9A8WJIWFxsqFrARC4TK+bTN+cXf/4XHlGwY
-         bS8g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679672091;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=7FyBbkUlSzWUDUg7FSl6pltsSXVFIHYA7e4KXdYYzK0=;
-        b=44j91o4Cpxo2HWfK9ML1lzBXAAUEV/JyVAfSnrW1LmtVd/wHsO/GCz8F5NY3zmAq9B
-         cXQ6Z3ScXgd5XHuELFMdtVRV787PpijDrqa0v6aBx34gakwsB5oSMkx/+iJ3QMmFaFnU
-         4FM1vpKiWGJXLPmggU5raJsqAsj0Hbdg7RNnDaZLJZp1mlMhVgLjNiP/n4TKUpudiMFh
-         TDdUK98gS9bk3mZJ3F2VVOLe+340aki3xTyVlJ7gGotVTUok/IYTV2NMw0KegweXOast
-         IPJJFK46MnKhyyG2psFbUAHw2mjsBWxDk6PcG+XLv6hALkMZ6HIqJix25pp6UgwXUv44
-         KVZw==
-X-Gm-Message-State: AO0yUKWoC0nFWJyvGVKlbTf4LTlL+YXqDUoLu4qIXEQNwMSw5hEEQQGH
-	soO2cPw1RSLF+yXexfbARWNJYQ==
-X-Google-Smtp-Source: AK7set/k7jemVRQn2HhZJ/81On3zU02ry4zvQi9KTc7/Sa7tSuj5SNuZNPCX6T0rkNYDxGsmo9XXJQ==
-X-Received: by 2002:ac8:5f0b:0:b0:3e1:c341:f618 with SMTP id x11-20020ac85f0b000000b003e1c341f618mr5351655qta.65.1679672091486;
-        Fri, 24 Mar 2023 08:34:51 -0700 (PDT)
-Received: from nicolas-tpx395.localdomain (192-222-136-102.qc.cable.ebox.net. [192.222.136.102])
-        by smtp.gmail.com with ESMTPSA id h26-20020ac846da000000b003bfb5fd72a7sm12745420qto.86.2023.03.24.08.34.49
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 24 Mar 2023 08:34:51 -0700 (PDT)
-Message-ID: <6f2979d33526e5ccdc32cf096415d8309fc91d3d.camel@ndufresne.ca>
-Subject: Re: [RFC 2/4] media: videobuf2: Replace bufs array by a list
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Laurent Pinchart
-	 <laurent.pinchart@ideasonboard.com>
-Cc: David Laight <David.Laight@ACULAB.COM>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, "tfiga@chromium.org"
- <tfiga@chromium.org>,  "m.szyprowski@samsung.com"
- <m.szyprowski@samsung.com>, "mchehab@kernel.org" <mchehab@kernel.org>, 
- "ming.qian@nxp.com" <ming.qian@nxp.com>, "shijie.qin@nxp.com"
- <shijie.qin@nxp.com>,  "eagle.zhou@nxp.com" <eagle.zhou@nxp.com>,
- "bin.liu@mediatek.com" <bin.liu@mediatek.com>,  "matthias.bgg@gmail.com"
- <matthias.bgg@gmail.com>, "angelogioacchino.delregno@collabora.com"
- <angelogioacchino.delregno@collabora.com>, "tiffany.lin@mediatek.com"
- <tiffany.lin@mediatek.com>, "andrew-ct.chen@mediatek.com"
- <andrew-ct.chen@mediatek.com>, "yunfei.dong@mediatek.com"
- <yunfei.dong@mediatek.com>, "stanimir.k.varbanov@gmail.com"
- <stanimir.k.varbanov@gmail.com>, "quic_vgarodia@quicinc.com"
- <quic_vgarodia@quicinc.com>, "agross@kernel.org" <agross@kernel.org>, 
- "andersson@kernel.org" <andersson@kernel.org>, "konrad.dybcio@linaro.org"
- <konrad.dybcio@linaro.org>,  "ezequiel@vanguardiasur.com.ar"
- <ezequiel@vanguardiasur.com.ar>, "p.zabel@pengutronix.de"
- <p.zabel@pengutronix.de>, "daniel.almeida@collabora.com"
- <daniel.almeida@collabora.com>, "linux-media@vger.kernel.org"
- <linux-media@vger.kernel.org>, "linux-kernel@vger.kernel.org"
- <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
- "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
- "kernel@collabora.com" <kernel@collabora.com>
-Date: Fri, 24 Mar 2023 11:34:48 -0400
-In-Reply-To: <68ba7b3f-57f5-3969-5036-2c8d08273548@xs4all.nl>
-References: <20230313135916.862852-1-benjamin.gaignard@collabora.com>
-	 <20230313135916.862852-3-benjamin.gaignard@collabora.com>
-	 <20230313181155.GC22646@pendragon.ideasonboard.com>
-	 <86df05244d974416903e919d387a0a0b@AcuMS.aculab.com>
-	 <e704b505-86d8-c6f2-8546-adccdab72622@xs4all.nl>
-	 <dc04d48e34ed40e58f43badd001a81d0@AcuMS.aculab.com>
-	 <cbf34cf1-e065-8136-8344-89ca1864f637@xs4all.nl>
-	 <20230319233358.GD20234@pendragon.ideasonboard.com>
-	 <f085aa9225c573df906bdc7ff032a8fd591b18b3.camel@ndufresne.ca>
-	 <20230322150153.GO20234@pendragon.ideasonboard.com>
-	 <2d6480e36ce061a63440d1e11d52b02e57ba746d.camel@ndufresne.ca>
-	 <68ba7b3f-57f5-3969-5036-2c8d08273548@xs4all.nl>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.46.4 (3.46.4-1.fc37) 
+	id 1pfk3g-004xhO-0J;
+	Fri, 24 Mar 2023 16:14:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1679674468; x=1711210468;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=Hvr/IAw6GwHmF6Ka+HdBXFuG4UC3HNZI/3j9kHSlW6I=;
+  b=Yh5TiIEY0QueTxznRKJRMdTLQPcLZ1jWjaPG71+R+WOLZgXkbBvGTlhi
+   NabT34wfWFftKk6tK6gKarP5wtcPi7K8kqvs/Fk8fGqNkYJwBy3J6PVQi
+   g6E/bAcUJtKSPaDIcWxtX5LEusnHYp4TsOiSnRq+ss5mpCYwH3xvWyM1Q
+   qKpVNgfpTQAvFpdH+OVv2xGe2tiumx2V+HMvTsRnQA8PB6blRQ2L16wLO
+   Jyt7bTXqVWn6nk0VyIvLqXMX0NIHoUQrQlBQ/T+5FlhFQYM5INFUDjuoD
+   7X113xHd325fUazZToT5TBv2Naqb4xv0UPNMyUNFNS6tPnHfTVswafbgD
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10659"; a="328239376"
+X-IronPort-AV: E=Sophos;i="5.98,288,1673942400"; 
+   d="scan'208";a="328239376"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Mar 2023 09:14:26 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10659"; a="676199945"
+X-IronPort-AV: E=Sophos;i="5.98,288,1673942400"; 
+   d="scan'208";a="676199945"
+Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
+  by orsmga007.jf.intel.com with ESMTP; 24 Mar 2023 09:14:23 -0700
+Received: from kbuild by b613635ddfff with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1pfk3a-000FS4-1E;
+	Fri, 24 Mar 2023 16:14:22 +0000
+Date: Sat, 25 Mar 2023 00:14:13 +0800
+From: kernel test robot <lkp@intel.com>
+To: ChiaEn Wu <chiaen_wu@richtek.com>, jic23@kernel.org, lars@metafoo.de,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, peterwu.pub@gmail.com,
+	cy_huang@richtek.com, ChiaEn Wu <chiaen_wu@richtek.com>
+Subject: Re: [PATCH] iio: adc: mt6370: Fix ibus and ibat scaling value of
+ some specific vendor ID chips
+Message-ID: <202303250050.V7JLIADZ-lkp@intel.com>
+References: <1679667167-16261-1-git-send-email-chiaen_wu@richtek.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1679667167-16261-1-git-send-email-chiaen_wu@richtek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230324_083452_872768_3870CE2F 
-X-CRM114-Status: GOOD (  28.04  )
+X-CRM114-CacheID: sfid-20230324_091428_200377_96AB5651 
+X-CRM114-Status: GOOD (  14.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,85 +88,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le vendredi 24 mars 2023 =C3=A0 16:18 +0100, Hans Verkuil a =C3=A9crit=C2=
-=A0:
-> On 24/03/2023 16:14, Nicolas Dufresne wrote:
-> > Le mercredi 22 mars 2023 =C3=A0 17:01 +0200, Laurent Pinchart a =C3=A9c=
-rit=C2=A0:
-> > > On Wed, Mar 22, 2023 at 10:50:52AM -0400, Nicolas Dufresne wrote:
-> > > > Hi Laurent,
-> > > >=20
-> > > > Le lundi 20 mars 2023 =C3=A0 01:33 +0200, Laurent Pinchart a =C3=A9=
-crit=C2=A0:
-> > > > > > The typical usage is that applications allocate N buffers with =
-the
-> > > > > > VIDIOC_REQBUFS ioctl, and in most cases that's all they use.
-> > > > >=20
-> > > > > Note that once we get DELETE_BUF (or DELETE_BUFS) support I'd lik=
-e to
-> > > > > encourage applications to use the new API, and deprecate REQBUFS
-> > > > > (dropping it isn't on my radar, as it would take forever before n=
-o
-> > > > > userspace uses it anymore).
-> > > >=20
-> > > > I was wondering if you can extend on this. I'm worried the count se=
-mantic might
-> > > > prevent emulating it over create_bufs() ops, but if that works, did=
- you meant to
-> > > > emulate it so driver no longer have to implement reqbufs() if they =
-have
-> > > > create_bufs() ?
-> > >=20
-> > > For drivers it should be fairly simply, as the reqbufs and create_buf=
-s
-> > > ioctl handlers should just point to the corresponding videobuf2 helpe=
-rs.
-> > >=20
-> > > What I meant is that I'd like to encourage userspace to use the
-> > > VIDIOC_CREATE_BUFS ioctl instead of VIDIOC_REQBUFS.
-> > >=20
-> >=20
-> > I'm not sure what rationale I can give implementer to "encourage" them =
-to use a
-> > more complex API that needs to copy over the FMT (which has just been s=
-et),
-> > specially in the initial pre-allocation case. For most, CREATE_BUFS aft=
-er SMT
-> > will look like a very redundant and counter intuitive thing. Maybe you =
-have a
-> > more optimistic view on the matter ? Or you have a better idea how we c=
-ould give
-> > a meaning to having a fmt there on the initial case where the allocatio=
-n matches
-> > the queue FMT ?
->=20
-> I wouldn't mind if we can make a much nicer CREATE_BUFS variant with just=
- the
-> size instead of a format. That was in hindsight a really bad idea, terrib=
-le
-> over-engineering.
+Hi ChiaEn,
 
-Note that all DRM allocators also includes width/height and some format rel=
-ated
-info (or the full info). This is because the driver deals with the alignmen=
-t
-requirements. In some use cases (I have inter frame dynamic control in mind
-here) the fmt could be a mean to feedback the alignment (like bytesperline)=
- back
-to the application where the stream is no longer homogeneous on the FMT.
+Thank you for the patch! Perhaps something to improve:
 
-That being said, If we move toward a size base allocator API, we could also=
- just
-point back to an existing HEAP (or export an new heap if none are valid). A=
-nd
-define the sizeimage(s) is now that information you need from the FMT to
-allocate anything + which heap needs to be used for the current setup.
+[auto build test WARNING on jic23-iio/togreg]
+[also build test WARNING on linus/master v6.3-rc3 next-20230324]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-Nicolas
+url:    https://github.com/intel-lab-lkp/linux/commits/ChiaEn-Wu/iio-adc-mt6370-Fix-ibus-and-ibat-scaling-value-of-some-specific-vendor-ID-chips/20230324-221545
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/jic23/iio.git togreg
+patch link:    https://lore.kernel.org/r/1679667167-16261-1-git-send-email-chiaen_wu%40richtek.com
+patch subject: [PATCH] iio: adc: mt6370: Fix ibus and ibat scaling value of some specific vendor ID chips
+config: riscv-randconfig-r034-20230324 (https://download.01.org/0day-ci/archive/20230325/202303250050.V7JLIADZ-lkp@intel.com/config)
+compiler: clang version 17.0.0 (https://github.com/llvm/llvm-project 67409911353323ca5edf2049ef0df54132fa1ca7)
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # install riscv cross compiling tool for clang build
+        # apt-get install binutils-riscv64-linux-gnu
+        # https://github.com/intel-lab-lkp/linux/commit/9822359d5de2dba531d882cfee6949864a2d6170
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review ChiaEn-Wu/iio-adc-mt6370-Fix-ibus-and-ibat-scaling-value-of-some-specific-vendor-ID-chips/20230324-221545
+        git checkout 9822359d5de2dba531d882cfee6949864a2d6170
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=riscv olddefconfig
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=riscv SHELL=/bin/bash drivers/iio/adc/
 
->=20
-> Regards,
->=20
-> 	Hans
+If you fix the issue, kindly add following tag where applicable
+| Reported-by: kernel test robot <lkp@intel.com>
+| Link: https://lore.kernel.org/oe-kbuild-all/202303250050.V7JLIADZ-lkp@intel.com/
 
+All warnings (new ones prefixed by >>):
+
+>> drivers/iio/adc/mt6370-adc.c:306:31: warning: variable 'priv' is uninitialized when used here [-Wuninitialized]
+           ret = mt6370_get_vendor_info(priv);
+                                        ^~~~
+   drivers/iio/adc/mt6370-adc.c:297:30: note: initialize the variable 'priv' to silence this warning
+           struct mt6370_adc_data *priv;
+                                       ^
+                                        = NULL
+   1 warning generated.
+
+
+vim +/priv +306 drivers/iio/adc/mt6370-adc.c
+
+   293	
+   294	static int mt6370_adc_probe(struct platform_device *pdev)
+   295	{
+   296		struct device *dev = &pdev->dev;
+   297		struct mt6370_adc_data *priv;
+   298		struct iio_dev *indio_dev;
+   299		struct regmap *regmap;
+   300		int ret;
+   301	
+   302		regmap = dev_get_regmap(pdev->dev.parent, NULL);
+   303		if (!regmap)
+   304			return dev_err_probe(dev, -ENODEV, "Failed to get regmap\n");
+   305	
+ > 306		ret = mt6370_get_vendor_info(priv);
+   307		if (ret)
+   308			return dev_err_probe(dev, ret, "Failed to get vid\n");
+   309	
+   310		indio_dev = devm_iio_device_alloc(dev, sizeof(*priv));
+   311		if (!indio_dev)
+   312			return -ENOMEM;
+   313	
+   314		priv = iio_priv(indio_dev);
+   315		priv->dev = dev;
+   316		priv->regmap = regmap;
+   317		mutex_init(&priv->adc_lock);
+   318	
+   319		ret = regmap_write(priv->regmap, MT6370_REG_CHG_ADC, 0);
+   320		if (ret)
+   321			return dev_err_probe(dev, ret, "Failed to reset ADC\n");
+   322	
+   323		indio_dev->name = "mt6370-adc";
+   324		indio_dev->info = &mt6370_adc_iio_info;
+   325		indio_dev->modes = INDIO_DIRECT_MODE;
+   326		indio_dev->channels = mt6370_adc_channels;
+   327		indio_dev->num_channels = ARRAY_SIZE(mt6370_adc_channels);
+   328	
+   329		return devm_iio_device_register(dev, indio_dev);
+   330	}
+   331	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
 
