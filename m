@@ -4,70 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A0C3C76196
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Mar 2023 09:43:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAEECC6FD1C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Mar 2023 10:06:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Z61+0a0C8lwBTj5YJRrhNuZhH4QGG3viPOQy1ikmUR4=; b=3VzllFAz5kdWiHq8jc2nNlFWZt
-	8baw6HdESIO/G3TW+UWLgePiBaoAMiG09b8Cw3c4qTEUqi5oPQ8fa5QlKq24rij2zf68DQiJYYIrw
-	SPq0sSgGDFMHDeC1OINb24gpx1LvTcjVDrORkYcCCrsRelARvewNBYCV3UeeiHqIRZZAjq4kQQFvX
-	R5uH2NTflY77rDhA+QjAmdPUh4ch6wcAE8WDw3Qu8gn8HoNsZjnTnF4aS7pwJSYmgeeqlI/nECLJN
-	SHJwFu2Ycb63eoonMIvtvx3y+LSeqr9tewLWvtTq1hd4Ymh3oM7W/0/7AyYI/5RX7inkj46TJxyiT
-	Gb4IfsFw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=QPXAGewbbhBAY1GUjoOddXUADasXHasQgxfe4D2GYl0=; b=rjTdf3zB72DgTONDAq6BTB6d9N
+	iGyV7ecHJIvRLV3aneGKiEI6XtJ+MgagtolDFpcBDNEewEYVGQIsLmSGSZu912C1g1XYB+oZxdFiN
+	YauucZLNAL6ZzMz3PzBB/CY1UMkh7s6zK3pKcI9ng4iJZ7k4cmuPWpZ/dcqUZYapQMuhUaR0sRiHY
+	1UeP6CtY2CrGnQ8YKIsRyM2obUrKe04Tg+KtGpcrRtN5sVD0oR19XGPDEGYtPq8jWe69CBWJZ7o7a
+	gzgNFG1QuKuSFZHf05PAPKjNqDjXFBLXnyFJ2GPMIiymXmEP0+JbnpWPgcG/kzkCdLzI3GxNf8LzV
+	3Z+ilvjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfdwz-0043zS-02;
-	Fri, 24 Mar 2023 09:43:09 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pfeJj-0046kT-03;
+	Fri, 24 Mar 2023 10:06:39 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfdwB-0043bA-26;
-	Fri, 24 Mar 2023 09:42:22 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 94F0B6603118;
-	Fri, 24 Mar 2023 09:42:15 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1679650936;
-	bh=WdXcGK3CsaHTkqYryGIVfgOynuLMpMlln7V83aW3v68=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=D/Ns1tOEGIFCwhXfF1KaM9kjzvr1Ia5vKjoiRKGlhj50bDwcBsZNZcEcxxAsXdOsY
-	 uw7JHy/SdJO80hIi4WG0SmUvO3fGh6MmzMoX/MsqeedwgIwwCTn0JpiEw/ShrJgGbr
-	 groZT5C3ygdod8jV6RImH9Z++mHDGXRAC7olcfeSUJN5Ay0mumVGbcMs/EAHwxdoP+
-	 lCOA3m/0Dh1P+Pb7zB9VP5ce0Sx1mr5cpcp7IChSWdO+9kp+PP1ICJvBbfmMLh62MM
-	 +bkoTLe2o7C+ilPlMU8X5ceXARoJtVm4Ty6IJvDACteuVlXwi3GhacmSSGS8vdGdKZ
-	 ylI+7ra8dI9kg==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: matthias.bgg@gmail.com
-Cc: robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	amergnat@baylibre.com,
-	flora.fu@mediatek.com,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	kernel@collabora.com,
-	phone-devel@vger.kernel.org,
-	~postmarketos/upstreaming@lists.sr.ht,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2 6/6] soc: mediatek: pwrap: Add support for MT6795 Helio X10
-Date: Fri, 24 Mar 2023 10:42:05 +0100
-Message-Id: <20230324094205.33266-7-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.40.0
-In-Reply-To: <20230324094205.33266-1-angelogioacchino.delregno@collabora.com>
-References: <20230324094205.33266-1-angelogioacchino.delregno@collabora.com>
+	id 1pfeJf-0046j7-0Q;
+	Fri, 24 Mar 2023 10:06:36 +0000
+X-UUID: 8b2daec2ca2b11edb7d8d11f642b8e78-20230324
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=QPXAGewbbhBAY1GUjoOddXUADasXHasQgxfe4D2GYl0=;
+	b=cXUAJRiB4aJmT4LN7llthGyrjd053o4lM1z2hdWn/Ux2mR7EhF9J4QFynUY2Bjb9wsy7ARt33TCo7tZiHc9YD3zMhmnpMB1+9V4SiGHTVBddoyWZecg77nLRa44mnnWzvaVhNFW4v9sVAhzfYjXGGTtqfgR5es02I5qC70RUDRg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22,REQID:6b092418-7739-4762-824f-8306d4604b2f,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:120426c,CLOUDID:e909d1f6-ddba-41c3-91d9-10eeade8eac7,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: 8b2daec2ca2b11edb7d8d11f642b8e78-20230324
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1917570465; Fri, 24 Mar 2023 03:06:28 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Fri, 24 Mar 2023 18:05:54 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Fri, 24 Mar 2023 18:05:54 +0800
+From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Rex-BC Chen
+	<rex-bc.chen@mediatek.com>, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
+	Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
+	Nathan Lu <nathan.lu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, amy zhang
+	<Amy.Zhang@mediatek.com>
+Subject: [PATCH v6] drm/mediatek: add mediatek-drm of vdosys0 support for mt8188
+Date: Fri, 24 Mar 2023 18:05:53 +0800
+Message-ID: <20230324100553.13719-1-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230324_024219_977359_7AFE81DF 
-X-CRM114-Status: GOOD (  14.24  )
+X-CRM114-CacheID: sfid-20230324_030635_177160_E7534DD5 
+X-CRM114-Status: GOOD (  10.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,206 +86,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the necessary bits to support the MT6795 Helio X10 smartphone SoC:
-this is always paired with a MT6331 PMIC, with MT6332 companion.
+From: Nathan Lu <nathan.lu@mediatek.com>
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+add driver data of mt8188 vdosys0 to mediatek-drm and the sub driver.
+
+Signed-off-by: amy zhang <Amy.Zhang@mediatek.com>
+Signed-off-by: Nathan Lu <nathan.lu@mediatek.com>
+Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 ---
- drivers/soc/mediatek/mtk-pmic-wrap.c | 131 ++++++++++++++++++++++++++-
- 1 file changed, 130 insertions(+), 1 deletion(-)
+Rebase on maintainer's tree[1]
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/log/?h=mediatek-drm-next
+---
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
-diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index ceeac43f7bd1..20d32328382a 100644
---- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-+++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -639,6 +639,91 @@ static int mt6779_regs[] = {
- 	[PWRAP_WACS2_VLDCLR] =		0xC28,
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index dce2d86df6d9..6dcb4ba2466c 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -176,6 +176,18 @@ static const unsigned int mt8186_mtk_ddp_ext[] = {
+ 	DDP_COMPONENT_DPI0,
  };
  
-+static int mt6795_regs[] = {
-+	[PWRAP_MUX_SEL] =		0x0,
-+	[PWRAP_WRAP_EN] =		0x4,
-+	[PWRAP_DIO_EN] =		0x8,
-+	[PWRAP_SIDLY] =			0xc,
-+	[PWRAP_RDDMY] =			0x10,
-+	[PWRAP_SI_CK_CON] =		0x14,
-+	[PWRAP_CSHEXT_WRITE] =		0x18,
-+	[PWRAP_CSHEXT_READ] =		0x1c,
-+	[PWRAP_CSLEXT_START] =		0x20,
-+	[PWRAP_CSLEXT_END] =		0x24,
-+	[PWRAP_STAUPD_PRD] =		0x28,
-+	[PWRAP_STAUPD_GRPEN] =		0x2c,
-+	[PWRAP_EINT_STA0_ADR] =		0x30,
-+	[PWRAP_EINT_STA1_ADR] =		0x34,
-+	[PWRAP_STAUPD_MAN_TRIG] =	0x40,
-+	[PWRAP_STAUPD_STA] =		0x44,
-+	[PWRAP_WRAP_STA] =		0x48,
-+	[PWRAP_HARB_INIT] =		0x4c,
-+	[PWRAP_HARB_HPRIO] =		0x50,
-+	[PWRAP_HIPRIO_ARB_EN] =		0x54,
-+	[PWRAP_HARB_STA0] =		0x58,
-+	[PWRAP_HARB_STA1] =		0x5c,
-+	[PWRAP_MAN_EN] =		0x60,
-+	[PWRAP_MAN_CMD] =		0x64,
-+	[PWRAP_MAN_RDATA] =		0x68,
-+	[PWRAP_MAN_VLDCLR] =		0x6c,
-+	[PWRAP_WACS0_EN] =		0x70,
-+	[PWRAP_INIT_DONE0] =		0x74,
-+	[PWRAP_WACS0_CMD] =		0x78,
-+	[PWRAP_WACS0_RDATA] =		0x7c,
-+	[PWRAP_WACS0_VLDCLR] =		0x80,
-+	[PWRAP_WACS1_EN] =		0x84,
-+	[PWRAP_INIT_DONE1] =		0x88,
-+	[PWRAP_WACS1_CMD] =		0x8c,
-+	[PWRAP_WACS1_RDATA] =		0x90,
-+	[PWRAP_WACS1_VLDCLR] =		0x94,
-+	[PWRAP_WACS2_EN] =		0x98,
-+	[PWRAP_INIT_DONE2] =		0x9c,
-+	[PWRAP_WACS2_CMD] =		0xa0,
-+	[PWRAP_WACS2_RDATA] =		0xa4,
-+	[PWRAP_WACS2_VLDCLR] =		0xa8,
-+	[PWRAP_INT_EN] =		0xac,
-+	[PWRAP_INT_FLG_RAW] =		0xb0,
-+	[PWRAP_INT_FLG] =		0xb4,
-+	[PWRAP_INT_CLR] =		0xb8,
-+	[PWRAP_SIG_ADR] =		0xbc,
-+	[PWRAP_SIG_MODE] =		0xc0,
-+	[PWRAP_SIG_VALUE] =		0xc4,
-+	[PWRAP_SIG_ERRVAL] =		0xc8,
-+	[PWRAP_CRC_EN] =		0xcc,
-+	[PWRAP_TIMER_EN] =		0xd0,
-+	[PWRAP_TIMER_STA] =		0xd4,
-+	[PWRAP_WDT_UNIT] =		0xd8,
-+	[PWRAP_WDT_SRC_EN] =		0xdc,
-+	[PWRAP_WDT_FLG] =		0xe0,
-+	[PWRAP_DEBUG_INT_SEL] =		0xe4,
-+	[PWRAP_DVFS_ADR0] =		0xe8,
-+	[PWRAP_DVFS_WDATA0] =		0xec,
-+	[PWRAP_DVFS_ADR1] =		0xf0,
-+	[PWRAP_DVFS_WDATA1] =		0xf4,
-+	[PWRAP_DVFS_ADR2] =		0xf8,
-+	[PWRAP_DVFS_WDATA2] =		0xfc,
-+	[PWRAP_DVFS_ADR3] =		0x100,
-+	[PWRAP_DVFS_WDATA3] =		0x104,
-+	[PWRAP_DVFS_ADR4] =		0x108,
-+	[PWRAP_DVFS_WDATA4] =		0x10c,
-+	[PWRAP_DVFS_ADR5] =		0x110,
-+	[PWRAP_DVFS_WDATA5] =		0x114,
-+	[PWRAP_DVFS_ADR6] =		0x118,
-+	[PWRAP_DVFS_WDATA6] =		0x11c,
-+	[PWRAP_DVFS_ADR7] =		0x120,
-+	[PWRAP_DVFS_WDATA7] =		0x124,
-+	[PWRAP_SPMINF_STA] =		0x128,
-+	[PWRAP_CIPHER_KEY_SEL] =	0x12c,
-+	[PWRAP_CIPHER_IV_SEL] =		0x130,
-+	[PWRAP_CIPHER_EN] =		0x134,
-+	[PWRAP_CIPHER_RDY] =		0x138,
-+	[PWRAP_CIPHER_MODE] =		0x13c,
-+	[PWRAP_CIPHER_SWRST] =		0x140,
-+	[PWRAP_DCM_EN] =		0x144,
-+	[PWRAP_DCM_DBC_PRD] =		0x148,
-+	[PWRAP_EXT_CK] =		0x14c,
++static const unsigned int mt8188_mtk_ddp_main[] = {
++	DDP_COMPONENT_OVL0,
++	DDP_COMPONENT_RDMA0,
++	DDP_COMPONENT_COLOR0,
++	DDP_COMPONENT_CCORR,
++	DDP_COMPONENT_AAL0,
++	DDP_COMPONENT_GAMMA,
++	DDP_COMPONENT_POSTMASK0,
++	DDP_COMPONENT_DITHER0,
++	DDP_COMPONENT_DP_INTF0,
 +};
 +
- static int mt6797_regs[] = {
- 	[PWRAP_MUX_SEL] =		0x0,
- 	[PWRAP_WRAP_EN] =		0x4,
-@@ -1230,6 +1315,7 @@ enum pwrap_type {
- 	PWRAP_MT2701,
- 	PWRAP_MT6765,
- 	PWRAP_MT6779,
-+	PWRAP_MT6795,
- 	PWRAP_MT6797,
- 	PWRAP_MT6873,
- 	PWRAP_MT7622,
-@@ -1650,6 +1736,20 @@ static void pwrap_init_chip_select_ext(struct pmic_wrapper *wrp, u8 hext_write,
- static int pwrap_common_init_reg_clock(struct pmic_wrapper *wrp)
- {
- 	switch (wrp->master->type) {
-+	case PWRAP_MT6795:
-+		if (wrp->slave->type == PMIC_MT6331) {
-+			const u32 *dew_regs = wrp->slave->dew_regs;
-+
-+			pwrap_write(wrp, dew_regs[PWRAP_DEW_RDDMY_NO], 0x8);
-+
-+			if (wrp->slave->comp_type == PMIC_MT6332) {
-+				dew_regs = wrp->slave->comp_dew_regs;
-+				pwrap_write(wrp, dew_regs[PWRAP_DEW_RDDMY_NO], 0x8);
-+			}
-+		}
-+		pwrap_writel(wrp, 0x88, PWRAP_RDDMY);
-+		pwrap_init_chip_select_ext(wrp, 15, 15, 15, 15);
-+		break;
- 	case PWRAP_MT8173:
- 		pwrap_init_chip_select_ext(wrp, 0, 4, 2, 2);
- 		break;
-@@ -1744,6 +1844,7 @@ static int pwrap_init_cipher(struct pmic_wrapper *wrp)
- 	case PWRAP_MT2701:
- 	case PWRAP_MT6765:
- 	case PWRAP_MT6779:
-+	case PWRAP_MT6795:
- 	case PWRAP_MT6797:
- 	case PWRAP_MT8173:
- 	case PWRAP_MT8186:
-@@ -1914,6 +2015,19 @@ static int pwrap_mt2701_init_soc_specific(struct pmic_wrapper *wrp)
- 	return 0;
- }
- 
-+static int pwrap_mt6795_init_soc_specific(struct pmic_wrapper *wrp)
-+{
-+	pwrap_writel(wrp, 0xf, PWRAP_STAUPD_GRPEN);
-+
-+	if (wrp->slave->type == PMIC_MT6331)
-+		pwrap_writel(wrp, 0x1b4, PWRAP_EINT_STA0_ADR);
-+
-+	if (wrp->slave->comp_type == PMIC_MT6332)
-+		pwrap_writel(wrp, 0x8112, PWRAP_EINT_STA1_ADR);
-+
-+	return 0;
-+}
-+
- static int pwrap_mt7622_init_soc_specific(struct pmic_wrapper *wrp)
- {
- 	pwrap_writel(wrp, 0, PWRAP_STAUPD_PRD);
-@@ -1949,7 +2063,8 @@ static int pwrap_init(struct pmic_wrapper *wrp)
- 	if (wrp->rstc_bridge)
- 		reset_control_reset(wrp->rstc_bridge);
- 
--	if (wrp->master->type == PWRAP_MT8173) {
-+	if (wrp->master->type == PWRAP_MT8173 ||
-+	    wrp->master->type == PWRAP_MT6795) {
- 		/* Enable DCM */
- 		pwrap_writel(wrp, 3, PWRAP_DCM_EN);
- 		pwrap_writel(wrp, 0, PWRAP_DCM_DBC_PRD);
-@@ -2185,6 +2300,19 @@ static const struct pmic_wrapper_type pwrap_mt6779 = {
- 	.init_soc_specific = NULL,
+ static const unsigned int mt8192_mtk_ddp_main[] = {
+ 	DDP_COMPONENT_OVL0,
+ 	DDP_COMPONENT_OVL_2L0,
+@@ -272,6 +284,11 @@ static const struct mtk_mmsys_driver_data mt8186_mmsys_driver_data = {
+ 	.mmsys_dev_num = 1,
  };
  
-+static const struct pmic_wrapper_type pwrap_mt6795 = {
-+	.regs = mt6795_regs,
-+	.type = PWRAP_MT6795,
-+	.arb_en_all = 0x3f,
-+	.int_en_all = ~(u32)(BIT(31) | BIT(2) | BIT(1)),
-+	.int1_en_all = 0,
-+	.spi_w = PWRAP_MAN_CMD_SPI_WRITE,
-+	.wdt_src = PWRAP_WDT_SRC_MASK_NO_STAUPD,
-+	.caps = PWRAP_CAP_RESET | PWRAP_CAP_DCM,
-+	.init_reg_clock = pwrap_common_init_reg_clock,
-+	.init_soc_specific = pwrap_mt6795_init_soc_specific,
++static const struct mtk_mmsys_driver_data mt8188_vdosys0_driver_data = {
++	.main_path = mt8188_mtk_ddp_main,
++	.main_len = ARRAY_SIZE(mt8188_mtk_ddp_main),
 +};
 +
- static const struct pmic_wrapper_type pwrap_mt6797 = {
- 	.regs = mt6797_regs,
- 	.type = PWRAP_MT6797,
-@@ -2318,6 +2446,7 @@ static const struct of_device_id of_pwrap_match_tbl[] = {
- 	{ .compatible = "mediatek,mt2701-pwrap", .data = &pwrap_mt2701 },
- 	{ .compatible = "mediatek,mt6765-pwrap", .data = &pwrap_mt6765 },
- 	{ .compatible = "mediatek,mt6779-pwrap", .data = &pwrap_mt6779 },
-+	{ .compatible = "mediatek,mt6795-pwrap", .data = &pwrap_mt6795 },
- 	{ .compatible = "mediatek,mt6797-pwrap", .data = &pwrap_mt6797 },
- 	{ .compatible = "mediatek,mt6873-pwrap", .data = &pwrap_mt6873 },
- 	{ .compatible = "mediatek,mt7622-pwrap", .data = &pwrap_mt7622 },
+ static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
+ 	.main_path = mt8192_mtk_ddp_main,
+ 	.main_len = ARRAY_SIZE(mt8192_mtk_ddp_main),
+@@ -308,6 +325,8 @@ static const struct of_device_id mtk_drm_of_ids[] = {
+ 	  .data = &mt8183_mmsys_driver_data},
+ 	{ .compatible = "mediatek,mt8186-mmsys",
+ 	  .data = &mt8186_mmsys_driver_data},
++	{ .compatible = "mediatek,mt8188-vdosys0",
++	  .data = &mt8188_vdosys0_driver_data},
+ 	{ .compatible = "mediatek,mt8192-mmsys",
+ 	  .data = &mt8192_mmsys_driver_data},
+ 	{ .compatible = "mediatek,mt8195-mmsys",
+@@ -677,6 +696,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+ 	  .data = (void *)MTK_DISP_MUTEX },
+ 	{ .compatible = "mediatek,mt8186-disp-mutex",
+ 	  .data = (void *)MTK_DISP_MUTEX },
++	{ .compatible = "mediatek,mt8188-disp-mutex",
++	  .data = (void *)MTK_DISP_MUTEX },
+ 	{ .compatible = "mediatek,mt8192-disp-mutex",
+ 	  .data = (void *)MTK_DISP_MUTEX },
+ 	{ .compatible = "mediatek,mt8195-disp-mutex",
 -- 
-2.40.0
+2.18.0
 
 
