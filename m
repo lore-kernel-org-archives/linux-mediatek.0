@@ -4,83 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78C1DC74A5B
-	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Mar 2023 14:35:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE87AC74A5B
+	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Mar 2023 15:41:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E4Y7ky7nwwGEwJ6wVYuZLmb6qm5aApYaIgUwtd+ILNg=; b=2Er08hUxBmGWIzeKglfCaaO6WE
-	BoSO43KtlqXid9mX9G4tC8zQ7c+gWyZJTtlItAYyzg0W4Lb1sWSbImwQ8nN58h/wQCVbVoXvcwwFN
-	HsK+p5rh1hYQHUcHmXea6nvZQBlZHRgjih7mcBtS7OcEPjosP3dGHlYxDIzFIdCW8GuvkMuffC7RG
-	QesfcZRTLqQq/LnECt3lBEXx9giclWJVbiSVTsh4gnOg05o6vFaBU5L+nsQT1KuDZtEqxCxALhgFx
-	AC2D0EkIT07LMj39pCrO+GbK8eMfARt32gunN7nh5STUDXgyfQAs5BLnoaEca50zmKYqzSElzgNA+
-	tOXWmXbQ==;
+	bh=uctRIe2bZla+yug5rGspur8RVLaFggvVGV73vpRJbTM=; b=u33Ybbo5NO+v7LnfdneLlM18qO
+	O1LoL+q60qJa+cAmauEyCHvEbA9F0fsNYtT1411L0LQcm4AzpJjgZbLum9C7B5IBAasFDC5irEIB5
+	zNXk2L14hCQL+n//YXQPWK8wHi5bsKTpDjObUbApFHrLCd/zPFbat6voh0uPVP8hHXRDKeAUQNMa2
+	6bF87wgnu3g/H5oY4P6DqkY9Z4QdXQ+/uOjqvhnqKC6r1XcNuzGE2H60yiJNxfokDv7Pm8d0rzSF1
+	EhNDY1QcFT70DpLigWYqprIH9o0YWwIgrUZfGsceNnVH89jAyuH+f99BGRY521LzuZXiTzvSRbcLh
+	M7fZEQNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgRTB-008ayk-0q;
-	Sun, 26 Mar 2023 14:35:41 +0000
-Received: from casper.infradead.org ([90.155.50.34])
+	id 1pgSUX-008jDL-1h;
+	Sun, 26 Mar 2023 15:41:09 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgRQr-008Z75-0X
-	for linux-mediatek@bombadil.infradead.org;
-	Sun, 26 Mar 2023 14:33:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
-	:Reply-To:Content-ID:Content-Description;
-	bh=E4Y7ky7nwwGEwJ6wVYuZLmb6qm5aApYaIgUwtd+ILNg=; b=rm5V9mNF58cmOGpn//eoeqYqKP
-	CfySt1tItIrNxSkKCTyJsRNmeTomMSMLQxv1MgnX+V/45cN2Mz+1ZRKNnGFmlIwm1PNpgxLYVDVZF
-	ECNmhn3uDuXoW1Lyr9bq/e2J/+ztLsZPK0me3F2wNIy4VF9o4KMAJxk8N9WzkoCn81dlz1dJz4+lH
-	cbquCLFfcxiBQALB8nvySPaAS+ixu9d5Jf5fuLNGc7gHeUBx6N1Yxok9ticbFU9FxR7jeSH5wmyOQ
-	MGCS3U8dhrS5gUFUBnAushyzv7wgsYgn+fj7ohAfbevajelBrkF4JrF6yAk/B+EHDaiHwgb/1P44E
-	+YfVnLxg==;
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
-	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pgRQo-006aSG-7D
-	for linux-mediatek@lists.infradead.org; Sun, 26 Mar 2023 14:33:15 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pgRQR-0000Tv-Tk; Sun, 26 Mar 2023 16:32:51 +0200
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pgRQQ-006rhK-1n; Sun, 26 Mar 2023 16:32:50 +0200
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pgRQP-0088am-0k; Sun, 26 Mar 2023 16:32:49 +0200
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Sean Wang <sean.wang@mediatek.com>,
-	Sean Young <sean@mess.org>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-media@vger.kernel.org,
-	kernel@pengutronix.de,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH 108/117] media: mtk-cir: Convert to platform remove callback returning void
-Date: Sun, 26 Mar 2023 16:32:15 +0200
-Message-Id: <20230326143224.572654-111-u.kleine-koenig@pengutronix.de>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230326143224.572654-1-u.kleine-koenig@pengutronix.de>
-References: <20230326143224.572654-1-u.kleine-koenig@pengutronix.de>
+	id 1pgSUT-008jCW-0r;
+	Sun, 26 Mar 2023 15:41:06 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id A29DDB80767;
+	Sun, 26 Mar 2023 15:41:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9D533C433D2;
+	Sun, 26 Mar 2023 15:41:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1679845262;
+	bh=21uEPRsfEI6Bmn4l2Yo3fQlTwIXz1UGKObvRJC3gEzY=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=W8UV2+C20/Ija6ZI/S572nlTDADojVrGdQ31d3VqGtzPothV7yLPpcN73LCcBY9/v
+	 LBURlPry05C4uENgAOfQjGxzcLpNGk8EksOGlPsJOIRDIsFP/c2j5pbmXTi9WQO2Jm
+	 Dr9hMyewDKdIwPmgw1sXDfjQo0mnTL/k7Ek1S951FQHLKAUTH/skK1DHc8hTC4GMpX
+	 +jw/2Shj2oVOANbym7tOoUYtFkYMmDRF4UA/mN19HhKdlQ8Zno+Fp1fPZVmIMhLyV7
+	 P3KxigVaIZ/uRjRu8+SVaAzGPnEZb6lOdqdFAWFRgXF0U6mpSFK32bj9kqB0Xn8yRu
+	 Yu31MHVyBCy6g==
+Date: Sun, 26 Mar 2023 16:56:04 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: ChiaEn Wu <chiaen_wu@richtek.com>
+Cc: <lars@metafoo.de>, <matthias.bgg@gmail.com>,
+ <angelogioacchino.delregno@collabora.com>, <linux-iio@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <peterwu.pub@gmail.com>,
+ <cy_huang@richtek.com>
+Subject: Re: [PATCH] iio: adc: mt6370: Fix ibus and ibat scaling value of
+ some specific vendor ID chips
+Message-ID: <20230326165604.27338cc6@jic23-huawei>
+In-Reply-To: <1679667167-16261-1-git-send-email-chiaen_wu@richtek.com>
+References: <1679667167-16261-1-git-send-email-chiaen_wu@richtek.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.37; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1596; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=lU1RdDgCVLlCsb/5z6KnJIo7xN0yoS8qGARlY6xon2g=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBkIFdC1rNVy7Bq53g9nT0u1IGm+3MdTtjUTG0+n Z+iKKpJ7juJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZCBXQgAKCRCPgPtYfRL+ TvzaB/4x1CsgN+jw2vmR6VOIzhF0VtklHVsaM1mCVhFAlsAOc87OR8/ajkgPnGDiBPX9qTQ7VDZ GIQ+53bVnoRnoJLQrt1kOAfU1f3MYcUSCiEiPfsVmSFEdlwHR7D9IbNtbKWgHWUeEBv+tJUJR3e LkNcpwoy61kC17sOZVYetG5wM1PJTcZfKtsrkKj2lKjePHhJ6AKCuWxgtN8/oEwtKyyCbjIjgsb krZp86LJdODjWBHVPe+rZAkKU1JsatDjjWKUAnivIwb526wSAgtbSvV46LAiHco4CSYvwCfuvXK N6+cOXITCHF8gcXkaJOC78YeS7EPMdGddKy8f96zDQOo9ukl
-X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230326_153314_275308_E81B0C68 
-X-CRM114-Status: GOOD (  12.46  )
+X-CRM114-CacheID: sfid-20230326_084105_593333_AF61971E 
+X-CRM114-Status: GOOD (  21.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,51 +77,112 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The .remove() callback for a platform driver returns an int which makes
-many driver authors wrongly assume it's possible to do error handling by
-returning an error code. However the value returned is (mostly) ignored
-and this typically results in resource leaks. To improve here there is a
-quest to make the remove callback return void. In the first step of this
-quest all drivers are converted to .remove_new() which already returns
-void.
+On Fri, 24 Mar 2023 22:12:47 +0800
+ChiaEn Wu <chiaen_wu@richtek.com> wrote:
 
-Trivially convert this driver from always returning zero in the remove
-callback to the void returning variant.
+> The scale value of ibus and ibat on the datasheet is incorrect due to the
+> customer report after the experimentation with some specific vendor ID
+> chips.
+> 
+> Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
 
-Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
----
- drivers/media/rc/mtk-cir.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+Hi. Only significant issue here is the one the build bot found.
+A few other trivial formatting suggestions inline.
 
-diff --git a/drivers/media/rc/mtk-cir.c b/drivers/media/rc/mtk-cir.c
-index 27b7412d02a5..df9349330a93 100644
---- a/drivers/media/rc/mtk-cir.c
-+++ b/drivers/media/rc/mtk-cir.c
-@@ -420,7 +420,7 @@ static int mtk_ir_probe(struct platform_device *pdev)
- 	return ret;
- }
- 
--static int mtk_ir_remove(struct platform_device *pdev)
-+static void mtk_ir_remove(struct platform_device *pdev)
- {
- 	struct mtk_ir *ir = platform_get_drvdata(pdev);
- 
-@@ -434,13 +434,11 @@ static int mtk_ir_remove(struct platform_device *pdev)
- 
- 	clk_disable_unprepare(ir->bus);
- 	clk_disable_unprepare(ir->clk);
--
--	return 0;
- }
- 
- static struct platform_driver mtk_ir_driver = {
- 	.probe          = mtk_ir_probe,
--	.remove         = mtk_ir_remove,
-+	.remove_new     = mtk_ir_remove,
- 	.driver = {
- 		.name = MTK_IR_DEV,
- 		.of_match_table = mtk_ir_match,
--- 
-2.39.2
+Thanks,
+
+Jonathan
+
+
+>  
+>  static int mt6370_adc_read_channel(struct mt6370_adc_data *priv, int chan,
+> @@ -98,6 +105,26 @@ static int mt6370_adc_read_channel(struct mt6370_adc_data *priv, int chan,
+>  	return ret;
+>  }
+>  
+> +static int mt6370_adc_get_ibus_scale(struct mt6370_adc_data *priv)
+> +{
+> +	if (priv->vid == MT6370_VID_RT5081  ||
+> +	    priv->vid == MT6370_VID_RT5081A ||
+> +	    priv->vid == MT6370_VID_MT6370)
+> +		return 3350;
+> +	else
+
+I'd drop the else.  We are special casing the matches above, so it makes sense
+for them to be out of line.  The 'normal' case doesn't need to be indented.
+
+> +		return 3875;
+> +}
+> +
+> +static int mt6370_adc_get_ibat_scale(struct mt6370_adc_data *priv)
+> +{
+> +	if (priv->vid == MT6370_VID_RT5081  ||
+> +	    priv->vid == MT6370_VID_RT5081A ||
+> +	    priv->vid == MT6370_VID_MT6370)
+> +		return 2680;
+> +	else
+> +		return 3870;
+> +}
+> +
+>  static int mt6370_adc_read_scale(struct mt6370_adc_data *priv,
+>  				 int chan, int *val1, int *val2)
+>  {
+> @@ -123,7 +150,7 @@ static int mt6370_adc_read_scale(struct mt6370_adc_data *priv,
+>  		case MT6370_AICR_250_mA:
+>  		case MT6370_AICR_300_mA:
+>  		case MT6370_AICR_350_mA:
+> -			*val1 = 3350;
+> +			*val1 = mt6370_adc_get_ibus_scale(priv);
+>  			break;
+>  		default:
+>  			*val1 = 5000;
+> @@ -150,7 +177,7 @@ static int mt6370_adc_read_scale(struct mt6370_adc_data *priv,
+>  		case MT6370_ICHG_600_mA:
+>  		case MT6370_ICHG_700_mA:
+>  		case MT6370_ICHG_800_mA:
+> -			*val1 = 2680;
+> +			*val1 = mt6370_adc_get_ibat_scale(priv);
+>  			break;
+>  		default:
+>  			*val1 = 5000;
+> @@ -251,6 +278,19 @@ static const struct iio_chan_spec mt6370_adc_channels[] = {
+>  	MT6370_ADC_CHAN(TEMP_JC, IIO_TEMP, 12, BIT(IIO_CHAN_INFO_OFFSET)),
+>  };
+>  
+> +static int mt6370_get_vendor_info(struct mt6370_adc_data *priv)
+> +{
+> +	unsigned int dev_info;
+> +	int ret;
+> +
+> +	ret = regmap_read(priv->regmap, MT6370_REG_DEV_INFO, &dev_info);
+> +	if (ret)
+> +		return ret;
+> +
+> +	priv->vid = FIELD_GET(MT6370_VENID_MASK, dev_info);
+
+Blank line preferred before a simple return like this.  Makes the code a tiny
+bit more readable.
+
+> +	return 0;
+> +}
+> +
+>  static int mt6370_adc_probe(struct platform_device *pdev)
+>  {
+>  	struct device *dev = &pdev->dev;
+> @@ -263,6 +303,10 @@ static int mt6370_adc_probe(struct platform_device *pdev)
+>  	if (!regmap)
+>  		return dev_err_probe(dev, -ENODEV, "Failed to get regmap\n");
+>  
+> +	ret = mt6370_get_vendor_info(priv);
+
+The build bot spotted this one.  Can't use priv yet as it doesn't exist
+for a few more lines.
+
+> +	if (ret)
+> +		return dev_err_probe(dev, ret, "Failed to get vid\n");
+> +
+>  	indio_dev = devm_iio_device_alloc(dev, sizeof(*priv));
+>  	if (!indio_dev)
+>  		return -ENOMEM;
 
 
