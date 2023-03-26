@@ -4,61 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3443C761AF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Mar 2023 14:34:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78C1DC74A5B
+	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Mar 2023 14:35:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Jlk6m/KEPDyJbcUgQACZlkUk4rg5OOUxbhtEfK9bxKk=; b=cASlnpQNUIzgL6uaGj0nAmMT3b
-	aQ4F7YwgLxeHKzo8J6kc1nfg37fQ8vLfBifQOIFBJ5eW9joKkwxvqkfEIzE6kt/ZYfyv78/nxM0RV
-	3ETKQNPEYwzSoRYzdHlKocXht08NLEPzmam1y3/rIGuZz/wFb2jYY6Poit0BoyI9UAq+HjCKefzCc
-	CIRkrPh8evL9XHM10DsZRhKm4t1BJ7SxL8e/oyo3utCYq1jNDfVxxb9w4VmKGK9Rhe89UrThcXt9/
-	gAP+RRQyo3YjMpJnSYeOm9T+oCtSOcA2RjIkmbaulilz0Fd84d4u88ou0Wljw7u9VPC+t1luEgo/s
-	8T2w3txg==;
+	bh=E4Y7ky7nwwGEwJ6wVYuZLmb6qm5aApYaIgUwtd+ILNg=; b=2Er08hUxBmGWIzeKglfCaaO6WE
+	BoSO43KtlqXid9mX9G4tC8zQ7c+gWyZJTtlItAYyzg0W4Lb1sWSbImwQ8nN58h/wQCVbVoXvcwwFN
+	HsK+p5rh1hYQHUcHmXea6nvZQBlZHRgjih7mcBtS7OcEPjosP3dGHlYxDIzFIdCW8GuvkMuffC7RG
+	QesfcZRTLqQq/LnECt3lBEXx9giclWJVbiSVTsh4gnOg05o6vFaBU5L+nsQT1KuDZtEqxCxALhgFx
+	AC2D0EkIT07LMj39pCrO+GbK8eMfARt32gunN7nh5STUDXgyfQAs5BLnoaEca50zmKYqzSElzgNA+
+	tOXWmXbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgRRv-008a01-2u;
-	Sun, 26 Mar 2023 14:34:23 +0000
+	id 1pgRTB-008ayk-0q;
+	Sun, 26 Mar 2023 14:35:41 +0000
 Received: from casper.infradead.org ([90.155.50.34])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgRQk-008Yzn-1g
+	id 1pgRQr-008Z75-0X
 	for linux-mediatek@bombadil.infradead.org;
-	Sun, 26 Mar 2023 14:33:10 +0000
+	Sun, 26 Mar 2023 14:33:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
 	:Reply-To:Content-ID:Content-Description;
-	bh=Jlk6m/KEPDyJbcUgQACZlkUk4rg5OOUxbhtEfK9bxKk=; b=KBpxNzurLW6CXbuvtfcaD+NZBy
-	UMcZc7HRzwhSX8eUyTl2yTcexSKnnWmSuGld6FjkUaJMvpi8Vh067f+hq362XdlXtrEFO+kTdZxO7
-	d6gumXthpzckp4ucUMijuKQyaRwd1AeVB+20Bi5FeE+/h6/HZeCjf8yP4t2lzsQkFX/0Jrt/5k2qa
-	iSf+PGpItwaHIPUbfBj0sHmWbvG2+4OFaP6zjlb0U0zPPKZB9aBIoEIJudu5+d7b1H6+8gHIIYsFh
-	YJq8Ifav/L+/Me1Q5r26AeAIL3mGdm/Itc9In2q8faoMufQ9+0IP6RoSLkmzfpp+ReooeGojB6XzF
-	+Q1q8pNQ==;
+	bh=E4Y7ky7nwwGEwJ6wVYuZLmb6qm5aApYaIgUwtd+ILNg=; b=rm5V9mNF58cmOGpn//eoeqYqKP
+	CfySt1tItIrNxSkKCTyJsRNmeTomMSMLQxv1MgnX+V/45cN2Mz+1ZRKNnGFmlIwm1PNpgxLYVDVZF
+	ECNmhn3uDuXoW1Lyr9bq/e2J/+ztLsZPK0me3F2wNIy4VF9o4KMAJxk8N9WzkoCn81dlz1dJz4+lH
+	cbquCLFfcxiBQALB8nvySPaAS+ixu9d5Jf5fuLNGc7gHeUBx6N1Yxok9ticbFU9FxR7jeSH5wmyOQ
+	MGCS3U8dhrS5gUFUBnAushyzv7wgsYgn+fj7ohAfbevajelBrkF4JrF6yAk/B+EHDaiHwgb/1P44E
+	+YfVnLxg==;
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pgRQd-006aQt-2z
-	for linux-mediatek@lists.infradead.org; Sun, 26 Mar 2023 14:33:09 +0000
+	id 1pgRQo-006aSG-7D
+	for linux-mediatek@lists.infradead.org; Sun, 26 Mar 2023 14:33:15 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1pgRQB-0007zm-6n; Sun, 26 Mar 2023 16:32:35 +0200
+	id 1pgRQR-0000Tv-Tk; Sun, 26 Mar 2023 16:32:51 +0200
 Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1pgRQ9-006rbF-LU; Sun, 26 Mar 2023 16:32:33 +0200
+	id 1pgRQQ-006rhK-1n; Sun, 26 Mar 2023 16:32:50 +0200
 Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1pgRQ8-0088Vn-7D; Sun, 26 Mar 2023 16:32:32 +0200
+	id 1pgRQP-0088am-0k; Sun, 26 Mar 2023 16:32:49 +0200
 From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
-	Houlong Wei <houlong.wei@mediatek.com>,
+To: Sean Wang <sean.wang@mediatek.com>,
+	Sean Young <sean@mess.org>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>
 Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -66,15 +63,15 @@ Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	kernel@pengutronix.de,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH 031/117] media: mtk_vpu: Convert to platform remove callback returning void
-Date: Sun, 26 Mar 2023 16:30:58 +0200
-Message-Id: <20230326143224.572654-34-u.kleine-koenig@pengutronix.de>
+Subject: [PATCH 108/117] media: mtk-cir: Convert to platform remove callback returning void
+Date: Sun, 26 Mar 2023 16:32:15 +0200
+Message-Id: <20230326143224.572654-111-u.kleine-koenig@pengutronix.de>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230326143224.572654-1-u.kleine-koenig@pengutronix.de>
 References: <20230326143224.572654-1-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1833; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=5AnskvbJ9P6qn4bjvfh8odB1G7YnnigrgkIsVya1kFw=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBkIFasvO2cvWqi/Z6zq3C/m+ICsHa4M+7Z3cNjt ZBzIamySpOJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZCBWrAAKCRCPgPtYfRL+ ToTyCACzflSqkfkNslDRxcB7Zlt5Y526OmU7az8FU4sINBxILXtY25jkHnky6BMeeS+In+qLJ3j ogZQT2BX1uJLwC9oVqthcfsca1u1ujUV3ugS0g03UFqvzc1MrdiwcNWd8yEQrrciYoSu26Ju+gc nItJWUAKA49+D6SE+bxte27q0hpfXgCjUf/PLfEpv7wSP/RD9Z2c7QtSK9CGLDKwiCIzw+0UUXo bSg2MJmODWi2mOITVH9Y0bZPtCK0X6z3kyccACRVWK+PBgYNgLVdHraAOG1h2GBQUNSwNuRsClO WnIPUZnDjLzXnR2AbZCXixWhGY6uPuRFzmI8Mk7pcSrwoPg5
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1596; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=lU1RdDgCVLlCsb/5z6KnJIo7xN0yoS8qGARlY6xon2g=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBkIFdC1rNVy7Bq53g9nT0u1IGm+3MdTtjUTG0+n Z+iKKpJ7juJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZCBXQgAKCRCPgPtYfRL+ TvzaB/4x1CsgN+jw2vmR6VOIzhF0VtklHVsaM1mCVhFAlsAOc87OR8/ajkgPnGDiBPX9qTQ7VDZ GIQ+53bVnoRnoJLQrt1kOAfU1f3MYcUSCiEiPfsVmSFEdlwHR7D9IbNtbKWgHWUeEBv+tJUJR3e LkNcpwoy61kC17sOZVYetG5wM1PJTcZfKtsrkKj2lKjePHhJ6AKCuWxgtN8/oEwtKyyCbjIjgsb krZp86LJdODjWBHVPe+rZAkKU1JsatDjjWKUAnivIwb526wSAgtbSvV46LAiHco4CSYvwCfuvXK N6+cOXITCHF8gcXkaJOC78YeS7EPMdGddKy8f96zDQOo9ukl
 X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 Content-Transfer-Encoding: 8bit
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
@@ -82,8 +79,8 @@ X-SA-Exim-Mail-From: ukl@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230326_153303_141032_6264B4A7 
-X-CRM114-Status: GOOD (  13.56  )
+X-CRM114-CacheID: sfid-20230326_153314_275308_E81B0C68 
+X-CRM114-Status: GOOD (  12.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,40 +108,37 @@ callback to the void returning variant.
 
 Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
 ---
- drivers/media/platform/mediatek/vpu/mtk_vpu.c | 6 ++----
+ drivers/media/rc/mtk-cir.c | 6 ++----
  1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/vpu/mtk_vpu.c b/drivers/media/platform/mediatek/vpu/mtk_vpu.c
-index 47b684b92f81..5e2bc286f168 100644
---- a/drivers/media/platform/mediatek/vpu/mtk_vpu.c
-+++ b/drivers/media/platform/mediatek/vpu/mtk_vpu.c
-@@ -953,7 +953,7 @@ static const struct of_device_id mtk_vpu_match[] = {
- };
- MODULE_DEVICE_TABLE(of, mtk_vpu_match);
+diff --git a/drivers/media/rc/mtk-cir.c b/drivers/media/rc/mtk-cir.c
+index 27b7412d02a5..df9349330a93 100644
+--- a/drivers/media/rc/mtk-cir.c
++++ b/drivers/media/rc/mtk-cir.c
+@@ -420,7 +420,7 @@ static int mtk_ir_probe(struct platform_device *pdev)
+ 	return ret;
+ }
  
--static int mtk_vpu_remove(struct platform_device *pdev)
-+static void mtk_vpu_remove(struct platform_device *pdev)
+-static int mtk_ir_remove(struct platform_device *pdev)
++static void mtk_ir_remove(struct platform_device *pdev)
  {
- 	struct mtk_vpu *vpu = platform_get_drvdata(pdev);
+ 	struct mtk_ir *ir = platform_get_drvdata(pdev);
  
-@@ -966,8 +966,6 @@ static int mtk_vpu_remove(struct platform_device *pdev)
- 	vpu_free_ext_mem(vpu, D_FW);
- 	mutex_destroy(&vpu->vpu_mutex);
- 	clk_unprepare(vpu->clk);
+@@ -434,13 +434,11 @@ static int mtk_ir_remove(struct platform_device *pdev)
+ 
+ 	clk_disable_unprepare(ir->bus);
+ 	clk_disable_unprepare(ir->clk);
 -
 -	return 0;
  }
  
- static int mtk_vpu_suspend(struct device *dev)
-@@ -1040,7 +1038,7 @@ static const struct dev_pm_ops mtk_vpu_pm = {
- 
- static struct platform_driver mtk_vpu_driver = {
- 	.probe	= mtk_vpu_probe,
--	.remove	= mtk_vpu_remove,
-+	.remove_new = mtk_vpu_remove,
- 	.driver	= {
- 		.name	= "mtk_vpu",
- 		.pm = &mtk_vpu_pm,
+ static struct platform_driver mtk_ir_driver = {
+ 	.probe          = mtk_ir_probe,
+-	.remove         = mtk_ir_remove,
++	.remove_new     = mtk_ir_remove,
+ 	.driver = {
+ 		.name = MTK_IR_DEV,
+ 		.of_match_table = mtk_ir_match,
 -- 
 2.39.2
 
