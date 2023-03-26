@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA4F0C6FD1C
-	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Mar 2023 14:08:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6BBAC74A5B
+	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Mar 2023 14:09:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9WREep/uFgN/eq+sZNlJgQLhID1K1IK3LPV9/PpCfqc=; b=diU/BJ0ZiolDYm
-	hYCyBk9wlI/em0X33QiE47Pr4MFfjtamJE66bf/f9WTqT8eGN0aAE3/GbgLD+ZzNfBfZ3QlJkrS6G
-	VEykmzHU/Ej/emeVe8+Suhw8olQ27Rx6KYfGHmTglw6IF03jo7zyAcv2dw4Jjb2uIrysquWtv1N2F
-	BLbbIbmmYJ1xuv+hNKczvWb0qdbYXQVoYGbDHlZQDf+P68/TYuuYjY01T0pm9TtmcUYuiPj79CT1N
-	ZOts441//jaTBRFJn946meAVUUm5hwZX9xG0og+UGL901uaD++ciLf+HoUSgbgbm+GY3OO+Zamu9q
-	9FGM2Ttrp1mmifwP+2Tw==;
+	List-Owner; bh=OZg7tvfajeNq18GFXC3qap3a+zEsuUc1lJRtB/LOjbQ=; b=GOTBhRqD6iIrOX
+	ZZxyQx+himTzzPKaDweT+dwEURYXH7R+cfx2m1zeuIVM4JLL8MWnumAO2KBN3GWzQzY3lRM2sG0f0
+	uht46RHWwpG48ZLsOqMCrI3EtMa56H2b5ubpRODWd6zNDYJSvia6u9Je8isZ8TTC14jVgfw6cuuSZ
+	rZHkJ/67UsQ4EBDheUjkFDOB99lEzqmWx1/pxaKGpxp/oKbXJvHSKgdquBWwaFdYQU8IzyYqESMmw
+	DBPv9u4DbbD3Dx467fTeLElRhBFxCZcVTxiO4OONK0xYZm6+HJuLsj/y/uZiIlNOGYtHT9R6Vvy/m
+	9jPuw5FffHhx1fxAFGqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgR3D-008VZe-33;
-	Sun, 26 Mar 2023 14:08:51 +0000
-Received: from mail-qv1-xf2a.google.com ([2607:f8b0:4864:20::f2a])
+	id 1pgR3N-008Vct-2O;
+	Sun, 26 Mar 2023 14:09:01 +0000
+Received: from mail-qv1-xf34.google.com ([2607:f8b0:4864:20::f34])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgR2z-008VUT-1o;
-	Sun, 26 Mar 2023 14:08:38 +0000
-Received: by mail-qv1-xf2a.google.com with SMTP id jl13so5053510qvb.10;
-        Sun, 26 Mar 2023 07:08:37 -0700 (PDT)
+	id 1pgR34-008VVj-0y;
+	Sun, 26 Mar 2023 14:08:43 +0000
+Received: by mail-qv1-xf34.google.com with SMTP id oe8so5101993qvb.6;
+        Sun, 26 Mar 2023 07:08:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679839716;
+        d=gmail.com; s=20210112; t=1679839721;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=9WREep/uFgN/eq+sZNlJgQLhID1K1IK3LPV9/PpCfqc=;
-        b=Q2l7rBPanCOROqiRzww4lARkg9ZAg9Bapi3rbhQW/IkFYT837uziBPuG1BziEFS89f
-         laRZiicNLo/9ulN9PV/DhIZY+mnS9gmbfDjvCF+Vz9eBnT5orhN/vfiMoh/VdZ34wQXh
-         TDlbawItGu4+/5LhY8Rb6fv6TERsFcWxh8maWE35D4VJSIKePaqsgLnqwcHZOEWDKoCz
-         OQAidwTXP7li7rERK7lO+UMePBSmIqrYbyJNG6D5ZVcaOgHBX7wNXQDWnAKsOJ6avYO0
-         Y9oZ8oelx4wtuKkl8XHqph74loxHZeh5RtA+C+hCP7/AffrP6PtW+3sbFvpfMSozLmg+
-         mEJg==
+        bh=OZg7tvfajeNq18GFXC3qap3a+zEsuUc1lJRtB/LOjbQ=;
+        b=kue9NahdmEFNFyi9Z9Kz+d6ev+kVXTNIPGO4kEw4t5gZOePO6QCbTzsp4J2nifJLua
+         IvVE35jxat4ieYUrXcrzHb4x5W8p21TysgFzvp0p3/vYkBbV5xwuumCEx5OpRm2qmQtR
+         +3IWUiRLB2cZp6IJJU6nDHArLhTbp/oIdO32Y0dDpSr8oFTBKDLmLF3dKLFNAnblnK5E
+         4Wr86j1QaZ147zL0eak8zzxON0GVY/gePSBwTsdoQFwVkQfYDidKNTZOixQfy+FyO8aW
+         AJ8VdyTPDzdGSbVFJZL7iWEcjrMXBhsbSF0B9Uw9ZkNCWVH6GG9dy31Dl3335S/Y7vM8
+         NuzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679839716;
+        d=1e100.net; s=20210112; t=1679839721;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=9WREep/uFgN/eq+sZNlJgQLhID1K1IK3LPV9/PpCfqc=;
-        b=dF4FUKy40KpN8Uldt78EFLoba2//uuyFF5DGogiyKmmJL+zJHec1AaymC8UIgPPtaq
-         UTOx1m+FZw0eEdzwAH8k4GiT7DZFx2YvIGbeMvVVIm4FdhqUXQpDXD7V1VzbiVaoVOHN
-         t/3wQ87WKTczjSoqy5VnDNwc4QIusN7oAEWZVvc5HtUA7sURmuSYc5uoM8dTsAVrSt1T
-         RwVgIoP7l2IoGYQ0FP3g+2Z2zRnYaspWkrKp9gqRurCSfRRNR+HsJOUIZqN5teN1cM3Z
-         CRg+Li5R5NGwemA4oGgpXFqlhHA24Kaykbz2p4zGa86iXf6Iq+fYIcdR73MBP75qwb6B
-         J8PA==
-X-Gm-Message-State: AAQBX9fMimbg329zODGKC9PJB7XXdGT7FsY6A6M3lYikSQwpfnlTvXPA
-	Dc/SKs/reK+oQraETfoj/pQ=
-X-Google-Smtp-Source: AKy350ZS8/EBgNW/qhv77gSkv3ALYbhI1UnitVz4DKT8orb8a12B2BcJsnGRHFuhE51Orjd/Hx6arg==
-X-Received: by 2002:a05:6214:c2c:b0:5aa:43c0:9cdd with SMTP id a12-20020a0562140c2c00b005aa43c09cddmr15287399qvd.45.1679839716258;
-        Sun, 26 Mar 2023 07:08:36 -0700 (PDT)
+        bh=OZg7tvfajeNq18GFXC3qap3a+zEsuUc1lJRtB/LOjbQ=;
+        b=bRF8JLL2PwOYayEGHafxY+a087MjM0VDl3voP717LPEyHHTxPc3NZubgL9HsZwnFIh
+         zKV5lkn0WrXGAjP7fyClWlyi3XWWWvdBb5eHDMjI1zdObyOkdKOulJfXPJ2l3jeL+TVA
+         e8PPUQerHVYB8GQVbJfn1VFVgh7+AmR5XddiUNKZQPDuMWSiXZr/KklpArYRwQKS22e9
+         w+LLPtzut+7jtnEMaPaejxpy4u8St71VvOrp0CU95B2Y8CtgnXy/65NGtNn7/oPns80G
+         c+oAVVJ1de3hbwdNFcr3ZIKpdUEo3BuA2bEVZ4f/xaRAtfm5EpeTaqH0NCT6Ew0bEN9I
+         D79A==
+X-Gm-Message-State: AAQBX9fkffAoTBJfBDTo4T2KCgIYFvG+9Od/e4vXFA4gWtduLfyDTxA1
+	JdPyTEB7r77bsFJ2bjr0wuI=
+X-Google-Smtp-Source: AKy350bUQGpng0t7Er8DLfWm+MeX5EgNvC3Zf1IA9OKQCjTVHq37FERAld7067znB0Xsj5mlftsQqw==
+X-Received: by 2002:a05:6214:e66:b0:583:8e58:6c0f with SMTP id jz6-20020a0562140e6600b005838e586c0fmr13020778qvb.40.1679839721008;
+        Sun, 26 Mar 2023 07:08:41 -0700 (PDT)
 Received: from arinc9-PC.lan ([149.91.1.15])
-        by smtp.gmail.com with ESMTPSA id j5-20020a0ce6a5000000b005dd8b93458esm2212220qvn.38.2023.03.26.07.08.31
+        by smtp.gmail.com with ESMTPSA id j5-20020a0ce6a5000000b005dd8b93458esm2212220qvn.38.2023.03.26.07.08.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 26 Mar 2023 07:08:35 -0700 (PDT)
+        Sun, 26 Mar 2023 07:08:40 -0700 (PDT)
 From: arinc9.unal@gmail.com
 X-Google-Original-From: arinc.unal@arinc9.com
 To: Sean Wang <sean.wang@mediatek.com>,
@@ -77,9 +77,9 @@ To: Sean Wang <sean.wang@mediatek.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Russell King <linux@armlinux.org.uk>,
 	=?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>
-Subject: [PATCH net 2/7] net: dsa: mt7530: fix phylink for port 5 and fix port 5 modes
-Date: Sun, 26 Mar 2023 17:08:13 +0300
-Message-Id: <20230326140818.246575-3-arinc.unal@arinc9.com>
+Subject: [PATCH net 3/7] net: dsa: mt7530: do not run mt7530_setup_port5() if port 5 is disabled
+Date: Sun, 26 Mar 2023 17:08:14 +0300
+Message-Id: <20230326140818.246575-4-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.37.2
 In-Reply-To: <20230326140818.246575-1-arinc.unal@arinc9.com>
 References: <20230326140818.246575-1-arinc.unal@arinc9.com>
@@ -87,8 +87,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230326_070837_604158_F3FF082B 
-X-CRM114-Status: GOOD (  20.03  )
+X-CRM114-CacheID: sfid-20230326_070842_344251_C93C298B 
+X-CRM114-Status: GOOD (  11.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,91 +106,52 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-There're two call paths for setting up port 5:
+There's no need to run all the code on mt7530_setup_port5() if port 5 is
+disabled. Run mt7530_setup_port5() if priv->p5_intf_sel is not P5_DISABLED
+and remove the P5_DISABLED case from mt7530_setup_port5().
 
-mt7530_setup()
--> mt7530_setup_port5()
-
-mt753x_phylink_mac_config()
--> mt753x_mac_config()
-   -> mt7530_mac_config()
-      -> mt7530_setup_port5()
-
-The first call path is supposed to run when phy muxing is being used. In
-this case, port 5 is somewhat of a hidden port. It won't be defined on the
-devicetree so phylink can't be used to manage the port.
-
-The second call path used to call mt7530_setup_port5() directly under case
-5 on mt7530_phylink_mac_config() before it was moved to mt7530_mac_config()
-with 88bdef8be9f6 ("net: dsa: mt7530: Extend device data ready for adding a
-new hardware"). mt7530_setup_port5() will never run through this call path
-because the current code on mt7530_setup() bypasses phylink for all cases
-of port 5.
-
-Leave it to phylink if port 5 is used as a CPU port or a user port. For the
-cases of phy muxing or the port being disabled, call mt7530_setup_port5()
-directly from mt7530_setup_port5() without involving phylink.
-
-Move setting the interface and P5_DISABLED mode to a more specific
-location. They're supposed to be overwritten if phy muxing is detected.
-
-Add comments which explain the process.
+Stop initialising the interface variable as the remaining cases will always
+call mt7530_setup_port5() with it initialised.
 
 Fixes: 38f790a80560 ("net: dsa: mt7530: Add support for port 5")
 Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- drivers/net/dsa/mt7530.c | 20 +++++++++++---------
- 1 file changed, 11 insertions(+), 9 deletions(-)
+ drivers/net/dsa/mt7530.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 62a4b899a961..eba356249ada 100644
+index eba356249ada..6d33c1050458 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -2247,16 +2247,18 @@ mt7530_setup(struct dsa_switch *ds)
- 		return ret;
+@@ -949,9 +949,6 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
+ 		/* MT7530_P5_MODE_GMAC: P5 -> External phy or 2nd GMAC */
+ 		val &= ~MHWTRAP_P5_DIS;
+ 		break;
+-	case P5_DISABLED:
+-		interface = PHY_INTERFACE_MODE_NA;
+-		break;
+ 	default:
+ 		dev_err(ds->dev, "Unsupported p5_intf_sel %d\n",
+ 			priv->p5_intf_sel);
+@@ -2257,7 +2254,6 @@ mt7530_setup(struct dsa_switch *ds)
+ 		 * Determine if phy muxing is defined and which phy to mux.
+ 		 */
+ 		priv->p5_intf_sel = P5_DISABLED;
+-		interface = PHY_INTERFACE_MODE_NA;
  
- 	/* Setup port 5 */
--	priv->p5_intf_sel = P5_DISABLED;
--	interface = PHY_INTERFACE_MODE_NA;
--
- 	if (!dsa_is_unused_port(ds, 5)) {
-+		/* Set the interface selection of port 5 to GMAC5 when it's used
-+		 * as a CPU port or a user port. Let phylink handle the rest.
-+		 */
- 		priv->p5_intf_sel = P5_INTF_SEL_GMAC5;
--		ret = of_get_phy_mode(dsa_to_port(ds, 5)->dn, &interface);
--		if (ret && ret != -ENODEV)
--			return ret;
- 	} else {
--		/* Scan the ethernet nodes. look for GMAC1, lookup used phy */
-+		/* Scan the ethernet nodes. Look for GMAC1, lookup the used phy.
-+		 * Determine if phy muxing is defined and which phy to mux.
-+		 */
-+		priv->p5_intf_sel = P5_DISABLED;
-+		interface = PHY_INTERFACE_MODE_NA;
-+
  		for_each_child_of_node(dn, mac_np) {
  			if (!of_device_is_compatible(mac_np,
- 						     "mediatek,eth-mac"))
-@@ -2287,6 +2289,8 @@ mt7530_setup(struct dsa_switch *ds)
- 			of_node_put(phy_node);
+@@ -2290,7 +2286,8 @@ mt7530_setup(struct dsa_switch *ds)
  			break;
  		}
-+
-+		mt7530_setup_port5(ds, interface);
+ 
+-		mt7530_setup_port5(ds, interface);
++		if (priv->p5_intf_sel != P5_DISABLED)
++			mt7530_setup_port5(ds, interface);
  	}
  
  #ifdef CONFIG_GPIOLIB
-@@ -2297,8 +2301,6 @@ mt7530_setup(struct dsa_switch *ds)
- 	}
- #endif /* CONFIG_GPIOLIB */
- 
--	mt7530_setup_port5(ds, interface);
--
- 	/* Flush the FDB table */
- 	ret = mt7530_fdb_cmd(priv, MT7530_FDB_FLUSH, NULL);
- 	if (ret < 0)
 -- 
 2.37.2
 
