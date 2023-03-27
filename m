@@ -4,71 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9262BC76195
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 08:09:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E241C77B61
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 08:18:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UoKRRxh1cnlXXq1Hd8HxSZFSW5KETTMBQ4mJB+0rdhc=; b=FIj7H1SE+eQsMtL1atUFF5S2mt
-	uUBxqdAcBhR41oyC6AuchTEMWOrtUQhUXrBciq9YVYelkV7pdnrJ94JRHKFWZSnDbcJIWAb+OjUNR
-	UXQUGDNoGQJFcLr+/m0/MJ5MYOH8/cBmGIVPBNS9uhf4EzMQ6StBHtP2zEY4N01hPkkYCztI0IwNd
-	1GMT3lN9ZHx8Yb9jebmFnggLVKEzpLAZwBX6lF3WsHwydZAW1NTn3MSfn6XpOAi94HzMBy1zLtukv
-	KRmboZg45u0FLbxxgxNeG3eQQCMC1+xPR1AoNatuFdBliP0x3hMbf7d34zX2WwNW0HE0rnlvw/Yp+
-	XjhQP8iQ==;
+	bh=mbPRik7PsPT3Pg5bbG0g2fvlHkSWXRquJmub7qTHLEw=; b=pdX6sj7ojUd7wBqtvasCTfCqgE
+	3PN9XZmPa29nOtK091x+eWDjUHgH54RMJSafVhN8YbSvsErtERJTzxbTa3knNbqawedk6dib7i4Pv
+	3Vqn1WhNPk1UpBhed308+yD0MAufBhUO7tUwFbskzwe5rYR/1NBrFnoksuwdk8i2BDi0K8iJARohw
+	VHPsxMBPZPO601+ktq4+AQYqP9W4Jdh/Y3PIcCHOZC8OyaNzrcAIMDsRs+i13NK6pGo9f93d2KA/5
+	5C5N6DzwVtzT1AwgZBcE3uOHKm6d5fLWyuMwUjQPViC1OCQBFIEw2yeAhV408Var0mIY88R5fbciG
+	srMOlHUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pghvE-00AB0Y-25;
-	Mon, 27 Mar 2023 08:09:44 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pgi3M-00ACZr-1G;
+	Mon, 27 Mar 2023 08:18:08 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pghvB-00AAz5-0w;
-	Mon, 27 Mar 2023 08:09:42 +0000
+	id 1pgi3I-00ACYG-1P;
+	Mon, 27 Mar 2023 08:18:05 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 97DDF6602087;
-	Mon, 27 Mar 2023 09:09:37 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id EE6656602087;
+	Mon, 27 Mar 2023 09:18:01 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1679904578;
-	bh=WsJrZpm843H/Mqkak9eNmuxfS+fyJ9GgkzGPM1UBOFY=;
+	s=mail; t=1679905082;
+	bh=+LHrAgr98tPQlFcXJ+Phv959EtKS0f5UIBT/AhH4Ef4=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=MRMri0dpMSRlcR433ByuMgdZmR0JajiPP6xsngGy/nxPO5KOcUB0byRvbzhLRc99D
-	 hL41kgsF36sAAaLuskGkuY/mWTqL+4k1loJa50QP3npbNq0jz5511R7YZ9Rb7aFbXZ
-	 YDHQU1or1V1O1Q1DMy2kTyLxcMsZl7vxTO9pgU9M5bf7rNTqjmCIqtg+EhpWE2foSl
-	 3J+Ujz2CKp4vZBT8LOlLcj943u7W2t10QfP52tDmNx46C69Pq6WcfpdXTqaXFosJu5
-	 svMP6/z9mrvJ+E+izWpN5pIt92RpnRTEd1+Oat5V0P42zHO8Z5OpDw/gbTi+R8bM5p
-	 F3su3t1xiwMSg==
-Message-ID: <8937b354-a808-5e4b-94c4-f2c8a63945e2@collabora.com>
-Date: Mon, 27 Mar 2023 10:09:35 +0200
+	b=GErYrF/xA+2RUzBCTRyjBeurydGdT3hgslzj8asq+wY88q4Mr7T0gmHa/cFwIxgg2
+	 jrENwceiNIf1BgjQVhSBOAsjAjBVegFMxyLnZCoWjoS+nsdGEuNE6jmnNRD37VmVwJ
+	 Nxtzp9jKOIspER9mGp6YPYoIO/O07wp3ZTqah+e9uhe80JgZEaB157VsVU2oQLZYxZ
+	 ybehftUPzKy4vHQ4vlycsQTNGEROOc2l+VlJSmTgae2JFZIcMnrRblPk5KlaZY0UzH
+	 JS4FyQJn7uqph3Z11SiO8i23heOpI+mkjoOOGNB0vcGPb8ZzLX3BA9zU/CK1GcTdn6
+	 ojFsk//N+gDUg==
+Message-ID: <3e9652ad-1fbe-9c55-dadf-931ddb2e2a54@collabora.com>
+Date: Mon, 27 Mar 2023 10:17:59 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.9.0
-Subject: Re: [PATCH v1 03/18] arm64: dts: mediatek: mt6795: xperia-m5: Enable
- Frequency Hopping
+Subject: Re: [PATCH v3,7/7] media: mediatek: vcodec: Add encode to support
+ dbgfs
 Content-Language: en-US
-To: Pavel Machek <pavel@ucw.cz>
-Cc: matthias.bgg@gmail.com, qii.wang@mediatek.com, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, jassisinghbrar@gmail.com,
- houlong.wei@mediatek.com, linux-i2c@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com, phone-devel@vger.kernel.org,
- ~postmarketos/upstreaming@lists.sr.ht
-References: <20230324175456.219954-1-angelogioacchino.delregno@collabora.com>
- <20230324175456.219954-4-angelogioacchino.delregno@collabora.com>
- <ZB9jlTsEb0Clf1zu@duo.ucw.cz>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai
+ <wenst@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?= <nfraprado@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20230327055315.13936-1-yunfei.dong@mediatek.com>
+ <20230327055315.13936-8-yunfei.dong@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <ZB9jlTsEb0Clf1zu@duo.ucw.cz>
+In-Reply-To: <20230327055315.13936-8-yunfei.dong@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230327_010941_454274_DB89E20E 
-X-CRM114-Status: GOOD (  10.80  )
+X-CRM114-CacheID: sfid-20230327_011804_608384_82048ADF 
+X-CRM114-Status: UNSURE (   7.12  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,32 +87,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/03/23 22:11, Pavel Machek ha scritto:
-> On Fri 2023-03-24 18:54:41, AngeloGioacchino Del Regno wrote:
->> Enable FHCTL with Spread Spectrum for MAINPLL, MPLL and MSDCPLL
->> as found on the downstream kernel for this smartphone.
->> Which one to enable, and at what SSC percentage, was found by
->> dumping the debugging data from a running downstream kernel and
->> checking the downstream code.
+Il 27/03/23 07:53, Yunfei Dong ha scritto:
+> Add encode to support dbgfs.
 > 
-> What advantages does this have? Lower EMI emissions?
-> 
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 
-Hello Pavel,
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-this is done for multiple reasons, main one being lower EMI, but the effects
-on functionality, depending on the actual board, may be quite dramatic and
-ranging from lower WiFi and/or modem signal "sensitivity" (as in, for example,
-having to automatically lower signal gain because of signal disturbance from
-the conducted EMI ripple), to even a complete platform crash due to clocking
-issues.
 
-This is not about accounting for hardware quirks because having this situation
-is totally normal and expected, especially on "particular" usecases such as
-smartphones, where the actual board is typically much constrained in terms of
-space, and where on the same board you have multiple components generating noise,
-either wanted (a nfc/wifi/bt/2g/3g/4g/5g/something-else signal), or unwanted.
-
-Cheers!
-Angelo
 
