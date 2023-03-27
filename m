@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4F98C7619A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 03:19:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F3E6C7619A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 03:24:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=3Z/OKpqpeMoIDAFJj/H1GX7FktteFHU+qvV6D4oOBio=; b=QY5HI1sT0zausFIu3DZR1UD4FW
-	RPmcFE5Ig76INi5RGhtcZCqT3V13n9nhKRUan8k09eo0PD5EPzuGoKQ9SX5T5l5ry5JRbP9m5+ArI
-	MLHOZBc/tHFEESjP6PpdSdUnC3uqZZmcD7LqHXel4alFPXM249RURowT0EBUUgxi7lzblzxyAtBf3
-	jQqtbCf2SOZ47z/KHTELad8mgaGtPY8gfGvHGBAt4JyMdrCQZYoX42JPL6SQvGNQZ0Lcd2tRJ2H9P
-	g+cgGZhkJ7envN62t8Goov5xik9uCkC7HrjrU88wOfHR6rFvx0tcbI2bVcjBnQJr5PwFjQigGqz7R
-	t07i+vZw==;
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7VmBJgriOASC62cUJULR69R/y/ATp3ZjkbCCpiCyZhM=; b=uV3zKajDw5l73HnzeNcnGo3pgi
+	fMddXTZfhJZHXnY5/sr/IiqVZJUX1JaVQAcdbnPo46IGCoCmx45vV8vU0F1ZyAnKENS+DCTZCLEC5
+	xFxhUDLn62/3Nkd5xLQU/+vjZ5lAmT/ZDtDe9N1Fwev4Fwv8mGu0ZPU8GBUxtZKKqaQmSyn54ChPo
+	Z7l6fkcyMeO8oLfIYT9JZ4iS+GiI1fqXro5qIuHLqFYdiTo2kJ9gCrSdFgYL0fucjqTAV9eMaQ3bZ
+	KBrTCUqRRaG6EobJUIndhSJavDOuojljs/QY6TmHkNIAgkYfvS4/YHs8TRkweECkUV3a6nNF/SUC7
+	buA8P/Bg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgdNm-009e3w-1f;
-	Mon, 27 Mar 2023 03:18:54 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pgdT4-009ejQ-2P;
+	Mon, 27 Mar 2023 03:24:22 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgdNf-009e1W-33
-	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Mar 2023 03:18:52 +0000
-X-UUID: 1277463acc4e11edb7d8d11f642b8e78-20230326
+	id 1pgdT1-009ein-1t;
+	Mon, 27 Mar 2023 03:24:21 +0000
+X-UUID: d76fdb82cc4e11ed8687db9d93187ff1-20230326
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=3Z/OKpqpeMoIDAFJj/H1GX7FktteFHU+qvV6D4oOBio=;
-	b=f2B8X1r5XDGDJ6rXfwL8T9YQuCRNGk+SqJbh6oLpsmi33r4NSpD5RdGMbv+fchqofzILftZhpnjbacExlGnH47/3p7WMHMofSv0BmJqDDw9fiELNbZ5qpjzQGJT6TQf0oKPHkA1+PQG9eVzgADNBManqXeNhzyaw1VLyGKoqvss=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=7VmBJgriOASC62cUJULR69R/y/ATp3ZjkbCCpiCyZhM=;
+	b=ILEnbmnByuJz3Hw9D4OXOmdEi3kr/FSJVLkuuz86KJPmEB+TFyBP+upywNuIxpZ10CpTBInFOfrS7swZW1NXV7Eb1d/ckIz4jRC0W0YY5oyBAt8txNGmkzt7YPMN7RePbj7DEfiHF1cY5G7NLhdxINnZgjJDcSaDSa8lCSuUMVI=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:1a7a23ad-d911-43f3-8c0c-c10fe96c1204,IP:0,U
+X-CID-O-INFO: VERSION:1.1.22,REQID:4c039c1a-1a31-4ae3-a5af-ed1e76a2951c,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:120426c,CLOUDID:9e019029-564d-42d9-9875-7c868ee415ec,B
+X-CID-META: VersionHash:120426c,CLOUDID:0ef3fef6-ddba-41c3-91d9-10eeade8eac7,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: 1277463acc4e11edb7d8d11f642b8e78-20230326
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
-	(envelope-from <chris.lu@mediatek.com>)
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: d76fdb82cc4e11ed8687db9d93187ff1-20230326
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 651024077; Sun, 26 Mar 2023 20:18:40 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+	with ESMTP id 1829755131; Sun, 26 Mar 2023 20:24:11 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Mon, 27 Mar 2023 11:18:38 +0800
+ 15.2.1118.25; Mon, 27 Mar 2023 11:13:36 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Mon, 27 Mar 2023 11:18:38 +0800
-From: <chris.lu@mediatek.com>
-To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
-CC: <sean.wang@mediatek.com>, <deren.Wu@mediatek.com>,
-	<aaron.hou@mediatek.com>, <km.lin@mediatek.com>, <robin.chiu@mediatek.com>,
-	<steve.lee@mediatek.com>, <abhishekpandit@google.com>,
-	<michaelsplaw@google.com>, <yinghsu@google.com>,
-	<linux-bluetooth@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, Chris.Lu <chris.lu@mediatek.com>
-Subject: [PATCH] Add VID 0489 & PID e102 for MediaTek MT7922 USB Bluetooth chip.
-Date: Mon, 27 Mar 2023 11:18:16 +0800
-Message-ID: <20230327031816.10058-1-chris.lu@mediatek.com>
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Mon, 27 Mar 2023 11:13:36 +0800
+From: Moudy Ho <moudy.ho@mediatek.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Ping-Hsun
+ Wu <ping-hsun.wu@mediatek.com>
+CC: <linux-kernel@vger.kernel.org>, <linux-media@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Moudy Ho
+	<moudy.ho@mediatek.com>
+Subject: [PATCH v7 02/12] media: platform: mtk-mdp3: add files for chip configuration
+Date: Mon, 27 Mar 2023 11:13:25 +0800
+Message-ID: <20230327031335.9663-3-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230327031335.9663-1-moudy.ho@mediatek.com>
+References: <20230327031335.9663-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230326_201848_027791_DFEE5C4D 
-X-CRM114-Status: UNSURE (   8.56  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230326_202419_640454_34365CDC 
+X-CRM114-Status: GOOD (  18.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,70 +85,139 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Chris.Lu" <chris.lu@mediatek.com>
+In order to be compatible with more MDP3 chip settings in further,
+integrate and separate chip-related configurations into specific files.
 
-The information in /sys/kernel/debug/usb/devices about the Bluetooth
-device is listed as the below.
-
-T:  Bus=05 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
-D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-P:  Vendor=0489 ProdID=e102 Rev= 1.00
-S:  Manufacturer=MediaTek Inc.
-S:  Product=Wireless_Device
-S:  SerialNumber=000000000
-C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
-A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
-I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
-E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
-E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
-I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
-E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
-
-Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 ---
- drivers/bluetooth/btusb.c | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/media/platform/mediatek/mdp3/Makefile |  2 +-
+ .../platform/mediatek/mdp3/mdp_cfg_data.c     | 38 +++++++++++++++++++
+ .../platform/mediatek/mdp3/mtk-mdp3-cfg.h     | 12 ++++++
+ .../platform/mediatek/mdp3/mtk-mdp3-core.c    | 33 +---------------
+ 4 files changed, 53 insertions(+), 32 deletions(-)
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-cfg.h
 
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 7382b021f3df..6c1354fbd0f4 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -621,6 +621,9 @@ static const struct usb_device_id blacklist_table[] = {
- 	{ USB_DEVICE(0x0489, 0xe0f2), .driver_info = BTUSB_MEDIATEK |
- 						     BTUSB_WIDEBAND_SPEECH |
- 						     BTUSB_VALID_LE_STATES },
-+	{ USB_DEVICE(0x0489, 0xe102), .driver_info = BTUSB_MEDIATEK |
-+						     BTUSB_WIDEBAND_SPEECH |
-+						     BTUSB_VALID_LE_STATES },
+diff --git a/drivers/media/platform/mediatek/mdp3/Makefile b/drivers/media/platform/mediatek/mdp3/Makefile
+index 63e6c87e480b..2ee24195a2dd 100644
+--- a/drivers/media/platform/mediatek/mdp3/Makefile
++++ b/drivers/media/platform/mediatek/mdp3/Makefile
+@@ -1,5 +1,5 @@
+ # SPDX-License-Identifier: GPL-2.0-only
+-mtk-mdp3-y += mtk-mdp3-core.o mtk-mdp3-vpu.o mtk-mdp3-regs.o
++mtk-mdp3-y += mdp_cfg_data.o mtk-mdp3-core.o mtk-mdp3-vpu.o mtk-mdp3-regs.o
+ mtk-mdp3-y += mtk-mdp3-m2m.o
+ mtk-mdp3-y += mtk-mdp3-comp.o mtk-mdp3-cmdq.o
  
- 	/* Additional Realtek 8723AE Bluetooth devices */
- 	{ USB_DEVICE(0x0930, 0x021d), .driver_info = BTUSB_REALTEK },
+diff --git a/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c b/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c
+new file mode 100644
+index 000000000000..837b8202dcc7
+--- /dev/null
++++ b/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c
+@@ -0,0 +1,38 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * Copyright (c) 2023 MediaTek Inc.
++ * Author: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
++ */
++
++#include "mtk-mdp3-core.h"
++
++static const struct of_device_id mt8183_mdp_probe_infra[MDP_INFRA_MAX] = {
++	[MDP_INFRA_MMSYS] = { .compatible = "mediatek,mt8183-mmsys" },
++	[MDP_INFRA_MUTEX] = { .compatible = "mediatek,mt8183-disp-mutex" },
++	[MDP_INFRA_SCP] = { .compatible = "mediatek,mt8183-scp" }
++};
++
++static const struct mdp_platform_config mt8183_plat_cfg = {
++	.rdma_support_10bit		= true,
++	.rdma_rsz1_sram_sharing		= true,
++	.rdma_upsample_repeat_only	= true,
++	.rsz_disable_dcm_small_sample	= false,
++	.wrot_filter_constraint		= false,
++};
++
++static const u32 mt8183_mutex_idx[MDP_MAX_COMP_COUNT] = {
++	[MDP_COMP_RDMA0] = MUTEX_MOD_IDX_MDP_RDMA0,
++	[MDP_COMP_RSZ0] = MUTEX_MOD_IDX_MDP_RSZ0,
++	[MDP_COMP_RSZ1] = MUTEX_MOD_IDX_MDP_RSZ1,
++	[MDP_COMP_TDSHP0] = MUTEX_MOD_IDX_MDP_TDSHP0,
++	[MDP_COMP_WROT0] = MUTEX_MOD_IDX_MDP_WROT0,
++	[MDP_COMP_WDMA] = MUTEX_MOD_IDX_MDP_WDMA,
++	[MDP_COMP_AAL0] = MUTEX_MOD_IDX_MDP_AAL0,
++	[MDP_COMP_CCORR0] = MUTEX_MOD_IDX_MDP_CCORR0,
++};
++
++const struct mtk_mdp_driver_data mt8183_mdp_driver_data = {
++	.mdp_probe_infra = mt8183_mdp_probe_infra,
++	.mdp_cfg = &mt8183_plat_cfg,
++	.mdp_mutex_table_idx = mt8183_mutex_idx,
++};
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cfg.h b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cfg.h
+new file mode 100644
+index 000000000000..e0a698cba6ff
+--- /dev/null
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cfg.h
+@@ -0,0 +1,12 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/*
++ * Copyright (c) 2023 MediaTek Inc.
++ * Author: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
++ */
++
++#ifndef __MTK_MDP3_CFG_H__
++#define __MTK_MDP3_CFG_H__
++
++extern const struct mtk_mdp_driver_data mt8183_mdp_driver_data;
++
++#endif  /* __MTK_MDP3_CFG_H__ */
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+index 97edcd9d1c81..745cb06cc8bc 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+@@ -12,40 +12,11 @@
+ #include <linux/remoteproc.h>
+ #include <linux/remoteproc/mtk_scp.h>
+ #include <media/videobuf2-dma-contig.h>
++
+ #include "mtk-mdp3-core.h"
++#include "mtk-mdp3-cfg.h"
+ #include "mtk-mdp3-m2m.h"
+ 
+-static const struct mdp_platform_config mt8183_plat_cfg = {
+-	.rdma_support_10bit		= true,
+-	.rdma_rsz1_sram_sharing		= true,
+-	.rdma_upsample_repeat_only	= true,
+-	.rsz_disable_dcm_small_sample	= false,
+-	.wrot_filter_constraint		= false,
+-};
+-
+-static const struct of_device_id mt8183_mdp_probe_infra[MDP_INFRA_MAX] = {
+-	[MDP_INFRA_MMSYS] = { .compatible = "mediatek,mt8183-mmsys" },
+-	[MDP_INFRA_MUTEX] = { .compatible = "mediatek,mt8183-disp-mutex" },
+-	[MDP_INFRA_SCP] = { .compatible = "mediatek,mt8183-scp" }
+-};
+-
+-static const u32 mt8183_mutex_idx[MDP_MAX_COMP_COUNT] = {
+-	[MDP_COMP_RDMA0] = MUTEX_MOD_IDX_MDP_RDMA0,
+-	[MDP_COMP_RSZ0] = MUTEX_MOD_IDX_MDP_RSZ0,
+-	[MDP_COMP_RSZ1] = MUTEX_MOD_IDX_MDP_RSZ1,
+-	[MDP_COMP_TDSHP0] = MUTEX_MOD_IDX_MDP_TDSHP0,
+-	[MDP_COMP_WROT0] = MUTEX_MOD_IDX_MDP_WROT0,
+-	[MDP_COMP_WDMA] = MUTEX_MOD_IDX_MDP_WDMA,
+-	[MDP_COMP_AAL0] = MUTEX_MOD_IDX_MDP_AAL0,
+-	[MDP_COMP_CCORR0] = MUTEX_MOD_IDX_MDP_CCORR0,
+-};
+-
+-static const struct mtk_mdp_driver_data mt8183_mdp_driver_data = {
+-	.mdp_probe_infra = mt8183_mdp_probe_infra,
+-	.mdp_cfg = &mt8183_plat_cfg,
+-	.mdp_mutex_table_idx = mt8183_mutex_idx,
+-};
+-
+ static const struct of_device_id mdp_of_ids[] = {
+ 	{ .compatible = "mediatek,mt8183-mdp3-rdma",
+ 	  .data = &mt8183_mdp_driver_data,
 -- 
 2.18.0
 
