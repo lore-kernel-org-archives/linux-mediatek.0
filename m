@@ -4,170 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38655C7619A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 00:56:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD9C3C7619A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 03:14:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yAgR6WSr2C+bGAWOyY/nMNgmbXJu1ZIKd3cwusu6Lmo=; b=KsKGeKY7c08Kp//q1BH2oelecU
-	v8vIrjzjk+IG2lYU1s6EncYOLnzBdeuU8pzDxZBL3Zopav/6iJTqxgw99mpSL1Uv3SUPlhaP8MISt
-	EDk/DeKB9NV0KLwoaLYtdqHWETdaBYVl+XsmFpsQGpPxKjpIdv9V/fUAK5l5hWIw2PPUGnRQwv5T2
-	dILsrHMPlZ0DmUyP3rTmmbf7vLm8cC8DtIdId2xjccGlviUK4YZWP9Wl8Ytj4dpQn7ZvfT5cPwp3q
-	eY8rCCHoWku23z3lh+GiaG7X+gnvQHs6YSsOlG4odZgEeGLQP+DuDaQhcGGLjqNGr//eAkxodX+3j
-	jIP+CuJA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=3QuPkgIznm4nWBAocITY94rL4F1zaTiEbdhOnBCyYOE=; b=KZMIgPjmW3OrLLAfEA1nx145I1
+	OJNFYVhTQkyVAkChuPTvP760KxLxbCrJABKYL4whtcG9hUFt9SLpWixYSkf5Lbb6/pkQ9rQs5LCxs
+	A0lXnbrvort42i9BMhtxs69vpbNmkCpVDYgB3kMe1ZCgqjDsa5bwuPWXj/UUVZvqds8esVNiRspFk
+	ROyWzfgp2rHeCVWiYQTkhBDcfK1KQmzmJQ89ZQ6qW3l44xcAvPwIbA9LZv1F0D0pmIAm6h/FHQNPm
+	aHAX7Cm1SuL7XgImgT6q6kbVcM1xOc/A+W+iCnofVXuIEsV0XdSN6QTrIx0M/8lBSYuCDW+XlI11B
+	xuUvm50g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgb9S-009RAb-2D;
-	Mon, 27 Mar 2023 00:55:58 +0000
+	id 1pgdIz-009c21-0q;
+	Mon, 27 Mar 2023 03:13:57 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgb9M-009R9x-0C
-	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Mar 2023 00:55:54 +0000
-X-UUID: 19aa619ecc3a11edb7d8d11f642b8e78-20230326
+	id 1pgdIu-009bxr-2z;
+	Mon, 27 Mar 2023 03:13:55 +0000
+X-UUID: 62642556cc4d11edb7d8d11f642b8e78-20230326
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=yAgR6WSr2C+bGAWOyY/nMNgmbXJu1ZIKd3cwusu6Lmo=;
-	b=i5xBE3mfQ0GyyYmqerkwIqbul6SSVOxb2B75jeyh3fWqJ8ULXJXOJ6MRBQ45GiFy7uJl9d8X0cLfYFnp7hTZtPAY2Fk78md8kH8etTjgVXyXjJoMNb9nGinZbArJ/ru3+J4L8/ISGtrvF7q+gr5KefVGIQHWce+yIzKcB+RtDBE=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=3QuPkgIznm4nWBAocITY94rL4F1zaTiEbdhOnBCyYOE=;
+	b=iSDvsJgN1mc4XM2Skr2DeqMOX2TQ9KQ+44q8x0zkwU6v/+acBt5mFGzpiLQj0EMfXUlUJMa3Ae73YYll5ieU9X/fAF3gVEa0uSijmFWiJiaciL+cwaPsBTRmenPnmCY6UKmXAirtyDGo3+AM22Hr0ZFH3EZcnXfWsrmVbYbGA8M=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:a0612fe5-1574-443d-9a1e-fd69fd97daaf,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:45,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:45
-X-CID-INFO: VERSION:1.1.22,REQID:a0612fe5-1574-443d-9a1e-fd69fd97daaf,IP:0,URL
-	:0,TC:0,Content:0,EDM:0,RT:0,SF:45,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:45
-X-CID-META: VersionHash:120426c,CLOUDID:34dc8a29-564d-42d9-9875-7c868ee415ec,B
-	ulkID:230327085544GSUOG7ZI,BulkQuantity:0,Recheck:0,SF:29|28|17|19|48|102,
-	TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:
-	0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: 19aa619ecc3a11edb7d8d11f642b8e78-20230326
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <yong.wu@mediatek.com>)
+X-CID-O-INFO: VERSION:1.1.22,REQID:7e00b036-be8a-44c1-8e43-cadd2e93ebb5,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:120426c,CLOUDID:9499fef6-ddba-41c3-91d9-10eeade8eac7,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: 62642556cc4d11edb7d8d11f642b8e78-20230326
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 680948386; Sun, 26 Mar 2023 17:55:42 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+	with ESMTP id 1436002552; Sun, 26 Mar 2023 20:13:45 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Mon, 27 Mar 2023 08:55:40 +0800
-Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.239)
- by mtkmbs10n1.mediatek.com (172.21.101.34) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Mon, 27 Mar 2023 08:55:40 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=En/Zl35bEIFOb2Jg9yTdRB4jxzTjJjqq1Nnf1aGTT7UTB2hy1mKMrWRTNF/39FoSFMsOIeRn8yNZlMeHXklr7pXO1QrPg/lpBz65vHQ1w9m/y8WWelRS4t1CQBToXrPSEb3sS4c1OLhTOOCyzTCGDFZxQ6p6ypJNChZXhwIyAS5PeAIH90YUa50JwRPGXwr33UHANJjgAyitSAFRDeRfEVqCvFnLyQbjOCGGLABcN1rgZ4eS5hb1uH6pa9uFCIdTSgcGalviviSLFatBw85MJ5mG64wMS5sLBHI4jP+SiUS5RniZk2KhycS6S5wR5vL4B80/i/KLLKAk82GcMxvUwQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=yAgR6WSr2C+bGAWOyY/nMNgmbXJu1ZIKd3cwusu6Lmo=;
- b=S1ciU/n/scl7m86eXc4p81ZrEwwNQMG5bn19Rq8jDf/atVImK5WFDjG5w9j3yyA6BduEEo5cCPF3n2CFElRXvGbZNMYVpvO85GmS1+/KDUxVzKHKHv3Q/h6ed2TZ3rfHquQC7IOlNcblH/8LBAUc9xrzn7dl80XNbQ7YJQ4Ovrg7v13GXOoitCAaGP5oYguOwIr56KzzzcvTDaaSxjrA8ttIgdK7IEsSRmXEghQ2VKNdVbOnzYNrUHGpnVslVvsIYTA0Dv8cLz5puVOTrag4G4D57jrTN+2qXmxgs9ZnQPLtoUhZAjqY71C7l1wJAeqq9U8YLR9B79h6eSC73g1J0g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=yAgR6WSr2C+bGAWOyY/nMNgmbXJu1ZIKd3cwusu6Lmo=;
- b=oUi8HWPhcDHYgaZXNclpLS15TG2gTW7tA449z9+GNOqtIU9r8DADhfuzC7nLzuqO0MZKsCTfSRXqiYerrc398ttM8a5qWGBoytORdEqs5P8PHdHIU5nHAw6QmHYVOD60byvJ0Ux3b8miCfacsM2WliTfT1whZXqrlgE1u0mMsJs=
-Received: from SI2PR03MB5885.apcprd03.prod.outlook.com (2603:1096:4:142::7) by
- PSAPR03MB5606.apcprd03.prod.outlook.com (2603:1096:301:4f::10) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6178.41; Mon, 27 Mar 2023 00:55:38 +0000
-Received: from SI2PR03MB5885.apcprd03.prod.outlook.com
- ([fe80::4298:a8e4:7328:6bb1]) by SI2PR03MB5885.apcprd03.prod.outlook.com
- ([fe80::4298:a8e4:7328:6bb1%5]) with mapi id 15.20.6178.041; Mon, 27 Mar 2023
- 00:55:38 +0000
-From: =?utf-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>
-To: "error27@gmail.com" <error27@gmail.com>
-CC: "kernel-janitors@vger.kernel.org" <kernel-janitors@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"robin.murphy@arm.com" <robin.murphy@arm.com>, "joro@8bytes.org"
-	<joro@8bytes.org>, =?utf-8?B?Q2hlbmdjaSBYdSAo6K645om/6LWQKQ==?=
-	<Chengci.Xu@mediatek.com>, "iommu@lists.linux.dev" <iommu@lists.linux.dev>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "will@kernel.org"
-	<will@kernel.org>
-Subject: Re: [PATCH] iommu/mediatek: fix a reversed test in probe
-Thread-Topic: [PATCH] iommu/mediatek: fix a reversed test in probe
-Thread-Index: AQHZXwoplcayfI/YTE2M6oQRTxiFwK8Nz5uA
-Date: Mon, 27 Mar 2023 00:55:38 +0000
-Message-ID: <997d75b868ea71e7c3407d974b89f2c26a5e03c0.camel@mediatek.com>
-References: <88c83ce7-5d1a-44a8-b9bf-0d01cfea24db@kili.mountain>
-In-Reply-To: <88c83ce7-5d1a-44a8-b9bf-0d01cfea24db@kili.mountain>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SI2PR03MB5885:EE_|PSAPR03MB5606:EE_
-x-ms-office365-filtering-correlation-id: e410c3d5-d7f7-4ba7-7d3f-08db2e5dfb24
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 3qV8sDRmOuWG0ofur1Fu37EsgS2RbALfynTqetakpkw6uaKrzY3ZCa7qL/RKnAGVA0DJCKUkJBkTIJil29Yaz5oNN/d85+/FxYUHnHVzbkvX2K7lu/CEBmSQtn9+UpfCZdORTUmiXdWdX7uo7kRb/OFDsyT0+fu/mUEFXX6001O9hnT+XqGxtPxLBb8K/8GEQ9Qgh2HKmszKI8l2zmYpH9j7z2fY03hYalZyWlBggRMJRKKl9MJWQcirzSZ9d0YFI14Ye6nI+A3ccXmNOX92vEnWvQnr/HkANkfb8P+xQto948xBg+4DtHf388SojcvFmT4o3C7/Krc/dk6nyhCURLTJkBuLohtBcHHl93X7xFcQSMgeQWY9+jBjxyUwDywfux/qEDgFh1p/GyAf66MxMtRT1rCJ1JQ8TRLI6TcquT5sVcjmM2qoJaeV8sn6jUUT0AAFJq1sQdxMO4iqWxLehqUj4aMjVZiR/0CghGO0PA+5Z6mxXn+GStUtS26lB/7DluC6AD4hDpr4ByIBAezq+D5K82+J5LussF9Wbdz/yWU+BC/gz8V47Z0dc4C9TdOzH23725m7Mfh+b+nrf9bRpH8iS8prSl1pv2qKqhIrFTvj6Xq+hGiOPV98wwZpwaOJVl8dIQds8sVvL6wA+0VHPg==
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SI2PR03MB5885.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(346002)(396003)(136003)(366004)(376002)(39850400004)(451199021)(38070700005)(83380400001)(4326008)(6916009)(8676002)(66446008)(64756008)(66946007)(76116006)(316002)(66556008)(66476007)(71200400001)(54906003)(478600001)(122000001)(8936002)(5660300002)(86362001)(2906002)(4744005)(41300700001)(38100700002)(6506007)(26005)(6512007)(2616005)(186003)(85182001)(36756003)(6486002)(99106002);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?QVkrVXNMUTAxaDhYRTJsRE1hQUQyekhRTmUxaDdRdEZuNzFSQnVqekJFWFZy?=
- =?utf-8?B?WnRKVDZaWmNnaUtIL25RcU1uSW9RcTZIRFZkTVpGZ3hVSCtZUkk2aGtrVjNM?=
- =?utf-8?B?OUt1WTVGYkZacExWNTFmMERZMVlSVU8wN3A1WWllVDIxNFMvRTVFK1VYVVk4?=
- =?utf-8?B?bGIrZ0lPazVTVnZTTWUyblkzaHpXWkplVGh1bUppdEJRb1U1cVNqQ1BBbmc1?=
- =?utf-8?B?NlFlaklmSnlaZEFtK2ppU09VL0VZU1E4SjZ0SjBHUGp1Uk44RHdlMVFCdHI3?=
- =?utf-8?B?OGlVMXJzNmpDNk1tYjdIRzFRZEx4NWNlOVJZenRTclJMSW4vQS9QZUFtRVlx?=
- =?utf-8?B?K0VOci8xOUVhbWlWQTZMN3NqTnNKSks3MEJVSUVxL0o4bG5NSFE0REIydTVJ?=
- =?utf-8?B?cFVLRlN5NEszWmRyVk1jRjZIWEwyU0N3QkxaUlNtRENpRllrYjh2M0xGT050?=
- =?utf-8?B?dmtjQUE3eFZIeExVMWY3aysybnNwK2Y5TjRPa0hyMDhGdVJyaFpQSnBONC9U?=
- =?utf-8?B?N2ZrcTRXUDBlTUF6RUM0dkU0Z2ozaDg0ZFJZa1l6RCttMUtzNWZDbVBDZ3ho?=
- =?utf-8?B?d3JLU0x0V3daV0ZXekdFdC9CTk4xMENyYnptWGNIc2NYRGFHTnhmcEFYR2pL?=
- =?utf-8?B?cXZCakY3d3FtTGRKZHJwTVM2K0lHMG5PRlhXL2FmT1VsbWZ1ZTVZNE50MG5v?=
- =?utf-8?B?U2Z5VmVyTExFYkN6TVo4aE9XY1RrNEtSb1JzYzFCWEtOR1FmMExCTWJXS3Jy?=
- =?utf-8?B?Sm5zaEM3bSt2OFlJZ0o5TWVwWStxOGVzSEIxVGVHMmNvZHgzeG5QWmJWT3Rw?=
- =?utf-8?B?TjRreVRGOEc4RDlONVpReG1tSHFoOThRYnRteVdGS0xMZkttanhiR01XUjhP?=
- =?utf-8?B?UXhPaG9RMmQ3N3BYNGpjUjkyL0tDOElmUm5wdW41akltZ3lsbjcwdGhqLys5?=
- =?utf-8?B?TjZla2ZDc254MEFSdWFoN0lDOU54K1R0ZG1ycy8rVm1jdldROW1jdDIyTE1u?=
- =?utf-8?B?WXhnNURiMVBvQ0ZDTCt6OEZPa2U4VlNSZVBOY05zTXQwNDdsalVJb1Y1Y05p?=
- =?utf-8?B?UFdtdFQrUGV2VkZVMkM4S3ozdE9XSmpYMGt0cXBjOXhSVkh6MWQrOXlHenM0?=
- =?utf-8?B?aVFLeHc1V3NkVko1UXZQUFhYTWVBUEhnZUJ4bTNBRUYvSnJIUTkwN0tHd3NB?=
- =?utf-8?B?R3c4bkVPMGpnWURQbW5BZ2RsZEk3RVdWMzM3eXp2elM1TDhqdmQ5cHM3RUdI?=
- =?utf-8?B?dStXYjVUNmFnUXlhdlRzekJ0Z3o1SHZ5TFBhZXFuNEd0SnZ2cEJ5RXBWejFT?=
- =?utf-8?B?VTVGdW1xbGx0OTVuVWZ1T3ZjdFpGOGN5SEZXeXY1NXdBNHpOSDBzNGpnUTRo?=
- =?utf-8?B?eGtuYzJwZGtWd3NYVnEwWjlBVHNtOVJzay9INlBoaHNJMUpQeitCbjNQeUNk?=
- =?utf-8?B?bEIwNXpSTnEvZ0xWRm96c2wvK1lHV2NUVjVNMVJNb2xldGtvRGo0Y2p4a2ky?=
- =?utf-8?B?OVUvTDJ3SzgwOGNNVmkxL0dBT0Z1YUp2bEZYbXowZUNmSTNxdDQ4Y1pGaCt6?=
- =?utf-8?B?bEJFMkg2aWRUdmpVbG1UNlYweENtcFk0bWF2UWdHSFB6UGYxQlVvWkNpZmVt?=
- =?utf-8?B?OVFBYmJaR3h2RlZVeEtJaFplZU9pYkc1UVJ5b0ZJdFRodXo0c01icHR2T0RM?=
- =?utf-8?B?a1lzMmUwcnJhK3lWV0l2MWNib01lY1dOZWViM2JneEFCUFFQcWE5YXpMOUp0?=
- =?utf-8?B?TmE0eWJUNWZXR2hBWElGcm92Ykp3anoyRnJoZ3NHbFh2WHp1eUlOenVxNTFl?=
- =?utf-8?B?cXBKTERkU2dEeGwrOUpoNzBjSlQ0aklLbGVIaW1PMWp0MkhvMVNsUjFNSnhw?=
- =?utf-8?B?V0x1b0pzY2tyZFgxMHR4czdEQjZUSWpsZGROYU16MlRXelZsb0VCYUI3VGpJ?=
- =?utf-8?B?QXBKWm9XdEVKbHZvODlGVzFDaW5TREl4Nll0VjBLNlRpNm9wTXh2c2dCRGtS?=
- =?utf-8?B?cmk3dmZmZzc5WXArSFV0NzVYYVBad2pIaXZJcWpuRGNsRURacXpzNkR0VkNJ?=
- =?utf-8?B?Y2VmbnRETDdBbUYvdEdtNTl0VjZZL0JZdDljdGttcmd2b2UzMzFIN0pZeUZO?=
- =?utf-8?B?NXN5L0FwMFZmUWxFK0g4c2Y4LzZlUWRSSkJoSitaSmxqRzRmUm45bDdwSFUz?=
- =?utf-8?B?UEE9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <6F3996DAE8E6004C873BE291A7E12D54@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+ 15.2.1118.25; Mon, 27 Mar 2023 11:13:36 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Mon, 27 Mar 2023 11:13:35 +0800
+From: Moudy Ho <moudy.ho@mediatek.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Ping-Hsun
+ Wu <ping-hsun.wu@mediatek.com>
+CC: <linux-kernel@vger.kernel.org>, <linux-media@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Moudy Ho
+	<moudy.ho@mediatek.com>
+Subject: [PATCH v7 00/12] Add support for multiple chips
+Date: Mon, 27 Mar 2023 11:13:23 +0800
+Message-ID: <20230327031335.9663-1-moudy.ho@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SI2PR03MB5885.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e410c3d5-d7f7-4ba7-7d3f-08db2e5dfb24
-X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Mar 2023 00:55:38.3209
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: J190I+1YzxDfa7DwqUbWnrp6cbNbqa7WkK6ONcoLIvhekf4L3+PhrsJ9mhI5uZ7wHcQQ/qt4YggHUErY9NoHjw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PSAPR03MB5606
+Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230326_175552_476290_5BA4F294 
-X-CRM114-Status: GOOD (  16.81  )
+X-CRM114-CacheID: sfid-20230326_201352_973578_AF69DD85 
+X-CRM114-Status: GOOD (  16.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -182,24 +83,202 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gU2F0LCAyMDIzLTAzLTI1IGF0IDE0OjA3ICswMzAwLCBEYW4gQ2FycGVudGVyIHdyb3RlOg0K
-PiANCj4gVGhlIGRtYV9zZXRfbWFzaygpIGZ1bmN0aW9uIHJldHVybnMgbmVnYXRpdmUgZXJyb3Ig
-Y29kZXMgb24gZmFpbHVyZQ0KPiBidXQNCj4gdGhpcyBjb2RlIGlzIHRlc3RpbmcgZm9yIHplcm8g
-aW5zdGVhZC4NCj4gDQo+IEZpeGVzOiBmNGI0OWM3YzVlNjcgKCJpb21tdS9tZWRpYXRlazogU2V0
-IGRtYV9tYXNrIGZvcg0KPiBQR1RBQkxFX1BBXzM1X0VOIikNCj4gU2lnbmVkLW9mZi1ieTogRGFu
-IENhcnBlbnRlciA8ZXJyb3IyN0BnbWFpbC5jb20+DQoNClJldmlld2VkLWJ5OiBZb25nIFd1IDx5
-b25nLnd1QG1lZGlhdGVrLmNvbT4NCg0KVGhhbmtzIGZvciB0aGUgaGVscC4NCg0KPiAtLS0NCj4g
-IGRyaXZlcnMvaW9tbXUvbXRrX2lvbW11LmMgfCAyICstDQo+ICAxIGZpbGUgY2hhbmdlZCwgMSBp
-bnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkNCj4gDQo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2lv
-bW11L210a19pb21tdS5jIGIvZHJpdmVycy9pb21tdS9tdGtfaW9tbXUuYw0KPiBpbmRleCAxYTc1
-YjQzODJhOTIuLjZhMDBjZTIwOGRjMiAxMDA2NDQNCj4gLS0tIGEvZHJpdmVycy9pb21tdS9tdGtf
-aW9tbXUuYw0KPiArKysgYi9kcml2ZXJzL2lvbW11L210a19pb21tdS5jDQo+IEBAIC0xMjYwLDcg
-KzEyNjAsNyBAQCBzdGF0aWMgaW50IG10a19pb21tdV9wcm9iZShzdHJ1Y3QNCj4gcGxhdGZvcm1f
-ZGV2aWNlICpwZGV2KQ0KPiANCj4gICAgICAgICBpZiAoTVRLX0lPTU1VX0hBU19GTEFHKGRhdGEt
-PnBsYXRfZGF0YSwgUEdUQUJMRV9QQV8zNV9FTikpIHsNCj4gICAgICAgICAgICAgICAgIHJldCA9
-IGRtYV9zZXRfbWFzayhkZXYsIERNQV9CSVRfTUFTSygzNSkpOw0KPiAtICAgICAgICAgICAgICAg
-aWYgKCFyZXQpIHsNCj4gKyAgICAgICAgICAgICAgIGlmIChyZXQpIHsNCj4gICAgICAgICAgICAg
-ICAgICAgICAgICAgZGV2X2VycihkZXYsICJGYWlsZWQgdG8gc2V0IGRtYV9tYXNrIDM1LlxuIik7
-DQo+ICAgICAgICAgICAgICAgICAgICAgICAgIHJldHVybiByZXQ7DQo+ICAgICAgICAgICAgICAg
-ICB9DQo+IC0tDQo+IDIuMzkuMQ0KPiANCg==
+Changes since v6:
+- Rebase on media_stage tree
+- Fix smatch error:
+  "drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c:452
+   	mdp_cfg_get_id_public() error: 'mdp_dev' dereferencing possible ERR_PTR()"
+
+Changes since v5:
+- Rebase on linux-next.
+- Integrate the chip configuration into a source file called "mdp_cfg_data.c"
+  instead of a header file.
+- Fix undefined reference to __udividi3 caused by patch [1/12].
+- Fix parentheses issue reported by check script.
+- Fix compilation and smatch errors
+
+Changes since v4:
+- Rebase on linux-next.
+- Fix potential frame size overflow in "mtk-mdp3-regs.c".
+- Fix OOB in MDP3 component clocks in "mtk-mdp3-comp.*".
+- Reconfigure the shared memory between MDP3 kerenl and SCP.
+
+Changes since v3:
+- Rebase on linux-next.
+- In the file "mtk-mdp3-m2m.c", use the limited resolution defined by
+  each platform to replace the default format.
+- Add platform ID in driver data, and refine shared memory structure preprocessing.
+- Simplify the way to get mutex ID in function "mdp_path_subfrm_require".
+
+Changes since v2:
+- Depend on :
+  [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=687004
+- Split the shared memory header(mtk-img-ipi.h) by preprocessing instead, and
+  classify the generic parts into "mtk-mdp3-type.h", and move
+  chip-specific parts to"mt8183/mdp3-comp-mt8183.h".
+
+Changes since v1:
+- Depend on :
+  [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=687004
+- For hardware-specific structures in the shared memory header(mtk-img-ipi.h),
+  split the relevant functions and structure definitions.
+
+Hi,
+
+To support multiple chips, a chip configuration header file needs to be created
+and the relevant information split and moved into it.
+The v4l2-compliance test results list is as follows:
+
+v4l2-compliance 1.23.0-4942, 32 bits, 32-bit time_t
+v4l2-compliance SHA: 4cf258c24026 2022-07-28 15:43:45
+
+Compliance test for mtk-mdp3 device /dev/video0:
+
+Driver Info:
+        Driver name      : mtk-mdp3
+        Card type        : MediaTek MDP3
+        Bus info         : platform:14001000.dma-controlle
+        Driver version   : 6.2.0
+        Capabilities     : 0x84204000
+                Video Memory-to-Memory Multiplanar
+                Streaming
+                Extended Pix Format
+                Device Capabilities
+        Device Caps      : 0x04204000
+                Video Memory-to-Memory Multiplanar
+                Streaming
+                Extended Pix Format
+
+Required ioctls:
+	test VIDIOC_QUERYCAP: OK
+	test invalid ioctls: OK
+
+Allow for multiple opens:
+	test second /dev/video0 open: OK
+	test VIDIOC_QUERYCAP: OK
+	test VIDIOC_G/S_PRIORITY: OK
+	test for unlimited opens: OK
+
+Debug ioctls:
+	test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
+	test VIDIOC_LOG_STATUS: OK (Not Supported)
+
+Input ioctls:
+	test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
+	test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+	test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
+	test VIDIOC_ENUMAUDIO: OK (Not Supported)
+	test VIDIOC_G/S/ENUMINPUT: OK (Not Supported)
+	test VIDIOC_G/S_AUDIO: OK (Not Supported)
+	Inputs: 0 Audio Inputs: 0 Tuners: 0
+
+Output ioctls:
+	test VIDIOC_G/S_MODULATOR: OK (Not Supported)
+	test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+	test VIDIOC_ENUMAUDOUT: OK (Not Supported)
+	test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
+	test VIDIOC_G/S_AUDOUT: OK (Not Supported)
+	Outputs: 0 Audio Outputs: 0 Modulators: 0
+
+Input/Output configuration ioctls:
+	test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
+	test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
+	test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
+	test VIDIOC_G/S_EDID: OK (Not Supported)
+
+Control ioctls:
+	test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK
+	test VIDIOC_QUERYCTRL: OK
+	test VIDIOC_G/S_CTRL: OK
+	test VIDIOC_G/S/TRY_EXT_CTRLS: OK
+	test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK
+	test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
+	Standard Controls: 4 Private Controls: 0
+
+Format ioctls:
+	test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+	test VIDIOC_G/S_PARM: OK (Not Supported)
+	test VIDIOC_G_FBUF: OK (Not Supported)
+	test VIDIOC_G_FMT: OK
+	test VIDIOC_TRY_FMT: OK
+	test VIDIOC_S_FMT: OK
+	test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+	test Cropping: OK
+	test Composing: OK
+	test Scaling: OK
+
+Codec ioctls:
+	test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
+	test VIDIOC_G_ENC_INDEX: OK (Not Supported)
+	test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
+
+Buffer ioctls:
+	test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
+	test VIDIOC_EXPBUF: OK
+	test Requests: OK (Not Supported)
+	test TIME32/64: OK
+
+Test input 0:
+
+Streaming ioctls:
+	test read/write: OK (Not Supported)
+	test blocking wait: OK
+    (snip)
+	test MMAP (no poll): OK
+	(snip)
+	test MMAP (select): OK
+    (snip)
+	test MMAP (epoll): OK
+	test USERPTR (no poll): OK (Not Supported)
+	test USERPTR (select): OK (Not Supported)
+	test DMABUF: Cannot test, specify --expbuf-device
+
+Stream using all formats:
+	(snip)
+Total for mtk-mdp3 device /dev/video0: 1174, Succeeded: 1174, Failed: 0, Warnings: 0
+
+
+Moudy Ho (12):
+  media: platform: mtk-mdp3: fix potential frame size overflow in
+    mdp_try_fmt_mplane()
+  media: platform: mtk-mdp3: add files for chip configuration
+  media: platform: mtk-mdp3: chip config split about component settings
+  media: platform: mtk-mdp3: chip config split about subcomponents
+  media: platform: mtk-mdp3: chip config split about color format
+  media: platform: mtk-mdp3: chip config split about resolution
+    limitations
+  media: platform: mtk-mdp3: chip config split about pipe info
+  media: platform: mtk-mdp3: extend mdp_color format for compressed mode
+  media: platform: mtk-mdp3: dynamically allocate component clocks
+  media: platform: mtk-mdp3: Split general definitions used in MDP3
+  media: platform: mtk-mdp3: decompose hardware-related information in
+    shared memory
+  media: platform: mtk-mdp3: reconfigure shared memory
+
+ drivers/media/platform/mediatek/mdp3/Makefile |   2 +-
+ .../platform/mediatek/mdp3/mdp_cfg_data.c     | 453 +++++++++++++++
+ .../platform/mediatek/mdp3/mdp_sm_mt8183.h    | 144 +++++
+ .../platform/mediatek/mdp3/mtk-img-ipi.h      | 189 +-----
+ .../platform/mediatek/mdp3/mtk-mdp3-cfg.h     |  20 +
+ .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    | 148 +++--
+ .../platform/mediatek/mdp3/mtk-mdp3-comp.c    | 539 +++++++++++-------
+ .../platform/mediatek/mdp3/mtk-mdp3-comp.h    |  24 +-
+ .../platform/mediatek/mdp3/mtk-mdp3-core.c    |  48 +-
+ .../platform/mediatek/mdp3/mtk-mdp3-core.h    |  18 +-
+ .../platform/mediatek/mdp3/mtk-mdp3-m2m.c     |  28 +-
+ .../platform/mediatek/mdp3/mtk-mdp3-m2m.h     |   1 -
+ .../platform/mediatek/mdp3/mtk-mdp3-regs.c    | 293 +---------
+ .../platform/mediatek/mdp3/mtk-mdp3-regs.h    | 214 +++----
+ .../platform/mediatek/mdp3/mtk-mdp3-type.h    |  53 ++
+ .../platform/mediatek/mdp3/mtk-mdp3-vpu.c     | 193 +++----
+ .../platform/mediatek/mdp3/mtk-mdp3-vpu.h     |  29 +-
+ 17 files changed, 1429 insertions(+), 967 deletions(-)
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_sm_mt8183.h
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-cfg.h
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-type.h
+
+-- 
+2.18.0
+
 
