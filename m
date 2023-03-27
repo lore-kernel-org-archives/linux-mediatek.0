@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38004C7619A
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74149C761A6
 	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 08:37:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,37 +12,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Leyd8D2nRHtjpbORXUngUPB1GU9NSyALdF0HPadNxJM=; b=NFD2UEmehpytotQeBlrvIvWLsQ
-	o/suYrisgsAHwZ9KwrkAXnlDlHTb8VCK0yo4dwMPXPhbiCiRBbGlEf/gVOuMgIc6IKz6+xcDSsU0H
-	mKlBgRh6DDMhP50PfSk4bcG3J1fW1oXVSiPX/thVhV7XFx+K+hztiM6NXFBCu6kq9qN3nKR4K1Yts
-	5aoktEypgmOfi4jslDdRl1sAfnAfyB++BVn38h1zKOz6Z1iyA0y9OLFZeJodeuBiQc3iE608PMWQ7
-	gtkTMs+xj3Pkbiops6k6P+6DS1Xl7ucXDDOLWZ4iaGhtW1T2jq8ilCSCRjC+tJYOjciLtVqULgM75
-	SQjk47eA==;
+	bh=pTyKzKyUA94hSyf0ksiUxTZTBVUSTUIL5Qpnhzgn19s=; b=BSlRGmWxEvkqd/DJUPeLNBv229
+	5PzCifyDpQm4QLp5JtZwaBHfiqkOpL+O/uOAxIVZzjG0P1cNyA9gpBD+22HNGh4O11amsQ5MVwkLa
+	iPPo7eSCO8PYEY7O+WP87r0jXMLTpCJ/Hrdk0TteTLLr2Egi89CIvm41UtmaZYmGD5akEiG+1ahEm
+	oKOE7xxG000DoZFMIsCKrVGbOJ2fQx9wTFSB7q/g1VgjfymfKZfzOQsNZ9PMNpaIpBv2eMeN63Ioj
+	scRrOZsFutrpzawjmgRjTQATDJvIHAtt+AilCRwTu+2rlGbKYllSxiWk+uy811yQPOQpP8aYXVEHy
+	ZNiPKnmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgiLp-00AHFD-2G;
-	Mon, 27 Mar 2023 08:37:13 +0000
+	id 1pgiLq-00AHFh-0h;
+	Mon, 27 Mar 2023 08:37:14 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgiLZ-00AH5Q-1t;
+	id 1pgiLY-00AH57-2G;
 	Mon, 27 Mar 2023 08:37:02 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id AA06966030DA;
-	Mon, 27 Mar 2023 09:36:55 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id B5F5E660308B;
+	Mon, 27 Mar 2023 09:36:54 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1679906216;
-	bh=WzRAN9wdA273tqZEI1XBRQYQ34kkvCmE+TRLQXkcUfI=;
+	s=mail; t=1679906215;
+	bh=NomHwJjqmoIPLlLZ3+9R0/l6R9Kvr/DrQn2Y01kmsNU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=KtrLlYCBHpTkJoPbpSiqdiv1eWgoXbGH6ejgegbEdZ8g1+eXFuuQwPUUcwv2zpaw+
-	 avQ2umUGre0wutECVyiHYYq1JMshDVuiFgSz8/WwWpGD7WKCXab+2zXfbUjMW1eXWP
-	 iUE1n2rNU8Oa/3js7vpBzMZqePlrh20ETm9og2MlI4V3Zuen9LbeKEsZHZe4S/+Vux
-	 aLS7vaBIZLxhc5b/qBIOPf5WI+5TbDanCacPV5tszT2KvY8Z79NGUz+OAk5efP7d36
-	 cff2oS+/7FAA8Ea7hV6UjVpTW6+G4BzPuSbQM4if8pLeO/OK8qa/RdhP7LzGAwB9FD
-	 iqPbPXaL9KSAg==
+	b=aKvdW67m47+IyhI0RzD0fa3Bs0TAWLxFlgyzU04BCqOx4zfcs5RKILed7DOh+Bm/B
+	 O3I5aMLMAnqeMtYBsMP300/IyAWrKOvoVXzBOli7N4MNXHDTVXlDwsGkh/wJnI6qZX
+	 N9gMFS2SjSChYOy+nCZ5r3zi5wPqHW2bl9g6zjVrsLBg/+sgS7ji0/TI7+j7QkRVki
+	 rxNiywvQhaeCjA1Sby+cQWty4r4BLtuFgcvz+cyxdPpbfpRVbD/aDfq7/vc35QQecb
+	 dwwRc5CwDDDWoHmtlcaaerfJQbiFxUE3Q65uqaWdtuk9JOBiFLrGCCeOl0whshwHNZ
+	 LrWH64shgjvRw==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: qii.wang@mediatek.com,
@@ -59,17 +59,17 @@ Cc: qii.wang@mediatek.com,
 	phone-devel@vger.kernel.org,
 	~postmarketos/upstreaming@lists.sr.ht,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2 03/17] arm64: dts: mediatek: mt6795: xperia-m5: Enable Frequency Hopping
-Date: Mon, 27 Mar 2023 10:36:33 +0200
-Message-Id: <20230327083647.22017-4-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 02/17] arm64: dts: mediatek: mt6795: Add apmixedsys syscon node
+Date: Mon, 27 Mar 2023 10:36:32 +0200
+Message-Id: <20230327083647.22017-3-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.40.0
 In-Reply-To: <20230327083647.22017-1-angelogioacchino.delregno@collabora.com>
 References: <20230327083647.22017-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230327_013657_753996_DF09ECCD 
-X-CRM114-Status: UNSURE (   8.64  )
+X-CRM114-CacheID: sfid-20230327_013656_864350_24205D37 
+X-CRM114-Status: UNSURE (   7.71  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,49 +85,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable FHCTL with Spread Spectrum for MAINPLL, MPLL and MSDCPLL
-as found on the downstream kernel for this smartphone.
-Which one to enable, and at what SSC percentage, was found by
-dumping the debugging data from a running downstream kernel and
-checking the downstream code.
-
-/proc/freqhopping # cat status
-FH status:
-===============================================
-id == fh_status == pll_status == setting_id == curr_freq == user_defined
- 0           0             1             0      1599000         0
- 1           0             1             0      1716000         0
- 2           1             1             2      1092000         0
- 3           1             1             2      2912000         0
- 4           1             0             2      1600000         0
- 5           0             0             0            0         0
- 6           0             1             0      1518002         0
- 7           0             0             0            0         0
- 8           0             0             0            0         0
+Add the APMIXEDSYS node, providing a syscon to the APMIXED iospace and
+also providing PLLs.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts | 7 +++++++
- 1 file changed, 7 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt6795.dtsi | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts b/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
-index d3415527d389..52ce3284a46f 100644
---- a/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
-@@ -48,6 +48,13 @@ bootloader-region@46000000 {
- 	};
- };
+diff --git a/arch/arm64/boot/dts/mediatek/mt6795.dtsi b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
+index 4d2119751572..26d640e1bfb6 100644
+--- a/arch/arm64/boot/dts/mediatek/mt6795.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
+@@ -310,6 +310,12 @@ systimer: timer@10200670 {
+ 			clock-names = "clk13m";
+ 		};
  
-+&fhctl {
-+	clocks = <&apmixedsys CLK_APMIXED_MAINPLL>, <&apmixedsys CLK_APMIXED_MPLL>,
-+		 <&apmixedsys CLK_APMIXED_MSDCPLL>;
-+	mediatek,hopping-ssc-percent = <8>, <5>, <8>;
-+	status = "okay";
-+};
++		apmixedsys: syscon@10209000 {
++			compatible = "mediatek,mt6795-apmixedsys", "syscon";
++			reg = <0 0x10209000 0 0x1000>;
++			#clock-cells = <1>;
++		};
 +
- &pio {
- 	uart0_pins: uart0-pins {
- 		pins-rx {
+ 		fhctl: clock-controller@10209f00 {
+ 			compatible = "mediatek,mt6795-fhctl";
+ 			reg = <0 0x10209f00 0 0x100>;
 -- 
 2.40.0
 
