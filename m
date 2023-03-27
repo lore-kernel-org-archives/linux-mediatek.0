@@ -4,79 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C77AC76195
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 14:47:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A3D2C76195
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 15:17:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8jxH8zH9ay6GwwGjFR4+/aqOqmk2KQBKSIA1RqaK2Ok=; b=GIWeyHVVxS/d8jPhtMExwafZ07
-	P7OjkIZ88uvQeKdnHYoUjskTzBAg3uke/UuU10ZzQJedltL/PLnc+JnU42Keaf+ii5yDL9IQN5GtX
-	DYQr6OOHsIZdN9UHK2ocpm4txyENTpnLjfB6jNnuQOKfhZqb0CXyh2WVCIS7ac+Ft/lyNU97z6Gz9
-	oz+HmGhr7vxCT5zuAk0AVV607VZg3TCUAFytZoH5HyfN+rVrWqAjCqZ9+YKW5P9f8lVxg7XkVoZFA
-	k2L7Wh4Tta3tLbM+r4qMcDXRXV2AgnwnZGMI5A/5/oaXCvyKCXXZIX/OMyC3BHE9AOPEjPR17A8Iu
-	PAgLB/qw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WxXjXDVt250Dzp30WluOUfbIb760o1vY2QBgR+3iufI=; b=38A1gkIPAM2HF/5I7NVkzMAa1K
+	lXCwQceWuKAEWM9ifvDv180TzJjFef5hqK7VePS5NfYrz4Jp4yZolabayowtk+Cznm6xU0UPxEwS6
+	IoZp0149lDI9Bsu/M2Ib5IAMPire7qScRxiD+IDEE1rhdImIQa7rbOt9m/S20saJmt+NsPvM54JNq
+	PIcl0NzLGQuaQ5zU2uo+hDKR9iIrcbOrYe69DiZvisVjM7XRXnxkPXMbj1as6L21baiup3cPuaipx
+	JgABJGpY3QuXIUzp7SpRaYBxP/8fQVSrfUpdPmulVFZEsHy9XBVq48dTErBT1ExXnZoKBClamGZlU
+	4F+I1hew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgo8K-00BNJv-1G;
-	Mon, 27 Mar 2023 14:47:40 +0000
-Received: from mga17.intel.com ([192.55.52.151])
+	id 1pgob9-00BUa8-2c;
+	Mon, 27 Mar 2023 15:17:27 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgo8G-00BNIo-26;
-	Mon, 27 Mar 2023 14:47:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1679928456; x=1711464456;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=gvtVaHDSj8/60CnRMhLEfiEJM9T3UCmxTI4xWFAvBB0=;
-  b=NQR6tCo3zGsvGDIn/7SCw0uoXUSu0k6F40zJuOcFy/yh4bdpYAyDVxt1
-   41MnZfdppjVSD0FuPXkrgqo5rTbYqzCO+0jU25AZKam9SyZ90ZwxXarNj
-   K8H7xOAqdptYeUT/14W0LL766mx9gbRZGhjAoHjW02br5ZEJc8SX4VXFS
-   +M1wcOMpAE8yMJXdVrhe2R6W2UeipuSIDjdx465iJcAR0ETX41lxn+49C
-   7Yg+uYybyeUbjrS+nS/TwE9NIFMzmRzAxlMTg6HdXjuMFM8gBe8AOEdb0
-   ZEhRWMq8cl6mxYcZ8BASKHZCeOQcH4WTuQE0ASncUqKJUPx8I1o/oBaVg
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10662"; a="320682479"
-X-IronPort-AV: E=Sophos;i="5.98,294,1673942400"; 
-   d="scan'208";a="320682479"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
-  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Mar 2023 07:47:19 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10662"; a="1013140887"
-X-IronPort-AV: E=Sophos;i="5.98,294,1673942400"; 
-   d="scan'208";a="1013140887"
-Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
-  by fmsmga005.fm.intel.com with ESMTP; 27 Mar 2023 07:47:15 -0700
-Received: from kbuild by b613635ddfff with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1pgo7u-000HmV-1D;
-	Mon, 27 Mar 2023 14:47:14 +0000
-Date: Mon, 27 Mar 2023 22:46:56 +0800
-From: kernel test robot <lkp@intel.com>
-To: Yu Zhe <yuzhe@nfschina.com>, andersson@kernel.org,
-	mathieu.poirier@linaro.org, angelogioacchino.delregno@collabora.com,
-	agross@kernel.org, konrad.dybcio@linaro.org,
-	patrice.chotard@foss.st.com, mcoquelin.stm32@gmail.com,
-	alexandre.torgue@foss.st.com
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	linux-remoteproc@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com, liqiong@nfschina.com,
-	Yu Zhe <yuzhe@nfschina.com>
-Subject: Re: [PATCH v2] remoteproc: remove unnecessary (void*) conversions
-Message-ID: <202303272213.jOYrwBZu-lkp@intel.com>
-References: <20230320061157.29660-1-yuzhe@nfschina.com>
+	id 1pgob5-00BUZ8-1M;
+	Mon, 27 Mar 2023 15:17:25 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 2DEF460FC9;
+	Mon, 27 Mar 2023 15:17:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 52E8EC433AC;
+	Mon, 27 Mar 2023 15:17:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1679930240;
+	bh=WxXjXDVt250Dzp30WluOUfbIb760o1vY2QBgR+3iufI=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=DgSCKdzHtd3A8JummnAbCF0GnDlwtgZE6oSuVEtby2k6dFHawi07+eYzwPhFI/zPn
+	 1IqdQXp31wiy/gxtYX6xIXwHsgB7dDWGbPo6yynzdtMX0Vzh+sZ7ApcD4v6Hrd7yJM
+	 xTrafTzK5Qq9V8l3zkkyJ+yxFjRh4x26wz388XcMmrfyf1YhaCvtQo9lmQT6pcvAcA
+	 bMYMFdx1Gz2tsb/AYwR47c26nxs8JIX5KkB8g9NdHo8PqeB5MQ2sLpGsRviMSYsdYc
+	 EOg4Jv1ldxV8sUCYxJzAt8ZpOKQIeoGcrTIh8+8rqmOATAeYbhPniEhhLGy8a0zYPU
+	 3q5KeUrdBoIzg==
+Received: by mail-lj1-f179.google.com with SMTP id q14so9388270ljm.11;
+        Mon, 27 Mar 2023 08:17:20 -0700 (PDT)
+X-Gm-Message-State: AAQBX9c9PJNTfcCwMxXaOR4Ptj9XPg64VGpu1wNeBy+VJppBHTjql182
+	F1OXChnTR0yYJuxW3sgvxEmSmgVBJNUFKwEfsg==
+X-Google-Smtp-Source: AKy350ZJD8lXrATp34gVJQNtWOp95oG2v0KcgMEyjZm8N9VS0wqsbCWLENkFgqU2pL5ANEjL4W1+rI8dl98MGCb+WEw=
+X-Received: by 2002:a2e:a304:0:b0:2a1:627a:70bb with SMTP id
+ l4-20020a2ea304000000b002a1627a70bbmr3582823lje.10.1679930238193; Mon, 27 Mar
+ 2023 08:17:18 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230320061157.29660-1-yuzhe@nfschina.com>
+References: <20230321121859.2355-1-nancy.lin@mediatek.com> <17831605-5c9d-9c92-d190-04f91060ace4@collabora.com>
+ <CAAOTY_8ZAxVSLnJ1u5snsRgkszV7ixwhjUS2nDimE_Lpj=cUCA@mail.gmail.com> <97a5f383-38f5-e8ea-e1d8-489b690e4521@collabora.com>
+In-Reply-To: <97a5f383-38f5-e8ea-e1d8-489b690e4521@collabora.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Mon, 27 Mar 2023 23:17:06 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_9_vn-m2jTaaHkFDV+v2-LeaAxtCLNNnOxZq5Httb-TAQ@mail.gmail.com>
+Message-ID: <CAAOTY_9_vn-m2jTaaHkFDV+v2-LeaAxtCLNNnOxZq5Httb-TAQ@mail.gmail.com>
+Subject: Re: [PATCH v30 0/7] Add MediaTek SoC DRM (vdosys1) support for mt8195
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Nancy.Lin" <nancy.lin@mediatek.com>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, krzysztof.kozlowski+dt@linaro.org, 
+	Daniel Vetter <daniel@ffwll.ch>, Nathan Chancellor <nathan@kernel.org>, 
+	Nick Desaulniers <ndesaulniers@google.com>, CK Hu <ck.hu@mediatek.com>, 
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, clang-built-linux@googlegroups.com, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com, singo.chang@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230327_074736_728793_3EEAC7DC 
-X-CRM114-Status: GOOD (  15.11  )
+X-CRM114-CacheID: sfid-20230327_081723_555335_9D8C27D5 
+X-CRM114-Status: GOOD (  29.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,163 +89,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yu,
+Hi, Angelo:
 
-Thank you for the patch! Yet something to improve:
+AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> =E6=96=
+=BC
+2023=E5=B9=B43=E6=9C=8824=E6=97=A5 =E9=80=B1=E4=BA=94 =E4=B8=8B=E5=8D=884:3=
+8=E5=AF=AB=E9=81=93=EF=BC=9A
+>
+> Il 24/03/23 00:25, Chun-Kuang Hu ha scritto:
+> > Hi, Angelo:
+> >
+> > AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> =
+=E6=96=BC
+> > 2023=E5=B9=B43=E6=9C=8823=E6=97=A5 =E9=80=B1=E5=9B=9B =E4=B8=8B=E5=8D=
+=884:58=E5=AF=AB=E9=81=93=EF=BC=9A
+> >>
+> >> Il 21/03/23 13:18, Nancy.Lin ha scritto:
+> >>> The hardware path of vdosys1 with DPTx output need to go through by s=
+everal modules, such as, OVL_ADAPTOR and MERGE.
+> >>>
+> >>> Add DRM and these modules support by the patches below:
+> >>>
+> >>
+> >> I've tested v30 again on MT8173, MT8192 and MT8195 based Chromebooks.
+> >> Green light from me.
+> >
+> > I'm curious about how you build code and test on Chromebooks. Do you
+> > build in cros environment or pure linux
+> > (https://archlinuxarm.org/platforms/armv8/mediatek/acer-chromebook-r13)=
+.
+> > I've a MT8183 based Chromebook (HP 11a) and I've tried to run a
+> > upstream kernel on it. cros is too heavy for me and I doubt I could
+> > use it. I've tried the pure linux and could boot up with console, but
+> > display does not work. If you use the pure linux environment, could
+> > you share how it works?
+> >
+>
+> I haven't tested MT8183 (I don't actually have any 8183 machine in my han=
+ds)... but
+> yes, I can share my test environment.
+>
+> I have one MicroSD that I use either in the MicroSD slot of the target ma=
+chine, or
+> in a USB reader; this *single* system is what I boot on *all* Chromebooks=
+ that I
+> have: one kernel, multiple devicetrees, same Debian-based userspace.
+>
+> What we have to prepare this bootable media can be found at [1], but bewa=
+re that
+> it currently uses an outdated kernel, so, what I have locally is a symlin=
+k to my
+> kernel tree.
+> You can change/add/remove the devicetree blobs that will get added to the=
+ image
+> by modifying `chromebook-setup.sh`; before tampering with kernel tree sym=
+link,
+> please run that script for the first time, as it will download a cross-co=
+mpiler,
+> a kernel tree (that you will replace for sure) and the (very old) Debian =
+rootfs
+> that you can update with `apt-get dist-upgrade` after booting the Chromeb=
+ook.
+>
+> If you want to check about possible kernel configuration differences, wha=
+t I use
+> is at [2], so that you can compare.
 
-[auto build test ERROR on v6.3-rc3]
-[also build test ERROR on linus/master]
-[cannot apply to remoteproc/rproc-next next-20230327]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Thanks for the information, I would try to compare the kernel config first.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Yu-Zhe/remoteproc-remove-unnecessary-void-conversions/20230320-141403
-patch link:    https://lore.kernel.org/r/20230320061157.29660-1-yuzhe%40nfschina.com
-patch subject: [PATCH v2] remoteproc: remove unnecessary (void*) conversions
-config: arm-defconfig (https://download.01.org/0day-ci/archive/20230327/202303272213.jOYrwBZu-lkp@intel.com/config)
-compiler: clang version 17.0.0 (https://github.com/llvm/llvm-project 67409911353323ca5edf2049ef0df54132fa1ca7)
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # install arm cross compiling tool for clang build
-        # apt-get install binutils-arm-linux-gnueabi
-        # https://github.com/intel-lab-lkp/linux/commit/38335303eda6c4de037cd00e20c9065a76f82291
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Yu-Zhe/remoteproc-remove-unnecessary-void-conversions/20230320-141403
-        git checkout 38335303eda6c4de037cd00e20c9065a76f82291
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm SHELL=/bin/bash drivers/remoteproc/
-
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Link: https://lore.kernel.org/oe-kbuild-all/202303272213.jOYrwBZu-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
->> drivers/remoteproc/st_remoteproc.c:361:16: error: assigning to 'struct st_rproc_config *' from 'const void *const' discards qualifiers [-Werror,-Wincompatible-pointer-types-discards-qualifiers]
-           ddata->config = match->data;
-                         ^ ~~~~~~~~~~~
-   1 error generated.
-
-
-vim +361 drivers/remoteproc/st_remoteproc.c
-
-   337	
-   338	static int st_rproc_probe(struct platform_device *pdev)
-   339	{
-   340		struct device *dev = &pdev->dev;
-   341		const struct of_device_id *match;
-   342		struct st_rproc *ddata;
-   343		struct device_node *np = dev->of_node;
-   344		struct rproc *rproc;
-   345		struct mbox_chan *chan;
-   346		int enabled;
-   347		int ret, i;
-   348	
-   349		match = of_match_device(st_rproc_match, dev);
-   350		if (!match || !match->data) {
-   351			dev_err(dev, "No device match found\n");
-   352			return -ENODEV;
-   353		}
-   354	
-   355		rproc = rproc_alloc(dev, np->name, &st_rproc_ops, NULL, sizeof(*ddata));
-   356		if (!rproc)
-   357			return -ENOMEM;
-   358	
-   359		rproc->has_iommu = false;
-   360		ddata = rproc->priv;
- > 361		ddata->config = match->data;
-   362	
-   363		platform_set_drvdata(pdev, rproc);
-   364	
-   365		ret = st_rproc_parse_dt(pdev);
-   366		if (ret)
-   367			goto free_rproc;
-   368	
-   369		enabled = st_rproc_state(pdev);
-   370		if (enabled < 0) {
-   371			ret = enabled;
-   372			goto free_clk;
-   373		}
-   374	
-   375		if (enabled) {
-   376			atomic_inc(&rproc->power);
-   377			rproc->state = RPROC_RUNNING;
-   378		} else {
-   379			clk_set_rate(ddata->clk, ddata->clk_rate);
-   380		}
-   381	
-   382		if (of_get_property(np, "mbox-names", NULL)) {
-   383			ddata->mbox_client_vq0.dev		= dev;
-   384			ddata->mbox_client_vq0.tx_done		= NULL;
-   385			ddata->mbox_client_vq0.tx_block	= false;
-   386			ddata->mbox_client_vq0.knows_txdone	= false;
-   387			ddata->mbox_client_vq0.rx_callback	= st_rproc_mbox_callback_vq0;
-   388	
-   389			ddata->mbox_client_vq1.dev		= dev;
-   390			ddata->mbox_client_vq1.tx_done		= NULL;
-   391			ddata->mbox_client_vq1.tx_block	= false;
-   392			ddata->mbox_client_vq1.knows_txdone	= false;
-   393			ddata->mbox_client_vq1.rx_callback	= st_rproc_mbox_callback_vq1;
-   394	
-   395			/*
-   396			 * To control a co-processor without IPC mechanism.
-   397			 * This driver can be used without mbox and rpmsg.
-   398			 */
-   399			chan = mbox_request_channel_byname(&ddata->mbox_client_vq0, "vq0_rx");
-   400			if (IS_ERR(chan)) {
-   401				dev_err(&rproc->dev, "failed to request mbox chan 0\n");
-   402				ret = PTR_ERR(chan);
-   403				goto free_clk;
-   404			}
-   405			ddata->mbox_chan[ST_RPROC_VQ0 * MBOX_MAX + MBOX_RX] = chan;
-   406	
-   407			chan = mbox_request_channel_byname(&ddata->mbox_client_vq0, "vq0_tx");
-   408			if (IS_ERR(chan)) {
-   409				dev_err(&rproc->dev, "failed to request mbox chan 0\n");
-   410				ret = PTR_ERR(chan);
-   411				goto free_mbox;
-   412			}
-   413			ddata->mbox_chan[ST_RPROC_VQ0 * MBOX_MAX + MBOX_TX] = chan;
-   414	
-   415			chan = mbox_request_channel_byname(&ddata->mbox_client_vq1, "vq1_rx");
-   416			if (IS_ERR(chan)) {
-   417				dev_err(&rproc->dev, "failed to request mbox chan 1\n");
-   418				ret = PTR_ERR(chan);
-   419				goto free_mbox;
-   420			}
-   421			ddata->mbox_chan[ST_RPROC_VQ1 * MBOX_MAX + MBOX_RX] = chan;
-   422	
-   423			chan = mbox_request_channel_byname(&ddata->mbox_client_vq1, "vq1_tx");
-   424			if (IS_ERR(chan)) {
-   425				dev_err(&rproc->dev, "failed to request mbox chan 1\n");
-   426				ret = PTR_ERR(chan);
-   427				goto free_mbox;
-   428			}
-   429			ddata->mbox_chan[ST_RPROC_VQ1 * MBOX_MAX + MBOX_TX] = chan;
-   430		}
-   431	
-   432		ret = rproc_add(rproc);
-   433		if (ret)
-   434			goto free_mbox;
-   435	
-   436		return 0;
-   437	
-   438	free_mbox:
-   439		for (i = 0; i < ST_RPROC_MAX_VRING * MBOX_MAX; i++)
-   440			mbox_free_channel(ddata->mbox_chan[i]);
-   441	free_clk:
-   442		clk_unprepare(ddata->clk);
-   443	free_rproc:
-   444		rproc_free(rproc);
-   445		return ret;
-   446	}
-   447	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+>
+> [1]: https://gitlab.collabora.com/google/chromebooks/-/tree/mtk-av1
+> [2]:
+> https://gitlab.collabora.com/google/chromeos-kernel/-/blob/mt8195-trackin=
+g-master-rolling/arch/arm64/configs/defconfig
+>
+> Regards,
+> Angelo
 
