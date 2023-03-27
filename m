@@ -4,81 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 846CDC76195
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 06:14:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73756C76195
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 07:24:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kIK+VxG9R9L012B3txVH0rvn15mcAltpJ1WDR1RfE/Y=; b=c89FetbbDDqrFL7Ha/59Tb/LnO
-	Ir52CdFzj0ESPPkovZF1CedvpTqssB1UDEbs8ZDMD/8Md9DGSav1VsEPyLlpEbeYRJjdFkg/CdTum
-	6A979E1KMv9aaTDn5Kdv1cejcSVpGT1cHcSgLAeWponyCGkDet8gYpXbkLe2UuIrNNXoWbYvina28
-	3PAf1hJaSgGDk8aDet2UWefXJkA7GUw/GCf2OsOOHtaF7vM3SS27oFGfFfsHAbfaIPvT4WR55On3Y
-	vaX0d6kN6e/REX5nfA82L4B2Puw4vI+QtifZrLiXFuKNM9YkAggi2BjTKx05cP7+WByu916gYiSNr
-	ud+1HqFQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OjdPO/oq4IIE0hFyHigrECYsxChLPPYgESz7B/pDYOI=; b=Z09SkHLT+6PQfsefGTMg35PJR6
+	hTXObtisM5/O/ifgVo8IPLL0FepxtIe/nkoJr+UUVePaQ7ZoCVwA0zog9ZAzOZOgz2x06DPWj/ELB
+	F1NLBSGMdl8z+KF4ddViwlqubtiaxaH1JZ/jLgED3haXTTRvEjVDIdtVh/3qHZD2FulZVKJHlA9E1
+	ERvC4VSuGW/haTyX8zTT/K0OCUvkJhf+He8R2wrge1rEFGSXmLijFtuUWs4q1r1CtLuzw3YgUvgOS
+	cJQmVfowwW6AaKsdwtvTYf89k03f6gi2fyDmWXCdHDC727jZnuJDKrOznM3ZEJmSe/YWwyZMt4Mjh
+	XAuqelAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgg7U-009wKe-2B;
-	Mon, 27 Mar 2023 06:14:16 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pghCy-00A3u3-0d;
+	Mon, 27 Mar 2023 07:24:00 +0000
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgg7R-009wK7-08;
-	Mon, 27 Mar 2023 06:14:14 +0000
-X-UUID: 9692e6dccc6611ed8687db9d93187ff1-20230326
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=kIK+VxG9R9L012B3txVH0rvn15mcAltpJ1WDR1RfE/Y=;
-	b=FuhWfPqQjUe4Mwb5Kw7NOed6di3pfM2akNhaDrWjq4zWkSxxuwbgC+kp2CtBgTZZN5GgEciWmdmjoMbC4t0zW8bCAEisApjDBG9Nstey/PR6NDAIzhKpFttUIXzwh9hSTO33dvSmry22ekKxK80NJB2HwSmUpeXPGeZTLkVEOUw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:c8f33bea-a3b0-43e0-b475-58a618697c7f,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:120426c,CLOUDID:61389529-564d-42d9-9875-7c868ee415ec,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: 9692e6dccc6611ed8687db9d93187ff1-20230326
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 902564205; Sun, 26 Mar 2023 23:14:10 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Mon, 27 Mar 2023 13:53:32 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Mon, 27 Mar 2023 13:53:31 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
-	Nicolas Dufresne <nicolas@ndufresne.ca>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>,
-	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, Hsin-Yi Wang
-	<hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter
-	<daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v3,4/7] media: mediatek: vcodec: Get each context resolution information
-Date: Mon, 27 Mar 2023 13:53:12 +0800
-Message-ID: <20230327055315.13936-5-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230327055315.13936-1-yunfei.dong@mediatek.com>
-References: <20230327055315.13936-1-yunfei.dong@mediatek.com>
+	id 1pghCv-00A3tE-2P
+	for linux-mediatek@lists.infradead.org;
+	Mon, 27 Mar 2023 07:23:58 +0000
+Received: by mail-ed1-x52e.google.com with SMTP id ew6so31726669edb.7
+        for <linux-mediatek@lists.infradead.org>; Mon, 27 Mar 2023 00:23:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1679901834;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=OjdPO/oq4IIE0hFyHigrECYsxChLPPYgESz7B/pDYOI=;
+        b=kEhpgaB0+FpNDi/WR7iPM+81mqXbh4tx5ISPPA1oSU6dY97FK8aUp9yDlZvoyl8xjD
+         tbdmmIazwmIue7n7Z8EYtw58KkMRx0qDa81z+PvmsVGpNRhcouOmJqWi4qYkFwjKe1L1
+         R22JIaoaRhQJkEPtmehBpE/5AwLPEKjjn8ujez8CuBIIZIzl1ZmStzbFDGkjnTDz4DEj
+         vaZFbfYZDgrhO5gntDqIGjcXjYHKW9JAjiIGLDxQTsFvCtgo3y8KGSGp5R86QE8Z8Qef
+         /5/Bn+BLqvmjVTwhEn6yMIRRu7AqxkXU764qg25bs7Ndn+IcHxJ75/McKUoPxReqhmUa
+         qZrg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679901834;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=OjdPO/oq4IIE0hFyHigrECYsxChLPPYgESz7B/pDYOI=;
+        b=HoBMACNHMwtNbLIlMlGajgcVjqZ4MwbOQe/PUkW9bLydQJHL8PrCdTolOqc5p0W9J7
+         90eY142axjyO+FhxveASyOvXSH7Z9TX9gTk7WO/sbD/h24SlqtAJ6c4AP83PKOypCvV1
+         OEcpq+DSxYYWIOIGJLrdweHh2Y/bngoLrXuPSJA7Yr+rBW7VaXTBfVUuKlGt3XVt3/X1
+         XH/xyl0fxwW2A61is/49o7PT8DBqc4tlRt+KZUsVbFRR9grifDEukuO21u9Do1d22zAV
+         5LQD0uZSI3mazP5h7LvuBeYyEzFbFZtAsACce8jE1mkqtkpyGcqAdIIfFq4Qki6oSeGN
+         pMLw==
+X-Gm-Message-State: AAQBX9c3JPvTzNQEEFNOuufP3TxcAjLfu70C3nONiKTGRA8HKL5FRUFZ
+	nCzQnBgg5tvLJEQCw77mbaMstg==
+X-Google-Smtp-Source: AKy350azTNMcDvP3N7zgcsBq8oWHYm5j1ZDrSetdKr7bGj0XWY8nqN78nx3uN23pI6zOfMxTy1BUQw==
+X-Received: by 2002:a17:906:6dd7:b0:931:c99c:480 with SMTP id j23-20020a1709066dd700b00931c99c0480mr11619450ejt.69.1679901834032;
+        Mon, 27 Mar 2023 00:23:54 -0700 (PDT)
+Received: from ?IPV6:2a02:810d:15c0:828:198e:c1a5:309b:d678? ([2a02:810d:15c0:828:198e:c1a5:309b:d678])
+        by smtp.gmail.com with ESMTPSA id hy14-20020a1709068a6e00b009351546fb54sm10151855ejc.28.2023.03.27.00.23.53
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 27 Mar 2023 00:23:53 -0700 (PDT)
+Message-ID: <8d5cefae-e10e-52c1-b070-4a1d15a5ef93@linaro.org>
+Date: Mon, 27 Mar 2023 09:23:52 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH v2 1/6] dt-bindings: soc: mediatek: pwrap: Add compatible
+ for MT6795 Helio X10
+Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ matthias.bgg@gmail.com
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ amergnat@baylibre.com, flora.fu@mediatek.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, kernel@collabora.com,
+ phone-devel@vger.kernel.org, ~postmarketos/upstreaming@lists.sr.ht
+References: <20230324094205.33266-1-angelogioacchino.delregno@collabora.com>
+ <20230324094205.33266-2-angelogioacchino.delregno@collabora.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230324094205.33266-2-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230326_231413_085899_F9674B7D 
-X-CRM114-Status: GOOD (  12.56  )
+X-CRM114-CacheID: sfid-20230327_002357_795555_B6CE097F 
+X-CRM114-Status: UNSURE (   7.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,96 +101,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Will store the string to temp buffer like "echo '-picinfo' > vdec" when
-user want to get needed information.
+On 24/03/2023 10:42, AngeloGioacchino Del Regno wrote:
+> Add a compatible for the PMIC Wrapper found on the MT6795 Helio X10 SoC.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  .../devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml         | 1 +
 
-Then getting debug information using command 'cat vdec' calling mtk_vdec_dbgfs_read
-to analysis the temp buffer.
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
----
- .../mediatek/vcodec/mtk_vcodec_dbgfs.c        | 44 +++++++++++++++++++
- .../mediatek/vcodec/mtk_vcodec_dbgfs.h        |  8 ++++
- 2 files changed, 52 insertions(+)
-
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
-index 49f0891e4923..19a1dc068efd 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
-@@ -27,9 +27,53 @@ static ssize_t mtk_vdec_dbgfs_write(struct file *filp, const char __user *ubuf,
- 	return len;
- }
- 
-+static ssize_t mtk_vdec_dbgfs_read(struct file *filp, char __user *ubuf,
-+				   size_t count, loff_t *ppos)
-+{
-+	struct mtk_vcodec_dev *vcodec_dev = filp->private_data;
-+	struct mtk_vcodec_dbgfs *dbgfs = &vcodec_dev->dbgfs;
-+	struct mtk_vcodec_dbgfs_inst *dbgfs_inst;
-+	struct mtk_vcodec_ctx *ctx;
-+	int total_len = 100 * (dbgfs->inst_count == 0 ? 1 : dbgfs->inst_count);
-+	int used_len = 0, curr_len, ret;
-+	bool dbgfs_index[MTK_VDEC_DBGFS_MAX] = {0};
-+	char *buf = kmalloc(total_len, GFP_KERNEL);
-+
-+	if (!buf)
-+		return -ENOMEM;
-+
-+	if (strstr(dbgfs->dbgfs_buf, "-picinfo"))
-+		dbgfs_index[MTK_VDEC_DBGFS_PICINFO] = true;
-+
-+	mutex_lock(&dbgfs->dbgfs_lock);
-+	list_for_each_entry(dbgfs_inst, &dbgfs->dbgfs_head, node) {
-+		ctx = dbgfs_inst->vcodec_ctx;
-+
-+		curr_len = snprintf(buf + used_len, total_len - used_len,
-+				    "inst[%d]:\n ", ctx->id);
-+		used_len += curr_len;
-+
-+		if (dbgfs_index[MTK_VDEC_DBGFS_PICINFO]) {
-+			curr_len = snprintf(buf + used_len, total_len - used_len,
-+					    "\treal(%dx%d)=>align(%dx%d)\n",
-+					    ctx->picinfo.pic_w, ctx->picinfo.pic_h,
-+					    ctx->picinfo.buf_w, ctx->picinfo.buf_h);
-+			used_len += curr_len;
-+		}
-+	}
-+	mutex_unlock(&dbgfs->dbgfs_lock);
-+
-+	buf[used_len + 1] = '\0';
-+	ret = simple_read_from_buffer(ubuf, count, ppos, buf, used_len);
-+
-+	kfree(buf);
-+	return ret;
-+}
-+
- static const struct file_operations vdec_fops = {
- 	.open = simple_open,
- 	.write = mtk_vdec_dbgfs_write,
-+	.read = mtk_vdec_dbgfs_read,
- };
- 
- void mtk_vcodec_dbgfs_create(struct mtk_vcodec_ctx *ctx)
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.h
-index 9df760475684..da61b2dffe29 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.h
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.h
-@@ -10,6 +10,14 @@
- struct mtk_vcodec_dev;
- struct mtk_vcodec_ctx;
- 
-+/*
-+ * enum mtk_vdec_dbgfs_log_index  - used to get different debug information
-+ */
-+enum mtk_vdec_dbgfs_log_index {
-+	MTK_VDEC_DBGFS_PICINFO,
-+	MTK_VDEC_DBGFS_MAX,
-+};
-+
- /**
-  * struct mtk_vcodec_dbgfs_inst  - debugfs information for each inst
-  * @node:       list node for each inst
--- 
-2.18.0
+Best regards,
+Krzysztof
 
 
