@@ -4,73 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB956C7619A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 08:39:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D08FC7619A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 08:45:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HvD2GjUyC+OJf+V+Q+0aeoi4zClYZchENPXtjkdARBA=; b=VgXPOmCxIBcvjdzYgkYKLIcyF3
-	U2nVjGuSz73xXBLXTQaPz3nPwF6SndQMi+GIsWkzbU8K0GFvvOmi9b6MNWQTphEyzB4UL6DylmWZn
-	cQ8q6ncRr3EcyFa4UGhZQnL9FyiJnkMooxEu7N0Blvfl195lQdnONnjig/A6JBwAcgw485cr7z5S4
-	2FAJ9rIDm0d2XbrZN04GPhqsfWFGfuWGndiUD3Z82y6kOETHlq43qnsEIlZb+4MOelTfK7lQgT1Hu
-	UZOqkSoz+yB7lBjjSNQ+aP7qsELzrSdeuuYl4XSHG5//V7txCrlfUR+xRT9XSPAmftz7JIeegLg16
-	l/Px7UFg==;
+	bh=DGQjeJPTKfG+U3AMu6eCRFJnGYz8tEB3+G2QIxPs4Zk=; b=z1naOCR/z96xm0QTFWe8S5E0te
+	5EdHiOIa0B88YdxMaXtJG5d0mXPybXtIRJoYxQGzuZNxFNtE1tfftNeTbZgxguc8CO4tFNgpEBGWV
+	1fj7LS+aPdEooZApw0piUaLCleJxZlICv70iECPyt96vmB+A+k9wuFqxPTB01rFJJhvHuvMI5OP65
+	OnOw9yTKHqUVE+vjGuu01eftISzTc3LIz1pQsMSlZM7cJHQAvBuBhg8GyGx03X0Qvor8pruN5au8I
+	KwaE7lmcuqYhCkSii041b/fglXgm8ri5gQF7maFkE/SHi+UmAgBgt79tR/ByFNNiINNciOov5Mryb
+	vjh/GX1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgiOH-00AIrh-2x;
-	Mon, 27 Mar 2023 08:39:45 +0000
+	id 1pgiTi-00AKq3-23;
+	Mon, 27 Mar 2023 08:45:22 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgiLm-00AHCo-34;
-	Mon, 27 Mar 2023 08:37:14 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	id 1pgiTf-00AKod-16;
+	Mon, 27 Mar 2023 08:45:20 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id F17726603100;
-	Mon, 27 Mar 2023 09:37:08 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4A0C86601F5E;
+	Mon, 27 Mar 2023 09:45:17 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1679906229;
-	bh=ucKptTRH40q7Kj2bw2zloSjqxJ0pG6yGrjzKJ5KlYwU=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=dh3DyE+D44Hnu3lYslkkV836PvJsUsswIKehfJ4XsNcNoMbBl7ZvgCDmo47pxkbCl
-	 8B++vRrrhvIGdQTs1efvrFpxT32Zg1KImKqVuk+am61tMyfE1SIUfBcTIN01iROXXL
-	 iS2kG6A7avLyaeWV835WfssRgVn+PzSw0+XwhwiFJ+btHl4O/+ts40QsKBKvEjSFV2
-	 X+1sXLOVLb5cICwYgG+9PD0eh4HVgStG9BLe5Tklejqql81HUDaR3OM4YPoLjDvue2
-	 iVIlcDbbeYWLYr6EgoTbI9nsCAYChLOtYrW5eAB+ODl2Lpqzy9FMv7OL0a7hsvouT4
-	 XGuZOCcz/w3vw==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: matthias.bgg@gmail.com
-Cc: qii.wang@mediatek.com,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	jassisinghbrar@gmail.com,
-	houlong.wei@mediatek.com,
-	linux-i2c@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	kernel@collabora.com,
-	phone-devel@vger.kernel.org,
-	~postmarketos/upstreaming@lists.sr.ht,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2 17/17] arm64: dts: mediatek: mt6795-xperia-m5: Add NXP PN547 NFC on I2C3
-Date: Mon, 27 Mar 2023 10:36:47 +0200
-Message-Id: <20230327083647.22017-18-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.40.0
-In-Reply-To: <20230327083647.22017-1-angelogioacchino.delregno@collabora.com>
-References: <20230327083647.22017-1-angelogioacchino.delregno@collabora.com>
+	s=mail; t=1679906717;
+	bh=nI/bv+FYvlvhbSwQ/rVx+2wqovQpOadhWJXyJqW4ADA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=IFO/vaqNFG45fpRw/Gm9vcN3rzC+MHK5CV+YTcqpLeuWPnEaoZKqAlm2CRUITPd/S
+	 0RlWS8xKkhUTz/HYHiUKWMC8yweaKbZ2rn1QZ8TKIl7Peh5hjc1fc70Mc1Y+slXG2o
+	 9EgHkl82N3sz06AzWkMt10YmdOgjjOaPzIwIOJVLhiZq4Q/4VzgvYTJECH92bgOoHM
+	 iym+tSwEG7QTFji2jjwN5EZzeHUGslxRo2aSjDfvDHN5/WMBRc5KfBncN7xdpxwOQq
+	 xHHayRzCEJzLa0xu2/LkkmIwsUIbxoUqQ9hoBX/HNrH16JdhVJCDcahs2tR5tCMiR8
+	 iXWMBXOQKVyIw==
+Message-ID: <2a1b1f66-970e-5adb-389e-b9c47a790712@collabora.com>
+Date: Mon, 27 Mar 2023 10:45:15 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH v5 2/2] arm64: dts: mediatek: enable i2c0 for mt8365-evk
+ board
+Content-Language: en-US
+To: Alexandre Mergnat <amergnat@baylibre.com>,
+ Qii Wang <qii.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-i2c@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Fabien Parent <fparent@baylibre.com>,
+ Rob Herring <robh@kernel.org>
+References: <20221122-mt8365-i2c-support-v5-0-6e4f3b54937f@baylibre.com>
+ <20221122-mt8365-i2c-support-v5-2-6e4f3b54937f@baylibre.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221122-mt8365-i2c-support-v5-2-6e4f3b54937f@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230327_013711_138286_EE8B58EA 
-X-CRM114-Status: UNSURE (   9.57  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230327_014519_512572_ACB2D45F 
+X-CRM114-Status: GOOD (  15.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,64 +82,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for the NXP PN547 NFC chip found on this smartphone and
-configure its pins.
+Il 27/03/23 10:27, Alexandre Mergnat ha scritto:
+> Enable the I2C0 bus provides communication with:
+> - The integrated RT9466 Switching Battery Charger.
+> - The integrated MT6691 LP4X buck for VDDQ.
+> - The integrated MT6691 LP4X buck for VDD2.
+> - The pin header, to plug external I2C devices.
+> 
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> ---
+>   arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 16 ++++++++++++++++
+>   1 file changed, 16 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+> index 4683704ea235..35cb142004a4 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+> @@ -87,6 +87,13 @@ optee_reserved: optee@43200000 {
+>   	};
+>   };
+>   
+> +&i2c0 {
+> +	clock-frequency = <100000>;
+> +	pinctrl-0 = <&i2c0_pins>;
+> +	pinctrl-names = "default";
+> +	status = "okay";
+> +};
+> +
+>   &pio {
+>   	gpio_keys: gpio-keys-pins {
+>   		pins {
+> @@ -96,6 +103,15 @@ pins {
+>   		};
+>   	};
+>   
+> +	i2c0_pins: i2c0-pins {
+> +		pins {
+			pinmux = ...pins...
+			bias-pull-up = <your-pull-up-adv-value>;
+		};
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../dts/mediatek/mt6795-sony-xperia-m5.dts    | 24 +++++++++++++++++++
- 1 file changed, 24 insertions(+)
+...and please do *not* use the mediatek,pull-up-adv property: this is
+supposed to be there only for older devicetrees and there's a replacement
+for it.... unless you have any specific reason to do so (and if you do,
+you should well explain that).
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts b/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
-index bff0760cc1c8..8f00232e7348 100644
---- a/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
-@@ -5,6 +5,7 @@
-  */
- 
- /dts-v1/;
-+#include <dt-bindings/gpio/gpio.h>
- #include "mt6795.dtsi"
- 
- / {
-@@ -112,6 +113,16 @@ magnetometer@0x12 {
- 		reg = <0x12>;
- 	};
- 
-+	pn547: nfc@28 {
-+		compatible = "nxp,pn544-i2c";
-+		reg = <0x28>;
-+		interrupts-extended = <&pio 3 IRQ_TYPE_EDGE_RISING>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&nfc_pins>;
-+		enable-gpios = <&pio 149 GPIO_ACTIVE_HIGH>;
-+		firmware-gpios = <&pio 94 GPIO_ACTIVE_HIGH>;
-+	};
-+
- 	proximity@48 {
- 		compatible = "sensortek,stk3310";
- 		reg = <0x48>;
-@@ -122,6 +133,19 @@ proximity@48 {
- };
- 
- &pio {
-+	nfc_pins: nfc-pins {
-+		pins-irq {
-+			pinmux = <PINMUX_GPIO3__FUNC_GPIO3>;
-+			bias-pull-down;
-+			input-enable;
-+		};
-+
-+		pins-fw-ven {
-+			pinmux = <PINMUX_GPIO94__FUNC_GPIO94>,
-+				 <PINMUX_GPIO149__FUNC_GPIO149>;
-+		};
-+	};
-+
- 	ts_pins: touchscreen-pins {
- 		pins-irq {
- 			pinmux = <PINMUX_GPIO6__FUNC_GPIO6>;
--- 
-2.40.0
+Besides, if you introduce the usage of that property in any 8365 devicetree,
+the previously proposed 8365 pinctrl cleanup will become a bit harder to do.
+
+Cheers,
+Angelo
+
 
 
