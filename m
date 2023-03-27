@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF045C76195
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 08:37:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E97AC76195
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 08:37:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=DjhKkbWyZb/pcUplnUVgrPqYJx7Ddkwbwq9OQMADxaY=; b=1OTGEp+YHm4UUqMMzozuGpQGYj
-	aMMZuEcJFxgQ4r+EWXK2U42mxYB20kRG4K7PHXI3LKTeQyRqrlP2DMsW0gYSPcd/G9byj3aDercp/
-	/ZC90kGO0jK6xmYkaRSz+WLN2LAE9tvurjXtEOpPLa8BytJZftBDQTyh+XglZ1EkxK9AzJWhFtsgQ
-	pBn7vhV8aSKjtmKI2E6syO28hMxdmMnLMDHOeplVQV2PVQXaTpBzC0YFM00KkABPUFUo1WwCVAz9/
-	dC4Au5uJCeciteKH4jlskzhSXC+CMAIk8/8OLdottxRDImGgfCOxBw3WUDWP9hIP1voK08DWohoUo
-	elIYUADw==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2E+BrxZ1f4fQghU1DrSribu+7UPbIKwG+2O4gNTnqiY=; b=Z0lxcUhT8ojIWCy/PVmyLT4B67
+	pSmsWvjZO8owuRQePPmH5OHs8GD3aXSf1cHn2gvIzoMgHLUL7HhypSAPG7r1d7cezf8BXtQ+uaIln
+	xD6Qrkbr/uxvDvWFkzcykMAf8w/YqNWbh2RKZaueU8+mSZHh+TErvCRyw/2eJ1e4Ra54ePE8Io7W4
+	ruyVy8kWousvaTaEUHOLx7kpZNVSqUdfEvz+i70L5XYFvw8S+YAbH8eD1AwILjnBwmi3BqxZdsqBm
+	KyEF2QP6kakG6/XwXfDNkzszPT6u9VGB0qjMywdktivdqL1KBTndoZHSm8R/fFAy9832Tm9GKFLSs
+	Y5uWc2Pg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgiLd-00AH7F-0I;
-	Mon, 27 Mar 2023 08:37:01 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pgiLp-00AHEt-0k;
+	Mon, 27 Mar 2023 08:37:13 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgiLX-00AH4o-0P;
-	Mon, 27 Mar 2023 08:36:59 +0000
+	id 1pgiLY-00AH4r-0L;
+	Mon, 27 Mar 2023 08:37:01 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8D1D96601F5E;
-	Mon, 27 Mar 2023 09:36:52 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C635C6602087;
+	Mon, 27 Mar 2023 09:36:53 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1679906213;
-	bh=ubB9ozQrHtmRAC/h3ra8X8vZIkv037PoS7C0Tn1POaQ=;
-	h=From:To:Cc:Subject:Date:From;
-	b=Hq+VWeyIHZac38b5D8jvwU8JFH3CHhnwWviZEWONgG6Uruu8oMv1HfRHoPOpRYmSz
-	 i+PWmyfzx78Pv68NqDyXOZGWRoSMDui9gyPlzE0YSZOgmOxzfFMTNe7fBiKVZRFjIC
-	 P4KKZMkXf2pMROJHkheZoy0t3ay+OhA5lN7/UMDKo/7z54oztM8OxH3f2Z2G3jM/6U
-	 V7Q12gZ0cBhjpW0dg23RiEEBuVK4e7pgWvI3DrEHPtEhy4ithm3thRSAHVWynr4BYe
-	 v8m+fVHbRzgua6cxa2FOj8Ip0fYPvVlDaVwKXzIqtPztyllYm5cgKw5lmFXns+HQdV
-	 YtK4cQH34us8A==
+	s=mail; t=1679906214;
+	bh=DtLoKecTBQhhvopNsM7M95mpXjvK5USiGMoYC7Oej4w=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=AMQLNfpdiOHJBlTfeyPx2aMe1IDW9rlMZzONNCG9rvabvwE11ZiBibQDljIzz/M7/
+	 ECOT/PqeHbC8yLfrD1QmcU3bu5nGG8gtMKKPonEPnsQ0OW9AqSEXder+q2PGv+nBp3
+	 di4YRaq6FdxJHAlQn9MKhzTjri+SvUxTXMUE5d3e9aeZKRMgt81uqSUaD12Exsp5Br
+	 FkL0OtV7FZV+zXP8xeVVj2P0qbe9dlu9LM//1vroUY1CRReZsFnF/rCwq/kWtJVcUq
+	 JshW+0eQ9eTKnTJrNGhwFKGxUrU0azqXWyyFyp3pYwx0gensR7wKdxWyc0Q9SiFo83
+	 l7UZYfM7dnLCw==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: qii.wang@mediatek.com,
@@ -59,15 +59,18 @@ Cc: qii.wang@mediatek.com,
 	phone-devel@vger.kernel.org,
 	~postmarketos/upstreaming@lists.sr.ht,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2 00/17] MT6795 Helio X10 and Sony Xperia M5: DT step 2!
-Date: Mon, 27 Mar 2023 10:36:30 +0200
-Message-Id: <20230327083647.22017-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 01/17] arm64: dts: mediatek: mt6795: Add Frequency Hopping Controller node
+Date: Mon, 27 Mar 2023 10:36:31 +0200
+Message-Id: <20230327083647.22017-2-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.40.0
+In-Reply-To: <20230327083647.22017-1-angelogioacchino.delregno@collabora.com>
+References: <20230327083647.22017-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230327_013655_290457_18F2AF0D 
-X-CRM114-Status: GOOD (  12.40  )
+X-CRM114-CacheID: sfid-20230327_013656_277153_7DF517D9 
+X-CRM114-Status: UNSURE (   9.03  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,69 +85,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Changes in v2:
- - Squashed the addition of mediatek,mt6795-gce.h header with the
-   commit adding the MT6795 GCE compatible.
+Add FHCTL node but keep it disabled as the PLL clocks that should be
+handled through FHCTL and the Spread Spectrum Clocking parameters are
+board specific.
 
-This series further enhances the support for the MT6795 Helio X10 SoC
-and the Sony Xperia M5 smartphone.
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ arch/arm64/boot/dts/mediatek/mt6795.dtsi | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-In particular, for the SoC support, this adds:
- - Frequency Hopping support
- - I2C controllers
- - Power domains
- - IOMMU support and LARBs
- - GCE/CMDQ Mailbox
- - VDECSYS and VENCSYS clocks
- - MMSYS support
-
-...and, on the Xperia M5 smartphone, this adds:
- - Frequency Hopping with Spread Spectrum for MAINPLL, MPLL, MSDCPLL
- - Touchscreen support (Synaptics S2726, fw id: 1898977, RMI4 protocol)
- - Accelerometer
- - Magnetometer
- - Proximity sensor
- - NFC support
-
-...all of which was successfully tested on the Xperia M5 smartphone.
-
-This series depends on [1] for the MMSYS support.
-
-Plan for step 3 is to push upstream full display support, which does
-already work on my custom tree ;-)
-
-[1]: https://lore.kernel.org/all/20230309102618.114157-1-angelogioacchino.delregno@collabora.com/
-
-Cheers!
-
-AngeloGioacchino Del Regno (17):
-  arm64: dts: mediatek: mt6795: Add Frequency Hopping Controller node
-  arm64: dts: mediatek: mt6795: Add apmixedsys syscon node
-  arm64: dts: mediatek: mt6795: xperia-m5: Enable Frequency Hopping
-  dt-bindings: i2c: i2c-mt65xx: Add compatible for MT6795 Helio X10
-  arm64: dts: mediatek: mt6795: Add nodes for I2C controllers
-  arm64: dts: mediatek: mt6795: Add SoC power domains
-  dt-bindings: mailbox: mediatek,gce-mailbox: Add support for MT6795
-  arm64: dts: mediatek: mt6795: Add support for the CMDQ/GCE mailbox
-  arm64: dts: mediatek: mt6795: Add MMSYS node for multimedia clocks
-  arm64: dts: mediatek: mt6795: Add VDECSYS and VENCSYS clocks
-  arm64: dts: mediatek: mt6795: Add support for IOMMU and LARBs
-  arm64: dts: mediatek: mt6795-xperia-m5: Enable I2C 0-3 busses
-  arm64: dts: mediatek: mt6795-xperia-m5: Add Synaptics RMI4 Touchscreen
-  arm64: dts: mediatek: mt6795-xperia-m5: Add Bosch BMA255 Accelerometer
-  arm64: dts: mediatek: mt6795-xperia-m5: Add Bosch BMM050 Magnetometer
-  arm64: dts: mediatek: mt6795-xperia-m5: Add Sensortek STK3310
-    Proximity
-  arm64: dts: mediatek: mt6795-xperia-m5: Add NXP PN547 NFC on I2C3
-
- .../devicetree/bindings/i2c/i2c-mt65xx.yaml   |   4 +
- .../mailbox/mediatek,gce-mailbox.yaml         |  20 +-
- .../dts/mediatek/mt6795-sony-xperia-m5.dts    | 166 ++++++++++++
- arch/arm64/boot/dts/mediatek/mt6795.dtsi      | 245 ++++++++++++++++++
- include/dt-bindings/gce/mediatek,mt6795-gce.h | 123 +++++++++
- 5 files changed, 550 insertions(+), 8 deletions(-)
- create mode 100644 include/dt-bindings/gce/mediatek,mt6795-gce.h
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt6795.dtsi b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
+index b3fc76d837a9..4d2119751572 100644
+--- a/arch/arm64/boot/dts/mediatek/mt6795.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
+@@ -310,6 +310,12 @@ systimer: timer@10200670 {
+ 			clock-names = "clk13m";
+ 		};
+ 
++		fhctl: clock-controller@10209f00 {
++			compatible = "mediatek,mt6795-fhctl";
++			reg = <0 0x10209f00 0 0x100>;
++			status = "disabled";
++		};
++
+ 		gic: interrupt-controller@10221000 {
+ 			compatible = "arm,gic-400";
+ 			#interrupt-cells = <3>;
 -- 
 2.40.0
 
