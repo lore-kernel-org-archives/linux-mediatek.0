@@ -4,68 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D12EC6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 21:59:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BBEAC6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 22:59:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m3Nxnw2EJKi8PgND390b4ttccCknFAa+VCeuBtlni8M=; b=DkurlC1LV87UKQ
-	K+WLumy1iUqbt98vMOBvmjBpj2sv5DB9OjgL5A2WvovO5JWNGZu6N8JBnQffHrBSyxOzn739kRT9F
-	rHiF/3nbXI22VtR8NBO0v+XEZV11UfVnGcvFu4HMQnA8Xf4yM6myFsIKGLjhYI2m+MnspfqjQ99aU
-	qVBineAtj05AKpXAK5qQsRD/8kTgp7YScidNZnxLqWmnlOmP7ft/FSwWCWYEneb1xYuYnPZHYbwYc
-	4TAdDIA0Tnb3XqO83K0P67gPPaHwOZJjfe1Uds4L1hbyq3xwTK1xde5qDiMzv4LCZ9blo6dDVAHZ0
-	C34FmVluEylcZ/bnHYVQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vs0lU2V659xfolR59bwYcxi0Nnjs4lVJmYEM9MkDucs=; b=1t5tc7fCeWnpQHk/vHjR5AJvow
+	jDSUGvklJT2lQw7jGdBXVYA8I9iXgTePnb3J+4TZGmWam2TeSgtPbxIFLMdisO9IaJTe7yiE4p5kv
+	aHGSgirondzA0ziIXf/g7JieRQZbkZev1/HLQAM6w19bf3T7/Do8ccatswymgPuNibBfZpoO8tCR7
+	lDmFAs1dAEZMwSQrr7qhcC1iIJ+JzHH1rpuMeBzyGeamhcjscpm2SUwdJvb+kMN7okElNLbhf2HNj
+	1gL7Bmw+nkbxlVHpGSwKnF/5/fZEOitPSIkU1p3oj9Eng0I4+JvCWumtAGYQkgr0GQyEhZS2L5S7h
+	Xypyd37g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgurh-00CTeg-07;
-	Mon, 27 Mar 2023 21:58:57 +0000
-Received: from sender4-op-o10.zoho.com ([136.143.188.10])
+	id 1pgvoX-00CcXy-2b;
+	Mon, 27 Mar 2023 22:59:45 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgurc-00CTe2-1G;
-	Mon, 27 Mar 2023 21:58:53 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1679954286; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=anV16UVMtNp/NW2ItYLiRB4AQ1SLN50vfbExP7irbCMV9YCnPN8JgnZff1N4KZ4OCApLXdn/m/9f1OKbZRLTniTMpR0AeV9WVbxb88/xdMM5opnS2lF1cpi0s7NDNV9t0JUItFQaoKsCvj0bf0qwd9tB8WCVYOGC7y0oEC52xao=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1679954286; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=m3Nxnw2EJKi8PgND390b4ttccCknFAa+VCeuBtlni8M=; 
-	b=F99QbKOhBuUMdCEMnGaJw5EdSw2SS4kCm822f0A913FJ4g3N0PXHDdc70fCskgcCR1Pb0KZ7Znobd572rOywpd3Dt86MZ3S7v1dy3ewywfxnw1IlyAXhVhlscqLGVyND4piXdfLuqVa8Tn7lIpw95yyjChuhNZpeL6BoIIu5B2o=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1679954286;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=m3Nxnw2EJKi8PgND390b4ttccCknFAa+VCeuBtlni8M=;
-	b=ciE8XK1PKqy/bE+GnsMM82LHIa2TtViiZ1rMMxc0lyZi2Wde8VL628n6LTpIyEgK
-	ETSgndvMVoSDkOx8t99wmW5jnfweSGjh+yza1K3XxQzaJ3ZhM9ChFTJIpqJI0ncSlFR
-	CfeKkCTQr0Azx2Qy12XWLcb+6ofC0oS1/EZErJus=
-Received: from [10.10.10.3] (149.91.1.15 [149.91.1.15]) by mx.zohomail.com
-	with SMTPS id 1679954284745209.8283533930612; Mon, 27 Mar 2023 14:58:04 -0700 (PDT)
-Message-ID: <8450084e-1474-17fa-32c2-a4653b74ff17@arinc9.com>
-Date: Tue, 28 Mar 2023 00:57:57 +0300
+	id 1pgvoS-00CcVA-2S;
+	Mon, 27 Mar 2023 22:59:43 +0000
+Received: by mail-ed1-x531.google.com with SMTP id cn12so42536441edb.4;
+        Mon, 27 Mar 2023 15:59:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1679957977;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=vs0lU2V659xfolR59bwYcxi0Nnjs4lVJmYEM9MkDucs=;
+        b=kFSkbnLqBTXNziv2ifVthZxzOmPB3NbYEkyApURx8Oas8cCHPoSS+CWMJMLfkMaLxQ
+         w3sBU0oRxauj492NqBP2NgItJC1pPYs7kn8NrUixuqvWmRXRZQ8HPHYwcIjs96dXvWjp
+         kCc8POpRIpAim8K2sBnk1cfPBh1RbpSBOJBYwmF8yJbYD8hs5Zs0qFy7EGFZTsaQtx/u
+         pwVF8TdXHKwGg54Yl6dKMbsFS4C54UWykPKT4U9BWOAjMgUl2eoKbpSU2uEIQmQwLbd0
+         BYfxpA3JXHG6Y8LZgt14VH7NdJl6oasHvJPk4YHThi6kd+oe59qgKHgCPPRy1yxb4dR7
+         CyOQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679957977;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=vs0lU2V659xfolR59bwYcxi0Nnjs4lVJmYEM9MkDucs=;
+        b=MKtDq8cuaXwBRAygXoGhaG2N9yOfcR0XldiLoIHukd6RB2cDVhM40Cs6JrmgGtflMH
+         dEQIagFE/LkAsIuPeWgCkhmKU9xrTCYTNELZL8MRMC3R7Nle5lF5Ui1sb0R3NddU61Lg
+         8q503nFkmgx5WrLxrErHAU/bvy4DrmNkU2YgH3SvXrrLpmrluwg/Mx/9FnFw3IKlF389
+         mg8hqM3qqhnxer5EdpQ+/21Gz+X0au6vRZqUhF/6daotR6VVfdWEBX4FVqZFGpX0cUvf
+         /j1T9ZZIGuCWnKUPrX9IWnC4Epuao302F/mU6zKWMU4uonz6kt9U3xmwzKZMPvNzkBay
+         ht6Q==
+X-Gm-Message-State: AAQBX9eAbczP8+oh7t1O0F4n03BlKppKsA783iFz+OmTqzX795JyPFU1
+	GCml98JwhMTu9Ba7wxm4EJM=
+X-Google-Smtp-Source: AKy350b6kGzMoS+bwt1A2kOGbDUdu6Vqdtl4eu30Fw6DBeW6d1ptJzEXveDDR/mfkjoYxSRiG6GAlQ==
+X-Received: by 2002:a17:906:e0c5:b0:931:4f2c:4e83 with SMTP id gl5-20020a170906e0c500b009314f2c4e83mr13534033ejb.63.1679957976838;
+        Mon, 27 Mar 2023 15:59:36 -0700 (PDT)
+Received: from skbuf ([188.27.184.189])
+        by smtp.gmail.com with ESMTPSA id z13-20020a1709064e0d00b009351565d1f5sm10994040eju.52.2023.03.27.15.59.35
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 27 Mar 2023 15:59:36 -0700 (PDT)
+Date: Tue, 28 Mar 2023 01:59:33 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Hans Schultz <netdev@kapio-technology.com>
+Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>, Eric Dumazet <edumazet@google.com>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	"maintainer:MICROCHIP KSZ SERIES ETHERNET SWITCH DRIVER" <UNGLinuxDriver@microchip.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	=?utf-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
+	Jiri Pirko <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>,
+	Roopa Prabhu <roopa@nvidia.com>,
+	Nikolay Aleksandrov <razor@blackwall.org>,
+	Shuah Khan <shuah@kernel.org>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Ido Schimmel <idosch@nvidia.com>,
+	open list <linux-kernel@vger.kernel.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+	"open list:RENESAS RZ/N1 A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>,
+	"moderated list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>,
+	"open list:KERNEL SELFTEST FRAMEWORK" <linux-kselftest@vger.kernel.org>
+Subject: Re: [PATCH v2 net-next 2/6] net: dsa: propagate flags down towards
+ drivers
+Message-ID: <20230327225933.plm5raegywbe7g2a@skbuf>
+References: <20230318141010.513424-1-netdev@kapio-technology.com>
+ <20230318141010.513424-3-netdev@kapio-technology.com>
+ <20230327115206.jk5q5l753aoelwus@skbuf>
+ <87355qb48h.fsf@kapio-technology.com>
+ <20230327160009.bdswnalizdv2u77z@skbuf>
+ <87pm8tooe1.fsf@kapio-technology.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH net 4/7] net: dsa: mt7530: set both CPU port interfaces to
- PHY_INTERFACE_MODE_NA
-Content-Language: en-US
-To: Vladimir Oltean <olteanv@gmail.com>
-References: <20230326140818.246575-1-arinc.unal@arinc9.com>
- <20230326140818.246575-5-arinc.unal@arinc9.com>
- <20230327191242.4qabzrn3vtx3l2a7@skbuf>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20230327191242.4qabzrn3vtx3l2a7@skbuf>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <87pm8tooe1.fsf@kapio-technology.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230327_145852_490637_0A36203D 
-X-CRM114-Status: GOOD (  27.03  )
+X-CRM114-CacheID: sfid-20230327_155940_803378_589CA786 
+X-CRM114-Status: GOOD (  22.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,65 +118,43 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>, =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>, Eric Dumazet <edumazet@google.com>, erkin.bozoglu@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Russell King <rmk+kernel@armlinux.org.uk>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 27.03.2023 22:12, Vladimir Oltean wrote:
-> On Sun, Mar 26, 2023 at 05:08:15PM +0300, arinc9.unal@gmail.com wrote:
->> From: Arınç ÜNAL <arinc.unal@arinc9.com>
->>
->> Set interfaces of both CPU ports to PHY_INTERFACE_MODE_NA. Either phylink
->> or mt7530_setup_port5() on mt7530_setup() will handle the rest.
->>
->> This is already being done for port 6, do it for port 5 as well.
->>
->> Fixes: 38f790a80560 ("net: dsa: mt7530: Add support for port 5")
-> 
-> This is getting comical.. I think I'm putting too much energy in
-> trying to understand the hidden meaning of this patch set.
-> 
-> In include/linux/phy.h we have:
-> 
-> typedef enum {
-> 	PHY_INTERFACE_MODE_NA,
-> 
-> In lack of other initializer, the first element of an enum gets the
-> value 0 in C.
-> 
-> Then, "priv" is allocated by this driver with devm_kzalloc(), which
-> means that its entire memory is zero-filled. So priv->p5_interface and
-> priv->p6_interface are already set to 0, or PHY_INTERFACE_MODE_NA.
-> 
-> There is no code path between the devm_kzalloc() and the position in
-> mt7530_setup() that would change the value of priv->p5_interface or
-> priv->p6_interface from their value of 0 (PHY_INTERFACE_MODE_NA).
-> For example, mt753x_phylink_mac_config() can only be called from
-> phylink, after dsa_port_phylink_create() was called. But
-> dsa_port_phylink_create() comes later than ds->ops->setup() - one comes
-> from dsa_tree_setup_ports(), and the other from dsa_tree_setup_switches().
-> 
-> The movement of the priv->p6_interface assignment with a few lines
-> earlier does not change anything relative to the other call sites which
-> assign different values to priv->p6_interface, so there isn't any
-> functional change there, either.
-> 
-> So this patch is putting 0 into a variable containing 0, and claiming,
-> through the presence of the Fixes: tag and the submission to the "net"
-> tree, that it is a bug fix which should be backported to "stable".
-> 
-> Can it be that you are abusing the meaning of a "bug fix", and that I'm
-> trying too hard to take this patch set seriously?
+On Mon, Mar 27, 2023 at 11:49:58PM +0200, Hans Schultz wrote:
+> My first approach was to use the SWITCHDEV_FDB_ADD_TO_BRIDGE event
+> and not the SWITCHDEV_FDB_OFFLOADED event as the first would set the
+> external learned flag which is not aged out by the bridge.
 
-I don't appreciate your consistent use of the word "abuse" on my 
-patches. I'm by no means a senior C programmer. I'm doing my best to 
-correct the driver.
+Link to patch? I don't see any SWITCHDEV_FDB_ADD_TO_BRIDGE call in
+either the v1:
+https://lore.kernel.org/netdev/20230130173429.3577450-6-netdev@kapio-technology.com/
+or the RFC:
+https://lore.kernel.org/netdev/20230117185714.3058453-6-netdev@kapio-technology.com/
+and the change log does not mention it either.
 
-Thank you for explaining the process of phylink with DSA, I will adjust 
-my patches accordingly.
+> I have at some point earlier asked why there would be two quite
+> equivalent flags and what the difference between them are, but I didn't
+> get a response.
 
-I suggest you don't take my patches seriously for a while, until I know 
-better.
+Actually, the part which you are now posing as a question (what is the
+difference?) was part of the premise of your earlier question (there is
+no difference => why do we have both?).
+https://lore.kernel.org/netdev/d972e76bed896b229d9df4da81ad8eb4@kapio-technology.com/
 
-Arınç
+I believe that no one answered because the question was confused and it
+wasn't really clear what you were asking.
+
+> 
+> Now I see the difference and that I cannot use the offloaded flag
+> without changing the behaviour of the system as I actually change the
+> behaviour of the offloaded flag in this version of the patch-set.
+> 
+> So if the idea of a 'synthetically' learned fdb entry from the driver
+> using the SWITCHDEV_FDB_ADD_TO_BRIDGE event from the driver towards the
+> bridge instead is accepted, I can go with that?
+> (thus removing all the changes in the patch-set regarding the offloaded
+> flag ofcourse)
+
+which idea is that, again?
 
