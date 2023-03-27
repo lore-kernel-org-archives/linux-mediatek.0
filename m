@@ -4,76 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AD79C6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 15:34:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C693AC761A6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 15:38:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fAGnOsEqdtlnj/68161BxQ54mpbznUmWnS+8YnLr570=; b=rxHkQfdKlic/1vSlM7x5UsHvaY
-	o5DCG1lN58+JH8Tw2qIqdDlWtFs2lcE9QVcFD/JY6C0X3ML6em27eQiz/Ddlk0Pv00Apxczw3slTz
-	Ydz2DhylvYjmtI/3YquUmHh/9E05nVPvxNxRLkfZA3Y81tEFCYkaJh8ysyUC1Svs/gZMu+5FrLoZ3
-	s8p7S/+V2zsHRIamjI6yo+VfoVHG2rh5+wyKdqVGwtQ1Lqbhq9UasLo2FlksvESxbjGheo500wzDD
-	M9kD3SAuYAMTIG9ZSemIO9SYS90On6g9R5eKHXaqzPn17rvOZHpW7bkAv5JnzsRB1++sZyr9sDLHI
-	bGTWqu8w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0tSzIPbcRg52z79bS7K9J3fQblk65VR00TFWvUBKjec=; b=kjc4m6Ou0Af+zKG9jUWNcV8cDF
+	zTzfCjVlYmx0jA2krZG2DpSAi4b0CWGQNk/U3xPG7zlx15T6lO4fusogBneFCeeKDWWxA8WSkWG75
+	yhyt3Lbu4eyAq3pLYyY+k3d1+XioJX4ucUN4ysLasDN9VSJCKYG4xBeNG6Ycwcv2n0b+R7QeuKY6U
+	nD3f7GkdNgyK/4gbs9yxKJkxoMVFH1FUyGT8v3TmPOmWDBAb5B0lvGZq+k04FyUDZ5qjumc/+dNAr
+	zrH4kbECdeLOLRIPEFetk9oSwqyd35hBlzRVyl2P4+V1Nr2PvfvNlVObZd5D5+ETYTek2nvbgzo9+
+	VgX2MYfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgorU-00BY2w-1Y;
-	Mon, 27 Mar 2023 15:34:20 +0000
-Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
+	id 1pgov7-00BZ7W-24;
+	Mon, 27 Mar 2023 15:38:05 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgorO-00BXyF-2c;
-	Mon, 27 Mar 2023 15:34:17 +0000
-Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
-	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id EAE071884409;
-	Mon, 27 Mar 2023 15:34:03 +0000 (UTC)
-Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
-	by mailout.gigahost.dk (Postfix) with ESMTP id D5765250394A;
-	Mon, 27 Mar 2023 15:34:03 +0000 (UTC)
-Received: by smtp.gigahost.dk (Postfix, from userid 1000)
-	id BE7339B403E4; Mon, 27 Mar 2023 15:34:03 +0000 (UTC)
-X-Screener-Id: e32ae469fa6e394734d05373d3a705875723cf1e
-Received: from fujitsu (2-104-116-184-cable.dk.customer.tdc.net [2.104.116.184])
-	by smtp.gigahost.dk (Postfix) with ESMTPSA id DEB2891201E3;
-	Mon, 27 Mar 2023 15:34:02 +0000 (UTC)
-From: Hans Schultz <netdev@kapio-technology.com>
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
- Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Eric
- Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Kurt
- Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>,
- Woojung Huh <woojung.huh@microchip.com>, "maintainer:MICROCHIP KSZ SERIES
- ETHERNET SWITCH DRIVER" <UNGLinuxDriver@microchip.com>, Sean Wang
- <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
- Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
- <alexandre.belloni@bootlin.com>, =?utf-8?Q?Cl=C3=A9ment_L=C3=A9ger?=
- <clement.leger@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
- <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
- <razor@blackwall.org>, Shuah Khan <shuah@kernel.org>, Christian Marangi
- <ansuelsmth@gmail.com>, Ido Schimmel <idosch@nvidia.com>, open list
- <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>, "open list:RENESAS RZ/N1
- A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>, "moderated
- list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>, "open
- list:KERNEL SELFTEST FRAMEWORK" <linux-kselftest@vger.kernel.org>
-Subject: Re: [PATCH v2 net-next 2/6] net: dsa: propagate flags down towards
- drivers
-In-Reply-To: <20230327115206.jk5q5l753aoelwus@skbuf>
-References: <20230318141010.513424-1-netdev@kapio-technology.com>
- <20230318141010.513424-3-netdev@kapio-technology.com>
- <20230327115206.jk5q5l753aoelwus@skbuf>
-Date: Mon, 27 Mar 2023 17:31:26 +0200
-Message-ID: <87355qb48h.fsf@kapio-technology.com>
+	id 1pgov4-00BZ5r-0z;
+	Mon, 27 Mar 2023 15:38:03 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 959F86130D;
+	Mon, 27 Mar 2023 15:38:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 67BCBC433D2;
+	Mon, 27 Mar 2023 15:38:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1679931481;
+	bh=3XmuKg7477g2NoJtqEb5iNb4ATj0+FqT6dHhTQ0IQGs=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=h77Uyo826XxSmu3DX6sM0b4XADQ6cucMcCdMFfq7hWdB9LMN+NZbrVrVR34v9X6t2
+	 myxVy3WUwLigNSHR92LJN2VS1wiVsGo0xjSDCNJ+ObeVsK688j/0l1LsLvWSGI31wQ
+	 tao0pMm7Bqv3I1jm2g8t9/U29uCUIsKC6VH5qhfCl/kLDW4+3oEuahwHSWpJhdL3bq
+	 Qm+yH6ZakaD3gzVKjb8Ms8dsOdev3pdfpMV+720yF88lmTd52ZTdk43rhqTtAFNEuA
+	 e4zszYx9LY6unv9pvpgYNEZlvN8wiuq25Q2gWWNPEjjQDlztVbWr+iAq7yszrfWjvv
+	 oyjhRwBt5B39g==
+Received: by mail-lj1-f171.google.com with SMTP id a21so2308258ljq.10;
+        Mon, 27 Mar 2023 08:38:01 -0700 (PDT)
+X-Gm-Message-State: AAQBX9cdNwXXKHqSlDge2Q62oA8THu8dT7x/2Ym4emxmW+L9FQNPZQFz
+	QZ3+FK6lExSQtOQSEB3NYnd4BsRwavLg81EnpA==
+X-Google-Smtp-Source: AKy350a/drZtpde24N1RhyJMimhp9a0kDjKzSFBl49N+1lgOAUv7hKCRbn9292vlLz1kg5xb2w8lratj4rv3wLsalcQ=
+X-Received: by 2002:a2e:7017:0:b0:295:bb34:9c2 with SMTP id
+ l23-20020a2e7017000000b00295bb3409c2mr3663347ljc.10.1679931479496; Mon, 27
+ Mar 2023 08:37:59 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
+References: <20230220-display-v1-0-45cbc68e188b@baylibre.com> <20230220-display-v1-18-45cbc68e188b@baylibre.com>
+In-Reply-To: <20230220-display-v1-18-45cbc68e188b@baylibre.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Mon, 27 Mar 2023 23:37:47 +0800
+X-Gmail-Original-Message-ID: <CAAOTY__=p3pyrX8r55iTR19PiJB3HciS1W9zHF7vR_cVxYgg+Q@mail.gmail.com>
+Message-ID: <CAAOTY__=p3pyrX8r55iTR19PiJB3HciS1W9zHF7vR_cVxYgg+Q@mail.gmail.com>
+Subject: Re: [PATCH 18/21] drm/mediatek: dsi: Improves the DSI lane setup robustness
+To: Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Daniel Vetter <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>, 
+	Jitao Shi <jitao.shi@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Sam Ravnborg <sam@ravnborg.org>, 
+	Rob Herring <robh+dt@kernel.org>, =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	David Airlie <airlied@gmail.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Xinlei Lee <xinlei.lee@mediatek.com>, Guillaume La Roque <glaroque@baylibre.com>, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	dri-devel@lists.freedesktop.org, Fabien Parent <fparent@baylibre.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, linux-pwm@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230327_083414_992485_0995960C 
-X-CRM114-Status: GOOD (  11.28  )
+X-CRM114-CacheID: sfid-20230327_083802_423524_28BD3B19 
+X-CRM114-Status: GOOD (  19.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,42 +90,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 27, 2023 at 14:52, Vladimir Oltean <olteanv@gmail.com> wrote:
->
-> By the way, there is a behavior change here.
->
-> Before:
->
-> $ ip link add br0 type bridge && ip link set br0 up
-> $ ip link set swp0 master br0 && ip link set swp0 up
-> $ bridge fdb add dev swp0 00:01:02:03:04:05 master dynamic
-> [   70.010181] mscc_felix 0000:00:00.5: felix_fdb_add: port 0 addr 00:01:02:03:04:05 vid 0
-> [   70.019105] mscc_felix 0000:00:00.5: felix_fdb_add: port 0 addr 00:01:02:03:04:05 vid 1
-> .... 5 minutes later
-> [  371.686935] mscc_felix 0000:00:00.5: felix_fdb_del: port 0 addr 00:01:02:03:04:05 vid 1
-> [  371.695449] mscc_felix 0000:00:00.5: felix_fdb_del: port 0 addr 00:01:02:03:04:05 vid 0
-> $ bridge fdb | grep 00:01:02:03:04:05
->
-> After:
->
-> $ ip link add br0 type bridge && ip link set br0 up
-> $ ip link set swp0 master br0 && ip link set swp0 up
-> $ bridge fdb add dev swp0 00:01:02:03:04:05 master dynamic
-> [  222.071492] mscc_felix 0000:00:00.5: felix_fdb_add: port 0 addr 00:01:02:03:04:05 vid 0 flags 0x1
-> [  222.081154] mscc_felix 0000:00:00.5: felix_fdb_add: port 0 addr 00:01:02:03:04:05 vid 1 flags 0x1
-> .... 5 minutes later
-> $ bridge fdb | grep 00:01:02:03:04:05
-> 00:01:02:03:04:05 dev swp0 vlan 1 offload master br0 stale
-> 00:01:02:03:04:05 dev swp0 offload master br0 stale
-> 00:01:02:03:04:05 dev swp0 vlan 1 self
-> 00:01:02:03:04:05 dev swp0 self
->
-> As you can see, the behavior is not identical, and it made more sense
-> before.
+Hi, Xinlei:
 
-I see this is Felix Ocelot and there is no changes in this patchset that
-affects Felix Ocelot. Thus I am quite sure the results will be the same
-without this patchset, ergo it must be because of another patch. All
-that is done here in the DSA layer is to pass on an extra field and add
-an extra check that will always pass in the case of this flag.
+Could you help to review this patch?
+
+Regards,
+Chun-Kuang.
+
+Alexandre Mergnat <amergnat@baylibre.com> =E6=96=BC 2023=E5=B9=B43=E6=9C=88=
+9=E6=97=A5 =E9=80=B1=E5=9B=9B =E4=B8=8B=E5=8D=8810:23=E5=AF=AB=E9=81=93=EF=
+=BC=9A
+>
+> Currently, mtk_dsi_lane_ready (which setup the DSI lane) is triggered
+> before mtk_dsi_poweron. lanes_ready flag toggle to true during
+> mtk_dsi_lane_ready function, and the DSI module is set up during
+> mtk_dsi_poweron.
+>
+> Later, during panel driver init, mtk_dsi_lane_ready is triggered but does
+> nothing because lanes are considered ready. Unfortunately, when the panel
+> driver try to communicate, the DSI returns a timeout.
+>
+> The solution found here is to put lanes_ready flag to false after the DSI
+> module setup into mtk_dsi_poweron to init the DSI lanes after the power /
+> setup of the DSI module.
+>
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dsi.c | 2 ++
+>  1 file changed, 2 insertions(+)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediate=
+k/mtk_dsi.c
+> index 3b7d13028fb6..35c36cc05c04 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -667,6 +667,8 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
+>         mtk_dsi_config_vdo_timing(dsi);
+>         mtk_dsi_set_interrupt_enable(dsi);
+>
+> +       dsi->lanes_ready =3D false;
+> +
+>         return 0;
+>  err_disable_engine_clk:
+>         clk_disable_unprepare(dsi->engine_clk);
+>
+> --
+> b4 0.10.1
 
