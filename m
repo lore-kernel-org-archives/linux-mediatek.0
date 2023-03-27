@@ -4,73 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4765C7619A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 04:38:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E484EC76195
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 05:53:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Ce8j6k+KuGPP4r/RavZfXkMyuiD9PRxn+qLKPglcUuc=; b=roljxdVU7VQmH12tGv09VM3yDs
-	cYf1P1+WuJt/xH36/Lciu9EPMdGeJrD767Gw3aQBw1uLxMy6jOgg22V0VDSpzNEH9u6ZheTAf3eg2
-	TXflGHIE6x0g+BTjh5ybmTMPl/ekPDgcFTaaUbWjmy1GVNddYR9LihPTySjujPX/6Mb258jtJGM/A
-	jSKvN4rQugJ0aTMX/rl+b2Rl6RuARDDYnQHqCmLu796lvsqjqZ5+NnD9qL/Sg4Am+Wn+oAM/xla4w
-	5DEcI8Wf02EYbLvtBAlJUdBU6eDcr+9QprzwwHgW284h4x9VSf2/PC7530k+dcQ66RpZmcN2Y+bEP
-	wxr8XP5g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Euq4PBlvcHMpGhj/9zgc5wuCxxsRvkDTzLUdB9pnetI=; b=RBWLZxjbK99VyMz6M/M7m939pE
+	Q5KXoEZ7PMEslJUpLEX1krKAmUZ2eFKvF2+kP5xw0lrQNyHxxTqncfrOqtoD8i0rwTTS/CrfHK9DU
+	eIMqpebby0TUgPGZFk0x/5N4ify5nLarH36ztFQCMWNHdxaaUJ7g+21BMTJE+BHzdgmUgw/HJsVnQ
+	4YlIw/j/Okdx5xknaJU6cv8TNg1WfIgWAHbkNDV23qbDO/t/77/8igZO7dutgRF0F+bLpI4aC9K+s
+	bcyUIp38b8ABHl5wxY1+6kQgvlz1HeRuJloYRQUMPv0TDMTw2HVa4emQ4itDxIR7t/WvF9AkKWsAL
+	hWcANB6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgec7-009jFn-3C;
-	Mon, 27 Mar 2023 04:37:47 +0000
+	id 1pgfnY-009raM-03;
+	Mon, 27 Mar 2023 05:53:40 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgec3-009jFK-2s
-	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Mar 2023 04:37:45 +0000
-X-UUID: 18ccc93ccc5911ed8687db9d93187ff1-20230326
+	id 1pgfnV-009rZe-0O;
+	Mon, 27 Mar 2023 05:53:38 +0000
+X-UUID: b3c55e86cc6311ed8687db9d93187ff1-20230326
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Ce8j6k+KuGPP4r/RavZfXkMyuiD9PRxn+qLKPglcUuc=;
-	b=XZ9UO0uvvtuSi+6LKsIvhmu6Phws0VQBl+DMSKlV94mLgRTpX5fu/x+3JztRyw2e8c4MBHD30VAWQp30SFOhdXqcR37ZKGfJoJSy48IFuwgrKMS4MbxnkuJI4GdJnbRCDHxEl/5nnXEH7S/ePNH9Qhnbqp+PyJfDOhtXeQpRhI0=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Euq4PBlvcHMpGhj/9zgc5wuCxxsRvkDTzLUdB9pnetI=;
+	b=FFJbj7xk05wBV8/O6hp7IuXweFNICEouvzQ3oiIZoqGaZoojYeO4APlpEm9a7xE3cOgzc1p7sOoqxMMAUugygE3SR449XnE1EfWS1ksyS23eaBT/ohc3/ACg7s3I0+caQ0758siHJ+OPEcenSfqziBfzCtQ86ZRthSoXzw0BD18=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:09680738-c55f-4779-a3e6-721a01c51ba8,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:90
-X-CID-INFO: VERSION:1.1.22,REQID:09680738-c55f-4779-a3e6-721a01c51ba8,IP:0,URL
-	:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
-	N:quarantine,TS:90
-X-CID-META: VersionHash:120426c,CLOUDID:e14301f7-ddba-41c3-91d9-10eeade8eac7,B
-	ulkID:230327123739XS106CRE,BulkQuantity:0,Recheck:0,SF:29|28|17|19|48,TC:n
-	il,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OS
-	I:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-UUID: 18ccc93ccc5911ed8687db9d93187ff1-20230326
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <ryder.lee@mediatek.com>)
+X-CID-O-INFO: VERSION:1.1.22,REQID:deea9c60-1bd4-49e3-b678-02732e95e543,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:120426c,CLOUDID:a44203f7-ddba-41c3-91d9-10eeade8eac7,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: b3c55e86cc6311ed8687db9d93187ff1-20230326
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1389226298; Sun, 26 Mar 2023 21:37:35 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+	with ESMTP id 227172408; Sun, 26 Mar 2023 22:53:30 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Mon, 27 Mar 2023 12:37:33 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Mon, 27 Mar 2023 12:37:33 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Johannes Berg <johannes@sipsolutions.net>
-CC: Shayne Chen <shayne.chen@mediatek.com>, Evelyn Tsai
-	<evelyn.tsai@mediatek.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH] wifi: mac80211: enable EHT mesh support
-Date: Mon, 27 Mar 2023 12:37:32 +0800
-Message-ID: <6088d99492ce29f1075b3a22b2c2e5d010196e51.1679891359.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ 15.2.1118.25; Mon, 27 Mar 2023 13:53:28 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Mon, 27 Mar 2023 13:53:27 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
+	Nicolas Dufresne <nicolas@ndufresne.ca>, Hans Verkuil
+	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
+	<nfraprado@collabora.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Hsin-Yi Wang
+	<hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter
+	<daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v3,0/7] media: mediatek: vcodec: Add debugfs file for decode and encode
+Date: Mon, 27 Mar 2023 13:53:08 +0800
+Message-ID: <20230327055315.13936-1-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230326_213743_943755_2A7B0FC0 
-X-CRM114-Status: GOOD (  16.85  )
+X-CRM114-CacheID: sfid-20230326_225337_311731_EAE03071 
+X-CRM114-Status: GOOD (  11.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,319 +91,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Similar to AP beacon, this enables the basic mesh EHT mode, including
-EHT operation IE and the fixed field of EHT operation information IE.
-As for the optional part (i.e. preamble puncturing bitmap) will be
-added in future patch.
+Need to change kernel driver to open decode and encode debug log at current period,
+it's very unreasonable. Adding debugfs common interface to support decode and encode,
+using echo command to control debug log level and getting useful information for each
+instance.
 
-Tested-by: Lian Chen <lian.chen@mediatek.com>
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+patch 1 add dbgfs common interface.
+patch 2~5 support decode.
+patch 6~7 support encode
 ---
- net/mac80211/ieee80211_i.h |  2 ++
- net/mac80211/mesh.c        | 73 ++++++++++++++++++++++++++++++++++++--
- net/mac80211/mesh.h        |  4 +++
- net/mac80211/mesh_plink.c  | 16 +++++++--
- net/mac80211/util.c        | 73 +++++++++++++++++++++++++++++++++++++-
- 5 files changed, 163 insertions(+), 5 deletions(-)
+changed with v2:
+- using pr_debug and dev_dbg instead of pr_info for patch 2.
+- fix word fail: informatiaoin -> information for patch 3.
+- used to print each instance format information for patch 5.
+changed with v1:
+- add new patch 4 and 5.
+- using cmd 'cat vdec' to show debug information instead of pr_info directly.
+---
+Yunfei Dong (7):
+  media: mediatek: vcodec: Add debugfs interface to get debug
+    information
+  media: mediatek: vcodec: Add debug params to control different log
+    level
+  media: mediatek: vcodec: Add a debugfs file to get different useful
+    information
+  media: mediatek: vcodec: Get each context resolution information
+  media: mediatek: vcodec: Get each instance format type
+  media: mediatek: vcodec: Change dbgfs interface to support encode
+  media: mediatek: vcodec: Add encode to support dbgfs
 
-diff --git a/net/mac80211/ieee80211_i.h b/net/mac80211/ieee80211_i.h
-index ecc232eb1ee8..d2070613a5bb 100644
---- a/net/mac80211/ieee80211_i.h
-+++ b/net/mac80211/ieee80211_i.h
-@@ -2430,6 +2430,8 @@ void ieee80211_ie_build_he_6ghz_cap(struct ieee80211_sub_if_data *sdata,
- 				    enum ieee80211_smps_mode smps_mode,
- 				    struct sk_buff *skb);
- u8 *ieee80211_ie_build_he_oper(u8 *pos, struct cfg80211_chan_def *chandef);
-+u8 *ieee80211_ie_build_eht_oper(u8 *pos, struct cfg80211_chan_def *chandef,
-+				const struct ieee80211_sta_eht_cap *eht_cap);
- int ieee80211_parse_bitrates(enum nl80211_chan_width width,
- 			     const struct ieee80211_supported_band *sband,
- 			     const u8 *srates, int srates_len, u32 *rates);
-diff --git a/net/mac80211/mesh.c b/net/mac80211/mesh.c
-index 5a99b8f6e465..57dc7b009ce4 100644
---- a/net/mac80211/mesh.c
-+++ b/net/mac80211/mesh.c
-@@ -104,7 +104,7 @@ bool mesh_matches_local(struct ieee80211_sub_if_data *sdata,
- 	ieee80211_chandef_vht_oper(&sdata->local->hw, vht_cap_info,
- 				   ie->vht_operation, ie->ht_operation,
- 				   &sta_chan_def);
--	ieee80211_chandef_he_6ghz_oper(sdata, ie->he_operation, NULL,
-+	ieee80211_chandef_he_6ghz_oper(sdata, ie->he_operation, ie->eht_operation,
- 				       &sta_chan_def);
- 
- 	if (!cfg80211_chandef_compatible(&sdata->vif.bss_conf.chandef,
-@@ -638,6 +638,65 @@ int mesh_add_he_6ghz_cap_ie(struct ieee80211_sub_if_data *sdata,
- 	return 0;
- }
- 
-+int mesh_add_eht_cap_ie(struct ieee80211_sub_if_data *sdata,
-+			struct sk_buff *skb, u8 ie_len)
-+{
-+	const struct ieee80211_sta_he_cap *he_cap;
-+	const struct ieee80211_sta_eht_cap *eht_cap;
-+	struct ieee80211_supported_band *sband;
-+	u8 *pos;
-+
-+	sband = ieee80211_get_sband(sdata);
-+	if (!sband)
-+		return -EINVAL;
-+
-+	he_cap = ieee80211_get_he_iftype_cap(sband, NL80211_IFTYPE_MESH_POINT);
-+	eht_cap = ieee80211_get_eht_iftype_cap(sband, NL80211_IFTYPE_MESH_POINT);
-+	if (!he_cap || !eht_cap ||
-+	    sdata->vif.bss_conf.chandef.width == NL80211_CHAN_WIDTH_20_NOHT ||
-+	    sdata->vif.bss_conf.chandef.width == NL80211_CHAN_WIDTH_5 ||
-+	    sdata->vif.bss_conf.chandef.width == NL80211_CHAN_WIDTH_10)
-+		return 0;
-+
-+	if (skb_tailroom(skb) < ie_len)
-+		return -ENOMEM;
-+
-+	pos = skb_put(skb, ie_len);
-+	ieee80211_ie_build_eht_cap(pos, he_cap, eht_cap, pos + ie_len, false);
-+
-+	return 0;
-+}
-+
-+int mesh_add_eht_oper_ie(struct ieee80211_sub_if_data *sdata, struct sk_buff *skb)
-+{
-+	const struct ieee80211_sta_eht_cap *eht_cap;
-+	struct ieee80211_supported_band *sband;
-+	u32 len;
-+	u8 *pos;
-+
-+	sband = ieee80211_get_sband(sdata);
-+	if (!sband)
-+		return -EINVAL;
-+
-+	eht_cap = ieee80211_get_eht_iftype_cap(sband, NL80211_IFTYPE_MESH_POINT);
-+	if (!eht_cap ||
-+	    sdata->vif.bss_conf.chandef.width == NL80211_CHAN_WIDTH_20_NOHT ||
-+	    sdata->vif.bss_conf.chandef.width == NL80211_CHAN_WIDTH_5 ||
-+	    sdata->vif.bss_conf.chandef.width == NL80211_CHAN_WIDTH_10)
-+		return 0;
-+
-+	len = 2 + 1 + offsetof(struct ieee80211_eht_operation, optional) +
-+		      offsetof(struct ieee80211_eht_operation_info, optional);
-+
-+	if (skb_tailroom(skb) < len)
-+		return -ENOMEM;
-+
-+	pos = skb_put(skb, len);
-+	ieee80211_ie_build_eht_oper(pos, &sdata->vif.bss_conf.chandef, eht_cap);
-+
-+	return 0;
-+}
-+
- static void ieee80211_mesh_path_timer(struct timer_list *t)
- {
- 	struct ieee80211_sub_if_data *sdata =
-@@ -696,6 +755,9 @@ ieee80211_mesh_update_bss_params(struct ieee80211_sub_if_data *sdata,
- 	if (he_oper)
- 		sdata->vif.bss_conf.he_oper.params =
- 			__le32_to_cpu(he_oper->he_oper_params);
-+
-+	sdata->vif.bss_conf.eht_support =
-+		!!ieee80211_get_eht_iftype_cap(sband, NL80211_IFTYPE_MESH_POINT);
- }
- 
- /**
-@@ -813,7 +875,7 @@ ieee80211_mesh_build_beacon(struct ieee80211_if_mesh *ifmsh)
- 	struct ieee80211_chanctx_conf *chanctx_conf;
- 	struct mesh_csa_settings *csa;
- 	enum nl80211_band band;
--	u8 ie_len_he_cap;
-+	u8 ie_len_he_cap, ie_len_eht_cap;
- 	u8 *pos;
- 	struct ieee80211_sub_if_data *sdata;
- 	int hdr_len = offsetofend(struct ieee80211_mgmt, u.beacon);
-@@ -826,6 +888,8 @@ ieee80211_mesh_build_beacon(struct ieee80211_if_mesh *ifmsh)
- 
- 	ie_len_he_cap = ieee80211_ie_len_he_cap(sdata,
- 						NL80211_IFTYPE_MESH_POINT);
-+	ie_len_eht_cap = ieee80211_ie_len_eht_cap(sdata,
-+						  NL80211_IFTYPE_MESH_POINT);
- 	head_len = hdr_len +
- 		   2 + /* NULL SSID */
- 		   /* Channel Switch Announcement */
-@@ -849,6 +913,9 @@ ieee80211_mesh_build_beacon(struct ieee80211_if_mesh *ifmsh)
- 		   2 + 1 + sizeof(struct ieee80211_he_operation) +
- 			   sizeof(struct ieee80211_he_6ghz_oper) +
- 		   2 + 1 + sizeof(struct ieee80211_he_6ghz_capa) +
-+		   ie_len_eht_cap +
-+		   2 + 1 + offsetof(struct ieee80211_eht_operation, optional) +
-+			   offsetof(struct ieee80211_eht_operation_info, optional) +
- 		   ifmsh->ie_len;
- 
- 	bcn = kzalloc(sizeof(*bcn) + head_len + tail_len, GFP_KERNEL);
-@@ -969,6 +1036,8 @@ ieee80211_mesh_build_beacon(struct ieee80211_if_mesh *ifmsh)
- 	    mesh_add_he_cap_ie(sdata, skb, ie_len_he_cap) ||
- 	    mesh_add_he_oper_ie(sdata, skb) ||
- 	    mesh_add_he_6ghz_cap_ie(sdata, skb) ||
-+	    mesh_add_eht_cap_ie(sdata, skb, ie_len_eht_cap) ||
-+	    mesh_add_eht_oper_ie(sdata, skb) ||
- 	    mesh_add_vendor_ies(sdata, skb))
- 		goto out_free;
- 
-diff --git a/net/mac80211/mesh.h b/net/mac80211/mesh.h
-index b2b717a78114..3c2d57df2747 100644
---- a/net/mac80211/mesh.h
-+++ b/net/mac80211/mesh.h
-@@ -204,6 +204,10 @@ int mesh_add_he_oper_ie(struct ieee80211_sub_if_data *sdata,
- 			struct sk_buff *skb);
- int mesh_add_he_6ghz_cap_ie(struct ieee80211_sub_if_data *sdata,
- 			    struct sk_buff *skb);
-+int mesh_add_eht_cap_ie(struct ieee80211_sub_if_data *sdata,
-+			struct sk_buff *skb, u8 ie_len);
-+int mesh_add_eht_oper_ie(struct ieee80211_sub_if_data *sdata,
-+			 struct sk_buff *skb);
- void mesh_rmc_free(struct ieee80211_sub_if_data *sdata);
- int mesh_rmc_init(struct ieee80211_sub_if_data *sdata);
- void ieee80211s_init(void);
-diff --git a/net/mac80211/mesh_plink.c b/net/mac80211/mesh_plink.c
-index ddfe5102b9a4..8f168bc4e4b8 100644
---- a/net/mac80211/mesh_plink.c
-+++ b/net/mac80211/mesh_plink.c
-@@ -219,12 +219,14 @@ static int mesh_plink_frame_tx(struct ieee80211_sub_if_data *sdata,
- 	bool include_plid = false;
- 	u16 peering_proto = 0;
- 	u8 *pos, ie_len = 4;
--	u8 ie_len_he_cap;
-+	u8 ie_len_he_cap, ie_len_eht_cap;
- 	int hdr_len = offsetofend(struct ieee80211_mgmt, u.action.u.self_prot);
- 	int err = -ENOMEM;
- 
- 	ie_len_he_cap = ieee80211_ie_len_he_cap(sdata,
- 						NL80211_IFTYPE_MESH_POINT);
-+	ie_len_eht_cap = ieee80211_ie_len_eht_cap(sdata,
-+						  NL80211_IFTYPE_MESH_POINT);
- 	skb = dev_alloc_skb(local->tx_headroom +
- 			    hdr_len +
- 			    2 + /* capability info */
-@@ -241,6 +243,9 @@ static int mesh_plink_frame_tx(struct ieee80211_sub_if_data *sdata,
- 			    2 + 1 + sizeof(struct ieee80211_he_operation) +
- 				    sizeof(struct ieee80211_he_6ghz_oper) +
- 			    2 + 1 + sizeof(struct ieee80211_he_6ghz_capa) +
-+			    ie_len_eht_cap +
-+			    2 + 1 + offsetof(struct ieee80211_eht_operation, optional) +
-+				    offsetof(struct ieee80211_eht_operation_info, optional) +
- 			    2 + 8 + /* peering IE */
- 			    sdata->u.mesh.ie_len);
- 	if (!skb)
-@@ -332,7 +337,9 @@ static int mesh_plink_frame_tx(struct ieee80211_sub_if_data *sdata,
- 		    mesh_add_vht_oper_ie(sdata, skb) ||
- 		    mesh_add_he_cap_ie(sdata, skb, ie_len_he_cap) ||
- 		    mesh_add_he_oper_ie(sdata, skb) ||
--		    mesh_add_he_6ghz_cap_ie(sdata, skb))
-+		    mesh_add_he_6ghz_cap_ie(sdata, skb) ||
-+		    mesh_add_eht_cap_ie(sdata, skb, ie_len_eht_cap) ||
-+		    mesh_add_eht_oper_ie(sdata, skb))
- 			goto free;
- 	}
- 
-@@ -451,6 +458,11 @@ static void mesh_sta_info_init(struct ieee80211_sub_if_data *sdata,
- 					  elems->he_6ghz_capa,
- 					  &sta->deflink);
- 
-+	ieee80211_eht_cap_ie_to_sta_eht_cap(sdata, sband, elems->he_cap,
-+					    elems->he_cap_len,
-+					    elems->eht_cap, elems->eht_cap_len,
-+					    &sta->deflink);
-+
- 	if (bw != sta->sta.deflink.bandwidth)
- 		changed |= IEEE80211_RC_BW_CHANGED;
- 
-diff --git a/net/mac80211/util.c b/net/mac80211/util.c
-index 1a28fe5cb614..8d0a15086870 100644
---- a/net/mac80211/util.c
-+++ b/net/mac80211/util.c
-@@ -3459,6 +3459,77 @@ u8 *ieee80211_ie_build_he_oper(u8 *pos, struct cfg80211_chan_def *chandef)
- 	return pos;
- }
- 
-+u8 *ieee80211_ie_build_eht_oper(u8 *pos, struct cfg80211_chan_def *chandef,
-+				const struct ieee80211_sta_eht_cap *eht_cap)
-+
-+{
-+	const struct ieee80211_eht_mcs_nss_supp_20mhz_only *eht_mcs_nss =
-+					&eht_cap->eht_mcs_nss_supp.only_20mhz;
-+	struct ieee80211_eht_operation *eht_oper;
-+	struct ieee80211_eht_operation_info *eht_oper_info;
-+	u8 eht_oper_len = offsetof(struct ieee80211_eht_operation, optional);
-+	u8 eht_oper_info_len =
-+		offsetof(struct ieee80211_eht_operation_info, optional);
-+	u8 chan_width = 0;
-+
-+	*pos++ = WLAN_EID_EXTENSION;
-+	*pos++ = 1 + eht_oper_len + eht_oper_info_len;
-+	*pos++ = WLAN_EID_EXT_EHT_OPERATION;
-+
-+	eht_oper = (struct ieee80211_eht_operation *)pos;
-+
-+	memcpy(&eht_oper->basic_mcs_nss, eht_mcs_nss, sizeof(*eht_mcs_nss));
-+	eht_oper->params |= IEEE80211_EHT_OPER_INFO_PRESENT;
-+	pos += eht_oper_len;
-+
-+	eht_oper_info =
-+		(struct ieee80211_eht_operation_info *)eht_oper->optional;
-+
-+	eht_oper_info->ccfs0 =
-+		ieee80211_frequency_to_channel(chandef->center_freq1);
-+	if (chandef->center_freq2)
-+		eht_oper_info->ccfs1 =
-+			ieee80211_frequency_to_channel(chandef->center_freq2);
-+	else
-+		eht_oper_info->ccfs1 = 0;
-+
-+	switch (chandef->width) {
-+	case NL80211_CHAN_WIDTH_320:
-+		chan_width = IEEE80211_EHT_OPER_CHAN_WIDTH_320MHZ;
-+		eht_oper_info->ccfs1 = eht_oper_info->ccfs0;
-+		if (chandef->chan->center_freq < chandef->center_freq1)
-+			eht_oper_info->ccfs0 -= 16;
-+		else
-+			eht_oper_info->ccfs0 += 16;
-+		break;
-+	case NL80211_CHAN_WIDTH_160:
-+		eht_oper_info->ccfs1 = eht_oper_info->ccfs0;
-+		if (chandef->chan->center_freq < chandef->center_freq1)
-+			eht_oper_info->ccfs0 -= 8;
-+		else
-+			eht_oper_info->ccfs0 += 8;
-+		fallthrough;
-+	case NL80211_CHAN_WIDTH_80P80:
-+		chan_width = IEEE80211_EHT_OPER_CHAN_WIDTH_160MHZ;
-+		break;
-+	case NL80211_CHAN_WIDTH_80:
-+		chan_width = IEEE80211_EHT_OPER_CHAN_WIDTH_80MHZ;
-+		break;
-+	case NL80211_CHAN_WIDTH_40:
-+		chan_width = IEEE80211_EHT_OPER_CHAN_WIDTH_40MHZ;
-+		break;
-+	default:
-+		chan_width = IEEE80211_EHT_OPER_CHAN_WIDTH_20MHZ;
-+		break;
-+	}
-+	eht_oper_info->control = chan_width;
-+	pos += eht_oper_info_len;
-+
-+	/* TODO: eht_oper_info->optional */
-+
-+	return pos;
-+}
-+
- bool ieee80211_chandef_ht_oper(const struct ieee80211_ht_operation *ht_oper,
- 			       struct cfg80211_chan_def *chandef)
- {
-@@ -4903,7 +4974,7 @@ u8 ieee80211_ie_len_eht_cap(struct ieee80211_sub_if_data *sdata, u8 iftype)
- 				       &eht_cap->eht_cap_elem,
- 				       is_ap);
- 	return 2 + 1 +
--	       sizeof(he_cap->he_cap_elem) + n +
-+	       sizeof(eht_cap->eht_cap_elem) + n +
- 	       ieee80211_eht_ppe_size(eht_cap->eht_ppe_thres[0],
- 				      eht_cap->eht_cap_elem.phy_cap_info);
- 	return 0;
+ .../media/platform/mediatek/vcodec/Makefile   |   6 +
+ .../mediatek/vcodec/mtk_vcodec_dbgfs.c        | 196 ++++++++++++++++++
+ .../mediatek/vcodec/mtk_vcodec_dbgfs.h        |  72 +++++++
+ .../mediatek/vcodec/mtk_vcodec_dec_drv.c      |   4 +
+ .../platform/mediatek/vcodec/mtk_vcodec_drv.h |   4 +
+ .../mediatek/vcodec/mtk_vcodec_enc_drv.c      |   2 +
+ .../mediatek/vcodec/mtk_vcodec_util.c         |   8 +
+ .../mediatek/vcodec/mtk_vcodec_util.h         |  26 ++-
+ 8 files changed, 315 insertions(+), 3 deletions(-)
+ create mode 100644 drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
+ create mode 100644 drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.h
+
 -- 
 2.18.0
 
