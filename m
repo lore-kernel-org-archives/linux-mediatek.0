@@ -4,64 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 165DAC7619A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 10:48:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87EB9C7619A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 10:57:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JJpWt9s21SkDzN868Ycl9scKYBZabhvtSuX4N4znx2I=; b=cB7j0ien7Q9GYEdJ/tJ4Hxihig
-	YY065jD3S/cycBjMgWJg9COsSMj1sED/PWvmTQhz9j8xLVfO8E+Cjk26mwcViN4qURlUae1IecJ+Q
-	pMgd3LWuqZ2utMQqJb+JV9E147N0bLYBZoAowx3eOdLJcklsK/cAhV4ax5u7IrP6mvHphpWscs+jq
-	m4Ha2C750yMdIgE6DlYYSgTPdp2pd8rahOwtJuKdrnvqmcTrj4CzzV4KmVOCbx+aEe/sw8ftmKCUn
-	Gg7hSAf+NFOxzQ+0z3IrFVJVq8R9SGtYT3/Pc04zfJYLpeOX3Hw8WelYCedI1IeLWa3ljRCXg035b
-	dkh5LBzA==;
+	bh=/V3pA35xhVCbP9jkYQO9e9S5qEV2hgRETTuNLYG0J5I=; b=C5JprKsbw5u5UNLMnPFSgONdCl
+	OX8hTq2ml2GsloYAB4Rj1XIcPrgOTIQpqJs5SmFr0GoL4/LbUy9t1+lsHYFNexPyPY5EXmDP++Lqk
+	kBPyA/tRpJUCbH5yi46yyw1GHyRSb00LF3q7qggdvaNRzBqieeNgx1qa0js+X1gL3z4a5OirwRhVN
+	4SeondNasD3gHgTSiREkJcsv8veNJrobR/3yLMbqIsTMq8y6fgVSl2nZmx5qCRshmPjQbnmpCBBl2
+	uoF97u/Dxcbc4e36wE4IpWJbB6y1Akk9tyd3oL6TjfvJb5vSxrHvza4YaRDcHSTVrQkjgVMRSaegY
+	suntpNgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgkOU-00Ag1J-1E;
-	Mon, 27 Mar 2023 10:48:06 +0000
-Received: from nbd.name ([46.4.11.11])
+	id 1pgkWy-00Agjg-25;
+	Mon, 27 Mar 2023 10:56:52 +0000
+Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgkOS-00Ag0e-1v
+	id 1pgkWu-00AgiT-0q
 	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Mar 2023 10:48:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
-	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=JJpWt9s21SkDzN868Ycl9scKYBZabhvtSuX4N4znx2I=; b=idn/xQ8Tep2xKzfY9XGvXOygkX
-	W/SF2/UmHZOvnurQK09hDdpGrIEcrmgAxQjh4bNL1nVrm15g3NwCKZvkoHGRiYXObHIrKNi94T1g+
-	LW5K92tB4qafZxRWPCM72gwmkgBKyAy+eVXvTST9xABzeTenVozQLPayktwJRcCm5qIM=;
-Received: from p54ae9730.dip0.t-ipconnect.de ([84.174.151.48] helo=nf.local)
-	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-	(Exim 4.94.2)
-	(envelope-from <nbd@nbd.name>)
-	id 1pgkOH-007LUO-7z; Mon, 27 Mar 2023 12:47:53 +0200
-Message-ID: <1da4680e-d7b9-dc17-0bff-3edfa046a357@nbd.name>
-Date: Mon, 27 Mar 2023 12:47:52 +0200
+	Mon, 27 Mar 2023 10:56:50 +0000
+Received: by mail-yb1-xb29.google.com with SMTP id i6so9956168ybu.8
+        for <linux-mediatek@lists.infradead.org>; Mon, 27 Mar 2023 03:56:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1679914607;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=/V3pA35xhVCbP9jkYQO9e9S5qEV2hgRETTuNLYG0J5I=;
+        b=q6NUh0GLhbSm+jdtm5u/zJSq9hxnLKIfoo86F6ho5smnjf34w4TPsj9OZwgJekDkfe
+         W+/E4fPYuxWqCcR0vFt/V5DtbFMv76+JyAmmnJ0wDwyX9VkezXK6dmfKe0lGXCkVV1nQ
+         punl2iTjp0SNLSPRDx0NFGQ5yRKS1RhOa+esRXcB0rDOTQMuv6QnlQ6J0w3XbombUITr
+         maO1C4mmuLpNd4Yky5AvLakgbvtYmCIuyXvMSstF73DGH90kUum/xdYY4Lvz/2gGcsF1
+         BKAD5nHXNHn0M7WGb+KgnAMiTaGScaC4MXH6KxkSk+tALMQm2DQxRv8i6rZRUoe1a891
+         pdyQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679914607;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=/V3pA35xhVCbP9jkYQO9e9S5qEV2hgRETTuNLYG0J5I=;
+        b=QyIx5XPnNNMG647pJOjAjr413tDpMviy3kfCdK5b0qotFV9X97nmBsTDVDzB4hEEKY
+         mJb94spQCIEmTM87ZfdE7Upjkk4YulMfq8PfJFecYsNlreg/ezjZMoOFgEq1AJQ4+AL4
+         /vkRBqkR8eqyaoE8AcPxZFetpyjgn5wdZFw5vB3m8keFjnsgw1nNN2IjlJT4N8KSRXh5
+         fiCF6fYkoqRg1w4rj1UPCSvUKy7Zx7VB9Yai/y2g8tFwIaiik8XVu+gtAHcv2QRlO4i9
+         5/CWouByAbbxCf/suBBzPHMCGW3T5z1EkMaONTUs5BNipTyTgqarjPWjHeRvVerKoDZZ
+         DfTg==
+X-Gm-Message-State: AAQBX9chbKayXOSqy1RM8n3b5UQrWSg1GDwO7XWpIb0Xf/ryYWSO8mcv
+	P0jsPsS6zVKfe+ztCyUUFKE6flsPHj2meLPXsWPGqA==
+X-Google-Smtp-Source: AKy350YfvVDOEdafb4m5KIOnnCg2t8RAuLdF4lY57Kt2SzbDhA40QER8ozVCwQkqO3tcWU5y9O4EoOR4PmQqRw+iAnQ=
+X-Received: by 2002:a05:6902:1181:b0:b6c:2224:8a77 with SMTP id
+ m1-20020a056902118100b00b6c22248a77mr7052843ybu.1.1679914607297; Mon, 27 Mar
+ 2023 03:56:47 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.9.0
-Subject: Re: [PATCH] wifi: mac80211: enable EHT mesh support
-Content-Language: en-US
-To: Ryder Lee <ryder.lee@mediatek.com>,
- Johannes Berg <johannes@sipsolutions.net>
-Cc: Shayne Chen <shayne.chen@mediatek.com>,
- Evelyn Tsai <evelyn.tsai@mediatek.com>, linux-wireless@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <6088d99492ce29f1075b3a22b2c2e5d010196e51.1679891359.git.ryder.lee@mediatek.com>
-From: Felix Fietkau <nbd@nbd.name>
-In-Reply-To: <6088d99492ce29f1075b3a22b2c2e5d010196e51.1679891359.git.ryder.lee@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20221122-mt8365-i2c-support-v5-0-6e4f3b54937f@baylibre.com>
+ <20221122-mt8365-i2c-support-v5-2-6e4f3b54937f@baylibre.com> <2a1b1f66-970e-5adb-389e-b9c47a790712@collabora.com>
+In-Reply-To: <2a1b1f66-970e-5adb-389e-b9c47a790712@collabora.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Mon, 27 Mar 2023 12:56:36 +0200
+Message-ID: <CAFGrd9pf+ojPDciF3Mtw-QT51LZCj+GNLHXurGx_vcC17GHA2A@mail.gmail.com>
+Subject: Re: [PATCH v5 2/2] arm64: dts: mediatek: enable i2c0 for mt8365-evk board
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Qii Wang <qii.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, linux-i2c@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Fabien Parent <fparent@baylibre.com>, Rob Herring <robh@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230327_034804_725400_72AEE0ED 
-X-CRM114-Status: UNSURE (   4.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230327_035648_299564_5D6D8DE8 
+X-CRM114-Status: GOOD (  17.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,17 +93,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 27.03.23 06:37, Ryder Lee wrote:
-> @@ -4903,7 +4974,7 @@ u8 ieee80211_ie_len_eht_cap(struct ieee80211_sub_if_data *sdata, u8 iftype)
->   				       &eht_cap->eht_cap_elem,
->   				       is_ap);
->   	return 2 + 1 +
-> -	       sizeof(he_cap->he_cap_elem) + n +
-> +	       sizeof(eht_cap->eht_cap_elem) + n +
->   	       ieee80211_eht_ppe_size(eht_cap->eht_ppe_thres[0],
->   				      eht_cap->eht_cap_elem.phy_cap_info);
->   	return 0;
-This looks like it should be a separate fix, right?
+Hi Angelo,
 
-- Felix
+Le lun. 27 mars 2023 =C3=A0 10:45, AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> a =C3=A9crit :
+>
+> Il 27/03/23 10:27, Alexandre Mergnat ha scritto:
+> > Enable the I2C0 bus provides communication with:
+> > - The integrated RT9466 Switching Battery Charger.
+> > - The integrated MT6691 LP4X buck for VDDQ.
+> > - The integrated MT6691 LP4X buck for VDD2.
+> > - The pin header, to plug external I2C devices.
+> >
+> > Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> > ---
+> >   arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 16 ++++++++++++++++
+> >   1 file changed, 16 insertions(+)
+> >
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts b/arch/arm64/b=
+oot/dts/mediatek/mt8365-evk.dts
+> > index 4683704ea235..35cb142004a4 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+> > @@ -87,6 +87,13 @@ optee_reserved: optee@43200000 {
+> >       };
+> >   };
+> >
+> > +&i2c0 {
+> > +     clock-frequency =3D <100000>;
+> > +     pinctrl-0 =3D <&i2c0_pins>;
+> > +     pinctrl-names =3D "default";
+> > +     status =3D "okay";
+> > +};
+> > +
+> >   &pio {
+> >       gpio_keys: gpio-keys-pins {
+> >               pins {
+> > @@ -96,6 +103,15 @@ pins {
+> >               };
+> >       };
+> >
+> > +     i2c0_pins: i2c0-pins {
+> > +             pins {
+>                         pinmux =3D ...pins...
+>                         bias-pull-up =3D <your-pull-up-adv-value>;
+>                 };
+>
+> ...and please do *not* use the mediatek,pull-up-adv property: this is
+> supposed to be there only for older devicetrees and there's a replacement
+> for it.... unless you have any specific reason to do so (and if you do,
+> you should well explain that).
+
+bias-pull-up isn't necessary currently because MT8365 doesn't use MTK
+paris/moore drivers.
+
+> Besides, if you introduce the usage of that property in any 8365 devicetr=
+ee,
+> the previously proposed 8365 pinctrl cleanup will become a bit harder to =
+do.
+
+I'm thinking of deprecating the "mediatek,pull-up-adv",
+"mediatek,pull-down-adv" properties from mt8365 pinctrl binding too.
+
+Regards,
+Alex
 
