@@ -4,78 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33E96C761A6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 15:32:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AD79C6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 15:34:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KchALCV5XLn5jUS/5S+xjzZ0E3zH4zA5D7MvCwYiS6M=; b=BvVFjBXGlrJpatxvcV6Jvdc12G
-	A6ryQA6LBTyXfDSiiXy42ZkQmVlIq9JK1pCcmWMiZIkmpl/WKaeb5uOV3Dm8MqUJ+ObVf+/vB16Xk
-	VHoIs3CmCfQ2Vbx8nfEfywC8csO31viMUJ7KwzA6ZrvzQ0Kbw+0Sd1zm+zlPOm1PoQPKGLtoHLLvE
-	q+Wj155+z9Wf/g5qhlQ4/uVRxKy7aIfyi0EBI39U2BLCVYREKyTDeFf/9rlWGsW+/sS6B2vyG8Z5y
-	6EZg7o1ystD2zrqCd4RZ5eGRMOzFhgvz7sPi8aT2UHV5gpE7a5n4TOgmSKrBoqXWcLC2m8KpJTBOx
-	jVDkO+ZQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fAGnOsEqdtlnj/68161BxQ54mpbznUmWnS+8YnLr570=; b=rxHkQfdKlic/1vSlM7x5UsHvaY
+	o5DCG1lN58+JH8Tw2qIqdDlWtFs2lcE9QVcFD/JY6C0X3ML6em27eQiz/Ddlk0Pv00Apxczw3slTz
+	Ydz2DhylvYjmtI/3YquUmHh/9E05nVPvxNxRLkfZA3Y81tEFCYkaJh8ysyUC1Svs/gZMu+5FrLoZ3
+	s8p7S/+V2zsHRIamjI6yo+VfoVHG2rh5+wyKdqVGwtQ1Lqbhq9UasLo2FlksvESxbjGheo500wzDD
+	M9kD3SAuYAMTIG9ZSemIO9SYS90On6g9R5eKHXaqzPn17rvOZHpW7bkAv5JnzsRB1++sZyr9sDLHI
+	bGTWqu8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgopl-00BXTA-0b;
-	Mon, 27 Mar 2023 15:32:33 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pgorU-00BY2w-1Y;
+	Mon, 27 Mar 2023 15:34:20 +0000
+Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgoph-00BXQq-0x;
-	Mon, 27 Mar 2023 15:32:31 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id CCC8C61329;
-	Mon, 27 Mar 2023 15:32:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C3978C433AE;
-	Mon, 27 Mar 2023 15:32:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1679931147;
-	bh=f/2piHpw3ZnrfqbQuVx2e9zDHBO/3jdQSMgOHr7fUgI=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=Uf7haOZlNKZwY496KgXr8ZjlaSRrfAV++oWbg76seCtszHHlgU1C1ncye4Qk/V2kz
-	 StEQf1XMyZwTOZ/cnqDbnLJBTooVJ2t2QnaFNeYpIsrT8Oiwgs2t8LijpOjuPl5FCz
-	 wi+uXl2N9FXMOxxNp3Saizfkp0Vw0EvdBmv0NR2ZkTTbbi/QTnYwhoHpPOzn6AhfK5
-	 aM1iGYvK++y4XO7Pzxh/jUsKut53pMYajBadWckTRzZG34diyNKmek1Y1cQrIjT2Hw
-	 /CFI1AoZLOOeRzn6oxii8F19hLdy7PuKHIEmuZWBxKQypuPz5l2TncjN8Eu5njsu1j
-	 UTJZdnD20aNtw==
-Received: by mail-lf1-f49.google.com with SMTP id y20so12018658lfj.2;
-        Mon, 27 Mar 2023 08:32:27 -0700 (PDT)
-X-Gm-Message-State: AAQBX9dStbNGxaSDsINzcQJAsVV2WYq2r803GHPEHqFQiVO0a2frKs8v
-	9tqORS7MpqI9HBXX5mjrePZkl+c5Zsfu5sdrpg==
-X-Google-Smtp-Source: AKy350bW5rYVHuil7fmrbkaSQdUyszcMFvxLxlLqTRSqGk5pqC/YLdf2j3t3MtlGs7578J55uH+BYxLmKoEt/9tHeRM=
-X-Received: by 2002:a19:7419:0:b0:4d8:62e5:4f66 with SMTP id
- v25-20020a197419000000b004d862e54f66mr3484970lfe.7.1679931145672; Mon, 27 Mar
- 2023 08:32:25 -0700 (PDT)
+	id 1pgorO-00BXyF-2c;
+	Mon, 27 Mar 2023 15:34:17 +0000
+Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id EAE071884409;
+	Mon, 27 Mar 2023 15:34:03 +0000 (UTC)
+Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
+	by mailout.gigahost.dk (Postfix) with ESMTP id D5765250394A;
+	Mon, 27 Mar 2023 15:34:03 +0000 (UTC)
+Received: by smtp.gigahost.dk (Postfix, from userid 1000)
+	id BE7339B403E4; Mon, 27 Mar 2023 15:34:03 +0000 (UTC)
+X-Screener-Id: e32ae469fa6e394734d05373d3a705875723cf1e
+Received: from fujitsu (2-104-116-184-cable.dk.customer.tdc.net [2.104.116.184])
+	by smtp.gigahost.dk (Postfix) with ESMTPSA id DEB2891201E3;
+	Mon, 27 Mar 2023 15:34:02 +0000 (UTC)
+From: Hans Schultz <netdev@kapio-technology.com>
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
+ Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Eric
+ Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Kurt
+ Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>,
+ Woojung Huh <woojung.huh@microchip.com>, "maintainer:MICROCHIP KSZ SERIES
+ ETHERNET SWITCH DRIVER" <UNGLinuxDriver@microchip.com>, Sean Wang
+ <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
+ Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, =?utf-8?Q?Cl=C3=A9ment_L=C3=A9ger?=
+ <clement.leger@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
+ <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
+ <razor@blackwall.org>, Shuah Khan <shuah@kernel.org>, Christian Marangi
+ <ansuelsmth@gmail.com>, Ido Schimmel <idosch@nvidia.com>, open list
+ <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>, "open list:RENESAS RZ/N1
+ A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>, "moderated
+ list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>, "open
+ list:KERNEL SELFTEST FRAMEWORK" <linux-kselftest@vger.kernel.org>
+Subject: Re: [PATCH v2 net-next 2/6] net: dsa: propagate flags down towards
+ drivers
+In-Reply-To: <20230327115206.jk5q5l753aoelwus@skbuf>
+References: <20230318141010.513424-1-netdev@kapio-technology.com>
+ <20230318141010.513424-3-netdev@kapio-technology.com>
+ <20230327115206.jk5q5l753aoelwus@skbuf>
+Date: Mon, 27 Mar 2023 17:31:26 +0200
+Message-ID: <87355qb48h.fsf@kapio-technology.com>
 MIME-Version: 1.0
-References: <20230320030449.5397-1-yongqiang.niu@mediatek.com>
-In-Reply-To: <20230320030449.5397-1-yongqiang.niu@mediatek.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Mon, 27 Mar 2023 23:32:13 +0800
-X-Gmail-Original-Message-ID: <CAAOTY__w650cboh38Ptgeq8_smev36-xqzjhFmx9kaBAVMGg_Q@mail.gmail.com>
-Message-ID: <CAAOTY__w650cboh38Ptgeq8_smev36-xqzjhFmx9kaBAVMGg_Q@mail.gmail.com>
-Subject: Re: [v3, PATCH] drm/mediatek: add dma buffer control for drm plane disable
-To: Yongqiang Niu <yongqiang.niu@mediatek.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, CK Hu <ck.hu@mediatek.com>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
-	Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Sumit Semwal <sumit.semwal@linaro.org>, Maxime Ripard <maxime@cerno.tech>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, 
-	linaro-mm-sig@lists.linaro.org, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com, 
-	Hsin-Yi Wang <hsinyi@chromium.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230327_083229_411932_B989F114 
-X-CRM114-Status: GOOD (  23.32  )
+X-CRM114-CacheID: sfid-20230327_083414_992485_0995960C 
+X-CRM114-Status: GOOD (  11.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,171 +88,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Yongqiang:
-
-Yongqiang Niu <yongqiang.niu@mediatek.com> =E6=96=BC 2023=E5=B9=B43=E6=9C=
-=8820=E6=97=A5 =E9=80=B1=E4=B8=80 =E4=B8=8A=E5=8D=8811:05=E5=AF=AB=E9=81=93=
-=EF=BC=9A
+On Mon, Mar 27, 2023 at 14:52, Vladimir Oltean <olteanv@gmail.com> wrote:
 >
-> Fixes: 41016fe1028e4 (drm: Rename plane->state variables in atomic update=
- and disable)
-
-[1] has introduction how to add Fixes tag, one information is:
-
-please use the =E2=80=98Fixes:=E2=80=99 tag with the first 12 characters of=
- the SHA-1
-ID, and the one line summary. Do not split the tag across multiple
-lines, tags are exempt from the =E2=80=9Cwrap at 75 columns=E2=80=9D rule i=
-n order to
-simplify parsing scripts.
-
-And move this tag to the line before your sign-off tag.
-
-[1] https://www.kernel.org/doc/html/v6.2/process/submitting-patches.html
-
-
-> dma buffer release before overlay disable, that will cause
-> m4u translation fault warning.
+> By the way, there is a behavior change here.
 >
-> add dma buffer control flow in mediatek driver:
-> get dma buffer when drm plane disable
-> put dma buffer when overlay really disable
+> Before:
 >
-> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c  | 25 ++++++++++++++++++++++++
->  drivers/gpu/drm/mediatek/mtk_drm_plane.c | 17 ++++++++++++++++
->  drivers/gpu/drm/mediatek/mtk_drm_plane.h |  1 +
->  3 files changed, 43 insertions(+)
+> $ ip link add br0 type bridge && ip link set br0 up
+> $ ip link set swp0 master br0 && ip link set swp0 up
+> $ bridge fdb add dev swp0 00:01:02:03:04:05 master dynamic
+> [   70.010181] mscc_felix 0000:00:00.5: felix_fdb_add: port 0 addr 00:01:02:03:04:05 vid 0
+> [   70.019105] mscc_felix 0000:00:00.5: felix_fdb_add: port 0 addr 00:01:02:03:04:05 vid 1
+> .... 5 minutes later
+> [  371.686935] mscc_felix 0000:00:00.5: felix_fdb_del: port 0 addr 00:01:02:03:04:05 vid 1
+> [  371.695449] mscc_felix 0000:00:00.5: felix_fdb_del: port 0 addr 00:01:02:03:04:05 vid 0
+> $ bridge fdb | grep 00:01:02:03:04:05
 >
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/me=
-diatek/mtk_drm_crtc.c
-> index 5071f1263216..9cf1c1778868 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> @@ -4,6 +4,7 @@
->   */
+> After:
 >
->  #include <linux/clk.h>
-> +#include <linux/dma-buf.h>
->  #include <linux/dma-mapping.h>
->  #include <linux/mailbox_controller.h>
->  #include <linux/pm_runtime.h>
-> @@ -282,6 +283,23 @@ struct mtk_ddp_comp *mtk_drm_ddp_comp_for_plane(stru=
-ct drm_crtc *crtc,
->         return NULL;
->  }
+> $ ip link add br0 type bridge && ip link set br0 up
+> $ ip link set swp0 master br0 && ip link set swp0 up
+> $ bridge fdb add dev swp0 00:01:02:03:04:05 master dynamic
+> [  222.071492] mscc_felix 0000:00:00.5: felix_fdb_add: port 0 addr 00:01:02:03:04:05 vid 0 flags 0x1
+> [  222.081154] mscc_felix 0000:00:00.5: felix_fdb_add: port 0 addr 00:01:02:03:04:05 vid 1 flags 0x1
+> .... 5 minutes later
+> $ bridge fdb | grep 00:01:02:03:04:05
+> 00:01:02:03:04:05 dev swp0 vlan 1 offload master br0 stale
+> 00:01:02:03:04:05 dev swp0 offload master br0 stale
+> 00:01:02:03:04:05 dev swp0 vlan 1 self
+> 00:01:02:03:04:05 dev swp0 self
 >
-> +static void mtk_drm_dma_buf_put(struct mtk_drm_crtc *mtk_crtc)
-> +{
-> +       unsigned int i;
-> +
-> +       for (i =3D 0; i < mtk_crtc->layer_nr; i++) {
-> +               struct drm_plane *plane =3D &mtk_crtc->planes[i];
-> +               struct mtk_plane_state *plane_state;
-> +
-> +               plane_state =3D to_mtk_plane_state(plane->state);
-> +
-> +               if (plane_state && plane_state->pending.dma_buf) {
-> +                       dma_buf_put(plane_state->pending.dma_buf);
-> +                       plane_state->pending.dma_buf =3D NULL;
-> +               }
-> +       }
-> +}
-> +
->  #if IS_REACHABLE(CONFIG_MTK_CMDQ)
->  static void ddp_cmdq_cb(struct mbox_client *cl, void *mssg)
->  {
-> @@ -322,6 +340,8 @@ static void ddp_cmdq_cb(struct mbox_client *cl, void =
-*mssg)
->                 mtk_crtc->pending_async_planes =3D false;
->         }
->
-> +       mtk_drm_dma_buf_put(mtk_crtc);
-> +
->         mtk_crtc->cmdq_vblank_cnt =3D 0;
->         wake_up(&mtk_crtc->cb_blocking_queue);
->  }
-> @@ -614,9 +634,14 @@ static void mtk_crtc_ddp_irq(void *data)
->         else if (mtk_crtc->cmdq_vblank_cnt > 0 && --mtk_crtc->cmdq_vblank=
-_cnt =3D=3D 0)
->                 DRM_ERROR("mtk_crtc %d CMDQ execute command timeout!\n",
->                           drm_crtc_index(&mtk_crtc->base));
-> +
-> +       if (!mtk_crtc->cmdq_client.chan)
-> +               mtk_drm_dma_buf_put(mtk_crtc);
->  #else
->         if (!priv->data->shadow_register)
->                 mtk_crtc_ddp_config(crtc, NULL);
-> +
-> +       mtk_drm_dma_buf_put(mtk_crtc);
->  #endif
->         mtk_drm_finish_page_flip(mtk_crtc);
->  }
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/m=
-ediatek/mtk_drm_plane.c
-> index d54fbf34b000..c169ca49129c 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> @@ -12,6 +12,7 @@
->  #include <drm/drm_framebuffer.h>
->  #include <drm/drm_gem_atomic_helper.h>
->  #include <linux/align.h>
-> +#include <linux/dma-buf.h>
->
->  #include "mtk_drm_crtc.h"
->  #include "mtk_drm_ddp_comp.h"
-> @@ -280,6 +281,22 @@ static void mtk_plane_atomic_disable(struct drm_plan=
-e *plane,
->         struct drm_plane_state *new_state =3D drm_atomic_get_new_plane_st=
-ate(state,
->                                                                          =
-  plane);
->         struct mtk_plane_state *mtk_plane_state =3D to_mtk_plane_state(ne=
-w_state);
-> +       struct drm_plane_state *old_state =3D drm_atomic_get_old_plane_st=
-ate(state,
-> +                                                                        =
-  plane);
-> +
-> +       if (old_state && old_state->fb) {
-> +               struct drm_gem_object *gem =3D old_state->fb->obj[0];
-> +
-> +               if (mtk_plane_state->pending.dma_buf) {
+> As you can see, the behavior is not identical, and it made more sense
+> before.
 
-When this happen, the pending.dma_buf is still accessed by OVL, right?
-So you free this buffer and m4u translation fault occur.
-
-Regards,
-Chun-Kuang.
-
-> +                       dma_buf_put(mtk_plane_state->pending.dma_buf);
-> +                       mtk_plane_state->pending.dma_buf =3D NULL;
-> +               }
-> +
-> +               if (gem && gem->dma_buf) {
-> +                       get_dma_buf(gem->dma_buf);
-> +                       mtk_plane_state->pending.dma_buf =3D gem->dma_buf=
-;
-> +               }
-> +       }
->         mtk_plane_state->pending.enable =3D false;
->         wmb(); /* Make sure the above parameter is set before update */
->         mtk_plane_state->pending.dirty =3D true;
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.h b/drivers/gpu/drm/m=
-ediatek/mtk_drm_plane.h
-> index 8f39011cdbfc..b724e56b7283 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_plane.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.h
-> @@ -33,6 +33,7 @@ struct mtk_plane_pending_state {
->         bool                            async_dirty;
->         bool                            async_config;
->         enum drm_color_encoding         color_encoding;
-> +       struct dma_buf                  *dma_buf;
->  };
->
->  struct mtk_plane_state {
-> --
-> 2.25.1
->
+I see this is Felix Ocelot and there is no changes in this patchset that
+affects Felix Ocelot. Thus I am quite sure the results will be the same
+without this patchset, ergo it must be because of another patch. All
+that is done here in the DSA layer is to pass on an extra field and add
+an extra check that will always pass in the case of this flag.
 
