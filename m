@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87EB9C7619A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 10:57:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62EC9C7619A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 10:59:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/V3pA35xhVCbP9jkYQO9e9S5qEV2hgRETTuNLYG0J5I=; b=C5JprKsbw5u5UNLMnPFSgONdCl
-	OX8hTq2ml2GsloYAB4Rj1XIcPrgOTIQpqJs5SmFr0GoL4/LbUy9t1+lsHYFNexPyPY5EXmDP++Lqk
-	kBPyA/tRpJUCbH5yi46yyw1GHyRSb00LF3q7qggdvaNRzBqieeNgx1qa0js+X1gL3z4a5OirwRhVN
-	4SeondNasD3gHgTSiREkJcsv8veNJrobR/3yLMbqIsTMq8y6fgVSl2nZmx5qCRshmPjQbnmpCBBl2
-	uoF97u/Dxcbc4e36wE4IpWJbB6y1Akk9tyd3oL6TjfvJb5vSxrHvza4YaRDcHSTVrQkjgVMRSaegY
-	suntpNgQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4cIVo2dlqJiiyp85rWZ9bI1y0w9kmh/mgSwb0qLyW7E=; b=i9jvM2TEKPCwgV1+tEDG1KFAZ1
+	hKTImnCOwBtdg+K5ULTn45Lsbsq5BZ5kROEGrSNMCHNohOY/9HbXKGTBbDXRGJ225rpU51Lcuqkp/
+	/2X76XoRL7LnfqBQO+yH/RKo3aha8cH7Ym+T2p046xV64DDTleuxrcqnbluO9vPjlKXxq8zNVqT8V
+	1obZGRIlhnGS0blHPK6C0/41NIXhu8JuJA+i0Max66ob2PHn0ar64L85bNSDNaNDY5tjWJXZ4Aopu
+	Kaw6XuhWwR4fqLyjhI9yPbhcHVyy+fSxMtmi8WOd35PsdOcvGtK5llM+WOf42frTz5TDsqRV3By+B
+	CfYu5CgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgkWy-00Agjg-25;
-	Mon, 27 Mar 2023 10:56:52 +0000
+	id 1pgkZl-00AhER-1Q;
+	Mon, 27 Mar 2023 10:59:45 +0000
 Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgkWu-00AgiT-0q
+	id 1pgkZj-00AhDb-0g
 	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Mar 2023 10:56:50 +0000
-Received: by mail-yb1-xb29.google.com with SMTP id i6so9956168ybu.8
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Mar 2023 03:56:47 -0700 (PDT)
+	Mon, 27 Mar 2023 10:59:44 +0000
+Received: by mail-yb1-xb29.google.com with SMTP id i7so10004458ybt.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 27 Mar 2023 03:59:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1679914607;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=/V3pA35xhVCbP9jkYQO9e9S5qEV2hgRETTuNLYG0J5I=;
-        b=q6NUh0GLhbSm+jdtm5u/zJSq9hxnLKIfoo86F6ho5smnjf34w4TPsj9OZwgJekDkfe
-         W+/E4fPYuxWqCcR0vFt/V5DtbFMv76+JyAmmnJ0wDwyX9VkezXK6dmfKe0lGXCkVV1nQ
-         punl2iTjp0SNLSPRDx0NFGQ5yRKS1RhOa+esRXcB0rDOTQMuv6QnlQ6J0w3XbombUITr
-         maO1C4mmuLpNd4Yky5AvLakgbvtYmCIuyXvMSstF73DGH90kUum/xdYY4Lvz/2gGcsF1
-         BKAD5nHXNHn0M7WGb+KgnAMiTaGScaC4MXH6KxkSk+tALMQm2DQxRv8i6rZRUoe1a891
-         pdyQ==
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1679914782;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=4cIVo2dlqJiiyp85rWZ9bI1y0w9kmh/mgSwb0qLyW7E=;
+        b=HpAU6+Yufd8ekUlVDHkFI81rDPd94b4qWTH7yuDsOEA2Ut0f5J9ba2s3LHM7SMrzD0
+         w4fZByz8p4ux2lldYl3Q1UsWPLfmAcEf/nDVyEBb/ndixUMiN8pxVvjIqr7bVdm8ury0
+         sg97heLG4+thQaiKAgBZ29ytx6MeDpoIz+tCv3bvymjOe25rY+GO5p+ikIMWu9jyuhn4
+         W2IZDHevp92O1BcmnOh8RmtV5hw/VZH0BqjixPMJqjiJl9FFjq+OhRch/rh/pVhbdrd9
+         dxaxbnvOcfRF/Kzto/tuDreZSm9wNbGsfp7VmlmGInt1sU4+xdWBrNxWvYmwbgzbE0v1
+         /o3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679914607;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=/V3pA35xhVCbP9jkYQO9e9S5qEV2hgRETTuNLYG0J5I=;
-        b=QyIx5XPnNNMG647pJOjAjr413tDpMviy3kfCdK5b0qotFV9X97nmBsTDVDzB4hEEKY
-         mJb94spQCIEmTM87ZfdE7Upjkk4YulMfq8PfJFecYsNlreg/ezjZMoOFgEq1AJQ4+AL4
-         /vkRBqkR8eqyaoE8AcPxZFetpyjgn5wdZFw5vB3m8keFjnsgw1nNN2IjlJT4N8KSRXh5
-         fiCF6fYkoqRg1w4rj1UPCSvUKy7Zx7VB9Yai/y2g8tFwIaiik8XVu+gtAHcv2QRlO4i9
-         5/CWouByAbbxCf/suBBzPHMCGW3T5z1EkMaONTUs5BNipTyTgqarjPWjHeRvVerKoDZZ
-         DfTg==
-X-Gm-Message-State: AAQBX9chbKayXOSqy1RM8n3b5UQrWSg1GDwO7XWpIb0Xf/ryYWSO8mcv
-	P0jsPsS6zVKfe+ztCyUUFKE6flsPHj2meLPXsWPGqA==
-X-Google-Smtp-Source: AKy350YfvVDOEdafb4m5KIOnnCg2t8RAuLdF4lY57Kt2SzbDhA40QER8ozVCwQkqO3tcWU5y9O4EoOR4PmQqRw+iAnQ=
-X-Received: by 2002:a05:6902:1181:b0:b6c:2224:8a77 with SMTP id
- m1-20020a056902118100b00b6c22248a77mr7052843ybu.1.1679914607297; Mon, 27 Mar
- 2023 03:56:47 -0700 (PDT)
+        d=1e100.net; s=20210112; t=1679914782;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=4cIVo2dlqJiiyp85rWZ9bI1y0w9kmh/mgSwb0qLyW7E=;
+        b=bGjbLGgXpjPvN5xnuLo/AfibiKPyutcvYp4h6CwYy4W4Eh0RrKU9kR9Nu3s0Ycs7bq
+         dY1iVs4qaJPdwS3JAoRMXNbYD/SgiRij2I/29u3N/037c0nEpxO5M0mIVaLeLPaQw8bH
+         MslogUQ3V0sGDaZfJCOej49hteG4+9xIoVeGrTP5GGmYEEyPs4pJGlRg9WsDRDJRlBQS
+         6SZ6Oam12g2I+Ex9ChGArxWInCeXL62l9oInle74oSQvwfIPgORI1ZQyjCnVvgn/YwRg
+         h3nn6DTvKcqj01ZIgsawSJCZciTbilMZGqKL4/qoSnAwTyaW1oCOKQ4N05PAcLvjIk8m
+         emHA==
+X-Gm-Message-State: AAQBX9e6YVuiHOJ/ghYjNSrnwJXWMiPIkcRb4/k9xvdT4/eEbBMuh6kj
+	idxeapMWi/yQpNrZ/KezoJA/rFRqxgqcVZKkOartow==
+X-Google-Smtp-Source: AKy350b5PoC9b2J9/khe3V6Tkw9uAc0Lp6gjwZcsHGSG0CxqeaAumyEo+6eqBsCqxlWqhiTzMb1m1rI7YuEqSoTqylI=
+X-Received: by 2002:a05:6902:1586:b0:98e:6280:74ca with SMTP id
+ k6-20020a056902158600b0098e628074camr6889426ybu.1.1679914782191; Mon, 27 Mar
+ 2023 03:59:42 -0700 (PDT)
 MIME-Version: 1.0
 References: <20221122-mt8365-i2c-support-v5-0-6e4f3b54937f@baylibre.com>
- <20221122-mt8365-i2c-support-v5-2-6e4f3b54937f@baylibre.com> <2a1b1f66-970e-5adb-389e-b9c47a790712@collabora.com>
-In-Reply-To: <2a1b1f66-970e-5adb-389e-b9c47a790712@collabora.com>
+ <20221122-mt8365-i2c-support-v5-2-6e4f3b54937f@baylibre.com>
+ <2a1b1f66-970e-5adb-389e-b9c47a790712@collabora.com> <CAFGrd9pf+ojPDciF3Mtw-QT51LZCj+GNLHXurGx_vcC17GHA2A@mail.gmail.com>
+In-Reply-To: <CAFGrd9pf+ojPDciF3Mtw-QT51LZCj+GNLHXurGx_vcC17GHA2A@mail.gmail.com>
 From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Mon, 27 Mar 2023 12:56:36 +0200
-Message-ID: <CAFGrd9pf+ojPDciF3Mtw-QT51LZCj+GNLHXurGx_vcC17GHA2A@mail.gmail.com>
+Date: Mon, 27 Mar 2023 12:59:31 +0200
+Message-ID: <CAFGrd9r-s564RPk+F5J_=Ns-1tjWo-osEYaXNNt0uXU_k=TKqw@mail.gmail.com>
 Subject: Re: [PATCH v5 2/2] arm64: dts: mediatek: enable i2c0 for mt8365-evk board
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: Qii Wang <qii.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, 
@@ -75,10 +75,10 @@ Cc: Qii Wang <qii.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
 	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
 	Fabien Parent <fparent@baylibre.com>, Rob Herring <robh@kernel.org>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230327_035648_299564_5D6D8DE8 
-X-CRM114-Status: GOOD (  17.07  )
+X-CRM114-CacheID: sfid-20230327_035943_248487_9A149205 
+X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,68 +93,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo,
-
-Le lun. 27 mars 2023 =C3=A0 10:45, AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> a =C3=A9crit :
+> > ...and please do *not* use the mediatek,pull-up-adv property: this is
+> > supposed to be there only for older devicetrees and there's a replacement
+> > for it.... unless you have any specific reason to do so (and if you do,
+> > you should well explain that).
 >
-> Il 27/03/23 10:27, Alexandre Mergnat ha scritto:
-> > Enable the I2C0 bus provides communication with:
-> > - The integrated RT9466 Switching Battery Charger.
-> > - The integrated MT6691 LP4X buck for VDDQ.
-> > - The integrated MT6691 LP4X buck for VDD2.
-> > - The pin header, to plug external I2C devices.
-> >
-> > Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-> > ---
-> >   arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 16 ++++++++++++++++
-> >   1 file changed, 16 insertions(+)
-> >
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts b/arch/arm64/b=
-oot/dts/mediatek/mt8365-evk.dts
-> > index 4683704ea235..35cb142004a4 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-> > @@ -87,6 +87,13 @@ optee_reserved: optee@43200000 {
-> >       };
-> >   };
-> >
-> > +&i2c0 {
-> > +     clock-frequency =3D <100000>;
-> > +     pinctrl-0 =3D <&i2c0_pins>;
-> > +     pinctrl-names =3D "default";
-> > +     status =3D "okay";
-> > +};
-> > +
-> >   &pio {
-> >       gpio_keys: gpio-keys-pins {
-> >               pins {
-> > @@ -96,6 +103,15 @@ pins {
-> >               };
-> >       };
-> >
-> > +     i2c0_pins: i2c0-pins {
-> > +             pins {
->                         pinmux =3D ...pins...
->                         bias-pull-up =3D <your-pull-up-adv-value>;
->                 };
->
-> ...and please do *not* use the mediatek,pull-up-adv property: this is
-> supposed to be there only for older devicetrees and there's a replacement
-> for it.... unless you have any specific reason to do so (and if you do,
-> you should well explain that).
+> bias-pull-up isn't necessary currently because MT8365 doesn't use MTK
 
-bias-pull-up isn't necessary currently because MT8365 doesn't use MTK
-paris/moore drivers.
-
-> Besides, if you introduce the usage of that property in any 8365 devicetr=
-ee,
-> the previously proposed 8365 pinctrl cleanup will become a bit harder to =
-do.
-
-I'm thinking of deprecating the "mediatek,pull-up-adv",
-"mediatek,pull-down-adv" properties from mt8365 pinctrl binding too.
-
-Regards,
-Alex
+I mean mediatek,pull-up-adv. bias-pull-up can be kept.
 
