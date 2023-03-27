@@ -4,88 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73756C76195
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 07:24:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8A40C761AF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 07:49:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OjdPO/oq4IIE0hFyHigrECYsxChLPPYgESz7B/pDYOI=; b=Z09SkHLT+6PQfsefGTMg35PJR6
-	hTXObtisM5/O/ifgVo8IPLL0FepxtIe/nkoJr+UUVePaQ7ZoCVwA0zog9ZAzOZOgz2x06DPWj/ELB
-	F1NLBSGMdl8z+KF4ddViwlqubtiaxaH1JZ/jLgED3haXTTRvEjVDIdtVh/3qHZD2FulZVKJHlA9E1
-	ERvC4VSuGW/haTyX8zTT/K0OCUvkJhf+He8R2wrge1rEFGSXmLijFtuUWs4q1r1CtLuzw3YgUvgOS
-	cJQmVfowwW6AaKsdwtvTYf89k03f6gi2fyDmWXCdHDC727jZnuJDKrOznM3ZEJmSe/YWwyZMt4Mjh
-	XAuqelAw==;
+	bh=nZ3JPx89Puhq8Lj0NnsgaQqb5P9c24gnAiuVWjy2kS8=; b=DSENw9YHn2fqwv25FNJUDLlqf1
+	MOW+vwaa3B7eCLvCqkiXtC7zU2FGT2PTbn8g2jvBsLQQlLYmOkBQfQ0cwrry2DLnmXmDMHZ2zT138
+	V+6QXf/8EEYcCoXdXdtd7+XxJk9HzpOMm7VBvkFP1N3cBYpeDbKyC8HCOlAI9C6Lr+QmZM130iiTU
+	Jo/PbF4yuwr5r28HRBw2YqF0dKZl67BDAQnRdFbkfeyI5c4yWy98Y0ZcUqBkaWQhqLpcg0UWsiJJY
+	gCMSlUowvaNWfgJ3EbfM3WuUPbUM3kwLGNWmPWqsL6kOS9wsujQXjy15ai3iztTJ+psKcFcN5iUA5
+	ugEHTlEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pghCy-00A3u3-0d;
-	Mon, 27 Mar 2023 07:24:00 +0000
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+	id 1pghbx-00A6q9-2o;
+	Mon, 27 Mar 2023 07:49:49 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pghCv-00A3tE-2P
+	id 1pghbv-00A6oa-0W
 	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Mar 2023 07:23:58 +0000
-Received: by mail-ed1-x52e.google.com with SMTP id ew6so31726669edb.7
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Mar 2023 00:23:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1679901834;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=OjdPO/oq4IIE0hFyHigrECYsxChLPPYgESz7B/pDYOI=;
-        b=kEhpgaB0+FpNDi/WR7iPM+81mqXbh4tx5ISPPA1oSU6dY97FK8aUp9yDlZvoyl8xjD
-         tbdmmIazwmIue7n7Z8EYtw58KkMRx0qDa81z+PvmsVGpNRhcouOmJqWi4qYkFwjKe1L1
-         R22JIaoaRhQJkEPtmehBpE/5AwLPEKjjn8ujez8CuBIIZIzl1ZmStzbFDGkjnTDz4DEj
-         vaZFbfYZDgrhO5gntDqIGjcXjYHKW9JAjiIGLDxQTsFvCtgo3y8KGSGp5R86QE8Z8Qef
-         /5/Bn+BLqvmjVTwhEn6yMIRRu7AqxkXU764qg25bs7Ndn+IcHxJ75/McKUoPxReqhmUa
-         qZrg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679901834;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=OjdPO/oq4IIE0hFyHigrECYsxChLPPYgESz7B/pDYOI=;
-        b=HoBMACNHMwtNbLIlMlGajgcVjqZ4MwbOQe/PUkW9bLydQJHL8PrCdTolOqc5p0W9J7
-         90eY142axjyO+FhxveASyOvXSH7Z9TX9gTk7WO/sbD/h24SlqtAJ6c4AP83PKOypCvV1
-         OEcpq+DSxYYWIOIGJLrdweHh2Y/bngoLrXuPSJA7Yr+rBW7VaXTBfVUuKlGt3XVt3/X1
-         XH/xyl0fxwW2A61is/49o7PT8DBqc4tlRt+KZUsVbFRR9grifDEukuO21u9Do1d22zAV
-         5LQD0uZSI3mazP5h7LvuBeYyEzFbFZtAsACce8jE1mkqtkpyGcqAdIIfFq4Qki6oSeGN
-         pMLw==
-X-Gm-Message-State: AAQBX9c3JPvTzNQEEFNOuufP3TxcAjLfu70C3nONiKTGRA8HKL5FRUFZ
-	nCzQnBgg5tvLJEQCw77mbaMstg==
-X-Google-Smtp-Source: AKy350azTNMcDvP3N7zgcsBq8oWHYm5j1ZDrSetdKr7bGj0XWY8nqN78nx3uN23pI6zOfMxTy1BUQw==
-X-Received: by 2002:a17:906:6dd7:b0:931:c99c:480 with SMTP id j23-20020a1709066dd700b00931c99c0480mr11619450ejt.69.1679901834032;
-        Mon, 27 Mar 2023 00:23:54 -0700 (PDT)
-Received: from ?IPV6:2a02:810d:15c0:828:198e:c1a5:309b:d678? ([2a02:810d:15c0:828:198e:c1a5:309b:d678])
-        by smtp.gmail.com with ESMTPSA id hy14-20020a1709068a6e00b009351546fb54sm10151855ejc.28.2023.03.27.00.23.53
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 27 Mar 2023 00:23:53 -0700 (PDT)
-Message-ID: <8d5cefae-e10e-52c1-b070-4a1d15a5ef93@linaro.org>
-Date: Mon, 27 Mar 2023 09:23:52 +0200
+	Mon, 27 Mar 2023 07:49:48 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 093496603082;
+	Mon, 27 Mar 2023 08:49:42 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1679903383;
+	bh=Wigh5ZkT6PUuW6n+/iXN9rF147ZZhApXRlVFqVwLC+c=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=SMdmt5Cw1Lb0mW0Kv0Sqi3TEb5dSZ2fc8It4iiI8AFGy5/ZG85rnJmxXpAAardCBz
+	 yDWyYzLoX0zjh45pFeH8RgMc0tIg7HnPKhhTLxWkwBwvAmZGaqg+he+8/tPW3kb9Ec
+	 NTE9n05G6G7ivAa21j5vEaqh6faJCNeBpmdMyCic5v3q6xwTXegiENtLPwSDE4t/AE
+	 DBYrS8vgTiAUZTWEUTqT4jYA8VPIvdN4i/Hp38Zo+RxibSTOe5Mcha6U700m98WAd5
+	 8Oez93U/UlZxQY3vkwSsF/Ey+EjnVtJCcq45MQ6gbiLywAY1u4leiSvaeLQYV6+Dv7
+	 6hcQFgz3Kuuyg==
+Message-ID: <c2410688-8343-9c29-a7a3-9e30b6696449@collabora.com>
+Date: Mon, 27 Mar 2023 09:49:40 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.9.0
-Subject: Re: [PATCH v2 1/6] dt-bindings: soc: mediatek: pwrap: Add compatible
- for MT6795 Helio X10
+Subject: Re: [PATCH] iommu/mediatek: fix a reversed test in probe
+To: Dan Carpenter <error27@gmail.com>, Yong Wu <yong.wu@mediatek.com>
+Cc: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "Chengci.Xu" <chengci.xu@mediatek.com>, iommu@lists.linux.dev,
+ linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
+References: <88c83ce7-5d1a-44a8-b9bf-0d01cfea24db@kili.mountain>
 Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- matthias.bgg@gmail.com
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- amergnat@baylibre.com, flora.fu@mediatek.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel@collabora.com,
- phone-devel@vger.kernel.org, ~postmarketos/upstreaming@lists.sr.ht
-References: <20230324094205.33266-1-angelogioacchino.delregno@collabora.com>
- <20230324094205.33266-2-angelogioacchino.delregno@collabora.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230324094205.33266-2-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <88c83ce7-5d1a-44a8-b9bf-0d01cfea24db@kili.mountain>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230327_002357_795555_B6CE097F 
-X-CRM114-Status: UNSURE (   7.94  )
+X-CRM114-CacheID: sfid-20230327_004947_415693_A0B05375 
+X-CRM114-Status: UNSURE (   7.29  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -101,16 +80,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 24/03/2023 10:42, AngeloGioacchino Del Regno wrote:
-> Add a compatible for the PMIC Wrapper found on the MT6795 Helio X10 SoC.
+Il 25/03/23 12:07, Dan Carpenter ha scritto:
+> The dma_set_mask() function returns negative error codes on failure but
+> this code is testing for zero instead.
 > 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  .../devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml         | 1 +
+> Fixes: f4b49c7c5e67 ("iommu/mediatek: Set dma_mask for PGTABLE_PA_35_EN")
+> Signed-off-by: Dan Carpenter <error27@gmail.com>
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Best regards,
-Krzysztof
 
 
