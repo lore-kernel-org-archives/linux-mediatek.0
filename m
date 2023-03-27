@@ -4,54 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AF08C761A6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 07:53:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9262BC76195
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Mar 2023 08:09:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Z0N5VlX9/JlryGOL5I747Le9USomZJCRNNGRT3LbbKc=; b=QczUXeC4FPjjeROdzmtNImQrcj
-	eBFVce5VUptfuXpr73JeG+YjDWZettZ6SKsm7i8arJIhQYCl0Pd3KakYwmKJcvpLIPPT8lXGmCqwL
-	ttV3CI4O88WjK+KaCQaUdpk9TJBNUdsp5P7eJF+a611smfscNc2CPidqrFLepYnXtAEtl5ETO8vr8
-	BEL27mtf0Usc4eizjGdZK54DUYMKJaZecvrs5OIqLMGQZ/LEZoh/ocJ0ezG/Qenxe/VPmbRs3ln2U
-	ZW/luBRq1qZCeohdoJCAUFkuulX1Yk4J1Ue6JeBcimd4/vP0igtYJRrD0pMtdfwhbp1hBvJEIIDb8
-	K7AhxS1w==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UoKRRxh1cnlXXq1Hd8HxSZFSW5KETTMBQ4mJB+0rdhc=; b=FIj7H1SE+eQsMtL1atUFF5S2mt
+	uUBxqdAcBhR41oyC6AuchTEMWOrtUQhUXrBciq9YVYelkV7pdnrJ94JRHKFWZSnDbcJIWAb+OjUNR
+	UXQUGDNoGQJFcLr+/m0/MJ5MYOH8/cBmGIVPBNS9uhf4EzMQ6StBHtP2zEY4N01hPkkYCztI0IwNd
+	1GMT3lN9ZHx8Yb9jebmFnggLVKEzpLAZwBX6lF3WsHwydZAW1NTn3MSfn6XpOAi94HzMBy1zLtukv
+	KRmboZg45u0FLbxxgxNeG3eQQCMC1+xPR1AoNatuFdBliP0x3hMbf7d34zX2WwNW0HE0rnlvw/Yp+
+	XjhQP8iQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pghfE-00A7Y2-2M;
-	Mon, 27 Mar 2023 07:53:12 +0000
-Received: from mail.lokoho.com ([217.61.105.98])
+	id 1pghvE-00AB0Y-25;
+	Mon, 27 Mar 2023 08:09:44 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pghfB-00A7W6-2t
-	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Mar 2023 07:53:11 +0000
-Received: by mail.lokoho.com (Postfix, from userid 1001)
-	id 5ADF083A35; Mon, 27 Mar 2023 08:51:43 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=lokoho.com; s=mail;
-	t=1679903586; bh=Z0N5VlX9/JlryGOL5I747Le9USomZJCRNNGRT3LbbKc=;
-	h=Date:From:To:Subject:From;
-	b=qjqvKP6bSORzlvwQro5M147KDVHbIGCZsJU9/L/Uiq8xpRjtVKLQ0gzWPjj/r7dcI
-	 U1HTXw+fV343zAmpY+1OS6rM43ka8bB9kSaBVw2W9UPj+iclziBVZ42/WlQtPlzXdS
-	 PM8L7Tws2fOXDpbkWYDccm2S9I7BHk9zTt3ez+h156/wJCuGpReLEumNMyTyvMhUu/
-	 JLE7OBT32FHkCiCaU37EVVaNlMkH5qmeNTwQreFcZIHAyTQxQdOBFfEtkpqWHRG6p9
-	 I0ikhnlahnzgvuI7j+pF68RR5FtSSIJnWDxa7ykI3V6v8HwFW2jNK68nCsmAqICDbx
-	 M8MF/et8xW6ng==
-Received: by mail.lokoho.com for <linux-mediatek@lists.infradead.org>; Mon, 27 Mar 2023 07:50:50 GMT
-Message-ID: <20230327074501-0.1.4w.1mg4y.0.9kdndeq6eo@lokoho.com>
-Date: Mon, 27 Mar 2023 07:50:50 GMT
-From: "Adam Charachuta" <adam.charachuta@lokoho.com>
-To: <linux-mediatek@lists.infradead.org>
-Subject: =?UTF-8?Q?S=C5=82owa_kluczowe_do_wypozycjonowania?=
-X-Mailer: mail.lokoho.com
+	id 1pghvB-00AAz5-0w;
+	Mon, 27 Mar 2023 08:09:42 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 97DDF6602087;
+	Mon, 27 Mar 2023 09:09:37 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1679904578;
+	bh=WsJrZpm843H/Mqkak9eNmuxfS+fyJ9GgkzGPM1UBOFY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=MRMri0dpMSRlcR433ByuMgdZmR0JajiPP6xsngGy/nxPO5KOcUB0byRvbzhLRc99D
+	 hL41kgsF36sAAaLuskGkuY/mWTqL+4k1loJa50QP3npbNq0jz5511R7YZ9Rb7aFbXZ
+	 YDHQU1or1V1O1Q1DMy2kTyLxcMsZl7vxTO9pgU9M5bf7rNTqjmCIqtg+EhpWE2foSl
+	 3J+Ujz2CKp4vZBT8LOlLcj943u7W2t10QfP52tDmNx46C69Pq6WcfpdXTqaXFosJu5
+	 svMP6/z9mrvJ+E+izWpN5pIt92RpnRTEd1+Oat5V0P42zHO8Z5OpDw/gbTi+R8bM5p
+	 F3su3t1xiwMSg==
+Message-ID: <8937b354-a808-5e4b-94c4-f2c8a63945e2@collabora.com>
+Date: Mon, 27 Mar 2023 10:09:35 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH v1 03/18] arm64: dts: mediatek: mt6795: xperia-m5: Enable
+ Frequency Hopping
+Content-Language: en-US
+To: Pavel Machek <pavel@ucw.cz>
+Cc: matthias.bgg@gmail.com, qii.wang@mediatek.com, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, jassisinghbrar@gmail.com,
+ houlong.wei@mediatek.com, linux-i2c@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com, phone-devel@vger.kernel.org,
+ ~postmarketos/upstreaming@lists.sr.ht
+References: <20230324175456.219954-1-angelogioacchino.delregno@collabora.com>
+ <20230324175456.219954-4-angelogioacchino.delregno@collabora.com>
+ <ZB9jlTsEb0Clf1zu@duo.ucw.cz>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <ZB9jlTsEb0Clf1zu@duo.ucw.cz>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230327_005310_071277_E60BB2CB 
-X-CRM114-Status: UNSURE (   1.72  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230327_010941_454274_DB89E20E 
+X-CRM114-Status: GOOD (  10.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,20 +83,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dzie=C5=84 dobry,
+Il 25/03/23 22:11, Pavel Machek ha scritto:
+> On Fri 2023-03-24 18:54:41, AngeloGioacchino Del Regno wrote:
+>> Enable FHCTL with Spread Spectrum for MAINPLL, MPLL and MSDCPLL
+>> as found on the downstream kernel for this smartphone.
+>> Which one to enable, and at what SSC percentage, was found by
+>> dumping the debugging data from a running downstream kernel and
+>> checking the downstream code.
+> 
+> What advantages does this have? Lower EMI emissions?
+> 
 
-zapozna=C5=82em si=C4=99 z Pa=C5=84stwa ofert=C4=85 i z przyjemno=C5=9Bci=
-=C4=85 przyznaj=C4=99, =C5=BCe przyci=C4=85ga uwag=C4=99 i zach=C4=99ca d=
-o dalszych rozm=C3=B3w.=20
+Hello Pavel,
 
-Pomy=C5=9Bla=C5=82em, =C5=BCe mo=C5=BCe m=C3=B3g=C5=82bym mie=C4=87 sw=C3=
-=B3j wk=C5=82ad w Pa=C5=84stwa rozw=C3=B3j i pom=C3=B3c dotrze=C4=87 z t=C4=
-=85 ofert=C4=85 do wi=C4=99kszego grona odbiorc=C3=B3w. Pozycjonuj=C4=99 =
-strony www, dzi=C4=99ki czemu generuj=C4=85 =C5=9Bwietny ruch w sieci.
+this is done for multiple reasons, main one being lower EMI, but the effects
+on functionality, depending on the actual board, may be quite dramatic and
+ranging from lower WiFi and/or modem signal "sensitivity" (as in, for example,
+having to automatically lower signal gain because of signal disturbance from
+the conducted EMI ripple), to even a complete platform crash due to clocking
+issues.
 
-Mo=C5=BCemy porozmawia=C4=87 w najbli=C5=BCszym czasie?
+This is not about accounting for hardware quirks because having this situation
+is totally normal and expected, especially on "particular" usecases such as
+smartphones, where the actual board is typically much constrained in terms of
+space, and where on the same board you have multiple components generating noise,
+either wanted (a nfc/wifi/bt/2g/3g/4g/5g/something-else signal), or unwanted.
 
-
-Pozdrawiam
-Adam Charachuta
+Cheers!
+Angelo
 
