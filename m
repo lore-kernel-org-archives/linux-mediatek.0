@@ -4,69 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45E98C76195
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 01:59:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23137C761A6
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 02:03:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NKs+8fXhqTJfjVIS1poqWe1vyBspCLp4bXvIsT+t6sM=; b=LTE36yGXOPIy+oVny0B5hqYiB9
-	39lEbhh4x+4t95xiwtc3iKtaiCVdJ6Il+VULRWfEoKe8sgABM6ZgGLcLhO5J0UEqtD6TM3nGjIvVs
-	WA7U3pOUfF544Q9z9iCjyxhLMC0KTU9pnFLO4r1bBUQPq5lOxEKQEATrCQ/VZz3+ji6t5tZL2kz22
-	bf8Ii5ndnfgRv7SzKJv2IWRzPp+okJI0QvCGx4fcZWtL5sv1hnqNLRv20Fz4GONrZaHjAeZ9YLl99
-	leJuaDWoV9JV0u631qRFT0NUZdUr1vDYR4zn3YfyjO/0kDff1QTaY81GQGy5pdaQ/mRIdJqRPBu79
-	D44HlhZg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=6G2DYg8ELtbcds+HAzH8fVD7RX7HwcvzaOlUuI7kips=; b=M4hWxM44v+xQmV
+	ERKUpjTkOCi/56zlNgLfAm9+Vj9ADGa6CWwwBlsApUe7Y4466PzcP+aYT1F91xJ4tPEJK3rxgsh9B
+	z5DGdUUn47J0HXnMirxJ22ZdOy0KzZcw19RdijcGkbT9NQq+1WllLiEpJz9Q0USFEWdEK8gDh+d/a
+	1f0IamgUNKxf71Ewvd3xr+5cGBGyS5TsZQpg3fP3hsPIAoKpad40dcMAdU8jIUan8S3BtClZXg4FP
+	ei0zJTeaIv86iqNy2n5yKylpqU5SoKW152wU2GMXOq44mUrnwEpyJkoGdHIxoGbF++EujBDMCmAtF
+	g4CaGZu5ll8VTg5fUCtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgyc1-00CqST-2D;
-	Tue, 28 Mar 2023 01:59:01 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1pgygb-00Cr4a-0C;
+	Tue, 28 Mar 2023 02:03:45 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgyby-00CqRA-2S;
-	Tue, 28 Mar 2023 01:59:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=NKs+8fXhqTJfjVIS1poqWe1vyBspCLp4bXvIsT+t6sM=; b=fMsxPumtXZHfua+/Z+RkRLNzW0
-	6xLg9V86MTvXecaFQ0IEt6v/BvqFZYom640FJAe+u8sY7h6yIzKGWrI6MC/IocDkmxT90kuxoZs45
-	5v0AWd4oR0dsiIW3LOe6D63nbyvPPmh/Susd70Mc+PYHA/jNvCaMzgWGs+dlH6mqOkiw=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1pgybq-008aTz-AI; Tue, 28 Mar 2023 03:58:50 +0200
-Date: Tue, 28 Mar 2023 03:58:50 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Sam Shih <Sam.Shih@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>
-Subject: Re: [RFC PATCH net-next 2/2] net: dsa: mt7530: introduce MMIO driver
- for MT7988 SoC
-Message-ID: <a3458e6d-9a30-4ece-9586-18799f532580@lunn.ch>
-References: <ZCIML310vc8/uoM4@makrotopia.org>
+	id 1pgygU-00Cr39-1I;
+	Tue, 28 Mar 2023 02:03:42 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 94FB561551;
+	Tue, 28 Mar 2023 02:03:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 07F85C433EF;
+	Tue, 28 Mar 2023 02:03:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1679969017;
+	bh=6G2DYg8ELtbcds+HAzH8fVD7RX7HwcvzaOlUuI7kips=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=OX6ScXGO6/rjGImEN7aRNFH3B2f7/2aBDNXKhKfqDPgJg+3VrxOY0NG5rJoxK7ZxW
+	 vVrYX2UbNF+502CXMPlTSLm933frp+X7XJ4XMlhHEMy4rbnzuB6VnzJzwJ8OKepnZb
+	 gZED4ue40ZcVTlTiGjd1ywtJmGLf4kLtONmtVNYhA2s1Oyu6hqVrnOvUnPbmj0dTP2
+	 cLumXnQh7MfGEyYmwbrdasOJqtI7NRc72ycgdgqq41PkEgVQZhI3j97prLV9X/5kak
+	 JXBkGLfpdYCADfJwaN4+XfwuKVKkq0ai8OyHm8Uvh8vta/obJBc7XSLjSgabAT/1oy
+	 ughYp2bWCDqlA==
+Date: Mon, 27 Mar 2023 19:03:34 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Subject: Re: [PATCH net 4/7] net: dsa: mt7530: set both CPU port interfaces
+ to PHY_INTERFACE_MODE_NA
+Message-ID: <20230327190334.6c5bcf87@kernel.org>
+In-Reply-To: <8450084e-1474-17fa-32c2-a4653b74ff17@arinc9.com>
+References: <20230326140818.246575-1-arinc.unal@arinc9.com>
+	<20230326140818.246575-5-arinc.unal@arinc9.com>
+	<20230327191242.4qabzrn3vtx3l2a7@skbuf>
+	<8450084e-1474-17fa-32c2-a4653b74ff17@arinc9.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZCIML310vc8/uoM4@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230327_185858_797728_E2DB5BC0 
-X-CRM114-Status: GOOD (  14.01  )
+X-CRM114-CacheID: sfid-20230327_190338_482168_9D1DCAE0 
+X-CRM114-Status: GOOD (  15.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,74 +71,28 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>, =?UTF-8?B?UmVuw6k=?= van Dorst <opensource@vdorst.com>, Eric Dumazet <edumazet@google.com>, erkin.bozoglu@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Russell King <rmk+kernel@armlinux.org.uk>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -118,6 +118,9 @@ core_write_mmd_indirect(struct mt7530_priv *priv, int prtad,
->  	struct mii_bus *bus = priv->bus;
->  	int ret;
->  
-> +	if (!bus)
-> +		return 0;
-> +
->  	/* Write the desired MMD Devad */
->  	ret = bus->write(bus, 0, MII_MMD_CTRL, devad);
->  	if (ret < 0)
-> @@ -147,11 +150,13 @@ core_write(struct mt7530_priv *priv, u32 reg, u32 val)
->  {
->  	struct mii_bus *bus = priv->bus;
->  
-> -	mutex_lock_nested(&bus->mdio_lock, MDIO_MUTEX_NESTED);
-> +	if (bus)
-> +		mutex_lock_nested(&bus->mdio_lock, MDIO_MUTEX_NESTED);
->  
->  	core_write_mmd_indirect(priv, reg, MDIO_MMD_VEND2, val);
->  
-> -	mutex_unlock(&bus->mdio_lock);
-> +	if (bus)
-> +		mutex_unlock(&bus->mdio_lock);
->  }
->  
->  static void
-> @@ -160,6 +165,9 @@ core_rmw(struct mt7530_priv *priv, u32 reg, u32 mask, u32 set)
->  	struct mii_bus *bus = priv->bus;
->  	u32 val;
->  
-> +	if (!bus)
-> +		return;
-> +
->  	mutex_lock_nested(&bus->mdio_lock, MDIO_MUTEX_NESTED);
->  
->  	val = core_read_mmd_indirect(priv, reg, MDIO_MMD_VEND2);
-> @@ -189,6 +197,11 @@ mt7530_mii_write(struct mt7530_priv *priv, u32 reg, u32 val)
->  	u16 page, r, lo, hi;
->  	int ret;
->  
-> +	if (priv->base_addr) {
-> +		iowrite32(val, priv->base_addr + reg);
-> +		return 0;
-> +	}
-> +
->  	page = (reg >> 6) & 0x3ff;
->  	r  = (reg >> 2) & 0xf;
->  	lo = val & 0xffff;
-> @@ -218,6 +231,9 @@ mt7530_mii_read(struct mt7530_priv *priv, u32 reg)
->  	u16 page, r, lo, hi;
->  	int ret;
->  
-> +	if (priv->base_addr)
-> +		return ioread32(priv->base_addr + reg);
-> +
->  	page = (reg >> 6) & 0x3ff;
->  	r = (reg >> 2) & 0xf;
->  
+On Tue, 28 Mar 2023 00:57:57 +0300 Ar=C4=B1n=C3=A7 =C3=9CNAL wrote:
+> I don't appreciate your consistent use of the word "abuse" on my=20
+> patches. I'm by no means a senior C programmer. I'm doing my best to=20
+> correct the driver.
+>=20
+> Thank you for explaining the process of phylink with DSA, I will adjust=20
+> my patches accordingly.
+>=20
+> I suggest you don't take my patches seriously for a while, until I know=20
+> better.
 
-This looks pretty ugly.
+Maybe my bad, I should have sent you a note on your previous series
+already. The patches may be fine, but the commit messages need to do
+a better job of describing what the goal of the change is, functionally.
 
-A much better way to do this is to use regmap. Take a look at xrs700x
-and how it has both an i2c and an mdio version.
-
-    Andrew
+For fixes the bar is even higher because, as Vladimir points out,
+commit messages for fixes need to explain what user visible problem=20
+the patch is resolving. Think of it as a letter to a person using the
+switch who hits a problem and wants to look thru the upstream commits
+to see if it's already fixed.
 
