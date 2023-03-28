@@ -4,81 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50E13C76196
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 13:10:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACC0CC6FD18
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 13:19:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=p5yUH2O4hFCVjfaJWgubVrQf+rHb0zN2XaPsX21lAqI=; b=mTA9GCGs0oAI4hS+fhrLC9rm1T
-	mMkicyAzJXT5RiewI7xqTjxMkkTFDByT4Y1pwIwhYgb8SPtYW/XrFfC9wkBgk3NvsiBxZpuAFiZER
-	hph6upl9y/X45xeBEO83zUrq79K+OqnvqT2+isbshYpyTaP6tuTS8/ms+E5K4TsRMkaSytveVpaM0
-	1Im2fZ+Qo34V/tEwo24m+alBMBiLEhDWYzTxM9aP9l+TqygLqTkO/OSeiKxPGl0U/dQ0DVHrajONx
-	JMj2YQr7rIpEHRszW0JoaradQdEc6UsQYOyhCngJGq5682ZnEraXunJZKLlTq/FLDY4HRRqHK9DWC
-	Jr4vxPcQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DLtnJXx6M4haUdmi86w6QqevTK44QpcnHRXpjyULjLg=; b=iRGbNbVKgZwz/9WkXcAXRtMrex
+	4Ijo9z1XErAKfJUdbJdWzmBQJeu37xHqE97R0+QKY9X6pjlr/lSakyyFzi9ibiXuoJdzKOg6OZ/ja
+	hxMuewZuLvrKQpI8TmSa/Z4xDVITFtesRkDXCcYidQI7N1NEKdLWjEGkxqvXOwhUSKgg19ejrp3l9
+	HQeAZ2ubyHS3dUPoBw4IJnFe9p1m7Pm6lT3ZS+bjr14DyCW2awzsGQDA+Uruzb4l2XtRBsjme9oZq
+	cX0MUfADoefPsiTuxLUoUhN4GjwIS01OPlUS6N3tt3W2yQVv5oahjLvEnSYdb2PhB8BJ9wyXMvCin
+	0jt20+Kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ph96A-00EVgb-0u;
-	Tue, 28 Mar 2023 13:10:50 +0000
-Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ph967-00EVf9-2n
-	for linux-mediatek@lists.infradead.org;
-	Tue, 28 Mar 2023 13:10:49 +0000
-Received: by mail-yw1-x1130.google.com with SMTP id 00721157ae682-5456249756bso228565687b3.5
-        for <linux-mediatek@lists.infradead.org>; Tue, 28 Mar 2023 06:10:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1680009044;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=p5yUH2O4hFCVjfaJWgubVrQf+rHb0zN2XaPsX21lAqI=;
-        b=vpa/+dtXjYAGKZeU8wx922IUmAzz10Ey2PwnEv3C6YNXcpfFqDvPP9DAyCYP/Rp6US
-         xopnZ+5Vz+RzGo033bP6o44pPbxUQ9qrXT8ouYCOeR2mmX29fKdZPNQI6JXw5VVtCEbE
-         K2d+jCn3Qr38rlPs7tLJSjq5sKNy+HrzQ8WvMXu1/KBgRyf4B2oc3g/ocJ530XxOA0A0
-         mzHUzru5ARo8f8qnw0hvTNU90vLr2XYzmJdAPqUp4fQ94R85EvyzoH41ISOnWdg8vxGS
-         f18UVQbyZ9MWZ3D3f3WgH4G8oNm9zUEnX5ryw0NdgpkDWURzHPsXfbCjkgo2eYmZhQmT
-         +xCA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680009044;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=p5yUH2O4hFCVjfaJWgubVrQf+rHb0zN2XaPsX21lAqI=;
-        b=2a15CLIfZGVkDLnXEEmH4HfM4jA8fWIFTG7KEhoiR2mkV1QZBr19kXyZjnyvMNenWg
-         ZCCvF0CYBg5BZqyghgiT6/S3xO6OQtU9MCrBpeEzP+6gkLdWAbTK2mNVZuZUcKoPblnR
-         U8RgsYZWYOTyj3ETStYi6gW748HTe1TDCIGt+cU+atNsG2fGl0/N/wMzA7pdWMKpVeO3
-         rGRPEsNnniyc68Gic43pSfW8vf8vT1EgY9GaU2YnDYOSqaaYf7Rf+D5MBj9P2VyONto0
-         h3BD3B/koOQyU0pLz+FAuSmJSFAsgq+U9f5tVJmFXVdy4hgFK78KWp/ynjb57zKsdaW2
-         VWKg==
-X-Gm-Message-State: AAQBX9dHSSBy9FG3a8wZYd/MeTIXa3NSycK4ptEjLI5j5kgXlAhyryVm
-	6lwOUie52LD22ULz1C9MUbd5OJn7kg4tvBb1cEgQGQ==
-X-Google-Smtp-Source: AKy350bdKqptsJnHXGuH0PKZyaYDntgiQ0cShdje6zVHnvCC14jNHBYIsZq725pn7qWvX7BedhrW3FtTFjBXS25A3qI=
-X-Received: by 2002:a81:b721:0:b0:545:3f42:2d97 with SMTP id
- v33-20020a81b721000000b005453f422d97mr6264242ywh.3.1680009044455; Tue, 28 Mar
- 2023 06:10:44 -0700 (PDT)
+	id 1ph9E2-00EXsc-0g;
+	Tue, 28 Mar 2023 13:18:58 +0000
+Received: from mail.8bytes.org ([85.214.250.239])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1ph9Dy-00EXpt-2f;
+	Tue, 28 Mar 2023 13:18:56 +0000
+Received: from 8bytes.org (p200300c27714bc0086ad4f9d2505dd0d.dip0.t-ipconnect.de [IPv6:2003:c2:7714:bc00:86ad:4f9d:2505:dd0d])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.8bytes.org (Postfix) with ESMTPSA id ADE4B243E72;
+	Tue, 28 Mar 2023 15:18:50 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=8bytes.org;
+	s=default; t=1680009530;
+	bh=DLtnJXx6M4haUdmi86w6QqevTK44QpcnHRXpjyULjLg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=2/LVvTDcJoy5hFvrgO7kUZ86PI5STEdCre33Tk1y1CtjX4K9ERu9dqm08D28uw/N0
+	 rWnKYxFxbAO2EWfzNToaV9c6vtIf6NGyk8O9sm3zLbo8KCpbLDRoDGSHs7J/x4G7ts
+	 5d5VWwUWg+jgAnnBOv4CMsedAs7FNJ4UIycClbgoqQLL3dhwG737khgCWk2k/DTSHv
+	 XW+lDt6soYXS6EvQjXIpdPjnnNBfwgnd3Tpe59KD3ag7e4XrO/KVazUQZDSpG83NjV
+	 8Qm7LA1jPU1wtrA2s7RxdiFOBkQH8/qraafre1AQNO/yEM1MHGLRLXpnY3E3OhmQYQ
+	 D4uhTSvDPD2xg==
+Date: Tue, 28 Mar 2023 15:18:49 +0200
+From: "joro@8bytes.org" <joro@8bytes.org>
+To: Yong Wu =?utf-8?B?KOWQtOWLhyk=?= <Yong.Wu@mediatek.com>
+Cc: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	Jianjiao Zeng =?utf-8?B?KOabvuWBpeWnoyk=?= <Jianjiao.Zeng@mediatek.com>,
+	"robin.murphy@arm.com" <robin.murphy@arm.com>,
+	Chengci Xu =?utf-8?B?KOiuuOaJv+i1kCk=?= <Chengci.Xu@mediatek.com>,
+	YF Wang =?utf-8?B?KOeOi+S6kemjnik=?= <YF.Wang@mediatek.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+	"iommu@lists.linux.dev" <iommu@lists.linux.dev>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>,
+	"will@kernel.org" <will@kernel.org>
+Subject: Re: [PATCH v2] iommu/mediatek: Set dma_mask for PGTABLE_PA_35_EN
+Message-ID: <ZCLpOWK90pnNNYxj@8bytes.org>
+References: <20230316064251.7346-1-yong.wu@mediatek.com>
+ <ZBsRlgJIaQieIbzU@8bytes.org>
+ <5555473c3f3a49656d8e62479aa2c0b9d6d8d7e1.camel@mediatek.com>
 MIME-Version: 1.0
-References: <20221122-mt8365-i2c-support-v6-0-e1009c8afd53@baylibre.com>
- <20221122-mt8365-i2c-support-v6-2-e1009c8afd53@baylibre.com> <945d8a82-80b3-8ae2-3b2a-7011621ad8d9@collabora.com>
-In-Reply-To: <945d8a82-80b3-8ae2-3b2a-7011621ad8d9@collabora.com>
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Tue, 28 Mar 2023 15:10:33 +0200
-Message-ID: <CAFGrd9oV9isSmpsT7VZ6VY4VpW4RtNnM4J+t_TbRMwt7t13gRw@mail.gmail.com>
-Subject: Re: [PATCH v6 2/2] arm64: dts: mediatek: enable i2c0 for mt8365-evk board
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Qii Wang <qii.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, linux-i2c@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	Fabien Parent <fparent@baylibre.com>, Rob Herring <robh@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <5555473c3f3a49656d8e62479aa2c0b9d6d8d7e1.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230328_061047_908020_60E29139 
-X-CRM114-Status: GOOD (  12.20  )
+X-CRM114-CacheID: sfid-20230328_061855_111366_04878A0C 
+X-CRM114-Status: UNSURE (   7.18  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,55 +85,9 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le mar. 28 mars 2023 =C3=A0 12:05, AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> a =C3=A9crit :
->
-> Il 28/03/23 11:04, Alexandre Mergnat ha scritto:
-> > Enable the I2C0 bus provides communication with:
-> > - The integrated RT9466 Switching Battery Charger.
-> > - The integrated MT6691 LP4X buck for VDDQ.
-> > - The integrated MT6691 LP4X buck for VDD2.
-> > - The pin header, to plug external I2C devices.
-> >
-> > Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-> > ---
-> >   arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 15 +++++++++++++++
-> >   1 file changed, 15 insertions(+)
-> >
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts b/arch/arm64/b=
-oot/dts/mediatek/mt8365-evk.dts
-> > index 4683704ea235..adc79ba14b33 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-> > @@ -87,6 +87,13 @@ optee_reserved: optee@43200000 {
-> >       };
-> >   };
-> >
-> > +&i2c0 {
-> > +     clock-frequency =3D <100000>;
-> > +     pinctrl-0 =3D <&i2c0_pins>;
-> > +     pinctrl-names =3D "default";
-> > +     status =3D "okay";
-> > +};
-> > +
-> >   &pio {
-> >       gpio_keys: gpio-keys-pins {
-> >               pins {
-> > @@ -96,6 +103,14 @@ pins {
-> >               };
-> >       };
-> >
-> > +     i2c0_pins: i2c0-pins {
-> > +             pins {
-> > +                     bias-pull-up;
->
-> I prefer seeing pinmux first, any other properties last....
+On Thu, Mar 23, 2023 at 11:32:38AM +0000, Yong Wu (吴勇) wrote:
+> Thanks very much for the applying. I'm sorry I had a typo in this
+> version. Is it possible to use v3 instead?
 
-Here the pinctrl binding cleanup [1]
-
-Regards,
-Alex
-
-[1]: https://lore.kernel.org/all/20230327-cleanup-pinctrl-binding-v1-0-b695=
-e32e4f2e@baylibre.com/
+Done. Thanks for the heads-up.
 
