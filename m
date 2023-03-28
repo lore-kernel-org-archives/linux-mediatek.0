@@ -4,65 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E2D2C76196
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 13:08:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50E13C76196
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 13:10:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4DtwdEl7M8lat7V4Pesuw/CaJv4iPyhKHtYTCPJM2gk=; b=SIpizr7XcyPyaJ18SGH5qYHV5l
-	fZhiV6PZQcOTexjYrfGtQGTFkATjsuUjuG0mEJYguDmRsHyYYJ0/jgQGqkKQHMJ/VUMwsok5U9noO
-	YCmUEeQgAnfD8AiRoH9V1oI2mWAfpWKaL1Tk9TClflSeev//G0+n32OjKtbUAc7mn5RvcL+uD7+gv
-	wHpX8R+XEZ+2iezzrt2C+v3qBE9zfCTs58lNwXGjkXubASRUXenTUS0kitBriznGJ8pbuDyfK+7YS
-	30fCpkALVd6xQTbZRhsJ2Iem+FVZqunvmxCjgYTH1I7MXybuctvQWAbyny7N5vGd7z5HVoHDGYXFu
-	51vDXgrg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=p5yUH2O4hFCVjfaJWgubVrQf+rHb0zN2XaPsX21lAqI=; b=mTA9GCGs0oAI4hS+fhrLC9rm1T
+	mMkicyAzJXT5RiewI7xqTjxMkkTFDByT4Y1pwIwhYgb8SPtYW/XrFfC9wkBgk3NvsiBxZpuAFiZER
+	hph6upl9y/X45xeBEO83zUrq79K+OqnvqT2+isbshYpyTaP6tuTS8/ms+E5K4TsRMkaSytveVpaM0
+	1Im2fZ+Qo34V/tEwo24m+alBMBiLEhDWYzTxM9aP9l+TqygLqTkO/OSeiKxPGl0U/dQ0DVHrajONx
+	JMj2YQr7rIpEHRszW0JoaradQdEc6UsQYOyhCngJGq5682ZnEraXunJZKLlTq/FLDY4HRRqHK9DWC
+	Jr4vxPcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ph949-00EVBM-1i;
-	Tue, 28 Mar 2023 13:08:45 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1ph96A-00EVgb-0u;
+	Tue, 28 Mar 2023 13:10:50 +0000
+Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ph941-00EV8R-33;
-	Tue, 28 Mar 2023 13:08:43 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1ph93p-0007Z5-0i;
-	Tue, 28 Mar 2023 15:08:25 +0200
-Date: Tue, 28 Mar 2023 14:08:18 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Sam Shih <Sam.Shih@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>
-Subject: Re: [RFC PATCH net-next 2/2] net: dsa: mt7530: introduce MMIO driver
- for MT7988 SoC
-Message-ID: <ZCLmwm01FK7laSqs@makrotopia.org>
-References: <ZCIML310vc8/uoM4@makrotopia.org>
- <a3458e6d-9a30-4ece-9586-18799f532580@lunn.ch>
+	id 1ph967-00EVf9-2n
+	for linux-mediatek@lists.infradead.org;
+	Tue, 28 Mar 2023 13:10:49 +0000
+Received: by mail-yw1-x1130.google.com with SMTP id 00721157ae682-5456249756bso228565687b3.5
+        for <linux-mediatek@lists.infradead.org>; Tue, 28 Mar 2023 06:10:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1680009044;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=p5yUH2O4hFCVjfaJWgubVrQf+rHb0zN2XaPsX21lAqI=;
+        b=vpa/+dtXjYAGKZeU8wx922IUmAzz10Ey2PwnEv3C6YNXcpfFqDvPP9DAyCYP/Rp6US
+         xopnZ+5Vz+RzGo033bP6o44pPbxUQ9qrXT8ouYCOeR2mmX29fKdZPNQI6JXw5VVtCEbE
+         K2d+jCn3Qr38rlPs7tLJSjq5sKNy+HrzQ8WvMXu1/KBgRyf4B2oc3g/ocJ530XxOA0A0
+         mzHUzru5ARo8f8qnw0hvTNU90vLr2XYzmJdAPqUp4fQ94R85EvyzoH41ISOnWdg8vxGS
+         f18UVQbyZ9MWZ3D3f3WgH4G8oNm9zUEnX5ryw0NdgpkDWURzHPsXfbCjkgo2eYmZhQmT
+         +xCA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680009044;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=p5yUH2O4hFCVjfaJWgubVrQf+rHb0zN2XaPsX21lAqI=;
+        b=2a15CLIfZGVkDLnXEEmH4HfM4jA8fWIFTG7KEhoiR2mkV1QZBr19kXyZjnyvMNenWg
+         ZCCvF0CYBg5BZqyghgiT6/S3xO6OQtU9MCrBpeEzP+6gkLdWAbTK2mNVZuZUcKoPblnR
+         U8RgsYZWYOTyj3ETStYi6gW748HTe1TDCIGt+cU+atNsG2fGl0/N/wMzA7pdWMKpVeO3
+         rGRPEsNnniyc68Gic43pSfW8vf8vT1EgY9GaU2YnDYOSqaaYf7Rf+D5MBj9P2VyONto0
+         h3BD3B/koOQyU0pLz+FAuSmJSFAsgq+U9f5tVJmFXVdy4hgFK78KWp/ynjb57zKsdaW2
+         VWKg==
+X-Gm-Message-State: AAQBX9dHSSBy9FG3a8wZYd/MeTIXa3NSycK4ptEjLI5j5kgXlAhyryVm
+	6lwOUie52LD22ULz1C9MUbd5OJn7kg4tvBb1cEgQGQ==
+X-Google-Smtp-Source: AKy350bdKqptsJnHXGuH0PKZyaYDntgiQ0cShdje6zVHnvCC14jNHBYIsZq725pn7qWvX7BedhrW3FtTFjBXS25A3qI=
+X-Received: by 2002:a81:b721:0:b0:545:3f42:2d97 with SMTP id
+ v33-20020a81b721000000b005453f422d97mr6264242ywh.3.1680009044455; Tue, 28 Mar
+ 2023 06:10:44 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <a3458e6d-9a30-4ece-9586-18799f532580@lunn.ch>
+References: <20221122-mt8365-i2c-support-v6-0-e1009c8afd53@baylibre.com>
+ <20221122-mt8365-i2c-support-v6-2-e1009c8afd53@baylibre.com> <945d8a82-80b3-8ae2-3b2a-7011621ad8d9@collabora.com>
+In-Reply-To: <945d8a82-80b3-8ae2-3b2a-7011621ad8d9@collabora.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Tue, 28 Mar 2023 15:10:33 +0200
+Message-ID: <CAFGrd9oV9isSmpsT7VZ6VY4VpW4RtNnM4J+t_TbRMwt7t13gRw@mail.gmail.com>
+Subject: Re: [PATCH v6 2/2] arm64: dts: mediatek: enable i2c0 for mt8365-evk board
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Qii Wang <qii.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, linux-i2c@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Fabien Parent <fparent@baylibre.com>, Rob Herring <robh@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230328_060837_982096_6BE856CE 
-X-CRM114-Status: GOOD (  25.24  )
+X-CRM114-CacheID: sfid-20230328_061047_908020_60E29139 
+X-CRM114-Status: GOOD (  12.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,180 +93,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Andrew,
-
-On Tue, Mar 28, 2023 at 03:58:50AM +0200, Andrew Lunn wrote:
-> > --- a/drivers/net/dsa/mt7530.c
-> > +++ b/drivers/net/dsa/mt7530.c
-> > @@ -118,6 +118,9 @@ core_write_mmd_indirect(struct mt7530_priv *priv, int prtad,
-> >  	struct mii_bus *bus = priv->bus;
-> >  	int ret;
-> >  
-> > +	if (!bus)
-> > +		return 0;
+Le mar. 28 mars 2023 =C3=A0 12:05, AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> a =C3=A9crit :
+>
+> Il 28/03/23 11:04, Alexandre Mergnat ha scritto:
+> > Enable the I2C0 bus provides communication with:
+> > - The integrated RT9466 Switching Battery Charger.
+> > - The integrated MT6691 LP4X buck for VDDQ.
+> > - The integrated MT6691 LP4X buck for VDD2.
+> > - The pin header, to plug external I2C devices.
+> >
+> > Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> > ---
+> >   arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 15 +++++++++++++++
+> >   1 file changed, 15 insertions(+)
+> >
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts b/arch/arm64/b=
+oot/dts/mediatek/mt8365-evk.dts
+> > index 4683704ea235..adc79ba14b33 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+> > @@ -87,6 +87,13 @@ optee_reserved: optee@43200000 {
+> >       };
+> >   };
+> >
+> > +&i2c0 {
+> > +     clock-frequency =3D <100000>;
+> > +     pinctrl-0 =3D <&i2c0_pins>;
+> > +     pinctrl-names =3D "default";
+> > +     status =3D "okay";
+> > +};
 > > +
-> >  	/* Write the desired MMD Devad */
-> >  	ret = bus->write(bus, 0, MII_MMD_CTRL, devad);
-> >  	if (ret < 0)
-> > @@ -147,11 +150,13 @@ core_write(struct mt7530_priv *priv, u32 reg, u32 val)
-> >  {
-> >  	struct mii_bus *bus = priv->bus;
-> >  
-> > -	mutex_lock_nested(&bus->mdio_lock, MDIO_MUTEX_NESTED);
-> > +	if (bus)
-> > +		mutex_lock_nested(&bus->mdio_lock, MDIO_MUTEX_NESTED);
-> >  
-> >  	core_write_mmd_indirect(priv, reg, MDIO_MMD_VEND2, val);
-> >  
-> > -	mutex_unlock(&bus->mdio_lock);
-> > +	if (bus)
-> > +		mutex_unlock(&bus->mdio_lock);
-> >  }
-> >  
-> >  static void
-> > @@ -160,6 +165,9 @@ core_rmw(struct mt7530_priv *priv, u32 reg, u32 mask, u32 set)
-> >  	struct mii_bus *bus = priv->bus;
-> >  	u32 val;
-> >  
-> > +	if (!bus)
-> > +		return;
-> > +
-> >  	mutex_lock_nested(&bus->mdio_lock, MDIO_MUTEX_NESTED);
-> >  
-> >  	val = core_read_mmd_indirect(priv, reg, MDIO_MMD_VEND2);
-> > @@ -189,6 +197,11 @@ mt7530_mii_write(struct mt7530_priv *priv, u32 reg, u32 val)
-> >  	u16 page, r, lo, hi;
-> >  	int ret;
-> >  
-> > +	if (priv->base_addr) {
-> > +		iowrite32(val, priv->base_addr + reg);
-> > +		return 0;
-> > +	}
-> > +
-> >  	page = (reg >> 6) & 0x3ff;
-> >  	r  = (reg >> 2) & 0xf;
-> >  	lo = val & 0xffff;
-> > @@ -218,6 +231,9 @@ mt7530_mii_read(struct mt7530_priv *priv, u32 reg)
-> >  	u16 page, r, lo, hi;
-> >  	int ret;
-> >  
-> > +	if (priv->base_addr)
-> > +		return ioread32(priv->base_addr + reg);
-> > +
-> >  	page = (reg >> 6) & 0x3ff;
-> >  	r = (reg >> 2) & 0xf;
-> >  
-> 
-> This looks pretty ugly.
-> 
-> A much better way to do this is to use regmap. Take a look at xrs700x
-> and how it has both an i2c and an mdio version.
+> >   &pio {
+> >       gpio_keys: gpio-keys-pins {
+> >               pins {
+> > @@ -96,6 +103,14 @@ pins {
+> >               };
+> >       };
+> >
+> > +     i2c0_pins: i2c0-pins {
+> > +             pins {
+> > +                     bias-pull-up;
+>
+> I prefer seeing pinmux first, any other properties last....
 
-I agree that using regmap would be better and I have evaluated that
-approach as well. As regmap doesn't allow lock-skipping and mt7530.c is
-much more complex than xrs700x in the way indirect access to its MDIO bus
-and interrupts work, using regmap accessors for everything would not be
-trivial.
+Here the pinctrl binding cleanup [1]
 
-To illustrate what I'm talking about, let me show some examples in the
-current code for which I don't see a way to use regmap:
-634) static int
-635) mt7531_ind_c45_phy_read(struct mt7530_priv *priv, int port, int devad,
-636)                   int regnum)
-637) {
-638)   struct mii_bus *bus = priv->bus;
-639)   struct mt7530_dummy_poll p;
-640)   u32 reg, val;
-641)   int ret;
-642) 
-643)   INIT_MT7530_DUMMY_POLL(&p, priv, MT7531_PHY_IAC);
-644) 
-645)   mutex_lock_nested(&bus->mdio_lock, MDIO_MUTEX_NESTED);
-646) 
-647)   ret = readx_poll_timeout(_mt7530_unlocked_read, &p, val,
-648)                            !(val & MT7531_PHY_ACS_ST), 20, 100000);
-649)   if (ret < 0) {
-650)           dev_err(priv->dev, "poll timeout\n");
-651)           goto out;
-652)   }
-653) 
-654)   reg = MT7531_MDIO_CL45_ADDR | MT7531_MDIO_PHY_ADDR(port) |
-655)         MT7531_MDIO_DEV_ADDR(devad) | regnum;
-656)   mt7530_mii_write(priv, MT7531_PHY_IAC, reg | MT7531_PHY_ACS_ST);
-657) 
-658)   ret = readx_poll_timeout(_mt7530_unlocked_read, &p, val,
-659)                            !(val & MT7531_PHY_ACS_ST), 20, 100000);
-660)   if (ret < 0) {
-661)           dev_err(priv->dev, "poll timeout\n");
-662)           goto out;
-663)   }
-664) 
-665)   reg = MT7531_MDIO_CL45_READ | MT7531_MDIO_PHY_ADDR(port) |
-666)         MT7531_MDIO_DEV_ADDR(devad);
-667)   mt7530_mii_write(priv, MT7531_PHY_IAC, reg | MT7531_PHY_ACS_ST);
-668) 
-669)   ret = readx_poll_timeout(_mt7530_unlocked_read, &p, val,
-670)                            !(val & MT7531_PHY_ACS_ST), 20, 100000);
-671)   if (ret < 0) {
-672)           dev_err(priv->dev, "poll timeout\n");
-673)           goto out;
-674)   }
-675) 
-676)   ret = val & MT7531_MDIO_RW_DATA_MASK;
-677) out:
-678)   mutex_unlock(&bus->mdio_lock);
-679) 
-680)   return ret;
-681) }
+Regards,
+Alex
 
-So here we can of course use regmap_read_poll_timeout and a bunch of
-readmap_write operations. However, each of them will individually acquire
-and release the mdio bus mutex while the current code acquires the lock
-at the top of the function and then uses unlocked operations.
-regmap currently doesn't offer any way to skip the locking and/or perform
-locking manually. regmap_read, regmap_write, regmap_update_bits, ... always
-acquire and release the lock on each operation.
-
-While in the above example this might just imply a performance hit, look
-here:
-
-1958) static void
-1959) mt7530_irq_bus_sync_unlock(struct irq_data *d)
-1960) {
-1961)   struct mt7530_priv *priv = irq_data_get_irq_chip_data(d);
-1962) 
-1963)   mt7530_mii_write(priv, MT7530_SYS_INT_EN, priv->irq_enable);
-1964)   mutex_unlock(&priv->bus->mdio_lock);
-1965) }
-
-So in this case the lock has previously been acquired and the
-register is written when releasing the lock.
-The above function is being used as .irq_bus_sync_unlock...
-
-Hence there are two ways to go:
-1. Extend regmap to allow callers to perform locking manually and
-   provide unlocked variants of all operations.
-   This would allow us to then convert all the mt7530_{read,write,rmw},
-   mt7530_mii_{read,write}, ... calls to use regmap_* calls instead.
-
-2. Use regmap to only provide locked access and keep open-coding the
-   cases where unlocked access is used while manually acquiring the
-   bus mutex in such cases, as it is the case now.
-
-3. Use regmap to only provide unlocked access to beging with and
-   keep taking care of locking in mt7530.c as it is now. This would be
-   easy, but then all those ugly checks you criticized would still
-   be needed. Ie. `if (priv->base_addr) ...` would of course go away,
-   but all the other `if (priv->bus) ...` checks would have to stay.
-
-Let me know what you think and how I should proceed.
-
-
-Thank you!
-
-
-Best regards
-
-
-Daniel
+[1]: https://lore.kernel.org/all/20230327-cleanup-pinctrl-binding-v1-0-b695=
+e32e4f2e@baylibre.com/
 
