@@ -4,86 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0783C76195
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 07:43:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49B11C76196
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 08:12:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=reWFyQdHA0Txjoyw/asL10WD0B3MGC9C1OYGnj8cjLU=; b=L6D0H925HhTd+XOEl2goF4oPUx
-	7lDrjmIF/AIO6lpkcPf96GtTKFIBCFL0GT9pWLlXm9B/PB6pwwc58BabAmeQgAAfvpPvfAkZBUJwL
-	5BFLdaEk/Y5h/w6GD/nPsk5wKU+nQWe6KkPRTeO1gzgF2P6NfnAG2L0EqY8KduoC3adWvnQ7nHCPW
-	7rdg0ZXrQb0pl1IhKpMnBXpytr8wJt0PfoG9k9kQDft9cNnbTlAomy0dSYLZagnMHMwDGhQHsdBHT
-	DDgOIGJAQXnrI4rj3vo2/goDud1wDuXJqsZsEoh5wR9rgOKwIXcFiHSAuoHOAiXyiL7V4QCGjGiqB
-	rd418RgQ==;
+	bh=J16e8Dd9HQ7gV6RMpuH6TUpqJ2+k3bF8mnx888rmeag=; b=A+veBUzYHdeEhxvnl8uWHu7CTf
+	VB11wag0ldnhzAy/gAWUABdfMxM+zlFXF8LS6L6posQ26JBX+8RkzhmGUWJDmb0+vO7VpETBAtWV/
+	pHd5QKmtRAKVkPaYyc79lroPQBbU3+ZAThaf47RUVJSlgNSnCq68VVUX6BeO6r+Wgm8j443oujILT
+	ngzNJDW0JCUeqK3SIugBNG8lg8yRD2F9VsNz5GsRl22Plc1lUefVa+1k81bDRtvviZG2ODnHI2YtD
+	L230QWqP95tahGCp+LVJbnzX6JNcXWKUi3+kcLbaSYEowrjgzQRv3tkp/bXE4gTOaZTA4eFXWIfW1
+	nM5ml34Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ph3yo-00DVkd-2q;
-	Tue, 28 Mar 2023 07:42:54 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1ph4Qv-00DYuU-2X;
+	Tue, 28 Mar 2023 08:11:57 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ph3yl-00DViw-04;
-	Tue, 28 Mar 2023 07:42:52 +0000
-Received: by mail-wr1-x429.google.com with SMTP id r29so11088262wra.13;
-        Tue, 28 Mar 2023 00:42:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679989366;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=reWFyQdHA0Txjoyw/asL10WD0B3MGC9C1OYGnj8cjLU=;
-        b=WCqPg7kj6QzLXEOVdoQ1xMWD4fQdgnzUfP73CB10wcAeR2+Rvyv6nLGcAmRfEqAPBN
-         uxsVum3wm7djw1PR/wmloQ3SbizDsX/f0KKbyGVdMrIp1eRklDFd+0mUKYHzhJWdy3Ok
-         hoK4vhXeeWa7NGRBpfPq9ZeaL9R9E2inGfpoDAD+bZT41NplWgWq2QHxWZWGRX5Pb21M
-         yjGyPJV7+LorCR4Qv1Ro9oWOXMjVTMoyQR2HW502gC1l5q/gCpND23aQMEfoLZezPoYG
-         NkrPghb3zVtL3KeYo3roJmiQrOEArrxbSVIX7vN/EG+zdE89GSbv5TpVUBTU3imGpeUE
-         Ak9w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679989366;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=reWFyQdHA0Txjoyw/asL10WD0B3MGC9C1OYGnj8cjLU=;
-        b=aXxcZItraCj3ERidc4F3kTlvXVQMiFrOLapFbeD5ccOnwgd4XtBMI1XGIHsaqJ1IL2
-         gD8J3De/4vWrsAKZZAYApNsL9ljwzmnXeFQB6p3W/5yHovG1Wk/kBS6RJF2+UP/fKOq3
-         hKy1SIW1h9+rDTyUXVpyfpmH9B/Lt89UWs/uFrPlDoLQ9Fmj7qN3McnYXX78B+uZQogt
-         ILCWrrnePglmUzkdzwB2qCYA2aL+Yxd9JAY2jQdc3sXhhg9CqZ63xGHRr6M8rukBPlGq
-         Xd0zeojqrSNELxQ+dEG8gy4Mbng8/cNazgkMD8ygVQNeKqsj+co8Yt4hG9jFg/WKRMkf
-         XhzQ==
-X-Gm-Message-State: AAQBX9egCRXVV2xM1f4jA+0rwXcppv+RyGBurYhDcvDNXWnQQrJcXZSb
-	I7qwQ0fHeLq6OArDE4C2gVY=
-X-Google-Smtp-Source: AKy350ae8pPppl5m9E/fAgObS0u170HobthBF6NK9Qjbn7LyCnoBrzLmAj4S8NpGj1TURzpOwmkCFg==
-X-Received: by 2002:a5d:5691:0:b0:2d7:d4b:b33 with SMTP id f17-20020a5d5691000000b002d70d4b0b33mr12209300wrv.21.1679989365793;
-        Tue, 28 Mar 2023 00:42:45 -0700 (PDT)
-Received: from localhost ([102.36.222.112])
-        by smtp.gmail.com with ESMTPSA id v7-20020a5d4b07000000b002c56af32e8csm26731234wrq.35.2023.03.28.00.42.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 Mar 2023 00:42:45 -0700 (PDT)
-Date: Tue, 28 Mar 2023 10:42:42 +0300
-From: Dan Carpenter <error27@gmail.com>
-To: Yu Zhe <yuzhe@nfschina.com>
-Cc: andersson@kernel.org, mathieu.poirier@linaro.org,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	agross@kernel.org, konrad.dybcio@linaro.org,
-	mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
-	linux-remoteproc@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	kernel-janitors@vger.kernel.org, liqiong@nfschina.com
-Subject: Re: [PATCH v4] remoteproc: remove unnecessary (void*) conversions
-Message-ID: <fdcfe2ae-fa49-4758-8b5c-b853cc6a0b80@kili.mountain>
-References: <20230328015749.1608-1-yuzhe@nfschina.com>
- <20230328024907.29791-1-yuzhe@nfschina.com>
+	id 1ph4Qs-00DYtl-0B
+	for linux-mediatek@lists.infradead.org;
+	Tue, 28 Mar 2023 08:11:56 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id E924DB81BB0;
+	Tue, 28 Mar 2023 08:11:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 391EDC433EF;
+	Tue, 28 Mar 2023 08:11:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1679991110;
+	bh=5qqfCDIKX8O+ZuI35vNhL5dM7n99//NsdnXWD5dIeaA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=XHP6CBLqsGcbSrkcGuQMHJxp5oZB52bgDlIOthWrYDhgcfl9fUhteX2Qnbsy795cF
+	 kfvjeIgr7L4vXX03pPK0V9Z6ercd9m4ytr0WRbJl5FmaHzlzScUm8TbdmAegiTiQQ2
+	 BS4ZxGGzZx4MZaTukbbVbFn1hshJl4rETLdcPLa94VjAYZu+HDJtGL8CsISqvrJWtx
+	 P0u0PMNCrnFaGI3qt+yyCe/shSdrpEM1dkILNG9rnRQTSG6thpXIMM5wuYWEao3jSs
+	 dJdw0LWguKCcQeKYU1uv+UkQM1yPskj975dmtYsjQxAKa6uFwIJVCiJA4tj0ZrYapq
+	 eRzTzuevLsmeg==
+Date: Tue, 28 Mar 2023 10:11:46 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Rob Herring <robh@kernel.org>
+Cc: netdev@vger.kernel.org, davem@davemloft.net, edumazet@google.com,
+	kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
+	linux-mediatek@lists.infradead.org, nbd@nbd.name, john@phrozen.org,
+	sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
+	lorenzo.bianconi@redhat.com, daniel@makrotopia.org,
+	krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org
+Subject: Re: [PATCH net-next 06/10] dt-bindings: soc: mediatek: move ilm in a
+ dedicated dts node
+Message-ID: <ZCKhQt/h7ITzMmZ8@lore-desk>
+References: <cover.1679330630.git.lorenzo@kernel.org>
+ <c9b65ef3aeb28a50cec45d1f98aec72d8016c828.1679330630.git.lorenzo@kernel.org>
+ <20230321193254.GA1306908-robh@kernel.org>
+ <ZBsnLLh5zu9DEQBb@lore-desk>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="IDH3Hw5Z9TRESUbK"
 Content-Disposition: inline
-In-Reply-To: <20230328024907.29791-1-yuzhe@nfschina.com>
+In-Reply-To: <ZBsnLLh5zu9DEQBb@lore-desk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230328_004251_062780_D28275BD 
-X-CRM114-Status: UNSURE (   8.17  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230328_011154_401298_4725CF35 
+X-CRM114-Status: GOOD (  33.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,20 +82,214 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 28, 2023 at 10:49:07AM +0800, Yu Zhe wrote:
-> Pointer variables of void * type do not require type cast.
-> 
-> Reported-by: kernel test robot <lkp@intel.com>
-> Link: https://lore.kernel.org/oe-kbuild-all/202303272213.jOYrwBZu-lkp@intel.com/
-> Signed-off-by: Yu Zhe <yuzhe@nfschina.com>
-> ---
-> 
-> v3->v4:
->  Drop wrong modifies
 
-Seems okay.  (I haven't tried compiling it or anything).
+--IDH3Hw5Z9TRESUbK
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-regards,
-dan carpenter
+> > On Mon, Mar 20, 2023 at 05:58:00PM +0100, Lorenzo Bianconi wrote:
+> > > Since the cpuboot memory region is not part of the RAM SoC, move ilm =
+in
+> > > a deidicated syscon node.
+> > > This patch helps to keep backward-compatibility with older version of
+> > > uboot codebase where we have a limit of 8 reserved-memory dts child
+> > > nodes.
+> >=20
+> > Maybe, but breaks the ABI. It also looks like a step backwards. Fix you=
+r=20
+> > u-boot.
+>=20
+> Can you please give some more details about ABI breakage? mtk_wed driver =
+is
+> supposed to be backward compatible with respect to the older dts descript=
+ion
+> (please take a look to patch 5/10 and 8/10).
+>=20
+> >=20
+> > >=20
+> > > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > > ---
+> > >  .../arm/mediatek/mediatek,mt7622-wed.yaml     | 14 +++---
+> > >  .../soc/mediatek/mediatek,mt7986-wo-ilm.yaml  | 45 +++++++++++++++++=
+++
+> > >  2 files changed, 53 insertions(+), 6 deletions(-)
+> > >  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/me=
+diatek,mt7986-wo-ilm.yaml
+> > >=20
+> > > diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,=
+mt7622-wed.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,m=
+t7622-wed.yaml
+> > > index 7f6638d43854..5d2397ec5891 100644
+> > > --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-=
+wed.yaml
+> > > +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-=
+wed.yaml
+> > > @@ -32,14 +32,12 @@ properties:
+> > >    memory-region:
+> > >      items:
+> > >        - description: firmware EMI region
+> > > -      - description: firmware ILM region
+> > >        - description: firmware DLM region
+> > >        - description: firmware CPU DATA region
+> > > =20
+> > >    memory-region-names:
+> > >      items:
+> > >        - const: wo-emi
+> > > -      - const: wo-ilm
+> > >        - const: wo-dlm
+> > >        - const: wo-data
+> > > =20
+> > > @@ -51,6 +49,10 @@ properties:
+> > >      $ref: /schemas/types.yaml#/definitions/phandle
+> > >      description: mediatek wed-wo cpuboot controller interface.
+> > > =20
+> > > +  mediatek,wo-ilm:
+> > > +    $ref: /schemas/types.yaml#/definitions/phandle
+> > > +    description: mediatek wed-wo ilm interface.
+> > > +
+> > >  allOf:
+> > >    - if:
+> > >        properties:
+> > > @@ -63,6 +65,7 @@ allOf:
+> > >          memory-region: false
+> > >          mediatek,wo-ccif: false
+> > >          mediatek,wo-cpuboot: false
+> > > +        mediatek,wo-ilm: false
+> > > =20
+> > >  required:
+> > >    - compatible
+> > > @@ -97,11 +100,10 @@ examples:
+> > >          reg =3D <0 0x15010000 0 0x1000>;
+> > >          interrupts =3D <GIC_SPI 205 IRQ_TYPE_LEVEL_HIGH>;
+> > > =20
+> > > -        memory-region =3D <&wo_emi>, <&wo_ilm>, <&wo_dlm>,
+> > > -                        <&wo_data>;
+> > > -        memory-region-names =3D "wo-emi", "wo-ilm", "wo-dlm",
+> > > -                              "wo-data";
+> > > +        memory-region =3D <&wo_emi>, <&wo_dlm>, &wo_data>;
+> > > +        memory-region-names =3D "wo-emi", "wo-dlm", "wo-data";
+> > >          mediatek,wo-ccif =3D <&wo_ccif0>;
+> > >          mediatek,wo-cpuboot =3D <&wo_cpuboot>;
+> > > +        mediatek,wo-ilm =3D <&wo_ilm>;
+> > >        };
+> > >      };
+> > > diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,=
+mt7986-wo-ilm.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediate=
+k,mt7986-wo-ilm.yaml
+> > > new file mode 100644
+> > > index 000000000000..2a3775cd941e
+> > > --- /dev/null
+> > > +++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mt7986-=
+wo-ilm.yaml
+> > > @@ -0,0 +1,45 @@
+> > > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> > > +%YAML 1.2
+> > > +---
+> > > +$id: http://devicetree.org/schemas/soc/mediatek/mediatek,mt7986-wo-i=
+lm.yaml#
+> > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > > +
+> > > +title: MediaTek Wireless Ethernet Dispatch (WED) WO ILM firmware int=
+erface for MT7986
+> >=20
+> > Either this region is some memory or it's a device. Sounds like the=20
+> > former and this is not a 'syscon'.
+>=20
+> ILM and DLM are mmio regions used to store Wireless Ethernet Dispatch fir=
+mware
+> sections.
+> AFAIU reserved-memory nodes are supposed to be used just for RAM areas, c=
+orrect?
+> What do you think would be the best dts node type for ILM and DLM?
+>=20
+> Another possibility I was discussing with Felix is to move ILM and DLM de=
+finitions
+> in WED node reg section, something like:
+>=20
+> wed0: wed@15010000 {
+> 	compatible =3D "mediatek,mt7986-wed";
+> 	reg =3D <0 0x15010000 0 0x1000>,
+> 	      <0 0x151e0000 0 0x8000>,
+> 	      <0 0x151e8000 0 0x2000>;
+> 	...
+> };
+>=20
+> Doing so we need to get rid of syscon in WED compatible string, right? Is=
+ it acceptable?
+>=20
+> Regards,
+> Lorenzo
 
+Hi Rob,
+
+do you have any more input about this? Is it fine to just use syscon for
+ILM/DLM dts nodes or do you prefer to rework WED node in order to have ILM/=
+DLM
+regs info into it?
+
+Regards,
+Lorenzo
+
+>=20
+> >=20
+> > > +
+> > > +maintainers:
+> > > +  - Lorenzo Bianconi <lorenzo@kernel.org>
+> > > +  - Felix Fietkau <nbd@nbd.name>
+> > > +
+> > > +description:
+> > > +  The MediaTek wo-ilm (Information Lifecycle Management) provides a =
+configuration
+> > > +  interface for WiFi critical data used by WED WO firmware. WED WO c=
+ontroller is
+> > > +  used to perform offload rx packet processing (e.g. 802.11 aggregat=
+ion packet
+> > > +  reordering or rx header translation) on MT7986 soc.
+> > > +
+> > > +properties:
+> > > +  compatible:
+> > > +    items:
+> > > +      - enum:
+> > > +          - mediatek,mt7986-wo-ilm
+> > > +      - const: syscon
+> > > +
+> > > +  reg:
+> > > +    maxItems: 1
+> > > +
+> > > +required:
+> > > +  - compatible
+> > > +  - reg
+> > > +
+> > > +additionalProperties: false
+> > > +
+> > > +examples:
+> > > +  - |
+> > > +    soc {
+> > > +      #address-cells =3D <2>;
+> > > +      #size-cells =3D <2>;
+> > > +
+> > > +      syscon@151e0000 {
+> > > +        compatible =3D "mediatek,mt7986-wo-ilm", "syscon";
+> > > +        reg =3D <0 0x151e0000 0 0x8000>;
+> > > +      };
+> > > +    };
+> > > --=20
+> > > 2.39.2
+> > >=20
+
+
+
+--IDH3Hw5Z9TRESUbK
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZCKhQgAKCRA6cBh0uS2t
+rObvAQCMaKWLG9Ulru7OhhvAppG/1E64Z9HPyAU4m8wbcM2h0AD/Z6cket2SEJDs
+X3uTiZUjMaHYXIWuDIMA5EJd4SldyAo=
+=PRya
+-----END PGP SIGNATURE-----
+
+--IDH3Hw5Z9TRESUbK--
 
