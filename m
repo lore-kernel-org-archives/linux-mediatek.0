@@ -4,78 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 745BFC761A6
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 10:35:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B352BC76195
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 10:41:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JA+w5d7m3Cnxr0r6MiX446hat8N6cVTLTDgIV7UAMTw=; b=vc58/9G8t+BsyrenYDL0G3DaqI
-	WSKSBlj4qyI6HyYS9w5dIuiOZvE9HPmYNdeAlEbMEwl4lkJE1YcVpSQKV5fcZHSyx1YaBM2av0SRg
-	4FYJDRtAlxdxESflUCku6ORx/B8Bv1zm2nJURBXFAy0cQZw+98fIZoYL45iE6rNhREtCeCD8Jwv8g
-	zVz4Ce3TVqj1aIAVMLiD4NcG2itLCPOKE/SeQ/it9nGgAjSC/iuRPFHLGqcdH5Edg4eXhvjbZIV7+
-	qI1QAAROq1ZKsODtX2uKDtAjfTBIBz0L36x58QZAkKcyA2GIg3vUjzIPYsP0TZOTEZ4ZCrfU/SQY6
-	cTMTyhcw==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=wSjsjxOKrJlSTttf/IrPujJSrQ8rjCA3xDMZeEczL+g=; b=sR1wWfOsRxnqQG0FRcgiDYdaYI
+	wbBSZofugnJ6Uw4FJQh6DJZMcBySdimMuf09O55rYVne3DaaAkMGoQx6q8cSoBI3CYXB10awlnx1I
+	GfyYE+yxzMoFJQAcMlPUiqGtNcx+ck7r0PQ1d5j/ePuiG93qteC3GaqHYHaUj3PiytlwFAPf5wgaA
+	eiPl785dKS3UsX88AecL+syNYhwVdbuswFFjYaZfPINDJVZSD9OAYn4l8dsNcrbHoAfd3OHAwm+o1
+	4ETN+2ddUDmS388Cf3Z4bEmzv+lE5nsiXAsgNNKq6IIXBDgFGpJ2ql9CsA+Rkoc7sffK/ASGinO1a
+	JdEyzO/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ph6fg-00DyAY-0Z;
-	Tue, 28 Mar 2023 10:35:20 +0000
+	id 1ph6lm-00DzoI-0a;
+	Tue, 28 Mar 2023 10:41:38 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ph6fX-00Dy62-2t;
-	Tue, 28 Mar 2023 10:35:16 +0000
-X-UUID: 34b262aacd5411ed8687db9d93187ff1-20230328
+	id 1ph6lj-00DznH-35;
+	Tue, 28 Mar 2023 10:41:37 +0000
+X-UUID: 19d6fc1acd5511ed8687db9d93187ff1-20230328
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=JA+w5d7m3Cnxr0r6MiX446hat8N6cVTLTDgIV7UAMTw=;
-	b=S+pRt3i6fowPJnih76qFfbwlqG26lGthvVUdnoDXy9OE69qdhNMr+n9y/luVRM0Fm/w2bHZ09cGJYYTtf4W2fcqN7noK20gqzFyNENyZC1kQZ1xwkULiyVDH0xAcrFdJn5HQt5z5XUU7q5EfseDohz6ltMBVfpbRE6o3XZagN44=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=wSjsjxOKrJlSTttf/IrPujJSrQ8rjCA3xDMZeEczL+g=;
+	b=Gz8wyWygVwIii4NoFE8UsZ/YITbadj2e1ELtggdZsHbX/FG9rFSfzWqbEFW++BJ6Ld2a2GPBtySwDsuD1LwdNWQCIexdmNpYiJL1ZRckBf06DwGsl/cPbNfQnWWNGbaBCGP3AWqVJaljCXO9fd5r7Ezjras6y+urI0UFdgXQ2BU=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:2916d04d-325b-4fbd-b2c7-6308a538e7ba,IP:0,U
+X-CID-O-INFO: VERSION:1.1.22,REQID:d7c21cd7-9c96-46c9-ade5-1a7afd99eed5,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-25
-X-CID-META: VersionHash:120426c,CLOUDID:930d9db4-beed-4dfc-bd9c-e1b22fa6ccc4,B
+X-CID-META: VersionHash:120426c,CLOUDID:7500bc29-564d-42d9-9875-7c868ee415ec,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
-X-UUID: 34b262aacd5411ed8687db9d93187ff1-20230328
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+X-UUID: 19d6fc1acd5511ed8687db9d93187ff1-20230328
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <powen.kao@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 470538701; Tue, 28 Mar 2023 03:35:06 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+	with ESMTP id 1091941509; Tue, 28 Mar 2023 03:41:30 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Tue, 28 Mar 2023 18:34:31 +0800
+ 15.2.1118.25; Tue, 28 Mar 2023 18:30:55 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Tue, 28 Mar 2023 18:34:31 +0800
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Tue, 28 Mar 2023 18:30:55 +0800
 From: Po-Wen Kao <powen.kao@mediatek.com>
 To: <linux-scsi@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Stanley Chu <stanley.chu@mediatek.com>, "James E.J. Bottomley"
+	Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
+	Bart Van Assche <bvanassche@acm.org>, "James E.J. Bottomley"
 	<jejb@linux.ibm.com>, "Martin K. Petersen" <martin.petersen@oracle.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
 	<angelogioacchino.delregno@collabora.com>
 CC: <wsd_upstream@mediatek.com>, <peter.wang@mediatek.com>,
-	<powen.kao@mediatek.com>, <alice.chao@mediatek.com>,
-	<naomi.chu@mediatek.com>, <chun-hung.wu@mediatek.com>,
-	<cc.chou@mediatek.com>, <eddie.huang@mediatek.com>,
-	<mason.zhang@mediatek.com>, <chaotian.jing@mediatek.com>,
-	<jiajie.hao@mediatek.com>
-Subject: [PATCH v1 2/2] ufs: Add MCQ support on MTK platform
-Date: Tue, 28 Mar 2023 18:34:23 +0800
-Message-ID: <20230328103423.10970-3-powen.kao@mediatek.com>
+	<stanley.chu@mediatek.com>, <powen.kao@mediatek.com>,
+	<alice.chao@mediatek.com>, <naomi.chu@mediatek.com>,
+	<chun-hung.wu@mediatek.com>, <cc.chou@mediatek.com>,
+	<eddie.huang@mediatek.com>, <mason.zhang@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>
+Subject: [PATCH] scsi: ufs: core: Make UFS_MCQ_NUM_DEV_CMD_QUEUES a module parameter
+Date: Tue, 28 Mar 2023 18:29:59 +0800
+Message-ID: <20230328103000.10757-1-powen.kao@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230328103423.10970-1-powen.kao@mediatek.com>
-References: <20230328103423.10970-1-powen.kao@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230328_033511_940192_CB7DCDDE 
-X-CRM114-Status: GOOD (  23.81  )
+X-CRM114-CacheID: sfid-20230328_034135_994942_1C3977EE 
+X-CRM114-Status: GOOD (  17.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,313 +89,138 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-- Implement vops and setup irq
-- Fix pm flow under mcq mode
+A dedicated queue for dev commands is not mandatory, hence let
+UFS_MCQ_NUM_DEV_CMD_QUEUES become module parameter `dev_cmd_queues`
+to allow sharing first hw queue for dev commands.
 
 Signed-off-by: Po-Wen Kao <powen.kao@mediatek.com>
 ---
- drivers/ufs/host/ufs-mediatek.c | 174 +++++++++++++++++++++++++++++++-
- drivers/ufs/host/ufs-mediatek.h |  32 ++++++
- 2 files changed, 204 insertions(+), 2 deletions(-)
+ drivers/ufs/core/ufs-mcq.c     | 35 +++++++++++++++++++++++++++-------
+ drivers/ufs/core/ufshcd-priv.h |  2 +-
+ drivers/ufs/core/ufshcd.c      |  2 +-
+ 3 files changed, 30 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index 73e217260390..9a8124c9f2ea 100644
---- a/drivers/ufs/host/ufs-mediatek.c
-+++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -27,8 +27,14 @@
- #include <ufs/unipro.h>
- #include "ufs-mediatek.h"
+diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
+index 31df052fbc41..911dc1cbe4bb 100644
+--- a/drivers/ufs/core/ufs-mcq.c
++++ b/drivers/ufs/core/ufs-mcq.c
+@@ -16,7 +16,8 @@
+ #define MAX_QUEUE_SUP GENMASK(7, 0)
+ #define UFS_MCQ_MIN_RW_QUEUES 2
+ #define UFS_MCQ_MIN_READ_QUEUES 0
+-#define UFS_MCQ_NUM_DEV_CMD_QUEUES 1
++#define UFS_MCQ_MAX_DEV_CMD_QUEUES 1
++#define UFS_MCQ_MIN_DEV_CMD_QUEUES 0
+ #define UFS_MCQ_MIN_POLL_QUEUES 0
+ #define QUEUE_EN_OFFSET 31
+ #define QUEUE_ID_OFFSET 16
+@@ -75,6 +76,23 @@ module_param_cb(poll_queues, &poll_queue_count_ops, &poll_queues, 0644);
+ MODULE_PARM_DESC(poll_queues,
+ 		 "Number of poll queues used for r/w. Default value is 1");
  
-+static int ufs_mtk_config_mcq(struct ufs_hba *hba, bool irq);
-+
- #define CREATE_TRACE_POINTS
- #include "ufs-mediatek-trace.h"
-+#undef CREATE_TRACE_POINTS
-+
-+#define MAX_SUPP_MAC 64
-+#define MCQ_QUEUE_OFFSET(c) ((((c) >> 16) & 0xFF) * 0x200)
- 
- static const struct ufs_dev_quirk ufs_mtk_dev_fixups[] = {
- 	{ .wmanufacturerid = UFS_ANY_VENDOR,
-@@ -843,6 +849,37 @@ static void ufs_mtk_vreg_fix_vccqx(struct ufs_hba *hba)
- 	}
- }
- 
-+static void ufs_mtk_init_mcq_irq(struct ufs_hba *hba)
++static int dev_cmd_queue_count_set(const char *val, const struct kernel_param *kp)
 +{
-+	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
-+	struct platform_device *pdev;
-+	int i;
-+	int irq;
-+
-+	host->mcq_nr_intr = UFSHCD_MAX_Q_NR;
-+	pdev = container_of(hba->dev, struct platform_device, dev);
-+
-+	/* invalidate irq info */
-+	for (i = 0; i < host->mcq_nr_intr; i++)
-+		host->mcq_intr_info[i].irq = MTK_MCQ_INVALID_IRQ;
-+
-+	for (i = 0; i < host->mcq_nr_intr; i++) {
-+		/* irq index 0 is legacy irq, sq/cq irq start from index 1 */
-+		irq = platform_get_irq(pdev, i + 1);
-+		if (irq < 0) {
-+			dev_err(hba->dev, "get platform mcq irq fail: %d\n", i);
-+			goto failed;
-+		}
-+		host->mcq_intr_info[i].hba = hba;
-+		host->mcq_intr_info[i].irq = irq;
-+		dev_info(hba->dev, "get platform mcq irq: %d, %d\n", i, irq);
-+	}
-+
-+	return;
-+failed:
-+	host->mcq_nr_intr = 0;
++	return param_set_uint_minmax(val, kp,
++				     UFS_MCQ_MIN_DEV_CMD_QUEUES,
++				     UFS_MCQ_MAX_DEV_CMD_QUEUES);
 +}
 +
++static const struct kernel_param_ops dev_cmd_queue_count_ops = {
++	.set = dev_cmd_queue_count_set,
++	.get = param_get_uint,
++};
++
++unsigned int dev_cmd_queues = 1;
++module_param_cb(dev_cmd_queues, &dev_cmd_queue_count_ops, &dev_cmd_queues, 0644);
++MODULE_PARM_DESC(dev_cmd_queues,
++		 "Number of queues used for dev command. Default value is 1");
++
  /**
-  * ufs_mtk_init - find other essential mmio bases
-  * @hba: host controller instance
-@@ -879,6 +916,8 @@ static int ufs_mtk_init(struct ufs_hba *hba)
- 	/* Initialize host capability */
- 	ufs_mtk_init_host_caps(hba);
+  * ufshcd_mcq_config_mac - Set the #Max Activ Cmds.
+  * @hba: per adapter instance
+@@ -109,7 +127,7 @@ struct ufs_hw_queue *ufshcd_mcq_req_to_hwq(struct ufs_hba *hba,
+ 	u32 hwq = blk_mq_unique_tag_to_hwq(utag);
  
-+	ufs_mtk_init_mcq_irq(hba);
-+
- 	err = ufs_mtk_bind_mphy(hba);
- 	if (err)
- 		goto out_variant_clear;
-@@ -1174,7 +1213,16 @@ static int ufs_mtk_link_set_hpm(struct ufs_hba *hba)
- 	else
- 		return err;
+ 	/* uhq[0] is used to serve device commands */
+-	return &hba->uhq[hwq + UFSHCD_MCQ_IO_QUEUE_OFFSET];
++	return &hba->uhq[hwq + dev_cmd_queues];
+ }
  
--	err = ufshcd_make_hba_operational(hba);
-+	if (!hba->mcq_enabled) {
-+		err = ufshcd_make_hba_operational(hba);
-+	} else {
-+		ufs_mtk_config_mcq(hba, false);
-+		ufshcd_mcq_make_queues_operational(hba);
-+		ufshcd_mcq_config_mac(hba, hba->nutrs);
-+		ufshcd_writel(hba, ufshcd_readl(hba, REG_UFS_MEM_CFG) | 0x1,
-+			      REG_UFS_MEM_CFG);
-+	}
-+
- 	if (err)
- 		return err;
+ /**
+@@ -152,7 +170,7 @@ static int ufshcd_mcq_config_nr_queues(struct ufs_hba *hba)
  
-@@ -1498,6 +1546,123 @@ static int ufs_mtk_clk_scale_notify(struct ufs_hba *hba, bool scale_up,
+ 	hba_maxq = FIELD_GET(MAX_QUEUE_SUP, hba->mcq_capabilities);
+ 
+-	tot_queues = UFS_MCQ_NUM_DEV_CMD_QUEUES + read_queues + poll_queues +
++	tot_queues = dev_cmd_queues + read_queues + poll_queues +
+ 			rw_queues;
+ 
+ 	if (hba_maxq < tot_queues) {
+@@ -161,7 +179,7 @@ static int ufshcd_mcq_config_nr_queues(struct ufs_hba *hba)
+ 		return -EOPNOTSUPP;
+ 	}
+ 
+-	rem = hba_maxq - UFS_MCQ_NUM_DEV_CMD_QUEUES;
++	rem = hba_maxq - dev_cmd_queues;
+ 
+ 	if (rw_queues) {
+ 		hba->nr_queues[HCTX_TYPE_DEFAULT] = rw_queues;
+@@ -187,7 +205,7 @@ static int ufshcd_mcq_config_nr_queues(struct ufs_hba *hba)
+ 	for (i = 0; i < HCTX_MAX_TYPES; i++)
+ 		host->nr_hw_queues += hba->nr_queues[i];
+ 
+-	hba->nr_hw_queues = host->nr_hw_queues + UFS_MCQ_NUM_DEV_CMD_QUEUES;
++	hba->nr_hw_queues = host->nr_hw_queues + dev_cmd_queues;
  	return 0;
  }
  
-+static int ufs_mtk_get_hba_mac(struct ufs_hba *hba)
-+{
-+	return MAX_SUPP_MAC;
-+}
-+
-+static int ufs_mtk_op_runtime_config(struct ufs_hba *hba)
-+{
-+	struct ufshcd_mcq_opr_info_t *opr;
-+	int i;
-+
-+	for (i = 0; i < OPR_MAX; i++) {
-+		opr = &hba->mcq_opr[i];
-+		opr->stride = REG_UFS_MCQ_STRIDE;
+@@ -423,8 +441,11 @@ int ufshcd_mcq_init(struct ufs_hba *hba)
+ 
+ 	/* The very first HW queue serves device commands */
+ 	hba->dev_cmd_queue = &hba->uhq[0];
+-	/* Give dev_cmd_queue the minimal number of entries */
+-	hba->dev_cmd_queue->max_entries = MAX_DEV_CMD_ENTRIES;
++	if (dev_cmd_queues) {
++		/* Give dedicated dev_cmd_queue the minimal number of entries */
++		hba->dev_cmd_queue->max_entries = MAX_DEV_CMD_ENTRIES;
 +	}
 +
-+	hba->mcq_opr[OPR_SQD].offset = REG_UFS_MTK_SQD;
-+	hba->mcq_opr[OPR_SQIS].offset = REG_UFS_MTK_SQIS;
-+	hba->mcq_opr[OPR_CQD].offset = REG_UFS_MTK_CQD;
-+	hba->mcq_opr[OPR_CQIS].offset = REG_UFS_MTK_CQIS;
-+
-+	hba->mcq_opr[OPR_SQD].base = hba->mmio_base + REG_UFS_MTK_SQD;
-+	hba->mcq_opr[OPR_SQIS].base = hba->mmio_base + REG_UFS_MTK_SQIS;
-+	hba->mcq_opr[OPR_CQD].base = hba->mmio_base + REG_UFS_MTK_CQD;
-+	hba->mcq_opr[OPR_CQIS].base = hba->mmio_base + REG_UFS_MTK_CQIS;
-+
-+	return 0;
-+}
-+
-+static int ufs_mtk_mcq_config_resource(struct ufs_hba *hba)
-+{
-+	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
-+
-+	/* fail mcq initialization if interrupt is not filled properly */
-+	if (!host->mcq_nr_intr) {
-+		dev_info(hba->dev, "IRQs not ready. MCQ disabled.");
-+		return -EINVAL;
-+	}
-+
-+	hba->mcq_base = hba->mmio_base + MCQ_QUEUE_OFFSET(hba->mcq_capabilities);
-+	return 0;
-+}
-+
-+static irqreturn_t ufs_mtk_mcq_intr(int irq, void *__intr_info)
-+{
-+	struct ufs_mtk_mcq_intr_info *mcq_intr_info = __intr_info;
-+	struct ufs_hba *hba = mcq_intr_info->hba;
-+	struct ufs_hw_queue *hwq;
-+	u32 events;
-+	int i = mcq_intr_info->qid;
-+
-+	hwq = &hba->uhq[i];
-+
-+	events = ufshcd_mcq_read_cqis(hba, i);
-+	if (events)
-+		ufshcd_mcq_write_cqis(hba, events, i);
-+
-+	if (events & UFSHCD_MCQ_CQIS_TAIL_ENT_PUSH_STS)
-+		ufshcd_mcq_poll_cqe_lock(hba, hwq);
-+
-+	return IRQ_HANDLED;
-+}
-+
-+static int ufs_mtk_config_mcq_irq(struct ufs_hba *hba)
-+{
-+	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
-+	u32 irq, i;
-+	int ret;
-+
-+	for (i = 0; i < host->mcq_nr_intr; i++) {
-+		irq = host->mcq_intr_info[i].irq;
-+		if (irq == MTK_MCQ_INVALID_IRQ) {
-+			dev_err(hba->dev, "invalid irq. %d\n", i);
-+			return -ENOPARAM;
-+		}
-+
-+		host->mcq_intr_info[i].qid = i;
-+		ret = devm_request_irq(hba->dev, irq, ufs_mtk_mcq_intr, 0, UFSHCD,
-+				       &host->mcq_intr_info[i]);
-+
-+		dev_info(hba->dev, "request irq %d intr %s\n", irq, ret ? "failed" : "");
-+
-+		if (ret)
-+			return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static int ufs_mtk_config_mcq(struct ufs_hba *hba, bool irq)
-+{
-+	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
-+	int ret = 0;
-+
-+	if (!host->mcq_set_intr) {
-+		/* Disable irq option register */
-+		ufshcd_rmwl(hba, MCQ_INTR_EN_MSK, 0, REG_UFS_MMIO_OPT_CTRL_0);
-+
-+		if (irq)
-+			ret = ufs_mtk_config_mcq_irq(hba);
-+
-+		if (ret)
-+			return ret;
-+
-+		host->mcq_set_intr = true;
-+	}
-+
-+	ufshcd_rmwl(hba, MCQ_AH8, MCQ_AH8, REG_UFS_MMIO_OPT_CTRL_0);
-+	ufshcd_rmwl(hba, MCQ_INTR_EN_MSK, MCQ_MULTI_INTR_EN, REG_UFS_MMIO_OPT_CTRL_0);
-+
-+	return 0;
-+}
-+
-+static int ufs_mtk_config_esi(struct ufs_hba *hba)
-+{
-+	return ufs_mtk_config_mcq(hba, true);
-+}
-+
- /*
-  * struct ufs_hba_mtk_vops - UFS MTK specific variant operations
-  *
-@@ -1521,6 +1686,11 @@ static const struct ufs_hba_variant_ops ufs_hba_mtk_vops = {
- 	.event_notify        = ufs_mtk_event_notify,
- 	.config_scaling_param = ufs_mtk_config_scaling_param,
- 	.clk_scale_notify    = ufs_mtk_clk_scale_notify,
-+	/* mcq vops */
-+	.get_hba_mac         = ufs_mtk_get_hba_mac,
-+	.op_runtime_config   = ufs_mtk_op_runtime_config,
-+	.mcq_config_resource = ufs_mtk_mcq_config_resource,
-+	.config_esi          = ufs_mtk_config_esi,
- };
+ 
+ 	host->host_tagset = 1;
+ 	return 0;
+diff --git a/drivers/ufs/core/ufshcd-priv.h b/drivers/ufs/core/ufshcd-priv.h
+index 529f8507a5e4..bad611ac390e 100644
+--- a/drivers/ufs/core/ufshcd-priv.h
++++ b/drivers/ufs/core/ufshcd-priv.h
+@@ -78,7 +78,6 @@ struct ufs_hw_queue *ufshcd_mcq_req_to_hwq(struct ufs_hba *hba,
+ unsigned long ufshcd_mcq_poll_cqe_lock(struct ufs_hba *hba,
+ 				       struct ufs_hw_queue *hwq);
+ 
+-#define UFSHCD_MCQ_IO_QUEUE_OFFSET	1
+ #define SD_ASCII_STD true
+ #define SD_RAW false
+ int ufshcd_read_string_desc(struct ufs_hba *hba, u8 desc_index,
+@@ -287,6 +286,7 @@ static inline int ufshcd_mcq_vops_config_esi(struct ufs_hba *hba)
+ 	return -EOPNOTSUPP;
+ }
+ 
++extern unsigned int dev_cmd_queues;
+ extern const struct ufs_pm_lvl_states ufs_pm_lvl_states[];
  
  /**
-@@ -1567,7 +1737,7 @@ static int ufs_mtk_probe(struct platform_device *pdev)
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index acae4e194ec4..f2c62a41bb33 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -5513,7 +5513,7 @@ static int ufshcd_poll(struct Scsi_Host *shost, unsigned int queue_num)
+ 	struct ufs_hw_queue *hwq;
  
- out:
- 	if (err)
--		dev_info(dev, "probe failed %d\n", err);
-+		dev_err(dev, "probe failed %d\n", err);
+ 	if (is_mcq_enabled(hba)) {
+-		hwq = &hba->uhq[queue_num + UFSHCD_MCQ_IO_QUEUE_OFFSET];
++		hwq = &hba->uhq[queue_num + dev_cmd_queues];
  
- 	of_node_put(reset_node);
- 	return err;
-diff --git a/drivers/ufs/host/ufs-mediatek.h b/drivers/ufs/host/ufs-mediatek.h
-index 2fc6d7b87694..c2830f04df0b 100644
---- a/drivers/ufs/host/ufs-mediatek.h
-+++ b/drivers/ufs/host/ufs-mediatek.h
-@@ -10,11 +10,27 @@
- #include <linux/pm_qos.h>
- #include <linux/soc/mediatek/mtk_sip_svc.h>
- 
-+/*
-+ * MCQ define and struct
-+ */
-+#define UFSHCD_MAX_Q_NR 8
-+#define MTK_MCQ_INVALID_IRQ	0xFFFF
-+
-+/* REG_UFS_MMIO_OPT_CTRL_0 160h */
-+#define EHS_EN                  0x1
-+#define PFM_IMPV                0x2
-+#define MCQ_MULTI_INTR_EN       0x4
-+#define MCQ_CMB_INTR_EN         0x8
-+#define MCQ_AH8                 0x10
-+
-+#define MCQ_INTR_EN_MSK         (MCQ_MULTI_INTR_EN | MCQ_CMB_INTR_EN)
-+
- /*
-  * Vendor specific UFSHCI Registers
-  */
- #define REG_UFS_XOUFS_CTRL          0x140
- #define REG_UFS_REFCLK_CTRL         0x144
-+#define REG_UFS_MMIO_OPT_CTRL_0     0x160
- #define REG_UFS_EXTREG              0x2100
- #define REG_UFS_MPHYCTRL            0x2200
- #define REG_UFS_MTK_IP_VER          0x2240
-@@ -26,6 +42,12 @@
- #define REG_UFS_DEBUG_SEL_B2        0x22D8
- #define REG_UFS_DEBUG_SEL_B3        0x22DC
- 
-+#define REG_UFS_MTK_SQD             0x2800
-+#define REG_UFS_MTK_SQIS            0x2814
-+#define REG_UFS_MTK_CQD             0x281C
-+#define REG_UFS_MTK_CQIS            0x2824
-+
-+#define REG_UFS_MCQ_STRIDE          0x30
- /*
-  * Ref-clk control
-  *
-@@ -136,6 +158,12 @@ struct ufs_mtk_hw_ver {
- 	u8 major;
- };
- 
-+struct ufs_mtk_mcq_intr_info {
-+	struct ufs_hba *hba;
-+	u32 irq;
-+	u8 qid;
-+};
-+
- struct ufs_mtk_host {
- 	struct phy *mphy;
- 	struct pm_qos_request pm_qos_req;
-@@ -155,6 +183,10 @@ struct ufs_mtk_host {
- 	u16 ref_clk_ungating_wait_us;
- 	u16 ref_clk_gating_wait_us;
- 	u32 ip_ver;
-+
-+	bool mcq_set_intr;
-+	int mcq_nr_intr;
-+	struct ufs_mtk_mcq_intr_info mcq_intr_info[UFSHCD_MAX_Q_NR];
- };
- 
- /*
+ 		return ufshcd_mcq_poll_cqe_lock(hba, hwq);
+ 	}
 -- 
 2.18.0
 
