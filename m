@@ -4,78 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97E3EC76196
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 10:49:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2CF0C761A6
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 11:07:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9dZSNEzifW+EAseN3wIB9wa4165FEL3Zr0PtIZiGHic=; b=1T9g63RqcrfFQI54oNHlZq5PxH
-	lPMQDZQzsrM9FDLftuaRsAKgYy7aY1+9xXaS2MCe3kNJuqViBrOI85EUNgBdLwDNjEFKAap6QsG+H
-	hXS2f1m+GToVTHISWb5pKG7csr1+m5lDJ7DLmKWJly5lpBgSt7n13avO/sHnUQzw3NrUn2MislWCw
-	oeaS5J69r/NsKt2Efk6VDQy82Hdn+9V11FI0M07NsuwPl0fKIQJK+MlPfhdGtOsFUItsTePoq4pdM
-	EXKLVXCIFuCjQ7ypipkBknt6xJemsSOWKT/W1dmSxaMQcGtYWX3Gc8/vjzEN1DgBJhmhQ+s7nXJ1B
-	uxfmUOvA==;
+	bh=ZudYGNHvAgPdTp0WTPAT2m/9U9KwG4/3bZKY+rxOHUI=; b=AFumIgrUmawsT1AQA6hGL9pl40
+	NxkSQLRgwyd5/peLiUjW6xpyM2UgBQILoCDptGC5knysyGRV7XTx+dF/8EW74LkAeAwM4/Lf5ozfT
+	nz2zVhkx9WniPJYatvqReCMF/EP4a/9LfEa3FTTVBh2hXtWhgeIUDYD3OWRkrujCGx/LGyNUukLrG
+	mVBqNfffkQV7DzT0h1yyVoDz6qLhtjeyZ1xf35EX/MaSud/t5mqLIAPsZp1gwTEyU8TNg7JhWE2/F
+	AvpGkpraOmneoydzW1FM9w+oDVIS6wJQsf8sY1XQqVSxQJjbLObVKF4AVmI1/RbrAw6rYmCncvETZ
+	rxV3VBTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ph6tA-00E1Ok-32;
-	Tue, 28 Mar 2023 10:49:16 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ph7Aj-00E4Mf-0r;
+	Tue, 28 Mar 2023 11:07:25 +0000
+Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ph6t8-00E1MR-1O;
-	Tue, 28 Mar 2023 10:49:15 +0000
-X-UUID: 28b563b0cd5611edb7d8d11f642b8e78-20230328
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=9dZSNEzifW+EAseN3wIB9wa4165FEL3Zr0PtIZiGHic=;
-	b=elEqt7OVRNgQjIKwn3/TK8euy0LlOSn9hX5EdPnFDrNvaUhx9UxpY5IRSxnMdQygtJ1i8AqSabowdqCNRK0kwSC2NFPJOJLRbvKlIJ5kca+XK9slXigZRqN7DMooOl+EcKMQOafet2xn4EX3UByuW5VwcWhT8D0R7hgelsISUzY=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:e524c32f-9b06-47d0-bf65-b87708e1bf69,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:120426c,CLOUDID:1b4e9db4-beed-4dfc-bd9c-e1b22fa6ccc4,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: 28b563b0cd5611edb7d8d11f642b8e78-20230328
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <powen.kao@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1271370052; Tue, 28 Mar 2023 03:49:05 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Tue, 28 Mar 2023 18:38:28 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Tue, 28 Mar 2023 18:38:28 +0800
-From: Po-Wen Kao <powen.kao@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Stanley Chu <stanley.chu@mediatek.com>, "James E.J. Bottomley"
-	<jejb@linux.ibm.com>, "Martin K. Petersen" <martin.petersen@oracle.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <wsd_upstream@mediatek.com>, <peter.wang@mediatek.com>,
-	<powen.kao@mediatek.com>, <alice.chao@mediatek.com>,
-	<naomi.chu@mediatek.com>, <chun-hung.wu@mediatek.com>,
-	<cc.chou@mediatek.com>, <eddie.huang@mediatek.com>,
-	<mason.zhang@mediatek.com>, <chaotian.jing@mediatek.com>,
-	<jiajie.hao@mediatek.com>
-Subject: [PATCH 2/2] scsi: ufs: ufs-mediatek: Add UFSHCD_QUIRK_MCQ_BROKEN_INTR quirk
-Date: Tue, 28 Mar 2023 18:37:53 +0800
-Message-ID: <20230328103801.11198-2-powen.kao@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230328103801.11198-1-powen.kao@mediatek.com>
-References: <20230328103801.11198-1-powen.kao@mediatek.com>
+	id 1ph7Ae-00E4Gf-3D;
+	Tue, 28 Mar 2023 11:07:22 +0000
+Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 5FD7A1883927;
+	Tue, 28 Mar 2023 11:07:00 +0000 (UTC)
+Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
+	by mailout.gigahost.dk (Postfix) with ESMTP id 570672500389;
+	Tue, 28 Mar 2023 11:07:00 +0000 (UTC)
+Received: by smtp.gigahost.dk (Postfix, from userid 1000)
+	id 46A3B9B403E4; Tue, 28 Mar 2023 11:07:00 +0000 (UTC)
+X-Screener-Id: e32ae469fa6e394734d05373d3a705875723cf1e
+Received: from fujitsu (2-104-116-184-cable.dk.customer.tdc.net [2.104.116.184])
+	by smtp.gigahost.dk (Postfix) with ESMTPSA id 9C4BC91201E3;
+	Tue, 28 Mar 2023 11:06:59 +0000 (UTC)
+From: Hans Schultz <netdev@kapio-technology.com>
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
+ Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Eric
+ Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Kurt
+ Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>,
+ Woojung Huh <woojung.huh@microchip.com>, "maintainer:MICROCHIP KSZ SERIES
+ ETHERNET SWITCH DRIVER" <UNGLinuxDriver@microchip.com>, Sean Wang
+ <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
+ Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, =?utf-8?Q?Cl=C3=A9ment_L=C3=A9ger?=
+ <clement.leger@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
+ <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
+ <razor@blackwall.org>, Shuah Khan <shuah@kernel.org>, Christian Marangi
+ <ansuelsmth@gmail.com>, Ido Schimmel <idosch@nvidia.com>, open list
+ <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>, "open list:RENESAS RZ/N1
+ A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>, "moderated
+ list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>, "open
+ list:KERNEL SELFTEST FRAMEWORK" <linux-kselftest@vger.kernel.org>
+Subject: Re: [PATCH v2 net-next 2/6] net: dsa: propagate flags down towards
+ drivers
+In-Reply-To: <20230327225933.plm5raegywbe7g2a@skbuf>
+References: <20230318141010.513424-1-netdev@kapio-technology.com>
+ <20230318141010.513424-3-netdev@kapio-technology.com>
+ <20230327115206.jk5q5l753aoelwus@skbuf>
+ <87355qb48h.fsf@kapio-technology.com>
+ <20230327160009.bdswnalizdv2u77z@skbuf>
+ <87pm8tooe1.fsf@kapio-technology.com>
+ <20230327225933.plm5raegywbe7g2a@skbuf>
+Date: Tue, 28 Mar 2023 13:04:23 +0200
+Message-ID: <87ileljfwo.fsf@kapio-technology.com>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230328_034914_470337_5AEC9B43 
-X-CRM114-Status: UNSURE (   9.64  )
+X-CRM114-CacheID: sfid-20230328_040721_177701_0BC50C04 
+X-CRM114-Status: UNSURE (   9.32  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -91,27 +93,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Set UFSHCD_QUIRK_MCQ_BROKEN_INTR for mtk driver
+On Tue, Mar 28, 2023 at 01:59, Vladimir Oltean <olteanv@gmail.com> wrote:
+>
+> which idea is that, again?
 
-Signed-off-by: Po-Wen Kao <powen.kao@mediatek.com>
----
- drivers/ufs/host/ufs-mediatek.c | 2 ++
- 1 file changed, 2 insertions(+)
+So I cannot us the offloaded flag as it is added by DSA in the common
+case when using 'bridge fdb replace ... dynamic'.
 
-diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index 73e217260390..b4a4a580ad37 100644
---- a/drivers/ufs/host/ufs-mediatek.c
-+++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -901,6 +901,8 @@ static int ufs_mtk_init(struct ufs_hba *hba)
- 	hba->caps |= UFSHCD_CAP_CLK_SCALING;
- 
- 	hba->quirks |= UFSHCI_QUIRK_SKIP_MANUAL_WB_FLUSH_CTRL;
-+	hba->quirks |= UFSHCD_QUIRK_MCQ_BROKEN_INTR;
-+
- 	hba->vps->wb_flush_threshold = UFS_WB_BUF_REMAIN_PERCENT(80);
- 
- 	if (host->caps & UFS_MTK_CAP_DISABLE_AH8)
--- 
-2.18.0
-
+The idea is then to use the ext_learn flag instead, which is not aged by
+the bridge. To do this the driver (mv88e6xxx) will send a
+SWITCHDEV_FDB_ADD_TO_BRIDGE switchdev event when the new dynamic flag is
+true. The function sending this event will then be named
+mv88e6xxx_add_fdb_synth_learned() in
+drivers/net/dsa/mv88e6xxx/switchdev.c, replacing the
+mv88e6xxx_set_fdb_offloaded() function but in most part the same
+content, just another event type.
 
