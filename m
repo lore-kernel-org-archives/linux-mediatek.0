@@ -4,85 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DB8DC77B60
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 03:13:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9A45C76196
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 05:10:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NwOES1uov/pxVLowAE7Sgh3FPfyIsRDoqEMp2uagMQI=; b=xYmLF8U1r5EmjZEE36/u5s/1jk
-	79R04yrmQe3mMYrriukDL0HEn0EhUiOvHLphYRpgRCxPjtEtg0r894Ba7qbSIpWSTP45faPbl9hwe
-	LzxzOm5d+jL7NsWbi0UEsnsS0kTyfJvzxhk0bT12BVOXYsmagB2jTfrUeqb6n2nwvP1qK43Ytewtw
-	h1qtsCbZDIqGLEfyAImuHWN1avOqNnSqekwiyOPgOF8RI+4fw4L09QrzWhDF4HYwOwQPPaMewchp2
-	FBdPwaoXZ3XdfHkw+XXXyp/a+BVnYSgLILMoiPTlgCtsU/xvqW4vX+MwGOn7n+n7DDycVVGY8WSzU
-	iLCEQMjA==;
+	Content-Type:Mime-Version:To:Subject:Message-Id:From:Date:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=MThjatOvmvG2ud53iY/JFats0mGN8ATImNEA9WFnq70=; b=PFCMu/2j7n5QUIpnPSQTZ0RZoa
+	8+FiICCFdunE5stR2fW8LSZDf+t30JB/JveEuNf2uMyI3llsL0EWzC6zPYtPRCpPTX6SEAW8LFLIK
+	VBhffTaievPJqefBcRlhMBA1uvhdPTyOQXoMOPwowg5kxp5IInSscCaADAo9VX19Gxk5dP1vDuDYF
+	gwZjQyHOdmF8+HxMq2esr6Tyn4Ebvojg12tWu1g5n9y1RLJVFB2SokC/FJ0ZvRxpZe4T6xwCnc9qp
+	8V4xg8Ntfl+ZV9/OmQF6JtFJzS3vRQMJ4mFWDeq+JL1ycI/lARhKNHlsXQSYze0z1EkVOWGgv+Jqy
+	ATVwkFBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgzle-00CzI1-2W;
-	Tue, 28 Mar 2023 03:13:02 +0000
-Received: from mail-ua1-x92c.google.com ([2607:f8b0:4864:20::92c])
+	id 1ph1ar-00D9tI-2I;
+	Tue, 28 Mar 2023 05:10:01 +0000
+Received: from boar.birch.relay.mailchannels.net ([23.83.209.250])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgzlZ-00CzF6-2T
-	for linux-mediatek@lists.infradead.org;
-	Tue, 28 Mar 2023 03:12:59 +0000
-Received: by mail-ua1-x92c.google.com with SMTP id q8so200717uas.7
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Mar 2023 20:12:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1679973174;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=NwOES1uov/pxVLowAE7Sgh3FPfyIsRDoqEMp2uagMQI=;
-        b=NgLG8Q5l9naxBa4Jf7nYrLS8DevbrfmEMMiDB6xIjXmdvmxfcmHG1fu7YA6jdXBu5a
-         I/PLOK860EliMqfH52D0rDFLicN/3jKe4r31PEmIx2OdxRR+0T9OZ962PmLqA7e0KKje
-         CDwaaqQm9fEDg1oG6tSD/I8GzJu/l5G/I1sNI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679973174;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=NwOES1uov/pxVLowAE7Sgh3FPfyIsRDoqEMp2uagMQI=;
-        b=K1BgD8Xc17ae+3gohRR4IvgJN/HdIOZdrjksvXu8Bky4YXt8+Bf4QWhv6KSXAasPyE
-         Yjaj9DTog8sel0qrS6xdOcqH6P4Js99rGffOoqJRYlUGZuXh2bZvEm0X5HzKA/+flnCo
-         CJV4PyxSTVmcVHXpQbLpVVB2KwBAZa4+m8cupEeZM459AmsTPYBYIvEVaeoqDidvjEpC
-         JMl6cPQB5y62w6QYvwsRqAc3XO/jkcJW+uYgsNxLmJ47mXGLOr7K9eCBBzxu8IWdvv0+
-         to57BKZP6f6GiiH6BTQ+xZKmZCgHwR8kT7N7b+ZVNMaWPc4oO90/cuga19kEsFU+Flpg
-         FB3Q==
-X-Gm-Message-State: AAQBX9fgI2Tb8Zv6DWkptS2mUl+XHJxWPLvxdrLpLWNPFE7pM/S5soen
-	W9qcTFwk4vW0w9ZWsdyqlEigGyYPclzN5l1dj1NQCw==
-X-Google-Smtp-Source: AKy350bTe0q20Y1kFa3RqGcrtmmaMcfvywJnI4v6r/ZKEb+aF8/ujyJQ/dovvRsfrWL510XzD2Ai4MZ3KVikA5Tw/BY=
-X-Received: by 2002:a05:6130:3a9:b0:68d:6360:77b with SMTP id
- az41-20020a05613003a900b0068d6360077bmr10737949uab.1.1679973174489; Mon, 27
- Mar 2023 20:12:54 -0700 (PDT)
-MIME-Version: 1.0
-References: <20230307163413.143334-1-bchihi@baylibre.com> <CAGXv+5E0wUJYUVD3wx3-=uES612ARQmUE0rxgAruFHxpZCBjzA@mail.gmail.com>
- <CAGuA+ooi7Kx05gagLzXAN3upDiSqDUNOM_djYdGftw6ogVx5gw@mail.gmail.com>
- <CAGuA+oqDPPYFJef_8=YrOpHQNVJ3xgm_zXS6fq_HG2Jy_6t-Zg@mail.gmail.com>
- <CAGXv+5EZPWohGN5CaEiqVrM4MyAar3cPEUhHtGY_9wTJSJNVFQ@mail.gmail.com> <CAGuA+oqF4jFMyEo09VDmCf-_7g0ua3XDKDAJ+t3Gat14pDM9NA@mail.gmail.com>
-In-Reply-To: <CAGuA+oqF4jFMyEo09VDmCf-_7g0ua3XDKDAJ+t3Gat14pDM9NA@mail.gmail.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 28 Mar 2023 11:12:43 +0800
-Message-ID: <CAGXv+5GGO76H9Z-X=3nhtmSyp7uhuUF4DE0T527M5z+SBX482Q@mail.gmail.com>
-Subject: Re: [PATCH 0/4] Add LVTS support for mt8192
-To: Balsam CHIHI <bchihi@baylibre.com>
-Cc: daniel.lezcano@linaro.org, angelogioacchino.delregno@collabora.com, 
-	rafael@kernel.org, amitk@kernel.org, rui.zhang@intel.com, 
-	matthias.bgg@gmail.com, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
-	rdunlap@infradead.org, ye.xingchen@zte.com.cn, p.zabel@pengutronix.de, 
-	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	devicetree@vger.kernel.org, khilman@baylibre.com, james.lo@mediatek.com, 
-	rex-bc.chen@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
+	id 1ph1ap-00D9qi-08
+	for Linux-mediatek@lists.infradead.org;
+	Tue, 28 Mar 2023 05:10:00 +0000
+X-Sender-Id: whogohost|x-authuser|irinajom@wgh15.wghservers.com
+Received: from relay.mailchannels.net (localhost [127.0.0.1])
+	by relay.mailchannels.net (Postfix) with ESMTP id 9F75E26063D
+	for <Linux-mediatek@lists.infradead.org>; Tue, 28 Mar 2023 05:09:14 +0000 (UTC)
+Received: from wgh15.wghservers.com (unknown [127.0.0.6])
+	(Authenticated sender: whogohost)
+	by relay.mailchannels.net (Postfix) with ESMTPA id E63A0260DD3
+	for <Linux-mediatek@lists.infradead.org>; Tue, 28 Mar 2023 05:09:13 +0000 (UTC)
+ARC-Seal: i=1; s=arc-2022; d=mailchannels.net; t=1679980154; a=rsa-sha256;
+	cv=none;
+	b=72akAHy3+xlc5sWPPOL6r+a/MdXUV/F7Ro1NEtL8FS7f5JearmssxQmhK9AIv8e2GlQrX4
+	Q0ymBraHwOuu7IC1gZxOVjW6Dicav71wyhgsHqmYZsX9N4JXeExjNEbbSGbgL++efG0ajo
+	6FfPkLk5P8nR7bF8GcYMRatvr2LtgfKLT2GlKsSgavzm1M51TOhyETXm6NeIjQoaqsAOMj
+	7gCbTloBa1PeRtyXyOXvkrPztJvfptS8v66hqjmOaMGPdzxiojKP+5VDxAHJCLCjL/4hQn
+	uBN3D40qEBRQp+335hADjBg0oz7T1emww6W3aE1K8njliKZO5AqBR/RJwsBn5g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mailchannels.net;
+	s=arc-2022; t=1679980154;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=MThjatOvmvG2ud53iY/JFats0mGN8ATImNEA9WFnq70=;
+	b=dmAFIsgm1kJawaTsX5TKBm3nW1ZzCOHItFnVcmxcLn6fuPGvGoW5/Ea+ewp7Oy0P7+2yr8
+	lCIsyrtz2EctlgZvRALRcX8rpvw/GtwmtqmJ3Bh1rKGeJxTOR787ccgIgQQpGInpsDdNnE
+	BmFBYAcvYmLHwghSaaKepELUav6z7dbpiJe3bcIR2eg6YutZtCtCpNr9+uAjuIh1WWQk9J
+	6I+ii4hEBO3eW0DLjvBl5dCPKL/Z7ukgdQIBRX1UNzgMl8eO+UCSc1MpwhyqwshZROrYtm
+	g5wg8vYQxwq+yir6yaPbsGKjgtTFw1+tGoODdO5oebVooFRvOipxKPx6yZ09gA==
+ARC-Authentication-Results: i=1;
+	rspamd-66b58c76b9-488z5;
+	auth=pass smtp.auth=whogohost smtp.mailfrom=info@irinajo.me
+X-Sender-Id: whogohost|x-authuser|irinajom@wgh15.wghservers.com
+X-MC-Relay: Bad
+X-MailChannels-SenderId: whogohost|x-authuser|irinajom@wgh15.wghservers.com
+X-MailChannels-Auth-Id: whogohost
+X-Troubled-Tangy: 5d6429386dadb32a_1679980154108_4049495563
+X-MC-Loop-Signature: 1679980154108:684174758
+X-MC-Ingress-Time: 1679980154107
+Received: from wgh15.wghservers.com (wgh15.wghservers.com [23.94.186.186])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384)
+	by 100.116.217.215 (trex/6.7.2);
+	Tue, 28 Mar 2023 05:09:14 +0000
+Received: from irinajom by wgh15.wghservers.com with local (Exim 4.96)
+	(envelope-from <info@irinajo.me>)
+	id 1ph1a4-0007RY-2o
+	for Linux-mediatek@lists.infradead.org;
+	Tue, 28 Mar 2023 06:09:12 +0100
+Date: Tue, 28 Mar 2023 05:09:12 GMT
+From: "Irin Ajo Mi" <info@irinajo.me>
+Message-Id: <1679980152.Eeg7RrDx4jwY6EnW@wgh15.wghservers.com>
+Precedence: auto_reply
+Subject: =?UTF-8?B?VGhhbmsgeW91IGZvciBjb250YWN0aW5nIHVzIA==?=
+To: Linux-mediatek@lists.infradead.org
+X-Autorespond: Irinajomi "RECORD`JACKPOT`1350165`DOLLARS`CLICK`HERE` https://malko6.page.link/FyYN"
+X-Loop: linux-mediatek@lists.infradead.org
+X-Precedence: auto_reply
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
+X-AuthUser: irinajom@wgh15.wghservers.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230327_201257_801824_23FF654B 
-X-CRM114-Status: GOOD (  31.57  )
+X-CRM114-CacheID: sfid-20230327_220959_231977_B082891D 
+X-CRM114-Status: UNSURE (  -0.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
-Precedence: list
 List-Id: <linux-mediatek.lists.infradead.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=unsubscribe>
@@ -94,111 +103,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 28, 2023 at 8:21=E2=80=AFAM Balsam CHIHI <bchihi@baylibre.com> =
-wrote:
->
-> On Sat, Mar 25, 2023 at 5:33=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org>=
- wrote:
-> >
-> > On Wed, Mar 22, 2023 at 8:48=E2=80=AFPM Balsam CHIHI <bchihi@baylibre.c=
-om> wrote:
-> > >
-> > > Hi Chen-Yu,
-> > >
-> > > I suspect the bug comes from incorrect calibration data offsets for A=
-P
-> > > Domain because you confirm that MCU Domain probe runs without issues.
-> > > Is it possible to test something for us to confirm this theory (i
-> > > don't have an mt8192 board on hand now), when you have the time of
-> > > course?
-> > > We would like to test AP Domain's calibration data offsets with a
-> > > working one, for example :
-> > >
-> > >  static const struct lvts_ctrl_data mt8192_lvts_ap_data_ctrl[] =3D {
-> > >                 {
-> > > -               .cal_offset =3D { 0x25, 0x28 },
-> > > +               .cal_offset =3D { 0x04, 0x04 },
-> > >                 .lvts_sensor =3D {
-> > >                         { .dt_id =3D MT8192_AP_VPU0 },
-> > >                         { .dt_id =3D MT8192_AP_VPU1 }
-> > > @@ -1336,7 +1336,7 @@ static const struct lvts_ctrl_data
-> > > mt8192_lvts_ap_data_ctrl[] =3D {
-> > >                 .hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8192,
-> > >         },
-> > >         {
-> > > -               .cal_offset =3D { 0x2e, 0x31 },
-> > > +               .cal_offset =3D { 0x04, 0x04 },
-> > >                 .lvts_sensor =3D {
-> > >                         { .dt_id =3D MT8192_AP_GPU0 },
-> > >                         { .dt_id =3D MT8192_AP_GPU1 }
-> > > @@ -1346,7 +1346,7 @@ static const struct lvts_ctrl_data
-> > > mt8192_lvts_ap_data_ctrl[] =3D {
-> > >                 .hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8192,
-> > >         },
-> > >         {
-> > > -               .cal_offset =3D { 0x37, 0x3a },
-> > > +               .cal_offset =3D { 0x04, 0x04 },
-> > >                 .lvts_sensor =3D {
-> > >                         { .dt_id =3D MT8192_AP_INFRA },
-> > >                         { .dt_id =3D MT8192_AP_CAM },
-> > > @@ -1356,7 +1356,7 @@ static const struct lvts_ctrl_data
-> > > mt8192_lvts_ap_data_ctrl[] =3D {
-> > >                 .hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8192,
-> > >         },
-> > >         {
-> > > -               .cal_offset =3D { 0x40, 0x43, 0x46 },
-> > > +               .cal_offset =3D { 0x04, 0x04, 0x04 },
-> > >                 .lvts_sensor =3D {
-> > >                         { .dt_id =3D MT8192_AP_MD0 },
-> > >                         { .dt_id =3D MT8192_AP_MD1 },
-> > >
-> > > This example is tested and works for mt8195,
-> > > (all sensors use the same calibration data offset for testing purpose=
-s).
-> > >
-> > > Thank you in advance for your help.
-> >
-> > The MCU ones are still tripping though. If I change all of them to 0x04=
-,
-> > then nothing trips. There's also a bug in the interrupt handling code
-> > that needs to be dealt with.
-> >
-> > AFAICT the calibration data is stored differently. If you look at Chrom=
-eOS's
-> > downstream v5.10 driver, you'll see mt6873_efuse_to_cal_data() for MT81=
-92,
-> > and mt8195_efuse_to_cal_data() for MT8195. The difference sums up to:
-> > MT8195 has all data sequentially stored, while MT8192 has most data sto=
-red
-> > in lower 24 bits of each 32-bit word, and the highest 8 bits are then u=
-sed
-> > to pack data for the remaining sensors.
-> >
-> > Regards
-> > ChenYu
->
-> Hi Chen-Yu Tsai,
->
-> Thank you very much for helping me testing this suggestion.
->
-> Indeed, calibration data is stored differently in the mt8192 compared to =
-mt8195.
-> So, the mt8192's support will be delayed for now, to allow further debugg=
-ing.
->
-> In the mean time, we will only continue to upstream the remaining
-> mt8195's source code, so it will get full LVTS support.
-> A new series will be submitted soon.
->
-> Would you please point me out to the bug in interrupt handling code?
-
-I just sent out two patches and CC-ed you on them. They are here just in ca=
-se:
-
-https://lore.kernel.org/linux-pm/20230328031037.1361048-1-wenst@chromium.or=
-g/
-https://lore.kernel.org/linux-pm/20230328031017.1360976-1-wenst@chromium.or=
-g/
-
-ChenYu
+Hello there, =0D
+=0D
+Thank you for contacting Irin Ajo Mi.=0D
+Someone would respond to you shortly.=0D
+=0D
+=0D
+Best regards.=0D
 
