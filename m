@@ -4,62 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23137C761A6
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 02:03:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E59B3C761A6
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 02:28:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6G2DYg8ELtbcds+HAzH8fVD7RX7HwcvzaOlUuI7kips=; b=M4hWxM44v+xQmV
-	ERKUpjTkOCi/56zlNgLfAm9+Vj9ADGa6CWwwBlsApUe7Y4466PzcP+aYT1F91xJ4tPEJK3rxgsh9B
-	z5DGdUUn47J0HXnMirxJ22ZdOy0KzZcw19RdijcGkbT9NQq+1WllLiEpJz9Q0USFEWdEK8gDh+d/a
-	1f0IamgUNKxf71Ewvd3xr+5cGBGyS5TsZQpg3fP3hsPIAoKpad40dcMAdU8jIUan8S3BtClZXg4FP
-	ei0zJTeaIv86iqNy2n5yKylpqU5SoKW152wU2GMXOq44mUrnwEpyJkoGdHIxoGbF++EujBDMCmAtF
-	g4CaGZu5ll8VTg5fUCtA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Wa16E7v4/oxQJBuGCKVIakPyTMFOlhEx6cQrvF1xl1I=; b=yZrEqpwZEVsdmGEk9Zrdn+6CtZ
+	mRO+JxksCf6NMkIw+KK0icaS9QDveVfHxpt3+KbHO8lolRT35PaC74CE83+hHyyffqo1aEpgpZkjd
+	SAYiyR2m6X43j58RCudKUGrCvyhSlIaX7DntYioax3unsHC1GJ9njvW1f0lhOOLV4zgFSVFtms0ET
+	ESz2G9BcAAxjocmw9p2G0NgGiFJQjYfKT7ktXpaJdB6ju9ewxT0i9QBUs707hgr09LbtQUE+VC4uA
+	yD2tlsMJFsBN4WM5AdDYQEg6WX2vXwh6urAJnKnnNL1LYZOfkgw4hSLPIVqkepbXI274HbfHCqTRZ
+	OHTBOKhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgygb-00Cr4a-0C;
-	Tue, 28 Mar 2023 02:03:45 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pgz4D-00Ct65-1Z;
+	Tue, 28 Mar 2023 02:28:09 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgygU-00Cr39-1I;
-	Tue, 28 Mar 2023 02:03:42 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 94FB561551;
-	Tue, 28 Mar 2023 02:03:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 07F85C433EF;
-	Tue, 28 Mar 2023 02:03:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1679969017;
-	bh=6G2DYg8ELtbcds+HAzH8fVD7RX7HwcvzaOlUuI7kips=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=OX6ScXGO6/rjGImEN7aRNFH3B2f7/2aBDNXKhKfqDPgJg+3VrxOY0NG5rJoxK7ZxW
-	 vVrYX2UbNF+502CXMPlTSLm933frp+X7XJ4XMlhHEMy4rbnzuB6VnzJzwJ8OKepnZb
-	 gZED4ue40ZcVTlTiGjd1ywtJmGLf4kLtONmtVNYhA2s1Oyu6hqVrnOvUnPbmj0dTP2
-	 cLumXnQh7MfGEyYmwbrdasOJqtI7NRc72ycgdgqq41PkEgVQZhI3j97prLV9X/5kak
-	 JXBkGLfpdYCADfJwaN4+XfwuKVKkq0ai8OyHm8Uvh8vta/obJBc7XSLjSgabAT/1oy
-	 ughYp2bWCDqlA==
-Date: Mon, 27 Mar 2023 19:03:34 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Subject: Re: [PATCH net 4/7] net: dsa: mt7530: set both CPU port interfaces
- to PHY_INTERFACE_MODE_NA
-Message-ID: <20230327190334.6c5bcf87@kernel.org>
-In-Reply-To: <8450084e-1474-17fa-32c2-a4653b74ff17@arinc9.com>
-References: <20230326140818.246575-1-arinc.unal@arinc9.com>
-	<20230326140818.246575-5-arinc.unal@arinc9.com>
-	<20230327191242.4qabzrn3vtx3l2a7@skbuf>
-	<8450084e-1474-17fa-32c2-a4653b74ff17@arinc9.com>
+	id 1pgz4A-00Ct4s-1c;
+	Tue, 28 Mar 2023 02:28:07 +0000
+X-UUID: 27efb80ecd1011ed8687db9d93187ff1-20230327
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Wa16E7v4/oxQJBuGCKVIakPyTMFOlhEx6cQrvF1xl1I=;
+	b=i/6QvYGJ/nwbtf7tAIyDKkKd03T34WtGDZAp45cBrDgzzKAxoLF4T7cLajz13aq8uD+Sux39f+lhJzQtyqZFoem9gXP6qZsPBhDtI/+6N0aBjzEHuK08VRt0c5VlTZqyzxaWVnw4My0RIJu3YzGsEcm4Nq9IYfhTXfhV4zQP+VQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22,REQID:3a814a39-0bc5-4c9f-bc9d-ee4b5f82f7b0,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:120426c,CLOUDID:339b1bf7-ddba-41c3-91d9-10eeade8eac7,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: 27efb80ecd1011ed8687db9d93187ff1-20230327
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <tinghan.shen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1687486028; Mon, 27 Mar 2023 19:27:59 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Tue, 28 Mar 2023 10:27:56 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Tue, 28 Mar 2023 10:27:56 +0800
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
+	<mathieu.poirier@linaro.org>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
+ Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Tinghan Shen
+	<tinghan.shen@mediatek.com>
+CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v9 08/11] remoteproc: mediatek: Setup MT8195 SCP core 1 SRAM offset
+Date: Tue, 28 Mar 2023 10:27:30 +0800
+Message-ID: <20230328022733.29910-9-tinghan.shen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230328022733.29910-1-tinghan.shen@mediatek.com>
+References: <20230328022733.29910-1-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230327_190338_482168_9D1DCAE0 
-X-CRM114-Status: GOOD (  15.09  )
+X-CRM114-CacheID: sfid-20230327_192806_542077_1E86FD18 
+X-CRM114-Status: GOOD (  17.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,28 +85,92 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>, =?UTF-8?B?UmVuw6k=?= van Dorst <opensource@vdorst.com>, Eric Dumazet <edumazet@google.com>, erkin.bozoglu@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Russell King <rmk+kernel@armlinux.org.uk>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 28 Mar 2023 00:57:57 +0300 Ar=C4=B1n=C3=A7 =C3=9CNAL wrote:
-> I don't appreciate your consistent use of the word "abuse" on my=20
-> patches. I'm by no means a senior C programmer. I'm doing my best to=20
-> correct the driver.
->=20
-> Thank you for explaining the process of phylink with DSA, I will adjust=20
-> my patches accordingly.
->=20
-> I suggest you don't take my patches seriously for a while, until I know=20
-> better.
+Because MT8195 SCP core 0 and core 1 both boot from head of SRAM and
+have the same viewpoint of SRAM, SCP has a "core 1 SRAM offset"
+configuration to control the access destination of SCP core 1 to boot
+core 1 from different SRAM location.
 
-Maybe my bad, I should have sent you a note on your previous series
-already. The patches may be fine, but the commit messages need to do
-a better job of describing what the goal of the change is, functionally.
+The "core 1 SRAM offset" configuration is composed by a range
+and an offset. It works like a simple memory mapped mechanism.
+When SCP core 1 accesses a SRAM address located in the range,
+the SCP bus adds the configured offset to the address to
+shift the physical destination address on SCP SRAM. This shifting is
+transparent to the software running on SCP core 1.
 
-For fixes the bar is even higher because, as Vladimir points out,
-commit messages for fixes need to explain what user visible problem=20
-the patch is resolving. Think of it as a letter to a person using the
-switch who hits a problem and wants to look thru the upstream commits
-to see if it's already fixed.
+Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/remoteproc/mtk_common.h |  7 +++++++
+ drivers/remoteproc/mtk_scp.c    | 27 +++++++++++++++++++++++++++
+ 2 files changed, 34 insertions(+)
+
+diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
+index f1a021ad7f66..6861543a0825 100644
+--- a/drivers/remoteproc/mtk_common.h
++++ b/drivers/remoteproc/mtk_common.h
+@@ -65,6 +65,13 @@
+ #define MT8195_CORE1_MEM_ATT_PREDEF		0x20008
+ #define MT8195_CORE1_WDT_CFG			0x20034
+ 
++#define MT8195_SEC_CTRL				0x85000
++#define MT8195_CORE_OFFSET_ENABLE_D		BIT(13)
++#define MT8195_CORE_OFFSET_ENABLE_I		BIT(12)
++#define MT8195_L2TCM_OFFSET_RANGE_0_LOW		0x850b0
++#define MT8195_L2TCM_OFFSET_RANGE_0_HIGH	0x850b4
++#define MT8195_L2TCM_OFFSET			0x850d0
++
+ #define SCP_FW_VER_LEN			32
+ #define SCP_SHARE_BUFFER_SIZE		288
+ 
+diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+index ba931d550c1e..f74ee80838e9 100644
+--- a/drivers/remoteproc/mtk_scp.c
++++ b/drivers/remoteproc/mtk_scp.c
+@@ -486,6 +486,9 @@ static int mt8195_scp_before_load(struct mtk_scp *scp)
+ 
+ static int mt8195_scp_c1_before_load(struct mtk_scp *scp)
+ {
++	u32 sec_ctrl;
++	struct mtk_scp *scp_c0;
++
+ 	scp_sram_power_on(scp->reg_base + MT8195_CPU1_SRAM_PD, 0);
+ 
+ 	/* hold SCP in reset while loading FW. */
+@@ -494,6 +497,30 @@ static int mt8195_scp_c1_before_load(struct mtk_scp *scp)
+ 	/* enable MPU for all memory regions */
+ 	writel(0xff, scp->reg_base + MT8195_CORE1_MEM_ATT_PREDEF);
+ 
++	/*
++	 * The L2TCM_OFFSET_RANGE and L2TCM_OFFSET shift the destination address
++	 * on SRAM when SCP core 1 accesses SRAM.
++	 *
++	 * This configuration solves booting the SCP core 0 and core 1 from
++	 * different SRAM address because core 0 and core 1 both boot from
++	 * the head of SRAM by default. this must be configured before boot SCP core 1.
++	 *
++	 * The value of L2TCM_OFFSET_RANGE is from the viewpoint of SCP core 1.
++	 * When SCP core 1 issues address within the range (L2TCM_OFFSET_RANGE),
++	 * the address will be added with a fixed offset (L2TCM_OFFSET) on the bus.
++	 * The shift action is tranparent to software.
++	 */
++	writel(0, scp->reg_base + MT8195_L2TCM_OFFSET_RANGE_0_LOW);
++	writel(scp->sram_size, scp->reg_base + MT8195_L2TCM_OFFSET_RANGE_0_HIGH);
++
++	scp_c0 = list_first_entry(scp->cluster, struct mtk_scp, elem);
++	writel(scp->sram_phys - scp_c0->sram_phys, scp->reg_base + MT8195_L2TCM_OFFSET);
++
++	/* enable SRAM offset when fetching instruction and data */
++	sec_ctrl = readl(scp->reg_base + MT8195_SEC_CTRL);
++	sec_ctrl |= MT8195_CORE_OFFSET_ENABLE_I | MT8195_CORE_OFFSET_ENABLE_D;
++	writel(sec_ctrl, scp->reg_base + MT8195_SEC_CTRL);
++
+ 	return 0;
+ }
+ 
+-- 
+2.18.0
+
 
