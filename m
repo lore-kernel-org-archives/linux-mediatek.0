@@ -4,148 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7C2FC76196
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 16:40:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35173C76196
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 17:45:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KDev4h0NnBgmjI2bEQrPsQycTtB9XDfUzzJHeIjxhN0=; b=SooTww7ARgiDpSymHdmV/4Y3DY
-	EIAStsPLAviTE4MeVt3XY77OFKc/sLMtSopq55Z1S2kxeOY1C19ujFKXAmgrJhkUhqJwHu90Jb1d0
-	W5KLS7bV6bxfewJft3x29ot5r3mgptbyG/lgpLqhuMe+9A4fBz98h7ZbaOXvSEWe5Qyknq1KWnTeM
-	2gjpO5ox8PTWWfZ4euPCgivxXusvp/ts3pIBYXwBw9oF3AiInNiJCqyI4RS7DOtDleuP5qcUW7kHt
-	n5/ChexU9VAnPOP5RrRSD6AcP3zF2O1lw/rFuKYdZh1k27oP/fDl/Si6uXzETP+4PgtLJzZQpEXiY
-	f5SJ5oaA==;
+	bh=rzjwNv6KfjMdZ/jg5+v1CnkgjzSDpMD+Brc99A2m+Zo=; b=Fmi8EicyDEqwfMlSvJAMOWhrsw
+	TClwAwn5+7zt7mGyO3Ww163LnHDvgDOu+gqFYzPeO1sOAf/oco3CKpEXoKU2LamQd6jcWU4UGFiHY
+	s9tZ7GjBJzMx8gpt7Joh4v2DeRkwovh2hwYGeNp8GkGZuG3MAp8P56RD+C2uc/V8iJVpPMnRsJfNS
+	zIpDp2nEFfycSuuaeoUTq4c8uXQkAyzMl8HcXNDhH7OtfPM8bmZu3nqsD1yayYjT1CtYh0wvjkcUf
+	9th/sCIoWDLzhhJmXo3QLWdQiqa1sVJlxXsLl2kvooLe1XKLi0UjFXBjIp9jA3WsC/q4t/+sgnTTz
+	egbMaG5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phCN1-00F9xT-24;
-	Tue, 28 Mar 2023 16:40:27 +0000
-Received: from mail-mw2nam10on2061a.outbound.protection.outlook.com ([2a01:111:f400:7e89::61a] helo=NAM10-MW2-obe.outbound.protection.outlook.com)
+	id 1phDNw-00FMFX-1t;
+	Tue, 28 Mar 2023 17:45:28 +0000
+Received: from mga12.intel.com ([192.55.52.136])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phCMz-00F9wo-0U;
-	Tue, 28 Mar 2023 16:40:26 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Ijjq0m5JNHDKFNUGYmmeNJUPAVrYybndnqXLz+9Z2BDyQHkjml6plh8g0dOVLGNxqx88h0B2CmyXOMiy9pBQ8g934zBOL+9ZpcKCvjGeFxJaWnlHdB7xleUSc/LGducgluQ4CjP1pRBrchNGrZ7bueqZn1HDldgx4ltWbi6+ngaqxPPQg3X7Y1aUsOsFVuAnsnPB1MfTf6pdTfsLRkox5GJqbWLEEEuCFac4guRYuObdGuU9PJo3aYCIRnWXEtsNb3v8b/vV73PM5XAJjurmaS3LMeDDpO+e9Sq26sq2MyfVtZ7jlGlD7SF8vfCtaBBUO58Hvdi0q8sE5BooEMzXig==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=KDev4h0NnBgmjI2bEQrPsQycTtB9XDfUzzJHeIjxhN0=;
- b=VsDtUusT0JMNKzXDDGF5oeibLRN+GzroLgilAKzT+yAp336Tt6lgYeYt91yd0bH2VkytuH9EeGYtZhdKzDpTX2sm4MfiLTEoJMMs4UyIFuHQBB9G2zBwYPM/RfPuUDijWy7eKCjYtnR4oTLynpo6JBYNletUH+S1VIOOHCAVVfrKuYhq1E7QaErZgT6bDe9Wsl0cXYOsLxnGF6UgAl5Fo5+B/tA1Rr2NQ9uWhP0kAXSKo6ivpEbF0u+BXD77mDVHyS/VWXO8pJhQkSof0UOz2+wCaYLynVRvZNpHMoI+h0U+/Trv+XLoL7p23jrDosSzaaUWQpi2mYTYMxJQPEL0Fg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=KDev4h0NnBgmjI2bEQrPsQycTtB9XDfUzzJHeIjxhN0=;
- b=PvUAWzflhGE/Ww2Z4xoPfINUG51Z518rHsfJfj2O6mLRmrjddumPQnHh2yg6Zoj1reTGQx3TVvVNclWMwsCn45CJ+S7FS92LxP1VLgw/B5O2S5pxlHQzPvUwMQlobVqqqrKZ4BNraO6xS3YqbMR8kYJcsj2Q8JZP+c8nwTH5lahOReW9dDqzhjLL4MNzxOtJCQP1L7Ho/u5fkmNzAsM1uvGkclKquAWW5iQk3qNyswA52ZiHMfPB60CU1cE4nZSoQOhTZLibm4Dgi3jCqVKoEtLNtUi4olmHTcz4wnaj2kwCJzNlK2VOLgkENZf7JHEo8KQh6Q+E4qRxBNewztYTnA==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from CY5PR12MB6179.namprd12.prod.outlook.com (2603:10b6:930:24::22)
- by SJ2PR12MB8831.namprd12.prod.outlook.com (2603:10b6:a03:4d0::15) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6222.33; Tue, 28 Mar
- 2023 16:40:20 +0000
-Received: from CY5PR12MB6179.namprd12.prod.outlook.com
- ([fe80::d228:dfe5:a8a8:28b3]) by CY5PR12MB6179.namprd12.prod.outlook.com
- ([fe80::d228:dfe5:a8a8:28b3%5]) with mapi id 15.20.6178.038; Tue, 28 Mar 2023
- 16:40:20 +0000
-Date: Tue, 28 Mar 2023 19:40:13 +0300
-From: Ido Schimmel <idosch@nvidia.com>
-To: Hans Schultz <netdev@kapio-technology.com>
-Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>,
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	"maintainer:MICROCHIP KSZ SERIES ETHERNET SWITCH DRIVER" <UNGLinuxDriver@microchip.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	=?iso-8859-1?Q?Cl=E9ment_L=E9ger?= <clement.leger@bootlin.com>,
-	Jiri Pirko <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
-	Shuah Khan <shuah@kernel.org>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	open list <linux-kernel@vger.kernel.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
-	"open list:RENESAS RZ/N1 A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>,
-	"moderated list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>,
-	"open list:KERNEL SELFTEST FRAMEWORK" <linux-kselftest@vger.kernel.org>
-Subject: Re: [PATCH v2 net-next 6/6] selftests: forwarding: add dynamic FDB
- test
-Message-ID: <ZCMYbRqd+qZaiHfu@shredder>
-References: <20230318141010.513424-1-netdev@kapio-technology.com>
- <20230318141010.513424-7-netdev@kapio-technology.com>
- <ZBgdAo8mxwnl+pEE@shredder>
- <87a5zzh65p.fsf@kapio-technology.com>
+	id 1phDNs-00FMEN-1r;
+	Tue, 28 Mar 2023 17:45:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1680025524; x=1711561524;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=zqW36/YvRPeOC23O2ZjyjYHiMdp4yJAYygeFlPzj9Zs=;
+  b=Nh8HKsl0UvPUtBefITStNU5ePvvr3T5+tzeTfAuCv5L4nCXo6qKYH5BT
+   FOGchrE4bhS1MciBcDOKTOrEbGsPZ+alAnarfnEIvr+04EoAi8LOwucu6
+   CrNHublxyTOMp18HnaXdmLpNVcRDxVm31yYwYsOOwwwYUIOk4XT842/lx
+   rK2gK/elf4sdLAysdk8calIN0Lap9OmKnuAx/P1YZBoVzhNUHKuRU0vF6
+   n1nWAsAoXGBnkBKLIG2ecM5Hh0l+EB3P1jj8FcT7/5pSZy5TPm04dvrfQ
+   pbzCYi9+hcOcE7G+szzOYqkR4P1N1suMcAS4JsDzrsynL7t8FiS5WqbRB
+   A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10663"; a="320296514"
+X-IronPort-AV: E=Sophos;i="5.98,297,1673942400"; 
+   d="scan'208";a="320296514"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Mar 2023 10:45:23 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10663"; a="827565190"
+X-IronPort-AV: E=Sophos;i="5.98,297,1673942400"; 
+   d="scan'208";a="827565190"
+Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
+  by fmsmga001.fm.intel.com with ESMTP; 28 Mar 2023 10:45:20 -0700
+Received: from kbuild by b613635ddfff with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1phDNi-000ImF-3C;
+	Tue, 28 Mar 2023 17:45:14 +0000
+Date: Wed, 29 Mar 2023 01:44:25 +0800
+From: kernel test robot <lkp@intel.com>
+To: Wei Chen <harperchen1110@gmail.com>, tiffany.lin@mediatek.com
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	andrew-ct.chen@mediatek.com, yunfei.dong@mediatek.com,
+	mchehab@kernel.org, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Wei Chen <harperchen1110@gmail.com>
+Subject: Re: [PATCH] media: mediatek: vcodec: Fix potential array
+ out-of-bounds in decoder queue_setup
+Message-ID: <202303290153.AP9Oe2GL-lkp@intel.com>
+References: <20230328100951.536955-1-harperchen1110@gmail.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <87a5zzh65p.fsf@kapio-technology.com>
-X-ClientProxiedBy: VI1PR04CA0079.eurprd04.prod.outlook.com
- (2603:10a6:803:64::14) To CY5PR12MB6179.namprd12.prod.outlook.com
- (2603:10b6:930:24::22)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CY5PR12MB6179:EE_|SJ2PR12MB8831:EE_
-X-MS-Office365-Filtering-Correlation-Id: 4f8aff5b-17e8-45b9-20f5-08db2fab1e64
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	ih+joBs4TqRI9LZRyeiHVGEbFP6wzpzxG0RofM9357kUYtmpGxI8tp4JykpITIDD4DX7z0A8Auyp81+k0ziDU5p/ghwxeNtP0BVtFFaqmIuiIwd0xnTLprmpy1MjsdwNyU2HX2UopVKVBn/9xNvrNwiOFCJ8Nct2PBCil0206RwDuh1Y5+z2vVpagIdNHmrxjXo1rNLewQu3+x7eEHy4tfBlUbmHzYvWtDN7RfZIS1MT8EBKUfZyuwmurQkMwR8MAnr7zDotT0Uj/FSOeo0914pJ4ICjl3EbkA4mWJ1uK7TVTR+Ww0IyYd6UzKQPSQ824NuDrBpDFRqbPm+q7M2zY19mTaA9GxoPdbFUcEB9hqkODqN3zVhEG7l1GGDsHDZHsS5XB29pr5QBmSZUeibNsW8Ftc9OeBNHJy3y8SsSnANj1tXF+PrfaD0EXCnnYFiV7FXurvGSJOdMViuQyEnnfXMfYVPb1Im9mk4IhoubI74AFS82xISiP6jM1FBjYTAXAJJYjhMesqfed+U8X2tLxbq3+TApBuNzkPLGSX698nRZxtSHcsLlLBIbU8Mx37Z+oH2h7O4WzHRWqUp1F73ZcwPQ4u2diHO3zbmzw8NzboQ=
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CY5PR12MB6179.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(7916004)(4636009)(39860400002)(396003)(366004)(376002)(346002)(136003)(451199021)(86362001)(316002)(54906003)(4326008)(66946007)(66556008)(6916009)(66476007)(8676002)(6666004)(478600001)(6486002)(41300700001)(33716001)(8936002)(5660300002)(7416002)(7406005)(2906002)(38100700002)(53546011)(6512007)(26005)(9686003)(6506007)(186003)(83380400001)(67856001);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?lzVoeIUBOrhQrG89RV224Ad5e3602UjhD7evqqKJ9WjHge+p1QBxnQ9yfIBm?=
- =?us-ascii?Q?XHyCsiw5mXnUTuCYVbHhlVY0lc0AMw5kJliQUT2LHwn1VGcPvb7vt0LMFukR?=
- =?us-ascii?Q?7g1nlV+MqpbuJ5jCVf0oyfXxG/3IH3DONjCrpQJ3XdBNYv5oYzBJCbIegmYh?=
- =?us-ascii?Q?IRDTL25S10NYoOTE7WXG71L6e6j9JQdrReWw51UHatuAnszIhkALFRnbAOG/?=
- =?us-ascii?Q?+DN1Dz3VOgYWSm/6i1sbVJmg7ZHPs7LKnyxbSRvAgMjCXbDOAE0mWDoXaisg?=
- =?us-ascii?Q?yvGpbBPvbGbrcEt32uG9MJO1KwyNj4aIexLvxp3LtPq24l/95oA5UYnumpY7?=
- =?us-ascii?Q?sck5JeHJfaVypZRCOuU2w6uwyyA32I6tYGyQgp8K1ZnNKhlTH/sHzI6C60Zy?=
- =?us-ascii?Q?iBbxtke0FWwZUTlZXQ43rBDJdDU5dvDO16R7z9SYn2/zxgKjS8UUuHfs+buz?=
- =?us-ascii?Q?6BvNEL4gVwauhKFmwgYnnNy1mKowytZiFmjZUNQy9XAVPhlx0sWhd1heDXhf?=
- =?us-ascii?Q?Te+SZwOzcreyWWYuFU7uFhIE3ybdHcnVyIpQrQgVJnzm6vzB++x0Gk6WS0ho?=
- =?us-ascii?Q?EKlHX4OCg9yV9odn9J4BXjYEyMHP6oeJFPiQ7mM3MX4tvWuEtRDoxlmBqznT?=
- =?us-ascii?Q?9lG8CwHRgR7OIsegHSTz96YvHpbK7UvAMaR0NQ76iC8v6oXd2QW74/yPhbet?=
- =?us-ascii?Q?HNLCIzFSW5meOAlfmrfchqMqjkuVE4B6lFs6xrA1A+EyhtFqpgyK1LlZe8K+?=
- =?us-ascii?Q?EwWLjmEIsE3DYTlHVZVcJKtKAWGcXrUZe+N5ibea9XEA4iGf5AnsV4okZBAQ?=
- =?us-ascii?Q?8+tfUL3XO5ehkMVHPaV9l6oZA5IbBfogXovSHVy0uV/Cl7if8zMVNlfepS+q?=
- =?us-ascii?Q?25sD5svyd0ZAwLBjYSKEmg6DRv9ZuSQUOLbnEkWTv/01N0Hlv3cSfYq5J5fC?=
- =?us-ascii?Q?H4T0DmTFq6RBIoOxFmrQUlUsJ6qsEGB3n6q8X5JGdijqTOFPqXWy1OL+7mCa?=
- =?us-ascii?Q?CnXvNhbua0VX6EJVal5NegVqhXCgVIEBV4reyN8zxJomNqwB9cYuAqLoCPqQ?=
- =?us-ascii?Q?lPwxQk9KdIQ287Du520BbZKMdW4IMbk0Vz3SJZV+PSVUL8rIA9Y2m1amTIJ5?=
- =?us-ascii?Q?1jqqm2KtLaIGBg8fdiCANX0AH42CrZh4xGy3MbhC4ElOEjs/xr1KcMFvL2O0?=
- =?us-ascii?Q?42aAkIJEpYAtAG8DWacm+RHhGmSbNJoMDjkrvWrKbZftsqEfZbmLfO/YglKu?=
- =?us-ascii?Q?+q6T5y0K4KDjGpJPbkzVc8NVChG7kefAUozQpEJWc9z8N7yFdnx3bdvC7fIJ?=
- =?us-ascii?Q?+gHlHlJzgeDv8qL2vt9C1TgUuN/TjSNUCGyUrkVG5k7Djacgg0ooDbdrY9Zv?=
- =?us-ascii?Q?xowZr+4wU7KBdJV+QyGbKksF15pXuZDPtgDvBoFCc3gE92ak4z98DPcY6K2M?=
- =?us-ascii?Q?iCZc1q3UqCFFB6C/cVO+rlxBe5zlrarEkM8/Lw4ddvoEyzoPlb94k+2oHZ7U?=
- =?us-ascii?Q?1OzeMhQkNlzc3mV1JAaUtSEDO2vVVoX47j6oH7b/JQCFGEd/UCxRnibh8qqz?=
- =?us-ascii?Q?NwSbTKJ4SbEzZGJgwd6uih/BLcI85naFDJNzM83a?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4f8aff5b-17e8-45b9-20f5-08db2fab1e64
-X-MS-Exchange-CrossTenant-AuthSource: CY5PR12MB6179.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Mar 2023 16:40:20.3379
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: jvItlc5wiUQprbBkmyPtHPO5okEzmoN6qPCC1eWrqaZzl6rjRHmWpLJY3HYRzgy/lFFENMfVmuyP1sOMRvpi9g==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ2PR12MB8831
+In-Reply-To: <20230328100951.536955-1-harperchen1110@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230328_094025_220095_202092B4 
-X-CRM114-Status: GOOD (  15.30  )
+X-CRM114-CacheID: sfid-20230328_104524_649469_4837701C 
+X-CRM114-Status: GOOD (  17.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -160,119 +90,170 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Mar 26, 2023 at 05:41:06PM +0200, Hans Schultz wrote:
-> On Mon, Mar 20, 2023 at 10:44, Ido Schimmel <idosch@nvidia.com> wrote:
-> >> +	$MZ $swp1 -c 1 -p 128 -t udp "sp=54321,dp=12345" \
-> >> +		-a $mac -b `mac_get $h2` -A 192.0.2.1 -B 192.0.2.2 -q
-> >> +	tc_check_packets "dev $swp2 egress" 1 1
-> >> +	check_fail $? "Dynamic FDB entry did not age out"
-> >
-> > Shouldn't this be check_err()? After the FDB entry was aged you want to
-> > make sure that packets received via $swp1 with SMAC being $mac are no
-> > longer forwarded by the bridge.
-> 
-> I was thinking that check_fail() will pass when tc_check_packets() does
-> not see any packets, thus the test passing here when no packets are forwarded?
+Hi Wei,
 
-What do you mean by "I was *thinking*"? How is it possible that you are
-submitting a selftest that you didn't bother running?!
+Thank you for the patch! Perhaps something to improve:
 
-I see you trimmed my earlier question: "Does this actually work?"
+[auto build test WARNING on media-tree/master]
+[also build test WARNING on linus/master v6.3-rc4 next-20230328]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-I tried it and it passed:
+url:    https://github.com/intel-lab-lkp/linux/commits/Wei-Chen/media-mediatek-vcodec-Fix-potential-array-out-of-bounds-in-decoder-queue_setup/20230328-181142
+base:   git://linuxtv.org/media_tree.git master
+patch link:    https://lore.kernel.org/r/20230328100951.536955-1-harperchen1110%40gmail.com
+patch subject: [PATCH] media: mediatek: vcodec: Fix potential array out-of-bounds in decoder queue_setup
+config: s390-randconfig-r044-20230327 (https://download.01.org/0day-ci/archive/20230329/202303290153.AP9Oe2GL-lkp@intel.com/config)
+compiler: clang version 17.0.0 (https://github.com/llvm/llvm-project 67409911353323ca5edf2049ef0df54132fa1ca7)
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # install s390 cross compiling tool for clang build
+        # apt-get install binutils-s390x-linux-gnu
+        # https://github.com/intel-lab-lkp/linux/commit/caa43627286fb5f3b0b3af7e01e1baeca5c5f9cc
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Wei-Chen/media-mediatek-vcodec-Fix-potential-array-out-of-bounds-in-decoder-queue_setup/20230328-181142
+        git checkout caa43627286fb5f3b0b3af7e01e1baeca5c5f9cc
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=s390 olddefconfig
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=s390 SHELL=/bin/bash drivers/media/platform/mediatek/vcodec/
 
-# ./bridge_locked_port.sh                         
-TEST: Locked port ipv4                                              [ OK ]
-TEST: Locked port ipv6                                              [ OK ]
-TEST: Locked port vlan                                              [ OK ]            
-TEST: Locked port MAB                                               [ OK ]            
-TEST: Locked port MAB roam                                          [ OK ]
-TEST: Locked port MAB configuration                                 [ OK ]
-TEST: Locked port MAB FDB flush                                     [ OK ]
+If you fix the issue, kindly add following tag where applicable
+| Reported-by: kernel test robot <lkp@intel.com>
+| Link: https://lore.kernel.org/oe-kbuild-all/202303290153.AP9Oe2GL-lkp@intel.com/
 
-And I couldn't understand how that's even possible. Then I realized that
-the entire test is dead code because the patch is missing this
-fundamental hunk:
+All warnings (new ones prefixed by >>):
 
-```
-diff --git a/tools/testing/selftests/net/forwarding/bridge_locked_port.sh b/tools/testing/selftests/net/forwarding/bridge_locked_port.sh
-index dbc7017fd45d..5bf6b2aa1098 100755
---- a/tools/testing/selftests/net/forwarding/bridge_locked_port.sh
-+++ b/tools/testing/selftests/net/forwarding/bridge_locked_port.sh
-@@ -9,6 +9,7 @@ ALL_TESTS="
-        locked_port_mab_roam
-        locked_port_mab_config
-        locked_port_mab_flush
-+       locked_port_dyn_fdb
- "
- 
- NUM_NETIFS=4
-```
+   In file included from drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c:9:
+   In file included from include/media/v4l2-mem2mem.h:16:
+   In file included from include/media/videobuf2-v4l2.h:16:
+   In file included from include/media/videobuf2-core.h:18:
+   In file included from include/linux/dma-buf.h:16:
+   In file included from include/linux/iosys-map.h:10:
+   In file included from include/linux/io.h:13:
+   In file included from arch/s390/include/asm/io.h:75:
+   include/asm-generic/io.h:547:31: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           val = __raw_readb(PCI_IOBASE + addr);
+                             ~~~~~~~~~~ ^
+   include/asm-generic/io.h:560:61: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           val = __le16_to_cpu((__le16 __force)__raw_readw(PCI_IOBASE + addr));
+                                                           ~~~~~~~~~~ ^
+   include/uapi/linux/byteorder/big_endian.h:37:59: note: expanded from macro '__le16_to_cpu'
+   #define __le16_to_cpu(x) __swab16((__force __u16)(__le16)(x))
+                                                             ^
+   include/uapi/linux/swab.h:102:54: note: expanded from macro '__swab16'
+   #define __swab16(x) (__u16)__builtin_bswap16((__u16)(x))
+                                                        ^
+   In file included from drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c:9:
+   In file included from include/media/v4l2-mem2mem.h:16:
+   In file included from include/media/videobuf2-v4l2.h:16:
+   In file included from include/media/videobuf2-core.h:18:
+   In file included from include/linux/dma-buf.h:16:
+   In file included from include/linux/iosys-map.h:10:
+   In file included from include/linux/io.h:13:
+   In file included from arch/s390/include/asm/io.h:75:
+   include/asm-generic/io.h:573:61: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           val = __le32_to_cpu((__le32 __force)__raw_readl(PCI_IOBASE + addr));
+                                                           ~~~~~~~~~~ ^
+   include/uapi/linux/byteorder/big_endian.h:35:59: note: expanded from macro '__le32_to_cpu'
+   #define __le32_to_cpu(x) __swab32((__force __u32)(__le32)(x))
+                                                             ^
+   include/uapi/linux/swab.h:115:54: note: expanded from macro '__swab32'
+   #define __swab32(x) (__u32)__builtin_bswap32((__u32)(x))
+                                                        ^
+   In file included from drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c:9:
+   In file included from include/media/v4l2-mem2mem.h:16:
+   In file included from include/media/videobuf2-v4l2.h:16:
+   In file included from include/media/videobuf2-core.h:18:
+   In file included from include/linux/dma-buf.h:16:
+   In file included from include/linux/iosys-map.h:10:
+   In file included from include/linux/io.h:13:
+   In file included from arch/s390/include/asm/io.h:75:
+   include/asm-generic/io.h:584:33: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           __raw_writeb(value, PCI_IOBASE + addr);
+                               ~~~~~~~~~~ ^
+   include/asm-generic/io.h:594:59: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           __raw_writew((u16 __force)cpu_to_le16(value), PCI_IOBASE + addr);
+                                                         ~~~~~~~~~~ ^
+   include/asm-generic/io.h:604:59: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           __raw_writel((u32 __force)cpu_to_le32(value), PCI_IOBASE + addr);
+                                                         ~~~~~~~~~~ ^
+   include/asm-generic/io.h:692:20: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           readsb(PCI_IOBASE + addr, buffer, count);
+                  ~~~~~~~~~~ ^
+   include/asm-generic/io.h:700:20: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           readsw(PCI_IOBASE + addr, buffer, count);
+                  ~~~~~~~~~~ ^
+   include/asm-generic/io.h:708:20: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           readsl(PCI_IOBASE + addr, buffer, count);
+                  ~~~~~~~~~~ ^
+   include/asm-generic/io.h:717:21: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           writesb(PCI_IOBASE + addr, buffer, count);
+                   ~~~~~~~~~~ ^
+   include/asm-generic/io.h:726:21: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           writesw(PCI_IOBASE + addr, buffer, count);
+                   ~~~~~~~~~~ ^
+   include/asm-generic/io.h:735:21: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           writesl(PCI_IOBASE + addr, buffer, count);
+                   ~~~~~~~~~~ ^
+>> drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c:759:3: warning: add explicit braces to avoid dangling else [-Wdangling-else]
+                   else
+                   ^
+   13 warnings generated.
 
-Which tells me that you didn't even try running it once. Now the test
-failed as I expected:
 
-# ./bridge_locked_port.sh                         
-TEST: Locked port ipv4                                              [ OK ]
-TEST: Locked port ipv6                                              [ OK ]
-TEST: Locked port vlan                                              [ OK ]
-TEST: Locked port MAB                                               [ OK ]
-TEST: Locked port MAB roam                                          [ OK ]
-TEST: Locked port MAB configuration                                 [ OK ]            
-TEST: Locked port MAB FDB flush                                     [ OK ]
-TEST: Locked port dyn FDB                                           [FAIL]            
-        Packet not seen on egress after adding dynamic FDB
+vim +759 drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
 
-Fixed by:
+   739	
+   740	int vb2ops_vdec_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers,
+   741				    unsigned int *nplanes, unsigned int sizes[],
+   742				    struct device *alloc_devs[])
+   743	{
+   744		struct mtk_vcodec_ctx *ctx = vb2_get_drv_priv(vq);
+   745		struct mtk_q_data *q_data;
+   746		unsigned int i;
+   747	
+   748		q_data = mtk_vdec_get_q_data(ctx, vq->type);
+   749	
+   750		if (q_data == NULL) {
+   751			mtk_v4l2_err("vq->type=%d err\n", vq->type);
+   752			return -EINVAL;
+   753		}
+   754	
+   755		if (*nplanes) {
+   756			if (vq->type == V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE)
+   757				if (*nplanes != q_data->fmt->num_planes)
+   758					return -EINVAL;
+ > 759			else
+   760				if (*nplanes != 1)
+   761					return -EINVAL;
+   762	
+   763			for (i = 0; i < *nplanes; i++) {
+   764				if (sizes[i] < q_data->sizeimage[i])
+   765					return -EINVAL;
+   766			}
+   767		} else {
+   768			if (vq->type == V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE)
+   769				*nplanes = q_data->fmt->num_planes;
+   770			else
+   771				*nplanes = 1;
+   772	
+   773			for (i = 0; i < *nplanes; i++)
+   774				sizes[i] = q_data->sizeimage[i];
+   775		}
+   776	
+   777		mtk_v4l2_debug(1,
+   778				"[%d]\t type = %d, get %d plane(s), %d buffer(s) of size 0x%x 0x%x ",
+   779				ctx->id, vq->type, *nplanes, *nbuffers,
+   780				sizes[0], sizes[1]);
+   781	
+   782		return 0;
+   783	}
+   784	
 
-```
-@@ -336,7 +337,7 @@ locked_port_dyn_fdb()
-        tc filter add dev $swp2 egress protocol ip pref 1 handle 1 flower \
-                dst_ip 192.0.2.2 ip_proto udp dst_port 12345 action pass
- 
--       $MZ $swp1 -c 1 -p 128 -t udp "sp=54321,dp=12345" \
-+       $MZ $h1 -c 1 -p 128 -t udp "sp=54321,dp=12345" \
-                -a $mac -b `mac_get $h2` -A 192.0.2.1 -B 192.0.2.2 -q
-        tc_check_packets "dev $swp2 egress" 1 1
-        check_err $? "Packet not seen on egress after adding dynamic FDB"
-```
-
-Ran it again and it failed because of the second issue I pointed out:
-
-# ./bridge_locked_port.sh 
-TEST: Locked port ipv4                                              [ OK ]
-TEST: Locked port ipv6                                              [ OK ]
-TEST: Locked port vlan                                              [ OK ]
-TEST: Locked port MAB                                               [ OK ]
-TEST: Locked port MAB roam                                          [ OK ]
-TEST: Locked port MAB configuration                                 [ OK ]
-TEST: Locked port MAB FDB flush                                     [ OK ]
-TEST: Locked port dyn FDB                                           [FAIL]
-        Dynamic FDB entry did not age out                                             
-
-Fixed by:
-
-```
-@@ -346,7 +347,7 @@ locked_port_dyn_fdb()
-        $MZ $swp1 -c 1 -p 128 -t udp "sp=54321,dp=12345" \
-                -a $mac -b `mac_get $h2` -A 192.0.2.1 -B 192.0.2.2 -q
-        tc_check_packets "dev $swp2 egress" 1 1
--       check_fail $? "Dynamic FDB entry did not age out"
-+       check_err $? "Dynamic FDB entry did not age out"
- 
-        ip link set dev br0 type bridge ageing_time $ageing_time
-        bridge link set dev $swp1 learning off locked off
-```
-
-# ./bridge_locked_port.sh 
-TEST: Locked port ipv4                                              [ OK ]
-TEST: Locked port ipv6                                              [ OK ]
-TEST: Locked port vlan                                              [ OK ]
-TEST: Locked port MAB                                               [ OK ]
-TEST: Locked port MAB roam                                          [ OK ]
-TEST: Locked port MAB configuration                                 [ OK ]
-TEST: Locked port MAB FDB flush                                     [ OK ]
-TEST: Locked port dyn FDB                                           [ OK ]
-
-Sigh
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
 
