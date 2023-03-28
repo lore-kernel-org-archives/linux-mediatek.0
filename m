@@ -4,78 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 998B4C76196
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 19:33:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FFBAC76196
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 19:48:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F0J4QTkVBj6HBDcmeBwgSPiZ9KYcm6+jO65oOjptUwI=; b=zVHncYR6yWHRDmQ582/yWWaFYp
-	w7T5xoxdIokQjm4vTSVstgPjRedSOcZl6j8qagkIRnDtPXfHZAE+1SNrtRb6jqfT7kx+JsM1qlx5M
-	D+OkiBinh2xCAFqXNQLhXBxPk7zLee1afltrS3gBmGgDrGmhX5OtIlsXlusurTCpsedxWeIxU0jsq
-	kWT8g0EPS9/g7BaQl3/XHjiii0ClKdV5eQAG9hEUYyEkSyvlr2ZfGaW8rD3Vqg6NKymw/pJwP50n6
-	AhMuwKbpSjX33NvWzAGd3BZ7guJHsgJjKf8ZR2WY+fBKPPOG7VH8V+gxVvuYB+B3ZEQmCq0HajQdN
-	B2WXpJJA==;
+	bh=KJpCUFzy26GVZTN44pAfo5lCGWHYesH8xgAbWBlI/bg=; b=cj7MxxtqAyRrujwXjnAr5R3Se2
+	uaEEtOLChD10pU0L3KP08F/TW396dpUFp+ELpEUydcQcV/PJJDZ47O+/fPqXAK9hAmFPKwALnjK05
+	1VAQVj34TCn+6HL2wzz/aIy7mcbBGii9Qatnvv/WkMdc11fUHbrJA5GN7v0EvAJ5IvvF5iJ2Oj8w2
+	Ok0Wd8cUdtiHdifBuHrPFv9eB8Taus5VqJ/VG3gGn/MFShKK5GSYKLHZfx3jlzr2jor00s85hzdqA
+	2k7okk9B63Jt7kukw87Oi39eggSUOsAv+JPpznf0MahPUgt6tEPOMXBT0t+qiR+Cx152t3QUxNmjA
+	p2E+GcGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phF3z-00FdOt-1y;
-	Tue, 28 Mar 2023 19:32:59 +0000
+	id 1phFIg-00FgdA-2B;
+	Tue, 28 Mar 2023 19:48:10 +0000
 Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phF3u-00FdM9-2y;
-	Tue, 28 Mar 2023 19:32:57 +0000
+	id 1phFIa-00Fgbu-2k;
+	Tue, 28 Mar 2023 19:48:07 +0000
 Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
-	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 9589D18839ED;
-	Tue, 28 Mar 2023 19:32:45 +0000 (UTC)
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 3DEC318839E9;
+	Tue, 28 Mar 2023 19:48:03 +0000 (UTC)
 Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
-	by mailout.gigahost.dk (Postfix) with ESMTP id 73D132500389;
-	Tue, 28 Mar 2023 19:32:45 +0000 (UTC)
+	by mailout.gigahost.dk (Postfix) with ESMTP id 369182500389;
+	Tue, 28 Mar 2023 19:48:03 +0000 (UTC)
 Received: by smtp.gigahost.dk (Postfix, from userid 1000)
-	id 6502E9B403E2; Tue, 28 Mar 2023 19:32:45 +0000 (UTC)
+	id 2E8489B403E2; Tue, 28 Mar 2023 19:48:03 +0000 (UTC)
 X-Screener-Id: e32ae469fa6e394734d05373d3a705875723cf1e
 Received: from fujitsu (2-104-116-184-cable.dk.customer.tdc.net [2.104.116.184])
-	by smtp.gigahost.dk (Postfix) with ESMTPSA id 975A691201E3;
-	Tue, 28 Mar 2023 19:32:44 +0000 (UTC)
+	by smtp.gigahost.dk (Postfix) with ESMTPSA id 7BA9491201E3;
+	Tue, 28 Mar 2023 19:48:02 +0000 (UTC)
 From: Hans Schultz <netdev@kapio-technology.com>
-To: Ido Schimmel <idosch@nvidia.com>
+To: Vladimir Oltean <olteanv@gmail.com>
 Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
- Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Vladimir
- Oltean <olteanv@gmail.com>, Eric Dumazet <edumazet@google.com>, Paolo
- Abeni <pabeni@redhat.com>, Kurt Kanzenbach <kurt@linutronix.de>, Hauke
- Mehrtens <hauke@hauke-m.de>, Woojung Huh <woojung.huh@microchip.com>,
- "maintainer:MICROCHIP KSZ SERIES ETHERNET SWITCH DRIVER"
- <UNGLinuxDriver@microchip.com>, Sean Wang <sean.wang@mediatek.com>, Landen
- Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Claudiu Manoil
- <claudiu.manoil@nxp.com>, Alexandre Belloni
+ Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Eric
+ Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Kurt
+ Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>,
+ Woojung Huh <woojung.huh@microchip.com>, "maintainer:MICROCHIP KSZ SERIES
+ ETHERNET SWITCH DRIVER" <UNGLinuxDriver@microchip.com>, Sean Wang
+ <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
+ Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
  <alexandre.belloni@bootlin.com>, =?utf-8?Q?Cl=C3=A9ment_L=C3=A9ger?=
  <clement.leger@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
  <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
  <razor@blackwall.org>, Shuah Khan <shuah@kernel.org>, Christian Marangi
- <ansuelsmth@gmail.com>, open list <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
+ <ansuelsmth@gmail.com>, Ido Schimmel <idosch@nvidia.com>, open list
+ <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
  <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
  support" <linux-mediatek@lists.infradead.org>, "open list:RENESAS RZ/N1
  A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>, "moderated
  list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>, "open
  list:KERNEL SELFTEST FRAMEWORK" <linux-kselftest@vger.kernel.org>
-Subject: Re: [PATCH v2 net-next 6/6] selftests: forwarding: add dynamic FDB
- test
-In-Reply-To: <ZCMYbRqd+qZaiHfu@shredder>
+Subject: Re: [PATCH v2 net-next 2/6] net: dsa: propagate flags down towards
+ drivers
+In-Reply-To: <20230328114943.4mibmn2icutcio4m@skbuf>
 References: <20230318141010.513424-1-netdev@kapio-technology.com>
- <20230318141010.513424-7-netdev@kapio-technology.com>
- <ZBgdAo8mxwnl+pEE@shredder> <87a5zzh65p.fsf@kapio-technology.com>
- <ZCMYbRqd+qZaiHfu@shredder>
-Date: Tue, 28 Mar 2023 21:30:08 +0200
-Message-ID: <87fs9ollmn.fsf@kapio-technology.com>
+ <20230318141010.513424-3-netdev@kapio-technology.com>
+ <20230327115206.jk5q5l753aoelwus@skbuf>
+ <87355qb48h.fsf@kapio-technology.com>
+ <20230327160009.bdswnalizdv2u77z@skbuf>
+ <87pm8tooe1.fsf@kapio-technology.com>
+ <20230327225933.plm5raegywbe7g2a@skbuf>
+ <87ileljfwo.fsf@kapio-technology.com>
+ <20230328114943.4mibmn2icutcio4m@skbuf>
+Date: Tue, 28 Mar 2023 21:45:26 +0200
+Message-ID: <87cz4slkx5.fsf@kapio-technology.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230328_123255_108885_D6669746 
-X-CRM114-Status: GOOD (  15.48  )
+X-CRM114-CacheID: sfid-20230328_124805_033314_DC1493DD 
+X-CRM114-Status: GOOD (  16.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,32 +94,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 28, 2023 at 19:40, Ido Schimmel <idosch@nvidia.com> wrote:
-> On Sun, Mar 26, 2023 at 05:41:06PM +0200, Hans Schultz wrote:
->> On Mon, Mar 20, 2023 at 10:44, Ido Schimmel <idosch@nvidia.com> wrote:
->> >> +	$MZ $swp1 -c 1 -p 128 -t udp "sp=54321,dp=12345" \
->> >> +		-a $mac -b `mac_get $h2` -A 192.0.2.1 -B 192.0.2.2 -q
->> >> +	tc_check_packets "dev $swp2 egress" 1 1
->> >> +	check_fail $? "Dynamic FDB entry did not age out"
+On Tue, Mar 28, 2023 at 14:49, Vladimir Oltean <olteanv@gmail.com> wrote:
+> On Tue, Mar 28, 2023 at 01:04:23PM +0200, Hans Schultz wrote:
+>> On Tue, Mar 28, 2023 at 01:59, Vladimir Oltean <olteanv@gmail.com> wrote:
 >> >
->> > Shouldn't this be check_err()? After the FDB entry was aged you want to
->> > make sure that packets received via $swp1 with SMAC being $mac are no
->> > longer forwarded by the bridge.
+>> > which idea is that, again?
 >> 
->> I was thinking that check_fail() will pass when tc_check_packets() does
->> not see any packets, thus the test passing here when no packets are forwarded?
+>> So I cannot us the offloaded flag as it is added by DSA in the common
+>> case when using 'bridge fdb replace ... dynamic'.
 >
-> What do you mean by "I was *thinking*"? How is it possible that you are
-> submitting a selftest that you didn't bother running?!
+> Why not? I find it reasonable that the software bridge does not age out
+> a dynamic FDB entry that is offloaded to hardware... the hardware should
+> do that ("dynamic" being the key).
+
+So the solution would be to not let the DSA layer send the
+SWITCHDEV_FDB_OFFLOADED event in the case when the new dynamic flag is
+set?
+Thus other drivers that don't support the flag yet will install a
+static entry in HW and the bridge will age it out as there is no offloaded
+flag on. For the mv88e6xxx it will set the offloaded flag and HW will
+age it.
+
+> At least, I find it more reasonable
+> than the current behavior, where the bridge notifies dynamic FDB entries
+> to switchdev, but doesn't say they're dynamic, and switchdev treats them
+> as static, so they don't roam from one bridge port to another until
+> software sees a packet with that MAC DA, and they have the potential of
+> blocking traffic because of that.
 >
-
-Sorry, but I have sent you several emails telling you about the problems
-I have with running the selftests due to changes in the phy etc. Maybe
-you have just not received all those emails?
-
-Have you checked spamfilters?
-
-With the kernels now, I cannot even test with the software bridge and
-selftests as the compile fails - probably due to changes in uapi headers
-compared to what the packages my system uses expects.
 
