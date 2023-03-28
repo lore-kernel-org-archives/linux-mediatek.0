@@ -4,81 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EC34C76195
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 03:10:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6F29C76195
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 03:11:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=f9rtmQf3+/k9brYMpe16mW92eSBX3phAG9+DZr8tElc=; b=nP5b03iCnAF1uC2l0j+uM2Lu+2
-	T5O6daJx64oXdSavs3dbm8UzwDK8zXYrMAIYgrHw8GJopZkTtwjJ1GWXFggf1SPBLfgNLxNnxRfNB
-	+MYF2uWRJIVDAdAVOVlKTe4N0sNwW/hxy71DaLPDqt4TrKXy6Jhn2CzjkcSZhZfaBu8r58mY562au
-	21+PYOjwlci9CauBS5f/tQnZPWI+UM/S5q8DqLtSYHsgLI4pvmoFI+5e6Njqcbdr/V+wy69ut7Sr3
-	L5YCcvnVhp6OxfOcC5bGKCZSxsLlMGaOpkbuTIN1CZ+9K6iQMcvQF8whoEL8N5bw5yF2PmFQUzp1R
-	b0p4l8hQ==;
+	bh=aGcuqdiUvNo6pp+ENjACxdjleHMQhfuTa1fyNvY/7ic=; b=LQQz03bybWWw0GFDvufjXwMBt9
+	2GdETSdCpWG2edtuJfhP2TKOfC2EzXZ2hnEUbUS5Nm7PLM2jmOTlOm3H+EK+2ifh19cBME03C20f9
+	eSA62Ry6QKqfBKSY76xQPVioAaQygZMlytLXxcNJkZni9yPDWBDQqt5FT3V3sKDs5wYv+PejY/whX
+	CMs9c5+Iq36eFUM0ycFcZDpeOMC2Tt3cX/iWoxNrTDLH0Us1NFo4OQb1XL/CkNDkAq7y4QDIBudLK
+	gDN/KLk9qFeI+65gywHulIOGoowEMLO2YlupNyWJLi2WXoPDjCPgY/sFSWcnY5krTF5Vdy0NbRbu7
+	d+5/jyfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgzjX-00Cyhj-2K;
-	Tue, 28 Mar 2023 03:10:51 +0000
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+	id 1pgzkI-00CyyH-35;
+	Tue, 28 Mar 2023 03:11:38 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgzjV-00CyfG-11
-	for linux-mediatek@lists.infradead.org;
-	Tue, 28 Mar 2023 03:10:50 +0000
-Received: by mail-pj1-x1030.google.com with SMTP id j13so9599404pjd.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Mar 2023 20:10:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1679973046;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=f9rtmQf3+/k9brYMpe16mW92eSBX3phAG9+DZr8tElc=;
-        b=JuGXT7BWgidqAU+U9NFWmJkcnYoPC6x71wZQlTucGNVG+piuo5sPakfKCZuigoFSjM
-         px+Y4vf8GZwNQnHAwMxhFyWA1pJ/A32WcIT58WedWyC9gLDLRe9Q/o8tu0Qb560zZrUW
-         yG8VPUBn6X+e/qO69VLkUUlT6I/jjAGJZfIWI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679973046;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=f9rtmQf3+/k9brYMpe16mW92eSBX3phAG9+DZr8tElc=;
-        b=NpIYdEApXAUsB0j6WHImnAavTcAo5QU7higrK3gtI69qp6lsDXrXOjWVWSXxGeCKPg
-         U+pnDg6AucE1fdKw75aj/nnODG+FS7KmACJNRY4DB2wpANSTp2s9jyWrWS+sdy/wCPgA
-         lSYGX4vXWqq7GBVWtYHLkRK5p9w9l8azEso9wIdvGib2i9z9cJM+8N1u1G85ifvhLot4
-         2VOOex88hNwfirigbQlpncs3OJ4OnaPlDDbbK8Te1A1Wweg0he/lfsi1PRIAQVoLyb3o
-         Jsfukv7c0APrA+LwnsrCfHPZ7FqAqGz4ZH4VFzLIud0HI1v6keFDjNzHZwNACK6Vbf5E
-         5dRw==
-X-Gm-Message-State: AAQBX9fxVWjCxohwK2y5PF0zkI0yoNdBqbSc4fpY3uGJao14KT7hkSkJ
-	J3RiyTm/jfUvziIuATeBXpU0wQ==
-X-Google-Smtp-Source: AKy350Yhy0dWdjNAmaMv84OP2MovOHhZZoppM+d6gBHQlrg7Kw46jgJNOk74uIpr2rEXrRPToWVjTg==
-X-Received: by 2002:a17:90b:38c4:b0:23d:2027:c355 with SMTP id nn4-20020a17090b38c400b0023d2027c355mr16148392pjb.10.1679973046316;
-        Mon, 27 Mar 2023 20:10:46 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:da70:de00:9a3d:7067])
-        by smtp.gmail.com with ESMTPSA id q20-20020a170902bd9400b001a2574813b8sm1491784pls.278.2023.03.27.20.10.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 Mar 2023 20:10:46 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: "Rafael J. Wysocki" <rafael@kernel.org>,
-	Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Amit Kucheria <amitk@kernel.org>,
-	Zhang Rui <rui.zhang@intel.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Balsam CHIHI <bchihi@baylibre.com>,
-	linux-pm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] thermal/drivers/mediatek/lvts_thermal: only update registered thermal zones
-Date: Tue, 28 Mar 2023 11:10:37 +0800
-Message-Id: <20230328031037.1361048-1-wenst@chromium.org>
-X-Mailer: git-send-email 2.40.0.348.gf938b09366-goog
+	id 1pgzkE-00Cywr-2x;
+	Tue, 28 Mar 2023 03:11:36 +0000
+X-UUID: 3c91abeacd1611ed8687db9d93187ff1-20230327
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=aGcuqdiUvNo6pp+ENjACxdjleHMQhfuTa1fyNvY/7ic=;
+	b=DJnrCZB7QhRfDVsfzn9m4NSSrQa0YbJ7A5rfcGm1La7OXVtdwhpy2j9bELOpr2q6xszplpAqSPOoUrt/6LuvMTkZmqYuT8KSmo7667jyUdh6y7TRpaHeYYusnLYO4fsA+Dvo7idd8FlpjQZqe1FDsHN64f8AqKwP6apMO8Svjls=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22,REQID:4af502a9-16b2-4406-b79a-cdba4e0c0cde,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:120426c,CLOUDID:7367ae29-564d-42d9-9875-7c868ee415ec,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: 3c91abeacd1611ed8687db9d93187ff1-20230327
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <nancy.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 556230726; Mon, 27 Mar 2023 20:11:30 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Tue, 28 Mar 2023 10:51:27 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Tue, 28 Mar 2023 10:51:27 +0800
+From: Nancy.Lin <nancy.lin@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+	<p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<singo.chang@mediatek.com>, <shawn.sung@mediatek.com>, Nancy.Lin
+	<nancy.lin@mediatek.com>
+Subject: [PATCH] drm/mediatek: Add ovl_adaptor get format function
+Date: Tue, 28 Mar 2023 10:51:26 +0800
+Message-ID: <20230328025126.30341-1-nancy.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230327_201049_357623_DB271B33 
-X-CRM114-Status: GOOD (  11.87  )
+X-CRM114-CacheID: sfid-20230327_201134_960742_215ACB60 
+X-CRM114-Status: GOOD (  11.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,42 +85,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-It's possible for some sensors or thermal zones to not be registered,
-either because they are unused or not fully declared in the device tree.
-Nevertheless the driver enables interrupts for all sensors. If an
-interrupt happens for an not-registered sensor, the driver would end up
-updating a non-existent thermal zone, which leads to a NULL pointer
-dereference.
+Add ovl_adaptor get_format and get_num_formats component function.
+The two functions are need for getting the supported format in
+mtk_plane_init().
 
-Change it so that only registered thermal zones get updated.
-
-Fixes: f5f633b18234 ("thermal/drivers/mediatek: Add the Low Voltage Thermal Sensor driver")
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+Change-Id: Ia8e9f6cabcc71b262155a022b103ae81d1616b8f
 ---
- drivers/thermal/mediatek/lvts_thermal.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  2 ++
+ .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 24 +++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   |  2 ++
+ 3 files changed, 28 insertions(+)
 
-diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-index d87d3847c7d0..bf59174e18d3 100644
---- a/drivers/thermal/mediatek/lvts_thermal.c
-+++ b/drivers/thermal/mediatek/lvts_thermal.c
-@@ -415,9 +415,14 @@ static irqreturn_t lvts_ctrl_irq_handler(struct lvts_ctrl *lvts_ctrl)
- 		if (!(value & masks[i]))
- 			continue;
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+index 0d28b2e2069c..da2de17b84e9 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+@@ -124,6 +124,8 @@ void mtk_ovl_adaptor_start(struct device *dev);
+ void mtk_ovl_adaptor_stop(struct device *dev);
+ unsigned int mtk_ovl_adaptor_layer_nr(struct device *dev);
+ struct device *mtk_ovl_adaptor_dma_dev_get(struct device *dev);
++const u32 *mtk_ovl_adaptor_get_formats(struct device *dev);
++size_t mtk_ovl_adaptor_get_num_formats(struct device *dev);
  
-+		iret = IRQ_HANDLED;
-+
-+		/* sensor might not exist (bogus interrupt) or not be registered */
-+		if (!lvts_ctrl->sensors[i].tz)
-+			continue;
-+
- 		thermal_zone_device_update(lvts_ctrl->sensors[i].tz,
- 					   THERMAL_TRIP_VIOLATED);
--		iret = IRQ_HANDLED;
- 	}
+ void mtk_rdma_bypass_shadow(struct device *dev);
+ int mtk_rdma_clk_enable(struct device *dev);
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+index 046217828ab3..b5d28c392c57 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+@@ -25,6 +25,20 @@
+ #define MTK_OVL_ADAPTOR_RDMA_MAX_WIDTH 1920
+ #define MTK_OVL_ADAPTOR_LAYER_NUM 4
  
- 	/*
++static const u32 formats[] = {
++	DRM_FORMAT_XRGB8888,
++	DRM_FORMAT_ARGB8888,
++	DRM_FORMAT_BGRX8888,
++	DRM_FORMAT_BGRA8888,
++	DRM_FORMAT_ABGR8888,
++	DRM_FORMAT_XBGR8888,
++	DRM_FORMAT_RGB888,
++	DRM_FORMAT_BGR888,
++	DRM_FORMAT_RGB565,
++	DRM_FORMAT_UYVY,
++	DRM_FORMAT_YUYV,
++};
++
+ enum mtk_ovl_adaptor_comp_type {
+ 	OVL_ADAPTOR_TYPE_RDMA = 0,
+ 	OVL_ADAPTOR_TYPE_MERGE,
+@@ -297,6 +311,16 @@ void mtk_ovl_adaptor_disable_vblank(struct device *dev)
+ 	mtk_ethdr_disable_vblank(ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0]);
+ }
+ 
++const u32 *mtk_ovl_adaptor_get_formats(struct device *dev)
++{
++	return formats;
++}
++
++size_t mtk_ovl_adaptor_get_num_formats(struct device *dev)
++{
++	return ARRAY_SIZE(formats);
++}
++
+ void mtk_ovl_adaptor_add_comp(struct device *dev, struct mtk_mutex *mutex)
+ {
+ 	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MDP_RDMA0);
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+index 1a0c4f7e352a..f114da4d36a9 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+@@ -410,6 +410,8 @@ static const struct mtk_ddp_comp_funcs ddp_ovl_adaptor = {
+ 	.disconnect = mtk_ovl_adaptor_disconnect,
+ 	.add = mtk_ovl_adaptor_add_comp,
+ 	.remove = mtk_ovl_adaptor_remove_comp,
++	.get_formats = mtk_ovl_adaptor_get_formats,
++	.get_num_formats = mtk_ovl_adaptor_get_num_formats,
+ };
+ 
+ static const char * const mtk_ddp_comp_stem[MTK_DDP_COMP_TYPE_MAX] = {
 -- 
-2.40.0.348.gf938b09366-goog
+2.18.0
 
 
