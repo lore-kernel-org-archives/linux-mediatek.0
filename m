@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5AA8C76195
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 03:10:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EC34C76195
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 03:10:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=YUxMnnBoBjKrP6eT7G8iGitEYRUBySq8m73f+BY/FXE=; b=RFudzqa7PkuOQ1Ce4lnsqoSO/p
-	N2BhrgrAwTLlXT/iO3kTUfr03RF2hFrMyobmeRIxbk+crlgrz2TEptt4mQun/HoSK3xwN3yM49ln9
-	lKPvnbFLFYTCU2vJBT3iQnYMYqkHUAAJGrVe8wGoksgj9xdJi7mWXqLVkub6/Rj+LqnXth2XpLnOo
-	ganXLDjZP+EMtHP1HaI0ExAl5SLpabBCtvMyRbH8J+cyDUPKhgUkAfUK2rUltvz3j1YrPsFqq4hw4
-	6QIuRD+ibPfdEtn/6TMIewwtW3qBptel9FOprGyIVejUq34B7+8Y8UKodvidzApr2SnCQ9dxZK3FB
-	YN4s+SsQ==;
+	bh=f9rtmQf3+/k9brYMpe16mW92eSBX3phAG9+DZr8tElc=; b=nP5b03iCnAF1uC2l0j+uM2Lu+2
+	T5O6daJx64oXdSavs3dbm8UzwDK8zXYrMAIYgrHw8GJopZkTtwjJ1GWXFggf1SPBLfgNLxNnxRfNB
+	+MYF2uWRJIVDAdAVOVlKTe4N0sNwW/hxy71DaLPDqt4TrKXy6Jhn2CzjkcSZhZfaBu8r58mY562au
+	21+PYOjwlci9CauBS5f/tQnZPWI+UM/S5q8DqLtSYHsgLI4pvmoFI+5e6Njqcbdr/V+wy69ut7Sr3
+	L5YCcvnVhp6OxfOcC5bGKCZSxsLlMGaOpkbuTIN1CZ+9K6iQMcvQF8whoEL8N5bw5yF2PmFQUzp1R
+	b0p4l8hQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgzjC-00Cyau-0X;
-	Tue, 28 Mar 2023 03:10:30 +0000
-Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
+	id 1pgzjX-00Cyhj-2K;
+	Tue, 28 Mar 2023 03:10:51 +0000
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgzj9-00CyZQ-0x
+	id 1pgzjV-00CyfG-11
 	for linux-mediatek@lists.infradead.org;
-	Tue, 28 Mar 2023 03:10:28 +0000
-Received: by mail-pg1-x534.google.com with SMTP id bn14so6374480pgb.11
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Mar 2023 20:10:23 -0700 (PDT)
+	Tue, 28 Mar 2023 03:10:50 +0000
+Received: by mail-pj1-x1030.google.com with SMTP id j13so9599404pjd.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 27 Mar 2023 20:10:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1679973023;
+        d=chromium.org; s=google; t=1679973046;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=YUxMnnBoBjKrP6eT7G8iGitEYRUBySq8m73f+BY/FXE=;
-        b=KdHMYTZ+x9N6Y2ZHPvM5OOf1HdzpFEikBS2iQZV+B3QYXIXaprCuBPEykGaIjjMmmF
-         9yBnctCbUSfOtGcS6D2OKWoLezvO0rWEsqrEsAbWMSCdVqW845rKaQWrVUDNWzkxkAVA
-         NGl8Zrn5UXoCHPws2BjWSXs8FdoqXZyblqoUk=
+        bh=f9rtmQf3+/k9brYMpe16mW92eSBX3phAG9+DZr8tElc=;
+        b=JuGXT7BWgidqAU+U9NFWmJkcnYoPC6x71wZQlTucGNVG+piuo5sPakfKCZuigoFSjM
+         px+Y4vf8GZwNQnHAwMxhFyWA1pJ/A32WcIT58WedWyC9gLDLRe9Q/o8tu0Qb560zZrUW
+         yG8VPUBn6X+e/qO69VLkUUlT6I/jjAGJZfIWI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679973023;
+        d=1e100.net; s=20210112; t=1679973046;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=YUxMnnBoBjKrP6eT7G8iGitEYRUBySq8m73f+BY/FXE=;
-        b=k4rTDPkIGiSzDGIlX8P6MAc65Ar97W1jyM1uRTjVagQVtnRdVRwNQ9AAZyeBoE8jzA
-         p+CfGWFSWoUQNx2IGnGRuT27m+bRqPeg9O2GPiTf4WMnd1HZRCjzBAQnQLZWcBfS/hjM
-         8nJq3lZmN66vE8hCvrtPITsWscjxzqNf76vG/RIm8GDcndEgMcEBDRmCS952dlyBq/uK
-         jWE22qZ2XDRpzOfGNSJ8blXL7LuCCrxksnpsaweNwJWNlbN24p+AG5REDfppuxts98bm
-         vNo+ajrm9tdwnbji9r+WC/skyXFIwe9xauXmTxr7fjHskwb3ohipm/h89NOEQtyDykQy
-         FKYg==
-X-Gm-Message-State: AAQBX9duMSIzTKjRLGhij+J6DuvQGqsmJLHKtE07FLNGF4TIb2BXHqTs
-	XYKCb/fl8Bp6raA7vYDfG5qdfw==
-X-Google-Smtp-Source: AKy350bC0L1BKVrEfalM7Kp5nZEIaRUuRJee1hKp+ImAy2irYV3TzoJlLwy5gM6RcRC6DEXB1+GhuA==
-X-Received: by 2002:a62:198a:0:b0:626:f692:5b1 with SMTP id 132-20020a62198a000000b00626f69205b1mr12059691pfz.22.1679973023114;
-        Mon, 27 Mar 2023 20:10:23 -0700 (PDT)
+        bh=f9rtmQf3+/k9brYMpe16mW92eSBX3phAG9+DZr8tElc=;
+        b=NpIYdEApXAUsB0j6WHImnAavTcAo5QU7higrK3gtI69qp6lsDXrXOjWVWSXxGeCKPg
+         U+pnDg6AucE1fdKw75aj/nnODG+FS7KmACJNRY4DB2wpANSTp2s9jyWrWS+sdy/wCPgA
+         lSYGX4vXWqq7GBVWtYHLkRK5p9w9l8azEso9wIdvGib2i9z9cJM+8N1u1G85ifvhLot4
+         2VOOex88hNwfirigbQlpncs3OJ4OnaPlDDbbK8Te1A1Wweg0he/lfsi1PRIAQVoLyb3o
+         Jsfukv7c0APrA+LwnsrCfHPZ7FqAqGz4ZH4VFzLIud0HI1v6keFDjNzHZwNACK6Vbf5E
+         5dRw==
+X-Gm-Message-State: AAQBX9fxVWjCxohwK2y5PF0zkI0yoNdBqbSc4fpY3uGJao14KT7hkSkJ
+	J3RiyTm/jfUvziIuATeBXpU0wQ==
+X-Google-Smtp-Source: AKy350Yhy0dWdjNAmaMv84OP2MovOHhZZoppM+d6gBHQlrg7Kw46jgJNOk74uIpr2rEXrRPToWVjTg==
+X-Received: by 2002:a17:90b:38c4:b0:23d:2027:c355 with SMTP id nn4-20020a17090b38c400b0023d2027c355mr16148392pjb.10.1679973046316;
+        Mon, 27 Mar 2023 20:10:46 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:da70:de00:9a3d:7067])
-        by smtp.gmail.com with ESMTPSA id n26-20020aa78a5a000000b006260e5bdd81sm19548719pfa.45.2023.03.27.20.10.21
+        by smtp.gmail.com with ESMTPSA id q20-20020a170902bd9400b001a2574813b8sm1491784pls.278.2023.03.27.20.10.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 Mar 2023 20:10:22 -0700 (PDT)
+        Mon, 27 Mar 2023 20:10:46 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: "Rafael J. Wysocki" <rafael@kernel.org>,
 	Daniel Lezcano <daniel.lezcano@linaro.org>,
@@ -70,15 +70,15 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-pm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH] thermal/drivers/mediatek/lvts_thermal: Fix sensor 1 interrupt status bitmask
-Date: Tue, 28 Mar 2023 11:10:17 +0800
-Message-Id: <20230328031017.1360976-1-wenst@chromium.org>
+Subject: [PATCH] thermal/drivers/mediatek/lvts_thermal: only update registered thermal zones
+Date: Tue, 28 Mar 2023 11:10:37 +0800
+Message-Id: <20230328031037.1361048-1-wenst@chromium.org>
 X-Mailer: git-send-email 2.40.0.348.gf938b09366-goog
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230327_201027_365320_0A061972 
-X-CRM114-Status: GOOD (  12.44  )
+X-CRM114-CacheID: sfid-20230327_201049_357623_DB271B33 
+X-CRM114-Status: GOOD (  11.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,46 +93,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The binary representation for sensor 1 interrupt status was incorrectly
-assembled, when compared to the full table given in the same comment
-section. The conversion into hex was also incorrect, leading to
-incorrect interrupt status bitmask for sensor 1. This would cause the
-driver to incorrectly identify changes for sensor 1, when in fact it
-was sensor 0, or a sensor access time out.
+It's possible for some sensors or thermal zones to not be registered,
+either because they are unused or not fully declared in the device tree.
+Nevertheless the driver enables interrupts for all sensors. If an
+interrupt happens for an not-registered sensor, the driver would end up
+updating a non-existent thermal zone, which leads to a NULL pointer
+dereference.
 
-Fix the binary and hex representations in the comments, and the actual
-bitmask macro.
+Change it so that only registered thermal zones get updated.
 
 Fixes: f5f633b18234 ("thermal/drivers/mediatek: Add the Low Voltage Thermal Sensor driver")
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/thermal/mediatek/lvts_thermal.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/thermal/mediatek/lvts_thermal.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-index ca16c90e1d55..d87d3847c7d0 100644
+index d87d3847c7d0..bf59174e18d3 100644
 --- a/drivers/thermal/mediatek/lvts_thermal.c
 +++ b/drivers/thermal/mediatek/lvts_thermal.c
-@@ -66,7 +66,7 @@
- #define LVTS_MONINT_CONF			0x9FBF7BDE
+@@ -415,9 +415,14 @@ static irqreturn_t lvts_ctrl_irq_handler(struct lvts_ctrl *lvts_ctrl)
+ 		if (!(value & masks[i]))
+ 			continue;
  
- #define LVTS_INT_SENSOR0			0x0009001F
--#define LVTS_INT_SENSOR1			0X000881F0
-+#define LVTS_INT_SENSOR1			0x001203E0
- #define LVTS_INT_SENSOR2			0x00247C00
- #define LVTS_INT_SENSOR3			0x1FC00000
++		iret = IRQ_HANDLED;
++
++		/* sensor might not exist (bogus interrupt) or not be registered */
++		if (!lvts_ctrl->sensors[i].tz)
++			continue;
++
+ 		thermal_zone_device_update(lvts_ctrl->sensors[i].tz,
+ 					   THERMAL_TRIP_VIOLATED);
+-		iret = IRQ_HANDLED;
+ 	}
  
-@@ -396,8 +396,8 @@ static irqreturn_t lvts_ctrl_irq_handler(struct lvts_ctrl *lvts_ctrl)
- 	 *                  => 0x1FC00000
- 	 * sensor 2 interrupt: 0000 0000 0010 0100 0111 1100 0000 0000
- 	 *                  => 0x00247C00
--	 * sensor 1 interrupt: 0000 0000 0001 0001 0000 0011 1110 0000
--	 *                  => 0X000881F0
-+	 * sensor 1 interrupt: 0000 0000 0001 0010 0000 0011 1110 0000
-+	 *                  => 0X001203E0
- 	 * sensor 0 interrupt: 0000 0000 0000 1001 0000 0000 0001 1111
- 	 *                  => 0x0009001F
- 	 */
+ 	/*
 -- 
 2.40.0.348.gf938b09366-goog
 
