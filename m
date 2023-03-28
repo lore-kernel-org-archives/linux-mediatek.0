@@ -4,85 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34FD4C76195
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 09:15:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76E12C76195
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 09:20:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RSvJJIzc07jNs5xyFBfiiy/4bckZKwo6oSXXK8nF9/0=; b=nfsPUHgDQLjunAQ68PQmlDPlqi
-	6pp54VWsqLb8P15VvyLxXPaQgawDPMwVynml51xrFk7Lif3oSyt+fK/GObQFW8ke8kIxF4D0axpxA
-	L93GTgm69xe0EMcA039QkICE3cw8g17ZDAfV2N4ZdlNqGKCXeGmsC3srJz4c9tVdmvWEb5lJv67r4
-	zP0HmYyOMCL377Xs2Gp8Gnq6fZVP6rjB0ma5f5+sthzu3XXtDBRO7FomA/8+49IAZaMvLkN62nOQl
-	8Vf1EP8kGkM+ZtCQvUln0XEEuHvJibIJL3Th0ZIAFGDbfsmDxVu5MVmB01fMEEps4XnD1GOGeM/+X
-	kn7l5V1Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rydAqL2xjCh9m8x5P5P2xf+yVVNlT8mq2EopIER2YF4=; b=3giR2oMaKtpJ3fPXA/okLnCQzT
+	yu+zbClVcwkzZ5iC5QmvwGG1rG7T7dzYHQtjoF2Cc8ke9fUSSmS0r/3zIWlzv60j2/sEpiHppOq5z
+	D6YqwL4lklcjpsnBcYODCnkYbcmdNfFYKRqSBI17hFmYYY3LAVAos9OcHwJkNix0uHx3A8d6gSmP2
+	9epHNr0KRbr3ASBvmO97TZOZ/QmyQ9YsV1ArjBJPMDaUqytDaMntx9SubJVAfF5PupwtJS25250jb
+	6KlGPmsgPJionpiS2xWIHhhAzvO6u9tF56w/DagxY5WdFveh+gJE6xlprn3orUu31KbhozYfEP2U4
+	cxVSa9dg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ph5QW-00DhgV-0O;
-	Tue, 28 Mar 2023 09:15:36 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ph5Ux-00DiVY-1L;
+	Tue, 28 Mar 2023 09:20:11 +0000
+Received: from mail-yb1-xb2f.google.com ([2607:f8b0:4864:20::b2f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ph5QU-00Dhff-0t;
-	Tue, 28 Mar 2023 09:15:35 +0000
-X-UUID: 1526f64acd4911ed8687db9d93187ff1-20230328
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=RSvJJIzc07jNs5xyFBfiiy/4bckZKwo6oSXXK8nF9/0=;
-	b=mAcwyYQ5gwQbbba4RgMcuWExThH5n0lsu7XSXKT4OORrgOEmxC8TQOZMGRsoCNj2YdIbC9KEXK8R3zJq94kW2wQYiSGzhTCXcEVElgBoUW/9gq08yZq1UzVkoKgsa1Ec5jXfWZ2aI4/4/JKpwCZ6njZJNdlmk0QNO2xdUVWnhII=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:b80fa6cc-b03b-4047-87cc-a0ebf5b3f4b6,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:90
-X-CID-INFO: VERSION:1.1.22,REQID:b80fa6cc-b03b-4047-87cc-a0ebf5b3f4b6,IP:0,URL
-	:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
-	N:quarantine,TS:90
-X-CID-META: VersionHash:120426c,CLOUDID:aae19ab4-beed-4dfc-bd9c-e1b22fa6ccc4,B
-	ulkID:230328171456U74Z9494,BulkQuantity:4,Recheck:0,SF:38|29|28|17|19|48,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
-	OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: 1526f64acd4911ed8687db9d93187ff1-20230328
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 135770752; Tue, 28 Mar 2023 02:15:28 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Tue, 28 Mar 2023 17:14:54 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Tue, 28 Mar 2023 17:14:53 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
-	Nicolas Dufresne <nicolas@ndufresne.ca>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>,
-	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, Hsin-Yi Wang
-	<hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter
-	<daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH 2/2] media: mediatek: vcodec: add remove function for decoder platform driver
-Date: Tue, 28 Mar 2023 17:14:50 +0800
-Message-ID: <20230328091451.21979-2-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230328091451.21979-1-yunfei.dong@mediatek.com>
-References: <20230328091451.21979-1-yunfei.dong@mediatek.com>
+	id 1ph5Us-00DiTJ-1D
+	for linux-mediatek@lists.infradead.org;
+	Tue, 28 Mar 2023 09:20:08 +0000
+Received: by mail-yb1-xb2f.google.com with SMTP id p204so14134797ybc.12
+        for <linux-mediatek@lists.infradead.org>; Tue, 28 Mar 2023 02:20:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1679995203;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=rydAqL2xjCh9m8x5P5P2xf+yVVNlT8mq2EopIER2YF4=;
+        b=Rjr+MdnqwFCGnuQdLml0S8Rg+dbGWPtX0rYliRuYF6Vx1BGLHxmv6BqbxyH+0adZWt
+         F4F25hvkqcOJZlpWwo6b5GR+8oC7WRANZsp1iZtlM10kl43ujXjzT4mVnjn+QN7nkgH/
+         ylTdaoxbTSTFpvfWJ/g0nndUO0lYAvmY9yhg1/8mIWR5OEvmAWMkjDfOKgUuhqZKCqbd
+         /XnCOmgTUB7Jaf88M6jctxsTiOC4cPYSWTzYQ3VK+ZC/OsqtaI+LviwJ68FcYbjcW2li
+         1YKX3WbXfqFml0Qo8EG3vuVsx79HR+CcCAm0vKhI+PvaHiudqk1bm6pgS6G6pcpgh7yx
+         iwdg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679995203;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=rydAqL2xjCh9m8x5P5P2xf+yVVNlT8mq2EopIER2YF4=;
+        b=FtZAs2sWOV00oosEPY/Rwn8y+Pu8a5YCwrs4DoDjCl0xrQGYqxCX+2piclt1gMq0vN
+         3+mv/QqvlZq5avSk221wz9Gxtsd849IN4Y37JSvHIxW5zsKldYP5hXUc2DHI8wGazKwl
+         jqP+22w1RxDK6n1LTt1Knkha/xhucm82gTRF6Okqa+C/Z1b2ZQQo1nOpO4k65d2AAGlj
+         hAHzj/E2GVABw+oHoPR/Eg4SB8hgFzA4+zqg7HSfTE5+E4hlY2ASyIlj13Q0hN8D7Dtt
+         VLbjGftFo4TbVqj27d5SEJtaIkZnNq5eUdu4ZMDLqCBRVYlwR4bGxCMLB7SmUQyHhOle
+         wnBw==
+X-Gm-Message-State: AAQBX9dSgbcmmwd95zTdOfW86nORF1c9IAouPgT8dIqkAP3HD3zKDijf
+	N4QOAQKQEiXBzeIdcNR3UIyZuyaOPNQ1t/qrb4ojRQ==
+X-Google-Smtp-Source: AKy350bysJsJQEMIVvOgRrtDQqvgDbyfnCMQZJxShJfJthTEA4O/F/mDGDMWyhxv19f8BsA5jRUCcPGquZnZUmPXvCU=
+X-Received: by 2002:a05:6902:1586:b0:98e:6280:74ca with SMTP id
+ k6-20020a056902158600b0098e628074camr9294491ybu.1.1679995202855; Tue, 28 Mar
+ 2023 02:20:02 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+References: <20230324094205.33266-1-angelogioacchino.delregno@collabora.com> <20230324094205.33266-3-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230324094205.33266-3-angelogioacchino.delregno@collabora.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Tue, 28 Mar 2023 11:19:52 +0200
+Message-ID: <CAFGrd9oyOz8-gf10-1QkaBzZwTvm9V7b63BZeoUbbM45CO8E1Q@mail.gmail.com>
+Subject: Re: [PATCH v2 2/6] soc: mediatek: pwrap: Move PMIC read test sequence
+ in function
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: matthias.bgg@gmail.com, robh+dt@kernel.org, 
+	krzysztof.kozlowski+dt@linaro.org, flora.fu@mediatek.com, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	kernel@collabora.com, phone-devel@vger.kernel.org, 
+	~postmarketos/upstreaming@lists.sr.ht
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230328_021534_319218_4A7EEF9B 
-X-CRM114-Status: GOOD (  13.83  )
+X-CRM114-CacheID: sfid-20230328_022006_419119_A7E51C47 
+X-CRM114-Status: GOOD (  17.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,39 +93,104 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Need to disable decoder power when remove decoder hardware driver, adding
-remove callback function in the definition of platform driver.
+Le ven. 24 mars 2023 =C3=A0 10:42, AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> a =C3=A9crit :
+>
+> The PMIC read test is performed in two places: pwrap_init_dual_io()
+> and pwrap_init_sidly().
+> In preparation for adding support for PMICs requiring a companion
+> part, move this sequence to a new function pwrap_pmic_read_test().
+>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+> ---
+>  drivers/soc/mediatek/mtk-pmic-wrap.c | 32 +++++++++++++++++-----------
+>  1 file changed, 20 insertions(+), 12 deletions(-)
+>
+> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/=
+mtk-pmic-wrap.c
+> index 15789a03e6c6..5c500be48f7c 100644
+> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> @@ -1455,6 +1455,18 @@ static int pwrap_regmap_write(void *context, u32 a=
+dr, u32 wdata)
+>         return pwrap_write(context, adr, wdata);
+>  }
+>
+> +static bool pwrap_pmic_read_test(struct pmic_wrapper *wrp, const u32 *de=
+w_regs,
+> +                                u16 read_test_val)
+> +{
+> +       bool is_success;
+> +       u32 rdata;
+> +
+> +       pwrap_read(wrp, dew_regs[PWRAP_DEW_READ_TEST], &rdata);
+> +       is_success =3D ((rdata & U16_MAX) =3D=3D read_test_val);
+> +
+> +       return is_success;
+> +}
+> +
+>  static int pwrap_reset_spislave(struct pmic_wrapper *wrp)
+>  {
+>         bool tmp;
+> @@ -1498,18 +1510,18 @@ static int pwrap_reset_spislave(struct pmic_wrapp=
+er *wrp)
+>   */
+>  static int pwrap_init_sidly(struct pmic_wrapper *wrp)
+>  {
+> -       u32 rdata;
+>         u32 i;
+>         u32 pass =3D 0;
+> +       bool read_ok;
+>         signed char dly[16] =3D {
+>                 -1, 0, 1, 0, 2, -1, 1, 1, 3, -1, -1, -1, 3, -1, 2, 1
+>         };
+>
+>         for (i =3D 0; i < 4; i++) {
+>                 pwrap_writel(wrp, i, PWRAP_SIDLY);
+> -               pwrap_read(wrp, wrp->slave->dew_regs[PWRAP_DEW_READ_TEST]=
+,
+> -                          &rdata);
+> -               if (rdata =3D=3D PWRAP_DEW_READ_TEST_VAL) {
+> +               read_ok =3D pwrap_pmic_read_test(wrp, wrp->slave->dew_reg=
+s,
+> +                                              PWRAP_DEW_READ_TEST_VAL);
+> +               if (read_ok) {
+>                         dev_dbg(wrp->dev, "[Read Test] pass, SIDLY=3D%x\n=
+", i);
+>                         pass |=3D 1 << i;
+>                 }
+> @@ -1529,8 +1541,7 @@ static int pwrap_init_sidly(struct pmic_wrapper *wr=
+p)
+>  static int pwrap_init_dual_io(struct pmic_wrapper *wrp)
+>  {
+>         int ret;
+> -       bool tmp;
+> -       u32 rdata;
+> +       bool read_ok, tmp;
+>
+>         /* Enable dual IO mode */
+>         pwrap_write(wrp, wrp->slave->dew_regs[PWRAP_DEW_DIO_EN], 1);
+> @@ -1546,12 +1557,9 @@ static int pwrap_init_dual_io(struct pmic_wrapper =
+*wrp)
+>         pwrap_writel(wrp, 1, PWRAP_DIO_EN);
+>
+>         /* Read Test */
+> -       pwrap_read(wrp,
+> -                  wrp->slave->dew_regs[PWRAP_DEW_READ_TEST], &rdata);
+> -       if (rdata !=3D PWRAP_DEW_READ_TEST_VAL) {
+> -               dev_err(wrp->dev,
+> -                       "Read failed on DIO mode: 0x%04x!=3D0x%04x\n",
+> -                       PWRAP_DEW_READ_TEST_VAL, rdata);
+> +       read_ok =3D pwrap_pmic_read_test(wrp, wrp->slave->dew_regs, PWRAP=
+_DEW_READ_TEST_VAL);
+> +       if (!read_ok) {
+> +               dev_err(wrp->dev, "Read failed on DIO mode.\n");
+>                 return -EFAULT;
+>         }
 
-Fixes: c05bada35f01 ("media: mtk-vcodec: Add to support multi hardware decode")
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
----
-- test pass when remove and insmod decoder hardware driver.
----
- .../media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c    | 8 ++++++++
- 1 file changed, 8 insertions(+)
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
-index 376db0e433d7..b753bf54ebd9 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
-@@ -193,8 +193,16 @@ static int mtk_vdec_hw_probe(struct platform_device *pdev)
- 	return ret;
- }
- 
-+static int mtk_vdec_hw_remove(struct platform_device *pdev)
-+{
-+	pm_runtime_disable(&pdev->dev);
-+
-+	return 0;
-+}
-+
- static struct platform_driver mtk_vdec_driver = {
- 	.probe	= mtk_vdec_hw_probe,
-+	.remove = mtk_vdec_hw_remove,
- 	.driver	= {
- 		.name	= "mtk-vdec-comp",
- 		.of_match_table = mtk_vdec_hw_match,
--- 
-2.18.0
-
+Regards,
+Alexandre
 
