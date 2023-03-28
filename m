@@ -4,69 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68E25C76196
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 21:06:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34B24C6FD18
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 21:27:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dtkb18ovKMaH43unnBPf7khKxODc/lZ7PabQ5gaNQy4=; b=465bpED4puSsn+
-	oKlbAvf0Z2QwjLii3WM4uZXkb6xvX3msZY00/VdzyRUUslsM0dRYU+TXAL5YxBFr/DFOxz41UDNxj
-	4u/T2tkIDZ1rwvAK7D+lU410JnWKwvk6lWWVhwiMFbCWp4e8KaCKuKOAj791O0/VaIlq0vzpwsSKl
-	rHfsq/RNMXYpTNdtqDvh9dxNMWt2fK18VvEI1ZjuUWYcdGHaP4dhabnvXEEhweDPEE7IACJQgZZy+
-	NyiJNocxRvpWG+yqFpsi7uYJCk4mtQIMA9eiY49WFyrjIOK19mEHuuQNX+hDy5vZCzKwgY+HpSE1k
-	+3pNSUploFKhqo/LcERw==;
+	List-Owner; bh=+y0Ba+KFp0LIEVnL+sMXDfVh8ybd+Bu3l5NO3YH+4Pw=; b=ha2+YD5ybSMB+Y
+	DpbcLEFZI1EYQ8ruf2ZUm/3O8n2PHFL5kKaVIW922eWy9lpYWUScqFGVHBdKXMuC8pVRaNu6V3NYf
+	YnjdG0XAPdIFcICzHl813kcmjVsEISzAEM1mCXTbT7Q7A3NtsDAu2Y19tsPzdIq27fGPEzvCGTZ0c
+	B8IDtUi/f+VCR8ueFxgLvvgqtXN8kq0sfZyFv0yj5Tl+211ziz++PoFmJzWOn2Ch1ZWpkyOdeIOuF
+	a0whLmxtXznvrIayKweJXc0mfC3lcmwfRVkhiiFGoThMxH2PrwyIEzBaYWuTMny2bLwIKY9g78O7P
+	ypbItPjR1In6UuHiIn8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phGWk-00FsFp-1C;
-	Tue, 28 Mar 2023 21:06:46 +0000
-Received: from sender3-op-o18.zoho.com ([136.143.184.18])
+	id 1phGr8-00Fv2m-0u;
+	Tue, 28 Mar 2023 21:27:50 +0000
+Received: from sender4-op-o10.zoho.com ([136.143.188.10])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phGWi-00FsEs-0k;
-	Tue, 28 Mar 2023 21:06:45 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1680037585; cv=none; 
+	id 1phGr4-00Fv1o-16;
+	Tue, 28 Mar 2023 21:27:47 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1680038840; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=K3l+6cKlXTkJUHIja2qwDUU7cu+a8Rz+Gdw24HGBpKoIzOJ8vfmxi5gomdSRo3hB+ftJsTbY6mDeK9XzqG3ffCHE/07KCrn+FBaF08SbFGiC62IMJ+cJmBvf8cxCYobLT06itKX22R/XHnDvEa/JfKa6u6ajhSfLx5UjqXIkZZE=
+	b=Mm+Vi7gRsZCWnfYtjcfvIpt/YbzZ+Wn3MKA3cJtIlZwSUmp1tygyxI2OkYL913cFizn+4Y5MhitdhOXjyTAJ+DBKCvpjUee8ag2Q01ShtKDqZ5loTGSQ/9tsE4aDJqutfGiNogzR/uA4dqps2oi/A5LddDIIy+HlWTGzeIbUbEA=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1680037585; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=dtkb18ovKMaH43unnBPf7khKxODc/lZ7PabQ5gaNQy4=; 
-	b=S9FSj28Nsi6/etwDQlZ5k9YJE4DWFkN43BNMr4YzGYq7DIBj+qaV9IPabOSM8EIK4Ap3BYCvnzhmfWqpMC3N54quSqk52tK6qQFWCSaCrtcAr1Ty2+k943NrNgcAc2kTnc1hqjgT6lVTklKVNh8dMorDvuUHmcj0LVpvzoIGkEo=
+	t=1680038840; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=+y0Ba+KFp0LIEVnL+sMXDfVh8ybd+Bu3l5NO3YH+4Pw=; 
+	b=ELEtOeuq9Um9ZX45dqpJ4g67JJDXbwQgMyrVgXiyS3KfI31P0E6HNukQ5kWtNtYmgK3npihvuK4yNePhaJ00e3cOCUxSvejurlb3h0HVCeEZfNyl1e9DETxelfRkXNiu2+4VUZkFkuGVZ9q/OosYc3kTDlOEMTNELYaYdeKogRk=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=arinc9.com;
 	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
 	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1680037585;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1680038840;
 	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
 	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=dtkb18ovKMaH43unnBPf7khKxODc/lZ7PabQ5gaNQy4=;
-	b=PKmlQKkw4hyHAu+5NoHDphTDP0scndRBlGhQYcooVl0W1DLiU524odRu62YuKRAz
-	hqFKtH3egX7y6vaU9CSe0+KQa5gjR2jmDe6d8GRT1q0tElvBczSJoj8QQapFc6XoaaQ
-	UvmqYhmj6Lw55tHg5hFbk6BpIfeuX3133huAvmNM=
+	bh=+y0Ba+KFp0LIEVnL+sMXDfVh8ybd+Bu3l5NO3YH+4Pw=;
+	b=MQsoRsrShXwj3VYTDgfV4SV8HGAegWDWQP6rrc85bQl1FQslEn3esImY6cYenis/
+	bknzoo7DN9guOGFlLLNtGKWKTgGr/aeJGhTH+NOU1TN7g5BE1UhOY06kQmbpxmwK7hO
+	ljIzdhQ0mPIIJ67pOM6Ka89RRT+p+crG3/nPM4Ds=
 Received: from [10.10.10.3] (149.91.1.15 [149.91.1.15]) by mx.zohomail.com
-	with SMTPS id 1680037584024831.8337484799076; Tue, 28 Mar 2023 14:06:24 -0700 (PDT)
-Message-ID: <c12d50aa-7485-9ee4-3af1-8374de64eb07@arinc9.com>
-Date: Wed, 29 Mar 2023 00:06:15 +0300
+	with SMTPS id 1680038838686721.2602700369897; Tue, 28 Mar 2023 14:27:18 -0700 (PDT)
+Message-ID: <ab68cc01-e962-74c1-f22a-de5df42cc7d2@arinc9.com>
+Date: Wed, 29 Mar 2023 00:27:10 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
  Thunderbird/102.9.0
-Subject: Re: [PATCH v3 01/21] pinctrl: ralink: reintroduce
- ralink,rt2880-pinmux compatible string
-To: Rob Herring <robh+dt@kernel.org>
-References: <20230317213011.13656-1-arinc.unal@arinc9.com>
- <20230317213011.13656-2-arinc.unal@arinc9.com>
- <CAL_JsqLDRHs=TfcLsc0RJzF6rj84eXZooejmhx4hBDnpvCTk5A@mail.gmail.com>
+Subject: Re: [PATCH 0/7] net: dsa: mt7530: fix port 5 phylink, phy muxing, and
+ port 6
 Content-Language: en-US
+To: Vladimir Oltean <olteanv@gmail.com>
+References: <20230326140818.246575-1-arinc.unal@arinc9.com>
+ <20230328112154.qk5fwqaig4sit3ho@skbuf>
 From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <CAL_JsqLDRHs=TfcLsc0RJzF6rj84eXZooejmhx4hBDnpvCTk5A@mail.gmail.com>
+In-Reply-To: <20230328112154.qk5fwqaig4sit3ho@skbuf>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230328_140644_326912_443A38ED 
-X-CRM114-Status: UNSURE (   6.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230328_142746_462799_BE781801 
+X-CRM114-Status: GOOD (  12.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,24 +76,31 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Linus Walleij <linus.walleij@linaro.org>, linux-kernel@vger.kernel.org, Daniel Santos <daniel.santos@pobox.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, erkin.bozoglu@xeront.com, =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>, Sergio Paracuellos <sergio.paracuellos@gmail.com>, linux-mips@vger.kernel.org, devicetree@vger.kernel.org, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Andy Teng <andy.teng@mediatek.com>, Hui Liu <hui.liu@mediatek.com>, Luiz Angelo Daros de Luca <luizluca@gmail.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Del Regno <angelogioacchino.delregno@collabora.com>, linux-gpio@vger.kernel.org, Zhiyong Tao <zhiyong.tao@mediatek.com>, Sean Wang <sean.wang@kernel.org>, Daniel Golle <daniel@makrotopia.org>, William Dean <williamsukatube@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>, =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>, Eric Dumazet <edumazet@google.com>, erkin.bozoglu@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Russell King <rmk+kernel@armlinux.org.uk>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 28/03/2023 23:59, Rob Herring wrote:
-> On Fri, Mar 17, 2023 at 4:30 PM <arinc9.unal@gmail.com> wrote:
+On 28/03/2023 14:21, Vladimir Oltean wrote:
+> On Sun, Mar 26, 2023 at 05:08:11PM +0300, arinc9.unal@gmail.com wrote:
+>> Hello!
 >>
->> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+>> This patch series is mainly focused on fixing the support for port 5 and
+>> setting up port 6.
 >>
->> There have been stable releases with the ralink,rt2880-pinmux compatible
->> string included. Having it removed breaks the ABI. Reintroduce it.
+>> The only missing piece to properly support port 5 as a CPU port is the
+>> fixes [0] [1] [2] from Richard.
+>>
+>> Russell, looking forward to your review regarding phylink.
+>>
+>> I have very thoroughly tested the patch series with every possible mode to
+>> use. I'll let the name of the dtb files speak for themselves.
 > 
-> ralink,rt2880-pinmux now shows up as an undocumented compatible string
-> in linux-next. Where's the binding for it?
+> This patch needs to be resubmitted (potentially as RFC) to the net-next
+> tree, and the commits readjusted to clarify what are fixes and what is
+> pure refactoring. With the mentioned that I have not reviewed the entire
+> series and I will not do that, either.
 
-This is exactly what I was talking about here:
-
-https://lore.kernel.org/linux-devicetree/3fdc7db4-0df3-f922-3dbf-9f9250c271aa@arinc9.com/
+Makes sense, will do.
 
 Arınç
 
