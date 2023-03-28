@@ -4,81 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2CF0C761A6
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 11:07:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00CF0C77B60
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Mar 2023 11:20:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZudYGNHvAgPdTp0WTPAT2m/9U9KwG4/3bZKY+rxOHUI=; b=AFumIgrUmawsT1AQA6hGL9pl40
-	NxkSQLRgwyd5/peLiUjW6xpyM2UgBQILoCDptGC5knysyGRV7XTx+dF/8EW74LkAeAwM4/Lf5ozfT
-	nz2zVhkx9WniPJYatvqReCMF/EP4a/9LfEa3FTTVBh2hXtWhgeIUDYD3OWRkrujCGx/LGyNUukLrG
-	mVBqNfffkQV7DzT0h1yyVoDz6qLhtjeyZ1xf35EX/MaSud/t5mqLIAPsZp1gwTEyU8TNg7JhWE2/F
-	AvpGkpraOmneoydzW1FM9w+oDVIS6wJQsf8sY1XQqVSxQJjbLObVKF4AVmI1/RbrAw6rYmCncvETZ
-	rxV3VBTQ==;
+	bh=fAQImpnQP0GAv34nwxb4A/1+q39BUDZ/O6A+p8S3rBY=; b=jpmtW7C6nKS/l5BuCq/AnZfFjf
+	VmkQg79IT8pi+8awVE2pQceexokOWWk2Fa9FzxXbmH3GjYwHDsSgEysI30HAENdmQXy1WqjLqXzKm
+	3OLoTYeHsEeagxFQ7rRV09wSrZCdJ0flFwuZzWuBNCLNUnql+1WWNfe++RBNlwxdNqIwT8kiqOpk3
+	8XLjz3c4yKDaN2Gsd2pXYrPX6x5h6TuU6OqFcRCka8Y7GtLELjL77+U3Ts0GGniD5yqUFXqZQE+Kn
+	z9cPfyOXP3adOLAKNdXon+QsXIYP45KD/ay91NVXBnoZ6mnhf6TpnJTK47fhpnvQ5NJ9eoqVkwI9V
+	aEmDrjBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ph7Aj-00E4Mf-0r;
-	Tue, 28 Mar 2023 11:07:25 +0000
-Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
+	id 1ph7N5-00E7C8-00;
+	Tue, 28 Mar 2023 11:20:11 +0000
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ph7Ae-00E4Gf-3D;
-	Tue, 28 Mar 2023 11:07:22 +0000
-Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
-	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 5FD7A1883927;
-	Tue, 28 Mar 2023 11:07:00 +0000 (UTC)
-Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
-	by mailout.gigahost.dk (Postfix) with ESMTP id 570672500389;
-	Tue, 28 Mar 2023 11:07:00 +0000 (UTC)
-Received: by smtp.gigahost.dk (Postfix, from userid 1000)
-	id 46A3B9B403E4; Tue, 28 Mar 2023 11:07:00 +0000 (UTC)
-X-Screener-Id: e32ae469fa6e394734d05373d3a705875723cf1e
-Received: from fujitsu (2-104-116-184-cable.dk.customer.tdc.net [2.104.116.184])
-	by smtp.gigahost.dk (Postfix) with ESMTPSA id 9C4BC91201E3;
-	Tue, 28 Mar 2023 11:06:59 +0000 (UTC)
-From: Hans Schultz <netdev@kapio-technology.com>
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
- Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Eric
- Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Kurt
- Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>,
- Woojung Huh <woojung.huh@microchip.com>, "maintainer:MICROCHIP KSZ SERIES
- ETHERNET SWITCH DRIVER" <UNGLinuxDriver@microchip.com>, Sean Wang
- <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
- Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
- <alexandre.belloni@bootlin.com>, =?utf-8?Q?Cl=C3=A9ment_L=C3=A9ger?=
- <clement.leger@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
- <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
- <razor@blackwall.org>, Shuah Khan <shuah@kernel.org>, Christian Marangi
- <ansuelsmth@gmail.com>, Ido Schimmel <idosch@nvidia.com>, open list
- <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>, "open list:RENESAS RZ/N1
- A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>, "moderated
- list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>, "open
- list:KERNEL SELFTEST FRAMEWORK" <linux-kselftest@vger.kernel.org>
-Subject: Re: [PATCH v2 net-next 2/6] net: dsa: propagate flags down towards
- drivers
-In-Reply-To: <20230327225933.plm5raegywbe7g2a@skbuf>
-References: <20230318141010.513424-1-netdev@kapio-technology.com>
- <20230318141010.513424-3-netdev@kapio-technology.com>
- <20230327115206.jk5q5l753aoelwus@skbuf>
- <87355qb48h.fsf@kapio-technology.com>
- <20230327160009.bdswnalizdv2u77z@skbuf>
- <87pm8tooe1.fsf@kapio-technology.com>
- <20230327225933.plm5raegywbe7g2a@skbuf>
-Date: Tue, 28 Mar 2023 13:04:23 +0200
-Message-ID: <87ileljfwo.fsf@kapio-technology.com>
+	id 1ph7N1-00E7AE-24;
+	Tue, 28 Mar 2023 11:20:09 +0000
+Received: by mail-wm1-x333.google.com with SMTP id u11-20020a05600c19cb00b003edcc414997so7174516wmq.3;
+        Tue, 28 Mar 2023 04:20:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1680002405;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=fAQImpnQP0GAv34nwxb4A/1+q39BUDZ/O6A+p8S3rBY=;
+        b=H1MABtWfJIUIayq6bepL/MKgHiFtHlkQyfEpqGH9thGfkT7r/KkaJlKniNP0Gl29Fc
+         CFeYEvToTOk9UZ07hZlWCLDPrvadWy56lUuR4J1ldz/5r/4+5CUGSbWMP67yI5+mqUkT
+         3j0Q9/bjnLHlNks146DA+DdiM/uGLJrzz2X3FYJDp0iZ5FjZDSR2jjYUDTYYHg+5Ury4
+         OVLUtndAwAnMACSb0VzKxRRkh+YraEAsImxIW0enn5jda3VSUy8+2t8G+K0FBjNQ3xOz
+         3ZWmBsbw+RXcfwxqWfZucUclJ9/u+xjCnW89QH03j1ekX47HDjWdaBm5nBttSrCfMPcm
+         hodg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680002405;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=fAQImpnQP0GAv34nwxb4A/1+q39BUDZ/O6A+p8S3rBY=;
+        b=p6S8kp/5u2ZYyndtrD/xuXCPJSI7w83/uo9jpb7MbV+bY9zK9xuaQjn8Z/SinSX9ca
+         p3TdYaczg7I4n4RVpsrW4Xu3GcgT4796NeHcYKT/4tawzucM+QcM8UVw3LNnbNkJ4kKk
+         vcBB3gJiRQoDucv7IRvtS754PdrUfoxwRGi2S7xXqi+TGCwYnl72LPPyN5G0UzmgKC/m
+         0Phbkc6PrF730jcaaAUGJ7s6XScWdZ6EqHsZVVtC9oEtJFcehlHK41fLVlfO5DgAdpa+
+         U04z3W728U7MuMG8BeNuFSG7QVT+UPOTnSQrbqC2FmY39xgS7QRVI6WtjRCrO0XN99AI
+         xaUA==
+X-Gm-Message-State: AO0yUKW3qAK3UFI0+/w05WDNZdGHC7Fn3G3wN5q3GhHRdxE7ywDgi9TJ
+	P3tE+tYm7m8hkqlmPop/ZGU=
+X-Google-Smtp-Source: AK7set9sW2CNkTzeBb1i+Tw8DSAJQEexXoH1tDNeUkgCs29kSQhdJ4uChgVBKJKZ9buerEsJ7QTfWw==
+X-Received: by 2002:a1c:4c13:0:b0:3ee:a492:e95e with SMTP id z19-20020a1c4c13000000b003eea492e95emr11763199wmf.6.1680002405248;
+        Tue, 28 Mar 2023 04:20:05 -0700 (PDT)
+Received: from skbuf ([188.27.184.189])
+        by smtp.gmail.com with ESMTPSA id fc9-20020a05600c524900b003ee2a0d49dbsm12523567wmb.25.2023.03.28.04.20.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 28 Mar 2023 04:20:05 -0700 (PDT)
+Date: Tue, 28 Mar 2023 14:20:02 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Subject: Re: [PATCH net 4/7] net: dsa: mt7530: set both CPU port interfaces
+ to PHY_INTERFACE_MODE_NA
+Message-ID: <20230328112002.2p7r6estix3dpijm@skbuf>
+References: <20230326140818.246575-1-arinc.unal@arinc9.com>
+ <20230326140818.246575-5-arinc.unal@arinc9.com>
+ <20230327191242.4qabzrn3vtx3l2a7@skbuf>
+ <8450084e-1474-17fa-32c2-a4653b74ff17@arinc9.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <8450084e-1474-17fa-32c2-a4653b74ff17@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230328_040721_177701_0BC50C04 
-X-CRM114-Status: UNSURE (   9.32  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230328_042007_682811_7A3A320F 
+X-CRM114-Status: GOOD (  19.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,22 +90,53 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>, =?utf-8?B?UmVuw6k=?= van Dorst <opensource@vdorst.com>, Eric Dumazet <edumazet@google.com>, erkin.bozoglu@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Russell King <rmk+kernel@armlinux.org.uk>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 28, 2023 at 01:59, Vladimir Oltean <olteanv@gmail.com> wrote:
->
-> which idea is that, again?
+On Tue, Mar 28, 2023 at 12:57:57AM +0300, Arınç ÜNAL wrote:
+> I don't appreciate your consistent use of the word "abuse" on my patches.
 
-So I cannot us the offloaded flag as it is added by DSA in the common
-case when using 'bridge fdb replace ... dynamic'.
+Consistent would mean that, when given the same kind of input, I respond
+with the same kind of output. I'm thinking you'd want a reviewer to do that?
 
-The idea is then to use the ext_learn flag instead, which is not aged by
-the bridge. To do this the driver (mv88e6xxx) will send a
-SWITCHDEV_FDB_ADD_TO_BRIDGE switchdev event when the new dynamic flag is
-true. The function sending this event will then be named
-mv88e6xxx_add_fdb_synth_learned() in
-drivers/net/dsa/mv88e6xxx/switchdev.c, replacing the
-mv88e6xxx_set_fdb_offloaded() function but in most part the same
-content, just another event type.
+Last time I said: "It's best not to abuse the net.git tree with non-bugfix patches."
+https://patchwork.kernel.org/project/netdevbpf/patch/20230307220328.11186-1-arinc.unal@arinc9.com/
+
+If anything, Jakub was/is slightly inconsistent by accepting those previous
+non-bugfix patches to the net.git tree, and then agreeing with me. He probably
+did that thinking it wasn't a hill worth dying on, which I can agree with.
+But I'm afraid that this didn't help you realize that yes, maybe you really
+are abusing the process by submitting exclusively non-bugfix commits to the
+net tree. There's a fine balance between trying to be nice and trying not to
+transmit the wrong message.
+
+It would be good if you could clarify your objection regarding my consistent
+use of the word "abuse" on your patches.
+
+There is a document at Documentation/process/stable-kernel-rules.rst
+which I remember having shared with you before, where there are some
+indications as to what constitutes a legitimate candidate for "stable"
+and what does not.
+
+> I'm by no means a senior C programmer. I'm doing my best to correct the
+> driver.
+> 
+> Thank you for explaining the process of phylink with DSA, I will adjust my
+> patches accordingly.
+> 
+> I suggest you don't take my patches seriously for a while, until I know
+> better.
+
+Whether you're a junior or a senior C programmer is entirely irrelevant
+here. I have no choice but to take your patches seriously unless otherwise
+specified, in the commit message, cover letter, or by marking them as
+RFC/RFT (but even then, their intention must be very clearly specified,
+so that I know what to comment on, or test).
+
+I don't think you really want what you're asking for, which is for
+people to not take your patches seriously. I recommend forming a smaller
+community of people which does preliminary patch review and discusses
+issues around the hardware you're working on, prior to upstream submission.
+That would, at least, be more productive.
 
