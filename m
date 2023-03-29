@@ -4,110 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B18DC77B61
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 19:58:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F2CFC74A5B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 22:41:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=FNFGl7TALMtvWy3apPkbvlgPa76IuL44/SWQbOr3jtU=; b=YAqo78Wbm+xpLxoywjMxmo49W/
-	H6+ybn/YiJYi9QkF2ABkEqytWk7+pLucrdTI8il0GcJyY6cu3H8uYnMPCTfdKsUCv0tV8UGHCmb+Z
-	lhaFQi9Qx8Q/0LRTp2lSIMxg49uUunaVCkfiCfsIGpztEksfVvj65ISZYotP86/bIPxFWnrKVSw/b
-	34meD8ugwhXQ1czQv1GDw7ccYVHZUzA/DsIPeLcmwXslQ06BichyWhEjTZx6vtGYZz/xBcjz3mgnZ
-	xOMgnmZJIS6CZUqwGlSIc3f4m+IF/XK5uXWXx+4afcCwZlT6LmY/7FIuPqbLFrPOoJRtZElHfQQFK
-	dLueXsrA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HP6j+DU+MoE9A0IYOuntBF31Ne44IF3oyP+KWeldQTc=; b=DVJBmBhYd+rLAEdMnQqrEo5Zmc
+	7yDZvJS/7V080Z9vPHpEeiHczbK7klRUsQgrDd6spxgMtcSKYPBCBQfpPqYUcYAMfxU7e3t+2Z1J2
+	nIjLn+KxoX1vC7dvziNBHOpQtPR8yjGkAivU8muQzjPv2EV7psEyr65R6w/EpsL9TRmh13vjCisdg
+	QlgnU+367+lF3Vt11nv8uix5ppWw2nAH5KbSOWPk5I9vVhtBl4GuJkVsQEk3VNi7pMqYjLnOi7WZ/
+	C1naZLXPA8zTdj5dpvvT3fEXW/xcggi45/GEC07k312KxI+iN8dgWkaa25X+l/1J+4oTLExOACOCO
+	NmUc7/Lw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phbwB-001hYU-2j;
-	Wed, 29 Mar 2023 19:58:27 +0000
-Received: from mail-sn1nam02on2062b.outbound.protection.outlook.com ([2a01:111:f400:7ea9::62b] helo=NAM02-SN1-obe.outbound.protection.outlook.com)
+	id 1pheTb-001zb2-1K;
+	Wed, 29 Mar 2023 22:41:07 +0000
+Received: from mail-yb1-xb2e.google.com ([2607:f8b0:4864:20::b2e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phbw7-001hXA-1i;
-	Wed, 29 Mar 2023 19:58:25 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=XEY0imW0BQHs0nz4woiTz3Y9GevJechg44GBRlAyei++RUhz/pFb8hlnJp3kkQrJlnghZJ17j+xPUXsT/solzCnYyAeEZtjAnI4M6ZxnlPy81Q/Ulw2ysxdvcwT1cyqPvqmpI0yH4LB796bXiYrl56Pi0pQqD1MFLDrC0sGYOMlJ1Bp2AodivSswcs8/XHRtRNtNSKX06aG4O0W+jogYyyLXr84s+xDbQZO9gEHJLSsKrgsXso+wClf0PAvvYJr8CKuUIp2CbxYz79iDSHYxE74SGhuYvS030kSuK6D2FVlxVCMtimmpyiKuQmYF6cyCS4ozacL4WZbR/Q1lt9mcWg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=FNFGl7TALMtvWy3apPkbvlgPa76IuL44/SWQbOr3jtU=;
- b=jxRcWPCiEHVihAvMVbPHMa6A9v7DwTRm578VHkiUHxAfaLugQGQ/bfLm7Q18dT6iFSFxtNu7++seNFxDbx0UBcc754/Km/A2cFaefCC1Te5oQ6P2clI6isLVb9gabpXUa8oeoiP4/ywvALQS1e/EuVhj/iJgE0b9Ka/Y4earOj93v+dd0IQ0iZNraaRfmhs6VA9kt5nL8T5QjBFT7RujKKTbRPhca8qlYsSg9QZBDlRRGMD9l2edG5sBDDNfuJbtSwke1xcZNoRqU2mGNivPafEKhRKs5itg+7gk62uFX2fp7441vxNL1i7jl1p+IqsaDQBGfIqGcc31U36gTg/htw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 165.204.84.17) smtp.rcpttodomain=nbd.name smtp.mailfrom=amd.com; dmarc=pass
- (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=FNFGl7TALMtvWy3apPkbvlgPa76IuL44/SWQbOr3jtU=;
- b=p6pB9pIOqhDV+XyLqtyzWNt8JeAFoskMlnN5XJvOG30fk0KLtTCy6dSNgK24qvGonONX/iFpPlgi0SzDtn3CkFArfViUTgR/Dd+RoczEI8fNbWnQshlx+ReHGYZCtoDrgnvIYcc8pm91/hBOLFpzuS55yjZdN/mzCwPbytajsDI=
-Received: from BN9PR03CA0254.namprd03.prod.outlook.com (2603:10b6:408:ff::19)
- by CY8PR12MB7415.namprd12.prod.outlook.com (2603:10b6:930:5d::22) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6222.28; Wed, 29 Mar
- 2023 19:58:19 +0000
-Received: from BN8NAM11FT114.eop-nam11.prod.protection.outlook.com
- (2603:10b6:408:ff:cafe::2a) by BN9PR03CA0254.outlook.office365.com
- (2603:10b6:408:ff::19) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.43 via Frontend
- Transport; Wed, 29 Mar 2023 19:58:19 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
- smtp.mailfrom=amd.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=amd.com;
-Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
- 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
-Received: from SATLEXMB04.amd.com (165.204.84.17) by
- BN8NAM11FT114.mail.protection.outlook.com (10.13.177.46) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.6222.22 via Frontend Transport; Wed, 29 Mar 2023 19:58:16 +0000
-Received: from AUS-LX-MLIMONCI.amd.com (10.180.168.240) by SATLEXMB04.amd.com
- (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.34; Wed, 29 Mar
- 2023 14:58:14 -0500
-From: Mario Limonciello <mario.limonciello@amd.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>, <ryder.lee@mediatek.com>,
-	<shayne.chen@mediatek.com>, <sean.wang@mediatek.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-CC: Mario Limonciello <mario.limonciello@amd.com>, Anson Tsao
-	<anson.tsao@amd.com>, Kalle Valo <kvalo@kernel.org>, "David S. Miller"
-	<davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
-	<kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	<linux-wireless@vger.kernel.org>, <netdev@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>
-Subject: [PATCH RESEND] wifi: mt76: mt7921e: Set memory space enable in PCI_COMMAND if unset
-Date: Wed, 29 Mar 2023 14:57:58 -0500
-Message-ID: <20230329195758.7384-1-mario.limonciello@amd.com>
-X-Mailer: git-send-email 2.25.1
+	id 1pheTV-001zZi-1Y
+	for linux-mediatek@lists.infradead.org;
+	Wed, 29 Mar 2023 22:41:04 +0000
+Received: by mail-yb1-xb2e.google.com with SMTP id z83so21390427ybb.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 29 Mar 2023 15:41:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1680129660;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=HP6j+DU+MoE9A0IYOuntBF31Ne44IF3oyP+KWeldQTc=;
+        b=0B0q14oWCxtPwbWeDxp+M+ZsWj8UfgNmit5vebjz9hpyyAxEVueR0PbDGmwoMWUI9u
+         Cfr12jqh2pAmn1lSPaH0DuOohUl8BUb+bklVg3pdVDnJiHgX8yj7pJEHAqUZOrMFph5p
+         qzHpAdUk0RbvOFmQsTWqBEnqATlLGiLptmiMC2EkK5sl/Sd6+blsPG3M28Wj7AMfIWO5
+         EPjOiu+iM3U+KQ7GAbE+c8ILElGBVlF7jYqzgmFWqtEpUIviZlfjFTBEwoprMkyHzz37
+         u/bwomiqeJdsJOeV7kw8ejggyqNv1ILgmVRfhk0nTLxxpvcooR7McXpI//8FoWCRbES0
+         Scsg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680129660;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=HP6j+DU+MoE9A0IYOuntBF31Ne44IF3oyP+KWeldQTc=;
+        b=D7kegL73yTnCryEAetCOL/T5KigS3Bfx5SQRaoMgh5jROTBq+JWzJn/M0dw7A16OFF
+         RxWdVUWKqziGpD/SrxCh0uVGbuQUNew69Iv3u5Yg0QCoweKVz2e+TlHz1VwuYgujm32k
+         pAMTB3x0ZRzzLSnMlp6vCWy2ZTd2vb0yNGMO9GT/Lk96oZ86bxkVzlliofA7u0eXzQcc
+         0w/N6q5q5Krln/lZiG73KqnoNxMaO+38KCLZzr9FbnAx7wcXFLmzF52pPlM1odYTLxHD
+         qje+orIRMFGsy/RyK8xqvjdPunq461LczBG4iVr/sAxW3jpnqhjx4bexV4jZexJdX9GP
+         4lIw==
+X-Gm-Message-State: AAQBX9enqSh+PvwWhsGiKjTaMmwwFoIFHdLGzOPk395oOlXLzdlK6ZHB
+	8FJ+LGjvX8x3lXGqVwwZlKs5/aAyXqotMThk6sivXg==
+X-Google-Smtp-Source: AKy350auSkretDCKc3GwqJLWtBSKFs7m8qlQ5csPeo5vk/e6+ySCdpua771J676eyVzfkMOED+NXF4As/QobiYttluE=
+X-Received: by 2002:a05:6902:1181:b0:b6c:2224:8a77 with SMTP id
+ m1-20020a056902118100b00b6c22248a77mr14001376ybu.1.1680129660014; Wed, 29 Mar
+ 2023 15:41:00 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.180.168.240]
-X-ClientProxiedBy: SATLEXMB03.amd.com (10.181.40.144) To SATLEXMB04.amd.com
- (10.181.40.145)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BN8NAM11FT114:EE_|CY8PR12MB7415:EE_
-X-MS-Office365-Filtering-Correlation-Id: 410c2fd0-d708-465c-1a83-08db308ff000
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	ELgMX/NcJQIZfKFBrNswTUnIyYmZfxwDwwizQozyGDOdC4Gd+Mdq7RrByjbahnyK6ngVPt71gC+Y8jhODZnlawliwU6OmwCMUpAshRDFaZA70pgfY6CFQMZtUCfOHb6Gy32Jxy608+wzi0sfnWIAtljNCh6Rz63FHtybzaL5TLc166Z0XRITzLuROJUD3e9q1tzicYW9cRJ0Up4zvZMe4R5Acc0wBMZvpQzMnKqOsECacnBCHcPEkGJdlyMMEt9fbpkZdld79prY9kvA/bP4xyFs3R2cxCWZCzJFZhac1nVTqGBLU/75UbJ0JY+9Wvbztx4/k6Shwn7AUuQV1RlklguMi/Vg5DnLtIQkHgYMEs17D4QraKOJuIfXUblEd4QLYQFqBi7/RK9SPZnmGr/S2jMJk6J/MUA023vr3/Q0XE3sDMcBWhpvoVldPsjq/nI041FrSBzlysyxKTZZ0Qv3OLGDf8g3qbyjLJSKjA6vROix4joG4qOlF6qdBTRoVjhdBIQ/wuC+Ecg+eEIB5lTzUCN8DUrINvWZvrG2Xg/1bb3j3ZCoTTWDw4fqKnLyRqV9CnV4Hgu7aV/HYM3A3TarMZuLZuQzdhErfUHITZA/2zrOH8NbwOfUjj6jnFGvPtXr49QkfLLCx0ETZa7b/SO0yW5Bp1fDNp/9Rv2bZXEc6mTKjFw6KKf3XcsByjXeTT+d9BqQnbjcfTy+ZZyz8NXM7E9/De1GnlG8H/PVK4c0WJ8=
-X-Forefront-Antispam-Report: 	CIP:165.204.84.17;CTRY:US;LANG:en;SCL:1;SRV:;IPV:CAL;SFV:NSPM;H:SATLEXMB04.amd.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230028)(4636009)(346002)(39860400002)(396003)(376002)(136003)(451199021)(40470700004)(46966006)(36840700001)(8936002)(47076005)(2906002)(336012)(83380400001)(426003)(2616005)(41300700001)(86362001)(36860700001)(36756003)(40460700003)(82740400003)(5660300002)(81166007)(356005)(40480700001)(966005)(478600001)(7696005)(8676002)(54906003)(70206006)(70586007)(4326008)(7416002)(16526019)(44832011)(6666004)(186003)(82310400005)(1076003)(26005)(316002)(110136005)(36900700001);DIR:OUT;SFP:1101;
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Mar 2023 19:58:16.7583
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 410c2fd0-d708-465c-1a83-08db308ff000
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d;Ip=[165.204.84.17];Helo=[SATLEXMB04.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: 	BN8NAM11FT114.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR12MB7415
+References: <20230324094205.33266-1-angelogioacchino.delregno@collabora.com> <20230324094205.33266-5-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230324094205.33266-5-angelogioacchino.delregno@collabora.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Thu, 30 Mar 2023 00:40:48 +0200
+Message-ID: <CAFGrd9qNzza+EW5ARqbSGFjnCvuxn5De=dLSCGh26z2Kqd8_yw@mail.gmail.com>
+Subject: Re: [PATCH v2 4/6] soc: mediatek: mtk-pmic-wrap: Add support for
+ companion PMICs
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: matthias.bgg@gmail.com, robh+dt@kernel.org, 
+	krzysztof.kozlowski+dt@linaro.org, flora.fu@mediatek.com, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	kernel@collabora.com, phone-devel@vger.kernel.org, 
+	~postmarketos/upstreaming@lists.sr.ht
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230329_125823_772638_6FE0E433 
-X-CRM114-Status: GOOD (  12.38  )
+X-CRM114-CacheID: sfid-20230329_154101_738684_F8361EFD 
+X-CRM114-Status: GOOD (  24.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,47 +93,218 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When the BIOS has been configured for Fast Boot, systems with mt7921e
-have non-functional wifi.  Turning on Fast boot caused both bus master
-enable and memory space enable bits in PCI_COMMAND not to get configured.
+Le ven. 24 mars 2023 =C3=A0 10:42, AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> a =C3=A9crit :
+>
+> Some PMICs are designed to work with a companion part, which provides
+> more regulators and/or companion devices such as LED controllers,
+> display backlight controllers, battery charging, fuel gauge, etc:
+> this kind of PMICs are usually present in smartphone platforms, where
+> tight integration is required.
+>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+> ---
+>  drivers/soc/mediatek/mtk-pmic-wrap.c | 73 ++++++++++++++++++++++------
+>  1 file changed, 59 insertions(+), 14 deletions(-)
+>
+> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/=
+mtk-pmic-wrap.c
+> index a33a1b1820cb..366e40b802e4 100644
+> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> @@ -47,6 +47,7 @@
+>
+>  /* macro for device wrapper default value */
+>  #define PWRAP_DEW_READ_TEST_VAL                0x5aa5
+> +#define PWRAP_DEW_COMP_READ_TEST_VAL   0xa55a
+>  #define PWRAP_DEW_WRITE_TEST_VAL       0xa55a
+>
+>  /* macro for manual command */
+> @@ -1222,12 +1223,16 @@ struct pwrap_slv_regops {
+>   * struct pwrap_slv_type - PMIC device wrapper definitions
+>   * @dew_regs:      Device Wrapper (DeW) register offsets
+>   * @type:          PMIC Type (model)
+> + * @comp_dew_regs: Device Wrapper (DeW) register offsets for companion d=
+evice
+> + * @comp_type:     Companion PMIC Type (model)
+>   * @regops:        Register R/W ops
+>   * @caps:          Capability flags for the target device
+>   */
+>  struct pwrap_slv_type {
+>         const u32 *dew_regs;
+>         enum pmic_type type;
+> +       const u32 *comp_dew_regs;
+> +       enum pmic_type comp_type;
+>         const struct pwrap_slv_regops *regops;
+>         u32 caps;
+>  };
+> @@ -1548,9 +1553,12 @@ static int pwrap_init_dual_io(struct pmic_wrapper =
+*wrp)
+>  {
+>         int ret;
+>         bool read_ok, tmp;
+> +       bool comp_read_ok =3D true;
+>
+>         /* Enable dual IO mode */
+>         pwrap_write(wrp, wrp->slave->dew_regs[PWRAP_DEW_DIO_EN], 1);
+> +       if (wrp->slave->comp_dew_regs)
+> +               pwrap_write(wrp, wrp->slave->comp_dew_regs[PWRAP_DEW_DIO_=
+EN], 1);
+>
+>         /* Check IDLE & INIT_DONE in advance */
+>         ret =3D readx_poll_timeout(pwrap_is_fsm_idle_and_sync_idle, wrp, =
+tmp, tmp,
+> @@ -1564,8 +1572,14 @@ static int pwrap_init_dual_io(struct pmic_wrapper =
+*wrp)
+>
+>         /* Read Test */
+>         read_ok =3D pwrap_pmic_read_test(wrp, wrp->slave->dew_regs, PWRAP=
+_DEW_READ_TEST_VAL);
+> -       if (!read_ok) {
+> -               dev_err(wrp->dev, "Read failed on DIO mode.\n");
+> +       if (wrp->slave->comp_dew_regs)
+> +               comp_read_ok =3D pwrap_pmic_read_test(wrp, wrp->slave->co=
+mp_dew_regs,
+> +                                                   PWRAP_DEW_COMP_READ_T=
+EST_VAL);
+> +       if (!read_ok || !comp_read_ok) {
+> +               dev_err(wrp->dev, "Read failed on DIO mode. Main PMIC %s%=
+s\n",
+> +                       !read_ok ? "fail" : "success",
+> +                       wrp->slave->comp_dew_regs && !comp_read_ok ?
+> +                       ", Companion PMIC fail" : "");
+>                 return -EFAULT;
+>         }
+>
+> @@ -1640,19 +1654,41 @@ static bool pwrap_is_cipher_ready(struct pmic_wra=
+pper *wrp)
+>         return pwrap_readl(wrp, PWRAP_CIPHER_RDY) & 1;
+>  }
+>
+> -static bool pwrap_is_pmic_cipher_ready(struct pmic_wrapper *wrp)
+> +static bool __pwrap_is_pmic_cipher_ready(struct pmic_wrapper *wrp, const=
+ u32 *dew_regs)
+>  {
+>         u32 rdata;
+>         int ret;
+>
+> -       ret =3D pwrap_read(wrp, wrp->slave->dew_regs[PWRAP_DEW_CIPHER_RDY=
+],
+> -                        &rdata);
+> +       ret =3D pwrap_read(wrp, dew_regs[PWRAP_DEW_CIPHER_RDY], &rdata);
+>         if (ret)
+>                 return false;
+>
+>         return rdata =3D=3D 1;
+>  }
+>
+> +
 
-The mt7921 driver already sets bus master enable, but explicitly check
-and set memory access enable as well to fix this problem.
+Remove this extra line please.
 
-Tested-by: Anson Tsao <anson.tsao@amd.com>
-Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
----
-Original patch was submitted ~3 weeks ago with no comments.
-Link: https://lore.kernel.org/all/20230310170002.200-1-mario.limonciello@amd.com/
----
- drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+> +static bool pwrap_is_pmic_cipher_ready(struct pmic_wrapper *wrp)
+> +{
+> +       bool ret =3D __pwrap_is_pmic_cipher_ready(wrp, wrp->slave->dew_re=
+gs);
+> +
+> +       if (!ret)
+> +               return ret;
+> +
+> +       /* If there's any companion, wait for it to be ready too */
+> +       if (wrp->slave->comp_dew_regs)
+> +               ret =3D __pwrap_is_pmic_cipher_ready(wrp, wrp->slave->com=
+p_dew_regs);
+> +
+> +       return ret;
+> +}
+> +
+> +static void pwrap_config_cipher(struct pmic_wrapper *wrp, const u32 *dew=
+_regs)
+> +{
+> +       pwrap_write(wrp, dew_regs[PWRAP_DEW_CIPHER_SWRST], 0x1);
+> +       pwrap_write(wrp, dew_regs[PWRAP_DEW_CIPHER_SWRST], 0x0);
+> +       pwrap_write(wrp, dew_regs[PWRAP_DEW_CIPHER_KEY_SEL], 0x1);
+> +       pwrap_write(wrp, dew_regs[PWRAP_DEW_CIPHER_IV_SEL], 0x2);
+> +}
+> +
+>  static int pwrap_init_cipher(struct pmic_wrapper *wrp)
+>  {
+>         int ret;
+> @@ -1689,10 +1725,11 @@ static int pwrap_init_cipher(struct pmic_wrapper =
+*wrp)
+>         }
+>
+>         /* Config cipher mode @PMIC */
+> -       pwrap_write(wrp, wrp->slave->dew_regs[PWRAP_DEW_CIPHER_SWRST], 0x=
+1);
+> -       pwrap_write(wrp, wrp->slave->dew_regs[PWRAP_DEW_CIPHER_SWRST], 0x=
+0);
+> -       pwrap_write(wrp, wrp->slave->dew_regs[PWRAP_DEW_CIPHER_KEY_SEL], =
+0x1);
+> -       pwrap_write(wrp, wrp->slave->dew_regs[PWRAP_DEW_CIPHER_IV_SEL], 0=
+x2);
+> +       pwrap_config_cipher(wrp, wrp->slave->dew_regs);
+> +
+> +       /* If there is any companion PMIC, configure cipher mode there to=
+o */
+> +       if (wrp->slave->comp_type > 0)
+> +               pwrap_config_cipher(wrp, wrp->slave->comp_dew_regs);
+>
+>         switch (wrp->slave->type) {
+>         case PMIC_MT6397:
+> @@ -1754,6 +1791,7 @@ static int pwrap_init_cipher(struct pmic_wrapper *w=
+rp)
+>
+>  static int pwrap_init_security(struct pmic_wrapper *wrp)
+>  {
+> +       u32 crc_val;
+>         int ret;
+>
+>         /* Enable encryption */
+> @@ -1762,14 +1800,21 @@ static int pwrap_init_security(struct pmic_wrappe=
+r *wrp)
+>                 return ret;
+>
+>         /* Signature checking - using CRC */
+> -       if (pwrap_write(wrp,
+> -                       wrp->slave->dew_regs[PWRAP_DEW_CRC_EN], 0x1))
+> -               return -EFAULT;
+> +       ret =3D pwrap_write(wrp, wrp->slave->dew_regs[PWRAP_DEW_CRC_EN], =
+0x1);
+> +       if (ret =3D=3D 0 && wrp->slave->comp_dew_regs)
+> +               ret =3D pwrap_write(wrp, wrp->slave->comp_dew_regs[PWRAP_=
+DEW_CRC_EN], 0x1);
+>
+>         pwrap_writel(wrp, 0x1, PWRAP_CRC_EN);
+>         pwrap_writel(wrp, 0x0, PWRAP_SIG_MODE);
+> -       pwrap_writel(wrp, wrp->slave->dew_regs[PWRAP_DEW_CRC_VAL],
+> -                    PWRAP_SIG_ADR);
+> +
+> +       /* CRC value */
+> +       crc_val =3D wrp->slave->dew_regs[PWRAP_DEW_CRC_VAL];
+> +       if (wrp->slave->comp_dew_regs)
+> +               crc_val |=3D wrp->slave->comp_dew_regs[PWRAP_DEW_CRC_VAL]=
+ << 16;
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-index cb72ded37256..aa1a427b16c2 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-@@ -263,6 +263,7 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
- 	struct mt76_dev *mdev;
- 	u8 features;
- 	int ret;
-+	u16 cmd;
- 
- 	ret = pcim_enable_device(pdev);
- 	if (ret)
-@@ -272,6 +273,11 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
- 	if (ret)
- 		return ret;
- 
-+	pci_read_config_word(pdev, PCI_COMMAND, &cmd);
-+	if (!(cmd & PCI_COMMAND_MEMORY)) {
-+		cmd |= PCI_COMMAND_MEMORY;
-+		pci_write_config_word(pdev, PCI_COMMAND, cmd);
-+	}
- 	pci_set_master(pdev);
- 
- 	ret = pci_alloc_irq_vectors(pdev, 1, 1, PCI_IRQ_ALL_TYPES);
--- 
-2.34.1
+IMHO, the number 16 should be replaced by a define even if I guess
+it's a simple shift value.
 
+> +
+> +       pwrap_writel(wrp, crc_val, PWRAP_SIG_ADR);
+> +
+> +       /* PMIC Wrapper Arbiter priority */
+>         pwrap_writel(wrp,
+>                      wrp->master->arb_en_all, PWRAP_HIPRIO_ARB_EN);
+>
+> --
+> 2.40.0
+>
+
+Sounds good to me.
+
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+
+Regards,
+Alex
 
