@@ -4,86 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 534EFC74A5B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 15:59:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F4ACC6FD18
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 15:59:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J5wozgmwB4K3uhtLQG0ELPhsGFHRdp3FOmHAQorjhl0=; b=Srd1SqtsnajhvC7M7XfYVmqsQg
-	tfkmabldWpvxofcXPFPm5NHc0fiA+HGEasA53ZZ2MacshxVgzrzGoW1Ixedu4otR82Qqjir/UcDK1
-	lgn+kjgGOTyOQSGlaeF/rKKPh5nA+BIzVaS4FDwTRmG+PglH17mbW8Quseo55wh4+sLCp7FlncQKR
-	Q3ba7ppXESmm4aGDCwe3Txl83w9W8ZO6LLMffVYH42SffFIH98EIamUnUPbb0ke7kDffwwX+zzQQR
-	nLIU4Sh37zseeTJiVMRIJhOd2Dr7YAAJYCLwqig+FeZm2+VzsM6TgW+FkpnxdIRpsmCVM2ckhFwY+
-	0EwVP7fQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=h6DLOLyVTei12nVBBTBCyqkCLmKmFf6CqMJ5KT0rj6c=; b=e4wGOR+Iscg8558cWjisBWNMrN
+	vjXKeJZIZ/vUT48sbNJBQNeHQTRUx/42qkDGOVJin3nAUsOXrJcUCVivcdzERQgrWvw51JArWE9cE
+	Cg7KIafHmXDn7vIK+LSsKfyxMdz8ppOwLnglcOpIuaNDoU5tDSohmVvX0UkpqRQqQl9QBVjaw79zZ
+	XEkFefI60gNPV+B5HfmzJpmX/AfS7WPcwO/Lf2mbkNzFbF8z9ZWrJyTohMWTsISvfubwxXHpgdBh5
+	dHq8jaeCYphbEtYv2KekcDFtzFKk6TYfDfXYucFSsV7pH8FQJEkmJIO8MlYKNs5HYkS6lze90XLCr
+	RM1CRsrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phYD0-000wcp-1P;
-	Wed, 29 Mar 2023 15:59:34 +0000
-Received: from mail-ed1-f53.google.com ([209.85.208.53])
+	id 1phYDF-000wo2-0W;
+	Wed, 29 Mar 2023 15:59:49 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phYCq-000wRa-0R;
-	Wed, 29 Mar 2023 15:59:27 +0000
-Received: by mail-ed1-f53.google.com with SMTP id x3so65243520edb.10;
-        Wed, 29 Mar 2023 08:59:22 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680105561;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=J5wozgmwB4K3uhtLQG0ELPhsGFHRdp3FOmHAQorjhl0=;
-        b=G1NTywqNUd/5aT0t7RDVI8xNW75GrtDhfjpyQoj2P9AEU4raCL5Rj+MQ0aSciZAhaN
-         p2TRryig9aLh/9Z760aCbT5mRaMB4EVjldbYXxhXme1usb3C3ZU3qnXEdCdkOul573ce
-         vkPerL8OmeKSsBWBgvOdnt9B5WbKq47mulf0sxLSPqtlA8yprEqfn0zQXWmBS+P/7D8G
-         Kta5YZQsuTLosmGkGbetYAMSl9/TfaiGpT8BTmwBYokojGMewwHUGRuq4+FZ90onfGiY
-         8yFFvUaE7N5f62Nsm4hln2mvmmzPaGRmWSDifP9qJ0cN9QruG+WzE+xvBKI0/BclX/xs
-         HPvQ==
-X-Gm-Message-State: AAQBX9fVtcuxPpz7tJQqN5J9MATNpBolRSwaeIfrRXQe5bJAelpJieNG
-	3obdhEpwNVB68etW79FKLGeVB/KfWUYchkSrkCc=
-X-Google-Smtp-Source: AKy350aoH0YzB4EGxwWgRtfVzYdwc/jxafoqtAza3yowu+hrkNWR6MYo9KvzVJ1ZAz0kSvIrND9NAtkY2JWrK3waVKA=
-X-Received: by 2002:a50:c34f:0:b0:4fa:71a2:982b with SMTP id
- q15-20020a50c34f000000b004fa71a2982bmr1623255edb.0.1680105560897; Wed, 29 Mar
- 2023 08:59:20 -0700 (PDT)
+	id 1phYD4-000wfR-1Z;
+	Wed, 29 Mar 2023 15:59:46 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1phYD0-0003Qe-2m;
+	Wed, 29 Mar 2023 17:59:36 +0200
+Date: Wed, 29 Mar 2023 16:59:30 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Sam Shih <Sam.Shih@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
+	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>
+Subject: [RFC PATCH net-next v3 10/15] net: dsa: mt7530: introduce separate
+ MDIO driver
+Message-ID: <2bef9ef442261e26d4d933f101f4a25c0f3aad2a.1680105013.git.daniel@makrotopia.org>
+References: <cover.1680105013.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-References: <20230329-dt-cpu-header-cleanups-v1-0-581e2605fe47@kernel.org> <20230329-dt-cpu-header-cleanups-v1-12-581e2605fe47@kernel.org>
-In-Reply-To: <20230329-dt-cpu-header-cleanups-v1-12-581e2605fe47@kernel.org>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Wed, 29 Mar 2023 17:59:09 +0200
-Message-ID: <CAJZ5v0g2g7-M1cuvXNs=t-n6rZD7v=uS_rEPBQtyBBAq1yWJ7w@mail.gmail.com>
-Subject: Re: [PATCH 12/19] thermal: cpuidle_cooling: Adjust includes to remove of_device.h
-To: Rob Herring <robh@kernel.org>
-Cc: "David S. Miller" <davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>, 
-	Frank Rowand <frowand.list@gmail.com>, Russell King <linux@armlinux.org.uk>, 
-	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>, Paul Walmsley <paul.walmsley@sifive.com>, 
-	Palmer Dabbelt <palmer@dabbelt.com>, Albert Ou <aou@eecs.berkeley.edu>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, 
-	Amit Daniel Kachhap <amit.kachhap@gmail.com>, Viresh Kumar <viresh.kumar@linaro.org>, 
-	Lukasz Luba <lukasz.luba@arm.com>, Amit Kucheria <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>, 
-	Christophe Leroy <christophe.leroy@csgroup.eu>, Thierry Reding <thierry.reding@gmail.com>, 
-	Jonathan Hunter <jonathanh@nvidia.com>, Yangtao Li <tiny.windzz@gmail.com>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Sudeep Holla <sudeep.holla@arm.com>, 
-	Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, 
-	Konrad Dybcio <konrad.dybcio@linaro.org>, Anup Patel <anup@brainfault.org>, 
-	Huacai Chen <chenhuacai@kernel.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>, 
-	Marc Zyngier <maz@kernel.org>, Viresh Kumar <vireshk@kernel.org>, Nishanth Menon <nm@ti.com>, 
-	Stephen Boyd <sboyd@kernel.org>, sparclinux@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-sunxi@lists.linux.dev, linux-riscv@lists.infradead.org, 
-	linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linuxppc-dev@lists.ozlabs.org, linux-tegra@vger.kernel.org, 
-	linux-arm-msm@vger.kernel.org, linux-mips@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1680105013.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230329_085924_195981_2E65B0AE 
-X-CRM114-Status: GOOD (  17.11  )
+X-CRM114-CacheID: sfid-20230329_085938_860083_EE8A3628 
+X-CRM114-Status: GOOD (  29.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,46 +75,646 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 29, 2023 at 5:53=E2=80=AFPM Rob Herring <robh@kernel.org> wrote=
-:
->
-> Now that of_cpu_device_node_get() is defined in of.h, of_device.h is just
-> implicitly including other includes, and is no longer needed. Adjust the
-> include files with what was implicitly included by of_device.h (cpu.h and
-> of.h) and drop including of_device.h.
->
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
-> Please ack and I will take the series via the DT tree.
+Split MT7530 switch driver into a common part and a part specific
+for MDIO connected switches and multi-chip modules.
+Move MDIO-specific functions to newly introduced mt7530-mdio.c while
+keeping the common parts in mt7530.c.
+In order to maintain compatibility with existing kernel configurations
+keep CONFIG_NET_DSA_MT7530 as symbol to select the MDIO-specific driver
+while the newly introduced hidden symbol CONFIG_NET_DSA_MT7530_COMMON
+is selected by CONFIG_NET_DSA_MT7530.
 
-Acked-by: Rafael J. Wysocki <rafael@kernel.org>
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ MAINTAINERS                   |   1 +
+ drivers/net/dsa/Kconfig       |  16 ++-
+ drivers/net/dsa/Makefile      |   3 +-
+ drivers/net/dsa/mt7530-mdio.c | 242 ++++++++++++++++++++++++++++++++++
+ drivers/net/dsa/mt7530.c      | 235 ++-------------------------------
+ drivers/net/dsa/mt7530.h      |   6 +
+ 6 files changed, 271 insertions(+), 232 deletions(-)
+ create mode 100644 drivers/net/dsa/mt7530-mdio.c
 
-> ---
->  drivers/thermal/cpuidle_cooling.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/thermal/cpuidle_cooling.c b/drivers/thermal/cpuidle_=
-cooling.c
-> index 4f41102e8b16..6f6daead485e 100644
-> --- a/drivers/thermal/cpuidle_cooling.c
-> +++ b/drivers/thermal/cpuidle_cooling.c
-> @@ -7,12 +7,13 @@
->   */
->  #define pr_fmt(fmt) "cpuidle cooling: " fmt
->
-> +#include <linux/cpu.h>
->  #include <linux/cpu_cooling.h>
->  #include <linux/cpuidle.h>
->  #include <linux/device.h>
->  #include <linux/err.h>
->  #include <linux/idle_inject.h>
-> -#include <linux/of_device.h>
-> +#include <linux/of.h>
->  #include <linux/slab.h>
->  #include <linux/thermal.h>
->
->
-> --
-> 2.39.2
->
+diff --git a/MAINTAINERS b/MAINTAINERS
+index fbbda4671e734..7feb52d9ae0b9 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -13176,6 +13176,7 @@ M:	Landen Chao <Landen.Chao@mediatek.com>
+ M:	DENG Qingfang <dqfext@gmail.com>
+ L:	netdev@vger.kernel.org
+ S:	Maintained
++F:	drivers/net/dsa/mt7530-mdio.c
+ F:	drivers/net/dsa/mt7530.*
+ F:	net/dsa/tag_mtk.c
+ 
+diff --git a/drivers/net/dsa/Kconfig b/drivers/net/dsa/Kconfig
+index 6b45fa8b69078..c2551b13324c2 100644
+--- a/drivers/net/dsa/Kconfig
++++ b/drivers/net/dsa/Kconfig
+@@ -34,15 +34,23 @@ config NET_DSA_LANTIQ_GSWIP
+ 	  This enables support for the Lantiq / Intel GSWIP 2.1 found in
+ 	  the xrx200 / VR9 SoC.
+ 
+-config NET_DSA_MT7530
+-	tristate "MediaTek MT7530 and MT7531 Ethernet switch support"
++config NET_DSA_MT7530_COMMON
++	tristate
+ 	select NET_DSA_TAG_MTK
+ 	select MEDIATEK_GE_PHY
++	help
++	  This enables support for the common parts of MediaTek Ethernet
++	  switch chips.
++
++config NET_DSA_MT7530
++	tristate "MediaTek MT7530 and MT7531 Ethernet switch support"
++	select NET_DSA_MT7530_COMMON
+ 	select PCS_MTK_LYNXI
+ 	help
+ 	  This enables support for the MediaTek MT7530 and MT7531 Ethernet
+-	  switch chips. Multi-chip module MT7530 in MT7621AT, MT7621DAT,
+-	  MT7621ST and MT7623AI SoCs is supported.
++	  switch chips which are connected via MDIO.
++	  Multi-chip module MT7530 in MT7621AT, MT7621DAT, MT7621ST and
++	  MT7623AI SoCs is supported as well.
+ 
+ config NET_DSA_MV88E6060
+ 	tristate "Marvell 88E6060 ethernet switch chip support"
+diff --git a/drivers/net/dsa/Makefile b/drivers/net/dsa/Makefile
+index 16eb879e0cb4d..71250d7dd41af 100644
+--- a/drivers/net/dsa/Makefile
++++ b/drivers/net/dsa/Makefile
+@@ -6,7 +6,8 @@ ifdef CONFIG_NET_DSA_LOOP
+ obj-$(CONFIG_FIXED_PHY)		+= dsa_loop_bdinfo.o
+ endif
+ obj-$(CONFIG_NET_DSA_LANTIQ_GSWIP) += lantiq_gswip.o
+-obj-$(CONFIG_NET_DSA_MT7530)	+= mt7530.o
++obj-$(CONFIG_NET_DSA_MT7530_COMMON) += mt7530.o
++obj-$(CONFIG_NET_DSA_MT7530)	+= mt7530-mdio.o
+ obj-$(CONFIG_NET_DSA_MV88E6060) += mv88e6060.o
+ obj-$(CONFIG_NET_DSA_RZN1_A5PSW) += rzn1_a5psw.o
+ obj-$(CONFIG_NET_DSA_SMSC_LAN9303) += lan9303-core.o
+diff --git a/drivers/net/dsa/mt7530-mdio.c b/drivers/net/dsa/mt7530-mdio.c
+new file mode 100644
+index 0000000000000..2b1757e585cf1
+--- /dev/null
++++ b/drivers/net/dsa/mt7530-mdio.c
+@@ -0,0 +1,242 @@
++// SPDX-License-Identifier: GPL-2.0-only
++
++#include <linux/gpio/consumer.h>
++#include <linux/mdio.h>
++#include <linux/module.h>
++#include <linux/pcs/pcs-mtk-lynxi.h>
++#include <linux/of_irq.h>
++#include <linux/of_mdio.h>
++#include <linux/of_net.h>
++#include <linux/of_platform.h>
++#include <linux/regmap.h>
++#include <linux/regulator/consumer.h>
++#include <net/dsa.h>
++
++#include "mt7530.h"
++
++static int
++mt7530_regmap_write(void *context, unsigned int reg, unsigned int val)
++{
++	struct mii_bus *bus = context;
++	u16 page, r, lo, hi;
++	int ret;
++
++	page = (reg >> 6) & 0x3ff;
++	r  = (reg >> 2) & 0xf;
++	lo = val & 0xffff;
++	hi = val >> 16;
++
++	/* MT7530 uses 31 as the pseudo port */
++	ret = bus->write(bus, 0x1f, 0x1f, page);
++	if (ret < 0)
++		return ret;
++
++	ret = bus->write(bus, 0x1f, r,  lo);
++	if (ret < 0)
++		return ret;
++
++	ret = bus->write(bus, 0x1f, 0x10, hi);
++	return ret;
++}
++
++static int
++mt7530_regmap_read(void *context, unsigned int reg, unsigned int *val)
++{
++	struct mii_bus *bus = context;
++	u16 page, r, lo, hi;
++	int ret;
++
++	page = (reg >> 6) & 0x3ff;
++	r = (reg >> 2) & 0xf;
++
++	/* MT7530 uses 31 as the pseudo port */
++	ret = bus->write(bus, 0x1f, 0x1f, page);
++	if (ret < 0)
++		return ret;
++
++	lo = bus->read(bus, 0x1f, r);
++	hi = bus->read(bus, 0x1f, 0x10);
++
++	*val = (hi << 16) | (lo & 0xffff);
++
++	return 0;
++}
++
++static void
++mt7530_mdio_regmap_lock(void *mdio_lock)
++{
++	mutex_lock_nested(mdio_lock, MDIO_MUTEX_NESTED);
++}
++
++static void
++mt7530_mdio_regmap_unlock(void *mdio_lock)
++{
++	mutex_unlock(mdio_lock);
++}
++
++static const struct regmap_bus mt7530_regmap_bus = {
++	.reg_write = mt7530_regmap_write,
++	.reg_read = mt7530_regmap_read,
++};
++
++static int
++mt7531_create_sgmii(struct mt7530_priv *priv)
++{
++	struct regmap_config *mt7531_pcs_config[2];
++	struct phylink_pcs *pcs;
++	struct regmap *regmap;
++	int i, ret = 0;
++
++	for (i = 0; i < 2; i++) {
++		mt7531_pcs_config[i] = devm_kzalloc(priv->dev,
++						    sizeof(struct regmap_config),
++						    GFP_KERNEL);
++		if (!mt7531_pcs_config[i]) {
++			ret = -ENOMEM;
++			break;
++		}
++
++		mt7531_pcs_config[i]->name = i ? "port6" : "port5";
++		mt7531_pcs_config[i]->reg_bits = 16;
++		mt7531_pcs_config[i]->val_bits = 32;
++		mt7531_pcs_config[i]->reg_stride = 4;
++		mt7531_pcs_config[i]->reg_base = MT7531_SGMII_REG_BASE(5 + i);
++		mt7531_pcs_config[i]->max_register = 0x17c;
++		mt7531_pcs_config[i]->lock = mt7530_mdio_regmap_lock;
++		mt7531_pcs_config[i]->unlock = mt7530_mdio_regmap_unlock;
++		mt7531_pcs_config[i]->lock_arg = &priv->bus->mdio_lock;
++
++		regmap = devm_regmap_init(priv->dev,
++					  &mt7530_regmap_bus, priv->bus,
++					  mt7531_pcs_config[i]);
++		if (IS_ERR(regmap)) {
++			ret = PTR_ERR(regmap);
++			break;
++		}
++		pcs = mtk_pcs_lynxi_create(priv->dev, regmap,
++					   MT7531_PHYA_CTRL_SIGNAL3, 0);
++		if (!pcs) {
++			ret = -ENXIO;
++			break;
++		}
++		priv->ports[5 + i].sgmii_pcs = pcs;
++	}
++
++	if (ret && i)
++		mtk_pcs_lynxi_destroy(priv->ports[5].sgmii_pcs);
++
++	return ret;
++}
++
++static const struct of_device_id mt7530_of_match[] = {
++	{ .compatible = "mediatek,mt7621", .data = &mt753x_table[ID_MT7621], },
++	{ .compatible = "mediatek,mt7530", .data = &mt753x_table[ID_MT7530], },
++	{ .compatible = "mediatek,mt7531", .data = &mt753x_table[ID_MT7531], },
++	{ /* sentinel */ },
++};
++MODULE_DEVICE_TABLE(of, mt7530_of_match);
++
++static int
++mt7530_probe(struct mdio_device *mdiodev)
++{
++	static struct regmap_config *regmap_config;
++	struct mt7530_priv *priv;
++	int ret;
++
++	priv = devm_kzalloc(&mdiodev->dev, sizeof(*priv), GFP_KERNEL);
++	if (!priv)
++		return -ENOMEM;
++
++	priv->bus = mdiodev->bus;
++	priv->dev = &mdiodev->dev;
++
++	ret = mt7530_probe_common(priv);
++	if (ret)
++		return ret;
++
++	if (priv->id == ID_MT7530) {
++		priv->core_pwr = devm_regulator_get(&mdiodev->dev, "core");
++		if (IS_ERR(priv->core_pwr))
++			return PTR_ERR(priv->core_pwr);
++
++		priv->io_pwr = devm_regulator_get(&mdiodev->dev, "io");
++		if (IS_ERR(priv->io_pwr))
++			return PTR_ERR(priv->io_pwr);
++	}
++
++	regmap_config = devm_kzalloc(&mdiodev->dev, sizeof(*regmap_config),
++				     GFP_KERNEL);
++	if (!regmap_config)
++		return -ENOMEM;
++
++	regmap_config->reg_bits = 16;
++	regmap_config->val_bits = 32;
++	regmap_config->reg_stride = 4;
++	regmap_config->max_register = MT7530_CREV;
++	regmap_config->disable_locking = true;
++	priv->regmap = devm_regmap_init(priv->dev, &mt7530_regmap_bus,
++					priv->bus, regmap_config);
++	if (IS_ERR(priv->regmap))
++		return PTR_ERR(priv->regmap);
++
++	if (priv->id == ID_MT7531) {
++		ret = mt7531_create_sgmii(priv);
++		if (ret)
++			return ret;
++	}
++
++	return dsa_register_switch(priv->ds);
++}
++
++static void
++mt7530_remove(struct mdio_device *mdiodev)
++{
++	struct mt7530_priv *priv = dev_get_drvdata(&mdiodev->dev);
++	int ret = 0, i;
++
++	if (!priv)
++		return;
++
++	ret = regulator_disable(priv->core_pwr);
++	if (ret < 0)
++		dev_err(priv->dev,
++			"Failed to disable core power: %d\n", ret);
++
++	ret = regulator_disable(priv->io_pwr);
++	if (ret < 0)
++		dev_err(priv->dev, "Failed to disable io pwr: %d\n",
++			ret);
++
++	mt7530_remove_common(priv);
++
++	for (i = 0; i < 2; ++i)
++		mtk_pcs_lynxi_destroy(priv->ports[5 + i].sgmii_pcs);
++}
++
++static void mt7530_shutdown(struct mdio_device *mdiodev)
++{
++	struct mt7530_priv *priv = dev_get_drvdata(&mdiodev->dev);
++
++	if (!priv)
++		return;
++
++	dsa_switch_shutdown(priv->ds);
++
++	dev_set_drvdata(&mdiodev->dev, NULL);
++}
++
++static struct mdio_driver mt7530_mdio_driver = {
++	.probe  = mt7530_probe,
++	.remove = mt7530_remove,
++	.shutdown = mt7530_shutdown,
++	.mdiodrv.driver = {
++		.name = "mt7530",
++		.of_match_table = mt7530_of_match,
++	},
++};
++
++mdio_module_driver(mt7530_mdio_driver);
++
++MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
++MODULE_DESCRIPTION("Driver for Mediatek MT7530 Switch (MDIO)");
++MODULE_LICENSE("GPL");
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index c9b6b11273683..ce2665abaaf57 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -191,31 +191,6 @@ core_clear(struct mt7530_priv *priv, u32 reg, u32 val)
+ 	core_rmw(priv, reg, val, 0);
+ }
+ 
+-static int
+-mt7530_regmap_write(void *context, unsigned int reg, unsigned int val)
+-{
+-	struct mii_bus *bus = context;
+-	u16 page, r, lo, hi;
+-	int ret;
+-
+-	page = (reg >> 6) & 0x3ff;
+-	r  = (reg >> 2) & 0xf;
+-	lo = val & 0xffff;
+-	hi = val >> 16;
+-
+-	/* MT7530 uses 31 as the pseudo port */
+-	ret = bus->write(bus, 0x1f, 0x1f, page);
+-	if (ret < 0)
+-		return ret;
+-
+-	ret = bus->write(bus, 0x1f, r,  lo);
+-	if (ret < 0)
+-		return ret;
+-
+-	ret = bus->write(bus, 0x1f, 0x10, hi);
+-	return ret;
+-}
+-
+ static int
+ mt7530_mii_write(struct mt7530_priv *priv, u32 reg, u32 val)
+ {
+@@ -229,29 +204,6 @@ mt7530_mii_write(struct mt7530_priv *priv, u32 reg, u32 val)
+ 	return ret;
+ }
+ 
+-static int
+-mt7530_regmap_read(void *context, unsigned int reg, unsigned int *val)
+-{
+-	struct mii_bus *bus = context;
+-	u16 page, r, lo, hi;
+-	int ret;
+-
+-	page = (reg >> 6) & 0x3ff;
+-	r = (reg >> 2) & 0xf;
+-
+-	/* MT7530 uses 31 as the pseudo port */
+-	ret = bus->write(bus, 0x1f, 0x1f, page);
+-	if (ret < 0)
+-		return ret;
+-
+-	lo = bus->read(bus, 0x1f, r);
+-	hi = bus->read(bus, 0x1f, 0x10);
+-
+-	*val = (hi << 16) | (lo & 0xffff);
+-
+-	return 0;
+-}
+-
+ static u32
+ mt7530_mii_read(struct mt7530_priv *priv, u32 reg)
+ {
+@@ -2948,72 +2900,6 @@ static const struct phylink_pcs_ops mt7530_pcs_ops = {
+ 	.pcs_an_restart = mt7530_pcs_an_restart,
+ };
+ 
+-static void
+-mt7530_mdio_regmap_lock(void *mdio_lock)
+-{
+-	mutex_lock_nested(mdio_lock, MDIO_MUTEX_NESTED);
+-}
+-
+-static void
+-mt7530_mdio_regmap_unlock(void *mdio_lock)
+-{
+-	mutex_unlock(mdio_lock);
+-}
+-
+-static const struct regmap_bus mt7530_regmap_bus = {
+-	.reg_write = mt7530_regmap_write,
+-	.reg_read = mt7530_regmap_read,
+-};
+-
+-static int
+-mt7531_create_sgmii(struct mt7530_priv *priv)
+-{
+-	struct regmap_config *mt7531_pcs_config[2];
+-	struct phylink_pcs *pcs;
+-	struct regmap *regmap;
+-	int i, ret = 0;
+-
+-	for (i = 0; i < 2; i++) {
+-		mt7531_pcs_config[i] = devm_kzalloc(priv->dev,
+-						    sizeof(struct regmap_config),
+-						    GFP_KERNEL);
+-		if (!mt7531_pcs_config[i]) {
+-			ret = -ENOMEM;
+-			break;
+-		}
+-
+-		mt7531_pcs_config[i]->name = i ? "port6" : "port5";
+-		mt7531_pcs_config[i]->reg_bits = 16;
+-		mt7531_pcs_config[i]->val_bits = 32;
+-		mt7531_pcs_config[i]->reg_stride = 4;
+-		mt7531_pcs_config[i]->reg_base = MT7531_SGMII_REG_BASE(5 + i);
+-		mt7531_pcs_config[i]->max_register = 0x17c;
+-		mt7531_pcs_config[i]->lock = mt7530_mdio_regmap_lock;
+-		mt7531_pcs_config[i]->unlock = mt7530_mdio_regmap_unlock;
+-		mt7531_pcs_config[i]->lock_arg = &priv->bus->mdio_lock;
+-
+-		regmap = devm_regmap_init(priv->dev,
+-					  &mt7530_regmap_bus, priv->bus,
+-					  mt7531_pcs_config[i]);
+-		if (IS_ERR(regmap)) {
+-			ret = PTR_ERR(regmap);
+-			break;
+-		}
+-		pcs = mtk_pcs_lynxi_create(priv->dev, regmap,
+-					   MT7531_PHYA_CTRL_SIGNAL3, 0);
+-		if (!pcs) {
+-			ret = -ENXIO;
+-			break;
+-		}
+-		priv->ports[5 + i].sgmii_pcs = pcs;
+-	}
+-
+-	if (ret && i)
+-		mtk_pcs_lynxi_destroy(priv->ports[5].sgmii_pcs);
+-
+-	return ret;
+-}
+-
+ static int
+ mt753x_setup(struct dsa_switch *ds)
+ {
+@@ -3072,7 +2958,7 @@ static int mt753x_set_mac_eee(struct dsa_switch *ds, int port,
+ 	return 0;
+ }
+ 
+-static const struct dsa_switch_ops mt7530_switch_ops = {
++const struct dsa_switch_ops mt7530_switch_ops = {
+ 	.get_tag_protocol	= mtk_get_tag_protocol,
+ 	.setup			= mt753x_setup,
+ 	.get_strings		= mt7530_get_strings,
+@@ -3106,8 +2992,9 @@ static const struct dsa_switch_ops mt7530_switch_ops = {
+ 	.get_mac_eee		= mt753x_get_mac_eee,
+ 	.set_mac_eee		= mt753x_set_mac_eee,
+ };
++EXPORT_SYMBOL_GPL(mt7530_switch_ops);
+ 
+-static const struct mt753x_info mt753x_table[] = {
++const struct mt753x_info mt753x_table[] = {
+ 	[ID_MT7621] = {
+ 		.id = ID_MT7621,
+ 		.pcs_ops = &mt7530_pcs_ops,
+@@ -3146,16 +3033,9 @@ static const struct mt753x_info mt753x_table[] = {
+ 		.mac_port_config = mt7531_mac_config,
+ 	},
+ };
++EXPORT_SYMBOL_GPL(mt753x_table);
+ 
+-static const struct of_device_id mt7530_of_match[] = {
+-	{ .compatible = "mediatek,mt7621", .data = &mt753x_table[ID_MT7621], },
+-	{ .compatible = "mediatek,mt7530", .data = &mt753x_table[ID_MT7530], },
+-	{ .compatible = "mediatek,mt7531", .data = &mt753x_table[ID_MT7531], },
+-	{ /* sentinel */ },
+-};
+-MODULE_DEVICE_TABLE(of, mt7530_of_match);
+-
+-static int
++int
+ mt7530_probe_common(struct mt7530_priv *priv)
+ {
+ 	struct device *dev = priv->dev;
+@@ -3218,60 +3098,9 @@ mt7530_probe_common(struct mt7530_priv *priv)
+ 
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(mt7530_probe_common);
+ 
+-static int
+-mt7530_probe(struct mdio_device *mdiodev)
+-{
+-	static struct regmap_config *regmap_config;
+-	struct mt7530_priv *priv;
+-	int ret;
+-
+-	priv = devm_kzalloc(&mdiodev->dev, sizeof(*priv), GFP_KERNEL);
+-	if (!priv)
+-		return -ENOMEM;
+-
+-	priv->bus = mdiodev->bus;
+-	priv->dev = &mdiodev->dev;
+-
+-	ret = mt7530_probe_common(priv);
+-	if (ret)
+-		return ret;
+-
+-	if (priv->id == ID_MT7530) {
+-		priv->core_pwr = devm_regulator_get(&mdiodev->dev, "core");
+-		if (IS_ERR(priv->core_pwr))
+-			return PTR_ERR(priv->core_pwr);
+-
+-		priv->io_pwr = devm_regulator_get(&mdiodev->dev, "io");
+-		if (IS_ERR(priv->io_pwr))
+-			return PTR_ERR(priv->io_pwr);
+-	}
+-
+-	regmap_config = devm_kzalloc(&mdiodev->dev, sizeof(*regmap_config),
+-				     GFP_KERNEL);
+-	if (!regmap_config)
+-		return -ENOMEM;
+-
+-	regmap_config->reg_bits = 16;
+-	regmap_config->val_bits = 32;
+-	regmap_config->reg_stride = 4;
+-	regmap_config->max_register = MT7530_CREV;
+-	regmap_config->disable_locking = true;
+-	priv->regmap = devm_regmap_init(priv->dev, &mt7530_regmap_bus,
+-					priv->bus, regmap_config);
+-	if (IS_ERR(priv->regmap))
+-		return PTR_ERR(priv->regmap);
+-
+-	if (priv->id == ID_MT7531) {
+-		ret = mt7531_create_sgmii(priv);
+-		if (ret)
+-			return ret;
+-	}
+-
+-	return dsa_register_switch(priv->ds);
+-}
+-
+-static void
++void
+ mt7530_remove_common(struct mt7530_priv *priv)
+ {
+ 	if (priv->irq)
+@@ -3281,55 +3110,7 @@ mt7530_remove_common(struct mt7530_priv *priv)
+ 
+ 	mutex_destroy(&priv->reg_mutex);
+ }
+-
+-static void
+-mt7530_remove(struct mdio_device *mdiodev)
+-{
+-	struct mt7530_priv *priv = dev_get_drvdata(&mdiodev->dev);
+-	int ret = 0, i;
+-
+-	if (!priv)
+-		return;
+-
+-	ret = regulator_disable(priv->core_pwr);
+-	if (ret < 0)
+-		dev_err(priv->dev,
+-			"Failed to disable core power: %d\n", ret);
+-
+-	ret = regulator_disable(priv->io_pwr);
+-	if (ret < 0)
+-		dev_err(priv->dev, "Failed to disable io pwr: %d\n",
+-			ret);
+-
+-	mt7530_remove_common(priv);
+-
+-	for (i = 0; i < 2; ++i)
+-		mtk_pcs_lynxi_destroy(priv->ports[5 + i].sgmii_pcs);
+-}
+-
+-static void mt7530_shutdown(struct mdio_device *mdiodev)
+-{
+-	struct mt7530_priv *priv = dev_get_drvdata(&mdiodev->dev);
+-
+-	if (!priv)
+-		return;
+-
+-	dsa_switch_shutdown(priv->ds);
+-
+-	dev_set_drvdata(&mdiodev->dev, NULL);
+-}
+-
+-static struct mdio_driver mt7530_mdio_driver = {
+-	.probe  = mt7530_probe,
+-	.remove = mt7530_remove,
+-	.shutdown = mt7530_shutdown,
+-	.mdiodrv.driver = {
+-		.name = "mt7530",
+-		.of_match_table = mt7530_of_match,
+-	},
+-};
+-
+-mdio_module_driver(mt7530_mdio_driver);
++EXPORT_SYMBOL_GPL(mt7530_remove_common);
+ 
+ MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
+ MODULE_DESCRIPTION("Driver for Mediatek MT7530 Switch");
+diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+index 2a611173a7d08..ce02aa592a7a8 100644
+--- a/drivers/net/dsa/mt7530.h
++++ b/drivers/net/dsa/mt7530.h
+@@ -814,4 +814,10 @@ static inline void INIT_MT7530_DUMMY_POLL(struct mt7530_dummy_poll *p,
+ 	p->reg = reg;
+ }
+ 
++int mt7530_probe_common(struct mt7530_priv *priv);
++void mt7530_remove_common(struct mt7530_priv *priv);
++
++extern const struct dsa_switch_ops mt7530_switch_ops;
++extern const struct mt753x_info mt753x_table[];
++
+ #endif /* __MT7530_H */
+-- 
+2.39.2
+
 
