@@ -4,89 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83CBFC6FD18
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 18:17:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14B37C6FD18
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 18:33:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1yPU9Gf6tx8IjMT5fd+h/utAzdqzo/AX09XEfg+ltJM=; b=hNoBJyzvwiIBPc2OnPk+NY25/P
-	HEFXfh+7yWU1bGoHKz8MV4HAD52hZ1FqBK3lVIl8V73Nmw28fwrObDFm5C3uKNScES/YvBnFE8LqF
-	rKO6oz/dxLqq0MypIU3frIONzfJx2KjrbER7tZuNYvSg2XmUxJBHmUwSkvwpgG8VQ2rD7xzsjrgap
-	lV0Lk8JMlPyJIkuwxh4VEqsyK1Y2RBeaHTj9y0+JcntCYoxpwEj+UHQGwXbrH2SPUKf11sKS6CH3o
-	8yxpBJQm6aIpgRTC13zVcDI6MwRmiF/Vxt0pMgcJY3njGQAXHzqzgKgvb0WguK2DuAHBhESjub0W7
-	rzI0cDfg==;
+	bh=cy2q+ft8CWmc/ApbDiy2CQxwBS77iZbrmWNYZinhU4Q=; b=sWJg7Vv6quIN0jWAD4mxTvmJwa
+	LnI1sUaNk7IH3OUvwr+gD0+jZl80iKWhuZBi+51OeafqznOCi+j73+Q/RdCgs0xiHvx9IFfMhazJ8
+	sholN+wFqbWa8HbZMoJmZHl74kq2rSwdYclAaiKOl2bPwyi9T2lGvoEblI3jrbAr47EaXoAhTnToN
+	PhXcuZecGAHIJCVUhZ7ecTL3+Twd93WjukdKotM5jaejCrf/sjU90fupGLBXn0aUIcwAYrH7r3e+D
+	EOh98H4/BYQcjZcgycOVF/cNM3rRHFw1I5KjCRFUzR+Vcr69LB5wGyTCz9j9nIFa+jPQpOel2gaiS
+	FLY8N31Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phaMp-001RfI-1U;
-	Wed, 29 Mar 2023 18:17:51 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phaMm-001Re4-0B;
-	Wed, 29 Mar 2023 18:17:49 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id DDC9912FC;
-	Wed, 29 Mar 2023 11:18:30 -0700 (PDT)
-Received: from bogus (unknown [10.57.52.160])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 158D23F6C4;
-	Wed, 29 Mar 2023 11:17:36 -0700 (PDT)
-Date: Wed, 29 Mar 2023 19:17:02 +0100
-From: Sudeep Holla <sudeep.holla@arm.com>
-To: Rob Herring <robh@kernel.org>
-Cc: "David S. Miller" <davem@davemloft.net>,
-	Rob Herring <robh+dt@kernel.org>,
-	Frank Rowand <frowand.list@gmail.com>,
-	Russell King <linux@armlinux.org.uk>, Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Albert Ou <aou@eecs.berkeley.edu>,
-	Sudeep Holla <sudeep.holla@arm.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	Amit Daniel Kachhap <amit.kachhap@gmail.com>,
-	Viresh Kumar <viresh.kumar@linaro.org>,
-	Lukasz Luba <lukasz.luba@arm.com>, Amit Kucheria <amitk@kernel.org>,
-	Zhang Rui <rui.zhang@intel.com>,
+	id 1phac5-001Tig-2v;
+	Wed, 29 Mar 2023 18:33:37 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1phac3-001Th4-0F;
+	Wed, 29 Mar 2023 18:33:36 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1phabr-0005LO-05;
+	Wed, 29 Mar 2023 20:33:23 +0200
+Date: Wed, 29 Mar 2023 19:33:17 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Michael Ellerman <mpe@ellerman.id.au>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Christophe Leroy <christophe.leroy@csgroup.eu>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Yangtao Li <tiny.windzz@gmail.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Anup Patel <anup@brainfault.org>,
-	Huacai Chen <chenhuacai@kernel.org>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Marc Zyngier <maz@kernel.org>, Viresh Kumar <vireshk@kernel.org>,
-	Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>,
-	sparclinux@vger.kernel.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-sunxi@lists.linux.dev, linux-riscv@lists.infradead.org,
-	linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linuxppc-dev@lists.ozlabs.org, linux-tegra@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org, linux-mips@vger.kernel.org
-Subject: Re: [PATCH 16/19] cpuidle: Adjust includes to remove of_device.h
-Message-ID: <20230329181702.x5u562himerwolfg@bogus>
-References: <20230329-dt-cpu-header-cleanups-v1-0-581e2605fe47@kernel.org>
- <20230329-dt-cpu-header-cleanups-v1-16-581e2605fe47@kernel.org>
+	Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Sam Shih <Sam.Shih@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>
+Subject: Re: [RFC PATCH net-next v3 03/15] net: dsa: mt7530: use regmap to
+ access switch register space
+Message-ID: <ZCSEbUt9kj8Ta6Yc@makrotopia.org>
+References: <cover.1680105013.git.daniel@makrotopia.org>
+ <754322262cd754aee5916954b8e651989b229a09.1680105013.git.daniel@makrotopia.org>
+ <7eb07ed2-2b1c-44fa-b029-0ecad7872fd2@lunn.ch>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230329-dt-cpu-header-cleanups-v1-16-581e2605fe47@kernel.org>
+In-Reply-To: <7eb07ed2-2b1c-44fa-b029-0ecad7872fd2@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230329_111748_184557_CD677E92 
-X-CRM114-Status: GOOD (  16.96  )
+X-CRM114-CacheID: sfid-20230329_113335_109121_80F299C5 
+X-CRM114-Status: GOOD (  15.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,38 +78,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 29, 2023 at 10:52:13AM -0500, Rob Herring wrote:
-> Now that of_cpu_device_node_get() is defined in of.h, of_device.h is just
-> implicitly including other includes, and is no longer needed. Adjust the
-> include files with what was implicitly included by of_device.h (cpu.h,
-> cpuhotplug.h, of.h, and of_platform.h) and drop including of_device.h.
+On Wed, Mar 29, 2023 at 06:24:21PM +0200, Andrew Lunn wrote:
+> Thanks for splitting this patchset up. This is much easier to review.
 > 
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
-> Please ack and I will take the series via the DT tree.
-> ---
->  drivers/cpuidle/cpuidle-psci.c      | 1 -
->  drivers/cpuidle/cpuidle-qcom-spm.c  | 3 +--
->  drivers/cpuidle/cpuidle-riscv-sbi.c | 2 +-
->  drivers/cpuidle/dt_idle_states.c    | 1 -
->  4 files changed, 2 insertions(+), 5 deletions(-)
+> > +static u32
+> > +mt7530_mii_read(struct mt7530_priv *priv, u32 reg)
+> > +{
+> > +	int ret;
+> > +	u32 val;
+> > +
+> > +	ret = regmap_read(priv->regmap, reg, &val);
+> > +	if (ret) {
+> > +		dev_err(priv->dev,
+> > +			"failed to read mt7530 register\n");
+> > +		return ret;
 > 
-> diff --git a/drivers/cpuidle/cpuidle-psci.c b/drivers/cpuidle/cpuidle-psci.c
-> index 6de027f9f6f5..bf68920d038a 100644
-> --- a/drivers/cpuidle/cpuidle-psci.c
-> +++ b/drivers/cpuidle/cpuidle-psci.c
-> @@ -16,7 +16,6 @@
->  #include <linux/kernel.h>
->  #include <linux/module.h>
->  #include <linux/of.h>
-> -#include <linux/of_device.h>
->  #include <linux/platform_device.h>
->  #include <linux/psci.h>
->  #include <linux/pm_domain.h>
+> This is a u32 function. ret should be negative on error, which is
+> going to be turned positive in order to return a u32. So you probably
+> want to make this an int function.
 
-Acked-by: Sudeep Holla <sudeep.holla@arm.com>
+This is a pre-existing flaw in the code. As we are accessing 32-bit
+registers there has just never been any meaningful error handling.
+I guess the correct solution would be to not use the return value only
+to indicate success or error, and use an additional u32* parameter for
+the read value.
 
--- 
-Regards,
-Sudeep
+However, I was hestitating to convert all the calls (they are many) to
+follow that improved paradigm.
+
+Should I?
 
