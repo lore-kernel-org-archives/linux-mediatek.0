@@ -4,56 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE84DC74A5B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 13:29:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADB4CC6FD18
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 13:30:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rDyK5ZmjN502fKG9aJq0pOopXAyTHkk+WjLgxahMmfI=; b=kKx7Ec7zjstp34nUAqn7bxedRP
-	WF9q572+yqdJJ6zfWgZTK8VY75TisTD6IAXGeN7a6t6j3OdR4iIuBfO63TNW8l3BeN8UHGs2I54LS
-	xq2yVvatGwCjRmfHuCjzSvdA/Y1k9t1M/KRGYCMNJ3qFCkRQDdV/1rgDUvia37jmbGvseJpKbMcca
-	LRDGRuDQ3LMqKIQrplDjwYdojxkEm2bn/N/QlB2rawZiMeszuRf4mKfJyEdXwPjfrIoRPtun+FIAZ
-	obcFBlyT6hNPbUbITT/EhfNymQFqb9wFS0j0mF0G182xObuSoDsKw2kLxWYZKEFh61YDknJBXdu75
-	b8rbX9xA==;
+	bh=5ZArf/KEBhCl4uF4GSqJ6He5uaQeHSjZWQF+06G3ZX4=; b=kTfPjC5l3GWiQjvDhl9MuFL/IH
+	fnVDJ4UVGm3li35XnP2UuvSTDHAeU7mbCopXNWJRzp/DcGA/SHSlggaWQbwUD6yHvPawxVylaVgn/
+	oTUeX05jG7cdpKW6XzMIhjmRKuBhlCQ2u12uGYjGDaRI3XTykuyar7RePEnw/+AAVcGPfJHjXVeEa
+	DKgZRWy4YzXuCf6u9rcQOlBNcsDUghqbPoheqW2Y8ClMR1OGvOLdqUGOC5fbMUUoX4V4vuencrKuD
+	9yAd6gZ06NgQParPAB/2uAlsaqP2Umvc/4d6C5+ylZT/hzmm7P839KrZ83XSwiF6BGd1R6a1bXN1u
+	KpVERFkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phVrL-000P6V-0E;
-	Wed, 29 Mar 2023 13:29:03 +0000
+	id 1phVsC-000PPf-17;
+	Wed, 29 Mar 2023 13:29:56 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phVrG-000P3z-19;
-	Wed, 29 Mar 2023 13:28:59 +0000
+	id 1phVs5-000PMm-1M;
+	Wed, 29 Mar 2023 13:29:54 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id F060D6602173;
-	Wed, 29 Mar 2023 14:28:55 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 27F036602173;
+	Wed, 29 Mar 2023 14:29:47 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1680096537;
-	bh=lyWc6jk5A6LTClzKu3aC2HCSa7dxYL0fLj00W7EFUR0=;
+	s=mail; t=1680096588;
+	bh=EOpnX/dcQ/BbXzds0SG3hg5cL//fXhc2G0DAUpgv+q4=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=HB69ZEuxdQOeT4MLk7YlrlyC90N97511yNR8oYhJWmEkGG0Whua3y/fZImqb9MgVV
-	 XVJAuFmhoD5W+tOBiLbpHBhejkWojvUHWKMxIb06IYiu0JA/ZFFTEQR3INsStnMSKW
-	 WB3urzECgWKHJpmKFWxMNyaulGn+QctmYRkzA/Nz+dCWMWpI95p5/eqHKro176nRuo
-	 kPVAobrvcS4yXx2jYn3VI4nkbbP9vpl5wCGnbDvM2On9vP0CN2G50AbfQByj51N5Tz
-	 2LbdrISvomx5RB2uWLuxKyngX8kJZv8gerhvmA7oPTZ/jtRQg0k+LniBF/Gio1cyi/
-	 XpeecUQdgsLTA==
-Message-ID: <44516e8a-0cd6-ef67-71af-9f2e2510e0d6@collabora.com>
-Date: Wed, 29 Mar 2023 15:28:53 +0200
+	b=ICmRH+yKTLVAQGmS7JSUDaSjWqxemU8uS0ZXU5qKpq2ec7nQTj9iX7uLN/4JDmeP1
+	 RKBQWhLfz3J+0iKmi+7G/Vu7WtCIzsNVKRE1sEuYWUQ3MZpsVqw24vH4LlPtPsI3+i
+	 4lWRtkIJjxMFmlxKkHYIl/X7XXHlXK34krkET1Jwp+TK1ugflp7ieaLf4GOzB+fW4d
+	 gxHQ6BkVXpRRuhWK14Z9IrPGeScbPuaON9zHD1KM8c+Nm2dku5sXbWvBL6jKfiYRTx
+	 xo7uLOQPQI/cYSjm909+Zh5z//qBUXJMNK8LQ3PrNa5iJyJmZWV2Q8gHHkMGjNVY1u
+	 Pf5omuY/LfRLw==
+Message-ID: <8e894763-6589-79ef-1e75-67f546013a2f@collabora.com>
+Date: Wed, 29 Mar 2023 15:29:45 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.9.0
-Subject: Re: [PATCH v3 15/17] arm64: dts: mediatek: add cpufreq support for
- mt8365-evk
+Subject: Re: [PATCH v3 16/17] arm64: dts: mediatek: fix systimer properties
 Content-Language: en-US
-To: Alexandre Mergnat <amergnat@baylibre.com>,
- Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
- <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>,
+To: amergnat@baylibre.com, Wim Van Sebroeck <wim@linux-watchdog.org>,
+ Guenter Roeck <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  Chaotian Jing <chaotian.jing@mediatek.com>,
@@ -68,15 +66,14 @@ Cc: linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
  Fabien Parent <fparent@baylibre.com>,
  Amjad Ouled-Ameur <aouledameur@baylibre.com>
 References: <20230203-evk-board-support-v3-0-0003e80e0095@baylibre.com>
- <20230203-evk-board-support-v3-15-0003e80e0095@baylibre.com>
+ <20230203-evk-board-support-v3-16-0003e80e0095@baylibre.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230203-evk-board-support-v3-15-0003e80e0095@baylibre.com>
+In-Reply-To: <20230203-evk-board-support-v3-16-0003e80e0095@baylibre.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230329_062858_520242_4173E35E 
-X-CRM114-Status: UNSURE (   9.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230329_062949_589239_5656990A 
+X-CRM114-Status: GOOD (  11.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,10 +88,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 29/03/23 10:54, Alexandre Mergnat ha scritto:
-> In order to have cpufreq support, this patch adds proc-supply and sram-supply
-> for each CPU.
+Il 29/03/23 10:54, amergnat@baylibre.com ha scritto:
+> From: Amjad Ouled-Ameur <aouledameur@baylibre.com>
 > 
+> MT8365 has a SYST timer (System Timer), therefore the compatible node
+> should be "mediatek,mt6765-timer" instead of "mediatek,mt6795-systimer"
+> (which corresponds to ARM/ARM64 System Timer).
+> 
+> Plus, register range should be 0x100 instead of 0x10.
+> 
+> Finally, interrupt polarity of systimer is LEVEL_HIGH.
+> 
+> Fix the above properties accordingly.
+> 
+> Signed-off-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
 > Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
