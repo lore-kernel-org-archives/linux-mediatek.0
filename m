@@ -4,142 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3A03C6FD18
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 19:51:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B18DC77B61
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 19:58:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S00Xp8JXjn19UH995q1FPsxfz6/qb923iCtN7jshDa0=; b=BHBvjpHDZVCoFHAf3lTltxMGMI
-	AqCH3Z2L1tVeZzTvXNxDy5ABhjsFWYdJiiG8fFpJpJ90Em0RlKlDX8g4vvx0jTvqZNlsmKqjfiwS2
-	82OEXqHcPZZy8NYULapqbbpZuN/NZUNUyefFpiMY70Au3YSU+ij6KPUG4bO8dcSb430+WVL7PgC6f
-	k0dz38F64lPJRcso018zdTLkjdMMhAxd7tAp2vG43eiN7IcLgip3h4yotJue3yL1SJvpe7Mb7yI8b
-	T+9yg8RT7oQSaNsRIyPRHYxPeL/mFd+fdRwS1CSRoBD4/XHIS7VbMtpe4hGPo9QH99cGaNEexPTPk
-	lsTKnJBw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=FNFGl7TALMtvWy3apPkbvlgPa76IuL44/SWQbOr3jtU=; b=YAqo78Wbm+xpLxoywjMxmo49W/
+	H6+ybn/YiJYi9QkF2ABkEqytWk7+pLucrdTI8il0GcJyY6cu3H8uYnMPCTfdKsUCv0tV8UGHCmb+Z
+	lhaFQi9Qx8Q/0LRTp2lSIMxg49uUunaVCkfiCfsIGpztEksfVvj65ISZYotP86/bIPxFWnrKVSw/b
+	34meD8ugwhXQ1czQv1GDw7ccYVHZUzA/DsIPeLcmwXslQ06BichyWhEjTZx6vtGYZz/xBcjz3mgnZ
+	xOMgnmZJIS6CZUqwGlSIc3f4m+IF/XK5uXWXx+4afcCwZlT6LmY/7FIuPqbLFrPOoJRtZElHfQQFK
+	dLueXsrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phbp5-001gXZ-1H;
-	Wed, 29 Mar 2023 19:51:07 +0000
-Received: from wnew3-smtp.messagingengine.com ([64.147.123.17])
+	id 1phbwB-001hYU-2j;
+	Wed, 29 Mar 2023 19:58:27 +0000
+Received: from mail-sn1nam02on2062b.outbound.protection.outlook.com ([2a01:111:f400:7ea9::62b] helo=NAM02-SN1-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phbp0-001gW0-2c;
-	Wed, 29 Mar 2023 19:51:04 +0000
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailnew.west.internal (Postfix) with ESMTP id B22DC2B05BE1;
-	Wed, 29 Mar 2023 15:50:53 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
-  by compute4.internal (MEProxy); Wed, 29 Mar 2023 15:50:58 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
-	:cc:content-type:content-type:date:date:from:from:in-reply-to
-	:in-reply-to:message-id:mime-version:references:reply-to:sender
-	:subject:subject:to:to; s=fm3; t=1680119453; x=1680126653; bh=S0
-	0Xp8JXjn19UH995q1FPsxfz6/qb923iCtN7jshDa0=; b=bjfu/u+3WNSfLMbwG8
-	kgDlb33yFeBpTyDn26O0i5sMcaQYMH5k+w0P2n88u/CL6nmHobkHURfCmf1/C29t
-	U0Qh1AeatQqCeBn6lka/dn10E2764ErqPqb3njkwCEp0gR+damC3mrcUvTxoLGFt
-	C8YUuH43zoflGPvolh5JgeGOuMjpcUVK2XMglwkAj5Jbl90JOiW6MmIBfFxsj47Z
-	LmLClTdxuUi8kFNiCE0STmAKXFF18XHkXI+HXgSXZYmlUiBbZLpqDOcow+ybw2xE
-	2FoegJ/5RU8yvTqRDV9YushjRc122S3DH00UzJnafvUsGPLUeJnt1P45+mZXlwwx
-	9r5w==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:content-type:date:date
-	:feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
-	:x-sasl-enc; s=fm2; t=1680119453; x=1680126653; bh=S00Xp8JXjn19U
-	H995q1FPsxfz6/qb923iCtN7jshDa0=; b=mDHZlaVnXucLsPRdtiP08QfOw0gbw
-	L+tUMJhcynxctO/kzDo9N9LThihIenJjo53qM0euM2lsFwMzIIJmLZaKDMEQ9gKS
-	btQwIniilAJ2KR0keHWJin00kBMMw6Fvxj0Tqr2fZDydPMLtTJ9/sGRArw3nvLEJ
-	Inl8nRAJ+p1On2TOo/Jkf5NvgfFrgD8xiz+wUxe+OLxZLqgad7dL+FZKdxkOCpJr
-	jXFB1C2jlktQjz7Pf5BdwXfRgXBHnZg2CeqLIpNinGTcVjw+BWRP0a6XnT9W3OK0
-	vrpjM1vniY/j4v5fsA1EOzPEQz9MwxVgK2edMj2xcjAO4WZgtdvUtY6ug==
-X-ME-Sender: <xms:mpYkZD7Ox3zkaNg9OIbaq_Geirriia0AyR5zsctORI6EJu7ND1ZsRQ>
-    <xme:mpYkZI6gfNEQJJATGLF-jP5tejftDvf4e2pRhn5b30pSmUBJQi8Q22RK3CYpCbdPk
-    nljkuFaqJebKdIGblI>
-X-ME-Received: <xmr:mpYkZKdImEiijk94na28hpIQuEi3cQuAMkQWm0nzJyixb0OJnKMRnOXbcA>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrvdehiedgudeggecutefuodetggdotefrod
-    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
-    necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-    enucfjughrpeffhffvvefukfhfgggtuggjsehgtderredttddvnecuhfhrohhmpeforgig
-    ihhmvgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrf
-    grthhtvghrnhepteefffefgfektdefgfeludfgtdejfeejvddttdekteeiffejvdfgheeh
-    fffhvedunecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomh
-    epmhgrgihimhgvsegtvghrnhhordhtvggthh
-X-ME-Proxy: <xmx:mpYkZEJl9MrKZSU_H62ZAJfDV2fQB_Dukmg12b6sz6GsGnrs1I7MQA>
-    <xmx:mpYkZHItJM6rTbcj4kioTn3BMkpHiPds2sYYICneLW9ubA5TBI5WRQ>
-    <xmx:mpYkZNxhOoittDkCw7hbXZnCUDUd-FuZ-EKLeSqNz8AN2-VxFNYVfA>
-    <xmx:nZYkZIRJx8oRJdN_mOMdRd18Mh8SZ8lDvg6OQ5KdOS-_17hhw45Pa7Wurdo>
-Feedback-ID: i8771445c:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 29 Mar 2023 15:50:49 -0400 (EDT)
-Date: Wed, 29 Mar 2023 21:50:49 +0200
-From: Maxime Ripard <maxime@cerno.tech>
-To: Stephen Boyd <sboyd@kernel.org>
-Cc: Mark Brown <broonie@kernel.org>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Chen-Yu Tsai <wens@csie.org>, Daniel Vetter <daniel@ffwll.ch>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jaroslav Kysela <perex@perex.cz>, Shawn Guo <shawnguo@kernel.org>,
-	Fabio Estevam <festevam@gmail.com>,	Ulf Hansson <ulf.hansson@linaro.org>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Dinh Nguyen <dinguyen@kernel.org>,	Paul Cercueil <paul@crapouillou.net>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>,
-	Jonathan Hunter <jonathanh@nvidia.com>,	Abel Vesa <abelvesa@kernel.org>,
-	Charles Keepax <ckeepax@opensource.cirrus.com>,
-	Alessandro Zummo <a.zummo@towertech.it>,
-	Peter De Schrijver <pdeschrijver@nvidia.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Prashant Gaikwad <pgaikwad@nvidia.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Richard Fitzgerald <rf@opensource.cirrus.com>,
-	Vinod Koul <vkoul@kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
-	Sekhar Nori <nsekhar@ti.com>,	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,	Takashi Iwai <tiwai@suse.com>,
- David Airlie <airlied@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	David Lechner <david@lechnology.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,	Max Filippov <jcmvbkbc@gmail.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	linux-stm32@st-md-mailman.stormreply.com,	alsa-devel@alsa-project.org,
- linux-mediatek@lists.infradead.org,	linux-phy@lists.infradead.org,
- linux-mips@vger.kernel.org,	linux-renesas-soc@vger.kernel.org,
-	linux-actions@lists.infradead.org, linux-clk@vger.kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	patches@opensource.cirrus.com, linux-tegra@vger.kernel.org,
-	linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org
-Subject: Re: [PATCH v2 43/65] ASoC: tlv320aic32x4: Add a determine_rate hook
-Message-ID: <20230329195049.lbdbkbqu6zbq5xii@penduick>
-References: <20221018-clk-range-checks-fixes-v2-0-f6736dec138e@cerno.tech>
- <20221018-clk-range-checks-fixes-v2-43-f6736dec138e@cerno.tech>
- <Y2UzdYyjgahJsbHg@sirena.org.uk>
- <20221104155123.qomguvthehnogkdd@houat>
- <Y2U2+ePwRieYkNjv@sirena.org.uk>
- <20221107084322.gk4j75r52zo5k7xk@houat>
- <Y2j0r0wX1XtQBvqO@sirena.org.uk>
- <20221107152603.57qimyzkinhifx5p@houat>
- <5819b1362f35ce306e1b6d566bfd44e5.sboyd@kernel.org>
+	id 1phbw7-001hXA-1i;
+	Wed, 29 Mar 2023 19:58:25 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=XEY0imW0BQHs0nz4woiTz3Y9GevJechg44GBRlAyei++RUhz/pFb8hlnJp3kkQrJlnghZJ17j+xPUXsT/solzCnYyAeEZtjAnI4M6ZxnlPy81Q/Ulw2ysxdvcwT1cyqPvqmpI0yH4LB796bXiYrl56Pi0pQqD1MFLDrC0sGYOMlJ1Bp2AodivSswcs8/XHRtRNtNSKX06aG4O0W+jogYyyLXr84s+xDbQZO9gEHJLSsKrgsXso+wClf0PAvvYJr8CKuUIp2CbxYz79iDSHYxE74SGhuYvS030kSuK6D2FVlxVCMtimmpyiKuQmYF6cyCS4ozacL4WZbR/Q1lt9mcWg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=FNFGl7TALMtvWy3apPkbvlgPa76IuL44/SWQbOr3jtU=;
+ b=jxRcWPCiEHVihAvMVbPHMa6A9v7DwTRm578VHkiUHxAfaLugQGQ/bfLm7Q18dT6iFSFxtNu7++seNFxDbx0UBcc754/Km/A2cFaefCC1Te5oQ6P2clI6isLVb9gabpXUa8oeoiP4/ywvALQS1e/EuVhj/iJgE0b9Ka/Y4earOj93v+dd0IQ0iZNraaRfmhs6VA9kt5nL8T5QjBFT7RujKKTbRPhca8qlYsSg9QZBDlRRGMD9l2edG5sBDDNfuJbtSwke1xcZNoRqU2mGNivPafEKhRKs5itg+7gk62uFX2fp7441vxNL1i7jl1p+IqsaDQBGfIqGcc31U36gTg/htw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=nbd.name smtp.mailfrom=amd.com; dmarc=pass
+ (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=FNFGl7TALMtvWy3apPkbvlgPa76IuL44/SWQbOr3jtU=;
+ b=p6pB9pIOqhDV+XyLqtyzWNt8JeAFoskMlnN5XJvOG30fk0KLtTCy6dSNgK24qvGonONX/iFpPlgi0SzDtn3CkFArfViUTgR/Dd+RoczEI8fNbWnQshlx+ReHGYZCtoDrgnvIYcc8pm91/hBOLFpzuS55yjZdN/mzCwPbytajsDI=
+Received: from BN9PR03CA0254.namprd03.prod.outlook.com (2603:10b6:408:ff::19)
+ by CY8PR12MB7415.namprd12.prod.outlook.com (2603:10b6:930:5d::22) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6222.28; Wed, 29 Mar
+ 2023 19:58:19 +0000
+Received: from BN8NAM11FT114.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:408:ff:cafe::2a) by BN9PR03CA0254.outlook.office365.com
+ (2603:10b6:408:ff::19) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.43 via Frontend
+ Transport; Wed, 29 Mar 2023 19:58:19 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
+ smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
+Received: from SATLEXMB04.amd.com (165.204.84.17) by
+ BN8NAM11FT114.mail.protection.outlook.com (10.13.177.46) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.6222.22 via Frontend Transport; Wed, 29 Mar 2023 19:58:16 +0000
+Received: from AUS-LX-MLIMONCI.amd.com (10.180.168.240) by SATLEXMB04.amd.com
+ (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.34; Wed, 29 Mar
+ 2023 14:58:14 -0500
+From: Mario Limonciello <mario.limonciello@amd.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>, <ryder.lee@mediatek.com>,
+	<shayne.chen@mediatek.com>, <sean.wang@mediatek.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>
+CC: Mario Limonciello <mario.limonciello@amd.com>, Anson Tsao
+	<anson.tsao@amd.com>, Kalle Valo <kvalo@kernel.org>, "David S. Miller"
+	<davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
+	<kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	<linux-wireless@vger.kernel.org>, <netdev@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>
+Subject: [PATCH RESEND] wifi: mt76: mt7921e: Set memory space enable in PCI_COMMAND if unset
+Date: Wed, 29 Mar 2023 14:57:58 -0500
+Message-ID: <20230329195758.7384-1-mario.limonciello@amd.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="bx2st77tq2vvri5u"
-Content-Disposition: inline
-In-Reply-To: <5819b1362f35ce306e1b6d566bfd44e5.sboyd@kernel.org>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.180.168.240]
+X-ClientProxiedBy: SATLEXMB03.amd.com (10.181.40.144) To SATLEXMB04.amd.com
+ (10.181.40.145)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BN8NAM11FT114:EE_|CY8PR12MB7415:EE_
+X-MS-Office365-Filtering-Correlation-Id: 410c2fd0-d708-465c-1a83-08db308ff000
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	ELgMX/NcJQIZfKFBrNswTUnIyYmZfxwDwwizQozyGDOdC4Gd+Mdq7RrByjbahnyK6ngVPt71gC+Y8jhODZnlawliwU6OmwCMUpAshRDFaZA70pgfY6CFQMZtUCfOHb6Gy32Jxy608+wzi0sfnWIAtljNCh6Rz63FHtybzaL5TLc166Z0XRITzLuROJUD3e9q1tzicYW9cRJ0Up4zvZMe4R5Acc0wBMZvpQzMnKqOsECacnBCHcPEkGJdlyMMEt9fbpkZdld79prY9kvA/bP4xyFs3R2cxCWZCzJFZhac1nVTqGBLU/75UbJ0JY+9Wvbztx4/k6Shwn7AUuQV1RlklguMi/Vg5DnLtIQkHgYMEs17D4QraKOJuIfXUblEd4QLYQFqBi7/RK9SPZnmGr/S2jMJk6J/MUA023vr3/Q0XE3sDMcBWhpvoVldPsjq/nI041FrSBzlysyxKTZZ0Qv3OLGDf8g3qbyjLJSKjA6vROix4joG4qOlF6qdBTRoVjhdBIQ/wuC+Ecg+eEIB5lTzUCN8DUrINvWZvrG2Xg/1bb3j3ZCoTTWDw4fqKnLyRqV9CnV4Hgu7aV/HYM3A3TarMZuLZuQzdhErfUHITZA/2zrOH8NbwOfUjj6jnFGvPtXr49QkfLLCx0ETZa7b/SO0yW5Bp1fDNp/9Rv2bZXEc6mTKjFw6KKf3XcsByjXeTT+d9BqQnbjcfTy+ZZyz8NXM7E9/De1GnlG8H/PVK4c0WJ8=
+X-Forefront-Antispam-Report: 	CIP:165.204.84.17;CTRY:US;LANG:en;SCL:1;SRV:;IPV:CAL;SFV:NSPM;H:SATLEXMB04.amd.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230028)(4636009)(346002)(39860400002)(396003)(376002)(136003)(451199021)(40470700004)(46966006)(36840700001)(8936002)(47076005)(2906002)(336012)(83380400001)(426003)(2616005)(41300700001)(86362001)(36860700001)(36756003)(40460700003)(82740400003)(5660300002)(81166007)(356005)(40480700001)(966005)(478600001)(7696005)(8676002)(54906003)(70206006)(70586007)(4326008)(7416002)(16526019)(44832011)(6666004)(186003)(82310400005)(1076003)(26005)(316002)(110136005)(36900700001);DIR:OUT;SFP:1101;
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Mar 2023 19:58:16.7583
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 410c2fd0-d708-465c-1a83-08db308ff000
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d;Ip=[165.204.84.17];Helo=[SATLEXMB04.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: 	BN8NAM11FT114.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR12MB7415
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230329_125102_881557_31C99794 
-X-CRM114-Status: GOOD (  35.85  )
+X-CRM114-CacheID: sfid-20230329_125823_772638_6FE0E433 
+X-CRM114-Status: GOOD (  12.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -154,82 +122,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+When the BIOS has been configured for Fast Boot, systems with mt7921e
+have non-functional wifi.  Turning on Fast boot caused both bus master
+enable and memory space enable bits in PCI_COMMAND not to get configured.
 
---bx2st77tq2vvri5u
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+The mt7921 driver already sets bus master enable, but explicitly check
+and set memory access enable as well to fix this problem.
 
-Hi Stephen,
+Tested-by: Anson Tsao <anson.tsao@amd.com>
+Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+---
+Original patch was submitted ~3 weeks ago with no comments.
+Link: https://lore.kernel.org/all/20230310170002.200-1-mario.limonciello@amd.com/
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-On Wed, Mar 22, 2023 at 04:31:04PM -0700, Stephen Boyd wrote:
-> > It's also replacing one implicit behavior by another. The point of this
-> > series was to raise awareness on that particular point, so I'm not sure
-> > it actually fixes things. We'll see what Stephen thinks about it.
-> >=20
->=20
-> Right. A decade ago (!) when determine_rate() was introduced we
-> introduced CLK_SET_RATE_NO_REPARENT and set it on each mux user (see
-> commit  819c1de344c5 ("clk: add CLK_SET_RATE_NO_REPARENT flag")). This
-> way driver behavior wouldn't change and the status quo would be
-> maintained, i.e. that clk_set_rate() on a mux wouldn't change parents.
-> We didn't enforce that determine_rate exists if the set_parent() op
-> existed at the same time though. Probably an oversight.
->=20
-> Most of the replies to this series have been "DT is setting the parent",
-> which makes me believe that there are 'assigned-clock-parents' being
-> used.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+index cb72ded37256..aa1a427b16c2 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+@@ -263,6 +263,7 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
+ 	struct mt76_dev *mdev;
+ 	u8 features;
+ 	int ret;
++	u16 cmd;
+ 
+ 	ret = pcim_enable_device(pdev);
+ 	if (ret)
+@@ -272,6 +273,11 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
+ 	if (ret)
+ 		return ret;
+ 
++	pci_read_config_word(pdev, PCI_COMMAND, &cmd);
++	if (!(cmd & PCI_COMMAND_MEMORY)) {
++		cmd |= PCI_COMMAND_MEMORY;
++		pci_write_config_word(pdev, PCI_COMMAND, cmd);
++	}
+ 	pci_set_master(pdev);
+ 
+ 	ret = pci_alloc_irq_vectors(pdev, 1, 1, PCI_IRQ_ALL_TYPES);
+-- 
+2.34.1
 
-Yes, that's my understanding as well.
-
-> The clk_set_parent() path is valid for those cases. Probably nobody
-> cares about determine_rate because they don't set rates on these clks.
-> Some drivers even explicitly left out determine_rate()/round_rate()
-> because they didn't want to have some other clk round up to the mux
-> and change the parent.
->=20
-> Eventually we want drivers to migrate to determine_rate op so we can get
-> rid of the round_rate op and save a pointer (we're so greedy). It's been
-> 10 years though, and that hasn't been done. Sigh! I can see value in
-> this series from the angle of migrating, but adding a determine_rate op
-> when there isn't a round_rate op makes it hard to reason about. What if
-> something copies the clk_ops or sets a different flag? Now we've just
-> added parent changing support to clk_set_rate(). What if the clk has
-> CLK_SET_RATE_PARENT flag set? Now we're going to ask the parent clk to
-> change rate. Fun bugs.
->=20
-> TL;DR: If the set_parent op exists but determine_rate/round_rate doesn't
-> then the clk is a mux that doesn't want to support clk_set_rate(). Make
-> a new mux function that's the contents of the CLK_SET_RATE_NO_REPARENT
-> branch in clk_mux_determine_rate_flags() and call that directly from the
-> clk_ops so it is clear what's happening,
-> clk_hw_mux_same_parent_determine_rate() or something with a better name.
-> Otherwise migrate the explicit determine_rate op to this new function
-> and don't set the flag.
->=20
-> It may be possible to entirely remove the CLK_SET_RATE_NO_REPARENT flag
-> with this design, if the determine_rate clk_op can call the inner
-> wrapper function instead of __clk_mux_determine_rate*() (those
-> underscores are awful, we should just prefix them with clk_hw_mux_*()
-> and live happier). That should be another patch series.
-
-Sorry but it's not really clear to me what you expect in the v2 of this
-series (if you even expect one). It looks that you don't like the
-assignment-if-missing idea Mark suggested, but should I just
-rebase/resend or did you expect something else?
-
-Maxime
-
---bx2st77tq2vvri5u
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZCSWmAAKCRDj7w1vZxhR
-xQXTAP0bPg2EVQxPktgSpE4coaiyyn0Cu6Bba/x8MkUcPgNRVQEAxpbYr0uDsXMC
-CE9ojO6fXNwPgqHm5ELQGJgnrvcQQQg=
-=B5xn
------END PGP SIGNATURE-----
-
---bx2st77tq2vvri5u--
 
