@@ -4,37 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D4F7C74A5B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 16:01:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1E9BC761AF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 16:03:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2ZzZTeTbACO9jNrXV7gkXRIT2/Za9jKiU5TxwHhZyjc=; b=c5a7Mq+V18UC+jFgbYDuZhTTiS
-	Eb5RwRt9arx1UXPy8e4m0hzm2j6o6Har+ny22hcFdgzj92YF0TG/tu0kxPsXH24de9NWV7G1nkLC7
-	Z8YNa3HWezysSyFYsvhpZ43bnyPnb7DkQbaRgD+3ZX9LLe6LtbuiBEexNojKBCJ3Uj1MKbWhwxTfA
-	z3xWl6QVKnQ3O3ddZu3HbaArQohf0AC0f6RS3cYBp2zy4H2U+oojMtyv+2+WcPcpsPTmUd/xRp+zu
-	x5uY8fxSLofDXSggMJkHYX+UrGSQ4soP9cmK6DLbo8+RKKJ0idDyEc3jNts1aRN3sGgEDCGmKT3DR
-	PfgHOUZA==;
+	bh=2ZzZTeTbACO9jNrXV7gkXRIT2/Za9jKiU5TxwHhZyjc=; b=nwzQsf3awtwq4xyUduQY6idofS
+	qpJ4MOMYNveqdP5l3EUfGek9IA/V1cpyJ0EW8C8GMUiCslndz7qbd0ChozW25J8SmaxIwMv4e/vUH
+	mKrUFKZAAsgj1UofDmvhDT7C4qn+sh06nOKdahcqIPCccYESuGpa7rtSfBPSNxQvRPE0xZxOMqN2d
+	OycqH5aVoVVQPTOa/JWM4sXSBUjkopp10W24gs0jxh7xWQbRiu3pyI6D5nD+hf+nK9/WwKcM5TufN
+	6u1jGZzFj74n84POxrJpkuel8mvUjZdtmVgZ605wqItcNS6SttBD16a+87S78ZC5wHH/pOkOa4Km4
+	QH2+K1WQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phYEY-000xsY-0o;
-	Wed, 29 Mar 2023 16:01:10 +0000
+	id 1phYGN-000z6g-0O;
+	Wed, 29 Mar 2023 16:03:03 +0000
 Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phYEO-000xkq-0L;
-	Wed, 29 Mar 2023 16:01:08 +0000
+	id 1phYGK-000z4L-0O;
+	Wed, 29 Mar 2023 16:03:01 +0000
 Received: from local
 	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1phYEH-0003V2-1M;
-	Wed, 29 Mar 2023 18:00:54 +0200
-Date: Wed, 29 Mar 2023 17:00:49 +0100
+	id 1phYGD-0003Yb-19;
+	Wed, 29 Mar 2023 18:02:54 +0200
+Date: Wed, 29 Mar 2023 17:02:47 +0100
 From: Daniel Golle <daniel@makrotopia.org>
-To: linux-mediatek@lists.infradead.org,
+To: devicetree@vger.kernel.org, netdev@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
 	Andrew Lunn <andrew@lunn.ch>,
 	Florian Fainelli <f.fainelli@gmail.com>,
@@ -61,7 +62,7 @@ Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1680105013.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230329_090100_177322_F73FDDAB 
+X-CRM114-CacheID: sfid-20230329_090300_155248_CB467A5F 
 X-CRM114-Status: GOOD (  12.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,6 +77,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
+Message-ID: <20230329160247.kC0D7xCXCiqR_13MK6lPTYs6gBvJt9pJn3fs1hi81Us@z>
 
 Add documentation for the built-in switch which can be found in the
 MediaTek MT7988 SoC.
