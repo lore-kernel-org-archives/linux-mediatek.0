@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F35CC761AF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 16:39:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6730C74A5B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 16:44:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VsYhrL4QtC5ZNA+kq7n/KEZPoa+gL9m0J5D2VbucwVQ=; b=xToATykECWFMtz/Yq2W5Q2t+y0
-	s5p5Oi7aReHkiPSY1bxCXsMrk+hI3MnbSE9aP5pN1SkSu2yTGRjL2jK7RT9zhU2sE0Btuk6BHHDQb
-	W+IHHCOIvYVtj68bNyFeQAf0zLiAN4ClEoFpBTgxJGR/kwo/PBFKXgqUJ4Itc+Udv46Q+ZsmzHTAB
-	WGE8vy/SdRtFOG49mcmmVX/C0bHn9iCtywgI6ywK9XwGYBqkTjJpsSMT928mon868MiLEtc4wVcnd
-	/srf3aA+odwwhtLrtQs089NZH7S7DxEEG4YHnx04zjWAPfn8e4nbFhaE/AhWtroSyT1E+Gxm1D/HE
-	CpV3pHmQ==;
+	bh=OhiuGHeCY6mb/VmM9pba3c4hvDQmt4O9Ky61+mVEOwk=; b=hDGXW9k/CPcvXBqoRHs0lYlQak
+	ea5OkjB5cuS99/8wKPrZun+go7Ix8c/rdbFM7kx1w66H60BRD5yiSEvldxHUCaboqztJIU5uUAsJX
+	nwZml+ucfjZDCfCF6F80HS984+O24EQboMdofPX59K5521tqdg9UCSDEu8va1cNMwYaJzpej3AFgC
+	AtaV4U1fjOiXAkIBgWW0T5SokaA9xf1QG83MTSVegoqaLzJev9nP4L9C7IaV8eVynp9U4RzLEJJuM
+	Bk4bvKNfLG3niLuecbFMXSkz8iJc257JjF7v+On+4wYx7zNQlxjIpnNSen/15ASU0PzzA8A26PiVF
+	4OfG7i/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phYpG-0018no-2f;
-	Wed, 29 Mar 2023 16:39:06 +0000
+	id 1phYui-0019mj-1Q;
+	Wed, 29 Mar 2023 16:44:44 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phYpE-0018mn-3D;
-	Wed, 29 Mar 2023 16:39:06 +0000
+	id 1phYuf-0019mA-2E;
+	Wed, 29 Mar 2023 16:44:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=VsYhrL4QtC5ZNA+kq7n/KEZPoa+gL9m0J5D2VbucwVQ=; b=yydGJAtSK1nqRobhiENbWmwZLY
-	0rux+2yOz3bBQg9V1LLqsADGFqtceIQXhoXO1XvBzI2IB9eLT7PfoOgCEYLyf7uDUKzOZa8poZDii
-	PIlK0ypB1cnReKyhNoMsdZTnyxxREExfqAuWOPoJmBst0iVZsJwDO9SJJAbTF6jUhGJk=;
+	bh=OhiuGHeCY6mb/VmM9pba3c4hvDQmt4O9Ky61+mVEOwk=; b=eWu+51WoLOq0vVZsd+3V0xa2jK
+	oOut7+dM/ujZkhoVXuWyL30qr5aHHQm64/eiEDYiFQ2geOo/BA2VpSLfDgxWR++aYRZxrpcadrevs
+	XwY1I+hpueS0a1Fy5BsaHFu7/Tw99gsBi9ZGFsMGRZA348uwtzIXqvytn4hmZkvKuE54=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1phYpD-008mdt-D6; Wed, 29 Mar 2023 18:39:03 +0200
-Date: Wed, 29 Mar 2023 18:39:03 +0200
+	id 1phYuc-008mg8-7K; Wed, 29 Mar 2023 18:44:38 +0200
+Date: Wed, 29 Mar 2023 18:44:38 +0200
 From: Andrew Lunn <andrew@lunn.ch>
 To: Daniel Golle <daniel@makrotopia.org>
 Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
@@ -56,18 +56,18 @@ Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	Sam Shih <Sam.Shih@mediatek.com>,
 	Lorenzo Bianconi <lorenzo@kernel.org>,
 	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>
-Subject: Re: [RFC PATCH net-next v3 11/15] net: dsa: mt7530: skip locking if
- MDIO bus isn't present
-Message-ID: <022e2a44-31de-4667-9474-6a8518ca030a@lunn.ch>
+Subject: Re: [RFC PATCH net-next v3 12/15] net: dsa: mt7530: add support for
+ single-chip reset line
+Message-ID: <452c4d28-dc1b-4726-9bec-7065032de119@lunn.ch>
 References: <cover.1680105013.git.daniel@makrotopia.org>
- <4e6d1cbba2ff16cad5b9ac48ccdf4407f45c7857.1680105013.git.daniel@makrotopia.org>
+ <0f696278bd8d13121a500f80cfe2f806debe4da5.1680105013.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <4e6d1cbba2ff16cad5b9ac48ccdf4407f45c7857.1680105013.git.daniel@makrotopia.org>
+In-Reply-To: <0f696278bd8d13121a500f80cfe2f806debe4da5.1680105013.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230329_093905_037956_BC90ECED 
-X-CRM114-Status: GOOD (  12.69  )
+X-CRM114-CacheID: sfid-20230329_094441_729209_F1F4979B 
+X-CRM114-Status: GOOD (  18.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,24 +82,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 29, 2023 at 04:59:47PM +0100, Daniel Golle wrote:
-> As MT7530 and MT7531 internally use 32-bit wide registers, each access
-> to any register of the switch requires several operations on the MDIO
-> bus. Hence if there is congruent access, e.g. due to PCS or PHY
-> polling, this can mess up and interfere with another ongoing register
-> access sequence.
-> 
-> However, the MDIO bus mutex is only relevant for MDIO-connected
-> switches. Prepare switches which have there registers directly mapped
-> into the SoCs register space via MMIO which do not require such
-> locking. There we can simply use regmap's default locking mechanism.
-> 
-> Hence guard mutex operations to only be performed in case of MDIO
-> connected switches.
+On Wed, Mar 29, 2023 at 05:00:06PM +0100, Daniel Golle wrote:
+> Similar to multi-chip-module MT7530 also MT7988 uses an internal
+> reset line instead of using an optional reset GPIO like it is the
+> case for external MT7530 and MT7531 ICs.
+> Add support for internal but non-MCM reset line in preparation for
+> adding support for MT7988.
 > 
 > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
+>  drivers/net/dsa/mt7530.c | 6 ++++++
+>  1 file changed, 6 insertions(+)
+> 
+> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> index c6fad2d156160..fd55ddc2d1eb3 100644
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+> @@ -3066,6 +3066,12 @@ mt7530_probe_common(struct mt7530_priv *priv)
+>  			dev_err(dev, "Couldn't get our reset line\n");
+>  			return PTR_ERR(priv->rstc);
+>  		}
+> +	} else if (!priv->bus) {
 
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+!priv->bus is being used as a proxy here for MT7988. Maybe it would be
+better to unconditionally use devm_reset_control_get_optional()? Or
+move the reset out of mt7530_probe_common() because it is not
+actually common?
 
-    Andrew
+	Andrew
 
