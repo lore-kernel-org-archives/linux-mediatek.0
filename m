@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71DE4C6FD18
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 13:21:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1F7BC6FD18
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 13:24:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4Y9DyUtoiaRq3DOUzn2dSA9aY4A/6vDkabRbKivmt1Y=; b=AObsrOZ1+EQ/mBsu8mWazY43s3
-	8YiRosTR4LVEM9nknxGv99g4/LbZb9lp61ncbEfFMQs4YxoFlWidMzMW9GGboHImK6qSZG/3mGJZj
-	rFVsmsKdiG7wdV6GUfVeQLlZGjeqfuKpQ5zF7dNr1L+QEMhbn6cMVISRiD0ZyWSGUAWZx0jpUwFlS
-	IZ9U2YalC7EhLxgVpTiRPpYEaRYET5NtGx7gcpu4zT6OIsqwYW4ZcehiRY82W5XL0QBGDYQmiqxdz
-	HCLnreqXe8MQZIQxcBd14gSLzdG4r7UT+31l3H96pLBfuMXgJyQKrZ1GPdaKCUJNvyDTRxGWjiUQP
-	7RocrJuA==;
+	bh=csi0jdlp5xAkr7/d6DDwvfUFlCLN9g54V1gof/K6y3I=; b=lXdnpF/YmWbqO8PR2DgOzSJ5yd
+	jbRR+OBFxKPTfSEE2k5n1O4pSroFVrgY0yaCOURpRvmGiU9CgQnEz+HoaAlljimUNntFYzXvGgi1t
+	96glWwTX+pvWYhvyCy7lZqQitEUovfF+/jGu+uG16OuhIwT/ktrIxrBikFbHgGfOBg0UcVaniXhMJ
+	HWzqCNcJcmHWVDGlcKBV5QH2WzWXKI3lV2Bal9G5dHthOBU9eVUsdddpqTtQiHRHCRBNdpxq85X/P
+	XShPskfQ17Lycc5gnavbvCv7l/5ChQvWe/eYm5RpKd9FGvzRLrO0FeQpdAxMfVoy4jQTWiM0Lv1f4
+	ubKEqv+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phVjx-000Lqt-0W;
-	Wed, 29 Mar 2023 13:21:25 +0000
+	id 1phVn5-000NBM-25;
+	Wed, 29 Mar 2023 13:24:39 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phVjm-000Lkr-0n;
-	Wed, 29 Mar 2023 13:21:21 +0000
+	id 1phVmz-000N8P-18;
+	Wed, 29 Mar 2023 13:24:37 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id DFC3A6603170;
-	Wed, 29 Mar 2023 14:21:11 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 85F5D6603173;
+	Wed, 29 Mar 2023 14:24:30 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1680096072;
-	bh=yO91BroR7iHw7kVLw8m4fi1PudYWDnQ6vk8SsbYSshU=;
+	s=mail; t=1680096271;
+	bh=QC+TVvnacafeIHmbzTyunv64Km/TSjEM1hbjaqYCL0E=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=YoCN+EPxnJ2LoZ3B/sAG8QF+Lakg247Xt3coYx/2+BIt47HWOXApA2Z0N0pOA9q3G
-	 ablLIG5ZlD87/gqGYVmmMc/FDgqgmnwV6cSpZ+vJjNiZx83ZoVr+aL6i767zhhKt43
-	 oRSy2x09fVLjPjpvE6JbUewtTivlvUeCKv1G7R3fJT0FV2yqAbFcaNaVdCt26bfVnQ
-	 glZGjmUbq7wO+nYWV2+Tztgf7DwrvZNissg8r3RlhOOyp4JwpmSDHSJ/WVQ5NqEL4V
-	 SzP6nMHusdf33ymqniBrHNBME6oRCfVY39NKZrEG7oEmOiUPi4GPmhIV/ClPaS80PK
-	 rdfRxYhcfXurg==
-Message-ID: <c785d80f-e443-cae4-1e17-b79eb2dc385c@collabora.com>
-Date: Wed, 29 Mar 2023 15:21:09 +0200
+	b=Wq/ZHR3gmA5TcS6nh98MqlxCjA+ciMEgTZAOYfId/MOzbR42VJJGeD9AzSnoAC7hK
+	 HKU+plaSGCBXOTMucZfWhLBmsmqcbCnsS6TOV6AeZBJazvS0ENHSO9whtJDnRIPiyn
+	 w3bP8f9jcIFpn3ZRO3q3swCiuXkviDRw4+nntIS8HiuOe2puLgiVOf5qiqkXVgj/OR
+	 SBh9fig+Qw9uJUh4iyTG+o5NXU43neKkZn9Qa8FRUcpZ4dZRmAkxz3Ut/haLXwwaE3
+	 0HORYdmXIHgOMHljij5NqxbpB0UJkmdTxWCxT/X9Q8HbZ9NUYT0AzAe/KK9iUbdcj8
+	 HovQFH0OkXDcA==
+Message-ID: <67af041d-cce5-8c3b-e979-7b95a6a7a149@collabora.com>
+Date: Wed, 29 Mar 2023 15:24:27 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.9.0
-Subject: Re: [PATCH v3 08/17] arm64: dts: mediatek: add mmc support for mt8365
- SoC
+Subject: Re: [PATCH v3 09/17] arm64: dts: mediatek: add mmc support for
+ mt8365-evk
 Content-Language: en-US
 To: Alexandre Mergnat <amergnat@baylibre.com>,
  Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
@@ -68,14 +68,14 @@ Cc: linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
  Fabien Parent <fparent@baylibre.com>,
  Amjad Ouled-Ameur <aouledameur@baylibre.com>
 References: <20230203-evk-board-support-v3-0-0003e80e0095@baylibre.com>
- <20230203-evk-board-support-v3-8-0003e80e0095@baylibre.com>
+ <20230203-evk-board-support-v3-9-0003e80e0095@baylibre.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230203-evk-board-support-v3-8-0003e80e0095@baylibre.com>
+In-Reply-To: <20230203-evk-board-support-v3-9-0003e80e0095@baylibre.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230329_062114_452407_2641D0CF 
-X-CRM114-Status: GOOD (  15.40  )
+X-CRM114-CacheID: sfid-20230329_062433_517606_2FF531F4 
+X-CRM114-Status: GOOD (  16.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,66 +91,60 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 29/03/23 10:54, Alexandre Mergnat ha scritto:
-> There are three ports of MSDC (MMC and SD Controller), which are:
-> - MSDC0: EMMC5.1
-> - MSDC1: SD3.0/SDIO3.0
-> - MSDC2: SDIO3.0+
+> - Add EMMC support on mmc0 (internal memory)
+> - Add SD-UHS support on mmc1 (external memory)
 > 
 > Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 > ---
->   arch/arm64/boot/dts/mediatek/mt8365.dtsi | 39 ++++++++++++++++++++++++++++++++
->   1 file changed, 39 insertions(+)
+>   arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 138 ++++++++++++++++++++++++++++
+>   1 file changed, 138 insertions(+)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-> index 687011353f69..a67eeca28da5 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-> @@ -399,6 +399,45 @@ usb_host: usb@11200000 {
->   			};
->   		};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+> index 2f88562c638a..b5d018686cbe 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+> @@ -97,6 +97,42 @@ &i2c0 {
+>   	#size-cells = <0>;
+>   };
 >   
-> +		mmc0: mmc@11230000 {
-> +			compatible = "mediatek,mt8365-mmc", "mediatek,mt8183-mmc";
-> +			reg = <0 0x11230000 0 0x1000>,
-> +			      <0 0x11cd0000 0 0x1000>;
-> +			interrupts = <GIC_SPI 23 IRQ_TYPE_LEVEL_LOW>;
-> +			clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>,
-> +				 <&infracfg CLK_IFR_MSDC0_HCLK>,
-> +				 <&infracfg CLK_IFR_MSDC0_SRC>;
-> +			clock-names = "source", "hclk", "source_cg";
-> +			status = "disabled";
-> +		};
-> +
-> +		mmc1: mmc@11240000 {
-> +			compatible = "mediatek,mt8365-mmc", "mediatek,mt8183-mmc";
-> +			reg = <0 0x11240000 0 0x1000>,
-> +			      <0 0x11c90000 0 0x1000>;
-> +			interrupts = <GIC_SPI 24 IRQ_TYPE_LEVEL_LOW>;
-> +			clocks = <&topckgen CLK_TOP_MSDC30_1_SEL>,
-> +				 <&infracfg CLK_IFR_MSDC1_HCLK>,
-> +				 <&infracfg CLK_IFR_MSDC1_SRC>;
-> +			clock-names = "source", "hclk", "source_cg";
-> +			status = "disabled";
-> +		};
-> +
-> +		mmc2: mmc@11250000 {
-> +			compatible = "mediatek,mt8365-mmc", "mediatek,mt8183-mmc";
-> +			reg = <0 0x11250000 0 0x1000>,
-> +			      <0 0x11c60000 0 0x1000>;
-> +			interrupts = <GIC_SPI 68 IRQ_TYPE_LEVEL_LOW>;
-> +			clocks = <&topckgen CLK_TOP_MSDC50_2_SEL>,
-> +				 <&infracfg CLK_IFR_MSDC2_HCLK>,
-> +				 <&infracfg CLK_IFR_MSDC2_SRC>,
-> +				 <&infracfg CLK_IFR_MSDC2_BK>,
-> +				 <&infracfg CLK_IFR_AP_MSDC0>;
-> +			clock-names = "source", "hclk", "source_cg",
-> +				      "bus_clk", "sys_cg";
+> +&mmc0 {
+> +	pinctrl-names = "default", "state_uhs";
+> +	pinctrl-0 = <&mmc0_default_pins>;
+> +	pinctrl-1 = <&mmc0_uhs_pins>;
+> +	bus-width = <8>;
+> +	max-frequency = <200000000>;
+> +	cap-mmc-highspeed;
+> +	mmc-hs200-1_8v;
+> +	mmc-hs400-1_8v;
+> +	cap-mmc-hw-reset;
+> +	no-sdio;
+> +	no-sd;
+> +	hs400-ds-delay = <0x12012>;
+> +	vmmc-supply = <&mt6357_vemc_reg>;
+> +	vqmmc-supply = <&mt6357_vio18_reg>;
+> +	assigned-clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>;
+> +	assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL>;
+> +	non-removable;
 
-clock-names for this do fit in one 90 columns line.
+That's a bit messy :-)
+Can we please reorder this by name?
 
-After compressing it,
+	assigned-clocks....
+	bus-width
+	cap....
+	hs400-ds-delay
+	max...
+	mmc-hs...
+	no...
+	non-rem...
+	pinctrl...
+	vxxxx-supply
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+	status ....
 
+...Actually the same comment also applies to mmc1.
+
+Cheers,
+Angelo
 
 
