@@ -4,101 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0988C74A5B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 11:00:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3CE4C74A5B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 13:08:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lRWy59m9AcnRjc2fmHsxRpHlVgHZhVLnEx85hZ46BJw=; b=XMYQmYV1slhAo2RWD7XWvimVzF
-	9ysm04ji8QWxmUqSeV/KUSgkMyNLB8pkak7I7I9b958gIL0ojsKgzchnhKCrpOuDtjnYPDDUrsxsB
-	IRWjRnadUpbk8fdYFVADhO3s6IxkWa12io5sbDA5hB7/gyqSJSghJqyAGNV0gT0gP5Rfe53oNKu5G
-	Z1zeSD2bAT7FoJ2TQY0joBjhQpamr5kJ4XiZL7YSU1918HYXabCUWt2P88RnxkrtH8vaqkaVYm86T
-	RRuRO6ThHRjst7rp5qpNR/o2152KZdTXEElrokYGBNxb4dyPevPH0W57bYckE9PtIGrNAHxy5MVxp
-	e4yPc1GQ==;
+	bh=++jzD+Bp136TlYbQKiFuC3WA/fT1sOZA5mRF1yfM5wU=; b=KiasmXi6SrNiWHp4vxgh7k2o/z
+	0rid6Y63nM2jW8Hm7mh2/+zIeXDZeQUWgngH4CZAVkHxrb9DYzPzqr/YbEYb9y9WFmZ5bN7gdRhIG
+	POfiKLLURqjvP4Oyl/x75fsTeBxeUmpLR2QmpxolFGsfnrv8e0C5Vb4cQYkiNldV3XXFZmJop7P8D
+	M5iVPzgbEGs6KW+trgMrjR3yQjmXb6nSrC4WBNBNwB9CVkg6ygRiTJef1JdMwpv5HC7bbDM71iHHP
+	KNDUq7dyDod4gSYWkECXsCTm/vwfMglFRviERsKTcySBCdE972OI12rHPfjORZ2qF2WjqL+//xz8b
+	b0Ics6jg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phTXg-00HXre-03;
-	Wed, 29 Mar 2023 11:00:36 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1phVWx-000Hsq-0B;
+	Wed, 29 Mar 2023 13:07:59 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phSTq-00HN3M-2k
-	for linux-mediatek@lists.infradead.org;
-	Wed, 29 Mar 2023 09:52:38 +0000
-Received: by mail-wr1-x436.google.com with SMTP id j24so15047270wrd.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 29 Mar 2023 02:52:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1680083553;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=lRWy59m9AcnRjc2fmHsxRpHlVgHZhVLnEx85hZ46BJw=;
-        b=HGsZcS3nbA0Q7VTarfFbDHUm3xAerDi9I5AK/zBHDyjPM1VZSCpsS2OHluTIknkQKc
-         ZXX7P5O7JjlIZA0RDfKKT4ij4yziAhuxfAB73x9+yjznWX+iD4tmWNSpghKrxTgL+9y4
-         45Zz92JHQgjA9WC8DCDYSkhhBkGKV8P+UbJ+T7S7rfZayxtS7CCZx8PC50pQHwWB01j2
-         K9VJbuyqqtkhCGYmkFRI+UzdnZ1KDIryBrwSw9+I2wjrF5ydUqbnue6SbEhm2K/1Mmfi
-         dv/CcCABRFtr+ZVbVP2cXEHtNoDF0B1OVI+1X0Ml7pThYTD8ApgrPpCbB3a02tsqb7Tc
-         brng==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680083553;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=lRWy59m9AcnRjc2fmHsxRpHlVgHZhVLnEx85hZ46BJw=;
-        b=Fd7VuTJyRGhVMetuK/Ln/4za3iL03rKlI38V6xQcuUaPezVZgpqpj9tNC/aQsqVjf1
-         Asha8ThZIjWxz1oDjZRA1AWrpOhb2mR5/k+ks/8qwbivCsBcQBsxlml3mB+eLKC8LmDx
-         GLbrnMBfz8LLZKE7jBzQz3XWl79czMAvPd4E9jsrZ7+QngGtN3aZKD3MOO3UnHNwfado
-         KegyFc4XL1RWQgq0iYvKbp0H0eYcq2AjsPnUMXepo+h+9dHHHRXjyLeLVVQjT0aqVcf6
-         ftxyIe+3XVAosDeXUXaHQIYbMNr0T+LYcHcTycQ6lB3h6/fl2FJihL9xOVUJkmGBf2sG
-         KQrw==
-X-Gm-Message-State: AAQBX9emNlD/JhUO2Tbrs6E+m7oB0cm/bP9DvmEpzHPnJL8AZCjsXuG4
-	UNR6/ZqtSoyyoTsv8FdIv94kcw==
-X-Google-Smtp-Source: AKy350b0g044+MfIMYFBIarz3KOgjOGcfcYYACpoeHBupriobhjpp8ueHWz/AvH4sKT3Vf7PUgpPAg==
-X-Received: by 2002:adf:ef91:0:b0:2ce:a697:75c7 with SMTP id d17-20020adfef91000000b002cea69775c7mr15074416wro.33.1680083553394;
-        Wed, 29 Mar 2023 02:52:33 -0700 (PDT)
-Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id a18-20020a5d4d52000000b002d1e49cff35sm29667158wru.40.2023.03.29.02.52.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 29 Mar 2023 02:52:33 -0700 (PDT)
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Wed, 29 Mar 2023 11:52:20 +0200
-Subject: [PATCH RESEND 1/6] dt-bindings: memory-controllers:
- mediatek,smi-common: add mt8365
+	id 1phVWq-000Hqs-1D;
+	Wed, 29 Mar 2023 13:07:56 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D05BD660316A;
+	Wed, 29 Mar 2023 14:07:47 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1680095268;
+	bh=yGfVILKe7laFu/2YHoRttqj8pGUwtwyR33Lg1kmR68E=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=WVKmbqI9f/tOjmJbTXVwE2UHiYR7vuFTBriH3zaFHfmMCj3jcP46Df1s8kR8nW078
+	 iVCesM5eN2gRh0baQ3glN8f3NMriMe7wuKiMbBeguEfnOkrI6mBOxOFfqI0xnUSvQ/
+	 r6KYUg3SfGZ6+U3BZnycavTk5iaG/tGltcf7Ef9XVRo64FLmDQDnD7ZWifnHhiKqnj
+	 Cs2TgTkRdk8qO3FZ7j/wbxp18FQRHxqaRm5TYhuBi64n5T2xRM1W7ofAOqxwcl7qFt
+	 dAkfaikA9m5N94lSkhsUvL0wi40cwAEgK6QZZmxB9f1sQSoexW+ccU+MkAKnz3Kfog
+	 AmoGp5x4E7BiQ==
+Message-ID: <84dff623-c5e7-7f9f-19e1-54fb8c20d110@collabora.com>
+Date: Wed, 29 Mar 2023 15:07:45 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH v2] drm/mediatek: Add ovl_adaptor get format function
+To: "Nancy.Lin" <nancy.lin@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, singo.chang@mediatek.com,
+ shawn.sung@mediatek.com
+References: <20230329015916.21684-1-nancy.lin@mediatek.com>
+Content-Language: en-US
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230329015916.21684-1-nancy.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Message-Id: <20230207-iommu-support-v1-1-4a902f9aa412@baylibre.com>
-References: <20230207-iommu-support-v1-0-4a902f9aa412@baylibre.com>
-In-Reply-To: <20230207-iommu-support-v1-0-4a902f9aa412@baylibre.com>
-To: Yong Wu <yong.wu@mediatek.com>, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- Alexandre Mergnat <amergnat@baylibre.com>
-X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=913; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=2lmQpBSfKmkj53baZh+RDOWdyXIwY8mMHHkJ6yWng4A=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkJApf/J4/8wpCXgD5rDw3NQgdD8grhM9Af9YbqxIy
- yEBp/raJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZCQKXwAKCRArRkmdfjHURVC8EA
- CI4QEuomNhbASJLZdi5d/r5EegnsYbWHR8rkXNntq59Qwx/6Twleypy6HYlGUsG3WBFPio9aLGR8d5
- qMIChp6WqHEhdHWALqAILvjPM1Zi9FsvlEJCrzbqrkVcOE8L1MGpWwnGGJ8nV9fh6gGLJYdMzKFVOR
- bL0I6eaA54G3qtVqefcr7FnZHypqktPUkbw6F5e5u7a+zFne1k7SF+wJ9Ytu32qTcld4lpZ0OBxOdj
- EFVrFNQOLNsnIXT0b/ZsHtZVdyYDMJwLJBuHKvIoc/75hZEZN1i4fRSolP5KUCbsk66cvYUD5V4t/+
- i9GwcjvDR/LCi31daJLpX9watDEQuK22QfgOfh0X8lXekA2GL8FX5DAalJK0ArIXp+Vs9lQ8UNpLmJ
- 8fQdTiUKkK0lf+d4a8zlzIGn0iHT881mGYd/TyWbddIxGIrEezUsZ5Dy3j39OGvR7DWllONgmfeR7H
- 9QCIFZTfye7OXr8EmL8oZOkO9/cQC3lFpKdsH8zQ0bsPYjBvFyZFXL+5dSe4leNcc7QzlTMrHVOaYW
- CqN0xEsw2eY7vXsrNnCsp59zKI+o6g8vS1AXJAoYGnp1EvMiICLb8e8qp/zCKqla1PFG3Y1aWckrOU
- H7rUOpBDVsekJIG7DwOhuxiWb83tJQGD4iuhirFOwx9UnTpyEcW58f/amJkA==
-X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
- fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230329_025234_893160_1764E742 
-X-CRM114-Status: UNSURE (   8.55  )
+X-CRM114-CacheID: sfid-20230329_060752_643111_D96BD355 
+X-CRM114-Status: UNSURE (   8.22  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -114,30 +82,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add binding description for mediatek,mt8365-smi-common
+Il 29/03/23 03:59, Nancy.Lin ha scritto:
+> Add ovl_adaptor get_format and get_num_formats component function.
+> The two functions are need for getting the supported format in
+> mtk_plane_init().
+> 
+> Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
 
-Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
----
- .../devicetree/bindings/memory-controllers/mediatek,smi-common.yaml   | 4 ++++
- 1 file changed, 4 insertions(+)
+Small note:
 
-diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
-index a8fda30cccbb..d599a190952f 100644
---- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
-+++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
-@@ -49,6 +49,10 @@ properties:
-           - const: mediatek,mt7623-smi-common
-           - const: mediatek,mt2701-smi-common
- 
-+      - items:
-+          - const: mediatek,mt8365-smi-common
-+          - const: mediatek,mt8186-smi-common
-+
-   reg:
-     maxItems: 1
- 
+This commit depends on
+f287c66a6064 ("drm/mediatek: Refactor pixel format logic")
 
--- 
-2.25.1
+...that was already applied in the maintainer's tree.
 
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+[On MT8195 Cherry Tomato]
+Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+Regards,
+Angelo
 
