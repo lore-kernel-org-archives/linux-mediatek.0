@@ -4,66 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14B37C6FD18
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 18:33:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20BDDC761AF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 18:56:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cy2q+ft8CWmc/ApbDiy2CQxwBS77iZbrmWNYZinhU4Q=; b=sWJg7Vv6quIN0jWAD4mxTvmJwa
-	LnI1sUaNk7IH3OUvwr+gD0+jZl80iKWhuZBi+51OeafqznOCi+j73+Q/RdCgs0xiHvx9IFfMhazJ8
-	sholN+wFqbWa8HbZMoJmZHl74kq2rSwdYclAaiKOl2bPwyi9T2lGvoEblI3jrbAr47EaXoAhTnToN
-	PhXcuZecGAHIJCVUhZ7ecTL3+Twd93WjukdKotM5jaejCrf/sjU90fupGLBXn0aUIcwAYrH7r3e+D
-	EOh98H4/BYQcjZcgycOVF/cNM3rRHFw1I5KjCRFUzR+Vcr69LB5wGyTCz9j9nIFa+jPQpOel2gaiS
-	FLY8N31Q==;
+	bh=h5wIXafjJBUu3D4LSAUj0GIcGRcatkLZtE8r0tRjmyA=; b=GLebfKW8RPZyjtCd0GF8sJvKLI
+	j9nahGXM1f17CGmyUc5dT8d8QDzkx1rXQnyfyyHFZd9rrYm3L1W7+T9pyWFwRb2PfFcSQHU3FtpTb
+	KnODTtAR7Sa2xvBAY69E3RZqJm5sV4dNiJLf7NX3JCT4dBkNhXcJfDGXG552MTdyq2+dnYeLUr7pg
+	IDn3yKkG/hS1hwUwW0ia4Uf9hE5OmF9gdOaVHe3tQYJBjS95ZQRlz4D5mTouKVIexB8xC/40G7ZNG
+	it64VnW1N24faqJ3ezBsBR6ReI+gMRqt5/Rb1rtrS0JMH/zDZhw9RUCSl7BaUqSIkd/NewECGWufo
+	VGIb5Lrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phac5-001Tig-2v;
-	Wed, 29 Mar 2023 18:33:37 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1phayH-001Xbf-0w;
+	Wed, 29 Mar 2023 18:56:33 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phac3-001Th4-0F;
-	Wed, 29 Mar 2023 18:33:36 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1phabr-0005LO-05;
-	Wed, 29 Mar 2023 20:33:23 +0200
-Date: Wed, 29 Mar 2023 19:33:17 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	id 1phayC-001XZh-2C;
+	Wed, 29 Mar 2023 18:56:29 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 4035661DF4;
+	Wed, 29 Mar 2023 18:56:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F3C43C433EF;
+	Wed, 29 Mar 2023 18:56:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1680116183;
+	bh=HXlnVpI10yQIlEcYw/mudHsZ3gXy/LNv7OlOgGzlvCo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=r/n82JskLDsHJbUZu12GBUcu2gGix2fz4sd2X2x8w3ULvNZQRqKRpbDq0nlKOJgVV
+	 BBrwo8WjpC/zMHLgNhVvCBGtBG5mV7oWgpmplQXpiPR9zlnsHWhlnNneFZ/mYSB5LP
+	 kCfgzLip3XW8d9ePuehIM2ksgOtZ/LLKhP7SWZE+FsbxvUnaNX74tv72hDFyw+jjOk
+	 AkDF2qFdpm7Osm8uWaycdhOOwMnuxCYFTTVkEYHctB9rbTmtDpDg38HCHwAlONSXpG
+	 X4R19AIXsE0RhmcqGR4V7nt6mc9RygRaC0fi+9XUnbRh2FpmlmhWr6dETstzqk9AGe
+	 /e7iHwpTArQ5A==
+Date: Wed, 29 Mar 2023 20:56:17 +0200
+From: Wolfram Sang <wsa@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Benson Leung <bleung@chromium.org>, Guenter Roeck <groeck@chromium.org>,
+	Qii Wang <qii.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Sam Shih <Sam.Shih@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>
-Subject: Re: [RFC PATCH net-next v3 03/15] net: dsa: mt7530: use regmap to
- access switch register space
-Message-ID: <ZCSEbUt9kj8Ta6Yc@makrotopia.org>
-References: <cover.1680105013.git.daniel@makrotopia.org>
- <754322262cd754aee5916954b8e651989b229a09.1680105013.git.daniel@makrotopia.org>
- <7eb07ed2-2b1c-44fa-b029-0ecad7872fd2@lunn.ch>
+	Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Ard Biesheuvel <ardb@kernel.org>,
+	Michal Simek <michal.simek@xilinx.com>, linux-i2c@vger.kernel.org,
+	chrome-platform@lists.linux.dev, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-actions@lists.infradead.org
+Subject: Re: [PATCH 5/5] i2c: synquacer: mark OF related data as maybe unused
+Message-ID: <ZCSJ0WL3qAPOSCfW@shikoro>
+Mail-Followup-To: Wolfram Sang <wsa@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Benson Leung <bleung@chromium.org>,
+	Guenter Roeck <groeck@chromium.org>,
+	Qii Wang <qii.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Ard Biesheuvel <ardb@kernel.org>,
+	Michal Simek <michal.simek@xilinx.com>, linux-i2c@vger.kernel.org,
+	chrome-platform@lists.linux.dev, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-actions@lists.infradead.org
+References: <20230311111658.251951-1-krzysztof.kozlowski@linaro.org>
+ <20230311111658.251951-5-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="wsPfoFfi6QwaQ03k"
 Content-Disposition: inline
-In-Reply-To: <7eb07ed2-2b1c-44fa-b029-0ecad7872fd2@lunn.ch>
+In-Reply-To: <20230311111658.251951-5-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230329_113335_109121_80F299C5 
-X-CRM114-Status: GOOD (  15.02  )
+X-CRM114-CacheID: sfid-20230329_115628_796288_BFC4705B 
+X-CRM114-Status: GOOD (  11.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,33 +99,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 29, 2023 at 06:24:21PM +0200, Andrew Lunn wrote:
-> Thanks for splitting this patchset up. This is much easier to review.
-> 
-> > +static u32
-> > +mt7530_mii_read(struct mt7530_priv *priv, u32 reg)
-> > +{
-> > +	int ret;
-> > +	u32 val;
-> > +
-> > +	ret = regmap_read(priv->regmap, reg, &val);
-> > +	if (ret) {
-> > +		dev_err(priv->dev,
-> > +			"failed to read mt7530 register\n");
-> > +		return ret;
-> 
-> This is a u32 function. ret should be negative on error, which is
-> going to be turned positive in order to return a u32. So you probably
-> want to make this an int function.
 
-This is a pre-existing flaw in the code. As we are accessing 32-bit
-registers there has just never been any meaningful error handling.
-I guess the correct solution would be to not use the return value only
-to indicate success or error, and use an additional u32* parameter for
-the read value.
+--wsPfoFfi6QwaQ03k
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-However, I was hestitating to convert all the calls (they are many) to
-follow that improved paradigm.
+On Sat, Mar 11, 2023 at 12:16:58PM +0100, Krzysztof Kozlowski wrote:
+> The driver can be compile tested with !CONFIG_OF making certain data
+> unused:
+>=20
+>   drivers/i2c/busses/i2c-synquacer.c:632:34: error: =E2=80=98synquacer_i2=
+c_dt_ids=E2=80=99 defined but not used [-Werror=3Dunused-const-variable=3D]
+>=20
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Should I?
+Applied to for-next, thanks!
+
+
+--wsPfoFfi6QwaQ03k
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmQkic0ACgkQFA3kzBSg
+KbaUqA//SXKPTQPt3ontC5GZ3AJxvRMP8lq7ZRcBKhzmpMscUAWUAKevZaX8TyIr
+oclg1mI+fV2fSttmp3tTN/Wvwh0rh3XKwFQKOQxg4QSQ5+hbDVEMM6oVEHuEWIcC
+qPC82bB5uPuyHIEjODENEVlv1918Vfovu+pr9ubFCnIJNR5FIFEyir80CoSCT+a4
+LTRldEcdnpZtNZ6FT8VHEnjIEAlEtNlXywmaF3MhJYHwWXM+pvz9w7W04gBpHkUp
+VF2EgQmOglALnYi2sb8lXh3OH/Y8RoeWqZmAv6Mb2rxYiA6VCd9xAjFnNbA0zmNF
+UNC/lhKzkCvRT1B7TxHep89KaIic0LclyNRmQiHbCrv9GIGdsESLi7efzJMTVhst
+QvLVcjpAr42mYRQ6usrZFKFcyQvsZENStfZgMcZwz85dpt78UNowMXudBflg2YQl
+LNBFMh1GruspQ/3NhG+xHyt5T4G6w22XBHivcOpOga6LIp9qSskv01nf0iDmvrwM
+QKouUwsKFN9cSojtKwRHX0rKmyAJlVjdZq1JAlSHBR9Pfqa8UrLO0XLgxV9FpiA8
+fuM3sSMIh2iswPQLyR/wIWotpfgQumP1dE8ePZeypQ3XPDvTpFfuJ4YUJ2jLaX3Y
+PLILL559KYCpGgw/53UPdWTdyMp3JAofEL0Bwsqc7VVuqTLgYTU=
+=TgSi
+-----END PGP SIGNATURE-----
+
+--wsPfoFfi6QwaQ03k--
 
