@@ -4,95 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E4E0C6FD18
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 15:57:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1989C74A5B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 15:57:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Mv45vqNNvk7gfjj9ywv5t87xL9EGo+L1vyvtzDS68LU=; b=P4ZDhL2XmlEWvt
-	E2yIpV69kJEo9e4M0OxRNdhX2rRePm0d7OB+hyRD0bOTB8NPt0jKY8oGKXNOOqDpfXwdq/9MQfft/
-	cWrbZkwFMYFqJpan1gMhOeUFAOcBaVG4AfsaHLHMfB2jhqGcSDYHc6TgK3qW+fObn0rQfZXM0XATO
-	uFDfqJRtnkYvUb9fxfTJOMfdsJ65WkPc5+aCaVjnXGDqq27vsI4INIs+kf8Gh6d9Qit5iKCksi2HM
-	f1ZbO6SWsWbv8qr1fbuSsA/rhUKhRGGCvSVof6h8daYHCVgi2SMF9TKW005RzKx8BK8jua2r5EybG
-	/FITNWKIqorNl/TWOVjA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=FF4fLbskvvxrngKMlYefGzTEqPfnLtcZPTH9/ay67ek=; b=WU9aZ8w1eNxr2qBP6sVhUvJPlM
+	skDqssdKyzfvPpATl2grYw7+0JTa1CJy/LudbbAB4UrStKG3VoPhNWbDmFiacfOwMfAjjIUB358Jm
+	Rg7qs//VRwj2mapFyI/gJ1RaeSPQjGgfn1NVFZoltuMlPvwfi3ZKblSx4U4XINHqHmzYran9A9fa/
+	GqFVgR75h+cIUjUeqXx3fSnzjLYQ9IUu2ZdDauFnONPdA30TsDyUuIgIoYOna25QqDUlk88dJEFcP
+	34iNtk7A9N4cNjCzrDkonrBJqdka3hHUosOqPbe1dTt8is7NKqTLqvlViFQRAiyrv058sVoKErIxF
+	EqL+UqpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phYAq-000v3P-2Z;
-	Wed, 29 Mar 2023 15:57:20 +0000
-Received: from mail-ed1-f48.google.com ([209.85.208.48])
+	id 1phYAv-000v5j-2t;
+	Wed, 29 Mar 2023 15:57:25 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phYAm-000v16-0k;
-	Wed, 29 Mar 2023 15:57:17 +0000
-Received: by mail-ed1-f48.google.com with SMTP id ek18so65300250edb.6;
-        Wed, 29 Mar 2023 08:57:12 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680105431;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :reply-to:in-reply-to:references:mime-version:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=Mv45vqNNvk7gfjj9ywv5t87xL9EGo+L1vyvtzDS68LU=;
-        b=wan2cXi0N+Pl6l5DqJjs1dkI3WZFA2l1dqNedFmIXDTME+KLzgwwBph4luGoOActwJ
-         c85baZwuaalxqGhD9rxvyLQiPcbPPhw1jRC24ZvPQ/qfpsSFkM+73GLFkauD/KVVtzGr
-         vUqJi6pQifCVKS2IloADkOnxwuQgKcLbLz5EOw+kj+j8inmU8fonO2lXqd6jNBtmrkLo
-         DNAic+kDawgbj9/FGJzzNG9D6G/5ATi2+WMKnBjBEiumW3CKBalsZRr4Im7MJhUovoyU
-         KFDGJF73GS00I8BxgBB4Bdx6Sis1bDkZDdeTGit+/rCeTq08N9Z7pujD3YT1V6CGgxBC
-         +yNg==
-X-Gm-Message-State: AAQBX9dIJ/jpSYsChhLjfzGsfj5NISG1C9pr9XNMEeCX1ID3fXdTArzu
-	yfnAMfcAokOgk2VtDBOOE7d37GJwGAAMb5Tz
-X-Google-Smtp-Source: AKy350Zn6h38w2yjxfvIrrw/9HTWdRKBDOF7Mr35oHitHjDVXxEoWMU2diDNrqh6/N1lGRTd/+utjw==
-X-Received: by 2002:aa7:c859:0:b0:4fb:78a0:eabe with SMTP id g25-20020aa7c859000000b004fb78a0eabemr20880731edt.14.1680105431338;
-        Wed, 29 Mar 2023 08:57:11 -0700 (PDT)
-Received: from mail-wr1-f44.google.com (mail-wr1-f44.google.com. [209.85.221.44])
-        by smtp.gmail.com with ESMTPSA id v6-20020a50d086000000b004fb00831851sm17086281edd.66.2023.03.29.08.57.11
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 29 Mar 2023 08:57:11 -0700 (PDT)
-Received: by mail-wr1-f44.google.com with SMTP id y14so16282158wrq.4;
-        Wed, 29 Mar 2023 08:57:11 -0700 (PDT)
-X-Received: by 2002:a5d:591c:0:b0:2ca:4533:5d6a with SMTP id
- v28-20020a5d591c000000b002ca45335d6amr4154237wrd.7.1680105410028; Wed, 29 Mar
- 2023 08:56:50 -0700 (PDT)
+	id 1phYAr-000v2N-0T;
+	Wed, 29 Mar 2023 15:57:22 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1phYAh-0003Jq-1t;
+	Wed, 29 Mar 2023 17:57:12 +0200
+Date: Wed, 29 Mar 2023 16:57:04 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Sam Shih <Sam.Shih@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
+	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>
+Subject: [RFC PATCH net-next v3 00/15] net: dsa: add support for MT7988
+Message-ID: <cover.1680105013.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-References: <20230329-dt-cpu-header-cleanups-v1-0-581e2605fe47@kernel.org> <20230329-dt-cpu-header-cleanups-v1-6-581e2605fe47@kernel.org>
-In-Reply-To: <20230329-dt-cpu-header-cleanups-v1-6-581e2605fe47@kernel.org>
-From: Chen-Yu Tsai <wens@csie.org>
-Date: Wed, 29 Mar 2023 23:56:38 +0800
-X-Gmail-Original-Message-ID: <CAGb2v64tNZa_LCUpHBbBUdpftB_Dms=oHcb7ZAD42qL-ov73hw@mail.gmail.com>
-Message-ID: <CAGb2v64tNZa_LCUpHBbBUdpftB_Dms=oHcb7ZAD42qL-ov73hw@mail.gmail.com>
-Subject: Re: [PATCH 06/19] ARM: sunxi: Drop of_device.h include
-To: Rob Herring <robh@kernel.org>
-Cc: "David S. Miller" <davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>, 
-	Frank Rowand <frowand.list@gmail.com>, Russell King <linux@armlinux.org.uk>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	Paul Walmsley <paul.walmsley@sifive.com>, Palmer Dabbelt <palmer@dabbelt.com>, 
-	Albert Ou <aou@eecs.berkeley.edu>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	"Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, 
-	Thomas Gleixner <tglx@linutronix.de>, Amit Daniel Kachhap <amit.kachhap@gmail.com>, 
-	Viresh Kumar <viresh.kumar@linaro.org>, Lukasz Luba <lukasz.luba@arm.com>, 
-	Amit Kucheria <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>, 
-	Christophe Leroy <christophe.leroy@csgroup.eu>, Thierry Reding <thierry.reding@gmail.com>, 
-	Jonathan Hunter <jonathanh@nvidia.com>, Yangtao Li <tiny.windzz@gmail.com>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Sudeep Holla <sudeep.holla@arm.com>, 
-	Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, 
-	Konrad Dybcio <konrad.dybcio@linaro.org>, Anup Patel <anup@brainfault.org>, 
-	Huacai Chen <chenhuacai@kernel.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>, 
-	Marc Zyngier <maz@kernel.org>, Viresh Kumar <vireshk@kernel.org>, Nishanth Menon <nm@ti.com>, 
-	Stephen Boyd <sboyd@kernel.org>, sparclinux@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-sunxi@lists.linux.dev, linux-riscv@lists.infradead.org, 
-	linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linuxppc-dev@lists.ozlabs.org, linux-tegra@vger.kernel.org, 
-	linux-arm-msm@vger.kernel.org, linux-mips@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230329_085716_267190_23F05C1F 
-X-CRM114-Status: GOOD (  17.91  )
+X-CRM114-CacheID: sfid-20230329_085721_189889_F1BFA88A 
+X-CRM114-Status: GOOD (  12.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,43 +69,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: wens@csie.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 29, 2023 at 11:53=E2=80=AFPM Rob Herring <robh@kernel.org> wrot=
-e:
->
-> Now that of_cpu_device_node_get() is defined in of.h, of_device.h is just
-> implicitly including other includes, and is no longer needed. Just drop
-> including of_device.h as of.h is already included.
->
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
-> Please ack and I will take the series via the DT tree.
+The MediaTek MT7988 SoC comes with a built-in switch very similar to
+previous MT7530 and MT7531. However, the switch address space is mapped
+into the SoCs memory space rather than being connected via MDIO.
+Using MMIO simplifies register access and also removes the need for a bus
+lock, and for that reason also makes interrupt handling more light-weight.
 
-Acked-by: Chen-Yu Tsai <wens@csie.org>
+Note that this is different from previous SoCs like MT7621 and MT7623N
+which also came with an integrated MT7530-like switch which yet had to be
+accessed via MDIO.
 
-I doubt this file would ever see any more changes.
+Split-off the part of the driver registering an MDIO driver, then add
+another module acting as MMIO/platform driver.
 
-> ---
->  arch/arm/mach-sunxi/mc_smp.c | 1 -
->  1 file changed, 1 deletion(-)
->
-> diff --git a/arch/arm/mach-sunxi/mc_smp.c b/arch/arm/mach-sunxi/mc_smp.c
-> index 26cbce135338..cb63921232a6 100644
-> --- a/arch/arm/mach-sunxi/mc_smp.c
-> +++ b/arch/arm/mach-sunxi/mc_smp.c
-> @@ -19,7 +19,6 @@
->  #include <linux/irqchip/arm-gic.h>
->  #include <linux/of.h>
->  #include <linux/of_address.h>
-> -#include <linux/of_device.h>
->  #include <linux/smp.h>
->
->  #include <asm/cacheflush.h>
->
-> --
-> 2.39.2
->
+Changes since v2:
+ * split into many small commits to ease review
+ * introduce helper functions to reduce code duplication
+ * use helpers for locking to make lock-skipping easier and less ugly
+   to implement.
+ * add dt-bindings for mediatek,mt7988-switch
+
+Changes since initial RFC:
+ * use regmap for register access and move register access to bus-
+   specific driver
+ * move initialization of MT7531 SGMII PCS to MDIO driver
+
+Daniel Golle (15):
+  net: dsa: mt7530: refactor SGMII PCS creation
+  net: dsa: mt7530: use unlocked regmap accessors
+  net: dsa: mt7530: use regmap to access switch register space
+  net: dsa: mt7530: move SGMII PCS creation to mt7530_probe function
+  net: dsa: mt7530: introduce mutex helpers
+  net: dsa: mt7530: move p5_intf_modes() function to mt7530.c
+  net: dsa: mt7530: introduce mt7530_probe_common helper function
+  net: dsa: mt7530: introduce mt7530_remove_common helper function
+  net: dsa: mt7530: split-off common parts from mt7531_setup
+  net: dsa: mt7530: introduce separate MDIO driver
+  net: dsa: mt7530: skip locking if MDIO bus isn't present
+  net: dsa: mt7530: add support for single-chip reset line
+  net: dsa: mt7530: add support for 10G link modes for CPU port
+  net: dsa: mt7530: introduce driver for MT7988 built-in switch
+  dt-bindings: net: dsa: mediatek,mt7530: add mediatek,mt7988-switch
+
+ .../bindings/net/dsa/mediatek,mt7530.yaml     |  26 +-
+ MAINTAINERS                                   |   3 +
+ drivers/net/dsa/Kconfig                       |  28 +-
+ drivers/net/dsa/Makefile                      |   4 +-
+ drivers/net/dsa/mt7530-mdio.c                 | 242 ++++++++
+ drivers/net/dsa/mt7530-mmio.c                 |  96 ++++
+ drivers/net/dsa/mt7530.c                      | 519 +++++++++---------
+ drivers/net/dsa/mt7530.h                      |  38 +-
+ 8 files changed, 653 insertions(+), 303 deletions(-)
+ create mode 100644 drivers/net/dsa/mt7530-mdio.c
+ create mode 100644 drivers/net/dsa/mt7530-mmio.c
+
+
+base-commit: 86e2eca4ddedc07d639c44c990e1c220cac3741e
+-- 
+2.39.2
+
 
