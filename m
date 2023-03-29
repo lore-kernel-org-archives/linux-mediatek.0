@@ -4,81 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F003CC74A5B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 18:10:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09861C74A5B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 18:15:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=s36Q4sLQX/3/tv2niFl6Gc9T++Xctk19QhnwqMt3BVM=; b=jTQ3Z7sQ7Oij7BeIxBebvrkaMp
-	Gg2vVXMWzSXIs93JLcoiI7jViudNE14xHDVtXbfwefO7mYjRaJEt2fRQOgDCQOsU2atsG4xhRYEnZ
-	BmY+QEQQ6xWj5YKsMp/HBi41XHM2p6a/7gVljpy+2vYn5JgvJT3rzmXESv8r4zoMT73AueykM7xpF
-	qKdwyYWDah0PcE0xlo/h14pr47OT2gbuyxAfy7nnnryf2P2xiNZfC6AxhIhE4n7CrQUvRpkL0JDFa
-	kYGTrNB6schxUuMdB+7upSFfjzpcWPLqpr6nn2sp+YBpExMGg4zFy2rSJfmoDRf3psKWr/KybGhw+
-	cSEGQ9uA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eWqUJJaC9tmMMdC1Ekuu/HdQwZ7icKsrZFntE1EHDus=; b=uYE76iWQJ2lZOrjb9dVQbhGWhH
+	Ss187hsk8P5QyUjuMWvlSXSVCoQZ430YJbvtcUJzK13lUrM3fBJEX+MHYV99Wz1AqP0oYoEtBHHdB
+	NxyOnSr0rA4U1cbivEAoipQXsUS9NuBRmvuoZPz/hyWC7ucr6oFEKQGcMgEGYrRWu7JCNEjCh83OV
+	gxLEa+8Kb938e8ZUCnYnVX9M8fVEVTAVPkTKaYtl9DmYTUY0Q+UrxiJSf1f5tnatvltJe8vm5okA8
+	HZLBGyFFqkCRMjCCSy3kTPI472cHKX5AulXqJOJUG+uAQ3wP4P75laKbhwlDUzheUb3UIvbFTRM/2
+	qOzgZLSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phaFx-001QMF-1A;
-	Wed, 29 Mar 2023 18:10:45 +0000
-Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phaFu-001QLI-1s
-	for linux-mediatek@lists.infradead.org;
-	Wed, 29 Mar 2023 18:10:43 +0000
-Received: by mail-yw1-x1133.google.com with SMTP id 00721157ae682-544787916d9so307810667b3.13
-        for <linux-mediatek@lists.infradead.org>; Wed, 29 Mar 2023 11:10:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=amarulasolutions.com; s=google; t=1680113440;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=s36Q4sLQX/3/tv2niFl6Gc9T++Xctk19QhnwqMt3BVM=;
-        b=eDsYeqiG8GB4aZVHJzDU7byR1P1jPt7YE7V+7LrQkBjkHGKR65terpAGMEbNbrpWtc
-         GbKOZDyCq7ZL/+Zsg31N3BVfxEvsJ1GDaWJFB38pSjVUW4/6WGSR96i/6pIpJUY1T9+N
-         2W7sklR7qOx9HkWIJmhgVq8bUgKpEeVJ7TTmU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680113440;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=s36Q4sLQX/3/tv2niFl6Gc9T++Xctk19QhnwqMt3BVM=;
-        b=Xz86wK0gE946dQdDMJYDfKAzrccgdmqYl/QZdDQ/3lA//M/jn4jUu1gnQgyw7tYV6I
-         kLCIdtugfE2L0poU8lTK0X+4EqyEwdqQNkF250QoFbCs406xv2moOegX5YY+MgqkVy3n
-         sZzlK1ehGXgG/+iPu47TuCLsjeww85S1wY4tZl/xqtTXHNR6Chb4ZypL38Ngzs/vKxph
-         Aw9BUEFv5t/npDy1dhJ6JU/MZCgFEUF7QL53cQhXOFGY8DacUNuGGJSU93b9txCalFTY
-         /Sq0aJpSQIv7B/a5vtZ0nBH2guDUWK7NSGAlbkCPGWipACVOs1OYjecFXVFa159qn/mE
-         3LMA==
-X-Gm-Message-State: AAQBX9chIHpKfTskt/Ul5hushnLA+O4CFbftjvckyk87MPRyL0hrG+8i
-	I7ibH6KkSJ6KYoAgzmxJFh0WSjEmeGkg4Ez7C6KqEA==
-X-Google-Smtp-Source: AKy350bTV90Nmmdqq5XdDMT52Ufu5ut5fzXMHi+iq0KHhNlusnr1XWTmvpO5LoXs+iXfO3xl7HbVrgeRFLebGR+jpH0=
-X-Received: by 2002:a81:ac46:0:b0:544:6828:3c09 with SMTP id
- z6-20020a81ac46000000b0054468283c09mr10157919ywj.0.1680113440045; Wed, 29 Mar
- 2023 11:10:40 -0700 (PDT)
+	id 1phaKI-001R75-23;
+	Wed, 29 Mar 2023 18:15:14 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1phaKE-001R66-2Z;
+	Wed, 29 Mar 2023 18:15:12 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id B965B2F4;
+	Wed, 29 Mar 2023 11:15:50 -0700 (PDT)
+Received: from bogus (unknown [10.57.52.160])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 5F9453F6C4;
+	Wed, 29 Mar 2023 11:14:57 -0700 (PDT)
+Date: Wed, 29 Mar 2023 19:14:23 +0100
+From: Sudeep Holla <sudeep.holla@arm.com>
+To: Rob Herring <robh@kernel.org>
+Cc: "David S. Miller" <davem@davemloft.net>,
+	Rob Herring <robh+dt@kernel.org>,
+	Sudeep Holla <sudeep.holla@arm.com>,
+	Frank Rowand <frowand.list@gmail.com>,
+	Russell King <linux@armlinux.org.uk>, Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Albert Ou <aou@eecs.berkeley.edu>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@linaro.org>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Amit Daniel Kachhap <amit.kachhap@gmail.com>,
+	Viresh Kumar <viresh.kumar@linaro.org>,
+	Lukasz Luba <lukasz.luba@arm.com>, Amit Kucheria <amitk@kernel.org>,
+	Zhang Rui <rui.zhang@intel.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Michael Ellerman <mpe@ellerman.id.au>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Christophe Leroy <christophe.leroy@csgroup.eu>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Yangtao Li <tiny.windzz@gmail.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Anup Patel <anup@brainfault.org>,
+	Huacai Chen <chenhuacai@kernel.org>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	Marc Zyngier <maz@kernel.org>, Viresh Kumar <vireshk@kernel.org>,
+	Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>,
+	sparclinux@vger.kernel.org, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-sunxi@lists.linux.dev, linux-riscv@lists.infradead.org,
+	linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linuxppc-dev@lists.ozlabs.org, linux-tegra@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org, linux-mips@vger.kernel.org
+Subject: Re: [PATCH 04/19] of: Move CPU node related functions to their own
+ file
+Message-ID: <20230329181423.6e2z2giwkgdvhshn@bogus>
+References: <20230329-dt-cpu-header-cleanups-v1-0-581e2605fe47@kernel.org>
+ <20230329-dt-cpu-header-cleanups-v1-4-581e2605fe47@kernel.org>
 MIME-Version: 1.0
-References: <20230218111712.2380225-1-treapking@chromium.org>
-In-Reply-To: <20230218111712.2380225-1-treapking@chromium.org>
-From: Jagan Teki <jagan@amarulasolutions.com>
-Date: Wed, 29 Mar 2023 23:40:28 +0530
-Message-ID: <CAMty3ZD3SY-WCtYK0dexdLxCk8d+2tJ=D9xb5uR06jPGCd=56g@mail.gmail.com>
-Subject: Re: [PATCH v3 0/5] Add generic-display-mux driver and bindings
-To: Pin-yen Lin <treapking@chromium.org>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Benson Leung <bleung@chromium.org>, 
-	chrome-platform@lists.linux.dev, Nicolas Boichat <drinkcat@chromium.org>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, linux-kernel@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, 
-	devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	Guenter Roeck <groeck@chromium.org>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230329-dt-cpu-header-cleanups-v1-4-581e2605fe47@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230329_111042_656480_B05F34BB 
-X-CRM114-Status: GOOD (  10.63  )
+X-CRM114-CacheID: sfid-20230329_111510_881991_65678D71 
+X-CRM114-Status: GOOD (  11.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,28 +103,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Feb 18, 2023 at 4:47=E2=80=AFPM Pin-yen Lin <treapking@chromium.org=
-> wrote:
+On Wed, Mar 29, 2023 at 10:52:01AM -0500, Rob Herring wrote:
+> drivers/of/base.c is quite long and we've accumulated a number of CPU
+> node functions. Let's move them to a new file, cpu.c, along with the
+> lone of_cpu_device_node_get() in of_device.h. Moving the declaration has
+> no effect yet as of.h is included by of_device.h. This serves as
+> preparation to disentangle the includes in of_device.h and
+> of_platform.h.
 >
-> This series is developed for and tested on MT8173 board, and the layout i=
-s:
->
->                                   /-- anx7688
-> -- MT8173 HDMI bridge -- GPIO mux
->                                   \-- native HDMI
 
-What is the part number of this GPIO mux? Does mux gpio interrupt
-based and able to switch output HDMI and DP. If so, how this gpio
-interrupt is different than the HPD in native HDMI? I mean does HPD
-have any detection bottlenecks with mux gpio interrupt?
+Makes sense to have its own file for CPUs, I am sure there will be more
+additions 😉.
 
-I do have GPIO Mux that input DSI and two outputs DMD/HDMI Input and
-HDMI Out. 2x1 with 1x2 mux.
+FWIW,
 
-I'm thinking having a generic mux to select the specific out number of
-outputs with associated interface outputs can be a viable solution to
-address all use cases here.
+Reviewed-by: Sudeep Holla <sudeep.holla@arm.com>
 
-Thanks,
-Jagan.
+-- 
+Regards,
+Sudeep
 
