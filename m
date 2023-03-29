@@ -4,70 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D574EC6FD18
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 07:04:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49C1AC74A5B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 07:13:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=L8S2VPO1BHTRjj+EeuISd/97JupfkUS9QELUdXcrrDY=; b=z/+MHk3yLdlHLJWyCOGt/HoCTr
-	dsNSAaLOGXmgQCE6NViJYdGSm4H2TIIwp1RwOL2LGGwFJm0CohOSgbU8XFAnmJ46ibq30ciiEluHS
-	wRu6XKultzXc7QZKdAtzozkPP66mFlAwRrCIWNLmmqu/5yWDqxGnfdaK+sEi5LrCIxDHxUtgv6acX
-	Is8D5pbeHaH9SDFrMpVntA7HZX4e2lE+RyARbygmAkmQkbLCTwBMX43aN8sr0Jnf/tJ558Go1yhie
-	Nih94MEKqN60a7/EMWMQBccXp++MUBJsUOg6OewChEOX5GgBmOv9IQA0tkQEnSU9A2OclneE2cl5Z
-	h7EtEWaA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tjz4YY6475MDr5O8cC77sTPGv7vBqMb5/BBOLn/SVfo=; b=xxrTDHDMPYYjJ0QBu0FGixzDPg
+	ItTn5235EdzvOvDi01yyTKEAb9BW8My5MQ7/j1uDEwMlast+Aumt0W1mUgc94Zqmxz9J6Gz/362sc
+	jQR2b6Q9vLXQLRqPYv694ixJ/VTTJQjJ/cztaPIZgVW4vM2WQvR+WZBDNOSajjSWK+zwykcfdU30W
+	dxDJESjwD/xxbolddZuQ4x/9GyUVV5K60U1+9Bm7TM644e8L9gsSEKp1LJm1F/himCormFXHqXeeM
+	64ITnM60v37+Q7dWRIiPkuvp3UWKZLMRa/RivXlMNIvO91uAX7q6uvXEEaSRonmUyX641en5NMf5o
+	cz7ESDng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phPqu-00GrZt-31;
-	Wed, 29 Mar 2023 07:04:12 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1phPzn-00GseN-14;
+	Wed, 29 Mar 2023 07:13:23 +0000
+Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phPqr-00GrZI-10;
-	Wed, 29 Mar 2023 07:04:10 +0000
-X-UUID: e1b1b590cdff11edb7d8d11f642b8e78-20230329
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=L8S2VPO1BHTRjj+EeuISd/97JupfkUS9QELUdXcrrDY=;
-	b=oEWctwD61s8RcEOAyiZKLWe2eM0v2GcUvkqL+uc1Hi42r+Pocftr5bUg6uuxsfSOZ7nzlspsrLZbPRBvmmXjyTKzhQHSltFKT1GrgpPO8UV8Ugj1QIzfBEDzpJ7sYg6q7ea7tD3gAESifkxS6QKnE8/z+7PDp4onIZdJu39Hx9Q=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:a575e30b-78bc-4ab7-a115-9bd0e1742227,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:120426c,CLOUDID:919bb4b4-beed-4dfc-bd9c-e1b22fa6ccc4,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: e1b1b590cdff11edb7d8d11f642b8e78-20230329
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <xinlei.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 376491686; Wed, 29 Mar 2023 00:04:00 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Wed, 29 Mar 2023 14:43:26 +0800
-Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Wed, 29 Mar 2023 14:43:26 +0800
-From: <xinlei.lee@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
-	<daniel@ffwll.ch>, <matthias.bgg@gmail.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Xinlei Lee
-	<xinlei.lee@mediatek.com>
-Subject: [PATCH] drm/mediatek: dp: change the aux retries times when receiving AUX_DEFER
-Date: Wed, 29 Mar 2023 14:43:23 +0800
-Message-ID: <1680072203-10394-1-git-send-email-xinlei.lee@mediatek.com>
-X-Mailer: git-send-email 2.6.4
+	id 1phPzj-00Gscb-0G
+	for linux-mediatek@lists.infradead.org;
+	Wed, 29 Mar 2023 07:13:21 +0000
+Received: by mail-lj1-x22a.google.com with SMTP id 20so15097299lju.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 29 Mar 2023 00:13:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1680073997;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:to:subject:user-agent:mime-version:date:message-id:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=tjz4YY6475MDr5O8cC77sTPGv7vBqMb5/BBOLn/SVfo=;
+        b=MRtmY6Sh0Urs9hIQEFX25PAVvlSXcMe+uCuWyT0FSHfRII2WE6jEemrt3H/G97TI8g
+         UaO0l6ZMoo4Dw0W8Bu2wDUhT68ebAGzQn5ud84/RJC26Q5aHkW443xy9ifd/mJ22N7Ex
+         vkRgCmSLtUp+BKq/Jo78BLRkrH2a77RS4aD/NOWUkBeAQ6RXWQTWqxIoJewmPI8+mjuo
+         B07ke0nHNqkz99Lw+Z5uVD2NkIxAH8CgjxW21q3pDMuXgofb9yox5n5IkvSHPTUvqdzO
+         T4ypTATDANkBPDFLxe0SzFMnsOOrl/ZEp0Ud0aiJGqas5o3aHapXgjglf5kpIn2/Ex+o
+         YI7A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680073997;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=tjz4YY6475MDr5O8cC77sTPGv7vBqMb5/BBOLn/SVfo=;
+        b=Tb2dXXKK4CxOZJ4nfKrNMcpcNm0VBK7K64ldJX1aQYNbdqB8E1vAeJXz5mDYC/l6PX
+         N5o4PjBdjLgUVfKAyvTtjVBMKyboOKtc647Io/cF4jnIe53gfNsmpZZDOymBI1W3EIvO
+         /rhfDuI5Yo9k3pYUGmO4yPdK8gEVwQcYlJiuptnYGq3Xv2FMwZ98aiseOi//n0w+wZu9
+         /DYHNWPescVjqWs28u3Bkwq1ZWgPvJiZ8Ia0VoPjGhy+o7nUQZ9sku50b+vHIGG+7T7l
+         +NFc3hJNu8MtIsEC2cLlTiSI35x2cIWhYfeJyOkoMgk96+WJeut22/KXS4UIPpoPp2/w
+         GJGA==
+X-Gm-Message-State: AAQBX9d3R5bjG4B6IceNRIafWsRHEzPmrlM0NuJMC37Fw94Ra7XsqZq1
+	6Gxtlgo0zMikjzI4/CJoz6emSw==
+X-Google-Smtp-Source: AKy350Z3U5ebYnTlRO47AoMVt8i3K/fuetG/Bfiu2U0Js/vspmuVMfQmnKLBM1VvfiYcYbjVFKhcKw==
+X-Received: by 2002:a2e:9d0c:0:b0:29e:4fa5:1708 with SMTP id t12-20020a2e9d0c000000b0029e4fa51708mr5731177lji.3.1680073996921;
+        Wed, 29 Mar 2023 00:13:16 -0700 (PDT)
+Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
+        by smtp.gmail.com with ESMTPSA id x26-20020a2e9dda000000b0029bd4365c95sm4697519ljj.87.2023.03.29.00.13.15
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 29 Mar 2023 00:13:16 -0700 (PDT)
+Message-ID: <6e1f4885-e8b9-8031-c25f-a9b18c187e56@linaro.org>
+Date: Wed, 29 Mar 2023 09:13:15 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH 02/16] spi: mtk-pmif: Drop of_match_ptr for ID table
+To: Stephen Boyd <sboyd@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
+ Andi Shyti <andi@etezian.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>, Daniel Mack <daniel@zonque.org>,
+ Haojian Zhuang <haojian.zhuang@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ Jerome Brunet <jbrunet@baylibre.com>, Kamal Dasu <kdasu.kdev@gmail.com>,
+ Kevin Hilman <khilman@baylibre.com>, Mark Brown <broonie@kernel.org>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Robert Jarzmik <robert.jarzmik@free.fr>, linux-amlogic@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-spi@vger.kernel.org
+References: <20230310222857.315629-1-krzysztof.kozlowski@linaro.org>
+ <20230310222857.315629-2-krzysztof.kozlowski@linaro.org>
+ <7e58e5c86bd602932b762f9364209e31.sboyd@kernel.org>
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <7e58e5c86bd602932b762f9364209e31.sboyd@kernel.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230329_000409_367945_05B49F9B 
-X-CRM114-Status: GOOD (  11.65  )
+X-CRM114-CacheID: sfid-20230329_001319_121301_67323FE9 
+X-CRM114-Status: GOOD (  11.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,70 +108,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Xinlei Lee <xinlei.lee@mediatek.com>
+On 29/03/2023 06:17, Stephen Boyd wrote:
+> Quoting Krzysztof Kozlowski (2023-03-10 14:28:43)
+>> The driver can match only via the DT table so the table should be always
+>> used and the of_match_ptr does not have any sense (this also allows ACPI
+>> matching via PRP0001, even though it is not relevant here).
+>>
+>>   drivers/spmi/spmi-mtk-pmif.c:517:34: error: ‘mtk_spmi_match_table’ defined but not used [-Werror=unused-const-variable=]
+>>
+>> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+>> ---
+> 
+> I'll fix the subject.
+> 
+> Applied to spmi-next
 
-DP 1.4a Section 2.8.7.1.5.6.1:
-A DP Source device shall retry at least seven times upon receiving
-AUX_DEFER before giving up the AUX transaction.
+Thanks. Apologies for the typo in the subject.
 
-The drm_dp_i2c_do_msg() function in the drm_dp_helper.c file will
-judge the status of the msg->reply parameter passed to aux_transfer
-ange-the-aux-retries-times-when-re.patchfor different processing.
-
-Fixes: f70ac097a2cf ("drm/mediatek: Add MT8195 Embedded DisplayPort driver")
-Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_dp.c | 12 +++++-------
- 1 file changed, 5 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index 1f94fcc144d3..767b71da31a4 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -806,10 +806,9 @@ static int mtk_dp_aux_wait_for_completion(struct mtk_dp *mtk_dp, bool is_read)
- }
- 
- static int mtk_dp_aux_do_transfer(struct mtk_dp *mtk_dp, bool is_read, u8 cmd,
--				  u32 addr, u8 *buf, size_t length)
-+				  u32 addr, u8 *buf, size_t length, u8 *reply_cmd)
- {
- 	int ret;
--	u32 reply_cmd;
- 
- 	if (is_read && (length > DP_AUX_MAX_PAYLOAD_BYTES ||
- 			(cmd == DP_AUX_NATIVE_READ && !length)))
-@@ -841,10 +840,10 @@ static int mtk_dp_aux_do_transfer(struct mtk_dp *mtk_dp, bool is_read, u8 cmd,
- 	/* Wait for feedback from sink device. */
- 	ret = mtk_dp_aux_wait_for_completion(mtk_dp, is_read);
- 
--	reply_cmd = mtk_dp_read(mtk_dp, MTK_DP_AUX_P0_3624) &
--		    AUX_RX_REPLY_COMMAND_AUX_TX_P0_MASK;
-+	*reply_cmd = mtk_dp_read(mtk_dp, MTK_DP_AUX_P0_3624) &
-+		     AUX_RX_REPLY_COMMAND_AUX_TX_P0_MASK;
- 
--	if (ret || reply_cmd) {
-+	if (ret) {
- 		u32 phy_status = mtk_dp_read(mtk_dp, MTK_DP_AUX_P0_3628) &
- 				 AUX_RX_PHY_STATE_AUX_TX_P0_MASK;
- 		if (phy_status != AUX_RX_PHY_STATE_AUX_TX_P0_RX_IDLE) {
-@@ -2070,7 +2069,7 @@ static ssize_t mtk_dp_aux_transfer(struct drm_dp_aux *mtk_aux,
- 		ret = mtk_dp_aux_do_transfer(mtk_dp, is_read, request,
- 					     msg->address + accessed_bytes,
- 					     msg->buffer + accessed_bytes,
--					     to_access);
-+					     to_access, &msg->reply);
- 
- 		if (ret) {
- 			drm_info(mtk_dp->drm_dev,
-@@ -2080,7 +2079,6 @@ static ssize_t mtk_dp_aux_transfer(struct drm_dp_aux *mtk_aux,
- 		accessed_bytes += to_access;
- 	} while (accessed_bytes < msg->size);
- 
--	msg->reply = DP_AUX_NATIVE_REPLY_ACK | DP_AUX_I2C_REPLY_ACK;
- 	return msg->size;
- err:
- 	msg->reply = DP_AUX_NATIVE_REPLY_NACK | DP_AUX_I2C_REPLY_NACK;
--- 
-2.18.0
+Best regards,
+Krzysztof
 
 
