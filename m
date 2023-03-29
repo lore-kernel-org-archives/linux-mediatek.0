@@ -4,66 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1E9BC761AF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 16:03:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A54A6C761AF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 16:05:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2ZzZTeTbACO9jNrXV7gkXRIT2/Za9jKiU5TxwHhZyjc=; b=nwzQsf3awtwq4xyUduQY6idofS
-	qpJ4MOMYNveqdP5l3EUfGek9IA/V1cpyJ0EW8C8GMUiCslndz7qbd0ChozW25J8SmaxIwMv4e/vUH
-	mKrUFKZAAsgj1UofDmvhDT7C4qn+sh06nOKdahcqIPCccYESuGpa7rtSfBPSNxQvRPE0xZxOMqN2d
-	OycqH5aVoVVQPTOa/JWM4sXSBUjkopp10W24gs0jxh7xWQbRiu3pyI6D5nD+hf+nK9/WwKcM5TufN
-	6u1jGZzFj74n84POxrJpkuel8mvUjZdtmVgZ605wqItcNS6SttBD16a+87S78ZC5wHH/pOkOa4Km4
-	QH2+K1WQ==;
+	bh=oXQRlBCYnqGo9Fi48YDM5Iz/n3EKV6wgfQDls4v49ZQ=; b=TjhK7+KoUAMzV09yI1FfnKtcmY
+	3IQDPPdQ0Y8+j4jAtJX3w+Y9XhzRHL5O2eQWqQfhu3onFLHFCXSK2o6zQxRqfEfnJRqYJocbWUhnI
+	U/RspX/yZjZKDc2xLiP/RI/zqhe1o6tx9lDV2Bu1ZKsPY1h1mEKry+eBCsYYSpY24Hi206o/UHtr4
+	LCkjP+zuD3hihcKd2tuB5pPDIfAzBvaefleaYIuj0upLE9moJXSjWnR0PtPb3lb2eKsdRrBma+1yk
+	EH02yyv3c+3ZOtab8xV/BP2bT0xxAxbGhTcuxtYxOATp/+0NDo+jWeS0n4YJWmzoAamvJ8ItLN4P0
+	9R3nVgeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phYGN-000z6g-0O;
-	Wed, 29 Mar 2023 16:03:03 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1phYIs-0010K6-2k;
+	Wed, 29 Mar 2023 16:05:38 +0000
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phYGK-000z4L-0O;
-	Wed, 29 Mar 2023 16:03:01 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1phYGD-0003Yb-19;
-	Wed, 29 Mar 2023 18:02:54 +0200
-Date: Wed, 29 Mar 2023 17:02:47 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: devicetree@vger.kernel.org, netdev@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>
-Cc: Sam Shih <Sam.Shih@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
-	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>
-Subject: [RFC PATCH net-next v3 15/15] dt-bindings: net: dsa:
- mediatek,mt7530: add mediatek,mt7988-switch
-Message-ID: <9b504e3e88807bfb62022c0877451933d30abeb5.1680105013.git.daniel@makrotopia.org>
-References: <cover.1680105013.git.daniel@makrotopia.org>
+	id 1phYIn-0010GO-27;
+	Wed, 29 Mar 2023 16:05:36 +0000
+Received: by mail-ed1-x529.google.com with SMTP id r11so65428193edd.5;
+        Wed, 29 Mar 2023 09:05:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1680105931;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=oXQRlBCYnqGo9Fi48YDM5Iz/n3EKV6wgfQDls4v49ZQ=;
+        b=ZP8azEYR3T/kmocgq8bSZlNTouSdAv0pqNbONNvK6pjIOYfvW0EWRaDVO44E5sowbA
+         4MGZKJiXz7VE108ciJQNXn5/hHquTqMqhb6tRaq9zC55es7aV4eyXx5sWcvFrwBw8u31
+         DcptBNfTU6x5mTKuHF7vCiSdOphP7f1dZ5xyT7jA8pE036EK0r7Mwyj+wpf0qOtr4/dO
+         PtsdhtBZV/jUZWdd6KSP5EkVxa9qFL2fQNK4V/Imeno6KN+BWXvR2ysex446RXd1SjcJ
+         RuPjjhn8s3ln2xq7NpQb+o1cGn+mn2pwwyW/FTHZVbW4BbukRommLkvptqsBpXQc4gTR
+         WTBQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680105931;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=oXQRlBCYnqGo9Fi48YDM5Iz/n3EKV6wgfQDls4v49ZQ=;
+        b=yHVKynP5S1reWV74KoCTwcqelMppDJ443/k7tGqQ3kIL2YMDkbY7fTF/pgSksSvc/a
+         i0v3sOfRb2xN7m2iKSchnCJJ/LiwfFz4QXxIAO+1tXM4Jm32vqiz+VYxnYrrVska3bZc
+         OPzGoH7XAOy9ZhdIjUDUZX3OL7FQaM0ulOpM9ew0ZRL6p6mUCaB4RIt2sW0SV74if8yj
+         G+mhyIMdiqLzVl8/A7ZNOzztNxh/bpokdCATdkn9cJvc6gluPNwG6M01TZvIG0IhSQez
+         3vF1QxilNNifa9y5py0LPXuEz7PMoB7eGrsYUmaXBykRbb5KfvsK+wGzVCcHEGvXp+n8
+         1KPA==
+X-Gm-Message-State: AAQBX9c3XGaCYukvo/xtZtZVobQvufDiUMOBb/vjfNjht93xQm7/yp7d
+	fqNOYWnrtUvV4bJZzLDlRY4=
+X-Google-Smtp-Source: AKy350Y0SxvEseTuQQeEwplPrjnDboy+i5rUViT0BUXK5Dv5qulkowom3JNTJJ/XP46pJIz4L/hzEA==
+X-Received: by 2002:a17:906:f1c7:b0:933:c474:420b with SMTP id gx7-20020a170906f1c700b00933c474420bmr20841888ejb.19.1680105930843;
+        Wed, 29 Mar 2023 09:05:30 -0700 (PDT)
+Received: from jernej-laptop.localnet (82-149-1-233.dynamic.telemach.net. [82.149.1.233])
+        by smtp.gmail.com with ESMTPSA id l19-20020a170906079300b00932ed432475sm15417251ejc.124.2023.03.29.09.05.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 29 Mar 2023 09:05:30 -0700 (PDT)
+From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
+To: "David S. Miller" <davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>,
+ Frank Rowand <frowand.list@gmail.com>, Russell King <linux@armlinux.org.uk>,
+ Chen-Yu Tsai <wens@csie.org>, Samuel Holland <samuel@sholland.org>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "Rafael J. Wysocki" <rafael@kernel.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Amit Daniel Kachhap <amit.kachhap@gmail.com>,
+ Viresh Kumar <viresh.kumar@linaro.org>, Lukasz Luba <lukasz.luba@arm.com>,
+ Amit Kucheria <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>,
+ Christophe Leroy <christophe.leroy@csgroup.eu>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Yangtao Li <tiny.windzz@gmail.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ Sudeep Holla <sudeep.holla@arm.com>, Andy Gross <agross@kernel.org>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>, Anup Patel <anup@brainfault.org>,
+ Huacai Chen <chenhuacai@kernel.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Marc Zyngier <maz@kernel.org>, Viresh Kumar <vireshk@kernel.org>,
+ Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>,
+ Rob Herring <robh@kernel.org>
+Cc: sparclinux@vger.kernel.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-riscv@lists.infradead.org,
+ linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linuxppc-dev@lists.ozlabs.org, linux-tegra@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, linux-mips@vger.kernel.org
+Subject: Re: [PATCH 15/19] cpufreq: sun50i: Add explicit include for cpu.h
+Date: Wed, 29 Mar 2023 18:05:27 +0200
+Message-ID: <2672894.mvXUDI8C0e@jernej-laptop>
+In-Reply-To: <20230329-dt-cpu-header-cleanups-v1-15-581e2605fe47@kernel.org>
+References:  <20230329-dt-cpu-header-cleanups-v1-0-581e2605fe47@kernel.org>
+ <20230329-dt-cpu-header-cleanups-v1-15-581e2605fe47@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1680105013.git.daniel@makrotopia.org>
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230329_090300_155248_CB467A5F 
-X-CRM114-Status: GOOD (  12.49  )
+X-CRM114-CacheID: sfid-20230329_090533_717075_9D297157 
+X-CRM114-Status: GOOD (  10.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,76 +119,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
-Message-ID: <20230329160247.kC0D7xCXCiqR_13MK6lPTYs6gBvJt9pJn3fs1hi81Us@z>
 
-Add documentation for the built-in switch which can be found in the
-MediaTek MT7988 SoC.
+Dne sreda, 29. marec 2023 ob 17:52:12 CEST je Rob Herring napisal(a):
+> Removing the include of cpu.h from of_device.h causes an error:
+>=20
+> drivers/cpufreq/sun50i-cpufreq-nvmem.c:42:19: error: implicit declaration=
+ of
+> function =E2=80=98get_cpu_device=E2=80=99; did you mean =E2=80=98get_devi=
+ce=E2=80=99?
+> [-Werror=3Dimplicit-function-declaration]
+>=20
+> As of_device.h is not otherwise needed, it can be replaced with of.h
+> (also implicitly included).
+>=20
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
 
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
- .../bindings/net/dsa/mediatek,mt7530.yaml     | 26 +++++++++++++++++--
- 1 file changed, 24 insertions(+), 2 deletions(-)
+Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
 
-diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-index 5ae9cd8f99a24..15953f0e9d1a6 100644
---- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-@@ -11,16 +11,23 @@ maintainers:
-   - Landen Chao <Landen.Chao@mediatek.com>
-   - DENG Qingfang <dqfext@gmail.com>
-   - Sean Wang <sean.wang@mediatek.com>
-+  - Daniel Golle <daniel@makrotopia.org>
- 
- description: |
--  There are two versions of MT7530, standalone and in a multi-chip module.
-+  There are three versions of MT7530, standalone, in a multi-chip module and
-+  built-into a SoC.
- 
-   MT7530 is a part of the multi-chip module in MT7620AN, MT7620DA, MT7620DAN,
-   MT7620NN, MT7621AT, MT7621DAT, MT7621ST and MT7623AI SoCs.
- 
-+  The MT7988 SoC comes a built-in switch similar to MT7531 as well as 4 Gigabit
-+  Ethernet PHYs and the switch registers are directly mapped into SoC's memory
-+  map rather than using MDIO. It comes with an internally connected 10G CPU port
-+  and 4 user ports connected to the built-in Gigabit Ethernet PHYs.
-+
-   MT7530 in MT7620AN, MT7620DA, MT7620DAN and MT7620NN SoCs has got 10/100 PHYs
-   and the switch registers are directly mapped into SoC's memory map rather than
--  using MDIO. The DSA driver currently doesn't support this.
-+  using MDIO. The DSA driver currently doesn't support MT7620 variants.
- 
-   There is only the standalone version of MT7531.
- 
-@@ -81,6 +88,10 @@ properties:
-           Multi-chip module MT7530 in MT7621AT, MT7621DAT and MT7621ST SoCs
-         const: mediatek,mt7621
- 
-+      - description:
-+          Built-in switch of the MT7988 SoC
-+        const: mediatek,mt7988-switch
-+
-   reg:
-     maxItems: 1
- 
-@@ -268,6 +279,17 @@ allOf:
-       required:
-         - mediatek,mcm
- 
-+  - if:
-+      properties:
-+        compatible:
-+          const: mediatek,mt7988-switch
-+    then:
-+      $ref: "#/$defs/mt7530-dsa-port"
-+      properties:
-+        gpio-controller: false
-+        mediatek,mcm: false
-+        reset-names: false
-+
- unevaluatedProperties: false
- 
- examples:
--- 
-2.39.2
+Best regards,
+Jernej
+
 
 
