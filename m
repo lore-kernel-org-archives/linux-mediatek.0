@@ -4,37 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09BA5C74A5B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 19:05:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BBCAC761AF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 19:35:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W4ihrCozdY4CpOt1bqW3JpcyR0pVtnhYIbVfF7mP0Qk=; b=R6J2dA3gy0YZfoWJqZKZEcpLRL
-	ut2MVW6cYqNg8EfXsp3ogoIB/BxKYy78BenWrb5T54WqCqbHN2R19NFH1TcSQTpMLb7y4zXPDSCYy
-	DeUTsKhepqOrlOq+IJ7rVkQCyfBSSCxbtw2jRyxdRICNiuPMmiPtuMFS14lo+NRooeDJrkNasmWi1
-	WrccNPuxCfhtNGL+th/AA6EKnKCXPQ0wXK191dM9kABcxvbIPWBqM2AMQo4DbdT0HRJmSYyoW63x6
-	PgIv+1OIIjsrcYvQ6CIQ4Uayw6cPcWYxTVRsnDFbuSDDPKsTE/vA+m99NMy+PSPVX2Aa1FHamHG4o
-	gG1FFMfA==;
+	bh=9Ip60VxQO8vIEjsVQuk6WZlBLCQN328zDAYmxQho2Uk=; b=EXghI8XygvTHT5YKsbWgJNBg8N
+	5KRKYYD7YTdIBA8Znt6NpiOnO4TQ5EK6XlWGBGJQKOc6nEf+rYMM5TlHsfKebKeoXDUMkHwpS8ROL
+	nzY/Ixcaa99lrgRVblMzV9NzTytQ67iypDVaEmlCLCr6I5mojxKvt9gHTNQ7ufqp/oHh9FMgPV7JC
+	/X0k/tqoVjTyh+meWyRNvtIbG4PBMhIl2eod53TI+jw3ojlWbWBT9I3Z3ZT9rLfOspqpBB7t6l5zt
+	/yEMu+GrArYDU7cDUdBaKGPwZ96BUuRmDpJxow5aVGV7HGJV1UB9DFWrINn05K4F2MTb8r76mm8/V
+	SOiSCAnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phb6i-001ZUh-0s;
-	Wed, 29 Mar 2023 19:05:16 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1phbZy-001e1z-1x;
+	Wed, 29 Mar 2023 19:35:30 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phb6f-001ZTv-2M;
-	Wed, 29 Mar 2023 19:05:14 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1phb6a-0005fL-2y;
-	Wed, 29 Mar 2023 21:05:09 +0200
-Date: Wed, 29 Mar 2023 20:05:06 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Andrew Lunn <andrew@lunn.ch>
+	id 1phbZw-001e12-14;
+	Wed, 29 Mar 2023 19:35:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=9Ip60VxQO8vIEjsVQuk6WZlBLCQN328zDAYmxQho2Uk=; b=oNr9cPXYVHQF9aWQrgtHuUbaL4
+	rrNePszDIqfOYFfGJC50qIve5P6TNCg56eDFOWxZFl5EU4a6rvy6hSSeNXqQEUrqJjaeXThOcY7sP
+	yHibUzHcsx5RDU3sLn98Kg1qzVw5h5E6OXiPoAvByexD169ZM+yrl2MQni+L90RuZtF4=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1phbZl-008nTP-Sg; Wed, 29 Mar 2023 21:35:17 +0200
+Date: Wed, 29 Mar 2023 21:35:17 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Daniel Golle <daniel@makrotopia.org>
 Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
 	Florian Fainelli <f.fainelli@gmail.com>,
@@ -51,19 +56,20 @@ Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	Sam Shih <Sam.Shih@mediatek.com>,
 	Lorenzo Bianconi <lorenzo@kernel.org>,
 	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>
-Subject: Re: [RFC PATCH net-next v3 14/15] net: dsa: mt7530: introduce driver
- for MT7988 built-in switch
-Message-ID: <ZCSL4l/Fd37CgGBa@makrotopia.org>
+Subject: Re: [RFC PATCH net-next v3 03/15] net: dsa: mt7530: use regmap to
+ access switch register space
+Message-ID: <e8bb79ab-94d2-4e36-9b75-576a47e6c126@lunn.ch>
 References: <cover.1680105013.git.daniel@makrotopia.org>
- <371f0586e257d098993847e71d0c916a03c04191.1680105013.git.daniel@makrotopia.org>
- <8fe9c1b6-a533-4ad9-8a23-4f16547476ed@lunn.ch>
+ <754322262cd754aee5916954b8e651989b229a09.1680105013.git.daniel@makrotopia.org>
+ <7eb07ed2-2b1c-44fa-b029-0ecad7872fd2@lunn.ch>
+ <ZCSEbUt9kj8Ta6Yc@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <8fe9c1b6-a533-4ad9-8a23-4f16547476ed@lunn.ch>
+In-Reply-To: <ZCSEbUt9kj8Ta6Yc@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230329_120513_778943_C9CAE6FD 
-X-CRM114-Status: GOOD (  12.61  )
+X-CRM114-CacheID: sfid-20230329_123528_366469_8E507C1B 
+X-CRM114-Status: GOOD (  21.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,33 +84,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 29, 2023 at 06:57:54PM +0200, Andrew Lunn wrote:
-> > @@ -18,6 +18,7 @@ enum mt753x_id {
-> >  	ID_MT7530 = 0,
-> >  	ID_MT7621 = 1,
-> >  	ID_MT7531 = 2,
-> > +	ID_MT7988 = 3,
-> >  };
-> >  
-> >  #define	NUM_TRGMII_CTRL			5
-> > @@ -54,11 +55,11 @@ enum mt753x_id {
-> >  #define  MT7531_MIRROR_PORT_SET(x)	(((x) & MIRROR_MASK) << 16)
-> >  #define  MT7531_CPU_PMAP_MASK		GENMASK(7, 0)
-> >  
-> > -#define MT753X_MIRROR_REG(id)		(((id) == ID_MT7531) ? \
-> > +#define MT753X_MIRROR_REG(id)		((((id) == ID_MT7531) || ((id) == ID_MT7988)) ?	\
-> >  					 MT7531_CFC : MT7530_MFC)
-> > -#define MT753X_MIRROR_EN(id)		(((id) == ID_MT7531) ? \
-> > +#define MT753X_MIRROR_EN(id)		((((id) == ID_MT7531) || ((id) == ID_MT7988)) ?	\
-> >  					 MT7531_MIRROR_EN : MIRROR_EN)
-> > -#define MT753X_MIRROR_MASK(id)		(((id) == ID_MT7531) ? \
-> > +#define MT753X_MIRROR_MASK(id)		((((id) == ID_MT7531) || ((id) == ID_MT7988)) ?	\
-> >  					 MT7531_MIRROR_MASK : MIRROR_MASK)
+On Wed, Mar 29, 2023 at 07:33:17PM +0100, Daniel Golle wrote:
+> On Wed, Mar 29, 2023 at 06:24:21PM +0200, Andrew Lunn wrote:
+> > Thanks for splitting this patchset up. This is much easier to review.
+> > 
+> > > +static u32
+> > > +mt7530_mii_read(struct mt7530_priv *priv, u32 reg)
+> > > +{
+> > > +	int ret;
+> > > +	u32 val;
+> > > +
+> > > +	ret = regmap_read(priv->regmap, reg, &val);
+> > > +	if (ret) {
+> > > +		dev_err(priv->dev,
+> > > +			"failed to read mt7530 register\n");
+> > > +		return ret;
+> > 
+> > This is a u32 function. ret should be negative on error, which is
+> > going to be turned positive in order to return a u32. So you probably
+> > want to make this an int function.
 > 
-> Are there more devices coming soon? I'm just wondering if these should
-> change into static inline functions with a switch statement? The
-> current code is not going to scale too much more.
+> This is a pre-existing flaw in the code. As we are accessing 32-bit
+> registers there has just never been any meaningful error handling.
 
-Afaik no devices with different built-in switches are in the pipe at
-this time, so this should be fine for a while.
+O.K. At least i would not return the negative error code. Return 0, or
+0xdeadbeef or something. And consider adding a WARN_ON_ONCE() so it is very loud
+when it goes wrong.
+
+> I guess the correct solution would be to not use the return value only
+> to indicate success or error, and use an additional u32* parameter for
+> the read value.
+
+Yes, that is what mv88e6xxx does.
+
+> However, I was hestitating to convert all the calls (they are many) to
+> follow that improved paradigm.
+
+Yes, leave that for another time.
+
+     Andrew
 
