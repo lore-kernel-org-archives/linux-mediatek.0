@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D60E6C77B78
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 15:53:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1B40C87FE1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 15:53:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WurTN6TQClVnhKzRVCxCDshUnc0lAKMY5Mp4cC77h0Y=; b=0mQ6wEebHG5zxuoO4o4Io6N/y7
-	aw47mK0mNQnqkjqx6PPRX4cZJd6o3tzz3uXdhM8UIyXBPgJC1E6DKnSzXjOCB1ioj0/bLyehNdh6x
-	3XbyxhMtd3QaI1/DaazGXU91Gtj7tPYrUbe/WK/AiX2ykEPEg7+s7VZ/fXWeWWiGq7J5pNwx/WlHf
-	uwMKhZWo5zlRGsGTgneJMduVCtGfeyoKh3dYKvhG8oceo1d0HbixSlDkCURny0a+O4l731VvtATPA
-	nyYUFLPKpWhpYptfevn9ODyozi50vBZJOw4Pn5JwrfjtrbBrvZXaFtnSZVYpwmc22N76PfUaqYHYY
-	Kv/BlxQQ==;
+	bh=tOFzIiTcs5glICtXCi7orAKYw6mLzzis64IJ8Etn534=; b=T+Rm0jNHQBo+yPxlANUXdhv3V/
+	7lq/ln54163fhiHzkKcJmfWwOlvJAmYjhXTBdsn6SuMqsSpvWLHMCvBGlaINAPk6nSHPQSJYm1bOy
+	OY1sDRCQElantpIctc0xUDoNbIzP9xgnXl/Df3qy+g32NGILTvQWjhLtHHCIebKw2s2dwlnSP8Gpu
+	GoUn+wydEs12/RMvSdyKxOsFchV9CHPj3xMmkda4rtXL/eRLByvkFA2bPFauMvw1ONfsmdLqqdFZp
+	lj1AAIKDEanhdlhVPugstoNtNjNwZxCZDmF95+dRDJ+KUkyMPbNIKMBK84zPaqxhStqrZEq0q0GWD
+	uxJHnfxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phY7I-000t7x-1f;
-	Wed, 29 Mar 2023 15:53:40 +0000
-Received: from mail-oa1-f50.google.com ([209.85.160.50])
+	id 1phY7M-000tAc-01;
+	Wed, 29 Mar 2023 15:53:44 +0000
+Received: from mail-oo1-f48.google.com ([209.85.161.48])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phY6r-000sjV-1J;
-	Wed, 29 Mar 2023 15:53:14 +0000
-Received: by mail-oa1-f50.google.com with SMTP id 586e51a60fabf-17ab3a48158so16687094fac.1;
-        Wed, 29 Mar 2023 08:53:12 -0700 (PDT)
+	id 1phY6t-000slG-24;
+	Wed, 29 Mar 2023 15:53:16 +0000
+Received: by mail-oo1-f48.google.com with SMTP id p2-20020a056820044200b0053e5914a50fso1233309oou.2;
+        Wed, 29 Mar 2023 08:53:14 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680105192;
+        d=1e100.net; s=20210112; t=1680105194;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=WurTN6TQClVnhKzRVCxCDshUnc0lAKMY5Mp4cC77h0Y=;
-        b=f8znrAxYN2GzZSr25Ez+y2Yqvs4pPgsAdX7dwsR2fj92g9rhhZCYZEI0o6f2XbNHJl
-         8KWJ9FyoTlKej58yovm+SJAIj3KiC+hBEoFxoRLvfJSIrZIruk6KilzMuu/ZmgpORHTb
-         sqkgfwPFjMUuwqyzMXHNIYnLiKIsADJyO9E+TaGWTFpwYkNXpCM5XaJp6SaGDb3FYwCz
-         olwLc8LwxGxVZgRxpmU+f6uZXYpTZOuklZhcN816Hp3KTpz7s2gKWPMaF+dXDtYsxC6W
-         2FUAbhc+ELLBKNENeYS7OtM46RqGdHmEgtg+ecmS2Vzx/Qb/xDSChvCkiiX3xj21ZsUp
-         gArg==
-X-Gm-Message-State: AAQBX9errTOMwSj0ZpQKbxF+dnn6wzkrqnzeBo3uZrW7KBpt5lCdwrIB
-	gdshvzEvkehEU3Z72TCDJw==
-X-Google-Smtp-Source: AKy350Zo9NclgwNBZoANioCGcuLyMicsG3a/5+eN9bgHMpdMdqlYEHn7LZHT8hqlsIh4r2ZmsXlMnw==
-X-Received: by 2002:a05:6870:2194:b0:17e:cb7:29c0 with SMTP id l20-20020a056870219400b0017e0cb729c0mr13838293oae.13.1680105192039;
-        Wed, 29 Mar 2023 08:53:12 -0700 (PDT)
+        bh=tOFzIiTcs5glICtXCi7orAKYw6mLzzis64IJ8Etn534=;
+        b=4V8d0tBWvJKBB5o5WF2Bp8yWPWZUv9t8SOVRb6jUAjgAEnTfyiFoOCnfRAJqYVcnKg
+         wcfpTooIosbT71DYRF5hFCpcChB/yjBbdePyJf0qP54Dv48ZMa9nxA5LgwQFXb0HxnAW
+         sN6exEbSWMmcHHtRi2LJJF11tbjVSSMJ6Kx3B/xMeoB45nQO+95VAx9Mc+QMOYbK6wwM
+         ANo93hJZ0KQtFUW4GvbIgEHV/DZ/Vh52Hn+wjLs1AWF6Mzgfa1XrnfEOSELocJx4k6e0
+         lK4bqmweiAE0Kj4cNXrHRMFAsXbwBIqfxer371MjhE4ueKAX1cInBI45tcn8oRA8yCnF
+         TZbA==
+X-Gm-Message-State: AO0yUKUjHCZHQkkG2wbhpMkGm+h+QQn6cpzEtoZCWoCXhAUEI5BPrYkJ
+	UhDfEfZAh8jvXjNeZNP3fA==
+X-Google-Smtp-Source: AK7set9MAD4tg5pc/rHdBuixw1K3iao0K53LrjqhMjiHjl+aL1ahzPwsk7GYhgXBJpfdS1Uabklemg==
+X-Received: by 2002:a4a:41cb:0:b0:537:ad3c:d74f with SMTP id x194-20020a4a41cb000000b00537ad3cd74fmr9577499ooa.9.1680105194254;
+        Wed, 29 Mar 2023 08:53:14 -0700 (PDT)
 Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id aw8-20020a0568707f8800b001762d1bf6a9sm11897731oac.45.2023.03.29.08.53.10
+        by smtp.gmail.com with ESMTPSA id q125-20020a4a4b83000000b0051ffe0fe11bsm14001119ooa.6.2023.03.29.08.53.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 29 Mar 2023 08:53:11 -0700 (PDT)
-Received: (nullmailer pid 3198075 invoked by uid 1000);
+        Wed, 29 Mar 2023 08:53:13 -0700 (PDT)
+Received: (nullmailer pid 3198073 invoked by uid 1000);
 	Wed, 29 Mar 2023 15:52:45 -0000
 From: Rob Herring <robh@kernel.org>
-Date: Wed, 29 Mar 2023 10:52:04 -0500
-Subject: [PATCH 07/19] ARM: cpuidle: Drop of_device.h include
+Date: Wed, 29 Mar 2023 10:52:03 -0500
+Subject: [PATCH 06/19] ARM: sunxi: Drop of_device.h include
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20230329-dt-cpu-header-cleanups-v1-7-581e2605fe47@kernel.org>
+Message-Id: <20230329-dt-cpu-header-cleanups-v1-6-581e2605fe47@kernel.org>
 References: <20230329-dt-cpu-header-cleanups-v1-0-581e2605fe47@kernel.org>
 In-Reply-To: <20230329-dt-cpu-header-cleanups-v1-0-581e2605fe47@kernel.org>
 To: "David S. Miller" <davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>, 
@@ -83,7 +83,7 @@ To: "David S. Miller" <davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>,
 Cc: sparclinux@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev, linux-riscv@lists.infradead.org, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, linuxppc-dev@lists.ozlabs.org, linux-tegra@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-mips@vger.kernel.org
 X-Mailer: b4 0.13-dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230329_085313_443968_5A0FC888 
+X-CRM114-CacheID: sfid-20230329_085315_680948_3BD0A635 
 X-CRM114-Status: GOOD (  12.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -107,21 +107,21 @@ Signed-off-by: Rob Herring <robh@kernel.org>
 ---
 Please ack and I will take the series via the DT tree.
 ---
- arch/arm/kernel/cpuidle.c | 1 -
+ arch/arm/mach-sunxi/mc_smp.c | 1 -
  1 file changed, 1 deletion(-)
 
-diff --git a/arch/arm/kernel/cpuidle.c b/arch/arm/kernel/cpuidle.c
-index 437ff39f7808..fba1f8bb03b5 100644
---- a/arch/arm/kernel/cpuidle.c
-+++ b/arch/arm/kernel/cpuidle.c
-@@ -5,7 +5,6 @@
- 
- #include <linux/cpuidle.h>
+diff --git a/arch/arm/mach-sunxi/mc_smp.c b/arch/arm/mach-sunxi/mc_smp.c
+index 26cbce135338..cb63921232a6 100644
+--- a/arch/arm/mach-sunxi/mc_smp.c
++++ b/arch/arm/mach-sunxi/mc_smp.c
+@@ -19,7 +19,6 @@
+ #include <linux/irqchip/arm-gic.h>
  #include <linux/of.h>
+ #include <linux/of_address.h>
 -#include <linux/of_device.h>
- #include <asm/cpuidle.h>
+ #include <linux/smp.h>
  
- extern struct of_cpuidle_method __cpuidle_method_of_table[];
+ #include <asm/cacheflush.h>
 
 -- 
 2.39.2
