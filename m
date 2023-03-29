@@ -4,85 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBF94C6FD18
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 17:46:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F003CC74A5B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 18:10:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/ya68Y7BreYgp2xmW7R1eW3EwXPKdktm2mDTZy/1T50=; b=hIr1S9NyXx/EjPyHUE8gYbMyzV
-	uTkqCosdj5IGbBhsSYgacwNXupRHTUxa/MfgJKlXnkkGzAcHW947y2gD34H2HFl8kZ2E1E+jrRLty
-	7KHzRsDDNgoMU1jRf1fwTcA+CHLEC8uXvm/b83m4CQ8HAToj4r9lMD0r+W3QYhsMDec7FzY1WIykC
-	Mo/D7dPQJuLezN5v5B93kbr8L4MFI8zSr6MlAHSthCiv8BleaveMFqmsYeRfEUEWVeNduRQhRoq1F
-	IRyNbDdPAaKh1Qbtrg7efG0k7vQPxt27eiVzmyckYame5SP8yzhi3/TQo9xYVqy9wCsCo6ECUwIr5
-	ebto1flg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=s36Q4sLQX/3/tv2niFl6Gc9T++Xctk19QhnwqMt3BVM=; b=jTQ3Z7sQ7Oij7BeIxBebvrkaMp
+	Gg2vVXMWzSXIs93JLcoiI7jViudNE14xHDVtXbfwefO7mYjRaJEt2fRQOgDCQOsU2atsG4xhRYEnZ
+	BmY+QEQQ6xWj5YKsMp/HBi41XHM2p6a/7gVljpy+2vYn5JgvJT3rzmXESv8r4zoMT73AueykM7xpF
+	qKdwyYWDah0PcE0xlo/h14pr47OT2gbuyxAfy7nnnryf2P2xiNZfC6AxhIhE4n7CrQUvRpkL0JDFa
+	kYGTrNB6schxUuMdB+7upSFfjzpcWPLqpr6nn2sp+YBpExMGg4zFy2rSJfmoDRf3psKWr/KybGhw+
+	cSEGQ9uA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phZsH-001LRX-31;
-	Wed, 29 Mar 2023 17:46:17 +0000
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+	id 1phaFx-001QMF-1A;
+	Wed, 29 Mar 2023 18:10:45 +0000
+Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phZsE-001LPW-1i
+	id 1phaFu-001QLI-1s
 	for linux-mediatek@lists.infradead.org;
-	Wed, 29 Mar 2023 17:46:17 +0000
-Received: by mail-pl1-x630.google.com with SMTP id o2so15678620plg.4
-        for <linux-mediatek@lists.infradead.org>; Wed, 29 Mar 2023 10:46:12 -0700 (PDT)
+	Wed, 29 Mar 2023 18:10:43 +0000
+Received: by mail-yw1-x1133.google.com with SMTP id 00721157ae682-544787916d9so307810667b3.13
+        for <linux-mediatek@lists.infradead.org>; Wed, 29 Mar 2023 11:10:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1680111971;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=/ya68Y7BreYgp2xmW7R1eW3EwXPKdktm2mDTZy/1T50=;
-        b=dMJU+o+oi5o+BlxycSkAJ0Nk546Id6eOpKoQNZB4kNWrxcy8P5Z0Hpe1OpZa2jlPrs
-         86jfgpEltiydLSAwjAG0XTgcr9hNJY1nqiTUR8f8np+AteK+/jJmXPlZByoJTpNQewGB
-         4TPsQgzXU3IGOsIMY5xxs0JX00o+drI1epvCGJpQLLIlOyiGjtxDlVZb/gOlxptYYtrS
-         VZIg1/885K+tiiuxmBebY8YUEmLuREKhOizD0K2sr4jVyIHuCojsXp/OqJm+Mw7J1+lm
-         WZRMBk946CXWNCUoZf/c11Ma9Jq7EFi11/CRC9zFsPbPmMcmhC5GCWemYXxBhyJH7HoG
-         NxuA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680111971;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+        d=amarulasolutions.com; s=google; t=1680113440;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=/ya68Y7BreYgp2xmW7R1eW3EwXPKdktm2mDTZy/1T50=;
-        b=oOuRcLwqMZ2kUKnef3ixU4luyc/hlSQMwNou2QBhPQ8KzyWS5Iw+LPlQTkOzVci4a6
-         bmHE0p25MMviBFSlAyFC1wPgHNWpj2koB57vib5DKYBajH5362jBN6O8SAgYqBC01daG
-         sQ9l3a/MWrZlAXCQNFKk85PzEe0fmFmCxtwTz1aB+GmYFMS8G91WvmjVi1LCu/87vMmQ
-         TQ5jKmaC3ijfWPIblMpZo5BxKOobWPbjzcV2tmq++CrSjhR6yjk8XCFI9AJmegHL3rxT
-         ZIuuWqJMK/i3ugbQ0WSPNsQ0sU7eSSuLbIL3RrDsQqMzMRBR1twSaioRMIWFsEFaKNvs
-         gsUQ==
-X-Gm-Message-State: AAQBX9ep7e54AhpOC5KW2PkBBsH/Jnzqcya62iBLxwSoYPbH5jFdKYHz
-	GYK+TQED+FbcVOInlNAcNhJzQw==
-X-Google-Smtp-Source: AKy350Y7TSUjpvy5YPG38ymSokgkfiQGqTlx//VBy8VXDlp6/7VnzWJyCDUsV2h7z1S6+WJBJJyJ4w==
-X-Received: by 2002:a17:903:138e:b0:1a2:3ddc:6286 with SMTP id jx14-20020a170903138e00b001a23ddc6286mr12485764plb.49.1680111971487;
-        Wed, 29 Mar 2023 10:46:11 -0700 (PDT)
-Received: from p14s ([2604:3d09:148c:c800:6b79:83ab:5e33:50a5])
-        by smtp.gmail.com with ESMTPSA id v15-20020a1709028d8f00b001a055028d1asm23327162plo.1.2023.03.29.10.46.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 29 Mar 2023 10:46:11 -0700 (PDT)
-Date: Wed, 29 Mar 2023 11:46:08 -0600
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: Yu Zhe <yuzhe@nfschina.com>
-Cc: andersson@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, agross@kernel.org,
-	konrad.dybcio@linaro.org, mcoquelin.stm32@gmail.com,
-	alexandre.torgue@foss.st.com, linux-remoteproc@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	kernel-janitors@vger.kernel.org, liqiong@nfschina.com
-Subject: Re: [PATCH v4] remoteproc: remove unnecessary (void*) conversions
-Message-ID: <20230329174608.GB3374270@p14s>
-References: <20230328015749.1608-1-yuzhe@nfschina.com>
- <20230328024907.29791-1-yuzhe@nfschina.com>
+        bh=s36Q4sLQX/3/tv2niFl6Gc9T++Xctk19QhnwqMt3BVM=;
+        b=eDsYeqiG8GB4aZVHJzDU7byR1P1jPt7YE7V+7LrQkBjkHGKR65terpAGMEbNbrpWtc
+         GbKOZDyCq7ZL/+Zsg31N3BVfxEvsJ1GDaWJFB38pSjVUW4/6WGSR96i/6pIpJUY1T9+N
+         2W7sklR7qOx9HkWIJmhgVq8bUgKpEeVJ7TTmU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680113440;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=s36Q4sLQX/3/tv2niFl6Gc9T++Xctk19QhnwqMt3BVM=;
+        b=Xz86wK0gE946dQdDMJYDfKAzrccgdmqYl/QZdDQ/3lA//M/jn4jUu1gnQgyw7tYV6I
+         kLCIdtugfE2L0poU8lTK0X+4EqyEwdqQNkF250QoFbCs406xv2moOegX5YY+MgqkVy3n
+         sZzlK1ehGXgG/+iPu47TuCLsjeww85S1wY4tZl/xqtTXHNR6Chb4ZypL38Ngzs/vKxph
+         Aw9BUEFv5t/npDy1dhJ6JU/MZCgFEUF7QL53cQhXOFGY8DacUNuGGJSU93b9txCalFTY
+         /Sq0aJpSQIv7B/a5vtZ0nBH2guDUWK7NSGAlbkCPGWipACVOs1OYjecFXVFa159qn/mE
+         3LMA==
+X-Gm-Message-State: AAQBX9chIHpKfTskt/Ul5hushnLA+O4CFbftjvckyk87MPRyL0hrG+8i
+	I7ibH6KkSJ6KYoAgzmxJFh0WSjEmeGkg4Ez7C6KqEA==
+X-Google-Smtp-Source: AKy350bTV90Nmmdqq5XdDMT52Ufu5ut5fzXMHi+iq0KHhNlusnr1XWTmvpO5LoXs+iXfO3xl7HbVrgeRFLebGR+jpH0=
+X-Received: by 2002:a81:ac46:0:b0:544:6828:3c09 with SMTP id
+ z6-20020a81ac46000000b0054468283c09mr10157919ywj.0.1680113440045; Wed, 29 Mar
+ 2023 11:10:40 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230328024907.29791-1-yuzhe@nfschina.com>
+References: <20230218111712.2380225-1-treapking@chromium.org>
+In-Reply-To: <20230218111712.2380225-1-treapking@chromium.org>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Date: Wed, 29 Mar 2023 23:40:28 +0530
+Message-ID: <CAMty3ZD3SY-WCtYK0dexdLxCk8d+2tJ=D9xb5uR06jPGCd=56g@mail.gmail.com>
+Subject: Re: [PATCH v3 0/5] Add generic-display-mux driver and bindings
+To: Pin-yen Lin <treapking@chromium.org>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Benson Leung <bleung@chromium.org>, 
+	chrome-platform@lists.linux.dev, Nicolas Boichat <drinkcat@chromium.org>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, linux-kernel@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, 
+	devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	Guenter Roeck <groeck@chromium.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230329_104614_585664_58993F0B 
-X-CRM114-Status: GOOD (  23.43  )
+X-CRM114-CacheID: sfid-20230329_111042_656480_B05F34BB 
+X-CRM114-Status: GOOD (  10.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,415 +93,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 28, 2023 at 10:49:07AM +0800, Yu Zhe wrote:
-> Pointer variables of void * type do not require type cast.
-> 
-> Reported-by: kernel test robot <lkp@intel.com>
-> Link: https://lore.kernel.org/oe-kbuild-all/202303272213.jOYrwBZu-lkp@intel.com/
-> Signed-off-by: Yu Zhe <yuzhe@nfschina.com>
-> ---
-> 
-> v3->v4:
->  Drop wrong modifies
-> ---
->  drivers/remoteproc/da8xx_remoteproc.c   | 12 ++++++------
->  drivers/remoteproc/mtk_scp.c            | 12 ++++++------
->  drivers/remoteproc/qcom_q6v5_adsp.c     | 10 +++++-----
->  drivers/remoteproc/qcom_q6v5_mss.c      |  8 ++++----
->  drivers/remoteproc/qcom_q6v5_pas.c      | 14 +++++++-------
->  drivers/remoteproc/qcom_wcnss.c         | 10 +++++-----
->  drivers/remoteproc/xlnx_r5_remoteproc.c | 16 ++++++++--------
->  7 files changed, 41 insertions(+), 41 deletions(-)
+On Sat, Feb 18, 2023 at 4:47=E2=80=AFPM Pin-yen Lin <treapking@chromium.org=
+> wrote:
+>
+> This series is developed for and tested on MT8173 board, and the layout i=
+s:
+>
+>                                   /-- anx7688
+> -- MT8173 HDMI bridge -- GPIO mux
+>                                   \-- native HDMI
 
-This looks good to me but since I am pretty sure you have not compiled for all
-these platforms, I will wait a week to give time for the bots to find potential
-compilation warnings.
+What is the part number of this GPIO mux? Does mux gpio interrupt
+based and able to switch output HDMI and DP. If so, how this gpio
+interrupt is different than the HPD in native HDMI? I mean does HPD
+have any detection bottlenecks with mux gpio interrupt?
+
+I do have GPIO Mux that input DSI and two outputs DMD/HDMI Input and
+HDMI Out. 2x1 with 1x2 mux.
+
+I'm thinking having a generic mux to select the specific out number of
+outputs with associated interface outputs can be a viable solution to
+address all use cases here.
 
 Thanks,
-Mathieu
-
-> 
-> diff --git a/drivers/remoteproc/da8xx_remoteproc.c b/drivers/remoteproc/da8xx_remoteproc.c
-> index 98e0be9476a4..768217f0f5cd 100644
-> --- a/drivers/remoteproc/da8xx_remoteproc.c
-> +++ b/drivers/remoteproc/da8xx_remoteproc.c
-> @@ -84,7 +84,7 @@ struct da8xx_rproc {
->   */
->  static irqreturn_t handle_event(int irq, void *p)
->  {
-> -	struct rproc *rproc = (struct rproc *)p;
-> +	struct rproc *rproc = p;
->  
->  	/* Process incoming buffers on all our vrings */
->  	rproc_vq_interrupt(rproc, 0);
-> @@ -104,8 +104,8 @@ static irqreturn_t handle_event(int irq, void *p)
->   */
->  static irqreturn_t da8xx_rproc_callback(int irq, void *p)
->  {
-> -	struct rproc *rproc = (struct rproc *)p;
-> -	struct da8xx_rproc *drproc = (struct da8xx_rproc *)rproc->priv;
-> +	struct rproc *rproc = p;
-> +	struct da8xx_rproc *drproc = rproc->priv;
->  	u32 chipsig;
->  
->  	chipsig = readl(drproc->chipsig);
-> @@ -133,7 +133,7 @@ static irqreturn_t da8xx_rproc_callback(int irq, void *p)
->  static int da8xx_rproc_start(struct rproc *rproc)
->  {
->  	struct device *dev = rproc->dev.parent;
-> -	struct da8xx_rproc *drproc = (struct da8xx_rproc *)rproc->priv;
-> +	struct da8xx_rproc *drproc = rproc->priv;
->  	struct clk *dsp_clk = drproc->dsp_clk;
->  	struct reset_control *dsp_reset = drproc->dsp_reset;
->  	int ret;
-> @@ -183,7 +183,7 @@ static int da8xx_rproc_stop(struct rproc *rproc)
->  /* kick a virtqueue */
->  static void da8xx_rproc_kick(struct rproc *rproc, int vqid)
->  {
-> -	struct da8xx_rproc *drproc = (struct da8xx_rproc *)rproc->priv;
-> +	struct da8xx_rproc *drproc = rproc->priv;
->  
->  	/* Interrupt remote proc */
->  	writel(SYSCFG_CHIPSIG2, drproc->chipsig);
-> @@ -360,7 +360,7 @@ static int da8xx_rproc_probe(struct platform_device *pdev)
->  static int da8xx_rproc_remove(struct platform_device *pdev)
->  {
->  	struct rproc *rproc = platform_get_drvdata(pdev);
-> -	struct da8xx_rproc *drproc = (struct da8xx_rproc *)rproc->priv;
-> +	struct da8xx_rproc *drproc = rproc->priv;
->  	struct device *dev = &pdev->dev;
->  
->  	/*
-> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> index 0861b76f185f..e1d93e63d7df 100644
-> --- a/drivers/remoteproc/mtk_scp.c
-> +++ b/drivers/remoteproc/mtk_scp.c
-> @@ -74,8 +74,8 @@ static void scp_wdt_handler(struct mtk_scp *scp, u32 scp_to_host)
->  
->  static void scp_init_ipi_handler(void *data, unsigned int len, void *priv)
->  {
-> -	struct mtk_scp *scp = (struct mtk_scp *)priv;
-> -	struct scp_run *run = (struct scp_run *)data;
-> +	struct mtk_scp *scp = priv;
-> +	struct scp_run *run = data;
->  
->  	scp->run.signaled = run->signaled;
->  	strscpy(scp->run.fw_ver, run->fw_ver, SCP_FW_VER_LEN);
-> @@ -498,7 +498,7 @@ static int scp_parse_fw(struct rproc *rproc, const struct firmware *fw)
->  
->  static int scp_start(struct rproc *rproc)
->  {
-> -	struct mtk_scp *scp = (struct mtk_scp *)rproc->priv;
-> +	struct mtk_scp *scp = rproc->priv;
->  	struct device *dev = scp->dev;
->  	struct scp_run *run = &scp->run;
->  	int ret;
-> @@ -587,7 +587,7 @@ static void *mt8192_scp_da_to_va(struct mtk_scp *scp, u64 da, size_t len)
->  
->  static void *scp_da_to_va(struct rproc *rproc, u64 da, size_t len, bool *is_iomem)
->  {
-> -	struct mtk_scp *scp = (struct mtk_scp *)rproc->priv;
-> +	struct mtk_scp *scp = rproc->priv;
->  
->  	return scp->data->scp_da_to_va(scp, da, len);
->  }
-> @@ -627,7 +627,7 @@ static void mt8195_scp_stop(struct mtk_scp *scp)
->  
->  static int scp_stop(struct rproc *rproc)
->  {
-> -	struct mtk_scp *scp = (struct mtk_scp *)rproc->priv;
-> +	struct mtk_scp *scp = rproc->priv;
->  	int ret;
->  
->  	ret = clk_prepare_enable(scp->clk);
-> @@ -829,7 +829,7 @@ static int scp_probe(struct platform_device *pdev)
->  	if (!rproc)
->  		return dev_err_probe(dev, -ENOMEM, "unable to allocate remoteproc\n");
->  
-> -	scp = (struct mtk_scp *)rproc->priv;
-> +	scp = rproc->priv;
->  	scp->rproc = rproc;
->  	scp->dev = dev;
->  	scp->data = of_device_get_match_data(dev);
-> diff --git a/drivers/remoteproc/qcom_q6v5_adsp.c b/drivers/remoteproc/qcom_q6v5_adsp.c
-> index 08d8dad22ca7..d546ab9dc141 100644
-> --- a/drivers/remoteproc/qcom_q6v5_adsp.c
-> +++ b/drivers/remoteproc/qcom_q6v5_adsp.c
-> @@ -321,7 +321,7 @@ static int qcom_adsp_shutdown(struct qcom_adsp *adsp)
->  
->  static int adsp_load(struct rproc *rproc, const struct firmware *fw)
->  {
-> -	struct qcom_adsp *adsp = (struct qcom_adsp *)rproc->priv;
-> +	struct qcom_adsp *adsp = rproc->priv;
->  	int ret;
->  
->  	ret = qcom_mdt_load_no_init(adsp->dev, fw, rproc->firmware, 0,
-> @@ -379,7 +379,7 @@ static int adsp_map_carveout(struct rproc *rproc)
->  
->  static int adsp_start(struct rproc *rproc)
->  {
-> -	struct qcom_adsp *adsp = (struct qcom_adsp *)rproc->priv;
-> +	struct qcom_adsp *adsp = rproc->priv;
->  	int ret;
->  	unsigned int val;
->  
-> @@ -469,7 +469,7 @@ static void qcom_adsp_pil_handover(struct qcom_q6v5 *q6v5)
->  
->  static int adsp_stop(struct rproc *rproc)
->  {
-> -	struct qcom_adsp *adsp = (struct qcom_adsp *)rproc->priv;
-> +	struct qcom_adsp *adsp = rproc->priv;
->  	int handover;
->  	int ret;
->  
-> @@ -492,7 +492,7 @@ static int adsp_stop(struct rproc *rproc)
->  
->  static void *adsp_da_to_va(struct rproc *rproc, u64 da, size_t len, bool *is_iomem)
->  {
-> -	struct qcom_adsp *adsp = (struct qcom_adsp *)rproc->priv;
-> +	struct qcom_adsp *adsp = rproc->priv;
->  	int offset;
->  
->  	offset = da - adsp->mem_reloc;
-> @@ -696,7 +696,7 @@ static int adsp_probe(struct platform_device *pdev)
->  	rproc->has_iommu = desc->has_iommu;
->  	rproc_coredump_set_elf_info(rproc, ELFCLASS32, EM_NONE);
->  
-> -	adsp = (struct qcom_adsp *)rproc->priv;
-> +	adsp = rproc->priv;
->  	adsp->dev = &pdev->dev;
->  	adsp->rproc = rproc;
->  	adsp->info_name = desc->sysmon_name;
-> diff --git a/drivers/remoteproc/qcom_q6v5_mss.c b/drivers/remoteproc/qcom_q6v5_mss.c
-> index ab053084f7a2..e7a67c8c16a0 100644
-> --- a/drivers/remoteproc/qcom_q6v5_mss.c
-> +++ b/drivers/remoteproc/qcom_q6v5_mss.c
-> @@ -1562,7 +1562,7 @@ static void qcom_q6v5_dump_segment(struct rproc *rproc,
->  
->  static int q6v5_start(struct rproc *rproc)
->  {
-> -	struct q6v5 *qproc = (struct q6v5 *)rproc->priv;
-> +	struct q6v5 *qproc = rproc->priv;
->  	int xfermemop_ret;
->  	int ret;
->  
-> @@ -1604,7 +1604,7 @@ static int q6v5_start(struct rproc *rproc)
->  
->  static int q6v5_stop(struct rproc *rproc)
->  {
-> -	struct q6v5 *qproc = (struct q6v5 *)rproc->priv;
-> +	struct q6v5 *qproc = rproc->priv;
->  	int ret;
->  
->  	ret = qcom_q6v5_request_stop(&qproc->q6v5, qproc->sysmon);
-> @@ -1662,7 +1662,7 @@ static int qcom_q6v5_register_dump_segments(struct rproc *rproc,
->  
->  static unsigned long q6v5_panic(struct rproc *rproc)
->  {
-> -	struct q6v5 *qproc = (struct q6v5 *)rproc->priv;
-> +	struct q6v5 *qproc = rproc->priv;
->  
->  	return qcom_q6v5_panic(&qproc->q6v5);
->  }
-> @@ -1977,7 +1977,7 @@ static int q6v5_probe(struct platform_device *pdev)
->  	rproc->auto_boot = false;
->  	rproc_coredump_set_elf_info(rproc, ELFCLASS32, EM_NONE);
->  
-> -	qproc = (struct q6v5 *)rproc->priv;
-> +	qproc = rproc->priv;
->  	qproc->dev = &pdev->dev;
->  	qproc->rproc = rproc;
->  	qproc->hexagon_mdt_image = "modem.mdt";
-> diff --git a/drivers/remoteproc/qcom_q6v5_pas.c b/drivers/remoteproc/qcom_q6v5_pas.c
-> index 0871108fb4dc..8eec88119fdd 100644
-> --- a/drivers/remoteproc/qcom_q6v5_pas.c
-> +++ b/drivers/remoteproc/qcom_q6v5_pas.c
-> @@ -186,7 +186,7 @@ static int adsp_shutdown_poll_decrypt(struct qcom_adsp *adsp)
->  
->  static int adsp_unprepare(struct rproc *rproc)
->  {
-> -	struct qcom_adsp *adsp = (struct qcom_adsp *)rproc->priv;
-> +	struct qcom_adsp *adsp = rproc->priv;
->  
->  	/*
->  	 * adsp_load() did pass pas_metadata to the SCM driver for storing
-> @@ -203,7 +203,7 @@ static int adsp_unprepare(struct rproc *rproc)
->  
->  static int adsp_load(struct rproc *rproc, const struct firmware *fw)
->  {
-> -	struct qcom_adsp *adsp = (struct qcom_adsp *)rproc->priv;
-> +	struct qcom_adsp *adsp = rproc->priv;
->  	int ret;
->  
->  	/* Store firmware handle to be used in adsp_start() */
-> @@ -244,7 +244,7 @@ static int adsp_load(struct rproc *rproc, const struct firmware *fw)
->  
->  static int adsp_start(struct rproc *rproc)
->  {
-> -	struct qcom_adsp *adsp = (struct qcom_adsp *)rproc->priv;
-> +	struct qcom_adsp *adsp = rproc->priv;
->  	int ret;
->  
->  	ret = qcom_q6v5_prepare(&adsp->q6v5);
-> @@ -360,7 +360,7 @@ static void qcom_pas_handover(struct qcom_q6v5 *q6v5)
->  
->  static int adsp_stop(struct rproc *rproc)
->  {
-> -	struct qcom_adsp *adsp = (struct qcom_adsp *)rproc->priv;
-> +	struct qcom_adsp *adsp = rproc->priv;
->  	int handover;
->  	int ret;
->  
-> @@ -390,7 +390,7 @@ static int adsp_stop(struct rproc *rproc)
->  
->  static void *adsp_da_to_va(struct rproc *rproc, u64 da, size_t len, bool *is_iomem)
->  {
-> -	struct qcom_adsp *adsp = (struct qcom_adsp *)rproc->priv;
-> +	struct qcom_adsp *adsp = rproc->priv;
->  	int offset;
->  
->  	offset = da - adsp->mem_reloc;
-> @@ -405,7 +405,7 @@ static void *adsp_da_to_va(struct rproc *rproc, u64 da, size_t len, bool *is_iom
->  
->  static unsigned long adsp_panic(struct rproc *rproc)
->  {
-> -	struct qcom_adsp *adsp = (struct qcom_adsp *)rproc->priv;
-> +	struct qcom_adsp *adsp = rproc->priv;
->  
->  	return qcom_q6v5_panic(&adsp->q6v5);
->  }
-> @@ -683,7 +683,7 @@ static int adsp_probe(struct platform_device *pdev)
->  	rproc->auto_boot = desc->auto_boot;
->  	rproc_coredump_set_elf_info(rproc, ELFCLASS32, EM_NONE);
->  
-> -	adsp = (struct qcom_adsp *)rproc->priv;
-> +	adsp = rproc->priv;
->  	adsp->dev = &pdev->dev;
->  	adsp->rproc = rproc;
->  	adsp->minidump_id = desc->minidump_id;
-> diff --git a/drivers/remoteproc/qcom_wcnss.c b/drivers/remoteproc/qcom_wcnss.c
-> index 9d4d04fff8c6..0fc317265064 100644
-> --- a/drivers/remoteproc/qcom_wcnss.c
-> +++ b/drivers/remoteproc/qcom_wcnss.c
-> @@ -154,7 +154,7 @@ static const struct wcnss_data pronto_v3_data = {
->  
->  static int wcnss_load(struct rproc *rproc, const struct firmware *fw)
->  {
-> -	struct qcom_wcnss *wcnss = (struct qcom_wcnss *)rproc->priv;
-> +	struct qcom_wcnss *wcnss = rproc->priv;
->  	int ret;
->  
->  	ret = qcom_mdt_load(wcnss->dev, fw, rproc->firmware, WCNSS_PAS_ID,
-> @@ -227,7 +227,7 @@ static void wcnss_configure_iris(struct qcom_wcnss *wcnss)
->  
->  static int wcnss_start(struct rproc *rproc)
->  {
-> -	struct qcom_wcnss *wcnss = (struct qcom_wcnss *)rproc->priv;
-> +	struct qcom_wcnss *wcnss = rproc->priv;
->  	int ret, i;
->  
->  	mutex_lock(&wcnss->iris_lock);
-> @@ -293,7 +293,7 @@ static int wcnss_start(struct rproc *rproc)
->  
->  static int wcnss_stop(struct rproc *rproc)
->  {
-> -	struct qcom_wcnss *wcnss = (struct qcom_wcnss *)rproc->priv;
-> +	struct qcom_wcnss *wcnss = rproc->priv;
->  	int ret;
->  
->  	if (wcnss->state) {
-> @@ -320,7 +320,7 @@ static int wcnss_stop(struct rproc *rproc)
->  
->  static void *wcnss_da_to_va(struct rproc *rproc, u64 da, size_t len, bool *is_iomem)
->  {
-> -	struct qcom_wcnss *wcnss = (struct qcom_wcnss *)rproc->priv;
-> +	struct qcom_wcnss *wcnss = rproc->priv;
->  	int offset;
->  
->  	offset = da - wcnss->mem_reloc;
-> @@ -566,7 +566,7 @@ static int wcnss_probe(struct platform_device *pdev)
->  	}
->  	rproc_coredump_set_elf_info(rproc, ELFCLASS32, EM_NONE);
->  
-> -	wcnss = (struct qcom_wcnss *)rproc->priv;
-> +	wcnss = rproc->priv;
->  	wcnss->dev = &pdev->dev;
->  	wcnss->rproc = rproc;
->  	platform_set_drvdata(pdev, wcnss);
-> diff --git a/drivers/remoteproc/xlnx_r5_remoteproc.c b/drivers/remoteproc/xlnx_r5_remoteproc.c
-> index 2db57d394155..5dbc12bdc29e 100644
-> --- a/drivers/remoteproc/xlnx_r5_remoteproc.c
-> +++ b/drivers/remoteproc/xlnx_r5_remoteproc.c
-> @@ -242,7 +242,7 @@ static int add_mem_regions_carveout(struct rproc *rproc)
->  	struct reserved_mem *rmem;
->  	int i, num_mem_regions;
->  
-> -	r5_core = (struct zynqmp_r5_core *)rproc->priv;
-> +	r5_core = rproc->priv;
->  	num_mem_regions = r5_core->rmem_count;
->  
->  	for (i = 0; i < num_mem_regions; i++) {
-> @@ -363,7 +363,7 @@ static int add_tcm_carveout_split_mode(struct rproc *rproc)
->  	size_t bank_size;
->  	char *bank_name;
->  
-> -	r5_core = (struct zynqmp_r5_core *)rproc->priv;
-> +	r5_core = rproc->priv;
->  	dev = r5_core->dev;
->  	num_banks = r5_core->tcm_bank_count;
->  
-> @@ -432,7 +432,7 @@ static int add_tcm_carveout_lockstep_mode(struct rproc *rproc)
->  	u32 pm_domain_id;
->  	char *bank_name;
->  
-> -	r5_core = (struct zynqmp_r5_core *)rproc->priv;
-> +	r5_core = rproc->priv;
->  	dev = r5_core->dev;
->  
->  	/* Go through zynqmp banks for r5 node */
-> @@ -502,7 +502,7 @@ static int add_tcm_banks(struct rproc *rproc)
->  	struct zynqmp_r5_core *r5_core;
->  	struct device *dev;
->  
-> -	r5_core = (struct zynqmp_r5_core *)rproc->priv;
-> +	r5_core = rproc->priv;
->  	if (!r5_core)
->  		return -EINVAL;
->  
-> @@ -595,7 +595,7 @@ static int zynqmp_r5_rproc_unprepare(struct rproc *rproc)
->  	u32 pm_domain_id;
->  	int i;
->  
-> -	r5_core = (struct zynqmp_r5_core *)rproc->priv;
-> +	r5_core = rproc->priv;
->  
->  	for (i = 0; i < r5_core->tcm_bank_count; i++) {
->  		pm_domain_id = r5_core->tcm_banks[i]->pm_domain_id;
-> @@ -649,7 +649,7 @@ static struct zynqmp_r5_core *zynqmp_r5_add_rproc_core(struct device *cdev)
->  	}
->  
->  	r5_rproc->auto_boot = false;
-> -	r5_core = (struct zynqmp_r5_core *)r5_rproc->priv;
-> +	r5_core = r5_rproc->priv;
->  	r5_core->dev = cdev;
->  	r5_core->np = dev_of_node(cdev);
->  	if (!r5_core->np) {
-> @@ -978,12 +978,12 @@ static int zynqmp_r5_cluster_init(struct zynqmp_r5_cluster *cluster)
->  
->  static void zynqmp_r5_cluster_exit(void *data)
->  {
-> -	struct platform_device *pdev = (struct platform_device *)data;
-> +	struct platform_device *pdev = data;
->  	struct zynqmp_r5_cluster *cluster;
->  	struct zynqmp_r5_core *r5_core;
->  	int i;
->  
-> -	cluster = (struct zynqmp_r5_cluster *)platform_get_drvdata(pdev);
-> +	cluster = platform_get_drvdata(pdev);
->  	if (!cluster)
->  		return;
->  
-> -- 
-> 2.11.0
-> 
+Jagan.
 
