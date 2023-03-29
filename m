@@ -4,72 +4,142 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BBCAC761AF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 19:35:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3A03C6FD18
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 19:51:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9Ip60VxQO8vIEjsVQuk6WZlBLCQN328zDAYmxQho2Uk=; b=EXghI8XygvTHT5YKsbWgJNBg8N
-	5KRKYYD7YTdIBA8Znt6NpiOnO4TQ5EK6XlWGBGJQKOc6nEf+rYMM5TlHsfKebKeoXDUMkHwpS8ROL
-	nzY/Ixcaa99lrgRVblMzV9NzTytQ67iypDVaEmlCLCr6I5mojxKvt9gHTNQ7ufqp/oHh9FMgPV7JC
-	/X0k/tqoVjTyh+meWyRNvtIbG4PBMhIl2eod53TI+jw3ojlWbWBT9I3Z3ZT9rLfOspqpBB7t6l5zt
-	/yEMu+GrArYDU7cDUdBaKGPwZ96BUuRmDpJxow5aVGV7HGJV1UB9DFWrINn05K4F2MTb8r76mm8/V
-	SOiSCAnQ==;
+	bh=S00Xp8JXjn19UH995q1FPsxfz6/qb923iCtN7jshDa0=; b=BHBvjpHDZVCoFHAf3lTltxMGMI
+	AqCH3Z2L1tVeZzTvXNxDy5ABhjsFWYdJiiG8fFpJpJ90Em0RlKlDX8g4vvx0jTvqZNlsmKqjfiwS2
+	82OEXqHcPZZy8NYULapqbbpZuN/NZUNUyefFpiMY70Au3YSU+ij6KPUG4bO8dcSb430+WVL7PgC6f
+	k0dz38F64lPJRcso018zdTLkjdMMhAxd7tAp2vG43eiN7IcLgip3h4yotJue3yL1SJvpe7Mb7yI8b
+	T+9yg8RT7oQSaNsRIyPRHYxPeL/mFd+fdRwS1CSRoBD4/XHIS7VbMtpe4hGPo9QH99cGaNEexPTPk
+	lsTKnJBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phbZy-001e1z-1x;
-	Wed, 29 Mar 2023 19:35:30 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1phbp5-001gXZ-1H;
+	Wed, 29 Mar 2023 19:51:07 +0000
+Received: from wnew3-smtp.messagingengine.com ([64.147.123.17])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phbZw-001e12-14;
-	Wed, 29 Mar 2023 19:35:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=9Ip60VxQO8vIEjsVQuk6WZlBLCQN328zDAYmxQho2Uk=; b=oNr9cPXYVHQF9aWQrgtHuUbaL4
-	rrNePszDIqfOYFfGJC50qIve5P6TNCg56eDFOWxZFl5EU4a6rvy6hSSeNXqQEUrqJjaeXThOcY7sP
-	yHibUzHcsx5RDU3sLn98Kg1qzVw5h5E6OXiPoAvByexD169ZM+yrl2MQni+L90RuZtF4=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1phbZl-008nTP-Sg; Wed, 29 Mar 2023 21:35:17 +0200
-Date: Wed, 29 Mar 2023 21:35:17 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	id 1phbp0-001gW0-2c;
+	Wed, 29 Mar 2023 19:51:04 +0000
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailnew.west.internal (Postfix) with ESMTP id B22DC2B05BE1;
+	Wed, 29 Mar 2023 15:50:53 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+  by compute4.internal (MEProxy); Wed, 29 Mar 2023 15:50:58 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
+	:cc:content-type:content-type:date:date:from:from:in-reply-to
+	:in-reply-to:message-id:mime-version:references:reply-to:sender
+	:subject:subject:to:to; s=fm3; t=1680119453; x=1680126653; bh=S0
+	0Xp8JXjn19UH995q1FPsxfz6/qb923iCtN7jshDa0=; b=bjfu/u+3WNSfLMbwG8
+	kgDlb33yFeBpTyDn26O0i5sMcaQYMH5k+w0P2n88u/CL6nmHobkHURfCmf1/C29t
+	U0Qh1AeatQqCeBn6lka/dn10E2764ErqPqb3njkwCEp0gR+damC3mrcUvTxoLGFt
+	C8YUuH43zoflGPvolh5JgeGOuMjpcUVK2XMglwkAj5Jbl90JOiW6MmIBfFxsj47Z
+	LmLClTdxuUi8kFNiCE0STmAKXFF18XHkXI+HXgSXZYmlUiBbZLpqDOcow+ybw2xE
+	2FoegJ/5RU8yvTqRDV9YushjRc122S3DH00UzJnafvUsGPLUeJnt1P45+mZXlwwx
+	9r5w==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-type:content-type:date:date
+	:feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+	:message-id:mime-version:references:reply-to:sender:subject
+	:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+	:x-sasl-enc; s=fm2; t=1680119453; x=1680126653; bh=S00Xp8JXjn19U
+	H995q1FPsxfz6/qb923iCtN7jshDa0=; b=mDHZlaVnXucLsPRdtiP08QfOw0gbw
+	L+tUMJhcynxctO/kzDo9N9LThihIenJjo53qM0euM2lsFwMzIIJmLZaKDMEQ9gKS
+	btQwIniilAJ2KR0keHWJin00kBMMw6Fvxj0Tqr2fZDydPMLtTJ9/sGRArw3nvLEJ
+	Inl8nRAJ+p1On2TOo/Jkf5NvgfFrgD8xiz+wUxe+OLxZLqgad7dL+FZKdxkOCpJr
+	jXFB1C2jlktQjz7Pf5BdwXfRgXBHnZg2CeqLIpNinGTcVjw+BWRP0a6XnT9W3OK0
+	vrpjM1vniY/j4v5fsA1EOzPEQz9MwxVgK2edMj2xcjAO4WZgtdvUtY6ug==
+X-ME-Sender: <xms:mpYkZD7Ox3zkaNg9OIbaq_Geirriia0AyR5zsctORI6EJu7ND1ZsRQ>
+    <xme:mpYkZI6gfNEQJJATGLF-jP5tejftDvf4e2pRhn5b30pSmUBJQi8Q22RK3CYpCbdPk
+    nljkuFaqJebKdIGblI>
+X-ME-Received: <xmr:mpYkZKdImEiijk94na28hpIQuEi3cQuAMkQWm0nzJyixb0OJnKMRnOXbcA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrvdehiedgudeggecutefuodetggdotefrod
+    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+    necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+    enucfjughrpeffhffvvefukfhfgggtuggjsehgtderredttddvnecuhfhrohhmpeforgig
+    ihhmvgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrf
+    grthhtvghrnhepteefffefgfektdefgfeludfgtdejfeejvddttdekteeiffejvdfgheeh
+    fffhvedunecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomh
+    epmhgrgihimhgvsegtvghrnhhordhtvggthh
+X-ME-Proxy: <xmx:mpYkZEJl9MrKZSU_H62ZAJfDV2fQB_Dukmg12b6sz6GsGnrs1I7MQA>
+    <xmx:mpYkZHItJM6rTbcj4kioTn3BMkpHiPds2sYYICneLW9ubA5TBI5WRQ>
+    <xmx:mpYkZNxhOoittDkCw7hbXZnCUDUd-FuZ-EKLeSqNz8AN2-VxFNYVfA>
+    <xmx:nZYkZIRJx8oRJdN_mOMdRd18Mh8SZ8lDvg6OQ5KdOS-_17hhw45Pa7Wurdo>
+Feedback-ID: i8771445c:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
+ 29 Mar 2023 15:50:49 -0400 (EDT)
+Date: Wed, 29 Mar 2023 21:50:49 +0200
+From: Maxime Ripard <maxime@cerno.tech>
+To: Stephen Boyd <sboyd@kernel.org>
+Cc: Mark Brown <broonie@kernel.org>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Chen-Yu Tsai <wens@csie.org>, Daniel Vetter <daniel@ffwll.ch>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>, Shawn Guo <shawnguo@kernel.org>,
+	Fabio Estevam <festevam@gmail.com>,	Ulf Hansson <ulf.hansson@linaro.org>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Dinh Nguyen <dinguyen@kernel.org>,	Paul Cercueil <paul@crapouillou.net>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>,
+	Jonathan Hunter <jonathanh@nvidia.com>,	Abel Vesa <abelvesa@kernel.org>,
+	Charles Keepax <ckeepax@opensource.cirrus.com>,
+	Alessandro Zummo <a.zummo@towertech.it>,
+	Peter De Schrijver <pdeschrijver@nvidia.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Prashant Gaikwad <pgaikwad@nvidia.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Samuel Holland <samuel@sholland.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
+	Richard Fitzgerald <rf@opensource.cirrus.com>,
+	Vinod Koul <vkoul@kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
+	Sekhar Nori <nsekhar@ti.com>,	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,	Takashi Iwai <tiwai@suse.com>,
+ David Airlie <airlied@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	David Lechner <david@lechnology.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,	Max Filippov <jcmvbkbc@gmail.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	linux-stm32@st-md-mailman.stormreply.com,	alsa-devel@alsa-project.org,
+ linux-mediatek@lists.infradead.org,	linux-phy@lists.infradead.org,
+ linux-mips@vger.kernel.org,	linux-renesas-soc@vger.kernel.org,
+	linux-actions@lists.infradead.org, linux-clk@vger.kernel.org,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Sam Shih <Sam.Shih@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>
-Subject: Re: [RFC PATCH net-next v3 03/15] net: dsa: mt7530: use regmap to
- access switch register space
-Message-ID: <e8bb79ab-94d2-4e36-9b75-576a47e6c126@lunn.ch>
-References: <cover.1680105013.git.daniel@makrotopia.org>
- <754322262cd754aee5916954b8e651989b229a09.1680105013.git.daniel@makrotopia.org>
- <7eb07ed2-2b1c-44fa-b029-0ecad7872fd2@lunn.ch>
- <ZCSEbUt9kj8Ta6Yc@makrotopia.org>
+	patches@opensource.cirrus.com, linux-tegra@vger.kernel.org,
+	linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org
+Subject: Re: [PATCH v2 43/65] ASoC: tlv320aic32x4: Add a determine_rate hook
+Message-ID: <20230329195049.lbdbkbqu6zbq5xii@penduick>
+References: <20221018-clk-range-checks-fixes-v2-0-f6736dec138e@cerno.tech>
+ <20221018-clk-range-checks-fixes-v2-43-f6736dec138e@cerno.tech>
+ <Y2UzdYyjgahJsbHg@sirena.org.uk>
+ <20221104155123.qomguvthehnogkdd@houat>
+ <Y2U2+ePwRieYkNjv@sirena.org.uk>
+ <20221107084322.gk4j75r52zo5k7xk@houat>
+ <Y2j0r0wX1XtQBvqO@sirena.org.uk>
+ <20221107152603.57qimyzkinhifx5p@houat>
+ <5819b1362f35ce306e1b6d566bfd44e5.sboyd@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="bx2st77tq2vvri5u"
 Content-Disposition: inline
-In-Reply-To: <ZCSEbUt9kj8Ta6Yc@makrotopia.org>
+In-Reply-To: <5819b1362f35ce306e1b6d566bfd44e5.sboyd@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230329_123528_366469_8E507C1B 
-X-CRM114-Status: GOOD (  21.68  )
+X-CRM114-CacheID: sfid-20230329_125102_881557_31C99794 
+X-CRM114-Status: GOOD (  35.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,43 +154,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 29, 2023 at 07:33:17PM +0100, Daniel Golle wrote:
-> On Wed, Mar 29, 2023 at 06:24:21PM +0200, Andrew Lunn wrote:
-> > Thanks for splitting this patchset up. This is much easier to review.
-> > 
-> > > +static u32
-> > > +mt7530_mii_read(struct mt7530_priv *priv, u32 reg)
-> > > +{
-> > > +	int ret;
-> > > +	u32 val;
-> > > +
-> > > +	ret = regmap_read(priv->regmap, reg, &val);
-> > > +	if (ret) {
-> > > +		dev_err(priv->dev,
-> > > +			"failed to read mt7530 register\n");
-> > > +		return ret;
-> > 
-> > This is a u32 function. ret should be negative on error, which is
-> > going to be turned positive in order to return a u32. So you probably
-> > want to make this an int function.
-> 
-> This is a pre-existing flaw in the code. As we are accessing 32-bit
-> registers there has just never been any meaningful error handling.
 
-O.K. At least i would not return the negative error code. Return 0, or
-0xdeadbeef or something. And consider adding a WARN_ON_ONCE() so it is very loud
-when it goes wrong.
+--bx2st77tq2vvri5u
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> I guess the correct solution would be to not use the return value only
-> to indicate success or error, and use an additional u32* parameter for
-> the read value.
+Hi Stephen,
 
-Yes, that is what mv88e6xxx does.
+On Wed, Mar 22, 2023 at 04:31:04PM -0700, Stephen Boyd wrote:
+> > It's also replacing one implicit behavior by another. The point of this
+> > series was to raise awareness on that particular point, so I'm not sure
+> > it actually fixes things. We'll see what Stephen thinks about it.
+> >=20
+>=20
+> Right. A decade ago (!) when determine_rate() was introduced we
+> introduced CLK_SET_RATE_NO_REPARENT and set it on each mux user (see
+> commit  819c1de344c5 ("clk: add CLK_SET_RATE_NO_REPARENT flag")). This
+> way driver behavior wouldn't change and the status quo would be
+> maintained, i.e. that clk_set_rate() on a mux wouldn't change parents.
+> We didn't enforce that determine_rate exists if the set_parent() op
+> existed at the same time though. Probably an oversight.
+>=20
+> Most of the replies to this series have been "DT is setting the parent",
+> which makes me believe that there are 'assigned-clock-parents' being
+> used.
 
-> However, I was hestitating to convert all the calls (they are many) to
-> follow that improved paradigm.
+Yes, that's my understanding as well.
 
-Yes, leave that for another time.
+> The clk_set_parent() path is valid for those cases. Probably nobody
+> cares about determine_rate because they don't set rates on these clks.
+> Some drivers even explicitly left out determine_rate()/round_rate()
+> because they didn't want to have some other clk round up to the mux
+> and change the parent.
+>=20
+> Eventually we want drivers to migrate to determine_rate op so we can get
+> rid of the round_rate op and save a pointer (we're so greedy). It's been
+> 10 years though, and that hasn't been done. Sigh! I can see value in
+> this series from the angle of migrating, but adding a determine_rate op
+> when there isn't a round_rate op makes it hard to reason about. What if
+> something copies the clk_ops or sets a different flag? Now we've just
+> added parent changing support to clk_set_rate(). What if the clk has
+> CLK_SET_RATE_PARENT flag set? Now we're going to ask the parent clk to
+> change rate. Fun bugs.
+>=20
+> TL;DR: If the set_parent op exists but determine_rate/round_rate doesn't
+> then the clk is a mux that doesn't want to support clk_set_rate(). Make
+> a new mux function that's the contents of the CLK_SET_RATE_NO_REPARENT
+> branch in clk_mux_determine_rate_flags() and call that directly from the
+> clk_ops so it is clear what's happening,
+> clk_hw_mux_same_parent_determine_rate() or something with a better name.
+> Otherwise migrate the explicit determine_rate op to this new function
+> and don't set the flag.
+>=20
+> It may be possible to entirely remove the CLK_SET_RATE_NO_REPARENT flag
+> with this design, if the determine_rate clk_op can call the inner
+> wrapper function instead of __clk_mux_determine_rate*() (those
+> underscores are awful, we should just prefix them with clk_hw_mux_*()
+> and live happier). That should be another patch series.
 
-     Andrew
+Sorry but it's not really clear to me what you expect in the v2 of this
+series (if you even expect one). It looks that you don't like the
+assignment-if-missing idea Mark suggested, but should I just
+rebase/resend or did you expect something else?
+
+Maxime
+
+--bx2st77tq2vvri5u
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZCSWmAAKCRDj7w1vZxhR
+xQXTAP0bPg2EVQxPktgSpE4coaiyyn0Cu6Bba/x8MkUcPgNRVQEAxpbYr0uDsXMC
+CE9ojO6fXNwPgqHm5ELQGJgnrvcQQQg=
+=B5xn
+-----END PGP SIGNATURE-----
+
+--bx2st77tq2vvri5u--
 
