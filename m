@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C0D1C6FD18
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 16:24:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3D01C77B61
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 16:27:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tWoMYM5phXzU4e6j6m4FzuuaA8OIJOcaPtVysKi+Wi8=; b=jt0RWlZrfpSlFcITMmnZ3UhDr1
-	FVxwGuXvQWSbtSDk3PBIKepdxg6fqIwicxp75TtLbgR1NYl/OGz4j3v5osMs87Wg2eY6DhitzEBwj
-	s2fZFSLjvGwceeDYDbs2a1bXSr5tNzI7k49S+hz99EqY81I8Dncf/PGLeEzAwEby96VopbJGoCcDQ
-	OVVd5Ba6qZmfGCV5DQ2ZK4e3f/Oad/N/6kNjbGRrlXZQYc8/VfrMQlgU7NKerqSUT8u/GSMaM8BEG
-	3Yibr9C1EqRzkTr8Gka/Mr4T4NFUabpCFUjFsfxke11wnW6jC3ryitoZDX+4mmdC6kqGZBVjogYTh
-	ToBtIx9Q==;
+	bh=Q02vEpE9IanvR7N3TS+xOq3YegyHFecQ5XDPoym/Loc=; b=vTiotOoR5mmnAbdGe5FoZmIwRj
+	TIGMQTGK6vxPFfnjKJHQv669s1XSBTBRcD84fC53Tj8r4xSPbsenG4CeNF51f3qhIUryN7XYYlAeK
+	DBub274nC/Ah/8lN3B/myZr37QB3vRURpRwfSeu7zVifWj+vyojr6WfDEuqdHaxWSC+yJMX0Pe5sB
+	651GiuqE4BlraDYxnhBgL9cB/B8vthE1sJKhuovZwDHZHZnTbhTA//k/OiWC4wonx5Azlcb1ynhEl
+	55eSQrgKTJZQaSlHIBL1g+fk2QwzcdEqAySRjLDVgkMShnBQEmj6LFZ5FaxPCw6JqJ0Hvo7fKi3yL
+	arzKqNRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phYbA-0015FV-2H;
-	Wed, 29 Mar 2023 16:24:32 +0000
+	id 1phYdf-0015lK-0E;
+	Wed, 29 Mar 2023 16:27:07 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phYb7-0015DO-2y;
-	Wed, 29 Mar 2023 16:24:31 +0000
+	id 1phYdc-0015kR-2j;
+	Wed, 29 Mar 2023 16:27:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=tWoMYM5phXzU4e6j6m4FzuuaA8OIJOcaPtVysKi+Wi8=; b=rPqbIHYBvr2qKuT39QG9t5A+nh
-	LoVA9JPJ+af+lEKf3Li6mLRQwqPkod6xDzzeshmBBlBmvIForigitzR7gUYxDOQ5P1qvuY9Zh8cwk
-	7dZxlfaeOErWT8apIofVUuuNZPCnoqFGvQkhS4OyjgWVbMLlVrX/UtUt9vlNsPPJyvzM=;
+	bh=Q02vEpE9IanvR7N3TS+xOq3YegyHFecQ5XDPoym/Loc=; b=h74855VIrQBAeKyzlHsW0m3wu+
+	lIlU++Cr+xfUPWGhQS98kmqJcM+1otMPnRpKcb0OCcSAT3J81JA9Bnf2np1cYcbt7ddXTDWroEirj
+	VgQRYyMLuwzWE5X1fT5Gj1KfUiLogO6ZFIk5pLjFCYGfBNYBfxOokdaSRIf11NSuxipo=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1phYaz-008mSg-0a; Wed, 29 Mar 2023 18:24:21 +0200
-Date: Wed, 29 Mar 2023 18:24:21 +0200
+	id 1phYdb-008mUE-3Y; Wed, 29 Mar 2023 18:27:03 +0200
+Date: Wed, 29 Mar 2023 18:27:03 +0200
 From: Andrew Lunn <andrew@lunn.ch>
 To: Daniel Golle <daniel@makrotopia.org>
 Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
@@ -56,18 +56,18 @@ Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	Sam Shih <Sam.Shih@mediatek.com>,
 	Lorenzo Bianconi <lorenzo@kernel.org>,
 	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>
-Subject: Re: [RFC PATCH net-next v3 03/15] net: dsa: mt7530: use regmap to
- access switch register space
-Message-ID: <7eb07ed2-2b1c-44fa-b029-0ecad7872fd2@lunn.ch>
+Subject: Re: [RFC PATCH net-next v3 05/15] net: dsa: mt7530: introduce mutex
+ helpers
+Message-ID: <468587cd-c667-445a-b518-fc2db83ba527@lunn.ch>
 References: <cover.1680105013.git.daniel@makrotopia.org>
- <754322262cd754aee5916954b8e651989b229a09.1680105013.git.daniel@makrotopia.org>
+ <118badcdd9741d21e3d367e10c34a2d66ae04f59.1680105013.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <754322262cd754aee5916954b8e651989b229a09.1680105013.git.daniel@makrotopia.org>
+In-Reply-To: <118badcdd9741d21e3d367e10c34a2d66ae04f59.1680105013.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230329_092429_954052_34332EB0 
-X-CRM114-Status: UNSURE (   9.91  )
+X-CRM114-CacheID: sfid-20230329_092704_879293_505FFBB1 
+X-CRM114-Status: UNSURE (   9.66  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,24 +83,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Thanks for splitting this patchset up. This is much easier to review.
+On Wed, Mar 29, 2023 at 04:58:22PM +0100, Daniel Golle wrote:
+> As the MDIO bus lock only needs to be involved if actually operating
+> on an MDIO-connected switch we will need to skip locking for built-in
+> switches which are accessed via MMIO.
+> Create helper functions which simplify that upcoming change.
+> 
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
-> +static u32
-> +mt7530_mii_read(struct mt7530_priv *priv, u32 reg)
-> +{
-> +	int ret;
-> +	u32 val;
-> +
-> +	ret = regmap_read(priv->regmap, reg, &val);
-> +	if (ret) {
-> +		dev_err(priv->dev,
-> +			"failed to read mt7530 register\n");
-> +		return ret;
+Reviewed-by: Andrew Lunn <andrew@lunn.ch>
 
-This is a u32 function. ret should be negative on error, which is
-going to be turned positive in order to return a u32. So you probably
-want to make this an int function.
-
-     Andrew
-
+    Andrew
 
