@@ -4,56 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1F7BC6FD18
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 13:24:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34C72C761A6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 13:25:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=csi0jdlp5xAkr7/d6DDwvfUFlCLN9g54V1gof/K6y3I=; b=lXdnpF/YmWbqO8PR2DgOzSJ5yd
-	jbRR+OBFxKPTfSEE2k5n1O4pSroFVrgY0yaCOURpRvmGiU9CgQnEz+HoaAlljimUNntFYzXvGgi1t
-	96glWwTX+pvWYhvyCy7lZqQitEUovfF+/jGu+uG16OuhIwT/ktrIxrBikFbHgGfOBg0UcVaniXhMJ
-	HWzqCNcJcmHWVDGlcKBV5QH2WzWXKI3lV2Bal9G5dHthOBU9eVUsdddpqTtQiHRHCRBNdpxq85X/P
-	XShPskfQ17Lycc5gnavbvCv7l/5ChQvWe/eYm5RpKd9FGvzRLrO0FeQpdAxMfVoy4jQTWiM0Lv1f4
-	ubKEqv+Q==;
+	bh=RqvAGyJ0QSvMzgHFo4YwBNvGHMkW2HX/yV+dNX1XxUw=; b=r6X+TJnN1j7drLZgITFdSeFXzx
+	S5FBEX1+M0iWPgWnQmWzsj00OO2HpZeGEpyHMuaLPB8VwKaTkWYqlRiJm6NB4TdHyY/BR7zj28wAB
+	GBzByEM5/WHdbFc1qX7s71a59BhFQa/hROT1HDvkIpBIwtmHXbVlLFsmrzXRZS1C+dU5pOXO0dFKL
+	8vgrSjF9VfzhAH7xYuSTUnVjKRFZk7htWt8fJNEUJdwbi9HSsZgW0X0gjDykKE6RtEzrDl5m6a25S
+	rdkULXYfbXgtvyIfLGN8iun9SiV84mNY20X9GNWsG6BXRbp2UiOS4Q0RvCNUwi+x9Rmer0OS+kZlK
+	+r5sYxBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phVn5-000NBM-25;
-	Wed, 29 Mar 2023 13:24:39 +0000
+	id 1phVoF-000Net-0T;
+	Wed, 29 Mar 2023 13:25:51 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phVmz-000N8P-18;
-	Wed, 29 Mar 2023 13:24:37 +0000
+	id 1phVoA-000Ncq-38;
+	Wed, 29 Mar 2023 13:25:48 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 85F5D6603173;
-	Wed, 29 Mar 2023 14:24:30 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 85C9D6602173;
+	Wed, 29 Mar 2023 14:25:44 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1680096271;
-	bh=QC+TVvnacafeIHmbzTyunv64Km/TSjEM1hbjaqYCL0E=;
+	s=mail; t=1680096345;
+	bh=NiiGpi4sFbjpxV4imTL2ZIq/xcV+jbx+PGJrCD8dAhU=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Wq/ZHR3gmA5TcS6nh98MqlxCjA+ciMEgTZAOYfId/MOzbR42VJJGeD9AzSnoAC7hK
-	 HKU+plaSGCBXOTMucZfWhLBmsmqcbCnsS6TOV6AeZBJazvS0ENHSO9whtJDnRIPiyn
-	 w3bP8f9jcIFpn3ZRO3q3swCiuXkviDRw4+nntIS8HiuOe2puLgiVOf5qiqkXVgj/OR
-	 SBh9fig+Qw9uJUh4iyTG+o5NXU43neKkZn9Qa8FRUcpZ4dZRmAkxz3Ut/haLXwwaE3
-	 0HORYdmXIHgOMHljij5NqxbpB0UJkmdTxWCxT/X9Q8HbZ9NUYT0AzAe/KK9iUbdcj8
-	 HovQFH0OkXDcA==
-Message-ID: <67af041d-cce5-8c3b-e979-7b95a6a7a149@collabora.com>
-Date: Wed, 29 Mar 2023 15:24:27 +0200
+	b=GazyfMUi4MueJq3SALhwwitUIeR6BSuqHHEekLxk7+rEw/MCtl3s6SaENDzfzNOKv
+	 qjduEaU/vDP7a/sUSLreyhGqc88FoYmZ6cljNJj55xVQk02Cq3v/XNRfYgYUtVg6s5
+	 4QrwfXjKLIX64id2Up7zbp5Cp2ED9Meul5EbigW+/y6LmAEGilDtq/cy2083+xbTLF
+	 m1wp9h7jTOYwqXUCZnSvQ+euZaEXH14It/1u8VCtuhbsu0eehneAzzHilf0qVLiHbt
+	 G23T/vYVZpf3Y4LPEtmzjdSDoWnwt1sMwUNEPAiav+MGAICPGIMk+Z6bNJCqb8frxA
+	 ssKCdGW8zbH6Q==
+Message-ID: <7b6be990-9e90-8e44-7c5e-f8b7a2701ce7@collabora.com>
+Date: Wed, 29 Mar 2023 15:25:41 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.9.0
-Subject: Re: [PATCH v3 09/17] arm64: dts: mediatek: add mmc support for
- mt8365-evk
+Subject: Re: [PATCH v3 10/17] arm64: dts: mediatek: set vmc regulator as
+ always on
 Content-Language: en-US
-To: Alexandre Mergnat <amergnat@baylibre.com>,
- Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
- <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>,
+To: amergnat@baylibre.com, Wim Van Sebroeck <wim@linux-watchdog.org>,
+ Guenter Roeck <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  Chaotian Jing <chaotian.jing@mediatek.com>,
@@ -68,14 +67,14 @@ Cc: linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
  Fabien Parent <fparent@baylibre.com>,
  Amjad Ouled-Ameur <aouledameur@baylibre.com>
 References: <20230203-evk-board-support-v3-0-0003e80e0095@baylibre.com>
- <20230203-evk-board-support-v3-9-0003e80e0095@baylibre.com>
+ <20230203-evk-board-support-v3-10-0003e80e0095@baylibre.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230203-evk-board-support-v3-9-0003e80e0095@baylibre.com>
+In-Reply-To: <20230203-evk-board-support-v3-10-0003e80e0095@baylibre.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230329_062433_517606_2FF531F4 
-X-CRM114-Status: GOOD (  16.92  )
+X-CRM114-CacheID: sfid-20230329_062547_136462_1DCD81F7 
+X-CRM114-Status: GOOD (  16.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,61 +89,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 29/03/23 10:54, Alexandre Mergnat ha scritto:
-> - Add EMMC support on mmc0 (internal memory)
-> - Add SD-UHS support on mmc1 (external memory)
+Il 29/03/23 10:54, amergnat@baylibre.com ha scritto:
+> From: Fabien Parent <fparent@baylibre.com>
 > 
+> MSDC1 IP block is powered by VMC. Make sure it is always on.
+
+Why always on?
+Can't you just set mt6357_vmc_reg as VIN of mt6357_vmch_reg? :-)
+
+Regards,
+Angelo
+
+> 
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
 > Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 > ---
->   arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 138 ++++++++++++++++++++++++++++
->   1 file changed, 138 insertions(+)
+>   arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 5 +++++
+>   1 file changed, 5 insertions(+)
 > 
 > diff --git a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-> index 2f88562c638a..b5d018686cbe 100644
+> index b5d018686cbe..22ec332fe9c9 100644
 > --- a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
 > +++ b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-> @@ -97,6 +97,42 @@ &i2c0 {
->   	#size-cells = <0>;
+> @@ -140,6 +140,11 @@ &mt6357_pmic {
+>   	#interrupt-cells = <2>;
 >   };
 >   
-> +&mmc0 {
-> +	pinctrl-names = "default", "state_uhs";
-> +	pinctrl-0 = <&mmc0_default_pins>;
-> +	pinctrl-1 = <&mmc0_uhs_pins>;
-> +	bus-width = <8>;
-> +	max-frequency = <200000000>;
-> +	cap-mmc-highspeed;
-> +	mmc-hs200-1_8v;
-> +	mmc-hs400-1_8v;
-> +	cap-mmc-hw-reset;
-> +	no-sdio;
-> +	no-sd;
-> +	hs400-ds-delay = <0x12012>;
-> +	vmmc-supply = <&mt6357_vemc_reg>;
-> +	vqmmc-supply = <&mt6357_vio18_reg>;
-> +	assigned-clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>;
-> +	assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL>;
-> +	non-removable;
-
-That's a bit messy :-)
-Can we please reorder this by name?
-
-	assigned-clocks....
-	bus-width
-	cap....
-	hs400-ds-delay
-	max...
-	mmc-hs...
-	no...
-	non-rem...
-	pinctrl...
-	vxxxx-supply
-
-	status ....
-
-...Actually the same comment also applies to mmc1.
-
-Cheers,
-Angelo
+> +/* Needed by MSDC1 */
+> +&mt6357_vmc_reg {
+> +	regulator-always-on;
+> +};
+> +
+>   &pio {
+>   	gpio_keys: gpio-keys-pins {
+>   		pins {
+> 
 
 
