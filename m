@@ -4,69 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE7EBC761AF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 14:22:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED2B1C6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 14:57:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hCVZf8/29WGYT30PSsvdyMj8mlVRvLlPog6iZa30nLM=; b=o3rdfl8xxunRWHDwTxmpOlx152
-	rruvXyz4u8X5kE5hzOWPTH1BLVuZZ9TeLt3IBtpvdQ6BynRzCVLGOKnZ7xARMBQldsPcbd65HSqAR
-	Qjz40Ht71t9pCLvFs0NNP18eDCNHB/T7y/0sYbLlwPiSKrwgt2SA5pfNDDOZQXEyY6YBn7eNYLY7N
-	PXFW3J0iAeNGAr+YkJIjYYVlfLS2MctkS3LBJkA+lP70dywTp1fmBtFSn4o3hqXDoJ7lk5cCZy9Tt
-	6lW/0+WtwZJ3VdVuTtZijvbdBmvtF79q2MJoFKiyK5vA5iuve6zRcsdvbBO4JtL+u2c2vCMA1/FrE
-	dfxDH4+Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YPzy9lxdRgx+du4Wdie26QK+AD+9fhqiRTmW/JYGFLc=; b=hhqwCZf9Jjzraw9DsVcXQ/33R5
+	9DUmho7mTPNwoKBuTc56rZyjv+MQBn22mwY5OzxZ27r1TrGdo4DtGXj7dwDaK0L2VsLkjqzKHyRRO
+	mTxrWq/ZWTOv7fxzcb2b8BHP5Oz8kflphRIAessV0TrNZMPQcoJYNi9G7ZAkyO0jzyo8PChSjtjL5
+	KdU/XOta8ONL//llgGqXrFJj5OVz/e9gw5PBcyukJ7bXbOyFrKzVwIc9bagkot+neScQD0NCRVR7Z
+	QiACfaDNEKzwdfITH5Fti8ODKbHuhP4RDJn3ND/H2TyYMZc0nnxfVVIrNYAIw55nsiElqr9QkrChR
+	IoDigEng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phtA2-00439p-0m;
-	Thu, 30 Mar 2023 14:21:54 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1phtiE-0049Pq-1F;
+	Thu, 30 Mar 2023 14:57:14 +0000
+Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pht8y-0042IX-0Z;
-	Thu, 30 Mar 2023 14:20:50 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2ECB76603188;
-	Thu, 30 Mar 2023 15:20:46 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1680186046;
-	bh=eZ/KgEJ3/NtZRipFLNfrQ0jkavJVDGo3ZnqqWIgjfIo=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=J6eT9hopJTfhMn18I6oYzTmUvqzKs9vpBPbgqF+fdtu07yw0ynkbWdjWHyPuL3UU/
-	 U1+dQxHJeYgxp8f1RgMMd8xdqLEy/ZyckdVQ76gyCZp+RLx44/v0LZF1FOGjsXZ37l
-	 ISC4MY4EgB+xvKC1hWdanMhrrhPx3/D889LgWNuqmjC81Exa1CGvh84e7AhXKa/R+t
-	 2bNxMulH4r6fZJF+9KdEPHJHYygNVyJqATnz8FrfK2WUhoExVBi6mXZXIxmraHpbDj
-	 BlUBvN9AaVujKIKBfTe6+jZTfs3vQmQLSAYlTQx7GCUgbOFM0NEGHRwd87c/QxOcE9
-	 /pbZfV4lK7Nbw==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: chunkuang.hu@kernel.org
-Cc: p.zabel@pengutronix.de,
-	airlied@gmail.com,
-	daniel@ffwll.ch,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	kernel@collabora.com,
-	wenst@chromium.org
-Subject: [PATCH v2 8/8] drm/mediatek: dp: Add support for embedded DisplayPort aux-bus
-Date: Thu, 30 Mar 2023 16:20:35 +0200
-Message-Id: <20230330142035.191399-9-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.40.0
-In-Reply-To: <20230330142035.191399-1-angelogioacchino.delregno@collabora.com>
-References: <20230330142035.191399-1-angelogioacchino.delregno@collabora.com>
+	id 1phtiA-0049Nj-1n;
+	Thu, 30 Mar 2023 14:57:12 +0000
+Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 539B918843BF;
+	Thu, 30 Mar 2023 14:56:59 +0000 (UTC)
+Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
+	by mailout.gigahost.dk (Postfix) with ESMTP id 48FC82500389;
+	Thu, 30 Mar 2023 14:56:59 +0000 (UTC)
+Received: by smtp.gigahost.dk (Postfix, from userid 1000)
+	id 42A529B403E2; Thu, 30 Mar 2023 14:56:59 +0000 (UTC)
+X-Screener-Id: e32ae469fa6e394734d05373d3a705875723cf1e
+Received: from fujitsu (2-104-116-184-cable.dk.customer.tdc.net [2.104.116.184])
+	by smtp.gigahost.dk (Postfix) with ESMTPSA id 8F6B191201E3;
+	Thu, 30 Mar 2023 14:56:58 +0000 (UTC)
+From: Hans Schultz <netdev@kapio-technology.com>
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
+ Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Eric
+ Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Kurt
+ Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>,
+ Woojung Huh <woojung.huh@microchip.com>, "maintainer:MICROCHIP KSZ SERIES
+ ETHERNET SWITCH DRIVER" <UNGLinuxDriver@microchip.com>, Sean Wang
+ <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
+ Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, =?utf-8?Q?Cl=C3=A9ment_L=C3=A9ger?=
+ <clement.leger@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
+ <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
+ <razor@blackwall.org>, Shuah Khan <shuah@kernel.org>, Christian Marangi
+ <ansuelsmth@gmail.com>, Ido Schimmel <idosch@nvidia.com>, open list
+ <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>, "open list:RENESAS RZ/N1
+ A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>, "moderated
+ list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>, "open
+ list:KERNEL SELFTEST FRAMEWORK" <linux-kselftest@vger.kernel.org>
+Subject: Re: [PATCH v2 net-next 2/6] net: dsa: propagate flags down towards
+ drivers
+In-Reply-To: <20230330130936.hxme34qrqwolvpsh@skbuf>
+References: <20230327115206.jk5q5l753aoelwus@skbuf>
+ <87355qb48h.fsf@kapio-technology.com>
+ <20230327160009.bdswnalizdv2u77z@skbuf>
+ <87pm8tooe1.fsf@kapio-technology.com>
+ <20230327225933.plm5raegywbe7g2a@skbuf>
+ <87ileljfwo.fsf@kapio-technology.com>
+ <20230328114943.4mibmn2icutcio4m@skbuf>
+ <87cz4slkx5.fsf@kapio-technology.com>
+ <20230330124326.v5mqg7do25tz6izk@skbuf>
+ <87wn2yxunb.fsf@kapio-technology.com>
+ <20230330130936.hxme34qrqwolvpsh@skbuf>
+Date: Thu, 30 Mar 2023 16:54:19 +0200
+Message-ID: <875yaimgro.fsf@kapio-technology.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230330_072048_518484_B6E5072A 
-X-CRM114-Status: GOOD (  21.59  )
+X-CRM114-CacheID: sfid-20230330_075710_743711_C3BC6AB5 
+X-CRM114-Status: GOOD (  17.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,145 +96,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For the eDP case we can support using aux-bus on MediaTek DP: this
-gives us the possibility to declare our panel as generic "panel-edp"
-which will automatically configure the timings and available modes
-via the EDID that we read from it.
+On Thu, Mar 30, 2023 at 16:09, Vladimir Oltean <olteanv@gmail.com> wrote:
+> On Thu, Mar 30, 2023 at 02:59:04PM +0200, Hans Schultz wrote:
+>> On Thu, Mar 30, 2023 at 15:43, Vladimir Oltean <olteanv@gmail.com> wrote:
+>> > On Tue, Mar 28, 2023 at 09:45:26PM +0200, Hans Schultz wrote:
+>> >> So the solution would be to not let the DSA layer send the
+>> >> SWITCHDEV_FDB_OFFLOADED event in the case when the new dynamic flag is
+>> >> set?
+>> >
+>> > I have never said that.
+>> 
+>> No, I was just thinking of a solution based on your previous comment
+>> that dynamic fdb entries with the offloaded flag set should not be aged
+>> out by the bridge as they are now.
+>
+> If you were a user of those other drivers, and you ran the command:
+> "bridge fdb add ... master dynamic"
+> would you be ok with the behavior: "I don't have dynamic FDB entries,
+> but here's a static one for you"?
 
-To do this, move the panel parsing at the end of the probe function
-so that the hardware is initialized beforehand and also power it on
-as, when we populate the aux-bus, the panel driver will trigger an
-EDID read as panel detection.
+I don't know if you have a solution in mind wrt the behaviour of the
+offloaded flag if it is not to do as it does now and let the bridge age
+out dynamic entries. That led me to conclude that this patch-set cannot
+use the offloaded flag, but you seem to suggest otherwise.
 
-**** CUT ****
-Also, since the DP IP will always trigger a HPD interrupt at this
-stage, it was necessary to add a new `bridge_attached` member to
-the mtk_dp structure to make sure that `drm_helper_hpd_irq_event()`
-will not be called before the bridge gets actually attached, or
-otherwise we will get a NULL pointer KP due to mtk_dp->bridge.dev
-being uninitialized.
-**** CUT ****
-
-Last but not least, since now the AUX transfers can happen in the
-separated aux-bus, it was necessary to add an exclusion for the
-cable_plugged_in check in `mtk_dp_aux_transfer()` and the easiest
-way to do this is to simply ignore checking that when the bridge
-type is eDP.
-
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/gpu/drm/mediatek/mtk_dp.c | 56 +++++++++++++++++++++++++------
- 1 file changed, 46 insertions(+), 10 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index 62d53c4b3feb..f62ef24db67d 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -4,6 +4,7 @@
-  * Copyright (c) 2022 BayLibre
-  */
- 
-+#include <drm/display/drm_dp_aux_bus.h>
- #include <drm/display/drm_dp.h>
- #include <drm/display/drm_dp_helper.h>
- #include <drm/drm_atomic_helper.h>
-@@ -2041,7 +2042,8 @@ static ssize_t mtk_dp_aux_transfer(struct drm_dp_aux *mtk_aux,
- 
- 	mtk_dp = container_of(mtk_aux, struct mtk_dp, aux);
- 
--	if (!mtk_dp->train_info.cable_plugged_in) {
-+	if (mtk_dp->bridge.type != DRM_MODE_CONNECTOR_eDP &&
-+	    !mtk_dp->train_info.cable_plugged_in) {
- 		ret = -EAGAIN;
- 		goto err;
- 	}
-@@ -2153,6 +2155,11 @@ static int mtk_dp_bridge_attach(struct drm_bridge *bridge,
- 	enable_irq(mtk_dp->irq);
- 	mtk_dp_hwirq_enable(mtk_dp, true);
- 
-+	if (mtk_dp->bridge.type == DRM_MODE_CONNECTOR_eDP /* && panel_on_aux_bus() */) {
-+		mtk_dp->train_info.cable_plugged_in = true;
-+		drm_helper_hpd_irq_event(mtk_dp->drm_dev);
-+	}
-+
- 	return 0;
- 
- err_bridge_attach:
-@@ -2482,6 +2489,20 @@ static int mtk_dp_register_audio_driver(struct device *dev)
- 	return PTR_ERR_OR_ZERO(mtk_dp->audio_pdev);
- }
- 
-+static int mtk_dp_edp_link_panel(struct drm_dp_aux *mtk_aux)
-+{
-+	struct mtk_dp *mtk_dp = container_of(mtk_aux, struct mtk_dp, aux);
-+	struct device *dev = mtk_aux->dev;
-+	struct drm_bridge *panel_aux_bridge;
-+
-+	panel_aux_bridge = devm_drm_of_get_bridge(dev, dev->of_node, 1, 0);
-+	if (IS_ERR(panel_aux_bridge))
-+		return PTR_ERR(panel_aux_bridge);
-+
-+	mtk_dp->next_bridge = panel_aux_bridge;
-+	return 0;
-+}
-+
- static int mtk_dp_probe(struct platform_device *pdev)
- {
- 	struct mtk_dp *mtk_dp;
-@@ -2500,21 +2521,14 @@ static int mtk_dp_probe(struct platform_device *pdev)
- 		return dev_err_probe(dev, mtk_dp->irq,
- 				     "failed to request dp irq resource\n");
- 
--	mtk_dp->next_bridge = devm_drm_of_get_bridge(dev, dev->of_node, 1, 0);
--	if (IS_ERR(mtk_dp->next_bridge) &&
--	    PTR_ERR(mtk_dp->next_bridge) == -ENODEV)
--		mtk_dp->next_bridge = NULL;
--	else if (IS_ERR(mtk_dp->next_bridge))
--		return dev_err_probe(dev, PTR_ERR(mtk_dp->next_bridge),
--				     "Failed to get bridge\n");
--
- 	ret = mtk_dp_dt_parse(mtk_dp, pdev);
- 	if (ret)
- 		return dev_err_probe(dev, ret, "Failed to parse dt\n");
- 
--	drm_dp_aux_init(&mtk_dp->aux);
- 	mtk_dp->aux.name = "aux_mtk_dp";
-+	mtk_dp->aux.dev = dev;
- 	mtk_dp->aux.transfer = mtk_dp_aux_transfer;
-+	drm_dp_aux_init(&mtk_dp->aux);
- 
- 	spin_lock_init(&mtk_dp->irq_thread_lock);
- 
-@@ -2570,6 +2584,28 @@ static int mtk_dp_probe(struct platform_device *pdev)
- 	mtk_dp->need_debounce = true;
- 	timer_setup(&mtk_dp->debounce_timer, mtk_dp_debounce_timer, 0);
- 
-+	if (mtk_dp->bridge.type == DRM_MODE_CONNECTOR_eDP) {
-+		/* Need to power on HW because aux-bus will read EDID */
-+		mtk_dp_aux_panel_poweron(mtk_dp, true);
-+
-+		ret = devm_of_dp_aux_populate_bus(&mtk_dp->aux, NULL);
-+
-+		/* Power off AUX and panel now as detection is done. */
-+		mtk_dp_aux_panel_poweron(mtk_dp, false);
-+
-+		/* We ignore -ENODEV error, as the panel may not be on aux-bus */
-+		if (ret && ret != -ENODEV)
-+			return ret;
-+
-+		/*
-+		 * Here we don't ignore any error, as if there's no panel to
-+		 * link, eDP is not configured correctly and will be unusable.
-+		 */
-+		ret = mtk_dp_edp_link_panel(&mtk_dp->aux);
-+		if (ret)
-+			return ret;
-+	}
-+
- 	pm_runtime_enable(dev);
- 	pm_runtime_get_sync(dev);
- 
--- 
-2.40.0
-
+If you have a suggestion, feel free.
 
