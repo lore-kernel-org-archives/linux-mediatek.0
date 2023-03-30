@@ -4,97 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6466BC6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 09:31:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BA7BC6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 09:54:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2wlyXiuObJJjktYiyreCZzL3rjA4zKtmBixPoT6R+F0=; b=MfBwlVo1w0IiUuuUMDRQfz/Uh2
-	0F+DzHfCvvZ2ZTE2Hduaj2T762HZSqyap+sf/Ngcv+tfvM4V4ryy4KLa1fJv4yzv0YgH7XP1ooEUV
-	DIJexplvrvZVrANIQ6mdS4LaouMtI5Inch42p1BRPEsFv44O68tWfJ7iKRl4mnEqzQM4AyZq4SgKc
-	v+pHMttk2xdpzoF0tguK54NqDMKqHj8r6wr/6vH/q5z6Ay49xu+m6yaZEj0+PMPpOYAeAuKmIpNZ2
-	XZpTO9m/P15Mgkc9GlPBKpX+EFYfRFTnCFrLR9McxPN6z6fiKCuOOay/DioIKrD/7DeqtMEJ50jEF
-	8KWKvBfg==;
+	bh=Pbyws3H75gB+yatcu0+FBMyILwRxUxSpq4AefwZkLKg=; b=QwFoIW9+cQN3CicvXFu6q25PYM
+	33YwAqR3jCZWZSqZWDsPmqvVO6bEqWFc0+ZIX+20WFLe1YAIVG1O0nUYdAS4TuN6iXCjohBGfyQYI
+	xJYbXFtPbchmdo9O7/71pXcDx43a42xq2O9GBF5PX+mSg7gwvTwHCV3Mn3u2R0Mz2pgc/EjluTTr2
+	Nat0rU0advY//22nQ22WxSF5/Os0dGbkSHCVzfeKud+R/SnvyOEKNucXx0caJkXsJhHyk8rzQ6DA4
+	Ww5qXDOAN7vwoXq2FHoCNSaj7VqQ/gRP+dsBjUqEHFAfYubZ6quFLSLt2C+IfJXQzJeOWpaW4Eoik
+	2dsjd9qA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phodK-003I1I-0w;
-	Thu, 30 Mar 2023 09:31:50 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1phozW-003MUg-2U;
+	Thu, 30 Mar 2023 09:54:46 +0000
+Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phodH-003Hyo-1F;
-	Thu, 30 Mar 2023 09:31:48 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id t17-20020a05600c451100b003edc906aeeaso2983578wmo.1;
-        Thu, 30 Mar 2023 02:31:44 -0700 (PDT)
+	id 1phozR-003MTK-2q
+	for linux-mediatek@lists.infradead.org;
+	Thu, 30 Mar 2023 09:54:44 +0000
+Received: by mail-yb1-xb34.google.com with SMTP id b18so22741185ybp.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 30 Mar 2023 02:54:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1680168703;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=2wlyXiuObJJjktYiyreCZzL3rjA4zKtmBixPoT6R+F0=;
-        b=Y4OoQAhVGOqI+uv0pxKJRu4ZsIvPkStPkTUbv/2I6V3iDEot8HwhvO6dInlCxKYWBc
-         bad03C5wA4wX8bLnfeOGwydUjNhDacl6qyErhJ2XmtoyJipMNSIuJ1eD0afSmtPlZgv4
-         3VuwgNhG0xmkrhPVS/AXsIONapDnDoANbq/0JoqJeAPqulZOOfuZrfaZBgRa0YZ0KX0u
-         61yL6jG5GqP/yUlIdvtrRqUjOZF0scdaKVObg3LqAyb5EKJ4mfh/IaXPNwt82a0C2uVA
-         p1cSHvykOG99d3Br0z5fqhMb+1v5wFHN0KyfDnZosrZ35uNnKUJeCCd1mdcAp3mYgcH/
-         YFXw==
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1680170079;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Pbyws3H75gB+yatcu0+FBMyILwRxUxSpq4AefwZkLKg=;
+        b=mZsCUYHtWVu0vKKEGZmsGvkF+uy4o1aUwHzHWz89XldmLe8AQt/HxwPKXCnk93KRbH
+         V8UAN9+MMCbN5JvfzvF+7noo3B3ZC1SlListXXAlyAe/Si2dth9gBK0ZYJ1pNZjq9WpB
+         iNKgAFfirtS5iYb0r3mNi+HVpohWdyNPRun52UqeTAcSf+8ut/tE0fXdPt8xlgEB0Xiy
+         Rj4pHSlWP9szJ+wDfC+QfLt2W4ckBGmT2H86xnDFs4tatnn3zZjeDGcEbbnYNyzNRnHm
+         anAKm5idqzYX1EilwXDVQL2PFUkUsY4u2ooCexDw3QuTQhI2n1gfk4TR7i0W9tXx8lZp
+         mHGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680168703;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=2wlyXiuObJJjktYiyreCZzL3rjA4zKtmBixPoT6R+F0=;
-        b=lky6pNplUMGRM2fFCngAkLq1qi6IaoAPOZxKi5GsFXw08tMMkrjbLsJ1a1JEIkjvyZ
-         9dtobxzEvqb0I4W+2SH6XjaJlBgZ0CjZQLaDl8atqqMpUruCya+UqiuonljGni0yAOIH
-         jGjrTyCT2Mf6FZWIHvs2P0Z9JKe9BcJV3QXVyIa2MJh0wtUTQsJACG5u6nBUe6tCOeSv
-         9oIoJQ9r4rzDwfj8pDV+LIY1A7i6l+bFDqANJcBQ1s3fdVOAc5lLrZn3LrEZ+tiTihtz
-         4Wkr1GOghjuWb21YxEobIyh4vIzAd4SU1MFN1gmIOSBA/PiTZNV2tRFfMdIW/cn2lPIn
-         0drw==
-X-Gm-Message-State: AO0yUKWd8euEQR2V+4bBY9eWtuRifjy2HhvZDKmHSXrtzuV7v3bQelr9
-	8aw6m4cmamjZkWiGjsqxF1s=
-X-Google-Smtp-Source: AK7set8MoRoP1u28J2KlqIRCUvbhxPNq5qX8D5y1gRGG9mTbXEF5Z82DXD5g1HsNB5h8AJgc4McNiQ==
-X-Received: by 2002:a7b:ca4a:0:b0:3ea:e582:48dd with SMTP id m10-20020a7bca4a000000b003eae58248ddmr17293179wml.34.1680168703616;
-        Thu, 30 Mar 2023 02:31:43 -0700 (PDT)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id m18-20020a7bcb92000000b003ee58e8c971sm5107057wmi.14.2023.03.30.02.31.41
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 30 Mar 2023 02:31:42 -0700 (PDT)
-Message-ID: <5a1b22cb-4597-8137-e802-ca81ceb99c7c@gmail.com>
-Date: Thu, 30 Mar 2023 11:31:41 +0200
+        d=1e100.net; s=20210112; t=1680170079;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Pbyws3H75gB+yatcu0+FBMyILwRxUxSpq4AefwZkLKg=;
+        b=r4/jp62Yu69x3OvfvSMK5Y3iJHtmJZNvMPH5KP4t1Eeun7OMWcocAgMWbKomxwee8f
+         JigZd67bFMBl9LZy002BQe+QQXM6bScCX/XU+t51D640AD1Ogcg3uSI0AJhQC2RrcrQO
+         TfxKiNY5/0RE2iWwG6QXxPPhqYavC13NjZCcxQYxVfw0gHiEYGCd6A1Tq4VGOrIl0H3D
+         ikBUk1Bpwms/Y9IHR5Xs+MwzuMOH/vPQAOxHHbajAAeptYOz6+JIQyy7lAJN2NtB3PS0
+         +vucPEnl4BaEoRGn5+3FFH3a/dwk9vEymNRQpz3+l2p53wR4H2RheF6xtS2t28ZHY4kU
+         77Tg==
+X-Gm-Message-State: AAQBX9cTL0R/AvgvOkn8PJQND4OXZRddn8BXoX9Ycmdr30QhavslXKH/
+	OJQsEYDRR6mApEuszJkiJSXWoTQZmJS3rjXamtAASw==
+X-Google-Smtp-Source: AKy350bEejlHh/La/ICbG+v0y62RclEvzaIlO/L71B6Mcr7xujU2ePyASX64lF1cgA+JnYGg8IIpcjjXYY2L1pzN96g=
+X-Received: by 2002:a05:6902:1501:b0:b6d:80ab:8bb6 with SMTP id
+ q1-20020a056902150100b00b6d80ab8bb6mr15155725ybu.1.1680170079704; Thu, 30 Mar
+ 2023 02:54:39 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH v5 3/3] soc: mediatek: mtk-svs: add thermal voltage
- compensation if needed
-Content-Language: en-US
-To: =?UTF-8?B?Um9nZXIgTHUgKOmZuOeRnuWCkSk=?= <Roger.Lu@mediatek.com>,
- "eballetbo@gmail.com" <eballetbo@gmail.com>,
- "khilman@kernel.org" <khilman@kernel.org>,
- "drinkcat@google.com" <drinkcat@google.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- =?UTF-8?B?SmlhLXdlaSBDaGFuZyAo5by15L2z5YGJKQ==?=
- <Jia-wei.Chang@mediatek.com>, =?UTF-8?B?RmFuIENoZW4gKOmZs+WHoSk=?=
- <fan.chen@mediatek.com>
-References: <20230202124104.16504-1-roger.lu@mediatek.com>
- <20230202124104.16504-4-roger.lu@mediatek.com>
- <26837308-4837-f252-d162-f8af4859b63e@gmail.com>
- <fd62705e1abf8124706da6520fde5b77846bfd2c.camel@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <fd62705e1abf8124706da6520fde5b77846bfd2c.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20230203-evk-board-support-v3-0-0003e80e0095@baylibre.com> <7h8rffyu9x.fsf@baylibre.com>
+In-Reply-To: <7h8rffyu9x.fsf@baylibre.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Thu, 30 Mar 2023 11:54:27 +0200
+Message-ID: <CAFGrd9p7oPvhZ8KL40XYfNi2CAdEd8BZWrXPqfcqu7DTSSg4Kw@mail.gmail.com>
+Subject: Re: [PATCH v3 00/17] Improve the MT8365 SoC and EVK board support
+To: Kevin Hilman <khilman@baylibre.com>
+Cc: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, 
+	Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Chaotian Jing <chaotian.jing@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>, 
+	Wenbin Mei <wenbin.mei@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, 
+	Zhiyong Tao <zhiyong.tao@mediatek.com>, =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>, 
+	linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-mmc@vger.kernel.org, 
+	linux-gpio@vger.kernel.org, Alexandre Bailon <abailon@baylibre.com>, 
+	Fabien Parent <fparent@baylibre.com>, Amjad Ouled-Ameur <aouledameur@baylibre.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230330_023147_425014_85AED3A5 
-X-CRM114-Status: GOOD (  19.53  )
+X-CRM114-CacheID: sfid-20230330_025442_159218_BCC16CB7 
+X-CRM114-Status: GOOD (  16.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,74 +100,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Le jeu. 30 mars 2023 =C3=A0 02:09, Kevin Hilman <khilman@baylibre.com> a =
+=C3=A9crit :
+>
+> Alexandre Mergnat <amergnat@baylibre.com> writes:
+>
+> > This commits are based on the Fabien Parent <fparent@baylibre.com> work=
+.
+> >
+> > The purpose of this series is to add the following HWs / IPs support fo=
+r
+> > the mt8365-evk board:
+> > - Watchdog
+> > - Power Management Integrated Circuit "PMIC" wrapper
+> >   - MT6357 PMIC
+> > - MultiMediaCard "MMC" & Secure Digital "SD" controller
+> > - USB controller
+> > - Ethernet MAC controller
+> >
+> > Add CPU Freq & IDLE support for this board.
+> >
+> > This series depends to another one which add support for MT8365 SoC and
+> > EVK board [1].
+>
+> It seems to depend on more than that series.  In order to test this, I
+> tried applying this series on top of Bero's minimal support (now in
+> linux-next), and it does not apply cleanly.
+>
+> Could you please list all the dependencies that are not yet upstream.
 
+Hi Kevin,
+You're right, it also depend to
+https://lore.kernel.org/all/20221122-mt8365-i2c-support-v6-0-e1009c8afd53@b=
+aylibre.com/
 
-On 11/02/2023 12:12, Roger Lu (陸瑞傑) wrote:
-> Hi Matthias Sir,
-> 
-> Sorry for the late reply.
-> 
-> ... [snip] ...
-> 
->>> @@ -2127,6 +2123,7 @@ static struct svs_bank svs_mt8192_banks[] = {
->>>    		.type			= SVSB_LOW,
->>>    		.set_freq_pct		= svs_set_bank_freq_pct_v3,
->>>    		.get_volts		= svs_get_bank_volts_v3,
->>> +		.tzone_name		= "gpu1",
->>>    		.volt_flags		= SVSB_REMOVE_DVTFIXED_VOLT,
->>>    		.mode_support		= SVSB_MODE_INIT02,
->>>    		.opp_count		= MAX_OPP_ENTRIES,
->>> @@ -2144,6 +2141,10 @@ static struct svs_bank svs_mt8192_banks[] = {
->>>    		.core_sel		= 0x0fff0100,
->>>    		.int_st			= BIT(0),
->>>    		.ctl0			= 0x00540003,
->>> +		.tzone_htemp		= 85000,
->>> +		.tzone_htemp_voffset	= 0,
->>> +		.tzone_ltemp		= 25000,
->>> +		.tzone_ltemp_voffset	= 7,
->>
->> Which is the exact same tzone then in the other bank. Which brings me to a
->> good
->> point:
->> Is the tzone bank specific or the same for all banks?
-> 
-> Thermal zone (tzone) isn't for all SVS banks. In other words, tzone is specific
-> for corresponding DVFS domain like SVS GPU tzone is for GPU DVFS domain. Let's
-> take MT8183 SVS and MT8192 SVS as examples.
-> 
-> MT8192 SVS applies 2-line HW design (High/low 2 banks optimize the same DVFS
-> domain). So, SVS GPU High/low bank uses the same GPU tzone.
-> 
-> MT8183 SVS applies 1-line HW design (1 bank optimizes 1 DVFS domain)
-> Therefore, SVS CPU/GPU/CCI bank use different tzone because they are different
-> DVFS domain.
-> 
->> At least for mt8192 they are not. I suppose with this change to the code
->> mt8183
->> could take advantage of this on all it's banks as well.
->> In that case, can we
->> start to restructure the struct svs_bank to only have the tzone values
->> declared
->> once?
-> 
-> Since tzone isn't for all banks, we cannot declare it once for all IC supports
-> from this point of view.
-> 
-
-Thanks for clarification, applied now.
-
->>
->> Background is that I'm very unhappy with the svs_bank data strucutre. It
->> seems
->> like a "throw it all in here". It should be structured for functional parts
->> of
->> the banks. Maybe using structs, maybe unions where possible. In any case
->> having
->> a flat struct of over 50 members isn't really what we want.
-> 
-> My apology. We'll structure svs_bank for functional parts of them.
-> 
->>
->> Regards,
->> Matthias
+Regards,
+Alex
 
