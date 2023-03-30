@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E789DC761A6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 14:21:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6B1FC6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 14:21:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SA7K1DKPDuni2CUxMFtz6LVzpvZXN/0fsgagtyIjImk=; b=nzvEUC9VmPlOfj1kEnFXvASBgB
-	qwvShgV8sUZbbQadDLYAoKO5147sGskvm38ns+JIr7XAKDSmBEH6ZSoKjVlqTuER/WfFEYdNpMJ+r
-	B3+Xq4KDv+LEdvTYmu/APym4w6EeFKGlh0IZobOtAMRBP2/8/Q4X1TPjWgDGLG+8TPGrhkv1ZGXC+
-	iUg/U9tlPdKHy/rUNTaoWcWTwaebMbO3BOV56OzhYFw38CYjh00QihUFw9j6S3InUswHQHclXPsJ5
-	wxXgJBvQLXkMksxT6OvrCOQj6WkOBiiOlEorGliyMq0m6qR6Xt0OMb7OA+DHggv9NvCP44rW6SQlI
-	0RLFDbyw==;
+	bh=J5DWD32OWLq13uaRlJE+1ppOi8qnCqTf5ZEGPUBOy/k=; b=FNGOKcGqIW0iYNbApFoDTV1Yoh
+	/idtkJnTL22cqCxRiyZYaq0j9Z3GQDlDMMgTrlbJlMpj1XMkn9ucX8XGpJm1ZrefnLqmm7ODtPhNY
+	ZUkkdwAA46lEmu0Az+LITJlRgBSfFPx+2sA0Ep6w4DWyT5DzNccqsciKcQZSWhgbCN5/imGUENd4t
+	WRVF0Ikjt9eSj3vfp7TXIzWqDyQxh9mhwpbXgHVAemaXMBtyIJFGPV7FbuuVil6BIzKDaBtcRDng9
+	M4n1xRCYNXVP3lao8NI1fiBrZXy/H3eBIQSPEFdL4pv7FM5AK+UB75E4kC5lWOtMJ5u/Xy6cpPfDF
+	ExYRUvFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pht9H-0042ZJ-0O;
-	Thu, 30 Mar 2023 14:21:07 +0000
+	id 1pht9I-0042ab-0e;
+	Thu, 30 Mar 2023 14:21:08 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pht8t-0042Et-2w;
+	id 1pht8t-0042EN-1I;
 	Thu, 30 Mar 2023 14:20:45 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 166E9660000E;
-	Thu, 30 Mar 2023 15:20:42 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 466326603188;
+	Thu, 30 Mar 2023 15:20:41 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1680186042;
-	bh=l7DxgZbkLf1a/NAX8ACnOYom2qi3A95N4rbvhFxlUX8=;
+	s=mail; t=1680186041;
+	bh=IS0da1vr/9JtA9BZ0bqYXl4kxrPBhntX0yK9vYbXQe0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=G+N7Mm5p05ibAjldy0ztpMj2bog3cgiYrH6vEB4EDL/2kVNHu6Wdcd/0CHcpnOdy9
-	 PkVQnTF0JZowrF0aJhNMRqikGo19zxRYJs4VBNIYHpcZkbxAwcxPJyWJsmTFP2WOKP
-	 qRFrx3+GiO52hsZejPFSNbIxuhdi/m7u+k92akp2y3bLcHD+00rp0OeqLNsOoG3LJO
-	 0/KzS5KP4piExrR/Fn3UropaOKfZRXV85m7umZK0qYDVE/pbOEkwZbFvHZk+cv1hxl
-	 oATil3lGCIuzoPjuCCCGmLV+eF4EhdQB0opGbFPK3sFE2vW1gsrWQG7zqXXhRN4d5Z
-	 Y4V30RHoIja9A==
+	b=cmNm9GUrXZ1goxAMnVTinMesGeXyqZZgfnNqDakJ28ylnpLG2Wjo12UhUq0jqFutf
+	 lpxLpcQK4fR26/fKufBGpLZoITp3dPCR9xj9IrEx+4QcicMg6Uff0knwJ3g9OZ1MEI
+	 mcYF1yIXnfaw0niCgkmn1S9P8MXXdRl+hPJeuNA475q2uAi9sGKrZrGSpqWXKJwVBO
+	 I3eiCOtJXgci6UWFhvfyMZjlI/1ziY/tdzeeOS55kp4Jz0Fq+d0YMl7ApUyY4fmULp
+	 W9JmZCOdhrWdvclW5vT13e0Ci5J7JmOlTY+C5qCAjxqBAPFxBAkj7ho9FY3dtU8MWn
+	 rjySkUSxZtDtw==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -56,18 +56,17 @@ Cc: p.zabel@pengutronix.de,
 	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com,
 	wenst@chromium.org
-Subject: [PATCH v2 3/8] drm/mediatek: dp: Always return connected status for eDP in .detect()
-Date: Thu, 30 Mar 2023 16:20:30 +0200
-Message-Id: <20230330142035.191399-4-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 2/8] drm/mediatek: dp: Move AUX and panel poweron/off sequence to function
+Date: Thu, 30 Mar 2023 16:20:29 +0200
+Message-Id: <20230330142035.191399-3-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.40.0
 In-Reply-To: <20230330142035.191399-1-angelogioacchino.delregno@collabora.com>
 References: <20230330142035.191399-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230330_072044_104938_2D378F79 
-X-CRM114-Status: UNSURE (   9.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230330_072043_702504_2C9390BD 
+X-CRM114-Status: GOOD (  16.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,30 +81,150 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If this is an eDP panel it's not removable, hence it's always connected:
-as a shortcut, always return connector_status_connected in the .detect()
-callback for eDP connector, avoiding a poweron, a check for sink count
-and a poweroff.
+Everytime we run bridge detection and/or EDID read we run a poweron
+and poweroff sequence for both the AUX and the panel; moreover, this
+is also done when enabling the bridge in the .atomic_enable() callback.
+
+Move this power on/off sequence to a new mtk_dp_aux_panel_poweron()
+function as to commonize it.
+Note that, before this commit, in mtk_dp_bridge_atomic_enable() only
+the AUX was getting powered on but the panel was left powered off if
+the DP cable wasn't plugged in while now we unconditionally send a D0
+request and this is done for two reasons:
+ - First, whether this request fails or not, it takes the same time
+   and anyway the DP hardware won't produce any error (or, if it
+   does, it's ignorable because it won't block further commands)
+ - Second, training the link between a sleeping/standby/unpowered
+   display makes little sense.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dp.c | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_dp.c | 76 ++++++++++++-------------------
+ 1 file changed, 30 insertions(+), 46 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index 76ea94167531..c82dd1f0675d 100644
+index 84f82cc68672..76ea94167531 100644
 --- a/drivers/gpu/drm/mediatek/mtk_dp.c
 +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -1957,6 +1957,9 @@ static enum drm_connector_status mtk_dp_bdg_detect(struct drm_bridge *bridge)
- 	bool enabled = mtk_dp->enabled;
- 	u8 sink_count = 0;
+@@ -1253,6 +1253,29 @@ static void mtk_dp_audio_mute(struct mtk_dp *mtk_dp, bool mute)
+ 			   val[2], AU_TS_CFG_DP_ENC0_P0_MASK);
+ }
  
-+	if (mtk_dp->bridge.type == DRM_MODE_CONNECTOR_eDP)
-+		return connector_status_connected;
++static void mtk_dp_aux_panel_poweron(struct mtk_dp *mtk_dp, bool pwron)
++{
++	if (pwron) {
++		/* power on aux */
++		mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
++				   DP_PWR_STATE_BANDGAP_TPLL_LANE,
++				   DP_PWR_STATE_MASK);
 +
++		/* power on panel */
++		drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POWER_D0);
++		usleep_range(2000, 5000);
++	} else {
++		/* power off panel */
++		drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POWER_D3);
++		usleep_range(2000, 3000);
++
++		/* power off aux */
++		mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
++				   DP_PWR_STATE_BANDGAP_TPLL,
++				   DP_PWR_STATE_MASK);
++	}
++}
++
+ static void mtk_dp_power_enable(struct mtk_dp *mtk_dp)
+ {
+ 	mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_RESET_AND_PROBE,
+@@ -1937,16 +1960,9 @@ static enum drm_connector_status mtk_dp_bdg_detect(struct drm_bridge *bridge)
  	if (!mtk_dp->train_info.cable_plugged_in)
  		return ret;
  
+-	if (!enabled) {
+-		/* power on aux */
+-		mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
+-				   DP_PWR_STATE_BANDGAP_TPLL_LANE,
+-				   DP_PWR_STATE_MASK);
++	if (!enabled)
++		mtk_dp_aux_panel_poweron(mtk_dp, true);
+ 
+-		/* power on panel */
+-		drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POWER_D0);
+-		usleep_range(2000, 5000);
+-	}
+ 	/*
+ 	 * Some dongles still source HPD when they do not connect to any
+ 	 * sink device. To avoid this, we need to read the sink count
+@@ -1958,16 +1974,8 @@ static enum drm_connector_status mtk_dp_bdg_detect(struct drm_bridge *bridge)
+ 	if (DP_GET_SINK_COUNT(sink_count))
+ 		ret = connector_status_connected;
+ 
+-	if (!enabled) {
+-		/* power off panel */
+-		drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POWER_D3);
+-		usleep_range(2000, 3000);
+-
+-		/* power off aux */
+-		mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
+-				   DP_PWR_STATE_BANDGAP_TPLL,
+-				   DP_PWR_STATE_MASK);
+-	}
++	if (!enabled)
++		mtk_dp_aux_panel_poweron(mtk_dp, false);
+ 
+ 	return ret;
+ }
+@@ -1983,15 +1991,7 @@ static struct edid *mtk_dp_get_edid(struct drm_bridge *bridge,
+ 
+ 	if (!enabled) {
+ 		drm_atomic_bridge_chain_pre_enable(bridge, connector->state->state);
+-
+-		/* power on aux */
+-		mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
+-				   DP_PWR_STATE_BANDGAP_TPLL_LANE,
+-				   DP_PWR_STATE_MASK);
+-
+-		/* power on panel */
+-		drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POWER_D0);
+-		usleep_range(2000, 5000);
++		mtk_dp_aux_panel_poweron(mtk_dp, true);
+ 	}
+ 
+ 	/* eDP panels aren't removable, so we can return a cached EDID. */
+@@ -2015,15 +2015,7 @@ static struct edid *mtk_dp_get_edid(struct drm_bridge *bridge,
+ 	}
+ 
+ 	if (!enabled) {
+-		/* power off panel */
+-		drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POWER_D3);
+-		usleep_range(2000, 3000);
+-
+-		/* power off aux */
+-		mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
+-				   DP_PWR_STATE_BANDGAP_TPLL,
+-				   DP_PWR_STATE_MASK);
+-
++		mtk_dp_aux_panel_poweron(mtk_dp, false);
+ 		drm_atomic_bridge_chain_post_disable(bridge, connector->state->state);
+ 	}
+ 
+@@ -2188,15 +2180,7 @@ static void mtk_dp_bridge_atomic_enable(struct drm_bridge *bridge,
+ 		return;
+ 	}
+ 
+-	/* power on aux */
+-	mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
+-			   DP_PWR_STATE_BANDGAP_TPLL_LANE,
+-			   DP_PWR_STATE_MASK);
+-
+-	if (mtk_dp->train_info.cable_plugged_in) {
+-		drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POWER_D0);
+-		usleep_range(2000, 5000);
+-	}
++	mtk_dp_aux_panel_poweron(mtk_dp, true);
+ 
+ 	/* Training */
+ 	ret = mtk_dp_training(mtk_dp);
 -- 
 2.40.0
 
