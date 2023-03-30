@@ -4,71 +4,138 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7C40C761A6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 13:50:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DC38C6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 14:13:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CKdeKXMZKkzRzmYzogTN+akOjOk8EAmTZBQ/2FEAwgg=; b=pzjWL4GFCCIAffUf9Khgm2BpcZ
-	aAubJf64fmOqzO+ihP9wH93qXIN0EbKUPIpD12cMiJVHj5IGnxG224SSLR2P7bvQws8M1jrBFXVtj
-	Zn8vhusTaagzDdXsJ/ysGwc5CWJT0OfAveZfk4OYWSUOWm4WZzjf1loVsR6s7x3tO39RWZvDwBmm5
-	KmTh7LGsvCbH2QNUM0CVpqdXUcM6xxhIdY/x5YAADtkrTKzmKWOrNXYyh5gP0Yf6mzoWL8p9mMyhW
-	++Y1uvpoiAVR8ZTy335cAOyzZfoWXPiQ6oVaLI/XeV30NEGnraeq9odwKJa94qJdqETn9Bl3GYXrS
-	J/kBLf7g==;
+	bh=x0R+1O0pWNaXE5gSsjT3kTitnKX2vvbO1/3fcTbc27c=; b=dNOuTLYDGgPBJXCfnqD32z01to
+	XVOFY90VXQrnMgWIJKis/4+wf2RdsnEWaAB8/YVLoPYCTxjdKshWseJmeA6pSNz3Nnb+oLUCO5R4r
+	iv68VfCnGBSBlJGafrtcFERsJyV5DY6LNxHeZynwXHHI2+0yuh6W7Xx4XN1nxhCyYLE+97PnTSfEM
+	4i7rRek/SbgaWPgw0AteR0g8fjyJC5N7epwdDpeQs3bMF+BMWW7YJe7PHPrKllBI1Qg3GjM/51rzY
+	X2/V+fatHu6aqMyj4p2KdC0CstnavWU9exsuFyFJuW1nlvXu5zffhqcfZyjyfsgMIAQvrDg+tQ5TL
+	ipKV7iJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phsfH-003vj4-0M;
-	Thu, 30 Mar 2023 13:50:07 +0000
-Received: from mail-oi1-f178.google.com ([209.85.167.178])
+	id 1pht2G-003zDJ-2f;
+	Thu, 30 Mar 2023 14:13:52 +0000
+Received: from mail-bn1nam02on2060b.outbound.protection.outlook.com ([2a01:111:f400:7eb2::60b] helo=NAM02-BN1-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phsfD-003vi5-2b;
-	Thu, 30 Mar 2023 13:50:05 +0000
-Received: by mail-oi1-f178.google.com with SMTP id b19so14177328oib.7;
-        Thu, 30 Mar 2023 06:50:02 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680184202;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=CKdeKXMZKkzRzmYzogTN+akOjOk8EAmTZBQ/2FEAwgg=;
-        b=Pfkg2uh6omNQJrqn7xGchBYNndRsSUZD7+tQqLzAlEYkD2GK7O2/Rc7pKZr2GrBmil
-         OU9jGe3ZDuLu7/JtR9N4Zn4mK6u1d7iZButtUMyU+pue8XaKev4UKMY8cDoxedsOCBa2
-         8k/Ia6TJlw9av4kdw9wQem9YtL6kawLJ3lxLisC7q7FRFyfzBB0oj3K+w8hQkkVwjU3q
-         VRcksR6JhJF8UfiWAz/xZd9xWlGZ4f9WYpvfNIdxxZl5XAd1dZ3QJTNm+pIfRxs9dHoS
-         VDJDkDMQ8TBC+ui8r5niAjTpfTiEit9YAN6hl7hxLmcPyQuXUmWdbwmb9NKmM65JFTi8
-         8+7w==
-X-Gm-Message-State: AAQBX9cUx2NzPKFo/3pWWs4XXyAQ5TqJMQPxL6aAgk41RT8Qtii8ngMn
-	Glz/Z/DFoU83H2T76ogZHw==
-X-Google-Smtp-Source: AKy350bFeV3x8EQIVtLXWGoO3fQp/HyP946oOhe7XGW6LnNcoGBq+6UaL8exWCu6W4e++Ed/2NEAcg==
-X-Received: by 2002:aca:280c:0:b0:389:72d5:f16f with SMTP id 12-20020aca280c000000b0038972d5f16fmr1649086oix.28.1680184201780;
-        Thu, 30 Mar 2023 06:50:01 -0700 (PDT)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id o184-20020acabec1000000b0038934c5b400sm4334154oif.25.2023.03.30.06.50.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Mar 2023 06:50:01 -0700 (PDT)
-Received: (nullmailer pid 1903371 invoked by uid 1000);
-	Thu, 30 Mar 2023 13:50:00 -0000
-Date: Thu, 30 Mar 2023 08:50:00 -0500
-From: Rob Herring <robh@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Alexandre Mergnat <amergnat@baylibre.com>, Linus Walleij <linus.walleij@linaro.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Zhiyong Tao <zhiyong.tao@mediatek.com>, Bernhard =?iso-8859-1?Q?Rosenkr=E4nzer?= <bero@baylibre.com>, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/2] dt-bindings: pinctrl: mediatek: deprecate custom
- drive strength property
-Message-ID: <20230330135000.GA1898063-robh@kernel.org>
-References: <20230327-cleanup-pinctrl-binding-v1-0-b695e32e4f2e@baylibre.com>
- <20230327-cleanup-pinctrl-binding-v1-1-b695e32e4f2e@baylibre.com>
- <334089fd-f0e8-bf63-5100-d8632c478ccc@collabora.com>
- <3fbb78e9-a450-3741-070b-2caedbaa47a5@linaro.org>
+	id 1pht2C-003zC0-11;
+	Thu, 30 Mar 2023 14:13:49 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=bal+jSeaPz58sAO9sB9OFPo+ndz+tZ0sBZ8iJm0DSRE3msJIBM3jECCFINqr4srjVtavUibLpe6TScX/ipQ8NclzcfQ1aViVrsnS89y9spaE4u7qwjQxpkoSf9fnipWAZPb+h0ZzhlVk0cmUDFrpLTFsf0NmbGVsym1ftETnklSXGNW16I8ulepeM5eS6hVvS75A0CsMrlvZOCAY8PuHW/FYqAiAMnzgSOY9Q5WpInpfzYaitT6GI3De7l9whJkUmMyTlE4r2tZutVf7w7aOI3s3xGORK0LbsUcnygkM82SydTDCtBtjoyRr9dtT9X7aQsKqD8awcwrdXKwMH3BwPw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=x0R+1O0pWNaXE5gSsjT3kTitnKX2vvbO1/3fcTbc27c=;
+ b=QV7j/vR+lRUCd62gq0I+uYujO1cI2y3f3feboq7/0eBb8wR+zaGJop30P9HF1U67kJQDbGgOVkxjxjgWtYu/EdMMBT9xUMVuSJZQLkFj4F2G9yTwFYUgOhi9Xe0swJNi4ZVJHauwR9zQyQzEs93ne8+EDyfcDlL2oY5GK4vQWrp5D+rsxGRsgRm39OR4hNiW224xYelgetk/Z4ASXV99gA5nPJ/ZLikOcGHunakU3g6ug7riFYjXm/Gmjdd1nKIsEb3Xz2NmZHN9sBJF5wDQdx2VIw69saW/iLu+wRRJ7WqGecgWxijwozsgNX5KWdXdxkcwNBP1IAq5i2jkcrDGZA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=x0R+1O0pWNaXE5gSsjT3kTitnKX2vvbO1/3fcTbc27c=;
+ b=QaEhptnx/+WCw2YxbOh9dk4HhK5+Emt6Vg+Hj1D9/84Xm7KqVeSTg21mRHBRhqFF3kHGKp44Fwi5PwxgjhX6PDRwPQ0rjBhOjGTNj/Y/3Y9unbs4WptV9wM6JGrdyDZx/gkSHy/a01t7PxN1pgfjrW1XWPj/U3/bAtmLJi3jVhE=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=amd.com;
+Received: from MN0PR12MB6101.namprd12.prod.outlook.com (2603:10b6:208:3cb::10)
+ by SJ1PR12MB6052.namprd12.prod.outlook.com (2603:10b6:a03:489::15) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.37; Thu, 30 Mar
+ 2023 14:13:42 +0000
+Received: from MN0PR12MB6101.namprd12.prod.outlook.com
+ ([fe80::f4d:82d0:c8c:bebe]) by MN0PR12MB6101.namprd12.prod.outlook.com
+ ([fe80::f4d:82d0:c8c:bebe%2]) with mapi id 15.20.6254.022; Thu, 30 Mar 2023
+ 14:13:41 +0000
+Message-ID: <cdf612bf-96f6-9b4e-a32c-50007892083c@amd.com>
+Date: Thu, 30 Mar 2023 09:13:37 -0500
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH RESEND] wifi: mt76: mt7921e: Set memory space enable in
+ PCI_COMMAND if unset
+Content-Language: en-US
+To: Sean Wang <sean.wang@kernel.org>
+Cc: nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com,
+ shayne.chen@mediatek.com, sean.wang@mediatek.com,
+ Matthias Brugger <matthias.bgg@gmail.com>, Anson Tsao <anson.tsao@amd.com>,
+ Kalle Valo <kvalo@kernel.org>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, linux-wireless@vger.kernel.org,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20230329195758.7384-1-mario.limonciello@amd.com>
+ <CAGp9LzrkX4uFAtLwvjH+uUuRgT_YDg3eE8SqgWEXOFmw5r=aMQ@mail.gmail.com>
+From: "Limonciello, Mario" <mario.limonciello@amd.com>
+In-Reply-To: <CAGp9LzrkX4uFAtLwvjH+uUuRgT_YDg3eE8SqgWEXOFmw5r=aMQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: CH2PR18CA0059.namprd18.prod.outlook.com
+ (2603:10b6:610:55::39) To MN0PR12MB6101.namprd12.prod.outlook.com
+ (2603:10b6:208:3cb::10)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <3fbb78e9-a450-3741-070b-2caedbaa47a5@linaro.org>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MN0PR12MB6101:EE_|SJ1PR12MB6052:EE_
+X-MS-Office365-Filtering-Correlation-Id: 06c18fa4-c381-43a9-8bac-08db3128f6af
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	qiXs0ZwJ0zijikN11Rr7P2FN1YXwEtS2/UGbQvewMGhYwNh/HXQeMEr7Q1GCmUjYm2BJcLOpX/zT7aWnYnleYshfURJaWzLktoiuKbCzJ5JvKxbR1zy6u5hlWy1Jcr+9Lny6KkWb/zXXdSk4pZVmcRSGlc3gb7+Z+VZbTbOYkDHdaOhXQC+wDdjg3UqqLIlt1xbaNsHUb9mlBH4CTeLL9CSDxl3Ft2qQmIs/l68tzz9rxSY2qnM3pY6qEgCqQYzdnGhTN/l5ReH2Ul0XBR+jQI0cz25ga7gZa/7PMF6ZLD81hyKjkYmx+jMdBCEpk+QyAl3GW6PuD3VTt0TV4uHlGLKzXADNz6WdIt0P2fkGTYUJiu5DS8zE/5S+uK42X0cUydZR5DneunBPurVK1xhqV8td/Svc6171yRGbpCc/yoKIgYCOTk/UJ5KCLXZNjNPX5+BGP1NKTirlNUUuNbsAD+1hgKE4GMKt+wZ6kU/zKqkWl0izcS44QsWW+l7XzjbIFypWoEumr1soqLElnpw+CE+oExqI4HiR2j+3XWuGc85cll/hmiyMi55SLZPKN1FI1jBeEzlQHX55XYl8FFYBIlM0mHYNX0wLZU02D0eqtSTirW+dtVkJode5/fcKFgTz5u9/Rk3N5wDdybBXYV6sog==
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN0PR12MB6101.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(396003)(376002)(366004)(136003)(39860400002)(346002)(451199021)(6512007)(6486002)(83380400001)(31696002)(31686004)(54906003)(66946007)(7416002)(38100700002)(26005)(2906002)(86362001)(316002)(478600001)(966005)(8676002)(6666004)(6506007)(36756003)(5660300002)(2616005)(41300700001)(66476007)(6916009)(4326008)(186003)(53546011)(66556008)(8936002)(43740500002)(45980500001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?RkZMcEJ2Ui9QVzEzVEZteGMwVFJzK2NXMDJWR3ZkYkVabTVHM0xFMk9nc3or?=
+ =?utf-8?B?bDM5YjR1UmFVRVhyYkliRHBMVGVWVFczcTFJbEtZeHByNTdkK3hrTkpsTnFl?=
+ =?utf-8?B?MXR0NStYSnMrWXpyN01ZaFJQT00vYjMwNGx4MDJVeUJSZkhRM3d2a0RoQ2Ja?=
+ =?utf-8?B?UGJ0czdFYlhZSWpzOTNBUnErc3JYZDBHVDRhSFQ1T1E0K2VwMlVXL1J1RGlT?=
+ =?utf-8?B?WUk0MzcydFJKV0FmUmNUeVB1Umpaclo5SWJZbHltRzczV2ZSTExFOExFQm1q?=
+ =?utf-8?B?amFYRFFtUDJnNytKM01LZS9VT3M1L1hyZXZ0UXB5VUxrQktRdllJcUlUNE9w?=
+ =?utf-8?B?T0hVNTM5NFRpcVMwUm1MNDR1Tm1iQzFteWVlVGNpdWVhZTcxeE1XNGZxRUky?=
+ =?utf-8?B?TC83UW81YWFOR044Y3g3VnRhUXR3MVlnTTVMYmdqTWZnaHFvTWRjcVpuQm5T?=
+ =?utf-8?B?SjZQTUUvM3k3b2J1RVd4YWQrNjhYT1N3RHpCNHBwZkNSQXoxSFc5N1BpSnhs?=
+ =?utf-8?B?enJrY25Jc1JrRk5DYUw1eXVMZ2w0TXNvS1VhS2hVU1BuQmY0VDB3aUVzNURO?=
+ =?utf-8?B?Sm56eHk1REJCNFBKVlRvWGtFOHZhUklpY1NtUDZMaWp3MXpBbmE5MjNrTzNV?=
+ =?utf-8?B?cVZ3QlUzQjQrNEFhMXJnK0JRbnlUbFk0UllhSDFQWldpTWRJMGk1MnNWYTVl?=
+ =?utf-8?B?UCt1Skp4Y0xlVUtjejlRVklRK3lNci9MQkhGVE8wbU9Ed0g1Wk5GWmVKU0c0?=
+ =?utf-8?B?RHpRWHl6ZGp4T1Z5cjVCVnlkWnlIcy9BL085L3FPcXRVTi93Vk9hVkRnakl1?=
+ =?utf-8?B?OGMvMTZtRmVma1phUHE4WlF6MmhxNVpiQkM4ODl0MjRpL3hTSlI3NC9FL2Z2?=
+ =?utf-8?B?TlhZbFdwVUh2YzJYQ1hhbUJTQ09hVjIyQVA5Zlpwd0JhOTZxY1NQVjAyeG0v?=
+ =?utf-8?B?UFl4QzRNc1ZkL2MySFZFcWxaZzZPOGxKRitLL0JFODN1MVBIS0RXU3ZzWTlk?=
+ =?utf-8?B?QS91Qi83Z0grRFRPUDBXN0tvcEJreThFK2VCaTBrb2dhdDZPcjdDa0xTOWlB?=
+ =?utf-8?B?eVhQSEoydjV5MWdLUDA4L0l4eTgvY0UzVzNaeW9IdE5MU2RWTUxDVk80ZjVk?=
+ =?utf-8?B?T2NJaTc1RnhCdGdWYnBuNCtrRXptWCtTTm5RQjR6Q042WGxJc3ZKclFjOEtq?=
+ =?utf-8?B?L21EMlZjR3BGeVhZalk3NHl6TGVsU1F6QzJlbms3SW51TE9TVWYxVHZEaFVB?=
+ =?utf-8?B?VXdnRUk1WVlJd2Y0NU4wb2t4SXF4T0EvbnhoQ01aRWxHaVR3S1l5ZEFlNHFI?=
+ =?utf-8?B?cFl6Z3Z0S294QnByQUNzZGxaNmdGZDhWM3BzQzBYb2JiUjdCMUh3eGdsVU5S?=
+ =?utf-8?B?aEUvanpmbDJUdWJycXoyeWhTeGtONXRxSDJKWG5WbVJwR1NUSVhsdDVac0xt?=
+ =?utf-8?B?b1VjdUNJWm5POEkrQ2RmZ1RhcnZYZ1NNTGs5QVpqK3dUSGxXSHNJbGxLekp3?=
+ =?utf-8?B?R1NoelVlVjlsTTN4UE9IM05pVTcxNWJJanhqUzBUV0NUSFU2NzhubWhHdWcv?=
+ =?utf-8?B?SHhGM0lSeFAxaThxRi8wMFZBdm56N1gzeXd2WEMreVBRNEx5QlBERVJYRzB2?=
+ =?utf-8?B?eVZJbG8wN3BEaGxvdVZINUJSZU8yRTNzSk05cUNyN0lvV1k4VFZjczVZa2hk?=
+ =?utf-8?B?L1A0djlSSy95L2hNSVJITEZkQ3RnVmJ3NzV1a0JwcThBeU1ZREExcTlBNk5V?=
+ =?utf-8?B?cHMwQStHUzFiaHVFc291QzF1eTJKeFMxTGM2NVdUZm1veExVQTdYY1RjOXNJ?=
+ =?utf-8?B?WnpxMkcyMnRpZUYzSlBsRTVIR0V6L1I2SXVtS003T0NjSFMydFVxN2pzbHhB?=
+ =?utf-8?B?YlBMWUZtV2diR3BvWU1iMkxkOVE3d21zS0hhY3VFOWtYQTd2OUdUWGJPYSsx?=
+ =?utf-8?B?YkNaWFJBZDA4Vk85WGcyK2lZZVVtN256NXlFdnV6RzdBSlM2QklZMjE0WHBx?=
+ =?utf-8?B?dlhid2lpVnhMbllrMFltd0NlSmROOHBTbDJ5SXQ0b0FPUUZzOUxuSnpSZFdW?=
+ =?utf-8?B?U1BFR3M3MFNOVzFqM0xJRWhKY1JTWlZhOVdYTkFZMDIzNkYvbFc2c1Z3TkNl?=
+ =?utf-8?Q?cS2/sQ36IXb5sJKN7JMfKrMKj?=
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 06c18fa4-c381-43a9-8bac-08db3128f6af
+X-MS-Exchange-CrossTenant-AuthSource: MN0PR12MB6101.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Mar 2023 14:13:41.2019
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: OJY4oOiZKkhvVupe5gUNJex0sXA8NKGeMPphSmN32zlJsI5EH9d1TQFJy+oPC3SSWFektoI0xHI2p+Sxll6XqA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ1PR12MB6052
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230330_065003_842984_22324F96 
-X-CRM114-Status: GOOD (  24.83  )
+X-CRM114-CacheID: sfid-20230330_071348_375490_109B25C4 
+X-CRM114-Status: GOOD (  18.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,59 +150,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 29, 2023 at 09:58:57AM +0200, Krzysztof Kozlowski wrote:
-> On 28/03/2023 15:41, AngeloGioacchino Del Regno wrote:
-> > Il 28/03/23 15:06, Alexandre Mergnat ha scritto:
-> >> Deprecate mediatek,drive-strength-adv which shall not exist, that was an
-> >> unnecessary property that leaked upstream from downstream kernels and
-> >> there's no reason to use it.
-> >>
-> >> The generic property drive-strength-microamp should be used instead.
-> >>
-> >> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-> >> ---
-> >>   .../devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl.yaml      | 8 ++++++--
-> >>   .../devicetree/bindings/pinctrl/mediatek,mt8365-pinctrl.yaml      | 6 +++++-
-> >>   2 files changed, 11 insertions(+), 3 deletions(-)
-> >>
-> >> diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl.yaml
-> >> index c30cd0d010dd..b82a066b91ec 100644
-> >> --- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl.yaml
-> >> +++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl.yaml
-> > 
-> > Thanks for doing MT8183!!!
-> > 
-> >> @@ -110,8 +110,13 @@ patternProperties:
-> >>             drive-strength:
-> > 
-> > ..snip..
-> > 
-> >> diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8365-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8365-pinctrl.yaml
-> >> index 4b96884a1afc..347f533776ba 100644
-> >> --- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8365-pinctrl.yaml
-> >> +++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8365-pinctrl.yaml
-> >> @@ -91,8 +91,13 @@ patternProperties:
-> >>   
-> >>             input-schmitt-disable: true
-> >>   
-> >> +          drive-strength-microamp:
-> >> +            enum: [125, 250, 500, 1000]
-> >> +
-> >>             mediatek,drive-strength-adv:
-> >> +            deprecated: true
-> > 
-> > In the case of MT8365, since there's *no* devicetree using this property, *at all*,
-> > I think you can even just entirely remove this block, as that should not be
-> > considered an ABI breakage in that case.
-> > 
-> > Krzysztof, can you please confirm?
+On 3/29/2023 18:24, Sean Wang wrote:
+> Hi,
 > 
-> If it is defined as ABI in a released kernel, then should be rather
-> deprecated.
+> On Wed, Mar 29, 2023 at 1:18 PM Mario Limonciello
+> <mario.limonciello@amd.com> wrote:
+>>
+>> When the BIOS has been configured for Fast Boot, systems with mt7921e
+>> have non-functional wifi.  Turning on Fast boot caused both bus master
+>> enable and memory space enable bits in PCI_COMMAND not to get configured.
+>>
+>> The mt7921 driver already sets bus master enable, but explicitly check
+>> and set memory access enable as well to fix this problem.
+>>
+>> Tested-by: Anson Tsao <anson.tsao@amd.com>
+>> Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+>> ---
+>> Original patch was submitted ~3 weeks ago with no comments.
+>> Link: https://lore.kernel.org/all/20230310170002.200-1-mario.limonciello@amd.com/
+>> ---
+>>   drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 6 ++++++
+>>   1 file changed, 6 insertions(+)
+>>
+>> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+>> index cb72ded37256..aa1a427b16c2 100644
+>> --- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+>> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+>> @@ -263,6 +263,7 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
+>>          struct mt76_dev *mdev;
+>>          u8 features;
+>>          int ret;
+>> +       u16 cmd;
+>>
+>>          ret = pcim_enable_device(pdev);
+>>          if (ret)
+>> @@ -272,6 +273,11 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
+>>          if (ret)
+>>                  return ret;
+>>
+>> +       pci_read_config_word(pdev, PCI_COMMAND, &cmd);
+>> +       if (!(cmd & PCI_COMMAND_MEMORY)) {
+>> +               cmd |= PCI_COMMAND_MEMORY;
+>> +               pci_write_config_word(pdev, PCI_COMMAND, cmd);
+>> +       }
+> 
+> If PCI_COMMAND_MEMORY is required in any circumstance, then we don't
+> need to add a conditional check and OR it with PCI_COMMAND_MEMORY.
 
-Yes, but if no one notices it's not an ABI. It's up to the platform 
-maintainers really. I only care that the commits indicate they know what 
-they are doing (usually not).
+Generally it seemed advantageous to avoid an extra PCI write if it's not 
+needed.  For example that's how bus mastering works too (see 
+__pci_set_master).
 
-Rob
+
+> Also, I will try the patch on another Intel machine to see if it worked.
+
+Thanks.
+
+> 
+>       Sean
+> 
+>>          pci_set_master(pdev);
+>>
+>>          ret = pci_alloc_irq_vectors(pdev, 1, 1, PCI_IRQ_ALL_TYPES);
+>> --
+>> 2.34.1
+>>
+
 
