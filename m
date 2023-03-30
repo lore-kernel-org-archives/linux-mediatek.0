@@ -4,76 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFCBEC74A5B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Mar 2023 23:24:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B983C6FD18
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 00:09:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DjXkz0RA83uoKyfjDtsSx9omwE6+tZntfaEBLNLVjZQ=; b=xeJDwdo2NR1A1GS8Y+XHc+Kk9z
-	J50HRfSBhothuu3lipX2AWmpPMi/BQaANHyUTjLq/YIy8iW4C4TFVlgiIj3sFLKo0snAPd7hox//5
-	dx3iOAMOkOtzqsxaMi4Q/S86SbXO/LBX2m815haDDIHs9AejVyxxdlp/HICSVczB6mJRZjiFhupy4
-	qMBcCbPODuGx3U1pdXPlj6cpBENmLXG5yjcNqYct/mOHPk2PNTPiqEaOxBAWiV+cVanfII9/Q2j7A
-	oahbOtC6dvTAcC6X4/+2y7f1oXW4KMgX6VZcoxw59wFnaRVDWn5v9QiDzmB4Nw8n6A1N9EJYcfVrF
-	p7ARL1BQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/f6kuz/aoEQ4OdZFUZeQhJ2qbcXsJoCNBezisNQzSyA=; b=lbSFMjYuEpRHTytpiUWc1QiGvA
+	FOamKuO7aensUUlSLHnYvEByF9/NX7nbPfFOsa9QQkpet9pLs7FkmRlo2ygXIlamKSEtghnIXAe8B
+	HLc3VUmxM44tomZDSGncY1naZY8VgcbqYmfLXjZVsM8xhguxA3t+nmayVh2fdGmkmDihxdUTCQiF2
+	cqAv+k8+Dgr/L8Hle303X+5WOGW+m81fo4lua3JR5rCnvgWcpkNI0Tm8Hwt4j8ArjKYlTHo+oHn4D
+	DdTxEyvEcVb9R/ukenFahJHYcNenE/IjiM+YxZLrTKyDtE1mBEq0GZdRHBpQ0nKIcB2tap0JaALQL
+	NgUsqBxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phf9d-0023CX-17;
-	Wed, 29 Mar 2023 23:24:33 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1phfrH-0027eQ-1F;
+	Thu, 30 Mar 2023 00:09:39 +0000
+Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phf9Y-0023BN-1i;
-	Wed, 29 Mar 2023 23:24:30 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 5F3D2B81ACD;
-	Wed, 29 Mar 2023 23:24:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0ED86C4339E;
-	Wed, 29 Mar 2023 23:24:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1680132265;
-	bh=Rp1Tc/zBg/eGy+DYh8BKIyM5vVkV/sZOYZqqAi2orag=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=lzePg4GAAmd7rnfVIQsJ71F1Oo+OPfUCQCfdN1QPRAFnLEBKIwXR6P2ydv9GV7L+V
-	 pVkV3IY3bkpztEbsEdtuK3S7a1D6Q0gL3yuMw2DlhkVRHQKhmzTXWVHFkgFikDS87Y
-	 6Vcf1unmdqS84ZBZrC8iG/HOA94Y3REubTxmufyMmm/ADEv0KP7S9mgQWnyzX/2HkE
-	 6JO87bo96CVv4xwGqMu7y0UAVJIdI147N3CmsXfNrVuCzeEKwQpR314KOFXyWq2gWP
-	 Hebt20GLDewDRvXHmKaA2+kObwsvTVu6KrKFVxZWtAh6PVdKr8gaWsFjGJ0R4ybHu3
-	 6fGlbubmp+v8Q==
-Received: by mail-lf1-f54.google.com with SMTP id c9so11867679lfb.1;
-        Wed, 29 Mar 2023 16:24:24 -0700 (PDT)
-X-Gm-Message-State: AAQBX9dHag+gh3W6w/wBcixbputt9rlYopBjtDfGjKdV51dBVK4wkOjo
-	zLxlu7Phg5nKaL8Dui20oAMKlHr9UEmyb55vPtY=
-X-Google-Smtp-Source: AKy350aYdH7tROyF3XOm8uuzzLzjWbjSOZORccxAOMS4pMfzH65Plbch5/pQVVJN8qlG/l83JvOJ+ZYT6rGiJDSn0Yo=
-X-Received: by 2002:ac2:5448:0:b0:4e9:bcf5:a0b6 with SMTP id
- d8-20020ac25448000000b004e9bcf5a0b6mr6002093lfn.11.1680132262943; Wed, 29 Mar
- 2023 16:24:22 -0700 (PDT)
+	id 1phfrD-0027cM-2T
+	for linux-mediatek@lists.infradead.org;
+	Thu, 30 Mar 2023 00:09:37 +0000
+Received: by mail-pg1-x536.google.com with SMTP id d8so10346606pgm.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 29 Mar 2023 17:09:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1680134971;
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:from:to:cc:subject:date:message-id:reply-to;
+        bh=/f6kuz/aoEQ4OdZFUZeQhJ2qbcXsJoCNBezisNQzSyA=;
+        b=5Kg0RdKhyt1ID55+N/2TYj6ASuDLlE9kRuP0jfiHD4WW7DHikuXWKM2Wa7enwDIIr2
+         gHlkiUBISnQXA9MZiTvb2L7nCORsEoGs6XoF+wsbiSQtLp/7J6DseD+18SbWFxpI4biV
+         hQqxeFg7tKw1YsyWeuU8P/xbxdpa4pmuQPIoHXo3alTyYmN6tUAtJ7Xt8GHhts7ujCmH
+         nmucmTfbtQPVS1TZsAvug12n2oGmAGh4M7rY4dAn9wuJiBRL/PWq59a3lMLkVvET/tI6
+         1/jqnqK85F1+ixeZDTcYh4MwV0DmzPcq1a9gFhhYTKq6jpWEoILS9qgt94YioVUj+1wr
+         w+fg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680134971;
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=/f6kuz/aoEQ4OdZFUZeQhJ2qbcXsJoCNBezisNQzSyA=;
+        b=A1kptmWCJNkKkf6/L/3Zh6HPZVzc06bhlnlCOTmBCKO5TcIBIoeTKRhOCwpU7WRgIf
+         p7lQm/No7ilOJt3twLRQG5EZUybcuNIye50nzGktPYCZq5kFo/Y6uL3ZM1c3NISbg6AU
+         MnYrZHe+HRORTuEbT4RpO6dQXeK81ENsbduC2mESRfHib+HvLFge8EI+rXFTkRbmIfEi
+         eX+ZT/ycegiAzh6BxCAJKltvRHgtD3KI6EtHQRg3GWbHatbWCu1p5WZA9nnt3cRXtUmp
+         a22++n5c+nPX3+GKZNAWTEOZ1A9R7iu50LNXfYh7BCozf2c93TFE1/KiwCiZxrgbqeRo
+         az3Q==
+X-Gm-Message-State: AAQBX9fBBrpRyVhp7HzWiVplAH0QmbFm8s11t79UYlfXwfmHDfc60SA4
+	Tx+1I6aZ+7FI9h4LzxdPCoL3fg==
+X-Google-Smtp-Source: AKy350ZqpWfQPvqSLpocQ8IdxE8V92Qac7/wDI/66IsLf2Y5AbMcbw++dG5+dtf9jgtCifCda5nNOg==
+X-Received: by 2002:a62:1885:0:b0:623:d058:8661 with SMTP id 127-20020a621885000000b00623d0588661mr17961473pfy.28.1680134971465;
+        Wed, 29 Mar 2023 17:09:31 -0700 (PDT)
+Received: from localhost (63-228-113-140.tukw.qwest.net. [63.228.113.140])
+        by smtp.gmail.com with ESMTPSA id p14-20020a62ab0e000000b0062505afff9fsm23574889pff.126.2023.03.29.17.09.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 29 Mar 2023 17:09:30 -0700 (PDT)
+From: Kevin Hilman <khilman@baylibre.com>
+To: Alexandre Mergnat <amergnat@baylibre.com>, Wim Van Sebroeck
+ <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Chaotian Jing
+ <chaotian.jing@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>, Wenbin
+ Mei <wenbin.mei@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>,
+ Zhiyong Tao <zhiyong.tao@mediatek.com>, Bernhard =?utf-8?Q?Rosenkr=C3=A4n?=
+ =?utf-8?Q?zer?=
+ <bero@baylibre.com>
+Cc: linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-mmc@vger.kernel.org,
+ linux-gpio@vger.kernel.org, Alexandre Bailon <abailon@baylibre.com>,
+ Fabien Parent <fparent@baylibre.com>, Amjad Ouled-Ameur
+ <aouledameur@baylibre.com>, Alexandre Mergnat <amergnat@baylibre.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH v3 00/17] Improve the MT8365 SoC and EVK board support
+In-Reply-To: <20230203-evk-board-support-v3-0-0003e80e0095@baylibre.com>
+References: <20230203-evk-board-support-v3-0-0003e80e0095@baylibre.com>
+Date: Wed, 29 Mar 2023 17:09:30 -0700
+Message-ID: <7h8rffyu9x.fsf@baylibre.com>
 MIME-Version: 1.0
-References: <20230329195758.7384-1-mario.limonciello@amd.com>
-In-Reply-To: <20230329195758.7384-1-mario.limonciello@amd.com>
-From: Sean Wang <sean.wang@kernel.org>
-Date: Wed, 29 Mar 2023 16:24:10 -0700
-X-Gmail-Original-Message-ID: <CAGp9LzrkX4uFAtLwvjH+uUuRgT_YDg3eE8SqgWEXOFmw5r=aMQ@mail.gmail.com>
-Message-ID: <CAGp9LzrkX4uFAtLwvjH+uUuRgT_YDg3eE8SqgWEXOFmw5r=aMQ@mail.gmail.com>
-Subject: Re: [PATCH RESEND] wifi: mt76: mt7921e: Set memory space enable in
- PCI_COMMAND if unset
-To: Mario Limonciello <mario.limonciello@amd.com>
-Cc: nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com, 
-	shayne.chen@mediatek.com, sean.wang@mediatek.com, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Anson Tsao <anson.tsao@amd.com>, 
-	Kalle Valo <kvalo@kernel.org>, "David S. Miller" <davem@davemloft.net>, 
-	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
-	linux-wireless@vger.kernel.org, netdev@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230329_162428_894393_98328F35 
-X-CRM114-Status: GOOD (  22.72  )
+X-CRM114-CacheID: sfid-20230329_170936_027166_921EBBEE 
+X-CRM114-Status: GOOD (  13.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,61 +103,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Alexandre Mergnat <amergnat@baylibre.com> writes:
 
-On Wed, Mar 29, 2023 at 1:18=E2=80=AFPM Mario Limonciello
-<mario.limonciello@amd.com> wrote:
+> This commits are based on the Fabien Parent <fparent@baylibre.com> work.
 >
-> When the BIOS has been configured for Fast Boot, systems with mt7921e
-> have non-functional wifi.  Turning on Fast boot caused both bus master
-> enable and memory space enable bits in PCI_COMMAND not to get configured.
+> The purpose of this series is to add the following HWs / IPs support for
+> the mt8365-evk board:
+> - Watchdog
+> - Power Management Integrated Circuit "PMIC" wrapper
+>   - MT6357 PMIC
+> - MultiMediaCard "MMC" & Secure Digital "SD" controller
+> - USB controller
+> - Ethernet MAC controller
 >
-> The mt7921 driver already sets bus master enable, but explicitly check
-> and set memory access enable as well to fix this problem.
+> Add CPU Freq & IDLE support for this board.
 >
-> Tested-by: Anson Tsao <anson.tsao@amd.com>
-> Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
-> ---
-> Original patch was submitted ~3 weeks ago with no comments.
-> Link: https://lore.kernel.org/all/20230310170002.200-1-mario.limonciello@=
-amd.com/
-> ---
->  drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 6 ++++++
->  1 file changed, 6 insertions(+)
->
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/ne=
-t/wireless/mediatek/mt76/mt7921/pci.c
-> index cb72ded37256..aa1a427b16c2 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-> @@ -263,6 +263,7 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
->         struct mt76_dev *mdev;
->         u8 features;
->         int ret;
-> +       u16 cmd;
->
->         ret =3D pcim_enable_device(pdev);
->         if (ret)
-> @@ -272,6 +273,11 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
->         if (ret)
->                 return ret;
->
-> +       pci_read_config_word(pdev, PCI_COMMAND, &cmd);
-> +       if (!(cmd & PCI_COMMAND_MEMORY)) {
-> +               cmd |=3D PCI_COMMAND_MEMORY;
-> +               pci_write_config_word(pdev, PCI_COMMAND, cmd);
-> +       }
+> This series depends to another one which add support for MT8365 SoC and
+> EVK board [1].
 
-If PCI_COMMAND_MEMORY is required in any circumstance, then we don't
-need to add a conditional check and OR it with PCI_COMMAND_MEMORY.
-Also, I will try the patch on another Intel machine to see if it worked.
+It seems to depend on more than that series.  In order to test this, I
+tried applying this series on top of Bero's minimal support (now in
+linux-next), and it does not apply cleanly.
 
-     Sean
+Could you please list all the dependencies that are not yet upstream.
 
->         pci_set_master(pdev);
->
->         ret =3D pci_alloc_irq_vectors(pdev, 1, 1, PCI_IRQ_ALL_TYPES);
-> --
-> 2.34.1
->
+Thanks,
+
+Kevin
 
