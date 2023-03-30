@@ -4,150 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FCD5C6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 06:38:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B300C761AF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 07:31:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Cc:To:Subject:
+	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f+5Ce3dsplq5E+KC2YuITorNi4q0ZqK+gZ6XyNtH+Gs=; b=37ZCzX4HtBM2ZW2qHyrzaqfjox
-	XyYX9b5BvFOGfOKcQb37rD4YI52QHt9M976Y3EfOWy3kCNuqyutw5w2HRVB3EW+Vu5sQS2KYaBtZA
-	ae+HTL6tcCx9NnOvNfZvgr0z+OyRoLjrJhUSqzWK8Z4awQE8FRWV4vUkQPxJukiOuuXOC9RVBAxX+
-	27ivBKsuD1ctzYUW4J9SBamxLbR5+VOg4flR/MZauGUyC+fITIrCZS6XqhiuurproCnkXs9xcaEso
-	CHwESI1JN7HQQyu1pW7yM5/SxNBNhA53CpOP+ndzKWQJ5H6pMHJwDKPX6vrDXO+eq5icbn0AqPm2b
-	imSBISXQ==;
+	bh=gv8JVciuDxQ0wesT323VY8sddT9TR9dSupeai1kGABw=; b=nM+ZriR6liQ0PXDcua6ko45rtT
+	s/DvJTY2m4mxQrjGpD2xIcvnZjsoPKtQWh9dV5SI4x5pB0CAJVt4Sd8aQi5i2vwN/HT9shn7MJb7/
+	sSq3Mtv5jz7kT8LouuTkMCikCtUdQX1fArfmLnogJLgsZdYtRanevdk1CQEX5nSdbdyqW/gCqx8MW
+	T6ZAv/lzOb54xEtESysH0ai1pMgbK4JijowGpVGqprj9NuUSmGIkD9uP3JuNZ5z5laCxZqeC3h3GR
+	PDd03nPCTKMDpnH5F33U2oePYqoYcdspCQeI/9A7px8P4CSgIxjBxgzmA3PltvLKwCPA2svNHcPhv
+	T58hVT0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phlv1-002mUc-0D;
-	Thu, 30 Mar 2023 06:37:55 +0000
-Received: from mail-co1nam11on20601.outbound.protection.outlook.com ([2a01:111:f400:7eab::601] helo=NAM11-CO1-obe.outbound.protection.outlook.com)
+	id 1phmko-002txx-1t;
+	Thu, 30 Mar 2023 07:31:26 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phlux-002mT9-27;
-	Thu, 30 Mar 2023 06:37:53 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=cV4iHn2E5WAUe9ngtAgPKu5PBl1OzW8C6LpwIZV3XdyJ0sIo/XrQIWNaROjqgjr5iJ9Tyu6G4qB3G32FcWhxWJKRBuVxGaV6LlxD5rb60W10MS1V0IiWJScx42f+9NLBgFk+acUkctr0wTJibL0waP2a+RGv+HR/nnPFIOdN1pRZp0btyTl2rHpJTytS027ETgnCBnIejElAs/e4Ei0xnYzBJYnoclz7lEhfvQiwUpCqV1oLZr5J4HRcscIlsoNUjL7OionzudEbRUzgZ1b+nsLfvv23MLBIVhYEa1GCO0tIL7mlCJsAb/4VRIe8IKhhEBjs09wxv8jDijpFSp0MNQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=f+5Ce3dsplq5E+KC2YuITorNi4q0ZqK+gZ6XyNtH+Gs=;
- b=QRDfxgFvtADVYERG+QOKCLOzt4qVM1slNnmuEIanW7yg3E0/gSkOLBTNjG8mEICj9jIEr44WIPrerZN1w8WFihW0GKxf1nPlVkwL2OWjT9nEOjvA3kitvq2xg9lm6nMYWfE4WrXfW2bHLK5UMu2m7VlTVAJSQZ8x0asJ+ikPVcEjBh7J902ccTmjg/9l3mY3IstkAYSx3UhwMf437eI3aWZldorN48KcFpa5gwukNUfsYRpfiRgIfcxPlmoqYjdwIFjtC/2YmK8tiLPD9a7LLHro52WiGFkjvxyLG1bVSGkPFgzVUO6rRGBQvAFc8LqB5JwCdOnP3Wspl02lPZAASw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=f+5Ce3dsplq5E+KC2YuITorNi4q0ZqK+gZ6XyNtH+Gs=;
- b=dHAGnbvQIkUnmQRPQSiJyYQiDtuOYPl8GdjgbrAZXTtstAU7KsMd7j6eAU92i3djxs0lAca92Ddb48ztrluW01v/4XIYbZ1kMi2TGqFv/Pdj6U9/Rp6ahsNW8zNuTBD77r37GFPpNSEgtxj49+aI67PdQY1+mFLKg9VTL/c4P9DzsB1pUN4d6Gam1cNgDHSxraw7h6GfPIhwa7kLAJ20EgzbO7ndAY6XEfgRLvtNrtViZT1/u/SYf6lLysrknfSDYEERV4SYmQmg1kzrdGECYCJSFS5JFbdB2AeCxFQHCrTfJKqeblSSgPpN5Jwy2Cg4l0pLgIZjtarHXy6FutMFjg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from CY5PR12MB6179.namprd12.prod.outlook.com (2603:10b6:930:24::22)
- by CY8PR12MB8242.namprd12.prod.outlook.com (2603:10b6:930:77::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6222.35; Thu, 30 Mar
- 2023 06:37:46 +0000
-Received: from CY5PR12MB6179.namprd12.prod.outlook.com
- ([fe80::d228:dfe5:a8a8:28b3]) by CY5PR12MB6179.namprd12.prod.outlook.com
- ([fe80::d228:dfe5:a8a8:28b3%5]) with mapi id 15.20.6254.022; Thu, 30 Mar 2023
- 06:37:46 +0000
-Date: Thu, 30 Mar 2023 09:37:38 +0300
-From: Ido Schimmel <idosch@nvidia.com>
-To: Hans Schultz <netdev@kapio-technology.com>
-Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>,
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	"maintainer:MICROCHIP KSZ SERIES ETHERNET SWITCH DRIVER" <UNGLinuxDriver@microchip.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	=?iso-8859-1?Q?Cl=E9ment_L=E9ger?= <clement.leger@bootlin.com>,
-	Jiri Pirko <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
-	Shuah Khan <shuah@kernel.org>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	open list <linux-kernel@vger.kernel.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
-	"open list:RENESAS RZ/N1 A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>,
-	"moderated list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>,
-	"open list:KERNEL SELFTEST FRAMEWORK" <linux-kselftest@vger.kernel.org>
-Subject: Re: [PATCH v2 net-next 6/6] selftests: forwarding: add dynamic FDB
- test
-Message-ID: <ZCUuMosWbyq1pK8R@shredder>
-References: <20230318141010.513424-1-netdev@kapio-technology.com>
- <20230318141010.513424-7-netdev@kapio-technology.com>
- <ZBgdAo8mxwnl+pEE@shredder>
- <87a5zzh65p.fsf@kapio-technology.com>
- <ZCMYbRqd+qZaiHfu@shredder>
- <87fs9ollmn.fsf@kapio-technology.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <87fs9ollmn.fsf@kapio-technology.com>
-X-ClientProxiedBy: VI1PR06CA0168.eurprd06.prod.outlook.com
- (2603:10a6:803:c8::25) To CY5PR12MB6179.namprd12.prod.outlook.com
- (2603:10b6:930:24::22)
+	id 1phmkm-002tvF-04
+	for linux-mediatek@lists.infradead.org;
+	Thu, 30 Mar 2023 07:31:25 +0000
+Received: by mail-wm1-x336.google.com with SMTP id v20-20020a05600c471400b003ed8826253aso2966770wmo.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 30 Mar 2023 00:31:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1680161480;
+        h=content-transfer-encoding:in-reply-to:organization:references:cc:to
+         :content-language:subject:reply-to:from:user-agent:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=gv8JVciuDxQ0wesT323VY8sddT9TR9dSupeai1kGABw=;
+        b=zSozlUjEPWi4/jPhKpPD0C6ryndKS450YaiCkk5K6zfzdIkAgtnLWUJuqip8reAA+G
+         m8KkCUhyj8NceK3K4vNBbB3vCjptyYz0hDyaYEQk/BGeBbu9xzDi3teEqOZLy2Os7Gtk
+         0DJcwLVFAacIyewhxbY2yA6qQ7BpDyJFnav0KjjJYRDzBOyynQV4MZO8ndEnlquJQtmp
+         uqab2pc6lcF0XsEH7nwODf8J2bSQnKOyKpECAkVtxh3eArxE9o9iXaeK1CzBkDLakEzV
+         u3dkqQKfLey/rKeaXjTYhziIsNYZ//fq7v7pSZN1tfvFHNbqcgU06PUaSU7olCpsiWfD
+         u1Tg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680161480;
+        h=content-transfer-encoding:in-reply-to:organization:references:cc:to
+         :content-language:subject:reply-to:from:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=gv8JVciuDxQ0wesT323VY8sddT9TR9dSupeai1kGABw=;
+        b=P2jE+Pa+3jug5oNQ9naL2KBX/cMiyygtq3CWoWeRPgMrSUbCa+ajYzXx0qy2TVbOjJ
+         4VjptC3mL+bZzHpnCAOeR3BdXYduQtWzz3rKZtAXuL71gAtQ1WKkt2bjavtTs6nDO7Qn
+         eBXucA+gGS8L8hDEQUX+HbumnQOKkr+fVQos+2UkD4wccCgsq0FC/fmi8hfipLaZxnBS
+         U7CCOsTJ8GVoCKQ+tmztxTzbfU2TcyQ+EuNGhJJAVYZIF4hSZLksucpd2LmwkcTuPzTH
+         jfDdrF6YYbKJuss5ZfiPMYOJuKzFnGk8iRa9nxJVRfD4aYMfW03lgz3qHu4oSPfdr/Ml
+         U9PA==
+X-Gm-Message-State: AO0yUKVO9tPv1FjmM50+GAROifxlGUbV8b96tMvL2S94B1orymlLuQ/y
+	zZj/4WJTvKcJAmPWzv2VsBympg==
+X-Google-Smtp-Source: AK7set/8syKQO2oLKnczLLSt+e88iWzGJM51xpz2K8yppyOXjZwYcbmpU/VbsF2MocQQGOy4acHhtg==
+X-Received: by 2002:a1c:7516:0:b0:3ef:3ce6:7c69 with SMTP id o22-20020a1c7516000000b003ef3ce67c69mr16845825wmc.8.1680161480232;
+        Thu, 30 Mar 2023 00:31:20 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:982:cbb0:fe8e:8291:fc25:6c8f? ([2a01:e0a:982:cbb0:fe8e:8291:fc25:6c8f])
+        by smtp.gmail.com with ESMTPSA id l10-20020a1ced0a000000b003ee1acdb036sm4833807wmh.17.2023.03.30.00.31.19
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 30 Mar 2023 00:31:19 -0700 (PDT)
+Message-ID: <c63d6fb5-fcc4-3370-7b4b-f46846136d19@linaro.org>
+Date: Thu, 30 Mar 2023 09:31:19 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CY5PR12MB6179:EE_|CY8PR12MB8242:EE_
-X-MS-Office365-Filtering-Correlation-Id: 42bdf03c-4ae0-4df4-df09-08db30e945c9
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	nypkjg9yPrf+u1khZqsES/mLbBXBhbdErDSjpfxQh3a+oGv3B4q4w1j/zOExzeB85XSkyevQFP5x7YV9AmKbcZ5zWY9ef+I5GQnAoNkp/MbmmAVpw4LwB3FkkxxtBeBICQWgNaBUypIBILMPLNxU2bSuovqn/uJTRPAF3eUSizQeAef52OhpI10+RNz92d9wUaUQqKxnjZ1nk9cgk1aT1Ee51hm0rKw/0WOgXKKLO8XFfEbGYIc6xfrHovwc1A/GH6DJWb4oBZpcMRvUBQ2rOtGdMWvK1VB+BVF8E2AK2QheIybYoiz5T1BWWRA2JqqAAZExZRJDX1HCfcUoGVjjmjdQzUtHKZZHuR73VksuImI7MUU47SK9BOtC2AYjds/uFo1/NIw/ThtJW3lTniyvDA61MUAOoaZ4OgQNLYmnMH1R/qVu/gQ3RLCdCDan3cVD0An6d1qdHtgA0yFMDcd6F1VH34zFA/1f92VS1/U0SC9/nHgi4h5BXRZJZUCyAS2BMrl5Dzsghdu/CMRrjT+oIdGecKGSaZJBO0M4Sti8JPTMRT2azAeORkIQZeLICrVT
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CY5PR12MB6179.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(7916004)(376002)(136003)(366004)(39860400002)(346002)(396003)(451199021)(83380400001)(7416002)(6506007)(53546011)(26005)(6666004)(54906003)(33716001)(316002)(478600001)(8676002)(6512007)(66556008)(7406005)(6916009)(4326008)(66946007)(66476007)(41300700001)(86362001)(9686003)(38100700002)(6486002)(2906002)(5660300002)(8936002)(186003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?n2R/2z7Q8xgZdfEhf8hfHxYRnSkIFbbEbjTWMDjCH7KpCSp07Di+/b/JPpn5?=
- =?us-ascii?Q?EPAYpIZa738bFljcYS21QOayVg5bzdnH+qhW4N/yZlSFg9Prn3T+Ljc8P5m+?=
- =?us-ascii?Q?5VT+LIVgAIkpKuLYWIl8g3WfdaDqocl7iMmfqyuY3uEOh2cGFVHjzIJIJ5mR?=
- =?us-ascii?Q?JPCapid6V3Nq8xQFNdg1y3k7mYxy4bjRbPvOrPjv+DbILNHvi0oT5AmUsnTa?=
- =?us-ascii?Q?UgUY9z7zxsIsUN1ZwkMqe2HK4KlosTzjy/HdwFEypPL1IPi0BafzdEpInsdr?=
- =?us-ascii?Q?9gqcQrV5f7E9csmFwwPLcvu2l1Jth7z1iOkGGN7wBI0kOLTqa/DxJXmGDSGW?=
- =?us-ascii?Q?3tkX4gpBhCfZVTK7XSuwRNG5QdwgbjZxmx2W7R3JNHCrHrfJGMB5yP+18bXN?=
- =?us-ascii?Q?mGzmzi2wvut5ISomzTg7Jz6BORSBX+wWmSlmvyYo8OoXsUJxy2YXOPd6z64q?=
- =?us-ascii?Q?TCvN7hciwL+CyM6wKQbjJxS73wscmYD7O+NiPBtjimwyRRenIdRG7bwXpddx?=
- =?us-ascii?Q?XecD161JhytY8jU8pRT9Ow6+NDU96+NT8hL+kJlcEwLnHOujyRchMzAeO6z1?=
- =?us-ascii?Q?xKjvzy/wTL4YHRMM4X6HnT9JDlhRLZGs3zsMHgcka6i49rmtGTgde4A8R2er?=
- =?us-ascii?Q?respFvpUtxuyE02ZHnOEcKfVjkPN26yHkc/AiyrTFm8jQZmQ7OHkNloBGj0E?=
- =?us-ascii?Q?gZAiPzCSSEDeXYFOeg06nEVY1ao1OcgSUjLSS5FJd/t1u7zuyo77Q8ucgL6D?=
- =?us-ascii?Q?o3Gu3joD9CBwNF3m/3eADWhveNyv2LfsXBPRyWexyYDLAw8EdSUgGbKKlyk4?=
- =?us-ascii?Q?/OiOTpq70UXgNpNZKysg2htWnVApcCryZuyeKsQ2pVS7a3Xmt6nRUFYXfBP1?=
- =?us-ascii?Q?N6R/3aFgOZzLBp9dTac8AOuMWpFl0cB+sEOMRzHf9i0Jj5mharbYSAU5eSY6?=
- =?us-ascii?Q?8YRjsHseHR7KRpVwUawI++ukpifEJrrM4R5b/WjfziTi3HVAWk6oElWiwEqi?=
- =?us-ascii?Q?s9d3XyyqftS+d27VXNXbzYDwQeZp/EUC+pAF0CZW8Nu+jaJmg3rMbIRay/sL?=
- =?us-ascii?Q?IGkl4Whe/6lU2wcGR/mPWV7D1V4Mcxv1DK+X4hC0BUJ/+SjEqd3h4+xeo/4Q?=
- =?us-ascii?Q?jZpwvT+Ks3RavTmxfLa+B32LcKpSswcKtiLvkJhAtzLSgSnnYxyhGQPMukQk?=
- =?us-ascii?Q?qIHmcYy0X6YNnDwbE6ZrZlNK4d7fZ0IQDXeB7hIDlR0Kvlr7hm+iqN08QwUP?=
- =?us-ascii?Q?geiPwYwx01QW6HNU7/Mzxz+i4klepKLZNd7IzUBvPGqGKKo9XWBQaDG8pasb?=
- =?us-ascii?Q?zL5unPOItHUZCR/YbIWcZe/XSFGh6hcBNk3stSnjJm4Tpj4z/+u9e/begpvh?=
- =?us-ascii?Q?F2slwU+fsRVDD6HMypp73BLZtYD9e8ck5O72rLiYOSFBqplJpwzjQ+3/Xg2k?=
- =?us-ascii?Q?rXXnV9W2HtNVh6T06I6xa+6vUIWRY6l/cV9br07QS/9WTO8XAuGwjlox525R?=
- =?us-ascii?Q?pgvzya2iXL5eZabPhdmtoI12uhC8neDBBsIzoFN+VTUmbQwJSsQ6zTbhEr59?=
- =?us-ascii?Q?Ii/6mZ1w+A4d3lMEGJFpEWez3wLdJr9Z42cDEkjZ?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 42bdf03c-4ae0-4df4-df09-08db30e945c9
-X-MS-Exchange-CrossTenant-AuthSource: CY5PR12MB6179.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Mar 2023 06:37:46.3646
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: EQbZj3eb60T8pnYJQH6DesNiWenc6pBFlWnLRYa/JXN88R9j6SEodb9Q0UdREPoyUdMlohYgS4DFbf1HGyCKgQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR12MB8242
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+From: Neil Armstrong <neil.armstrong@linaro.org>
+Subject: Re: [PATCH] dt-bindings: rng: Drop unneeded quotes
+Content-Language: en-US
+To: Rob Herring <robh@kernel.org>, Olivia Mackall <olivia@selenic.com>,
+ Herbert Xu <herbert@gondor.apana.org.au>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-crypto@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20230327170153.4105594-1-robh@kernel.org>
+Organization: Linaro Developer Services
+In-Reply-To: <20230327170153.4105594-1-robh@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230329_233751_722863_F7C9180E 
-X-CRM114-Status: GOOD (  23.19  )
+X-CRM114-CacheID: sfid-20230330_003124_056021_DCBC6B3D 
+X-CRM114-Status: UNSURE (   9.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -159,48 +104,26 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: neil.armstrong@linaro.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 28, 2023 at 09:30:08PM +0200, Hans Schultz wrote:
-> On Tue, Mar 28, 2023 at 19:40, Ido Schimmel <idosch@nvidia.com> wrote:
-> > On Sun, Mar 26, 2023 at 05:41:06PM +0200, Hans Schultz wrote:
-> >> On Mon, Mar 20, 2023 at 10:44, Ido Schimmel <idosch@nvidia.com> wrote:
-> >> >> +	$MZ $swp1 -c 1 -p 128 -t udp "sp=54321,dp=12345" \
-> >> >> +		-a $mac -b `mac_get $h2` -A 192.0.2.1 -B 192.0.2.2 -q
-> >> >> +	tc_check_packets "dev $swp2 egress" 1 1
-> >> >> +	check_fail $? "Dynamic FDB entry did not age out"
-> >> >
-> >> > Shouldn't this be check_err()? After the FDB entry was aged you want to
-> >> > make sure that packets received via $swp1 with SMAC being $mac are no
-> >> > longer forwarded by the bridge.
-> >> 
-> >> I was thinking that check_fail() will pass when tc_check_packets() does
-> >> not see any packets, thus the test passing here when no packets are forwarded?
-> >
-> > What do you mean by "I was *thinking*"? How is it possible that you are
-> > submitting a selftest that you didn't bother running?!
-> >
+On 27/03/2023 19:01, Rob Herring wrote:
+> Cleanup bindings dropping unneeded quotes. Once all these are fixed,
+> checking for this can be enabled in yamllint.
 > 
-> Sorry, but I have sent you several emails telling you about the problems
-> I have with running the selftests due to changes in the phy etc. Maybe
-> you have just not received all those emails?
-> 
-> Have you checked spamfilters?
-> 
-> With the kernels now, I cannot even test with the software bridge and
-> selftests as the compile fails - probably due to changes in uapi headers
-> compared to what the packages my system uses expects.
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+>   Documentation/devicetree/bindings/rng/amlogic,meson-rng.yaml | 4 ++--
 
-My spam filters are fine. I saw your emails where you basically said
-that you are too lazy to setup a VM to test your patches and that your
-time is more valuable than mine, which is why I should be testing them.
-Stop making your problems our problems. It's hardly the first time. If
-you are unable to test your patches, then invest the time in fixing your
-setup instead of submitting completely broken patches and making it our
-problem to test and fix them. I refuse to invest time in reviewing /
-testing / reworking your submissions as long as you insist on doing less
-than the bare minimum.
+Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 
-Good luck
+>   Documentation/devicetree/bindings/rng/brcm,iproc-rng200.yaml | 4 ++--
+>   Documentation/devicetree/bindings/rng/mtk-rng.yaml           | 4 ++--
+>   Documentation/devicetree/bindings/rng/ti,keystone-rng.yaml   | 2 +-
+>   4 files changed, 7 insertions(+), 7 deletions(-)
+> 
+
+<snip>
+
 
