@@ -4,81 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18749C74A5B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 04:11:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57A84C74A5B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 05:29:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DlqWzaTFeXNF93oCsw3CKOaZb2BdZ8J89dsRkm+g8nE=; b=KtpchDACNpRlO37QJlCAexWndM
-	hBURaRX/W/FR7b+v2jlTj4Zf078dcMUUsjAMq65wuHCpS6389wdg+pVFD5frvDwc5AGll8ep4aTJg
-	unhmHkIP8gNibzEeOImkN6MRhmRVsvdmdxauWqRP3k8g0+2e2orCfsp/JeMXQfDtIYYxOSA91ayRG
-	z/HI+MAnGMGtCxQJj/DiL+cYGNfx5JwWeHBFDSjw9mcnG63bezvKIkquhOGGdAbfcGKELg8/xa5qT
-	W4+scbSmqVnxxHFw0SLQe67bokAg540HPRdBbQ0MHh9zelxi01eoJj5TDKlb8UhI0Aukz5sHbVAXB
-	4zEKD/YQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=R6grznLo16PGHDdoZ3GGQ80Zx5bZgg/pwk+T59FpoqI=; b=aId5WWhx2VxnVO6QogGSJsWjET
+	ofj1qtncf7C7WjtislujCPn5qExIXr2FNTgNaKKJ0Z7BB4xMpSKIPUKal0wgctMe0NjJeicSb3vr9
+	oA9q+D5NiWIg18CpN1pGNRvmFQM6A08ftmVnEHc6Gjn+crj8jeLi5MNmLSZqX+ibQOOjD0LuE420j
+	2b9dtRT64IdwhdzKK8TW6JHhFZvqkcB8pHInRYBQsoIDx5GeyA4vvoBKNCoWiGW2lA7CnEsVJzNxH
+	wv/urVwEBCSsYYgzjUj0pDFFd/30aPLfL1IdmDsTBMYiQEHVnObPcIipZxM3wkkSRk+vp/CRr4OdS
+	x7blzAqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phjdQ-002Ufm-1y;
-	Thu, 30 Mar 2023 04:11:36 +0000
-Received: from mail-ua1-x934.google.com ([2607:f8b0:4864:20::934])
+	id 1phkq8-002dZ3-29;
+	Thu, 30 Mar 2023 05:28:48 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phjdM-002UeN-2d
+	id 1phkq5-002dXk-2Z
 	for linux-mediatek@lists.infradead.org;
-	Thu, 30 Mar 2023 04:11:34 +0000
-Received: by mail-ua1-x934.google.com with SMTP id g9so12895033uam.9
-        for <linux-mediatek@lists.infradead.org>; Wed, 29 Mar 2023 21:11:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1680149489;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=DlqWzaTFeXNF93oCsw3CKOaZb2BdZ8J89dsRkm+g8nE=;
-        b=Jwl8XnBNPHXUrgPWG3nOY/ScmyoA1qdPjqbybFRGhnJG73H8ZIYdkEMyoOxUKr4jy0
-         RAMQZs8WujJX7IOJFjv2jXyqqRhX7ZHdmLOsQKgvSc6dI3y8AWEMMyZQKBu+6FM90Hu9
-         LeUEchBHwB35VJfRrd9cNQUME4vv23vwGtN+o=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680149489;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=DlqWzaTFeXNF93oCsw3CKOaZb2BdZ8J89dsRkm+g8nE=;
-        b=yqcD5leCgNT7PKAO76pTWgnDHbF3DdV2n8z9qPptWMe3s3/faqDCRPjJCkFyzhpjVT
-         lbgGGW3pBK/f4b0YDvgQyBg8WeECkUbY9Gdvb28XpqCK92gtQ6o72fpWZQAYuoq+FCYp
-         a7psKDyclD5U3CNo8xmUhcyw+0Vg8P3BaysUf5dcnx3crV7ATBEMTQ+PXpg+z1lhy/X7
-         MXZCD1eD3J7F+s0ZDdHfF5wpWcywcXf92UZneDzrmitoCQU7nQYXYdp9Vp/LTeqGAmZX
-         AEmFX69hgNixegJrY3RsycVfTvPxo8GXA0stN1wtWnup3L2aBvF640me/8AxtiSpZXsj
-         /P3w==
-X-Gm-Message-State: AAQBX9clHwQCKeZaVwldlbJSS2EhjI/wdr1ZWw0ehX59YfcknbEwpJLR
-	fM3fqnOWrY3jjqY4HLCoFu2N8rcp+S6xYecWSALtlw==
-X-Google-Smtp-Source: AKy350aOTSTGLpyThgFsYnGIfmpFWfK++5W92pNG1SY5fkfAr3BAjmNQvMlKt6sE5LGDBzYjwJbAbGBsSvz5yHx1Zxk=
-X-Received: by 2002:ab0:3d9e:0:b0:764:793a:6618 with SMTP id
- l30-20020ab03d9e000000b00764793a6618mr14789585uac.1.1680149489280; Wed, 29
- Mar 2023 21:11:29 -0700 (PDT)
+	Thu, 30 Mar 2023 05:28:47 +0000
+X-UUID: b9316478cebb11ed8687db9d93187ff1-20230329
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=R6grznLo16PGHDdoZ3GGQ80Zx5bZgg/pwk+T59FpoqI=;
+	b=RhIW54ELCzmI6mS6fbmXgzS/Jkbh76onpgeX1keGx0hf0GpL+Nv58KMire6hCDOj9WvE9qYvo2PvcsMDPjuqI2hy+2g7siu0RDDVc1B/EPSzMgG7jBvDEq7k0LO5tbZd7Oqelg5S+JE50nUlOFSBm0GJpDph6mpeb9NjeRb9CyU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22,REQID:f27b70c4-bc5a-473d-b600-d4e50f46d196,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:120426c,CLOUDID:d7ccee29-564d-42d9-9875-7c868ee415ec,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: b9316478cebb11ed8687db9d93187ff1-20230329
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <stanleyyp.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 717928130; Wed, 29 Mar 2023 22:28:37 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Thu, 30 Mar 2023 13:18:35 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Thu, 30 Mar 2023 13:18:35 +0800
+From: StanleyYP.Wang <StanleyYP.Wang@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Ryder Lee
+	<ryder.Lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, <linux-wireless@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, StanleyYP Wang
+	<StanleyYP.Wang@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt7915: fix background radar event being blocked
+Date: Thu, 30 Mar 2023 13:17:27 +0800
+Message-ID: <20230330051727.20821-1-StanleyYP.Wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20230218111712.2380225-1-treapking@chromium.org> <CAMty3ZD3SY-WCtYK0dexdLxCk8d+2tJ=D9xb5uR06jPGCd=56g@mail.gmail.com>
-In-Reply-To: <CAMty3ZD3SY-WCtYK0dexdLxCk8d+2tJ=D9xb5uR06jPGCd=56g@mail.gmail.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 30 Mar 2023 12:11:18 +0800
-Message-ID: <CAGXv+5HFP-1SFFBsUneyVT-42b3_6BPtQ-CkULmUT6v0pUoLbA@mail.gmail.com>
-Subject: Re: [PATCH v3 0/5] Add generic-display-mux driver and bindings
-To: Jagan Teki <jagan@amarulasolutions.com>
-Cc: Pin-yen Lin <treapking@chromium.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Nicolas Boichat <drinkcat@chromium.org>, Robert Foss <rfoss@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Jonas Karlman <jonas@kwiboo.se>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, 
-	linux-mediatek@lists.infradead.org, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, chrome-platform@lists.linux.dev, 
-	Guenter Roeck <groeck@chromium.org>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230329_211132_851787_1866DE0F 
-X-CRM114-Status: GOOD (  17.85  )
+X-CRM114-CacheID: sfid-20230329_222845_982002_7DB93999 
+X-CRM114-Status: GOOD (  11.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,41 +83,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 30, 2023 at 2:10=E2=80=AFAM Jagan Teki <jagan@amarulasolutions.=
-com> wrote:
->
-> On Sat, Feb 18, 2023 at 4:47=E2=80=AFPM Pin-yen Lin <treapking@chromium.o=
-rg> wrote:
-> >
-> > This series is developed for and tested on MT8173 board, and the layout=
- is:
-> >
-> >                                   /-- anx7688
-> > -- MT8173 HDMI bridge -- GPIO mux
-> >                                   \-- native HDMI
->
-> What is the part number of this GPIO mux? Does mux gpio interrupt
-> based and able to switch output HDMI and DP. If so, how this gpio
-> interrupt is different than the HPD in native HDMI? I mean does HPD
-> have any detection bottlenecks with mux gpio interrupt?
+From: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
 
-It's a full blown HDMI 1:2 demultiplexer, so DDC and HPD signals are muxed
-as well. The anx7688 handles all the Type-C stuff, and our EC talks to it.
-If HDMI output from the SoC needs to be muxed over for DP alt-mode, the EC
-will signal the SoC.
+The mcu event of background radar will be blocked since the band_idx of 
+the background radar event is MT_RX_SEL2, which is larger than MT_BAND1. 
+Therefore, this commit fixes the boundary of band_idx checking.
 
-> I do have GPIO Mux that input DSI and two outputs DMD/HDMI Input and
-> HDMI Out. 2x1 with 1x2 mux.
->
-> I'm thinking having a generic mux to select the specific out number of
-> outputs with associated interface outputs can be a viable solution to
-> address all use cases here.
+Fixes: 7a53eecd5c87 ("wifi: mt76: mt7915: check the correctness of event data")
+Signed-off-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-AFAIK DRM doesn't allow dynamically changing the constitution of a display
-pipeline, so it doesn't really work out for us.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index 16f09ead307d..a37ab903af99 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -274,7 +274,7 @@ mt7915_mcu_rx_radar_detected(struct mt7915_dev *dev, struct sk_buff *skb)
+ 
+ 	r = (struct mt7915_mcu_rdd_report *)skb->data;
+ 
+-	if (r->band_idx > MT_BAND1)
++	if (r->band_idx > MT_RX_SEL2)
+ 		return;
+ 
+ 	if ((r->band_idx && !dev->phy.mt76->band_idx) &&
+-- 
+2.18.0
 
-If you're just muxing between different outputs with passive/dumb bridges,
-it may still work for you.
-
-ChenYu
 
