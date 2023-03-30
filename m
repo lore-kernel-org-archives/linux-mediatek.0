@@ -4,94 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B45CC6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 17:35:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45D7EC6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 19:10:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aKcsS9RzCGec1E//KXDqFuO125uv1xUjBzG3GmeKye8=; b=BkjHgu4VYIQfSG0NbgWqRNYucG
-	aww4MyLxMIKeh3FGFdcB5VVS7j5eX43QDFwWVe3NsY+0ESx7tsGA7QpfctrTXbQVs2rL3NcDflLSF
-	ayNEsqiHkWr65xPeQyv6PGLwa+cqYZxYjf+Zw7qe4hdwqQofPTNiEZFnNqlrfmsTNeErVbzxLFRgl
-	PeTrHkzi+jmTylP7vokl9wZmiUF/8+QIkMtlTchqVu+U+6qhEM8bXgr4kFWE6vvroavQTcGTcoD/C
-	a027bzH8w3dsJ87u7Uce64C7oz7P1e8jLzK9O5VN3kmD1VOdWn0G1Ujy6K5R1MORtj0qDN6YnM0r0
-	5SU9KBzQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4ZUEVJzKV5CCUAuAWP8jjoDdP5eD9FrccAF6rSagut8=; b=GCM33mbGkCjqKAdVhMJN6vMGUO
+	9cedPQq5Sh12J2F4r6B06GWIJvx1FMXVIfPRwAxwMQHL9KibHnGwMJPYzIYEFJYS839YeeAyrpb9J
+	3VOoHxwRYSi62hhaH5layp2UD8vaRcXxKCUb85aKXlYTV/dfWA/btSO/74htl7pZeQz+zXAeSP/CM
+	OrWfrdxTUqQ+VvZDmm/wDvhCkQO4/F6oORDzQ0luxfvo3c1O68659ozcoReaYfqgQjtnlrX1+RQNj
+	cm0v5mHALqXgfDKMFXFUH/KTs7W7yRNRJx+2pyUBdQqWBYy9Deh9QVjdQhCX4GJ+JrsLYJaFToqPR
+	fHpjNXqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phwAq-004ezy-14;
-	Thu, 30 Mar 2023 17:34:56 +0000
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+	id 1phxfa-004tVH-03;
+	Thu, 30 Mar 2023 19:10:46 +0000
+Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phwAj-004evT-1x;
-	Thu, 30 Mar 2023 17:34:53 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id e18so19888981wra.9;
-        Thu, 30 Mar 2023 10:34:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1680197684;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=aKcsS9RzCGec1E//KXDqFuO125uv1xUjBzG3GmeKye8=;
-        b=dNK04s5t55ImmI318ms5Q5vMBO6oGsmgyndXUx2HwP0KcT03d4xUijqy9mx9MidUla
-         oqnhQbfNk27Gv4tSdtc9YCZqR9JnL83ry2Ph5XWSSkjhQXQzOFZkN48wR8eRDOMVqh65
-         /zGwapoRE4auJbHsNTt+aaVjCyO+2Y6MvnMKQaTJ1ueAUS8b98TgPaTj3h6ntiSP9O9E
-         wp8IWnm1g7WKdojuXFP1+q7hApx+SmDNfWbnF7oeTOG3QljXLNb7fa35PK6kbTpwxdfT
-         JP53oDnNjI+IOjOMCylwS/S+SqPzybQh93EOpgRw1RW+NaIf/eupOZWphDnVZijch8Tt
-         3Bcg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680197684;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=aKcsS9RzCGec1E//KXDqFuO125uv1xUjBzG3GmeKye8=;
-        b=R5ZLdvTJ47VLBFBjz2+FC1xt4iFE64pxMgSqbBj2DIbdt4pKuKmPzNwsKLIQxQYhyL
-         FYVl/3LfLlfyH7ehPaLp7bmGofBbNOnX+HTvkjoxnhiRSVR2X/eCAKSBlfDI6OcblCPD
-         6l73c5wZz+q+oT+7JcUdXMrljBtz/Um4FxM5yW5/ApZJ59DlZId9rWC6mKb80pP49WbW
-         amqT39Pdx57/qrs82HYwzf+2QjEUONH4AxpmIvP0AuGvm2WtepKr/5yQo3f0TVGd/cOl
-         eWsTppbmZb7FPgKwNFNl3WOS2idfqSjN0JOmaJF1S98u+qFr3GwECtvk//QAR1WgwQDf
-         hexA==
-X-Gm-Message-State: AAQBX9cDJEdJY37Plje1uXhnITurVqjVkOBV5MmmaPx6HKuAL8DyeWWF
-	ofA3FRzdOjNyAVdwNiFlc/I=
-X-Google-Smtp-Source: AKy350aqPaeaRaIzLq93xnKLSwV1qqKksBHcvZw5qKcC1QEWi7p3c+y9jOvEB5VB6d4m4y575WhvRQ==
-X-Received: by 2002:a05:6000:ca:b0:2d6:5afe:7b91 with SMTP id q10-20020a05600000ca00b002d65afe7b91mr4918787wrx.30.1680197684064;
-        Thu, 30 Mar 2023 10:34:44 -0700 (PDT)
-Received: from [192.168.1.135] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id n13-20020a5d67cd000000b002e40d124460sm4189268wrw.97.2023.03.30.10.34.42
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 30 Mar 2023 10:34:43 -0700 (PDT)
-Message-ID: <8c917be2-e15a-921f-aaa9-b8753d2463de@gmail.com>
-Date: Thu, 30 Mar 2023 19:34:41 +0200
+	id 1phxfU-004tU9-1k;
+	Thu, 30 Mar 2023 19:10:42 +0000
+Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id B3439188368C;
+	Thu, 30 Mar 2023 19:10:33 +0000 (UTC)
+Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
+	by mailout.gigahost.dk (Postfix) with ESMTP id ABED62500389;
+	Thu, 30 Mar 2023 19:10:33 +0000 (UTC)
+Received: by smtp.gigahost.dk (Postfix, from userid 1000)
+	id A2E849B403F4; Thu, 30 Mar 2023 19:10:33 +0000 (UTC)
+X-Screener-Id: e32ae469fa6e394734d05373d3a705875723cf1e
+Received: from fujitsu (2-104-116-184-cable.dk.customer.tdc.net [2.104.116.184])
+	by smtp.gigahost.dk (Postfix) with ESMTPSA id EB58791201E3;
+	Thu, 30 Mar 2023 19:10:32 +0000 (UTC)
+From: Hans Schultz <netdev@kapio-technology.com>
+To: Ido Schimmel <idosch@nvidia.com>
+Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
+ Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Vladimir
+ Oltean <olteanv@gmail.com>, Eric Dumazet <edumazet@google.com>, Paolo
+ Abeni <pabeni@redhat.com>, Kurt Kanzenbach <kurt@linutronix.de>, Hauke
+ Mehrtens <hauke@hauke-m.de>, Woojung Huh <woojung.huh@microchip.com>,
+ "maintainer:MICROCHIP KSZ SERIES ETHERNET SWITCH DRIVER"
+ <UNGLinuxDriver@microchip.com>, Sean Wang <sean.wang@mediatek.com>, Landen
+ Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Claudiu Manoil
+ <claudiu.manoil@nxp.com>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, =?utf-8?Q?Cl=C3=A9ment_L=C3=A9ger?=
+ <clement.leger@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
+ <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
+ <razor@blackwall.org>, Shuah Khan <shuah@kernel.org>, Christian Marangi
+ <ansuelsmth@gmail.com>, open list <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>, "open list:RENESAS RZ/N1
+ A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>, "moderated
+ list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>, "open
+ list:KERNEL SELFTEST FRAMEWORK" <linux-kselftest@vger.kernel.org>
+Subject: Re: [PATCH v2 net-next 6/6] selftests: forwarding: add dynamic FDB
+ test
+In-Reply-To: <ZCMYbRqd+qZaiHfu@shredder>
+References: <20230318141010.513424-1-netdev@kapio-technology.com>
+ <20230318141010.513424-7-netdev@kapio-technology.com>
+ <ZBgdAo8mxwnl+pEE@shredder> <87a5zzh65p.fsf@kapio-technology.com>
+ <ZCMYbRqd+qZaiHfu@shredder>
+Date: Thu, 30 Mar 2023 21:07:53 +0200
+Message-ID: <874jq22h2u.fsf@kapio-technology.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH v3 16/17] arm64: dts: mediatek: fix systimer properties
-Content-Language: en-US
-To: amergnat@baylibre.com, Wim Van Sebroeck <wim@linux-watchdog.org>,
- Guenter Roeck <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Chaotian Jing <chaotian.jing@mediatek.com>,
- Ulf Hansson <ulf.hansson@linaro.org>, Wenbin Mei <wenbin.mei@mediatek.com>,
- Linus Walleij <linus.walleij@linaro.org>,
- Zhiyong Tao <zhiyong.tao@mediatek.com>,
- =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>
-Cc: linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-mmc@vger.kernel.org,
- linux-gpio@vger.kernel.org, Alexandre Bailon <abailon@baylibre.com>,
- Fabien Parent <fparent@baylibre.com>,
- Amjad Ouled-Ameur <aouledameur@baylibre.com>
-References: <20230203-evk-board-support-v3-0-0003e80e0095@baylibre.com>
- <20230203-evk-board-support-v3-16-0003e80e0095@baylibre.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20230203-evk-board-support-v3-16-0003e80e0095@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230330_103449_655305_8B24F7CC 
-X-CRM114-Status: GOOD (  18.82  )
+X-CRM114-CacheID: sfid-20230330_121040_739875_4E591492 
+X-CRM114-Status: GOOD (  24.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,51 +90,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Mar 28, 2023 at 19:40, Ido Schimmel <idosch@nvidia.com> wrote:
+> On Sun, Mar 26, 2023 at 05:41:06PM +0200, Hans Schultz wrote:
+>> On Mon, Mar 20, 2023 at 10:44, Ido Schimmel <idosch@nvidia.com> wrote:
+>> >> +	$MZ $swp1 -c 1 -p 128 -t udp "sp=54321,dp=12345" \
+>> >> +		-a $mac -b `mac_get $h2` -A 192.0.2.1 -B 192.0.2.2 -q
+>> >> +	tc_check_packets "dev $swp2 egress" 1 1
+>> >> +	check_fail $? "Dynamic FDB entry did not age out"
+>> >
+>> > Shouldn't this be check_err()? After the FDB entry was aged you want to
+>> > make sure that packets received via $swp1 with SMAC being $mac are no
+>> > longer forwarded by the bridge.
+>> 
+>> I was thinking that check_fail() will pass when tc_check_packets() does
+>> not see any packets, thus the test passing here when no packets are forwarded?
+>
+> What do you mean by "I was *thinking*"? How is it possible that you are
+> submitting a selftest that you didn't bother running?!
+>
+> I see you trimmed my earlier question: "Does this actually work?"
+>
+> I tried it and it passed:
+>
+> # ./bridge_locked_port.sh                         
+> TEST: Locked port ipv4                                              [ OK ]
+> TEST: Locked port ipv6                                              [ OK ]
+> TEST: Locked port vlan                                              [ OK ]            
+> TEST: Locked port MAB                                               [ OK ]            
+> TEST: Locked port MAB roam                                          [ OK ]
+> TEST: Locked port MAB configuration                                 [ OK ]
+> TEST: Locked port MAB FDB flush                                     [ OK ]
+>
+> And I couldn't understand how that's even possible. Then I realized that
+> the entire test is dead code because the patch is missing this
+> fundamental hunk:
+>
+> ```
+> diff --git a/tools/testing/selftests/net/forwarding/bridge_locked_port.sh b/tools/testing/selftests/net/forwarding/bridge_locked_port.sh
+> index dbc7017fd45d..5bf6b2aa1098 100755
+> --- a/tools/testing/selftests/net/forwarding/bridge_locked_port.sh
+> +++ b/tools/testing/selftests/net/forwarding/bridge_locked_port.sh
+> @@ -9,6 +9,7 @@ ALL_TESTS="
+>         locked_port_mab_roam
+>         locked_port_mab_config
+>         locked_port_mab_flush
+> +       locked_port_dyn_fdb
+>  "
+>  
+>  NUM_NETIFS=4
+> ```
+>
+> Which tells me that you didn't even try running it once.
 
+Not true, it reveals that I forgot to put it in the patch, that's all. As
+I cannot run several of these tests because of memory constraints I link
+the file to a copy in a rw area where I modify the list and just run one
+of the subtests at a time. If I try to run the whole it always fails
+after a couple of sub-tests with an error.
 
-On 29/03/2023 10:54, amergnat@baylibre.com wrote:
-> From: Amjad Ouled-Ameur <aouledameur@baylibre.com>
-> 
-> MT8365 has a SYST timer (System Timer), therefore the compatible node
-> should be "mediatek,mt6765-timer" instead of "mediatek,mt6795-systimer"
-> (which corresponds to ARM/ARM64 System Timer).
-> 
-> Plus, register range should be 0x100 instead of 0x10.
-> 
-> Finally, interrupt polarity of systimer is LEVEL_HIGH.
-> 
-> Fix the above properties accordingly.
-> 
-> Signed-off-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-
-Patch looks good but does not apply cleanly because of previous patches that I 
-didn't take and need rework. Please resend the patches I didn't queue with the 
-comments addressed.
-
-Regards,
-Matthias
-
-> ---
->   arch/arm64/boot/dts/mediatek/mt8365.dtsi | 6 +++---
->   1 file changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-> index c3ea3cc97a47..959d8533c24c 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-> @@ -575,9 +575,9 @@ system_clk: dummy13m {
->   	};
->   
->   	systimer: timer@10017000 {
-> -		compatible = "mediatek,mt8365-systimer", "mediatek,mt6795-systimer";
-> -		reg = <0 0x10017000 0 0x10>;
-> -		interrupts = <GIC_SPI 138 IRQ_TYPE_LEVEL_LOW>;
-> +		compatible = "mediatek,mt8365-systimer", "mediatek,mt6765-timer";
-> +		reg = <0 0x10017000 0 0x100>;
-> +		interrupts = <GIC_SPI 138 IRQ_TYPE_LEVEL_HIGH>;
->   		clocks = <&system_clk>;
->   		clock-names = "clk13m";
->   	};
-> 
+It seems to me that these scripts are quite memory consuming as they
+accumulate memory consuption in relation to what is loaded along the
+way. A major problem with my system.
 
