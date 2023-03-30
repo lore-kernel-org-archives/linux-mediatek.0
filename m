@@ -4,113 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED77BC761A6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 15:45:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11B34C77B62
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 17:09:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lU9JCkTye6Fj+qGS5BcJ6TDCunaP0ev1Z3VOnL6O7u8=; b=D2iTkjhjopk9Eu5aonacl9DNHN
-	6Ba6QxgnHhVPa+p3N63Sj4/JAiMhqYpFNqyMfSfxvDrJMB1hS/umz6p3HpNYjsXc0OvuRLbZGxqQp
-	3oyw4/EQi/SPJeNpWOmbJFcBzR4CcNMz1Cwt8hrXsMjzOtqvwPaT+59QHfswSoafhUJ0b1iYEx0qP
-	iu9OBS43q/cNu1Kjy+nIzVVhwWIFLR6wtQlA6SzzfcT6JY0Dt30wto7NS7ItCG1hy1ZXqkN4JIDix
-	Ddst3BI82nJoppgJXq3uR4pTE0X4eG7o5ha2MCNn+ljofvX41SF4/PIJWNKLBq7xgPRwXN/y5IKSu
-	1v99WiYg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=3TRHg+cTs43kfHGBM/5sDvwk2CMTBx+iHyHIRc3YKQQ=; b=GjFWBqcMYMZPNf
+	lgFQ9PitulgqWK8Q793vSX0qfgNfFfgWsRQ/2fL9Kli/efz3Gzf+6KW83ohogTdoZCKpOzuhNXxlI
+	n0pKUudRB8k7kUZKh1XrYCyuWCZmWLV+md2YUAY1/FMvXcj+k+l4j8Mem+9Awt32FKXXIJunqJ6T8
+	qnkLHHPvh/Zpaos1H54EryCZq9xjzwNU46FG9gO5CkIG1lQ5UmS2F2H7jVbm2EYAorsgDNlR7EosS
+	5QTx3dKb0gIE87iA5EFsNfLyjvwj9wXJWt5pZH/OIyCeCeKWq7LF8OTzr22yaabjjbdf0qpvXqiJe
+	4E5YFg/WvoXtaiW9KoOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phuSS-004MbA-2Q;
-	Thu, 30 Mar 2023 15:45:00 +0000
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+	id 1phvmE-004aGn-0j;
+	Thu, 30 Mar 2023 17:09:30 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phuSL-004MWY-1Z;
-	Thu, 30 Mar 2023 15:44:55 +0000
-Received: by mail-pl1-x634.google.com with SMTP id w4so18433754plg.9;
-        Thu, 30 Mar 2023 08:44:52 -0700 (PDT)
+	id 1phvmC-004aF4-07;
+	Thu, 30 Mar 2023 17:09:29 +0000
+Received: by mail-wr1-x435.google.com with SMTP id m2so19820467wrh.6;
+        Thu, 30 Mar 2023 10:09:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1680191092;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=lU9JCkTye6Fj+qGS5BcJ6TDCunaP0ev1Z3VOnL6O7u8=;
-        b=ARXUEmqMaQiFvA623fC9h/1bTtbZu+9APT25M51Fyzal5QyyBhpNOKenjrxHC9tNvl
-         S5qRlO9XoSCMeMsGUxdNgy5JziINi0lqiObnEMVskhrUlgY/Nx4DIG0QNEQsDohNNwVI
-         ZjpV6n4C/vseZe/Yaal+huKNBxLZRFnxa87dsmJ+XNyIozRshatOv7uSBF+5zoQgGC9u
-         APpkQ7cgiCA7P+a0ITBi0t+ePzbvRC6ZSQ8PNQFlEV5Nkz3BPNiKrW3feDlfatNMu8VV
-         ylQbTLsNnGSA8P3WnQGfjLEZ3+xacpPhY8gzVJGbk7L8KERA9bNGO7XypeGYZuS4b7+c
-         MaZw==
+        d=gmail.com; s=20210112; t=1680196162;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=3TRHg+cTs43kfHGBM/5sDvwk2CMTBx+iHyHIRc3YKQQ=;
+        b=CpJm8U3E2ngq5rxs2vxcVii+NSUiivF5PvrdcT9zIODeeTR8/M1driEylYB4tXc+Ji
+         Q70bTtmldbgaiM6gPDCwwpP4JYUlZfvgOGXw/q3h2qmOruMVI77FkXK3uNKe7CJox0Ad
+         mhTTSDEwVzmE6+lIwyuIXO03g7jGnZBHmdNdtlZ4WsGaX7oVflyFZ+t+FIvmVlTPvt1T
+         0oCaLiyfvd3T+RPL/+MuOB0d4AX2qa2mVqZRGfAfnk9ooi64pwyxRcGoRGbQcvOowbCS
+         u4Uz9nq51cWuuF9isJefbrSLM/wqoM+7sVBMfzf29x0m+F0fVhTU8L7vHJxPpxxMaYNC
+         ew4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680191092;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=lU9JCkTye6Fj+qGS5BcJ6TDCunaP0ev1Z3VOnL6O7u8=;
-        b=vLdybZW2ke3ziRWXe3EYNZ0ISp6dFpR6iMihXGwQL/T+SexT7dIOKBcW8FCQiaRyif
-         nNxvEmxrayG6nrfXsCtmPzTdQ5KA7641llxj/qU58sbOTzsija3gZayBywjubEz+NM65
-         F2ZEarIwhkbpjSN4wk1t9bjk5eAsAg1o5pAoweiVLrIBFLddQZ5strWznwQ+2F1s1bgE
-         l14ovgeaq3ARUNBx/o/Gha7mslEaf7OkwVAZtIleWR/7eNpcJoB8t6hne8udSkuKwyBp
-         NGuhzRfsoA+rfh39MihMeY3RdG+AP3n10uwQ/d2x5FZSWkvMovtNpn0Q1E+wFdlTO7L8
-         qobg==
-X-Gm-Message-State: AAQBX9dmLsc/7VFgYWzS+m8URsGas4cETZpzRZeC346VrBygs7VKHLEQ
-	h/8izcCb3uykgs0zK0ebzvw=
-X-Google-Smtp-Source: AKy350an4aqBBaa4AoyKQMK/eGaMNqvVN6MWoVbuOKTA1coVugM8BSX93rzwnm0ye04pw2RvKavoAQ==
-X-Received: by 2002:a17:903:244e:b0:1a1:bbcd:917e with SMTP id l14-20020a170903244e00b001a1bbcd917emr26930417pls.10.1680191091900;
-        Thu, 30 Mar 2023 08:44:51 -0700 (PDT)
-Received: from skbuf ([188.27.184.189])
-        by smtp.gmail.com with ESMTPSA id u1-20020a170902bf4100b001a1faeac240sm352484pls.186.2023.03.30.08.44.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Mar 2023 08:44:51 -0700 (PDT)
-Date: Thu, 30 Mar 2023 18:44:31 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Hans Schultz <netdev@kapio-technology.com>
-Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>, Eric Dumazet <edumazet@google.com>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	"maintainer:MICROCHIP KSZ SERIES ETHERNET SWITCH DRIVER" <UNGLinuxDriver@microchip.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	=?utf-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
-	Jiri Pirko <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
-	Shuah Khan <shuah@kernel.org>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Ido Schimmel <idosch@nvidia.com>,
-	open list <linux-kernel@vger.kernel.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
-	"open list:RENESAS RZ/N1 A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>,
-	"moderated list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>,
-	"open list:KERNEL SELFTEST FRAMEWORK" <linux-kselftest@vger.kernel.org>
-Subject: Re: [PATCH v2 net-next 2/6] net: dsa: propagate flags down towards
- drivers
-Message-ID: <20230330154431.vii5llyqgiymievp@skbuf>
-References: <20230327225933.plm5raegywbe7g2a@skbuf>
- <87ileljfwo.fsf@kapio-technology.com>
- <20230328114943.4mibmn2icutcio4m@skbuf>
- <87cz4slkx5.fsf@kapio-technology.com>
- <20230330124326.v5mqg7do25tz6izk@skbuf>
- <87wn2yxunb.fsf@kapio-technology.com>
- <20230330130936.hxme34qrqwolvpsh@skbuf>
- <875yaimgro.fsf@kapio-technology.com>
- <20230330150752.gdquw5kudtrqgzyz@skbuf>
- <877cuy6ynf.fsf@kapio-technology.com>
+        d=1e100.net; s=20210112; t=1680196162;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=3TRHg+cTs43kfHGBM/5sDvwk2CMTBx+iHyHIRc3YKQQ=;
+        b=2Hc2kLElsX3PHqHf1sEvZ9m51R09LJRNFJhFTeJZt6Gvx9vsx9xNn7BVgANJ3xNi7B
+         rQxqEMvSbgCb2rvs8ERrVQz2QaHe+BkGtCoPN+FKKhcvkuY5J2mp0Ke0XfygTFDMd924
+         gOTTzr3qxJ6jIGY5BR6NIt+sYS45O9VQOOvTgka37uZlQv1fzMIDvfRgiERNtuGR7HJ9
+         Ox1JHuwfAoPsj+NcUiM/kpfptEFyfuhNxKkuld3xrVB2whmIyM2ZhNufztZ4eUWRRI5v
+         YaCIeLOLBkVEH9Zva7MprpL5++vcC1P+Lf3CAEQ19X8S3MVJRW9jt4Qd1StK/3I4w8QW
+         ZJOw==
+X-Gm-Message-State: AAQBX9fHrIHC+x9QL9LDNlgt2yGgqtRnyusHatIyOKi8tX2beyUd+KNo
+	Cm81EIVisO1lKBG/AblN/gk=
+X-Google-Smtp-Source: AKy350brgt1+Yl/+qZ7NQ5as83uCi0jHokhPsY7zou3nvHJT9Eg+7r5f7fUfv8kl5fSyf5OCPkzRUA==
+X-Received: by 2002:adf:efc3:0:b0:2ce:a944:2c6a with SMTP id i3-20020adfefc3000000b002cea9442c6amr18546399wrp.70.1680196161696;
+        Thu, 30 Mar 2023 10:09:21 -0700 (PDT)
+Received: from [192.168.1.135] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id j6-20020a5d5646000000b002d2f0e23acbsm33229184wrw.12.2023.03.30.10.09.19
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 30 Mar 2023 10:09:20 -0700 (PDT)
+Message-ID: <8a6d8107-436a-1b13-3799-59fa75c59635@gmail.com>
+Date: Thu, 30 Mar 2023 19:09:19 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <877cuy6ynf.fsf@kapio-technology.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [PATCH v2] dt-bindings: mt76: add active-low property for led
+Content-Language: en-US
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
+ Felix Fietkau <nbd@nbd.name>, Kalle Valo <kvalo@kernel.org>
+References: <20230207133504.21826-1-linux@fw-web.de>
+ <7aa132aa-d2fe-e2a1-a2a7-97321a74165c@linaro.org>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <7aa132aa-d2fe-e2a1-a2a7-97321a74165c@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230330_084453_526953_09332224 
-X-CRM114-Status: GOOD (  13.64  )
+X-CRM114-CacheID: sfid-20230330_100928_096233_C327313B 
+X-CRM114-Status: GOOD (  11.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,33 +91,27 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Shayne Chen <shayne.chen@mediatek.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 30, 2023 at 05:34:44PM +0200, Hans Schultz wrote:
-> On Thu, Mar 30, 2023 at 18:07, Vladimir Oltean <olteanv@gmail.com> wrote:
-> >
-> > Then, make DSA decide whether to handle the "added_by_user && !is_static"
-> > combination or not, based on the presence of the DSA_FDB_FLAG_DYNAMIC
-> > flag, which will be set in ds->supported_fdb_flags only for the mv88e6xxx
-> > driver.
-> 
-> Okay, so this will require a new function in the DSA layer that sets
-> which flags are supported and that the driver will call on
-> initialization.
-> 
-> Where (in the DSA layer) should such a function be placed and what
-> should it be called?
+Hi Felix and Kalle,
 
-Don't overthink it, no new function. It's okay to just set
-ds->supported_fdb_flags = DSA_FDB_FLAG_DYNAMIC in
-mv88e6xxx_register_switch(), near the place where it currently sets
-ds->num_lag_ids. Either before dsa_register_switch(), or within the
-ds->ops->setup(). Both are fine, since the user network interfaces
-haven't been allocated just yet by dsa_slave_create() and so, the
-switchdev code path is inaccessible.
+On 07/02/2023 14:36, Krzysztof Kozlowski wrote:
+> On 07/02/2023 14:35, Frank Wunderlich wrote:
+>> From: Frank Wunderlich <frank-w@public-files.de>
+>>
+>> LEDs can be in low-active mode, driver already supports it, but
+>> documentation is missing. Add documentation for the dt property.
+>>
+>> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>\
+> 
+> 
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> 
 
-Existing drivers will have ds->supported_fdb_flags = 0 by default, since
-they allocate the struct dsa_switch with kzalloc(), and DSA will have to
-do something sane with that.
+Can you take that through your tree or are fine if I take it through mine?
+
+Regards,
+Matthias
 
