@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9C08C6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 14:17:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5F9FC761A6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 14:17:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5aR76aUK66V+oOGD/BsUrwTZt7JhshN2uJKaf7z8324=; b=xo4ejDfUwbK1de0hZD1jDdeMJ8
-	crLgUogA8xjLOhcAqyc5W1FB9sP8Bn9TMfdaVdbcJ5sR6eGnGlSfugVUz7RjPI+X57KeA5w3glbTc
-	AlbjW9W8BVWJB3CSeU/s+/V5Q1SAYVsIjOPNb/On5YUfwYneZ3qVdcW2s4CAII+UIml8XDbfokL8k
-	ohdAZ7xey8WIcwvcHKAlkIIVjKnRgT2oBdTjCiJG0N6x8htjs26rQ3Rgev53hUol5jyibN+CkCYaP
-	fSQF9ntW2Dh7SBTaplnO4GkEwgVESCFAxsEwPZcIisJy10DA9NBIVw2kSQS1cQ2NbCnhQqt9dUT1o
-	ZviLmb1g==;
+	bh=hCVZf8/29WGYT30PSsvdyMj8mlVRvLlPog6iZa30nLM=; b=XirWRrnD9w2a7rmg89/+qfnVqm
+	rQqOu9wL8YYgyenz86l3Ng8+yV88GC5yyeKRAaTZ/7slYnvN7ZyzJv8WShoUdcNrdtOX0Zuz7msbz
+	1cJyD7DEL3RV0I1x918UGIAj8D7rOdFyRiqx2SGQNjIfvU8ey7HjoeZy/fnNyO7aKlx4EcYthjR8K
+	Fbidz7/FjZt2OmYqpoPp/1AHLabSqKI21dERBuhu2PHzdsIG3DwxSCH8zy+fMOuJS8xAgCbYEARqK
+	02ly7IHtZIbSUMXDv++PX1OcjpRCrt2ufQ4D9/bCRdAUVbKpfDR4VRZu04AZYvO2LkwsssGZBssOs
+	yyLGhP9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pht68-0040bG-02;
+	id 1pht68-0040cF-2Z;
 	Thu, 30 Mar 2023 14:17:52 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pht52-003zmv-2s;
+	id 1pht52-003zmz-37;
 	Thu, 30 Mar 2023 14:16:47 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B0189660318D;
-	Thu, 30 Mar 2023 15:16:40 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 325CD6603195;
+	Thu, 30 Mar 2023 15:16:42 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1680185801;
-	bh=piJKx8AJRTNo3xZLCBhwQ0b5ZyuIg8W2w0zGxP4Udgo=;
+	s=mail; t=1680185802;
+	bh=eZ/KgEJ3/NtZRipFLNfrQ0jkavJVDGo3ZnqqWIgjfIo=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=g5L7QZxGqzl2u0VKcmghM/MMjLooj5fsprmmNQ9NEj9rz+nlXW064NZKV3CImYyKK
-	 myo7/zMZP7GvqUYgajmGscUekHcWXfmcVEOrYNBZ9T6/q6YmrWabn9DH2Ub+kU+FLq
-	 VGgc6DHaLln0II3Le7D9oGMrlC2v/kfJQ9ZMy6fTJ8mLC8vb520n4hWeTYANCmqwZb
-	 vDaEkOA4ZPCucDZF5Ul2dxqjS8g7vl39rZ4F48SS04zYlBX3yOUCfyN1OSDTxtccYf
-	 fQ18iC69YmxonW4mxJR+372XwGMsKFdyvLPeIwBI9hRQHvIwaj57QnI5bZX92Gn6L5
-	 WiEnKbtTGqtXg==
+	b=CHlMbLXEvdEzvbDBs1TW7oa3xwSEoHjM2bENO0R5QP5j4s7rodfj4FGELpctOY9Ji
+	 ohQqqKGmadC97bCZnJnFQdzs95a1lseDpDPM5beVOboMscZkrRP98Eo4cCelKGsJ7Y
+	 WLgVPbegbzQWjritLRSisAzr3XcTxEMqJuFU8C03YuC5wmkDHB7PLTRMbUQzwLpqPq
+	 C8bnz4FihZx0Orfs6jYQxlmNGxKmzcEdn1By6XRVWlJ308SGaQbNkcXBy+hZ6ZGLDf
+	 fqrEvvx6WdLvc8hlWCNEH+vaFT3AKwOLqZH1ccCJWaaEKu4wfN7D92E4krjoMC7e22
+	 Qltm04JGgSvjw==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -56,17 +56,17 @@ Cc: p.zabel@pengutronix.de,
 	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com,
 	wenst@chromium.org
-Subject: [PATCH v1 6/8] drm/mediatek: dp: Enable event interrupt only when bridge attached
-Date: Thu, 30 Mar 2023 16:16:29 +0200
-Message-Id: <20230330141631.190528-8-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v1 8/8] drm/mediatek: dp: Add support for embedded DisplayPort aux-bus
+Date: Thu, 30 Mar 2023 16:16:31 +0200
+Message-Id: <20230330141631.190528-10-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.40.0
 In-Reply-To: <20230330141631.190528-1-angelogioacchino.delregno@collabora.com>
 References: <20230330141631.190528-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230330_071645_083429_271A4B8A 
-X-CRM114-Status: GOOD (  14.74  )
+X-CRM114-CacheID: sfid-20230330_071645_299227_667F15E5 
+X-CRM114-Status: GOOD (  21.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,86 +81,144 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In preparation for implementing support for aux-bus in this driver,
-add a IRQ_NOAUTOEN flag to the event interrupt that we request at
-probe time and manage the enablement of the ISR at bridge_attach
-and detach time.
+For the eDP case we can support using aux-bus on MediaTek DP: this
+gives us the possibility to declare our panel as generic "panel-edp"
+which will automatically configure the timings and available modes
+via the EDID that we read from it.
 
-When aux-bus will be implemented, enabling the interrupt before
-attaching the bridge will create an event storm and hang the kernel
-during boot.
-In any case, the interrupt handler anyway requires resources that
-are initialized by mtk_dp_bridge_attach(), so it cannot do anything
-meaningful without... and even crash, but that's not happening in
-the current code because the HW remains unpowered until resources
-are made available.
+To do this, move the panel parsing at the end of the probe function
+so that the hardware is initialized beforehand and also power it on
+as, when we populate the aux-bus, the panel driver will trigger an
+EDID read as panel detection.
+
+**** CUT ****
+Also, since the DP IP will always trigger a HPD interrupt at this
+stage, it was necessary to add a new `bridge_attached` member to
+the mtk_dp structure to make sure that `drm_helper_hpd_irq_event()`
+will not be called before the bridge gets actually attached, or
+otherwise we will get a NULL pointer KP due to mtk_dp->bridge.dev
+being uninitialized.
+**** CUT ****
+
+Last but not least, since now the AUX transfers can happen in the
+separated aux-bus, it was necessary to add an exclusion for the
+cable_plugged_in check in `mtk_dp_aux_transfer()` and the easiest
+way to do this is to simply ignore checking that when the bridge
+type is eDP.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dp.c | 15 ++++++++++-----
- 1 file changed, 10 insertions(+), 5 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_dp.c | 56 +++++++++++++++++++++++++------
+ 1 file changed, 46 insertions(+), 10 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index 19b145cf2e05..6aaf162a6bfe 100644
+index 62d53c4b3feb..f62ef24db67d 100644
 --- a/drivers/gpu/drm/mediatek/mtk_dp.c
 +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -100,6 +100,7 @@ struct mtk_dp_efuse_fmt {
- struct mtk_dp {
- 	bool enabled;
- 	bool need_debounce;
-+	int irq;
- 	u8 max_lanes;
- 	u8 max_linkrate;
- 	u8 rx_cap[DP_RECEIVER_CAP_SIZE];
-@@ -2148,6 +2149,8 @@ static int mtk_dp_bridge_attach(struct drm_bridge *bridge,
+@@ -4,6 +4,7 @@
+  * Copyright (c) 2022 BayLibre
+  */
  
- 	mtk_dp->drm_dev = bridge->dev;
++#include <drm/display/drm_dp_aux_bus.h>
+ #include <drm/display/drm_dp.h>
+ #include <drm/display/drm_dp_helper.h>
+ #include <drm/drm_atomic_helper.h>
+@@ -2041,7 +2042,8 @@ static ssize_t mtk_dp_aux_transfer(struct drm_dp_aux *mtk_aux,
  
-+	irq_clear_status_flags(mtk_dp->irq, IRQ_NOAUTOEN);
-+	enable_irq(mtk_dp->irq);
+ 	mtk_dp = container_of(mtk_aux, struct mtk_dp, aux);
+ 
+-	if (!mtk_dp->train_info.cable_plugged_in) {
++	if (mtk_dp->bridge.type != DRM_MODE_CONNECTOR_eDP &&
++	    !mtk_dp->train_info.cable_plugged_in) {
+ 		ret = -EAGAIN;
+ 		goto err;
+ 	}
+@@ -2153,6 +2155,11 @@ static int mtk_dp_bridge_attach(struct drm_bridge *bridge,
+ 	enable_irq(mtk_dp->irq);
  	mtk_dp_hwirq_enable(mtk_dp, true);
  
++	if (mtk_dp->bridge.type == DRM_MODE_CONNECTOR_eDP /* && panel_on_aux_bus() */) {
++		mtk_dp->train_info.cable_plugged_in = true;
++		drm_helper_hpd_irq_event(mtk_dp->drm_dev);
++	}
++
  	return 0;
-@@ -2164,6 +2167,7 @@ static void mtk_dp_bridge_detach(struct drm_bridge *bridge)
- 	struct mtk_dp *mtk_dp = mtk_dp_from_bridge(bridge);
  
- 	mtk_dp_hwirq_enable(mtk_dp, false);
-+	disable_irq(mtk_dp->irq);
- 	mtk_dp->drm_dev = NULL;
- 	mtk_dp_poweroff(mtk_dp);
- 	drm_dp_aux_unregister(&mtk_dp->aux);
-@@ -2482,7 +2486,7 @@ static int mtk_dp_probe(struct platform_device *pdev)
+ err_bridge_attach:
+@@ -2482,6 +2489,20 @@ static int mtk_dp_register_audio_driver(struct device *dev)
+ 	return PTR_ERR_OR_ZERO(mtk_dp->audio_pdev);
+ }
+ 
++static int mtk_dp_edp_link_panel(struct drm_dp_aux *mtk_aux)
++{
++	struct mtk_dp *mtk_dp = container_of(mtk_aux, struct mtk_dp, aux);
++	struct device *dev = mtk_aux->dev;
++	struct drm_bridge *panel_aux_bridge;
++
++	panel_aux_bridge = devm_drm_of_get_bridge(dev, dev->of_node, 1, 0);
++	if (IS_ERR(panel_aux_bridge))
++		return PTR_ERR(panel_aux_bridge);
++
++	mtk_dp->next_bridge = panel_aux_bridge;
++	return 0;
++}
++
+ static int mtk_dp_probe(struct platform_device *pdev)
  {
  	struct mtk_dp *mtk_dp;
- 	struct device *dev = &pdev->dev;
--	int ret, irq_num;
-+	int ret;
- 
- 	mtk_dp = devm_kzalloc(dev, sizeof(*mtk_dp), GFP_KERNEL);
- 	if (!mtk_dp)
-@@ -2491,9 +2495,9 @@ static int mtk_dp_probe(struct platform_device *pdev)
- 	mtk_dp->dev = dev;
- 	mtk_dp->data = (struct mtk_dp_data *)of_device_get_match_data(dev);
- 
--	irq_num = platform_get_irq(pdev, 0);
--	if (irq_num < 0)
--		return dev_err_probe(dev, irq_num,
-+	mtk_dp->irq = platform_get_irq(pdev, 0);
-+	if (mtk_dp->irq < 0)
-+		return dev_err_probe(dev, mtk_dp->irq,
+@@ -2500,21 +2521,14 @@ static int mtk_dp_probe(struct platform_device *pdev)
+ 		return dev_err_probe(dev, mtk_dp->irq,
  				     "failed to request dp irq resource\n");
  
- 	mtk_dp->next_bridge = devm_drm_of_get_bridge(dev, dev->of_node, 1, 0);
-@@ -2514,7 +2518,8 @@ static int mtk_dp_probe(struct platform_device *pdev)
+-	mtk_dp->next_bridge = devm_drm_of_get_bridge(dev, dev->of_node, 1, 0);
+-	if (IS_ERR(mtk_dp->next_bridge) &&
+-	    PTR_ERR(mtk_dp->next_bridge) == -ENODEV)
+-		mtk_dp->next_bridge = NULL;
+-	else if (IS_ERR(mtk_dp->next_bridge))
+-		return dev_err_probe(dev, PTR_ERR(mtk_dp->next_bridge),
+-				     "Failed to get bridge\n");
+-
+ 	ret = mtk_dp_dt_parse(mtk_dp, pdev);
+ 	if (ret)
+ 		return dev_err_probe(dev, ret, "Failed to parse dt\n");
+ 
+-	drm_dp_aux_init(&mtk_dp->aux);
+ 	mtk_dp->aux.name = "aux_mtk_dp";
++	mtk_dp->aux.dev = dev;
+ 	mtk_dp->aux.transfer = mtk_dp_aux_transfer;
++	drm_dp_aux_init(&mtk_dp->aux);
  
  	spin_lock_init(&mtk_dp->irq_thread_lock);
  
--	ret = devm_request_threaded_irq(dev, irq_num, mtk_dp_hpd_event,
-+	irq_set_status_flags(mtk_dp->irq, IRQ_NOAUTOEN);
-+	ret = devm_request_threaded_irq(dev, mtk_dp->irq, mtk_dp_hpd_event,
- 					mtk_dp_hpd_event_thread,
- 					IRQ_TYPE_LEVEL_HIGH, dev_name(dev),
- 					mtk_dp);
+@@ -2570,6 +2584,28 @@ static int mtk_dp_probe(struct platform_device *pdev)
+ 	mtk_dp->need_debounce = true;
+ 	timer_setup(&mtk_dp->debounce_timer, mtk_dp_debounce_timer, 0);
+ 
++	if (mtk_dp->bridge.type == DRM_MODE_CONNECTOR_eDP) {
++		/* Need to power on HW because aux-bus will read EDID */
++		mtk_dp_aux_panel_poweron(mtk_dp, true);
++
++		ret = devm_of_dp_aux_populate_bus(&mtk_dp->aux, NULL);
++
++		/* Power off AUX and panel now as detection is done. */
++		mtk_dp_aux_panel_poweron(mtk_dp, false);
++
++		/* We ignore -ENODEV error, as the panel may not be on aux-bus */
++		if (ret && ret != -ENODEV)
++			return ret;
++
++		/*
++		 * Here we don't ignore any error, as if there's no panel to
++		 * link, eDP is not configured correctly and will be unusable.
++		 */
++		ret = mtk_dp_edp_link_panel(&mtk_dp->aux);
++		if (ret)
++			return ret;
++	}
++
+ 	pm_runtime_enable(dev);
+ 	pm_runtime_get_sync(dev);
+ 
 -- 
 2.40.0
 
