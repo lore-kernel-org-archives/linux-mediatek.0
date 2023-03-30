@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F639C77B6E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 14:16:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED6A5C77B60
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 14:17:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=03YztE1/3YPWgkKU8U+/gXZfMLazNS1IOrDi2zPJhkc=; b=XLlzYHXFnu0QmGFEqIvJEX0eFF
-	zX1oHFPaTQvg7PujiqmCzKauMf7wRtcmcYbnY00QhsUI0juPXzu8Hx5SlMAvOYPLrHUyd8ZUDbX4K
-	v/PXp2vUUEmJIw8fLleTs4wusT6K7FkHrmgvau7Zql3lv0OWsiMr/ZynaH27IgMsQLvuPiJlIXMnc
-	aKASVwh9cIDwBkAYLsW8Qxj8RMK31CWnTyt2OM4dmWS+RrcDNAEteIdyUIKvJ53alToNs+gRadCet
-	EQAtcpis6rmfqMSuT+fepShNWgjmMRKzWfivjisxlxCoIk1mtsuq3UPeh+rJK542RnGBBCYVrlnFo
-	af4BhHvA==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SA7K1DKPDuni2CUxMFtz6LVzpvZXN/0fsgagtyIjImk=; b=GG7F6E9EdAVG0a9JLSrKTQMDiB
+	AxToB0iDH8lLOkQQ77Lb5Q+umEKmPo4TDNrZi2OgWt5cmpmixiRplElQPjBwLOAHw/XncQXbpjuca
+	tvlF8F5LxbkJpfbiqeTHgvxOwOWVGWJg1NXZ1pc+KreLyxRyPBY4wCnd1SsnYlp7PZ93Pdq2xsgmg
+	FgQA+UUJcgKuM7iwpk/Nf6bGntMNYOcRFrIWdgbMaYArZ0Ry2N9l2BOxL6Fa7dTLNx7+BPn2cIEUz
+	7+H5L4NvslJmjKvCtduRDoMkO9Mp63JdWkYnFvAUWeNQmeaVzQg+RKUzWd6T+68kINFSgQ7/JgnVb
+	OQXKgXLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pht54-003zq1-3A;
-	Thu, 30 Mar 2023 14:16:46 +0000
+	id 1pht5I-003zzw-18;
+	Thu, 30 Mar 2023 14:17:00 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pht4y-003zir-1P;
-	Thu, 30 Mar 2023 14:16:42 +0000
+	id 1pht4y-003zje-2c;
+	Thu, 30 Mar 2023 14:16:43 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6A51A66030CD;
-	Thu, 30 Mar 2023 15:16:35 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A63066603189;
+	Thu, 30 Mar 2023 15:16:37 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1680185796;
-	bh=ux/0TN81WLnYDd2jDMimgAkbJMXx28lS+SbskQF/S3M=;
-	h=From:To:Cc:Subject:Date:From;
-	b=QHe1PlT1KPRiWBcbWcv3WdCSLU1ucNSBotILUNaoQ6WqRFDnLUrTCG2A2+F2CDLaJ
-	 g6ryx1cWECvB44J/w1LqlLX0p/gK8APKAXjLuS547x09Nn+i8jVKo319Hu7qmAxdRx
-	 RG6c+zQQiZBVedQ5crYBeufHLfJart3oVnU7YuuO4QWTseWl6/vXtue+gM7erUQ8y+
-	 mHnWax7mrOPhcrK1z2LgANBi9T+nQK2zsuSJzEmu2n+uokXip/jqaM02OPHrAspbTu
-	 9qJ0DpszpckB71+l41lP2Yzirb4Nx3ScvUZ4miQhHAPsZogxt09rgfZmEHZxBglU4j
-	 W1W45b8cHNkqQ==
+	s=mail; t=1680185798;
+	bh=l7DxgZbkLf1a/NAX8ACnOYom2qi3A95N4rbvhFxlUX8=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=kok26pBYezCXLsDqlPBv2AAuuArwPCPm1egmztLbAPV5WKAfc+jLvl0aZaf7UVrMA
+	 l/Zhteq7VX7hcsoAwMknWLdZJSAi0O4Fio6waFY2Pr41THlth0BFXPi7deedr5xEPx
+	 63S5QwMCvF8YA8KpXRt4nGT2Bbp9ceXaYVJWGp0vlqzDh7pToyaxp32L6x/UyxUfqA
+	 fyP/CP3Dd38Pm2kh/s0Kc5VQgkfuSADcIxGEzExSKXZ5eri9mqF5FyFPQFjDsvy8As
+	 aVx2r8UUvdYP8QRJJQzMoOvO7cYfz8rI5M7yGvor11hIymYm9ybjXMJMXn6rqzRX0K
+	 C6cNQX6P9RCxQ==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -56,15 +56,18 @@ Cc: p.zabel@pengutronix.de,
 	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com,
 	wenst@chromium.org
-Subject: [PATCH v1 0/8] MediaTek DisplayPort: support eDP and aux-bus
-Date: Thu, 30 Mar 2023 16:16:22 +0200
-Message-Id: <20230330141631.190528-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v1 3/8] drm/mediatek: dp: Always return connected status for eDP in .detect()
+Date: Thu, 30 Mar 2023 16:16:25 +0200
+Message-Id: <20230330141631.190528-4-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.40.0
+In-Reply-To: <20230330141631.190528-1-angelogioacchino.delregno@collabora.com>
+References: <20230330141631.190528-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230330_071640_702979_B0036A61 
-X-CRM114-Status: GOOD (  16.96  )
+X-CRM114-CacheID: sfid-20230330_071640_995281_4CA57E34 
+X-CRM114-Status: UNSURE (   9.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,109 +82,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series adds "real" support for eDP in the mtk-dp DisplayPort driver.
+If this is an eDP panel it's not removable, hence it's always connected:
+as a shortcut, always return connector_status_connected in the .detect()
+callback for eDP connector, avoiding a poweron, a check for sink count
+and a poweroff.
 
-Explaining the "real":
-Before this change, the DisplayPort driver did support eDP to some
-extent, but it was treating it entirely like a regular DP interface
-which is partially fine, after all, embedded DisplayPort *is* actually
-DisplayPort, but there might be some differences to account for... and
-this is for both small performance improvements and, more importantly,
-for correct functionality in some systems.
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dp.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-Functionality first:
-
-One of the common differences found in various boards implementing eDP
-and machines using an eDP panel is that many times the HPD line is not
-connected. This *must* be accounted for: at startup, this specific IP
-will raise a HPD interrupt (which should maybe be ignored... as it does
-not appear to be a "real" event...) that will make the eDP panel to be
-detected and to actually work but, after a suspend-resume cycle, there
-will be no HPD interrupt (as there's no HPD line in my case!) producing
-a functionality issue - specifically, the DP Link Training fails because
-the panel doesn't get powered up, then it stays black and won't work
-until rebooting the machine (or removing and reinserting the module I
-think, but I haven't tried that).
-
-Now for.. both:
-eDP panels are *e*DP because they are *not* removable (in the sense that
-you can't unplug the cable without disassembling the machine, in which
-case, the machine shall be powered down..!): this (correct) assumption
-makes us able to solve some issues and to also gain a little performance
-during PM operations.
-
-What was done here is:
- - Caching the EDID if the panel is eDP: we're always going to read the
-   same data everytime, so we can just cache that (as it's small enough)
-   shortening PM resume times for the eDP driver instance;
- - Always return connector_status_connected if it's eDP: non-removable
-   means connector_status_disconnected can't happen during runtime...
-   this also saves us some time and even power, as we won't have to
-   perform yet another power cycle of the HW;
- - Added aux-bus support!
-   This makes us able to rely on panel autodetection from the EDID,
-   avoiding to add more and more panel timings to panel-edp and, even
-   better, allowing to use one panel node in devicetrees for multiple
-   variants of the same machine since, at that point, it's not important
-   to "preventively know" what panel we have (eh, it's autodetected...!).
-
-This was tested on a MT8195 Cherry Tomato Chromebook (panel-edp on aux-bus)
-
-
-P.S.: For your own testing commodity, here's a reference devicetree:
-&edp_tx {
-	status = "okay";
-
-	pinctrl-names = "default";
-	pinctrl-0 = <&edptx_pins_default>;
-
-	ports {
-		#address-cells = <1>;
-		#size-cells = <0>;
-
-		port@0 {
-			reg = <0>;
-			edp_in: endpoint {
-				remote-endpoint = <&dp_intf0_out>;
-			};
-		};
-
-		port@1 {
-			reg = <1>;
-			edp_out: endpoint {
-				data-lanes = <0 1 2 3>;
-				remote-endpoint = <&panel_in>;
-			};
-		};
-	};
-
-	aux-bus {
-		panel: panel {
-			compatible = "edp-panel";
-			power-supply = <&pp3300_disp_x>;
-			backlight = <&backlight_lcd0>;
-			port {
-				panel_in: endpoint {
-					remote-endpoint = <&edp_out>;
-				};
-			};
-		};
-	};
-};
-
-AngeloGioacchino Del Regno (8):
-  drm/mediatek: dp: Cache EDID for eDP panel
-  drm/mediatek: dp: Move AUX and panel poweron/off sequence to function
-  drm/mediatek: dp: Always return connected status for eDP in .detect()
-  drm/mediatek: dp: Always set cable_plugged_in at resume for eDP panel
-  drm/mediatek: dp: Change logging to dev for mtk_dp_aux_transfer()
-  drm/mediatek: dp: Enable event interrupt only when bridge attached
-  drm/mediatek: dp: Use devm variant of drm_bridge_add()
-  drm/mediatek: dp: Add support for embedded DisplayPort aux-bus
-
- drivers/gpu/drm/mediatek/mtk_dp.c | 172 ++++++++++++++++++------------
- 1 file changed, 106 insertions(+), 66 deletions(-)
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
+index 76ea94167531..c82dd1f0675d 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dp.c
++++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+@@ -1957,6 +1957,9 @@ static enum drm_connector_status mtk_dp_bdg_detect(struct drm_bridge *bridge)
+ 	bool enabled = mtk_dp->enabled;
+ 	u8 sink_count = 0;
+ 
++	if (mtk_dp->bridge.type == DRM_MODE_CONNECTOR_eDP)
++		return connector_status_connected;
++
+ 	if (!mtk_dp->train_info.cable_plugged_in)
+ 		return ret;
+ 
 -- 
 2.40.0
 
