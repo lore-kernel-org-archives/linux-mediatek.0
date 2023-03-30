@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A83D5C7619A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 21:02:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19E19C7619A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 21:02:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=L8pPf6J4tcqHifYVxGDDQBEBvwaXYKDumOp+Otq+uLw=; b=LtIPyGGNY98Imoh9j0i5AjCc6P
-	IjJBYlmnCH40OTvwikAqHWxkO9YeeteDN3bhYIKGwF0yaO/kJooory8PdajtOE9THvLxOoPvFSMhC
-	2MOJSErQoWm8zfRSg9QKdMXx4/WZsjUb/DSWtlBruoXGmzNvREhphMl1b/O38PhB7r0kTGRntkgS/
-	oUG0KC2ZNMZkNuqJb817nH/Qz2xLVIpYY457OrLC4iJLTpEO1n04IW44fqXfJBf4jpZCOC5EH6E+n
-	H27gkavo4OXNZxkhVqitTvzfFBwHIjulA9sBtH1ecdqs7VwT3ds98zKunn+otpmk9g//itASdktTK
-	Z3iuizqw==;
+	bh=hFIPT+A6y87wSd7XrlWKS8jisV2soaxGYkXRYmD7H0s=; b=NmSHDubx/DZFnY/XFLLyhxmfJx
+	9qDSiGkPw6KvCVGXMiMpTBksHnMMxgbAlFBKXKyAL2XCXcSAi12ChmZBDZLut9dAhnoEOlXBkPb1D
+	4Cu9kA9VLsToj5k91BM7JVAlpEFUTYloAz2Uatt3EGMBLnGvybQvo/aTM3IxPIyRMmbIscf3ZApe/
+	lSc35nvMoNHzlFTRoObcuQhRVV/8aS1xA0tjP14W/yMEy2QPhRKz7qZoKwsNF9qSfMVx8l3PLcTRi
+	vtcGXwMDmIicAyuuKMhCLmh85ESxVHtdN/c4fBSGtiXACjKljg+P7MAFm7zXGIBADC6A5Um65k9DS
+	HWxapR/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phzPH-0054bx-2s;
-	Thu, 30 Mar 2023 21:02:03 +0000
+	id 1phzPa-0054ih-3B;
+	Thu, 30 Mar 2023 21:02:22 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phzPG-0054bJ-0a;
-	Thu, 30 Mar 2023 21:02:03 +0000
+	id 1phzPY-0054ha-3D;
+	Thu, 30 Mar 2023 21:02:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=L8pPf6J4tcqHifYVxGDDQBEBvwaXYKDumOp+Otq+uLw=; b=tuojdmO2XR49ZlOXbRMF61nol7
-	GlITRH8Vyv/YfccITNiEMsPPG8uE9m082XwBdAD6ubUfgFsjX1DHlelJ4nryca5ELA0ndOPXwuW0E
-	hrtfiAZlfC2AU0vy08xiZ6ibSQmaq+7yCJEGjirQ43o1XffyCrxAYsPsvvPbkf8lu0m0=;
+	bh=hFIPT+A6y87wSd7XrlWKS8jisV2soaxGYkXRYmD7H0s=; b=IfyAns4eUr8IfpM3Xv5S4s3aSz
+	QjwsQvaNW+aSrrrZNoFbr3yUnXuIid0SYIWFjINqZV345XIs97qoTzviiEt3AfWWApaDD3F/CNu0P
+	S3OQia49T07FpeXvk44RHsXzpuC8szZrv0jwVrkk5pBNVrCGoJzKJ1TnWYCAfsM/TnQA=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1phzPE-008vyS-JR; Thu, 30 Mar 2023 23:02:00 +0200
-Date: Thu, 30 Mar 2023 23:02:00 +0200
+	id 1phzPX-008vzA-NE; Thu, 30 Mar 2023 23:02:19 +0200
+Date: Thu, 30 Mar 2023 23:02:19 +0200
 From: Andrew Lunn <andrew@lunn.ch>
 To: Daniel Golle <daniel@makrotopia.org>
 Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
@@ -58,18 +58,18 @@ Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	Sam Shih <Sam.Shih@mediatek.com>,
 	Lorenzo Bianconi <lorenzo@kernel.org>,
 	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>
-Subject: Re: [PATCH net-next 04/15] net: dsa: mt7530: use regmap to access
- switch register space
-Message-ID: <0847f6b8-564e-4b7c-936f-e418aac22368@lunn.ch>
+Subject: Re: [PATCH net-next 05/15] net: dsa: mt7530: move SGMII PCS creation
+ to mt7530_probe function
+Message-ID: <96be4399-5e62-45b2-afc3-3702465b4348@lunn.ch>
 References: <cover.1680180959.git.daniel@makrotopia.org>
- <1763ab54a479458c4bb84342f32d4a2e379f1d26.1680180959.git.daniel@makrotopia.org>
+ <f8f157ca470ffb54c03be821c72478b2563a1106.1680180959.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1763ab54a479458c4bb84342f32d4a2e379f1d26.1680180959.git.daniel@makrotopia.org>
+In-Reply-To: <f8f157ca470ffb54c03be821c72478b2563a1106.1680180959.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230330_140202_219787_7FA5806E 
-X-CRM114-Status: UNSURE (   7.64  )
+X-CRM114-CacheID: sfid-20230330_140221_035093_E8C8FFA9 
+X-CRM114-Status: UNSURE (   9.04  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,8 +85,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 30, 2023 at 04:20:57PM +0100, Daniel Golle wrote:
-> Use regmap API to access the switch register space.
+On Thu, Mar 30, 2023 at 04:21:09PM +0100, Daniel Golle wrote:
+> Move creating the SGMII PCS from mt753x_setup() to the more appropriate
+> mt7530_probe() function.
+> This is done also in preparation of moving all functions related to
+> MDIO-connected MT753x switches to a separate module.
 > 
 > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
