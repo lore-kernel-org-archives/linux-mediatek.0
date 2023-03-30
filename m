@@ -4,70 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD165C6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 22:11:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28D5AC6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Mar 2023 01:17:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=dzcXFIe6xfhgc1APTrTG7JZEbQeJT6UjUj8mcefKjNI=; b=bmyoqI1epnA825r1tsfBYbVZr+
-	rW6+I2LHoDCAbmK7hzfD+xlo88U6YAcohWZGADyIDH40fpIHcCAuTYJGTxZ64Io494UF3m6XtyUnw
-	3HFX+QlXsZTORcvVLjpb9dgsB7AOrozx3CKlgq93dibZG/qDBR4gTXeiuu+YRMsXCJvEkHRJV91MI
-	ZT+ohTNtfzP/aXNmGTo9ySBWmHUecxcw9rVQ8hcp4daQeSfQ73kF4Cn28sXwlGztoyzMgvDw18CV+
-	ZkEl6e/s6pZNkqIv/ibtCivol9WdwBhqDOTTrF9PR58kJ1ZEeWRgFLIc7mT0lW9T04J3EjMBH7AiM
-	6/GDV8Xw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lc2/TazxozdDnvZb/b7lHdWwz27nbeuJ3CQk1i0zndI=; b=pk+Lr7kodhZsFfBDICXlmKdDsr
+	9V6DTjgxtASeYr5Rd7m2gqRnPFyd0507wET8j/7WldCFtBVz22bmnkCPfyR4gnUbks53o6mweuKkq
+	RJ06eYVvMkjP/q7aH77RDhx2YbR9ZmNymXmY+xRprMR7yz8kcKfyGRikchQmx3Ic2gFl3WO4ZW3T9
+	0Hp/ar10OKoi1vapqLWr0/ZL/MuN5x/+ePkU6e8Z0HFZnL6XiFpBoRL1uVFiHkB2ATJw6RouwwA4t
+	enx9JLfNZmbRdH3iPkIOsskMw3CxnJK1BLAZLEXSyz64vow1VoImBwyj84nv9AXcjTe3wQs6RPbEQ
+	Rahabcqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pi0U6-005Bwf-39;
-	Thu, 30 Mar 2023 22:11:06 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pi3OH-005W8e-2U;
+	Fri, 31 Mar 2023 01:17:17 +0000
+Received: from omta35.uswest2.a.cloudfilter.net ([35.89.44.34])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pi0U3-005BvR-2w
-	for linux-mediatek@lists.infradead.org;
-	Thu, 30 Mar 2023 22:11:05 +0000
-X-UUID: bd75553acf4711ed8687db9d93187ff1-20230330
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=dzcXFIe6xfhgc1APTrTG7JZEbQeJT6UjUj8mcefKjNI=;
-	b=pmM9WXHCIeJJRtspyhketl5J/sJj9MtlPiGJjh5rBQx6B12PbmpgaCQkxXgGiP1sGYtozJA1+cZOMK3/5TkkYOgY6/kZyH4aePBDURQp3bMq1EuU1TxGK6dFA34ervHPPG3d84VEiPeLHqYh1NE2nHLKqY9DPKLTIlK3JvaJfjM=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:f6ad5769-abdb-4aca-8d5e-d6101b46cb3f,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:120426c,CLOUDID:456d022a-564d-42d9-9875-7c868ee415ec,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: bd75553acf4711ed8687db9d93187ff1-20230330
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <ryder.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 108836200; Thu, 30 Mar 2023 15:10:54 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Fri, 31 Mar 2023 06:10:19 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Fri, 31 Mar 2023 06:10:19 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
-	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
-	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH] wifi: mt76: mt7915: drop redundant prefix of mt7915_txpower_puts()
-Date: Fri, 31 Mar 2023 06:10:17 +0800
-Message-ID: <7354540481df61f7768a395c5ccb7859bdbc35e9.1680214066.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1pi3OF-005W7h-0g;
+	Fri, 31 Mar 2023 01:17:17 +0000
+Received: from eig-obgw-6012a.ext.cloudfilter.net ([10.0.30.238])
+	by cmsmtp with ESMTP
+	id i17Gp6af1E9lPi3O7pLMWa; Fri, 31 Mar 2023 01:17:07 +0000
+Received: from gator4166.hostgator.com ([108.167.133.22])
+	by cmsmtp with ESMTP
+	id i3O6pimDmGR2hi3O6pPS0B; Fri, 31 Mar 2023 01:17:06 +0000
+X-Authority-Analysis: v=2.4 cv=ZLvEJF3b c=1 sm=1 tr=0 ts=64263492
+ a=1YbLdUo/zbTtOZ3uB5T3HA==:117 a=wTog8WU66it3cfrESHnF4A==:17
+ a=dLZJa+xiwSxG16/P+YVxDGlgEgI=:19 a=IkcTkHD0fZMA:10 a=k__wU0fu6RkA:10
+ a=wYkD_t78qR0A:10 a=NEAV23lmAAAA:8 a=mDV3o1hIAAAA:8 a=VwQbUJbxAAAA:8
+ a=lQcIFfJ85XhUBIXePCYA:9 a=QEXdDO2ut3YA:10 a=3IOs8h2EC4YA:10
+ a=_FVE-zBwftR9WsbkzFJk:22 a=AjGcO6oz07-iQ99wixmX:22
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=embeddedor.com; s=default; h=Content-Transfer-Encoding:Content-Type:
+	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender
+	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=lc2/TazxozdDnvZb/b7lHdWwz27nbeuJ3CQk1i0zndI=; b=so+gIOLSJXjWDiSsnEL8KJlMhE
+	y9LJZejzwGh2PreEOGl57Bttp0lH8Q/Y+0knuhUG4cclvC8vMslE92OKvDN4xlt5casFi1b6fn7Qm
+	DGk3KcLdTm1kJHvcYXc5ia8zYZLk5OxDJs7X9EtjkR1umhli04I+TJy5FSTdZWe61OuK13kgwLjYs
+	1edRDqmBeKAWhc+zM+RSFNvy4nsTz0Zs9XBt3afdWSaNhjeehwlTypw3sK8YTlsPxOahDtCD+HdYS
+	vNrsVJI/knYLNAXwCncEjYf7K/F5kX4qDvURjbv9DXMO6Lg0x3FNB9+hC+6SR2mXtCKrk8WR235zJ
+	H7mBzkpQ==;
+Received: from 187-162-31-110.static.axtel.net ([187.162.31.110]:59296 helo=[192.168.15.7])
+	by gator4166.hostgator.com with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.95)
+	(envelope-from <gustavo@embeddedor.com>)
+	id 1phycM-002lrn-Qy;
+	Thu, 30 Mar 2023 15:11:31 -0500
+Message-ID: <2f207323-9daf-e9ee-153b-d790429d0adf@embeddedor.com>
+Date: Thu, 30 Mar 2023 14:11:55 -0600
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH][next] wifi: mt76: mt7921: Replace fake flex-arrays with
+ flexible-array members
+Content-Language: en-US
+To: "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-hardening@vger.kernel.org
+References: <ZBTUB/kJYQxq/6Cj@work>
+From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
+In-Reply-To: <ZBTUB/kJYQxq/6Cj@work>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - gator4166.hostgator.com
+X-AntiAbuse: Original Domain - lists.infradead.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - embeddedor.com
+X-BWhitelist: no
+X-Source-IP: 187.162.31.110
+X-Source-L: No
+X-Exim-ID: 1phycM-002lrn-Qy
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-Source-Sender: 187-162-31-110.static.axtel.net ([192.168.15.7]) [187.162.31.110]:59296
+X-Source-Auth: gustavo@embeddedor.com
+X-Email-Count: 0
+X-Org: HG=hgshared;ORG=hostgator;
+X-Source-Cap: Z3V6aWRpbmU7Z3V6aWRpbmU7Z2F0b3I0MTY2Lmhvc3RnYXRvci5jb20=
+X-Local-Domain: yes
+X-CMAE-Envelope: MS4xfEFxku84QihPld8kGG5Vz+JJArQLY9Nc/Mqm1oCEKvS9aKygJvWt6hT7q561TgYhHnMOUfIxK1qSbiubsLvVejCdSwOLqihq1a+Ofdw3ea7uXAg762Vv
+ VpScEk9Ixxt1v0hSXUO+mx5aPVziLyj5gtJ7erDDNQyKzuv2/69j8qgiH+a79A9dmQBdsy0j4Xu+Ry7UEWo8Va/STl6nInWr5TPu0P46HQn5AC35t/GYRkjG
+ nEs12ljbGTl1PVtXJExu9InuGwf2yexKSi7XbX8zzhuDXGBOwKJziBJO9kj506DW
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230330_151103_968801_9CDA80C6 
-X-CRM114-Status: UNSURE (   9.23  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230330_181715_394941_40CE61B3 
+X-CRM114-Status: GOOD (  12.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,89 +118,88 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Just a cosmetic patch to drop redundant prefix for txpower ouput text.
+Hi all,
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- .../wireless/mediatek/mt76/mt7915/debugfs.c   | 36 +++++++++----------
- 1 file changed, 18 insertions(+), 18 deletions(-)
+Friendly ping: who can take this, please? 😄
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-index 5a46813a59ea..879884ead660 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-@@ -958,10 +958,10 @@ mt7915_xmit_queues_show(struct seq_file *file, void *data)
- 
- DEFINE_SHOW_ATTRIBUTE(mt7915_xmit_queues);
- 
--#define mt7915_txpower_puts(prefix, rate)					\
-+#define mt7915_txpower_puts(rate)						\
- ({										\
--	len += scnprintf(buf + len, sz - len, "%-16s:", #prefix " (tmac)");	\
--	for (i = 0; i < mt7915_sku_group_len[rate]; i++, offs++)		\
-+	len += scnprintf(buf + len, sz - len, "%-16s:", #rate " (TMAC)");	\
-+	for (i = 0; i < mt7915_sku_group_len[SKU_##rate]; i++, offs++)		\
- 		len += scnprintf(buf + len, sz - len, " %6d", txpwr[offs]);	\
- 	len += scnprintf(buf + len, sz - len, "\n");				\
- })
-@@ -1004,41 +1004,41 @@ mt7915_rate_txpower_get(struct file *file, char __user *user_buf,
- 			 phy != &dev->phy, phy->mt76->chandef.chan->hw_value);
- 	len += scnprintf(buf + len, sz - len, "%-16s  %6s %6s %6s %6s\n",
- 			 " ", "1m", "2m", "5m", "11m");
--	mt7915_txpower_puts(CCK, SKU_CCK);
-+	mt7915_txpower_puts(CCK);
- 
- 	len += scnprintf(buf + len, sz - len,
- 			 "%-16s  %6s %6s %6s %6s %6s %6s %6s %6s\n",
- 			 " ", "6m", "9m", "12m", "18m", "24m", "36m", "48m",
- 			 "54m");
--	mt7915_txpower_puts(OFDM, SKU_OFDM);
-+	mt7915_txpower_puts(OFDM);
- 
- 	len += scnprintf(buf + len, sz - len,
- 			 "%-16s  %6s %6s %6s %6s %6s %6s %6s %6s\n",
- 			 " ", "mcs0", "mcs1", "mcs2", "mcs3", "mcs4",
- 			 "mcs5", "mcs6", "mcs7");
--	mt7915_txpower_puts(HT20, SKU_HT_BW20);
-+	mt7915_txpower_puts(HT_BW20);
- 
- 	len += scnprintf(buf + len, sz - len,
- 			 "%-16s  %6s %6s %6s %6s %6s %6s %6s %6s %6s\n",
- 			 " ", "mcs0", "mcs1", "mcs2", "mcs3", "mcs4", "mcs5",
- 			 "mcs6", "mcs7", "mcs32");
--	mt7915_txpower_puts(HT40, SKU_HT_BW40);
-+	mt7915_txpower_puts(HT_BW40);
- 
- 	len += scnprintf(buf + len, sz - len,
- 			 "%-16s  %6s %6s %6s %6s %6s %6s %6s %6s %6s %6s %6s %6s\n",
- 			 " ", "mcs0", "mcs1", "mcs2", "mcs3", "mcs4", "mcs5",
- 			 "mcs6", "mcs7", "mcs8", "mcs9", "mcs10", "mcs11");
--	mt7915_txpower_puts(VHT20, SKU_VHT_BW20);
--	mt7915_txpower_puts(VHT40, SKU_VHT_BW40);
--	mt7915_txpower_puts(VHT80, SKU_VHT_BW80);
--	mt7915_txpower_puts(VHT160, SKU_VHT_BW160);
--	mt7915_txpower_puts(HE26, SKU_HE_RU26);
--	mt7915_txpower_puts(HE52, SKU_HE_RU52);
--	mt7915_txpower_puts(HE106, SKU_HE_RU106);
--	mt7915_txpower_puts(HE242, SKU_HE_RU242);
--	mt7915_txpower_puts(HE484, SKU_HE_RU484);
--	mt7915_txpower_puts(HE996, SKU_HE_RU996);
--	mt7915_txpower_puts(HE996x2, SKU_HE_RU2x996);
-+	mt7915_txpower_puts(VHT_BW20);
-+	mt7915_txpower_puts(VHT_BW40);
-+	mt7915_txpower_puts(VHT_BW80);
-+	mt7915_txpower_puts(VHT_BW160);
-+	mt7915_txpower_puts(HE_RU26);
-+	mt7915_txpower_puts(HE_RU52);
-+	mt7915_txpower_puts(HE_RU106);
-+	mt7915_txpower_puts(HE_RU242);
-+	mt7915_txpower_puts(HE_RU484);
-+	mt7915_txpower_puts(HE_RU996);
-+	mt7915_txpower_puts(HE_RU2x996);
- 
- 	reg = is_mt7915(&dev->mt76) ? MT_WF_PHY_TPC_CTRL_STAT(band) :
- 	      MT_WF_PHY_TPC_CTRL_STAT_MT7916(band);
+Thanks
 -- 
-2.18.0
+Gustavo
 
+On 3/17/23 14:56, Gustavo A. R. Silva wrote:
+> Zero-length arrays as fake flexible arrays are deprecated and we are
+> moving towards adopting C99 flexible-array members instead.
+> 
+> Address the following warnings found with GCC-13 and
+> -fstrict-flex-arrays=3 enabled:
+> drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c:266:25: warning: array subscript 0 is outside array bounds of ‘struct mt7921_asar_dyn_limit_v2[0]’ [-Warray-bounds=]
+> drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c:263:25: warning: array subscript 0 is outside array bounds of ‘struct mt7921_asar_dyn_limit[0]’ [-Warray-bounds=]
+> drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c:223:28: warning: array subscript <unknown> is outside array bounds of ‘struct mt7921_asar_geo_limit_v2[0]’ [-Warray-bounds=]
+> drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c:220:28: warning: array subscript <unknown> is outside array bounds of ‘struct mt7921_asar_geo_limit[0]’ [-Warray-bounds=]
+> drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c:334:37: warning: array subscript i is outside array bounds of ‘u8[0]’ {aka ‘unsigned char[]’} [-Warray-bounds=]
+> 
+> Notice that the DECLARE_FLEX_ARRAY() helper allows for flexible-array
+> members in unions.
+> 
+> This helps with the ongoing efforts to tighten the FORTIFY_SOURCE
+> routines on memcpy() and help us make progress towards globally
+> enabling -fstrict-flex-arrays=3 [1].
+> 
+> Link: https://github.com/KSPP/linux/issues/21
+> Link: https://github.com/KSPP/linux/issues/272
+> Link: https://gcc.gnu.org/pipermail/gcc-patches/2022-October/602902.html [1]
+> Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
+> ---
+>   drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.h | 10 +++++-----
+>   1 file changed, 5 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.h b/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.h
+> index 35268b0890ad..6f2c4a572572 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.h
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.h
+> @@ -24,7 +24,7 @@ struct mt7921_asar_dyn {
+>   	u8 names[4];
+>   	u8 enable;
+>   	u8 nr_tbl;
+> -	struct mt7921_asar_dyn_limit tbl[0];
+> +	DECLARE_FLEX_ARRAY(struct mt7921_asar_dyn_limit, tbl);
+>   } __packed;
+>   
+>   struct mt7921_asar_dyn_limit_v2 {
+> @@ -37,7 +37,7 @@ struct mt7921_asar_dyn_v2 {
+>   	u8 enable;
+>   	u8 rsvd;
+>   	u8 nr_tbl;
+> -	struct mt7921_asar_dyn_limit_v2 tbl[0];
+> +	DECLARE_FLEX_ARRAY(struct mt7921_asar_dyn_limit_v2, tbl);
+>   } __packed;
+>   
+>   struct mt7921_asar_geo_band {
+> @@ -55,7 +55,7 @@ struct mt7921_asar_geo {
+>   	u8 names[4];
+>   	u8 version;
+>   	u8 nr_tbl;
+> -	struct mt7921_asar_geo_limit tbl[0];
+> +	DECLARE_FLEX_ARRAY(struct mt7921_asar_geo_limit, tbl);
+>   } __packed;
+>   
+>   struct mt7921_asar_geo_limit_v2 {
+> @@ -69,7 +69,7 @@ struct mt7921_asar_geo_v2 {
+>   	u8 version;
+>   	u8 rsvd;
+>   	u8 nr_tbl;
+> -	struct mt7921_asar_geo_limit_v2 tbl[0];
+> +	DECLARE_FLEX_ARRAY(struct mt7921_asar_geo_limit_v2, tbl);
+>   } __packed;
+>   
+>   struct mt7921_asar_cl {
+> @@ -85,7 +85,7 @@ struct mt7921_asar_fg {
+>   	u8 rsvd;
+>   	u8 nr_flag;
+>   	u8 rsvd1;
+> -	u8 flag[0];
+> +	u8 flag[];
+>   } __packed;
+>   
+>   struct mt7921_acpi_sar {
 
