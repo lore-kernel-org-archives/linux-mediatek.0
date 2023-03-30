@@ -4,67 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB32EC77B62
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 15:24:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3FCCC761A6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 15:28:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2ZzZTeTbACO9jNrXV7gkXRIT2/Za9jKiU5TxwHhZyjc=; b=Bm+9tB/RYZC8x4wf1mBpAcqSjD
-	B96wLeF05NIt3Lmgwn0zjGdnNwihGbzQtiClUpPjFgU1QG+U4hlUAqwxYuEG1pviCyXR9pnrsNRfS
-	+/OG7O/ZEiXEAUMkEqJYNZ46Niv7ArNvu3ev+jWNtZ/W+QxQEza0nAO5UlmgA/sw09KaoYUXqIY20
-	IPXIOv9WCjIw7dJkjaZAjSlkKfEWWwcFanLqQ78YZMadQoZfm6KFEQq3lu4C341EwH8qhwhbczVie
-	JOEz8zcgoBtPbj5XUafoyRXX5fk6/TA+cAlluBLlLwKVij6/PXWCosoYx9gMJgE0SQMUXffHN888D
-	KdGTyPeg==;
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=ugAmLJblkYMugEo7tfI+icr2H8SDN/QMTqfPS9Pdgjo=; b=MJ9CgqKJQERUDt
+	qmHYlVnge4G8X3qVeJbRZVXg1lmuPLF2w/PI6mIyQ58YbOjR2VzBJLAgO8ePZRm8OF9mzoByFDOfX
+	flllNDO1sVd0bEtjBtL9G2rPmCwFu3wJgHbpuOFCFiPVDhQwpr4IWIcbkpaFhxWiU8+sJhh4/I5KX
+	kIwWJ3pOqyLE0FQ0zCrooLxgOufhnQVIBzzClgTGmIAMaot28uqnU7m5fTyPMPVrRAuwZbr30u5R7
+	/8qQOOuC4D1chy7K/x28InDCquk7TflQ+Kmw1B7Y9fdyPPms7Wqxap9SIT/A4BayJUlVM7WTrZWeE
+	qHP6nLKDKWUSy2cBEo9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phu8D-004FAp-1q;
-	Thu, 30 Mar 2023 15:24:05 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1phuC2-004HE6-1e;
+	Thu, 30 Mar 2023 15:28:02 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phu89-004F7J-27;
-	Thu, 30 Mar 2023 15:24:04 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1phu87-0006mh-1T;
-	Thu, 30 Mar 2023 17:23:59 +0200
-Date: Thu, 30 Mar 2023 16:23:55 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: devicetree@vger.kernel.org, netdev@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux@armlinux.org.uk,
-	linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Andrew Lunn <andrew@lunn.ch>,
-	=?utf-8?B?QXLEsW7DpyDDnG5hbA==?= <arinc.unal@arinc9.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Sam Shih <Sam.Shih@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
-	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>
-Subject: [PATCH 15/15] dt-bindings: net: dsa: mediatek,mt7530: add
- mediatek,mt7988-switch
-Message-ID: <80a853f182eac24735338f3c1f505e5f580053ca.1680180959.git.daniel@makrotopia.org>
-References: <cover.1680180959.git.daniel@makrotopia.org>
+	id 1phuBy-004HA9-15;
+	Thu, 30 Mar 2023 15:27:59 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id bg16-20020a05600c3c9000b003eb34e21bdfso13683267wmb.0;
+        Thu, 30 Mar 2023 08:27:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1680190074;
+        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=ugAmLJblkYMugEo7tfI+icr2H8SDN/QMTqfPS9Pdgjo=;
+        b=A44BlkQDQ7N2zVdqRxC0isCQGdigI1SNxHICLB5Te0OaNAhTzUqOU3fXpGMpN9Mrrx
+         16wpg/ZDZzSZbMB+PZyzz5LjPXiWSRX5nKCXvRlbMxxbvP839agd1ifIDZy9TAysKPWD
+         V5kC908V8ZkcCScJZ9Br8fhwrtH22KblL7nGQwijPSIn5N1MDo4eQxXeNLJFhMjKDga/
+         5J1c3KtjAxa8fJZzsP2Go+oPHw3yIy0odwD/AtgxawbSTbTkE+X0+5ZM290469AK/QUf
+         PsvIDvanw8B+VkULGYhmkO6VkqILXrAjGiJDL/pkC96KnGgUjIn5SmqQbCIm0VVDvFaF
+         iZ8w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680190074;
+        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ugAmLJblkYMugEo7tfI+icr2H8SDN/QMTqfPS9Pdgjo=;
+        b=JkIHKiPpppbk4auKMEWtSpRz22z9lAqld0YgbN9UVXYalk1/COxZ/5VRT51Whc1zhs
+         VOqY8ffhlRX7urwkfqm3JceeiUBPh7SvGPi/toK5ELK9dU7d1D9ZAtfSJsiErU3JEUSY
+         Vpuf00b3zHQT6/1WFlyx145g562Y6N1MB9m4eEQkO2gI1v4wMghPtPgTKDRu5nJJiAwT
+         uPJyowcdf2eRn85OAuiGkyNK8RqY1GLhMUtMlWRDRODOvs8J09RnzwVgORbzdCWxYoAi
+         vy96QB5w8WLNA/ybBRtq9UlSVgc0NJaB0+z/44EgB/QqC1F7fJ0+lj8s7HuIjjByfZyo
+         xBTw==
+X-Gm-Message-State: AO0yUKW7qj+1YJU7XDOYwNoYThkTy3GmXGaIK21HczgMWsJYl9ZV4QYm
+	jPaKeFkHOA/y5yMdvnWyLxo=
+X-Google-Smtp-Source: AK7set9CzWMbpFkxw8byP8zOEJzHj/hUibEgy5nYYaciVm0s2mkNKVRPXh1b2EftFefmV84mZU6tQA==
+X-Received: by 2002:a05:600c:2110:b0:3ed:2b27:5bcc with SMTP id u16-20020a05600c211000b003ed2b275bccmr17827101wml.38.1680190074112;
+        Thu, 30 Mar 2023 08:27:54 -0700 (PDT)
+Received: from localhost ([102.36.222.112])
+        by smtp.gmail.com with ESMTPSA id i22-20020a05600c355600b003ede6540190sm6788865wmq.0.2023.03.30.08.27.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 30 Mar 2023 08:27:53 -0700 (PDT)
+Date: Thu, 30 Mar 2023 18:27:50 +0300
+From: Dan Carpenter <error27@gmail.com>
+To: oe-kbuild@lists.linux.dev, ChiaEn Wu <chiaen_wu@richtek.com>,
+	jic23@kernel.org, lars@metafoo.de, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com
+Cc: lkp@intel.com, oe-kbuild-all@lists.linux.dev, linux-iio@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, peterwu.pub@gmail.com,
+	cy_huang@richtek.com, ChiaEn Wu <chiaen_wu@richtek.com>
+Subject: Re: [PATCH] iio: adc: mt6370: Fix ibus and ibat scaling value of
+ some specific vendor ID chips
+Message-ID: <75f27c56-5e35-40dc-a320-66bf6a8ed36f@kili.mountain>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1680180959.git.daniel@makrotopia.org>
+In-Reply-To: <1679667167-16261-1-git-send-email-chiaen_wu@richtek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230330_082401_720155_C2F71C62 
-X-CRM114-Status: GOOD (  12.05  )
+X-CRM114-CacheID: sfid-20230330_082758_390350_CDBD4A92 
+X-CRM114-Status: UNSURE (   6.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,74 +94,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add documentation for the built-in switch which can be found in the
-MediaTek MT7988 SoC.
+Hi ChiaEn,
 
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
- .../bindings/net/dsa/mediatek,mt7530.yaml     | 26 +++++++++++++++++--
- 1 file changed, 24 insertions(+), 2 deletions(-)
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-index 5ae9cd8f99a24..15953f0e9d1a6 100644
---- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-@@ -11,16 +11,23 @@ maintainers:
-   - Landen Chao <Landen.Chao@mediatek.com>
-   - DENG Qingfang <dqfext@gmail.com>
-   - Sean Wang <sean.wang@mediatek.com>
-+  - Daniel Golle <daniel@makrotopia.org>
- 
- description: |
--  There are two versions of MT7530, standalone and in a multi-chip module.
-+  There are three versions of MT7530, standalone, in a multi-chip module and
-+  built-into a SoC.
- 
-   MT7530 is a part of the multi-chip module in MT7620AN, MT7620DA, MT7620DAN,
-   MT7620NN, MT7621AT, MT7621DAT, MT7621ST and MT7623AI SoCs.
- 
-+  The MT7988 SoC comes a built-in switch similar to MT7531 as well as 4 Gigabit
-+  Ethernet PHYs and the switch registers are directly mapped into SoC's memory
-+  map rather than using MDIO. It comes with an internally connected 10G CPU port
-+  and 4 user ports connected to the built-in Gigabit Ethernet PHYs.
-+
-   MT7530 in MT7620AN, MT7620DA, MT7620DAN and MT7620NN SoCs has got 10/100 PHYs
-   and the switch registers are directly mapped into SoC's memory map rather than
--  using MDIO. The DSA driver currently doesn't support this.
-+  using MDIO. The DSA driver currently doesn't support MT7620 variants.
- 
-   There is only the standalone version of MT7531.
- 
-@@ -81,6 +88,10 @@ properties:
-           Multi-chip module MT7530 in MT7621AT, MT7621DAT and MT7621ST SoCs
-         const: mediatek,mt7621
- 
-+      - description:
-+          Built-in switch of the MT7988 SoC
-+        const: mediatek,mt7988-switch
-+
-   reg:
-     maxItems: 1
- 
-@@ -268,6 +279,17 @@ allOf:
-       required:
-         - mediatek,mcm
- 
-+  - if:
-+      properties:
-+        compatible:
-+          const: mediatek,mt7988-switch
-+    then:
-+      $ref: "#/$defs/mt7530-dsa-port"
-+      properties:
-+        gpio-controller: false
-+        mediatek,mcm: false
-+        reset-names: false
-+
- unevaluatedProperties: false
- 
- examples:
+url:    https://github.com/intel-lab-lkp/linux/commits/ChiaEn-Wu/iio-adc-mt6370-Fix-ibus-and-ibat-scaling-value-of-some-specific-vendor-ID-chips/20230324-221545
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/jic23/iio.git togreg
+patch link:    https://lore.kernel.org/r/1679667167-16261-1-git-send-email-chiaen_wu%40richtek.com
+patch subject: [PATCH] iio: adc: mt6370: Fix ibus and ibat scaling value of some specific vendor ID chips
+config: m68k-randconfig-m041-20230329 (https://download.01.org/0day-ci/archive/20230330/202303302231.gNdPKrtD-lkp@intel.com/config)
+compiler: m68k-linux-gcc (GCC) 12.1.0
+
+If you fix the issue, kindly add following tag where applicable
+| Reported-by: kernel test robot <lkp@intel.com>
+| Reported-by: Dan Carpenter <error27@gmail.com>
+| Link: https://lore.kernel.org/r/202303302231.gNdPKrtD-lkp@intel.com/
+
+smatch warnings:
+drivers/iio/adc/mt6370-adc.c:306 mt6370_adc_probe() error: uninitialized symbol 'priv'.
+
+vim +/priv +306 drivers/iio/adc/mt6370-adc.c
+
+c1404d1b659fe3d ChiaEn Wu 2022-10-11  294  static int mt6370_adc_probe(struct platform_device *pdev)
+c1404d1b659fe3d ChiaEn Wu 2022-10-11  295  {
+c1404d1b659fe3d ChiaEn Wu 2022-10-11  296  	struct device *dev = &pdev->dev;
+c1404d1b659fe3d ChiaEn Wu 2022-10-11  297  	struct mt6370_adc_data *priv;
+c1404d1b659fe3d ChiaEn Wu 2022-10-11  298  	struct iio_dev *indio_dev;
+c1404d1b659fe3d ChiaEn Wu 2022-10-11  299  	struct regmap *regmap;
+c1404d1b659fe3d ChiaEn Wu 2022-10-11  300  	int ret;
+c1404d1b659fe3d ChiaEn Wu 2022-10-11  301  
+c1404d1b659fe3d ChiaEn Wu 2022-10-11  302  	regmap = dev_get_regmap(pdev->dev.parent, NULL);
+c1404d1b659fe3d ChiaEn Wu 2022-10-11  303  	if (!regmap)
+c1404d1b659fe3d ChiaEn Wu 2022-10-11  304  		return dev_err_probe(dev, -ENODEV, "Failed to get regmap\n");
+c1404d1b659fe3d ChiaEn Wu 2022-10-11  305  
+9822359d5de2dba ChiaEn Wu 2023-03-24 @306  	ret = mt6370_get_vendor_info(priv);
+
+"priv" is uninitialized.
+
+9822359d5de2dba ChiaEn Wu 2023-03-24  307  	if (ret)
+9822359d5de2dba ChiaEn Wu 2023-03-24  308  		return dev_err_probe(dev, ret, "Failed to get vid\n");
+9822359d5de2dba ChiaEn Wu 2023-03-24  309  
+c1404d1b659fe3d ChiaEn Wu 2022-10-11  310  	indio_dev = devm_iio_device_alloc(dev, sizeof(*priv));
+c1404d1b659fe3d ChiaEn Wu 2022-10-11  311  	if (!indio_dev)
+c1404d1b659fe3d ChiaEn Wu 2022-10-11  312  		return -ENOMEM;
+c1404d1b659fe3d ChiaEn Wu 2022-10-11  313  
+c1404d1b659fe3d ChiaEn Wu 2022-10-11  314  	priv = iio_priv(indio_dev);
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+c1404d1b659fe3d ChiaEn Wu 2022-10-11  315  	priv->dev = dev;
+c1404d1b659fe3d ChiaEn Wu 2022-10-11  316  	priv->regmap = regmap;
+c1404d1b659fe3d ChiaEn Wu 2022-10-11  317  	mutex_init(&priv->adc_lock);
+
 -- 
-2.39.2
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
 
 
