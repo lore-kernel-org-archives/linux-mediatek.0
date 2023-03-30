@@ -4,87 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B309CC74A5B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 03:50:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C352C74A5B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 03:54:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7wIVvQtQ08+FVB3HGLgmbrB6tpQAlVSF3Q+hrEVxEwI=; b=t2e8ujvZFKxdoRI3I63/veIAky
-	lAi2SYnqf6y95hAS9CzYsPdBhFZGKnk7PdOoMnwca57Cxv4ie6fPkSM3ljO91PCkTWhAJtnU4698o
-	qid7eYituW5Pl/jGXIxeygugcmFTNwpLfVBsBajFMPjtpRbk6TG/npSbvlAv6cbFD7doa5F6YS+MP
-	ei1Ywff/Q62B6gQx+iIAvjA/3MuZkDPudWkN6gPJZjDI3L5EgTtJg70aNU9KJCljuQqRzaUoWJDcZ
-	xwlEKHAu11k/A8izRjGCRXPbb2mGfVk653RE+e00F0O+zeGqhVGYpuqF8sJPY2QKCWQZpm/xmUqnW
-	ZhclZyTA==;
+	bh=rif9SVht3Xq5rHKwiENZowsz+awWs141IU0VAwjN1vg=; b=4SZ0PSuzpPAtwVm1Cu1s50KYpB
+	5eJU4CuUKyqMoGps3a+kVJk+VEdKbURxZKRYpylK4z4fepYkSppmJlvB7hIixSlrtCQmVtduqy3uK
+	sJFzb1ZtGzz+QulfVNidSMkOeK2p6TB5Ht5fDaISM85zeP6/QwTyb+Z7PwP1nrrHLRXsqhqpndmJN
+	sprpj2tqO4ajj3wMePJd5HkOYwGz9bDNIGgwaA08iJI817ydNnFM4Y4t3E2CFV2RB9w3rRWi1sOcD
+	RKfg7NR6iu9rQ6uNXrlNr3uMo25o9m/5OMWd/yK5boiIL5pCmYq4dqZj6P5J9LNPfiNDGEk6SXlgU
+	M3ZtakAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phjIz-002SX4-0m;
-	Thu, 30 Mar 2023 03:50:29 +0000
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+	id 1phjN0-002SyI-2X;
+	Thu, 30 Mar 2023 03:54:38 +0000
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phjIv-002SVH-0i
+	id 1phjMx-002Sx3-35
 	for linux-mediatek@lists.infradead.org;
-	Thu, 30 Mar 2023 03:50:26 +0000
-Received: by mail-pl1-x631.google.com with SMTP id o2so16906929plg.4
-        for <linux-mediatek@lists.infradead.org>; Wed, 29 Mar 2023 20:50:24 -0700 (PDT)
+	Thu, 30 Mar 2023 03:54:37 +0000
+Received: by mail-pj1-x1035.google.com with SMTP id c4so55248pjs.4
+        for <linux-mediatek@lists.infradead.org>; Wed, 29 Mar 2023 20:54:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1680148223;
+        d=linaro.org; s=google; t=1680148473;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=7wIVvQtQ08+FVB3HGLgmbrB6tpQAlVSF3Q+hrEVxEwI=;
-        b=YMrzUH7rMqsk2Up5hh+tIWNrKWgJ09TihZq20qz7HzyjHnxggL3oUgZwjXqHSWH0QN
-         tYfwNhVOf1ZS+iuj6L5kZmIggV94/BjBmC6/9IIzwMNA5fd4AEWMmIERa/DwuUFFGM6+
-         Z1soQolxg+mo7ssaruZd6bEp+dgS5CPO8ljj8YTG/hwOm2EIA3OpCTmoS4iyHWJnlZeq
-         W61nWDQ73daylvIQtvtxWqSFJDHSBj8+ht2yUgjQyazRvbIh3YnAEIlrGpRrq/bbL8WU
-         2JCHuotqwHb9LM787UoVI46joOAKNUoMZaWkW6LHeg6SHhAyU+EaPgXrzrUwfZBPTwu+
-         SeEA==
+        bh=rif9SVht3Xq5rHKwiENZowsz+awWs141IU0VAwjN1vg=;
+        b=fV9FgxnApIXbe1N5pM4jjR9lUZGUI9IHgwkMnRZ43spPTOEuCOBgE6jom5YYd5NaSw
+         hO3BaFodAmNdmeJnu/2X1bnm5xCDXutVF46Q4qkwiWvp0QD7VT2G+FS8VK6si5hM24E1
+         cmhd1+iI264Fr/t7n/mmHq+QUCu9AJBXrHRE5NMw2hhSYMEgz0n/xxhnwIpLUx49DXMe
+         3cXje5lTdqWVmeRk8+mxVWjAALckaFIQEvLAfdbfPdG7pkmLiTnNEoZXurcL3Sjcbenu
+         TxKvKkOO0B7xmXzmAWEmob+khrROpJZhtq4GhLIFBe54WEv6nH0q1+rtBdjUdUgdh/Qs
+         KpwA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680148223;
+        d=1e100.net; s=20210112; t=1680148473;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=7wIVvQtQ08+FVB3HGLgmbrB6tpQAlVSF3Q+hrEVxEwI=;
-        b=o0o/TINkBwkCq4X1Q1lZgjoK/NaOf5SbmuFuh/mb34iOn20KeWaLXMTg5Ny2IYjZXY
-         DTQGneSqiD9sIEkrLXklJU5mqe46MJtjsYUwHpYZ6Rw3pBkbbj1eyEd+HtI765aY6pqe
-         ReYyK8t+l9fKOymnEaRoHAwipZfYFJVpizPhMAqDShkfV7yjxWZPy3m0DulYRqHAI5Nw
-         5IlQTFkS2+eAghZO2rzFga78SLIejs5SGHhvlN3G/WGaPpVJq10m3tB7WnukSb7cDOFo
-         ickUI/ZaFqoLj9tK0SStSQECwQXbSZCcOOKboDrLNnj/Eq4NcdHC2RMT4p0gn8Od0UA/
-         MkkA==
-X-Gm-Message-State: AAQBX9df2t85aI+ZxLMaYGxfikup8RdFBEmOvikl2tcmRwot2lrmKI8C
-	pyngRaySoAVWtcnllLsf9UJ1Og==
-X-Google-Smtp-Source: AKy350aTCyMrKSx/cz5S2VoYDvkCUgu5K7A2N8Pm0iKJMr2eouVILR1PVbIXGBRLTJ279qHhz8eGQw==
-X-Received: by 2002:a17:90a:31c:b0:233:f394:d83 with SMTP id 28-20020a17090a031c00b00233f3940d83mr21464512pje.48.1680148223614;
-        Wed, 29 Mar 2023 20:50:23 -0700 (PDT)
+        bh=rif9SVht3Xq5rHKwiENZowsz+awWs141IU0VAwjN1vg=;
+        b=yzsS+Ob2vBG8OgPQDAYdlXvUUPvt+QUAD08WKkPBQzWFFvJXMuWL1deEXCzB8VmT52
+         FzTrSyadOaJY/NDSvvaFOV4OPY338xp6hGGyjg6LQbE4rokJgH6p+LZzihyKU7HhH1uP
+         W4WiZqgCNRIFSvSCiGnfdOhDoFSf26x4pGcXS8T4WGCm7S1/S4JTf0Kt4pWJOYwvm3K8
+         93MWpJbQ/tCkdt3BptCaewHckcOrGF/LeneWAO1PUhJdzd8gQFmlby2oCgrJHDDClvh1
+         b4TWcf4L97fQctotT62+CHi/EPoLhl+S8RrwrRc6RagyTT/K9UAQNJJqxLJiT99BdS4a
+         YGxA==
+X-Gm-Message-State: AO0yUKXdjepNEKkLWy5ileK5ezBGhIU//hf1Jv3NzYu+gix0nZnM+8E4
+	WcCwG5bS4frRU86J8JMMErv77g==
+X-Google-Smtp-Source: AK7set+6CKB9aX3Y+69CYgYb8mvQ9d90t+LT0/3dtpbyQgu7Ff5u0kg7CAes3wOVIzKhF5KBg4AuvA==
+X-Received: by 2002:a05:6a20:c119:b0:d4:77a6:156f with SMTP id bh25-20020a056a20c11900b000d477a6156fmr18152236pzb.53.1680148472791;
+        Wed, 29 Mar 2023 20:54:32 -0700 (PDT)
 Received: from localhost ([122.172.85.168])
-        by smtp.gmail.com with ESMTPSA id cu12-20020a17090afa8c00b0023086d280c5sm2191677pjb.3.2023.03.29.20.50.22
+        by smtp.gmail.com with ESMTPSA id a24-20020a62e218000000b00627f2f23624sm20068315pfi.159.2023.03.29.20.54.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 29 Mar 2023 20:50:23 -0700 (PDT)
-Date: Thu, 30 Mar 2023 09:20:20 +0530
+        Wed, 29 Mar 2023 20:54:32 -0700 (PDT)
+Date: Thu, 30 Mar 2023 09:24:30 +0530
 From: Viresh Kumar <viresh.kumar@linaro.org>
-To: "jia-wei.chang" <jia-wei.chang@mediatek.com>
-Cc: "Rafael J . Wysocki" <rafael@kernel.org>,
+To: Rob Herring <robh@kernel.org>
+Cc: "David S. Miller" <davem@davemloft.net>,
+	Rob Herring <robh+dt@kernel.org>,
+	Frank Rowand <frowand.list@gmail.com>,
+	Russell King <linux@armlinux.org.uk>, Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Albert Ou <aou@eecs.berkeley.edu>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@linaro.org>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Amit Daniel Kachhap <amit.kachhap@gmail.com>,
+	Lukasz Luba <lukasz.luba@arm.com>, Amit Kucheria <amitk@kernel.org>,
+	Zhang Rui <rui.zhang@intel.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Rex-BC Chen <rex-bc.chen@mediatek.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	hsinyi@google.com, Nick Hainke <vincent@systemli.org>,
-	Dan Carpenter <error27@gmail.com>
-Subject: Re: [PATCH v2 0/4] Enhance mediatek-cpufreq robustness
-Message-ID: <20230330035020.3dctfdlnnk2cvxzr@vireshk-i7>
-References: <20230324101130.14053-1-jia-wei.chang@mediatek.com>
+	Michael Ellerman <mpe@ellerman.id.au>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Christophe Leroy <christophe.leroy@csgroup.eu>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Yangtao Li <tiny.windzz@gmail.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Sudeep Holla <sudeep.holla@arm.com>, Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Anup Patel <anup@brainfault.org>,
+	Huacai Chen <chenhuacai@kernel.org>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	Marc Zyngier <maz@kernel.org>, Viresh Kumar <vireshk@kernel.org>,
+	Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>,
+	sparclinux@vger.kernel.org, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-sunxi@lists.linux.dev, linux-riscv@lists.infradead.org,
+	linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linuxppc-dev@lists.ozlabs.org, linux-tegra@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org, linux-mips@vger.kernel.org
+Subject: Re: [PATCH 14/19] cpufreq: Adjust includes to remove of_device.h
+Message-ID: <20230330035430.z6x3escbvr7nlya5@vireshk-i7>
+References: <20230329-dt-cpu-header-cleanups-v1-0-581e2605fe47@kernel.org>
+ <20230329-dt-cpu-header-cleanups-v1-14-581e2605fe47@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230324101130.14053-1-jia-wei.chang@mediatek.com>
+In-Reply-To: <20230329-dt-cpu-header-cleanups-v1-14-581e2605fe47@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230329_205025_278869_E4F61CE8 
-X-CRM114-Status: UNSURE (   9.70  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230329_205436_032195_5CE81550 
+X-CRM114-Status: GOOD (  14.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,22 +128,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 24-03-23, 18:11, jia-wei.chang wrote:
-> From: "Jia-Wei Chang" <jia-wei.chang@mediatek.com>
+On 29-03-23, 10:52, Rob Herring wrote:
+> Now that of_cpu_device_node_get() is defined in of.h, of_device.h is just
+> implicitly including other includes, and is no longer needed. Adjust the
+> include files with what was implicitly included by of_device.h (cpu.h and
+> of.h) and drop including of_device.h.
 > 
-> MediaTek cpufreq driver has some reported problems required to be fixed.
-> 
-> Change since v1:
-> - Fix error handling in patch [2/3] in a way of "Free the Last Thing
->   Style". Refine its commit message tag.
-> - Remove the change for MT7622/7623 platform data in the patch [3/3].
-> - Add the patch for MT7622/7623 platform data [1] in this series.
-> [1]: Message ID: 20221202095227.167492-1-angelogioacchino.delregno@collabora.com/
-> 
-> Tested on:
-> MT8186 Platform (kernel v5.15)
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+> Please ack and I will take the series via the DT tree.
+> ---
+>  drivers/cpufreq/cpufreq-dt-platdev.c | 1 -
+>  drivers/cpufreq/kirkwood-cpufreq.c   | 2 +-
+>  drivers/cpufreq/maple-cpufreq.c      | 2 +-
+>  drivers/cpufreq/pmac32-cpufreq.c     | 2 +-
+>  drivers/cpufreq/pmac64-cpufreq.c     | 2 +-
+>  drivers/cpufreq/qcom-cpufreq-hw.c    | 4 ++--
+>  drivers/cpufreq/spear-cpufreq.c      | 2 +-
+>  drivers/cpufreq/tegra124-cpufreq.c   | 1 -
+>  drivers/cpufreq/tegra20-cpufreq.c    | 2 +-
+>  include/linux/cpufreq.h              | 1 -
+>  10 files changed, 8 insertions(+), 11 deletions(-)
 
-Applied. Thanks.
+Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
 
 -- 
 viresh
