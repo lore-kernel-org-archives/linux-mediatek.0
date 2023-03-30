@@ -4,88 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BA7BC6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 09:54:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4884C6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 10:34:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Pbyws3H75gB+yatcu0+FBMyILwRxUxSpq4AefwZkLKg=; b=QwFoIW9+cQN3CicvXFu6q25PYM
-	33YwAqR3jCZWZSqZWDsPmqvVO6bEqWFc0+ZIX+20WFLe1YAIVG1O0nUYdAS4TuN6iXCjohBGfyQYI
-	xJYbXFtPbchmdo9O7/71pXcDx43a42xq2O9GBF5PX+mSg7gwvTwHCV3Mn3u2R0Mz2pgc/EjluTTr2
-	Nat0rU0advY//22nQ22WxSF5/Os0dGbkSHCVzfeKud+R/SnvyOEKNucXx0caJkXsJhHyk8rzQ6DA4
-	Ww5qXDOAN7vwoXq2FHoCNSaj7VqQ/gRP+dsBjUqEHFAfYubZ6quFLSLt2C+IfJXQzJeOWpaW4Eoik
-	2dsjd9qA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZYKnv/cm3OHLOIgIhE5IFukRanSlMRutnIxRUco4BuA=; b=RHpNjTiRhFdWhwSJDY5XmYu+9q
+	ws6/g9up3auO9cRkVGr9Zf7KZGv5R4Bv2owjgUqvXqWmQZZlYKYazSJY78wXXMgwjnfcvAEHn2mr6
+	+e2dUVvaHtqmfXLviHEcfJPML/MvKA4TR7SwN/GJwl9zN6qaah1E8bJNDFLoGlypjsyyriPS0h2tG
+	/Pg62KvIuoBaUKdN5lTWEh3uDCbN1K582So+gTHFr027jiY/i9o4wge9Bb344b9NwUEa5nijHpsWA
+	5GKg+vSVLxWN14DIbH7YZTEMmJxe8nztggHYeYzkklro/LPol3VpthCYyABP2aR4+djdSw+iTH33h
+	O5RA3Lbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phozW-003MUg-2U;
-	Thu, 30 Mar 2023 09:54:46 +0000
-Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34])
+	id 1phpbj-003TrO-1m;
+	Thu, 30 Mar 2023 10:34:15 +0000
+Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phozR-003MTK-2q
-	for linux-mediatek@lists.infradead.org;
-	Thu, 30 Mar 2023 09:54:44 +0000
-Received: by mail-yb1-xb34.google.com with SMTP id b18so22741185ybp.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 30 Mar 2023 02:54:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1680170079;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Pbyws3H75gB+yatcu0+FBMyILwRxUxSpq4AefwZkLKg=;
-        b=mZsCUYHtWVu0vKKEGZmsGvkF+uy4o1aUwHzHWz89XldmLe8AQt/HxwPKXCnk93KRbH
-         V8UAN9+MMCbN5JvfzvF+7noo3B3ZC1SlListXXAlyAe/Si2dth9gBK0ZYJ1pNZjq9WpB
-         iNKgAFfirtS5iYb0r3mNi+HVpohWdyNPRun52UqeTAcSf+8ut/tE0fXdPt8xlgEB0Xiy
-         Rj4pHSlWP9szJ+wDfC+QfLt2W4ckBGmT2H86xnDFs4tatnn3zZjeDGcEbbnYNyzNRnHm
-         anAKm5idqzYX1EilwXDVQL2PFUkUsY4u2ooCexDw3QuTQhI2n1gfk4TR7i0W9tXx8lZp
-         mHGw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680170079;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Pbyws3H75gB+yatcu0+FBMyILwRxUxSpq4AefwZkLKg=;
-        b=r4/jp62Yu69x3OvfvSMK5Y3iJHtmJZNvMPH5KP4t1Eeun7OMWcocAgMWbKomxwee8f
-         JigZd67bFMBl9LZy002BQe+QQXM6bScCX/XU+t51D640AD1Ogcg3uSI0AJhQC2RrcrQO
-         TfxKiNY5/0RE2iWwG6QXxPPhqYavC13NjZCcxQYxVfw0gHiEYGCd6A1Tq4VGOrIl0H3D
-         ikBUk1Bpwms/Y9IHR5Xs+MwzuMOH/vPQAOxHHbajAAeptYOz6+JIQyy7lAJN2NtB3PS0
-         +vucPEnl4BaEoRGn5+3FFH3a/dwk9vEymNRQpz3+l2p53wR4H2RheF6xtS2t28ZHY4kU
-         77Tg==
-X-Gm-Message-State: AAQBX9cTL0R/AvgvOkn8PJQND4OXZRddn8BXoX9Ycmdr30QhavslXKH/
-	OJQsEYDRR6mApEuszJkiJSXWoTQZmJS3rjXamtAASw==
-X-Google-Smtp-Source: AKy350bEejlHh/La/ICbG+v0y62RclEvzaIlO/L71B6Mcr7xujU2ePyASX64lF1cgA+JnYGg8IIpcjjXYY2L1pzN96g=
-X-Received: by 2002:a05:6902:1501:b0:b6d:80ab:8bb6 with SMTP id
- q1-20020a056902150100b00b6d80ab8bb6mr15155725ybu.1.1680170079704; Thu, 30 Mar
- 2023 02:54:39 -0700 (PDT)
+	id 1phpbf-003TUy-0Y;
+	Thu, 30 Mar 2023 10:34:12 +0000
+Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 550331883A12;
+	Thu, 30 Mar 2023 10:31:57 +0000 (UTC)
+Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
+	by mailout.gigahost.dk (Postfix) with ESMTP id 3F89F2500389;
+	Thu, 30 Mar 2023 10:31:57 +0000 (UTC)
+Received: by smtp.gigahost.dk (Postfix, from userid 1000)
+	id 342579B403F6; Thu, 30 Mar 2023 10:31:57 +0000 (UTC)
+X-Screener-Id: e32ae469fa6e394734d05373d3a705875723cf1e
+Received: from fujitsu (2-104-116-184-cable.dk.customer.tdc.net [2.104.116.184])
+	by smtp.gigahost.dk (Postfix) with ESMTPSA id 821C49B403E4;
+	Thu, 30 Mar 2023 10:31:56 +0000 (UTC)
+From: Hans Schultz <netdev@kapio-technology.com>
+To: Ido Schimmel <idosch@nvidia.com>
+Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
+ Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Vladimir
+ Oltean <olteanv@gmail.com>, Eric Dumazet <edumazet@google.com>, Paolo
+ Abeni <pabeni@redhat.com>, Kurt Kanzenbach <kurt@linutronix.de>, Hauke
+ Mehrtens <hauke@hauke-m.de>, Woojung Huh <woojung.huh@microchip.com>,
+ "maintainer:MICROCHIP KSZ SERIES ETHERNET SWITCH DRIVER"
+ <UNGLinuxDriver@microchip.com>, Sean Wang <sean.wang@mediatek.com>, Landen
+ Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Claudiu Manoil
+ <claudiu.manoil@nxp.com>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, =?utf-8?Q?Cl=C3=A9ment_L=C3=A9ger?=
+ <clement.leger@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
+ <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
+ <razor@blackwall.org>, Shuah Khan <shuah@kernel.org>, Christian Marangi
+ <ansuelsmth@gmail.com>, open list <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>, "open list:RENESAS RZ/N1
+ A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>, "moderated
+ list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>, "open
+ list:KERNEL SELFTEST FRAMEWORK" <linux-kselftest@vger.kernel.org>
+Subject: Re: [PATCH v2 net-next 6/6] selftests: forwarding: add dynamic FDB
+ test
+In-Reply-To: <ZCUuMosWbyq1pK8R@shredder>
+References: <20230318141010.513424-1-netdev@kapio-technology.com>
+ <20230318141010.513424-7-netdev@kapio-technology.com>
+ <ZBgdAo8mxwnl+pEE@shredder> <87a5zzh65p.fsf@kapio-technology.com>
+ <ZCMYbRqd+qZaiHfu@shredder> <87fs9ollmn.fsf@kapio-technology.com>
+ <ZCUuMosWbyq1pK8R@shredder>
+Date: Thu, 30 Mar 2023 12:29:18 +0200
+Message-ID: <87mt3u7csh.fsf@kapio-technology.com>
 MIME-Version: 1.0
-References: <20230203-evk-board-support-v3-0-0003e80e0095@baylibre.com> <7h8rffyu9x.fsf@baylibre.com>
-In-Reply-To: <7h8rffyu9x.fsf@baylibre.com>
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Thu, 30 Mar 2023 11:54:27 +0200
-Message-ID: <CAFGrd9p7oPvhZ8KL40XYfNi2CAdEd8BZWrXPqfcqu7DTSSg4Kw@mail.gmail.com>
-Subject: Re: [PATCH v3 00/17] Improve the MT8365 SoC and EVK board support
-To: Kevin Hilman <khilman@baylibre.com>
-Cc: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, 
-	Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Chaotian Jing <chaotian.jing@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>, 
-	Wenbin Mei <wenbin.mei@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, 
-	Zhiyong Tao <zhiyong.tao@mediatek.com>, =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>, 
-	linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-mmc@vger.kernel.org, 
-	linux-gpio@vger.kernel.org, Alexandre Bailon <abailon@baylibre.com>, 
-	Fabien Parent <fparent@baylibre.com>, Amjad Ouled-Ameur <aouledameur@baylibre.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230330_025442_159218_BCC16CB7 
-X-CRM114-Status: GOOD (  16.67  )
+X-CRM114-CacheID: sfid-20230330_033411_379763_3C9AB8C6 
+X-CRM114-Status: GOOD (  22.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,40 +91,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le jeu. 30 mars 2023 =C3=A0 02:09, Kevin Hilman <khilman@baylibre.com> a =
-=C3=A9crit :
+On Thu, Mar 30, 2023 at 09:37, Ido Schimmel <idosch@nvidia.com> wrote:
+> On Tue, Mar 28, 2023 at 09:30:08PM +0200, Hans Schultz wrote:
+>> 
+>> Sorry, but I have sent you several emails telling you about the problems
+>> I have with running the selftests due to changes in the phy etc. Maybe
+>> you have just not received all those emails?
+>> 
+>> Have you checked spamfilters?
+>> 
+>> With the kernels now, I cannot even test with the software bridge and
+>> selftests as the compile fails - probably due to changes in uapi headers
+>> compared to what the packages my system uses expects.
 >
-> Alexandre Mergnat <amergnat@baylibre.com> writes:
+> My spam filters are fine. I saw your emails where you basically said
+> that you are too lazy to setup a VM to test your patches and that your
+> time is more valuable than mine, which is why I should be testing them.
+> Stop making your problems our problems. It's hardly the first time. If
+> you are unable to test your patches, then invest the time in fixing your
+> setup instead of submitting completely broken patches and making it our
+> problem to test and fix them. I refuse to invest time in reviewing /
+> testing / reworking your submissions as long as you insist on doing less
+> than the bare minimum.
 >
-> > This commits are based on the Fabien Parent <fparent@baylibre.com> work=
-.
-> >
-> > The purpose of this series is to add the following HWs / IPs support fo=
-r
-> > the mt8365-evk board:
-> > - Watchdog
-> > - Power Management Integrated Circuit "PMIC" wrapper
-> >   - MT6357 PMIC
-> > - MultiMediaCard "MMC" & Secure Digital "SD" controller
-> > - USB controller
-> > - Ethernet MAC controller
-> >
-> > Add CPU Freq & IDLE support for this board.
-> >
-> > This series depends to another one which add support for MT8365 SoC and
-> > EVK board [1].
->
-> It seems to depend on more than that series.  In order to test this, I
-> tried applying this series on top of Bero's minimal support (now in
-> linux-next), and it does not apply cleanly.
->
-> Could you please list all the dependencies that are not yet upstream.
+> Good luck
 
-Hi Kevin,
-You're right, it also depend to
-https://lore.kernel.org/all/20221122-mt8365-i2c-support-v6-0-e1009c8afd53@b=
-aylibre.com/
+I never said or indicated that my time is more valuable than yours. I
+have a VM to run these things that some have spent countless hours to
+develop with the right tools etc installed and set up. Fixing that
+system will take quite many hours for me, so I am asking for some simple
+assistance from someone who already has a system running supporting the
+newest kernel.
 
-Regards,
-Alex
+Alternatively if there is an open sourced system available that would be
+great.
+
+As this patch-set is for the community and some companies that would
+like to use it and not for myself, I am asking for some help from the
+community with a task that when someone has the system in place should
+not take more than 15-20 minutes, maybe even less.
 
