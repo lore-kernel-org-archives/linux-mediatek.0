@@ -4,75 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A739C761A6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 17:20:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25C5CC6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 17:22:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pLS5bdQOQb5HnWHfDHbDpW+ENKv/YseqZteHlVYBypQ=; b=jjkC54n0nuopYtMZccr1ypeXs/
-	y1w8mXd/voy4OrkIBWMp9gNfXiUB5qeozdL2FuQ5g2Tbg8YsJsUS9TXoDlYAtfkzG7D/bOHeIdpAQ
-	YQb7L2s1R9FH6nyVTMGvuVYGtvq2kt8Qa6EIAQ7DQCQXaEGOt7v5t+U7zZMc3sBRVtU8ritx0j8OJ
-	sunc7Cfw0/vqf2i4WuUT4g82qQz8DY7/7ZsphLmZwU4YB88QTbLIbfSGkxhP/Gi5XzzpDVNMm37K7
-	NovpKsR514zGWT+3QkujgrMafWRDciH2oCO3mfraHetQ5SjpUno5aGIkVuAbAOK6IT5CVZBuUXnsw
-	MpAeH87A==;
+	bh=Ub/AQVZfAChA/d+KSB5lldfEy26j6LKXVDj7xODNFoM=; b=b/ZNSmf4acojL6ZsH7XKPH2aYp
+	m5vNxzsc4xOpLuA+k63OY+87RxC+ELtExWj4KinDDuVtXrFoGK4RaAHb8GllZEPMhKLNNHaa2fIlZ
+	szn8PQRFDbInH0VySPV7RlIY2eMeqCPjYCZMEEbgAI3rhzOhDSjcGIyzNkhQWR9JinfAo/vZw3R8b
+	ZYAZkHJps1ACHZkscZBhn+WOm12o7HQvpz+Jd+zPOhu2GyGCVn1YK1oFZsFjAha06q1RC08aRmh7g
+	v3CmFL0OOKY0oAa85eKhKhpy+7OwJGSH54UszVieM7e+uz0LojyisHG07Kze5fm5+ffFTLOj0vMKy
+	hh4/1VlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phvx8-004c6x-0r;
-	Thu, 30 Mar 2023 17:20:46 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1phvyZ-004cQN-24;
+	Thu, 30 Mar 2023 17:22:15 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phvx3-004c54-35;
-	Thu, 30 Mar 2023 17:20:43 +0000
-Received: by mail-wm1-x334.google.com with SMTP id m6-20020a05600c3b0600b003ee6e324b19so12294362wms.1;
-        Thu, 30 Mar 2023 10:20:41 -0700 (PDT)
+	id 1phvyW-004cOu-1Y;
+	Thu, 30 Mar 2023 17:22:13 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id t17-20020a05600c451100b003edc906aeeaso3544374wmo.1;
+        Thu, 30 Mar 2023 10:22:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1680196840;
+        d=gmail.com; s=20210112; t=1680196929;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=pLS5bdQOQb5HnWHfDHbDpW+ENKv/YseqZteHlVYBypQ=;
-        b=AZBi+ryfecgYJD+FtgtywoyUuQVbsUoV3IEc1c55WE7gvbK1Xz3M1p+nm8Jwlc2f53
-         IkKQDLt7oPDlHQw04DhKMvSzBYq0Z1qY7kvh0TVeIGLblF7D47AU33ttiPcb606pvB+A
-         L7YnI0ajjTlfR1hg8vj7oB+aaBrfWmqPfnzoJWCcvGU1gzPG85aLOPptNk5fWj4wNdtT
-         zUaMf01FHLR7lE7rvJc2NEX0U02eEpEvYn8M/cIBvI9g3RzTQR7WbE8oU7dkXGDv3EIq
-         N0g5T3chPIyPeoczkoK7hVlCPTNoBMmLAYTWGD+pvFs+8EHn0YFKlati60AOu06wjXra
-         w9/w==
+        bh=Ub/AQVZfAChA/d+KSB5lldfEy26j6LKXVDj7xODNFoM=;
+        b=KLiv+Q7hqzdXpK0fgRBj67KNAUOqJoWJnE1LMeZ8IfLHVgdlV6kLwIuXuxWSDpUWse
+         hMHaXiRocH3o8cU6G6DRwHksPLdzpPhjypTQtwojIQ7pwuCp75wpopMCg106el5i2qp0
+         bkelgS1rvpqBd7PuNgpPc7o8M1Fl8jy4czasiaq1CLsC0oRxgc194CrnXs3miihYZmaR
+         2/7BpBIwHW99VjxF6goFddcsgKc75BjsVAOwYFyGxVE5a3Aj0ytTDFebONzL/Z/FWUb8
+         tFQ0Z92vNGSFNvQMT8Ny/BsLElNOtA85GrZ4XV3rqfA68BUKRmXmVlMK5LTLPVhC7axL
+         ysHA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680196840;
+        d=1e100.net; s=20210112; t=1680196929;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=pLS5bdQOQb5HnWHfDHbDpW+ENKv/YseqZteHlVYBypQ=;
-        b=Brwg48L+Id2Gqhtk0RVDQp8bhHmYQBkhuLZ1knPRXOUSxsQ7p2lVyyW+4HVTOXFOJd
-         u5yi6BzZIskw+XplEu1uiYwPQ5b/kVjTMgS0wq/PVpU2tNBy5S8aA2bbQ4h0Hzrepi2o
-         np5eFkwJKrybVCzShV50LEQvDNDI9da2UXRHg+SWXEsV2X0PUpqwceseTf42Bc1tyd0e
-         ZBzPCcqyGs8nWki0zuln+HQlr2/khmNmsvCDE7McFusdCUlw0Rme1LLwnNhVTXsjjaja
-         Cq9fYLbx3LuIqx1wcQN1EvjMsy3LUTxjKVW6hzaqq+/TNxXIUU2lylCQBH5DKliTvv3e
-         YRaA==
-X-Gm-Message-State: AO0yUKXPs+GvsIMjmWT97OVsJmw+cZVCCRciK5a14sWZIxEiqQy1ejkR
-	oREtC4AWvpKphIfBJiC8qYo=
-X-Google-Smtp-Source: AK7set+YwD5gWoY1BrGbOORNpDOIrzSXxF3uUn/NGsz2zN8/nEXjjGcxWc+D6uKyOcosJZ/zcAsPaw==
-X-Received: by 2002:a1c:ed0e:0:b0:3dc:55d9:ec8 with SMTP id l14-20020a1ced0e000000b003dc55d90ec8mr17291285wmh.41.1680196840183;
-        Thu, 30 Mar 2023 10:20:40 -0700 (PDT)
+        bh=Ub/AQVZfAChA/d+KSB5lldfEy26j6LKXVDj7xODNFoM=;
+        b=svieBQpzBA9Gy+5nsfO/mTc9t/YCXWEwJyL51oH/m2Q2dVTouBQMfCk8MW6t9IP8Mw
+         oOahDfCg3HFdIcc6dLHrRX3B1PQKD8BRozbyEMbOyUtj+kpAWcX8WaaXcA90Xc2fLBNO
+         PT65RLuW71O5qeOq8vCVwQ9KBfKg1xkTTPcm1A93pWupM6tBleGQcwQKKceaSvG0m5B5
+         Nkjyz6On9XU1y6z/RZ9yG9s+vxDhWdUg/8KN7bmWV9gGaQ9VFvJlk/liY5QmppdXuHlY
+         Rved8cqD0BSR/FfjwES73bi8vKTnImkity8hVeEfMfPj0l7xZq7pn8zzO+vfbAJdpTZg
+         zNiw==
+X-Gm-Message-State: AO0yUKUmdSxqZ0goA97/FfgirZrGiLAOaVthfHgXWZmJbdhrhHqBC05T
+	MnkzTNwEetD5IRhScJvz5jo=
+X-Google-Smtp-Source: AK7set+Z7z1kVsT/1a8sP5GsrmavnXRm3sG7+NJ+W+MACV28utX/L4C5aZ+aBDDLru+8Dt00emmWtA==
+X-Received: by 2002:a7b:c381:0:b0:3ed:4627:ed09 with SMTP id s1-20020a7bc381000000b003ed4627ed09mr18130818wmj.28.1680196929078;
+        Thu, 30 Mar 2023 10:22:09 -0700 (PDT)
 Received: from [192.168.1.135] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id o6-20020a05600c378600b003ed246c1d28sm6363722wmr.44.2023.03.30.10.20.38
+        by smtp.gmail.com with ESMTPSA id p6-20020a05600c358600b003ef6708bc1esm7079233wmq.43.2023.03.30.10.22.06
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 30 Mar 2023 10:20:39 -0700 (PDT)
-Message-ID: <dcacbef3-43e2-090f-1493-be40b1e9cd22@gmail.com>
-Date: Thu, 30 Mar 2023 19:20:37 +0200
+        Thu, 30 Mar 2023 10:22:07 -0700 (PDT)
+Message-ID: <5291a565-acdd-a4aa-9f33-ec6f254a0ab1@gmail.com>
+Date: Thu, 30 Mar 2023 19:22:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.1
-Subject: Re: [PATCH v3 03/17] arm64: dts: mediatek: Increase the size BL31
- reserved memory
+Subject: Re: [PATCH v3 05/17] arm64: dts: mediatek: add mt6357 device-tree
 Content-Language: en-US
-To: amergnat@baylibre.com, Wim Van Sebroeck <wim@linux-watchdog.org>,
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ amergnat@baylibre.com, Wim Van Sebroeck <wim@linux-watchdog.org>,
  Guenter Roeck <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  Chaotian Jing <chaotian.jing@mediatek.com>,
  Ulf Hansson <ulf.hansson@linaro.org>, Wenbin Mei <wenbin.mei@mediatek.com>,
  Linus Walleij <linus.walleij@linaro.org>,
@@ -85,14 +84,15 @@ Cc: linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
  Fabien Parent <fparent@baylibre.com>,
  Amjad Ouled-Ameur <aouledameur@baylibre.com>
 References: <20230203-evk-board-support-v3-0-0003e80e0095@baylibre.com>
- <20230203-evk-board-support-v3-3-0003e80e0095@baylibre.com>
+ <20230203-evk-board-support-v3-5-0003e80e0095@baylibre.com>
+ <889be563-78d6-7148-f7d2-09ae21383ee4@collabora.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20230203-evk-board-support-v3-3-0003e80e0095@baylibre.com>
+In-Reply-To: <889be563-78d6-7148-f7d2-09ae21383ee4@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230330_102042_020878_5599C93A 
-X-CRM114-Status: GOOD (  18.44  )
+X-CRM114-CacheID: sfid-20230330_102212_520425_F80679C4 
+X-CRM114-Status: GOOD (  17.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,39 +109,53 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 29/03/2023 10:54, amergnat@baylibre.com wrote:
-> From: Alexandre Bailon <abailon@baylibre.com>
+On 29/03/2023 15:17, AngeloGioacchino Del Regno wrote:
+> Il 29/03/23 10:54, amergnat@baylibre.com ha scritto:
+>> From: Fabien Parent <fparent@baylibre.com>
+>>
+>> This new device-tree add the regulators, rtc and keys support
+>> for the MT6357 PMIC.
+>>
+>> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+>> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+>> ---
+>>   arch/arm64/boot/dts/mediatek/mt6357.dtsi | 282 +++++++++++++++++++++++++++++++
+>>   1 file changed, 282 insertions(+)
+>>
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt6357.dtsi 
+>> b/arch/arm64/boot/dts/mediatek/mt6357.dtsi
+>> new file mode 100644
+>> index 000000000000..3330a03c2f74
+>> --- /dev/null
+>> +++ b/arch/arm64/boot/dts/mediatek/mt6357.dtsi
+>> @@ -0,0 +1,282 @@
 > 
-> The reserved size for BL31 is too small.
-> This has been highlighted by the MPU that now restrict access to BL31
-> memory to secure world only.
-> This increase the size of the reserved memory.
+> ..snip..
 > 
-> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+>> +
+>> +        keys {
+>> +            compatible = "mediatek,mt6357-keys";
+>> +
+>> +            key-power {
+>> +                linux,keycodes = <KEY_POWER>;
+>> +                wakeup-source;
+>> +            };
+>> +
+>> +            key-home {
+>> +                linux,keycodes = <KEY_HOME>;
+>> +                wakeup-source;
+> 
+> KEY_HOME is a wakeup-source?! are you sure?!
 
-Applied, thanks!
+I think it could make sense to do that, so I just queued the patch. If that was 
+an oversight, then please send a follow-up patch.
 
-> ---
->   arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+Regards,
+Matthias
+
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-> index b68aee8f229f..fc7f6d8ae173 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-> @@ -65,10 +65,10 @@ reserved-memory {
->   		#size-cells = <2>;
->   		ranges;
->   
-> -		/* 128 KiB reserved for ARM Trusted Firmware (BL31) */
-> +		/* 192 KiB reserved for ARM Trusted Firmware (BL31) */
->   		bl31_secmon_reserved: secmon@43000000 {
->   			no-map;
-> -			reg = <0 0x43000000 0 0x20000>;
-> +			reg = <0 0x43000000 0 0x30000>;
->   		};
->   
->   		/* 12 MiB reserved for OP-TEE (BL32)
+> (P.S.: I'm just checking if that was intended)
 > 
+> Regards,
+> Angelo
 
