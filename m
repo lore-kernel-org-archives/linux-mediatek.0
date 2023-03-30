@@ -4,81 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3FCCC761A6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 15:28:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2AFAC6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Mar 2023 15:37:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=ugAmLJblkYMugEo7tfI+icr2H8SDN/QMTqfPS9Pdgjo=; b=MJ9CgqKJQERUDt
-	qmHYlVnge4G8X3qVeJbRZVXg1lmuPLF2w/PI6mIyQ58YbOjR2VzBJLAgO8ePZRm8OF9mzoByFDOfX
-	flllNDO1sVd0bEtjBtL9G2rPmCwFu3wJgHbpuOFCFiPVDhQwpr4IWIcbkpaFhxWiU8+sJhh4/I5KX
-	kIwWJ3pOqyLE0FQ0zCrooLxgOufhnQVIBzzClgTGmIAMaot28uqnU7m5fTyPMPVrRAuwZbr30u5R7
-	/8qQOOuC4D1chy7K/x28InDCquk7TflQ+Kmw1B7Y9fdyPPms7Wqxap9SIT/A4BayJUlVM7WTrZWeE
-	qHP6nLKDKWUSy2cBEo9w==;
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0RrYouZMF0RK3kwKq6f5Px2GDziKojcz/nRXKC5+wrI=; b=mMslev6ZRI+e0G96C60xbL0OnR
+	Ifov/+19dRvSuwBwivYrSe1z07quJQdMGzeJymF6/8xvRDzMfgXd4IPGWRNsOk3fA63MvIMZTgSAa
+	WwjaKNMbLwZbM4wm8JL+fXXtVQDc6Atb6nklOTl/BnYH84IgsQa6Dn/KDXV0cS90IGq9muActr9Fn
+	sK0yIhdwfeegF73uemRZEwhoDjrG6wYHaRjC/WoS8oJZ8UX4e4HUUl9q/7ZxEv1jtsJS7EEu1s8mq
+	IDiNSGmo9WxpT9VYLCGZSSqSQogUVtRCTXjbbUcATjTeop9fexhKU2ufXEV04b2qrfLRWecCtJlxe
+	gdCE90fQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phuC2-004HE6-1e;
-	Thu, 30 Mar 2023 15:28:02 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1phuLA-004JHm-2F;
+	Thu, 30 Mar 2023 15:37:28 +0000
+Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phuBy-004HA9-15;
-	Thu, 30 Mar 2023 15:27:59 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id bg16-20020a05600c3c9000b003eb34e21bdfso13683267wmb.0;
-        Thu, 30 Mar 2023 08:27:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1680190074;
-        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=ugAmLJblkYMugEo7tfI+icr2H8SDN/QMTqfPS9Pdgjo=;
-        b=A44BlkQDQ7N2zVdqRxC0isCQGdigI1SNxHICLB5Te0OaNAhTzUqOU3fXpGMpN9Mrrx
-         16wpg/ZDZzSZbMB+PZyzz5LjPXiWSRX5nKCXvRlbMxxbvP839agd1ifIDZy9TAysKPWD
-         V5kC908V8ZkcCScJZ9Br8fhwrtH22KblL7nGQwijPSIn5N1MDo4eQxXeNLJFhMjKDga/
-         5J1c3KtjAxa8fJZzsP2Go+oPHw3yIy0odwD/AtgxawbSTbTkE+X0+5ZM290469AK/QUf
-         PsvIDvanw8B+VkULGYhmkO6VkqILXrAjGiJDL/pkC96KnGgUjIn5SmqQbCIm0VVDvFaF
-         iZ8w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680190074;
-        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ugAmLJblkYMugEo7tfI+icr2H8SDN/QMTqfPS9Pdgjo=;
-        b=JkIHKiPpppbk4auKMEWtSpRz22z9lAqld0YgbN9UVXYalk1/COxZ/5VRT51Whc1zhs
-         VOqY8ffhlRX7urwkfqm3JceeiUBPh7SvGPi/toK5ELK9dU7d1D9ZAtfSJsiErU3JEUSY
-         Vpuf00b3zHQT6/1WFlyx145g562Y6N1MB9m4eEQkO2gI1v4wMghPtPgTKDRu5nJJiAwT
-         uPJyowcdf2eRn85OAuiGkyNK8RqY1GLhMUtMlWRDRODOvs8J09RnzwVgORbzdCWxYoAi
-         vy96QB5w8WLNA/ybBRtq9UlSVgc0NJaB0+z/44EgB/QqC1F7fJ0+lj8s7HuIjjByfZyo
-         xBTw==
-X-Gm-Message-State: AO0yUKW7qj+1YJU7XDOYwNoYThkTy3GmXGaIK21HczgMWsJYl9ZV4QYm
-	jPaKeFkHOA/y5yMdvnWyLxo=
-X-Google-Smtp-Source: AK7set9CzWMbpFkxw8byP8zOEJzHj/hUibEgy5nYYaciVm0s2mkNKVRPXh1b2EftFefmV84mZU6tQA==
-X-Received: by 2002:a05:600c:2110:b0:3ed:2b27:5bcc with SMTP id u16-20020a05600c211000b003ed2b275bccmr17827101wml.38.1680190074112;
-        Thu, 30 Mar 2023 08:27:54 -0700 (PDT)
-Received: from localhost ([102.36.222.112])
-        by smtp.gmail.com with ESMTPSA id i22-20020a05600c355600b003ede6540190sm6788865wmq.0.2023.03.30.08.27.53
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Mar 2023 08:27:53 -0700 (PDT)
-Date: Thu, 30 Mar 2023 18:27:50 +0300
-From: Dan Carpenter <error27@gmail.com>
-To: oe-kbuild@lists.linux.dev, ChiaEn Wu <chiaen_wu@richtek.com>,
-	jic23@kernel.org, lars@metafoo.de, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com
-Cc: lkp@intel.com, oe-kbuild-all@lists.linux.dev, linux-iio@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, peterwu.pub@gmail.com,
-	cy_huang@richtek.com, ChiaEn Wu <chiaen_wu@richtek.com>
-Subject: Re: [PATCH] iio: adc: mt6370: Fix ibus and ibat scaling value of
- some specific vendor ID chips
-Message-ID: <75f27c56-5e35-40dc-a320-66bf6a8ed36f@kili.mountain>
+	id 1phuL6-004JH2-1F;
+	Thu, 30 Mar 2023 15:37:25 +0000
+Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id BAD591883842;
+	Thu, 30 Mar 2023 15:37:22 +0000 (UTC)
+Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
+	by mailout.gigahost.dk (Postfix) with ESMTP id AC9BA2500389;
+	Thu, 30 Mar 2023 15:37:22 +0000 (UTC)
+Received: by smtp.gigahost.dk (Postfix, from userid 1000)
+	id A74189B403E2; Thu, 30 Mar 2023 15:37:22 +0000 (UTC)
+X-Screener-Id: e32ae469fa6e394734d05373d3a705875723cf1e
+Received: from fujitsu (2-104-116-184-cable.dk.customer.tdc.net [2.104.116.184])
+	by smtp.gigahost.dk (Postfix) with ESMTPSA id 04E2D91201E3;
+	Thu, 30 Mar 2023 15:37:22 +0000 (UTC)
+From: Hans Schultz <netdev@kapio-technology.com>
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
+ Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Eric
+ Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Kurt
+ Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>,
+ Woojung Huh <woojung.huh@microchip.com>, "maintainer:MICROCHIP KSZ SERIES
+ ETHERNET SWITCH DRIVER" <UNGLinuxDriver@microchip.com>, Sean Wang
+ <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
+ Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, =?utf-8?Q?Cl=C3=A9ment_L=C3=A9ger?=
+ <clement.leger@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
+ <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
+ <razor@blackwall.org>, Shuah Khan <shuah@kernel.org>, Christian Marangi
+ <ansuelsmth@gmail.com>, Ido Schimmel <idosch@nvidia.com>, open list
+ <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>, "open list:RENESAS RZ/N1
+ A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>, "moderated
+ list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>, "open
+ list:KERNEL SELFTEST FRAMEWORK" <linux-kselftest@vger.kernel.org>
+Subject: Re: [PATCH v2 net-next 2/6] net: dsa: propagate flags down towards
+ drivers
+In-Reply-To: <20230330150752.gdquw5kudtrqgzyz@skbuf>
+References: <20230327160009.bdswnalizdv2u77z@skbuf>
+ <87pm8tooe1.fsf@kapio-technology.com>
+ <20230327225933.plm5raegywbe7g2a@skbuf>
+ <87ileljfwo.fsf@kapio-technology.com>
+ <20230328114943.4mibmn2icutcio4m@skbuf>
+ <87cz4slkx5.fsf@kapio-technology.com>
+ <20230330124326.v5mqg7do25tz6izk@skbuf>
+ <87wn2yxunb.fsf@kapio-technology.com>
+ <20230330130936.hxme34qrqwolvpsh@skbuf>
+ <875yaimgro.fsf@kapio-technology.com>
+ <20230330150752.gdquw5kudtrqgzyz@skbuf>
+Date: Thu, 30 Mar 2023 17:34:44 +0200
+Message-ID: <877cuy6ynf.fsf@kapio-technology.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1679667167-16261-1-git-send-email-chiaen_wu@richtek.com>
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230330_082758_390350_CDBD4A92 
-X-CRM114-Status: UNSURE (   6.98  )
+X-CRM114-CacheID: sfid-20230330_083724_565305_2EBE12DB 
+X-CRM114-Status: UNSURE (   7.36  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,59 +97,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi ChiaEn,
+On Thu, Mar 30, 2023 at 18:07, Vladimir Oltean <olteanv@gmail.com> wrote:
+>
+> Then, make DSA decide whether to handle the "added_by_user && !is_static"
+> combination or not, based on the presence of the DSA_FDB_FLAG_DYNAMIC
+> flag, which will be set in ds->supported_fdb_flags only for the mv88e6xxx
+> driver.
 
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Okay, so this will require a new function in the DSA layer that sets
+which flags are supported and that the driver will call on
+initialization.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/ChiaEn-Wu/iio-adc-mt6370-Fix-ibus-and-ibat-scaling-value-of-some-specific-vendor-ID-chips/20230324-221545
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/jic23/iio.git togreg
-patch link:    https://lore.kernel.org/r/1679667167-16261-1-git-send-email-chiaen_wu%40richtek.com
-patch subject: [PATCH] iio: adc: mt6370: Fix ibus and ibat scaling value of some specific vendor ID chips
-config: m68k-randconfig-m041-20230329 (https://download.01.org/0day-ci/archive/20230330/202303302231.gNdPKrtD-lkp@intel.com/config)
-compiler: m68k-linux-gcc (GCC) 12.1.0
-
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Reported-by: Dan Carpenter <error27@gmail.com>
-| Link: https://lore.kernel.org/r/202303302231.gNdPKrtD-lkp@intel.com/
-
-smatch warnings:
-drivers/iio/adc/mt6370-adc.c:306 mt6370_adc_probe() error: uninitialized symbol 'priv'.
-
-vim +/priv +306 drivers/iio/adc/mt6370-adc.c
-
-c1404d1b659fe3d ChiaEn Wu 2022-10-11  294  static int mt6370_adc_probe(struct platform_device *pdev)
-c1404d1b659fe3d ChiaEn Wu 2022-10-11  295  {
-c1404d1b659fe3d ChiaEn Wu 2022-10-11  296  	struct device *dev = &pdev->dev;
-c1404d1b659fe3d ChiaEn Wu 2022-10-11  297  	struct mt6370_adc_data *priv;
-c1404d1b659fe3d ChiaEn Wu 2022-10-11  298  	struct iio_dev *indio_dev;
-c1404d1b659fe3d ChiaEn Wu 2022-10-11  299  	struct regmap *regmap;
-c1404d1b659fe3d ChiaEn Wu 2022-10-11  300  	int ret;
-c1404d1b659fe3d ChiaEn Wu 2022-10-11  301  
-c1404d1b659fe3d ChiaEn Wu 2022-10-11  302  	regmap = dev_get_regmap(pdev->dev.parent, NULL);
-c1404d1b659fe3d ChiaEn Wu 2022-10-11  303  	if (!regmap)
-c1404d1b659fe3d ChiaEn Wu 2022-10-11  304  		return dev_err_probe(dev, -ENODEV, "Failed to get regmap\n");
-c1404d1b659fe3d ChiaEn Wu 2022-10-11  305  
-9822359d5de2dba ChiaEn Wu 2023-03-24 @306  	ret = mt6370_get_vendor_info(priv);
-
-"priv" is uninitialized.
-
-9822359d5de2dba ChiaEn Wu 2023-03-24  307  	if (ret)
-9822359d5de2dba ChiaEn Wu 2023-03-24  308  		return dev_err_probe(dev, ret, "Failed to get vid\n");
-9822359d5de2dba ChiaEn Wu 2023-03-24  309  
-c1404d1b659fe3d ChiaEn Wu 2022-10-11  310  	indio_dev = devm_iio_device_alloc(dev, sizeof(*priv));
-c1404d1b659fe3d ChiaEn Wu 2022-10-11  311  	if (!indio_dev)
-c1404d1b659fe3d ChiaEn Wu 2022-10-11  312  		return -ENOMEM;
-c1404d1b659fe3d ChiaEn Wu 2022-10-11  313  
-c1404d1b659fe3d ChiaEn Wu 2022-10-11  314  	priv = iio_priv(indio_dev);
-                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-c1404d1b659fe3d ChiaEn Wu 2022-10-11  315  	priv->dev = dev;
-c1404d1b659fe3d ChiaEn Wu 2022-10-11  316  	priv->regmap = regmap;
-c1404d1b659fe3d ChiaEn Wu 2022-10-11  317  	mutex_init(&priv->adc_lock);
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
-
+Where (in the DSA layer) should such a function be placed and what
+should it be called?
 
