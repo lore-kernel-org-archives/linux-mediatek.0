@@ -4,57 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28BCAC6FD18
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Mar 2023 12:37:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF7CCC76196
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Mar 2023 12:38:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=udJ0wuNB28rOaZJB9k/q7yfK36q/Gh2KUdN6lx5LDio=; b=Dyot0Cf0F/u1Od05+RNp2N13aI
-	X2YuBOm3mpN/esQfLmmTJ7utnCx3PQERVdtEdySClCJZ8vJPB/8CWlV1q8H0s9VJMzns3+7w8/wbF
-	LxLwdzn/u8hqdglYVRKZ4TEQe83gqo5yI324K+UcSxYryPdxlpbeIvIlobHwEUJgaVVvsaTv6zcup
-	5il4SfToErbpMBXZhvVstLuZBIc3KZAWJFskNpH3ZqvGldX8JqhZz4uhdi9cU6SaFQKF12HTNgi0w
-	ZkIUJMg/upSsaVTbt1seB5+FvMaXVrlSUR+HS3I2TILgaTBH5uZTkdX99SKeleyIlD/nSuzVWE1mm
-	gzVzxpUQ==;
+	bh=rZiWaCByXJJbsBKOQ78jr4LtoH+K4K1wFgG3+RmFZXU=; b=tnpNMwcfelzSckaQPJGdgnaSHi
+	spGlhZdu2Iqi3ToTPIgMiYVPKegFqVJ1Cq8GEqyv9W0jwp5I2bKapI5oVGZSWbuQy4J7eJoAfJM5N
+	vv9y09GTVOy1XPlVYkYQ1jp9uzqMOIBvIvN61otWOk8jQ/IC0QTCKqvnDWHGZIVIrF2xLvfKz+VLl
+	FpZbd+UzNpKeYdqILn0y3yA3d/ClYEap6oiiL37V/XPxsTh3l/EuXwSM8HKVtlCk5guLdChDsaiOh
+	r+Hya2Jw2VTDtZp0jJ3AeOG6JsHLn864NHtE8TCSbZF25L8m1qFj2bKv1Q5/hSgAtfotOKAtTNksj
+	i9WpX5Cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1piE0j-007JpC-0i;
-	Fri, 31 Mar 2023 12:37:41 +0000
+	id 1piE15-007K3A-1o;
+	Fri, 31 Mar 2023 12:38:03 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1piDze-007J93-0t;
+	id 1piDzf-007JCC-0i;
 	Fri, 31 Mar 2023 12:36:38 +0000
-X-UUID: a8a00640cfc011ed8687db9d93187ff1-20230331
+X-UUID: a8932acecfc011ed8687db9d93187ff1-20230331
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=udJ0wuNB28rOaZJB9k/q7yfK36q/Gh2KUdN6lx5LDio=;
-	b=FRqYFtcgzTYWB4SKEE3wMXr05aHKqB7G/oocctoHAD0btFglP1L2UwKwO7A4M1+QgIAoOsXt0rw+Y2Wd89WOb7ZNDUeHQizYWdfFoCzBE0BkJLHLWZ9Z39Mf7CMrpud4R+goUa43KmahObL1KFSc0CedK6e06FD3ODMNIpKWrwA=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=rZiWaCByXJJbsBKOQ78jr4LtoH+K4K1wFgG3+RmFZXU=;
+	b=rRQtXSZPRL6Ps8K/7ZX/rIwvxll0jWDwmlxnfVhIyuaqrWoBvUoCtJWhPAtXdbIT0PIC7z+yM6KxLtV3vZMCAulGrvkPvg09KJ6PG+YVwaGUcLMFFvEuaol0VtcptO9UmegZWqK40dsXvGmBbJIdGN0Jwi7BbtcI3swe2XeHDls=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:cd3cc432-f65e-450f-9809-f1c6f48e37f8,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:70
-X-CID-INFO: VERSION:1.1.22,REQID:cd3cc432-f65e-450f-9809-f1c6f48e37f8,IP:0,URL
-	:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
-	ON:quarantine,TS:70
-X-CID-META: VersionHash:120426c,CLOUDID:01c2192a-564d-42d9-9875-7c868ee415ec,B
-	ulkID:230331203631Q85IRFP0,BulkQuantity:1,Recheck:0,SF:38|29|28|17|19|48,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:43,QS:nil,BEC:nil,COL:0,
-	OSI:0,OSA:0,AV:0
+X-CID-O-INFO: VERSION:1.1.22,REQID:e5ecee4e-898a-43d7-a744-a00901d48422,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:120426c,CLOUDID:ec9b88f7-ddba-41c3-91d9-10eeade8eac7,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-UUID: a8a00640cfc011ed8687db9d93187ff1-20230331
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+X-UUID: a8932acecfc011ed8687db9d93187ff1-20230331
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <garmin.chang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1585120858; Fri, 31 Mar 2023 05:36:28 -0700
+	with ESMTP id 552349957; Fri, 31 Mar 2023 05:36:28 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Fri, 31 Mar 2023 20:36:27 +0800
+ 15.2.1118.25; Fri, 31 Mar 2023 20:36:25 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Fri, 31 Mar 2023 20:36:27 +0800
+ 15.2.1118.25 via Frontend Transport; Fri, 31 Mar 2023 20:36:25 +0800
 From: Garmin.Chang <Garmin.Chang@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
 	<robh+dt@kernel.org>, Krzysztof Kozlowski
@@ -67,9 +63,9 @@ CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
 	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-clk@vger.kernel.org>, <netdev@vger.kernel.org>, Garmin.Chang
 	<Garmin.Chang@mediatek.com>
-Subject: [PATCH v8 18/19] clk: mediatek: Add MT8188 imp i2c wrapper clock support
-Date: Fri, 31 Mar 2023 20:36:20 +0800
-Message-ID: <20230331123621.16167-19-Garmin.Chang@mediatek.com>
+Subject: [PATCH v8 07/19] clk: mediatek: Add MT8188 ccusys clock support
+Date: Fri, 31 Mar 2023 20:36:09 +0800
+Message-ID: <20230331123621.16167-8-Garmin.Chang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230331123621.16167-1-Garmin.Chang@mediatek.com>
 References: <20230331123621.16167-1-Garmin.Chang@mediatek.com>
@@ -77,8 +73,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230331_053634_370019_8A8857BB 
-X-CRM114-Status: GOOD (  17.19  )
+X-CRM114-CacheID: sfid-20230331_053635_305090_CBFBF4CF 
+X-CRM114-Status: GOOD (  16.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,55 +89,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8188 imp i2c wrapper clock controllers which provide clock gate
-control in I2C IP blocks.
+Add MT8188 ccusys clock controller which provides clock gate
+control in Camera Computing Unit.
 
 Signed-off-by: Garmin.Chang <Garmin.Chang@mediatek.com>
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/clk/mediatek/Kconfig                  |  7 ++
- drivers/clk/mediatek/Makefile                 |  1 +
- .../clk/mediatek/clk-mt8188-imp_iic_wrap.c    | 80 +++++++++++++++++++
- 3 files changed, 88 insertions(+)
- create mode 100644 drivers/clk/mediatek/clk-mt8188-imp_iic_wrap.c
+ drivers/clk/mediatek/Makefile         |  2 +-
+ drivers/clk/mediatek/clk-mt8188-ccu.c | 50 +++++++++++++++++++++++++++
+ 2 files changed, 51 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-ccu.c
 
-diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-index 998cf4f559ea..afabdffded50 100644
---- a/drivers/clk/mediatek/Kconfig
-+++ b/drivers/clk/mediatek/Kconfig
-@@ -706,6 +706,13 @@ config COMMON_CLK_MT8188_IMGSYS
- 	help
- 	  This driver supports MediaTek MT8188 imgsys and imgsys2 clocks.
- 
-+config COMMON_CLK_MT8188_IMP_IIC_WRAP
-+	tristate "Clock driver for MediaTek MT8188 imp_iic_wrap"
-+	depends on COMMON_CLK_MT8188
-+	default COMMON_CLK_MT8188
-+	help
-+	  This driver supports MediaTek MT8188 I2C/I3C clocks.
-+
- config COMMON_CLK_MT8188_IPESYS
- 	tristate "Clock driver for MediaTek MT8188 ipesys"
- 	depends on COMMON_CLK_MT8188_IMGSYS
 diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index df4e2da1ca49..7ef67ac366d8 100644
+index 3a2a35c54101..fc4faee04636 100644
 --- a/drivers/clk/mediatek/Makefile
 +++ b/drivers/clk/mediatek/Makefile
-@@ -104,6 +104,7 @@ obj-$(CONFIG_COMMON_CLK_MT8188) += clk-mt8188-apmixedsys.o clk-mt8188-topckgen.o
+@@ -102,7 +102,7 @@ obj-$(CONFIG_COMMON_CLK_MT8186_VENCSYS) += clk-mt8186-venc.o
+ obj-$(CONFIG_COMMON_CLK_MT8186_WPESYS) += clk-mt8186-wpe.o
+ obj-$(CONFIG_COMMON_CLK_MT8188) += clk-mt8188-apmixedsys.o clk-mt8188-topckgen.o \
  				   clk-mt8188-peri_ao.o clk-mt8188-infra_ao.o
- obj-$(CONFIG_COMMON_CLK_MT8188_CAMSYS) += clk-mt8188-cam.o clk-mt8188-ccu.o
- obj-$(CONFIG_COMMON_CLK_MT8188_IMGSYS) += clk-mt8188-img.o
-+obj-$(CONFIG_COMMON_CLK_MT8188_IMP_IIC_WRAP) += clk-mt8188-imp_iic_wrap.o
- obj-$(CONFIG_COMMON_CLK_MT8188_IPESYS) += clk-mt8188-ipe.o
- obj-$(CONFIG_COMMON_CLK_MT8188_MFGCFG) += clk-mt8188-mfg.o
- obj-$(CONFIG_COMMON_CLK_MT8188_VDECSYS) += clk-mt8188-vdec.o
-diff --git a/drivers/clk/mediatek/clk-mt8188-imp_iic_wrap.c b/drivers/clk/mediatek/clk-mt8188-imp_iic_wrap.c
+-obj-$(CONFIG_COMMON_CLK_MT8188_CAMSYS) += clk-mt8188-cam.o
++obj-$(CONFIG_COMMON_CLK_MT8188_CAMSYS) += clk-mt8188-cam.o clk-mt8188-ccu.o
+ obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192-apmixedsys.o clk-mt8192.o
+ obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
+ obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
+diff --git a/drivers/clk/mediatek/clk-mt8188-ccu.c b/drivers/clk/mediatek/clk-mt8188-ccu.c
 new file mode 100644
-index 000000000000..2238d2984320
+index 000000000000..ebc0d3aeee11
 --- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt8188-imp_iic_wrap.c
-@@ -0,0 +1,80 @@
++++ b/drivers/clk/mediatek/clk-mt8188-ccu.c
+@@ -0,0 +1,50 @@
 +// SPDX-License-Identifier: GPL-2.0-only
 +/*
 + * Copyright (c) 2022 MediaTek Inc.
@@ -155,72 +132,42 @@ index 000000000000..2238d2984320
 +#include "clk-gate.h"
 +#include "clk-mtk.h"
 +
-+static const struct mtk_gate_regs imp_iic_wrap_cg_regs = {
-+	.set_ofs = 0xe08,
-+	.clr_ofs = 0xe04,
-+	.sta_ofs = 0xe00,
++static const struct mtk_gate_regs ccu_cg_regs = {
++	.set_ofs = 0x4,
++	.clr_ofs = 0x8,
++	.sta_ofs = 0x0,
 +};
 +
-+#define GATE_IMP_IIC_WRAP(_id, _name, _parent, _shift)			\
-+	GATE_MTK_FLAGS(_id, _name, _parent, &imp_iic_wrap_cg_regs, _shift,			\
-+		&mtk_clk_gate_ops_setclr, CLK_OPS_PARENT_ENABLE)
++#define GATE_CCU(_id, _name, _parent, _shift)			\
++	GATE_MTK(_id, _name, _parent, &ccu_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
 +
-+static const struct mtk_gate imp_iic_wrap_c_clks[] = {
-+	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_C_AP_CLOCK_I2C0,
-+			  "imp_iic_wrap_c_ap_clock_i2c0", "top_i2c", 0),
-+	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_C_AP_CLOCK_I2C2,
-+			  "imp_iic_wrap_c_ap_clock_i2c2", "top_i2c", 1),
-+	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_C_AP_CLOCK_I2C3,
-+			  "imp_iic_wrap_c_ap_clock_i2c3", "top_i2c", 2),
++static const struct mtk_gate ccu_clks[] = {
++	GATE_CCU(CLK_CCU_LARB27, "ccu_larb27", "top_ccu", 0),
++	GATE_CCU(CLK_CCU_AHB, "ccu_ahb", "top_ccu", 1),
++	GATE_CCU(CLK_CCU_CCU0, "ccu_ccu0", "top_ccu", 2),
 +};
 +
-+static const struct mtk_gate imp_iic_wrap_w_clks[] = {
-+	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_W_AP_CLOCK_I2C1,
-+			  "imp_iic_wrap_w_ap_clock_i2c1", "top_i2c", 0),
-+	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_W_AP_CLOCK_I2C4,
-+			  "imp_iic_wrap_w_ap_clock_i2c4", "top_i2c", 1),
++static const struct mtk_clk_desc ccu_desc = {
++	.clks = ccu_clks,
++	.num_clks = ARRAY_SIZE(ccu_clks),
 +};
 +
-+static const struct mtk_gate imp_iic_wrap_en_clks[] = {
-+	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_EN_AP_CLOCK_I2C5,
-+			  "imp_iic_wrap_en_ap_clock_i2c5", "top_i2c", 0),
-+	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_EN_AP_CLOCK_I2C6,
-+			  "imp_iic_wrap_en_ap_clock_i2c6", "top_i2c", 1),
-+};
-+
-+static const struct mtk_clk_desc imp_iic_wrap_c_desc = {
-+	.clks = imp_iic_wrap_c_clks,
-+	.num_clks = ARRAY_SIZE(imp_iic_wrap_c_clks),
-+};
-+
-+static const struct mtk_clk_desc imp_iic_wrap_w_desc = {
-+	.clks = imp_iic_wrap_w_clks,
-+	.num_clks = ARRAY_SIZE(imp_iic_wrap_w_clks),
-+};
-+
-+static const struct mtk_clk_desc imp_iic_wrap_en_desc = {
-+	.clks = imp_iic_wrap_en_clks,
-+	.num_clks = ARRAY_SIZE(imp_iic_wrap_en_clks),
-+};
-+
-+static const struct of_device_id of_match_clk_mt8188_imp_iic_wrap[] = {
-+	{ .compatible = "mediatek,mt8188-imp-iic-wrap-c", .data = &imp_iic_wrap_c_desc },
-+	{ .compatible = "mediatek,mt8188-imp-iic-wrap-w", .data = &imp_iic_wrap_w_desc },
-+	{ .compatible = "mediatek,mt8188-imp-iic-wrap-en", .data = &imp_iic_wrap_en_desc },
++static const struct of_device_id of_match_clk_mt8188_ccu[] = {
++	{ .compatible = "mediatek,mt8188-ccusys", .data = &ccu_desc },
 +	{ /* sentinel */ }
 +};
-+MODULE_DEVICE_TABLE(platform, of_match_clk_mt8188_imp_iic_wrap);
++MODULE_DEVICE_TABLE(of, of_match_clk_mt8188_ccu);
 +
-+static struct platform_driver clk_mt8188_imp_iic_wrap_drv = {
++static struct platform_driver clk_mt8188_ccu_drv = {
 +	.probe = mtk_clk_simple_probe,
 +	.remove = mtk_clk_simple_remove,
 +	.driver = {
-+		.name = "clk-mt8188-imp_iic_wrap",
-+		.of_match_table = of_match_clk_mt8188_imp_iic_wrap,
++		.name = "clk-mt8188-ccu",
++		.of_match_table = of_match_clk_mt8188_ccu,
 +	},
 +};
 +
-+module_platform_driver(clk_mt8188_imp_iic_wrap_drv);
++module_platform_driver(clk_mt8188_ccu_drv);
 +MODULE_LICENSE("GPL");
 -- 
 2.18.0
