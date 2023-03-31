@@ -4,82 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F8D8C6FD18
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Mar 2023 08:03:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C38BCC77B6E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Mar 2023 08:09:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iJs46k5iSvARUHDNxGvakUJPuPLOnnDLYQjzwiJ4Ftk=; b=EBCKp2OQ2a2PHaVobjCgbgVfwA
-	1NKIejkuNpjIDtkIHwM4Y6NEksKf/m6DHnbX2Q6zNSc+au+DMERAQgTnbLqLW34If04NXC04nuHM1
-	fWg4DHzSsAuOXpNJCDxiIpq7uNgqJ05zhRm/pWdL93WoPX8QJzvhdO8pYELz6etRnbIOmyBqIkbtG
-	6I2/rhJ45JtFivjylj+SraD+aWLlFgXQDwnyrQ037jbqH7wyItRQzMK2Y9/uXk7x6SjDjCNg0eRTi
-	uhaXb0cRedqwMRe0WlYpmrUHZdqR5FyLr+XAeHE+WEax1iDPYQv0+EWHumy65huqPrA1lXWYyfQvp
-	v6JBqTew==;
+	bh=jNoS5OUMscO9zysPToQdRHpuxs6psTcy+GU9b2M6NmQ=; b=y0hNNoS+QKIncpavQNlBwiOFx9
+	Idx14omOzFHU++FLbXZgXmh9UN4WKURn2mqf9kRoxDHoxY+B7n8XHnUPBCaH74JzrF/CGdijm0SDB
+	yzuq7d5KkPXodX0RCSsw+s1PXu8XhNYGzvHX1ENI7O2YbU8kDfuB97GsR0NuuZDQsiextZxNI73/c
+	45j+O5QniJO5KqxCTkduV9oGCPK7emLNKARKpSTi7LcExESEDth5R+PvLLHPWn5kIfIJAcC54yX2T
+	RV+WXcbyky99x4ubH4o31j2TBmcbylKfwEks4mgguERQwS4jDfav0zW81lJRRDKo9EegXO42HhPOX
+	7sbt64ZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pi9ir-006GtR-2B;
-	Fri, 31 Mar 2023 08:02:57 +0000
-Received: from mail.8bytes.org ([85.214.250.239])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pi9ih-006Gqm-1B;
-	Fri, 31 Mar 2023 08:02:49 +0000
-Received: from 8bytes.org (p200300c27714bc0086ad4f9d2505dd0d.dip0.t-ipconnect.de [IPv6:2003:c2:7714:bc00:86ad:4f9d:2505:dd0d])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.8bytes.org (Postfix) with ESMTPSA id 9A614244F13;
-	Fri, 31 Mar 2023 10:02:41 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=8bytes.org;
-	s=default; t=1680249762;
-	bh=HhNt/vf0jJLpApM2a8CXLarqNpXt1SlWBho4pzL7iyM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=56hwbbzU761AwpD69MbRihRBiQQoeH3NTg9qiGBW/D1DgCtMhCKCMziSN01J6Fl23
-	 9b/Y/GwSZua/dgn1MSocXyeo1/UcKyQXn5j4RP9Qm0j+OfOxsoozYaKimJUZkIEcQM
-	 +itRz2SSFAKa6ogBGBHGgoFjSu4bU72jbWccFF5ripuFT7iy4Uqc0fuHd7DqXPSy7x
-	 JIa4qAuvo2+TkcWE118aA8aflUW5dL2BYZfy0qNo0AnLAjjKB4WgnUHxiGtcL5dSMz
-	 472kWknwpAKwJ/JTnvJkTfJwXlLOb6oPujqeJ5F4cWmgmHb655GjNVqk/rPJOliKgD
-	 ZRe0kVywMiYIA==
-Date: Fri, 31 Mar 2023 10:02:40 +0200
-From: Joerg Roedel <joro@8bytes.org>
-To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Will Deacon <will@kernel.org>, Lu Baolu <baolu.lu@linux.intel.com>,
-	Vladimir Oltean <vladimir.oltean@nxp.com>,
-	Sai Prakash Ranjan <quic_saipraka@quicinc.com>,
-	Jon Nettleton <jon@solid-run.com>, Hector Martin <marcan@marcan.st>,
-	Sven Peter <sven@svenpeter.dev>, Jason Gunthorpe <jgg@ziepe.ca>,
-	Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
-	Yicong Yang <yangyicong@hisilicon.com>,
-	Nicolin Chen <nicolinc@nvidia.com>, Rob Clark <robdclark@gmail.com>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Yong Wu <yong.wu@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	linux-arm-kernel@lists.infradead.org, iommu@lists.linux.dev,
-	kernel@pengutronix.de, Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	asahi@lists.linux.dev, linux-arm-msm@vger.kernel.org,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 00/10] iommu: Convert to platform remove callback
- returning void
-Message-ID: <ZCaToJfq6CSsgpB+@8bytes.org>
-References: <20230321084125.337021-1-u.kleine-koenig@pengutronix.de>
+	id 1pi9p6-006IBC-01;
+	Fri, 31 Mar 2023 08:09:24 +0000
+Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pi9oy-006I8n-1X;
+	Fri, 31 Mar 2023 08:09:20 +0000
+Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id E758E18844A7;
+	Fri, 31 Mar 2023 08:09:14 +0000 (UTC)
+Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
+	by mailout.gigahost.dk (Postfix) with ESMTP id C2F5F2503962;
+	Fri, 31 Mar 2023 08:09:14 +0000 (UTC)
+Received: by smtp.gigahost.dk (Postfix, from userid 1000)
+	id B5F069B403E2; Fri, 31 Mar 2023 08:09:14 +0000 (UTC)
+X-Screener-Id: e32ae469fa6e394734d05373d3a705875723cf1e
+Received: from fujitsu (2-104-116-184-cable.dk.customer.tdc.net [2.104.116.184])
+	by smtp.gigahost.dk (Postfix) with ESMTPSA id C9DC291201E3;
+	Fri, 31 Mar 2023 08:09:13 +0000 (UTC)
+From: Hans Schultz <netdev@kapio-technology.com>
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Ido Schimmel <idosch@nvidia.com>, davem@davemloft.net, kuba@kernel.org,
+ netdev@vger.kernel.org, Florian Fainelli <f.fainelli@gmail.com>, Andrew
+ Lunn <andrew@lunn.ch>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
+ <pabeni@redhat.com>, Kurt Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens
+ <hauke@hauke-m.de>, Woojung Huh <woojung.huh@microchip.com>,
+ "maintainer:MICROCHIP KSZ SERIES ETHERNET SWITCH DRIVER"
+ <UNGLinuxDriver@microchip.com>, Sean Wang <sean.wang@mediatek.com>, Landen
+ Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Claudiu Manoil
+ <claudiu.manoil@nxp.com>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, =?utf-8?Q?Cl=C3=A9ment_L=C3=A9ger?=
+ <clement.leger@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
+ <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
+ <razor@blackwall.org>, Shuah Khan <shuah@kernel.org>, Christian Marangi
+ <ansuelsmth@gmail.com>, open list <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>, "open list:RENESAS RZ/N1
+ A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>, "moderated
+ list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>, "open
+ list:KERNEL SELFTEST FRAMEWORK" <linux-kselftest@vger.kernel.org>
+Subject: Re: [PATCH v2 net-next 6/6] selftests: forwarding: add dynamic FDB
+ test
+In-Reply-To: <20230330192714.oqosvifrftirshej@skbuf>
+References: <20230318141010.513424-1-netdev@kapio-technology.com>
+ <20230318141010.513424-7-netdev@kapio-technology.com>
+ <ZBgdAo8mxwnl+pEE@shredder> <87a5zzh65p.fsf@kapio-technology.com>
+ <ZCMYbRqd+qZaiHfu@shredder> <874jq22h2u.fsf@kapio-technology.com>
+ <20230330192714.oqosvifrftirshej@skbuf>
+Date: Fri, 31 Mar 2023 10:06:34 +0200
+Message-ID: <871ql5mjjp.fsf@kapio-technology.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230321084125.337021-1-u.kleine-koenig@pengutronix.de>
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230331_010247_658028_766D09D8 
-X-CRM114-Status: UNSURE (   5.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230331_010916_658269_03E389D6 
+X-CRM114-Status: GOOD (  20.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,18 +91,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 21, 2023 at 09:41:15AM +0100, Uwe Kleine-König wrote:
-> Uwe Kleine-König (10):
->   iommu/arm-smmu: Drop if with an always false condition
->   iommu/apple-dart: Convert to platform remove callback returning void
->   iommu/arm-smmu-v3: Convert to platform remove callback returning void
->   iommu/arm-smmu: Convert to platform remove callback returning void
->   iommu/ipmmu-vmsa: Convert to platform remove callback returning void
->   iommu/msm: Convert to platform remove callback returning void
->   iommu/mtk: Convert to platform remove callback returning void
->   iommu/mtk_iommu_v1: Convert to platform remove callback returning void
->   iommu/omap: Convert to platform remove callback returning void
->   iommu/sprd: Convert to platform remove callback returning void
+On Thu, Mar 30, 2023 at 22:27, Vladimir Oltean <olteanv@gmail.com> wrote:
+> On Thu, Mar 30, 2023 at 09:07:53PM +0200, Hans Schultz wrote:
+>> Not true, it reveals that I forgot to put it in the patch, that's all. As
+>> I cannot run several of these tests because of memory constraints I link
+>> the file to a copy in a rw area where I modify the list and just run one
+>> of the subtests at a time. If I try to run the whole it always fails
+>> after a couple of sub-tests with an error.
+>> 
+>> It seems to me that these scripts are quite memory consuming as they
+>> accumulate memory consuption in relation to what is loaded along the
+>> way. A major problem with my system.
+>
+> I'm sorry for perhaps asking something entirely obvious, but have you tried:
+>
+> kernel-dir $ rsync -avr tools/testing/selftests/ root@$board:selftests/
+> board $ cd selftests/drivers/net/dsa/
+> board $ ./bridge_locked_port.sh lan0 lan1 lan2 lan3
+>
+> ?
+>
+> This is how I always run them, and it worked fine with both Debian
+> (where it's easy to add missing packages to the rootfs) or with a more
+> embedded-oriented Buildroot.
 
-Applied, thanks.
+The memory problems are of course on the embedded target. In that case I
+think it would be a very good idea to do something to design the system
+better, so that it frees memory between the subtests.
+
+If all tests are always run on the bridge only, I think they don't make
+much sense as these patchsets are directed towards switchcores.
 
