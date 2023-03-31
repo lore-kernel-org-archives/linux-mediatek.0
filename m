@@ -4,110 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A792FC77B60
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Mar 2023 08:58:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C5E2C76196
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Mar 2023 09:28:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BYgdpbZjRcMBBZb2pcPFoHc8NfA9uoYOg/WF0eXftpw=; b=SlSB/RT0s3wxbiSn/NDP+OC/5u
-	EhWwZ/YL+KhpdB4YFfJhQYSDhrs84wxJIxolN8cw7bttITxdcECtCVpo6HI6ui/iDf+3N3CjVIObG
-	TMP18LOqmcQAlpvOnfSQy5AN2P3k8y5yj+QpdtCPhdcAQskvvDa15k2hLFTOX7Uxnorci+t6yDheI
-	VXatTAeFlJfROphwGuM0JQrbsSI9jQs4cc9oZ8Qx4LgIVPgkjuM3iSOQLD4fhOlypz2JRGvk3jzmY
-	yfr4pwvT5iEoIP0ZZiBmGn8lVsDxHGqyrsS5+aM/Dd7ig6dZxHpEcdV3szHkP8RwtWkSOYrGArt5a
-	2RWmGKCw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=avL8CU6kY5CS4NKIn08+zcUBC0UI/MDg7QxLShqe7BY=; b=Tu+LiW/+BVFRT0aj+2BKKuAG1i
+	qcEriQXfYlvLfa7Lv3WERYSh/yuPYFU5p6BiCc9z5EBY0h5QPYRkn3FfjSfEVd2r6HaneUjQGCnMl
+	XysXib2meWwOc0d0l6C7qqemWWTviaksOsUCEuPuTi9Bq+VBNn+fY64Cu7fYKg1CpYoHwP2+16zOV
+	Hu9Rn59XtQT91en0lupU79R1oFFEV6N4UinwNJAj8yeOlU2GdPu7x+Yw4+IQsXAgKQQHqUEtIdVye
+	3ytjHFNsGxD6tzIf4ZMw2QAfT450EJLgh0mF5azm3q02yQCmj66h+4AdRrTd8/Lrnqqq6ugYptRoU
+	l1F8zS9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1piAax-006XvT-0t;
-	Fri, 31 Mar 2023 08:58:51 +0000
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+	id 1piB2z-006fsV-0o;
+	Fri, 31 Mar 2023 09:27:49 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1piAat-006Xu0-1x;
-	Fri, 31 Mar 2023 08:58:48 +0000
-Received: by mail-ed1-x533.google.com with SMTP id eh3so86817415edb.11;
-        Fri, 31 Mar 2023 01:58:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1680253123;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=BYgdpbZjRcMBBZb2pcPFoHc8NfA9uoYOg/WF0eXftpw=;
-        b=lVKy9HSAOGeFLg+iy7ujKGiGribkgannSjZw89QjDiPB0ZV6BZm9+DizSMM+gX3jEw
-         8QIkoiOy2MNkxNZZupbYDoc64yJzb7Zakr4oYn+NZsqx23cfATRwfdyLTql0+IM3dC5T
-         9zKB3+Y68Ext8eXLKbm+4W1Mq+WMbsW3LTUkmel8sWJCt88C13fN9xBBvjtKqUosu9Gw
-         ucQZhXb/e9f0vPsnfBcOSdQNwVW3hXH1vRu0z/fas0JuC3+hUy/k1KwL7H5IS5+eme+q
-         lWNM6p5ohWlyVrBT/8KIVW5ZPpOmzUu9j6j2ZOXYo+84gdkfqnAmrpw7d0uQRaY9JwTf
-         NIdg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680253123;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=BYgdpbZjRcMBBZb2pcPFoHc8NfA9uoYOg/WF0eXftpw=;
-        b=a4PHbquAvwpUVvLpkp7vauxQIyekf6HirgLiLaL/Tyt28fn33FwEW/GZpxkWCpHL1Z
-         OPhrj4kEoaDQGGaG5PDmBUCvgr14J/8yo4CgD+CcfyurwAGtzLf9Qfh7ax/Ae6DlKyYj
-         Z9zPYdTQ+zIWx1LjUTtOQN3baMB2EgM/DfEvtXkRRGlsyW+Z7RRbFgqTamtA9JHUBTx/
-         0JURELN6+BJ7b9Yc1JFn1tokwlAjoSJfpPTXWbq86c13IYxsMp9/N/lWGf/DKgWiVq6k
-         Ke6uUBkPtDXR8/lyLK4PKhlM3J0VBwkeqJqdtmTpKjBFoWg2zIJZ5Da/Mn3Pk2MJtq0r
-         KzRg==
-X-Gm-Message-State: AAQBX9cPFnNhvF27WMLCS9NbQhqiWr9jCb6s7/K21LZwz3gzuIjReiyb
-	CH8gvLkKSQojyTeTKdxlBEc=
-X-Google-Smtp-Source: AKy350aDaFJSJOJ7Uru86M1OtrOcJd6vzXZMOua1Cw1Olv1RS4PYAfP4YNznT2gZtEmV3ghHrGPU/g==
-X-Received: by 2002:a17:906:71d7:b0:8a6:5720:9101 with SMTP id i23-20020a17090671d700b008a657209101mr27504694ejk.4.1680253123346;
-        Fri, 31 Mar 2023 01:58:43 -0700 (PDT)
-Received: from skbuf ([188.27.184.189])
-        by smtp.gmail.com with ESMTPSA id x2-20020a170906296200b0092421bf4927sm764255ejd.95.2023.03.31.01.58.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 31 Mar 2023 01:58:43 -0700 (PDT)
-Date: Fri, 31 Mar 2023 11:58:40 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Hans Schultz <netdev@kapio-technology.com>
-Cc: Ido Schimmel <idosch@nvidia.com>, davem@davemloft.net, kuba@kernel.org,
-	netdev@vger.kernel.org, Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>, Eric Dumazet <edumazet@google.com>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	"maintainer:MICROCHIP KSZ SERIES ETHERNET SWITCH DRIVER" <UNGLinuxDriver@microchip.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	=?utf-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
-	Jiri Pirko <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
-	Shuah Khan <shuah@kernel.org>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	open list <linux-kernel@vger.kernel.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
-	"open list:RENESAS RZ/N1 A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>,
-	"moderated list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>,
-	"open list:KERNEL SELFTEST FRAMEWORK" <linux-kselftest@vger.kernel.org>
-Subject: Re: [PATCH v2 net-next 6/6] selftests: forwarding: add dynamic FDB
- test
-Message-ID: <20230331085840.5wfxsuj6u7hge2uj@skbuf>
-References: <20230318141010.513424-1-netdev@kapio-technology.com>
- <20230318141010.513424-7-netdev@kapio-technology.com>
- <ZBgdAo8mxwnl+pEE@shredder>
- <87a5zzh65p.fsf@kapio-technology.com>
- <ZCMYbRqd+qZaiHfu@shredder>
- <874jq22h2u.fsf@kapio-technology.com>
- <20230330192714.oqosvifrftirshej@skbuf>
- <874jq1mkm1.fsf@kapio-technology.com>
+	id 1piB2w-006fpU-2n;
+	Fri, 31 Mar 2023 09:27:48 +0000
+X-UUID: 47e67646cfa611edb7d8d11f642b8e78-20230331
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=avL8CU6kY5CS4NKIn08+zcUBC0UI/MDg7QxLShqe7BY=;
+	b=aRLXWOtfC9pfQlrLiiVitZq7A9juNIhcu8H9DoRQ1gzuQ4/xPZsN17/an3iMuvQiX8iPxnr8wFQPB2siAwY8XvldVFDsK2ATVo+J7pcK+OT/AtzN2zH6Dk7sjIrGp3GJFCaLpORy9TQitex6E746XLuB/B/UldCSm35StA0axNc=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22,REQID:dc0f6d4a-3c23-4583-b98a-ff0fd19226af,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:120426c,CLOUDID:11b184f7-ddba-41c3-91d9-10eeade8eac7,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: 47e67646cfa611edb7d8d11f642b8e78-20230331
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <bo.ye@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1536151633; Fri, 31 Mar 2023 02:27:39 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Fri, 31 Mar 2023 17:27:05 +0800
+Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Fri, 31 Mar 2023 17:27:04 +0800
+From: Bo Ye <bo.ye@mediatek.com>
+To: Jaegeuk Kim <jaegeuk@kernel.org>, Chao Yu <chao@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <yongdong.zhang@mediatek.com>, <peng.zhou@mediatek.com>,
+	<browse.zhang@mediatek.com>, <light.hsieh@mediatek.com>, Qilin Tan
+	<qilin.tan@mediatek.com>, <linux-f2fs-devel@lists.sourceforge.net>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+Subject: [PATCH 1/2] f2fs: fix iostat lock protection
+Date: Fri, 31 Mar 2023 17:26:56 +0800
+Message-ID: <20230331092658.72386-1-bo.ye@mediatek.com>
+X-Mailer: git-send-email 2.17.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <874jq1mkm1.fsf@kapio-technology.com>
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230331_015847_662623_A4A265D1 
-X-CRM114-Status: GOOD (  16.90  )
+X-CRM114-CacheID: sfid-20230331_022746_912930_767FF1D8 
+X-CRM114-Status: GOOD (  10.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,25 +83,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 31, 2023 at 09:43:34AM +0200, Hans Schultz wrote:
-> On Thu, Mar 30, 2023 at 22:27, Vladimir Oltean <olteanv@gmail.com> wrote:
-> > This is how I always run them, and it worked fine with both Debian
-> > (where it's easy to add missing packages to the rootfs) or with a more
-> > embedded-oriented Buildroot.
-> 
-> I am not entirely clear of your idea. You need somehow to boot into a
-> system with the patched net-next kernel
+From: Qilin Tan <qilin.tan@mediatek.com>
 
-You have to do that anyway for any kind of kernel work, no?
+Made iostat lock irq safe to avoid potentinal deadlock.
 
-> or you have a virtual machine boot into a virtual OS. I guess it is
-> the last option you refer to using Debian?
+Deadlock scenario:
+f2fs_attr_store
+  -> f2fs_sbi_store
+  -> _sbi_store
+  -> spin_lock(sbi->iostat_lock)
+    <interrupt request>
+    -> scsi_end_request
+    -> bio_endio
+    -> f2fs_dio_read_end_io
+    -> f2fs_update_iostat
+    -> spin_lock_irqsave(sbi->iostat_lock)  ===> Dead lock here
 
-You could do that too, but you don't have to. Debian, like many other
-Linux distributions, supports a wide variety of CPU architectures; it
-can be run on embedded systems just as well as on desktop PCs or VMs.
-I didn't say you have to use Debian, though, I just said I ran the
-selftests on a Debian-based rootfs and that it was easy to prepare the
-environment there. The Debian rootfs and the selftests were deployed to
-the target board with the DSA switch on it, in case that wasn't clear.
+Signed-off-by: Qilin Tan <qilin.tan@mediatek.com>
+---
+ fs/f2fs/sysfs.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/fs/f2fs/sysfs.c b/fs/f2fs/sysfs.c
+index 0b19163c90d4..fd238a68017e 100644
+--- a/fs/f2fs/sysfs.c
++++ b/fs/f2fs/sysfs.c
+@@ -575,9 +575,9 @@ static ssize_t __sbi_store(struct f2fs_attr *a,
+ 	if (!strcmp(a->attr.name, "iostat_period_ms")) {
+ 		if (t < MIN_IOSTAT_PERIOD_MS || t > MAX_IOSTAT_PERIOD_MS)
+ 			return -EINVAL;
+-		spin_lock(&sbi->iostat_lock);
++		spin_lock_irq(&sbi->iostat_lock);
+ 		sbi->iostat_period_ms = (unsigned int)t;
+-		spin_unlock(&sbi->iostat_lock);
++		spin_unlock_irq(&sbi->iostat_lock);
+ 		return count;
+ 	}
+ #endif
+-- 
+2.17.0
+
 
