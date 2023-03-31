@@ -4,71 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C5E2C76196
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Mar 2023 09:28:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55154C76196
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Mar 2023 09:33:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=avL8CU6kY5CS4NKIn08+zcUBC0UI/MDg7QxLShqe7BY=; b=Tu+LiW/+BVFRT0aj+2BKKuAG1i
-	qcEriQXfYlvLfa7Lv3WERYSh/yuPYFU5p6BiCc9z5EBY0h5QPYRkn3FfjSfEVd2r6HaneUjQGCnMl
-	XysXib2meWwOc0d0l6C7qqemWWTviaksOsUCEuPuTi9Bq+VBNn+fY64Cu7fYKg1CpYoHwP2+16zOV
-	Hu9Rn59XtQT91en0lupU79R1oFFEV6N4UinwNJAj8yeOlU2GdPu7x+Yw4+IQsXAgKQQHqUEtIdVye
-	3ytjHFNsGxD6tzIf4ZMw2QAfT450EJLgh0mF5azm3q02yQCmj66h+4AdRrTd8/Lrnqqq6ugYptRoU
-	l1F8zS9Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3gdxuNf+Axr67LtZ9uJ4KzAt1BhlIlNW7JVJbQsQ2a4=; b=ABBa5ZsnV+W2cuGiTeXumyVIuU
+	UopWt5IJje2TD6ITYuLMo7c1fDJVi3PR5lJmr1PndAcIuCtUvrrXyz316ngLl036IXSjUFMEQYqAY
+	nmohh8fmvefAWmToHXeXB+sry3ZX86AYG6Eztj1lMLlfTUPErjZYQigtTTRXa4omrTbE+OpQTdc5F
+	Va1yD8VcLXedOaog8urlEEzsqza3FcZe9qshEA6/bmasDG8Ck7Y8d9J24mN2Fes6XrUdhNO+2lRxV
+	l1hPncHd7RTU5zppLSqsIMY4Xp7m4+37f29uljd2UvkcElLXVtgKvadnpF/3GMAoCj/0Z2Yjzixbn
+	G97dNaTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1piB2z-006fsV-0o;
-	Fri, 31 Mar 2023 09:27:49 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1piB8h-006hHZ-11;
+	Fri, 31 Mar 2023 09:33:43 +0000
+Received: from lahtoruutu.iki.fi ([185.185.170.37])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1piB2w-006fpU-2n;
-	Fri, 31 Mar 2023 09:27:48 +0000
-X-UUID: 47e67646cfa611edb7d8d11f642b8e78-20230331
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=avL8CU6kY5CS4NKIn08+zcUBC0UI/MDg7QxLShqe7BY=;
-	b=aRLXWOtfC9pfQlrLiiVitZq7A9juNIhcu8H9DoRQ1gzuQ4/xPZsN17/an3iMuvQiX8iPxnr8wFQPB2siAwY8XvldVFDsK2ATVo+J7pcK+OT/AtzN2zH6Dk7sjIrGp3GJFCaLpORy9TQitex6E746XLuB/B/UldCSm35StA0axNc=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:dc0f6d4a-3c23-4583-b98a-ff0fd19226af,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:120426c,CLOUDID:11b184f7-ddba-41c3-91d9-10eeade8eac7,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: 47e67646cfa611edb7d8d11f642b8e78-20230331
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
-	(envelope-from <bo.ye@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1536151633; Fri, 31 Mar 2023 02:27:39 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Fri, 31 Mar 2023 17:27:05 +0800
-Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Fri, 31 Mar 2023 17:27:04 +0800
-From: Bo Ye <bo.ye@mediatek.com>
-To: Jaegeuk Kim <jaegeuk@kernel.org>, Chao Yu <chao@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <yongdong.zhang@mediatek.com>, <peng.zhou@mediatek.com>,
-	<browse.zhang@mediatek.com>, <light.hsieh@mediatek.com>, Qilin Tan
-	<qilin.tan@mediatek.com>, <linux-f2fs-devel@lists.sourceforge.net>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH 1/2] f2fs: fix iostat lock protection
-Date: Fri, 31 Mar 2023 17:26:56 +0800
-Message-ID: <20230331092658.72386-1-bo.ye@mediatek.com>
-X-Mailer: git-send-email 2.17.0
+	id 1piB8Y-006hD5-36;
+	Fri, 31 Mar 2023 09:33:38 +0000
+Received: from hillosipuli.retiisi.eu (82-181-192-243.bb.dnainternet.fi [82.181.192.243])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sailus)
+	by lahtoruutu.iki.fi (Postfix) with ESMTPSA id 4Pnw7y6y75z49QHd;
+	Fri, 31 Mar 2023 12:33:18 +0300 (EEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi; s=lahtoruutu;
+	t=1680255203;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=3gdxuNf+Axr67LtZ9uJ4KzAt1BhlIlNW7JVJbQsQ2a4=;
+	b=uXy9sQTh/lvsZhI8D39u2L7eRoKWTZqYrBObxWhgUi19wSqbDOo4bkQAA+JNPylXaevKjR
+	wX/cLSrqWnxfqJwi4d4ID9rAxNsHIQ112pOwbAz1+s30nbtRPb6oqSXDqy0o4h7CfBdn81
+	s1JlPIRZe3B6HLaH92Oc2D9xJ34xUDkPrP/OS869Ave1kMhR/xsCCUgB4wRAPKdfbzqn8Q
+	4NBmnKpHUV3JDk48b1eihaTahad1sEMxctjY6q+Mq3Mf/JTxKV3XBLkyiQBlnv++n6jGvW
+	yezJnJeADvPG6kYbfW+aVWBXvLybXRjXRe60kZFJgPe2xX0mMZR7Lch8VRNzcg==
+ARC-Seal: i=1; s=lahtoruutu; d=iki.fi; t=1680255203; a=rsa-sha256;
+	cv=none;
+	b=Y2mZwfIhcSXk29ca9bHqTLn/zar/UzrZyA15qi7nfy1qho/19EEqw6j7C++olU6O/EUuKU
+	B73TSoLjdSUX5WFyBllNzObNCbJXuRpOSRgBgBK3g8xAchzvJOMYNwAh/cO0vFbwaSOjLO
+	W57CeqdPyNDzZMbFKXxktS6jOQQf77Ed8EhR3rB1SsZFqGMfgZ1PCVbGLAnhW41lId6jf7
+	IB8nQDQboFRYhBKJR5eC2GYQbfmhaCsdtitIvOYg3sNpbt5sLSVuLlgp1bElmbkenu+2rB
+	oFaropMfL/y7VZmCxvcb3bmKAx/tUBavgkBuB4pwuJyqT4vlrmiCXgXks7v1EQ==
+ARC-Authentication-Results: i=1;
+	ORIGINATING;
+	auth=pass smtp.auth=sailus smtp.mailfrom=sakari.ailus@iki.fi
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi;
+	s=lahtoruutu; t=1680255203;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=3gdxuNf+Axr67LtZ9uJ4KzAt1BhlIlNW7JVJbQsQ2a4=;
+	b=E2uOv63ikqvai+QjOg9zREzxnZCJkC84meEtQzTTa7nzCuzXVI/dbifCOExzIHLQM+BepV
+	EhNPoaAmQE2hr0gXNblU6SPC5ScIEEimrRd6DPY63TxoJS0wWHczl2ukMPynVMubfz6EpD
+	+T6xspQJ+7wT8ELSfD0u8gPTVc0hH6hzm3iHcSdXGG24mqVNCEDwlhgjnLaH+fGLfKAhaa
+	JmbkXn/Bp2/+tNw6qjbUHnekPOVMDTR/SQcDPFtlSFpR8xDynoJrmaIN2I5J4xnWeLb3wS
+	U/KGktAh2MVh6tv7vpwbCl7mMQXJIK4IMlAWJDRshfxdjuNAysNfaJKHXHR4xg==
+Received: from valkosipuli.retiisi.eu (valkosipuli.localdomain [192.168.4.2])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by hillosipuli.retiisi.eu (Postfix) with ESMTPS id D0C70634C99;
+	Fri, 31 Mar 2023 12:31:03 +0300 (EEST)
+Date: Fri, 31 Mar 2023 12:31:03 +0300
+From: Sakari Ailus <sakari.ailus@iki.fi>
+To: Rob Herring <robh@kernel.org>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Joe Tessler <jrt@google.com>,
+	Dongchun Zhu <dongchun.zhu@mediatek.com>,
+	Jacopo Mondi <jacopo+renesas@jmondi.org>,
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+	Niklas =?iso-8859-1?Q?S=F6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>, Robert Foss <rfoss@kernel.org>,
+	Todor Tomov <todor.too@gmail.com>, Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Stanimir Varbanov <stanimir.k.varbanov@gmail.com>,
+	Vikash Garodia <quic_vgarodia@quicinc.com>,
+	Heiko Stuebner <heiko@sntech.de>, Benoit Parrot <bparrot@ti.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] media: dt-bindings: Drop unneeded quotes
+Message-ID: <ZCaoVwRuxVOTZdI4@valkosipuli.retiisi.eu>
+References: <20230320233944.2920964-1-robh@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230320233944.2920964-1-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230331_022746_912930_767FF1D8 
-X-CRM114-Status: GOOD (  10.60  )
+X-CRM114-CacheID: sfid-20230331_023335_208557_78D17EAB 
+X-CRM114-Status: GOOD (  10.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,44 +136,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Qilin Tan <qilin.tan@mediatek.com>
+Hi Rob,
 
-Made iostat lock irq safe to avoid potentinal deadlock.
+On Mon, Mar 20, 2023 at 06:39:42PM -0500, Rob Herring wrote:
+> Cleanup bindings dropping unneeded quotes. Once all these are fixed,
+> checking for this can be enabled in yamllint.
+> 
+> Signed-off-by: Rob Herring <robh@kernel.org>
 
-Deadlock scenario:
-f2fs_attr_store
-  -> f2fs_sbi_store
-  -> _sbi_store
-  -> spin_lock(sbi->iostat_lock)
-    <interrupt request>
-    -> scsi_end_request
-    -> bio_endio
-    -> f2fs_dio_read_end_io
-    -> f2fs_update_iostat
-    -> spin_lock_irqsave(sbi->iostat_lock)  ===> Dead lock here
+This patch contains changes to Qualcomm bindings that have been already
+made by other patches by Krzysztof. I think these took some time to get
+merged to the media tree.
 
-Signed-off-by: Qilin Tan <qilin.tan@mediatek.com>
----
- fs/f2fs/sysfs.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+I've dropped those, the result is here:
 
-diff --git a/fs/f2fs/sysfs.c b/fs/f2fs/sysfs.c
-index 0b19163c90d4..fd238a68017e 100644
---- a/fs/f2fs/sysfs.c
-+++ b/fs/f2fs/sysfs.c
-@@ -575,9 +575,9 @@ static ssize_t __sbi_store(struct f2fs_attr *a,
- 	if (!strcmp(a->attr.name, "iostat_period_ms")) {
- 		if (t < MIN_IOSTAT_PERIOD_MS || t > MAX_IOSTAT_PERIOD_MS)
- 			return -EINVAL;
--		spin_lock(&sbi->iostat_lock);
-+		spin_lock_irq(&sbi->iostat_lock);
- 		sbi->iostat_period_ms = (unsigned int)t;
--		spin_unlock(&sbi->iostat_lock);
-+		spin_unlock_irq(&sbi->iostat_lock);
- 		return count;
- 	}
- #endif
+<URL:https://git.linuxtv.org/sailus/media_tree.git/commit/?id=d75cae0884e80bba486f85e82b33a1dae3c9c976>
+
 -- 
-2.17.0
+Kind regards,
 
+Sakari Ailus
 
