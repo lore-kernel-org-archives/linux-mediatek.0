@@ -4,88 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBA7DC6FD18
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Mar 2023 10:56:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2401C76196
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Mar 2023 10:58:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vZU9pqSmJFWScbRHErpBRLTTVYGZxJgYc6ooM9EOJFo=; b=nOkp3gIVISl/6QBMgDNIhwzuAN
-	e3lkzrfqeagN1oLasfdd+bCXq9Bi/+EZcnlWfSkFhjSzkn+bW7iBJB7/2xJHu61+ptU/IFGcNzPYY
-	n4sCeQoJlb4DGAXgUOnShFk5L3++GaWsG2TB6DoMaCDFLKZcjaS+fMpCIvuG4E6SwS7h8Iqu4l+cN
-	Ntwzac+7YAP6yNWLo9u3cfe+xBomVkBKfD98GsnAdb1P8smo3bVjfdJGPV98/KX4uPdlAn0jcdKjN
-	wvTvwhWphh7q6tT/5P2pwYH6HqiSi4PDg0nOQgLc4HAx9ALt+SUiFFZ56M95iPvgbz9iD3R39DU4j
-	ZU21EpRQ==;
+	bh=ruVZ+nqpPxejELcPa+QVovP9EcRxs5XzTtjPXBzPybw=; b=085iqiX/RmPmAuIO5OwTEAxYW3
+	TqVOGe5rgdUiJAtE4O+jV0TMKjGlVhl3JY5xeQ5vxE/Q2jwswses8tzdrdfM2aH7FIulWdBsOnEQD
+	F6ag0jN2Vf8du00xGQQdpQnKG/la/IWY0HdSnxuy4zQAhRXZpunTj8190pNSj2K8oTjv93Bw9sxYM
+	sXcEw1vGi7d61os6erXIv2NM6tMYdZU2gFw24mMazbzcsDBCT3SgF9yVzJZJ6XFk3mx+GkkhRGPe6
+	6blV65IXv6fuccIasnR3I3Y08ef0U5KleDHAF+HLP5SkZBWzmHbZycBMwz2cTAGWCXyqyUN119RN2
+	uGAuxqjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1piCQz-0070pU-1N;
-	Fri, 31 Mar 2023 10:56:41 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1piCSI-0071CW-2d;
+	Fri, 31 Mar 2023 10:58:02 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1piCQw-0070oH-1p
-	for linux-mediatek@lists.infradead.org;
-	Fri, 31 Mar 2023 10:56:39 +0000
-Received: by mail-wm1-x332.google.com with SMTP id d11-20020a05600c3acb00b003ef6e6754c5so9617428wms.5
-        for <linux-mediatek@lists.infradead.org>; Fri, 31 Mar 2023 03:56:35 -0700 (PDT)
+	id 1piCSC-00719V-2v;
+	Fri, 31 Mar 2023 10:57:59 +0000
+Received: by mail-wm1-x334.google.com with SMTP id v6-20020a05600c470600b003f034269c96so3345798wmo.4;
+        Fri, 31 Mar 2023 03:57:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1680260195;
+        d=gmail.com; s=20210112; t=1680260275;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=vZU9pqSmJFWScbRHErpBRLTTVYGZxJgYc6ooM9EOJFo=;
-        b=a5YYtQaitITpatbAMwu7SUclPfEBUIKxeJhiA0fQkPl/XebHkXu+q2il+sMxop645y
-         kmaXkz15ka80OmpIypiZDmZaRhmt6QgYfRwiSkMjegbxDEjVU9VTl4BUbXtPT4i2CeUb
-         PM1BVBi1vjuWl4QezZ+0e6aUa9klF9U2MVlwgIfiqSbXPm7bwCd+7zcsBkkoyxEVkny/
-         ocY6y5CLUOq/fK1Jl0b/3bVAJB23LnobybPaEQBgRilZFyd2XqaKpRGFhY76y0Vi7llm
-         pqVD5DuWTSsLfPT9tIsCZMkkWelCDqlOy/nSJMAUv6o4l3Hp4g9L97BYFbN36ae+4YfY
-         Q5lQ==
+        bh=ruVZ+nqpPxejELcPa+QVovP9EcRxs5XzTtjPXBzPybw=;
+        b=STGlQbl5pdqAFFPeA9oH+J5ICEFK3qkxQEvxknmC4v2OlpiSrx877BUe9QlCmArIRa
+         PoVbu3en0sjd/b4Iokb1AiZ2ClE2HLGtYEN2xQ0DkUxDUj7G71wCC5b4zg2OJHG5ka4i
+         qAeJszAOv1lbO7hwrOLAZvzj/KJOb0f9AOJO2Wmieh5Yh9VEZGAUJKlRs3fqIN+KVEgf
+         UaZFhEvHrXoZ8dbanR0Z2ODNhcRELXvdARzimA772eEt75Se2cZ4F8/2NTKqzMuwj7Gk
+         MU9RrX0CCqcV4b9bcBrDbxMjljcjBRfZHcNuSWbI+UQCmeOUO70voDs6hLJCgUM/SV62
+         6HzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680260195;
+        d=1e100.net; s=20210112; t=1680260275;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=vZU9pqSmJFWScbRHErpBRLTTVYGZxJgYc6ooM9EOJFo=;
-        b=QJzGGAG+8O7iuwxlICqhGg9ZLnNkA8qQdjP2MSN7VgZoj1GsKhJIP/5DktwvnCD/ym
-         G0TWn/w3tLVB3qh6ydFqxl3xJOKX+8N13NcWcAPnMnSp1HCbc4hC7ezaTiCZu0UDHxL6
-         SRZdlCKdPOu4+CaYr91tcyz56fnKBye9CIyQ8Oci1oGBxNzwGWUafE9VasoJPGtNWhjW
-         8chAGoEwET5OzygsM//wgqlmlgTsTb/HMuP6v8AxoOzJSblGueRA6ul/7NvlevZ8GeUh
-         zhUlkSXLHo68zDEu20ifwUPepK5C/IdU6QY4c7g4AYWd4hTWEx9gRx5LeTlQ1GpOpLX8
-         7QHQ==
-X-Gm-Message-State: AO0yUKXtY6dH54VNLzQ5dHlfEV+whIOM8rLTv5s36GaKV7rPJdeQXeTa
-	5qlODx0CK6jhTPq3BONFu7w=
-X-Google-Smtp-Source: AK7set8h2IuPF/9IdjhnSRSd7WIlTiiKTDb6jgTDgpp76wEIcv6kA5w6f0BVtbmp63oifX4/aE3nCw==
-X-Received: by 2002:a7b:c853:0:b0:3ed:ca62:418e with SMTP id c19-20020a7bc853000000b003edca62418emr19677202wml.9.1680260194637;
-        Fri, 31 Mar 2023 03:56:34 -0700 (PDT)
+        bh=ruVZ+nqpPxejELcPa+QVovP9EcRxs5XzTtjPXBzPybw=;
+        b=GgtjLKcmuhhnYjt9W+HXhVJ0+x176uxIVu2jlnFhzjZ/bgVKMofDkNdm+r6lmIkyHh
+         iwuhdipcWHmW9tWUfGJXLZuIwrtsETouP7OzuvrJwiwtD8jCud1+h00QPyOW4Tl30+nb
+         sAe/thzC93aTHlZG0WXraA/3c6KbYTGNaqj/DwXXcp9Qk5IsfeZ/mcbayo7OOTmsqrso
+         pKFEWBpvCyR23E9melVKWe+vjOC5MMF4jye+O8N81lAsU/LED5CS4Gvhs/uP7uQpgsNP
+         SikzqfFqC0YSPLGoh+Ed1N6qt1uCmKLKeuzq1xUBm9rWrSLTZ0fDhDZS4S/rkfwAhD3b
+         RjRQ==
+X-Gm-Message-State: AO0yUKVUCFk+rupUI+J5dk9RGWZpDiCvnTIlBoh82DySj8EuekDEzpP4
+	CfTAAtzf5bgczyMBfzqLOpTyQAtQTJjm0Q==
+X-Google-Smtp-Source: AK7set/NThtTJbIt9LOK6pAdTg6KLO5h2EdvVtCl5moj2821TwWnFFcOLxxqECrDAvoDTccyuFfKOw==
+X-Received: by 2002:a05:600c:22d5:b0:3ee:3d2d:841a with SMTP id 21-20020a05600c22d500b003ee3d2d841amr21155578wmg.24.1680260275314;
+        Fri, 31 Mar 2023 03:57:55 -0700 (PDT)
 Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id q3-20020a05600c46c300b003ebf73acf9asm16683148wmo.3.2023.03.31.03.56.32
+        by smtp.gmail.com with ESMTPSA id y22-20020a7bcd96000000b003ee42696acesm2300375wmj.16.2023.03.31.03.57.53
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 31 Mar 2023 03:56:33 -0700 (PDT)
-Message-ID: <68a51c57-ba63-94c3-3ca3-f7d4ab4984ae@gmail.com>
-Date: Fri, 31 Mar 2023 12:56:32 +0200
+        Fri, 31 Mar 2023 03:57:54 -0700 (PDT)
+Message-ID: <b90a3440-53f8-9384-155a-f7ac2b7f2e9c@gmail.com>
+Date: Fri, 31 Mar 2023 12:57:53 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.1
-Subject: Re: [PATCH net-next 10/10] arm64: dts: mt7986: move dlm in a
- dedicated node
+Subject: Re: [PATCH v9 02/11] arm64: dts: mediatek: Update the node name of
+ SCP rpmsg subnode
 Content-Language: en-US
-To: Lorenzo Bianconi <lorenzo@kernel.org>, netdev@vger.kernel.org
-Cc: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, linux-mediatek@lists.infradead.org, nbd@nbd.name,
- john@phrozen.org, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
- lorenzo.bianconi@redhat.com, daniel@makrotopia.org,
- krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
- devicetree@vger.kernel.org
-References: <cover.1679330630.git.lorenzo@kernel.org>
- <d74e38de00ad1b858b59a7ef6cb02321b0faf750.1679330630.git.lorenzo@kernel.org>
+To: Tinghan Shen <tinghan.shen@mediatek.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Mathieu Poirier <mathieu.poirier@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20230328022733.29910-1-tinghan.shen@mediatek.com>
+ <20230328022733.29910-3-tinghan.shen@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <d74e38de00ad1b858b59a7ef6cb02321b0faf750.1679330630.git.lorenzo@kernel.org>
+In-Reply-To: <20230328022733.29910-3-tinghan.shen@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230331_035638_606959_E88D6311 
-X-CRM114-Status: GOOD (  13.84  )
+X-CRM114-CacheID: sfid-20230331_035757_811034_D10B0688 
+X-CRM114-Status: GOOD (  14.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,85 +104,43 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 20/03/2023 17:58, Lorenzo Bianconi wrote:
-> Since the dlm memory region is not part of the RAM SoC, move dlm in a
-> deidicated syscon node.
-> This patch helps to keep backward-compatibility with older version of
-> uboot codebase where we have a limit of 8 reserved-memory dts child
-> nodes.
+On 28/03/2023 04:27, Tinghan Shen wrote:
+> Align the node name with the definition in SCP bindings.
 > 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
 
 > ---
->   arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 30 ++++++++++++-----------
->   1 file changed, 16 insertions(+), 14 deletions(-)
+>   arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi   | 2 +-
+>   arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 2 +-
+>   2 files changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-> index a0d96d232ee5..0ae6aa59d3c6 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-> @@ -93,16 +93,6 @@ wo_data: wo-data@4fd80000 {
->   			reg = <0 0x4fd80000 0 0x240000>;
->   			no-map;
->   		};
-> -
-> -		wo_dlm0: wo-dlm@151e8000 {
-> -			reg = <0 0x151e8000 0 0x2000>;
-> -			no-map;
-> -		};
-> -
-> -		wo_dlm1: wo-dlm@151f8000 {
-> -			reg = <0 0x151f8000 0 0x2000>;
-> -			no-map;
-> -		};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> index fbe14b13051a..a259eb043de5 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> @@ -810,7 +810,7 @@
+>   	pinctrl-names = "default";
+>   	pinctrl-0 = <&scp_pins>;
+>   
+> -	cros_ec {
+> +	cros-ec-rpmsg {
+>   		compatible = "google,cros-ec-rpmsg";
+>   		mediatek,rpmsg-name = "cros-ec-rpmsg";
 >   	};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+> index 9f12257ab4e7..8f14b633c1e1 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+> @@ -1260,7 +1260,7 @@
+>   	pinctrl-names = "default";
+>   	pinctrl-0 = <&scp_pins>;
 >   
->   	timer {
-> @@ -444,10 +434,11 @@ wed0: wed@15010000 {
->   			reg = <0 0x15010000 0 0x1000>;
->   			interrupt-parent = <&gic>;
->   			interrupts = <GIC_SPI 205 IRQ_TYPE_LEVEL_HIGH>;
-> -			memory-region = <&wo_emi0>, <&wo_dlm0>, <&wo_data>;
-> -			memory-region-names = "wo-emi", "wo-dlm", "wo-data";
-> +			memory-region = <&wo_emi0>, <&wo_data>;
-> +			memory-region-names = "wo-emi", "wo-data";
->   			mediatek,wo-ccif = <&wo_ccif0>;
->   			mediatek,wo-ilm = <&wo_ilm0>;
-> +			mediatek,wo-dlm = <&wo_dlm0>;
->   			mediatek,wo-cpuboot = <&wo_cpuboot>;
->   		};
->   
-> @@ -457,10 +448,11 @@ wed1: wed@15011000 {
->   			reg = <0 0x15011000 0 0x1000>;
->   			interrupt-parent = <&gic>;
->   			interrupts = <GIC_SPI 206 IRQ_TYPE_LEVEL_HIGH>;
-> -			memory-region = <&wo_emi1>, <&wo_dlm1>, <&wo_data>;
-> -			memory-region-names = "wo-emi", "wo-dlm", "wo-data";
-> +			memory-region = <&wo_emi1>, <&wo_data>;
-> +			memory-region-names = "wo-emi", "wo-data";
->   			mediatek,wo-ccif = <&wo_ccif1>;
->   			mediatek,wo-ilm = <&wo_ilm1>;
-> +			mediatek,wo-dlm = <&wo_dlm1>;
->   			mediatek,wo-cpuboot = <&wo_cpuboot>;
->   		};
->   
-> @@ -488,6 +480,16 @@ wo_ilm1: syscon@151f0000 {
->   			reg = <0 0x151f0000 0 0x8000>;
->   		};
->   
-> +		wo_dlm0: syscon@151e8000 {
-> +			compatible = "mediatek,mt7986-wo-dlm", "syscon";
-> +			reg = <0 0x151e8000 0 0x2000>;
-> +		};
-> +
-> +		wo_dlm1: syscon@151f8000 {
-> +			compatible = "mediatek,mt7986-wo-dlm", "syscon";
-> +			reg = <0 0x151f8000 0 0x2000>;
-> +		};
-> +
->   		wo_cpuboot: syscon@15194000 {
->   			compatible = "mediatek,mt7986-wo-cpuboot", "syscon";
->   			reg = <0 0x15194000 0 0x1000>;
+> -	cros-ec {
+> +	cros-ec-rpmsg {
+>   		compatible = "google,cros-ec-rpmsg";
+>   		mediatek,rpmsg-name = "cros-ec-rpmsg";
+>   	};
 
