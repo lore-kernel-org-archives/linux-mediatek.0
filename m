@@ -4,87 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C588AC761A6
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Mar 2023 17:44:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC118C76196
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Mar 2023 17:51:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VXNcjohZysdJFTpfz0Tp4bdKAzd73WpdyuV554RNSZw=; b=tEfAhTV7NyyLZei+MJSxKnhqm0
-	zn7vnK4XD7eUN2VcySJ64nb3St7VWcoQadf3a+GUNIv/IFmCP8CV1hJiRsu6bkzYyAaWIQaWvlzdu
-	vzdhb/JzT/m9XJozfZflM1ZvDP7TLbY8QdAV7KglT8o73WGBO2DvcIe38rR81tHjb2kjoXFomSjYt
-	/TQ1m2V/R4My/+t4cuTP6aevE+HFTtS1v1fWz+G7TWU4UB7i2vEBr+32OtMLPpG5g64xD/zky729c
-	6tbTXJaYehes6fqIp8INzStEckpHriRoGfaZiksIX/0QL8d0mLADxxSH3sB2Pn0s08SWodiRayPeJ
-	yOAQgTiw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QOsJVLNV3+8fzg2WVgYT6QH9y+i4e/+1YV4NKgsfyIU=; b=Of1y7UT0BnxCJu07pIEHYEVyJS
+	alm7UTRvLYiaPTSKOlZHBB3DQqz80DGSc7ZV6q+Q1wj1Eg4usqTJLbE40cjJj+2Cfnhp/2JDC/SI+
+	ArY7QapH3F9VKU2pYjLJo2AcZT/RiBmdEVPlA67eqHG+UU3dSp59R23NnRidehUkpEGfwOEr8+yu+
+	wLKzBxV8wvlq1xYQDH9TLMQeR4L0bHf5JDvwVBfGBLulMnLjpF3g2j6/VZHM/8Akvjp+QzQ49Tn+C
+	GbdS9VgDzlMhOqgSEUgZoe4lNTpHCEga4BNrd5j4awVLesCwYHzOAjuJ6FM/XQAdoP91nS+7OpDy4
+	V8ysoYUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1piIno-008Kfr-2Q;
-	Fri, 31 Mar 2023 17:44:40 +0000
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+	id 1piIue-008LvT-0R;
+	Fri, 31 Mar 2023 17:51:44 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1piInk-008Kdn-2j
-	for linux-mediatek@lists.infradead.org;
-	Fri, 31 Mar 2023 17:44:38 +0000
-Received: by mail-pl1-x62a.google.com with SMTP id c18so21931374ple.11
-        for <linux-mediatek@lists.infradead.org>; Fri, 31 Mar 2023 10:44:35 -0700 (PDT)
+	id 1piIua-008Ltw-3A;
+	Fri, 31 Mar 2023 17:51:42 +0000
+Received: by mail-wm1-x334.google.com with SMTP id o24-20020a05600c511800b003ef59905f26so14371175wms.2;
+        Fri, 31 Mar 2023 10:51:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1680284675;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=VXNcjohZysdJFTpfz0Tp4bdKAzd73WpdyuV554RNSZw=;
-        b=ExGm85KLhOefR0naD5/e5ZoclYAwGcnNGljHYGEIIm7cw6Blt50uY529QZCw5rjKSK
-         tz+kzOKriH34/bYLdt7XVzHdiygYMt8NsKcP8cBW6F465c7HwXEAbIIoufu1l5RHyIYP
-         hsdga9hL/Cz5emQyXePhwVEMuMUHXOjvvK1nhTnYozQhhCkz8qBOeHAdV7GLE9AZ3mVs
-         S+jdkpW16u0TaneLV1wvF2y+XGLEDOblMiABLFO+6J54bpXjx4/x6v1dIjlfzBGsBV8Y
-         wm/khn4tH7j8HStsKWEGQR6MVS4sdMyNmNq3/gYCQiYau7MMlmvAxw5BsK/S9kxthX8x
-         4qew==
+        d=gmail.com; s=20210112; t=1680285096;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=QOsJVLNV3+8fzg2WVgYT6QH9y+i4e/+1YV4NKgsfyIU=;
+        b=UQfsgOE9zWKSVm7VgqAUlMS6A5K0moAw7rhqbNGiP69ZoKSDDhgZXqEPnSsMQ68IJ7
+         uWaRpgAIUiC9qAJqNAhYdVzfwr0h3JTrAtRrRFMh5YAzqTqGdOHZzKYQ9v+ZLFishvip
+         b71sXRpxuQ2rEgDfYNljsi3yaGW3CbBDyHAz+hp7tq/EsoRZ0qwDVS0L5mAUAnUrHT1E
+         g73XdSJ4NgCL5/1tnz8f+9e5oX1fNkp/uJtIN76/COQSV/tIO/avQYtEtbx0EA5px9ik
+         wfAm7JraN/IiTaf+v6BJ4axOVJ/aC4DnzyyYTV17ZdHRSyp/oCx1zt/CHvhGlm2CKVpg
+         h+3g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680284675;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=VXNcjohZysdJFTpfz0Tp4bdKAzd73WpdyuV554RNSZw=;
-        b=fs8rlsUfZV03ChBljEWVhBB11wlE9amTEuZ7ukVqF6TxsbwxuIUw/md5hywD+mNd9N
-         ZhdsYw78qKXeYnxoOwNnMinR3LM0APnU3IOL1ffWIwn6iQ8GH2d2dy8V4n2D7Oli/K5u
-         th7SueJnApMkO1o8CCHL6XKOhp9VFvZgVQ+4Z7HyrDhaHriMpAZmF7sJ5v3h70EfTAn/
-         9FRBJbZxgrhwa+VJ9cSmTQahVuWPXB8Uuq8CN7sCIwB5rGlH6djgf0uz7M7TzXgIGUvE
-         5lnp4Jt6N+ZlhwEyEe0Aw+7g5r3AhYguBGbmpXI2WBOvGhN/ppFxfkftNUl9aS6rFpi8
-         98sA==
-X-Gm-Message-State: AAQBX9cQSXeTVzUjThTJdm4cc70Ervk3XZ3biAdY9CEpa0JVbmrvc9sD
-	aPbRkzTjo1vaEKwfMGEopsxoaw==
-X-Google-Smtp-Source: AKy350a04fGm/Zt+9yziHzr+NnMQiLRNR11nrRqTIIbvqLXNxUwZ0/vkFHf67U5CbG9I5CLxWvU4VQ==
-X-Received: by 2002:a17:903:2441:b0:1a2:7462:d674 with SMTP id l1-20020a170903244100b001a27462d674mr9996089pls.24.1680284674722;
-        Fri, 31 Mar 2023 10:44:34 -0700 (PDT)
-Received: from p14s ([2604:3d09:148c:c800:f19d:e1b1:6a5d:8ade])
-        by smtp.gmail.com with ESMTPSA id q9-20020a170902788900b001a20b31a23fsm1816496pll.293.2023.03.31.10.44.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 31 Mar 2023 10:44:34 -0700 (PDT)
-Date: Fri, 31 Mar 2023 11:44:31 -0600
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: Tinghan Shen <tinghan.shen@mediatek.com>
-Cc: Bjorn Andersson <andersson@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v9 05/11] remoteproc: mediatek: Extract remoteproc
- initialization flow
-Message-ID: <20230331174431.GA3504605@p14s>
-References: <20230328022733.29910-1-tinghan.shen@mediatek.com>
- <20230328022733.29910-6-tinghan.shen@mediatek.com>
+        d=1e100.net; s=20210112; t=1680285096;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=QOsJVLNV3+8fzg2WVgYT6QH9y+i4e/+1YV4NKgsfyIU=;
+        b=C99uSHnx3TrXIjVvx3j4xHFKCos+pMtAskfdGc2llw5Ei14vKMhz3u1DQybI0gIuHd
+         kE9HcrCcfCJHBl6IuQVOlST7Vpd+s/ymJvSqtzY53p6gvCLxT5RH5BlmYgLyEMk2pCx7
+         9bwRUv6qsbksQjpW/12h6MRLGSVk88WX9HFGc19+pH3t5+k6GMfMY+6Y5Ng+fUfFsjrJ
+         Wt+htiMWTT25Q151RRferHBkFwWmuq3EXwxb6QAnof1GYKm7K2jZFiXHReGvwQ1px5oF
+         gq14d8nzg7ZcKmc9DVhYJLTQyzqKK6Bgt74Koh9w6himWf1HOPkjP2zpvAd1CzQXodLq
+         PyDg==
+X-Gm-Message-State: AO0yUKWCxle3lmAhWmgFvrjGSq64cjArX2XuV+UvI4aLApX3k0z9jijw
+	llk+2WAhJ6Q1CXciIOqeor8=
+X-Google-Smtp-Source: AK7set9qL57gN72OV9S+5J0UH2Mo0pOzFKVUyACDaKG9cENwMUTAiW0fK4UhZJR7VMOAvyIF4sA6Qg==
+X-Received: by 2002:a7b:c850:0:b0:3ee:93c8:4a6f with SMTP id c16-20020a7bc850000000b003ee93c84a6fmr21425955wml.32.1680285096304;
+        Fri, 31 Mar 2023 10:51:36 -0700 (PDT)
+Received: from [192.168.2.177] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id p12-20020a05600c358c00b003ef6f87118dsm10827597wmq.42.2023.03.31.10.51.33
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 31 Mar 2023 10:51:35 -0700 (PDT)
+Message-ID: <42193fd5-b1f3-81ff-f76f-b11490ef2a94@gmail.com>
+Date: Fri, 31 Mar 2023 19:51:33 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230328022733.29910-6-tinghan.shen@mediatek.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [PATCH 15/21] dt-bindings: soc: mediatek: add display mutex for
+ MT8365 SoC
+Content-Language: en-US
+To: Alexandre Mergnat <amergnat@baylibre.com>, Daniel Vetter
+ <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>,
+ Jitao Shi <jitao.shi@mediatek.com>, Thierry Reding
+ <thierry.reding@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Sam Ravnborg <sam@ravnborg.org>, Rob Herring <robh+dt@kernel.org>,
+ =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, David Airlie <airlied@gmail.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Xinlei Lee <xinlei.lee@mediatek.com>
+Cc: Guillaume La Roque <glaroque@baylibre.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ dri-devel@lists.freedesktop.org, Fabien Parent <fparent@baylibre.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, linux-pwm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+References: <20230220-display-v1-0-45cbc68e188b@baylibre.com>
+ <20230220-display-v1-15-45cbc68e188b@baylibre.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20230220-display-v1-15-45cbc68e188b@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230331_104436_885812_0D735860 
-X-CRM114-Status: GOOD (  26.83  )
+X-CRM114-CacheID: sfid-20230331_105141_020780_21449D24 
+X-CRM114-Status: GOOD (  12.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,131 +106,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 28, 2023 at 10:27:27AM +0800, Tinghan Shen wrote:
-> This is the preparation for probing multi-core SCP. The remoteproc
-> initialization flow is similar on cores and is reused to avoid
-> redundant code.
+
+
+On 09/03/2023 15:23, Alexandre Mergnat wrote:
+> Add compatible for the MT8365 SoC.
 > 
-> The registers of config and l1tcm are shared for multi-core
-> SCP. Reuse the mapped addresses for all cores.
-> 
-> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+
+Applied, thanks!
+
 > ---
->  drivers/remoteproc/mtk_scp.c | 64 +++++++++++++++++++++++++-----------
->  1 file changed, 45 insertions(+), 19 deletions(-)
+>   Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml | 1 +
+>   1 file changed, 1 insertion(+)
 > 
-> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> index a3b9bc158cd9..32ecd1450c6f 100644
-> --- a/drivers/remoteproc/mtk_scp.c
-> +++ b/drivers/remoteproc/mtk_scp.c
-> @@ -23,6 +23,13 @@
->  #define MAX_CODE_SIZE 0x500000
->  #define SECTION_NAME_IPI_BUFFER ".ipi_buffer"
->  
-> +struct mtk_scp_of_regs {
-> +	void __iomem *reg_base;
-> +	void __iomem *l1tcm_base;
-> +	size_t l1tcm_size;
-> +	phys_addr_t l1tcm_phys;
-> +};
-> +
-
-This should represent the cluster with a list of mtk_scp instead of @cluster_cores as
-introduced in the next patch.
-
->  /**
->   * scp_get() - get a reference to SCP.
->   *
-> @@ -855,7 +862,8 @@ static void scp_remove_rpmsg_subdev(struct mtk_scp *scp)
->  	}
->  }
->  
-> -static int scp_probe(struct platform_device *pdev)
-> +static int scp_rproc_init(struct platform_device *pdev,
-> +			  struct mtk_scp_of_regs *of_regs)
->  {
->  	struct device *dev = &pdev->dev;
->  	struct device_node *np = dev->of_node;
-> @@ -879,6 +887,11 @@ static int scp_probe(struct platform_device *pdev)
->  	scp->data = of_device_get_match_data(dev);
->  	platform_set_drvdata(pdev, scp);
->  
-> +	scp->reg_base = of_regs->reg_base;
-> +	scp->l1tcm_base = of_regs->l1tcm_base;
-> +	scp->l1tcm_size = of_regs->l1tcm_size;
-> +	scp->l1tcm_phys = of_regs->l1tcm_phys;
-> +
->  	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "sram");
->  	scp->sram_base = devm_ioremap_resource(dev, res);
->  	if (IS_ERR(scp->sram_base))
-> @@ -888,24 +901,6 @@ static int scp_probe(struct platform_device *pdev)
->  	scp->sram_size = resource_size(res);
->  	scp->sram_phys = res->start;
->  
-> -	/* l1tcm is an optional memory region */
-> -	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "l1tcm");
-> -	scp->l1tcm_base = devm_ioremap_resource(dev, res);
-> -	if (IS_ERR(scp->l1tcm_base)) {
-> -		ret = PTR_ERR(scp->l1tcm_base);
-> -		if (ret != -EINVAL) {
-> -			return dev_err_probe(dev, ret, "Failed to map l1tcm memory\n");
-> -		}
-> -	} else {
-
-                scp->l1tcm_base = NULL;
-
-> -		scp->l1tcm_size = resource_size(res);
-> -		scp->l1tcm_phys = res->start;
-> -	}
-> -
-> -	scp->reg_base = devm_platform_ioremap_resource_byname(pdev, "cfg");
-> -	if (IS_ERR(scp->reg_base))
-> -		return dev_err_probe(dev, PTR_ERR(scp->reg_base),
-> -				     "Failed to parse and map cfg memory\n");
-> -
->  	ret = scp->data->scp_clk_get(scp);
->  	if (ret)
->  		return ret;
-> @@ -957,6 +952,37 @@ static int scp_probe(struct platform_device *pdev)
->  	return ret;
->  }
->  
-> +static int scp_probe(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct mtk_scp_of_regs scp_regs;
-> +	struct resource *res;
-> +	int ret;
-> +
-> +	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "cfg");
-> +	scp_regs.reg_base = devm_ioremap_resource(dev, res);
-> +	if (IS_ERR(scp_regs.reg_base))
-> +		return dev_err_probe(dev, PTR_ERR(scp_regs.reg_base),
-> +				     "Failed to parse and map cfg memory\n");
-> +
-> +	/* l1tcm is an optional memory region */
-> +	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "l1tcm");
-> +	scp_regs.l1tcm_base = devm_ioremap_resource(dev, res);
-> +	if (IS_ERR(scp_regs.l1tcm_base)) {
-> +		ret = PTR_ERR(scp_regs.l1tcm_base);
-> +		if (ret != -EINVAL)
-> +			return dev_err_probe(dev, ret, "Failed to map l1tcm memory\n");
-> +
-> +		scp_regs.l1tcm_size = 0;
-> +		scp_regs.l1tcm_phys = 0;
-> +	} else {
-> +		scp_regs.l1tcm_size = resource_size(res);
-> +		scp_regs.l1tcm_phys = res->start;
-> +	}
-> +
-> +	return scp_rproc_init(pdev, &scp_regs);
-> +}
-> +
->  static int scp_remove(struct platform_device *pdev)
->  {
->  	struct mtk_scp *scp = platform_get_drvdata(pdev);
-> -- 
-> 2.18.0
+> diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+> index ca0ca549257d..931d66893dff 100644
+> --- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+> +++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+> @@ -34,6 +34,7 @@ properties:
+>         - mediatek,mt8186-mdp3-mutex
+>         - mediatek,mt8192-disp-mutex
+>         - mediatek,mt8195-disp-mutex
+> +      - mediatek,mt8365-disp-mutex
+>   
+>     reg:
+>       maxItems: 1
 > 
 
