@@ -4,106 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28D5AC6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Mar 2023 01:17:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62F06C7619A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Mar 2023 02:28:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lc2/TazxozdDnvZb/b7lHdWwz27nbeuJ3CQk1i0zndI=; b=pk+Lr7kodhZsFfBDICXlmKdDsr
-	9V6DTjgxtASeYr5Rd7m2gqRnPFyd0507wET8j/7WldCFtBVz22bmnkCPfyR4gnUbks53o6mweuKkq
-	RJ06eYVvMkjP/q7aH77RDhx2YbR9ZmNymXmY+xRprMR7yz8kcKfyGRikchQmx3Ic2gFl3WO4ZW3T9
-	0Hp/ar10OKoi1vapqLWr0/ZL/MuN5x/+ePkU6e8Z0HFZnL6XiFpBoRL1uVFiHkB2ATJw6RouwwA4t
-	enx9JLfNZmbRdH3iPkIOsskMw3CxnJK1BLAZLEXSyz64vow1VoImBwyj84nv9AXcjTe3wQs6RPbEQ
-	Rahabcqw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kcReHD7psyJ2LGPsUAeRlaJGFohttSUbTVbdQ1pZZLU=; b=T94HgRZnYzy1OrEle5+rNKiEdi
+	aNsMJZe/ZOKjuqowh+bMkJL/EAG27JkvBLQH8zTSVzscn7TD33VJCoD3Sye8lI7teetyTkzFg1+To
+	tY6xKbR4ILtbhsLMkspRHypnYUbLbyo7/PUAxNC0V6qbXyjj7tbjnTsqg+CCh/4+ms+bVye9NnWri
+	6eFb7jtWXF6RE4vChXDxmP/TtP9yv6G9enEMptzxh1YmmVMCpGkNtnzz5k4bPy9Yw38UWMzqrbLov
+	wd2Ogd5ov+13WBWIgXZADFDdV/vGthd8hXIRa7A0U2VUelRdMtC7WkN0euK8sZM6TZxxt5dksYRIV
+	QLTSxygA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pi3OH-005W8e-2U;
-	Fri, 31 Mar 2023 01:17:17 +0000
-Received: from omta35.uswest2.a.cloudfilter.net ([35.89.44.34])
+	id 1pi4VW-005cpo-2C;
+	Fri, 31 Mar 2023 02:28:50 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pi3OF-005W7h-0g;
-	Fri, 31 Mar 2023 01:17:17 +0000
-Received: from eig-obgw-6012a.ext.cloudfilter.net ([10.0.30.238])
-	by cmsmtp with ESMTP
-	id i17Gp6af1E9lPi3O7pLMWa; Fri, 31 Mar 2023 01:17:07 +0000
-Received: from gator4166.hostgator.com ([108.167.133.22])
-	by cmsmtp with ESMTP
-	id i3O6pimDmGR2hi3O6pPS0B; Fri, 31 Mar 2023 01:17:06 +0000
-X-Authority-Analysis: v=2.4 cv=ZLvEJF3b c=1 sm=1 tr=0 ts=64263492
- a=1YbLdUo/zbTtOZ3uB5T3HA==:117 a=wTog8WU66it3cfrESHnF4A==:17
- a=dLZJa+xiwSxG16/P+YVxDGlgEgI=:19 a=IkcTkHD0fZMA:10 a=k__wU0fu6RkA:10
- a=wYkD_t78qR0A:10 a=NEAV23lmAAAA:8 a=mDV3o1hIAAAA:8 a=VwQbUJbxAAAA:8
- a=lQcIFfJ85XhUBIXePCYA:9 a=QEXdDO2ut3YA:10 a=3IOs8h2EC4YA:10
- a=_FVE-zBwftR9WsbkzFJk:22 a=AjGcO6oz07-iQ99wixmX:22
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=embeddedor.com; s=default; h=Content-Transfer-Encoding:Content-Type:
-	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender
-	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=lc2/TazxozdDnvZb/b7lHdWwz27nbeuJ3CQk1i0zndI=; b=so+gIOLSJXjWDiSsnEL8KJlMhE
-	y9LJZejzwGh2PreEOGl57Bttp0lH8Q/Y+0knuhUG4cclvC8vMslE92OKvDN4xlt5casFi1b6fn7Qm
-	DGk3KcLdTm1kJHvcYXc5ia8zYZLk5OxDJs7X9EtjkR1umhli04I+TJy5FSTdZWe61OuK13kgwLjYs
-	1edRDqmBeKAWhc+zM+RSFNvy4nsTz0Zs9XBt3afdWSaNhjeehwlTypw3sK8YTlsPxOahDtCD+HdYS
-	vNrsVJI/knYLNAXwCncEjYf7K/F5kX4qDvURjbv9DXMO6Lg0x3FNB9+hC+6SR2mXtCKrk8WR235zJ
-	H7mBzkpQ==;
-Received: from 187-162-31-110.static.axtel.net ([187.162.31.110]:59296 helo=[192.168.15.7])
-	by gator4166.hostgator.com with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-	(Exim 4.95)
-	(envelope-from <gustavo@embeddedor.com>)
-	id 1phycM-002lrn-Qy;
-	Thu, 30 Mar 2023 15:11:31 -0500
-Message-ID: <2f207323-9daf-e9ee-153b-d790429d0adf@embeddedor.com>
-Date: Thu, 30 Mar 2023 14:11:55 -0600
+	id 1pi4VR-005cnt-2I;
+	Fri, 31 Mar 2023 02:28:47 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1pi4VG-0005Cr-3A;
+	Fri, 31 Mar 2023 04:28:35 +0200
+Date: Fri, 31 Mar 2023 03:28:30 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux@armlinux.org.uk,
+	linux-kernel@vger.kernel.org, Andrew Lunn <andrew@lunn.ch>,
+	=?utf-8?B?QXLEsW7DpyDDnG5hbA==?= <arinc.unal@arinc9.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Sam Shih <Sam.Shih@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
+	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>
+Subject: Re: [PATCH net-next 04/15] net: dsa: mt7530: use regmap to access
+ switch register space
+Message-ID: <ZCZFTtHJYl2N6q/Q@makrotopia.org>
+References: <cover.1680180959.git.daniel@makrotopia.org>
+ <1763ab54a479458c4bb84342f32d4a2e379f1d26.1680180959.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH][next] wifi: mt76: mt7921: Replace fake flex-arrays with
- flexible-array members
-Content-Language: en-US
-To: "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-hardening@vger.kernel.org
-References: <ZBTUB/kJYQxq/6Cj@work>
-From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
-In-Reply-To: <ZBTUB/kJYQxq/6Cj@work>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
-X-AntiAbuse: Primary Hostname - gator4166.hostgator.com
-X-AntiAbuse: Original Domain - lists.infradead.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - embeddedor.com
-X-BWhitelist: no
-X-Source-IP: 187.162.31.110
-X-Source-L: No
-X-Exim-ID: 1phycM-002lrn-Qy
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
-X-Source-Sender: 187-162-31-110.static.axtel.net ([192.168.15.7]) [187.162.31.110]:59296
-X-Source-Auth: gustavo@embeddedor.com
-X-Email-Count: 0
-X-Org: HG=hgshared;ORG=hostgator;
-X-Source-Cap: Z3V6aWRpbmU7Z3V6aWRpbmU7Z2F0b3I0MTY2Lmhvc3RnYXRvci5jb20=
-X-Local-Domain: yes
-X-CMAE-Envelope: MS4xfEFxku84QihPld8kGG5Vz+JJArQLY9Nc/Mqm1oCEKvS9aKygJvWt6hT7q561TgYhHnMOUfIxK1qSbiubsLvVejCdSwOLqihq1a+Ofdw3ea7uXAg762Vv
- VpScEk9Ixxt1v0hSXUO+mx5aPVziLyj5gtJ7erDDNQyKzuv2/69j8qgiH+a79A9dmQBdsy0j4Xu+Ry7UEWo8Va/STl6nInWr5TPu0P46HQn5AC35t/GYRkjG
- nEs12ljbGTl1PVtXJExu9InuGwf2yexKSi7XbX8zzhuDXGBOwKJziBJO9kj506DW
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1763ab54a479458c4bb84342f32d4a2e379f1d26.1680180959.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230330_181715_394941_40CE61B3 
-X-CRM114-Status: GOOD (  12.17  )
+X-CRM114-CacheID: sfid-20230330_192845_764513_ABB8B91E 
+X-CRM114-Status: GOOD (  27.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,88 +77,214 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi all,
+On Thu, Mar 30, 2023 at 04:20:57PM +0100, Daniel Golle wrote:
+> Use regmap API to access the switch register space.
 
-Friendly ping: who can take this, please? 😄
+I missed to make use of regmap_update_bits in mt7530_rmw which is
+also used in mt7530_set and mt7530_clear.
 
-Thanks
--- 
-Gustavo
+I've now made that change and re-tested, it works just as fine and
+prevents some unneccesary locking overhead.
+I'll post an updated patch in v2 after giving it a bit more time for
+other reviewers to also take a look.
 
-On 3/17/23 14:56, Gustavo A. R. Silva wrote:
-> Zero-length arrays as fake flexible arrays are deprecated and we are
-> moving towards adopting C99 flexible-array members instead.
 > 
-> Address the following warnings found with GCC-13 and
-> -fstrict-flex-arrays=3 enabled:
-> drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c:266:25: warning: array subscript 0 is outside array bounds of ‘struct mt7921_asar_dyn_limit_v2[0]’ [-Warray-bounds=]
-> drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c:263:25: warning: array subscript 0 is outside array bounds of ‘struct mt7921_asar_dyn_limit[0]’ [-Warray-bounds=]
-> drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c:223:28: warning: array subscript <unknown> is outside array bounds of ‘struct mt7921_asar_geo_limit_v2[0]’ [-Warray-bounds=]
-> drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c:220:28: warning: array subscript <unknown> is outside array bounds of ‘struct mt7921_asar_geo_limit[0]’ [-Warray-bounds=]
-> drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c:334:37: warning: array subscript i is outside array bounds of ‘u8[0]’ {aka ‘unsigned char[]’} [-Warray-bounds=]
-> 
-> Notice that the DECLARE_FLEX_ARRAY() helper allows for flexible-array
-> members in unions.
-> 
-> This helps with the ongoing efforts to tighten the FORTIFY_SOURCE
-> routines on memcpy() and help us make progress towards globally
-> enabling -fstrict-flex-arrays=3 [1].
-> 
-> Link: https://github.com/KSPP/linux/issues/21
-> Link: https://github.com/KSPP/linux/issues/272
-> Link: https://gcc.gnu.org/pipermail/gcc-patches/2022-October/602902.html [1]
-> Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 > ---
->   drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.h | 10 +++++-----
->   1 file changed, 5 insertions(+), 5 deletions(-)
+>  drivers/net/dsa/mt7530.c | 91 +++++++++++++++++++++++++---------------
+>  drivers/net/dsa/mt7530.h |  2 +
+>  2 files changed, 60 insertions(+), 33 deletions(-)
 > 
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.h b/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.h
-> index 35268b0890ad..6f2c4a572572 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.h
-> @@ -24,7 +24,7 @@ struct mt7921_asar_dyn {
->   	u8 names[4];
->   	u8 enable;
->   	u8 nr_tbl;
-> -	struct mt7921_asar_dyn_limit tbl[0];
-> +	DECLARE_FLEX_ARRAY(struct mt7921_asar_dyn_limit, tbl);
->   } __packed;
->   
->   struct mt7921_asar_dyn_limit_v2 {
-> @@ -37,7 +37,7 @@ struct mt7921_asar_dyn_v2 {
->   	u8 enable;
->   	u8 rsvd;
->   	u8 nr_tbl;
-> -	struct mt7921_asar_dyn_limit_v2 tbl[0];
-> +	DECLARE_FLEX_ARRAY(struct mt7921_asar_dyn_limit_v2, tbl);
->   } __packed;
->   
->   struct mt7921_asar_geo_band {
-> @@ -55,7 +55,7 @@ struct mt7921_asar_geo {
->   	u8 names[4];
->   	u8 version;
->   	u8 nr_tbl;
-> -	struct mt7921_asar_geo_limit tbl[0];
-> +	DECLARE_FLEX_ARRAY(struct mt7921_asar_geo_limit, tbl);
->   } __packed;
->   
->   struct mt7921_asar_geo_limit_v2 {
-> @@ -69,7 +69,7 @@ struct mt7921_asar_geo_v2 {
->   	u8 version;
->   	u8 rsvd;
->   	u8 nr_tbl;
-> -	struct mt7921_asar_geo_limit_v2 tbl[0];
-> +	DECLARE_FLEX_ARRAY(struct mt7921_asar_geo_limit_v2, tbl);
->   } __packed;
->   
->   struct mt7921_asar_cl {
-> @@ -85,7 +85,7 @@ struct mt7921_asar_fg {
->   	u8 rsvd;
->   	u8 nr_flag;
->   	u8 rsvd1;
-> -	u8 flag[0];
-> +	u8 flag[];
->   } __packed;
->   
->   struct mt7921_acpi_sar {
+> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> index d8b041d79f2b7..e27a0e551cec0 100644
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+> @@ -183,9 +183,9 @@ core_clear(struct mt7530_priv *priv, u32 reg, u32 val)
+>  }
+>  
+>  static int
+> -mt7530_mii_write(struct mt7530_priv *priv, u32 reg, u32 val)
+> +mt7530_regmap_write(void *context, unsigned int reg, unsigned int val)
+>  {
+> -	struct mii_bus *bus = priv->bus;
+> +	struct mii_bus *bus = context;
+>  	u16 page, r, lo, hi;
+>  	int ret;
+>  
+> @@ -197,24 +197,34 @@ mt7530_mii_write(struct mt7530_priv *priv, u32 reg, u32 val)
+>  	/* MT7530 uses 31 as the pseudo port */
+>  	ret = bus->write(bus, 0x1f, 0x1f, page);
+>  	if (ret < 0)
+> -		goto err;
+> +		return ret;
+>  
+>  	ret = bus->write(bus, 0x1f, r,  lo);
+>  	if (ret < 0)
+> -		goto err;
+> +		return ret;
+>  
+>  	ret = bus->write(bus, 0x1f, 0x10, hi);
+> -err:
+> +	return ret;
+> +}
+> +
+> +static int
+> +mt7530_mii_write(struct mt7530_priv *priv, u32 reg, u32 val)
+> +{
+> +	int ret;
+> +
+> +	ret = regmap_write(priv->regmap, reg, val);
+> +
+>  	if (ret < 0)
+> -		dev_err(&bus->dev,
+> +		dev_err(priv->dev,
+>  			"failed to write mt7530 register\n");
+> +
+>  	return ret;
+>  }
+>  
+> -static u32
+> -mt7530_mii_read(struct mt7530_priv *priv, u32 reg)
+> +static int
+> +mt7530_regmap_read(void *context, unsigned int reg, unsigned int *val)
+>  {
+> -	struct mii_bus *bus = priv->bus;
+> +	struct mii_bus *bus = context;
+>  	u16 page, r, lo, hi;
+>  	int ret;
+>  
+> @@ -223,17 +233,32 @@ mt7530_mii_read(struct mt7530_priv *priv, u32 reg)
+>  
+>  	/* MT7530 uses 31 as the pseudo port */
+>  	ret = bus->write(bus, 0x1f, 0x1f, page);
+> -	if (ret < 0) {
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	lo = bus->read(bus, 0x1f, r);
+> +	hi = bus->read(bus, 0x1f, 0x10);
+> +
+> +	*val = (hi << 16) | (lo & 0xffff);
+> +
+> +	return 0;
+> +}
+> +
+> +static u32
+> +mt7530_mii_read(struct mt7530_priv *priv, u32 reg)
+> +{
+> +	int ret;
+> +	u32 val;
+> +
+> +	ret = regmap_read(priv->regmap, reg, &val);
+> +	if (ret) {
+>  		WARN_ON_ONCE(1);
+> -		dev_err(&bus->dev,
+> +		dev_err(priv->dev,
+>  			"failed to read mt7530 register\n");
+>  		return 0;
+>  	}
+>  
+> -	lo = bus->read(bus, 0x1f, r);
+> -	hi = bus->read(bus, 0x1f, 0x10);
+> -
+> -	return (hi << 16) | (lo & 0xffff);
+> +	return val;
+>  }
+>  
+>  static void
+> @@ -2896,22 +2921,6 @@ static const struct phylink_pcs_ops mt7530_pcs_ops = {
+>  	.pcs_an_restart = mt7530_pcs_an_restart,
+>  };
+>  
+> -static int mt7530_regmap_read(void *context, unsigned int reg, unsigned int *val)
+> -{
+> -	struct mt7530_priv *priv = context;
+> -
+> -	*val = mt7530_mii_read(priv, reg);
+> -	return 0;
+> -};
+> -
+> -static int mt7530_regmap_write(void *context, unsigned int reg, unsigned int val)
+> -{
+> -	struct mt7530_priv *priv = context;
+> -
+> -	mt7530_mii_write(priv, reg, val);
+> -	return 0;
+> -};
+> -
+>  static void
+>  mt7530_mdio_regmap_lock(void *mdio_lock)
+>  {
+> @@ -2924,7 +2933,7 @@ mt7530_mdio_regmap_unlock(void *mdio_lock)
+>  	mutex_unlock(mdio_lock);
+>  }
+>  
+> -static const struct regmap_bus mt7531_regmap_bus = {
+> +static const struct regmap_bus mt7530_regmap_bus = {
+>  	.reg_write = mt7530_regmap_write,
+>  	.reg_read = mt7530_regmap_read,
+>  };
+> @@ -2957,7 +2966,7 @@ mt7531_create_sgmii(struct mt7530_priv *priv)
+>  		mt7531_pcs_config[i]->lock_arg = &priv->bus->mdio_lock;
+>  
+>  		regmap = devm_regmap_init(priv->dev,
+> -					  &mt7531_regmap_bus, priv,
+> +					  &mt7530_regmap_bus, priv->bus,
+>  					  mt7531_pcs_config[i]);
+>  		if (IS_ERR(regmap)) {
+>  			ret = PTR_ERR(regmap);
+> @@ -3128,6 +3137,7 @@ MODULE_DEVICE_TABLE(of, mt7530_of_match);
+>  static int
+>  mt7530_probe(struct mdio_device *mdiodev)
+>  {
+> +	static struct regmap_config *regmap_config;
+>  	struct mt7530_priv *priv;
+>  	struct device_node *dn;
+>  
+> @@ -3207,6 +3217,21 @@ mt7530_probe(struct mdio_device *mdiodev)
+>  	mutex_init(&priv->reg_mutex);
+>  	dev_set_drvdata(&mdiodev->dev, priv);
+>  
+> +	regmap_config = devm_kzalloc(&mdiodev->dev, sizeof(*regmap_config),
+> +				     GFP_KERNEL);
+> +	if (!regmap_config)
+> +		return -ENOMEM;
+> +
+> +	regmap_config->reg_bits = 16;
+> +	regmap_config->val_bits = 32;
+> +	regmap_config->reg_stride = 4;
+> +	regmap_config->max_register = MT7530_CREV;
+> +	regmap_config->disable_locking = true;
+> +	priv->regmap = devm_regmap_init(priv->dev, &mt7530_regmap_bus,
+> +					priv->bus, regmap_config);
+> +	if (IS_ERR(priv->regmap))
+> +		return PTR_ERR(priv->regmap);
+> +
+>  	return dsa_register_switch(priv->ds);
+>  }
+>  
+> diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+> index c5d29f3fc1d80..39aaca50961bd 100644
+> --- a/drivers/net/dsa/mt7530.h
+> +++ b/drivers/net/dsa/mt7530.h
+> @@ -754,6 +754,7 @@ struct mt753x_info {
+>   * @dev:		The device pointer
+>   * @ds:			The pointer to the dsa core structure
+>   * @bus:		The bus used for the device and built-in PHY
+> + * @regmap:		The regmap instance representing all switch registers
+>   * @rstc:		The pointer to reset control used by MCM
+>   * @core_pwr:		The power supplied into the core
+>   * @io_pwr:		The power supplied into the I/O
+> @@ -774,6 +775,7 @@ struct mt7530_priv {
+>  	struct device		*dev;
+>  	struct dsa_switch	*ds;
+>  	struct mii_bus		*bus;
+> +	struct regmap		*regmap;
+>  	struct reset_control	*rstc;
+>  	struct regulator	*core_pwr;
+>  	struct regulator	*io_pwr;
+> -- 
+> 2.39.2
+> 
+> 
 
