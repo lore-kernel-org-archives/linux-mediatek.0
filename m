@@ -4,76 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51A2CC6FD18
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Mar 2023 12:45:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25EA5C6FD18
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Mar 2023 12:46:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kBywTnPm98K4P6whYiX2rvcllzM1t6Zix8WFENn7dyQ=; b=VhuNTb7AF+UMgLEPjaSfOn7zqQ
-	MUbzbh6p98Dml+EW2YwOOW9mqMuSl87ck9xMS/EUhf3qfdDYtIAe0BAFqenWqWo0b5HcL+UJyxUBc
-	Fd3Bz+bYtoIgKHWnTO39tjmN9KYB7bZ6cXlTkI1R40uKdPvhUrdw9kmEsDLn9/sip7FgJuHjTa3aV
-	6lvYWtLwQEucb6ekCuQwtRZnY8CkGRuxfT598myHU405UyfwviKqvGP4DlYfllZ+TOIYV/npCnqXw
-	DKm6pn7imGbina4dLHsmHHV4AWTXp1lqbmKq5DNO9z4+XgvwpWwQk13JWyUiOxq/9ObLa8mClsCc1
-	Tz/GGgGA==;
+	bh=gwKLAnr/Wik1u8XL21nG8XJTLhtdaliFbiZcXjUvD+w=; b=HtqOAMl597tUEUE2JzTgvB/S2W
+	ytZBagukomhHm0PvFtO3wCsCRGu2AcG/e5MBEL/k6heVBWzj/Ul4KEsJYsOb2LfQOb06k+kPBmNUW
+	K/mahxj/YWxNAkf4jJ/9rjwKj//19+1gQ9joPA8evKIhjhZcP2A03WIR1pcADGkiEOkDa0GQubv49
+	2ReO1bQW3zzPX1KzXPs9VpSVUQM17bspWNMhCL238CGJwO+eo2errT+jqfH0wYytSAFcpbcnpJqqf
+	3zFpYWQSPqR1lgYIL4xwkbKM5r5D26QBqQIPhCM/mDog3eQOBV6XBIQa3uVumVHBsZRJpsgTr6iEZ
+	BwEv2iAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1piE7z-007Ncy-36;
-	Fri, 31 Mar 2023 12:45:11 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1piE9L-007O2L-0X;
+	Fri, 31 Mar 2023 12:46:35 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1piE7x-007Nbx-2G;
-	Fri, 31 Mar 2023 12:45:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=kBywTnPm98K4P6whYiX2rvcllzM1t6Zix8WFENn7dyQ=; b=KqMXOvG33G8QTvnyKl/bzvRcMq
-	zhiVH2CBklpNfSSxBlIcUVZlzs1blc6QDBaVsCdpZPL5rIUxzKOrHcPIA8Bz+XcXJlls+beSFZUhF
-	l10FhK4iKQaCd1eqwIY3Vgyyj0yIfuhdi+bibCLJVtA1dpxofOSGK3bm4iSseTr202jo=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1piE7p-0091hJ-FY; Fri, 31 Mar 2023 14:45:01 +0200
-Date: Fri, 31 Mar 2023 14:45:01 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Cc: Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux@armlinux.org.uk,
-	linux-kernel@vger.kernel.org,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Sam Shih <Sam.Shih@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
-	Luiz Angelo Daros de Luca <luizluca@gmail.com>
-Subject: Re: [PATCH net-next 14/15] net: dsa: mt7530: introduce driver for
- MT7988 built-in switch
-Message-ID: <387b3105-2d70-4906-9573-cfac20a55d3a@lunn.ch>
-References: <cover.1680180959.git.daniel@makrotopia.org>
- <fef2cb2fe3d2b70fa46e93107a0c862f53bb3bfa.1680180959.git.daniel@makrotopia.org>
- <6a7c5f81-a8a3-27b5-4af3-7175a3313f9a@arinc9.com>
- <ZCazDBJvFvjcQfKo@makrotopia.org>
- <7d0acaef-0cec-91b9-a5c6-d094b71e3dbd@arinc9.com>
+	id 1piE9I-007O1I-22;
+	Fri, 31 Mar 2023 12:46:34 +0000
+X-UUID: 0e1b5c3acfc211ed8687db9d93187ff1-20230331
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=gwKLAnr/Wik1u8XL21nG8XJTLhtdaliFbiZcXjUvD+w=;
+	b=EsKwbhCGQ1QZxnQZv41blK4+3w+xWS+6JhWmr5YtGUoSWbBcbEGemONE6TUIwcCz+qP+wYrfIXygvXWSXFliufnOBAMOR332wMfaZz7lA7UN3B1BGrxUvaOI4garmf/jmN3Q9FYAVbV5NSr55bKpYwPRzENV+6CNwYJLYqF/juY=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22,REQID:0be084c4-cc58-467f-9997-796074b6d82b,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:120426c,CLOUDID:a305fbb4-beed-4dfc-bd9c-e1b22fa6ccc4,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: 0e1b5c3acfc211ed8687db9d93187ff1-20230331
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <garmin.chang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 542245112; Fri, 31 Mar 2023 05:46:28 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Fri, 31 Mar 2023 20:36:25 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Fri, 31 Mar 2023 20:36:25 +0800
+From: Garmin.Chang <Garmin.Chang@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Michael Turquette
+	<mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Richard Cochran
+	<richardcochran@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-clk@vger.kernel.org>, <netdev@vger.kernel.org>, Garmin.Chang
+	<Garmin.Chang@mediatek.com>
+Subject: [PATCH v8 06/19] clk: mediatek: Add MT8188 camsys clock support
+Date: Fri, 31 Mar 2023 20:36:08 +0800
+Message-ID: <20230331123621.16167-7-Garmin.Chang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230331123621.16167-1-Garmin.Chang@mediatek.com>
+References: <20230331123621.16167-1-Garmin.Chang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <7d0acaef-0cec-91b9-a5c6-d094b71e3dbd@arinc9.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230331_054509_737501_7B5A8061 
-X-CRM114-Status: GOOD (  18.14  )
+X-CRM114-CacheID: sfid-20230331_054632_679736_D7C29E15 
+X-CRM114-Status: GOOD (  17.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,35 +89,176 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Firstly, all of the functions on the mt7530-mmio driver should be changed
-> from mt7988_* to mt7530_mmio_*. Same goes for the mt7530-mdio driver too as
-> some of the functions don't start with mt7530_mdio_*. The MDIO and MMIO
-> drivers are supposed to be used for the switches the MT7530 DSA driver
-> supports. The mt7530_ prefix is derived from that. The mmio_ or mdio_ prefix
-> is derived from, well, the driver itself.
+Add MT8188 camsys clock controllers which provide clock gate
+control for camera IP blocks.
 
-There are examples of similar naming schemes in other DSA drivers. For
-the marvell mv88e6xxx driver, all generic functions use the mv88e6xxx_
-prefix. For functions which are specific to a family of marvell
-switches, we use a prefix for when the feature was introduced. So for
-example we have mv88e6352_g1_reset(), where that method of resetting
-the devices was introduced in the mv88e6352. This also gives us some
-namespace space, so we can also have mv88e6185_g1_reset() which is
-used for a different family.
+Signed-off-by: Garmin.Chang <Garmin.Chang@mediatek.com>
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/clk/mediatek/Kconfig          |   7 ++
+ drivers/clk/mediatek/Makefile         |   1 +
+ drivers/clk/mediatek/clk-mt8188-cam.c | 120 ++++++++++++++++++++++++++
+ 3 files changed, 128 insertions(+)
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-cam.c
 
-So i personally don't have a problem using different prefixes within
-one driver, if it helps with understanding and name space issues.
+diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+index 681d392620c5..9170f76a8ee7 100644
+--- a/drivers/clk/mediatek/Kconfig
++++ b/drivers/clk/mediatek/Kconfig
+@@ -692,6 +692,13 @@ config COMMON_CLK_MT8188
+ 	help
+           This driver supports MediaTek MT8188 clocks.
+ 
++config COMMON_CLK_MT8188_CAMSYS
++	tristate "Clock driver for MediaTek MT8188 camsys"
++	depends on COMMON_CLK_MT8188_VPPSYS
++	default COMMON_CLK_MT8188_VPPSYS
++	help
++	  This driver supports MediaTek MT8188 camsys and camsys_raw clocks.
++
+ config COMMON_CLK_MT8192
+ 	tristate "Clock driver for MediaTek MT8192"
+ 	depends on ARM64 || COMPILE_TEST
+diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+index 1a642510ce38..3a2a35c54101 100644
+--- a/drivers/clk/mediatek/Makefile
++++ b/drivers/clk/mediatek/Makefile
+@@ -102,6 +102,7 @@ obj-$(CONFIG_COMMON_CLK_MT8186_VENCSYS) += clk-mt8186-venc.o
+ obj-$(CONFIG_COMMON_CLK_MT8186_WPESYS) += clk-mt8186-wpe.o
+ obj-$(CONFIG_COMMON_CLK_MT8188) += clk-mt8188-apmixedsys.o clk-mt8188-topckgen.o \
+ 				   clk-mt8188-peri_ao.o clk-mt8188-infra_ao.o
++obj-$(CONFIG_COMMON_CLK_MT8188_CAMSYS) += clk-mt8188-cam.o
+ obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192-apmixedsys.o clk-mt8192.o
+ obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
+ obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
+diff --git a/drivers/clk/mediatek/clk-mt8188-cam.c b/drivers/clk/mediatek/clk-mt8188-cam.c
+new file mode 100644
+index 000000000000..c5a3856bd223
+--- /dev/null
++++ b/drivers/clk/mediatek/clk-mt8188-cam.c
+@@ -0,0 +1,120 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * Copyright (c) 2022 MediaTek Inc.
++ * Author: Garmin Chang <garmin.chang@mediatek.com>
++ */
++
++#include <dt-bindings/clock/mediatek,mt8188-clk.h>
++#include <linux/clk-provider.h>
++#include <linux/platform_device.h>
++
++#include "clk-gate.h"
++#include "clk-mtk.h"
++
++static const struct mtk_gate_regs cam_cg_regs = {
++	.set_ofs = 0x4,
++	.clr_ofs = 0x8,
++	.sta_ofs = 0x0,
++};
++
++#define GATE_CAM(_id, _name, _parent, _shift)			\
++	GATE_MTK(_id, _name, _parent, &cam_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
++
++static const struct mtk_gate cam_main_clks[] = {
++	GATE_CAM(CLK_CAM_MAIN_LARB13, "cam_main_larb13", "top_cam", 0),
++	GATE_CAM(CLK_CAM_MAIN_LARB14, "cam_main_larb14", "top_cam", 1),
++	GATE_CAM(CLK_CAM_MAIN_CAM, "cam_main_cam", "top_cam", 2),
++	GATE_CAM(CLK_CAM_MAIN_CAM_SUBA, "cam_main_cam_suba", "top_cam", 3),
++	GATE_CAM(CLK_CAM_MAIN_CAM_SUBB, "cam_main_cam_subb", "top_cam", 4),
++	GATE_CAM(CLK_CAM_MAIN_CAMTG, "cam_main_camtg", "top_cam", 7),
++	GATE_CAM(CLK_CAM_MAIN_SENINF, "cam_main_seninf", "top_cam", 8),
++	GATE_CAM(CLK_CAM_MAIN_GCAMSVA, "cam_main_gcamsva", "top_cam", 9),
++	GATE_CAM(CLK_CAM_MAIN_GCAMSVB, "cam_main_gcamsvb", "top_cam", 10),
++	GATE_CAM(CLK_CAM_MAIN_GCAMSVC, "cam_main_gcamsvc", "top_cam", 11),
++	GATE_CAM(CLK_CAM_MAIN_GCAMSVD, "cam_main_gcamsvd", "top_cam", 12),
++	GATE_CAM(CLK_CAM_MAIN_GCAMSVE, "cam_main_gcamsve", "top_cam", 13),
++	GATE_CAM(CLK_CAM_MAIN_GCAMSVF, "cam_main_gcamsvf", "top_cam", 14),
++	GATE_CAM(CLK_CAM_MAIN_GCAMSVG, "cam_main_gcamsvg", "top_cam", 15),
++	GATE_CAM(CLK_CAM_MAIN_GCAMSVH, "cam_main_gcamsvh", "top_cam", 16),
++	GATE_CAM(CLK_CAM_MAIN_GCAMSVI, "cam_main_gcamsvi", "top_cam", 17),
++	GATE_CAM(CLK_CAM_MAIN_GCAMSVJ, "cam_main_gcamsvj", "top_cam", 18),
++	GATE_CAM(CLK_CAM_MAIN_CAMSV_TOP, "cam_main_camsv", "top_cam", 19),
++	GATE_CAM(CLK_CAM_MAIN_CAMSV_CQ_A, "cam_main_camsv_cq_a", "top_cam", 20),
++	GATE_CAM(CLK_CAM_MAIN_CAMSV_CQ_B, "cam_main_camsv_cq_b", "top_cam", 21),
++	GATE_CAM(CLK_CAM_MAIN_CAMSV_CQ_C, "cam_main_camsv_cq_c", "top_cam", 22),
++	GATE_CAM(CLK_CAM_MAIN_FAKE_ENG, "cam_main_fake_eng", "top_cam", 28),
++	GATE_CAM(CLK_CAM_MAIN_CAM2MM0_GALS, "cam_main_cam2mm0_gals", "top_cam", 29),
++	GATE_CAM(CLK_CAM_MAIN_CAM2MM1_GALS, "cam_main_cam2mm1_gals", "top_cam", 30),
++	GATE_CAM(CLK_CAM_MAIN_CAM2SYS_GALS, "cam_main_cam2sys_gals", "top_cam", 31),
++};
++
++static const struct mtk_gate cam_rawa_clks[] = {
++	GATE_CAM(CLK_CAM_RAWA_LARBX, "cam_rawa_larbx", "top_cam", 0),
++	GATE_CAM(CLK_CAM_RAWA_CAM, "cam_rawa_cam", "top_cam", 1),
++	GATE_CAM(CLK_CAM_RAWA_CAMTG, "cam_rawa_camtg", "top_cam", 2),
++};
++
++static const struct mtk_gate cam_rawb_clks[] = {
++	GATE_CAM(CLK_CAM_RAWB_LARBX, "cam_rawb_larbx", "top_cam", 0),
++	GATE_CAM(CLK_CAM_RAWB_CAM, "cam_rawb_cam", "top_cam", 1),
++	GATE_CAM(CLK_CAM_RAWB_CAMTG, "cam_rawb_camtg", "top_cam", 2),
++};
++
++static const struct mtk_gate cam_yuva_clks[] = {
++	GATE_CAM(CLK_CAM_YUVA_LARBX, "cam_yuva_larbx", "top_cam", 0),
++	GATE_CAM(CLK_CAM_YUVA_CAM, "cam_yuva_cam", "top_cam", 1),
++	GATE_CAM(CLK_CAM_YUVA_CAMTG, "cam_yuva_camtg", "top_cam", 2),
++};
++
++static const struct mtk_gate cam_yuvb_clks[] = {
++	GATE_CAM(CLK_CAM_YUVB_LARBX, "cam_yuvb_larbx", "top_cam", 0),
++	GATE_CAM(CLK_CAM_YUVB_CAM, "cam_yuvb_cam", "top_cam", 1),
++	GATE_CAM(CLK_CAM_YUVB_CAMTG, "cam_yuvb_camtg", "top_cam", 2),
++};
++
++static const struct mtk_clk_desc cam_main_desc = {
++	.clks = cam_main_clks,
++	.num_clks = ARRAY_SIZE(cam_main_clks),
++};
++
++static const struct mtk_clk_desc cam_rawa_desc = {
++	.clks = cam_rawa_clks,
++	.num_clks = ARRAY_SIZE(cam_rawa_clks),
++};
++
++static const struct mtk_clk_desc cam_rawb_desc = {
++	.clks = cam_rawb_clks,
++	.num_clks = ARRAY_SIZE(cam_rawb_clks),
++};
++
++static const struct mtk_clk_desc cam_yuva_desc = {
++	.clks = cam_yuva_clks,
++	.num_clks = ARRAY_SIZE(cam_yuva_clks),
++};
++
++static const struct mtk_clk_desc cam_yuvb_desc = {
++	.clks = cam_yuvb_clks,
++	.num_clks = ARRAY_SIZE(cam_yuvb_clks),
++};
++
++static const struct of_device_id of_match_clk_mt8188_cam[] = {
++	{ .compatible = "mediatek,mt8188-camsys", .data = &cam_main_desc },
++	{ .compatible = "mediatek,mt8188-camsys-rawa", .data = &cam_rawa_desc },
++	{ .compatible = "mediatek,mt8188-camsys-rawb", .data = &cam_rawb_desc },
++	{ .compatible = "mediatek,mt8188-camsys-yuva", .data = &cam_yuva_desc },
++	{ .compatible = "mediatek,mt8188-camsys-yuvb", .data = &cam_yuvb_desc },
++	{ /* sentinel */ }
++};
++MODULE_DEVICE_TABLE(of, of_match_clk_mt8188_cam);
++
++static struct platform_driver clk_mt8188_cam_drv = {
++	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
++	.driver = {
++		.name = "clk-mt8188-cam",
++		.of_match_table = of_match_clk_mt8188_cam,
++	},
++};
++
++module_platform_driver(clk_mt8188_cam_drv);
++MODULE_LICENSE("GPL");
+-- 
+2.18.0
 
-> What I'm going to say next depends on how generic the MMIO and MDIO drivers
-> are so that they can be used on all MediaTek architecture switches. Let's
-> say, a new MediaTek switch is introduced. It seems likely that either the
-> MMIO or MDIO driver will be used to control the switch. Maybe the driver for
-> this new switch won't be under mt7530.c, like on Realtek, but that doesn't
-> change the outcome.
-
-My experience with silicon vendors is that they like to change the
-hardware in none backwards compatible ways. So i would actually avoid
-generic names, it makes it harder to deal with different variants.
-
-	Andrew
 
