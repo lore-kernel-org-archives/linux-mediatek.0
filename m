@@ -4,94 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA772C761A6
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Mar 2023 14:43:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3E99C76196
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Mar 2023 14:55:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:Subject:From:References:Cc:To:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gQSQpbyEP141etG6ZHWQCiEBFDe9rB+aPA05dS71AiE=; b=XIQMUI7cGBNLhSz/F5EapFPl+n
-	Y26j2IZWzCjieAeoaOoTzlJqhngQQ85KXL6lr0W+O63f1o1KmNV+b5Xj7TCyEn9X7oUWjqXsgrwS1
-	Sr3MBAvQtoG57eachr26N68nDDe6x/coNYTgsQb7nxw09BbZr+c1eDdYXM0EO7gS2y40JtLTqv1iY
-	0U2BExyBOBNK3cnDS4dKUmDxWk4jNGLJlJwxymkAcgejmThBGyz7qcKMbY9IqCP1lpwv4C1Lkt5xi
-	YwTfyK0xkv/J92uD0m/DBazmf46Eu7pn/8trz1dgKjBNegCFcxuDH4Z1AhE1eQTV8elDqBfZfhME5
-	T8kBqImw==;
+	bh=1v1oqbGwtutANfbZAgt8lNsLuoBjX9Am//6Vl/oFEfA=; b=SCmxU7JQICPJcgNMs7cr4cYuDJ
+	fKXJFsQs8XZrxazfWGHzbXarMF9SIX5+wG2H4Ij5tvxO74n96NmCNiCb1qDPzmy2WzKronckZCQI3
+	Mn5+yeLSrVvxA2vmsbJb2we0UuqhNc/CDIMCin9tCCgeYvFFm4SOQ9uvyM8BwlZdDNfGsYjx2zxWW
+	btkmCTW9+AvL/qcDD6/Hd7CB39Z7eg5jTqq+4leOA1fo57dVCCJcqMYneyl9+7Lys4ugxu8pdzd9E
+	cdbQm/1w9uFcu9K9davVnbRGxlmr7ZOBm46sXErztxYvLB0BxGJnhZo5UUwLxdkgWnfvl/JkscQbx
+	W5v+LHSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1piFy3-007mDK-1W;
-	Fri, 31 Mar 2023 14:43:03 +0000
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+	id 1piGAE-007oDa-1q;
+	Fri, 31 Mar 2023 14:55:38 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1piFxy-007m9g-0M;
-	Fri, 31 Mar 2023 14:42:59 +0000
-Received: by mail-wr1-x434.google.com with SMTP id e18so22664721wra.9;
-        Fri, 31 Mar 2023 07:42:53 -0700 (PDT)
+	id 1piGAA-007oCG-3D;
+	Fri, 31 Mar 2023 14:55:36 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id l27so22718930wrb.2;
+        Fri, 31 Mar 2023 07:55:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1680273772;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=gQSQpbyEP141etG6ZHWQCiEBFDe9rB+aPA05dS71AiE=;
-        b=cbBpJS1pp2VUe5eBBEWBtRWugdEsiSuZ1H1qoGepOP42kpx6N3zGIJHgbeL6Rec+eI
-         s9pTLH9Ici9vksjbXT60EgfezzKaGrWspX+Dwq7+kCxYhp3cr+0WAKQZOR6aXbp7Bhz2
-         08ENky6Z4m6kPYkUsD61RTA6JvPhuEtDkt1yL3ZCFfUisFGgUR594C8S5kD5AFRw7hfT
-         7x1Z9wEqfBsYqHaanJwr0EHsSriJn+pKviGmh5lnyop2MFqokHOfWEj3l4IQywKa9j5t
-         9JfJmH82bFFTyv+KK62K/QYrbTnfi2lLh8aW6VWZyeB7GwMprJ/xQfzyJF6KHzBDYoR6
-         db2A==
+        d=gmail.com; s=20210112; t=1680274530;
+        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=1v1oqbGwtutANfbZAgt8lNsLuoBjX9Am//6Vl/oFEfA=;
+        b=K46Ne0U68WOC0jQyu1f6ef7pr7GDPh7f4Pjgd6JONmZ5vhy5RMvhlW4VUj7raalPXN
+         aEAk419VYn+zMv1le8W80jEHTMAuP6mrf+zTSZazTT2K9obzDGaxQ54JqA4M3jRsWzm/
+         dzQYQmw7NFmeKkZcjrgHRL1q1/DLzK2Ia3Iiay9q3+FhUszWuTwM65xERLQfBXgCe/Ot
+         5yHZkVsNtjhU+MYbUZNaBz9IKuQO6lM1tlRrF7954KM39osWlOJHgnX0fDRKaOPXByTn
+         BlYJiRupf+OVpQDWadhViNPq7nGEQqunlLJhVmTKX4eUDkUnW3y6BS7FTCh9aneafmAG
+         g6gA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680273772;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        d=1e100.net; s=20210112; t=1680274530;
+        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=gQSQpbyEP141etG6ZHWQCiEBFDe9rB+aPA05dS71AiE=;
-        b=4q5u64SPAyIVOlc1wBq+k7ACqL2LuYRxnrv/zpopvOwtlmBu5ORgho+tmEMKe01UQ+
-         PSXUMhfbFq1sSgSGqTeIDdJQ2lNl0EbjkqYtQ4mVvx/1RN9LsGA4o1zQWEsckNDvEu23
-         +1zRhnI85ltRArqpv8RUS9oYS3gIThB9S86MswlXU5OKhzqU36D6fGie6Jpe/U8N3Ifq
-         78Lf/DEhGxzlQ4J+7YBim51uApKQjPILNGqw4WzMI0OuBdcTuLNz0zwDoEeam8NJDvPP
-         eKoixo5EQArB8BPx6cgxgWJLBR9bovbDbH/e7XhKF8G2SZ1iLLd3QHDui9FK+zKa8fa0
-         O+OQ==
-X-Gm-Message-State: AAQBX9eDU4mxFvtPM6BLjijFr4jGLHPydBwQNdvZaIvtXi+VJR1OjZML
-	v6lO73mXo+j1DxzeTpeUy14=
-X-Google-Smtp-Source: AKy350ajzHQlwsDqL16oAUF2LtmLOv7wD/G4o4yloSXgjLI/FwWSy/wydMjxZrGLOzpCruc324uE2w==
-X-Received: by 2002:a5d:6585:0:b0:2c8:c667:1bb4 with SMTP id q5-20020a5d6585000000b002c8c6671bb4mr19680706wru.48.1680273772501;
-        Fri, 31 Mar 2023 07:42:52 -0700 (PDT)
+        bh=1v1oqbGwtutANfbZAgt8lNsLuoBjX9Am//6Vl/oFEfA=;
+        b=7gD4wjhESMUewVLsmqFxybHEAW6HfjGLXLhZAgNt8xb8ftU7W2oqYnx3Nl9qNw5FIF
+         8XVgI7QMChulpXk/gRFAm9j6fH87x03YJVJxh5wRdWJI3Ec/zJPnac6UAALim1QQNnHX
+         Eb40B99WpharOnq+WQ0BjFc/caMQntvrBcxw9lfNgvUM2zdeVcevaIgMY+Q4ZOoDq6bx
+         pDSxx+fWSvRmX3kl0fzMVXchfl4W3zWOFfvw8Usn+MKTHqWF5WwVTaxtv/y622Mif5NY
+         q6UdNPAF5bj4K1ZMGq1mqNs4+/knUnK5kS6CobMy1pE7iJyx9fxpix+VaMF/E0pBmFfF
+         pPNg==
+X-Gm-Message-State: AAQBX9fF4bCsKdVVEsbLeO5TXjVtMwnLAoKw/QlRywBi/FJ4XMtwJXqf
+	tLJ1L1hZKkuQ1zxuHd7CZoQ=
+X-Google-Smtp-Source: AKy350YSKtIqzT8X8vCZa/0jBsvl+GqGNYLY0iKeyTokK7bymrPZFg5K6qU89SULQhw0gw/NXjZGpw==
+X-Received: by 2002:a5d:4dcb:0:b0:2ca:8da1:db96 with SMTP id f11-20020a5d4dcb000000b002ca8da1db96mr19386253wru.50.1680274530116;
+        Fri, 31 Mar 2023 07:55:30 -0700 (PDT)
 Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id g4-20020adffc84000000b002d8566128e5sm2374858wrr.25.2023.03.31.07.42.50
+        by smtp.gmail.com with ESMTPSA id g6-20020adfe406000000b002d743eeab39sm2398567wrm.58.2023.03.31.07.55.28
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 31 Mar 2023 07:42:51 -0700 (PDT)
-Message-ID: <d3d6392f-98ae-f6da-914c-943962d94a74@gmail.com>
-Date: Fri, 31 Mar 2023 16:42:49 +0200
+        Fri, 31 Mar 2023 07:55:29 -0700 (PDT)
+Message-ID: <c8861fda-63c6-7951-29a7-9d29a73e8f3e@gmail.com>
+Date: Fri, 31 Mar 2023 16:55:27 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.1
-Subject: Re: [PATCH 14/21] dt-bindings: soc: mediatek: specify which
- compatible requires clocks property
 Content-Language: en-US
-To: Alexandre Mergnat <amergnat@baylibre.com>, Daniel Vetter
- <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>,
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Daniel Vetter <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>,
  Jitao Shi <jitao.shi@mediatek.com>, Thierry Reding
  <thierry.reding@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>,
  Sam Ravnborg <sam@ravnborg.org>, Rob Herring <robh+dt@kernel.org>,
  =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, David Airlie <airlied@gmail.com>,
+ David Airlie <airlied@gmail.com>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Xinlei Lee <xinlei.lee@mediatek.com>
-Cc: Guillaume La Roque <glaroque@baylibre.com>,
+ Xinlei Lee <xinlei.lee@mediatek.com>,
+ Guillaume La Roque <glaroque@baylibre.com>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  dri-devel@lists.freedesktop.org, Fabien Parent <fparent@baylibre.com>,
  Neil Armstrong <neil.armstrong@linaro.org>, linux-pwm@vger.kernel.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 References: <20230220-display-v1-0-45cbc68e188b@baylibre.com>
- <20230220-display-v1-14-45cbc68e188b@baylibre.com>
+ <20230220-display-v1-1-45cbc68e188b@baylibre.com>
+ <CAAOTY_8G03TpY88hMmUgbq5E6P2Y8h5a4DB5T72qfNG6CA+NQA@mail.gmail.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20230220-display-v1-14-45cbc68e188b@baylibre.com>
+Subject: Re: [PATCH 01/21] dt-bindings: display: mediatek: aal: add binding
+ for MT8365 SoC
+In-Reply-To: <CAAOTY_8G03TpY88hMmUgbq5E6P2Y8h5a4DB5T72qfNG6CA+NQA@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230331_074258_146301_887E918A 
-X-CRM114-Status: GOOD (  16.82  )
+X-CRM114-CacheID: sfid-20230331_075535_055929_E2E0A9BC 
+X-CRM114-Status: GOOD (  12.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,62 +108,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Chun-Kuang Hu,
 
-
-On 09/03/2023 15:23, Alexandre Mergnat wrote:
-> According to the mtk-mutex.c driver and the SoC DTS, the clock isn't
-> required to work properly for some of MTK SoC. Improve the clock
-> requirement by adding a condition which is function to the compatible.
+On 13/03/2023 16:02, Chun-Kuang Hu wrote:
+> Hi, Alexandre:
 > 
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> Alexandre Mergnat <amergnat@baylibre.com> 於 2023年3月9日 週四 下午10:23寫道：
+>>
+>> Display Adaptive Ambient Light for MT8365 is compatible with another SoC.
+>> Then, add MT8365 binding along with MT8183 SoC.
+> 
+> Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> 
 
-Applied, thanks.
-
-Now I think we can get rid of the no_clk variable in struct mtk_mutex_data, as 
-this should be mandated by the device-tree.
+I'm a bit puzzled that you give your reviewed by while I would have expected 
+that you will take the display binding patches. Will you take these or do you 
+want someone else to take them?
 
 Regards,
 Matthias
 
-> ---
->   .../bindings/soc/mediatek/mediatek,mutex.yaml        | 20 +++++++++++++++++++-
->   1 file changed, 19 insertions(+), 1 deletion(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
-> index 9241e5fc7cff..ca0ca549257d 100644
-> --- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
-> +++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
-> @@ -69,12 +69,30 @@ properties:
->         4 arguments defined in this property. Each GCE subsys id is mapping to
->         a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
->   
-> +allOf:
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            enum:
-> +              - mediatek,mt2701-disp-mutex
-> +              - mediatek,mt2712-disp-mutex
-> +              - mediatek,mt6795-disp-mutex
-> +              - mediatek,mt8173-disp-mutex
-> +              - mediatek,mt8186-disp-mutex
-> +              - mediatek,mt8186-mdp3-mutex
-> +              - mediatek,mt8192-disp-mutex
-> +              - mediatek,mt8195-disp-mutex
-> +    then:
-> +      required:
-> +        - clocks
-> +
-> +
->   required:
->     - compatible
->     - reg
->     - interrupts
->     - power-domains
-> -  - clocks
->   
->   additionalProperties: false
->   
-> 
+>>
+>> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+>> ---
+>>   Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml | 1 +
+>>   1 file changed, 1 insertion(+)
+>>
+>> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
+>> index d4d585485e7b..d47bc72f09c0 100644
+>> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
+>> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
+>> @@ -33,6 +33,7 @@ properties:
+>>                 - mediatek,mt8186-disp-aal
+>>                 - mediatek,mt8192-disp-aal
+>>                 - mediatek,mt8195-disp-aal
+>> +              - mediatek,mt8365-disp-aal
+>>             - const: mediatek,mt8183-disp-aal
+>>
+>>     reg:
+>>
+>> --
+>> b4 0.10.1
 
