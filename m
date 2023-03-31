@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5D95C77B6E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Mar 2023 13:13:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DA23C77B62
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Mar 2023 13:13:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dfcXdohjvKRQy+EOUZJ4rpmUL6tZkFjY6y4oH8PwkNI=; b=a0zenO8mcwNt2k+ysmBXls+LqK
-	0Mr8SVJ69sEe84Wkl0Lrv+YESxZwmn4RCdS5cILD+Drp6Mq/m8XhFyzk8kWzQhsmRV1E8bqjuQRog
-	8B+w7v+MKrKZRCGWtPd2nHCgbsKzCm1cCxTuEDeWblzXojGUo2tWHdh0BddMHVmJe2ftAzgi0S3KX
-	aMAs1D/O3AmpjDKu5CjmIT5C3eyh49g4/m8EY3WWbjloHgvaz1J5iOa1PqxGICMkyv7ND+OCyhRva
-	XFJ9MQdR+lmxFIDfRYes2oixBDUcwAQUv7610RZoMbHu+NU0LcuRU535kEv4mjbIKqGRTlyY64v2q
-	ZXT1GHpw==;
+	bh=RtuUSBCL6oK0wCo9g5IU1bv/6d1t1iIG4a9k1pYuPAw=; b=KCUEOaOgUUe9yE/dKy6LaSD5el
+	DM7PrXTaIioPZHKVE4bb988RESgw3RxYfYCdYWLcnHWoeTdHuu1LHtwoWQ+Lom2eo7uBoui7hXOQo
+	xG7mNeVIjGKtgiMxrviplue1TWCqqdjx2j3VSthfZGYxbRHtmgXnlzlwcqzHz32/0NMWiOzkcYf1A
+	q39FXBDSnBIwXtWmTQQ+SG4zoYk0Zp/Wo62pBIziU1mjW7Yru1kJlwkJXcxUijVs+ObVt0OjrI4T3
+	Ko+s9wSjwcUgEQi/EnsMX4C8w/LDsAkq/GWgX/5B5kG1hr3YiIAMLswh+0V1ZU0+AwcvB6i3TmeF2
+	2ss7RiyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1piEZV-007USi-01;
-	Fri, 31 Mar 2023 13:13:37 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1piEZY-007UUF-1x;
+	Fri, 31 Mar 2023 13:13:41 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1piEZS-007URl-2P
+	id 1piEZV-007USf-0E
 	for linux-mediatek@lists.infradead.org;
-	Fri, 31 Mar 2023 13:13:35 +0000
+	Fri, 31 Mar 2023 13:13:38 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 3DC05628C8;
-	Fri, 31 Mar 2023 13:13:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A6B86C433EF;
-	Fri, 31 Mar 2023 13:13:31 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id A854E62709;
+	Fri, 31 Mar 2023 13:13:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 846DEC433EF;
+	Fri, 31 Mar 2023 13:13:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1680268412;
-	bh=0Z0VSc/Pdg8WAOtxQIuNbiILq7OdgMdHZPAiZ/hleNc=;
+	s=k20201202; t=1680268415;
+	bh=hLAVugf0wJMRhEaxQsvqqH7c9szSLlu5vrY4HfSo9tU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=RMS0Vb5+vEa1g/Kqfrg1KNSBMoPz2kc0O+kTypYgZCOxjBFIAls+i+VyuJwXgDn/d
-	 M1ar0Bw8m8qRBLSWeokN8yKUg2yOL1Mme+RwjvuMrpgwekcASFCbImWa6/mbXJnVVR
-	 FlVTc3kQew36Kw6RWdiJ1aACzV6TL7LGng4TKFSpHZzzOwCweQAbtNu55g9CRbURuz
-	 VwQ93LFugK3eaCdVP5jcm7x+ayu41FgVlfJAIdkWj6fmPIn6cNTNCJ5DkXeTetoNz0
-	 +FV4mfuE8a5tYkeedfjwKUNy2ZiW/2aC0GFK2UGx3VUoecbY5uREpVdlVW6huE7f0R
-	 55tnNUpbIxpqA==
+	b=EIbzxKeiYwg4H5W5KbXKGlMazIyivy0rCuyVuSKwL6EuM9HG2PbqrCHGOgpdq6AUj
+	 Zx/DsteS5DrWzVcrx0dKvjlwx3Z4f2HLUvT5IXxvgZ3H9jEpax0Qoc89VqONaU77+Q
+	 7zUzavyXeHuqR2kYJ2tHBIHXYXtQmgH4FnoQ/V1p8RurjADnS0MIoC36MrHkJGfzlP
+	 aWZAroYpC23dNVzCrW09maHjIylqy5BpOkETQkw68ED994GniBBc9qPEJDLSXY/vXg
+	 fI70Mp+tWHu9kx1lwikE0O6haXvo1Zks7pYEhuaLjUNuu+SEWD1CuZU7BsZKwvpNsb
+	 glkwmp/b1s0PA==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: netdev@vger.kernel.org
 Cc: davem@davemloft.net,
@@ -61,17 +61,17 @@ Cc: davem@davemloft.net,
 	krzysztof.kozlowski+dt@linaro.org,
 	robh+dt@kernel.org,
 	devicetree@vger.kernel.org
-Subject: [PATCH v2 net-next 01/10] net: ethernet: mtk_wed: rename mtk_wed_get_memory_region in mtk_wed_get_reserved_memory_region
-Date: Fri, 31 Mar 2023 15:12:37 +0200
-Message-Id: <2915976b78fddb4b918c071d7409efa832201f3e.1680268101.git.lorenzo@kernel.org>
+Subject: [PATCH v2 net-next 02/10] net: ethernet: mtk_wed: move cpuboot in a dedicated dts node
+Date: Fri, 31 Mar 2023 15:12:38 +0200
+Message-Id: <56ed497762b1c031c553210a0e5c7717c6069642.1680268101.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1680268101.git.lorenzo@kernel.org>
 References: <cover.1680268101.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230331_061334_821232_DE23B7AA 
-X-CRM114-Status: GOOD (  11.30  )
+X-CRM114-CacheID: sfid-20230331_061337_227624_73023CC3 
+X-CRM114-Status: GOOD (  14.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,45 +86,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is a preliminary patch to move Wireless Ethernet Dispatch (WED)
-ilm/dlm and cpuboot properties in dedicated dts nodes.
+Since the cpuboot memory region is not part of the RAM MT7986 SoC,
+move cpuboot in a deidicated syscon node.
+Keep backward-compatibility with older dts version where cpuboot was
+defined as reserved-memory child node.
 
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/ethernet/mediatek/mtk_wed_mcu.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_wed_mcu.c | 34 +++++++++++++++++----
+ drivers/net/ethernet/mediatek/mtk_wed_wo.h  |  3 +-
+ 2 files changed, 30 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/net/ethernet/mediatek/mtk_wed_mcu.c b/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
-index 6bad0d262f28..6624f6d6abdd 100644
+index 6624f6d6abdd..797c3b412ab6 100644
 --- a/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
 +++ b/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
-@@ -215,8 +215,8 @@ int mtk_wed_mcu_msg_update(struct mtk_wed_device *dev, int id, void *data,
+@@ -18,12 +18,23 @@
+ 
+ static u32 wo_r32(struct mtk_wed_wo *wo, u32 reg)
+ {
+-	return readl(wo->boot.addr + reg);
++	u32 val;
++
++	if (!wo->boot_regmap)
++		return readl(wo->boot.addr + reg);
++
++	if (regmap_read(wo->boot_regmap, reg, &val))
++		val = ~0;
++
++	return val;
  }
  
- static int
--mtk_wed_get_memory_region(struct mtk_wed_wo *wo,
--			  struct mtk_wed_wo_memory_region *region)
-+mtk_wed_get_reserved_memory_region(struct mtk_wed_wo *wo,
-+				   struct mtk_wed_wo_memory_region *region)
+ static void wo_w32(struct mtk_wed_wo *wo, u32 reg, u32 val)
  {
- 	struct reserved_mem *rmem;
- 	struct device_node *np;
-@@ -311,13 +311,13 @@ mtk_wed_mcu_load_firmware(struct mtk_wed_wo *wo)
+-	writel(val, wo->boot.addr + reg);
++	if (wo->boot_regmap)
++		regmap_write(wo->boot_regmap, reg, val);
++	else
++		writel(val, wo->boot.addr + reg);
+ }
  
- 	/* load firmware region metadata */
- 	for (i = 0; i < ARRAY_SIZE(mem_region); i++) {
--		ret = mtk_wed_get_memory_region(wo, &mem_region[i]);
-+		ret = mtk_wed_get_reserved_memory_region(wo, &mem_region[i]);
- 		if (ret)
+ static struct sk_buff *
+@@ -316,10 +327,21 @@ mtk_wed_mcu_load_firmware(struct mtk_wed_wo *wo)
  			return ret;
  	}
  
- 	wo->boot.name = "wo-boot";
--	ret = mtk_wed_get_memory_region(wo, &wo->boot);
-+	ret = mtk_wed_get_reserved_memory_region(wo, &wo->boot);
- 	if (ret)
- 		return ret;
+-	wo->boot.name = "wo-boot";
+-	ret = mtk_wed_get_reserved_memory_region(wo, &wo->boot);
+-	if (ret)
+-		return ret;
++	wo->boot_regmap = syscon_regmap_lookup_by_phandle(wo->hw->node,
++							  "mediatek,wo-cpuboot");
++	if (IS_ERR(wo->boot_regmap)) {
++		if (wo->boot_regmap != ERR_PTR(-ENODEV))
++			return PTR_ERR(wo->boot_regmap);
++
++		/* For backward compatibility, we need to check if cpu_boot
++		 * is defined through reserved memory property.
++		 */
++		wo->boot_regmap = NULL;
++		wo->boot.name = "wo-boot";
++		ret = mtk_wed_get_reserved_memory_region(wo, &wo->boot);
++		if (ret)
++			return ret;
++	}
  
+ 	/* set dummy cr */
+ 	wed_w32(wo->hw->wed_dev, MTK_WED_SCR0 + 4 * MTK_WED_DUMMY_CR_FWDL,
+diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.h b/drivers/net/ethernet/mediatek/mtk_wed_wo.h
+index dbcf42ce9173..c03071203cc0 100644
+--- a/drivers/net/ethernet/mediatek/mtk_wed_wo.h
++++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.h
+@@ -227,7 +227,8 @@ struct mtk_wed_wo_queue {
+ 
+ struct mtk_wed_wo {
+ 	struct mtk_wed_hw *hw;
+-	struct mtk_wed_wo_memory_region boot;
++	struct mtk_wed_wo_memory_region boot; /* backward compatibility */
++	struct regmap *boot_regmap;
+ 
+ 	struct mtk_wed_wo_queue q_tx;
+ 	struct mtk_wed_wo_queue q_rx;
 -- 
 2.39.2
 
