@@ -4,110 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88326C77B60
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Mar 2023 09:37:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F08ECC77B60
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Mar 2023 09:42:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2I7yU40CH1KTIPKs6kPsl2SefiwR2YueS62dP0NZHu0=; b=MXq3rxpp7Rf0a4HDqXdJnTZXxo
-	9TBx0CkoWi+MAyeiAqC+0wj/YGYd9Kgh8o+e6Ys18W+Ddact8a11LN0lKWe2Ubh7YD1y7NQZqHEZG
-	7mpScAWrG0gNkfoDdTdPaG3NgTIIuLMXXoV5phJcnXMFCGCx0HPVwNNgTminYxuMIvyDLzDVuZOzz
-	pBYaijs/ImTAsvJzKeZwGywUWJzHhTpq4kIeaYpLueOHllyO8eMbHMVtV8+f7WDW6jo8KJFxhJah9
-	0QNY5hxdlJDbpWc2tXiwvEIphW0gwr16Dip6EC2HuVBvaDGZtIAlUqsqBhidsnMU8gyErpcatxm0T
-	KspfH/dQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Xo2e908Td2gve6mc5SW+VA1nrFzqtdIPvQwGYibnpiE=; b=fUjCXrQH3E5weYQcboB9TRDvrl
+	5Epp4Y4J3WibcpJz6SkZC5KHMWTTqVtGoICaZ9y8Pn+7QKf1a8Gxb/xEldJTUd2sFgKKUooDh+xsm
+	eIaP4t4gR6qfOPppOUdSuo8NNBXt5RStJQ0bDnIqgQAhRb5SCKQbL8WnnXC1L31LcAONvCv0zbZVb
+	fnJRganhk7OSEOAzGu3LSPxnHuLTHFY/xTByIxCCPfZpcRjH9vUsUtA/BUBhMkMTG9EtPel0fOoLp
+	Q3w/35wwIjKgupL5cxZnw/wF9MNuPLksQIAUPVeTBLrLDEBKLuTHfEIKg5WZKhg/R3ukfvqK0RonY
+	wovF3Hdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1piBCY-006iHg-14;
-	Fri, 31 Mar 2023 09:37:42 +0000
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+	id 1piBGe-006jHs-28;
+	Fri, 31 Mar 2023 09:41:56 +0000
+Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1piBCU-006iFq-0S;
-	Fri, 31 Mar 2023 09:37:40 +0000
-Received: by mail-ed1-x533.google.com with SMTP id eg48so87153338edb.13;
-        Fri, 31 Mar 2023 02:37:37 -0700 (PDT)
+	id 1piBGa-006jEL-0y
+	for linux-mediatek@lists.infradead.org;
+	Fri, 31 Mar 2023 09:41:53 +0000
+Received: by mail-yw1-x1132.google.com with SMTP id 00721157ae682-54184571389so404783757b3.4
+        for <linux-mediatek@lists.infradead.org>; Fri, 31 Mar 2023 02:41:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1680255456;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=2I7yU40CH1KTIPKs6kPsl2SefiwR2YueS62dP0NZHu0=;
-        b=CULtuAu+grWGSjin+B2q5K4vYLYkcVUEPT39QZYv//yLch8kj4X27vymmyL6jBA+6i
-         ACX6DSEhIpF/wfIzCNgePEz4Vh8s7ay58GscTeT85T1s0GBwPwzwrUMGQt5B18kY6yGt
-         6pnNAfBEPK90KIPsAWjhQtATM+vY7j2qnuCzy28AkPwgdA0wZiMdDFqUAjg5x0HOdywP
-         RCbkrkVCOApLgALXeDU7BFWqM8Jw0onrurgD9v1FxXo9Pjel8PvrWFWJbC8sy/v87HQY
-         6igVRZ6GHH31atrxF93yu5HzZFuCVxemH5qtqiMhRdt4LWTplUbroNn5PAMAJQxsMd+q
-         tVxA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680255456;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1680255709;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=2I7yU40CH1KTIPKs6kPsl2SefiwR2YueS62dP0NZHu0=;
-        b=qGaZ3+l5lul4x5o2bJgdNIlK6/F38A6bEiS/+UbPmg4T8DzcDTJAxi/kTGnJf0aMEY
-         pYTTgRFSLudaDhCmqkwe6toDozZv4cx+LQ81896EiA1QACfgP2q68m4IjpbfwxA8MYS1
-         +bxpN7PdK5Qf7kRkQV4/mMBjS9c/3R9Zs0Upn/ufBWRBHut9O2Sko9m85o88UgzDfpZv
-         sSEWjZ/iKVJgFmoP/H6LCXMnoVvLE3cUx9yaEFPB+hulA7vLb6e6k9ssA09/vBKz0YCV
-         o/s4GRY4TsMWk5v1sHBPnnR57w2zknDDJp2+QnCCK60mV70ff8H0pwMWpmZT1N1aIJrx
-         TPrw==
-X-Gm-Message-State: AAQBX9em+8D2hoGGfbqbRXNMZzSJoNJPFT8DDNVystpu/0fK7PFOmYK6
-	KznZ09G5d/uu4qQ5CODmOFV21ulZsQ1jA3jI
-X-Google-Smtp-Source: AKy350bof3uST/s/9pKcj0ktKgjrdn5KxhempDvqC74UkFxrzYGgGnwAeOmC2i4gm38HAAfyNcINBg==
-X-Received: by 2002:a17:906:f190:b0:931:a321:7640 with SMTP id gs16-20020a170906f19000b00931a3217640mr29388052ejb.74.1680255455987;
-        Fri, 31 Mar 2023 02:37:35 -0700 (PDT)
-Received: from skbuf ([188.27.184.189])
-        by smtp.gmail.com with ESMTPSA id gx20-20020a1709068a5400b00931faf03db0sm790309ejc.27.2023.03.31.02.37.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 31 Mar 2023 02:37:35 -0700 (PDT)
-Date: Fri, 31 Mar 2023 12:37:32 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Hans Schultz <netdev@kapio-technology.com>
-Cc: Ido Schimmel <idosch@nvidia.com>, davem@davemloft.net, kuba@kernel.org,
-	netdev@vger.kernel.org, Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>, Eric Dumazet <edumazet@google.com>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	"maintainer:MICROCHIP KSZ SERIES ETHERNET SWITCH DRIVER" <UNGLinuxDriver@microchip.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	=?utf-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
-	Jiri Pirko <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
-	Shuah Khan <shuah@kernel.org>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	open list <linux-kernel@vger.kernel.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
-	"open list:RENESAS RZ/N1 A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>,
-	"moderated list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>,
-	"open list:KERNEL SELFTEST FRAMEWORK" <linux-kselftest@vger.kernel.org>
-Subject: Re: [PATCH v2 net-next 6/6] selftests: forwarding: add dynamic FDB
- test
-Message-ID: <20230331093732.s6loozkdhehewlm4@skbuf>
-References: <20230318141010.513424-1-netdev@kapio-technology.com>
- <20230318141010.513424-7-netdev@kapio-technology.com>
- <ZBgdAo8mxwnl+pEE@shredder>
- <87a5zzh65p.fsf@kapio-technology.com>
- <ZCMYbRqd+qZaiHfu@shredder>
- <874jq22h2u.fsf@kapio-technology.com>
- <20230330192714.oqosvifrftirshej@skbuf>
- <871ql5mjjp.fsf@kapio-technology.com>
+        bh=Xo2e908Td2gve6mc5SW+VA1nrFzqtdIPvQwGYibnpiE=;
+        b=uBMQIM9oghtu65OYry7lh4Mg9Ey6cTyShHDuQhNvkKE7cvwdYHy8HnejROCk4ISgBp
+         n4e9O+dpRLoxInIr0AZo6wccf2QiNwAmGY6ht9Plojz33GD3k3FLmtt9lRBB2OoL5AhL
+         q2tQFIWfJ/sC6d85vYFLRhLcrxJBPlr1eaExYaWQbIa5/50Jh2eHlnucVQQ3EXIqsMhF
+         Xn7baerAqsPtuvTx5Dhgm9XDMjpTYzSMOsnAxiuciECoi/2dtVis3DjNLK35S0dVG0KG
+         wAvNRlq2DbLnfG9+b2gm/R5ppzBZy9uGHsRoJDKHucpOb8KGlIogRpALWSfLixgMC6r8
+         opMw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680255709;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Xo2e908Td2gve6mc5SW+VA1nrFzqtdIPvQwGYibnpiE=;
+        b=fT3wrMgECbYQGD4E28pR5TOzs/xPhSiaAUev6zyF9FmfaWeLnA360p6krZULtSIHK9
+         7wHaDa2yedEI3Ekofjn5jtjVZxD76zLcbcLqkrXp/rYNbbfWjtENTAFi9doC5R8xJZpo
+         YZJmM7eAjtoZpWKCo1L7It55YlaKXoqhWeEAX52OCOSOeHgBiwdqFy3xICZuhqOx8GwR
+         DP3s51xjs4JZu9TRCfuc/bVNziNCXOf9wEmvlTcpsd4xrA74Juzn+rc8zgUUoMuBJcZ4
+         9JwRTWYv3qlh5vPCLOQGwHaOzz2VKE4Ah49mwelq2IIcQrogCs0LrPP3kmuI4V1XGvqP
+         eEnA==
+X-Gm-Message-State: AAQBX9f9T3jmuy7TUZYrBnsw/5rcDUYqNaUeQyHXx6lkZn4y4UseQypZ
+	+tc4WGLsxVknpZPtId1BNHv6ycYfgThPccvoJMsptw==
+X-Google-Smtp-Source: AKy350Zp7b7rjPNqqt62mXM2VNu7M6RMNX9eWwNzvLF+Jhy96wQfhw+jaU3Fvyd5viiVC5EgACPo2KWYnzUvEMriI7w=
+X-Received: by 2002:a81:b620:0:b0:541:8995:5334 with SMTP id
+ u32-20020a81b620000000b0054189955334mr13089289ywh.3.1680255709091; Fri, 31
+ Mar 2023 02:41:49 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <871ql5mjjp.fsf@kapio-technology.com>
+References: <20230203-evk-board-support-v3-0-0003e80e0095@baylibre.com>
+ <20230203-evk-board-support-v3-5-0003e80e0095@baylibre.com> <889be563-78d6-7148-f7d2-09ae21383ee4@collabora.com>
+In-Reply-To: <889be563-78d6-7148-f7d2-09ae21383ee4@collabora.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Fri, 31 Mar 2023 11:41:38 +0200
+Message-ID: <CAFGrd9rGoAN=B6O=X7peOtyYuWpWkMBFakrkLp2fcD-D2uajqw@mail.gmail.com>
+Subject: Re: [PATCH v3 05/17] arm64: dts: mediatek: add mt6357 device-tree
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, 
+	Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Chaotian Jing <chaotian.jing@mediatek.com>, 
+	Ulf Hansson <ulf.hansson@linaro.org>, Wenbin Mei <wenbin.mei@mediatek.com>, 
+	Linus Walleij <linus.walleij@linaro.org>, Zhiyong Tao <zhiyong.tao@mediatek.com>, 
+	=?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>, 
+	linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-mmc@vger.kernel.org, 
+	linux-gpio@vger.kernel.org, Alexandre Bailon <abailon@baylibre.com>, 
+	Fabien Parent <fparent@baylibre.com>, Amjad Ouled-Ameur <aouledameur@baylibre.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230331_023738_217392_B9EDDEC5 
-X-CRM114-Status: GOOD (  22.03  )
+X-CRM114-CacheID: sfid-20230331_024152_344073_F8173591 
+X-CRM114-Status: GOOD (  16.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,64 +99,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 31, 2023 at 10:06:34AM +0200, Hans Schultz wrote:
-> The memory problems are of course on the embedded target. In that case I
-> think it would be a very good idea to do something to design the system
-> better, so that it frees memory between the subtests.
+Le mer. 29 mars 2023 =C3=A0 15:17, AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> a =C3=A9crit :
+>
+> Il 29/03/23 10:54, amergnat@baylibre.com ha scritto:
+> > From: Fabien Parent <fparent@baylibre.com>
+> >
+> > This new device-tree add the regulators, rtc and keys support
+> > for the MT6357 PMIC.
+> >
+> > Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> > Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> > ---
+> >   arch/arm64/boot/dts/mediatek/mt6357.dtsi | 282 ++++++++++++++++++++++=
++++++++++
+> >   1 file changed, 282 insertions(+)
+> >
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt6357.dtsi b/arch/arm64/boot=
+/dts/mediatek/mt6357.dtsi
+> > new file mode 100644
+> > index 000000000000..3330a03c2f74
+> > --- /dev/null
+> > +++ b/arch/arm64/boot/dts/mediatek/mt6357.dtsi
+> > @@ -0,0 +1,282 @@
+>
+> ..snip..
+>
+> > +
+> > +             keys {
+> > +                     compatible =3D "mediatek,mt6357-keys";
+> > +
+> > +                     key-power {
+> > +                             linux,keycodes =3D <KEY_POWER>;
+> > +                             wakeup-source;
+> > +                     };
+> > +
+> > +                     key-home {
+> > +                             linux,keycodes =3D <KEY_HOME>;
+> > +                             wakeup-source;
+>
+> KEY_HOME is a wakeup-source?! are you sure?!
+>
+> (P.S.: I'm just checking if that was intended)
 
-People like Martin Blumenstingl have managed to deploy and run the
-networking kselftests on OpenWRT, which typically runs on very
-resource-constrained embedded devices.
-https://lore.kernel.org/netdev/CAFBinCDX5XRyMyOd-+c_Zkn6dawtBpQ9DaPkA4FDC5agL-t8CA@mail.gmail.com/
-https://lore.kernel.org/netdev/20220707135532.1783925-1-martin.blumenstingl@googlemail.com/
+Yes it's the setup used in the official Mediatek Rity project.
 
-Considering that, you'll have to come with a much more concrete description
-of why the system should be "designed better" and "free memory between
-subtests" (what memory?!) before you could run it on your target system.
-
-Either that, or at least take into serious consideration the fact that you
-may be hung up on doing something which isn't necessary for the end goal.
-
-I simply have no clue what you're talking about. It's as if we're talking
-about completely different things.
-
-> If all tests are always run on the bridge only, I think they don't make
-> much sense as these patchsets are directed towards switchcores.
-
-Is this supposed to mean something, or is it just a random thought you
-had, that you believed it would be good to share with us?
-
-The tools/testing/selftests/net/forwarding/lib.sh central framework has
-the NETIF_TYPE and NETIF_CREATE variables, which indicate that by default,
-veth interfaces are created. When running a bridge selftest with veth as
-bridge ports, indeed software bridging should take place, and those
-selftests should work fine. In Linux, the software behavior represents a
-model for the offload behavior, since offloads are 100% transparent to
-the user most of the time.
-
-Below in lib.sh, there is a line which sources "$relative_path/forwarding.config",
-a file which can contain customizations of the default variables used by
-the framework. Even though it isn't strictly necessary to put the
-customized bash variables in a forwarding.config file, it is more
-convenient to do this than to specify them as environment variables.
-
-If you "cd tools/testing/selftests/drivers/net/dsa/", you will find
-precisely such a forwarding.config file there, which contains the line
-"NETIF_CREATE=no", which means that when you run the symlinked sub-group
-of forwarding tests relevant to DSA from this folder, the expectation is
-that the bridge ports are not veth interfaces created for the test, but
-rather, physical ports.
-
-So, by running the command I posted in the earlier email, you actually
-run it on the physical DSA user port interfaces, and it should pass
-there too. This is based on the equivalency principle between the
-software and the hardware data paths that I was talking about.
-
-If you're actively and repeatedly making an effort to work with your eyes
-closed, and then build strawmen around the fact that you don't see, then
-you're not going to get very friendly reactions from people, me included,
-who explain things to you that pertain to your due diligence. This is
-because these people know the things that they're explaining to you out
-of their own due diligence, and, as a result, are not easily fooled by
-your childish excuses.
+Regards,
+Alex
 
