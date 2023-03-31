@@ -4,87 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D165DC76196
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Mar 2023 10:46:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7197DC76196
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Mar 2023 10:54:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vFG50WRg6TSYZLbPU6VURtL4QTslWUkc9E2u7XffhHw=; b=TV+TxXmznKZc3b7APOiBv2OJ4x
-	6wP+z9KCAl1OGVEFILN5d6aFVC0TPAyDZomUhm36nhWyiAw7ByMhYzLK2oQ/i3Lh6CV4WcP/x5E58
-	9m8FJ/zjbx2ojW2ksnrQV2KqXdf/szqxWujYUx4BCGDivsJb79B6sbImR+o178pKtov8/KzpgO/i8
-	yfI+ovFBiEV6OMjnaTBqUFX9FobwPtGUOr8Sl5widIdogWs/JFhwZH1HrXWnLq5hm4+qntRXcWOIf
-	4jDGEEhD+YNvFIHyG9bSGjD/6GZGrGqU+jeJH0diS/dXp5BUbncR7iXNSc7rayHyQyZSQ/SgLIir3
-	7Y5UcCJQ==;
+	bh=3J+3+QpiG0rZpOXhX+ZLI6+BIv55R5IPb8nvts5K8P4=; b=O2ZCnV2FBXGZvbFJDTwQBnOnYz
+	qkOCl0/hvhArNt5D6Qmp9QKDbsq9lLQbL1BjhxqWiA0Dtp36SmfMjm+7le5aP9DKpE+8pxMH+KrVC
+	p8CzPcTjghhSo90LKCLUeKQzAFgXEvFxOR4oPpcsrHVjVymZmVT4gCpQ4ajFCHW86fK7RECyEjK3V
+	RNcrSHTg2X3vhi9Awofun3yFw6zr5UIRk1Q+jG4/D+8pcTvGJZpfejx6EbXXHNXmgT1twJqUGGrbo
+	ZKQ6pJ/ChzxC9EEcDPYmTdcXndP+La8jXy7dRLKnsoBbg7esBj+RtC/USeIOBo7xplMVKTQxGQGJh
+	/1+ibd/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1piCGY-006zGn-0X;
-	Fri, 31 Mar 2023 10:45:54 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1piCOX-0070OB-1v;
+	Fri, 31 Mar 2023 10:54:09 +0000
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1piCGT-006zEl-1z;
-	Fri, 31 Mar 2023 10:45:50 +0000
-Received: by mail-wm1-x334.google.com with SMTP id i5-20020a05600c354500b003edd24054e0so15037452wmq.4;
-        Fri, 31 Mar 2023 03:45:49 -0700 (PDT)
+	id 1piCOU-0070MG-1D
+	for linux-mediatek@lists.infradead.org;
+	Fri, 31 Mar 2023 10:54:07 +0000
+Received: by mail-wm1-x333.google.com with SMTP id v6-20020a05600c470600b003f034269c96so3339799wmo.4
+        for <linux-mediatek@lists.infradead.org>; Fri, 31 Mar 2023 03:54:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1680259548;
+        d=gmail.com; s=20210112; t=1680260040;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=vFG50WRg6TSYZLbPU6VURtL4QTslWUkc9E2u7XffhHw=;
-        b=ebVOy1D91/lypLEASvIfFCCjQPxepj6yXQhVOmf6weRMM5icXLf3friwMda5FfC8RH
-         a1Pdj22qiKZYdLU/xczr4d1nSGeEsD9s5pX5YQvfJBVO19k89KRZa9x5qWzbYVhbp2Zv
-         YxFovem6dOLggU8dErsjuyIRnc7335xctRJOuk00wjj+5wTmjUjkbwO0icEBS1iCLSFO
-         /85Y2siNCESdwYgdI52Pd9dWDM2oDFlDqQUjLt6dRqLjFTtqyQf9+jB1N1N5cJwHRdoa
-         EpSvwnQYxeLR4spZynFSeybTCKkMBUIZgQYDpFVWAgh30ly/GUhzqrabf7p5ni2MMNgT
-         LnSA==
+        bh=3J+3+QpiG0rZpOXhX+ZLI6+BIv55R5IPb8nvts5K8P4=;
+        b=DIb00x/wP2+VNwtse4AjeksMmJYcP/m3kkgofcXigSzJbtsa8dp4dAO21pZFD7qQUU
+         15qFAwsU+bZkjUqKIh4QmamsHAqhlpNn8EnTq0aOcnxQO1dC3p5x2P5dIJFuEDxirDrj
+         nMVEnclZDcNibiIh1V24XwNVjSIzq6Yifjq2o6lVNaJe4i+UADRgncqdhM2i9ivNJ+/I
+         FjujLjbEGo8OMQSOQJBKWbQBTvzLG7tMkh5PsvQFvauSGA4Q3eMQSqDweHbsVM9M6cCW
+         93vkolzYF1L0Tdxate2IKdw+vcQiHtO4wQvD85QFVhLTBSwP4OtIs/WJpny77DbsfMFU
+         xHzA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680259548;
+        d=1e100.net; s=20210112; t=1680260040;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=vFG50WRg6TSYZLbPU6VURtL4QTslWUkc9E2u7XffhHw=;
-        b=Abq5AoTHF0W3wdd8kfiZRpAAuxBxhc3O7BUOgE9m7JboIUXWV+94Fnv6kgtFCFT7BZ
-         jKKDMUtnTl/AAVUT8brhgvjRilZiUp8d3xjHRFkYfReoiME4tVZLjV893ErnsYX03SIt
-         n/tpr39fsGQR61iPMow+YXRxgjCEaV/+7/3xswlPvyqGToL0fcnpK/VYtQYNCWOqUXBi
-         olqD23DcVl4hG0IjGfa1YamD38abHKuL+FjTCbCMtbGixkzSixF47SP68Moydw7v8BR+
-         0rBA88o4vOJ1rcRqV2sj5JIIAA72X0l+kmR0/cPgNNk7c5Qy//znQ/Br1W3RNQLABIuJ
-         B0/A==
-X-Gm-Message-State: AAQBX9ech88/BCoVeI3pl5bslWQiQ5j3ibp/OaH7FReRrDrVgjno+ry0
-	Z0HN7A3OoWnpwECgAjB8sUg=
-X-Google-Smtp-Source: AKy350ZzIbqgsPxbenHIVxySZF3wlNwF7uniuuHQNYNE9Vjs92UzxssJUrRef7rvNSSrb/rLXndW7w==
-X-Received: by 2002:a1c:7c12:0:b0:3f0:3368:5f7f with SMTP id x18-20020a1c7c12000000b003f033685f7fmr4663596wmc.31.1680259547957;
-        Fri, 31 Mar 2023 03:45:47 -0700 (PDT)
+        bh=3J+3+QpiG0rZpOXhX+ZLI6+BIv55R5IPb8nvts5K8P4=;
+        b=KCUlVL0TobEmlzKh0LElyRpaEKzxjlASdK5xfx67YtHPjTqCJcHn4hnDlqFc+ZU5jR
+         8wil3tC3JjPkbNTw9bU04oZ4G1JMOARzqbXEX1PBKSiqF/wSErU/qanUaIwlIYtA+7L8
+         eN9TRTxHtHTPj43wYt/LE3QqbG6bFK4EdmZrgx/nK+SEFVWsKF12+nzCRCQc7SKTbTda
+         PhKHQ0i7+a/a1cyL+/rp1pD6v0cQ6Mtgd2/snRl2FSa8wB6Qg2JS+AZoc9zlBwjJ171h
+         cskNpNQxKZ+bdmiy2uWtdjB5w++U2ByjNi1SdTvDh6l56uQto/a2+up8XQWvj32c61b8
+         34bA==
+X-Gm-Message-State: AO0yUKUOIHAZLSo56v0sYzc0exTw1KKjjKp6n8K3vSbGwe+bgVZt8fBL
+	zzlmRAEqHn2LwTnaVgwgeyU=
+X-Google-Smtp-Source: AK7set/6UKDxNUN/UAOYCRqLFd1+/gfqy+fFYklR/RihAmzcjc7b7iRIySxIy8jSOxMBFSTH9pG8Eg==
+X-Received: by 2002:a1c:7911:0:b0:3ee:5754:f14b with SMTP id l17-20020a1c7911000000b003ee5754f14bmr20711685wme.3.1680260040071;
+        Fri, 31 Mar 2023 03:54:00 -0700 (PDT)
 Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id s7-20020a05600c45c700b003ee2a0d49dbsm9391820wmo.25.2023.03.31.03.45.46
+        by smtp.gmail.com with ESMTPSA id l24-20020a1c7918000000b003e203681b26sm2273068wme.29.2023.03.31.03.53.58
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 31 Mar 2023 03:45:46 -0700 (PDT)
-Message-ID: <c95c2ab1-e57e-8e77-4db3-04a2a4cfc16f@gmail.com>
-Date: Fri, 31 Mar 2023 12:45:46 +0200
+        Fri, 31 Mar 2023 03:53:59 -0700 (PDT)
+Message-ID: <5defb636-1f0f-6a6c-3c10-e8960b7d4399@gmail.com>
+Date: Fri, 31 Mar 2023 12:53:57 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.1
-Subject: Re: [PATCH v1 4/4] arm64: dts: mediatek: cherry: Add configuration
- for display backlight
+Subject: Re: [PATCH net-next 04/10] arm64: dts: mt7986: move cpuboot in a
+ dedicated node
 Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230223145426.193590-1-angelogioacchino.delregno@collabora.com>
- <20230223145426.193590-5-angelogioacchino.delregno@collabora.com>
- <CAGXv+5H7ADKUu1bsGrF5F-EgJBM6WW0N+AFw=m+hH_00QGHDew@mail.gmail.com>
- <CAGXv+5GnbP+hEy_J+vNsQgwr6qK5oQpDCaszqOkWmrcKfupAgw@mail.gmail.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>, netdev@vger.kernel.org
+Cc: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, linux-mediatek@lists.infradead.org, nbd@nbd.name,
+ john@phrozen.org, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
+ lorenzo.bianconi@redhat.com, daniel@makrotopia.org,
+ krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
+ devicetree@vger.kernel.org
+References: <cover.1679330630.git.lorenzo@kernel.org>
+ <61e2445f79d8642e7749dac409e2b93b96667610.1679330630.git.lorenzo@kernel.org>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <CAGXv+5GnbP+hEy_J+vNsQgwr6qK5oQpDCaszqOkWmrcKfupAgw@mail.gmail.com>
+In-Reply-To: <61e2445f79d8642e7749dac409e2b93b96667610.1679330630.git.lorenzo@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230331_034549_651266_C8FFEA73 
-X-CRM114-Status: GOOD (  12.16  )
+X-CRM114-CacheID: sfid-20230331_035406_437207_7744D8A9 
+X-CRM114-Status: GOOD (  14.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,27 +102,76 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 31/03/2023 08:44, Chen-Yu Tsai wrote:
-> On Fri, Feb 24, 2023 at 4:52 PM Chen-Yu Tsai <wenst@chromium.org> wrote:
->>
->> On Thu, Feb 23, 2023 at 10:56 PM AngeloGioacchino Del Regno
->> <angelogioacchino.delregno@collabora.com> wrote:
->>>
->>> Configure the hardware PWM for the integrated display's backlight:
->>> all Cherry devices enable the backlight with GPIO82 and manage the
->>> PWM via MediaTek disp-pwm on GPIO97.
->>>
->>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>
->> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
->> Tested-by: Chen-Yu Tsai <wenst@chromium.org>
->>
->> with some additional patches to enable the internal display.
+On 20/03/2023 17:57, Lorenzo Bianconi wrote:
+> Since the cpuboot memory region is not part of the RAM SoC, move cpuboot
+> in a deidicated syscon node.
+> This patch helps to keep backward-compatibility with older version of
+> uboot codebase where we have a limit of 8 reserved-memory dts child
+> nodes.
 > 
-> Matthias, could you pick up patches 3 and 4 from this series? They are
-> independent of the other two patches. Having them picked up would reduce
-> the number of patches that have to get carried for testing and resent.
-> 
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-Applied, thanks!
+Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
+
+> ---
+>   arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 21 +++++++++++----------
+>   1 file changed, 11 insertions(+), 10 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> index 51944690e790..668b6cfa6a3d 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> @@ -113,12 +113,6 @@ wo_dlm1: wo-dlm@151f8000 {
+>   			reg = <0 0x151f8000 0 0x2000>;
+>   			no-map;
+>   		};
+> -
+> -		wo_boot: wo-boot@15194000 {
+> -			reg = <0 0x15194000 0 0x1000>;
+> -			no-map;
+> -		};
+> -
+>   	};
+>   
+>   	timer {
+> @@ -461,10 +455,11 @@ wed0: wed@15010000 {
+>   			interrupt-parent = <&gic>;
+>   			interrupts = <GIC_SPI 205 IRQ_TYPE_LEVEL_HIGH>;
+>   			memory-region = <&wo_emi0>, <&wo_ilm0>, <&wo_dlm0>,
+> -					<&wo_data>, <&wo_boot>;
+> +					<&wo_data>;
+>   			memory-region-names = "wo-emi", "wo-ilm", "wo-dlm",
+> -					      "wo-data", "wo-boot";
+> +					      "wo-data";
+>   			mediatek,wo-ccif = <&wo_ccif0>;
+> +			mediatek,wo-cpuboot = <&wo_cpuboot>;
+>   		};
+>   
+>   		wed1: wed@15011000 {
+> @@ -474,10 +469,11 @@ wed1: wed@15011000 {
+>   			interrupt-parent = <&gic>;
+>   			interrupts = <GIC_SPI 206 IRQ_TYPE_LEVEL_HIGH>;
+>   			memory-region = <&wo_emi1>, <&wo_ilm1>, <&wo_dlm1>,
+> -					<&wo_data>, <&wo_boot>;
+> +					<&wo_data>;
+>   			memory-region-names = "wo-emi", "wo-ilm", "wo-dlm",
+> -					      "wo-data", "wo-boot";
+> +					      "wo-data";
+>   			mediatek,wo-ccif = <&wo_ccif1>;
+> +			mediatek,wo-cpuboot = <&wo_cpuboot>;
+>   		};
+>   
+>   		wo_ccif0: syscon@151a5000 {
+> @@ -494,6 +490,11 @@ wo_ccif1: syscon@151ad000 {
+>   			interrupts = <GIC_SPI 212 IRQ_TYPE_LEVEL_HIGH>;
+>   		};
+>   
+> +		wo_cpuboot: syscon@15194000 {
+> +			compatible = "mediatek,mt7986-wo-cpuboot", "syscon";
+> +			reg = <0 0x15194000 0 0x1000>;
+> +		};
+> +
+>   		eth: ethernet@15100000 {
+>   			compatible = "mediatek,mt7986-eth";
+>   			reg = <0 0x15100000 0 0x80000>;
 
