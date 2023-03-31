@@ -4,87 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F08ECC77B60
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Mar 2023 09:42:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67461C76196
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Mar 2023 09:48:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xo2e908Td2gve6mc5SW+VA1nrFzqtdIPvQwGYibnpiE=; b=fUjCXrQH3E5weYQcboB9TRDvrl
-	5Epp4Y4J3WibcpJz6SkZC5KHMWTTqVtGoICaZ9y8Pn+7QKf1a8Gxb/xEldJTUd2sFgKKUooDh+xsm
-	eIaP4t4gR6qfOPppOUdSuo8NNBXt5RStJQ0bDnIqgQAhRb5SCKQbL8WnnXC1L31LcAONvCv0zbZVb
-	fnJRganhk7OSEOAzGu3LSPxnHuLTHFY/xTByIxCCPfZpcRjH9vUsUtA/BUBhMkMTG9EtPel0fOoLp
-	Q3w/35wwIjKgupL5cxZnw/wF9MNuPLksQIAUPVeTBLrLDEBKLuTHfEIKg5WZKhg/R3ukfvqK0RonY
-	wovF3Hdg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=woMdJmPGwqbmkNZP2IiNYeJBaZIPhitmDLlx3uTqBlE=; b=CqU8qFs4PD+nHKIoO1U514r0Ez
+	iEBnMF3cPgzOCUKD7qH/G6rK6vgk8H6Byi9QBNOGoj11+4PtOKfzIiaYZCLWRpbNt3P5iiD+lCZpG
+	tDn7wVztuv0tP/55zN8UU6Ugqpqye+Q45BW+uxkKT3KzwCuVT9JqKxLoftihO8tiBsT2O+OChsmuw
+	erbHBinFO+H15FQJ7W5Pqkkjdh7sW8hwy81Hr3soqmuxnChR64eLqDPf2hmbZ+qsVN+nirrWWcTlE
+	yQxMN69mNXXMGBc5L7NBLtmS17ESsPjfeCKk7cpJjl+1fMxc+X0ie/9PCXge4EoiJmMfluRH84CPO
+	/5nG0bDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1piBGe-006jHs-28;
-	Fri, 31 Mar 2023 09:41:56 +0000
-Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
+	id 1piBMm-006lkY-0X;
+	Fri, 31 Mar 2023 09:48:16 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1piBGa-006jEL-0y
-	for linux-mediatek@lists.infradead.org;
-	Fri, 31 Mar 2023 09:41:53 +0000
-Received: by mail-yw1-x1132.google.com with SMTP id 00721157ae682-54184571389so404783757b3.4
-        for <linux-mediatek@lists.infradead.org>; Fri, 31 Mar 2023 02:41:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1680255709;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Xo2e908Td2gve6mc5SW+VA1nrFzqtdIPvQwGYibnpiE=;
-        b=uBMQIM9oghtu65OYry7lh4Mg9Ey6cTyShHDuQhNvkKE7cvwdYHy8HnejROCk4ISgBp
-         n4e9O+dpRLoxInIr0AZo6wccf2QiNwAmGY6ht9Plojz33GD3k3FLmtt9lRBB2OoL5AhL
-         q2tQFIWfJ/sC6d85vYFLRhLcrxJBPlr1eaExYaWQbIa5/50Jh2eHlnucVQQ3EXIqsMhF
-         Xn7baerAqsPtuvTx5Dhgm9XDMjpTYzSMOsnAxiuciECoi/2dtVis3DjNLK35S0dVG0KG
-         wAvNRlq2DbLnfG9+b2gm/R5ppzBZy9uGHsRoJDKHucpOb8KGlIogRpALWSfLixgMC6r8
-         opMw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680255709;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Xo2e908Td2gve6mc5SW+VA1nrFzqtdIPvQwGYibnpiE=;
-        b=fT3wrMgECbYQGD4E28pR5TOzs/xPhSiaAUev6zyF9FmfaWeLnA360p6krZULtSIHK9
-         7wHaDa2yedEI3Ekofjn5jtjVZxD76zLcbcLqkrXp/rYNbbfWjtENTAFi9doC5R8xJZpo
-         YZJmM7eAjtoZpWKCo1L7It55YlaKXoqhWeEAX52OCOSOeHgBiwdqFy3xICZuhqOx8GwR
-         DP3s51xjs4JZu9TRCfuc/bVNziNCXOf9wEmvlTcpsd4xrA74Juzn+rc8zgUUoMuBJcZ4
-         9JwRTWYv3qlh5vPCLOQGwHaOzz2VKE4Ah49mwelq2IIcQrogCs0LrPP3kmuI4V1XGvqP
-         eEnA==
-X-Gm-Message-State: AAQBX9f9T3jmuy7TUZYrBnsw/5rcDUYqNaUeQyHXx6lkZn4y4UseQypZ
-	+tc4WGLsxVknpZPtId1BNHv6ycYfgThPccvoJMsptw==
-X-Google-Smtp-Source: AKy350Zp7b7rjPNqqt62mXM2VNu7M6RMNX9eWwNzvLF+Jhy96wQfhw+jaU3Fvyd5viiVC5EgACPo2KWYnzUvEMriI7w=
-X-Received: by 2002:a81:b620:0:b0:541:8995:5334 with SMTP id
- u32-20020a81b620000000b0054189955334mr13089289ywh.3.1680255709091; Fri, 31
- Mar 2023 02:41:49 -0700 (PDT)
+	id 1piBMa-006lbN-2A;
+	Fri, 31 Mar 2023 09:48:13 +0000
+X-UUID: 1a7e9532cfa911ed8687db9d93187ff1-20230331
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=woMdJmPGwqbmkNZP2IiNYeJBaZIPhitmDLlx3uTqBlE=;
+	b=aJ1B8PIFPT6L2CEJH+H2McTj79ic49HEN9zKuRjrEWEW2TulJC/MhTfzn+hSoARpY7l9/odJbik1jr68/Fc9DACsaUnp+FEHbNP0CmHXqOdF6a2hVyTxdm+WlbagcJCaSejPY5CSlRCmqSH3SgNlzeI0eA1WL3tieFYq8dsvZLE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22,REQID:24e5b26f-a720-4594-9e2c-06a3c0a7ea46,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:120426c,CLOUDID:aa6f162a-564d-42d9-9875-7c868ee415ec,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: 1a7e9532cfa911ed8687db9d93187ff1-20230331
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <bo.ye@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1745346304; Fri, 31 Mar 2023 02:47:51 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Fri, 31 Mar 2023 17:27:13 +0800
+Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Fri, 31 Mar 2023 17:27:12 +0800
+From: Bo Ye <bo.ye@mediatek.com>
+To: Jaegeuk Kim <jaegeuk@kernel.org>, Chao Yu <chao@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, xiongping1
+	<xiongping1@xiaomi.com>, qixiaoyu1 <qixiaoyu1@xiaomi.com>
+CC: <yongdong.zhang@mediatek.com>, <peng.zhou@mediatek.com>,
+	<browse.zhang@mediatek.com>, <light.hsieh@mediatek.com>, Qilin Tan
+	<qilin.tan@mediatek.com>, Bo Ye <bo.ye@mediatek.com>,
+	<linux-f2fs-devel@lists.sourceforge.net>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH 2/2] f2fs: add __pack attribute for extent_info
+Date: Fri, 31 Mar 2023 17:26:57 +0800
+Message-ID: <20230331092658.72386-2-bo.ye@mediatek.com>
+X-Mailer: git-send-email 2.17.0
+In-Reply-To: <20230331092658.72386-1-bo.ye@mediatek.com>
+References: <20230331092658.72386-1-bo.ye@mediatek.com>
 MIME-Version: 1.0
-References: <20230203-evk-board-support-v3-0-0003e80e0095@baylibre.com>
- <20230203-evk-board-support-v3-5-0003e80e0095@baylibre.com> <889be563-78d6-7148-f7d2-09ae21383ee4@collabora.com>
-In-Reply-To: <889be563-78d6-7148-f7d2-09ae21383ee4@collabora.com>
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Fri, 31 Mar 2023 11:41:38 +0200
-Message-ID: <CAFGrd9rGoAN=B6O=X7peOtyYuWpWkMBFakrkLp2fcD-D2uajqw@mail.gmail.com>
-Subject: Re: [PATCH v3 05/17] arm64: dts: mediatek: add mt6357 device-tree
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, 
-	Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Chaotian Jing <chaotian.jing@mediatek.com>, 
-	Ulf Hansson <ulf.hansson@linaro.org>, Wenbin Mei <wenbin.mei@mediatek.com>, 
-	Linus Walleij <linus.walleij@linaro.org>, Zhiyong Tao <zhiyong.tao@mediatek.com>, 
-	=?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>, 
-	linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-mmc@vger.kernel.org, 
-	linux-gpio@vger.kernel.org, Alexandre Bailon <abailon@baylibre.com>, 
-	Fabien Parent <fparent@baylibre.com>, Amjad Ouled-Ameur <aouledameur@baylibre.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230331_024152_344073_F8173591 
-X-CRM114-Status: GOOD (  16.28  )
+X-CRM114-CacheID: sfid-20230331_024804_813560_31ABDD22 
+X-CRM114-Status: GOOD (  18.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,51 +86,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le mer. 29 mars 2023 =C3=A0 15:17, AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> a =C3=A9crit :
->
-> Il 29/03/23 10:54, amergnat@baylibre.com ha scritto:
-> > From: Fabien Parent <fparent@baylibre.com>
-> >
-> > This new device-tree add the regulators, rtc and keys support
-> > for the MT6357 PMIC.
-> >
-> > Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> > Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-> > ---
-> >   arch/arm64/boot/dts/mediatek/mt6357.dtsi | 282 ++++++++++++++++++++++=
-+++++++++
-> >   1 file changed, 282 insertions(+)
-> >
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt6357.dtsi b/arch/arm64/boot=
-/dts/mediatek/mt6357.dtsi
-> > new file mode 100644
-> > index 000000000000..3330a03c2f74
-> > --- /dev/null
-> > +++ b/arch/arm64/boot/dts/mediatek/mt6357.dtsi
-> > @@ -0,0 +1,282 @@
->
-> ..snip..
->
-> > +
-> > +             keys {
-> > +                     compatible =3D "mediatek,mt6357-keys";
-> > +
-> > +                     key-power {
-> > +                             linux,keycodes =3D <KEY_POWER>;
-> > +                             wakeup-source;
-> > +                     };
-> > +
-> > +                     key-home {
-> > +                             linux,keycodes =3D <KEY_HOME>;
-> > +                             wakeup-source;
->
-> KEY_HOME is a wakeup-source?! are you sure?!
->
-> (P.S.: I'm just checking if that was intended)
+From: Qilin Tan <qilin.tan@mediatek.com>
 
-Yes it's the setup used in the official Mediatek Rity project.
+Need add __pack for struct extent_info to align to memory
+layout of struct rb_entry.
 
-Regards,
-Alex
+struct rb_entry {
+    struct rb_node rb_node;     /* rb node located in rb-tree */
+    union {
+        struct {
+            unsigned int ofs;   /* start offset of the entry */
+            unsigned int len;   /* length of the entry */
+        };
+        unsigned long long key;     /* 64-bits key */
+    } __packed;
+};
+
+struct extent_info {
+    unsigned int fofs;      /* start offset in a file */
+    unsigned int len;       /* length of the extent */
+    union {
+        ...
+        /* block age extent_cache */
+        struct {
+            /* block age of the extent */
+            unsigned long long age;
+            /* last total blocks allocated */
+            unsigned long long last_blocks;
+        };
+};
+
+The new fields(age, last_blocks) are u64 in change 71644dff4811, it
+cause the memory alignment based on 8 bytes in some complier. So the
+field fofs and len are alloced with 8 bytes and using the last 4 byts.
+Its memory is not aligned with struct rb_entry. the ofs of rb_entry
+pointer to a invalid value and cause writing file failed.
+
+struct extent_info's offset should be 12 rather than 16 from the
+beginning of struct rb_entry.
+
+The offset dump for the bad case as:
+kworker/u16:6: [name:f2fs&]f2fs_lookup_rb_tree_for_insert:MTK_DEBUG: ino=1629 re=0xc675dc08 ofs=0 re->ofs=0, re->len=68 ei=0xc675dc18 ei.fofs=68 ei.len=277
+
+Fixes: 71644dff4811 ("f2fs: add block_age-based extent cache")
+Signed-off-by: Bo Ye <bo.ye@mediatek.com>
+Signed-off-by: Qilin Tan <qilin.tan@mediatek.com>
+---
+ fs/f2fs/f2fs.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/fs/f2fs/f2fs.h b/fs/f2fs/f2fs.h
+index b0ab2062038a..7c690667a42f 100644
+--- a/fs/f2fs/f2fs.h
++++ b/fs/f2fs/f2fs.h
+@@ -660,7 +660,7 @@ struct extent_info {
+ 			unsigned long long last_blocks;
+ 		};
+ 	};
+-};
++} __packed;
+ 
+ struct extent_node {
+ 	struct rb_node rb_node;		/* rb node located in rb-tree */
+-- 
+2.17.0
+
 
