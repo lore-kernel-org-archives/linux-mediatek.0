@@ -4,84 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C51DC6FD18
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Mar 2023 13:20:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29FBEC6FD18
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Mar 2023 13:47:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cMHmrkdCRBs0b+cC5MrOaqU5ZtG6rlfwdpiKVRFq8U4=; b=NQDMILDy/Ev1cF8raK3EH9I1Sm
-	FcNcrwBdaT+2wligm9syl868qZsHJTfv1J4KXzXYbpmdwYYEdPwAuSCodOGDr9ax2x4zRpz5a+DJI
-	UN64n4D1AxJDtVHCi9hJXUvw78X+NfhMcye7Y+UnakVvc3z4SX0CZkBYZgx8PL6rlbIR3CAXQ5ssL
-	ZYau9gu9e/ayf2MxfQg19IwgCdcNlblYo2EbrO2klVwfLcMgdYN+MmHgnqyqrglQ54ORGAX9KMrIY
-	mXQvrm/L4aOOtdLBpoLfyjo5K13UJWeiBfSpSYFil+mySwfRFop/eGrdv/0LfkjzXTGi+ATlRZlHm
-	np93WmpQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=N04sz8qMZBeob6Wxx0elTfeAP/WuOJZpzQbXTul6Fhk=; b=q4GrPGguxNABQ5KG2XL9Ng176j
+	hjq2tD0iAasEeiecd4I874dZqz1FOTT4GVEGcfq219ELmCN6PYp04ICj0qCOgPLlp8Srj8k5ge68z
+	QCs3+06vSgesPhO5GAeP/PfB5pCJISwg3dg61YcTZdaXUYPRbqVjkuaAdRaZkPubSa6HdeCdAhzNs
+	qRvew/IgNuQIOZx1pZFxrb74gSnmTg4ugh9omrb0NHlXaPU0RgBuj5PU3L4NsENRYQ9F3Kl+pv3Gc
+	rf/7zoAjY0qI6HIm72QjrxvHzRP2Ji75oXUkmWFVUAgu87VSwA/4UK5gNhOUujhPGtOD07mKT2wUL
+	Vx83/f+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1piEfu-007VX4-1y;
-	Fri, 31 Mar 2023 13:20:14 +0000
-Received: from sender3-op-o17.zoho.com ([136.143.184.17])
+	id 1piF6F-007Zj0-1t;
+	Fri, 31 Mar 2023 13:47:27 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1piEfr-007VW8-1U;
-	Fri, 31 Mar 2023 13:20:13 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1680268787; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=P7yZw+J0wyj4xrdmrqgiIoYYRx0enqLjrKRN0nO60uErKvMWcCUvVz6majD6O5X/KjhvJbdfKevlBH2xFV9g5wK2WWUyhbXqmbfl5W0S3k+iD0++5+4W/vn+x6I+AIAU/Stj+wd8gNRVuQxigBuX+7plyH6fBBhPAo6yD2WF79Y=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1680268787; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=cMHmrkdCRBs0b+cC5MrOaqU5ZtG6rlfwdpiKVRFq8U4=; 
-	b=GbO50moL7bzxLMI0MhSbyI1gTkc+cJmD7gq80V/rGEQESNR62F+Kp/1EhxLA71+3dHnlD1n/nzGUkHJWbDFup6FG29n5bdSoVjyT9UPB2ZUdm5i8HTX+WTvnuoLg0aHYkNnOZvs5WF6VDX5KcGYOK5yqaEONlXSP44PQrN3T9Jw=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1680268787;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:From:From:To:To:Cc:Cc:References:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=cMHmrkdCRBs0b+cC5MrOaqU5ZtG6rlfwdpiKVRFq8U4=;
-	b=bbBo2JmZD+YJg81EOVWTEoHY+qHYXSXvWWr6+9kVG6MNb1HaLu5WVF0rBp01tTam
-	w9ZIIDyWbvvN9yfwwpTmMT226TlA9D5ckoDLD0eKkd2XaPQtdtUXJM38DfSNxXqytWE
-	0l7JXZUyWpQ1LamukfdgsThREBcM60XolIkUujzI=
-Received: from [10.10.10.3] (149.91.1.15 [149.91.1.15]) by mx.zohomail.com
-	with SMTPS id 168026878373195.65526317346269; Fri, 31 Mar 2023 06:19:43 -0700 (PDT)
-Message-ID: <abf48099-d077-891f-ce39-293d5e063faa@arinc9.com>
-Date: Fri, 31 Mar 2023 16:19:37 +0300
+	id 1piF69-007Zeu-0D;
+	Fri, 31 Mar 2023 13:47:22 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 7F97F62952;
+	Fri, 31 Mar 2023 13:47:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 26BE9C4339B;
+	Fri, 31 Mar 2023 13:47:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1680270439;
+	bh=orPaOgx6J/LUi114f9kSqd4A7XlXiiksN/BvFn+cS3U=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=IYHAqMf3Z9huvpJapTAR+uF4zpKFsOVOqB7p8GER0qI2ESstHl5N5glcyPZhHRf0S
+	 47MaoxN3r7v8jQN7CRY5zf2YkHGchK2S6qkXgmxn5jJLwaxm7swEweFwgvJMcgLGLz
+	 4iUSnuOLpwV+QPmNR7TCTJBqDjyXW/fnjVGfi3/xr6v4mLxCgVSQrhHulyySzlbPxC
+	 dI4gx+dSvi+zF3IEljngIukwhS5dz9OhZ8QonfmJteoKoXjyYw1cwGqsdpD5AU0rWN
+	 4mx2vBSal6nd8k1WmEeN90I6rYVvjnYr7/48oeBD/6gYI8q4FTF9uf65aJpvmlGpcH
+	 6d4OgZjU0etTQ==
+Date: Fri, 31 Mar 2023 19:17:15 +0530
+From: Vinod Koul <vkoul@kernel.org>
+To: Rob Herring <robh@kernel.org>
+Cc: Kishon Vijay Abraham I <kishon@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Yu Chen <chenyu56@huawei.com>,
+	Binghui Wang <wangbinghui@hisilicon.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Miquel Raynal <miquel.raynal@bootlin.com>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Robert Marko <robert.marko@sartura.hr>,
+	Luka Perkov <luka.perkov@sartura.hr>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Vincent Shih <vincent.sunplus@gmail.com>,
+	Wolfgang Grandegger <wg@grandegger.com>,
+	Marc Kleine-Budde <mkl@pengutronix.de>,
+	linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org,
+	linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-tegra@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org, linux-can@vger.kernel.org
+Subject: Re: [PATCH] dt-bindings: phy: Drop unneeded quotes
+Message-ID: <ZCbkY3z9Lquad41t@matsya>
+References: <20230320233955.2921179-1-robh@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH net-next 14/15] net: dsa: mt7530: introduce driver for
- MT7988 built-in switch
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux@armlinux.org.uk,
- linux-kernel@vger.kernel.org, Andrew Lunn <andrew@lunn.ch>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- DENG Qingfang <dqfext@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- Sam Shih <Sam.Shih@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
- John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
- Luiz Angelo Daros de Luca <luizluca@gmail.com>
-References: <cover.1680180959.git.daniel@makrotopia.org>
- <fef2cb2fe3d2b70fa46e93107a0c862f53bb3bfa.1680180959.git.daniel@makrotopia.org>
- <6a7c5f81-a8a3-27b5-4af3-7175a3313f9a@arinc9.com>
- <ZCazDBJvFvjcQfKo@makrotopia.org>
- <7d0acaef-0cec-91b9-a5c6-d094b71e3dbd@arinc9.com>
- <28d048c9-6389-749b-d0eb-18a9c2d83c4e@arinc9.com>
-In-Reply-To: <28d048c9-6389-749b-d0eb-18a9c2d83c4e@arinc9.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230320233955.2921179-1-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230331_062011_531689_1A35C8FF 
-X-CRM114-Status: GOOD (  22.75  )
+X-CRM114-CacheID: sfid-20230331_064721_140680_C5037F07 
+X-CRM114-Status: UNSURE (   8.04  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,145 +105,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 31.03.2023 16:18, Arınç ÜNAL wrote:
-> On 31.03.2023 15:06, Arınç ÜNAL wrote:
->> On 31.03.2023 13:16, Daniel Golle wrote:
->>> On Fri, Mar 31, 2023 at 08:50:28AM +0300, Arınç ÜNAL wrote:
->>>> On 30.03.2023 18:23, Daniel Golle wrote:
->>>>> Add driver for the built-in Gigabit Ethernet switch which can be found
->>>>> in the MediaTek MT7988 SoC.
->>>>>
->>>>> The switch shares most of its design with MT7530 and MT7531, but has
->>>>> it's registers mapped into the SoCs register space rather than being
->>>>> connected externally or internally via MDIO.
->>>>>
->>>>> Introduce a new platform driver to support that.
->>>>>
->>>>> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
->>>>> ---
->>>>>    MAINTAINERS                   |   2 +
->>>>>    drivers/net/dsa/Kconfig       |  12 ++++
->>>>>    drivers/net/dsa/Makefile      |   1 +
->>>>>    drivers/net/dsa/mt7530-mmio.c | 101 
->>>>> ++++++++++++++++++++++++++++++++++
->>>>>    drivers/net/dsa/mt7530.c      |  86 ++++++++++++++++++++++++++++-
->>>>>    drivers/net/dsa/mt7530.h      |  12 ++--
->>>>>    6 files changed, 206 insertions(+), 8 deletions(-)
->>>>>    create mode 100644 drivers/net/dsa/mt7530-mmio.c
->>>>>
->>>>> diff --git a/MAINTAINERS b/MAINTAINERS
->>>>> index 14924aed15ca7..674673dbdfd8b 100644
->>>>> --- a/MAINTAINERS
->>>>> +++ b/MAINTAINERS
->>>>> @@ -13174,9 +13174,11 @@ MEDIATEK SWITCH DRIVER
->>>>>    M:    Sean Wang <sean.wang@mediatek.com>
->>>>>    M:    Landen Chao <Landen.Chao@mediatek.com>
->>>>>    M:    DENG Qingfang <dqfext@gmail.com>
->>>>> +M:    Daniel Golle <daniel@makrotopia.org>
->>>>>    L:    netdev@vger.kernel.org
->>>>>    S:    Maintained
->>>>>    F:    drivers/net/dsa/mt7530-mdio.c
->>>>> +F:    drivers/net/dsa/mt7530-mmio.c
->>>>>    F:    drivers/net/dsa/mt7530.*
->>>>>    F:    net/dsa/tag_mtk.c
->>>>> diff --git a/drivers/net/dsa/Kconfig b/drivers/net/dsa/Kconfig
->>>>> index c2551b13324c2..de4d86e37973f 100644
->>>>> --- a/drivers/net/dsa/Kconfig
->>>>> +++ b/drivers/net/dsa/Kconfig
->>>>> @@ -52,6 +52,18 @@ config NET_DSA_MT7530
->>>>>          Multi-chip module MT7530 in MT7621AT, MT7621DAT, MT7621ST and
->>>>>          MT7623AI SoCs is supported as well.
->>>>> +config NET_DSA_MT7988
->>>>> +    tristate "MediaTek MT7988 built-in Ethernet switch support"
->>>>> +    select NET_DSA_MT7530_COMMON
->>>>> +    depends on HAS_IOMEM
->>>>> +    help
->>>>> +      This enables support for the built-in Ethernet switch found
->>>>> +      in the MediaTek MT7988 SoC.
->>>>> +      The switch is a similar design as MT7531, however, unlike
->>>>> +      other MT7530 and MT7531 the switch registers are directly
->>>>> +      mapped into the SoCs register space rather than being 
->>>>> accessible
->>>>> +      via MDIO.
->>>>> +
->>>>>    config NET_DSA_MV88E6060
->>>>>        tristate "Marvell 88E6060 ethernet switch chip support"
->>>>>        select NET_DSA_TAG_TRAILER
->>>>> diff --git a/drivers/net/dsa/Makefile b/drivers/net/dsa/Makefile
->>>>> index 71250d7dd41af..103a33e20de4b 100644
->>>>> --- a/drivers/net/dsa/Makefile
->>>>> +++ b/drivers/net/dsa/Makefile
->>>>> @@ -8,6 +8,7 @@ endif
->>>>>    obj-$(CONFIG_NET_DSA_LANTIQ_GSWIP) += lantiq_gswip.o
->>>>>    obj-$(CONFIG_NET_DSA_MT7530_COMMON) += mt7530.o
->>>>>    obj-$(CONFIG_NET_DSA_MT7530)    += mt7530-mdio.o
->>>>> +obj-$(CONFIG_NET_DSA_MT7988)    += mt7530-mmio.o
->>>>
->>>> I'm not fond of this way. Wouldn't it be better if we split the mdio 
->>>> and
->>>> mmio drivers to separate modules and kept switch hardware support on
->>>> mt7530.c?
->>>
->>> You mean this in terms of Kconfig symbols?
->>> Because the way you describe is basically what I'm doing here:
->>>   * mt7530.c is the shared/common switch hardware driver
->>>   * mt7530-mdio.c contains the MDIO accessors and MDIO device drivers 
->>> for
->>>     MT7530, MT7531, MT7621, MT7623, ...
->>>   * mt7530-mmio.c contains the platform device driver for in-SoC 
->>> switches
->>>     which are accessed via MMIO, ie. MT7988 (and yes, this could be
->>>     extended to also support MT7620A/N).
->>
->> Ok great.
->>
->>>
->>> In early drafts I also named the Kconfig symbols
->>> CONFIG_NET_DSA_MT7530 for mt7530.c (ie. the common part)
->>> CONFIG_NET_DSA_MT7530_MDIO for the MDIO driver
->>> CONFIG_NET_DSA_MT7530_MMIO for the MMIO driver
->>>
->>> However, as existing kernel configurations expect 
->>> CONFIG_NET_DSA_MT7530 to
->>> select the MDIO driver, I decided it would be better to hide the 
->>> symbol of
->>> the common part and have CONFIG_NET_DSA_MT7530 select the MDIO driver 
->>> like
->>> it was before.
->>
->> You can "imply NET_DSA_MT7530_MDIO" from NET_DSA_MT7530 so the MDIO 
->> driver is also enabled when NET_DSA_MT7530 is selected. For example, 
->> on Realtek, both MDIO and SMI drivers are enabled by default when 
->> either of the main drivers are selected.
->>
->> config NET_DSA_MT7530
->>      tristate "MediaTek MT7530 and MT7531 Ethernet switch support"
->>      select NET_DSA_TAG_MTK
->>      select MEDIATEK_GE_PHY
->>      select PCS_MTK_LYNXI
->>      imply NET_DSA_MT7530_MDIO
->>      imply NET_DSA_MT7530_MMIO
-> 
-> The final kconfig should look like this:
-> 
-> config NET_DSA_MT7530
->      tristate "MediaTek MT7530 and MT7531 Ethernet switch support"
->      select NET_DSA_TAG_MTK
->      select MEDIATEK_GE_PHY
->      select PCS_MTK_LYNXI
->      imply NET_DSA_MT7530_MDIO
->      imply NET_DSA_MT7530_MMIO
->      help
->        This enables support for the MediaTek MT7530 and MT7531 Ethernet
->        switch chips. Multi-chip module MT7530 in MT7621AT, MT7621DAT,
->        MT7621ST and MT7623AI SoCs, and built-in switch in MT7688 SoC is
->        supported.
-> 
-> config NET_DSA_MT7530_MDIO
->      tristate "MediaTek MT7530 MDIO interface driver"
->      default NET_DSA_MT7530
+On 20-03-23, 18:39, Rob Herring wrote:
+> Cleanup bindings dropping unneeded quotes. Once all these are fixed,
+> checking for this can be enabled in yamllint.
 
-This is unnecessary.
+Applied, thanks
 
-Arınç
+-- 
+~Vinod
 
