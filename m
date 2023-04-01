@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0968C6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Apr 2023 20:52:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4083AC76196
+	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Apr 2023 20:52:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UMEGkXCvg7/CGHXH3d3dGgGNTGrxC2XQcGrgCdNoPME=; b=uG9paIq6yD4TNbMZn1sYUxwZ4/
-	DkSO3xdO9V38onO914O27opJrf3Jw4/Nexojet54zuEULxU43MtFPRzVyNSO2EzRGWk1Dn5nrWvaj
-	bzC4umFCdvvQmWcIxOpZpj88aLrw8WYw2lJ4ceFhyi1SgDCsw+BJnJ7265D6bULz/kDJ2Z79gleHq
-	MIc/KEcP+RVFfgUNVAdznxqP/lJtz7faQlvxdx87GV93yCRlQIog8I4Wb+zbFkOTpgkLA0Apwo2yJ
-	1jDwjeMJKDf1KxkIDCYrb3D2u4GYhouSQE8EzYHuGtTWkOrkTbv2+w7WkE2Gy5nG9OXgIAQojcFAI
-	3WADW2Jg==;
+	bh=1aMiCXujIGmUVuB4Z9vXOtvJHa7Wx4/lUo7wVgjnPeg=; b=VEaatpRgDHMK1Sq5t6LEBaVtvS
+	roNTGh5IQixU5qawh6LUIjw4wPbewj+pjO8fkwl+oqOOb2oODI696ESGuL4SfRc4BSIpn646N2MhF
+	um+KmJR8u7waV9EQ/EDx9E/Y5FZCiTBpUorK5+FL7zDLu9fRDpgfGcSm0sPy6oMhg/Oenzae3Z0YL
+	4cUn+Q83MYNraZy1yIz7O4bNaltBkE+xt4FOIA4n/0rLxaoYqB8XadmxbsHg5f1v8brEbxTF0FnP1
+	y5mdnNMm4hlq71V7D8qMEu3TkWzSyGTfaVven8TQHCPirlUaJ1s/+Qw9dWdWGswCTH0lAgujpKdni
+	JS6WIF+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1piiCf-00BIOh-2S;
-	Sat, 01 Apr 2023 20:52:01 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1piiD4-00BIVX-2o;
+	Sat, 01 Apr 2023 20:52:26 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1piiCc-00BINM-2r
+	id 1piiD1-00BIU0-2u
 	for linux-mediatek@lists.infradead.org;
-	Sat, 01 Apr 2023 20:52:00 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id v6-20020a05600c470600b003f034269c96so5647416wmo.4
-        for <linux-mediatek@lists.infradead.org>; Sat, 01 Apr 2023 13:51:58 -0700 (PDT)
+	Sat, 01 Apr 2023 20:52:25 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id p34so14879683wms.3
+        for <linux-mediatek@lists.infradead.org>; Sat, 01 Apr 2023 13:52:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1680382317;
+        d=linaro.org; s=google; t=1680382342;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=UMEGkXCvg7/CGHXH3d3dGgGNTGrxC2XQcGrgCdNoPME=;
-        b=R8Q8NOGOSVBDe/QebqkipZUS+N88Rq/PBjCw4V7x/npzW3GwFWca0J2gO+EdlzOlbi
-         efbPSkdAr/+lXSXG9Op9JcPpF1kHBXl8XFM7Bf8FWrs/0EjTwmAElts0Nj9blrIbgVHv
-         LMM25G5bwhfh9ADPFG52cABNRf5Las7c6ztSwlxI9Bx5PE09XkQozcT7gV8zQOvWt3qU
-         SdxwY9RfYT29A9RkeyPqe4wjuNoaZ20Raqxz5hAjrViECDSivs3UZk55XmXDAfrF6tV9
-         b4F7vjA581/JK94Ug3QDvV6gP/akEAIh9x84ZrEVjj+5nfuyozadiyQ/cdR+h6RlaRkT
-         C5Xw==
+        bh=1aMiCXujIGmUVuB4Z9vXOtvJHa7Wx4/lUo7wVgjnPeg=;
+        b=vkuiN9rvjWBpooAyCLyDu+pjg0gt4cQLzaQb6t8Lx2ghlnL1XUcUlNlQioyiBt4CFw
+         c9dnPmYQpp0ZZKZpdqml0vE/NrIwn9/G9HN+nSfzXg0Aepd4laDCrsQrhD9XVG3ae+tu
+         wOJ1jwlr9c4zSpX6j6xp6GIb6iFq5v2Fz/8KuVYuE6rhKeH1CSiAFjFSKkOqJSe+3+4D
+         p6DoeVJNisJrNKXPXCpsaen7XhiV4tP0OI98w80iwSha9b8qyWlPbMPXQxt62gZ87sVs
+         wvotEHObh3upaIs7GWjOvzINb47RR27Jg56v/x+X4x9OEtuUbvC/NXHMk8VBw51vEF/z
+         o/WQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680382317;
+        d=1e100.net; s=20210112; t=1680382342;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=UMEGkXCvg7/CGHXH3d3dGgGNTGrxC2XQcGrgCdNoPME=;
-        b=yGHD6Gt7Fyn5swW05wEldttO1er+uKultnaGHDke0BFiwtmSGR65Zg/EnQ0P1f1nPp
-         D2grWX3AwoEbb/DNJi3xn3qREEyJZmd1NqgjdQi5K16CfebKbJOhQ38MdSAOQ9mlHvnZ
-         oM5eKUJDpuFy9Q/ewJhGb24QzOml9sqetUPcvl4W9gPx9Nd8P3kHZezF/0O4u9xgywFP
-         BATZ4mlo4P2rKv3ZzPAVi1RUdO/FZ+f/1Rm9oRTRfhNWVe2eqeVwHbIHgsX1/7JOJNzg
-         LNOw3ZYToj4eZN2Sz03jhJj0wQ0LI4VFW3glHcEKxdCvvy5utmrPCt0+9JB6jT/5Ra4J
-         iQmQ==
-X-Gm-Message-State: AO0yUKVOxRwYG2/Hb1IVzwPlaS6yXVJRp1S1VAWoNNVuWEF+6jJbVHln
-	XRJv4nW7/ABonh6zfETvtgYusQ==
-X-Google-Smtp-Source: AK7set99TkACr0I2jVXwkGkUioKzfXxq2WJuqXn9pqAYA/4kbGZCzC8In0m4IIw4vt8k4LjpmeVgRw==
-X-Received: by 2002:a7b:cb93:0:b0:3ee:814b:9c39 with SMTP id m19-20020a7bcb93000000b003ee814b9c39mr23073849wmi.18.1680382317297;
-        Sat, 01 Apr 2023 13:51:57 -0700 (PDT)
+        bh=1aMiCXujIGmUVuB4Z9vXOtvJHa7Wx4/lUo7wVgjnPeg=;
+        b=H1mFSHL9vLVIz5Z2nVfsOYVvnuUsch/mDaivD+ohI+BtdP/0dHOwCv3rpASUwqtomy
+         yHW7RDSVFPov2N5QyELoYfH5oO9yyYESJqWm1JMLpI0aYU7yCE2JK6rKV4iIUDqU6JP9
+         AGZ6+/opGHj8b3W3C03z7D/JuGyCJORwl4vGhuyjRKVZ+vsZvh3zwybOKafjrWJGy33/
+         +fjrNtVjVSPLYjp8VLIBsxw+M9SW6dkq9ffrVD6cM4mw0G1Qw7HRitaZuvHglrliHQwz
+         g8P3yyX0fDozlFj1+eO/Pabynl5EWFStJA/llR7xCAjJhYtggoTSkU6GJdLP2G8MXInX
+         Y8/w==
+X-Gm-Message-State: AO0yUKVAXcqUtPLz73sySwuaAk1qqONEEBsJtsuP8Y2vAnW7DWQ6Ypla
+	nHw0byrfBEy0MuWKAINHmuYi+A==
+X-Google-Smtp-Source: AK7set8fNgOTJJlP0UI0D+ubIU86sAui89uX/69r3P64DFMyWqZcOx1w0KXFIYt4ZdZw4qR7lGMNPg==
+X-Received: by 2002:a7b:cd97:0:b0:3ed:ce50:435a with SMTP id y23-20020a7bcd97000000b003edce50435amr23171291wmj.10.1680382342508;
+        Sat, 01 Apr 2023 13:52:22 -0700 (PDT)
 Received: from ?IPV6:2a05:6e02:1041:c10:b36a:1186:309c:1f9a? ([2a05:6e02:1041:c10:b36a:1186:309c:1f9a])
-        by smtp.googlemail.com with ESMTPSA id n2-20020a05600c4f8200b003ef5e5f93f5sm14298909wmq.19.2023.04.01.13.51.56
+        by smtp.googlemail.com with ESMTPSA id c3-20020a05600c0ac300b003edf2dc7ca3sm7116174wmr.34.2023.04.01.13.52.21
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 01 Apr 2023 13:51:56 -0700 (PDT)
-Message-ID: <0a86d734-000e-560b-8f47-1c0a113c01ee@linaro.org>
-Date: Sat, 1 Apr 2023 22:51:55 +0200
+        Sat, 01 Apr 2023 13:52:22 -0700 (PDT)
+Message-ID: <32ff359d-ebdb-cacd-9237-e33eb9d9cdb0@linaro.org>
+Date: Sat, 1 Apr 2023 22:52:21 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.9.0
-Subject: Re: [PATCH 2/4] thermal/drivers/mediatek/lvts_thermal: Add AP domain
- for mt8195
+Subject: Re: [PATCH 0/4] Add LVTS's AP thermal domain support for mt8195
 Content-Language: en-US
 To: bchihi@baylibre.com, angelogioacchino.delregno@collabora.com,
  rafael@kernel.org, amitk@kernel.org, rui.zhang@intel.com,
@@ -80,15 +79,13 @@ Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
  devicetree@vger.kernel.org, khilman@baylibre.com, james.lo@mediatek.com,
  rex-bc.chen@mediatek.com
 References: <20230307154524.118541-1-bchihi@baylibre.com>
- <20230307154524.118541-3-bchihi@baylibre.com>
 From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <20230307154524.118541-3-bchihi@baylibre.com>
+In-Reply-To: <20230307154524.118541-1-bchihi@baylibre.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230401_135158_923230_89CF99BE 
-X-CRM114-Status: UNSURE (   7.57  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230401_135223_944630_20BDAEA5 
+X-CRM114-Status: GOOD (  12.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,14 +103,36 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On 07/03/2023 16:45, bchihi@baylibre.com wrote:
 > From: Balsam CHIHI <bchihi@baylibre.com>
 > 
-> Add MT8195 AP Domain support to LVTS Driver.
+> Add AP thermal domain support to LVTS Driver for MediaTek MT8195 SoC.
 > 
-> Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
-> ---
+> This series is a continuation of the original series "Add LVTS Thermal Architecture" v14 :
+>      https://patchwork.kernel.org/project/linux-pm/cover/20230209105628.50294-1-bchihi@baylibre.com/
+> 
+> Based on top of thermal/linux-next :
+>      base-commit: 6828e402d06f7c574430b61c05db784cd847b19f
+> 
+> Depends on these patches as they are not yet applyied to thermal/linux-next branch :
+>      [v14,3/6] arm64: dts: mt8195: Add efuse node to mt8195 (already included in linux master branch)
+>      https://patchwork.kernel.org/project/linux-pm/patch/20230209105628.50294-4-bchihi@baylibre.com/
+>      [v14,5/6] arm64: dts: mediatek: mt8195: Add thermal zones and thermal nodes
+>      https://patchwork.kernel.org/project/linux-pm/patch/20230209105628.50294-6-bchihi@baylibre.com/
+>      [v14,6/6] arm64: dts: mediatek: mt8195: Add temperature mitigation threshold
+>      https://patchwork.kernel.org/project/linux-pm/patch/20230209105628.50294-7-bchihi@baylibre.com/
+> 
+> Balsam CHIHI (4):
+>    dt-bindings: thermal: mediatek: Add AP domain to LVTS thermal
+>      controllers for mt8195
+>    thermal/drivers/mediatek/lvts_thermal: Add AP domain for mt8195
+>    arm64: dts: mediatek: mt8195: Add AP domain thermal zones
+>    arm64: dts: mediatek: mt8195: Add AP domain temperature thresholds
+> 
+>   arch/arm64/boot/dts/mediatek/mt8195.dtsi      | 180 ++++++++++++++++++
+>   drivers/thermal/mediatek/lvts_thermal.c       |  94 +++++++--
+>   .../thermal/mediatek,lvts-thermal.h           |  10 +
+>   3 files changed, 264 insertions(+), 20 deletions(-)
+> 
 
-Applied, thanks
-
-Changed the commit log to reflect the comments change
+Applied, patch 1 & 2
 
 -- 
 <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
