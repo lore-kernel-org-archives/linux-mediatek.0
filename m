@@ -4,70 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBD7FC76196
-	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Apr 2023 01:01:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 315E5C76196
+	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Apr 2023 01:16:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:Subject:From:References:Cc:To:MIME-Version:Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
+	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mC5lgCpWiVErRdOUsS4kk+MDBnluSPTGN4PngsFM3Zo=; b=Ac3g8CEuazMVBhBa0XdAdD89qC
-	NTXX1Xd4UN/IFbo1j5I9n9+qOKqfcHrPNHbt7sFHwCb9JLBQtu4z2azebS4BDzrsK34RCh/cgXF38
-	UTEJqS2ZqGf3IbeYNouPfSniA0wbMldBuxYyd1q/4Mp6HcjmsOF4L+hKbMDsh1Etn5EWvM+/yyesh
-	maK41MvmEzX6iJgUAcSH6p9RUrBo45QMVo1UT0ODbsoeS9lixxTZ25D/wyaenMeCvFC9Ql7vTM8Xf
-	f3um7H0UcW6wbgvcevnDiyDUB81Ys3baTJhl+ZfPGV5jsuKTR9ZoO0H02WtCjFtA4KWmSdoKnih6p
-	CEAc5cbA==;
+	bh=v2ej4KRjkyDPibBFC5j4GniM5FIqqNOs/iTjseDN8wI=; b=OvAPAoTJyvjwuKKXLWNtUdex4K
+	rlujMbT4hGd4p2VlE0N3jCfp8IBWABA3RfN1n3tI14Xy8xUAPlN83n+9Uxx3Lw0Nh2inzLqrv7RzE
+	CIjz4U/NTnv1vXlPUyognCDhrMBJEVwSO+DpT/dO3q6UKXfisSGz08vJnO6b2s7DT6ZStjyGvjwv2
+	hULqp7qlwCJ+vxPli4nfR4JDqC6+rsTcaHLLIaO08z9lzk+20riHrqmLUyIeAqLR5aELYsa08qkK+
+	bGYeT1DE9L5ZQDBcDwJATjZI0E3Pfd7EYWeff6bN4e+A9sUg7TFjp66HHKwwQvbzEOwXgv4q/9XAY
+	xUPwntvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1piPcE-009P4R-1F;
-	Sat, 01 Apr 2023 01:01:10 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1piPr7-009QiZ-0J;
+	Sat, 01 Apr 2023 01:16:33 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1piPcA-009P35-0K;
-	Sat, 01 Apr 2023 01:01:07 +0000
+	id 1piOj9-009FmY-16;
+	Sat, 01 Apr 2023 00:04:16 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 97307B8322C;
-	Sat,  1 Apr 2023 01:01:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 70020C433EF;
-	Sat,  1 Apr 2023 01:01:00 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id DE62B62CAD;
+	Sat,  1 Apr 2023 00:04:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4029BC433D2;
+	Sat,  1 Apr 2023 00:04:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1680310863;
-	bh=tt7ZGatFV1hjdhv+xFUnZBFTFezV1KSetDds2ucKZNs=;
-	h=Date:To:Cc:References:From:Subject:In-Reply-To:From;
-	b=janccKIkv8gk5FEqwL/V+sypzlpq4VKfugp40dB6anoP5nnRNthYLPOkEfwEJ7cdJ
-	 j7MogpyMRpzNioQVQhOZpLQSKoBI1jVCSBDSwEia/Ga+jgrS1tewbGxgUNjygTltw0
-	 vZ8ixmvySVtuX7D4ZpF76C3li+cBtzLsH1+1UwFs+nXq+XRYmRNBnPa9OovYqYo4+/
-	 fFECcg/GgLz0FVsEwhTi1U936XArQt5FUSoSNJrCtUqHmwMROp8LLBf2rt7BH8OCoT
-	 jrpo3I3356eoXIB0tiZFTO5HeQp4NmQXBwsdra2KKn9gbSkF9iM3upx92YFOa5V1ih
-	 Vo3P/JEDThlrw==
-Message-ID: <ec3f83d3-c00c-17d5-c967-2e3e7a4798c7@kernel.org>
-Date: Sat, 1 Apr 2023 09:00:59 +0800
+	s=k20201202; t=1680307454;
+	bh=v2ej4KRjkyDPibBFC5j4GniM5FIqqNOs/iTjseDN8wI=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=hibT8l5OYv1TGz/vDSpf+JpkNxNH5xiZ1GGH5hR4jzv5X5gg7/ckJa9GrYGwq45B+
+	 NZUGqGGFlcgTHTGJVpb3AFwNe9/PEA31JWqw9SxEUeZ36mk+9On7I7CevWY+bc295Z
+	 4DEHW+j2XW/XMrtYz9HN+kOJiSf6ViD5YIWZYocl4i3QjKlBcCnCvc35XD+YxhEfJD
+	 jFryC/GpGbnoIrvA/2N+FrFfiYHpn38Aosrq5wQSgXasPg7AwHGj6fZd8P0rmiYri9
+	 vnKYmFQ0/qGohNCgXtlBEl8YkiH1algxpqzLYWtFIGuXR2nV+Q+SQ4FAxFl1Cb1lD2
+	 4tZXsPbf5jIcg==
+Message-ID: <5645c4028e6abcf4f7585092de85940d.sboyd@kernel.org>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Content-Language: en-US
-To: Bo Ye <bo.ye@mediatek.com>, Jaegeuk Kim <jaegeuk@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- xiongping1 <xiongping1@xiaomi.com>, qixiaoyu1 <qixiaoyu1@xiaomi.com>
-Cc: yongdong.zhang@mediatek.com, peng.zhou@mediatek.com,
- browse.zhang@mediatek.com, light.hsieh@mediatek.com,
- Qilin Tan <qilin.tan@mediatek.com>, linux-f2fs-devel@lists.sourceforge.net,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20230331092658.72386-1-bo.ye@mediatek.com>
- <20230331092658.72386-2-bo.ye@mediatek.com>
-From: Chao Yu <chao@kernel.org>
-Subject: Re: [PATCH 2/2] f2fs: add __pack attribute for extent_info
-In-Reply-To: <20230331092658.72386-2-bo.ye@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20230331123621.16167-14-Garmin.Chang@mediatek.com>
+References: <20230331123621.16167-1-Garmin.Chang@mediatek.com> <20230331123621.16167-14-Garmin.Chang@mediatek.com>
+Subject: Re: [PATCH v8 13/19] clk: mediatek: Add MT8188 vdosys1 clock support
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, netdev@vger.kernel.org, Garmin.Chang <Garmin.Chang@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Garmin.Chang <Garmin.Chang@mediatek.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>, Richard Cochran <richardcochran@gmail.com>, Rob Herring <robh+dt@kernel.org>
+Date: Fri, 31 Mar 2023 17:04:12 -0700
+User-Agent: alot/0.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230331_180106_423624_48F53156 
-X-CRM114-Status: GOOD (  22.59  )
+X-CRM114-CacheID: sfid-20230331_170415_452400_DDFCD346 
+X-CRM114-Status: UNSURE (   8.29  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,74 +73,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2023/3/31 17:26, Bo Ye wrote:
-> From: Qilin Tan <qilin.tan@mediatek.com>
-> 
-> Need add __pack for struct extent_info to align to memory
-> layout of struct rb_entry.
-
-Jaegeuk has fixed this bug w/ below patchset, please check it:
-
-https://lore.kernel.org/linux-f2fs-devel/20230313201216.924234-1-jaegeuk@kernel.org/
-
-Thanks,
-
-> 
-> struct rb_entry {
->      struct rb_node rb_node;     /* rb node located in rb-tree */
->      union {
->          struct {
->              unsigned int ofs;   /* start offset of the entry */
->              unsigned int len;   /* length of the entry */
->          };
->          unsigned long long key;     /* 64-bits key */
->      } __packed;
-> };
-> 
-> struct extent_info {
->      unsigned int fofs;      /* start offset in a file */
->      unsigned int len;       /* length of the extent */
->      union {
->          ...
->          /* block age extent_cache */
->          struct {
->              /* block age of the extent */
->              unsigned long long age;
->              /* last total blocks allocated */
->              unsigned long long last_blocks;
->          };
-> };
-> 
-> The new fields(age, last_blocks) are u64 in change 71644dff4811, it
-> cause the memory alignment based on 8 bytes in some complier. So the
-> field fofs and len are alloced with 8 bytes and using the last 4 byts.
-> Its memory is not aligned with struct rb_entry. the ofs of rb_entry
-> pointer to a invalid value and cause writing file failed.
-> 
-> struct extent_info's offset should be 12 rather than 16 from the
-> beginning of struct rb_entry.
-> 
-> The offset dump for the bad case as:
-> kworker/u16:6: [name:f2fs&]f2fs_lookup_rb_tree_for_insert:MTK_DEBUG: ino=1629 re=0xc675dc08 ofs=0 re->ofs=0, re->len=68 ei=0xc675dc18 ei.fofs=68 ei.len=277
-> 
-> Fixes: 71644dff4811 ("f2fs: add block_age-based extent cache")
-> Signed-off-by: Bo Ye <bo.ye@mediatek.com>
-> Signed-off-by: Qilin Tan <qilin.tan@mediatek.com>
+Quoting Garmin.Chang (2023-03-31 05:36:15)
+> Add MT8188 vdosys1 clock controller which provides clock gate
+> control in video system. This is integrated with mtk-mmsys
+> driver which will populate device by platform_device_register_data
+> to start vdosys clock driver.
+>=20
+> Signed-off-by: Garmin.Chang <Garmin.Chang@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
 > ---
->   fs/f2fs/f2fs.h | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/fs/f2fs/f2fs.h b/fs/f2fs/f2fs.h
-> index b0ab2062038a..7c690667a42f 100644
-> --- a/fs/f2fs/f2fs.h
-> +++ b/fs/f2fs/f2fs.h
-> @@ -660,7 +660,7 @@ struct extent_info {
->   			unsigned long long last_blocks;
->   		};
->   	};
-> -};
-> +} __packed;
->   
->   struct extent_node {
->   	struct rb_node rb_node;		/* rb node located in rb-tree */
+
+Applied to clk-next
 
