@@ -4,87 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03A0BC76196
-	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Apr 2023 20:38:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3BA9C76196
+	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Apr 2023 20:51:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RaeiX9EdxQ+G9xoCkZsd12/NSVD20AWdIKnmJIXd8HY=; b=iDhl9KRNCabHnvrAu1XuJlywMl
-	msOj/TIrORxTb3vfh9Ze4N0jWqPr5gV96VVn/cE6idBXECBy5JMfadclpVxi0AhmjSj23Za9UdQpC
-	GswYKPV//Cy8nmTFuqsTWws2Krato+rPC/hxRzj1tFaV0Ax/yVAG13euErVtPb9nnibWTK6JfdCQC
-	oyejBGlfDaPdXg6BZxX0ql5kji87DH6JOJKvvXxo8Dw2iXLwlMY9fNuGI2jY8wdWsAUqkO4VTE6Da
-	9oWDHYq91jv5JNKhr01HKdmcLw5s1nx9akD/gdUHVtUzfY5RIoxw9K2kXV/pgQLaa657B1gu17xN6
-	Xm0AbFuA==;
+	bh=TMWQ7lJfy2rRcfJxRRfnhA0AkYqLVxzTiSyUCxhMmZM=; b=KKUAAMvrelJNVPY+CCmmpzihYI
+	wqh4tf70BLRjlEu5E7akh9WlubRA++djxAsq1kIWMIEHnPVrc0OYgDRSTTJzvIeh4HMGBpWv4nD1W
+	N3AfMsN/yS8+2u/pUuoYlVpmk1JHrnLuJi233RJNIrbaguMoaJHP2lEdl3BdJTJHZfhlDi69n81HS
+	lsA1qsD46HaZgu3Bo1RrJaUrHRHdDHUhC3xGEjOVp7CF3rBdce3pPTt/CsXa0J8tRlCauC106vkcS
+	SIBsniYT+PSu2lzQptZBaWGNB5pB1IBFlCb++7C+/PgcYJ4CsyGiZlP7gQQ0354j9FZ+mkktBSlXS
+	KXoTrj+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pihzL-00BGyd-1s;
-	Sat, 01 Apr 2023 20:38:15 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1piiC6-00BIHB-19;
+	Sat, 01 Apr 2023 20:51:26 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pihzJ-00BGxs-1W
+	id 1piiC2-00BIFo-0J
 	for linux-mediatek@lists.infradead.org;
-	Sat, 01 Apr 2023 20:38:14 +0000
-Received: by mail-wm1-x330.google.com with SMTP id l37so14867024wms.2
-        for <linux-mediatek@lists.infradead.org>; Sat, 01 Apr 2023 13:38:12 -0700 (PDT)
+	Sat, 01 Apr 2023 20:51:24 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id d17so25633021wrb.11
+        for <linux-mediatek@lists.infradead.org>; Sat, 01 Apr 2023 13:51:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1680381491;
+        d=linaro.org; s=google; t=1680382279;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=RaeiX9EdxQ+G9xoCkZsd12/NSVD20AWdIKnmJIXd8HY=;
-        b=UvHq6rgsoUw5HQ+32mAlR47rUiWddxfGMkG7EsJPaUAFivKjA3JQI6Tr3zV/LiBDhW
-         UpMHoqcSw2J5W37BJk94by64Ft0EgzYdogXx2fovMjwAV51c0qBccG/xoyROXPnrpBUJ
-         Rh85eitRQQ0CSiw2iqP8ESbGCsNC6hS5j6jrUJFDW65y7m7ebWt0g1L3xpOiN+oMTpoo
-         k/qnYZeCLyWgtGcd5nCiyLj5MWO0tVH6F0PIocO1w1PYOqrSH4FWTlA0TjF52z1HWIKk
-         d+Jq+5PHuzk83HOgIs+5TfLA2LhTQIko80I/Oat3LfoyleCZfNodfGod1wJFPa60Gf4t
-         iPPg==
+        bh=TMWQ7lJfy2rRcfJxRRfnhA0AkYqLVxzTiSyUCxhMmZM=;
+        b=o919TC/9eFI7nT9tSFOb+eWcnqvKwTe2IZe5pRtIQW8tZyifCtY7Hv9DUm3VB7c7qv
+         z5Tr5SUIrSqDgYLjXpwtQgMsHV/gZQ47kWJzASNBw1wYQsYwFbt4E00D0cgQAe/zv4ae
+         PHTEFub8+DD2F6QxMaqZgV3vtMB8WymPab02w16puN5HOOxeIqxynrXX0H22Jd/vZjNq
+         pqmumjFy5NA4lwZmfqVPoHeU3L14lUgcHqOaSSohtBZbzQNbBiKnJacPsTx/WFSoHLVn
+         aTFvfGAXWc7YfTVBeYq99LUp54xRa/z0pWwzb9hBIAE1GHk6I9SFs/CwFpmWad7ozbUt
+         F5tQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680381491;
+        d=1e100.net; s=20210112; t=1680382279;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=RaeiX9EdxQ+G9xoCkZsd12/NSVD20AWdIKnmJIXd8HY=;
-        b=6HCg0q4ecVSGrdNPhqjQGDMYFyeKH4r69k8XkyR/OqZDdfsVZUNQJDCH2HAVYPWscz
-         gql5VI3BAPTmbhQSV1+zNSgFHX54lUt/4spJikwOlsiYAG+LBiwcljlINXcKcAy0jkQ1
-         X4mx3DnNKwDV/y9MSnZN7nCufNZmVosf3s8hTxXOkNaqkKw3alC3AKFFSHUZIhdaMD63
-         siCH0gxzkrNj3QkvEpz9wTWl0tHfnSuok81iv9jnxz2PGyL0W6jSF0/60b/du5E7sMad
-         FlWaxXQaGGfRi819SOuAbdI3dysgj6MBoCoFW4IG8BbLNel89QSI56/hGCYxNEtGTfRx
-         383Q==
-X-Gm-Message-State: AO0yUKWEON9+czzH92Maa+BPr14YB8Qcs1rRTqfvhHXAQTXmkIcgeJxn
-	yoiGsG/EkpYuJi+zvsS4ZfRG7g==
-X-Google-Smtp-Source: AK7set+piPx/xqNwNWikmQSUIScX7VtS1tyyyibUMrga0PeSsXZPDOGRRgUpJYh4AX6OWPTmKTtyYA==
-X-Received: by 2002:a05:600c:2283:b0:3eb:3104:efec with SMTP id 3-20020a05600c228300b003eb3104efecmr23097598wmf.16.1680381491524;
-        Sat, 01 Apr 2023 13:38:11 -0700 (PDT)
+        bh=TMWQ7lJfy2rRcfJxRRfnhA0AkYqLVxzTiSyUCxhMmZM=;
+        b=sp127DVUKbztjC0aBGPRSqz9vCsdeZN6ak8HgEJgb0H5imYge/xvIav7Pje1z9mhe4
+         YC6mL2jtLwIgaWZ/XRW0yZvQq7KkI6egARrcR1r3Xt5JYcp+PQqQbxOROX2zYV2ReJ6B
+         nJZcuA5C4yr0jI8t18+AnGfgiklD0yTxK441dTdwlqFGb3tHwW/m8Y/vxFXnvyDl5rMY
+         saw5+sJ7g87jOz0zOHZLyMwk3NHodilZzDnTMRPIoUEVCo+rRJaJg/hoFD3Bqf+o3FXu
+         wP5N9pJVbKVF0gjE+kro841BRx0Pu9koQWSYf9PKnx2bNBW34EIc4ENKw10aiN+73mKx
+         US1w==
+X-Gm-Message-State: AAQBX9cMJWmcj9mc/K51FBgtCEqXCB2RNxfCWZPoBr//2dSLcuMuH0z2
+	sQqlqALFKVhABSDLlUoJ6uDkQQ==
+X-Google-Smtp-Source: AKy350Y5Y5d0oyq7FRXKb5ZRRxdbT/gKk1HkXoEP4jPfypIiihsIJ3SLzYUhnJ1tLpn5pDGChougfQ==
+X-Received: by 2002:adf:f245:0:b0:2e6:2c05:8e97 with SMTP id b5-20020adff245000000b002e62c058e97mr4098803wrp.30.1680382279506;
+        Sat, 01 Apr 2023 13:51:19 -0700 (PDT)
 Received: from ?IPV6:2a05:6e02:1041:c10:b36a:1186:309c:1f9a? ([2a05:6e02:1041:c10:b36a:1186:309c:1f9a])
-        by smtp.googlemail.com with ESMTPSA id t23-20020a1c7717000000b003edcc2223c6sm7089922wmi.28.2023.04.01.13.38.10
+        by smtp.googlemail.com with ESMTPSA id u18-20020a5d5152000000b002be5bdbe40csm5673614wrt.27.2023.04.01.13.51.18
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 01 Apr 2023 13:38:10 -0700 (PDT)
-Message-ID: <0234d87e-1980-51d9-1656-70f7f7058af4@linaro.org>
-Date: Sat, 1 Apr 2023 22:38:10 +0200
+        Sat, 01 Apr 2023 13:51:19 -0700 (PDT)
+Message-ID: <259ae527-631e-95cc-f3b0-039ef8536364@linaro.org>
+Date: Sat, 1 Apr 2023 22:51:18 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.9.0
-Subject: Re: [PATCH] thermal/drivers/mediatek/lvts_thermal: Fix sensor 1
- interrupt status bitmask
+Subject: Re: [PATCH 1/4] dt-bindings: thermal: mediatek: Add AP domain to LVTS
+ thermal controllers for mt8195
 Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>, "Rafael J. Wysocki"
- <rafael@kernel.org>, Amit Kucheria <amitk@kernel.org>,
- Zhang Rui <rui.zhang@intel.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Balsam CHIHI <bchihi@baylibre.com>, linux-pm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230328031017.1360976-1-wenst@chromium.org>
+To: bchihi@baylibre.com, angelogioacchino.delregno@collabora.com,
+ rafael@kernel.org, amitk@kernel.org, rui.zhang@intel.com,
+ matthias.bgg@gmail.com, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, rdunlap@infradead.org,
+ ye.xingchen@zte.com.cn, p.zabel@pengutronix.de
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, khilman@baylibre.com, james.lo@mediatek.com,
+ rex-bc.chen@mediatek.com
+References: <20230307154524.118541-1-bchihi@baylibre.com>
+ <20230307154524.118541-2-bchihi@baylibre.com>
 From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <20230328031017.1360976-1-wenst@chromium.org>
+In-Reply-To: <20230307154524.118541-2-bchihi@baylibre.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230401_133813_510390_11837201 
-X-CRM114-Status: GOOD (  11.72  )
+X-CRM114-CacheID: sfid-20230401_135122_138082_097D55B6 
+X-CRM114-Status: UNSURE (   7.07  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,19 +103,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 28/03/2023 05:10, Chen-Yu Tsai wrote:
-> The binary representation for sensor 1 interrupt status was incorrectly
-> assembled, when compared to the full table given in the same comment
-> section. The conversion into hex was also incorrect, leading to
-> incorrect interrupt status bitmask for sensor 1. This would cause the
-> driver to incorrectly identify changes for sensor 1, when in fact it
-> was sensor 0, or a sensor access time out.
+On 07/03/2023 16:45, bchihi@baylibre.com wrote:
+> From: Balsam CHIHI <bchihi@baylibre.com>
 > 
-> Fix the binary and hex representations in the comments, and the actual
-> bitmask macro.
+> Add AP Domain to LVTS thermal controllers dt-binding definition for mt8195.
 > 
-> Fixes: f5f633b18234 ("thermal/drivers/mediatek: Add the Low Voltage Thermal Sensor driver")
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
 > ---
 
 Applied, thanks
