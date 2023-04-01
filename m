@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E84DC6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Apr 2023 06:44:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F038CC76196
+	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Apr 2023 07:31:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=xQ0TN8kqXc3hwKZBZ+54G4CUYQdzkO4P/nkVK7Yrm+A=; b=kVJWatfJZdqrsoXK/TatjT6SYQ
-	55WkhGPwGzcK3/pO0zwZ8wh2Z1CT+Zy7h+nwEQGHPwf+469UdeUd+yWCTqpicelhZCddhhPWstZy0
-	Pp9H0MBFt3vGwnCGNHiItDzo705GpIz82rXmbkRUNsfmVUe7bgLdK3XjkpdZzPrLoXFZhZUCAOfWD
-	lAD450Ae1IIJvJFx8dOVo2EG3Dj6ArmeKCem11IMsMHURpu9ZffKJTUTOEq0XcWcFIUCIBvfOqZSx
-	oo+j9neSn1+3AYO0RpPFWjMwzEDJ7KW9fDVeZLGGivGzVtxOL3dtlTLIKW4kQILce4EFVGQK54xrd
-	Y3B9Kyfg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=N/3HUyB2hGBpLX9jjbXCovHPkV0vXO26F83Inp9UT+c=; b=r512N15wnxI3sSqFsYwN8xrmGN
+	hYQ/y05qzhQqGfKley1IvBW0IT/7y3Q8j77Ec+74YuQX1cZvmfVFgjKz3rc/ed0S35k5LEDFiIXNf
+	67LnJiY4PuKYSph+JHjbRB0IISTXIb/URxeasD3DusKCs/K5zzGuq6sXfLTkcfYmRUTh7G68PR3jT
+	8f2hdIJqkO57n0IGvSKCErhEV6UDCj1QHKwtOleyt66RN+cvYXAm5K9Hzjt2cgZ5cCffwshhpGzGT
+	e9PkoAPIKVVG1RKQFrX4JXyqG5fWKqczi+mBPDeXFKtTD+YgN9rdLzQo+mFGfcCF157bH1LF4m0jb
+	rJYwfFmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1piUy0-009sNo-0y;
-	Sat, 01 Apr 2023 06:44:00 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1piVhx-009wAa-0j;
+	Sat, 01 Apr 2023 07:31:29 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1piUxv-009sMj-0K;
-	Sat, 01 Apr 2023 06:43:56 +0000
+	id 1piVht-009w8Y-0M;
+	Sat, 01 Apr 2023 07:31:26 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 07164B83387;
-	Sat,  1 Apr 2023 06:43:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0E23CC433EF;
-	Sat,  1 Apr 2023 06:43:48 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 7427C60B27;
+	Sat,  1 Apr 2023 07:31:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 35FB3C433EF;
+	Sat,  1 Apr 2023 07:31:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1680331431;
-	bh=c36lwFwHZ8G1e703Idi7Ck6uKneXMSQqAbeazYyyj3w=;
-	h=From:Date:Subject:To:Cc:From;
-	b=N2hLYYxim4fCGv6fI0Tr8vSVihXiwc8OXIBTgI1F78It1BDze18bhbwKmE91unR6B
-	 zhxVXCovtoBsOFIIPOApE766CTypgR+oua2Zr1EZbFr7Mv3DgET1VUic2T5EfqYC1c
-	 UQQU8cGmRzMJY9hcUMWlSF5bRC0EiJxT8t26hRATR7zPHkG4Rw4ZNI39OUhh4EQYZM
-	 6tgXRtvAnysW6ZUDTWxv3DtwRujICEeXcfk3UgVOEGaKVtG68Gn7hstg0QTszFuqqW
-	 S+AEjw8+43WR/TCzGCmZTVD90jg3YWfB0+JLo+Y8mXXI6loHvmp3EG1t/jIGPauJay
-	 zccTD4auJs8rw==
+	s=k20201202; t=1680334280;
+	bh=yxotTr0zxaGom3LBZw261sC0CICDm5riK9vwoxtg8fI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=YDZZkNj/ugAPkECw5o55NFCzhC1nKjEsKo6S66MmE4Nr/9kth8qcaifk2eruc6gDn
+	 VND7aobYaFwBgoNM5vYwWZD5bXsNa+cLOkPVcCEe7D/1CDjXYd5+k88r5+L9p6XUSb
+	 BBcSg49N5+ODSeDgGg+AfnkPaxWWLILASu7lU5RVzrQkPGjZRL2bp1O05vcini2+Xg
+	 IAez82XW369FhiRTKX1vIk54kTT1J/1ar2+R6cyjf17g8XiZqjLA1zfqD8sGKlsPzs
+	 pyb/6BqJLzdtwFPwUVyUC8k3dd9pWvOvMW+fO9sA/rAUXiaUG9MLoMef37W8mILuw5
+	 7/mok8SgrjMxQ==
+Date: Sat, 1 Apr 2023 09:31:16 +0200
 From: Simon Horman <horms@kernel.org>
-Date: Sat, 01 Apr 2023 08:43:44 +0200
-Subject: [PATCH] net: ethernet: mtk_eth_soc: use be32 type to store be32
+To: Jakub Kicinski <kuba@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>
+Cc: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] net: ethernet: mtk_eth_soc: use be32 type to store be32
  values
+Message-ID: <ZCfdxGS1Bj5LullK@kernel.org>
+References: <20230401-mtk_eth_soc-sparse-v1-1-84e9fc7b8eab@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20230401-mtk_eth_soc-sparse-v1-1-84e9fc7b8eab@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAJ/SJ2QC/x2N0QrCMAwAf2Xk2UK2DhR/RWSkXWaDsxvJFGHs3
- w0+3sFxOxirsMG12UH5IyZLdWhPDeRC9cFBRmfosIvYYxte23PgrQy25GArqXHAnmLCMZ/jZQI
- PE7lMSjUXT+t7nl2uypN8/6fb/Th+IRJA0nkAAAA=
-To: Jakub Kicinski <kuba@kernel.org>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Paolo Abeni <pabeni@redhat.com>
-Cc: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>, 
- Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-X-Mailer: b4 0.12.2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230401-mtk_eth_soc-sparse-v1-1-84e9fc7b8eab@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230331_234355_307456_CE11F62A 
-X-CRM114-Status: GOOD (  11.74  )
+X-CRM114-CacheID: sfid-20230401_003125_214744_CA483942 
+X-CRM114-Status: GOOD (  13.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,51 +82,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Perhaps there is a nicer way to handle this but the code
-calls for converting an array of host byte order 32bit values
-to big endian 32bit values: an ipv6 address to be pretty printed.
+On Sat, Apr 01, 2023 at 08:43:44AM +0200, Simon Horman wrote:
+> Perhaps there is a nicer way to handle this but the code
+> calls for converting an array of host byte order 32bit values
+> to big endian 32bit values: an ipv6 address to be pretty printed.
+> 
+> Use a sparse-friendly array of be32 to store these values.
+> 
+> Also make use of the cpu_to_be32_array helper rather
+> than open coding the conversion.
+> 
+> Flagged by sparse:
+>   drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c:59:27: warning: incorrect type in assignment (different base types)
+>   drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c:59:27:    expected unsigned int
+>   drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c:59:27:    got restricted __be32 [usertype]
+>   drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c:161:46: warning: cast to restricted __be16
+> 
+> No functional changes intended.
+> Compile tested only.
+> 
+> Signed-off-by: Simon Horman <horms@kernel.org>
 
-Use a sparse-friendly array of be32 to store these values.
-
-Also make use of the cpu_to_be32_array helper rather
-than open coding the conversion.
-
-Flagged by sparse:
-  drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c:59:27: warning: incorrect type in assignment (different base types)
-  drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c:59:27:    expected unsigned int
-  drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c:59:27:    got restricted __be32 [usertype]
-  drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c:161:46: warning: cast to restricted __be16
-
-No functional changes intended.
-Compile tested only.
-
-Signed-off-by: Simon Horman <horms@kernel.org>
----
- drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c b/drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c
-index 53cf87e9acbb..1e0bb8cee7c4 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c
-@@ -47,16 +47,14 @@ static const char *mtk_foe_pkt_type_str(int type)
- static void
- mtk_print_addr(struct seq_file *m, u32 *addr, bool ipv6)
- {
--	u32 n_addr[4];
--	int i;
-+	__be32 n_addr[4];
- 
- 	if (!ipv6) {
- 		seq_printf(m, "%pI4h", addr);
- 		return;
- 	}
- 
--	for (i = 0; i < ARRAY_SIZE(n_addr); i++)
--		n_addr[i] = htonl(addr[i]);
-+	cpu_to_be32_array(n_addr, addr, 4);
- 	seq_printf(m, "%pI6", n_addr);
- }
- 
-
+Sorry, I forgot to tag this for net-next.
+I can repost if needed, after an appropriate pause.
 
