@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 305EBC761A6
-	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Apr 2023 00:01:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC8CAC761AF
+	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Apr 2023 00:01:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
 	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f3dshhW+v7IxhaqirYDlAAAqOEmQopXkxep4LQ59nTU=; b=18swXEhwVixnV63po9PPMxNyra
-	HmblNn3Igcx+psP8WAspvqx/EDS3sQy1gfsn8tnsUO5gmpBqrm8LD5FJUziqYsitgSQtjhP+Fsn7o
-	f6B5akJAA6hVrKHoQzPFDt0v8V6pODKMYizgPFzlEkheaHBHjL4UlIEEOXENSS2ijxxWuAoqIL8xu
-	yOoO/PkbwmXt1QjRjbyPbf5Xbhd4KmgDb2DzDs81TjNswi9fv1ujuvVbzoPxVHsNzDuNm8lOVRmte
-	yOlj+s1YItYuXHOald5t+A78qL77RoISR22zMSR2UCxN7OwGzyekOXmF9IZfU2G1o+DCAKJxM5YcQ
-	A406bejQ==;
+	bh=SzYp5GZ3ncPSncuWnU/JCyhmeSE8bxY5oSz4V1eSUok=; b=MtGDe1+N+t3f2VY7mkkhXI7GYU
+	yHZ+x1LLyuK7bSc4oGOJIuZcs5x9seyYB2kFFP43WXGYbGfuczzBmCdY2XXSZQcW4yzrX70YPdohd
+	aqLx/gDXSC97cUkYtuKiFxI2EVNLFsJDEw+weEAuuseUvvXMCAlD+hDb63tHq+wRp5f1PLK1r2rcE
+	ace9HOhONK5tds0J401gHvT5n4VOv6Xrhrz8yLGRqiTH/V7fHQ5UCQgcYapzzTzXFypDKLcX3s84C
+	tIzGBH5BEEvyTxZTkB7TDuHM9/fUFWzcKvpQ8KzKwF3ETPlXiuVeYsqAt+VyBiNcoZqxgDM/4lSNK
+	m5Qf5FUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1piOgZ-009EUd-0y;
-	Sat, 01 Apr 2023 00:01:35 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1piOgl-009EbL-3D;
+	Sat, 01 Apr 2023 00:01:48 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1piOgJ-009EMj-2y;
-	Sat, 01 Apr 2023 00:01:21 +0000
+	id 1piOgW-009ERL-1j;
+	Sat, 01 Apr 2023 00:01:33 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 6B8D6B832B6;
-	Sat,  1 Apr 2023 00:01:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2B028C433EF;
-	Sat,  1 Apr 2023 00:01:17 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTPS id 719B8CE3104;
+	Sat,  1 Apr 2023 00:01:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ABC1BC433D2;
+	Sat,  1 Apr 2023 00:01:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1680307277;
-	bh=f3dshhW+v7IxhaqirYDlAAAqOEmQopXkxep4LQ59nTU=;
+	s=k20201202; t=1680307286;
+	bh=SzYp5GZ3ncPSncuWnU/JCyhmeSE8bxY5oSz4V1eSUok=;
 	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=e1wl1PeJGDwlGewSBwRAja1t+ujuQnY5VFIrpmKkGs6RR67wjT98cOxjzapLUSmxO
-	 OAgX96Z37trcbsyjuQ8eTUxMbAOBAbdfjFcMOfKG7HIEjTKMU2ZHPrO46/aLvovqyO
-	 FhiFwAsq+hJecRQGCM9GtyW9CpQJ7TKD4+Ticrq2sqf/bB4ltB/OYlnVp4sxKfXI1F
-	 Y9xkrfw8cnu/6hpXNzagzpZqGrnk6JbZOkwxnEiAWISR9bb7fayss1UFMoQFOaFXg/
-	 rn5SIe9fhUxdDcbiptUSRvStYsBqHr348f4aMcTEMBiydqS+9ZORarWQhX+cHShNM3
-	 sZfFBB0A2f4Sw==
-Message-ID: <1b1bf42b79026e4f8b7542818f088023.sboyd@kernel.org>
+	b=k0O2zDfJ3r80iewotJWB6QyUjmbbmmaMimgPl2DfcZa+4z40b9Clnvf2miOEm9+eD
+	 iEaZBu9UjA7Lfw9i5Z2fiXZsyz3JDJ+0vWOlym6VGvxpVGT1xPbUlfu0UHGHWQb5z+
+	 slSq5PdklWVV4J3zD8w8zmQBBmCV8ZsngBOzggfXYSWPAVmhP1ibB6JPi7Y4Tkuxok
+	 UI6RBmxdIoI4V9mHgsXQSD2/2P4BgdDM4AP+xR9LmR8q5PF0z5GsBUAlpLwUcOyatG
+	 AdYMAwpdG+9P/6K/xx9iMMrI7pCc7U9u12szeA1hKwdrKRPvbxr5qwA2So8jlvc+iG
+	 N2+arDJGrOWsA==
+Message-ID: <e25beaeb461752b80f9c851f4e6ad059.sboyd@kernel.org>
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20230331123621.16167-6-Garmin.Chang@mediatek.com>
-References: <20230331123621.16167-1-Garmin.Chang@mediatek.com> <20230331123621.16167-6-Garmin.Chang@mediatek.com>
-Subject: Re: [PATCH v8 05/19] clk: mediatek: Add MT8188 infrastructure clock support
+In-Reply-To: <20230331123621.16167-7-Garmin.Chang@mediatek.com>
+References: <20230331123621.16167-1-Garmin.Chang@mediatek.com> <20230331123621.16167-7-Garmin.Chang@mediatek.com>
+Subject: Re: [PATCH v8 06/19] clk: mediatek: Add MT8188 camsys clock support
 From: Stephen Boyd <sboyd@kernel.org>
 Cc: Project_Global_Chrome_Upstream_Group@mediatek.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, netdev@vger.kernel.org, Garmin.Chang <Garmin.Chang@mediatek.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Garmin.Chang <Garmin.Chang@mediatek.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>, Richard Cochran <richardcochran@gmail.com>, Rob Herring <robh+dt@kernel.org>
-Date: Fri, 31 Mar 2023 17:01:15 -0700
+Date: Fri, 31 Mar 2023 17:01:24 -0700
 User-Agent: alot/0.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230331_170120_109101_31524205 
-X-CRM114-Status: UNSURE (   7.72  )
+X-CRM114-CacheID: sfid-20230331_170132_801262_35BCF2B3 
+X-CRM114-Status: UNSURE (   7.09  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -73,9 +73,9 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Garmin.Chang (2023-03-31 05:36:07)
-> Add MT8188 infrastructure clock controller which provides
-> clock gate control for basic IP like pwm, uart, spi and so on.
+Quoting Garmin.Chang (2023-03-31 05:36:08)
+> Add MT8188 camsys clock controllers which provide clock gate
+> control for camera IP blocks.
 >=20
 > Signed-off-by: Garmin.Chang <Garmin.Chang@mediatek.com>
 > Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
