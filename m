@@ -4,81 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 863D1C76196
-	for <linux-mediatek@archiver.kernel.org>; Sun,  2 Apr 2023 17:02:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 932A6C7619A
+	for <linux-mediatek@archiver.kernel.org>; Sun,  2 Apr 2023 17:09:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2XOcFenNFYRM2N6pSiUZEbD6uIJrjdKx1WKwhR0xs50=; b=bxSZf0UuoEk7p0KH3Z/atZ86OB
-	NaUTfROzJlg4BsKiX/eZ6lnvEffEwySgAovNzSOykxEELZy/CmbE+MChXt/4dyWzmP+HklBxCSBr5
-	9XEFJCxI/Qi3517zS9bJCZXTPEJU8Pxn4dbqMSG/YeKzLH+i9ABdhr5UV7KVcZylbG/VKMHSZjY5A
-	fcQVMcOLiNyeogEa8IghsibSkKdJdCXiV0g5yof+5B0Z3NGlYkBGkuxViqYCmrWmDYa4y5bq6fkBZ
-	UffvRuf5/CH1C8S3etQCfyrK4lfGrJBnkdEVVtneQ3Av2Dp2ctA5C5gd3ERPEH/fgN6BXB1J39cwj
-	JA/EyohQ==;
+	bh=qsJ97AzAinqmYulQ9uVcLwa3ToVHlFCND7bl1BMrRiU=; b=lKpkx26wErovnumYGzGuTyKZ1c
+	+Ft/47QPkVRRMU/0LYfxwksDJ10FJeCvqqYTbfKKcDXASyfQbvpjUJrQRTsdx+VfAUJI5us9OBWPN
+	4fXM6U9FRmESME5TXDh+C6z9afnnLViDUxP44AM78Lyp16dyYNgeJsaZxkXmZNql2Aoj+nGH70IPD
+	GTu+jmPCc0N/7CF9zVSJh2UMhPg/LQDf9oMcUM9RjLjCbqBpU2KGE5znzRSqCgC6Fk5KoKZ0uA+tB
+	H0APcHcsMwkUHbEI/3L6LxeQdRXQcZcmqmyMrurYkMr37CnKhChuOJGWlhd3DWXxGAhAqz5f4a976
+	whcaopKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pj161-00CsT0-1S;
-	Sun, 02 Apr 2023 17:02:25 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1pj1CJ-00CtRe-1K;
+	Sun, 02 Apr 2023 17:08:55 +0000
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pj15w-00CsRq-2F;
-	Sun, 02 Apr 2023 17:02:22 +0000
-Received: by mail-wm1-x335.google.com with SMTP id bg16-20020a05600c3c9000b003eb34e21bdfso18388851wmb.0;
-        Sun, 02 Apr 2023 10:02:19 -0700 (PDT)
+	id 1pj1CF-00CtQm-34;
+	Sun, 02 Apr 2023 17:08:53 +0000
+Received: by mail-wm1-x333.google.com with SMTP id s13so15732659wmr.4;
+        Sun, 02 Apr 2023 10:08:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1680454938;
+        d=gmail.com; s=20210112; t=1680455329;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=2XOcFenNFYRM2N6pSiUZEbD6uIJrjdKx1WKwhR0xs50=;
-        b=ANvfbaiKo3Ki0oNGRBd1f4nF1CdD94/r/tSNwSH2W84rQPO7CvX91q1a6VO6WIsAY7
-         OmvFaKwmqKmzraHyhi/OmKWXeD32PilzRPQm6rv/ZL9ZrmHGgFm9kWcfR29khOPVERMq
-         UACKwxqDUcMdeo+6bLN4uhNW4Wi0VCBqZCJyX9ugYLr3ZLUKVpOplzCTQlyuztXM02hy
-         gSZ3Q5Kqiu8SwMU7+vbjUZgyiwIb/Pt+Mlqkj1Gc9tPct7O3pPNuYSAHXJkdQDWKAuz0
-         rt8t6s2cP8EcYkwUEvCmHwogU/6aqPHBwko98v9KS6CxRwftRn6vc8jJQt4MSbXXyKa3
-         5Kvw==
+        bh=qsJ97AzAinqmYulQ9uVcLwa3ToVHlFCND7bl1BMrRiU=;
+        b=YHNxsnJJ4c5c+8fCLqRjsHMs8tmEZHQ1w2ViHHGFaniGDy3caW4L474GMekT/yDMAp
+         HNpLsnUDef4DYgY2EjmHZa1S8iK42qMP0qxu+LY+Nj0hvf1Kzkm/WOqjVveCyJGWQ6tO
+         TQnqxsn/3DlfOxmdVY2EEgo6MM5bVzVdEq/nLIbCHat7Lk1JwznFRW7LzNrXR8Qh2H/8
+         b4iHjFYYO9iS1cPGCM0GR0z4s/KHHrBTlkbw91nqBr6T+ljCcWaEmM4DmFMpXVwdiVLf
+         rYuMQO5vBNeXRNbzTvcuTU3vup2h+YsxCtpG92MBHJlyTJ9GmvkkqGsUZ72gnEHP8LVd
+         NIOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680454938;
+        d=1e100.net; s=20210112; t=1680455329;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=2XOcFenNFYRM2N6pSiUZEbD6uIJrjdKx1WKwhR0xs50=;
-        b=cDG95LPNCzxaHrXrxuHJ90L1nSmxW4CvL33clrW4FYUwb5jfdmFlJCwlqwKHYOHJZt
-         nMFT1R7Q5MrlGNEUwdFu0GtgrLv0TtMqTpXtCaSafePJ70fiDvGKREzJLpffllGO3ph2
-         i4le+2EYABKOkb2c2evtmz9stZrpDDgL5W2lebLOFPqADt993QzzepviLjPuUnuhcsB7
-         F6Eq9MOSWTEmx2e70gz9FdfYnEU9ixGjyoaMKISDGERFXZX2E1iZVqIFjX5wk3bcD7F8
-         qHRO+XTq8MLG//PxmrG6rs46leeBgW7EWQZgJgxBf6gHI4sxMWPW+T5ndeT7r/h6FB/c
-         6rOw==
-X-Gm-Message-State: AAQBX9cyswENIiGp0zv2ET0f011vFAKYiLqrFjNodmJflniuwvpTJe5l
-	1Ezga8Miw43nsgBpFTEXpBQ9RjcgTUZkOg==
-X-Google-Smtp-Source: AKy350ZtNnms3pkR6oY30xJO9bNT2YpcPIXQrGO9yFnNaFcPLTQCJs5SU35WATc1Hlmkrsg5F9bxqw==
-X-Received: by 2002:a7b:c045:0:b0:3ef:6fee:8057 with SMTP id u5-20020a7bc045000000b003ef6fee8057mr17170245wmc.25.1680454938275;
-        Sun, 02 Apr 2023 10:02:18 -0700 (PDT)
+        bh=qsJ97AzAinqmYulQ9uVcLwa3ToVHlFCND7bl1BMrRiU=;
+        b=0OpJZGZ3nY3NOnDUqQgmy/NFo4+4z/mVSlmtDDrMZw5y/WXaL+3SFT3DPlq2t2wM4p
+         1VESlc6iVyT2NbMJVvWtRjcuzzqG37rOucyVwziGEkiufQGYlxD6MqM1NIm1lN4HomZ+
+         imrznrSH+6WvDRCED72U1kfmQLP0lteMByp1oRg2OB36PEZpQyNHpW2nYZr1e2yxuZOO
+         wIJfsAS9olONtLKjeeyYOGrjsKQuUopo25M71uwGizwSmIVpWlTZfsdYjtJprlvmaOXM
+         eGVQ2N7rChAnsmgmwJ40YjWxhby1vNiY3DRZ3jsI0cPgXOe19gNKb75/F3dat4GrQj3m
+         0Q2A==
+X-Gm-Message-State: AAQBX9fc/klKgO3UlaYGkEvriv8iGix6k28kCD8lb5dQ5Cokk4nbUvei
+	619/c9TZFdkcMgooMcIBZ/U=
+X-Google-Smtp-Source: AKy350Y8n3sLV835zkLGWD1Asl2o/5OiDqWwy1rdkkLRI7XF1gVqgugu90RkgvcR9WttMJwwPkB95g==
+X-Received: by 2002:a1c:7406:0:b0:3da:2ba4:b97 with SMTP id p6-20020a1c7406000000b003da2ba40b97mr10806342wmc.19.1680455329510;
+        Sun, 02 Apr 2023 10:08:49 -0700 (PDT)
 Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id 24-20020a05600c029800b003ed246c1d28sm9463189wmk.44.2023.04.02.10.02.17
+        by smtp.gmail.com with ESMTPSA id s15-20020a05600c45cf00b003eb2e33f327sm26654245wmo.2.2023.04.02.10.08.47
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 02 Apr 2023 10:02:17 -0700 (PDT)
-Message-ID: <00fb6b73-5327-13f6-8df8-6f1f4d1aa671@gmail.com>
-Date: Sun, 2 Apr 2023 19:02:16 +0200
+        Sun, 02 Apr 2023 10:08:48 -0700 (PDT)
+Message-ID: <eef88552-64cb-b4e7-f443-bf6d7afe3ae2@gmail.com>
+Date: Sun, 2 Apr 2023 19:08:47 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.1
-Subject: Re: [PATCH 0/3] MediaTek MMSYS: Split out MT8173 and add MT6795
+Subject: Re: [PATCH v2 02/17] arm64: dts: mediatek: mt6795: Add apmixedsys
+ syscon node
 Content-Language: en-US
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel@collabora.com
-References: <20230309102618.114157-1-angelogioacchino.delregno@collabora.com>
+Cc: qii.wang@mediatek.com, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, jassisinghbrar@gmail.com,
+ houlong.wei@mediatek.com, linux-i2c@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com, phone-devel@vger.kernel.org,
+ ~postmarketos/upstreaming@lists.sr.ht
+References: <20230327083647.22017-1-angelogioacchino.delregno@collabora.com>
+ <20230327083647.22017-3-angelogioacchino.delregno@collabora.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20230309102618.114157-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230327083647.22017-3-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230402_100220_764790_66CA2950 
-X-CRM114-Status: GOOD (  17.65  )
+X-CRM114-CacheID: sfid-20230402_100852_030601_72340133 
+X-CRM114-Status: GOOD (  13.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,49 +102,39 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 09/03/2023 11:26, AngeloGioacchino Del Regno wrote:
-> This series migrates MT8173 to use its own mmsys DDP routing table
-> and introduces support for the MediaTek Helio X10 MT6795 using the
-> same routing table as MT8173.
+On 27/03/2023 10:36, AngeloGioacchino Del Regno wrote:
+> Add the APMIXEDSYS node, providing a syscon to the APMIXED iospace and
+> also providing PLLs.
 > 
-> Broader explanation goes to that MT6795 addition:
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>   arch/arm64/boot/dts/mediatek/mt6795.dtsi | 6 ++++++
+>   1 file changed, 6 insertions(+)
 > 
-> Both MT6795 and MT8173 can support more usecases than the ones in
-> the current routing tables and the ones that are actually supported
-> in mediatek-drm!
-> This is mostly about MERGE, dual-DSI, WDMA (for command mode panels)
-> and others, but, again, right now, these are not supported.
-> 
-> I could have created a mt6795-mmsys.h, but that would've been a 1:1
-> clone of mt8173-mmsys.h, creating unnecessary code duplication hence
-> raising code (and kernel) size for no practical reason.
-> 
-> As a side note, if more MTK Smartphone SoCs land upstream, I expect
-> to see more re-using of MTK Chromebook SoCs mmsys routing tables.
-> 
-> P.S.: MT6795 dt-bindings are already upstream in v6.1 [1].
-> 
-> This series was tested on:
->   - MT8173 Acer Chromebook R13 (Elm)
->   - MT6795 Sony Xperia M5 (Holly)
-> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt6795.dtsi b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
+> index 4d2119751572..26d640e1bfb6 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt6795.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
+> @@ -310,6 +310,12 @@ systimer: timer@10200670 {
+>   			clock-names = "clk13m";
+>   		};
+>   
+> +		apmixedsys: syscon@10209000 {
+> +			compatible = "mediatek,mt6795-apmixedsys", "syscon";
 
-Applied, thanks!
+Looks good although we have the compatible twice, in 
+bindings/clock/mediatek,apmixedsys.yaml and 
+bindings/clock/mediatek,mt6795-sys-clock.yaml
 
-> Also, this series depends on [2]
-> 
-> [1]: https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml?h=v6.1.15#n28
-> [2]: https://patchwork.kernel.org/project/linux-mediatek/list/?series=724014
-> 
-> AngeloGioacchino Del Regno (3):
->    soc: mediatek: mtk-mmsys: Split out MT8173 mmsys DDP routing table
->    soc: mediatek: mtk-mmsys: Change MT8173 num_resets to 64
->    soc: mediatek: mtk-mmsys: Add support for MT6795 Helio X10
-> 
->   drivers/soc/mediatek/mt8173-mmsys.h | 95 +++++++++++++++++++++++++++++
->   drivers/soc/mediatek/mtk-mmsys.c    | 16 ++++-
->   drivers/soc/mediatek/mtk-mmsys.h    |  2 +-
->   3 files changed, 109 insertions(+), 4 deletions(-)
->   create mode 100644 drivers/soc/mediatek/mt8173-mmsys.h
-> 
+So we should see if we can merge both.
+
+Matthias
+
+> +			reg = <0 0x10209000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+>   		fhctl: clock-controller@10209f00 {
+>   			compatible = "mediatek,mt6795-fhctl";
+>   			reg = <0 0x10209f00 0 0x100>;
 
