@@ -4,100 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89FCAC7619A
-	for <linux-mediatek@archiver.kernel.org>; Sun,  2 Apr 2023 14:41:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31C87C7619A
+	for <linux-mediatek@archiver.kernel.org>; Sun,  2 Apr 2023 16:52:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eZrZkQDilPn1vacJZvzA6Nj9qCFTdPg8cOLsQDyidsM=; b=ljJC3PDd56i+WScEilOg2nmAVG
-	hlnXKs9lF+9Yo0p8UCn3eME87xA+dnepTn2yf6Ei0YDlreLGO08xv7eyg1o5T7fdQ8NAFtsgOHT7X
-	jjH+VJ0fVnd/B+nwe9Cu/EUBsSgLER/JuJmY/NNSCuai5BfMSYlIOBm77A0blQdv4vj/wguAHdpwl
-	6HShCnwEVIxL6RDEba895Ls8qlH857HybFEPLSWYFBaqhAfAYN+XH6t+bXLsr0Bb03pQ2CQorF/ya
-	RxqBjVwV8PSuxjX1MAY1JaFXOvue005Cxw/TG1GQPT4+3TSj5GWGIo3H4i/2mVwGY8PZrU0n1MamE
-	s1EKIquw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QFgTnd8uCD9hdangle5ftrUkUS5oCcd9OyJO8+L+8rs=; b=PRi8z5xs+OeTXALs6vVnh+F4yw
+	nr1I1hMM8HtOY1BiSpe205YgwfMR9OqoAc7wSOuoJVLWOuf9tEwcbqqr/GXsnws6yhtbuUAsd3lIi
+	uBb2cv8naO62sYJLe0hPQQBahZVRjj1biHSFcV0Om+unDFwnixQkyS/4MC/tt8eptmKXIumQFz8Vr
+	Jg0HvZXApOrmQiVnCi/1titaU4b8xAM2EWcgDqLJhL35Jkq2Qg+O5DWUgrb1LP2mU4YXi6L5aG9Rl
+	CV0sVihPrsF0KRHxarEDAY76Xoj26xWHvC7qCWqo2qpnoynXy7C3exrEqidMkZi8DpCIG8DivBE61
+	gzwMWLnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1piytZ-00Ceal-2n;
-	Sun, 02 Apr 2023 14:41:25 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1pj0wS-00CrOk-0Z;
+	Sun, 02 Apr 2023 16:52:32 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1piytV-00CeYq-0r;
-	Sun, 02 Apr 2023 14:41:22 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id t4so21597356wra.7;
-        Sun, 02 Apr 2023 07:41:19 -0700 (PDT)
+	id 1pj0wO-00CrNY-11;
+	Sun, 02 Apr 2023 16:52:29 +0000
+Received: by mail-wm1-x329.google.com with SMTP id o32so15731716wms.1;
+        Sun, 02 Apr 2023 09:52:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1680446478;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=eZrZkQDilPn1vacJZvzA6Nj9qCFTdPg8cOLsQDyidsM=;
-        b=AWiAEpgmtq1ABmkIlHJMb3ekqLp/o5PBApXYHaUJd6fMBgINSst8BmJ/pgShbKKOeS
-         k8wBFhY8/TOYGeGJnneNHpDQP3X0kyBdLdEufd36IBRxu5BjW+r4ms5yZy3oQpbROla+
-         HuK0LSYtls5NDlBQiaKRY6pjE12QvLR0gdxZvzJPCpW0i1hfsep+nLFMs1KEs4LJMcoz
-         MsllhAHbGZPXJN1p8RKV2TlnjCVbftkHvtY88q6n5HKQ0gQVYOf2Bwz+KuEPeA/ZRo7n
-         AEdvOz6fpYyC8XMB9IgZpTx0TkjyMuthpPmYX+kcLN7IfSIMZNA86JgEs0+mJQRN69Nx
-         1AzQ==
+        d=gmail.com; s=20210112; t=1680454344;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=QFgTnd8uCD9hdangle5ftrUkUS5oCcd9OyJO8+L+8rs=;
+        b=Lr/86VKyFxJj0tGI25dYkOewqphKXvklHcSfP3jJPOZ3xbh1EeDfPES8cRltuO6Gfk
+         2+jIrD1DHufPCiThQQlkG0o7X2msJMtx2Q1aqwR2bIIYLVedvtiSm5b1gym6Rb97ob/Y
+         L5hiVsu+EXAkjw3W2X61qUM/U4lVu2izuF3K5X9x9NqveiiK3ZS7+VFVcsq/McyEMGEY
+         GaJWBTY4pNuYZD6Sx2fBE8WSe5Iy74+2TtAiG82+oJ+L1Ljvhm98Kpzk1TeXiX9f16eX
+         QANUq4C5mAyOcXk84bgfaIC9Y9KVA9nxlgvvnrBF+G4QAsXIeOH1xv6kmKHtLOMKsE0J
+         Wrbg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680446478;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=eZrZkQDilPn1vacJZvzA6Nj9qCFTdPg8cOLsQDyidsM=;
-        b=z4kU24UlBjHMUzPaKZFxMXF+aFgfUIybJ89KJ8rDH4DEs7csYzOD4jR0CNGkRFOaoI
-         qPA46NcMS5haySPjih0Mlnjy3q6ArgMN+tO4j9e3M1Iu6uE7QpSxGlPORVTJXi64AqZm
-         G1lgZWRXhOtsizMs5arVTSSyPh21xo9UjjBkU+KvI31uWzowkPgI4oQMHeqLgaH1TlMQ
-         lu4GSawyB5nazol2CzX2UxeTd+cppoewsF9ZHbqb3uWzAlnAHvOzwytyn78d2H/SeFJ0
-         hgv1bNG82Ilizo6DFmlf32Eh6w8Gzj9LNSDCaK+i9qt9lTsRHaLyMjrr3aVdKTVoLNGH
-         Y9Qg==
-X-Gm-Message-State: AAQBX9dqrK5XtpySDLX0QFuL11yZ6htDlk6i/J3q1zTwAyFuy7l7mVFa
-	NmM7Gvh+hjcVJcZ/WfWDSI0=
-X-Google-Smtp-Source: AKy350blBuOVV+IjEZR9/y8oar0G5BwMskydAcUw+0jw7gSYoEmOmZAUU8e+M2Tp1dBCe1Rkl1g83g==
-X-Received: by 2002:adf:f38e:0:b0:2dc:c9c0:85cc with SMTP id m14-20020adff38e000000b002dcc9c085ccmr26600215wro.59.1680446478145;
-        Sun, 02 Apr 2023 07:41:18 -0700 (PDT)
-Received: from jernej-laptop.localnet ([209.198.137.155])
-        by smtp.gmail.com with ESMTPSA id q10-20020a056000136a00b002c6e8cb612fsm7363100wrz.92.2023.04.02.07.41.15
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 02 Apr 2023 07:41:17 -0700 (PDT)
-From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
-To: Giuseppe Cavallaro <peppe.cavallaro@st.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Jose Abreu <joabreu@synopsys.com>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Vladimir Zapolskiy <vz@mleia.com>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Vinod Koul <vkoul@kernel.org>,
- Chen-Yu Tsai <wens@csie.org>, Samuel Holland <samuel@sholland.org>,
- Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Uwe =?ISO-8859-1?Q?Kleine=2DK=F6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Bhupesh Sharma <bhupesh.sharma@linaro.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, kernel@pengutronix.de,
- linux-amlogic@lists.infradead.org, linux-oxnas@groups.io,
- linux-sunxi@lists.linux.dev, linux-mediatek@lists.infradead.org
-Subject:  Re: [PATCH net-next 01/11] net: stmmac: Make stmmac_pltfr_remove() return
- void
-Date: Sun, 02 Apr 2023 16:41:14 +0200
-Message-ID: <2674462.mvXUDI8C0e@jernej-laptop>
-In-Reply-To: <20230402143025.2524443-2-u.kleine-koenig@pengutronix.de>
-References:  <20230402143025.2524443-1-u.kleine-koenig@pengutronix.de>
- <20230402143025.2524443-2-u.kleine-koenig@pengutronix.de>
+        d=1e100.net; s=20210112; t=1680454344;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=QFgTnd8uCD9hdangle5ftrUkUS5oCcd9OyJO8+L+8rs=;
+        b=5QBDf/edOxFqTWwV8p8xEUZjqvbqd+Jelx2QncxQgbMLxCjQxWtL5hqu2D9QnIaICH
+         Y1/Vl2vjPjJhvyURlop9Gx5BQ19iF77cpSw2tv8aD88Ew/U36N7K82LNN1p7OEQEXECJ
+         dw+7f/ZEWnha/QUgd8IN12ZDb/AyepsWkPk76MdtsRsByv3mHsSkf6gfLIZY/VKX/oAe
+         jV9AnfR/Ij7HtLAmEEys8p/wj/6xA+bdsBrbaY/RRhyN/bN+dxerCjCJ7mJKlFtf9dEI
+         3wNyAI1diC/7rhIv1wbPey0Lkl7cvtI9uOe3WN+Ytq9MLrqdI+ABSfNHCcsTKfHU/A/3
+         CiOg==
+X-Gm-Message-State: AAQBX9fmEqG9VHB0lo2q+3fJNjB/n3Fqg3AqIZ20m/x8PPonUlGzaXF5
+	5EfdAxiHfZ2ab9fPuX2veO+DD4Rp8uURUA==
+X-Google-Smtp-Source: AKy350YKoVMhVaqf8Ro4NQlhX4kPKXtf//FlXNVEcXiRnyVwSxlYtfErw7crIn9bvjt5Js8azkkIqw==
+X-Received: by 2002:a7b:ce88:0:b0:3f0:3a5a:362e with SMTP id q8-20020a7bce88000000b003f03a5a362emr8413189wmj.39.1680454343617;
+        Sun, 02 Apr 2023 09:52:23 -0700 (PDT)
+Received: from [192.168.2.177] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id b39-20020a05600c4aa700b003ed29189777sm16375913wmp.47.2023.04.02.09.52.21
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 02 Apr 2023 09:52:22 -0700 (PDT)
+Message-ID: <5171511b-4021-589e-3606-10a690b48850@gmail.com>
+Date: Sun, 2 Apr 2023 18:52:21 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="iso-8859-1"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [PATCH v2 0/9] soc/mediatek: Cleanup mmsys, mutex, cmdq header
+Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: jason-jh.lin@mediatek.com, chunkuang.hu@kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20230222094253.23678-1-angelogioacchino.delregno@collabora.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20230222094253.23678-1-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230402_074121_322352_85A18E28 
-X-CRM114-Status: UNSURE (   9.11  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230402_095228_395336_A1E40736 
+X-CRM114-Status: GOOD (  14.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,45 +94,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dne nedelja, 02. april 2023 ob 16:30:15 CEST je Uwe Kleine-K=F6nig napisal(=
-a):
-> The function returns zero unconditionally. Change it to return void inste=
-ad
-> which simplifies some callers as error handing becomes unnecessary.
->=20
-> The function is also used for some drivers as remove callback. Switch the=
-se
-> to the .remove_new() callback. For some others no error can happen in the
-> remove callback now, convert them to .remove_new(), too.
->=20
-> Signed-off-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
-> ---
->  drivers/net/ethernet/stmicro/stmmac/dwmac-anarion.c     | 2 +-
->  drivers/net/ethernet/stmicro/stmmac/dwmac-generic.c     | 2 +-
->  drivers/net/ethernet/stmicro/stmmac/dwmac-imx.c         | 2 +-
->  drivers/net/ethernet/stmicro/stmmac/dwmac-ingenic.c     | 2 +-
->  drivers/net/ethernet/stmicro/stmmac/dwmac-intel-plat.c  | 9 +++------
->  drivers/net/ethernet/stmicro/stmmac/dwmac-ipq806x.c     | 2 +-
->  drivers/net/ethernet/stmicro/stmmac/dwmac-lpc18xx.c     | 2 +-
->  drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c    | 9 +++------
->  drivers/net/ethernet/stmicro/stmmac/dwmac-meson.c       | 2 +-
->  drivers/net/ethernet/stmicro/stmmac/dwmac-meson8b.c     | 2 +-
->  drivers/net/ethernet/stmicro/stmmac/dwmac-oxnas.c       | 2 +-
->  drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c | 5 ++---
->  drivers/net/ethernet/stmicro/stmmac/dwmac-socfpga.c     | 2 +-
->  drivers/net/ethernet/stmicro/stmmac/dwmac-sunxi.c       | 2 +-
-
-=46or sunxi:
-Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
-
-Best regards,
-Jernej
-
->  drivers/net/ethernet/stmicro/stmmac/dwmac-visconti.c    | 4 +---
->  drivers/net/ethernet/stmicro/stmmac/stmmac_platform.c   | 4 +---
->  drivers/net/ethernet/stmicro/stmmac/stmmac_platform.h   | 2 +-
->  17 files changed, 22 insertions(+), 33 deletions(-)
 
 
+On 22/02/2023 10:42, AngeloGioacchino Del Regno wrote:
+> Changes in v2:
+>   - Rebased onto Matthias' v6.3-tmp/soc branch for VPP mutex conflict
+>     on patch [5/9]
+> 
+> This series adds a proper remove callback for mtk-mmsys, adds light
+> cleanups on mtk-mutex and, more importantly, adds a cleanup for the
+> CMDQ helpers.
+> 
+> Special mention goes to the latter: this is just in preparation for
+> a larger cleanup that I plan to do as soon as possible on other cmdq
+> helpers users, being mediatek-drm and mtk-mdp3; that's not performed
+> right now because, in the case of drm/mdp3, the cleanup is not entirely
+> trivial.
+> 
+> AngeloGioacchino Del Regno (9):
+>    soc: mediatek: mtk-mmsys: Add .remove() callback
+>    soc: mediatek: mtk-mmsys: Use module_platform_driver() macro
+>    soc: mediatek: mtk-mmsys: Compress of_device_id array entries
+>    soc: mediatek: mtk-mmsys: Add MODULE_DEVICE_TABLE() to allow auto-load
+>    soc: mediatek: mtk-mutex: Compress of_device_id array entries
+>    soc: mediatek: mtk-mutex: Replace max handles number with definition
+>    soc: mediatek: mtk-mutex: Use module_platform_driver() macro
+>    soc: mediatek: cmdq: Add inline functions for !CONFIG_MTK_CMDQ
+>    soc: mediatek: Cleanup ifdefs for IS_REACHABLE(CONFIG_MTK_CMDQ)
+> 
+>   drivers/soc/mediatek/mtk-mmsys.c      | 135 +++++++++-----------------
+>   drivers/soc/mediatek/mtk-mutex.c      |  80 +++++----------
+>   include/linux/soc/mediatek/mtk-cmdq.h | 114 ++++++++++++++++++++++
+>   3 files changed, 182 insertions(+), 147 deletions(-)
+> 
 
+Applied, thanks!
 
