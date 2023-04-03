@@ -4,76 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DE3CC7619A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 03:03:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D152DC76196
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 03:12:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F+XUat4FGUJ44EyDn8cjDOLMowlIQ5D+4o0UWiTADGU=; b=XJ2Hy4jQKhFvEeNAvCVMxN7/1o
-	uwfwpu9zAxDIWcUvjSW/45nAAtrqwH3n8uIriyE6zWzDpOdr7aqHt/POpJmW/kY+HroavoYIyaIzL
-	PEV5k9PVtVpNDcFxqngJD5ahIlucbCGtD8B2RLyWslEPCAOJGqtpDwtkV+4wdGGi1FK1ET1aDdwhp
-	Coci6QN71ZfR00tA6WpyzyN/S5TUfIPS3w2J3fXFtqhI/O75zrL4ClUYipomY1TzNg6hPE6wgRM4E
-	nx1WeRSCAxY2QD1Afrjihreai9w7FBZWGzOw/A5i4JAiN4Ba2BqLd8omEgIZg8TnU6fUAGlDWEDEr
-	nvGRYe2w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gUzG3Sora6TUMkCPzKZMzV+S071IQ6S9uPQfzmjDlaw=; b=NkE6jSU/MymALzspEZAJr0vnQF
+	ywfnX474RBfXLcCNTDezVyT+jf1vIehgnSNF1yXazBTQq+vKAzdASDiWy3FE25nro/3aBzyHYvAMC
+	lAqS8gG0zWP+/6liVbypkBZi7dmM0do67JFfJk7SbQkIXZMpQmvG6WLh2o/Vx9OIL7GsPqi4N1aVP
+	VQT8kfy9VxgLLtqywkZ//I9C7Fs58NWCXknrwVKC9ausX4wyRrijcFaqwd0K7jK+nFMB02ufQWfP5
+	4iYpywf+hwk0iA+IoZ+Pfd1DQTnpkSX+8nZMbF26pRuciAlSbhcJv11m4yn5NH2nYSx5R4DlNuGaF
+	ESwva6Eg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjATU-00E0Nr-1l;
-	Mon, 03 Apr 2023 03:03:16 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pjAck-00E1QU-3D;
+	Mon, 03 Apr 2023 03:12:51 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjATP-00E0Md-0N;
-	Mon, 03 Apr 2023 03:03:14 +0000
-X-UUID: 0f049ea2d1cc11ed8687db9d93187ff1-20230402
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=F+XUat4FGUJ44EyDn8cjDOLMowlIQ5D+4o0UWiTADGU=;
-	b=bEDZ3X25Sy1eBtgo001yVJu+ioMtorBVD39UH7ZXY5tfnLBzpnChIe0Vyle0CbAJz9gNft7R3W9dmRhLQnV6ENhfPazUDHA1+HnW4O1HOgtIpyvfiCcy8NvnyDwPAyd2i/MH6/89Yvj5zxl3xLgUxATNeHinWRr3XEwv82G3y7k=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:04d9977f-b9a6-453e-83de-930ea9fb02a5,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:120426c,CLOUDID:2081abf7-ddba-41c3-91d9-10eeade8eac7,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: 0f049ea2d1cc11ed8687db9d93187ff1-20230402
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <chunfeng.yun@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 153411875; Sun, 02 Apr 2023 20:03:07 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Mon, 3 Apr 2023 10:52:32 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Mon, 3 Apr 2023 10:52:32 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring
-	<robh+dt@kernel.org>
-CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, <linux-usb@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Eddie Hung
-	<eddie.hung@mediatek.com>, Tianping Fang <tianping.fang@mediatek.com>
-Subject: [PATCH 2/7] usb: mtu3: use boolean return value
-Date: Mon, 3 Apr 2023 10:52:25 +0800
-Message-ID: <20230403025230.25035-2-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230403025230.25035-1-chunfeng.yun@mediatek.com>
-References: <20230403025230.25035-1-chunfeng.yun@mediatek.com>
+	id 1pjAcY-00E1PE-21;
+	Mon, 03 Apr 2023 03:12:43 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 8AC67B810FE;
+	Mon,  3 Apr 2023 03:12:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BA93FC433A7;
+	Mon,  3 Apr 2023 03:12:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1680491554;
+	bh=Ap+BpBTEBvJlF+gYmcxKPrUbwIF2D8NME4iCc6mm8XI=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=ox9yXbG4kq8D2Laabb25D1FCQq+ipQrdmcgXDds+jeRkctXVetC4ohfLigpI3pM7q
+	 UBbZfJNnO7TcOFVZg6F1J5QMHR70sK6FAMZ6z3bS866sVWfXOEAAyfwX9OzheUgXyB
+	 Ui1s6kDcqRLAzPRTMiz845zRNsvovUXTFjI6wudl8OycNMqPXs6XhLRR94PFhMVBD8
+	 khhbaz986L0vFh3fVKtcCjdD1HkpdIXzUQC4w2Y7ehrEDSfqbc195QK6K5+jbndSeo
+	 qVtkOBfGlA1bErTk1Uh2QICYD8jKCh38vCywt7XrkPzJtGAy9Zp7gpWz3DpR7cGpEc
+	 iX/ynfmWLFaTQ==
+Received: by mail-lf1-f49.google.com with SMTP id g17so36217879lfv.4;
+        Sun, 02 Apr 2023 20:12:34 -0700 (PDT)
+X-Gm-Message-State: AAQBX9e1+QIp0aAbt5UROy6Fo1SRjGRu9du+V/kVMAigep9gpYcSGNXg
+	j5LzPgZ5PqtNmUV1KYLd8teD+cDBZ4/8/uDF1g==
+X-Google-Smtp-Source: AKy350boR7KBqqJZ6IIHymcrLLLozW883feUdZ6Y2V3HnUd9E4OfcuL63cyZJDY0w5iiNe1NgefP4M7Cd9UwzPb3jmM=
+X-Received: by 2002:ac2:50d9:0:b0:4ea:fa15:5bce with SMTP id
+ h25-20020ac250d9000000b004eafa155bcemr10220977lfm.7.1680491552651; Sun, 02
+ Apr 2023 20:12:32 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+References: <20230330032614.18837-1-nancy.lin@mediatek.com> <20230330032614.18837-2-nancy.lin@mediatek.com>
+In-Reply-To: <20230330032614.18837-2-nancy.lin@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Mon, 3 Apr 2023 11:12:20 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_8hU9j2KfFcpvhz-TRzrz0hiSTiPgy_yHqEQ8VWvoYzTg@mail.gmail.com>
+Message-ID: <CAAOTY_8hU9j2KfFcpvhz-TRzrz0hiSTiPgy_yHqEQ8VWvoYzTg@mail.gmail.com>
+Subject: Re: [PATCH v3 1/2] drm/mediatek: Add mdp_rdma get format function
+To: "Nancy.Lin" <nancy.lin@mediatek.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, David Airlie <airlied@gmail.com>, 
+	Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com, singo.chang@mediatek.com, 
+	shawn.sung@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230402_200311_156408_72E08EEA 
-X-CRM114-Status: GOOD (  11.66  )
+X-CRM114-CacheID: sfid-20230402_201238_982995_EA845CC8 
+X-CRM114-Status: GOOD (  16.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,28 +87,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Prefer to use boolean value due to gpd_ring_empty() return true or false.
-See "16) Function return values and names" in coding-style.rst
+Hi, Nancy:
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- drivers/usb/mtu3/mtu3_qmu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Nancy.Lin <nancy.lin@mediatek.com> =E6=96=BC 2023=E5=B9=B43=E6=9C=8830=E6=
+=97=A5 =E9=80=B1=E5=9B=9B =E4=B8=8A=E5=8D=8811:26=E5=AF=AB=E9=81=93=EF=BC=
+=9A
+>
+> Add mdp_rdma get_format and get_num_formats function.
 
-diff --git a/drivers/usb/mtu3/mtu3_qmu.c b/drivers/usb/mtu3/mtu3_qmu.c
-index 7be4e4be1a6a..66639f602a9d 100644
---- a/drivers/usb/mtu3/mtu3_qmu.c
-+++ b/drivers/usb/mtu3/mtu3_qmu.c
-@@ -221,7 +221,7 @@ static struct qmu_gpd *advance_deq_gpd(struct mtu3_gpd_ring *ring)
- }
- 
- /* check if a ring is emtpy */
--static int gpd_ring_empty(struct mtu3_gpd_ring *ring)
-+static bool gpd_ring_empty(struct mtu3_gpd_ring *ring)
- {
- 	struct qmu_gpd *enq = ring->enqueue;
- 	struct qmu_gpd *next;
--- 
-2.18.0
+For the series, applied to mediatek-drm-next [1], thanks.
 
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
+log/?h=3Dmediatek-drm-next
+
+Regards,
+Chun-Kuang.
+
+>
+> Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_disp_drv.h |  3 +++
+>  drivers/gpu/drm/mediatek/mtk_mdp_rdma.c | 24 ++++++++++++++++++++++++
+>  2 files changed, 27 insertions(+)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/me=
+diatek/mtk_disp_drv.h
+> index 0d28b2e2069c..17b169530beb 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> @@ -152,4 +152,7 @@ void mtk_mdp_rdma_start(struct device *dev, struct cm=
+dq_pkt *cmdq_pkt);
+>  void mtk_mdp_rdma_stop(struct device *dev, struct cmdq_pkt *cmdq_pkt);
+>  void mtk_mdp_rdma_config(struct device *dev, struct mtk_mdp_rdma_cfg *cf=
+g,
+>                          struct cmdq_pkt *cmdq_pkt);
+> +const u32 *mtk_mdp_rdma_get_formats(struct device *dev);
+> +size_t mtk_mdp_rdma_get_num_formats(struct device *dev);
+> +
+>  #endif
+> diff --git a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c b/drivers/gpu/drm/me=
+diatek/mtk_mdp_rdma.c
+> index eecfa98ff52e..e06db6e56b5f 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
+> @@ -62,6 +62,20 @@
+>  #define RDMA_CSC_FULL709_TO_RGB                        5
+>  #define RDMA_CSC_BT601_TO_RGB                  6
+>
+> +static const u32 formats[] =3D {
+> +       DRM_FORMAT_XRGB8888,
+> +       DRM_FORMAT_ARGB8888,
+> +       DRM_FORMAT_BGRX8888,
+> +       DRM_FORMAT_BGRA8888,
+> +       DRM_FORMAT_ABGR8888,
+> +       DRM_FORMAT_XBGR8888,
+> +       DRM_FORMAT_RGB888,
+> +       DRM_FORMAT_BGR888,
+> +       DRM_FORMAT_RGB565,
+> +       DRM_FORMAT_UYVY,
+> +       DRM_FORMAT_YUYV,
+> +};
+> +
+>  enum rdma_format {
+>         RDMA_INPUT_FORMAT_RGB565 =3D 0,
+>         RDMA_INPUT_FORMAT_RGB888 =3D 1,
+> @@ -219,6 +233,16 @@ void mtk_mdp_rdma_config(struct device *dev, struct =
+mtk_mdp_rdma_cfg *cfg,
+>                            MDP_RDMA_MF_CLIP_SIZE, FLD_MF_CLIP_H);
+>  }
+>
+> +const u32 *mtk_mdp_rdma_get_formats(struct device *dev)
+> +{
+> +       return formats;
+> +}
+> +
+> +size_t mtk_mdp_rdma_get_num_formats(struct device *dev)
+> +{
+> +       return ARRAY_SIZE(formats);
+> +}
+> +
+>  int mtk_mdp_rdma_clk_enable(struct device *dev)
+>  {
+>         struct mtk_mdp_rdma *rdma =3D dev_get_drvdata(dev);
+> --
+> 2.18.0
+>
 
