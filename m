@@ -4,51 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D3D5C761A6
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 12:32:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BAFFC761A6
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 12:34:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NNIWUaDwFIRB80IipBnhJGewBpri93rb/hSb5i6o9eQ=; b=OJ63cf2zZ21MStNgNqeOx4KBNL
-	VrzUUcFBLClWV5unQDg4ifo8B2+hXQLkuXN6GU5M0PMMw3Dds7ipjmQorf7IWRKlavqO6xlohARlF
-	sWrSwSqEDdmR2BeTBGZET5odm/g89fTcOikMJuW34enjypHaMYMRm10y/ICYrZ5bg9PXrIcFY4BnU
-	Ul7A3g4KxfgSHqkeG3Bo/Ymi1KaRQ6b/BV2HQIl+mDzTrORroIbu2WjWRQRVBT4bjGn42h1/qWf5z
-	gQUUKDEAKTHQ3AZs7zpsaaSoQsmVCdAtY2/bO9A5QjtBO6oD13ill+oKrBs3rFAc3BTLrRmbSfpwz
-	z1X7vuEw==;
+	bh=bZWnxp0bmfhUOl9W6PR6jXsq2ZiL2l8XmKiI0uwrGKI=; b=eEZ+mS0dpv25N0ACej4hiLe3vd
+	P36769Rn1C33LBIjwV13H8V5Nc9Qvpd15DO/mF7bFR6OCgG65BUXpgXZmWsrAPabyq6lCjfv6zli2
+	wyAQpLwCoHwXWChXIwoysEqAIf2027UZcOTIiapZbiPlgmoCvCnIQKceiPHPbDIKrE0m9oA/murMb
+	4+i2FAtes8OQm0oKup4k+X9AQTlvuTT//FiiBfPyHLcvYQfaS9m6s3K6RWyLcuLCXlIiNyuGyySjX
+	kl2rVPJc+wZj3KbeVHH9ORhbdE2mSkgOxEScPX4dMu9D6gRsuf6viVPa0fHGdjW8heOdsDO67YJ6h
+	dKPIflaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjJLm-00FHR2-0i;
-	Mon, 03 Apr 2023 12:31:54 +0000
+	id 1pjJOC-00FI9o-0g;
+	Mon, 03 Apr 2023 12:34:24 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjJLi-00FHNs-0q;
-	Mon, 03 Apr 2023 12:31:51 +0000
+	id 1pjJO7-00FI8A-1K;
+	Mon, 03 Apr 2023 12:34:22 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id DC9506602040;
-	Mon,  3 Apr 2023 13:31:47 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4C5F866016BD;
+	Mon,  3 Apr 2023 13:34:17 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1680525109;
-	bh=GKT610DcFF8LIpWhcPXHkIz0Hgg2flPufm9V1ZMqTtw=;
+	s=mail; t=1680525258;
+	bh=bZWnxp0bmfhUOl9W6PR6jXsq2ZiL2l8XmKiI0uwrGKI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=L4hb3pVXMMNIueWs8IubjUT/LPpKKhwX3e9d3OPZ3RaqkOGO7sIuTxmIXMZ1d9i+O
-	 2e0r5seRD+kegGiAcMO7h6GwPPP4uH5HkdYJqBILz7UTA9ZIsFl8AwDPi/qqU0OYRa
-	 kJw4ohKjEAzIb+fnBbEZx8pcS7Cq1/d4mP9flA+3hCjfJQYq5D0ul50sg4aC1/YGsC
-	 pilF4XRAG6jryJHi++hmifO11fZkYclijhcOqR77VDiLoS341jzkNPlGM1be+Fh6et
-	 AhB9QZZzQ/i1ro/oTl1sn4Ub4AEulhGo2HX6yjnrntLFsxq5sqKS9eCApXW2M86FFk
-	 7Z4uHPf1M0iuA==
-Message-ID: <6626cb88-9d9e-593f-f4c9-44c3035bad43@collabora.com>
-Date: Mon, 3 Apr 2023 14:31:44 +0200
+	b=mNDoX1UIjO7KohkWNTn7UmYVG5AY8Wfd1h3EYaQpO0uflyzTgx1SkPK5BxDvy1N3S
+	 bOLKt/OO31eXcfTHoDzqBU4ia7eg8UtapJ6N7d2MofX0vhxgW6YrV/Y2Y628G41hdX
+	 lDcnQsuOXdGhKBFx7dxA8nkXgPPvRTRBsF4VrPk9YceVtG9cFnPGkcdhR4/g7/Huas
+	 GykxQURTzOFo4QDtHd0RFL9HpRFBHrwz8te/Tahs7SOxpzLpmrvyi3/oocRLMOk4Vp
+	 wCJ8N9ukrUI0eSSi51IhIgNIRLMHwuRndt+05oLM7RvwtIFRhGknUQmZvgnhUkks+D
+	 Lex+Dki7uvDVQ==
+Message-ID: <8e7584d6-92a1-e948-302e-489af8cf6394@collabora.com>
+Date: Mon, 3 Apr 2023 14:34:14 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.9.1
-Subject: Re: [PATCH 1/7] usb: mtu3: give back request when rx error happens
+Subject: Re: [PATCH 7/7] usb: mtu3: add optional clock xhci_ck and frmcnt_ck
+Content-Language: en-US
 To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Rob Herring <robh+dt@kernel.org>
@@ -59,14 +60,15 @@ Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Eddie Hung <eddie.hung@mediatek.com>,
  Tianping Fang <tianping.fang@mediatek.com>
 References: <20230403025230.25035-1-chunfeng.yun@mediatek.com>
-Content-Language: en-US
+ <20230403025230.25035-7-chunfeng.yun@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230403025230.25035-1-chunfeng.yun@mediatek.com>
+In-Reply-To: <20230403025230.25035-7-chunfeng.yun@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230403_053150_428661_D301C977 
-X-CRM114-Status: GOOD (  21.36  )
+X-CRM114-CacheID: sfid-20230403_053419_584565_7429DF3F 
+X-CRM114-Status: UNSURE (   9.70  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,80 +84,18 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 03/04/23 04:52, Chunfeng Yun ha scritto:
-> When the Rx enconnter errors, currently, only print error logs, that
-> may cause class driver's RX halt, shall give back the request with
-> error status meanwhile.
-> 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> Add optional clock 'xhci_ck' which is usually the same as sys_ck, but
+> some SoC use two separated clocks when the controller supports dual
+> role mode;
+> Add optional clock 'frmcnt_ck' used on 4nm or advanced process SoC.
 
- From what I understand, this is not a new feature, but a fix for a unwanted QMU
-halt.
-This means that this commit needs a Fixes tag.
+This needs more details, because from what it seems, `xhci_ck` could be
+a children of `sys_ck`, in which case there would be no need to add that
+to this driver, as it'd be handled by the clock API instead.
 
-> ---
->   drivers/usb/mtu3/mtu3_qmu.c | 39 ++++++++++++++++++++++++++++++++++++-
->   1 file changed, 38 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/usb/mtu3/mtu3_qmu.c b/drivers/usb/mtu3/mtu3_qmu.c
-> index a2fdab8b63b2..7be4e4be1a6a 100644
-> --- a/drivers/usb/mtu3/mtu3_qmu.c
-> +++ b/drivers/usb/mtu3/mtu3_qmu.c
-> @@ -466,6 +466,39 @@ static void qmu_tx_zlp_error_handler(struct mtu3 *mtu, u8 epnum)
->   	mtu3_qmu_resume(mep);
->   }
->   
-> +/*
-> + * when rx error happens (except zlperr), QMU will stop, and RQCPR saves
-> + * the GPD encountered error, Done irq will arise after resuming QMU again.
-> + */
-> +static void qmu_error_rx(struct mtu3 *mtu, u8 epnum)
-> +{
-> +	struct mtu3_ep *mep = mtu->out_eps + epnum;
-> +	struct mtu3_gpd_ring *ring = &mep->gpd_ring;
-> +	struct qmu_gpd *gpd_current = NULL;
-> +	struct usb_request *req = NULL;
-> +	struct mtu3_request *mreq;
-> +	dma_addr_t cur_gpd_dma;
-> +
-> +	cur_gpd_dma = read_rxq_cur_addr(mtu->mac_base, epnum);
-> +	gpd_current = gpd_dma_to_virt(ring, cur_gpd_dma);
-> +
-> +	mreq = next_request(mep);
-> +	if (!mreq || mreq->gpd != gpd_current) {
-> +		dev_err(mtu->dev, "no correct RX req is found\n");
-> +		return;
-> +	}
-> +
-> +	req = &mreq->request;
-> +	req->status = -EAGAIN;
-
-You don't need a *req pointer for just one simple assignment.
-
-	mreq->request.status = -EAGAIN;
-
-that'll do.
-
-> +
-> +	/* by pass the current GDP */
-> +	gpd_current->dw0_info |= cpu_to_le32(GPD_FLAGS_BPS | GPD_FLAGS_HWO);
-> +	mtu3_qmu_resume(mep);
-> +
-> +	dev_dbg(mtu->dev, "%s EP%d, current=%p, req=%p\n",
-> +		__func__, epnum, gpd_current, mreq);
-> +}
-> +
->   /*
->    * NOTE: request list maybe is already empty as following case:
->    * queue_tx --> qmu_interrupt(clear interrupt pending, schedule tasklet)-->
-> @@ -571,14 +604,18 @@ static void qmu_exception_isr(struct mtu3 *mtu, u32 qmu_status)
->   
->   	if ((qmu_status & RXQ_CSERR_INT) || (qmu_status & RXQ_LENERR_INT)) {
->   		errval = mtu3_readl(mbase, U3D_RQERRIR0);
-> +		mtu3_writel(mbase, U3D_RQERRIR0, errval);
-
-Please mention in the commit description the reason why you're moving this register
-write here.
+What SoC is this for?
 
 Regards,
 Angelo
+
 
