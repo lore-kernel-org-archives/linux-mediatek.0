@@ -4,71 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43570C76196
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 21:25:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1993DC76196
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 21:45:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Tr5PKTZkytsHces4K8xckZrMRgweSHoafCTFPOREkbc=; b=gOg7NtHj6mdyjTCBlgSLRWe2Cq
-	0zknj9K7jDQKI/N+nov8ajZoVqaUuU5rI1ckBq6ohf56faRgIok0uICmuQJlTRfzpvUAMk/UUNhMe
-	RZcl42nZpudeAU87HvwI/+Y33nGWp+uZiO1oF2ugWudIbvz3WxJ8lVzndGRnq4ZgDiSHDfl8rewDK
-	Qa1fJJthqViHMjLQ0wH3lXXW8g+x3KsKXdWNYR9HmL8XQityTRzP+dbuCrQyAHddK61Xl7SH26yVl
-	Yi2OnYk98SnsiW4wvkvKVtoa5J9RDg1q6sDc46CVw6yRcYH7O3W7xbx8ilIQAMWkCuZUW2Uy62tCf
-	Bt0W7YVQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ANuyucjG7+IOsm6+PTXTUkVZpuE117uxor/udrQsrHI=; b=tFKu05sziCC9L1/Eek7sC4Omiy
+	XSLLLkoxY7ZLywdlG5qQAx1ik8TkDeQJ8re69+iBWnfriKvEgsrny29uEkkwbITzNBjmTWyw4GFDL
+	BzY3wML5c/tFE6mKTVuT78yNFup4laxKu+SQ+1jYL9J4uJP5AXKvBzLom1OaG0MWbbShHdrHH6LX5
+	LM2vW7AhNG3inrSNR5jUimbqhU61eGNpnZKR3tIYD2MwyiXOsLN36nXZTzPK6AaE/xtEU/CxT4lY+
+	ddEY2Ovj+zAYWdEuDLu7GECmWvjt0G77girEyj7kRaHzB83oE26rZgU82XsvlQDmIpCs3ep10LZrx
+	ljfOl82A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjRfh-00GtUF-0D;
-	Mon, 03 Apr 2023 21:25:01 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pjRzg-00GxiA-0D;
+	Mon, 03 Apr 2023 21:45:40 +0000
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjRfe-00GtD0-1I
-	for linux-mediatek@lists.infradead.org;
-	Mon, 03 Apr 2023 21:24:59 +0000
-X-UUID: f047ef1ad26511edb7d8d11f642b8e78-20230403
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Tr5PKTZkytsHces4K8xckZrMRgweSHoafCTFPOREkbc=;
-	b=n9sIBALoq+Wva5x2CWAmkIlgvhsvw/uvHm0gWOZOuT/PYwPk8NDyviMSOE1c5mFUliJ8sPE4E9UyX7gwP9us3YbWYS7JhSaSzoeH3a9YgZVxT0rBXl0EuwdtDwcNFVdQGInZqXST1sZ3PK17ITeo7tt0SRfNh7YLzxjpEYVBAww=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:6fd91030-1f71-4042-8c4e-df9c154b9b70,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:120426c,CLOUDID:2d602cb5-beed-4dfc-bd9c-e1b22fa6ccc4,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-UUID: f047ef1ad26511edb7d8d11f642b8e78-20230403
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <yi-chia.hsieh@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1262990357; Mon, 03 Apr 2023 14:24:38 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Tue, 4 Apr 2023 05:04:35 +0800
-Received: from mussdccf250.mussds.eus.mediatek.inc (10.73.250.250) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Tue, 4 Apr 2023 05:04:33 +0800
-From: Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Johannes Berg <johannes.berg@intel.com>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Ryder Lee
-	<ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Evelyn Tsai
-	<evelyn.tsai@mediatek.com>, Money Wang <money.wang@mediatek.com>,
-	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>
-Subject: [PATCH 1/2] wifi: mac80211: track obss color bitmap
-Date: Mon, 3 Apr 2023 14:04:29 -0700
-Message-ID: <774ab129159408a3f3e04b7e662cb559cf087c48.1680553706.git.yi-chia.hsieh@mediatek.com>
-X-Mailer: git-send-email 2.17.1
+	id 1pjQxS-00GgEL-3C;
+	Mon, 03 Apr 2023 20:39:20 +0000
+Received: by mail-ed1-x529.google.com with SMTP id h8so122364385ede.8;
+        Mon, 03 Apr 2023 13:39:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlemail.com; s=20210112; t=1680554354;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ANuyucjG7+IOsm6+PTXTUkVZpuE117uxor/udrQsrHI=;
+        b=QBtct7OF544g4KW8FmyicOGj93ZjWlg8zuQv1bJbp8jcg7kZlaoTEPE+ZjM8qK1FvF
+         ySiNTF5dDqmcX7CK3V3nXjfCtZyZUPhXWS0tiyg1h2mmI68eIuECf75r+pVgglVEKCkU
+         kHoMUTP0p53HT7ROKBpLFzTXIvLXbS7upHKKFV+6T4zuNMqbtyJ5qYvrMPN/aHFSnads
+         mcQglHoBkCSFBXGMXHZCZrQSWHcr75YnbjUa66Tunz0FV33dyy00oLs71tZiNRBidtW4
+         jtGUBV/KHY62/FaxcVx0/bdUCldUHFYapDx3Da/E+rJH3/2oHbH6x+g4Go250AzETWuH
+         eyhQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680554354;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=ANuyucjG7+IOsm6+PTXTUkVZpuE117uxor/udrQsrHI=;
+        b=h7p6ogqEYKV9lNNLFqeGaPDhvPxXGm4tVumQEpAgS9xvJ+Sy+aEczRv6UuBpwzaHap
+         JdF/r0KKyOUovZ0Yv3zWU1shnO1hsBhZWuVVbr7X/K+2fs9zMqwGsMoaSohrwLl+DzyR
+         Eth2Xa3+V4wsx97rzYFsjP+GoRY1c8x+Qrs1EutU4CTq7mplygtgOfBoqVrgo3ECye8w
+         zDLW0P6nyclBhcsQNZqs7KgqWIPPr3Ftw6RngBG6N+sU4wjP2ctG1F7zknAiiOXh2bdL
+         z1eponaCgNKqCFffpOU4FRpIV3QnTjm8gX9W35U2vgam4PUcTrG4ewE/994T+2FguQKw
+         Z+qg==
+X-Gm-Message-State: AAQBX9fu+roQWOJDE3HKA7PZ4c3IfluLJpKYdWvkML7aIEah83yvdbqh
+	gi/olfchs+q/HKNLG3wQ9w9jLpMi6sPRSLuAEe4=
+X-Google-Smtp-Source: AKy350Yxps2lCxD4+gSI3XRR+EKyXbQm+2ZcypH1MgOjQt3rpacSMedZmkVztU2IZX24o5jZNqKukzBRTVyKq2STkzU=
+X-Received: by 2002:a05:6402:a47:b0:502:3e65:44f7 with SMTP id
+ bt7-20020a0564020a4700b005023e6544f7mr10506548edb.3.1680554354318; Mon, 03
+ Apr 2023 13:39:14 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
+References: <20230402143025.2524443-1-u.kleine-koenig@pengutronix.de> <20230402143025.2524443-2-u.kleine-koenig@pengutronix.de>
+In-Reply-To: <20230402143025.2524443-2-u.kleine-koenig@pengutronix.de>
+From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+Date: Mon, 3 Apr 2023 22:39:03 +0200
+Message-ID: <CAFBinCBX8dQo9898KkXaMaanQ9-LcFA7HHFf+XBM2-f+g8WY7Q@mail.gmail.com>
+Subject: Re: [PATCH net-next 01/11] net: stmmac: Make stmmac_pltfr_remove()
+ return void
+To: =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	Jose Abreu <joabreu@synopsys.com>, "David S. Miller" <davem@davemloft.net>, 
+	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Shawn Guo <shawnguo@kernel.org>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Vladimir Zapolskiy <vz@mleia.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
+	Vinod Koul <vkoul@kernel.org>, Chen-Yu Tsai <wens@csie.org>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
+	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Fabio Estevam <festevam@gmail.com>, 
+	NXP Linux Team <linux-imx@nxp.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+	Bhupesh Sharma <bhupesh.sharma@linaro.org>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, 
+	linux-stm32@st-md-mailman.stormreply.com, 
+	linux-arm-kernel@lists.infradead.org, kernel@pengutronix.de, 
+	linux-amlogic@lists.infradead.org, linux-oxnas@groups.io, 
+	linux-sunxi@lists.linux.dev, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230403_142458_456126_4D0DD27B 
-X-CRM114-Status: UNSURE (   8.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230403_133919_027160_BD91E7E5 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,45 +103,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Track OBSS BSS colors on checking OBSS Beacons and report used color bitmap to
-hostapd when collide.
-
-Signed-off-by: Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>
----
- include/net/mac80211.h | 1 +
- net/mac80211/rx.c      | 4 +++-
- 2 files changed, 4 insertions(+), 1 deletion(-)
-
-diff --git a/include/net/mac80211.h b/include/net/mac80211.h
-index 219fd15893b0..f003e0dbc7c4 100644
---- a/include/net/mac80211.h
-+++ b/include/net/mac80211.h
-@@ -749,6 +749,7 @@ struct ieee80211_bss_conf {
- 
- 	bool color_change_active;
- 	u8 color_change_color;
-+	u64 used_color_bitmap;
- 
- 	bool vht_su_beamformer;
- 	bool vht_su_beamformee;
-diff --git a/net/mac80211/rx.c b/net/mac80211/rx.c
-index f7fdfe710951..e4a60992e4eb 100644
---- a/net/mac80211/rx.c
-+++ b/net/mac80211/rx.c
-@@ -3264,9 +3264,11 @@ ieee80211_rx_check_bss_color_collision(struct ieee80211_rx_data *rx)
- 
- 		color = le32_get_bits(he_oper->he_oper_params,
- 				      IEEE80211_HE_OPERATION_BSS_COLOR_MASK);
-+		bss_conf->used_color_bitmap |= BIT_ULL(color);
-+
- 		if (color == bss_conf->he_bss_color.color)
- 			ieee80211_obss_color_collision_notify(&rx->sdata->vif,
--							      BIT_ULL(color),
-+							      bss_conf->used_color_bitmap,
- 							      GFP_ATOMIC);
- 	}
- }
--- 
-2.39.0
-
+On Sun, Apr 2, 2023 at 4:31=E2=80=AFPM Uwe Kleine-K=C3=B6nig
+<u.kleine-koenig@pengutronix.de> wrote:
+>
+> The function returns zero unconditionally. Change it to return void inste=
+ad
+> which simplifies some callers as error handing becomes unnecessary.
+>
+> The function is also used for some drivers as remove callback. Switch the=
+se
+> to the .remove_new() callback. For some others no error can happen in the
+> remove callback now, convert them to .remove_new(), too.
+>
+> Signed-off-by: Uwe Kleine-K=C3=B6nig <u.kleine-koenig@pengutronix.de>
+> ---
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-anarion.c     | 2 +-
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-generic.c     | 2 +-
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-imx.c         | 2 +-
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-ingenic.c     | 2 +-
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-intel-plat.c  | 9 +++------
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-ipq806x.c     | 2 +-
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-lpc18xx.c     | 2 +-
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c    | 9 +++------
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-meson.c       | 2 +-
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-meson8b.c     | 2 +-
+for dwmac-meson and dwmac-meson8b:
+Acked-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 
