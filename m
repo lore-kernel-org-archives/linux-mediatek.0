@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93FFCC761A6
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 09:19:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37C48C76196
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 09:19:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tah2dAHbxREASTnvJuJls1whJtxCEwW9tPvWPYuqkMo=; b=La9OVZ4opEGy4I9nGvwFve5kZL
-	uUHKpHHzQcW9Dv16qKf7RMxZGpDMYL2hOkfCjXcsdnCRBZLQrBN9x5MxxXCTbnmv5+NbcG05ntIzT
-	8zOuseBt3c/i385T2tJ1Sm+ucdl3Je+j9XSKKXCQ/iXwmlrBpwCY4hw/Y9BXDH+NvtS5Dl+wWk+1r
-	89YNMRa/N26EDEadH42mmtaEtobI/+8oEekBHuizJWXg0QGPINDmzIanBeJPv7OgcjVhY88+qH5Sk
-	bbO3yhELWxzJgfUb0dalsuaVleOpiWAGmyJc7fITwTRrOfHps6a4D5rConWBtXSSQ9YCB5dROhTEn
-	sP3rT46A==;
+	bh=R0k5lQHHRLml/ji++14oXkm9cmht5KGHr7AnrObcMd4=; b=nh9jZtula4AQ5HtJ9WwcmQmqPB
+	MNwU43Od9Eonq0SDlbh0wzKFyj1yDQvedV0QqVQ5mkPjcQ1Or4pjbDzk4feNG+QUkq2z82QgerCWa
+	gJwxk7Oa6c+9kVSp2c7YtXlUngZbq/YHW2QyGZ08X64PqN0deY09qApakydiirHCU2y8H57YlRviB
+	pqXJk5iT5HxajcQDmZ9s5APhIwPTTqXmkY8AVZLS5QercCOV8Gzi3eBOiIUCIQj/r67YJ87Hw6ytD
+	x7NuDcMNNhmD+znZyWEIUDOcJoIjsEhQaSkxp5J2r2WZpAX9l7GW9PXBtXxjKlERPV9P+0+/hCHgo
+	z9gQTFnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjGLL-00EfiN-0r;
-	Mon, 03 Apr 2023 09:19:15 +0000
+	id 1pjGLK-00Efhu-2N;
+	Mon, 03 Apr 2023 09:19:14 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjGL4-00EfUz-2E;
+	id 1pjGL3-00EfRr-0g;
 	Mon, 03 Apr 2023 09:19:01 +0000
-X-UUID: 4368b23ad20011edb7d8d11f642b8e78-20230403
+X-UUID: 3f820496d20011edb7d8d11f642b8e78-20230403
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=tah2dAHbxREASTnvJuJls1whJtxCEwW9tPvWPYuqkMo=;
-	b=o9gAkaFLlBjG4yT6f5nOezmi1I8bH31ijb9CstJSb8cNIxBoG7INWXkpWwa/3p6L95mdcCW0gk3HSvCMJosVbVSWUPJACb8IjWFQKW3T2AmmawtVDilfTJkFSneHlVtglhIgTcnn1ysl9liI/znZUl2UClL9k57CYxIj6jCTnl4=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=R0k5lQHHRLml/ji++14oXkm9cmht5KGHr7AnrObcMd4=;
+	b=OWpMCCMu1qm2QJMrv6B1T3W1LZr7KQT3iwWXZBGLRj2F/q26I99foHWKgUpuLhGPCaJ3NEvqrsfj+byXLrozPC7rAydpJhtDFz8lAXVsavpDqFRcnhdtNoUgcSrU5lP1Oze/s0EGRoKDXGLn+cZ7UMT/wZJWgdIs1ohyVqNP8hg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:41f727e7-9e80-44bf-b78b-06ede0736283,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:120426c,CLOUDID:1ae123b5-beed-4dfc-bd9c-e1b22fa6ccc4,B
+X-CID-O-INFO: VERSION:1.1.22,REQID:5bca2fe9-3fa4-458f-b883-39a6f12416b2,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:120426c,CLOUDID:39a1b1f7-ddba-41c3-91d9-10eeade8eac7,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-UUID: 4368b23ad20011edb7d8d11f642b8e78-20230403
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+X-UUID: 3f820496d20011edb7d8d11f642b8e78-20230403
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
 	(envelope-from <yong.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 153286658; Mon, 03 Apr 2023 02:16:49 -0700
+	with ESMTP id 1121055818; Mon, 03 Apr 2023 02:16:42 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Mon, 3 Apr 2023 17:16:12 +0800
+ 15.2.1118.25; Mon, 3 Apr 2023 17:16:05 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Mon, 3 Apr 2023 17:16:11 +0800
+ 15.2.1118.25 via Frontend Transport; Mon, 3 Apr 2023 17:16:04 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>
@@ -65,10 +65,11 @@ CC: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
 	<yunfei.dong@mediatek.com>, kyrie wu
 	<kyrie.wu@mediatek.corp-partner.google.com>, <chengci.xu@mediatek.com>,
 	<youlin.pei@mediatek.com>, <anan.sun@mediatek.com>, Yong Wu
-	<yong.wu@mediatek.com>
-Subject: [PATCH v6 12/14] arm64: dts: mt8195: Remove the unnecessary dma-ranges
-Date: Mon, 3 Apr 2023 17:13:35 +0800
-Message-ID: <20230403091337.26745-13-yong.wu@mediatek.com>
+	<yong.wu@mediatek.com>, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT
+ Chen <andrew-ct.chen@mediatek.com>, irui wang <irui.wang@mediatek.com>
+Subject: [PATCH v6 11/14] media: mediatek: vcodec: Remove the setting for dma_mask
+Date: Mon, 3 Apr 2023 17:13:34 +0800
+Message-ID: <20230403091337.26745-12-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230403091337.26745-1-yong.wu@mediatek.com>
 References: <20230403091337.26745-1-yong.wu@mediatek.com>
@@ -77,9 +78,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230403_021858_765978_ACD87D88 
-X-CRM114-Status: UNSURE (   8.82  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230403_021857_277068_C627DF1A 
+X-CRM114-Status: GOOD (  12.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,43 +94,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-After we add the dma-ranges in the parent "soc" node,
-this property is unnecessary for the leaf node.
+In order to simplify the masters to set their respective dma masks, MTK
+IOMMU helps to centralize the processing. Because all the dma ranges is
+set in IOMMU, IOMMU knows well the dma mask requirements of masters. After
+this patch, the masters(codec here) code does not need care
+dma-ranges/dma_mask related information.
 
+Cc: Tiffany Lin <tiffany.lin@mediatek.com>
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>
+Cc: Yunfei Dong <yunfei.dong@mediatek.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: irui wang <irui.wang@mediatek.com>
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 3 ---
- 1 file changed, 3 deletions(-)
+ .../media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c   | 8 --------
+ .../media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c   | 3 ---
+ 2 files changed, 11 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index 8f1264d5290b..89f469ba9f6c 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -2299,7 +2299,6 @@ venc: video-codec@1a020000 {
- 			power-domains = <&spm MT8195_POWER_DOMAIN_VENC>;
- 			#address-cells = <2>;
- 			#size-cells = <2>;
--			dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
- 		};
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+index 174a6eec2f54..11583405cf61 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+@@ -321,14 +321,6 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 		}
+ 	}
  
- 		jpgdec-master {
-@@ -2311,7 +2310,6 @@ jpgdec-master {
- 				 <&iommu_vdo M4U_PORT_L19_JPGDEC_BSDMA1>,
- 				 <&iommu_vdo M4U_PORT_L19_JPGDEC_BUFF_OFFSET1>,
- 				 <&iommu_vdo M4U_PORT_L19_JPGDEC_BUFF_OFFSET0>;
--			dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
- 			#address-cells = <2>;
- 			#size-cells = <2>;
- 			ranges;
-@@ -2383,7 +2381,6 @@ jpgenc-master {
- 					<&iommu_vpp M4U_PORT_L20_JPGENC_C_RDMA>,
- 					<&iommu_vpp M4U_PORT_L20_JPGENC_Q_TABLE>,
- 					<&iommu_vpp M4U_PORT_L20_JPGENC_BSDMA>;
--			dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
- 			#address-cells = <2>;
- 			#size-cells = <2>;
- 			ranges;
+-	if (of_get_property(pdev->dev.of_node, "dma-ranges", NULL)) {
+-		ret = dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(34));
+-		if (ret) {
+-			mtk_v4l2_err("Failed to set mask");
+-			goto err_core_workq;
+-		}
+-	}
+-
+ 	for (i = 0; i < MTK_VDEC_HW_MAX; i++)
+ 		mutex_init(&dev->dec_mutex[i]);
+ 	mutex_init(&dev->dev_mutex);
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c
+index 9095186d5495..50e5571608cd 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c
+@@ -344,9 +344,6 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 		goto err_event_workq;
+ 	}
+ 
+-	if (of_get_property(pdev->dev.of_node, "dma-ranges", NULL))
+-		dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(34));
+-
+ 	ret = video_register_device(vfd_enc, VFL_TYPE_VIDEO, -1);
+ 	if (ret) {
+ 		mtk_v4l2_err("Failed to register video device");
 -- 
 2.25.1
 
