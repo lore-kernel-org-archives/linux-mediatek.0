@@ -4,76 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1206CC761A6
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 06:07:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 632CEC761A6
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 06:11:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+VbaGeWufVSeXUc7A9jDhCCNoQflqg5YvZaU8E25zmo=; b=iDmdV4NjkyvcLQmuyUWAwfzbIg
-	La0F7xie5536+BhQWLbwYU5ZhvomsP7xf84Ixk7rg9ntqxW+GF7/iD9vs4uUsWA1VCUdSRmKmnQFT
-	elj4PQpjJEr1Hs6Oyzcr4PtBSfHk6NWpqiN2OZpXO9bNWDhWQtFo5xjiMlSGUa8lHW7yOyp4KnRYS
-	XmUyMzu56jBh9UPCN+gKhCLDNTu/ciLR50YtVApIW9WQaxEjVhjJT3guL2iLJJvxmMbwNGSFL2i/3
-	AYIJ4RUdlmMHJqdtD3oeTHjndQMHfulD9vK7pKWZ8T8CPrUlaFUpk9BQ8yh0eQWleKUp41xbY/GxS
-	N254nIRw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+PPixoHRDJ+Gnyytgct7eIf2W8PC3hRBuJOLjuDKdhY=; b=EJh6Cxfl4xspq2itKnORH4EmIR
+	jPt+ZgXkba4m7B1GyCqGwB8svP9vJEo2YoivQcn5sz0FuxNlosa/8/beavVJUiQzCcPIXs0nEyA2E
+	nxmIe0QTUk4qrdRcsOWrzzx7bpuREyPry/yEwvf3hCl0E0apfKKNMaAg+uAsg9iWXfS6bRAkIVoGN
+	6JRSTKcrHlDk176e0N44IuUgpN7+N9y43GpMDbpgMz/b2/S2a7CbdEaOTzwSitZtAyJxcu2oM1aKH
+	IdL6UHNxxapIXQ/brEiCsXIzJwxEJ+5HJztL7XGCvNN2HjIk8ONCgWvxgSqPuYQs1Si8MqkU9vvUg
+	KsXPX7Jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjDLG-00EEvG-0A;
-	Mon, 03 Apr 2023 06:06:58 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pjDPi-00EFIO-0o;
+	Mon, 03 Apr 2023 06:11:34 +0000
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjDLB-00EEuf-1n;
-	Mon, 03 Apr 2023 06:06:56 +0000
-X-UUID: 22be63d8d1e511edb7d8d11f642b8e78-20230402
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=+VbaGeWufVSeXUc7A9jDhCCNoQflqg5YvZaU8E25zmo=;
-	b=eOGfgghhuCKVUXD5YHUKnCQjiPDrTfVMXQUM9EPMUSGtrXY26UhgJQzD1yvIiMcQHmAF+GXyOSwp2M7vBXXsi3OtPuwZV+aw5px3yMv3NbV1HisbbLy1l5yM97GdixoSULWAHOQ3whjYbq/OWz3vyKcjhuCn+FfDDW3gsYhTABY=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:8f0d5e30-bbad-4c64-a726-922377fd5d7d,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:120426c,CLOUDID:1b4b3f2a-564d-42d9-9875-7c868ee415ec,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: 22be63d8d1e511edb7d8d11f642b8e78-20230402
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
-	(envelope-from <chunfeng.yun@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1349491614; Sun, 02 Apr 2023 23:02:37 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Mon, 3 Apr 2023 14:02:35 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Mon, 3 Apr 2023 14:02:34 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring
-	<robh+dt@kernel.org>
-CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Mathias Nyman
-	<mathias.nyman@intel.com>, <linux-usb@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Tianping Fang
-	<tianping.fang@mediatek.com>
-Subject: [PATCH 1/2] dt-bindings: usb: mtk-xhci: add an optional frame count clock
-Date: Mon, 3 Apr 2023 14:02:31 +0800
-Message-ID: <20230403060232.25699-1-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1pjDPe-00EFHG-21;
+	Mon, 03 Apr 2023 06:11:32 +0000
+Received: by mail-ed1-x532.google.com with SMTP id x3so112607690edb.10;
+        Sun, 02 Apr 2023 23:11:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1680502288;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=+PPixoHRDJ+Gnyytgct7eIf2W8PC3hRBuJOLjuDKdhY=;
+        b=iUB0JuzYzSTrZD/+G5G3iSZ+1srHcDapp+2yS8gUivSygEUOGHpj4cZmiOWxHvgQTy
+         iE+RPPaYIQ5Qi0ZZmd24zNSLYCD3sJsMCKGGJGByokv6zZ2zCyyW5xNTZ5zOplMQGJ0R
+         vgUFHkowl5yEBomYvwjill8yyhPtqe0AKiXgA57CND9aKt2qCFWEI7/f/0+r0pMXCYEM
+         nhsA71AVUwIGCI1HggH0vhhR099IYLKEehb+2/sLHOUErs2O5i5gF49rZge+iRglsVoC
+         t06dNmIb1MPArzL9pQYEGx9DCS+7iALBmKTPCavs4MrxLEwDUHFXfT6L8yLSh6o6H+DO
+         sTNQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680502288;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=+PPixoHRDJ+Gnyytgct7eIf2W8PC3hRBuJOLjuDKdhY=;
+        b=mx0GP5FraZHmedLN8QtFrnLi4KIC+DNvx95rMZyPpzM4Drt9HIHzSWI5SEsK4wF4Nf
+         cjdwwgAJyPhNFqbfaDBU/UigOztXbsl5sdN+K+/rWLdvK+7Ep8jCWlfHZW9QpAPPmnmG
+         XgF0TMTisTgJK3b+yc4gvWeqS7iho/3FpIUGwRx1Jn1uYJKxE27X6W2RfimsxAxOioSb
+         ik4F+Nonmxt6f55kq5BGUgZL10qoTqtGI71zNGUiTvCxKrMAcOc5TkoM+otOtwEVCjwq
+         G5TxhmJuurBkVGtHm04nM8idIve+LfQRtdKjKBbHf7UOVKsuhnY2h+mE6x/31UpIDZ06
+         zgFQ==
+X-Gm-Message-State: AAQBX9dztK2fi8E6Z0P4DwUqH4tAQ8Ek0ZjPSQCb0ehR3e7z/BeGRG2r
+	7LUZH9FL5DPVnghLHDfJuBw=
+X-Google-Smtp-Source: AKy350bBekRezxNQa7MFP8TwmpOwouUosfhIi/lGMrCD5/RMtWc0098xCYnOuGzvNELlfMlv0AK2gA==
+X-Received: by 2002:a17:906:eca1:b0:920:254c:1e2d with SMTP id qh1-20020a170906eca100b00920254c1e2dmr36630296ejb.39.1680502288354;
+        Sun, 02 Apr 2023 23:11:28 -0700 (PDT)
+Received: from localhost ([102.36.222.112])
+        by smtp.gmail.com with ESMTPSA id q15-20020a17090676cf00b00947c0cecceasm3471757ejn.206.2023.04.02.23.11.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 02 Apr 2023 23:11:28 -0700 (PDT)
+Date: Mon, 3 Apr 2023 09:09:01 +0300
+From: Dan Carpenter <error27@gmail.com>
+To: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Cc: oe-kbuild@lists.linux.dev, ye.xingchen@zte.com.cn, lkp@intel.com,
+	oe-kbuild-all@lists.linux.dev, lpieralisi@kernel.org, kw@linux.com,
+	robh@kernel.org, bhelgaas@google.com, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] PCI: mt7621: Use dev_err_probe()
+Message-ID: <4cfaa4eb-24ff-4129-b549-bd5a66352e9b@kili.mountain>
+References: <202303231145121987818@zte.com.cn>
+ <22081108-565d-4608-97f7-6e40ca3df2b6@kili.mountain>
+ <CAMhs-H9m=ZGREMo_upE3M48sQb-WpU3j2_b2xLyO2mDkezxC9g@mail.gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+In-Reply-To: <CAMhs-H9m=ZGREMo_upE3M48sQb-WpU3j2_b2xLyO2mDkezxC9g@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230402_230653_603810_BAB7A888 
-X-CRM114-Status: UNSURE (   8.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230402_231130_680865_BC75CC8B 
+X-CRM114-Status: GOOD (  18.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,44 +97,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add optional clock 'frmcnt_ck' used on 4nm or advanced process SoC
+On Mon, Apr 03, 2023 at 07:05:56AM +0200, Sergio Paracuellos wrote:
+> On Mon, Apr 3, 2023 at 6:41 AM Dan Carpenter <error27@gmail.com> wrote:
+> >
+> > Hi,
+> >
+> > https://git-scm.com/docs/git-format-patch#_base_tree_information]
+> >
+> > url:    https://github.com/intel-lab-lkp/linux/commits/ye-xingchen-zte-com-cn/PCI-mt7621-Use-dev_err_probe/20230323-114623
+> > base:   https://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git next
+> > patch link:    https://lore.kernel.org/r/202303231145121987818%40zte.com.cn
+> 
+> So, I already replied to this proposed patch clearly saying that this
+> makes the rest of the code unreachable, so it is a clear NAK.
+> Why is this applied to the intel-lab-lkp tree? Just to be able to test
+> the changes?
+> 
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- .../devicetree/bindings/usb/mediatek,mtk-xhci.yaml          | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+These emails are automatically generated by kbuild-bot.  I don't know
+how kbuild-bot internals work.  I just review some of the Smatch related
+warnings and hit forward or ignore them.
 
-diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-index c119caa9ad16..ee8167fbc541 100644
---- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-+++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-@@ -77,6 +77,7 @@ properties:
-       - description: Mcu bus clock for register access
-       - description: DMA bus clock for data transfer
-       - description: controller clock
-+      - description: frame count clock
- 
-   clock-names:
-     minItems: 1
-@@ -86,14 +87,15 @@ properties:
-       - const: mcu_ck
-       - const: dma_ck
-       - const: xhci_ck
-+      - const: frmcnt_ck
- 
-   assigned-clocks:
-     minItems: 1
--    maxItems: 5
-+    maxItems: 6
- 
-   assigned-clock-parents:
-     minItems: 1
--    maxItems: 5
-+    maxItems: 6
- 
-   phys:
-     description:
--- 
-2.18.0
+Normally, I don't look at the context outside of the email but to be
+honest, I was curious enough about this one that I looked it up on the
+list.  I knew it was NAKed but I set the email anyway hoping that maybe
+people would see the extra Smatch warning and be encouraged to run
+Smatch on their code in the future to avoid potential embarrassment.
+
+regards,
+dan carpenter
+
 
 
