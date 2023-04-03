@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 844EEC7619A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 01:18:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CD3EC76196
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 01:18:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qWyPLtFbCH4rL9AETeiJ/ohmtqDfeNDPlPFhBVm81b8=; b=o2UEJEP8ZYmVyQe/UM2y0I4+Ou
-	5Wh2QgN/iOLKCtC5VkM++kyGitIhNGp11EsRcSQR8XTvqx4/Rw2u5N2tw2nRC84A0+LZ53L94h285
-	zvGNjrCQtlegnwHbbzT2sNupgJc9kMok0E706WvgEbzUk51Hg6KtwYhGXk9u97Zr4XpYZ2nihh1VE
-	TCwIiAMgIKDh4bUOK2tcFPe5pcG+tEMLMdyMgDoqFS1SGnIBHTuF+1BpSLtUZyRKc7SMDI5pBCTpj
-	LlksSOAutW5rZNtF8QaEKaX8JDzOVAn33Egw+47SVecoJxSONIOytxrKLRUZm2bvjsQ8MuWxQBi+b
-	MgAvWxOw==;
+	bh=vZAdKNrLP/fWtn4zwWlSrvf7IKfltZjhJkRdzXE2ttI=; b=c35bSLpAEZhwa9Z1ESn8XBO/D6
+	oltXhoeZYmzASSnog3dXgNCLqT0fBF4gAU9+BiPvgimHOzqT4zWyZJXXmgw8oPbgnlA5pMXTjkcNf
+	qnWs+024xAWjzvx0+eCssKXh5xXwdKbj1FuUWl4IVvhcloXwiq9xaNRitIMwmm5q+6QcjpcbwZHLw
+	30Z5xDHr7E3I7VpUzOs1/DrUNH3jot2/ep4c2l+ptTyqcB6UySqjlDdXlP/jaIC7TZRNrftawp1x/
+	RSJ9tUTxfE0ExQNXkGCONqYQLSFDNWyJ595db3HGyMbhb9Ymp1ar/gbjcfFdSbslb8fWPc2adE7pK
+	vBZdI6bA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pj8q1-00DhIK-1G;
-	Mon, 03 Apr 2023 01:18:25 +0000
+	id 1pj8qD-00DhT4-1i;
+	Mon, 03 Apr 2023 01:18:37 +0000
 Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pj8px-00DhEf-2w;
-	Mon, 03 Apr 2023 01:18:23 +0000
+	id 1pj8qA-00DhPC-0y;
+	Mon, 03 Apr 2023 01:18:35 +0000
 Received: from local
 	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1pj8pw-0004jE-2M;
-	Mon, 03 Apr 2023 03:18:20 +0200
-Date: Mon, 3 Apr 2023 02:18:16 +0100
+	id 1pj8q8-0004jw-1f;
+	Mon, 03 Apr 2023 03:18:32 +0200
+Date: Mon, 3 Apr 2023 02:18:28 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
@@ -52,16 +52,17 @@ To: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	=?utf-8?B?QXLEsW7DpyDDnG5hbA==?= <arinc.unal@arinc9.com>
 Cc: Sam Shih <Sam.Shih@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
 	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>
-Subject: [PATCH net-next v2 06/14] net: dsa: mt7530: introduce mutex helpers
-Message-ID: <c88f9f7e024e2757f32722026774eb898966bfbc.1680483896.git.daniel@makrotopia.org>
+Subject: [PATCH net-next v2 07/14] net: dsa: mt7530: move p5_intf_modes()
+ function to mt7530.c
+Message-ID: <f466e49e811b0f1dab3854dd36b9522cf7e8831a.1680483896.git.daniel@makrotopia.org>
 References: <cover.1680483895.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1680483895.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230402_181822_100297_422817D4 
-X-CRM114-Status: GOOD (  13.60  )
+X-CRM114-CacheID: sfid-20230402_181834_340485_D424C412 
+X-CRM114-Status: GOOD (  12.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,275 +77,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-As the MDIO bus lock only needs to be involved if actually operating
-on an MDIO-connected switch we will need to skip locking for built-in
-switches which are accessed via MMIO.
-Create helper functions which simplify that upcoming change.
+In preparation of splitting mt7530.c into a driver for MDIO-connected
+as well as MDIO-accessed built-in switches on one hand and MMIO-accessed
+built-in switches move the p5_inft_modes() function from mt7530.h to
+mt7530.c. The function is only needed there and will trigger a compiler
+warning about a defined but unused function otherwise when including
+mt7530.h in the to-be-introduced bus-specific drivers.
 
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 Reviewed-by: Andrew Lunn <andrew@lunn.ch>
 ---
- drivers/net/dsa/mt7530.c | 73 ++++++++++++++++++++--------------------
- 1 file changed, 36 insertions(+), 37 deletions(-)
+ drivers/net/dsa/mt7530.c | 18 ++++++++++++++++++
+ drivers/net/dsa/mt7530.h | 18 ------------------
+ 2 files changed, 18 insertions(+), 18 deletions(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index d285a60aaf684..9d49cbc8ddcb2 100644
+index 9d49cbc8ddcb2..1215d5e4dd38a 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -143,31 +143,40 @@ core_write_mmd_indirect(struct mt7530_priv *priv, int prtad,
- }
- 
- static void
--core_write(struct mt7530_priv *priv, u32 reg, u32 val)
-+mt7530_mutex_lock(struct mt7530_priv *priv)
- {
--	struct mii_bus *bus = priv->bus;
-+	mutex_lock_nested(&priv->bus->mdio_lock, MDIO_MUTEX_NESTED);
-+}
- 
--	mutex_lock_nested(&bus->mdio_lock, MDIO_MUTEX_NESTED);
-+static void
-+mt7530_mutex_unlock(struct mt7530_priv *priv)
-+{
-+	mutex_unlock(&priv->bus->mdio_lock);
-+}
-+
-+static void
-+core_write(struct mt7530_priv *priv, u32 reg, u32 val)
-+{
-+	mt7530_mutex_lock(priv);
- 
- 	core_write_mmd_indirect(priv, reg, MDIO_MMD_VEND2, val);
- 
--	mutex_unlock(&bus->mdio_lock);
-+	mt7530_mutex_unlock(priv);
- }
- 
- static void
- core_rmw(struct mt7530_priv *priv, u32 reg, u32 mask, u32 set)
- {
--	struct mii_bus *bus = priv->bus;
- 	u32 val;
- 
--	mutex_lock_nested(&bus->mdio_lock, MDIO_MUTEX_NESTED);
-+	mt7530_mutex_lock(priv);
- 
- 	val = core_read_mmd_indirect(priv, reg, MDIO_MMD_VEND2);
- 	val &= ~mask;
- 	val |= set;
- 	core_write_mmd_indirect(priv, reg, MDIO_MMD_VEND2, val);
- 
--	mutex_unlock(&bus->mdio_lock);
-+	mt7530_mutex_unlock(priv);
- }
- 
- static void
-@@ -264,13 +273,11 @@ mt7530_mii_read(struct mt7530_priv *priv, u32 reg)
- static void
- mt7530_write(struct mt7530_priv *priv, u32 reg, u32 val)
- {
--	struct mii_bus *bus = priv->bus;
--
--	mutex_lock_nested(&bus->mdio_lock, MDIO_MUTEX_NESTED);
-+	mt7530_mutex_lock(priv);
- 
- 	mt7530_mii_write(priv, reg, val);
- 
--	mutex_unlock(&bus->mdio_lock);
-+	mt7530_mutex_unlock(priv);
- }
- 
- static u32
-@@ -282,14 +289,13 @@ _mt7530_unlocked_read(struct mt7530_dummy_poll *p)
- static u32
- _mt7530_read(struct mt7530_dummy_poll *p)
- {
--	struct mii_bus		*bus = p->priv->bus;
- 	u32 val;
- 
--	mutex_lock_nested(&bus->mdio_lock, MDIO_MUTEX_NESTED);
-+	mt7530_mutex_lock(p->priv);
- 
- 	val = mt7530_mii_read(p->priv, p->reg);
- 
--	mutex_unlock(&bus->mdio_lock);
-+	mt7530_mutex_unlock(p->priv);
- 
- 	return val;
- }
-@@ -307,13 +313,11 @@ static void
- mt7530_rmw(struct mt7530_priv *priv, u32 reg,
- 	   u32 mask, u32 set)
- {
--	struct mii_bus *bus = priv->bus;
--
--	mutex_lock_nested(&bus->mdio_lock, MDIO_MUTEX_NESTED);
-+	mt7530_mutex_lock(priv);
- 
- 	regmap_update_bits(priv->regmap, reg, mask, set);
- 
--	mutex_unlock(&bus->mdio_lock);
-+	mt7530_mutex_unlock(priv);
- }
- 
- static void
-@@ -657,14 +661,13 @@ static int
- mt7531_ind_c45_phy_read(struct mt7530_priv *priv, int port, int devad,
- 			int regnum)
- {
--	struct mii_bus *bus = priv->bus;
- 	struct mt7530_dummy_poll p;
- 	u32 reg, val;
- 	int ret;
- 
- 	INIT_MT7530_DUMMY_POLL(&p, priv, MT7531_PHY_IAC);
- 
--	mutex_lock_nested(&bus->mdio_lock, MDIO_MUTEX_NESTED);
-+	mt7530_mutex_lock(priv);
- 
- 	ret = readx_poll_timeout(_mt7530_unlocked_read, &p, val,
- 				 !(val & MT7531_PHY_ACS_ST), 20, 100000);
-@@ -697,7 +700,7 @@ mt7531_ind_c45_phy_read(struct mt7530_priv *priv, int port, int devad,
- 
- 	ret = val & MT7531_MDIO_RW_DATA_MASK;
- out:
--	mutex_unlock(&bus->mdio_lock);
-+	mt7530_mutex_unlock(priv);
- 
- 	return ret;
- }
-@@ -706,14 +709,13 @@ static int
- mt7531_ind_c45_phy_write(struct mt7530_priv *priv, int port, int devad,
- 			 int regnum, u16 data)
- {
--	struct mii_bus *bus = priv->bus;
- 	struct mt7530_dummy_poll p;
- 	u32 val, reg;
- 	int ret;
- 
- 	INIT_MT7530_DUMMY_POLL(&p, priv, MT7531_PHY_IAC);
- 
--	mutex_lock_nested(&bus->mdio_lock, MDIO_MUTEX_NESTED);
-+	mt7530_mutex_lock(priv);
- 
- 	ret = readx_poll_timeout(_mt7530_unlocked_read, &p, val,
- 				 !(val & MT7531_PHY_ACS_ST), 20, 100000);
-@@ -745,7 +747,7 @@ mt7531_ind_c45_phy_write(struct mt7530_priv *priv, int port, int devad,
- 	}
- 
- out:
--	mutex_unlock(&bus->mdio_lock);
-+	mt7530_mutex_unlock(priv);
- 
- 	return ret;
- }
-@@ -753,14 +755,13 @@ mt7531_ind_c45_phy_write(struct mt7530_priv *priv, int port, int devad,
- static int
- mt7531_ind_c22_phy_read(struct mt7530_priv *priv, int port, int regnum)
- {
--	struct mii_bus *bus = priv->bus;
- 	struct mt7530_dummy_poll p;
- 	int ret;
- 	u32 val;
- 
- 	INIT_MT7530_DUMMY_POLL(&p, priv, MT7531_PHY_IAC);
- 
--	mutex_lock_nested(&bus->mdio_lock, MDIO_MUTEX_NESTED);
-+	mt7530_mutex_lock(priv);
- 
- 	ret = readx_poll_timeout(_mt7530_unlocked_read, &p, val,
- 				 !(val & MT7531_PHY_ACS_ST), 20, 100000);
-@@ -783,7 +784,7 @@ mt7531_ind_c22_phy_read(struct mt7530_priv *priv, int port, int regnum)
- 
- 	ret = val & MT7531_MDIO_RW_DATA_MASK;
- out:
--	mutex_unlock(&bus->mdio_lock);
-+	mt7530_mutex_unlock(priv);
- 
- 	return ret;
- }
-@@ -792,14 +793,13 @@ static int
- mt7531_ind_c22_phy_write(struct mt7530_priv *priv, int port, int regnum,
- 			 u16 data)
- {
--	struct mii_bus *bus = priv->bus;
- 	struct mt7530_dummy_poll p;
- 	int ret;
- 	u32 reg;
- 
- 	INIT_MT7530_DUMMY_POLL(&p, priv, MT7531_PHY_IAC);
- 
--	mutex_lock_nested(&bus->mdio_lock, MDIO_MUTEX_NESTED);
-+	mt7530_mutex_lock(priv);
- 
- 	ret = readx_poll_timeout(_mt7530_unlocked_read, &p, reg,
- 				 !(reg & MT7531_PHY_ACS_ST), 20, 100000);
-@@ -821,7 +821,7 @@ mt7531_ind_c22_phy_write(struct mt7530_priv *priv, int port, int regnum,
- 	}
- 
- out:
--	mutex_unlock(&bus->mdio_lock);
-+	mt7530_mutex_unlock(priv);
- 
- 	return ret;
- }
-@@ -1102,7 +1102,6 @@ static int
- mt7530_port_change_mtu(struct dsa_switch *ds, int port, int new_mtu)
- {
- 	struct mt7530_priv *priv = ds->priv;
--	struct mii_bus *bus = priv->bus;
- 	int length;
- 	u32 val;
- 
-@@ -1113,7 +1112,7 @@ mt7530_port_change_mtu(struct dsa_switch *ds, int port, int new_mtu)
- 	if (!dsa_is_cpu_port(ds, port))
- 		return 0;
- 
--	mutex_lock_nested(&bus->mdio_lock, MDIO_MUTEX_NESTED);
-+	mt7530_mutex_lock(priv);
- 
- 	val = mt7530_mii_read(priv, MT7530_GMACCR);
- 	val &= ~MAX_RX_PKT_LEN_MASK;
-@@ -1134,7 +1133,7 @@ mt7530_port_change_mtu(struct dsa_switch *ds, int port, int new_mtu)
- 
- 	mt7530_mii_write(priv, MT7530_GMACCR, val);
- 
--	mutex_unlock(&bus->mdio_lock);
-+	mt7530_mutex_unlock(priv);
- 
+@@ -943,6 +943,24 @@ mt7530_set_ageing_time(struct dsa_switch *ds, unsigned int msecs)
  	return 0;
  }
-@@ -1935,10 +1934,10 @@ mt7530_irq_thread_fn(int irq, void *dev_id)
- 	u32 val;
- 	int p;
  
--	mutex_lock_nested(&priv->bus->mdio_lock, MDIO_MUTEX_NESTED);
-+	mt7530_mutex_lock(priv);
- 	val = mt7530_mii_read(priv, MT7530_SYS_INT_STS);
- 	mt7530_mii_write(priv, MT7530_SYS_INT_STS, val);
--	mutex_unlock(&priv->bus->mdio_lock);
-+	mt7530_mutex_unlock(priv);
- 
- 	for (p = 0; p < MT7530_NUM_PHYS; p++) {
- 		if (BIT(p) & val) {
-@@ -1974,7 +1973,7 @@ mt7530_irq_bus_lock(struct irq_data *d)
++static const char *p5_intf_modes(unsigned int p5_interface)
++{
++	switch (p5_interface) {
++	case P5_DISABLED:
++		return "DISABLED";
++	case P5_INTF_SEL_PHY_P0:
++		return "PHY P0";
++	case P5_INTF_SEL_PHY_P4:
++		return "PHY P4";
++	case P5_INTF_SEL_GMAC5:
++		return "GMAC5";
++	case P5_INTF_SEL_GMAC5_SGMII:
++		return "GMAC5_SGMII";
++	default:
++		return "unknown";
++	}
++}
++
+ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
  {
- 	struct mt7530_priv *priv = irq_data_get_irq_chip_data(d);
+ 	struct mt7530_priv *priv = ds->priv;
+diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+index 39aaca50961bd..2a611173a7d08 100644
+--- a/drivers/net/dsa/mt7530.h
++++ b/drivers/net/dsa/mt7530.h
+@@ -682,24 +682,6 @@ enum p5_interface_select {
+ 	P5_INTF_SEL_GMAC5_SGMII,
+ };
  
--	mutex_lock_nested(&priv->bus->mdio_lock, MDIO_MUTEX_NESTED);
-+	mt7530_mutex_lock(priv);
- }
+-static const char *p5_intf_modes(unsigned int p5_interface)
+-{
+-	switch (p5_interface) {
+-	case P5_DISABLED:
+-		return "DISABLED";
+-	case P5_INTF_SEL_PHY_P0:
+-		return "PHY P0";
+-	case P5_INTF_SEL_PHY_P4:
+-		return "PHY P4";
+-	case P5_INTF_SEL_GMAC5:
+-		return "GMAC5";
+-	case P5_INTF_SEL_GMAC5_SGMII:
+-		return "GMAC5_SGMII";
+-	default:
+-		return "unknown";
+-	}
+-}
+-
+ struct mt7530_priv;
  
- static void
-@@ -1983,7 +1982,7 @@ mt7530_irq_bus_sync_unlock(struct irq_data *d)
- 	struct mt7530_priv *priv = irq_data_get_irq_chip_data(d);
- 
- 	mt7530_mii_write(priv, MT7530_SYS_INT_EN, priv->irq_enable);
--	mutex_unlock(&priv->bus->mdio_lock);
-+	mt7530_mutex_unlock(priv);
- }
- 
- static struct irq_chip mt7530_irq_chip = {
+ struct mt753x_pcs {
 -- 
 2.40.0
 
