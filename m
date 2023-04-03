@@ -4,78 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87EE4C77B62
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 09:50:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D2E0C761A6
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 09:52:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=njOb8FD8MR7p9DAF345Hq+aO222nfpoaV4wgzEQORsE=; b=GN3fr+v4kbYutJhXpE3o3H7q92
-	B6CJXSfIKfFBPaRi0M1qI21+rLbqbLxm5aB4VBx8R0Xyw1Nm9ZJSw58/c8LaU3wo5wRVsa22hU4Uk
-	5Fp0ufCcf7dOcqQSfFvL8LoKc49Y/TDmKL529KSXXoWYhq/uInMvBLh551L18fnHtTORlcRPyDfzm
-	ZzX72uTfVTmJXqZNQW5mq7LCshy0z+HDZSz9efT8YPpwDwCJsv4jXbQC3IF7U4tStH572ORpe76tf
-	a7iJ0WUfzfeADT51Ss0iyoQ+B1grZKuZeYwvMlzwvAx6XM9l3283fd5DPzPbi7bS+9deOJo9mFMh1
-	EFJjoTjw==;
+	bh=9nr+uA+ZP2tbdI/0kq6sL0Hql+LVt1wSnJCPSdLceG0=; b=ZvM6Cz+kqhfTSmdIMoiV7MCBpO
+	nip6LL/6tsq7gs6PZugGRqnblPHPYjwRITQ6OhYQHRNbSzdC2AUpspG87/oIu4efRAOXrXRetiZ4D
+	vWPL52iK7LqjFgwtgj2Nn0svMypQi8yPtR73CgLU2AZ2kFCaUHY+cvq3TNAKzzapSars56Xi9DBWn
+	rdzCJmu65GLMbtRxhbUpESRl+QRGdh0ELf5qdTWKryTE89JXV3CkfOA/WgcnJumyRDbyjr85k2YxA
+	KTlx7B9YzNJqW3ALHQax6Amgl8+JwA1OaQFolvNOD4+mpxDWjGiBe7Xm6NW0g4tH1WiRJVe01hflK
+	QSYp/dNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjGp9-00Ep0P-1W;
-	Mon, 03 Apr 2023 09:50:03 +0000
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+	id 1pjGr5-00Eptw-13;
+	Mon, 03 Apr 2023 09:52:03 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjGp6-00EoxV-27
+	id 1pjGr2-00EpnZ-0d
 	for linux-mediatek@lists.infradead.org;
-	Mon, 03 Apr 2023 09:50:02 +0000
-Received: by mail-ed1-x533.google.com with SMTP id eh3so114807923edb.11
-        for <linux-mediatek@lists.infradead.org>; Mon, 03 Apr 2023 02:50:00 -0700 (PDT)
+	Mon, 03 Apr 2023 09:52:01 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id er13so73894883edb.9
+        for <linux-mediatek@lists.infradead.org>; Mon, 03 Apr 2023 02:51:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1680515399;
+        d=linaro.org; s=google; t=1680515512;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=njOb8FD8MR7p9DAF345Hq+aO222nfpoaV4wgzEQORsE=;
-        b=WSssOdY3Y7QQMxZhOv5ODIMftu2oa1cARN3R7zrYwN6qDd6mcfPp0HUo/WyzzybZlN
-         3qwP+204tyHqCd89ElO0Un0gBC2UIThCIsdF8Wh/CBy8virxgKXDJtFh1XborA+iWUVN
-         N+k+CKu0zYPFcAkS+mnT2g9RVJMtq7eNyt79cJLa8P4RS1PxHLGb/b7N1pBhEeKbG1Qm
-         LGpaI5X9aSyIR2xYFIwwx9XQ4Gj6fpkg2+cHarWPeBftyNzNpFft3vIc7cCjppZFNv/p
-         3/6LW4Lb4OWiTvgVMYFxPbkeOohPQ5OSTAM32IKGLEYhEID6mAHSm4CilJTNYK3Svc6b
-         RrnA==
+        bh=9nr+uA+ZP2tbdI/0kq6sL0Hql+LVt1wSnJCPSdLceG0=;
+        b=Cht9Y2vM9TnL6su8oK8fsrE+NlCl07kvCeH1Ss3sQEfVIz+3oASpya8J2AUWrJpxgM
+         SCco5IOUvSki5XMqFCC4gafwpE/N2km04ZRJsINqM4MoK61Z0KdpyV7ITRhLu65xJutg
+         BktbY7DuUBSmVmAV1DiTyvagSErGI7E1jJkNyHch88mu8hG5+LmfWFS7W0wDU6iX8Xd7
+         jjoiZ2Mz9fTYaT4UfPLDTG2x0ZfE6p3iZJzIkx9/oqavMrZ21qiPc7GkYID+SHdq81lL
+         jm0UAAvOfhbRjfUD/kgK0iiBMMKWc2qEJw7CNQuj2S4JYsZ6z0aZ69ArQqmr274p3o54
+         lcAQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680515399;
+        d=1e100.net; s=20210112; t=1680515512;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=njOb8FD8MR7p9DAF345Hq+aO222nfpoaV4wgzEQORsE=;
-        b=mNEu3OmZfLXS/JKjXouu3KDo07k8/1uTTmf7hfDVaen+kTNKX58YKe+g1QZlIFnC9a
-         uEJFW3m0OyfyKQHVmlKCXKnXi/6GmimL1vFSP0o9hBTX2v5YCpjDHEFES/PbijNmfqSF
-         6n0gTJtc/7Um0h2CjKESpGOeBm9NvJAsucqJqNhgA5TYz7601eAAv2vuDrdMtlFXFneh
-         pxjYfEnFqW7ZBr9F3tronHfj8AYgxXs7Acaav12SkII320lkUCqGZpl3M/L3Pq64MeOb
-         53N14DkZoSobVQBgxDY8f41Uikqb/h8i1+1aj/+jl33XG2iaoGy1cDvwhCLnLvhFAKZp
-         7TPA==
-X-Gm-Message-State: AAQBX9e94Fihhj33Yy7g7mxJ964hPFo17L/Z5r+O705OyxCNdKpeO/gW
-	9j/RqdLt+ERGIhIkkVcL2qlpbg==
-X-Google-Smtp-Source: AKy350axDXzqltQsMGrbEq+s6HAPPXokx38cO/zKLAuZvJShm+5OuEGsdQduEWPjjJl9tW5ESCenGg==
-X-Received: by 2002:a17:907:7f0d:b0:946:fa88:5901 with SMTP id qf13-20020a1709077f0d00b00946fa885901mr19111746ejc.63.1680515399082;
-        Mon, 03 Apr 2023 02:49:59 -0700 (PDT)
+        bh=9nr+uA+ZP2tbdI/0kq6sL0Hql+LVt1wSnJCPSdLceG0=;
+        b=HVmPG8DFYfB0gi+aeqC11V1+xkUNU3gFFDY2deZ9dqTgReWsX3nan9ZZci/HC+iqho
+         yF8aFkr5OcZyclCfxxjQAmoYZi1BwPW2L2W43vcIEyfV+6hfJsE87tMTgfoYa+wy3j3c
+         AAy38FWab6oSTLahYMwS7AUs8SKMz69+LUIIi3oi6Y6CiqxzyOTSkmxqrk/4Y2xnr+NW
+         /7c+FMt9SE+YNUs3imE9DX/H26SnAI8/yf2B4l89cbXIw2dk/u7Ra/30BGF45z9TUtYM
+         rFLv3NPxmjY0fxsBqtii/grg8pyA2BZEoGB2OcVIDLWc8YQR/5ytfa0pRCBg/AxY5EOd
+         CvtA==
+X-Gm-Message-State: AAQBX9d5HoCjhl6Aogf4qy46CQv9bk/8ijifQ8w+3aNfcDywo/0l1WZN
+	31nBiCYgwpwhE/7sUQwjsSQVEw==
+X-Google-Smtp-Source: AKy350Z7S5nIBg15xObBEMjnFcgoXpWwPfgC871POYyYAMKORNyzeGXP8WOT94M+1eeV1eh2TBj2wA==
+X-Received: by 2002:aa7:c587:0:b0:502:9296:a456 with SMTP id g7-20020aa7c587000000b005029296a456mr6634276edq.4.1680515512470;
+        Mon, 03 Apr 2023 02:51:52 -0700 (PDT)
 Received: from ?IPV6:2a02:810d:15c0:828:ae90:d80:1069:4805? ([2a02:810d:15c0:828:ae90:d80:1069:4805])
-        by smtp.gmail.com with ESMTPSA id hz15-20020a1709072cef00b0093ebc654f78sm4290447ejc.25.2023.04.03.02.49.58
+        by smtp.gmail.com with ESMTPSA id o1-20020a50c281000000b00502b0b0d75csm314317edf.46.2023.04.03.02.51.51
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 03 Apr 2023 02:49:58 -0700 (PDT)
-Message-ID: <4837c3e0-60ed-601b-8512-30fda2176619@linaro.org>
-Date: Mon, 3 Apr 2023 11:49:57 +0200
+        Mon, 03 Apr 2023 02:51:51 -0700 (PDT)
+Message-ID: <6c9c74ee-b9ed-815f-dd92-37eb4c8f802a@linaro.org>
+Date: Mon, 3 Apr 2023 11:51:50 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.9.0
-Subject: Re: [PATCH 1/2] dt-bindings: phy: add mtk-mipi-csi driver
+Subject: Re: [PATCH 2/2] phy: mtk-mipi-csi: add driver for CSI phy
 Content-Language: en-US
 To: Julien Stephan <jstephan@baylibre.com>
-Cc: Florian Sylvestre <fsylvestre@baylibre.com>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>,
+Cc: Phi-bang Nguyen <pnguyen@baylibre.com>, Louis Kuo
+ <louis.kuo@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
  Andy Hsieh <andy.hsieh@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
  Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring
  <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>,
+ <krzysztof.kozlowski+dt@linaro.org>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  "moderated list:ARM/Mediatek USB3 PHY DRIVER"
@@ -84,16 +85,17 @@ Cc: Florian Sylvestre <fsylvestre@baylibre.com>,
  <linux-mediatek@lists.infradead.org>,
  "open list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>,
  "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>
+ <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>,
+ "open list:DRM DRIVERS FOR MEDIATEK" <dri-devel@lists.freedesktop.org>
 References: <20230403071929.360911-1-jstephan@baylibre.com>
- <20230403071929.360911-2-jstephan@baylibre.com>
+ <20230403071929.360911-3-jstephan@baylibre.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230403071929.360911-2-jstephan@baylibre.com>
+In-Reply-To: <20230403071929.360911-3-jstephan@baylibre.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230403_025000_708337_9C0076A7 
-X-CRM114-Status: GOOD (  16.65  )
+X-CRM114-CacheID: sfid-20230403_025200_257813_43A3CD78 
+X-CRM114-Status: GOOD (  17.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,61 +111,69 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 03/04/2023 09:19, Julien Stephan wrote:
-> From: Florian Sylvestre <fsylvestre@baylibre.com>
+> From: Phi-bang Nguyen <pnguyen@baylibre.com>
 > 
-
-There is no commit msg.
-
-> Signed-off-by: Florian Sylvestre <fsylvestre@baylibre.com>
+> This is a new driver that supports the MIPI CSI CD-PHY for mediatek
+> mt8365 soc
+> 
+> Signed-off-by: Louis Kuo <louis.kuo@mediatek.com>
+> Signed-off-by: Phi-bang Nguyen <pnguyen@baylibre.com>
+> [Julien Stephan: use regmap]
+> [Julien Stephan: use GENMASK]
+> Co-developed-by: Julien Stephan <jstephan@baylibre.com>
 > Signed-off-by: Julien Stephan <jstephan@baylibre.com>
 > ---
->  .../bindings/phy/mediatek,csi-phy.yaml        | 41 +++++++++++++++++++
->  MAINTAINERS                                   |  6 +++
->  2 files changed, 47 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/phy/mediatek,csi-phy.yaml
+>  .../bindings/phy/mediatek,csi-phy.yaml        |   9 +-
+>  MAINTAINERS                                   |   1 +
+>  drivers/phy/mediatek/Kconfig                  |   8 +
+>  drivers/phy/mediatek/Makefile                 |   2 +
+>  .../phy/mediatek/phy-mtk-mipi-csi-rx-reg.h    | 435 ++++++++++++++++++
+>  drivers/phy/mediatek/phy-mtk-mipi-csi.c       | 392 ++++++++++++++++
+>  6 files changed, 845 insertions(+), 2 deletions(-)
+>  create mode 100644 drivers/phy/mediatek/phy-mtk-mipi-csi-rx-reg.h
+>  create mode 100644 drivers/phy/mediatek/phy-mtk-mipi-csi.c
 > 
 > diff --git a/Documentation/devicetree/bindings/phy/mediatek,csi-phy.yaml b/Documentation/devicetree/bindings/phy/mediatek,csi-phy.yaml
-> new file mode 100644
-> index 000000000000..c026e43f35fd
-> --- /dev/null
+> index c026e43f35fd..ad4ba1d93a68 100644
+> --- a/Documentation/devicetree/bindings/phy/mediatek,csi-phy.yaml
 > +++ b/Documentation/devicetree/bindings/phy/mediatek,csi-phy.yaml
 
-Filename like compatible.
+NAK, bindings are always separate patches. It also does not make any
+sense - you just added it.
 
-> @@ -0,0 +1,41 @@
-> +# SPDX-License-Identifier: (GPL-2.0-Only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/phy/mediatek,csi-phy.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> @@ -33,9 +33,14 @@ additionalProperties: false
+>  
+>  examples:
+>    - |
+> -    phy@10011800 {
+> +    soc {
+> +      #address-cells = <2>;
+> +      #size-cells = <2>;
 > +
-> +title: Mediatek Sensor Interface MIPI CSI CD-PHY
-> +
-> +maintainers:
-> +  - Julien Stephan <jstephan@baylibre.com>
-> +  - Andy Hsieh <andy.hsieh@mediatek.com>
-> +
-> +description: |
+> +      phy@11c10000 {
+>          compatible = "mediatek,mt8365-mipi-csi";
+> -        reg = <0 0x10011800 0 0x60>;
+> +        reg = <0 0x11c10000 0 0x4000>;
+>          #phy-cells = <1>;
+> +      };
+>      };
 
-Do not need '|'.
 
-> +  The SENINF CD-PHY is a set of CD-PHY connected to the SENINF CSI-2
-> +  receivers. The number of PHYs depends on the SoC model.
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,mt8365-mipi-csi
-> +
-> +  reg:
-> +    minItems: 1
 
-maxItems instead
-(from where did you get such example?)
+k_mipi_dphy_of_match[] = {
+> +	{.compatible = "mediatek,mt8365-mipi-csi"},
+> +	{},
+> +};
+> +MODULE_DEVICE_TABLE(of, mtk_mipi_dphy_of_match);
+> +
+> +static struct platform_driver mipi_dphy_pdrv = {
+> +	.probe = mtk_mipi_dphy_probe,
+> +	.remove = mtk_mipi_dphy_remove,
+> +	.driver	= {
+> +		.name	= "mtk-mipi-csi",
+> +		.of_match_table = of_match_ptr(mtk_mipi_dphy_of_match),
 
-> +
-> +  '#phy-cells':
-> +    const: 1
-> +
+Drop of_match_ptr(). You should see W=1 warnings when compile testing.
 
 
 Best regards,
