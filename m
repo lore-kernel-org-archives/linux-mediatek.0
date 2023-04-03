@@ -4,72 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E5BEC76196
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 09:44:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD426C761A6
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 09:47:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=EHJLyaDloXo64Cbva9s+jdVQPscInXF4sT/C8pUOcqU=; b=eiIkvVQZq1LZEwDhG7oZ2rn15D
-	fELMvwj3EsxJmkPNID/31BgDLKiXfdOUooSud8ZwVI/Q3YSm9gvltj+c8q3bVHKvuzes+2RMLjVpD
-	M4k+OTbERarkORN54493TaKDr3ZdIxSHbFZ9UPeBexvEAzgTHYaJi0Nsry98auUFEUjEuf/XFRPGa
-	4xgquhKQXSr+ecU+x+D/BJFSi6BBdG4IZvK1T6lbrtKRUjtXmpa6g122yzzadvIO9V1Xm4yEoIDN5
-	+1QF+J4Ir7/JgJmpA+Q5J50bNYOCgSqGwd+2bRz7NjWoa5WLH2JkQ47Ol+OlMpKbjiLQcdk7fFtUf
-	KrTXew1w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=htPk5PXTOqeqOET7dyhcLS5Nxh2cxnK3mpGnQz9jlEw=; b=x4Lw3aWZoAQ12SSM3pytkLyVGx
+	ScMX9PMldoEeVZA9Qa/eNwtx7ohufM0Wq6Xm9SGUMYw/iZVRk00wccKDc4/+Y3b5/gclZxNyyY854
+	sRQcO6RlgTUMRcexxHgd5hwPOAmfyuIvR+NVV31KeGd6Z7HLnjSMeTVTY/mF7lX/AHPQteMvXIoes
+	BPelgIO61uAL/f0upzTWDhLM6FMkf5qr/w+MQWDWJ/6LpPZJPK4ck3+/zhVepf9FnLC1cPfi1UPZd
+	7G0q+9shH6VyBQzpRjiKNs5hcRoSNnA8fA3ndLWBy4w4p6YMZ9ZZajlmQgt4HfY7Zi8nyBlXfs41+
+	luoMw3XA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjGjE-00EmZj-2a;
-	Mon, 03 Apr 2023 09:43:56 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pjGma-00Enb1-0t;
+	Mon, 03 Apr 2023 09:47:24 +0000
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjGjB-00EmXq-3C;
-	Mon, 03 Apr 2023 09:43:55 +0000
-X-UUID: 07f718fad20411ed8687db9d93187ff1-20230403
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=EHJLyaDloXo64Cbva9s+jdVQPscInXF4sT/C8pUOcqU=;
-	b=RDa7M/psoS9CVrNzXYX+j64JFQ3nozNMmRgVCPVrWDspit1EE7a5iP7dMDRFMPGyUa2pPwbQb4lVQs4H30tXuXdA8b4Sqm3TSciKRceMvBGlES2GsJesf4I2Ac9+ofRoPP303CTROPT3/NhuHVanxh3q48268XmnL3ZnBtc7Ric=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:d71f145d-a586-491c-bda6-e3ea8be7759c,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:120426c,CLOUDID:0d33432a-564d-42d9-9875-7c868ee415ec,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-UUID: 07f718fad20411ed8687db9d93187ff1-20230403
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <irui.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 409455088; Mon, 03 Apr 2023 02:43:47 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Mon, 3 Apr 2023 17:43:44 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Mon, 3 Apr 2023 17:43:44 +0800
-From: Irui Wang <irui.wang@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<linux-media@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<maoguang.meng@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, Irui
- Wang <irui.wang@mediatek.com>
-Subject: [PATCH] media: mediatek: vcodec: Coverity issues in encoder driver
-Date: Mon, 3 Apr 2023 17:43:42 +0800
-Message-ID: <20230403094342.27498-1-irui.wang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1pjGmX-00EnZs-1V
+	for linux-mediatek@lists.infradead.org;
+	Mon, 03 Apr 2023 09:47:23 +0000
+Received: by mail-ed1-x52f.google.com with SMTP id t10so114679553edd.12
+        for <linux-mediatek@lists.infradead.org>; Mon, 03 Apr 2023 02:47:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1680515237;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=htPk5PXTOqeqOET7dyhcLS5Nxh2cxnK3mpGnQz9jlEw=;
+        b=SvoeEbbR8OcfvVqTljRORHpbqaNFE7cu/bdh4a3d3VE4NUnwo1J/oyoAPXZ0a+yBUd
+         hIKYw+s6BKEbV0nyzwPXNSkFmbnG6OvxYMeFlUu8hGHeCQjuWipnJzmGn+D0mXZA7nOM
+         /Y+FgreAigmNIHhIlvRuWlr3UDh+bYcY3u4ByQaS7QhPfxvqH4hJAZS0IR9nJoqOfiPU
+         GZLEPeUrjBKgNAEOt9DNXW8PLIhwOk20YHAJALYC7vLuI5K+qpFmK2ZLZAVYgR4bIwAa
+         EhDpTeIbMKoqH9kswhsCWOrMOTkV2nvh1hy+jA9x4KeaKRRkGfWjdQ4iChZRhW1ax7/b
+         vGbA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680515237;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=htPk5PXTOqeqOET7dyhcLS5Nxh2cxnK3mpGnQz9jlEw=;
+        b=y4nkVMYkTk0zv0p4kjW3k1UYZhXBnjzikASbsxSmDBJzvivBoXgNeS6edjz7lkEium
+         ERhYXpy2+7SYbOmzqaeoRVoDrjYpqlkkG0G9CtP7j7ffOpb1J2n4NULUCkasZ1eMSQy3
+         WtvlTf8u4IAGp5NQmMx2AH6Z4Bzw7D91CrJ6u8bQj03d1sugg9iE/DUuRN6P1j2YigaS
+         HupaidG3bLEMjW2viMVXebrf/lG5uQ83LBYuf1iqnqBv2g67XZxOarPyEOWgR0gLl9cL
+         jiNz8xqv4Z1gv+bO9Ya/m0YLqAO9eHdbzguGXGUel6HkOpSa7BaJ54AxJp0CpIfEc0HC
+         fqGg==
+X-Gm-Message-State: AAQBX9f1B45wBYWVexnxlWsHcVtOCJX6DWbOVmaPogUA56y/IrR6usn5
+	mVFMuhT2FXSpFlRePDEFUWMLJw==
+X-Google-Smtp-Source: AKy350aq2/eAtEYHLJ3R4+ZQV7M03sIMNYL9wBr9zDABKJ8ufu9aCsyLHfIX7yY35iys3sUdYSzvjg==
+X-Received: by 2002:a17:906:6bd5:b0:930:7ae6:9ebd with SMTP id t21-20020a1709066bd500b009307ae69ebdmr35660301ejs.70.1680515237638;
+        Mon, 03 Apr 2023 02:47:17 -0700 (PDT)
+Received: from ?IPV6:2a02:810d:15c0:828:ae90:d80:1069:4805? ([2a02:810d:15c0:828:ae90:d80:1069:4805])
+        by smtp.gmail.com with ESMTPSA id la6-20020a170907780600b009351565d1f5sm4285058ejc.52.2023.04.03.02.47.16
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 03 Apr 2023 02:47:17 -0700 (PDT)
+Message-ID: <d0b9d8a2-14ae-8c0d-309b-5f5d60d43a1d@linaro.org>
+Date: Mon, 3 Apr 2023 11:47:16 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH v30 0/7] Add MediaTek SoC DRM (vdosys1) support for mt8195
+Content-Language: en-US
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Chen-Yu Tsai <wenst@chromium.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ devicetree@vger.kernel.org, singo.chang@mediatek.com,
+ Nick Desaulniers <ndesaulniers@google.com>, linux-kernel@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>, Nathan Chancellor <nathan@kernel.org>,
+ "Nancy.Lin" <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org,
+ dri-devel@lists.freedesktop.org, krzysztof.kozlowski+dt@linaro.org,
+ clang-built-linux@googlegroups.com, Matthias Brugger
+ <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+References: <20230321121859.2355-1-nancy.lin@mediatek.com>
+ <17831605-5c9d-9c92-d190-04f91060ace4@collabora.com>
+ <CAAOTY_8ZAxVSLnJ1u5snsRgkszV7ixwhjUS2nDimE_Lpj=cUCA@mail.gmail.com>
+ <97a5f383-38f5-e8ea-e1d8-489b690e4521@collabora.com>
+ <CAAOTY_9_vn-m2jTaaHkFDV+v2-LeaAxtCLNNnOxZq5Httb-TAQ@mail.gmail.com>
+ <CAGXv+5FJCuG_zHnaKZ=baNzKAWKLEe3jZnghNAxuGv7i7L6e7Q@mail.gmail.com>
+ <CAAOTY_9Dbtubah3ndj9+FeYDh7D42k6-BtHrYMNc=CP6GL6uFA@mail.gmail.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <CAAOTY_9Dbtubah3ndj9+FeYDh7D42k6-BtHrYMNc=CP6GL6uFA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230403_024354_043642_27B075CA 
-X-CRM114-Status: GOOD (  13.96  )
+X-CRM114-CacheID: sfid-20230403_024721_507036_9ED79EAD 
+X-CRM114-Status: GOOD (  21.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,68 +107,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-CERT-C Characters and Strings:
-check core id is in valid range:
-dev->reg_base[dev->venc_pdata->core_id] evaluates to an address
-that could be at negative offset of an array.
+On 03/04/2023 05:30, Chun-Kuang Hu wrote:
+> Hi, Chen-yu:
+> 
+> Chen-Yu Tsai <wenst@chromium.org> 於 2023年3月30日 週四 下午7:05寫道：
+>>
+>> On Mon, Mar 27, 2023 at 11:17 PM Chun-Kuang Hu <chunkuang.hu@kernel.org> wrote:
+>>>
+>>> Hi, Angelo:
+>>>
+>>> AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> 於
+>>> 2023年3月24日 週五 下午4:38寫道：
+>>>>
+>>>> Il 24/03/23 00:25, Chun-Kuang Hu ha scritto:
+>>>>> Hi, Angelo:
+>>>>>
+>>>>> AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> 於
+>>>>> 2023年3月23日 週四 下午4:58寫道：
+>>>>>>
+>>>>>> Il 21/03/23 13:18, Nancy.Lin ha scritto:
+>>>>>>> The hardware path of vdosys1 with DPTx output need to go through by several modules, such as, OVL_ADAPTOR and MERGE.
+>>>>>>>
+>>>>>>> Add DRM and these modules support by the patches below:
+>>>>>>>
+>>>>>>
+>>>>>> I've tested v30 again on MT8173, MT8192 and MT8195 based Chromebooks.
+>>>>>> Green light from me.
+>>>>>
+>>>>> I'm curious about how you build code and test on Chromebooks. Do you
+>>>>> build in cros environment or pure linux
+>>>>> (https://archlinuxarm.org/platforms/armv8/mediatek/acer-chromebook-r13).
+>>>>> I've a MT8183 based Chromebook (HP 11a) and I've tried to run a
+>>>>> upstream kernel on it. cros is too heavy for me and I doubt I could
+>>>>> use it. I've tried the pure linux and could boot up with console, but
+>>>>> display does not work. If you use the pure linux environment, could
+>>>>> you share how it works?
+>>>>>
+>>>>
+>>>> I haven't tested MT8183 (I don't actually have any 8183 machine in my hands)... but
+>>>> yes, I can share my test environment.
+>>>>
+>>>> I have one MicroSD that I use either in the MicroSD slot of the target machine, or
+>>>> in a USB reader; this *single* system is what I boot on *all* Chromebooks that I
+>>>> have: one kernel, multiple devicetrees, same Debian-based userspace.
+>>>>
+>>>> What we have to prepare this bootable media can be found at [1], but beware that
+>>>> it currently uses an outdated kernel, so, what I have locally is a symlink to my
+>>>> kernel tree.
+>>>> You can change/add/remove the devicetree blobs that will get added to the image
+>>>> by modifying `chromebook-setup.sh`; before tampering with kernel tree symlink,
+>>>> please run that script for the first time, as it will download a cross-compiler,
+>>>> a kernel tree (that you will replace for sure) and the (very old) Debian rootfs
+>>>> that you can update with `apt-get dist-upgrade` after booting the Chromebook.
+>>>>
+>>>> If you want to check about possible kernel configuration differences, what I use
+>>>> is at [2], so that you can compare.
+>>>
+>>> Thanks for the information, I would try to compare the kernel config first.
+>>
+>> Hi CK,
+>>
+>> Would you consider adding your repo to linux-next? That would let everyone
+>> do integration testing, especially automated ones, earlier, before you send
+>> your PRs to drm maintainers.
+>>
+>> You can do so by sending an email to Stephen Rothwell to do so.
+> 
+> I don't understand what this process is. Does it means that I directly
+> upstream patches into linux-next? I prefer that my patches go through
+> drm maintainers' tree. Does any document introduce this process?
 
-CERT-C Expression:
-check buf is not NULL before used:
-Dereferencing buf, which is known to be NULL.
+All maintainers and sub-maintainers trees are supposed to be fed into
+linux-next.
 
-Signed-off-by: Irui Wang <irui.wang@mediatek.com>
----
- .../platform/mediatek/vcodec/mtk_vcodec_enc.c    |  2 +-
- .../mediatek/vcodec/mtk_vcodec_enc_drv.c         | 16 ++++++++++++----
- 2 files changed, 13 insertions(+), 5 deletions(-)
+https://lore.kernel.org/linux-next/20230327124805.3ca4f3cc@canb.auug.org.au/T/#md226a8e714cc731c2ab4ba5ee7eb43fe21a55009
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-index d65800a3b89d..db65e77bd373 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-@@ -943,7 +943,7 @@ static int vb2ops_venc_start_streaming(struct vb2_queue *q, unsigned int count)
- 		 * FIXME: This check is not needed as only active buffers
- 		 * can be marked as done.
- 		 */
--		if (buf->state == VB2_BUF_STATE_ACTIVE) {
-+		if (buf && buf->state == VB2_BUF_STATE_ACTIVE) {
- 			mtk_v4l2_debug(0, "[%d] id=%d, type=%d, %d -> VB2_BUF_STATE_QUEUED",
- 					ctx->id, i, q->type,
- 					(int)buf->state);
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c
-index 9095186d5495..125d5722d07b 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c
-@@ -89,16 +89,24 @@ static irqreturn_t mtk_vcodec_enc_irq_handler(int irq, void *priv)
- 	struct mtk_vcodec_ctx *ctx;
- 	unsigned long flags;
- 	void __iomem *addr;
-+	int core_id;
- 
- 	spin_lock_irqsave(&dev->irqlock, flags);
- 	ctx = dev->curr_ctx;
- 	spin_unlock_irqrestore(&dev->irqlock, flags);
- 
--	mtk_v4l2_debug(1, "id=%d coreid:%d", ctx->id, dev->venc_pdata->core_id);
--	addr = dev->reg_base[dev->venc_pdata->core_id] +
--				MTK_VENC_IRQ_ACK_OFFSET;
-+	core_id = dev->venc_pdata->core_id;
-+	if (core_id < 0 || core_id >= NUM_MAX_VCODEC_REG_BASE) {
-+		mtk_v4l2_err("Invalid core id: %d, ctx id: %d",
-+			     core_id, ctx->id);
-+		return IRQ_HANDLED;
-+	}
-+
-+	mtk_v4l2_debug(1, "id: %d, core id: %d", ctx->id, core_id);
-+
-+	addr = dev->reg_base[core_id] + MTK_VENC_IRQ_ACK_OFFSET;
- 
--	ctx->irq_status = readl(dev->reg_base[dev->venc_pdata->core_id] +
-+	ctx->irq_status = readl(dev->reg_base[core_id] +
- 				(MTK_VENC_IRQ_STATUS_OFFSET));
- 
- 	clean_irq_status(ctx->irq_status, addr);
--- 
-2.25.1
+Documentation/process/howto.rst
+Documentation/process/2.Process.rst
+
+
+Best regards,
+Krzysztof
 
 
