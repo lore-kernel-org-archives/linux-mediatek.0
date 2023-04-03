@@ -4,77 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11266C76196
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 06:12:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2F64C761A6
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 07:12:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JTsmfpJivTYlDFo7mMY5KRG/6EGz/sDTlp3jsfFJ36I=; b=EDPWlDa8ezSPasWkMULFS88Q3S
-	Rp8jqKU0qlBhAtehPkBLTK30MVjIO5SSzWM+VGmH4irAKHwJhw0kRSGCNas6PeabuQRbOxXwfGuNo
-	WG19vuyKrFF8Sk1CuoMaxLPOEm37hr6Q4FcyLVo7U9B51OYapqCa6kL1z3oMarSLvqmXFLeOnh/A4
-	hZe5H0cpToJQBCY+CIDMqH/kX5MAplmo6KzKZsAYzL5V2eGRKUvZi3mjSERKPrOVGxupKuFKiCqnB
-	2LVk1+v+HgjalYxjJmN+FwSZ1ud931MWio9u6/8YtszThDmBaJBBESVq9o1SUlR8TQf3eeofhAbBz
-	zaM8FrpA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=i1SfDNd+VrFwNjaXfizqk9NcTy81e6CW019Ll/yqoek=; b=OTAeM12p0xhM4BAdI2gYkRR8nV
+	Rg+1xidO+Hv3GkjkL2OxGoxhTUkpFJRIB/yNP5cY3MgjLm1cTjpV3KfRETXgH2bAo13KepaBKtiaw
+	ovK5hsrPjux8KODojfFwic75nkyx9nD1IOKBImvvuign/DwAcHB+SBQ8ESNSN6t9V9spVvGf7gfWx
+	0JZlsGMtG8wxbVJWKHIfbUC2crR1+vxxy3xeAlrZSY2lFOgGTdksD11XIkp1S7LhE+iEKkBhF6Xo+
+	9XduiJe2+xJG447HzfM8rVTlwR4L39a6T2CH6HVsq1itkzWC1bw4zfOuHR4rTdR1G+BdovhFkc2Or
+	iBUM6u0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjDQv-00EFTt-19;
-	Mon, 03 Apr 2023 06:12:49 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pjEMe-00ELJn-37;
+	Mon, 03 Apr 2023 07:12:28 +0000
+Received: from mail-oi1-x22b.google.com ([2607:f8b0:4864:20::22b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjDQs-00EFT0-30;
-	Mon, 03 Apr 2023 06:12:48 +0000
-X-UUID: 88de2652d1e611ed8687db9d93187ff1-20230402
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=JTsmfpJivTYlDFo7mMY5KRG/6EGz/sDTlp3jsfFJ36I=;
-	b=SWpw+CD+gvii/jecvKT63/xNgCXcg182F8OxwdJ/LBR/FOUWHnBpSO/HG6phUuY2K2L3Ktg8lgGJqCa5roklqAyG82eKH1H+yuJw4YkwqXFydb5J2GqsEJQfh2c0G9xb8QBNgD4RiOa2Fy8HhCnpKgNmGsrUB8yFm8WFcOqAH3c=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:a4f35118-92c8-4dee-927d-ee30b9c784db,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:120426c,CLOUDID:549520b5-beed-4dfc-bd9c-e1b22fa6ccc4,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: 88de2652d1e611ed8687db9d93187ff1-20230402
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <chunfeng.yun@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 971477766; Sun, 02 Apr 2023 23:12:38 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Mon, 3 Apr 2023 14:02:36 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Mon, 3 Apr 2023 14:02:35 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring
-	<robh+dt@kernel.org>
-CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Mathias Nyman
-	<mathias.nyman@intel.com>, <linux-usb@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Tianping Fang
-	<tianping.fang@mediatek.com>
-Subject: [PATCH 2/2] usb: xhci-mtk: add optional frame count clock
-Date: Mon, 3 Apr 2023 14:02:32 +0800
-Message-ID: <20230403060232.25699-2-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230403060232.25699-1-chunfeng.yun@mediatek.com>
-References: <20230403060232.25699-1-chunfeng.yun@mediatek.com>
+	id 1pjEMb-00ELHv-16;
+	Mon, 03 Apr 2023 07:12:26 +0000
+Received: by mail-oi1-x22b.google.com with SMTP id l18so20976516oic.13;
+        Mon, 03 Apr 2023 00:12:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1680505940;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=i1SfDNd+VrFwNjaXfizqk9NcTy81e6CW019Ll/yqoek=;
+        b=I0SU7OovSTU8vdPUMuMFHukYDjMWTGVJNKgkDgIZUqr7l8Cs1IUs95+Aos8M2VjWuf
+         9xF2wgRZgbebJaItTe1zpLP0lNjz+K+1v3sZ/QesigYDZIBeJtvY2iAfIMgm2MJGyu0r
+         +vn2KEykuWroOtsIkqN2d/o0fH8vkNc/dwX5aXgp86Hbw2WySCfeUOxO5sZGgVB7dkzU
+         xS7g087xANtTyUhNiNYvKyM9WiyXvkWdInzKImt1f1JMQvwbnVVYb+CHtPvuTik4etwc
+         6SeqXzJkzzH8+2zREa3/P72jXQsKrFwmU8PH80Oraz/P77iNA1Idnf5d2rm8RsZf7X5m
+         422Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680505940;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=i1SfDNd+VrFwNjaXfizqk9NcTy81e6CW019Ll/yqoek=;
+        b=AxLKglzlwFz2IVNt6zcM5TGx8WR71B2p6emU5OCHzIje3mLZQfD/gNE4/X+pgRhK5w
+         2sGLvgqzI8cnjlJJ0lzIYmU+yGs8G/FeddNfgGYJSB8bW/2TKzSOBzhFZqszz2AsYY9t
+         b8cR1qKaTmLUZ4o3PzBWbJW35c87Lcv4WMNzMS5sYMtj93VWM69eBBE1Ai6XJWJMSwZv
+         RMMZ0btXXRDkNJgspGJko4uUtvmRQKtBxrq/F86+4i/SuxxlduUerQTLeU54nkEDfjo7
+         KrtsyBCY9AcE8RHWxQBlg7ik3O6jm+vs7vhN8I7QAIJftqyl6pC/SY1iDmjar5j5dGJy
+         Mx8g==
+X-Gm-Message-State: AAQBX9ePa/kaMUPCR0y4wrMTOXy9ETCo89oYAqeGGXzK+KUVeeylWDM+
+	u6KSo0YkW2G+7opuPo3UP/QOQLpI3UCRi2egMyDj1YcP7nc=
+X-Google-Smtp-Source: AKy350bEOx3+kI4bEFAmguRgGFpajFzMK1Xxy0w5PuU9zZohvNOMzY/4FC5QxTzdPtZiZxS5+G3G3MA6I0lkeSLVGUA=
+X-Received: by 2002:a05:6808:3c8:b0:389:6b0e:9d94 with SMTP id
+ o8-20020a05680803c800b003896b0e9d94mr4563991oie.0.1680505940475; Mon, 03 Apr
+ 2023 00:12:20 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+References: <202303231145121987818@zte.com.cn> <CAMhs-H_-kQ0FGP3L1xJ=ec_xJ59a2OztMLLjEQmQfYFOEa4DfA@mail.gmail.com>
+ <2e4f27f0-a4ac-4523-8f90-695a62973bd0@kili.mountain>
+In-Reply-To: <2e4f27f0-a4ac-4523-8f90-695a62973bd0@kili.mountain>
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Date: Mon, 3 Apr 2023 09:12:08 +0200
+Message-ID: <CAMhs-H8beY3AO83NkTM2_YYdcsqtv7Em01zqSE6wtPNdex8Dpw@mail.gmail.com>
+Subject: Re: [PATCH] PCI: mt7621: Use dev_err_probe()
+To: Dan Carpenter <error27@gmail.com>
+Cc: ye.xingchen@zte.com.cn, lpieralisi@kernel.org, kw@linux.com, 
+	robh@kernel.org, bhelgaas@google.com, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, linux-pci@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230402_231246_978501_D13C48F1 
-X-CRM114-Status: GOOD (  12.33  )
+X-CRM114-CacheID: sfid-20230403_001225_377933_351678D5 
+X-CRM114-Status: GOOD (  27.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,40 +91,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add optional clock frmcnt_ck used on 4nm or advanced process SoC
+On Mon, Apr 3, 2023 at 6:50=E2=80=AFAM Dan Carpenter <error27@gmail.com> wr=
+ote:
+>
+> On Thu, Mar 23, 2023 at 07:23:26AM +0100, Sergio Paracuellos wrote:
+> > Hi,
+> >
+> > On Thu, Mar 23, 2023 at 4:45=E2=80=AFAM <ye.xingchen@zte.com.cn> wrote:
+> > >
+> > > From: Ye Xingchen <ye.xingchen@zte.com.cn>
+> > >
+> > > Replace the open-code with dev_err_probe() to simplify the code.
+> > >
+> > > Signed-off-by: Ye Xingchen <ye.xingchen@zte.com.cn>
+> > > ---
+> > >  drivers/pci/controller/pcie-mt7621.c | 7 +++----
+> > >  1 file changed, 3 insertions(+), 4 deletions(-)
+> > >
+> > > diff --git a/drivers/pci/controller/pcie-mt7621.c b/drivers/pci/contr=
+oller/pcie-mt7621.c
+> > > index 63a5f4463a9f..964de0e8c6a0 100644
+> > > --- a/drivers/pci/controller/pcie-mt7621.c
+> > > +++ b/drivers/pci/controller/pcie-mt7621.c
+> > > @@ -220,10 +220,9 @@ static int mt7621_pcie_parse_port(struct mt7621_=
+pcie *pcie,
+> > >         }
+> > >
+> > >         port->pcie_rst =3D of_reset_control_get_exclusive(node, NULL)=
+;
+> > > -       if (PTR_ERR(port->pcie_rst) =3D=3D -EPROBE_DEFER) {
+>
+> So the theory here is that -EPROBE_DEFER is recoverable but other errors
+> are not so we just ignore them?  Error pointers will trigger a WARN() in
+> mt7621_control_assert/deassert().
+>
+>
+> > > --
+> > > 2.25.1
+> >
+> > Also, this is not a probe(), so I don't see a point of using
+> > dev_err_probe() here.
+>
+> It's a weird thing to return -EPROBE_DEFER from something which is not
+> a probe function...  Someone told me I should write a Smatch check for
+> it but I never got around to doing that.
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- drivers/usb/host/xhci-mtk.c | 1 +
- drivers/usb/host/xhci-mtk.h | 2 +-
- 2 files changed, 2 insertions(+), 1 deletion(-)
+I don't remember clearly why this was returned in the first instance.
+I think I just took the idea from pcie-mediatek driver for arm64 SoCs
+platforms here:
 
-diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-index f7cbb08fc506..90cf40d6d0c3 100644
---- a/drivers/usb/host/xhci-mtk.c
-+++ b/drivers/usb/host/xhci-mtk.c
-@@ -398,6 +398,7 @@ static int xhci_mtk_clks_get(struct xhci_hcd_mtk *mtk)
- 	clks[2].id = "ref_ck";
- 	clks[3].id = "mcu_ck";
- 	clks[4].id = "dma_ck";
-+	clks[5].id = "frmcnt_ck";
- 
- 	return devm_clk_bulk_get_optional(mtk->dev, BULK_CLKS_NUM, clks);
- }
-diff --git a/drivers/usb/host/xhci-mtk.h b/drivers/usb/host/xhci-mtk.h
-index 1174a510dd38..faaaf05e36ce 100644
---- a/drivers/usb/host/xhci-mtk.h
-+++ b/drivers/usb/host/xhci-mtk.h
-@@ -15,7 +15,7 @@
- 
- #include "xhci.h"
- 
--#define BULK_CLKS_NUM	5
-+#define BULK_CLKS_NUM	6
- #define BULK_VREGS_NUM	2
- 
- /* support at most 64 ep, use 32 size hash table */
--- 
-2.18.0
+https://elixir.bootlin.com/linux/v6.3-rc5/source/drivers/pci/controller/pci=
+e-mediatek.c#L967
 
+Thanks,
+    Sergio Paracuellos
+>
+> In this case, I guess the user is supposed to see the error message and
+> manually fix the probe order?  The dev_err_probe() will change the error
+> message into a debug message so the user will not see it and will not be
+> able to fix it.  So using dev_err_probe() will break things for the
+> user.
+>
+> regards,
+> dan carpenter
+>
 
