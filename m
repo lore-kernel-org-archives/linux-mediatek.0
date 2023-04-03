@@ -4,90 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 109DDC76188
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 19:19:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01C25C77B6E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 19:19:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T50vLVbG2ABwfUlTpSJpYxSsSe8WTt2ADzn7FKCrPrc=; b=4P1ZalJkPH5OQPrcWvxy+mbYr8
-	CqE5hmmUXGUguIV74/HWKJ9Xm7SkxffkH6cVlFoy5ULmn4z50JgNBLYpeR8jttBv9oHaxUH2yRONa
-	y51uGtBEOAVOOtcZuqZoZdscflQRjPZ9SWKsJuvTOkBL9iMBe1BuQtXf6FrYUEZT+y2FC3qXc4KAp
-	40rHdg00ekoV2F5bHHUeA+qsqxOe2vwiHmZRjIW5NmwLwPtYwsr4oMgbAXwFGBGGgYiGv6UNQrEQj
-	isRK5lYT0OF2WJTbSovlD1xkl19BV8+EbokZ9Mq/VytcLunCPYETUMGyw5srPIOMAX4S60eKnTtlP
-	dgrztz9w==;
+	bh=rO01+3k4fzVS/CqC5YjvddkQFJufKZJtp6FmS8S3Vzg=; b=ZTjqfYNJ9Nbg1MAjVF18YIHJTA
+	bzZXeNI/de6cMWmbjKBBXWQD3OdhT+7cd85TSrZSEmGUHlea+79VoMHnZoy8bLAcZaHxnK3qU3ZMa
+	M8QhgUwaz3ROkIptTSzK7+JAjrnnIRmIFp4ab+RHve7F0MoPSVEpWx5GoqQbzvnLLl6m8CXi2DiB5
+	SikpjMd1Jjr1QIBeV6FI2AaFL4/Fb865rL4O3HznPdpB2jjO1KSC+XbR6mdwQewt1/bI9mhYoK5pb
+	YWfR6LRUxu/9ZGicvP6LUONItFOZE34aG0CfPWOg62WbbK25N9ybRuA0EDSp1FnAskILJKFjlnDT2
+	FUx0v0WA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjPhl-00GMYh-3D;
-	Mon, 03 Apr 2023 19:19:02 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1pjPiY-00GMpW-1C;
+	Mon, 03 Apr 2023 19:19:50 +0000
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjPhh-00GMV5-2r
+	id 1pjPiV-00GMmB-1B
 	for linux-mediatek@lists.infradead.org;
-	Mon, 03 Apr 2023 19:18:59 +0000
-Received: by mail-ed1-x534.google.com with SMTP id x3so121456246edb.10
-        for <linux-mediatek@lists.infradead.org>; Mon, 03 Apr 2023 12:18:55 -0700 (PDT)
+	Mon, 03 Apr 2023 19:19:48 +0000
+Received: by mail-ed1-x52e.google.com with SMTP id er13so80555101edb.9
+        for <linux-mediatek@lists.infradead.org>; Mon, 03 Apr 2023 12:19:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1680549534;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=T50vLVbG2ABwfUlTpSJpYxSsSe8WTt2ADzn7FKCrPrc=;
-        b=lxDkaT0emfLY1s6ASwAH+xPT1yl1OINFW3kEQzy5PxOvrSnFuNt0wX1voX3n3/V1hV
-         y5/N6ZhPpWV/HQUrOoSd8uL+DsVe2441goDeqN0ehD5Qq0HNdmeOsasBHYYkWsqDVh3s
-         HKElw/fVzdmX/RGxoJGn4K6m8O6oMhhfapJidAkBiwvi3QxmpcvuqYesrqm6zYT9FQaY
-         YCDW1zbhf5HW0OAWy5POQIxYpw4SmrZ4ksgpqTZdFYPLmQ43dI9A98gNENk5uPF3GtdP
-         zSs0FcMGyJ9t/AQnQ0sCuZGxmCyyG8DNgnjzRXvD9CRZHhmps86zfFIgrOjUYR1rHlux
-         jeNA==
+        d=linaro.org; s=google; t=1680549583;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=rO01+3k4fzVS/CqC5YjvddkQFJufKZJtp6FmS8S3Vzg=;
+        b=Yi7A7zkfu+IHMbck2/TitvdJ6L4cw+Vm0TPV9ZEdJNaXE2NYh5wdbS816CRXVg1CxL
+         o5p0DvQniMBWegtUeBvP+ZarG3PhT4+CAPAcgwSsl69C+lJqOuCiahmTb9xJ4WAjR7T3
+         BWJz6rzqv40oWo/QS0xLlgDHKMUE0ozRFQQorBjzztoMXAVWRojOe1homea76gTy/GA6
+         Vxd/XrKS4xy2JybNYgoqpiM2XMbBxbYzFClQ1AdvWbdRZgEYbSGI7SlMede0+eaOSIud
+         lxNFqCwLwfj8hj81cTDnFqUvaUjD4sCMZOgFUTRWabMMu25FVvYPyOjf+AToCzO0oPQc
+         aFeQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680549534;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=T50vLVbG2ABwfUlTpSJpYxSsSe8WTt2ADzn7FKCrPrc=;
-        b=uZ9M4bc0X8DZ3+XjKeIZQRXqQLb/pCc+uKVwzvc+bkzOMU56/QITPeIO0C9LVqKn9o
-         4z2Kyj1kxpOXHr6v4gTCGNQJ0gEkMaFkuwHPndV5R9b1v/rSvbXH/mRglg0Q7QLZ+/rv
-         l46krQgL72AEtfSdTRlelY8Vxr6EqRl3Bep0nywd3GDWkRghgR+ZcQIh1CGNKpUHuHMk
-         UMXT5KxWN5p8X1RdqgyjHLnBMG3bQJIeUNaOfIZi+Zfp/xjEnicDUDeadcesyUGY+htN
-         AMaWifqtmG1VzM02QIkFhBH6txK8TX2SeZsFN3QQRSxO3sHWnCkYJv6crHBeC74vjz7Z
-         O6jA==
-X-Gm-Message-State: AAQBX9dHiDMQx0VhTpDLAPCIb7y6t2xXpVXCz3kPYaQPQgt6YPliEl5r
-	9pYtOUBVIIK1I+sGdUyO2ixmVg==
-X-Google-Smtp-Source: AKy350YBucBFpI7LWLV8I9pfg1VQ8D2Lt2FtPllMkqHAraFUGDE/STpHjDWLQK4w/9H5f/INQk23Lw==
-X-Received: by 2002:a05:6402:604:b0:502:45e7:4139 with SMTP id n4-20020a056402060400b0050245e74139mr207649edv.37.1680549534219;
-        Mon, 03 Apr 2023 12:18:54 -0700 (PDT)
-Received: from krzk-bin.. ([2a02:810d:15c0:828:ae90:d80:1069:4805])
-        by smtp.gmail.com with ESMTPSA id n19-20020a509353000000b004c09527d62dsm5022999eda.30.2023.04.03.12.18.53
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 03 Apr 2023 12:18:53 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Roger Quadros <rogerq@kernel.org>,
-	linux-usb@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH 2/3] dt-bindings: usb: ti,j721e-usb: drop assigned-clocks
-Date: Mon,  3 Apr 2023 21:18:49 +0200
-Message-Id: <20230403191850.374839-2-krzysztof.kozlowski@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230403191850.374839-1-krzysztof.kozlowski@linaro.org>
-References: <20230403191850.374839-1-krzysztof.kozlowski@linaro.org>
+        d=1e100.net; s=20210112; t=1680549583;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=rO01+3k4fzVS/CqC5YjvddkQFJufKZJtp6FmS8S3Vzg=;
+        b=Qzucv5PmdpdOqPkf93O03PVHSP72X8eI5FL2DnRoigCU7id1hQY6CAcsMMqbbHklLZ
+         9drvdaTOy7ZFiXcOVYY6RIIHvF4xOMCT5+ueL+8lrDljjJNiiDrpYo9ACFvP/GpKUxOG
+         RCUxftLj0RzdHlXUxp8tcTFXmP2WUmAJ1C5dUnmrpLCGTBXF2ZbFApNRmwSnDrH769a5
+         Dy1xIRpX2cW/UQMTGdt8yBbL5vbDgoNalacEEM0ewEXvXRSgOaLbeNRViK3eWMxpu7Zm
+         xYWOkvWzRUCi2EMgEsKVUPOMjatv7gfIvhr2MMXPlCsn2YlxmNlxwsS6brcjz7SYbqbq
+         whSQ==
+X-Gm-Message-State: AAQBX9dQNuyyAnA9OrFo4JgTO+99ViXE7+n+Cfo2ngzuq8IExvAIN9zl
+	SICqiLROz7HrADnI+JJqBBHo9A==
+X-Google-Smtp-Source: AKy350bqVpOgQVbWoSPL7MpqchC8QTkyqwgB6DRPSqU1gag0Z4fSDQBJAF/ATSBK3zN8Uba0NWmgGQ==
+X-Received: by 2002:a17:907:25cb:b0:946:f79b:e785 with SMTP id ae11-20020a17090725cb00b00946f79be785mr22215288ejc.2.1680549582892;
+        Mon, 03 Apr 2023 12:19:42 -0700 (PDT)
+Received: from ?IPV6:2a02:810d:15c0:828:ae90:d80:1069:4805? ([2a02:810d:15c0:828:ae90:d80:1069:4805])
+        by smtp.gmail.com with ESMTPSA id h23-20020a170906261700b008e0bb004976sm4882835ejc.134.2023.04.03.12.19.41
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 03 Apr 2023 12:19:41 -0700 (PDT)
+Message-ID: <d8f3432a-b364-e939-c1f2-b4d55b1586e9@linaro.org>
+Date: Mon, 3 Apr 2023 21:19:40 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH 1/2] dt-bindings: usb: mtk-xhci: add an optional frame
+ count clock
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Rob Herring <robh+dt@kernel.org>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Mathias Nyman <mathias.nyman@intel.com>, linux-usb@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Tianping Fang <tianping.fang@mediatek.com>
+References: <20230403060232.25699-1-chunfeng.yun@mediatek.com>
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230403060232.25699-1-chunfeng.yun@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230403_121857_944539_9AFEAA76 
-X-CRM114-Status: UNSURE (   8.76  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230403_121947_411804_AE326BFE 
+X-CRM114-Status: GOOD (  13.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,33 +102,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The meta schema from DT schema already defines assigned-clocks, so there
-is no need for device schema to mention it at all.  There are also no
-benefits of having it here.
+On 03/04/2023 08:02, Chunfeng Yun wrote:
+> Add optional clock 'frmcnt_ck' used on 4nm or advanced process SoC
+> 
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+>  .../devicetree/bindings/usb/mediatek,mtk-xhci.yaml          | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+> index c119caa9ad16..ee8167fbc541 100644
+> --- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+> +++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+> @@ -77,6 +77,7 @@ properties:
+>        - description: Mcu bus clock for register access
+>        - description: DMA bus clock for data transfer
+>        - description: controller clock
+> +      - description: frame count clock
+>  
+>    clock-names:
+>      minItems: 1
+> @@ -86,14 +87,15 @@ properties:
+>        - const: mcu_ck
+>        - const: dma_ck
+>        - const: xhci_ck
+> +      - const: frmcnt_ck
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
- Documentation/devicetree/bindings/usb/ti,j721e-usb.yaml | 6 ------
- 1 file changed, 6 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/usb/ti,j721e-usb.yaml b/Documentation/devicetree/bindings/usb/ti,j721e-usb.yaml
-index fd36dd02fe74..95ff9791baea 100644
---- a/Documentation/devicetree/bindings/usb/ti,j721e-usb.yaml
-+++ b/Documentation/devicetree/bindings/usb/ti,j721e-usb.yaml
-@@ -53,12 +53,6 @@ properties:
-       VBUS pin of the SoC via a 1/3 voltage divider.
-     type: boolean
- 
--  assigned-clocks:
--    maxItems: 1
--
--  assigned-clock-parents:
--    maxItems: 1
--
-   '#address-cells':
-     const: 2
- 
--- 
-2.34.1
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+>  
+>    assigned-clocks:
+>      minItems: 1
+> -    maxItems: 5
+> +    maxItems: 6
+
+But these should be dropped:
+https://lore.kernel.org/linux-devicetree/20230403191850.374839-1-krzysztof.kozlowski@linaro.org/T/#t
+
+>  
+>    assigned-clock-parents:
+>      minItems: 1
+> -    maxItems: 5
+> +    maxItems: 6
+>  
+>    phys:
+>      description:
+
+Best regards,
+Krzysztof
 
 
