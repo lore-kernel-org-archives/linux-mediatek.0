@@ -4,66 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44C7FC76196
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 15:08:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82D38C76196
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 15:22:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=a0TOOSNi3UB3QVVKxBKmIaumeF0hMOeZXBo1iOoSlGk=; b=nERssgpfCskBVm488nNIvMvDQb
-	KHSp+VKzcXGtjmujENYnGdzCgdIszxl6D/n/kypgUvVdBlKnAi2cnDE0SIifTwhscZfxqYywh+Nt6
-	/Mp8RnpY1dE4aI0NDQ2v52PiOlV5gAqKv3Pd3vP0QZJ+C/ggTRRHOFqwhfTSIs9IYsPUI4VS495bN
-	SiK1HXYi0QImgkSzgVKoTSnkRRwPQ1vhxIRitMLdKaZwZiJAxgTvKgHWhXSP0h+pdx84eEvcK8JhD
-	EXwr26rWK6s/T3pv0eY6isHaxS0K15ODWMbVQbBwT3/3vVizQjmWMwzgFXNkkBH6UXCAI/KUehQN/
-	BGpg2iXA==;
+	bh=DqP+QRGf+rrQD2kliDbDIMvrPOs6hCR+o4Khphli5Yg=; b=aOK6o97f/UOmYBGhWnL90P0BIL
+	gHQTpMAaN7MVOfUBEinyVVbaUZk9OEJZ1z5xmmGs/j8Qx+sOWMlDZg8o4uROqnw9DsQQ73R0LWrmx
+	s2U9w2R5XOE4km0r3O+Ra7za2vv/VBqvqwAyXg445bobj7HbemKIds+MJGzK5EEEkOL5mg+1q4CPs
+	ijXJKN3DgnQKynIJFWD9u3oy3+SvJzjbFqtMTJILKqa6UezzI/zsRhvpKc6U1Xqmgq4HPwgBg5g6g
+	P9M/i0OwItAzhf7slLlfS19O40Oc7ImxDtde0pLdPPR6ro3Gh0WxOSmB/0mCTAbDDxspqDwoGO3N8
+	YfeS05YQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjLmp-00Fjdk-0q;
-	Mon, 03 Apr 2023 15:07:59 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pjM0a-00FlMF-1E;
+	Mon, 03 Apr 2023 15:22:12 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjLml-00Fjck-1J;
-	Mon, 03 Apr 2023 15:07:56 +0000
+	id 1pjM0H-00FlJm-1q;
+	Mon, 03 Apr 2023 15:21:55 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 4038A61FC7;
-	Mon,  3 Apr 2023 15:07:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 72277C433EF;
-	Mon,  3 Apr 2023 15:07:51 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 1B69260B5F;
+	Mon,  3 Apr 2023 15:21:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7DC2AC4339B;
+	Mon,  3 Apr 2023 15:21:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1680534473;
-	bh=BSS3Ft8JQ9etJOn1zN0oTwzUaes1AtJBsgymC/v4kdc=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=LH6/UPc2zLS065s2+tZPcVdZUiadCX0D0+ucwbowf+9GAdMeVXzEUGVjxqu6zBBlu
-	 PxGDkfaLD4x0nPXajNRS7WcMTdKpyQ74urU0X29Xc4DeJTHLLpP/8o4ch58oA4nZtI
-	 3HCO81N1V9Ko9cJMH4tH3EAPvUPRGEkdB295IcU1lfq9sKwoBmhMSlCTNMpEGgJZHX
-	 VIBB9CXQyFAXAjisMPGJDoLg2PLMITWOfOh/tNThpFHBiiJrO1tUc6EXj/GqEbXvht
-	 YpXJ/9kftMUe9VMfRs7aK4bHQuJ1e54oQsnT6oR4q/KhNJTh6mg+dbNlmQbiCkVHZG
-	 AQe0G0fPoHYUw==
-From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
- Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com, 
- alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20230329080418.1100-1-allen-kh.cheng@mediatek.com>
-References: <20230329080418.1100-1-allen-kh.cheng@mediatek.com>
-Subject: Re: [PATCH] ASoC: mediatek: mt8186: Move some prints to debug
- level
-Message-Id: <168053447118.47553.13821701231639468315.b4-ty@kernel.org>
-Date: Mon, 03 Apr 2023 16:07:51 +0100
+	s=k20201202; t=1680535312;
+	bh=LKyj2hwPi42lkcaWN3TMXoQR+q6WYCbdhvtoyLpvRzk=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=efq5ine+EsMFH+WcS5cjeha3Dry9tfLq3C8DRkJhnQrIpYlm7DOfWmNv2Bjun+nlF
+	 skJ5Xix2JZ8m02L27GMmQkrcTi4Ste4xFWP4VUnkHql7+fM2PYYvX1Pv4ZDs2wa+Zx
+	 FVcJ1epYo1ITKpgy0wkdRAjAmjK+j6r4ZmwEIHWvz0cDbjWc+tnz4lprVhBIIctxgR
+	 YZMv+njBtzNhqMzBfGS+FZEmseYz1lj5CK0bw1SM5zo0Xz4nV3de8nZRmdWJW235hq
+	 hE5ckzXtq5Cht0yWYrMK9JoeaLwClA2lCXlybofbFFBONxBOuJ/sluhGFc07EFRYYn
+	 rOexfBdNBnLxw==
+Received: by mail-lj1-f176.google.com with SMTP id x20so30719751ljq.9;
+        Mon, 03 Apr 2023 08:21:52 -0700 (PDT)
+X-Gm-Message-State: AAQBX9dSQMu+6rGcqBH6WFAEj3Jb6NqjIrpSVW11ZPTm23X1Lt342Tuv
+	R+QLt6BoqeQcFz5mlbIqNoNVgmmeXJlQV2NMcg==
+X-Google-Smtp-Source: AKy350aTiBCcmkf5yaiSw9a/oh0FWNKIycpSVHuTeBKMLpgJoW35W0t7pwb2F74OQGePnsI1l2Satrcxa386y3dUOtA=
+X-Received: by 2002:a2e:9792:0:b0:2a3:fc8:711b with SMTP id
+ y18-20020a2e9792000000b002a30fc8711bmr10925454lji.10.1680535310524; Mon, 03
+ Apr 2023 08:21:50 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.13-dev-00303
+References: <20230403071929.360911-1-jstephan@baylibre.com> <20230403071929.360911-3-jstephan@baylibre.com>
+In-Reply-To: <20230403071929.360911-3-jstephan@baylibre.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Mon, 3 Apr 2023 23:21:38 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_-SJKPkq+saOrQHKYDpZ3cr0350bYNTSpTMwdoApV+Jvw@mail.gmail.com>
+Message-ID: <CAAOTY_-SJKPkq+saOrQHKYDpZ3cr0350bYNTSpTMwdoApV+Jvw@mail.gmail.com>
+Subject: Re: [PATCH 2/2] phy: mtk-mipi-csi: add driver for CSI phy
+To: Julien Stephan <jstephan@baylibre.com>
+Cc: Phi-bang Nguyen <pnguyen@baylibre.com>, Louis Kuo <louis.kuo@mediatek.com>, 
+	Chunfeng Yun <chunfeng.yun@mediatek.com>, Andy Hsieh <andy.hsieh@mediatek.com>, 
+	Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	"moderated list:ARM/Mediatek USB3 PHY DRIVER" <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek USB3 PHY DRIVER" <linux-mediatek@lists.infradead.org>, 
+	"open list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>, 
+	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, 
+	"open list:DRM DRIVERS FOR MEDIATEK" <dri-devel@lists.freedesktop.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230403_080755_506998_3D61C189 
-X-CRM114-Status: GOOD (  12.57  )
+X-CRM114-CacheID: sfid-20230403_082153_714614_2B7C6BDF 
+X-CRM114-Status: GOOD (  14.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,40 +90,184 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 29 Mar 2023 16:04:18 +0800, Allen-KH Cheng wrote:
-> There are many log messages scattered throughout the mt8186 sound
-> drivers, and they are frequently triggered.
-> 
-> To avoid spamming the console, move these messages to the debug level.
-> 
-> 
+Hi, Julien:
 
-Applied to
+Julien Stephan <jstephan@baylibre.com> =E6=96=BC 2023=E5=B9=B44=E6=9C=883=
+=E6=97=A5 =E9=80=B1=E4=B8=80 =E4=B8=8B=E5=8D=883:20=E5=AF=AB=E9=81=93=EF=BC=
+=9A
+>
+> From: Phi-bang Nguyen <pnguyen@baylibre.com>
+>
+> This is a new driver that supports the MIPI CSI CD-PHY for mediatek
+> mt8365 soc
+>
+> Signed-off-by: Louis Kuo <louis.kuo@mediatek.com>
+> Signed-off-by: Phi-bang Nguyen <pnguyen@baylibre.com>
+> [Julien Stephan: use regmap]
+> [Julien Stephan: use GENMASK]
+> Co-developed-by: Julien Stephan <jstephan@baylibre.com>
+> Signed-off-by: Julien Stephan <jstephan@baylibre.com>
+> ---
+>  .../bindings/phy/mediatek,csi-phy.yaml        |   9 +-
+>  MAINTAINERS                                   |   1 +
+>  drivers/phy/mediatek/Kconfig                  |   8 +
+>  drivers/phy/mediatek/Makefile                 |   2 +
+>  .../phy/mediatek/phy-mtk-mipi-csi-rx-reg.h    | 435 ++++++++++++++++++
+>  drivers/phy/mediatek/phy-mtk-mipi-csi.c       | 392 ++++++++++++++++
+>  6 files changed, 845 insertions(+), 2 deletions(-)
+>  create mode 100644 drivers/phy/mediatek/phy-mtk-mipi-csi-rx-reg.h
+>  create mode 100644 drivers/phy/mediatek/phy-mtk-mipi-csi.c
+>
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+[snip]
 
-Thanks!
+> +
+> +#define MIPI_RX_ANA04_CSIxA                                             =
+       0x0004
 
-[1/1] ASoC: mediatek: mt8186: Move some prints to debug level
-      commit: 3af24372964a8f999d62427c0585d9a4693ae4e4
+Useless, so drop this.
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+> +#define MIPI_RX_ANA04_CSIxA_RG_CSIxA_BG_LPRX_VTH_SEL_SHIFT              =
+       0
+> +#define MIPI_RX_ANA04_CSIxA_RG_CSIxA_BG_LPRX_VTH_SEL_MASK               =
+       GENMASK(2, 0)
+> +#define MIPI_RX_ANA04_CSIxA_RG_CSIxA_BG_LPRX_VTL_SEL_SHIFT              =
+       4
+> +#define MIPI_RX_ANA04_CSIxA_RG_CSIxA_BG_LPRX_VTL_SEL_MASK               =
+       GENMASK(6, 4)
+> +#define MIPI_RX_ANA04_CSIxA_RG_CSIxA_BG_HSDET_VTH_SEL_SHIFT             =
+       8
+> +#define MIPI_RX_ANA04_CSIxA_RG_CSIxA_BG_HSDET_VTH_SEL_MASK              =
+       GENMASK(10, 8)
+> +#define MIPI_RX_ANA04_CSIxA_RG_CSIxA_BG_HSDET_VTL_SEL_SHIFT             =
+       12
+> +#define MIPI_RX_ANA04_CSIxA_RG_CSIxA_BG_HSDET_VTL_SEL_MASK              =
+       GENMASK(14, 12)
+> +#define MIPI_RX_ANA04_CSIxA_RG_CSIxA_BG_VREF_SEL_SHIFT                  =
+       16
+> +#define MIPI_RX_ANA04_CSIxA_RG_CSIxA_BG_VREF_SEL_MASK                   =
+       GENMASK(19, 16)
+> +#define MIPI_RX_ANA04_CSIxA_RG_CSIxA_BG_MON_VREF_SEL_SHIFT              =
+       24
+> +#define MIPI_RX_ANA04_CSIxA_RG_CSIxA_BG_MON_VREF_SEL_MASK               =
+       GENMASK(27, 24)
+> +#define MIPI_RX_ANA04_CSIxA_RG_CSIxA_FORCE_HSRT_EN_SHIFT                =
+       28
+> +#define MIPI_RX_ANA04_CSIxA_RG_CSIxA_FORCE_HSRT_EN_MASK                 =
+               BIT(28)
+> +
+> +#define MIPI_RX_ANA08_CSIxA                                             =
+       0x0008
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+Ditto.
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+> +#define MIPI_RX_ANA08_CSIxA_RG_CSIxA_L0P_T0A_HSRT_CODE_SHIFT            =
+       0
+> +#define MIPI_RX_ANA08_CSIxA_RG_CSIxA_L0P_T0A_HSRT_CODE_MASK             =
+       GENMASK(4, 0)
+> +#define MIPI_RX_ANA08_CSIxA_RG_CSIxA_L0N_T0B_HSRT_CODE_SHIFT            =
+       8
+> +#define MIPI_RX_ANA08_CSIxA_RG_CSIxA_L0N_T0B_HSRT_CODE_MASK             =
+       GENMASK(12, 8)
+> +#define MIPI_RX_ANA08_CSIxA_RG_CSIxA_L1P_T0C_HSRT_CODE_SHIFT            =
+       16
+> +#define MIPI_RX_ANA08_CSIxA_RG_CSIxA_L1P_T0C_HSRT_CODE_MASK             =
+       GENMASK(20, 16)
+> +#define MIPI_RX_ANA08_CSIxA_RG_CSIxA_L1N_T1A_HSRT_CODE_SHIFT            =
+       24
+> +#define MIPI_RX_ANA08_CSIxA_RG_CSIxA_L1N_T1A_HSRT_CODE_MASK             =
+       GENMASK(28, 24)
+> +
+> +#define MIPI_RX_ANA0C_CSIxA                                             =
+       0x000c
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+Ditto.
 
-Thanks,
-Mark
+> +#define MIPI_RX_ANA0C_CSIxA_RG_CSIxA_L2P_T1B_HSRT_CODE_SHIFT            =
+       0
+> +#define MIPI_RX_ANA0C_CSIxA_RG_CSIxA_L2P_T1B_HSRT_CODE_MASK             =
+       GENMASK(4, 0)
+> +#define MIPI_RX_ANA0C_CSIxA_RG_CSIxA_L2N_T1C_HSRT_CODE_SHIFT            =
+       8
+> +#define MIPI_RX_ANA0C_CSIxA_RG_CSIxA_L2N_T1C_HSRT_CODE_MASK             =
+       GENMASK(12, 8)
+> +
+> +#define MIPI_RX_ANA10_CSIxA                                             =
+       0x0010
 
+Ditto.
+
+> +#define MIPI_RX_ANA10_CSIxA_RG_CSIxA_DPHY_L0_DELAYCAL_EN_SHIFT          =
+       0
+> +#define MIPI_RX_ANA10_CSIxA_RG_CSIxA_DPHY_L0_DELAYCAL_EN_MASK           =
+       BIT(0)
+> +#define MIPI_RX_ANA10_CSIxA_RG_CSIxA_DPHY_L0_DELAYCAL_RSTB_SHIFT        =
+       1
+> +#define MIPI_RX_ANA10_CSIxA_RG_CSIxA_DPHY_L0_DELAYCAL_RSTB_MASK         =
+               BIT(1)
+> +#define MIPI_RX_ANA10_CSIxA_RG_CSIxA_DPHY_L0_VREF_SEL_SHIFT             =
+       2
+> +#define MIPI_RX_ANA10_CSIxA_RG_CSIxA_DPHY_L0_VREF_SEL_MASK              =
+       GENMASK(7, 2)
+> +#define MIPI_RX_ANA10_CSIxA_RG_CSIxA_DPHY_L1_DELAYCAL_EN_SHIFT          =
+       8
+> +#define MIPI_RX_ANA10_CSIxA_RG_CSIxA_DPHY_L1_DELAYCAL_EN_MASK           =
+       BIT(8)
+> +#define MIPI_RX_ANA10_CSIxA_RG_CSIxA_DPHY_L1_DELAYCAL_RSTB_SHIFT        =
+       9
+> +#define MIPI_RX_ANA10_CSIxA_RG_CSIxA_DPHY_L1_DELAYCAL_RSTB_MASK         =
+               BIT(9)
+> +#define MIPI_RX_ANA10_CSIxA_RG_CSIxA_DPHY_L1_VREF_SEL_SHIFT             =
+       10
+> +#define MIPI_RX_ANA10_CSIxA_RG_CSIxA_DPHY_L1_VREF_SEL_MASK              =
+       GENMASK(15, 10)
+> +#define MIPI_RX_ANA10_CSIxA_RG_CSIxA_DPHY_L2_DELAYCAL_EN_SHIFT          =
+       16
+> +#define MIPI_RX_ANA10_CSIxA_RG_CSIxA_DPHY_L2_DELAYCAL_EN_MASK           =
+       BIT(16)
+> +#define MIPI_RX_ANA10_CSIxA_RG_CSIxA_DPHY_L2_DELAYCAL_RSTB_SHIFT        =
+       17
+> +#define MIPI_RX_ANA10_CSIxA_RG_CSIxA_DPHY_L2_DELAYCAL_RSTB_MASK         =
+               BIT(17)
+> +#define MIPI_RX_ANA10_CSIxA_RG_CSIxA_DPHY_L2_VREF_SEL_SHIFT             =
+       18
+> +#define MIPI_RX_ANA10_CSIxA_RG_CSIxA_DPHY_L2_VREF_SEL_MASK              =
+       GENMASK(23, 18)
+> +/* C-PHY fields are only available in CSIx. */
+> +#define MIPI_RX_ANA10_CSIxA_RG_CSI0A_CPHY_T0_CDR_DELAYCAL_EN_SHIFT      =
+       24
+> +#define MIPI_RX_ANA10_CSIxA_RG_CSI0A_CPHY_T0_CDR_DELAYCAL_EN_MASK       =
+       BIT(24)
+> +#define MIPI_RX_ANA10_CSIxA_RG_CSI0A_CPHY_T0_CDR_DELAYCAL_RSTB_SHIFT    =
+       25
+> +#define MIPI_RX_ANA10_CSIxA_RG_CSI0A_CPHY_T0_CDR_DELAYCAL_RSTB_MASK     =
+       BIT(25)
+> +#define MIPI_RX_ANA10_CSIxA_RG_CSI0A_CPHY_T0_VREF_SEL_SHIFT             =
+       26
+> +#define MIPI_RX_ANA10_CSIxA_RG_CSI0A_CPHY_T0_VREF_SEL_MASK              =
+       GENMASK(31, 26)
+> +
+> +#define MIPI_RX_ANA14_CSIxA                                             =
+       0x0014
+
+Ditto.
+
+Regards,
+Chun-Kuang.
+
+
+> +/* C-PHY fields are only available in CSIx. */
+> +#define MIPI_RX_ANA14_CSIxA_RG_CSI0A_CPHY_T1_CDR_DELAYCAL_EN_SHIFT      =
+       0
+> +#define MIPI_RX_ANA14_CSIxA_RG_CSI0A_CPHY_T1_CDR_DELAYCAL_EN_MASK       =
+       BIT(0)
+> +#define MIPI_RX_ANA14_CSIxA_RG_CSI0A_CPHY_T1_CDR_DELAYCAL_RSTB_SHIFT    =
+       1
+> +#define MIPI_RX_ANA14_CSIxA_RG_CSI0A_CPHY_T1_CDR_DELAYCAL_RSTB_MASK     =
+       BIT(1)
+> +#define MIPI_RX_ANA14_CSIxA_RG_CSI0A_CPHY_T1_VREF_SEL_SHIFT             =
+       2
+> +#define MIPI_RX_ANA14_CSIxA_RG_CSI0A_CPHY_T1_VREF_SEL_MASK              =
+       GENMASK(7, 2)
+> +
 
