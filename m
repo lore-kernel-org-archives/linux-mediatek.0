@@ -4,71 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E67EFC761A6
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 09:20:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6ADC4C76196
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 09:27:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eo9b3BF5HgiZiQkVEpKdwPxivqQabsniWjd04CVIHb4=; b=mB87ZoCDDn5lhR4lncpu14qYoZ
-	oJV3YqXqn7YyIKRW1WVjnhNTpYfh60Q5PgCUlNAgEOcHz13GzQszGKpyN+tjFz3kn5dshAG2WhJGm
-	ztLzJSMh6UDGUvOwR3ASobuwSzhUX7DC+omm9eTzZ8dR/0Lvc52BeQiMQKmvQalFYnTXs+vM8ri0f
-	npecUpzEh8NsAGRoF2p3akhIhnFlr/NqAe0lgMdKgL6J4oY8gMy9+H1X89now4YmSmVhniAaYQ4TD
-	Chp3eh/vtC/fWoinzC/IPk/9AUgOtaxW1yBDkNgOqN9O+NnKG2WgZIi837zkQG/puj8avVLGgAF46
-	IahgXNhQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tFB5+TDegZ2t6qK9NrZoRPZ2/IQBCygYDbpoNSt9KtE=; b=TV9yELZTcikL7p1hsQjBcIOxwI
+	2cEJvbt7l5xG6pJzLnAWURj406XX+GSe8j/ZV6VJW4vSRUNz2dY6piuUX3JVkl/LKRgSep/BU6NBA
+	OMYKPKh/kHpYRQQT5MVxS+rvo76fr0uqTERcF02o0Z66vaHguW1rQvzHjpgqQqEUONjUaGhtZi+Kn
+	GYuV0P5sMO61OEtax3A/C0iraieEDwyv2N4Odp82lIJLllfaI2RBquxqhKQX0XpddRNse7Gx21yFt
+	JIvUF9sahbUK2rvuEJ4k0lycn2Iso8xdFsZkLcQPnvrp4HVq7+aMzLWNPswRmMhHKuZbR83UdEN30
+	4DTmklLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjGMa-00EgYW-31;
-	Mon, 03 Apr 2023 09:20:32 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pjGTQ-00Eiho-0m;
+	Mon, 03 Apr 2023 09:27:36 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjGMW-00EgV3-0z;
-	Mon, 03 Apr 2023 09:20:29 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 3DC1B6172E;
-	Mon,  3 Apr 2023 09:20:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 6E8FDC433A1;
-	Mon,  3 Apr 2023 09:20:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1680513625;
-	bh=HOvs3Az/e1R8EGkt90B9hBsreIGgQ7JOuGysC4UKjs0=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=a4vvq4tiYCIbHg8kEzXlq4iWWS2DhfthAnJuWPrZyDRH0+2b4YnfiMd+B/2XpruM7
-	 9nnvvXRFJpL3ShmpilVGF/FPGxFgJeOThfVa7qxhTYYkAjybc8UvOq1joWCbiPOO8o
-	 JUdSB6BxwtbLRevsjrsRsx9CzrWG4yLc1lNMihPr8AOCik2//7cxJ9qT/CJyZjNiIg
-	 e/9IOSmyRl0vfPnzTygQLHhdL6CgEiMcHznrgEiA8D6ySPR8pSn77K634pL3rpAsjw
-	 YoPpa3xsYaj6mSMWyJnMNKxi7Ub52C+ZBXV9TUIhLkc9QzKIorMv6ZcmMbLXXA+gdp
-	 dcYhpfsGP7x5Q==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 4C1D9E5EA84;
-	Mon,  3 Apr 2023 09:20:25 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1pjGTN-00Eih9-2W;
+	Mon, 03 Apr 2023 09:27:35 +0000
+X-UUID: 89832542d20111ed8687db9d93187ff1-20230403
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=tFB5+TDegZ2t6qK9NrZoRPZ2/IQBCygYDbpoNSt9KtE=;
+	b=sWb9vSxtoJFYAIRRO268I6Mbqw01TQT6zwDblxgHhGfAD+/JWaxw6zR85ckgMJpt+c3LyGPPTkFt1QzAprp9/h1tG6J7bJy+Gmj21fcdQNbUOBj/2OmVcrQFwMftNiUPDmbWHT8p0k94xR1J+rjuEO7NZY5WSzqK+yeYCZ+Tdlk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22,REQID:ee2e6d4f-7d83-4dc9-897a-4cde8f783b96,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:120426c,CLOUDID:a5ea422a-564d-42d9-9875-7c868ee415ec,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: 89832542d20111ed8687db9d93187ff1-20230403
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <yong.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 742163494; Mon, 03 Apr 2023 02:25:56 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Mon, 3 Apr 2023 17:15:53 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Mon, 3 Apr 2023 17:15:52 +0800
+From: Yong Wu <yong.wu@mediatek.com>
+To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>
+CC: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil
+	<hverkuil@xs4all.nl>, <nfraprado@collabora.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <iommu@lists.linux.dev>, AngeloGioacchino Del
+ Regno <angelogioacchino.delregno@collabora.com>, <mingyuan.ma@mediatek.com>,
+	<yf.wang@mediatek.com>, <jianjiao.zeng@mediatek.com>, Yunfei Dong
+	<yunfei.dong@mediatek.com>, kyrie wu
+	<kyrie.wu@mediatek.corp-partner.google.com>, <chengci.xu@mediatek.com>,
+	<youlin.pei@mediatek.com>, <anan.sun@mediatek.com>, Yong Wu
+	<yong.wu@mediatek.com>, Bin Liu <bin.liu@mediatek.com>, kyrie wu
+	<kyrie.wu@mediatek.com>
+Subject: [PATCH v6 10/14] media: mtk-jpegdec: Remove the setting for dma_mask
+Date: Mon, 3 Apr 2023 17:13:33 +0800
+Message-ID: <20230403091337.26745-11-yong.wu@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230403091337.26745-1-yong.wu@mediatek.com>
+References: <20230403091337.26745-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next v2 00/14] net: dsa: add support for MT7988
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id:  <168051362530.15794.2568241679390947127.git-patchwork-notify@kernel.org>
-Date: Mon, 03 Apr 2023 09:20:25 +0000
-References: <cover.1680483895.git.daniel@makrotopia.org>
-In-Reply-To: <cover.1680483895.git.daniel@makrotopia.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: devicetree@vger.kernel.org, netdev@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, andrew@lunn.ch, f.fainelli@gmail.com,
- olteanv@gmail.com, davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, sean.wang@mediatek.com,
- Landen.Chao@mediatek.com, dqfext@gmail.com, p.zabel@pengutronix.de,
- linux@armlinux.org.uk, arinc.unal@arinc9.com, Sam.Shih@mediatek.com,
- lorenzo@kernel.org, john@phrozen.org, nbd@nbd.name
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230403_022028_421228_569A195E 
-X-CRM114-Status: GOOD (  14.39  )
+X-CRM114-CacheID: sfid-20230403_022733_828896_35C7A881 
+X-CRM114-Status: GOOD (  11.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,58 +94,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+In order to simplify the masters to set their respective dma masks, MTK
+IOMMU helps to centralize the processing. Because all the dma ranges is
+set in IOMMU, IOMMU knows well the dma mask requirements of masters. After
+this patch, the masters code does not need care
+dma-ranges/dma_mask related information.
 
-This series was applied to netdev/net-next.git (main)
-by David S. Miller <davem@davemloft.net>:
+Cc: Bin Liu <bin.liu@mediatek.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: kyrie wu <kyrie.wu@mediatek.com>
+Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+---
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
-On Mon, 3 Apr 2023 02:16:40 +0100 you wrote:
-> The MediaTek MT7988 SoC comes with a built-in switch very similar to
-> previous MT7530 and MT7531. However, the switch address space is mapped
-> into the SoCs memory space rather than being connected via MDIO.
-> Using MMIO simplifies register access and also removes the need for a bus
-> lock, and for that reason also makes interrupt handling more light-weight.
-> 
-> Note that this is different from previous SoCs like MT7621 and MT7623N
-> which also came with an integrated MT7530-like switch which yet had to be
-> accessed via MDIO.
-> 
-> [...]
-
-Here is the summary with links:
-  - [net-next,v2,01/14] net: dsa: mt7530: make some noise if register read fails
-    https://git.kernel.org/netdev/net-next/c/b6f56cddb5f5
-  - [net-next,v2,02/14] net: dsa: mt7530: refactor SGMII PCS creation
-    https://git.kernel.org/netdev/net-next/c/9ecc00164dc2
-  - [net-next,v2,03/14] net: dsa: mt7530: use unlocked regmap accessors
-    https://git.kernel.org/netdev/net-next/c/1bd099c49f65
-  - [net-next,v2,04/14] net: dsa: mt7530: use regmap to access switch register space
-    https://git.kernel.org/netdev/net-next/c/a08c045580e0
-  - [net-next,v2,05/14] net: dsa: mt7530: move SGMII PCS creation to mt7530_probe function
-    https://git.kernel.org/netdev/net-next/c/6de285229773
-  - [net-next,v2,06/14] net: dsa: mt7530: introduce mutex helpers
-    https://git.kernel.org/netdev/net-next/c/1557c679f71c
-  - [net-next,v2,07/14] net: dsa: mt7530: move p5_intf_modes() function to mt7530.c
-    https://git.kernel.org/netdev/net-next/c/25d15dee34a1
-  - [net-next,v2,08/14] net: dsa: mt7530: introduce mt7530_probe_common helper function
-    https://git.kernel.org/netdev/net-next/c/37c9c0d8d0b2
-  - [net-next,v2,09/14] net: dsa: mt7530: introduce mt7530_remove_common helper function
-    https://git.kernel.org/netdev/net-next/c/720d73635176
-  - [net-next,v2,10/14] net: dsa: mt7530: split-off common parts from mt7531_setup
-    https://git.kernel.org/netdev/net-next/c/7f54cc9772ce
-  - [net-next,v2,11/14] net: dsa: mt7530: introduce separate MDIO driver
-    https://git.kernel.org/netdev/net-next/c/cb675afcddbb
-  - [net-next,v2,12/14] net: dsa: mt7530: skip locking if MDIO bus isn't present
-    https://git.kernel.org/netdev/net-next/c/54d4147a121c
-  - [net-next,v2,13/14] net: dsa: mt7530: introduce driver for MT7988 built-in switch
-    https://git.kernel.org/netdev/net-next/c/110c18bfed41
-  - [net-next,v2,14/14] dt-bindings: net: dsa: mediatek,mt7530: add mediatek,mt7988-switch
-    https://git.kernel.org/netdev/net-next/c/386f5fc9061b
-
-You are awesome, thank you!
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index 969516a940ba..9b96d2436311 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -1757,9 +1757,6 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
+ 	jpeg->vdev->device_caps = V4L2_CAP_STREAMING |
+ 				  V4L2_CAP_VIDEO_M2M_MPLANE;
+ 
+-	if (of_get_property(pdev->dev.of_node, "dma-ranges", NULL))
+-		dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(34));
+-
+ 	ret = video_register_device(jpeg->vdev, VFL_TYPE_VIDEO, -1);
+ 	if (ret) {
+ 		v4l2_err(&jpeg->v4l2_dev, "Failed to register video device\n");
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.25.1
 
 
