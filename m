@@ -4,159 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BE20C761A6
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 15:55:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 190ADC76196
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 16:37:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:References:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J+YVYTGo2pr2JuszrU+NBVUV4x9UUygJDzD3MpMj8JE=; b=jRwyg+uwgPHotsAGaRu5sDr84y
-	UDw+SDXysb86/SEgRVqAURC+qxXhsOLgMUEpeaFYhqy3zmT/nSPqGCoO0Oon2SlHLGs5UL1FbvInR
-	SuhAFFCsh0sO204TlxCChk0MkzuELy483C7vio2bL+DvuAW9GQ4DEKMFOsKwHzagVWtD2EcrjT8Qk
-	7xpYb6gN+lxNFbHAiyPHhS2TZjAcEAF4PCqcV6wtGOOq4QacjqHOpN3bDIX5j++cj3QbmukU1REwE
-	Wh3SmbbLikZhUy38dcGInpMZnbfRQhe1Cad4ACd2drFvO6YLedzoTBSH8PhIOZgLaPIDDMuBNbq3M
-	kkLJjLhg==;
+	bh=EB93KWFVVHsYJcPW2q+9qcCyR1A0d86Bqvk6dO/EHSI=; b=C3XArh8keFJc0+wV5buCPvisbu
+	7AfxkF9QYEnLcwamI1LUN+qfTDV8B/feIR6sDtBKRGhnIqQxekz+yHt2dFa6G0dZMksV9NTWxAkqF
+	WtS69uFsz5xubHHaUvpc37jsN3Xb5HaVh8PFKggcvqWxfTGka3F/8TS/dWwCZvkRnyF9HnwjzXbN/
+	9JQRwWP+istTxtMfn9GoUaZgRI+soYDX4UI/pnS8lh6t6cCSdGapc6XVSvYp0l88ibDqqjPN/N6T/
+	WbHZ9yZ9d73cOFixATV4yiBOy3OLTiiSAwJt+iywoi8FXthNlWFaTvimuaht2ORz8QKlor4BVNQqK
+	gPou86uA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjMWv-00FsnR-1U;
-	Mon, 03 Apr 2023 15:55:37 +0000
-Received: from mail-dm6nam11on20702.outbound.protection.outlook.com ([2a01:111:f400:7eaa::702] helo=NAM11-DM6-obe.outbound.protection.outlook.com)
+	id 1pjNAp-00FyiB-0r;
+	Mon, 03 Apr 2023 16:36:51 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjMWr-00Fsl6-1x;
-	Mon, 03 Apr 2023 15:55:35 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=IWe594003AkZmy1vwknqhEtyaXWhINyqdaBpoecM5OOMk0N17R7s0t9KolodtPjvaiNGdXmB195MkjwSCiKmS8QXdRpgOVWCsACBkcyr87cwBvURNQkYHaz1H7ttlrY14k2SWSyc5aR48qE5NQq4R/05H+IFR8yyB5BRRWo5FH+d0f5suNcVMqWbBSID6woD8eXt1HYZK31Pq4Qrg6o0qlfzqX0x+7VE2bN3ht7S7X7ZxDi3SfzAeXAoaBZr8wZe5u101JgfS1vBkGAE5rx9wbw4H/13ToW5APhHNyhSkS0uAvMAbZH0l6lgciGbWI2hjCy7bkq5Ay886e0voQbNJQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=J+YVYTGo2pr2JuszrU+NBVUV4x9UUygJDzD3MpMj8JE=;
- b=WLHbNqUa1ia1mummG5jxzqDIjbfiUC20qICKttrh5LPtmSBamlkrTOt0+HBwK8SF9z6EfI30nc5oKIkfzCB0+AHpWvFieHnmPweLv2Q5ModfTqGAmnFwqdpS8QevoJt9bS5vmOoHpqL0ZumUkGS9yZyIMyFrlkGQE51DbXkDmB4RM1BSQ8wHQ2C1IMGJAgVolnQYJTqmLFtMvDMgKOl7861zMoCtDS4tU1zlNo0GQMgTZghEUSZhqkV+THvPoagIcepzaeoPchWfTwqKQqV4xu2bOhWlbC2wRr9QutEZQg1tBGUIXFpNmdXY7l0ZI4JX8+eBJ9OHo0deKie4UsvPTA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=corigine.com; dmarc=pass action=none header.from=corigine.com;
- dkim=pass header.d=corigine.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=corigine.onmicrosoft.com; s=selector2-corigine-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=J+YVYTGo2pr2JuszrU+NBVUV4x9UUygJDzD3MpMj8JE=;
- b=a8cKyMUJ+EzSt5q+3TrMVeTfcX5c8xmvpB4tpM4Bn02lqaRvqx51lk6FDuYvqL9xQ9UHV7mAZKr61H51Wt3pYnuPpPlYS70u+JQTy2a9GoPGc+Xs27cIAxGYg8VKPMuJHc2pB174e+1Qo4XbdZQO5BQ116loQRdjQ9p6xQ5m/ig=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=corigine.com;
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com (2603:10b6:510:78::6)
- by CH2PR13MB3719.namprd13.prod.outlook.com (2603:10b6:610:97::9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6254.33; Mon, 3 Apr
- 2023 15:55:30 +0000
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::c506:5243:557e:82cb]) by PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::c506:5243:557e:82cb%5]) with mapi id 15.20.6254.030; Mon, 3 Apr 2023
- 15:55:30 +0000
-Date: Mon, 3 Apr 2023 17:55:20 +0200
-From: Simon Horman <simon.horman@corigine.com>
-To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Jose Abreu <joabreu@synopsys.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Vladimir Zapolskiy <vz@mleia.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>, Vinod Koul <vkoul@kernel.org>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Bhupesh Sharma <bhupesh.sharma@linaro.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
-	linux-arm-kernel@lists.infradead.org, kernel@pengutronix.de,
-	linux-amlogic@lists.infradead.org, linux-oxnas@groups.io,
-	linux-sunxi@lists.linux.dev, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next 01/11] net: stmmac: Make stmmac_pltfr_remove()
- return void
-Message-ID: <ZCr26P9DGZFZy3Vq@corigine.com>
-References: <20230402143025.2524443-1-u.kleine-koenig@pengutronix.de>
- <20230402143025.2524443-2-u.kleine-koenig@pengutronix.de>
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230402143025.2524443-2-u.kleine-koenig@pengutronix.de>
-X-ClientProxiedBy: AM0PR02CA0197.eurprd02.prod.outlook.com
- (2603:10a6:20b:28e::34) To PH0PR13MB4842.namprd13.prod.outlook.com
- (2603:10b6:510:78::6)
+	id 1pjNAl-00Fygw-2H;
+	Mon, 03 Apr 2023 16:36:48 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 3E6F0621C3;
+	Mon,  3 Apr 2023 16:36:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1C00CC433A7;
+	Mon,  3 Apr 2023 16:36:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1680539806;
+	bh=Kt9moSViwJx5yBWxvRA4G9k3CxuCk+dcQWzL3AwN3FE=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=ahWI5wtUMMDF/JK6RX094BK6NZ4T3EfR3FIlVMMZneVIfsnYjpL09ROA1rQ6N5jfQ
+	 sRX9euqVfFzODLoLQso+AiLu0FoMjhWvYGA5C7Cdd/+NzJiHkqmP5bCMRxQPmEli69
+	 URsh71mUZUFo3QSt1BlR6mhlS4XBNMQXcRgbncFMGYq8HoteBav1rRoR3IrUzF67dp
+	 Vs/ZGSfMozsTso9jBogHMNAOICUDN1o7lp1uSHkGCUmL7mxK1k7BW5g/kCsM1bVBFr
+	 8dtlBK8VMT8B6Om9g1PGZ+jeQxgi5TI2dbmkKnwTP3tQ7/cI3ydNFRXEp4NS7lXPPF
+	 Is0zZPWMKCb/w==
+Received: by mail-lj1-f176.google.com with SMTP id o20so28053578ljp.3;
+        Mon, 03 Apr 2023 09:36:46 -0700 (PDT)
+X-Gm-Message-State: AAQBX9fRNacyGe6iWCzKoSjpU5YHBy3guJ+qfgu20AZuy8FS9jjeS2RX
+	om3a56tPXVapx6x33DWe7UZuKD1PVk0OojcoEg==
+X-Google-Smtp-Source: AKy350YI8MSRmypV7liUfnAR04I0V60fJ/SJAQ6mMQYLy3vXtuAOgKEuMnQZv1aQSY0uDcu20Z1RIZDPBPLHhmfbBBA=
+X-Received: by 2002:a2e:9dda:0:b0:2a6:199a:bd38 with SMTP id
+ x26-20020a2e9dda000000b002a6199abd38mr30959ljj.10.1680539804050; Mon, 03 Apr
+ 2023 09:36:44 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR13MB4842:EE_|CH2PR13MB3719:EE_
-X-MS-Office365-Filtering-Correlation-Id: 05cc14f8-0c86-4f96-a3d3-08db345bd974
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	WDBP7MA6GGybR5O+n+MWC64viQtZhUZ6TchTFeP5Ztpeqb2dhVKRWElVLRXBMohaOnL/B+AYrs+QQ4gM1vTmgf87VamsfFtXQpBd766KGpXMHjXM72DjW1DBR4Ikg/U6OsMkBtO9UqhLAE91JAlwbEr5MNB9QuAE6fja+PgV74F7vLtXS8NgZGQxiEG5Afz6PuTa8byJJNJDQwqKLpAjoqus/VHhkXS6npla17SL4F2uDQaGtpcnHRzGVIgiAW9P7FjYgekcVo1mfv/z0rCng+3RRu+6yQDCtvPXtpF6Do8j2tQNXmBrQ9Sn+wsv2sK/xL056OerYhxsXUfb5EHFEgyWTg+Rfg3bjhBLRJZCpxzZQpcUvFbVkT+5udUTWF3mir7b6XV3N4qmSoseeebN23D+GrCPzWUngxMb7rOjhI9q4FxbEfWxJpqtahMz9VoKvq3fosQ/SzFGjtUVNRqNdohgYLF5Ri8iFXZ863q8nhBxsqv89cU+8fagkgx0xXduRROLPlaJkgVvQl4mZLR96ZVKhOOua3dfFHuo0D7/A7K9hPf0srFyKJJ6EXG0XtYK
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR13MB4842.namprd13.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(376002)(39830400003)(396003)(366004)(136003)(346002)(451199021)(6916009)(8676002)(4326008)(66946007)(66556008)(86362001)(66476007)(2906002)(41300700001)(316002)(54906003)(478600001)(36756003)(38100700002)(8936002)(2616005)(6486002)(5660300002)(6512007)(7406005)(7416002)(186003)(4744005)(6666004)(6506007)(44832011);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?QmhLQ2l4b0w2UGlHa3BURUVxS2tkdTk1WWpWbXN2dWJZaWxsaG1ISGwzRjZQ?=
- =?utf-8?B?V3dFNnNrNW9vdUZ6ODFPS3lNdVRjR1VrZktFWDlyMVY4cmFPb25FWDNpN3ZW?=
- =?utf-8?B?NzlqVko1TWlucElqNkFRMVNQdDF6UTd3U3ZsRlQ1alZWbFJNbTJhQ1dOTVFZ?=
- =?utf-8?B?U2swN1hYeVladUJXSGM5OEhjQmZjQlRXdXRmQjc0SUVZYzFoMUh5M1dCcEtB?=
- =?utf-8?B?RTRLcFBnWUJaUS8vVU5nSW40cFhUMnNoUU9NdjVyaU4vQUl5TmpRbkE3MWp3?=
- =?utf-8?B?RDN6OFBNa09xK2dQcmc0b29ZYW10M3AvWFhqZFBwYU82YVg3RnVnSlpTeTM3?=
- =?utf-8?B?dVVLbGtsMDEvSmM0V01hOVRtWHFMVFZPM1VLb3o2enk3MGNQQzdoYlhySU9O?=
- =?utf-8?B?TWZSbEc5YWpCTWpPZ1BrbWhlb1NkNUhVTHBlKzY4eXBMTHBScThvWUM3YUQw?=
- =?utf-8?B?cTdjQ2lBdEZnc0tyZ3ZBdE9JR29zdlRodllYUk5BajYvdGVPdWM4K2d2RURt?=
- =?utf-8?B?L1o2TDBlOEhrenNOR0JmTmxUTFowWDVQblJoRmtKc2tKcTQ5WUUveHN1dXpN?=
- =?utf-8?B?dzhzSFlvZFRmZzBDampvbjBsOFF6TEl2K055ZUdWZWsyc0JxVHhSRlpobmpq?=
- =?utf-8?B?SUZwNHNJWnZVRXdkaytxK2F2TCt2bXBuaGx3MTVuUDVsZ05iQTdyVDU5QUF5?=
- =?utf-8?B?ZUVZRUNFYU9XdGFCSmI2RVVQR2FyNkU3WXliRC94cks2cDV4U3JiS0dqc1Bu?=
- =?utf-8?B?VFlrZWx1dXM4UCtTMHlsZkFFaUNjaVJUbUlwSnBoblRhdEhHeU1jNEYzeFIy?=
- =?utf-8?B?VXhjMHo2bHRLeG9QNmw0Y3c3ODhITnY4bVR3a3QrZ3JKNFgrL1I2bjE1ZFIr?=
- =?utf-8?B?cXp3aUVjVDhRMHFaS0lHLzJxRzVaUTdybUYzQW10dXdLMWRZUnhGZUNmNENE?=
- =?utf-8?B?eW90bmxiZmZ5MG5scndhMkZwQ2J3bmJNZThybHlnNkxPKy9DeUZ5c0pJVnVO?=
- =?utf-8?B?Z04yMXZ4T1NVK20ySDB5RFB5Y2NwZ09SaUUxMFFRYmhLL0FrMTErVGZXRHRm?=
- =?utf-8?B?dldqNEQ5S21IKzR2MGJiSlptcUpJQW9ud09ZTzhwTGtsZ3ZwbmRieHgvNFhY?=
- =?utf-8?B?b1FWeUZZMFBQTTZpV3kyWkRpLzJaUGN3akZyTUJFcCt0YWlBMHhqWHBxbkFy?=
- =?utf-8?B?NDlrK0U2L2tkVytPWGIvamlOMzdWVnd6MVBSTkNzdnlYYk9XM3E0a2VveGJq?=
- =?utf-8?B?UXIxb1p2ZW9PUHhBakROckU1TEpQUWdKaHQ4RnhTYjUybmVmY3FhUTRid1l1?=
- =?utf-8?B?Tm84S1VURVU5LzhLRHpwVUhXbWdHNnJQS2p5NWt5bnNDa2FrazZTVVRBdnNz?=
- =?utf-8?B?Z0ZFZU9zYjFnMzRQUHFqenFxMWp0d3pMU2ExYmN3aTArL0o2SGxUYVlPOXcx?=
- =?utf-8?B?MWZ5R3MxQTBpNEJzRTd4b0xoM0pnVkkrQk5sQkhOeXlYRW9tNkd4MlhRZXJn?=
- =?utf-8?B?REQzQzNoMkJuM3FGV28wLzk3cU1jVXpJSVRQeW4zYmg1cXhXcGwwUy9tYnFN?=
- =?utf-8?B?eTIrSHpDYmJndVZVdXV4MzN4UFJ0S2YrNHF4QlBzSmZ3UnFtK2tzek9qRG56?=
- =?utf-8?B?enRTVmpwT1Rablp1dUU0aVdUSE8yZWFMc2UvbXFnT0drNmVFdGNKSURSVlJ4?=
- =?utf-8?B?dzJZWTVtQ3NRY1ZqMUdGenIzZEQ3SlFNUnM4SmhtMDdVcFBUdHk0SEpuWCtS?=
- =?utf-8?B?aTNzZUNkN1RqNkxEMk92N0NmYmtGb3NIN3gyNHNDNUtNSkE5a0syU29BUThD?=
- =?utf-8?B?bmdvaVJqZGZzRVlSU1RQUlVtdXV2dm14SEhlUFB4OFZBR1hhdmtPanp0ZE8v?=
- =?utf-8?B?SFpXOW1qbS96UUJuVHZDWFJray9FY29qZjFURHZRemFaVFFlQkdQdG80SHQx?=
- =?utf-8?B?T3o4b2tzczJpR09mWEgxdmd4S2ZjbDJuSWlNMWJWRnB3MzBmeVJON0JpcjlQ?=
- =?utf-8?B?NFBpTG5tZVlqODl6clQwWWZmbS9qYjhJa0NvYXFVR3hWSUU5WUlad2dhZmJN?=
- =?utf-8?B?amtVd3o4ZXVoOE1aQkhuU1NIbXllTmdVSCs3WmRZZlJvQStDcENxOTdKVk5D?=
- =?utf-8?B?M3l1a25OV1F4MG11RHF0MnZ5eWZLYmFCelNrbk9mMWtDYS9iYlNLL3pvNjVo?=
- =?utf-8?B?RkZZeW5ya2p5MFNrR1BnYmc5eDcza0FFR3ExUEF1Q3Y0N2RIeGRlYzJzdjdr?=
- =?utf-8?B?R0RVejRpN2N6YTNVdU05L1R3bHJnPT0=?=
-X-OriginatorOrg: corigine.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 05cc14f8-0c86-4f96-a3d3-08db345bd974
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR13MB4842.namprd13.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Apr 2023 15:55:30.1271
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: fe128f2c-073b-4c20-818e-7246a585940c
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Mi9ouKvLIseYSWu+x4/dzhuaT4Kd3OVKmu3Yn7inqxlbAOfeIqnoTDZyBnyWeY9OITutOt71PTxLoBlQP+UZRyicvCOPgS/BGQYNhSem74I=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR13MB3719
+References: <20230403071929.360911-1-jstephan@baylibre.com> <20230403071929.360911-3-jstephan@baylibre.com>
+In-Reply-To: <20230403071929.360911-3-jstephan@baylibre.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Tue, 4 Apr 2023 00:36:32 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_-cd0gQ6AEK_bLZf6m87M0G7Ag_AYKKPBFyBXGgh-2y1g@mail.gmail.com>
+Message-ID: <CAAOTY_-cd0gQ6AEK_bLZf6m87M0G7Ag_AYKKPBFyBXGgh-2y1g@mail.gmail.com>
+Subject: Re: [PATCH 2/2] phy: mtk-mipi-csi: add driver for CSI phy
+To: Julien Stephan <jstephan@baylibre.com>
+Cc: Phi-bang Nguyen <pnguyen@baylibre.com>, Louis Kuo <louis.kuo@mediatek.com>, 
+	Chunfeng Yun <chunfeng.yun@mediatek.com>, Andy Hsieh <andy.hsieh@mediatek.com>, 
+	Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	"moderated list:ARM/Mediatek USB3 PHY DRIVER" <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek USB3 PHY DRIVER" <linux-mediatek@lists.infradead.org>, 
+	"open list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>, 
+	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, 
+	"open list:DRM DRIVERS FOR MEDIATEK" <dri-devel@lists.freedesktop.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230403_085533_862709_39CA8509 
-X-CRM114-Status: UNSURE (   9.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230403_093647_817443_A1600D58 
+X-CRM114-Status: GOOD (  13.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -171,16 +90,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Apr 02, 2023 at 04:30:15PM +0200, Uwe Kleine-König wrote:
-> The function returns zero unconditionally. Change it to return void instead
-> which simplifies some callers as error handing becomes unnecessary.
-> 
-> The function is also used for some drivers as remove callback. Switch these
-> to the .remove_new() callback. For some others no error can happen in the
-> remove callback now, convert them to .remove_new(), too.
-> 
-> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+Hi, Julien:
 
-Reviewed-by: Simon Horman <simon.horman@corigine.com>
+Julien Stephan <jstephan@baylibre.com> =E6=96=BC 2023=E5=B9=B44=E6=9C=883=
+=E6=97=A5 =E9=80=B1=E4=B8=80 =E4=B8=8B=E5=8D=883:20=E5=AF=AB=E9=81=93=EF=BC=
+=9A
+>
+> From: Phi-bang Nguyen <pnguyen@baylibre.com>
+>
+> This is a new driver that supports the MIPI CSI CD-PHY for mediatek
+> mt8365 soc
+>
+> Signed-off-by: Louis Kuo <louis.kuo@mediatek.com>
+> Signed-off-by: Phi-bang Nguyen <pnguyen@baylibre.com>
+> [Julien Stephan: use regmap]
+> [Julien Stephan: use GENMASK]
+> Co-developed-by: Julien Stephan <jstephan@baylibre.com>
+> Signed-off-by: Julien Stephan <jstephan@baylibre.com>
+> ---
+>  .../bindings/phy/mediatek,csi-phy.yaml        |   9 +-
+>  MAINTAINERS                                   |   1 +
+>  drivers/phy/mediatek/Kconfig                  |   8 +
+>  drivers/phy/mediatek/Makefile                 |   2 +
+>  .../phy/mediatek/phy-mtk-mipi-csi-rx-reg.h    | 435 ++++++++++++++++++
+>  drivers/phy/mediatek/phy-mtk-mipi-csi.c       | 392 ++++++++++++++++
+>  6 files changed, 845 insertions(+), 2 deletions(-)
+>  create mode 100644 drivers/phy/mediatek/phy-mtk-mipi-csi-rx-reg.h
+>  create mode 100644 drivers/phy/mediatek/phy-mtk-mipi-csi.c
+>
 
+[snip]
+
+> +
+> +#define REGMAP_BIT(map, reg, field, val) \
+> +       regmap_update_bits((map), reg, reg##_##field##_MASK, \
+> +                          (val) << reg##_##field##_SHIFT)
+> +
+
+Use FIELD_PREP() macro  so you can drop the definition of SHIFT symbol.
+
+Regards,
+Chun-Kuang.
 
