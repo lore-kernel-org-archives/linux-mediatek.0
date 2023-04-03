@@ -4,61 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06286C76196
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 12:43:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EB7BC76196
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 12:52:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FLPlu0sWNUCD/FCOc4F16aGgvco0RMjmGGMgtnt3I0E=; b=Wx6MMfUgZzJN7z
-	7NyyBpGWnXesJxtqIYlwmv5UVj/45NpUIbCZEBiV8TjfZH989jqZX+l/xd9JzRG8Vdpn6vgMFnGep
-	E27ERgQUAdpJTYGDx5JDn4vPwdl8l1zT2wBhKZ0gpgiBl7+1DND4N79MiuckkWAOWX1zx+WNHVKCx
-	QViS5DEFr/gAlnpdJFxKoG64jPzzQ19JlqJhKcV3x81+9w9vxsUTp3bixqCLBiqv0Srj51NBOQ71I
-	1UZa3JlGV/t0VAPjqoRHlAB+PPlO74ES/OkXE3qD4jOHOwapcr32VMNwr8Vy6uDpe+6gt629UHg0X
-	/jCic8Z9jLJFMlNefd+g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YMICsUzMAChsX8gX6T4Kb0+13sZIfFeReaM+TBpCFVA=; b=lnC9891hbU0gcsPW8J631ThxUQ
+	KpAylfJwRxE++eL+n5vOsswzTPcIre8O1RGka+cVdlC9+zi3RopYJgUwNNzeZxnn7MwWPYT7g9q/z
+	GTIhSfWFAgVfBrgnSfGRRFX3f/U5gdbHC/K7AE4JnVCvs8XKhPrDuficv+VAh3ECWxDcbqU7cI6hC
+	COW98DJSQoLliz/aZmK9SJ6ej3TS2cV7MELCrIn0v94gNzO2GXVxqtRATwPF62XD2sPx/2u6lybIQ
+	FdU3YaT/RLwY4ZNKGFpYcxUEtp8ZpqOGqJ9FzoPlglasiIx3RRhxscl7z45RIdkQkU7yZFChiDTJc
+	hRFcmfCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjJXG-00FJqY-0B;
-	Mon, 03 Apr 2023 12:43:46 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pjJg1-00FLqN-3D;
+	Mon, 03 Apr 2023 12:52:50 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjJXB-00FJor-3D;
-	Mon, 03 Apr 2023 12:43:43 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	id 1pjJfx-00FLpH-0g;
+	Mon, 03 Apr 2023 12:52:47 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 107476603105;
-	Mon,  3 Apr 2023 13:43:40 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1680525820;
-	bh=pfKKC24shtvA/rXAR9B/Z1hLIkyt7OJi4x4sgnOzJ4w=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=E+aRNVEux5sMeLcJ+vqHmQ5aDu98LjC4Bo2QRef0rixMvao06HXBb+qFWc+tSis7K
-	 Liy8m21xm8aQetY1koAG4OJFoStg9e/TQCy4NSEN7UqfGpjxNcebUI2Di5pdEQSIWE
-	 82falL+mlPGFsCKcrEPSEqiDARZ33Ks0IFi8YixFnxRaN9P7jLwBgPpcGAyM04KAcy
-	 Of85MiIOq4BkW/IqSim9YFPMf0vJTJB8/r+4nIvR7WzYs6GoTZMxYQ3XnhfKAvu/RB
-	 RBIZQt3gXzvDoQ3XAOZESH5at6jdwGmx0B6jflGyeTfaYKdJqZ+U9w2HsxzqPv3ncm
-	 DsrKSa9YYwyOg==
-Message-ID: <601a8435-8e2a-2c25-5fe3-40be62269469@collabora.com>
-Date: Mon, 3 Apr 2023 14:43:37 +0200
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 57A7261A60;
+	Mon,  3 Apr 2023 12:52:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D72D4C4339B;
+	Mon,  3 Apr 2023 12:52:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1680526363;
+	bh=I1U8a0CpEbn1WglTzJbuJSWzo+Oe4sN1VaS9yf+8xSU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=L+5pqbG9ruhm88XVe/eA9FPu3JmXE9oL3nixjMsXOvIBRnz9Pi3Dgvv+1rsB7U98S
+	 26J0PCa/eZqYWTY2hbsEY4n5Kww7Y/PqzDZIQUS8Ch3sJk13FIYZyPuGhEJS7NLSyn
+	 n4SbzQwZsB8CRH4Tj2wRlm/+QgBRE5/1isFV/vB5sEXAqVm8b5vp/V+cdS4t3wXf0/
+	 nTHXTwRpCF2VV8BBCQNE6si/vW53sseo5V6ex2wUmjUfH1gB0lwTDmdzT7t7FS43yb
+	 ymIry9M597CCJGpoRZGpWm0KYhMxVhyDl8aRKAmJ10uaEv5QdqbFoQ2TbpEsjEQrCh
+	 pQTnIQ5td31iA==
+Date: Mon, 3 Apr 2023 14:52:38 +0200
+From: Simon Horman <horms@kernel.org>
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Jakub Kicinski <kuba@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+	Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] net: ethernet: mtk_eth_soc: use be32 type to store be32
+ values
+Message-ID: <ZCrMFtTxZSjqjdTZ@kernel.org>
+References: <20230401-mtk_eth_soc-sparse-v1-1-84e9fc7b8eab@kernel.org>
+ <c7684349-535c-45a4-9a74-d47479a50020@lunn.ch>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.1
-Subject: Re: [RFC] arm64: dts: use size of reserved partition for bl2
-Content-Language: en-US
-To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
-References: <20230403105818.29624-1-linux@fw-web.de>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230403105818.29624-1-linux@fw-web.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <c7684349-535c-45a4-9a74-d47479a50020@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230403_054342_162209_6C761517 
-X-CRM114-Status: GOOD (  11.73  )
+X-CRM114-CacheID: sfid-20230403_055245_304165_BA2423AD 
+X-CRM114-Status: GOOD (  15.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,34 +81,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 03/04/23 12:58, Frank Wunderlich ha scritto:
-> From: Frank Wunderlich <frank-w@public-files.de>
+On Sat, Apr 01, 2023 at 05:55:35PM +0200, Andrew Lunn wrote:
+> On Sat, Apr 01, 2023 at 08:43:44AM +0200, Simon Horman wrote:
+> > Perhaps there is a nicer way to handle this but the code
+> > calls for converting an array of host byte order 32bit values
+> > to big endian 32bit values: an ipv6 address to be pretty printed.
 > 
-> To store uncompressed bl2 more space is required than partition is
-> actually defined.
+> Hi Simon
 > 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-
-If this doesn't get changed anymore, I'm fine with it... but a question arises:
-did you send patches to add your BPI-r3 board(s) to upstream u-boot?
-
-
-> ---
-> I used the definition i got from mtk used in their SDK uboot.
+> Maybe make a generic helper? I could be used in other places, e.g:
 > 
-> Openwrt uses also the first reserved partition to give bl2 more
-> space:
-> 
-> https://git.openwrt.org/?p=openwrt/openwrt.git;a=blob;f=target/linux/mediatek/dts/mt7986a-bananapi-bpi-r3-nor.dts;h=f597b869abc80d1a73f44ebb85ad4da17376bb52;hb=HEAD#l22
-> 
-> so imho it should be same in mainline to not require complex bl2
-> compression.
+> https://elixir.bootlin.com/linux/latest/source/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_main.c#L6773
 
-Regards,
-Angelo
+Hi Andrew,
 
+do you mean something like this?
+
+diff --git a/include/net/ipv6.h b/include/net/ipv6.h
+index 7332296eca44..cff6c1177502 100644
+--- a/include/net/ipv6.h
++++ b/include/net/ipv6.h
+@@ -935,6 +935,11 @@ static inline void iph_to_flow_copy_v6addrs(struct flow_keys *flow,
+ 	flow->control.addr_type = FLOW_DISSECTOR_KEY_IPV6_ADDRS;
+ }
+ 
++static inline void ipv6_addr_cpu_to_be32(__be32 *dst, const u32 *src)
++{
++	cpu_to_be32_array(dst, src, 4);
++}
++
+ #if IS_ENABLED(CONFIG_IPV6)
+ 
+ static inline bool ipv6_can_nonlocal_bind(struct net *net,
 
