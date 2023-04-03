@@ -4,79 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4528C76196
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 03:31:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3ABFCC76196
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 03:49:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XFDJK+O6b4HFOKcAfQuQl4p4wuO9jnRvSF0HKVPNXU8=; b=KitF9SIs+q//Q1utzNfbrB669U
-	n+t7uNAjoYey5JXdGlUZE9Cgj/sDvmr4wbS+nG4KHB1SnzI1sPE2HJvGhqrgajZ6Z/xcORVYCsjnf
-	/LP8LSmvmmVxVf6NpB+mowl5sux4sGnIBIpknkY6BiN/B+/CTn9KEHnKNWarQ2yLOw0oqMmfdqNh1
-	kgfc8nzS8P97yYEaUOJX+Hhj+VXXqIxkGqO1Ad2Q6kcxf23qiDNSZjCv1d2PPsPXI2LCK1BlAWCo6
-	pl/7BdX1qreg4ENiUwDdxqDGfiUiD8HKcHDRWt8fielJsaoFT5jOB8bv7IJ2qDWtxOAtlTaZqRZ9v
-	fp13274g==;
+	bh=ao+Wahp/GhQ288GMqvqm/MI/NAwzoqzmMWGCLJxE248=; b=NXW4lJ8Y4+EHs5rjpPaGKlfhme
+	DBH5u4EfNz6TEw+9IDx2IaNKAHYa98D3ujD/a8quuRhOx75dkKYpaM7HfIF9CingutJW+gA09mFYL
+	S9ttLZh5C15/4cwl3Uz2rkCd4JdtpJwxcjgb6jHYxjXlzAdw3SI82dPSTgtr/oCCD3uPlj6r3wvja
+	zAhJRveq8ek++JPFRaieT4LM2/i5GqEzt2zpP6pcJUQ1HPeg77Dgh7aqVPbCLgK79vrb0UJ9SBEyQ
+	E61Mr0SXR0jbGYmPNq4Nmt2LVzKqQWfnAS+C42jPrqAPnbNLhI448x3aPqDtmyxr/D9jI3SS+aqxe
+	i7SA4JuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjAuZ-00E30m-2P;
-	Mon, 03 Apr 2023 03:31:15 +0000
+	id 1pjBCM-00E4Lk-2F;
+	Mon, 03 Apr 2023 03:49:38 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjAuV-00E2zs-2K;
-	Mon, 03 Apr 2023 03:31:13 +0000
+	id 1pjBCI-00E4LB-2I;
+	Mon, 03 Apr 2023 03:49:36 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 0C97C61451;
-	Mon,  3 Apr 2023 03:31:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 55D68C433A1;
-	Mon,  3 Apr 2023 03:31:10 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 3C2E661269;
+	Mon,  3 Apr 2023 03:49:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A5349C4339B;
+	Mon,  3 Apr 2023 03:49:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1680492670;
-	bh=XFDJK+O6b4HFOKcAfQuQl4p4wuO9jnRvSF0HKVPNXU8=;
+	s=k20201202; t=1680493773;
+	bh=RxJpHw73hoGYorA2r+/CTCYjP7eAFX8nWAp6L6EMV0U=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=EBroFlBh0WrZPTUY9gGFPwiazQ8rJqOdGs9OOSyDIbHaNW9O96+hKKrju6N6QCF2z
-	 QrQq3zXPsKwmUXkl5iYWQJIxFKVRgCyK6tXodZoRqiFpLikV3skwZhEQ+cVL3eaG8D
-	 A7MvEHopu0PIjEnID3ILp9ly/F2UopGpmMlGj44xZ2HyXw7NYcKd7rvpmQSyQLr3UP
-	 6nDzJT+lkinEi2v0e/V/WuOyt91zahDhRBJ536DPqTzjKvJkYnye9TetERuz6aCi9z
-	 dUOZaxyB8JVdvzOa8Mw6LNHs7FsuO+oBj4lZCeFCPSGGvvs05Hu3hedFP+hs99JF0G
-	 yoNO1CA6E1Zxg==
-Received: by mail-lf1-f46.google.com with SMTP id g19so23125838lfr.9;
-        Sun, 02 Apr 2023 20:31:10 -0700 (PDT)
-X-Gm-Message-State: AAQBX9eBi7RqJH/qYR04KUjzs182N9nUle8VUZuLYfZRwzxiXs2Bl3NU
-	qHW5D6+cD3Ehf0A4F1AvYdPZqwVSTWTbSZw3qw==
-X-Google-Smtp-Source: AKy350b60je93Fp8ACgYD+IGmx2jUC2NXDaO2wPWl8QAhfUwxXgOh//lf4WQhYJln+d7xy3DKELl/d6gVGnR6WOBSc8=
-X-Received: by 2002:a19:7419:0:b0:4d8:62e5:4f66 with SMTP id
- v25-20020a197419000000b004d862e54f66mr10062745lfe.7.1680492668344; Sun, 02
- Apr 2023 20:31:08 -0700 (PDT)
+	b=iKAIkzypTgu9giAoG6xU625fzG6AtvfoUTOHL+BUadnxUw5ztNmcinq/2G9tBoKI1
+	 bdDPzNoGUxpiVzoJZPe/CjVG+ef4+MWcBLicmuFflNSI5a9aIVtTxyqT4M0zPI2j1x
+	 hhkn3LxRHyHnnOETQFC4Y6sb0pswPHo+sEUVap12xmtERgA7xFB+c0HGD41FTBqDFn
+	 Ci+qcN2lG5l6l/0/D72MbRY0JPVJXdjWNKxbQAXuVXabf46fyP4ApYEW2EdntCUfLq
+	 HKeU8O++/qS7E3SahhL2FpCahDG7OiKqDg6mFehsNLBHNySwbIYaOzEkQXijPr9G9x
+	 cYrYcxi0QWEWw==
+Received: by mail-lj1-f178.google.com with SMTP id e9so13639190ljq.4;
+        Sun, 02 Apr 2023 20:49:33 -0700 (PDT)
+X-Gm-Message-State: AAQBX9eEfvc0tyDjzkQiX3G/kizysVH7dXUqEGSzrJ+mBEzqNgXMbVDZ
+	joWpcUVGo8rjhpmJTZUoXNmmy0bvxvNkIFnvgg==
+X-Google-Smtp-Source: AKy350Y5F5clcljoaW1Uvm+lBYJtHhVmDtJb1H1qxvqqXq2CY6nnIt8Wpo4MqvAB7LhXxOGMUlAHESfrdkS7yH+3xyg=
+X-Received: by 2002:a2e:7017:0:b0:295:bb34:9c2 with SMTP id
+ l23-20020a2e7017000000b00295bb3409c2mr10369981ljc.10.1680493771688; Sun, 02
+ Apr 2023 20:49:31 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230321121859.2355-1-nancy.lin@mediatek.com> <17831605-5c9d-9c92-d190-04f91060ace4@collabora.com>
- <CAAOTY_8ZAxVSLnJ1u5snsRgkszV7ixwhjUS2nDimE_Lpj=cUCA@mail.gmail.com>
- <97a5f383-38f5-e8ea-e1d8-489b690e4521@collabora.com> <CAAOTY_9_vn-m2jTaaHkFDV+v2-LeaAxtCLNNnOxZq5Httb-TAQ@mail.gmail.com>
- <CAGXv+5FJCuG_zHnaKZ=baNzKAWKLEe3jZnghNAxuGv7i7L6e7Q@mail.gmail.com>
-In-Reply-To: <CAGXv+5FJCuG_zHnaKZ=baNzKAWKLEe3jZnghNAxuGv7i7L6e7Q@mail.gmail.com>
+References: <1680072203-10394-1-git-send-email-xinlei.lee@mediatek.com>
+In-Reply-To: <1680072203-10394-1-git-send-email-xinlei.lee@mediatek.com>
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Mon, 3 Apr 2023 11:30:56 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_9Dbtubah3ndj9+FeYDh7D42k6-BtHrYMNc=CP6GL6uFA@mail.gmail.com>
-Message-ID: <CAAOTY_9Dbtubah3ndj9+FeYDh7D42k6-BtHrYMNc=CP6GL6uFA@mail.gmail.com>
-Subject: Re: [PATCH v30 0/7] Add MediaTek SoC DRM (vdosys1) support for mt8195
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com, devicetree@vger.kernel.org, 
-	singo.chang@mediatek.com, Nick Desaulniers <ndesaulniers@google.com>, 
-	linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, 
-	Nathan Chancellor <nathan@kernel.org>, "Nancy.Lin" <nancy.lin@mediatek.com>, 
-	linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, 
-	krzysztof.kozlowski+dt@linaro.org, clang-built-linux@googlegroups.com, 
-	Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Date: Mon, 3 Apr 2023 11:49:19 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_-bgkkqnfshmdNz-NP7TqdqE9Qdf-PyEOc6iANPmY+bRw@mail.gmail.com>
+Message-ID: <CAAOTY_-bgkkqnfshmdNz-NP7TqdqE9Qdf-PyEOc6iANPmY+bRw@mail.gmail.com>
+Subject: Re: [PATCH] drm/mediatek: dp: change the aux retries times when
+ receiving AUX_DEFER
+To: xinlei.lee@mediatek.com
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@linux.ie, 
+	daniel@ffwll.ch, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230402_203111_831758_8D92A1BF 
-X-CRM114-Status: GOOD (  37.74  )
+X-CRM114-CacheID: sfid-20230402_204934_833295_9C3294DD 
+X-CRM114-Status: GOOD (  18.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,114 +85,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Chen-yu:
+Hi, Xinlei:
 
-Chen-Yu Tsai <wenst@chromium.org> =E6=96=BC 2023=E5=B9=B43=E6=9C=8830=E6=97=
-=A5 =E9=80=B1=E5=9B=9B =E4=B8=8B=E5=8D=887:05=E5=AF=AB=E9=81=93=EF=BC=9A
+<xinlei.lee@mediatek.com> =E6=96=BC 2023=E5=B9=B43=E6=9C=8829=E6=97=A5 =E9=
+=80=B1=E4=B8=89 =E4=B8=8B=E5=8D=882:43=E5=AF=AB=E9=81=93=EF=BC=9A
 >
-> On Mon, Mar 27, 2023 at 11:17=E2=80=AFPM Chun-Kuang Hu <chunkuang.hu@kern=
-el.org> wrote:
-> >
-> > Hi, Angelo:
-> >
-> > AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> =
-=E6=96=BC
-> > 2023=E5=B9=B43=E6=9C=8824=E6=97=A5 =E9=80=B1=E4=BA=94 =E4=B8=8B=E5=8D=
-=884:38=E5=AF=AB=E9=81=93=EF=BC=9A
-> > >
-> > > Il 24/03/23 00:25, Chun-Kuang Hu ha scritto:
-> > > > Hi, Angelo:
-> > > >
-> > > > AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com=
-> =E6=96=BC
-> > > > 2023=E5=B9=B43=E6=9C=8823=E6=97=A5 =E9=80=B1=E5=9B=9B =E4=B8=8B=E5=
-=8D=884:58=E5=AF=AB=E9=81=93=EF=BC=9A
-> > > >>
-> > > >> Il 21/03/23 13:18, Nancy.Lin ha scritto:
-> > > >>> The hardware path of vdosys1 with DPTx output need to go through =
-by several modules, such as, OVL_ADAPTOR and MERGE.
-> > > >>>
-> > > >>> Add DRM and these modules support by the patches below:
-> > > >>>
-> > > >>
-> > > >> I've tested v30 again on MT8173, MT8192 and MT8195 based Chromeboo=
-ks.
-> > > >> Green light from me.
-> > > >
-> > > > I'm curious about how you build code and test on Chromebooks. Do yo=
-u
-> > > > build in cros environment or pure linux
-> > > > (https://archlinuxarm.org/platforms/armv8/mediatek/acer-chromebook-=
-r13).
-> > > > I've a MT8183 based Chromebook (HP 11a) and I've tried to run a
-> > > > upstream kernel on it. cros is too heavy for me and I doubt I could
-> > > > use it. I've tried the pure linux and could boot up with console, b=
-ut
-> > > > display does not work. If you use the pure linux environment, could
-> > > > you share how it works?
-> > > >
-> > >
-> > > I haven't tested MT8183 (I don't actually have any 8183 machine in my=
- hands)... but
-> > > yes, I can share my test environment.
-> > >
-> > > I have one MicroSD that I use either in the MicroSD slot of the targe=
-t machine, or
-> > > in a USB reader; this *single* system is what I boot on *all* Chromeb=
-ooks that I
-> > > have: one kernel, multiple devicetrees, same Debian-based userspace.
-> > >
-> > > What we have to prepare this bootable media can be found at [1], but =
-beware that
-> > > it currently uses an outdated kernel, so, what I have locally is a sy=
-mlink to my
-> > > kernel tree.
-> > > You can change/add/remove the devicetree blobs that will get added to=
- the image
-> > > by modifying `chromebook-setup.sh`; before tampering with kernel tree=
- symlink,
-> > > please run that script for the first time, as it will download a cros=
-s-compiler,
-> > > a kernel tree (that you will replace for sure) and the (very old) Deb=
-ian rootfs
-> > > that you can update with `apt-get dist-upgrade` after booting the Chr=
-omebook.
-> > >
-> > > If you want to check about possible kernel configuration differences,=
- what I use
-> > > is at [2], so that you can compare.
-> >
-> > Thanks for the information, I would try to compare the kernel config fi=
-rst.
+> From: Xinlei Lee <xinlei.lee@mediatek.com>
 >
-> Hi CK,
+> DP 1.4a Section 2.8.7.1.5.6.1:
+> A DP Source device shall retry at least seven times upon receiving
+> AUX_DEFER before giving up the AUX transaction.
 >
-> Would you consider adding your repo to linux-next? That would let everyon=
-e
-> do integration testing, especially automated ones, earlier, before you se=
-nd
-> your PRs to drm maintainers.
+> The drm_dp_i2c_do_msg() function in the drm_dp_helper.c file will
+> judge the status of the msg->reply parameter passed to aux_transfer
+> ange-the-aux-retries-times-when-re.patchfor different processing.
 >
-> You can do so by sending an email to Stephen Rothwell to do so.
+> Fixes: f70ac097a2cf ("drm/mediatek: Add MT8195 Embedded DisplayPort drive=
+r")
+> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dp.c | 12 +++++-------
+>  1 file changed, 5 insertions(+), 7 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek=
+/mtk_dp.c
+> index 1f94fcc144d3..767b71da31a4 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dp.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+> @@ -806,10 +806,9 @@ static int mtk_dp_aux_wait_for_completion(struct mtk=
+_dp *mtk_dp, bool is_read)
+>  }
+>
+>  static int mtk_dp_aux_do_transfer(struct mtk_dp *mtk_dp, bool is_read, u=
+8 cmd,
+> -                                 u32 addr, u8 *buf, size_t length)
+> +                                 u32 addr, u8 *buf, size_t length, u8 *r=
+eply_cmd)
+>  {
+>         int ret;
+> -       u32 reply_cmd;
+>
+>         if (is_read && (length > DP_AUX_MAX_PAYLOAD_BYTES ||
+>                         (cmd =3D=3D DP_AUX_NATIVE_READ && !length)))
+> @@ -841,10 +840,10 @@ static int mtk_dp_aux_do_transfer(struct mtk_dp *mt=
+k_dp, bool is_read, u8 cmd,
+>         /* Wait for feedback from sink device. */
+>         ret =3D mtk_dp_aux_wait_for_completion(mtk_dp, is_read);
+>
+> -       reply_cmd =3D mtk_dp_read(mtk_dp, MTK_DP_AUX_P0_3624) &
+> -                   AUX_RX_REPLY_COMMAND_AUX_TX_P0_MASK;
+> +       *reply_cmd =3D mtk_dp_read(mtk_dp, MTK_DP_AUX_P0_3624) &
+> +                    AUX_RX_REPLY_COMMAND_AUX_TX_P0_MASK;
+>
+> -       if (ret || reply_cmd) {
+> +       if (ret) {
+>                 u32 phy_status =3D mtk_dp_read(mtk_dp, MTK_DP_AUX_P0_3628=
+) &
+>                                  AUX_RX_PHY_STATE_AUX_TX_P0_MASK;
+>                 if (phy_status !=3D AUX_RX_PHY_STATE_AUX_TX_P0_RX_IDLE) {
+> @@ -2070,7 +2069,7 @@ static ssize_t mtk_dp_aux_transfer(struct drm_dp_au=
+x *mtk_aux,
+>                 ret =3D mtk_dp_aux_do_transfer(mtk_dp, is_read, request,
+>                                              msg->address + accessed_byte=
+s,
+>                                              msg->buffer + accessed_bytes=
+,
+> -                                            to_access);
+> +                                            to_access, &msg->reply);
+>
+>                 if (ret) {
+>                         drm_info(mtk_dp->drm_dev,
+> @@ -2080,7 +2079,6 @@ static ssize_t mtk_dp_aux_transfer(struct drm_dp_au=
+x *mtk_aux,
+>                 accessed_bytes +=3D to_access;
+>         } while (accessed_bytes < msg->size);
+>
+> -       msg->reply =3D DP_AUX_NATIVE_REPLY_ACK | DP_AUX_I2C_REPLY_ACK;
 
-I don't understand what this process is. Does it means that I directly
-upstream patches into linux-next? I prefer that my patches go through
-drm maintainers' tree. Does any document introduce this process?
-
+In your description, you just mention the retry count is 7 times, but
+you does not mention you should change the reply. Why you modify this?
+And where is the 7 times retry?
 
 Regards,
 Chun-Kuang.
 
+>         return msg->size;
+>  err:
+>         msg->reply =3D DP_AUX_NATIVE_REPLY_NACK | DP_AUX_I2C_REPLY_NACK;
+> --
+> 2.18.0
 >
->
-> ChenYu
->
-> > >
-> > > [1]: https://gitlab.collabora.com/google/chromebooks/-/tree/mtk-av1
-> > > [2]:
-> > > https://gitlab.collabora.com/google/chromeos-kernel/-/blob/mt8195-tra=
-cking-master-rolling/arch/arm64/configs/defconfig
-> > >
-> > > Regards,
-> > > Angelo
 
