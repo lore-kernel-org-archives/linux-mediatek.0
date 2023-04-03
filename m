@@ -4,69 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5462FC761AF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 18:47:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8407CC761AF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 19:19:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ml5B2U6Ayt/83AXXZe1u7W8tityg955LidmdKtC7+Fw=; b=FOMxDTiCphLtWVd/v15KrXQRGr
-	cA91pQ/RnZnQFgu7q1apQanz6h7DywFQQFi4dBmtEXxdtmJvwIMdCBU7LIMb3+yerxs5ps0EJGHbW
-	tExjHT4Wq/oHeWMZdWCRAmz7Hg+0WLKqeFtyJR4Mu1Lqu+CwGZDLu6VuznNJglaQzAIVhQvatL3/Z
-	cVY9Mt3BhZwGGui1Lxy9V4tUOYlUOXtm+31U1cROb2fDJO0FcaHrRCmO0EsFgzNF5+6LmoBbawPPM
-	9eNMtGStXDG1oEIeD/VWEC09T4OzAckr7R2yyvEW4I6ct8MKwoFQ3flLHdiEsq9i6dCHSZT9tJqoO
-	skInSYZg==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=bZSGEHV1wcF9QDw9X095419CyG9Yv6xnJ2egeD+2O1o=; b=4ESXUlrBSuCCKzgYnYE7Kv2eP7
+	ylt1A6ECCKKFujjjo+FgQC7k4CFxmXgDqMOgxYBRkuI70271RQr0/UTSmjWlWS2b4DiatEa/ERWXE
+	YDfRlyGhb+n09+hBAnrvZcTM+ht7pgoxyMikD99+VFcKYEeRrTaQKxrqzmpd8hBYz8CEnfp1cEECm
+	CD5FLCid9OFWVnlB7BzziH0MghfwzFMfYkhoQ3S4YAL6Aizt+pcCuPGklevmC1Rc7f1R3xwU3zJRD
+	L6+aZPL65swj34u6riyeNCLXsUm8a/59rmYZLNyCGsE0sfl9TovtA80bEnS1R+e5Fy+1PQ0VkDVKT
+	XxYKlP2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjPCq-00GIBw-27;
-	Mon, 03 Apr 2023 18:47:04 +0000
-Received: from desiato.infradead.org ([90.155.92.199])
+	id 1pjPhi-00GMWW-0H;
+	Mon, 03 Apr 2023 19:18:58 +0000
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjPCp-00GIAl-1I;
-	Mon, 03 Apr 2023 18:47:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=ml5B2U6Ayt/83AXXZe1u7W8tityg955LidmdKtC7+Fw=; b=Yq7Lwu9vcDZHTDYHTy7SyWsfGF
-	qAe+KLbZupGXPayyuYs1gsVEq87bV6ZzSfZaAk1ENXwYaJrSG/FUkACqz+dQWuD9p/GMskmdacIej
-	xU55liHhU50AsX5lc1+zNNmp2VtBbrrBmOHkIeNEf4Jvhba7n5A4gbO/c3gzyOjQea3z209Y6m7mP
-	a8WCrkHwsVZAm1ZgG4M30VS2+L2PcFSMpp9qcleNvzPrv6n6YjUwFm7g+51MY+uJINm0g4xYp3Veq
-	35Nwi08eZL/LQ/Tc80XfLvoCi1sJ+17GbcXFqId9A3NmL2zi7/8IlQCRlUP8deWnZOemX+UX8H7eD
-	V54jTfbw==;
-Received: from mail.hust.edu.cn ([202.114.0.240] helo=hust.edu.cn)
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjNLD-008wd5-1a;
-	Mon, 03 Apr 2023 16:47:37 +0000
-Received: from passwd123-ThinkStation-P920.. ([222.20.94.23])
-	(user=void0red@hust.edu.cn mech=LOGIN bits=0)
-	by mx1.hust.edu.cn  with ESMTP id 333GkBiv000418-333GkBiw000418
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
-	Tue, 4 Apr 2023 00:46:11 +0800
-From: Kang Chen <void0red@hust.edu.cn>
-To: daniel.lezcano@linaro.org
-Cc: amitk@kernel.org, angelogioacchino.delregno@collabora.com,
-        bchihi@baylibre.com, daniel@makrotopia.org, dzm91@hust.edu.cn,
-        error27@gmail.com, henry.yen@mediatek.com,
-        hust-os-kernel-patches@googlegroups.com,
-        linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-        linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
-        matthias.bgg@gmail.com, rafael@kernel.org, rdunlap@infradead.org,
-        rui.zhang@intel.com, void0red@gmail.com, void0red@hust.edu.cn
-Subject: [PATCH v2 1/2] thermal: mediatek: use devm_of_iomap to avoid resource leak in mtk_thermal_probe
-Date: Tue,  4 Apr 2023 00:46:09 +0800
-Message-Id: <20230403164610.3608082-1-void0red@hust.edu.cn>
+	id 1pjPhe-00GMUp-2h
+	for linux-mediatek@lists.infradead.org;
+	Mon, 03 Apr 2023 19:18:56 +0000
+Received: by mail-ed1-x536.google.com with SMTP id eg48so121443873edb.13
+        for <linux-mediatek@lists.infradead.org>; Mon, 03 Apr 2023 12:18:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1680549533;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=bZSGEHV1wcF9QDw9X095419CyG9Yv6xnJ2egeD+2O1o=;
+        b=LklJQBi7hsnfQA5KrRPllFlnLE/+fwiO4CR61oHAc7N1n+GjhMt19kI7yYcf4mWKZx
+         ovEN6BtGWxjdFpBTVrtJERecaOcriMZlEVboCoqEcFaPJZ/zNoLKhUFzTivWRryVmRbJ
+         lDIvn0kBqh0e3DEm7TOz072Dbc1B0T+QHLxzK4XbQhEnRKhO/cLQ2zcEt/NIhF0t3cdl
+         kZRuzyaZTTZuCkkgMqF8j1htHmUKHhIEsWULDQD/v2fLBab0geReln5011mAJxQ+Vcn3
+         RRBfWrEM8GN/dVPpxskCHBrhlmBWyZmjbKR9MPCCN4Hv0ZHDwfhKlZr5cYWFvNdm7CLs
+         /+1w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680549533;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=bZSGEHV1wcF9QDw9X095419CyG9Yv6xnJ2egeD+2O1o=;
+        b=5mo0PJGFVbN73fdXYh90+Xm9LcvB6fggFdxWFm5QGrFEfl/wqLQw1wuArl8dTUdAlR
+         TUmsH6TFXFp/FOclMOPtPlBL8k26Xd1a90fsPMzlOr9CXSQD6rudadRPJVSvt3N2xwW5
+         Gnl9FphThlk68YL11OUzbfJlCy4y+YYPcT0YLZvi61wFDU8e04BFOICCcsO7/9iEsyE5
+         q6phWr2834+sOMgaCkf4kZZxFCD/iwGV19Zbzpfg9QRi+Mw0TKyoC5BpxNjQA2MgXiAL
+         ergfu0BDaEdR+K1dwA3tXQ3/TmjhDAT9pBDnjPJXkldyCGGEAcNO52rSCzYWyJ9jM+LM
+         UNHg==
+X-Gm-Message-State: AAQBX9d068zFm/AFHQnAOQofUtVhC9cJCbOZ0c50NuXGcBS/xXeD/QhQ
+	uCooC4IfGadGVizieGiI3C9sTw==
+X-Google-Smtp-Source: AKy350ZQ8gkFRQMSmLb2vCdVeG/SCcQL8iLCV2k8kwWTOf+zZkhnJeiPAPfb4yy7X5429anR4EH5TA==
+X-Received: by 2002:a05:6402:4403:b0:4af:6e08:319 with SMTP id y3-20020a056402440300b004af6e080319mr18475608eda.15.1680549533217;
+        Mon, 03 Apr 2023 12:18:53 -0700 (PDT)
+Received: from krzk-bin.. ([2a02:810d:15c0:828:ae90:d80:1069:4805])
+        by smtp.gmail.com with ESMTPSA id n19-20020a509353000000b004c09527d62dsm5022999eda.30.2023.04.03.12.18.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 03 Apr 2023 12:18:52 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Roger Quadros <rogerq@kernel.org>,
+	linux-usb@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH 1/3] dt-bindings: usb: mediatek,mtk-xhci: drop assigned-clocks
+Date: Mon,  3 Apr 2023 21:18:48 +0200
+Message-Id: <20230403191850.374839-1-krzysztof.kozlowski@linaro.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <6e3c59c3-8ad0-9c53-62a4-7be6f55a7c02@linaro.org>
-References: <6e3c59c3-8ad0-9c53-62a4-7be6f55a7c02@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-FEAS-AUTH-USER: void0red@hust.edu.cn
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230403_174735_914777_369998F2 
-X-CRM114-Status: GOOD (  10.72  )
+X-CRM114-CacheID: sfid-20230403_121854_897790_C0E91E13 
+X-CRM114-Status: UNSURE (   8.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,49 +99,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Smatch reports:
-1. mtk_thermal_probe() warn: 'apmixed_base' from of_iomap() not released.
-2. mtk_thermal_probe() warn: 'auxadc_base' from of_iomap() not released.
+The meta schema from DT schema already defines assigned-clocks, so there
+is no need for device schema to mention it at all.  There are also no
+benefits of having it here.
 
-The original code forgets to release iomap resource when handling errors,
-fix it by switch to devm_of_iomap.
-
-Fixes: 89945047b166 ("thermal: mediatek: Add tsensor support for V2 thermal system")
-Signed-off-by: Kang Chen <void0red@hust.edu.cn>
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
-v2 -> v1: use devm_of_iomap instead.
+ .../devicetree/bindings/usb/mediatek,mtk-xhci.yaml        | 8 --------
+ 1 file changed, 8 deletions(-)
 
- drivers/thermal/mediatek/auxadc_thermal.c | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/thermal/mediatek/auxadc_thermal.c b/drivers/thermal/mediatek/auxadc_thermal.c
-index ab730f9552d0..df5e2e354408 100644
---- a/drivers/thermal/mediatek/auxadc_thermal.c
-+++ b/drivers/thermal/mediatek/auxadc_thermal.c
-@@ -1142,7 +1142,10 @@ static int mtk_thermal_probe(struct platform_device *pdev)
- 		return -ENODEV;
- 	}
+diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+index 556bedb96165..72639c6b4e1c 100644
+--- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
++++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+@@ -87,14 +87,6 @@ properties:
+       - const: dma_ck
+       - const: xhci_ck
  
--	auxadc_base = of_iomap(auxadc, 0);
-+	auxadc_base = devm_of_iomap(&pdev->dev, auxadc, 0, NULL);
-+	if (IS_ERR(auxadc_base))
-+		return PTR_ERR(auxadc_base);
-+
- 	auxadc_phys_base = of_get_phys_base(auxadc);
- 
- 	of_node_put(auxadc);
-@@ -1158,7 +1161,10 @@ static int mtk_thermal_probe(struct platform_device *pdev)
- 		return -ENODEV;
- 	}
- 
--	apmixed_base = of_iomap(apmixedsys, 0);
-+	apmixed_base = devm_of_iomap(&pdev->dev, apmixedsys, 0, NULL);
-+	if (IS_ERR(apmixed_base)
-+		return PTR_ERR(apmixed_base);
-+
- 	apmixed_phys_base = of_get_phys_base(apmixedsys);
- 
- 	of_node_put(apmixedsys);
+-  assigned-clocks:
+-    minItems: 1
+-    maxItems: 5
+-
+-  assigned-clock-parents:
+-    minItems: 1
+-    maxItems: 5
+-
+   phys:
+     description:
+       List of all PHYs used on this HCD, it's better to keep PHYs in order
 -- 
 2.34.1
 
