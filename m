@@ -4,95 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD426C761A6
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 09:47:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87EE4C77B62
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 09:50:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=htPk5PXTOqeqOET7dyhcLS5Nxh2cxnK3mpGnQz9jlEw=; b=x4Lw3aWZoAQ12SSM3pytkLyVGx
-	ScMX9PMldoEeVZA9Qa/eNwtx7ohufM0Wq6Xm9SGUMYw/iZVRk00wccKDc4/+Y3b5/gclZxNyyY854
-	sRQcO6RlgTUMRcexxHgd5hwPOAmfyuIvR+NVV31KeGd6Z7HLnjSMeTVTY/mF7lX/AHPQteMvXIoes
-	BPelgIO61uAL/f0upzTWDhLM6FMkf5qr/w+MQWDWJ/6LpPZJPK4ck3+/zhVepf9FnLC1cPfi1UPZd
-	7G0q+9shH6VyBQzpRjiKNs5hcRoSNnA8fA3ndLWBy4w4p6YMZ9ZZajlmQgt4HfY7Zi8nyBlXfs41+
-	luoMw3XA==;
+	bh=njOb8FD8MR7p9DAF345Hq+aO222nfpoaV4wgzEQORsE=; b=GN3fr+v4kbYutJhXpE3o3H7q92
+	B6CJXSfIKfFBPaRi0M1qI21+rLbqbLxm5aB4VBx8R0Xyw1Nm9ZJSw58/c8LaU3wo5wRVsa22hU4Uk
+	5Fp0ufCcf7dOcqQSfFvL8LoKc49Y/TDmKL529KSXXoWYhq/uInMvBLh551L18fnHtTORlcRPyDfzm
+	ZzX72uTfVTmJXqZNQW5mq7LCshy0z+HDZSz9efT8YPpwDwCJsv4jXbQC3IF7U4tStH572ORpe76tf
+	a7iJ0WUfzfeADT51Ss0iyoQ+B1grZKuZeYwvMlzwvAx6XM9l3283fd5DPzPbi7bS+9deOJo9mFMh1
+	EFJjoTjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjGma-00Enb1-0t;
-	Mon, 03 Apr 2023 09:47:24 +0000
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+	id 1pjGp9-00Ep0P-1W;
+	Mon, 03 Apr 2023 09:50:03 +0000
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjGmX-00EnZs-1V
+	id 1pjGp6-00EoxV-27
 	for linux-mediatek@lists.infradead.org;
-	Mon, 03 Apr 2023 09:47:23 +0000
-Received: by mail-ed1-x52f.google.com with SMTP id t10so114679553edd.12
-        for <linux-mediatek@lists.infradead.org>; Mon, 03 Apr 2023 02:47:18 -0700 (PDT)
+	Mon, 03 Apr 2023 09:50:02 +0000
+Received: by mail-ed1-x533.google.com with SMTP id eh3so114807923edb.11
+        for <linux-mediatek@lists.infradead.org>; Mon, 03 Apr 2023 02:50:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1680515237;
+        d=linaro.org; s=google; t=1680515399;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=htPk5PXTOqeqOET7dyhcLS5Nxh2cxnK3mpGnQz9jlEw=;
-        b=SvoeEbbR8OcfvVqTljRORHpbqaNFE7cu/bdh4a3d3VE4NUnwo1J/oyoAPXZ0a+yBUd
-         hIKYw+s6BKEbV0nyzwPXNSkFmbnG6OvxYMeFlUu8hGHeCQjuWipnJzmGn+D0mXZA7nOM
-         /Y+FgreAigmNIHhIlvRuWlr3UDh+bYcY3u4ByQaS7QhPfxvqH4hJAZS0IR9nJoqOfiPU
-         GZLEPeUrjBKgNAEOt9DNXW8PLIhwOk20YHAJALYC7vLuI5K+qpFmK2ZLZAVYgR4bIwAa
-         EhDpTeIbMKoqH9kswhsCWOrMOTkV2nvh1hy+jA9x4KeaKRRkGfWjdQ4iChZRhW1ax7/b
-         vGbA==
+        bh=njOb8FD8MR7p9DAF345Hq+aO222nfpoaV4wgzEQORsE=;
+        b=WSssOdY3Y7QQMxZhOv5ODIMftu2oa1cARN3R7zrYwN6qDd6mcfPp0HUo/WyzzybZlN
+         3qwP+204tyHqCd89ElO0Un0gBC2UIThCIsdF8Wh/CBy8virxgKXDJtFh1XborA+iWUVN
+         N+k+CKu0zYPFcAkS+mnT2g9RVJMtq7eNyt79cJLa8P4RS1PxHLGb/b7N1pBhEeKbG1Qm
+         LGpaI5X9aSyIR2xYFIwwx9XQ4Gj6fpkg2+cHarWPeBftyNzNpFft3vIc7cCjppZFNv/p
+         3/6LW4Lb4OWiTvgVMYFxPbkeOohPQ5OSTAM32IKGLEYhEID6mAHSm4CilJTNYK3Svc6b
+         RrnA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680515237;
+        d=1e100.net; s=20210112; t=1680515399;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=htPk5PXTOqeqOET7dyhcLS5Nxh2cxnK3mpGnQz9jlEw=;
-        b=y4nkVMYkTk0zv0p4kjW3k1UYZhXBnjzikASbsxSmDBJzvivBoXgNeS6edjz7lkEium
-         ERhYXpy2+7SYbOmzqaeoRVoDrjYpqlkkG0G9CtP7j7ffOpb1J2n4NULUCkasZ1eMSQy3
-         WtvlTf8u4IAGp5NQmMx2AH6Z4Bzw7D91CrJ6u8bQj03d1sugg9iE/DUuRN6P1j2YigaS
-         HupaidG3bLEMjW2viMVXebrf/lG5uQ83LBYuf1iqnqBv2g67XZxOarPyEOWgR0gLl9cL
-         jiNz8xqv4Z1gv+bO9Ya/m0YLqAO9eHdbzguGXGUel6HkOpSa7BaJ54AxJp0CpIfEc0HC
-         fqGg==
-X-Gm-Message-State: AAQBX9f1B45wBYWVexnxlWsHcVtOCJX6DWbOVmaPogUA56y/IrR6usn5
-	mVFMuhT2FXSpFlRePDEFUWMLJw==
-X-Google-Smtp-Source: AKy350aq2/eAtEYHLJ3R4+ZQV7M03sIMNYL9wBr9zDABKJ8ufu9aCsyLHfIX7yY35iys3sUdYSzvjg==
-X-Received: by 2002:a17:906:6bd5:b0:930:7ae6:9ebd with SMTP id t21-20020a1709066bd500b009307ae69ebdmr35660301ejs.70.1680515237638;
-        Mon, 03 Apr 2023 02:47:17 -0700 (PDT)
+        bh=njOb8FD8MR7p9DAF345Hq+aO222nfpoaV4wgzEQORsE=;
+        b=mNEu3OmZfLXS/JKjXouu3KDo07k8/1uTTmf7hfDVaen+kTNKX58YKe+g1QZlIFnC9a
+         uEJFW3m0OyfyKQHVmlKCXKnXi/6GmimL1vFSP0o9hBTX2v5YCpjDHEFES/PbijNmfqSF
+         6n0gTJtc/7Um0h2CjKESpGOeBm9NvJAsucqJqNhgA5TYz7601eAAv2vuDrdMtlFXFneh
+         pxjYfEnFqW7ZBr9F3tronHfj8AYgxXs7Acaav12SkII320lkUCqGZpl3M/L3Pq64MeOb
+         53N14DkZoSobVQBgxDY8f41Uikqb/h8i1+1aj/+jl33XG2iaoGy1cDvwhCLnLvhFAKZp
+         7TPA==
+X-Gm-Message-State: AAQBX9e94Fihhj33Yy7g7mxJ964hPFo17L/Z5r+O705OyxCNdKpeO/gW
+	9j/RqdLt+ERGIhIkkVcL2qlpbg==
+X-Google-Smtp-Source: AKy350axDXzqltQsMGrbEq+s6HAPPXokx38cO/zKLAuZvJShm+5OuEGsdQduEWPjjJl9tW5ESCenGg==
+X-Received: by 2002:a17:907:7f0d:b0:946:fa88:5901 with SMTP id qf13-20020a1709077f0d00b00946fa885901mr19111746ejc.63.1680515399082;
+        Mon, 03 Apr 2023 02:49:59 -0700 (PDT)
 Received: from ?IPV6:2a02:810d:15c0:828:ae90:d80:1069:4805? ([2a02:810d:15c0:828:ae90:d80:1069:4805])
-        by smtp.gmail.com with ESMTPSA id la6-20020a170907780600b009351565d1f5sm4285058ejc.52.2023.04.03.02.47.16
+        by smtp.gmail.com with ESMTPSA id hz15-20020a1709072cef00b0093ebc654f78sm4290447ejc.25.2023.04.03.02.49.58
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 03 Apr 2023 02:47:17 -0700 (PDT)
-Message-ID: <d0b9d8a2-14ae-8c0d-309b-5f5d60d43a1d@linaro.org>
-Date: Mon, 3 Apr 2023 11:47:16 +0200
+        Mon, 03 Apr 2023 02:49:58 -0700 (PDT)
+Message-ID: <4837c3e0-60ed-601b-8512-30fda2176619@linaro.org>
+Date: Mon, 3 Apr 2023 11:49:57 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.9.0
-Subject: Re: [PATCH v30 0/7] Add MediaTek SoC DRM (vdosys1) support for mt8195
+Subject: Re: [PATCH 1/2] dt-bindings: phy: add mtk-mipi-csi driver
 Content-Language: en-US
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Chen-Yu Tsai <wenst@chromium.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, singo.chang@mediatek.com,
- Nick Desaulniers <ndesaulniers@google.com>, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, Nathan Chancellor <nathan@kernel.org>,
- "Nancy.Lin" <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org,
- dri-devel@lists.freedesktop.org, krzysztof.kozlowski+dt@linaro.org,
- clang-built-linux@googlegroups.com, Matthias Brugger
- <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
-References: <20230321121859.2355-1-nancy.lin@mediatek.com>
- <17831605-5c9d-9c92-d190-04f91060ace4@collabora.com>
- <CAAOTY_8ZAxVSLnJ1u5snsRgkszV7ixwhjUS2nDimE_Lpj=cUCA@mail.gmail.com>
- <97a5f383-38f5-e8ea-e1d8-489b690e4521@collabora.com>
- <CAAOTY_9_vn-m2jTaaHkFDV+v2-LeaAxtCLNNnOxZq5Httb-TAQ@mail.gmail.com>
- <CAGXv+5FJCuG_zHnaKZ=baNzKAWKLEe3jZnghNAxuGv7i7L6e7Q@mail.gmail.com>
- <CAAOTY_9Dbtubah3ndj9+FeYDh7D42k6-BtHrYMNc=CP6GL6uFA@mail.gmail.com>
+To: Julien Stephan <jstephan@baylibre.com>
+Cc: Florian Sylvestre <fsylvestre@baylibre.com>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Andy Hsieh <andy.hsieh@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "moderated list:ARM/Mediatek USB3 PHY DRIVER"
+ <linux-arm-kernel@lists.infradead.org>,
+ "moderated list:ARM/Mediatek USB3 PHY DRIVER"
+ <linux-mediatek@lists.infradead.org>,
+ "open list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>
+References: <20230403071929.360911-1-jstephan@baylibre.com>
+ <20230403071929.360911-2-jstephan@baylibre.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <CAAOTY_9Dbtubah3ndj9+FeYDh7D42k6-BtHrYMNc=CP6GL6uFA@mail.gmail.com>
+In-Reply-To: <20230403071929.360911-2-jstephan@baylibre.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230403_024721_507036_9ED79EAD 
-X-CRM114-Status: GOOD (  21.63  )
+X-CRM114-CacheID: sfid-20230403_025000_708337_9C0076A7 
+X-CRM114-Status: GOOD (  16.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,83 +108,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 03/04/2023 05:30, Chun-Kuang Hu wrote:
-> Hi, Chen-yu:
+On 03/04/2023 09:19, Julien Stephan wrote:
+> From: Florian Sylvestre <fsylvestre@baylibre.com>
 > 
-> Chen-Yu Tsai <wenst@chromium.org> 於 2023年3月30日 週四 下午7:05寫道：
->>
->> On Mon, Mar 27, 2023 at 11:17 PM Chun-Kuang Hu <chunkuang.hu@kernel.org> wrote:
->>>
->>> Hi, Angelo:
->>>
->>> AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> 於
->>> 2023年3月24日 週五 下午4:38寫道：
->>>>
->>>> Il 24/03/23 00:25, Chun-Kuang Hu ha scritto:
->>>>> Hi, Angelo:
->>>>>
->>>>> AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> 於
->>>>> 2023年3月23日 週四 下午4:58寫道：
->>>>>>
->>>>>> Il 21/03/23 13:18, Nancy.Lin ha scritto:
->>>>>>> The hardware path of vdosys1 with DPTx output need to go through by several modules, such as, OVL_ADAPTOR and MERGE.
->>>>>>>
->>>>>>> Add DRM and these modules support by the patches below:
->>>>>>>
->>>>>>
->>>>>> I've tested v30 again on MT8173, MT8192 and MT8195 based Chromebooks.
->>>>>> Green light from me.
->>>>>
->>>>> I'm curious about how you build code and test on Chromebooks. Do you
->>>>> build in cros environment or pure linux
->>>>> (https://archlinuxarm.org/platforms/armv8/mediatek/acer-chromebook-r13).
->>>>> I've a MT8183 based Chromebook (HP 11a) and I've tried to run a
->>>>> upstream kernel on it. cros is too heavy for me and I doubt I could
->>>>> use it. I've tried the pure linux and could boot up with console, but
->>>>> display does not work. If you use the pure linux environment, could
->>>>> you share how it works?
->>>>>
->>>>
->>>> I haven't tested MT8183 (I don't actually have any 8183 machine in my hands)... but
->>>> yes, I can share my test environment.
->>>>
->>>> I have one MicroSD that I use either in the MicroSD slot of the target machine, or
->>>> in a USB reader; this *single* system is what I boot on *all* Chromebooks that I
->>>> have: one kernel, multiple devicetrees, same Debian-based userspace.
->>>>
->>>> What we have to prepare this bootable media can be found at [1], but beware that
->>>> it currently uses an outdated kernel, so, what I have locally is a symlink to my
->>>> kernel tree.
->>>> You can change/add/remove the devicetree blobs that will get added to the image
->>>> by modifying `chromebook-setup.sh`; before tampering with kernel tree symlink,
->>>> please run that script for the first time, as it will download a cross-compiler,
->>>> a kernel tree (that you will replace for sure) and the (very old) Debian rootfs
->>>> that you can update with `apt-get dist-upgrade` after booting the Chromebook.
->>>>
->>>> If you want to check about possible kernel configuration differences, what I use
->>>> is at [2], so that you can compare.
->>>
->>> Thanks for the information, I would try to compare the kernel config first.
->>
->> Hi CK,
->>
->> Would you consider adding your repo to linux-next? That would let everyone
->> do integration testing, especially automated ones, earlier, before you send
->> your PRs to drm maintainers.
->>
->> You can do so by sending an email to Stephen Rothwell to do so.
+
+There is no commit msg.
+
+> Signed-off-by: Florian Sylvestre <fsylvestre@baylibre.com>
+> Signed-off-by: Julien Stephan <jstephan@baylibre.com>
+> ---
+>  .../bindings/phy/mediatek,csi-phy.yaml        | 41 +++++++++++++++++++
+>  MAINTAINERS                                   |  6 +++
+>  2 files changed, 47 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/phy/mediatek,csi-phy.yaml
 > 
-> I don't understand what this process is. Does it means that I directly
-> upstream patches into linux-next? I prefer that my patches go through
-> drm maintainers' tree. Does any document introduce this process?
+> diff --git a/Documentation/devicetree/bindings/phy/mediatek,csi-phy.yaml b/Documentation/devicetree/bindings/phy/mediatek,csi-phy.yaml
+> new file mode 100644
+> index 000000000000..c026e43f35fd
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/phy/mediatek,csi-phy.yaml
 
-All maintainers and sub-maintainers trees are supposed to be fed into
-linux-next.
+Filename like compatible.
 
-https://lore.kernel.org/linux-next/20230327124805.3ca4f3cc@canb.auug.org.au/T/#md226a8e714cc731c2ab4ba5ee7eb43fe21a55009
+> @@ -0,0 +1,41 @@
+> +# SPDX-License-Identifier: (GPL-2.0-Only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/phy/mediatek,csi-phy.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Mediatek Sensor Interface MIPI CSI CD-PHY
+> +
+> +maintainers:
+> +  - Julien Stephan <jstephan@baylibre.com>
+> +  - Andy Hsieh <andy.hsieh@mediatek.com>
+> +
+> +description: |
 
-Documentation/process/howto.rst
-Documentation/process/2.Process.rst
+Do not need '|'.
+
+> +  The SENINF CD-PHY is a set of CD-PHY connected to the SENINF CSI-2
+> +  receivers. The number of PHYs depends on the SoC model.
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,mt8365-mipi-csi
+> +
+> +  reg:
+> +    minItems: 1
+
+maxItems instead
+(from where did you get such example?)
+
+> +
+> +  '#phy-cells':
+> +    const: 1
+> +
 
 
 Best regards,
