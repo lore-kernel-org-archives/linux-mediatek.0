@@ -4,47 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20251C761A6
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 10:58:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EA16C76196
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 11:32:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=BZ9tPE6ls/muuZObj8Q8K01GmUnkjtbnL+JF6Rq/x1c=; b=BsTi/cQqUsNLK6
-	lrxkSPqu1qn8+RWxRk42w/7Rewx2YEKmIOqUIdqzq7ZEb44qTwtSpnMtUN2hQIRnWjR+47PRMdyF2
-	t5kzuaLMUTofRHRwdX0wb4zm/Zl+MD4ssL5qIDq5yiyG7sTkZANS8nuO6ro84P0IXmENVq8upJX5z
-	vbwjbH8Qd0TPtvip8ylSTLFpqBs/2x89EL1PjPjvbxdgu4f5Nw/YJMotlJ6Y8xDyoXMayP30Q847k
-	hUsOVkrA1MyBP4wHJM24GEOJ5LskSZb4smt2MV6b9JnOuVG8YhK+/jlZM6JS0kyGZm17Qe53eNq/7
-	9+rDdXr0xauZmPoxi2WQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8oxN6OsSAvDJ/9XUkNDJfOZTdcdSQucx06S047EyHBQ=; b=nrkuPQXhIONU+n4L9oUespwf7O
+	0Z24n6KeTXdKjIAaETIv2z1meZx+C48+lyaNq18kcqiNb8Cvk3e/nE5ntOh4T6BQ44Emr5odOLrmZ
+	Hm9i0VnU8hCMq1fmdYG+YI8uq4ZR1+WJ9OIaXF94OAk+OSyUjqZm9QlMXa3zgPUS+PSezxgzyrSsq
+	7F9xaU2Eh9m8b9I0bncFj+AaAyhWOpyEEpGHqP6jn5mEBKH0FpLAPbjbbcBltMxYoKSNrLCw0CrXK
+	VhL73b/JG4orVzUYg+fviRfUmiLJfeuRHIp7w1o4SAcpxMMAzF2Ph0qCVTG6MJmHeWQG0XIVXCZdg
+	lO/t4StA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjHtR-00F1sq-1N;
-	Mon, 03 Apr 2023 10:58:33 +0000
-Received: from mxout2.routing.net ([2a03:2900:1:a::b])
+	id 1pjIQH-00F8xy-2n;
+	Mon, 03 Apr 2023 11:32:29 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjHtN-00F1rh-20;
-	Mon, 03 Apr 2023 10:58:31 +0000
-Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
-	by mxout2.routing.net (Postfix) with ESMTP id 8AB655FB9D;
-	Mon,  3 Apr 2023 10:58:26 +0000 (UTC)
-Received: from frank-G5.. (fttx-pool-217.61.152.94.bambit.de [217.61.152.94])
-	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id C0B2E3608ED;
-	Mon,  3 Apr 2023 10:58:25 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: linux-mediatek@lists.infradead.org
-Subject: [RFC] arm64: dts: use size of reserved partition for bl2
-Date: Mon,  3 Apr 2023 12:58:18 +0200
-Message-Id: <20230403105818.29624-1-linux@fw-web.de>
-X-Mailer: git-send-email 2.34.1
+	id 1pjIQD-00F8vT-1L
+	for linux-mediatek@lists.infradead.org;
+	Mon, 03 Apr 2023 11:32:26 +0000
+Received: by mail-wr1-x435.google.com with SMTP id l27so28993322wrb.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 03 Apr 2023 04:32:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1680521542;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=8oxN6OsSAvDJ/9XUkNDJfOZTdcdSQucx06S047EyHBQ=;
+        b=C6gWZp40tfEpPfYSrgRrnFTseXhT17/N3/Rd1XTWX8SljHQdb+j8qyQzRCnxitNxkA
+         mGbwHFXQb5ITNf+w/UsK+tl7GA4WaEklHtP2Gk9OwGoV3bsBkLWXg6+vzsu+xjPFbcKq
+         istoMqkmpzZZTsjxCqMlUNeuaV+wM4NiuoKM26cYhKEeXGORCVFktJRSeXU6tkQRb9U1
+         fTHAQpbiSbu2xdOJqzmannTP/O0Dmjj025fN1OI4ac9mQVEmT+vQLQuhMcUE5nvLMEYd
+         wWrJ1fH+ucZjqsu2MSSndsASCTdtDEyv8opVMnDUijCXg5DG/y1MPRlxQHr3wfMr1A+h
+         +W8g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680521542;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=8oxN6OsSAvDJ/9XUkNDJfOZTdcdSQucx06S047EyHBQ=;
+        b=nXjO6QIszItpxJEOViEvEcx2TrQ5P3hMkXErNMKQNUB/KOK6vQVWDMqnRwkdQQfpeh
+         g8IwZz/8IYvWewTWOhwzg2S2r1FofPxgvqeeZWVpd7qD9MDkoZLZnK0a650x8pSH+Zp4
+         LqKYxN4VeBHMoDeFqTrqzHwTUxbcL+VT957vPjkjis0UmGdvIJUUa0+Zfq0pYitGL0J/
+         wIYQHIuIDynP88VxMQb9TXQBLih2TAA1nTdEuNr+LERp6hVcxfgnxvCAvEAlT9N6GDVY
+         FSioWS7RVSznB89VvpvwCf4/3IlIkorJDO/NR8V9u0iUJPOazRWVXt5cGJjfI1FvTkVD
+         8pjw==
+X-Gm-Message-State: AAQBX9dTXympQNTBoCWn7/H5DXXQITGG60SNzw3SzPtNak6vYQ4cwUcb
+	ILfEYANCv68RMqw5WBK+rTvWvQ==
+X-Google-Smtp-Source: AKy350bJaiA62l9quKwVmDV9foxfGXFovA3zqzv8sR+okw5JpFGfalk8OYcb0L9rxeEC7w5V9ffF/w==
+X-Received: by 2002:a5d:4848:0:b0:2ce:a9e9:490b with SMTP id n8-20020a5d4848000000b002cea9e9490bmr24826782wrs.31.1680521542472;
+        Mon, 03 Apr 2023 04:32:22 -0700 (PDT)
+Received: from ?IPV6:2a05:6e02:1041:c10:8052:c9eb:6b69:e69a? ([2a05:6e02:1041:c10:8052:c9eb:6b69:e69a])
+        by smtp.googlemail.com with ESMTPSA id r1-20020a5d4941000000b002cfefa50a8esm9527094wrs.98.2023.04.03.04.32.21
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 03 Apr 2023 04:32:22 -0700 (PDT)
+Message-ID: <6e3c59c3-8ad0-9c53-62a4-7be6f55a7c02@linaro.org>
+Date: Mon, 3 Apr 2023 13:32:21 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH] drivers: thermal: mediatek: fix of_iomap leak in
+ mtk_thermal_probe
+Content-Language: en-US
+To: Kang Chen <void0red@hust.edu.cn>, dzm91@hust.edu.cn
+Cc: rafael@kernel.org, amitk@kernel.org, rui.zhang@intel.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ daniel@makrotopia.org, rdunlap@infradead.org, bchihi@baylibre.com,
+ henry.yen@mediatek.com, linux-pm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, hust-os-kernel-patches@googlegroups.com,
+ void0red@gmail.com, error27@gmail.com
+References: <20230403103855.3601901-1-void0red@hust.edu.cn>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <20230403103855.3601901-1-void0red@hust.edu.cn>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Mail-ID: ff39b839-2afa-4e8f-82c9-0ea90158acdd
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230403_035829_801617_5B9FBADA 
-X-CRM114-Status: UNSURE (   9.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230403_043225_511261_C8DB3F51 
+X-CRM114-Status: GOOD (  19.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -56,52 +97,51 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+On 03/04/2023 12:38, Kang Chen wrote:
+> Smatch reports:
+> 1. mtk_thermal_probe() warn: 'apmixed_base' from of_iomap() not released.
+> 2. mtk_thermal_probe() warn: 'auxadc_base' from of_iomap() not released.
+> 
+> The original code forgets to release iomap resource when handling errors,
+> fix it through unified error handling code at the end of mtk_thermal_probe.
+> 
+> Fixes: 89945047b166 ("thermal: mediatek: Add tsensor support for V2 thermal system")
+> Signed-off-by: Kang Chen <void0red@hust.edu.cn>
+> ---
+> I think the this should be released on the success path but I was too
+> scared of breaking things. Let me know and I will resend if people want
+> me to do that.
+> 
+>   drivers/thermal/mediatek/auxadc_thermal.c | 18 ++++++++++++------
+>   1 file changed, 12 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/thermal/mediatek/auxadc_thermal.c b/drivers/thermal/mediatek/auxadc_thermal.c
+> index ab730f9552d0..741c7d8151bd 100644
+> --- a/drivers/thermal/mediatek/auxadc_thermal.c
+> +++ b/drivers/thermal/mediatek/auxadc_thermal.c
+> @@ -1149,13 +1149,15 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+>   
+>   	if (auxadc_phys_base == OF_BAD_ADDR) {
+>   		dev_err(&pdev->dev, "Can't get auxadc phys address\n");
+> -		return -EINVAL;
+> +		ret = -EINVAL;
+> +		goto err_iounmap_auxadc;
+>   	}
 
-To store uncompressed bl2 more space is required than partition is
-actually defined.
+Better to use the devm_of_iomap() variant
 
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
----
-I used the definition i got from mtk used in their SDK uboot.
+And also take the opportunity to use devm_clk_get_enabled(), remove 
+clk_prepare_enable() and the rollbacking in the err_disable_clk_per*: 
+label sections.
 
-Openwrt uses also the first reserved partition to give bl2 more
-space:
-
-https://git.openwrt.org/?p=openwrt/openwrt.git;a=blob;f=target/linux/mediatek/dts/mt7986a-bananapi-bpi-r3-nor.dts;h=f597b869abc80d1a73f44ebb85ad4da17376bb52;hb=HEAD#l22
-
-so imho it should be same in mainline to not require complex bl2
-compression.
----
- .../boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso     | 7 +------
- 1 file changed, 1 insertion(+), 6 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso
-index 84aa229e80f3..e48881be4ed6 100644
---- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso
-@@ -27,15 +27,10 @@ partitions {
- 
- 					partition@0 {
- 						label = "bl2";
--						reg = <0x0 0x20000>;
-+						reg = <0x0 0x40000>;
- 						read-only;
- 					};
- 
--					partition@20000 {
--						label = "reserved";
--						reg = <0x20000 0x20000>;
--					};
--
- 					partition@40000 {
- 						label = "u-boot-env";
- 						reg = <0x40000 0x40000>;
 -- 
-2.34.1
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
 
 
