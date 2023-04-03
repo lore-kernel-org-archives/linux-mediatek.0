@@ -4,84 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1316CC76196
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 18:27:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50FF3C761AF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 18:30:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yjadkvpHaI84b2mrZAym00QmfOP3XKu1mCYPopoQH7g=; b=gRHA7jivUvj9MaFMRoXqRMCog4
-	C7exXFhnHVJ34kNomJKMcHoxZ+8f3TS7PI40VMhZXMdHouO2vzUdnWLQUyxqYZyzrZ29nT2MECd5y
-	Ngzq09XhrUwp2a+zSvkYiBAa+bv/hV7kP1uBCoDjePTnG2ooD5azCjGf46tO/QiNmRp1Av0sLkWfX
-	oEbTTL8HX5YSsX60OGhEqyMTP+qtj7w3ysume5v4Su5DEmTRSCYGNN7KL0ihbPX7U/q12/dgKXsT3
-	FZctzEBm6S66AsZkojFqd1SJFtfxdNwSkxBbdn7Q20CYGTCK89XMrRnWxGhwoWCjO1Gg1BCsfIT0P
-	JkD+N1fw==;
+	bh=vOAA9ZkxzHphL4CfbBmzX2YrNd0KbOGa9iHzjcturxo=; b=FvhYbd5s6nMzjcZY5FEfxmHEDo
+	UNDkk1yZm3H03wX1LZlvEAjMmA/2QttC73Bk+CPTgbT8C/Kelp+TpzqLnFb3P8tBGs1IZHi9HMSJq
+	NT7JDytJDRmsSTSYYYyChQ4ocRkR7vkzFzfej1xQ/ttpKjAv5AjfUvWvnjlusJGoYzJ9k9b99Ack8
+	6LRnuMd2SI23KnUk8oV7QSLsptZLbD/MVW0er3kO5FIEOX8MGZ+oNWObJVzalsDKxv2kmJufCg0CI
+	lJByRPjix6wAtxg/pJFR6fY1VbGmftGjrVsO56bxrLRLVy5c/ROvEyzTkWQtDRmIGznmEUKKZPulU
+	5qoPyhQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjOto-00GCLI-1P;
-	Mon, 03 Apr 2023 18:27:24 +0000
-Received: from sender3-op-o19.zoho.com ([136.143.184.19])
+	id 1pjOwi-00GD1e-0E;
+	Mon, 03 Apr 2023 18:30:24 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjOtk-00GCKV-0T;
-	Mon, 03 Apr 2023 18:27:21 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1680546405; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=amFYB6/8kFu+/YBDW6rCTEjJgABW/rHXOC8eJnq+PvIBx/W0/lLNWfwRmuY2pz7ulM9zQAAwpOxA2VV4S/3nQ16UWNUaAqB2I8u/f6Gzkxz1YBi8AgnAFYNU/+Qe2gW5rr6BQL9PPa5KLVC+rTfCyQwV5mNOp0bkfQfSwlk15p0=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1680546405; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=yjadkvpHaI84b2mrZAym00QmfOP3XKu1mCYPopoQH7g=; 
-	b=JAiQ8O04DL2ze4heXj2ea9wnQStPf81gWjNJY7RLdemUsqlWkWdvdbvFTgZg8grQ3m1rRyr4tJ2txYcHYOmujGZFnjFRz9YEIYyTLUajT3lvETP+lDVs5YrTIzDDgtbvu1Nb07YrhPMdefYc9jUx6oEnCBWVgeBVH3GxbOh9NGw=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1680546405;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=yjadkvpHaI84b2mrZAym00QmfOP3XKu1mCYPopoQH7g=;
-	b=VdEhOC0KKnP16srLGg4XsK8m8c3Cyt8O+DvnYgtnnKecCuz7ehsuUsJYmYPhAyw7
-	rsejEBvnLAfGSzIwvCv/IFktrLzkzXNPCjabkkarIGMYcqwocMz+bFnOJZbY1gva28z
-	vYbq4O1hPcORtXH/L0II+h8k6s6ZkOUqydodGpRc=
-Received: from [10.10.10.3] (149.91.1.15 [149.91.1.15]) by mx.zohomail.com
-	with SMTPS id 1680546404035403.7134331614941; Mon, 3 Apr 2023 11:26:44 -0700 (PDT)
-Message-ID: <5b68a0c5-b7b1-9507-b095-60c773d24ade@arinc9.com>
-Date: Mon, 3 Apr 2023 21:26:35 +0300
+	id 1pjOwe-00GCzm-0j;
+	Mon, 03 Apr 2023 18:30:21 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 4E137618F8;
+	Mon,  3 Apr 2023 18:30:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id B09D3C433EF;
+	Mon,  3 Apr 2023 18:30:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1680546618;
+	bh=4LH6DmsLQfzTs2kOVQRO7644p9IgdG5cgEpOhmSGjRM=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=oTD81naPwuSaro0Hvwrg1IJXSP2u1sMcvRGBbpwv1mhhjeLHp8blQZXsylbgYrivI
+	 EKX6thdKaKqSgGE+n4dRucWLN0dolTkLXBOrqjvvbF+HTYqBOyrJpmVFbvYW66JXOP
+	 IlPVsGGNuAzWG7sCBXrkR5zXRb/Qlt63kJQYwh0BN047YVIfVaE/vN62vfohT/Bgu7
+	 4GgUC+ajo7U6v3xFW6C+RjZWNzqO4Y8wnQp1HXibjmjXVngYTESZKPDTXaI5sQ/fGx
+	 DM3rPUFuPQnUwUeAoPFxRhZ7SJ3A7gMH+Vca3HV+VKw2MnnJ5V2rVyovqTjUf9MDg/
+	 9hOgwRKrnAicQ==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 93268E5EA86;
+	Mon,  3 Apr 2023 18:30:18 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH net-next v2 00/14] net: dsa: add support for MT7988
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: devicetree@vger.kernel.org, netdev@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- DENG Qingfang <dqfext@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- Russell King <linux@armlinux.org.uk>, Sam Shih <Sam.Shih@mediatek.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>, John Crispin <john@phrozen.org>,
- Felix Fietkau <nbd@nbd.name>
-References: <cover.1680483895.git.daniel@makrotopia.org>
- <53d89480-936d-25b1-6422-cda7769de369@arinc9.com>
- <ZCsQIylAgh-rxjfu@makrotopia.org>
- <73ce771f-3a13-b1c7-659d-7e1c236fdd0b@arinc9.com>
- <ZCsXV7MkcUJldQbf@makrotopia.org>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <ZCsXV7MkcUJldQbf@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+Subject: Re: [f2fs-dev] [PATCH 1/2] f2fs: fix iostat lock protection
+From: patchwork-bot+f2fs@kernel.org
+Message-Id:  <168054661859.14597.6329451701329861497.git-patchwork-notify@kernel.org>
+Date: Mon, 03 Apr 2023 18:30:18 +0000
+References: <20230331092658.72386-1-bo.ye@mediatek.com>
+In-Reply-To: <20230331092658.72386-1-bo.ye@mediatek.com>
+To: Bo Ye <bo.ye@mediatek.com>
+Cc: jaegeuk@kernel.org, chao@kernel.org, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, qilin.tan@mediatek.com,
+ yongdong.zhang@mediatek.com, linux-kernel@vger.kernel.org,
+ light.hsieh@mediatek.com, linux-f2fs-devel@lists.sourceforge.net,
+ linux-mediatek@lists.infradead.org, browse.zhang@mediatek.com,
+ linux-arm-kernel@lists.infradead.org, peng.zhou@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230403_112720_259549_7EE622CB 
-X-CRM114-Status: GOOD (  28.28  )
+X-CRM114-CacheID: sfid-20230403_113020_321757_341D59AA 
+X-CRM114-Status: UNSURE (   8.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,114 +80,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 3.04.2023 21:13, Daniel Golle wrote:
-> On Mon, Apr 03, 2023 at 08:50:11PM +0300, Arınç ÜNAL wrote:
->> On 3.04.2023 20:42, Daniel Golle wrote:
->>> Hi Arınç,
->>>
->>> On Mon, Apr 03, 2023 at 08:08:19PM +0300, Arınç ÜNAL wrote:
->>>> On 3.04.2023 04:16, Daniel Golle wrote:
->>>>> The MediaTek MT7988 SoC comes with a built-in switch very similar to
->>>>> previous MT7530 and MT7531. However, the switch address space is mapped
->>>>> into the SoCs memory space rather than being connected via MDIO.
->>>>> Using MMIO simplifies register access and also removes the need for a bus
->>>>> lock, and for that reason also makes interrupt handling more light-weight.
->>>>>
->>>>> Note that this is different from previous SoCs like MT7621 and MT7623N
->>>>> which also came with an integrated MT7530-like switch which yet had to be
->>>>> accessed via MDIO.
->>>>>
->>>>> Split-off the part of the driver registering an MDIO driver, then add
->>>>> another module acting as MMIO/platform driver.
->>>>>
->>>>> The whole series has been tested on various MediaTek boards:
->>>>>     * MT7623A + MT7530 (BPi-R2)
->>>>>     * MT7986A + MT7531 (BPi-R3)
->>>>>     * MT7988A reference board
->>>>
->>>> You did not address the incorrect information I pointed out here. Now that
->>>
->>> I'm sorry, that was certainly not intentional and I may have missed
->>> your comments. Actually it doesn't look like they have made it to the
->>> netdev list archive or patchwork either.
->>>
->>>> the patch series is applied, people reading this on the merge branch commit
->>>> will be misled by the misinformation.
->>>
->>> I've changed Kconfig stuff according to your recommendation and also
->>> addressed possible misleading USXGMII and 10GBase-KR support by
->>> introducing MT7988-specific functions and using 'internal' PHY mode.
->>> So which of your comments have not been addressed?
->>
->> https://lore.kernel.org/netdev/c11c86e4-5f8e-5b9b-1db5-e3861b2bade6@arinc9.com/
+Hello:
+
+This series was applied to jaegeuk/f2fs.git (dev)
+by Jaegeuk Kim <jaegeuk@kernel.org>:
+
+On Fri, 31 Mar 2023 17:26:56 +0800 you wrote:
+> From: Qilin Tan <qilin.tan@mediatek.com>
 > 
-> Strange that both emails didn't make it into patchwork.
-
-I don't understand how how patchwork handles the conversation on the 
-cover letter. I was never able to see them on patchwork but lore.kernel.org.
-
-My review for patch 15 was received on patchworks as it should. It was 
-missing "net-next" on the subject so perhaps that's why you missed it.
-
-https://patchwork.kernel.org/project/netdevbpf/patch/80a853f182eac24735338f3c1f505e5f580053ca.1680180959.git.daniel@makrotopia.org/#25278482
-
-Why don't you just check your inbox? We're emailing each other in the end.
-
+> Made iostat lock irq safe to avoid potentinal deadlock.
 > 
->>
->>>
->>>>
->>>>>
->>>>> Changes since v1:
->>>>>     * use 'internal' PHY mode where appropriate
->>>>>     * use regmap_update_bits in mt7530_rmw
->>>>>     * improve dt-bindings
->>>>
->>>> As a maintainer of the said dt-bindings, I pointed out almost 7 things for
->>>> you to change. Of those 7 points, you only did one, a trivial grammar
->>>> change. The patch series is applied now so one of us maintainers (you are
->>>> one too now) need to fix it with additional patches.
->>>
->>> I was also surprised the series made it to net-next so quickly, but it
->>> wasn't me applying it, I merly posted v2 with all comments I received
->>> addressed.
->>>
->>> Me and supposedly also netdevbpf maintainers use patchwork to track
->>> patches and whether comments have been addressed. Can you point me to
->>> emails with the comments which haven't been addressed there? Looking in
->>> patchwork for the dt-bindings patch [1] I don't see any comments there.
->>
->> https://lore.kernel.org/netdev/a7ab2828-dc03-4847-c947-c7685841f884@arinc9.com/
->>
->>>
->>>
->>> Thank you for reviewing!
->>>
->>>
->>> Daniel
->>>
->>>
->>> [1]: See patchwork tracking for RFCv3, v1 and v2. Prior to RFCv3 the series
->>> didn't have the dt-bindings addition, I introduced it with RFCv3 when splitting
->>> the series into many small changes:
->>> https://patchwork.kernel.org/project/netdevbpf/patch/9b504e3e88807bfb62022c0877451933d30abeb5.1680105013.git.daniel@makrotopia.org/
->>> https://patchwork.kernel.org/project/netdevbpf/patch/fef2cb2fe3d2b70fa46e93107a0c862f53bb3bfa.1680180959.git.daniel@makrotopia.org/
->>> https://patchwork.kernel.org/project/netdevbpf/patch/dffacdb59aea462c9f7d4242cf9563a04cf79807.1680483896.git.daniel@makrotopia.org/
->>
->> Although I've been a maintainer for the dt-bindings schema for quite some
->> time, I was somehow missed as a recipient on RFC v3.
+> Deadlock scenario:
+> f2fs_attr_store
+>   -> f2fs_sbi_store
+>   -> _sbi_store
+>   -> spin_lock(sbi->iostat_lock)
+>     <interrupt request>
+>     -> scsi_end_request
+>     -> bio_endio
+>     -> f2fs_dio_read_end_io
+>     -> f2fs_update_iostat
+>     -> spin_lock_irqsave(sbi->iostat_lock)  ===> Dead lock here
 > 
-> Yeah, that was my mistake. get_maintainers.pl comes up with unreadable
-> unicode garbage, probably something is wrong in my local Perl setup.
-> So I always manually replace your name with readable UTF-8, but I missed
-> that for RFC v3.
+> [...]
 
-Did you try writing the output of get_maintainers.pl to a file, then 
-feed the file directly to git send-email as recipients?
+Here is the summary with links:
+  - [f2fs-dev,1/2] f2fs: fix iostat lock protection
+    https://git.kernel.org/jaegeuk/f2fs/c/daa080db4e7e
+  - [f2fs-dev,2/2] f2fs: add __pack attribute for extent_info
+    (no matching commit)
 
-That may bypass that issue. It's also currently how I send my patches.
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-https://arinc9.notion.site/get_maintainers-and-git-send-email-e8edd99d962041eca874966021acefe6
 
-Arınç
 
