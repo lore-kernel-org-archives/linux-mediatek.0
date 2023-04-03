@@ -4,90 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01C25C77B6E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 19:19:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E945C76196
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 19:25:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rO01+3k4fzVS/CqC5YjvddkQFJufKZJtp6FmS8S3Vzg=; b=ZTjqfYNJ9Nbg1MAjVF18YIHJTA
-	bzZXeNI/de6cMWmbjKBBXWQD3OdhT+7cd85TSrZSEmGUHlea+79VoMHnZoy8bLAcZaHxnK3qU3ZMa
-	M8QhgUwaz3ROkIptTSzK7+JAjrnnIRmIFp4ab+RHve7F0MoPSVEpWx5GoqQbzvnLLl6m8CXi2DiB5
-	SikpjMd1Jjr1QIBeV6FI2AaFL4/Fb865rL4O3HznPdpB2jjO1KSC+XbR6mdwQewt1/bI9mhYoK5pb
-	YWfR6LRUxu/9ZGicvP6LUONItFOZE34aG0CfPWOg62WbbK25N9ybRuA0EDSp1FnAskILJKFjlnDT2
-	FUx0v0WA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Tp5qcqPaxivMIuFMRKaAe5HT8V/qPK5f6UKZnTDqXZs=; b=C+IIU4ZUJlYoh8MR2kWQCE/dGh
+	/XxTaO0vMozFi9GTSxICfqGWKbuKQ2Ps/aMQi1H2mvPMk9m28WL47feN338zPbu0Fj+pocqEjyXIN
+	k1bAtnIIvGpWX2Wa74Wm/dYhAoxjNY6hY+6XJlRf+8eKlvw15WriXxPil21HLnV1WhRr/ok7v5gAc
+	TxB7gJVindsZoa78WG3cJaaisE8qw3N7DHm0IDZ5vsDKFiLNspQgd4k+sQb+KH5SvSzXJPK2q4FM9
+	glVoDcWR1UB5gji0gbtcPMJ512/7XQPA+LIFwEp8/A6TVJ7lgVqjWhh+KXBf8dLl+VbwEHb5grtzA
+	XsP5p3dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjPiY-00GMpW-1C;
-	Mon, 03 Apr 2023 19:19:50 +0000
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+	id 1pjPnV-00GNrL-0j;
+	Mon, 03 Apr 2023 19:24:57 +0000
+Received: from lahtoruutu.iki.fi ([185.185.170.37])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjPiV-00GMmB-1B
-	for linux-mediatek@lists.infradead.org;
-	Mon, 03 Apr 2023 19:19:48 +0000
-Received: by mail-ed1-x52e.google.com with SMTP id er13so80555101edb.9
-        for <linux-mediatek@lists.infradead.org>; Mon, 03 Apr 2023 12:19:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1680549583;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=rO01+3k4fzVS/CqC5YjvddkQFJufKZJtp6FmS8S3Vzg=;
-        b=Yi7A7zkfu+IHMbck2/TitvdJ6L4cw+Vm0TPV9ZEdJNaXE2NYh5wdbS816CRXVg1CxL
-         o5p0DvQniMBWegtUeBvP+ZarG3PhT4+CAPAcgwSsl69C+lJqOuCiahmTb9xJ4WAjR7T3
-         BWJz6rzqv40oWo/QS0xLlgDHKMUE0ozRFQQorBjzztoMXAVWRojOe1homea76gTy/GA6
-         Vxd/XrKS4xy2JybNYgoqpiM2XMbBxbYzFClQ1AdvWbdRZgEYbSGI7SlMede0+eaOSIud
-         lxNFqCwLwfj8hj81cTDnFqUvaUjD4sCMZOgFUTRWabMMu25FVvYPyOjf+AToCzO0oPQc
-         aFeQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680549583;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=rO01+3k4fzVS/CqC5YjvddkQFJufKZJtp6FmS8S3Vzg=;
-        b=Qzucv5PmdpdOqPkf93O03PVHSP72X8eI5FL2DnRoigCU7id1hQY6CAcsMMqbbHklLZ
-         9drvdaTOy7ZFiXcOVYY6RIIHvF4xOMCT5+ueL+8lrDljjJNiiDrpYo9ACFvP/GpKUxOG
-         RCUxftLj0RzdHlXUxp8tcTFXmP2WUmAJ1C5dUnmrpLCGTBXF2ZbFApNRmwSnDrH769a5
-         Dy1xIRpX2cW/UQMTGdt8yBbL5vbDgoNalacEEM0ewEXvXRSgOaLbeNRViK3eWMxpu7Zm
-         xYWOkvWzRUCi2EMgEsKVUPOMjatv7gfIvhr2MMXPlCsn2YlxmNlxwsS6brcjz7SYbqbq
-         whSQ==
-X-Gm-Message-State: AAQBX9dQNuyyAnA9OrFo4JgTO+99ViXE7+n+Cfo2ngzuq8IExvAIN9zl
-	SICqiLROz7HrADnI+JJqBBHo9A==
-X-Google-Smtp-Source: AKy350bqVpOgQVbWoSPL7MpqchC8QTkyqwgB6DRPSqU1gag0Z4fSDQBJAF/ATSBK3zN8Uba0NWmgGQ==
-X-Received: by 2002:a17:907:25cb:b0:946:f79b:e785 with SMTP id ae11-20020a17090725cb00b00946f79be785mr22215288ejc.2.1680549582892;
-        Mon, 03 Apr 2023 12:19:42 -0700 (PDT)
-Received: from ?IPV6:2a02:810d:15c0:828:ae90:d80:1069:4805? ([2a02:810d:15c0:828:ae90:d80:1069:4805])
-        by smtp.gmail.com with ESMTPSA id h23-20020a170906261700b008e0bb004976sm4882835ejc.134.2023.04.03.12.19.41
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 03 Apr 2023 12:19:41 -0700 (PDT)
-Message-ID: <d8f3432a-b364-e939-c1f2-b4d55b1586e9@linaro.org>
-Date: Mon, 3 Apr 2023 21:19:40 +0200
+	id 1pjPnQ-00GNoP-1m;
+	Mon, 03 Apr 2023 19:24:54 +0000
+Received: from hillosipuli.retiisi.eu (dkzcv-3yyyyyyyyyyyyyt-3.rev.dnainternet.fi [IPv6:2001:14ba:4505:1fdc::1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sailus)
+	by lahtoruutu.iki.fi (Postfix) with ESMTPSA id 4Pr16v6hS3z49Q0d;
+	Mon,  3 Apr 2023 22:24:39 +0300 (EEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi; s=lahtoruutu;
+	t=1680549885;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Tp5qcqPaxivMIuFMRKaAe5HT8V/qPK5f6UKZnTDqXZs=;
+	b=wj8iMdaB6O5svgBz97QcbFfxl9pOUa1PNhWR6/nMI8DJ/TlBNBIzxaoXQ4xFtAVcllZBGn
+	1h11XWEmzs+t+7S8wZmoH14Ni8IZIiAbMuwhBvBpaZQSxGqHI3PBS4/eRQdeOwpNSUUZ4Q
+	9oD4KR5OR/7ixTFuQJjiBae6kKroRXjgsr1oQ1YHFdRtSRUWdkyXT6ydrbBKs2fI2Nf6at
+	KgPm5BT3ib2zzo+p3tbEYZMZCdzbPUGlXdxIKRq6Wl3LoBqS5w7Tcdh9ze+jq4BX8ZDee1
+	E31/c03A+3U1KSnRAQJPWWdm9O+j4FuxlElRkzejBkCFdfXldIoFoa2cL7+rAQ==
+ARC-Seal: i=1; s=lahtoruutu; d=iki.fi; t=1680549885; a=rsa-sha256;
+	cv=none;
+	b=pTLkgQTxUMn8kAT5W3Z+ogFont60P6E8KePKCXivg0tBgmGITjjXMVNgPLPZmGVszTwkb9
+	8xmV8K+JZuzm7F5CFJy//1r6ial5+VTAqVELsLbmuuAMfOY1FbI3yDkl8ZCGK0ToM5mF6F
+	iXE23DARwHLsLEzlUBnPniLP4sabKK6I8VHkzWvPos67ec7cBwbNsoN6VKbLTay13Lx0Te
+	srYyEk9eLJ72MlypaetY0e3iRJp+oyVh9XtQdLwdV+Gk7bvcCtArTcbo8tYuuL7peYlIWK
+	3MAa6H4E+TVhwLzsPEbZwvIuhCayXj1Up3OmaEuUmeKIlKMxGrnJHjS1tylKqw==
+ARC-Authentication-Results: i=1;
+	ORIGINATING;
+	auth=pass smtp.auth=sailus smtp.mailfrom=sakari.ailus@iki.fi
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi;
+	s=lahtoruutu; t=1680549885;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Tp5qcqPaxivMIuFMRKaAe5HT8V/qPK5f6UKZnTDqXZs=;
+	b=nDY5LUXsU7qY8CejlN+YlEuCBrJE/yaOwuV73ThTDfxvd8Q/gVoeJnKw2jhXh4fy8A7SPX
+	04/1VA27KvucaNF6obkcJs2PPrdTE0lqb28f0pJOkLQXoIeseCKj3IvDUyXnBCVMbpl03s
+	yasLIby0zyRIhZg4rK6kfJ04rUVkkEFvNGm5TZYXULNkyhoQREHpmP/LL8JdsOm0Nmc2LH
+	0bmnev2mHgSMrVvTzXkiub2kKx9ZZcsn7/QC6F+28qWZ7KKjWBErPDIXmgXOy47iBBRRO6
+	0ZiawUTptzsFdcFQ0UPZ510Z4RUtHySIcAMki/r3tFx2/Ka+zwbnh9UJRyw49Q==
+Received: from valkosipuli.retiisi.eu (valkosipuli.localdomain [192.168.4.2])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by hillosipuli.retiisi.eu (Postfix) with ESMTPS id 4C2E2634C91;
+	Mon,  3 Apr 2023 22:22:09 +0300 (EEST)
+Date: Mon, 3 Apr 2023 22:22:08 +0300
+From: Sakari Ailus <sakari.ailus@iki.fi>
+To: Stanimir Varbanov <stanimir.k.varbanov@gmail.com>
+Cc: Rob Herring <robh@kernel.org>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Joe Tessler <jrt@google.com>,
+	Dongchun Zhu <dongchun.zhu@mediatek.com>,
+	Jacopo Mondi <jacopo+renesas@jmondi.org>,
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+	Niklas =?iso-8859-1?Q?S=F6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>, Robert Foss <rfoss@kernel.org>,
+	Todor Tomov <todor.too@gmail.com>, Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Vikash Garodia <quic_vgarodia@quicinc.com>,
+	Heiko Stuebner <heiko@sntech.de>, Benoit Parrot <bparrot@ti.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] media: dt-bindings: Drop unneeded quotes
+Message-ID: <ZCsnYGMkV2Zrw3fJ@valkosipuli.retiisi.eu>
+References: <20230320233944.2920964-1-robh@kernel.org>
+ <ZCaoVwRuxVOTZdI4@valkosipuli.retiisi.eu>
+ <36febd82-85b2-aa4d-c7e0-6343b119e0cc@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH 1/2] dt-bindings: usb: mtk-xhci: add an optional frame
- count clock
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Rob Herring <robh+dt@kernel.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Mathias Nyman <mathias.nyman@intel.com>, linux-usb@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- Tianping Fang <tianping.fang@mediatek.com>
-References: <20230403060232.25699-1-chunfeng.yun@mediatek.com>
-Content-Language: en-US
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230403060232.25699-1-chunfeng.yun@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <36febd82-85b2-aa4d-c7e0-6343b119e0cc@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230403_121947_411804_AE326BFE 
-X-CRM114-Status: GOOD (  13.56  )
+X-CRM114-CacheID: sfid-20230403_122452_763035_867F05C5 
+X-CRM114-Status: GOOD (  18.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,54 +141,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 03/04/2023 08:02, Chunfeng Yun wrote:
-> Add optional clock 'frmcnt_ck' used on 4nm or advanced process SoC
+Hi Stan,
+
+How are you doing?
+
+On Mon, Apr 03, 2023 at 08:26:28PM +0300, Stanimir Varbanov wrote:
+> Hei Sakari,
 > 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
->  .../devicetree/bindings/usb/mediatek,mtk-xhci.yaml          | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
+> On 31.03.23 г. 12:31 ч., Sakari Ailus wrote:
+> > Hi Rob,
+> > 
+> > On Mon, Mar 20, 2023 at 06:39:42PM -0500, Rob Herring wrote:
+> > > Cleanup bindings dropping unneeded quotes. Once all these are fixed,
+> > > checking for this can be enabled in yamllint.
+> > > 
+> > > Signed-off-by: Rob Herring <robh@kernel.org>
+> > 
+> > This patch contains changes to Qualcomm bindings that have been already
+> > made by other patches by Krzysztof. I think these took some time to get
+> > merged to the media tree.
+> > 
+> > I've dropped those, the result is here:
+> > 
+> > <URL:https://git.linuxtv.org/sailus/media_tree.git/commit/?id=d75cae0884e80bba486f85e82b33a1dae3c9c976>
+> > 
 > 
-> diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-> index c119caa9ad16..ee8167fbc541 100644
-> --- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-> +++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-> @@ -77,6 +77,7 @@ properties:
->        - description: Mcu bus clock for register access
->        - description: DMA bus clock for data transfer
->        - description: controller clock
-> +      - description: frame count clock
->  
->    clock-names:
->      minItems: 1
-> @@ -86,14 +87,15 @@ properties:
->        - const: mcu_ck
->        - const: dma_ck
->        - const: xhci_ck
-> +      - const: frmcnt_ck
+> Do you think it will fix this pull request failure?
+> 
+> https://lore.kernel.org/all/20230329214310.2503484-1-jenkins@linuxtv.org/
 
+Ah, it seems to be the same issue here.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+The patch has been merged via my tree, whereas the rest of the patchset was
+apparently merged by Hans earlier on.
 
->  
->    assigned-clocks:
->      minItems: 1
-> -    maxItems: 5
-> +    maxItems: 6
+<URL:https://patchwork.linuxtv.org/project/linux-media/list/?series=9531&submitter=&state=*&q=&archive=&delegate=>
 
-But these should be dropped:
-https://lore.kernel.org/linux-devicetree/20230403191850.374839-1-krzysztof.kozlowski@linaro.org/T/#t
+-- 
+Kind regards,
 
->  
->    assigned-clock-parents:
->      minItems: 1
-> -    maxItems: 5
-> +    maxItems: 6
->  
->    phys:
->      description:
-
-Best regards,
-Krzysztof
-
+Sakari Ailus
 
