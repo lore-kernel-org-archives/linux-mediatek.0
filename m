@@ -4,84 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81C4DC76196
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 13:56:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAB43C761A6
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 13:58:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xb/Aqcr8/6tCqOXQhpDwDqrXqkHQUMERdzS8z5C5aaE=; b=neODxbyqN6Mb4PUgoJOIouGg0H
-	93lVDY/NwJbHh+XORQwdu5O0tVBhYarvCQmU1lsSMGUKIWGsjCjXQhwMfFg+vqYfC/9GThKSebLHy
-	D3AqwK8435rDz5+am0Tc48uYx8zlDpm2tZMYikUW36zZVcnZZhK+fAxuowZUN4BnJ8oC17srktFrQ
-	iPMHv6YXuP+b9Hm8k+sfbqsl4kJbX+ov/ObzZeegi68auo+uGfSzYhAFg50uQQxA+diDdsjKW4uy1
-	j8VEh5JvrMX3+YQSqgwMjQqU4c0hh9oWMPxRYgJiAJnLSVm60V7zEtNNq8jhSjEAEE/6kVKSFqN+l
-	4jBwSpNg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Z9l3ozIq8+CUBEkKYPqUUs6sCAi7/VhHtAn5AS3VYhU=; b=Jgdd30fncoFHrjHzk1+HpPPK7n
+	nBotdCh7gUtLh5sZQNvwi+uXadAU1Cmw+Vbh6ji1iwE0/9ya9C6CKp1Kw17WbAcEy/VRtonsUpia5
+	A3NA4+0L3i29Ba/QOmG2X6C//MaMap+aUSowFpOX/TzuedecJkr6bqM9zL+uSsatAA2wtfgP8BvtZ
+	zevsCv84ZlVzAgbK24NPChwon1fVgwD+ERwWSiRa7rNsB+SPUmDdSfTOCE+iuyjZV9GW7CP5arvKj
+	sN+lQrLWom9cI+0pmdd4sO1UpN5CEC4iZalpVrUK5htzc21PeD9iPRQ+lLr76HKUu6jqsuwplY1g4
+	1ULR9KWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjKfd-00FXWW-0e;
-	Mon, 03 Apr 2023 13:56:29 +0000
-Received: from mout.gmx.net ([212.227.17.20])
+	id 1pjKhl-00FYAD-1i;
+	Mon, 03 Apr 2023 13:58:41 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjKfX-00FXU8-1g;
-	Mon, 03 Apr 2023 13:56:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1680530175; i=frank-w@public-files.de;
-	bh=Xb/Aqcr8/6tCqOXQhpDwDqrXqkHQUMERdzS8z5C5aaE=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=WVgWtMLNJip3AWjjsW3c2NEI8/oR0kJHkFcWc8LIzEOS5noCTYVSWlKivGM7TXk1c
-	 sK3FeMkjgroYVQ3pq9/jXOA/krprjV0Bo5aBA+WYVI5C6LTCvEImrFpQchEzyDb1yx
-	 a3aBhQKOsaZCzFlOuvmHSkvCx8qwAPPxF7E0pFZcRRjCz/QjfXqOQd2YxVPo7YM0kq
-	 KEhaRcLyaEOp80/+npwZJ3jiasFpzsOFHWlvY/uy92PCK7FaLBVkQkdDvwNyalxwfo
-	 DvWZQIHjFOzeCwyadhDttGjYi1HXl4etdfE3/DRigXd5yjn/hCt8DDvIyFpOcSScDQ
-	 qzxZURiAEGDMQ==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [217.61.152.94] ([217.61.152.94]) by web-mail.gmx.net
- (3c-app-gmx-bap35.server.lan [172.19.172.105]) (via HTTP); Mon, 3 Apr 2023
- 15:56:15 +0200
+	id 1pjKhh-00FY7F-0b;
+	Mon, 03 Apr 2023 13:58:39 +0000
+Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C1E0B6601F5E;
+	Mon,  3 Apr 2023 14:58:27 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1680530313;
+	bh=ixIV9Kz+uewOLYiqqFhy82v54fEkXWHbGspKjRC248k=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=SaNTiyCxtsTBxZ/2tp3PafuYNJ2CoPgEdX+/EHgjOoY29DuraoeQcFjLkv4BZPRx7
+	 B2K+3KWVoalzw5XZsD/DEL329RB1eKD8bKAMVcqdK5mVcINSysDQUlpD1menV6YwEj
+	 VdBTQMAyx1oxQBGCZKe4i8FBmi7QejeIviWrQBRYA2Q7YcnFHsmxQrqkYaHJ2wke34
+	 UQz1Es76KbbwB54FLQGmsNT+fqeuiL0Hoc1LPnwPhlYs1q5pMCcgaGMbQlmhDgjzFU
+	 +hjK23Pi37+dRqn+waQ/LfIDKcpardjweIM003mSfJpEPEiOkGpfdePryjwzixnotU
+	 DAPR0TDlkRQwA==
+Date: Mon, 3 Apr 2023 09:58:23 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: Joerg Roedel <joro@8bytes.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>, Will Deacon <will@kernel.org>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Hans Verkuil <hverkuil@xs4all.nl>, linux-media@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	iommu@lists.linux.dev,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	mingyuan.ma@mediatek.com, yf.wang@mediatek.com,
+	jianjiao.zeng@mediatek.com, Yunfei Dong <yunfei.dong@mediatek.com>,
+	kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>,
+	chengci.xu@mediatek.com, youlin.pei@mediatek.com,
+	anan.sun@mediatek.com, Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Rob Herring <robh@kernel.org>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Subject: Re: [PATCH v6 01/14] dt-bindings: media: mediatek,vcodec: Remove
+ dma-ranges property
+Message-ID: <3a73c940-d97b-4d5c-a546-b5ee257a12f9@notapiano>
+References: <20230403091337.26745-1-yong.wu@mediatek.com>
+ <20230403091337.26745-2-yong.wu@mediatek.com>
 MIME-Version: 1.0
-Message-ID: <trinity-f48dda5c-6787-4732-978a-a409bbb0a74d-1680530175673@3c-app-gmx-bap35>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Subject: Aw: Re: [RFC] arm64: dts: use size of reserved partition for bl2
-Content-Type: text/plain; charset=UTF-8
-Date: Mon, 3 Apr 2023 15:56:15 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <601a8435-8e2a-2c25-5fe3-40be62269469@collabora.com>
-References: <20230403105818.29624-1-linux@fw-web.de>
- <601a8435-8e2a-2c25-5fe3-40be62269469@collabora.com>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:1JUsxUleXcKrPCYwE3ay4MIocxMSb4QWHITw42EQ/QR0OVKQS9PGhbSC81u83cP4k1dMp
- S1et19Ypg4uLyI/QckCamlb8kcfn1bY4ymdZGUt3Ph7J38bdfIThEnQiirBQ6gDDvAfpskDhC+P6
- iAaYJxwyc3Ig+PTlA5twYw1xpSilLarg7i3GTbuHqFpqyBgCdnHX6WwQ+lK3PVIU4Auvh9i7MFsR
- 8HzZea3gQDUcfZU9yxOEsCuh6ks7UdS2t6Umh1jTB9ziiDqmfpdBfdAzSirOnHnF8S1u0fg2yuGG
- Vw=
-UI-OutboundReport: notjunk:1;M01:P0:jg4AmhsdSds=;mWrtOAomhXxgFe3ThMYoz+s7nVN
- UuwqaM8J8aThcXwF6VoXk7wWF86T5cbejRDTAscqE70dN6DVg8E/hbaOApM9Js/Fj06u7OPBg
- 6RvF+zfTf7ndIiqqJVngOJMK01wmtK/ks5CPPuihiK0qKKIQo4L5BkxCefcCfoggy8VzL8vz5
- jUnILjCxNfiAlQLRxG4z8c2xaKZYrGwfyEdLs0Kn+fCf505U5h8WHRamHwgbjAZPPMfWv37kD
- r7J6OXsLD4QF9lmQZgIAzUISCBc1KpG0H3M1sl9mlUx9mW4rm25w6J9bsYL4c5S1r9sb9dRSr
- +wUoLpj0DFhK1ulSPiZ9abTnlBSV1M0fI1odhYuaaP+ULGffm1/8e3qR7VjCnNhSWarH4rd/a
- oItMUBls4M4r+zQWlMEmM5dQVzKWjknmYCVSh4OkdocNRZmsbeFNlUN6vBvWqdATlvVAKowIa
- 5VZ5FpSJpn9dgxzWNmew5FStWODYHIM8UbrB31WAGL7J7SaSKy1kngfjYvoTiOc8ZIXNG2VLa
- DZA6YIdkOL8SrpOvtyeYa/wSwLq0QtAhq3JARS/F5YarnjRsd6IJcTW7FV+T4kWx1W9uLz010
- 1camxgAhtwkgpCHT1qSS6rxcapHJymGBOG0AeVQISr6GrSjHxcqbJOLoWW+8il8Qs5QekwQOG
- lW0xPUBY16DQyG51Il7TTjUOeAbhM9Z/F4m6AJAZxLgkmHs18Ab6VsqZn43rZhZ02/vA81yHr
- aor2OlljU+S+V+JvVwc5/aPNxYey30TGMD+tW1TQE+efQoMwB3aag4VqhFhKq2zQTkLcWe/0f
- WawLAgD/5bBkNVgGvh48HFEwGo+Cz69aBk6LjPV0ryBqjQdgm3Ehw+FCuzQl7U4BpRRLv6Qqk
- 6XB0KjI07hnPTIA==
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230403091337.26745-2-yong.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230403_065623_866977_D4BAD0BF 
-X-CRM114-Status: GOOD (  13.47  )
+X-CRM114-CacheID: sfid-20230403_065837_452030_EC2FB11B 
+X-CRM114-Status: GOOD (  12.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,54 +92,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Gesendet: Montag, 03. April 2023 um 14:43 Uhr
-> Von: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.c=
-om>
-> Il 03/04/23 12:58, Frank Wunderlich ha scritto:
-> > From: Frank Wunderlich <frank-w@public-files.de>
-> >
-> > To store uncompressed bl2 more space is required than partition is
-> > actually defined.
-> >
-> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
->
-> If this doesn't get changed anymore, I'm fine with it... but a question =
-arises:
-> did you send patches to add your BPI-r3 board(s) to upstream u-boot?
+On Mon, Apr 03, 2023 at 05:13:24PM +0800, Yong Wu wrote:
+[..]
+> --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
+> +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
+> @@ -76,11 +76,6 @@ properties:
+>        The node of system control processor (SCP), using
+>        the remoteproc & rpmsg framework.
+>  
+> -  dma-ranges:
+> -    maxItems: 1
+> -    description: |
+> -      Describes the physical address space of IOMMU maps to memory.
+> -
+>    "#address-cells":
+>      const: 2
+>  
+> @@ -203,7 +198,6 @@ required:
+>    - reg
+>    - iommus
+>    - mediatek,scp
+> -  - dma-ranges
+>    - ranges
+>  
+>  if:
+> @@ -236,7 +230,6 @@ examples:
+>              compatible = "mediatek,mt8192-vcodec-dec";
+>              mediatek,scp = <&scp>;
+>              iommus = <&iommu0 M4U_PORT_L4_VDEC_MC_EXT>;
+> -            dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
+>              #address-cells = <2>;
+>              #size-cells = <2>;
+>              ranges = <0 0 0 0x16000000 0 0x40000>;
 
-currently i use the rfb dts for r3 in uboot: arch/arm/dts/mt7986a-sd-rfb.d=
-ts
+Hi,
 
-this file in upstream uboot has no partitions defined
+this change was also done in another patch [1], and it is already queued for the
+media tree [2], so you'll need to remove this part of your patch in order to
+avoid conflicts.
 
-https://source.denx.de/u-boot/u-boot/-/blob/master/arch/arm/dts/mt7986a-sd=
--rfb.dts#L144
+[1] https://lore.kernel.org/all/20230303013842.23259-3-allen-kh.cheng@mediatek.com/
+[2] https://lore.kernel.org/all/98c48690-631d-1086-9b7c-004c61cc8dbb@xs4all.nl/#t
 
-but i added them there too and i wrote content by offsets to main device (=
-not to partitions).
-
-https://github.com/frank-w/u-boot/blob/2023-04-bpi/arch/arm/dts/mt7986a-sd=
--rfb.dts#L154
-
-so yes basicly it needs to be send there too, maybe as additional dts.
-
-regards Frank
-
-> > ---
-> > I used the definition i got from mtk used in their SDK uboot.
-> >
-> > Openwrt uses also the first reserved partition to give bl2 more
-> > space:
-> >
-> > https://git.openwrt.org/?p=3Dopenwrt/openwrt.git;a=3Dblob;f=3Dtarget/l=
-inux/mediatek/dts/mt7986a-bananapi-bpi-r3-nor.dts;h=3Df597b869abc80d1a73f4=
-4ebb85ad4da17376bb52;hb=3DHEAD#l22
-> >
-> > so imho it should be same in mainline to not require complex bl2
-> > compression.
->
-> Regards,
-> Angelo
->
->
+Thanks,
+Nícolas
 
