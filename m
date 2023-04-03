@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AC90C76196
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 18:14:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86398C77B6C
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 18:24:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vTPQ+7gkVO2Aps53RpVv5KHzFQYEl7mi0a1sEGJvNMg=; b=YCtjXTZ/qHsEMLjjU/KHPfQOOk
-	7mThK1sKk9qHV47O6pcBzOc0Zv2KyfuQg2fMPBiccebVghBeLA07HMnPIjKvP0v59hI22EFu4fk5E
-	C++6hUQ2/R2nIb6rytzYalRKvzhY+0r6//TIOA+WfE1j+WRegqGVkrEVoQ3DzXznZUoLLnG44BCKm
-	lpaURTCE4RIG8v6W++7tltPywQcpRPMREdh5jYeXoj3q0q0MPddFifVJ4wypWvn5/zYxWxoP4HXUc
-	a6wSplrHiVPiXtqb0l+9eHsTJ+aixALSW7g2SJ8ndXHmgPoX3QcHwLst0nhwv36o6WcoSGz3OTd/S
-	S7+ke1qg==;
+	bh=fZhH3/fLLIlzHUBT1tTzIhpO6VuCLIICfXueqH1JYLU=; b=dWlyVO8qEi5zZSoAGih5voPonr
+	W0mMa3dZSVYagC2suS53WJcfJLNVMxBjeqkf7dhcbkWjdOM/oGXIuMwQn60C/yFV022kxw/Okks6L
+	CmgTS/1KA5C+RiF2wmpHVTAnoMOxp4G8i9M9EM25WjI4+pRlr9gVHyL0nTSL5NOj+Ru/oga2lcmKG
+	0dTQOBrBhsUJjmUBlIpfmLqF3NAT/F/Plj2L+o9wnCp1h15yvFIlmzjQlwwuv0D/BsbCDJbz0y67Q
+	hdPM4QeqM3VozW4BQaAC6LyrvNP9G8BoLMNCXcIHqqR8ECd0aHmVM5vlXIJ6l7abOZRMNGnaEjER3
+	0JMpRFIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjOgp-00GAO6-3B;
-	Mon, 03 Apr 2023 18:13:59 +0000
+	id 1pjOqk-00GBjc-1V;
+	Mon, 03 Apr 2023 18:24:14 +0000
 Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjOgn-00GANC-05;
-	Mon, 03 Apr 2023 18:13:58 +0000
+	id 1pjOqh-00GBif-2Q;
+	Mon, 03 Apr 2023 18:24:13 +0000
 Received: from local
 	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1pjOgd-0001gS-2R;
-	Mon, 03 Apr 2023 20:13:47 +0200
-Date: Mon, 3 Apr 2023 19:13:43 +0100
+	id 1pjOqY-0001mn-0U;
+	Mon, 03 Apr 2023 20:24:02 +0200
+Date: Mon, 3 Apr 2023 19:23:59 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
 Cc: devicetree@vger.kernel.org, netdev@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Rob Herring <robh+dt@kernel.org>,
+	linux-arm-kernel@lists.infradead.org, linux@armlinux.org.uk,
+	linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Andrew Lunn <andrew@lunn.ch>,
 	Florian Fainelli <f.fainelli@gmail.com>,
@@ -52,24 +52,23 @@ Cc: devicetree@vger.kernel.org, netdev@vger.kernel.org,
 	Landen Chao <Landen.Chao@mediatek.com>,
 	DENG Qingfang <dqfext@gmail.com>,
 	Philipp Zabel <p.zabel@pengutronix.de>,
-	Russell King <linux@armlinux.org.uk>,
 	Sam Shih <Sam.Shih@mediatek.com>,
 	Lorenzo Bianconi <lorenzo@kernel.org>,
 	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>
-Subject: Re: [PATCH net-next v2 00/14] net: dsa: add support for MT7988
-Message-ID: <ZCsXV7MkcUJldQbf@makrotopia.org>
-References: <cover.1680483895.git.daniel@makrotopia.org>
- <53d89480-936d-25b1-6422-cda7769de369@arinc9.com>
- <ZCsQIylAgh-rxjfu@makrotopia.org>
- <73ce771f-3a13-b1c7-659d-7e1c236fdd0b@arinc9.com>
+Subject: Re: [PATCH 15/15] dt-bindings: net: dsa: mediatek,mt7530: add
+ mediatek,mt7988-switch
+Message-ID: <ZCsZv65vDjb8MePG@makrotopia.org>
+References: <cover.1680180959.git.daniel@makrotopia.org>
+ <80a853f182eac24735338f3c1f505e5f580053ca.1680180959.git.daniel@makrotopia.org>
+ <a7ab2828-dc03-4847-c947-c7685841f884@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <73ce771f-3a13-b1c7-659d-7e1c236fdd0b@arinc9.com>
+In-Reply-To: <a7ab2828-dc03-4847-c947-c7685841f884@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230403_111357_063575_C2CF436F 
-X-CRM114-Status: GOOD (  43.62  )
+X-CRM114-CacheID: sfid-20230403_112411_788550_A444A424 
+X-CRM114-Status: GOOD (  37.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,93 +83,142 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 03, 2023 at 08:50:11PM +0300, Arınç ÜNAL wrote:
-> On 3.04.2023 20:42, Daniel Golle wrote:
-> > Hi Arınç,
-> > 
-> > On Mon, Apr 03, 2023 at 08:08:19PM +0300, Arınç ÜNAL wrote:
-> > > On 3.04.2023 04:16, Daniel Golle wrote:
-> > > > The MediaTek MT7988 SoC comes with a built-in switch very similar to
-> > > > previous MT7530 and MT7531. However, the switch address space is mapped
-> > > > into the SoCs memory space rather than being connected via MDIO.
-> > > > Using MMIO simplifies register access and also removes the need for a bus
-> > > > lock, and for that reason also makes interrupt handling more light-weight.
-> > > > 
-> > > > Note that this is different from previous SoCs like MT7621 and MT7623N
-> > > > which also came with an integrated MT7530-like switch which yet had to be
-> > > > accessed via MDIO.
-> > > > 
-> > > > Split-off the part of the driver registering an MDIO driver, then add
-> > > > another module acting as MMIO/platform driver.
-> > > > 
-> > > > The whole series has been tested on various MediaTek boards:
-> > > >    * MT7623A + MT7530 (BPi-R2)
-> > > >    * MT7986A + MT7531 (BPi-R3)
-> > > >    * MT7988A reference board
-> > > 
-> > > You did not address the incorrect information I pointed out here. Now that
-> > 
-> > I'm sorry, that was certainly not intentional and I may have missed
-> > your comments. Actually it doesn't look like they have made it to the
-> > netdev list archive or patchwork either.
-> > 
-> > > the patch series is applied, people reading this on the merge branch commit
-> > > will be misled by the misinformation.
-> > 
-> > I've changed Kconfig stuff according to your recommendation and also
-> > addressed possible misleading USXGMII and 10GBase-KR support by
-> > introducing MT7988-specific functions and using 'internal' PHY mode.
-> > So which of your comments have not been addressed?
-> 
-> https://lore.kernel.org/netdev/c11c86e4-5f8e-5b9b-1db5-e3861b2bade6@arinc9.com/
+Hi!
 
-Strange that both emails didn't make it into patchwork.
+Now that I see the email, see my reply below.
+
+On Fri, Mar 31, 2023 at 08:27:54AM +0300, Arınç ÜNAL wrote:
+> On 30.03.2023 18:23, Daniel Golle wrote:
+> > Add documentation for the built-in switch which can be found in the
+> > MediaTek MT7988 SoC.
+> > 
+> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> > ---
+> >   .../bindings/net/dsa/mediatek,mt7530.yaml     | 26 +++++++++++++++++--
+> >   1 file changed, 24 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+> > index 5ae9cd8f99a24..15953f0e9d1a6 100644
+> > --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+> > +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+> > @@ -11,16 +11,23 @@ maintainers:
+> >     - Landen Chao <Landen.Chao@mediatek.com>
+> >     - DENG Qingfang <dqfext@gmail.com>
+> >     - Sean Wang <sean.wang@mediatek.com>
+> > +  - Daniel Golle <daniel@makrotopia.org>
+> 
+> Please put it in alphabetical order by the first name.
+> 
+> >   description: |
+> > -  There are two versions of MT7530, standalone and in a multi-chip module.
+> > +  There are three versions of MT7530, standalone, in a multi-chip module and
+> > +  built-into a SoC.
+> 
+> I assume you put this to point out the situation with MT7988?
+> 
+> This brings to light an underlying problem with the description as the
+> MT7620 SoCs described below have the MT7530 switch built into the SoC,
+> instead of being part of the MCM.
+
+That's true, also MT7620A/N are not MCM but rather a single die which
+includes the MT7530 switch afaik.
 
 > 
-> > 
-> > > 
-> > > > 
-> > > > Changes since v1:
-> > > >    * use 'internal' PHY mode where appropriate
-> > > >    * use regmap_update_bits in mt7530_rmw
-> > > >    * improve dt-bindings
-> > > 
-> > > As a maintainer of the said dt-bindings, I pointed out almost 7 things for
-> > > you to change. Of those 7 points, you only did one, a trivial grammar
-> > > change. The patch series is applied now so one of us maintainers (you are
-> > > one too now) need to fix it with additional patches.
-> > 
-> > I was also surprised the series made it to net-next so quickly, but it
-> > wasn't me applying it, I merly posted v2 with all comments I received
-> > addressed.
-> > 
-> > Me and supposedly also netdevbpf maintainers use patchwork to track
-> > patches and whether comments have been addressed. Can you point me to
-> > emails with the comments which haven't been addressed there? Looking in
-> > patchwork for the dt-bindings patch [1] I don't see any comments there.
+> The switch IP on MT7988 is for sure not MT7530 so either fix this and the
+> text below as a separate patch or let me handle it.
 > 
-> https://lore.kernel.org/netdev/a7ab2828-dc03-4847-c947-c7685841f884@arinc9.com/
+> >     MT7530 is a part of the multi-chip module in MT7620AN, MT7620DA, MT7620DAN,
+> >     MT7620NN, MT7621AT, MT7621DAT, MT7621ST and MT7623AI SoCs.
+> > +  The MT7988 SoC comes a built-in switch similar to MT7531 as well as 4 Gigabit
 > 
-> > 
-> > 
-> > Thank you for reviewing!
-> > 
-> > 
-> > Daniel
-> > 
-> > 
-> > [1]: See patchwork tracking for RFCv3, v1 and v2. Prior to RFCv3 the series
-> > didn't have the dt-bindings addition, I introduced it with RFCv3 when splitting
-> > the series into many small changes:
-> > https://patchwork.kernel.org/project/netdevbpf/patch/9b504e3e88807bfb62022c0877451933d30abeb5.1680105013.git.daniel@makrotopia.org/
-> > https://patchwork.kernel.org/project/netdevbpf/patch/fef2cb2fe3d2b70fa46e93107a0c862f53bb3bfa.1680180959.git.daniel@makrotopia.org/
-> > https://patchwork.kernel.org/project/netdevbpf/patch/dffacdb59aea462c9f7d4242cf9563a04cf79807.1680483896.git.daniel@makrotopia.org/
+> s/comes a/comes with a
 > 
-> Although I've been a maintainer for the dt-bindings schema for quite some
-> time, I was somehow missed as a recipient on RFC v3.
+> > +  Ethernet PHYs and the switch registers are directly mapped into SoC's memory
+> > +  map rather than using MDIO. It comes with an internally connected 10G CPU port
+> > +  and 4 user ports connected to the built-in Gigabit Ethernet PHYs.
+> 
+> Are you sure this is not the MT7531 IP built into the SoC, like MT7530 on
+> the MT7620 SoCs? Maybe DENG Qingfang would like to clarify as they did for
+> MT7530.
 
-Yeah, that was my mistake. get_maintainers.pl comes up with unreadable
-unicode garbage, probably something is wrong in my local Perl setup.
-So I always manually replace your name with readable UTF-8, but I missed
-that for RFC v3.
+It's basically MT7531 without port 5, without the SGMII units and with
+different built-in PHYs for port 0~3 (driver for those will follow in
+the next days, I'm still cleaning it).
+
+Similar to other in-SoC switches also the reset routine works a bit
+differently, ie. instead of using a GPIO we use a bit of the reset
+controller, similar to how it works also for MCM.
+
+> 
+> > +
+> >     MT7530 in MT7620AN, MT7620DA, MT7620DAN and MT7620NN SoCs has got 10/100 PHYs
+> >     and the switch registers are directly mapped into SoC's memory map rather than
+> > -  using MDIO. The DSA driver currently doesn't support this.
+> > +  using MDIO. The DSA driver currently doesn't support MT7620 variants.
+> >     There is only the standalone version of MT7531.
+> 
+> Can you put the MT7988 information below here instead.
+> 
+> > @@ -81,6 +88,10 @@ properties:
+> >             Multi-chip module MT7530 in MT7621AT, MT7621DAT and MT7621ST SoCs
+> >           const: mediatek,mt7621
+> > +      - description:
+> > +          Built-in switch of the MT7988 SoC
+> > +        const: mediatek,mt7988-switch
+> > +
+> >     reg:
+> >       maxItems: 1
+> > @@ -268,6 +279,17 @@ allOf:
+> >         required:
+> >           - mediatek,mcm
+> > +  - if:
+> > +      properties:
+> > +        compatible:
+> > +          const: mediatek,mt7988-switch
+> > +    then:
+> > +      $ref: "#/$defs/mt7530-dsa-port"
+> 
+> The CPU ports bindings for MT7530 don't match the characteristics of the
+> switch on the MT7988 SoC you described above. We need new definitions for
+> the CPU ports on the switch on the MT7988 SoC.
+> 
+> What's the CPU port number? Does it accept rgmii or only the 10G phy-mode?
+
+CPU port is port 6. Port 5 is unused in MT7988 design.
+It uses an internal 10G link, so I've decided to use 'internal' as phy
+mode which best describes that situation.
+
+> 
+> > +      properties:
+> > +        gpio-controller: false
+> > +        mediatek,mcm: false
+> > +        reset-names: false
+> 
+> I'd rather not add reset-names here and do:
+> 
+>   - if:
+>       required:
+>         - mediatek,mcm
+>     then:
+>       properties:
+>         reset-gpios: false
+> 
+>       required:
+>         - resets
+>         - reset-names
+>     else:
+>       properties:
+>         resets: false
+>         reset-names: false
+> 
+> I can handle this if you'd like.
+
+Oh yes, that would be very nice. I'm definitely not an expert on
+dt-bindings and will probably need several attempts to correctly
+address all of that.
+
+Thank you!
+
+
+Daniel
 
