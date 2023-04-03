@@ -4,91 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1993DC76196
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 21:45:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21586C76196
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Apr 2023 22:19:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ANuyucjG7+IOsm6+PTXTUkVZpuE117uxor/udrQsrHI=; b=tFKu05sziCC9L1/Eek7sC4Omiy
-	XSLLLkoxY7ZLywdlG5qQAx1ik8TkDeQJ8re69+iBWnfriKvEgsrny29uEkkwbITzNBjmTWyw4GFDL
-	BzY3wML5c/tFE6mKTVuT78yNFup4laxKu+SQ+1jYL9J4uJP5AXKvBzLom1OaG0MWbbShHdrHH6LX5
-	LM2vW7AhNG3inrSNR5jUimbqhU61eGNpnZKR3tIYD2MwyiXOsLN36nXZTzPK6AaE/xtEU/CxT4lY+
-	ddEY2Ovj+zAYWdEuDLu7GECmWvjt0G77girEyj7kRaHzB83oE26rZgU82XsvlQDmIpCs3ep10LZrx
-	ljfOl82A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Zq0O4vVrMjbhd5IPh9dbb+NLn73KWGBpnasQ568iBvQ=; b=staMWgEDX+9Vbg/5S/sy3DSKu0
+	KnhxeK0zQKWYKfKK1uPLLaqtIWVmTHWwTrQ0tCAqdGXVWCjfQ4qNnsjTmEFlR8/mPI7FPyU0p6T14
+	R0Jw8aAkKCVVF/BvY3jU81RNLoSZ0YoulbEQYwHW4YntwjhNgB1jJkfSSKbt+6qLWasQSm3qFtOGo
+	cPhuykYjeQonhuV4DoR36LL0uVq9T6/RIJOsRCiUPK1wUotnBZyMxnxsWCcYZ4wRfsTnCWFHBZ/o8
+	eJpkO3vtOptJggq9r51koarwfo95wOunU0N6jpFUQP1+Rm1XIfiDkfDljN/pQ6ovip2j0d3/meIif
+	5n+FyMVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjRzg-00GxiA-0D;
-	Mon, 03 Apr 2023 21:45:40 +0000
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+	id 1pjSWU-00H2vv-04;
+	Mon, 03 Apr 2023 22:19:34 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjQxS-00GgEL-3C;
-	Mon, 03 Apr 2023 20:39:20 +0000
-Received: by mail-ed1-x529.google.com with SMTP id h8so122364385ede.8;
-        Mon, 03 Apr 2023 13:39:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=googlemail.com; s=20210112; t=1680554354;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ANuyucjG7+IOsm6+PTXTUkVZpuE117uxor/udrQsrHI=;
-        b=QBtct7OF544g4KW8FmyicOGj93ZjWlg8zuQv1bJbp8jcg7kZlaoTEPE+ZjM8qK1FvF
-         ySiNTF5dDqmcX7CK3V3nXjfCtZyZUPhXWS0tiyg1h2mmI68eIuECf75r+pVgglVEKCkU
-         kHoMUTP0p53HT7ROKBpLFzTXIvLXbS7upHKKFV+6T4zuNMqbtyJ5qYvrMPN/aHFSnads
-         mcQglHoBkCSFBXGMXHZCZrQSWHcr75YnbjUa66Tunz0FV33dyy00oLs71tZiNRBidtW4
-         jtGUBV/KHY62/FaxcVx0/bdUCldUHFYapDx3Da/E+rJH3/2oHbH6x+g4Go250AzETWuH
-         eyhQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680554354;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ANuyucjG7+IOsm6+PTXTUkVZpuE117uxor/udrQsrHI=;
-        b=h7p6ogqEYKV9lNNLFqeGaPDhvPxXGm4tVumQEpAgS9xvJ+Sy+aEczRv6UuBpwzaHap
-         JdF/r0KKyOUovZ0Yv3zWU1shnO1hsBhZWuVVbr7X/K+2fs9zMqwGsMoaSohrwLl+DzyR
-         Eth2Xa3+V4wsx97rzYFsjP+GoRY1c8x+Qrs1EutU4CTq7mplygtgOfBoqVrgo3ECye8w
-         zDLW0P6nyclBhcsQNZqs7KgqWIPPr3Ftw6RngBG6N+sU4wjP2ctG1F7zknAiiOXh2bdL
-         z1eponaCgNKqCFffpOU4FRpIV3QnTjm8gX9W35U2vgam4PUcTrG4ewE/994T+2FguQKw
-         Z+qg==
-X-Gm-Message-State: AAQBX9fu+roQWOJDE3HKA7PZ4c3IfluLJpKYdWvkML7aIEah83yvdbqh
-	gi/olfchs+q/HKNLG3wQ9w9jLpMi6sPRSLuAEe4=
-X-Google-Smtp-Source: AKy350Yxps2lCxD4+gSI3XRR+EKyXbQm+2ZcypH1MgOjQt3rpacSMedZmkVztU2IZX24o5jZNqKukzBRTVyKq2STkzU=
-X-Received: by 2002:a05:6402:a47:b0:502:3e65:44f7 with SMTP id
- bt7-20020a0564020a4700b005023e6544f7mr10506548edb.3.1680554354318; Mon, 03
- Apr 2023 13:39:14 -0700 (PDT)
+	id 1pjSWQ-00H2uN-2P;
+	Mon, 03 Apr 2023 22:19:32 +0000
+Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5631766030F1;
+	Mon,  3 Apr 2023 23:19:26 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1680560368;
+	bh=MfmeAyMP4kZnUtbedObZ5J3MvrkjTUU/2hwYA1Mdx6w=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=eBDhs8F64dEDL9yF4U+vgr0Qx7wzZGhhYKMmrBTgpyflQKR+FKgXbpmO2QUH8zLMA
+	 ve/hZuMzhviSVvmZQU+kwgqk9e5zC2CWTUjAJpIyuNV9wZC2XP50X7nTakcK9KuNhl
+	 ijrk+HItTJtFXltBIUHqFsfxyQQY18X0JN26j95u7VKSdoBxNlNxjTE655MSrgyqES
+	 dav8ToW4kZeyaWNNjEQYeOcT9tdkpFaVXLhDPPNlhJc6Pi8WeTFNRSwRqvtYA8NUI6
+	 nrTqdIAyh5rOusfsagIrdCFoDcChchq+COk5gwBb4SF61y4BKFXzQm+ZA/7LozXiF4
+	 nahUY/UinXnVA==
+Date: Mon, 3 Apr 2023 18:19:21 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, yunfei.dong@mediatek.com,
+	Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Subject: Re: [RESEND 0/6] media: mediatek: Update video decoder nodes for
+ MT8195 and MT8192
+Message-ID: <4ebd1c9f-0460-4436-8e17-0e46e88f4828@notapiano>
+References: <20230303013842.23259-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
-References: <20230402143025.2524443-1-u.kleine-koenig@pengutronix.de> <20230402143025.2524443-2-u.kleine-koenig@pengutronix.de>
-In-Reply-To: <20230402143025.2524443-2-u.kleine-koenig@pengutronix.de>
-From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Date: Mon, 3 Apr 2023 22:39:03 +0200
-Message-ID: <CAFBinCBX8dQo9898KkXaMaanQ9-LcFA7HHFf+XBM2-f+g8WY7Q@mail.gmail.com>
-Subject: Re: [PATCH net-next 01/11] net: stmmac: Make stmmac_pltfr_remove()
- return void
-To: =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Jose Abreu <joabreu@synopsys.com>, "David S. Miller" <davem@davemloft.net>, 
-	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Vladimir Zapolskiy <vz@mleia.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
-	Vinod Koul <vkoul@kernel.org>, Chen-Yu Tsai <wens@csie.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Fabio Estevam <festevam@gmail.com>, 
-	NXP Linux Team <linux-imx@nxp.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Bhupesh Sharma <bhupesh.sharma@linaro.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, 
-	linux-stm32@st-md-mailman.stormreply.com, 
-	linux-arm-kernel@lists.infradead.org, kernel@pengutronix.de, 
-	linux-amlogic@lists.infradead.org, linux-oxnas@groups.io, 
-	linux-sunxi@lists.linux.dev, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230303013842.23259-1-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230403_133919_027160_BD91E7E5 
-X-CRM114-Status: GOOD (  10.62  )
+X-CRM114-CacheID: sfid-20230403_151930_998124_3495B994 
+X-CRM114-Status: GOOD (  13.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,30 +80,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Apr 2, 2023 at 4:31=E2=80=AFPM Uwe Kleine-K=C3=B6nig
-<u.kleine-koenig@pengutronix.de> wrote:
->
-> The function returns zero unconditionally. Change it to return void inste=
-ad
-> which simplifies some callers as error handing becomes unnecessary.
->
-> The function is also used for some drivers as remove callback. Switch the=
-se
-> to the .remove_new() callback. For some others no error can happen in the
-> remove callback now, convert them to .remove_new(), too.
->
-> Signed-off-by: Uwe Kleine-K=C3=B6nig <u.kleine-koenig@pengutronix.de>
-> ---
->  drivers/net/ethernet/stmicro/stmmac/dwmac-anarion.c     | 2 +-
->  drivers/net/ethernet/stmicro/stmmac/dwmac-generic.c     | 2 +-
->  drivers/net/ethernet/stmicro/stmmac/dwmac-imx.c         | 2 +-
->  drivers/net/ethernet/stmicro/stmmac/dwmac-ingenic.c     | 2 +-
->  drivers/net/ethernet/stmicro/stmmac/dwmac-intel-plat.c  | 9 +++------
->  drivers/net/ethernet/stmicro/stmmac/dwmac-ipq806x.c     | 2 +-
->  drivers/net/ethernet/stmicro/stmmac/dwmac-lpc18xx.c     | 2 +-
->  drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c    | 9 +++------
->  drivers/net/ethernet/stmicro/stmmac/dwmac-meson.c       | 2 +-
->  drivers/net/ethernet/stmicro/stmmac/dwmac-meson8b.c     | 2 +-
-for dwmac-meson and dwmac-meson8b:
-Acked-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+On Fri, Mar 03, 2023 at 09:38:36AM +0800, Allen-KH Cheng wrote:
+> This series is based on matthias github v6.3-tmp. Since there is a
+> dependence in the following series, I resend a series for them.
+> 
+> patchwork.kernel.org/project/linux-mediatek/list/?series=702423
+> patchwork.kernel.org/project/linux-mediatek/list/?series=702078
+
+Hi Matthias,
+
+this series has been completely reviewed and tested for a while, and the
+bindings patches were already picked up by Hans and are on their way to 6.4 [1].
+So could you please pick the devicetree patches?
+
+Thanks,
+Nícolas
+
+[1] https://lore.kernel.org/all/98c48690-631d-1086-9b7c-004c61cc8dbb@xs4all.nl/
+
+> 
+> Allen-KH Cheng (3):
+>   media: dt-bindings: media: mediatek: Rename child node names for
+>     decoder
+>   media: dt-bindings: media: mediatek: Remove "dma-ranges" property for
+>     decoder
+>   arm64: dts: mt8192: Add video-codec nodes
+> 
+> Yunfei Dong (3):
+>   media: dt-bindings: media: mediatek: vcodec: adapt to the
+>     'clock-names' of different platforms
+>   media: dt-bindings: media: mediatek: vcodec: Change the max reg value
+>     to 2
+>   arm64: dts: mt8195: Add video decoder node
+> 
+>  .../media/mediatek,vcodec-subdev-decoder.yaml | 113 +++++++-----------
+>  arch/arm64/boot/dts/mediatek/mt8192.dtsi      |  59 +++++++++
+>  arch/arm64/boot/dts/mediatek/mt8195.dtsi      |  70 +++++++++++
+>  3 files changed, 173 insertions(+), 69 deletions(-)
+> 
+> -- 
+> 2.18.0
+> 
 
