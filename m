@@ -4,143 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92F44C6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Apr 2023 13:38:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6CA5C77B6C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Apr 2023 13:44:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/MpuhC2YV/sI8MoX4HIHj0oAsDLEqasTb0CTR5BBjJY=; b=DDkr1gTygL+XLQi7QEbnHEIjLp
-	3mR7U1OxlbFzRKC/ogZqOk6yfV2Q+s5cE9h0tgvXPUSIrMBng3YjBCmTcHylFeLG4gpOTZfHx8gEF
-	JFVETBxatkz7JwgH+Ffj7d7EI9wwt7olVwBZ+Np0diGoaZr+TJj06KbGyZzX+ATZXkf0xzk+KRQsY
-	8PtowHJQOUK6KLoOoFcSe0wG+FkzlE2ciZSCpjGqfvr8KGp6imoR6acKJw8Do1fmmQqpWMQBmwHjK
-	k6C2SPFxIs3yEluoqtvy64iG9JdQ1Pf7Zh8Sm1QbpEN0pirnjBo9LK039M8T619zCltSwoCanZiR+
-	IOZEcH4A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tODEIpAwPnvNGUawqsylxasQ6Mk6tuNFhtn3yBSRNT0=; b=GbhoZUGGNBVgZ9mgxls2vvFPKy
+	YzT50ux7vJn/VpaPzLPkBdKLvLRH1otHULVmatHLtrIUgzR7vx7W5ezWG2MUFnnVhEn7BN3mOcUbY
+	dbtZZ+5K5ySiWEeFew3WMs/kIEjbbyeGK6IrjINSrXqVavz9leBYn+Rc4NCNi9RuFi3zlNlNtFLIy
+	LHYPZ5YLaeG3oa+BkjmZKJimrjU5TElp+G6bAgGHJ3WZGNSQUJ3FF9sHnWRZWUhKRg25ybVY9VpE5
+	rwWDF1dxMy0AjpeqEe0/p17dMehCBmAoqyomoIX72dH9x8lc0j7WADyVUUW1kin0f5lRmLupQGLU6
+	zc7pi8CA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjgrf-001UiF-0O;
-	Tue, 04 Apr 2023 13:38:23 +0000
-Received: from new3-smtp.messagingengine.com ([66.111.4.229])
+	id 1pjgx7-001WJt-0k;
+	Tue, 04 Apr 2023 13:44:01 +0000
+Received: from mail-oa1-f54.google.com ([209.85.160.54])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjgra-001Udi-2P;
-	Tue, 04 Apr 2023 13:38:20 +0000
-Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
-	by mailnew.nyi.internal (Postfix) with ESMTP id 22E655821D3;
-	Tue,  4 Apr 2023 09:38:18 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
-  by compute1.internal (MEProxy); Tue, 04 Apr 2023 09:38:18 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
-	:cc:content-transfer-encoding:content-type:content-type:date
-	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:sender:subject:subject:to:to; s=fm3; t=
-	1680615498; x=1680622698; bh=/MpuhC2YV/sI8MoX4HIHj0oAsDLEqasTb0C
-	TR5BBjJY=; b=CP8eNe+p8jkvI/XFmojfDP6JgP+NsW1GhmTRG8j8FYMOpfqN2Ti
-	POZj55Jrn/tN2oqcPc7vrO3b8rLVPLHa7XluWTFX6Dtrg0poCWmvrN5ATWWk65st
-	7HbH07L9qgOtiPzx2FhhWzrfxYoJViiytT5VIPOEpswLn9s5/dlwte+Wa/Kn5reS
-	xBBGGfmVQqvk/9qTMJto7DN1RUuo/7lb97jbqU7POlRDZ/z9VXKFW7qZjfj3xA4K
-	OEQMiFaz35RY/Q7klIU9+8SynVUIFxYnnLVT3tDTqc6UUlteugSJLTLjs6EUCiGa
-	6DR6wHKJEmtCYO85S4zzLCg5Sjw3tXvrijQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:sender:subject:subject:to:to:x-me-proxy
-	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
-	1680615498; x=1680622698; bh=/MpuhC2YV/sI8MoX4HIHj0oAsDLEqasTb0C
-	TR5BBjJY=; b=SUDGJ6P/qMg0QLe+433nAUDUMUlxoL9P+sd8/8Bqw2ta4WUJ5vq
-	b/Tsjn+CvKOn88uazrKsHC2S0udjrxyE40X/NDGuM5Jh48Rj7QruxvVmbLy1VQRx
-	dg1XAsMNMLWIPxN9JEKYOgixceMrhmpclaPnX3faZgNqZ4mFvjEdeQC9NaJeocsY
-	xT1z+sBDKjrerYiuT4BTqmbmNrasGnb22GqdOH+G34NOpvEwSudntzxZctAKOmHC
-	uXMNlO7X3dIL1ksEEvcouCQW7/YACgygJea2HnjYcMdvdhDDTY8A+SkD5YEEkm4c
-	BheDIWxePYU2gIfxy/HHltZG7LkXeoGGsvg==
-X-ME-Sender: <xms:SSgsZBnzGzjx-eYXglI-1FxPbxH_BD8l5xCzOkmWSJ5gWLf9dQGd0A>
-    <xme:SSgsZM0TURFs67gu_XTA44_c5J2LeH3pR-JkvV3r49EapCAMHW4zXVC0W9k41kXNs
-    BFTgpJuSv56YtBYIbA>
-X-ME-Received: <xmr:SSgsZHr0qzXukls0NkUNcc6mlTTWq6V1MwyzZZYcfOrvb8hykTXmtRs8YHet1cEnbtKaFjYm5YgAuNGxPDF5Z2VEeRweSDo>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrvdeiledgieeiucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhephfffufggtgfgkfhfjgfvvefosehtjeertdertdejnecuhfhrohhmpeforgig
-    ihhmvgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrf
-    grthhtvghrnhepvedvleeijeegvdekffehkeehieelhfeggfffheetkeeuledvtdeuffeh
-    teeltdffnecuvehluhhsthgvrhfuihiivgepfeenucfrrghrrghmpehmrghilhhfrhhomh
-    epmhgrgihimhgvsegtvghrnhhordhtvggthh
-X-ME-Proxy: <xmx:SSgsZBkgOMnfOGhpfWED0p38EI9zkCSQXHeQ9lvVnqUx3dMa0XaFww>
-    <xmx:SSgsZP3kC5tmFT_-JesJEvDZGdmt5LV59TWBN7Gi4pomSjqwIXdPiA>
-    <xmx:SSgsZAtq7rNhNtzu4Kt2VtksIu_85RuFr70JIoR3d5_fUlkLaEUNxA>
-    <xmx:SigsZOgWzEpKwGUsXGM7wTp3kkALlUpC_VZQwx_IbGc0dHqfs8jYeg>
-Feedback-ID: i8771445c:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 4 Apr 2023 09:38:16 -0400 (EDT)
-From: Maxime Ripard <maxime@cerno.tech>
-Date: Tue, 04 Apr 2023 12:11:42 +0200
-Subject: [PATCH v3 52/65] clk: si5351: msynth: Switch to determine_rate
+	id 1pjgx0-001WEc-1M;
+	Tue, 04 Apr 2023 13:43:58 +0000
+Received: by mail-oa1-f54.google.com with SMTP id 586e51a60fabf-17786581fe1so34547529fac.10;
+        Tue, 04 Apr 2023 06:43:52 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680615831;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=tODEIpAwPnvNGUawqsylxasQ6Mk6tuNFhtn3yBSRNT0=;
+        b=0LkmE0sYtzIxIrX3N4AwsR5+GxJxSsiBDSXAd2fVjnD2A+ZIOALcUR9xGI7gr2qBb4
+         To0udeCYrbWKr1m6EZS80WhKuF7nkY5lX22ppB2amgROLQqJASCshHeGxuCBqH76ZjDk
+         Enx81Za13V4H5S9tv1NdTwEBmvqDBL6VLdkLQGX6riz6rV6oWWQ6XZbnbgNoZZqtM440
+         vyW39XP7P/FSySRTa6or2vMOipY/y+Pjxemu7hKE42tG52W8GJPuvuWJGqpZWd5WazhE
+         PyYCm/1bg80EUB2O13BKtJJ/zP8KQmuNJq6dkyZdwhw6hDi0Y7BFkf4LDgI3Hu17XdYK
+         Qkrg==
+X-Gm-Message-State: AAQBX9eI6MpKaWIvRXUMl9wgEgp0dTMLmPgRYE1xnJleQqzK4ILb970/
+	ecOAkZoWCuKcSn3motRq1Q==
+X-Google-Smtp-Source: AKy350bsxMNesEfeufKU5Vad6zN3YBIROdhHPyyDXnruiII2TswWfiDxkGwWW7TE7zwGEZ5lANV1XQ==
+X-Received: by 2002:a05:6870:f223:b0:177:80ce:497f with SMTP id t35-20020a056870f22300b0017780ce497fmr1909308oao.7.1680615831247;
+        Tue, 04 Apr 2023 06:43:51 -0700 (PDT)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id yg21-20020a05687c009500b0016a37572d17sm4853705oab.2.2023.04.04.06.43.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 04 Apr 2023 06:43:50 -0700 (PDT)
+Received: (nullmailer pid 3785276 invoked by uid 1000);
+	Tue, 04 Apr 2023 13:43:50 -0000
+Date: Tue, 4 Apr 2023 08:43:50 -0500
+From: Rob Herring <robh@kernel.org>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Eddie Hung <eddie.hung@mediatek.com>, Tianping Fang <tianping.fang@mediatek.com>
+Subject: Re: [PATCH 6/7] dt-bindings: usb: mtu3: add two optional clocks
+Message-ID: <20230404134350.GA3782583-robh@kernel.org>
+References: <20230403025230.25035-1-chunfeng.yun@mediatek.com>
+ <20230403025230.25035-6-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20221018-clk-range-checks-fixes-v3-52-9a1358472d52@cerno.tech>
-References: <20221018-clk-range-checks-fixes-v3-0-9a1358472d52@cerno.tech>
-In-Reply-To: <20221018-clk-range-checks-fixes-v3-0-9a1358472d52@cerno.tech>
-To: Michael Turquette <mturquette@baylibre.com>,
-  Stephen Boyd <sboyd@kernel.org>,
-  =?utf-8?q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
-  Manivannan Sadhasivam <mani@kernel.org>,
-  Nicolas Ferre <nicolas.ferre@microchip.com>,
-  Alexandre Belloni <alexandre.belloni@bootlin.com>,
-  Claudiu Beznea <claudiu.beznea@microchip.com>,
-  Max Filippov <jcmvbkbc@gmail.com>,
-  Charles Keepax <ckeepax@opensource.cirrus.com>,
-  Richard Fitzgerald <rf@opensource.cirrus.com>,
-  Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-  Alexandre Torgue <alexandre.torgue@foss.st.com>,
-  Luca Ceresoli <luca.ceresoli@bootlin.com>,
-  David Lechner <david@lechnology.com>, Sekhar Nori <nsekhar@ti.com>,
-  Abel Vesa <abelvesa@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
-  Sascha Hauer <s.hauer@pengutronix.de>,
-  Pengutronix Kernel Team <kernel@pengutronix.de>,
-  Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
-  Matthias Brugger <matthias.bgg@gmail.com>,
-  Geert Uytterhoeven <geert+renesas@glider.be>,
-  Dinh Nguyen <dinguyen@kernel.org>,
-  Peter De Schrijver <pdeschrijver@nvidia.com>,
-  Prashant Gaikwad <pgaikwad@nvidia.com>,
-  Thierry Reding <thierry.reding@gmail.com>,
-  Jonathan Hunter <jonathanh@nvidia.com>,
-  Ulf Hansson <ulf.hansson@linaro.org>,
-  Linus Walleij <linus.walleij@linaro.org>,
- David Airlie <airlied@gmail.com>,  Daniel Vetter <daniel@ffwll.ch>,
- Vinod Koul <vkoul@kernel.org>,
-  Kishon Vijay Abraham I <kishon@kernel.org>,
-  Alessandro Zummo <a.zummo@towertech.it>, Chen-Yu Tsai <wens@csie.org>,
-  Jernej Skrabec <jernej.skrabec@gmail.com>,
-  Samuel Holland <samuel@sholland.org>,
- Liam Girdwood <lgirdwood@gmail.com>,  Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>,  Takashi Iwai <tiwai@suse.com>,
- Paul Cercueil <paul@crapouillou.net>,  Orson Zhai <orsonzhai@gmail.com>,
-  Baolin Wang <baolin.wang@linux.alibaba.com>,
-  Chunyan Zhang <zhang.lyra@gmail.com>
-Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- linux-arm-kernel@lists.infradead.org, linux-actions@lists.infradead.org, 
- patches@opensource.cirrus.com, linux-stm32@st-md-mailman.stormreply.com, 
- linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
- linux-tegra@vger.kernel.org, dri-devel@lists.freedesktop.org, 
- linux-phy@lists.infradead.org, linux-rtc@vger.kernel.org, 
- linux-sunxi@lists.linux.dev, alsa-devel@alsa-project.org, 
- linux-mips@vger.kernel.org, Maxime Ripard <maxime@cerno.tech>
-X-Mailer: b4 0.12.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4438; i=maxime@cerno.tech;
- h=from:subject:message-id; bh=oChopgY1SKNjR7hsmEncnv8U/Kn+Y19rt/o3e7AEhiI=;
- b=owGbwMvMwCX2+D1vfrpE4FHG02pJDCna37c7r+CXinXtEz1edCvLYrr3hc3RBRvkX65ZbihcFrvo
- 14EbHaUsDGJcDLJiiiwxwuZL4k7Net3JxjcPZg4rE8gQBi5OAZiIWwXD/3K70uwgyYmHWGLCCua3Ln
- v+4GPu1k7tU4mGy30zI15V72P4K7eYJfb1j87VjXmLkyra9BUqUySY5+wNNnsr7C2U+y2ZDwA=
-X-Developer-Key: i=maxime@cerno.tech; a=openpgp;
- fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230403025230.25035-6-chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230404_063818_899824_C5896B6B 
-X-CRM114-Status: GOOD (  22.45  )
+X-CRM114-CacheID: sfid-20230404_064354_478941_1C72EB1E 
+X-CRM114-Status: GOOD (  13.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -155,123 +80,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The SI5351 msynth clocks implements a mux with a set_parent hook, but
-doesn't provide a determine_rate implementation.
+On Mon, Apr 03, 2023 at 10:52:29AM +0800, Chunfeng Yun wrote:
+> Add optional clock 'xhci_ck' and 'frmcnt_ck';
+> Add optional property "assigned-clock" and "assigned-clock-parents";
+> 
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+>  .../devicetree/bindings/usb/mediatek,mtu3.yaml       | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
+> index d2655173e108..50c15f2ce14d 100644
+> --- a/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
+> +++ b/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
+> @@ -66,6 +66,8 @@ properties:
+>        - description: Reference clock used by low power mode etc
+>        - description: Mcu bus clock for register access
+>        - description: DMA bus clock for data transfer
+> +      - description: DRD controller clock
+> +      - description: Frame count clock
+>  
+>    clock-names:
+>      minItems: 1
+> @@ -74,6 +76,16 @@ properties:
+>        - const: ref_ck
+>        - const: mcu_ck
+>        - const: dma_ck
+> +      - const: xhci_ck
+> +      - const: frmcnt_ck
+> +
+> +  assigned-clocks:
+> +    minItems: 1
+> +    maxItems: 6
+> +
+> +  assigned-clock-parents:
+> +    minItems: 1
+> +    maxItems: 6
 
-This is a bit odd, since set_parent() is there to, as its name implies,
-change the parent of a clock. However, the most likely candidate to
-trigger that parent change is a call to clk_set_rate(), with
-determine_rate() figuring out which parent is the best suited for a
-given rate.
+You don't need to include assigned-clocks properties. They are 
+implicitly allowed (when clocks is present).
 
-The other trigger would be a call to clk_set_parent(), but it's far less
-used, and it doesn't look like there's any obvious user for that clock.
-
-So, the set_parent hook is effectively unused, possibly because of an
-oversight. However, it could also be an explicit decision by the
-original author to avoid any reparenting but through an explicit call to
-clk_set_parent().
-
-The driver does implement round_rate() though, which means that we can
-change the rate of the clock, but we will never get to change the
-parent.
-
-However, It's hard to tell whether it's been done on purpose or not.
-
-Since we'll start mandating a determine_rate() implementation, let's
-convert the round_rate() implementation to a determine_rate(), which
-will also make the current behavior explicit. And if it was an
-oversight, the clock behaviour can be adjusted later on.
-
-Signed-off-by: Maxime Ripard <maxime@cerno.tech>
----
- drivers/clk/clk-si5351.c | 23 +++++++++++++----------
- 1 file changed, 13 insertions(+), 10 deletions(-)
-
-diff --git a/drivers/clk/clk-si5351.c b/drivers/clk/clk-si5351.c
-index fcf5785ba4ce..bfab05f4fe28 100644
---- a/drivers/clk/clk-si5351.c
-+++ b/drivers/clk/clk-si5351.c
-@@ -642,11 +642,12 @@ static unsigned long si5351_msynth_recalc_rate(struct clk_hw *hw,
- 	return (unsigned long)rate;
- }
- 
--static long si5351_msynth_round_rate(struct clk_hw *hw, unsigned long rate,
--				     unsigned long *parent_rate)
-+static int si5351_msynth_determine_rate(struct clk_hw *hw,
-+					struct clk_rate_request *req)
- {
- 	struct si5351_hw_data *hwdata =
- 		container_of(hw, struct si5351_hw_data, hw);
-+	unsigned long rate = req->rate;
- 	unsigned long long lltmp;
- 	unsigned long a, b, c;
- 	int divby4;
-@@ -681,10 +682,10 @@ static long si5351_msynth_round_rate(struct clk_hw *hw, unsigned long rate,
- 		b = 0;
- 		c = 1;
- 
--		*parent_rate = a * rate;
-+		req->best_parent_rate = a * rate;
- 	} else if (hwdata->num >= 6) {
- 		/* determine the closest integer divider */
--		a = DIV_ROUND_CLOSEST(*parent_rate, rate);
-+		a = DIV_ROUND_CLOSEST(req->best_parent_rate, rate);
- 		if (a < SI5351_MULTISYNTH_A_MIN)
- 			a = SI5351_MULTISYNTH_A_MIN;
- 		if (a > SI5351_MULTISYNTH67_A_MAX)
-@@ -702,7 +703,7 @@ static long si5351_msynth_round_rate(struct clk_hw *hw, unsigned long rate,
- 		}
- 
- 		/* determine integer part of divider equation */
--		a = *parent_rate / rate;
-+		a = req->best_parent_rate / rate;
- 		if (a < SI5351_MULTISYNTH_A_MIN)
- 			a = SI5351_MULTISYNTH_A_MIN;
- 		if (a > SI5351_MULTISYNTH_A_MAX)
-@@ -710,7 +711,7 @@ static long si5351_msynth_round_rate(struct clk_hw *hw, unsigned long rate,
- 
- 		/* find best approximation for b/c = fVCO mod fOUT */
- 		denom = 1000 * 1000;
--		lltmp = (*parent_rate) % rate;
-+		lltmp = req->best_parent_rate % rate;
- 		lltmp *= denom;
- 		do_div(lltmp, rate);
- 		rfrac = (unsigned long)lltmp;
-@@ -724,7 +725,7 @@ static long si5351_msynth_round_rate(struct clk_hw *hw, unsigned long rate,
- 	}
- 
- 	/* recalculate rate by fOUT = fIN / (a + b/c) */
--	lltmp  = *parent_rate;
-+	lltmp  = req->best_parent_rate;
- 	lltmp *= c;
- 	do_div(lltmp, a * c + b);
- 	rate  = (unsigned long)lltmp;
-@@ -749,9 +750,11 @@ static long si5351_msynth_round_rate(struct clk_hw *hw, unsigned long rate,
- 	dev_dbg(&hwdata->drvdata->client->dev,
- 		"%s - %s: a = %lu, b = %lu, c = %lu, divby4 = %d, parent_rate = %lu, rate = %lu\n",
- 		__func__, clk_hw_get_name(hw), a, b, c, divby4,
--		*parent_rate, rate);
-+		req->best_parent_rate, rate);
- 
--	return rate;
-+	req->rate = rate;
-+
-+	return 0;
- }
- 
- static int si5351_msynth_set_rate(struct clk_hw *hw, unsigned long rate,
-@@ -791,7 +794,7 @@ static const struct clk_ops si5351_msynth_ops = {
- 	.set_parent = si5351_msynth_set_parent,
- 	.get_parent = si5351_msynth_get_parent,
- 	.recalc_rate = si5351_msynth_recalc_rate,
--	.round_rate = si5351_msynth_round_rate,
-+	.determine_rate = si5351_msynth_determine_rate,
- 	.set_rate = si5351_msynth_set_rate,
- };
- 
-
--- 
-2.39.2
-
+Rob
 
