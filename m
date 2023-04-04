@@ -4,85 +4,144 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78F16C761A6
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Apr 2023 08:39:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BED22C6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Apr 2023 10:22:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Jzczl02MH2JKJBzD38hbYqMpw1wcvmgiWusiDGGF/AI=; b=mbxPyCpi/K4xqzROi55rZvMEOP
-	IT7YlnZxQ9eyjAAoiJdTvwHY6V9W9DRq5Y50+tWHMZtL/epZhxPtbtB6a83YVKSMcGfS3ZzUhsaWE
-	8o4/q96hpQiAL+IuHFfasS3HZ6WV15O4+LT8fVkyhWTZWs51gPNx8YcQZSE42oYKdUn1qXCXRrD3h
-	y2x51RJzfXDqrIeiZFaOhii6zcGR5lcGKuOlOptzd+rtOEMt1nuwbIsnlcmy+IzVk6SOdTSSBStoF
-	mgSmo9V/QyoMk8OWqqgNY2a8CSfyE4NVpb4cbTsfMzPnbP3S6bjwwnF+9ew+gXkGPyBT/63L8m+5D
-	Wmx8AfGw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1iNu4iVHKohhucZ3X0pFB6qDx3A7YFqosC7u253/Mzw=; b=JtYC8Afey2DQliDh3nfkMfB8zS
+	une+o9sVOAMzWp+qOHEJLtpfCqNQg58AbaR4rxF4bfJzxh12Vw8lSfkbCynR10bZJhVqPScr7G3z0
+	IKrWR7/IqfMPS7xDEI/ubu25sVM0LzNbbIoNpJh462D4GZWHykbX5islWyoA9PPGfT4vfEBJzjINg
+	qaLeNOjrQFhd1reBK6EmjdxDFy4t6QNJ1Mj9sBnJwJ3ftgcFxy9Kcb5bgX2dwyrDoQC0rp3oHHQAv
+	DcWBYigbV0ByYy6RAaH7EJp0qdcIBGp6o5qgdVAAr4lcghwMvZubcB9SrwfXroa1J+JiUZVBgxGrN
+	I3Qr9N5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjcC7-000WpA-0L;
-	Tue, 04 Apr 2023 08:39:11 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pjdnk-000rpf-1K;
+	Tue, 04 Apr 2023 10:22:08 +0000
+Received: from new4-smtp.messagingengine.com ([66.111.4.230])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjbzn-000TT8-0E;
-	Tue, 04 Apr 2023 08:26:48 +0000
-X-UUID: 428b1266d2c011ed8687db9d93187ff1-20230404
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Jzczl02MH2JKJBzD38hbYqMpw1wcvmgiWusiDGGF/AI=;
-	b=ak8pc5l3A6QAbUy8Rv1zy37s0bK3nVcrC9ScUkv6YjOEegrPVVNLz//mYeC6U37B8Sx2sBNH+ujmfBZoEEfgRreP6mTUQiAFZBCu5+PflmtokcgLUzfGmebsEl2yhws/1WhqlT6R6PzHWxLT4KWGLs5130r31H3Dhx8m6+AfXC8=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:fdd9d372-b174-45ac-9cb8-755c7db25a36,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:70
-X-CID-INFO: VERSION:1.1.22,REQID:fdd9d372-b174-45ac-9cb8-755c7db25a36,IP:0,URL
-	:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
-	ON:quarantine,TS:70
-X-CID-META: VersionHash:120426c,CLOUDID:c988552a-564d-42d9-9875-7c868ee415ec,B
-	ulkID:230404161112X7OZLT5J,BulkQuantity:0,Recheck:0,SF:38|29|28|17|19|48,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-	,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-UUID: 428b1266d2c011ed8687db9d93187ff1-20230404
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 190076811; Tue, 04 Apr 2023 01:11:11 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Tue, 4 Apr 2023 16:11:09 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Tue, 4 Apr 2023 16:11:08 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
-	Nicolas Dufresne <nicolas@ndufresne.ca>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>,
-	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, Hsin-Yi Wang
-	<hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter
-	<daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v4,6/8] media: mediatek: vcodec: Change dbgfs interface to support encode
-Date: Tue, 4 Apr 2023 16:11:00 +0800
-Message-ID: <20230404081102.30713-7-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230404081102.30713-1-yunfei.dong@mediatek.com>
-References: <20230404081102.30713-1-yunfei.dong@mediatek.com>
+	id 1pjdnf-000rlT-2r;
+	Tue, 04 Apr 2023 10:22:05 +0000
+Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
+	by mailnew.nyi.internal (Postfix) with ESMTP id 6E076582046;
+	Tue,  4 Apr 2023 06:22:00 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+  by compute1.internal (MEProxy); Tue, 04 Apr 2023 06:22:00 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
+	:cc:content-transfer-encoding:content-type:content-type:date
+	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:sender:subject:subject:to:to; s=fm3; t=
+	1680603720; x=1680610920; bh=1iNu4iVHKohhucZ3X0pFB6qDx3A7YFqosC7
+	u253/Mzw=; b=iNTWvlSkl2kJR8s3ch14K1YdvCNy+rdIKCqY5Z+x1b1lhCa1bMV
+	6Q/6xbigQp/sK1RMZcEmyUmbgvvYHKOBzBGOgc4kF40uLqhXnNyUX4WrR6wzZAcd
+	2La+ikqyblUF25+Sx7IvN6s16mdRZ/D9A8FCOzr2ibLYbGF/N8pG3pfTdGcEUSZV
+	1SNy5LJMtBm+mgumxpciy66ZvFCQ4v5hFAi06ZPjwET2ihuQNkWi2JlOlbalUpO3
+	oCqoR6D+YjAeDWqz6vPpPHVcvmci7+O+5QFBvqMl9Q43PeLovdxC2kMGXElEfrml
+	lw/E5mt3XXyJq1sSCTWfd49xtU4bVUreutQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:content-type:date:date:feedback-id:feedback-id
+	:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:sender:subject:subject:to:to:x-me-proxy
+	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
+	1680603720; x=1680610920; bh=1iNu4iVHKohhucZ3X0pFB6qDx3A7YFqosC7
+	u253/Mzw=; b=EWpwXGwN9bxxeopTv2LKg6yCrsFiraKqvRywfxIWEyPvtnOJZ8r
+	p1cnSDUwmGTQU0IHGgpr7ThPIK/HCgclF0hOFC1BZ73gaooMFqPiVN3LaOS2Ad3E
+	igj0hen8loRWV1BwIuaIqsoeAdEI6Xep53AkqP0/xm8U0TKm54vk6fdymzM72SXW
+	DtdYP7/+RhDt8EfwDGP3P4Tt2yEHh4rlMfNjOZc1vCBYy06/wkG9G6+/HBAlk2yp
+	R9S4zrQvkfj/iksMKqVn0UvDZmpl1dJD+I58bS+Mtm03Pc06yUq3dk2RL5d/mgch
+	Qh1JmGPa0CqXJhwNh0gEiGJGFfEi6uN34JQ==
+X-ME-Sender: <xms:SPorZFIed0AHo_l9QxoA6EfeSVOEYSVdyzq_JR72iqzeg0bFCuwH9g>
+    <xme:SPorZBKxg890Kicq4EH8GdUViWYS95B9BaWXbuYDFtkjy3Crub5Qb3zJJIzP3D4dx
+    2REnTp7X5cGL9Rs2iE>
+X-ME-Received: <xmr:SPorZNvoIHzcKxYcPdiWM5U5Ig-rLfSAqcLFSUuhOtfbbsRRE4LAyy4rE7pTnRE1ujaI-SC1WoK0XuG2bMsZoemtJuSKWcE>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrvdeiledgvdejucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+    cujfgurhephfffufggtgfgkfhfjgfvvefosehtjeertdertdejnecuhfhrohhmpeforgig
+    ihhmvgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrf
+    grthhtvghrnhepvedvleeijeegvdekffehkeehieelhfeggfffheetkeeuledvtdeuffeh
+    teeltdffnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomh
+    epmhgrgihimhgvsegtvghrnhhordhtvggthh
+X-ME-Proxy: <xmx:SPorZGZT_0MnZ7xKQEYS6kFxiUdx6e8wx79U00MKguYIsemMaX9__A>
+    <xmx:SPorZMbq7-ofuv-aqhwEHVjajttaPEGV4KuOkQs2G_KeeM44_klGwQ>
+    <xmx:SPorZKB2gzgs6Ng_M0n7V2J5ftInVugAoQ7xNyhQoVvQyel74k2ylw>
+    <xmx:SPorZFkCyHCVi1t8FqxGtHlfqQVzfpDxwSdGDGbGnoV76TuZPAfPnw>
+Feedback-ID: i8771445c:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
+ 4 Apr 2023 06:21:58 -0400 (EDT)
+From: Maxime Ripard <maxime@cerno.tech>
+Date: Tue, 04 Apr 2023 12:10:51 +0200
+Subject: [PATCH v3 01/65] clk: Export clk_hw_forward_rate_request()
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20221018-clk-range-checks-fixes-v3-1-9a1358472d52@cerno.tech>
+References: <20221018-clk-range-checks-fixes-v3-0-9a1358472d52@cerno.tech>
+In-Reply-To: <20221018-clk-range-checks-fixes-v3-0-9a1358472d52@cerno.tech>
+To: Michael Turquette <mturquette@baylibre.com>,
+  Stephen Boyd <sboyd@kernel.org>,
+  =?utf-8?q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
+  Manivannan Sadhasivam <mani@kernel.org>,
+  Nicolas Ferre <nicolas.ferre@microchip.com>,
+  Alexandre Belloni <alexandre.belloni@bootlin.com>,
+  Claudiu Beznea <claudiu.beznea@microchip.com>,
+  Max Filippov <jcmvbkbc@gmail.com>,
+  Charles Keepax <ckeepax@opensource.cirrus.com>,
+  Richard Fitzgerald <rf@opensource.cirrus.com>,
+  Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+  Alexandre Torgue <alexandre.torgue@foss.st.com>,
+  Luca Ceresoli <luca.ceresoli@bootlin.com>,
+  David Lechner <david@lechnology.com>, Sekhar Nori <nsekhar@ti.com>,
+  Abel Vesa <abelvesa@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
+  Sascha Hauer <s.hauer@pengutronix.de>,
+  Pengutronix Kernel Team <kernel@pengutronix.de>,
+  Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+  Matthias Brugger <matthias.bgg@gmail.com>,
+  Geert Uytterhoeven <geert+renesas@glider.be>,
+  Dinh Nguyen <dinguyen@kernel.org>,
+  Peter De Schrijver <pdeschrijver@nvidia.com>,
+  Prashant Gaikwad <pgaikwad@nvidia.com>,
+  Thierry Reding <thierry.reding@gmail.com>,
+  Jonathan Hunter <jonathanh@nvidia.com>,
+  Ulf Hansson <ulf.hansson@linaro.org>,
+  Linus Walleij <linus.walleij@linaro.org>,
+ David Airlie <airlied@gmail.com>,  Daniel Vetter <daniel@ffwll.ch>,
+ Vinod Koul <vkoul@kernel.org>,
+  Kishon Vijay Abraham I <kishon@kernel.org>,
+  Alessandro Zummo <a.zummo@towertech.it>, Chen-Yu Tsai <wens@csie.org>,
+  Jernej Skrabec <jernej.skrabec@gmail.com>,
+  Samuel Holland <samuel@sholland.org>,
+ Liam Girdwood <lgirdwood@gmail.com>,  Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>,  Takashi Iwai <tiwai@suse.com>,
+ Paul Cercueil <paul@crapouillou.net>,  Orson Zhai <orsonzhai@gmail.com>,
+  Baolin Wang <baolin.wang@linux.alibaba.com>,
+  Chunyan Zhang <zhang.lyra@gmail.com>
+Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ linux-arm-kernel@lists.infradead.org, linux-actions@lists.infradead.org, 
+ patches@opensource.cirrus.com, linux-stm32@st-md-mailman.stormreply.com, 
+ linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
+ linux-tegra@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+ linux-phy@lists.infradead.org, linux-rtc@vger.kernel.org, 
+ linux-sunxi@lists.linux.dev, alsa-devel@alsa-project.org, 
+ linux-mips@vger.kernel.org, Maxime Ripard <maxime@cerno.tech>
+X-Mailer: b4 0.12.1
+X-Developer-Signature: v=1; a=openpgp-sha256; l=805; i=maxime@cerno.tech;
+ h=from:subject:message-id; bh=eYikcq/CFZq5O/a9ENSBjLQzL6T+F5ftlNSP8UXWLFk=;
+ b=owGbwMvMwCX2+D1vfrpE4FHG02pJDCna37esXTXxekoFv9TPHPZ5lnE+03pu7at3X+C3fvP1eZz7
+ JszS7ChlYRDjYpAVU2SJETZfEndq1utONr55MHNYmUCGMHBxCsBEmBsZ/se4umwTv8774u7lwDnGpZ
+ +y1Jve2AVlyX7n5Dn2gGWrSQQjw9ev7GpZ2o6/+4+KSbzOPvE8/k6FtvbH2en31UvWr/q/kRUA
+X-Developer-Key: i=maxime@cerno.tech; a=openpgp;
+ fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230404_012642_981664_76F2B0DC 
-X-CRM114-Status: GOOD (  14.02  )
+X-CRM114-CacheID: sfid-20230404_032204_250193_36D044EC 
+X-CRM114-Status: UNSURE (   9.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,83 +156,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Extend dbgfs init interface to support encode and create encode
-dbgfs file.
+Commit 262ca38f4b6e ("clk: Stop forwarding clk_rate_requests to the
+parent") introduced the public clk_hw_forward_rate_request() function,
+but didn't export the symbol. Make sure it's the case.
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Fixes: 262ca38f4b6e ("clk: Stop forwarding clk_rate_requests to the parent")
+Signed-off-by: Maxime Ripard <maxime@cerno.tech>
 ---
- .../media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c    | 9 +++++++--
- .../media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.h    | 4 ++--
- .../media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c  | 2 +-
- 3 files changed, 10 insertions(+), 5 deletions(-)
+ drivers/clk/clk.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
-index b2b69c3400d4..237d0dc8a1fc 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
-@@ -158,11 +158,14 @@ void mtk_vcodec_dbgfs_remove(struct mtk_vcodec_dev *vcodec_dev, int ctx_id)
+diff --git a/drivers/clk/clk.c b/drivers/clk/clk.c
+index 27c30a533759..e495dd7a1eae 100644
+--- a/drivers/clk/clk.c
++++ b/drivers/clk/clk.c
+@@ -1549,6 +1549,7 @@ void clk_hw_forward_rate_request(const struct clk_hw *hw,
+ 				  parent->core, req,
+ 				  parent_rate);
  }
- EXPORT_SYMBOL_GPL(mtk_vcodec_dbgfs_remove);
++EXPORT_SYMBOL_GPL(clk_hw_forward_rate_request);
  
--void mtk_vcodec_dbgfs_init(struct mtk_vcodec_dev *vcodec_dev)
-+void mtk_vcodec_dbgfs_init(struct mtk_vcodec_dev *vcodec_dev, bool is_encode)
+ static bool clk_core_can_round(struct clk_core * const core)
  {
- 	struct dentry *vcodec_root;
- 
--	vcodec_dev->dbgfs.vcodec_root = debugfs_create_dir("vcodec-dec", NULL);
-+	if (is_encode)
-+		vcodec_dev->dbgfs.vcodec_root = debugfs_create_dir("vcodec-enc", NULL);
-+	else
-+		vcodec_dev->dbgfs.vcodec_root = debugfs_create_dir("vcodec-dec", NULL);
- 	if (IS_ERR(vcodec_dev->dbgfs.vcodec_root))
- 		dev_err(&vcodec_dev->plat_dev->dev, "create vcodec dir err:%d\n",
- 			IS_ERR(vcodec_dev->dbgfs.vcodec_root));
-@@ -172,6 +175,8 @@ void mtk_vcodec_dbgfs_init(struct mtk_vcodec_dev *vcodec_dev)
- 	debugfs_create_x32("mtk_vcodec_dbg", 0644, vcodec_root, &mtk_vcodec_dbg);
- 
- 	vcodec_dev->dbgfs.inst_count = 0;
-+	if (is_encode)
-+		return;
- 
- 	INIT_LIST_HEAD(&vcodec_dev->dbgfs.dbgfs_head);
- 	debugfs_create_file("vdec", 0200, vcodec_root, vcodec_dev, &vdec_fops);
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.h
-index b0bdb84a46df..ba43518d0fcb 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.h
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.h
-@@ -50,7 +50,7 @@ struct mtk_vcodec_dbgfs {
- #if defined(CONFIG_DEBUG_FS)
- void mtk_vcodec_dbgfs_create(struct mtk_vcodec_ctx *ctx);
- void mtk_vcodec_dbgfs_remove(struct mtk_vcodec_dev *vcodec_dev, int ctx_id);
--void mtk_vcodec_dbgfs_init(struct mtk_vcodec_dev *vcodec_dev);
-+void mtk_vcodec_dbgfs_init(struct mtk_vcodec_dev *vcodec_dev, bool is_encode);
- void mtk_vcodec_dbgfs_deinit(struct mtk_vcodec_dev *vcodec_dev);
- #else
- static inline void mtk_vcodec_dbgfs_create(struct mtk_vcodec_ctx *ctx)
-@@ -61,7 +61,7 @@ static inline void mtk_vcodec_dbgfs_remove(struct mtk_vcodec_dev *vcodec_dev, in
- {
- }
- 
--static inline void mtk_vcodec_dbgfs_init(struct mtk_vcodec_dev *vcodec_dev)
-+static inline void mtk_vcodec_dbgfs_init(struct mtk_vcodec_dev *vcodec_dev, bool is_encode)
- {
- }
- 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
-index 8c2443a18f5e..bba7b932f4fa 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
-@@ -433,7 +433,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 		mtk_v4l2_debug(0, "media registered as /dev/media%d", vfd_dec->minor);
- 	}
- 
--	mtk_vcodec_dbgfs_init(dev);
-+	mtk_vcodec_dbgfs_init(dev, false);
- 	mtk_v4l2_debug(0, "decoder registered as /dev/video%d", vfd_dec->minor);
- 
- 	return 0;
+
 -- 
-2.18.0
+2.39.2
 
 
