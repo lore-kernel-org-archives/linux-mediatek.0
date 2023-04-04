@@ -4,106 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FF58C6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Apr 2023 13:44:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEFBBC761AF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Apr 2023 13:56:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hXtgBK14KPM4e26uH259a5f8IZMJzPMN2I/MMharuS0=; b=rRPPXuTkKr8d9HyHcOJmoQZtPK
-	4/CadLr01gh/ol/AjKuNlvm226eeJ6JCFyVSAGTlLICKhfw6J4zvI1gnJcdJmk31OMObXv8GZidrY
-	pQihOgJEU1NJEpJZhanQ1rSHec+kaj8svp4RFTc0EgqPf6saEAZgQZOm+UH99KBcm9h/7pujMFhAD
-	Zh4oGjULDEPfHanjblWX5svlyL4/t9MKe8KjwAmb7r0Yqqsxu0ntWimEhJhmsP3WRExgIK5S25tvY
-	Um6UEIcKJlKpaT/AOkpyXDklz9ti/IB3micqcHXHs5sdNL/o93MEVGnUfCQXGY4xKfOk1p9I+7Rxh
-	xpZsvxIA==;
+	bh=wHkwTuEK0sRBaJKLMcnB+ss8uWVVS2sTLaR7SSh4ZeE=; b=ljlYpcE0ASFhfGY1ZaeAZLsxAb
+	nONaHZcWT63WTh7CpmS+8psFtMd5ux9unyhGAsKL1FOwUp1+3QvortQ77LsKwCJX5ClpkMF/GPAde
+	lmjauyZh7m/3r3ivd8Vm+vuHx3Wz7MyiLCxVOWuOZ1fnS+2E6kXpId3v/VUW0IM/SlB9UgPmjTsl4
+	u5Cex1tTYaZRxWCmxt4v9EwbGbA7a+aWdtLYZHQ0ruPUCHxZgBiK+J9feoYh9TyZ+XE/WOtFuP46t
+	HhIsuOhF1tE7rFNMu3TsfIT5BV9FDClMDpP/O9oGK4PiYxiVrj9xqzUHeIdfqAcSTQ3Ht8hWKy08D
+	D8PmiSSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjgxp-001WnO-09;
-	Tue, 04 Apr 2023 13:44:45 +0000
-Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29])
+	id 1pjh99-001dmn-2Y;
+	Tue, 04 Apr 2023 13:56:27 +0000
+Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjgxk-001WhI-0Y
+	id 1pjh8M-001czs-21
 	for linux-mediatek@lists.infradead.org;
-	Tue, 04 Apr 2023 13:44:42 +0000
-Received: by mail-yb1-xb29.google.com with SMTP id p15so38689223ybl.9
-        for <linux-mediatek@lists.infradead.org>; Tue, 04 Apr 2023 06:44:37 -0700 (PDT)
+	Tue, 04 Apr 2023 13:55:45 +0000
+Received: by mail-yw1-x1136.google.com with SMTP id 00721157ae682-54184571389so614868287b3.4
+        for <linux-mediatek@lists.infradead.org>; Tue, 04 Apr 2023 06:55:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1680615877;
+        d=linaro.org; s=google; t=1680616537;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=hXtgBK14KPM4e26uH259a5f8IZMJzPMN2I/MMharuS0=;
-        b=YoKEFBnF4R/KLVFNoyxiZPhJmsqA79Ywp7c5w9VoTLbxOHPkU2UC3C6r9llU7auOt2
-         itjfCCAlEVj9pzFONUJdlZR26DS+6eTnTItG8/BdsRaJG+jnGN8Mar9S9nT8YJ6YbIvt
-         PczIEgFKHpzSiJdwEFeV5bQ6D7RX1kxyHOzWUeUHZxaA2y7tu1cxjyIo01gmk0ySlvUZ
-         2ItBXfsRfASPgjZS7NTX/6Gf1VUStSpHFkFEFZGlN6IDFrz+MYZjApX3UW6qF8oUnIFx
-         zKX/hy1RXkULjEErSDvMl/vL0BBq9FAoK0R7e10J9U08+BUnKq4oXitONkTYlPsXrglz
-         sC3g==
+        bh=wHkwTuEK0sRBaJKLMcnB+ss8uWVVS2sTLaR7SSh4ZeE=;
+        b=Qq5kv5hhcFuFy0PJtvFX4bmOosaBrR84kqX5KLBFFzUEc6HYu6DcRmucycm+pwLw4z
+         c1uAzgS+6IfRZYHJk5KJGH6BUXWCXHUvONFdF36/iOgG9fJm+Or6v5c3zg4rspaHH3g3
+         HiltUNh0Van26IVMA9fB0iQ/2JU4EmqjOAKnh9wB4GYotEL+CBZNtjApM3/Mvn7TE8jd
+         7annxlm42iGSeOwxHaUKhpp00xjGstfzsDYvTrigHwC9433728mLS/XLnCAvVdN12kQr
+         08QyncQY1xCydyx4nySCZClEtVlnx7zpGvVuhHi5DCP1Pb+uzJy0FxU1zuboEdb75qqE
+         HUcA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680615877;
+        d=1e100.net; s=20210112; t=1680616537;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=hXtgBK14KPM4e26uH259a5f8IZMJzPMN2I/MMharuS0=;
-        b=Q5DckxmWYTVlGRW1snrs4lDKOYUafivxLnrUcTKCne7ipOLZr1kzASgz06c96VHkwz
-         /zwImbiTabI4FQefsQG7dSzX4D/+83g9bLGn2ILF8qE4T8+TCAOm+qO978OAAlRRdGJ1
-         LhIVngkdz/2mUw7vB5WAI6V4kcnd+6ZP8cwRtrNzqTPZr0NFT154Lo7iuOtQGOos33eO
-         58EmoX6+tnRSkuuQKLFEuqPsKmmaSqEj0D2OSbCz9UEmjySJZUnRJsq8mepYZHAcvysX
-         DUfojsyNwvuzC3kCnu+homyMsHGQsEgjTVBoKTcGskbSXsWUKKgAUiKDezLUZSoNaEV+
-         8Ffw==
-X-Gm-Message-State: AAQBX9eoOR3MwaWcFMvv+eJk7HNhkjsrc2lvlOiXJWsgwUs3nPwTt5Kt
-	2r5j8Feiup3xvKb08H6XZWsSbUcwrUtuj7YAXfD9+Q==
-X-Google-Smtp-Source: AKy350ZS+8XVi9C6uhFr1kyc6XrkkRM+FluRwKkVz9PMLEz3Sm01NQlNpsxUuoJH/tcqHDQrLl5d34Nf5Z8uV0fle0E=
-X-Received: by 2002:a25:df10:0:b0:b75:8ac3:d5d2 with SMTP id
- w16-20020a25df10000000b00b758ac3d5d2mr1901844ybg.4.1680615876928; Tue, 04 Apr
- 2023 06:44:36 -0700 (PDT)
+        bh=wHkwTuEK0sRBaJKLMcnB+ss8uWVVS2sTLaR7SSh4ZeE=;
+        b=cUzKk3e+E2En31VKDk+1iFUVtW1VHHlaI6BWA38Xa7kXSx5Cy74sBoVVKOYNGtVilI
+         QPZrPY4bgkKMqPWFI+J+kvHG50kIzCZHeTKTGA5a0QmCjLJrDt4KxBw8VNSDGSVRGtia
+         mNhMBbf5SwAvdBePWL2wMzlVShKNL3znWtJ9po7uU+zKyp8JMTtIS1tlJemVGM6j8O6x
+         1dJWdE1yvHcrmHxSLDnPIDnEPdaci57XsYOB3R+CuV6lZL+rxIfhMAoJWYqydUdJV0mw
+         gRjxisyKk3vi/0J15FkPXWEYu/66cw3808iEBEgK/bpRAEHdG9RL8J50KgOXb9ytuXML
+         Lf8g==
+X-Gm-Message-State: AAQBX9crYBWTxodBhktr5PI9YwrB0TqIwHRQtlTAeE7vxotcIJxwi00f
+	IhuHM1EFPgUOijTFk7Ya/619G3cSh7IALFPXDSzOxA==
+X-Google-Smtp-Source: AKy350YrZFFIvslatnz6+JHLJxRXhURuO0Qe/CqTvhzL+6y/s/8tkJIoSvOoisaRTFct5e3xH8itE5OFyL+d4Sx3qSk=
+X-Received: by 2002:a81:e545:0:b0:545:8202:bbcf with SMTP id
+ c5-20020a81e545000000b005458202bbcfmr1485931ywm.9.1680616536968; Tue, 04 Apr
+ 2023 06:55:36 -0700 (PDT)
 MIME-Version: 1.0
-References: <20221018-clk-range-checks-fixes-v3-0-9a1358472d52@cerno.tech> <20221018-clk-range-checks-fixes-v3-34-9a1358472d52@cerno.tech>
-In-Reply-To: <20221018-clk-range-checks-fixes-v3-34-9a1358472d52@cerno.tech>
+References: <20230203-evk-board-support-v4-0-5cffe66a38c0@baylibre.com> <20230203-evk-board-support-v4-2-5cffe66a38c0@baylibre.com>
+In-Reply-To: <20230203-evk-board-support-v4-2-5cffe66a38c0@baylibre.com>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Tue, 4 Apr 2023 15:44:25 +0200
-Message-ID: <CACRpkdYcHaUBG1qFVb=mi40SyEp=VyYzPmxNn-Zrmpqs1QH+kQ@mail.gmail.com>
-Subject: Re: [PATCH v3 34/65] clk: ux500: prcmu: Add a determine_rate hook
-To: Maxime Ripard <maxime@cerno.tech>
-Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
-	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
-	Manivannan Sadhasivam <mani@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, 
-	Claudiu Beznea <claudiu.beznea@microchip.com>, Max Filippov <jcmvbkbc@gmail.com>, 
-	Charles Keepax <ckeepax@opensource.cirrus.com>, 
-	Richard Fitzgerald <rf@opensource.cirrus.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>, 
-	David Lechner <david@lechnology.com>, Sekhar Nori <nsekhar@ti.com>, Abel Vesa <abelvesa@kernel.org>, 
-	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
-	NXP Linux Team <linux-imx@nxp.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Dinh Nguyen <dinguyen@kernel.org>, 
-	Peter De Schrijver <pdeschrijver@nvidia.com>, Prashant Gaikwad <pgaikwad@nvidia.com>, 
-	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Ulf Hansson <ulf.hansson@linaro.org>, David Airlie <airlied@gmail.com>, 
-	Daniel Vetter <daniel@ffwll.ch>, Vinod Koul <vkoul@kernel.org>, 
-	Kishon Vijay Abraham I <kishon@kernel.org>, Alessandro Zummo <a.zummo@towertech.it>, Chen-Yu Tsai <wens@csie.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Paul Cercueil <paul@crapouillou.net>, 
-	Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
-	Chunyan Zhang <zhang.lyra@gmail.com>, linux-clk@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, 
+Date: Tue, 4 Apr 2023 15:55:26 +0200
+Message-ID: <CACRpkdYSpMD-V0QNGwtiKCA4KAedYfmFpvdCHWhjST9uTricTg@mail.gmail.com>
+Subject: Re: [PATCH v4 02/11] dt-bindings: pinctrl: mediatek,mt8365-pinctrl:
+ add drive strength property
+To: Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, 
+	Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	linux-arm-kernel@lists.infradead.org, linux-actions@lists.infradead.org, 
-	patches@opensource.cirrus.com, linux-stm32@st-md-mailman.stormreply.com, 
-	linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
-	linux-tegra@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linux-phy@lists.infradead.org, linux-rtc@vger.kernel.org, 
-	linux-sunxi@lists.linux.dev, alsa-devel@alsa-project.org, 
-	linux-mips@vger.kernel.org
+	Chaotian Jing <chaotian.jing@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>, 
+	Wenbin Mei <wenbin.mei@mediatek.com>, Zhiyong Tao <zhiyong.tao@mediatek.com>, 
+	=?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>, 
+	linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-mmc@vger.kernel.org, 
+	linux-gpio@vger.kernel.org, Alexandre Bailon <abailon@baylibre.com>, 
+	Fabien Parent <fparent@baylibre.com>, Amjad Ouled-Ameur <aouledameur@baylibre.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230404_064440_212616_467AE6D6 
-X-CRM114-Status: GOOD (  13.86  )
+X-CRM114-CacheID: sfid-20230404_065538_695655_141ED97C 
+X-CRM114-Status: GOOD (  10.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,25 +101,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 4, 2023 at 2:45=E2=80=AFPM Maxime Ripard <maxime@cerno.tech> wr=
-ote:
+On Fri, Mar 31, 2023 at 7:55=E2=80=AFPM Alexandre Mergnat <amergnat@baylibr=
+e.com> wrote:
 
-> The UX500 PRCMU "clkout" clock implements a mux with a set_parent hook,
-> but doesn't provide a determine_rate implementation.
+> This SoC is able to drive the following output current:
+> - 2 mA
+> - 4 mA
+> - 6 mA
+> - 8 mA
+> - 10 mA
+> - 12 mA
+> - 14 mA
+> - 16 mA
 >
-> This is a bit odd, since set_parent() is there to, as its name implies,
-> change the parent of a clock. However, the most likely candidate to
-> trigger that parent change is a call to clk_set_rate(), with
-> determine_rate() figuring out which parent is the best suited for a
-> given rate.
+> Then drive-strength property is set with enum to reflect its HW capabilit=
+y.
+>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 
-Not even that.
+This patch does not apply to my devel branch:
+https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.git/lo=
+g/?h=3Ddevel
 
-The parent is selected from the second cell of the device tree
-specifier, and the divisor from the third cell. See:
-Documentation/devicetree/bindings/clock/stericsson,u8500-clks.yaml
-
-So this definitely does not reparent.
+Can you please rebase and resend?
 
 Yours,
 Linus Walleij
