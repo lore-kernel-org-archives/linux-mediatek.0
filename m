@@ -4,90 +4,144 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54243C77B60
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Apr 2023 11:45:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AB9DC7619A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Apr 2023 12:25:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HdOj0OMeU7Kbl8/Cm9oHj9tDRqlIG6IbeRXc2cStlMw=; b=0JnZpe+fObQKA02ocLE75pKkmM
-	hLji56k7UgUakUBL5TA4GDA6IRn/1k5C+l6YmXA/QJrABdE12y4BOwJBcsrm0AbYs0uUbQAq0lVhI
-	sVZ7olxQrekpf2nDKRTKfYBbvFEaCFF1Muj7b3JyGsrhXQFPj3ahBlgq+6kHCitwFIjvCCEfywbm5
-	ZM7/zko2LcxwqOdM3MWjVjZRePtJd4XoRC0u3azzPqevRty8XmVrkVejZ+1h5JDKz4ltCFHJzguet
-	O2V06J1+WxbkPmSn1nBTcMd/D4yfLDQCcZqMiahc3/RQaouSW96mQ+kRlM7CMh7KpER4z5uXMFvIb
-	hLtONTtQ==;
+	bh=gWfanKGu7k0uR6sCschsWvSUb9iXlQk4TW0N04BwoCQ=; b=0DEMtDUPXFU9iWg8hQcwSYAfAF
+	0kau9V45Sivdxq5rIkfVHBUoflrd7ewyWCS6WK6Pg0Vn3i81XoKbTRG2LpEeFxSEdYtKeyFkB7O8l
+	RGDuq6G+2uFt5Du8LObpVMym0BBY4SdgvZDMevXzgmfG2O8eDBkvo5EYuUWO1Nzhn5sWocF282me6
+	ka/fhj0Znb5GDltevgslBBZRRLr9cdJipwqQpV1kTtpq34SdY/TNxwd2HAd2hdgeulVj09TBcEg1k
+	2sMnFZBqooaIvDeSB8jGRmdCwd/w+3hkCISI8ZQNHrTwvzojGvVDdmSZsntUpWRCQr/wj4AiBrsgQ
+	F+LVWn/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pk1Zb-004JFq-1Z;
-	Wed, 05 Apr 2023 11:45:07 +0000
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+	id 1pk2Cf-004OCR-2W;
+	Wed, 05 Apr 2023 12:25:29 +0000
+Received: from wnew2-smtp.messagingengine.com ([64.147.123.27])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pk1ZZ-004JE8-2H
-	for linux-mediatek@lists.infradead.org;
-	Wed, 05 Apr 2023 11:45:06 +0000
-Received: by mail-ed1-x535.google.com with SMTP id b20so140330425edd.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 05 Apr 2023 04:45:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1680695102;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=HdOj0OMeU7Kbl8/Cm9oHj9tDRqlIG6IbeRXc2cStlMw=;
-        b=NKmDsnNLZ3F0old3NSU1c7NOt0hVPF2Toy47D2sRrnopr1pKfLLPb2ypDdJq0GJ1Uf
-         +wsAVy5NM8X52W2XPFzfZ7Mc9rq/Yu5El40Qyb7zix+r6/h+eFsUEXxT6YpfUjaWsG5s
-         qbtQljxsxQiF++LKdxKl7Pk+k6eIyirMeQCPqExOMOXA9yMVdIl+JctOH7vl/fDpp7uj
-         zCkTVrotcsdMN18M50p1Kl0Rqc015RQAfUgPf5uHOTIwZ8AZ6YqK8O2Z3JJPP2cdLrkw
-         feuBEeM+KR5u8z8FN/+iJ1jUZquOE3frD42EPmgTLFtml7aVpcHrEp/2V+xWH8AlQjzn
-         gp/g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680695102;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=HdOj0OMeU7Kbl8/Cm9oHj9tDRqlIG6IbeRXc2cStlMw=;
-        b=yo9lqkXAqQsuceWPYT0t05ruzGCO8qNoJlZFFOjyrjU5OwtpVvWfvmqMZVCmKQx4OD
-         3SoMdvdlRbBDuCZ+qsTA9SyCNH7qvXOBB2gRFNjUZyQW1DjtR4u/1+txK601K6gw3EDP
-         lBzXcSlPbTDESbr/fJWuhpLtepEneG8ECzIsTldmGuIG4ITd8FxZLQ7yCDahuiSf52Lj
-         oySzNXsm4SFqtqOCP228GHrYwVJHm+I+Lz7PyZPDBJQMkKXlN27IOUv1QiI3KkJ++H2b
-         Lx4NkmD9L7xZ1TsHGHs26J2j0pE7z4OCijMzLbfM959Fle5aHcgMC0Z+/J/yj39rMAtS
-         zlJw==
-X-Gm-Message-State: AAQBX9fsnZTppWMlF3MYY6KbXWKcweCztouDpY2LxsQ9HqqZkaerJ00s
-	YvjDZ//h8y9ZChAxjHIdlGyiYw==
-X-Google-Smtp-Source: AKy350bRu+tmVuaScuqf8Ece0qNIue1RIxkN5PZaZQ2LzbqpKMd50l/+nnydW76AKtuw9oEKpqZB4A==
-X-Received: by 2002:a17:906:85ca:b0:933:dfca:1716 with SMTP id i10-20020a17090685ca00b00933dfca1716mr2736541ejy.26.1680695102703;
-        Wed, 05 Apr 2023 04:45:02 -0700 (PDT)
-Received: from ?IPV6:2a02:810d:15c0:828:3f:6b2:54cd:498e? ([2a02:810d:15c0:828:3f:6b2:54cd:498e])
-        by smtp.gmail.com with ESMTPSA id um4-20020a170906cf8400b00928e0ea53e5sm7239617ejb.84.2023.04.05.04.45.01
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 05 Apr 2023 04:45:02 -0700 (PDT)
-Message-ID: <8fc3dd22-79df-32cb-c219-896eda8fa986@linaro.org>
-Date: Wed, 5 Apr 2023 13:45:01 +0200
+	id 1pk2Cc-004O9m-0n;
+	Wed, 05 Apr 2023 12:25:27 +0000
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+	by mailnew.west.internal (Postfix) with ESMTP id E031F2B06740;
+	Wed,  5 Apr 2023 08:25:11 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+  by compute5.internal (MEProxy); Wed, 05 Apr 2023 08:25:21 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
+	:cc:content-transfer-encoding:content-type:content-type:date
+	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:sender:subject:subject:to:to; s=fm3; t=
+	1680697511; x=1680704711; bh=gWfanKGu7k0uR6sCschsWvSUb9iXlQk4TW0
+	N04BwoCQ=; b=Wts/Ah4xwykIELLuVOyydo/p1UGL9G/HJY/ERkwIccdne8UsCAw
+	X0PmG5K0bcqaEyRUzoWHG0oVt+49ZELc6VwPM2bbnB7Q6KDqcs8OOo8ckMbMZ+RL
+	DKwDb8ModcB/XpwqnfSu9kwYDO781wqKfc3k85DrB5IrzhsEsb5/w+mH3LJR/fmM
+	XbWCKuHGNs/G2Ncxgv0wXe0b7UZjnUDqlm/H+vVP7y6M5EzJSI5hwcXryt/7TWcn
+	x2PoNUmovZSVXjqXU442ELIWyFCb2TK0OquEZRilwLsEUnxWf2tD6NYbDZuxZaBO
+	1e9oE8wU1U+oCwmBb981th4h8d6MQ6I15rA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:content-type:date:date:feedback-id:feedback-id
+	:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:sender:subject:subject:to:to:x-me-proxy
+	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
+	1680697511; x=1680704711; bh=gWfanKGu7k0uR6sCschsWvSUb9iXlQk4TW0
+	N04BwoCQ=; b=TJt8SE1IgEzc0KpglToUainSE4eNFtJFqOIadR3Aw0w4iPzOBCp
+	T7zZ1chmtSiOBxN3MvHWzyoyNC43zazRBLNOMgwV2goNvpcmLNoxWEHiDb/9V03T
+	WqbkUOPppAfDp1lfLQERD4d9RtAdodePkq783ksNdsQOEtZ0YNss3Eprqjfvt/nN
+	kO7L5DariGDXLonWJO+hWIpoZxEYQCsypuK/jqg0nKXQ3uvKiqloZ1BiukZJzPz1
+	YpR3d+y3y6G243Ad9Cj01eNNPcdlL1pIs4n9C1Ejcg0dYX17CKsF9c3c6oJA9TLj
+	OI6pgZjc8LIQJcEp85pkrQBuBvOHfuhKBEg==
+X-ME-Sender: <xms:pGgtZOMldRw9UEzMSSw9I_16P6Nh8uWoC4G5IxdeXhaf6cgqrrzPkw>
+    <xme:pGgtZM8vJW0v5RLXKfpP1B30xBya9iCZQG9f3N4LOeu6GPgZLeDUnDyQ9xb3eVe8U
+    Jjfq16Xf1lnK5HolA0>
+X-ME-Received: <xmr:pGgtZFSt_W3SaLhjt9yJ8c7kyZV5sinLzmDcveP-bhjWLgYOnINQKkWGt_VoysCLks7z4FJH18Z3Iufubf4jHvGpiizZ09U>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrvdejuddgheefucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+    cujfgurhephfffufggtgfgkfhfjgfvvefosehtjeertdertdejnecuhfhrohhmpeforgig
+    ihhmvgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrf
+    grthhtvghrnhepvedvleeijeegvdekffehkeehieelhfeggfffheetkeeuledvtdeuffeh
+    teeltdffnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomh
+    epmhgrgihimhgvsegtvghrnhhordhtvggthh
+X-ME-Proxy: <xmx:pGgtZOuwD6V3-SK77MsB7UnDET01NWQ1J0FEM_a_tHDV_Wd8LAX3nA>
+    <xmx:pGgtZGc6iX9GiPe48LHMJqyM2e5beO91F8WcGBskctjFG2kJLt3MBQ>
+    <xmx:pGgtZC0EwUEqmao45oOU_dJyzQL31Mo4S3zcbaFAhGu0aeI6ljMT_w>
+    <xmx:p2gtZGJX-HkMFt7mgRW1BHWYhPPxWlY5gUmeCqa4tyFNOW-Njt8_xUIYlj4>
+Feedback-ID: i8771445c:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
+ 5 Apr 2023 08:25:07 -0400 (EDT)
+From: Maxime Ripard <maxime@cerno.tech>
+Date: Tue, 04 Apr 2023 12:11:53 +0200
+Subject: [PATCH v3 63/65] ASoC: tlv320aic32x4: pll: Switch to
+ determine_rate
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH v2 10/10] memory: mtk-smi: mt8365: Add SMI Support
-Content-Language: en-US
-To: Alexandre Mergnat <amergnat@baylibre.com>
-Cc: Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-References: <20230207-iommu-support-v2-0-60d5fa00e4e5@baylibre.com>
- <20230207-iommu-support-v2-10-60d5fa00e4e5@baylibre.com>
- <9847bc48-c96c-3599-e876-bcf9ebf1522e@linaro.org>
- <CAFGrd9pBdaHLGUZHkaz2_XKafyX=dxu9UckQxrphg52EG=A1SQ@mail.gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <CAFGrd9pBdaHLGUZHkaz2_XKafyX=dxu9UckQxrphg52EG=A1SQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+Message-Id: <20221018-clk-range-checks-fixes-v3-63-9a1358472d52@cerno.tech>
+References: <20221018-clk-range-checks-fixes-v3-0-9a1358472d52@cerno.tech>
+In-Reply-To: <20221018-clk-range-checks-fixes-v3-0-9a1358472d52@cerno.tech>
+To: Michael Turquette <mturquette@baylibre.com>,
+  Stephen Boyd <sboyd@kernel.org>,
+  =?utf-8?q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
+  Manivannan Sadhasivam <mani@kernel.org>,
+  Nicolas Ferre <nicolas.ferre@microchip.com>,
+  Alexandre Belloni <alexandre.belloni@bootlin.com>,
+  Claudiu Beznea <claudiu.beznea@microchip.com>,
+  Max Filippov <jcmvbkbc@gmail.com>,
+  Charles Keepax <ckeepax@opensource.cirrus.com>,
+  Richard Fitzgerald <rf@opensource.cirrus.com>,
+  Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+  Alexandre Torgue <alexandre.torgue@foss.st.com>,
+  Luca Ceresoli <luca.ceresoli@bootlin.com>,
+  David Lechner <david@lechnology.com>, Sekhar Nori <nsekhar@ti.com>,
+  Abel Vesa <abelvesa@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
+  Sascha Hauer <s.hauer@pengutronix.de>,
+  Pengutronix Kernel Team <kernel@pengutronix.de>,
+  Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+  Matthias Brugger <matthias.bgg@gmail.com>,
+  Geert Uytterhoeven <geert+renesas@glider.be>,
+  Dinh Nguyen <dinguyen@kernel.org>,
+  Peter De Schrijver <pdeschrijver@nvidia.com>,
+  Prashant Gaikwad <pgaikwad@nvidia.com>,
+  Thierry Reding <thierry.reding@gmail.com>,
+  Jonathan Hunter <jonathanh@nvidia.com>,
+  Ulf Hansson <ulf.hansson@linaro.org>,
+  Linus Walleij <linus.walleij@linaro.org>,
+ David Airlie <airlied@gmail.com>,  Daniel Vetter <daniel@ffwll.ch>,
+ Vinod Koul <vkoul@kernel.org>,
+  Kishon Vijay Abraham I <kishon@kernel.org>,
+  Alessandro Zummo <a.zummo@towertech.it>, Chen-Yu Tsai <wens@csie.org>,
+  Jernej Skrabec <jernej.skrabec@gmail.com>,
+  Samuel Holland <samuel@sholland.org>,
+ Liam Girdwood <lgirdwood@gmail.com>,  Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>,  Takashi Iwai <tiwai@suse.com>,
+ Paul Cercueil <paul@crapouillou.net>,  Orson Zhai <orsonzhai@gmail.com>,
+  Baolin Wang <baolin.wang@linux.alibaba.com>,
+  Chunyan Zhang <zhang.lyra@gmail.com>
+Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ linux-arm-kernel@lists.infradead.org, linux-actions@lists.infradead.org, 
+ patches@opensource.cirrus.com, linux-stm32@st-md-mailman.stormreply.com, 
+ linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
+ linux-tegra@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+ linux-phy@lists.infradead.org, linux-rtc@vger.kernel.org, 
+ linux-sunxi@lists.linux.dev, alsa-devel@alsa-project.org, 
+ linux-mips@vger.kernel.org, Maxime Ripard <maxime@cerno.tech>
+X-Mailer: b4 0.12.1
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3060; i=maxime@cerno.tech;
+ h=from:subject:message-id; bh=H89ybMftU/jF/mSnT7t9XXRlldLTbWRKBAeeojhOMGw=;
+ b=owGbwMvMwCX2+D1vfrpE4FHG02pJDCna37ez8VvEii39va+tcvoZfzdxxUPd2wRkdwVYPMp1lo9Z
+ pGHcUcrCIMbFICumyBIjbL4k7tSs151sfPNg5rAygQxh4OIUgIuIMvzT6NRk4a6VklCfFrt34pOivT
+ dO/vx0ZleDzy3WQH7/Ndt8GP4Xn+z4wbyskuNe7PtDUnKLNxhutHRaJHJKenEay+7oL/bMAA==
+X-Developer-Key: i=maxime@cerno.tech; a=openpgp;
+ fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230405_044505_751586_9DEA8DBA 
-X-CRM114-Status: UNSURE (   8.55  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230405_052526_480440_CA9BC2E8 
+X-CRM114-Status: GOOD (  20.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,16 +156,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 05/04/2023 11:53, Alexandre Mergnat wrote:
-> Ok, I will move the driver patch before the DTS patches in the next version.
-> 
+The tlv320aic32x4 PLL clocks implements a mux with a set_parent hook, but
+doesn't provide a determine_rate implementation.
 
-Or do not send it together at all, which might solve your dependency
-problem. According to your cover letter I cannot take the memory
-controller bits, so I am waiting for dependencies to hit the mainline.
-Alternatively I will need pull request with stable tag.
+This is a bit odd, since set_parent() is there to, as its name implies,
+change the parent of a clock. However, the most likely candidate to
+trigger that parent change is a call to clk_set_rate(), with
+determine_rate() figuring out which parent is the best suited for a
+given rate.
 
-Best regards,
-Krzysztof
+The other trigger would be a call to clk_set_parent(), but it's far less
+used, and it doesn't look like there's any obvious user for that clock.
+
+So, the set_parent hook is effectively unused, possibly because of an
+oversight. However, it could also be an explicit decision by the
+original author to avoid any reparenting but through an explicit call to
+clk_set_parent().
+
+The driver does implement round_rate() though, which means that we can
+change the rate of the clock, but we will never get to change the
+parent.
+
+However, It's hard to tell whether it's been done on purpose or not.
+
+Since we'll start mandating a determine_rate() implementation, let's
+convert the round_rate() implementation to a determine_rate(), which
+will also make the current behavior explicit. And if it was an
+oversight, the clock behaviour can be adjusted later on.
+
+Signed-off-by: Maxime Ripard <maxime@cerno.tech>
+---
+ sound/soc/codecs/tlv320aic32x4-clk.c | 19 ++++++++++++-------
+ 1 file changed, 12 insertions(+), 7 deletions(-)
+
+diff --git a/sound/soc/codecs/tlv320aic32x4-clk.c b/sound/soc/codecs/tlv320aic32x4-clk.c
+index 65b72373cb95..d8b8ea3eaa12 100644
+--- a/sound/soc/codecs/tlv320aic32x4-clk.c
++++ b/sound/soc/codecs/tlv320aic32x4-clk.c
+@@ -205,18 +205,23 @@ static unsigned long clk_aic32x4_pll_recalc_rate(struct clk_hw *hw,
+ 	return clk_aic32x4_pll_calc_rate(&settings, parent_rate);
+ }
+ 
+-static long clk_aic32x4_pll_round_rate(struct clk_hw *hw,
+-			unsigned long rate,
+-			unsigned long *parent_rate)
++static int clk_aic32x4_pll_determine_rate(struct clk_hw *hw,
++					  struct clk_rate_request *req)
+ {
+ 	struct clk_aic32x4_pll_muldiv settings;
++	unsigned long rate;
+ 	int ret;
+ 
+-	ret = clk_aic32x4_pll_calc_muldiv(&settings, rate, *parent_rate);
++	ret = clk_aic32x4_pll_calc_muldiv(&settings, req->rate, req->best_parent_rate);
+ 	if (ret < 0)
+-		return 0;
++		return -EINVAL;
+ 
+-	return clk_aic32x4_pll_calc_rate(&settings, *parent_rate);
++	rate = clk_aic32x4_pll_calc_rate(&settings, req->best_parent_rate);
++	if (rate < 0)
++		return rate;
++
++	req->rate = rate;
++	return 0;
+ }
+ 
+ static int clk_aic32x4_pll_set_rate(struct clk_hw *hw,
+@@ -267,7 +272,7 @@ static const struct clk_ops aic32x4_pll_ops = {
+ 	.unprepare = clk_aic32x4_pll_unprepare,
+ 	.is_prepared = clk_aic32x4_pll_is_prepared,
+ 	.recalc_rate = clk_aic32x4_pll_recalc_rate,
+-	.round_rate = clk_aic32x4_pll_round_rate,
++	.determine_rate = clk_aic32x4_pll_determine_rate,
+ 	.set_rate = clk_aic32x4_pll_set_rate,
+ 	.set_parent = clk_aic32x4_pll_set_parent,
+ 	.get_parent = clk_aic32x4_pll_get_parent,
+
+-- 
+2.39.2
 
 
