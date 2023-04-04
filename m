@@ -4,44 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAB39C761A6
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Apr 2023 17:34:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51F3DC6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Apr 2023 19:38:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:To:Subject:From:Cc:MIME-Version:Date:Message-ID:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=SrZGPabaZxYc82RizXOZY7EzqAUPvfVABChMBwR8FKM=; b=ahtzRFKeqDI3cbfggkYbTfqnhV
-	y1LrAIqLRTabhlOkykV2ADum5Gc1I4ZED0dze7O64qfJgym7qhborhloXu98A0d1k4GNzQ2Q5DFAe
-	74STVZ3egv1K1tVCoeDFw145dcOGahPz9AuyGeI8Uv2E3yu/K3de7/UxELgy+ncdRpc+5X+JOi4sw
-	Lp42jniNa7QyaswYjejyYpu0AuTGzqu2WyJrfkuGiFbPMqpr//qeuX91O9RmjsLqcGr7S4pb2eaNl
-	Yag7bNgVLLbjSAs4Uv5y+rpavWnNseR1V/n+CUcIa9V7seKUYjrFTdQ49vwvDkkCzD7di6GoR/3nx
-	9FET7c6w==;
+	Content-Type:MIME-Version:Message-ID:References:In-Reply-To:Subject:CC:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=E2DTXl0wOTGge7LqnlEIvHTLL1rOaURDHtKaO0WFHcU=; b=lyWHeSd2EQBrHobodSVKzSxn9+
+	/2Sys/4oUDtUQfyNIXCiq8pWZnPUKV7Ko7fROVgTYQp5dUzngnoER4y0c83R08zwHoFRj8wr8+sd0
+	AI/2smmk4TMcaZvwibbKZMEBSpsG6Ktw/yp9ex5M5tuV/wkrZnLq8ZlBjPlBld9JudINYQo5BnbEo
+	vPnl7M2kCR3Jc4H0kQoc77rfMvj9bDTvQbTsY2SWFNHZX7RVHEDqMo2ciRW86Q53NvTf3THrjUhsf
+	zp0t8b1yuQCV9IZTkfYp7UBCixt7cdDx/6YBRcaNYa2dilbGUYEouwqqt/VI6uggtX5i5dB8zsr8D
+	SPUMJ63g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjkXi-002OlS-3C;
-	Tue, 04 Apr 2023 17:34:02 +0000
-Received: from woodpecker.gentoo.org ([140.211.166.183] helo=smtp.gentoo.org)
+	id 1pjmTg-002gGs-14;
+	Tue, 04 Apr 2023 19:38:00 +0000
+Received: from sender4-op-o10.zoho.com ([136.143.188.10])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjkXh-002Ol1-0V
-	for linux-mediatek@lists.infradead.org;
-	Tue, 04 Apr 2023 17:34:02 +0000
-Message-ID: <212079b5-462e-ee99-8f65-60af60e280db@gentoo.org>
-Date: Tue, 4 Apr 2023 13:33:56 -0400
+	id 1pjmTc-002gCl-0E;
+	Tue, 04 Apr 2023 19:37:57 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1680637056; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=jr+O2D0F76JJU7kSwZlZ6I294JwkWu+0UOCw8XpzFlLFbtUlKp/Hhm8guCdhJGvS3U2CyVY2c/bJ5qXETP+gPh5atKuOmev9QccpfiTF3XzsLRd/m1fkTN9Fq1+P+0FS3PVf5N4QD5kZGGFuZoV9vb1B/TJ0wznJu7drD1vTO1Q=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1680637056; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=E2DTXl0wOTGge7LqnlEIvHTLL1rOaURDHtKaO0WFHcU=; 
+	b=boRmo8TnI/Eg0BvnA8v+KFgkFPo+LaF1kW8D4awVhqktQE/OgLNlcth4BlHf7hvA7El2P0vuiPS1xGjeBrHWN1Adlp2uGFz5RJeqMDRim/Dkudy5cuUZiaN5sRyGICgypefJku2DRiHO2qN3nzHZte+nC8L6zu8hBr93zTesvu4=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1680637056;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Date:Date:From:From:To:To:CC:Subject:Subject:In-Reply-To:References:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To:Cc;
+	bh=E2DTXl0wOTGge7LqnlEIvHTLL1rOaURDHtKaO0WFHcU=;
+	b=ab753m7vvr7p0QelL1tg4ktxsIc5LvHNShTljT4isc+D44+NfP7kB/w8w551FhGs
+	yr6LtcGzftMAyE8pIwTcpVZNsjrN5Bwx8q/fe0flkk20nWEW9qTligyxgyPEqmodufy
+	a3rCZF/Mg3c9URAsf3Mhc2G+vbLJYkd+Tl/YPYNk=
+Received: from [127.0.0.1] (149.91.1.15 [149.91.1.15]) by mx.zohomail.com
+	with SMTPS id 1680637054373581.3705118144012; Tue, 4 Apr 2023 12:37:34 -0700 (PDT)
+Date: Tue, 04 Apr 2023 22:37:22 +0300
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+To: =?UTF-8?B?TGFuZGVuIENoYW8gKOi2meeajuWujyk=?= <Landen.Chao@mediatek.com>,
+ "olteanv@gmail.com" <olteanv@gmail.com>, "andrew@lunn.ch" <andrew@lunn.ch>,
+ "arinc9.unal@gmail.com" <arinc9.unal@gmail.com>,
+ "f.fainelli@gmail.com" <f.fainelli@gmail.com>,
+ Sean Wang <Sean.Wang@mediatek.com>, "kuba@kernel.org" <kuba@kernel.org>,
+ "edumazet@google.com" <edumazet@google.com>,
+ "pabeni@redhat.com" <pabeni@redhat.com>,
+ "dqfext@gmail.com" <dqfext@gmail.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "davem@davemloft.net" <davem@davemloft.net>,
+ "angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
+CC: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "erkin.bozoglu@xeront.com" <erkin.bozoglu@xeront.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_net_2/3=5D_net=3A_dsa=3A_mt7530=3A_move?= =?US-ASCII?Q?_lowering_TRGMII_driving_to_mt7530=5Fsetup=28=29?=
+User-Agent: K-9 Mail for Android
+In-Reply-To: <4d9c562eb980642381cb43f65efb2ee13d742485.camel@mediatek.com>
+References: <20230320190520.124513-1-arinc.unal@arinc9.com> <20230320190520.124513-2-arinc.unal@arinc9.com> <4d9c562eb980642381cb43f65efb2ee13d742485.camel@mediatek.com>
+Message-ID: <87B17946-4602-4D27-8756-7481846EDE35@arinc9.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Content-Language: en-US
-Cc: sean.wang@mediatek.com
-From: Mike Pagano <mpagano@gentoo.org>
-Subject: [PATCH] Bluetooth: btusb: Add a new PID/VID 0489/e0f6 for MT7922
-To: linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230404_103401_208059_36850973 
-X-CRM114-Status: UNSURE (   8.19  )
+X-CRM114-CacheID: sfid-20230404_123756_187541_2A3D3298 
+X-CRM114-Status: UNSURE (   9.63  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -57,71 +92,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add VID 0489 & PID e0f6 for MediaTek MT7922 USB Bluetooth chip.
+On 26 March 2023 21:13:49 GMT+03:00, "Landen Chao (=E8=B6=99=E7=9A=8E=E5=AE=
+=8F)" <Landen=2EChao@mediatek=2Ecom> wrote:
+>On Mon, 2023-03-20 at 22:05 +0300, arinc9=2Eunal@gmail=2Ecom wrote:
+>>=20
+>> I asked this before, MT7530 DSA driver maintainers, please explain
+>> the code
+>> I mentioned on the second paragraph=2E
+>>=20
+>> ---
+>> @@ -2207,6 +2198,15 @@ mt7530_setup(struct dsa_switch *ds)
+>>=20
+>>         mt7530_pll_setup(priv);
+>>=20
+>> +       /* Lower Tx driving for TRGMII path */
+>> +       for (i =3D 0; i < NUM_TRGMII_CTRL; i++)
+>> +               mt7530_write(priv, MT7530_TRGMII_TD_ODT(i),
+>> +                            TD_DM_DRVP(8) | TD_DM_DRVN(8));
+>> +
+>I guess you ask this part, and I try my best to recall what the
+>original author said years ago=2E
+>It is used to adjust the RX delay of port 6 to match the tx
+>signal of the link partner=2E
 
-The information in /sys/kernel/debug/usb/devices about the Bluetooth
-device is listed as the below.
+Ok, thanks for replying=2E I will move this at the end, inside 'if (trgint=
+)'=2E Since this doesn't lower the driving, there's no apparent benefit to =
+run this if trgmii is not being used=2E
 
-T:  Bus=01 Lev=01 Prnt=01 Port=01 Cnt=02 Dev#=  3 Spd=480  MxCh= 0
-D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-P:  Vendor=0489 ProdID=e0f6 Rev= 1.00
-S:  Manufacturer=MediaTek Inc.
-S:  Product=Wireless_Device
-S:  SerialNumber=000000000
-C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
-A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
-I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
-E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
-E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
-I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
-E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
-
-Signed-off-by: Mike Pagano <mpagano@gentoo.org>
----
-  drivers/bluetooth/btusb.c | 4 ++++
-  1 file changed, 4 insertions(+)
-
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 15caa6469..13a821f89 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -462,6 +462,10 @@ static const struct usb_device_id blacklist_table[] = {
-  						     BTUSB_WIDEBAND_SPEECH |
-  						     BTUSB_VALID_LE_STATES },
-  
-+	/* Additional MediaTek MT7922 Bluetooth devices */
-+	{ USB_DEVICE(0x0489, 0xe0f6), .driver_info = BTUSB_MEDIATEK |
-+						     BTUSB_WIDEBAND_SPEECH |
-+						     BTUSB_VALID_LE_STATES },
-  	/* Additional MediaTek MT7921 Bluetooth devices */
-  	{ USB_DEVICE(0x0489, 0xe0c8), .driver_info = BTUSB_MEDIATEK |
-  						     BTUSB_WIDEBAND_SPEECH |
--- 
-2.39.2
+Ar=C4=B1n=C3=A7
 
