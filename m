@@ -4,69 +4,157 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39DEEC6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Apr 2023 14:25:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00622C761A6
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Apr 2023 14:45:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B55O9gA7vaYXICMr9SJHzaOtnTvtSD1xBb+aJX6NQzQ=; b=JZ7oKabBGGVhC32peqjqsK5f50
-	hhTEkrSolp748+ZpuhnPYJbWo9MDk0UCKWsSX6ehU5tU/vy03ZdSQFACu6HVuWk2Veu9F3OBw9BYW
-	pI0/fUsMjggIkPY+sagAm2/nxZEqUTDZM5An/EUtwQYBSxHNre+SVQ3uXKhfL5ehiQZdc71LpSTw2
-	Q3EjDeULm4K8mPA9FBEmhT8GakKMJUAxkwx9tYZP8xgHR5JANowb/RxBDFJHBugWpv9zzRWgSzM6y
-	nyE0a8GV+pjIwhhnMU9edfsKDX6hA7aZ9CGewf3GrRtKgi6pxjrM9QRyoc5evKToOjnuRCFa8/W11
-	skadj5vA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bJqJ0P6+psuWExoI1fA2XVEdZfg1DGPsZI0g3ZQ6rmk=; b=wJsvl7G0z9Cb+PrEvV9ddVYeW1
+	Hqdwm18GBb+D6vstm3Zi6aAGoOPvn/VPCQTCYqe69iU9T9hbxZG1ETrCRCewRjYZ4YqaLPnz64jb3
+	H7TXwHQ2RKLr25bvopHyP2jqEhy4vu+pLFLchapYP3hn39n16kFmzywFMIf4S7MTsAJeUYFQ36lZD
+	wX1Vasc0FvNl/Fh3vksCVq+3vx6Nx5MnIOtTYtgiTFbHh9dgd/pB4hqsJfRvDtZOLdPQAFE8a+vPd
+	IcEngnbkoXVNzVs9i5NlsKQB+GhHpPETwRliMndnqh0VIo9bumpAwILKW8xuLsmiHaKyUqIQPp9bU
+	FwLU+OZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjhba-001nDB-2k;
-	Tue, 04 Apr 2023 14:25:50 +0000
-Received: from mail-ot1-f51.google.com ([209.85.210.51])
+	id 1pjhuh-001rMI-1f;
+	Tue, 04 Apr 2023 14:45:35 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjhbY-001nAK-2L;
-	Tue, 04 Apr 2023 14:25:49 +0000
-Received: by mail-ot1-f51.google.com with SMTP id k14-20020a9d700e000000b0069faa923e7eso17398008otj.10;
-        Tue, 04 Apr 2023 07:25:47 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680618347;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=B55O9gA7vaYXICMr9SJHzaOtnTvtSD1xBb+aJX6NQzQ=;
-        b=fkbGx6CDGCwH2gZJicYFwc0WHgRYHSrDuP0i7u6o6yskZ/RYfkufpJlxmiRLRdw6cN
-         qv8ZhKAVOAclb7X6e2WeEmw2c+RUGDqZwIBqbwjq6KkqWK3qJEcrF86whaIioqP27YQg
-         c+YK2EstnpWQXul+0ewxksi7eoXmn7ckFq9Dr0O4OgsLUM6OvMta54SQbmn7QnA5zgpq
-         k90lNHS7fxEXvUI2KV0Prflp5nP0EQ1s12RSaMS41qWMEa3Ym1hI3/PlyHHeDMIzvJnP
-         DuRZeTkCNNn0Vk1SP/TnrEdQtuwfOL5WlDR0eyg8RhexsI3KZWSAxlaRo3VrzRJL7MXu
-         fJDg==
-X-Gm-Message-State: AAQBX9fhDfh+YGPv/dSBwhSC3kE27oM8GXgNljpF9ZrfLzgbSiIaZWGr
-	9VKmBFONqEalV5r9DJfglA==
-X-Google-Smtp-Source: AKy350aZivBXjglElKTyJb4uxCvPHgWk/4MGuiIWmBx3WlxovCOJEP8w5cZ+FIpZE/XjbsfiLya7GQ==
-X-Received: by 2002:a9d:6b94:0:b0:69f:ac87:f872 with SMTP id b20-20020a9d6b94000000b0069fac87f872mr1509169otq.13.1680618346680;
-        Tue, 04 Apr 2023 07:25:46 -0700 (PDT)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id e14-20020a9d6e0e000000b0069f951899e1sm5610888otr.24.2023.04.04.07.25.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 04 Apr 2023 07:25:46 -0700 (PDT)
-Received: (nullmailer pid 3834119 invoked by uid 1000);
-	Tue, 04 Apr 2023 14:25:45 -0000
-Date: Tue, 4 Apr 2023 09:25:45 -0500
-From: Rob Herring <robh@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-kernel@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, Roger Quadros <rogerq@kernel.org>, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, Chunfeng Yun <chunfeng.yun@mediatek.com>, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH 3/3] dt-bindings: usb: ti,keystone-dwc3: drop
- assigned-clocks
-Message-ID: <168061834511.3834080.16768361106806766398.robh@kernel.org>
-References: <20230403191850.374839-1-krzysztof.kozlowski@linaro.org>
- <20230403191850.374839-3-krzysztof.kozlowski@linaro.org>
+	id 1pjhue-001rJs-0I;
+	Tue, 04 Apr 2023 14:45:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=bJqJ0P6+psuWExoI1fA2XVEdZfg1DGPsZI0g3ZQ6rmk=; b=Nv4KfizVPUhMG3K+ABJu0zA9+/
+	Ehf4k7PjZTfcI4Ux/6NZRDcizQyB96g4pSPfRYwa0Ekypm96aWsS8UEefxO672SoL087LNFZGh+NR
+	R7VOxB8PR6JDFzZG85q1dlHNrQPkUSimUWhgmXExNOp9ylIjEaJrnnrwRgSlPN8YupCrYYbEM3a0c
+	FYb8B976QD4MTa+W/tEcbBGmNG/TCG/F3UJvFVvZYi7OeupMwGUdvuu+WCc2zM/DVO76i0xLDFr0u
+	u1DVDWiPbPEAqLhQazUVKK44JPvJC8YIV87ieRJbyMdqYz5o9SYlxxzQmOUwq7bWwVw1Geil1iz1h
+	vWBx8sqg==;
+Received: from new3-smtp.messagingengine.com ([66.111.4.229])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pjhAH-009HWV-20;
+	Tue, 04 Apr 2023 13:57:46 +0000
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailnew.nyi.internal (Postfix) with ESMTP id 3E0745821B9;
+	Tue,  4 Apr 2023 09:57:36 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+  by compute4.internal (MEProxy); Tue, 04 Apr 2023 09:57:36 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
+	:cc:content-transfer-encoding:content-type:content-type:date
+	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:sender:subject:subject:to:to; s=fm3; t=
+	1680616656; x=1680623856; bh=bJqJ0P6+psuWExoI1fA2XVEdZfg1DGPsZI0
+	g3ZQ6rmk=; b=lXRiCfm457zCaIcSdgd+NtUR4DjPaQJnJYuV6sWVEjg51E/3bn2
+	BCC3QgUItq1wdLbsd5z/6THsK8mAWBfUSSpCi3uNq8h0MwzxziXD1LhoErK7ZfKP
+	737IetRiK1GdpGI2ZvMoh4qdsHVC4uQ78lmcGCUkDdLceUodYmPVZ00od7uPNhB0
+	MtFojM33p9+wfWl8SkmLyUMzERR79WJjtLuHsDBxYmXudXmOwLIHWNYhBka1BHf9
+	2dQ+8VU9ZJ/cHjCyzGAFM/zzl5Yfg715g6t4VSbfHuWxqw5YCjUdo/fp38kF82yL
+	9g2JAvfdH07OmA3gI6zySb2DG1oNb2ffEqw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:content-type:date:date:feedback-id:feedback-id
+	:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:sender:subject:subject:to:to:x-me-proxy
+	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
+	1680616656; x=1680623856; bh=bJqJ0P6+psuWExoI1fA2XVEdZfg1DGPsZI0
+	g3ZQ6rmk=; b=LcWidrLZlhVIRFGSavJIMKf3CZRYGCyQXZLviYSbU7+B5vTXxRt
+	zIrCPtEqcDqmq39UYypfUixZFfe8CBPqOn0UlanVNubuy+bKsJu4Dz1n4kJp6xO5
+	fnY3wib6omxgl6W2szBIoITzKff2whkmg7fPmcG3TP19GMfl828bUE3LdeDhBRoN
+	8hVJH3KpuRpK6kK2RBiAViRMebObJ4rpyAqZweFDDqWjEJIV51FS7ORpFIV3wPCN
+	BAVOgCMjdGUkrgTU0RIVs6Bgl6OUhCaluE1URnMWg0UqzQuZYiDLBUp58QBqW87h
+	fLV+XEFf5ItQvcss+Axp4tiKyhxcJACzSCw==
+X-ME-Sender: <xms:0CwsZAIdIuzkx6_VUTv8gYdO031-XPZqBUSMdWRVN5oNzNUedBW6zw>
+    <xme:0CwsZAJCZPK4UDz49abhGzK2ZhMynowjQpBwex1Rdp_TqjVST5pZiy6m-immKwaYK
+    Oayi8wCL4CM11EbBAI>
+X-ME-Received: <xmr:0CwsZAs_NtVFstCQRMfNpN3WKCGW2EwZGaCnmWe1z6FJ637PjZs8OdkpbfvlzQoeBQqdiflaYtjZc-rc6WlK_CrcbDflA4M>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrvdeiledgjedtucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+    cujfgurhephfffufggtgfgkfhfjgfvvefosehtjeertdertdejnecuhfhrohhmpeforgig
+    ihhmvgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrf
+    grthhtvghrnhepvedvleeijeegvdekffehkeehieelhfeggfffheetkeeuledvtdeuffeh
+    teeltdffnecuvehluhhsthgvrhfuihiivgepvdenucfrrghrrghmpehmrghilhhfrhhomh
+    epmhgrgihimhgvsegtvghrnhhordhtvggthh
+X-ME-Proxy: <xmx:0CwsZNYlxHHOQbbWQg3gW7P47hxBXmWxpXXG4WtykYqKh555TLxKoA>
+    <xmx:0CwsZHYkDlySN7MLhFgBNYwdVhNYbJ1Bwrtqj4wsGp8zqXvR7Qx1ag>
+    <xmx:0CwsZJAmdlgEyNeB1uLt98Rqw9tS5LZ-BtBeZac8J6Z9ZVcctyVb2g>
+    <xmx:0CwsZInrZ_rlgUKL0Ggd0Iv-OI-gm6lZLVk8raXOzlv151IfIRXM6g>
+Feedback-ID: i8771445c:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
+ 4 Apr 2023 09:57:34 -0400 (EDT)
+From: Maxime Ripard <maxime@cerno.tech>
+Date: Tue, 04 Apr 2023 12:11:50 +0200
+Subject: [PATCH v3 60/65] clk: stm32: composite: Switch to determine_rate
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230403191850.374839-3-krzysztof.kozlowski@linaro.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20221018-clk-range-checks-fixes-v3-60-9a1358472d52@cerno.tech>
+References: <20221018-clk-range-checks-fixes-v3-0-9a1358472d52@cerno.tech>
+In-Reply-To: <20221018-clk-range-checks-fixes-v3-0-9a1358472d52@cerno.tech>
+To: Michael Turquette <mturquette@baylibre.com>,
+  Stephen Boyd <sboyd@kernel.org>,
+  =?utf-8?q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
+  Manivannan Sadhasivam <mani@kernel.org>,
+  Nicolas Ferre <nicolas.ferre@microchip.com>,
+  Alexandre Belloni <alexandre.belloni@bootlin.com>,
+  Claudiu Beznea <claudiu.beznea@microchip.com>,
+  Max Filippov <jcmvbkbc@gmail.com>,
+  Charles Keepax <ckeepax@opensource.cirrus.com>,
+  Richard Fitzgerald <rf@opensource.cirrus.com>,
+  Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+  Alexandre Torgue <alexandre.torgue@foss.st.com>,
+  Luca Ceresoli <luca.ceresoli@bootlin.com>,
+  David Lechner <david@lechnology.com>, Sekhar Nori <nsekhar@ti.com>,
+  Abel Vesa <abelvesa@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
+  Sascha Hauer <s.hauer@pengutronix.de>,
+  Pengutronix Kernel Team <kernel@pengutronix.de>,
+  Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+  Matthias Brugger <matthias.bgg@gmail.com>,
+  Geert Uytterhoeven <geert+renesas@glider.be>,
+  Dinh Nguyen <dinguyen@kernel.org>,
+  Peter De Schrijver <pdeschrijver@nvidia.com>,
+  Prashant Gaikwad <pgaikwad@nvidia.com>,
+  Thierry Reding <thierry.reding@gmail.com>,
+  Jonathan Hunter <jonathanh@nvidia.com>,
+  Ulf Hansson <ulf.hansson@linaro.org>,
+  Linus Walleij <linus.walleij@linaro.org>,
+ David Airlie <airlied@gmail.com>,  Daniel Vetter <daniel@ffwll.ch>,
+ Vinod Koul <vkoul@kernel.org>,
+  Kishon Vijay Abraham I <kishon@kernel.org>,
+  Alessandro Zummo <a.zummo@towertech.it>, Chen-Yu Tsai <wens@csie.org>,
+  Jernej Skrabec <jernej.skrabec@gmail.com>,
+  Samuel Holland <samuel@sholland.org>,
+ Liam Girdwood <lgirdwood@gmail.com>,  Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>,  Takashi Iwai <tiwai@suse.com>,
+ Paul Cercueil <paul@crapouillou.net>,  Orson Zhai <orsonzhai@gmail.com>,
+  Baolin Wang <baolin.wang@linux.alibaba.com>,
+  Chunyan Zhang <zhang.lyra@gmail.com>
+Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ linux-arm-kernel@lists.infradead.org, linux-actions@lists.infradead.org, 
+ patches@opensource.cirrus.com, linux-stm32@st-md-mailman.stormreply.com, 
+ linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
+ linux-tegra@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+ linux-phy@lists.infradead.org, linux-rtc@vger.kernel.org, 
+ linux-sunxi@lists.linux.dev, alsa-devel@alsa-project.org, 
+ linux-mips@vger.kernel.org, Maxime Ripard <maxime@cerno.tech>
+X-Mailer: b4 0.12.1
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3849; i=maxime@cerno.tech;
+ h=from:subject:message-id; bh=ZlhaMIDY35fqWgLez9zMe7F3lYqWmSY7jqPK6EAyXso=;
+ b=owGbwMvMwCX2+D1vfrpE4FHG02pJDCna37frTnpyI07mcUoQnywz705TOdt3Uo+CRTwPykh61e2Y
+ /HtaRykLgxgXg6yYIkuMsPmSuFOzXney8c2DmcPKBDKEgYtTACZincHw3+FAsevutmNron2EJG33b0
+ y22JHdKZe4o6fw0om38gw7zzL8rw6abyHomV6Z2Hg9TJQzKWmxSayk4ezyFcIpGwz4CnwZAQ==
+X-Developer-Key: i=maxime@cerno.tech; a=openpgp;
+ fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230404_072548_765278_2C2CBE26 
-X-CRM114-Status: GOOD (  10.67  )
+X-CRM114-CacheID: sfid-20230404_145739_229846_72E5BEBF 
+X-CRM114-Status: GOOD (  22.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,18 +169,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+The STM32 composite clocks implements a mux with a set_parent hook, but
+doesn't provide a determine_rate implementation.
 
-On Mon, 03 Apr 2023 21:18:50 +0200, Krzysztof Kozlowski wrote:
-> The meta schema from DT schema already defines assigned-clocks, so there
-> is no need for device schema to mention it at all.  There are also no
-> benefits of having it here.
-> 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> ---
->  .../devicetree/bindings/usb/ti,keystone-dwc3.yaml         | 8 --------
->  1 file changed, 8 deletions(-)
-> 
+This is a bit odd, since set_parent() is there to, as its name implies,
+change the parent of a clock. However, the most likely candidate to
+trigger that parent change is a call to clk_set_rate(), with
+determine_rate() figuring out which parent is the best suited for a
+given rate.
 
-Acked-by: Rob Herring <robh@kernel.org>
+The other trigger would be a call to clk_set_parent(), but it's far less
+used, and it doesn't look like there's any obvious user for that clock.
+
+So, the set_parent hook is effectively unused, possibly because of an
+oversight. However, it could also be an explicit decision by the
+original author to avoid any reparenting but through an explicit call to
+clk_set_parent().
+
+The driver does implement round_rate() though, which means that we can
+change the rate of the clock, but we will never get to change the
+parent.
+
+However, It's hard to tell whether it's been done on purpose or not.
+
+Since we'll start mandating a determine_rate() implementation, let's
+convert the round_rate() implementation to a determine_rate(), which
+will also make the current behavior explicit. And if it was an
+oversight, the clock behaviour can be adjusted later on.
+
+Signed-off-by: Maxime Ripard <maxime@cerno.tech>
+---
+ drivers/clk/stm32/clk-stm32-core.c | 32 +++++++++++++++++++++-----------
+ 1 file changed, 21 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/clk/stm32/clk-stm32-core.c b/drivers/clk/stm32/clk-stm32-core.c
+index 3247539683c9..d5aa09e9fce4 100644
+--- a/drivers/clk/stm32/clk-stm32-core.c
++++ b/drivers/clk/stm32/clk-stm32-core.c
+@@ -426,15 +426,15 @@ static unsigned long clk_stm32_composite_recalc_rate(struct clk_hw *hw,
+ 				      composite->div_id, parent_rate);
+ }
+ 
+-static long clk_stm32_composite_round_rate(struct clk_hw *hw, unsigned long rate,
+-					   unsigned long *prate)
++static int clk_stm32_composite_determine_rate(struct clk_hw *hw,
++					      struct clk_rate_request *req)
+ {
+ 	struct clk_stm32_composite *composite = to_clk_stm32_composite(hw);
+-
+ 	const struct stm32_div_cfg *divider;
++	unsigned long rate;
+ 
+ 	if (composite->div_id == NO_STM32_DIV)
+-		return rate;
++		return 0;
+ 
+ 	divider = &composite->clock_data->dividers[composite->div_id];
+ 
+@@ -445,14 +445,24 @@ static long clk_stm32_composite_round_rate(struct clk_hw *hw, unsigned long rate
+ 		val =  readl(composite->base + divider->offset) >> divider->shift;
+ 		val &= clk_div_mask(divider->width);
+ 
+-		return divider_ro_round_rate(hw, rate, prate, divider->table,
+-				divider->width, divider->flags,
+-				val);
++		rate = divider_ro_round_rate(hw, req->rate, &req->best_parent_rate,
++					     divider->table, divider->width, divider->flags,
++					     val);
++		if (rate < 0)
++			return rate;
++
++		req->rate = rate;
++		return 0;
+ 	}
+ 
+-	return divider_round_rate_parent(hw, clk_hw_get_parent(hw),
+-					 rate, prate, divider->table,
+-					 divider->width, divider->flags);
++	rate = divider_round_rate_parent(hw, clk_hw_get_parent(hw),
++					 req->rate, &req->best_parent_rate,
++					 divider->table, divider->width, divider->flags);
++	if (rate < 0)
++		return rate;
++
++	req->rate = rate;
++	return 0;
+ }
+ 
+ static u8 clk_stm32_composite_get_parent(struct clk_hw *hw)
+@@ -602,7 +612,7 @@ static void clk_stm32_composite_disable_unused(struct clk_hw *hw)
+ const struct clk_ops clk_stm32_composite_ops = {
+ 	.set_rate	= clk_stm32_composite_set_rate,
+ 	.recalc_rate	= clk_stm32_composite_recalc_rate,
+-	.round_rate	= clk_stm32_composite_round_rate,
++	.determine_rate	= clk_stm32_composite_determine_rate,
+ 	.get_parent	= clk_stm32_composite_get_parent,
+ 	.set_parent	= clk_stm32_composite_set_parent,
+ 	.enable		= clk_stm32_composite_gate_enable,
+
+-- 
+2.39.2
 
 
