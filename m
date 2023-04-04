@@ -4,68 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6CA5C77B6C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Apr 2023 13:44:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FF58C6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Apr 2023 13:44:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tODEIpAwPnvNGUawqsylxasQ6Mk6tuNFhtn3yBSRNT0=; b=GbhoZUGGNBVgZ9mgxls2vvFPKy
-	YzT50ux7vJn/VpaPzLPkBdKLvLRH1otHULVmatHLtrIUgzR7vx7W5ezWG2MUFnnVhEn7BN3mOcUbY
-	dbtZZ+5K5ySiWEeFew3WMs/kIEjbbyeGK6IrjINSrXqVavz9leBYn+Rc4NCNi9RuFi3zlNlNtFLIy
-	LHYPZ5YLaeG3oa+BkjmZKJimrjU5TElp+G6bAgGHJ3WZGNSQUJ3FF9sHnWRZWUhKRg25ybVY9VpE5
-	rwWDF1dxMy0AjpeqEe0/p17dMehCBmAoqyomoIX72dH9x8lc0j7WADyVUUW1kin0f5lRmLupQGLU6
-	zc7pi8CA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hXtgBK14KPM4e26uH259a5f8IZMJzPMN2I/MMharuS0=; b=rRPPXuTkKr8d9HyHcOJmoQZtPK
+	4/CadLr01gh/ol/AjKuNlvm226eeJ6JCFyVSAGTlLICKhfw6J4zvI1gnJcdJmk31OMObXv8GZidrY
+	pQihOgJEU1NJEpJZhanQ1rSHec+kaj8svp4RFTc0EgqPf6saEAZgQZOm+UH99KBcm9h/7pujMFhAD
+	Zh4oGjULDEPfHanjblWX5svlyL4/t9MKe8KjwAmb7r0Yqqsxu0ntWimEhJhmsP3WRExgIK5S25tvY
+	Um6UEIcKJlKpaT/AOkpyXDklz9ti/IB3micqcHXHs5sdNL/o93MEVGnUfCQXGY4xKfOk1p9I+7Rxh
+	xpZsvxIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjgx7-001WJt-0k;
-	Tue, 04 Apr 2023 13:44:01 +0000
-Received: from mail-oa1-f54.google.com ([209.85.160.54])
+	id 1pjgxp-001WnO-09;
+	Tue, 04 Apr 2023 13:44:45 +0000
+Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjgx0-001WEc-1M;
-	Tue, 04 Apr 2023 13:43:58 +0000
-Received: by mail-oa1-f54.google.com with SMTP id 586e51a60fabf-17786581fe1so34547529fac.10;
-        Tue, 04 Apr 2023 06:43:52 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680615831;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+	id 1pjgxk-001WhI-0Y
+	for linux-mediatek@lists.infradead.org;
+	Tue, 04 Apr 2023 13:44:42 +0000
+Received: by mail-yb1-xb29.google.com with SMTP id p15so38689223ybl.9
+        for <linux-mediatek@lists.infradead.org>; Tue, 04 Apr 2023 06:44:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1680615877;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=tODEIpAwPnvNGUawqsylxasQ6Mk6tuNFhtn3yBSRNT0=;
-        b=0LkmE0sYtzIxIrX3N4AwsR5+GxJxSsiBDSXAd2fVjnD2A+ZIOALcUR9xGI7gr2qBb4
-         To0udeCYrbWKr1m6EZS80WhKuF7nkY5lX22ppB2amgROLQqJASCshHeGxuCBqH76ZjDk
-         Enx81Za13V4H5S9tv1NdTwEBmvqDBL6VLdkLQGX6riz6rV6oWWQ6XZbnbgNoZZqtM440
-         vyW39XP7P/FSySRTa6or2vMOipY/y+Pjxemu7hKE42tG52W8GJPuvuWJGqpZWd5WazhE
-         PyYCm/1bg80EUB2O13BKtJJ/zP8KQmuNJq6dkyZdwhw6hDi0Y7BFkf4LDgI3Hu17XdYK
-         Qkrg==
-X-Gm-Message-State: AAQBX9eI6MpKaWIvRXUMl9wgEgp0dTMLmPgRYE1xnJleQqzK4ILb970/
-	ecOAkZoWCuKcSn3motRq1Q==
-X-Google-Smtp-Source: AKy350bsxMNesEfeufKU5Vad6zN3YBIROdhHPyyDXnruiII2TswWfiDxkGwWW7TE7zwGEZ5lANV1XQ==
-X-Received: by 2002:a05:6870:f223:b0:177:80ce:497f with SMTP id t35-20020a056870f22300b0017780ce497fmr1909308oao.7.1680615831247;
-        Tue, 04 Apr 2023 06:43:51 -0700 (PDT)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id yg21-20020a05687c009500b0016a37572d17sm4853705oab.2.2023.04.04.06.43.50
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 04 Apr 2023 06:43:50 -0700 (PDT)
-Received: (nullmailer pid 3785276 invoked by uid 1000);
-	Tue, 04 Apr 2023 13:43:50 -0000
-Date: Tue, 4 Apr 2023 08:43:50 -0500
-From: Rob Herring <robh@kernel.org>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Eddie Hung <eddie.hung@mediatek.com>, Tianping Fang <tianping.fang@mediatek.com>
-Subject: Re: [PATCH 6/7] dt-bindings: usb: mtu3: add two optional clocks
-Message-ID: <20230404134350.GA3782583-robh@kernel.org>
-References: <20230403025230.25035-1-chunfeng.yun@mediatek.com>
- <20230403025230.25035-6-chunfeng.yun@mediatek.com>
+        bh=hXtgBK14KPM4e26uH259a5f8IZMJzPMN2I/MMharuS0=;
+        b=YoKEFBnF4R/KLVFNoyxiZPhJmsqA79Ywp7c5w9VoTLbxOHPkU2UC3C6r9llU7auOt2
+         itjfCCAlEVj9pzFONUJdlZR26DS+6eTnTItG8/BdsRaJG+jnGN8Mar9S9nT8YJ6YbIvt
+         PczIEgFKHpzSiJdwEFeV5bQ6D7RX1kxyHOzWUeUHZxaA2y7tu1cxjyIo01gmk0ySlvUZ
+         2ItBXfsRfASPgjZS7NTX/6Gf1VUStSpHFkFEFZGlN6IDFrz+MYZjApX3UW6qF8oUnIFx
+         zKX/hy1RXkULjEErSDvMl/vL0BBq9FAoK0R7e10J9U08+BUnKq4oXitONkTYlPsXrglz
+         sC3g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680615877;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=hXtgBK14KPM4e26uH259a5f8IZMJzPMN2I/MMharuS0=;
+        b=Q5DckxmWYTVlGRW1snrs4lDKOYUafivxLnrUcTKCne7ipOLZr1kzASgz06c96VHkwz
+         /zwImbiTabI4FQefsQG7dSzX4D/+83g9bLGn2ILF8qE4T8+TCAOm+qO978OAAlRRdGJ1
+         LhIVngkdz/2mUw7vB5WAI6V4kcnd+6ZP8cwRtrNzqTPZr0NFT154Lo7iuOtQGOos33eO
+         58EmoX6+tnRSkuuQKLFEuqPsKmmaSqEj0D2OSbCz9UEmjySJZUnRJsq8mepYZHAcvysX
+         DUfojsyNwvuzC3kCnu+homyMsHGQsEgjTVBoKTcGskbSXsWUKKgAUiKDezLUZSoNaEV+
+         8Ffw==
+X-Gm-Message-State: AAQBX9eoOR3MwaWcFMvv+eJk7HNhkjsrc2lvlOiXJWsgwUs3nPwTt5Kt
+	2r5j8Feiup3xvKb08H6XZWsSbUcwrUtuj7YAXfD9+Q==
+X-Google-Smtp-Source: AKy350ZS+8XVi9C6uhFr1kyc6XrkkRM+FluRwKkVz9PMLEz3Sm01NQlNpsxUuoJH/tcqHDQrLl5d34Nf5Z8uV0fle0E=
+X-Received: by 2002:a25:df10:0:b0:b75:8ac3:d5d2 with SMTP id
+ w16-20020a25df10000000b00b758ac3d5d2mr1901844ybg.4.1680615876928; Tue, 04 Apr
+ 2023 06:44:36 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230403025230.25035-6-chunfeng.yun@mediatek.com>
+References: <20221018-clk-range-checks-fixes-v3-0-9a1358472d52@cerno.tech> <20221018-clk-range-checks-fixes-v3-34-9a1358472d52@cerno.tech>
+In-Reply-To: <20221018-clk-range-checks-fixes-v3-34-9a1358472d52@cerno.tech>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Tue, 4 Apr 2023 15:44:25 +0200
+Message-ID: <CACRpkdYcHaUBG1qFVb=mi40SyEp=VyYzPmxNn-Zrmpqs1QH+kQ@mail.gmail.com>
+Subject: Re: [PATCH v3 34/65] clk: ux500: prcmu: Add a determine_rate hook
+To: Maxime Ripard <maxime@cerno.tech>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
+	Manivannan Sadhasivam <mani@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+	Claudiu Beznea <claudiu.beznea@microchip.com>, Max Filippov <jcmvbkbc@gmail.com>, 
+	Charles Keepax <ckeepax@opensource.cirrus.com>, 
+	Richard Fitzgerald <rf@opensource.cirrus.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+	David Lechner <david@lechnology.com>, Sekhar Nori <nsekhar@ti.com>, Abel Vesa <abelvesa@kernel.org>, 
+	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	NXP Linux Team <linux-imx@nxp.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Dinh Nguyen <dinguyen@kernel.org>, 
+	Peter De Schrijver <pdeschrijver@nvidia.com>, Prashant Gaikwad <pgaikwad@nvidia.com>, 
+	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	Ulf Hansson <ulf.hansson@linaro.org>, David Airlie <airlied@gmail.com>, 
+	Daniel Vetter <daniel@ffwll.ch>, Vinod Koul <vkoul@kernel.org>, 
+	Kishon Vijay Abraham I <kishon@kernel.org>, Alessandro Zummo <a.zummo@towertech.it>, Chen-Yu Tsai <wens@csie.org>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Paul Cercueil <paul@crapouillou.net>, 
+	Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
+	Chunyan Zhang <zhang.lyra@gmail.com>, linux-clk@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	linux-arm-kernel@lists.infradead.org, linux-actions@lists.infradead.org, 
+	patches@opensource.cirrus.com, linux-stm32@st-md-mailman.stormreply.com, 
+	linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
+	linux-tegra@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	linux-phy@lists.infradead.org, linux-rtc@vger.kernel.org, 
+	linux-sunxi@lists.linux.dev, alsa-devel@alsa-project.org, 
+	linux-mips@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230404_064354_478941_1C72EB1E 
-X-CRM114-Status: GOOD (  13.91  )
+X-CRM114-CacheID: sfid-20230404_064440_212616_467AE6D6 
+X-CRM114-Status: GOOD (  13.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,45 +118,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 03, 2023 at 10:52:29AM +0800, Chunfeng Yun wrote:
-> Add optional clock 'xhci_ck' and 'frmcnt_ck';
-> Add optional property "assigned-clock" and "assigned-clock-parents";
-> 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
->  .../devicetree/bindings/usb/mediatek,mtu3.yaml       | 12 ++++++++++++
->  1 file changed, 12 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
-> index d2655173e108..50c15f2ce14d 100644
-> --- a/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
-> +++ b/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
-> @@ -66,6 +66,8 @@ properties:
->        - description: Reference clock used by low power mode etc
->        - description: Mcu bus clock for register access
->        - description: DMA bus clock for data transfer
-> +      - description: DRD controller clock
-> +      - description: Frame count clock
->  
->    clock-names:
->      minItems: 1
-> @@ -74,6 +76,16 @@ properties:
->        - const: ref_ck
->        - const: mcu_ck
->        - const: dma_ck
-> +      - const: xhci_ck
-> +      - const: frmcnt_ck
-> +
-> +  assigned-clocks:
-> +    minItems: 1
-> +    maxItems: 6
-> +
-> +  assigned-clock-parents:
-> +    minItems: 1
-> +    maxItems: 6
+On Tue, Apr 4, 2023 at 2:45=E2=80=AFPM Maxime Ripard <maxime@cerno.tech> wr=
+ote:
 
-You don't need to include assigned-clocks properties. They are 
-implicitly allowed (when clocks is present).
+> The UX500 PRCMU "clkout" clock implements a mux with a set_parent hook,
+> but doesn't provide a determine_rate implementation.
+>
+> This is a bit odd, since set_parent() is there to, as its name implies,
+> change the parent of a clock. However, the most likely candidate to
+> trigger that parent change is a call to clk_set_rate(), with
+> determine_rate() figuring out which parent is the best suited for a
+> given rate.
 
-Rob
+Not even that.
+
+The parent is selected from the second cell of the device tree
+specifier, and the divisor from the third cell. See:
+Documentation/devicetree/bindings/clock/stericsson,u8500-clks.yaml
+
+So this definitely does not reparent.
+
+Yours,
+Linus Walleij
 
