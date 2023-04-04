@@ -4,78 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8C1CC6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Apr 2023 22:27:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DA7DC76188
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Apr 2023 23:25:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c8qlU5WWpwBzdLgwkAt1c8GFjDAfCS+JOL0NG1ePnrU=; b=m611mnluqi9YYwsLyhSGffEffH
-	HM02sFWJxGMw8ONtHZjsBBTagl3YBaZSR5H5h9B751X9tMrYXhUfoEPYSYhMsQqBa2rDihTdgKMUG
-	hDCzXd5bShEQ6iCR9y+rEFGlSbAYFWOkwNq9QPX0ncrL13Qce/WcnT7lDSiQzdh5GhUkJWkyzqtgV
-	Z5Qol8nkJrnNhtAW+ZC7m5NJCtrZaOZOcCTFAeBVJhHpaelsEeF+a/bf42+GMdnutZjxSd5DMG1hU
-	SU80eEFXPogVRVq3fUbEcLQn9SR74iSfcEhlOE0OeDPv93xRIQ44dOlJeR3PFsZdSxQc+KEX6PbOJ
-	pyWfx/6g==;
+	bh=fbPx/li9jWmy9rdZ41/40+GSZCoem1qAF6w29kalmcY=; b=pJSnnmLZzCAhBe8984U7Z3Yhl4
+	f7VJ63yeRH8Gmt0BG8dtC+5FWBudGVCZiOk2p6Gvdtckr+msoTKCM9tvSg3QL8F24tYrOIUyyQDPK
+	J63+2b0NnCeVBjfLwOH3WOdAxCVYATaFog2wj468/tus4cMZjIO6EiG54Phom5VHm6xuFlxtYPv75
+	WRkRRxN8roXVMOROaTp5yKckUaJ2PmysSxc7sRuxBNBUSdT9f5OdmE0F/jywe/ACHnekodQ7SxFEp
+	6HuY4k4tiiKVeqsJ7b+dCrLoLLzulBC78VB2parNM47zD/bccBoeWTvdbGmE9EYLgHuZurpGV1iNz
+	78kBE6zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjp7I-002xdC-0N;
-	Tue, 04 Apr 2023 22:27:04 +0000
-Received: from mga05.intel.com ([192.55.52.43])
+	id 1pjq1l-0030S7-1b;
+	Tue, 04 Apr 2023 23:25:25 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjp7E-002xbz-2M
+	id 1pjq1h-0030RE-14
 	for linux-mediatek@lists.infradead.org;
-	Tue, 04 Apr 2023 22:27:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1680647220; x=1712183220;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=Ags+nGyHKx682jU/pd7+kOz8QeAabrBU9h+lgji7gvY=;
-  b=jZQ1CZCdYtvfmYHTQTiCgVed9CWGNUrIrYh964CGqqmLFmivroC4z5la
-   tsWmL+HtA28vcIu5LndX8VnfRSWfkMZW2sZOWjwW3hkhG1ToCcdsT8pCw
-   IvBBf4Q5Gnn3+KEqMr4q6bB9qvVLZwWf9qllG4DPC1s/qkaPK7Zsl5GYB
-   f7zdgZCRw8CzlY4DyKDMLXkn49XcKH3Tpggk5QH1PSn+aSDEhTiI9gbe4
-   C3Q8fDQoeQJr2e1p3Nyo8YZTB+e02vOA60pm8wYTSzqQjipZanQZuGfcY
-   +edtWH7TK0YGliO28gID/ajfjbyBeA99cdaWoKmN0spq9PT0mGA0HoHbH
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10670"; a="428604976"
-X-IronPort-AV: E=Sophos;i="5.98,319,1673942400"; 
-   d="scan'208";a="428604976"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
-  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Apr 2023 15:26:51 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10670"; a="755805993"
-X-IronPort-AV: E=Sophos;i="5.98,319,1673942400"; 
-   d="scan'208";a="755805993"
-Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
-  by fmsmga004.fm.intel.com with ESMTP; 04 Apr 2023 15:26:48 -0700
-Received: from kbuild by b613635ddfff with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1pjp72-000Q5E-04;
-	Tue, 04 Apr 2023 22:26:48 +0000
-Date: Wed, 5 Apr 2023 06:26:16 +0800
-From: kernel test robot <lkp@intel.com>
-To: Ryder Lee <ryder.lee@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
-	linux-wireless@vger.kernel.org
-Cc: oe-kbuild-all@lists.linux.dev,
-	Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Evelyn Tsai <evelyn.tsai@mediatek.com>,
-	linux-mediatek@lists.infradead.org,
-	Ryder Lee <ryder.lee@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>
-Subject: Re: [PATCH 2/3] wifi: mt76: mt7996: add full system reset knobs into
- debugfs
-Message-ID: <202304050649.OGylBZD2-lkp@intel.com>
-References: <cb71efc424029e909866e1c86cce712dbf2cc9ef.1680638324.git.ryder.lee@mediatek.com>
+	Tue, 04 Apr 2023 23:25:23 +0000
+X-UUID: f4b3c490d33f11ed8687db9d93187ff1-20230404
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=fbPx/li9jWmy9rdZ41/40+GSZCoem1qAF6w29kalmcY=;
+	b=NRri+qitXciiA/K9K+DvayOYtRacN/43TK5kF4rn7dE3Y9gEqeUyFVEvuwCJq2ceOWEnT0JEKm3siZozrcQWHVx+BZPpzruasvM8D3xYxMjagWbtdPx4F/n1/cyzDGEby/S5UCClbhuqTFlifrlKqoLWFxFWL5kLJdir4E78meU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22,REQID:18f3aa9e-ea0f-403d-ae9d-3d4561f18f0e,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:120426c,CLOUDID:6ece40b5-beed-4dfc-bd9c-e1b22fa6ccc4,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: f4b3c490d33f11ed8687db9d93187ff1-20230404
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <ryder.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 526780904; Tue, 04 Apr 2023 16:25:16 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Wed, 5 Apr 2023 07:24:40 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Wed, 5 Apr 2023 07:24:40 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>, "Bo
+ Jiao" <Bo.Jiao@mediatek.com>
+Subject: [PATCH v2 2/3] wifi: mt76: mt7996: add full system reset knobs into debugfs
+Date: Wed, 5 Apr 2023 07:24:38 +0800
+Message-ID: <0b4df4eef544b8509987a0b0bc9a7a86ec18d022.1680650499.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <6756ddde5aaaf29db4f62264bab7f28bb539b26f.1680650499.git.ryder.lee@mediatek.com>
+References: <6756ddde5aaaf29db4f62264bab7f28bb539b26f.1680650499.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cb71efc424029e909866e1c86cce712dbf2cc9ef.1680638324.git.ryder.lee@mediatek.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230404_152700_786223_E10848D4 
-X-CRM114-Status: GOOD (  14.18  )
+X-CRM114-CacheID: sfid-20230404_162521_407862_F6E6B055 
+X-CRM114-Status: GOOD (  16.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,136 +84,335 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Ryder,
+Add testing points into debugfs to trigger firmware assert and enable
+full system recovery. Also rename knob "fw_ser" to a clear-cut name
+"sys_recovery".
 
-kernel test robot noticed the following build errors:
+Co-developed-by: Bo Jiao <Bo.Jiao@mediatek.com>
+Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+change since v2 - fix build error.
+---
+ .../wireless/mediatek/mt76/mt76_connac_mcu.h  |   1 +
+ .../wireless/mediatek/mt76/mt7996/debugfs.c   | 149 ++++++++++++++++--
+ .../net/wireless/mediatek/mt76/mt7996/mcu.c   |  16 ++
+ .../net/wireless/mediatek/mt76/mt7996/mcu.h   |  28 ++--
+ .../wireless/mediatek/mt76/mt7996/mt7996.h    |   1 +
+ .../net/wireless/mediatek/mt76/mt7996/regs.h  |  13 ++
+ 6 files changed, 178 insertions(+), 30 deletions(-)
 
-[auto build test ERROR on wireless-next/main]
-[also build test ERROR on wireless/main linus/master v6.3-rc5 next-20230404]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Ryder-Lee/wifi-mt76-mt7996-add-full-system-reset-knobs-into-debugfs/20230405-040602
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless-next.git main
-patch link:    https://lore.kernel.org/r/cb71efc424029e909866e1c86cce712dbf2cc9ef.1680638324.git.ryder.lee%40mediatek.com
-patch subject: [PATCH 2/3] wifi: mt76: mt7996: add full system reset knobs into debugfs
-config: riscv-allmodconfig (https://download.01.org/0day-ci/archive/20230405/202304050649.OGylBZD2-lkp@intel.com/config)
-compiler: riscv64-linux-gcc (GCC) 12.1.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/8764f35bb4f80294bf2164552514cfd312c5feb3
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Ryder-Lee/wifi-mt76-mt7996-add-full-system-reset-knobs-into-debugfs/20230405-040602
-        git checkout 8764f35bb4f80294bf2164552514cfd312c5feb3
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=riscv olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=riscv SHELL=/bin/bash drivers/net/wireless/mediatek/mt76/mt7996/
-
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Link: https://lore.kernel.org/oe-kbuild-all/202304050649.OGylBZD2-lkp@intel.com/
-
-All error/warnings (new ones prefixed by >>):
-
->> drivers/net/wireless/mediatek/mt76/mt7996/mcu.c:3742:5: warning: no previous prototype for 'mt7996_mcu_trigger_assert' [-Wmissing-prototypes]
-    3742 | int mt7996_mcu_trigger_assert(struct mt7996_dev *dev)
-         |     ^~~~~~~~~~~~~~~~~~~~~~~~~
---
-   drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c: In function 'mt7996_sys_recovery_set':
->> drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c:114:23: error: implicit declaration of function 'mt7996_mcu_trigger_assert'; did you mean 'mt7996_mcu_set_ser'? [-Werror=implicit-function-declaration]
-     114 |                 ret = mt7996_mcu_trigger_assert(dev);
-         |                       ^~~~~~~~~~~~~~~~~~~~~~~~~
-         |                       mt7996_mcu_set_ser
-   cc1: some warnings being treated as errors
-
-
-vim +114 drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c
-
-    45	
-    46	DEFINE_DEBUGFS_ATTRIBUTE(fops_implicit_txbf, mt7996_implicit_txbf_get,
-    47				 mt7996_implicit_txbf_set, "%lld\n");
-    48	
-    49	/* test knob of system error recovery */
-    50	static ssize_t
-    51	mt7996_sys_recovery_set(struct file *file, const char __user *user_buf,
-    52				size_t count, loff_t *ppos)
-    53	{
-    54		struct mt7996_phy *phy = file->private_data;
-    55		struct mt7996_dev *dev = phy->dev;
-    56		bool band = phy->mt76->band_idx;
-    57		char buf[16];
-    58		int ret = 0;
-    59		u16 val;
-    60	
-    61		if (count >= sizeof(buf))
-    62			return -EINVAL;
-    63	
-    64		if (copy_from_user(buf, user_buf, count))
-    65			return -EFAULT;
-    66	
-    67		if (count && buf[count - 1] == '\n')
-    68			buf[count - 1] = '\0';
-    69		else
-    70			buf[count] = '\0';
-    71	
-    72		if (kstrtou16(buf, 0, &val))
-    73			return -EINVAL;
-    74	
-    75		switch (val) {
-    76		/*
-    77		 * 0: grab firmware current SER state.
-    78		 * 1: trigger & enable system error L1 recovery.
-    79		 * 2: trigger & enable system error L2 recovery.
-    80		 * 3: trigger & enable system error L3 rx abort.
-    81		 * 4: trigger & enable system error L3 tx abort
-    82		 * 5: trigger & enable system error L3 tx disable.
-    83		 * 6: trigger & enable system error L3 bf recovery.
-    84		 * 7: trigger & enable system error L4 mdp recovery.
-    85		 * 8: trigger & enable system error full recovery.
-    86		 * 9: trigger firmware crash.
-    87		 */
-    88		case UNI_CMD_SER_QUERY:
-    89			ret = mt7996_mcu_set_ser(dev, UNI_CMD_SER_QUERY, 0, band);
-    90			break;
-    91		case UNI_CMD_SER_SET_RECOVER_L1:
-    92		case UNI_CMD_SER_SET_RECOVER_L2:
-    93		case UNI_CMD_SER_SET_RECOVER_L3_RX_ABORT:
-    94		case UNI_CMD_SER_SET_RECOVER_L3_TX_ABORT:
-    95		case UNI_CMD_SER_SET_RECOVER_L3_TX_DISABLE:
-    96		case UNI_CMD_SER_SET_RECOVER_L3_BF:
-    97		case UNI_CMD_SER_SET_RECOVER_L4_MDP:
-    98			ret = mt7996_mcu_set_ser(dev, UNI_CMD_SER_SET, BIT(val), band);
-    99			if (ret)
-   100				return ret;
-   101	
-   102			ret = mt7996_mcu_set_ser(dev, UNI_CMD_SER_TRIGGER, val, band);
-   103			break;
-   104	
-   105		/* enable full chip reset */
-   106		case UNI_CMD_SER_SET_RECOVER_FULL:
-   107			mt76_set(dev, MT_WFDMA0_MCU_HOST_INT_ENA, MT_MCU_CMD_WDT_MASK);
-   108			dev->recovery.state |= MT_MCU_CMD_WDT_MASK;
-   109			mt7996_reset(dev);
-   110			break;
-   111	
-   112		/* WARNING: trigger firmware crash */
-   113		case UNI_CMD_SER_SET_SYSTEM_ASSERT:
- > 114			ret = mt7996_mcu_trigger_assert(dev);
-   115			if (ret)
-   116				return ret;
-   117			break;
-   118		default:
-   119			break;
-   120		}
-   121	
-   122		return ret ? ret : count;
-   123	}
-   124	
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+index 40a99e0caded..755e6502fd0c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+@@ -1221,6 +1221,7 @@ enum {
+ 	MCU_UNI_CMD_VOW = 0x37,
+ 	MCU_UNI_CMD_RRO = 0x57,
+ 	MCU_UNI_CMD_OFFCH_SCAN_CTRL = 0x58,
++	MCU_UNI_CMD_ASSERT_DUMP = 0x6f,
+ };
+ 
+ enum {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c
+index 9c5e9ac1c335..513ab4ba41c9 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c
+@@ -48,12 +48,12 @@ DEFINE_DEBUGFS_ATTRIBUTE(fops_implicit_txbf, mt7996_implicit_txbf_get,
+ 
+ /* test knob of system error recovery */
+ static ssize_t
+-mt7996_fw_ser_set(struct file *file, const char __user *user_buf,
+-		  size_t count, loff_t *ppos)
++mt7996_sys_recovery_set(struct file *file, const char __user *user_buf,
++			size_t count, loff_t *ppos)
+ {
+ 	struct mt7996_phy *phy = file->private_data;
+ 	struct mt7996_dev *dev = phy->dev;
+-	u8 band_idx = phy->mt76->band_idx;
++	bool band = phy->mt76->band_idx;
+ 	char buf[16];
+ 	int ret = 0;
+ 	u16 val;
+@@ -73,17 +73,47 @@ mt7996_fw_ser_set(struct file *file, const char __user *user_buf,
+ 		return -EINVAL;
+ 
+ 	switch (val) {
+-	case SER_SET_RECOVER_L1:
+-	case SER_SET_RECOVER_L2:
+-	case SER_SET_RECOVER_L3_RX_ABORT:
+-	case SER_SET_RECOVER_L3_TX_ABORT:
+-	case SER_SET_RECOVER_L3_TX_DISABLE:
+-	case SER_SET_RECOVER_L3_BF:
+-		ret = mt7996_mcu_set_ser(dev, SER_ENABLE, BIT(val), band_idx);
++	/*
++	 * 0: grab firmware current SER state.
++	 * 1: trigger & enable system error L1 recovery.
++	 * 2: trigger & enable system error L2 recovery.
++	 * 3: trigger & enable system error L3 rx abort.
++	 * 4: trigger & enable system error L3 tx abort
++	 * 5: trigger & enable system error L3 tx disable.
++	 * 6: trigger & enable system error L3 bf recovery.
++	 * 7: trigger & enable system error L4 mdp recovery.
++	 * 8: trigger & enable system error full recovery.
++	 * 9: trigger firmware crash.
++	 */
++	case UNI_CMD_SER_QUERY:
++		ret = mt7996_mcu_set_ser(dev, UNI_CMD_SER_QUERY, 0, band);
++		break;
++	case UNI_CMD_SER_SET_RECOVER_L1:
++	case UNI_CMD_SER_SET_RECOVER_L2:
++	case UNI_CMD_SER_SET_RECOVER_L3_RX_ABORT:
++	case UNI_CMD_SER_SET_RECOVER_L3_TX_ABORT:
++	case UNI_CMD_SER_SET_RECOVER_L3_TX_DISABLE:
++	case UNI_CMD_SER_SET_RECOVER_L3_BF:
++	case UNI_CMD_SER_SET_RECOVER_L4_MDP:
++		ret = mt7996_mcu_set_ser(dev, UNI_CMD_SER_SET, BIT(val), band);
+ 		if (ret)
+ 			return ret;
+ 
+-		ret = mt7996_mcu_set_ser(dev, SER_RECOVER, val, band_idx);
++		ret = mt7996_mcu_set_ser(dev, UNI_CMD_SER_TRIGGER, val, band);
++		break;
++
++	/* enable full chip reset */
++	case UNI_CMD_SER_SET_RECOVER_FULL:
++		mt76_set(dev, MT_WFDMA0_MCU_HOST_INT_ENA, MT_MCU_CMD_WDT_MASK);
++		dev->recovery.state |= MT_MCU_CMD_WDT_MASK;
++		mt7996_reset(dev);
++		break;
++
++	/* WARNING: trigger firmware crash */
++	case UNI_CMD_SER_SET_SYSTEM_ASSERT:
++		ret = mt7996_mcu_trigger_assert(dev);
++		if (ret)
++			return ret;
+ 		break;
+ 	default:
+ 		break;
+@@ -92,9 +122,97 @@ mt7996_fw_ser_set(struct file *file, const char __user *user_buf,
+ 	return ret ? ret : count;
+ }
+ 
+-static const struct file_operations mt7996_fw_ser_ops = {
+-	.write = mt7996_fw_ser_set,
+-	/* TODO: ser read */
++static ssize_t
++mt7996_sys_recovery_get(struct file *file, char __user *user_buf,
++			size_t count, loff_t *ppos)
++{
++	struct mt7996_phy *phy = file->private_data;
++	struct mt7996_dev *dev = phy->dev;
++	char *buff;
++	int desc = 0;
++	ssize_t ret;
++	static const size_t bufsz = 1024;
++
++	buff = kmalloc(bufsz, GFP_KERNEL);
++	if (!buff)
++		return -ENOMEM;
++
++	/* HELP */
++	desc += scnprintf(buff + desc, bufsz - desc,
++			  "Please echo the correct value ...\n");
++	desc += scnprintf(buff + desc, bufsz - desc,
++			  "0: grab firmware transient SER state\n");
++	desc += scnprintf(buff + desc, bufsz - desc,
++			  "1: trigger system error L1 recovery\n");
++	desc += scnprintf(buff + desc, bufsz - desc,
++			  "2: trigger system error L2 recovery\n");
++	desc += scnprintf(buff + desc, bufsz - desc,
++			  "3: trigger system error L3 rx abort\n");
++	desc += scnprintf(buff + desc, bufsz - desc,
++			  "4: trigger system error L3 tx abort\n");
++	desc += scnprintf(buff + desc, bufsz - desc,
++			  "5: trigger system error L3 tx disable\n");
++	desc += scnprintf(buff + desc, bufsz - desc,
++			  "6: trigger system error L3 bf recovery\n");
++	desc += scnprintf(buff + desc, bufsz - desc,
++			  "7: trigger system error L4 mdp recovery\n");
++	desc += scnprintf(buff + desc, bufsz - desc,
++			  "8: trigger system error full recovery\n");
++	desc += scnprintf(buff + desc, bufsz - desc,
++			  "9: trigger firmware crash\n");
++
++	/* SER statistics */
++	desc += scnprintf(buff + desc, bufsz - desc,
++			  "\nlet's dump firmware SER statistics...\n");
++	desc += scnprintf(buff + desc, bufsz - desc,
++			  "::E  R , SER_STATUS        = 0x%08x\n",
++			  mt76_rr(dev, MT_SWDEF_SER_STATS));
++	desc += scnprintf(buff + desc, bufsz - desc,
++			  "::E  R , SER_PLE_ERR       = 0x%08x\n",
++			  mt76_rr(dev, MT_SWDEF_PLE_STATS));
++	desc += scnprintf(buff + desc, bufsz - desc,
++			  "::E  R , SER_PLE_ERR_1     = 0x%08x\n",
++			  mt76_rr(dev, MT_SWDEF_PLE1_STATS));
++	desc += scnprintf(buff + desc, bufsz - desc,
++			  "::E  R , SER_PLE_ERR_AMSDU = 0x%08x\n",
++			  mt76_rr(dev, MT_SWDEF_PLE_AMSDU_STATS));
++	desc += scnprintf(buff + desc, bufsz - desc,
++			  "::E  R , SER_PSE_ERR       = 0x%08x\n",
++			  mt76_rr(dev, MT_SWDEF_PSE_STATS));
++	desc += scnprintf(buff + desc, bufsz - desc,
++			  "::E  R , SER_PSE_ERR_1     = 0x%08x\n",
++			  mt76_rr(dev, MT_SWDEF_PSE1_STATS));
++	desc += scnprintf(buff + desc, bufsz - desc,
++			  "::E  R , SER_LMAC_WISR6_B0 = 0x%08x\n",
++			  mt76_rr(dev, MT_SWDEF_LAMC_WISR6_BN0_STATS));
++	desc += scnprintf(buff + desc, bufsz - desc,
++			  "::E  R , SER_LMAC_WISR6_B1 = 0x%08x\n",
++			  mt76_rr(dev, MT_SWDEF_LAMC_WISR6_BN1_STATS));
++	desc += scnprintf(buff + desc, bufsz - desc,
++			  "::E  R , SER_LMAC_WISR6_B2 = 0x%08x\n",
++			  mt76_rr(dev, MT_SWDEF_LAMC_WISR6_BN2_STATS));
++	desc += scnprintf(buff + desc, bufsz - desc,
++			  "::E  R , SER_LMAC_WISR7_B0 = 0x%08x\n",
++			  mt76_rr(dev, MT_SWDEF_LAMC_WISR7_BN0_STATS));
++	desc += scnprintf(buff + desc, bufsz - desc,
++			  "::E  R , SER_LMAC_WISR7_B1 = 0x%08x\n",
++			  mt76_rr(dev, MT_SWDEF_LAMC_WISR7_BN1_STATS));
++	desc += scnprintf(buff + desc, bufsz - desc,
++			  "::E  R , SER_LMAC_WISR7_B2 = 0x%08x\n",
++			  mt76_rr(dev, MT_SWDEF_LAMC_WISR7_BN2_STATS));
++	desc += scnprintf(buff + desc, bufsz - desc,
++			  "\nSYS_RESET_COUNT: WM %d, WA %d\n",
++			  dev->recovery.wm_reset_count,
++			  dev->recovery.wa_reset_count);
++
++	ret = simple_read_from_buffer(user_buf, count, ppos, buff, desc);
++	kfree(buff);
++	return ret;
++}
++
++static const struct file_operations mt7996_sys_recovery_ops = {
++	.write = mt7996_sys_recovery_set,
++	.read = mt7996_sys_recovery_get,
+ 	.open = simple_open,
+ 	.llseek = default_llseek,
+ };
+@@ -674,6 +792,8 @@ int mt7996_init_debugfs(struct mt7996_phy *phy)
+ 	debugfs_create_file("xmit-queues", 0400, dir, phy,
+ 			    &mt7996_xmit_queues_fops);
+ 	debugfs_create_file("tx_stats", 0400, dir, phy, &mt7996_tx_stats_fops);
++	debugfs_create_file("sys_recovery", 0600, dir, phy,
++			    &mt7996_sys_recovery_ops);
+ 	debugfs_create_file("fw_debug_wm", 0600, dir, dev, &fops_fw_debug_wm);
+ 	debugfs_create_file("fw_debug_wa", 0600, dir, dev, &fops_fw_debug_wa);
+ 	debugfs_create_file("fw_debug_bin", 0600, dir, dev, &fops_fw_debug_bin);
+@@ -684,7 +804,6 @@ int mt7996_init_debugfs(struct mt7996_phy *phy)
+ 			    &fops_implicit_txbf);
+ 	debugfs_create_devm_seqfile(dev->mt76.dev, "twt_stats", dir,
+ 				    mt7996_twt_stats);
+-	debugfs_create_file("fw_ser", 0600, dir, phy, &mt7996_fw_ser_ops);
+ 	debugfs_create_file("rf_regval", 0600, dir, dev, &fops_rf_regval);
+ 
+ 	if (phy->mt76->cap.has_5ghz) {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index a48522025867..1d44347a5fa7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -3739,6 +3739,22 @@ int mt7996_mcu_rf_regval(struct mt7996_dev *dev, u32 regidx, u32 *val, bool set)
+ 	return 0;
+ }
+ 
++int mt7996_mcu_trigger_assert(struct mt7996_dev *dev)
++{
++	struct {
++		__le16 tag;
++		__le16 len;
++		u8 enable;
++		u8 rsv[3];
++	} __packed req = {
++		.len = cpu_to_le16(sizeof(req) - 4),
++		.enable = true,
++	};
++
++	return mt76_mcu_send_msg(&dev->mt76, MCU_WM_UNI_CMD(ASSERT_DUMP),
++				 &req, sizeof(req), false);
++}
++
+ int mt7996_mcu_set_rro(struct mt7996_dev *dev, u16 tag, u8 val)
+ {
+ 	struct {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
+index dd0c5ac52703..6f92b9a7d86d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
+@@ -648,23 +648,21 @@ enum {
+ };
+ 
+ enum {
+-	UNI_CMD_SER_QUERY = 0x0,
+-	UNI_CMD_SER_SET = 0x2,
+-	UNI_CMD_SER_TRIGGER = 0x3,
+-};
+-
+-enum {
+-	SER_QUERY,
++	UNI_CMD_SER_QUERY,
+ 	/* recovery */
+-	SER_SET_RECOVER_L1,
+-	SER_SET_RECOVER_L2,
+-	SER_SET_RECOVER_L3_RX_ABORT,
+-	SER_SET_RECOVER_L3_TX_ABORT,
+-	SER_SET_RECOVER_L3_TX_DISABLE,
+-	SER_SET_RECOVER_L3_BF,
++	UNI_CMD_SER_SET_RECOVER_L1,
++	UNI_CMD_SER_SET_RECOVER_L2,
++	UNI_CMD_SER_SET_RECOVER_L3_RX_ABORT,
++	UNI_CMD_SER_SET_RECOVER_L3_TX_ABORT,
++	UNI_CMD_SER_SET_RECOVER_L3_TX_DISABLE,
++	UNI_CMD_SER_SET_RECOVER_L3_BF,
++	UNI_CMD_SER_SET_RECOVER_L4_MDP,
++	UNI_CMD_SER_SET_RECOVER_FULL,
++	UNI_CMD_SER_SET_SYSTEM_ASSERT,
+ 	/* action */
+-	SER_ENABLE = 2,
+-	SER_RECOVER
++	UNI_CMD_SER_ENABLE = 1,
++	UNI_CMD_SER_SET,
++	UNI_CMD_SER_TRIGGER
+ };
+ 
+ enum {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+index 45071f0dc2fe..411a3829857f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+@@ -459,6 +459,7 @@ int mt7996_mcu_set_rro(struct mt7996_dev *dev, u16 tag, u8 val);
+ int mt7996_mcu_wa_cmd(struct mt7996_dev *dev, int cmd, u32 a1, u32 a2, u32 a3);
+ int mt7996_mcu_fw_log_2_host(struct mt7996_dev *dev, u8 type, u8 ctrl);
+ int mt7996_mcu_fw_dbg_ctrl(struct mt7996_dev *dev, u32 module, u8 level);
++int mt7996_mcu_trigger_assert(struct mt7996_dev *dev);
+ void mt7996_mcu_rx_event(struct mt7996_dev *dev, struct sk_buff *skb);
+ void mt7996_mcu_exit(struct mt7996_dev *dev);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/regs.h b/drivers/net/wireless/mediatek/mt76/mt7996/regs.h
+index 5ba74b49d65d..fb9b8dec9189 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/regs.h
+@@ -480,6 +480,19 @@ enum base_rev {
+ #define MT_SWDEF_MODE				MT_SWDEF(0x3c)
+ #define MT_SWDEF_NORMAL_MODE			0
+ 
++#define MT_SWDEF_SER_STATS			MT_SWDEF(0x040)
++#define MT_SWDEF_PLE_STATS			MT_SWDEF(0x044)
++#define MT_SWDEF_PLE1_STATS			MT_SWDEF(0x048)
++#define MT_SWDEF_PLE_AMSDU_STATS		MT_SWDEF(0x04c)
++#define MT_SWDEF_PSE_STATS			MT_SWDEF(0x050)
++#define MT_SWDEF_PSE1_STATS			MT_SWDEF(0x054)
++#define MT_SWDEF_LAMC_WISR6_BN0_STATS		MT_SWDEF(0x058)
++#define MT_SWDEF_LAMC_WISR6_BN1_STATS		MT_SWDEF(0x05c)
++#define MT_SWDEF_LAMC_WISR6_BN2_STATS		MT_SWDEF(0x060)
++#define MT_SWDEF_LAMC_WISR7_BN0_STATS		MT_SWDEF(0x064)
++#define MT_SWDEF_LAMC_WISR7_BN1_STATS		MT_SWDEF(0x068)
++#define MT_SWDEF_LAMC_WISR7_BN2_STATS		MT_SWDEF(0x06c)
++
+ /* LED */
+ #define MT_LED_TOP_BASE				0x18013000
+ #define MT_LED_PHYS(_n)				(MT_LED_TOP_BASE + (_n))
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+2.18.0
+
 
