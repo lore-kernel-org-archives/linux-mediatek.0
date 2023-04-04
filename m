@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80C32C77B77
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Apr 2023 12:45:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A68AEC77B6C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Apr 2023 12:45:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cdzjt22hJSiMg2YTQ7mbXT8d68cxG3e76Rr5e9sCrNg=; b=fm3Kad7iU7/U+S5bvqyUzTRDlE
-	9yRLDNPv+c6xqpLf7UVE6ojwKLhoedSWe03UmZWR7NJK+bNsGmwCIhiwC8XsRkoJ9xy8pYPXPlX6Z
-	kKiJReiZQ1gB+f1/9UqohNq1EhHFiKZ39CVOfmcdgI32W0bnlBBvyJysAxGIJZRCaSRHSwje7TJOC
-	VOssWXxoAtUnrF/2FPwRwQd5BS+EcRLGTaubTK8DCZrIvCF/2AzEI8HGQSV216rYY1vweZoeSjrZS
-	inhDQ+b/dcTGZ2TW/zBKkKOM5z2F4R0xySSpoecdzRSsD0CyivRDqHSpbgmMkRdjl1yGguo8fM/TC
-	E0Qs6qSA==;
+	bh=mbJO/BnfFp1FcODpbSkvJ0+TMq6mbHeEwnbo7MEZrEg=; b=yDVTIfoabiHPIbMLNUdE7d4WcF
+	Kizjk84OnhmF0FAxFuhNX9puKNDSjzRiAMCZfimqPQU/1UyvJuDHWm1vjhRINzUIbxu/lVCyDKZsE
+	qf+Z+YNsPqtxcyqxOanug9JAwKw9zP+9c2CnQeRSW3hBeAu17CiJzR3KNIisxpoCYRKCcsexBgo8m
+	GysLpXfb0N0+e+O43DfGa+DcA0TtEMi29ek+84A3BZKVerOB0hLg+RKQfmq4acBEAp4c5Gq3bDInW
+	+0rmJJzzpRZxGX83/uaJh8dovLuFcEy8X6w0h/8DOziFVNlDiew4aWe4+kTkebzPJhWPMf2jIb5hO
+	SqB8PtOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjg2Q-001Kf3-0C;
-	Tue, 04 Apr 2023 12:45:26 +0000
+	id 1pjg2U-001Kj4-08;
+	Tue, 04 Apr 2023 12:45:30 +0000
 Received: from new3-smtp.messagingengine.com ([66.111.4.229])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjg2L-001KYX-07;
-	Tue, 04 Apr 2023 12:45:23 +0000
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
-	by mailnew.nyi.internal (Postfix) with ESMTP id 5699E5821A3;
-	Tue,  4 Apr 2023 08:45:20 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
-  by compute5.internal (MEProxy); Tue, 04 Apr 2023 08:45:20 -0400
+	id 1pjg2O-001KcB-09;
+	Tue, 04 Apr 2023 12:45:25 +0000
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailnew.nyi.internal (Postfix) with ESMTP id 70FD45821A9;
+	Tue,  4 Apr 2023 08:45:23 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+  by compute4.internal (MEProxy); Tue, 04 Apr 2023 08:45:23 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
 	:cc:content-transfer-encoding:content-type:content-type:date
 	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
 	:references:reply-to:sender:subject:subject:to:to; s=fm3; t=
-	1680612320; x=1680619520; bh=cdzjt22hJSiMg2YTQ7mbXT8d68cxG3e76Rr
-	5e9sCrNg=; b=cWSwHiXssSvu9yeOeHJ/RXGdcP+RyB/bQtyDFVwyqX6RJ9CaOo6
-	287nrQpsErO7ARg6esD/6FxgR5wtC/9u/ZZtXcw4I/pzGERXNPm9Dn75BLvbTG8M
-	QjyvIJ/vmSn37rXHUxnvs2CNkbOYAOnwWdhnAFCyFCRSQxQv9iIl0avH3avaajvI
-	pQVyAOwOIur+OPdD8LHPtUYvUWI2DsDwB4vBuy+qEB/JNCw9Wu16Ianex7ys1STz
-	I2HSt4IkSTnQ3AynDMjkqucKe46AOfCzxjt2cwn5dA1C4YOz3zG98B4JTvI5A+82
-	lLdLzYUPUOp7ffICDwJf2um0kr0eROXaT0Q==
+	1680612323; x=1680619523; bh=mbJO/BnfFp1FcODpbSkvJ0+TMq6mbHeEwnb
+	o7MEZrEg=; b=cniFEuVjFh3vmdoITKatLG6IXOL6shxeUxJMYpfu3WfGlSl6CJ8
+	eNdDbikMceEho083oqqagOcoTLdfraG0opgzj7ociV5jHAIG4FhshgiDL22cALKO
+	nCKvN0hk+cqwKBrTZEkBdejUmZtnWwZXTImH/2CDuWzZc0Gfy+YmUD3mnJceqRjG
+	DQwqFsEjt0Sl2VENjf7ViTFGDCwOCA/G3AjwvHMPdi9ZjKge26F9Ax1OuXpAuf6j
+	4IyWBXIUGvPa3b2DMSfggqznoNBDk3hjlOo6HhN44WxKuSY4SkCAgo8bcVp1SlyW
+	orzz8LX0qRMzU6rvJ9V8qp4rMHFdS0Dsk5w==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:cc:content-transfer-encoding
 	:content-type:content-type:date:date:feedback-id:feedback-id
 	:from:from:in-reply-to:in-reply-to:message-id:mime-version
 	:references:reply-to:sender:subject:subject:to:to:x-me-proxy
 	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
-	1680612320; x=1680619520; bh=cdzjt22hJSiMg2YTQ7mbXT8d68cxG3e76Rr
-	5e9sCrNg=; b=jRc0mpK0bCrrI0Yc1i78K6cEcyVR3RXnxuok4Wgi9gTQ++tsCBf
-	HunjfQHzDXdipemNdhnGoR09+KWdODiccU1LhysMr2SHrW90nuypBbxNrITlXX9t
-	mnGPfTChiG1ubTEqVDP7k0ovaAZUvQNzso92Ezzxew//yNCaAT3wT2TItoXU/r8T
-	SPmJODqXm+jWOLpTkpXhtKS9DKIWn7ZgFevU5nUPS18jVp6od16e+lwjqFjEYi1q
-	gynu87sg03F9certWpFeuaEBFdIFwTmSFEt46SmMOji5yBR85o9rMkHf/Em/x6vc
-	pQvIWo3Ok03ulGZftineYe3ywmekJyAo0Qg==
-X-ME-Sender: <xms:4BssZKGNyHWPm2iaKYRQ7vYnAGNPsFu5QqY3tWRBJOYCDyuRXjptVg>
-    <xme:4BssZLUPBcwrUeRfGC5ggrL9qX9BydNULzAFYEaE-Ad1bwrOhVUWuGVDlVRjmpxjp
-    bELqMP6lm_KhtuMJcM>
-X-ME-Received: <xmr:4BssZEKmgNLwk5-LL0pfPgjBYAK9nCZlvQeXWIttzwPBQurrmNLmL4ddasxtC7w4gwDxH-AYs7YQO_ugAb627CvggOHqsbg>
+	1680612323; x=1680619523; bh=mbJO/BnfFp1FcODpbSkvJ0+TMq6mbHeEwnb
+	o7MEZrEg=; b=XR8fpMBBvpMAAfW1shN6jwcKQ6DQozOf0PY2R1fwjw7HAPV1Z53
+	pGNbhGjRpHjeStmXirLtSGEcHcQfx4cph/Wyev/ErYZamhnS2kIl24Kd4WudGpuB
+	l5Ezrq9dLsry8rdeUgyGfE9DV1sOB2ihW4Nlz38Vn0y9IGYcmMaYg1v5sJaG6Tnk
+	kcK2tAzsrk5A0g+z1NoAhrrOnAmA9KWn85ruIbksnN/F5MIzT1WUl8sGUoIywI+4
+	Eb9XJ7oI0ty7vR/ykJBTI2B0Itlvgq67g3jeJbbBXsO/a8z1pHoPPO0CGnZz3Kqb
+	j2FSTMmxAeTKnJMasOhJYwm+2PNl6FUHYVQ==
+X-ME-Sender: <xms:4xssZAw072xUeFXzjya1V0P6D8nu1Rd0BWANL10FqvU0cqXucNubsw>
+    <xme:4xssZEQNovXAv_eO4lBekvMxro64W-jOCy2bCVbkR6JEiLqkcNiwrQRdyNCmOCPa-
+    ED4gPpyVTSnO7_Ff_o>
+X-ME-Received: <xmr:4xssZCUW-1dC8cHHXe9dkjOSJqPal8ajKMnb_8gTf0EN3tXEA8vPMjruuJ_Ct4ty42sZJDzN0gQ7fMVbIk3QDcpvpPgZtf8>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrvdeiledgheeiucetufdoteggodetrfdotf
     fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
     uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
@@ -67,20 +67,20 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrvdeiledgheeiucetufdoteggod
     grthhtvghrnhepvedvleeijeegvdekffehkeehieelhfeggfffheetkeeuledvtdeuffeh
     teeltdffnecuvehluhhsthgvrhfuihiivgepfeenucfrrghrrghmpehmrghilhhfrhhomh
     epmhgrgihimhgvsegtvghrnhhordhtvggthh
-X-ME-Proxy: <xmx:4BssZEGC4ftEQbimzxCu1GmcpLe7PGNn5siVYv_NTBxbEpTuIpyV7g>
-    <xmx:4BssZAWgOogqvj2Y-oZ_iHllQG8FARsDCekZxWAWI_8cJe0w9IUblg>
-    <xmx:4BssZHM8PQh_Y-Sa6-kdl7I5ggSnKgfNh7XnEAuzjctC4XDKz916yw>
-    <xmx:4BssZDAtFMI8QS9xZv2Z3vjIla0-bZLUFP0y-1Jj2NqBL97nPV5_4g>
+X-ME-Proxy: <xmx:4xssZOgXzdB_ZOULK0hzr7XAj3NEyqpIogqp_r_oNhv8_H4qQ2118w>
+    <xmx:4xssZCBi8aDuqTPmkgqFPjmSimlTrdDyTFzFzUCWAc8oM2DHSZkbJA>
+    <xmx:4xssZPIjVhunP07Z0bY3T3mxf6KOtsMuFZ0gblve94vCCrJj7zqlkw>
+    <xmx:4xssZENuC191c7Qu4yvSac0knGuJPIQVqtpFmm-rI5dDNCCfD2AVdQ>
 Feedback-ID: i8771445c:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 4 Apr 2023 08:45:18 -0400 (EDT)
+ 4 Apr 2023 08:45:21 -0400 (EDT)
 From: Maxime Ripard <maxime@cerno.tech>
-Date: Tue, 04 Apr 2023 12:11:26 +0200
-Subject: [PATCH v3 36/65] clk: versatile: sp810: Add a determine_rate hook
+Date: Tue, 04 Apr 2023 12:11:27 +0200
+Subject: [PATCH v3 37/65] drm/tegra: sor: Add a determine_rate hook
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20221018-clk-range-checks-fixes-v3-36-9a1358472d52@cerno.tech>
+Message-Id: <20221018-clk-range-checks-fixes-v3-37-9a1358472d52@cerno.tech>
 References: <20221018-clk-range-checks-fixes-v3-0-9a1358472d52@cerno.tech>
 In-Reply-To: <20221018-clk-range-checks-fixes-v3-0-9a1358472d52@cerno.tech>
 To: Michael Turquette <mturquette@baylibre.com>,
@@ -131,16 +131,16 @@ Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-sunxi@lists.linux.dev, alsa-devel@alsa-project.org, 
  linux-mips@vger.kernel.org, Maxime Ripard <maxime@cerno.tech>
 X-Mailer: b4 0.12.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2378; i=maxime@cerno.tech;
- h=from:subject:message-id; bh=EDiSdT8lrofINqjQWvr4tQoxlAUlXWdHchZ5sQJI9go=;
- b=owGbwMvMwCX2+D1vfrpE4FHG02pJDCna37e5+Z5oDFujb7eH+3pRrrABl0r4vcJ7l07YTpp69KjG
- K3/GjlIWBjEuBlkxRZYYYfMlcadmve5k45sHM4eVCWQIAxenAExE04mR4c2prAnX70Ze6JzMGR/86I
- 6LzMpcSSmeFctWbKs//T3ktjrDf9c92lvSGZX4A4xUbaPez1nW+j11h3je05mqxj9qN/8+wggA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2401; i=maxime@cerno.tech;
+ h=from:subject:message-id; bh=KzTUqgjjWyuCOkKniMVgSpYCErQ5sYGUg6+S+F/3DHk=;
+ b=owGbwMvMwCX2+D1vfrpE4FHG02pJDCna37dlT2X6pFsgYuB5PuaXwfzTn9s1e/al3XawaX5cZFRq
+ unp/RykLgxgXg6yYIkuMsPmSuFOzXney8c2DmcPKBDKEgYtTACYioc7IcGPNb82lN+Qfzdm/7ccGzx
+ yDHZLHXupNkXpo7BB877aQvwUjw8fJbQYXd96ouu4S84WnNVdrj8H11/sWruiTaXy5xTshgwsA
 X-Developer-Key: i=maxime@cerno.tech; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230404_054521_145476_AAD03AD7 
-X-CRM114-Status: GOOD (  19.10  )
+X-CRM114-CacheID: sfid-20230404_054524_157031_3DF417A1 
+X-CRM114-Status: GOOD (  18.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -155,8 +155,8 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Versatile sp810 "timerclken" clock implements a mux with a
-set_parent hook, but doesn't provide a determine_rate implementation.
+The Tegra sor pad clock implements a mux with a set_parent hook, but
+doesn't provide a determine_rate implementation.
 
 This is a bit odd, since set_parent() is there to, as its name implies,
 change the parent of a clock. However, the most likely candidate to
@@ -186,30 +186,30 @@ behavior now and it can be further refined down the line.
 
 Signed-off-by: Maxime Ripard <maxime@cerno.tech>
 ---
- drivers/clk/versatile/clk-sp810.c | 3 ++-
+ drivers/gpu/drm/tegra/sor.c | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/clk/versatile/clk-sp810.c b/drivers/clk/versatile/clk-sp810.c
-index caf0cd2fb5b6..a45b1b7b7d49 100644
---- a/drivers/clk/versatile/clk-sp810.c
-+++ b/drivers/clk/versatile/clk-sp810.c
-@@ -63,6 +63,7 @@ static int clk_sp810_timerclken_set_parent(struct clk_hw *hw, u8 index)
+diff --git a/drivers/gpu/drm/tegra/sor.c b/drivers/gpu/drm/tegra/sor.c
+index 8af632740673..92084a9a67c5 100644
+--- a/drivers/gpu/drm/tegra/sor.c
++++ b/drivers/gpu/drm/tegra/sor.c
+@@ -586,6 +586,7 @@ static u8 tegra_clk_sor_pad_get_parent(struct clk_hw *hw)
  }
  
- static const struct clk_ops clk_sp810_timerclken_ops = {
+ static const struct clk_ops tegra_clk_sor_pad_ops = {
 +	.determine_rate = __clk_mux_determine_rate,
- 	.get_parent = clk_sp810_timerclken_get_parent,
- 	.set_parent = clk_sp810_timerclken_set_parent,
+ 	.set_parent = tegra_clk_sor_pad_set_parent,
+ 	.get_parent = tegra_clk_sor_pad_get_parent,
  };
-@@ -105,7 +106,7 @@ static void __init clk_sp810_of_setup(struct device_node *node)
+@@ -604,7 +605,7 @@ static struct clk *tegra_clk_sor_pad_register(struct tegra_sor *sor,
+ 	pad->sor = sor;
  
  	init.name = name;
- 	init.ops = &clk_sp810_timerclken_ops;
 -	init.flags = 0;
 +	init.flags = CLK_SET_RATE_NO_REPARENT;
- 	init.parent_names = parent_names;
- 	init.num_parents = num;
- 
+ 	init.parent_names = tegra_clk_sor_pad_parents[sor->index];
+ 	init.num_parents = ARRAY_SIZE(tegra_clk_sor_pad_parents[sor->index]);
+ 	init.ops = &tegra_clk_sor_pad_ops;
 
 -- 
 2.39.2
