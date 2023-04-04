@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F14D4C761A6
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Apr 2023 12:34:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 572EEC77B62
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Apr 2023 12:34:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=opmYql4+ErFJ2a6YE1yNNHOV4ob4uWT1X//grUgsr5A=; b=ustryTLXO7dW/I4rXhNTQJlBQn
-	DM2dN/YDXbmdF2A/1cybksITZcA149eZABkN/bIVgnNmz4+tEmxYsnw1UrNMER5NiagWs47/Q3XNs
-	pK2Ef2cCPp08jmPUBCUIiNA+g+oD0KvNdhiMhe7TD1bx9OdLNQ1gsmomOxS7DPsrzypow4uilm0AW
-	CMefKnqlmMZsoIjGl+SjxmROTqvxtKuQVVVRo4iJ5w5nQakmeboQ0nB3ejczlXYA+trfDwNxjLNMy
-	4cZUvRfVVV1MO7gtXfoCBKcZYEX13HoFUPAU5RhIP7/4LhE/tHgZZ+VS/jH6TsGM76awN6zcV3vqz
-	Kf3SxG6Q==;
+	bh=/1om0xYzO8ZjZhid2rmaGkQVzAF3rMwgKbtkKsnWWL0=; b=WExW0beybH0DcV2sn0BkhPorRS
+	A+fr9X/aA7nMKRnrPAo39P7phl/xASUIZL9iPKXuf16aY8uBsJC3m/WjpfcgpFnBQHZNoTNYNepdN
+	aWp7sNosTxbCXT0LtRjqadHFpCCzS72gOcT0Vfr6j8zmjIhFrGcD1lADHBcpLaYbsv5M6AYVO7zKW
+	toWK3F+85uOJGtyxemRn9jNcEjS7QEVh6Ocn/YzgzEBjkFMWxu/07iuTX0gcauLSsVYwSKlk0ThMd
+	dT2sxXpp+cygjxhrf2HABYcJQI5mLkwvBf4cPDO387PWIhF1rAOCWeCFSzstFm/6IzMN9/YccwkVQ
+	8hIU/7IQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjfrl-001Hee-02;
-	Tue, 04 Apr 2023 12:34:25 +0000
+	id 1pjfrq-001Hjm-1K;
+	Tue, 04 Apr 2023 12:34:30 +0000
 Received: from new3-smtp.messagingengine.com ([66.111.4.229])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjfrh-001HaX-0O;
-	Tue, 04 Apr 2023 12:34:23 +0000
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
-	by mailnew.nyi.internal (Postfix) with ESMTP id 6F9D4582194;
-	Tue,  4 Apr 2023 08:34:20 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
-  by compute2.internal (MEProxy); Tue, 04 Apr 2023 08:34:20 -0400
+	id 1pjfrk-001HeA-36;
+	Tue, 04 Apr 2023 12:34:27 +0000
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailnew.nyi.internal (Postfix) with ESMTP id 592A2582196;
+	Tue,  4 Apr 2023 08:34:24 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+  by compute4.internal (MEProxy); Tue, 04 Apr 2023 08:34:24 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
 	:cc:content-transfer-encoding:content-type:content-type:date
 	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
 	:references:reply-to:sender:subject:subject:to:to; s=fm3; t=
-	1680611660; x=1680618860; bh=opmYql4+ErFJ2a6YE1yNNHOV4ob4uWT1X//
-	grUgsr5A=; b=VSdvYaThbswoCh0qpVdSxG6NSZb3aec381Oiu0w5DqKwxQ6PFUX
-	PK5s+7daJfBd8fX2FjZZjAo4dY3/XAIDLtrlg3TE2BAuG9NYwjCtAZ4jMHTXYexW
-	NMsU/sZXxcb4kjmf6Ydkp93cATT0wEppUJp0L7IsJlSSl0/JYLdHomgSI3Q42d5f
-	OpuZKJ6af/410SqwpZjTw5ozEPQ2GPAIUc2t7H8fWsoISEOIykA5VoGVCSY2Ym9w
-	dMYnRBl9cMReLxmzW2SUimt65BHpoxVfH2eV8ftSuk81DpylHHOQJGVtieJRIZVb
-	nbdFFD/mDo5ps0JB9UBwwv20/5EsT2NCKUg==
+	1680611664; x=1680618864; bh=/1om0xYzO8ZjZhid2rmaGkQVzAF3rMwgKbt
+	kKsnWWL0=; b=dGhC1vGiotUN2shxcHfYnJgZ1ZK5VCPc0eNF6kd/bzyJ7P15owK
+	GBihU/Ivmf2OXHokNj3Ksn04O6iw6bJQ0JR29u2DyXwkxOMFqo8BMVV0QwQiUzV/
+	8Trzpu1cEcscVy1yKHNZ1/cQuzX3tAU28PFarRuDd4C7Dn3U8DiN5+fP+tdiR+XQ
+	kTeFhyiuI41EOhQaQFkjZ9g4gltIdhNIs/7igLXb6sUUVq7i7WhQW7gzmxu7qmwP
+	NtH0kpzrUOTkFcyOkGMBbb7NhJBsuAfHR94fr5yCsjWjEkOmZhFpaQslzrnLb5z6
+	D9SkOp6QSaJBY3UolWmxDFw6ik3iKRjsE3w==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:cc:content-transfer-encoding
 	:content-type:content-type:date:date:feedback-id:feedback-id
 	:from:from:in-reply-to:in-reply-to:message-id:mime-version
 	:references:reply-to:sender:subject:subject:to:to:x-me-proxy
 	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
-	1680611660; x=1680618860; bh=opmYql4+ErFJ2a6YE1yNNHOV4ob4uWT1X//
-	grUgsr5A=; b=KGeKibpktED0Z5xrmegmDpy8tP3zCgzZgbRylxVRwFK0DywLYRO
-	d8ouUHJZo/Ls0AKdNW6pcOgf0r2fNV4dspyr/vjQ7WrX1h7hTHOEEqLfhoZTqBGd
-	XmkD0DdcyUWQvhHmCu4PIZs82dhJ5FX8SfCzCI4XPgKKCz/gBLrVoP2Jb/YwjTky
-	nd5JvtjQ1OSGXGo+K4pGyimB4IhMfYGYgKRNefF3giB0oJJnQCGKDeG8jNlUuQao
-	z0dpaBTJQQIulFk0Zv/DhMvMztBk8nPNgXCDq+2/yzh+N6h8ROaensYZK20bL2Lx
-	B4/pTmCceuRxPLlHUVW2PSp17iQGGRvlSkQ==
-X-ME-Sender: <xms:TBksZEJUHMA9C5qKESIMg9WzDM1e439eQTNPi4NEr6fQx1ZoHO1oKg>
-    <xme:TBksZEJIkXDX-0eEQJbJZztP_k-DTYVP_fg6FqiWCBH8jScO03pw9xtxTN8L1o83O
-    izneLEN3qgcshkQHnc>
-X-ME-Received: <xmr:TBksZEto_0RQE-5zlJc-FHlRspqFe4mv0h0JPCkZIwFVv0Da7G6vwtIbTYmm43kB268mH2tkKibfmSvgX5PitTJWhwpogo0>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrvdeiledgheefucetufdoteggodetrfdotf
+	1680611664; x=1680618864; bh=/1om0xYzO8ZjZhid2rmaGkQVzAF3rMwgKbt
+	kKsnWWL0=; b=ok01Ekxs9SCefkNSChZEgGq66xwwKE6OzZUb3CNhnZfWq1PTNUV
+	cdgM94IGgPM2wXdhS6CnvlitrGqTNKo3WkmwdMKdWMtBAxefjBuJW8iwMp9FGA1+
+	2NF1uZTgZZvxzLW49cyI5IbMnlmsEiFvvLmSN2nHqoBTzMakE/d8RrWVixeUVCVx
+	FHrzgc2/EL1bCDsjtTaGCUwzSYgjr4+84p768L6bvFCdLr/CtSdbXD6GNF8ZGVHk
+	iUOtbWEd6sxELiHUurLyi4WcFFwh/VpHSOmh7OXam66ckKLHa0/spSv+uz+DUvsg
+	f6Bgv1UoMn7LkMfvpzYfmeRtX4pbpSUTCtQ==
+X-ME-Sender: <xms:TxksZCWkXyVhuhcmvZwPI5su_ZWLzCvM1Em8LC5mKDksVjpr8xXQrA>
+    <xme:TxksZOk9RIeJLRPZbOU9PsfdgjgLkQ4u1q_bWXrrWYqIj1gO424QcoWHmqspeOCHq
+    pQO6RC8IHfXzji6wgc>
+X-ME-Received: <xmr:TxksZGYK2v_dmNxWvEkZmYhTRUHtJWQz1anINTlJqaJ8439zhA_33ie8AiA1EFTtw_kSjE220iik0PvuHQtNbSEDITdSNvY>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrvdeiledgheegucetufdoteggodetrfdotf
     fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
     uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
     cujfgurhephfffufggtgfgkfhfjgfvvefosehtjeertdertdejnecuhfhrohhmpeforgig
     ihhmvgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrf
     grthhtvghrnhepvedvleeijeegvdekffehkeehieelhfeggfffheetkeeuledvtdeuffeh
-    teeltdffnecuvehluhhsthgvrhfuihiivgepfeenucfrrghrrghmpehmrghilhhfrhhomh
+    teeltdffnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomh
     epmhgrgihimhgvsegtvghrnhhordhtvggthh
-X-ME-Proxy: <xmx:TBksZBY2ekz5TI_smmGHdQ4Fz5dgyPlCbXhDA5pYk4MdVF0_DEoU_w>
-    <xmx:TBksZLaPLImg_edWcd-dftrE99wgs7plVCtAZusRu5pUohyi0kF_5Q>
-    <xmx:TBksZNBQxUF_3fiUeQiGoOasHXA5LohVHbO2lIHBG0jBWvRCJbjKTw>
-    <xmx:TBksZMnoEBtBRDxgBL-nTLpPf2HZ6O-VdFfpCiyrnjNBGeKW5MNRAQ>
+X-ME-Proxy: <xmx:TxksZJV9GSSiYSZ4ikCgm2YgFQH6Eyt0w5blznvljrYdpjA89OeqmA>
+    <xmx:TxksZMkaTn0I3J4oVsgM5zwMSWwAQ6a4vklnPrfxJU4EffnFXymXPQ>
+    <xmx:TxksZOeZhAY57vHH9BW7FHw7HKNGjI0Dm52uh1k_F28T37Joz9o3kw>
+    <xmx:UBksZJQ3Z2YurifuUEjjkNz5WNyxKV0mAZM0oZRE3nc_0CpvFDfRMA>
 Feedback-ID: i8771445c:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 4 Apr 2023 08:34:18 -0400 (EDT)
+ 4 Apr 2023 08:34:21 -0400 (EDT)
 From: Maxime Ripard <maxime@cerno.tech>
-Date: Tue, 04 Apr 2023 12:11:07 +0200
-Subject: [PATCH v3 17/65] clk: stm32f4: mux: Add a determine_rate hook
+Date: Tue, 04 Apr 2023 12:11:08 +0200
+Subject: [PATCH v3 18/65] clk: vc5: mux: Add a determine_rate hook
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20221018-clk-range-checks-fixes-v3-17-9a1358472d52@cerno.tech>
+Message-Id: <20221018-clk-range-checks-fixes-v3-18-9a1358472d52@cerno.tech>
 References: <20221018-clk-range-checks-fixes-v3-0-9a1358472d52@cerno.tech>
 In-Reply-To: <20221018-clk-range-checks-fixes-v3-0-9a1358472d52@cerno.tech>
 To: Michael Turquette <mturquette@baylibre.com>,
@@ -131,16 +131,16 @@ Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-sunxi@lists.linux.dev, alsa-devel@alsa-project.org, 
  linux-mips@vger.kernel.org, Maxime Ripard <maxime@cerno.tech>
 X-Mailer: b4 0.12.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2275; i=maxime@cerno.tech;
- h=from:subject:message-id; bh=a/SpswKPgHoEuudH64e5ufLmPO7DpK2feZMjb66YaIk=;
- b=owGbwMvMwCX2+D1vfrpE4FHG02pJDCna37cKdq0x/br2nO+Fpefkm5fJF7xTMJa+/ydVwrS47ovN
- uyk3OkpZGMS4GGTFFFlihM2XxJ2a9bqTjW8ezBxWJpAhDFycAjCRc2cZGaZeXhD2hXW2+Oap67a8Kp
- pS4Wq07drbDXe8Y02Lmff4ZcxhZNhzZlLvm7Df5912hrL8scw11Al+n2T3LzZt4uJbXHE6E7kA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2379; i=maxime@cerno.tech;
+ h=from:subject:message-id; bh=oIkYxgEW1wSmTdA1zKexM85xcN8RdOO0qAcZnxlJQ4o=;
+ b=owGbwMvMwCX2+D1vfrpE4FHG02pJDCna37fKFxzRlAvcr8i/dIsg07lVerccJ7GYbfCo079cvrp+
+ zr+kjlIWBjEuBlkxRZYYYfMlcadmve5k45sHM4eVCWQIAxenAEzE8izDX7kZkxk/cqw+8mDFO54A3R
+ MiGiscFO4+bnHL0HlYLPXg/FlGhpn1/3z8tmcdXOs9OT72neQLRVexc4aH9z7dIfo2naVmAh8A
 X-Developer-Key: i=maxime@cerno.tech; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230404_053421_228101_4AF238D0 
-X-CRM114-Status: GOOD (  18.74  )
+X-CRM114-CacheID: sfid-20230404_053425_084965_76238957 
+X-CRM114-Status: GOOD (  18.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -155,7 +155,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The STM32F4 mux clock implements a mux with a set_parent hook, but
+The Versaclock5 mux clock implements a mux with a set_parent hook, but
 doesn't provide a determine_rate implementation.
 
 This is a bit odd, since set_parent() is there to, as its name implies,
@@ -186,30 +186,30 @@ behavior now and it can be further refined down the line.
 
 Signed-off-by: Maxime Ripard <maxime@cerno.tech>
 ---
- drivers/clk/clk-stm32f4.c | 3 ++-
+ drivers/clk/clk-versaclock5.c | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/clk/clk-stm32f4.c b/drivers/clk/clk-stm32f4.c
-index 473dfe632cc5..01046437a48c 100644
---- a/drivers/clk/clk-stm32f4.c
-+++ b/drivers/clk/clk-stm32f4.c
-@@ -1045,6 +1045,7 @@ static int cclk_mux_set_parent(struct clk_hw *hw, u8 index)
+diff --git a/drivers/clk/clk-versaclock5.c b/drivers/clk/clk-versaclock5.c
+index fa71a57875ce..4b68d919f75b 100644
+--- a/drivers/clk/clk-versaclock5.c
++++ b/drivers/clk/clk-versaclock5.c
+@@ -281,6 +281,7 @@ static int vc5_mux_set_parent(struct clk_hw *hw, u8 index)
  }
  
- static const struct clk_ops cclk_mux_ops = {
-+	.determine_rate = __clk_mux_determine_rate,
- 	.get_parent = cclk_mux_get_parent,
- 	.set_parent = cclk_mux_set_parent,
+ static const struct clk_ops vc5_mux_ops = {
++	.determine_rate	= __clk_mux_determine_rate,
+ 	.set_parent	= vc5_mux_set_parent,
+ 	.get_parent	= vc5_mux_get_parent,
  };
-@@ -1085,7 +1086,7 @@ static struct clk_hw *stm32_register_cclk(struct device *dev, const char *name,
- 			&mux->hw, &cclk_mux_ops,
- 			NULL, NULL,
- 			&gate->hw, &cclk_gate_ops,
--			flags);
-+			flags | CLK_SET_RATE_NO_REPARENT);
+@@ -1029,7 +1030,7 @@ static int vc5_probe(struct i2c_client *client)
  
- 	if (IS_ERR(hw)) {
- 		kfree(gate);
+ 	init.name = kasprintf(GFP_KERNEL, "%pOFn.mux", client->dev.of_node);
+ 	init.ops = &vc5_mux_ops;
+-	init.flags = 0;
++	init.flags = CLK_SET_RATE_NO_REPARENT;
+ 	init.parent_names = parent_names;
+ 	vc5->clk_mux.init = &init;
+ 	ret = devm_clk_hw_register(&client->dev, &vc5->clk_mux);
 
 -- 
 2.39.2
