@@ -4,143 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8AEFC77B62
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Apr 2023 15:02:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AE5AC77B62
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Apr 2023 15:13:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Bv1Ngdi+jPgDsaCfDDPfM4pzHXEBluXYVNLGoWLN578=; b=tQYAuf6gz6lJ06kY/YTT86/8L/
-	SXe8w9MAZh5XdzkBsgHzYYaSu9XUARVLfsjYKbOnG6fwIcDYVOnz/i7N0nSjepXZwhTBFEyV9Ku1+
-	BelR4JjxYHpJLUu4VbcYRu41NsEiJySHnvmhNESFHCEls8aacD4W/81HFPDv0MtftYc9gKtx85qy7
-	Q8Qp1Z3uDBJT1QvapWILJs8zNEPhLwwEN21wcIl/hg+r13lpoe/ehFSLC/P5QaOcUL0DmXclbiXbU
-	gKTzTdVFF6auSXdlQorApYgqfyZBbLfxx2iJQFXCkCs5iJKxwXV5lNYh8oEcILj3vSJaeArpgZhCc
-	U0qDkPDQ==;
+	bh=1O026JM7eSnBPLdKfSjDDMSv0KRDXdafHprAvA88P84=; b=TPbGMDzDKPolRgiAm/MflkgMA3
+	RvWB36wWvXklq7OLlQhNrdLp7FHHsLn9uLcU2N5uDbdhqWeywCi7mG7rsurSO1XRnHuDqzlbPU6o4
+	eeBaG9f+igmqWcPhiBdKa7F/kIbHY9efYjhrMO6mvEtkucUIF22/WHZ/GA/saVbJSfhT9s6YkLvpb
+	ZoYLirqu9JH9X8yMa/oXugEvsABJgT+8UajNEiF4ULiHiAgJ7XS9ccad2+I/9FLc5Q6bC+X05LtOV
+	WxmWtkN0i/pNkuC+Lhm/ftzXkG9tngfZrqQldGSDSeYfZiZrzgl0atA2t5uvbx2kPSXQJ4lKWti01
+	iLiv/fbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjiAy-001vQK-1I;
-	Tue, 04 Apr 2023 15:02:24 +0000
-Received: from new3-smtp.messagingengine.com ([66.111.4.229])
+	id 1pjiLf-001wmV-1W;
+	Tue, 04 Apr 2023 15:13:27 +0000
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjh9x-001ecX-2a;
-	Tue, 04 Apr 2023 13:57:21 +0000
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailnew.nyi.internal (Postfix) with ESMTP id 1F86258214E;
-	Tue,  4 Apr 2023 09:57:17 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
-  by compute4.internal (MEProxy); Tue, 04 Apr 2023 09:57:17 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
-	:cc:content-transfer-encoding:content-type:content-type:date
-	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:sender:subject:subject:to:to; s=fm3; t=
-	1680616637; x=1680623837; bh=Bv1Ngdi+jPgDsaCfDDPfM4pzHXEBluXYVNL
-	GoWLN578=; b=HEK90Ct5ssYf268f8cW/4392ULbzkxG4OAoUZjNNZ662Es1cXip
-	zu2KnAPQ61RoFY38bzmlkFdwt7icqW0wtte7CR5Iud4xVuMn0eZ9c7Qqvyr6Sei6
-	1Vr6JOB22OZ1cGKW1BkhIgY7oD8DoufO/0/DVciPgrQTdqtZuKghFrEcwo6U+2X/
-	2iiA099Rna7js9K3vbewD9MZC6Ulb0bkb+brIh2JzZkNAPspvHNAPCYS+V6w6NzR
-	BxWpQIE8mzT3IVRDwUUuBk5ZUcbK94k2YOvhD8pJgIsS9lF8xepnVOusoQZjB8Ji
-	QeZSGYvLi0tXsYbEnrMm94SUDHt9alZnnBQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:sender:subject:subject:to:to:x-me-proxy
-	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
-	1680616637; x=1680623837; bh=Bv1Ngdi+jPgDsaCfDDPfM4pzHXEBluXYVNL
-	GoWLN578=; b=rAkdd8VlEfIHXxsYHd7c0O4bMxmHnUto+CPV/N+kiNSIuphAKK9
-	4LmSRCmlN73hKr4tyM4VyF0sEqdsquyARyTkQpwc/JR9aIBdq0vIgfFUlRmr1CSy
-	tWSwQrFol4RlQXrYF7KOwNL32WFuzomYaDI1XMD7Hq7KeGHdAH1AnOycziU2wYG3
-	oVpuQcyQYzc9DdH8LMG0XxJbCZpSGemvyjVEpouZ/IZ5NANsNYTEs7KStOIwkG+C
-	3Cx6uNcWaxiA3hbK9Hmai7QtJ3QQPn+7HOVlLBgnv/zezHwSQVi7IzKW0/WStx+0
-	NmOao3pbVDmnvsA541nI1EuwpHgrqeifAsA==
-X-ME-Sender: <xms:vCwsZPt_c8RgC-7qariMpdsFis2sMNC4SL2ONNPoeeos5Kj0ekPJoA>
-    <xme:vCwsZAccg1f4wQzEddnh0ZxqjzS2zukUrRrUBqItMoiEp9MF1ts9Lbgt2bAtIbf4a
-    t5Gu3psYi3bu1J5VE0>
-X-ME-Received: <xmr:vCwsZCyR1e3dgYtldyTkG_wHdgs3np90eD4e2x-51HA1Ejnvjz_2MbYOhv6hZ0vK7znbu1HFtilGEWDPPnH9WGPkWpivHiU>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrvdeiledgjedtucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhephfffufggtgfgkfhfjgfvvefosehtjeertdertdejnecuhfhrohhmpeforgig
-    ihhmvgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrf
-    grthhtvghrnhepvedvleeijeegvdekffehkeehieelhfeggfffheetkeeuledvtdeuffeh
-    teeltdffnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomh
-    epmhgrgihimhgvsegtvghrnhhordhtvggthh
-X-ME-Proxy: <xmx:vCwsZOPDz2WfKkuu3eX_hfFxXhlXJQhPRGQimxwaiRNxgGf4aofASQ>
-    <xmx:vCwsZP8d_K5S9kI9y1hAuaMXzazX820JPX13HyVjFg_r8cTPdynZTQ>
-    <xmx:vCwsZOV7Rk5JymMvN6UFdVN3m-HoRPQWS2fa9KZHVaj7V45lKjxcmg>
-    <xmx:vSwsZLrQnREk9hCTWjUCqmkgmgKr3ncG5Y3ESWxUHmBGSjJv-hiYeg>
-Feedback-ID: i8771445c:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 4 Apr 2023 09:57:14 -0400 (EDT)
-From: Maxime Ripard <maxime@cerno.tech>
-Date: Tue, 04 Apr 2023 12:11:44 +0200
-Subject: [PATCH v3 54/65] clk: da8xx: clk48: Switch to determine_rate
+	id 1pjiLa-001wkv-30
+	for linux-mediatek@lists.infradead.org;
+	Tue, 04 Apr 2023 15:13:26 +0000
+Received: by mail-ed1-x52f.google.com with SMTP id i5so132215482eda.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 04 Apr 2023 08:13:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1680621200;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=1O026JM7eSnBPLdKfSjDDMSv0KRDXdafHprAvA88P84=;
+        b=a7XqBTQ0njpuHJTWVmYyEC0Lv+fIrzGPXujd5UcPSChN6qIDSY9Jqt4zRb8rev/rXC
+         Xez0vM/KcaUGauqdeEAFCAr96+GdSTuEPVqUTCE8fm7RElbd1umLDEIipv1bvHHxcX1L
+         w44Gumgw2WN+z9tIa926gMWQhN1bLpqXeNcME5O+dZpeC9RvsDL4O+Vb7jP3uSBjhQsS
+         7CCERz6rXrnuLEp+krtmYlzeNA2oOidFFmqf38BK6e2FKyWuyKwzHXJNQ3C56iZzptbq
+         XfIEv5ZzhrnS4UtBLJTsvYMe+2jzyUROAuq7W6QRJXZ8Ga5aAwYb7RToh7l9FRRbzhkY
+         mJTw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680621200;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=1O026JM7eSnBPLdKfSjDDMSv0KRDXdafHprAvA88P84=;
+        b=jpUvu6ogqqfHEIPYe2JkMoAHZITMnmJBivGriLMVYyoOsGkU+3dVP4JumWu70RrEe1
+         LR94X+JT4olqNICrJNnlgdxjWwKUfLz7sqO42fCVX9cRn3ApTdQ+BljyJ/g3zaTq2bEv
+         BermRUxtBEgbQcMRyaN3JGsVgLPbogyjk4kv7rVXGrDVj1hpcl4tsOttmjFH0W+aNapG
+         XfXZuthCz3GSNI7GooB76b7W6U2f/G2mq1zpczL31+cqm4/AxjrP4aG4fpZ/W4es32JE
+         z+v+QGA3jS7AJXeWjT+Qs4iCMVVCXNvN+90in8+O/3wCQvS5r2p4KP6Y6ILND44GijX5
+         2slQ==
+X-Gm-Message-State: AAQBX9flcvw9I0+XsKDbdFdnGNw9ItYRQypHEwbbLxMNOWhxc05hTnlr
+	NkeRs6iger5thXIlL+0M+MqgphFXWPRH5R4RD9yoYg==
+X-Google-Smtp-Source: AKy350Z9lA8DgGqhAjKhVYJznsekz+CaWqLxDEEDb8hlazRI26y2fGS7u7PE8AETVfvb5fn8k4nKYSUUTLHi9KvEap4=
+X-Received: by 2002:a17:906:a5a:b0:946:a095:b314 with SMTP id
+ x26-20020a1709060a5a00b00946a095b314mr1387289ejf.2.1680621200196; Tue, 04 Apr
+ 2023 08:13:20 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20221018-clk-range-checks-fixes-v3-54-9a1358472d52@cerno.tech>
-References: <20221018-clk-range-checks-fixes-v3-0-9a1358472d52@cerno.tech>
-In-Reply-To: <20221018-clk-range-checks-fixes-v3-0-9a1358472d52@cerno.tech>
-To: Michael Turquette <mturquette@baylibre.com>,
-  Stephen Boyd <sboyd@kernel.org>,
-  =?utf-8?q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
-  Manivannan Sadhasivam <mani@kernel.org>,
-  Nicolas Ferre <nicolas.ferre@microchip.com>,
-  Alexandre Belloni <alexandre.belloni@bootlin.com>,
-  Claudiu Beznea <claudiu.beznea@microchip.com>,
-  Max Filippov <jcmvbkbc@gmail.com>,
-  Charles Keepax <ckeepax@opensource.cirrus.com>,
-  Richard Fitzgerald <rf@opensource.cirrus.com>,
-  Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-  Alexandre Torgue <alexandre.torgue@foss.st.com>,
-  Luca Ceresoli <luca.ceresoli@bootlin.com>,
-  David Lechner <david@lechnology.com>, Sekhar Nori <nsekhar@ti.com>,
-  Abel Vesa <abelvesa@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
-  Sascha Hauer <s.hauer@pengutronix.de>,
-  Pengutronix Kernel Team <kernel@pengutronix.de>,
-  Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
-  Matthias Brugger <matthias.bgg@gmail.com>,
-  Geert Uytterhoeven <geert+renesas@glider.be>,
-  Dinh Nguyen <dinguyen@kernel.org>,
-  Peter De Schrijver <pdeschrijver@nvidia.com>,
-  Prashant Gaikwad <pgaikwad@nvidia.com>,
-  Thierry Reding <thierry.reding@gmail.com>,
-  Jonathan Hunter <jonathanh@nvidia.com>,
-  Ulf Hansson <ulf.hansson@linaro.org>,
-  Linus Walleij <linus.walleij@linaro.org>,
- David Airlie <airlied@gmail.com>,  Daniel Vetter <daniel@ffwll.ch>,
- Vinod Koul <vkoul@kernel.org>,
-  Kishon Vijay Abraham I <kishon@kernel.org>,
-  Alessandro Zummo <a.zummo@towertech.it>, Chen-Yu Tsai <wens@csie.org>,
-  Jernej Skrabec <jernej.skrabec@gmail.com>,
-  Samuel Holland <samuel@sholland.org>,
- Liam Girdwood <lgirdwood@gmail.com>,  Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>,  Takashi Iwai <tiwai@suse.com>,
- Paul Cercueil <paul@crapouillou.net>,  Orson Zhai <orsonzhai@gmail.com>,
-  Baolin Wang <baolin.wang@linux.alibaba.com>,
-  Chunyan Zhang <zhang.lyra@gmail.com>
-Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- linux-arm-kernel@lists.infradead.org, linux-actions@lists.infradead.org, 
- patches@opensource.cirrus.com, linux-stm32@st-md-mailman.stormreply.com, 
- linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
- linux-tegra@vger.kernel.org, dri-devel@lists.freedesktop.org, 
- linux-phy@lists.infradead.org, linux-rtc@vger.kernel.org, 
- linux-sunxi@lists.linux.dev, alsa-devel@alsa-project.org, 
- linux-mips@vger.kernel.org, Maxime Ripard <maxime@cerno.tech>
-X-Mailer: b4 0.12.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2561; i=maxime@cerno.tech;
- h=from:subject:message-id; bh=0FRX8CfksJbTHUiPdGQAgkXBCmG/4Qilh3JpXfqzQ/o=;
- b=owGbwMvMwCX2+D1vfrpE4FHG02pJDCna37eXfJ9ckFpapHytzOfrnsyaoHNqzlyaHimZk0K2WhyT
- iDndUcrCIMbFICumyBIjbL4k7tSs151sfPNg5rAygQxh4OIUgImUVTMyPPwam6ZxZselGtfO/xemp8
- /4eWyC1OrTXQW2EYY8/6T5njL8Znd0lLbu9jxrfixXWnbfrwRjHx17nw13Pk1++ftp6Jp8LgA=
-X-Developer-Key: i=maxime@cerno.tech; a=openpgp;
- fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
+References: <20230307154524.118541-1-bchihi@baylibre.com> <20230307154524.118541-3-bchihi@baylibre.com>
+ <0a86d734-000e-560b-8f47-1c0a113c01ee@linaro.org>
+In-Reply-To: <0a86d734-000e-560b-8f47-1c0a113c01ee@linaro.org>
+From: Balsam CHIHI <bchihi@baylibre.com>
+Date: Tue, 4 Apr 2023 17:12:44 +0200
+Message-ID: <CAGuA+ooYbHn-4BYzaTkdagc2FimkenE0z2Zt4AqDbXQ++GThvQ@mail.gmail.com>
+Subject: Re: [PATCH 2/4] thermal/drivers/mediatek/lvts_thermal: Add AP domain
+ for mt8195
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: angelogioacchino.delregno@collabora.com, rafael@kernel.org, 
+	amitk@kernel.org, rui.zhang@intel.com, matthias.bgg@gmail.com, 
+	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, rdunlap@infradead.org, 
+	ye.xingchen@zte.com.cn, p.zabel@pengutronix.de, linux-pm@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+	khilman@baylibre.com, james.lo@mediatek.com, rex-bc.chen@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230404_065717_921783_E592A382 
-X-CRM114-Status: GOOD (  20.42  )
+X-CRM114-CacheID: sfid-20230404_081322_967266_E567609A 
+X-CRM114-Status: UNSURE (   9.67  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -155,70 +96,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The TI DA8xx USB0 clk48 clocks implements a mux with a set_parent
-hook, but doesn't provide a determine_rate implementation.
+On Sat, Apr 1, 2023 at 10:51=E2=80=AFPM Daniel Lezcano
+<daniel.lezcano@linaro.org> wrote:
+>
+> On 07/03/2023 16:45, bchihi@baylibre.com wrote:
+> > From: Balsam CHIHI <bchihi@baylibre.com>
+> >
+> > Add MT8195 AP Domain support to LVTS Driver.
+> >
+> > Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
+> > ---
+>
+> Applied, thanks
+>
+> Changed the commit log to reflect the comments change
 
-This is a bit odd, since set_parent() is there to, as its name implies,
-change the parent of a clock. However, the most likely candidate to
-trigger that parent change is a call to clk_set_rate(), with
-determine_rate() figuring out which parent is the best suited for a
-given rate.
+Thank you Daniel!
 
-The other trigger would be a call to clk_set_parent(), but it's far less
-used, and it doesn't look like there's any obvious user for that clock.
-
-So, the set_parent hook is effectively unused, possibly because of an
-oversight. However, it could also be an explicit decision by the
-original author to avoid any reparenting but through an explicit call to
-clk_set_parent().
-
-The driver does implement round_rate() though, which means that we can
-change the rate of the clock, but we will never get to change the
-parent.
-
-However, It's hard to tell whether it's been done on purpose or not.
-
-Since we'll start mandating a determine_rate() implementation, let's
-convert the round_rate() implementation to a determine_rate(), which
-will also make the current behavior explicit. And if it was an
-oversight, the clock behaviour can be adjusted later on.
-
-Signed-off-by: Maxime Ripard <maxime@cerno.tech>
----
- drivers/clk/davinci/da8xx-cfgchip.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/clk/davinci/da8xx-cfgchip.c b/drivers/clk/davinci/da8xx-cfgchip.c
-index 4c1cc59bba53..f60c97091818 100644
---- a/drivers/clk/davinci/da8xx-cfgchip.c
-+++ b/drivers/clk/davinci/da8xx-cfgchip.c
-@@ -462,10 +462,12 @@ static unsigned long da8xx_usb0_clk48_recalc_rate(struct clk_hw *hw,
- 	return 48000000;
- }
- 
--static long da8xx_usb0_clk48_round_rate(struct clk_hw *hw, unsigned long rate,
--					unsigned long *parent_rate)
-+static int da8xx_usb0_clk48_determine_rate(struct clk_hw *hw,
-+					   struct clk_rate_request *req)
- {
--	return 48000000;
-+	req->rate = 48000000;
-+
-+	return 0;
- }
- 
- static int da8xx_usb0_clk48_set_parent(struct clk_hw *hw, u8 index)
-@@ -494,7 +496,7 @@ static const struct clk_ops da8xx_usb0_clk48_ops = {
- 	.disable	= da8xx_usb0_clk48_disable,
- 	.is_enabled	= da8xx_usb0_clk48_is_enabled,
- 	.recalc_rate	= da8xx_usb0_clk48_recalc_rate,
--	.round_rate	= da8xx_usb0_clk48_round_rate,
-+	.determine_rate	= da8xx_usb0_clk48_determine_rate,
- 	.set_parent	= da8xx_usb0_clk48_set_parent,
- 	.get_parent	= da8xx_usb0_clk48_get_parent,
- };
-
--- 
-2.39.2
-
+>
+> --
+> <http://www.linaro.org/> Linaro.org =E2=94=82 Open source software for AR=
+M SoCs
+>
+> Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+> <http://twitter.com/#!/linaroorg> Twitter |
+> <http://www.linaro.org/linaro-blog/> Blog
+>
 
