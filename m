@@ -4,72 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11914C761A6
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Apr 2023 23:25:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFC75C76188
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Apr 2023 23:45:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e//izI7j9pD6AWRcG6+/nCAjA9BYSI18j58d+tc2L9g=; b=jWRc0+meRB7vWQkLGCWRhFQ5ee
-	MxM84j91CDIHPAsH7uF7YS+a+YChnu4H0jmrgcdMeZDK7Fmmi9lKzSorllnSTGw5O3qxkFZata6VU
-	X20fujVaYxwh5vCpmrOmbzhUrSUl+A6OBLIPkuieMWqM9fo6e5znpyHuc45e/mM5hggTnixc14e36
-	tJ64ca4BfSKiAB/YZfMyTazu3eN26W3OpH+aaCByd8R5+2DHNa3Jbpj6qbLUKoupbfK6MB52LRHKZ
-	IHLZruAjxm/DYzla2kNUbtk1OfMOX1Ad8mjewelPf5l/Ki15xEp8zNT/uH43ZItlp36H5iEWKfx34
-	hxXgCuzw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=n9XMvy51OEqtdAE/QuBmwe2k1vj/GmgHQkocayT1rVs=; b=4lw3TM8UeBxAXIiQ68a13N+Eck
+	hhAf7M35xrIsYZUt0FpAOWEwjemZCe393TsZqFSkMvMZQAgDqDkLpAH3HDeFEQ920gw5oZadiyGWr
+	eZNlhFCt0GPoNWJtaiCHK03A8SpdEIw9/e+p9ti7A0EFZfdgE0E2sBDac27d2usCQOwE/tubGveVJ
+	jD/EGVV3iof7se6VGe5SwpdHwZ1LeS0hQc792deFMh4mvRgGEIWx5MhoV5O9dxS2QQpEZHj7ovOgv
+	NLCiPs/OxsmeC+unh0MHcI1vI7jGvm3u/SfCNHFWs2KFcGBU88hc8AB7mSkMmpl7zNthkXA0QOupu
+	oU4zQbsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjq1l-0030SC-2v;
-	Tue, 04 Apr 2023 23:25:25 +0000
+	id 1pjqL6-0031di-30;
+	Tue, 04 Apr 2023 23:45:24 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjq1h-0030RF-16
+	id 1pjqL2-0031dK-1K
 	for linux-mediatek@lists.infradead.org;
-	Tue, 04 Apr 2023 23:25:24 +0000
-X-UUID: f50a82d0d33f11ed8687db9d93187ff1-20230404
+	Tue, 04 Apr 2023 23:45:23 +0000
+X-UUID: c036ddc6d34211ed8687db9d93187ff1-20230404
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=e//izI7j9pD6AWRcG6+/nCAjA9BYSI18j58d+tc2L9g=;
-	b=hCrdx31DgF9Ks4kNOdUJIaaFM/EbHRSQ8YtwcyKYUQ6RlFzfPrfuxDupjk10oyZlmg63Y4d0LxG+u8JG7SdDeXoV7c42C1AdIpwemdpqi2L275mCPhD7o9/yOjHbAu2CnhVSnIivIUG+cPDND5RjQb88sIMH3a55zypq2wbR78M=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=n9XMvy51OEqtdAE/QuBmwe2k1vj/GmgHQkocayT1rVs=;
+	b=U1QWS0+H5AvBbIRU8PUJlI2aPjfqSX1DSjBYMCm2B3yqwtHGG8Iny0elCU9meeAAXwy5ixmBinJom/xTZz04lK9kZ2dCLTH/O4dfG0Texeng+t+YztI9LFTRQ0kIMrdwBGK/y1ZMBurjD60l2FzAKrlr/2YUNsBDjmYmJTtEtvw=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:2470eaf0-6894-482b-933e-8e147f858978,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:120426c,CLOUDID:60a55f2a-564d-42d9-9875-7c868ee415ec,B
+X-CID-O-INFO: VERSION:1.1.22,REQID:ea574e9c-a8e4-4521-8d66-d536db44db46,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:120426c,CLOUDID:7cd85f2a-564d-42d9-9875-7c868ee415ec,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-UUID: f50a82d0d33f11ed8687db9d93187ff1-20230404
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: c036ddc6d34211ed8687db9d93187ff1-20230404
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <ryder.lee@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 232882636; Tue, 04 Apr 2023 16:25:16 -0700
+	with ESMTP id 158975059; Tue, 04 Apr 2023 16:45:16 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Wed, 5 Apr 2023 07:24:40 +0800
+ 15.2.1118.25; Wed, 5 Apr 2023 07:24:39 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Wed, 5 Apr 2023 07:24:40 +0800
+ 15.2.1118.25 via Frontend Transport; Wed, 5 Apr 2023 07:24:39 +0800
 From: Ryder Lee <ryder.lee@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
 CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
 	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
-	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH v2 3/3] wifi: mt76: mt7996: enable coredump support
-Date: Wed, 5 Apr 2023 07:24:39 +0800
-Message-ID: <48b017d63a0076fd57c179925ed8f7e84ae7dbe2.1680650499.git.ryder.lee@mediatek.com>
+	<linux-mediatek@lists.infradead.org>, Bo Jiao <Bo.Jiao@mediatek.com>, Ryder
+ Lee <ryder.lee@mediatek.com>
+Subject: [PATCH v2 1/3] wifi: mt76: mt7996: enable full system reset support
+Date: Wed, 5 Apr 2023 07:24:37 +0800
+Message-ID: <6756ddde5aaaf29db4f62264bab7f28bb539b26f.1680650499.git.ryder.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <6756ddde5aaaf29db4f62264bab7f28bb539b26f.1680650499.git.ryder.lee@mediatek.com>
-References: <6756ddde5aaaf29db4f62264bab7f28bb539b26f.1680650499.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230404_162521_408248_39B09A07 
-X-CRM114-Status: GOOD (  25.50  )
+X-CRM114-CacheID: sfid-20230404_164520_488341_7CC3AC00 
+X-CRM114-Status: GOOD (  19.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,683 +82,679 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Host triggered and catastrophic event triggered firmware core dumping
-for basic firmware issues triage, including state reporting, function
-calltrace and MCU memory dump.
+From: Bo Jiao <Bo.Jiao@mediatek.com>
 
+Add mt7996_reset() and refactor mt7996_mac_reset_work() to support
+full system recovery.
+
+Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7996/Kconfig |   1 +
- .../wireless/mediatek/mt76/mt7996/Makefile    |   2 +
- .../wireless/mediatek/mt76/mt7996/coredump.c  | 268 ++++++++++++++++++
- .../wireless/mediatek/mt76/mt7996/coredump.h  |  97 +++++++
- .../net/wireless/mediatek/mt76/mt7996/init.c  |  10 +-
- .../net/wireless/mediatek/mt76/mt7996/mac.c   |  72 ++++-
- .../net/wireless/mediatek/mt76/mt7996/mmio.c  |   8 +
- .../wireless/mediatek/mt76/mt7996/mt7996.h    |  22 ++
- .../net/wireless/mediatek/mt76/mt7996/regs.h  |  18 ++
- 9 files changed, 496 insertions(+), 2 deletions(-)
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt7996/coredump.c
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt7996/coredump.h
+ .../net/wireless/mediatek/mt76/mt7996/dma.c   |  64 ++++
+ .../net/wireless/mediatek/mt76/mt7996/init.c  |  11 +-
+ .../net/wireless/mediatek/mt76/mt7996/mac.c   | 284 +++++++++++++++---
+ .../net/wireless/mediatek/mt76/mt7996/main.c  |  18 +-
+ .../net/wireless/mediatek/mt76/mt7996/mcu.c   |  22 +-
+ .../net/wireless/mediatek/mt76/mt7996/mmio.c  |   7 +-
+ .../wireless/mediatek/mt76/mt7996/mt7996.h    |  17 +-
+ .../net/wireless/mediatek/mt76/mt7996/regs.h  |  13 +-
+ 8 files changed, 365 insertions(+), 71 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/Kconfig b/drivers/net/wireless/mediatek/mt76/mt7996/Kconfig
-index 79fb47a73c91..1afa2f662e47 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/Kconfig
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/Kconfig
-@@ -2,6 +2,7 @@
- config MT7996E
- 	tristate "MediaTek MT7996 (PCIe) support"
- 	select MT76_CONNAC_LIB
-+	select WANT_DEV_COREDUMP
- 	select RELAY
- 	depends on MAC80211
- 	depends on PCI
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/Makefile b/drivers/net/wireless/mediatek/mt76/mt7996/Makefile
-index bcb9a3c53149..07c8b555c1ac 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/Makefile
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/Makefile
-@@ -4,3 +4,5 @@ obj-$(CONFIG_MT7996E) += mt7996e.o
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/dma.c b/drivers/net/wireless/mediatek/mt76/mt7996/dma.c
+index c09fe4274935..534143465d9b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/dma.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/dma.c
+@@ -352,6 +352,70 @@ int mt7996_dma_init(struct mt7996_dev *dev)
+ 	return 0;
+ }
  
- mt7996e-y := pci.o init.o dma.o eeprom.o main.o mcu.o mac.o \
- 	     debugfs.o mmio.o
-+
-+mt7996e-$(CONFIG_DEV_COREDUMP) += coredump.o
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/coredump.c b/drivers/net/wireless/mediatek/mt76/mt7996/coredump.c
-new file mode 100644
-index 000000000000..ccab0d7b9be4
---- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/coredump.c
-@@ -0,0 +1,268 @@
-+// SPDX-License-Identifier: ISC
-+/* Copyright (C) 2023 MediaTek Inc. */
-+
-+#include <linux/devcoredump.h>
-+#include <linux/kernel.h>
-+#include <linux/types.h>
-+#include <linux/utsname.h>
-+#include "coredump.h"
-+
-+static bool coredump_memdump;
-+module_param(coredump_memdump, bool, 0644);
-+MODULE_PARM_DESC(coredump_memdump, "Optional ability to dump firmware memory");
-+
-+static const struct mt7996_mem_region mt7996_mem_regions[] = {
-+	{
-+		.start = 0x00800000,
-+		.len = 0x0004ffff,
-+		.name = "ULM0",
-+	},
-+	{
-+		.start = 0x00900000,
-+		.len = 0x00037fff,
-+		.name = "ULM1",
-+	},
-+	{
-+		.start = 0x02200000,
-+		.len = 0x0003ffff,
-+		.name = "ULM2",
-+	},
-+	{
-+		.start = 0x00400000,
-+		.len = 0x00067fff,
-+		.name = "SRAM",
-+	},
-+	{
-+		.start = 0xe0000000,
-+		.len = 0x0015ffff,
-+		.name = "CRAM0",
-+	},
-+	{
-+		.start = 0xe0160000,
-+		.len = 0x0011bfff,
-+		.name = "CRAM1",
-+	},
-+};
-+
-+const struct mt7996_mem_region*
-+mt7996_coredump_get_mem_layout(struct mt7996_dev *dev, u32 *num)
++void mt7996_dma_reset(struct mt7996_dev *dev, bool force)
 +{
-+	switch (mt76_chip(&dev->mt76)) {
-+	case 0x7990:
-+	case 0x7991:
-+		*num = ARRAY_SIZE(mt7996_mem_regions);
-+		return &mt7996_mem_regions[0];
-+	default:
-+		return NULL;
-+	}
-+}
-+
-+static int mt7996_coredump_get_mem_size(struct mt7996_dev *dev)
-+{
-+	const struct mt7996_mem_region *mem_region;
-+	size_t size = 0;
-+	u32 num;
++	struct mt76_phy *phy2 = dev->mt76.phys[MT_BAND1];
++	struct mt76_phy *phy3 = dev->mt76.phys[MT_BAND2];
++	u32 hif1_ofs = MT_WFDMA0_PCIE1(0) - MT_WFDMA0(0);
 +	int i;
 +
-+	mem_region = mt7996_coredump_get_mem_layout(dev, &num);
-+	if (!mem_region)
-+		return 0;
++	mt76_clear(dev, MT_WFDMA0_GLO_CFG,
++		   MT_WFDMA0_GLO_CFG_TX_DMA_EN |
++		   MT_WFDMA0_GLO_CFG_RX_DMA_EN);
 +
-+	for (i = 0; i < num; i++) {
-+		size += mem_region->len;
-+		mem_region++;
++	if (dev->hif2)
++		mt76_clear(dev, MT_WFDMA0_GLO_CFG + hif1_ofs,
++			   MT_WFDMA0_GLO_CFG_TX_DMA_EN |
++			   MT_WFDMA0_GLO_CFG_RX_DMA_EN);
++
++	usleep_range(1000, 2000);
++
++	for (i = 0; i < __MT_TXQ_MAX; i++) {
++		mt76_queue_tx_cleanup(dev, dev->mphy.q_tx[i], true);
++		if (phy2)
++			mt76_queue_tx_cleanup(dev, phy2->q_tx[i], true);
++		if (phy3)
++			mt76_queue_tx_cleanup(dev, phy3->q_tx[i], true);
 +	}
 +
-+	/* reserve space for the headers */
-+	size += num * sizeof(struct mt7996_mem_hdr);
-+	/* make sure it is aligned 4 bytes for debug message print out */
-+	size = ALIGN(size, 4);
++	for (i = 0; i < __MT_MCUQ_MAX; i++)
++		mt76_queue_tx_cleanup(dev, dev->mt76.q_mcu[i], true);
 +
-+	return size;
-+}
++	mt76_for_each_q_rx(&dev->mt76, i)
++		mt76_queue_rx_cleanup(dev, &dev->mt76.q_rx[i]);
 +
-+struct mt7996_crash_data *mt7996_coredump_new(struct mt7996_dev *dev)
-+{
-+	struct mt7996_crash_data *crash_data = dev->coredump.crash_data;
++	mt76_tx_status_check(&dev->mt76, true);
 +
-+	lockdep_assert_held(&dev->dump_mutex);
++	/* reset wfsys */
++	if (force)
++		mt7996_wfsys_reset(dev);
 +
-+	if (coredump_memdump &&
-+	    !mt76_poll_msec(dev, MT_FW_DUMP_STATE, 0x3, 0x2, 500))
-+		return NULL;
++	mt7996_dma_disable(dev, force);
 +
-+	guid_gen(&crash_data->guid);
-+	ktime_get_real_ts64(&crash_data->timestamp);
-+
-+	return crash_data;
-+}
-+
-+static void
-+mt7996_coredump_fw_state(struct mt7996_dev *dev, struct mt7996_coredump *dump,
-+			 bool *exception)
-+{
-+	u32 count;
-+
-+	count = mt76_rr(dev, MT_FW_ASSERT_CNT);
-+
-+	/* normal mode: driver can manually trigger assert for detail info */
-+	if (!count)
-+		strscpy(dump->fw_state, "normal", sizeof(dump->fw_state));
-+	else
-+		strscpy(dump->fw_state, "exception", sizeof(dump->fw_state));
-+
-+	*exception = !!count;
-+}
-+
-+static void
-+mt7996_coredump_fw_stack(struct mt7996_dev *dev, struct mt7996_coredump *dump,
-+			 bool exception)
-+{
-+	u32 oldest, i, idx;
-+
-+	strscpy(dump->pc_current, "program counter", sizeof(dump->pc_current));
-+
-+	/* 0: WM PC log output */
-+	mt76_wr(dev, MT_CONN_DBG_CTL_OUT_SEL, 0);
-+	/* choose 33th PC log buffer to read current PC index */
-+	mt76_wr(dev, MT_CONN_DBG_CTL_PC_LOG_SEL, 0x3f);
-+
-+	/* read current PC */
-+	dump->pc_stack[0] = mt76_rr(dev, MT_CONN_DBG_CTL_PC_LOG);
-+
-+	/* stop call stack record */
-+	if (!exception) {
-+		mt76_clear(dev, MT_MCU_WM_EXCP_PC_CTRL, BIT(0));
-+		mt76_clear(dev, MT_MCU_WM_EXCP_LR_CTRL, BIT(0));
++	/* reset hw queues */
++	for (i = 0; i < __MT_TXQ_MAX; i++) {
++		mt76_queue_reset(dev, dev->mphy.q_tx[i]);
++		if (phy2)
++			mt76_queue_reset(dev, phy2->q_tx[i]);
++		if (phy3)
++			mt76_queue_reset(dev, phy3->q_tx[i]);
 +	}
 +
-+	oldest = (u32)mt76_get_field(dev, MT_MCU_WM_EXCP_PC_CTRL,
-+				     GENMASK(20, 16)) + 2;
-+	for (i = 0; i < 16; i++) {
-+		idx = ((oldest + 2 * i + 1) % 32);
-+		dump->pc_stack[i + 1] =
-+			mt76_rr(dev, MT_MCU_WM_EXCP_PC_LOG + idx * 4);
++	for (i = 0; i < __MT_MCUQ_MAX; i++)
++		mt76_queue_reset(dev, dev->mt76.q_mcu[i]);
++
++	mt76_for_each_q_rx(&dev->mt76, i) {
++		mt76_queue_reset(dev, &dev->mt76.q_rx[i]);
 +	}
 +
-+	oldest = (u32)mt76_get_field(dev, MT_MCU_WM_EXCP_LR_CTRL,
-+				     GENMASK(20, 16)) + 2;
-+	for (i = 0; i < 16; i++) {
-+		idx = ((oldest + 2 * i + 1) % 32);
-+		dump->lr_stack[i] =
-+			mt76_rr(dev, MT_MCU_WM_EXCP_LR_LOG + idx * 4);
-+	}
++	mt76_tx_status_check(&dev->mt76, true);
 +
-+	/* start call stack record */
-+	if (!exception) {
-+		mt76_set(dev, MT_MCU_WM_EXCP_PC_CTRL, BIT(0));
-+		mt76_set(dev, MT_MCU_WM_EXCP_LR_CTRL, BIT(0));
-+	}
++	mt76_for_each_q_rx(&dev->mt76, i)
++		mt76_queue_rx_reset(dev, i);
++
++	mt7996_dma_enable(dev);
 +}
 +
-+static struct mt7996_coredump *mt7996_coredump_build(struct mt7996_dev *dev)
-+{
-+	struct mt7996_crash_data *crash_data = dev->coredump.crash_data;
-+	struct mt7996_coredump *dump;
-+	struct mt7996_coredump_mem *dump_mem;
-+	size_t len, sofar = 0, hdr_len = sizeof(*dump);
-+	unsigned char *buf;
-+	bool exception;
-+
-+	len = hdr_len;
-+
-+	if (coredump_memdump && crash_data->memdump_buf_len)
-+		len += sizeof(*dump_mem) + crash_data->memdump_buf_len;
-+
-+	sofar += hdr_len;
-+
-+	/* this is going to get big when we start dumping memory and such,
-+	 * so go ahead and use vmalloc.
-+	 */
-+	buf = vzalloc(len);
-+	if (!buf)
-+		return NULL;
-+
-+	mutex_lock(&dev->dump_mutex);
-+
-+	dump = (struct mt7996_coredump *)(buf);
-+	dump->len = len;
-+
-+	/* plain text */
-+	strscpy(dump->magic, "mt76-crash-dump", sizeof(dump->magic));
-+	strscpy(dump->kernel, init_utsname()->release, sizeof(dump->kernel));
-+	strscpy(dump->fw_ver, dev->mt76.hw->wiphy->fw_version,
-+		sizeof(dump->fw_ver));
-+
-+	guid_copy(&dump->guid, &crash_data->guid);
-+	dump->tv_sec = crash_data->timestamp.tv_sec;
-+	dump->tv_nsec = crash_data->timestamp.tv_nsec;
-+	dump->device_id = mt76_chip(&dev->mt76);
-+
-+	mt7996_coredump_fw_state(dev, dump, &exception);
-+	mt7996_coredump_fw_stack(dev, dump, exception);
-+
-+	/* gather memory content */
-+	dump_mem = (struct mt7996_coredump_mem *)(buf + sofar);
-+	dump_mem->len = crash_data->memdump_buf_len;
-+	if (coredump_memdump && crash_data->memdump_buf_len)
-+		memcpy(dump_mem->data, crash_data->memdump_buf,
-+		       crash_data->memdump_buf_len);
-+
-+	mutex_unlock(&dev->dump_mutex);
-+
-+	return dump;
-+}
-+
-+int mt7996_coredump_submit(struct mt7996_dev *dev)
-+{
-+	struct mt7996_coredump *dump;
-+
-+	dump = mt7996_coredump_build(dev);
-+	if (!dump) {
-+		dev_warn(dev->mt76.dev, "no crash dump data found\n");
-+		return -ENODATA;
-+	}
-+
-+	dev_coredumpv(dev->mt76.dev, dump, dump->len, GFP_KERNEL);
-+
-+	return 0;
-+}
-+
-+int mt7996_coredump_register(struct mt7996_dev *dev)
-+{
-+	struct mt7996_crash_data *crash_data;
-+
-+	crash_data = vzalloc(sizeof(*dev->coredump.crash_data));
-+	if (!crash_data)
-+		return -ENOMEM;
-+
-+	dev->coredump.crash_data = crash_data;
-+
-+	if (coredump_memdump) {
-+		crash_data->memdump_buf_len = mt7996_coredump_get_mem_size(dev);
-+		if (!crash_data->memdump_buf_len)
-+			/* no memory content */
-+			return 0;
-+
-+		crash_data->memdump_buf = vzalloc(crash_data->memdump_buf_len);
-+		if (!crash_data->memdump_buf) {
-+			vfree(crash_data);
-+			return -ENOMEM;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+void mt7996_coredump_unregister(struct mt7996_dev *dev)
-+{
-+	if (dev->coredump.crash_data->memdump_buf) {
-+		vfree(dev->coredump.crash_data->memdump_buf);
-+		dev->coredump.crash_data->memdump_buf = NULL;
-+		dev->coredump.crash_data->memdump_buf_len = 0;
-+	}
-+
-+	vfree(dev->coredump.crash_data);
-+	dev->coredump.crash_data = NULL;
-+}
-+
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/coredump.h b/drivers/net/wireless/mediatek/mt76/mt7996/coredump.h
-new file mode 100644
-index 000000000000..af2ba219b1b5
---- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/coredump.h
-@@ -0,0 +1,97 @@
-+/* SPDX-License-Identifier: ISC */
-+/* Copyright (C) 2023 MediaTek Inc. */
-+
-+#ifndef _COREDUMP_H_
-+#define _COREDUMP_H_
-+
-+#include "mt7996.h"
-+
-+struct mt7996_coredump {
-+	char magic[16];
-+
-+	u32 len;
-+
-+	guid_t guid;
-+
-+	/* time-of-day stamp */
-+	u64 tv_sec;
-+	/* time-of-day stamp, nano-seconds */
-+	u64 tv_nsec;
-+	/* kernel version */
-+	char kernel[64];
-+	/* firmware version */
-+	char fw_ver[ETHTOOL_FWVERS_LEN];
-+
-+	u32 device_id;
-+
-+	/* exception state */
-+	char fw_state[12];
-+
-+	/* program counters */
-+	char pc_current[16];
-+	u32 pc_stack[17];
-+	/* link registers */
-+	u32 lr_stack[16];
-+
-+	/* memory content */
-+	u8 data[];
-+} __packed;
-+
-+struct mt7996_coredump_mem {
-+	u32 len;
-+	u8 data[];
-+} __packed;
-+
-+struct mt7996_mem_hdr {
-+	u32 start;
-+	u32 len;
-+	u8 data[];
-+};
-+
-+struct mt7996_mem_region {
-+	u32 start;
-+	size_t len;
-+
-+	const char *name;
-+};
-+
-+#ifdef CONFIG_DEV_COREDUMP
-+
-+const struct mt7996_mem_region *
-+mt7996_coredump_get_mem_layout(struct mt7996_dev *dev, u32 *num);
-+struct mt7996_crash_data *mt7996_coredump_new(struct mt7996_dev *dev);
-+int mt7996_coredump_submit(struct mt7996_dev *dev);
-+int mt7996_coredump_register(struct mt7996_dev *dev);
-+void mt7996_coredump_unregister(struct mt7996_dev *dev);
-+
-+#else /* CONFIG_DEV_COREDUMP */
-+
-+static inline const struct mt7996_mem_region *
-+mt7996_coredump_get_mem_layout(struct mt7996_dev *dev, u32 *num)
-+{
-+	return NULL;
-+}
-+
-+static inline int mt7996_coredump_submit(struct mt7996_dev *dev)
-+{
-+	return 0;
-+}
-+
-+static inline struct
-+mt7996_crash_data *mt7996_coredump_new(struct mt7996_dev *dev)
-+{
-+	return NULL;
-+}
-+
-+static inline int mt7996_coredump_register(struct mt7996_dev *dev)
-+{
-+	return 0;
-+}
-+
-+static inline void mt7996_coredump_unregister(struct mt7996_dev *dev)
-+{
-+}
-+
-+#endif /* CONFIG_DEV_COREDUMP */
-+
-+#endif /* _COREDUMP_H_ */
+ void mt7996_dma_cleanup(struct mt7996_dev *dev)
+ {
+ 	mt7996_dma_disable(dev, true);
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-index 76501e42cd8a..503a7ff24f95 100644
+index 946da93eed32..76501e42cd8a 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-@@ -8,6 +8,7 @@
- #include "mt7996.h"
- #include "mac.h"
- #include "mcu.h"
-+#include "coredump.h"
- #include "eeprom.h"
- 
- static const struct ieee80211_iface_limit if_limits[] = {
-@@ -857,6 +858,8 @@ int mt7996_register_device(struct mt7996_dev *dev)
- 
- 	init_waitqueue_head(&dev->reset_wait);
- 	INIT_WORK(&dev->reset_work, mt7996_mac_reset_work);
-+	INIT_WORK(&dev->dump_work, mt7996_mac_dump_work);
-+	mutex_init(&dev->dump_mutex);
- 
- 	ret = mt7996_init_hardware(dev);
- 	if (ret)
-@@ -887,13 +890,18 @@ int mt7996_register_device(struct mt7996_dev *dev)
- 
- 	dev->recovery.hw_init_done = true;
- 
--	return mt7996_init_debugfs(&dev->phy);
-+	ret = mt7996_init_debugfs(&dev->phy);
-+	if (ret)
-+		return ret;
-+
-+	return mt7996_coredump_register(dev);
+@@ -99,9 +99,8 @@ static void mt7996_led_set_brightness(struct led_classdev *led_cdev,
+ 		mt7996_led_set_config(led_cdev, 0xff, 0);
  }
  
- void mt7996_unregister_device(struct mt7996_dev *dev)
+-static void
+-mt7996_init_txpower(struct mt7996_dev *dev,
+-		    struct ieee80211_supported_band *sband)
++void mt7996_init_txpower(struct mt7996_dev *dev,
++			 struct ieee80211_supported_band *sband)
  {
- 	mt7996_unregister_phy(mt7996_phy3(dev), MT_BAND2);
- 	mt7996_unregister_phy(mt7996_phy2(dev), MT_BAND1);
-+	mt7996_coredump_unregister(dev);
- 	mt76_unregister_device(&dev->mt76);
- 	mt7996_mcu_exit(dev);
- 	mt7996_tx_token_put(dev);
+ 	int i, nss = hweight8(dev->mphy.antenna_mask);
+ 	int nss_delta = mt76_tx_power_nss_delta(nss);
+@@ -250,7 +249,7 @@ mt7996_mac_init_band(struct mt7996_dev *dev, u8 band)
+ 	mt76_rmw(dev, MT_WTBLOFF_RSCR(band), mask, set);
+ }
+ 
+-static void mt7996_mac_init(struct mt7996_dev *dev)
++void mt7996_mac_init(struct mt7996_dev *dev)
+ {
+ #define HIF_TXD_V2_1	4
+ 	int i;
+@@ -284,7 +283,7 @@ static void mt7996_mac_init(struct mt7996_dev *dev)
+ 		mt7996_mac_init_band(dev, i);
+ }
+ 
+-static int mt7996_txbf_init(struct mt7996_dev *dev)
++int mt7996_txbf_init(struct mt7996_dev *dev)
+ {
+ 	int ret;
+ 
+@@ -886,6 +885,8 @@ int mt7996_register_device(struct mt7996_dev *dev)
+ 	if (ret)
+ 		return ret;
+ 
++	dev->recovery.hw_init_done = true;
++
+ 	return mt7996_init_debugfs(&dev->phy);
+ }
+ 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-index f5c24985b905..52244b95831c 100644
+index 3c3506c7c87a..f5c24985b905 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-@@ -5,6 +5,7 @@
+@@ -1706,7 +1706,7 @@ mt7996_wait_reset_state(struct mt7996_dev *dev, u32 state)
+ 	bool ret;
  
- #include <linux/etherdevice.h>
- #include <linux/timekeeping.h>
-+#include "coredump.h"
- #include "mt7996.h"
- #include "../dma.h"
- #include "mac.h"
-@@ -2083,6 +2084,75 @@ void mt7996_mac_reset_work(struct work_struct *work)
- 		 wiphy_name(dev->mt76.hw->wiphy));
+ 	ret = wait_event_timeout(dev->reset_wait,
+-				 (READ_ONCE(dev->reset_state) & state),
++				 (READ_ONCE(dev->recovery.state) & state),
+ 				 MT7996_RESET_TIMEOUT);
+ 
+ 	WARN(!ret, "Timeout waiting for MCU reset state %x\n", state);
+@@ -1755,68 +1755,207 @@ mt7996_update_beacons(struct mt7996_dev *dev)
+ 					    mt7996_update_vif_beacon, phy3->hw);
  }
  
-+/* firmware coredump */
-+void mt7996_mac_dump_work(struct work_struct *work)
-+{
-+	const struct mt7996_mem_region *mem_region;
-+	struct mt7996_crash_data *crash_data;
-+	struct mt7996_dev *dev;
-+	struct mt7996_mem_hdr *hdr;
-+	size_t buf_len;
-+	int i;
-+	u32 num;
-+	u8 *buf;
+-static void
+-mt7996_dma_reset(struct mt7996_dev *dev)
++void mt7996_tx_token_put(struct mt7996_dev *dev)
+ {
+-	struct mt76_phy *phy2 = dev->mt76.phys[MT_BAND1];
+-	struct mt76_phy *phy3 = dev->mt76.phys[MT_BAND2];
+-	u32 hif1_ofs = MT_WFDMA0_PCIE1(0) - MT_WFDMA0(0);
+-	int i;
++	struct mt76_txwi_cache *txwi;
++	int id;
 +
-+	dev = container_of(work, struct mt7996_dev, dump_work);
-+
-+	mutex_lock(&dev->dump_mutex);
-+
-+	crash_data = mt7996_coredump_new(dev);
-+	if (!crash_data) {
-+		mutex_unlock(&dev->dump_mutex);
-+		goto skip_coredump;
++	spin_lock_bh(&dev->mt76.token_lock);
++	idr_for_each_entry(&dev->mt76.token, txwi, id) {
++		mt7996_txwi_free(dev, txwi, NULL, NULL);
++		dev->mt76.token_count--;
 +	}
-+
-+	mem_region = mt7996_coredump_get_mem_layout(dev, &num);
-+	if (!mem_region || !crash_data->memdump_buf_len) {
-+		mutex_unlock(&dev->dump_mutex);
-+		goto skip_memdump;
-+	}
-+
-+	buf = crash_data->memdump_buf;
-+	buf_len = crash_data->memdump_buf_len;
-+
-+	/* dumping memory content... */
-+	memset(buf, 0, buf_len);
-+	for (i = 0; i < num; i++) {
-+		if (mem_region->len > buf_len) {
-+			dev_warn(dev->mt76.dev, "%s len %zu is too large\n",
-+				 mem_region->name, mem_region->len);
-+			break;
-+		}
-+
-+		/* reserve space for the header */
-+		hdr = (void *)buf;
-+		buf += sizeof(*hdr);
-+		buf_len -= sizeof(*hdr);
-+
-+		mt7996_memcpy_fromio(dev, buf, mem_region->start,
-+				     mem_region->len);
-+
-+		hdr->start = mem_region->start;
-+		hdr->len = mem_region->len;
-+
-+		if (!mem_region->len)
-+			/* note: the header remains, just with zero length */
-+			break;
-+
-+		buf += mem_region->len;
-+		buf_len -= mem_region->len;
-+
-+		mem_region++;
-+	}
-+
-+	mutex_unlock(&dev->dump_mutex);
-+
-+skip_memdump:
-+	mt7996_coredump_submit(dev);
-+skip_coredump:
-+	queue_work(dev->mt76.wq, &dev->reset_work);
++	spin_unlock_bh(&dev->mt76.token_lock);
++	idr_destroy(&dev->mt76.token);
 +}
 +
- void mt7996_reset(struct mt7996_dev *dev)
- {
- 	if (!dev->recovery.hw_init_done)
-@@ -2099,7 +2169,7 @@ void mt7996_reset(struct mt7996_dev *dev)
- 			 wiphy_name(dev->mt76.hw->wiphy));
++static int
++mt7996_mac_restart(struct mt7996_dev *dev)
++{
++	struct mt7996_phy *phy2, *phy3;
++	struct mt76_dev *mdev = &dev->mt76;
++	int i, ret;
  
- 		mt7996_irq_disable(dev, MT_INT_MCU_CMD);
--		queue_work(dev->mt76.wq, &dev->reset_work);
-+		queue_work(dev->mt76.wq, &dev->dump_work);
- 		return;
+-	mt76_clear(dev, MT_WFDMA0_GLO_CFG,
+-		   MT_WFDMA0_GLO_CFG_TX_DMA_EN |
+-		   MT_WFDMA0_GLO_CFG_RX_DMA_EN);
++	phy2 = mt7996_phy2(dev);
++	phy3 = mt7996_phy3(dev);
+ 
+-	if (dev->hif2)
+-		mt76_clear(dev, MT_WFDMA0_GLO_CFG + hif1_ofs,
+-			   MT_WFDMA0_GLO_CFG_TX_DMA_EN |
+-			   MT_WFDMA0_GLO_CFG_RX_DMA_EN);
++	if (dev->hif2) {
++		mt76_wr(dev, MT_INT1_MASK_CSR, 0x0);
++		mt76_wr(dev, MT_INT1_SOURCE_CSR, ~0);
++	}
+ 
+-	usleep_range(1000, 2000);
++	if (dev_is_pci(mdev->dev)) {
++		mt76_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0x0);
++		if (dev->hif2)
++			mt76_wr(dev, MT_PCIE1_MAC_INT_ENABLE, 0x0);
++	}
+ 
+-	for (i = 0; i < __MT_TXQ_MAX; i++) {
+-		mt76_queue_tx_cleanup(dev, dev->mphy.q_tx[i], true);
+-		if (phy2)
+-			mt76_queue_tx_cleanup(dev, phy2->q_tx[i], true);
+-		if (phy3)
+-			mt76_queue_tx_cleanup(dev, phy3->q_tx[i], true);
++	set_bit(MT76_RESET, &dev->mphy.state);
++	set_bit(MT76_MCU_RESET, &dev->mphy.state);
++	wake_up(&dev->mt76.mcu.wait);
++	if (phy2) {
++		set_bit(MT76_RESET, &phy2->mt76->state);
++		set_bit(MT76_MCU_RESET, &phy2->mt76->state);
++	}
++	if (phy3) {
++		set_bit(MT76_RESET, &phy3->mt76->state);
++		set_bit(MT76_MCU_RESET, &phy3->mt76->state);
  	}
  
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7996/mmio.c
-index 536e8dd0edca..510c5facdae8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mmio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mmio.c
-@@ -162,6 +162,14 @@ static u32 __mt7996_reg_addr(struct mt7996_dev *dev, u32 addr)
- 	return mt7996_reg_map_l2(dev, addr);
+-	for (i = 0; i < __MT_MCUQ_MAX; i++)
+-		mt76_queue_tx_cleanup(dev, dev->mt76.q_mcu[i], true);
++	/* lock/unlock all queues to ensure that no tx is pending */
++	mt76_txq_schedule_all(&dev->mphy);
++	if (phy2)
++		mt76_txq_schedule_all(phy2->mt76);
++	if (phy3)
++		mt76_txq_schedule_all(phy3->mt76);
+ 
+-	mt76_for_each_q_rx(&dev->mt76, i)
+-		mt76_queue_rx_reset(dev, i);
++	/* disable all tx/rx napi */
++	mt76_worker_disable(&dev->mt76.tx_worker);
++	mt76_for_each_q_rx(mdev, i) {
++		if (mdev->q_rx[i].ndesc)
++			napi_disable(&dev->mt76.napi[i]);
++	}
++	napi_disable(&dev->mt76.tx_napi);
++
++	/* token reinit */
++	mt7996_tx_token_put(dev);
++	idr_init(&dev->mt76.token);
++
++	mt7996_dma_reset(dev, true);
++
++	local_bh_disable();
++	mt76_for_each_q_rx(mdev, i) {
++		if (mdev->q_rx[i].ndesc) {
++			napi_enable(&dev->mt76.napi[i]);
++			napi_schedule(&dev->mt76.napi[i]);
++		}
++	}
++	local_bh_enable();
++	clear_bit(MT76_MCU_RESET, &dev->mphy.state);
++	clear_bit(MT76_STATE_MCU_RUNNING, &dev->mphy.state);
++
++	mt76_wr(dev, MT_INT_MASK_CSR, dev->mt76.mmio.irqmask);
++	mt76_wr(dev, MT_INT_SOURCE_CSR, ~0);
++	if (dev->hif2) {
++		mt76_wr(dev, MT_INT1_MASK_CSR, dev->mt76.mmio.irqmask);
++		mt76_wr(dev, MT_INT1_SOURCE_CSR, ~0);
++	}
++	if (dev_is_pci(mdev->dev)) {
++		mt76_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0xff);
++		if (dev->hif2)
++			mt76_wr(dev, MT_PCIE1_MAC_INT_ENABLE, 0xff);
++	}
++
++	/* load firmware */
++	ret = mt7996_mcu_init_firmware(dev);
++	if (ret)
++		goto out;
++
++	/* set the necessary init items */
++	ret = mt7996_mcu_set_eeprom(dev);
++	if (ret)
++		goto out;
++
++	mt7996_mac_init(dev);
++	mt7996_init_txpower(dev, &dev->mphy.sband_2g.sband);
++	mt7996_init_txpower(dev, &dev->mphy.sband_5g.sband);
++	mt7996_init_txpower(dev, &dev->mphy.sband_6g.sband);
++	ret = mt7996_txbf_init(dev);
++
++	if (test_bit(MT76_STATE_RUNNING, &dev->mphy.state)) {
++		ret = mt7996_run(dev->mphy.hw);
++		if (ret)
++			goto out;
++	}
+ 
+-	mt76_tx_status_check(&dev->mt76, true);
++	if (phy2 && test_bit(MT76_STATE_RUNNING, &phy2->mt76->state)) {
++		ret = mt7996_run(phy2->mt76->hw);
++		if (ret)
++			goto out;
++	}
+ 
+-	/* re-init prefetch settings after reset */
+-	mt7996_dma_prefetch(dev);
++	if (phy3 && test_bit(MT76_STATE_RUNNING, &phy3->mt76->state)) {
++		ret = mt7996_run(phy3->mt76->hw);
++		if (ret)
++			goto out;
++	}
++
++out:
++	/* reset done */
++	clear_bit(MT76_RESET, &dev->mphy.state);
++	if (phy2)
++		clear_bit(MT76_RESET, &phy2->mt76->state);
++	if (phy3)
++		clear_bit(MT76_RESET, &phy3->mt76->state);
+ 
+-	mt76_set(dev, MT_WFDMA0_GLO_CFG,
+-		 MT_WFDMA0_GLO_CFG_TX_DMA_EN | MT_WFDMA0_GLO_CFG_RX_DMA_EN);
++	local_bh_disable();
++	napi_enable(&dev->mt76.tx_napi);
++	napi_schedule(&dev->mt76.tx_napi);
++	local_bh_enable();
+ 
+-	if (dev->hif2)
+-		mt76_set(dev, MT_WFDMA0_GLO_CFG + hif1_ofs,
+-			 MT_WFDMA0_GLO_CFG_TX_DMA_EN |
+-			 MT_WFDMA0_GLO_CFG_RX_DMA_EN);
++	mt76_worker_enable(&dev->mt76.tx_worker);
++	return ret;
  }
  
-+void mt7996_memcpy_fromio(struct mt7996_dev *dev, void *buf, u32 offset,
-+			  size_t len)
-+{
-+	u32 addr = __mt7996_reg_addr(dev, offset);
+-void mt7996_tx_token_put(struct mt7996_dev *dev)
++static void
++mt7996_mac_full_reset(struct mt7996_dev *dev)
+ {
+-	struct mt76_txwi_cache *txwi;
+-	int id;
++	struct mt7996_phy *phy2, *phy3;
++	int i;
+ 
+-	spin_lock_bh(&dev->mt76.token_lock);
+-	idr_for_each_entry(&dev->mt76.token, txwi, id) {
+-		mt7996_txwi_free(dev, txwi, NULL, NULL);
+-		dev->mt76.token_count--;
++	phy2 = mt7996_phy2(dev);
++	phy3 = mt7996_phy3(dev);
++	dev->recovery.hw_full_reset = true;
 +
-+	memcpy_fromio(buf, dev->mt76.mmio.regs + addr, len);
++	wake_up(&dev->mt76.mcu.wait);
++	ieee80211_stop_queues(mt76_hw(dev));
++	if (phy2)
++		ieee80211_stop_queues(phy2->mt76->hw);
++	if (phy3)
++		ieee80211_stop_queues(phy3->mt76->hw);
++
++	cancel_delayed_work_sync(&dev->mphy.mac_work);
++	if (phy2)
++		cancel_delayed_work_sync(&phy2->mt76->mac_work);
++	if (phy3)
++		cancel_delayed_work_sync(&phy3->mt76->mac_work);
++
++	mutex_lock(&dev->mt76.mutex);
++	for (i = 0; i < 10; i++) {
++		if (!mt7996_mac_restart(dev))
++			break;
+ 	}
+-	spin_unlock_bh(&dev->mt76.token_lock);
+-	idr_destroy(&dev->mt76.token);
++	mutex_unlock(&dev->mt76.mutex);
++
++	if (i == 10)
++		dev_err(dev->mt76.dev, "chip full reset failed\n");
++
++	ieee80211_restart_hw(mt76_hw(dev));
++	if (phy2)
++		ieee80211_restart_hw(phy2->mt76->hw);
++	if (phy3)
++		ieee80211_restart_hw(phy3->mt76->hw);
++
++	ieee80211_wake_queues(mt76_hw(dev));
++	if (phy2)
++		ieee80211_wake_queues(phy2->mt76->hw);
++	if (phy3)
++		ieee80211_wake_queues(phy3->mt76->hw);
++
++	dev->recovery.hw_full_reset = false;
++	ieee80211_queue_delayed_work(mt76_hw(dev),
++				     &dev->mphy.mac_work,
++				     MT7996_WATCHDOG_TIME);
++	if (phy2)
++		ieee80211_queue_delayed_work(phy2->mt76->hw,
++					     &phy2->mt76->mac_work,
++					     MT7996_WATCHDOG_TIME);
++	if (phy3)
++		ieee80211_queue_delayed_work(phy3->mt76->hw,
++					     &phy3->mt76->mac_work,
++					     MT7996_WATCHDOG_TIME);
+ }
+ 
+-/* system error recovery */
+ void mt7996_mac_reset_work(struct work_struct *work)
+ {
+ 	struct mt7996_phy *phy2, *phy3;
+@@ -1827,9 +1966,36 @@ void mt7996_mac_reset_work(struct work_struct *work)
+ 	phy2 = mt7996_phy2(dev);
+ 	phy3 = mt7996_phy3(dev);
+ 
+-	if (!(READ_ONCE(dev->reset_state) & MT_MCU_CMD_STOP_DMA))
++	/* chip full reset */
++	if (dev->recovery.restart) {
++		/* disable WA/WM WDT */
++		mt76_clear(dev, MT_WFDMA0_MCU_HOST_INT_ENA,
++			   MT_MCU_CMD_WDT_MASK);
++
++		if (READ_ONCE(dev->recovery.state) & MT_MCU_CMD_WA_WDT)
++			dev->recovery.wa_reset_count++;
++		else
++			dev->recovery.wm_reset_count++;
++
++		mt7996_mac_full_reset(dev);
++
++		/* enable mcu irq */
++		mt7996_irq_enable(dev, MT_INT_MCU_CMD);
++		mt7996_irq_disable(dev, 0);
++
++		/* enable WA/WM WDT */
++		mt76_set(dev, MT_WFDMA0_MCU_HOST_INT_ENA, MT_MCU_CMD_WDT_MASK);
++
++		dev->recovery.state = MT_MCU_CMD_NORMAL_STATE;
++		dev->recovery.restart = false;
+ 		return;
++	}
+ 
++	if (!(READ_ONCE(dev->recovery.state) & MT_MCU_CMD_STOP_DMA))
++		return;
++
++	dev_info(dev->mt76.dev,"\n%s L1 SER recovery start.",
++		 wiphy_name(dev->mt76.hw->wiphy));
+ 	ieee80211_stop_queues(mt76_hw(dev));
+ 	if (phy2)
+ 		ieee80211_stop_queues(phy2->mt76->hw);
+@@ -1858,7 +2024,7 @@ void mt7996_mac_reset_work(struct work_struct *work)
+ 	mt76_wr(dev, MT_MCU_INT_EVENT, MT_MCU_INT_EVENT_DMA_STOPPED);
+ 
+ 	if (mt7996_wait_reset_state(dev, MT_MCU_CMD_RESET_DONE)) {
+-		mt7996_dma_reset(dev);
++		mt7996_dma_reset(dev, false);
+ 
+ 		mt7996_tx_token_put(dev);
+ 		idr_init(&dev->mt76.token);
+@@ -1913,6 +2079,32 @@ void mt7996_mac_reset_work(struct work_struct *work)
+ 		ieee80211_queue_delayed_work(phy3->mt76->hw,
+ 					     &phy3->mt76->mac_work,
+ 					     MT7996_WATCHDOG_TIME);
++	dev_info(dev->mt76.dev,"\n%s L1 SER recovery completed.",
++		 wiphy_name(dev->mt76.hw->wiphy));
 +}
 +
- static u32 mt7996_rr(struct mt76_dev *mdev, u32 offset)
++void mt7996_reset(struct mt7996_dev *dev)
++{
++	if (!dev->recovery.hw_init_done)
++		return;
++
++	if (dev->recovery.hw_full_reset)
++		return;
++
++	/* wm/wa exception: do full recovery */
++	if (READ_ONCE(dev->recovery.state) & MT_MCU_CMD_WDT_MASK) {
++		dev->recovery.restart = true;
++		dev_info(dev->mt76.dev,
++			 "%s indicated firmware crash, attempting recovery\n",
++			 wiphy_name(dev->mt76.hw->wiphy));
++
++		mt7996_irq_disable(dev, MT_INT_MCU_CMD);
++		queue_work(dev->mt76.wq, &dev->reset_work);
++		return;
++	}
++
++	queue_work(dev->mt76.wq, &dev->reset_work);
++	wake_up(&dev->reset_wait);
+ }
+ 
+ void mt7996_mac_update_stats(struct mt7996_phy *phy)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+index 3e4da0350d96..67d02d30456e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+@@ -22,17 +22,13 @@ static bool mt7996_dev_running(struct mt7996_dev *dev)
+ 	return phy && test_bit(MT76_STATE_RUNNING, &phy->mt76->state);
+ }
+ 
+-static int mt7996_start(struct ieee80211_hw *hw)
++int mt7996_run(struct ieee80211_hw *hw)
  {
- 	struct mt7996_dev *dev = container_of(mdev, struct mt7996_dev, mt76);
+ 	struct mt7996_dev *dev = mt7996_hw_dev(hw);
+ 	struct mt7996_phy *phy = mt7996_hw_phy(hw);
+ 	bool running;
+ 	int ret;
+ 
+-	flush_work(&dev->init_work);
+-
+-	mutex_lock(&dev->mt76.mutex);
+-
+ 	running = mt7996_dev_running(dev);
+ 	if (!running) {
+ 		ret = mt7996_mcu_set_hdr_trans(dev, true);
+@@ -63,6 +59,18 @@ static int mt7996_start(struct ieee80211_hw *hw)
+ 		mt7996_mac_reset_counters(phy);
+ 
+ out:
++	return ret;
++}
++
++static int mt7996_start(struct ieee80211_hw *hw)
++{
++	struct mt7996_dev *dev = mt7996_hw_dev(hw);
++	int ret;
++
++	flush_work(&dev->init_work);
++
++	mutex_lock(&dev->mt76.mutex);
++	ret = mt7996_run(hw);
+ 	mutex_unlock(&dev->mt76.mutex);
+ 
+ 	return ret;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index 8ad51cbfdbe8..a48522025867 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -2523,17 +2523,10 @@ mt7996_mcu_init_rx_airtime(struct mt7996_dev *dev)
+ 				     MCU_WM_UNI_CMD(VOW), true);
+ }
+ 
+-int mt7996_mcu_init(struct mt7996_dev *dev)
++int mt7996_mcu_init_firmware(struct mt7996_dev *dev)
+ {
+-	static const struct mt76_mcu_ops mt7996_mcu_ops = {
+-		.headroom = sizeof(struct mt76_connac2_mcu_txd), /* reuse */
+-		.mcu_skb_send_msg = mt7996_mcu_send_message,
+-		.mcu_parse_response = mt7996_mcu_parse_response,
+-	};
+ 	int ret;
+ 
+-	dev->mt76.mcu_ops = &mt7996_mcu_ops;
+-
+ 	/* force firmware operation mode into normal state,
+ 	 * which should be set before firmware download stage.
+ 	 */
+@@ -2574,6 +2567,19 @@ int mt7996_mcu_init(struct mt7996_dev *dev)
+ 				 MCU_WA_PARAM_RED, 0, 0);
+ }
+ 
++int mt7996_mcu_init(struct mt7996_dev *dev)
++{
++	static const struct mt76_mcu_ops mt7996_mcu_ops = {
++		.headroom = sizeof(struct mt76_connac2_mcu_txd), /* reuse */
++		.mcu_skb_send_msg = mt7996_mcu_send_message,
++		.mcu_parse_response = mt7996_mcu_parse_response,
++	};
++
++	dev->mt76.mcu_ops = &mt7996_mcu_ops;
++
++	return mt7996_mcu_init_firmware(dev);
++}
++
+ void mt7996_mcu_exit(struct mt7996_dev *dev)
+ {
+ 	mt7996_mcu_restart(&dev->mt76);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7996/mmio.c
+index 902370a2a639..536e8dd0edca 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mmio.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mmio.c
+@@ -289,10 +289,9 @@ static void mt7996_irq_tasklet(struct tasklet_struct *t)
+ 		u32 val = mt76_rr(dev, MT_MCU_CMD);
+ 
+ 		mt76_wr(dev, MT_MCU_CMD, val);
+-		if (val & MT_MCU_CMD_ERROR_MASK) {
+-			dev->reset_state = val;
+-			ieee80211_queue_work(mt76_hw(dev), &dev->reset_work);
+-			wake_up(&dev->reset_wait);
++		if (val & (MT_MCU_CMD_ERROR_MASK | MT_MCU_CMD_WDT_MASK)) {
++			dev->recovery.state = val;
++			mt7996_reset(dev);
+ 		}
+ 	}
+ }
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-index 411a3829857f..412cee079f8a 100644
+index 018dfd2b36b0..45071f0dc2fe 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-@@ -192,6 +192,15 @@ struct mib_stats {
- 	u32 tx_amsdu_cnt;
- };
- 
-+/* crash-dump */
-+struct mt7996_crash_data {
-+	guid_t guid;
-+	struct timespec64 timestamp;
-+
-+	u8 *memdump_buf;
-+	size_t memdump_buf_len;
-+};
-+
- struct mt7996_hif {
- 	struct list_head list;
- 
-@@ -251,6 +260,7 @@ struct mt7996_dev {
- 
- 	struct work_struct init_work;
+@@ -253,7 +253,14 @@ struct mt7996_dev {
  	struct work_struct rc_work;
-+	struct work_struct dump_work;
  	struct work_struct reset_work;
  	wait_queue_head_t reset_wait;
- 	struct {
-@@ -262,6 +272,14 @@ struct mt7996_dev {
- 		bool restart:1;
- 	} recovery;
- 
-+	/* protects coredump data */
-+	struct mutex dump_mutex;
-+#ifdef CONFIG_DEV_COREDUMP
+-	u32 reset_state;
 +	struct {
-+		struct mt7996_crash_data *crash_data;
-+	} coredump;
-+#endif
-+
++		u32 state;
++		u32 wa_reset_count;
++		u32 wm_reset_count;
++		bool hw_full_reset:1;
++		bool hw_init_done:1;
++		bool restart:1;
++	} recovery;
+ 
  	struct list_head sta_rc_list;
  	struct list_head sta_poll_list;
- 	struct list_head twt_list;
-@@ -494,6 +512,9 @@ static inline void mt7996_irq_disable(struct mt7996_dev *dev, u32 mask)
+@@ -386,9 +393,16 @@ int mt7996_eeprom_get_target_power(struct mt7996_dev *dev,
+ 				   struct ieee80211_channel *chan);
+ s8 mt7996_eeprom_get_power_delta(struct mt7996_dev *dev, int band);
+ int mt7996_dma_init(struct mt7996_dev *dev);
++void mt7996_dma_reset(struct mt7996_dev *dev, bool force);
+ void mt7996_dma_prefetch(struct mt7996_dev *dev);
+ void mt7996_dma_cleanup(struct mt7996_dev *dev);
++void mt7996_init_txpower(struct mt7996_dev *dev,
++			 struct ieee80211_supported_band *sband);
++int mt7996_txbf_init(struct mt7996_dev *dev);
++void mt7996_reset(struct mt7996_dev *dev);
++int mt7996_run(struct ieee80211_hw *hw);
+ int mt7996_mcu_init(struct mt7996_dev *dev);
++int mt7996_mcu_init_firmware(struct mt7996_dev *dev);
+ int mt7996_mcu_twt_agrt_update(struct mt7996_dev *dev,
+ 			       struct mt7996_vif *mvif,
+ 			       struct mt7996_twt_flow *flow,
+@@ -479,6 +493,7 @@ static inline void mt7996_irq_disable(struct mt7996_dev *dev, u32 mask)
  		mt76_set_irq_mask(&dev->mt76, MT_INT_MASK_CSR, mask, 0);
  }
  
-+void mt7996_memcpy_fromio(struct mt7996_dev *dev, void *buf, u32 offset,
-+			  size_t len);
-+
- void mt7996_mac_init(struct mt7996_dev *dev);
++void mt7996_mac_init(struct mt7996_dev *dev);
  u32 mt7996_mac_wtbl_lmac_addr(struct mt7996_dev *dev, u16 wcid, u8 dw);
  bool mt7996_mac_wtbl_update(struct mt7996_dev *dev, int idx, u32 mask);
-@@ -512,6 +533,7 @@ void mt7996_mac_sta_remove(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 			   struct ieee80211_sta *sta);
- void mt7996_mac_work(struct work_struct *work);
- void mt7996_mac_reset_work(struct work_struct *work);
-+void mt7996_mac_dump_work(struct work_struct *work);
- void mt7996_mac_sta_rc_work(struct work_struct *work);
- void mt7996_mac_update_stats(struct mt7996_phy *phy);
- void mt7996_mac_twt_teardown_flow(struct mt7996_dev *dev,
+ void mt7996_mac_reset_counters(struct mt7996_phy *phy);
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/regs.h b/drivers/net/wireless/mediatek/mt76/mt7996/regs.h
-index fb9b8dec9189..75f856205559 100644
+index 7a28cae34e34..5ba74b49d65d 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7996/regs.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt7996/regs.h
-@@ -474,6 +474,9 @@ enum base_rev {
+@@ -317,6 +317,8 @@ enum base_rev {
+ #define MT_WFDMA0_RX_INT_PCIE_SEL		MT_WFDMA0(0x154)
+ #define MT_WFDMA0_RX_INT_SEL_RING3		BIT(3)
+ 
++#define MT_WFDMA0_MCU_HOST_INT_ENA		MT_WFDMA0(0x1f4)
++
+ #define MT_WFDMA0_GLO_CFG			MT_WFDMA0(0x208)
+ #define MT_WFDMA0_GLO_CFG_TX_DMA_EN		BIT(0)
+ #define MT_WFDMA0_GLO_CFG_RX_DMA_EN		BIT(2)
+@@ -444,6 +446,10 @@ enum base_rev {
+ #define MT_MCU_CMD_NORMAL_STATE			BIT(5)
+ #define MT_MCU_CMD_ERROR_MASK			GENMASK(5, 1)
+ 
++#define MT_MCU_CMD_WA_WDT			BIT(31)
++#define MT_MCU_CMD_WM_WDT			BIT(30)
++#define MT_MCU_CMD_WDT_MASK			GENMASK(31, 30)
++
+ /* l1/l2 remap */
+ #define MT_HIF_REMAP_L1				0x155024
+ #define MT_HIF_REMAP_L1_MASK			GENMASK(31, 16)
+@@ -468,7 +474,10 @@ enum base_rev {
  #define MT_INFRA_MCU_END			0x7c3fffff
  
  /* FW MODE SYNC */
-+#define MT_FW_ASSERT_CNT			0x02208274
-+#define MT_FW_DUMP_STATE			0x02209e90
+-#define MT_SWDEF_MODE				0x9143c
++#define MT_SWDEF_BASE				0x00401400
 +
- #define MT_SWDEF_BASE				0x00401400
++#define MT_SWDEF(ofs)				(MT_SWDEF_BASE + (ofs))
++#define MT_SWDEF_MODE				MT_SWDEF(0x3c)
+ #define MT_SWDEF_NORMAL_MODE			0
  
- #define MT_SWDEF(ofs)				(MT_SWDEF_BASE + (ofs))
-@@ -508,6 +511,13 @@ enum base_rev {
+ /* LED */
+@@ -506,7 +515,7 @@ enum base_rev {
+ #define MT_TOP_MISC_FW_STATE			GENMASK(2, 0)
  
- #define MT_LED_EN(_n)				MT_LED_PHYS(0x40 + ((_n) * 4))
+ #define MT_HW_REV				0x70010204
+-#define MT_WF_SUBSYS_RST			0x70002600
++#define MT_WF_SUBSYS_RST			0x70028600
  
-+/* CONN DBG */
-+#define MT_CONN_DBG_CTL_BASE			0x18023000
-+#define MT_CONN_DBG_CTL(ofs)			(MT_CONN_DBG_CTL_BASE + (ofs))
-+#define MT_CONN_DBG_CTL_OUT_SEL			MT_CONN_DBG_CTL(0x604)
-+#define MT_CONN_DBG_CTL_PC_LOG_SEL		MT_CONN_DBG_CTL(0x60c)
-+#define MT_CONN_DBG_CTL_PC_LOG			MT_CONN_DBG_CTL(0x610)
-+
- #define MT_LED_GPIO_MUX2			0x70005058 /* GPIO 18 */
- #define MT_LED_GPIO_MUX3			0x7000505C /* GPIO 26 */
- #define MT_LED_GPIO_SEL_MASK			GENMASK(11, 8)
-@@ -561,4 +571,12 @@ enum base_rev {
- #define MT_WF_PHYRX_CSD_BAND_RXTD12_IRPI_SW_CLR_ONLY	BIT(18)
- #define MT_WF_PHYRX_CSD_BAND_RXTD12_IRPI_SW_CLR		BIT(29)
- 
-+/* CONN MCU EXCP CON */
-+#define MT_MCU_WM_EXCP_BASE			0x89050000
-+#define MT_MCU_WM_EXCP(ofs)			(MT_MCU_WM_EXCP_BASE + (ofs))
-+#define MT_MCU_WM_EXCP_PC_CTRL			MT_MCU_WM_EXCP(0x100)
-+#define MT_MCU_WM_EXCP_PC_LOG			MT_MCU_WM_EXCP(0x104)
-+#define MT_MCU_WM_EXCP_LR_CTRL			MT_MCU_WM_EXCP(0x200)
-+#define MT_MCU_WM_EXCP_LR_LOG			MT_MCU_WM_EXCP(0x204)
-+
- #endif
+ /* PCIE MAC */
+ #define MT_PCIE_MAC_BASE			0x74030000
 -- 
 2.18.0
 
