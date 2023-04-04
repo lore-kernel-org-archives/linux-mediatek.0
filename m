@@ -4,143 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 881F0C761AF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Apr 2023 13:58:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25EE6C761A6
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Apr 2023 14:25:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qPb3SMrW2k5cL/51zdQSNPfE7NXdBpPA6gfCmqTrM0Q=; b=y8+OA2LfGqmvaSv4iVo7XjzB+f
-	RnNnYIU6KY4O+tAMQG1GNZaQgRg+DnnRll83n6IdxgGg2DNafliRXmrEFVmcKGwHx7DQwni055jtv
-	aZHITjR6xGmHMmNP5TG0TpmO7OsCrUxnycZ9QG+Bm/ujdNNqoQJT9Eyue7FZMKaZqzEzaW4tfBqvl
-	DIPZffmeeBlSs6+MMmd1JyWSA8ABqo2a+g2MZfQMZdnjefEk9nAOBth0JE/eT09GEQqX0PKg1XKSu
-	j8j+h8Jw7teGqWWvE2yYToiZTYCHIGmOCtoowKknB4Zd6qlhomtkC8DvrZrjpDZLdDNkCqUfwXUkz
-	HOhNS7YQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ApT4/BK1w7ic9F4sBvqn2kPYM1w0Sn+odMgc/sq2JvM=; b=yNebRnY8P5KJAHU+f+14bQeQKv
+	lkXBmaU6wDg2lU5IoCg6bFkc8xrVsnlF5JEiC5JwkNRSKB+oyxAbSZK8XK41XuaJnrX1g92LFg+Ir
+	jmv0Zt10KNQi55rbyi7xnrMhn194MarVe8wHE1awqnzWkelk3XnQqJ9E1WDA/xFAXSnE+nZ/PVkGR
+	e9iJscOrOs3DLhiNy5h+IGgkRDDiB3BVGnOwkYWCXdKHEw+tW+yNxSBcGGC3sDEQilgBClFCDv8lg
+	4J1A1VWTrTEHE+vOxSOktqR7Fye/c955xSxDZubhmMwHd/2tAc/kvQYLZ26LzjqKSB4kAFZNfgObi
+	mVOfm6EA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjhAv-001fha-2z;
-	Tue, 04 Apr 2023 13:58:17 +0000
-Received: from new3-smtp.messagingengine.com ([66.111.4.229])
+	id 1pjhbM-001n4P-2l;
+	Tue, 04 Apr 2023 14:25:36 +0000
+Received: from mail-oa1-f41.google.com ([209.85.160.41])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjhAN-001f49-2K;
-	Tue, 04 Apr 2023 13:57:55 +0000
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
-	by mailnew.nyi.internal (Postfix) with ESMTP id 891995821BC;
-	Tue,  4 Apr 2023 09:57:42 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
-  by compute3.internal (MEProxy); Tue, 04 Apr 2023 09:57:42 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
-	:cc:content-transfer-encoding:content-type:content-type:date
-	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:sender:subject:subject:to:to; s=fm3; t=
-	1680616662; x=1680623862; bh=qPb3SMrW2k5cL/51zdQSNPfE7NXdBpPA6gf
-	CmqTrM0Q=; b=Fsfr1XJW0zHp56yGNAncBCrKfE90+iKbWMTaCl14yMniEPaaK30
-	fFhvAKR84ZXcOCzxOUfk90sy4rGmhdndmFDAijAhOXcKeVLkNXb0xXpknljBoctN
-	OH23/gRhIjWstX4vaUcux0r21WDCo8LIvVvtrimOy8KTvRC7cqiewSzeHDgRbHJF
-	09grgl0x8QsMRLJr+GrHbOpsn38l7KA5p/fxuNTb++FXzSb1GYax8QAkrlxJ+PST
-	tvLdHv/ueuMXr2EBixbKHVZ5Kp+4GWrEbHW1HUbWZpamscB//FIkEemtAlRrJi7y
-	1S1NJR3bh0xbDEvV3IAT2R8a1vho78jTAwA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:sender:subject:subject:to:to:x-me-proxy
-	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
-	1680616662; x=1680623862; bh=qPb3SMrW2k5cL/51zdQSNPfE7NXdBpPA6gf
-	CmqTrM0Q=; b=NRjuyE4j1+wRSv/0vALRQv7Q8QorqqgLPPEEMhlSldu70y06LAc
-	pSXy6QT51PIoDtELrEgoP9WRdfJDrxOAeAuYbPDEVyMvpD74pHW9ICjd1dOE+XOz
-	hTq9utinbh1EeYHHisvaWUTMfe4hQJJ6Eff3JQv8HlVLCoxfM6Aebodd691c5DSE
-	J0YzQR/5eq6vRLBKnRbyy7AayfCa1N3TklqsZ5yiADWFHH7Hqyw3+q5ZTcn0h0r5
-	wAdrumVvTQDB0cA+jbdFLcM+Gr0w3QjJH63YzWRQGIwxm4ylLKaNP8AoyqqdrZd+
-	lqM/X6cnI4nWgHuJ5zfkSQlxx66XzWiC6Cg==
-X-ME-Sender: <xms:1iwsZKivubfwOSR5Nj0WrihFqZJH_5b_onMF1RdR3PFvS2d2K5zlpg>
-    <xme:1iwsZLDWtvQX2NkyZNG20sQaooV9yAHDdnhvPin5GlgDThrq-wEWq1Bnfiz7K1r7P
-    XlOsCpU5UVd5Uw1_2c>
-X-ME-Received: <xmr:1iwsZCHhW_glzmJgGsrKa8Qrcqk6Qzv8oU01TE9wYVD-3irDS7sMOEiHosD2xfGJJvN3EUSl2dNFIVoFw-2x4RsbAyz56K0>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrvdeiledgjeduucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhephfffufggtgfgkfhfjgfvvefosehtjeertdertdejnecuhfhrohhmpeforgig
-    ihhmvgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrf
-    grthhtvghrnhepvedvleeijeegvdekffehkeehieelhfeggfffheetkeeuledvtdeuffeh
-    teeltdffnecuvehluhhsthgvrhfuihiivgepvdenucfrrghrrghmpehmrghilhhfrhhomh
-    epmhgrgihimhgvsegtvghrnhhordhtvggthh
-X-ME-Proxy: <xmx:1iwsZDTtsbgWWreAN5ed4sCl-21AF0ukRnijqAc6wo0IbljY065JWA>
-    <xmx:1iwsZHx7En94Dk9bcOnXnQnydH9rORG0zSWSNvbz4zR2S9FZ7k5rYA>
-    <xmx:1iwsZB6YBpWgP2oUEpWtmDmw0huCUS9TniF1dp5f2nqIyrYQW7-EJQ>
-    <xmx:1iwsZP-knlh8GbprLZd5QTtl_xxH2IU3BC89GRCQJhjP5LiZ4Zx4SQ>
-Feedback-ID: i8771445c:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 4 Apr 2023 09:57:40 -0400 (EDT)
-From: Maxime Ripard <maxime@cerno.tech>
-Date: Tue, 04 Apr 2023 12:11:52 +0200
-Subject: [PATCH v3 62/65] clk: tegra: super: Switch to determine_rate
+	id 1pjhbK-001n3F-0z;
+	Tue, 04 Apr 2023 14:25:35 +0000
+Received: by mail-oa1-f41.google.com with SMTP id 586e51a60fabf-17aceccdcf6so34708808fac.9;
+        Tue, 04 Apr 2023 07:25:32 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680618332;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ApT4/BK1w7ic9F4sBvqn2kPYM1w0Sn+odMgc/sq2JvM=;
+        b=7lg5zHD+LnDWHMmLG6F1V4Eb0RZbslP/4PFKVDCFVtmjcTPb6jhb8HgjCsR8lkAVcP
+         WpQnWGao4NcUUMy3MmxW2J7MV/tLc6YdbIgUqiE+8AHYQfo6oZJPuk3BfBDEhzL+mj0C
+         B1i86VJIrnt848BxNQdjvH47rpuMjxv62BM0Bd2xJ2vew/i0xvrafiOAOfhlhl5jX603
+         R/DVH1yg6Z1qBNP8H344PPcPeEuEqcq/4fH4kDgRvZY7iSgST4D1aYeqBcsSXutnDZgU
+         QiC/F0XcM/ufSy8cWOg9SZUXgjeeuHW8cZ1MFUcSaqjK756rK14VbWSTEu5isYPaeLXz
+         x/2Q==
+X-Gm-Message-State: AAQBX9fUE3/X6FATcjtIA1E1fYR5cyHJeJWwLWaAal9uFE2EN/qHPnSY
+	xmmkyAfIpw5VJoEbP2UdjQ==
+X-Google-Smtp-Source: AKy350ZUp9g4CNJcEzGG1ZdTCE/lLLo6LkrUbne54r031+kRziV/pc060KzUIpJQZHr0c7d2vdYY3A==
+X-Received: by 2002:a05:6870:c684:b0:17a:acbb:d1e4 with SMTP id cv4-20020a056870c68400b0017aacbbd1e4mr1663599oab.53.1680618332200;
+        Tue, 04 Apr 2023 07:25:32 -0700 (PDT)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id tw16-20020a056871491000b0017ae909afe8sm4814352oab.34.2023.04.04.07.25.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 04 Apr 2023 07:25:31 -0700 (PDT)
+Received: (nullmailer pid 3833637 invoked by uid 1000);
+	Tue, 04 Apr 2023 14:25:31 -0000
+Date: Tue, 4 Apr 2023 09:25:31 -0500
+From: Rob Herring <robh@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh+dt@kernel.org>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-usb@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Roger Quadros <rogerq@kernel.org>, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/3] dt-bindings: usb: mediatek,mtk-xhci: drop
+ assigned-clocks
+Message-ID: <168061833065.3833579.13089366523003216178.robh@kernel.org>
+References: <20230403191850.374839-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20221018-clk-range-checks-fixes-v3-62-9a1358472d52@cerno.tech>
-References: <20221018-clk-range-checks-fixes-v3-0-9a1358472d52@cerno.tech>
-In-Reply-To: <20221018-clk-range-checks-fixes-v3-0-9a1358472d52@cerno.tech>
-To: Michael Turquette <mturquette@baylibre.com>,
-  Stephen Boyd <sboyd@kernel.org>,
-  =?utf-8?q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
-  Manivannan Sadhasivam <mani@kernel.org>,
-  Nicolas Ferre <nicolas.ferre@microchip.com>,
-  Alexandre Belloni <alexandre.belloni@bootlin.com>,
-  Claudiu Beznea <claudiu.beznea@microchip.com>,
-  Max Filippov <jcmvbkbc@gmail.com>,
-  Charles Keepax <ckeepax@opensource.cirrus.com>,
-  Richard Fitzgerald <rf@opensource.cirrus.com>,
-  Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-  Alexandre Torgue <alexandre.torgue@foss.st.com>,
-  Luca Ceresoli <luca.ceresoli@bootlin.com>,
-  David Lechner <david@lechnology.com>, Sekhar Nori <nsekhar@ti.com>,
-  Abel Vesa <abelvesa@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
-  Sascha Hauer <s.hauer@pengutronix.de>,
-  Pengutronix Kernel Team <kernel@pengutronix.de>,
-  Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
-  Matthias Brugger <matthias.bgg@gmail.com>,
-  Geert Uytterhoeven <geert+renesas@glider.be>,
-  Dinh Nguyen <dinguyen@kernel.org>,
-  Peter De Schrijver <pdeschrijver@nvidia.com>,
-  Prashant Gaikwad <pgaikwad@nvidia.com>,
-  Thierry Reding <thierry.reding@gmail.com>,
-  Jonathan Hunter <jonathanh@nvidia.com>,
-  Ulf Hansson <ulf.hansson@linaro.org>,
-  Linus Walleij <linus.walleij@linaro.org>,
- David Airlie <airlied@gmail.com>,  Daniel Vetter <daniel@ffwll.ch>,
- Vinod Koul <vkoul@kernel.org>,
-  Kishon Vijay Abraham I <kishon@kernel.org>,
-  Alessandro Zummo <a.zummo@towertech.it>, Chen-Yu Tsai <wens@csie.org>,
-  Jernej Skrabec <jernej.skrabec@gmail.com>,
-  Samuel Holland <samuel@sholland.org>,
- Liam Girdwood <lgirdwood@gmail.com>,  Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>,  Takashi Iwai <tiwai@suse.com>,
- Paul Cercueil <paul@crapouillou.net>,  Orson Zhai <orsonzhai@gmail.com>,
-  Baolin Wang <baolin.wang@linux.alibaba.com>,
-  Chunyan Zhang <zhang.lyra@gmail.com>
-Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- linux-arm-kernel@lists.infradead.org, linux-actions@lists.infradead.org, 
- patches@opensource.cirrus.com, linux-stm32@st-md-mailman.stormreply.com, 
- linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
- linux-tegra@vger.kernel.org, dri-devel@lists.freedesktop.org, 
- linux-phy@lists.infradead.org, linux-rtc@vger.kernel.org, 
- linux-sunxi@lists.linux.dev, alsa-devel@alsa-project.org, 
- linux-mips@vger.kernel.org, Maxime Ripard <maxime@cerno.tech>
-X-Mailer: b4 0.12.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2821; i=maxime@cerno.tech;
- h=from:subject:message-id; bh=scvmGaGh1MkANaa7+EVNqR3cdMd7XwoadoU3AIB53Eo=;
- b=owGbwMvMwCX2+D1vfrpE4FHG02pJDCna37fvYEgXOvvw1usVz4T/nt7mrmvDyJdhdbJHZml/hRnn
- syUnOkpZGMS4GGTFFFlihM2XxJ2a9bqTjW8ezBxWJpAhDFycAjARlj+MDL/6Nj2WX3Dy6S0xV43Zwr
- 6PucJqshs8bC0Y6tY6TJZ1s2RkeJd2r60q7tPZ9Kj60psn737x1+L4NPeD0d6ZDu4/k5K8uAA=
-X-Developer-Key: i=maxime@cerno.tech; a=openpgp;
- fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230403191850.374839-1-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230404_065743_947203_74B0BF53 
-X-CRM114-Status: GOOD (  21.40  )
+X-CRM114-CacheID: sfid-20230404_072534_344728_2E2C9341 
+X-CRM114-Status: GOOD (  11.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -155,80 +80,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Tegra super clocks implements a mux with a set_parent hook, but
-doesn't provide a determine_rate implementation.
 
-This is a bit odd, since set_parent() is there to, as its name implies,
-change the parent of a clock. However, the most likely candidate to
-trigger that parent change is a call to clk_set_rate(), with
-determine_rate() figuring out which parent is the best suited for a
-given rate.
+On Mon, 03 Apr 2023 21:18:48 +0200, Krzysztof Kozlowski wrote:
+> The meta schema from DT schema already defines assigned-clocks, so there
+> is no need for device schema to mention it at all.  There are also no
+> benefits of having it here.
+> 
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> ---
+>  .../devicetree/bindings/usb/mediatek,mtk-xhci.yaml        | 8 --------
+>  1 file changed, 8 deletions(-)
+> 
 
-The other trigger would be a call to clk_set_parent(), but it's far less
-used, and it doesn't look like there's any obvious user for that clock.
-
-So, the set_parent hook is effectively unused, possibly because of an
-oversight. However, it could also be an explicit decision by the
-original author to avoid any reparenting but through an explicit call to
-clk_set_parent().
-
-The driver does implement round_rate() though, which means that we can
-change the rate of the clock, but we will never get to change the
-parent.
-
-However, It's hard to tell whether it's been done on purpose or not.
-
-Since we'll start mandating a determine_rate() implementation, let's
-convert the round_rate() implementation to a determine_rate(), which
-will also make the current behavior explicit. And if it was an
-oversight, the clock behaviour can be adjusted later on.
-
-Signed-off-by: Maxime Ripard <maxime@cerno.tech>
----
- drivers/clk/tegra/clk-super.c | 15 +++++++++++----
- 1 file changed, 11 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/clk/tegra/clk-super.c b/drivers/clk/tegra/clk-super.c
-index 8ad62e04fd8b..c035f0eb030d 100644
---- a/drivers/clk/tegra/clk-super.c
-+++ b/drivers/clk/tegra/clk-super.c
-@@ -142,15 +142,22 @@ static const struct clk_ops tegra_clk_super_mux_ops = {
- 	.restore_context = clk_super_mux_restore_context,
- };
- 
--static long clk_super_round_rate(struct clk_hw *hw, unsigned long rate,
--				 unsigned long *parent_rate)
-+static int clk_super_determine_rate(struct clk_hw *hw,
-+				    struct clk_rate_request *req)
- {
- 	struct tegra_clk_super_mux *super = to_clk_super_mux(hw);
- 	struct clk_hw *div_hw = &super->frac_div.hw;
-+	unsigned long rate;
- 
- 	__clk_hw_set_clk(div_hw, hw);
- 
--	return super->div_ops->round_rate(div_hw, rate, parent_rate);
-+	rate = super->div_ops->round_rate(div_hw, req->rate,
-+					  &req->best_parent_rate);
-+	if (rate < 0)
-+		return rate;
-+
-+	req->rate = rate;
-+	return 0;
- }
- 
- static unsigned long clk_super_recalc_rate(struct clk_hw *hw,
-@@ -193,7 +200,7 @@ const struct clk_ops tegra_clk_super_ops = {
- 	.get_parent = clk_super_get_parent,
- 	.set_parent = clk_super_set_parent,
- 	.set_rate = clk_super_set_rate,
--	.round_rate = clk_super_round_rate,
-+	.determine_rate = clk_super_determine_rate,
- 	.recalc_rate = clk_super_recalc_rate,
- 	.restore_context = clk_super_restore_context,
- };
-
--- 
-2.39.2
+Acked-by: Rob Herring <robh@kernel.org>
 
 
