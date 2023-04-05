@@ -4,87 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 154C7C761A6
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Apr 2023 13:04:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03C7BC76188
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Apr 2023 13:07:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YkbuvCGQOWFY1W5hX/uG2RveqynQ+85wv2M8PGFZ7vc=; b=IoT9Zk4zP6mx5PcxFn/tHPtL5g
-	fR0rp5FEjgzEEiAtoAoLNCOrCJSI58l60kSkRjjxbG7uYyPr6JA9K/a+M/nPmisz8DFfmSdY1spjn
-	kabuAwIFnO0mcxSWXJyazKk4jxop1MsPbX2BKdo79nIV/80qCxs++I24yXHwIyVwf3Z+WhyXn/7Yw
-	oUeTwTWW8Sc6g9m3VYAObGMbc9LZVrY9uUpqrMxMwDd3TubEHhRfmltljsb8Hzp2tw0wNwZsOfAZp
-	WGJT4PcZRXGpLOIYY/iPhGTrXF0239lHkBTfvmxESIcOdxvIppX7hcXL3VyfuL/4hW/OAJXSksVBC
-	t+//aJDA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WeZ9y9cBWf8D72zPud79w30qw3KXJ+7zJufVpVM/bXA=; b=K140qb283/EfZMLu5Y6wu+aiNn
+	eTGBCwmQwDbH6wvD5xof9vh5y3fcSj+Stzw3I0thS8f9bCDobGjT+NqbgW/3Ye44zvMSmVwwpInYh
+	Am3ejuu1jSr3dBToVpO0H03I7IO+o60d0n5etVpKI4WL4MEUxaVF7JzRudiNFwFl6IrQldfPEA0bM
+	WM6jscOmsfzhpT3cGG1pES2ybDjaOhz5S6y/BbnqpxrBZX9W35UfpJ853JX5T47DKQ6dIUmdhC8g6
+	bwFU5wAqo49S46q9tfVuo4dBOpZ3gvdzl0z1oSjqF4XrfRQIPV6wxr9rHxS1KyerdaEdj7pjzllkt
+	+0jCA28Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pk2oB-004TGu-2o;
-	Wed, 05 Apr 2023 13:04:15 +0000
-Received: from aposti.net ([89.234.176.197])
+	id 1pk2qw-004Tkm-1S;
+	Wed, 05 Apr 2023 13:07:06 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pk2o6-004TEN-3B;
-	Wed, 05 Apr 2023 13:04:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
-	s=mail; t=1680699848;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=YkbuvCGQOWFY1W5hX/uG2RveqynQ+85wv2M8PGFZ7vc=;
-	b=3mEi9sd14RtSilWugED3F/f1NHSVZz/2xsgSbVUMYtohN4iyRWPQuN/0cj7BtjXjYQTI9X
-	a6aEynlck8IN4/RYN4tKNy+VG1wAYjPHKb2w1UKNamaQkeW8Ds6o9+R3WX/pE03V9N6Ndu
-	0nvl10itS1x2Cw7b1X3xuVSiT51gMLU=
-Message-ID: <3c1c42baf7d764bf6429b470f534fd9ec46ddedd.camel@crapouillou.net>
-Subject: Re: [PATCH v3 56/65] clk: ingenic: cgu: Switch to determine_rate
-From: Paul Cercueil <paul@crapouillou.net>
-To: Maxime Ripard <maxime@cerno.tech>, Michael Turquette
- <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Andreas
- =?ISO-8859-1?Q?F=E4rber?= <afaerber@suse.de>, Manivannan Sadhasivam
- <mani@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre
- Belloni <alexandre.belloni@bootlin.com>,  Claudiu Beznea
- <claudiu.beznea@microchip.com>, Max Filippov <jcmvbkbc@gmail.com>, Charles
- Keepax <ckeepax@opensource.cirrus.com>, Richard Fitzgerald
- <rf@opensource.cirrus.com>,  Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>, Luca Ceresoli
- <luca.ceresoli@bootlin.com>, David Lechner <david@lechnology.com>, Sekhar
- Nori <nsekhar@ti.com>, Abel Vesa <abelvesa@kernel.org>, Shawn Guo
- <shawnguo@kernel.org>,  Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix
- Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>,
- NXP Linux Team <linux-imx@nxp.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Geert Uytterhoeven <geert+renesas@glider.be>,
- Dinh Nguyen <dinguyen@kernel.org>, Peter De Schrijver
- <pdeschrijver@nvidia.com>, Prashant Gaikwad <pgaikwad@nvidia.com>, Thierry
- Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>,
- Ulf Hansson <ulf.hansson@linaro.org>, Linus Walleij
- <linus.walleij@linaro.org>, David Airlie <airlied@gmail.com>, Daniel Vetter
- <daniel@ffwll.ch>, Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I
- <kishon@kernel.org>, Alessandro Zummo <a.zummo@towertech.it>, Chen-Yu Tsai
- <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland
- <samuel@sholland.org>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown
- <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai
- <tiwai@suse.com>, Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
- <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>
-Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-arm-kernel@lists.infradead.org,  linux-actions@lists.infradead.org,
- patches@opensource.cirrus.com,  linux-stm32@st-md-mailman.stormreply.com,
- linux-mediatek@lists.infradead.org,  linux-renesas-soc@vger.kernel.org,
- linux-tegra@vger.kernel.org,  dri-devel@lists.freedesktop.org,
- linux-phy@lists.infradead.org,  linux-rtc@vger.kernel.org,
- linux-sunxi@lists.linux.dev,  alsa-devel@alsa-project.org,
- linux-mips@vger.kernel.org
-Date: Wed, 05 Apr 2023 15:04:05 +0200
-In-Reply-To: <20221018-clk-range-checks-fixes-v3-56-9a1358472d52@cerno.tech>
-References: <20221018-clk-range-checks-fixes-v3-0-9a1358472d52@cerno.tech>
-	 <20221018-clk-range-checks-fixes-v3-56-9a1358472d52@cerno.tech>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+	id 1pk2qr-004Tge-2u
+	for linux-mediatek@lists.infradead.org;
+	Wed, 05 Apr 2023 13:07:05 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id m2so36141548wrh.6
+        for <linux-mediatek@lists.infradead.org>; Wed, 05 Apr 2023 06:06:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1680700015;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=WeZ9y9cBWf8D72zPud79w30qw3KXJ+7zJufVpVM/bXA=;
+        b=x9C1l3yN6ebb0k9A9ISZ/SNmRbWnaNsCPmvIRmimgXqS+3KfKLMyqL85N9PzN2LhRg
+         00Cl1uG6z5LFbekfIcB3R9xZKQ+tTZkd56YT0HFh3dbXygkYOQ7Zqg0iEEIRDEdJ+g1S
+         bkfdBm2mafUl3f7rX0ox0fqJpXyzmLE1v43buDEH9OQFDCZbOu7Bz3kPFGjcWCwx3h+G
+         s/zEa3IV6p2PBSuEfcSuD8mOlmIp5/ysvJ6KRi8UcpEnenpCdG5xvfUe3vqSiTE/WSXw
+         slbj2JpS4kPKDqJ6cJN6GQIiFmCnRLkks/YPsdq06So/4s511HNCUwCwUjravbV4NqMs
+         WmuQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680700015;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=WeZ9y9cBWf8D72zPud79w30qw3KXJ+7zJufVpVM/bXA=;
+        b=id5j2KMp4iVOX3MU15CTthFs2edNBAXwMvSzzdU7XhYd0dpTJnyrujy+pcIKYHpsqw
+         XH/7FA0oiwal5B3m4645mjBdsnzkwX3maESO1h83oepTjIUd5HNTNXx/5J/zUZIZ7Fj6
+         iUR+37R5iJ+13gVotl7sCTIIJlWSZ4hxwTmVqfY9y30WwAiVqxZjvgwQBlj8F3pSPGAZ
+         BJSGpMc0E0QfN7mLmyXhsEFARrbe8iAFoy2SRyY8cFuL9bWYKWAK4sNK4DKwAOvRDDid
+         +kTaqC/TV5xep6ffaJn5uMm5zf85OubuPwICRgT1VYuoE3bN3pqkeh7EYjfhh5DFQcDl
+         Bnbg==
+X-Gm-Message-State: AAQBX9dOTS8eNjQHhnApDItcxkzjcyTafgj3mst9wB/KHY3mFdiiAo0U
+	9bE618vIc44Z8crQpgY2VvF7wQ==
+X-Google-Smtp-Source: AKy350YMENPnv85x0KK3Edc9qCwxaSQhCwtpw07WNjYCbM151PHxdsUy7oVj1ngPfQ6V4vI31lfjTQ==
+X-Received: by 2002:adf:f402:0:b0:2e4:cbbe:cfc2 with SMTP id g2-20020adff402000000b002e4cbbecfc2mr4497441wro.25.1680700015544;
+        Wed, 05 Apr 2023 06:06:55 -0700 (PDT)
+Received: from [192.168.1.172] (158.22.5.93.rev.sfr.net. [93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id p23-20020a05600c205700b003eb5ce1b734sm2161425wmg.7.2023.04.05.06.06.54
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 05 Apr 2023 06:06:54 -0700 (PDT)
+Message-ID: <fd24877a-5fae-5434-dc56-61ab35ccd820@baylibre.com>
+Date: Wed, 5 Apr 2023 15:06:53 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH v2 10/10] memory: mtk-smi: mt8365: Add SMI Support
+Content-Language: en-US
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+References: <20230207-iommu-support-v2-0-60d5fa00e4e5@baylibre.com>
+ <20230207-iommu-support-v2-10-60d5fa00e4e5@baylibre.com>
+ <9847bc48-c96c-3599-e876-bcf9ebf1522e@linaro.org>
+ <CAFGrd9pBdaHLGUZHkaz2_XKafyX=dxu9UckQxrphg52EG=A1SQ@mail.gmail.com>
+ <8fc3dd22-79df-32cb-c219-896eda8fa986@linaro.org>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <8fc3dd22-79df-32cb-c219-896eda8fa986@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230405_060411_184660_A347EC0A 
-X-CRM114-Status: GOOD (  27.16  )
+X-CRM114-CacheID: sfid-20230405_060701_939737_3E9032B5 
+X-CRM114-Status: GOOD (  10.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,133 +102,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Maxime,
 
-Le mardi 04 avril 2023 =C3=A0 12:11 +0200, Maxime Ripard a =C3=A9crit=C2=A0=
-:
-> The Ingenic CGU clocks implements a mux with a set_parent hook, but
-> doesn't provide a determine_rate implementation.
->=20
-> This is a bit odd, since set_parent() is there to, as its name
-> implies,
-> change the parent of a clock. However, the most likely candidate to
-> trigger that parent change is a call to clk_set_rate(), with
-> determine_rate() figuring out which parent is the best suited for a
-> given rate.
->=20
-> The other trigger would be a call to clk_set_parent(), but it's far
-> less
-> used, and it doesn't look like there's any obvious user for that
-> clock.
->=20
-> So, the set_parent hook is effectively unused, possibly because of an
-> oversight. However, it could also be an explicit decision by the
-> original author to avoid any reparenting but through an explicit call
-> to
-> clk_set_parent().
+On 05/04/2023 13:45, Krzysztof Kozlowski wrote:
+> On 05/04/2023 11:53, Alexandre Mergnat wrote:
+>> Ok, I will move the driver patch before the DTS patches in the next version.
+>>
+> Or do not send it together at all, which might solve your dependency
+> problem. According to your cover letter I cannot take the memory
+> controller bits, so I am waiting for dependencies to hit the mainline.
+> Alternatively I will need pull request with stable tag.
+>
+Ok, I prefer send the driver patch in another serie. That will solve the 
+dependency with the DTS a least.
 
-As I said in the v2 (IIRC), clk_set_parent() is used when re-parenting
-from the device tree.
-
->=20
-> The driver does implement round_rate() though, which means that we
-> can
-> change the rate of the clock, but we will never get to change the
-> parent.
->=20
-> However, It's hard to tell whether it's been done on purpose or not.
->=20
-> Since we'll start mandating a determine_rate() implementation, let's
-> convert the round_rate() implementation to a determine_rate(), which
-> will also make the current behavior explicit. And if it was an
-> oversight, the clock behaviour can be adjusted later on.
-
-So just to be sure, this patch won't make clk_set_rate() automatically
-switch parents, right?
-
-Allowing automatic re-parenting sounds like a huge can of worms...
-
-Cheers,
--Paul
-
->=20
-> Signed-off-by: Maxime Ripard <maxime@cerno.tech>
-> ---
-> =C2=A0drivers/clk/ingenic/cgu.c | 15 ++++++++-------
-> =C2=A01 file changed, 8 insertions(+), 7 deletions(-)
->=20
-> diff --git a/drivers/clk/ingenic/cgu.c b/drivers/clk/ingenic/cgu.c
-> index 1f7ba30f5a1b..0c9c8344ad11 100644
-> --- a/drivers/clk/ingenic/cgu.c
-> +++ b/drivers/clk/ingenic/cgu.c
-> @@ -491,22 +491,23 @@ ingenic_clk_calc_div(struct clk_hw *hw,
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return div;
-> =C2=A0}
-> =C2=A0
-> -static long
-> -ingenic_clk_round_rate(struct clk_hw *hw, unsigned long req_rate,
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 unsigned long *paren=
-t_rate)
-> +static int ingenic_clk_determine_rate(struct clk_hw *hw,
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struc=
-t clk_rate_request *req)
-> =C2=A0{
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0struct ingenic_clk *ingen=
-ic_clk =3D to_ingenic_clk(hw);
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0const struct ingenic_cgu_=
-clk_info *clk_info =3D
-> to_clk_info(ingenic_clk);
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0unsigned int div =3D 1;
-> =C2=A0
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (clk_info->type & CGU_=
-CLK_DIV)
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0div =3D ingenic_clk_calc_div(hw, clk_info,
-> *parent_rate, req_rate);
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0div =3D ingenic_clk_calc_div(hw, clk_info, req-
-> >best_parent_rate,
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0 req->rate);
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0else if (clk_info->type &=
- CGU_CLK_FIXDIV)
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0div =3D clk_info->fixdiv.div;
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0else if (clk_hw_can_set_r=
-ate_parent(hw))
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0*parent_rate =3D req_rate;
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0req->best_parent_rate =3D req->rate;
-> =C2=A0
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return DIV_ROUND_UP(*parent_ra=
-te, div);
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0req->rate =3D DIV_ROUND_UP(req=
-->best_parent_rate, div);
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return 0;
-> =C2=A0}
-> =C2=A0
-> =C2=A0static inline int ingenic_clk_check_stable(struct ingenic_cgu *cgu,
-> @@ -626,7 +627,7 @@ static const struct clk_ops ingenic_clk_ops =3D {
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.set_parent =3D ingenic_c=
-lk_set_parent,
-> =C2=A0
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.recalc_rate =3D ingenic_=
-clk_recalc_rate,
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.round_rate =3D ingenic_clk_ro=
-und_rate,
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.determine_rate =3D ingenic_cl=
-k_determine_rate,
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.set_rate =3D ingenic_clk=
-_set_rate,
-> =C2=A0
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.enable =3D ingenic_clk_e=
-nable,
->=20
+Regards,
+Alexandre
 
 
