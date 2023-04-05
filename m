@@ -4,98 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1ABCAC7619A
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Apr 2023 12:57:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01387C76188
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Apr 2023 13:02:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Mq/p4txhSsRLR5xVgrA62YXfgD49tU+mOTycAeKgsHg=; b=U2y6EvRmVWurY0BBG7gh71iREi
-	Q7IRaqzNKL2vklrzfEeBzB9JUiAfb6rZZPv0iuwyPargUag6eQXACudOU29CgZ+PtKq1LWSN/YIhb
-	tS5dXefVtUSmld5NYzylLza3FHqTeIMxUectqadrsJWBD+a6qMOL1/A5kKn9axT8UVHWkPBbADTgZ
-	ecnpGk8GN7EauO79dU/fk2B4XNhb6ghxzR8N4kErjG84yoPieoHmTrOa8peCUc2LEPfMs9hbR/0vs
-	oEBzUITgmtSb+ViH247eIvvdZfXJCdC2deNNpvFxos7JxUQJcEkMyXzQgRnyuqUCw5cssy9AwPe+Q
-	mHA+GnLA==;
+	bh=DPNYGvD9ecGreX0PVmpRlH15Pei/+SNAv596EloBSvk=; b=Yh2AgXZsqX/C65mV6DsOUTRi3B
+	vyXcOqfYs1HadndE4jxwM+clfmvyLmwG+XH9KCjgrwa8MeVimeNmrSOaEabErWpHqDxqG2KtJLOch
+	vKSMoA0cQ86hEVI8Cl8oH19HarttmRcda5sq+NhtAvguVhS6hXDVut6XIvg6TCmAj2IP7PWJpwN8P
+	nN4CH7B3z3t53hE5QLacb6NpvRlZvhHE3g9wNd9EI4SUZM/7jDyeR1uCigJ82btiyElb1R6s3V6Ue
+	OGSmirobr03A8tpPE1MFmLM455EkCly6S5XNc8DLsm5+vgp0PembIfytJ/OfMWiDHf0HidnkHCH77
+	jAKnubtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pk2hr-004SLI-2C;
-	Wed, 05 Apr 2023 12:57:43 +0000
-Received: from aposti.net ([89.234.176.197])
+	id 1pk2mD-004Sq8-30;
+	Wed, 05 Apr 2023 13:02:13 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pk2hn-004SI0-1i;
-	Wed, 05 Apr 2023 12:57:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
-	s=mail; t=1680699450;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Mq/p4txhSsRLR5xVgrA62YXfgD49tU+mOTycAeKgsHg=;
-	b=Mb98f9ufodGaozAOY4xYrOH4ki7sxYY/vAA0bNDznfkO1jY7oQ7vUoy9gBV18sQyg7Fqkp
-	4iw1OtIZgkWKHd7enKxNHs2560FyoXBFO6izP6fR7+5aCxwEgm0s0Qni1/6h8kIbFM1q0N
-	AxvQ9vdC4gf6sPGfRYLz7iOkrkLShI8=
-Message-ID: <1e0e8e9fe44c27e844e7e918a985704e58da2c27.camel@crapouillou.net>
-Subject: Re: [PATCH v2 56/65] clk: ingenic: cgu: Switch to determine_rate
-From: Paul Cercueil <paul@crapouillou.net>
-To: Maxime Ripard <maxime@cerno.tech>, Aidan MacDonald
-	 <aidanmacdonald.0x0@gmail.com>
-Cc: Stephen Boyd <sboyd@kernel.org>, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>,  Chen-Yu Tsai <wens@csie.org>, Daniel Vetter
- <daniel@ffwll.ch>, Nicolas Ferre <nicolas.ferre@microchip.com>, Thierry
- Reding <thierry.reding@gmail.com>,  Jaroslav Kysela <perex@perex.cz>, Shawn
- Guo <shawnguo@kernel.org>, Fabio Estevam <festevam@gmail.com>, Ulf Hansson
- <ulf.hansson@linaro.org>, Claudiu Beznea <claudiu.beznea@microchip.com>,
- Michael Turquette <mturquette@baylibre.com>,  Dinh Nguyen
- <dinguyen@kernel.org>, Chunyan Zhang <zhang.lyra@gmail.com>, Manivannan
- Sadhasivam <mani@kernel.org>, Andreas =?ISO-8859-1?Q?F=E4rber?=
- <afaerber@suse.de>,  Jonathan Hunter <jonathanh@nvidia.com>, Abel Vesa
- <abelvesa@kernel.org>, Charles Keepax <ckeepax@opensource.cirrus.com>,
- Alessandro Zummo <a.zummo@towertech.it>,  Peter De Schrijver
- <pdeschrijver@nvidia.com>, Orson Zhai <orsonzhai@gmail.com>, Alexandre
- Torgue <alexandre.torgue@foss.st.com>, Prashant Gaikwad
- <pgaikwad@nvidia.com>, Liam Girdwood <lgirdwood@gmail.com>, Alexandre
- Belloni <alexandre.belloni@bootlin.com>, Samuel Holland
- <samuel@sholland.org>, Matthias Brugger <matthias.bgg@gmail.com>, Richard
- Fitzgerald <rf@opensource.cirrus.com>, Vinod Koul <vkoul@kernel.org>, NXP
- Linux Team <linux-imx@nxp.com>,  Sekhar Nori <nsekhar@ti.com>, Kishon Vijay
- Abraham I <kishon@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
- Takashi Iwai <tiwai@suse.com>, David Airlie <airlied@gmail.com>, Luca
- Ceresoli <luca.ceresoli@bootlin.com>, Jernej Skrabec
- <jernej.skrabec@gmail.com>, Pengutronix Kernel Team
- <kernel@pengutronix.de>,  Baolin Wang <baolin.wang@linux.alibaba.com>,
- David Lechner <david@lechnology.com>, Sascha Hauer
- <s.hauer@pengutronix.de>, Mark Brown <broonie@kernel.org>, Max Filippov
- <jcmvbkbc@gmail.com>, Geert Uytterhoeven <geert+renesas@glider.be>, 
- linux-stm32@st-md-mailman.stormreply.com, alsa-devel@alsa-project.org, 
- linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org, 
- linux-mips@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
- linux-actions@lists.infradead.org, linux-clk@vger.kernel.org, 
+	id 1pk2m9-004Sow-2E;
+	Wed, 05 Apr 2023 13:02:10 +0000
+Received: from ip4d1634d3.dynamic.kabel-deutschland.de ([77.22.52.211] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1pk2lE-0006xn-Nr; Wed, 05 Apr 2023 15:01:12 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+ =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
+Cc: Miquel Raynal <miquel.raynal@bootlin.com>,
+ Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
+ Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
+ Alyssa Rosenzweig <alyssa@rosenzweig.io>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Claudiu Beznea <claudiu.beznea@microchip.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- patches@opensource.cirrus.com, linux-tegra@vger.kernel.org, 
- linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org, 
- dri-devel@lists.freedesktop.org
-Date: Wed, 05 Apr 2023 14:57:26 +0200
-In-Reply-To: <20230327192430.b2cp3yyrkzy4g4vw@penduick>
-References: <80VTKR.CE8RVN8M3ZYK3@crapouillou.net>
-	 <20221104145946.orsyrhiqvypisl5j@houat>
-	 <cp7Yh29ndlOOi1yW8KwCcpzoLPLxm1vR@localhost>
-	 <20221107085417.xrsh6xy3ouwdkp4z@houat>
-	 <ucJ6KSBqdPTxfxUQqLUr9C9RGiQRnY1I@localhost>
-	 <20221109110045.j24vwkaq3s4yzoy3@houat>
-	 <06a293adc75990ed3e297b076fc38d8a.sboyd@kernel.org>
-	 <xpKMzGb1sOsucWMTlJIMzrT5KjLlZ7JP@localhost>
-	 <20230324111959.frjf4neopbs67ugd@houat>
-	 <rTJKpeLOBeu3eOLW5z3P5fEpcOJJLrGs@localhost>
-	 <20230327192430.b2cp3yyrkzy4g4vw@penduick>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+ Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>, Orson Zhai <orsonzhai@gmail.com>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Chunyan Zhang <zhang.lyra@gmail.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Vincent Shih <vincent.sunplus@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+ Masami Hiramatsu <mhiramat@kernel.org>,
+ Michal Simek <michal.simek@xilinx.com>,
+ Alessandro Zummo <a.zummo@towertech.it>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Evgeniy Polyakov <zbr@ioremap.net>, linux-mtd@lists.infradead.org,
+ linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-sunxi@lists.linux.dev, linux-rtc@vger.kernel.org,
+ Michael Walle <michael@walle.cc>,
+ =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
+Subject:  Re: [PATCH V4] nvmem: add explicit config option to read old syntax fixed OF
+ cells
+Date: Wed, 05 Apr 2023 15:01:10 +0200
+Message-ID: <4767237.ejJDZkT8p0@diego>
+In-Reply-To: <20230403225540.1931-1-zajec5@gmail.com>
+References: <20230403225540.1931-1-zajec5@gmail.com>
 MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230405_055739_741624_B9697753 
-X-CRM114-Status: GOOD (  41.35  )
+X-CRM114-CacheID: sfid-20230405_060209_746537_D9CE8E2C 
+X-CRM114-Status: GOOD (  18.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,85 +95,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Maxime,
-
-Le lundi 27 mars 2023 =C3=A0 21:24 +0200, Maxime Ripard a =C3=A9crit=C2=A0:
-> On Fri, Mar 24, 2023 at 08:58:48PM +0000, Aidan MacDonald wrote:
-> > > > My suggestion: add a per-clock bitmap to keep track of which
-> > > > parents
-> > > > are allowed. Any operation that would select a parent clock not
-> > > > on the
-> > > > whitelist should fail. Automatic reparenting should only select
-> > > > from
-> > > > clocks on the whitelist. And we need new DT bindings for
-> > > > controlling
-> > > > the whitelist, for example:
-> > > >=20
-> > > > =C2=A0=C2=A0=C2=A0 clock-parents-0 =3D <&clk1>, <&pll_c>;
-> > > > =C2=A0=C2=A0=C2=A0 clock-parents-1 =3D <&clk2>, <&pll_a>, <&pll_b>;
-> > > >=20
-> > > > This means that clk1 can only have pll_c as a parent, while
-> > > > clk2 can
-> > > > have pll_a or pll_b as parents. By default every clock will be
-> > > > able
-> > > > to use any parent, so a list is only needed if the machine
-> > > > needs a
-> > > > more restrictive policy.
-> > > >=20
-> > > > assigned-clock-parents should disable automatic reparenting,
-> > > > but allow
-> > > > explicit clk_set_parent(). This will allow clock drivers to
-> > > > start doing
-> > > > reparenting without breaking old DTs.
-> > >=20
-> > > I'm generally not a fan of putting all these policies in the
-> > > device
-> > > tree. Do you have an example where it wouldn't be possible to do
-> > > exactly
-> > > this from the driver itself?
-> >=20
-> > I'm confused. What's implicit in the example is clk1 and clk2 might
-> > have *other* possible choices of parent clock and the device tree
-> > is
-> > limiting what the OS is allowed to choose.
-> >=20
-> > Why would you put such arbitrary limitations into the driver?
+Am Dienstag, 4. April 2023, 00:55:40 CEST schrieb Rafa=C5=82 Mi=C5=82ecki:
+> From: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
 >=20
-> Why would we put such arbitrary limitations in the firmware? As this
-> entire thread can attest, people are already using the device tree to
-> work around the limitations of the Linux driver, or reduce the
-> features of Linux because they can rely on the device tree. Either
-> way, it's linked to the state of the Linux driver, and any other OS
-> or
-> Linux version could very well implement something more dynamic.
-
-Probably because if we have to choose between setting policy in the
-kernel or in the firmware, it is arguably better to set it in the
-firmware.
-
-Especially when talking about clocks, as the firmware is already the
-one programming the boot clocks.
-
-Cheers,
--Paul
-
-> > They would be different from machine to machine, unless the clock
-> > tree is so simple there is only *one* meaningful way to configure
-> > it.
+> Binding for fixed NVMEM cells defined directly as NVMEM device subnodes
+> has been deprecated. It has been replaced by the "fixed-layout" NVMEM
+> layout binding.
 >=20
-> If we look at the device trees we have in-tree, most of the users of
-> assigned-clocks are the same from one board to another.
+> New syntax is meant to be clearer and should help avoiding imprecise
+> bindings.
 >=20
-> > Most SoCs are complicated enough that there will be tradeoffs
-> > depending on what peripherals you are using (typically a single
-> > machine will not use *every* peripheral device provided by the
-> > SoC).
+> NVMEM subsystem already supports the new binding. It should be a good
+> idea to limit support for old syntax to existing drivers that actually
+> support & use it (we can't break backward compatibility!). That way we
+> additionally encourage new bindings & drivers to ignore deprecated
+> binding.
 >=20
-> We already have APIs to lock parents or rates on a given clock from
-> the consumer. It's far superior (feature-wise) than what the device
-> tree will ever offer because it's code, and it depends on the usage
-> already since an unused driver won't probe.
+> It wasn't clear (to me) if rtc and w1 code actually uses old syntax
+> fixed cells. I enabled them to don't risk any breakage.
 >=20
-> Maxime
+> Signed-off-by: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
+> [for meson-{efuse,mx-efuse}.c]
+> Acked-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+> [for mtk-efuse.c, nvmem/core.c, nvmem-provider.h]
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+> [MT8192, MT8195 Chromebooks]
+> Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabor=
+a.com>
+> [for microchip-otpc.c]
+> Reviewed-by: Claudiu Beznea <claudiu.beznea@microchip.com>
+> [SAMA7G5-EK]
+> Tested-by: Claudiu Beznea <claudiu.beznea@microchip.com>
+
+> diff --git a/drivers/nvmem/rockchip-efuse.c b/drivers/nvmem/rockchip-efus=
+e.c
+> index e4579de5d014..adc8bc70cffa 100644
+> --- a/drivers/nvmem/rockchip-efuse.c
+> +++ b/drivers/nvmem/rockchip-efuse.c
+> @@ -205,6 +205,7 @@ static int rockchip_rk3399_efuse_read(void *context, =
+unsigned int offset,
+> =20
+>  static struct nvmem_config econfig =3D {
+>  	.name =3D "rockchip-efuse",
+> +	.add_legacy_fixed_of_cells =3D true,
+>  	.stride =3D 1,
+>  	.word_size =3D 1,
+>  	.read_only =3D true,
+
+for rockchip-efuse.c
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+
 
 
