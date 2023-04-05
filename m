@@ -4,83 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01387C76188
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Apr 2023 13:02:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA139C76188
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Apr 2023 13:03:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DPNYGvD9ecGreX0PVmpRlH15Pei/+SNAv596EloBSvk=; b=Yh2AgXZsqX/C65mV6DsOUTRi3B
-	vyXcOqfYs1HadndE4jxwM+clfmvyLmwG+XH9KCjgrwa8MeVimeNmrSOaEabErWpHqDxqG2KtJLOch
-	vKSMoA0cQ86hEVI8Cl8oH19HarttmRcda5sq+NhtAvguVhS6hXDVut6XIvg6TCmAj2IP7PWJpwN8P
-	nN4CH7B3z3t53hE5QLacb6NpvRlZvhHE3g9wNd9EI4SUZM/7jDyeR1uCigJ82btiyElb1R6s3V6Ue
-	OGSmirobr03A8tpPE1MFmLM455EkCly6S5XNc8DLsm5+vgp0PembIfytJ/OfMWiDHf0HidnkHCH77
-	jAKnubtQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rxH2RPg6J7zXesbiQGi50JFtUolxVlN2Eg12XBxDIlY=; b=kjOsXJIkMMTzRk0Fq4LZ/bRw1m
+	PX/YVgwwlwgqAWeOuuMDpG6g4ooYQF8BSIo7X1A0E5hhwtXEbggcKWuxxbj3ZiWvPDvQg5+QQfxXd
+	cAvnGrBFbzx2YAnsV6FHbGTaCFmVziUIlRZJB5uexZhvsXTE8S++6sFuazfT6/vz8gOeXfZkEhnLs
+	1DzjTMH9BmXYJ6Wgckx+ZkmKXJpCrEMqbexP+mAlC5dd9smyuT/Iuhn+pc2Zj1wIpOUb4c6VKtKgA
+	qTB3Yu66yLPcnFDOnQtCmofnVzlT2Vsra/f5jAfQuowvEnFNW0YjSvA13tYttEWBZMiEddPG2JnY5
+	iTsap75A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pk2mD-004Sq8-30;
-	Wed, 05 Apr 2023 13:02:13 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1pk2na-004T65-2i;
+	Wed, 05 Apr 2023 13:03:38 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pk2m9-004Sow-2E;
-	Wed, 05 Apr 2023 13:02:10 +0000
-Received: from ip4d1634d3.dynamic.kabel-deutschland.de ([77.22.52.211] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1pk2lE-0006xn-Nr; Wed, 05 Apr 2023 15:01:12 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
- =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-Cc: Miquel Raynal <miquel.raynal@bootlin.com>,
- Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
- Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
- Alyssa Rosenzweig <alyssa@rosenzweig.io>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Claudiu Beznea <claudiu.beznea@microchip.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>, Orson Zhai <orsonzhai@gmail.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Vincent Shih <vincent.sunplus@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Masami Hiramatsu <mhiramat@kernel.org>,
- Michal Simek <michal.simek@xilinx.com>,
- Alessandro Zummo <a.zummo@towertech.it>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Evgeniy Polyakov <zbr@ioremap.net>, linux-mtd@lists.infradead.org,
- linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-sunxi@lists.linux.dev, linux-rtc@vger.kernel.org,
- Michael Walle <michael@walle.cc>,
- =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-Subject:  Re: [PATCH V4] nvmem: add explicit config option to read old syntax fixed OF
- cells
-Date: Wed, 05 Apr 2023 15:01:10 +0200
-Message-ID: <4767237.ejJDZkT8p0@diego>
-In-Reply-To: <20230403225540.1931-1-zajec5@gmail.com>
-References: <20230403225540.1931-1-zajec5@gmail.com>
+	id 1pk2nW-004T3A-2e;
+	Wed, 05 Apr 2023 13:03:36 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1C6456603187;
+	Wed,  5 Apr 2023 14:03:27 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1680699808;
+	bh=6sDDJG3Wyb9fV/04iwo5RqumN7KepPjmsLUQacDBkk4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=cGo9VoYEm4PuTrXVh5c4xqqenDZH+sGlUefOYdUCBblBW9aCN580bUxhnbwXOGSdw
+	 AQV8Ab9cGrHHrydj3LdUuNxqQWX9Pmg/o/rFto15TtHnG0rBOZnIDSE0xOwPYML7Tq
+	 vKNWACsnLZSgaS84Po8VUSe6i4/1Nf90D4JPEqtvw5ZOSv80hxZQr63e/c/Dt5lJUW
+	 wOIXzhUgMZ/FWkURqKE4i7q6lp92sNOnT2CyD19w3LgevChKUyYU0J7BhvnZpPrdhW
+	 6kdLat9wDmTcjZHz/IHYIQlqXXbQ4dqVOl/G+w+KydV7wqA76G7fXeIPGcdGnrGl/O
+	 RuBJONBATxPRQ==
+Message-ID: <c8a335d4-b621-8b65-ee77-87870425411c@collabora.com>
+Date: Wed, 5 Apr 2023 15:03:24 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.1
+Subject: Re: [RFC PATCH v8] media: mediatek: vcodec: support stateless AV1
+ decoder
+To: Xiaoyong Lu <xiaoyong.lu@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ Alexandre Courbot <acourbot@chromium.org>,
+ Nicolas Dufresne <nicolas@ndufresne.ca>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Tomasz Figa <tfiga@google.com>
+Cc: George Sun <george.sun@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Irui Wang <irui.wang@mediatek.com>, Steve Cho <stevecho@chromium.org>,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20230130123816.16568-1-xiaoyong.lu@mediatek.com>
+Content-Language: en-US
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230130123816.16568-1-xiaoyong.lu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230405_060209_746537_D9CE8E2C 
-X-CRM114-Status: GOOD (  18.74  )
+X-CRM114-CacheID: sfid-20230405_060335_014357_194B98C9 
+X-CRM114-Status: UNSURE (   8.11  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,56 +93,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am Dienstag, 4. April 2023, 00:55:40 CEST schrieb Rafa=C5=82 Mi=C5=82ecki:
-> From: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
->=20
-> Binding for fixed NVMEM cells defined directly as NVMEM device subnodes
-> has been deprecated. It has been replaced by the "fixed-layout" NVMEM
-> layout binding.
->=20
-> New syntax is meant to be clearer and should help avoiding imprecise
-> bindings.
->=20
-> NVMEM subsystem already supports the new binding. It should be a good
-> idea to limit support for old syntax to existing drivers that actually
-> support & use it (we can't break backward compatibility!). That way we
-> additionally encourage new bindings & drivers to ignore deprecated
-> binding.
->=20
-> It wasn't clear (to me) if rtc and w1 code actually uses old syntax
-> fixed cells. I enabled them to don't risk any breakage.
->=20
-> Signed-off-by: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
-> [for meson-{efuse,mx-efuse}.c]
-> Acked-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-> [for mtk-efuse.c, nvmem/core.c, nvmem-provider.h]
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
-> [MT8192, MT8195 Chromebooks]
-> Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabor=
-a.com>
-> [for microchip-otpc.c]
-> Reviewed-by: Claudiu Beznea <claudiu.beznea@microchip.com>
-> [SAMA7G5-EK]
-> Tested-by: Claudiu Beznea <claudiu.beznea@microchip.com>
+Il 30/01/23 13:38, Xiaoyong Lu ha scritto:
+> Add mediatek av1 decoder linux driver which use the stateless API in
+> MT8195.
+> 
+> Signed-off-by: Xiaoyong Lu<xiaoyong.lu@mediatek.com>
 
-> diff --git a/drivers/nvmem/rockchip-efuse.c b/drivers/nvmem/rockchip-efus=
-e.c
-> index e4579de5d014..adc8bc70cffa 100644
-> --- a/drivers/nvmem/rockchip-efuse.c
-> +++ b/drivers/nvmem/rockchip-efuse.c
-> @@ -205,6 +205,7 @@ static int rockchip_rk3399_efuse_read(void *context, =
-unsigned int offset,
-> =20
->  static struct nvmem_config econfig =3D {
->  	.name =3D "rockchip-efuse",
-> +	.add_legacy_fixed_of_cells =3D true,
->  	.stride =3D 1,
->  	.word_size =3D 1,
->  	.read_only =3D true,
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-for rockchip-efuse.c
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
+On MT8195 Tomato
+Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
