@@ -4,80 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C89EC761A6
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Apr 2023 14:51:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DC69C76188
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Apr 2023 15:04:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uZxAb56/cAgOfHgdK7XA4QCCA8O8tOhwRpQrvMxSamE=; b=X8ChJLRa5BgjH+AVEyczQDdkF/
-	22VkBoG80TZWlLE2b93OIgs9I/B1SF+4EW/YftKpwsZIdKSsy1nk8zdRA2ErvwKnEOmkX/ZpJW2eI
-	EZv5F3ZCp6nl6gFi9G7GPAi47I+Q3rFCrs238ugC8tCfdIileCR2Jsc+1Nand4dimncYjKaBAPUUL
-	POAQZWlb8t6oiBbqPpSaaHUbhkNuvWCfiOzIm0YaFsQ5mwNYPX/VD+Xab2mXZbMQxvCvqeRmlXfUK
-	K3eXJgE2tL/rvPN+vsGv4+g/YoC5ylBVLliPcF5V2gFZUfdQkWy6n+sa0+xe1F8Qn/4ApxJwbFFSa
-	7hxltkJA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WEVhki1z04JzpG6JGv+tXPk2KVEYI5pMsCd6omv0e8Y=; b=mEVym5VkQR2ymF2xrUcgNr25FG
+	jfUT2wR/hu005k5rCjyqxSxC4u2oVGCCxFd9CGKQJW4boOyhXpsMV2KTziJmR0h/gK8+XHdG4tXy+
+	0US5UOafONXD2QoUJdTFpVsDaz/rS1FFIvPifK4RwEL6iKYOBmklrM8WrOmnltohUmEoWYksYiSCb
+	bRQhvmDyBdVU3Tz1HodSs6bfrzBYPNEezzze5di+zyXRC15ayubo2h/fO++WdhALGqr94k0vZ1FNv
+	Sf0PSejKPI65eZiUkJ5cYmSXez+b/hG1kp/XOf3x9UVOUJERjqoKlNuaQDj+yk85cav4K1fMN9qJe
+	0TJAkTbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pk4UG-004jGX-0h;
-	Wed, 05 Apr 2023 14:51:48 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pk4gm-004kr2-1P;
+	Wed, 05 Apr 2023 15:04:44 +0000
+Received: from vern.gendns.com ([98.142.107.122])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pk4UB-004jDh-33;
-	Wed, 05 Apr 2023 14:51:45 +0000
-X-UUID: 5b39dcaad3c111ed8687db9d93187ff1-20230405
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=uZxAb56/cAgOfHgdK7XA4QCCA8O8tOhwRpQrvMxSamE=;
-	b=U/Siwii6i6SfoE321e6nADmeTxZ4uqehjOb6bddYUUzYBVg/bWaUMoCd5yYIoZIiX2vtcuUtfvAIRVlaRDMkK2mzXFKcAVp1YwVgZmwMZbibv2x3YtR+S3jEVVgK42ivNfC69Tg7vUHo9YJ7JrOW83aPUTvWspDuogvQ07mssPY=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:9f409341-02c8-4148-86af-8dbdad52f150,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:70
-X-CID-INFO: VERSION:1.1.22,REQID:9f409341-02c8-4148-86af-8dbdad52f150,IP:0,URL
-	:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
-	ON:quarantine,TS:70
-X-CID-META: VersionHash:120426c,CLOUDID:46066b2a-564d-42d9-9875-7c868ee415ec,B
-	ulkID:2304052251351G3ZTO4M,BulkQuantity:0,Recheck:0,SF:38|29|28|17|19|48,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,CO
-	L:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: 5b39dcaad3c111ed8687db9d93187ff1-20230405
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <jason-jh.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 526820858; Wed, 05 Apr 2023 07:51:33 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Wed, 5 Apr 2023 22:51:30 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Wed, 5 Apr 2023 22:51:30 +0800
-From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, Rex-BC Chen
-	<rex-bc.chen@mediatek.com>, Jonson Wang <jonson.wang@mediatek.com>, "Jason-JH
- . Lin" <jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>,
-	Nancy Lin <nancy.lin@mediatek.com>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Nathan Lu
-	<nathan.lu@mediatek.com>
-Subject: [PATCH 2/2] drm/mediatek: Add DSI support for mt8188 vdosys0
-Date: Wed, 5 Apr 2023 22:51:29 +0800
-Message-ID: <20230405145129.18835-3-jason-jh.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230405145129.18835-1-jason-jh.lin@mediatek.com>
-References: <20230405145129.18835-1-jason-jh.lin@mediatek.com>
+	id 1pk4gf-004klZ-0t;
+	Wed, 05 Apr 2023 15:04:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=lechnology.com; s=default; h=Content-Transfer-Encoding:Content-Type:
+	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender
+	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=WEVhki1z04JzpG6JGv+tXPk2KVEYI5pMsCd6omv0e8Y=; b=Oqb3PO1k4CqBJ/hcNQoQc+Xjed
+	eqJ8vOTGWrK6NhOYRyoWYY4aVIyndl7gxFnpfFolncw0Z9voV1OiJ34cx8DI5SlracX7U/bo5KRaU
+	DzOLBECWff7waN7kl5pjbA+z6u9PMEFYB6+ajs7fS0CXZGw40zjzdo0rWKS8xMJmOVnDXIFueTgH6
+	lxiuEmeKpsF9wRHjxbmkeO0Mqa9IgYFF3iW++MSoQIiqip/0SHWaz7KosJ8I7VUFw7LVrqjDGC8jw
+	23/tXgr5RlS0iaJ9nSDJPDrclY9+f3iUBwbWWkjX2TCAO2a7+mA2Py7eJ4NjhNAeH7qlGdjkUunR3
+	bJRwCG0A==;
+Received: from ip98-183-112-29.ok.ok.cox.net ([98.183.112.29]:40758 helo=[192.168.0.134])
+	by vern.gendns.com with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.96)
+	(envelope-from <david@lechnology.com>)
+	id 1pk4fg-0004Km-04;
+	Wed, 05 Apr 2023 11:03:36 -0400
+Message-ID: <04f5d305-9992-bcdc-cd54-111eb8254155@lechnology.com>
+Date: Wed, 5 Apr 2023 10:03:24 -0500
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH v3 54/65] clk: da8xx: clk48: Switch to determine_rate
+To: Maxime Ripard <maxime@cerno.tech>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>,
+ Manivannan Sadhasivam <mani@kernel.org>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Claudiu Beznea <claudiu.beznea@microchip.com>,
+ Max Filippov <jcmvbkbc@gmail.com>,
+ Charles Keepax <ckeepax@opensource.cirrus.com>,
+ Richard Fitzgerald <rf@opensource.cirrus.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, Sekhar Nori <nsekhar@ti.com>,
+ Abel Vesa <abelvesa@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Dinh Nguyen <dinguyen@kernel.org>,
+ Peter De Schrijver <pdeschrijver@nvidia.com>,
+ Prashant Gaikwad <pgaikwad@nvidia.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Ulf Hansson
+ <ulf.hansson@linaro.org>, Linus Walleij <linus.walleij@linaro.org>,
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
+ Alessandro Zummo <a.zummo@towertech.it>, Chen-Yu Tsai <wens@csie.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>, Liam Girdwood <lgirdwood@gmail.com>,
+ Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
+ Takashi Iwai <tiwai@suse.com>, Paul Cercueil <paul@crapouillou.net>,
+ Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
+ <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>
+Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-arm-kernel@lists.infradead.org, linux-actions@lists.infradead.org,
+ patches@opensource.cirrus.com, linux-stm32@st-md-mailman.stormreply.com,
+ linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
+ linux-tegra@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-phy@lists.infradead.org, linux-rtc@vger.kernel.org,
+ linux-sunxi@lists.linux.dev, alsa-devel@alsa-project.org,
+ linux-mips@vger.kernel.org
+References: <20221018-clk-range-checks-fixes-v3-0-9a1358472d52@cerno.tech>
+ <20221018-clk-range-checks-fixes-v3-54-9a1358472d52@cerno.tech>
+Content-Language: en-US
+From: David Lechner <david@lechnology.com>
+In-Reply-To: <20221018-clk-range-checks-fixes-v3-54-9a1358472d52@cerno.tech>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - vern.gendns.com
+X-AntiAbuse: Original Domain - lists.infradead.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - lechnology.com
+X-Get-Message-Sender-Via: vern.gendns.com: authenticated_id: davidmain+lechnology.com/only user confirmed/virtual account not confirmed
+X-Authenticated-Sender: vern.gendns.com: davidmain@lechnology.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230405_075143_988201_F54AE08C 
-X-CRM114-Status: GOOD (  12.29  )
+X-CRM114-CacheID: sfid-20230405_080437_728039_306D5BA5 
+X-CRM114-Status: UNSURE (   9.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,80 +128,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add DSI as main display output for mt8188 vdosys0.
+On 4/4/23 5:11 AM, Maxime Ripard wrote:
+> The TI DA8xx USB0 clk48 clocks implements a mux with a set_parent
+> hook, but doesn't provide a determine_rate implementation.
+> 
+> This is a bit odd, since set_parent() is there to, as its name implies,
+> change the parent of a clock. However, the most likely candidate to
+> trigger that parent change is a call to clk_set_rate(), with
+> determine_rate() figuring out which parent is the best suited for a
+> given rate.
+> 
 
-Signed-off-by: Nathan Lu <nathan.lu@mediatek.com>
-Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_disp_drv.h     | 1 +
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 1 +
- drivers/gpu/drm/mediatek/mtk_drm_drv.c      | 5 +++++
- drivers/gpu/drm/mediatek/mtk_dsi.c          | 9 +++++++++
- 4 files changed, 16 insertions(+)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-index 72c57442f965..bf06ccb65652 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-@@ -48,6 +48,7 @@ int mtk_dpi_encoder_index(struct device *dev);
- 
- void mtk_dsi_ddp_start(struct device *dev);
- void mtk_dsi_ddp_stop(struct device *dev);
-+int mtk_dsi_encoder_index(struct device *dev);
- 
- int mtk_gamma_clk_enable(struct device *dev);
- void mtk_gamma_clk_disable(struct device *dev);
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index fe20ce26b19f..214233d36487 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -318,6 +318,7 @@ static const struct mtk_ddp_comp_funcs ddp_dsc = {
- static const struct mtk_ddp_comp_funcs ddp_dsi = {
- 	.start = mtk_dsi_ddp_start,
- 	.stop = mtk_dsi_ddp_stop,
-+	.encoder_index = mtk_dsi_encoder_index,
- };
- 
- static const struct mtk_ddp_comp_funcs ddp_gamma = {
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index d8c49614a107..7ea4dc87c558 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -191,8 +191,13 @@ static const unsigned int mt8188_mtk_ddp_main_routes_0[] = {
- 	DDP_COMPONENT_DP_INTF0
- };
- 
-+static const unsigned int mt8188_mtk_ddp_main_routes_1[] = {
-+	DDP_COMPONENT_DSI0
-+};
-+
- static const struct mtk_drm_route mt8188_mtk_ddp_main_routes[] = {
- 	{0, ARRAY_SIZE(mt8188_mtk_ddp_main_routes_0), mt8188_mtk_ddp_main_routes_0},
-+	{0, ARRAY_SIZE(mt8188_mtk_ddp_main_routes_1), mt8188_mtk_ddp_main_routes_1},
- };
- 
- static const unsigned int mt8192_mtk_ddp_main[] = {
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index 7d5250351193..f9d2d5447e2e 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -865,6 +865,15 @@ static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
- 	return ret;
- }
- 
-+int mtk_dsi_encoder_index(struct device *dev)
-+{
-+	struct mtk_dsi *dsi = dev_get_drvdata(dev);
-+	int encoder_index = drm_encoder_index(&dsi->encoder);
-+
-+	dev_dbg(dev, "encoder index:%d", encoder_index);
-+	return encoder_index;
-+}
-+
- static int mtk_dsi_bind(struct device *dev, struct device *master, void *data)
- {
- 	int ret;
--- 
-2.18.0
+As mentioned in my previous review, parent is selected by device
+tree and should never be changed after init.
 
 
