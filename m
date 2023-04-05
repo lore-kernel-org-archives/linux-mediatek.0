@@ -4,93 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0B26C7619A
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Apr 2023 16:54:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A65CC76188
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Apr 2023 18:52:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IxFOI8BlLlR7NCyVkzu+oUkui6zaCPq4znyAUScBVv0=; b=QKuNHJACy8et37N/8fgjyrFyeN
-	DlpgYA/kX8QhhVmjCjGm8AbKMPxw0rN+cw45/+/62kXU8X9CUhvbHiZx9CZbc+R3v9dB3G2KZubh4
-	6+GNo/cqxye40gpo6Wn9AZGPjv7ezdHGJGu7VXIGEcI9H+/6Cizl0obSRrKCgXkxDJaiFVt86WVW0
-	ROp5CPO1CfPB1hvYeavRyZ9alnw2Gdmy13yzaDs6I+KDAZri1xye8ErPVkv80YB5BrCiyPNGco8wE
-	r3jjp9s9ccsTM8j9wsqolkCC/8H2wZrvtIFOYpNcEnDVZ4gVGUIUkKhQPbML5+XdfDWas8uiiDN7W
-	czFnsVFA==;
+	MIME-Version:Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=u8PGk/u+z+gqlIZRy0jntrJ6e/gTzCC87OyuuDT5DLo=; b=Y7QbpCrzWIuiDJFup2GLI6tqeq
+	jG7GuXefFUzsLdhi2YP9xLx1Gr5inmE3ERoGLOvdgvTbYojx5JRaT9iWPvnFLP+v+tR8H8tfbcf/A
+	7EWF95QMWyNjOYOQ7IH9hWHl+AK900Hyf4F1TymxqMZ9SS+d02DIF8Qz1Zg3yXXAH0CXS1Marq21R
+	1FKHapyx91CdI2khkB7NE1NTRH6ZCJYtTFDm5NKVNWXh8+10/2bbibAnumgGi9uRlDycpbDYHyeDC
+	UwQVo8Sd5jfhAx1lTfxv40GZEyHTOnkk346D48/9z34XCGhZhWfTmmJiV8Aa//V8XaCEIy3H/wMSj
+	/iQ0z4rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pk6Oh-005Bpo-0r;
-	Wed, 05 Apr 2023 16:54:11 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1pk8F4-005RDr-32;
+	Wed, 05 Apr 2023 18:52:22 +0000
+Received: from smtp-out2.suse.de ([195.135.220.29])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pk6Oc-005BmX-25
-	for linux-mediatek@lists.infradead.org;
-	Wed, 05 Apr 2023 16:54:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1680713645;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=IxFOI8BlLlR7NCyVkzu+oUkui6zaCPq4znyAUScBVv0=;
-	b=cQuga91nPUx7x3BdkIoyYw/yPQaxU37Mb+oTlTVxxBzxpMeLzi80nifXnkmCZDchtND3lv
-	gW63je5Wc02sZ4gry7kcKFh7EAdiSHwSBxICJmQY+AF1IHpURakqJT/y3h4BhIzqCMvqVI
-	hK5lnXe8KyOxDprAX3tB6GshXhI6U4w=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-499-j5Q8MndgOw2Vu35Xrvwpvg-1; Wed, 05 Apr 2023 12:54:02 -0400
-X-MC-Unique: j5Q8MndgOw2Vu35Xrvwpvg-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com [10.11.54.7])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 97712858F09;
-	Wed,  5 Apr 2023 16:54:00 +0000 (UTC)
-Received: from warthog.procyon.org.uk (unknown [10.33.36.18])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id E7A24140EBF4;
-	Wed,  5 Apr 2023 16:53:56 +0000 (UTC)
-From: David Howells <dhowells@redhat.com>
-To: netdev@vger.kernel.org
-Cc: David Howells <dhowells@redhat.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Willem de Bruijn <willemdebruijn.kernel@gmail.com>,
-	Matthew Wilcox <willy@infradead.org>,
-	Al Viro <viro@zeniv.linux.org.uk>,
-	Christoph Hellwig <hch@infradead.org>,
-	Jens Axboe <axboe@kernel.dk>,
-	Jeff Layton <jlayton@kernel.org>,
-	Christian Brauner <brauner@kernel.org>,
-	Chuck Lever III <chuck.lever@oracle.com>,
-	Linus Torvalds <torvalds@linux-foundation.org>,
-	linux-fsdevel@vger.kernel.org,
+	id 1pk8Ey-005RCo-2d;
+	Wed, 05 Apr 2023 18:52:20 +0000
+Received: from relay2.suse.de (relay2.suse.de [149.44.160.134])
+	by smtp-out2.suse.de (Postfix) with ESMTP id 684DE1FE4B;
+	Wed,  5 Apr 2023 18:52:09 +0000 (UTC)
+Received: from adalid.arch.suse.de (adalid.arch.suse.de [10.161.8.13])
+	by relay2.suse.de (Postfix) with ESMTP id C171F2C141;
+	Wed,  5 Apr 2023 18:52:08 +0000 (UTC)
+From: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
+To: John Crispin <john@phrozen.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Serge Semin <fancer.lancer@gmail.com>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Marc Zyngier <maz@kernel.org>,
+	linux-mips@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	linux-mm@kvack.org,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Felix Fietkau <nbd@nbd.name>,
-	John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Keith Busch <kbusch@kernel.org>,
-	Christoph Hellwig <hch@lst.de>,
-	Sagi Grimberg <sagi@grimberg.me>,
-	Chaitanya Kulkarni <kch@nvidia.com>,
-	linux-nvme@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next v4 05/20] mm: Make the page_frag_cache allocator use per-cpu
-Date: Wed,  5 Apr 2023 17:53:24 +0100
-Message-Id: <20230405165339.3468808-6-dhowells@redhat.com>
-In-Reply-To: <20230405165339.3468808-1-dhowells@redhat.com>
-References: <20230405165339.3468808-1-dhowells@redhat.com>
+Subject: [PATCH] MIPS: Remove deprecated CONFIG_MIPS_CMP
+Date: Wed,  5 Apr 2023 20:51:27 +0200
+Message-Id: <20230405185128.15237-1-tsbogend@alpha.franken.de>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230405_095406_841198_92795925 
-X-CRM114-Status: GOOD (  36.47  )
+X-CRM114-CacheID: sfid-20230405_115217_159746_14543DAC 
+X-CRM114-Status: GOOD (  28.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,568 +66,874 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Make the page_frag_cache allocator have a separate allocation bucket for
-each cpu to avoid racing.  This means that no lock is required, other than
-preempt disablement, to allocate from it, though if a softirq wants to
-access it, then softirq disablement will need to be added.
+Commit 5cac93b35c14 ("MIPS: Deprecate CONFIG_MIPS_CMP") deprecated
+CONFIG_MIPS_CMP and after 9 years it's time to remove it.
 
-Make the NVMe and mediatek drivers pass in NULL to page_frag_cache() and
-use the default allocation buckets rather than defining their own.
-
-Signed-off-by: David Howells <dhowells@redhat.com>
-cc: "David S. Miller" <davem@davemloft.net>
-cc: Eric Dumazet <edumazet@google.com>
-cc: Jakub Kicinski <kuba@kernel.org>
-cc: Paolo Abeni <pabeni@redhat.com>
-cc: Lorenzo Bianconi <lorenzo@kernel.org>
-cc: Felix Fietkau <nbd@nbd.name>
-cc: John Crispin <john@phrozen.org>
-cc: Sean Wang <sean.wang@mediatek.com>
-cc: Mark Lee <Mark-MC.Lee@mediatek.com>
-cc: Keith Busch <kbusch@kernel.org>
-cc: Christoph Hellwig <hch@lst.de>
-cc: Sagi Grimberg <sagi@grimberg.me>
-cc: Chaitanya Kulkarni <kch@nvidia.com>
-cc: Jens Axboe <axboe@kernel.dk>
-cc: Matthew Wilcox <willy@infradead.org>
-cc: netdev@vger.kernel.org
-cc: linux-nvme@lists.infradead.org
-cc: linux-mediatek@lists.infradead.org
+Signed-off-by: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
 ---
- drivers/net/ethernet/mediatek/mtk_wed_wo.c |   8 +-
- drivers/net/ethernet/mediatek/mtk_wed_wo.h |   2 -
- drivers/nvme/host/tcp.c                    |  14 +-
- drivers/nvme/target/tcp.c                  |  19 +-
- include/linux/gfp.h                        |  18 +-
- mm/page_frag_alloc.c                       | 195 ++++++++++++++-------
- net/core/skbuff.c                          |  32 ++--
- 7 files changed, 164 insertions(+), 124 deletions(-)
+Marc, if you prefer an extra patch for the irqchip change, I'll
+split this. Otherwise I would take it through the MIPS tree.
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.c b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-index 6ce532217777..859f34447f2f 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-@@ -143,7 +143,7 @@ mtk_wed_wo_queue_refill(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q,
- 		dma_addr_t addr;
- 		void *buf;
+ arch/mips/Kconfig                    |  34 +----
+ arch/mips/include/asm/rtlx.h         |   1 -
+ arch/mips/include/asm/smp-ops.h      |  16 ---
+ arch/mips/include/asm/vpe.h          |   4 -
+ arch/mips/kernel/Makefile            |   3 -
+ arch/mips/kernel/rtlx-cmp.c          | 122 ------------------
+ arch/mips/kernel/smp-cmp.c           | 148 ----------------------
+ arch/mips/kernel/vpe-cmp.c           | 180 ---------------------------
+ arch/mips/kernel/vpe.c               |   2 +-
+ arch/mips/mti-malta/Makefile         |   2 -
+ arch/mips/mti-malta/malta-amon.c     |  88 -------------
+ arch/mips/mti-malta/malta-init.c     |   2 -
+ arch/mips/mti-malta/malta-platform.c |   2 -
+ arch/mips/ralink/mt7621.c            |   2 -
+ drivers/irqchip/irq-mips-gic.c       |  26 ----
+ 15 files changed, 3 insertions(+), 629 deletions(-)
+ delete mode 100644 arch/mips/kernel/rtlx-cmp.c
+ delete mode 100644 arch/mips/kernel/smp-cmp.c
+ delete mode 100644 arch/mips/kernel/vpe-cmp.c
+ delete mode 100644 arch/mips/mti-malta/malta-amon.c
+
+diff --git a/arch/mips/Kconfig b/arch/mips/Kconfig
+index a975f140ae82..61fca312a2c5 100644
+--- a/arch/mips/Kconfig
++++ b/arch/mips/Kconfig
+@@ -568,7 +568,6 @@ config MIPS_MALTA
+ 	select SYS_SUPPORTS_LITTLE_ENDIAN
+ 	select SYS_SUPPORTS_MICROMIPS
+ 	select SYS_SUPPORTS_MIPS16
+-	select SYS_SUPPORTS_MIPS_CMP
+ 	select SYS_SUPPORTS_MIPS_CPS
+ 	select SYS_SUPPORTS_MULTITHREADING
+ 	select SYS_SUPPORTS_RELOCATABLE
+@@ -2270,15 +2269,10 @@ config MIPS_VPE_LOADER
+ 	  Includes a loader for loading an elf relocatable object
+ 	  onto another VPE and running it.
  
--		buf = page_frag_alloc(&q->cache, q->buf_size, GFP_ATOMIC);
-+		buf = page_frag_alloc(NULL, q->buf_size, GFP_ATOMIC);
- 		if (!buf)
- 			break;
- 
-@@ -296,15 +296,11 @@ mtk_wed_wo_queue_tx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
- 		skb_free_frag(entry->buf);
- 		entry->buf = NULL;
- 	}
+-config MIPS_VPE_LOADER_CMP
+-	bool
+-	default "y"
+-	depends on MIPS_VPE_LOADER && MIPS_CMP
 -
--	page_frag_cache_clear(&q->cache);
- }
+ config MIPS_VPE_LOADER_MT
+ 	bool
+ 	default "y"
+-	depends on MIPS_VPE_LOADER && !MIPS_CMP
++	depends on MIPS_VPE_LOADER
  
- static void
- mtk_wed_wo_queue_rx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
- {
--	struct page *page;
+ config MIPS_VPE_LOADER_TOM
+ 	bool "Load VPE program into memory hidden from linux"
+@@ -2294,31 +2288,10 @@ config MIPS_VPE_APSP_API
+ 	bool "Enable support for AP/SP API (RTLX)"
+ 	depends on MIPS_VPE_LOADER
+ 
+-config MIPS_VPE_APSP_API_CMP
+-	bool
+-	default "y"
+-	depends on MIPS_VPE_APSP_API && MIPS_CMP
 -
- 	for (;;) {
- 		void *buf = mtk_wed_wo_dequeue(wo, q, NULL, true);
- 
-@@ -313,8 +309,6 @@ mtk_wed_wo_queue_rx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
- 
- 		skb_free_frag(buf);
- 	}
+ config MIPS_VPE_APSP_API_MT
+ 	bool
+ 	default "y"
+-	depends on MIPS_VPE_APSP_API && !MIPS_CMP
 -
--	page_frag_cache_clear(&q->cache);
- }
- 
- static void
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.h b/drivers/net/ethernet/mediatek/mtk_wed_wo.h
-index dbcf42ce9173..6f940db67fb8 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed_wo.h
-+++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.h
-@@ -210,8 +210,6 @@ struct mtk_wed_wo_queue_entry {
- struct mtk_wed_wo_queue {
- 	struct mtk_wed_wo_queue_regs regs;
- 
--	struct page_frag_cache cache;
+-config MIPS_CMP
+-	bool "MIPS CMP framework support (DEPRECATED)"
+-	depends on SYS_SUPPORTS_MIPS_CMP && !CPU_MIPSR6
+-	select SMP
+-	select SYNC_R4K
+-	select SYS_SUPPORTS_SMP
+-	select WEAK_ORDERING
+-	default n
+-	help
+-	  Select this if you are using a bootloader which implements the "CMP
+-	  framework" protocol (ie. YAMON) and want your kernel to make use of
+-	  its ability to start secondary CPUs.
 -
- 	struct mtk_wed_wo_queue_desc *desc;
- 	dma_addr_t desc_dma;
+-	  Unless you have a specific need, you should use CONFIG_MIPS_CPS
+-	  instead of this.
++	depends on MIPS_VPE_APSP_API
  
-diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
-index 76f12ac714b0..5a92236db92a 100644
---- a/drivers/nvme/host/tcp.c
-+++ b/drivers/nvme/host/tcp.c
-@@ -147,8 +147,6 @@ struct nvme_tcp_queue {
- 	__le32			exp_ddgst;
- 	__le32			recv_ddgst;
+ config MIPS_CPS
+ 	bool "MIPS Coherent Processing System support"
+@@ -2774,9 +2747,6 @@ config HOTPLUG_CPU
+ config SMP_UP
+ 	bool
  
--	struct page_frag_cache	pf_cache;
+-config SYS_SUPPORTS_MIPS_CMP
+-	bool
 -
- 	void (*state_change)(struct sock *);
- 	void (*data_ready)(struct sock *);
- 	void (*write_space)(struct sock *);
-@@ -482,9 +480,8 @@ static int nvme_tcp_init_request(struct blk_mq_tag_set *set,
- 	struct nvme_tcp_queue *queue = &ctrl->queues[queue_idx];
- 	u8 hdgst = nvme_tcp_hdgst_len(queue);
+ config SYS_SUPPORTS_MIPS_CPS
+ 	bool
  
--	req->pdu = page_frag_alloc(&queue->pf_cache,
--		sizeof(struct nvme_tcp_cmd_pdu) + hdgst,
--		GFP_KERNEL | __GFP_ZERO);
-+	req->pdu = page_frag_alloc(NULL, sizeof(struct nvme_tcp_cmd_pdu) + hdgst,
-+				   GFP_KERNEL | __GFP_ZERO);
- 	if (!req->pdu)
- 		return -ENOMEM;
+diff --git a/arch/mips/include/asm/rtlx.h b/arch/mips/include/asm/rtlx.h
+index c1020654876e..a72785b4bbf4 100644
+--- a/arch/mips/include/asm/rtlx.h
++++ b/arch/mips/include/asm/rtlx.h
+@@ -81,7 +81,6 @@ struct rtlx_channel {
+ extern struct rtlx_info {
+ 	unsigned long id;
+ 	enum rtlx_state state;
+-	int ap_int_pending;	/* Status of 0 or 1 for CONFIG_MIPS_CMP only */
  
-@@ -1300,9 +1297,8 @@ static int nvme_tcp_alloc_async_req(struct nvme_tcp_ctrl *ctrl)
- 	struct nvme_tcp_request *async = &ctrl->async_req;
- 	u8 hdgst = nvme_tcp_hdgst_len(queue);
- 
--	async->pdu = page_frag_alloc(&queue->pf_cache,
--		sizeof(struct nvme_tcp_cmd_pdu) + hdgst,
--		GFP_KERNEL | __GFP_ZERO);
-+	async->pdu = page_frag_alloc(NULL, sizeof(struct nvme_tcp_cmd_pdu) + hdgst,
-+				     GFP_KERNEL | __GFP_ZERO);
- 	if (!async->pdu)
- 		return -ENOMEM;
- 
-@@ -1312,7 +1308,6 @@ static int nvme_tcp_alloc_async_req(struct nvme_tcp_ctrl *ctrl)
- 
- static void nvme_tcp_free_queue(struct nvme_ctrl *nctrl, int qid)
- {
--	struct page *page;
- 	struct nvme_tcp_ctrl *ctrl = to_tcp_ctrl(nctrl);
- 	struct nvme_tcp_queue *queue = &ctrl->queues[qid];
- 	unsigned int noreclaim_flag;
-@@ -1323,7 +1318,6 @@ static void nvme_tcp_free_queue(struct nvme_ctrl *nctrl, int qid)
- 	if (queue->hdr_digest || queue->data_digest)
- 		nvme_tcp_free_crypto(queue);
- 
--	page_frag_cache_clear(&queue->pf_cache);
- 	noreclaim_flag = memalloc_noreclaim_save();
- 	sock_release(queue->sock);
- 	memalloc_noreclaim_restore(noreclaim_flag);
-diff --git a/drivers/nvme/target/tcp.c b/drivers/nvme/target/tcp.c
-index ae871c31cf00..d6cc557cc539 100644
---- a/drivers/nvme/target/tcp.c
-+++ b/drivers/nvme/target/tcp.c
-@@ -143,8 +143,6 @@ struct nvmet_tcp_queue {
- 
- 	struct nvmet_tcp_cmd	connect;
- 
--	struct page_frag_cache	pf_cache;
--
- 	void (*data_ready)(struct sock *);
- 	void (*state_change)(struct sock *);
- 	void (*write_space)(struct sock *);
-@@ -1312,25 +1310,25 @@ static int nvmet_tcp_alloc_cmd(struct nvmet_tcp_queue *queue,
- 	c->queue = queue;
- 	c->req.port = queue->port->nport;
- 
--	c->cmd_pdu = page_frag_alloc(&queue->pf_cache,
--			sizeof(*c->cmd_pdu) + hdgst, GFP_KERNEL | __GFP_ZERO);
-+	c->cmd_pdu = page_frag_alloc(NULL, sizeof(*c->cmd_pdu) + hdgst,
-+				     GFP_KERNEL | __GFP_ZERO);
- 	if (!c->cmd_pdu)
- 		return -ENOMEM;
- 	c->req.cmd = &c->cmd_pdu->cmd;
- 
--	c->rsp_pdu = page_frag_alloc(&queue->pf_cache,
--			sizeof(*c->rsp_pdu) + hdgst, GFP_KERNEL | __GFP_ZERO);
-+	c->rsp_pdu = page_frag_alloc(NULL, sizeof(*c->rsp_pdu) + hdgst,
-+				     GFP_KERNEL | __GFP_ZERO);
- 	if (!c->rsp_pdu)
- 		goto out_free_cmd;
- 	c->req.cqe = &c->rsp_pdu->cqe;
- 
--	c->data_pdu = page_frag_alloc(&queue->pf_cache,
--			sizeof(*c->data_pdu) + hdgst, GFP_KERNEL | __GFP_ZERO);
-+	c->data_pdu = page_frag_alloc(NULL, sizeof(*c->data_pdu) + hdgst,
-+				      GFP_KERNEL | __GFP_ZERO);
- 	if (!c->data_pdu)
- 		goto out_free_rsp;
- 
--	c->r2t_pdu = page_frag_alloc(&queue->pf_cache,
--			sizeof(*c->r2t_pdu) + hdgst, GFP_KERNEL | __GFP_ZERO);
-+	c->r2t_pdu = page_frag_alloc(NULL, sizeof(*c->r2t_pdu) + hdgst,
-+				     GFP_KERNEL | __GFP_ZERO);
- 	if (!c->r2t_pdu)
- 		goto out_free_data;
- 
-@@ -1459,7 +1457,6 @@ static void nvmet_tcp_release_queue_work(struct work_struct *w)
- 	if (queue->hdr_digest || queue->data_digest)
- 		nvmet_tcp_free_crypto(queue);
- 	ida_free(&nvmet_tcp_queue_ida, queue->idx);
--	page_frag_cache_clear(&queue->pf_cache);
- 	kfree(queue);
- }
- 
-diff --git a/include/linux/gfp.h b/include/linux/gfp.h
-index 5e15384798eb..b208ca315882 100644
---- a/include/linux/gfp.h
-+++ b/include/linux/gfp.h
-@@ -304,16 +304,18 @@ extern void free_pages(unsigned long addr, unsigned int order);
- 
- struct page_frag_cache;
- extern void __page_frag_cache_drain(struct page *page, unsigned int count);
--extern void *page_frag_alloc_align(struct page_frag_cache *nc,
--				   unsigned int fragsz, gfp_t gfp_mask,
--				   unsigned int align_mask);
--
--static inline void *page_frag_alloc(struct page_frag_cache *nc,
--			     unsigned int fragsz, gfp_t gfp_mask)
-+extern void *page_frag_alloc_align(struct page_frag_cache __percpu *frag_cache,
-+				   size_t fragsz, gfp_t gfp,
-+				   unsigned long align_mask);
-+extern void *page_frag_memdup(struct page_frag_cache __percpu *frag_cache,
-+			      const void *p, size_t fragsz, gfp_t gfp,
-+			      unsigned long align_mask);
-+
-+static inline void *page_frag_alloc(struct page_frag_cache __percpu *frag_cache,
-+				    size_t fragsz, gfp_t gfp)
- {
--	return page_frag_alloc_align(nc, fragsz, gfp_mask, ~0u);
-+	return page_frag_alloc_align(frag_cache, fragsz, gfp, ULONG_MAX);
- }
--void page_frag_cache_clear(struct page_frag_cache *nc);
- 
- extern void page_frag_free(void *addr);
- 
-diff --git a/mm/page_frag_alloc.c b/mm/page_frag_alloc.c
-index 9b138cb0e3a4..7844398afe26 100644
---- a/mm/page_frag_alloc.c
-+++ b/mm/page_frag_alloc.c
-@@ -16,25 +16,23 @@
- #include <linux/init.h>
- #include <linux/mm.h>
- 
-+static DEFINE_PER_CPU(struct page_frag_cache, page_frag_default_allocator);
-+
- /*
-  * Allocate a new folio for the frag cache.
-  */
--static struct folio *page_frag_cache_refill(struct page_frag_cache *nc,
--					    gfp_t gfp_mask)
-+static struct folio *page_frag_cache_refill(gfp_t gfp)
- {
--	struct folio *folio = NULL;
--	gfp_t gfp = gfp_mask;
-+	struct folio *folio;
- 
- #if (PAGE_SIZE < PAGE_FRAG_CACHE_MAX_SIZE)
--	gfp_mask |= __GFP_NOWARN | __GFP_NORETRY | __GFP_NOMEMALLOC;
--	folio = folio_alloc(gfp_mask, PAGE_FRAG_CACHE_MAX_ORDER);
-+	folio = folio_alloc(gfp | __GFP_NOWARN | __GFP_NORETRY | __GFP_NOMEMALLOC,
-+			    PAGE_FRAG_CACHE_MAX_ORDER);
-+	if (folio)
-+		return folio;
+ 	struct rtlx_channel channel[RTLX_CHANNELS];
+ } *rtlx;
+diff --git a/arch/mips/include/asm/smp-ops.h b/arch/mips/include/asm/smp-ops.h
+index 864aea803984..0145bbfb5efb 100644
+--- a/arch/mips/include/asm/smp-ops.h
++++ b/arch/mips/include/asm/smp-ops.h
+@@ -80,22 +80,6 @@ static inline int register_up_smp_ops(void)
  #endif
--	if (unlikely(!folio))
--		folio = folio_alloc(gfp, 0);
- 
--	if (folio)
--		nc->folio = folio;
--	return folio;
-+	return folio_alloc(gfp, 0);
  }
  
- void __page_frag_cache_drain(struct page *page, unsigned int count)
-@@ -47,54 +45,68 @@ void __page_frag_cache_drain(struct page *page, unsigned int count)
- }
- EXPORT_SYMBOL(__page_frag_cache_drain);
- 
--void page_frag_cache_clear(struct page_frag_cache *nc)
+-static inline int register_cmp_smp_ops(void)
 -{
--	struct folio *folio = nc->folio;
+-#ifdef CONFIG_MIPS_CMP
+-	extern const struct plat_smp_ops cmp_smp_ops;
 -
--	if (folio) {
--		VM_BUG_ON_FOLIO(folio_ref_count(folio) == 0, folio);
--		folio_put_refs(folio, nc->pagecnt_bias);
--		nc->folio = NULL;
+-	if (!mips_cm_present())
+-		return -ENODEV;
+-
+-	register_smp_ops(&cmp_smp_ops);
+-
+-	return 0;
+-#else
+-	return -ENODEV;
+-#endif
+-}
+-
+ static inline int register_vsmp_smp_ops(void)
+ {
+ #ifdef CONFIG_MIPS_MT_SMP
+diff --git a/arch/mips/include/asm/vpe.h b/arch/mips/include/asm/vpe.h
+index ef7e07829607..61fd4d0aeda4 100644
+--- a/arch/mips/include/asm/vpe.h
++++ b/arch/mips/include/asm/vpe.h
+@@ -29,12 +29,8 @@
+ 
+ static inline int aprp_cpu_index(void)
+ {
+-#ifdef CONFIG_MIPS_CMP
+-	return setup_max_cpus;
+-#else
+ 	extern int tclimit;
+ 	return tclimit;
+-#endif
+ }
+ 
+ enum vpe_state {
+diff --git a/arch/mips/kernel/Makefile b/arch/mips/kernel/Makefile
+index 5d1addac5e28..853a43ee4b44 100644
+--- a/arch/mips/kernel/Makefile
++++ b/arch/mips/kernel/Makefile
+@@ -58,16 +58,13 @@ obj-$(CONFIG_CPU_BMIPS)		+= smp-bmips.o bmips_vec.o bmips_5xxx_init.o
+ obj-$(CONFIG_MIPS_MT)		+= mips-mt.o
+ obj-$(CONFIG_MIPS_MT_FPAFF)	+= mips-mt-fpaff.o
+ obj-$(CONFIG_MIPS_MT_SMP)	+= smp-mt.o
+-obj-$(CONFIG_MIPS_CMP)		+= smp-cmp.o
+ obj-$(CONFIG_MIPS_CPS)		+= smp-cps.o cps-vec.o
+ obj-$(CONFIG_MIPS_CPS_NS16550)	+= cps-vec-ns16550.o
+ obj-$(CONFIG_MIPS_SPRAM)	+= spram.o
+ 
+ obj-$(CONFIG_MIPS_VPE_LOADER)	+= vpe.o
+-obj-$(CONFIG_MIPS_VPE_LOADER_CMP) += vpe-cmp.o
+ obj-$(CONFIG_MIPS_VPE_LOADER_MT) += vpe-mt.o
+ obj-$(CONFIG_MIPS_VPE_APSP_API) += rtlx.o
+-obj-$(CONFIG_MIPS_VPE_APSP_API_CMP) += rtlx-cmp.o
+ obj-$(CONFIG_MIPS_VPE_APSP_API_MT) += rtlx-mt.o
+ 
+ obj-$(CONFIG_MIPS_MSC)		+= irq-msc01.o
+diff --git a/arch/mips/kernel/rtlx-cmp.c b/arch/mips/kernel/rtlx-cmp.c
+deleted file mode 100644
+index d26dcc4b46e7..000000000000
+--- a/arch/mips/kernel/rtlx-cmp.c
++++ /dev/null
+@@ -1,122 +0,0 @@
+-/*
+- * This file is subject to the terms and conditions of the GNU General Public
+- * License.  See the file "COPYING" in the main directory of this archive
+- * for more details.
+- *
+- * Copyright (C) 2005 MIPS Technologies, Inc.  All rights reserved.
+- * Copyright (C) 2013 Imagination Technologies Ltd.
+- */
+-#include <linux/device.h>
+-#include <linux/fs.h>
+-#include <linux/err.h>
+-#include <linux/wait.h>
+-#include <linux/sched.h>
+-#include <linux/smp.h>
+-
+-#include <asm/mips_mt.h>
+-#include <asm/vpe.h>
+-#include <asm/rtlx.h>
+-
+-static int major;
+-
+-static void rtlx_interrupt(void)
+-{
+-	int i;
+-	struct rtlx_info *info;
+-	struct rtlx_info **p = vpe_get_shared(aprp_cpu_index());
+-
+-	if (p == NULL || *p == NULL)
+-		return;
+-
+-	info = *p;
+-
+-	if (info->ap_int_pending == 1 && smp_processor_id() == 0) {
+-		for (i = 0; i < RTLX_CHANNELS; i++) {
+-			wake_up(&channel_wqs[i].lx_queue);
+-			wake_up(&channel_wqs[i].rt_queue);
+-		}
+-		info->ap_int_pending = 0;
+-	}
+-}
+-
+-void _interrupt_sp(void)
+-{
+-	smp_send_reschedule(aprp_cpu_index());
+-}
+-
+-int __init rtlx_module_init(void)
+-{
+-	struct device *dev;
+-	int i, err;
+-
+-	if (!cpu_has_mipsmt) {
+-		pr_warn("VPE loader: not a MIPS MT capable processor\n");
+-		return -ENODEV;
 -	}
 -
+-	if (num_possible_cpus() - aprp_cpu_index() < 1) {
+-		pr_warn("No TCs reserved for AP/SP, not initializing RTLX.\n"
+-			"Pass maxcpus=<n> argument as kernel argument\n");
+-
+-		return -ENODEV;
+-	}
+-
+-	major = register_chrdev(0, RTLX_MODULE_NAME, &rtlx_fops);
+-	if (major < 0) {
+-		pr_err("rtlx_module_init: unable to register device\n");
+-		return major;
+-	}
+-
+-	/* initialise the wait queues */
+-	for (i = 0; i < RTLX_CHANNELS; i++) {
+-		init_waitqueue_head(&channel_wqs[i].rt_queue);
+-		init_waitqueue_head(&channel_wqs[i].lx_queue);
+-		atomic_set(&channel_wqs[i].in_open, 0);
+-		mutex_init(&channel_wqs[i].mutex);
+-
+-		dev = device_create(mt_class, NULL, MKDEV(major, i), NULL,
+-				    "%s%d", RTLX_MODULE_NAME, i);
+-		if (IS_ERR(dev)) {
+-			while (i--)
+-				device_destroy(mt_class, MKDEV(major, i));
+-
+-			err = PTR_ERR(dev);
+-			goto out_chrdev;
+-		}
+-	}
+-
+-	/* set up notifiers */
+-	rtlx_notify.start = rtlx_starting;
+-	rtlx_notify.stop = rtlx_stopping;
+-	vpe_notify(aprp_cpu_index(), &rtlx_notify);
+-
+-	if (cpu_has_vint) {
+-		aprp_hook = rtlx_interrupt;
+-	} else {
+-		pr_err("APRP RTLX init on non-vectored-interrupt processor\n");
+-		err = -ENODEV;
+-		goto out_class;
+-	}
+-
+-	return 0;
+-
+-out_class:
+-	for (i = 0; i < RTLX_CHANNELS; i++)
+-		device_destroy(mt_class, MKDEV(major, i));
+-out_chrdev:
+-	unregister_chrdev(major, RTLX_MODULE_NAME);
+-
+-	return err;
 -}
--EXPORT_SYMBOL(page_frag_cache_clear);
 -
--void *page_frag_alloc_align(struct page_frag_cache *nc,
--		      unsigned int fragsz, gfp_t gfp_mask,
--		      unsigned int align_mask)
-+/**
-+ * page_frag_alloc_align - Allocate some memory for use in zerocopy
-+ * @frag_cache: The frag cache to use (or NULL for the default)
-+ * @fragsz: The size of the fragment desired
-+ * @gfp: Allocation flags under which to make an allocation
-+ * @align_mask: The required alignment
-+ *
-+ * Allocate some memory for use with zerocopy where protocol bits have to be
-+ * mixed in with spliced/zerocopied data.  Unlike memory allocated from the
-+ * slab, this memory's lifetime is purely dependent on the folio's refcount.
-+ *
-+ * The way it works is that a folio is allocated and fragments are broken off
-+ * sequentially and returned to the caller with a ref until the folio no longer
-+ * has enough spare space - at which point the allocator's ref is dropped and a
-+ * new folio is allocated.  The folio remains in existence until the last ref
-+ * held by, say, an sk_buff is discarded and then the page is returned to the
-+ * page allocator.
-+ *
-+ * Returns a pointer to the memory on success and -ENOMEM on allocation
-+ * failure.
-+ *
-+ * The allocated memory should be disposed of with folio_put().
-+ */
-+void *page_frag_alloc_align(struct page_frag_cache __percpu *frag_cache,
-+			    size_t fragsz, gfp_t gfp, unsigned long align_mask)
+-void __exit rtlx_module_exit(void)
+-{
+-	int i;
+-
+-	for (i = 0; i < RTLX_CHANNELS; i++)
+-		device_destroy(mt_class, MKDEV(major, i));
+-
+-	unregister_chrdev(major, RTLX_MODULE_NAME);
+-
+-	aprp_hook = NULL;
+-}
+diff --git a/arch/mips/kernel/smp-cmp.c b/arch/mips/kernel/smp-cmp.c
+deleted file mode 100644
+index 76f5824cdb00..000000000000
+--- a/arch/mips/kernel/smp-cmp.c
++++ /dev/null
+@@ -1,148 +0,0 @@
+-// SPDX-License-Identifier: GPL-2.0-only
+-/*
+- *
+- * Copyright (C) 2007 MIPS Technologies, Inc.
+- *    Chris Dearman (chris@mips.com)
+- */
+-
+-#undef DEBUG
+-
+-#include <linux/kernel.h>
+-#include <linux/sched/task_stack.h>
+-#include <linux/smp.h>
+-#include <linux/cpumask.h>
+-#include <linux/interrupt.h>
+-#include <linux/compiler.h>
+-
+-#include <linux/atomic.h>
+-#include <asm/cacheflush.h>
+-#include <asm/cpu.h>
+-#include <asm/processor.h>
+-#include <asm/hardirq.h>
+-#include <asm/mmu_context.h>
+-#include <asm/smp.h>
+-#include <asm/time.h>
+-#include <asm/mipsregs.h>
+-#include <asm/mipsmtregs.h>
+-#include <asm/mips_mt.h>
+-#include <asm/amon.h>
+-
+-static void cmp_init_secondary(void)
+-{
+-	struct cpuinfo_mips *c __maybe_unused = &current_cpu_data;
+-
+-	/* Assume GIC is present */
+-	change_c0_status(ST0_IM, STATUSF_IP2 | STATUSF_IP3 | STATUSF_IP4 |
+-				 STATUSF_IP5 | STATUSF_IP6 | STATUSF_IP7);
+-
+-	/* Enable per-cpu interrupts: platform specific */
+-
+-#ifdef CONFIG_MIPS_MT_SMP
+-	if (cpu_has_mipsmt)
+-		cpu_set_vpe_id(c, (read_c0_tcbind() >> TCBIND_CURVPE_SHIFT) &
+-				  TCBIND_CURVPE);
+-#endif
+-}
+-
+-static void cmp_smp_finish(void)
+-{
+-	pr_debug("SMPCMP: CPU%d: %s\n", smp_processor_id(), __func__);
+-
+-	/* CDFIXME: remove this? */
+-	write_c0_compare(read_c0_count() + (8 * mips_hpt_frequency / HZ));
+-
+-#ifdef CONFIG_MIPS_MT_FPAFF
+-	/* If we have an FPU, enroll ourselves in the FPU-full mask */
+-	if (cpu_has_fpu)
+-		cpumask_set_cpu(smp_processor_id(), &mt_fpu_cpumask);
+-#endif /* CONFIG_MIPS_MT_FPAFF */
+-
+-	local_irq_enable();
+-}
+-
+-/*
+- * Setup the PC, SP, and GP of a secondary processor and start it running
+- * smp_bootstrap is the place to resume from
+- * __KSTK_TOS(idle) is apparently the stack pointer
+- * (unsigned long)idle->thread_info the gp
+- */
+-static int cmp_boot_secondary(int cpu, struct task_struct *idle)
+-{
+-	struct thread_info *gp = task_thread_info(idle);
+-	unsigned long sp = __KSTK_TOS(idle);
+-	unsigned long pc = (unsigned long)&smp_bootstrap;
+-	unsigned long a0 = 0;
+-
+-	pr_debug("SMPCMP: CPU%d: %s cpu %d\n", smp_processor_id(),
+-		__func__, cpu);
+-
+-#if 0
+-	/* Needed? */
+-	flush_icache_range((unsigned long)gp,
+-			   (unsigned long)(gp + sizeof(struct thread_info)));
+-#endif
+-
+-	amon_cpu_start(cpu, pc, sp, (unsigned long)gp, a0);
+-	return 0;
+-}
+-
+-/*
+- * Common setup before any secondaries are started
+- */
+-void __init cmp_smp_setup(void)
+-{
+-	int i;
+-	int ncpu = 0;
+-
+-	pr_debug("SMPCMP: CPU%d: %s\n", smp_processor_id(), __func__);
+-
+-#ifdef CONFIG_MIPS_MT_FPAFF
+-	/* If we have an FPU, enroll ourselves in the FPU-full mask */
+-	if (cpu_has_fpu)
+-		cpumask_set_cpu(0, &mt_fpu_cpumask);
+-#endif /* CONFIG_MIPS_MT_FPAFF */
+-
+-	for (i = 1; i < NR_CPUS; i++) {
+-		if (amon_cpu_avail(i)) {
+-			set_cpu_possible(i, true);
+-			__cpu_number_map[i]	= ++ncpu;
+-			__cpu_logical_map[ncpu] = i;
+-		}
+-	}
+-
+-	if (cpu_has_mipsmt) {
+-		unsigned int nvpe = 1;
+-#ifdef CONFIG_MIPS_MT_SMP
+-		unsigned int mvpconf0 = read_c0_mvpconf0();
+-
+-		nvpe = ((mvpconf0 & MVPCONF0_PVPE) >> MVPCONF0_PVPE_SHIFT) + 1;
+-#endif
+-		smp_num_siblings = nvpe;
+-	}
+-	pr_info("Detected %i available secondary CPU(s)\n", ncpu);
+-}
+-
+-void __init cmp_prepare_cpus(unsigned int max_cpus)
+-{
+-	pr_debug("SMPCMP: CPU%d: %s max_cpus=%d\n",
+-		 smp_processor_id(), __func__, max_cpus);
+-
+-#ifdef CONFIG_MIPS_MT
+-	/*
+-	 * FIXME: some of these options are per-system, some per-core and
+-	 * some per-cpu
+-	 */
+-	mips_mt_set_cpuoptions();
+-#endif
+-
+-}
+-
+-const struct plat_smp_ops cmp_smp_ops = {
+-	.send_ipi_single	= mips_smp_send_ipi_single,
+-	.send_ipi_mask		= mips_smp_send_ipi_mask,
+-	.init_secondary		= cmp_init_secondary,
+-	.smp_finish		= cmp_smp_finish,
+-	.boot_secondary		= cmp_boot_secondary,
+-	.smp_setup		= cmp_smp_setup,
+-	.prepare_cpus		= cmp_prepare_cpus,
+-};
+diff --git a/arch/mips/kernel/vpe-cmp.c b/arch/mips/kernel/vpe-cmp.c
+deleted file mode 100644
+index 92140edb3ce3..000000000000
+--- a/arch/mips/kernel/vpe-cmp.c
++++ /dev/null
+@@ -1,180 +0,0 @@
+-/*
+- * This file is subject to the terms and conditions of the GNU General Public
+- * License.  See the file "COPYING" in the main directory of this archive
+- * for more details.
+- *
+- * Copyright (C) 2004, 2005 MIPS Technologies, Inc.  All rights reserved.
+- * Copyright (C) 2013 Imagination Technologies Ltd.
+- */
+-#include <linux/kernel.h>
+-#include <linux/device.h>
+-#include <linux/fs.h>
+-#include <linux/slab.h>
+-#include <linux/export.h>
+-
+-#include <asm/vpe.h>
+-
+-static int major;
+-
+-void cleanup_tc(struct tc *tc)
+-{
+-
+-}
+-
+-static ssize_t store_kill(struct device *dev, struct device_attribute *attr,
+-			  const char *buf, size_t len)
+-{
+-	struct vpe *vpe = get_vpe(aprp_cpu_index());
+-	struct vpe_notifications *notifier;
+-
+-	list_for_each_entry(notifier, &vpe->notify, list)
+-		notifier->stop(aprp_cpu_index());
+-
+-	release_progmem(vpe->load_addr);
+-	vpe->state = VPE_STATE_UNUSED;
+-
+-	return len;
+-}
+-static DEVICE_ATTR(kill, S_IWUSR, NULL, store_kill);
+-
+-static ssize_t ntcs_show(struct device *cd, struct device_attribute *attr,
+-			 char *buf)
+-{
+-	struct vpe *vpe = get_vpe(aprp_cpu_index());
+-
+-	return sprintf(buf, "%d\n", vpe->ntcs);
+-}
+-
+-static ssize_t ntcs_store(struct device *dev, struct device_attribute *attr,
+-			  const char *buf, size_t len)
+-{
+-	struct vpe *vpe = get_vpe(aprp_cpu_index());
+-	unsigned long new;
+-	int ret;
+-
+-	ret = kstrtoul(buf, 0, &new);
+-	if (ret < 0)
+-		return ret;
+-
+-	/* APRP can only reserve one TC in a VPE and no more. */
+-	if (new != 1)
+-		return -EINVAL;
+-
+-	vpe->ntcs = new;
+-
+-	return len;
+-}
+-static DEVICE_ATTR_RW(ntcs);
+-
+-static struct attribute *vpe_attrs[] = {
+-	&dev_attr_kill.attr,
+-	&dev_attr_ntcs.attr,
+-	NULL,
+-};
+-ATTRIBUTE_GROUPS(vpe);
+-
+-static void vpe_device_release(struct device *cd)
+-{
+-}
+-
+-static struct class vpe_class = {
+-	.name = "vpe",
+-	.owner = THIS_MODULE,
+-	.dev_release = vpe_device_release,
+-	.dev_groups = vpe_groups,
+-};
+-
+-static struct device vpe_device;
+-
+-int __init vpe_module_init(void)
+-{
+-	struct vpe *v = NULL;
+-	struct tc *t;
+-	int err;
+-
+-	if (!cpu_has_mipsmt) {
+-		pr_warn("VPE loader: not a MIPS MT capable processor\n");
+-		return -ENODEV;
+-	}
+-
+-	if (num_possible_cpus() - aprp_cpu_index() < 1) {
+-		pr_warn("No VPEs reserved for AP/SP, not initialize VPE loader\n"
+-			"Pass maxcpus=<n> argument as kernel argument\n");
+-		return -ENODEV;
+-	}
+-
+-	major = register_chrdev(0, VPE_MODULE_NAME, &vpe_fops);
+-	if (major < 0) {
+-		pr_warn("VPE loader: unable to register character device\n");
+-		return major;
+-	}
+-
+-	err = class_register(&vpe_class);
+-	if (err) {
+-		pr_err("vpe_class registration failed\n");
+-		goto out_chrdev;
+-	}
+-
+-	device_initialize(&vpe_device);
+-	vpe_device.class	= &vpe_class;
+-	vpe_device.parent	= NULL;
+-	dev_set_name(&vpe_device, "vpe_sp");
+-	vpe_device.devt = MKDEV(major, VPE_MODULE_MINOR);
+-	err = device_add(&vpe_device);
+-	if (err) {
+-		pr_err("Adding vpe_device failed\n");
+-		goto out_class;
+-	}
+-
+-	t = alloc_tc(aprp_cpu_index());
+-	if (!t) {
+-		pr_warn("VPE: unable to allocate TC\n");
+-		err = -ENOMEM;
+-		goto out_dev;
+-	}
+-
+-	/* VPE */
+-	v = alloc_vpe(aprp_cpu_index());
+-	if (v == NULL) {
+-		pr_warn("VPE: unable to allocate VPE\n");
+-		kfree(t);
+-		err = -ENOMEM;
+-		goto out_dev;
+-	}
+-
+-	v->ntcs = 1;
+-
+-	/* add the tc to the list of this vpe's tc's. */
+-	list_add(&t->tc, &v->tc);
+-
+-	/* TC */
+-	t->pvpe = v;	/* set the parent vpe */
+-
+-	return 0;
+-
+-out_dev:
+-	device_del(&vpe_device);
+-
+-out_class:
+-	put_device(&vpe_device);
+-	class_unregister(&vpe_class);
+-
+-out_chrdev:
+-	unregister_chrdev(major, VPE_MODULE_NAME);
+-
+-	return err;
+-}
+-
+-void __exit vpe_module_exit(void)
+-{
+-	struct vpe *v, *n;
+-
+-	device_unregister(&vpe_device);
+-	class_unregister(&vpe_class);
+-	unregister_chrdev(major, VPE_MODULE_NAME);
+-
+-	/* No locking needed here */
+-	list_for_each_entry_safe(v, n, &vpecontrol.vpe_list, list)
+-		if (v->state != VPE_STATE_UNUSED)
+-			release_vpe(v);
+-}
+diff --git a/arch/mips/kernel/vpe.c b/arch/mips/kernel/vpe.c
+index 13294972707b..343d2597ed76 100644
+--- a/arch/mips/kernel/vpe.c
++++ b/arch/mips/kernel/vpe.c
+@@ -795,7 +795,7 @@ static int vpe_open(struct inode *inode, struct file *filp)
+ 
+ static int vpe_release(struct inode *inode, struct file *filp)
  {
--	struct folio *folio = nc->folio;
-+	struct page_frag_cache *nc;
-+	struct folio *folio, *spare = NULL;
- 	size_t offset;
-+	void *p;
+-#if defined(CONFIG_MIPS_VPE_LOADER_MT) || defined(CONFIG_MIPS_VPE_LOADER_CMP)
++#ifdef CONFIG_MIPS_VPE_LOADER_MT
+ 	struct vpe *v;
+ 	Elf_Ehdr *hdr;
+ 	int ret = 0;
+diff --git a/arch/mips/mti-malta/Makefile b/arch/mips/mti-malta/Makefile
+index 13bbd12bfa65..bb2c706e11b0 100644
+--- a/arch/mips/mti-malta/Makefile
++++ b/arch/mips/mti-malta/Makefile
+@@ -14,6 +14,4 @@ obj-y				+= malta-platform.o
+ obj-y				+= malta-setup.o
+ obj-y				+= malta-time.o
  
--	if (unlikely(!folio)) {
--refill:
--		folio = page_frag_cache_refill(nc, gfp_mask);
--		if (!folio)
--			return NULL;
-+	if (!frag_cache)
-+		frag_cache = &page_frag_default_allocator;
-+	if (WARN_ON_ONCE(fragsz == 0))
-+		fragsz = 1;
-+	align_mask &= ~3UL;
- 
--		/* Even if we own the page, we do not use atomic_set().
--		 * This would break get_page_unless_zero() users.
--		 */
--		folio_ref_add(folio, PAGE_FRAG_CACHE_MAX_SIZE);
+-obj-$(CONFIG_MIPS_CMP)		+= malta-amon.o
 -
--		/* reset page count bias and offset to start of new frag */
--		nc->pfmemalloc = folio_is_pfmemalloc(folio);
--		nc->pagecnt_bias = PAGE_FRAG_CACHE_MAX_SIZE + 1;
--		nc->offset = folio_size(folio);
-+	nc = get_cpu_ptr(frag_cache);
-+reload:
-+	folio = nc->folio;
-+	offset = nc->offset;
-+try_again:
-+
-+	/* Make the allocation if there's sufficient space. */
-+	if (fragsz <= offset) {
-+		nc->pagecnt_bias--;
-+		offset = (offset - fragsz) & align_mask;
-+		nc->offset = offset;
-+		p = folio_address(folio) + offset;
-+		put_cpu_ptr(frag_cache);
-+		if (spare)
-+			folio_put(spare);
-+		return p;
- 	}
- 
--	offset = nc->offset;
--	if (unlikely(fragsz > offset)) {
--		/* Reuse the folio if everyone we gave it to has finished with it. */
--		if (!folio_ref_sub_and_test(folio, nc->pagecnt_bias)) {
--			nc->folio = NULL;
-+	/* Insufficient space - see if we can refurbish the current folio. */
-+	if (folio) {
-+		if (!folio_ref_sub_and_test(folio, nc->pagecnt_bias))
- 			goto refill;
--		}
- 
- 		if (unlikely(nc->pfmemalloc)) {
- 			__folio_put(folio);
--			nc->folio = NULL;
- 			goto refill;
- 		}
- 
-@@ -104,27 +116,56 @@ void *page_frag_alloc_align(struct page_frag_cache *nc,
- 		/* reset page count bias and offset to start of new frag */
- 		nc->pagecnt_bias = PAGE_FRAG_CACHE_MAX_SIZE + 1;
- 		offset = folio_size(folio);
--		if (unlikely(fragsz > offset)) {
--			/*
--			 * The caller is trying to allocate a fragment
--			 * with fragsz > PAGE_SIZE but the cache isn't big
--			 * enough to satisfy the request, this may
--			 * happen in low memory conditions.
--			 * We don't release the cache page because
--			 * it could make memory pressure worse
--			 * so we simply return NULL here.
--			 */
--			nc->offset = offset;
-+		if (unlikely(fragsz > offset))
-+			goto frag_too_big;
-+		goto try_again;
-+	}
-+
-+refill:
-+	if (!spare) {
-+		nc->folio = NULL;
-+		put_cpu_ptr(frag_cache);
-+
-+		spare = page_frag_cache_refill(gfp);
-+		if (!spare)
- 			return NULL;
--		}
-+
-+		nc = get_cpu_ptr(frag_cache);
-+		/* We may now be on a different cpu and/or someone else may
-+		 * have refilled it
-+		 */
-+		nc->pfmemalloc = folio_is_pfmemalloc(spare);
-+		if (nc->folio)
-+			goto reload;
- 	}
- 
--	nc->pagecnt_bias--;
--	offset -= fragsz;
--	offset &= align_mask;
-+	nc->folio = spare;
-+	folio = spare;
-+	spare = NULL;
-+
-+	/* Even if we own the page, we do not use atomic_set().  This would
-+	 * break get_page_unless_zero() users.
-+	 */
-+	folio_ref_add(folio, PAGE_FRAG_CACHE_MAX_SIZE);
-+
-+	/* Reset page count bias and offset to start of new frag */
-+	nc->pagecnt_bias = PAGE_FRAG_CACHE_MAX_SIZE + 1;
-+	offset = folio_size(folio);
-+	goto try_again;
-+
-+frag_too_big:
-+	/*
-+	 * The caller is trying to allocate a fragment with fragsz > PAGE_SIZE
-+	 * but the cache isn't big enough to satisfy the request, this may
-+	 * happen in low memory conditions.  We don't release the cache page
-+	 * because it could make memory pressure worse so we simply return NULL
-+	 * here.
-+	 */
- 	nc->offset = offset;
+ CFLAGS_malta-dtshim.o = -I$(src)/../../../scripts/dtc/libfdt
+diff --git a/arch/mips/mti-malta/malta-amon.c b/arch/mips/mti-malta/malta-amon.c
+deleted file mode 100644
+index 84ac523b0ce0..000000000000
+--- a/arch/mips/mti-malta/malta-amon.c
++++ /dev/null
+@@ -1,88 +0,0 @@
+-/*
+- * This file is subject to the terms and conditions of the GNU General Public
+- * License.  See the file "COPYING" in the main directory of this archive
+- * for more details.
+- *
+- * Copyright (C) 2007 MIPS Technologies, Inc.  All rights reserved.
+- * Copyright (C) 2013 Imagination Technologies Ltd.
+- *
+- * Arbitrary Monitor Interface
+- */
+-#include <linux/kernel.h>
+-#include <linux/smp.h>
 -
--	return folio_address(folio) + offset;
-+	put_cpu_ptr(frag_cache);
-+	if (spare)
-+		folio_put(spare);
-+	return NULL;
- }
- EXPORT_SYMBOL(page_frag_alloc_align);
+-#include <asm/addrspace.h>
+-#include <asm/mipsmtregs.h>
+-#include <asm/mips-boards/launch.h>
+-#include <asm/vpe.h>
+-
+-int amon_cpu_avail(int cpu)
+-{
+-	struct cpulaunch *launch = (struct cpulaunch *)CKSEG0ADDR(CPULAUNCH);
+-
+-	if (cpu < 0 || cpu >= NCPULAUNCH) {
+-		pr_debug("avail: cpu%d is out of range\n", cpu);
+-		return 0;
+-	}
+-
+-	launch += cpu;
+-	if (!(launch->flags & LAUNCH_FREADY)) {
+-		pr_debug("avail: cpu%d is not ready\n", cpu);
+-		return 0;
+-	}
+-	if (launch->flags & (LAUNCH_FGO|LAUNCH_FGONE)) {
+-		pr_debug("avail: too late.. cpu%d is already gone\n", cpu);
+-		return 0;
+-	}
+-
+-	return 1;
+-}
+-
+-int amon_cpu_start(int cpu,
+-		    unsigned long pc, unsigned long sp,
+-		    unsigned long gp, unsigned long a0)
+-{
+-	volatile struct cpulaunch *launch =
+-		(struct cpulaunch  *)CKSEG0ADDR(CPULAUNCH);
+-
+-	if (!amon_cpu_avail(cpu))
+-		return -1;
+-	if (cpu == smp_processor_id()) {
+-		pr_debug("launch: I am cpu%d!\n", cpu);
+-		return -1;
+-	}
+-	launch += cpu;
+-
+-	pr_debug("launch: starting cpu%d\n", cpu);
+-
+-	launch->pc = pc;
+-	launch->gp = gp;
+-	launch->sp = sp;
+-	launch->a0 = a0;
+-
+-	smp_wmb();		/* Target must see parameters before go */
+-	launch->flags |= LAUNCH_FGO;
+-	smp_wmb();		/* Target must see go before we poll  */
+-
+-	while ((launch->flags & LAUNCH_FGONE) == 0)
+-		;
+-	smp_rmb();	/* Target will be updating flags soon */
+-	pr_debug("launch: cpu%d gone!\n", cpu);
+-
+-	return 0;
+-}
+-
+-#ifdef CONFIG_MIPS_VPE_LOADER_CMP
+-int vpe_run(struct vpe *v)
+-{
+-	struct vpe_notifications *n;
+-
+-	if (amon_cpu_start(aprp_cpu_index(), v->__start, 0, 0, 0) < 0)
+-		return -1;
+-
+-	list_for_each_entry(n, &v->notify, list)
+-		n->start(VPE_MODULE_MINOR);
+-
+-	return 0;
+-}
+-#endif
+diff --git a/arch/mips/mti-malta/malta-init.c b/arch/mips/mti-malta/malta-init.c
+index b03cac5fdc02..000d6d50520a 100644
+--- a/arch/mips/mti-malta/malta-init.c
++++ b/arch/mips/mti-malta/malta-init.c
+@@ -289,8 +289,6 @@ void __init prom_init(void)
  
-@@ -136,3 +177,25 @@ void page_frag_free(void *addr)
- 	folio_put(virt_to_folio(addr));
- }
- EXPORT_SYMBOL(page_frag_free);
-+
-+/**
-+ * page_frag_memdup - Allocate a page fragment and duplicate some data into it
-+ * @frag_cache: The frag cache to use (or NULL for the default)
-+ * @fragsz: The amount of memory to copy (maximum 1/2 page).
-+ * @p: The source data to copy
-+ * @gfp: Allocation flags under which to make an allocation
-+ * @align_mask: The required alignment
-+ */
-+void *page_frag_memdup(struct page_frag_cache __percpu *frag_cache,
-+		       const void *p, size_t fragsz, gfp_t gfp,
-+		       unsigned long align_mask)
-+{
-+	void *q;
-+
-+	q = page_frag_alloc_align(frag_cache, fragsz, gfp, align_mask);
-+	if (!q)
-+		return q;
-+
-+	return memcpy(q, p, fragsz);
-+}
-+EXPORT_SYMBOL(page_frag_memdup);
-diff --git a/net/core/skbuff.c b/net/core/skbuff.c
-index 050a875d09c5..3d05ed64b606 100644
---- a/net/core/skbuff.c
-+++ b/net/core/skbuff.c
-@@ -222,13 +222,13 @@ static void *page_frag_alloc_1k(struct page_frag_1k *nc, gfp_t gfp_mask)
- #endif
- 
- struct napi_alloc_cache {
--	struct page_frag_cache page;
- 	struct page_frag_1k page_small;
- 	unsigned int skb_count;
- 	void *skb_cache[NAPI_SKB_CACHE_SIZE];
+ 	if (!register_cps_smp_ops())
+ 		return;
+-	if (!register_cmp_smp_ops())
+-		return;
+ 	if (!register_vsmp_smp_ops())
+ 		return;
+ 	register_up_smp_ops();
+diff --git a/arch/mips/mti-malta/malta-platform.c b/arch/mips/mti-malta/malta-platform.c
+index 4ffbcc58c6f6..6961a23aefe9 100644
+--- a/arch/mips/mti-malta/malta-platform.c
++++ b/arch/mips/mti-malta/malta-platform.c
+@@ -43,7 +43,6 @@
+ static struct plat_serial8250_port uart8250_data[] = {
+ 	SMC_PORT(0x3F8, 4),
+ 	SMC_PORT(0x2F8, 3),
+-#ifndef CONFIG_MIPS_CMP
+ 	{
+ 		.mapbase	= 0x1f000900,	/* The CBUS UART */
+ 		.irq		= MIPS_CPU_IRQ_BASE + MIPSCPU_INT_MB2,
+@@ -53,7 +52,6 @@ static struct plat_serial8250_port uart8250_data[] = {
+ 		.flags		= CBUS_UART_FLAGS,
+ 		.regshift	= 3,
+ 	},
+-#endif
+ 	{ },
  };
  
- static DEFINE_PER_CPU(struct page_frag_cache, netdev_alloc_cache);
-+static DEFINE_PER_CPU(struct page_frag_cache, napi_frag_cache);
- static DEFINE_PER_CPU(struct napi_alloc_cache, napi_alloc_cache);
+diff --git a/arch/mips/ralink/mt7621.c b/arch/mips/ralink/mt7621.c
+index bbf5811afbf2..c3fbab50b95c 100644
+--- a/arch/mips/ralink/mt7621.c
++++ b/arch/mips/ralink/mt7621.c
+@@ -217,8 +217,6 @@ void __init prom_soc_init(struct ralink_soc_info *soc_info)
  
- /* Double check that napi_get_frags() allocates skbs with
-@@ -250,11 +250,9 @@ void napi_get_frags_check(struct napi_struct *napi)
- 
- void *__napi_alloc_frag_align(unsigned int fragsz, unsigned int align_mask)
- {
--	struct napi_alloc_cache *nc = this_cpu_ptr(&napi_alloc_cache);
--
- 	fragsz = SKB_DATA_ALIGN(fragsz);
- 
--	return page_frag_alloc_align(&nc->page, fragsz, GFP_ATOMIC, align_mask);
-+	return page_frag_alloc_align(&napi_frag_cache, fragsz, GFP_ATOMIC, align_mask);
+ 	if (!register_cps_smp_ops())
+ 		return;
+-	if (!register_cmp_smp_ops())
+-		return;
+ 	if (!register_vsmp_smp_ops())
+ 		return;
  }
- EXPORT_SYMBOL(__napi_alloc_frag_align);
+diff --git a/drivers/irqchip/irq-mips-gic.c b/drivers/irqchip/irq-mips-gic.c
+index 1a6a7a672ad7..046c355e120b 100644
+--- a/drivers/irqchip/irq-mips-gic.c
++++ b/drivers/irqchip/irq-mips-gic.c
+@@ -54,7 +54,6 @@ static DEFINE_SPINLOCK(gic_lock);
+ static struct irq_domain *gic_irq_domain;
+ static int gic_shared_intrs;
+ static unsigned int gic_cpu_pin;
+-static unsigned int timer_cpu_pin;
+ static struct irq_chip gic_level_irq_controller, gic_edge_irq_controller;
  
-@@ -264,15 +262,12 @@ void *__netdev_alloc_frag_align(unsigned int fragsz, unsigned int align_mask)
- 
- 	fragsz = SKB_DATA_ALIGN(fragsz);
- 	if (in_hardirq() || irqs_disabled()) {
--		struct page_frag_cache *nc = this_cpu_ptr(&netdev_alloc_cache);
--
--		data = page_frag_alloc_align(nc, fragsz, GFP_ATOMIC, align_mask);
-+		data = page_frag_alloc_align(&netdev_alloc_cache,
-+					     fragsz, GFP_ATOMIC, align_mask);
+ #ifdef CONFIG_GENERIC_IRQ_IPI
+@@ -499,9 +498,6 @@ static int gic_irq_domain_map(struct irq_domain *d, unsigned int virq,
+ 	 */
+ 	switch (intr) {
+ 	case GIC_LOCAL_INT_TIMER:
+-		/* CONFIG_MIPS_CMP workaround (see __gic_init) */
+-		map = GIC_MAP_PIN_MAP_TO_PIN | timer_cpu_pin;
+-		fallthrough;
+ 	case GIC_LOCAL_INT_PERFCTR:
+ 	case GIC_LOCAL_INT_FDC:
+ 		/*
+@@ -795,34 +791,12 @@ static int __init gic_of_init(struct device_node *node,
+ 	if (cpu_has_veic) {
+ 		/* Always use vector 1 in EIC mode */
+ 		gic_cpu_pin = 0;
+-		timer_cpu_pin = gic_cpu_pin;
+ 		set_vi_handler(gic_cpu_pin + GIC_PIN_TO_VEC_OFFSET,
+ 			       __gic_irq_dispatch);
  	} else {
--		struct napi_alloc_cache *nc;
--
- 		local_bh_disable();
--		nc = this_cpu_ptr(&napi_alloc_cache);
--		data = page_frag_alloc_align(&nc->page, fragsz, GFP_ATOMIC, align_mask);
-+		data = page_frag_alloc_align(&napi_frag_cache,
-+					     fragsz, GFP_ATOMIC, align_mask);
- 		local_bh_enable();
- 	}
- 	return data;
-@@ -652,7 +647,6 @@ EXPORT_SYMBOL(__alloc_skb);
- struct sk_buff *__netdev_alloc_skb(struct net_device *dev, unsigned int len,
- 				   gfp_t gfp_mask)
- {
--	struct page_frag_cache *nc;
- 	struct sk_buff *skb;
- 	bool pfmemalloc;
- 	void *data;
-@@ -677,14 +671,12 @@ struct sk_buff *__netdev_alloc_skb(struct net_device *dev, unsigned int len,
- 		gfp_mask |= __GFP_MEMALLOC;
- 
- 	if (in_hardirq() || irqs_disabled()) {
--		nc = this_cpu_ptr(&netdev_alloc_cache);
--		data = page_frag_alloc(nc, len, gfp_mask);
--		pfmemalloc = nc->pfmemalloc;
-+		data = page_frag_alloc(&netdev_alloc_cache, len, gfp_mask);
-+		pfmemalloc = folio_is_pfmemalloc(virt_to_folio(data));
- 	} else {
- 		local_bh_disable();
--		nc = this_cpu_ptr(&napi_alloc_cache.page);
--		data = page_frag_alloc(nc, len, gfp_mask);
--		pfmemalloc = nc->pfmemalloc;
-+		data = page_frag_alloc(&napi_frag_cache, len, gfp_mask);
-+		pfmemalloc = folio_is_pfmemalloc(virt_to_folio(data));
- 		local_bh_enable();
- 	}
- 
-@@ -772,8 +764,8 @@ struct sk_buff *__napi_alloc_skb(struct napi_struct *napi, unsigned int len,
- 	} else {
- 		len = SKB_HEAD_ALIGN(len);
- 
--		data = page_frag_alloc(&nc->page, len, gfp_mask);
--		pfmemalloc = nc->page.pfmemalloc;
-+		data = page_frag_alloc(&napi_frag_cache, len, gfp_mask);
-+		pfmemalloc = folio_is_pfmemalloc(virt_to_folio(data));
+ 		gic_cpu_pin = cpu_vec - GIC_CPU_PIN_OFFSET;
+ 		irq_set_chained_handler(MIPS_CPU_IRQ_BASE + cpu_vec,
+ 					gic_irq_dispatch);
+-		/*
+-		 * With the CMP implementation of SMP (deprecated), other CPUs
+-		 * are started by the bootloader and put into a timer based
+-		 * waiting poll loop. We must not re-route those CPU's local
+-		 * timer interrupts as the wait instruction will never finish,
+-		 * so just handle whatever CPU interrupt it is routed to by
+-		 * default.
+-		 *
+-		 * This workaround should be removed when CMP support is
+-		 * dropped.
+-		 */
+-		if (IS_ENABLED(CONFIG_MIPS_CMP) &&
+-		    gic_local_irq_is_routable(GIC_LOCAL_INT_TIMER)) {
+-			timer_cpu_pin = read_gic_vl_timer_map() & GIC_MAP_PIN_MAP;
+-			irq_set_chained_handler(MIPS_CPU_IRQ_BASE +
+-						GIC_CPU_PIN_OFFSET +
+-						timer_cpu_pin,
+-						gic_irq_dispatch);
+-		} else {
+-			timer_cpu_pin = gic_cpu_pin;
+-		}
  	}
  
- 	if (unlikely(!data))
+ 	gic_irq_domain = irq_domain_add_simple(node, GIC_NUM_LOCAL_INTRS +
+-- 
+2.35.3
 
 
