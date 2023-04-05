@@ -4,102 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57AAFC7619A
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Apr 2023 09:17:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52DA4C7619A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Apr 2023 09:26:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9gvRZGzZ81MG5/Kz7opKkMvHNkqBqpdFUorIdo7o5i0=; b=snDpkmhelMWqi5HwWlUtkFcSfX
-	Th9PjgvRh40WzSzFz46dRlLGn03vSLNc6Ogew3zoahYK9CFLhXxvGIBGi8y3087LaiFTYmyLUH/Ba
-	J0PurTkem+QpjBvfPmwgZHiYL9B/ggMruZqAjGLF9mR7zCrgGnWVywjeIEyy4LvgUU/qY+UsI2rIg
-	8WRhAL8DT6Ieg8y2aGuVLoWd4qk3I+O7qpXNuUznMetsNzy3KN94fYrcWqls/JlNeKE5tRIiZuHJN
-	Ov1ZEX3OnWMkHmDPcoioqz1WF1NHi7A77Kr//oxTG5ADx2qz7hRUwXJQ7Z/OqBdaVeMs08VV+NWxK
-	R9eWUlmg==;
+	bh=j86FY1X3mQJSpSUEyPXpteWdgUQhvm2ft4SxXMxYnjA=; b=I+gy6gE9v2WuOPNPc1f1Zse+QD
+	hj1dVdNIH9Nukea/eIh/jr4DrXIInmQ3j86OttQzEKOfZL68aDabOCkhksAy6dRNojPjq/6+tjmgx
+	Dt6R5hfpR2G7IYIfppe7XG4SJngx8BgMFlzq2ozFKblY7p9vd44+afYVq+9zud+n/fxs9CwX816pX
+	VA+erKe3QeJrdDOlmZ4wsCnAbBVrGmXIrIiGo53wYKg9iztiGTZuoUz4Lnzey1u2AwJjG5dNkjatU
+	qyBsbpnhO8mHIONoSxS+Ji3tdkf567XCLK/axe60DpMCw6vMqHBg0sdeIz+4btRcbThSwbYVLJThC
+	RSYFb9jQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjzGj-003v79-1b;
-	Wed, 05 Apr 2023 09:17:29 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1pjzPa-003wbg-1E;
+	Wed, 05 Apr 2023 09:26:38 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjyBY-003iuw-37
+	id 1pjzPX-003waS-1r
 	for linux-mediatek@lists.infradead.org;
-	Wed, 05 Apr 2023 08:08:06 +0000
-Received: by mail-wm1-x334.google.com with SMTP id n19so20385952wms.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 05 Apr 2023 01:07:51 -0700 (PDT)
+	Wed, 05 Apr 2023 09:26:37 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id l27so35514735wrb.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 05 Apr 2023 02:26:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1680682070;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=9gvRZGzZ81MG5/Kz7opKkMvHNkqBqpdFUorIdo7o5i0=;
-        b=Vh+ARxw+XBpCn6Cdbuf7qMigVJ30ZylLNEkKMlcjxc6FxUOMmsEMaBdynDPOffQ6H2
-         jkob6hKQ3Beho32h+Qj+YX87SSFxsQSD+Rz1GIb4XqRjYVmf1R/7wQJgIsSVvkLMeC9i
-         Rj+QMdbRNLqF41ls64vx4k7996jtfeiNQ+QfCYBG5vXZB0UlThEA/McqoHCu4+nMQAoe
-         b6EFIPolerBdQiY3GuG4r4qOpfcpSGyUDTeku16QouVkaP9yLUFahTXiBi2HGU0OszAK
-         Ja8tAZhgG2ewKmnDMsHlBKiB+Buwl5Wl14tiXp3tzjo/3pfGZjtc4P6UFwz9jADbIpF3
-         3Cbg==
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1680686792;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=j86FY1X3mQJSpSUEyPXpteWdgUQhvm2ft4SxXMxYnjA=;
+        b=JZe6wEaenAlkzh6A+1SZGKPIIY7+28I3FbXLdAPA642CT61U15GFayMED3USy2vRur
+         cnbsEM61d76fdpGl1Fp43vpXgh/pbVd1RNpCtrcxKxodCsLRcn2TD10MV6TChmFOcmxq
+         bAfQZN/1MLLqUqBa5MuDi80FDwDM9rsv3Cr8bzvonlV68Q2now/PCsJPotFN5h0SDUpi
+         1hSyWfVY6gTWtsYurymkF8JgnXpoxqfKd2QV368FNEQneJd0WzHoFGH6Q49synXoxzMC
+         bduw8wIButE9cgIZUbMablcXnwTNxIbaY3B9Xb2wXBV6xb9UmOQhfaNb0MQWZikYiVMH
+         FX1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680682070;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=9gvRZGzZ81MG5/Kz7opKkMvHNkqBqpdFUorIdo7o5i0=;
-        b=Q/Pb1sz2rFRg+rWy3bf46gdFpJkSF+JNiJzKrUTczPM6EAHCDw+/GZmL6QKLNKT1UE
-         1B/U5wBFNo4DjCWHeH0+hbJrjRS44JzB1C/xjuyiLvZk9kndntnreN864JFlPbP+jEKD
-         V6pBlqqmDc9BKJJYyhZGYSUCW6y/YfIkuRZi3Gf2T07Y8iLHMkC1EJlUH7L41Csj+gk1
-         K8c2SlDkmW3+gFuafLIA5oDiIHuqKOLI2rxTtxAdlxKBtWJ9zG3A/e/3W5iyqB0fq3oN
-         WyJhiK7mxcQvoJG1QQwch8xtp603P0GNjMEW8M3x37GfkW8PkKRfPN0IhOarrpTFL3kU
-         edsQ==
-X-Gm-Message-State: AAQBX9cRqUOTO6ZZMJFL4R/HYhILnlphS7SrFY8AQYxBFGasMDI9bgaP
-	VecWxdOudNjjNlrIITxJjal8iA==
-X-Google-Smtp-Source: AKy350YeXZxkfcHB5kV2nmFPc7FFrQ/RMUACXkLotNVpPgsteGsIlBZRNxyyl9ufeEdxfpQblczIEQ==
-X-Received: by 2002:a05:600c:211a:b0:3ea:f73e:9d8a with SMTP id u26-20020a05600c211a00b003eaf73e9d8amr4072220wml.30.1680682070617;
-        Wed, 05 Apr 2023 01:07:50 -0700 (PDT)
-Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id d4-20020a05600c3ac400b003ee8a1bc220sm1378395wms.1.2023.04.05.01.07.49
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Apr 2023 01:07:50 -0700 (PDT)
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Wed, 05 Apr 2023 10:06:44 +0200
-Subject: [PATCH v2 02/10] dt-bindings: memory-controllers:
- mediatek,smi-larb: add mt8365
+        d=1e100.net; s=20210112; t=1680686792;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=j86FY1X3mQJSpSUEyPXpteWdgUQhvm2ft4SxXMxYnjA=;
+        b=r/Qi/Xxa82n6Vx/NDe0lf/t/G3K+/SIOhxCaFM0tCq08tLSXdE+PVm7iB3X+Q5t8ck
+         gy/m12QnmVxE2cocV/95NxZlpMgaeGAZVqIxS7Um48FOklV3UwNY/rXCTx+vRiB0TfJn
+         aCr3ICMvTp5jQCfwCHgBJk2BmQkCdsbkp1a6sVXOG88ei0ddNofQhPERagIdSbnJn7Il
+         FnEs4/Ap4z/pAp1gtNKwRoHYqVEydM+0nBIZgV8t1C/1GRMEIwx8m6dgh5O03xEHhDq8
+         TiX7NQqOYFrUsdW6HIJZR09GlB36roG6f1VPfV7Sg2dRWMqhoy4Vo/p0CPycWcJ1KBax
+         i39Q==
+X-Gm-Message-State: AAQBX9c2GZ41DasNA/l4T42pxjzEIWHn7K//tOQo/296wxjHWasEPakN
+	MuOBXE3LWeo4rizac8CNpr7Ofw==
+X-Google-Smtp-Source: AKy350a42YeJ75k615TMGQYvStQrB2Lwyie5IHBEE2n0FdEzZ/N7NZ9pnWljziB9hk5G3LjzKvWGSA==
+X-Received: by 2002:adf:e30e:0:b0:2c7:46f:c410 with SMTP id b14-20020adfe30e000000b002c7046fc410mr3314136wrj.36.1680686792347;
+        Wed, 05 Apr 2023 02:26:32 -0700 (PDT)
+Received: from [192.168.1.172] (158.22.5.93.rev.sfr.net. [93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id s12-20020adfeccc000000b002da1261aa44sm14576762wro.48.2023.04.05.02.26.31
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 05 Apr 2023 02:26:31 -0700 (PDT)
+Message-ID: <b9c35799-7abf-116a-d0f4-531d1d3cd7b2@baylibre.com>
+Date: Wed, 5 Apr 2023 11:26:30 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20230207-iommu-support-v2-2-60d5fa00e4e5@baylibre.com>
-References: <20230207-iommu-support-v2-0-60d5fa00e4e5@baylibre.com>
-In-Reply-To: <20230207-iommu-support-v2-0-60d5fa00e4e5@baylibre.com>
-To: Yong Wu <yong.wu@mediatek.com>, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- Alexandre Mergnat <amergnat@baylibre.com>
-X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=951; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=dRVBiL9RiPJX/FXqDzKoQWbHskXPf7KJD11X+Bn//b4=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkLSxSiN5AhJ8apXlByy8QrL9ZYngsCHSFSQdKonHj
- FeE4gqSJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZC0sUgAKCRArRkmdfjHURapED/
- 429XxnIG2B1brCMTzSLIYyy9lNu+qP8yntLV62vo0uKlgMHDQuO7aWoJQxrew2nnCF68iwsalpu0E2
- zx3AoMJ7WZrFG4h8ixWoaISEJBw+ixclLyTHUDFur7JWSiBw2xkJrs5pkd7tGGSykvXrGacGFb0KQE
- BuFoO3i29xFLxDMZ6zFEKQn7BfLBuwRf5SG815XrmoICAJiOMoB/in7gaQWJZBYHlc6m2Iq5s0pfjS
- HKy2vCeQCy1VRVE5jA2F0Gu3pRwN9LP9DVyqTS6GwNllKUqN6gnR0bf/2P186ND5o6yH00fAgx+TTD
- dDRoTwIuRZES84gUaQwpDpiVH1I7SouNjzMenB+bsLdjAmTSGKTy+T8iHyt68jwbVzXBZOQCBPvugu
- /xw5bt8aTc4efrlapRnf7DNya6GtL2Xne7OKikS15uiYVfrLRP1OwIaRuO3xlO5BnlIcBpz1DNalmC
- CJ/mzM6gz8U9fGIWkeAqjsJfzw7tblLsx18/y5eZZ/0B1dl6d93ThmTE1vQGewShU0Gi2zbZA6xRrB
- 38tfFystDk4TgJ3SgvIz229dNMe9H3cY8M8+EboWvaUlhK7w0K/gfQoyfJ0DZ+3ZP4bvFvYiLowVI2
- opx19618vF3shsEn3If/opFEwIXbtvp9rbJfBHy87pzgDYMkqQG3RDKKAuxA==
-X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
- fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH RESEND 1/2] pwm: mtk-disp: Disable shadow registers before
+ setting backlight values
+Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ thierry.reding@gmail.com
+Cc: u.kleine-koenig@pengutronix.de, matthias.bgg@gmail.com,
+ weiqing.kong@mediatek.com, jitao.shi@mediatek.com,
+ linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ kernel@collabora.com, wenst@chromium.org,
+ =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?= <nfraprado@collabora.com>
+References: <20230403133054.319070-1-angelogioacchino.delregno@collabora.com>
+ <20230403133054.319070-2-angelogioacchino.delregno@collabora.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <20230403133054.319070-2-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230405_010805_010233_C34A324E 
-X-CRM114-Status: UNSURE (   8.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230405_022635_618845_5995EDDC 
+X-CRM114-Status: GOOD (  16.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,31 +101,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add binding description for mediatek,mt8365-smi-larb
+On 03/04/2023 15:30, AngeloGioacchino Del Regno wrote:
+> If shadow registers usage is not desired, disable that before performing
+> any write to CON0/1 registers in the .apply() callback, otherwise we may
+> lose clkdiv or period/width updates.
+> 
+> Fixes: cd4b45ac449a ("pwm: Add MediaTek MT2701 display PWM driver support")
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> Tested-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> ---
+>   drivers/pwm/pwm-mtk-disp.c | 24 +++++++++++++-----------
+>   1 file changed, 13 insertions(+), 11 deletions(-)
+> 
+> diff --git a/drivers/pwm/pwm-mtk-disp.c b/drivers/pwm/pwm-mtk-disp.c
+> index 692a06121b28..82b430d881a2 100644
+> --- a/drivers/pwm/pwm-mtk-disp.c
+> +++ b/drivers/pwm/pwm-mtk-disp.c
+> @@ -138,6 +138,19 @@ static int mtk_disp_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
+>   	high_width = mul_u64_u64_div_u64(state->duty_cycle, rate, div);
+>   	value = period | (high_width << PWM_HIGH_WIDTH_SHIFT);
+>   
+> +	if (mdp->data->bls_debug && !mdp->data->has_commit) {
+> +		/*
+> +		 * For MT2701, disable double buffer before writing register
+> +		 * and select manual mode and use PWM_PERIOD/PWM_HIGH_WIDTH.
+> +		 */
+> +		mtk_disp_pwm_update_bits(mdp, mdp->data->bls_debug,
+> +					 mdp->data->bls_debug_mask,
+> +					 mdp->data->bls_debug_mask);
+> +		mtk_disp_pwm_update_bits(mdp, mdp->data->con0,
+> +					 mdp->data->con0_sel,
+> +					 mdp->data->con0_sel);
+> +	}
+> +
+>   	mtk_disp_pwm_update_bits(mdp, mdp->data->con0,
+>   				 PWM_CLKDIV_MASK,
+>   				 clk_div << PWM_CLKDIV_SHIFT);
+> @@ -152,17 +165,6 @@ static int mtk_disp_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
+>   		mtk_disp_pwm_update_bits(mdp, mdp->data->commit,
+>   					 mdp->data->commit_mask,
+>   					 0x0);
+> -	} else {
+> -		/*
+> -		 * For MT2701, disable double buffer before writing register
+> -		 * and select manual mode and use PWM_PERIOD/PWM_HIGH_WIDTH.
+> -		 */
+> -		mtk_disp_pwm_update_bits(mdp, mdp->data->bls_debug,
+> -					 mdp->data->bls_debug_mask,
+> -					 mdp->data->bls_debug_mask);
+> -		mtk_disp_pwm_update_bits(mdp, mdp->data->con0,
+> -					 mdp->data->con0_sel,
+> -					 mdp->data->con0_sel);
+>   	}
+>   
+>   	mtk_disp_pwm_update_bits(mdp, DISP_PWM_EN, mdp->data->enable_mask,
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
----
- .../devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml     | 4 ++++
- 1 file changed, 4 insertions(+)
+Hi,
 
-diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
-index 5f4ac3609887..aee7f6cf1300 100644
---- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
-+++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
-@@ -34,6 +34,10 @@ properties:
-           - const: mediatek,mt7623-smi-larb
-           - const: mediatek,mt2701-smi-larb
- 
-+      - items:
-+          - const: mediatek,mt8365-smi-larb
-+          - const: mediatek,mt8186-smi-larb
-+
-   reg:
-     maxItems: 1
- 
+I've made a non-regression test for the mt8365-evk (i350-evk) board.
+It's fine for me.
 
--- 
-2.25.1
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+Tested-by: Alexandre Mergnat <amergnat@baylibre.com>
 
+Regards,
+Alex
 
