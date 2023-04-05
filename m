@@ -4,59 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D33A0C7619A
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Apr 2023 14:10:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEC05C761A6
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Apr 2023 14:10:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GTB+VXYzTgQEIGOhyqnSkwBbLO+Sotxz246Tuy3vmD8=; b=GYI4iblw6odHMwm6BLIqMZ8VXp
-	UVBjVGNifOzlcW73KnVFhgotnUswJlAZEAqbivETfcgSKZab1BL0LAkFCiE4abIU7ntUbtjpZ/G++
-	2TzpikX9KAHCMcxw5Nf+63Bm/0LGapKNk+FSY6iBQL8I8b9ApYewnqF+2gZ35V0V2RrF2/3DlENRm
-	YH1/S0y88gEemUjSPTj8H+sdBLcDzW4QfZ/Z1BkwZQ7+d4Hoo+SHVO2NcbZTMm4GSSnQsh7gRWWfw
-	eh1+mCxEznyY3xP1i2XbKwB/9ulMHP+80ex2uYL9q8QTzIvDb5OF1pLDqiE6hlo+CB+1Me4RWZj6f
-	cefXtkJQ==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=nEQAuxB6Kdo+Jm/xH5MxrRGd8QDZcVEXoMu4XlKZzK8=; b=OLbSFfGX+CsSfM+qxXPeO9edf9
+	ngRDCcioSOdIu7Vwu+fZPgqQn27nxedDSmNHGlKLat4L2dlf8dnmL8ydi5WfQdVu++1qbv4YEioPx
+	Yba9R9yylZh5lkfhGEC8KM2GbbZk5NloKo7yfzrFkBN/mPyUYMLLbXIcF7lh0IYGlVqcfaHBLqSIY
+	PYbJOHRIMRkeR0RvbVVH9oJWuj4zxlqdwYpwfJlWi1cvgDMIxvKXfljxwgrH6mP3YwsXcxcMrK9b9
+	EKFEIF6lVekfgYzf1DU6nq63/tH7LQxXXeNnhku1vn8c9hXnO+WPgDoBOxq8TRLB/R4UuxF9+w2je
+	i+eDoTOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pk3qH-004cSm-03;
-	Wed, 05 Apr 2023 14:10:29 +0000
+	id 1pk3qN-004cWO-0p;
+	Wed, 05 Apr 2023 14:10:35 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pk3qD-004cRO-2X
+	id 1pk3qJ-004cTp-2c
 	for linux-mediatek@lists.infradead.org;
-	Wed, 05 Apr 2023 14:10:27 +0000
+	Wed, 05 Apr 2023 14:10:33 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1pk3q5-0003FL-CT; Wed, 05 Apr 2023 16:10:17 +0200
+	id 1pk3q6-0003FA-5Y; Wed, 05 Apr 2023 16:10:18 +0200
 Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1pk3q4-009Abi-22; Wed, 05 Apr 2023 16:10:16 +0200
+	id 1pk3q3-009AbX-JG; Wed, 05 Apr 2023 16:10:15 +0200
 Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1pk3q3-00AmTs-6L; Wed, 05 Apr 2023 16:10:15 +0200
+	id 1pk3q2-00AmTj-If; Wed, 05 Apr 2023 16:10:14 +0200
 From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
 To: Bin Liu <b-liu@ti.com>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-usb@vger.kernel.org,
+	Paul Cercueil <paul@crapouillou.net>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Conor Dooley <conor.dooley@microchip.com>,
+	Daire McNamara <daire.mcnamara@microchip.com>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>
+Cc: linux-usb@vger.kernel.org,
 	kernel@pengutronix.de,
+	linux-mips@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH 03/10] usb: musb: mediatek: Convert to platform remove callback returning void
-Date: Wed,  5 Apr 2023 16:10:02 +0200
-Message-Id: <20230405141009.3400693-4-u.kleine-koenig@pengutronix.de>
+	linux-mediatek@lists.infradead.org,
+	linux-riscv@lists.infradead.org,
+	linux-omap@vger.kernel.org,
+	linux-sunxi@lists.linux.dev
+Subject: [PATCH 00/10] usb: musb: Convert to platform remove callback returning void
+Date: Wed,  5 Apr 2023 16:09:59 +0200
+Message-Id: <20230405141009.3400693-1-u.kleine-koenig@pengutronix.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230405141009.3400693-1-u.kleine-koenig@pengutronix.de>
-References: <20230405141009.3400693-1-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1695; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=RpBOv6m49AgJI769GPZjDwdUzESQIC9qonvn+da5A/s=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBkLYEzpMOGbs9KBOBr5kn2pH+FguaJosWzOto9s jr3Tlrrw82JATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZC2BMwAKCRCPgPtYfRL+ Tq41B/9KraWDsU5Ja74j/Vj8MPqnoaFBhUlN41PKb5uH5F7L1YWuy5Mqk+NkwkVuZpmDfgUpM1N QwCjdvjsLK/FI9L2ogBFtKOTz0XplT5UswbDjI4Z4L/MMtlaA2/OOc2VsmesPLEpaXw6upuATqw wM2wuoXT5rTYBYd+5Jw59ybXkRTfiSv7mOP3Ny6417pva1zb9haYU1Z6Br6PxKOHxfBQb2trssk QPLG3oG4OpAkq6x67Hz/FiYdfE/Hg3vNAAKQQ0W6r9BeAr7Gz2t3xBbVWu5z6FaFdEFD5iRRRGs xFs+bQ1QK/MDmBbdDy0nJA0svEtSdmpy39p9HtjdxtuKXv7B
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2106; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=y5P77BkcrdOtb/jU7g30i0OmKFgbBK/VXLhzJ7hsVXY=; b=owGbwMvMwMXY3/A7olbonx/jabUkhhTdRn1L4VMMF7t5Ctkm2O4pe/vUrsfKRt9EMbCBXYvpZ 3b/7a2djMYsDIxcDLJiiiz2jWsyrarkIjvX/rsMM4iVCWQKAxenAEyE5Sz7/4qp33SjuSouaNRP UuliYeFZvCvTrLZIsOyg1qGT1+VuVcu6/zGWndV/ItrbIkzW8kntxSLvdQ4rrtiHqfY+89CcNKP 3xZpz8ytrS51+ia9bJ7LA4XLlH1bX3RMPztzuE8NXXt+xYWLk5eApPwQCHr1J/P59mWGe7bagWQ /M1BeFeX/1UFgUNcNly6lNAvNvF70MKrOz1d7jZak0rYqpZnfe+1Ma5+V9xPrOGs6pk1g4Z23Ai VMWB40F0ji2JL169jc2W+mTZ8dy5cCuB8UOZqGnJAU0/b/1JXscqeyx8OZ3TIm9cKHjt9essnt8 2TN2TpXoVNgZ3pkTddNQ90LqdzaJevknxjFcu5LKPCoA
 X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 Content-Transfer-Encoding: 8bit
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
@@ -64,8 +72,8 @@ X-SA-Exim-Mail-From: ukl@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230405_071025_819061_28E3399B 
-X-CRM114-Status: GOOD (  16.04  )
+X-CRM114-CacheID: sfid-20230405_071031_852805_82819A1E 
+X-CRM114-Status: GOOD (  10.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,53 +88,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The .remove() callback for a platform driver returns an int which makes
-many driver authors wrongly assume it's possible to do error handling by
-returning an error code. However the value returned is (mostly) ignored
-and this typically results in resource leaks. To improve here there is a
-quest to make the remove callback return void. In the first step of this
-quest all drivers are converted to .remove_new() which already returns
-void.
+Hello,
 
-Trivially convert this driver from always returning zero in the remove
-callback to the void returning variant.
+this patch series adapts the platform drivers below drivers/usb/musb
+to use the .remove_new() callback. Compared to the traditional .remove()
+callback .remove_new() returns no value. This is a good thing because
+the driver core doesn't (and cannot) cope for errors during remove. The
+only effect of a non-zero return value in .remove() is that the driver
+core emits a warning. The device is removed anyhow and an early return
+from .remove() usually yields a resource leak.
 
-Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
----
- drivers/usb/musb/mediatek.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+By changing the remove callback to return void driver authors cannot
+reasonably assume any more that there is some kind of cleanup later.
 
-diff --git a/drivers/usb/musb/mediatek.c b/drivers/usb/musb/mediatek.c
-index 27b9bd258340..598ee5c0bf34 100644
---- a/drivers/usb/musb/mediatek.c
-+++ b/drivers/usb/musb/mediatek.c
-@@ -508,15 +508,13 @@ static int mtk_musb_probe(struct platform_device *pdev)
- 	return ret;
- }
- 
--static int mtk_musb_remove(struct platform_device *pdev)
-+static void mtk_musb_remove(struct platform_device *pdev)
- {
- 	struct mtk_glue *glue = platform_get_drvdata(pdev);
- 	struct platform_device *usb_phy = glue->usb_phy;
- 
- 	platform_device_unregister(glue->musb_pdev);
- 	usb_phy_generic_unregister(usb_phy);
--
--	return 0;
- }
- 
- #ifdef CONFIG_OF
-@@ -529,7 +527,7 @@ MODULE_DEVICE_TABLE(of, mtk_musb_match);
- 
- static struct platform_driver mtk_musb_driver = {
- 	.probe = mtk_musb_probe,
--	.remove = mtk_musb_remove,
-+	.remove_new = mtk_musb_remove,
- 	.driver = {
- 		   .name = "musb-mtk",
- 		   .of_match_table = of_match_ptr(mtk_musb_match),
+All drivers touched here returned zero unconditionally in their remove
+callback, so they could all be converted trivially to .remove_new().
+
+Best regards
+Uwe
+
+Uwe Kleine-König (10):
+  usb: musb: da8xx: Convert to platform remove callback returning void
+  usb: musb: jz4740: Convert to platform remove callback returning void
+  usb: musb: mediatek: Convert to platform remove callback returning void
+  usb: musb: mpfs: Convert to platform remove callback returning void
+  usb: musb: musb_core: Convert to platform remove callback returning void
+  usb: musb: musb_dsps: Convert to platform remove callback returning void
+  usb: musb: omap2430: Convert to platform remove callback returning void
+  usb: musb: sunxi: Convert to platform remove callback returning void
+  usb: musb: tusb6010: Convert to platform remove callback returning void
+  usb: musb: ux500: Convert to platform remove callback returning void
+
+ drivers/usb/musb/da8xx.c     | 6 ++----
+ drivers/usb/musb/jz4740.c    | 6 ++----
+ drivers/usb/musb/mediatek.c  | 6 ++----
+ drivers/usb/musb/mpfs.c      | 6 ++----
+ drivers/usb/musb/musb_core.c | 5 ++---
+ drivers/usb/musb/musb_dsps.c | 6 ++----
+ drivers/usb/musb/omap2430.c  | 6 ++----
+ drivers/usb/musb/sunxi.c     | 6 ++----
+ drivers/usb/musb/tusb6010.c  | 6 ++----
+ drivers/usb/musb/ux500.c     | 6 ++----
+ 10 files changed, 20 insertions(+), 39 deletions(-)
+
+base-commit: fe15c26ee26efa11741a7b632e9f23b01aca4cc6
 -- 
 2.39.2
-
 
