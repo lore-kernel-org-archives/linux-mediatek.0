@@ -4,146 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B0CBC76188
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Apr 2023 14:51:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46116C76188
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Apr 2023 14:51:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=12Dan7+hixlpFENmGLL4GqaHPQrKwrlwcpNYaShrlRU=; b=KqNzSeN3dIChIpgAi69pAD7gOD
-	i0AG1fGlOlNRSjkLbpCn40I/uRp1giFR/EdZyZ83fOzaEVEqBr0Z+eAmfEw//WKaoHxHk38+TG79I
-	hzAY5LOYadY4GM0pcvghtgXAXVUkFCBqpoIBvwhMsGR5YlaEozsgXhlUWAwf38APf9kQsdQagZI6H
-	1ZUGv1JYluwZQYGYSmG91rPo6oqQHI++tZ7oWhYRlZSrLnRjUnPgrcXBBKfU9lscM+psOA6vD5EFg
-	Zl5ojs46urBpwvQNnXdUH/hgvEU0xJekXqZpgSpDPJEAagauidy8or5XBDushud6uKk0x7w44K6cF
-	T5Pmx1Lg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=tL0PTHX4DJqI3vZdQ1ldG1OnbOEK+IocycHnZXU9JR8=; b=GzQpbbArMzM2e/lPis0zl+z0dz
+	+JmYnsd8h8fqRb/LawnYiE5hAzsNhnSNnRCDSDcWLGlc6Z1TAsiQMOIXpSKqPiQMIB+iBHFbDklDb
+	bXZBoY11q0oxVg6T8hCY7SJSFMM0C++ewT9G0H3Y0wAW/fRafEuaxIxhrOA5EZCgQUJxh5qpq1I65
+	NWBjiF4GFbm0AwE8H0yog/gXLqAmjYmPIFYEiA8pzi/iu3uGs3WzW7bGMgNzjsUCR4YoLMrEPFOax
+	1xioCzwnfzr+9bs9RQwx2Q6xHEe7ZCZsuFUu/20y63V4nCGk+i5aplXK2Vsj4e6gG+RbiEbLmzKyX
+	iLJA89iw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pk4Tp-004jAP-1p;
-	Wed, 05 Apr 2023 14:51:21 +0000
-Received: from wnew3-smtp.messagingengine.com ([64.147.123.17])
+	id 1pk4UD-004jFV-1R;
+	Wed, 05 Apr 2023 14:51:45 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pk4Tm-004j9E-0B;
-	Wed, 05 Apr 2023 14:51:19 +0000
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
-	by mailnew.west.internal (Postfix) with ESMTP id 297162B066F9;
-	Wed,  5 Apr 2023 10:51:03 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
-  by compute2.internal (MEProxy); Wed, 05 Apr 2023 10:51:12 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
-	:cc:content-type:content-type:date:date:from:from:in-reply-to
-	:in-reply-to:message-id:mime-version:references:reply-to:sender
-	:subject:subject:to:to; s=fm3; t=1680706262; x=1680713462; bh=12
-	Dan7+hixlpFENmGLL4GqaHPQrKwrlwcpNYaShrlRU=; b=hkUfRXi9ZUU/v0L/+I
-	gVrH+uthhloeGbMuMyLFaLPGdmHx+ZfnEv71Adty8UoYbiAE/xjl8u5KqVjg9iph
-	dDL+1SNtFZ1DIoSql0P9/+KZLkrmQQF9uAj4XJ3/r3yzAoVDyU+3UZyu1+aTEPER
-	OWkJxOHbEINNDSPozQUVQlhGFT/1jQ99cutqUong+yuWAY6hka25mlIqIA3GjQ0M
-	xDl9zwU8ch2EEnAt9r2dDdVWFEMDWJMeeAG6cjRIoFxOKPLQyawDWpS1LKq7S1Sc
-	MGSHJpnZvjWdEWmQvJiSBEknGcWQYWFHfj+4DYMwd9wCkAvA7EmYRRWbg1P2K/Fd
-	qCiA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:content-type:date:date
-	:feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
-	:x-sasl-enc; s=fm2; t=1680706262; x=1680713462; bh=12Dan7+hixlpF
-	ENmGLL4GqaHPQrKwrlwcpNYaShrlRU=; b=lOTStozRcIhNQiVpqSWvy6hRgVXT/
-	Z8/ftiEBKyaVp1oyePcUHHGpoOaAaw1wd36ZBldHKB440gbnuuWDgL4aZxY4t+D2
-	JoJRCNbY0NF2d9BzWQZ6I8nmk8bEGEJ52MOxbUnQvnpqprCtvLgw9V0VvdXk8yjW
-	C/YVrE2H0tJEXEaoqCnm6pQNlv7lYnQwjCa/Zg4z9cPIiCtx72SsV2zfomP957up
-	I+sHEZnv3M0+ChpZ9XsHO6Dx8kCKXakzvR1oF5fyxjofwoD6OTcV2p4PzM7eDPWe
-	UjJ4Qg64vq3vbaPOW4sz1a3L5/0xOG6j9Rn4k8PPs7pnugtw7Htymzhvg==
-X-ME-Sender: <xms:1IotZPUuMsHKcRIV1tn8qjLzvF2oPV7C1u5MRVolQHZ2CdI44Gsrcg>
-    <xme:1IotZHk4YGCS6J8sDxTrZTGDxzKZcR2TlvRV3xQhuYyw2YgyyrkEFWI9FNsau1Oxz
-    7biG3a4ROm7r4_f2cw>
-X-ME-Received: <xmr:1IotZLYZoXCiLfJAril3onbQaZKPqh_r1AoINPLHEvj2IgoW0Z7RkujzYMTIWt_jWufho636g6-ftQYTaczYPPB_G36PK4o>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrvdejuddgkedvucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhepfffhvfevuffkfhggtggujgesghdtsfertddtudenucfhrhhomhepofgrgihi
-    mhgvucftihhprghrugcuoehmrgigihhmvgestggvrhhnohdrthgvtghhqeenucggtffrrg
-    htthgvrhhnpeefjeeiueeiheevtddvgfeluedufeeigeeijefhveelfeevueefieehuefg
-    ffetteenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
-    hmrgigihhmvgestggvrhhnohdrthgvtghh
-X-ME-Proxy: <xmx:1IotZKXiXH4XvSiK_3aa4fqs5l2lv1GpNF5NGvI7WsaC9GLK8gzAGA>
-    <xmx:1IotZJmCjINoZE4kymmtgWXz9xLJzq_D049KW1UQySfT5mjHyygKrg>
-    <xmx:1IotZHetG9QWgJCeQdyxnOMLtU3uerimAkHUHXaEXwRWPSNKWtET1A>
-    <xmx:1ootZOSLB3yQ5ftmsB4dyjGTTS9hWpXHNN90QPLp89JeVXerMhgMeNFYNDs>
-Feedback-ID: i8771445c:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 5 Apr 2023 10:50:59 -0400 (EDT)
-Date: Wed, 5 Apr 2023 16:50:56 +0200
-From: Maxime Ripard <maxime@cerno.tech>
-To: Paul Cercueil <paul@crapouillou.net>
-Cc: Aidan MacDonald <aidanmacdonald.0x0@gmail.com>,
- 	Stephen Boyd <sboyd@kernel.org>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- 	Chen-Yu Tsai <wens@csie.org>, Daniel Vetter <daniel@ffwll.ch>,
- 	Nicolas Ferre <nicolas.ferre@microchip.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- 	Jaroslav Kysela <perex@perex.cz>, Shawn Guo <shawnguo@kernel.org>,
- 	Fabio Estevam <festevam@gmail.com>,
- Ulf Hansson <ulf.hansson@linaro.org>,
- 	Claudiu Beznea <claudiu.beznea@microchip.com>,
- Michael Turquette <mturquette@baylibre.com>,
- 	Dinh Nguyen <dinguyen@kernel.org>, Chunyan Zhang <zhang.lyra@gmail.com>,
- 	Manivannan Sadhasivam <mani@kernel.org>,
- Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>,
- 	Jonathan Hunter <jonathanh@nvidia.com>, Abel Vesa <abelvesa@kernel.org>,
- 	Charles Keepax <ckeepax@opensource.cirrus.com>,
- Alessandro Zummo <a.zummo@towertech.it>,
- 	Peter De Schrijver <pdeschrijver@nvidia.com>,
- Orson Zhai <orsonzhai@gmail.com>,
- 	Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Prashant Gaikwad <pgaikwad@nvidia.com>,
- 	Liam Girdwood <lgirdwood@gmail.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- 	Samuel Holland <samuel@sholland.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- 	Richard Fitzgerald <rf@opensource.cirrus.com>,
- Vinod Koul <vkoul@kernel.org>, 	NXP Linux Team <linux-imx@nxp.com>,
- Sekhar Nori <nsekhar@ti.com>,
- 	Kishon Vijay Abraham I <kishon@kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>, 	Takashi Iwai <tiwai@suse.com>,
- David Airlie <airlied@gmail.com>,
- 	Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- 	Pengutronix Kernel Team <kernel@pengutronix.de>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- 	David Lechner <david@lechnology.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, 	Mark Brown <broonie@kernel.org>,
- Max Filippov <jcmvbkbc@gmail.com>,
- 	Geert Uytterhoeven <geert+renesas@glider.be>,
- linux-stm32@st-md-mailman.stormreply.com, 	alsa-devel@alsa-project.org,
- linux-mediatek@lists.infradead.org, 	linux-phy@lists.infradead.org,
- linux-mips@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
- 	linux-actions@lists.infradead.org, linux-clk@vger.kernel.org,
- 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- patches@opensource.cirrus.com, linux-tegra@vger.kernel.org,
- 	linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- 	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org
-Subject: Re: [PATCH v2 56/65] clk: ingenic: cgu: Switch to determine_rate
-Message-ID: <g24dkwtsobslw6qdvs4vbcdmk2txrlrephm5zmlff2fusrxheo@mqxrprzctymk>
-References: <cp7Yh29ndlOOi1yW8KwCcpzoLPLxm1vR@localhost>
- <20221107085417.xrsh6xy3ouwdkp4z@houat>
- <ucJ6KSBqdPTxfxUQqLUr9C9RGiQRnY1I@localhost>
- <20221109110045.j24vwkaq3s4yzoy3@houat>
- <06a293adc75990ed3e297b076fc38d8a.sboyd@kernel.org>
- <xpKMzGb1sOsucWMTlJIMzrT5KjLlZ7JP@localhost>
- <20230324111959.frjf4neopbs67ugd@houat>
- <rTJKpeLOBeu3eOLW5z3P5fEpcOJJLrGs@localhost>
- <20230327192430.b2cp3yyrkzy4g4vw@penduick>
- <1e0e8e9fe44c27e844e7e918a985704e58da2c27.camel@crapouillou.net>
+	id 1pk4U8-004jDY-1I;
+	Wed, 05 Apr 2023 14:51:41 +0000
+X-UUID: 5b037bf6d3c111edb7d8d11f642b8e78-20230405
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=tL0PTHX4DJqI3vZdQ1ldG1OnbOEK+IocycHnZXU9JR8=;
+	b=Atlurp/28E2odzrd6oYiicTG1m4o73LJ10VPZQF14qUo1VoVKX5KrnE30r+8zFrBun58gyLZrTkJ0HhZYHDhcglk6OttygHMybkxadZ8nJeKY9el5dy10XJHpIaYUxXgNmhAIU7dN1sVMSN3ggH+vQjrB0iEc2cPwVl54Qw/J44=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22,REQID:46e6c7da-50cb-4120-a8cb-d0a5bccee070,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:95
+X-CID-INFO: VERSION:1.1.22,REQID:46e6c7da-50cb-4120-a8cb-d0a5bccee070,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTION
+	:quarantine,TS:95
+X-CID-META: VersionHash:120426c,CLOUDID:ace6d9f7-ddba-41c3-91d9-10eeade8eac7,B
+	ulkID:230405225134T7RNCUUY,BulkQuantity:0,Recheck:0,SF:38|29|28|17|19|48,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+	,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: 5b037bf6d3c111edb7d8d11f642b8e78-20230405
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1219360680; Wed, 05 Apr 2023 07:51:32 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Wed, 5 Apr 2023 22:51:30 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Wed, 5 Apr 2023 22:51:30 +0800
+From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Rex-BC Chen
+	<rex-bc.chen@mediatek.com>, Jonson Wang <jonson.wang@mediatek.com>, "Jason-JH
+ . Lin" <jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>,
+	Nancy Lin <nancy.lin@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH 0/2] Add dynamic connector selection mechanism
+Date: Wed, 5 Apr 2023 22:51:27 +0800
+Message-ID: <20230405145129.18835-1-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="i7uz65y3usvns4hs"
-Content-Disposition: inline
-In-Reply-To: <1e0e8e9fe44c27e844e7e918a985704e58da2c27.camel@crapouillou.net>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230405_075118_152238_3B05DEF2 
-X-CRM114-Status: GOOD (  42.30  )
+X-CRM114-CacheID: sfid-20230405_075140_440656_1268BF62 
+X-CRM114-Status: UNSURE (   7.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -158,92 +90,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+To support DSI and eDP as main display connector without modifying
+mtk-drm driver, we add the dynamic connector selection mechanism.
 
---i7uz65y3usvns4hs
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Jason-JH.Lin (2):
+  drm/mediatek: Add ability to support dynamic connector selection
+  drm/mediatek: Add DSI support for mt8188 vdosys0
 
-On Wed, Apr 05, 2023 at 02:57:26PM +0200, Paul Cercueil wrote:
-> Le lundi 27 mars 2023 =E0 21:24 +0200, Maxime Ripard a =E9crit=A0:
-> > On Fri, Mar 24, 2023 at 08:58:48PM +0000, Aidan MacDonald wrote:
-> > > > > My suggestion: add a per-clock bitmap to keep track of which
-> > > > > parents
-> > > > > are allowed. Any operation that would select a parent clock not
-> > > > > on the
-> > > > > whitelist should fail. Automatic reparenting should only select
-> > > > > from
-> > > > > clocks on the whitelist. And we need new DT bindings for
-> > > > > controlling
-> > > > > the whitelist, for example:
-> > > > >=20
-> > > > > =A0=A0=A0 clock-parents-0 =3D <&clk1>, <&pll_c>;
-> > > > > =A0=A0=A0 clock-parents-1 =3D <&clk2>, <&pll_a>, <&pll_b>;
-> > > > >=20
-> > > > > This means that clk1 can only have pll_c as a parent, while
-> > > > > clk2 can
-> > > > > have pll_a or pll_b as parents. By default every clock will be
-> > > > > able
-> > > > > to use any parent, so a list is only needed if the machine
-> > > > > needs a
-> > > > > more restrictive policy.
-> > > > >=20
-> > > > > assigned-clock-parents should disable automatic reparenting,
-> > > > > but allow
-> > > > > explicit clk_set_parent(). This will allow clock drivers to
-> > > > > start doing
-> > > > > reparenting without breaking old DTs.
-> > > >=20
-> > > > I'm generally not a fan of putting all these policies in the
-> > > > device
-> > > > tree. Do you have an example where it wouldn't be possible to do
-> > > > exactly
-> > > > this from the driver itself?
-> > >=20
-> > > I'm confused. What's implicit in the example is clk1 and clk2 might
-> > > have *other* possible choices of parent clock and the device tree
-> > > is
-> > > limiting what the OS is allowed to choose.
-> > >=20
-> > > Why would you put such arbitrary limitations into the driver?
-> >=20
-> > Why would we put such arbitrary limitations in the firmware? As this
-> > entire thread can attest, people are already using the device tree to
-> > work around the limitations of the Linux driver, or reduce the
-> > features of Linux because they can rely on the device tree. Either
-> > way, it's linked to the state of the Linux driver, and any other OS
-> > or
-> > Linux version could very well implement something more dynamic.
->=20
-> Probably because if we have to choose between setting policy in the
-> kernel or in the firmware, it is arguably better to set it in the
-> firmware.
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h     |   2 +
+ drivers/gpu/drm/mediatek/mtk_dpi.c          |   9 ++
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 113 +++++++++++++++++++-
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.h     |   5 +-
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  28 +++++
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |   8 ++
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c      |  49 +++++++--
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h      |   8 ++
+ drivers/gpu/drm/mediatek/mtk_dsi.c          |   9 ++
+ 9 files changed, 220 insertions(+), 11 deletions(-)
 
-I have a very different view on this I guess. Firmware is (most of the
-time) hard to update, and the policy depend on the state of support of a
-given OS so it's likely to evolve. The kernel is the best place to me to
-put that kind of policy. Why do you think differently?
+-- 
+2.18.0
 
-> Especially when talking about clocks, as the firmware is already the
-> one programming the boot clocks.
-
-I'm not sure what your point is there. I don't think I ever saw a
-firmware getting the clocks right for every possible scenario on a given
-platform. And if it was indeed the case, then we wouldn't even a kernel
-driver.
-
-Maxime
-
---i7uz65y3usvns4hs
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZC2KyAAKCRDj7w1vZxhR
-xbx0AQDo/091Al9F55xVR4k44hMshHS0Db7q/bHfCkOFHJG+RwEAxo0zFijQl/Op
-i9WCXbYvyuKQciwCDCJE5/F+69faAgw=
-=nWIA
------END PGP SIGNATURE-----
-
---i7uz65y3usvns4hs--
 
