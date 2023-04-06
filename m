@@ -4,63 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3352CC76196
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A4EEC77B6C
 	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Apr 2023 08:02:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Qh7/8q6ObYiJ8rFG7u0fNoXDSPJQ6AW2HK/HF1hPhps=; b=1NDsXCpCs304CR38BlB7qjt8gv
-	5tzugFv57ykQm8EIW51Em9mEN4Xj5pvoGqrAzOgvFCty/yv90SX2c3cnnTNx2YOt5NtVgRsgXpDuY
-	zu6oXQBsYP7tGsdn8GqAR7qBVanxmPIo9t77TfUviBWMc+ZaQ9Ue/0FgePJKNsoQ5L3x+LkrjrCmG
-	5+XAy+MlarjoHUZ9oenRHjyQz1BpA0EhRUyhLrjBogiqV1JFSmejnM/ngbFfTHaY1A3rG4FfBl1b5
-	grtKciCWZRz57+rD9Jzpk35zzwpgWi248WzMC6ROPNexClrL147NWinOmfUS3dLRkc8pdz4GPC6+s
-	LjvF+YUg==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ICl5yXhMxeO2u+7yTPtP7Jl3u4X7NhJCydXnMv94CdE=; b=3q8PuaDJjKFgS7sThFC/aSl5GG
+	ZcFB0VNmF6oeRotFIsazf3ST6/w88sNmRDHOFtsO2lmZ7wPaM9SjTcWjBTuMO4arShtMpjq37jedS
+	h+++BWB2K97xK+KWodAu3BdFpr42l84Dg2AqRr1qBJuOJRqwu4B5E5mKEpRsCW1S07kusW1nGMA1d
+	xMVrLjUzBDev4/7qMJc7IkOaxmcI7tfpHJl0ppdDEdUZbkur7KR5kd50UbmpzHkJixlZRhTyCWgys
+	Pl0WUJG6EDWGaRL+63WR54B+f9fCcJbHbXTEiBLYVrSmo7OVJRkrF32QOXkmNZxbtUYjoDCoKWsCk
+	VHm/Z1pQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkKZY-006gbj-1D;
-	Thu, 06 Apr 2023 08:02:20 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkKZU-006gZp-1Z;
+	id 1pkKZV-006gar-2t;
 	Thu, 06 Apr 2023 08:02:17 +0000
-Received: by mail-wm1-x329.google.com with SMTP id m8so11232928wmq.5;
-        Thu, 06 Apr 2023 01:02:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1680768134;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Qh7/8q6ObYiJ8rFG7u0fNoXDSPJQ6AW2HK/HF1hPhps=;
-        b=BnHWav7djfJ0AnrN+7BSjt2yjCiUpxrN2syTjNZ6vdv3213viKA4wHb0Vcqzj5m4Vd
-         SwmooCnH0nPxRf8nXu6VPgOH8Vkh3oAiDfMYToZTTX5XC7uF0uvkGCe2xaVHsLHCVT6q
-         kgYN5DVuxR0T6LpqVa17kk8lND1sgA48HGPnPdB41B4abfnbrHfpMxCwUBwBLrJmimCT
-         kJ/6h8yIFb1oxz7P7VBJnrJfEqRHJibSQGtcMNuAoaKMIG3DHSLhICxP6j0YK216xu4t
-         DePFP7rcsrsb8/K5H8jtVrJgcXibo0BUFKvmQMZNQZPsSAVmhC5xyQiE8ePgxaU7MZn6
-         tNtA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680768134;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Qh7/8q6ObYiJ8rFG7u0fNoXDSPJQ6AW2HK/HF1hPhps=;
-        b=ZEwLJEVo8LJzGhFHC8LdNMSTqtwBLIVLDwMexoBfDOBlDkZ9O42J4vJP6Mq78HUs0A
-         IYkwDI5YMsPCjdMGnfU11LkIVuPVa2dKhNP8PQk0zIwG/lwIFAbDHMKtHidEEvPICpCJ
-         PxHe9t6bNqK25woXBxVlXf0cBb94ZdXkJ93UKpPyPB0xbAIvyyyZQzESoPuJv++QkZPT
-         Qbf3crq2GTCWsLS6Jdc4WYkfusf5xG6bjznCT04ktk8hdOA/UrjuSdcIiaMFFhzrxBbo
-         8zDSKz10iMLgZGmZir/0vOkIbGgCohOFqBYi1wch434C3A80PjqjCrPY3tbZMfXj33bf
-         y1xQ==
-X-Gm-Message-State: AAQBX9e91Md1akqXzH7KNO6rQDpWiKGFuqpBy5GXd6p8G//c9mDZhUTH
-	uV7feliqssybg6fs5MBkEQE=
-X-Google-Smtp-Source: AKy350Z8BUntUGgaUZ0JsYY0YWX6eYpdtEuArg2Rn3T2ll8NM3bGUndFU79f26oyoEzymFlcIcppzA==
-X-Received: by 2002:a05:600c:2312:b0:3ef:6396:d9c8 with SMTP id 18-20020a05600c231200b003ef6396d9c8mr6317377wmo.5.1680768134079;
-        Thu, 06 Apr 2023 01:02:14 -0700 (PDT)
-Received: from arinc9-PC.lan ([149.91.1.15])
-        by smtp.gmail.com with ESMTPSA id s9-20020a7bc389000000b003ef64affec7sm826993wmj.22.2023.04.06.01.02.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pkKZR-006gZb-37;
+	Thu, 06 Apr 2023 08:02:15 +0000
+Received: by mail-wm1-x330.google.com with SMTP id m6-20020a05600c3b0600b003ee6e324b19so23297519wms.1;
         Thu, 06 Apr 2023 01:02:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1680768132;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=ICl5yXhMxeO2u+7yTPtP7Jl3u4X7NhJCydXnMv94CdE=;
+        b=it8N5epu/hXZbHWuT1hr22stKIGl0pvvUn+gedunaw90tc0hnlroPv6UR0rKExvyi+
+         /5HNW3X0Ey7HHnOjoxPAscBmzuT17opVmLbvKHPbxAl711L9R07V1KEsXUGg5vV06HuO
+         bZ5kFMF6w8bZZU7YwUoTdeLRR+lD6jPKd+bCJ0Qr9B2qnZCTYFvuKmQuq7v9J6HYVtc8
+         qkmBat7UPxpQ5MPXBkDfZJG9DUV0RANmcXSYDpJEtxYvai9w9ZpVQtUP5ezdt5QNVT8x
+         JJDinsYCQ0vLm1/73RGpI1qYadaH2rbnLSSsb6axGuq/3jwX5U27iIUFZhCW0uqGJmsL
+         jPxg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680768132;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ICl5yXhMxeO2u+7yTPtP7Jl3u4X7NhJCydXnMv94CdE=;
+        b=YXXwgzbihKV3M/M+b9r+3iMk9kEwXF8K27jvmLL20z66GCV0gL7NAFJ5NMomVeJI0T
+         YdOXhq804yQqrnibKLF6TxGgsZGfZvRU/ws29BI8GCeWXGoOAxF24CdjHLta74/WGjNm
+         bdMSFV1QeKiYVqqYgA/LLkShvLGDnA4/q5v06NiC6isEjojTOwBAdJ1Zd44yU7FHEHkU
+         yXpFvEJEkR2/cwu1+ubjjtp2cfvE7cVX+dNDQvj4fm6EM41+NOCZRbg9qEXY+4AoLYNI
+         gsSjUfnzfNC/AdAjmD+gKduAvwaiqWBkeULWhNhVH4addjR4sroXKpw50M8kSu8gXSDp
+         58gA==
+X-Gm-Message-State: AAQBX9cEfexL9JANeA/UZD6hOypZqFZQAQFBjuweNKiRJdIHT9gu2w4o
+	pecRyrSvctNJoQ9To3zitXo=
+X-Google-Smtp-Source: AKy350a/F/lBPdvFizmroFVH3fzHbWGMlo4ft4HctNyHW+b1LaJS8K92j1zaDn1g279tfeuONBh+TA==
+X-Received: by 2002:a7b:ca47:0:b0:3ed:1f9c:af12 with SMTP id m7-20020a7bca47000000b003ed1f9caf12mr6967575wml.22.1680768131483;
+        Thu, 06 Apr 2023 01:02:11 -0700 (PDT)
+Received: from arinc9-PC.lan ([149.91.1.15])
+        by smtp.gmail.com with ESMTPSA id s9-20020a7bc389000000b003ef64affec7sm826993wmj.22.2023.04.06.01.02.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 06 Apr 2023 01:02:10 -0700 (PDT)
 From: arinc9.unal@gmail.com
 X-Google-Original-From: arinc.unal@arinc9.com
 To: Andrew Lunn <andrew@lunn.ch>,
@@ -85,18 +84,16 @@ Cc: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH 2/7] dt-bindings: net: dsa: mediatek,mt7530: improve MCM and MT7988 information
-Date: Thu,  6 Apr 2023 11:01:36 +0300
-Message-Id: <20230406080141.22924-2-arinc.unal@arinc9.com>
+Subject: [PATCH 1/7] dt-bindings: net: dsa: mediatek,mt7530: correct brand name
+Date: Thu,  6 Apr 2023 11:01:35 +0300
+Message-Id: <20230406080141.22924-1-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.37.2
-In-Reply-To: <20230406080141.22924-1-arinc.unal@arinc9.com>
-References: <20230406080141.22924-1-arinc.unal@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230406_010216_523150_DF4B533B 
-X-CRM114-Status: GOOD (  14.43  )
+X-CRM114-CacheID: sfid-20230406_010214_006324_FA78865F 
+X-CRM114-Status: GOOD (  11.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,68 +110,26 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-Improve the description of the schema.
-
-The MT7620 SoCs described are not part of the multi-chip module but rather
-built into the SoC. Mention the MT7530 MMIO driver not supporting them.
-
-Move information for the switch on the MT7988 SoC below MT7531, and improve
-it.
-
-List maintainers in alphabetical order by first name.
+The brand name is MediaTek, change it to that.
 
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- .../bindings/net/dsa/mediatek,mt7530.yaml     | 25 ++++++++++---------
- 1 file changed, 13 insertions(+), 12 deletions(-)
+ Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-index 6df995478275..7045a98d9593 100644
+index e532c6b795f4..6df995478275 100644
 --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
 +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-@@ -8,29 +8,30 @@ title: MediaTek MT7530 and MT7531 Ethernet Switches
+@@ -4,7 +4,7 @@
+ $id: http://devicetree.org/schemas/net/dsa/mediatek,mt7530.yaml#
+ $schema: http://devicetree.org/meta-schemas/core.yaml#
+ 
+-title: Mediatek MT7530 and MT7531 Ethernet Switches
++title: MediaTek MT7530 and MT7531 Ethernet Switches
  
  maintainers:
    - Arınç ÜNAL <arinc.unal@arinc9.com>
-+  - Daniel Golle <daniel@makrotopia.org>
-   - Landen Chao <Landen.Chao@mediatek.com>
-   - DENG Qingfang <dqfext@gmail.com>
-   - Sean Wang <sean.wang@mediatek.com>
--  - Daniel Golle <daniel@makrotopia.org>
- 
- description: |
--  There are three versions of MT7530, standalone, in a multi-chip module and
--  built-into a SoC.
-+  There are three versions of MT7530, standalone, in a multi-chip module, and
-+  built into an SoC.
- 
--  MT7530 is a part of the multi-chip module in MT7620AN, MT7620DA, MT7620DAN,
--  MT7620NN, MT7621AT, MT7621DAT, MT7621ST and MT7623AI SoCs.
--
--  The MT7988 SoC comes with a built-in switch similar to MT7531 as well as four
--  Gigabit Ethernet PHYs. The switch registers are directly mapped into the SoC's
--  memory map rather than using MDIO. The switch got an internally connected 10G
--  CPU port and 4 user ports connected to the built-in Gigabit Ethernet PHYs.
-+  MT7530 is a part of the multi-chip module in MT7621AT, MT7621DAT, MT7621ST and
-+  MT7623AI SoCs.
- 
-   MT7530 in MT7620AN, MT7620DA, MT7620DAN and MT7620NN SoCs has got 10/100 PHYs
--  and the switch registers are directly mapped into SoC's memory map rather than
--  using MDIO. The DSA driver currently doesn't support MT7620 variants.
-+  and the switch registers are directly mapped into the SoC's memory map rather
-+  than using MDIO. The MT7530 MMIO driver currently doesn't support these SoCs.
- 
-   There is only the standalone version of MT7531.
- 
-+  The MT7988 SoC comes with a built-in switch with four Gigabit Ethernet PHYs.
-+  The characteristics of the switch is similar to MT7531. The switch registers
-+  are directly mapped into the SoC's memory map rather than using MDIO. The
-+  switch has got an internally connected 10G CPU port and 4 user ports connected
-+  to the built-in Gigabit Ethernet PHYs.
-+
-   Port 5 on MT7530 has got various ways of configuration:
- 
-     - Port 5 can be used as a CPU port.
 -- 
 2.37.2
 
