@@ -4,75 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E55C4C76196
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Apr 2023 07:21:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7246EC76196
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Apr 2023 07:50:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fQZnNfr+rBhTTZliY5pXLRCg5E7GawaSZx7bLaXCUWA=; b=hraUebPEf+djYuqsrEOgJEyXGl
-	LEsUVeChr262Ww/892sBVBipsHSLDweZtzAQ7loVu7VvkPH2T7zDNwbYmoWwMzccZo8xS2t5NlvIn
-	1F1eluP0mxcXCCGBtCUJPUu5ghKSePUz0coimOdY777SHsuViC2C1xD7cvFEDfGhAV05VB5zRK07B
-	eR0IjqKbsej+Y8PN5/rELt8aP6uKj977L7vqN5MOXxJomOtsMMcqJYQN/4rDRtPTw1mC8WIZNNRjK
-	K4uRBQVqj4V7h+l9Lt8Jg5cUssdIUbYSw+5IS0as2w823CZXWDQBu8u0uv8v58JhZ6iY8kdVt1Zc7
-	2Y1YsoKg==;
+	bh=acsxKS8JAme3fiaY0A/7VQXARsXOyYhuyHtw99/eJzY=; b=aUaBtYWb2gkJkJMpM3jbchjor2
+	LDz/Dsmcx1apyFiLrCueGm+tbNBZ9ftH0tiBFmBbcbIM1q03HVqm0/dmcrC1eipgykQDr+AKbXpDm
+	26k5xTRVIU+AavsB0LcSHTH6lm0JCAap5f0EQN774hfrahgk9HYcEJzAIUox/jkDATAM/BCw/jcrz
+	algNtc0SLsDVJmNvXpPD9hwSDbCVpODstCFUCtIBM8rs3uIcuzj9aZUE3x26YBC+praBxwiKUWRDt
+	TzlTrQIELApsKSAXpOyLA5nx3mN9nsgyQ+fDvi6A6aEeCx2NtIVad+qlPod/8XwnQqiOd6Cw7k3HD
+	bls4pWsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkJvT-006c6K-08;
-	Thu, 06 Apr 2023 07:20:55 +0000
-Received: from mail-vs1-xe2e.google.com ([2607:f8b0:4864:20::e2e])
+	id 1pkKOQ-006fcW-0w;
+	Thu, 06 Apr 2023 07:50:50 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkJvO-006c4k-2x
+	id 1pkKOO-006fbE-0Z
 	for linux-mediatek@lists.infradead.org;
-	Thu, 06 Apr 2023 07:20:53 +0000
-Received: by mail-vs1-xe2e.google.com with SMTP id cu36so33622373vsb.7
-        for <linux-mediatek@lists.infradead.org>; Thu, 06 Apr 2023 00:20:49 -0700 (PDT)
+	Thu, 06 Apr 2023 07:50:49 +0000
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-94748e41044so83067966b.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 06 Apr 2023 00:50:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1680765648;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=fQZnNfr+rBhTTZliY5pXLRCg5E7GawaSZx7bLaXCUWA=;
-        b=gr03IPWw8xCzO8z1s3XXV8rA2qkRF5MmfLt98sAud2m8xi8lHXgs60q7bNsxZL2Smi
-         gl4QsqQiSVY1Y6QC4MOOGJUcCUc+Bl7XzvwW6pKcVW+WPYG9F2fhIvv+IuZYXlwMTX+s
-         jfF8gl0U1RG9xhEe0cfOB6cNyJ2Q4H65kuKiE=
+        d=linaro.org; s=google; t=1680767438;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=acsxKS8JAme3fiaY0A/7VQXARsXOyYhuyHtw99/eJzY=;
+        b=D+LRcXAPgAjQF1qELH9IoHjo2uLJb20Wlrd57lGAmRpIlD2R2Se2wMyXR42G7HkzRc
+         kQryQxhjcW+8oCmhOGDwNH+AfqyuzWruS/ETU6cOXOB30qSeFWZ/gwFJ4MzbSiOIMKDM
+         o+W+ZQzFZ9ttDVSd7q3KxWZ9kCyDy5KxHg+FX6d3P1dUbuPXPTsa0ij5p4qhY7mkgkv6
+         AChXS1krfUsDa2HxNhgYUo0TMnwbMgw9rA7tnAEVt6KQkDJ0U/yskXzO8CS8M8c/jpE5
+         xhiLmR0NTxzRLcRPLUm0FHcHzKlUzUQdkherUy+82rDZVS8Bnbpfgw11v7NcE/QY3sf9
+         6pIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680765648;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=fQZnNfr+rBhTTZliY5pXLRCg5E7GawaSZx7bLaXCUWA=;
-        b=UAidkPjgGlgNWHo/NNbVaAoZOpSRu9tk3iashvAQTO+tlGy6Y85nl2MrkSKSEKt7sw
-         j8JEhUdMB0ZfIBiie95dWyVNo8jzY00MwJqYowD0+oi6RfPmxD5mlErbuz6aWsX7CHGA
-         enWrEySFV8D/M9FqiX+hR24LQ6Kr7/MkcVVHixCGNBqnttWa+EZOmI76fapShd3aKdAL
-         D/JL2xfsQRyu0ZN0+8JsL06ZO1xcR16HgQ8pahu0eilQtNBM3BfFd9lxJPRm+Ub4Rb2o
-         n9P+LppahVc6rtbiMzv5z+JUf2Q3gdiCyGm+0YhtJbzmv85bYOJNWbKICKCJfoA5BDPG
-         doKQ==
-X-Gm-Message-State: AAQBX9fKJ4NProhQO1jEXfUa5Mhh/920JEx9qAAFWSnd9PTlhqv9krAV
-	FF1rC2ucZnBKhGm/c1ZanHRj+A1P/rPTZf86qFEnpQ==
-X-Google-Smtp-Source: AKy350ZKHVlhoBhxEN/6Xhz9wuYrGUS4GAEp7DN3aTjD5fTNIAiVKilFb0mDuij13QyIaSLsC3aOGmsypz86GhOovyQ=
-X-Received: by 2002:a67:c01c:0:b0:425:cf00:e332 with SMTP id
- v28-20020a67c01c000000b00425cf00e332mr6176192vsi.7.1680765648481; Thu, 06 Apr
- 2023 00:20:48 -0700 (PDT)
+        d=1e100.net; s=20210112; t=1680767438;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=acsxKS8JAme3fiaY0A/7VQXARsXOyYhuyHtw99/eJzY=;
+        b=ECtu4aQj/Z5fCHZFUz0SYfpaQcLwcVlJ0t+/sX/bS1UP015w5ccmWc5VQIuZ360+AL
+         eD2VJNCHH7bPA+R8SKKeQjXH1QerY4cBtGeDI69rzdLLuMfhOgRokVOx44FeVINdkRJ9
+         QytkwOHKhkpGnf9BDrC0j/bLXnRvFvJ1Bk8kVZzbSDurEcHel17VWLjHt+SZ50OBMA6+
+         px5twGHSsE7F1jHxXiorZugAJ+p3lSwuV3DdTWfyj7BTerZ8PHd9iMH7ZtmUagl3m9xR
+         X25GLuzmY4/9+AqtQAg/VgE5DxBI8xJdOWoZoXHlEdNlCeQzDm/72wFPXuQ8ikAHCHUr
+         8oag==
+X-Gm-Message-State: AAQBX9evrzmSPUqDcxk17lE0sYBFbMGEUm9DQwbHOLIPIoFfqYCAwwJu
+	8kL9w/QWiOPpRXdQuspINHKmqXrpRG7Mqs76eYw=
+X-Google-Smtp-Source: AKy350Z74im14UBTpQDaKfczphvzBZhLrAWZc+1VzpVIGSWgdepzgVVxlleeas6+L/T8lRwePIcQQg==
+X-Received: by 2002:a05:6402:1001:b0:502:4862:d453 with SMTP id c1-20020a056402100100b005024862d453mr3727333edu.3.1680767438661;
+        Thu, 06 Apr 2023 00:50:38 -0700 (PDT)
+Received: from ?IPV6:2a02:810d:15c0:828:49e6:bb8c:a05b:c4ed? ([2a02:810d:15c0:828:49e6:bb8c:a05b:c4ed])
+        by smtp.gmail.com with ESMTPSA id gg4-20020a170906e28400b0092a3b199db8sm442654ejb.186.2023.04.06.00.50.37
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 06 Apr 2023 00:50:38 -0700 (PDT)
+Message-ID: <d25081e4-69bc-74db-bdf1-5f1f2d2c794d@linaro.org>
+Date: Thu, 6 Apr 2023 09:50:37 +0200
 MIME-Version: 1.0
-References: <20230404104800.301150-1-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230404104800.301150-1-angelogioacchino.delregno@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 6 Apr 2023 15:20:37 +0800
-Message-ID: <CAGXv+5FEEkMg+SY7ZkSHN2G9jtT6TBiN9MadZmYGMX_uVi5=gQ@mail.gmail.com>
-Subject: Re: [PATCH v3 0/9] MediaTek DisplayPort: support eDP and aux-bus
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
-	daniel@ffwll.ch, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH v2 10/10] memory: mtk-smi: mt8365: Add SMI Support
+Content-Language: en-US
+To: Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+References: <20230207-iommu-support-v2-0-60d5fa00e4e5@baylibre.com>
+ <20230207-iommu-support-v2-10-60d5fa00e4e5@baylibre.com>
+ <9847bc48-c96c-3599-e876-bcf9ebf1522e@linaro.org>
+ <CAFGrd9pBdaHLGUZHkaz2_XKafyX=dxu9UckQxrphg52EG=A1SQ@mail.gmail.com>
+ <8fc3dd22-79df-32cb-c219-896eda8fa986@linaro.org>
+ <fd24877a-5fae-5434-dc56-61ab35ccd820@baylibre.com>
+ <e38658be-1a2a-bccb-3f30-18f1b031f71d@linaro.org>
+ <25bcaa84-fb29-4343-d046-26e210fc81f4@baylibre.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <25bcaa84-fb29-4343-d046-26e210fc81f4@baylibre.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230406_002050_970856_581DF3D3 
-X-CRM114-Status: GOOD (  30.48  )
+X-CRM114-CacheID: sfid-20230406_005048_217600_D8B4766B 
+X-CRM114-Status: GOOD (  19.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,125 +105,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 4, 2023 at 6:48=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Changes in v3:
->  - Added DPTX AUX block initialization before trying to communicate
->    to stop relying on the bootloader keeping it initialized before
->    booting Linux.
->  - Fixed commit description for patch [09/09] and removed commented
->    out code (that slipped from dev phase.. sorry!).
->
-> This series adds "real" support for eDP in the mtk-dp DisplayPort driver.
->
-> Explaining the "real":
-> Before this change, the DisplayPort driver did support eDP to some
-> extent, but it was treating it entirely like a regular DP interface
-> which is partially fine, after all, embedded DisplayPort *is* actually
-> DisplayPort, but there might be some differences to account for... and
-> this is for both small performance improvements and, more importantly,
-> for correct functionality in some systems.
->
-> Functionality first:
->
-> One of the common differences found in various boards implementing eDP
-> and machines using an eDP panel is that many times the HPD line is not
-> connected. This *must* be accounted for: at startup, this specific IP
-> will raise a HPD interrupt (which should maybe be ignored... as it does
-> not appear to be a "real" event...) that will make the eDP panel to be
-> detected and to actually work but, after a suspend-resume cycle, there
-> will be no HPD interrupt (as there's no HPD line in my case!) producing
-> a functionality issue - specifically, the DP Link Training fails because
-> the panel doesn't get powered up, then it stays black and won't work
-> until rebooting the machine (or removing and reinserting the module I
-> think, but I haven't tried that).
->
-> Now for.. both:
-> eDP panels are *e*DP because they are *not* removable (in the sense that
-> you can't unplug the cable without disassembling the machine, in which
-> case, the machine shall be powered down..!): this (correct) assumption
-> makes us able to solve some issues and to also gain a little performance
-> during PM operations.
->
-> What was done here is:
->  - Caching the EDID if the panel is eDP: we're always going to read the
->    same data everytime, so we can just cache that (as it's small enough)
->    shortening PM resume times for the eDP driver instance;
->  - Always return connector_status_connected if it's eDP: non-removable
->    means connector_status_disconnected can't happen during runtime...
->    this also saves us some time and even power, as we won't have to
->    perform yet another power cycle of the HW;
->  - Added aux-bus support!
->    This makes us able to rely on panel autodetection from the EDID,
->    avoiding to add more and more panel timings to panel-edp and, even
->    better, allowing to use one panel node in devicetrees for multiple
->    variants of the same machine since, at that point, it's not important
->    to "preventively know" what panel we have (eh, it's autodetected...!).
->
-> This was tested on a MT8195 Cherry Tomato Chromebook (panel-edp on aux-bu=
-s)
->
->
-> P.S.: For your own testing commodity, here's a reference devicetree:
-> &edp_tx {
->         status =3D "okay";
->
->         pinctrl-names =3D "default";
->         pinctrl-0 =3D <&edptx_pins_default>;
->
->         ports {
->                 #address-cells =3D <1>;
->                 #size-cells =3D <0>;
->
->                 port@0 {
->                         reg =3D <0>;
->                         edp_in: endpoint {
->                                 remote-endpoint =3D <&dp_intf0_out>;
->                         };
->                 };
->
->                 port@1 {
->                         reg =3D <1>;
->                         edp_out: endpoint {
->                                 data-lanes =3D <0 1 2 3>;
->                                 remote-endpoint =3D <&panel_in>;
->                         };
->                 };
->         };
->
->         aux-bus {
->                 panel: panel {
->                         compatible =3D "edp-panel";
->                         power-supply =3D <&pp3300_disp_x>;
->                         backlight =3D <&backlight_lcd0>;
->                         port {
->                                 panel_in: endpoint {
->                                         remote-endpoint =3D <&edp_out>;
->                                 };
->                         };
->                 };
->         };
-> };
->
-> AngeloGioacchino Del Regno (9):
->   drm/mediatek: dp: Cache EDID for eDP panel
->   drm/mediatek: dp: Move AUX and panel poweron/off sequence to function
->   drm/mediatek: dp: Always return connected status for eDP in .detect()
->   drm/mediatek: dp: Always set cable_plugged_in at resume for eDP panel
->   drm/mediatek: dp: Change logging to dev for mtk_dp_aux_transfer()
->   drm/mediatek: dp: Enable event interrupt only when bridge attached
->   drm/mediatek: dp: Use devm variant of drm_bridge_add()
->   drm/mediatek: dp: Move AUX_P0 setting to
->     mtk_dp_initialize_aux_settings()
->   drm/mediatek: dp: Add support for embedded DisplayPort aux-bus
+On 05/04/2023 16:34, Alexandre Mergnat wrote:
+> 
+> On 05/04/2023 15:54, Krzysztof Kozlowski wrote:
+>> On 05/04/2023 15:06, Alexandre Mergnat wrote:
+>>> On 05/04/2023 13:45, Krzysztof Kozlowski wrote:
+>>>> On 05/04/2023 11:53, Alexandre Mergnat wrote:
+>>>>> Ok, I will move the driver patch before the DTS patches in the next version.
+>>>>>
+>>>> Or do not send it together at all, which might solve your dependency
+>>>> problem. According to your cover letter I cannot take the memory
+>>>> controller bits, so I am waiting for dependencies to hit the mainline.
+>>>> Alternatively I will need pull request with stable tag.
+>>>>
+>>> Ok, I prefer send the driver patch in another serie. That will solve the
+>>> dependency with the DTS a least.
+>> What dependency? Why do you have dependencies between drivers and DTS?
+>> That's a no-go.
+> I probably do something wrong but, that start with this comment [1]:
+> 
+>> I guess we should add a independent "mediatek,mt8365-smi-common".
+> 
+> Then I have added the mt8365 compatible support in the driver instead of using the mt8186 which already supported and used in the v1.
+> I change the binding and DTS to use "mediatek,mt8365-smi-common" only (no more "mediatek,mt8186-smi-common").
+> Maybe "dependency isn't the good word to use in that case.
 
-Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+I do not see patch changing existing compatible. Which one is it?
 
-on MT8195 Tomato: eDP panel works if the display panel regulator is always
-on. External DP works.
+I don't know what is your meaning of dependency then. For all of us,
+dependency means one patch must be applied after another patch. So is
+this the case here? If yes, then why?
 
-Maybe it has something to do with the driver not supporting .wait_hpd_asser=
-ted
-and not using a GPIO for HPD?
+> Except for the patch order in the serie (or send the driver in another one), everything is fine or there are others wrong things ?
+
+If this is the question to me, then I am not the maintainer of your
+platform. I am taking only memory controller bits, which look fine and I
+would have already apply them if not the dependency trouble. Soon the
+window for applying will close, BTW. We are almost at RC6.
+
+
+Best regards,
+Krzysztof
+
 
