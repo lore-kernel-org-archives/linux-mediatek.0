@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AB0AC76196
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Apr 2023 08:02:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A55BCC77B6C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Apr 2023 08:02:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=z1Dy9jILghc2oin2d9VIZqVYpUmKIJ7JSNuj8W4KgH8=; b=iEheMdfHqu1LSj/3mdpBLs6FyP
-	rrkD4peodXQ27GnWWRc8hz8vAI4oGSPmcqvirVQGmgoQPL58n0U3EABxqQ9yjx6R2qE8ovADC2vS/
-	QVmnh3b3t7rShTTtCHD88HBu2LkmyM+5Oh1DIN31Cdf+4jY+w10skBHyzrR0WIEInpo0qMsvKfUmG
-	NQhFpWZs+JS7Gb8d5vN30XWTgkq+dxnk8EJf3OoNyMkFcPOQDCpbWOmpwp7b3NTO40h97LCFg8aCw
-	NZmEo1BvzmXZHamjJPHmndyNbbKPq2OZEegmYuYhRmHGeYCkp33dwbOpbcK1nFB1pnY+5VnY1mWDo
-	BCK5EAGQ==;
+	bh=WPfB86t+nbjtQNmGqonvhYdyRwayc+B/NfmEAcnxhaY=; b=iYOTRHE4vYOPpS477xGe44kJZ5
+	/IvWUiEK3kejsRfTaXS+hUyxWm4UTmJtwFBPlxE4QBjkdcKcQd8bqU7JsK/eTU3PAMIlaq4vYgHVr
+	nVDWfv8398u71pUOc0QrY6iNkNvnd8WM/XdXcsUz0k/KedfFR5BJu4ppuyGaKlZ+h4KwlyP1wplVP
+	+Fv7AXQWHmOVd+TIP6EmH/GhN/EOVh1TNRGi4lkRxnAF8NBBKJcWMfNUvENuZf/QSv0D/2nncBOV8
+	AdA687/5mDxZXN+frnqe2p5GNhhlq/kFYHiKoxPldi/tXusytA1qDAs9LmI7uS01zJ8I5gn/QWTqk
+	cS9Sv+bA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkKZf-006gfu-0i;
-	Thu, 06 Apr 2023 08:02:27 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1pkKZg-006ggx-2a;
+	Thu, 06 Apr 2023 08:02:28 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkKZZ-006gbV-0d;
-	Thu, 06 Apr 2023 08:02:22 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id hg25-20020a05600c539900b003f05a99a841so5351341wmb.3;
-        Thu, 06 Apr 2023 01:02:20 -0700 (PDT)
+	id 1pkKZc-006gcn-0X;
+	Thu, 06 Apr 2023 08:02:25 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id n10-20020a05600c4f8a00b003ee93d2c914so24735626wmq.2;
+        Thu, 06 Apr 2023 01:02:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1680768139;
+        d=gmail.com; s=20210112; t=1680768142;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=z1Dy9jILghc2oin2d9VIZqVYpUmKIJ7JSNuj8W4KgH8=;
-        b=RGvP+SDZxX9ME1EKpF3ct3mhEv1ZmdaEzq63cIvihhDYWiECOzUOxAgTEaIJStyOHt
-         3Q3RDWHrn9fZSiI8hOlPQYwy988GyH9GtytIjPpNwN2BccfQnKBKuCQ4DHe3eCJSFrFW
-         WwrIIQ0nkdMXOQhtAkDPhZWeq2KlUIAjkgLvWyPnc/GFhXTLZtEpbhtirZRCyHhdSmEj
-         c1foqVMh+QGOqph6DBFcPdVXjYV/Tm1agZgpbPdmx/h+2oVUumbHPjQZA5VgCdE2nYd0
-         HZqWyWgeOQoI8FyqkkOKpHXQsviiZweeQ7TlYjjbfNCJf8/XtBxqc8w3axtSx3kOyAwz
-         /n9Q==
+        bh=WPfB86t+nbjtQNmGqonvhYdyRwayc+B/NfmEAcnxhaY=;
+        b=gDOU9qcSBn5YF586j9L2PcoNM2JnU+QiRJv01Cf+abyOI5XBvMdDVBl/RXCleLpqD8
+         +p4uNaXMHKa17Vz6kOTtHzHCu0Fli6Yo/pVJDwRWKMlz+NYcRcXqd/ACtkw/4hcQ2qPp
+         rI0ZNsmjuF5EtZ1h90CjejIlK7o2t8TQczn2gAUsKMNXQS1MxkiPIaz7CABkIkMoUGWV
+         v3r7njOe720uKsZjHEbz+Cr13leaPJGg8R+izEAlmtKUofV2Ldy+8ovA+hQCXYlwlmi2
+         4Cbs6OelciOyWR9iO/zEAgPCZrXhiBJYD4z4acnXBPcFKlZy2222fGH0GR3YRhSaJfJZ
+         7KAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680768139;
+        d=1e100.net; s=20210112; t=1680768142;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=z1Dy9jILghc2oin2d9VIZqVYpUmKIJ7JSNuj8W4KgH8=;
-        b=S64+MFTC9XZnIaO5ksCzYTeJ9ojzWPC8Sxi5M3mtIxm4IzlXOSdBwMBvLU08oAUj32
-         O5u1wonikQMXsEiNLa0oe675vbwGIFizLhl4kqNBZGLLuCoHYTYGbq56eQjtYdYH4qSx
-         sbqdDZc7lidYN/uddeceQdGH86B5A75kCHuY3zBpGL+33jFyjSjTmdnt6I9K7J5fTUK7
-         INiBwPMY7jsDtz3f1aUvLH5yU3rqV7plV9HRqZhpTgFzQvt7fib+eBsaNeKioYggbdGr
-         ZOY03YAHex0VWoUmma3uiqyy0F6AMn/21OMLj/BTM79S+Hz3m9t4Jg9b41fRsVeQoXFN
-         L36A==
-X-Gm-Message-State: AAQBX9cPJpFje491VieCVLQu68G+lnaOqh/wAFa2tghIbzpXAm1hCT5T
-	JaXxhAysOBK6MRFz/CgwrCg=
-X-Google-Smtp-Source: AKy350YO5UG8gcVMQFQKFtkzSgSlc9tFvejLdwA8V7eMge/Igj8Gq/c0hD+r7klScptaKFWE9kKbNQ==
-X-Received: by 2002:a1c:4b10:0:b0:3ed:de58:1559 with SMTP id y16-20020a1c4b10000000b003edde581559mr6869833wma.2.1680768139043;
-        Thu, 06 Apr 2023 01:02:19 -0700 (PDT)
+        bh=WPfB86t+nbjtQNmGqonvhYdyRwayc+B/NfmEAcnxhaY=;
+        b=qIT4zpzZcpbzVAmXnVxnnPwkPh1fSm/bkD0QSG01MiRhoZtQvnJ+QvAZG40r42D4/8
+         lcZEuTMNlNEYRb6IxPzv4YeGPrI5FF4w5PJE4NqPHciNvMI4zJxYNTvdBKUvCaShy9o4
+         ubLKvGpbH9tN7pSGTDO96cpNlbemiFUpjU0N1Z5v9SOghovyxE89AGu7KdE6KqdjnWSX
+         OZQLjnhJUrkBDFuHZArLKQifgE8zsScC+RWwv+Kxmw35gk3mwV36oqQValWXQgH1FuI2
+         XTGe7Me+hR/ww5s7rpOtUh+NUdVDgeG8V/+IPLWxQ97Dn+f1hmfajV6JG7UvKhRzdVcY
+         RyBg==
+X-Gm-Message-State: AAQBX9fHZBsNSzkY5k7drguoDJorc7VYEm/xyIfVUvUDsE/Pv79SfuqO
+	7W7CrQxTjvATsyrzqu/4iYE=
+X-Google-Smtp-Source: AKy350b4aoIYcpf6jCSqmpCE9htfsTH/GIbFV9cCyChDpC1YQ8GkUjnVJ8aijJvGqy4Ee0cnZKxxMg==
+X-Received: by 2002:a1c:790b:0:b0:3ed:2b49:1571 with SMTP id l11-20020a1c790b000000b003ed2b491571mr6195603wme.20.1680768141695;
+        Thu, 06 Apr 2023 01:02:21 -0700 (PDT)
 Received: from arinc9-PC.lan ([149.91.1.15])
-        by smtp.gmail.com with ESMTPSA id s9-20020a7bc389000000b003ef64affec7sm826993wmj.22.2023.04.06.01.02.16
+        by smtp.gmail.com with ESMTPSA id s9-20020a7bc389000000b003ef64affec7sm826993wmj.22.2023.04.06.01.02.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 06 Apr 2023 01:02:18 -0700 (PDT)
+        Thu, 06 Apr 2023 01:02:20 -0700 (PDT)
 From: arinc9.unal@gmail.com
 X-Google-Original-From: arinc.unal@arinc9.com
 To: Andrew Lunn <andrew@lunn.ch>,
@@ -85,9 +85,9 @@ Cc: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH 4/7] dt-bindings: net: dsa: mediatek,mt7530: allow delayed rgmii phy-modes
-Date: Thu,  6 Apr 2023 11:01:38 +0300
-Message-Id: <20230406080141.22924-4-arinc.unal@arinc9.com>
+Subject: [PATCH 5/7] dt-bindings: net: dsa: mediatek,mt7530: disallow reset without mediatek,mcm
+Date: Thu,  6 Apr 2023 11:01:39 +0300
+Message-Id: <20230406080141.22924-5-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.37.2
 In-Reply-To: <20230406080141.22924-1-arinc.unal@arinc9.com>
 References: <20230406080141.22924-1-arinc.unal@arinc9.com>
@@ -95,9 +95,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230406_010221_230166_2E993C1A 
-X-CRM114-Status: UNSURE (   9.20  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230406_010224_205895_EB39F0CE 
+X-CRM114-Status: GOOD (  11.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,39 +113,39 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-According to mt7530_mac_port_get_caps() and mt7531_mac_port_get_caps(), all
-rgmii phy-modes on port 5 are supported. Add the remaining to
-mt7530-dsa-ports and mt7531-dsa-ports definitions.
+The resets and reset-names properties are used only if mediatek,mcm is
+used. Set them to false if mediatek,mcm is not used.
+
+Remove now unnecessary 'reset-names: false' from MT7988.
 
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- .../devicetree/bindings/net/dsa/mediatek,mt7530.yaml        | 6 ++++++
- 1 file changed, 6 insertions(+)
+ .../devicetree/bindings/net/dsa/mediatek,mt7530.yaml         | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-index 605888ce2bc6..9d99f7303453 100644
+index 9d99f7303453..3fd953b1453e 100644
 --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
 +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-@@ -196,6 +196,9 @@ $defs:
-                       - gmii
-                       - mii
-                       - rgmii
-+                      - rgmii-id
-+                      - rgmii-rxid
-+                      - rgmii-txid
-               else:
-                 properties:
-                   phy-mode:
-@@ -234,6 +237,9 @@ $defs:
-                       - 1000base-x
-                       - 2500base-x
-                       - rgmii
-+                      - rgmii-id
-+                      - rgmii-rxid
-+                      - rgmii-txid
-                       - sgmii
-               else:
-                 properties:
+@@ -282,6 +282,10 @@ allOf:
+       required:
+         - resets
+         - reset-names
++    else:
++      properties:
++        resets: false
++        reset-names: false
+ 
+   - dependencies:
+       interrupt-controller: [ interrupts ]
+@@ -324,7 +328,6 @@ allOf:
+       properties:
+         gpio-controller: false
+         mediatek,mcm: false
+-        reset-names: false
+ 
+ unevaluatedProperties: false
+ 
 -- 
 2.37.2
 
