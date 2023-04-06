@@ -4,112 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71124C7618D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Apr 2023 15:25:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A19EC76196
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Apr 2023 15:25:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cOMO4X0KkT1wLKp3ZzLuqJYBOcq707+YpxHq0zavOgw=; b=uRzLs58AeLSYpHkstJQUQDQ/H/
-	WOGIvAlozuL0OyXtR9xVAb7iaIhrpFCWehJBTDtXi+GqtX1s97LKk+PWdKEQVVVNezKTT2OCZbIXg
-	mjuKVq00enDn6GeWIyrRoYO7nrqxBWBTl0sTWjs8E+7sMjm28PH9njzLkoVYG0i4F+2iQQQkFG/HP
-	zsnpRPy5V2Turo27l4WtPOPpOuQfGoK17+QkwfszlNw9B5mU4/sAvmGFnVsRsKBNOBoLoADs0laay
-	LSA2MxYqhFG37iwtpFSlXGfIzaGK/6FZbqKIxt8OjU+zFHKaO6G2ntQHHezmU5SOzJV3OuIdMKw7N
-	GhmOO6pg==;
+	bh=RMkMXwMSZEr9FFGtDRkxvrTAlSRKSswIFRpR7VpqIQQ=; b=fK6zevX1/IDRKyLUuB34pZwYHN
+	xp/zgH57q3iGuf4t9736kCXiYXNa2YzXvcT1RJyh4L/oBfq4q04IifT+HU31TzKAOnxQK/1pi3QwU
+	/oQ1tVG7YjQ+tkCp3xg2QbjFbvahrYCkDSjupb3X/ud/jzAKPG301uQaXPVlKNEv7oaMA/xpEeEzA
+	79ZNaQslAodW4huRgR6XhZCR5GWr1cbH6fEVyjxCZ70/fR+T99LS56PInee6m+NSdy92MFxv4zn+q
+	aRFTQdRKJU9dHoI275XMPUq2zuYu8h5H2kXcYN6T0nPFGM+lui0ntI72Bad1IxzriBzdd8D3F5pDK
+	7pn6CnyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkRTo-007nxI-1x;
-	Thu, 06 Apr 2023 15:24:52 +0000
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+	id 1pkRUE-007o6J-2F;
+	Thu, 06 Apr 2023 15:25:18 +0000
+Received: from mail-oo1-f50.google.com ([209.85.161.50])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkRTl-007nw3-0a;
-	Thu, 06 Apr 2023 15:24:50 +0000
-Received: by mail-ed1-x535.google.com with SMTP id 4fb4d7f45d1cf-5027d3f4cd7so1378537a12.0;
-        Thu, 06 Apr 2023 08:24:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1680794686;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=cOMO4X0KkT1wLKp3ZzLuqJYBOcq707+YpxHq0zavOgw=;
-        b=mOLwUplHv9h7ct3oUi+VgdSBSfJfcHSz4omCFqbZjtcuXZHY1U4ilN33bGUgNEML1d
-         Hjq7TbyKj4CJpjX2aYIhMpGOdWYEmKO/C293HsORhRG+hHjWFl30PxsM/93zkWlpk8lC
-         R93xYEJiKmwfBwiccG8Qtkg09sf55JI7q8wuLs0blN9F/xMZYbUWJXHcGoXFlX6ATnp3
-         2NOgQ3U7nnw2BBVkH+GM4uOAnLsCSM/U2wL9x/JpWe9suZa+OawzhG/gpICCvUkNwGR9
-         3mDNsEgVogbvJdbZt8mKUnYQEY2TV3tWC5PUAfU/wajZEWpW4OikShq4SToCCxH61U6/
-         zqdA==
+	id 1pkRUA-007o4U-2N
+	for linux-mediatek@lists.infradead.org;
+	Thu, 06 Apr 2023 15:25:17 +0000
+Received: by mail-oo1-f50.google.com with SMTP id f24-20020a4aeb18000000b0053b78077c9dso6210524ooj.12
+        for <linux-mediatek@lists.infradead.org>; Thu, 06 Apr 2023 08:25:13 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680794686;
+        d=1e100.net; s=20210112; t=1680794712;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=cOMO4X0KkT1wLKp3ZzLuqJYBOcq707+YpxHq0zavOgw=;
-        b=cPb3W04Bz+Lt+u9rCByiOvRjfoCu9xdN2fyvtkRzj0au/eo3VwIMNoe/FxqfIvEoM9
-         y6/8OC2Khh6GphkkglPUShCivv4m7F6pZAibiBlvZIljJjHxSQGbKY5KCdHpE/4qX6k0
-         O9i3blo/pZb02EPTTCI2Q6UQsqTMUuWH/B9pqcvKG6sHmxNHU7GK6+O80952oRT+1jlR
-         O+XMXWHemSQtCQhJLxJaHFZVxyAkqrVW/kJovxnDP+YLBvnLIpSB/qROeFwygiNdHalR
-         Iw0BaN1ODpScDd1hU3XcUwikXOs6SrCU2Vs0BETmCwh/qb1Q4/eLebsC0lIb1lyesWTY
-         NQhw==
-X-Gm-Message-State: AAQBX9dp8VtBpP4OEfJAZeDmxnTjNmbJGa68NMHP4d+EZhvB9I907qI/
-	I4FufJwpxkDfTZsDxaxaPGI=
-X-Google-Smtp-Source: AKy350bMKcJuUrKHxCynmrWlEri+wOd6BUJcWjnjfAUKYwzm18cdb+f7ZMxFTWEmAIFudRqwzqdrSg==
-X-Received: by 2002:aa7:da06:0:b0:502:8f49:2552 with SMTP id r6-20020aa7da06000000b005028f492552mr5597291eds.27.1680794686523;
-        Thu, 06 Apr 2023 08:24:46 -0700 (PDT)
-Received: from skbuf ([188.27.184.189])
-        by smtp.gmail.com with ESMTPSA id b15-20020a50cccf000000b004c10b4f9ebesm878829edj.15.2023.04.06.08.24.44
+        bh=RMkMXwMSZEr9FFGtDRkxvrTAlSRKSswIFRpR7VpqIQQ=;
+        b=nARzFW6wogR0+17VVdYnm6Caf3VLeKVdQI/YeLz22J+LGB08uU2jRGkynXVpzXRvJT
+         TVMsbK85RiWg7Ff8fIgqe1XboxRI0iXiOS/v+VwiH2AJswOaIEnwtdCcv90lMIX6QGnC
+         vxlmuamNMG30FBtAmmov8Bo1PeOlxUCIX+V9NQ5Uano36HAJ+ieydwggC2SITF1nWRIQ
+         GW9leg+dcS1P2gAThQ8w2mcrZcRAUUr7gJcvz8jkNN3XDv5JHKTMrRd5XG990rvbP5O5
+         WbQ6qGpKyWjKABBb97/z4eQBDP47ewK1fSYo+6ZJUcEmYrvLHRCHCD8FIA/b5Vo/C9jd
+         7GAA==
+X-Gm-Message-State: AAQBX9dtpBFL5QGOOolmtxI4oTCNti7lU0K3Lr+cGsOJzTObYeFj9w4n
+	y5Ga0WKrQKoNwz3u8NTOMA==
+X-Google-Smtp-Source: AKy350aD8i61CSEMsXWO+ODXbKKtkeyWipy3Tnvjy0WnRBnCKMJ4XFPRDEIn9gvkDG7hvfRH5ebobg==
+X-Received: by 2002:a4a:e753:0:b0:541:87fe:5b75 with SMTP id n19-20020a4ae753000000b0054187fe5b75mr1415607oov.1.1680794712637;
+        Thu, 06 Apr 2023 08:25:12 -0700 (PDT)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id j48-20020a4a9473000000b0053dfd96fa61sm646099ooi.39.2023.04.06.08.25.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 06 Apr 2023 08:24:46 -0700 (PDT)
-Date: Thu, 6 Apr 2023 18:24:43 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Hans Schultz <netdev@kapio-technology.com>
-Cc: Ido Schimmel <idosch@nvidia.com>, davem@davemloft.net, kuba@kernel.org,
-	netdev@vger.kernel.org, Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>, Eric Dumazet <edumazet@google.com>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	"maintainer:MICROCHIP KSZ SERIES ETHERNET SWITCH DRIVER" <UNGLinuxDriver@microchip.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	=?utf-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
-	Jiri Pirko <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
-	Shuah Khan <shuah@kernel.org>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	open list <linux-kernel@vger.kernel.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
-	"open list:RENESAS RZ/N1 A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>,
-	"moderated list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>,
-	"open list:KERNEL SELFTEST FRAMEWORK" <linux-kselftest@vger.kernel.org>
-Subject: Re: [PATCH v2 net-next 6/6] selftests: forwarding: add dynamic FDB
- test
-Message-ID: <20230406152443.b3ps4x7e4kz4aes2@skbuf>
-References: <20230318141010.513424-1-netdev@kapio-technology.com>
- <20230318141010.513424-7-netdev@kapio-technology.com>
- <ZBgdAo8mxwnl+pEE@shredder>
- <87a5zzh65p.fsf@kapio-technology.com>
- <ZCMYbRqd+qZaiHfu@shredder>
- <874jq22h2u.fsf@kapio-technology.com>
- <20230330192714.oqosvifrftirshej@skbuf>
- <871ql5mjjp.fsf@kapio-technology.com>
- <20230331093732.s6loozkdhehewlm4@skbuf>
- <87tty1nlb4.fsf@kapio-technology.com>
+        Thu, 06 Apr 2023 08:25:12 -0700 (PDT)
+Received: (nullmailer pid 3124644 invoked by uid 1000);
+	Thu, 06 Apr 2023 15:25:11 -0000
+Date: Thu, 6 Apr 2023 10:25:11 -0500
+From: Rob Herring <robh@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: netdev@vger.kernel.org, davem@davemloft.net, edumazet@google.com, pabeni@redhat.com, kuba@kernel.org, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com, lorenzo.bianconi@redhat.com, daniel@makrotopia.org, krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org
+Subject: Re: [PATCH v2 net-next 00/10] mtk: wed: move cpuboot, ilm and dlm in
+ dedicated dts nodes
+Message-ID: <20230406152511.GA3117403-robh@kernel.org>
+References: <cover.1680268101.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <87tty1nlb4.fsf@kapio-technology.com>
+In-Reply-To: <cover.1680268101.git.lorenzo@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230406_082449_238285_6AA0F31B 
-X-CRM114-Status: GOOD (  11.26  )
+X-CRM114-CacheID: sfid-20230406_082514_774758_382CFEDB 
+X-CRM114-Status: UNSURE (   8.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,14 +82,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 31, 2023 at 02:43:11PM +0200, Hans Schultz wrote:
-> I will as long as the system is as it is with these selftests, just run
-> single subtests at a time on target, but if I have new phy problems like
-> the one you have seen I have had before, then testing on target becomes
-> off limits.
+On Fri, Mar 31, 2023 at 03:12:36PM +0200, Lorenzo Bianconi wrote:
+> Since cpuboot, ilm and dlm memory region are not part of MT7986 SoC RAM,
 
-Please open a dedicated communication channel (separate email thread on
-netdev@vger.kernel.org) with the appropriate maintainers for the PHY
-code that is failing for you in To:, and you will get the help that you
-need to resolve that and to be able to test on the target board.
+That's not really a requirement. Is that the only "problem" here?
+
+Certainly going from a standard binding to a custom phandle reference is 
+not an improvement.
+
+> move them in dedicated mt7986a syscon dts nodes.
+
+What makes them a syscon? Are they memory or h/w registers? Can't be 
+both...
+
+Perhaps mmio-sram?
+
+> At the same time we keep backward-compatibility with older dts version where
+> cpuboot, ilm and dlm were defined as reserved-memory child nodes.
+
+Doesn't really seem big enough issue to justify carrying this.
+
+Rob
 
