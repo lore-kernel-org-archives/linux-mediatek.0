@@ -4,84 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7661C76196
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Apr 2023 05:49:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2F20C76196
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Apr 2023 06:21:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YZ8PVA/atiia/tjTYHEDk3XUx3h0g9cX9xWoZrnfSaI=; b=Yu7Kt5wJqfV8Q0x1b/+E75eHQr
-	xybyhj7iPcwx2YjKfwYFMOrx8IyEaWSw/qIz1z8ylf/fitBBw9QSoxqUetH9MPn31SCHCXCbSuxhs
-	dVxH0vjbVvwZZwkTKrgh1yoHfOOrUnSv6LYDGWY2d3XrGK6hwdY5m3aCX1YL7S0fG4aR2bDa6jEGW
-	Z06VqfmeO4g0dVmrpgGVy03gM4Wq/9gM5kJZw0ABWyVlLxhSaNmzKMwsCgP6yBbIaVLFrh3X2HwMp
-	1RNRuEk5P9xINXuQiks4wKsc0aXg1AgYCKI6Q7YNxZdSq9G/EfAavzvITbw93gFPjlfoY2ZwYPVZ6
-	1q+IQYZg==;
+	bh=7Kz8SNhi1cpYQJqD/AT3lCWMWGthZUaWRueclcoldFw=; b=Wrwrps05k4DP6gj/YnJwthGr0U
+	/G7BZhu1dBKGcEgyveSIySmt7DA0+20aNxyp/yJEAdL5yJILIqItFB8zOpro8ViltXd6s80fTJM0a
+	kSwRGr28tCcUuVrEj9QvFTGi04zukPFJ2ouKj0KXYPfgOHyGmiL5k2NCBnHgAH9cuY+uafhwC+dVs
+	qXf++n0NjFKC/SkDmkeiKF0z25ZEEaMBAt3SyBvFanhcx0iNYcE+bPX5/2HSsgrklSjZoRJwQS+yI
+	uZyp7tbLMcopJlHchLsHtDrWrDhYWifILijxG3Nkw9RpuMxvFMtSXD57OZDy9kQBYATdO2lG+pTjN
+	Gz5eMHUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkIUc-006OyJ-26;
-	Thu, 06 Apr 2023 05:49:06 +0000
-Received: from mail-vs1-xe2d.google.com ([2607:f8b0:4864:20::e2d])
+	id 1pkIzU-006Tmd-1H;
+	Thu, 06 Apr 2023 06:21:00 +0000
+Received: from mail-ua1-x92f.google.com ([2607:f8b0:4864:20::92f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkIUY-006Ows-2j
+	id 1pkIzP-006Tic-2B
 	for linux-mediatek@lists.infradead.org;
-	Thu, 06 Apr 2023 05:49:05 +0000
-Received: by mail-vs1-xe2d.google.com with SMTP id cz11so33495153vsb.6
-        for <linux-mediatek@lists.infradead.org>; Wed, 05 Apr 2023 22:48:59 -0700 (PDT)
+	Thu, 06 Apr 2023 06:20:57 +0000
+Received: by mail-ua1-x92f.google.com with SMTP id t20so9695939uaw.5
+        for <linux-mediatek@lists.infradead.org>; Wed, 05 Apr 2023 23:20:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1680760137;
+        d=chromium.org; s=google; t=1680762052;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=YZ8PVA/atiia/tjTYHEDk3XUx3h0g9cX9xWoZrnfSaI=;
-        b=VAJUd7AkFuitBCaDn4PDCke2qUypZywbfeYT2Ko80sDqTyivuobWW8FDMdqeUCZDql
-         MoEXSViUMBV7PMMIsLKdnr4H5mWcL98In5TEPR6cYjze1wdNL6Pq4/XHl1q8EYepFsIP
-         6gUGhA52NjbDOp5i4NfyZ7ar2DhgYcgwV3INo=
+        bh=7Kz8SNhi1cpYQJqD/AT3lCWMWGthZUaWRueclcoldFw=;
+        b=mPvWNRiVsTupIoec66q+0JGs7s/4YhEwZZ04g/jmghXnDUFI/6nyTIM1XQon4YhQ+d
+         sUeW9y2q+BiIUCu5oCuJ39jm6hTaGPLWUN9o/Hyw+LUaoZQ6CaysXslzfjHm/cOGUY3J
+         luBsHTXmU8iyVg2z19eX9ALbgMcoSCgUvfohw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680760137;
+        d=1e100.net; s=20210112; t=1680762052;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=YZ8PVA/atiia/tjTYHEDk3XUx3h0g9cX9xWoZrnfSaI=;
-        b=wP2Trv19fCkqvoiH2bfu+nEdgrRtyEqvkd+Paef3HAqmmD9ARCr2sv8sdHvbZF6Vfo
-         d9GM8nfPlhVy5drFiMaQIg88REbVQVePRjcPLfzqNRMhbTr3wsXCnxgaEfM1JsDrbhcC
-         D2mh4xWuvzfv+5R9XWS+g3AplcBDNP7Dt9SeTRImcwGjhTijBQlKdfBgbJ/qN9RuA/fN
-         XkXBCxfjkC07r6LuY2UIni3KYLLHf3Z4LUYd+FA3NgaX5aulnmZF/Cm8rBkCqfgaCdIL
-         IQxTZ4iKFsMJtJqnr04PbBLokZRMNmMb4ZtlOSw6V0wE/XNX+N27sGpn2d4j2Ls+mpcK
-         wTBQ==
-X-Gm-Message-State: AAQBX9e+hJeOvLH57BDCyYsKf6MgzdF98O5McBvGj4GItzy6Czhux9NI
-	mG7PZC/6QXRGq987pFkpPFjeTLYaY0TePPldIE2GqA==
-X-Google-Smtp-Source: AKy350Y2i4qLGhKpJdOSUX/56KNRjC2/+DH+F1JftCexRGQwx88QRzq9YP9OtVd02aeOmfZgXAVDSLfBCAmwYW1igdo=
-X-Received: by 2002:a67:c01c:0:b0:425:f1e7:fecf with SMTP id
- v28-20020a67c01c000000b00425f1e7fecfmr6371648vsi.7.1680760137615; Wed, 05 Apr
- 2023 22:48:57 -0700 (PDT)
+        bh=7Kz8SNhi1cpYQJqD/AT3lCWMWGthZUaWRueclcoldFw=;
+        b=TXpdHKJEsKdhLNTpp+XXZ8u4vXzI7XnNsqGMMVrexTHpWBsjt8WwyWWZn5iF6dAqiG
+         Zq3+dlKm6dfDd6upOpcjAd7DyIJgymvTD/mC7ZUK3rPiU4jpzwYM9PZJzxjv3jPXLiHx
+         k5zMDBO3Mdajo1/YcpeuewAb5E71h6+x4KmVsPxPAz/V9Eax/SlZYe6a7YdQe452qd/F
+         Ra+wDs52djIBUTjR1yluf19V8H8kU9HDqTgaoixN8mQ3F9OGaiyxP1kfLwhJ5/Y/jUuj
+         Ncr1V3dXYzK19c7cknLjst2hbrZEsEE1y+eeQUv1ka3BtT1a+WhkrBEBtOw59MOrA8Hb
+         3rMg==
+X-Gm-Message-State: AAQBX9de8djiHt70sBSg/6Nu8pXWiGcnI7JA64EBnRbvImnfvcCCGtnm
+	ApV+Cm2626+xZwSsJ8TMh9tBZpspk+67T12AshcR/g==
+X-Google-Smtp-Source: AKy350Yp2FIaz+ilkqlK7ibx9rFilAky16tPkK48Dbsh+GzGOd0UvkGhSb+M4eo0JEvts5cE5ZH/AYrK9lJqHNhSarI=
+X-Received: by 2002:a9f:3110:0:b0:68a:a9d:13f5 with SMTP id
+ m16-20020a9f3110000000b0068a0a9d13f5mr6292638uab.1.1680762052315; Wed, 05 Apr
+ 2023 23:20:52 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230321121859.2355-1-nancy.lin@mediatek.com> <17831605-5c9d-9c92-d190-04f91060ace4@collabora.com>
- <CAAOTY_8ZAxVSLnJ1u5snsRgkszV7ixwhjUS2nDimE_Lpj=cUCA@mail.gmail.com>
- <97a5f383-38f5-e8ea-e1d8-489b690e4521@collabora.com> <CAAOTY_9_vn-m2jTaaHkFDV+v2-LeaAxtCLNNnOxZq5Httb-TAQ@mail.gmail.com>
- <CAGXv+5FJCuG_zHnaKZ=baNzKAWKLEe3jZnghNAxuGv7i7L6e7Q@mail.gmail.com>
- <CAAOTY_9Dbtubah3ndj9+FeYDh7D42k6-BtHrYMNc=CP6GL6uFA@mail.gmail.com> <d0b9d8a2-14ae-8c0d-309b-5f5d60d43a1d@linaro.org>
-In-Reply-To: <d0b9d8a2-14ae-8c0d-309b-5f5d60d43a1d@linaro.org>
+References: <20230404104800.301150-1-angelogioacchino.delregno@collabora.com> <20230404104800.301150-6-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230404104800.301150-6-angelogioacchino.delregno@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 6 Apr 2023 13:48:46 +0800
-Message-ID: <CAGXv+5HGmsfbN7GggASZPXtXCVvKUS4e-xjUFDG-87KvA_0W7w@mail.gmail.com>
-Subject: Re: [PATCH v30 0/7] Add MediaTek SoC DRM (vdosys1) support for mt8195
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com, devicetree@vger.kernel.org, 
-	singo.chang@mediatek.com, Nick Desaulniers <ndesaulniers@google.com>, 
-	linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, 
-	Nathan Chancellor <nathan@kernel.org>, "Nancy.Lin" <nancy.lin@mediatek.com>, 
-	linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, 
-	krzysztof.kozlowski+dt@linaro.org, clang-built-linux@googlegroups.com, 
-	Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Date: Thu, 6 Apr 2023 14:20:41 +0800
+Message-ID: <CAGXv+5HTPd_2r0Bb2nY94gUwWzpn_wvU_ZMYu6u9hWBeaVzrwA@mail.gmail.com>
+Subject: Re: [PATCH v3 5/9] drm/mediatek: dp: Change logging to dev for mtk_dp_aux_transfer()
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
+	daniel@ffwll.ch, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230405_224902_880349_F0F4B986 
-X-CRM114-Status: GOOD (  31.61  )
+X-CRM114-CacheID: sfid-20230405_232055_920409_C1ED96DD 
+X-CRM114-Status: GOOD (  18.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,125 +87,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 3, 2023 at 5:47=E2=80=AFPM Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> wrote:
+On Tue, Apr 4, 2023 at 6:48=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
 >
-> On 03/04/2023 05:30, Chun-Kuang Hu wrote:
-> > Hi, Chen-yu:
-> >
-> > Chen-Yu Tsai <wenst@chromium.org> =E6=96=BC 2023=E5=B9=B43=E6=9C=8830=
-=E6=97=A5 =E9=80=B1=E5=9B=9B =E4=B8=8B=E5=8D=887:05=E5=AF=AB=E9=81=93=EF=BC=
-=9A
-> >>
-> >> On Mon, Mar 27, 2023 at 11:17=E2=80=AFPM Chun-Kuang Hu <chunkuang.hu@k=
-ernel.org> wrote:
-> >>>
-> >>> Hi, Angelo:
-> >>>
-> >>> AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> =
-=E6=96=BC
-> >>> 2023=E5=B9=B43=E6=9C=8824=E6=97=A5 =E9=80=B1=E4=BA=94 =E4=B8=8B=E5=8D=
-=884:38=E5=AF=AB=E9=81=93=EF=BC=9A
-> >>>>
-> >>>> Il 24/03/23 00:25, Chun-Kuang Hu ha scritto:
-> >>>>> Hi, Angelo:
-> >>>>>
-> >>>>> AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com=
-> =E6=96=BC
-> >>>>> 2023=E5=B9=B43=E6=9C=8823=E6=97=A5 =E9=80=B1=E5=9B=9B =E4=B8=8B=E5=
-=8D=884:58=E5=AF=AB=E9=81=93=EF=BC=9A
-> >>>>>>
-> >>>>>> Il 21/03/23 13:18, Nancy.Lin ha scritto:
-> >>>>>>> The hardware path of vdosys1 with DPTx output need to go through =
-by several modules, such as, OVL_ADAPTOR and MERGE.
-> >>>>>>>
-> >>>>>>> Add DRM and these modules support by the patches below:
-> >>>>>>>
-> >>>>>>
-> >>>>>> I've tested v30 again on MT8173, MT8192 and MT8195 based Chromeboo=
-ks.
-> >>>>>> Green light from me.
-> >>>>>
-> >>>>> I'm curious about how you build code and test on Chromebooks. Do yo=
-u
-> >>>>> build in cros environment or pure linux
-> >>>>> (https://archlinuxarm.org/platforms/armv8/mediatek/acer-chromebook-=
-r13).
-> >>>>> I've a MT8183 based Chromebook (HP 11a) and I've tried to run a
-> >>>>> upstream kernel on it. cros is too heavy for me and I doubt I could
-> >>>>> use it. I've tried the pure linux and could boot up with console, b=
-ut
-> >>>>> display does not work. If you use the pure linux environment, could
-> >>>>> you share how it works?
-> >>>>>
-> >>>>
-> >>>> I haven't tested MT8183 (I don't actually have any 8183 machine in m=
-y hands)... but
-> >>>> yes, I can share my test environment.
-> >>>>
-> >>>> I have one MicroSD that I use either in the MicroSD slot of the targ=
-et machine, or
-> >>>> in a USB reader; this *single* system is what I boot on *all* Chrome=
-books that I
-> >>>> have: one kernel, multiple devicetrees, same Debian-based userspace.
-> >>>>
-> >>>> What we have to prepare this bootable media can be found at [1], but=
- beware that
-> >>>> it currently uses an outdated kernel, so, what I have locally is a s=
-ymlink to my
-> >>>> kernel tree.
-> >>>> You can change/add/remove the devicetree blobs that will get added t=
-o the image
-> >>>> by modifying `chromebook-setup.sh`; before tampering with kernel tre=
-e symlink,
-> >>>> please run that script for the first time, as it will download a cro=
-ss-compiler,
-> >>>> a kernel tree (that you will replace for sure) and the (very old) De=
-bian rootfs
-> >>>> that you can update with `apt-get dist-upgrade` after booting the Ch=
-romebook.
-> >>>>
-> >>>> If you want to check about possible kernel configuration differences=
-, what I use
-> >>>> is at [2], so that you can compare.
-> >>>
-> >>> Thanks for the information, I would try to compare the kernel config =
-first.
-> >>
-> >> Hi CK,
-> >>
-> >> Would you consider adding your repo to linux-next? That would let ever=
-yone
-> >> do integration testing, especially automated ones, earlier, before you=
- send
-> >> your PRs to drm maintainers.
-> >>
-> >> You can do so by sending an email to Stephen Rothwell to do so.
-> >
-> > I don't understand what this process is. Does it means that I directly
-> > upstream patches into linux-next? I prefer that my patches go through
-> > drm maintainers' tree. Does any document introduce this process?
+> Change logging from drm_{err,info}() to dev_{err,info}() in functions
+> mtk_dp_aux_transfer() and mtk_dp_aux_do_transfer(): this will be
+> essential to avoid getting NULL pointer kernel panics if any kind
+> of error happens during AUX transfers happening before the bridge
+> is attached.
 >
-> All maintainers and sub-maintainers trees are supposed to be fed into
-> linux-next.
+> This may potentially start happening in a later commit implementing
+> aux-bus support, as AUX transfers will be triggered from the panel
+> driver (for EDID) before the mtk-dp bridge gets attached, and it's
+> done in preparation for the same.
 >
-> https://lore.kernel.org/linux-next/20230327124805.3ca4f3cc@canb.auug.org.=
-au/T/#md226a8e714cc731c2ab4ba5ee7eb43fe21a55009
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dp.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 >
-> Documentation/process/howto.rst
-> Documentation/process/2.Process.rst
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek=
+/mtk_dp.c
+> index ac21eca0e20e..19b145cf2e05 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dp.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+> @@ -849,7 +849,7 @@ static int mtk_dp_aux_do_transfer(struct mtk_dp *mtk_=
+dp, bool is_read, u8 cmd,
+>                 u32 phy_status =3D mtk_dp_read(mtk_dp, MTK_DP_AUX_P0_3628=
+) &
+>                                  AUX_RX_PHY_STATE_AUX_TX_P0_MASK;
+>                 if (phy_status !=3D AUX_RX_PHY_STATE_AUX_TX_P0_RX_IDLE) {
+> -                       drm_err(mtk_dp->drm_dev,
+> +                       dev_err(mtk_dp->dev,
+>                                 "AUX Rx Aux hang, need SW reset\n");
+>                         return -EIO;
+>                 }
+> @@ -2061,7 +2061,7 @@ static ssize_t mtk_dp_aux_transfer(struct drm_dp_au=
+x *mtk_aux,
+>                 is_read =3D true;
+>                 break;
+>         default:
+> -               drm_err(mtk_aux->drm_dev, "invalid aux cmd =3D %d\n",
+> +               dev_err(mtk_dp->dev, "invalid aux cmd =3D %d\n",
+>                         msg->request);
+>                 ret =3D -EINVAL;
+>                 goto err;
+> @@ -2077,7 +2077,7 @@ static ssize_t mtk_dp_aux_transfer(struct drm_dp_au=
+x *mtk_aux,
+>                                              to_access);
+>
+>                 if (ret) {
+> -                       drm_info(mtk_dp->drm_dev,
+> +                       dev_info(mtk_dp->dev,
+>                                  "Failed to do AUX transfer: %d\n", ret);
 
-As Krzysztof mentioned, the purpose of linux-next is for integration testin=
-g.
-Your queued up patches still go through the DRM tree for eventually merging
-into Linus's tree. Getting included into linux-next means that your branch
-gets automatically merged together with other branches, gets build and boot
-tested by the various CI platforms and bots out there, and provides a commo=
-n
-base for other developers.
+This part no longer applies cleanly due to
 
-I don't think there is any downside to having your branch integrated into
-linux-next.
+    drm/mediatek: dp: Change the aux retries times when receiving AUX_DEFER
+
+Also I think all these calls could be collapsed into one line?
 
 ChenYu
+
+>                         goto err;
+>                 }
+> --
+> 2.40.0
+>
 
