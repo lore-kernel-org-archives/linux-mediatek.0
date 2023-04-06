@@ -4,86 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADA03C7EE2E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Apr 2023 14:31:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55553C7618D
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Apr 2023 14:32:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wQhUC48C6wHrpynrBLKu6E6JYZ/G69c0U7Fw89TbAAs=; b=du7ugID/vgBvavFEhv8f4aakf+
-	CTUqoDSTPEjHPrC9gfwCVmP7UGc7KG3Hd8o9NJS1hrs4EMZSAG/Pg4yaKX2/vXx4oaQt9fcnUpiXO
-	erq8iIeSST9o/CZzypjGaa3jMo1hu4k9zHQWSdnjwboFN2wTVRPCs1VPfZM4m7BcpOzO5C0ILTDy/
-	YcBMgRSWvoCym2GMqk8Z/uVTFd3VFZ4fbZrfECHUbHKtYU/ZdDtpFg58ymtRCMoMfQmNyi24wsVuh
-	o3OyxgnqQNpdMCbALBqgx9c2CyvIz3NpYp8z5HaVZ3eS9cY1T3COqAbqszJxbup9z4UbVgIlvLNLU
-	a0A4zzfw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=83DCRrtSJq8aIhSri57P8Nkhk9kMsmJ33d/Kt/QPqOM=; b=uI1oP2tlVnR8jEHEH7rvkvlfCX
+	rDrORQZ5dGBhHXlOt9G1QpQb15moxi47z73/2LLi8EaYBZ+tUcE2HaPTR5gvd3R+KDkhDdXCvM+8a
+	SnP3BjIPDVtvowifQ4FvYazRjygmEQqlDUAo0+ObumDQ/2YIg44BKYW929hT5abgECA23wSvvTROw
+	0RoyaNSKNBBSqhUJghYe1fD1ieMxM6C6N0roPXzzRNH1+yzP9fRqKithHYogf/n43/9MK/d6tqv0e
+	DaF9JM4bRq9K2AaD/1dj1IkFmkhdY+DvnUwrayjphxD3sXoNQhDY9thhJ4pwiF452Ko9nYMi+lbAY
+	Aj0JRc9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkQdv-007bFn-0e;
-	Thu, 06 Apr 2023 14:31:15 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1pkQeq-007cDb-2P;
+	Thu, 06 Apr 2023 14:32:12 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkQdB-007aOA-02;
-	Thu, 06 Apr 2023 14:30:34 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id jw24so1868712ejc.3;
-        Thu, 06 Apr 2023 07:30:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1680791425;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=wQhUC48C6wHrpynrBLKu6E6JYZ/G69c0U7Fw89TbAAs=;
-        b=kDOOqQM8r/fMLfoKQs/IN3KdhOeZVXq6IKjq+NmpuI3Nbp3GY5P4GDrn2CrByhvDeu
-         EWAjDR4Z8ZleR3HKC1cmY2spstSNnB/Khvo1ymjzcvloNFHtxRAbIjnwJTVxZYQPGMN1
-         OtcrQuOyXUeGpZ3VEGUOs4ttExdXTkEaMaQR6qgqa8eN3F10VX2if5cPh+2yU0EqQ4Af
-         TVBJt0uMI5PD9lPxYuMVhgZMfKOqSSWtYiapQBtwL34qNXbBo8ks54SaYh2d7imYToF0
-         Kn94WYCLs+fdzYrRLGmsM4Q7FT4WnOWjL6Vy/TG3IHNllqFW2+AruAztWe/W0j8qVKCn
-         IEWA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680791425;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=wQhUC48C6wHrpynrBLKu6E6JYZ/G69c0U7Fw89TbAAs=;
-        b=bA03W4dJdcAGQxn4UpPdEjZ2nrQOzrxYpHhl9180y8wbOd5Af+th/lBN70wLQ44Xc9
-         52PiDAJaU+2tgS3iBjFLRCGFsTtXP3qmIBViByEvnJimXNCZOqidn9w9dKCf9NaXiU+d
-         VoBINeT35O5W6HBGTLKDer7dFwaEAykQHmn9W8RNGyaeWcRQXfban7xeo+dgqp00J7v+
-         1Dj74xaQPWE6R/BYxXtOYr3/Wek6pl7TeIdKdI+j2naV6JSnspXOXwEGUoGwbtWWex4V
-         0e8xPd1CPHmJrobExUBF8Lfp8Y78Jc+uKGfDdgQsAHBz0iY77iAmfHFj47LjZVUD8MSK
-         k2Hg==
-X-Gm-Message-State: AAQBX9fJ3MqviInQsNAJGr79HVkVY0H1+KxU46N+mfygAo8Iq4AmTWLX
-	Eik9GFXHfLKisuilWX5xZpc=
-X-Google-Smtp-Source: AKy350aiBqXW2UWscI0vgWKtSbPJl7vSCZnaC+Q+fMor6zOBrfrqrLsRVMdvXTw3ToBjy+9r3IsNzg==
-X-Received: by 2002:a17:906:6d6:b0:8f6:5a70:cccc with SMTP id v22-20020a17090606d600b008f65a70ccccmr6946401ejb.66.1680791425036;
-        Thu, 06 Apr 2023 07:30:25 -0700 (PDT)
-Received: from orome (p200300e41f1c0800f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f1c:800:f22f:74ff:fe1f:3a53])
-        by smtp.gmail.com with ESMTPSA id dd20-20020a1709069b9400b009475bf82935sm884746ejc.31.2023.04.06.07.30.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 06 Apr 2023 07:30:24 -0700 (PDT)
-Date: Thu, 6 Apr 2023 16:30:23 +0200
-From: Thierry Reding <thierry.reding@gmail.com>
-To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Lorenz Brun <lorenz@brun.one>,
+	id 1pkQeG-007ba9-2P;
+	Thu, 06 Apr 2023 14:31:38 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id BF201648A2;
+	Thu,  6 Apr 2023 14:31:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 48A63C4339C;
+	Thu,  6 Apr 2023 14:31:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1680791494;
+	bh=fS1epBKc6/LIuAlKccrK1+yZRgDIBGUB741ssPvpdOQ=;
+	h=Date:From:To:Cc:Subject:From;
+	b=SjiLsj18bWuofLs6hhWeLC/lLw/a3iNtZ9wlEueFZEmCpkNlYBNfrW2g/JfGJHGTi
+	 vet9hVGN3GV90yUx+3gAa/XNftBN0j39XOMRCSz2X9AIryTOjRKZkau8WazkdAVbKe
+	 7jo/OiVuhS8JxGUofx57NN8frKBM2tj4fn33MN5OokPIYjhPFpYfjxIVlje0uFnNYq
+	 o+keawWHSe/sdTrcyzxIyVKkwcke3vee+fUSrJSER8RnbtzoGn6X9DOk/pfIaR/jlM
+	 ZoF5CIu1w4YilJ9YwXKoTj0fnpznmfu4LCYmI1CVH3mBWnGcBheecAhLYWYKRmVcUM
+	 1CooyEc8vqBvg==
+Date: Thu, 6 Apr 2023 08:32:12 -0600
+From: "Gustavo A. R. Silva" <gustavoars@kernel.org>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2] pwm: mediatek: support inverted polarity
-Message-ID: <ZC7Xf8Wy1x9gnaAY@orome>
-References: <20230309010410.2106525-1-lorenz@brun.one>
- <ZC7LaC19YjNwTIi1@orome>
- <20230406135358.x3et6gvvxqsknfn6@pengutronix.de>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	"Gustavo A. R. Silva" <gustavoars@kernel.org>,
+	linux-hardening@vger.kernel.org
+Subject: [PATCH][next] wifi: mt76: Replace zero-length array with
+ flexible-array member
+Message-ID: <ZC7X7KCb+JEkPe5D@work>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="vTrnEci5s8VqfSaD"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230406135358.x3et6gvvxqsknfn6@pengutronix.de>
-User-Agent: Mutt/2.2.10 (2023-03-25)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230406_073029_103201_3A8C72AE 
-X-CRM114-Status: GOOD (  26.59  )
+X-CRM114-CacheID: sfid-20230406_073136_845720_9E5EBB05 
+X-CRM114-Status: GOOD (  11.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,80 +82,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Zero-length arrays are deprecated [1] and have to be replaced by C99
+flexible-array members.
 
---vTrnEci5s8VqfSaD
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This helps with the ongoing efforts to tighten the FORTIFY_SOURCE routines
+on memcpy() and help to make progress towards globally enabling
+-fstrict-flex-arrays=3 [2]
 
-On Thu, Apr 06, 2023 at 03:53:58PM +0200, Uwe Kleine-K=C3=B6nig wrote:
-> Hello Thierry,
->=20
-> On Thu, Apr 06, 2023 at 03:38:48PM +0200, Thierry Reding wrote:
-> > On Thu, Mar 09, 2023 at 02:04:10AM +0100, Lorenz Brun wrote:
-> > > +	 * appear to have the capability to invert the output.
-> > > +	 * This means that inverted mode can not be fully supported as the
-> > > +	 * waveform will always start with the low period and end with the =
-high
-> > > +	 * period. Thus reject non-normal polarity if the shape of the wave=
-form
-> > > +	 * matters, i.e. usage_power is not set.
-> > > +	 */
-> > > +	if (state->polarity !=3D PWM_POLARITY_NORMAL && !state->usage_power)
-> > >  		return -EINVAL;
-> > > =20
-> > >  	if (!state->enabled) {
-> > > @@ -213,7 +221,11 @@ static int pwm_mediatek_apply(struct pwm_chip *c=
-hip, struct pwm_device *pwm,
-> > >  		return 0;
-> > >  	}
-> > > =20
-> > > -	err =3D pwm_mediatek_config(pwm->chip, pwm, state->duty_cycle, stat=
-e->period);
-> > > +	duty_cycle =3D state->duty_cycle;
-> > > +	if (state->polarity =3D=3D PWM_POLARITY_INVERSED)
-> > > +		duty_cycle =3D state->period - state->duty_cycle;
-> >=20
-> > That's not really what state->usage_power was meant to address.
->=20
-> I don't understand your concern here. I don't like .usage_power, but
-> AFAICT this is a legitimite use. With .usage_power =3D true, the lowlevel
-> driver is free to shift the phase_offset and even modify the period size
-> and the goal is just that the average power-output matches.
->=20
-> Lorenz's patch does exactly this: It even keeps the period and only
-> shifts the phase (by period - duty_cycle). If you consider this not
-> legitmate, I think we have to improve the docs about .usage_power.
+Link: https://github.com/KSPP/linux/issues/78 [1]
+Link: https://gcc.gnu.org/pipermail/gcc-patches/2022-October/602902.html [2]
+Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
+---
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-I realize that I'm being nitpicky here. Setting usage_power =3D true and
-duty =3D period - duty is a lazy way of achieving what you can easily do
-by adjusting the input duty cycle.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+index a5e6ee4daf92..9bf4b4199ee3 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+@@ -127,7 +127,7 @@ struct mt76_connac2_mcu_rxd {
+ 	u8 rsv1[2];
+ 	u8 s2d_index;
+ 
+-	u8 tlv[0];
++	u8 tlv[];
+ };
+ 
+ struct mt76_connac2_patch_hdr {
+-- 
+2.34.1
 
-If you all really want this, then it should go into the core, because
-it's something that can be implemented on basically every single PWM
-controller.
-
-Thierry
-
---vTrnEci5s8VqfSaD
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmQu134ACgkQ3SOs138+
-s6HdEg//QB1RbC+b2D1fyJp2a/878DZw0Noui4uzQ9hqOvjkcUvly2m9Nt/YPMG3
-LK8yJ8Zmxkytm6YqFHgYwaYZk7vnRL6Cvoo5gVdxlAvsgG+Go/UAEgvMpq5dgnP+
-FO8mZa4P7LKgJe/5sGuZanDrwVt7Xh6Y12RsmiBYcaMkC4fkpyKutR0VRy31KIE4
-qNJP0DozI7wHDyJcdV+AW+2saARDEt+5IRFn/fKjpxx5hp2pIg04OUcelAJEgF6E
-pg16Vs9BAqUYfN+LnqdGqph3+tJR6pvcXLG+uU6o/FgQLTqf3ic1oQca7stRfAH9
-BbqhkkoTzlpOiLvp0S4bzxqOiaFioRnROBppZvNIl85j3NIOSm7NTAzUE3rh/Z9I
-qkn06FT3+Y1R3/NsOKZoQfH0ygm97RdjtQhwWscm0VHIneh165fW8e++dcrBLYCY
-NyYA01We7VONe4m05ycsWzXq3xckZj7T4225MOK/NA2AK2KTNhMUhSqA3T41IEto
-iWBzS9J8azku8jAYj0My5RO7obpymkVX0+ymixsmFVvBW4V7Hd7fPR43eI805Rg9
-OMuh92K+e1XBvgq8nUUuA8pJxmBBkG+Qpz9t1zta55X1hu9LBtSdocZcJtaBr746
-ELWDyZxNNGBTfbmchrp5SIP1zphRDVY3o3wzoKVY4XQewLaDL5g=
-=rBYM
------END PGP SIGNATURE-----
-
---vTrnEci5s8VqfSaD--
 
