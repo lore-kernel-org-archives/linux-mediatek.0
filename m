@@ -4,70 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55553C7618D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Apr 2023 14:32:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E4A4C7618D
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Apr 2023 15:20:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=83DCRrtSJq8aIhSri57P8Nkhk9kMsmJ33d/Kt/QPqOM=; b=uI1oP2tlVnR8jEHEH7rvkvlfCX
-	rDrORQZ5dGBhHXlOt9G1QpQb15moxi47z73/2LLi8EaYBZ+tUcE2HaPTR5gvd3R+KDkhDdXCvM+8a
-	SnP3BjIPDVtvowifQ4FvYazRjygmEQqlDUAo0+ObumDQ/2YIg44BKYW929hT5abgECA23wSvvTROw
-	0RoyaNSKNBBSqhUJghYe1fD1ieMxM6C6N0roPXzzRNH1+yzP9fRqKithHYogf/n43/9MK/d6tqv0e
-	DaF9JM4bRq9K2AaD/1dj1IkFmkhdY+DvnUwrayjphxD3sXoNQhDY9thhJ4pwiF452Ko9nYMi+lbAY
-	Aj0JRc9A==;
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tN9/dYZSSfnIqMy+bjhjROclfAZr5E1SprdBnS2fhPs=; b=rb//15dUIzwj8e58iN+pvje5cZ
+	tVjMCWlXCOJpNIXw00S/V3DgaK/ciTSRG7NhxJWAZ8yCq+5Z+Q+IS1YdyvvXLivUelmr0Ti9wc1jB
+	Bh/7PnJ9DGi+Bs3H/OJFpAooSn8ykCihoH51nZOF9qrgglraxN/8L7j03/Rcxq2L2H4ajrU2Ha82o
+	N6Yg2jdmuHhXN189asFVyZ1XJAiVx/sjB8zQU+5727IW4kRaVHY9MhDG0TgiVy4EnCvbLsBRHiLqG
+	NMDz/gv11eMSSE5M3nOapjV5aYQEm0hOFgRezn4rEk5Fukmo9RhdHxju9/375TxRQwqHBFxzdXzyA
+	sdROQIGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkQeq-007cDb-2P;
-	Thu, 06 Apr 2023 14:32:12 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pkRPs-007n7z-0x;
+	Thu, 06 Apr 2023 15:20:48 +0000
+Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkQeG-007ba9-2P;
-	Thu, 06 Apr 2023 14:31:38 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id BF201648A2;
-	Thu,  6 Apr 2023 14:31:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 48A63C4339C;
-	Thu,  6 Apr 2023 14:31:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1680791494;
-	bh=fS1epBKc6/LIuAlKccrK1+yZRgDIBGUB741ssPvpdOQ=;
-	h=Date:From:To:Cc:Subject:From;
-	b=SjiLsj18bWuofLs6hhWeLC/lLw/a3iNtZ9wlEueFZEmCpkNlYBNfrW2g/JfGJHGTi
-	 vet9hVGN3GV90yUx+3gAa/XNftBN0j39XOMRCSz2X9AIryTOjRKZkau8WazkdAVbKe
-	 7jo/OiVuhS8JxGUofx57NN8frKBM2tj4fn33MN5OokPIYjhPFpYfjxIVlje0uFnNYq
-	 o+keawWHSe/sdTrcyzxIyVKkwcke3vee+fUSrJSER8RnbtzoGn6X9DOk/pfIaR/jlM
-	 ZoF5CIu1w4YilJ9YwXKoTj0fnpznmfu4LCYmI1CVH3mBWnGcBheecAhLYWYKRmVcUM
-	 1CooyEc8vqBvg==
-Date: Thu, 6 Apr 2023 08:32:12 -0600
-From: "Gustavo A. R. Silva" <gustavoars@kernel.org>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	"Gustavo A. R. Silva" <gustavoars@kernel.org>,
-	linux-hardening@vger.kernel.org
-Subject: [PATCH][next] wifi: mt76: Replace zero-length array with
- flexible-array member
-Message-ID: <ZC7X7KCb+JEkPe5D@work>
+	id 1pkRPo-007n4a-2T;
+	Thu, 06 Apr 2023 15:20:46 +0000
+Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 55C7918837A6;
+	Thu,  6 Apr 2023 15:20:32 +0000 (UTC)
+Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
+	by mailout.gigahost.dk (Postfix) with ESMTP id 1E16725002FD;
+	Thu,  6 Apr 2023 15:20:32 +0000 (UTC)
+Received: by smtp.gigahost.dk (Postfix, from userid 1000)
+	id F1F5A9B403F4; Thu,  6 Apr 2023 15:20:31 +0000 (UTC)
+X-Screener-Id: e32ae469fa6e394734d05373d3a705875723cf1e
+Received: from fujitsu (2-104-116-184-cable.dk.customer.tdc.net [2.104.116.184])
+	by smtp.gigahost.dk (Postfix) with ESMTPSA id 5442891201E3;
+	Thu,  6 Apr 2023 15:20:31 +0000 (UTC)
+From: Hans Schultz <netdev@kapio-technology.com>
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
+ Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Eric
+ Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Kurt
+ Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>,
+ Woojung Huh <woojung.huh@microchip.com>, "maintainer:MICROCHIP KSZ SERIES
+ ETHERNET SWITCH DRIVER" <UNGLinuxDriver@microchip.com>, Sean Wang
+ <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
+ Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, =?utf-8?Q?Cl=C3=A9ment_L=C3=A9ger?=
+ <clement.leger@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
+ <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
+ <razor@blackwall.org>, Shuah Khan <shuah@kernel.org>, Christian Marangi
+ <ansuelsmth@gmail.com>, Ido Schimmel <idosch@nvidia.com>, open list
+ <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>, "open list:RENESAS RZ/N1
+ A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>, "moderated
+ list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>, "open
+ list:KERNEL SELFTEST FRAMEWORK" <linux-kselftest@vger.kernel.org>
+Subject: Re: [PATCH v2 net-next 2/6] net: dsa: propagate flags down towards
+ drivers
+In-Reply-To: <20230330150752.gdquw5kudtrqgzyz@skbuf>
+References: <20230327160009.bdswnalizdv2u77z@skbuf>
+ <87pm8tooe1.fsf@kapio-technology.com>
+ <20230327225933.plm5raegywbe7g2a@skbuf>
+ <87ileljfwo.fsf@kapio-technology.com>
+ <20230328114943.4mibmn2icutcio4m@skbuf>
+ <87cz4slkx5.fsf@kapio-technology.com>
+ <20230330124326.v5mqg7do25tz6izk@skbuf>
+ <87wn2yxunb.fsf@kapio-technology.com>
+ <20230330130936.hxme34qrqwolvpsh@skbuf>
+ <875yaimgro.fsf@kapio-technology.com>
+ <20230330150752.gdquw5kudtrqgzyz@skbuf>
+Date: Thu, 06 Apr 2023 17:17:46 +0200
+Message-ID: <87o7o1ox9h.fsf@kapio-technology.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230406_073136_845720_9E5EBB05 
-X-CRM114-Status: GOOD (  11.70  )
+X-CRM114-CacheID: sfid-20230406_082044_965117_D16DC773 
+X-CRM114-Status: UNSURE (   7.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,34 +97,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Zero-length arrays are deprecated [1] and have to be replaced by C99
-flexible-array members.
+On Thu, Mar 30, 2023 at 18:07, Vladimir Oltean <olteanv@gmail.com> wrote:
+> As a bug fix, stop reporting to switchdev those FDB entries with
+> BR_FDB_ADDED_BY_USER && !BR_FDB_STATIC. Then, after "net" is merged into
+> "net-next" next Thursday (the ship has sailed for today), add "bool static"
 
-This helps with the ongoing efforts to tighten the FORTIFY_SOURCE routines
-on memcpy() and help to make progress towards globally enabling
--fstrict-flex-arrays=3 [2]
-
-Link: https://github.com/KSPP/linux/issues/78 [1]
-Link: https://gcc.gnu.org/pipermail/gcc-patches/2022-October/602902.html [2]
-Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
----
- drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-index a5e6ee4daf92..9bf4b4199ee3 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-@@ -127,7 +127,7 @@ struct mt76_connac2_mcu_rxd {
- 	u8 rsv1[2];
- 	u8 s2d_index;
- 
--	u8 tlv[0];
-+	u8 tlv[];
- };
- 
- struct mt76_connac2_patch_hdr {
--- 
-2.34.1
-
+It is probably too late today (now I have a Debian based VM that can do
+the selftests), but with this bug fix I have 1) not submitted bug fixes
+before and 2) it probably needs an appropriate explanation, where I
+don't know the problem well enough for general switchcores to submit
+with a suitable text.
 
