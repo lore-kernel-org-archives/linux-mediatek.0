@@ -4,68 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E9FBC7618D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Apr 2023 08:26:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8576FC7618D
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Apr 2023 08:44:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=g28qTdarn5T1CQwl0LUd8q9n28ZuC0xYE9nwtd0SmPM=; b=vSPzZ3BKbaHxjGdEbi+bFQ5xOl
-	L/6lxRDbpaWMXkVWjKMGdeLwmsdv3/kNSvYdcUVxzMUDl6MPgixaax1r/oT5RjCVBoxcUYpB0ViMO
-	/vECPs5yt/YGEqUMty6LOfm122fQnYAxeofZNVZw6stChyGHuqNmSR2icvZDI4LPyFsIvOm0bmsT0
-	PcyTO3asq3rb7BSZwwe+P6BsEgs1H879s7dpOLtCCyl2QnJ0YzPXRkDI3qf9AMI64Rq1KdlCPtaR1
-	poK0hPVT6jHuYEzobwrHI0oeARCQSPAtsBbrdxAqUL8COyGBLzGAV5XZVjkh6Kg3kgbxZh6dSNOMO
-	0P4n0mSw==;
+	bh=V9qHCmLykS8ziwfzdBHiOw5DQ1ViD+uRbDJHxmIchmw=; b=SrzXZYdttgeJjOEHk2A/bnGKJQ
+	R/repByvR+6ZrPpMzVtoBepLdpQfN9PEc+O2cvgYpfm1EVte1xQPbzwaJCL+B3ntp0V1AsUP5Nvwv
+	SCG2Zm3ywk018/mBmb0wks8kCSGvMezlsnJ0GyHO02gp3oZ/e33ocRPOXGRDEVycNustRVem+JLhY
+	ZOyU7q3appVwxorNLn6/MkLGlbU3yCsSpM15RyE9vH2uoo71LLWGNS2VjgceiOtvHXcj0vvLtVp6o
+	2tWEP9D6YAOwCf7V8m1dk+g3E2fFK2SW+KdYKhmuoeR4JMbnWsMWsbwg2Kf0u3QmNI60hSRjNiAfM
+	02eysyCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkKxC-006kWu-1e;
-	Thu, 06 Apr 2023 08:26:46 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pkLE7-006nGE-14;
+	Thu, 06 Apr 2023 08:44:15 +0000
+Received: from mail-vs1-xe2e.google.com ([2607:f8b0:4864:20::e2e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkKx8-006kW2-20;
-	Thu, 06 Apr 2023 08:26:44 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D2DB566031BB;
-	Thu,  6 Apr 2023 09:26:40 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1680769601;
-	bh=oav4Q570+IEqHszuEMrP/J+ZVB35sBCGUh4o0TPxawM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ai2Nd2YO8SxMM8/ddeAPkrdFMoD9kv3YFuruuXcJoU4pioQJAjxuWLunBQm8OHtvg
-	 CEVHsiOPZQqmQszmzYO3GFGgwU6hGEzLfaPVLxPHtr6mLZiwhpqhktR/7i4QViRcLs
-	 +LhTwZFKXMsTDlnDX10dsLft1tKLnaJurc9ZlZp+w/HpdytqmIroTGMN5HIJkIz7ub
-	 PEkvXvSsuDIbVrdl9+qNGWzHKyV+ooIzfu9j6DdtJ2evtHUm/w8IS836F5VLM8Jq7p
-	 kGYXH29+uxtbILPM0IByxVUG3lSZzdOh7uhY6Pwr2/wmuy9/LNfv9E91NNXz6fvhpX
-	 WJiqXMgl638Jg==
-Message-ID: <17342952-ce6b-a473-4bf0-f96a49d13632@collabora.com>
-Date: Thu, 6 Apr 2023 10:26:38 +0200
+	id 1pkLE3-006nEY-1O
+	for linux-mediatek@lists.infradead.org;
+	Thu, 06 Apr 2023 08:44:13 +0000
+Received: by mail-vs1-xe2e.google.com with SMTP id g17so33753936vst.10
+        for <linux-mediatek@lists.infradead.org>; Thu, 06 Apr 2023 01:44:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1680770648;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=V9qHCmLykS8ziwfzdBHiOw5DQ1ViD+uRbDJHxmIchmw=;
+        b=iNg2KuR9jalZ+h4/VyzMgwrkhyxO32DPxG8d84t4LIfQAyff7IOxa6TnbegwlJqXOz
+         6jkF2CsM+uUEzhln9YCIFXgmu2XE//qG5SnsKQRKB8o1F7Gp1lhFz9GAMJcg099XbrYD
+         Rc+g8NsHZG6GITq3N8XQOu1OQGDUQmtQMrH5w=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680770648;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=V9qHCmLykS8ziwfzdBHiOw5DQ1ViD+uRbDJHxmIchmw=;
+        b=vX7+NUErmFYl12qSAidYw7L8k5+I+pIC6Db3zGIk+OdMtLfisp+oWMuQMpLFgGH2hs
+         SJkQiOpoWQxYZ4XgQvbBgnqaML9ohOeRKmDAK5wRKcRPfCnZ2ls53e5NrgQrq4whBkEs
+         a990k1Y+ZY551Z5ufUhl4Nzv5Tx0eT1aWRBWpg5YWH8U9n4V2f89y6XcB1CuwHwCOreL
+         h9YKgG8E3qktvWPsSAHXM/NG/d+6A3BbqRVLtjVs9X6gTA1n4Osf/8cvv88TT2BduvwF
+         L6Ty0fem9XbvOfO/aYA5IH6JLH+7fZS2D9BIl4DHnlaruXb8Uysn0vBXT6qmjN3ZhPWF
+         g2vA==
+X-Gm-Message-State: AAQBX9c4Fxl3rsU38VDZWuXQfP+GQwwkHQKx90OY7cLPCSerBTHG4t2C
+	wD59jbBhP5o4lR5I3W94QjINp7B/i4I2FwecReLMCw==
+X-Google-Smtp-Source: AKy350auiw3Jet0bNm+lP+O0VQZojvLuU9MVfhLLUcEo9lSIXD5q4R+Oxt5HdpQyv/g95Fjz7JjeNxiTLcPhwMDj5yY=
+X-Received: by 2002:a67:d81d:0:b0:429:d443:96a with SMTP id
+ e29-20020a67d81d000000b00429d443096amr6931579vsj.7.1680770648142; Thu, 06 Apr
+ 2023 01:44:08 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.1
-Subject: Re: [PATCH v3 2/9] drm/mediatek: dp: Move AUX and panel poweron/off
- sequence to function
-Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
- daniel@ffwll.ch, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, kernel@collabora.com
 References: <20230404104800.301150-1-angelogioacchino.delregno@collabora.com>
- <20230404104800.301150-3-angelogioacchino.delregno@collabora.com>
- <CAGXv+5FrUPUg_SsRz6LrW_K_C7By2tSCQ9W_MNJr8XCOcn7gLA@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAGXv+5FrUPUg_SsRz6LrW_K_C7By2tSCQ9W_MNJr8XCOcn7gLA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+ <CAGXv+5FEEkMg+SY7ZkSHN2G9jtT6TBiN9MadZmYGMX_uVi5=gQ@mail.gmail.com> <46a65c4b-4407-d19a-0e4b-6ceab97d8e64@collabora.com>
+In-Reply-To: <46a65c4b-4407-d19a-0e4b-6ceab97d8e64@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 6 Apr 2023 16:43:56 +0800
+Message-ID: <CAGXv+5E1aSw_ut-kSCPK4=+dabRkmBS7EG4yHX9Zr+YVj5u9ww@mail.gmail.com>
+Subject: Re: [PATCH v3 0/9] MediaTek DisplayPort: support eDP and aux-bus
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
+	daniel@ffwll.ch, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230406_012642_914710_D69C76F8 
-X-CRM114-Status: GOOD (  23.06  )
+X-CRM114-CacheID: sfid-20230406_014411_468569_C547272D 
+X-CRM114-Status: GOOD (  46.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,90 +88,201 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/04/23 10:20, Chen-Yu Tsai ha scritto:
-> On Tue, Apr 4, 2023 at 6:48 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> Everytime we run bridge detection and/or EDID read we run a poweron
->> and poweroff sequence for both the AUX and the panel; moreover, this
->> is also done when enabling the bridge in the .atomic_enable() callback.
->>
->> Move this power on/off sequence to a new mtk_dp_aux_panel_poweron()
->> function as to commonize it.
->> Note that, before this commit, in mtk_dp_bridge_atomic_enable() only
->> the AUX was getting powered on but the panel was left powered off if
->> the DP cable wasn't plugged in while now we unconditionally send a D0
->> request and this is done for two reasons:
->>   - First, whether this request fails or not, it takes the same time
->>     and anyway the DP hardware won't produce any error (or, if it
->>     does, it's ignorable because it won't block further commands)
->>   - Second, training the link between a sleeping/standby/unpowered
->>     display makes little sense.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   drivers/gpu/drm/mediatek/mtk_dp.c | 76 ++++++++++++-------------------
->>   1 file changed, 30 insertions(+), 46 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
->> index 84f82cc68672..76ea94167531 100644
->> --- a/drivers/gpu/drm/mediatek/mtk_dp.c
->> +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
->> @@ -1253,6 +1253,29 @@ static void mtk_dp_audio_mute(struct mtk_dp *mtk_dp, bool mute)
->>                             val[2], AU_TS_CFG_DP_ENC0_P0_MASK);
->>   }
->>
->> +static void mtk_dp_aux_panel_poweron(struct mtk_dp *mtk_dp, bool pwron)
->> +{
->> +       if (pwron) {
->> +               /* power on aux */
->> +               mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
->> +                                  DP_PWR_STATE_BANDGAP_TPLL_LANE,
->> +                                  DP_PWR_STATE_MASK);
->> +
->> +               /* power on panel */
->> +               drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POWER_D0);
->> +               usleep_range(2000, 5000);
->> +       } else {
->> +               /* power off panel */
->> +               drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POWER_D3);
->> +               usleep_range(2000, 3000);
->> +
->> +               /* power off aux */
->> +               mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
->> +                                  DP_PWR_STATE_BANDGAP_TPLL,
->> +                                  DP_PWR_STATE_MASK);
->> +       }
->> +}
->> +
->>   static void mtk_dp_power_enable(struct mtk_dp *mtk_dp)
->>   {
->>          mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_RESET_AND_PROBE,
->> @@ -1937,16 +1960,9 @@ static enum drm_connector_status mtk_dp_bdg_detect(struct drm_bridge *bridge)
->>          if (!mtk_dp->train_info.cable_plugged_in)
->>                  return ret;
->>
->> -       if (!enabled) {
->> -               /* power on aux */
->> -               mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
->> -                                  DP_PWR_STATE_BANDGAP_TPLL_LANE,
->> -                                  DP_PWR_STATE_MASK);
->> +       if (!enabled)
->> +               mtk_dp_aux_panel_poweron(mtk_dp, true);
->>
->> -               /* power on panel */
->> -               drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POWER_D0);
-> 
-> I suspect the original code was somewhat wrong already? We shouldn't need
-> to pull the panel out of standby just for HPD or reading EDID.
-> 
-> This driver probably needs a lot more cleanup. :/
-> 
+On Thu, Apr 6, 2023 at 4:25=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 06/04/23 09:20, Chen-Yu Tsai ha scritto:
+> > On Tue, Apr 4, 2023 at 6:48=E2=80=AFPM AngeloGioacchino Del Regno
+> > <angelogioacchino.delregno@collabora.com> wrote:
+> >>
+> >> Changes in v3:
+> >>   - Added DPTX AUX block initialization before trying to communicate
+> >>     to stop relying on the bootloader keeping it initialized before
+> >>     booting Linux.
+> >>   - Fixed commit description for patch [09/09] and removed commented
+> >>     out code (that slipped from dev phase.. sorry!).
+> >>
+> >> This series adds "real" support for eDP in the mtk-dp DisplayPort driv=
+er.
+> >>
+> >> Explaining the "real":
+> >> Before this change, the DisplayPort driver did support eDP to some
+> >> extent, but it was treating it entirely like a regular DP interface
+> >> which is partially fine, after all, embedded DisplayPort *is* actually
+> >> DisplayPort, but there might be some differences to account for... and
+> >> this is for both small performance improvements and, more importantly,
+> >> for correct functionality in some systems.
+> >>
+> >> Functionality first:
+> >>
+> >> One of the common differences found in various boards implementing eDP
+> >> and machines using an eDP panel is that many times the HPD line is not
+> >> connected. This *must* be accounted for: at startup, this specific IP
+> >> will raise a HPD interrupt (which should maybe be ignored... as it doe=
+s
+> >> not appear to be a "real" event...) that will make the eDP panel to be
+> >> detected and to actually work but, after a suspend-resume cycle, there
+> >> will be no HPD interrupt (as there's no HPD line in my case!) producin=
+g
+> >> a functionality issue - specifically, the DP Link Training fails becau=
+se
+> >> the panel doesn't get powered up, then it stays black and won't work
+> >> until rebooting the machine (or removing and reinserting the module I
+> >> think, but I haven't tried that).
+> >>
+> >> Now for.. both:
+> >> eDP panels are *e*DP because they are *not* removable (in the sense th=
+at
+> >> you can't unplug the cable without disassembling the machine, in which
+> >> case, the machine shall be powered down..!): this (correct) assumption
+> >> makes us able to solve some issues and to also gain a little performan=
+ce
+> >> during PM operations.
+> >>
+> >> What was done here is:
+> >>   - Caching the EDID if the panel is eDP: we're always going to read t=
+he
+> >>     same data everytime, so we can just cache that (as it's small enou=
+gh)
+> >>     shortening PM resume times for the eDP driver instance;
+> >>   - Always return connector_status_connected if it's eDP: non-removabl=
+e
+> >>     means connector_status_disconnected can't happen during runtime...
+> >>     this also saves us some time and even power, as we won't have to
+> >>     perform yet another power cycle of the HW;
+> >>   - Added aux-bus support!
+> >>     This makes us able to rely on panel autodetection from the EDID,
+> >>     avoiding to add more and more panel timings to panel-edp and, even
+> >>     better, allowing to use one panel node in devicetrees for multiple
+> >>     variants of the same machine since, at that point, it's not import=
+ant
+> >>     to "preventively know" what panel we have (eh, it's autodetected..=
+.!).
+> >>
+> >> This was tested on a MT8195 Cherry Tomato Chromebook (panel-edp on aux=
+-bus)
+> >>
+> >>
+> >> P.S.: For your own testing commodity, here's a reference devicetree:
+> >> &edp_tx {
+> >>          status =3D "okay";
+> >>
+> >>          pinctrl-names =3D "default";
+> >>          pinctrl-0 =3D <&edptx_pins_default>;
+> >>
+> >>          ports {
+> >>                  #address-cells =3D <1>;
+> >>                  #size-cells =3D <0>;
+> >>
+> >>                  port@0 {
+> >>                          reg =3D <0>;
+> >>                          edp_in: endpoint {
+> >>                                  remote-endpoint =3D <&dp_intf0_out>;
+> >>                          };
+> >>                  };
+> >>
+> >>                  port@1 {
+> >>                          reg =3D <1>;
+> >>                          edp_out: endpoint {
+> >>                                  data-lanes =3D <0 1 2 3>;
+> >>                                  remote-endpoint =3D <&panel_in>;
+> >>                          };
+> >>                  };
+> >>          };
+> >>
+> >>          aux-bus {
+> >>                  panel: panel {
+> >>                          compatible =3D "edp-panel";
+> >>                          power-supply =3D <&pp3300_disp_x>;
+> >>                          backlight =3D <&backlight_lcd0>;
+> >>                          port {
+> >>                                  panel_in: endpoint {
+> >>                                          remote-endpoint =3D <&edp_out=
+>;
+> >>                                  };
+> >>                          };
+> >>                  };
+> >>          };
+> >> };
+> >>
+> >> AngeloGioacchino Del Regno (9):
+> >>    drm/mediatek: dp: Cache EDID for eDP panel
+> >>    drm/mediatek: dp: Move AUX and panel poweron/off sequence to functi=
+on
+> >>    drm/mediatek: dp: Always return connected status for eDP in .detect=
+()
+> >>    drm/mediatek: dp: Always set cable_plugged_in at resume for eDP pan=
+el
+> >>    drm/mediatek: dp: Change logging to dev for mtk_dp_aux_transfer()
+> >>    drm/mediatek: dp: Enable event interrupt only when bridge attached
+> >>    drm/mediatek: dp: Use devm variant of drm_bridge_add()
+> >>    drm/mediatek: dp: Move AUX_P0 setting to
+> >>      mtk_dp_initialize_aux_settings()
+> >>    drm/mediatek: dp: Add support for embedded DisplayPort aux-bus
+> >
+> > Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+> >
+> > on MT8195 Tomato: eDP panel works if the display panel regulator is alw=
+ays
+> > on. External DP works.
+> >
+> > Maybe it has something to do with the driver not supporting .wait_hpd_a=
+sserted
+> > and not using a GPIO for HPD?
+>
+> Even before this change I couldn't get the panel to reliably work without=
+ keeping
+> the regulator always on (just to point out that I'm not introducing regre=
+ssions).
+>
+> I am already trying to understand why this happens... and I'm still resea=
+rching...
+> but there's what I've seen for now:
+>   * Set the panel regulator as regulator-boot-on;
 
-I believe the same... but I wanted to play safe, as I don't know if there's any
-panel in particular that requires such quirk...
+This simply means when the regulator driver grabs the GPIO, it will grab it
+with output high. It will make no attempt to keep it on.
 
-Angelo
+>   * Boot: edp-panel will correctly read the EDID, then will run the PM su=
+spend
+>     handler
+>   * mtk-dp's .get_edid() callback gets called but, at that time, edp-pane=
+l will
+>     still be suspended (PM resume handler didn't get called)
+>     * Regulator is still down
+>   * Failure.
+> That's not right and probably the .get_edid() callback in mtk-dp has an a=
+buse:
+> there, mtk_dp_parse_capabilities() gets called, which performs initializa=
+tion
+> of some variables for DP link training (essential to get the DP going!).
 
+I think that's wrong.
 
+> The question that I am making to myself is whether I should move that els=
+ewhere,
+> if so, what's the right place (making me able to remove the DRM_BRIDGE_OP=
+_EDID
+> bridge flag when eDP + aux-bus), or if I should leave that and make sure =
+that the
+> panel-edp's resume callback is called before .get_edid() from mtk-dp gets=
+ called.
+
+I think that's a proper change. Some of the callbacks in the DP driver are
+doing suspicious things, as if the driver came from an era without bridge
+drivers, and was not properly split up to fit the new bridge semantics.
+
+Same probably goes for the HPD detection.
+
+> That can get done in a separated series (or single patch?)... so that if =
+we get
+> this one picked sooner than later, we can start upstreaming the panel nod=
+es in
+> the Cherry devicetrees and only remove the regulator-always-on later.
+
+I guess that works? Except for battery life lol. It's really up to CK.
+And it's probably too late to upstream the panel nodes for the upcoming
+cycle.
+
+ChenYu
 
