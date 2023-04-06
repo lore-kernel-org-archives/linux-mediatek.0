@@ -4,64 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45553C7618D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Apr 2023 03:46:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C0C1C7618D
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Apr 2023 03:48:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=xPKH8n1Fvlx68jV6dhprcJHfRP9yFKZmwPERAd8Rzik=; b=eJIQWNIcdTJK7XZRTbYBdFWl86
-	GSBAN3Jrdq28UsI2cII1CM6+ns7VDFz5ktK80kKZIE7psNrycHlozIT/M0OKksqzVdBkLtQwCGJVt
-	EUzLnubb2+3XdP0FBlzS3L6U7BmEKaVePEaMMM6U9YyEQIVW+3bhpaUo4rsyRt2b+f4Ij62gGnC2k
-	uvI/NX+Th0I9iDc+ftNtcT1Hw3CC5UMwUqzLxpL0S1jjvUeF3KPbbCnUfzIrax/3/NNQp+ciPPI/N
-	hVGf/R+h5ht0/9w/WOUp0SFXChQBpiTIsitotM20AsOqQ9WRJ/eKdyCs2h2wgWk96hbKOsWtwUGx1
-	8UIlAQ+A==;
+	bh=3oCJWKgqaMpu9fUQMXyjfbKRvAQYJT6Xd7Wexxwc328=; b=E0FDhlSSHO+VnVBHYmk+6Qtjl6
+	LQXsnYfhuo1nN+IweprOKjSFviRYivSBZYfVLVMV+xFCJxtuW3Qc1wvRNKfAA+ugzNDc0737Xr3rr
+	hg/raqdzw3nWvLrqb0McWev/aqVoVt0+HSq265cAAWnJpUfYV7xD4dmyu1JYH5fCXWUvgMHpFf1vL
+	xJyApdiapRvFtu7uH3SVWUsH+nWlacDfo/xOQdTd48wc72eEkzl9I0Qe7YI6zFAmkIvqLi1Z0PNY3
+	MHqF6IDWsVjkz/bWPhRlmDCH9Um1sTR1F0KOKsihGyqnhTwu2mO93PRUzBf2pSVJ62T/m4Ijla31C
+	UOCv9MQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkGZP-006FIo-2j;
-	Thu, 06 Apr 2023 03:45:55 +0000
+	id 1pkGbs-006FYD-1f;
+	Thu, 06 Apr 2023 03:48:28 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkGZK-006FIM-0f
+	id 1pkGbm-006FXe-0U
 	for linux-mediatek@lists.infradead.org;
-	Thu, 06 Apr 2023 03:45:54 +0000
-X-UUID: 829e93f0d42d11edb7d8d11f642b8e78-20230405
+	Thu, 06 Apr 2023 03:48:26 +0000
+X-UUID: dec0f754d42d11edb7d8d11f642b8e78-20230405
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=xPKH8n1Fvlx68jV6dhprcJHfRP9yFKZmwPERAd8Rzik=;
-	b=SkKoeJIFKI4vGMGYZfZ/JVoSGpTS+cNhFnvZXbShaQYG53t+tgXD5qaN1ZcWJnPQ1/KcFdudTmZpr8EphHuvSW+ZCHpQcIS4MrSD3M2Ln/HMy+97H5XWo27oIf3eXDaGlkNaxmQF/1cScj91HMlYdG46ev0VJRxPMhLxmAuix/E=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=3oCJWKgqaMpu9fUQMXyjfbKRvAQYJT6Xd7Wexxwc328=;
+	b=OHQKC0opgjwTaZsYrPityRZemPKDKpkfoaOqupgwPR4Tqs/imAMEdffQY8BiXrHLcFBl5lFBD3gKJVKIATGltXsNgWzKWT1DfXJ5ayuzNKdYW1DhNsEb/YnMNeRVV6WZEJIV+pSEGEn0lyLDEgs/Wtsmrpe7Drjrxm6VSWzbmFQ=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:16136b5c-7eb7-48dc-a4aa-2ce4519f6bb8,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:120426c,CLOUDID:fcca59b5-beed-4dfc-bd9c-e1b22fa6ccc4,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:1,OSI:0,OSA:0,AV:0
+X-CID-O-INFO: VERSION:1.1.22,REQID:8d8c9e51-998a-4d7f-b1ea-8480686fe182,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:70
+X-CID-INFO: VERSION:1.1.22,REQID:8d8c9e51-998a-4d7f-b1ea-8480686fe182,IP:0,URL
+	:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
+	ON:quarantine,TS:70
+X-CID-META: VersionHash:120426c,CLOUDID:1eae782a-564d-42d9-9875-7c868ee415ec,B
+	ulkID:230406114820A91ZJGZI,BulkQuantity:0,Recheck:0,SF:29|28|17|19|48,TC:n
+	il,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:1,OS
+	I:0,OSA:0,AV:0
 X-CID-BVR: 2,OSH
 X-CID-BAS: 2,OSH,0,_
-X-UUID: 829e93f0d42d11edb7d8d11f642b8e78-20230405
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: dec0f754d42d11edb7d8d11f642b8e78-20230405
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
 	(envelope-from <shayne.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1232986684; Wed, 05 Apr 2023 20:45:44 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+	with ESMTP id 597289030; Wed, 05 Apr 2023 20:48:19 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Thu, 6 Apr 2023 11:35:41 +0800
+ 15.2.1118.25; Thu, 6 Apr 2023 11:47:41 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Thu, 6 Apr 2023 11:35:41 +0800
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Thu, 6 Apr 2023 11:47:41 +0800
 From: Shayne Chen <shayne.chen@mediatek.com>
 To: Josh Boyer <jwboyer@kernel.org>
 CC: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
 	linux-firmware <linux-firmware@kernel.org>, Ryder Lee
 	<ryder.lee@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
 	linux-mediatek <linux-mediatek@lists.infradead.org>, Shayne Chen
-	<csyuanc@gmail.com>, Shayne Chen <shayne.chen@mediatek.com>
-Subject: [PATCH] linux-firmware: update firmware for MT7916
-Date: Thu, 6 Apr 2023 11:35:25 +0800
-Message-ID: <20230406033525.23271-1-shayne.chen@mediatek.com>
+	<shayne.chen@mediatek.com>
+Subject: [PATCH v2] linux-firmware: update firmware for MT7916
+Date: Thu, 6 Apr 2023 11:46:18 +0800
+Message-ID: <20230406034618.23346-1-shayne.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 Content-Type: text/plain
@@ -80,11 +84,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Shayne Chen <csyuanc@gmail.com>
-
 This patch updates firmware files v211120230202 for MT7916 WiFi NIC.
 
 Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+---
+v2: fix wrong email, sorry for the inconvenience
 ---
  WHENCE                        |   6 +++---
  mediatek/mt7916_rom_patch.bin | Bin 8672 -> 8672 bytes
