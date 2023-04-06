@@ -4,87 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97E94C7618D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Apr 2023 14:24:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADA03C7EE2E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Apr 2023 14:31:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=D46T9b+JJuDM9M92e3n0i/9IffXB1t0ukgzPjf3oFz0=; b=veFKoDrS/Oc6oMtSuKe8EzVevN
-	6GwnSIehcE374Jnx7cV0a0CiBq47ZkBOwYrGeZvxO/GRRuRICiQv9DLLa+97AlC0vV8O0TERJtgnM
-	XsnnTpV3kfPrvI9r0MTzURMZyuF8ct4/jM8cJ4iytgv8QNME0krkm/ZxDV7eyUYM1/TjML9Cm5qFd
-	VYkMYnlH0mNbP1puoeLLtuuLRo/ZXmZVi29WI9J8bqf5t+zQsxFw9PboCEjMMBEnFegpu2G1g+Km6
-	1f+7hERB7aSQx+bVNS3nSD2L6om8s86LZeUP7Fm2MR8OfvIbMbjtjr12eRBXZ5mDb3Amlb8XFMPXu
-	kK70RsMQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wQhUC48C6wHrpynrBLKu6E6JYZ/G69c0U7Fw89TbAAs=; b=du7ugID/vgBvavFEhv8f4aakf+
+	CTUqoDSTPEjHPrC9gfwCVmP7UGc7KG3Hd8o9NJS1hrs4EMZSAG/Pg4yaKX2/vXx4oaQt9fcnUpiXO
+	erq8iIeSST9o/CZzypjGaa3jMo1hu4k9zHQWSdnjwboFN2wTVRPCs1VPfZM4m7BcpOzO5C0ILTDy/
+	YcBMgRSWvoCym2GMqk8Z/uVTFd3VFZ4fbZrfECHUbHKtYU/ZdDtpFg58ymtRCMoMfQmNyi24wsVuh
+	o3OyxgnqQNpdMCbALBqgx9c2CyvIz3NpYp8z5HaVZ3eS9cY1T3COqAbqszJxbup9z4UbVgIlvLNLU
+	a0A4zzfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkQXQ-007ZRW-2T;
-	Thu, 06 Apr 2023 14:24:32 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1pkQdv-007bFn-0e;
+	Thu, 06 Apr 2023 14:31:15 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkQXN-007ZQc-2A;
-	Thu, 06 Apr 2023 14:24:30 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id by26so1824340ejb.2;
-        Thu, 06 Apr 2023 07:24:28 -0700 (PDT)
+	id 1pkQdB-007aOA-02;
+	Thu, 06 Apr 2023 14:30:34 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id jw24so1868712ejc.3;
+        Thu, 06 Apr 2023 07:30:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1680791067;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+        d=gmail.com; s=20210112; t=1680791425;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=D46T9b+JJuDM9M92e3n0i/9IffXB1t0ukgzPjf3oFz0=;
-        b=A/r7tQ0PnsQ64+9g5Gfs6KSA3+qzI8bsgiGZZgE16Gp3vDtw48exdxiJ8Iz0C07izX
-         nuFakgJIseCy73hgs1F6h2/NT3hOmk4B2+vQ1/kj6uh1MsCoh4Xm3gIf1WqKJfgBlCTr
-         5v+5SOI/bR2os9onRTUEA8D7WUIBmBwcGEcpQMk44PKMF5+/8y6eM0RBMrkHqTd9zDqA
-         o0gnXO64FgVrQda+i0mrswuPYmK0GeXHY40hI2D5pTE/WZ5nva5EeOxHftNIBGZlR5qU
-         Pxr9m3VOqRlVUj4Zm7ck3HRqlTYQzthHHytI0qFfjC2WwEurSX//CLE+NKTxlW4yOw5n
-         0JJw==
+        bh=wQhUC48C6wHrpynrBLKu6E6JYZ/G69c0U7Fw89TbAAs=;
+        b=kDOOqQM8r/fMLfoKQs/IN3KdhOeZVXq6IKjq+NmpuI3Nbp3GY5P4GDrn2CrByhvDeu
+         EWAjDR4Z8ZleR3HKC1cmY2spstSNnB/Khvo1ymjzcvloNFHtxRAbIjnwJTVxZYQPGMN1
+         OtcrQuOyXUeGpZ3VEGUOs4ttExdXTkEaMaQR6qgqa8eN3F10VX2if5cPh+2yU0EqQ4Af
+         TVBJt0uMI5PD9lPxYuMVhgZMfKOqSSWtYiapQBtwL34qNXbBo8ks54SaYh2d7imYToF0
+         Kn94WYCLs+fdzYrRLGmsM4Q7FT4WnOWjL6Vy/TG3IHNllqFW2+AruAztWe/W0j8qVKCn
+         IEWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680791067;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20210112; t=1680791425;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=D46T9b+JJuDM9M92e3n0i/9IffXB1t0ukgzPjf3oFz0=;
-        b=DRuEXfAYkyQS1EcFVgN5M4HH4sRZ/70ulwD8ViCtAsmTAP/zeEOlEP2LP6p19bB2w4
-         z+57W/FrAjm1i3lNaFehpbpnl6Md48AnhScyF4G0zc2nLw6w27FB067LomRdUf+BmHnp
-         or1KZ8BY/JfYF2eghREIINnS7V9cdz0W7XYbGwGTz59eqxZ5c/XUmtzpE40WuLiSgCJ0
-         jsDWx6/iArIT7aT8A3t9iDJfkAmrpMbD8EPlUKw8RylWpTE34+gSUbrT8ef0iN5EkJX5
-         raXseoAsl5iR9g+34MAOYuzdg+/CTNnmSvkYJxtKyeLU3US0+pt8100DXpZHGRpiWH4q
-         9Y7A==
-X-Gm-Message-State: AAQBX9c/nUTRfIdf2pvKnQ8kHFhbCRDNVcm0WRbmux6H04f+e/ID/u0u
-	XAxNrwAZCvhgId9hQpnimrE=
-X-Google-Smtp-Source: AKy350bCrQlikbBNVUPFFO3VqIfZ5VOfMh1r211B7R/tc1dagRENa+zD/kM2XqL0g+dZplFOqWL2iA==
-X-Received: by 2002:a17:906:9383:b0:948:d1af:3afb with SMTP id l3-20020a170906938300b00948d1af3afbmr5046735ejx.13.1680791066760;
-        Thu, 06 Apr 2023 07:24:26 -0700 (PDT)
-Received: from localhost (p200300e41f1c0800f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f1c:800:f22f:74ff:fe1f:3a53])
-        by smtp.gmail.com with ESMTPSA id g8-20020a170906348800b009473bbe5f7dsm851290ejb.208.2023.04.06.07.24.26
+        bh=wQhUC48C6wHrpynrBLKu6E6JYZ/G69c0U7Fw89TbAAs=;
+        b=bA03W4dJdcAGQxn4UpPdEjZ2nrQOzrxYpHhl9180y8wbOd5Af+th/lBN70wLQ44Xc9
+         52PiDAJaU+2tgS3iBjFLRCGFsTtXP3qmIBViByEvnJimXNCZOqidn9w9dKCf9NaXiU+d
+         VoBINeT35O5W6HBGTLKDer7dFwaEAykQHmn9W8RNGyaeWcRQXfban7xeo+dgqp00J7v+
+         1Dj74xaQPWE6R/BYxXtOYr3/Wek6pl7TeIdKdI+j2naV6JSnspXOXwEGUoGwbtWWex4V
+         0e8xPd1CPHmJrobExUBF8Lfp8Y78Jc+uKGfDdgQsAHBz0iY77iAmfHFj47LjZVUD8MSK
+         k2Hg==
+X-Gm-Message-State: AAQBX9fJ3MqviInQsNAJGr79HVkVY0H1+KxU46N+mfygAo8Iq4AmTWLX
+	Eik9GFXHfLKisuilWX5xZpc=
+X-Google-Smtp-Source: AKy350aiBqXW2UWscI0vgWKtSbPJl7vSCZnaC+Q+fMor6zOBrfrqrLsRVMdvXTw3ToBjy+9r3IsNzg==
+X-Received: by 2002:a17:906:6d6:b0:8f6:5a70:cccc with SMTP id v22-20020a17090606d600b008f65a70ccccmr6946401ejb.66.1680791425036;
+        Thu, 06 Apr 2023 07:30:25 -0700 (PDT)
+Received: from orome (p200300e41f1c0800f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f1c:800:f22f:74ff:fe1f:3a53])
+        by smtp.gmail.com with ESMTPSA id dd20-20020a1709069b9400b009475bf82935sm884746ejc.31.2023.04.06.07.30.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 06 Apr 2023 07:24:26 -0700 (PDT)
+        Thu, 06 Apr 2023 07:30:24 -0700 (PDT)
+Date: Thu, 6 Apr 2023 16:30:23 +0200
 From: Thierry Reding <thierry.reding@gmail.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-arm-kernel@lists.infradead.org,
-	matthias.bgg@gmail.com,
-	linux-mediatek@lists.infradead.org,
-	u.kleine-koenig@pengutronix.de,
-	wenst@chromium.org,
-	kernel@collabora.com,
-	linux-kernel@vger.kernel.org,
-	jitao.shi@mediatek.com,
-	weiqing.kong@mediatek.com,
-	linux-pwm@vger.kernel.org
-Subject: Re: [PATCH RESEND 0/2] pwm: mtk-disp: Fix backlight configuration at boot
-Date: Thu,  6 Apr 2023 16:24:25 +0200
-Message-Id: <168079104605.1968941.232523344220592816.b4-ty@gmail.com>
-X-Mailer: git-send-email 2.40.0
-In-Reply-To: <20230403133054.319070-1-angelogioacchino.delregno@collabora.com>
-References: <20230403133054.319070-1-angelogioacchino.delregno@collabora.com>
+To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Lorenz Brun <lorenz@brun.one>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2] pwm: mediatek: support inverted polarity
+Message-ID: <ZC7Xf8Wy1x9gnaAY@orome>
+References: <20230309010410.2106525-1-lorenz@brun.one>
+ <ZC7LaC19YjNwTIi1@orome>
+ <20230406135358.x3et6gvvxqsknfn6@pengutronix.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="vTrnEci5s8VqfSaD"
+Content-Disposition: inline
+In-Reply-To: <20230406135358.x3et6gvvxqsknfn6@pengutronix.de>
+User-Agent: Mutt/2.2.10 (2023-03-25)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230406_072429_707942_6C6B24AA 
-X-CRM114-Status: GOOD (  10.05  )
+X-CRM114-CacheID: sfid-20230406_073029_103201_3A8C72AE 
+X-CRM114-Status: GOOD (  26.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,24 +98,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 3 Apr 2023 15:30:52 +0200, AngeloGioacchino Del Regno wrote:
-> Since the pwm-mtk-disp driver was fixed to get PWM_EN state from the
-> right register, an old two-wrongs-make-one-right issue emerged: as a
-> result, MT8192 Asurada Spherion got no backlight at boot unless a
-> suspend/resume cycle was performed.
-> Also, the backlight would sometimes not get updated with the requested
-> value, requiring the user to change it back and forth until it worked.
-> 
-> [...]
 
-Applied, thanks!
+--vTrnEci5s8VqfSaD
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-[1/2] pwm: mtk-disp: Disable shadow registers before setting backlight values
-      commit: 36dd7f530ae7d9ce9e853ffb8aa337de65c6600b
-[2/2] pwm: mtk-disp: Configure double buffering before reading in .get_state()
-      commit: b16c310115f2084b8826a35b77ef42bab6786d9f
+On Thu, Apr 06, 2023 at 03:53:58PM +0200, Uwe Kleine-K=C3=B6nig wrote:
+> Hello Thierry,
+>=20
+> On Thu, Apr 06, 2023 at 03:38:48PM +0200, Thierry Reding wrote:
+> > On Thu, Mar 09, 2023 at 02:04:10AM +0100, Lorenz Brun wrote:
+> > > +	 * appear to have the capability to invert the output.
+> > > +	 * This means that inverted mode can not be fully supported as the
+> > > +	 * waveform will always start with the low period and end with the =
+high
+> > > +	 * period. Thus reject non-normal polarity if the shape of the wave=
+form
+> > > +	 * matters, i.e. usage_power is not set.
+> > > +	 */
+> > > +	if (state->polarity !=3D PWM_POLARITY_NORMAL && !state->usage_power)
+> > >  		return -EINVAL;
+> > > =20
+> > >  	if (!state->enabled) {
+> > > @@ -213,7 +221,11 @@ static int pwm_mediatek_apply(struct pwm_chip *c=
+hip, struct pwm_device *pwm,
+> > >  		return 0;
+> > >  	}
+> > > =20
+> > > -	err =3D pwm_mediatek_config(pwm->chip, pwm, state->duty_cycle, stat=
+e->period);
+> > > +	duty_cycle =3D state->duty_cycle;
+> > > +	if (state->polarity =3D=3D PWM_POLARITY_INVERSED)
+> > > +		duty_cycle =3D state->period - state->duty_cycle;
+> >=20
+> > That's not really what state->usage_power was meant to address.
+>=20
+> I don't understand your concern here. I don't like .usage_power, but
+> AFAICT this is a legitimite use. With .usage_power =3D true, the lowlevel
+> driver is free to shift the phase_offset and even modify the period size
+> and the goal is just that the average power-output matches.
+>=20
+> Lorenz's patch does exactly this: It even keeps the period and only
+> shifts the phase (by period - duty_cycle). If you consider this not
+> legitmate, I think we have to improve the docs about .usage_power.
 
-Best regards,
--- 
-Thierry Reding <thierry.reding@gmail.com>
+I realize that I'm being nitpicky here. Setting usage_power =3D true and
+duty =3D period - duty is a lazy way of achieving what you can easily do
+by adjusting the input duty cycle.
+
+If you all really want this, then it should go into the core, because
+it's something that can be implemented on basically every single PWM
+controller.
+
+Thierry
+
+--vTrnEci5s8VqfSaD
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmQu134ACgkQ3SOs138+
+s6HdEg//QB1RbC+b2D1fyJp2a/878DZw0Noui4uzQ9hqOvjkcUvly2m9Nt/YPMG3
+LK8yJ8Zmxkytm6YqFHgYwaYZk7vnRL6Cvoo5gVdxlAvsgG+Go/UAEgvMpq5dgnP+
+FO8mZa4P7LKgJe/5sGuZanDrwVt7Xh6Y12RsmiBYcaMkC4fkpyKutR0VRy31KIE4
+qNJP0DozI7wHDyJcdV+AW+2saARDEt+5IRFn/fKjpxx5hp2pIg04OUcelAJEgF6E
+pg16Vs9BAqUYfN+LnqdGqph3+tJR6pvcXLG+uU6o/FgQLTqf3ic1oQca7stRfAH9
+BbqhkkoTzlpOiLvp0S4bzxqOiaFioRnROBppZvNIl85j3NIOSm7NTAzUE3rh/Z9I
+qkn06FT3+Y1R3/NsOKZoQfH0ygm97RdjtQhwWscm0VHIneh165fW8e++dcrBLYCY
+NyYA01We7VONe4m05ycsWzXq3xckZj7T4225MOK/NA2AK2KTNhMUhSqA3T41IEto
+iWBzS9J8azku8jAYj0My5RO7obpymkVX0+ymixsmFVvBW4V7Hd7fPR43eI805Rg9
+OMuh92K+e1XBvgq8nUUuA8pJxmBBkG+Qpz9t1zta55X1hu9LBtSdocZcJtaBr746
+ELWDyZxNNGBTfbmchrp5SIP1zphRDVY3o3wzoKVY4XQewLaDL5g=
+=rBYM
+-----END PGP SIGNATURE-----
+
+--vTrnEci5s8VqfSaD--
 
