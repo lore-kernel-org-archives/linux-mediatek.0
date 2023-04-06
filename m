@@ -4,84 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D46BC7618D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Apr 2023 13:41:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14DEAC76196
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Apr 2023 13:54:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xqET99kWQwPTEkmEaCDERWkshoo1jtg8YaUv2xNlnJQ=; b=eWdcR1bZ2W4GVhwxNTod/vMV4L
-	dzOmULub3uSqwQxhcyycTn84Cs8GwkjfaTtADlrbNmhEeiZYF763N03FeEthauWA5vKQqBi9OLCAD
-	hmpAiTzhhfillEud69xM/VBCp5zpXdkcW8KbzzYsAWH04UPXlpjx1S5c5S+bChXOxZlGB7MHkeXyv
-	7cxcxddVuolbmvMf0/trtFhygzOzAt48wwQvNal+XFHAmmA+HKvREVHdHAgeAGT+kvMI/HKPGYuuZ
-	MB67YSQhqnWqExcdCDgO2D54169UzCKyZaDl8o/AMhQRM2SRXKrgxGIjBJM5bzcaDRCVH57QUfU6H
-	DJiKHXxg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Yui6bBXqg6WY64XpHZkmuRliRtqpSJdBlqKqKQxrtAI=; b=ySv6jo0hQWcpIzsXzPh6M+iB6P
+	R58Ql0WwaS2lgoct6mG6w0LMAKk56Raa7wk7/HloGNPjjNIFAaIHMPkyIcae98KrWD0fPPIUBhKZk
+	N3+v/s3bVSUKtu0zPipiXs3zKn7t0JJaxkmMD2KwkNdKNoDgb9tNUo+FZ+r1poBhkiKO15RZmVjxO
+	bgQlkFJkn0ws5L3qO0LEC2WYLaQiebfWBEwMwV895EWElDcPD+q46+X6O6odyT4o4vj4y+qZ4f0Oq
+	BndTkeutUyg6ajhZjJsnzXI9ztCyS9pCdc0tFscpRsnBHPw6fRqxZ+FdSOlrh0RdtThez9/+miUhg
+	zro60GOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkPrX-007QuE-2Q;
-	Thu, 06 Apr 2023 13:41:15 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1pkQ4G-007T0d-13;
+	Thu, 06 Apr 2023 13:54:24 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkPrU-007QtC-1Z
+	id 1pkQ4B-007SyI-0S
 	for linux-mediatek@lists.infradead.org;
-	Thu, 06 Apr 2023 13:41:13 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id e18so39555352wra.9
-        for <linux-mediatek@lists.infradead.org>; Thu, 06 Apr 2023 06:41:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1680788469; x=1683380469;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=xqET99kWQwPTEkmEaCDERWkshoo1jtg8YaUv2xNlnJQ=;
-        b=WP5gv/X8cSXZVUV9KYAdcq3K++8SEsc+tb1qtM2T02yTfhVhdiySCUbPfNiZNqIoMj
-         odbIjmo7meW+8WKIJSp4UbF2tWnn6oC6/PTI5654szFFcMjbg+gV09Rd79PIZ5f+/S21
-         iyMHYSqM0c3W+yfDYo8qyWH35jW+twcyXkkM0GTNfyVKnm4Eydi5qoVZ80YisX1nkcOF
-         63LHSjVs+T+1tmo6tgtIrsVnSjO36UGQT5udGl02q9W4t3bI98N1dSmJgqxX5AtJFpu0
-         EFdHqfrkr7c7scweP+PXFZev4W5p6phZZIpoES6Wnmw7hSp9/c8oLfRmJn9H79FLxx0y
-         9L2g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680788469; x=1683380469;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=xqET99kWQwPTEkmEaCDERWkshoo1jtg8YaUv2xNlnJQ=;
-        b=r1JTN9gOi1TGVPT+P5tdtB49QB9ZLjHR4mZj1XvQG2KGwCVYJRisz2DqHkKmLHj/mb
-         h8Zv7dJDmjHubwa/zRm8D+IyU8BGpAwXwmugWKyM7NGFdFJTtjIkzBJo/8kpT/E5jenZ
-         62pwBB3URQdEB7NjrsYelpIQkQ/qOFsCMtuTkJtiSSD41PyHqmwvB4sY76AemCmMa5Hw
-         Fz9qZulQUpjNoPZhX8nxA7+0wH0EsoQcupV/QkIIYwbGHGgueGwcAIMniIvFDMONZVih
-         yWpe4YLag/5B0dqz5HIfTLj8svYMtg+3Zx1SmeIYjEjqQLGeWzJYcRuasadgiET2CVrs
-         MbEw==
-X-Gm-Message-State: AAQBX9dqfyzYRQvbdxeMRnMTospx8ECKEBJOzIJ+9mM6Ksagw53F8dN4
-	iPa3NTLn5+nihsA9f15HFMpMPw==
-X-Google-Smtp-Source: AKy350ZhLf4OyCO8fIg/dFWqIh8YWnY4krXkUYeBlyc6m45ugflq4UfuLeUBNN56Dqn+JbojgRBt9w==
-X-Received: by 2002:adf:dd8d:0:b0:2d7:d4b:b33 with SMTP id x13-20020adfdd8d000000b002d70d4b0b33mr7248014wrl.21.1680788468769;
-        Thu, 06 Apr 2023 06:41:08 -0700 (PDT)
-Received: from ?IPV6:2a05:6e02:1041:c10:6630:ee96:3710:24c8? ([2a05:6e02:1041:c10:6630:ee96:3710:24c8])
-        by smtp.googlemail.com with ESMTPSA id c14-20020a5d4f0e000000b002c56af32e8csm1814424wru.35.2023.04.06.06.41.06
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 06 Apr 2023 06:41:06 -0700 (PDT)
-Message-ID: <c17f1dbb-ad81-b64e-48c9-d89d3e170b38@linaro.org>
-Date: Thu, 6 Apr 2023 15:41:05 +0200
+	Thu, 06 Apr 2023 13:54:21 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1pkQ3s-0002xV-Ik; Thu, 06 Apr 2023 15:54:00 +0200
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1pkQ3r-009Oe4-CN; Thu, 06 Apr 2023 15:53:59 +0200
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1pkQ3q-00B44I-5w; Thu, 06 Apr 2023 15:53:58 +0200
+Date: Thu, 6 Apr 2023 15:53:58 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Thierry Reding <thierry.reding@gmail.com>
+Cc: Lorenz Brun <lorenz@brun.one>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2] pwm: mediatek: support inverted polarity
+Message-ID: <20230406135358.x3et6gvvxqsknfn6@pengutronix.de>
+References: <20230309010410.2106525-1-lorenz@brun.one>
+ <ZC7LaC19YjNwTIi1@orome>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH] clocksource/drivers/timer-mediatek: Split out CPUXGPT
- timers
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: tglx@linutronix.de, matthias.bgg@gmail.com, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com, Walter.Chang@mediatek.com
-References: <20230309103913.116775-1-angelogioacchino.delregno@collabora.com>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <20230309103913.116775-1-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="rhxflvtrefdf7zep"
+Content-Disposition: inline
+In-Reply-To: <ZC7LaC19YjNwTIi1@orome>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230406_064112_537753_29DA5552 
-X-CRM114-Status: GOOD (  11.12  )
+X-CRM114-CacheID: sfid-20230406_065419_203311_DC5099E8 
+X-CRM114-Status: GOOD (  24.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,31 +78,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 09/03/2023 11:39, AngeloGioacchino Del Regno wrote:
-> On MediaTek platforms, CPUXGPT is the source for the AArch64 System
-> Timer, read through CNTVCT_EL0.
-> 
-> The handling for starting this timer ASAP was introduced in commit
-> 327e93cf9a59 ("clocksource/drivers/timer-mediatek: Implement CPUXGPT timers")
-> which description also contains an important full explanation of the
-> reasons why this driver is necessary and cannot be a module.
-> 
-> In preparation for an eventual conversion of timer-mediatek to a
-> platform_driver that would be possibly built as a module, split out
-> the CPUXGPT timers driver to a new timer-mediatek-cpux.c driver.
-> 
-> This commit brings no functional changes.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
 
-Applied, thanks
+--rhxflvtrefdf7zep
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
--- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+Hello Thierry,
 
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+On Thu, Apr 06, 2023 at 03:38:48PM +0200, Thierry Reding wrote:
+> On Thu, Mar 09, 2023 at 02:04:10AM +0100, Lorenz Brun wrote:
+> > +	 * appear to have the capability to invert the output.
+> > +	 * This means that inverted mode can not be fully supported as the
+> > +	 * waveform will always start with the low period and end with the hi=
+gh
+> > +	 * period. Thus reject non-normal polarity if the shape of the wavefo=
+rm
+> > +	 * matters, i.e. usage_power is not set.
+> > +	 */
+> > +	if (state->polarity !=3D PWM_POLARITY_NORMAL && !state->usage_power)
+> >  		return -EINVAL;
+> > =20
+> >  	if (!state->enabled) {
+> > @@ -213,7 +221,11 @@ static int pwm_mediatek_apply(struct pwm_chip *chi=
+p, struct pwm_device *pwm,
+> >  		return 0;
+> >  	}
+> > =20
+> > -	err =3D pwm_mediatek_config(pwm->chip, pwm, state->duty_cycle, state-=
+>period);
+> > +	duty_cycle =3D state->duty_cycle;
+> > +	if (state->polarity =3D=3D PWM_POLARITY_INVERSED)
+> > +		duty_cycle =3D state->period - state->duty_cycle;
+>=20
+> That's not really what state->usage_power was meant to address.
 
+I don't understand your concern here. I don't like .usage_power, but
+AFAICT this is a legitimite use. With .usage_power =3D true, the lowlevel
+driver is free to shift the phase_offset and even modify the period size
+and the goal is just that the average power-output matches.
+
+Lorenz's patch does exactly this: It even keeps the period and only
+shifts the phase (by period - duty_cycle). If you consider this not
+legitmate, I think we have to improve the docs about .usage_power.
+
+> What's wrong with just reversing the duty cycle in the pwm-fan? If you
+> use DT it's quite trivial to do that by just reversing the entries in
+> your cooling-levels property. Does that not work for you?
+
+That's an option, too. With a different PWM (i.e. one that can do proper
+inverted polarity) Lorenz's solution would be ok, though, right? And the
+pwm-fan only cares about the relative duty_cycle and not the phase
+shift, so setting .usage_power =3D true is fine, too?!
+
+Best regards
+Uwe
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--rhxflvtrefdf7zep
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmQuzvUACgkQj4D7WH0S
+/k4/Egf+Ox1VxLypTm6cyDNz+uIgbTFzaY+WA5DZQt5FTjYJnYoqqalVgZiTzIUm
+7IhDK/qgyDfmbUf/X4HFNtTIq6cbIpcbWwhFQjpGtx6yaVhs9By8CISv0mCYBjV6
+QHEDQQXNVgjppdqv7jJo0Ivxf4WO7cnoKREQ7atIoxoHBT//qIsWL0GLAG1rs45B
+FUDUod7VU2lWVdOAD/GVeeBcGVyjONuWbEshw0V9rxKoxT39ULRn/GiWv7WUmOa0
+7ZrR0zSgdedKZHgS4mj2i/IdvYV7OWYpEr1BbvmnUZT5BR4KS/kGJ8WhO2ko+g35
+hsWHH/KPjVFc4pv/9yC/CAh2LNkR8w==
+=rRPg
+-----END PGP SIGNATURE-----
+
+--rhxflvtrefdf7zep--
 
