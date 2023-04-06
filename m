@@ -4,52 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 826CAC76196
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Apr 2023 21:41:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 673BAC77B6C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Apr 2023 21:42:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MNo3VUeVBCvTr93etMC8xb2Qm5HnTquhpskeDbfLiFg=; b=xEeDH/89mDoOiOonEntJW1oS1O
-	aXeRZg4eSuCvKgj2yF2ASNwhXPyo/i15fxSjqKWWaxOJUheKDTPOnxj2mzZyFHgWCZcQxJOwjeCLO
-	BxrDN9M0/Zvu3wZkiGx6lHuAYgskOM71SPNjB97UeNqPPOCJi29FhdxffNIvIyqE0Jm99GFAXq+xA
-	UgIP/J+T69txvPVzBN6GVdyq1AWSyQRmqI80/GRW3qcZfSccq7T4gWZEG43lXv3kyaMon3LRrKCUk
-	xJshY4TQvOWwL6wsFDgGkBV0K41wbiLpbO6hgDB6U+cCumMYTFnJjwb6Q3C/WGVosD4mquDJYRQM+
-	deGvEanw==;
+	bh=q7QhaMnGErrxER73ipt/TuA4sV5dJsR9zfTYex5jmyQ=; b=hcxd8nnA9jjg3nrhop2qjIR84q
+	6boSDHfdDa3o90ILWAovLDmD6gwdVXfxV0eEf0iP6JDJ4pfKMl/tsI58uwSDJeTt6xHM/IIZ98IN7
+	0s/83xxndrUo/+8Q/N2hZR/ILlBhEKZ2lsLrgu35N1QxxKlnd3YV07To0oysD2xfaI0Qj8/+AqKOe
+	ULhZgLVf79q5OyrSriPSh4ZrT/ZslpeVqrbRt3caifDzx3zVSVBxRP3H8w2oTpbNrdU4VNcxuJJtC
+	vqFj0DX6+at/5Jf3z0KGn3210YUuN2mlMn7vPRfs1+BwrUxsgQ1JCVxNPzp/mVFpcN12lNANlDmg7
+	Di1KOh7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkXMV-008f72-2R;
-	Thu, 06 Apr 2023 21:41:43 +0000
+	id 1pkXMm-008fE7-0v;
+	Thu, 06 Apr 2023 21:42:00 +0000
 Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkXMS-008f5D-2u;
-	Thu, 06 Apr 2023 21:41:42 +0000
+	id 1pkXMk-008fCe-0e;
+	Thu, 06 Apr 2023 21:41:59 +0000
 Received: from local
 	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1pkXMR-0004rW-27;
-	Thu, 06 Apr 2023 23:41:39 +0200
-Date: Thu, 6 Apr 2023 22:41:34 +0100
+	id 1pkXMi-0004sS-1K;
+	Thu, 06 Apr 2023 23:41:56 +0200
+Date: Thu, 6 Apr 2023 22:41:51 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: linux-i2c@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Qii Wang <qii.wang@mediatek.com>,
+	devicetree@vger.kernel.org, Qii Wang <qii.wang@mediatek.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	Sam Shih <sam.shih@mediatek.com>
-Subject: [PATCH 1/2] i2c: mediatek: add support for MT7981 SoC
-Message-ID: <5f611059ba664f912c4c5c6cc859acb9b5121e2e.1680817105.git.daniel@makrotopia.org>
+Subject: [PATCH 2/2] dt-bindings: i2c: i2c-mt65xx: add binding for MT7981 SoC
+Message-ID: <31957e15116027afd154f0d91e799028e2400bb2.1680817105.git.daniel@makrotopia.org>
 References: <cover.1680817105.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1680817105.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230406_144140_942832_B2DB5673 
-X-CRM114-Status: GOOD (  10.76  )
+X-CRM114-CacheID: sfid-20230406_144158_239674_0658D12D 
+X-CRM114-Status: UNSURE (   9.13  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,47 +67,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for the I2C units found in the MediaTek MT7981 and MT7988
-SoCs. Just like other recent MediaTek I2C units that also uses v3
-register offsets (which differ from v2 only by OFFSET_SLAVE_ADDR being
-0x94 instead of 0x4).
+Add binding documentation for the I2C controllers found in the
+MediaTek MT7981 SoC.
 
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
- drivers/i2c/busses/i2c-mt65xx.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-index 59eaefe999b11..a43c4d77739ab 100644
---- a/drivers/i2c/busses/i2c-mt65xx.c
-+++ b/drivers/i2c/busses/i2c-mt65xx.c
-@@ -431,6 +431,18 @@ static const struct mtk_i2c_compatible mt8168_compat = {
- 	.max_dma_support = 33,
- };
- 
-+static const struct mtk_i2c_compatible mt7981_compat = {
-+	.regs = mt_i2c_regs_v3,
-+	.pmic_i2c = 0,
-+	.dcm = 0,
-+	.auto_restart = 1,
-+	.aux_len_reg = 1,
-+	.timing_adjust = 1,
-+	.dma_sync = 1,
-+	.ltiming_adjust = 1,
-+	.max_dma_support = 33
-+};
-+
- static const struct mtk_i2c_compatible mt7986_compat = {
- 	.quirks = &mt7622_i2c_quirks,
- 	.regs = mt_i2c_regs_v1,
-@@ -516,6 +528,7 @@ static const struct of_device_id mtk_i2c_of_match[] = {
- 	{ .compatible = "mediatek,mt6577-i2c", .data = &mt6577_compat },
- 	{ .compatible = "mediatek,mt6589-i2c", .data = &mt6589_compat },
- 	{ .compatible = "mediatek,mt7622-i2c", .data = &mt7622_compat },
-+	{ .compatible = "mediatek,mt7981-i2c", .data = &mt7981_compat },
- 	{ .compatible = "mediatek,mt7986-i2c", .data = &mt7986_compat },
- 	{ .compatible = "mediatek,mt8168-i2c", .data = &mt8168_compat },
- 	{ .compatible = "mediatek,mt8173-i2c", .data = &mt8173_compat },
+diff --git a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
+index 685da4df688d6..fda0467cdd954 100644
+--- a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
++++ b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
+@@ -23,6 +23,7 @@ properties:
+       - const: mediatek,mt6577-i2c
+       - const: mediatek,mt6589-i2c
+       - const: mediatek,mt7622-i2c
++      - const: mediatek,mt7981-i2c
+       - const: mediatek,mt7986-i2c
+       - const: mediatek,mt8168-i2c
+       - const: mediatek,mt8173-i2c
 -- 
 2.40.0
 
