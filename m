@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A4EEC77B6C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Apr 2023 08:02:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E7EEC76196
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Apr 2023 08:02:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ICl5yXhMxeO2u+7yTPtP7Jl3u4X7NhJCydXnMv94CdE=; b=3q8PuaDJjKFgS7sThFC/aSl5GG
-	ZcFB0VNmF6oeRotFIsazf3ST6/w88sNmRDHOFtsO2lmZ7wPaM9SjTcWjBTuMO4arShtMpjq37jedS
-	h+++BWB2K97xK+KWodAu3BdFpr42l84Dg2AqRr1qBJuOJRqwu4B5E5mKEpRsCW1S07kusW1nGMA1d
-	xMVrLjUzBDev4/7qMJc7IkOaxmcI7tfpHJl0ppdDEdUZbkur7KR5kd50UbmpzHkJixlZRhTyCWgys
-	Pl0WUJG6EDWGaRL+63WR54B+f9fCcJbHbXTEiBLYVrSmo7OVJRkrF32QOXkmNZxbtUYjoDCoKWsCk
-	VHm/Z1pQ==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LCcdE7dUEXb8lwbE7KvuyXGuIt74Tuf6bSVVO3NCHnI=; b=ATGJt6/mJlfFVb+K/sbjBl/ZLz
+	B6PI15PEZSmRjOu88+el4pZOgBF+BJOWCojGpINttXp9jSmC8FkYCcCIVdF81aMG4ark0txhMxeG/
+	5/pMaY3VA5TC1Jdz92NM4mH5AszPOU3Q+fEjmVfWvrW7PavG2NOVOZC2Z+VkwAERkjH2lW1nYpvMs
+	La5yNOYXxgMSXFAlhI0l5FeEQHOjbrPZ1KGi1mZcBGLG7x4EdrcOFR7WXAcwGj+ElhuBwfbzv81TR
+	VTVO8Z6pM8xS6rzuI6rH4gGbGQJjV18KmE4DVjMYNqe7AIOCAwGoP+Ug5yql8aiaz9c76EXBTYk6C
+	b6ZsHdMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkKZV-006gar-2t;
-	Thu, 06 Apr 2023 08:02:17 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1pkKZb-006gdi-1x;
+	Thu, 06 Apr 2023 08:02:23 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkKZR-006gZb-37;
-	Thu, 06 Apr 2023 08:02:15 +0000
-Received: by mail-wm1-x330.google.com with SMTP id m6-20020a05600c3b0600b003ee6e324b19so23297519wms.1;
-        Thu, 06 Apr 2023 01:02:13 -0700 (PDT)
+	id 1pkKZW-006gaM-33;
+	Thu, 06 Apr 2023 08:02:20 +0000
+Received: by mail-wm1-x331.google.com with SMTP id l15-20020a05600c4f0f00b003ef6d684102so19759778wmq.3;
+        Thu, 06 Apr 2023 01:02:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1680768132;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=ICl5yXhMxeO2u+7yTPtP7Jl3u4X7NhJCydXnMv94CdE=;
-        b=it8N5epu/hXZbHWuT1hr22stKIGl0pvvUn+gedunaw90tc0hnlroPv6UR0rKExvyi+
-         /5HNW3X0Ey7HHnOjoxPAscBmzuT17opVmLbvKHPbxAl711L9R07V1KEsXUGg5vV06HuO
-         bZ5kFMF6w8bZZU7YwUoTdeLRR+lD6jPKd+bCJ0Qr9B2qnZCTYFvuKmQuq7v9J6HYVtc8
-         qkmBat7UPxpQ5MPXBkDfZJG9DUV0RANmcXSYDpJEtxYvai9w9ZpVQtUP5ezdt5QNVT8x
-         JJDinsYCQ0vLm1/73RGpI1qYadaH2rbnLSSsb6axGuq/3jwX5U27iIUFZhCW0uqGJmsL
-         jPxg==
+        d=gmail.com; s=20210112; t=1680768137;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=LCcdE7dUEXb8lwbE7KvuyXGuIt74Tuf6bSVVO3NCHnI=;
+        b=UrCyNSmLCpUhTtLbClX53/JZ14Vonr35xOfoaooPfPxC6OfEPYPGvjEHfkOA+OJ4Ro
+         QjpW/sVm/Q8YC4uCHfg8yljsqJw+73p4zoG0ywI4JgYqanIYdzRc9IQc//NZ59pZ2GVd
+         L5xPLrXXu9KO3Yxu5sPlMAYtX9NzPZKZXaNGEw+lq756gkwFjKk94xE4xVBRLMeVrM19
+         KzguntSeG6P7x2VggjkcNbi2gLbDD2czRaKrPICtTNgf5XwWWA3roZPgse6qNvN66l3r
+         uI9bOAnap95CvaNnKSfiYcVVUyndPoC+kGXBiARbHBU9VzqAPP6v2V9maP5tTSeg0v/5
+         74jQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680768132;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ICl5yXhMxeO2u+7yTPtP7Jl3u4X7NhJCydXnMv94CdE=;
-        b=YXXwgzbihKV3M/M+b9r+3iMk9kEwXF8K27jvmLL20z66GCV0gL7NAFJ5NMomVeJI0T
-         YdOXhq804yQqrnibKLF6TxGgsZGfZvRU/ws29BI8GCeWXGoOAxF24CdjHLta74/WGjNm
-         bdMSFV1QeKiYVqqYgA/LLkShvLGDnA4/q5v06NiC6isEjojTOwBAdJ1Zd44yU7FHEHkU
-         yXpFvEJEkR2/cwu1+ubjjtp2cfvE7cVX+dNDQvj4fm6EM41+NOCZRbg9qEXY+4AoLYNI
-         gsSjUfnzfNC/AdAjmD+gKduAvwaiqWBkeULWhNhVH4addjR4sroXKpw50M8kSu8gXSDp
-         58gA==
-X-Gm-Message-State: AAQBX9cEfexL9JANeA/UZD6hOypZqFZQAQFBjuweNKiRJdIHT9gu2w4o
-	pecRyrSvctNJoQ9To3zitXo=
-X-Google-Smtp-Source: AKy350a/F/lBPdvFizmroFVH3fzHbWGMlo4ft4HctNyHW+b1LaJS8K92j1zaDn1g279tfeuONBh+TA==
-X-Received: by 2002:a7b:ca47:0:b0:3ed:1f9c:af12 with SMTP id m7-20020a7bca47000000b003ed1f9caf12mr6967575wml.22.1680768131483;
-        Thu, 06 Apr 2023 01:02:11 -0700 (PDT)
+        d=1e100.net; s=20210112; t=1680768137;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=LCcdE7dUEXb8lwbE7KvuyXGuIt74Tuf6bSVVO3NCHnI=;
+        b=ocvJAr4UGrV+EYhmkV8p7BkMwF2pXdo2wTrSQjf2WLYL0+zYvizE3Y2xX6zhx0/w5h
+         Uo04ykFnpkDOOa0p/sG7tUKy5p3w949QwRCkT98MnCW7bGaR+J964kw/hhl10ONhIiI8
+         OsODnZBpmZkeakH5FxuJjldSg5dIlu4gzw9ngReEyB1T/ld2SUjJtlNqUA6hJ+0f7xga
+         87aen0nKzWM4Qh034Pmw8Q6Fjoc77AhLhyg6EgFNa9R214igOovea5f16QFlC/ckmScO
+         wJ1LjA3M0UHeBoMuIFxFCAWvV9SrnCPn/3bhZqkjYJvY0Wfv7UJHFcBSog98yrNc17D0
+         cxKg==
+X-Gm-Message-State: AAQBX9d6CEn7mwbJGblNA+Hig3D90MdRl8BAzAOzyMh+ILLbn6CUPo9f
+	/ZmI8SFiAldDaSqE8K+Lt44=
+X-Google-Smtp-Source: AKy350asArPyeyaBI5v416dwhtFXcF3RCqZCSobCIiySV4LcN5vzjJwxz0eGo4Fa58lOsn2mzDPf1A==
+X-Received: by 2002:a7b:c416:0:b0:3ee:6d55:8b73 with SMTP id k22-20020a7bc416000000b003ee6d558b73mr6893176wmi.29.1680768136558;
+        Thu, 06 Apr 2023 01:02:16 -0700 (PDT)
 Received: from arinc9-PC.lan ([149.91.1.15])
-        by smtp.gmail.com with ESMTPSA id s9-20020a7bc389000000b003ef64affec7sm826993wmj.22.2023.04.06.01.02.08
+        by smtp.gmail.com with ESMTPSA id s9-20020a7bc389000000b003ef64affec7sm826993wmj.22.2023.04.06.01.02.14
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 06 Apr 2023 01:02:10 -0700 (PDT)
+        Thu, 06 Apr 2023 01:02:15 -0700 (PDT)
 From: arinc9.unal@gmail.com
 X-Google-Original-From: arinc.unal@arinc9.com
 To: Andrew Lunn <andrew@lunn.ch>,
@@ -84,16 +85,18 @@ Cc: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH 1/7] dt-bindings: net: dsa: mediatek,mt7530: correct brand name
-Date: Thu,  6 Apr 2023 11:01:35 +0300
-Message-Id: <20230406080141.22924-1-arinc.unal@arinc9.com>
+Subject: [PATCH 3/7] dt-bindings: net: dsa: mediatek,mt7530: add port bindings for MT7988
+Date: Thu,  6 Apr 2023 11:01:37 +0300
+Message-Id: <20230406080141.22924-3-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.37.2
+In-Reply-To: <20230406080141.22924-1-arinc.unal@arinc9.com>
+References: <20230406080141.22924-1-arinc.unal@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230406_010214_006324_FA78865F 
-X-CRM114-Status: GOOD (  11.70  )
+X-CRM114-CacheID: sfid-20230406_010218_983937_9652E0A2 
+X-CRM114-Status: GOOD (  13.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,26 +113,128 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-The brand name is MediaTek, change it to that.
+The switch on MT7988 has got only port 6 as a CPU port. The only phy-mode
+to be used is internal. Add this.
+
+Some bindings are incorrect for this switch now, so move them to more
+specific places.
+
+Address the incorrect information of which ports can be used as a user
+port. Any port can be used as a user port.
 
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../bindings/net/dsa/mediatek,mt7530.yaml     | 63 ++++++++++++++-----
+ 1 file changed, 46 insertions(+), 17 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-index e532c6b795f4..6df995478275 100644
+index 7045a98d9593..605888ce2bc6 100644
 --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
 +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-@@ -4,7 +4,7 @@
- $id: http://devicetree.org/schemas/net/dsa/mediatek,mt7530.yaml#
- $schema: http://devicetree.org/meta-schemas/core.yaml#
+@@ -160,22 +160,6 @@ patternProperties:
+       "^(ethernet-)?port@[0-9]+$":
+         type: object
  
--title: Mediatek MT7530 and MT7531 Ethernet Switches
-+title: MediaTek MT7530 and MT7531 Ethernet Switches
+-        properties:
+-          reg:
+-            description:
+-              Port address described must be 5 or 6 for CPU port and from 0 to 5
+-              for user ports.
+-
+-        allOf:
+-          - if:
+-              required: [ ethernet ]
+-            then:
+-              properties:
+-                reg:
+-                  enum:
+-                    - 5
+-                    - 6
+-
+ required:
+   - compatible
+   - reg
+@@ -186,9 +170,21 @@ $defs:
+       "^(ethernet-)?ports$":
+         patternProperties:
+           "^(ethernet-)?port@[0-9]+$":
++            properties:
++              reg:
++                description:
++                  Port address described must be 5 or 6 for the CPU port. User
++                  ports can be 0 to 6.
++
+             if:
+               required: [ ethernet ]
+             then:
++              properties:
++                reg:
++                  enum:
++                    - 5
++                    - 6
++
+               if:
+                 properties:
+                   reg:
+@@ -212,9 +208,21 @@ $defs:
+       "^(ethernet-)?ports$":
+         patternProperties:
+           "^(ethernet-)?port@[0-9]+$":
++            properties:
++              reg:
++                description:
++                  Port address described must be 5 or 6 for the CPU port. User
++                  ports can be 0 to 6.
++
+             if:
+               required: [ ethernet ]
+             then:
++              properties:
++                reg:
++                  enum:
++                    - 5
++                    - 6
++
+               if:
+                 properties:
+                   reg:
+@@ -235,6 +243,27 @@ $defs:
+                       - 2500base-x
+                       - sgmii
  
- maintainers:
-   - Arınç ÜNAL <arinc.unal@arinc9.com>
++  mt7988-dsa-port:
++    patternProperties:
++      "^(ethernet-)?ports$":
++        patternProperties:
++          "^(ethernet-)?port@[0-9]+$":
++            properties:
++              reg:
++                description:
++                  Port address described must be 6 for the CPU port. User ports
++                  can be 0 to 3, and 6.
++
++            if:
++              required: [ ethernet ]
++            then:
++              properties:
++                reg:
++                  const: 6
++
++                phy-mode:
++                  const: internal
++
+ allOf:
+   - $ref: dsa.yaml#/$defs/ethernet-ports
+   - if:
+@@ -285,7 +314,7 @@ allOf:
+         compatible:
+           const: mediatek,mt7988-switch
+     then:
+-      $ref: "#/$defs/mt7530-dsa-port"
++      $ref: "#/$defs/mt7988-dsa-port"
+       properties:
+         gpio-controller: false
+         mediatek,mcm: false
 -- 
 2.37.2
 
