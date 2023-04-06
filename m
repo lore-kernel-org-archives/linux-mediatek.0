@@ -4,70 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A19EC76196
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Apr 2023 15:25:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 600CBC76196
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Apr 2023 16:23:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RMkMXwMSZEr9FFGtDRkxvrTAlSRKSswIFRpR7VpqIQQ=; b=fK6zevX1/IDRKyLUuB34pZwYHN
-	xp/zgH57q3iGuf4t9736kCXiYXNa2YzXvcT1RJyh4L/oBfq4q04IifT+HU31TzKAOnxQK/1pi3QwU
-	/oQ1tVG7YjQ+tkCp3xg2QbjFbvahrYCkDSjupb3X/ud/jzAKPG301uQaXPVlKNEv7oaMA/xpEeEzA
-	79ZNaQslAodW4huRgR6XhZCR5GWr1cbH6fEVyjxCZ70/fR+T99LS56PInee6m+NSdy92MFxv4zn+q
-	aRFTQdRKJU9dHoI275XMPUq2zuYu8h5H2kXcYN6T0nPFGM+lui0ntI72Bad1IxzriBzdd8D3F5pDK
-	7pn6CnyQ==;
+	bh=tabq4364pBMtV72BIwKxQ3TXFbzjahx/k8i1QNCY+BM=; b=tDf5hyqFIw5yq/+nAB2r/SV3Fl
+	UWf3U/aBSnbfQ2pXsraynFRQ2yaT20Gg8g1Dz6EHpPx7WYZ77e8MqozvddZRV3wYxqd2+Rn2qX5NK
+	sPbAqMBnKHoBpvGp68PAqG4L4SZA8Aj8omo372TKxPC4mbVUEvefoPCUg8Wy0xePEZErZCgO99L0Y
+	PIxXwDLzslGxHf7+YPlJ2WDjl04L/tt+8KWGgAqVkiaO0SJe2nSOR4ssvSD5EOquTXz1ndNZnGkFI
+	kTF6UvdZVfd6ZzLl7o+Bb36WOGyHsuIzl8TmNrB8fuHW8bA/h8/CVr0fU6aMYwBlSS1vEBiQ0JZT+
+	k9vHAdVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkRUE-007o6J-2F;
-	Thu, 06 Apr 2023 15:25:18 +0000
-Received: from mail-oo1-f50.google.com ([209.85.161.50])
+	id 1pkSOD-007z5d-0q;
+	Thu, 06 Apr 2023 16:23:09 +0000
+Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkRUA-007o4U-2N
-	for linux-mediatek@lists.infradead.org;
-	Thu, 06 Apr 2023 15:25:17 +0000
-Received: by mail-oo1-f50.google.com with SMTP id f24-20020a4aeb18000000b0053b78077c9dso6210524ooj.12
-        for <linux-mediatek@lists.infradead.org>; Thu, 06 Apr 2023 08:25:13 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680794712;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=RMkMXwMSZEr9FFGtDRkxvrTAlSRKSswIFRpR7VpqIQQ=;
-        b=nARzFW6wogR0+17VVdYnm6Caf3VLeKVdQI/YeLz22J+LGB08uU2jRGkynXVpzXRvJT
-         TVMsbK85RiWg7Ff8fIgqe1XboxRI0iXiOS/v+VwiH2AJswOaIEnwtdCcv90lMIX6QGnC
-         vxlmuamNMG30FBtAmmov8Bo1PeOlxUCIX+V9NQ5Uano36HAJ+ieydwggC2SITF1nWRIQ
-         GW9leg+dcS1P2gAThQ8w2mcrZcRAUUr7gJcvz8jkNN3XDv5JHKTMrRd5XG990rvbP5O5
-         WbQ6qGpKyWjKABBb97/z4eQBDP47ewK1fSYo+6ZJUcEmYrvLHRCHCD8FIA/b5Vo/C9jd
-         7GAA==
-X-Gm-Message-State: AAQBX9dtpBFL5QGOOolmtxI4oTCNti7lU0K3Lr+cGsOJzTObYeFj9w4n
-	y5Ga0WKrQKoNwz3u8NTOMA==
-X-Google-Smtp-Source: AKy350aD8i61CSEMsXWO+ODXbKKtkeyWipy3Tnvjy0WnRBnCKMJ4XFPRDEIn9gvkDG7hvfRH5ebobg==
-X-Received: by 2002:a4a:e753:0:b0:541:87fe:5b75 with SMTP id n19-20020a4ae753000000b0054187fe5b75mr1415607oov.1.1680794712637;
-        Thu, 06 Apr 2023 08:25:12 -0700 (PDT)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id j48-20020a4a9473000000b0053dfd96fa61sm646099ooi.39.2023.04.06.08.25.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 06 Apr 2023 08:25:12 -0700 (PDT)
-Received: (nullmailer pid 3124644 invoked by uid 1000);
-	Thu, 06 Apr 2023 15:25:11 -0000
-Date: Thu, 6 Apr 2023 10:25:11 -0500
-From: Rob Herring <robh@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: netdev@vger.kernel.org, davem@davemloft.net, edumazet@google.com, pabeni@redhat.com, kuba@kernel.org, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com, lorenzo.bianconi@redhat.com, daniel@makrotopia.org, krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH v2 net-next 00/10] mtk: wed: move cpuboot, ilm and dlm in
- dedicated dts nodes
-Message-ID: <20230406152511.GA3117403-robh@kernel.org>
-References: <cover.1680268101.git.lorenzo@kernel.org>
+	id 1pkSO8-007z1T-1t;
+	Thu, 06 Apr 2023 16:23:07 +0000
+Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id E6C8F1883A29;
+	Thu,  6 Apr 2023 16:22:52 +0000 (UTC)
+Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
+	by mailout.gigahost.dk (Postfix) with ESMTP id C003425005BD;
+	Thu,  6 Apr 2023 16:22:52 +0000 (UTC)
+Received: by smtp.gigahost.dk (Postfix, from userid 1000)
+	id A22749B403E2; Thu,  6 Apr 2023 16:22:52 +0000 (UTC)
+X-Screener-Id: e32ae469fa6e394734d05373d3a705875723cf1e
+Received: from fujitsu (2-104-116-184-cable.dk.customer.tdc.net [2.104.116.184])
+	by smtp.gigahost.dk (Postfix) with ESMTPSA id 0211891201E3;
+	Thu,  6 Apr 2023 16:22:51 +0000 (UTC)
+From: Hans Schultz <netdev@kapio-technology.com>
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
+ Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Eric
+ Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Kurt
+ Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>,
+ Woojung Huh <woojung.huh@microchip.com>, "maintainer:MICROCHIP KSZ SERIES
+ ETHERNET SWITCH DRIVER" <UNGLinuxDriver@microchip.com>, Sean Wang
+ <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
+ Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, =?utf-8?Q?Cl=C3=A9ment_L=C3=A9ger?=
+ <clement.leger@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
+ <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
+ <razor@blackwall.org>, Shuah Khan <shuah@kernel.org>, Christian Marangi
+ <ansuelsmth@gmail.com>, Ido Schimmel <idosch@nvidia.com>, open list
+ <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>, "open list:RENESAS RZ/N1
+ A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>, "moderated
+ list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>, "open
+ list:KERNEL SELFTEST FRAMEWORK" <linux-kselftest@vger.kernel.org>
+Subject: Re: [PATCH v2 net-next 2/6] net: dsa: propagate flags down towards
+ drivers
+In-Reply-To: <20230406152159.zfg6kxuimulnpops@skbuf>
+References: <20230327225933.plm5raegywbe7g2a@skbuf>
+ <87ileljfwo.fsf@kapio-technology.com>
+ <20230328114943.4mibmn2icutcio4m@skbuf>
+ <87cz4slkx5.fsf@kapio-technology.com>
+ <20230330124326.v5mqg7do25tz6izk@skbuf>
+ <87wn2yxunb.fsf@kapio-technology.com>
+ <20230330130936.hxme34qrqwolvpsh@skbuf>
+ <875yaimgro.fsf@kapio-technology.com>
+ <20230330150752.gdquw5kudtrqgzyz@skbuf>
+ <87o7o1ox9h.fsf@kapio-technology.com>
+ <20230406152159.zfg6kxuimulnpops@skbuf>
+Date: Thu, 06 Apr 2023 18:20:05 +0200
+Message-ID: <87zg7lj83u.fsf@kapio-technology.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1680268101.git.lorenzo@kernel.org>
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230406_082514_774758_382CFEDB 
-X-CRM114-Status: UNSURE (   8.26  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230406_092304_762770_33E75962 
+X-CRM114-Status: GOOD (  11.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,25 +96,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 31, 2023 at 03:12:36PM +0200, Lorenzo Bianconi wrote:
-> Since cpuboot, ilm and dlm memory region are not part of MT7986 SoC RAM,
+On Thu, Apr 06, 2023 at 18:21, Vladimir Oltean <olteanv@gmail.com> wrote:
+> On Thu, Apr 06, 2023 at 05:17:46PM +0200, Hans Schultz wrote:
+>> On Thu, Mar 30, 2023 at 18:07, Vladimir Oltean <olteanv@gmail.com> wrote:
+>> > As a bug fix, stop reporting to switchdev those FDB entries with
+>> > BR_FDB_ADDED_BY_USER && !BR_FDB_STATIC. Then, after "net" is merged into
+>> > "net-next" next Thursday (the ship has sailed for today), add "bool static"
+>> 
+>> It is probably too late today (now I have a Debian based VM that can do
+>> the selftests), but with this bug fix I have 1) not submitted bug fixes
+>> before and 2) it probably needs an appropriate explanation, where I
+>> don't know the problem well enough for general switchcores to submit
+>> with a suitable text.
+>
+> Do you want me to try to submit this change as a bug fix?
 
-That's not really a requirement. Is that the only "problem" here?
-
-Certainly going from a standard binding to a custom phandle reference is 
-not an improvement.
-
-> move them in dedicated mt7986a syscon dts nodes.
-
-What makes them a syscon? Are they memory or h/w registers? Can't be 
-both...
-
-Perhaps mmio-sram?
-
-> At the same time we keep backward-compatibility with older dts version where
-> cpuboot, ilm and dlm were defined as reserved-memory child nodes.
-
-Doesn't really seem big enough issue to justify carrying this.
-
-Rob
+I think that would be fine as you would know the matter best.
 
