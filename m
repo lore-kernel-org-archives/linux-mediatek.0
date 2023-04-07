@@ -4,67 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BAF9C6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Apr 2023 09:29:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8789C77B6E
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Apr 2023 09:34:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mczvtSPAxYkTM+JcD02YrPL+zwqq5eoG4AX2wBzmrCY=; b=d+IAIjOwHkftYy1pDJ275tiTX7
-	bLC5illHOTdYn/Y6E7O3wbxs8u5DJAAq8YcviMkhnlnHu27YrcyfjNNYOLfKx/K8jRgD3wL2qo8B+
-	rbXuccYlFmdcnUDYLRFn4doJnhUgAe2uu84ENbs83xJfepWRo4do9Y7dYxJ20yctmp8NeLR6Dwv2f
-	2YWUvRaP6xZlxf6cEPgf2eRBgzG1soXwCdFSDQaHB3+9buZZMLBDQ3Bhu5tNoD2l1QCRQKDmlKy6/
-	SxYZYMCLNz61Av/NaIUhVDqQvc8rBt7iaAui5sdnMAfI0IQIWvV8WCe2eGbkblc+M4a6RRkqO2Xtu
-	6jKxh8Ig==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=70JWiI3ir/yodHMirtpCr960hDJucp8ZmgOAZyHHfjo=; b=YGl0DjHhQLYIBTFQzhLuGIqoHH
+	9yht6RChKUkcsgUG9gfNQ+HuapZy1CFjMBGHox9Ohc2vxoL6jLFV8eYtLCDEGLCBku+EA0AlGb/rX
+	w5o+HmeGu2YCI+b4IxefNfZ0O61GInJzjnZJiLkSWfTLhI/HuGxuDefCSRJYbBZWpqUFMPtNjRBzt
+	/FFmDdMYcwTLlcyrvBJqk9C2+7O3op3Hi5JFY87aBE0kzb8rwsVuyEcETrOxjyp/2nLAbXqSDAzbS
+	LucjgN3v6aqHUeUH6JMRxAOiF4PLpl9qZ2h+FMPbVCYu1aJUNPn+haJXJ9h3MPBKMKyCb5NdobQqj
+	LzD3HFGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkiPJ-009f3W-07;
-	Fri, 07 Apr 2023 09:29:21 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1pkiUM-009g3J-1S;
+	Fri, 07 Apr 2023 09:34:34 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkiPD-009f1w-2N;
-	Fri, 07 Apr 2023 09:29:17 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1pkiOW-0001Oj-0n;
-	Fri, 07 Apr 2023 11:28:32 +0200
-Date: Fri, 7 Apr 2023 10:28:29 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Cc: "Russell King (Oracle)" <linux@armlinux.org.uk>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [RFC PATCH net-next] net: dsa: mt7530: fix port specifications
- for MT7988
-Message-ID: <ZC_iPfl5R-_4zOZg@makrotopia.org>
-References: <20230406100445.52915-1-arinc.unal@arinc9.com>
- <ZC6n1XAGyZFlxyXx@shell.armlinux.org.uk>
- <e413a182-ce93-5831-09f5-19d34d7f7fcf@arinc9.com>
- <ZC9AXyuFqa3bqF3Q@makrotopia.org>
- <0cdb0504-bc1e-c255-a7d2-4dd96bd8e6e3@arinc9.com>
+	id 1pkiUJ-009g0H-0A
+	for linux-mediatek@lists.infradead.org;
+	Fri, 07 Apr 2023 09:34:32 +0000
+Received: by mail-wr1-x435.google.com with SMTP id e18so41840610wra.9
+        for <linux-mediatek@lists.infradead.org>; Fri, 07 Apr 2023 02:34:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1680860069; x=1683452069;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=70JWiI3ir/yodHMirtpCr960hDJucp8ZmgOAZyHHfjo=;
+        b=QONjcM29kV4dmGB3rYEiONRK5cMaa6iuyKF2F42L3XXJJguLusSxoZpsDfEYzNHrJQ
+         PCve/XJithRyJlBCCehKo5C6uADcrcFyBiWsUjesvvs4csM2RJExdrtZYgQfAlS/TcwH
+         WquiPJgyLMhp05XnzHIPk2z2kmkrURr0wmt+FjT5EDEFe33tw1gD12kt1YM2kZiQahuz
+         bH9IW8UsgdOR3nDyEOrUTw6pHBetJKgliKfuDtgtbZp8tYaefzJniFSkwJay4GbQoMYi
+         f3guY3mNKfR7mBcXVNDqoK3oE9uz2POBhXN7jkoXhB1BE0gmhzupPCK7QE7nhD9t2ugg
+         VzUg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680860069; x=1683452069;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=70JWiI3ir/yodHMirtpCr960hDJucp8ZmgOAZyHHfjo=;
+        b=RUKN7R7EBD9glu1tpd6Hs0WX7ifDVILyLzBOzcN/+u/yRSkHHbhrDqOmKA1lTlyOs6
+         7s4CbkM85E9YVCD/XcHMZyf+el7u7iEt6ma7lzV87mcgmJwfZ+Zg+EKhEvQlcbUZDVnw
+         8K9cjBLxEZvvxRbyr2jEk7WKIZxeEnHDUlGCAQHyAvRHWIU/BEIg4gAuqh38W2GnWVRK
+         iKE/QS8S//nwyexcIP1Zq1gzBqrxTDT2VQW+XQ5ONo0ZtZ4TJYRiLsOeNr7lHoC+MIXQ
+         R4wsMcGMbXYEUTH4Y849ekz2zeWSAMsai17/tfv6sBMBGi5iBN8X+IE7g4htoEsBXCg9
+         i54g==
+X-Gm-Message-State: AAQBX9dIczMwYgj/Ftqv/hencb6DHbW57uxXJrPw5FeBte8L6TglLpJE
+	8x5TOJEMy3nnkQwxPfgb5f0L2A==
+X-Google-Smtp-Source: AKy350YypaAVLJKTn67bZFSJ5w+Bznsf6177h4pS/ayorAldv93lbe3E88jagS9SiBVOi3W60rfOng==
+X-Received: by 2002:a5d:51d1:0:b0:2ce:a30d:f764 with SMTP id n17-20020a5d51d1000000b002cea30df764mr942043wrv.21.1680860069489;
+        Fri, 07 Apr 2023 02:34:29 -0700 (PDT)
+Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
+        by smtp.googlemail.com with ESMTPSA id s13-20020a5d510d000000b002d64fcb362dsm4020432wrt.111.2023.04.07.02.34.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 07 Apr 2023 02:34:29 -0700 (PDT)
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Fri, 07 Apr 2023 11:34:14 +0200
+Subject: [PATCH v3 3/7] arm64: dts: mediatek: add apu support for mt8365
+ SoC
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <0cdb0504-bc1e-c255-a7d2-4dd96bd8e6e3@arinc9.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20230207-iommu-support-v3-3-97e19ad4e85d@baylibre.com>
+References: <20230207-iommu-support-v3-0-97e19ad4e85d@baylibre.com>
+In-Reply-To: <20230207-iommu-support-v3-0-97e19ad4e85d@baylibre.com>
+To: Yong Wu <yong.wu@mediatek.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ Alexandre Mergnat <amergnat@baylibre.com>
+X-Mailer: b4 0.12.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1091; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=xWFAj8fuPjSh5BRKLkeGKOoKQ305/M/G1EGxpvjOkWE=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkL+Ohlg4spt+Ph+OrbPJZKpEpJNrFe4L6RjUFlhcD
+ 044pvFCJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZC/joQAKCRArRkmdfjHURZK/D/
+ wIztu59Z6cma4MWtA5B7NQozRNiJHyTE/Kl8Z5vijoZ0nE/K4GDnlyrtym6yebHm/EehfkJMuhrphg
+ Zz/cf/vxh+FX92tn4pfkqQlub9u2mz2eULkvrtNnCzTUaI/XdQXpGKfzxUF0mCHf75z919RvnzWNab
+ RyHSvxl806VvR1jKbt62bbdDzwuFOENhrp0O1kJ8dQdNOU9DnXtZFRopBkQxYSXC/gLoD22MprXA9O
+ z+5NDatU/AD6FiV+w7K4Di3a+mj/uCc9EWM0f65ekcXGhbyVb5bDeAW2tXrVoqtdAvy4caoDEbW5wD
+ ELHrZ3k08yu0/pb8b1FUT253Tl9/wioZ0vMy+CXcdBpsG4cBb/+Ko53Nbvd1Ba7tNn9Blkh3NA5E8b
+ ViVV0vL4qIBvhddGJX2urR3FA25LZbpxGGC8/2msWAuzwm09IoyrA6rCUo9k28nL3Y0QZe4dOygoHh
+ 7gkUD/rtJ8/0C8XvT9aQbP4Ex5KqI3E9qvVlsDmUUnq163orhqdlXe2dwnhX3p2WrlFhMPBA2HhKVG
+ xfhjzTKz44L+AyJ+KaJkEQLYKyLf9Tw14jO58hnx4Zi9VsUUxSgepunXgeocs5rHE47ygwGnj9lA7g
+ xHgG6kPUFdRkYhaM6suBRYQTzpMmyU61mTNkUAxFMuNVY8PHgzFCmEwRS9Iw==
+X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
+ fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230407_022915_772514_3D27B46E 
-X-CRM114-Status: GOOD (  49.07  )
+X-CRM114-CacheID: sfid-20230407_023431_087519_55641698 
+X-CRM114-Status: UNSURE (   9.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,150 +114,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 07, 2023 at 11:56:08AM +0300, Arınç ÜNAL wrote:
-> On 7.04.2023 00:57, Daniel Golle wrote:
-> > On Fri, Apr 07, 2023 at 12:43:41AM +0300, Arınç ÜNAL wrote:
-> > > On 6.04.2023 14:07, Russell King (Oracle) wrote:
-> > > > On Thu, Apr 06, 2023 at 01:04:45PM +0300, arinc9.unal@gmail.com wrote:
-> > > > > From: Arınç ÜNAL <arinc.unal@arinc9.com>
-> > > > > 
-> > > > > On the switch on the MT7988 SoC, there are only 4 PHYs. There's only port 6
-> > > > > as the CPU port, there's no port 5. Split the switch statement with a check
-> > > > > to enforce these for the switch on the MT7988 SoC. The internal phy-mode is
-> > > > > specific to MT7988 so put it for MT7988 only.
-> > > > > 
-> > > > > Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> > > > > ---
-> > > > > 
-> > > > > Daniel, this is based on the information you provided me about the switch.
-> > > > > I will add this to my current patch series if it looks good to you.
-> > > > > 
-> > > > > Arınç
-> > > > > 
-> > > > > ---
-> > > > >    drivers/net/dsa/mt7530.c | 67 ++++++++++++++++++++++++++--------------
-> > > > >    1 file changed, 43 insertions(+), 24 deletions(-)
-> > > > > 
-> > > > > diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> > > > > index 6fbbdcb5987f..f167fa135ef1 100644
-> > > > > --- a/drivers/net/dsa/mt7530.c
-> > > > > +++ b/drivers/net/dsa/mt7530.c
-> > > > > @@ -2548,7 +2548,7 @@ static void mt7988_mac_port_get_caps(struct dsa_switch *ds, int port,
-> > > > >    	phy_interface_zero(config->supported_interfaces);
-> > > > >    	switch (port) {
-> > > > > -	case 0 ... 4: /* Internal phy */
-> > > > > +	case 0 ... 3: /* Internal phy */
-> > > > >    		__set_bit(PHY_INTERFACE_MODE_INTERNAL,
-> > > > >    			  config->supported_interfaces);
-> > > > >    		break;
-> > > > > @@ -2710,37 +2710,56 @@ mt753x_phylink_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
-> > > > >    	struct mt7530_priv *priv = ds->priv;
-> > > > >    	u32 mcr_cur, mcr_new;
-> > > > > -	switch (port) {
-> > > > > -	case 0 ... 4: /* Internal phy */
-> > > > > -		if (state->interface != PHY_INTERFACE_MODE_GMII &&
-> > > > > -		    state->interface != PHY_INTERFACE_MODE_INTERNAL)
-> > > > > -			goto unsupported;
-> > > > > -		break;
-> > > > > -	case 5: /* Port 5, a CPU port. */
-> > > > > -		if (priv->p5_interface == state->interface)
-> > > > > +	if (priv->id == ID_MT7988) {
-> > > > > +		switch (port) {
-> > > > > +		case 0 ... 3: /* Internal phy */
-> > > > > +			if (state->interface != PHY_INTERFACE_MODE_INTERNAL)
-> > > > 
-> > > > How do these end up with PHY_INTERFACE_MODE_INTERNAL ? phylib defaults
-> > > > to GMII mode without something else being specified in DT.
-> > > > 
-> > > > Also note that you should *not* be validating state->interface in the
-> > > > mac_config() method because it's way too late to reject it - if you get
-> > > > an unsupported interface here, then that is down to the get_caps()
-> > > > method being buggy. Only report interfaces in get_caps() that you are
-> > > > prepared to handle in the rest of the system.
-> > > 
-> > > This is already the case for all three get_caps(). The supported interfaces
-> > > for each port are properly defined.
-> > > 
-> > > Though mt7988_mac_port_get_caps() clears the config->supported_interfaces
-> > > bitmap before reporting the supported interfaces. I don't think this is
-> > > needed as all bits in the bitmap should already be initialized to zero when
-> > > the phylink_config structure is allocated.
-> > > 
-> > > I'm not sure if your suggestion is to make sure the supported interfaces are
-> > > properly reported on get_caps(), or validate state->interface somewhere
-> > > else.
-> > 
-> > I think what Russell meant is just there is no point in being overly
-> > precise about permitted interface modes in mt753x_phylink_mac_config,
-> > as this function is not meant and called too late to validate the
-> > validity of the selected interface mode.
-> > 
-> > You change to mt7988_mac_port_get_caps looks correct to me and doing
-> > this will already prevent mt753x_phylink_mac_config from ever being
-> > called on MT7988 for port == 4 as well as and port == 5.
-> 
-> Ah, thanks for pointing this out Daniel. I see ds->ops->phylink_get_caps()
-> is run right before phylink_create() on dsa_port_phylink_create(), as it
-> should get the capabilities before creating an instance.
-> 
-> Should I remove phy_interface_zero(config->supported_interfaces);
-> mt7988_mac_port_get_caps()? I'd prefer to do identical operations on each
-> get_caps(), if there's no apparent reason for this to be on
-> mt7988_mac_port_get_caps().
+AI Processor Unit System (APUSYS) is a highly efficient computing unit
+system which is most suitable for AI/CV algorithms. It includes one
+programmable AI processor (Cadence VP6) for both AI and CV algorithms,
+and an eDMA engine for data movement between external DRAM and VP6
+internal memory.
 
-Yes, sounds sane to me, please do so.
+For more detail, ask Mediatek for the MT8365 AIoT application processor
+functional specification.
 
-Also we could make .mac_port_config optional, as for MT7988 we actually
-won't need it at all:
+Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8365.dtsi | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index e4bb5037d3525..5efcb9897eb18 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -2653,17 +2653,6 @@ static bool mt753x_is_mac_port(u32 port)
- 	return (port == 5 || port == 6);
- }
- 
--static int
--mt7988_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
--		  phy_interface_t interface)
--{
--	if (dsa_is_cpu_port(ds, port) &&
--	    interface == PHY_INTERFACE_MODE_INTERNAL)
--		return 0;
--
--	return -EINVAL;
--}
--
- static int
- mt7531_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
- 		  phy_interface_t interface)
-@@ -2704,6 +2693,9 @@ mt753x_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
- {
- 	struct mt7530_priv *priv = ds->priv;
- 
-+	if (!priv->info->mac_port_config)
-+		return 0;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
+index 73cb10d296fa..386ab8902b55 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8365.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
+@@ -604,6 +604,12 @@ camsys: syscon@15000000 {
+ 			reg = <0 0x15000000 0 0x1000>;
+ 			#clock-cells = <1>;
+ 		};
 +
- 	return priv->info->mac_port_config(ds, port, mode, state->interface);
- }
++		apu: syscon@19020000 {
++			compatible = "mediatek,mt8365-apu", "syscon";
++			reg = <0 0x19020000 0 0x1000>;
++			#clock-cells = <1>;
++		};
+ 	};
  
-@@ -3157,7 +3149,6 @@ const struct mt753x_info mt753x_table[] = {
- 		.pad_setup = mt7988_pad_setup,
- 		.cpu_port_config = mt7988_cpu_port_config,
- 		.mac_port_get_caps = mt7988_mac_port_get_caps,
--		.mac_port_config = mt7988_mac_config,
- 	},
- };
- EXPORT_SYMBOL_GPL(mt753x_table);
-@@ -3186,8 +3177,7 @@ mt7530_probe_common(struct mt7530_priv *priv)
- 	 */
- 	if (!priv->info->sw_setup || !priv->info->pad_setup ||
- 	    !priv->info->phy_read_c22 || !priv->info->phy_write_c22 ||
--	    !priv->info->mac_port_get_caps ||
--	    !priv->info->mac_port_config)
-+	    !priv->info->mac_port_get_caps)
- 		return -EINVAL;
- 
- 	priv->id = priv->info->id;
+ 	timer {
+
+-- 
+2.25.1
+
 
