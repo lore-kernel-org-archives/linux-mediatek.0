@@ -4,84 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BCF0C6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Apr 2023 08:41:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B2B2C6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Apr 2023 08:46:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VxVjcV3h63tndOVUPeb3nRlZ/9fXaEF82W2eqSGSLJI=; b=VTlAU51S7fjRoakZ1veo3rJYvt
-	CON5iZ6Io0TYNA4c6gQPioE0N71DGlBjHPdOrRc+tzIFyBHwalPn80f7BBbiIh0TrsjTYl7S0ZVDJ
-	/rKTRoB7YhMS8ku78iu4j+mEse+68qnFDQYLfVvAaI97f8X3aONktOwAydbidDbrxs02UNO4yy6GR
-	7r2jCQ2qnB7NwW3omPG20RHcw3DAUQJ7S5VnqGqg5PiNYsp109zH5Bf2IaumfInjXvYvahDMs4zZ+
-	gL0TzkP8wB4aK5euux8GItOgZ4TN2+dl6ema8QQWSht1EXi7oUf3tTKWypElbp5VXz+1omXwpIgsq
-	0BVq6Wsg==;
+	bh=YieoR9GFXBDpW/S/rPrqFewasba9YLxVMGUvduFkZVA=; b=RsSxCiwJhFWo3v4jo1jmtDy4QW
+	+HD28cN8936aihEpnJLD6J5p4Tk8dpLGQ2ZLKcA2Im/hrNJ+5aiy0V2u4OC8rk4U9/LeHkBzsdwbn
+	OLjxLE4J2H4boJUMuReqRIpmvyBMksC+DPleXecp8iuV9HEJgUeOy4n65hEtyG0T20YzibNALwASE
+	NRfbLVAzpYm7HOMa8U+SvCxLX/488DfuLsY/eFUslRK1vqFLj46BOhhuaMvrdVYQpQ46hNf11IAL9
+	ptWfVzHYWfV0o1ZwiOpFgWhXG9N1S23/8RD7SlbId9Pw1ybf0d09Ht790r0BPxNGjJa3AtU7VEETE
+	8db1i68w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkhew-009XEg-0a;
-	Fri, 07 Apr 2023 08:41:26 +0000
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+	id 1pkhjX-009Xrk-1V;
+	Fri, 07 Apr 2023 08:46:11 +0000
+Received: from mail-ua1-x930.google.com ([2607:f8b0:4864:20::930])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkhet-009XCf-1x
+	id 1pkhjU-009Xqa-1X
 	for linux-mediatek@lists.infradead.org;
-	Fri, 07 Apr 2023 08:41:24 +0000
-Received: by mail-ej1-x62a.google.com with SMTP id jw24so6967694ejc.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 07 Apr 2023 01:41:18 -0700 (PDT)
+	Fri, 07 Apr 2023 08:46:10 +0000
+Received: by mail-ua1-x930.google.com with SMTP id t20so11867670uaw.5
+        for <linux-mediatek@lists.infradead.org>; Fri, 07 Apr 2023 01:46:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1680856877;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=VxVjcV3h63tndOVUPeb3nRlZ/9fXaEF82W2eqSGSLJI=;
-        b=R4vL4QJOQ1cGCQO9T+0MVXBYjYxyf3KITR1VUF58mYUadl7VF95KYHZJINZd5QZakD
-         n2b4QtJK7tf5fCO0CLMqDPigIV+EeUaw5nWkiUGvlxWaNiWE1hM7D0YjT3IiCDzwkcX8
-         B0etLIRNSDonqDBGouJ2pQ08lBrZ19FKu2duqQ5BHczRa29YbE9x4XBaUZ3ELfpef//0
-         5Lu37rhrOoZmwtbaEL4UHQxzhhi4NTK9mYMBAIJLoZKaMYmE+6LXtQfPjVjdQz/ikk8e
-         8ziZ6pfIlEOKjxd5uI5z8puNYCIuU/PepteNcmjWuxKNDqYTq1HuH+m35mH0ctedhStG
-         am5g==
+        d=chromium.org; s=google; t=1680857166;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=YieoR9GFXBDpW/S/rPrqFewasba9YLxVMGUvduFkZVA=;
+        b=gM5FWyyuaDU8IMah6LdVlCrfJr+DR2GXlJvbSlGJUaoRKyPLg8kLBmt1akuM21vwVf
+         c1rOXa6jiZ2SZtSDhsCUZ0zU8Y1zl4BpYCvGwFmD2TMZR+ZNxr7rtlh3kSlfA6ptRT5y
+         xqtU2MkXcQUzBzT59zUkuV3IOep2gmE+VFSiE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680856877;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=VxVjcV3h63tndOVUPeb3nRlZ/9fXaEF82W2eqSGSLJI=;
-        b=wOGHKKTY3uwRLbHQVOUHB0QCgiGBoIh7A1z33vOy2/c/NYUY2UaI9UxElyrLiJ/P9x
-         pjdUhF/lpx9qtwa3prsK/7ooCP2oaUYoLlJjKzDP6R6VwP76nhvfX3uuwBqGBrKTukmK
-         PW0yBC4oPefEZHvhs/9AaCcXaeebwxwUPpsKqmWzI+e83R1ev4OaNIiqA9smz1qoqCTr
-         xNuAu2TNwtKPQaJjUDmzd5w95H6H9blOyyLEyDmodaRylyVue5T4SwkzGa+w6/1zYo8L
-         ciZiBWSZEMRzOnXtljQFMu79wlcIOkpw+xIHGGLmGIttBKQb3OQu+CAaGsw6FtXKq0sU
-         Ez5g==
-X-Gm-Message-State: AAQBX9eR19g18HOLT6KIuxUPXMvRzEX2dSIKZqvRIe5xBqUuTFTnJb6J
-	pekAX+1UfYB8+W+X35hPBYTi7w==
-X-Google-Smtp-Source: AKy350bSWSwQScmsM/h8LpFJejXu9MfCeZuNuD/EyAwGkUUbUfkJUnsF4OXo/c1V7p+WZdaiDjNCQg==
-X-Received: by 2002:a17:906:eec5:b0:906:4739:d73e with SMTP id wu5-20020a170906eec500b009064739d73emr9789990ejb.2.1680856876985;
-        Fri, 07 Apr 2023 01:41:16 -0700 (PDT)
-Received: from ?IPV6:2a02:810d:15c0:828:14a3:366:3172:3c37? ([2a02:810d:15c0:828:14a3:366:3172:3c37])
-        by smtp.gmail.com with ESMTPSA id e13-20020a170906844d00b0090e0a4e1bacsm1814294ejy.159.2023.04.07.01.41.16
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 07 Apr 2023 01:41:16 -0700 (PDT)
-Message-ID: <796300c0-19e9-2c22-8385-1b33a92bf02f@linaro.org>
-Date: Fri, 7 Apr 2023 10:41:15 +0200
+        d=1e100.net; s=20210112; t=1680857166;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=YieoR9GFXBDpW/S/rPrqFewasba9YLxVMGUvduFkZVA=;
+        b=HpbId6TbaNPAqD8UzXEmdyAFpcFstYPPU4qsyMmqpGUJCS998n4DpOurHthPvfXoZ0
+         uQXXb55r1i4cP4ZDmaHK0v3DDx+MVsK0UGfmUsGkzkZmFOkKGkBArZ5mYeTce2xNzw/h
+         i0hvkrxakYC+tRzrKLu6inonEOVIZD6WhozyEc08xshxNF/2E+yY7ZWn39YmY0DBLD6l
+         uPTV13hAk58dL/fwKGxwPi076vokN65IpOqgNaM2Oh0pK05T8Quo5qJvXkmLBPlSR8lQ
+         FN/D/b7ufpY1Rps7xzAnrkhcE0kb+WgtWqOg7fGc0DJLMDglMOmFAFp8OLuzpsAcUMGM
+         7oKA==
+X-Gm-Message-State: AAQBX9fHfX2BaDle+fRUlhTe9vwPif7EchPeVZ2hhdbIhjvE0UChr+gl
+	MwaHsuQMTTPGJXXnXenzOA3nyJh1fjBZuRHsWm2kVg==
+X-Google-Smtp-Source: AKy350ZOOBmSxsKL7GOH768+6XTswkcSHxuK2zOLiz0MKREMKOgQK0H6K8Ydycm9M3k+WwLYZcZYqhXiE5O4Eing4lk=
+X-Received: by 2002:a1f:9f85:0:b0:435:56e:154e with SMTP id
+ i127-20020a1f9f85000000b00435056e154emr726664vke.1.1680857166037; Fri, 07 Apr
+ 2023 01:46:06 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH] memory: mtk-smi: mt8365: Add SMI Support
-Content-Language: en-US
-To: Alexandre Mergnat <amergnat@baylibre.com>, Yong Wu
- <yong.wu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-References: <20230407-smi-driver-v1-1-036d6d8e8993@baylibre.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230407-smi-driver-v1-1-036d6d8e8993@baylibre.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+References: <20230328031037.1361048-1-wenst@chromium.org> <9ab8d176-378c-9720-3794-c710e2bd6272@linaro.org>
+In-Reply-To: <9ab8d176-378c-9720-3794-c710e2bd6272@linaro.org>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Fri, 7 Apr 2023 16:45:55 +0800
+Message-ID: <CAGXv+5H7QdNJ0Pj4xS_Ce=N63Csd1rCc+BoFJALyETLsA521NQ@mail.gmail.com>
+Subject: Re: [PATCH] thermal/drivers/mediatek/lvts_thermal: only update
+ registered thermal zones
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: "Rafael J. Wysocki" <rafael@kernel.org>, Amit Kucheria <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Balsam CHIHI <bchihi@baylibre.com>, linux-pm@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230407_014123_645517_FC6EF328 
-X-CRM114-Status: GOOD (  10.43  )
+X-CRM114-CacheID: sfid-20230407_014608_536162_E021A860 
+X-CRM114-Status: GOOD (  22.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,24 +89,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 07/04/2023 10:39, Alexandre Mergnat wrote:
-> Add MT8365 SMI common support.
-> 
-> Reviewed-by: Yong Wu <yong.wu@mediatek.com>
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-> ---
-> This serie add MT8365 SMI common driver support only because, to be
-> bisectable and avoid issue, this driver change and the related change in
-> the DTS should be applied in the right order (driver first).
-> 
-> Here the related DTS change: [1]
+On Sun, Apr 2, 2023 at 4:34=E2=80=AFAM Daniel Lezcano <daniel.lezcano@linar=
+o.org> wrote:
+>
+> On 28/03/2023 05:10, Chen-Yu Tsai wrote:
+> > It's possible for some sensors or thermal zones to not be registered,
+> > either because they are unused or not fully declared in the device tree=
+.
+> > Nevertheless the driver enables interrupts for all sensors. If an
+> > interrupt happens for an not-registered sensor, the driver would end up
+> > updating a non-existent thermal zone, which leads to a NULL pointer
+> > dereference.
+> >
+> > Change it so that only registered thermal zones get updated.
+>
+> Why not change the interrupt initialization ?
 
-1. Where are the bindings? They always come with the driver.
-2. Where is the changelog? What happened with requested changes? How a
-review tag can appear on v1?
+I'll send another patch for that.
 
+However I think the part in this patch should still be fixed?
 
-Best regards,
-Krzysztof
+ChenYu
 
+> > Fixes: f5f633b18234 ("thermal/drivers/mediatek: Add the Low Voltage The=
+rmal Sensor driver")
+> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> > ---
+> >   drivers/thermal/mediatek/lvts_thermal.c | 7 ++++++-
+> >   1 file changed, 6 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/=
+mediatek/lvts_thermal.c
+> > index d87d3847c7d0..bf59174e18d3 100644
+> > --- a/drivers/thermal/mediatek/lvts_thermal.c
+> > +++ b/drivers/thermal/mediatek/lvts_thermal.c
+> > @@ -415,9 +415,14 @@ static irqreturn_t lvts_ctrl_irq_handler(struct lv=
+ts_ctrl *lvts_ctrl)
+> >               if (!(value & masks[i]))
+> >                       continue;
+> >
+> > +             iret =3D IRQ_HANDLED;
+> > +
+> > +             /* sensor might not exist (bogus interrupt) or not be reg=
+istered */
+> > +             if (!lvts_ctrl->sensors[i].tz)
+> > +                     continue;
+> > +
+> >               thermal_zone_device_update(lvts_ctrl->sensors[i].tz,
+> >                                          THERMAL_TRIP_VIOLATED);
+> > -             iret =3D IRQ_HANDLED;
+> >       }
+> >
+> >       /*
+>
+> --
+> <http://www.linaro.org/> Linaro.org =E2=94=82 Open source software for AR=
+M SoCs
+>
+> Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+> <http://twitter.com/#!/linaroorg> Twitter |
+> <http://www.linaro.org/linaro-blog/> Blog
+>
 
