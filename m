@@ -4,65 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B067C77B61
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Apr 2023 17:14:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 047C2C6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Apr 2023 17:50:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nniOBBhCpg3vO3P8CPJrDjFF0lv6AG7x8KNvC65wURQ=; b=WODkWGeFiLW1eC/jwvRtuwlVEH
-	H3Re3PfpmxIuRAQQoByr2aZch3v3ZSYVSblepRPH/RFKQ7FhgcqvI1lrRKL33SmI4HZWqHH0PyYdt
-	hjUDfyDeOTJ1WMbNcPub4NFw28upF9VTP92vZqt9Cf6SNZfXC8DDxRrXg9iEj5ctvu6LfZLrFEUUv
-	uYTDK4bDbFjkjbzFDWYWp5Kh2kIHSvANbSdhYXPRkV10vzi+wU9lLD5WG4Akoy4HGpNg323VDIkkE
-	HnzPcZL+ZBZkOuuc+FvCYf1C1f8417sJEH5jHqvcV6YngJinYjvuz8KbHu+1mMg47SIqU597k20hW
-	DnJvfdQA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eJzkrQgSJLoh68CvGvp1JznAA6lKkLejE1Wur3zdskg=; b=V6bXMkWWkmZDgB0CY43YYBvmjV
+	5zIdVIidVVVj53Hn8a1/nlM1ClOdnVKK8JZHAlEY+iPA8lnPO0wOsTmbfPr97yK5orjOSPXXA3vip
+	GtoVmpHCCLyROPth6bQ/iV+nDww17zBHzuS4Z/kK2sU4vp1FDLDOhk4SgiNOfAposnLvOaBm40zFV
+	0biZtghQur7hVkLXB7BIQ3Wgh8eC2nUObEdqXQKmrh7S1QNEeVmoXj5JlWAmtUv8hz+cyj5BMGhZP
+	oCWBq91bKhpgyZZXmm/jolNtYqhV2UgNLNZmiArZqAvZWltJrsCNXOj/1qEuRvNOSmIgmzxQm6rVI
+	fybQSM2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkpfM-00AmsM-2u;
-	Fri, 07 Apr 2023 17:14:24 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pkqEb-00AqVZ-02;
+	Fri, 07 Apr 2023 17:50:49 +0000
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkpfJ-00Amrj-0M;
-	Fri, 07 Apr 2023 17:14:22 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id E80A064111;
-	Fri,  7 Apr 2023 17:14:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8B40FC433EF;
-	Fri,  7 Apr 2023 17:14:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1680887659;
-	bh=mTjUkJHoStDJ71hbzUhqyq+k2a+V8FszEAxAcLGiYWM=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=aSGMFG98DXYw1cTVW5PzUBQ0l55Y85Qgsiay2RUWlJehbqwgVynC0iwEp/6qvTY8+
-	 KAGGQoffpOVP23UE8Y7GcKbHd8cche03jj118059pctdckzCtY+ygaWb/B8qTRdh5a
-	 PSY5x5S/dW16H4g9qL57UdojQXRjjNTx5tqrRmqBEMo53aG6m1DqnZYr6b4Fe+jjez
-	 b83olozb9+YdaqqwiyIShCzPHQN2bK3RC+DbHAi05/rW6gvfq5vJ+2eALhllSUBlH7
-	 FoGbR05ust3wg2sfeuL7GBKk4IGTLi4OfWQGPgcAsoNsgIVxtlSZbnf8nr4EwyQsoR
-	 golPKZe7UYtKw==
-Date: Fri, 7 Apr 2023 18:29:34 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: ChiaEn Wu <chiaen_wu@richtek.com>
-Cc: <lars@metafoo.de>, <matthias.bgg@gmail.com>,
- <angelogioacchino.delregno@collabora.com>, <linux-iio@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <peterwu.pub@gmail.com>,
- <cy_huang@richtek.com>
-Subject: Re: [PATCH v2] iio: adc: mt6370: Fix ibus and ibat scaling value of
- some specific vendor ID chips
-Message-ID: <20230407182934.271cbfe4@jic23-huawei>
-In-Reply-To: <1680750531-29365-1-git-send-email-chiaen_wu@richtek.com>
-References: <1680750531-29365-1-git-send-email-chiaen_wu@richtek.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.37; x86_64-pc-linux-gnu)
+	id 1pkqEX-00AqUV-0n
+	for linux-mediatek@lists.infradead.org;
+	Fri, 07 Apr 2023 17:50:47 +0000
+Received: by mail-pj1-x1033.google.com with SMTP id 98e67ed59e1d1-24059dcdd90so126258a91.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 07 Apr 2023 10:50:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1680889843;
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:from:to:cc:subject:date:message-id:reply-to;
+        bh=eJzkrQgSJLoh68CvGvp1JznAA6lKkLejE1Wur3zdskg=;
+        b=XH0UjXnkmfvcZqjTewbnJtcDWSFSJA41wC6V9r5Jriy4njsRmD3H27O3QYYV4AMbUm
+         tXDMOylFQmjGVHAvVJDVThyrSJpCbK15BdyXAw/RTy3qqsHIR6h5GbuWp0D0RbsJJMyQ
+         tYigUWAUK0wuJZ9Ln/RC6nNHR0Xc5/0j6baPRmmPBKLWI8mS58J1JBnQoFDh2fV6gAVB
+         aCWwMbSzJaVd3dqKFSysqW62WCaXVoVFyPNeXhO/N8IkyefOB7epKgE0KjIbL9lO4E2A
+         nOD8OiTN+7/mE4Ln7W/1Og55k8VV9viFgsgqrLPhDjnLlEirWNgizYb/4I63kiVYkSRp
+         /wmA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680889843;
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=eJzkrQgSJLoh68CvGvp1JznAA6lKkLejE1Wur3zdskg=;
+        b=tlRq1bFnE/0hCq8DsmIDynv8RJc6nEfvL5bzgEjnF2YG3SpIRVMt8Ru1xjrODrG9Y2
+         NEZ0mnbu3A/jbYIgX8esa17U3oboITV5oZKBzXZi9OpXvmwRPrclQkxbcAU9xBxg8v8j
+         IZNfu2ks8Ou/TxceU+NC8WeCLqskZG0ZBio09M8v1dDkFPpUdiNo+epI5nQRL2kde95Q
+         iYgFuuvPeCE6W1S9MGv0+wtFEi2MsbzymF3EjSpg5vd2PztvgHa4xbrgPU0zjbYpL0Md
+         Bto0OBc2YJdWdn3UNCGpeS0MYj/ykzkvOfsAlxacH7B3xpvocFCJXv9wtCyaiDzKxs/o
+         iWgQ==
+X-Gm-Message-State: AAQBX9dX7BXz5yP17hBdY4ycAULwfcaHBRm96GOy1Tz8IrqD5fVO7Egr
+	X0BtFdj/LdmATtiZ1r7PDCX2KA==
+X-Google-Smtp-Source: AKy350aspk9YnMVy5hked+xx58M1c9hroC6snupKIoerfp0YWnXGXrL18Plz3ceLDw7pQ7fY4UQTgQ==
+X-Received: by 2002:aa7:9ec4:0:b0:626:7c43:7cb8 with SMTP id r4-20020aa79ec4000000b006267c437cb8mr3003966pfq.20.1680889842767;
+        Fri, 07 Apr 2023 10:50:42 -0700 (PDT)
+Received: from localhost (63-228-113-140.tukw.qwest.net. [63.228.113.140])
+        by smtp.gmail.com with ESMTPSA id e18-20020aa78c52000000b0062a474cd46asm3298198pfd.137.2023.04.07.10.50.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 07 Apr 2023 10:50:42 -0700 (PDT)
+From: Kevin Hilman <khilman@baylibre.com>
+To: Alexandre Mergnat <amergnat@baylibre.com>, Wim Van Sebroeck
+ <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Chaotian Jing
+ <chaotian.jing@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>, Wenbin
+ Mei <wenbin.mei@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>,
+ Zhiyong Tao <zhiyong.tao@mediatek.com>, Bernhard =?utf-8?Q?Rosenkr=C3=A4n?=
+ =?utf-8?Q?zer?=
+ <bero@baylibre.com>
+Cc: linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-mmc@vger.kernel.org,
+ linux-gpio@vger.kernel.org, Alexandre Bailon <abailon@baylibre.com>,
+ Fabien Parent <fparent@baylibre.com>, Amjad Ouled-Ameur
+ <aouledameur@baylibre.com>, Alexandre Mergnat <amergnat@baylibre.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH v5 00/12] Improve the MT8365 SoC and EVK board support
+In-Reply-To: <20230203-evk-board-support-v5-0-1883c1b405ad@baylibre.com>
+References: <20230203-evk-board-support-v5-0-1883c1b405ad@baylibre.com>
+Date: Fri, 07 Apr 2023 10:50:41 -0700
+Message-ID: <7h355b1szy.fsf@baylibre.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230407_101421_243925_046B456E 
-X-CRM114-Status: GOOD (  29.54  )
+X-CRM114-CacheID: sfid-20230407_105045_499186_11B49BCB 
+X-CRM114-Status: UNSURE (   9.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,162 +104,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 6 Apr 2023 11:08:51 +0800
-ChiaEn Wu <chiaen_wu@richtek.com> wrote:
+Alexandre Mergnat <amergnat@baylibre.com> writes:
 
-> The scale value of ibus and ibat on the datasheet is incorrect due to the
-> customer report after the experimentation with some specific vendor ID
-> chips.
-> 
-> Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
+> This commits are based on the Fabien Parent <fparent@baylibre.com> work.
+>
+> The purpose of this series is to add the following HWs / IPs support for
+> the mt8365-evk board:
+> - Watchdog
+> - Power Management Integrated Circuit "PMIC" wrapper
+> - MT6357 PMIC
+> - MultiMediaCard "MMC" & Secure Digital "SD" controller
+> - USB controller
+> - Ethernet MAC controller
+>
+> Add CPU Freq & IDLE support for this board.
 
-Hi,
+Tested-by: Kevin Hilman <khilman@baylibre.com>
 
-Please give a fixes tag to aid backporting to right stable branches.
+Thanks for providing the branch with the dependencies.  With that, I
+tested basic build & boot on mt8365-evk, and things are working as
+expected.
 
-A minor formatting suggestion inline.  Otherwise looks fine to me.
+I also enabled `CONFIG_USB_ETH=y` to test with USB ethernet gadget, and
+was able use NFSroot, so that's working well also.
 
-Thanks,
-
-Jonathan
-
-
-> ---
-> v2:
-> - Move 'get_vendor_info' after iio_priv allocation done
-> - For the special case, bypass indent, make it out-of-line
-> - For a simple return, add a blank line
-> - Drop else
-> ---
->  drivers/iio/adc/mt6370-adc.c | 45 ++++++++++++++++++++++++++++++++++++++++++--
->  1 file changed, 43 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/iio/adc/mt6370-adc.c b/drivers/iio/adc/mt6370-adc.c
-> index bc62e5a..ae5cdff 100644
-> --- a/drivers/iio/adc/mt6370-adc.c
-> +++ b/drivers/iio/adc/mt6370-adc.c
-> @@ -19,6 +19,7 @@
->  
->  #include <dt-bindings/iio/adc/mediatek,mt6370_adc.h>
->  
-> +#define MT6370_REG_DEV_INFO		0x100
->  #define MT6370_REG_CHG_CTRL3		0x113
->  #define MT6370_REG_CHG_CTRL7		0x117
->  #define MT6370_REG_CHG_ADC		0x121
-> @@ -27,6 +28,7 @@
->  #define MT6370_ADC_START_MASK		BIT(0)
->  #define MT6370_ADC_IN_SEL_MASK		GENMASK(7, 4)
->  #define MT6370_AICR_ICHG_MASK		GENMASK(7, 2)
-> +#define MT6370_VENID_MASK		GENMASK(7, 4)
->  
->  #define MT6370_AICR_100_mA		0x0
->  #define MT6370_AICR_150_mA		0x1
-> @@ -47,6 +49,10 @@
->  #define ADC_CONV_TIME_MS		35
->  #define ADC_CONV_POLLING_TIME_US	1000
->  
-> +#define MT6370_VID_RT5081		0x8
-> +#define MT6370_VID_RT5081A		0xA
-> +#define MT6370_VID_MT6370		0xE
-> +
->  struct mt6370_adc_data {
->  	struct device *dev;
->  	struct regmap *regmap;
-> @@ -55,6 +61,7 @@ struct mt6370_adc_data {
->  	 * from being read at the same time.
->  	 */
->  	struct mutex adc_lock;
-> +	unsigned int vid;
->  };
->  
->  static int mt6370_adc_read_channel(struct mt6370_adc_data *priv, int chan,
-> @@ -98,6 +105,22 @@ static int mt6370_adc_read_channel(struct mt6370_adc_data *priv, int chan,
->  	return ret;
->  }
->  
-> +static int mt6370_adc_get_ibus_scale(struct mt6370_adc_data *priv)
-> +{
-> +	if (priv->vid == MT6370_VID_RT5081  || priv->vid == MT6370_VID_RT5081A || priv->vid == MT6370_VID_MT6370)
-> +		return 3350;
-> +
-> +	return 3875;
-> +}
-> +
-> +static int mt6370_adc_get_ibat_scale(struct mt6370_adc_data *priv)
-> +{
-> +	if (priv->vid == MT6370_VID_RT5081  || priv->vid == MT6370_VID_RT5081A || priv->vid == MT6370_VID_MT6370)
-Line too long.  You could wrap it, but perhaps even better to just make this a switch
-statement as that will be easier to enhance if we have more cases in future without
-a lot of churn.
-
-	switch (priv->vid) {
-	case MT6370_VID_RT5081:
-	case MT6370_VID_RT5081A:
-	case MT6370_VID_RT6370:
-		return 2680;
-	default:
-		return 3870; 
-	}
-
-Same for the other similar case above.
-
-> +		return 2680;
-> +
-> +	return 3870;
-> +}
-> +
->  static int mt6370_adc_read_scale(struct mt6370_adc_data *priv,
->  				 int chan, int *val1, int *val2)
->  {
-> @@ -123,7 +146,7 @@ static int mt6370_adc_read_scale(struct mt6370_adc_data *priv,
->  		case MT6370_AICR_250_mA:
->  		case MT6370_AICR_300_mA:
->  		case MT6370_AICR_350_mA:
-> -			*val1 = 3350;
-> +			*val1 = mt6370_adc_get_ibus_scale(priv);
->  			break;
->  		default:
->  			*val1 = 5000;
-> @@ -150,7 +173,7 @@ static int mt6370_adc_read_scale(struct mt6370_adc_data *priv,
->  		case MT6370_ICHG_600_mA:
->  		case MT6370_ICHG_700_mA:
->  		case MT6370_ICHG_800_mA:
-> -			*val1 = 2680;
-> +			*val1 = mt6370_adc_get_ibat_scale(priv);
->  			break;
->  		default:
->  			*val1 = 5000;
-> @@ -251,6 +274,20 @@ static const struct iio_chan_spec mt6370_adc_channels[] = {
->  	MT6370_ADC_CHAN(TEMP_JC, IIO_TEMP, 12, BIT(IIO_CHAN_INFO_OFFSET)),
->  };
->  
-> +static int mt6370_get_vendor_info(struct mt6370_adc_data *priv)
-> +{
-> +	unsigned int dev_info;
-> +	int ret;
-> +
-> +	ret = regmap_read(priv->regmap, MT6370_REG_DEV_INFO, &dev_info);
-> +	if (ret)
-> +		return ret;
-> +
-> +	priv->vid = FIELD_GET(MT6370_VENID_MASK, dev_info);
-> +
-> +	return 0;
-> +}
-> +
->  static int mt6370_adc_probe(struct platform_device *pdev)
->  {
->  	struct device *dev = &pdev->dev;
-> @@ -272,6 +309,10 @@ static int mt6370_adc_probe(struct platform_device *pdev)
->  	priv->regmap = regmap;
->  	mutex_init(&priv->adc_lock);
->  
-> +	ret = mt6370_get_vendor_info(priv);
-> +	if (ret)
-> +		return dev_err_probe(dev, ret, "Failed to get vid\n");
-> +
->  	ret = regmap_write(priv->regmap, MT6370_REG_CHG_ADC, 0);
->  	if (ret)
->  		return dev_err_probe(dev, ret, "Failed to reset ADC\n");
-
+Kevin
 
