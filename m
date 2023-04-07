@@ -4,90 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73BF8C6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Apr 2023 11:40:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 072BEC76196
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Apr 2023 11:56:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bhp1D4MU620tEuYfWwD9BEmVsWgqQus92qBJwjtxDro=; b=0qnXBBZPPZqWk1UyCf2XUE2N3M
-	xuZaj6JZ5eFKpoYm0PgjO0E24Wt0uzqcwBtrEoux/WKUBjCgsEJFAQsMD/k4PMh/bWbLJVFWRe3KU
-	7p+VP/2ZPSzuRAB7fAyaWTD6G/bPE+PSks7vNE4P/3njI5VDh/y/9mSwH7gYZw9Q1N2d3TQxFwTgi
-	xUXvUQYnuD/rnn9wz0F3ZW77FhY7Fd1sGyxdOzky6+6ELtY7adhflvA+7iOVCNTS3eKI9H1zQtJXV
-	DCo4wGqzu+zpMiWxMOGu4E3DZpj0aSdfuAIRR06BME2lDb/3Ij23SFfzrR9WwR87EqwAs6k8xyR/B
-	jIkDx5tw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=n4yjwe4G2G9/env2LGiwcE/Ce2F1TWlNc2OcCX0hL4A=; b=ESYXJqwfU5fI1dqILu1PQASiy7
+	Q73cEtuVtfMalAc+GJVd1SLcila/b3RL0LV+kurwP1OoTsuN+TJPS+IK8ZLUKrXuprXpMFfoWHaFi
+	SrB0+NiZMEhPVwMd/MXrqlXtpxK+R42Ksa4fwgxICcN2k6jVCGPtPlhFjDaCpPpPRdvWjZpmFgU9q
+	nDhZxEyJySzemW9n4dVexjtl08u8kE9aIZ8F19lX9wNddmlOu77insMmr6b3WNe9E/epRl4KnaZm0
+	eUsJvLINpBZn64P4Rj08nnK66DOR5O623BOFXegwmWrLJqTFeQ+VxWFlZ2b+93g4ssBKJHGYAx2ME
+	/jQCWpMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkkSZ-00A6y7-0I;
-	Fri, 07 Apr 2023 11:40:51 +0000
-Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
+	id 1pkkhL-00A84u-2w;
+	Fri, 07 Apr 2023 11:56:08 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkkSV-00A6x4-01
+	id 1pkkhH-00A83s-0G
 	for linux-mediatek@lists.infradead.org;
-	Fri, 07 Apr 2023 11:40:49 +0000
-Received: by mail-yw1-x112b.google.com with SMTP id 00721157ae682-54bfa5e698eso124946547b3.13
-        for <linux-mediatek@lists.infradead.org>; Fri, 07 Apr 2023 04:40:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1680867643; x=1683459643;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=bhp1D4MU620tEuYfWwD9BEmVsWgqQus92qBJwjtxDro=;
-        b=fFvwxikqEAeHJ1MyF6Mjcy5mzl2OJh63dIxaAB2Eh3YcjM/Owu5lHKJFBUE6cx53n5
-         ge0hlhxbz5JCzOGC7sqHExwugQIn4P86tbebsNoAdBAAZk2t+4qGBnT3jA9uveXp3r3L
-         bhnpYubAipVh0F7oIPpqBSXO3s1J/fsCFbJYA3V8qR9HtOW6umbqHOrD/IH0kF9hou+9
-         Rgcn2cuompVeamLBt3NAPLr1/jiDxRJVX8kZyxeZphYp1Dmme4IHcxzSlWV2WvMAVLUm
-         hTBdY3mZ3//C/vmRayZFAwxnXHagHtuuxkHBEuV0mhQCaMg+UxDguJHFP45fw1kaLBiA
-         Ukxg==
+	Fri, 07 Apr 2023 11:56:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1680868558;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=n4yjwe4G2G9/env2LGiwcE/Ce2F1TWlNc2OcCX0hL4A=;
+	b=E3U7Wh7ECWyrUkS6D/zbhCF147KS4jscbnVtz3mLXfthHIQSMRR6rV2zJVe3e9p8SYknAv
+	GdXcUU1LZWBhjRKm/Bmcqb3OHP8rdAayLynWLjm8qNRoyJrUn4pFWwTq5KU+/jvCk4eYyT
+	L+zRsZKsNjA3HRNIHphkSo0D+btH8Z0=
+Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
+ [209.85.160.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-140-aHPPZUcOP_GYnx4u019v2g-1; Fri, 07 Apr 2023 07:55:57 -0400
+X-MC-Unique: aHPPZUcOP_GYnx4u019v2g-1
+Received: by mail-qt1-f198.google.com with SMTP id l13-20020a05622a174d00b003e4df699997so26505449qtk.20
+        for <linux-mediatek@lists.infradead.org>; Fri, 07 Apr 2023 04:55:57 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680867643; x=1683459643;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=bhp1D4MU620tEuYfWwD9BEmVsWgqQus92qBJwjtxDro=;
-        b=eFL7MT+5kZrUtCBYJfDgeolSG7w6crhUqurPq9NLYPNuiBWhcRBn3rfxQsr9zpAaoz
-         nVDQzVh0OJbybrOkgn47z0mCFsFVOuohAYBujPFC5RanQ0M7RJ9SSyMNvo7ri6bhLCh3
-         1+RpZMBUDEPbo7efPav9iO9pblKR7B7IJIG5CBgpCuYGqSGncsd2D6u7BE6jkJqTVvQC
-         xstLJD+kocLJSx/RKRbjVRGHloQsSQOUZcBknYvV4cDU/YDnjP6j5R65jch0gFPlNb27
-         8cX0QOD+D7WlgU1c866nGcvGLIJh6KR0tuAwwVsuuYnj21eAg4ve8gyQk0qKRYi67Vv7
-         +How==
-X-Gm-Message-State: AAQBX9eXqKfIXq4F5S4KJ3jgBhrb6ovLn1/Il8t5F75ea4iylF4YmEbM
-	x16hRlFvLsj39eav10Pi6RuLLCEaZ/baOjk/pKnUYQ==
-X-Google-Smtp-Source: AKy350YoGyPsHOTAa1wet0tacy28TuEIoDXiA/LQepBDm7Xcz7qo6pPhP3CKaVtCoIyN9Fqb7B2gwVZJiToE8OVA9L8=
-X-Received: by 2002:a81:a783:0:b0:545:7143:2940 with SMTP id
- e125-20020a81a783000000b0054571432940mr1022815ywh.0.1680867643596; Fri, 07
- Apr 2023 04:40:43 -0700 (PDT)
+        d=1e100.net; s=20210112; t=1680868557;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=n4yjwe4G2G9/env2LGiwcE/Ce2F1TWlNc2OcCX0hL4A=;
+        b=PcCBBi0HhJC8K5x0CPcnU1VSK3ZPO7a5ssk/obpgqeP3ya36ZmnIflcTO0Z8gB0Q/h
+         MpL+2w6bEyPz5qv0kkJEWXFrbRnkB2H/qlyvodlBkbBoRpV/PCUQFlwyQl5UbgmAvwQ8
+         5NAEktfrnRZeIbTCtumV/zP+C0WW7bR3euMrFwVkHZPsK+MhRGKpHvT/0g2gcjHIbNum
+         UzGk3TEltVv4QfV2KFi3BRhcjcvjNVKDtgAN0Jm+z/Z0yzJ8b7zaIkAEfQRLXAoQYM08
+         hPvm/hVP7EMnXhtFOBezMgyuQgjpSXIoVjLfNZl4uZsf1gfG0wZbNR50xNcRHcqG4DFf
+         4Chg==
+X-Gm-Message-State: AAQBX9e79xkToJx1b9xj03dvZgISSBtBNAvcLiUle3mXe/qO5b6W/yqH
+	35NRbS8un4nHNEHXwBIzy2vsDXrOfYCI/ga6Cc6maAGN3GntF6vHzFrpv3EZlVjrah2srEMldQy
+	qA6zVr+3aqdfterGX4zN81SbqfEZDSyk5
+X-Received: by 2002:a05:622a:1646:b0:3bf:b70b:7804 with SMTP id y6-20020a05622a164600b003bfb70b7804mr3553533qtj.25.1680868556874;
+        Fri, 07 Apr 2023 04:55:56 -0700 (PDT)
+X-Google-Smtp-Source: AKy350bl0Z3EzCJjIcLXRO1sAvzdukxxqrzrxNB4Iggt9a8A/nFDAbH/D/tViLjUBbsmcHprRWWaUQ==
+X-Received: by 2002:a05:622a:1646:b0:3bf:b70b:7804 with SMTP id y6-20020a05622a164600b003bfb70b7804mr3553498qtj.25.1680868556613;
+        Fri, 07 Apr 2023 04:55:56 -0700 (PDT)
+Received: from dell-per740-01.7a2m.lab.eng.bos.redhat.com (nat-pool-bos-t.redhat.com. [66.187.233.206])
+        by smtp.gmail.com with ESMTPSA id t186-20020a3746c3000000b00746ae84ea6csm1256321qka.3.2023.04.07.04.55.55
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 07 Apr 2023 04:55:56 -0700 (PDT)
+From: Tom Rix <trix@redhat.com>
+To: lgirdwood@gmail.com,
+	broonie@kernel.org,
+	perex@perex.cz,
+	tiwai@suse.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	colin.i.king@gmail.com,
+	fshao@chromium.org,
+	jiaxin.yu@mediatek.com,
+	allen-kh.cheng@mediatek.com
+Cc: alsa-devel@alsa-project.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Tom Rix <trix@redhat.com>
+Subject: [PATCH] ASoC: mediatek: mt8186: set variable aud_pinctrl to static
+Date: Fri,  7 Apr 2023 07:55:53 -0400
+Message-Id: <20230407115553.1968111-1-trix@redhat.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-References: <20230203-evk-board-support-v4-0-5cffe66a38c0@baylibre.com>
- <20230203-evk-board-support-v4-2-5cffe66a38c0@baylibre.com> <CACRpkdYSpMD-V0QNGwtiKCA4KAedYfmFpvdCHWhjST9uTricTg@mail.gmail.com>
-In-Reply-To: <CACRpkdYSpMD-V0QNGwtiKCA4KAedYfmFpvdCHWhjST9uTricTg@mail.gmail.com>
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Fri, 7 Apr 2023 13:40:32 +0200
-Message-ID: <CAFGrd9ox3BftUxPai8WhWgf5UefTwnqnLsdo8kUHMYphB7nOTA@mail.gmail.com>
-Subject: Re: [PATCH v4 02/11] dt-bindings: pinctrl: mediatek,mt8365-pinctrl:
- add drive strength property
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, 
-	Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Chaotian Jing <chaotian.jing@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>, 
-	Wenbin Mei <wenbin.mei@mediatek.com>, Zhiyong Tao <zhiyong.tao@mediatek.com>, 
-	=?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>, 
-	linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-mmc@vger.kernel.org, 
-	linux-gpio@vger.kernel.org, Alexandre Bailon <abailon@baylibre.com>, 
-	Fabien Parent <fparent@baylibre.com>, Amjad Ouled-Ameur <aouledameur@baylibre.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"; x-default=true
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230407_044047_262976_0FC358DF 
-X-CRM114-Status: GOOD (  13.14  )
+X-CRM114-CacheID: sfid-20230407_045603_250226_EE2BE516 
+X-CRM114-Status: GOOD (  10.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,45 +109,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le mar. 4 avr. 2023 =C3=A0 15:55, Linus Walleij <linus.walleij@linaro.org> =
-a =C3=A9crit :
->
-> On Fri, Mar 31, 2023 at 7:55=E2=80=AFPM Alexandre Mergnat <amergnat@bayli=
-bre.com> wrote:
->
-> > This SoC is able to drive the following output current:
-> > - 2 mA
-> > - 4 mA
-> > - 6 mA
-> > - 8 mA
-> > - 10 mA
-> > - 12 mA
-> > - 14 mA
-> > - 16 mA
-> >
-> > Then drive-strength property is set with enum to reflect its HW capabil=
-ity.
-> >
-> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
-> > Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-> > Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> > Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
->
-> This patch does not apply to my devel branch:
-> https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.git/=
-log/?h=3Ddevel
->
-> Can you please rebase and resend?
+smatch reports
+sound/soc/mediatek/mt8186/mt8186-afe-gpio.c:14:16: warning: symbol
+  'aud_pinctrl' was not declared. Should it be static?
 
-According to your suggestion on the other serie [1], I rebased this
-patch and added it to the other serie [2] to simplify the process
+This variable is only used in one file so should be static.
 
-Regards,
-Alexandre
+Signed-off-by: Tom Rix <trix@redhat.com>
+---
+ sound/soc/mediatek/mt8186/mt8186-afe-gpio.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-[1]: https://lore.kernel.org/all/CACRpkdYndXqTXrTakwv1mbvJBs-tG+pjOpLLCgS9c=
-rE0aBj0jA@mail.gmail.com/
-[2]: https://lore.kernel.org/all/20230327-cleanup-pinctrl-binding-v3-0-6f56=
-d5c7a8de@baylibre.com/
+diff --git a/sound/soc/mediatek/mt8186/mt8186-afe-gpio.c b/sound/soc/mediatek/mt8186/mt8186-afe-gpio.c
+index 20b9f5d810ec..f12e91cc4fcf 100644
+--- a/sound/soc/mediatek/mt8186/mt8186-afe-gpio.c
++++ b/sound/soc/mediatek/mt8186/mt8186-afe-gpio.c
+@@ -11,7 +11,7 @@
+ #include "mt8186-afe-common.h"
+ #include "mt8186-afe-gpio.h"
+ 
+-struct pinctrl *aud_pinctrl;
++static struct pinctrl *aud_pinctrl;
+ 
+ enum mt8186_afe_gpio {
+ 	MT8186_AFE_GPIO_CLK_MOSI_OFF,
+-- 
+2.27.0
+
 
