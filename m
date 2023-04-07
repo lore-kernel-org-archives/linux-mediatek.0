@@ -4,71 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77F14C76196
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Apr 2023 09:06:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C925EC6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Apr 2023 09:07:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=s5LyKuZllq6yvjm88MKxfy1W+Qb9ePsyfbWf7WYRswA=; b=aiep+08wdYpsLSPFNYJwwGJL27
-	oW5sHrmmZj0UwC1Q3dKvy/xalj/uC2wFBL64JKQyfZEMuBlmqviORSHoWXTvW5Daf6VrTEoWF2l24
-	hj11e5WVQ973P8UBglHIM+mCnZV+NxylgiySa934vB2fVhM3g4ICrpkBhOmLgPM1kBc+3MymoWKDn
-	CO9IyHEL58Tqfo7eNn51Zo4tEpYau+E2yBtg7UhNvvyjtq+pR8m8d0HDcMs4HN7fMbA7EqK9/2xw8
-	7hZ59xr+PPaKkThiKUzI3I4PXjQOeAizCRTCP1+JsUIHhPvI0VWLPzLpHm2oI64bPyekIIJfOv3XG
-	+BZJxTVQ==;
+	bh=6BxRk1PJc+XW+qEn8Ij5zM9MBUl9XatvAPXfsp+KF0k=; b=HXoKynxeC+oCqGL56EP1nuYFUx
+	+HpsXv+XzU25GSWtqyQ00feSlux1jAuu31pSY2w+jHwtsbdR37cDxKkQEARQBjG3GXa3mfmM00ICA
+	ktgVNYuyIjpQeg+G73ykxTQuV2iGTgsYPcM2Ye5I0yHqTc+aF3wOk71gUtn0zrGRMBfOZaHBi0vxf
+	ktYbcUFlquOuVG4MCxevNAzCiQ3shvKcuxqTVzSURBOt0SJUPBp3MAhzcp6Z8T5caFxmp9ny7J9du
+	gHqvemmsuMkbffwPPPmEK5nXvzdzPpLuGWKivM5ka8/u28+WqLO8dJaJPFvgX5QJBP7dw/3/eHHKR
+	43DbRC8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pki2g-009aow-1g;
-	Fri, 07 Apr 2023 09:05:58 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pki42-009bHA-2w;
+	Fri, 07 Apr 2023 09:07:22 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pki2c-009amr-29;
-	Fri, 07 Apr 2023 09:05:56 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id CCA7666031CF;
-	Fri,  7 Apr 2023 10:05:52 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1680858353;
-	bh=laCsmRgchMhCg4Gn7heh1gDxcLUQM5vkkYCEL4cE2rY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ABIEL/tKYEU2m+l4zbFSd1n9OYNlKBMdE0FOGDMbxRL8xlNqqDpCNIuAFcFNbZGWH
-	 E0VWwR3JX5Z4L3oCQGLyIR0jO66vQmvnR3km0sagMukXaP1Bd4Vz5IHSvhlHi5L9iV
-	 hR2k7gviX75gtxbVUNbyYkUA6MZVU1aJ8AEKzFk6NjBtYGiG6O3UXnured/F5VIwoJ
-	 qAfvBvsMXgqaWhgrgC22SA96/a8TzaM8s40+pJMfaXElOb/l4Eom9w3mZ+WQRJknCz
-	 +yzyooP97k30It4qotA3VhGtJf6gj9RapGXE97ZD/MdYVaGgpsBTxqlf7TGP3HS6pY
-	 27Ak9I7lkmZYg==
-Message-ID: <15befa07-7f17-23b0-9141-a7ae8ee70c71@collabora.com>
-Date: Fri, 7 Apr 2023 11:05:49 +0200
+	id 1pki3z-009bFc-1m
+	for linux-mediatek@lists.infradead.org;
+	Fri, 07 Apr 2023 09:07:21 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-932072d4c00so210199966b.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 07 Apr 2023 02:07:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1680858438;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=6BxRk1PJc+XW+qEn8Ij5zM9MBUl9XatvAPXfsp+KF0k=;
+        b=nkw+ddycbW5GjtdYGmkun62fRdFQENsmzY6BQjEiOlj8CA7TBenBvvXCinnKeAVPnW
+         e3WureIZ4KLMhI/pJRQaDe7kvwwjrRtW3RLdcLBm2604TpgQLsn5FBK3s4XG2IxOfxwV
+         qhiX67+b7XRHjv5s////3QhTRmAkz3WgSplFukprZLA/nFDKK3TSPWBVR5eonu9kO7fN
+         Irm9/TTEtC/nyGuzI5xnvumhfqfGUUNf3JiZLwkS8SZZGV+cV8944LvYPQFwYv2bYB9d
+         taRWaETWQxS88AOebWZD2RNJx9gFFMQgKMJJu7LoS+4tiAaFmEqgpP3cNs/2NDjd+1bH
+         EiYg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680858438;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=6BxRk1PJc+XW+qEn8Ij5zM9MBUl9XatvAPXfsp+KF0k=;
+        b=yTqTk6NOVSk6MKdVToUb/ZYuuDz3P+t1gaFVV8nd19snMh4wQ8iaSlcApXDkBI52J5
+         ZrjTe/D7BhuvYRJFT06QE/crt0wUgaz0R5Gki5yloNimW9V4LW3qh62lvFKtnn1wAb7V
+         iKOV7ysVex3S0QOHW28D9k6mtcFEAUflGAQarrJC9pZ2eQxwQheAoYOYj8j9VBUIEv2C
+         dawx90+qyevfKPSetRcpD4Fr3rNRHP8++Fh0zu/hgpQ4jA7vpewb6z82IBt+F/NoKvOk
+         YcmeGCWJHPvTqTiFVD77f0s82vtmlGi+7Dh1/3qvsktOUmSqMpqXxMs1Rp8ufQHIlGw0
+         nESg==
+X-Gm-Message-State: AAQBX9dmYZBRvl5rVkECyYZ9Q/XG2C2CdhsBWzkx0zu498s4aZLFdHPr
+	sWb9sPmT9wbav/h2OmPniB7SLw==
+X-Google-Smtp-Source: AKy350Yp72jRlPW6PS3fGi3S7qmBR7ADa8EpkJ1qdw9IUSi7baFQV7muxP54AqpFgd65vqFrgqsC4w==
+X-Received: by 2002:a50:fb8b:0:b0:4fd:29a1:6a58 with SMTP id e11-20020a50fb8b000000b004fd29a16a58mr2318193edq.19.1680858437893;
+        Fri, 07 Apr 2023 02:07:17 -0700 (PDT)
+Received: from ?IPV6:2a02:810d:15c0:828:14a3:366:3172:3c37? ([2a02:810d:15c0:828:14a3:366:3172:3c37])
+        by smtp.gmail.com with ESMTPSA id b20-20020a056402351400b004bf5981ef3dsm1619711edd.94.2023.04.07.02.07.16
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 07 Apr 2023 02:07:17 -0700 (PDT)
+Message-ID: <951841d3-59a4-fa86-5b45-46afdb2942dd@linaro.org>
+Date: Fri, 7 Apr 2023 11:07:16 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.1
-Subject: Re: [PATCH v2 1/2] dt-bindings: usb: mtk-xhci: add an optional frame
- count clock
+ Thunderbird/102.9.0
+Subject: Re: [PATCH 3/7] dt-bindings: net: dsa: mediatek,mt7530: add port
+ bindings for MT7988
 Content-Language: en-US
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Rob Herring <robh+dt@kernel.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+ Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Mathias Nyman <mathias.nyman@intel.com>, linux-usb@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Daniel Golle <daniel@makrotopia.org>, Landen Chao
+ <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>
+Cc: erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- Tianping Fang <tianping.fang@mediatek.com>
-References: <20230407062406.12575-1-chunfeng.yun@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230407062406.12575-1-chunfeng.yun@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230406080141.22924-1-arinc.unal@arinc9.com>
+ <20230406080141.22924-3-arinc.unal@arinc9.com>
+ <23c8c4b5-baaa-b72b-4103-b415d970acf2@linaro.org>
+ <5b3a10ff-e960-1c6e-3482-cb25200c83c6@arinc9.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <5b3a10ff-e960-1c6e-3482-cb25200c83c6@arinc9.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230407_020554_884373_24B34406 
-X-CRM114-Status: UNSURE (   7.20  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230407_020719_612362_B8C58D41 
+X-CRM114-Status: GOOD (  18.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,11 +110,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 07/04/23 08:24, Chunfeng Yun ha scritto:
-> Add optional clock 'frmcnt_ck' used on 4nm or advanced process SoC
+On 06/04/2023 21:18, Arınç ÜNAL wrote:
+> On 6.04.2023 22:07, Krzysztof Kozlowski wrote:
+>> On 06/04/2023 10:01, arinc9.unal@gmail.com wrote:
+>>> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+>>>
+>>> The switch on MT7988 has got only port 6 as a CPU port. The only phy-mode
+>>> to be used is internal. Add this.
+>>>
+>>> Some bindings are incorrect for this switch now, so move them to more
+>>> specific places.
+>>>
+>>> Address the incorrect information of which ports can be used as a user
+>>> port. Any port can be used as a user port.
+>>>
+>>> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+>>> ---
+>>>   .../bindings/net/dsa/mediatek,mt7530.yaml     | 63 ++++++++++++++-----
+>>>   1 file changed, 46 insertions(+), 17 deletions(-)
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+>>> index 7045a98d9593..605888ce2bc6 100644
+>>> --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+>>> +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+>>> @@ -160,22 +160,6 @@ patternProperties:
+>>>         "^(ethernet-)?port@[0-9]+$":
+>>>           type: object
+>>>   
+>>> -        properties:
+>>> -          reg:
+>>> -            description:
+>>> -              Port address described must be 5 or 6 for CPU port and from 0 to 5
+>>> -              for user ports.
+>>> -
+>>> -        allOf:
+>>> -          - if:
+>>> -              required: [ ethernet ]
+>>> -            then:
+>>> -              properties:
+>>> -                reg:
+>>> -                  enum:
+>>> -                    - 5
+>>> -                    - 6
+>>> -
+>>
+>> I have doubts that the binding is still maintainable/reviewable. First,
+>> why do you need all above patterns after removal of entire contents?
 > 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> The 'type: object' item is still globally used. I'd have to define that 
+> on each definitions, I suppose?
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Doesn't it come from dsa.yaml/dsa-port.yaml schema?
+
+> 
+>>
+>> Second, amount of if-then-if-then located in existing blocks (not
+>> top-level) is quite big. I counted if-then-using defs, where defs has
+>> patternProps-patternProps-if-then-if-then-properties.... OMG. :)
+> 
+> Yup, not much to do if we want to keep the information. I'm still 
+> maintaining this though. ¯\_(ツ)_/¯
+
+Maybe it should be split into few bindings sharing common part.
+
+Best regards,
+Krzysztof
 
 
