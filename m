@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6741EC77B6C
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Apr 2023 13:48:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9638FC77B61
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Apr 2023 13:48:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KrhVwFwdiy8PafsiMhkpCPuLOjFFrIY15KiQQTf11aU=; b=ArQrdT4apXs3x5
-	eQ+QgneGDFnP0pyt5BRouhe9HbaZsqFE+NeMvyllzLx1OMQH5z7RwB/PW5wRE11wR6ME7BpIPLFmT
-	xqnqtHKcJXcMSws228a5AFD1XtbnxOIruzq0XIwzN6vy2ntlQCXC3Xysphmx37vg2jAGz5C27xEK2
-	rcgGmn0ZoZYMSKbMJlr2+ayHgDGiw6aF/B/4XOj1pyCzZaKZOCzgvJ5Pasedons3kvUW/bguHlZtB
-	IEHhgD/1Crhg/zb5ANl9qyQkZhqcMYaGPqdyHxlR5IyDWuwm4atsmwygfockRdi/MA781TuSrO4Sk
-	JevpccQMCXk+38u1mU5Q==;
+	List-Owner; bh=+1HASBb71XtLwecn3CRcGVRneQXdr8W/qyVtG8y0vZQ=; b=Pv7R99wF4H6xxz
+	uSWkNAudTu2nz8m+Fh9e35k7aM+ldX/yfQRYU5u6Gp+znXy0wLQzak5AAtt0Ol/lWpNTneB74qVDC
+	unwWT1kLBA4GUZD/dOBXZCUE4Q8g4H5jag25Gkokos2bB5sW/VPDU5QJV0xcqL/6dr36M8oM/3ON+
+	pS9+5G5Vu7JtaXijklFXJ/S4fpNEawPhvoZud1A8nFVProIzvBuddaUSAXL6OC6omxtLCD7zW0jYO
+	yUfos+zyW9PVAvSeWalUaFZACdLlgFjeIAB51rXm7yPFQr3Fj1IP1JFy28Hlufwd/rpgYVRmH5ZfW
+	lAQL7ZGPflcd6fPHe41g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkmRb-00AOMK-23;
-	Fri, 07 Apr 2023 13:47:59 +0000
-Received: from mail-yw1-f175.google.com ([209.85.128.175])
+	id 1pkmRm-00AOX4-1T;
+	Fri, 07 Apr 2023 13:48:10 +0000
+Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkmR8-00ANkv-17;
-	Fri, 07 Apr 2023 13:47:35 +0000
-Received: by mail-yw1-f175.google.com with SMTP id 00721157ae682-54c17fa9ae8so76379007b3.5;
-        Fri, 07 Apr 2023 06:47:30 -0700 (PDT)
+	id 1pkmRE-00AO03-39;
+	Fri, 07 Apr 2023 13:47:40 +0000
+Received: by mail-yw1-x1131.google.com with SMTP id 00721157ae682-54c061acbc9so116915927b3.11;
+        Fri, 07 Apr 2023 06:47:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1680875250;
+        d=gmail.com; s=20210112; t=1680875254;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=KrhVwFwdiy8PafsiMhkpCPuLOjFFrIY15KiQQTf11aU=;
-        b=AlfANMoRb9wyGOVs2RriQZW0B3V9w9QT6cgDWHACfUH0Gc99k6HjBBOrTrCQ7H/Sup
-         FtVlxudRvwdw/8k9ZgBfiAUVUHDajsYWyZHM+rraiJfNu0IZZN+WozE4dO2haxVzG1qD
-         HTfmzxe0S8jLZET6Mz5Bi+an889FlHW0Oc8S3zSYeJWnCzvNbYj7m/DNuVNy9JBoU0GS
-         3BM+NpMu+nS7jz/vCRfIu+B3JD1diEYGtS9f2awXFNXCpzDHVdbpMyJgUw8aVjURRJRy
-         f5vfcCFcSeYMIboIWtoJ8TOume8J0AV27BRfZbR6ttBQcdF77r6vA/8i7Dtlh4/R2w2M
-         xQMg==
+        bh=+1HASBb71XtLwecn3CRcGVRneQXdr8W/qyVtG8y0vZQ=;
+        b=nyWA4EQ30Lz7Z4a91iWxW0yFcH5DiujHL1C9mYTH8A3PqJsCVElakqiyjcg72CMqZt
+         jMlxzkJ3LF6uVdqB9TbyHGrZsLiGkEl+cirgcCkMd1YKZmEUl3mAOjoZLfJQZRM/bQ18
+         GAv7ODceNyHqp+wbTyowvGsxio+SMzsrrnMUP5HfgnGZJ/LsVB9KjTouJIfLB+HC7FBe
+         2MNZWPjiy18CkfEY9O3wOxueliKlWnopMrg3tTbVdbwiC1Tl2Z3DFsfOkvjBTmHxenXz
+         Q8dqBnmIioGC+JOahdzkHDGwqy3M/kYhLZJTcPmzIvRazNqACZic32m44lxyQ7IztMyC
+         6iEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680875250;
+        d=1e100.net; s=20210112; t=1680875254;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=KrhVwFwdiy8PafsiMhkpCPuLOjFFrIY15KiQQTf11aU=;
-        b=nNPdA6XkbjQNghVsTy9wqXChDEK8MI7rsW+qXw0vv2zFonXshi9zvWEnw0vYvGpSv2
-         QtB9ulRaEhBfVqC4hlwxqWq6hE3iKE//W9tli6BTatol4Vjf0krQXorLx4dThRzcNe/h
-         iKakyguIgn0z7AgbzU13SOSVMKM8lfJUrz/sUY8EdsfS831gYo0dwpxDVBrys3hiTVVr
-         CWGZmQsEyarG56Z8rgDLx1GOILFWPtFGkRgBnalUsrd6KmPEe3pTpYVLv3eyqbr4rtSj
-         NC4ptFlQLXpRezWLE689XOJKa8w9F4TfbJyCs2A7UVmV88k/HMiBAC6zunuxflQM2Wjj
-         2eNg==
-X-Gm-Message-State: AAQBX9dhBsYnFTkWqPBVI0vKI5iJC4keC0tnkxhTWESCgZzSKRbvHFev
-	vCMx5HNPuHPaqCj6YR4jlHs=
-X-Google-Smtp-Source: AKy350ZRgyDFHukSn+0MW323t7p6FhxtWniWWbqWmcv8+P6ybWeXqdm/ISnIxoPizJaso4aprmfGhQ==
-X-Received: by 2002:a81:9444:0:b0:546:3229:cc04 with SMTP id l65-20020a819444000000b005463229cc04mr2012517ywg.52.1680875249739;
-        Fri, 07 Apr 2023 06:47:29 -0700 (PDT)
+        bh=+1HASBb71XtLwecn3CRcGVRneQXdr8W/qyVtG8y0vZQ=;
+        b=ZaAzVJAual9/sTMJa+ZdMBlG9UDUlRG95a44rP1TVhqJM1UIahYT3rU64rwYr7XmUI
+         LHmSQNy5mHlRBqOZhkbkFc0GMVGTOJtypzHXbaCYiBJoRGLA31onfHViTg4Yt4ccXOxT
+         xeCm58jzTa2s7/Ez66GytM+kDxX3N+QOGkGW0ADAY+RtwMwOfBvxTz+Zpdmr1xoOJHzZ
+         aDbsyd0LrCFcH7+Dz5RQl1HfmFUg+ewCK265DxRwMgh6XJw1WLUka5mhKxVA0/7oSDA1
+         Qj+zzPvH4EgQB/LNeXAECYKjOhR5aUxai6l/h+xYSe8EmvQnrmIxZen7OZtuS173hgFL
+         PIFQ==
+X-Gm-Message-State: AAQBX9e00WSIPEmCL1sQHl+qbjuNPF4ejIWzXYZk88dKFm4UZQhnBehm
+	4qEdVlYHZvdChKHmC+m+nG8=
+X-Google-Smtp-Source: AKy350ZjQyB7r5zLr3cqyHm1Yiv9Pt+md3WiiRwq5UnsioctFwZEM4XEPYHrU5Y8xfI1wc9PE++k4A==
+X-Received: by 2002:a0d:ef07:0:b0:540:cb3f:b34a with SMTP id y7-20020a0def07000000b00540cb3fb34amr1992837ywe.32.1680875254253;
+        Fri, 07 Apr 2023 06:47:34 -0700 (PDT)
 Received: from arinc9-PC.lan ([149.91.1.15])
-        by smtp.gmail.com with ESMTPSA id 139-20020a810e91000000b00545a0818473sm1034317ywo.3.2023.04.07.06.47.25
+        by smtp.gmail.com with ESMTPSA id 139-20020a810e91000000b00545a0818473sm1034317ywo.3.2023.04.07.06.47.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 07 Apr 2023 06:47:29 -0700 (PDT)
+        Fri, 07 Apr 2023 06:47:34 -0700 (PDT)
 From: arinc9.unal@gmail.com
 X-Google-Original-From: arinc.unal@arinc9.com
 To: Sean Wang <sean.wang@mediatek.com>,
@@ -77,9 +77,9 @@ To: Sean Wang <sean.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Russell King <linux@armlinux.org.uk>
-Subject: [RFC PATCH v2 net-next 12/14] net: dsa: mt7530: move lowering port 5 RGMII driving to mt7530_setup()
-Date: Fri,  7 Apr 2023 16:46:24 +0300
-Message-Id: <20230407134626.47928-13-arinc.unal@arinc9.com>
+Subject: [RFC PATCH v2 net-next 13/14] net: dsa: mt7530: fix port capabilities for MT7988
+Date: Fri,  7 Apr 2023 16:46:25 +0300
+Message-Id: <20230407134626.47928-14-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.37.2
 In-Reply-To: <20230407134626.47928-1-arinc.unal@arinc9.com>
 References: <20230407134626.47928-1-arinc.unal@arinc9.com>
@@ -87,8 +87,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230407_064730_743805_936307A7 
-X-CRM114-Status: GOOD (  11.98  )
+X-CRM114-CacheID: sfid-20230407_064737_046647_C1C634EE 
+X-CRM114-Status: GOOD (  12.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,44 +106,35 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-Move lowering Tx driving of rgmii on port 5 to right before lowering of Tx
-driving of trgmii on port 6 on mt7530_setup().
+On the switch on the MT7988 SoC, there are only 4 PHYs. That's port 0 to 3.
+Set the internal phy cases to '0 ... 3'.
 
-This way, the switch should consume less power regardless of port 5 being
-used.
+There's no need to clear the config->supported_interfaces bitmap before
+reporting the supported interfaces as all bits in the bitmap will already
+be initialized to zero when the phylink_config structure is allocated.
+There's no code that would change the bitmap beforehand. Remove it.
 
-Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- drivers/net/dsa/mt7530.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/net/dsa/mt7530.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 384e601b2ecd..6fbbdcb5987f 100644
+index 6fbbdcb5987f..903e39b7b772 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -956,10 +956,6 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
- 		/* P5 RGMII TX Clock Control: delay x */
- 		mt7530_write(priv, MT7530_P5RGMIITXCR,
- 			     CSR_RGMII_TXC_CFG(0x10 + tx_delay));
+@@ -2545,10 +2545,8 @@ static void mt7531_mac_port_get_caps(struct dsa_switch *ds, int port,
+ static void mt7988_mac_port_get_caps(struct dsa_switch *ds, int port,
+ 				     struct phylink_config *config)
+ {
+-	phy_interface_zero(config->supported_interfaces);
 -
--		/* reduce P5 RGMII Tx driving, 8mA */
--		mt7530_write(priv, MT7530_IO_DRV_CR,
--			     P5_IO_CLK_DRV(1) | P5_IO_DATA_DRV(1));
- 	}
- 
- 	mt7530_write(priv, MT7530_MHWTRAP, val);
-@@ -2227,6 +2223,10 @@ mt7530_setup(struct dsa_switch *ds)
- 
- 	mt7530_pll_setup(priv);
- 
-+	/* Lower P5 RGMII Tx driving, 8mA */
-+	mt7530_write(priv, MT7530_IO_DRV_CR,
-+			P5_IO_CLK_DRV(1) | P5_IO_DATA_DRV(1));
-+
- 	/* Lower Tx driving for TRGMII path */
- 	for (i = 0; i < NUM_TRGMII_CTRL; i++)
- 		mt7530_write(priv, MT7530_TRGMII_TD_ODT(i),
+ 	switch (port) {
+-	case 0 ... 4: /* Internal phy */
++	case 0 ... 3: /* Internal phy */
+ 		__set_bit(PHY_INTERFACE_MODE_INTERNAL,
+ 			  config->supported_interfaces);
+ 		break;
 -- 
 2.37.2
 
