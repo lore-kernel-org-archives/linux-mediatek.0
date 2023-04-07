@@ -4,82 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11303C6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Apr 2023 10:47:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 792C5C6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Apr 2023 10:47:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ojJKyaw8vqXUV3WbW1J5GErwx63Ht6m7F3xy+69k6+M=; b=nbsx/YfuE1u4mAlVdW+KlyJw5C
-	ycXu49+IL2+TGMahM3q7XvuKpQXEuqHCPnbN3SboHmlRq4u0a8MsOfYOjSdgxjLe/3S9lXM78u1Kf
-	pknAPv0afKDH/t3rw7NG1j/sbDmPd4xX6gtvsJGTBCBoAd1XO5tohiD4OL3Bb0riwl4r8VPisLAai
-	D6Ysxi4CC5Pd0oR/N1nfX/83eNilHh8D50lkG16RKrjK2LWEZVqjWu+5wsI39RubgLbmM0nAJbq1L
-	vslzdWLCaBfq5nluRzsyzuSvWvAQdA+5WK4vl0wHkwrsSq4vL3c0Qaol5q6c/ly4PA8JBLMCVvj1C
-	lXdmnq8w==;
+	bh=YHYOqnIdeZEQQSsG6kV/waTEgcH9AADMsfaYGJviNTM=; b=OPR8oowT/QNnJaIzK5c2FxJIE2
+	LTNkaE56mXRBkts/WUk8Xcrkr4z301ot2tOtxcQeJXXhgX8dxY9FWUdSz2VxWa3bZroAh+cO97KP5
+	W/qvQaxunVwhAKmSG0ejjjbc9hloO2EE/cq3IP9JJ1/G1Moj03RKFmopDjIWKkwnkAuFFLxqEhuOm
+	edx3q/vbIR2Lu65qDprNzxdULKheI+aaCU51qPkF/k1HFsUiqwPInk2uIuYAZFbvvq318c1mAe+aq
+	+5OZfY762qxjSj11LrQnnrNFk9JMao2dhNBWKpDV+cFkGGnrp69yVwYReqzymqlYHp9JvWhx37XSs
+	G/fA6Szg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkjcX-009ssU-2C;
-	Fri, 07 Apr 2023 10:47:05 +0000
-Received: from sender3-op-o18.zoho.com ([136.143.184.18])
+	id 1pkjdL-009tMT-1K;
+	Fri, 07 Apr 2023 10:47:55 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkjcO-009skh-0I;
-	Fri, 07 Apr 2023 10:47:02 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1680864388; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=WQCZwOwtC+4wnKqjt7PKOA3N/krjJwf5UXgcpY+iHDYgNm9MsvZcVJzXLplaFrO+B9hiGROY6XPhdnzB2qSAX8X+mnRFn3toAgy6Hg1syQOLcGeFT3/5JaRBqywPn1/Mzfa/EGCrDWng7PfMCVsD1cn6yK9YdQp/VqkOVayRdXs=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1680864388; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=ojJKyaw8vqXUV3WbW1J5GErwx63Ht6m7F3xy+69k6+M=; 
-	b=gqxVTuDGorITq3Kkz8p6O/2N2DxuDr8C93mRVHSy4jsYnZjuX2aCF55a2gdJ8N6X5G2AsZ9JoiDJ0YbRZxuW991Fr7SoshteDd+6VzRzLyIOzOkBgJAR5Kv4gXJ82Trk8U7je4yo8OPVKFhXTXh2ZjEzSf+aYQrNzKo+yj68q3M=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1680864388;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=ojJKyaw8vqXUV3WbW1J5GErwx63Ht6m7F3xy+69k6+M=;
-	b=N/gQ0jMrxkCPfc61qLYMAji56wcmOqN4MnNeOJVd0/mcc9T7/gQAeFP7uQndbi/z
-	D+xPf6UT6m3CB3jqqL1c0kZnhwQK7cLxPpCNmt+B4XnnO9qhPPeepiKQ+bwMRTbqEeB
-	hIYEULKOLirC0FeUGngwF8u2Y4Ki4xfIu8m2oZRk=
-Received: from [10.10.10.3] (149.91.1.15 [149.91.1.15]) by mx.zohomail.com
-	with SMTPS id 1680864386413993.8772578271102; Fri, 7 Apr 2023 03:46:26 -0700 (PDT)
-Message-ID: <574460f4-5e22-3154-809d-42ca7aa53c1b@arinc9.com>
-Date: Fri, 7 Apr 2023 13:46:20 +0300
+	id 1pkiUI-009g0A-0B
+	for linux-mediatek@lists.infradead.org;
+	Fri, 07 Apr 2023 09:34:32 +0000
+Received: by mail-wr1-x433.google.com with SMTP id j11so2177951wrd.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 07 Apr 2023 02:34:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1680860068; x=1683452068;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=YHYOqnIdeZEQQSsG6kV/waTEgcH9AADMsfaYGJviNTM=;
+        b=k3pIR4x5+wOfjx9lQEO60im9hZ96rrj0z+y5eKQBUKc/aMLuxUQhk06d4qr0J8cT/o
+         VACKgdXzQIcO8Ww8V7/xqWlii5sZPH3YZ+ZFDurV2Qo99iqovpiMl5fjBn6p7hLCa61v
+         loD9wxBbUmYRITQL6OBUyTTIrCG0/b0AEYF2HeBHAbrtfafFLPuthhR1xM14m5opHcJR
+         GTG0DO3ErDPWNbNYiXkEf5H14rqlaBSuIVM38LSA80uKssCVELYsFVlMHeilpmK68etI
+         9sDeHmIS++xnJyJREr5ZkpaLXjQra4tK235i7NqDEqarbObSt9HIYH62uw4uQKx35ukF
+         KUtw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680860068; x=1683452068;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=YHYOqnIdeZEQQSsG6kV/waTEgcH9AADMsfaYGJviNTM=;
+        b=zGxymI7xM6Bk1ew73zzlzsSuuwoBlehTcIXdsdE5FwB4GoyghPzkpvVGla6BjKx+8h
+         /nZ/8LQVv/DWEBwU6QmaxvxL7LCzrCNJsZb6tWtqRmAHEckCTqJQ3STOb5fT51K+DBN+
+         fvlZ2yDCU4lyCmWJCWLN88NJDgYUzt5tBxB6v0/g1mDGvBsY7qCaLjg5oY3J+WXknnJf
+         BErhS2Bq3JsRkB3xDySJXZrK0ZA8buITS0WjvsWGddSx34hObULTF86qC9oNoRXc5zfc
+         gF269L6TAHv+LsGcPw6QE56twHsUJ0dfZq8behTluZK1OQicagrsG65YXzKv3aPLouKf
+         NWVQ==
+X-Gm-Message-State: AAQBX9em/4btsGwi1xupGt43wPAGfujslaqW/cwm1SzcIiyf/YG3s3GF
+	mnE8gFoMSZZPuX0C4v2QIO/RPQ==
+X-Google-Smtp-Source: AKy350bHUE4UFLR7A4HheArzii7UQVzEmxq9wP+ITj9W2OkfjTYRlR/FG24WqK5tgspb8CbPkQ9txg==
+X-Received: by 2002:adf:e846:0:b0:2ef:b052:1296 with SMTP id d6-20020adfe846000000b002efb0521296mr879884wrn.22.1680860068577;
+        Fri, 07 Apr 2023 02:34:28 -0700 (PDT)
+Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
+        by smtp.googlemail.com with ESMTPSA id s13-20020a5d510d000000b002d64fcb362dsm4020432wrt.111.2023.04.07.02.34.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 07 Apr 2023 02:34:28 -0700 (PDT)
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Fri, 07 Apr 2023 11:34:13 +0200
+Subject: [PATCH v3 2/7] arm64: dts: mediatek: add camsys support for mt8365
+ SoC
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [RFC PATCH net-next] net: dsa: mt7530: fix port specifications
- for MT7988
-Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: "Russell King (Oracle)" <linux@armlinux.org.uk>,
- Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- DENG Qingfang <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20230406100445.52915-1-arinc.unal@arinc9.com>
- <ZC6n1XAGyZFlxyXx@shell.armlinux.org.uk>
- <e413a182-ce93-5831-09f5-19d34d7f7fcf@arinc9.com>
- <ZC9AXyuFqa3bqF3Q@makrotopia.org>
- <0cdb0504-bc1e-c255-a7d2-4dd96bd8e6e3@arinc9.com>
- <ZC_iPfl5R-_4zOZg@makrotopia.org>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <ZC_iPfl5R-_4zOZg@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20230207-iommu-support-v3-2-97e19ad4e85d@baylibre.com>
+References: <20230207-iommu-support-v3-0-97e19ad4e85d@baylibre.com>
+In-Reply-To: <20230207-iommu-support-v3-0-97e19ad4e85d@baylibre.com>
+To: Yong Wu <yong.wu@mediatek.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ Alexandre Mergnat <amergnat@baylibre.com>
+X-Mailer: b4 0.12.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1044; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=x/wu+Gg/Z7J2I0F/gXx6zOm7KvojSbz4OytIRAJsBIw=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkL+OhucnBrd49pvMbqIMlZUY8dvmyomr+x4uYi4vC
+ eh+C3bKJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZC/joQAKCRArRkmdfjHURVdHD/
+ 0WCP0DZQ+UKoyCD95Yd9rE6bg3Nr9C4CfmZyQ4806NHa1KO0J+tOvhXn8krVpWU8wXS8vY0148LXmI
+ WBB18zc5bk/nSrYOhxr/05jCdr2f+KkAqZtUTx8qc4xMZ8K+DF/cxtya0LkFuVSUOTvSSBZf1501fZ
+ nQ+eifAMYStNJPvkjSbUEkQ2lTf0rVgo5Alvz+5ZJPJiqJF7XLGAHNNgHGpg3BTqKBdE5j9OBkNRMg
+ vAoyIXXlx2K/f5vFFXqAP+PVhyl8DibiL1a5W+kwZFZbba3NpoKbSayJWbJnXPBTGIpmkcW5tVoCox
+ GqMOlGez00z8ErE8MDtZMdaBzMwCyp8aRjcGmtRn0DHIlQWFEgir1Sz4ow8zdRsiTP+CaJyMmkyJBe
+ UQjxorXX//VMZbzrzFEf4cIX5LRE1Yg1RhPXHW8ZXPc7cGvA9SLSTK4ebAhj4a72vq+fx7+YfKSJEb
+ 3mNeo5KugG+2EizgVze7CNOrVEBu/y6iQdQsY7uvpiO36sO6A7pgQ6/PiyeqWtTd77/sfFGKxYpqmz
+ ywTYXzT638j/UbhN4VKvlI831lI+1uvrISiXTmE25cPzhG/2iWNXx9hIyYhKFzCeT5VUywB1LI1fKf
+ rJHMAoek+0yGDMKNiQDj6zP6P5hMOZf4HP5n1mQ9W6X49hhRjeIkVGbh9RYQ==
+X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
+ fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230407_034656_183569_25441BF9 
-X-CRM114-Status: GOOD (  35.99  )
+X-CRM114-CacheID: sfid-20230407_023430_103534_86DE992A 
+X-CRM114-Status: UNSURE (   9.38  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,153 +114,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7.04.2023 12:28, Daniel Golle wrote:
-> On Fri, Apr 07, 2023 at 11:56:08AM +0300, Arınç ÜNAL wrote:
->> On 7.04.2023 00:57, Daniel Golle wrote:
->>> On Fri, Apr 07, 2023 at 12:43:41AM +0300, Arınç ÜNAL wrote:
->>>> On 6.04.2023 14:07, Russell King (Oracle) wrote:
->>>>> On Thu, Apr 06, 2023 at 01:04:45PM +0300, arinc9.unal@gmail.com wrote:
->>>>>> From: Arınç ÜNAL <arinc.unal@arinc9.com>
->>>>>>
->>>>>> On the switch on the MT7988 SoC, there are only 4 PHYs. There's only port 6
->>>>>> as the CPU port, there's no port 5. Split the switch statement with a check
->>>>>> to enforce these for the switch on the MT7988 SoC. The internal phy-mode is
->>>>>> specific to MT7988 so put it for MT7988 only.
->>>>>>
->>>>>> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->>>>>> ---
->>>>>>
->>>>>> Daniel, this is based on the information you provided me about the switch.
->>>>>> I will add this to my current patch series if it looks good to you.
->>>>>>
->>>>>> Arınç
->>>>>>
->>>>>> ---
->>>>>>     drivers/net/dsa/mt7530.c | 67 ++++++++++++++++++++++++++--------------
->>>>>>     1 file changed, 43 insertions(+), 24 deletions(-)
->>>>>>
->>>>>> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
->>>>>> index 6fbbdcb5987f..f167fa135ef1 100644
->>>>>> --- a/drivers/net/dsa/mt7530.c
->>>>>> +++ b/drivers/net/dsa/mt7530.c
->>>>>> @@ -2548,7 +2548,7 @@ static void mt7988_mac_port_get_caps(struct dsa_switch *ds, int port,
->>>>>>     	phy_interface_zero(config->supported_interfaces);
->>>>>>     	switch (port) {
->>>>>> -	case 0 ... 4: /* Internal phy */
->>>>>> +	case 0 ... 3: /* Internal phy */
->>>>>>     		__set_bit(PHY_INTERFACE_MODE_INTERNAL,
->>>>>>     			  config->supported_interfaces);
->>>>>>     		break;
->>>>>> @@ -2710,37 +2710,56 @@ mt753x_phylink_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
->>>>>>     	struct mt7530_priv *priv = ds->priv;
->>>>>>     	u32 mcr_cur, mcr_new;
->>>>>> -	switch (port) {
->>>>>> -	case 0 ... 4: /* Internal phy */
->>>>>> -		if (state->interface != PHY_INTERFACE_MODE_GMII &&
->>>>>> -		    state->interface != PHY_INTERFACE_MODE_INTERNAL)
->>>>>> -			goto unsupported;
->>>>>> -		break;
->>>>>> -	case 5: /* Port 5, a CPU port. */
->>>>>> -		if (priv->p5_interface == state->interface)
->>>>>> +	if (priv->id == ID_MT7988) {
->>>>>> +		switch (port) {
->>>>>> +		case 0 ... 3: /* Internal phy */
->>>>>> +			if (state->interface != PHY_INTERFACE_MODE_INTERNAL)
->>>>>
->>>>> How do these end up with PHY_INTERFACE_MODE_INTERNAL ? phylib defaults
->>>>> to GMII mode without something else being specified in DT.
->>>>>
->>>>> Also note that you should *not* be validating state->interface in the
->>>>> mac_config() method because it's way too late to reject it - if you get
->>>>> an unsupported interface here, then that is down to the get_caps()
->>>>> method being buggy. Only report interfaces in get_caps() that you are
->>>>> prepared to handle in the rest of the system.
->>>>
->>>> This is already the case for all three get_caps(). The supported interfaces
->>>> for each port are properly defined.
->>>>
->>>> Though mt7988_mac_port_get_caps() clears the config->supported_interfaces
->>>> bitmap before reporting the supported interfaces. I don't think this is
->>>> needed as all bits in the bitmap should already be initialized to zero when
->>>> the phylink_config structure is allocated.
->>>>
->>>> I'm not sure if your suggestion is to make sure the supported interfaces are
->>>> properly reported on get_caps(), or validate state->interface somewhere
->>>> else.
->>>
->>> I think what Russell meant is just there is no point in being overly
->>> precise about permitted interface modes in mt753x_phylink_mac_config,
->>> as this function is not meant and called too late to validate the
->>> validity of the selected interface mode.
->>>
->>> You change to mt7988_mac_port_get_caps looks correct to me and doing
->>> this will already prevent mt753x_phylink_mac_config from ever being
->>> called on MT7988 for port == 4 as well as and port == 5.
->>
->> Ah, thanks for pointing this out Daniel. I see ds->ops->phylink_get_caps()
->> is run right before phylink_create() on dsa_port_phylink_create(), as it
->> should get the capabilities before creating an instance.
->>
->> Should I remove phy_interface_zero(config->supported_interfaces);
->> mt7988_mac_port_get_caps()? I'd prefer to do identical operations on each
->> get_caps(), if there's no apparent reason for this to be on
->> mt7988_mac_port_get_caps().
-> 
-> Yes, sounds sane to me, please do so.
-> 
-> Also we could make .mac_port_config optional, as for MT7988 we actually
-> won't need it at all:
-> 
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index e4bb5037d3525..5efcb9897eb18 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -2653,17 +2653,6 @@ static bool mt753x_is_mac_port(u32 port)
->   	return (port == 5 || port == 6);
->   }
->   
-> -static int
-> -mt7988_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
-> -		  phy_interface_t interface)
-> -{
-> -	if (dsa_is_cpu_port(ds, port) &&
-> -	    interface == PHY_INTERFACE_MODE_INTERNAL)
-> -		return 0;
-> -
-> -	return -EINVAL;
-> -}
-> -
->   static int
->   mt7531_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
->   		  phy_interface_t interface)
-> @@ -2704,6 +2693,9 @@ mt753x_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
->   {
->   	struct mt7530_priv *priv = ds->priv;
->   
-> +	if (!priv->info->mac_port_config)
-> +		return 0;
-> +
->   	return priv->info->mac_port_config(ds, port, mode, state->interface);
->   }
->   
-> @@ -3157,7 +3149,6 @@ const struct mt753x_info mt753x_table[] = {
->   		.pad_setup = mt7988_pad_setup,
->   		.cpu_port_config = mt7988_cpu_port_config,
->   		.mac_port_get_caps = mt7988_mac_port_get_caps,
-> -		.mac_port_config = mt7988_mac_config,
->   	},
->   };
->   EXPORT_SYMBOL_GPL(mt753x_table);
-> @@ -3186,8 +3177,7 @@ mt7530_probe_common(struct mt7530_priv *priv)
->   	 */
->   	if (!priv->info->sw_setup || !priv->info->pad_setup ||
->   	    !priv->info->phy_read_c22 || !priv->info->phy_write_c22 ||
-> -	    !priv->info->mac_port_get_caps ||
-> -	    !priv->info->mac_port_config)
-> +	    !priv->info->mac_port_get_caps)
+Camera System (CamSys) incorporates an enhanced feature based image
+signal processor to connect a variety of image sensor components. This
+processor consists of timing generated unit (TG), lens/sensor
+compensation unit and image process unit.
 
-Why split the sanity check? Isn't just removing mt7988_mac_config() and 
-.mac_port_config = mt7988_mac_config enough?
+For more detail, ask Mediatek for the MT8365 AIoT application processor
+functional specification.
 
-Arınç
+Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8365.dtsi | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
+index db9ab538c34d..73cb10d296fa 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8365.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
+@@ -598,6 +598,12 @@ mmsys: syscon@14000000 {
+ 			reg = <0 0x14000000 0 0x1000>;
+ 			#clock-cells = <1>;
+ 		};
++
++		camsys: syscon@15000000 {
++			compatible = "mediatek,mt8365-imgsys", "syscon";
++			reg = <0 0x15000000 0 0x1000>;
++			#clock-cells = <1>;
++		};
+ 	};
+ 
+ 	timer {
+
+-- 
+2.25.1
+
 
