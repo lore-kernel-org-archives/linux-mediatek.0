@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 233A8C6FD1D
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E870CC77B61
 	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Apr 2023 10:17:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=/iRPnKOXmlOdilFnoShh5yI6AjtEilCaiDGDFmPOYkQ=; b=Qqse39MXN/+ecb
-	Nfk8Y0rGJWVH9/fQsPiSW4JsDflS8FWLDC0Bmq16/slryDr0EnhCxPRhgFZdXIBTeN74sGbAmtRGz
-	rRGCorcohD+dDVomzDUJfdQCkWsi2d5sHwEXdWuZpsNBurHZh7lPmGGJBWayYWPUd3L5Nx+dmuUkf
-	/qKz82aPaPLHqGfZi+17WygJC1VF3Vp1aXdZ+HlTRCHiBq1zNFED1KnuakjTt2MuOaZna3DeIhpL3
-	y9URblktYowHznKklnUdEHX3VT5kSOJ+F4/bvti7U7pAhlTxpS+cTWW2od13oGBa4rMqOnk0i+uIf
-	qT/zn1+za0L6xpvKcn6g==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yJjfak4UG2kt7LD+AoFzMT7Gsf1sr+ZsaQfW8YlBLvI=; b=uN9eYtYZCX3XSexNEuVpbnay4S
+	JX9UStkLgsWVANufqczXxpbRSmnvDVGLy994eNHU/WGyvo+wtp56fNrj/qoWr5Xpobhr6mceoL+D9
+	TSQKggMqL2zjywN3kbgNW/on3JGoTEISxIDuP9wV8SCo8wvXScWPOrGHI599A3zHdxXVAyFYw2otL
+	KVkGScAhOPGdX1DS1ff8fZIB7aUaDYhSSJUzcWZ1xXR9rIcYt0cZ4FgeO8BBgNpmHYm5RXvEpAQD9
+	Mw03QcbLcBk0IAjUZ2GIL4aDlw3dXs4h7hMG8cX12BxgpKRIlvQ+PHj7iJZOPi6Chh/UuwQtSP+cg
+	Mzw5x3Sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkjAI-009m4o-3B;
-	Fri, 07 Apr 2023 10:17:55 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1pkjAL-009m5Q-30;
+	Fri, 07 Apr 2023 10:17:57 +0000
+Received: from mail-wm1-f49.google.com ([209.85.128.49])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkiAW-009cud-23
+	id 1pkiAa-009cv8-0F
 	for linux-mediatek@lists.infradead.org;
-	Fri, 07 Apr 2023 09:14:06 +0000
-Received: by mail-wm1-x334.google.com with SMTP id m8so12830786wmq.5
-        for <linux-mediatek@lists.infradead.org>; Fri, 07 Apr 2023 02:14:04 -0700 (PDT)
+	Fri, 07 Apr 2023 09:14:09 +0000
+Received: by mail-wm1-f49.google.com with SMTP id o32so23731227wms.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 07 Apr 2023 02:14:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1680858843; x=1683450843;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=/iRPnKOXmlOdilFnoShh5yI6AjtEilCaiDGDFmPOYkQ=;
-        b=ogxAc3Mumf11FOLzjNLFLfFgMp+ab4L7z16PKrZblcnB1bdXshZsOK131l7SG5N/om
-         olvuifIVwhP+I1aTafFtDXnzvWvvA0KTB5MW6KvfAuPzjKW9e7vchST+3zsHNc2UzlB+
-         N6RTjD7HlfwUIn80UPhAuhYiyTsaZ2zlQS5mjPItPzfLDl5ELhSzrKVP1Kqwf2dHeAi3
-         GPdm5cJg2BDEZGudj3MiXkWfj9xIiIXFZtwwD/evDAINM7uhY+X5h0jt+/zAREpnC07R
-         l1/mpoL8+occ1dfb0og0K8TM6Ze3S7+fTAyBXCb7lGgmi0Q4tvTAKoMd1n37tnEkhXWy
-         sTfQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680858843; x=1683450843;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1680858845; x=1683450845;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=/iRPnKOXmlOdilFnoShh5yI6AjtEilCaiDGDFmPOYkQ=;
-        b=RTD2vAFlK5Cpp/BHdbK2N4nqTVS7DJ5mHkDd8qEsn/G3J0xkjyo/WrU6D4UiUWvYwy
-         hhq68lYy4+AUQDftX/pHZaUtvUtyGNN1im5E02voNCitNA4xKIOeOyi/omd+goR6K5bx
-         2Ersnx9d1IfxE9nKbHeDb7F02S1ROoAnweWVxWC5JJ237r2r/3KP/88bLNi4g8IAzap3
-         CuWh5BL8KbJz6zDRKD3He6zIjNP1qmohutJwFIhX/YpccM8Wl4c2xRs0/LZEnuYAc+6t
-         /JbZ+hJXpXpPbqWjaHKgESKO0oBxu6vxLTBaP5TybLjTsQFGt5NCTUBqgp1jze6QEta9
-         UWTg==
-X-Gm-Message-State: AAQBX9finLbPKaMwW/e6xJtjxv6qnXQkIxBRxJZEmzUPYsijKJqlaqWb
-	Wj8jFYwrussJ6MkFml0WoywKOg==
-X-Google-Smtp-Source: AKy350Za/6RWX2oz9CbTQclsW6Ctfk4fA1+j0eL6S8zuOsAqYIbYNirmY3B8SXWCVkE0U54tlTqMlQ==
-X-Received: by 2002:a1c:cc05:0:b0:3f0:57be:666f with SMTP id h5-20020a1ccc05000000b003f057be666fmr1107869wmb.7.1680858843049;
-        Fri, 07 Apr 2023 02:14:03 -0700 (PDT)
+        bh=yJjfak4UG2kt7LD+AoFzMT7Gsf1sr+ZsaQfW8YlBLvI=;
+        b=OajeO3O/qXkxLZpoot1SLLIdYXgjV4BiDAPRlXxnMUldzeW+b3H4YrsRw/xCLsZUEl
+         LROCs5z2IY1AyERqEUT7Maqm3o/ajKCprSieO9pWzSMTnLXoejiI+DplNq7hdgdjOB4Q
+         CxXyr0M80n8tpJ7ZyraoX7qqqD7q58C+Ej1xjeKJ1QqeqLuhpf3CoG/1JyL3b/NBCse0
+         nuwaZywuBzg17T2/Whx/sHQ4DApT6fOJl/2l3wKyo6ecUtLD24D3zmHUOl191RngKY6p
+         UzopT/Ky+wYfCLK310bSQ9pdOJdU5eqycfsBA9TmVeGdfAhYhWT85XGyxCtAH5YwO8Ia
+         Fmew==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680858845; x=1683450845;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=yJjfak4UG2kt7LD+AoFzMT7Gsf1sr+ZsaQfW8YlBLvI=;
+        b=BfMpP5qHNj6dxDrQEn2LwPkmr1KNPgwHlSosXphyygumkApwczjqjGYK/OlFMf1H5R
+         3Yo0cgCH2tr2P6RXbTQ7QuFhQ6BieTt4vbvrazpSXsKsJMOiOWnFH+0/nxTgyutaCrCN
+         gsc1UYH0OJkLAUw8AcGLNCViVZOvOT52tEPT+qmGuC+ndJ2XkO1pYplEIFTxLhqByuoO
+         bOWVyi9VLiFu6o2buPGLn5isHfR+MvcUGDeOTfiPfMUAZKRaqGSZH3IxstmcLNaTuBbM
+         cRhTj1kjGqjOIMs+QqKiZwHJ5I3tO82uUJzTAO4ZxhEWgJdK73+/zejhy4YUXGGyXizj
+         3Dfg==
+X-Gm-Message-State: AAQBX9cRLiY9W36Qf6rdKPHufU/cgwpC9ZBnPcldDPNry1Llm29zulk2
+	iCi2eoPG9bvcjEDw8aiNDRCSzA==
+X-Google-Smtp-Source: AKy350YRyyblA2ED1NB7dgg4zlXhQ/NwohrnxiB+9oAsMQm2YpP5CEal0pHG1lm2ErKnHopqrmnnVA==
+X-Received: by 2002:a7b:c00c:0:b0:3f0:3d47:2cbe with SMTP id c12-20020a7bc00c000000b003f03d472cbemr829714wmb.10.1680858845224;
+        Fri, 07 Apr 2023 02:14:05 -0700 (PDT)
 Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id k22-20020a7bc416000000b003f04f0c5a6fsm4026429wmi.26.2023.04.07.02.14.02
+        by smtp.googlemail.com with ESMTPSA id k22-20020a7bc416000000b003f04f0c5a6fsm4026429wmi.26.2023.04.07.02.14.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 07 Apr 2023 02:14:02 -0700 (PDT)
+        Fri, 07 Apr 2023 02:14:04 -0700 (PDT)
 From: Alexandre Mergnat <amergnat@baylibre.com>
-Subject: [PATCH v2 0/3] Add MT8365 SMI driver support
-Date: Fri, 07 Apr 2023 11:13:50 +0200
-Message-Id: <20230407-smi-driver-v2-0-8da6683cdb5c@baylibre.com>
+Date: Fri, 07 Apr 2023 11:13:52 +0200
+Subject: [PATCH v2 2/3] dt-bindings: memory-controllers:
+ mediatek,smi-common: add mt8365
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAM7eL2QC/22OzQ6CMBCEX8X07EopBtCT72E89GeFTaA020I0h
- He3cPb4TTIz3yoiMmEU99MqGBeKNPkM6nwStte+QyCXWSipKnmVDcSRwDEtyNC0SjXS1E4rFLl
- gdEQwrL3t98ocCjug9nOAQN4mHsCQd+S7Ik2BbDHOQyJ4o04z5x+fsGOddoE8Fhjf9DnMnq/MP
- cU08fcQXco9/eu0lFCCrGpXuxbb2616GP0dyDBe7DSK17ZtPxSVflz0AAAA
+Message-Id: <20230407-smi-driver-v2-2-8da6683cdb5c@baylibre.com>
+References: <20230407-smi-driver-v2-0-8da6683cdb5c@baylibre.com>
+In-Reply-To: <20230407-smi-driver-v2-0-8da6683cdb5c@baylibre.com>
 To: Yong Wu <yong.wu@mediatek.com>, 
  Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -81,24 +81,24 @@ Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, 
  Alexandre Mergnat <amergnat@baylibre.com>
 X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1864; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=XMCnV2elFtLjP2Sn9yuzQN2YDzzqESOsgUOGg8Iu4SA=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkL97ZcnlQw6HSmOX693KdDwg2alXCJ7TraSlf6K/2
- n31XqJ6JAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZC/e2QAKCRArRkmdfjHURQiYEA
- ClYLk2Ia6AyQSoVshjwgtKw5Rd4wqlwAaZ1Kv/UHdszErCHNyRfSzeahujY6zPDaOhFtara4IHCm36
- /U/ImHXqgcLCAPpxym32iQZqXxw8+hsmtFK+Fd/BNB8WunCJfFrKCd0G21UGQ69ljerMqQ6MeekmmJ
- c0bGxcedFVatQmKil+NEZSw31IRE1ZUWSBPwUsIB3ZbMkIymG7K6KGkYpbEkaGz/Dkg4ZbKin2xU8d
- VzEjzEhn80peQP4pSReFChDTpQoQUiaYlYQIgK+2/YTcEEAzvdUXOvCAxFQOep9YMAn7eqBdYCv2RG
- 21J2ktHK6lsaK/puctOisPEu8I0Wol+2tWQrTNN4V2CJ+aU5FWl6wFqeNxIr3nof3PlQVyeictKOEv
- QfgD4G2PhMCHIIsgqWazIACGmjQUn1BPT72CG7wfb9K1WXvr/R3+S/jthvTGq4D4rvHldb3P4eOAXj
- aOQxgDsHoHE8zOzqG/pysyNCFa4xt6R6eyUlSrIvCmgn70pb1cSWI9/Ws2Bc9f8h1ovVXThn45BfuP
- jgTqaQNHtTHl7lYtQtGRA8RP18Da4lrBRg7Yfql0ivu4a9BbgFZR07yNs55tMjH7CN23DkvLRLvDLL
- CmTrPCFCs0xss0ojm6DwrMMps+O2xQxpOpcAMjuPknoTWP1+hD7uVLtiyWlg==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1196; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=vTUD/c9kbSLzmx+cLlLgYeDYjimwFLetURuSQCdLVkc=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkL97ZTwWW1lBNlbsl6zFLUXT27WoZqxh+yur5qJw0
+ 7/uB5feJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZC/e2QAKCRArRkmdfjHURXeHD/
+ 4jwJ2NkMaaZkG4IPOWz9qEdPzHJectYFYU41nxo17Hmcufv89qEjOxLUpJ9G7UZ15QjdvkdqyNkV7e
+ qOCjFiG9cwtUfyeoo5A9PEydCtRhOS4W+hmKks0UaMRQyXIXFCcG6j7IOnbmNgQ9+JQr/aurfrsCT8
+ T43u6aNNSg0yB+DvFpmxsXkzkMbUFaxk6d5gWfMXOrqwNnxUK/SQiCeamM2yBrTQrhONG6TVFjONtW
+ crV7NQXnIzCabu9QdykM7hxW7YTxhFAouZMtys7ZuZ9/Im9ZY9J1jGea1gu/YgouYB222VVxrc/vza
+ e983I/+wub1e3fZmzfWrPRwb3E3ttj9teoVJo1SDVv85gazMCKqfouA3S2k3KYuSs55s2ByiPhKp/Z
+ RE5wtY/V4Rfs/CjXfodePtSoUzr9NQYSxR8Z9cM9P5Mb+OWYZpldKSkOf1wBzJt105p9zxf+DaLUM1
+ qqlWVgKu5UL2RwboCTznrfXsufgvYTLsGKdu6Ze4VKEs4B52zKNHvirTh0aBcJgxlsQ7Bwmw1FvpAv
+ tknrTYi1A+fH6hIvmk7alYqLMsEGSHI+aElFiNMkgHUlgv3nP6dpbMQFKZbsV6f5DSiL6vVKzM/nwW
+ o7Xri3hB7zVWSoPT9MD/UzJ28MIjVq/FSVx24xhAwIgJtN72eu+gq2mJH+AA==
 X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
  fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230407_021404_671555_99B725C2 
-X-CRM114-Status: UNSURE (   9.20  )
+X-CRM114-CacheID: sfid-20230407_021408_109995_9B74C02A 
+X-CRM114-Status: UNSURE (   8.46  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -114,49 +114,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This serie add MT8365 SMI common driver support, to be bisectable and
-avoid issue with the DTS change. This driver change and the related
-change in the DTS should be applied in the right order (driver first).
+Add binding description for mediatek,mt8365-smi-common
 
-Here the related DTS change: [1]
-
-Also add the SMI common and LARB bindings for MT8365 support,
-I kept the Matthias Brugger reviewed-by from the previous series [3] [4].
-
-Regards,
-Alexandre
-
-[1]: https://lore.kernel.org/all/20230207-iommu-support-v2-7-60d5fa00e4e5@baylibre.com/
-[2]: https://lore.kernel.org/all/9ad8c606026586b682df5e0ce0c699e21a1e6fb7.camel@mediatek.com/
-[3]: https://lore.kernel.org/all/d1dc242d-c381-3307-b939-7bc35c6ce55b@gmail.com/
-[4]: https://lore.kernel.org/all/0e863367-5b24-9559-f782-4d3e5dc06961@gmail.com/
-
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
-Changes in v2:
-- Add SMI common and LARB bindings for MT8365 support.
-  I kept trailers [3] [4]
-- Forgot to mention, in the v1, I've addressed the Yong Wu's comment [2]
-  by removing "has_gals=true" from the mtk_smi_common_mt8365 structure.
-  Then I've put the reviewed-by.
-- Link to v1: https://lore.kernel.org/r/20230407-smi-driver-v1-1-036d6d8e8993@baylibre.com
+ .../devicetree/bindings/memory-controllers/mediatek,smi-common.yaml     | 2 ++
+ 1 file changed, 2 insertions(+)
 
----
-Alexandre Mergnat (3):
-      memory: mtk-smi: mt8365: Add SMI Support
-      dt-bindings: memory-controllers: mediatek,smi-common: add mt8365
-      dt-bindings: memory-controllers: mediatek,smi-larb: add mt8365
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+index a8fda30cccbb..2f36ac23604c 100644
+--- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+@@ -43,6 +43,7 @@ properties:
+           - mediatek,mt8195-smi-common-vdo
+           - mediatek,mt8195-smi-common-vpp
+           - mediatek,mt8195-smi-sub-common
++          - mediatek,mt8365-smi-common
+ 
+       - description: for mt7623
+         items:
+@@ -133,6 +134,7 @@ allOf:
+             - mediatek,mt8192-smi-common
+             - mediatek,mt8195-smi-common-vdo
+             - mediatek,mt8195-smi-common-vpp
++            - mediatek,mt8365-smi-common
+ 
+     then:
+       properties:
 
- .../devicetree/bindings/memory-controllers/mediatek,smi-common.yaml | 2 ++
- .../devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml   | 4 ++++
- drivers/memory/mtk-smi.c                                            | 6 ++++++
- 3 files changed, 12 insertions(+)
----
-base-commit: ea2dcf9394947d5d8e24cb9d52144923f6645632
-change-id: 20230407-smi-driver-782270b6da2e
-
-Best regards,
 -- 
-Alexandre Mergnat <amergnat@baylibre.com>
+2.25.1
 
 
