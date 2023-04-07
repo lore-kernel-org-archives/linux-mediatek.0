@@ -4,77 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11031C76196
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Apr 2023 06:34:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 192D0C77B6E
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Apr 2023 06:47:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xW7rObnpHmg+Kkkakq6fYS9mESeSNCPOez4HHlcH09g=; b=s3PHVW3VztrNEsOjhXeDpjOe+O
-	M/l/GMUKVP4pQ1pKnVU5GG5eUAX6NbyeuIt1xrDOsfEpmt9VrbwIA5nzNCa/Nc7i/clZok5xlSIym
-	2CSxqtoCGydpewPHes5zfZ9a1KJYWoNzZFqvXG5L+dN8mCLUfxKXIHKl1miHXC/Yej7A+TJE3JY6H
-	wZMNWxS8QP5Kt3HdNinEvXyiQx0m4NgHgXQlPVIgtJ6dmbQ++Sh+YonCaWVZRYWGRr04MWZOMKJWV
-	zILpO8vsTLAwikmAgjkuK8h7U5BaH3wdpNhHtULghz//X+CtCkC0hU+K/cVX3xIyu7GqaKe2TnzfF
-	BSfYTYaQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=OhNvpOrTiNR2wjUM2qqmnoQXR+IXyZ1HNN5qN7VtfgI=; b=HWOWFIJsL+dHffGxNDZGCMxlOZ
+	aSv2bnxnBay1ALae9at1nkC9iL/gC+fdxwoNC2PSc9u3SRmElEQz1ORHyTGy0gLFWtUpL5W5iSWSf
+	GuiHuRCV2Wze4TVyXvC9epPuD8aRhcD4KQ40C6JFgsuRiz3AaDArUZ4jHwJroM/oaOsUctdpLp2Nr
+	oNLxSvZNk4Ss2AnKeUfRGqDO9BmrmO7NMml+zAOPYgsEnGI3soMyLOhuFmRHKJIrMO93AEhFs8kyV
+	0spWSjnCuvKl9y9CSewJybqkUzyLOHcSP7pL3n9mvOLnqu8MnYMNcuXELdrRj0QGLsYSjx8zxWODV
+	qpRDCeZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkffy-009HTk-0i;
-	Fri, 07 Apr 2023 06:34:22 +0000
+	id 1pkfsO-009J2l-2g;
+	Fri, 07 Apr 2023 06:47:12 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkffv-009HTA-01;
-	Fri, 07 Apr 2023 06:34:20 +0000
-X-UUID: 35904cc0d50e11ed8687db9d93187ff1-20230406
+	id 1pkfsK-009J1B-2K;
+	Fri, 07 Apr 2023 06:47:09 +0000
+X-UUID: 000f8a6ed51011ed8687db9d93187ff1-20230406
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=xW7rObnpHmg+Kkkakq6fYS9mESeSNCPOez4HHlcH09g=;
-	b=QgtaEcaCbPfCoo0nN+YQ1z2b4CO2UTMRYFYtPjWpSS0zsGTqgZS6ym4xHto1gYazTn7vMdZ3vsZRj6AXKJ5CaomusDWDkv6HC5dzcxAzsEl1k7xMqCjErNs0I3mU1XtMPKdJga+uENEsMrVncDCUpdfpXDpIcvRV64hhc4Qz4HQ=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=OhNvpOrTiNR2wjUM2qqmnoQXR+IXyZ1HNN5qN7VtfgI=;
+	b=n0jDbw7CZq0aNY5CLi8qZB6dtNoAwuDAggemis1VlzVEbk0/oapRuVp6fWI973xybEQSxZ+TT7RHn1ijnIl0nxd2zFPbi5R7rWRwq+wbNtctPIexlxCKs3flpFJahFxr7ogrYrgwBE17pfO15uvBsHKv4sq0AEZZLiy54uJ9QmM=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:8f979d5f-5e17-4cf3-a3ff-48061e34f64b,IP:0,U
+X-CID-O-INFO: VERSION:1.1.22,REQID:b1a53388-fb82-414c-a265-802b815054bf,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:120426c,CLOUDID:6c437db5-beed-4dfc-bd9c-e1b22fa6ccc4,B
+X-CID-META: VersionHash:120426c,CLOUDID:2a7c9c2a-564d-42d9-9875-7c868ee415ec,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: 35904cc0d50e11ed8687db9d93187ff1-20230406
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <chunfeng.yun@mediatek.com>)
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: 000f8a6ed51011ed8687db9d93187ff1-20230406
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 805442122; Thu, 06 Apr 2023 23:34:12 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+	with ESMTP id 1189753655; Thu, 06 Apr 2023 23:47:01 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Fri, 7 Apr 2023 14:24:09 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Fri, 7 Apr 2023 14:24:08 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring
-	<robh+dt@kernel.org>
-CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Mathias Nyman
-	<mathias.nyman@intel.com>, <linux-usb@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Tianping Fang
-	<tianping.fang@mediatek.com>
-Subject: [PATCH v2 2/2] usb: xhci-mtk: add optional frame count clock
-Date: Fri, 7 Apr 2023 14:24:06 +0800
-Message-ID: <20230407062406.12575-2-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230407062406.12575-1-chunfeng.yun@mediatek.com>
-References: <20230407062406.12575-1-chunfeng.yun@mediatek.com>
+ 15.2.1118.25; Fri, 7 Apr 2023 14:46:58 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Fri, 7 Apr 2023 14:46:58 +0800
+From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Rex-BC Chen
+	<rex-bc.chen@mediatek.com>, Jason-ch Chen <jason-ch.chen@mediatek.com>,
+	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>, Singo Chang
+	<singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, Shawn Sung
+	<shawn.sung@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH 0/5] Fix mediatek-drm coverity issues
+Date: Fri, 7 Apr 2023 14:46:52 +0800
+Message-ID: <20230407064657.12350-1-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230406_233419_059504_E5EAAF25 
-X-CRM114-Status: GOOD (  12.33  )
+X-CRM114-CacheID: sfid-20230406_234708_767106_21919694 
+X-CRM114-Status: UNSURE (   7.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,41 +87,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add optional clock frmcnt_ck used on 4nm or advanced process SoC
+Add this patch series to fix these mediatek-drm coverity issues.
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
-v2: no changes
----
- drivers/usb/host/xhci-mtk.c | 1 +
- drivers/usb/host/xhci-mtk.h | 2 +-
- 2 files changed, 2 insertions(+), 1 deletion(-)
+Jason-JH.Lin (5):
+  drm/mediatek: Remove freeing not dynamic allocated memory
+  drm/mediatek: Add cnt checking for coverity issue
+  drm/mediatek: Add initialization for mtk_gem_obj
+  drm/mediatek: Add casting before assign
+  drm/mediatek: Fix dereference before null check
 
-diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-index f7cbb08fc506..90cf40d6d0c3 100644
---- a/drivers/usb/host/xhci-mtk.c
-+++ b/drivers/usb/host/xhci-mtk.c
-@@ -398,6 +398,7 @@ static int xhci_mtk_clks_get(struct xhci_hcd_mtk *mtk)
- 	clks[2].id = "ref_ck";
- 	clks[3].id = "mcu_ck";
- 	clks[4].id = "dma_ck";
-+	clks[5].id = "frmcnt_ck";
- 
- 	return devm_clk_bulk_get_optional(mtk->dev, BULK_CLKS_NUM, clks);
- }
-diff --git a/drivers/usb/host/xhci-mtk.h b/drivers/usb/host/xhci-mtk.h
-index 1174a510dd38..faaaf05e36ce 100644
---- a/drivers/usb/host/xhci-mtk.h
-+++ b/drivers/usb/host/xhci-mtk.h
-@@ -15,7 +15,7 @@
- 
- #include "xhci.h"
- 
--#define BULK_CLKS_NUM	5
-+#define BULK_CLKS_NUM	6
- #define BULK_VREGS_NUM	2
- 
- /* support at most 64 ep, use 32 size hash table */
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c  |  1 -
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c   |  4 ++--
+ drivers/gpu/drm/mediatek/mtk_drm_gem.c   |  4 ++--
+ drivers/gpu/drm/mediatek/mtk_drm_plane.c | 29 +++++++++++-------------
+ 4 files changed, 17 insertions(+), 21 deletions(-)
+
 -- 
 2.18.0
 
