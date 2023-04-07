@@ -4,98 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 222E8C77B6E
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Apr 2023 09:08:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16080C6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Apr 2023 09:08:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9gmZaXoh5OynzC86VaTh4Y6BvZrzd/QsKcjbYpPnZc0=; b=k+YiFBSdbnCNeMZv7WyTg8wa0G
-	kTjamm3PhCNSAKjAYI7kZM6ZzfpAZ0LG80zuMb0xsUqC7YHmxNw0DGWBVu3kh4z3li2/afGMv+gg+
-	5GqynY+saNxTtsH+j/IbM8MyCQYTgaPGrQx/x6grucWdzg7E/V0HfTIVYp6QzUPsSH7bm9iGriAd8
-	7VZ4fEyg5WE0ab6RWN04m2T1FMXrvRaBcR6R1t7fyC1eYRWa4ZN28cw6HVTkSkeXfNZnx1C0BOva1
-	m+n4E1rKLsp/wJcSJBjyqLorU6ntlCZW4lUpWPuPxhtxuNkNFAUSTDU2DUCEpWVqm3/1zaxVAfF1Q
-	ipyY+TBw==;
+	bh=mS+gu24YQcDySZQA4KGl5nRcBAow7572GLDy+PI4qQY=; b=kl0vqGaHKJPmOCCFpbhk6Y0kKo
+	hde+mNAhuT4rAP+XnnRhxCAFjeGV0SRdoaOXnanj+/duROpnDMzbHkYHL2jw1qQEuv7SPGLjA1qvX
+	Ue5FkWiwkY1uOrhEWUtwxG00/0lU1QflkxUbcZXLQmiXeS2FqB3q8NcUWX7si4CDOQlZal4juMOzM
+	15hhpQyOSvxu33WyuSBJ7W0XtxrgTyZALqEfx2TxgO0lOnhiRCWvhAukTyjTBKx7IvpCdNsaWFBh/
+	3LaUBDBem59JfA8tbDxo7DVx5LU5RdqxjjjQ4wKU4af1ZqKFbXUZVyM8JPdLwmkl4NfO9g3zBmJob
+	Alk9jbtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pki4b-009bU3-1O;
-	Fri, 07 Apr 2023 09:07:57 +0000
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+	id 1pki5T-009bnV-1k;
+	Fri, 07 Apr 2023 09:08:51 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pki4Y-009bQp-1m
-	for linux-mediatek@lists.infradead.org;
-	Fri, 07 Apr 2023 09:07:56 +0000
-Received: by mail-ej1-x62b.google.com with SMTP id jw24so7085795ejc.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 07 Apr 2023 02:07:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1680858469;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=9gmZaXoh5OynzC86VaTh4Y6BvZrzd/QsKcjbYpPnZc0=;
-        b=Xz8iLJoj3e6atCdL3Uvpx3dUFJKuQsv2GH4wcE8UI1rl0GJXVuGqUZSpj/tONGDCPj
-         u8p85UbDTJ+HLqeJw/YnZ4faLPx8LKpc5WxqDRLvWk4Dm2L4FADqlBBqPrBu1wi3SYbE
-         VWTQxTC/mD01K1EMTJjuUX+c+d9o3V18k4jh9u2v4RPghw4ULoS0s0mnPxMUe79FszTG
-         i/V4jO5WXAVR45hsrXNpPVrlhEDYZgMlwW14UpvVRRneT11I4dIY0LQb5/6mivQg2wCs
-         nSCdNOjcDV+yKsQl2QK9+Glg+KHIL5XRN0dDAlWrj9Arx16pzha2SfsFfWN15bz7gFC1
-         mkpw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680858469;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=9gmZaXoh5OynzC86VaTh4Y6BvZrzd/QsKcjbYpPnZc0=;
-        b=yHO4cWDUwtwJKaGLRmvbIKsvfUeLMnoY5Mvk1Qy3gaYrRjHHYHCu/QSNXiRjtIZBRS
-         dAz9v/dRYHqAvG243TNUChQKHBfxg13kSl8U9pJlx8SCw45vH3OrqNI9SyPgsLbrJkwU
-         apbABovcXqlxM3/Sn0AmvfntTIecTW7Vz5nnr1Q59WuALc+nXDsFGRayPf6AWrczMCBv
-         somuwYwf8KNxZgQ1e5NwY638+E58jZzT4RHv9+cGbdpiOaDQzaEApHMTV3LBNHTYWkDk
-         OQD2l7tr/4PFS89LdAHQy3LvB/39PtQwdQoYFp2ICwVmcjyUEci+QnnfawcSCA/qWKnv
-         CbKA==
-X-Gm-Message-State: AAQBX9eiSdNrEuC4gB+fbgDBRSb0gaeUG4680Bo1b/GYYqzLpoWnZxMH
-	Xgnh9UGgY5eOPna8Gf9ZOmcfKw==
-X-Google-Smtp-Source: AKy350bMxNw13TzLGoIgRzK5ovfvLEWUmmgDUnmQBPIUls264bsoQ74I1vJcA7PJ/i7xcVI2UzdWtQ==
-X-Received: by 2002:a17:906:39d3:b0:8de:502e:2061 with SMTP id i19-20020a17090639d300b008de502e2061mr1172023eje.3.1680858469115;
-        Fri, 07 Apr 2023 02:07:49 -0700 (PDT)
-Received: from ?IPV6:2a02:810d:15c0:828:14a3:366:3172:3c37? ([2a02:810d:15c0:828:14a3:366:3172:3c37])
-        by smtp.gmail.com with ESMTPSA id lf24-20020a170906ae5800b00933d64cd447sm1826425ejb.121.2023.04.07.02.07.47
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 07 Apr 2023 02:07:48 -0700 (PDT)
-Message-ID: <e716d33d-bd39-3f84-3e2e-18cfaf0439cd@linaro.org>
-Date: Fri, 7 Apr 2023 11:07:47 +0200
+	id 1pki5P-009blY-22;
+	Fri, 07 Apr 2023 09:08:49 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7A51566031A4;
+	Fri,  7 Apr 2023 10:08:45 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1680858526;
+	bh=U1+DDX+dU1UQ6EiNs+o75B5KM0xLmP6jEneF+ome3Es=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=n81grpCBm+3ZpgR/kR+EEDuOAoXfVthUK/CXHhTiYphnIlXQZ/zbL4jlLROIMoQvH
+	 cpktvJHTLT8wMJ1su/G7ZWHcJDUHB/LT04F3+qgc65dGhU0zyJrNGuwkKPEoqZmIyy
+	 V18PJBQhX0h5xLOb+THujMP4XtFAqDgSCiD6FIRQbhEaac1M30KFzXZpItmqdo7Oou
+	 xU0mZYEBpcnFJhaP9JmIvDDwB2JEFfksQZ/2HW5u3AsINqCjqAT3VHQLHiK9X79Pdv
+	 i46RnWYKyGHr7WkDwism4VALjRTxFGZ8HA2u4eQLZT8B03Vds2V4KX6dV3pgAzUfqO
+	 1jmLo7mJSK2XA==
+Message-ID: <3f2ba861-10f1-cc5c-caec-6f798486d9cb@collabora.com>
+Date: Fri, 7 Apr 2023 11:08:43 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH 5/7] dt-bindings: net: dsa: mediatek,mt7530: disallow
- reset without mediatek,mcm
+ Thunderbird/102.9.1
+Subject: Re: [PATCH 3/7] usb: mtu3: fix KE at qmu transfer done irq handler
 Content-Language: en-US
-To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
- arinc9.unal@gmail.com, Andrew Lunn <andrew@lunn.ch>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Daniel Golle <daniel@makrotopia.org>, Landen Chao
- <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>
-Cc: erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230406080141.22924-1-arinc.unal@arinc9.com>
- <20230406080141.22924-5-arinc.unal@arinc9.com>
- <d5769d8f-29f3-063e-0562-487b1b509d3c@linaro.org>
- <194d3bad-c30a-df07-5fab-3264f739c599@arinc9.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <194d3bad-c30a-df07-5fab-3264f739c599@arinc9.com>
-Content-Type: text/plain; charset=UTF-8
+To: =?UTF-8?B?Q2h1bmZlbmcgWXVuICjkupHmmKXls7Ap?= <Chunfeng.Yun@mediatek.com>,
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>
+Cc: "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ =?UTF-8?B?RWRkaWUgSHVuZyAo5rSq5q2j6ZGrKQ==?= <Eddie.Hung@mediatek.com>,
+ =?UTF-8?B?VGlhbnBpbmcgRmFuZyAo5pa55aSp5bmzKQ==?=
+ <Tianping.Fang@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
+References: <20230403025230.25035-1-chunfeng.yun@mediatek.com>
+ <20230403025230.25035-3-chunfeng.yun@mediatek.com>
+ <1cfde490-40a4-c83b-3bd5-c9baeba5187d@collabora.com>
+ <40ed6eb5c664b624e85576f957625a61d9615530.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <40ed6eb5c664b624e85576f957625a61d9615530.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230407_020754_590147_E6591832 
-X-CRM114-Status: GOOD (  13.23  )
+X-CRM114-CacheID: sfid-20230407_020847_800386_3F68AA9A 
+X-CRM114-Status: GOOD (  15.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,51 +90,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 06/04/2023 21:19, Arınç ÜNAL wrote:
-> On 6.04.2023 22:08, Krzysztof Kozlowski wrote:
->> On 06/04/2023 10:01, arinc9.unal@gmail.com wrote:
->>> From: Arınç ÜNAL <arinc.unal@arinc9.com>
->>>
->>> The resets and reset-names properties are used only if mediatek,mcm is
->>> used. Set them to false if mediatek,mcm is not used.
->>>
->>> Remove now unnecessary 'reset-names: false' from MT7988.
->>>
->>> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->>> ---
->>>   .../devicetree/bindings/net/dsa/mediatek,mt7530.yaml         | 5 ++++-
->>>   1 file changed, 4 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
->>> index 9d99f7303453..3fd953b1453e 100644
->>> --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
->>> +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
->>> @@ -282,6 +282,10 @@ allOf:
->>>         required:
->>>           - resets
->>>           - reset-names
->>> +    else:
->>> +      properties:
->>> +        resets: false
->>> +        reset-names: false
->>>   
->>>     - dependencies:
->>>         interrupt-controller: [ interrupts ]
->>> @@ -324,7 +328,6 @@ allOf:
->>>         properties:
->>>           gpio-controller: false
->>>           mediatek,mcm: false
->>> -        reset-names: false
+Il 07/04/23 09:59, Chunfeng Yun (云春峰) ha scritto:
+> On Mon, 2023-04-03 at 14:31 +0200, AngeloGioacchino Del Regno wrote:
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
 >>
->> I don't see such hunk in linux-next.
+>>
+>> Il 03/04/23 04:52, Chunfeng Yun ha scritto:
+>>> When handle qmu transfer irq, it will unlock @mtu->lock before give
+>>> back
+>>> request, if another thread hanlde disconnect event at the same
+>>> time, and
+>>> try to disable ep, it may lock @mtu->lock and free qmu ring, then
+>>> qmu
+>>> irq hanlder may get a NULL gpd, avoid the KE by checking gpd's
+>>> value before
+>>
+>> KE == Kernel Error? I think you wanted to say KP == Kernel Panic
+>> instead.
+>>
+>> Also, s/hanlder/handler/g.
+> Ok, will modify it
+>>
+>>> handling it.
+>>>
+>>> e.g.
+>>> qmu done irq on cpu0                 thread running on cpu1
+>>>
+>>> qmu_done_tx()
+>>>     handle gpd [0]
+>>>       mtu3_requ_complete()        mtu3_gadget_ep_disable()
+>>>         unlock @mtu->lock
+>>>           give back request         lock @mtu->lock
+>>>                                       mtu3_ep_disable()
+>>>                                         mtu3_gpd_ring_free()
+>>>                                      unlock @mtu->lock
+>>>         lock @mtu->lock
+>>>       get next gpd [1]
+>>>
+>>> [1]: goto [0] to handle next gpd, and next gpd may be NULL.
+>>
+>>   >
+>>   > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+>>
+>> This is a fix and needs a Fixes tag.
+> I usually add Fixes tag when the issue introduced by a patch except the
+> original one when the driver applied.
 > 
-> This was added very recently so it's only on net-next at the moment.
 
-OK, I was checking one few days old.
+If this patch is a fix for the "original driver", you shall still add a
+Fixes tag which advertises that this fixes the first commit, so the driver
+was broken from the very beginning.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
-Best regards,
-Krzysztof
+Thanks,
+Angelo.
 
 
