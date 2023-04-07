@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51C43C76196
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Apr 2023 06:47:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19E97C77B71
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Apr 2023 06:47:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xaEbqvdFL2sMRb9qOiKPJP+92YdZ91YByOWQGwr67+I=; b=4sLzkat/+Jc+CnvhbIQyDuQELV
-	y094etEbd7FWEw1cULmJ7CIruxj8bm4mQ4YFaCKgOy+qTL3Qe63HGLhrrlhpg9yom+VZ2KLVuVGsy
-	sv3uY2yNeq6gRqGlbGA/WEjAjJp8C2Pj7ZSiXu0pprqJaI4lUI4VNMMQapHs01se5Xp2BWJC+DtJ9
-	Hcr5oY/UuXym0NxIjlWSQUWgXnBsip9/bUuuBn6l6sUK1grf2eZwHPEljZOdPsLNJGE+AxbGyZx14
-	GcvDf5WeKwxi+ZIB4ZaZX2cAQBoH8DWJREWlWhIhGPAN5HkNwTLC7mKbpEYB1B71YZAyDNIvSluf0
-	R0y/9i0Q==;
+	bh=QZ37W9OSn/D1U5UFhTl3GS1/1Rs+rsZ86abCpxFX95M=; b=ELrUoVC9pIc0jBb/homNJHqZUv
+	uTJXac0cKonPXRhLiJN5IIsx9f5au/IWMyxMbwxXL9rksCXkwRFe8LiP7iFN3K1ZGuTf6nKlKVM39
+	V/fkM10rlJcXKjmjbf0z+CH5TBdqk2RZSmK3vYjbyEBuFQiamfuzdhsfZuk22n8nW8yZD1k9/IIvv
+	7HO2Es8pFemLb0Ora/Efxxm3gGIR6RCSv9DS3cWh4fY+OR4nCJNwqjqF04m+vgIUNoZq3ecWpXf7Y
+	y7PnOR0/y7lmSbf/Y/R/I6LC7UfpiqQjYtqdgYlMGTCTdr+0pO+HgFowg21eUA1D++Lu9h0VyXa1H
+	mKDGfnrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkfsQ-009J3S-1V;
-	Fri, 07 Apr 2023 06:47:14 +0000
+	id 1pkfsU-009J5S-0d;
+	Fri, 07 Apr 2023 06:47:18 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkfsL-009J1J-0Z;
-	Fri, 07 Apr 2023 06:47:10 +0000
-X-UUID: 00862610d51011ed8687db9d93187ff1-20230406
+	id 1pkfsM-009J1E-14;
+	Fri, 07 Apr 2023 06:47:11 +0000
+X-UUID: 00727d4ad51011ed8687db9d93187ff1-20230406
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=xaEbqvdFL2sMRb9qOiKPJP+92YdZ91YByOWQGwr67+I=;
-	b=pCeUkTz2RXRP97Yagloa7O+ZJ9ztUtV3+i5oi88OetZmGjhmaefhsml8/NVyMVD+W4KCSWr7LPgdvSjStjUpP/tlS6pm2/8bRt+peZFlCrWi7/B8FCR9e7PmUVZU3ph0igzGu7voU4M1MJzGugkZAaKl1cnsZIEPbPc2GZBjQsY=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=QZ37W9OSn/D1U5UFhTl3GS1/1Rs+rsZ86abCpxFX95M=;
+	b=W+7sCR7RHN0QSPFoId1OKO77tdoJXMTW6PeAbDPbIP0ahCHVg8jBJyPfu7G7iRNht/aXVmztqnLecCGCQ+ePpeRwHxqNzL72puYnVXa0aa91tDa5row4coUBGKjXAv6g9W2H+Yb7hD/9E247r0tjFTuXnJCNOi6J65J22dOf0Os=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:24017044-93b7-4651-be26-a72bb57856e5,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:120426c,CLOUDID:d95a0bf8-ddba-41c3-91d9-10eeade8eac7,B
+X-CID-O-INFO: VERSION:1.1.22,REQID:34db6bf8-5a1f-4c6f-b812-075509734524,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:120426c,CLOUDID:5fa87db5-beed-4dfc-bd9c-e1b22fa6ccc4,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-UUID: 00862610d51011ed8687db9d93187ff1-20230406
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: 00727d4ad51011ed8687db9d93187ff1-20230406
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
 	(envelope-from <jason-jh.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1729882867; Thu, 06 Apr 2023 23:47:02 -0700
+	with ESMTP id 390932695; Thu, 06 Apr 2023 23:47:02 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.25; Fri, 7 Apr 2023 14:46:59 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -62,9 +62,9 @@ CC: Matthias Brugger <matthias.bgg@gmail.com>, Rex-BC Chen
 	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-kernel@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH 5/5] drm/mediatek: Fix dereference before null check
-Date: Fri, 7 Apr 2023 14:46:57 +0800
-Message-ID: <20230407064657.12350-6-jason-jh.lin@mediatek.com>
+Subject: [PATCH 4/5] drm/mediatek: Add casting before assign
+Date: Fri, 7 Apr 2023 14:46:56 +0800
+Message-ID: <20230407064657.12350-5-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230407064657.12350-1-jason-jh.lin@mediatek.com>
 References: <20230407064657.12350-1-jason-jh.lin@mediatek.com>
@@ -72,8 +72,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230406_234709_216666_D2A4DF6B 
-X-CRM114-Status: GOOD (  12.47  )
+X-CRM114-CacheID: sfid-20230406_234710_374612_BA1EF7E5 
+X-CRM114-Status: GOOD (  12.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,45 +88,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Null-checking state suggests that it may be null, but it has already
-been dereferenced on drm_atomic_get_new_plane_state(state, plane).
-
-The parameter state will never be NULL currently, so just remove the
-state is NULL flow in this function.
+Add casting before assign to avoid the unintentional integer overflow
+or unintended sign extension.
 
 Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-Fixes: 5ddb0bd4ddc3 ("drm/atomic: Pass the full state to planes async atomic check and update")
+Fixes: 1a64a7aff8da ("drm/mediatek: Fix cursor plane no update")
 ---
- drivers/gpu/drm/mediatek/mtk_drm_plane.c | 9 ++-------
- 1 file changed, 2 insertions(+), 7 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_drm_gem.c   |  2 +-
+ drivers/gpu/drm/mediatek/mtk_drm_plane.c | 20 +++++++++++---------
+ 2 files changed, 12 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-index a1337f386bbf..e14b2920d242 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-@@ -103,8 +103,7 @@ static void mtk_drm_plane_destroy_state(struct drm_plane *plane,
- static int mtk_plane_atomic_async_check(struct drm_plane *plane,
- 					struct drm_atomic_state *state)
- {
--	struct drm_plane_state *new_plane_state = drm_atomic_get_new_plane_state(state,
--										 plane);
-+	struct drm_plane_state *new_plane_state = drm_atomic_get_new_plane_state(state, plane);
- 	struct drm_crtc_state *crtc_state;
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+index 9b8f72ed12e4..537e83b95001 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+@@ -121,7 +121,7 @@ int mtk_drm_gem_dumb_create(struct drm_file *file_priv, struct drm_device *dev,
  	int ret;
  
-@@ -122,11 +121,7 @@ static int mtk_plane_atomic_async_check(struct drm_plane *plane,
- 	if (ret)
- 		return ret;
+ 	args->pitch = DIV_ROUND_UP(args->width * args->bpp, 8);
+-	args->size = args->pitch * args->height;
++	args->size = (unsigned long)args->pitch * args->height;
  
--	if (state)
--		crtc_state = drm_atomic_get_existing_crtc_state(state,
--								new_plane_state->crtc);
--	else /* Special case for asynchronous cursor updates. */
--		crtc_state = new_plane_state->crtc->state;
-+	crtc_state = drm_atomic_get_existing_crtc_state(state, new_plane_state->crtc);
+ 	mtk_gem = mtk_drm_gem_create(dev, args->size, false);
+ 	if (IS_ERR(mtk_gem))
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+index 31f9420aff6f..a1337f386bbf 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+@@ -140,7 +140,7 @@ static void mtk_plane_update_new_state(struct drm_plane_state *new_state,
+ 	struct drm_framebuffer *fb = new_state->fb;
+ 	struct drm_gem_object *gem;
+ 	struct mtk_drm_gem_obj *mtk_gem;
+-	unsigned int pitch, format;
++	unsigned int pitch, format, cpp;
+ 	u64 modifier;
+ 	dma_addr_t addr;
+ 	dma_addr_t hdr_addr = 0;
+@@ -151,11 +151,12 @@ static void mtk_plane_update_new_state(struct drm_plane_state *new_state,
+ 	addr = mtk_gem->dma_addr;
+ 	pitch = fb->pitches[0];
+ 	format = fb->format->format;
++	cpp = (unsigned int)fb->format->cpp[0];
+ 	modifier = fb->modifier;
  
- 	return drm_atomic_helper_check_plane_state(plane->state, crtc_state,
- 						   DRM_PLANE_NO_SCALING,
+ 	if (modifier == DRM_FORMAT_MOD_LINEAR) {
+-		addr += (new_state->src.x1 >> 16) * fb->format->cpp[0];
+-		addr += (new_state->src.y1 >> 16) * pitch;
++		addr += (dma_addr_t)(new_state->src.x1 >> 16) * cpp;
++		addr += (dma_addr_t)(new_state->src.y1 >> 16) * pitch;
+ 	} else {
+ 		int width_in_blocks = ALIGN(fb->width, AFBC_DATA_BLOCK_WIDTH)
+ 				      / AFBC_DATA_BLOCK_WIDTH;
+@@ -167,17 +168,18 @@ static void mtk_plane_update_new_state(struct drm_plane_state *new_state,
+ 
+ 		hdr_pitch = width_in_blocks * AFBC_HEADER_BLOCK_SIZE;
+ 		pitch = width_in_blocks * AFBC_DATA_BLOCK_WIDTH *
+-			AFBC_DATA_BLOCK_HEIGHT * fb->format->cpp[0];
++			AFBC_DATA_BLOCK_HEIGHT * cpp;
+ 
+ 		hdr_size = ALIGN(hdr_pitch * height_in_blocks, AFBC_HEADER_ALIGNMENT);
+ 
+-		hdr_addr = addr + hdr_pitch * y_offset_in_blocks +
+-			   AFBC_HEADER_BLOCK_SIZE * x_offset_in_blocks;
++		hdr_addr = addr +
++			   (dma_addr_t)hdr_pitch * y_offset_in_blocks +
++			   (dma_addr_t)AFBC_HEADER_BLOCK_SIZE * x_offset_in_blocks;
+ 		/* The data plane is offset by 1 additional block. */
+ 		addr = addr + hdr_size +
+-		       pitch * y_offset_in_blocks +
+-		       AFBC_DATA_BLOCK_WIDTH * AFBC_DATA_BLOCK_HEIGHT *
+-		       fb->format->cpp[0] * (x_offset_in_blocks + 1);
++		       (dma_addr_t)pitch * y_offset_in_blocks +
++		       (dma_addr_t)AFBC_DATA_BLOCK_WIDTH * AFBC_DATA_BLOCK_HEIGHT *
++		       (dma_addr_t)cpp * (x_offset_in_blocks + 1);
+ 	}
+ 
+ 	mtk_plane_state->pending.enable = true;
 -- 
 2.18.0
 
