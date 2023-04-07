@@ -4,89 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4C1FC76196
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Apr 2023 09:22:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BAF9C6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Apr 2023 09:29:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Kl+r+1eAwUmcO3yIvLHoGLAdyBZhiAmwImrb6DiZvqw=; b=nOseZSzLuURKF99JFJ0bRe69tE
-	wRmz+0zHqzKyg53uw2NQ7WuYRXzXtOm+AzydKDbf1hbS2MjHc2r5YsGj9yxTIB106hMnGJb/vId2F
-	IpcRPoagGoqNlHR4DrBz9ItmOl0aNvvzuRDjt5pQwmk//jazkFawLhFoL65M8ogYR76/x+IaJlyag
-	XTkjDXnEnK2aYJvp3AfCCVdrQQ3M3858Kuq7AUT0EjpHUR5Aoa23CFcdCpOugltMqxcA6CvNwdIDI
-	q7wylgxrCIYnJdeiY7aUu299nW+rnvBi0paEb3ehGLJM8wcuZzNEykPPisHDJkW+ZC9+dkubpqivQ
-	PpsfA78w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mczvtSPAxYkTM+JcD02YrPL+zwqq5eoG4AX2wBzmrCY=; b=d+IAIjOwHkftYy1pDJ275tiTX7
+	bLC5illHOTdYn/Y6E7O3wbxs8u5DJAAq8YcviMkhnlnHu27YrcyfjNNYOLfKx/K8jRgD3wL2qo8B+
+	rbXuccYlFmdcnUDYLRFn4doJnhUgAe2uu84ENbs83xJfepWRo4do9Y7dYxJ20yctmp8NeLR6Dwv2f
+	2YWUvRaP6xZlxf6cEPgf2eRBgzG1soXwCdFSDQaHB3+9buZZMLBDQ3Bhu5tNoD2l1QCRQKDmlKy6/
+	SxYZYMCLNz61Av/NaIUhVDqQvc8rBt7iaAui5sdnMAfI0IQIWvV8WCe2eGbkblc+M4a6RRkqO2Xtu
+	6jKxh8Ig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkiIj-009e8N-2I;
-	Fri, 07 Apr 2023 09:22:33 +0000
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+	id 1pkiPJ-009f3W-07;
+	Fri, 07 Apr 2023 09:29:21 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkiIh-009e6z-0P
-	for linux-mediatek@lists.infradead.org;
-	Fri, 07 Apr 2023 09:22:32 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id g5so1885246wrb.5
-        for <linux-mediatek@lists.infradead.org>; Fri, 07 Apr 2023 02:22:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1680859347; x=1683451347;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=Kl+r+1eAwUmcO3yIvLHoGLAdyBZhiAmwImrb6DiZvqw=;
-        b=f4fj7uc/i6H265MoHUlDrKBrHhdyisQvssObqt0dhKmwQGrmtrAajdMaWJXQ5ZsaxW
-         bE06FHKnR1SgnIuLPld2A7hlrhdsX6glSBvpUm9DTOZktf3PXpi+XxOcB9UqQ6u1ZBJ8
-         anaK6QIs11IkblOhbgJRgRkNo6ZQAUgIYtd6TiOdlOtSkiSB0CB7Bcxf3PFIyLJo6XBX
-         BGXokeZKPOn8WixKjcL5lBG5wA7j+VL0Q5K0q3ncUtJyYaVEEGGe4PQTtzdRPqtTBPEv
-         HeR/jV2tvvIWg+nC1APJdGdT6fSwEou+63CG51cNKpo0ja9cdrH8gsya5SKwv/DiR1xT
-         ahbQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680859347; x=1683451347;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Kl+r+1eAwUmcO3yIvLHoGLAdyBZhiAmwImrb6DiZvqw=;
-        b=yy7oUXPtjklzAqayqxhP8O8Lp+J/1tnUOjv91yw++jwhnvwj15SVINypKV3ikUSJ5v
-         aHHEEuTsN9uioB/dl7/Cu2k9OfbFPjCmbzv1Vo5nCYktIib0vGrZr61eTHy+J4nSOBTk
-         v834p9tGeNkhBKnDRMLfGgr+HiMpUy0DekU8oNx9crsQg74nbLFFveGmTh6+8PvurWvy
-         xvdqDIGsxDAfR6+Rm4u5be0w5FwWazXSQcCIDkkXv/ncrmZ9KxiugzEK7Xf4xQM8kIaE
-         KzsYDwS6Qr27mVNMbn3e6cAToTjQGc/2AGa/yZcBubnJ/7NGQX22oaHmzrNfyursVySw
-         8xdg==
-X-Gm-Message-State: AAQBX9cTMi04rwHsEbVXNdnK7UBSv7lmxRMJUKt0Y3ADwkMM6/XGXoZa
-	XbmiEFm6Nx03tJ5hjX3EgEtIPQFwpu/GuN1glXE=
-X-Google-Smtp-Source: AKy350bBjbWNKXKt3qNiC277f7nt1WJaKLR8W6DDuzOEBUJz2ryNsKn3aPZFHGIZe/tdUpnx0OOoTQ==
-X-Received: by 2002:adf:e643:0:b0:2ef:b32d:f54a with SMTP id b3-20020adfe643000000b002efb32df54amr537373wrn.33.1680859347328;
-        Fri, 07 Apr 2023 02:22:27 -0700 (PDT)
-Received: from ?IPV6:2a05:6e02:1041:c10:dc55:c7a2:94a8:f03b? ([2a05:6e02:1041:c10:dc55:c7a2:94a8:f03b])
-        by smtp.googlemail.com with ESMTPSA id c4-20020a5d5284000000b002d1801018e2sm4046798wrv.63.2023.04.07.02.22.26
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 07 Apr 2023 02:22:26 -0700 (PDT)
-Message-ID: <626fa1d8-dadd-9ecf-3eb0-fec651b331e6@linaro.org>
-Date: Fri, 7 Apr 2023 11:22:26 +0200
+	id 1pkiPD-009f1w-2N;
+	Fri, 07 Apr 2023 09:29:17 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1pkiOW-0001Oj-0n;
+	Fri, 07 Apr 2023 11:28:32 +0200
+Date: Fri, 7 Apr 2023 10:28:29 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Cc: "Russell King (Oracle)" <linux@armlinux.org.uk>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [RFC PATCH net-next] net: dsa: mt7530: fix port specifications
+ for MT7988
+Message-ID: <ZC_iPfl5R-_4zOZg@makrotopia.org>
+References: <20230406100445.52915-1-arinc.unal@arinc9.com>
+ <ZC6n1XAGyZFlxyXx@shell.armlinux.org.uk>
+ <e413a182-ce93-5831-09f5-19d34d7f7fcf@arinc9.com>
+ <ZC9AXyuFqa3bqF3Q@makrotopia.org>
+ <0cdb0504-bc1e-c255-a7d2-4dd96bd8e6e3@arinc9.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH] thermal/drivers/mediatek/lvts_thermal: only update
- registered thermal zones
-Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>, Amit Kucheria
- <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Balsam CHIHI <bchihi@baylibre.com>, linux-pm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230328031037.1361048-1-wenst@chromium.org>
- <9ab8d176-378c-9720-3794-c710e2bd6272@linaro.org>
- <CAGXv+5H7QdNJ0Pj4xS_Ce=N63Csd1rCc+BoFJALyETLsA521NQ@mail.gmail.com>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <CAGXv+5H7QdNJ0Pj4xS_Ce=N63Csd1rCc+BoFJALyETLsA521NQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <0cdb0504-bc1e-c255-a7d2-4dd96bd8e6e3@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230407_022231_175796_AF484A21 
-X-CRM114-Status: GOOD (  15.36  )
+X-CRM114-CacheID: sfid-20230407_022915_772514_3D27B46E 
+X-CRM114-Status: GOOD (  49.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,35 +79,150 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 07/04/2023 10:45, Chen-Yu Tsai wrote:
-> On Sun, Apr 2, 2023 at 4:34 AM Daniel Lezcano <daniel.lezcano@linaro.org> wrote:
->>
->> On 28/03/2023 05:10, Chen-Yu Tsai wrote:
->>> It's possible for some sensors or thermal zones to not be registered,
->>> either because they are unused or not fully declared in the device tree.
->>> Nevertheless the driver enables interrupts for all sensors. If an
->>> interrupt happens for an not-registered sensor, the driver would end up
->>> updating a non-existent thermal zone, which leads to a NULL pointer
->>> dereference.
->>>
->>> Change it so that only registered thermal zones get updated.
->>
->> Why not change the interrupt initialization ?
+On Fri, Apr 07, 2023 at 11:56:08AM +0300, Arınç ÜNAL wrote:
+> On 7.04.2023 00:57, Daniel Golle wrote:
+> > On Fri, Apr 07, 2023 at 12:43:41AM +0300, Arınç ÜNAL wrote:
+> > > On 6.04.2023 14:07, Russell King (Oracle) wrote:
+> > > > On Thu, Apr 06, 2023 at 01:04:45PM +0300, arinc9.unal@gmail.com wrote:
+> > > > > From: Arınç ÜNAL <arinc.unal@arinc9.com>
+> > > > > 
+> > > > > On the switch on the MT7988 SoC, there are only 4 PHYs. There's only port 6
+> > > > > as the CPU port, there's no port 5. Split the switch statement with a check
+> > > > > to enforce these for the switch on the MT7988 SoC. The internal phy-mode is
+> > > > > specific to MT7988 so put it for MT7988 only.
+> > > > > 
+> > > > > Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> > > > > ---
+> > > > > 
+> > > > > Daniel, this is based on the information you provided me about the switch.
+> > > > > I will add this to my current patch series if it looks good to you.
+> > > > > 
+> > > > > Arınç
+> > > > > 
+> > > > > ---
+> > > > >    drivers/net/dsa/mt7530.c | 67 ++++++++++++++++++++++++++--------------
+> > > > >    1 file changed, 43 insertions(+), 24 deletions(-)
+> > > > > 
+> > > > > diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> > > > > index 6fbbdcb5987f..f167fa135ef1 100644
+> > > > > --- a/drivers/net/dsa/mt7530.c
+> > > > > +++ b/drivers/net/dsa/mt7530.c
+> > > > > @@ -2548,7 +2548,7 @@ static void mt7988_mac_port_get_caps(struct dsa_switch *ds, int port,
+> > > > >    	phy_interface_zero(config->supported_interfaces);
+> > > > >    	switch (port) {
+> > > > > -	case 0 ... 4: /* Internal phy */
+> > > > > +	case 0 ... 3: /* Internal phy */
+> > > > >    		__set_bit(PHY_INTERFACE_MODE_INTERNAL,
+> > > > >    			  config->supported_interfaces);
+> > > > >    		break;
+> > > > > @@ -2710,37 +2710,56 @@ mt753x_phylink_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
+> > > > >    	struct mt7530_priv *priv = ds->priv;
+> > > > >    	u32 mcr_cur, mcr_new;
+> > > > > -	switch (port) {
+> > > > > -	case 0 ... 4: /* Internal phy */
+> > > > > -		if (state->interface != PHY_INTERFACE_MODE_GMII &&
+> > > > > -		    state->interface != PHY_INTERFACE_MODE_INTERNAL)
+> > > > > -			goto unsupported;
+> > > > > -		break;
+> > > > > -	case 5: /* Port 5, a CPU port. */
+> > > > > -		if (priv->p5_interface == state->interface)
+> > > > > +	if (priv->id == ID_MT7988) {
+> > > > > +		switch (port) {
+> > > > > +		case 0 ... 3: /* Internal phy */
+> > > > > +			if (state->interface != PHY_INTERFACE_MODE_INTERNAL)
+> > > > 
+> > > > How do these end up with PHY_INTERFACE_MODE_INTERNAL ? phylib defaults
+> > > > to GMII mode without something else being specified in DT.
+> > > > 
+> > > > Also note that you should *not* be validating state->interface in the
+> > > > mac_config() method because it's way too late to reject it - if you get
+> > > > an unsupported interface here, then that is down to the get_caps()
+> > > > method being buggy. Only report interfaces in get_caps() that you are
+> > > > prepared to handle in the rest of the system.
+> > > 
+> > > This is already the case for all three get_caps(). The supported interfaces
+> > > for each port are properly defined.
+> > > 
+> > > Though mt7988_mac_port_get_caps() clears the config->supported_interfaces
+> > > bitmap before reporting the supported interfaces. I don't think this is
+> > > needed as all bits in the bitmap should already be initialized to zero when
+> > > the phylink_config structure is allocated.
+> > > 
+> > > I'm not sure if your suggestion is to make sure the supported interfaces are
+> > > properly reported on get_caps(), or validate state->interface somewhere
+> > > else.
+> > 
+> > I think what Russell meant is just there is no point in being overly
+> > precise about permitted interface modes in mt753x_phylink_mac_config,
+> > as this function is not meant and called too late to validate the
+> > validity of the selected interface mode.
+> > 
+> > You change to mt7988_mac_port_get_caps looks correct to me and doing
+> > this will already prevent mt753x_phylink_mac_config from ever being
+> > called on MT7988 for port == 4 as well as and port == 5.
 > 
-> I'll send another patch for that.
+> Ah, thanks for pointing this out Daniel. I see ds->ops->phylink_get_caps()
+> is run right before phylink_create() on dsa_port_phylink_create(), as it
+> should get the capabilities before creating an instance.
 > 
-> However I think the part in this patch should still be fixed?
+> Should I remove phy_interface_zero(config->supported_interfaces);
+> mt7988_mac_port_get_caps()? I'd prefer to do identical operations on each
+> get_caps(), if there's no apparent reason for this to be on
+> mt7988_mac_port_get_caps().
 
-If you are receiving an unexpected interrupt, there is something wrong 
-with the initialization. If only the monitored thermal zones have their 
-interrupt enabled, then you should never enter in the interrupt handler 
-for a thermal zone which is not monitored, or did I miss something ?
+Yes, sounds sane to me, please do so.
 
--- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+Also we could make .mac_port_config optional, as for MT7988 we actually
+won't need it at all:
 
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
-
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index e4bb5037d3525..5efcb9897eb18 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -2653,17 +2653,6 @@ static bool mt753x_is_mac_port(u32 port)
+ 	return (port == 5 || port == 6);
+ }
+ 
+-static int
+-mt7988_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
+-		  phy_interface_t interface)
+-{
+-	if (dsa_is_cpu_port(ds, port) &&
+-	    interface == PHY_INTERFACE_MODE_INTERNAL)
+-		return 0;
+-
+-	return -EINVAL;
+-}
+-
+ static int
+ mt7531_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
+ 		  phy_interface_t interface)
+@@ -2704,6 +2693,9 @@ mt753x_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
+ {
+ 	struct mt7530_priv *priv = ds->priv;
+ 
++	if (!priv->info->mac_port_config)
++		return 0;
++
+ 	return priv->info->mac_port_config(ds, port, mode, state->interface);
+ }
+ 
+@@ -3157,7 +3149,6 @@ const struct mt753x_info mt753x_table[] = {
+ 		.pad_setup = mt7988_pad_setup,
+ 		.cpu_port_config = mt7988_cpu_port_config,
+ 		.mac_port_get_caps = mt7988_mac_port_get_caps,
+-		.mac_port_config = mt7988_mac_config,
+ 	},
+ };
+ EXPORT_SYMBOL_GPL(mt753x_table);
+@@ -3186,8 +3177,7 @@ mt7530_probe_common(struct mt7530_priv *priv)
+ 	 */
+ 	if (!priv->info->sw_setup || !priv->info->pad_setup ||
+ 	    !priv->info->phy_read_c22 || !priv->info->phy_write_c22 ||
+-	    !priv->info->mac_port_get_caps ||
+-	    !priv->info->mac_port_config)
++	    !priv->info->mac_port_get_caps)
+ 		return -EINVAL;
+ 
+ 	priv->id = priv->info->id;
 
