@@ -4,86 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A511FC77B61
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Apr 2023 13:46:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10663C77B61
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Apr 2023 13:46:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fPFA2+mMpDkEnrSlP6Q1vK8FCaXq/JFd8egtENDoR5o=; b=DCRuc5Y+H+2zyZs84grJJwSsn2
-	z8xPAwq4Vb1MtedIn0jJdPQWueUxnmAoNnbhrQetvc1Ahmfw5Ut0B+1fqA97Ijzt/OVV9afD0kjAQ
-	HSgNPn6tzzKaSg6SvlDaYLkXeTv4S2y5B8zaXp0pDLwhanrhxDBNNZeJtGo2+N4b0zsmQ5fe9vkHr
-	NFodn/AukPhi7UE8g3xkIHV3n8wYwRPpWocpZknws5Yxe78r5O9vQITM/A5Drx0eWup2ZvkU6qeXy
-	gqFtkUVxObH/DoDyQju83olk9tsxkXlxyJFsC9jjWEUZw/R/WM5ThyrNiL1PnJlTiVUrLCbaL50Mv
-	HHGxbHVg==;
+	bh=OS7Sye0IPLu21f+Xi1LC07CtmBlPzToUPrfZNf6CO3E=; b=y9IlK06TiLg9OsiYQu/NRtTU9Y
+	n1t3QnPGM7H3W/NMRYz7RPX2w2zxmkKgTE7vpq/d9OcuAT3bZ8fd/7bYf9CS6w9OJiGoYAq2IAApe
+	narwW/IlyEdcfMRUPjJPkw7B2e0H36tcEZri22AHA1hG/93LReWW4pMsidRUtm7gmt7g1PpszKl5p
+	06DooXsTL6YvqEFBGsafmHsoy7D8NsglWuIWqxHznELc98o5rAS/N64R9qPvrkpqrvIo+oe8Ft9tX
+	0BZAdmrZ2J2fQHGTyB/j6wsdb6pHAuxwmRY6jCy8qM/9BScS31YrWLw3ZXRPLZvpsiKOLEa6Qk+Z1
+	ePUMqoEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkmQ0-00ANAq-0F;
-	Fri, 07 Apr 2023 13:46:20 +0000
+	id 1pkmQ8-00ANDY-2p;
+	Fri, 07 Apr 2023 13:46:28 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkmPy-00ANAA-10
+	id 1pkmQ7-00ANCF-0m
 	for linux-mediatek@bombadil.infradead.org;
-	Fri, 07 Apr 2023 13:46:18 +0000
+	Fri, 07 Apr 2023 13:46:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=fPFA2+mMpDkEnrSlP6Q1vK8FCaXq/JFd8egtENDoR5o=; b=N7XkVgzbU6ENLWxIz7p6LPyvrW
-	XhSQWyheX3jGu61haHvzns8uvUE4cluEFHou3m0I+Kvo91TxQ5CNRb/fAl/BP9PxOVAP6pMhVrD7r
-	7SqHkXYHP0O+9An0/c3tGO29NYSI4woO7BesV6YmbceJQdMjreZkKEZKhj7MwbVK5nMJunPcE4yIa
-	BbJZ4amI6glsF40NcHEQ872QjcV8Z5029z4EBvIN28J/V7pesEJBYRIBZ3cwrPlu5igtdLaViJ79l
-	VExNfJKFSpI5G7bJevfgc/qwhDhcuE151iqxAN+KONVcJshVDZi2YlMwPTrT9Zwbp2QOc42SozHS8
-	GiN5BkFQ==;
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	bh=OS7Sye0IPLu21f+Xi1LC07CtmBlPzToUPrfZNf6CO3E=; b=miAxidleSEnJuEL2uMVKmUitGO
+	IN5zfNShFOd5VJCEGBHGQ6GN0Z5dekXu1lMGPuK+bTp+MwVkgEZtdAeM+1064qd4C4iaeC2qU1CvS
+	UxVz31vokJB1+4LWdSvDoyAUriYAquaA8bubAKaXkzVQc6xz6hI2WYbkrZZQVmIBnorQy5Eedd8Qm
+	KB6Rqizc/mTGc6tiiTBy37RpPn3omlN/5DCFKXKyAyl2O+Nw2ImiEmzD7Q0ireRG/dap2s76FR6rn
+	O4VVVV9ONOkj+RbiyZSdnTgxmXDN656477aWvWOkxCSpNTFWDnAsUsXHOxmC1hVv5USk/mb7Eyc6v
+	uTkWKx2g==;
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pklh6-00B2xn-1O
+	id 1pklh2-00B2wY-0c
 	for linux-mediatek@lists.infradead.org;
-	Fri, 07 Apr 2023 12:59:58 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id y14so42279861wrq.4
-        for <linux-mediatek@lists.infradead.org>; Fri, 07 Apr 2023 05:59:56 -0700 (PDT)
+	Fri, 07 Apr 2023 12:59:54 +0000
+Received: by mail-wr1-x434.google.com with SMTP id i9so42262837wrp.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 07 Apr 2023 05:59:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1680872395; x=1683464395;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1680872390; x=1683464390;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=fPFA2+mMpDkEnrSlP6Q1vK8FCaXq/JFd8egtENDoR5o=;
-        b=31aAu/BHjejVg5FWkqBC79NltqOUEQIa8983mCIwYFlMW1A/XOImuvaDr8LznZ1WSM
-         GI/VH9Y6G7sCKwe5L3Ur6qnCj5xICwXB8SCnqc32PX1EkK+UELeoKsOZ7PoJb7WPhbsB
-         Z5wbAEGTD81vJZw5+AY7nz3rALN9Iy/Dh91/B9jDRmXcWltlifL5unzZGGyCIZBek2Ei
-         8WEl9FVRYekDGFjGQiRrW54ywYW3F/Uhqt4/4nTeHmsYRyxcN4YevLyTKzn21pf0qEc/
-         qfEcMjChuaEoWvip6p9VfPCsYsmk7aYpTPbBvlELRBbPdLofwZbVhwH2IfB+6n95RW/6
-         6Pyw==
+        bh=OS7Sye0IPLu21f+Xi1LC07CtmBlPzToUPrfZNf6CO3E=;
+        b=S/fsg8L/mGih4FrM5STj7n1V7lYfXP4QCfGKRFFxTreuNX5zDtf2vexBt4uxIL93TQ
+         wdz6cHYAN+WD7dry13Fq8vLPEYplUMavXnV6I0ifQyurJXouApvbrpQRnnEhCeazFHqx
+         U+RAszdaE/U+smX4G/1G2qZMhC6ktDzeUb4cdABYWLIFqHYtcwWEGnWnTv8x8lbHY2ID
+         dTNyqkCdoZqkS6X/bGYGJCu8Xe0CoHB/s94vlLt0PzFoTfhLEjvU/vmLLqxLMPy1d3cg
+         0K1668IJ1rcL7FmhOqTC+D7c9b54YVO6bZywGem1dPuO2xSueEvV9jyCbmVGDY0yS4FP
+         of2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680872395; x=1683464395;
+        d=1e100.net; s=20210112; t=1680872390; x=1683464390;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=fPFA2+mMpDkEnrSlP6Q1vK8FCaXq/JFd8egtENDoR5o=;
-        b=WG+93GfiU4ptNEPhzplUjXNiBbgjUZAzQMW6PsngP2JaBmqNKKDndLcNb8mhUudJIK
-         7imJG3JI0nkFqTNeNF2Ea6w/aOWUUv6G6CIS5kZa3oS0MbNI0bKjQLEf3+tlFh7LKzxY
-         ubrK5zuEApDoowQwCVPnbAiO+pQykg1qXcO7iRmFNJ8AWlDzwI8TPSCGK5rjpQAM3dnl
-         Tf8v4mY4VWg/31F6skJOsghFDOedKQYfFjZcqxtnePsNVRjKnbm2VLOWxti1d2gQbSxx
-         un8rM1TmA4u460NkFce0LUKNQo5YM2U5C+gxVNgvifBWL5fjRAZKhwLxgHdw8Af3o1wW
-         rV+Q==
-X-Gm-Message-State: AAQBX9dkeSMq+VjeYgeUFrJGsB2bfc3vWoPOh7Fsq4mImVUFiquYfeCD
-	hXEo5b7NDp1lwlmzZxAATH2gJQ==
-X-Google-Smtp-Source: AKy350aDy9OHG7oVwjFlDW19uG5rl/1oAcOsCVNzPVxx7v88umH7XsWfH5jN6RA3yU3vyl4x2flNiw==
-X-Received: by 2002:a5d:4984:0:b0:2c5:5687:5ed5 with SMTP id r4-20020a5d4984000000b002c556875ed5mr1276463wrq.18.1680872395441;
-        Fri, 07 Apr 2023 05:59:55 -0700 (PDT)
+        bh=OS7Sye0IPLu21f+Xi1LC07CtmBlPzToUPrfZNf6CO3E=;
+        b=czQQmTy2943wg68EdCZDeeBwW+1PN9zasFSKXPsMzfL4Tk4Y3WlETHgqTSTVPA8i60
+         izEocWkmT1T3c3mj9MRWpSoREg0DsSIn87juV78xH1RoV4JGdUNRlhtstVXs08YjEUfC
+         e+iGzjA135x/UG33O+vdnpl2b9xNtOj3P2e6YX2kv0qMdimI5oyH/5vNI1kbN1lAn4hK
+         NRjI+phP3NHFBSIgWPmyfCMHYAzu/2HQJ9Bl8LicJK8JZFAQToFIhKzcmSM/UHJKKq7x
+         Mm4JLl0BXljOWJESI6jYW2lw9P+hYglbCq1GQogGXb+X6tKwklvasP1SgLGq02CKZY4j
+         4bMQ==
+X-Gm-Message-State: AAQBX9dsGQuaQYVfAqC7PiAgdmtvmB7pS3d+Q2V94uzRApMWbXysvK5K
+	CtpVY6yFr9+ZaLRT/Y5wIO/fBA==
+X-Google-Smtp-Source: AKy350YSqDbwpqlTeAn/rb2199Ze25ghk9x0ahK7dXbgGhMTjWux8Ostb1nw1+NIhd1Tu54Ml2XSFA==
+X-Received: by 2002:a5d:4286:0:b0:2e4:eebe:aee3 with SMTP id k6-20020a5d4286000000b002e4eebeaee3mr1166263wrq.60.1680872390303;
+        Fri, 07 Apr 2023 05:59:50 -0700 (PDT)
 Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id t4-20020a5d6a44000000b002e558f1c45fsm4471446wrw.69.2023.04.07.05.59.54
+        by smtp.googlemail.com with ESMTPSA id t4-20020a5d6a44000000b002e558f1c45fsm4471446wrw.69.2023.04.07.05.59.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 07 Apr 2023 05:59:55 -0700 (PDT)
-From: amergnat@baylibre.com
-Date: Fri, 07 Apr 2023 14:59:31 +0200
-Subject: [PATCH v5 12/12] arm64: dts: mediatek: Add CPU Idle support
+        Fri, 07 Apr 2023 05:59:49 -0700 (PDT)
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Fri, 07 Apr 2023 14:59:27 +0200
+Subject: [PATCH v5 08/12] arm64: dts: mediatek: add usb controller support
+ for mt8365-evk
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20230203-evk-board-support-v5-12-1883c1b405ad@baylibre.com>
+Message-Id: <20230203-evk-board-support-v5-8-1883c1b405ad@baylibre.com>
 References: <20230203-evk-board-support-v5-0-1883c1b405ad@baylibre.com>
 In-Reply-To: <20230203-evk-board-support-v5-0-1883c1b405ad@baylibre.com>
 To: Wim Van Sebroeck <wim@linux-watchdog.org>, 
@@ -104,25 +105,24 @@ Cc: linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
  Amjad Ouled-Ameur <aouledameur@baylibre.com>, 
  Alexandre Mergnat <amergnat@baylibre.com>
 X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2689; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=tqYiFkOeI53hFAvkAFcO4mPwzuf3UCWBDqz4THM6QQc=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkMBO7nlDuhTGY5LcrIhA3CBgmhjCqwhMH9j4Fbo+Y
- Wvm4aAeJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZDATuwAKCRArRkmdfjHURZfPEA
- C6UOP0sfhWwRHPPBo3A0M96nkZ7aEurjo/y27ff8b8D26ePX3E2VyZ9pRCetsJPvXUNIFI0jAO5OSx
- 1vLav9Cl8tRgF0JZHFVAVfxBfTbksLMl58XTe/KeR7AjFPODdJvvSBx473XvVJ57sQqIeny0NheV5I
- QynDkpLK21iL4vXXfDjvG/bk2mhqKpMT9VwwcavlIGzRrP+sZlxIm6jCJeZMZbOlc518/eQ5/qQ+ip
- lKQF7WvbXLrAWL/effup193wZDaYq3c9ocabh5aCH3l4nk0BWcZTn0VIOURMUmgOav0Kf/hmkt8WIm
- 2DT6mKzDNaEH57ANl9B0wUivl+n5seSCV6JukkvBiGaM4vltprRBH8eoRJ3m019ckPX/KvgS2KR2pH
- Z2zaG2JA9ASLqj+ilusQbuLMHw1ofIoAHKTsiSLiJOpHkAgjpUM4JhO5MvQByByePt8sxoXVq5WpbN
- YQS8tTLDg8MuqmwnbPFP0lhAoSgdIc08osf/vU9d5Lv94u83Y/HW7xGno18pmxVcGw8QLVNSzg/Rzh
- Ux82xCZZi8KYefQEugS954hCb9fy3R+6Ib1ts1xKkiI3t1dhwO6ilLOhHVmm6t3VgxOVsraTQ9EheM
- rRjOSIstwGccF/TDUmtV6FwRg1TsPUXjatr8p/ki937D6hcK6HSvFOW8uRVw==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1190; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=fWeFY0N26AVZAJlISCaJeet0l8YjLAinj4NBVfmxvvQ=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkMBO6B8EEk4RvcvkArYDsSmADxohNcPtVSviSaDT2
+ yhxcX0yJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZDATugAKCRArRkmdfjHURQvhEA
+ Cb51lDZgNpI4TXbu6IxWdcuWpTkZLgumOT9wrV2FW9H88XRvaBVERxPKm2tkNi6Mw/S94XbhrLhrMd
+ 70by7FXzioMFGT3HIy56g5XJouSAHFprJmeM14CyWGeriNd5gszIB0fEgbau6loKNkaWZtt3fp68le
+ jKJcPrxaSdlMHRvALub1A4gwkOv1ggLlJOozaY2vkcULu9ZLxKXO1IcXGRYZFTvUy5zEH0vu3UWkDK
+ 5/i7i6DpcIixaonvF9uYK+xhn9PDKx5DiJDAtMjPrzWgBfP5zRXqILLWF1lszghE4LmKEseTXge8U8
+ /mzv/ygHbMLJ0PsP6d4vYMUEzj5ZpG8H/nA/1Nh1oSnLJUQloup5Nz2vgVE4GD/6KhHsip1t64TehC
+ ROXgYMpXNfq8/NKsTRTsVYQcW2IgI055jDv8qj+CsLrmXEUPeDAAiStOHZocu2hCGjsQS9cKbXBqCN
+ TEO3tuqYqJP9bh61zSPNFW2mGa3er4nawAmjrJgRW16UTf0OAT08cEel92JRh2Qfj3CFtGG5eQlK1G
+ VyGBGuMfJlQNbdjx2D9/uTcaOFVxGGfKbtliG2ZEURQtTMO9GN87JgFP4dwkvPEG5hWybVf+t2cFQH
+ 7CplOmlyx3oAzp0hs0avkNNSW3L0oLgaJavVY7ETIY6IxIJ4JIhzZeT0yDJA==
 X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
  fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230407_135956_914793_5F957D5A 
-X-CRM114-Status: UNSURE (   9.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230407_135952_390248_3F98DF78 
+X-CRM114-Status: GOOD (  11.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,94 +137,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Amjad Ouled-Ameur <aouledameur@baylibre.com>
+This patch add support for SuperSpeed USB, in OTG mode, on micro connector.
+It also add support for the Extensible Host Controller Interface USB.
 
-MT8365 has 3 CPU Idle states:
-- MCDI_CPU. (Multi-Core-Deep-Idle)
-- MCDI_CLUSTER.
-- DPIDLE. (Deep-Idle)
-
-Signed-off-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8365.dtsi | 35 ++++++++++++++++++++++++++++++++
- 1 file changed, 35 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-index cfe0c67ad61f..413496c92069 100644
---- a/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-@@ -128,6 +128,7 @@ cpu0: cpu@0 {
- 			reg = <0x0>;
- 			#cooling-cells = <2>;
- 			enable-method = "psci";
-+			cpu-idle-states = <&CPU_MCDI &CLUSTER_MCDI &CLUSTER_DPIDLE>;
- 			i-cache-size = <0x8000>;
- 			i-cache-line-size = <64>;
- 			i-cache-sets = <256>;
-@@ -147,6 +148,7 @@ cpu1: cpu@1 {
- 			reg = <0x1>;
- 			#cooling-cells = <2>;
- 			enable-method = "psci";
-+			cpu-idle-states = <&CPU_MCDI &CLUSTER_MCDI &CLUSTER_DPIDLE>;
- 			i-cache-size = <0x8000>;
- 			i-cache-line-size = <64>;
- 			i-cache-sets = <256>;
-@@ -166,6 +168,7 @@ cpu2: cpu@2 {
- 			reg = <0x2>;
- 			#cooling-cells = <2>;
- 			enable-method = "psci";
-+			cpu-idle-states = <&CPU_MCDI &CLUSTER_MCDI &CLUSTER_DPIDLE>;
- 			i-cache-size = <0x8000>;
- 			i-cache-line-size = <64>;
- 			i-cache-sets = <256>;
-@@ -185,6 +188,7 @@ cpu3: cpu@3 {
- 			reg = <0x3>;
- 			#cooling-cells = <2>;
- 			enable-method = "psci";
-+			cpu-idle-states = <&CPU_MCDI &CLUSTER_MCDI &CLUSTER_DPIDLE>;
- 			i-cache-size = <0x8000>;
- 			i-cache-line-size = <64>;
- 			i-cache-sets = <256>;
-@@ -198,6 +202,37 @@ cpu3: cpu@3 {
- 			operating-points-v2 = <&cluster0_opp>;
- 		};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+index 1c36d8f19525..9760f181eb34 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+@@ -314,6 +314,28 @@ &pwm {
+ 	status = "okay";
+ };
  
-+		idle-states {
-+			entry-method = "psci";
++&ssusb {
++	dr_mode = "otg";
++	maximum-speed = "high-speed";
++	pinctrl-0 = <&usb_pins>;
++	pinctrl-names = "default";
++	usb-role-switch;
++	vusb33-supply = <&mt6357_vusb33_reg>;
++	status = "okay";
 +
-+			CPU_MCDI: cpu-mcdi {
-+				compatible = "arm,idle-state";
-+				local-timer-stop;
-+				arm,psci-suspend-param = <0x00010001>;
-+				entry-latency-us = <300>;
-+				exit-latency-us = <200>;
-+				min-residency-us = <1000>;
-+			};
++	connector {
++		compatible = "gpio-usb-b-connector", "usb-b-connector";
++		id-gpios = <&pio 17 GPIO_ACTIVE_HIGH>;
++		type = "micro";
++		vbus-supply = <&usb_otg_vbus>;
++	};
++};
 +
-+			CLUSTER_MCDI: cluster-mcdi {
-+				compatible = "arm,idle-state";
-+				local-timer-stop;
-+				arm,psci-suspend-param = <0x01010001>;
-+				entry-latency-us = <350>;
-+				exit-latency-us = <250>;
-+				min-residency-us = <1200>;
-+			};
++&usb_host {
++	vusb33-supply = <&mt6357_vusb33_reg>;
++	status = "okay";
++};
 +
-+			CLUSTER_DPIDLE: cluster-dpidle {
-+				compatible = "arm,idle-state";
-+				local-timer-stop;
-+				arm,psci-suspend-param = <0x01010004>;
-+				entry-latency-us = <300>;
-+				exit-latency-us = <800>;
-+				min-residency-us = <3300>;
-+			};
-+		};
-+
- 		l2: l2-cache {
- 			compatible = "cache";
- 			cache-level = <2>;
+ &uart0 {
+ 	pinctrl-0 = <&uart0_pins>;
+ 	pinctrl-names = "default";
 
 -- 
 2.25.1
