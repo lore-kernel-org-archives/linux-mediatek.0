@@ -4,116 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0264C76196
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Apr 2023 10:45:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11303C6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Apr 2023 10:47:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3KFcOYEAi46ZIl7QCtzcN5XD6VlwA2hJvytxtJEenkQ=; b=RL9zjmowWrGNdWFsYwTEUaAbO5
-	IdwVWYDsl6wbJSYh0C3FN7EpbypHP8y0Wv35WGCQidPb80IQowTfBKaTGQ6mI1h/xuOn/kOuDSwIw
-	p0l0teSzAbSeLITo4+5ahzvP2Z3U4c6tHo4cgZ6dm32mnOvw8m0qnr8qhD226U4nWyzJYqgUlVkA4
-	0HjB3m3B/QGHGNw2pYishOyXcYt2kN4pzDCT5NvY8+t8vqtMMZi29unUjqNSlAb4QnYwnn1HIHdJ0
-	E/zQsyVGL8Ih7RZL64UaD+pgyW4MOg0/GaMLQuiTtq9yUMP+60mbSCGuMvTfLVTiKM+Xnn7JWbK31
-	u9cIqWAA==;
+	bh=ojJKyaw8vqXUV3WbW1J5GErwx63Ht6m7F3xy+69k6+M=; b=nbsx/YfuE1u4mAlVdW+KlyJw5C
+	ycXu49+IL2+TGMahM3q7XvuKpQXEuqHCPnbN3SboHmlRq4u0a8MsOfYOjSdgxjLe/3S9lXM78u1Kf
+	pknAPv0afKDH/t3rw7NG1j/sbDmPd4xX6gtvsJGTBCBoAd1XO5tohiD4OL3Bb0riwl4r8VPisLAai
+	D6Ysxi4CC5Pd0oR/N1nfX/83eNilHh8D50lkG16RKrjK2LWEZVqjWu+5wsI39RubgLbmM0nAJbq1L
+	vslzdWLCaBfq5nluRzsyzuSvWvAQdA+5WK4vl0wHkwrsSq4vL3c0Qaol5q6c/ly4PA8JBLMCVvj1C
+	lXdmnq8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkjax-009s2e-2b;
-	Fri, 07 Apr 2023 10:45:27 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pkjcX-009ssU-2C;
+	Fri, 07 Apr 2023 10:47:05 +0000
+Received: from sender3-op-o18.zoho.com ([136.143.184.18])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkjav-009s24-2s
-	for linux-mediatek@bombadil.infradead.org;
-	Fri, 07 Apr 2023 10:45:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=3KFcOYEAi46ZIl7QCtzcN5XD6VlwA2hJvytxtJEenkQ=; b=dCJ9FIFRqpAcgqdN6ylg47M3Fc
-	mbKl9zm4pHvJ/rf3gGpFHo+o+/WeDmn56lgQsAt69aMGeTiy4lj//GGBCNJPpFV+0TtDc3/C5uQI5
-	Xg5kNMnlw/+BZ6SzXrm5i7Md3Nhrvq4BRl+6KX87tW20h46uo6GP/Uzbnqcsr7kNqN84r5ccStN0b
-	q+bYrdEvNmG3EDTtHvYFgsl3keINlbaH33bqHnNnpeh+f5yCLsR0JEWmyBry+2NHC+uSaqtGJnnqf
-	H6jfnqymYbFR01TaICKqVRGNDHmQtG+p72e3bcJNQOenUSSe+iQGAogs0R0HF7NseHiPwNeDwyFzX
-	QS/d+/ag==;
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkiUQ-00AzDU-2Z
-	for linux-mediatek@lists.infradead.org;
-	Fri, 07 Apr 2023 09:36:09 +0000
-Received: by mail-wr1-x433.google.com with SMTP id j11so2178008wrd.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 07 Apr 2023 02:34:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1680860070; x=1683452070;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=3KFcOYEAi46ZIl7QCtzcN5XD6VlwA2hJvytxtJEenkQ=;
-        b=rC8CFk78Ear9yw17oS85VokG+Iofo1AOflOUpNSVcFrPRfhKZChYgbY6Lc0R8pO0/G
-         IqeuRobc0vx2r+nYVnR6mn7zvus2uJjdS5yKMeGei6Uylo1BRVvuOcsZjWdKaTdTwKq0
-         VAkCfLENFoIqZfkMuBrP6Lh1c1soi+HmmOBcEjx2p+3wzcDkBLw2MjNORRUytkavLRmK
-         3blAnIADp7fkoWhhihP/damDXlGg+dmuuswb3j0JYJUWTH01az0CaXOSe8j8ySkNUxqj
-         E7fGc5OfNwPyukrAwoxPiUzFvalAGSP5hiUTrUL6bIBdyoMPkjVm78cIVC0UPM6mKri9
-         33eQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680860070; x=1683452070;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=3KFcOYEAi46ZIl7QCtzcN5XD6VlwA2hJvytxtJEenkQ=;
-        b=MrAuhJTeoghZDRPxCZy4Hv5QcgW479v3WA2uYa5x99vVbGSMRhmWtdjEgsGCOQC2AS
-         PD1fkMyCvNSiqa2FRPSaU5om3uW80lQ+MWI/IbYSvE6Ue/a25dIxOlteNKPkeslwNT/9
-         DyANmiP5cV9aamCibP/1vleWDholkCNoL/nrRMdAiU+PY9rttLnzNznfnbRwE5su+yXs
-         LYI9AMrnhI9mByTN9pmNEcYtbGRecFKRZbafO/VJ/L5cwkVMr3novtcS2XC730w1piog
-         ygEH9AEf5s1VtCn+7SalcR4mFvBSIJvbwKFjq2KjvteGUjr0ogkcOFM3g1b4NbQxkG1Q
-         nKQg==
-X-Gm-Message-State: AAQBX9fCjVL67mV5O+e5TtY0ZyCmdKReLjISZ5yu8qdpNYHl/aJ2/bfd
-	CRBCUcEW0rOJJjxVsDneqMLvWQ==
-X-Google-Smtp-Source: AKy350aG9du0uwosq+FqixFFe8BXT07SgAILsAGexfDRZ7ImSOnkQuzCW7B0NCut1ljngJTh+NOpxA==
-X-Received: by 2002:a5d:69c8:0:b0:2ef:b341:4a2d with SMTP id s8-20020a5d69c8000000b002efb3414a2dmr605249wrw.24.1680860070539;
-        Fri, 07 Apr 2023 02:34:30 -0700 (PDT)
-Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id s13-20020a5d510d000000b002d64fcb362dsm4020432wrt.111.2023.04.07.02.34.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 07 Apr 2023 02:34:30 -0700 (PDT)
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Fri, 07 Apr 2023 11:34:15 +0200
-Subject: [PATCH v3 4/7] arm64: dts: mediatek: add power domain support for
- mt8365 SoC
+	id 1pkjcO-009skh-0I;
+	Fri, 07 Apr 2023 10:47:02 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1680864388; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=WQCZwOwtC+4wnKqjt7PKOA3N/krjJwf5UXgcpY+iHDYgNm9MsvZcVJzXLplaFrO+B9hiGROY6XPhdnzB2qSAX8X+mnRFn3toAgy6Hg1syQOLcGeFT3/5JaRBqywPn1/Mzfa/EGCrDWng7PfMCVsD1cn6yK9YdQp/VqkOVayRdXs=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1680864388; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=ojJKyaw8vqXUV3WbW1J5GErwx63Ht6m7F3xy+69k6+M=; 
+	b=gqxVTuDGorITq3Kkz8p6O/2N2DxuDr8C93mRVHSy4jsYnZjuX2aCF55a2gdJ8N6X5G2AsZ9JoiDJ0YbRZxuW991Fr7SoshteDd+6VzRzLyIOzOkBgJAR5Kv4gXJ82Trk8U7je4yo8OPVKFhXTXh2ZjEzSf+aYQrNzKo+yj68q3M=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1680864388;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=ojJKyaw8vqXUV3WbW1J5GErwx63Ht6m7F3xy+69k6+M=;
+	b=N/gQ0jMrxkCPfc61qLYMAji56wcmOqN4MnNeOJVd0/mcc9T7/gQAeFP7uQndbi/z
+	D+xPf6UT6m3CB3jqqL1c0kZnhwQK7cLxPpCNmt+B4XnnO9qhPPeepiKQ+bwMRTbqEeB
+	hIYEULKOLirC0FeUGngwF8u2Y4Ki4xfIu8m2oZRk=
+Received: from [10.10.10.3] (149.91.1.15 [149.91.1.15]) by mx.zohomail.com
+	with SMTPS id 1680864386413993.8772578271102; Fri, 7 Apr 2023 03:46:26 -0700 (PDT)
+Message-ID: <574460f4-5e22-3154-809d-42ca7aa53c1b@arinc9.com>
+Date: Fri, 7 Apr 2023 13:46:20 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20230207-iommu-support-v3-4-97e19ad4e85d@baylibre.com>
-References: <20230207-iommu-support-v3-0-97e19ad4e85d@baylibre.com>
-In-Reply-To: <20230207-iommu-support-v3-0-97e19ad4e85d@baylibre.com>
-To: Yong Wu <yong.wu@mediatek.com>, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- Alexandre Mergnat <amergnat@baylibre.com>
-X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4617; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=8SGgl6AnSEaP0TiVCLT5CLjF1FPWuK/os69MqWsUi8E=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkL+OhYJB2BSSOnaWMDYSq5zrvNqXrrgEb/LQGOuDr
- XDl98PCJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZC/joQAKCRArRkmdfjHURfwwEA
- CQXrE5TNxhv9xOA85ddxAywpvG6jv8pV5Eiy5GCVg9QUu+fCzZOjMd23dJyCqOgiPwHGwpTAbmCLco
- nfJaygKL70cBOElQTB+bkcDDyNmwa7yVbxU5fdFQNfA6gyASnf21NRskxCPnebZBHfRRY+U+pKGQAy
- OvrpoxdmY4e04GcN0V/LCXCT7GAQJOtar4fRJRwjXPh/e9qmLHm2Vanp6tDsV8zLkG48Xu+0492Kyn
- BdRX6qDKOuin6nC+vdkvS26MfdzelcqaB+DuhxJzgLYWSaAf/KQwKqNq4KyLJfxGveP3b3Ok89GgTg
- wy3WqwlsP8VSt4No7qqW3xaDQXmEuqmzHVlQekIgtVEeOT0N9gCit5iC+jUT4YM9giLkP9bRAPSP2S
- kgAwCEDS3MiLR85sb+EBreauTm7iIvrbzmOUXylDsjj9kjVAa/Pa8f97KiuXus1asSOYhUyP3/z/OP
- /x61gEjFyIpdFepotbTAT/xO5Crb0/6S7rEmf6YzNA5mtHOiiI8x3Mcsgrfihv05YkfAwqSFvpprER
- 48Uo2aqssvj7DcXNeujgHi8cscdQn9vyev5HEHN0de614iriB1fjLd396gQ0QznL0n/QbgEpsiiWZf
- z1Zh9agJ9HI/o/6McjhJ2sy/TsUsTs3dMr6mvFukpx/mt5v7E2MGJ53a3sRw==
-X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
- fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [RFC PATCH net-next] net: dsa: mt7530: fix port specifications
+ for MT7988
+Content-Language: en-US
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: "Russell King (Oracle)" <linux@armlinux.org.uk>,
+ Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
+ DENG Qingfang <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
+ <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20230406100445.52915-1-arinc.unal@arinc9.com>
+ <ZC6n1XAGyZFlxyXx@shell.armlinux.org.uk>
+ <e413a182-ce93-5831-09f5-19d34d7f7fcf@arinc9.com>
+ <ZC9AXyuFqa3bqF3Q@makrotopia.org>
+ <0cdb0504-bc1e-c255-a7d2-4dd96bd8e6e3@arinc9.com>
+ <ZC_iPfl5R-_4zOZg@makrotopia.org>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <ZC_iPfl5R-_4zOZg@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230407_103441_213294_C581DE3C 
-X-CRM114-Status: GOOD (  11.60  )
+X-CRM114-CacheID: sfid-20230407_034656_183569_25441BF9 
+X-CRM114-Status: GOOD (  35.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,152 +94,153 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The following power domain are added to the SoC dts:
-- MM (MultiMedia)
-- CONN (Connectivity)
-- MFG (MFlexGraphics)
-- Audio
-- Cam (Camera)
-- DSP (Digital Signal Processor)
-- Vdec (Video decoder)
-- Venc (Video encoder)
-- APU (AI Processor Unit)
+On 7.04.2023 12:28, Daniel Golle wrote:
+> On Fri, Apr 07, 2023 at 11:56:08AM +0300, Arınç ÜNAL wrote:
+>> On 7.04.2023 00:57, Daniel Golle wrote:
+>>> On Fri, Apr 07, 2023 at 12:43:41AM +0300, Arınç ÜNAL wrote:
+>>>> On 6.04.2023 14:07, Russell King (Oracle) wrote:
+>>>>> On Thu, Apr 06, 2023 at 01:04:45PM +0300, arinc9.unal@gmail.com wrote:
+>>>>>> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+>>>>>>
+>>>>>> On the switch on the MT7988 SoC, there are only 4 PHYs. There's only port 6
+>>>>>> as the CPU port, there's no port 5. Split the switch statement with a check
+>>>>>> to enforce these for the switch on the MT7988 SoC. The internal phy-mode is
+>>>>>> specific to MT7988 so put it for MT7988 only.
+>>>>>>
+>>>>>> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+>>>>>> ---
+>>>>>>
+>>>>>> Daniel, this is based on the information you provided me about the switch.
+>>>>>> I will add this to my current patch series if it looks good to you.
+>>>>>>
+>>>>>> Arınç
+>>>>>>
+>>>>>> ---
+>>>>>>     drivers/net/dsa/mt7530.c | 67 ++++++++++++++++++++++++++--------------
+>>>>>>     1 file changed, 43 insertions(+), 24 deletions(-)
+>>>>>>
+>>>>>> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+>>>>>> index 6fbbdcb5987f..f167fa135ef1 100644
+>>>>>> --- a/drivers/net/dsa/mt7530.c
+>>>>>> +++ b/drivers/net/dsa/mt7530.c
+>>>>>> @@ -2548,7 +2548,7 @@ static void mt7988_mac_port_get_caps(struct dsa_switch *ds, int port,
+>>>>>>     	phy_interface_zero(config->supported_interfaces);
+>>>>>>     	switch (port) {
+>>>>>> -	case 0 ... 4: /* Internal phy */
+>>>>>> +	case 0 ... 3: /* Internal phy */
+>>>>>>     		__set_bit(PHY_INTERFACE_MODE_INTERNAL,
+>>>>>>     			  config->supported_interfaces);
+>>>>>>     		break;
+>>>>>> @@ -2710,37 +2710,56 @@ mt753x_phylink_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
+>>>>>>     	struct mt7530_priv *priv = ds->priv;
+>>>>>>     	u32 mcr_cur, mcr_new;
+>>>>>> -	switch (port) {
+>>>>>> -	case 0 ... 4: /* Internal phy */
+>>>>>> -		if (state->interface != PHY_INTERFACE_MODE_GMII &&
+>>>>>> -		    state->interface != PHY_INTERFACE_MODE_INTERNAL)
+>>>>>> -			goto unsupported;
+>>>>>> -		break;
+>>>>>> -	case 5: /* Port 5, a CPU port. */
+>>>>>> -		if (priv->p5_interface == state->interface)
+>>>>>> +	if (priv->id == ID_MT7988) {
+>>>>>> +		switch (port) {
+>>>>>> +		case 0 ... 3: /* Internal phy */
+>>>>>> +			if (state->interface != PHY_INTERFACE_MODE_INTERNAL)
+>>>>>
+>>>>> How do these end up with PHY_INTERFACE_MODE_INTERNAL ? phylib defaults
+>>>>> to GMII mode without something else being specified in DT.
+>>>>>
+>>>>> Also note that you should *not* be validating state->interface in the
+>>>>> mac_config() method because it's way too late to reject it - if you get
+>>>>> an unsupported interface here, then that is down to the get_caps()
+>>>>> method being buggy. Only report interfaces in get_caps() that you are
+>>>>> prepared to handle in the rest of the system.
+>>>>
+>>>> This is already the case for all three get_caps(). The supported interfaces
+>>>> for each port are properly defined.
+>>>>
+>>>> Though mt7988_mac_port_get_caps() clears the config->supported_interfaces
+>>>> bitmap before reporting the supported interfaces. I don't think this is
+>>>> needed as all bits in the bitmap should already be initialized to zero when
+>>>> the phylink_config structure is allocated.
+>>>>
+>>>> I'm not sure if your suggestion is to make sure the supported interfaces are
+>>>> properly reported on get_caps(), or validate state->interface somewhere
+>>>> else.
+>>>
+>>> I think what Russell meant is just there is no point in being overly
+>>> precise about permitted interface modes in mt753x_phylink_mac_config,
+>>> as this function is not meant and called too late to validate the
+>>> validity of the selected interface mode.
+>>>
+>>> You change to mt7988_mac_port_get_caps looks correct to me and doing
+>>> this will already prevent mt753x_phylink_mac_config from ever being
+>>> called on MT7988 for port == 4 as well as and port == 5.
+>>
+>> Ah, thanks for pointing this out Daniel. I see ds->ops->phylink_get_caps()
+>> is run right before phylink_create() on dsa_port_phylink_create(), as it
+>> should get the capabilities before creating an instance.
+>>
+>> Should I remove phy_interface_zero(config->supported_interfaces);
+>> mt7988_mac_port_get_caps()? I'd prefer to do identical operations on each
+>> get_caps(), if there's no apparent reason for this to be on
+>> mt7988_mac_port_get_caps().
+> 
+> Yes, sounds sane to me, please do so.
+> 
+> Also we could make .mac_port_config optional, as for MT7988 we actually
+> won't need it at all:
+> 
+> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> index e4bb5037d3525..5efcb9897eb18 100644
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+> @@ -2653,17 +2653,6 @@ static bool mt753x_is_mac_port(u32 port)
+>   	return (port == 5 || port == 6);
+>   }
+>   
+> -static int
+> -mt7988_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
+> -		  phy_interface_t interface)
+> -{
+> -	if (dsa_is_cpu_port(ds, port) &&
+> -	    interface == PHY_INTERFACE_MODE_INTERNAL)
+> -		return 0;
+> -
+> -	return -EINVAL;
+> -}
+> -
+>   static int
+>   mt7531_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
+>   		  phy_interface_t interface)
+> @@ -2704,6 +2693,9 @@ mt753x_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
+>   {
+>   	struct mt7530_priv *priv = ds->priv;
+>   
+> +	if (!priv->info->mac_port_config)
+> +		return 0;
+> +
+>   	return priv->info->mac_port_config(ds, port, mode, state->interface);
+>   }
+>   
+> @@ -3157,7 +3149,6 @@ const struct mt753x_info mt753x_table[] = {
+>   		.pad_setup = mt7988_pad_setup,
+>   		.cpu_port_config = mt7988_cpu_port_config,
+>   		.mac_port_get_caps = mt7988_mac_port_get_caps,
+> -		.mac_port_config = mt7988_mac_config,
+>   	},
+>   };
+>   EXPORT_SYMBOL_GPL(mt753x_table);
+> @@ -3186,8 +3177,7 @@ mt7530_probe_common(struct mt7530_priv *priv)
+>   	 */
+>   	if (!priv->info->sw_setup || !priv->info->pad_setup ||
+>   	    !priv->info->phy_read_c22 || !priv->info->phy_write_c22 ||
+> -	    !priv->info->mac_port_get_caps ||
+> -	    !priv->info->mac_port_config)
+> +	    !priv->info->mac_port_get_caps)
 
-Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
----
- arch/arm64/boot/dts/mediatek/mt8365.dtsi | 110 +++++++++++++++++++++++++++++++
- 1 file changed, 110 insertions(+)
+Why split the sanity check? Isn't just removing mt7988_mac_config() and 
+.mac_port_config = mt7988_mac_config enough?
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-index 386ab8902b55..0e4fa69a2415 100644
---- a/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-@@ -9,6 +9,7 @@
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/phy/phy.h>
-+#include <dt-bindings/power/mediatek,mt8365-power.h>
- 
- / {
- 	compatible = "mediatek,mt8365";
-@@ -282,6 +283,115 @@ syscfg_pctl: syscfg-pctl@10005000 {
- 			reg = <0 0x10005000 0 0x1000>;
- 		};
- 
-+		scpsys: syscon@10006000 {
-+			compatible = "mediatek,mt8365-syscfg", "syscon", "simple-mfd";
-+			reg = <0 0x10006000 0 0x1000>;
-+			#power-domain-cells = <1>;
-+
-+			/* System Power Manager */
-+			spm: power-controller {
-+				compatible = "mediatek,mt8365-power-controller";
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+				#power-domain-cells = <1>;
-+
-+				/* power domains of the SoC */
-+				power-domain@MT8365_POWER_DOMAIN_MM {
-+					reg = <MT8365_POWER_DOMAIN_MM>;
-+					clocks = <&topckgen CLK_TOP_MM_SEL>,
-+						 <&mmsys CLK_MM_MM_SMI_COMMON>,
-+						 <&mmsys CLK_MM_MM_SMI_COMM0>,
-+						 <&mmsys CLK_MM_MM_SMI_COMM1>,
-+						 <&mmsys CLK_MM_MM_SMI_LARB0>;
-+					clock-names = "mm", "mm-0", "mm-1",
-+						      "mm-2", "mm-3";
-+					#power-domain-cells = <0>;
-+					mediatek,infracfg = <&infracfg>;
-+					mediatek,infracfg-nao = <&infracfg_nao>;
-+					#address-cells = <1>;
-+					#size-cells = <0>;
-+
-+					power-domain@MT8365_POWER_DOMAIN_CAM {
-+						reg = <MT8365_POWER_DOMAIN_CAM>;
-+						clocks = <&camsys CLK_CAM_LARB2>,
-+							 <&camsys CLK_CAM_SENIF>,
-+							 <&camsys CLK_CAMSV0>,
-+							 <&camsys CLK_CAMSV1>,
-+							 <&camsys CLK_CAM_FDVT>,
-+							 <&camsys CLK_CAM_WPE>;
-+						clock-names = "cam-0", "cam-1",
-+							      "cam-2", "cam-3",
-+							      "cam-4", "cam-5";
-+						#power-domain-cells = <0>;
-+						mediatek,infracfg = <&infracfg>;
-+					};
-+
-+					power-domain@MT8365_POWER_DOMAIN_VDEC {
-+						reg = <MT8365_POWER_DOMAIN_VDEC>;
-+						#power-domain-cells = <0>;
-+					};
-+
-+					power-domain@MT8365_POWER_DOMAIN_VENC {
-+						reg = <MT8365_POWER_DOMAIN_VENC>;
-+						#power-domain-cells = <0>;
-+					};
-+
-+					power-domain@MT8365_POWER_DOMAIN_APU {
-+						reg = <MT8365_POWER_DOMAIN_APU>;
-+						clocks = <&infracfg CLK_IFR_APU_AXI>,
-+							 <&apu CLK_APU_IPU_CK>,
-+							 <&apu CLK_APU_AXI>,
-+							 <&apu CLK_APU_JTAG>,
-+							 <&apu CLK_APU_IF_CK>,
-+							 <&apu CLK_APU_EDMA>,
-+							 <&apu CLK_APU_AHB>;
-+						clock-names = "apu", "apu-0",
-+							      "apu-1", "apu-2",
-+							      "apu-3", "apu-4",
-+							      "apu-5";
-+						#power-domain-cells = <0>;
-+						mediatek,infracfg = <&infracfg>;
-+					};
-+				};
-+
-+				power-domain@MT8365_POWER_DOMAIN_CONN {
-+					reg = <MT8365_POWER_DOMAIN_CONN>;
-+					clocks = <&topckgen CLK_TOP_CONN_32K>,
-+						 <&topckgen CLK_TOP_CONN_26M>;
-+					clock-names = "conn", "conn1";
-+					#power-domain-cells = <0>;
-+					mediatek,infracfg = <&infracfg>;
-+				};
-+
-+				power-domain@MT8365_POWER_DOMAIN_MFG {
-+					reg = <MT8365_POWER_DOMAIN_MFG>;
-+					clocks = <&topckgen CLK_TOP_MFG_SEL>;
-+					clock-names = "mfg";
-+					#power-domain-cells = <0>;
-+					mediatek,infracfg = <&infracfg>;
-+				};
-+
-+				power-domain@MT8365_POWER_DOMAIN_AUDIO {
-+					reg = <MT8365_POWER_DOMAIN_AUDIO>;
-+					clocks = <&topckgen CLK_TOP_AUD_INTBUS_SEL>,
-+						 <&infracfg CLK_IFR_AUDIO>,
-+						 <&infracfg CLK_IFR_AUD_26M_BK>;
-+					clock-names = "audio", "audio1", "audio2";
-+					#power-domain-cells = <0>;
-+					mediatek,infracfg = <&infracfg>;
-+				};
-+
-+				power-domain@MT8365_POWER_DOMAIN_DSP {
-+					reg = <MT8365_POWER_DOMAIN_DSP>;
-+					clocks = <&topckgen CLK_TOP_DSP_SEL>,
-+						 <&topckgen CLK_TOP_DSP_26M>;
-+					clock-names = "dsp", "dsp1";
-+					#power-domain-cells = <0>;
-+					mediatek,infracfg = <&infracfg>;
-+				};
-+			};
-+		};
-+
- 		watchdog: watchdog@10007000 {
- 			compatible = "mediatek,mt8365-wdt",
- 				     "mediatek,mt6589-wdt";
-
--- 
-2.25.1
-
+Arınç
 
