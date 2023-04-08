@@ -4,78 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23768C77B61
-	for <linux-mediatek@archiver.kernel.org>; Sat,  8 Apr 2023 08:36:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D18AC7619A
+	for <linux-mediatek@archiver.kernel.org>; Sat,  8 Apr 2023 12:22:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iBqoBBkQH2xs3fROq0A20DMkIbovpzB3A7k6/csjilM=; b=3EAyQsHlvtdlvsKI9a8gICaJea
-	zQv5zlnHs7BhDUpHC89SHpRwuyPYiYbVPNTcsC8Iu/nXMCFARp8sVE2x7NzZpPYKHNV78og4wQQoF
-	MRT5U7ZpHPe8utB8vA/mKRAz4wHJ9fAD5snz1xQ65UgMTj9SoAsX9hQdcaZyrmroTlG5Y20W5M7Va
-	kveKvvMoByx7xSqziiK/TgQi7Sk6yDosoKN8MX2tHaclSn5+3WaAnc2IP+F/VgxcXHksjknqERPBR
-	wmqN7zzrhwIhvAydl5I6dkSc5gl0up6vSfvWJG9CTRRYDhW6HRUoblFKkIHH9rM0U9wi7pWJ65rTb
-	dwXIIrIQ==;
+	bh=6sPb8rZ7ts4buC3eIPeZkEZ+2g6YkApdQzt+vZl0eYc=; b=Qz6HGWLVXjP3EcPwzAlUK/RS5t
+	CYKPh6tHWwuXjrUZC1Ox5ZcAS10P/ofbul13ozmGFNI/5RsfZv7QDsG7J+h9vdOsoX7L8um7HFI4P
+	E5ZpEJ3iuKkd0ScoU7mQyzTDaCOacceIBYjaYh9mrA+kfA3OBhJsV5dwsWC495uT9MEofqJDNn8Az
+	HBbIpaN/EBLHcfJMugyCBx1RYH2V6zCVfc7D4O22HvoHqxbhC2sQRaJ7g2f5oc6lOE8I3+mKoFpFJ
+	kOh4W5Thzl+i3YOU2CVDkXgxYcE+Imo7Mr1oS2mPt8QV0RF3pXC2k5MQbECkxQfZbPpChJda7U6s2
+	5g80fOEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pl437-00BxTf-2A;
-	Sat, 08 Apr 2023 08:35:53 +0000
-Received: from mga02.intel.com ([134.134.136.20])
+	id 1pl7Zr-00CHyW-1i;
+	Sat, 08 Apr 2023 12:21:55 +0000
+Received: from mga12.intel.com ([192.55.52.136])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pl433-00BxSg-2h;
-	Sat, 08 Apr 2023 08:35:51 +0000
+	id 1pl7Zo-00CHxv-0Y;
+	Sat, 08 Apr 2023 12:21:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1680942949; x=1712478949;
+  t=1680956512; x=1712492512;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=lxkkBZdI9k/nHA+MzzcXBFUD0IJeMAc31c2hhqC60EQ=;
-  b=A5+eqq+XjpN/G+cgBs/9v4xINlzyTmvaSgxCPvEIJfyQFCS3LFruCbcY
-   LPGkcDTwZqh+O4NRr4l06PGibHWYoThFvUgBEVAURxoKHf++W1q8VWKll
-   dD9rrTDJynSMHK0pBxU0EDwroR8vYTufpWpgGS6LZSFxQufTuo3FSmy6C
-   LKmjpcvfIu3ooxj8vn6it4ok69GghlmrRnQZXTX9gz2vB/OAjYamp6TT6
-   lUFLSwiLEqJBtSqg86rx9TG3w/1ytb5ub2n5acU7k4uJl/Pgzl58dLmwa
-   NYoBqUaBaXDwjUXbaFXjvnnqzPlZyua4fBLm8Il9ou3PIpJeWNo/+ABRH
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10673"; a="331785179"
+  bh=eW13kTIIAfgyJU8/U8MXPKMLhPp5eP1G5Lfen3ZIMtc=;
+  b=dswtWocg99xwIXHddJ+KiDfFusaizPq3UC7iqFyH5Qzn9k8AA85QTQvw
+   xIi+b0GjQVDTqP9Gp9h3QU8rbxmXU5/GnHj7WR94HgFlZpMnb7jNchJTt
+   O+ZylrahtcJUAZK3aEnkLRCF/yDDntzs/9tOw4jhBGFzo/duWPsWW1HJ3
+   MB7zWd0ZpNida5Hc7Oqnh5d6kgrXxsG9H5SNwLLiy4d/msWDNRvYfFntT
+   83DUcMzsjEgds4mj18LEPWNtJf54JLPJZQB7w7tuM+yB7B9OpGZmjSHUJ
+   JaUMh4ZazhzTtl5EdNnZgCpzzxTMVQEFy4+EXgDIYM3qiqlQqB5EhJFSe
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10673"; a="322769828"
 X-IronPort-AV: E=Sophos;i="5.98,329,1673942400"; 
-   d="scan'208";a="331785179"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
-  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Apr 2023 01:35:44 -0700
+   d="scan'208";a="322769828"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Apr 2023 05:21:51 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10673"; a="752249577"
+X-IronPort-AV: E=McAfee;i="6600,9927,10673"; a="681274312"
 X-IronPort-AV: E=Sophos;i="5.98,329,1673942400"; 
-   d="scan'208";a="752249577"
+   d="scan'208";a="681274312"
 Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
-  by fmsmga008.fm.intel.com with ESMTP; 08 Apr 2023 01:35:40 -0700
+  by orsmga007.jf.intel.com with ESMTP; 08 Apr 2023 05:21:48 -0700
 Received: from kbuild by b613635ddfff with local (Exim 4.96)
 	(envelope-from <lkp@intel.com>)
-	id 1pl42t-000TXp-20;
-	Sat, 08 Apr 2023 08:35:39 +0000
-Date: Sat, 8 Apr 2023 16:35:25 +0800
+	id 1pl7Zj-000TiP-1t;
+	Sat, 08 Apr 2023 12:21:47 +0000
+Date: Sat, 8 Apr 2023 20:20:52 +0800
 From: kernel test robot <lkp@intel.com>
 To: Tze-nan Wu <Tze-nan.Wu@mediatek.com>, rostedt@goodmis.org,
 	mhiramat@kernel.org
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	bobule.chang@mediatek.com, wsd_upstream@mediatek.com,
-	Tze-nan.Wu@mediatek.com, stable@vger.kernel.org,
+Cc: oe-kbuild-all@lists.linux.dev, bobule.chang@mediatek.com,
+	wsd_upstream@mediatek.com, Tze-nan.Wu@mediatek.com,
+	stable@vger.kernel.org,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	linux-kernel@vger.kernel.org, linux-trace-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
 Subject: Re: [PATCH] ring-buffer: Prevent inconsistent operation on
  cpu_buffer->resize_disabled
-Message-ID: <202304081615.eiaqpbV8-lkp@intel.com>
+Message-ID: <202304082051.Dp50upfS-lkp@intel.com>
 References: <20230408052226.25268-1-Tze-nan.Wu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <20230408052226.25268-1-Tze-nan.Wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230408_013549_954989_C61E0527 
-X-CRM114-Status: GOOD (  12.86  )
+X-CRM114-CacheID: sfid-20230408_052152_260122_0C742EC1 
+X-CRM114-Status: GOOD (  11.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,7 +95,6 @@ Hi Tze-nan,
 kernel test robot noticed the following build warnings:
 
 [auto build test WARNING on linus/master]
-[also build test WARNING on rostedt-trace/for-next v6.3-rc5 next-20230406]
 [cannot apply to rostedt-trace/for-next-urgent]
 [If your patch is applied to the wrong git tree, kindly drop us a note.
 And when submitting patch, we suggest to use '--base' as documented in
@@ -104,8 +103,8 @@ https://git-scm.com/docs/git-format-patch#_base_tree_information]
 url:    https://github.com/intel-lab-lkp/linux/commits/Tze-nan-Wu/ring-buffer-Prevent-inconsistent-operation-on-cpu_buffer-resize_disabled/20230408-132502
 patch link:    https://lore.kernel.org/r/20230408052226.25268-1-Tze-nan.Wu%40mediatek.com
 patch subject: [PATCH] ring-buffer: Prevent inconsistent operation on cpu_buffer->resize_disabled
-config: x86_64-randconfig-a002-20230403 (https://download.01.org/0day-ci/archive/20230408/202304081615.eiaqpbV8-lkp@intel.com/config)
-compiler: clang version 14.0.6 (https://github.com/llvm/llvm-project f28c006a5895fc0e329fe15fead81e37457cb1d1)
+config: s390-allyesconfig (https://download.01.org/0day-ci/archive/20230408/202304082051.Dp50upfS-lkp@intel.com/config)
+compiler: s390-linux-gcc (GCC) 12.1.0
 reproduce (this is a W=1 build):
         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
         chmod +x ~/bin/make.cross
@@ -115,23 +114,22 @@ reproduce (this is a W=1 build):
         git checkout d404bc0af0a4bde3aa20704642d69a78bdc154f8
         # save the config file
         mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=x86_64 olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=x86_64 SHELL=/bin/bash kernel/trace/
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=s390 olddefconfig
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=s390 SHELL=/bin/bash kernel/
 
 If you fix the issue, kindly add following tag where applicable
 | Reported-by: kernel test robot <lkp@intel.com>
-| Link: https://lore.kernel.org/oe-kbuild-all/202304081615.eiaqpbV8-lkp@intel.com/
+| Link: https://lore.kernel.org/oe-kbuild-all/202304082051.Dp50upfS-lkp@intel.com/
 
 All warnings (new ones prefixed by >>):
 
->> kernel/trace/ring_buffer.c:5359:15: warning: variable 'reset_online_mask' is uninitialized when used here [-Wuninitialized]
-           cpumask_copy(reset_online_mask, cpu_online_mask);
-                        ^~~~~~~~~~~~~~~~~
-   kernel/trace/ring_buffer.c:5353:33: note: initialize the variable 'reset_online_mask' to silence this warning
-           cpumask_var_t reset_online_mask;
-                                          ^
-                                           = NULL
-   1 warning generated.
+   kernel/trace/ring_buffer.c: In function 'ring_buffer_reset_online_cpus':
+>> kernel/trace/ring_buffer.c:5359:9: warning: 'reset_online_mask' is used uninitialized [-Wuninitialized]
+    5359 |         cpumask_copy(reset_online_mask, cpu_online_mask);
+         |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   kernel/trace/ring_buffer.c:5353:23: note: 'reset_online_mask' was declared here
+    5353 |         cpumask_var_t reset_online_mask;
+         |                       ^~~~~~~~~~~~~~~~~
 
 
 vim +/reset_online_mask +5359 kernel/trace/ring_buffer.c
