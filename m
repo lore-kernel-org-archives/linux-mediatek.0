@@ -4,82 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8809CC77B61
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Apr 2023 22:04:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 284CFC76196
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Apr 2023 22:21:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+wuDAOPQ+IcuYra/XB7w83lfA0G7+zI32rxXt1SI1hs=; b=g5I4COYVGbCk3Tj3rTNolGhJAq
-	KhW94z0HBbVg1OFVijbWFx1SdWAVxvtM0V/K1SrU1uiEgbLlL/Gy3IOwALLFA1Y+6tWQuaBq94Rgc
-	uDSFm6HvJ8ks7bB4MutdW7LybN6h2X/4qcJF2lUU/GDZPlPqM+qJlA4bqhaKwuaRiRTM2MM4hA/b8
-	fHIQBJsYUI0FJb3z0OBaIwi7W0wtX3oBYDSFptZ75SlYspcPnwQclZkbR41trOC20CSl44SaH4IQD
-	XxU15Xw8NLOqgFL8mYodHUThkIJiq0KF/WefplMcdhx+qo0jeFRPVM/XGkyN54IFP/zOyQDYib9Mj
-	qosY0h3A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GY3XURVYWCIcemLAr8O9Wiej+aFCql/3yCAZTzhHcSs=; b=gS0lCKnMZ7iE4hTRj1iHLbzwdg
+	DlU8WZQPo2cCqcS2c+29vTqCtmtcU/cUdl9aljOrP3ufE+zKe4d4+pInTUwDmEigPr4sQs5fWd/ca
+	tpgTXiKN1FtV+yNifmqiXmgv3RQgVPjarQbfPG6/XUynUlAgctWMVWsjcoRXgRi/yvRL6u0PoqV94
+	2yc1ou7Egl36smYanCm6CCt9Ytz7Zxygg79LmHqJv6pqENlBhtDaAymtxZDZArS10+IuaOLqeZSm6
+	J7RihoiWN+U9lYhDtaOMHzBXWaMNzeiKBDN4gAKgntGc4DGjJs+KgLuv9fLY6gVL0k6NuF269Urbw
+	OartHzYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1plzcA-00Fze2-1f;
-	Mon, 10 Apr 2023 22:03:54 +0000
-Received: from mga01.intel.com ([192.55.52.88])
+	id 1plzsf-00G0dD-39;
+	Mon, 10 Apr 2023 22:20:57 +0000
+Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1plzc5-00Fzck-37
+	id 1plzsd-00G0cQ-1M
 	for linux-mediatek@lists.infradead.org;
-	Mon, 10 Apr 2023 22:03:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1681164229; x=1712700229;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=4W4Pk2ES5/ySuHySu5gOKD4o31qkgpk+oubIxxD38hs=;
-  b=j/kA8wBR8hvw63VM85zWFEsbH+siq+jQKh5sT+GBJaKH8kU/rUNPNgy9
-   EHruKWJUeVv+QZ9SFMC5Dc9bXsVYg7UQ8fKWmJMDlZbMPbnpCb22dtcsL
-   w2nVPvwAOoaDaxkji++dWeHR+gHKp1ZW2dKJgk/pOvL9fs5Dr9UlwBztk
-   /H0MohRG5+ImLCZnp0uwgjPSsWwiVcTV2EDINThpQYtlFTfHM3h9rtIma
-   Fas5h4HKxq8ctT/g/8L2XIOYBHbdj1+lqSl9NvbAOmpPyB1Q/aadovIos
-   CHuYdOOUFewKgt48Nx7LNtM4xxcUS9/Ir7KuEPLYZAZP9lQoOU9BcjI1s
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10676"; a="371307982"
-X-IronPort-AV: E=Sophos;i="5.98,333,1673942400"; 
-   d="scan'208";a="371307982"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
-  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Apr 2023 15:03:46 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10676"; a="681854260"
-X-IronPort-AV: E=Sophos;i="5.98,333,1673942400"; 
-   d="scan'208";a="681854260"
-Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
-  by orsmga007.jf.intel.com with ESMTP; 10 Apr 2023 15:03:40 -0700
-Received: from kbuild by b613635ddfff with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1plzbv-000Vgj-1i;
-	Mon, 10 Apr 2023 22:03:39 +0000
-Date: Tue, 11 Apr 2023 06:03:17 +0800
-From: kernel test robot <lkp@intel.com>
-To: sean.wang@mediatek.com, nbd@nbd.name, lorenzo.bianconi@redhat.com
-Cc: oe-kbuild-all@lists.linux.dev, sean.wang@mediatek.com,
-	Soul.Huang@mediatek.com, Leon.Yen@mediatek.com,
-	Eric-SY.Chang@mediatek.com, Deren.Wu@mediatek.com,
-	km.lin@mediatek.com, jenhao.yang@mediatek.com,
-	robin.chiu@mediatek.com, Eddie.Chen@mediatek.com,
-	ch.yeh@mediatek.com, ted.huang@mediatek.com,
-	Stella.Chang@mediatek.com, Tom.Chou@mediatek.com,
-	steve.lee@mediatek.com, jsiuda@google.com, arowa@google.org,
-	frankgor@google.com, kuabhs@google.com, druth@google.com,
-	abhishekpandit@google.com, shawnku@google.com,
-	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] mt76: mt7921: fix kernel panic by accessing unallocated
- eeprom.data
-Message-ID: <202304110556.xbu5H3ka-lkp@intel.com>
-References: <c9e2a44da4daa00166c802a8c10527359358219d.1681158440.git.objelf@gmail.com>
+	Mon, 10 Apr 2023 22:20:56 +0000
+Received: by mail-yb1-xb34.google.com with SMTP id a13so6196427ybl.11
+        for <linux-mediatek@lists.infradead.org>; Mon, 10 Apr 2023 15:20:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1681165253;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=GY3XURVYWCIcemLAr8O9Wiej+aFCql/3yCAZTzhHcSs=;
+        b=VNcMwyYOH9xebcPuWV3dFdUJ5t+c0vlfeyFbDGAu53qPX29fh9SVStP0ZvJlPO9b0N
+         HGUPWUOezP7UdaQQly+jeaBFl4E8qA23Xz7uxqiFVJjVk06p7HvPKC4HpaDgA8hjHlBi
+         xJBgoAeN9xkOU2PpC0BwJVbfKvDVoS4lkBYBu7KCqS9MyWvrgGRFOUMaHfjuNdMcBmlB
+         t5whbFRg6wPG6/IAA0+edaA3s7DXYbZij5R1ZQaaXIj+Tt3Udi0gJGEY7J1uyw+DDF44
+         bqlj3OBWyJdp9QC/BJ6N+JzIVYy9nIQ6qdWDa2V8vJT4WNdbz4w5/eAIynxyAnLll+gS
+         mBUg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1681165253;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=GY3XURVYWCIcemLAr8O9Wiej+aFCql/3yCAZTzhHcSs=;
+        b=5rCwLNTNYedpqhLLwXi0i+TzrkCe+LWpGiZCJNKk27QxfUqQE9wT7c8uDSrQekyEhY
+         PSkqV0RgTxoKRimedN/MdHnw/XsYmhPNdOsR2Thcfap7205/gzWrq9Fen8l4JQ4hECiJ
+         B4kOphti2Xeq2w8pyXrcMhWvf6gO6P/3AOJO2QNa4QiqOx9geEeGh0gIuLoQUPHsz8jZ
+         /QqY8Upg/og5ShkCdZ7OMW/4qV9kYANtv/C/daZXy6cbqiPdDahKbh/j1IB3yCZh7NCo
+         4GxZ7DMBSPwtx/ha4EmAil6I+JsDcFTnhpNk3/4yhSZ0AH0TTfHjPFJKzMFGpXRNu/Sq
+         PgGw==
+X-Gm-Message-State: AAQBX9coj6ktIDq0MjKtcs06Efdq30a2Eb1Vwv5sRkrvQFr65vNlv3wE
+	m35N+G2/2/rjS4FOSIiTYR+fMb9RXt4kGhUkSziT2g==
+X-Google-Smtp-Source: AKy350bXiLysNcV+Q+/hru2MCd67dq41AQdoznEw88BUw2uC8Wa1FCc0rGVz3dTyK37BVHXOUEC94ofML1oMScjzdTk=
+X-Received: by 2002:a25:d994:0:b0:b8e:fbcb:d6ef with SMTP id
+ q142-20020a25d994000000b00b8efbcbd6efmr2648692ybg.4.1681165253591; Mon, 10
+ Apr 2023 15:20:53 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <c9e2a44da4daa00166c802a8c10527359358219d.1681158440.git.objelf@gmail.com>
+References: <20230327-cleanup-pinctrl-binding-v3-0-6f56d5c7a8de@baylibre.com>
+In-Reply-To: <20230327-cleanup-pinctrl-binding-v3-0-6f56d5c7a8de@baylibre.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Tue, 11 Apr 2023 00:20:42 +0200
+Message-ID: <CACRpkdbXvMsa=suwEZ64b1Jn9Tp2mD8CqhmwLhSHdtdAOBzN-Q@mail.gmail.com>
+Subject: Re: [PATCH v3 0/3] Cleanup Mediatek pinctrl device tree binding
+To: Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Zhiyong Tao <zhiyong.tao@mediatek.com>, =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>, 
+	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230410_150350_016233_5782F53C 
-X-CRM114-Status: GOOD (  11.51  )
+X-CRM114-CacheID: sfid-20230410_152055_465683_F5FA52B3 
+X-CRM114-Status: UNSURE (   9.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,66 +96,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Tue, Apr 4, 2023 at 6:30=E2=80=AFPM Alexandre Mergnat <amergnat@baylibre=
+.com> wrote:
 
-kernel test robot noticed the following build warnings:
+> Deprecate properties which shall not exist, leaked upstream from downstre=
+am
+> kernels, there's no reason to use them. Here the deprecated properties an=
+d
+> the generic properties which will replace them:
+>
+> - mediatek,drive-strength-adv =3D> drive-strength-microamp
+> - mediatek,pull-up-adv        =3D> bias-pull-up
+> - mediatek,pull-down-adv      =3D> bias-pull-down
+>
+> Another commit has been added in v3 to make it easier to merge. [2]
+>
+> Thanks AngeloGioacchino Del Regno to reported it. [1]
+>
+> [1]: https://lore.kernel.org/all/6e08d78f-ef4c-b228-f7d2-d63767ea87b8@col=
+labora.com/
+> [2]: https://lore.kernel.org/all/20230203-evk-board-support-v4-2-5cffe66a=
+38c0@baylibre.com/
+> [3]: https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl=
+.git/log/?h=3Ddevel
+>
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 
-[auto build test WARNING on wireless-next/main]
-[also build test WARNING on wireless/main linus/master v6.3-rc6 next-20230406]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Patches applied!
 
-url:    https://github.com/intel-lab-lkp/linux/commits/sean-wang-mediatek-com/mt76-mt7921-fix-kernel-panic-by-accessing-unallocated-eeprom-data/20230411-043801
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless-next.git main
-patch link:    https://lore.kernel.org/r/c9e2a44da4daa00166c802a8c10527359358219d.1681158440.git.objelf%40gmail.com
-patch subject: [PATCH] mt76: mt7921: fix kernel panic by accessing unallocated eeprom.data
-config: m68k-allyesconfig (https://download.01.org/0day-ci/archive/20230411/202304110556.xbu5H3ka-lkp@intel.com/config)
-compiler: m68k-linux-gcc (GCC) 12.1.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/9825ad75cf770d2a15f7008eca476121b9b3d794
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review sean-wang-mediatek-com/mt76-mt7921-fix-kernel-panic-by-accessing-unallocated-eeprom-data/20230411-043801
-        git checkout 9825ad75cf770d2a15f7008eca476121b9b3d794
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=m68k olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=m68k SHELL=/bin/bash drivers/net/wireless/
+Thanks for you excellent attention to detail!
 
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Link: https://lore.kernel.org/oe-kbuild-all/202304110556.xbu5H3ka-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   drivers/net/wireless/mediatek/mt76/mt7921/mcu.c: In function 'mt7921_mcu_parse_eeprom':
->> drivers/net/wireless/mediatek/mt76/mt7921/mcu.c:22:40: warning: variable 'res' set but not used [-Wunused-but-set-variable]
-      22 |         struct mt7921_mcu_eeprom_info *res;
-         |                                        ^~~
-
-
-vim +/res +22 drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-
-23bdc5d8cadfc9 Ming Yen Hsieh   2022-09-07  18  
-1c099ab44727c8 Sean Wang        2021-01-28  19  static int
-1c099ab44727c8 Sean Wang        2021-01-28  20  mt7921_mcu_parse_eeprom(struct mt76_dev *dev, struct sk_buff *skb)
-1c099ab44727c8 Sean Wang        2021-01-28  21  {
-1c099ab44727c8 Sean Wang        2021-01-28 @22  	struct mt7921_mcu_eeprom_info *res;
-1c099ab44727c8 Sean Wang        2021-01-28  23  
-1c099ab44727c8 Sean Wang        2021-01-28  24  	if (!skb)
-1c099ab44727c8 Sean Wang        2021-01-28  25  		return -EINVAL;
-1c099ab44727c8 Sean Wang        2021-01-28  26  
-fc6ee71a2a8f2d Lorenzo Bianconi 2022-06-20  27  	skb_pull(skb, sizeof(struct mt76_connac2_mcu_rxd));
-1c099ab44727c8 Sean Wang        2021-01-28  28  
-1c099ab44727c8 Sean Wang        2021-01-28  29  	res = (struct mt7921_mcu_eeprom_info *)skb->data;
-1c099ab44727c8 Sean Wang        2021-01-28  30  
-1c099ab44727c8 Sean Wang        2021-01-28  31  	return 0;
-1c099ab44727c8 Sean Wang        2021-01-28  32  }
-1c099ab44727c8 Sean Wang        2021-01-28  33  
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+Yours,
+Linus Walleij
 
