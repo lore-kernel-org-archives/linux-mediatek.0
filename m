@@ -4,68 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30A95C77B61
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Apr 2023 14:54:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 235EFC76196
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Apr 2023 15:31:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9+uOJWRfOOVtlTBySmg32nz3qSkxlHDeOSpYS+o/RlE=; b=vc8WEAcTSo1j5npX1oD6VqomIA
-	lZ3v96xpgJR2NKiEzjth7DrRrkCNFpX+VQs+kyNhlZyyXI61xo3KVmozOOrTswuXScMSISn64xVPJ
-	Jn2HCSXmfjXX66BtM1GF3C7JeqG1xDcrrSKWmVdyjKvfRRE91QT+yd8XcETKmRn03F41Z0J836Mw3
-	wWVoKuAgUubvUYcN0t5N+uJIoOo8SeIaDj36WwxprTRVWMBNbKRY3BjLXisUQW+T/fG8Ykr73hRkn
-	dNLnUIHY+SKUuElHzE2rSoNbK3nJZklnFhmfTZXdj8WrQAW6LDpgndKHIVdp1v3m9aSCWHTMbOw6o
-	vZmVeWlQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IBdfhAiuCEqD7RtTx8Ci52s2HURcnZu6d3ip+Anq2OE=; b=ZpG54/m4c4howKORJUX3O16rgZ
+	DuTOZMlPp7ChiGFX/Q8gzKNnxgkLSoh+oEOTetPCNQ+NmbV1MF1oU0OgkhYTf2hql6Md+r7ZGiKfi
+	FnE02QKn6mgiNpNLi7+NXgBZNUvNJo6qegp010miIZxOSed/DCBRI23IDy2lEVJwAN5HKftmAp5Ah
+	qBIqYiCUi3AfB1ciFWUXKHDFi53GM4LKPrrS2plrGhJBC/plon0L/am/XdqoIGDcpgEy/8WRqLvLm
+	+yskHI9IrdygUfdIIaO9Pk1VsLb/N78fEq++fomDk8FD89Y1k4Ppf6vlrrzHBY2B49K28wmlc0SfZ
+	MvdyHtZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1plsuQ-00FP3X-2d;
-	Mon, 10 Apr 2023 14:54:18 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pltU8-00FRm6-1K;
+	Mon, 10 Apr 2023 15:31:12 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1plsuN-00FP2G-26
+	id 1pltU5-00FRko-2k
 	for linux-mediatek@lists.infradead.org;
-	Mon, 10 Apr 2023 14:54:16 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id D1FE4610A1;
-	Mon, 10 Apr 2023 14:54:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B92D9C433EF;
-	Mon, 10 Apr 2023 14:54:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1681138454;
-	bh=9+uOJWRfOOVtlTBySmg32nz3qSkxlHDeOSpYS+o/RlE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ssAqJLGeCv4udxLGiYHv6O38FhSmjbqX2wp9b/hgpG2OED4HO/QFSXcN7Z2dUrNq+
-	 eI+Ff5vJYt05iDKQToytkFVNzf0IqjYHDz0IXgMTJffGfKbU6mvRuKXcO2RzblWn+k
-	 aKcoF4an4eHpQEVNUsdU4fCQo3ubojUDJ5rHL9GBGelkJRW2IJX/pK4u0CWKlfbr8T
-	 UIhaxAsOtFMxz7+sip5msZdAf9PMqkKj5SPxuokS1kwM1dOBPILyofwLFpO/LUAjGn
-	 oy4oM4CdTOLZ5v5PQV4X+MlN1WDFIp3Dn/aEy4kNRgDcFUX3cWZL/Yd132KaCrWMgr
-	 Pc8EIbkmSVvgA==
-Date: Mon, 10 Apr 2023 16:54:10 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Rob Herring <robh@kernel.org>
-Cc: netdev@vger.kernel.org, davem@davemloft.net, edumazet@google.com,
-	pabeni@redhat.com, kuba@kernel.org, matthias.bgg@gmail.com,
-	linux-mediatek@lists.infradead.org, nbd@nbd.name, john@phrozen.org,
-	sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
-	lorenzo.bianconi@redhat.com, daniel@makrotopia.org,
-	krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH v2 net-next 00/10] mtk: wed: move cpuboot, ilm and dlm in
- dedicated dts nodes
-Message-ID: <ZDQjEkTstngxib/0@lore-desk>
-References: <cover.1680268101.git.lorenzo@kernel.org>
- <20230406152511.GA3117403-robh@kernel.org>
+	Mon, 10 Apr 2023 15:31:11 +0000
+Received: by mail-ej1-x635.google.com with SMTP id qb20so12872249ejc.6
+        for <linux-mediatek@lists.infradead.org>; Mon, 10 Apr 2023 08:31:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1681140666;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=IBdfhAiuCEqD7RtTx8Ci52s2HURcnZu6d3ip+Anq2OE=;
+        b=P0GdGNeiMWHlHtdDH9sRbF6cNkJ2IzbEXTzFv5b2eukJiSBZjwCwyQgrTq8JYy+zaz
+         znD8Vl8cn3JY/F+scx1nzPxlm7RJU7ekeKesAD3i2b2JzVAFX2EnirPq/84SZ9gppmHd
+         SiC0OZQyrjilj32CPrINCHCIA7DhcmQu7uPD9Yi9N79gaBmWSydNmwyXfs+590vnZVOR
+         ftSTylYI0NNSG+CdT5BViFTJ1tLvhypAH6T1tXivxJq6D4nlFXlDRQL2v1BnmFXLDdR6
+         f2GG1uT5pT9RODLOblIitxoM+5m57LULhegr31dfxYf9QHBMEc1xMEQiwd9HsKyfvo+2
+         b/Ww==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1681140666;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=IBdfhAiuCEqD7RtTx8Ci52s2HURcnZu6d3ip+Anq2OE=;
+        b=Ioib1Rcscdm0hYcAcaeKNviG64WpWMxOSRZIxvH8MIiTYSAxj8fn0kc3cGzu9/Ocpn
+         /TN3MW2kbsWnhLyEIwvO6Yg208zYZxKxofijw9idnkq1n4Les7n1651lDlCN6lZw4311
+         u+QFu4reucu9SmRVCQFRanZbusTr+JdstffrCEkDXJnbNP1eTpAlEaL3t5I7UKGTEC1g
+         uPDGTd76wG5leupBR8YVIl1Y0y9E/bVhWcZxGiLJ3da4D/nOLxK3KPNZPEEgp1LzB9FN
+         2wEmYGWcJjl9XZeMTCYKksK/UEuDMsNAKyQ6eDVTeJ2s7O1bXOiPojji5GroRoN1Ce0D
+         82OA==
+X-Gm-Message-State: AAQBX9dhWOG720bzUgED8yDwPtT70arUG/W9A7OnW5cyAMKxrAadKNa4
+	nawm1Ee7cYoUfk3YdykvF99BJQ==
+X-Google-Smtp-Source: AKy350YzJjMIz0pn/8a10YREbTWl5he8HuqP0ckjnl5NSVi0xhbBIimcqLpyUlXGQva5k5cG3pl/Iw==
+X-Received: by 2002:a17:906:2a48:b0:93b:1c78:5796 with SMTP id k8-20020a1709062a4800b0093b1c785796mr6165570eje.43.1681140666219;
+        Mon, 10 Apr 2023 08:31:06 -0700 (PDT)
+Received: from ?IPV6:2a02:810d:15c0:828:eacd:ffa4:1df7:3870? ([2a02:810d:15c0:828:eacd:ffa4:1df7:3870])
+        by smtp.gmail.com with ESMTPSA id rk18-20020a170907215200b0094a77168584sm1474667ejb.125.2023.04.10.08.31.05
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 10 Apr 2023 08:31:05 -0700 (PDT)
+Message-ID: <874277fe-92a6-2bed-eccf-15fc90d8574a@linaro.org>
+Date: Mon, 10 Apr 2023 17:31:04 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Mbdi1ZojGS1vdtOH"
-Content-Disposition: inline
-In-Reply-To: <20230406152511.GA3117403-robh@kernel.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH v2 1/2] dt-bindings: usb: mtk-xhci: add an optional frame
+ count clock
+Content-Language: en-US
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Rob Herring <robh+dt@kernel.org>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Mathias Nyman <mathias.nyman@intel.com>, linux-usb@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Tianping Fang <tianping.fang@mediatek.com>
+References: <20230407062406.12575-1-chunfeng.yun@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230407062406.12575-1-chunfeng.yun@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230410_075415_749173_C5F9EDEC 
-X-CRM114-Status: GOOD (  14.87  )
+X-CRM114-CacheID: sfid-20230410_083109_890601_89B19427 
+X-CRM114-Status: UNSURE (   7.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,59 +103,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 07/04/2023 08:24, Chunfeng Yun wrote:
+> Add optional clock 'frmcnt_ck' used on 4nm or advanced process SoC
+> 
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+> v2: based the patch:
+>     https://patchwork.kernel.org/project/linux-mediatek/patch/20230403191850.374839-1-krzysztof.kozlowski@linaro.org/
+> ---
 
---Mbdi1ZojGS1vdtOH
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-> On Fri, Mar 31, 2023 at 03:12:36PM +0200, Lorenzo Bianconi wrote:
-> > Since cpuboot, ilm and dlm memory region are not part of MT7986 SoC RAM,
->=20
-> That's not really a requirement. Is that the only "problem" here?
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-I would say this series allows to be closer to a standard binding and at the
-same time helps with uboot compatibility.
+Best regards,
+Krzysztof
 
->=20
-> Certainly going from a standard binding to a custom phandle reference is=
-=20
-> not an improvement.
->=20
-> > move them in dedicated mt7986a syscon dts nodes.
->=20
-> What makes them a syscon? Are they memory or h/w registers? Can't be=20
-> both...
-
->=20
-> Perhaps mmio-sram?
-
-ilm and dlm do not have h/w registers afaik, they are chip memory used
-to store firmware information, syscon is just the closest binding I found.
-I did not find mmio-sram, my fault.
-
-Regards,
-Lorenzo
-
->=20
-> > At the same time we keep backward-compatibility with older dts version =
-where
-> > cpuboot, ilm and dlm were defined as reserved-memory child nodes.
->=20
-> Doesn't really seem big enough issue to justify carrying this.
->=20
-> Rob
-
---Mbdi1ZojGS1vdtOH
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZDQjEgAKCRA6cBh0uS2t
-rNnEAP98v7/BKa/Fd5y1OymB9T4LAXXAgNEIA7/LExkl8VzmzQD+L0fjplWxRgsc
-nyGfpakLxtEGDs0uoT1Qtz4Fd7IzAAI=
-=ri5+
------END PGP SIGNATURE-----
-
---Mbdi1ZojGS1vdtOH--
 
