@@ -4,87 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBFC9C77B70
-	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Apr 2023 12:31:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44455C77B6E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Apr 2023 00:58:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/sjCjsfv26tkwL33cYuaCIiIygw6W5wLP/nI9o69MBE=; b=w/Lx3Tl565gVVj3C0ryXvWX4uk
-	d8pYA60IMvPWcR0mLduk9OZTAsrz8eqEAT0XyZ/rVzX3WW/kmJuj9rrb6eW0vK6Fb0z8sja52bL1k
-	y5V9nbboxqt5ahghdFQAvVRQchxg5ZBHY4YNBCTX33IePBDafbv1xUFXaxHe1RlyOGl3z7HnFj5D/
-	ImcfGJ3Y0lCXPpq6Kg1LefdupSWXPJLkRLOXRiK3sOZPFwM9rnyhaLqhj/EfqNQ4ElGlew4lMxISP
-	7Bq/L7uhdyR5iWh0ukwG8zkBQAziv4ur5n8/0NX7XVFg8W5qqVhMVlFGV3UqWf/zr4tkUIfDh/cVv
-	FgBTVS6w==;
+	bh=fd1mqc81D9I/oplLthsVKWrJIyjic4rrtP8zOYkzlHI=; b=hTWEOlJD6sOOPbiWZrJNJeStQF
+	9XI0cOCTWl0s1z4DDy7xTBQzszcwO9LA0r2rYQTExzjvHJG5u0dClp52Bni79az4JPKIzDgcEY/aQ
+	FwYosWM6Uv/C15X9fzV+UNwgDJ4+/NRY34fQBD7nFUpV3tyXOaDDzAFNcUKP1bmUNGn2tYg9ZFk+3
+	mV5ggKtjDo6mVxJPVvDuFQsG4nAzVhkntVJNcbv+rbtJGHqoOLXw5OwDOVUO7gDHNr+0cgQcIo2vX
+	Giy16aAy2+C2qqkQNmCFjoj/dLnY4vXG1uDXbC+DTDp53pG6O9AdZ85m05zS8e8H5e61DSwLpjwia
+	RDMO6LQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1plUCJ-00DhxE-2R;
-	Sun, 09 Apr 2023 12:31:07 +0000
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+	id 1plfrG-00EOsU-0W;
+	Mon, 10 Apr 2023 00:58:10 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1plUCF-00DhwM-1z;
-	Sun, 09 Apr 2023 12:31:05 +0000
-Received: by mail-pl1-x632.google.com with SMTP id ik20so2384830plb.3;
-        Sun, 09 Apr 2023 05:31:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1681043462;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=/sjCjsfv26tkwL33cYuaCIiIygw6W5wLP/nI9o69MBE=;
-        b=knP/zr0lg3cA56UTp147xq5KaWNFpUT6fj2NAYVrCspJgHf4+T0aw8tQvplFo3+jmS
-         LCh467KwtrloXokQo8xWWqOPNQ6JOlg0A34GEvR3dmNAQ5jduLziBGAIG9CudtsJxtrV
-         7Zm9Ku+FslXcMzQXg0nL0++Wpx+UTYz90ybiY7f+oRQ62Gs9C3FxxCCNA33pzI6oJi4C
-         pjFiZLfcPa0Ay3qxbdwc9K//Y096/OoOvuNqVONyK8anac2vGYTs2bLtE1nykBBHqS6C
-         lLImrVfpaBLIwYI59opSsLjCDKL8nUc13223uPWh+aMbkpJDjf8IH+heZ9a9YXGJGnig
-         VAIQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1681043462;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=/sjCjsfv26tkwL33cYuaCIiIygw6W5wLP/nI9o69MBE=;
-        b=LRGJmUHC4GgPAQ0STV+aHgsencIiQhSv/35pcpWb1lGs0430YNrYPfbiQPcPyM6Cgk
-         2SBPS+J1wycb17JRVO9jZYuKCJ5u+ZYFm8GR+h08oCsvD69er3MIWmvecNS+1/LrJq/V
-         jb9k+9jszPBLusOIIk7W87aOFCoqKszhRuuAmtANfQWp/A5SQZH/gvEkQ6ZGXjKxz8Dd
-         e0xmpbOukO0bzyIDCFK/sACrgs1RodcX6QNFyND8vV23BoMfgr+pGq5Z/nCePGm4VG1Q
-         tAK3afXhEbJddGg2xt/P6gHrVRV4+w/aJJECySnRe4cU9E+MkXjclBl5rfLPHgs4V6Sl
-         bdOw==
-X-Gm-Message-State: AAQBX9edGyf8Q9K4T8HD6wrd6K904P0FlJ1IIP53MNsULe1nWZb6XCMD
-	N0mNFLvajELh7UiLcj/+6jM=
-X-Google-Smtp-Source: AKy350Zi0/jHiXU7qIaSCN3O1DJL5eFsyUZRuJgq7cd2DopUoKCuA1EtplmHA8nvTTwnIYiRy6P0Sw==
-X-Received: by 2002:a17:903:7cd:b0:19e:674a:1fb9 with SMTP id ko13-20020a17090307cd00b0019e674a1fb9mr8024227plb.69.1681043461624;
-        Sun, 09 Apr 2023 05:31:01 -0700 (PDT)
-Received: from [192.168.43.80] (subs32-116-206-28-11.three.co.id. [116.206.28.11])
-        by smtp.gmail.com with ESMTPSA id s31-20020a63ff5f000000b005182bfef363sm2034215pgk.34.2023.04.09.05.30.57
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 09 Apr 2023 05:31:00 -0700 (PDT)
-Message-ID: <b05d80ab-fd72-1346-f5d9-b80ae9b5cd1a@gmail.com>
-Date: Sun, 9 Apr 2023 19:30:53 +0700
+	id 1plfr9-00EOrk-2R;
+	Mon, 10 Apr 2023 00:58:05 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 0E58160E33;
+	Mon, 10 Apr 2023 00:57:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5A00CC433EF;
+	Mon, 10 Apr 2023 00:57:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1681088273;
+	bh=x1wkYPtNmo6RtB5ZfBrhqXue4vXZpCgJBIU2FPBOGYY=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=YXcgx0ToKlhlQjO2KjWGr0ePjqgA0S+IpJjENVF3RtI8T5uQbzGCHJlbi6jSIhiNJ
+	 7Fsk3TSENFAVOFKUQoQeOo5CKa2nEoBeZ//YYgXnLkrYcAT/0J2cXxdX9KGmDZtcfS
+	 Hb5It45U+w0qXjK4sH7QCO2Q5PamKIrdcI+h4j+k6rtfnui3M1g+bbDsmJIUXOMicb
+	 oAT2fVexHb+dbT7Qa5c+HloXV6SrINa+LT7FrOfZVlU9NnRbSCWfAobU0igERkOys0
+	 brl+QSByO3zmp7m8VnMI4PMkMzX7JYSZ55NPC1BQGsOsLnt0XdIKZ1fvhqES0iHyxR
+	 wXFJZCs6+JAVQ==
+Received: by mail-lf1-f44.google.com with SMTP id i26so5095834lfc.6;
+        Sun, 09 Apr 2023 17:57:53 -0700 (PDT)
+X-Gm-Message-State: AAQBX9f7SINvb+Jl43UKTTgCo1eNMTqBPLz4jg0U3taIEnpFgRMtT8sP
+	KIBnu9b5gPLxzlCYD0wHbaLpGZy4OL29FaoxaQA=
+X-Google-Smtp-Source: AKy350bGuMItwf91ELSkpTyF9NTc1nsh5zMn14Rcfih66uAv/CLQBUeJc/PXY4C+URSH0CRWRT6ujIgC3V9ghu6/E/I=
+X-Received: by 2002:a05:6512:25e:b0:4eb:540f:2bf6 with SMTP id
+ b30-20020a056512025e00b004eb540f2bf6mr2517888lfo.11.1681088271396; Sun, 09
+ Apr 2023 17:57:51 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.1
-Subject: Re: [PATCH v2] ring-buffer: Prevent inconsistent operation on
- cpu_buffer->resize_disabled
-To: Tze-nan Wu <Tze-nan.Wu@mediatek.com>, rostedt@goodmis.org,
- mhiramat@kernel.org
-Cc: bobule.chang@mediatek.com, wsd_upstream@mediatek.com,
- stable@vger.kernel.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-kernel@vger.kernel.org, linux-trace-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230408052226.25268-1-Tze-nan.Wu@mediatek.com>
- <20230409024616.31099-1-Tze-nan.Wu@mediatek.com>
-Content-Language: en-US
-From: Bagas Sanjaya <bagasdotme@gmail.com>
-In-Reply-To: <20230409024616.31099-1-Tze-nan.Wu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+References: <20230329195758.7384-1-mario.limonciello@amd.com>
+ <CAGp9LzrkX4uFAtLwvjH+uUuRgT_YDg3eE8SqgWEXOFmw5r=aMQ@mail.gmail.com>
+ <cdf612bf-96f6-9b4e-a32c-50007892083c@amd.com> <MN0PR12MB61012EEFC07D4FAE534C1323E2929@MN0PR12MB6101.namprd12.prod.outlook.com>
+In-Reply-To: <MN0PR12MB61012EEFC07D4FAE534C1323E2929@MN0PR12MB6101.namprd12.prod.outlook.com>
+From: Sean Wang <sean.wang@kernel.org>
+Date: Sun, 9 Apr 2023 17:57:38 -0700
+X-Gmail-Original-Message-ID: <CAGp9LzqWna+BU_F-=zxCmo62616Jjn2pXQG-Zk43Ax13zRjF0Q@mail.gmail.com>
+Message-ID: <CAGp9LzqWna+BU_F-=zxCmo62616Jjn2pXQG-Zk43Ax13zRjF0Q@mail.gmail.com>
+Subject: Re: [PATCH RESEND] wifi: mt76: mt7921e: Set memory space enable in
+ PCI_COMMAND if unset
+To: "Limonciello, Mario" <Mario.Limonciello@amd.com>
+Cc: "nbd@nbd.name" <nbd@nbd.name>, "lorenzo@kernel.org" <lorenzo@kernel.org>, 
+	"ryder.lee@mediatek.com" <ryder.lee@mediatek.com>, 
+	"shayne.chen@mediatek.com" <shayne.chen@mediatek.com>, 
+	"sean.wang@mediatek.com" <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	"Tsao, Anson" <anson.tsao@amd.com>, Kalle Valo <kvalo@kernel.org>, 
+	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>, 
+	"netdev@vger.kernel.org" <netdev@vger.kernel.org>, 
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Kai-Heng Feng <kai.heng.feng@canonical.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230409_053103_675502_24B32A42 
-X-CRM114-Status: GOOD (  10.93  )
+X-CRM114-CacheID: sfid-20230409_175803_895967_B4FE2624 
+X-CRM114-Status: GOOD (  30.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,34 +94,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 4/9/23 09:46, Tze-nan Wu wrote:
-> This issue can be reproduced by "echo 0 > trace" and hotplug cpu at the
-> same time. After reproducing success, we can find out buffer_size_kb
-> will not be functional anymore.
-> 
+On Mon, Apr 3, 2023 at 6:42=E2=80=AFAM Limonciello, Mario
+<Mario.Limonciello@amd.com> wrote:
+>
+> [Public]
+>
+> > On 3/29/2023 18:24, Sean Wang wrote:
+> > > Hi,
+> > >
+> > > On Wed, Mar 29, 2023 at 1:18=E2=80=AFPM Mario Limonciello
+> > > <mario.limonciello@amd.com> wrote:
+> > >>
+> > >> When the BIOS has been configured for Fast Boot, systems with mt7921=
+e
+> > >> have non-functional wifi.  Turning on Fast boot caused both bus mast=
+er
+> > >> enable and memory space enable bits in PCI_COMMAND not to get
+> > configured.
+> > >>
+> > >> The mt7921 driver already sets bus master enable, but explicitly che=
+ck
+> > >> and set memory access enable as well to fix this problem.
+> > >>
+> > >> Tested-by: Anson Tsao <anson.tsao@amd.com>
+> > >> Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+> > >> ---
+> > >> Original patch was submitted ~3 weeks ago with no comments.
+> > >> Link: https://lore.kernel.org/all/20230310170002.200-1-
+> > mario.limonciello@amd.com/
+> > >> ---
+> > >>   drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 6 ++++++
+> > >>   1 file changed, 6 insertions(+)
+> > >>
+> > >> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+> > b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+> > >> index cb72ded37256..aa1a427b16c2 100644
+> > >> --- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+> > >> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+> > >> @@ -263,6 +263,7 @@ static int mt7921_pci_probe(struct pci_dev *pdev=
+,
+> > >>          struct mt76_dev *mdev;
+> > >>          u8 features;
+> > >>          int ret;
+> > >> +       u16 cmd;
+> > >>
+> > >>          ret =3D pcim_enable_device(pdev);
+> > >>          if (ret)
+> > >> @@ -272,6 +273,11 @@ static int mt7921_pci_probe(struct pci_dev
+> > *pdev,
+> > >>          if (ret)
+> > >>                  return ret;
+> > >>
+> > >> +       pci_read_config_word(pdev, PCI_COMMAND, &cmd);
+> > >> +       if (!(cmd & PCI_COMMAND_MEMORY)) {
+> > >> +               cmd |=3D PCI_COMMAND_MEMORY;
+> > >> +               pci_write_config_word(pdev, PCI_COMMAND, cmd);
+> > >> +       }
+> > >
+> > > If PCI_COMMAND_MEMORY is required in any circumstance, then we
+> > don't
+> > > need to add a conditional check and OR it with PCI_COMMAND_MEMORY.
+> >
+> > Generally it seemed advantageous to avoid an extra PCI write if it's no=
+t
+> > needed.  For example that's how bus mastering works too (see
+> > __pci_set_master).
+> >
+> >
+> > > Also, I will try the patch on another Intel machine to see if it work=
+ed.
+> >
+> > Thanks.
+>
+> Did you get a chance to try this on an Intel system?
 
-Do you mean disabling tracing while hotplugging CPU? Or disabling both
-tracing and hotplug CPU?
+Hi,
 
-> This patch uses cpus_read_lock() to prevent cpu_online_mask being changed
-> between two different "for_each_online_buffer_cpu".
-> 
+Sorry for the late response. We have tested the related Intel platform
+and it worked fine. You can add the tag from me like
+Acked-by: Sean Wang <sean.wang@mediatek.com>
 
-"Use cpu_read_lock() to prevent ..."
 
-> Changes in v2:
->   Use cpus_read_lock() instead of copying cpu_online_mask at the entry of
->   function
-> 
-
-To resolve kernel test robot warnings ([1] and [2])? Or have they been fixed?
-
-[1]: https://lore.kernel.org/stable/202304081615.eiaqpbV8-lkp@intel.com/
-[2]: https://lore.kernel.org/stable/202304082051.Dp50upfS-lkp@intel.com/
-
-Thanks.
-
--- 
-An old man doll... just what I always wanted! - Clara
-
+>
+> >
+> > >
+> > >       Sean
+> > >
+> > >>          pci_set_master(pdev);
+> > >>
+> > >>          ret =3D pci_alloc_irq_vectors(pdev, 1, 1, PCI_IRQ_ALL_TYPES=
+);
+> > >> --
+> > >> 2.34.1
+> > >>
 
