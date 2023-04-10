@@ -4,73 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAE0AC77B61
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Apr 2023 07:45:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCEB1C76196
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Apr 2023 10:35:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7uzc4Gmc54T760tvEhSz8TdAybgvY+nHPJ6ttMqGCTg=; b=GtM2LF0ps2YiWXXZ4kXNZDrm74
-	cyL25Jkx2UmjKvcanDbRshY2+yvzX7bp6g9zlyvhEkbW3nAuFZDfgiWi4fmlJZk/KS3Bxkqx68BlM
-	cud/RokR0dNUkoQsHeDw2O1PpeDcSp+gXZyp3jJwqIc3aB6ZAgmVwnFBKXbgR+i+MG91B/VG0rTEX
-	ppybx3NJjtV0EMEdRZ3BtojfpwHqw1pegyiez8yGkrNcQUP3BmnAsj7rRbTfU6SNomwU8iusjWvbZ
-	fPKZxw7a48zUQz4HhS7dAoVO8GgEchMoeEc+oL/mp2xqjKenPle8ymc6LwDp0VMwQty8ObGqO5lOm
-	NnE1cqIA==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=LPs93IfuGwwJkC4njN2KzdGL1xWxl/Kl8g2czwyDGHo=; b=KJGBbZm4eKUssEc6pyPudOi8Oh
+	rgpyugobhXUqs9EuGroGHz5ewgo4L7kLi4ogpsCmfEdFQhCqtcaqOx5COU+9EPJzI+FgLfzYVTapX
+	KAUf7jXEF4pnrZRgbwjixTshONWIYS8i22EDfyYARihc75x+dGU1nTNrtLXGhR8Zzfgl5oTzDUzzG
+	wNxeEZGInk+XQpJyPGJzGUo9XRPQoBvigIlX6XFQKTFnukkCwAnG+Rc/NKFD55/5MxNor2pAmZXdr
+	B7lzLKatBexihMgxJkwm1cUW9gxbDMiB8INfg6yD55ZkGJ73ZGBTDVkChRPwbR63BFgickfz4vXki
+	0zPrAgkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1plmDh-00EkU2-22;
-	Mon, 10 Apr 2023 07:45:45 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1plmDe-00EkTa-0P;
-	Mon, 10 Apr 2023 07:45:43 +0000
-X-UUID: af0752a8d77311edb7d8d11f642b8e78-20230410
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=7uzc4Gmc54T760tvEhSz8TdAybgvY+nHPJ6ttMqGCTg=;
-	b=OebQoBXaTyU94lHq2McKOGd08J4KFwMjblE9k3waiuqevD1fLF2Hd2mTOE/yxC5WZ8iosXPh19m2PXc5U97ICcFRnRGUExGOE537QMfQ8KCzsd0f9Yyevg+BDZ0sMzKkVLgFXmDSatzxWTciECmZZQ7txKIU0DcklVh/SBEvhTY=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:657cddce-77b1-4ba6-b1e2-202b538dce40,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:120426c,CLOUDID:056cbab5-beed-4dfc-bd9c-e1b22fa6ccc4,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-UUID: af0752a8d77311edb7d8d11f642b8e78-20230410
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <tze-nan.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1435592750; Mon, 10 Apr 2023 00:45:37 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Mon, 10 Apr 2023 15:35:34 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Mon, 10 Apr 2023 15:35:34 +0800
-From: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
-To: <rostedt@goodmis.org>, <mhiramat@kernel.org>
-CC: <bobule.chang@mediatek.com>, <wsd_upstream@mediatek.com>,
-	<Tze-nan.Wu@mediatek.com>, <cheng-jui.wang@mediatek.com>,
-	<npiggin@gmail.com>, <stable@vger.kernel.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, "Paul E. McKenney"
-	<paulmck@kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-trace-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH v3] ring-buffer: Prevent inconsistent operation on cpu_buffer->resize_disabled
-Date: Mon, 10 Apr 2023 15:35:08 +0800
-Message-ID: <20230410073512.13362-1-Tze-nan.Wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230409024616.31099-1-Tze-nan.Wu@mediatek.com>
-References: <20230409024616.31099-1-Tze-nan.Wu@mediatek.com>
+	id 1plorh-00EymB-2c;
+	Mon, 10 Apr 2023 10:35:13 +0000
+Received: from mg.richtek.com ([220.130.44.152])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1plord-00Eyl4-1p;
+	Mon, 10 Apr 2023 10:35:12 +0000
+X-MailGates: (flag:4,DYNAMIC,BADHELO,RELAY,NOHOST:PASS)(compute_score:DE
+	LIVER,40,3)
+Received: from 192.168.10.46
+	by mg.richtek.com with MailGates ESMTP Server V5.0(9462:0:AUTH_RELAY)
+	(envelope-from <chiaen_wu@richtek.com>); Mon, 10 Apr 2023 18:34:25 +0800 (CST)
+Received: from ex3.rt.l (192.168.10.46) by ex3.rt.l (192.168.10.46) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.25; Mon, 10 Apr
+ 2023 18:34:25 +0800
+Received: from linuxcarl2.richtek.com (192.168.10.154) by ex3.rt.l
+ (192.168.10.45) with Microsoft SMTP Server id 15.2.1118.25 via Frontend
+ Transport; Mon, 10 Apr 2023 18:34:25 +0800
+From: ChiaEn Wu <chiaen_wu@richtek.com>
+To: <jic23@kernel.org>, <lars@metafoo.de>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>
+CC: <linux-iio@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<peterwu.pub@gmail.com>, <cy_huang@richtek.com>, ChiaEn Wu
+	<chiaen_wu@richtek.com>
+Subject: [PATCH v3] iio: adc: mt6370: Fix ibus and ibat scaling value of some specific vendor ID chips
+Date: Mon, 10 Apr 2023 18:34:22 +0800
+Message-ID: <1681122862-1994-1-git-send-email-chiaen_wu@richtek.com>
+X-Mailer: git-send-email 1.8.3.1
 MIME-Version: 1.0
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230410_004542_313180_226A9694 
-X-CRM114-Status: GOOD (  14.66  )
+X-CRM114-CacheID: sfid-20230410_033510_059222_F859E99A 
+X-CRM114-Status: GOOD (  15.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,87 +68,149 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Write to buffer_size_kb can permanently fail, due to cpu_online_mask may
-changed between two for_each_online_buffer_cpu loops.
-The number of increasing and decreasing on cpu_buffer->resize_disable
-may be inconsistent, leading that the resize_disabled in some CPUs
-becoming none zero after ring_buffer_reset_online_cpus return.
+The scale value of ibus and ibat on the datasheet is incorrect due to the
+customer report after the experimentation with some specific vendor ID
+chips.
 
-This issue can be reproduced by "echo 0 > trace" while hotplugging cpu.
-After reproducing success, we can find out buffer_size_kb will not be
-functional anymore.
-
-Prevent the two "loops" in this function from iterating through different
-online cpus by copying cpu_online_mask at the entry of the function.
-
-Changes from v1 to v3:
-  Declare the cpumask variable statically rather than dynamically.
-
-Changes from v2 to v3:
-  Considering holding cpu_hotplug_lock too long because of the
-  synchronize_rcu(), maybe it's better to prevent the issue by copying
-  cpu_online_mask at the entry of the function as V1 does, instead of
-  using cpus_read_lock().
-
-Link: https://lore.kernel.org/lkml/20230408052226.25268-1-Tze-nan.Wu@mediatek.com/
-Link: https://lore.kernel.org/oe-kbuild-all/202304082051.Dp50upfS-lkp@intel.com/
-Link: https://lore.kernel.org/oe-kbuild-all/202304081615.eiaqpbV8-lkp@intel.com/
-
-Cc: stable@vger.kernel.org
-Cc: npiggin@gmail.com
-Fixes: b23d7a5f4a07 ("ring-buffer: speed up buffer resets by avoiding synchronize_rcu for each CPU")
-Reported-by: kernel test robot <lkp@intel.com>
-Reviewed-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
-Signed-off-by: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
+Fixes: c1404d1b659f ("iio: adc: mt6370: Add MediaTek MT6370 support")
+Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
 ---
- kernel/trace/ring_buffer.c | 14 +++++++++-----
- 1 file changed, 9 insertions(+), 5 deletions(-)
+v3:
+- Add 'Fixes' tag
+- Revise 'mt6370_adc_get_ibus_scale()' and 'mt6370_adc_get_ibat_scale()'
+  from using 'if-else' to using 'switch-case'
 
-diff --git a/kernel/trace/ring_buffer.c b/kernel/trace/ring_buffer.c
-index 76a2d91eecad..dc758930dacb 100644
---- a/kernel/trace/ring_buffer.c
-+++ b/kernel/trace/ring_buffer.c
-@@ -288,9 +288,6 @@ EXPORT_SYMBOL_GPL(ring_buffer_event_data);
- #define for_each_buffer_cpu(buffer, cpu)		\
- 	for_each_cpu(cpu, buffer->cpumask)
+v2:
+- Move 'get_vendor_info' after iio_priv allocation done
+- For the special case, bypass indent, make it out-of-line
+- For a simple return, add a blank line
+- Drop else
+---
+---
+ drivers/iio/adc/mt6370-adc.c | 53 ++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 51 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/iio/adc/mt6370-adc.c b/drivers/iio/adc/mt6370-adc.c
+index bc62e5a..0bc1121 100644
+--- a/drivers/iio/adc/mt6370-adc.c
++++ b/drivers/iio/adc/mt6370-adc.c
+@@ -19,6 +19,7 @@
  
--#define for_each_online_buffer_cpu(buffer, cpu)		\
--	for_each_cpu_and(cpu, buffer->cpumask, cpu_online_mask)
--
- #define TS_SHIFT	27
- #define TS_MASK		((1ULL << TS_SHIFT) - 1)
- #define TS_DELTA_TEST	(~TS_MASK)
-@@ -5353,12 +5350,19 @@ EXPORT_SYMBOL_GPL(ring_buffer_reset_cpu);
- void ring_buffer_reset_online_cpus(struct trace_buffer *buffer)
- {
- 	struct ring_buffer_per_cpu *cpu_buffer;
-+	cpumask_t reset_online_cpumask;
- 	int cpu;
+ #include <dt-bindings/iio/adc/mediatek,mt6370_adc.h>
  
-+	/*
-+	 * Record cpu_online_mask here to make sure we iterate through the same
-+	 * online CPUs in the following two loops.
-+	 */
-+	cpumask_copy(&reset_online_cpumask, cpu_online_mask);
++#define MT6370_REG_DEV_INFO		0x100
+ #define MT6370_REG_CHG_CTRL3		0x113
+ #define MT6370_REG_CHG_CTRL7		0x117
+ #define MT6370_REG_CHG_ADC		0x121
+@@ -27,6 +28,7 @@
+ #define MT6370_ADC_START_MASK		BIT(0)
+ #define MT6370_ADC_IN_SEL_MASK		GENMASK(7, 4)
+ #define MT6370_AICR_ICHG_MASK		GENMASK(7, 2)
++#define MT6370_VENID_MASK		GENMASK(7, 4)
+ 
+ #define MT6370_AICR_100_mA		0x0
+ #define MT6370_AICR_150_mA		0x1
+@@ -47,6 +49,10 @@
+ #define ADC_CONV_TIME_MS		35
+ #define ADC_CONV_POLLING_TIME_US	1000
+ 
++#define MT6370_VID_RT5081		0x8
++#define MT6370_VID_RT5081A		0xA
++#define MT6370_VID_MT6370		0xE
 +
- 	/* prevent another thread from changing buffer sizes */
- 	mutex_lock(&buffer->mutex);
+ struct mt6370_adc_data {
+ 	struct device *dev;
+ 	struct regmap *regmap;
+@@ -55,6 +61,7 @@ struct mt6370_adc_data {
+ 	 * from being read at the same time.
+ 	 */
+ 	struct mutex adc_lock;
++	unsigned int vid;
+ };
  
--	for_each_online_buffer_cpu(buffer, cpu) {
-+	for_each_cpu_and(cpu, buffer->cpumask, &reset_online_cpumask) {
- 		cpu_buffer = buffer->buffers[cpu];
+ static int mt6370_adc_read_channel(struct mt6370_adc_data *priv, int chan,
+@@ -98,6 +105,30 @@ static int mt6370_adc_read_channel(struct mt6370_adc_data *priv, int chan,
+ 	return ret;
+ }
  
- 		atomic_inc(&cpu_buffer->resize_disabled);
-@@ -5368,7 +5372,7 @@ void ring_buffer_reset_online_cpus(struct trace_buffer *buffer)
- 	/* Make sure all commits have finished */
- 	synchronize_rcu();
++static int mt6370_adc_get_ibus_scale(struct mt6370_adc_data *priv)
++{
++	switch (priv->vid) {
++	case MT6370_VID_RT5081:
++	case MT6370_VID_RT5081A:
++	case MT6370_VID_MT6370:
++		return 3350;
++	default:
++		return 3875;
++	}
++}
++
++static int mt6370_adc_get_ibat_scale(struct mt6370_adc_data *priv)
++{
++	switch (priv->vid) {
++	case MT6370_VID_RT5081:
++	case MT6370_VID_RT5081A:
++	case MT6370_VID_MT6370:
++		return 2680;
++	default:
++		return 3870;
++	}
++}
++
+ static int mt6370_adc_read_scale(struct mt6370_adc_data *priv,
+ 				 int chan, int *val1, int *val2)
+ {
+@@ -123,7 +154,7 @@ static int mt6370_adc_read_scale(struct mt6370_adc_data *priv,
+ 		case MT6370_AICR_250_mA:
+ 		case MT6370_AICR_300_mA:
+ 		case MT6370_AICR_350_mA:
+-			*val1 = 3350;
++			*val1 = mt6370_adc_get_ibus_scale(priv);
+ 			break;
+ 		default:
+ 			*val1 = 5000;
+@@ -150,7 +181,7 @@ static int mt6370_adc_read_scale(struct mt6370_adc_data *priv,
+ 		case MT6370_ICHG_600_mA:
+ 		case MT6370_ICHG_700_mA:
+ 		case MT6370_ICHG_800_mA:
+-			*val1 = 2680;
++			*val1 = mt6370_adc_get_ibat_scale(priv);
+ 			break;
+ 		default:
+ 			*val1 = 5000;
+@@ -251,6 +282,20 @@ static const struct iio_chan_spec mt6370_adc_channels[] = {
+ 	MT6370_ADC_CHAN(TEMP_JC, IIO_TEMP, 12, BIT(IIO_CHAN_INFO_OFFSET)),
+ };
  
--	for_each_online_buffer_cpu(buffer, cpu) {
-+	for_each_cpu_and(cpu, buffer->cpumask, &reset_online_cpumask) {
- 		cpu_buffer = buffer->buffers[cpu];
++static int mt6370_get_vendor_info(struct mt6370_adc_data *priv)
++{
++	unsigned int dev_info;
++	int ret;
++
++	ret = regmap_read(priv->regmap, MT6370_REG_DEV_INFO, &dev_info);
++	if (ret)
++		return ret;
++
++	priv->vid = FIELD_GET(MT6370_VENID_MASK, dev_info);
++
++	return 0;
++}
++
+ static int mt6370_adc_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+@@ -272,6 +317,10 @@ static int mt6370_adc_probe(struct platform_device *pdev)
+ 	priv->regmap = regmap;
+ 	mutex_init(&priv->adc_lock);
  
- 		reset_disabled_cpu_buffer(cpu_buffer);
++	ret = mt6370_get_vendor_info(priv);
++	if (ret)
++		return dev_err_probe(dev, ret, "Failed to get vid\n");
++
+ 	ret = regmap_write(priv->regmap, MT6370_REG_CHG_ADC, 0);
+ 	if (ret)
+ 		return dev_err_probe(dev, ret, "Failed to reset ADC\n");
 -- 
-2.18.0
+2.7.4
 
 
