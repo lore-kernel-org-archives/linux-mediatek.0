@@ -4,65 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E114C77B61
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Apr 2023 23:27:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1071CC77B61
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Apr 2023 23:30:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=G/VCg72mZQ/NHm6OpYah9b/VaUR4O+V+V5z1ynzGieo=; b=JyHElz2qqJeYC1x72VpG6e5w/f
-	YdfzE1BFBliqdHZMsWnTK9g0NGl4V7sV95ojbFH5NqRm2r2j0mVi9PndNY15wGuR6zs90t4mi919A
-	DPAgs2zqOutwq6GWbTWrNzpsxe3GJbPtuAEY8ZxUrz1XhCRcDQa83ntCGkOf4V+NSEPC+9yPgzPDB
-	pJuoLQb+QIC5JBfWoOpcxEf7CqwrdX6i99dh9eSfRLw3A+Ri0zaeBvPrJg1lV1j0Y0rUwCLWGUMBk
-	Whn2YZHdcWM8FLdilJLms33JbueCLp91UKRdL0Y37OXQ5eHEoHk39ttwUSEZ6gzYKVn/AjMiyYdL4
-	rWF12jaA==;
+	bh=XaqbF8QK7DItBFQLv7NLkYA8/j2C76m3FgLlXHXbAiE=; b=oce9f9I7Uj1dDPRhcTHdoyxsme
+	QjWdsTPr5b14RqFVe+52sQYgQP6IZAJa+tNXFU6BG0krqpXyFqNqIILtcI3T0uKyloQzSy6lfhlKp
+	ncqdVBEaYJisOlx2EwPlu6oUTJEvNk8L/PVo8g62TwV1aAFRru5792qo023QmtHN5nbGGRSihx8KG
+	pcgt7kQtDPu3QRvdAOKrkGXsCBgAQfcCXDsaOSFJZdsVfuNbJb7QSeY9Kz9blPB6WS4r04jYNyu9i
+	+Daqp+cX3JywoiujaX3M4YIfLdSCNXzJBR/cv/0QsOTcZBbMESuergHX5e1IS4Sj2wnM2q8BuZg/u
+	SF/Nnfsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pm0uS-00G3uY-1g;
-	Mon, 10 Apr 2023 23:26:52 +0000
-Received: from mail-oa1-f50.google.com ([209.85.160.50])
+	id 1pm0xi-00G52V-2l;
+	Mon, 10 Apr 2023 23:30:14 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pm0uP-00G3s5-0g;
-	Mon, 10 Apr 2023 23:26:50 +0000
-Received: by mail-oa1-f50.google.com with SMTP id 586e51a60fabf-1842eb46746so7728500fac.4;
-        Mon, 10 Apr 2023 16:26:45 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1681169205; x=1683761205;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=G/VCg72mZQ/NHm6OpYah9b/VaUR4O+V+V5z1ynzGieo=;
-        b=T3TntyprLsjp7oK7Zl7cHrRmSHI9XjZ28iljtPE46YkGQbZ17zDOcLfZdxt53tocsf
-         LVaMAuOj9KeomI/11oWk+p5H6g3dDRN1IdzYuRpGEGWn7Bn6rg4Gz0fDGuvQbAgAA2P0
-         tALc3wOfAVhvM69eBZY1j2anW19hH07FE8a6nboPoo0Zxam5ihe6MX6hbnW8jSkWGplE
-         hRd0ZF6209Bwo/lVykgiqA+lZofKHMSK7VdfGvCPrQjLEYJdCPgTPcAtRXHHZt9HNkXj
-         60R8NeAeJnU2RMgjuJ5qrGELGXuXk18XeC3mIsQ5EcUQwRJM6/9yzmPWj02Pk85gtHVu
-         rMYg==
-X-Gm-Message-State: AAQBX9eDPg3bl2CJ9MtL/2vbVe7/IPEONEINa47QbSyyt8mCZPY5gqNs
-	1idN4hfadGqWO1N+2a0YIQ==
-X-Google-Smtp-Source: AKy350ZijxNsFnPL5Ij5iaQI01Ek5MJitj3WEyI04D46LQ/K6Wh0QH2ZObqAjn0jf+SuVtadgtdxEg==
-X-Received: by 2002:a05:6870:8087:b0:184:3995:4d70 with SMTP id q7-20020a056870808700b0018439954d70mr4161695oab.38.1681169204870;
-        Mon, 10 Apr 2023 16:26:44 -0700 (PDT)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id zg22-20020a0568716b1600b0017197629658sm4490790oab.56.2023.04.10.16.26.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 10 Apr 2023 16:26:44 -0700 (PDT)
-Received: (nullmailer pid 1561249 invoked by uid 1000);
-	Mon, 10 Apr 2023 23:26:43 -0000
-From: Rob Herring <robh@kernel.org>
-To: Thinh Nguyen <Thinh.Nguyen@synopsys.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH] usb: Add explicit of.h of_platform.h include
-Date: Mon, 10 Apr 2023 18:26:38 -0500
-Message-Id: <20230410232639.1561152-1-robh@kernel.org>
-X-Mailer: git-send-email 2.39.2
+	id 1pm0xf-00G512-2X
+	for linux-mediatek@lists.infradead.org;
+	Mon, 10 Apr 2023 23:30:13 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id CA0C161BB5;
+	Mon, 10 Apr 2023 23:30:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2A340C433EF;
+	Mon, 10 Apr 2023 23:30:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1681169410;
+	bh=fxAJLliD3eqAk8lHb8+D+7yvycKZCMLOfLqalDVN9Wg=;
+	h=From:To:Cc:Subject:Date:From;
+	b=P62DzVIhPtQ2D9bsyxHswE4BzYFSFvhx4HMoE/Z4zPhDLZOhfeFoXehBcxtaj9Qls
+	 JWoJiySFmrB2G5auJNJF1bn2X2GRvGqstHrbVaUlta6VEtoXJVBJgzStRQ2RSDqMl8
+	 4AYbATSCAd3qHUAzlRb4XQZ6MxLYnY5etvTnrV2y6x2ua3f0M+J6w4VEdKdDtdXnCk
+	 Y4KSb2mEdqlbWvSKzSpAVExHLPbfKO1OG1cUpdoQv36u+ORIi9b+4P/OSXBbQhMSRp
+	 4IIhta1iJDn6ea81hdJWPI1jdPJeasp+M4GGLlA2ngO2SG9HBQwFp/OtXKoNW/o+M7
+	 fLc3hz4afBqbA==
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+To: David Airlie <airlied@linux.ie>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org
+Cc: Xinlei Lee <xinlei.lee@mediatek.com>,
+	"Nancy . Lin" <nancy.lin@mediatek.com>,
+	Nathan Lu <nathan.lu@mediatek.com>,
+	Alexandre Mergnat <amergnat@baylibre.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Justin Green <greenjustin@chromium.org>,
+	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>
+Subject: [GIT PULL] mediatek drm next for 6.4
+Date: Mon, 10 Apr 2023 23:30:05 +0000
+Message-Id: <20230410233005.2572-1-chunkuang.hu@kernel.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230410_162649_249185_D337FF63 
-X-CRM114-Status: GOOD (  12.08  )
+X-CRM114-CacheID: sfid-20230410_163011_915681_11C9A4A7 
+X-CRM114-Status: GOOD (  12.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,58 +79,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Several USB drivers use of_platform_* functions which are declared in
-of_platform.h. of_platform.h gets implicitly included by of_device.h,
-but that is going to be removed soon. Nothing else depends on of_device.h
-so it can be dropped.
+Hi, Dave & Daniel:
 
-Signed-off-by: Rob Herring <robh@kernel.org>
----
- drivers/usb/dwc3/dwc3-am62.c           | 2 +-
- drivers/usb/gadget/udc/rzv2m_usb3drd.c | 2 +-
- drivers/usb/mtu3/mtu3_host.c           | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+This includes:
 
-diff --git a/drivers/usb/dwc3/dwc3-am62.c b/drivers/usb/dwc3/dwc3-am62.c
-index 173cf3579c55..4d674a243784 100644
---- a/drivers/usb/dwc3/dwc3-am62.c
-+++ b/drivers/usb/dwc3/dwc3-am62.c
-@@ -11,7 +11,7 @@
- #include <linux/platform_device.h>
- #include <linux/mfd/syscon.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/pm_runtime.h>
- #include <linux/clk.h>
- #include <linux/regmap.h>
-diff --git a/drivers/usb/gadget/udc/rzv2m_usb3drd.c b/drivers/usb/gadget/udc/rzv2m_usb3drd.c
-index 3c8bbf843038..8aafd1ddf126 100644
---- a/drivers/usb/gadget/udc/rzv2m_usb3drd.c
-+++ b/drivers/usb/gadget/udc/rzv2m_usb3drd.c
-@@ -6,7 +6,7 @@
-  */
- 
- #include <linux/io.h>
--#include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- #include <linux/reset.h>
-diff --git a/drivers/usb/mtu3/mtu3_host.c b/drivers/usb/mtu3/mtu3_host.c
-index f3903367a6a0..177d2caf887c 100644
---- a/drivers/usb/mtu3/mtu3_host.c
-+++ b/drivers/usb/mtu3/mtu3_host.c
-@@ -11,7 +11,7 @@
- #include <linux/irq.h>
- #include <linux/kernel.h>
- #include <linux/mfd/syscon.h>
--#include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/regmap.h>
- 
- #include "mtu3.h"
--- 
-2.39.2
+1. Add support for 10-bit overlays
+2. Add MediaTek SoC DRM (vdosys1) support for mt8195
+3. Change mmsys compatible for mt8195 mediatek-drm
+4. Only trigger DRM HPD events if bridge is attached
+5. Change the aux retries times when receiving AUX_DEFER
 
+Regards,
+Chun-Kuang.
+
+The following changes since commit fe15c26ee26efa11741a7b632e9f23b01aca4cc6:
+
+  Linux 6.3-rc1 (2023-03-05 14:52:03 -0800)
+
+are available in the Git repository at:
+
+  https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-next-6.4
+
+for you to fetch changes up to 9243d70e05c5989f84f840612965f96b524da925:
+
+  drm/mediatek: dp: Change the aux retries times when receiving AUX_DEFER (2023-04-03 16:49:49 +0000)
+
+----------------------------------------------------------------
+Mediatek DRM Next for Linux 6.4
+
+1. Add support for 10-bit overlays
+2. Add MediaTek SoC DRM (vdosys1) support for mt8195
+3. Change mmsys compatible for mt8195 mediatek-drm
+4. Only trigger DRM HPD events if bridge is attached
+5. Change the aux retries times when receiving AUX_DEFER
+
+----------------------------------------------------------------
+Alexandre Mergnat (1):
+      dt-bindings: display: mediatek: clean unnecessary item
+
+Chen-Yu Tsai (1):
+      drm/mediatek: dp: Only trigger DRM HPD events if bridge is attached
+
+Jason-JH.Lin (1):
+      drm/mediatek: Change mmsys compatible for mt8195 mediatek-drm
+
+Justin Green (3):
+      drm/mediatek: Refactor pixel format logic
+      drm/mediatek: Add support for AR30 and BA30 overlays
+      drm/mediatek: Enable AR30 and BA30 overlays on MT8195
+
+Nancy.Lin (9):
+      dt-bindings: mediatek: add ethdr definition for mt8195
+      drm/mediatek: Add ETHDR support for MT8195
+      drm/mediatek: Add ovl_adaptor support for MT8195
+      drm/mediatek: Add dma dev get function
+      drm/mediatek: Modify mediatek-drm for mt8195 multi mmsys support
+      drm/mediatek: Add drm ovl_adaptor sub driver for MT8195
+      drm/mediatek: Add mediatek-drm of vdosys1 support for MT8195
+      drm/mediatek: Add mdp_rdma get format function
+      drm/mediatek: Add ovl_adaptor get format function
+
+Nathan Lu (1):
+      drm/mediatek: Add mediatek-drm of vdosys0 support for mt8188
+
+Xinlei Lee (1):
+      drm/mediatek: dp: Change the aux retries times when receiving AUX_DEFER
+
+ .../bindings/display/mediatek/mediatek,ccorr.yaml  |   5 +-
+ .../bindings/display/mediatek/mediatek,ethdr.yaml  | 182 +++++++
+ drivers/gpu/drm/mediatek/Makefile                  |   2 +
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h            |  35 ++
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c            |  94 ++++
+ drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c    | 547 +++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c           |  38 ++
+ drivers/gpu/drm/mediatek/mtk_dp.c                  |  15 +-
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c            |  89 +++-
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.h            |   6 +-
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c        | 135 +++--
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h        |  78 ++-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c             | 475 ++++++++++--------
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h             |  30 +-
+ drivers/gpu/drm/mediatek/mtk_drm_plane.c           |  24 +-
+ drivers/gpu/drm/mediatek/mtk_drm_plane.h           |   3 +-
+ drivers/gpu/drm/mediatek/mtk_ethdr.c               | 370 ++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_ethdr.h               |  25 +
+ drivers/gpu/drm/mediatek/mtk_mdp_rdma.c            |  24 +
+ 19 files changed, 1858 insertions(+), 319 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.yaml
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_ethdr.c
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_ethdr.h
 
