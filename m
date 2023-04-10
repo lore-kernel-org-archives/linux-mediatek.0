@@ -4,65 +4,125 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AF54C77B61
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Apr 2023 03:47:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 849D2C77B61
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Apr 2023 05:37:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:
-	Content-Type:Content-Transfer-Encoding:References:In-Reply-To:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uL+dJ6AbFU1hQr7Ix7vf50GC+wDr2ZnDLySV0J4ahmA=; b=QbzvHBdFSfodlVi0+mJffJnEDV
-	8jQ81Ymq2DqL8RY4tTVw8VCWOvmQwtDqp0y5Zj9MAPJqyIwW8yYuoze/Ty5n+FtR/BNjE+rK0me5T
-	m6NvRk0ITqB3Ydry2NbwSy5qa5ViMhMp/CfOPAhUt5FeviBWA8Ay+EoDu6DqRaG5nw4AQCLXoC2c3
-	Jo8rLKLuTu26BJT+9L/VeiIlfWHdWnQBCaxvFg/2CZC9wRrwyMEFChnB83zUCzRpHHubEU/Hrfdwk
-	HFtrx4pi5WSjpcd+KZV6OnvgCyCa33WtTr5HSWnoG6ZkypS3E05oAOVl1R9kB5+GEivQvhg7PVC8s
-	F0zQlooQ==;
+	bh=2/k4nezMOkcM+h2CDII7+REb1p1LqwOaOkMYQqqQJrs=; b=ivHXveb2EivPRE+DlpkC1xEV5R
+	Tqy5pDNC3GcvDbQYNknMkYdOVS5YGg/QQEassE8UAe8Mwd70mvNK7c8bucUa4JtVhBvmhfhtF4w0w
+	7xHuWFV5Mz4LbvwV65z4UWU8x4doRJRTIvC+NQ0jQxy8IWpjqnfCxej3YlyHE5GtCJjxg/tVZR3U+
+	Qats4VX8jygbDEPcRb6I6eG6ycNiQJ9xFWgGVwL3KQorZbCU5zgzuEHmn5dfEM0ZOOlT55oPZBe/k
+	i0JGc2SwMIa9IhkrE27K/YUpRhI4xnDz8nN9IZQDbbLzbFC7w8BMsQqn0/IiE3FNjtZAmBDSN28Wi
+	LPL+MrCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pliUa-00EW94-0D;
-	Mon, 10 Apr 2023 03:46:56 +0000
-Received: from mail.hust.edu.cn ([202.114.0.240] helo=hust.edu.cn)
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pliUW-00EW8Z-2z;
-	Mon, 10 Apr 2023 03:46:54 +0000
-Received: from void0red$hust.edu.cn ( [172.16.0.254] ) by ajax-webmail-app1
- (Coremail) ; Mon, 10 Apr 2023 11:46:17 +0800 (GMT+08:00)
-X-Originating-IP: [172.16.0.254]
-Date: Mon, 10 Apr 2023 11:46:17 +0800 (GMT+08:00)
-X-CM-HeaderCharset: UTF-8
-From: =?UTF-8?B?6ZmI5bq3?= <void0red@hust.edu.cn>
-To: daniel.lezcano@linaro.org
-Cc: amitk@kernel.org, angelogioacchino.delregno@collabora.com, 
-	bchihi@baylibre.com, daniel@makrotopia.org, dzm91@hust.edu.cn, 
-	error27@gmail.com, henry.yen@mediatek.com, 
-	hust-os-kernel-patches@googlegroups.com, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, 
-	matthias.bgg@gmail.com, rafael@kernel.org, rdunlap@infradead.org, 
-	rui.zhang@intel.com, void0red@gmail.com
-Subject: Re: [PATCH v2 2/2] thermal: mediatek: change clk_prepare_enable to
- devm_clk_get_enabled in mtk_thermal_probe
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20220802(cbd923c5)
- Copyright (c) 2002-2023 www.mailtech.cn hust
-In-Reply-To: <20230403164610.3608082-2-void0red@hust.edu.cn>
-References: <6e3c59c3-8ad0-9c53-62a4-7be6f55a7c02@linaro.org>
- <20230403164610.3608082-1-void0red@hust.edu.cn>
- <20230403164610.3608082-2-void0red@hust.edu.cn>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset=UTF-8
+	id 1plkDR-00Ebnz-1r;
+	Mon, 10 Apr 2023 05:37:21 +0000
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1plkDP-00EbmL-15
+	for linux-mediatek@lists.infradead.org;
+	Mon, 10 Apr 2023 05:37:20 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id gb34so10323294ejc.12
+        for <linux-mediatek@lists.infradead.org>; Sun, 09 Apr 2023 22:37:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1681105036;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=2/k4nezMOkcM+h2CDII7+REb1p1LqwOaOkMYQqqQJrs=;
+        b=whrLD5VxYI35os9KEqHHxKa9Pszo5bo/r3L1orZhvpTq+fxiO2jOFNxbUlcI0Vs3GI
+         p3RauP4xFlUGVo8P+SU0FAjx22bxvxCcnObAMYYRyICpZgnhTXjhA5DCU6ygFH4gKuyO
+         eXbdDoA7p3M07jbTtohEJ2v/Tz9VjHr6a0oJvdDrr7ejrHUVk++XAtzWb+z2In6SL2Gl
+         t5tXQY/ajlwSp4Lah8lGP7hewVhzXVhK5MgiJIM1jDOC3z+GFlsAzATc7ylW+X+YH8So
+         id2qKF0m1S0qz2zyvyjFzxEpK2HPsFYVayvCP8RJW7o40S1Tl79GVKw4kmsvRGVPv8gK
+         DGNw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1681105036;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=2/k4nezMOkcM+h2CDII7+REb1p1LqwOaOkMYQqqQJrs=;
+        b=q65bPY0iKNX62z8pojWX7xue2G8jNwV8aC9OnkbGvVspmZEdWofGYddUbUJF7F3QWc
+         8Ra9T3ctJjPllWc17owJYX9pfD4/D/V7DYQWsRxE2ztzve+Gv+F29GoxdSomgc0LHjWk
+         H49tYUf6dfw8MyhnNzkxk8UCty4bw5C/lSkQ8YjOmNIe8/r1KMF7it8vzaeJOib1EDt1
+         /bWEcyEWZ/FtTbWfyeoX08Q3rq4/v70O2P8Imc2iSFvhIEEwHHClENeCCzBm6rZewwSz
+         BFoxYXoFoxueD46USC4TRaepeE7g37QyD+lchD8e/xnpQshF6ogYXZd7oA+FA7jXhGbM
+         c38w==
+X-Gm-Message-State: AAQBX9dSQGwaatOyndKM6MU0+ZCRcWQs/zAhnkTYoJ1BqVjALjy2uSSV
+	MVHtt+aIGCKUv+byaWHFqMP2aw==
+X-Google-Smtp-Source: AKy350YTLowzB2oBTshKq4rUG1CwxaDQBrenUjB20X2/2en11DizxiRt7NJuVWdjlDxpJZAqRXbXzA==
+X-Received: by 2002:a17:906:a043:b0:94b:5921:69f9 with SMTP id bg3-20020a170906a04300b0094b592169f9mr200904ejb.64.1681105036100;
+        Sun, 09 Apr 2023 22:37:16 -0700 (PDT)
+Received: from [192.168.0.107] ([79.115.63.230])
+        by smtp.gmail.com with ESMTPSA id r13-20020a170906350d00b0094b0f3886b0sm104670eja.76.2023.04.09.22.37.11
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 09 Apr 2023 22:37:15 -0700 (PDT)
+Message-ID: <5d091ef6-0f4c-dbf6-fb73-f9f9d13af3d8@linaro.org>
+Date: Mon, 10 Apr 2023 06:37:11 +0100
 MIME-Version: 1.0
-Message-ID: <7b1f01ae.3988f.18769458aaf.Coremail.void0red@hust.edu.cn>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: FgEQrAAHVwiJhjNk0EdOAg--.33659W
-X-CM-SenderInfo: rpsqjiaxrxjmo6kx23oohg3hdfq/1tbiAQoOAl7Em44HSQACsE
-X-Coremail-Antispam: 1Ur529EdanIXcx71UUUUU7IcSsGvfJ3iIAIbVAYjsxI4VW5Jw
-	CS07vEb4IE77IF4wCS07vE1I0E4x80FVAKz4kxMIAIbVAFxVCaYxvI4VCIwcAKzIAtYxBI
-	daVFxhVjvjDU=
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH] mtd: nand: Convert to platform remove callback returning
+ void
+To: =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
+ Miquel Raynal <miquel.raynal@bootlin.com>
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>, Lucas Stach <dev@lynxeye.de>,
+ Vignesh Raghavendra <vigneshr@ti.com>,
+ Linus Walleij <linus.walleij@linaro.org>, Miaoqian Lin <linmq006@gmail.com>,
+ Stefan Agner <stefan@agner.ch>, linux-mips@vger.kernel.org,
+ Paul Cercueil <paul@crapouillou.net>, linux-tegra@vger.kernel.org,
+ Liang Yang <liang.yang@amlogic.com>,
+ Naga Sureshkumar Relli <nagasure@xilinx.com>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ linux-amlogic@lists.infradead.org, Chuanhong Guo <gch981213@gmail.com>,
+ linux-stm32@st-md-mailman.stormreply.com, Heiko Stuebner <heiko@sntech.de>,
+ =?UTF-8?Q?Marek_Beh=c3=ban?= <kabel@kernel.org>,
+ Samuel Holland <samuel@sholland.org>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Kevin Hilman <khilman@baylibre.com>, linux-mediatek@lists.infradead.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Christophe Leroy <christophe.leroy@csgroup.eu>,
+ Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org,
+ Geert Uytterhoeven <geert@linux-m68k.org>,
+ Yang Yingliang <yangyingliang@huawei.com>, Jack Wang <jinpu.wang@ionos.com>,
+ Jerome Brunet <jbrunet@baylibre.com>, linux-sunxi@lists.linux.dev,
+ linux-arm-msm@vger.kernel.org, kernel@pengutronix.de,
+ Arnd Bergmann <arnd@arndb.de>, Manivannan Sadhasivam <mani@kernel.org>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ ye xingchen <ye.xingchen@zte.com.cn>, Vladimir Zapolskiy <vz@mleia.com>,
+ Roger Quadros <rogerq@kernel.org>, Wang Weiyang <wangweiyang2@huawei.com>,
+ Harvey Hunt <harveyhuntnexus@gmail.com>,
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Han Xu <han.xu@nxp.com>,
+ Chen-Yu Tsai <wens@csie.org>, linux-arm-kernel@lists.infradead.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Christophe Kerello <christophe.kerello@foss.st.com>,
+ Stephen Boyd <sboyd@kernel.org>, Valentin Korenblit
+ <vkorenblit@sequans.com>, Nicolas Ferre <nicolas.ferre@microchip.com>,
+ linux-renesas-soc@vger.kernel.org, Kyungmin Park
+ <kyungmin.park@samsung.com>, Thierry Reding <thierry.reding@gmail.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Richard Weinberger <richard@nod.at>, linux-mtd@lists.infradead.org,
+ linux-oxnas@groups.io, =?UTF-8?Q?Pali_Roh=c3=a1r?= <pali@kernel.org>,
+ Claudiu Beznea <claudiu.beznea@microchip.com>
+References: <20230401161938.2503204-1-u.kleine-koenig@pengutronix.de>
+ <20230407101043.299f5e22@xps-13>
+ <20230408185332.d2g2ao4tdp6ltm4i@pengutronix.de>
+Content-Language: en-US
+From: Tudor Ambarus <tudor.ambarus@linaro.org>
+In-Reply-To: <20230408185332.d2g2ao4tdp6ltm4i@pengutronix.de>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230409_204653_322633_5CD1B83F 
-X-CRM114-Status: GOOD (  13.10  )
+X-CRM114-CacheID: sfid-20230409_223719_436988_22D9D61F 
+X-CRM114-Status: GOOD (  16.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,54 +137,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-CgoKPiAtLS0tLeWOn+Wni+mCruS7ti0tLS0tCj4g5Y+R5Lu25Lq6OiAiS2FuZyBDaGVuIiA8dm9p
-ZDByZWRAaHVzdC5lZHUuY24+Cj4g5Y+R6YCB5pe26Ze0OiAyMDIzLTA0LTA0IDAwOjQ2OjEwICjm
-mJ/mnJ/kuowpCj4g5pS25Lu25Lq6OiBkYW5pZWwubGV6Y2Fub0BsaW5hcm8ub3JnCj4g5oqE6YCB
-OiBhbWl0a0BrZXJuZWwub3JnLCBhbmdlbG9naW9hY2NoaW5vLmRlbHJlZ25vQGNvbGxhYm9yYS5j
-b20sIGJjaGloaUBiYXlsaWJyZS5jb20sIGRhbmllbEBtYWtyb3RvcGlhLm9yZywgZHptOTFAaHVz
-dC5lZHUuY24sIGVycm9yMjdAZ21haWwuY29tLCBoZW5yeS55ZW5AbWVkaWF0ZWsuY29tLCBodXN0
-LW9zLWtlcm5lbC1wYXRjaGVzQGdvb2dsZWdyb3Vwcy5jb20sIGxpbnV4LWFybS1rZXJuZWxAbGlz
-dHMuaW5mcmFkZWFkLm9yZywgbGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZywgbGludXgtbWVk
-aWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZywgbGludXgtcG1Admdlci5rZXJuZWwub3JnLCBtYXR0
-aGlhcy5iZ2dAZ21haWwuY29tLCByYWZhZWxAa2VybmVsLm9yZywgcmR1bmxhcEBpbmZyYWRlYWQu
-b3JnLCBydWkuemhhbmdAaW50ZWwuY29tLCB2b2lkMHJlZEBnbWFpbC5jb20sIHZvaWQwcmVkQGh1
-c3QuZWR1LmNuCj4g5Li76aKYOiBbUEFUQ0ggdjIgMi8yXSB0aGVybWFsOiBtZWRpYXRlazogY2hh
-bmdlIGNsa19wcmVwYXJlX2VuYWJsZSB0byBkZXZtX2Nsa19nZXRfZW5hYmxlZCBpbiBtdGtfdGhl
-cm1hbF9wcm9iZQo+IAo+IHVzZSBkZXZtX2Nsa19nZXRfZW5hYmxlZCB0byBkbyBhdXRvbWF0aWMg
-cmVzb3VyY2UgbWFuYWdlbWVudC4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBLYW5nIENoZW4gPHZvaWQw
-cmVkQGh1c3QuZWR1LmNuPgo+IC0tLQo+IEknbSBub3QgcXVpdGUgc3VyZSBpZiB0aGlzIGZ1bmN0
-aW9uIHNob3VsZCByZXR1cm4gMCB3aGVuCj4gZGV2bV90aGVybWFsX2FkZF9od21vbl9zeXNmcyBv
-Y2N1cnMgZXJyb3IuIFNvIEkga2VlcCBpdC4KPiAKPiAgZHJpdmVycy90aGVybWFsL21lZGlhdGVr
-L2F1eGFkY190aGVybWFsLmMgfCAyNSArKysrKysrKy0tLS0tLS0tLS0tLS0tLQo+ICAxIGZpbGUg
-Y2hhbmdlZCwgOCBpbnNlcnRpb25zKCspLCAxNyBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0
-IGEvZHJpdmVycy90aGVybWFsL21lZGlhdGVrL2F1eGFkY190aGVybWFsLmMgYi9kcml2ZXJzL3Ro
-ZXJtYWwvbWVkaWF0ZWsvYXV4YWRjX3RoZXJtYWwuYwo+IGluZGV4IGRmNWUyZTM1NDQwOC4uNWJh
-ZWMyYzA4ZWJjIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvdGhlcm1hbC9tZWRpYXRlay9hdXhhZGNf
-dGhlcm1hbC5jCj4gKysrIGIvZHJpdmVycy90aGVybWFsL21lZGlhdGVrL2F1eGFkY190aGVybWFs
-LmMKPiBAQCAtMTE3OCwxNiArMTE3OCwxNiBAQCBzdGF0aWMgaW50IG10a190aGVybWFsX3Byb2Jl
-KHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIAlpZiAocmV0KQo+ICAJCXJldHVybiBy
-ZXQ7Cj4gIAo+IC0JcmV0ID0gY2xrX3ByZXBhcmVfZW5hYmxlKG10LT5jbGtfYXV4YWRjKTsKPiAt
-CWlmIChyZXQpIHsKPiArCXJldCA9IGRldm1fY2xrX2dldF9lbmFibGVkKCZwZGV2LT5kZXYsIG10
-LT5jbGtfYXV4YWRjKTsKPiArCWlmIChJU19FUlIocmV0KSkgewo+ICAJCWRldl9lcnIoJnBkZXYt
-PmRldiwgIkNhbid0IGVuYWJsZSBhdXhhZGMgY2xrOiAlZFxuIiwgcmV0KTsKPiAtCQlyZXR1cm4g
-cmV0Owo+ICsJCXJldHVybiBQVFJfRVJSKHJldCk7Cj4gIAl9Cj4gIAo+IC0JcmV0ID0gY2xrX3By
-ZXBhcmVfZW5hYmxlKG10LT5jbGtfcGVyaV90aGVybSk7Cj4gLQlpZiAocmV0KSB7Cj4gKwlyZXQg
-PSBkZXZtX2Nsa19nZXRfZW5hYmxlZCgmcGRldi0+ZGV2LCBtdC0+Y2xrX3BlcmlfdGhlcm0pOwo+
-ICsJaWYgKElTX0VSUihyZXQpKSB7Cj4gIAkJZGV2X2VycigmcGRldi0+ZGV2LCAiQ2FuJ3QgZW5h
-YmxlIHBlcmkgY2xrOiAlZFxuIiwgcmV0KTsKPiAtCQlnb3RvIGVycl9kaXNhYmxlX2Nsa19hdXhh
-ZGM7Cj4gKwkJcmV0dXJuIFBUUl9FUlIocmV0KTsKPiAgCX0KPiAgCj4gIAlpZiAobXQtPmNvbmYt
-PnZlcnNpb24gIT0gTVRLX1RIRVJNQUxfVjEpIHsKPiBAQCAtMTIxMSwyMyArMTIxMSwxNCBAQCBz
-dGF0aWMgaW50IG10a190aGVybWFsX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYp
-Cj4gIAo+ICAJdHpkZXYgPSBkZXZtX3RoZXJtYWxfb2Zfem9uZV9yZWdpc3RlcigmcGRldi0+ZGV2
-LCAwLCBtdCwKPiAgCQkJCQkgICAgICAmbXRrX3RoZXJtYWxfb3BzKTsKPiAtCWlmIChJU19FUlIo
-dHpkZXYpKSB7Cj4gLQkJcmV0ID0gUFRSX0VSUih0emRldik7Cj4gLQkJZ290byBlcnJfZGlzYWJs
-ZV9jbGtfcGVyaV90aGVybTsKPiAtCX0KPiArCWlmIChJU19FUlIodHpkZXYpKQo+ICsJCXJldHVy
-biBQVFJfRVJSKHR6ZGV2KTsKPiAgCj4gIAlyZXQgPSBkZXZtX3RoZXJtYWxfYWRkX2h3bW9uX3N5
-c2ZzKHR6ZGV2KTsKPiAgCWlmIChyZXQpCj4gIAkJZGV2X3dhcm4oJnBkZXYtPmRldiwgImVycm9y
-IGluIHRoZXJtYWxfYWRkX2h3bW9uX3N5c2ZzIik7Cj4gIAo+ICAJcmV0dXJuIDA7Cj4gLQo+IC1l
-cnJfZGlzYWJsZV9jbGtfcGVyaV90aGVybToKPiAtCWNsa19kaXNhYmxlX3VucHJlcGFyZShtdC0+
-Y2xrX3BlcmlfdGhlcm0pOwo+IC1lcnJfZGlzYWJsZV9jbGtfYXV4YWRjOgo+IC0JY2xrX2Rpc2Fi
-bGVfdW5wcmVwYXJlKG10LT5jbGtfYXV4YWRjKTsKPiAtCj4gLQlyZXR1cm4gcmV0Owo+ICB9Cj4g
-IAo+ICBzdGF0aWMgaW50IG10a190aGVybWFsX3JlbW92ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNl
-ICpwZGV2KQo+IC0tIAo+IDIuMzQuMQoKcGluZz8K
+
+
+On 4/8/23 19:53, Uwe Kleine-König wrote:
+> The .remove() callback for a platform driver returns an int which makes
+> many driver authors wrongly assume it's possible to do error handling by
+> returning an error code. However the value returned is (mostly) ignored
+> and this typically results in resource leaks. To improve here there is a
+> quest to make the remove callback return void. In the first step of this
+> quest all drivers are converted to .remove_new() which already returns
+> void.
+> 
+> Trivially convert this driver from always returning zero in the remove
+> callback to the void returning variant.
+> 
+> Acked-by: Nicolas Ferre <nicolas.ferre@microchip.com>
+> Reviewed-by: Paul Cercueil <paul@crapouillou.net>
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Acked-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+> Reviewed-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+> Acked-by: Roger Quadros <rogerq@kernel.org>
+> Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
+> Acked-by: Thierry Reding <treding@nvidia.com>
+> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+
+b4 seems didn't take my tag on 00/49, here it is again:
+Acked-by: Tudor Ambarus <tudor.ambarus@linaro.org>
 
