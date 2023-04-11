@@ -4,175 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8870C77B6F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 15:45:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38370C77B6F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 16:09:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=L4dT+OtLiuZVdXPAM3ugdJMIJTHiGythdeELu2BqYQ0=; b=n6+I+pV/6Lseb7X56DiltpgJlH
-	+A94evunIp7DwZW8ELvg8D51vkg1hEBEcjp4FV7jFiR+Z+tEQ6PAea/JwFfq0AdAGrd7FWNKkyatT
-	iT4EIdzlMc4k/Uc1xz+FIcU9FEXlGFHb/tiMTxUu1g4ju/qbwmnGtIpaQgX83M58ijMNmgXRn9dHx
-	XmVvQH+zzReM3qxhNWrimZxttKdd+WX3+QkVWcRYCPaMi2OCMs1GIn3LDXVjaDwJ/Igc4P9sV1+T1
-	8rcIKK1SGL25hK2LTiembwMFtVrnL9+clWB6rv2sArZ6XjKRbxs0C78KuTqsiRBt5qv7oXGsoO0K4
-	ArAN1Wgw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ivyfYwnUZR0ptY6OLV+4rOfP5TDkuV50aqZyhshAVbQ=; b=qQPUuTP4lbvTtL3kceYaG4tq02
+	AxgOBBoHgbger9ewHH5nJCdjU79pIB6pslaLDEc/l4uhrvVlpXzEMT9y10oshB4Q1RGvunBSkNzJK
+	+/SvkHEqMT1ETuBctYatC4jLJfGGAv3yDpveM9+Q2fQdLM1W8K1wK9O1ehB0i89BLwMB03AU1eDZ5
+	dr5SKXZ6Gx+sgwVjOzX00rA9TkfNx5cuEF9sIefExX//L3YcuvuuVZQr+q6inF+DLwTClScFeSfiQ
+	Mok0bRucq1GIOknpYn+M2nuOWTQrsTe3kKc9VkzEwzL3O9lUd9LuJ4sF6fwx/UKaC7/1QuJ5Myo3c
+	3LYiESMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmGB1-000TMc-0w;
-	Tue, 11 Apr 2023 15:44:59 +0000
-Received: from mga09.intel.com ([134.134.136.24])
+	id 1pmGYj-000W8K-0A;
+	Tue, 11 Apr 2023 16:09:29 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmGAx-000TLL-2q;
-	Tue, 11 Apr 2023 15:44:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1681227895; x=1712763895;
-  h=message-id:date:subject:to:references:from:in-reply-to:
-   content-transfer-encoding:mime-version;
-  bh=Nb4j7Nej/4SyA664oJVXrns/Vy/hdpcBoe9epr13hxM=;
-  b=DRde59a+w+J6gs6FdgAmGJ+/E+P+5vkP6wNrhRIDjsiBzUTAKHDpEPQs
-   P/T9EtsLAWR6ksGBOxB0ycuwv1blrmJpGmyhzlEV0m4zNJD/Wwf2FTv/b
-   Qtn39c12B0EFJhcysOCg2gl4cd7S26xJ8J7fSSKDhCndCHQYU4zqXAyX/
-   WXkFajdwzwlaORNmgZUXcRckla3KBYSwtn7Ih2zkJfg2mnTAI9DZV78H8
-   BDst0NBCSamcU6qtABvOKtysoqq+KeiYHAYaKPIoS5M0mfAkMCj1tvPD0
-   gR+sZOiY2LKSqUrbqv1D4L+fbTGZPNwSr7FptWoZg7NJi2E1EpZqKa8sj
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10677"; a="345439719"
-X-IronPort-AV: E=Sophos;i="5.98,336,1673942400"; 
-   d="scan'208";a="345439719"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
-  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Apr 2023 08:44:44 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10677"; a="832386032"
-X-IronPort-AV: E=Sophos;i="5.98,336,1673942400"; 
-   d="scan'208";a="832386032"
-Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
-  by fmsmga001.fm.intel.com with ESMTP; 11 Apr 2023 08:44:43 -0700
-Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
- ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Tue, 11 Apr 2023 08:44:43 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Tue, 11 Apr 2023 08:44:42 -0700
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23 via Frontend Transport; Tue, 11 Apr 2023 08:44:42 -0700
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.103)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.21; Tue, 11 Apr 2023 08:44:42 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=RD3blKHJgSR+OMLui6uVTIt7wdkag7tlHfUNgijyj+KjEOAyFRl6UpExRa99XxTn3X8UAU7Vqif3WY2I0JF6Lv7Y9UN7MJwGrDWai/xbor7GcHFTRnV2N+Y/e4E3pQaQeFiHKksKszXsxRAUsdPAiAkm/d4bYXxQt3Es4nrn81Af/haskZpi4RbGeMCIQZ6MCnQSneWONv95LTeDFtD/httVlY0rSLQuF6aczFK4vLADBhtZsklBdZlb7MCMB3RNLISl9zc54bCJcZmFXI3RdHxgd08zY4cS67jSHPzwETWhpi+l4j3oGIN/ybInGRow8+XosdgP+v/csTjnElzA8A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=L4dT+OtLiuZVdXPAM3ugdJMIJTHiGythdeELu2BqYQ0=;
- b=guKpkY5hGBQfBoIHpRuRa0ddtJGPzCnMhmBATE7LBczf9zFker23fk8B0eqNrJvxYPGqY85Sd8qNr8bUnOv6Dv9rwPXoRM6s+3Dm8QrHrk3CGinU9Wu49XQOdy+kZnNU67cC8HNpFF8HzB6uUQQUdrfpacSnhueIDuGHvcCtrN56ws1Shbap+cn7T/00CjTo4Ra4X/Z12f51U7RFErMUMTp40Zp5xAbRhks2AzJFnDzdh8BXI66Gq2bi4a1dmuRURb2Y2NL++hFIKwHJAS9U6UdtY/qQHAgutf58Ap9+rIq6P4ne10wJegA4WBfNg98Hbpvd1y6vqgL/KqiacK8NjQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from CO1PR11MB4914.namprd11.prod.outlook.com (2603:10b6:303:90::24)
- by SJ0PR11MB5152.namprd11.prod.outlook.com (2603:10b6:a03:2ae::22) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6277.38; Tue, 11 Apr
- 2023 15:44:40 +0000
-Received: from CO1PR11MB4914.namprd11.prod.outlook.com
- ([fe80::c7d6:3545:6927:8493]) by CO1PR11MB4914.namprd11.prod.outlook.com
- ([fe80::c7d6:3545:6927:8493%7]) with mapi id 15.20.6277.038; Tue, 11 Apr 2023
- 15:44:40 +0000
-Message-ID: <a5f3e0f9-6574-1e41-fd4d-7faa3a3fbd3d@intel.com>
-Date: Tue, 11 Apr 2023 08:44:37 -0700
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Firefox/102.0 Thunderbird/102.9.1
-Subject: Re: [PATCH net-next] net: dsa: mt7530: fix support for MT7531BE
-Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>, <netdev@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, Sean Wang <sean.wang@mediatek.com>, "Landen
- Chao" <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
-	=?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, Russell King
-	<linux@armlinux.org.uk>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Paolo Abeni <pabeni@redhat.com>, Jakub Kicinski
-	<kuba@kernel.org>, Eric Dumazet <edumazet@google.com>, "David S. Miller"
-	<davem@davemloft.net>, Vladimir Oltean <olteanv@gmail.com>, Florian Fainelli
-	<f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>
-References: <ZDSlm-0gyyDZXy_k@makrotopia.org>
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-In-Reply-To: <ZDSlm-0gyyDZXy_k@makrotopia.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: BYAPR07CA0070.namprd07.prod.outlook.com
- (2603:10b6:a03:60::47) To CO1PR11MB4914.namprd11.prod.outlook.com
- (2603:10b6:303:90::24)
+	id 1pmGYf-000W66-0m
+	for linux-mediatek@lists.infradead.org;
+	Tue, 11 Apr 2023 16:09:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1681229364;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ivyfYwnUZR0ptY6OLV+4rOfP5TDkuV50aqZyhshAVbQ=;
+	b=cagfA6i8tbLCDF84BwooxxX4L5hAgjKtBc6IQEmlAtzKAQgjLOn65uJAuEWc2mE+4YT2oW
+	TCOJk/0wTViNmySDv9xfhx3ej5UUlkYKkuRR4lwOTjg7U/b/vZY+JGkCZgrVGWZ1ng+so1
+	MpfBQyhx9H0KltTQh5KpmaMdxesClCs=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-180-vRsXjnCWNMOIS6VRPgPWxQ-1; Tue, 11 Apr 2023 12:09:20 -0400
+X-MC-Unique: vRsXjnCWNMOIS6VRPgPWxQ-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com [10.11.54.7])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A59BA85A588;
+	Tue, 11 Apr 2023 16:09:18 +0000 (UTC)
+Received: from warthog.procyon.org.uk (unknown [10.33.36.18])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 0CE7714171D5;
+	Tue, 11 Apr 2023 16:09:13 +0000 (UTC)
+From: David Howells <dhowells@redhat.com>
+To: netdev@vger.kernel.org
+Cc: David Howells <dhowells@redhat.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Willem de Bruijn <willemdebruijn.kernel@gmail.com>,
+	David Ahern <dsahern@kernel.org>,
+	Matthew Wilcox <willy@infradead.org>,
+	Al Viro <viro@zeniv.linux.org.uk>,
+	Christoph Hellwig <hch@infradead.org>,
+	Jens Axboe <axboe@kernel.dk>,
+	Jeff Layton <jlayton@kernel.org>,
+	Christian Brauner <brauner@kernel.org>,
+	Chuck Lever III <chuck.lever@oracle.com>,
+	Linus Torvalds <torvalds@linux-foundation.org>,
+	linux-fsdevel@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mm@kvack.org,
+	Jeroen de Borst <jeroendb@google.com>,
+	Catherine Sullivan <csully@google.com>,
+	Shailend Chand <shailend@google.com>,
+	Felix Fietkau <nbd@nbd.name>,
+	John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Keith Busch <kbusch@kernel.org>,
+	Jens Axboe <axboe@fb.com>,
+	Christoph Hellwig <hch@lst.de>,
+	Sagi Grimberg <sagi@grimberg.me>,
+	Chaitanya Kulkarni <kch@nvidia.com>,
+	Andrew Morton <akpm@linux-foundation.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-nvme@lists.infradead.org
+Subject: [PATCH net-next v6 03/18] mm: Make the page_frag_cache allocator use multipage folios
+Date: Tue, 11 Apr 2023 17:08:47 +0100
+Message-Id: <20230411160902.4134381-4-dhowells@redhat.com>
+In-Reply-To: <20230411160902.4134381-1-dhowells@redhat.com>
+References: <20230411160902.4134381-1-dhowells@redhat.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CO1PR11MB4914:EE_|SJ0PR11MB5152:EE_
-X-MS-Office365-Filtering-Correlation-Id: c7c0a3a9-43ff-4ce4-2e6c-08db3aa3a971
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: xzlrJeqa67H5QoNEVYY4Ji1fIgf2V/B+NGu2hULzTmhuzkzOtFIvIHhdMjjvvKV47uyuTCKYUsQOTQH1Qymxz0GnV8nzfMcGK5i4gIfFHbFG30toZhuvHEQ6y0HkmOSIZxIe2Owu/2m+ILXSziKVyqxWbiydA/BpUiUCd06yPaL5gUzYOi4MBPM9FLKsO5hk4WPb3XBNDAKZ0Spa1MlTew9CunFJX1j4IMQLBMjKy5vFE07a04NPj9UxoudS/KJEPP1q4JeqYLLmb+rRo93DTDORLBKrCSf63zdrm/7U/dIpeB4JVMIaX16WsoEKiEecXvayOy14HelA+3jp9E8D2Iba+XEqgYE8ujNLprik+puXH+NOQLfQHQC26qDRQHDKVg7yCLMjmFJdXFIXEoXk/LgmtfJ/XVIZz5wKuEumE6z38B39PKj9uvXrRUBN7uneVazbQ6Ge7JoUWjHkiyHpyVARq1gPSrA3/YaCM0obj6Lysdli4e6u//JZYXB2+EasyFY0EFx+BAfCZ/868ObW00GrX4ZAAO5+lRcj05HFPvc+hHWt6T/ypL3UbVJCVeMJP/FG56EqwEGfeiaPU7ZZC+jAKEoZ52PdavlKUjdYaqTGZuBUtVZGAHFLNKZSVO0LKXge7DkzqiHPUAn78p2SSJjWGqndidMNMQ10EguPrSY=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CO1PR11MB4914.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(376002)(366004)(346002)(396003)(39850400004)(136003)(451199021)(186003)(6666004)(6512007)(26005)(53546011)(6506007)(2906002)(83380400001)(82960400001)(921005)(36756003)(38100700002)(2616005)(8936002)(478600001)(316002)(31686004)(5660300002)(6486002)(66946007)(86362001)(66476007)(8676002)(19627235002)(31696002)(41300700001)(66556008)(44832011)(110136005)(7416002)(45980500001)(43740500002);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?SEtYUG9XM0FVZmJZcmtSZTg5em92akRjN2RXcTNCbjlueTd3dkRyaU9ZQTIw?=
- =?utf-8?B?WG4zSmJzVjVWQkx6VzB6MlNSWXVpQ0piOFZrYXZUSlVRZ0dNb3QzVFRISjRS?=
- =?utf-8?B?Mm1QeVAwQnRvWDJLZ09PandMTllXWkJSQUl3enA1N3ppYlBpRnRsMkxXakVk?=
- =?utf-8?B?bVp2bm8wM0hlMnk3RjVVTTJuNVNoQjZTaWlrYTB6ZmQxalZyMm8vc2JscWMr?=
- =?utf-8?B?NjBSQUZRWi9iZE1HZkxvb1FreHJXZmJqSXpUcy9iVnlVWnlIZjFtTEVtOVpj?=
- =?utf-8?B?Qi9DVkJVOFk2RFBDTzdZQ2Npc29ib1RIdHQ4bXdrNjJzYTBSaTFPVVIrdm1X?=
- =?utf-8?B?ZGptVnAreFJRQzZwcEZRd1VaZ2FXS0JXcGRMVVpUZFNDZ2p0dmx5M1BSR1lm?=
- =?utf-8?B?ZGhyWVVpMzFDTmNXbWZ5eFRiY2p1Q21xVHdMeVFML3VHTU14SXlzWFFDbCs2?=
- =?utf-8?B?ZzU0dUk4YXhjT3RET2pTUk1TMW93cWRMVVBLbHA2T2pEMGxBNktMUXdoSzNu?=
- =?utf-8?B?alA3cnhkNmo3OUV3cjI0eUx0US81d2tSaDJ2WVJGeWsrZzdSUGpibi9RdGRL?=
- =?utf-8?B?Ky9DalNLQTVHK3NMVEJKenhSRlgzZVk4c2pUSGhaaGNuNWt4QXg2OTNqZWVs?=
- =?utf-8?B?WHdXZUFDWWx6bjYyTG01WkRjNDN6T2cwQ1NzQVp3T2tLMFdtR1ZjOHRxMTcv?=
- =?utf-8?B?c0VtMmE1SHRZZXRwY1ZwUmJ6cmhzbVM0b1dCL2dXb0pGZ25idXJwbTVUU3pl?=
- =?utf-8?B?RG5uRjBSU0lQZnBFUno5STlDNTNLQ2tFT2FtT0FoVnVRVW1oa3FvR3MrOUFP?=
- =?utf-8?B?bGN6TnNCQ2xHQzdMaDhxbEowak5rYXFsMitraWg0R2QyODE5RHhJT2RYYjJU?=
- =?utf-8?B?OWM4aGpiMDJxUS9YRFpFREg1b0tPWS9IMUc0cmxzMVJJT2UrQTVwZjl5ZEFH?=
- =?utf-8?B?U2s4aElMcTMrMXZ6cCtoMWNNM3lZRlpTSnA0clJuMytrdk9NVUxvYTQzWi92?=
- =?utf-8?B?eEhzSFNnVG5uQ0lMZ0RJZFp6SG9UR0JDeFJ4bDIvRHBESGJxblE2WXlFaURl?=
- =?utf-8?B?alNNK0Q3UjdISnNEYVV6ZXBtWTcva0w3SjU1MVB3SXVac2FOcExXZ1c2RHVo?=
- =?utf-8?B?SjRoa3EvUFJSUUZzL0tDdVdDU2llN2tDVEJ5TWZsS1VjRjJLZjZxNVdKZUZC?=
- =?utf-8?B?cDFQc01FdW41a0FpS2QyaHpXT3h3dU5MdHNrOEc0OXlUcEI3am1SdUtUaHBL?=
- =?utf-8?B?WWdHWGZmMHdLOG9XbEFkelY0ZDVuMDZxaUtieCswM2ZEWXUzU3hIckV1YWdX?=
- =?utf-8?B?NWVRMWl5ZW51cFZReDBxeUNlSG9hMk1KN2Z2RmlqRlY2TkgraTk5cXF3UWF0?=
- =?utf-8?B?Y3FsZi9RUGhGYkZKNjBoaHhOY2dEY0JRaFNJTFduRXJ1Q1FCalRPSmRBbDBF?=
- =?utf-8?B?Q1E1dDBFcUNmSlZmclI5Y0lBTEprYWVSY3kreUdmY2ZjQTFVbk1UNHJVdnB2?=
- =?utf-8?B?eGtVcVdpaCtudEVFL0U1Rm9rSmluejh2aEplamRBamtOTHZLYmcyOFFJbGdY?=
- =?utf-8?B?c2o5UUdiL3NTNnNxY28vcXB3Ziszc0w1NTdnd082YWovUE1Qa0J5dFJkR2Nh?=
- =?utf-8?B?Ny93Um5mVm8wbVY3K2p0TGo0UmFGS1hQUzNnbHBZTEx6UWdnK0x2akcyaVFo?=
- =?utf-8?B?QitaWjdkVDhEa2VUTUJNNlgrUzBnZEhidERVMG8va3EvaEtyWFN2SGtzaVYz?=
- =?utf-8?B?Qzl2UDVmelJFUUFaZjBJWjhIUThtZ0IxaUN3RWE2Z0xPUFVZVWh4eFhmK2Fw?=
- =?utf-8?B?T1pVY29EODl2aGxwQlVOVlMrVWZKZUxHd3RLRzdjK2dqanAvWUFjTU53WmYv?=
- =?utf-8?B?cFRDQjlDK1RFdVhIeStQQ0RobENMdE13QTg3M2lkVWljblVRVjBaQ0tLZnB5?=
- =?utf-8?B?eUdIWGhqVmNmaXZRNFZEa1UwZzRlakZMMndCd0phQ1BDMU9pa1FxTG84bzdy?=
- =?utf-8?B?M2x0VjlYSGRqZXBRZ2Y4UWRjTm9EWEhjMDc0UzZQdUFrVWJsdGRHVVJnUDR0?=
- =?utf-8?B?YXJ5TEJadThDaXRMNi9EdVdmN0RobzdkWkhmSjRXTkdqZU4ycU9NYnpDNENo?=
- =?utf-8?B?SkNaMC9XRjZCbzh4OWtVaGs2ZGRhUFI2UnR1SzFRbXg0SGwxU0loRmhGUmFO?=
- =?utf-8?B?UUE9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: c7c0a3a9-43ff-4ce4-2e6c-08db3aa3a971
-X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB4914.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Apr 2023 15:44:40.2621
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: HsRu0bhrERVTuPUn62muvsCjfZvl358LYFulA+eoZVutRBtn2SXUM6hdrn+xfQTTfXMQa/e42NkvGO9UwfUf4fWDeSJ2qgVgjEhoCfhAXiY=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR11MB5152
-X-OriginatorOrg: intel.com
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230411_084455_987252_A7D8BB13 
-X-CRM114-Status: GOOD (  30.41  )
+X-CRM114-CacheID: sfid-20230411_090925_465419_D724960F 
+X-CRM114-Status: GOOD (  33.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -187,122 +114,385 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 4/10/2023 5:11 PM, Daniel Golle wrote:
-> There are two variants of the MT7531 switch IC which got different
-> features (and pins) regarding port 5:
->  * MT7531AE: SGMII/1000Base-X/2500Base-X SerDes
->  * MT7531BE: RGMII
-> 
-> Moving the creation of the SerDes PCS from mt753x_setup to mt7530_probe
-> with commit 6de285229773 ("net: dsa: mt7530: move SGMII PCS creation to
-> mt7530_probe function") works fine for MT7531AE which got two instances
-> of mtk-pcs-lynxi, however, MT7531BE requires mt7531_pll_setup to setup
-> clocks before the single PCS on port 6 (usually used as CPU port)
-> starts to work and hence the PCS creation failed on MT7531BE.
-> 
-> Fix this by introducing a pointer to mt7531_create_sgmii function in
-> struct mt7530_priv and call it again at the end of mt753x_setup like it
-> was before commit 6de285229773 ("net: dsa: mt7530: move SGMII PCS
-> creation to mt7530_probe function").
-> 
-> Fixes: 6de285229773 ("net: dsa: mt7530: move SGMII PCS creation to mt7530_probe function")
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> ---
->  drivers/net/dsa/mt7530-mdio.c | 14 +++++++-------
->  drivers/net/dsa/mt7530.c      |  6 ++++++
->  drivers/net/dsa/mt7530.h      |  4 ++++
->  3 files changed, 17 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/net/dsa/mt7530-mdio.c b/drivers/net/dsa/mt7530-mdio.c
-> index 34a547b88e497..f17eab67d15fa 100644
-> --- a/drivers/net/dsa/mt7530-mdio.c
-> +++ b/drivers/net/dsa/mt7530-mdio.c
-> @@ -81,14 +81,17 @@ static const struct regmap_bus mt7530_regmap_bus = {
->  };
->  
->  static int
-> -mt7531_create_sgmii(struct mt7530_priv *priv)
-> +mt7531_create_sgmii(struct mt7530_priv *priv, bool dual_sgmii)
->  {
->  	struct regmap_config *mt7531_pcs_config[2];
+Change the page_frag_cache allocator to use multipage folios rather than
+groups of pages.  This reduces page_frag_free to just a folio_put() or
+put_page().
 
-[1] use = {};
+Signed-off-by: David Howells <dhowells@redhat.com>
+cc: "David S. Miller" <davem@davemloft.net>
+cc: Eric Dumazet <edumazet@google.com>
+cc: Jakub Kicinski <kuba@kernel.org>
+cc: Paolo Abeni <pabeni@redhat.com>
+cc: Jens Axboe <axboe@kernel.dk>
+cc: Jeroen de Borst <jeroendb@google.com>
+cc: Catherine Sullivan <csully@google.com>
+cc: Shailend Chand <shailend@google.com>
+cc: Felix Fietkau <nbd@nbd.name>
+cc: John Crispin <john@phrozen.org>
+cc: Sean Wang <sean.wang@mediatek.com>
+cc: Mark Lee <Mark-MC.Lee@mediatek.com>
+cc: Lorenzo Bianconi <lorenzo@kernel.org>
+cc: Matthias Brugger <matthias.bgg@gmail.com>
+cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+cc: Keith Busch <kbusch@kernel.org>
+cc: Jens Axboe <axboe@fb.com>
+cc: Christoph Hellwig <hch@lst.de>
+cc: Sagi Grimberg <sagi@grimberg.me>
+cc: Chaitanya Kulkarni <kch@nvidia.com>
+cc: Andrew Morton <akpm@linux-foundation.org>
+cc: Matthew Wilcox <willy@infradead.org>
+cc: netdev@vger.kernel.org
+cc: linux-arm-kernel@lists.infradead.org
+cc: linux-mediatek@lists.infradead.org
+cc: linux-nvme@lists.infradead.org
+cc: linux-mm@kvack.org
+---
 
->  	struct phylink_pcs *pcs;
->  	struct regmap *regmap;
->  	int i, ret = 0;
->  
-> -	for (i = 0; i < 2; i++) {
-> +	/* MT7531AE has two SGMII units for port 5 and port 6
-> +	 * MT7531BE has only one SGMII unit for port 6
-> +	 */
-> +	for (i = dual_sgmii ? 0 : 1; i < 2; i++) {
->  		mt7531_pcs_config[i] = devm_kzalloc(priv->dev,
+Notes:
+    ver #6)
+     - Removed a couple of leftover page pointer declarations.
 
-hm, I don't like this, you're no longer initializing array[0] if
-dual_sgmii is set. This seems like a recipe for disaster.
+ drivers/net/ethernet/google/gve/gve_main.c |  11 +--
+ drivers/net/ethernet/mediatek/mtk_wed_wo.c |  17 +---
+ drivers/nvme/host/tcp.c                    |   8 +-
+ drivers/nvme/target/tcp.c                  |   5 +-
+ include/linux/gfp.h                        |   2 +
+ include/linux/mm_types.h                   |  13 +--
+ mm/page_frag_alloc.c                       | 102 +++++++++++----------
+ 7 files changed, 67 insertions(+), 91 deletions(-)
 
-you could initialize the array to NULL above when allocating this on the
-stack? [1]
-
-
->  						    sizeof(struct regmap_config),
->  						    GFP_KERNEL);
-> @@ -208,11 +211,8 @@ mt7530_probe(struct mdio_device *mdiodev)
->  	if (IS_ERR(priv->regmap))
->  		return PTR_ERR(priv->regmap);
->  
-> -	if (priv->id == ID_MT7531) {
-> -		ret = mt7531_create_sgmii(priv);
-> -		if (ret)
-> -			return ret;
-> -	}
-> +	if (priv->id == ID_MT7531)
-> +		priv->create_sgmii = mt7531_create_sgmii;
->  
->  	return dsa_register_switch(priv->ds);
->  }
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index e4bb5037d3525..c680873819b01 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -3018,6 +3018,12 @@ mt753x_setup(struct dsa_switch *ds)
->  	if (ret && priv->irq)
->  		mt7530_free_irq_common(priv);
->  
-> +	if (priv->create_sgmii) {
-> +		ret = priv->create_sgmii(priv, mt7531_dual_sgmii_supported(priv));
-> +		if (ret && priv->irq)
-> +			mt7530_free_irq(priv);
-> +	}
-> +
->  	return ret;
->  }
->  
-> diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-> index 01db5c9724fa8..6e89578b4de02 100644
-> --- a/drivers/net/dsa/mt7530.h
-> +++ b/drivers/net/dsa/mt7530.h
-> @@ -752,6 +752,8 @@ struct mt753x_info {
->   * @irq:		IRQ number of the switch
->   * @irq_domain:		IRQ domain of the switch irq_chip
->   * @irq_enable:		IRQ enable bits, synced to SYS_INT_EN
-> + *
-
-no extra blank line needed here.
-
-> + * @create_sgmii:	Pointer to function creating SGMII PCS instance(s)
->   */
->  struct mt7530_priv {
->  	struct device		*dev;
-> @@ -778,6 +780,8 @@ struct mt7530_priv {
->  	int irq;
->  	struct irq_domain *irq_domain;
->  	u32 irq_enable;
-> +
-> +	int (*create_sgmii)(struct mt7530_priv *priv, bool dual_sgmii);
->  };
->  
->  struct mt7530_hw_vlan_entry {
+diff --git a/drivers/net/ethernet/google/gve/gve_main.c b/drivers/net/ethernet/google/gve/gve_main.c
+index 57ce74315eba..b2fc1a3e6340 100644
+--- a/drivers/net/ethernet/google/gve/gve_main.c
++++ b/drivers/net/ethernet/google/gve/gve_main.c
+@@ -1263,17 +1263,10 @@ static void gve_unreg_xdp_info(struct gve_priv *priv)
+ 
+ static void gve_drain_page_cache(struct gve_priv *priv)
+ {
+-	struct page_frag_cache *nc;
+ 	int i;
+ 
+-	for (i = 0; i < priv->rx_cfg.num_queues; i++) {
+-		nc = &priv->rx[i].page_cache;
+-		if (nc->va) {
+-			__page_frag_cache_drain(virt_to_page(nc->va),
+-						nc->pagecnt_bias);
+-			nc->va = NULL;
+-		}
+-	}
++	for (i = 0; i < priv->rx_cfg.num_queues; i++)
++		page_frag_cache_clear(&priv->rx[i].page_cache);
+ }
+ 
+ static int gve_open(struct net_device *dev)
+diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.c b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
+index 69fba29055e9..d90fea2c7d04 100644
+--- a/drivers/net/ethernet/mediatek/mtk_wed_wo.c
++++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
+@@ -286,7 +286,6 @@ mtk_wed_wo_queue_free(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
+ static void
+ mtk_wed_wo_queue_tx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
+ {
+-	struct page *page;
+ 	int i;
+ 
+ 	for (i = 0; i < q->n_desc; i++) {
+@@ -298,19 +297,12 @@ mtk_wed_wo_queue_tx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
+ 		entry->buf = NULL;
+ 	}
+ 
+-	if (!q->cache.va)
+-		return;
+-
+-	page = virt_to_page(q->cache.va);
+-	__page_frag_cache_drain(page, q->cache.pagecnt_bias);
+-	memset(&q->cache, 0, sizeof(q->cache));
++	page_frag_cache_clear(&q->cache);
+ }
+ 
+ static void
+ mtk_wed_wo_queue_rx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
+ {
+-	struct page *page;
+-
+ 	for (;;) {
+ 		void *buf = mtk_wed_wo_dequeue(wo, q, NULL, true);
+ 
+@@ -320,12 +312,7 @@ mtk_wed_wo_queue_rx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
+ 		skb_free_frag(buf);
+ 	}
+ 
+-	if (!q->cache.va)
+-		return;
+-
+-	page = virt_to_page(q->cache.va);
+-	__page_frag_cache_drain(page, q->cache.pagecnt_bias);
+-	memset(&q->cache, 0, sizeof(q->cache));
++	page_frag_cache_clear(&q->cache);
+ }
+ 
+ static void
+diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
+index 42c0598c31f2..05629e83b41d 100644
+--- a/drivers/nvme/host/tcp.c
++++ b/drivers/nvme/host/tcp.c
+@@ -1312,7 +1312,6 @@ static int nvme_tcp_alloc_async_req(struct nvme_tcp_ctrl *ctrl)
+ 
+ static void nvme_tcp_free_queue(struct nvme_ctrl *nctrl, int qid)
+ {
+-	struct page *page;
+ 	struct nvme_tcp_ctrl *ctrl = to_tcp_ctrl(nctrl);
+ 	struct nvme_tcp_queue *queue = &ctrl->queues[qid];
+ 	unsigned int noreclaim_flag;
+@@ -1323,12 +1322,7 @@ static void nvme_tcp_free_queue(struct nvme_ctrl *nctrl, int qid)
+ 	if (queue->hdr_digest || queue->data_digest)
+ 		nvme_tcp_free_crypto(queue);
+ 
+-	if (queue->pf_cache.va) {
+-		page = virt_to_head_page(queue->pf_cache.va);
+-		__page_frag_cache_drain(page, queue->pf_cache.pagecnt_bias);
+-		queue->pf_cache.va = NULL;
+-	}
+-
++	page_frag_cache_clear(&queue->pf_cache);
+ 	noreclaim_flag = memalloc_noreclaim_save();
+ 	sock_release(queue->sock);
+ 	memalloc_noreclaim_restore(noreclaim_flag);
+diff --git a/drivers/nvme/target/tcp.c b/drivers/nvme/target/tcp.c
+index 66e8f9fd0ca7..ae871c31cf00 100644
+--- a/drivers/nvme/target/tcp.c
++++ b/drivers/nvme/target/tcp.c
+@@ -1438,7 +1438,6 @@ static void nvmet_tcp_free_cmd_data_in_buffers(struct nvmet_tcp_queue *queue)
+ 
+ static void nvmet_tcp_release_queue_work(struct work_struct *w)
+ {
+-	struct page *page;
+ 	struct nvmet_tcp_queue *queue =
+ 		container_of(w, struct nvmet_tcp_queue, release_work);
+ 
+@@ -1460,9 +1459,7 @@ static void nvmet_tcp_release_queue_work(struct work_struct *w)
+ 	if (queue->hdr_digest || queue->data_digest)
+ 		nvmet_tcp_free_crypto(queue);
+ 	ida_free(&nvmet_tcp_queue_ida, queue->idx);
+-
+-	page = virt_to_head_page(queue->pf_cache.va);
+-	__page_frag_cache_drain(page, queue->pf_cache.pagecnt_bias);
++	page_frag_cache_clear(&queue->pf_cache);
+ 	kfree(queue);
+ }
+ 
+diff --git a/include/linux/gfp.h b/include/linux/gfp.h
+index 65a78773dcca..9f77ba6af361 100644
+--- a/include/linux/gfp.h
++++ b/include/linux/gfp.h
+@@ -314,6 +314,8 @@ static inline void *page_frag_alloc(struct page_frag_cache *nc,
+ 	return page_frag_alloc_align(nc, fragsz, gfp_mask, ~0u);
+ }
+ 
++void page_frag_cache_clear(struct page_frag_cache *nc);
++
+ extern void page_frag_free(void *addr);
+ 
+ #define __free_page(page) __free_pages((page), 0)
+diff --git a/include/linux/mm_types.h b/include/linux/mm_types.h
+index 0722859c3647..49a70b3f44a9 100644
+--- a/include/linux/mm_types.h
++++ b/include/linux/mm_types.h
+@@ -420,18 +420,13 @@ static inline void *folio_get_private(struct folio *folio)
+ }
+ 
+ struct page_frag_cache {
+-	void * va;
+-#if (PAGE_SIZE < PAGE_FRAG_CACHE_MAX_SIZE)
+-	__u16 offset;
+-	__u16 size;
+-#else
+-	__u32 offset;
+-#endif
++	struct folio	*folio;
++	unsigned int	offset;
+ 	/* we maintain a pagecount bias, so that we dont dirty cache line
+ 	 * containing page->_refcount every time we allocate a fragment.
+ 	 */
+-	unsigned int		pagecnt_bias;
+-	bool pfmemalloc;
++	unsigned int	pagecnt_bias;
++	bool		pfmemalloc;
+ };
+ 
+ typedef unsigned long vm_flags_t;
+diff --git a/mm/page_frag_alloc.c b/mm/page_frag_alloc.c
+index bee95824ef8f..ac4cf1eac8ea 100644
+--- a/mm/page_frag_alloc.c
++++ b/mm/page_frag_alloc.c
+@@ -16,88 +16,96 @@
+ #include <linux/init.h>
+ #include <linux/mm.h>
+ 
+-static struct page *__page_frag_cache_refill(struct page_frag_cache *nc,
+-					     gfp_t gfp_mask)
++/*
++ * Allocate a new folio for the frag cache.
++ */
++static struct folio *page_frag_cache_refill(struct page_frag_cache *nc,
++					    gfp_t gfp_mask)
+ {
+-	struct page *page = NULL;
++	struct folio *folio = NULL;
+ 	gfp_t gfp = gfp_mask;
+ 
+ #if (PAGE_SIZE < PAGE_FRAG_CACHE_MAX_SIZE)
+-	gfp_mask |= __GFP_COMP | __GFP_NOWARN | __GFP_NORETRY |
+-		    __GFP_NOMEMALLOC;
+-	page = alloc_pages_node(NUMA_NO_NODE, gfp_mask,
+-				PAGE_FRAG_CACHE_MAX_ORDER);
+-	nc->size = page ? PAGE_FRAG_CACHE_MAX_SIZE : PAGE_SIZE;
++	gfp_mask |= __GFP_NOWARN | __GFP_NORETRY | __GFP_NOMEMALLOC;
++	folio = folio_alloc(gfp_mask, PAGE_FRAG_CACHE_MAX_ORDER);
+ #endif
+-	if (unlikely(!page))
+-		page = alloc_pages_node(NUMA_NO_NODE, gfp, 0);
+-
+-	nc->va = page ? page_address(page) : NULL;
++	if (unlikely(!folio))
++		folio = folio_alloc(gfp, 0);
+ 
+-	return page;
++	if (folio)
++		nc->folio = folio;
++	return folio;
+ }
+ 
+ void __page_frag_cache_drain(struct page *page, unsigned int count)
+ {
+-	VM_BUG_ON_PAGE(page_ref_count(page) == 0, page);
++	struct folio *folio = page_folio(page);
+ 
+-	if (page_ref_sub_and_test(page, count - 1))
+-		__free_pages(page, compound_order(page));
++	VM_BUG_ON_FOLIO(folio_ref_count(folio) == 0, folio);
++
++	folio_put_refs(folio, count);
+ }
+ EXPORT_SYMBOL(__page_frag_cache_drain);
+ 
++void page_frag_cache_clear(struct page_frag_cache *nc)
++{
++	struct folio *folio = nc->folio;
++
++	if (folio) {
++		VM_BUG_ON_FOLIO(folio_ref_count(folio) == 0, folio);
++		folio_put_refs(folio, nc->pagecnt_bias);
++		nc->folio = NULL;
++	}
++}
++EXPORT_SYMBOL(page_frag_cache_clear);
++
+ void *page_frag_alloc_align(struct page_frag_cache *nc,
+ 		      unsigned int fragsz, gfp_t gfp_mask,
+ 		      unsigned int align_mask)
+ {
+-	unsigned int size = PAGE_SIZE;
+-	struct page *page;
+-	int offset;
++	struct folio *folio = nc->folio;
++	size_t offset;
+ 
+-	if (unlikely(!nc->va)) {
++	if (unlikely(!folio)) {
+ refill:
+-		page = __page_frag_cache_refill(nc, gfp_mask);
+-		if (!page)
++		folio = page_frag_cache_refill(nc, gfp_mask);
++		if (!folio)
+ 			return NULL;
+ 
+-#if (PAGE_SIZE < PAGE_FRAG_CACHE_MAX_SIZE)
+-		/* if size can vary use size else just use PAGE_SIZE */
+-		size = nc->size;
+-#endif
+ 		/* Even if we own the page, we do not use atomic_set().
+ 		 * This would break get_page_unless_zero() users.
+ 		 */
+-		page_ref_add(page, PAGE_FRAG_CACHE_MAX_SIZE);
++		folio_ref_add(folio, PAGE_FRAG_CACHE_MAX_SIZE);
+ 
+ 		/* reset page count bias and offset to start of new frag */
+-		nc->pfmemalloc = page_is_pfmemalloc(page);
++		nc->pfmemalloc = folio_is_pfmemalloc(folio);
+ 		nc->pagecnt_bias = PAGE_FRAG_CACHE_MAX_SIZE + 1;
+-		nc->offset = size;
++		nc->offset = folio_size(folio);
+ 	}
+ 
+-	offset = nc->offset - fragsz;
+-	if (unlikely(offset < 0)) {
+-		page = virt_to_page(nc->va);
+-
+-		if (page_ref_count(page) != nc->pagecnt_bias)
++	offset = nc->offset;
++	if (unlikely(fragsz > offset)) {
++		/* Reuse the folio if everyone we gave it to has finished with
++		 * it.
++		 */
++		if (!folio_ref_sub_and_test(folio, nc->pagecnt_bias)) {
++			nc->folio = NULL;
+ 			goto refill;
++		}
++
+ 		if (unlikely(nc->pfmemalloc)) {
+-			page_ref_sub(page, nc->pagecnt_bias - 1);
+-			__free_pages(page, compound_order(page));
++			__folio_put(folio);
++			nc->folio = NULL;
+ 			goto refill;
+ 		}
+ 
+-#if (PAGE_SIZE < PAGE_FRAG_CACHE_MAX_SIZE)
+-		/* if size can vary use size else just use PAGE_SIZE */
+-		size = nc->size;
+-#endif
+ 		/* OK, page count is 0, we can safely set it */
+-		set_page_count(page, PAGE_FRAG_CACHE_MAX_SIZE + 1);
++		folio_set_count(folio, PAGE_FRAG_CACHE_MAX_SIZE + 1);
+ 
+ 		/* reset page count bias and offset to start of new frag */
+ 		nc->pagecnt_bias = PAGE_FRAG_CACHE_MAX_SIZE + 1;
+-		offset = size - fragsz;
+-		if (unlikely(offset < 0)) {
++		offset = folio_size(folio);
++		if (unlikely(fragsz > offset)) {
+ 			/*
+ 			 * The caller is trying to allocate a fragment
+ 			 * with fragsz > PAGE_SIZE but the cache isn't big
+@@ -107,15 +115,17 @@ void *page_frag_alloc_align(struct page_frag_cache *nc,
+ 			 * it could make memory pressure worse
+ 			 * so we simply return NULL here.
+ 			 */
++			nc->offset = offset;
+ 			return NULL;
+ 		}
+ 	}
+ 
+ 	nc->pagecnt_bias--;
++	offset -= fragsz;
+ 	offset &= align_mask;
+ 	nc->offset = offset;
+ 
+-	return nc->va + offset;
++	return folio_address(folio) + offset;
+ }
+ EXPORT_SYMBOL(page_frag_alloc_align);
+ 
+@@ -124,8 +134,6 @@ EXPORT_SYMBOL(page_frag_alloc_align);
+  */
+ void page_frag_free(void *addr)
+ {
+-	struct page *page = virt_to_head_page(addr);
+-
+-	__free_pages(page, compound_order(page));
++	folio_put(virt_to_folio(addr));
+ }
+ EXPORT_SYMBOL(page_frag_free);
 
 
