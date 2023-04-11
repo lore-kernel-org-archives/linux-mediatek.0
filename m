@@ -4,107 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33CABC7619A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 20:23:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 581DDC7619A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 21:32:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vAQB5OrwRhZSt8DZNQ7EIcCPHq37jFquzX1qe3wm1Oo=; b=ro1vFfmBXIoue3RdJ3pOfTkv8k
-	HF51pfEUqeXRgNNUtqM/I8i6ObaHtH2s4nqfLXq9T6kDU0YlGPJcHRDVm2fZyuIe+ghvDx3+JzFA/
-	du6T/wvTdVxusVVryRYhkCP3jQUY+VaDEfH8ezviVFFN0ofTXxzGk/dSfS/QcxNai48DGS26/wImZ
-	bw6xsG7mIx49FhYEIH+3rXh55fXlw6qRT87B0qlQGA9YFnxmhOaLEq8s1+zGOqYQRCIiesm6H3x7W
-	TMB6favpjH5/IxPbc/UoXEoib8qJpVaS8SzQt0sfDv33nC8HPowy8giIuBLd84aV9dBK0drZJxcAI
-	4C2Adf0g==;
+	bh=AeS4jHom2I9hOYAVSOLxAo/2gUtYfcTZSKxI2e4ZVrQ=; b=V1vc07aCNEtl8HlPLdGW8T2YEB
+	PBh5fhpqZ5W1MF/0LS2A/3YQK4eBrjkzuFhVFPQqKnXSI0VkaxzQSb9pJf/5nR3dgUsnwGYqdSD+U
+	peD24klbs3sw2ZlaC6ESt4ykQsVDKBYAtpBw/SQnR/c3wT51yFzccedTHN6EE1znkOS2GN5sIJX8n
+	FvQWaYXNW5nj0dYLjUPUhQ7FQXuO681xvxEOdhtyhk1oY5Eq/TD4o4qAVDmHKI5f/01tkPNmzKrd6
+	xdUhDQfMGsp44TImr7u972Gmlk71yAflDdT4mR1eE4vKGz1/RLi615z6Mde9lDGnkFZs5p0C3QATU
+	iSqpN0eQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmKWQ-00159S-1L;
-	Tue, 11 Apr 2023 20:23:22 +0000
-Received: from omta040.useast.a.cloudfilter.net ([44.202.169.39])
+	id 1pmLb8-001CB8-22;
+	Tue, 11 Apr 2023 21:32:18 +0000
+Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmKWM-001584-0O;
-	Tue, 11 Apr 2023 20:23:19 +0000
-Received: from eig-obgw-5017a.ext.cloudfilter.net ([10.0.29.154])
-	by cmsmtp with ESMTP
-	id mF9gpbmYeD594mKW6pxmex; Tue, 11 Apr 2023 20:23:02 +0000
-Received: from gator4166.hostgator.com ([108.167.133.22])
-	by cmsmtp with ESMTP
-	id mKW5p3iNndJoxmKW6pBqZj; Tue, 11 Apr 2023 20:23:02 +0000
-X-Authority-Analysis: v=2.4 cv=C9L6dCD+ c=1 sm=1 tr=0 ts=6435c1a6
- a=1YbLdUo/zbTtOZ3uB5T3HA==:117 a=d0f9/bL53tV7TyBwAeBj+g==:17
- a=dLZJa+xiwSxG16/P+YVxDGlgEgI=:19 a=IkcTkHD0fZMA:10 a=dKHAf1wccvYA:10
- a=wYkD_t78qR0A:10 a=NEAV23lmAAAA:8 a=mDV3o1hIAAAA:8 a=VwQbUJbxAAAA:8
- a=sIshrF94AAAA:8 a=Wzh0sZPFK0vZwZ7TA3YA:9 a=QEXdDO2ut3YA:10 a=3IOs8h2EC4YA:10
- a=_FVE-zBwftR9WsbkzFJk:22 a=AjGcO6oz07-iQ99wixmX:22 a=39svzKx7NMVfYuMjZabV:22
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=embeddedor.com; s=default; h=Content-Transfer-Encoding:Content-Type:
-	In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:Message-ID:Sender
-	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=vAQB5OrwRhZSt8DZNQ7EIcCPHq37jFquzX1qe3wm1Oo=; b=JyaVBGsKBehpvCeTF9OGrH2z+E
-	asL4PDUKYGZsAoJqI5w4voIUMHwuV7yRKOLxzK1P9BgOPWGq9gOaMFJcIVwB1c39aQ4mUQYV/j2Cc
-	oMwAo0BI7dm15+ksLAT+AlhTzllZi6fSnzpA3PxIKvdps1tONAQFBK+T0pT2h0EyzbM9scV59M+37
-	a3eddtGiNXT46j6MaGBtMLflnB/vRa7nFrbzcrhjd4buBtnfq4rASIKCyL2M1sZ3ru8oYGzjlwgCD
-	TDaAzVzyz5sD1Yj33PMNXEuLwDX52ETfp1xz0KSb8K+tlPY6RtP+L2ZsrszwgYI5u1tPgyBbIMgrP
-	NCqyUzgA==;
-Received: from 189.215.208.238.cable.dyn.cableonline.com.mx ([189.215.208.238]:14202 helo=[192.168.0.24])
-	by gator4166.hostgator.com with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-	(Exim 4.95)
-	(envelope-from <gustavo@embeddedor.com>)
-	id 1pmIsm-003i6h-P7;
-	Tue, 11 Apr 2023 13:38:20 -0500
-Message-ID: <cec9fa10-eb1e-dd5b-8ec0-579e87b5bc1d@embeddedor.com>
-Date: Tue, 11 Apr 2023 12:39:06 -0600
+	id 1pmLb5-001C8f-0O
+	for linux-mediatek@lists.infradead.org;
+	Tue, 11 Apr 2023 21:32:16 +0000
+Received: by mail-yb1-xb2c.google.com with SMTP id y186so9794052yby.13
+        for <linux-mediatek@lists.infradead.org>; Tue, 11 Apr 2023 14:32:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1681248726;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=AeS4jHom2I9hOYAVSOLxAo/2gUtYfcTZSKxI2e4ZVrQ=;
+        b=ka5LXxgNjFJr/iFnVZLhnZ7E1yCVLBfu2j0cpYW4Rd3xWKicacXWoe4ZTln/EbRX4p
+         PhTK4Eqkmw0CANBJGoOa9Pxo4R8GM5I2i2Ey4gDUnxZY1fIB/QVY/kAz0eep83IQ9Wms
+         7n3j2HbUoS5ULKcZopYgYzHMwSdKU7cAJEmrkKQx4555bhFckblKgDQNRbo7nTf/CA34
+         p1hZ7D/MlGfL5jprrXj5lYv1BVIYoZdx+GjKJY/bLGRvod1o261ebMuQ7WS5WUk/bc0J
+         /fsE4OkrGFNxCREf7V9Y6Eern+A8OQeSgrX/czXrOHlN75d4H6vEpvFwMWitncL1UGuA
+         gvqg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1681248726;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=AeS4jHom2I9hOYAVSOLxAo/2gUtYfcTZSKxI2e4ZVrQ=;
+        b=L1hXDewnFWnSYjRZODwJfEw1H22CgACvel6xs1rwEAbUn2VhgUHsfLQPr6DzYiADTw
+         MiM1G809SzaqgjzBkBbEdI5ZiY0LmkB5kAUBgSAglbh8HqIKzoqoY5uPVySZ7EQnobUI
+         vNTRrGHjGmJKI7QQqecLYfb1k3V5vzpDWZBxgomtZAUUKEG4586FiPGNwQ1J7UsF5ctJ
+         o3k92izxP1zA47/Amc5WeqxvpSCn46ipSLte+LhRAhpWHb9nxRjnDhdpy6uL8PDGad9M
+         pirK/ePBRZj0c7ifwBqxPV5Otcvus0UvHheppq5NQWXy3jdZaKGg3IZFYZRi3cIB9YvP
+         zL5Q==
+X-Gm-Message-State: AAQBX9fjN4VdMOXGPd0od80LnAr2TBBitqLq26iyO0V0JMSdUxQwGMEs
+	z/9Ab+fkwWGEIL9FYtp0sOi1g7yjEMDSqA5AJJn1mw==
+X-Google-Smtp-Source: AKy350a901GIyrqbDiWssicho6VD6oQ1aF3Wwc8YpRauFzTD5PW6khekFH+UVi8XRjjeZGdz9uobkT9Kw17FeooXz5o=
+X-Received: by 2002:a25:cac5:0:b0:b8e:d126:c64 with SMTP id
+ a188-20020a25cac5000000b00b8ed1260c64mr2618154ybg.4.1681248726589; Tue, 11
+ Apr 2023 14:32:06 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
-Subject: Re: [PATCH][next] wifi: mt76: Replace zero-length array with
- flexible-array member
-To: Simon Horman <simon.horman@corigine.com>,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-hardening@vger.kernel.org
-References: <ZC7X7KCb+JEkPe5D@work> <ZC/FA/t1mzrRydD7@corigine.com>
-Content-Language: en-US
-In-Reply-To: <ZC/FA/t1mzrRydD7@corigine.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
-X-AntiAbuse: Primary Hostname - gator4166.hostgator.com
-X-AntiAbuse: Original Domain - lists.infradead.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - embeddedor.com
-X-BWhitelist: no
-X-Source-IP: 189.215.208.238
-X-Source-L: No
-X-Exim-ID: 1pmIsm-003i6h-P7
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
-X-Source-Sender: 189.215.208.238.cable.dyn.cableonline.com.mx ([192.168.0.24]) [189.215.208.238]:14202
-X-Source-Auth: gustavo@embeddedor.com
-X-Email-Count: 0
-X-Org: HG=hgshared;ORG=hostgator;
-X-Source-Cap: Z3V6aWRpbmU7Z3V6aWRpbmU7Z2F0b3I0MTY2Lmhvc3RnYXRvci5jb20=
-X-Local-Domain: yes
-X-CMAE-Envelope: MS4xfLtiRtUJ1ycJacaT8POk01hbQkIuOHTzpZGBWpAn/pHn4GYmwBcGRpDjnWhG3uBCvWck72KfjH4Jc9ovrA4KgrKK06avTolQwTnKNgcsI9t58E75leWq
- KKffaZocg5GvpVwDB6Hficwzy9HY+SlU/msEbTwxRNsE0duIJG5f5ygwt2MTDTCb/+m/sOQHd7e4AMebxUsJtbkMolh/S61qC7ybL49LXZ9lTZMo7Zr7rjgO
- YNl0nChbL+MNHxZ1AWIO1EYBwj4XMrnIeDlKEiGwIN0gEFM2XnDY3e/2ZtS6kbeJ
+References: <20230407033341.5139-1-haibo.li@mediatek.com>
+In-Reply-To: <20230407033341.5139-1-haibo.li@mediatek.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Tue, 11 Apr 2023 23:31:55 +0200
+Message-ID: <CACRpkda8qTuCmF_RDjtp26k_DMpME=0wAPjejh4ODkUr9SxVqg@mail.gmail.com>
+Subject: Re: [PATCH] ARM:unwind:fix unwind abort for uleb128 case
+To: Haibo Li <haibo.li@mediatek.com>, Catalin Marinas <catalin.marinas@arm.com>, 
+	Anurag Aggarwal <a.anurag@samsung.com>, Ard Biesheuvel <ardb@kernel.org>
+Cc: Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, xiaoming.yu@mediatek.com, 
+	Russell King <rmk+kernel@armlinux.org.uk>, Alex Sverdlin <alexander.sverdlin@nokia.com>, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230411_132318_299438_D35491F0 
-X-CRM114-Status: GOOD (  19.68  )
+X-CRM114-CacheID: sfid-20230411_143215_165925_E94E1257 
+X-CRM114-Status: GOOD (  21.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,129 +92,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, Apr 7, 2023 at 5:33=E2=80=AFAM Haibo Li <haibo.li@mediatek.com> wro=
+te:
 
+> When unwind instruction is 0xb2,the subsequent instructions
+> are uleb128 bytes.
+> For now,it uses only the first uleb128 byte in code.
+>
+> For vsp increments of 0x204~0x400,use one uleb128 byte like below:
+> 0xc06a00e4 <unwind_test_work>: 0x80b27fac
+>   Compact model index: 0
+>   0xb2 0x7f vsp =3D vsp + 1024
+>   0xac      pop {r4, r5, r6, r7, r8, r14}
+>
+> For vsp increments larger than 0x400,use two uleb128 bytes like below:
+> 0xc06a00e4 <unwind_test_work>: @0xc0cc9e0c
+>   Compact model index: 1
+>   0xb2 0x81 0x01 vsp =3D vsp + 1032
+>   0xac      pop {r4, r5, r6, r7, r8, r14}
+> The unwind works well since the decoded uleb128 byte is also 0x81.
+>
+> For vsp increments larger than 0x600,use two uleb128 bytes like below:
+> 0xc06a00e4 <unwind_test_work>: @0xc0cc9e0c
+>   Compact model index: 1
+>   0xb2 0x81 0x02 vsp =3D vsp + 1544
+>   0xac      pop {r4, r5, r6, r7, r8, r14}
+> In this case,the decoded uleb128 result is 0x101(vsp=3D0x204+(0x101<<2)).
+> While the uleb128 used in code is 0x81(vsp=3D0x204+(0x81<<2)).
+> The unwind aborts at this frame since it gets incorrect vsp.
+>
+> To fix this,add uleb128 decode to cover all the above case.
+>
+> Signed-off-by: Haibo Li <haibo.li@mediatek.com>
 
-On 4/7/23 01:23, Simon Horman wrote:
-> On Thu, Apr 06, 2023 at 08:32:12AM -0600, Gustavo A. R. Silva wrote:
->> Zero-length arrays are deprecated [1] and have to be replaced by C99
->> flexible-array members.
->>
->> This helps with the ongoing efforts to tighten the FORTIFY_SOURCE routines
->> on memcpy() and help to make progress towards globally enabling
->> -fstrict-flex-arrays=3 [2]
->>
->> Link: https://github.com/KSPP/linux/issues/78 [1]
->> Link: https://gcc.gnu.org/pipermail/gcc-patches/2022-October/602902.html [2]
->> Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
-> 
-> Reviewed-by: Simon Horman <simon.horman@corigine.com>
+[Added people such as Catalin, Ard and Anurag who wrote the lion's
+share of actual algorithms in this file]
 
-Thanks :)
+I would just link the wikipedia in the patch commit log actually:
 
-> 
->> ---
->>   drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
->> index a5e6ee4daf92..9bf4b4199ee3 100644
->> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
->> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
->> @@ -127,7 +127,7 @@ struct mt76_connac2_mcu_rxd {
->>   	u8 rsv1[2];
->>   	u8 s2d_index;
->>   
->> -	u8 tlv[0];
->> +	u8 tlv[];
->>   };
->>   
->>   struct mt76_connac2_patch_hdr {
-> 
-> Curiously -fstrict-flex-arrays=3 didn't flag this one in my environment,
-> Ubuntu Lunar.
+Link: https://en.wikipedia.org/wiki/LEB128
 
-Yep; that's why I didn't include any warning message in the changelog text
-this time.
+for poor souls like me who need a primer on this encoding.
 
-And the reason for that is that tlv is not being indexed anywhere in the
-code. However, it's being used in the pointer arithmetic operation below:
+It's great if you also have a reference to the spec where you
+found this, but I take your word for that this appears in code.
+Did compilers always emit this? Then we should have a Cc stable
+to this patch. Unfortunately the link in the top of the file is dead.
 
-drivers/net/wireless/mediatek/mt76/mt7921/mcu.c:
-  164         rxd = (struct mt76_connac2_mcu_rxd *)skb->data;
-  165         grant = (struct mt7921_roc_grant_tlv *)(rxd->tlv + 4);
+> +static unsigned long unwind_decode_uleb128(struct unwind_ctrl_block *ctr=
+l)
 
+So this decodes max an unsigned long? Are we sure that will always
+suffice?
 
-which means that it can be considered as an array of size greater than zero
-at some point. Hence, it should be transformed into a C99 flexible array.
+> +{
+> +       unsigned long result =3D 0;
+> +       unsigned long insn;
+> +       unsigned long bytes =3D 0;
+> +
+> +       do {
+> +               insn =3D unwind_get_byte(ctrl);
+> +               result |=3D (insn & 0x7f) << (bytes * 7);
+> +               bytes++;
+> +               if (bytes =3D=3D sizeof(result))
+> +                       break;
+> +       } while (!!(insn & 0x80));
 
-> 
->   gcc-13 --version
->   gcc-13 (Ubuntu 13-20230320-1ubuntu1) 13.0.1 20230320 (experimental) [master r13-6759-g5194ad1958c]
->   Copyright (C) 2023 Free Software Foundation, Inc.
->   This is free software; see the source for copying conditions.  There is NO
->   warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-> 
-> I did, however, notice some other problems reported by gcc-13 with
-> -fstrict-flex-arrays=3 in drivers/net/wireless/mediatek/mt76
-> when run against net-next wireless. I've listed them in diff format below.
-> 
-> Are these on your radar too?
+I suppose the documentation is in the commit message, but something terse
+and nice that make us understand this code would be needed here as well.
+Could you fold in a comment of how the do {} while-loop works and th expect=
+ed
+outcome? Something like:
 
-Yep; those are being addressed here:
+"unwind_get_byte() will advance ctrl one instruction at a time, we loop
+until we get an instruction byte where bit 7 is not set."
 
-https://lore.kernel.org/linux-hardening/ZBTUB%2FkJYQxq%2F6Cj@work/
+Is there a risk that this will loop forever or way too long if it happens
+to point at some corrupted memory containing say 0xff 0xff 0xff ...?
 
---
-Gustavo
+Since we're decoding a 32 bit unsigned long maybe break the loop after max
+5 bytes (35 bits)? Or are we sure this will not happen?
 
-> 
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.h b/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.h
-> index 35268b0890ad..d09bb4eed1ec 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.h
-> @@ -24,7 +24,7 @@ struct mt7921_asar_dyn {
->   	u8 names[4];
->   	u8 enable;
->   	u8 nr_tbl;
-> -	struct mt7921_asar_dyn_limit tbl[0];
-> +	struct mt7921_asar_dyn_limit tbl[];
->   } __packed;
->   
->   struct mt7921_asar_dyn_limit_v2 {
-> @@ -37,7 +37,7 @@ struct mt7921_asar_dyn_v2 {
->   	u8 enable;
->   	u8 rsvd;
->   	u8 nr_tbl;
-> -	struct mt7921_asar_dyn_limit_v2 tbl[0];
-> +	struct mt7921_asar_dyn_limit_v2 tbl[];
->   } __packed;
->   
->   struct mt7921_asar_geo_band {
-> @@ -55,7 +55,7 @@ struct mt7921_asar_geo {
->   	u8 names[4];
->   	u8 version;
->   	u8 nr_tbl;
-> -	struct mt7921_asar_geo_limit tbl[0];
-> +	struct mt7921_asar_geo_limit tbl[];
->   } __packed;
->   
->   struct mt7921_asar_geo_limit_v2 {
-> @@ -69,7 +69,7 @@ struct mt7921_asar_geo_v2 {
->   	u8 version;
->   	u8 rsvd;
->   	u8 nr_tbl;
-> -	struct mt7921_asar_geo_limit_v2 tbl[0];
-> +	struct mt7921_asar_geo_limit_v2 tbl[];
->   } __packed;
->   
->   struct mt7921_asar_cl {
-> @@ -85,7 +85,7 @@ struct mt7921_asar_fg {
->   	u8 rsvd;
->   	u8 nr_flag;
->   	u8 rsvd1;
-> -	u8 flag[0];
-> +	u8 flag[];
->   } __packed;
->   
->   struct mt7921_acpi_sar {
+> @@ -361,7 +376,7 @@ static int unwind_exec_insn(struct unwind_ctrl_block =
+*ctrl)
+>                 if (ret)
+>                         goto error;
+>         } else if (insn =3D=3D 0xb2) {
+> -               unsigned long uleb128 =3D unwind_get_byte(ctrl);
+> +               unsigned long uleb128 =3D unwind_decode_uleb128(ctrl);
+
+Is unsigned long always enough? We are sure?
+
+Yours,
+Linus Walleij
 
