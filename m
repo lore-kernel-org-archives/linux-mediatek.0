@@ -4,53 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9913C7619A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 09:32:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F34AC7619A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 09:32:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mT6zoSr+t/iCCp0pVyrrFXyfIgwNSVzrgEpFp7/K0K4=; b=KvQ5N02+wIpbm+wNH06fYfgod6
-	QuRI9Hf+WRAbqYjoaN8Fb4nOdfNWH412k96vunI4r2+GKHc46WxmPyBB574+unsHbBD+Y3HJN8c6v
-	/WF1pMeYXRZ02Q+w9wDkNpsSJUVzDMjLLuaCvnNoFHq5GFLfiK3iY0tfWmrWMiqR+cIEXp8kuQ1V2
-	o/+UtrS5RbpHwhimj+7Lk15fJ0nubz1WtC3L4IM163CBKuXrJ9RWjx5On09/iUDg88AYnoBUiWvZy
-	yXf1xYNzHky0fAyo5/8pet88X8quy7FP7O3Emt24ksV39B0qLzOC6+U7HTSM5FjsydgAUGWd3w+vB
-	rvvoiQHA==;
+	bh=sVX80DfFg2daBLzlRJDcb0JyO44mTDPu7coLHRXXZFQ=; b=4Aq8rFU7kUP6/SahUzpsdlHa9J
+	0gSMGxffvBJ8vBTRU2YFI0pLR28JNRygMp9/FQe38z7OFaeBZmMqJATvS4MHotLx2PXGHYcIb2U6E
+	aUpSWgnzgs6bL+mQgUxdYvnxEDjNGETt2BKM5YtqTJjC+NrJODM4umNQNBjGGzorATmCNTsxfbH0B
+	LFJrSSqi4iwtc5T2mXwLg8XXSrd3MmSU52GApy+oWdKy6m6z25c5n2MoAGlan/t6gVZGegbaBtL5F
+	w1VINjEWrR3iqKTVa8gLHFjX0VtWrTvPcBQq8hyGQQaDJGsRPbdtgWwuH+GkL5gjF8+uG8o6j8/x+
+	yfmeacjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmAMQ-00H33l-1N;
-	Tue, 11 Apr 2023 09:32:22 +0000
+	id 1pmAMb-00H38U-0W;
+	Tue, 11 Apr 2023 09:32:33 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmAMM-00H30t-1b;
-	Tue, 11 Apr 2023 09:32:19 +0000
-X-UUID: bb944bbad84b11ed8687db9d93187ff1-20230411
+	id 1pmAMW-00H36N-1h;
+	Tue, 11 Apr 2023 09:32:29 +0000
+X-UUID: c4237242d84b11ed8687db9d93187ff1-20230411
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=mT6zoSr+t/iCCp0pVyrrFXyfIgwNSVzrgEpFp7/K0K4=;
-	b=p1kfKTM91wnf6JvxSkAd/lInT36yXrs6JIdnWPHuxiJPTQmmV8vezzOZ+Rjto08t7O2lTETH+evUd8Md7ztXySyB8WtvL4BcyAceoB7mnktZ1f7CAlnUJAWiYkRXwXyqh/a9gQvzc/+JAn/fC38Exg1p5I/bA39rc+trgNa7LJo=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=sVX80DfFg2daBLzlRJDcb0JyO44mTDPu7coLHRXXZFQ=;
+	b=qwS1e8LyW9Wh/eHFudrKK9hwAVASz3Lv/2FEcD0ZAVKaxJIW5kg2A3LicBsOFmISYE/YCugO57H4HwaHtYRb9JOcupI8PodRDRxwpzTsdvaupih5tBMSMrCpqCQ/b//JlhRj+SohHwrQVONRlAqfuGkIPGh/9m/HYH7yFfR5nBw=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:876f5db1-db27-46e8-bcbc-7c257a577de4,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:120426c,CLOUDID:edff94ea-db6f-41fe-8b83-13fe7ed1ef52,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-O-INFO: VERSION:1.1.22,REQID:c3a3a190-5a5d-4dde-800e-98b4562b56c2,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:90
+X-CID-INFO: VERSION:1.1.22,REQID:c3a3a190-5a5d-4dde-800e-98b4562b56c2,IP:0,URL
+	:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
+	N:quarantine,TS:90
+X-CID-META: VersionHash:120426c,CLOUDID:da72f3a0-8fcb-430b-954a-ba3f00fa94a5,B
+	ulkID:230411173223GGB06S06,BulkQuantity:1,Recheck:0,SF:28|17|19|48|38|29,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
+	OSI:0,OSA:0,AV:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-UUID: bb944bbad84b11ed8687db9d93187ff1-20230411
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+X-UUID: c4237242d84b11ed8687db9d93187ff1-20230411
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
 	(envelope-from <yong.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 398332649; Tue, 11 Apr 2023 02:32:09 -0700
+	with ESMTP id 693989403; Tue, 11 Apr 2023 02:32:24 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Tue, 11 Apr 2023 17:32:07 +0800
+ 15.2.1118.25; Tue, 11 Apr 2023 17:32:21 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Tue, 11 Apr 2023 17:32:06 +0800
+ 15.2.1118.25 via Frontend Transport; Tue, 11 Apr 2023 17:32:20 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>
@@ -65,12 +69,12 @@ CC: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
 	<yunfei.dong@mediatek.com>, kyrie wu
 	<kyrie.wu@mediatek.corp-partner.google.com>, <chengci.xu@mediatek.com>,
 	<youlin.pei@mediatek.com>, <anan.sun@mediatek.com>, Yong Wu
-	<yong.wu@mediatek.com>, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT
- Chen <andrew-ct.chen@mediatek.com>, Rob Herring <robh@kernel.org>, Hans
- Verkuil <hverkuil-cisco@xs4all.nl>
-Subject: [PATCH v7 01/14] dt-bindings: media: mediatek,vcodec: Remove dma-ranges property
-Date: Tue, 11 Apr 2023 17:31:31 +0800
-Message-ID: <20230411093144.2690-2-yong.wu@mediatek.com>
+	<yong.wu@mediatek.com>, Bin Liu <bin.liu@mediatek.com>, Xia Jiang
+	<xia.jiang@mediatek.com>, Rob Herring <robh@kernel.org>, Hans Verkuil
+	<hverkuil-cisco@xs4all.nl>
+Subject: [PATCH v7 02/14] dt-bindings: media: mediatek,jpeg: Remove dma-ranges property
+Date: Tue, 11 Apr 2023 17:31:32 +0800
+Message-ID: <20230411093144.2690-3-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230411093144.2690-1-yong.wu@mediatek.com>
 References: <20230411093144.2690-1-yong.wu@mediatek.com>
@@ -79,8 +83,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230411_023218_537572_E7DB50F8 
-X-CRM114-Status: GOOD (  11.01  )
+X-CRM114-CacheID: sfid-20230411_023228_569056_3CAE4EAC 
+X-CRM114-Status: GOOD (  10.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,63 +101,108 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 After commit f1ad5338a4d5 ("of: Fix "dma-ranges" handling for bus
 controllers"), the dma-ranges of the leaf node doesn't work. Remove
-it for vcodec here.
+it for jpeg here.
 
-For mediatek,vcodec-decoder.yaml and mediatek,vcodec-encoder.yaml,
-this property is in the leaf node, it is invalid as the above comment.
+Currently there is only mt8195 jpeg node has this property in upstream,
+and it already uses parent-child node, this property did work. But instead,
+MediaTek iommu will control the masters' iova ranges by the master's
+larb/port id internally, then this property is unnecessary.
 
-Currently there is only mt8195 VENC node has this property in upstream.
-Indeed, VENC is affected, but it is not a fatal issue. Originally it
-expects its iova range locate at 4GB-8GB. However after that commit, its
-expectation doesn't come true, it will fall back to 0-4GB iova and also
-could work well.
-
-Cc: Tiffany Lin <tiffany.lin@mediatek.com>
-Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>
-Cc: Yunfei Dong <yunfei.dong@mediatek.com>
 Cc: Mauro Carvalho Chehab <mchehab@kernel.org>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Bin Liu <bin.liu@mediatek.com>
+Cc: kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>
+Cc: Xia Jiang <xia.jiang@mediatek.com>
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Acked-by: Rob Herring <robh@kernel.org>
-Acked-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Reviewed-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
 ---
- .../devicetree/bindings/media/mediatek,vcodec-decoder.yaml   | 5 -----
- .../devicetree/bindings/media/mediatek,vcodec-encoder.yaml   | 5 -----
- 2 files changed, 10 deletions(-)
+ .../devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml | 7 -------
+ .../devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml | 7 -------
+ .../devicetree/bindings/media/mediatek-jpeg-encoder.yaml   | 5 -----
+ 3 files changed, 19 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
-index aa55ca65d6ed..fad59b486d5d 100644
---- a/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
-@@ -56,11 +56,6 @@ properties:
-       List of the hardware port in respective IOMMU block for current Socs.
-       Refer to bindings/iommu/mediatek,iommu.yaml.
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
+index 71595c013dbb..e5448c60e3eb 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
+@@ -26,11 +26,6 @@ properties:
+       Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
+       Ports are according to the HW.
  
 -  dma-ranges:
 -    maxItems: 1
 -    description: |
 -      Describes the physical address space of IOMMU maps to memory.
 -
-   mediatek,vpu:
-     $ref: /schemas/types.yaml#/definitions/phandle
-     description:
-diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
-index 0f2ea8d9a10c..a2051b31fa29 100644
---- a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
-@@ -49,11 +49,6 @@ properties:
-       List of the hardware port in respective IOMMU block for current Socs.
-       Refer to bindings/iommu/mediatek,iommu.yaml.
+   "#address-cells":
+     const: 2
+ 
+@@ -89,7 +84,6 @@ required:
+   - compatible
+   - power-domains
+   - iommus
+-  - dma-ranges
+   - ranges
+ 
+ additionalProperties: false
+@@ -115,7 +109,6 @@ examples:
+                      <&iommu_vpp M4U_PORT_L19_JPGDEC_BSDMA1>,
+                      <&iommu_vpp M4U_PORT_L19_JPGDEC_BUFF_OFFSET1>,
+                      <&iommu_vpp M4U_PORT_L19_JPGDEC_BUFF_OFFSET0>;
+-            dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
+             #address-cells = <2>;
+             #size-cells = <2>;
+             ranges;
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
+index 95990539f7c0..596186497b68 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
+@@ -26,11 +26,6 @@ properties:
+       Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
+       Ports are according to the HW.
  
 -  dma-ranges:
 -    maxItems: 1
 -    description: |
 -      Describes the physical address space of IOMMU maps to memory.
 -
-   mediatek,vpu:
-     $ref: /schemas/types.yaml#/definitions/phandle
-     description:
+   "#address-cells":
+     const: 2
+ 
+@@ -89,7 +84,6 @@ required:
+   - compatible
+   - power-domains
+   - iommus
+-  - dma-ranges
+   - ranges
+ 
+ additionalProperties: false
+@@ -113,7 +107,6 @@ examples:
+                      <&iommu_vpp M4U_PORT_L20_JPGENC_C_RDMA>,
+                      <&iommu_vpp M4U_PORT_L20_JPGENC_Q_TABLE>,
+                      <&iommu_vpp M4U_PORT_L20_JPGENC_BSDMA>;
+-            dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
+             #address-cells = <2>;
+             #size-cells = <2>;
+             ranges;
+diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
+index c8412e8ab353..37800e1908cc 100644
+--- a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
+@@ -44,11 +44,6 @@ properties:
+       Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
+       Ports are according to the HW.
+ 
+-  dma-ranges:
+-    maxItems: 1
+-    description: |
+-      Describes the physical address space of IOMMU maps to memory.
+-
+ required:
+   - compatible
+   - reg
 -- 
 2.25.1
 
