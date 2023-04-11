@@ -4,54 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9D00C7619A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 05:54:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD4E9C76196
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 06:05:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hlzUNXvIMOQc13xK9X1uYOOly8rXvrRJ86fD7YnDQ/U=; b=D8gogXrDd/0cEqG/3B7jsNUpIi
-	cgbsItp3n8JXfrr4za4cPcNDoWujBAon+1wGlpn/gWmw7dPJfp49ADmWhEWsvcf6h+42EBk6W2bFA
-	d6+XdBM/NE1CbkftU4DWcnGwmBbHxAPGJDFHnu8UJhzs3p4TZJGayuGhxM6qaBHblbtavydwWWU5W
-	tbhfRLSVakQgaDdBg9HoyQcs3NZGHXMMEHRycVKf66i2n5Wpj4yFouxeTDccXANFHGG65HSBQ+f8h
-	Fa6v3Y2C8m+XonIog4HHuAichhTOYiSMPtudXHS0O+9gdwu9+sURhm2Xyv+3MYLzgEzyqBBAgDDP4
-	Cicc3GsA==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=RHMG10ntLeYlRbI/eWA7wuZfKFUbLypz6+gPoLW2XTQ=; b=qF+OaOk4Vs38JA9LGNeCIupPXL
+	QdtDgDYmgQFJ4Fell9Nvc9jt3hdZ1sP1fZIjiVdayayTkHmh9eO3eKT0kdJIKBaWoSWCJQPjhTiRD
+	afeEk5LwxM5UV/95+BIYscwALbNKSCTU5uoR9q5flaUmbqFtw1yXOy16WlTBvQqPBeu6useH2f5bm
+	A5yNMHm+LQuQ99LkeoqbrWlwlQH23bNRj9ee7hoIUSUKsiEMKQdLsPOVMtl3UeP2sgqy6L304PDv2
+	cJ3cqV2y0OKdBim2Qe6ZF10LT9EPY5dUWYhJ4We/u0qz6XLZZcZfrWymCpptOgNl1sKF09In0YmCY
+	8ymWhOPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pm6xX-00GWID-2M;
-	Tue, 11 Apr 2023 05:54:27 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pm77k-00GXDz-1C;
+	Tue, 11 Apr 2023 06:05:00 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pm6xV-00GWHU-0E;
-	Tue, 11 Apr 2023 05:54:26 +0000
-X-UUID: 4c9a108cd82d11ed8687db9d93187ff1-20230410
+	id 1pm77h-00GXDT-1O;
+	Tue, 11 Apr 2023 06:04:58 +0000
+X-UUID: c606f04cd82e11edb7d8d11f642b8e78-20230410
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=hlzUNXvIMOQc13xK9X1uYOOly8rXvrRJ86fD7YnDQ/U=;
-	b=Sg1Bfe8zvipETD43TMa8G9cAc0DlLJyY3dihZkmO8efWTESUiqQCDYD36MIZ9XhyZD6I+kK16feJpBIHHRlpYkueSJRl6BR0L5zzSNrn1MtaFJQLd3BNewIMNRbcUb+8u4IZMPvN70nBMxmlBTg6Yp4QrUzkGIXA5Ijuu2uMZzI=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=RHMG10ntLeYlRbI/eWA7wuZfKFUbLypz6+gPoLW2XTQ=;
+	b=U7XnS+xVz5eOMoxgL3l3ZXhPY09yaeSM1OAqFGZ9qdDKiTWzBdEcgf89IB36uu8+fdB4OJ/YJ0jMR770/qQOEjP4CP30o4g0JG8Lg/ifyoZQ+JgeI7ZTKvxk1Dz1LQM04+XFhvGNCBQkIo5ka63PiaMK09FjziEud3dE1Uuu+Bc=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:48efb36b-58de-4a18-954f-2985692e8a52,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:90
-X-CID-INFO: VERSION:1.1.22,REQID:48efb36b-58de-4a18-954f-2985692e8a52,IP:0,URL
-	:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
-	N:quarantine,TS:90
-X-CID-META: VersionHash:120426c,CLOUDID:1740eba0-8fcb-430b-954a-ba3f00fa94a5,B
-	ulkID:230411135419Y7AV7SRZ,BulkQuantity:0,Recheck:0,SF:38|29|28|17|19|48,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,CO
-	L:0,OSI:0,OSA:0,AV:0
+X-CID-O-INFO: VERSION:1.1.22,REQID:e7ab5a8a-ec9a-4e55-bd61-fede59a7336d,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:120426c,CLOUDID:4e90a683-cd9c-45f5-8134-710979e3df0e,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
-X-UUID: 4c9a108cd82d11ed8687db9d93187ff1-20230410
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+X-UUID: c606f04cd82e11edb7d8d11f642b8e78-20230410
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <irui.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 268533197; Mon, 10 Apr 2023 22:54:18 -0700
+	with ESMTP id 1760929005; Mon, 10 Apr 2023 23:04:52 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Tue, 11 Apr 2023 13:54:16 +0800
+ 15.2.1118.25; Tue, 11 Apr 2023 13:54:15 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
  15.2.1118.25 via Frontend Transport; Tue, 11 Apr 2023 13:54:15 +0800
@@ -61,21 +57,20 @@ To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
 CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
 	<linux-media@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<maoguang.meng@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, Irui
- Wang <irui.wang@mediatek.com>
-Subject: [PATCH v2, 1/2] media: mediatek: vcodec: make sure array index is in valid range
-Date: Tue, 11 Apr 2023 13:54:12 +0800
-Message-ID: <20230411055413.539-2-irui.wang@mediatek.com>
+	<maoguang.meng@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, "Irui
+ Wang" <irui.wang@mediatek.com>
+Subject: [PATCH v2, 0/2] fix coverity issues in encoder driver
+Date: Tue, 11 Apr 2023 13:54:11 +0800
+Message-ID: <20230411055413.539-1-irui.wang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230411055413.539-1-irui.wang@mediatek.com>
-References: <20230411055413.539-1-irui.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230410_225425_116306_2C289BDB 
-X-CRM114-Status: GOOD (  11.93  )
+X-CRM114-CacheID: sfid-20230410_230457_496465_49EB38E2 
+X-CRM114-Status: UNSURE (   7.85  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,49 +85,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-CERT-C Characters and Strings:
-dev->reg_base[dev->venc_pdata->core_id] evaluates to an address
-that could be at negative offset of an array, check core id is
-in valid range.
+two coverity issues in encoder driver, submit two changes for fix them.
 
-Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+changes compared with v1:
+- separate into two changes.
 ---
- .../mediatek/vcodec/mtk_vcodec_enc_drv.c         | 16 ++++++++++++----
- 1 file changed, 12 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c
-index 9095186d5495..125d5722d07b 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c
-@@ -89,16 +89,24 @@ static irqreturn_t mtk_vcodec_enc_irq_handler(int irq, void *priv)
- 	struct mtk_vcodec_ctx *ctx;
- 	unsigned long flags;
- 	void __iomem *addr;
-+	int core_id;
- 
- 	spin_lock_irqsave(&dev->irqlock, flags);
- 	ctx = dev->curr_ctx;
- 	spin_unlock_irqrestore(&dev->irqlock, flags);
- 
--	mtk_v4l2_debug(1, "id=%d coreid:%d", ctx->id, dev->venc_pdata->core_id);
--	addr = dev->reg_base[dev->venc_pdata->core_id] +
--				MTK_VENC_IRQ_ACK_OFFSET;
-+	core_id = dev->venc_pdata->core_id;
-+	if (core_id < 0 || core_id >= NUM_MAX_VCODEC_REG_BASE) {
-+		mtk_v4l2_err("Invalid core id: %d, ctx id: %d",
-+			     core_id, ctx->id);
-+		return IRQ_HANDLED;
-+	}
-+
-+	mtk_v4l2_debug(1, "id: %d, core id: %d", ctx->id, core_id);
-+
-+	addr = dev->reg_base[core_id] + MTK_VENC_IRQ_ACK_OFFSET;
- 
--	ctx->irq_status = readl(dev->reg_base[dev->venc_pdata->core_id] +
-+	ctx->irq_status = readl(dev->reg_base[core_id] +
- 				(MTK_VENC_IRQ_STATUS_OFFSET));
- 
- 	clean_irq_status(ctx->irq_status, addr);
+Irui Wang (2):
+  media: mediatek: vcodec: make sure array index is in valid range
+  media: mediatek: vcodec: make sure pointer isn't NULL before used
+
+ .../platform/mediatek/vcodec/mtk_vcodec_enc.c    |  2 +-
+ .../mediatek/vcodec/mtk_vcodec_enc_drv.c         | 16 ++++++++++++----
+ 2 files changed, 13 insertions(+), 5 deletions(-)
+
 -- 
 2.18.0
 
