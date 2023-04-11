@@ -4,100 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B5A9C77B6F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 13:10:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A572C77B6F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 13:40:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zj1JtAKrv3GVkrzExsf9B7vpxAMSpGNgfjgQje0eTak=; b=C8DujKqjk3Z8NwqktDjfvNPoYE
-	cyUSmqmb2A8Z6MHVMxCviRFwlyal9bx0vWSXMuxH/tA/WeEMyVo2hqiUM3r//Ys1oirUR6+QQ8PVv
-	YGHWG6x5dXyJI2oWtD9v30gQ9ld49h97AMpLrpGxFKhNMpa4V+Xp3z2IvH/ehJjPzCxlv3VlloSUC
-	UCbzhEDjM3DiOp2HZXI4q/yzgpJGCBNq5P2zrnrtl8CsjaC9lYFpKp+RQgLyiLpYhJuGh0aAr1awJ
-	j3eRyGugDqiinjvDQx9iG8xvOp6eAJ9Lf96uEw0uO80IDz4Y232XW+PELUqvOFeNE/bnp8M4LCjv4
-	axiI10sQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kgFPvyHrHPtWE9sKCzX6mH86Owceqhrm+Hat2sO8n/A=; b=Rg59FhNzXf7kFfs0/RTtHO9OEo
+	v9S2mhsMZllBoxqLcoI/iCpFVxgf65hzo98ur6EVKom+juz4Kn47M3Kf/aeuCPsFdpTWe3o2C70fh
+	zA+rMU2SQ8P1tiYMqGO95XjVzirHBN/DoaAl64hsqsFuM1v3JBT/t7w62Nl1H7mOFYuEzJZhAyamb
+	BdNawAHYYC7aJ3hlStehYrPrsme3KJ1gnwK/7DvlcoXPHw0d3QDpKst4Acf2AVuc47RAt05Pf7Uq/
+	lbE1dEz58Oyi25lovP0Z+gI3bNuqqQsxGKDbkxAxJTb84/rIqoho/IwQXPRSdJnbN3XEbglMAe2AA
+	MB0Io1ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmDkx-0004Zs-1w;
-	Tue, 11 Apr 2023 13:09:55 +0000
-Received: from relay7-d.mail.gandi.net ([217.70.183.200])
+	id 1pmEEh-0008ba-02;
+	Tue, 11 Apr 2023 13:40:39 +0000
+Received: from mail-ot1-f45.google.com ([209.85.210.45])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmDks-0004YW-2A;
-	Tue, 11 Apr 2023 13:09:52 +0000
-Received: (Authenticated sender: miquel.raynal@bootlin.com)
-	by mail.gandi.net (Postfix) with ESMTPSA id 8667320007;
-	Tue, 11 Apr 2023 13:09:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1681218585;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=zj1JtAKrv3GVkrzExsf9B7vpxAMSpGNgfjgQje0eTak=;
-	b=oNG2Rb7etLGd3op/Iz2fmq0xokA2awaHaTUwmpMIqfWRcdiVNffJhH1OiD/NJa8U8VhbyA
-	yF9MXtYH8Fxz3M+cAq/7V/oq1xoDx4mXB50I/MCViACuf5Xj/3sm+jiFSUhQyd/GFiKSU+
-	MvbhXoQ5xcQFvUgIZ6glZLEM1HPSvT3ZkSE8cIw3GiRKuf3ey7u+ch+9vo/URZlNg8hBkX
-	sdQ/9ZojYLUArwz1K4ERP3d5/cBFRF6/83yyqSdXppNVR0gRdgwuMipAeMDZ8IGKN7s335
-	n6r/K2t/A0PaaBtBH3FUkAWJV3CrDikEbkeZlUHa/BD6XrUBmGFFsgVYyetBaQ==
-Date: Tue, 11 Apr 2023 15:09:30 +0200
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-Cc: Maxime Ripard <maxime@cerno.tech>, Michael Turquette
- <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Andreas
- =?UTF-8?B?RsOkcmJlcg==?= <afaerber@suse.de>, Manivannan Sadhasivam
- <mani@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre
- Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea
- <claudiu.beznea@microchip.com>, Max Filippov <jcmvbkbc@gmail.com>, Charles
- Keepax <ckeepax@opensource.cirrus.com>, Richard Fitzgerald
- <rf@opensource.cirrus.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>, Luca Ceresoli
- <luca.ceresoli@bootlin.com>, David Lechner <david@lechnology.com>, Sekhar
- Nori <nsekhar@ti.com>, Abel Vesa <abelvesa@kernel.org>, Shawn Guo
- <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix
- Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>,
- NXP Linux Team <linux-imx@nxp.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Geert Uytterhoeven <geert+renesas@glider.be>,
- Dinh Nguyen <dinguyen@kernel.org>, Peter De Schrijver
- <pdeschrijver@nvidia.com>, Prashant Gaikwad <pgaikwad@nvidia.com>, Thierry
- Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>,
- Ulf Hansson <ulf.hansson@linaro.org>, Linus Walleij
- <linus.walleij@linaro.org>, David Airlie <airlied@gmail.com>, Daniel Vetter
- <daniel@ffwll.ch>, Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I
- <kishon@kernel.org>, Alessandro Zummo <a.zummo@towertech.it>, Chen-Yu Tsai
- <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland
- <samuel@sholland.org>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown
- <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai
- <tiwai@suse.com>, Paul Cercueil <paul@crapouillou.net>, Orson Zhai
- <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan
- Zhang <zhang.lyra@gmail.com>, linux-clk@vger.kernel.org,
- linux-kernel@vger.kernel.org, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>,
- linux-arm-kernel@lists.infradead.org, linux-actions@lists.infradead.org,
- patches@opensource.cirrus.com, linux-stm32@st-md-mailman.stormreply.com,
- linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
- linux-tegra@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-phy@lists.infradead.org, linux-rtc@vger.kernel.org,
- linux-sunxi@lists.linux.dev, alsa-devel@alsa-project.org,
- linux-mips@vger.kernel.org, Gareth Williams
- <gareth.williams.jx@renesas.com>, Herve Codina <herve.codina@bootlin.com>,
- Ralph Siemsen <ralph.siemsen@linaro.org>
-Subject: Re: [PATCH v3 28/65] clk: renesas: r9a06g032: Add a determine_rate
- hook
-Message-ID: <20230411150930.4fb22d7e@xps-13>
-In-Reply-To: <CAMuHMdXUEOP_3zjf8nwDyHvZVG-D0AsBjnr=esKzejMMcEiLSQ@mail.gmail.com>
-References: <20221018-clk-range-checks-fixes-v3-0-9a1358472d52@cerno.tech>
-	<20221018-clk-range-checks-fixes-v3-28-9a1358472d52@cerno.tech>
-	<CAMuHMdXUEOP_3zjf8nwDyHvZVG-D0AsBjnr=esKzejMMcEiLSQ@mail.gmail.com>
-Organization: Bootlin
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.33; x86_64-pc-linux-gnu)
+	id 1pmEEc-0008aQ-2T;
+	Tue, 11 Apr 2023 13:40:35 +0000
+Received: by mail-ot1-f45.google.com with SMTP id bu14-20020a0568300d0e00b0069fab3f4cafso3855667otb.9;
+        Tue, 11 Apr 2023 06:40:34 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1681220433; x=1683812433;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=kgFPvyHrHPtWE9sKCzX6mH86Owceqhrm+Hat2sO8n/A=;
+        b=TA7KTmBflHV5jHu/pShU+SvGuPaAI2lwdRv5swp80YhzPOOs81VWFxcEyOLfPT2lgM
+         oE0ZU+cUIPY5/fHCJzolTAfsX/+9a5Z1ZOEw9JrosGLcZcmSXSrIrZqxZSP8txuvXCmX
+         YZFaiJHl6fZhcOEDlHNghocNDiBkaTg4Fugom23l/lN9zfZFIvUAkjeasPk1JD6h5hZ5
+         Ao2OkjpI65KgghJOPpLge8Z2fBJ1+fi6pQahDqcY8BpgDE+qJOMx69lQAHs3bub86e9e
+         NKPDCYqFXOoy98/Fy3eUNQHD4kHiTHzmsmnIpEO38NtqNm35P5bVbaHaqWBqPGkFasA9
+         UegA==
+X-Gm-Message-State: AAQBX9dV7ftOsBQ4TciNkTq8FcAlv9Ysf9gzwttWtJB4XKKbIVJpr3A+
+	Fqyhu+yF2HtL3iiI8r/jwQ==
+X-Google-Smtp-Source: AKy350YG5U9QNvXG9urYlKAKQZf2PCcV3KsTjbecvU+8kIfA5d1v5KG8LereLUse+pLSeMjkUuqZwQ==
+X-Received: by 2002:a9d:6659:0:b0:6a3:c70d:bb94 with SMTP id q25-20020a9d6659000000b006a3c70dbb94mr5785020otm.17.1681220433511;
+        Tue, 11 Apr 2023 06:40:33 -0700 (PDT)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id g25-20020a9d6c59000000b0069f95707335sm5338427otq.69.2023.04.11.06.40.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 11 Apr 2023 06:40:33 -0700 (PDT)
+Received: (nullmailer pid 2941891 invoked by uid 1000);
+	Tue, 11 Apr 2023 13:40:31 -0000
+Date: Tue, 11 Apr 2023 08:40:31 -0500
+From: Rob Herring <robh@kernel.org>
+To: Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chaotian Jing <chaotian.jing@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>, Wenbin Mei <wenbin.mei@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Zhiyong Tao <zhiyong.tao@mediatek.com>, Bernhard =?iso-8859-1?Q?Rosenkr=E4nzer?= <bero@baylibre.com>, catalin.marinas@arm.com, Will Deacon <will@kernel.org>, linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-mmc@vger.kernel.org, linux-gpio@vger.kernel.org, Alexandre Bailon <abailon@baylibre.com>, Fabien Parent <fparent@baylibre.com>, Amjad Ouled-Ameur <aouledameur@baylibre.com>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH v5 03/12] dt-bindings: watchdog: mediatek,mtk-wdt: add
+ mt8365
+Message-ID: <20230411134031.GA2934043-robh@kernel.org>
+References: <20230203-evk-board-support-v5-0-1883c1b405ad@baylibre.com>
+ <20230203-evk-board-support-v5-3-1883c1b405ad@baylibre.com>
+ <CAFGrd9oi0AT3L8DVs7OYq-RjzBTqD+CB5mjKOwEbgNJDdyj2=g@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAFGrd9oi0AT3L8DVs7OYq-RjzBTqD+CB5mjKOwEbgNJDdyj2=g@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230411_060950_969008_5FC5154A 
-X-CRM114-Status: GOOD (  36.24  )
+X-CRM114-CacheID: sfid-20230411_064034_806945_9274BADA 
+X-CRM114-Status: GOOD (  15.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,101 +83,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Geert & Maxime,
+On Fri, Apr 07, 2023 at 03:11:18PM +0200, Alexandre Mergnat wrote:
+> + To: Catalin Marinas <catalin.marinas@arm.com>
+> + To: Will Deacon <will@kernel.org>
 
-geert@linux-m68k.org wrote on Tue, 11 Apr 2023 12:27:38 +0200:
+Why? They don't take bindings or dts files. Those go thru the subsystem 
+(watchdog (for bindings) or Mediatek sub-arch tree.
 
-> CC Gareth, Herv=C3=A9, Miquel, Ralph
->=20
-> On Tue, Apr 4, 2023 at 2:44=E2=80=AFPM Maxime Ripard <maxime@cerno.tech> =
-wrote:
-> > The Renesas r9a06g032 bitselect clock implements a mux with a set_parent
-> > hook, but doesn't provide a determine_rate implementation.
+Second, if they did pick this up, they likely need the original mail 
+sent to them, not a reply.
+
+Rob
+
+> 
+> Sorry for the noise.
+> 
+> Regards,
+> Alexandre
+> 
+> Le ven. 7 avr. 2023 à 14:59, Alexandre Mergnat <amergnat@baylibre.com> a écrit :
 > >
-> > This is a bit odd, since set_parent() is there to, as its name implies,
-> > change the parent of a clock. However, the most likely candidate to
-> > trigger that parent change is a call to clk_set_rate(), with
-> > determine_rate() figuring out which parent is the best suited for a
-> > given rate.
+> > Add binding description for mediatek,mt8365-wdt
 > >
-> > The other trigger would be a call to clk_set_parent(), but it's far less
-> > used, and it doesn't look like there's any obvious user for that clock.
+> > Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> > Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> > Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> > ---
+> >  Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml | 1 +
+> >  1 file changed, 1 insertion(+)
 > >
-> > So, the set_parent hook is effectively unused, possibly because of an
-> > oversight. However, it could also be an explicit decision by the
-> > original author to avoid any reparenting but through an explicit call to
-> > clk_set_parent().
+> > diff --git a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+> > index 55b34461df1b..66cacea8e47f 100644
+> > --- a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+> > +++ b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+> > @@ -38,6 +38,7 @@ properties:
+> >                - mediatek,mt7623-wdt
+> >                - mediatek,mt7629-wdt
+> >                - mediatek,mt8173-wdt
+> > +              - mediatek,mt8365-wdt
+> >                - mediatek,mt8516-wdt
+> >            - const: mediatek,mt6589-wdt
 > >
-> > The latter case would be equivalent to setting the flag
-> > CLK_SET_RATE_NO_REPARENT, together with setting our determine_rate hook
-> > to __clk_mux_determine_rate(). Indeed, if no determine_rate
-> > implementation is provided, clk_round_rate() (through
-> > clk_core_round_rate_nolock()) will call itself on the parent if
-> > CLK_SET_RATE_PARENT is set, and will not change the clock rate
-> > otherwise. __clk_mux_determine_rate() has the exact same behavior when
-> > CLK_SET_RATE_NO_REPARENT is set.
 > >
-> > And if it was an oversight, then we are at least explicit about our
-> > behavior now and it can be further refined down the line.
+> > --
+> > 2.25.1
 > >
-> > Signed-off-by: Maxime Ripard <maxime@cerno.tech> =20
->=20
-> LGTM, so
-> Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
-
-I searched for 'possible callers', I didn't find any places
-where this would be used on the consumer side. However, downstream,
-there is a rzn1-clock-bitselect.c clock driver which states:
-
-+ * This clock provider handles the case of the RZN1 where you have periphe=
-rals
-+ * that have two potential clock source and two gates, one for each of the
-+ * clock source - the used clock source (for all sub clocks) is selected b=
-y a
-+ * single bit.
-+ * That single bit affects all sub-clocks, and therefore needs to change t=
-he
-+ * active gate (and turn the others off) and force a recalculation of the =
-rates.
-
-I don't know how much of this file has been upstreamed (under a
-different form) but this might very well be related to the fact that
-reparenting in some cases would be a major issue and thus needs to be
-avoided unless done on purpose (guessing?).
-
-Maybe Ralph can comment, but for what I understand,
-
-Reviewed-by: Miquel Raynal <miquel.raynal@bootlin.com>
-
-> But I do not have the hardware.
->=20
-> > --- a/drivers/clk/renesas/r9a06g032-clocks.c
-> > +++ b/drivers/clk/renesas/r9a06g032-clocks.c
-> > @@ -1121,6 +1121,7 @@ static int r9a06g032_clk_mux_set_parent(struct cl=
-k_hw *hw, u8 index)
-> >  }
-> >
-> >  static const struct clk_ops clk_bitselect_ops =3D {
-> > +       .determine_rate =3D __clk_mux_determine_rate,
-> >         .get_parent =3D r9a06g032_clk_mux_get_parent,
-> >         .set_parent =3D r9a06g032_clk_mux_set_parent,
-> >  };
-> > @@ -1145,7 +1146,7 @@ r9a06g032_register_bitsel(struct r9a06g032_priv *=
-clocks,
-> >
-> >         init.name =3D desc->name;
-> >         init.ops =3D &clk_bitselect_ops;
-> > -       init.flags =3D CLK_SET_RATE_PARENT;
-> > +       init.flags =3D CLK_SET_RATE_PARENT | CLK_SET_RATE_NO_REPARENT;
-> >         init.parent_names =3D names;
-> >         init.num_parents =3D 2;
-> > =20
->=20
-> Gr{oetje,eeting}s,
->=20
->                         Geert
->=20
-
-Thanks,
-Miqu=C3=A8l
 
