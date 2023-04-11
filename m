@@ -4,51 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B1D3C7619A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 08:21:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85617C7619A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 08:22:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wqXsqrzC2w5P/PUMHHwh4JD7qbM+8tQV1CmD0iRV9Uw=; b=Gq2UfVXNMMOWGMlDXs3ZuYHSwh
-	YgDFDwEZtTZngs4WJHRI+cf1fQoQ40yjFU862DnqJonB6egxlQ7hTrYwBYBP0g3GJb8ovcOCSDKj4
-	WTGAqy30B5Y4x3ugO7DVmR5Ee4w8sS6D47kDbnc6+zPsV5Tmrdh2AI6xXBuqk96p6S9aaVOSgCj7G
-	miBKzFNivs4GGJJFzJ9pMoVsA3FLLWz9klBusFxkm+wpoISBqryeSQPsmP3/dnJn8c4b1CeqKzTAB
-	9K0QXJBr2EMU9hJ8eCqK6W11LzhdM4kLWIPEfamaAVKUAKYmbNKdDU6FdR3ocQfQiTolYU5eMe1c/
-	vUR41NOg==;
+	bh=s4yCh2IFZ25gTi44TvKiQR2o8rJNQWTd7LOFC4tJUGA=; b=m6eg5IC7G9bvj05UzTEOzbXVF6
+	8iu9J2AOmhe+ECAwh0NjJqU8ODK+X7ln+DBC6Cm5TZ7GKs+3Z8amyJmxVQy+1x0PlUdLkPTQf7uUe
+	mlEY1sg4zPKSGyYvdzj/4/DVIHDlrxe04KF2pzmR6rN2301lsogFOTbshBGANyq9NjAj1lIrJ6hD9
+	eWbQfOhyDHiNkMYNulKfws7EgZj0fnmJOe0xUbPQuDcX4OpG1gjMIlI4wSNfVCYR+yjW57GspmA25
+	UTpBElnrUHL89wzhe1caOz00DS/jZlKCAiZ61F7rtIIwxG+0pioBqoFvvfLE//5WdFmuF04IM83OF
+	TLjAwSTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pm9GA-00Gpxf-1I;
-	Tue, 11 Apr 2023 08:21:50 +0000
+	id 1pm9Gp-00GqJj-07;
+	Tue, 11 Apr 2023 08:22:31 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pm9Fz-00Gppw-1K;
-	Tue, 11 Apr 2023 08:21:45 +0000
+	id 1pm9Ge-00GqD9-0j;
+	Tue, 11 Apr 2023 08:22:26 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6299C66031E7;
-	Tue, 11 Apr 2023 09:21:36 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C97A466031E9;
+	Tue, 11 Apr 2023 09:22:17 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1681201297;
-	bh=wqXsqrzC2w5P/PUMHHwh4JD7qbM+8tQV1CmD0iRV9Uw=;
+	s=mail; t=1681201339;
+	bh=hvRLTruikuzHoGIAziMiEYGR8Or1q+1dehgCP7XVjVQ=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=OjW5+CzjphRe4NLi71G5c+aZK6nkasJ4+4VZrwUUewZHjK9mMPkPAl7I5vIq1c24u
-	 HPFICq0ZVDurlZnOknhnut9sXx10F0aPrv30dGsSC3RIMhbn3MSu0aCL6KkH19kj4X
-	 ijDruZAj8sZM5lE5PnpY44Px6FT6XqBliiGw5mUHiDQwAxKr8l/Ix++qUnSzjX5HH7
-	 vhmvgJDnCALsVwkH14blm33U7mdyu+Dy/xJU2F6tjeUUR2s6wF+x97V3XVGhtOmTLc
-	 6X0DhbJZqXvTJo5zaDSgqGdhj1CRkbAMTSp7Js6WCehOc3zpw2+LOpMsQ5ImV9MUdz
-	 tFX/PrZTV68TA==
-Message-ID: <9760ba94-e6f2-9620-f2b1-4dc3102a6adb@collabora.com>
-Date: Tue, 11 Apr 2023 10:21:34 +0200
+	b=is+TzxSxRy6Qy2649H3i4F1Dihqygvu9Lwy1R/C5+F1F4ZjBj/+wVssxtH3tWUhxe
+	 fxoIbU6RU15oDJDVXSB0m897UTWeXAUBgWGcY6CnexyR1bgmikJWmCgJlM82s5MSGX
+	 j6S7VSciCZ06l13HuIfBmewhwj0VzGfSoAIY8RMS8F7NblZUwpFx7I9erZBAqMcoqc
+	 sOSFBGO/L3lmSfDUOXiF47u4MKfgmIgJMkIzFqc+hbKBup7f9QbCUAEVBxuzxxTMl5
+	 5JqkETcWEuLmCjQy2jIp15oOvbeFJAntf/O8fyzdasJs6h6zkyxNE1WqmV+sEzOh4b
+	 DrWwHOckVZUPw==
+Message-ID: <b968a3f6-1aba-fc72-a2fc-1b0d7944b07c@collabora.com>
+Date: Tue, 11 Apr 2023 10:22:14 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.9.1
-Subject: Re: [PATCH v5 02/12] arm64: defconfig: enable Mediatek PMIC key
+Subject: Re: [PATCH v5 05/12] arm64: dts: mediatek: add mt6357 PMIC support
+ for mt8365-evk
 Content-Language: en-US
 To: Alexandre Mergnat <amergnat@baylibre.com>,
  Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
@@ -67,14 +68,14 @@ Cc: linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
  Fabien Parent <fparent@baylibre.com>,
  Amjad Ouled-Ameur <aouledameur@baylibre.com>
 References: <20230203-evk-board-support-v5-0-1883c1b405ad@baylibre.com>
- <20230203-evk-board-support-v5-2-1883c1b405ad@baylibre.com>
+ <20230203-evk-board-support-v5-5-1883c1b405ad@baylibre.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230203-evk-board-support-v5-2-1883c1b405ad@baylibre.com>
+In-Reply-To: <20230203-evk-board-support-v5-5-1883c1b405ad@baylibre.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230411_012139_668657_F7239D70 
-X-CRM114-Status: UNSURE (   7.92  )
+X-CRM114-CacheID: sfid-20230411_012220_409461_9A836085 
+X-CRM114-Status: UNSURE (   8.71  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -91,12 +92,12 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 07/04/23 14:59, Alexandre Mergnat ha scritto:
+> This power management system chip integration helps to manage regulators
+> and keys.
+> 
 > Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 
-There's no commit description. Please add one, saying why this is needed.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-I know why, but there's people who don't.
 
-Regards,
-Angelo
 
