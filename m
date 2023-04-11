@@ -4,69 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4798C7619A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 08:16:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0AB2C7619A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 08:21:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pXqqFBg7SDVzwJkmN1Tw4+u3UyGoiHJ+I1HI/9ZXX2s=; b=Hc4H8fnUHiYLX9btObJB80FMCc
-	s7v9P7VdGe6JEEqORtU4ydEWQ/lafEBubz6/LS2OgZMmbHpco702OuCa/ZXwrMsGKOolzjSGpdbjJ
-	hh76SElgOcamg8pwH3OjAPVakHrGGcw33ZOUTFcTUuqTw/gkvLfUi9pFsf7IQCG2VPNXJa7NP2318
-	hSq0+BG8eBiYRX/IGiDNl6iRsjA0lBn4xL0V+EJ7J3UbHBQgUB7DAOF9yPhW9gTgNt/j/PW86O3ng
-	qIupifrXraB80v7sQZcEb8jxZciPYwBrakP1sxr4fNifBjJmgDwjaI88NDU1p7jXrN+1SxOxC4MAx
-	du1bpelA==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5dxn4NJiE3B4l0ky6etbuCAHmNrCsdSn8aiPhVJqzK0=; b=Xw2DJAF03O6BWOWR+GvlnQolD1
+	dJXMegTrq0U13iV0jH1tfDhX4ivzPssu7s+zAIKqnvqVGBUWe/pdOgqOvkuL7eXK1it8EICuoSXeI
+	DP91cKCzE8z2YRicf4gn3zFpatI8J66Gr6cdEz4CD7KcVz1Sg29yy4V0Ny5NeXj7UMu51Q7NzzFHE
+	0z7Cp6MUqpIIUJdSllVLI9FP120xBx5Kc0wTsSjZv6ONElfTYDYFCpTaJ1XSIS+PT+E1UvCWtBEHm
+	1k7d0p3SnNHn1ZKBUdTDAcnTe80tP76OLsniljfjGUC3vda9a5ygnbqVVYlnmrvReajNWDtEUSKAf
+	aF15jzAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pm9Aw-00Gnwy-1L;
-	Tue, 11 Apr 2023 08:16:26 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pm9FJ-00GpOF-1v;
+	Tue, 11 Apr 2023 08:20:57 +0000
+Received: from relay6-d.mail.gandi.net ([2001:4b98:dc4:8::226])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pm9At-00Gnv3-0q;
-	Tue, 11 Apr 2023 08:16:24 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id F1B8566031E3;
-	Tue, 11 Apr 2023 09:16:19 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1681200980;
-	bh=GrCHapiNl4l3fizzmjPO1MazlZDHXxK0RUGAvEI7QMQ=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=fMxnWqyudsFS08J1c5V9HkDeqBwajRKtokinSGtvUa3THNfsy3yg7Z9mznN031lVc
-	 31FaDYC4JOOD/fQpgh9OlTDGnDPw8rz2hINN9xYG3lr3HYDeiGLGYRcEv5mbYMe9Ma
-	 ipx4hBu65tfNr5JEeOG8tc7gYYpfLGTnLkenqsBPfdxmhu1xBSNGbJNCjiwO/arTqj
-	 eZVz2I+3bqu2ASjtZd5f8PIxSEgtpbVM2zqsw2QkDa6tlIAHO3/5qZbZUYHf42UqW1
-	 K7vK8pc5RMOxODIUNETHea5yJBCWiGrWKrwO8shlLTji8YCpP6i+e++Uzu1dhRPm88
-	 BaomvjIzzMdZw==
-Message-ID: <a903d765-d7b7-ea90-65fa-56c5b69295b3@collabora.com>
-Date: Tue, 11 Apr 2023 10:16:17 +0200
+	id 1pm9FE-00GpJo-2O;
+	Tue, 11 Apr 2023 08:20:54 +0000
+Received: (Authenticated sender: miquel.raynal@bootlin.com)
+	by mail.gandi.net (Postfix) with ESMTPSA id 86501C000B;
+	Tue, 11 Apr 2023 08:20:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1681201245;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=5dxn4NJiE3B4l0ky6etbuCAHmNrCsdSn8aiPhVJqzK0=;
+	b=ZsU8dYwTOc46TPHSbq5p16/9AQmMS/uUngPw/Ep3ffxRbxNAvDSBCBvcAy2pJthLsUo170
+	Rj2p9Mc9u19gW1370eOx7JvIAabcDATJDumAn+o4DLCQe7iYje0L16LYJobe4Ma8iY4S2M
+	hVT2XlKE7FDCpaVqWTtgFMG9mm77zh0cU7Io21vdLB2MKPq3F4zr/E7ECZswWoUCh/54s9
+	LxOZOxezaGsD/cMwwjzDu8L5qQzOGwesAiCNFf9eRpldZFKNpdmxXMmy52npYKIeX+l3mz
+	4g3Xo/1Q9fGa3R74wYDYHo17n1DEYEktLz9cH0XxSNGHCrcLqbBdY32P+qBBmQ==
+Date: Tue, 11 Apr 2023 10:20:25 +0200
+From: Miquel Raynal <miquel.raynal@bootlin.com>
+To: Uwe =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <u.kleine-koenig@pengutronix.de>
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>, Dmitry Torokhov
+ <dmitry.torokhov@gmail.com>, Lucas Stach <dev@lynxeye.de>, Vignesh
+ Raghavendra <vigneshr@ti.com>, Linus Walleij <linus.walleij@linaro.org>,
+ Miaoqian Lin <linmq006@gmail.com>, Stefan Agner <stefan@agner.ch>,
+ linux-mips@vger.kernel.org, Paul Cercueil <paul@crapouillou.net>,
+ linux-tegra@vger.kernel.org, Liang Yang <liang.yang@amlogic.com>, Naga
+ Sureshkumar Relli <nagasure@xilinx.com>, Jernej Skrabec
+ <jernej.skrabec@gmail.com>, linux-amlogic@lists.infradead.org, Chuanhong
+ Guo <gch981213@gmail.com>, linux-stm32@st-md-mailman.stormreply.com, Heiko
+ Stuebner <heiko@sntech.de>, Marek =?UTF-8?B?QmVow7pu?= <kabel@kernel.org>,
+ Samuel Holland <samuel@sholland.org>, Alexandre Torgue
+ <alexandre.torgue@foss.st.com>, Kevin Hilman <khilman@baylibre.com>,
+ linux-mediatek@lists.infradead.org, Krzysztof Kozlowski
+ <krzysztof.kozlowski@linaro.org>, Christophe Leroy
+ <christophe.leroy@csgroup.eu>, Jonathan Hunter <jonathanh@nvidia.com>,
+ linux-rockchip@lists.infradead.org, Tudor Ambarus
+ <tudor.ambarus@linaro.org>, Geert Uytterhoeven <geert@linux-m68k.org>, Yang
+ Yingliang <yangyingliang@huawei.com>, Jack Wang <jinpu.wang@ionos.com>,
+ Jerome Brunet <jbrunet@baylibre.com>, linux-sunxi@lists.linux.dev,
+ linux-arm-msm@vger.kernel.org, kernel@pengutronix.de, Arnd Bergmann
+ <arnd@arndb.de>, Manivannan Sadhasivam <mani@kernel.org>, Martin
+ Blumenstingl <martin.blumenstingl@googlemail.com>, ye xingchen
+ <ye.xingchen@zte.com.cn>, Vladimir Zapolskiy <vz@mleia.com>, Roger Quadros
+ <rogerq@kernel.org>, Wang Weiyang <wangweiyang2@huawei.com>, Harvey Hunt
+ <harveyhuntnexus@gmail.com>, Christophe JAILLET
+ <christophe.jaillet@wanadoo.fr>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Han Xu <han.xu@nxp.com>, Chen-Yu Tsai <wens@csie.org>,
+ linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Neil Armstrong
+ <neil.armstrong@linaro.org>, Christophe Kerello
+ <christophe.kerello@foss.st.com>, Stephen Boyd <sboyd@kernel.org>, Valentin
+ Korenblit <vkorenblit@sequans.com>, Nicolas Ferre
+ <nicolas.ferre@microchip.com>, linux-renesas-soc@vger.kernel.org, Kyungmin
+ Park <kyungmin.park@samsung.com>, Thierry Reding
+ <thierry.reding@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Richard Weinberger <richard@nod.at>, linux-mtd@lists.infradead.org,
+ linux-oxnas@groups.io, Pali =?UTF-8?B?Um9ow6Fy?= <pali@kernel.org>, Claudiu
+ Beznea <claudiu.beznea@microchip.com>
+Subject: Re: [PATCH] mtd: nand: Convert to platform remove callback
+ returning void
+Message-ID: <20230411102025.6b2fdc9e@xps-13>
+In-Reply-To: <20230408185332.d2g2ao4tdp6ltm4i@pengutronix.de>
+References: <20230401161938.2503204-1-u.kleine-koenig@pengutronix.de>
+	<20230407101043.299f5e22@xps-13>
+	<20230408185332.d2g2ao4tdp6ltm4i@pengutronix.de>
+Organization: Bootlin
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.1
-Subject: Re: [PATCH v3 1/2] dt-bindings: i2c: i2c-mt65xx: add MediaTek MT7981
- SoC
-Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>, linux-i2c@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- Qii Wang <qii.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Sam Shih <sam.shih@mediatek.com>
-References: <cover.1680857025.git.daniel@makrotopia.org>
- <4ad55cb4248db60111c20d833631a65854fa1d02.1680857025.git.daniel@makrotopia.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <4ad55cb4248db60111c20d833631a65854fa1d02.1680857025.git.daniel@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230411_011623_432917_56E0DD4A 
-X-CRM114-Status: UNSURE (   8.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230411_012053_088667_D96793A4 
+X-CRM114-Status: GOOD (  30.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,13 +111,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 10/04/23 18:19, Daniel Golle ha scritto:
-> Add compatible string for the I2C controllers found in the MediaTek
-> MT7981 SoC.
-> 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+Hi Uwe,
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+u.kleine-koenig@pengutronix.de wrote on Sat, 8 Apr 2023 20:53:32 +0200:
 
+> The .remove() callback for a platform driver returns an int which makes
+> many driver authors wrongly assume it's possible to do error handling by
+> returning an error code. However the value returned is (mostly) ignored
+> and this typically results in resource leaks. To improve here there is a
+> quest to make the remove callback return void. In the first step of this
+> quest all drivers are converted to .remove_new() which already returns
+> void.
+>=20
+> Trivially convert this driver from always returning zero in the remove
+> callback to the void returning variant.
+>=20
+> Acked-by: Nicolas Ferre <nicolas.ferre@microchip.com>
+> Reviewed-by: Paul Cercueil <paul@crapouillou.net>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> Acked-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+> Reviewed-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+> Acked-by: Roger Quadros <rogerq@kernel.org>
+> Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
+> Acked-by: Thierry Reding <treding@nvidia.com>
+> Signed-off-by: Uwe Kleine-K=C3=B6nig <u.kleine-koenig@pengutronix.de>
+> ---
+>=20
+> Hey Miquel,
+>=20
+> On Fri, Apr 07, 2023 at 10:10:43AM +0200, Miquel Raynal wrote:
+> > I've looked at the different patches, they look good to me but as they
+> > are all trivial and exactly identical, would you mind sending this
+> > again all squashed in a single patch? A subsystem-wide conversion seems
+> > appropriate. In all cases I plan to take this for the next merge
+> > window. =20
+>=20
+> I slightly prefer them separately, because I like small patches and
+> because the Acks and Reviews only apply to the individual drivers.
+> But I don't mind seriously, so here comes the series squashed into one.
 
+For any non trivial change, I would definitely do that as well.
+
+The thing is, by collecting the tags with b4, you lost all the Acks and
+Reviews targets, while we could prevent this, see below.
+
+> While going through the changed, probably the s3c24xx driver (which
+> isn't exactly identical to the other changes) could benefit from an
+> additional change throwing out the early exit (which---I guess---cannot
+> be hit).
+
+Yes, I believe the 'info =3D=3D NULL' condition is useless, feel free to
+drop it in a second patch if you wish.
+
+> BTW, I constructed the lists of acks/reviews myself and found the same
+> set. However b4 wailed about each patch claiming:
+>=20
+> 	    =E2=9C=97 BADSIG: DKIM/infradead.org
+
+No idea what this means, any pointer?
+
+> And it didn't like you producing the tags, saying:
+>=20
+> 	NOTE: some trailers ignored due to from/email mismatches:
+> 	    ! Trailer: Acked-by: Roger Quadros <rogerq@kernel.org>
+> 	     Msg From: Miquel Raynal <miquel.raynal@bootlin.com>
+> 	    [...]
+
+Well, yes, I don't expect b4 to read plain english when I say "I
+collected them for you" ^^ But at least my list had a '# <area>' suffix
+for each of the Acked and Reviewed changes, which is now missing. I
+don't know  how useful they actually are, but it seems to me that the
+information was lost between v1 and v2?
+
+Thanks,
+Miqu=C3=A8l
 
