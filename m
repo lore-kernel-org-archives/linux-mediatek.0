@@ -4,57 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4877C76196
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 14:20:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25FA1C77B6F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 14:54:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:In-Reply-To:Date:From:Cc:To:Subject:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	bh=rLsrKW5wCH2YEpDqMuv1nC+9omYEpVCw+1/fNbWN4iA=; b=nJqbdR1GrgKjKZvXg/bpwONi29
-	0WN4Hf3jRRz3WlWRVn8kwf8qTa5YjXzWiFXWZmVx0yz16CN+ziFe/IjUrOyczNo/bE4OqFE3bEWiN
-	VhCzdiih1vCYisD5B860bHWTX8o11HeVsy/T2rQTctUMeeY2ByYABQIxp4Rlj8bCGUFU3AF0yysfR
-	q0fqZpfmTz5z4dWWFThv5MI++Xo4xel1zKUC8veqd/p/Vn16CdALhjaZFJ/bFTgCP/poFe72+V5wf
-	c9YUhHwP6iPXV5D6v83KKiroKPz7W8vrJu8ikQGDZkWuhvtVVak/MaY8fJ5dWOftsVuejxjZe5tpP
-	rT2n1bfA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ooA/O5How6wQvdMPwj1oVf9NjGnfxxmKWhsoBtFQ4c0=; b=y/OIlHkhGhcb7SUDi9a8ZEZi8+
+	nhGb6Q80Ww9xLtTdNft1bvQdupSMa2fATOR9mcvhloj9CyKnIPvOQVZT76gZcydabQU8eEJKuFRCb
+	R13pIUSRG3jcpU+5m8QZe4tCZ7MZIN9Nv0hFRDLMFksLEXELAmbikWtIQk1rpVO54RBTKGqb+P4DT
+	MOo0Q61pvcG9fvzS5ibwwder8GCU62zn0kZ7R1DwsIB/4+KZhKsdQ5kOY15dY1QLAOG2m/qfx2dKK
+	MLO+//9A5xXvMasaNL6tusNbBFclvmkaMeh17kXjHfn8ituXpL48AkfhfUCPeWUPRgoVU4/7gY6xp
+	ChKZuWyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmEqk-000Egi-0z;
-	Tue, 11 Apr 2023 14:19:58 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pmFO6-000JXR-1n;
+	Tue, 11 Apr 2023 14:54:26 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmEqd-000Edh-3C;
-	Tue, 11 Apr 2023 14:19:53 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 8B96B626AF;
-	Tue, 11 Apr 2023 14:19:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A45F5C433EF;
-	Tue, 11 Apr 2023 14:19:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1681222791;
-	bh=z2Cy60V7wbYqOiOEMOTuYFMk4UORXhk+VBaCqRUDpNo=;
-	h=Subject:To:Cc:From:Date:In-Reply-To:From;
-	b=icnqM5NjCCQkHHxddZOKAEithhKV0gYID7yqsLWRnutPu719lWEKTUI+lc4AE4oSz
-	 B89xAJRYRYsYz6dVTKwLS22B85ZwB09gCzuyKQibQhVcVH08iyOgj5FlRMa+MA8bw6
-	 1ABeR0j0UVSG0fZ3a2NtIL1meI3S7lLk4HHO/r78=
-Subject: Patch "irqdomain: Look for existing mapping only once" has been added to the 5.4-stable tree
-To: gregkh@linuxfoundation.org,hsinyi@chromium.org,johan+linaro@kernel.org,linux-arm-kernel@lists.infradead.org,linux-mediatek@lists.infradead.org,mark-pk.tsai@mediatek.com,matthias.bgg@gmail.com,maz@kernel.org,tglx@linutronix.de
-Cc: <stable-commits@vger.kernel.org>
-From: <gregkh@linuxfoundation.org>
-Date: Tue, 11 Apr 2023 16:19:38 +0200
-In-Reply-To: <20230322124550.29812-1-mark-pk.tsai@mediatek.com>
-Message-ID: <2023041137-strobe-decimeter-a2fe@gregkh>
+	id 1pmFO2-000JWd-2N;
+	Tue, 11 Apr 2023 14:54:23 +0000
+Received: by mail-ej1-x629.google.com with SMTP id ud9so20889739ejc.7;
+        Tue, 11 Apr 2023 07:54:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1681224860;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=ooA/O5How6wQvdMPwj1oVf9NjGnfxxmKWhsoBtFQ4c0=;
+        b=qfMaiqu0EvyxBXJQV5iXyTIteNFwIp0kn8IXJ+o4Az9OdrCE9VDs6EwSVZQlWYbM2r
+         0MC7x+fv9U9MFiDopk0B/XMmtjYn074RbaOslhcR817eOP5y6G+e3jCLW5S/OTraueQ2
+         6iEd/czylPiPpA0BR19KncZbLxMd5pZ7xcuR10nXXVAaMWItAap1rtVrzdhj4uqXmtIQ
+         EZNlbnJ7Xsp35jBwgYryuVnJhul2IksKBKhDqlS1B3phYWL0QHsyFWHPIzAUa1eaOUEI
+         93U/JkwQ/rFKY5QY6p1Vd6Ue/VlqdBPmdrRywUO08v3i7MZX21EjCP4Lk1bkUASDTXEX
+         uu3Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1681224860;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ooA/O5How6wQvdMPwj1oVf9NjGnfxxmKWhsoBtFQ4c0=;
+        b=OfR3NO22Qf33nQpd0s/V5kAAZ1T5QU7I1INMmFEjtz02c6TH8LMGMwIFc6NFPz+Q52
+         9yqWIQHfbVkVg4RgIahCAs3Sf4qQGtz84ed5F3iqQnYUo7jgPD/D2fQIkOi0EE2x25nY
+         FE59HkOjIIm3m9L3L1z0YO2JEFQxAoUZGOsi2nfUeW7JpOBuxCujWFxdYgMII9/FxE39
+         F0JDv0eOWezepFV3Smgd9QOsj6MFmfTB4A5v2nEllKnR+av2N8U1ZwdF1fAW3GzBWoA3
+         8b+CFmwHMPDvHAep/FwrfE5MxC5xSXXKnuoWE5vpr2p+5QnUTRZvq7VSVVaQJU6FdhjE
+         dyIw==
+X-Gm-Message-State: AAQBX9dXWggFLJ5Cl2ybvk7WxT8XoUDVFXlTO1mS5Xif49C8xOocKMp4
+	lZFlnqx3dTly+5MGvd8FaKU=
+X-Google-Smtp-Source: AKy350bG/mKyWotWt/5WTONtgPkIJlgfNGN0xCvfvLkEQA0SDIwmC8iy16B3Z2wDkS0Ug3nwQcT6gA==
+X-Received: by 2002:a17:906:70cf:b0:939:e870:2b37 with SMTP id g15-20020a17090670cf00b00939e8702b37mr12602594ejk.70.1681224859587;
+        Tue, 11 Apr 2023 07:54:19 -0700 (PDT)
+Received: from skbuf ([188.27.184.189])
+        by smtp.gmail.com with ESMTPSA id z21-20020a17090674d500b0094e1026bc66sm975125ejl.140.2023.04.11.07.54.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 11 Apr 2023 07:54:19 -0700 (PDT)
+Date: Tue, 11 Apr 2023 17:54:16 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: arinc9.unal@gmail.com
+Subject: Re: [RFC PATCH v2 net-next 06/14] net: dsa: mt7530: do not set CPU
+ port interfaces to PHY_INTERFACE_MODE_NA
+Message-ID: <20230411145416.kovyu3wb3dhtgbl4@skbuf>
+References: <20230407134626.47928-1-arinc.unal@arinc9.com>
+ <20230407134626.47928-7-arinc.unal@arinc9.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=ANSI_X3.4-1968
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-stable: commit
-X-Patchwork-Hint: ignore 
+In-Reply-To: <20230407134626.47928-7-arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230411_071952_105811_F2B24337 
-X-CRM114-Status: GOOD (  21.70  )
+X-CRM114-CacheID: sfid-20230411_075422_810928_7D0E8661 
+X-CRM114-Status: GOOD (  10.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,163 +88,20 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, erkin.bozoglu@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, Apr 07, 2023 at 04:46:18PM +0300, arinc9.unal@gmail.com wrote:
+> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+> 
+> There is no need to set priv->p5_interface and priv->p6_interface to
+> PHY_INTERFACE_MODE_NA on mt7530_setup() and mt7531_setup().
+> 
+> As Vladimir explained, in include/linux/phy.h we have:
+> 
+> Therefore, do not put 0 into a variable containing 0.
 
-This is a note to let you know that I've just added the patch titled
-
-    irqdomain: Look for existing mapping only once
-
-to the 5.4-stable tree which can be found at:
-    http://www.kernel.org/git/?p=linux/kernel/git/stable/stable-queue.git;a=summary
-
-The filename of the patch is:
-     irqdomain-look-for-existing-mapping-only-once.patch
-and it can be found in the queue-5.4 subdirectory.
-
-If you, or anyone else, feels it should not be added to the stable tree,
-please let <stable@vger.kernel.org> know about it.
-
-
-From stable-owner@vger.kernel.org Wed Mar 22 13:46:06 2023
-From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-Date: Wed, 22 Mar 2023 20:45:48 +0800
-Subject: irqdomain: Look for existing mapping only once
-To: Marc Zyngier <maz@kernel.org>, Thomas Gleixner <tglx@linutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Johan Hovold <johan+linaro@kernel.org>, <stable@vger.kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark-PK Tsai <mark-pk.tsai@mediatek.com>, <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Message-ID: <20230322124550.29812-1-mark-pk.tsai@mediatek.com>
-
-From: Johan Hovold <johan+linaro@kernel.org>
-
-commit 6e6f75c9c98d2d246d90411ff2b6f0cd271f4cba upstream.
-
-Avoid looking for an existing mapping twice when creating a new mapping
-using irq_create_fwspec_mapping() by factoring out the actual allocation
-which is shared with irq_create_mapping_affinity().
-
-The new helper function will also be used to fix a shared-interrupt
-mapping race, hence the Fixes tag.
-
-Fixes: b62b2cf5759b ("irqdomain: Fix handling of type settings for existing mappings")
-Cc: stable@vger.kernel.org      # 4.8
-Tested-by: Hsin-Yi Wang <hsinyi@chromium.org>
-Tested-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-Signed-off-by: Johan Hovold <johan+linaro@kernel.org>
-Signed-off-by: Marc Zyngier <maz@kernel.org>
-Link: https://lore.kernel.org/r/20230213104302.17307-5-johan+linaro@kernel.org
-Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
----
- kernel/irq/irqdomain.c |   62 ++++++++++++++++++++++++++-----------------------
- 1 file changed, 34 insertions(+), 28 deletions(-)
-
---- a/kernel/irq/irqdomain.c
-+++ b/kernel/irq/irqdomain.c
-@@ -672,6 +672,34 @@ unsigned int irq_create_direct_mapping(s
- }
- EXPORT_SYMBOL_GPL(irq_create_direct_mapping);
- 
-+static unsigned int __irq_create_mapping_affinity(struct irq_domain *domain,
-+						  irq_hw_number_t hwirq,
-+						  const struct irq_affinity_desc *affinity)
-+{
-+	struct device_node *of_node = irq_domain_get_of_node(domain);
-+	int virq;
-+
-+	pr_debug("irq_create_mapping(0x%p, 0x%lx)\n", domain, hwirq);
-+
-+	/* Allocate a virtual interrupt number */
-+	virq = irq_domain_alloc_descs(-1, 1, hwirq, of_node_to_nid(of_node),
-+				      affinity);
-+	if (virq <= 0) {
-+		pr_debug("-> virq allocation failed\n");
-+		return 0;
-+	}
-+
-+	if (irq_domain_associate(domain, virq, hwirq)) {
-+		irq_free_desc(virq);
-+		return 0;
-+	}
-+
-+	pr_debug("irq %lu on domain %s mapped to virtual irq %u\n",
-+		hwirq, of_node_full_name(of_node), virq);
-+
-+	return virq;
-+}
-+
- /**
-  * irq_create_mapping_affinity() - Map a hardware interrupt into linux irq space
-  * @domain: domain owning this hardware interrupt or NULL for default domain
-@@ -684,49 +712,27 @@ EXPORT_SYMBOL_GPL(irq_create_direct_mapp
-  * on the number returned from that call.
-  */
- unsigned int irq_create_mapping_affinity(struct irq_domain *domain,
--				       irq_hw_number_t hwirq,
--				       const struct irq_affinity_desc *affinity)
-+					 irq_hw_number_t hwirq,
-+					 const struct irq_affinity_desc *affinity)
- {
--	struct device_node *of_node;
- 	int virq;
- 
--	pr_debug("irq_create_mapping(0x%p, 0x%lx)\n", domain, hwirq);
--
--	/* Look for default domain if nececssary */
-+	/* Look for default domain if necessary */
- 	if (domain == NULL)
- 		domain = irq_default_domain;
- 	if (domain == NULL) {
- 		WARN(1, "%s(, %lx) called with NULL domain\n", __func__, hwirq);
- 		return 0;
- 	}
--	pr_debug("-> using domain @%p\n", domain);
--
--	of_node = irq_domain_get_of_node(domain);
- 
- 	/* Check if mapping already exists */
- 	virq = irq_find_mapping(domain, hwirq);
- 	if (virq) {
--		pr_debug("-> existing mapping on virq %d\n", virq);
-+		pr_debug("existing mapping on virq %d\n", virq);
- 		return virq;
- 	}
- 
--	/* Allocate a virtual interrupt number */
--	virq = irq_domain_alloc_descs(-1, 1, hwirq, of_node_to_nid(of_node),
--				      affinity);
--	if (virq <= 0) {
--		pr_debug("-> virq allocation failed\n");
--		return 0;
--	}
--
--	if (irq_domain_associate(domain, virq, hwirq)) {
--		irq_free_desc(virq);
--		return 0;
--	}
--
--	pr_debug("irq %lu on domain %s mapped to virtual irq %u\n",
--		hwirq, of_node_full_name(of_node), virq);
--
--	return virq;
-+	return __irq_create_mapping_affinity(domain, hwirq, affinity);
- }
- EXPORT_SYMBOL_GPL(irq_create_mapping_affinity);
- 
-@@ -866,7 +872,7 @@ unsigned int irq_create_fwspec_mapping(s
- 			return 0;
- 	} else {
- 		/* Create mapping */
--		virq = irq_create_mapping(domain, hwirq);
-+		virq = __irq_create_mapping_affinity(domain, hwirq, NULL);
- 		if (!virq)
- 			return virq;
- 	}
-
-
-Patches currently in stable-queue which might be from stable-owner@vger.kernel.org are
-
-queue-5.4/irqdomain-fix-mapping-creation-race.patch
-queue-5.4/irqdomain-refactor-__irq_domain_alloc_irqs.patch
-queue-5.4/irqdomain-look-for-existing-mapping-only-once.patch
+The explanation is unnecessarily long. I only provided it to make sure
+you understand.
 
