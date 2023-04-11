@@ -4,125 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7B8EC77B6F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 13:43:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA95AC77B6F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 14:19:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YG/a/d5U809a62Azy9i6h0lXlFjsDlTWJ9pqm8OP5bU=; b=A7aB6rtX2G/qW3XwlyjqFZPgz7
-	dPflylqDW10JqQH2BttMSBi/L+UPnP/m/IeoQ2YL4ss9GV9+7tueU3Q+dF4UTovg9G59yPARFHiBR
-	GDeTistRo0Ol5XMNCCMDcH/m6C9FfHIPJ8+rRZHIf71s1bV9Z7HealOXxnTMKBl1i/4K5/2/0P6gV
-	xnG8h4ZmbhgGyAS9mP51P9xmV8rnwsYsA+hbHqxjo2g89k+U4opr5283BU/bM7ZCVqQ5zSTnXB7EP
-	H6Fc6yHAyI0gxe3Sp416tmj4U4n1Hiyc4NqDNpSfLkisOORJk/6YdJ0tuEL9QybBct0tiesfddQpr
-	UaciPjrw==;
+	bh=EJY31vKESSqQgSiQdnKI3X1ewto8Z9NZDuHi7S6nkrY=; b=jQseKmdLrh04hvJZWXaa1fv9om
+	tRo3TBCt/Gh6XLJE38adx5bNxXsbX2KNRNXxUDQlc8d3Jn4oIJ7I3jMyK4U1EmxoPwwI2CEj9UKp0
+	S9ct7JmXY16H6FmJy2vGRU9SyRbtBW5j7VNE+RvJCHP8h1K60bmsCj9cYQDvkYWVY5G1xs+d3q8vy
+	vFjTrX/VhRZzx0ZBKWjqUZ7a9lR0zzgwcZAwumyrKpUor52KMxb0DG7e0fGPMtdJo5sfT4DZ5lhxW
+	CvzcnMvItIjJ8kUJsW7B16ZYhKDLr3S9Y0ZWhIznZW0WlFwuJQ8ZxXwlXi3YmLXHXQ5Jojcn91AFp
+	B6FYqAPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmEHL-0008wk-1q;
-	Tue, 11 Apr 2023 13:43:23 +0000
-Received: from relay3-d.mail.gandi.net ([217.70.183.195])
+	id 1pmEpx-000ETs-0V;
+	Tue, 11 Apr 2023 14:19:09 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmEHG-0008vi-2z;
-	Tue, 11 Apr 2023 13:43:20 +0000
-Received: (Authenticated sender: miquel.raynal@bootlin.com)
-	by mail.gandi.net (Postfix) with ESMTPSA id 9447D60012;
-	Tue, 11 Apr 2023 13:43:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1681220595;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=YG/a/d5U809a62Azy9i6h0lXlFjsDlTWJ9pqm8OP5bU=;
-	b=hHX8UiCAZtL5szZpK25h+QcFJybRGblg1lJQbRfyMx4JhQP74URDH1PKlY0KtXD3u0AO2m
-	+ojA1YL+HugJT1SJVxxR1NYpviqZqbbpow2rLTyNqPi0WoFB5rz7YxXiVuAr4g5gmsiyxL
-	8xeH9vyYgmP34C7BrjUOpRtzFxvVV8P2UmIaJD4/UQDa583WTuDsx7Ds98idmyBl2HFpp3
-	zvTwQvoQEzuSkPafSJjtVuXbFV4hd7FtG06jKqZ6fcBnTEJrP4zP/9kNobxXCtGcqWgOlE
-	Ef+hIJk5W9JQ94A7C/XGwiY1NyrQCIQ80fZuj6vDKRBjxmLd8EqRkNBiqztvTA==
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-To: =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
-	Miquel Raynal <miquel.raynal@bootlin.com>
-Cc: Vignesh Raghavendra <vigneshr@ti.com>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	Naga Sureshkumar Relli <nagasure@xilinx.com>,
-	Tudor Ambarus <tudor.ambarus@linaro.org>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Yang Yingliang <yangyingliang@huawei.com>,
-	ye xingchen <ye.xingchen@zte.com.cn>,
-	Valentin Korenblit <vkorenblit@sequans.com>,
-	Wang Weiyang <wangweiyang2@huawei.com>,
-	=?utf-8?q?Pali_Roh=C3=A1r?= <pali@kernel.org>,
-	=?utf-8?q?Marek_Beh=C3=BAn?= <kabel@kernel.org>,
-	Han Xu <han.xu@nxp.com>,
-	Harvey Hunt <harveyhuntnexus@gmail.com>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Vladimir Zapolskiy <vz@mleia.com>,
-	Geert Uytterhoeven <geert@linux-m68k.org>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Liang Yang <liang.yang@amlogic.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Christophe Leroy <christophe.leroy@csgroup.eu>,
-	Phil Edworthy <phil.edworthy@renesas.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Chuanhong Guo <gch981213@gmail.com>,
-	Roger Quadros <rogerq@kernel.org>,
-	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Arnd Bergmann <arnd@arndb.de>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Miaoqian Lin <linmq006@gmail.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Christophe Kerello <christophe.kerello@foss.st.com>,
-	Jack Wang <jinpu.wang@ionos.com>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Stefan Agner <stefan@agner.ch>,
-	Lucas Stach <dev@lynxeye.de>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Richard Weinberger <richard@nod.at>,
-	linux-mediatek@lists.infradead.org,
-	linux-mips@vger.kernel.org,
-	linux-sunxi@lists.linux.dev,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-mtd@lists.infradead.org,
-	kernel@pengutronix.de,
-	linux-arm-msm@vger.kernel.org,
-	linux-tegra@vger.kernel.org,
-	linux-amlogic@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-arm-kernel@lists.infradead.org,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	=?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Thierry Reding <treding@nvidia.com>
-Subject: Re: [PATCH v3] mtd: nand: Convert to platform remove callback returning void
-Date: Tue, 11 Apr 2023 15:43:04 +0200
-Message-Id: <20230411134305.445759-1-miquel.raynal@bootlin.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230411113816.3472237-1-u.kleine-koenig@pengutronix.de>
-References: 
+	id 1pmEpt-000ESe-1Z;
+	Tue, 11 Apr 2023 14:19:06 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id B38F46258A;
+	Tue, 11 Apr 2023 14:19:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 76958C4339B;
+	Tue, 11 Apr 2023 14:19:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1681222744;
+	bh=CRz1qKpKwD8iOnTccK2DJ8nejiS+LrBWdZansG+v2EA=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=ts4sT5p2+hBzUiZXcfVFsOx79tgIGcMH1lo+o6Rs1Ct7XWGHd/ynTuAWO1yazDV8h
+	 m73m6+/csj4UjqarwfQ76oOBMoCF40nOdoTe3dtlgHJOH2fAiQ7n+v6hrdYs9mqlW3
+	 5HIQSZRaerGGJFiwwOq+EAjY/UqVDLKoKjbPdth1fomaiHyG887M0vEtOZye6hcUrQ
+	 JjMUBDv0SAnvEfUumaO+aO+Q+wtuX7u5MdbwHPdgCv8lazawaxFMSM67bBzHv9oUlH
+	 8YK00fregUCzwove319mBVhj26tc8L5x0OnIEOgbsOZO0WpHV5YYpIPgj1IoKZpdyy
+	 wGhtVG2+lfvzw==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Trevor Wu <trevor.wu@mediatek.com>, Guenter Roeck <groeck@chromium.org>, 
+ Aashish Sharma <shraash@google.com>
+Cc: alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ kernel test robot <lkp@intel.com>, Julia Lawall <julia.lawall@inria.fr>
+In-Reply-To: <20230411003431.4048700-1-shraash@google.com>
+References: <20230411003431.4048700-1-shraash@google.com>
+Subject: Re: [PATCH] ASoC: mediatek: common: Fix refcount leak in
+ parse_dai_link_info
+Message-Id: <168122274119.54453.4476599786792187877.b4-ty@kernel.org>
+Date: Tue, 11 Apr 2023 15:19:01 +0100
 MIME-Version: 1.0
-X-linux-mtd-patch-notification: thanks
-X-linux-mtd-patch-commit: b'ec185b18c22323cb0cde0319fa90b3e467b1ed2d'
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.13-dev-00303
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230411_064319_227861_A6C5D091 
-X-CRM114-Status: GOOD (  13.66  )
+X-CRM114-CacheID: sfid-20230411_071905_560735_CBFC2682 
+X-CRM114-Status: GOOD (  13.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,32 +79,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2023-04-11 at 11:38:16 UTC, =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= wrote:
-> The .remove() callback for a platform driver returns an int which makes
-> many driver authors wrongly assume it's possible to do error handling by
-> returning an error code. However the value returned is (mostly) ignored
-> and this typically results in resource leaks. To improve here there is a
-> quest to make the remove callback return void. In the first step of this
-> quest all drivers are converted to .remove_new() which already returns
-> void.
+On Tue, 11 Apr 2023 06:04:31 +0530, Aashish Sharma wrote:
+> Add missing of_node_put()s before the returns to balance
+> of_node_get()s and of_node_put()s, which may get unbalanced
+> in case the for loop 'for_each_available_child_of_node' returns
+> early.
 > 
-> Trivially convert this driver from always returning zero in the remove
-> callback to the void returning variant.
 > 
-> Acked-by: Tudor Ambarus <tudor.ambarus@linaro.org>
-> Acked-by: Nicolas Ferre <nicolas.ferre@microchip.com> # atmel
-> Reviewed-by: Paul Cercueil <paul@crapouillou.net> # ingenic
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org> # ingenic
-> Acked-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com> # intel
-> Reviewed-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com> # meson
-> Acked-by: Roger Quadros <rogerq@kernel.org> # omap_elm
-> Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be> # renesas
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de> # rockchip
-> Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com> # sunxi
-> Acked-by: Thierry Reding <treding@nvidia.com> # tegra
-> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
 
-Applied to https://git.kernel.org/pub/scm/linux/kernel/git/mtd/linux.git nand/next, thanks.
+Applied to
 
-Miquel
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+
+Thanks!
+
+[1/1] ASoC: mediatek: common: Fix refcount leak in parse_dai_link_info
+      commit: beed115c2ce78f990222a29abed042582df4e87c
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
