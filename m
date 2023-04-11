@@ -4,59 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF0F9C77B61
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 00:11:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C938CC77B61
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 00:34:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:From:
+	Subject:Message-ID:Mime-Version:Date:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=PwDNwnu45uNJkcjW3fc8b1bSVRqg7U+HFWkF444tmmY=; b=reWZcB+3sTzo7aO8UVx2tfnt6c
-	bI9Css1zF2rZjFMZMShMkjP6DnIIyIyg099AmzrCHTq/kTdk6oo5M74z7Alyb1mqh1rOCbS0TQVon
-	sd8+Av1jbrjyqoARguZmZsgj8QK20K1UXpBBqzrGGT7bmqUksfTj5L47tlGcMUStVEYoVUzq6UHtb
-	SMomM4a6KmLBJDDyR0XTotCqmDNh2nAi9yTt5FOR0czheSXyEA4emt4bN6lDzAeO7onskHCuANt5v
-	RzUNETrCyGOOAMOcL6liDyN2WscHphaoFIULQ4QmDJuOnq1SPCYnGB99jBuY12M/mwI61MT7jxgvq
-	Fp6AOTag==;
+	bh=VV8PXIioY+lpB4ukX6X0D5BOfhtAOO5OAgem+yfBPzU=; b=emNSnwkWUrMgPiF3M/NlsBoZD1
+	rqcexpwMJ4N2rdQgtgomlCgR2DbB4Ugq0VfWTgLbMY8NsjgNcO6D54HjG37IdzaKfIIexk0yEcMYD
+	Dlqomfj69WDV0mAh481gG7dBjrjPB+VyRErAdFZs5r7KsxnteJ8BV7Qfah2DCPMs3lFB8Vp8cvo+R
+	VEC7CRL8w2+ma4ZbNmhBDVRDyP9vxN0gCezPAAhGCPn+r35ji21Ee0vX45Z7onBzBdafLIsWBOrxh
+	cmLlzIFl36YhNKRcL4Y1q+jsxDpgYNVSz1TzcT+YgY8wGI/rQgTfoTQOBo0C5gL0L1moWql6+bSNy
+	cIQdzdow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pm1bb-00G8TD-2z;
-	Tue, 11 Apr 2023 00:11:27 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1pm1yH-00G9pn-1G;
+	Tue, 11 Apr 2023 00:34:53 +0000
+Received: from mail-yw1-x114a.google.com ([2607:f8b0:4864:20::114a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pm1bY-00G8Sb-1X;
-	Tue, 11 Apr 2023 00:11:25 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1pm1bP-0007rm-1O;
-	Tue, 11 Apr 2023 02:11:15 +0200
-Date: Tue, 11 Apr 2023 01:11:07 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	=?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
-	Russell King <linux@armlinux.org.uk>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Paolo Abeni <pabeni@redhat.com>, Jakub Kicinski <kuba@kernel.org>,
-	Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>
-Subject: [PATCH net-next] net: dsa: mt7530: fix support for MT7531BE
-Message-ID: <ZDSlm-0gyyDZXy_k@makrotopia.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+	id 1pm1yC-00G9oZ-12
+	for linux-mediatek@lists.infradead.org;
+	Tue, 11 Apr 2023 00:34:52 +0000
+Received: by mail-yw1-x114a.google.com with SMTP id 00721157ae682-54c08fa9387so142240987b3.10
+        for <linux-mediatek@lists.infradead.org>; Mon, 10 Apr 2023 17:34:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20210112; t=1681173285;
+        h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=VV8PXIioY+lpB4ukX6X0D5BOfhtAOO5OAgem+yfBPzU=;
+        b=DwHddE9ICDDWjQSM54RArNBxPbpLZ/n6gkwcx9BCskxL2erXnG3TX1P1/lmatz71h8
+         e94TF8KXKDvpyL4+PvFL49b96iK4zjO7oAD6oKVkKVTugVr/ROAVKTo6DG3IYXBNNIwd
+         KZwGLSxNmgNkFDNODIwPNAG9WGleBFL4Lg8DGM0uPXamolTJCKG1FeSxuwZta+gWzIs8
+         GEieLq6UzVi9zxIKuSHQrSuVRgg613rdEsagFCHxGrV1UU9im61ClVqEDPa9FRAv74zx
+         VtHQ3ba/QpGls+Yf8jJ9cbGHYt0miiDAZ36gBf5/V7GI1LYNdafonbUf2M4vYCef0HDE
+         FW+Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1681173285;
+        h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=VV8PXIioY+lpB4ukX6X0D5BOfhtAOO5OAgem+yfBPzU=;
+        b=7KK7KymIHqg1hWOFxWQiuCev8whfg4P7qAiamC/6J9JMybwODDY6JL/dyuMGRQA9Qx
+         XFGITfvWlHpDLD0dXhQKfCFAscTaWeO5SkGNbT50eJfzGTA/XXgSAvAxKH8tGWglR1MW
+         /zKOxucYY7jKygm4NyURCnZdvpPORj2DNQ4baQDnLa+hwVGRdzHpvAEBP7EwRt5BDIA2
+         zmG/unSUiWCEIJDVL5AUxj8Ti/GQR/hlTfZ7sQHsvtubHQy5fo4YiigPtZEnf/bAFOvv
+         fKgIPt8bOmUIqMOGrEsun/TE9aMg1xuP5z2cWHFAkfdg35+o7BZrvbgO0xfQ0FKc+0+6
+         jIZg==
+X-Gm-Message-State: AAQBX9ecdGhmGgD64cc2ppT1wjzAJaNAqYLTfqmJ8tmqF4Rxc1HaWH7J
+	hDuhOSaLg+HxWItO4zkwwNsCHfFPNZCt
+X-Google-Smtp-Source: AKy350ZOwDyxZ5zmnvjOtmK+m8d2Zb+sInKjo5gza1IG8xreF6QccHiFCV8qDL7zjDXDQLZcFmYPSNKGp1ua
+X-Received: from ezekiel.c.googlers.com ([fda3:e722:ac3:cc00:4f:4b78:c0a8:108e])
+ (user=shraash job=sendgmr) by 2002:a81:b284:0:b0:544:94fe:4244 with SMTP id
+ q126-20020a81b284000000b0054494fe4244mr636814ywh.10.1681173284695; Mon, 10
+ Apr 2023 17:34:44 -0700 (PDT)
+Date: Tue, 11 Apr 2023 06:04:31 +0530
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.40.0.577.gac1e443424-goog
+Message-ID: <20230411003431.4048700-1-shraash@google.com>
+Subject: [PATCH] ASoC: mediatek: common: Fix refcount leak in parse_dai_link_info
+From: Aashish Sharma <shraash@google.com>
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Trevor Wu <trevor.wu@mediatek.com>, Guenter Roeck <groeck@chromium.org>
+Cc: alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Aashish Sharma <shraash@google.com>, kernel test robot <lkp@intel.com>, Julia Lawall <julia.lawall@inria.fr>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230410_171124_540103_220F1B7D 
-X-CRM114-Status: GOOD (  17.07  )
+X-CRM114-CacheID: sfid-20230410_173448_403520_FF16996D 
+X-CRM114-Status: GOOD (  11.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,109 +90,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There are two variants of the MT7531 switch IC which got different
-features (and pins) regarding port 5:
- * MT7531AE: SGMII/1000Base-X/2500Base-X SerDes
- * MT7531BE: RGMII
+Add missing of_node_put()s before the returns to balance
+of_node_get()s and of_node_put()s, which may get unbalanced
+in case the for loop 'for_each_available_child_of_node' returns
+early.
 
-Moving the creation of the SerDes PCS from mt753x_setup to mt7530_probe
-with commit 6de285229773 ("net: dsa: mt7530: move SGMII PCS creation to
-mt7530_probe function") works fine for MT7531AE which got two instances
-of mtk-pcs-lynxi, however, MT7531BE requires mt7531_pll_setup to setup
-clocks before the single PCS on port 6 (usually used as CPU port)
-starts to work and hence the PCS creation failed on MT7531BE.
-
-Fix this by introducing a pointer to mt7531_create_sgmii function in
-struct mt7530_priv and call it again at the end of mt753x_setup like it
-was before commit 6de285229773 ("net: dsa: mt7530: move SGMII PCS
-creation to mt7530_probe function").
-
-Fixes: 6de285229773 ("net: dsa: mt7530: move SGMII PCS creation to mt7530_probe function")
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+Fixes: 4302187d955f ("ASoC: mediatek: common: add soundcard driver common code")
+Reported-by: kernel test robot <lkp@intel.com>
+Reported-by: Julia Lawall <julia.lawall@inria.fr>
+Link: https://lore.kernel.org/r/202304090504.2K8L6soj-lkp@intel.com/
+Signed-off-by: Aashish Sharma <shraash@google.com>
 ---
- drivers/net/dsa/mt7530-mdio.c | 14 +++++++-------
- drivers/net/dsa/mt7530.c      |  6 ++++++
- drivers/net/dsa/mt7530.h      |  4 ++++
- 3 files changed, 17 insertions(+), 7 deletions(-)
+ sound/soc/mediatek/common/mtk-soundcard-driver.c | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/dsa/mt7530-mdio.c b/drivers/net/dsa/mt7530-mdio.c
-index 34a547b88e497..f17eab67d15fa 100644
---- a/drivers/net/dsa/mt7530-mdio.c
-+++ b/drivers/net/dsa/mt7530-mdio.c
-@@ -81,14 +81,17 @@ static const struct regmap_bus mt7530_regmap_bus = {
- };
+diff --git a/sound/soc/mediatek/common/mtk-soundcard-driver.c b/sound/soc/mediatek/common/mtk-soundcard-driver.c
+index 7c55c2cb1f21..738093451ccb 100644
+--- a/sound/soc/mediatek/common/mtk-soundcard-driver.c
++++ b/sound/soc/mediatek/common/mtk-soundcard-driver.c
+@@ -47,20 +47,26 @@ int parse_dai_link_info(struct snd_soc_card *card)
+ 	/* Loop over all the dai link sub nodes */
+ 	for_each_available_child_of_node(dev->of_node, sub_node) {
+ 		if (of_property_read_string(sub_node, "link-name",
+-					    &dai_link_name))
++					    &dai_link_name)) {
++			of_node_put(sub_node);
+ 			return -EINVAL;
++		}
  
- static int
--mt7531_create_sgmii(struct mt7530_priv *priv)
-+mt7531_create_sgmii(struct mt7530_priv *priv, bool dual_sgmii)
- {
- 	struct regmap_config *mt7531_pcs_config[2];
- 	struct phylink_pcs *pcs;
- 	struct regmap *regmap;
- 	int i, ret = 0;
+ 		for_each_card_prelinks(card, i, dai_link) {
+ 			if (!strcmp(dai_link_name, dai_link->name))
+ 				break;
+ 		}
  
--	for (i = 0; i < 2; i++) {
-+	/* MT7531AE has two SGMII units for port 5 and port 6
-+	 * MT7531BE has only one SGMII unit for port 6
-+	 */
-+	for (i = dual_sgmii ? 0 : 1; i < 2; i++) {
- 		mt7531_pcs_config[i] = devm_kzalloc(priv->dev,
- 						    sizeof(struct regmap_config),
- 						    GFP_KERNEL);
-@@ -208,11 +211,8 @@ mt7530_probe(struct mdio_device *mdiodev)
- 	if (IS_ERR(priv->regmap))
- 		return PTR_ERR(priv->regmap);
+-		if (i >= card->num_links)
++		if (i >= card->num_links) {
++			of_node_put(sub_node);
+ 			return -EINVAL;
++		}
  
--	if (priv->id == ID_MT7531) {
--		ret = mt7531_create_sgmii(priv);
--		if (ret)
--			return ret;
--	}
-+	if (priv->id == ID_MT7531)
-+		priv->create_sgmii = mt7531_create_sgmii;
+ 		ret = set_card_codec_info(card, sub_node, dai_link);
+-		if (ret < 0)
++		if (ret < 0) {
++			of_node_put(sub_node);
+ 			return ret;
++		}
+ 	}
  
- 	return dsa_register_switch(priv->ds);
- }
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index e4bb5037d3525..c680873819b01 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -3018,6 +3018,12 @@ mt753x_setup(struct dsa_switch *ds)
- 	if (ret && priv->irq)
- 		mt7530_free_irq_common(priv);
- 
-+	if (priv->create_sgmii) {
-+		ret = priv->create_sgmii(priv, mt7531_dual_sgmii_supported(priv));
-+		if (ret && priv->irq)
-+			mt7530_free_irq(priv);
-+	}
-+
- 	return ret;
- }
- 
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index 01db5c9724fa8..6e89578b4de02 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -752,6 +752,8 @@ struct mt753x_info {
-  * @irq:		IRQ number of the switch
-  * @irq_domain:		IRQ domain of the switch irq_chip
-  * @irq_enable:		IRQ enable bits, synced to SYS_INT_EN
-+ *
-+ * @create_sgmii:	Pointer to function creating SGMII PCS instance(s)
-  */
- struct mt7530_priv {
- 	struct device		*dev;
-@@ -778,6 +780,8 @@ struct mt7530_priv {
- 	int irq;
- 	struct irq_domain *irq_domain;
- 	u32 irq_enable;
-+
-+	int (*create_sgmii)(struct mt7530_priv *priv, bool dual_sgmii);
- };
- 
- struct mt7530_hw_vlan_entry {
+ 	return 0;
 -- 
-2.40.0
+2.40.0.577.gac1e443424-goog
 
 
