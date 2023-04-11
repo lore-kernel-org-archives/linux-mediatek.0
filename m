@@ -4,77 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E69FC77B72
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 19:50:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33CABC7619A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 20:23:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k0q9m1x0Kzm672Wv2uZ8p+u8ZZVwbvW5fTmdCfljt3s=; b=4nDnVWfgLyVwNHE2rOSk9p53YW
-	MBSFaEFbt639uRalHC84LOYUywQ+sl3FRfCaQhgyRR6J9HZH4lMY41xnKmT4uhEAOJ3c2XvffoStp
-	DFhCwujPUphcxqB51z4mJBOehofeLMoZe+KpoRZTJQpA1PraIcGZPVsHSdoFpM3LfnUWeXMmQ4us8
-	jo1wJQ+voN/Jan2ud+ZCxBXAYkssdjCPL8WdJ3KY1bwQPZjVMsr2gStGPSqOEJzAFGSZ5tRkk2vYV
-	LWW7m738VeNJn2Cn/pevasWWh184cRUfn4kb8VzON61EZjP8dwtPiIGq9f2/x/Gaz/NrFgOEVp+3n
-	6bSJn0jw==;
+	bh=vAQB5OrwRhZSt8DZNQ7EIcCPHq37jFquzX1qe3wm1Oo=; b=ro1vFfmBXIoue3RdJ3pOfTkv8k
+	HF51pfEUqeXRgNNUtqM/I8i6ObaHtH2s4nqfLXq9T6kDU0YlGPJcHRDVm2fZyuIe+ghvDx3+JzFA/
+	du6T/wvTdVxusVVryRYhkCP3jQUY+VaDEfH8ezviVFFN0ofTXxzGk/dSfS/QcxNai48DGS26/wImZ
+	bw6xsG7mIx49FhYEIH+3rXh55fXlw6qRT87B0qlQGA9YFnxmhOaLEq8s1+zGOqYQRCIiesm6H3x7W
+	TMB6favpjH5/IxPbc/UoXEoib8qJpVaS8SzQt0sfDv33nC8HPowy8giIuBLd84aV9dBK0drZJxcAI
+	4C2Adf0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmK0s-000zXW-1I;
-	Tue, 11 Apr 2023 19:50:46 +0000
-Received: from sender4-op-o10.zoho.com ([136.143.188.10])
+	id 1pmKWQ-00159S-1L;
+	Tue, 11 Apr 2023 20:23:22 +0000
+Received: from omta040.useast.a.cloudfilter.net ([44.202.169.39])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmK0p-000zX5-2F;
-	Tue, 11 Apr 2023 19:50:45 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1681242633; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=JqZQu0/1zwEpuh2JcCHJXbityLwgMsFgMYjOJfZmEYovU2KTCQlA0NW5r1riQe4QVmFC8CFI6KKRoyrbqPwvieb8lY41XgzeMheJrd9ErxwtEzv0dnmYwk/mgu4Xp3zGCt/Pq199BTzRE54UJH6B+g4W3x1uPn+oEl6L1R00M84=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1681242633; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=k0q9m1x0Kzm672Wv2uZ8p+u8ZZVwbvW5fTmdCfljt3s=; 
-	b=QY4VO4boUGLwt9Yxhtaqd5+U4Q7Md6paeVRlr/mvt5jH55NcJIFALF1cACd+KrvIAoPKwaoZMZFVlSZn7IburNSev8q3i6OaXuolV6xCNRc3vK9dQKKBjs+FH9f2sCrO4hMsj5+aWvO4GBSUEACHAiMK+p1U3q45ixwT/5rKwUM=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1681242633;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=k0q9m1x0Kzm672Wv2uZ8p+u8ZZVwbvW5fTmdCfljt3s=;
-	b=EYQu2ZV53EXtJYTbLhEXJrYVkjM91zZ0DjFxMmN/HncbxMX7qlWwjQMnaLG260N8
-	5gfK3+ovIyZ5HgxdAON3hClGH1R3a2wi0AsbSeExfEucOeCK+fkRqnb+HNCYfWJ/1n6
-	fsoEBAAMVkyCc+ZTgzqBM1lpU+c+ubUtWR5Gc/bg=
-Received: from [10.10.10.3] (149.91.1.15 [149.91.1.15]) by mx.zohomail.com
-	with SMTPS id 1681242631921471.7121572372041; Tue, 11 Apr 2023 12:50:31 -0700 (PDT)
-Message-ID: <e5cb12f2-c89e-9cf9-5fbe-cfeeb14512be@arinc9.com>
-Date: Tue, 11 Apr 2023 22:50:25 +0300
+	id 1pmKWM-001584-0O;
+	Tue, 11 Apr 2023 20:23:19 +0000
+Received: from eig-obgw-5017a.ext.cloudfilter.net ([10.0.29.154])
+	by cmsmtp with ESMTP
+	id mF9gpbmYeD594mKW6pxmex; Tue, 11 Apr 2023 20:23:02 +0000
+Received: from gator4166.hostgator.com ([108.167.133.22])
+	by cmsmtp with ESMTP
+	id mKW5p3iNndJoxmKW6pBqZj; Tue, 11 Apr 2023 20:23:02 +0000
+X-Authority-Analysis: v=2.4 cv=C9L6dCD+ c=1 sm=1 tr=0 ts=6435c1a6
+ a=1YbLdUo/zbTtOZ3uB5T3HA==:117 a=d0f9/bL53tV7TyBwAeBj+g==:17
+ a=dLZJa+xiwSxG16/P+YVxDGlgEgI=:19 a=IkcTkHD0fZMA:10 a=dKHAf1wccvYA:10
+ a=wYkD_t78qR0A:10 a=NEAV23lmAAAA:8 a=mDV3o1hIAAAA:8 a=VwQbUJbxAAAA:8
+ a=sIshrF94AAAA:8 a=Wzh0sZPFK0vZwZ7TA3YA:9 a=QEXdDO2ut3YA:10 a=3IOs8h2EC4YA:10
+ a=_FVE-zBwftR9WsbkzFJk:22 a=AjGcO6oz07-iQ99wixmX:22 a=39svzKx7NMVfYuMjZabV:22
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=embeddedor.com; s=default; h=Content-Transfer-Encoding:Content-Type:
+	In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:Message-ID:Sender
+	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=vAQB5OrwRhZSt8DZNQ7EIcCPHq37jFquzX1qe3wm1Oo=; b=JyaVBGsKBehpvCeTF9OGrH2z+E
+	asL4PDUKYGZsAoJqI5w4voIUMHwuV7yRKOLxzK1P9BgOPWGq9gOaMFJcIVwB1c39aQ4mUQYV/j2Cc
+	oMwAo0BI7dm15+ksLAT+AlhTzllZi6fSnzpA3PxIKvdps1tONAQFBK+T0pT2h0EyzbM9scV59M+37
+	a3eddtGiNXT46j6MaGBtMLflnB/vRa7nFrbzcrhjd4buBtnfq4rASIKCyL2M1sZ3ru8oYGzjlwgCD
+	TDaAzVzyz5sD1Yj33PMNXEuLwDX52ETfp1xz0KSb8K+tlPY6RtP+L2ZsrszwgYI5u1tPgyBbIMgrP
+	NCqyUzgA==;
+Received: from 189.215.208.238.cable.dyn.cableonline.com.mx ([189.215.208.238]:14202 helo=[192.168.0.24])
+	by gator4166.hostgator.com with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.95)
+	(envelope-from <gustavo@embeddedor.com>)
+	id 1pmIsm-003i6h-P7;
+	Tue, 11 Apr 2023 13:38:20 -0500
+Message-ID: <cec9fa10-eb1e-dd5b-8ec0-579e87b5bc1d@embeddedor.com>
+Date: Tue, 11 Apr 2023 12:39:06 -0600
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.9.0
-Subject: Re: [PATCH net-next] net: dsa: mt7530: fix support for MT7531BE
-Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- DENG Qingfang <dqfext@gmail.com>, Russell King <linux@armlinux.org.uk>,
+From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
+Subject: Re: [PATCH][next] wifi: mt76: Replace zero-length array with
+ flexible-array member
+To: Simon Horman <simon.horman@corigine.com>,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Paolo Abeni <pabeni@redhat.com>,
- Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>,
- "David S. Miller" <davem@davemloft.net>, Vladimir Oltean
- <olteanv@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>,
- Andrew Lunn <andrew@lunn.ch>
-References: <ZDSlm-0gyyDZXy_k@makrotopia.org>
- <13aedaa6-6b7b-727e-e932-4a5139c54f39@arinc9.com>
- <ZDW4Tr4bIGcxwDgs@makrotopia.org>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <ZDW4Tr4bIGcxwDgs@makrotopia.org>
+ linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-hardening@vger.kernel.org
+References: <ZC7X7KCb+JEkPe5D@work> <ZC/FA/t1mzrRydD7@corigine.com>
+Content-Language: en-US
+In-Reply-To: <ZC/FA/t1mzrRydD7@corigine.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+Content-Transfer-Encoding: 7bit
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - gator4166.hostgator.com
+X-AntiAbuse: Original Domain - lists.infradead.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - embeddedor.com
+X-BWhitelist: no
+X-Source-IP: 189.215.208.238
+X-Source-L: No
+X-Exim-ID: 1pmIsm-003i6h-P7
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-Source-Sender: 189.215.208.238.cable.dyn.cableonline.com.mx ([192.168.0.24]) [189.215.208.238]:14202
+X-Source-Auth: gustavo@embeddedor.com
+X-Email-Count: 0
+X-Org: HG=hgshared;ORG=hostgator;
+X-Source-Cap: Z3V6aWRpbmU7Z3V6aWRpbmU7Z2F0b3I0MTY2Lmhvc3RnYXRvci5jb20=
+X-Local-Domain: yes
+X-CMAE-Envelope: MS4xfLtiRtUJ1ycJacaT8POk01hbQkIuOHTzpZGBWpAn/pHn4GYmwBcGRpDjnWhG3uBCvWck72KfjH4Jc9ovrA4KgrKK06avTolQwTnKNgcsI9t58E75leWq
+ KKffaZocg5GvpVwDB6Hficwzy9HY+SlU/msEbTwxRNsE0duIJG5f5ygwt2MTDTCb/+m/sOQHd7e4AMebxUsJtbkMolh/S61qC7ybL49LXZ9lTZMo7Zr7rjgO
+ YNl0nChbL+MNHxZ1AWIO1EYBwj4XMrnIeDlKEiGwIN0gEFM2XnDY3e/2ZtS6kbeJ
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230411_125043_774523_F2BB07C1 
-X-CRM114-Status: GOOD (  26.28  )
+X-CRM114-CacheID: sfid-20230411_132318_299438_D35491F0 
+X-CRM114-Status: GOOD (  19.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,72 +119,129 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11.04.2023 22:43, Daniel Golle wrote:
-> On Tue, Apr 11, 2023 at 10:30:06PM +0300, Arınç ÜNAL wrote:
->> On 11.04.2023 03:11, Daniel Golle wrote:
->>> There are two variants of the MT7531 switch IC which got different
->>> features (and pins) regarding port 5:
->>>    * MT7531AE: SGMII/1000Base-X/2500Base-X SerDes
->>>    * MT7531BE: RGMII
->>>
->>> Moving the creation of the SerDes PCS from mt753x_setup to mt7530_probe
->>> with commit 6de285229773 ("net: dsa: mt7530: move SGMII PCS creation to
->>> mt7530_probe function") works fine for MT7531AE which got two instances
->>> of mtk-pcs-lynxi, however, MT7531BE requires mt7531_pll_setup to setup
->>> clocks before the single PCS on port 6 (usually used as CPU port)
->>> starts to work and hence the PCS creation failed on MT7531BE.
->>>
->>> Fix this by introducing a pointer to mt7531_create_sgmii function in
->>> struct mt7530_priv and call it again at the end of mt753x_setup like it
->>> was before commit 6de285229773 ("net: dsa: mt7530: move SGMII PCS
->>> creation to mt7530_probe function").
->>
->> If I understand correctly, this patch does two things.
->>
->> Run mt7531_create_sgmii() from mt753x_setup(), after mt7531_setup() and
->> mt7531_setup_common() is run so that PCS on MT7531BE works.
-> 
->>
->> Run the PCS creation code inside the loop only once if
->> mt7531_dual_sgmii_supported() is false so it doesn't set the nonexistent
->> port 5 SGMII on MT7531BE.
-> 
-> Yes, both is correct.
-> 
->>
->> Regarding the first part:
->> I was actually in the middle of moving the code until after
->> mt7530_pll_setup() and mt7531_pll_setup() on mt7530_setup() and
->> mt7531_setup() to mt7530_probe(). To me it makes more sense to run them on
->> mt7530_probe() as there's a good amount of duplicate code on mt7530_setup()
->> and mt7531_setup().
-> 
-> I thought about doing that as well, however, note that you will have to
-> move all the reset and regulator setup procedure to mt7530_probe() as
-> well then, as PLL setup currently happens after that, and that's
-> probably for a reason.
-> 
-> As the reset and regulator setup works differently on MT7530 and
-> MT7531, and depending on whether it's a standalone IC package or MCM, I
-> believe changes unifying this will have to be tested on a lot of
-> boards...
 
-Not if we don't change the behaviour at all for both switches, which is 
-what I intend to do.
+
+On 4/7/23 01:23, Simon Horman wrote:
+> On Thu, Apr 06, 2023 at 08:32:12AM -0600, Gustavo A. R. Silva wrote:
+>> Zero-length arrays are deprecated [1] and have to be replaced by C99
+>> flexible-array members.
+>>
+>> This helps with the ongoing efforts to tighten the FORTIFY_SOURCE routines
+>> on memcpy() and help to make progress towards globally enabling
+>> -fstrict-flex-arrays=3 [2]
+>>
+>> Link: https://github.com/KSPP/linux/issues/78 [1]
+>> Link: https://gcc.gnu.org/pipermail/gcc-patches/2022-October/602902.html [2]
+>> Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
+> 
+> Reviewed-by: Simon Horman <simon.horman@corigine.com>
+
+Thanks :)
 
 > 
+>> ---
+>>   drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
 >>
->> This will resolve the problem here, and make my future work regarding the
->> PHY muxing feature on the MT7530 switch possible to do.
->>
->> Regarding the second part:
->> I'll take your changes to my current RFC patch series while addressing
->> Jesse's suggestion if this is fine by you.
+>> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+>> index a5e6ee4daf92..9bf4b4199ee3 100644
+>> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+>> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+>> @@ -127,7 +127,7 @@ struct mt76_connac2_mcu_rxd {
+>>   	u8 rsv1[2];
+>>   	u8 s2d_index;
+>>   
+>> -	u8 tlv[0];
+>> +	u8 tlv[];
+>>   };
+>>   
+>>   struct mt76_connac2_patch_hdr {
 > 
-> Yes, I'd appreciate that and I'm ready to test and review once you post
-> your updated series.
+> Curiously -fstrict-flex-arrays=3 didn't flag this one in my environment,
+> Ubuntu Lunar.
 
-Sounds good, cheers.
+Yep; that's why I didn't include any warning message in the changelog text
+this time.
 
-Arınç
+And the reason for that is that tlv is not being indexed anywhere in the
+code. However, it's being used in the pointer arithmetic operation below:
+
+drivers/net/wireless/mediatek/mt76/mt7921/mcu.c:
+  164         rxd = (struct mt76_connac2_mcu_rxd *)skb->data;
+  165         grant = (struct mt7921_roc_grant_tlv *)(rxd->tlv + 4);
+
+
+which means that it can be considered as an array of size greater than zero
+at some point. Hence, it should be transformed into a C99 flexible array.
+
+> 
+>   gcc-13 --version
+>   gcc-13 (Ubuntu 13-20230320-1ubuntu1) 13.0.1 20230320 (experimental) [master r13-6759-g5194ad1958c]
+>   Copyright (C) 2023 Free Software Foundation, Inc.
+>   This is free software; see the source for copying conditions.  There is NO
+>   warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+> 
+> I did, however, notice some other problems reported by gcc-13 with
+> -fstrict-flex-arrays=3 in drivers/net/wireless/mediatek/mt76
+> when run against net-next wireless. I've listed them in diff format below.
+> 
+> Are these on your radar too?
+
+Yep; those are being addressed here:
+
+https://lore.kernel.org/linux-hardening/ZBTUB%2FkJYQxq%2F6Cj@work/
+
+--
+Gustavo
+
+> 
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.h b/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.h
+> index 35268b0890ad..d09bb4eed1ec 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.h
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.h
+> @@ -24,7 +24,7 @@ struct mt7921_asar_dyn {
+>   	u8 names[4];
+>   	u8 enable;
+>   	u8 nr_tbl;
+> -	struct mt7921_asar_dyn_limit tbl[0];
+> +	struct mt7921_asar_dyn_limit tbl[];
+>   } __packed;
+>   
+>   struct mt7921_asar_dyn_limit_v2 {
+> @@ -37,7 +37,7 @@ struct mt7921_asar_dyn_v2 {
+>   	u8 enable;
+>   	u8 rsvd;
+>   	u8 nr_tbl;
+> -	struct mt7921_asar_dyn_limit_v2 tbl[0];
+> +	struct mt7921_asar_dyn_limit_v2 tbl[];
+>   } __packed;
+>   
+>   struct mt7921_asar_geo_band {
+> @@ -55,7 +55,7 @@ struct mt7921_asar_geo {
+>   	u8 names[4];
+>   	u8 version;
+>   	u8 nr_tbl;
+> -	struct mt7921_asar_geo_limit tbl[0];
+> +	struct mt7921_asar_geo_limit tbl[];
+>   } __packed;
+>   
+>   struct mt7921_asar_geo_limit_v2 {
+> @@ -69,7 +69,7 @@ struct mt7921_asar_geo_v2 {
+>   	u8 version;
+>   	u8 rsvd;
+>   	u8 nr_tbl;
+> -	struct mt7921_asar_geo_limit_v2 tbl[0];
+> +	struct mt7921_asar_geo_limit_v2 tbl[];
+>   } __packed;
+>   
+>   struct mt7921_asar_cl {
+> @@ -85,7 +85,7 @@ struct mt7921_asar_fg {
+>   	u8 rsvd;
+>   	u8 nr_flag;
+>   	u8 rsvd1;
+> -	u8 flag[0];
+> +	u8 flag[];
+>   } __packed;
+>   
+>   struct mt7921_acpi_sar {
 
