@@ -4,81 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FB7BC76196
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 09:54:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62674C7619A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 10:13:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tah2dAHbxREASTnvJuJls1whJtxCEwW9tPvWPYuqkMo=; b=ycOcv0NaVMdVkM+vaMMlhhBMhY
-	qKKGmRMRU2UF+0ysbcIP4NFTQty4W3wMyaa1iXtqVKHks4MV2OlNcNfQzdug9qb2bH9OPbzMfLzjo
-	ShMVvgzq6/eqywU5iUgUB1ZPBDqCAMLOyp3xQG6xD7EtVKIMlc8u+bGjpelzq54I9s4NswagW1TDb
-	csukFCQaSgVjv345KPAK7CxkXaL6q2yKXjdqbHluO7ffiy8TVbDD9iM3G8IlROutxjKPY7oghdyIV
-	mwnpDY+7y5pF/BO5FSpXHY7DcoZYytkl6Fw9rxHqvEOaX9pJFhYYz0+ZNm0Jf5IOfz/f+iH/B4R5Y
-	OK62l2KQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WReu5u9CfQUNLjMicoLVQn7s7qx8qlDbyYbcKYCt3hA=; b=hnmq5z4aAtYs4VzO6+8pn+KEwv
+	bkie+J0r/S5zclWe9NFTQ5Yh2D3TBn3LkMyJyUCH4eBImooRMPcAeuttX2xF6mPV0iATK0+CP+MkE
+	POERGQX2NNEafx/zxf+0eG7WgytS2k5IF09z/Z+YoMyCPCMIpsXk7WB4shEt0/jZZ/sGbKi0Dh7lk
+	sD9n0rtDVokO8kve13aehZJ2+pBxGCwk7wSNAejp6eMbHB+mbMauRRw5DzEurpp8zLLzKmby3G0ui
+	kP9/hJhRez/VtnP3DOzj31TSevs3tfbQ342Rc3uBqQ4AXdR4AweiON63HxuJ3yQ4KtviVsp98+apG
+	vcL9tfWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmAi3-00H9g2-3D;
-	Tue, 11 Apr 2023 09:54:44 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pmAzn-00HCLw-2M;
+	Tue, 11 Apr 2023 10:13:03 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmAi0-00H9fJ-2C;
-	Tue, 11 Apr 2023 09:54:41 +0000
-X-UUID: df4fca9ad84e11ed8687db9d93187ff1-20230411
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=tah2dAHbxREASTnvJuJls1whJtxCEwW9tPvWPYuqkMo=;
-	b=QbR8mNcE+jZuM+PiT6wQZLjt0GveBogC1IzTT9YOfLyPCWefJ6JyJZc31hxlBXCiVwP/QrN91rhqArNZDr1XuX4jUM89M0Pxe//QI1IdmuTPDKq82wqoCb7/6jTgF6LQBBjFsoparFhD1poPvKPqp03CuygbC+MqQGb9stI7FkI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:2769d050-d6d4-45dd-9697-e98e4a010b88,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:120426c,CLOUDID:3d0faf83-cd9c-45f5-8134-710979e3df0e,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-UUID: df4fca9ad84e11ed8687db9d93187ff1-20230411
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <yong.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1653532697; Tue, 11 Apr 2023 02:54:38 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Tue, 11 Apr 2023 17:34:02 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Tue, 11 Apr 2023 17:34:00 +0800
-From: Yong Wu <yong.wu@mediatek.com>
-To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>
-CC: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil
-	<hverkuil@xs4all.nl>, <nfraprado@collabora.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <iommu@lists.linux.dev>, AngeloGioacchino Del
- Regno <angelogioacchino.delregno@collabora.com>, <mingyuan.ma@mediatek.com>,
-	<yf.wang@mediatek.com>, <jianjiao.zeng@mediatek.com>, Yunfei Dong
-	<yunfei.dong@mediatek.com>, kyrie wu
-	<kyrie.wu@mediatek.corp-partner.google.com>, <chengci.xu@mediatek.com>,
-	<youlin.pei@mediatek.com>, <anan.sun@mediatek.com>, Yong Wu
-	<yong.wu@mediatek.com>
-Subject: [PATCH v7 12/14] arm64: dts: mt8195: Remove the unnecessary dma-ranges
-Date: Tue, 11 Apr 2023 17:31:42 +0800
-Message-ID: <20230411093144.2690-13-yong.wu@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230411093144.2690-1-yong.wu@mediatek.com>
-References: <20230411093144.2690-1-yong.wu@mediatek.com>
+	id 1pmAzj-00HCJg-1u;
+	Tue, 11 Apr 2023 10:13:01 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D541E66031AD;
+	Tue, 11 Apr 2023 11:12:48 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1681207970;
+	bh=7bO4tViZQRTa3LySl3BcqbAkLa3ojxPZnEzjThu0RLs=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=FV2jGoHZihXjn6OIA74MTm+LasrHy12N3+RKBJU5fyY1gXq/qDPetg8oYb5KHFq0P
+	 eMHTpS9zXJ5mJ6X4Rsln83dO3l8WG9aMw2BHv59+QPhIYUTNtWVebVx7WFoRBNLk4F
+	 Etj8Ba26wO1TrxaPc/60/yL1S22nzqliWYrTXIugnNsDDMsN4hd4xtabeRjVBD8QNq
+	 tJQS4YEuVSP13KHkR7uMoQmkPwA6BGKPPZygJF6SJgZg53GkNcYHcqiOaz0HuBGJK5
+	 0Hd8mvxc86OpZuBhiIU7suV6BoyHVYvbSA5gzfUZHCs1EFl2O0FgV1rAQ89SVREuXp
+	 yD1LWR3HAGzig==
+Message-ID: <fb349fa3-b6c3-90c7-65c6-e5614d007ac8@collabora.com>
+Date: Tue, 11 Apr 2023 12:12:45 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.1
+Subject: Re: [PATCH v7 10/14] media: mtk-jpegdec: Remove the setting for
+ dma_mask
+Content-Language: en-US
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>
+Cc: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Hans Verkuil <hverkuil@xs4all.nl>, nfraprado@collabora.com,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, iommu@lists.linux.dev,
+ mingyuan.ma@mediatek.com, yf.wang@mediatek.com, jianjiao.zeng@mediatek.com,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>,
+ chengci.xu@mediatek.com, youlin.pei@mediatek.com, anan.sun@mediatek.com,
+ Bin Liu <bin.liu@mediatek.com>, kyrie wu <kyrie.wu@mediatek.com>
+References: <20230411093144.2690-1-yong.wu@mediatek.com>
+ <20230411093144.2690-11-yong.wu@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230411093144.2690-11-yong.wu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230411_025440_721101_F7A4DC55 
-X-CRM114-Status: UNSURE (   9.16  )
+X-CRM114-CacheID: sfid-20230411_031259_759012_14F927B6 
+X-CRM114-Status: UNSURE (   9.39  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,44 +89,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-After we add the dma-ranges in the parent "soc" node,
-this property is unnecessary for the leaf node.
+Il 11/04/23 11:31, Yong Wu ha scritto:
+> In order to simplify the masters to set their respective dma masks, MTK
+> IOMMU helps to centralize the processing. Because all the dma ranges is
+> set in IOMMU, IOMMU knows well the dma mask requirements of masters. After
+> this patch, the masters code does not need care
+> dma-ranges/dma_mask related information.
+> 
+> Cc: Bin Liu <bin.liu@mediatek.com>
+> Cc: Mauro Carvalho Chehab <mchehab@kernel.org>
+> Cc: kyrie wu <kyrie.wu@mediatek.com>
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 
-Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 3 ---
- 1 file changed, 3 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index 8f1264d5290b..89f469ba9f6c 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -2299,7 +2299,6 @@ venc: video-codec@1a020000 {
- 			power-domains = <&spm MT8195_POWER_DOMAIN_VENC>;
- 			#address-cells = <2>;
- 			#size-cells = <2>;
--			dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
- 		};
- 
- 		jpgdec-master {
-@@ -2311,7 +2310,6 @@ jpgdec-master {
- 				 <&iommu_vdo M4U_PORT_L19_JPGDEC_BSDMA1>,
- 				 <&iommu_vdo M4U_PORT_L19_JPGDEC_BUFF_OFFSET1>,
- 				 <&iommu_vdo M4U_PORT_L19_JPGDEC_BUFF_OFFSET0>;
--			dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
- 			#address-cells = <2>;
- 			#size-cells = <2>;
- 			ranges;
-@@ -2383,7 +2381,6 @@ jpgenc-master {
- 					<&iommu_vpp M4U_PORT_L20_JPGENC_C_RDMA>,
- 					<&iommu_vpp M4U_PORT_L20_JPGENC_Q_TABLE>,
- 					<&iommu_vpp M4U_PORT_L20_JPGENC_BSDMA>;
--			dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
- 			#address-cells = <2>;
- 			#size-cells = <2>;
- 			ranges;
--- 
-2.25.1
 
 
