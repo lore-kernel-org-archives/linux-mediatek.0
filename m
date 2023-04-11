@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13B42C7619A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 09:43:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B046C76196
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 09:45:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XNsNsqm+tac4TqBDM7eY2YSHOJMel3hNuiOtLlMEMKY=; b=C4HhfG24YaIZQj1BRkb7Ls8wxr
-	PlXGb/ADERHwKsK7+fqNPlOf8PH+iFhAALwUFE56xC06u6xZaSvGLOXSHoHJpo65O7cFsyIOHTNzc
-	d1GEeawlKwfDe+tdvDd1HSivcBOEQuCc3EQKDOGE/VJyM1UZo+wRxM6ojTjYbVuVkbkxx7Q5oH3Sy
-	x0lq8OJK2vZtSQgMqPBQ/IMd3xk2evopsLIOWAyzQ8Uaz+qEQhyf2+dmrvICT8frhK51sKcv96EWp
-	NgB7Sr2lDKExTkruU9+OkwbJ8IvFzznD+trWR39x7LxG3436ph1TejN4zrLeDNp6C7GICg+0xqs2j
-	PkvtPqIQ==;
+	bh=FJB8NsPpg9GUe4KvEeOfItKIQWjs0rG8Qvtk+6JhZk4=; b=xZ0j5L1zbEA6dpms794/WwvK73
+	IW+lp+0kb+aBn/s/ipvgnseW0pNFFv0zGD2Yu35dQ3Wq1hDs9SCu3WggPDjw4TE9cDpyPX2Y3d2mK
+	M3P8CPvVmpQebBJ3jPp6i8NoUQsh7cxpi0HcdwzPS1nnKjfaHMzg1UoXevXTTCc1rdBCVQ6d/E5bs
+	zRrDt9GmsuJSarCgBD02Bcq27cFMoCGslE4L+fUDjKe0q+xedWHUBySzcWKmEB4SpeavNFbVNvrlj
+	Gv+XICrQfaCgvGQPuF6M+1P9ZupZY5qDZsR7JhjFezLtD5VahFQMprVJWFwjWJ67Agj7OHMF5j/7Z
+	Ij3XQxtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmAX2-00H7EL-0B;
-	Tue, 11 Apr 2023 09:43:20 +0000
+	id 1pmAYf-00H7bv-23;
+	Tue, 11 Apr 2023 09:45:01 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmAWx-00H7Cm-1z;
-	Tue, 11 Apr 2023 09:43:16 +0000
-X-UUID: 46c0c5d2d84d11edb7d8d11f642b8e78-20230411
+	id 1pmAYc-00H7au-0W;
+	Tue, 11 Apr 2023 09:44:59 +0000
+X-UUID: 829d40dad84d11edb7d8d11f642b8e78-20230411
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=XNsNsqm+tac4TqBDM7eY2YSHOJMel3hNuiOtLlMEMKY=;
-	b=AztxEkaPWfUjOaSoZrlx+yfgKsWi4c8uXjuIx2PzoVJC63h42rB+en7fmX4SnLTusVqhcs5+Rn5oBkDK32/ZUYwyb1pUjhcBpvFC/XzX7qrEwX42tW4+gTWuUf5++7fhzpryhmYJGy7LqdTpGSaDPXd6AhGocavouz1HPuiR0Pk=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=FJB8NsPpg9GUe4KvEeOfItKIQWjs0rG8Qvtk+6JhZk4=;
+	b=b+AMT+XnvAGPT88F9pHhoTWnDTBlEUXAdInQrRV2sREYk5JZgvDKio7QES4foLcdSbH9Y1u8BG9cn1dytsLGFa15t4BKJk+/QlegX5/9EEZFIxsxarw+S1udKr9hXtjlN1h0U5DLKe/FhU6A2u/fwarWeSQ7wzrjNDYTjhbVLik=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:45b3df61-85f5-42f7-854c-d40897bed209,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:120426c,CLOUDID:3acdf3a0-8fcb-430b-954a-ba3f00fa94a5,B
+X-CID-O-INFO: VERSION:1.1.22,REQID:21d42487-7a01-4388-ab56-4521570095f2,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:120426c,CLOUDID:1dcbae83-cd9c-45f5-8134-710979e3df0e,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-UUID: 46c0c5d2d84d11edb7d8d11f642b8e78-20230411
+X-UUID: 829d40dad84d11edb7d8d11f642b8e78-20230411
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <yong.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1833683456; Tue, 11 Apr 2023 02:43:12 -0700
+	with ESMTP id 1785374001; Tue, 11 Apr 2023 02:44:53 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Tue, 11 Apr 2023 17:32:37 +0800
+ 15.2.1118.25; Tue, 11 Apr 2023 17:34:17 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Tue, 11 Apr 2023 17:32:36 +0800
+ 15.2.1118.25 via Frontend Transport; Tue, 11 Apr 2023 17:34:16 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>
@@ -66,9 +66,9 @@ CC: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
 	<kyrie.wu@mediatek.corp-partner.google.com>, <chengci.xu@mediatek.com>,
 	<youlin.pei@mediatek.com>, <anan.sun@mediatek.com>, Yong Wu
 	<yong.wu@mediatek.com>
-Subject: [PATCH v7 03/14] iommu/mediatek: Improve comment for the current region/bank
-Date: Tue, 11 Apr 2023 17:31:33 +0800
-Message-ID: <20230411093144.2690-4-yong.wu@mediatek.com>
+Subject: [PATCH v7 14/14] arm64: dts: mt8186: Add dma-ranges for the parent "soc" node
+Date: Tue, 11 Apr 2023 17:31:44 +0800
+Message-ID: <20230411093144.2690-15-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230411093144.2690-1-yong.wu@mediatek.com>
 References: <20230411093144.2690-1-yong.wu@mediatek.com>
@@ -77,8 +77,9 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230411_024315_658746_C0EE3DD9 
-X-CRM114-Status: GOOD (  14.98  )
+X-CRM114-CacheID: sfid-20230411_024458_201873_85EC5DCC 
+X-CRM114-Status: UNSURE (   8.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,58 +94,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-No functional change. Just add more comment about the current region/bank
-in the code.
+Prepare for the MM nodes whose dma-ranges(iova range) is 16GB.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/iommu/mtk_iommu.c | 31 ++++++++++++++++++++++++++-----
- 1 file changed, 26 insertions(+), 5 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8186.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index d5a4955910ff..aa4bdcb65ea7 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -197,12 +197,33 @@ struct mtk_iommu_plat_data {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+index a0d3e1f731bd..251eace411c0 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+@@ -324,6 +324,7 @@ soc {
+ 		#address-cells = <2>;
+ 		#size-cells = <2>;
+ 		compatible = "simple-bus";
++		dma-ranges = <0x0 0x0 0x0 0x0 0x4 0x0>;
+ 		ranges;
  
- 	char			*pericfg_comp_str;
- 	struct list_head	*hw_list;
--	unsigned int		iova_region_nr;
--	const struct mtk_iommu_iova_region	*iova_region;
- 
--	u8                  banks_num;
--	bool                banks_enable[MTK_IOMMU_BANK_MAX];
--	unsigned int        banks_portmsk[MTK_IOMMU_BANK_MAX];
-+	/*
-+	 * The IOMMU HW may support 16GB iova. In order to balance the IOVA ranges,
-+	 * different masters will be put in different iova ranges, for example vcodec
-+	 * is in 4G-8G and cam is in 8G-12G. Meanwhile, some masters may have the
-+	 * special IOVA range requirement, like CCU can only support the address
-+	 * 0x40000000-0x44000000.
-+	 * Here list the iova ranges this SoC supports and which larbs/ports are in
-+	 * which region.
-+	 *
-+	 * 16GB iova all use one pgtable, but each a region is a iommu group.
-+	 */
-+	struct {
-+		unsigned int	iova_region_nr;
-+		const struct mtk_iommu_iova_region	*iova_region;
-+	};
-+
-+	/*
-+	 * The IOMMU HW may have 5 banks. Each bank has a independent pgtable.
-+	 * Here list how many banks this SoC supports/enables and which ports are in which bank.
-+	 */
-+	struct {
-+		u8		banks_num;
-+		bool		banks_enable[MTK_IOMMU_BANK_MAX];
-+		unsigned int	banks_portmsk[MTK_IOMMU_BANK_MAX];
-+	};
-+
- 	unsigned char       larbid_remap[MTK_LARB_COM_MAX][MTK_LARB_SUBCOM_MAX];
- };
- 
+ 		gic: interrupt-controller@c000000 {
 -- 
 2.25.1
 
