@@ -4,60 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7780C77B74
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 16:48:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C6C8C77B73
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 16:55:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fWK4Bz5iGOSi0GwnbXAUPP1TUbif3ui9q1niCs2wwDk=; b=1gdFQBsEO/EamugdARzf6ousKz
-	N2z7cP9Wd5n4kUqN0PghxI25FSH4IA787bBOrfNdrTtRufrbOGZq/S18aZfbD2TI440eIQUX/i5PZ
-	MQlpPp3vuACGQVeeDcW4x46jMC+4kCrXhgqVx8JMFpakPabTyWujeqO4QP0yhz/MLrdF8XX7IbQbM
-	f3UgmE64UvfRYRbl6RTWxSSvvw7xpI8xW3oiEkcDdijLJtLGrVcA0I3N8D7SsNicaDx6VTJqUAk5N
-	SaHihSkRuav+K57hgtUpNcuDHcu0oG509DLtsaCPQ/69CNDia3PhyFT43Z8sijgKNC4IsNTZHuXSp
-	kpkp8srw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uHkpIHsDJMVccFbSYcXY2khZL4erb7v3HbneWR1g+cI=; b=fV1aw8TxL5a0K5yOJOLWBunKPk
+	4tpC77pLehezxtnWfhUKGe513HqK1gGENC65UvMzQYOx76zLyIn8G+2mUnAPQEpxRIwH5s25hWeL2
+	JxsOfFX2r7dzu6VcjG3swhy9E62VKceQL5VFQ77N9JGAdkerQuf4sEOQC14nke/8kwmB8YaIRewxI
+	m7VXXMMEcpZySJyyLeEGDAlvH9FRHM7GaYgWj9wsJhJNplKV6OblJaJH+UU15HLiKoWD0B5KntKa+
+	4wyAIyuOnkOJeScMop7hUhxUqZ99HcbEHsh+ZFiyToV23FITk1Qo3xZdWRaQ2b/4ZLvFV9DhtcLN1
+	pYWgFMKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmHAd-000brT-0G;
-	Tue, 11 Apr 2023 16:48:39 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmHAV-000bnW-06;
-	Tue, 11 Apr 2023 16:48:32 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 8577561F2A;
-	Tue, 11 Apr 2023 16:48:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 85416C433D2;
-	Tue, 11 Apr 2023 16:48:28 +0000 (UTC)
-Date: Tue, 11 Apr 2023 12:48:26 -0400
-From: Steven Rostedt <rostedt@goodmis.org>
-To: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
-Cc: <mhiramat@kernel.org>, <bobule.chang@mediatek.com>,
- <wsd_upstream@mediatek.com>, <cheng-jui.wang@mediatek.com>,
- <npiggin@gmail.com>, <stable@vger.kernel.org>, AngeloGioacchino Del Regno 
-        <angelogioacchino.delregno@collabora.com>, "Paul E. McKenney"
- <paulmck@kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-trace-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH v3] ring-buffer: Prevent inconsistent operation on
- cpu_buffer->resize_disabled
-Message-ID: <20230411124826.04d19759@gandalf.local.home>
-In-Reply-To: <20230411124403.2a31e12d@gandalf.local.home>
-References: <20230409024616.31099-1-Tze-nan.Wu@mediatek.com>
-	<20230410073512.13362-1-Tze-nan.Wu@mediatek.com>
-	<20230411124403.2a31e12d@gandalf.local.home>
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+	id 1pmHHa-000dL1-0Q;
+	Tue, 11 Apr 2023 16:55:50 +0000
+Received: from hch by bombadil.infradead.org with local (Exim 4.96 #2 (Red Hat Linux))
+	id 1pmHHV-000dKG-2A;
+	Tue, 11 Apr 2023 16:55:45 +0000
+Date: Tue, 11 Apr 2023 09:55:45 -0700
+From: Christoph Hellwig <hch@infradead.org>
+To: David Howells <dhowells@redhat.com>
+Cc: netdev@vger.kernel.org, "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Willem de Bruijn <willemdebruijn.kernel@gmail.com>,
+	David Ahern <dsahern@kernel.org>,
+	Matthew Wilcox <willy@infradead.org>,
+	Al Viro <viro@zeniv.linux.org.uk>,
+	Christoph Hellwig <hch@infradead.org>, Jens Axboe <axboe@kernel.dk>,
+	Jeff Layton <jlayton@kernel.org>,
+	Christian Brauner <brauner@kernel.org>,
+	Chuck Lever III <chuck.lever@oracle.com>,
+	Linus Torvalds <torvalds@linux-foundation.org>,
+	linux-fsdevel@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-mm@kvack.org, Jeroen de Borst <jeroendb@google.com>,
+	Catherine Sullivan <csully@google.com>,
+	Shailend Chand <shailend@google.com>, Felix Fietkau <nbd@nbd.name>,
+	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Keith Busch <kbusch@kernel.org>, Jens Axboe <axboe@fb.com>,
+	Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>,
+	Chaitanya Kulkarni <kch@nvidia.com>,
+	Andrew Morton <akpm@linux-foundation.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-nvme@lists.infradead.org
+Subject: Re: [PATCH net-next v6 04/18] mm: Make the page_frag_cache allocator
+ use per-cpu
+Message-ID: <ZDWREY2ATn3VcLDW@infradead.org>
+References: <20230411160902.4134381-1-dhowells@redhat.com>
+ <20230411160902.4134381-5-dhowells@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230411_094831_119650_833CF69E 
-X-CRM114-Status: GOOD (  12.11  )
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230411160902.4134381-5-dhowells@redhat.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,15 +78,9 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 11 Apr 2023 12:44:03 -0400
-Steven Rostedt <rostedt@goodmis.org> wrote:
+On Tue, Apr 11, 2023 at 05:08:48PM +0100, David Howells wrote:
+> Make the NVMe, mediatek and GVE drivers pass in NULL to page_frag_cache()
+> and use the default allocation buckets rather than defining their own.
 
-> Please have each new patch be a new thread, and not a Cc to the previous
-
-Should have been "reply to the previous" :-p
-
--- Steve
-
-> version of the patch. As it makes it hard to find in INBOXs.
-
+Why makes these different from the other users?
 
