@@ -4,56 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFAB9C7619A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 08:23:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B570C7619A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 08:24:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yEgw1LkRDQ1FyL7HmZw+f4TInfXM9mT0BFKWeMOjCQs=; b=4GiaQQs9BfKzP7lnWe0gvX3F29
-	Mt8iKWxwRjAxqSFcSy4Z1wlD4XszJrQhCFXCrQgiIVB1RROroeJrYdp23XdelO0cYXqUpuv+MD9l7
-	iwXbg9T9by9m2Z2dJ1ovaEUlZ79xWRtHBRlBW/eDTTFjqzlddla7jw6VdKpYCXUcgcBFZS0zRcPpR
-	INsZpdjaOBpptf6buXo2GA34rwcru/LkEqXRqAHqJFsXciLwbW1lvkHSm/+M+pPDLEiUS+3pMSeGi
-	tVvHlhvs/sdf6NYhkqeTTtE0ehg3MUpN6rrUVcK3yL6EregHJdE7DDEg/JMVtutuklES3kSRaxXrG
-	3tWDpTpQ==;
+	bh=VtGarPOO0xayOIjqJwciYlaIxxnKZAoXWCjSoHZlApk=; b=hcJZ+LYUktqXwpu+zobb0R7Vo3
+	DPLm4fg2GgHmw1SDx4GNUTDKdBn5z9l5zxsiTJLiJJ5P2QIXRTVsHg2gucccCkphv5PpEQfjXdt5+
+	zW/r/ixpHUtfqH10IPBvsztg2y7OZTHhBAEMCrHEOknXqRaSOkSEo3NqiHM3Tsg0Kf6srpLfCFzB6
+	c3EewhqjK0DCTstDA8BzOMekDV4rifd+WsD5jua9bFOpEzDnK+comg6s5EwrSnpRGl0D9bEuzOmHV
+	V1EWJONHvFb4ejGCW18K7KCKJd6if1oj2NsUczD6j60fDP9iu2z5PnOkf37N7CUeIsaeKblFJL8L+
+	TZ2X2FqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pm9HF-00GqYj-0g;
-	Tue, 11 Apr 2023 08:22:57 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pm9I7-00GqyU-1d;
+	Tue, 11 Apr 2023 08:23:51 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pm9HB-00GqVt-0y;
-	Tue, 11 Apr 2023 08:22:54 +0000
+	id 1pm9I4-00Gqwt-1f;
+	Tue, 11 Apr 2023 08:23:49 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id EDF8F66031EA;
-	Tue, 11 Apr 2023 09:22:49 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 34C7A66031E7;
+	Tue, 11 Apr 2023 09:23:46 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1681201371;
-	bh=mSraRqNCRsRIu+Sv57cDTx39LddUyhJwzD1kQi9nHco=;
+	s=mail; t=1681201427;
+	bh=ADMedLVs+5KiqFHy8L8bjUE/ArcSYR2VhiaJnz4uVYU=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=GSZZEqmnSMny9xXdCIyRSmbJS8CSx7Thye0qxqcKp79J3GjIUaw1AmE4HwNKwcpj9
-	 OuL8/iZzDLDfbIKA4P7UQ8TBkSChbSZoAkP0Brvj9XOc8LqhBov4F54xdm2z4OE5vc
-	 3gyHahZ44pmL4RUWxFkTPtQoqUXvinVYlHw1ZzBO6hnRX8bZq/h6ALlikfaVbIUsLZ
-	 S8VlDba9uk2OrZwkW82y+UwR60eGg0aL+ed+3/KIZ/IE/0Zt9bRUy81NZW7/p8wWzE
-	 fIQj4ivgwkhnq222B+mp7kh8XMs4+Ucg5+G3s2IwSYZoYR6udhwRnOe/5dG13e9n3l
-	 IhkXQWTr5bagw==
-Message-ID: <5322edfc-2df7-b56b-bb5e-db4c55dff3d0@collabora.com>
-Date: Tue, 11 Apr 2023 10:22:47 +0200
+	b=Ex0QZOkYYonI2GaXDXmpvLjO1kGk4e9pV9pMaq1azU0MkJ+Q+PdGIs3tW+wE/nSHW
+	 InXeUbo7lf4DVMWGJhOtljvh6QJnLnOBu0fJ609FlfYDv2ThMVHW7MlZp6GOkuefuZ
+	 Vly30hfbDTsOZebvEGp082LmdoRb6eW5+Qpw9R8UECSGUv8XG/nW5Udi/8X+kg7vNf
+	 0fkI8rIHfDoaR67AC3ryK3bgSFSbkCA0KsmrQJyB/ub1RfTPZ80a04n91qDGrBmQSz
+	 xLoNmyOI7CjxBRumsu/mtvAs0RcmQdGdJindPGVMM+Goe+xJU10EpQwmpf7kHU//f/
+	 d39jvrHFMQE4A==
+Message-ID: <ce6a9e78-efae-c430-c990-ceafdfc7be41@collabora.com>
+Date: Tue, 11 Apr 2023 10:23:43 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.9.1
-Subject: Re: [PATCH v5 06/12] arm64: dts: mediatek: add mmc support for
- mt8365-evk
+Subject: Re: [PATCH v5 07/12] arm64: dts: mediatek: set vmc regulator as
+ always on
 Content-Language: en-US
-To: Alexandre Mergnat <amergnat@baylibre.com>,
- Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
- <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>,
+To: amergnat@baylibre.com, Wim Van Sebroeck <wim@linux-watchdog.org>,
+ Guenter Roeck <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  Chaotian Jing <chaotian.jing@mediatek.com>,
@@ -68,15 +67,14 @@ Cc: linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
  Fabien Parent <fparent@baylibre.com>,
  Amjad Ouled-Ameur <aouledameur@baylibre.com>
 References: <20230203-evk-board-support-v5-0-1883c1b405ad@baylibre.com>
- <20230203-evk-board-support-v5-6-1883c1b405ad@baylibre.com>
+ <20230203-evk-board-support-v5-7-1883c1b405ad@baylibre.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230203-evk-board-support-v5-6-1883c1b405ad@baylibre.com>
+In-Reply-To: <20230203-evk-board-support-v5-7-1883c1b405ad@baylibre.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230411_012253_467637_485CFBAE 
-X-CRM114-Status: UNSURE (   8.81  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230411_012348_680794_155A5721 
+X-CRM114-Status: GOOD (  15.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,13 +89,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 07/04/23 14:59, Alexandre Mergnat ha scritto:
-> - Add EMMC support on mmc0 (internal memory)
-> - Add SD-UHS support on mmc1 (external memory)
+Il 07/04/23 14:59, amergnat@baylibre.com ha scritto:
+> From: Fabien Parent <fparent@baylibre.com>
 > 
+> MSDC1 IP block is powered by VMC. Make sure it is always on.
+> 
+
+Can't we set vmc as parent of vemc?
+
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
 > Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
+> ---
+>   arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 5 +++++
+>   1 file changed, 5 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+> index cd920d09c3fe..1c36d8f19525 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+> @@ -137,6 +137,11 @@ &mt6357_pmic {
+>   	#interrupt-cells = <2>;
+>   };
+>   
+> +/* Needed by MSDC1 */
+> +&mt6357_vmc_reg {
+> +	regulator-always-on;
+> +};
+> +
+>   &pio {
+>   	gpio_keys: gpio-keys-pins {
+>   		pins {
+> 
 
 
