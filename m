@@ -4,83 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BE13C7619A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 10:34:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64662C77B6F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Apr 2023 11:13:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=I00mnwr030X+et6YWjpBcS7r+cVDcxfdrqBbP1jIoBM=; b=MBBg1/oByxySUxLaEU4pPM9G9G
-	/GN/AMw5nO1aZ3pq8L/m1g7/fPQUBHSjRjsreAN5a87JTnhQ30FoHf72fqT8nAo+6jIJmoSXkql4G
-	HMmmqyLYYCWyhNUGk2/+++sWlVYpjpjxOggtKYtvVQ85+V8K48gZfNNyIP4xQhpZDUOSoUs0DDrb2
-	1RfHB2YoxJMGCeGfnuTFx/w/Cav0c7aJZC/e+TVaFr676291KiUUSicd6ssB7ByqobilFSNTCoUmY
-	s3rtk4eVmt9x4T/oGUCWRrOWN6UPoOMOXcg3rvaFPRCTYrH1Dliz55axZnP8hM5DAoSZJrRsUyD+1
-	CwAgf+3w==;
+	bh=xKHMjxs/6xWgZqFsKHrxyn0QJjVWIFy1M3jCqswV9s0=; b=yLBmGygFV5oZbHOnu666tfYsJY
+	yxW/4gr0DP7rm7XYZvj5M3n5Cyg0yrUCTgZRE0quEfSh5ig8ITjlTJKvNq5ONA5F9mL0nZYS+ibHb
+	/7S8tNchSolJ2y8XHvw1+PXjBbl10kJtbX+LPorhzfQMwSJNPRuXi+s1yvNhND0YPRxElN2SXGwzu
+	DO+X2jdg8xy2O0NZh3k9kVCOGFrro/jpcyHMweey+2geWLKHO9Yy6hMibFHjHFk6DsCcT+4ymp8Xx
+	Hk/n+CXX3qkU463H/+LeNkXAlanOfrOY9F1aqqLw/Gh5V5Bc1jD4u4885MYvCi+hXmocga7Di82o1
+	v9dhjAEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmBKd-00HKxW-1V;
-	Tue, 11 Apr 2023 10:34:35 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1pmBvv-00HQ6g-2I;
+	Tue, 11 Apr 2023 11:13:07 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmBKZ-00HKtL-2Z
+	id 1pmBvs-00HQ5U-2I
 	for linux-mediatek@lists.infradead.org;
-	Tue, 11 Apr 2023 10:34:33 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-2ef1e98d6bfso382530f8f.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 11 Apr 2023 03:34:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ffwll.ch; s=google; t=1681209268; x=1683801268;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=I00mnwr030X+et6YWjpBcS7r+cVDcxfdrqBbP1jIoBM=;
-        b=lm4SAcep/XKl1DZtHx5RTnpfJ2QZ0uSgLV/tMXtRo6yNSY+5ouhTp3b1ztrR1Zz5y4
-         Fpgs8z/yS9ASMTVO4mGxJKV3KX/P9UZQVFCYF2OPh9rN8nEiIft0NgpawA/KrD4bkfCV
-         AP08oczleELGSTIr3+96GC3S+9J7wEM7pN1r8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1681209268; x=1683801268;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=I00mnwr030X+et6YWjpBcS7r+cVDcxfdrqBbP1jIoBM=;
-        b=HWIKbwfPW4g4qXaaO5tI/fgIUafP5P3gc9APxu77P7EXjKM09WG5j71BdcTgSKbnkK
-         evHuXmlxcw9beMShtKuUG0P7sbUZ2beaqQ6IGkRvNuOLqZexxWsmumDPQMt7iQ5CVoIR
-         fGQwtbMVVSQAW8Xm6uf3e3oG4PxczeJUinjVrKY+EImFU9G/D0lXJESaJ0twsdv9wZx0
-         Q7+eKYV8FUPMGbPxQgsht6qKIpLJ754GBmz3FU7GhkandtrFwH11GQGZSA4iYICLpExS
-         DG6SEf4md+gdbcgx3Mm4JSBi0zpABQSYxwXE/Z8CNPTDjDNqyqwo6saaU1s/YV5ctKgE
-         uUmA==
-X-Gm-Message-State: AAQBX9cU1hQch60pfJjgbuBga27rS4WfbCwxhKbwrQxUpkZnVaD8w/D4
-	rPW3fEr/ceYjA3gwMcDFc1azCg==
-X-Google-Smtp-Source: AKy350ZFqsZmlLAPU6QHNMV5/R/+jpvUG7up53DzrKvTEPAhfUGJeW9YvXZUQC8obhZoatB+t3AEbA==
-X-Received: by 2002:a05:6000:c7:b0:2ef:bb5d:adf8 with SMTP id q7-20020a05600000c700b002efbb5dadf8mr5043209wrx.2.1681209268492;
-        Tue, 11 Apr 2023 03:34:28 -0700 (PDT)
-Received: from phenom.ffwll.local (212-51-149-33.fiber7.init7.net. [212.51.149.33])
-        by smtp.gmail.com with ESMTPSA id b2-20020adff242000000b002d322b9a7f5sm14286203wrp.88.2023.04.11.03.34.27
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 11 Apr 2023 03:34:28 -0700 (PDT)
-Date: Tue, 11 Apr 2023 12:34:26 +0200
-From: Daniel Vetter <daniel@ffwll.ch>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
-	Xinlei Lee <xinlei.lee@mediatek.com>,
-	"Nancy . Lin" <nancy.lin@mediatek.com>,
-	Nathan Lu <nathan.lu@mediatek.com>,
-	Alexandre Mergnat <amergnat@baylibre.com>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Justin Green <greenjustin@chromium.org>,
-	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>
-Subject: Re: [GIT PULL] mediatek drm next for 6.4
-Message-ID: <ZDU3sqNGhNFwbINx@phenom.ffwll.local>
-References: <20230410233005.2572-1-chunkuang.hu@kernel.org>
+	Tue, 11 Apr 2023 11:13:06 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1pmBv0-0004gl-Lm; Tue, 11 Apr 2023 13:12:10 +0200
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1pmBuf-00AURe-AU; Tue, 11 Apr 2023 13:11:49 +0200
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1pmBue-00CH5H-AL; Tue, 11 Apr 2023 13:11:48 +0200
+Date: Tue, 11 Apr 2023 13:11:48 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Miquel Raynal <miquel.raynal@bootlin.com>
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Valentin Korenblit <vkorenblit@sequans.com>,
+	Lucas Stach <dev@lynxeye.de>, Vignesh Raghavendra <vigneshr@ti.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Stefan Agner <stefan@agner.ch>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Liang Yang <liang.yang@amlogic.com>,
+	Naga Sureshkumar Relli <nagasure@xilinx.com>,
+	Christophe Leroy <christophe.leroy@csgroup.eu>,
+	Han Xu <han.xu@nxp.com>, Chuanhong Guo <gch981213@gmail.com>,
+	linux-stm32@st-md-mailman.stormreply.com,
+	Heiko Stuebner <heiko@sntech.de>,
+	Marek =?utf-8?B?QmVow7pu?= <kabel@kernel.org>,
+	Samuel Holland <samuel@sholland.org>,
+	Kevin Hilman <khilman@baylibre.com>, Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	linux-rockchip@lists.infradead.org,
+	Tudor Ambarus <tudor.ambarus@linaro.org>,
+	Geert Uytterhoeven <geert@linux-m68k.org>,
+	Miaoqian Lin <linmq006@gmail.com>,
+	Yang Yingliang <yangyingliang@huawei.com>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	Jack Wang <jinpu.wang@ionos.com>,
+	Jerome Brunet <jbrunet@baylibre.com>, linux-sunxi@lists.linux.dev,
+	ye xingchen <ye.xingchen@zte.com.cn>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Arnd Bergmann <arnd@arndb.de>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	linux-arm-msm@vger.kernel.org, Vladimir Zapolskiy <vz@mleia.com>,
+	Roger Quadros <rogerq@kernel.org>,
+	Wang Weiyang <wangweiyang2@huawei.com>,
+	Harvey Hunt <harveyhuntnexus@gmail.com>,
+	linux-mediatek@lists.infradead.org, linux-mtd@lists.infradead.org,
+	linux-tegra@vger.kernel.org, linux-amlogic@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Christophe Kerello <christophe.kerello@foss.st.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	linux-mips@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Thierry Reding <thierry.reding@gmail.com>, kernel@pengutronix.de,
+	Richard Weinberger <richard@nod.at>,
+	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+	linux-oxnas@groups.io, Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>
+Subject: Re: [PATCH] mtd: nand: Convert to platform remove callback returning
+ void
+Message-ID: <20230411111148.yefmzohsvk3facq3@pengutronix.de>
+References: <20230401161938.2503204-1-u.kleine-koenig@pengutronix.de>
+ <20230407101043.299f5e22@xps-13>
+ <20230408185332.d2g2ao4tdp6ltm4i@pengutronix.de>
+ <20230411102025.6b2fdc9e@xps-13>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="he6vq5knkogtd7j7"
 Content-Disposition: inline
-In-Reply-To: <20230410233005.2572-1-chunkuang.hu@kernel.org>
-X-Operating-System: Linux phenom 6.1.0-7-amd64 
+In-Reply-To: <20230411102025.6b2fdc9e@xps-13>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230411_033431_837036_2CA8ADD4 
-X-CRM114-Status: GOOD (  19.57  )
+X-CRM114-CacheID: sfid-20230411_041304_749529_D9DC680C 
+X-CRM114-Status: GOOD (  36.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,103 +127,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 10, 2023 at 11:30:05PM +0000, Chun-Kuang Hu wrote:
-> Hi, Dave & Daniel:
-> 
-> This includes:
-> 
-> 1. Add support for 10-bit overlays
-> 2. Add MediaTek SoC DRM (vdosys1) support for mt8195
-> 3. Change mmsys compatible for mt8195 mediatek-drm
-> 4. Only trigger DRM HPD events if bridge is attached
-> 5. Change the aux retries times when receiving AUX_DEFER
-> 
-> Regards,
-> Chun-Kuang.
-> 
-> The following changes since commit fe15c26ee26efa11741a7b632e9f23b01aca4cc6:
-> 
->   Linux 6.3-rc1 (2023-03-05 14:52:03 -0800)
-> 
-> are available in the Git repository at:
-> 
->   https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-next-6.4
-> 
-> for you to fetch changes up to 9243d70e05c5989f84f840612965f96b524da925:
-> 
->   drm/mediatek: dp: Change the aux retries times when receiving AUX_DEFER (2023-04-03 16:49:49 +0000)
 
-Pulled, thanks
+--he6vq5knkogtd7j7
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> 
-> ----------------------------------------------------------------
-> Mediatek DRM Next for Linux 6.4
-> 
-> 1. Add support for 10-bit overlays
-> 2. Add MediaTek SoC DRM (vdosys1) support for mt8195
-> 3. Change mmsys compatible for mt8195 mediatek-drm
-> 4. Only trigger DRM HPD events if bridge is attached
-> 5. Change the aux retries times when receiving AUX_DEFER
-> 
-> ----------------------------------------------------------------
-> Alexandre Mergnat (1):
->       dt-bindings: display: mediatek: clean unnecessary item
-> 
-> Chen-Yu Tsai (1):
->       drm/mediatek: dp: Only trigger DRM HPD events if bridge is attached
-> 
-> Jason-JH.Lin (1):
->       drm/mediatek: Change mmsys compatible for mt8195 mediatek-drm
-> 
-> Justin Green (3):
->       drm/mediatek: Refactor pixel format logic
->       drm/mediatek: Add support for AR30 and BA30 overlays
->       drm/mediatek: Enable AR30 and BA30 overlays on MT8195
-> 
-> Nancy.Lin (9):
->       dt-bindings: mediatek: add ethdr definition for mt8195
->       drm/mediatek: Add ETHDR support for MT8195
->       drm/mediatek: Add ovl_adaptor support for MT8195
->       drm/mediatek: Add dma dev get function
->       drm/mediatek: Modify mediatek-drm for mt8195 multi mmsys support
->       drm/mediatek: Add drm ovl_adaptor sub driver for MT8195
->       drm/mediatek: Add mediatek-drm of vdosys1 support for MT8195
->       drm/mediatek: Add mdp_rdma get format function
->       drm/mediatek: Add ovl_adaptor get format function
-> 
-> Nathan Lu (1):
->       drm/mediatek: Add mediatek-drm of vdosys0 support for mt8188
-> 
-> Xinlei Lee (1):
->       drm/mediatek: dp: Change the aux retries times when receiving AUX_DEFER
-> 
->  .../bindings/display/mediatek/mediatek,ccorr.yaml  |   5 +-
->  .../bindings/display/mediatek/mediatek,ethdr.yaml  | 182 +++++++
->  drivers/gpu/drm/mediatek/Makefile                  |   2 +
->  drivers/gpu/drm/mediatek/mtk_disp_drv.h            |  35 ++
->  drivers/gpu/drm/mediatek/mtk_disp_ovl.c            |  94 ++++
->  drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c    | 547 +++++++++++++++++++++
->  drivers/gpu/drm/mediatek/mtk_disp_rdma.c           |  38 ++
->  drivers/gpu/drm/mediatek/mtk_dp.c                  |  15 +-
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c            |  89 +++-
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.h            |   6 +-
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c        | 135 +++--
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h        |  78 ++-
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c             | 475 ++++++++++--------
->  drivers/gpu/drm/mediatek/mtk_drm_drv.h             |  30 +-
->  drivers/gpu/drm/mediatek/mtk_drm_plane.c           |  24 +-
->  drivers/gpu/drm/mediatek/mtk_drm_plane.h           |   3 +-
->  drivers/gpu/drm/mediatek/mtk_ethdr.c               | 370 ++++++++++++++
->  drivers/gpu/drm/mediatek/mtk_ethdr.h               |  25 +
->  drivers/gpu/drm/mediatek/mtk_mdp_rdma.c            |  24 +
->  19 files changed, 1858 insertions(+), 319 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.yaml
->  create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
->  create mode 100644 drivers/gpu/drm/mediatek/mtk_ethdr.c
->  create mode 100644 drivers/gpu/drm/mediatek/mtk_ethdr.h
+Hello Miquel,
 
--- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+On Tue, Apr 11, 2023 at 10:20:25AM +0200, Miquel Raynal wrote:
+> > On Fri, Apr 07, 2023 at 10:10:43AM +0200, Miquel Raynal wrote:
+> > > I've looked at the different patches, they look good to me but as they
+> > > are all trivial and exactly identical, would you mind sending this
+> > > again all squashed in a single patch? A subsystem-wide conversion see=
+ms
+> > > appropriate. In all cases I plan to take this for the next merge
+> > > window. =20
+> >=20
+> > I slightly prefer them separately, because I like small patches and
+> > because the Acks and Reviews only apply to the individual drivers.
+> > But I don't mind seriously, so here comes the series squashed into one.
+>=20
+> For any non trivial change, I would definitely do that as well.
+
+A patch is only trivial as long as it doesn't do anything wrong.
+I don't assume any problem, but it wouldn't be the first. The first was
+bcm2835_spi_remove() being used in bcm2835_spi_shutdown().
+
+> The thing is, by collecting the tags with b4, you lost all the Acks and
+> Reviews targets, while we could prevent this, see below.
+>=20
+> > While going through the changed, probably the s3c24xx driver (which
+> > isn't exactly identical to the other changes) could benefit from an
+> > additional change throwing out the early exit (which---I guess---cannot
+> > be hit).
+>=20
+> Yes, I believe the 'info =3D=3D NULL' condition is useless, feel free to
+> drop it in a second patch if you wish.
+
+Yeah.
+
+> > BTW, I constructed the lists of acks/reviews myself and found the same
+> > set. However b4 wailed about each patch claiming:
+> >=20
+> > 	    =E2=9C=97 BADSIG: DKIM/infradead.org
+>=20
+> No idea what this means, any pointer?
+
+lists.infradead.org signs all outgoing mail and something between these
+outgoing mails and b4 consuming them breaks the signature. I didn't
+debug, but depending on where the problem is, either
+postmaster@lists.infradead.org or the admins of lore.kernel.org or the
+maintainer of b4 might want to know and fix.
+
+> > And it didn't like you producing the tags, saying:
+> >=20
+> > 	NOTE: some trailers ignored due to from/email mismatches:
+> > 	    ! Trailer: Acked-by: Roger Quadros <rogerq@kernel.org>
+> > 	     Msg From: Miquel Raynal <miquel.raynal@bootlin.com>
+> > 	    [...]
+>=20
+> Well, yes, I don't expect b4 to read plain english when I say "I
+> collected them for you" ^^ But at least my list had a '# <area>' suffix
+> for each of the Acked and Reviewed changes, which is now missing. I
+> don't know  how useful they actually are, but it seems to me that the
+> information was lost between v1 and v2?
+
+That's right. I will resend in a separate thread with the annotations
+fixed. Sorry for the noise.
+
+Best regards
+Uwe
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=C3=B6nig         =
+   |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--he6vq5knkogtd7j7
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmQ1QHMACgkQj4D7WH0S
+/k59PQgApmYCdD89s3AZJOYu84R1sSO13lJD2sW2YG/826FnsTQ8v5JAAMkZRhMV
+k+MCufvC25ennRcrXR5Uv8O1rreswBF1+9WhnWNEGGzaOsRqvVjkbsrMHgpJUsh3
+FMlNyvjm6KpNJhqF46lITimOhkWph7CAmCq1OMnfs5D1/biK19XqlwyNlOrka0XW
+8dwB13fYwc9PnEdLkyfmzqtcQbGBezwBjXzPkAls4+2qwIJkinKwMZACrpKd1VUr
+VOROg0xogL+KfIkaVvPu4UQTs2jpIf13YnyBfynr+pg81qKqHh6lHeS9zaMbTEhM
+JRbE//97QsOix1ZjsQHXvFD4zk8yjQ==
+=LsjF
+-----END PGP SIGNATURE-----
+
+--he6vq5knkogtd7j7--
 
