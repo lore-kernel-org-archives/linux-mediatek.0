@@ -4,73 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F006AC77B6E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 16:27:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85E9EC7619A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 16:39:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TA3XyRMuoIjDvpx7IqEAQajEgPvwKCatZbgS6cEKjE0=; b=JiVQiGnE0lFLKsNoK932MKNhA9
-	bPRTLaMyYQd8FJD6fvTm72bSFxyN+mVmkK80LTGSJzENUbIzxmjFB6XN/qcXwPDw7324t0ZefLWuL
-	Yp4ZwYBUUBYS/St/tOo+41urDxz/uOkCzzfHfUUna1Dxq0ccrqo4c0zqWtlzbVd8lcuCmz6UyplFw
-	44h+sDl9rE8T5UN99IFGLijgr0G924WdffH88CUcSvKIkOXCBBhmQrJ/BBk2M/bakxtF5MM//x0bD
-	vSYvLJzJ0zlfWU3FNb7HhCGDNt4AYAZrfIwPCwWD2+0EBb+Jx3pMMUPWmZrk/ET41iz4Vj8agx4NX
-	mqRNySpw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wjsnIpfOQB8bXiCEyrFPNZ7eINu8y00FwWxIEZFO2H8=; b=wIslriv303ToYpzUbLAHZM/d1c
+	AeUq6q8/LX0ducnVQ4LRUpKKyP3S7Ck3ajcppBFT8wFYxJLo8HzreZtZYb6+KsdsHyp8//fT4UbsL
+	dQBSQkuE0FH/332qtKECXJI8MqM3gmTV0Wul1kZrcG9G6smGHMy/EpuSJI/ch8ALszbI+wqblB1VO
+	CJig3RlLeqjl/oQCpyXJnEXwm8Co5ZGenpQDwwC/cfCdZE/P4noBOUdGwbSRFIa2hVx3wNBKQK1Bb
+	x/u/cGuX2Ge0G2j1rQaQoOCX94ubL4RAG3YfxiWudu9KYJd+C53y0bVKUfkkrOHmjPP0JOKWoTy/V
+	75ZlSz9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmdJE-003o5C-1x;
-	Wed, 12 Apr 2023 16:27:00 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pmdVS-003pzQ-2i;
+	Wed, 12 Apr 2023 16:39:38 +0000
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmdJB-003o4C-06;
-	Wed, 12 Apr 2023 16:26:58 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 4BDB862E88;
-	Wed, 12 Apr 2023 16:26:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EAFFAC433D2;
-	Wed, 12 Apr 2023 16:26:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1681316815;
-	bh=AmBsB2SaL2/nqORtPMIw+AC5nOY+5hArVvhxKihAVlA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=HpqLETwJGWpvpVscapsgzgCNberlHMLS7pXWQ3MzMO9FnXwsxZT2m8rX2I7fvpWzg
-	 8qPSwy7V+MqT4yKLXK+sU5JsmvyqGh9Ibr3WOIDgCtpcNWo5JleVRFXt3LCrt4ao0Q
-	 Qr5Nxz1e2PjsIQk3qXHcY6ImMlC95nlwQLENfnypTkJEnm2p77H+6MQ9ziQ+dULuf2
-	 ahGJH03k1XslFI3w+0Q0Ch9ccTMGoklsT9/NqKMc8/eqqboTDTUQ8NKe7phh/LTOK6
-	 Tb3LMA2pKxlWMUYejrIQARkySmeY8/k3Q1cbndSWcf4vDRfD2YajWqf5bgiJaDwo10
-	 XDVMiS1iv/DUQ==
-Date: Wed, 12 Apr 2023 21:56:51 +0530
-From: Vinod Koul <vkoul@kernel.org>
-To: Guillaume Ranquet <granquet@baylibre.com>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
-	CK Hu <ck.hu@mediatek.com>, Jitao shi <jitao.shi@mediatek.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	mac.shen@mediatek.com, stuart.lee@mediatek.com
-Subject: Re: [PATCH v8 0/3] Add MT8195 HDMI phy support
-Message-ID: <ZDbby+Tem2vcvhBn@matsya>
-References: <20220919-v8-0-a84c80468fe9@baylibre.com>
+	id 1pmdVQ-003py7-1L
+	for linux-mediatek@lists.infradead.org;
+	Wed, 12 Apr 2023 16:39:37 +0000
+Received: by mail-ed1-x536.google.com with SMTP id 4fb4d7f45d1cf-50506ac462bso429151a12.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 12 Apr 2023 09:39:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1681317573;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=wjsnIpfOQB8bXiCEyrFPNZ7eINu8y00FwWxIEZFO2H8=;
+        b=Svb4qAOBP+hW/lCQsPo+DQoVQzZnNdUGZUthwNi58ITBxz8whyBqb0ZnH+ImgAFGRc
+         p44f2selI+AQD100B9gCrOL6dfxkuKO8G84ICcoj9ugmWQo1EVuBciFpHTfP3MyGImEv
+         oo00lqssDo8U18xmtpxVrjAoM7dojbhS8EA8Xx7Og3BcgpvQDykAv0ZaQg3a+FaAHwFj
+         17l4KA5IADwEPyuy5ldHi+3zNK7mmfrXwu+ofdfF+LpIYFqOLbCzJX8tsuxpFWtzPFJd
+         hX04/hRUBBwnAwVqES8lkohsYw+rIPeaWTlwCCoEj+MYiv7x53CKrb2pUXsiqMWHQVbn
+         M4fA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1681317573;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=wjsnIpfOQB8bXiCEyrFPNZ7eINu8y00FwWxIEZFO2H8=;
+        b=HFsBD/D7mIOpKXYHFOe6eCaLZujl601mtfTdzpTnqmdkDgYc2uRbTpMBSCkgeDV9RF
+         hbExiaz6t4rd1JHCM7WngKRFsDnHBf00teBMV/DQjE3rdeKFJfeeFN5MD3ATk+iQWh7B
+         yF96QnJlXWXkwmq7ny07uflLkhSNmBgsdZcuq/HX4CuhlPnD5YCSnWnJgQ8UPsZG0rO8
+         jip/7swNVhP8pXOpIrDrdot3oy9w4SDZRi30qUAk0G+FkQL0GrG2v4F/3znivmcvvAfA
+         vVXrNDXlqe+FgnY3N32iM8oxYpvN7e8F190oWwFF/gGBvM2abQ26D3xbwu+yKrNIpUI1
+         6KsA==
+X-Gm-Message-State: AAQBX9edp6fencomUGogVPzVFwkMHAQX6DefjVoFurDWZ2DnFI/G1PI5
+	DIuIKgLlDSxK9Uou9LPiAfxu20HpssaJVdhutro=
+X-Google-Smtp-Source: AKy350aL10p8ZvO/uuBSLAFaGHPL+GVZnp473n+I6x+oIN043R05Kjx5EBQEvM6M53B/enOB1WnRKQ==
+X-Received: by 2002:aa7:d58c:0:b0:504:b60a:e7e8 with SMTP id r12-20020aa7d58c000000b00504b60ae7e8mr3197279edq.20.1681317573432;
+        Wed, 12 Apr 2023 09:39:33 -0700 (PDT)
+Received: from ?IPV6:2a02:810d:15c0:828:938a:b3db:7c59:795e? ([2a02:810d:15c0:828:938a:b3db:7c59:795e])
+        by smtp.gmail.com with ESMTPSA id c31-20020a509fa2000000b005049c1f1c60sm3535728edf.65.2023.04.12.09.39.32
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 12 Apr 2023 09:39:33 -0700 (PDT)
+Message-ID: <153a5ed0-5f4f-4879-2677-e5bce5453634@linaro.org>
+Date: Wed, 12 Apr 2023 18:39:31 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220919-v8-0-a84c80468fe9@baylibre.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.1
+Subject: Re: [PATCH 3/7] dt-bindings: net: dsa: mediatek,mt7530: add port
+ bindings for MT7988
+Content-Language: en-US
+To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+ Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Daniel Golle <daniel@makrotopia.org>, Landen Chao
+ <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>
+Cc: erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230406080141.22924-1-arinc.unal@arinc9.com>
+ <20230406080141.22924-3-arinc.unal@arinc9.com>
+ <23c8c4b5-baaa-b72b-4103-b415d970acf2@linaro.org>
+ <5b3a10ff-e960-1c6e-3482-cb25200c83c6@arinc9.com>
+ <951841d3-59a4-fa86-5b45-46afdb2942dd@linaro.org>
+ <5a92419c-4d2c-a169-687b-026dc6094cd8@arinc9.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <5a92419c-4d2c-a169-687b-026dc6094cd8@arinc9.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230412_092657_104404_F37357D7 
-X-CRM114-Status: UNSURE (   8.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230412_093936_464192_0121340D 
+X-CRM114-Status: GOOD (  21.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,13 +112,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 16-02-23, 17:02, Guillaume Ranquet wrote:
-> Add support for HDMI phy on MT8195.
+On 07/04/2023 11:46, Arınç ÜNAL wrote:
+> On 7.04.2023 12:07, Krzysztof Kozlowski wrote:
+>> On 06/04/2023 21:18, Arınç ÜNAL wrote:
+>>> On 6.04.2023 22:07, Krzysztof Kozlowski wrote:
+>>>> On 06/04/2023 10:01, arinc9.unal@gmail.com wrote:
+>>>>> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+>>>>>
+>>>>> The switch on MT7988 has got only port 6 as a CPU port. The only phy-mode
+>>>>> to be used is internal. Add this.
+>>>>>
+>>>>> Some bindings are incorrect for this switch now, so move them to more
+>>>>> specific places.
+>>>>>
+>>>>> Address the incorrect information of which ports can be used as a user
+>>>>> port. Any port can be used as a user port.
+>>>>>
+>>>>> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+>>>>> ---
+>>>>>    .../bindings/net/dsa/mediatek,mt7530.yaml     | 63 ++++++++++++++-----
+>>>>>    1 file changed, 46 insertions(+), 17 deletions(-)
+>>>>>
+>>>>> diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+>>>>> index 7045a98d9593..605888ce2bc6 100644
+>>>>> --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+>>>>> +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+>>>>> @@ -160,22 +160,6 @@ patternProperties:
+>>>>>          "^(ethernet-)?port@[0-9]+$":
+>>>>>            type: object
+>>>>>    
+>>>>> -        properties:
+>>>>> -          reg:
+>>>>> -            description:
+>>>>> -              Port address described must be 5 or 6 for CPU port and from 0 to 5
+>>>>> -              for user ports.
+>>>>> -
+>>>>> -        allOf:
+>>>>> -          - if:
+>>>>> -              required: [ ethernet ]
+>>>>> -            then:
+>>>>> -              properties:
+>>>>> -                reg:
+>>>>> -                  enum:
+>>>>> -                    - 5
+>>>>> -                    - 6
+>>>>> -
+>>>>
+>>>> I have doubts that the binding is still maintainable/reviewable. First,
+>>>> why do you need all above patterns after removal of entire contents?
+>>>
+>>> The 'type: object' item is still globally used. I'd have to define that
+>>> on each definitions, I suppose?
+>>
+>> Doesn't it come from dsa.yaml/dsa-port.yaml schema?
 > 
-> This is based on top of next-20230213
+> It comes from dsa.yaml#/$defs/ethernet-ports which this schema already 
+> refers to. I'll remove the patterns above.
+> 
+> Though 'type: object' is not there for "^(ethernet-)?port@[0-9]+$". I 
+> think I should add it there as the dsa-port.yaml schema defines the 
+> properties of the DSA switch port object. 
 
-Applied, thanks
+It has ref, which is enough.
 
--- 
-~Vinod
+> So the value matching the 
+> "^(ethernet-)?port@[0-9]+$" regular expression is expected to be an 
+> object conforming to the structure defined in dsa-port.yaml.
+> 
+> Does that make sense?
+
+Hm, no, sorry, I still do not see what exactly is missing from
+dsa.yaml/port that you need to define here.
+
+
+Best regards,
+Krzysztof
+
 
