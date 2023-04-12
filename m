@@ -4,82 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCE6EC77B6E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 14:31:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DF4AC77B6E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 14:34:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3c7CGkWjnzNRHL7qhiYM9MX8ZN0XNedfJlqVhIQAlA8=; b=TH/S1fGFP6S0VzQy3NqN24i2YA
-	wctOCjNkEjHGwLAsp051Th6eE61JFcoEEryo5NkYGwbDN+5NLt8c/9SK9AZq/sYOXdzOScX3HHwyA
-	2JNuipOKzbharmNHH0ouJroiEIzL98kXgcAqJl0RvpYep+TmQICWOOnXKLPU/Sdy1RUcjOYxzqPgI
-	vZ6aE/5AWLBS8PKo5lECz76nhSsiriF4cOoOwUyENlKmeTSbWotceaOmLOk7qXYHnb5DF8cjLtmTB
-	V04o+M63mySrreX5CGeTORS2aecVpZnaP/8Pe4zvdlHUQvCoT9NFhypTofSd7EBSeSTQe5cQgP4MG
-	cMFgyPGg==;
+	bh=jMihZZ+pFSaXTnQZDYAwSglCV7xDJr9yc5LKbLRiOjw=; b=T/zgL2H0mKLauNRUyQDv0xPCY7
+	lR9vJsUiKZUt8xjy4Rm/oWnwLEc8It+c0IHd9y3hW0oj6x9l7dPI3A349IxyLXsiSl2rd/59s+beY
+	eW185DOC8Ng5zJOGz2IlAF5CAqDDcpwBVk4merX4vVmUDu6Jxk5p6dHvja9NmdCkHzpIf99+HXFy1
+	3ie+aQD4jDauFwWl74CFKVwauAdQd/HQE5Xq2D6yu3ftrKHoDF+XUTSj6WpuNc5lcDQRY7w1U8BY7
+	ebOusLQU1XsufsAaxuGjKDberGTxKXtJs3jNi+vZryI3HuyFfyFTS9NYMNUhWPNeksdTdFoS2GgkL
+	Sdp8wj4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmbVQ-003UTs-30;
-	Wed, 12 Apr 2023 14:31:28 +0000
-Received: from sender4-op-o10.zoho.com ([136.143.188.10])
+	id 1pmbYH-003VCe-39;
+	Wed, 12 Apr 2023 14:34:25 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmbVN-003USu-2U;
-	Wed, 12 Apr 2023 14:31:27 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1681309878; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=P7EFm3Wq2/ysbV2EMeWmp81wrbnIWKNF96itF9fODPoX1Ji/EUnmxN60FdGyOkIjC+l8d22euS6a0IW7oeGqzveIl4RGCOTJ96WO1mXUQ7uGBYpO9jGsFchiNZXk5daHyMYBousYnjMdnEdwZkKXczeVNnYW/+9Gw4oRTtWvU1M=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1681309878; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=3c7CGkWjnzNRHL7qhiYM9MX8ZN0XNedfJlqVhIQAlA8=; 
-	b=GG69l+sMVB+ZMbOqIK1qp12g8Byj49xlNyaevj2FPiIIx6KW546KdIr5vQklTKfvwL9bEZIIY5OYQVMi49KVW0rA7K+zvi0DPopQpHSHF23xDLHLIDZ7PZo6G9Tao5Ap6plik98IGo8j89Zhpum64cHPKr+KNozxzSj4cQpEm9U=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1681309878;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=3c7CGkWjnzNRHL7qhiYM9MX8ZN0XNedfJlqVhIQAlA8=;
-	b=ZtEvAJKr+8NFnB/5n5uShBN2qHsvvFFzTSCeRXqIhscjxSRCSzZKcbd6nOP0bfnh
-	yAjq/bYUwqakWqnxUuGNhTE01Nf/FKkq7ffP7PAAJN1qARTXkK+hpam1+96prkHP1Qb
-	9lFntl424cEiToZPSUGq/m3SJTPkn/q6a0lFhUb0=
-Received: from [10.10.10.3] (149.91.1.15 [149.91.1.15]) by mx.zohomail.com
-	with SMTPS id 1681309875185877.4920617615047; Wed, 12 Apr 2023 07:31:15 -0700 (PDT)
-Message-ID: <703ad8a8-f84e-6404-4cce-5386bfaa2bd7@arinc9.com>
-Date: Wed, 12 Apr 2023 17:31:10 +0300
+	id 1pmbYD-003V9s-0C;
+	Wed, 12 Apr 2023 14:34:23 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 7E74E6358D;
+	Wed, 12 Apr 2023 14:34:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 44D9DC433EF;
+	Wed, 12 Apr 2023 14:34:15 +0000 (UTC)
+Message-ID: <f74031f0-3c88-e3b4-0fa1-b406aacb11fd@xs4all.nl>
+Date: Wed, 12 Apr 2023 16:34:13 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: Aw: Re: Re: Re: [PATCH v3 0/5] arm: dts: mt7623: relocate gmacs,
- mt7530 switch, and add port@5
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- erkin.bozoglu@xeront.com
-References: <20230210182505.24597-1-arinc.unal@arinc9.com>
- <c3ab9a9b-3eb2-8fb0-d5d7-c0b7c684d3a7@arinc9.com>
- <trinity-dab715b9-3953-40da-bc25-c4c2a5e9b7c3-1676715866453@3c-app-gmx-bap53>
- <27a26da8-8297-5327-7493-54d8359b6970@arinc9.com>
- <trinity-dd260791-3637-4193-8f93-a9fcdb013dcb-1676722705920@3c-app-gmx-bap53>
- <2dc2fc39-b0d5-c872-36bf-fde851debe4b@arinc9.com>
- <A329B2DF-04B7-40FA-BBCE-1F1012A6DBBD@public-files.de>
- <fb96d8eb-2eb7-db19-1135-1a833294dd67@arinc9.com>
- <trinity-899c01a6-0fc5-4900-aea8-2b43802c8329-1676814734826@3c-app-gmx-bs35>
- <trinity-3f46d325-bc45-4ee7-ae86-c8db4467aa94-1681303779505@3c-app-gmx-bap50>
+ Thunderbird/102.8.0
+Subject: Re: [PATCH v7 10/14] media: mtk-jpegdec: Remove the setting for
+ dma_mask
 Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <trinity-3f46d325-bc45-4ee7-ae86-c8db4467aa94-1681303779505@3c-app-gmx-bap50>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>
+Cc: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ nfraprado@collabora.com, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ iommu@lists.linux.dev,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ mingyuan.ma@mediatek.com, yf.wang@mediatek.com, jianjiao.zeng@mediatek.com,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>,
+ chengci.xu@mediatek.com, youlin.pei@mediatek.com, anan.sun@mediatek.com,
+ Bin Liu <bin.liu@mediatek.com>, kyrie wu <kyrie.wu@mediatek.com>
+References: <20230411093144.2690-1-yong.wu@mediatek.com>
+ <20230411093144.2690-11-yong.wu@mediatek.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+In-Reply-To: <20230411093144.2690-11-yong.wu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230412_073125_863610_7C883D7F 
-X-CRM114-Status: GOOD (  12.93  )
+X-CRM114-CacheID: sfid-20230412_073421_139303_19834FF2 
+X-CRM114-Status: GOOD (  18.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,25 +79,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12.04.2023 15:49, Frank Wunderlich wrote:
-> Hi,
+On 11/04/2023 11:31, Yong Wu wrote:
+> In order to simplify the masters to set their respective dma masks, MTK
+> IOMMU helps to centralize the processing. Because all the dma ranges is
+> set in IOMMU, IOMMU knows well the dma mask requirements of masters. After
+> this patch, the masters code does not need care
+> dma-ranges/dma_mask related information.
 > 
-> retested series on bananpi r2 on 6.3-rc6 (after throughput is fixed for mt7623/trgmii too) with additional patches:
+> Cc: Bin Liu <bin.liu@mediatek.com>
+> Cc: Mauro Carvalho Chehab <mchehab@kernel.org>
+> Cc: kyrie wu <kyrie.wu@mediatek.com>
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+
+Acked-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+
+Regards,
+
+	Hans
+
+> ---
+>  drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 3 ---
+>  1 file changed, 3 deletions(-)
 > 
-> "net: dsa: implement preferred cpu port handling" by Vladimir Oltean to stay on gmac0 by default
-> "net: dsa: mt7530: add support for changing DSA master" by Richard van Schagen
-> 
-> looks good so far, but i have not managed how to change dsa master from the preferred port (eth0) to the second one...
-> any idea how the correct syntax is for iproute2?
+> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> index 969516a940ba..9b96d2436311 100644
+> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> @@ -1757,9 +1757,6 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
+>  	jpeg->vdev->device_caps = V4L2_CAP_STREAMING |
+>  				  V4L2_CAP_VIDEO_M2M_MPLANE;
+>  
+> -	if (of_get_property(pdev->dev.of_node, "dma-ranges", NULL))
+> -		dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(34));
+> -
+>  	ret = video_register_device(jpeg->vdev, VFL_TYPE_VIDEO, -1);
+>  	if (ret) {
+>  		v4l2_err(&jpeg->v4l2_dev, "Failed to register video device\n");
 
-https://www.kernel.org/doc/html/latest/networking/dsa/configuration.html#affinity-of-user-ports-to-cpu-ports
-
-In short: ip link set lan0 type dsa conduit eth1
-
-> 
-> at least vladimirs patch should be included when applying this series
-
-I'm currently cleaning up the DSA driver, I'll get to this at some point.
-
-Arınç
 
