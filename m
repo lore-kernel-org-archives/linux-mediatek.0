@@ -4,96 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24740C7619A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 23:13:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D44F0C7619A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 23:37:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:Content-ID:
-	Content-Type:MIME-Version:Subject:Cc:To:References:In-Reply-To:From:Reply-To:
-	Content-Transfer-Encoding:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DqjVx8DdVE7yyHJKc/GaG9WLw8shGI6NpWmfl69SUoE=; b=VjEOzeSbjcpddGwJ5wbyYyoVNz
-	okLIxbMtglhK0AC+bL4zKb7uNZJqH4uEYB5fxPqIWSjta0ecM8yfFtqDGQeb+ISFev3MYTCwrH1HM
-	zL0WsqZTSuMxBPK6hYzpBCdPxkgOoORRqsHH++ro/6j7X1C1uObxVRrskVgyTnEEVSbiiMgysyfV5
-	JniC32D0TWDpJZxme/VTZadzxqXwWja27bFQtZ9F22BdXdzn+XozozipaEehdCtIdBjtJmZ94dApz
-	AJgYoHQb/FdRasDeJ9dBnUFj9c+AycAAd4jQfcRzPHCsa8GaPO3Us1g2wOOnV030ouW6TFWOkWTfa
-	1hHj539A==;
+	bh=KpSY4cEs2z43UA1pKlIyca+NfOqJya4Mjuzvj9HEC7Q=; b=d2hIbK/z2lBOzAL7c8eftupohg
+	1wAHGanbQy4e/VlIjO+3/3lyo5+afqS0aX9az1vKANgpWx964C2ZFHN5u+/ORT29pzeE96r9obB3i
+	SBqg4PKqiTseyujALrMfFzTJsR8dvL522HQ4zfTGtpCYZ91sv5WfxxHbRGOJdS+uCnh9tvo9p0j/F
+	OSrpdxCUhEuc+URntfoqW/2Nw70stYcEGR/rvCznNtE3TsrLtOSFMBr6gXPC1EuR8je1QAq2vwUZo
+	EOy1TuzCUK4hodeD3gNcfi8zpajMJQxIKl3DWMiruP8iqX+ppaYB45F39Qig/m2leiw5MNvJm49qM
+	PL6Qbqrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmje7-004bjs-1A;
-	Wed, 12 Apr 2023 23:12:59 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1pmk1l-004dRl-0y;
+	Wed, 12 Apr 2023 23:37:25 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmje4-004bhc-1P
-	for linux-mediatek@lists.infradead.org;
-	Wed, 12 Apr 2023 23:12:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1681341171;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=DqjVx8DdVE7yyHJKc/GaG9WLw8shGI6NpWmfl69SUoE=;
-	b=bOyUPGtujdSlzeygurislRRvLpTQ85GAd4UMhkuI8lKbgCkz8XcxkgER+OEFor7Hl1WTOR
-	bKSGT/QXqa/DR1Dfu+z+2H+kf2QV7g0apQGxL2b0iYEoZ+ITLRzzkTteE4zG07bYx5tmnE
-	2zA32RAXw35Q1iCH1Y2+0FKeUZEtPDM=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-578-RzSsyzYVPU2T4nYnBVXo7Q-1; Wed, 12 Apr 2023 19:12:47 -0400
-X-MC-Unique: RzSsyzYVPU2T4nYnBVXo7Q-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	id 1pmk1g-004dQv-0f;
+	Wed, 12 Apr 2023 23:37:21 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D72A7101A550;
-	Wed, 12 Apr 2023 23:12:45 +0000 (UTC)
-Received: from warthog.procyon.org.uk (unknown [10.33.36.177])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 78B9A2166B26;
-	Wed, 12 Apr 2023 23:12:41 +0000 (UTC)
-Organization: Red Hat UK Ltd. Registered Address: Red Hat UK Ltd, Amberley
-	Place, 107-111 Peascod Street, Windsor, Berkshire, SI4 1TE, United
-	Kingdom.
-	Registered in England and Wales under Company Registration No. 3798903
-From: David Howells <dhowells@redhat.com>
-In-Reply-To: <ZDbO3haK/1+7xdRC@infradead.org>
-References: <ZDbO3haK/1+7xdRC@infradead.org> <20230411160902.4134381-1-dhowells@redhat.com> <20230411160902.4134381-5-dhowells@redhat.com>
-To: Christoph Hellwig <hch@infradead.org>
-Cc: dhowells@redhat.com, "David S. Miller" <davem@davemloft.net>,
-    Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
-    Paolo Abeni <pabeni@redhat.com>,
-    Willem de Bruijn <willemdebruijn.kernel@gmail.com>,
-    David Ahern <dsahern@kernel.org>,
-    Matthew Wilcox <willy@infradead.org>,
-    Al Viro <viro@zeniv.linux.org.uk>, Jens Axboe <axboe@kernel.dk>,
-    Jeff Layton <jlayton@kernel.org>,
-    Christian Brauner <brauner@kernel.org>,
-    Chuck Lever III <chuck.lever@oracle.com>,
-    Linus Torvalds <torvalds@linux-foundation.org>,
-    Jeroen de Borst <jeroendb@google.com>,
-    Catherine Sullivan <csully@google.com>,
-    Shailend Chand <shailend@google.com>, Felix Fietkau <nbd@nbd.name>,
-    John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
-    Mark Lee <Mark-MC.Lee@mediatek.com>,
-    Lorenzo Bianconi <lorenzo@kernel.org>,
-    Matthias Brugger <matthias.bgg@gmail.com>,
-    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-    Keith Busch <kbusch@kernel.org>, Jens Axboe <axboe@fb.com>,
-    Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>,
-    Chaitanya Kulkarni <kch@nvidia.com>,
-    Andrew Morton <akpm@linux-foundation.org>, netdev@vger.kernel.org,
-    linux-arm-kernel@lists.infradead.org,
-    linux-mediatek@lists.infradead.org, linux-nvme@lists.infradead.org,
-    linux-fsdevel@vger.kernel.org, linux-mm@kvack.org,
-    linux-kernel@vger.kernel.org
-Subject: Re: [PATCH net-next v6 04/18] mm: Make the page_frag_cache allocator use per-cpu
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 2C5B8632CA;
+	Wed, 12 Apr 2023 23:37:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 917B8C4339C;
+	Wed, 12 Apr 2023 23:37:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1681342637;
+	bh=XPnc1KFFUf0qWKm0IhzaEsHbORokq/vVCY1WdIYlrSA=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=ZyiXaI+FsNZ9hn9zAE5mjGYlZH6uP+MR1VLJmB+fqLWtbQIrU8DrGt9T2ZNfergGP
+	 DC9iNOCE/7jWjpESfbM7oTQ7XpWoXb3QbEF/hTvsuqnvsH0mISeYqsxB8pMrLzV53l
+	 ZGM7q2uGv41Ie9X3zFGvWC+BZw5AkJ7AyBrFCATuU6qdolCvuhcVNS6Vz2xpsa5i6n
+	 y/mYtZRiL3misO6f1L+O9ax2bE5CeLQXqvAbtBryWIuTBS4vYcpuU3pMGo0PR93P59
+	 fI3MJ6esadCpslYseYh5WUAB9j/vJ13ACn5GLBtaKHYcXJDGOviiVIbHcmAJFAwOh6
+	 DgxAcIp+Zf8OA==
+Received: by mail-lj1-f174.google.com with SMTP id e9so42891948ljq.4;
+        Wed, 12 Apr 2023 16:37:17 -0700 (PDT)
+X-Gm-Message-State: AAQBX9eOqXYxdGXhpYb9E1DBsjz595oz+cbL+04gur56SQnvR3G2Jtb5
+	M+ko5vF3Vtc7VO/gkD7lyxiFXxtLqJeP8PZrGQ==
+X-Google-Smtp-Source: AKy350bBrdnIU3ky/e0Yu6oF9aXHAUd6d09dwmO3Kd0JhS8E1krtqtgIZ/HwHr2JngB1yrUihD3gm6BiNWvsorOauBA=
+X-Received: by 2002:a2e:9586:0:b0:2a7:7622:fb01 with SMTP id
+ w6-20020a2e9586000000b002a77622fb01mr111974ljh.10.1681342635586; Wed, 12 Apr
+ 2023 16:37:15 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-ID: <399349.1681341160.1@warthog.procyon.org.uk>
-Date: Thu, 13 Apr 2023 00:12:40 +0100
-Message-ID: <399350.1681341160@warthog.procyon.org.uk>
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
+References: <20230330032614.18837-1-nancy.lin@mediatek.com>
+ <20230330032614.18837-2-nancy.lin@mediatek.com> <ZDU3IiewmLW1pDyn@phenom.ffwll.local>
+In-Reply-To: <ZDU3IiewmLW1pDyn@phenom.ffwll.local>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Thu, 13 Apr 2023 07:37:03 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_-Yy2B5SkD+WpZPr5PVa=joW4vFxgfU+FcLGYJHPxN+OQ@mail.gmail.com>
+Message-ID: <CAAOTY_-Yy2B5SkD+WpZPr5PVa=joW4vFxgfU+FcLGYJHPxN+OQ@mail.gmail.com>
+Subject: Re: [PATCH v3 1/2] drm/mediatek: Add mdp_rdma get format function
+To: "Nancy.Lin" <nancy.lin@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, David Airlie <airlied@gmail.com>, 
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com, singo.chang@mediatek.com, 
+	shawn.sung@mediatek.com
+Cc: Daniel Vetter <daniel@ffwll.ch>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230412_161256_550571_B436DD9D 
-X-CRM114-Status: GOOD (  34.28  )
+X-CRM114-CacheID: sfid-20230412_163720_345259_6E547F73 
+X-CRM114-Status: GOOD (  21.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,73 +87,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Christoph Hellwig <hch@infradead.org> wrote:
+Hi, Daniel:
 
-> On Tue, Apr 11, 2023 at 05:08:48PM +0100, David Howells wrote:
-> > Make the page_frag_cache allocator have a separate allocation bucket for
-> > each cpu to avoid racing.  This means that no lock is required, other than
-> > preempt disablement, to allocate from it, though if a softirq wants to
-> > access it, then softirq disablement will need to be added.
-> ...
-> Let me ask a third time as I've not got an answer the last two times:
+Daniel Vetter <daniel@ffwll.ch> =E6=96=BC 2023=E5=B9=B44=E6=9C=8811=E6=97=
+=A5 =E9=80=B1=E4=BA=8C =E4=B8=8B=E5=8D=886:32=E5=AF=AB=E9=81=93=EF=BC=9A
+>
+> On Thu, Mar 30, 2023 at 11:26:13AM +0800, Nancy.Lin wrote:
+> > Add mdp_rdma get_format and get_num_formats function.
+> >
+> > Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+>
+> The mtk get_formats stuff seems like a lot of midlayering for not much
+> reasons? Is that really needed?
 
-Sorry about that.  I think the problem is that the copy of the message from
-you directly to me arrives after the first copy that comes via a mailing list
-and google then deletes the direct one - as obviously no one could possibly
-want duplicates, right? :-/ - and so you usually get consigned to the
-linux-kernel or linux-fsdevel mailing list folder.
+In general, mediatek crtc directly control dma device such as OVL
+(multiple plane), RDMA (single plane) and supported format information
+store in these sub driver. MT8195 hardware use 4 RDMA to work like
+OVL. To simplify the crtc control of dma device, we use a midlayer
+OVL_Adaptor to control the 4 RDMA, so crtc just control one
+OVL_Adaptor. crtc should query supported format from OVL_Adaptor, but
+the supported format store in RDMA driver. That's why we have two
+layer get_formats.
 
-> > Make the NVMe, mediatek and GVE drivers pass in NULL to page_frag_cache()
-> > and use the default allocation buckets rather than defining their own.
-> 
-> why are these callers treated different from the others?
+Regards,
+Chun-Kuang.
 
-There are only four users of struct page_frag_cache, the one these patches
-modify::
-
- (1) GVE.
- (2) Mediatek.
- (3) NVMe.
- (4) skbuff.
-
-Note that things are slightly confused by there being three very similarly
-named frag allocators (page_frag and page_frag_1k in addition to
-page_frag_cache) and the __page_frag_cache_drain() function gets used for
-things other than just page_frag_cache.
-
-I've replaced the single allocation buckets with per-cpu allocation buckets
-for (1), (2) and (3) so that no locking[*] is required other than pinning it
-to the cpu temporarily - but I can't test them as I don't have hardware.
-
-[*] Note that what's upstream doesn't have locking, and I'm not sure all the
-    users of it are SMP-safe.
-
-That leaves (4).
-
-Upstream, skbuff.c creates two separate per-cpu frag caches and I've elected
-to retain that, except that the per-cpu bits are now inside the frag allocator
-as I'm not entirely sure of the reason that there's a separate napi frag cache
-to the netdev_alloc_cache.
-
-The general page_frag_cache allocator is used by skb_splice_from_iter() if it
-encounters a page it can't take a ref on, so it has been tested through that
-using sunrpc, sunrpc+siw and cifs+siw.
-
-> Can you show any performance numbers?
-
-As far as I can tell, it doesn't make any obvious difference to directly
-pumping data through TCP or TLS over TCP or transferring data over a network
-filesystem such as sunrpc or cifs using siw/TCP.  I've tested this between two
-machines over a 1G and a 10G link.
-
-I can generate some actual numbers tomorrow.
-
-
-Actually, I probably can drop these patches 2-4 from this patchset and just
-use the netdev_alloc_cache in skb_splice_from_iter() for now.  Since that
-copies unspliceable data, I no longer need to allocate frags in the next layer
-up.
-
-David
-
+>
+> Just a drive-by questions I had while merging the pr.
+> -Daniel
+>
+> > ---
+> >  drivers/gpu/drm/mediatek/mtk_disp_drv.h |  3 +++
+> >  drivers/gpu/drm/mediatek/mtk_mdp_rdma.c | 24 ++++++++++++++++++++++++
+> >  2 files changed, 27 insertions(+)
+> >
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/=
+mediatek/mtk_disp_drv.h
+> > index 0d28b2e2069c..17b169530beb 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> > @@ -152,4 +152,7 @@ void mtk_mdp_rdma_start(struct device *dev, struct =
+cmdq_pkt *cmdq_pkt);
+> >  void mtk_mdp_rdma_stop(struct device *dev, struct cmdq_pkt *cmdq_pkt);
+> >  void mtk_mdp_rdma_config(struct device *dev, struct mtk_mdp_rdma_cfg *=
+cfg,
+> >                        struct cmdq_pkt *cmdq_pkt);
+> > +const u32 *mtk_mdp_rdma_get_formats(struct device *dev);
+> > +size_t mtk_mdp_rdma_get_num_formats(struct device *dev);
+> > +
+> >  #endif
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c b/drivers/gpu/drm/=
+mediatek/mtk_mdp_rdma.c
+> > index eecfa98ff52e..e06db6e56b5f 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
+> > @@ -62,6 +62,20 @@
+> >  #define RDMA_CSC_FULL709_TO_RGB                      5
+> >  #define RDMA_CSC_BT601_TO_RGB                        6
+> >
+> > +static const u32 formats[] =3D {
+> > +     DRM_FORMAT_XRGB8888,
+> > +     DRM_FORMAT_ARGB8888,
+> > +     DRM_FORMAT_BGRX8888,
+> > +     DRM_FORMAT_BGRA8888,
+> > +     DRM_FORMAT_ABGR8888,
+> > +     DRM_FORMAT_XBGR8888,
+> > +     DRM_FORMAT_RGB888,
+> > +     DRM_FORMAT_BGR888,
+> > +     DRM_FORMAT_RGB565,
+> > +     DRM_FORMAT_UYVY,
+> > +     DRM_FORMAT_YUYV,
+> > +};
+> > +
+> >  enum rdma_format {
+> >       RDMA_INPUT_FORMAT_RGB565 =3D 0,
+> >       RDMA_INPUT_FORMAT_RGB888 =3D 1,
+> > @@ -219,6 +233,16 @@ void mtk_mdp_rdma_config(struct device *dev, struc=
+t mtk_mdp_rdma_cfg *cfg,
+> >                          MDP_RDMA_MF_CLIP_SIZE, FLD_MF_CLIP_H);
+> >  }
+> >
+> > +const u32 *mtk_mdp_rdma_get_formats(struct device *dev)
+> > +{
+> > +     return formats;
+> > +}
+> > +
+> > +size_t mtk_mdp_rdma_get_num_formats(struct device *dev)
+> > +{
+> > +     return ARRAY_SIZE(formats);
+> > +}
+> > +
+> >  int mtk_mdp_rdma_clk_enable(struct device *dev)
+> >  {
+> >       struct mtk_mdp_rdma *rdma =3D dev_get_drvdata(dev);
+> > --
+> > 2.18.0
+> >
+>
+> --
+> Daniel Vetter
+> Software Engineer, Intel Corporation
+> http://blog.ffwll.ch
 
