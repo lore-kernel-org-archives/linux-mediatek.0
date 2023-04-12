@@ -4,81 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC331C77B6E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 06:37:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 455B2C7619A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 06:46:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2CUzAZVNmhEddWbv5po9+adEHLn5WWCOxoPTdFXS6l4=; b=W3QB7vWzE52ttPIMGXWK6JtRb5
-	wkTvxCMRokD3wiqlU7wGwnOHatjjNwrlSp74OraL39UfEIPutMW9ZRFF3QwJ5/AVZSAkez9cQ+73C
-	goI1/KZ7FRQpQroO5lAdML4cVUHc4ICJISpwlH1b/SS8W3okq+vAWErdFLHH4VC3P5QatnS3wJxIF
-	BXsokVbWW/sZnj3uRHEIOY4Gkc+QVkJoT3P9Is2bD3A+8Dom69pZ/wjlGBZdXwPqnhaIHDjo0H+XJ
-	iMNbmIDO03nkxSrS8+ryfa1aNihfMTWZBUaQ0ZPcasMs9+TCPS/yK6157se78TZhG574tq+tGeBKM
-	guMeQ2Ug==;
+	bh=dKrCLmlIffh71h58MgK0xR1wolinne9sXsC5EuDugW8=; b=Sil/5HOOOtGgnm8uLyPjLOgas8
+	0MQDsq5AvopwQxoK2wLAdbOJK2K61sx/hRRfR3cjaZJm4/a9VpAUWWm03aUqP9uqnouhfkGUrhuNo
+	eXVEm3iv1qtp7BNH/F9w1mn6WrjqEw70RWBLeGvPsVj87vUIyJBrJEWMKi8aRlZB1vIcnMktFrLAR
+	2ePsYm+90h579cA084Vvvt2Ld7d0SxlY9M/jggDkOU8/9c4XK2KtN4Kw1sJ66By18Xm4G1I3sTOUn
+	8EhlhOuCcDDOoCxdz7A1Hysi0PmYZ8MgInezm5ITXSQCHs8CVg0VRWAmD0M7FaqtOyUlVw0Sr2xI6
+	kh+PelvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmU6P-001yyR-38;
-	Wed, 12 Apr 2023 06:37:09 +0000
-Received: from sender4-op-o10.zoho.com ([136.143.188.10])
+	id 1pmUFn-0020ZA-1y;
+	Wed, 12 Apr 2023 06:46:51 +0000
+Received: from out30-112.freemail.mail.aliyun.com ([115.124.30.112])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmU6M-001yxF-1J;
-	Wed, 12 Apr 2023 06:37:07 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1681281401; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=MPx172HnOIejQDyL0d/0DUdOEHO0rjgD6Oa6glZ3HE1iJOzYBJScCGQwiUPBWcUfB7qTQ1oWbuOxkpSrSKivIIeG4C7/KvdrHEPIK38DvN3oDFTKMZMuGsBwVOdYHx7ZmdUQfqJfsbwG1d3DuNlDRsdUCWZf448dtEaqOpj7yzc=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1681281401; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=2CUzAZVNmhEddWbv5po9+adEHLn5WWCOxoPTdFXS6l4=; 
-	b=hO8QKIOywiaIoS0G/klCObI81udy+loHkZMRlNb27Q2pVFh1KmoK4BC4D+kD3tApqyntKxoFc6u297ewZkyN8roixqL5TpQ9MzCzXJVxyVfb9sGa8Jm+hSwIvRwJqWT+e02yoO7HvbckJ/UM4c0MqgRGdjbrag1pegsgCOE71BM=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1681281401;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=2CUzAZVNmhEddWbv5po9+adEHLn5WWCOxoPTdFXS6l4=;
-	b=HU8zdvcDb/wiOXq/4JV9AcKkkkg4J778VwuzUb1bK4CSUeyllHOJNYeeW2jEJaRC
-	/2hett5Z85bMYasKfsrUdc30njoAPbVB9V0huiyEOkqkuXlfCqRPQO1XJvm3hckcxtI
-	w2jmcP4gc7nUSenhjPrSN092MUzCsPvyDKyemgjU=
-Received: from [10.10.10.3] (149.91.1.15 [149.91.1.15]) by mx.zohomail.com
-	with SMTPS id 1681281399656135.19981499513426; Tue, 11 Apr 2023 23:36:39 -0700 (PDT)
-Message-ID: <80d4a841-db7c-fa2b-e50d-84317ee54a40@arinc9.com>
-Date: Wed, 12 Apr 2023 09:36:32 +0300
+	id 1pmUFj-0020W3-0c;
+	Wed, 12 Apr 2023 06:46:49 +0000
+X-Alimail-AntiSpam: AC=PASS;BC=-1|-1;BR=01201311R951e4;CH=green;DM=||false|;DS=||;FP=0|-1|-1|-1|0|-1|-1|-1;HT=ay29a033018046059;MF=yang.lee@linux.alibaba.com;NM=1;PH=DS;RN=11;SR=0;TI=SMTPD_---0Vfv9Pbn_1681281998;
+Received: from localhost(mailfrom:yang.lee@linux.alibaba.com fp:SMTPD_---0Vfv9Pbn_1681281998)
+          by smtp.aliyun-inc.com;
+          Wed, 12 Apr 2023 14:46:38 +0800
+From: Yang Li <yang.lee@linux.alibaba.com>
+To: airlied@gmail.com
+Cc: daniel@ffwll.ch,
+	matthias.bgg@gmail.com,
+	chunkuang.hu@kernel.org,
+	p.zabel@pengutronix.de,
+	angelogioacchino.delregno@collabora.com,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	Yang Li <yang.lee@linux.alibaba.com>
+Subject: [PATCH -next 2/3] drm/mediatek: Use devm_platform_ioremap_resource()
+Date: Wed, 12 Apr 2023 14:46:34 +0800
+Message-Id: <20230412064635.41315-2-yang.lee@linux.alibaba.com>
+X-Mailer: git-send-email 2.20.1.7.g153144c
+In-Reply-To: <20230412064635.41315-1-yang.lee@linux.alibaba.com>
+References: <20230412064635.41315-1-yang.lee@linux.alibaba.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH v2 1/7] dt-bindings: net: dsa: mediatek,mt7530: correct
- brand name
-Content-Language: en-US
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Daniel Golle <daniel@makrotopia.org>, Landen Chao
- <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230407125008.42474-1-arinc.unal@arinc9.com>
- <20230411235749.xbghzt7w77swvhnz@skbuf>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20230411235749.xbghzt7w77swvhnz@skbuf>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230411_233706_497464_3CC1CCD6 
-X-CRM114-Status: GOOD (  12.20  )
+X-CRM114-CacheID: sfid-20230411_234647_420159_7A5044DD 
+X-CRM114-Status: UNSURE (   9.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,24 +68,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12.04.2023 02:57, Vladimir Oltean wrote:
-> Hi Arınç,
-> 
-> On Fri, Apr 07, 2023 at 03:50:03PM +0300, arinc9.unal@gmail.com wrote:
->> From: Arınç ÜNAL <arinc.unal@arinc9.com>
->>
->> The brand name is MediaTek, change it to that.
->>
->> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->> Acked-by: Daniel Golle <daniel@makrotopia.org>
->> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
->> ---
-> 
-> It is good practice for series larger than 2 patches to create a cover
-> letter, which gives the overview for the changes. Its contents gets used
-> as the merge commit description when the series is accepted.
+Remove variable 'res' and convert platform_get_resource(),
+devm_ioremap_resource() to a single call to
+devm_platform_ioremap_resource(), as this is exactly what this function
+does.
 
-Ok, will do on the next version. I'll also split the schema while at it.
+Signed-off-by: Yang Li <yang.lee@linux.alibaba.com>
+---
+ drivers/gpu/drm/mediatek/mtk_disp_aal.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-Arınç
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_aal.c b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+index 434e8a9ce8ab..391fa0ece22c 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+@@ -104,7 +104,6 @@ static int mtk_disp_aal_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+ 	struct mtk_disp_aal *priv;
+-	struct resource *res;
+ 	int ret;
+ 
+ 	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
+@@ -117,8 +116,7 @@ static int mtk_disp_aal_probe(struct platform_device *pdev)
+ 		return PTR_ERR(priv->clk);
+ 	}
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	priv->regs = devm_ioremap_resource(dev, res);
++	priv->regs = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(priv->regs)) {
+ 		dev_err(dev, "failed to ioremap aal\n");
+ 		return PTR_ERR(priv->regs);
+-- 
+2.20.1.7.g153144c
+
 
