@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2A5CC77B77
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 12:38:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5502FC77B6E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 12:39:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qrfSreIyYVzZ3y5IG1fr+KWAIr+UCJ0I73Dqb0W+8F0=; b=pAR4tQM+JadWoLncEs1BwsY7FO
-	5ifWNp3CC6xRkyahe5R+Sa02qO93WylBxyPB73EZXtw0w5Xg82rt3vzDTmx7xWeB0YMJfx0uVoPXc
-	o4pu+xYHN723thjJq+PrrKw+6lMMKIqqEX5oSpBGtxesIP4I4B/wWdFmdDSD66czOyk9YcCWunGqY
-	Q9rftw14RW69yyZ8baKsdZ/hEAq0gr8uuPzQBKHA46wHZgOguE2LrvgiM40hbBpBKIZb8R2zO64mF
-	wlQhTGcqDcwQZ93gIgY5SbSY1n0+e5bS3qCC2LrfLBPrRM55ZahxY4wnFp4isHxYqlJt7iCuny6Ao
-	USryqJAQ==;
+	bh=PreNljsPNXQDvE1E1wr7W6K5Jt99wws/S4uxWLaHCsE=; b=KXSNKWdFOJFQXXQnEMebJUkhDz
+	AeEOXRuhOhtNnX1591LLrZeVLpTKjrMV41Y5mwP6gwnP9NvU5O3vGJaKIVquQH0MRNoKkMsEYsweb
+	NnT/BuM70wctnAmkf4gHjTiCafrmOa4xRCYVaXn/HMurKiot2etpVmpuAW6IO+xMitYka33cxUvrS
+	h140PO6CsfvYJ8HD2PcCOxfAD0iIR5OSPpl0RG0qBrFRqQMvT+yJO/cn0fy4JPvcUBJWrVhpbEQPk
+	AFJfgKId6ZIz2L/S12jd4fxX38OKxQQv/oRnjZL2cG60M+VrNlG5KA21qVGaSn35YwRk+ynhPuBO8
+	NQhAyp+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmZk7-0039YU-0J;
-	Wed, 12 Apr 2023 12:38:31 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1pmZkT-0039oO-17;
+	Wed, 12 Apr 2023 12:38:53 +0000
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmZk4-0039Rp-1Q;
-	Wed, 12 Apr 2023 12:38:29 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id hg25-20020a05600c539900b003f05a99a841so14021062wmb.3;
-        Wed, 12 Apr 2023 05:38:22 -0700 (PDT)
+	id 1pmZkQ-0039lC-2D;
+	Wed, 12 Apr 2023 12:38:52 +0000
+Received: by mail-wr1-x42e.google.com with SMTP id e7so663126wrc.12;
+        Wed, 12 Apr 2023 05:38:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1681303101; x=1683895101;
+        d=gmail.com; s=20221208; t=1681303128; x=1683895128;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=qrfSreIyYVzZ3y5IG1fr+KWAIr+UCJ0I73Dqb0W+8F0=;
-        b=hKnB8rVVvWL/ZJVDH+5nnQup1V2zH+GXfSRvRjUwuxliSYmoOFCJYXpxVmdryKI5Z6
-         em1bkjoymu8mUq+z0MMoyyqrcS+ggayxUSXiP9PeGUq3mZZolACfXxqRl9fshlGGPAFD
-         Vkn8DAxLw+V9u8UTvs6/XjsZnQzXSTajc7QEVBBricagogLZ8T6SLB8w2LkIvy7fUNlo
-         i5BFX0Abej8aMb/TM2bcwTGrZkLkNmZ6/s4uPq0g9ySPiufO2mj7uIebq3BMVV4pMOrE
-         ZSfERzWfVLg4yCjn4pHkcURAMPmIsuND0L0K2xfg4HxUIjLL7AjNyC3IHq8/QR3EfDtj
-         wkYA==
+        bh=PreNljsPNXQDvE1E1wr7W6K5Jt99wws/S4uxWLaHCsE=;
+        b=FTjQk+3/hvIcMr5M+P2Q4srew4KUce++fUNzrFv0vpLpqo/IpSERCtHo96VjsIAXM1
+         b16q8nV5cyxQLNyMgivAHAA+J0SeKltSJSijt/sS0dyPetAu8hlCCeMCCCb8Sx4pAJ8d
+         D4eDYcuc2Mm7SrJOpBmqXj1XF2gVJwe9z1h1cpaA6/kBWPRlHzkWy57HNd1/QwxnSFr9
+         0Fb43XLUPw+IuWZF2F02LqSKTp0O+kTPegeEjcULB1roXPs+obA18L9a3eYqxLbsSKZk
+         JH/hlDTII9dXw8i8EZrC4ea3oNvphpxHOEPNUn5eIG5zwXwj4eb27T/ZlYOQAVZlJKyh
+         DvNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1681303101; x=1683895101;
+        d=1e100.net; s=20210112; t=1681303128; x=1683895128;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=qrfSreIyYVzZ3y5IG1fr+KWAIr+UCJ0I73Dqb0W+8F0=;
-        b=cCJHOgFXtB2GyWT7r2Ul4mtt2p2eqIUUdPKGzIlRCwp3fy6+NBWnQdEdjqP74dkEEZ
-         gHU5JsW4cjwYzgXx4mjVj4xygduBumjVYkQbNiX7mgJT8TmZoDsgv5M9dgLJGsBIeyLU
-         nXE5lclYyLrgmfDRqHvq4wjQcHg4jk8HAK2KzeUcF1wQNFNILVz02PHtX/gzeaseuII2
-         LGxRVU2i/2MSvjwbsi+SDjQ9C4AW/Qv729l7vJZNSCj2w5tMKEv+SUXc6Sj6scBZvRUP
-         phkG+P+GzTnbgioset81Pp2Y8cldS5ra7HXMuCMg+ptmbgg9pJuzxjzApDruzzjXmswx
-         ciQQ==
-X-Gm-Message-State: AAQBX9c8Myu0sEJv2NpjbzJjTDtRKDKFdUUTp5Pjoxlw5JVIswRUli6y
-	rmFM9IWB4B8XwOvUwnmVokk=
-X-Google-Smtp-Source: AKy350b1vX5xNQp4/w0RoaPw15e4jwJGSLVJZU+94BcA1FM+NfcERa2O3p1GtJwdJ/T8GfM77hbaig==
-X-Received: by 2002:a05:600c:1e25:b0:3ed:24f7:2b48 with SMTP id ay37-20020a05600c1e2500b003ed24f72b48mr1859483wmb.8.1681303100769;
-        Wed, 12 Apr 2023 05:38:20 -0700 (PDT)
+        bh=PreNljsPNXQDvE1E1wr7W6K5Jt99wws/S4uxWLaHCsE=;
+        b=uShOgolLgjgSmxApgPUd3L2G47cX6f1sr5zu0x+SRCXkquo+4MfrNcr3iC4z2B6kRk
+         ZaxuP9lWexljCdUUNNM+eV8/3GL/AUi6JI8fJ73LxbvPx54Q0XsSBw6qak2J2vfDhUPU
+         u4MMdxfHkW8Nd/JqVEJ5S6CZhKB9HU1gV4OlI1DLHnSkFdn9ghNVUoWB45QkasUfQ+1Z
+         kDVwGYnX9hA4M+kzB53tTK4HaHZEqJjkov6cNq3IhmjSwjGFi7YSnq+pAE2bXIIh5S0s
+         ZvCQh2QBPRDqsbbFrCpQ/wCFL4PxWel9DRIPQo8JG/t6WTE1MCHFgD+FZbP5DIrLNsR/
+         yvNw==
+X-Gm-Message-State: AAQBX9dctuyMh2ssXGRDi+StVjQHlPurJAymr+iO8A3QMZ1Co36FDWEQ
+	JcEoW9JdX8Boj1DfCi77hmvgFbU8xywp5g==
+X-Google-Smtp-Source: AKy350ZMDEAz6WeHEq+goUHZnVLfPA/3GWKa3RR20ZAR/34TP+dIRIMFzmPIChMnOPItSd+YECzuGw==
+X-Received: by 2002:adf:d4c8:0:b0:2f0:91c3:16e7 with SMTP id w8-20020adfd4c8000000b002f091c316e7mr1962606wrk.28.1681303128200;
+        Wed, 12 Apr 2023 05:38:48 -0700 (PDT)
 Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id c9-20020a05600c0a4900b003ee6aa4e6a9sm2381574wmq.5.2023.04.12.05.38.18
+        by smtp.gmail.com with ESMTPSA id a16-20020adffad0000000b002efb2d861dasm13813042wrs.77.2023.04.12.05.38.45
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 12 Apr 2023 05:38:19 -0700 (PDT)
-Message-ID: <9b5a0ad7-bd94-98be-273a-7a2f9d53ed36@gmail.com>
-Date: Wed, 12 Apr 2023 14:38:18 +0200
+        Wed, 12 Apr 2023 05:38:47 -0700 (PDT)
+Message-ID: <2efc95c3-4f46-6256-af54-c29deef252d3@gmail.com>
+Date: Wed, 12 Apr 2023 14:38:45 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.1
-Subject: Re: [PATCH 14/27] dt-bindings: display: mediatek: od: Add compatible
- for MediaTek MT6795
+Subject: Re: [PATCH 15/27] dt-bindings: mailbox: mediatek,gce-mailbox: Add
+ support for MT6795
 Content-Language: en-US
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
@@ -80,16 +80,17 @@ Cc: p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
  linux-pwm@vger.kernel.org, kernel@collabora.com,
- phone-devel@vger.kernel.org, ~postmarketos/upstreaming@lists.sr.ht
+ phone-devel@vger.kernel.org, ~postmarketos/upstreaming@lists.sr.ht,
+ Krzysztof Kozlowski <krzk@kernel.org>
 References: <20230412112739.160376-1-angelogioacchino.delregno@collabora.com>
- <20230412112739.160376-15-angelogioacchino.delregno@collabora.com>
+ <20230412112739.160376-16-angelogioacchino.delregno@collabora.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20230412112739.160376-15-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230412112739.160376-16-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230412_053828_482164_CBCA5672 
-X-CRM114-Status: GOOD (  12.60  )
+X-CRM114-CacheID: sfid-20230412_053850_744687_AF43541F 
+X-CRM114-Status: GOOD (  16.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,29 +108,178 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 12/04/2023 13:27, AngeloGioacchino Del Regno wrote:
-> Add a compatible string for MediaTek Helio X10 MT6795's OverDrive (OD)
-> block: this is the same as MT8173.
+> Add a compatible string for the MT6795 Helio X10 SoC using MT8173
+> binding and add a header for the MT6795's GCE mailbox.
 > 
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->   .../devicetree/bindings/display/mediatek/mediatek,od.yaml      | 3 +++
->   1 file changed, 3 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,od.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,od.yaml
-> index 853fcb9db2be..691a3644504f 100644
-> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,od.yaml
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,od.yaml
-> @@ -25,6 +25,9 @@ properties:
->             - const: mediatek,mt2712-disp-od
->         - items:
->             - const: mediatek,mt8173-disp-od
-> +      - items:
-> +          - const: mediatek,mt6795-disp-od
-> +          - const: mediatek,mt8173-disp-od
+> Reviewed-by: Krzysztof Kozlowski <krzk@kernel.org>
 
 Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
+> ---
+>   .../mailbox/mediatek,gce-mailbox.yaml         |  20 +--
+>   include/dt-bindings/gce/mediatek,mt6795-gce.h | 123 ++++++++++++++++++
+>   2 files changed, 135 insertions(+), 8 deletions(-)
+>   create mode 100644 include/dt-bindings/gce/mediatek,mt6795-gce.h
+> 
+> diff --git a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
+> index d383b2ab3ce8..cef9d7601398 100644
+> --- a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
+> +++ b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
+> @@ -16,14 +16,18 @@ description:
 >   
->     reg:
->       maxItems: 1
+>   properties:
+>     compatible:
+> -    enum:
+> -      - mediatek,mt6779-gce
+> -      - mediatek,mt8173-gce
+> -      - mediatek,mt8183-gce
+> -      - mediatek,mt8186-gce
+> -      - mediatek,mt8188-gce
+> -      - mediatek,mt8192-gce
+> -      - mediatek,mt8195-gce
+> +    oneOf:
+> +      - enum:
+> +          - mediatek,mt6779-gce
+> +          - mediatek,mt8173-gce
+> +          - mediatek,mt8183-gce
+> +          - mediatek,mt8186-gce
+> +          - mediatek,mt8188-gce
+> +          - mediatek,mt8192-gce
+> +          - mediatek,mt8195-gce
+> +      - items:
+> +          - const: mediatek,mt6795-gce
+> +          - const: mediatek,mt8173-gce
+>   
+>     "#mbox-cells":
+>       const: 2
+> diff --git a/include/dt-bindings/gce/mediatek,mt6795-gce.h b/include/dt-bindings/gce/mediatek,mt6795-gce.h
+> new file mode 100644
+> index 000000000000..97d5ba2d2b44
+> --- /dev/null
+> +++ b/include/dt-bindings/gce/mediatek,mt6795-gce.h
+> @@ -0,0 +1,123 @@
+> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
+> +/*
+> + * Copyright (c) 2023 Collabora Ltd.
+> + * Author: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> + */
+> +#ifndef _DT_BINDINGS_GCE_MT6795_H
+> +#define _DT_BINDINGS_GCE_MT6795_H
+> +
+> +/* GCE HW thread priority */
+> +#define CMDQ_THR_PRIO_LOWEST			0
+> +#define CMDQ_THR_PRIO_NORMAL			1
+> +#define CMDQ_THR_PRIO_NORMAL_2			2
+> +#define CMDQ_THR_PRIO_MEDIUM			3
+> +#define CMDQ_THR_PRIO_MEDIUM_2			4
+> +#define CMDQ_THR_PRIO_HIGH			5
+> +#define CMDQ_THR_PRIO_HIGHER			6
+> +#define CMDQ_THR_PRIO_HIGHEST			7
+> +
+> +/* GCE SUBSYS */
+> +#define SUBSYS_1300XXXX				0
+> +#define SUBSYS_1400XXXX				1
+> +#define SUBSYS_1401XXXX				2
+> +#define SUBSYS_1402XXXX				3
+> +#define SUBSYS_1500XXXX				4
+> +#define SUBSYS_1600XXXX				5
+> +#define SUBSYS_1700XXXX				6
+> +#define SUBSYS_1800XXXX				7
+> +#define SUBSYS_1000XXXX				8
+> +#define SUBSYS_1001XXXX				9
+> +#define SUBSYS_1002XXXX				10
+> +#define SUBSYS_1003XXXX				11
+> +#define SUBSYS_1004XXXX				12
+> +#define SUBSYS_1005XXXX				13
+> +#define SUBSYS_1020XXXX				14
+> +#define SUBSYS_1021XXXX				15
+> +#define SUBSYS_1120XXXX				16
+> +#define SUBSYS_1121XXXX				17
+> +#define SUBSYS_1122XXXX				18
+> +#define SUBSYS_1123XXXX				19
+> +#define SUBSYS_1124XXXX				20
+> +#define SUBSYS_1125XXXX				21
+> +#define SUBSYS_1126XXXX				22
+> +
+> +/* GCE HW EVENT */
+> +#define CMDQ_EVENT_MDP_RDMA0_SOF		0
+> +#define CMDQ_EVENT_MDP_RDMA1_SOF		1
+> +#define CMDQ_EVENT_MDP_DSI0_TE_SOF		2
+> +#define CMDQ_EVENT_MDP_DSI1_TE_SOF		3
+> +#define CMDQ_EVENT_MDP_MVW_SOF			4
+> +#define CMDQ_EVENT_MDP_TDSHP0_SOF		5
+> +#define CMDQ_EVENT_MDP_TDSHP1_SOF		6
+> +#define CMDQ_EVENT_MDP_WDMA_SOF			7
+> +#define CMDQ_EVENT_MDP_WROT0_SOF		8
+> +#define CMDQ_EVENT_MDP_WROT1_SOF		9
+> +#define CMDQ_EVENT_MDP_CROP_SOF			10
+> +#define CMDQ_EVENT_DISP_OVL0_SOF		11
+> +#define CMDQ_EVENT_DISP_OVL1_SOF		12
+> +#define CMDQ_EVENT_DISP_RDMA0_SOF		13
+> +#define CMDQ_EVENT_DISP_RDMA1_SOF		14
+> +#define CMDQ_EVENT_DISP_RDMA2_SOF		15
+> +#define CMDQ_EVENT_DISP_WDMA0_SOF		16
+> +#define CMDQ_EVENT_DISP_WDMA1_SOF		17
+> +#define CMDQ_EVENT_DISP_COLOR0_SOF		18
+> +#define CMDQ_EVENT_DISP_COLOR1_SOF		19
+> +#define CMDQ_EVENT_DISP_AAL_SOF			20
+> +#define CMDQ_EVENT_DISP_GAMMA_SOF		21
+> +#define CMDQ_EVENT_DISP_UFOE_SOF		22
+> +#define CMDQ_EVENT_DISP_PWM0_SOF		23
+> +#define CMDQ_EVENT_DISP_PWM1_SOF		24
+> +#define CMDQ_EVENT_DISP_OD_SOF			25
+> +#define CMDQ_EVENT_MDP_RDMA0_EOF		26
+> +#define CMDQ_EVENT_MDP_RDMA1_EOF		27
+> +#define CMDQ_EVENT_MDP_RSZ0_EOF			28
+> +#define CMDQ_EVENT_MDP_RSZ1_EOF			29
+> +#define CMDQ_EVENT_MDP_RSZ2_EOF			30
+> +#define CMDQ_EVENT_MDP_TDSHP0_EOF		31
+> +#define CMDQ_EVENT_MDP_TDSHP1_EOF		32
+> +#define CMDQ_EVENT_MDP_WDMA_EOF			33
+> +#define CMDQ_EVENT_MDP_WROT0_WRITE_EOF		34
+> +#define CMDQ_EVENT_MDP_WROT0_READ_EOF		35
+> +#define CMDQ_EVENT_MDP_WROT1_WRITE_EOF		36
+> +#define CMDQ_EVENT_MDP_WROT1_READ_EOF		37
+> +#define CMDQ_EVENT_MDP_CROP_EOF			38
+> +#define CMDQ_EVENT_DISP_OVL0_EOF		39
+> +#define CMDQ_EVENT_DISP_OVL1_EOF		40
+> +#define CMDQ_EVENT_DISP_RDMA0_EOF		41
+> +#define CMDQ_EVENT_DISP_RDMA1_EOF		42
+> +#define CMDQ_EVENT_DISP_RDMA2_EOF		43
+> +#define CMDQ_EVENT_DISP_WDMA0_EOF		44
+> +#define CMDQ_EVENT_DISP_WDMA1_EOF		45
+> +#define CMDQ_EVENT_DISP_COLOR0_EOF		46
+> +#define CMDQ_EVENT_DISP_COLOR1_EOF		47
+> +#define CMDQ_EVENT_DISP_AAL_EOF			48
+> +#define CMDQ_EVENT_DISP_GAMMA_EOF		49
+> +#define CMDQ_EVENT_DISP_UFOE_EOF		50
+> +#define CMDQ_EVENT_DISP_DPI0_EOF		51
+> +#define CMDQ_EVENT_MUTEX0_STREAM_EOF		52
+> +#define CMDQ_EVENT_MUTEX1_STREAM_EOF		53
+> +#define CMDQ_EVENT_MUTEX2_STREAM_EOF		54
+> +#define CMDQ_EVENT_MUTEX3_STREAM_EOF		55
+> +#define CMDQ_EVENT_MUTEX4_STREAM_EOF		56
+> +#define CMDQ_EVENT_MUTEX5_STREAM_EOF		57
+> +#define CMDQ_EVENT_MUTEX6_STREAM_EOF		58
+> +#define CMDQ_EVENT_MUTEX7_STREAM_EOF		59
+> +#define CMDQ_EVENT_MUTEX8_STREAM_EOF		60
+> +#define CMDQ_EVENT_MUTEX9_STREAM_EOF		61
+> +#define CMDQ_EVENT_DISP_RDMA0_UNDERRUN		62
+> +#define CMDQ_EVENT_DISP_RDMA1_UNDERRUN		63
+> +#define CMDQ_EVENT_DISP_RDMA2_UNDERRUN		64
+> +#define CMDQ_EVENT_ISP_PASS2_2_EOF		129
+> +#define CMDQ_EVENT_ISP_PASS2_1_EOF		130
+> +#define CMDQ_EVENT_ISP_PASS2_0_EOF		131
+> +#define CMDQ_EVENT_ISP_PASS1_1_EOF		132
+> +#define CMDQ_EVENT_ISP_PASS1_0_EOF		133
+> +#define CMDQ_EVENT_CAMSV_2_PASS1_EOF		134
+> +#define CMDQ_EVENT_CAMSV_1_PASS1_EOF		135
+> +#define CMDQ_EVENT_SENINF_CAM1_2_3_FIFO_FULL	136
+> +#define CMDQ_EVENT_SENINF_CAM0_FIFO_FULL	137
+> +#define CMDQ_EVENT_JPGENC_PASS2_EOF		257
+> +#define CMDQ_EVENT_JPGENC_PASS1_EOF		258
+> +#define CMDQ_EVENT_JPGDEC_EOF			259
+> +
+> +#endif
 
