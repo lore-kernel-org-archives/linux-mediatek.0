@@ -4,75 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3147C7619A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 13:24:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F351C77B72
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 13:33:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eb4XuwH4JdtGx4s9vo9eK4fik69b7fQierZjyFZ7G+g=; b=i5DLwFIMcr/5rnrUzkOjVvMI+D
-	knRFnM8TRdUTBz52LOfM6lLZ1CX/HldOdIxSfI+c0ZLqd99C3ChYE1i44NRO0B7neI1guKnkZYjeB
-	MI43G/lHZkVkWwaqQcXqkfkPK8ur45Dllp2w0j8VQuO0Vn61Um9e20pHo1b2pnHRLPG0Aqq0wLCSe
-	5k0YsH9fZQ4o1LUqrzNdRoxQf+9tC7x8uEsSXYamIw8S9EaJEQg5ZZAPJtogV61RB2m7sZbEG0hvs
-	lK0Z9ji68ChOkSF7DfBF3ZqiieaIk2BznQ7o9dRsu6rujOC67+9JGFfIIdsEaAMegOr7xbhpBjnVl
-	OtgVz66Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kj1HamM+8SM24EOk1NXCkim3SGvhB5cPO3Uo08qq7IY=; b=Tg1U9CzGPVRQ++nMTnt+sLysuk
+	SZzvgsptfK6uxYdLIgmc+jEFD30VBIBn7d8Y5UZbOwtReBInX7bnsWiDTEMGoz/aaFaTzFnj25DXT
+	mVjaPOl9shwEndcAwA0TnX5OoI7apxmTaOg+5t7TlrHjn/cz4QbNWhcAFsrcH0R9G4h1Rx0yYSGlT
+	gQ7/vVCgXSY0dXA+ulirhNX/jpPEi4c1I6/5c3ygnw/IaAUmWWhF91lboXpyobtW/apo9IHhNOKR5
+	idQkP+ZkWk2ythfu65rFoAOvlZ0qd32MKNdx+KC/za0DSDisDH8FzYW5TlHO4DzGJB1J34Um1j+Cj
+	d6Gugoyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmaSA-003KmQ-05;
-	Wed, 12 Apr 2023 13:24:02 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmaS6-003Kkz-0w;
-	Wed, 12 Apr 2023 13:23:59 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 681776603102;
-	Wed, 12 Apr 2023 14:23:55 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1681305836;
-	bh=C+NuJI3gJQOvg2W2Jt6ytwX+Z1SaqR9sW/KQiI2QbiI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Mbo9WZ5dvorklyrGK5QC93j7iWln5Nb1/0dZiovAp8HYc7dmf9gr1K3T6vJUTMDWF
-	 KBjARKXpwJsIkz1QJ6vDHsZNtV8kVU8Jj0BV/XrzMCX1c1zsD2DUMe4viOORDcm+52
-	 D80e6axsE5IlRNwR26L7uf7pl+V6gFyzIck6f29rFY9zvzhCBp1KiKmTBlTC9kQ/9M
-	 nyf4m+rOp2OB3OrxR2uLA6qWo7Ku1L2tyeEtuX5E/XpQrCrk7x6GAIxCwcOCbvoPUc
-	 8UrR0BepUKP3t0nKCa3Is6oXrI8kWwrNKpeDT69WR3iL8uathgheIz0FQheBvmzc8w
-	 wAERQg2FZvT8g==
-Message-ID: <c66642f5-470f-9d39-19d8-e76f8b6288b3@collabora.com>
-Date: Wed, 12 Apr 2023 15:23:53 +0200
+	id 1pmabY-003M7S-0V;
+	Wed, 12 Apr 2023 13:33:44 +0000
+Received: from elvis.franken.de ([193.175.24.41])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1pmabV-003M6V-0B;
+	Wed, 12 Apr 2023 13:33:43 +0000
+Received: from uucp (helo=alpha)
+	by elvis.franken.de with local-bsmtp (Exim 3.36 #1)
+	id 1pmabN-0000FF-00; Wed, 12 Apr 2023 15:33:33 +0200
+Received: by alpha.franken.de (Postfix, from userid 1000)
+	id 4E6A6C2449; Wed, 12 Apr 2023 15:27:06 +0200 (CEST)
+Date: Wed, 12 Apr 2023 15:27:06 +0200
+From: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
+To: John Crispin <john@phrozen.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Serge Semin <fancer.lancer@gmail.com>,
+	Thomas Gleixner <tglx@linutronix.de>, Marc Zyngier <maz@kernel.org>,
+	linux-mips@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] MIPS: Remove deprecated CONFIG_MIPS_CMP
+Message-ID: <20230412132706.GA11717@alpha.franken.de>
+References: <20230405185128.15237-1-tsbogend@alpha.franken.de>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.1
-Subject: Re: [PATCH 22/27] arm64: dts: mediatek: mt6795: Copyright header
- additions
-Content-Language: en-US
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- jassisinghbrar@gmail.com, chunfeng.yun@mediatek.com, vkoul@kernel.org,
- kishon@kernel.org, thierry.reding@gmail.com, u.kleine-koenig@pengutronix.de,
- chunkuang.hu@kernel.org, ck.hu@mediatek.com, jitao.shi@mediatek.com,
- xinlei.lee@mediatek.com, houlong.wei@mediatek.com,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
- linux-pwm@vger.kernel.org, kernel@collabora.com,
- phone-devel@vger.kernel.org, ~postmarketos/upstreaming@lists.sr.ht
-References: <20230412112739.160376-1-angelogioacchino.delregno@collabora.com>
- <20230412112739.160376-23-angelogioacchino.delregno@collabora.com>
- <7466cf12-9411-cb35-8e8b-fa50f5efe492@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <7466cf12-9411-cb35-8e8b-fa50f5efe492@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230405185128.15237-1-tsbogend@alpha.franken.de>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230412_062358_458206_CE90709D 
-X-CRM114-Status: GOOD (  14.24  )
+X-CRM114-CacheID: sfid-20230412_063341_259790_802D822C 
+X-CRM114-Status: GOOD (  14.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,46 +66,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 12/04/23 14:41, Matthias Brugger ha scritto:
+On Wed, Apr 05, 2023 at 08:51:27PM +0200, Thomas Bogendoerfer wrote:
+> Commit 5cac93b35c14 ("MIPS: Deprecate CONFIG_MIPS_CMP") deprecated
+> CONFIG_MIPS_CMP and after 9 years it's time to remove it.
 > 
+> Signed-off-by: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
+> ---
+> Marc, if you prefer an extra patch for the irqchip change, I'll
+> split this. Otherwise I would take it through the MIPS tree.
 > 
-> On 12/04/2023 13:27, AngeloGioacchino Del Regno wrote:
->> I have added more than 800 lines to this devicetree: adding myself to
->> the copyright header.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   arch/arm64/boot/dts/mediatek/mt6795.dtsi | 3 +++
->>   1 file changed, 3 insertions(+)
->>
->> diff --git a/arch/arm64/boot/dts/mediatek/mt6795.dtsi 
->> b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
->> index 29ca9a7bf0b3..a4c950b65006 100644
->> --- a/arch/arm64/boot/dts/mediatek/mt6795.dtsi
->> +++ b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
->> @@ -2,6 +2,9 @@
->>   /*
->>    * Copyright (c) 2015 MediaTek Inc.
->>    * Author: Mars.C <mars.cheng@mediatek.com>
->> + *
->> + * Copyright (C) 2023 Collabora Ltd.
->> + *                    AngeloGioacchino Del Regno 
->> <angelogioacchino.delregno@collabora.com>
-> 
-> Indentation?
-> 
-> BTW from what I understand the copyright will be by your employer, Collabora not 
-> you, but I'm not an legal expert :)
-> 
+>  arch/mips/Kconfig                    |  34 +----
+>  arch/mips/include/asm/rtlx.h         |   1 -
+>  arch/mips/include/asm/smp-ops.h      |  16 ---
+>  arch/mips/include/asm/vpe.h          |   4 -
+>  arch/mips/kernel/Makefile            |   3 -
+>  arch/mips/kernel/rtlx-cmp.c          | 122 ------------------
+>  arch/mips/kernel/smp-cmp.c           | 148 ----------------------
+>  arch/mips/kernel/vpe-cmp.c           | 180 ---------------------------
+>  arch/mips/kernel/vpe.c               |   2 +-
+>  arch/mips/mti-malta/Makefile         |   2 -
+>  arch/mips/mti-malta/malta-amon.c     |  88 -------------
+>  arch/mips/mti-malta/malta-init.c     |   2 -
+>  arch/mips/mti-malta/malta-platform.c |   2 -
+>  arch/mips/ralink/mt7621.c            |   2 -
+>  drivers/irqchip/irq-mips-gic.c       |  26 ----
+>  15 files changed, 3 insertions(+), 629 deletions(-)
+>  delete mode 100644 arch/mips/kernel/rtlx-cmp.c
+>  delete mode 100644 arch/mips/kernel/smp-cmp.c
+>  delete mode 100644 arch/mips/kernel/vpe-cmp.c
+>  delete mode 100644 arch/mips/mti-malta/malta-amon.c
 
-The copyright *is* by my employer ... but at the same time I'm adding my name,
-because it's me performing the work.
+applied to mips-next.
 
-I didn't write (c) myname, but (c) employer, myname - that's ok :-)
+Thomas.
 
-Or was the comment about the commit description? Should that be reworded?
-
-Cheers,
-Angelo
-
+-- 
+Crap can work. Given enough thrust pigs will fly, but it's not necessarily a
+good idea.                                                [ RFC1925, 2.3 ]
 
