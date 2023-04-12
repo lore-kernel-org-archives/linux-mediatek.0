@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 528AAC77B6E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 15:33:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36FDEC7619A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 15:33:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ONT4p0rDW0G8k9WoMnUfvbf9Fn7bs8SjHR0Mp0VJIY0=; b=oKeeChn25PSs6/18mHxUq3NOfz
-	OocoFBYVdu6Hvk73VUnZbc8qf/akROQ7pJQhQ/NQPHLwyp1hXvuauapKu1OVNYnLuv1QTkAYoZzb7
-	5VCpNmyF4viqoePlxmMhLUanqk1nYvhGMra1Q5IxCtrQt92v+AYQLUYcBAxqscLj64ZhQf7djbH7g
-	ERQ0Ttd4ehX+cRp0R3sgcnj9HI3LG6Lf2peSRhIztwppOe9XHQXDkiu+yAFJgChTrfXZaFO/9EeHN
-	hfo0dvM8XJqSjbxjvJII8jTgjHG8ruIgiC/qQQr7Nr/NvrHOqhEmz1yJic35trMf7AqCvSt5fsVI3
-	/eYwxfFw==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2DqHX9tS+6Zn1iP7P4lZX43bMDP/noYicbQY48CW24Y=; b=DbXuQK7zd6HnXTHvERoKILPrUY
+	C3Y2k8cH0M41B21LCmTgmM1rP8jr1dEBTs7KYiain3n92OoLUKM3uEWr3Y/h8EgvjjN330CPG8+ko
+	hQxcSYyI0k1uYM393ckTDk+WYtQIjnQXJyouwuj1xo3ZgDZWt0dvdzhS1i8p0dieZcTw1+yZknxrZ
+	rkKBopUNeLagnc3gejMNBsVywkG2gU1QB9d67AFWSGSveeUz7/AkuH3uKOpvMF/FTCyZikRXtks0y
+	HWa56/oZEL2viiQzvrm8keRL+aUiK7/stRxVkwEgfSkyzpxju3KvWh1UsxvQ4Al/SWxOlrHBNxsto
+	BTLUHhOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmcTR-003eIn-1k;
-	Wed, 12 Apr 2023 15:33:29 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pmcTU-003eKs-1L;
+	Wed, 12 Apr 2023 15:33:32 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmcTH-003eAM-2H;
-	Wed, 12 Apr 2023 15:33:21 +0000
+	id 1pmcTI-003eAt-36;
+	Wed, 12 Apr 2023 15:33:22 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6E50B66031FC;
-	Wed, 12 Apr 2023 16:33:16 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 122EE6603225;
+	Wed, 12 Apr 2023 16:33:18 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1681313597;
-	bh=ecJH2EtX3R5DZMYZKjQw1ZtBrs//AYhOJV8hfuaZ1iU=;
-	h=From:To:Cc:Subject:Date:From;
-	b=I4d1ZOWZuIT/oAmJVJMEP6w3ieVTTFsTZqe193tCIt14+gHejTpmZcBSVrEJg39PH
-	 HKrNrkh79KFVkhTqGeiynDL9J+dGsIsgAXNn6f0UlQcz2X6mYViVA0o961ZIOVi12R
-	 lnUCcB6EA9Jn/AavzH34cyw17ifZBJKzB5BpSNGJ4klGme3jVU6xZqwR0eyHmemTgm
-	 m5kzhNozbvlEsdE90v+MxNnBBNJ893il1yRwuQwPMd0laV1n6stseHbm88I+KAvYBg
-	 AUk9PvBkQpARW85FwVRc1U0lIyDjk8LrfaNHGT8pL7FBZg0KKI5CDoqBSqStGIaVMu
-	 wuVM1BUoVijsw==
+	s=mail; t=1681313598;
+	bh=1+oH2VJGxX2IXpJcPBU8K/09H6Zjp51OG61aceue6n0=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=It/+A/uOXs6ivhMgiksOy0vKnoqYLUSaRczY4L4AmWojKY09uzozY4sgGMDpaxcr7
+	 dcKz8Uvs3/0o37xDyIZVcVtPab9aXuEsBJ7fan7PXmtqZZoir95JIlnan5KHgfE3d2
+	 a7oPFD0xr0NC4jQUnCDyhJQUKm6QbqvrIWfsGPaMir6woxjqSIuOPP1SVNMUvwESIf
+	 gfR8M66dO1aIg/1bkAqCbaLqun46eFmGSkJDD4Io+Z0mVtCrfTQpI18irqU52DO8Zo
+	 vt7KFxSgZi5NgjCsiSeaoz+qtxNADbgT66maEJO6AdOPLJNhLh3MuDMZqTCzGDH2dt
+	 7irnGfS2/1khw==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: pavel@ucw.cz
 Cc: lee@kernel.org,
@@ -56,16 +56,20 @@ Cc: lee@kernel.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	kernel@collabora.com,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2 0/7] Add support for MT6331 and MT6332 LEDs
-Date: Wed, 12 Apr 2023 17:33:03 +0200
-Message-Id: <20230412153310.241046-1-angelogioacchino.delregno@collabora.com>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v2 2/7] dt-bindings: leds: leds-mt6323: Document mt6332 compatible
+Date: Wed, 12 Apr 2023 17:33:05 +0200
+Message-Id: <20230412153310.241046-3-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.40.0
+In-Reply-To: <20230412153310.241046-1-angelogioacchino.delregno@collabora.com>
+References: <20230412153310.241046-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230412_083319_873329_C6A4233B 
-X-CRM114-Status: GOOD (  12.31  )
+X-CRM114-CacheID: sfid-20230412_083321_126377_CE8D1A25 
+X-CRM114-Status: UNSURE (   7.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,42 +84,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Changes in v2:
- - Rebase over next-20230412
+Add support for MT6332 LEDs/WLEDs with compatible "mediatek,mt6332-led".
 
-NOTE: Since v1 of this series was sent in Semptember 2022 and got
-ignored for *7 months* with no feedback, I'm retrying the upstreaming
-of this same series.
-There are no changes, if not just a simple rebase and another test
-run on the same hardware.
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ Documentation/devicetree/bindings/leds/leds-mt6323.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
-
-MT6323 is not the only PMIC that has a LEDs controller IP and it was
-found that the others do have a compatible register layout, except
-for some register offsets.
-The logic contained in this driver can be totally reused for other
-PMICs as well, so I can't see any reason to keep this specific to
-the MT6323 part.
-
-This series brings meaningful platform data to this driver, giving
-it flexibility and adding support for LED controllers found in the
-MT6331 and MT6332 PMICs.
-
-Tested on MT6795 Sony Xperia M5 smartphone.
-
-AngeloGioacchino Del Regno (7):
-  dt-bindings: leds: leds-mt6323: Document mt6331 compatible
-  dt-bindings: leds: leds-mt6323: Document mt6332 compatible
-  leds: leds-mt6323: Specify registers and specs in platform data
-  leds: leds-mt6323: Open code and drop MT6323_CAL_HW_DUTY macro
-  leds: leds-mt6323: Drop MT6323_ prefix from macros and defines
-  leds: leds-mt6323: Add support for MT6331 leds
-  leds: leds-mt6323: Add support for WLEDs and MT6332
-
- .../devicetree/bindings/leds/leds-mt6323.txt  |   5 +-
- drivers/leds/leds-mt6323.c                    | 444 ++++++++++++++----
- 2 files changed, 350 insertions(+), 99 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/leds/leds-mt6323.txt b/Documentation/devicetree/bindings/leds/leds-mt6323.txt
+index 7dc63af41562..052dccb8f2ce 100644
+--- a/Documentation/devicetree/bindings/leds/leds-mt6323.txt
++++ b/Documentation/devicetree/bindings/leds/leds-mt6323.txt
+@@ -15,6 +15,7 @@ Required properties:
+ - compatible : Must be one of
+   - "mediatek,mt6323-led"
+   - "mediatek,mt6331-led"
++  - "mediatek,mt6332-led"
+ - address-cells : Must be 1
+ - size-cells : Must be 0
+ 
 -- 
 2.40.0
 
