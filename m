@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54414C7619A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 13:12:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6734AC77B72
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 13:12:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zc4/7KYg8jDtCet1zrfHxIuoNb6cD+a384nMVvJtQlc=; b=ZLdTNpxx/3P4fXMD6GA0uc5H9p
-	6rYOxo1T7a1brFr6yYyPdkNVuC+kC/GkL/iPJhAP30iB7ALHO3iWcjyN6O1/N6Q7+pgJ+dlAk3uas
-	RjscfWZqgRj9rvX9QCye2AlV6fnV6/BYkcvmzKYcWC/nK0YrJe9CFcdYIahs1dxIle9aj6ery0w87
-	kPDOn8q/ZlAU2C/3Qf7mNBSexCwy7TdgcKhKLj+vn7XjmRuTAyHO0CUeDBBrGt1DoibSq7aLxkZZY
-	rdjtoulzBrgw+iR9IgbLrW1nq7MmTkN8+1i9B1wiYB989tM6Yg6irZmxPbJw+IyW97QzrOBoc+8rw
-	84ySQ4ZA==;
+	bh=R4ZNKWLosNoSBgDJIreTM9EC8pJt/d9zuTRRvbtK/Oo=; b=VCUZ3sLF2TxAoY2ARMqyKZGyEn
+	z7iKfUzubg8XdKuGjuzu/UIsP/mSO/Alr8GpkavOiHTNtiNqrdrRPPYSruRVe8pa3cDixST6dATPY
+	U1t+hm9Pdy4+RdHJH987yrWMa9O7PSKBz4DG/5KOQeuoeERo5bLBpD7BdqqLUz6mXI0yULFzaVrrk
+	lgUYUny0T0uwtrBuM7sniBl0TnY5Usz555qx4dm+EiYAbsWITKn33Vlx/uvVDUzfSRoMkWdjsw/uF
+	cBZqZKYNz0AwffiPXpv8LEkRr5m4VmKjsSXZYqaar208UY8wLA+ohJWdrHQ3Q6q/hMGNhuFsQpnLq
+	JLe+yCBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmaH7-003HC9-06;
-	Wed, 12 Apr 2023 13:12:37 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pmaHC-003HEV-0z;
+	Wed, 12 Apr 2023 13:12:42 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmaGt-003H5d-1o;
-	Wed, 12 Apr 2023 13:12:25 +0000
+	id 1pmaGu-003H66-2X;
+	Wed, 12 Apr 2023 13:12:26 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8EAAF6603206;
-	Wed, 12 Apr 2023 14:12:21 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 854076603222;
+	Wed, 12 Apr 2023 14:12:22 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1681305142;
-	bh=smAn5Frg1iVCEDY9hhWLZkFQHXI/vQRHeCWQGlGI1Kg=;
+	s=mail; t=1681305143;
+	bh=vZJYk51qZdzj0nFlADgRmZb8DWMhyUT9Ey3cnBpcs3E=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=YbEHpT4xzXs1x0UWIY0Q0iGu7cVfZUM6Zj1z4BKDuOIUfYBo7RertQNhFceKkm4UQ
-	 UFI3560uPc4i65fcQlEW/lebU+wg7irObZGnk1F1/veKD9c8+jKBOgZlpQRJ9cFTfb
-	 tzKBvOI5iX+tMZjdLoPkrD4S7R+02lNpbMNbHWJ7AJ4Uu5YQiHuXKwx+a6UOnTmeOz
-	 VQxZIUWTuLoLyzZF4D346FwXnreCnr+v6JYFU+9ZhVqOskfgJF07XnfrXOky7j4z+v
-	 AHAQhGNc6vAefcZj/jCsvdNwc7Maj3EqyWrBQBdykbn2xBIm7JGI+xb1/In9fTWiyv
-	 hHqYYVowdkOrQ==
+	b=apBsf2oC9KpsVcyOzISSQE0ttARtE230FlGGPFXk487txpSFibgwc2mEBrHcVfaT8
+	 0leKGc6O2ej8YQbaPsXdOopoltKTPYmF3yCrjGFe12JK0Vi0XnIz0QNHDV/hSdb9yC
+	 QLhpU5o9GwxIINasKI8SopVZ1Hdz9XUBy8P2C/XbmNk2OccR/7HIMacWnTP9VeBfF/
+	 14Z4sYp+7lm3UUrfrIM+EIcCRrPsHN6ywBU490AUYYNDNH8Ci+5l/FG4Aw/EXba5hS
+	 RpErZ6N31Sm/JKrn7p6nTXJNFqRxlzjm7Au0ez1Sq7Vj9dw+CRJZD7ufFzboWH+Cwb
+	 tlfNIHpxHQxXg==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: robh+dt@kernel.org,
@@ -56,20 +56,18 @@ Cc: robh+dt@kernel.org,
 	kernel@collabora.com,
 	phone-devel@vger.kernel.org,
 	~postmarketos/upstreaming@lists.sr.ht,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v3 1/6] dt-bindings: soc: mediatek: pwrap: Add compatible for MT6795 Helio X10
-Date: Wed, 12 Apr 2023 15:12:11 +0200
-Message-Id: <20230412131216.198313-2-angelogioacchino.delregno@collabora.com>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 2/6] soc: mediatek: pwrap: Move PMIC read test sequence in function
+Date: Wed, 12 Apr 2023 15:12:12 +0200
+Message-Id: <20230412131216.198313-3-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.40.0
 In-Reply-To: <20230412131216.198313-1-angelogioacchino.delregno@collabora.com>
 References: <20230412131216.198313-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230412_061223_726809_66CA71C7 
-X-CRM114-Status: UNSURE (   8.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230412_061225_018999_897F1731 
+X-CRM114-Status: GOOD (  12.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,26 +82,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a compatible for the PMIC Wrapper found on the MT6795 Helio X10 SoC.
+The PMIC read test is performed in two places: pwrap_init_dual_io()
+and pwrap_init_sidly().
+In preparation for adding support for PMICs requiring a companion
+part, move this sequence to a new function pwrap_pmic_read_test().
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- .../devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml         | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/soc/mediatek/mtk-pmic-wrap.c | 32 +++++++++++++++++-----------
+ 1 file changed, 20 insertions(+), 12 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
-index 3fefd634bc69..a06ac2177444 100644
---- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
-+++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
-@@ -33,6 +33,7 @@ properties:
-               - mediatek,mt2701-pwrap
-               - mediatek,mt6765-pwrap
-               - mediatek,mt6779-pwrap
-+              - mediatek,mt6795-pwrap
-               - mediatek,mt6797-pwrap
-               - mediatek,mt6873-pwrap
-               - mediatek,mt7622-pwrap
+diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+index 15789a03e6c6..5c500be48f7c 100644
+--- a/drivers/soc/mediatek/mtk-pmic-wrap.c
++++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+@@ -1455,6 +1455,18 @@ static int pwrap_regmap_write(void *context, u32 adr, u32 wdata)
+ 	return pwrap_write(context, adr, wdata);
+ }
+ 
++static bool pwrap_pmic_read_test(struct pmic_wrapper *wrp, const u32 *dew_regs,
++				 u16 read_test_val)
++{
++	bool is_success;
++	u32 rdata;
++
++	pwrap_read(wrp, dew_regs[PWRAP_DEW_READ_TEST], &rdata);
++	is_success = ((rdata & U16_MAX) == read_test_val);
++
++	return is_success;
++}
++
+ static int pwrap_reset_spislave(struct pmic_wrapper *wrp)
+ {
+ 	bool tmp;
+@@ -1498,18 +1510,18 @@ static int pwrap_reset_spislave(struct pmic_wrapper *wrp)
+  */
+ static int pwrap_init_sidly(struct pmic_wrapper *wrp)
+ {
+-	u32 rdata;
+ 	u32 i;
+ 	u32 pass = 0;
++	bool read_ok;
+ 	signed char dly[16] = {
+ 		-1, 0, 1, 0, 2, -1, 1, 1, 3, -1, -1, -1, 3, -1, 2, 1
+ 	};
+ 
+ 	for (i = 0; i < 4; i++) {
+ 		pwrap_writel(wrp, i, PWRAP_SIDLY);
+-		pwrap_read(wrp, wrp->slave->dew_regs[PWRAP_DEW_READ_TEST],
+-			   &rdata);
+-		if (rdata == PWRAP_DEW_READ_TEST_VAL) {
++		read_ok = pwrap_pmic_read_test(wrp, wrp->slave->dew_regs,
++					       PWRAP_DEW_READ_TEST_VAL);
++		if (read_ok) {
+ 			dev_dbg(wrp->dev, "[Read Test] pass, SIDLY=%x\n", i);
+ 			pass |= 1 << i;
+ 		}
+@@ -1529,8 +1541,7 @@ static int pwrap_init_sidly(struct pmic_wrapper *wrp)
+ static int pwrap_init_dual_io(struct pmic_wrapper *wrp)
+ {
+ 	int ret;
+-	bool tmp;
+-	u32 rdata;
++	bool read_ok, tmp;
+ 
+ 	/* Enable dual IO mode */
+ 	pwrap_write(wrp, wrp->slave->dew_regs[PWRAP_DEW_DIO_EN], 1);
+@@ -1546,12 +1557,9 @@ static int pwrap_init_dual_io(struct pmic_wrapper *wrp)
+ 	pwrap_writel(wrp, 1, PWRAP_DIO_EN);
+ 
+ 	/* Read Test */
+-	pwrap_read(wrp,
+-		   wrp->slave->dew_regs[PWRAP_DEW_READ_TEST], &rdata);
+-	if (rdata != PWRAP_DEW_READ_TEST_VAL) {
+-		dev_err(wrp->dev,
+-			"Read failed on DIO mode: 0x%04x!=0x%04x\n",
+-			PWRAP_DEW_READ_TEST_VAL, rdata);
++	read_ok = pwrap_pmic_read_test(wrp, wrp->slave->dew_regs, PWRAP_DEW_READ_TEST_VAL);
++	if (!read_ok) {
++		dev_err(wrp->dev, "Read failed on DIO mode.\n");
+ 		return -EFAULT;
+ 	}
+ 
 -- 
 2.40.0
 
