@@ -4,59 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FE8AC77B6E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 16:53:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AA6BC77B6E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 17:06:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ga19AbmnUG/i9MQtFbDdHjDPIuc1VRLirL/KPGThSJQ=; b=SX8i2gP1LgYUVTmub61odSZmOS
-	9oaJ1AuOe/PV8wITrXeRPb10iSdhrOJLoyYGPsrqjBZ5vAUwGGO8RvbbJOIliST2pNz3tLAg+Zyum
-	gWGo/hofjRyvpmNKRcC8n9H/2gsw2Y8nQDZGi/+ApPR4JRqzaK2yhb7jbi/CY19WACRE+Z8gKFrF1
-	BxEwspn6mixWtPyn58whppTxlQZU+IVyBc6KwIpJVI+stKrjDnCd7DVPcAyTbkBGNQspC+H1UdYqn
-	0bRoEbJtNGHWVzBuszyJomVuUi31fFz2G7G2vTdQqtqbIogv3kAYvjzlxddZMsCJ5FItTfhOgMV1u
-	tLJSSq0w==;
+	bh=mCBF1dc7P69W5ut4d6TAnzdLNbn/EghSKo06dDcdc8k=; b=FYVk6g22buvBW9939Oeb9OMdZF
+	Et3n8huizxRwv4FlSteD20QVACkDH6UpyjQRSE3IkCQq4smdo4NC5uMcIFLZ/K6Cm62tEuXE0pTGN
+	2RyxyqftmMQXaDcGnyXmQ4vOhtDn87ZqvZR8K9TsUCJh6tdxnaAsH6k5lejPbD6U2qU6p/gBALLsD
+	eA6Hl+jIqdx8/H7SCuTwX/Tb0zii1htxQ4O9Vk0A1ALAFgHyMD02ec1FL+aM/8ca2QRvB6GJ6ZyE7
+	DnvHfEL+A7GTeV8WbSn52KCdD1+iAHOJvEEnkj71Y0HZUT4LKUmNz8QYUxlXQ1d2nxoaMKTdf60LS
+	hLveYd6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmdix-003sP4-2o;
-	Wed, 12 Apr 2023 16:53:35 +0000
-Received: from mout.gmx.net ([212.227.17.21])
+	id 1pmdvf-003ugD-2v;
+	Wed, 12 Apr 2023 17:06:43 +0000
+Received: from sender4-op-o10.zoho.com ([136.143.188.10])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmdit-003sO5-2k;
-	Wed, 12 Apr 2023 16:53:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1681318402; i=frank-w@public-files.de;
-	bh=fOcCePvOyVu5eqlb5sp+l70CGKrbBCGwfk0FK1UiB6A=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=T11a/NQKdRIp7/w6QMtRCcwRI9SL3vR24KO1dRkUMQ0NylY0gyvM176s/DA0J4i1H
-	 8Ms3HYAqO0pDKGgRWP5JS1MylsQ3F2gsi74otH1NM0k1q9UC4hR6AS29PfbNpuNsig
-	 qaBfZbOKfOXJLpmbhb46CDYI/jcmKJGZl3iH/OazZ9/+GKGCSedaMmKbcOfFC0xzMv
-	 d7o37rGFWH/1bMIv20ok4whvRmsrhfa2tVzXVKkMGyW768pwKJ51lT6qJI+7ks0FN/
-	 /koPbmjICN8kuL0anYOBGbYW5U3pr1la9fTkg6eVU9bSvdBnfJ1mYMKIENXwKrpe1K
-	 5mjLlWKGDDgzw==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [217.61.157.203] ([217.61.157.203]) by web-mail.gmx.net
- (3c-app-gmx-bap50.server.lan [172.19.172.120]) (via HTTP); Wed, 12 Apr 2023
- 18:53:22 +0200
+	id 1pmdvc-003ueY-0M;
+	Wed, 12 Apr 2023 17:06:41 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1681319195; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=Y69vPWipPQQZR1kNAnfaOb4PhISKkqlxdBxMlr4j/rt2P4keljRWb7uvygce3sFWZALiVAnUK0E5YtMh/LKziP/0MqifwbK3HFKGfFzlioyVfA6pE/F+akHuQN8FWq7mursZM+N9taje9IFC2FAWz7OG5IBykWxKgR5jq0mdAYc=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1681319195; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=mCBF1dc7P69W5ut4d6TAnzdLNbn/EghSKo06dDcdc8k=; 
+	b=Lzvw6ASrVLVtNREB/pBlU+graOEJ6hxX1Fbh1FUda0p1L6B6kcmtmzSuVI0waOtJz21HxwrR02dZ1ycdE9rL264ywtP+1mxkwwangrUHz4pmtCBMHnKVpvC5dgN715FFGWR9Ht9hTbOJz4oQxH+NoodqooPonPpLTxhbZ6OAtsQ=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1681319195;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=mCBF1dc7P69W5ut4d6TAnzdLNbn/EghSKo06dDcdc8k=;
+	b=ZC5woEucKeYFimcb2xKsW6MNSmdx01CZdk7GXPDFykyWRlZrQSWHwSwbHgGMIqDL
+	zWfv7rh8R7eWX+N5iiawQ1wF+eLxYAUR3JJ7uz0DUUJXflKFN2KRjjyEwibsOIKDiP7
+	aWWll1FGHWR5sBIW53aXcpwCLCEI1Sbn2NczXbEA=
+Received: from [10.10.9.4] (149.91.1.15 [149.91.1.15]) by mx.zohomail.com
+	with SMTPS id 1681319194453966.1180207770071; Wed, 12 Apr 2023 10:06:34 -0700 (PDT)
+Message-ID: <e08c5175-d771-5b87-d065-47942a800419@arinc9.com>
+Date: Wed, 12 Apr 2023 20:06:28 +0300
 MIME-Version: 1.0
-Message-ID: <trinity-990f3b28-d67c-49ef-9094-c3b7d2059e36-1681318402336@3c-app-gmx-bap50>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: =?UTF-8?Q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, erkin.bozoglu@xeront.com
-Subject: Aw: Re:  Re: Re: Re: Re: [PATCH v3 0/5] arm: dts: mt7623: relocate
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: Aw: Re: Re: Re: Re: Re: [PATCH v3 0/5] arm: dts: mt7623: relocate
  gmacs, mt7530 switch, and add port@5
-Content-Type: text/plain; charset=UTF-8
-Date: Wed, 12 Apr 2023 18:53:22 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <0d242292-16b7-6837-7d1a-b70c41309e6b@arinc9.com>
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ erkin.bozoglu@xeront.com
 References: <20230210182505.24597-1-arinc.unal@arinc9.com>
  <c3ab9a9b-3eb2-8fb0-d5d7-c0b7c684d3a7@arinc9.com>
  <trinity-dab715b9-3953-40da-bc25-c4c2a5e9b7c3-1676715866453@3c-app-gmx-bap53>
@@ -70,30 +74,16 @@ References: <20230210182505.24597-1-arinc.unal@arinc9.com>
  <703ad8a8-f84e-6404-4cce-5386bfaa2bd7@arinc9.com>
  <trinity-489cdc3b-e861-49d0-b1ec-e964f00388df-1681312277092@3c-app-gmx-bap50>
  <0d242292-16b7-6837-7d1a-b70c41309e6b@arinc9.com>
-Content-Transfer-Encoding: quoted-printable
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:2TgEVklogIPN9QUAHc+I39F76U3lLe2ea2lWUGSEcJ3RvU2i5XuSHdQJ6pvi7JcepqiJp
- i+kF1SQKfSGdpEKFDMk5JKhFry7q/xhTmS/ZbkqN3cyuS4s4+9iw1B4zxnWHYq2gUbFbIdfNs1YM
- J3kaN74CFnKi5rybX+JCfH+SMqCSekk7oXbyLyBxLj/4jEc7Lo10H0LlBl4KB2w1OApUY2Zyn1xG
- 41Fgfzzly9PIDY0Z581CNIHF2nkEJx/mTeozgGw7zpRjjtj34v2WjTHkMmdJRSEWGyizDGWy9a1g
- mo=
-UI-OutboundReport: notjunk:1;M01:P0:btFEPD+riPY=;Xnw2hP3/+Exoi5h6KiI8WevmZh5
- Hw8Hj1E8jYcStC4/qFENBVeJyF6xFB6WOunAwtq2jg9HkOZaOsKO3HzbWflflUZkZMrSx5y3B
- HPKjevXxPY0YC7TJuRb1QondTcRXFKim0FE13JLVu6DWTHgbAkXXvH0Jzd/LwVKcp/zfdfjn0
- Ps5dXAr09WF9obZIyU1WYAgS7Ay4l6OZOsuwQdqtGViiDfws733AK33NEQFQVD6WOGuiaI+zB
- LfKyZVAsACzrIArIrfpEuvZgt7IXeQrhpawBdV0+YzadsXcAhOyxqY/fb7FHoXoauyflF+Pbm
- t6GnjwtZXbTzc1rd9wk+XV4yzm5C9eDeupz+QmEDQN9TMoQsIxf+GCdh0rXvsL7rxounctZlX
- 7z8wyLMCDJ5MMGvucv4E1XnHg80o8DkE6PXR/ASRjmzKUc+ecv+ijqEnApVoIILJGP/5M29PV
- x5A/uYCGOySYne/y3C3kaFeBTnHbhUUmZpMYyhaZK9tOKs5szVAqr5pApYqwx2r6sSGeGtfSD
- ZMlKrya8UMQbMs9y+7KgMuzExrv3fnDS6J2zi2JUhlHheoLg/MD9ktkviMoHjP+SbFj7pPL3w
- c+5RkJNNml9o8AKY06T7hGi21t05IUZx68KBsNJX8VTb3wr6Yi+yGCaWVN9sR0afU/LDHTbTh
- Tv2HMoyZ5OVxBOtJuQ2B0wisz5gV2OOJIjyObS3AfYG6LTSnt4B2sRQuJGP60VMPNAKtzpMjf
- Uw2PSpTpPsCJtyp4fS3nqowt59iFgeU/s8p87/5aZ8nAFGbBcB7QY1R4lVwnxqSIQI0d9PGHZ
- kAQvLdDk5goa4unvyXmFJozw==
+ <trinity-990f3b28-d67c-49ef-9094-c3b7d2059e36-1681318402336@3c-app-gmx-bap50>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <trinity-990f3b28-d67c-49ef-9094-c3b7d2059e36-1681318402336@3c-app-gmx-bap50>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230412_095332_181204_27D22578 
-X-CRM114-Status: GOOD (  12.75  )
+X-CRM114-CacheID: sfid-20230412_100640_185398_CF2DA2A9 
+X-CRM114-Status: GOOD (  15.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,71 +98,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
+On 12.04.2023 19:53, Frank Wunderlich wrote:
+> Hi
+> 
+>> Gesendet: Mittwoch, 12. April 2023 um 18:21 Uhr
+>> Von: "Arınç ÜNAL" <arinc.unal@arinc9.com>
+>>> thanks, it changes the master when i upgrade iproute to 6.1 (from debian bullseye-backports), but i cannot do any traffic on it after switching to gmac1...
+>>>
+>>> 5: wan@eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+>>>       link/ether f2:d2:51:56:cd:3d brd ff:ff:ff:ff:ff:ff
+>>>       inet 192.168.0.11/24 scope global wan
+>>>          valid_lft forever preferred_lft forever
+>>>
+>>> see no p5-TX/gmac-rx
+> 
+>> Did you apply the vlan and flooding fix patches from Richard?
+> 
+> have now applied all patches i've found from richard (which are all rejected):
+> 
+> fe4495bb3cc2 2023-02-12 Fix setting up CPU and User ports to be in the correct mode during setup and when toggling vlan_filtering on a bridge port.  (HEAD -> 6.3-rc)
+> b0641f3e1a69 2023-02-12 Fix Flooding: Disable by default on User ports and Enable on CPU ports
+> cb04b3451524 2023-02-12 Do not add all User ports to the CPU by default. This will break Multi CPU when added a seperate patch. It will be overwritten by .port_enable and since we are forcing output to a port via the Special Tag this is not needed.
+> 
+> and now it seems working and is clear ;)
+> 
+> root@bpi-r2:~# ip l show wan
+> 5: wan@eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default qlen 1000
+>      link/ether f2:d2:51:56:cd:3d brd ff:ff:ff:ff:ff:ff
+> 
+> iperf3
+> [ ID] Interval           Transfer     Bitrate         Retr
+> [  5]   0.00-10.00  sec  1.09 GBytes   940 Mbits/sec    0             sender
+> [  5]   0.00-10.03  sec  1.09 GBytes   936 Mbits/sec                  receiver
+> 
+> 
+> iperf3 -R
+> [ ID] Interval           Transfer     Bitrate         Retr
+> [  5]   0.00-10.04  sec  1.09 GBytes   936 Mbits/sec    0             sender
+> [  5]   0.00-10.00  sec  1.09 GBytes   938 Mbits/sec                  receiver
+> 
+> 
+> how do you deal with these patches? do you include them into your mt7530 fixes series? they (and vladimirs preferred cpu-port) need to be applied before these DTS-changes
 
-> Gesendet: Mittwoch, 12=2E April 2023 um 18:21 Uhr
-> Von: "Ar=C4=B1n=C3=A7 =C3=9CNAL" <arinc=2Eunal@arinc9=2Ecom>
-> > thanks, it changes the master when i upgrade iproute to 6=2E1 (from de=
-bian bullseye-backports), but i cannot do any traffic on it after switching=
- to gmac1=2E=2E=2E
-> >=20
-> > 5: wan@eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue =
-state UP group default qlen 1000
-> >      link/ether f2:d2:51:56:cd:3d brd ff:ff:ff:ff:ff:ff
-> >      inet 192=2E168=2E0=2E11/24 scope global wan
-> >         valid_lft forever preferred_lft forever
-> >=20
-> > see no p5-TX/gmac-rx
+Dealing with this is the last step on my tasklist. Take a look:
 
-> Did you apply the vlan and flooding fix patches from Richard?
+https://arinc9.notion.site/mt7530-c-improvements-bbfdc2ceb958484b9627297b88bc6d4a
 
-have now applied all patches i've found from richard (which are all reject=
-ed):
-
-fe4495bb3cc2 2023-02-12 Fix setting up CPU and User ports to be in the cor=
-rect mode during setup and when toggling vlan_filtering on a bridge port=2E=
-  (HEAD -> 6=2E3-rc)
-b0641f3e1a69 2023-02-12 Fix Flooding: Disable by default on User ports and=
- Enable on CPU ports=20
-cb04b3451524 2023-02-12 Do not add all User ports to the CPU by default=2E=
- This will break Multi CPU when added a seperate patch=2E It will be overwr=
-itten by =2Eport_enable and since we are forcing output to a port via the S=
-pecial Tag this is not needed=2E
-
-and now it seems working and is clear ;)
-
-root@bpi-r2:~# ip l show wan
-5: wan@eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue stat=
-e UP mode DEFAULT group default qlen 1000
-    link/ether f2:d2:51:56:cd:3d brd ff:ff:ff:ff:ff:ff
-
-iperf3
-[ ID] Interval           Transfer     Bitrate         Retr                =
-                                                                           =
-                        =20
-[  5]   0=2E00-10=2E00  sec  1=2E09 GBytes   940 Mbits/sec    0           =
-  sender                                                                   =
-                              =20
-[  5]   0=2E00-10=2E03  sec  1=2E09 GBytes   936 Mbits/sec                =
-  receiver                                                                 =
-                              =20
-
-
-iperf3 -R
-[ ID] Interval           Transfer     Bitrate         Retr                =
-                                                                           =
-                        =20
-[  5]   0=2E00-10=2E04  sec  1=2E09 GBytes   936 Mbits/sec    0           =
-  sender                                                                   =
-                              =20
-[  5]   0=2E00-10=2E00  sec  1=2E09 GBytes   938 Mbits/sec                =
-  receiver                                                                 =
-                              =20
-
-
-how do you deal with these patches? do you include them into your mt7530 f=
-ixes series? they (and vladimirs preferred cpu-port) need to be applied bef=
-ore these DTS-changes
-
-regards Frank
+Arınç
 
