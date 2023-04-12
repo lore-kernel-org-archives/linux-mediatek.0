@@ -4,85 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC55EC7619A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 11:31:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCA0EC77B6E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 11:32:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=adrJca3twPq6s+JaUasly3mqE1MTFVpESwI4YAXK9ek=; b=po+gX2KTHUEjmojIxkb4k0jAan
-	TWoJhKDRAjDtk+3z7HZvnfUgos3+EzX9OKWDET9OiOXGjf+5kV6WBMgOhnkT1CPg8g0XPktUWPccD
-	mXO82m8dukY/ukfNDVwaQaHer5ox8PTtw7uPted9/9g1lXLrYaAcWArvEGSXrt/a3ty+/5MzGz8cN
-	saOKWGQF4116vCuI20CTBYabx3YvULQiDFxCeMfjBtsoQWEvvMkE2SACvL/NcvJjiC2ya1iXWSjWH
-	5V8URTb5YknH2A2aTBCwo37H4KZMIFtYv81Q6VykCbhzRkdCjnDKYA+GBx2kZrV2GFdWjbJqRcnZ3
-	iMkTCEfA==;
+	bh=/Z58+wPfvD+p5o+S8VNFwtMScQl8aprQpHWJgZ+U3OU=; b=1vQkFxTctjcvvRHmvngtzjZADJ
+	bwLrT5pimivug6jvlakhp8aQDY+CKBWg0wW2r1vDdPpCcUCvkWDeh7aR0UCfk0+s4ZKh/EGqkvern
+	PeXnrM9oiiinlo8fK8//1kYSigiOc/XWK0ugyCUtv6Yf6HJaZpxme9uKU9UlMhH2j3RrAl9dSXZPf
+	qsmqtqL+S4137fUKJrckx9pteyk/m2FfShJRHV2iTa86pwEUUEWTR68uB82CwgY8yjFeUt2p6AsC/
+	wpr3oblIL+gpfWxUBPyhIS6Tzxute6meH+ZZilzPgolzwDUu1d14bkFOsZoM4/Csj3EUsiAUKWTFi
+	Wc01MVsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmYhP-002rIV-3C;
-	Wed, 12 Apr 2023 11:31:40 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pmYi5-002s20-2d;
+	Wed, 12 Apr 2023 11:32:21 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmYeG-002o9z-2p;
-	Wed, 12 Apr 2023 11:28:35 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3B916660324D;
-	Wed, 12 Apr 2023 12:28:22 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1681298903;
-	bh=FrZ0bhYSUc3f/6EFDPkgRvN3ofxA9mQ25dTr2lufmAQ=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=H8J6WREJiSELQuQdZAUz06U2x3wIhPE+Q73DAEJDcHAcSc9VSJDn3cW93Gr96UhOP
-	 cDi5DV6unFsMDzilzcl3hZLFPCTwx3Pukl2mFwU71JHaBzJ2yyXe3Z7KA+s/JC7jho
-	 y4DZuZ/BblFZ2xonu/ZK+OUKSyeyZPQdRQHXyq87SORhUaosLkUSNPmhb/gnmvwnY/
-	 2di2KwWct0SxcrpIrPd9Bc6FCCLRBHerlNBBM84qKxMEIk+ZlJJhWcrxJJqhEtNGl+
-	 1tiwyeWlhwQkAdiHk8G+xC5NTgFQd86wKoDDajqup5ztiKjP/29yuHs9/1tB6gIyp3
-	 3SJCSlOfuWxBg==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: matthias.bgg@gmail.com
-Cc: p.zabel@pengutronix.de,
-	airlied@gmail.com,
-	daniel@ffwll.ch,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	jassisinghbrar@gmail.com,
-	chunfeng.yun@mediatek.com,
-	vkoul@kernel.org,
-	kishon@kernel.org,
-	thierry.reding@gmail.com,
-	u.kleine-koenig@pengutronix.de,
-	chunkuang.hu@kernel.org,
-	angelogioacchino.delregno@collabora.com,
-	ck.hu@mediatek.com,
-	jitao.shi@mediatek.com,
-	xinlei.lee@mediatek.com,
-	houlong.wei@mediatek.com,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-phy@lists.infradead.org,
-	linux-pwm@vger.kernel.org,
-	kernel@collabora.com,
-	phone-devel@vger.kernel.org,
-	~postmarketos/upstreaming@lists.sr.ht
-Subject: [PATCH 27/27] arm64: dts: mediatek: mt6795-xperia-m5: Add Bosch BMM050 Magnetometer
-Date: Wed, 12 Apr 2023 13:27:39 +0200
-Message-Id: <20230412112739.160376-28-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.40.0
-In-Reply-To: <20230412112739.160376-1-angelogioacchino.delregno@collabora.com>
-References: <20230412112739.160376-1-angelogioacchino.delregno@collabora.com>
+	id 1pmYgx-002qle-1h
+	for linux-mediatek@lists.infradead.org;
+	Wed, 12 Apr 2023 11:31:13 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id e7so459378wrc.12
+        for <linux-mediatek@lists.infradead.org>; Wed, 12 Apr 2023 04:31:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1681299067; x=1683891067;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=/Z58+wPfvD+p5o+S8VNFwtMScQl8aprQpHWJgZ+U3OU=;
+        b=eZkhcF/dOhz0Ckpw8NVz22GvTv1jD58LCeC9mw+5xVc0C/55+80j6Lse/9B0XfQCh1
+         ZAz5SyRPfGXPLI2DGYaDdu08TzUKJridhzZ6Siwg5jyiFlWk6zbA4DWSxjAVR/Kqlb8c
+         p7lDnz08aHx4hHPqetaMGWEyv12sR9fx/vdagFvXcbQfHaaMPEIYc4/PAOdhJHOaonZ+
+         J79ANEk2ue6AmIv7XtfrHpWyuiYuGyf4hLJutlcvDBMA6ofE+1oI+Mrk9jyErOcH8Pk6
+         yl0vckOq7JlZlT3g8rtc2u1iQqE49HGcEYwK7L36+3CHB90f0rOi1PU99LFYsR6crJd0
+         VABg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1681299067; x=1683891067;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=/Z58+wPfvD+p5o+S8VNFwtMScQl8aprQpHWJgZ+U3OU=;
+        b=8LoSyPbeFeAWeDC3AzRI5cYXDxcu5aRodQSbuOQzoi9cbZWBxX2Cxaobg2xoo+OXG9
+         p0p+7aoKyIS2Fw0ObOw9q4O085RNJUJpeP34MyjfcpIsOOFhWsJesZ8zajKPxA2AF0hF
+         3fQBGteNxTrErzuOvjdtCu+XZKddMsXIh19D8VWXmmRpILQXixS1Uq1sIALEak9vI7/o
+         xTHE1r0QfrYMySH3/UoAn92rv9PqV9iAKrDrU5NYN/6HcvfFk3KjI5CQAnct6gQhGcba
+         CnLXiZvbQO9adlx1KBPOvL6x8Y5snvzl4e9Mwe8NQoMBFJsUwDYI6j7B5/A0YXjExBYg
+         XE4w==
+X-Gm-Message-State: AAQBX9fARCludfBBbalHZGSf+lfxMAJVbyBARgBNJboxHUDVNJN2xbkI
+	tPICvDoPfgsX8Kf0c0iOvEmL6w==
+X-Google-Smtp-Source: AKy350bIGqULzJb+NuqzNZkYn8IMQuLSq75kr/CLxhxUaQyoTp0R9xpzeez3e/fZqs0Dak6+rMNNDg==
+X-Received: by 2002:a05:6000:181:b0:2f0:2de5:c56d with SMTP id p1-20020a056000018100b002f02de5c56dmr9229374wrx.42.1681299067521;
+        Wed, 12 Apr 2023 04:31:07 -0700 (PDT)
+Received: from [192.168.1.172] (158.22.5.93.rev.sfr.net. [93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id z14-20020adfd0ce000000b002c55306f6edsm16935813wrh.54.2023.04.12.04.31.06
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 12 Apr 2023 04:31:07 -0700 (PDT)
+Message-ID: <d2667a9d-20bf-bda2-9d69-4f5000db1633@baylibre.com>
+Date: Wed, 12 Apr 2023 13:31:06 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH v3] iio: adc: mt6370: Fix ibus and ibat scaling value of
+ some specific vendor ID chips
+Content-Language: en-US
+To: ChiaEn Wu <chiaen_wu@richtek.com>, jic23@kernel.org, lars@metafoo.de,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com
+Cc: linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ peterwu.pub@gmail.com, cy_huang@richtek.com
+References: <1681122862-1994-1-git-send-email-chiaen_wu@richtek.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <1681122862-1994-1-git-send-email-chiaen_wu@richtek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230412_042825_096151_AB7CF600 
-X-CRM114-Status: UNSURE (   8.63  )
+X-CRM114-CacheID: sfid-20230412_043111_582105_41F980BE 
+X-CRM114-Status: UNSURE (   7.98  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -98,33 +98,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This smartphone features a Bosch BMM050 Magnetometer on I2C3: enable
-it with the BMM150 binding, as that driver supports BMM050 as well.
-For this sensor, there is no interrupt pin;
-readings were validated in sysfs.
+On 10/04/2023 12:34, ChiaEn Wu wrote:
+> The scale value of ibus and ibat on the datasheet is incorrect due to the
+> customer report after the experimentation with some specific vendor ID
+> chips.
+> 
+> Fixes: c1404d1b659f ("iio: adc: mt6370: Add MediaTek MT6370 support")
+> Signed-off-by: ChiaEn Wu<chiaen_wu@richtek.com>
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts | 5 +++++
- 1 file changed, 5 insertions(+)
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts b/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
-index 0b0519f6b2f1..b5746e6d0b15 100644
---- a/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
-@@ -75,6 +75,11 @@ accelerometer@10 {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&accel_pins>;
- 	};
-+
-+	magnetometer@12 {
-+		compatible = "bosch,bmm150";
-+		reg = <0x12>;
-+	};
- };
- 
- &i2c2 {
 -- 
-2.40.0
+Regards,
+Alexandre
 
 
