@@ -4,70 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D009DC77B6E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 15:33:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9D3DC77B6E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 16:21:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rkV7qtSJfG2uwkJqVFf8k1+Vac+h1qB3UmSDWsLy3OE=; b=m49NJ7jayjTE6zZFcTeUufg4U9
-	baz24zTi561fp4+CbjLbGlHUNUZiFJKq57rGsjGHo5hP4DDuA8Xdo/XroAwVg7SW3o/mcSuQxLzTc
-	fAsxglxOzpfNcO8SnLeGlTYozsHf3htQ6GnJC78qHeJwcRmdJ7q7FAjvRhg314A7EXkKE9FQvlOm5
-	Bbvk7T6VIYzx5Fj1hCPRoN4tZu4YtK/ZD5smv3ZZbpeU02fleWLi0a++08SsL/As7NsybFLBuBPYY
-	dil2by1hucb0KllrfSDcf48FvcipAYxwP2lYLUec6VqxUZh4cUVFhdZuIivORrKifejmi/RmqaRNR
-	gItoIEeA==;
+	bh=Wck8HD9Sy7CyXZlzDWG6BVFUCDUQ5CegNpVgjUnegBA=; b=HzCObExcC0BQo/5HQ1W94/pCpW
+	J4sLz9FrZ1TGdFyekuPvxu+SUk2m/hOea7FE2ZkKlHttI0XKv9PgU6eJPFk6CSIcyokswHn1cvGFr
+	eAJovZ5RAGbKACZVUFEjsdFqsOrok8n8XAGYj9LpmjwGr3tPGY4hF8ELXm/W9QrKb91AN4pA1mG9M
+	zdelSYs5w6rrHcahV2cgTwo49RBgZBYq7TNHt5Fofa27vGoeGZdjxN0TiYJp6Y7Proy/jFfu1tTJd
+	d9dUxt6RC+GJWAzDStKajLcsIIettuEVUAp0iWSpuYwexTwoINWPea1mBkWdb5+GfJMUSuG/mwAX/
+	zbSFjI/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmcTk-003eZq-0f;
-	Wed, 12 Apr 2023 15:33:48 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pmdE9-003nGb-0B;
+	Wed, 12 Apr 2023 16:21:45 +0000
+Received: from sender4-op-o10.zoho.com ([136.143.188.10])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmcTL-003eDh-3C;
-	Wed, 12 Apr 2023 15:33:27 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2FACA660329C;
-	Wed, 12 Apr 2023 16:33:22 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1681313602;
-	bh=cD7hv+m4LOlAXTSBkUahMUfTCdShYn+SrdLz55PfB20=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=O0jz08gJkY7BrbexbgtcIJtUy6A/+hi9qCaThtbbbbfHFKjXnA+jzu+MuhXZbWAhX
-	 WkH68o8JM1qTn+WPZQZrLb9IVMG09pRYxHVxfFtuElhQx30V6K0bsLfBuRcF9wNOnK
-	 BDeW63iWc/Bq3X18LH4JqQW7VJ8X3wWD20YGD+vhziLvjUuLb+vG3lSfbtAno1uv1d
-	 50z8FSrYmL5LjlSa6EMsOdZed4Kuf5YJ8I56tR0rTkduOPRLQMh58EF/HN8EWNlZrY
-	 u4wsgLFE8wIL4wsANK0zLwD+fA0dLV6O+hsPOels2nHUITDgjSRQW6GFGx1wozQsTx
-	 EsucjZQhw/+Vg==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: pavel@ucw.cz
-Cc: lee@kernel.org,
-	sean.wang@mediatek.com,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	matthias.bgg@gmail.com,
-	linux-leds@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	kernel@collabora.com,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2 7/7] leds: leds-mt6323: Add support for WLEDs and MT6332
-Date: Wed, 12 Apr 2023 17:33:10 +0200
-Message-Id: <20230412153310.241046-8-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.40.0
-In-Reply-To: <20230412153310.241046-1-angelogioacchino.delregno@collabora.com>
-References: <20230412153310.241046-1-angelogioacchino.delregno@collabora.com>
+	id 1pmdE5-003nEs-1r;
+	Wed, 12 Apr 2023 16:21:43 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1681316492; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=lrbSRml3xVu0YeeBamAqD09a/m5UTQLSsXzER7u7K4SaeM3heOPY7Veu6/qko6cwpGwMjJgv6FPU9u1sw6yR8eDQy88FH98XvPo7Bpc8lYq8O5J6xktwL4F3Dt2+81zCNr7RhCF1BJySlFB3qCOcr9e6HyeBSBN3dQ2cephkKRw=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1681316492; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=Wck8HD9Sy7CyXZlzDWG6BVFUCDUQ5CegNpVgjUnegBA=; 
+	b=A7FhriqgVbJ6YkT8TGv6j+bvqylRtd7BfLxT33vrDKsG11p/1rFScF4htD+zkKYv1G+YjItcSxwT5Yk2fF1CwUQ23O5p4wr1QHDwOzo0ncC45+qGwwu1iKkGBOjBZqooHjDvS9mVnXyQEf6FDYkzcKtHyAq/WM3clX/ZfQEH51U=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1681316492;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=Wck8HD9Sy7CyXZlzDWG6BVFUCDUQ5CegNpVgjUnegBA=;
+	b=VSksN/AfyX0vDyTc3pYj+2E1ai9FLegAyFo02Mcg99BUSsencqudW+TEawdXpwjh
+	amkhYXYB+CvrLRWxBDtzCDAhgZuh9oojZvGAsXxbs55k+OosOdzNMVAzGp3yOberJ3c
+	b1Mg8Q8EPh+soXfhkzrfWhKnF0Kp3ylXQb/QZXxg=
+Received: from [10.10.9.4] (149.91.1.15 [149.91.1.15]) by mx.zohomail.com
+	with SMTPS id 1681316491413307.82113764393307; Wed, 12 Apr 2023 09:21:31 -0700 (PDT)
+Message-ID: <0d242292-16b7-6837-7d1a-b70c41309e6b@arinc9.com>
+Date: Wed, 12 Apr 2023 19:21:25 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: Aw: Re: Re: Re: Re: [PATCH v3 0/5] arm: dts: mt7623: relocate
+ gmacs, mt7530 switch, and add port@5
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ erkin.bozoglu@xeront.com
+References: <20230210182505.24597-1-arinc.unal@arinc9.com>
+ <c3ab9a9b-3eb2-8fb0-d5d7-c0b7c684d3a7@arinc9.com>
+ <trinity-dab715b9-3953-40da-bc25-c4c2a5e9b7c3-1676715866453@3c-app-gmx-bap53>
+ <27a26da8-8297-5327-7493-54d8359b6970@arinc9.com>
+ <trinity-dd260791-3637-4193-8f93-a9fcdb013dcb-1676722705920@3c-app-gmx-bap53>
+ <2dc2fc39-b0d5-c872-36bf-fde851debe4b@arinc9.com>
+ <A329B2DF-04B7-40FA-BBCE-1F1012A6DBBD@public-files.de>
+ <fb96d8eb-2eb7-db19-1135-1a833294dd67@arinc9.com>
+ <trinity-899c01a6-0fc5-4900-aea8-2b43802c8329-1676814734826@3c-app-gmx-bs35>
+ <trinity-3f46d325-bc45-4ee7-ae86-c8db4467aa94-1681303779505@3c-app-gmx-bap50>
+ <703ad8a8-f84e-6404-4cce-5386bfaa2bd7@arinc9.com>
+ <trinity-489cdc3b-e861-49d0-b1ec-e964f00388df-1681312277092@3c-app-gmx-bap50>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <trinity-489cdc3b-e861-49d0-b1ec-e964f00388df-1681312277092@3c-app-gmx-bap50>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230412_083324_298842_436085CE 
-X-CRM114-Status: GOOD (  22.87  )
+X-CRM114-CacheID: sfid-20230412_092141_668539_4D104D1C 
+X-CRM114-Status: GOOD (  12.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,302 +96,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add basic code to turn on and off WLEDs and wire up MT6332 support
-to take advantage of it.
-This is a simple approach due to to the aforementioned PMIC supporting
-only on/off status so, at the time of writing, it is impossible for me
-to validate more advanced functionality due to lack of hardware.
+On 12.04.2023 18:11, Frank Wunderlich wrote:
+> Hi
+> 
+>> Gesendet: Mittwoch, 12. April 2023 um 16:31 Uhr
+>> Von: "Arınç ÜNAL" <arinc.unal@arinc9.com>
+>>> looks good so far, but i have not managed how to change dsa master from the preferred port (eth0) to the second one...
+>>> any idea how the correct syntax is for iproute2?
+>>
+>> https://www.kernel.org/doc/html/latest/networking/dsa/configuration.html#affinity-of-user-ports-to-cpu-ports
+>>
+>> In short: ip link set lan0 type dsa conduit eth1
+> 
+> thanks, it changes the master when i upgrade iproute to 6.1 (from debian bullseye-backports), but i cannot do any traffic on it after switching to gmac1...
+> 
+> 5: wan@eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+>      link/ether f2:d2:51:56:cd:3d brd ff:ff:ff:ff:ff:ff
+>      inet 192.168.0.11/24 scope global wan
+>         valid_lft forever preferred_lft forever
+> 
+> see no p5-TX/gmac-rx
+> 
+> root@bpi-r2:~# ethtool -S eth1
+> NIC statistics:
+>       tx_bytes: 5156
+>       tx_packets: 61
+>       tx_skip: 0
+>       tx_collisions: 0
+>       rx_bytes: 0
+>       rx_packets: 0
+>       rx_overflow: 0
+>       rx_fcs_errors: 0
+>       rx_short_errors: 0
+>       rx_long_errors: 0
+>       rx_checksum_errors: 0
+>       rx_flow_control_packets: 0
+>       rx_xdp_redirect: 0
+>       rx_xdp_pass: 0
+>       rx_xdp_drop: 0
+>       rx_xdp_tx: 0
+>       rx_xdp_tx_errors: 0
+>       tx_xdp_xmit: 0
+>       tx_xdp_xmit_errors: 0
+>       p05_TxDrop: 0
+>       p05_TxCrcErr: 0
+>       p05_TxUnicast: 0
+>       p05_TxMulticast: 0
+>       p05_TxBroadcast: 0
+>       p05_TxCollision: 0
+>       p05_TxSingleCollision: 0
+>       p05_TxMultipleCollision: 0
+>       p05_TxDeferred: 0
+>       p05_TxLateCollision: 0
+>       p05_TxExcessiveCollistion: 0
+>       p05_TxPause: 0
+>       p05_TxPktSz64: 0
+>       p05_TxPktSz65To127: 0
+>       p05_TxPktSz128To255: 0
+>       p05_TxPktSz256To511: 0
+>       p05_TxPktSz512To1023: 0
+>       p05_Tx1024ToMax: 0
+>       p05_TxBytes: 0
+>       p05_RxDrop: 0
+>       p05_RxFiltering: 16
+>       p05_RxUnicast: 11
+>       p05_RxMulticast: 38
+>       p05_RxBroadcast: 12
+>       p05_RxAlignErr: 0
+>       p05_RxCrcErr: 0
+>       p05_RxUnderSizeErr: 0
+>       p05_RxFragErr: 0
+>       p05_RxOverSzErr: 0
+>       p05_RxJabberErr: 0
+>       p05_RxPause: 0
+>       p05_RxPktSz64: 17
+>       p05_RxPktSz65To127: 44
+>       p05_RxPktSz128To255: 0
+>       p05_RxPktSz256To511: 0
+>       p05_RxPktSz512To1023: 0
+>       p05_RxPktSz1024ToMax: 0
+>       p05_RxBytes: 5156
+>       p05_RxCtrlDrop: 0
+>       p05_RxIngressDrop: 0
+>       p05_RxArlDrop: 0
+> 
+> maybe i miss something?
+> 
+> i'm not sure it is a problem with richards Patch or p5/gmac1
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/leds/leds-mt6323.c | 171 +++++++++++++++++++++++++++++++++++--
- 1 file changed, 164 insertions(+), 7 deletions(-)
+Did you apply the vlan and flooding fix patches from Richard?
 
-diff --git a/drivers/leds/leds-mt6323.c b/drivers/leds/leds-mt6323.c
-index 5d95dbd9a761..202b38ac32f6 100644
---- a/drivers/leds/leds-mt6323.c
-+++ b/drivers/leds/leds-mt6323.c
-@@ -20,6 +20,11 @@
- #define RG_DRV_32K_CK_PDN		BIT(11)
- #define RG_DRV_32K_CK_PDN_MASK		BIT(11)
- 
-+/* 32K/1M/6M clock common for WLED device */
-+#define RG_VWLED_1M_CK_PDN		BIT(0)
-+#define RG_VWLED_32K_CK_PDN		BIT(12)
-+#define RG_VWLED_6M_CK_PDN		BIT(13)
-+
- /*
-  * Register field for TOP_CKPDN2 to enable
-  * individual clock for LED device.
-@@ -73,7 +78,7 @@ struct mt6323_led {
- 	int			id;
- 	struct mt6323_leds	*parent;
- 	struct led_classdev	cdev;
--	enum led_brightness	current_brightness;
-+	unsigned int		current_brightness;
- };
- 
- /**
-@@ -86,6 +91,7 @@ struct mt6323_led {
-  * @num_isink_con:	Number of ISINKx_CON registers
-  * @isink_max_regs:	Number of ISINK[0..x] registers
-  * @isink_en_ctrl:	Offset to ISINK_EN_CTRL register
-+ * @iwled_en_ctrl:	Offset to IWLED_EN_CTRL register
-  */
- struct mt6323_regs {
- 	const u16 *top_ckpdn;
-@@ -96,18 +102,21 @@ struct mt6323_regs {
- 	u8 num_isink_con;
- 	u8 isink_max_regs;
- 	u16 isink_en_ctrl;
-+	u16 iwled_en_ctrl;
- };
- 
- /**
-  * struct mt6323_hwspec - hardware specific parameters
-  * @max_period:		Maximum period for all LEDs
-  * @max_leds:		Maximum number of supported LEDs
-+ * @max_wleds:		Maximum number of WLEDs
-  * @max_brightness:	Maximum brightness for all LEDs
-  * @unit_duty:		Steps of duty per period
-  */
- struct mt6323_hwspec {
- 	u16 max_period;
- 	u8 max_leds;
-+	u8 max_wleds;
- 	u16 max_brightness;
- 	u16 unit_duty;
- };
-@@ -379,6 +388,117 @@ static int mt6323_led_set_brightness(struct led_classdev *cdev,
- 	return ret;
- }
- 
-+static int mtk_wled_hw_on(struct led_classdev *cdev)
-+{
-+	struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
-+	struct mt6323_leds *leds = led->parent;
-+	const struct mt6323_regs *regs = leds->pdata->regs;
-+	struct regmap *regmap = leds->hw->regmap;
-+	int ret;
-+
-+	ret = regmap_clear_bits(regmap, regs->top_ckpdn[0], RG_VWLED_32K_CK_PDN);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_clear_bits(regmap, regs->top_ckpdn[0], RG_VWLED_6M_CK_PDN);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_clear_bits(regmap, regs->top_ckpdn[0], RG_VWLED_1M_CK_PDN);
-+	if (ret)
-+		return ret;
-+
-+	usleep_range(5000, 6000);
-+
-+	/* Enable WLED channel pair */
-+	ret = regmap_set_bits(regmap, regs->iwled_en_ctrl, BIT(led->id));
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_set_bits(regmap, regs->iwled_en_ctrl, BIT(led->id + 1));
-+	if (ret)
-+		return ret;
-+
-+	return 0;
-+}
-+
-+static int mtk_wled_hw_off(struct led_classdev *cdev)
-+{
-+	struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
-+	struct mt6323_leds *leds = led->parent;
-+	const struct mt6323_regs *regs = leds->pdata->regs;
-+	struct regmap *regmap = leds->hw->regmap;
-+	int ret;
-+
-+	ret = regmap_clear_bits(regmap, regs->iwled_en_ctrl, BIT(led->id + 1));
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_clear_bits(regmap, regs->iwled_en_ctrl, BIT(led->id));
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_set_bits(regmap, regs->top_ckpdn[0], RG_VWLED_32K_CK_PDN);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_set_bits(regmap, regs->top_ckpdn[0], RG_VWLED_6M_CK_PDN);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_set_bits(regmap, regs->top_ckpdn[0], RG_VWLED_1M_CK_PDN);
-+	if (ret)
-+		return ret;
-+
-+	return 0;
-+}
-+
-+static unsigned int mt6323_get_wled_brightness(struct led_classdev *cdev)
-+{
-+	struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
-+	struct mt6323_leds *leds = led->parent;
-+	const struct mt6323_regs *regs = leds->pdata->regs;
-+	struct regmap *regmap = leds->hw->regmap;
-+	unsigned int status;
-+	int ret;
-+
-+	ret = regmap_read(regmap, regs->iwled_en_ctrl, &status);
-+	if (ret)
-+		return 0;
-+
-+	/* Always two channels per WLED */
-+	status &= BIT(led->id) | BIT(led->id + 1);
-+
-+	return status ? led->current_brightness : 0;
-+}
-+
-+static int mt6323_wled_set_brightness(struct led_classdev *cdev,
-+				      unsigned int brightness)
-+{
-+	struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
-+	struct mt6323_leds *leds = led->parent;
-+	int ret = 0;
-+
-+	mutex_lock(&leds->lock);
-+
-+	if (brightness) {
-+		if (!led->current_brightness)
-+			ret = mtk_wled_hw_on(cdev);
-+		if (ret)
-+			goto out;
-+	} else {
-+		ret = mtk_wled_hw_off(cdev);
-+		if (ret)
-+			goto out;
-+	}
-+
-+	led->current_brightness = brightness;
-+out:
-+	mutex_unlock(&leds->lock);
-+
-+	return ret;
-+}
-+
- static int mt6323_led_set_dt_default(struct led_classdev *cdev,
- 				     struct device_node *np)
- {
-@@ -418,6 +538,7 @@ static int mt6323_led_probe(struct platform_device *pdev)
- 	int ret;
- 	unsigned int status;
- 	u32 reg;
-+	u8 max_leds;
- 
- 	leds = devm_kzalloc(dev, sizeof(*leds), GFP_KERNEL);
- 	if (!leds)
-@@ -428,6 +549,7 @@ static int mt6323_led_probe(struct platform_device *pdev)
- 	leds->pdata = device_get_match_data(dev);
- 	regs = leds->pdata->regs;
- 	spec = leds->pdata->spec;
-+	max_leds = spec->max_leds + spec->max_wleds;
- 
- 	/*
- 	 * leds->hw points to the underlying bus for the register
-@@ -447,6 +569,7 @@ static int mt6323_led_probe(struct platform_device *pdev)
- 
- 	for_each_available_child_of_node(np, child) {
- 		struct led_init_data init_data = {};
-+		bool is_wled;
- 
- 		ret = of_property_read_u32(child, "reg", &reg);
- 		if (ret) {
-@@ -454,7 +577,7 @@ static int mt6323_led_probe(struct platform_device *pdev)
- 			goto put_child_node;
- 		}
- 
--		if (reg >= spec->max_leds || reg >= MAX_SUPPORTED_LEDS ||
-+		if (reg >= max_leds || reg >= MAX_SUPPORTED_LEDS ||
- 		    leds->led[reg]) {
- 			dev_err(dev, "Invalid led reg %u\n", reg);
- 			ret = -EINVAL;
-@@ -467,14 +590,24 @@ static int mt6323_led_probe(struct platform_device *pdev)
- 			goto put_child_node;
- 		}
- 
-+		is_wled = of_property_read_bool(child, "mediatek,is-wled");
-+
- 		leds->led[reg] = led;
- 		leds->led[reg]->id = reg;
- 		leds->led[reg]->cdev.max_brightness = spec->max_brightness;
--		leds->led[reg]->cdev.brightness_set_blocking =
--					mt6323_led_set_brightness;
--		leds->led[reg]->cdev.blink_set = mt6323_led_set_blink;
--		leds->led[reg]->cdev.brightness_get =
--					mt6323_get_led_hw_brightness;
-+
-+		if (is_wled) {
-+			leds->led[reg]->cdev.brightness_set_blocking =
-+						mt6323_wled_set_brightness;
-+			leds->led[reg]->cdev.brightness_get =
-+						mt6323_get_wled_brightness;
-+		} else {
-+			leds->led[reg]->cdev.brightness_set_blocking =
-+						mt6323_led_set_brightness;
-+			leds->led[reg]->cdev.blink_set = mt6323_led_set_blink;
-+			leds->led[reg]->cdev.brightness_get =
-+						mt6323_get_led_hw_brightness;
-+		}
- 		leds->led[reg]->parent = leds;
- 
- 		ret = mt6323_led_set_dt_default(&leds->led[reg]->cdev, child);
-@@ -542,6 +675,17 @@ static const struct mt6323_regs mt6331_registers = {
- 	.isink_en_ctrl = 0x43a,
- };
- 
-+static const struct mt6323_regs mt6332_registers = {
-+	.top_ckpdn = (const u16[]){ 0x8094, 0x809a, 0x80a0 },
-+	.num_top_ckpdn = 3,
-+	.top_ckcon = (const u16[]){ 0x80a6, 0x80ac },
-+	.num_top_ckcon = 2,
-+	.isink_con = (const u16[]){ 0x8cd4 },
-+	.num_isink_con = 1,
-+	.isink_max_regs = 12, /* IWLED[0..2, 3..9] */
-+	.iwled_en_ctrl = 0x8cda,
-+};
-+
- static const struct mt6323_hwspec mt6323_spec = {
- 	.max_period = 10000,
- 	.max_leds = 4,
-@@ -549,6 +693,13 @@ static const struct mt6323_hwspec mt6323_spec = {
- 	.unit_duty = 3125,
- };
- 
-+static const struct mt6323_hwspec mt6332_spec = {
-+	/* There are no LEDs in MT6332. Only WLEDs are present. */
-+	.max_leds = 0,
-+	.max_wleds = 1,
-+	.max_brightness = 1024,
-+};
-+
- static const struct mt6323_data mt6323_pdata = {
- 	.regs = &mt6323_registers,
- 	.spec = &mt6323_spec,
-@@ -559,9 +710,15 @@ static const struct mt6323_data mt6331_pdata = {
- 	.spec = &mt6323_spec,
- };
- 
-+static const struct mt6323_data mt6332_pdata = {
-+	.regs = &mt6332_registers,
-+	.spec = &mt6332_spec,
-+};
-+
- static const struct of_device_id mt6323_led_dt_match[] = {
- 	{ .compatible = "mediatek,mt6323-led", .data = &mt6323_pdata},
- 	{ .compatible = "mediatek,mt6331-led", .data = &mt6331_pdata },
-+	{ .compatible = "mediatek,mt6332-led", .data = &mt6332_pdata },
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mt6323_led_dt_match);
--- 
-2.40.0
-
+Arınç
 
