@@ -4,84 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22D4EC7619A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 23:00:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24740C7619A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 23:13:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Subject:Message-Id:
-	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:Content-ID:
+	Content-Type:MIME-Version:Subject:Cc:To:References:In-Reply-To:From:Reply-To:
+	Content-Transfer-Encoding:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+Q95Knbpjeo78pZINMZAvNZ8f1W6NvaHbQpZHgZ+DhU=; b=vJsGqZrs+XOfwjvKEarsjlKJpO
-	XTAIzr5iA2N6zn9hR/XjsvnN+V91fRB9ely4pX0UhxzVRUkCzRQlvWNaSfk44dYBp3XFpy2Om/+kf
-	a1ZGojkHOI39zT5rmOp2BMIQ2PSbM6Y9AUWkm92QxjkpuF2NuqjueQk3kvWARauTYkpMMrsaIDUVL
-	duErgFz6K9bLILlBX8OTBlP1XhQ8mLFnh58slwatyFPeME8CUzpVfKiOa5CPjwh8xskzNZvekAjmD
-	3gHsuCl+TeDbn0aZMYm5vjGCLJaGO9oIZrm/1Jnc9O2+w1ztYKwwcza/ZPNgm85J7oJOiORvEu0Yc
-	3MwyOgKw==;
+	bh=DqjVx8DdVE7yyHJKc/GaG9WLw8shGI6NpWmfl69SUoE=; b=VjEOzeSbjcpddGwJ5wbyYyoVNz
+	okLIxbMtglhK0AC+bL4zKb7uNZJqH4uEYB5fxPqIWSjta0ecM8yfFtqDGQeb+ISFev3MYTCwrH1HM
+	zL0WsqZTSuMxBPK6hYzpBCdPxkgOoORRqsHH++ro/6j7X1C1uObxVRrskVgyTnEEVSbiiMgysyfV5
+	JniC32D0TWDpJZxme/VTZadzxqXwWja27bFQtZ9F22BdXdzn+XozozipaEehdCtIdBjtJmZ94dApz
+	AJgYoHQb/FdRasDeJ9dBnUFj9c+AycAAd4jQfcRzPHCsa8GaPO3Us1g2wOOnV030ouW6TFWOkWTfa
+	1hHj539A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmjS7-004apt-1a;
-	Wed, 12 Apr 2023 23:00:35 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pmje7-004bjs-1A;
+	Wed, 12 Apr 2023 23:12:59 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmiHl-004RQQ-0j;
-	Wed, 12 Apr 2023 21:45:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Date:Subject:Message-Id:References:
-	In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:Content-Type:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=+Q95Knbpjeo78pZINMZAvNZ8f1W6NvaHbQpZHgZ+DhU=; b=nJ+iYZLmz4XUhzAryq8Hy0wAse
-	vL8+gtJKLaNRhxHZhACLwRl9N1uXFliJI1r3lRS9bERJD+P8+gns/hSeakaVc+OnC7pVCT+SQBF0s
-	GpKnX7IF7cGlVYfyVUUp/XfGRKBKa/DCVY/dAwlcO3wHWS7bMwuCUuHXLe27j0TQglrZZIfV8/5gJ
-	mA4V07b6uPt8m2tB9Dg09VdOKkL5Fi+t87+0ndXOhPj815HXBTGO3nUuVFSar/tsPtve5En6F7Smr
-	wkQ/qU+GdhGko9o8sNCFasjf2jPimR0a0PGjFIUgIasu9wf3ROS5x1yv2ecJ8Uf/VNM1jQZ8hyhtq
-	5N30JQ+Q==;
-Received: from mail-oi1-f182.google.com ([209.85.167.182])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmhdE-00E2MR-2X;
-	Wed, 12 Apr 2023 21:04:26 +0000
-Received: by mail-oi1-f182.google.com with SMTP id bh10so8771146oib.1;
-        Wed, 12 Apr 2023 14:03:56 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681333435; x=1683925435;
-        h=date:subject:message-id:references:in-reply-to:cc:to:from
-         :mime-version:content-transfer-encoding:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=+Q95Knbpjeo78pZINMZAvNZ8f1W6NvaHbQpZHgZ+DhU=;
-        b=VkozsTLcaI1mZbcFBHBMqUmO0iscbnL2wjYk1pfJLinKNdxJ+Da87VjJYvK8e71qX7
-         bXZWseSEsTsvnoAlnlKrblokSLI+IlUEz9iBWRVfJzkfxoKenY1a5pWQEUkkW3djUFd4
-         iGYDp9jJKg22bDTqFsUaM0HY5hh7wZkt3D6aK3IFu1uiLZQhBfuUKiHndRVlOc4+O6qW
-         sPt/pgJxmMPLOQz89HWhyQCVFXGc6T54dA49E0jUUY00NUt8UdKSZPRmzU7/0guTkSRF
-         oOe/5xQscaT1LVc75YUzUP6ncBlmolZlzDLkojuHV+VT4wXGubRad2siFcM2AI7r/KYE
-         N8pQ==
-X-Gm-Message-State: AAQBX9e4YlpfUjO7YQWXeCYLp9xSHdNdMLfhTAgAfffYhpl3GdGz7BOR
-	0S7QNoxOO72jfZCkbUrcHg==
-X-Google-Smtp-Source: AKy350ZAQUKENqZQK/BkT1GzRkK8etcW3v2rWKWM1oDiBBATLa6RSgxvv4SclTk2dvtCGsASeNojAw==
-X-Received: by 2002:a05:6808:4b:b0:387:12e5:543a with SMTP id v11-20020a056808004b00b0038712e5543amr7422991oic.29.1681333434837;
-        Wed, 12 Apr 2023 14:03:54 -0700 (PDT)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id i128-20020acaea86000000b00386eff32f58sm7148418oih.13.2023.04.12.14.03.53
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 12 Apr 2023 14:03:54 -0700 (PDT)
-Received: (nullmailer pid 3200537 invoked by uid 1000);
-	Wed, 12 Apr 2023 21:03:44 -0000
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1pmje4-004bhc-1P
+	for linux-mediatek@lists.infradead.org;
+	Wed, 12 Apr 2023 23:12:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1681341171;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=DqjVx8DdVE7yyHJKc/GaG9WLw8shGI6NpWmfl69SUoE=;
+	b=bOyUPGtujdSlzeygurislRRvLpTQ85GAd4UMhkuI8lKbgCkz8XcxkgER+OEFor7Hl1WTOR
+	bKSGT/QXqa/DR1Dfu+z+2H+kf2QV7g0apQGxL2b0iYEoZ+ITLRzzkTteE4zG07bYx5tmnE
+	2zA32RAXw35Q1iCH1Y2+0FKeUZEtPDM=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-578-RzSsyzYVPU2T4nYnBVXo7Q-1; Wed, 12 Apr 2023 19:12:47 -0400
+X-MC-Unique: RzSsyzYVPU2T4nYnBVXo7Q-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D72A7101A550;
+	Wed, 12 Apr 2023 23:12:45 +0000 (UTC)
+Received: from warthog.procyon.org.uk (unknown [10.33.36.177])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 78B9A2166B26;
+	Wed, 12 Apr 2023 23:12:41 +0000 (UTC)
+Organization: Red Hat UK Ltd. Registered Address: Red Hat UK Ltd, Amberley
+	Place, 107-111 Peascod Street, Windsor, Berkshire, SI4 1TE, United
+	Kingdom.
+	Registered in England and Wales under Company Registration No. 3798903
+From: David Howells <dhowells@redhat.com>
+In-Reply-To: <ZDbO3haK/1+7xdRC@infradead.org>
+References: <ZDbO3haK/1+7xdRC@infradead.org> <20230411160902.4134381-1-dhowells@redhat.com> <20230411160902.4134381-5-dhowells@redhat.com>
+To: Christoph Hellwig <hch@infradead.org>
+Cc: dhowells@redhat.com, "David S. Miller" <davem@davemloft.net>,
+    Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+    Paolo Abeni <pabeni@redhat.com>,
+    Willem de Bruijn <willemdebruijn.kernel@gmail.com>,
+    David Ahern <dsahern@kernel.org>,
+    Matthew Wilcox <willy@infradead.org>,
+    Al Viro <viro@zeniv.linux.org.uk>, Jens Axboe <axboe@kernel.dk>,
+    Jeff Layton <jlayton@kernel.org>,
+    Christian Brauner <brauner@kernel.org>,
+    Chuck Lever III <chuck.lever@oracle.com>,
+    Linus Torvalds <torvalds@linux-foundation.org>,
+    Jeroen de Borst <jeroendb@google.com>,
+    Catherine Sullivan <csully@google.com>,
+    Shailend Chand <shailend@google.com>, Felix Fietkau <nbd@nbd.name>,
+    John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
+    Mark Lee <Mark-MC.Lee@mediatek.com>,
+    Lorenzo Bianconi <lorenzo@kernel.org>,
+    Matthias Brugger <matthias.bgg@gmail.com>,
+    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+    Keith Busch <kbusch@kernel.org>, Jens Axboe <axboe@fb.com>,
+    Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>,
+    Chaitanya Kulkarni <kch@nvidia.com>,
+    Andrew Morton <akpm@linux-foundation.org>, netdev@vger.kernel.org,
+    linux-arm-kernel@lists.infradead.org,
+    linux-mediatek@lists.infradead.org, linux-nvme@lists.infradead.org,
+    linux-fsdevel@vger.kernel.org, linux-mm@kvack.org,
+    linux-kernel@vger.kernel.org
+Subject: Re: [PATCH net-next v6 04/18] mm: Make the page_frag_cache allocator use per-cpu
 MIME-Version: 1.0
-From: Rob Herring <robh@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: thierry.reding@gmail.com, kishon@kernel.org, ~postmarketos/upstreaming@lists.sr.ht, linux-pwm@vger.kernel.org, airlied@gmail.com, robh+dt@kernel.org, chunfeng.yun@mediatek.com, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, u.kleine-koenig@pengutronix.de, kernel@collabora.com, xinlei.lee@mediatek.com, ck.hu@mediatek.com, linux-arm-kernel@lists.infradead.org, phone-devel@vger.kernel.org, matthias.bgg@gmail.com, krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org, vkoul@kernel.org, p.zabel@pengutronix.de, jassisinghbrar@gmail.com, chunkuang.hu@kernel.org, houlong.wei@mediatek.com, jitao.shi@mediatek.com, daniel@ffwll.ch
-In-Reply-To: <20230412112739.160376-10-angelogioacchino.delregno@collabora.com>
-References: <20230412112739.160376-1-angelogioacchino.delregno@collabora.com>
- <20230412112739.160376-10-angelogioacchino.delregno@collabora.com>
-Message-Id: <168133319583.3191294.4759319842761199183.robh@kernel.org>
-Subject: Re: [PATCH 09/27] dt-bindings: display: mediatek: color: Add
- compatible for MediaTek MT6795
-Date: Wed, 12 Apr 2023 16:03:44 -0500
+Content-Type: text/plain; charset="us-ascii"
+Content-ID: <399349.1681341160.1@warthog.procyon.org.uk>
+Date: Thu, 13 Apr 2023 00:12:40 +0100
+Message-ID: <399350.1681341160@warthog.procyon.org.uk>
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230412_220418_893133_8864A822 
-X-CRM114-Status: UNSURE (   9.89  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230412_161256_550571_B436DD9D 
+X-CRM114-Status: GOOD (  34.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,29 +108,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Christoph Hellwig <hch@infradead.org> wrote:
 
-On Wed, 12 Apr 2023 13:27:21 +0200, AngeloGioacchino Del Regno wrote:
-> Add a compatible string for MediaTek Helio X10 MT6795's COLOR block: this
-> is the same as MT8173.
+> On Tue, Apr 11, 2023 at 05:08:48PM +0100, David Howells wrote:
+> > Make the page_frag_cache allocator have a separate allocation bucket for
+> > each cpu to avoid racing.  This means that no lock is required, other than
+> > preempt disablement, to allocate from it, though if a softirq wants to
+> > access it, then softirq disablement will need to be added.
+> ...
+> Let me ask a third time as I've not got an answer the last two times:
+
+Sorry about that.  I think the problem is that the copy of the message from
+you directly to me arrives after the first copy that comes via a mailing list
+and google then deletes the direct one - as obviously no one could possibly
+want duplicates, right? :-/ - and so you usually get consigned to the
+linux-kernel or linux-fsdevel mailing list folder.
+
+> > Make the NVMe, mediatek and GVE drivers pass in NULL to page_frag_cache()
+> > and use the default allocation buckets rather than defining their own.
 > 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  .../devicetree/bindings/display/mediatek/mediatek,color.yaml     | 1 +
->  1 file changed, 1 insertion(+)
-> 
+> why are these callers treated different from the others?
 
-Running 'make dtbs_check' with the schema in this patch gives the
-following warnings. Consider if they are expected or the schema is
-incorrect. These may not be new warnings.
+There are only four users of struct page_frag_cache, the one these patches
+modify::
 
-Note that it is not yet a requirement to have 0 warnings for dtbs_check.
-This will change in the future.
+ (1) GVE.
+ (2) Mediatek.
+ (3) NVMe.
+ (4) skbuff.
 
-Full log is available here: https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20230412112739.160376-10-angelogioacchino.delregno@collabora.com
+Note that things are slightly confused by there being three very similarly
+named frag allocators (page_frag and page_frag_1k in addition to
+page_frag_cache) and the __page_frag_cache_drain() function gets used for
+things other than just page_frag_cache.
+
+I've replaced the single allocation buckets with per-cpu allocation buckets
+for (1), (2) and (3) so that no locking[*] is required other than pinning it
+to the cpu temporarily - but I can't test them as I don't have hardware.
+
+[*] Note that what's upstream doesn't have locking, and I'm not sure all the
+    users of it are SMP-safe.
+
+That leaves (4).
+
+Upstream, skbuff.c creates two separate per-cpu frag caches and I've elected
+to retain that, except that the per-cpu bits are now inside the frag allocator
+as I'm not entirely sure of the reason that there's a separate napi frag cache
+to the netdev_alloc_cache.
+
+The general page_frag_cache allocator is used by skb_splice_from_iter() if it
+encounters a page it can't take a ref on, so it has been tested through that
+using sunrpc, sunrpc+siw and cifs+siw.
+
+> Can you show any performance numbers?
+
+As far as I can tell, it doesn't make any obvious difference to directly
+pumping data through TCP or TLS over TCP or transferring data over a network
+filesystem such as sunrpc or cifs using siw/TCP.  I've tested this between two
+machines over a 1G and a 10G link.
+
+I can generate some actual numbers tomorrow.
 
 
-color@1400b000: 'power-domains' is a required property
-	arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dtb
-	arch/arm/boot/dts/mt7623n-rfb-emmc.dtb
+Actually, I probably can drop these patches 2-4 from this patchset and just
+use the netdev_alloc_cache in skb_splice_from_iter() for now.  Since that
+copies unspliceable data, I no longer need to allocate frags in the next layer
+up.
+
+David
 
 
