@@ -4,88 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2C85C7619A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 13:41:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40BC1C77B6E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 13:48:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BxkSh9qGiNggOqM0IqW5ttMVYnP04di9hmJMdY7w8ec=; b=QqA2EyZiRA+mPC/ZkdwFPxub+d
-	u8bjcNCSfheZDP5n11lCD9iYG8it72p484k6d0vwo1w7uARq27uIWDJpPhCI10OzhFEREKFJGOagW
-	JyQOBIYpTvvG1HUdlL4FKe3c/dacH7TRT1uHWpULO4OhZa3CEtqze+NLn7hSTzQN30E2VQvf4CVwo
-	Fd6+h7usZaNmNnP/YNlkBSzR7Mwvbd8MuAP+CeWT75+PHPtzjGzkoZcgr+S94LAEOT6Vv23iW0T2p
-	hLb6I5JPuUEnOh7dY+JiveqRjXIdqH1+Ex8BlP0bqtpgURS/2W2NsBVTWmpFm4le50ebE6leWhIMm
-	v6XdeMXw==;
+	bh=Bb6P2byqyLNvxYx5mpnu/HADSn0CeAL5J6+dhakFGrg=; b=1ofVPfqRVDV/q7pk0xtVF9k6se
+	+FfVIGVVYBil1JWiu+JV71ribEBZIGSx+LI9Arn2ditOzY75WBGA3vg5flTdCp2gf/j5+jWHMp59y
+	mHMQ1otqg7vKwVAsxCKoVCvy1RfN8Q73DvYR4PPZxcx00QJWJTfvxCQsBmgeygsDSlr+8dVEUrqep
+	dYX6vNidQ8bhtTTWdXw278xCRWALV1LC2mpGevRHGwqShm1diQPNDugtdR+C8R8YOou72b9vF8Uvp
+	vqOBFr1YkBO/3xZJcagclHXfS8bc7Oc4EOJaivzylkEEMct6Y9sRLMUWcxS5KGbcupf0PZwRqvXwI
+	/7fyyj0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmajQ-003NbG-0w;
-	Wed, 12 Apr 2023 13:41:52 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1pmaq6-003OYW-2z;
+	Wed, 12 Apr 2023 13:48:46 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmajN-003NZB-1V
+	id 1pmaq2-003OV9-1U
 	for linux-mediatek@lists.infradead.org;
-	Wed, 12 Apr 2023 13:41:50 +0000
-Received: by mail-wm1-x336.google.com with SMTP id v20-20020a05600c471400b003ed8826253aso2403036wmo.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 12 Apr 2023 06:41:46 -0700 (PDT)
+	Wed, 12 Apr 2023 13:48:44 +0000
+Received: by mail-wm1-x330.google.com with SMTP id he11-20020a05600c540b00b003ef6d684102so4453088wmb.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 12 Apr 2023 06:48:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1681306906; x=1683898906;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1681307319; x=1683899319;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=BxkSh9qGiNggOqM0IqW5ttMVYnP04di9hmJMdY7w8ec=;
-        b=B9d0pJGJszb/AtvGc1LSVISUvO3gkEB2r6axSkehkm6Wtb3x6EVZv/GnRNDTMvsDYA
-         BOiJtsEel1Gj1GBQZdHsQRzA2moZSHwuTofFQnpowXCkNui7+YHgFoFWWwsKgpkD5KnR
-         EIlJrioSvTxALhp4/bsKpFuPw6/AEaOIkVoMz2v1Aaehmw81SQM7CsGfQXoAKdYYVoeg
-         NeKC6fFqyF7y9uErvCuNqOVcgosikfVSwIZcVm1TriA74ZN7yEBDpIp/ojw0Ogv7wpJg
-         WB4ZnnTyjho3a91QqJBYE5I1G5789pzeJhkveCHJ74iimofE1AMERp2XzsRunQ/Wt8Mq
-         bkNg==
+        bh=Bb6P2byqyLNvxYx5mpnu/HADSn0CeAL5J6+dhakFGrg=;
+        b=X5GLXeJDIHOwYV33b0gurB0ztbWSgIyEeiSSG0/C6Vpi4vK1fhMxGZNWKHD8UQZzjk
+         RuUJfvCOgJehPIKFMlGxnNZAvJI9GIH8z0noUWQLiVAewf3Ov7fFOfl/1Ho2YD7CuH1v
+         Mm0T1u3w2UKESMcBO8HOKdgRlp73K2s5Zp4rc3jAxXmWyikjLX9YlrbmWLIfo2SaHcy0
+         uSFCHjhPiRlfecUqaDRr/qTj86ljC3cS5s8uM7A+xA/Kda0UKaKzVyd95X5aCn4lmbSq
+         7H3VZFmtr/dj0eo6tq9m9Gn+I5n2PI7CSAnwklU5ceCFwMDUpTortZkODsAaWO8gUi/E
+         eEIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1681306906; x=1683898906;
+        d=1e100.net; s=20210112; t=1681307319; x=1683899319;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=BxkSh9qGiNggOqM0IqW5ttMVYnP04di9hmJMdY7w8ec=;
-        b=Coq9VylkJ3vakapLjxWGhp6wW9M2A14JqTDy+P9vjWjYJ3jpwxP9GO4SVhUzzBMYPV
-         tmXw4xltXkBW2uLTgpHtueiVHFQu61oPUCr+ZSF1Up6ESb8ERl16d3zv2RrZCD8JeOZ/
-         qynPE8+R9KEuI6MZfrW/6FNuUUodXBf0XxXwjmsIrSslTdJgFbE1qubdkijZbvgXxAJ0
-         D/IMaopkqbaf7Qu2wbdtQl112an8JJ0q2hY609yBeXrDLA5UyGA87oy9wgEi/Fg7OeLU
-         9UxPF/BPbzv30teCDiU17Qp3igDR6HwubvIK4W0yce+bk5QmXSdgXC4TNXRcsgqPsBP7
-         Hj1A==
-X-Gm-Message-State: AAQBX9cvIns/KFArNaSv29w7XXF4GTG0GgBoXkQTMgGSPglF6DfZwVum
-	NH0jJPuHLnUJ2pVhhqnPRPPZXg==
-X-Google-Smtp-Source: AKy350Yi7DLY8Lcdq0xFepDVOiGuUCd47//3OO0bGUu9eLXFeO7jdLZnBpmOcGhBfDnlwtlu+bd7Xw==
-X-Received: by 2002:a05:600c:22c2:b0:3ed:a82d:dffb with SMTP id 2-20020a05600c22c200b003eda82ddffbmr1949562wmg.40.1681306905383;
-        Wed, 12 Apr 2023 06:41:45 -0700 (PDT)
+        bh=Bb6P2byqyLNvxYx5mpnu/HADSn0CeAL5J6+dhakFGrg=;
+        b=YVrNTtDuRCpSA1jN2CBrPaxb/lvjhGWppQ0ZfuaHa8fhQw9EigNPa70zel45N+rm5m
+         O4tjvAIeO8B/+D5rUJU7B7fhFiiY0Vssn+OCtBMIW0x1Z2zHByHjziYXFebkRb94505I
+         59oiVvf0MJztpI7oKRfnCHpIRLgbSdSpMBDowCqHxy2z5c9wbXdtfnI99RB++EYAyX8I
+         KfV/eypiLOQtqbZvgTEMksKJBlc4sv349aktqwyOOb81DKNNUDDxJfEs0CNwPycItr3/
+         235gCHpbWIahU7Gj/OZahbjOS0lDUI+rE2YpThSJwzN1HtGHNhxiYZZ+IocHBsxkHMvM
+         yZ9Q==
+X-Gm-Message-State: AAQBX9dM6u6fWNLWcQjwHlQBvKOwEDFPnjfH94rnMr6Gq87qOe1HE0mH
+	run9A9mO+rZgaJm9V07HvlVIjQ==
+X-Google-Smtp-Source: AKy350Z/ROia9nB7VNPQp9VQ8QMdkRRPlJGnrcpi8r3HW5TGeAv0xb6C9Cd+EosDMxX9OgVXXjaA1w==
+X-Received: by 2002:a05:600c:230c:b0:3ea:f73e:9d8a with SMTP id 12-20020a05600c230c00b003eaf73e9d8amr12320568wmo.30.1681307318747;
+        Wed, 12 Apr 2023 06:48:38 -0700 (PDT)
 Received: from [192.168.1.172] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id t15-20020a05600c198f00b003f0a007b802sm1434367wmq.12.2023.04.12.06.41.44
+        by smtp.gmail.com with ESMTPSA id n20-20020a05600c4f9400b003ed51cdb94csm2535939wmq.26.2023.04.12.06.48.37
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 12 Apr 2023 06:41:44 -0700 (PDT)
-Message-ID: <6aa48e26-31dd-cd7e-7a1c-f46d05c8e74f@baylibre.com>
-Date: Wed, 12 Apr 2023 15:41:43 +0200
+        Wed, 12 Apr 2023 06:48:38 -0700 (PDT)
+Message-ID: <3dab974e-4244-feda-4b85-d48a18013219@baylibre.com>
+Date: Wed, 12 Apr 2023 15:48:37 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.9.0
-Subject: Re: [PATCH v3 6/6] soc: mediatek: pwrap: Add support for MT6795 Helio
- X10
+Subject: Re: [PATCH -next 1/3] drm/mediatek: Use
+ devm_platform_ioremap_resource()
 Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- matthias.bgg@gmail.com
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- flora.fu@mediatek.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel@collabora.com,
- phone-devel@vger.kernel.org, ~postmarketos/upstreaming@lists.sr.ht
-References: <20230412131216.198313-1-angelogioacchino.delregno@collabora.com>
- <20230412131216.198313-7-angelogioacchino.delregno@collabora.com>
+To: Yang Li <yang.lee@linux.alibaba.com>, airlied@gmail.com
+Cc: daniel@ffwll.ch, matthias.bgg@gmail.com, chunkuang.hu@kernel.org,
+ p.zabel@pengutronix.de, angelogioacchino.delregno@collabora.com,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+References: <20230412064635.41315-1-yang.lee@linux.alibaba.com>
 From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20230412131216.198313-7-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230412064635.41315-1-yang.lee@linux.alibaba.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230412_064149_501699_2C933093 
-X-CRM114-Status: UNSURE (   6.96  )
+X-CRM114-CacheID: sfid-20230412_064842_678179_EB328DB2 
+X-CRM114-Status: UNSURE (   7.52  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -101,14 +98,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/04/2023 15:12, AngeloGioacchino Del Regno wrote:
-> Add the necessary bits to support the MT6795 Helio X10 smartphone SoC:
-> this is always paired with a MT6331 PMIC, with MT6332 companion.
->
-> Signed-off-by: AngeloGioacchino Del Regno<angelogioacchino.delregno@collabora.com>
+On 12/04/2023 08:46, Yang Li wrote:
+> Remove variable 'res' and convert platform_get_resource(),
+> devm_ioremap_resource() to a single call to
+> devm_platform_ioremap_resource(), as this is exactly what this function
+> does.
+> 
+> Signed-off-by: Yang Li<yang.lee@linux.alibaba.com>
 
 Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
+-- 
 Regards,
 Alexandre
 
