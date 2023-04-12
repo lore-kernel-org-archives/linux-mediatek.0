@@ -4,66 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21F7FC7619A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 20:37:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F842C77B77
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 21:04:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Subject:Message-Id:
+	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T38IV4yiax4pKI3AX1/0/LsjaEassFQljjvo2C7r+pU=; b=HAEAdtqPcFBHZ3yVtWshZnZzt8
-	nYqKxYC9sFOnnD4/P5azB93iqxpxVFxIXt1TlMrYb60jZ3eNzBJW0lkgFc19cPuKG0SwtT4h/oKHD
-	jUmcQ+a6g8DTn70LWcIz5TPZCTIOmCS6VbdAZ/DVUSUoGhYr149MEuICI9UDVzAfJ+XLyfKuxKYPx
-	WPIJ6toBvMys7dDDPuV/kS0tx0+byrPy9JDB5JeRsOwuuthzAM/GgNokOKA+hsJ4P/0/GkIjeoIYj
-	zULaIK2iKA/gdv8adlkkscUJaD5CMrF3PWVmrP5ewUmsuhva5A8SXCutDtJND1YYxjEWKriUzBZ13
-	vX5AJx+g==;
+	bh=djvELGPiz2X7+nxWdiXWHHU3TDK+TW+pNOfsGeO7c30=; b=hYl7SHff3Xx67nS0/FdTEqsjKg
+	7YgY4z1x7X8+xVYCosbW0gmEEKl6k6B1/vpDb2KmpUO8k1dPNlpK00Lgyv6Z0DXS5YSOF7O02kjwq
+	85fYwPlCxJtm9K5yh8ZMtNBchBSVDAVcAwyWUUebSlq70p7XJ1YkuQ1oQ4sco/Aij7k4WoqGUg0rd
+	7XjoS3m4AVFjRW4A6UaGN3d+A7ntt7k5bl+OPWC1mzQFxSZbZ4RSd5xVkm8dj4kwuKmPdzQRyfbxd
+	Ou7yFa8nBMpq3q77F6ZCUBUmO38pQVUHv3mBtCL3biTCiKJxq+8+6lfXkzFsZ0GFQTl53tcGXhTZd
+	4Dcaw45g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmhD1-004HHq-1q;
-	Wed, 12 Apr 2023 20:36:51 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pmhdK-004LQH-0h;
+	Wed, 12 Apr 2023 21:04:02 +0000
+Received: from mail-ot1-f48.google.com ([209.85.210.48])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmhCx-004HHK-2m;
-	Wed, 12 Apr 2023 20:36:49 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id B13AC61276;
-	Wed, 12 Apr 2023 20:36:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 04DD6C433D2;
-	Wed, 12 Apr 2023 20:36:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1681331806;
-	bh=6+kQhpng0nN6oNxM8W0ozh1qx0TTG9sI2fAC3uykaQA=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=N+ilccIF+2JKkBMkhXT6bhJMOi1nFeyXHZ9AsiNDTNvXNDcq8tRaiVItvncPjyTnr
-	 jBEz/6Lu4JALOCGVUGYk1l90Zzz8LU2Z8OGYLuiGrb1e4b3dnSwgbQx4reQX3CdJs3
-	 pFl/gOz+N14EM1sv73QIHCC+8Yr1tyPCEV0bJN0YW26/0f3QISfcOrXrvLRQueevg9
-	 WNGQ+qV6TQzQObk7HSBREvCDtksRVzqt5cFcAEVBRoGaDckyATMagU46fgiEiIYPbv
-	 dGR9aViRJnQgaL/Wx7mxxv93n2MhIUjaVYyEavbS91af5Y1WYCC5muKvWIV34qPM1U
-	 yegzg/YHU63jg==
-Date: Wed, 12 Apr 2023 21:36:42 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Alexandre Mergnat <amergnat@baylibre.com>
-Cc: ChiaEn Wu <chiaen_wu@richtek.com>, lars@metafoo.de,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- peterwu.pub@gmail.com, cy_huang@richtek.com
-Subject: Re: [PATCH v3] iio: adc: mt6370: Fix ibus and ibat scaling value of
- some specific vendor ID chips
-Message-ID: <20230412213642.1a942f64@jic23-huawei>
-In-Reply-To: <d2667a9d-20bf-bda2-9d69-4f5000db1633@baylibre.com>
-References: <1681122862-1994-1-git-send-email-chiaen_wu@richtek.com>
-	<d2667a9d-20bf-bda2-9d69-4f5000db1633@baylibre.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.37; x86_64-pc-linux-gnu)
+	id 1pmhdG-004LPM-2p;
+	Wed, 12 Apr 2023 21:04:00 +0000
+Received: by mail-ot1-f48.google.com with SMTP id bu14-20020a0568300d0e00b0069fab3f4cafso6179854otb.9;
+        Wed, 12 Apr 2023 14:03:58 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1681333436; x=1683925436;
+        h=date:subject:message-id:references:in-reply-to:cc:to:from
+         :mime-version:content-transfer-encoding:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=djvELGPiz2X7+nxWdiXWHHU3TDK+TW+pNOfsGeO7c30=;
+        b=Ea99Tpxu3hmlbechHElRrjx2IjOArOP556N/tKqn8sJhSdNg+GR4AimgM+AxiNckA0
+         Igx6IEXZ4FPWpGyOcpec0qjDO6s3CKudzAHEA5RixohqagsaterH4JQdv0QDuFb86aaE
+         FZzms6dO3Xebi8ACq2H+NEO7JsOEPdSAeBX430lpdX3NBINNR1XIcNaBL0dKH5KK6Y6p
+         UqIv3/3Mo6fjFIqpbZyA4BeDjtDVFPv6ovRF9iXBSSEKH9JOZHGIJAz9xQrOK347SCdO
+         eUrFttc+5jVzifFSXBWvf/tcUVUE6nxWUsuk14cDndToRTIs9eJz1LWux7WkwDb3kmnO
+         ZYNw==
+X-Gm-Message-State: AAQBX9c9YDrIRpoXDqmOyMKtBQlTFvGAisar8d3KJzsnM5BFVz7CPz+5
+	z6DaXCUuXqqe/PowNRXQNg==
+X-Google-Smtp-Source: AKy350ZPaxQqCIVs+haHZm96AVYtUTY7Qo26AYMJnx+qKKJp/dAi3OmoVXf+cund9KGn0KbJXB+BWw==
+X-Received: by 2002:a9d:7d0e:0:b0:6a1:42ee:1f5e with SMTP id v14-20020a9d7d0e000000b006a142ee1f5emr6568051otn.0.1681333436323;
+        Wed, 12 Apr 2023 14:03:56 -0700 (PDT)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id q22-20020a056830019600b0069d602841e7sm20803ota.72.2023.04.12.14.03.55
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Apr 2023 14:03:56 -0700 (PDT)
+Received: (nullmailer pid 3200539 invoked by uid 1000);
+	Wed, 12 Apr 2023 21:03:44 -0000
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+From: Rob Herring <robh@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: daniel@ffwll.ch, xinlei.lee@mediatek.com, dri-devel@lists.freedesktop.org, jitao.shi@mediatek.com, thierry.reding@gmail.com, phone-devel@vger.kernel.org, matthias.bgg@gmail.com, kernel@collabora.com, jassisinghbrar@gmail.com, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, linux-mediatek@lists.infradead.org, u.kleine-koenig@pengutronix.de, linux-phy@lists.infradead.org, p.zabel@pengutronix.de, airlied@gmail.com, linux-arm-kernel@lists.infradead.org, houlong.wei@mediatek.com, chunkuang.hu@kernel.org, chunfeng.yun@mediatek.com, ck.hu@mediatek.com, linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org, kishon@kernel.org, vkoul@kernel.org, ~postmarketos/upstreaming@lists.sr.ht, devicetree@vger.kernel.org
+In-Reply-To: <20230412112739.160376-14-angelogioacchino.delregno@collabora.com>
+References: <20230412112739.160376-1-angelogioacchino.delregno@collabora.com>
+ <20230412112739.160376-14-angelogioacchino.delregno@collabora.com>
+Message-Id: <168133319867.3191434.734350328370744826.robh@kernel.org>
+Subject: Re: [PATCH 13/27] dt-bindings: display: mediatek: ufoe: Add
+ compatible for MediaTek MT6795
+Date: Wed, 12 Apr 2023 16:03:44 -0500
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230412_133647_963543_FB90BAA8 
-X-CRM114-Status: GOOD (  13.98  )
+X-CRM114-CacheID: sfid-20230412_140358_909993_F5D4875D 
+X-CRM114-Status: GOOD (  10.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,25 +81,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 12 Apr 2023 13:31:06 +0200
-Alexandre Mergnat <amergnat@baylibre.com> wrote:
 
-> On 10/04/2023 12:34, ChiaEn Wu wrote:
-> > The scale value of ibus and ibat on the datasheet is incorrect due to the
-> > customer report after the experimentation with some specific vendor ID
-> > chips.
-> > 
-> > Fixes: c1404d1b659f ("iio: adc: mt6370: Add MediaTek MT6370 support")
-> > Signed-off-by: ChiaEn Wu<chiaen_wu@richtek.com>  
+On Wed, 12 Apr 2023 13:27:25 +0200, AngeloGioacchino Del Regno wrote:
+> Add a compatible string for MediaTek Helio X10 MT6795's UFOE block: this
+> is the same as MT8173.
 > 
-> Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  .../devicetree/bindings/display/mediatek/mediatek,ufoe.yaml    | 3 +++
+>  1 file changed, 3 insertions(+)
 > 
 
-Applied to the fixes-togreg branch of iio.git and marked for stable.
-As we are very late in this cycle I may well drag this into the
-queue for the coming merge window as it will land upstream slightly
-quicker that way. If not it will go upstream early in next cycle.
-As it's been broken for a while I'm not going to rush this upstream.
+Running 'make dtbs_check' with the schema in this patch gives the
+following warnings. Consider if they are expected or the schema is
+incorrect. These may not be new warnings.
 
-Jonathan
+Note that it is not yet a requirement to have 0 warnings for dtbs_check.
+This will change in the future.
+
+Full log is available here: https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20230412112739.160376-14-angelogioacchino.delregno@collabora.com
+
+
+ufoe@1401a000: 'mediatek,gce-client-reg' does not match any of the regexes: 'pinctrl-[0-9]+'
+	arch/arm64/boot/dts/mediatek/mt8173-elm.dtb
+	arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtb
+	arch/arm64/boot/dts/mediatek/mt8173-elm-hana-rev7.dtb
+	arch/arm64/boot/dts/mediatek/mt8173-evb.dtb
+
 
