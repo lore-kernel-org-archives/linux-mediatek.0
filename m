@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82999C77B6E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 11:30:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C740C77B71
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 11:30:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4ksb7cidYARjDsa/7A0yswz8kVPrna1cye02soqpc6M=; b=rQCTrz0iPwc6/7/TQ9rw+rQJbt
-	P3OqbcgnaEfRQXxwkVZxXi7A8fJ83JEkw+dJT9O5X5ulJlUriwtf2rxt13EYoBDcG81Dsmo52x/pV
-	G3O85EGFmXrznL91A+KREkedIAS1nh8gr5aJmLUOrqdijRFvZ2AiG9m32ryOYYk8RwemA4AL67Qy/
-	bYdt1ZfoNvhOCvWfonTncoJ4N67y1/tNgx5UrheuW06VTBs/Df5OwC2iztQy1stMo/AsBXffS4dAF
-	f8O0Ofu10MzNhK1uitmUXC0vM04E2iWDVtDxTaV9AdRDgcjh9ctjnoYO/ef5eksQRsGIVb8BeY45C
-	OFFSSWMA==;
+	bh=KSY+hwX/VFQw5SuF/hkilAMvJwejpyRo786+3482hi8=; b=jEc9co+dwng9S1TaEPGLz6LsjP
+	TwRiIqSHmffgdkaEqChvlL1JwxvwNnEKsoAq/ce/bCxMqd9R7otQ9CtGCu6Ry2FzMTcftFuMgQE8K
+	Rl2lhYzJncxgIYyQskPb5+CqDOzNKLhQa7xDkELPEn7cTVqAmeLNz4lCwQHES3AqeHft3+/F6GAs+
+	QT3rOclg55eqCkE+LBErcWBPgDPBEpVLWNRngCDMWASeijrl2VNG91dDFKbbnF60z+PQAMHS8nyaY
+	D3qE3iAKG0klHcXUNyV8JAMtzAN9l57asPqffLqmFC+OBqmWa/3CdV0Ib+b8jMesbaTbrW340x2yJ
+	bvMKifLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmYgD-002q2W-1R;
-	Wed, 12 Apr 2023 11:30:25 +0000
+	id 1pmYgO-002qE9-35;
+	Wed, 12 Apr 2023 11:30:36 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmYe4-002nu2-04;
-	Wed, 12 Apr 2023 11:28:13 +0000
+	id 1pmYe5-002nvj-1S;
+	Wed, 12 Apr 2023 11:28:15 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 992EB660328C;
-	Wed, 12 Apr 2023 12:28:09 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 012D366057AD;
+	Wed, 12 Apr 2023 12:28:10 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1681298890;
-	bh=udYJL7+D0nU6SsvUw/ySN6/rdg1po5P1pPwUOP6NJ6Y=;
+	s=mail; t=1681298892;
+	bh=07L8L+COY4Oza9QPgGeEH5iNgesuCz5mZ4a5YXV83pI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=MRVBOn4mP7A1tf5caIZVGKmwr24CaJNDm/AbiTnyf7L9hCauZ+fKHDnUCvpnlh2Gu
-	 hCLw6+5k9fn1t0edotlNf/dR1l6epND/bmS641hTNUfYEPSt2dgZoDLcmHxL1UE1Vr
-	 naKfvmShNyWBfXVB5qx2KZXnCOUqNcZ3VwTWYaSb8ig7dvXi/CBcw5HfmqJLg6HIWU
-	 qSFlSsB5xi4n+GdRG3N6WFbdYgA63kBtxZ85d5V97ynMiZ04EK2HkDhncPjrxM2gg9
-	 GhM2i8GMulrF35oLSgxcJxz62pQNvA0zZ6uGfgbuyMBhw+06Eyiz3Q7lEQP+u1cQQt
-	 bjjb7seRYMYkg==
+	b=JyRlZaGaVSHTM25xucD0PmNI2Qjnihirr9j2cKgOeWZDZ7+AJ7QHQHNuzEXYfkUqa
+	 l3jxNBbNLid0slAcA6W4C231+dChTOFS/V/JAhMdY9WcPamKrugb9MWm8j5WtKN8hL
+	 w40z5qiEObvmHSQ4bnVcJtH+Q5his1cAtbOMYX474ZLwIoSEGLQbThOKgIJyVc9utG
+	 csyuc0DOsnY8otZ2xpPrRZVDlhm/wKaxJNQ2Mk5tgMgzGJbFo9tejrcbkdNx+bCaUq
+	 Y0RumxZP/vOS4/R/D+qALE+U2eZoltFgmkmiHJMqmmmvWKEhwZ930gpTh1fBOmtFWX
+	 /VgLgn2DjGhhA==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: p.zabel@pengutronix.de,
@@ -72,17 +72,17 @@ Cc: p.zabel@pengutronix.de,
 	kernel@collabora.com,
 	phone-devel@vger.kernel.org,
 	~postmarketos/upstreaming@lists.sr.ht
-Subject: [PATCH 18/27] arm64: dts: mediatek: mt6795: Add support for IOMMU and LARBs
-Date: Wed, 12 Apr 2023 13:27:30 +0200
-Message-Id: <20230412112739.160376-19-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 19/27] arm64: dts: mediatek: mt6795: Add support for display blocks and DPI/DSI
+Date: Wed, 12 Apr 2023 13:27:31 +0200
+Message-Id: <20230412112739.160376-20-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.40.0
 In-Reply-To: <20230412112739.160376-1-angelogioacchino.delregno@collabora.com>
 References: <20230412112739.160376-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230412_042812_325606_AB2C06B9 
-X-CRM114-Status: UNSURE (   9.87  )
+X-CRM114-CacheID: sfid-20230412_042813_756890_4B9B767B 
+X-CRM114-Status: UNSURE (   9.64  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -98,109 +98,296 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add nodes for the multimedia IOMMU and its LARBs: this includes all but
-the MJC LARB, which cannot currently be used and will be added later.
+Introduce all nodes for all of the display blocks in the MediaTek Helio
+X10 MT6795 SoC, including the DSI PHY and DSI/DPI interfaces: those are
+left disabled as usage is board specific.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt6795.dtsi | 60 ++++++++++++++++++++++++
- 1 file changed, 60 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt6795.dtsi | 249 +++++++++++++++++++++++
+ 1 file changed, 249 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt6795.dtsi b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-index a8b2c4517e79..9cfa02085f61 100644
+index 9cfa02085f61..cf45cb4ad3d2 100644
 --- a/arch/arm64/boot/dts/mediatek/mt6795.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-@@ -8,6 +8,7 @@
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/clock/mediatek,mt6795-clk.h>
- #include <dt-bindings/gce/mediatek,mt6795-gce.h>
-+#include <dt-bindings/memory/mt6795-larb-port.h>
- #include <dt-bindings/pinctrl/mt6795-pinfunc.h>
- #include <dt-bindings/power/mt6795-power.h>
- #include <dt-bindings/reset/mediatek,mt6795-resets.h>
-@@ -390,6 +391,17 @@ systimer: timer@10200670 {
- 			clock-names = "clk13m";
+@@ -19,6 +19,23 @@ / {
+ 	#address-cells = <2>;
+ 	#size-cells = <2>;
+ 
++	aliases {
++		ovl0 = &ovl0;
++		ovl1 = &ovl1;
++		rdma0 = &rdma0;
++		rdma1 = &rdma1;
++		rdma2 = &rdma2;
++		wdma0 = &wdma0;
++		wdma1 = &wdma1;
++		color0 = &color0;
++		color1 = &color1;
++		split0 = &split0;
++		split1 = &split1;
++		dpi0 = &dpi0;
++		dsi0 = &dsi0;
++		dsi1 = &dsi1;
++	};
++
+ 	psci {
+ 		compatible = "arm,psci-0.2";
+ 		method = "smc";
+@@ -423,6 +440,26 @@ gce: mailbox@10212000 {
+ 			#mbox-cells = <2>;
  		};
  
-+		iommu: iommu@10205000 {
-+			compatible = "mediatek,mt6795-m4u";
-+			reg = <0 0x10205000 0 0x1000>;
-+			clocks = <&infracfg CLK_INFRA_M4U>;
-+			clock-names = "bclk";
-+			interrupts = <GIC_SPI 146 IRQ_TYPE_LEVEL_LOW>;
-+			mediatek,larbs = <&larb0 &larb1 &larb2 &larb3>;
-+			power-domains = <&spm MT6795_POWER_DOMAIN_MM>;
-+			#iommu-cells = <1>;
++		mipi_tx0: dsi-phy@10215000 {
++			compatible = "mediatek,mt8173-mipi-tx";
++			reg = <0 0x10215000 0 0x1000>;
++			clocks = <&clk26m>;
++			clock-output-names = "mipi_tx0_pll";
++			#clock-cells = <0>;
++			#phy-cells = <0>;
++			status = "disabled";
 +		};
 +
- 		apmixedsys: syscon@10209000 {
- 			compatible = "mediatek,mt6795-apmixedsys", "syscon";
- 			reg = <0 0x10209000 0 0x1000>;
-@@ -648,16 +660,64 @@ mmsys: syscon@14000000 {
++		mipi_tx1: dsi-phy@10216000 {
++			compatible = "mediatek,mt8173-mipi-tx";
++			reg = <0 0x10216000 0 0x1000>;
++			clocks = <&clk26m>;
++			clock-output-names = "mipi_tx1_pll";
++			#clock-cells = <0>;
++			#phy-cells = <0>;
++			status = "disabled";
++		};
++
+ 		gic: interrupt-controller@10221000 {
+ 			compatible = "arm,gic-400";
+ 			#interrupt-cells = <3>;
+@@ -660,6 +697,211 @@ mmsys: syscon@14000000 {
  			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0 0x1000>;
  		};
  
-+		larb0: larb@14021000 {
-+			compatible = "mediatek,mt6795-smi-larb";
-+			reg = <0 0x14021000 0 0x1000>;
-+			clocks = <&mmsys CLK_MM_SMI_COMMON>, <&mmsys CLK_MM_SMI_LARB0>;
-+			clock-names = "apb", "smi";
-+			mediatek,smi = <&smi_common>;
-+			mediatek,larb-id = <0>;
++		ovl0: ovl@1400c000 {
++			compatible = "mediatek,mt6795-disp-ovl", "mediatek,mt8173-disp-ovl";
++			reg = <0 0x1400c000 0 0x1000>;
++			interrupts = <GIC_SPI 188 IRQ_TYPE_LEVEL_LOW>;
 +			power-domains = <&spm MT6795_POWER_DOMAIN_MM>;
++			clocks = <&mmsys CLK_MM_DISP_OVL0>;
++			iommus = <&iommu M4U_PORT_DISP_OVL0>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xc000 0x1000>;
 +		};
 +
-+		smi_common: smi@14022000 {
-+			compatible = "mediatek,mt6795-smi-common";
-+			reg = <0 0x14022000 0 0x1000>;
++		ovl1: ovl@1400d000 {
++			compatible = "mediatek,mt6795-disp-ovl", "mediatek,mt8173-disp-ovl";
++			reg = <0 0x1400d000 0 0x1000>;
++			interrupts = <GIC_SPI 189 IRQ_TYPE_LEVEL_LOW>;
 +			power-domains = <&spm MT6795_POWER_DOMAIN_MM>;
-+			clocks = <&infracfg CLK_INFRA_SMI>, <&mmsys CLK_MM_SMI_COMMON>;
-+			clock-names = "apb", "smi";
++			clocks = <&mmsys CLK_MM_DISP_OVL1>;
++			iommus = <&iommu M4U_PORT_DISP_OVL1>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xd000 0x1000>;
 +		};
 +
-+		larb2: larb@15001000 {
-+			compatible = "mediatek,mt6795-smi-larb";
-+			reg = <0 0x15001000 0 0x1000>;
-+			clocks = <&mmsys CLK_MM_SMI_COMMON>, <&infracfg CLK_INFRA_SMI>;
-+			clock-names = "apb", "smi";
-+			mediatek,smi = <&smi_common>;
-+			mediatek,larb-id = <2>;
-+			power-domains = <&spm MT6795_POWER_DOMAIN_ISP>;
++		rdma0: rdma@1400e000 {
++			compatible = "mediatek,mt6795-disp-rdma", "mediatek,mt8173-disp-rdma";
++			reg = <0 0x1400e000 0 0x1000>;
++			interrupts = <GIC_SPI 190 IRQ_TYPE_LEVEL_LOW>;
++			power-domains = <&spm MT6795_POWER_DOMAIN_MM>;
++			clocks = <&mmsys CLK_MM_DISP_RDMA0>;
++			iommus = <&iommu M4U_PORT_DISP_RDMA0>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xe000 0x1000>;
 +		};
 +
- 		vdecsys: clock-controller@16000000 {
- 			compatible = "mediatek,mt6795-vdecsys";
- 			reg = <0 0x16000000 0 0x1000>;
- 			#clock-cells = <1>;
++		rdma1: rdma@1400f000 {
++			compatible = "mediatek,mt6795-disp-rdma", "mediatek,mt8173-disp-rdma";
++			reg = <0 0x1400f000 0 0x1000>;
++			interrupts = <GIC_SPI 191 IRQ_TYPE_LEVEL_LOW>;
++			power-domains = <&spm MT6795_POWER_DOMAIN_MM>;
++			clocks = <&mmsys CLK_MM_DISP_RDMA1>;
++			iommus = <&iommu M4U_PORT_DISP_RDMA1>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xf000 0x1000>;
++		};
++
++		rdma2: rdma@14010000 {
++			compatible = "mediatek,mt6795-disp-rdma", "mediatek,mt8173-disp-rdma";
++			reg = <0 0x14010000 0 0x1000>;
++			interrupts = <GIC_SPI 192 IRQ_TYPE_LEVEL_LOW>;
++			power-domains = <&spm MT6795_POWER_DOMAIN_MM>;
++			clocks = <&mmsys CLK_MM_DISP_RDMA2>;
++			iommus = <&iommu M4U_PORT_DISP_RDMA2>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0 0x1000>;
++		};
++
++		wdma0: wdma@14011000 {
++			compatible = "mediatek,mt6795-disp-wdma", "mediatek,mt8173-disp-wdma";
++			reg = <0 0x14011000 0 0x1000>;
++			interrupts = <GIC_SPI 193 IRQ_TYPE_LEVEL_LOW>;
++			power-domains = <&spm MT6795_POWER_DOMAIN_MM>;
++			clocks = <&mmsys CLK_MM_DISP_WDMA0>;
++			iommus = <&iommu M4U_PORT_DISP_WDMA0>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x1000 0x1000>;
++		};
++
++		wdma1: wdma@14012000 {
++			compatible = "mediatek,mt6795-disp-wdma", "mediatek,mt8173-disp-wdma";
++			reg = <0 0x14012000 0 0x1000>;
++			interrupts = <GIC_SPI 194 IRQ_TYPE_LEVEL_LOW>;
++			power-domains = <&spm MT6795_POWER_DOMAIN_MM>;
++			clocks = <&mmsys CLK_MM_DISP_WDMA1>;
++			iommus = <&iommu M4U_PORT_DISP_WDMA1>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x2000 0x1000>;
++		};
++
++		color0: color@14013000 {
++			compatible = "mediatek,mt6795-disp-color", "mediatek,mt8173-disp-color";
++			reg = <0 0x14013000 0 0x1000>;
++			interrupts = <GIC_SPI 195 IRQ_TYPE_LEVEL_LOW>;
++			power-domains = <&spm MT6795_POWER_DOMAIN_MM>;
++			clocks = <&mmsys CLK_MM_DISP_COLOR0>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x3000 0x1000>;
++		};
++
++		color1: color@14014000 {
++			compatible = "mediatek,mt6795-disp-color", "mediatek,mt8173-disp-color";
++			reg = <0 0x14014000 0 0x1000>;
++			interrupts = <GIC_SPI 196 IRQ_TYPE_LEVEL_LOW>;
++			power-domains = <&spm MT6795_POWER_DOMAIN_MM>;
++			clocks = <&mmsys CLK_MM_DISP_COLOR1>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x4000 0x1000>;
++		};
++
++		aal@14015000 {
++			compatible = "mediatek,mt6795-disp-aal", "mediatek,mt8173-disp-aal";
++			reg = <0 0x14015000 0 0x1000>;
++			interrupts = <GIC_SPI 197 IRQ_TYPE_LEVEL_LOW>;
++			power-domains = <&spm MT6795_POWER_DOMAIN_MM>;
++			clocks = <&mmsys CLK_MM_DISP_AAL>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x5000 0x1000>;
++		};
++
++		gamma@14016000 {
++			compatible = "mediatek,mt6795-disp-gamma", "mediatek,mt8173-disp-gamma";
++			reg = <0 0x14016000 0 0x1000>;
++			interrupts = <GIC_SPI 198 IRQ_TYPE_LEVEL_LOW>;
++			power-domains = <&spm MT6795_POWER_DOMAIN_MM>;
++			clocks = <&mmsys CLK_MM_DISP_GAMMA>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x6000 0x1000>;
++		};
++
++		merge@14017000 {
++			compatible = "mediatek,mt6795-disp-merge", "mediatek,mt8173-disp-merge";
++			reg = <0 0x14017000 0 0x1000>;
++			power-domains = <&spm MT6795_POWER_DOMAIN_MM>;
++			clocks = <&mmsys CLK_MM_DISP_MERGE>;
++		};
++
++		split0: split@14018000 {
++			compatible = "mediatek,mt6795-disp-split", "mediatek,mt8173-disp-split";
++			reg = <0 0x14018000 0 0x1000>;
++			power-domains = <&spm MT6795_POWER_DOMAIN_MM>;
++			clocks = <&mmsys CLK_MM_DISP_SPLIT0>;
++		};
++
++		split1: split@14019000 {
++			compatible = "mediatek,mt6795-disp-split", "mediatek,mt8173-disp-split";
++			reg = <0 0x14019000 0 0x1000>;
++			power-domains = <&spm MT6795_POWER_DOMAIN_MM>;
++			clocks = <&mmsys CLK_MM_DISP_SPLIT1>;
++		};
++
++		ufoe@1401a000 {
++			compatible = "mediatek,mt6795-disp-ufoe", "mediatek,mt8173-disp-ufoe";
++			reg = <0 0x1401a000 0 0x1000>;
++			interrupts = <GIC_SPI 199 IRQ_TYPE_LEVEL_LOW>;
++			power-domains = <&spm MT6795_POWER_DOMAIN_MM>;
++			clocks = <&mmsys CLK_MM_DISP_UFOE>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0xa000 0x1000>;
++		};
++
++		dsi0: dsi@1401b000 {
++			compatible = "mediatek,mt6795-dsi", "mediatek,mt8173-dsi";
++			reg = <0 0x1401b000 0 0x1000>;
++			interrupts = <GIC_SPI 200 IRQ_TYPE_LEVEL_LOW>;
++			power-domains = <&spm MT6795_POWER_DOMAIN_MM>;
++			clocks = <&mmsys CLK_MM_DSI0_ENGINE>,
++				 <&mmsys CLK_MM_DSI0_DIGITAL>,
++				 <&mipi_tx0>;
++			clock-names = "engine", "digital", "hs";
++			phys = <&mipi_tx0>;
++			phy-names = "dphy";
++			status = "disabled";
++		};
++
++		dsi1: dsi@1401c000 {
++			compatible = "mediatek,mt6795-dsi", "mediatek,mt8173-dsi";
++			reg = <0 0x1401c000 0 0x1000>;
++			interrupts = <GIC_SPI 201 IRQ_TYPE_LEVEL_LOW>;
++			power-domains = <&spm MT6795_POWER_DOMAIN_MM>;
++			clocks = <&mmsys CLK_MM_DSI1_ENGINE>,
++				 <&mmsys CLK_MM_DSI1_DIGITAL>,
++				 <&mipi_tx1>;
++			clock-names = "engine", "digital", "hs";
++			phys = <&mipi_tx1>;
++			phy-names = "dphy";
++			status = "disabled";
++		};
++
++		dpi0: dpi@1401d000 {
++			compatible = "mediatek,mt6795-dpi", "mediatek,mt8173-dpi";
++			reg = <0 0x1401d000 0 0x1000>;
++			interrupts = <GIC_SPI 202 IRQ_TYPE_LEVEL_LOW>;
++			power-domains = <&spm MT6795_POWER_DOMAIN_MM>;
++			clocks = <&mmsys CLK_MM_DPI_PIXEL>,
++				 <&mmsys CLK_MM_DPI_ENGINE>,
++				 <&apmixedsys CLK_APMIXED_TVDPLL>;
++			clock-names = "pixel", "engine", "pll";
++			status = "disabled";
++		};
++
++		pwm0: pwm@1401e000 {
++			compatible = "mediatek,mt6595-disp-pwm", "mediatek,mt8173-disp-pwm";
++			reg = <0 0x1401e000 0 0x1000>;
++			#pwm-cells = <2>;
++			clocks = <&mmsys CLK_MM_DISP_PWM026M>, <&mmsys CLK_MM_DISP_PWM0MM>;
++			clock-names = "main", "mm";
++			status = "disabled";
++		};
++
++		pwm1: pwm@1401f000 {
++			compatible = "mediatek,mt6595-disp-pwm", "mediatek,mt8173-disp-pwm";
++			reg = <0 0x1401f000 0 0x1000>;
++			#pwm-cells = <2>;
++			clocks = <&mmsys CLK_MM_DISP_PWM126M>, <&mmsys CLK_MM_DISP_PWM1MM>;
++			clock-names = "main", "mm";
++			status = "disabled";
++		};
++
++		mutex: mutex@14020000 {
++			compatible = "mediatek,mt8173-disp-mutex";
++			reg = <0 0x14020000 0 0x1000>;
++			interrupts = <GIC_SPI 177 IRQ_TYPE_LEVEL_LOW>;
++			power-domains = <&spm MT6795_POWER_DOMAIN_MM>;
++			clocks = <&mmsys CLK_MM_MUTEX_32K>;
++			mediatek,gce-events = <CMDQ_EVENT_MUTEX0_STREAM_EOF>,
++					      <CMDQ_EVENT_MUTEX1_STREAM_EOF>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1402XXXX 0 0x1000>;
++		};
++
+ 		larb0: larb@14021000 {
+ 			compatible = "mediatek,mt6795-smi-larb";
+ 			reg = <0 0x14021000 0 0x1000>;
+@@ -678,6 +920,13 @@ smi_common: smi@14022000 {
+ 			clock-names = "apb", "smi";
  		};
  
-+		larb1: larb@16010000 {
-+			compatible = "mediatek,mt6795-smi-larb";
-+			reg = <0 0x16010000 0 0x1000>;
-+			mediatek,smi = <&smi_common>;
-+			mediatek,larb-id = <1>;
-+			clocks = <&vdecsys CLK_VDEC_CKEN>, <&vdecsys CLK_VDEC_LARB_CKEN>;
-+			clock-names = "apb", "smi";
-+			power-domains = <&spm MT6795_POWER_DOMAIN_VDEC>;
++		od@14023000 {
++			compatible = "mediatek,mt6795-disp-od", "mediatek,mt8173-disp-od";
++			reg = <0 0x14023000 0 0x1000>;
++			clocks = <&mmsys CLK_MM_DISP_OD>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1402XXXX 0x3000 0x1000>;
 +		};
 +
- 		vencsys: clock-controller@18000000 {
- 			compatible = "mediatek,mt6795-vencsys";
- 			reg = <0 0x18000000 0 0x1000>;
- 			#clock-cells = <1>;
- 		};
-+
-+		larb3: larb@18001000 {
-+			compatible = "mediatek,mt6795-smi-larb";
-+			reg = <0 0x18001000 0 0x1000>;
-+			clocks = <&vencsys CLK_VENC_VENC>, <&vencsys CLK_VENC_LARB>;
-+			clock-names = "apb", "smi";
-+			mediatek,smi = <&smi_common>;
-+			mediatek,larb-id = <3>;
-+			power-domains = <&spm MT6795_POWER_DOMAIN_VENC>;
-+		};
- 	};
- };
+ 		larb2: larb@15001000 {
+ 			compatible = "mediatek,mt6795-smi-larb";
+ 			reg = <0 0x15001000 0 0x1000>;
 -- 
 2.40.0
 
