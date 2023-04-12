@@ -4,75 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0AC8C7619A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 13:04:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48E7FC77B6E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 13:12:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=32VhZ5ffbGBUhL06Q83SjnqpO6mAtPzUouu8GqrEC6k=; b=TZoAKf8ibs8QNhMJsqptlCMxAg
-	7dh+eC8hklxNto+h0NCl95rI1RCeUZJ3XicHdVSoczjZLSwbZ/bVE3kv5GXv3ulXOH6cF0vTeBtII
-	+z0hlqnTc83xdfSs17VUhlE1j/nanybZm/JBXxgNmQG7oePQ/AitjVjY9YP+ahWDlfIDS/EGenVZa
-	0b8SQwJA+UOmipDBUShs7DkhF16rGkczwqj7+pQ6uTo8nj14dN42Env1sziCSaoKkRhk7qan0R10r
-	E4Ykh6rjfwdj8prVqMyVsKVkRMo5B2jcrY4pNPdHwQrCBeZhV9AllU4B0o7dxEoXAuEsfZWBlWYxJ
-	JD+HCMDw==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=PwQNdj2U8FHEsGznZqrJiwN2pcMSEPmAiTzpFUkKLcU=; b=o6Q4gq3/3TvE5dXuPX4PrkvsGy
+	J0rc7EFaXtwlexgoqVXJ7mnQhC2Uj2cIXwIgMEaCAjLLtqvGGKI3lzvgLNiAgSMb9uaOrksBvWBa5
+	dPx8J9gkbsYVVy2zCV7jo9RUS/oDP7bp76cqr5li9AaUxIMOIkDw2yF2aPUmChPPr8+dYvUWFtwnQ
+	mweRuXMf4N0KpEvlByPhgQlMAf5/wOCjRhZx2K7wXmSm3BXZZKx3BbgypMf8jlL2JsuwggWOdZCdc
+	WdoDONDHAG1k5oOjtOSIgwVUXxBY31y79jVCyNedq7WnnpsIgYmbBiUW0CQr/8PcRbpyDEFGibfZa
+	nRQD4eQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pma8l-003FxE-1Z;
-	Wed, 12 Apr 2023 13:03:59 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pmaGy-003H8y-0i;
+	Wed, 12 Apr 2023 13:12:28 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pma8h-003FvM-38;
-	Wed, 12 Apr 2023 13:03:57 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	id 1pmaGs-003H5Y-32;
+	Wed, 12 Apr 2023 13:12:24 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id AE81F6603102;
-	Wed, 12 Apr 2023 14:03:50 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9FC606603102;
+	Wed, 12 Apr 2023 14:12:20 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1681304632;
-	bh=n6UmEOVTw+KXN9/725bQQxVPB20qNDRrZSlz09sXOMo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=AQGqtRCpfP1ZuiophrOrBi4nZp+IoEZLBUmkBU7M1yFW3J4w/j+9WFvTAaK4aAfy0
-	 5mYHWH2h9wjO2WBZ32CNT1xRWPLebR3bOjhc4EYA2r8GAUkpXyuAw45LR3pxru37GU
-	 TJBMilPa+oR0ba/Sl+XjUj2izfyuitVr5N5O7t6jLvyKSSm9hcJWe2N8F2ludKsfQs
-	 BPXQNPKykaAn/QFWyaCAVLBVUDCUiSYmVAgcgUuhU29wxTbleKy57mWETsDJ/lmNi4
-	 eoW0EreMLhn9a2r7hNzEA0Rgm3J1Ixu9cUE3XdTH20jdV2vDUVROKrAgOAx3yO8xAA
-	 GmQOR2WRqCCBw==
-Message-ID: <eb770f19-ada5-81bb-5ea3-798edabca70f@collabora.com>
-Date: Wed, 12 Apr 2023 15:03:48 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.1
-Subject: Re: [PATCH 02/27] dt-bindings: phy: mediatek,dsi-phy: Add compatible
- for MT6795 Helio X10
-Content-Language: en-US
-To: Alexandre Mergnat <amergnat@baylibre.com>, matthias.bgg@gmail.com
-Cc: p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- jassisinghbrar@gmail.com, chunfeng.yun@mediatek.com, vkoul@kernel.org,
- kishon@kernel.org, thierry.reding@gmail.com, u.kleine-koenig@pengutronix.de,
- chunkuang.hu@kernel.org, ck.hu@mediatek.com, jitao.shi@mediatek.com,
- xinlei.lee@mediatek.com, houlong.wei@mediatek.com,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
- linux-pwm@vger.kernel.org, kernel@collabora.com,
- phone-devel@vger.kernel.org, ~postmarketos/upstreaming@lists.sr.ht
-References: <20230412112739.160376-1-angelogioacchino.delregno@collabora.com>
- <20230412112739.160376-3-angelogioacchino.delregno@collabora.com>
- <20684378-cf3e-0299-d390-287b7bafbda5@baylibre.com>
+	s=mail; t=1681305141;
+	bh=+riuISXy3VPiJ6mOioE8PhdIQu+xEKxpkJXqCAILO9c=;
+	h=From:To:Cc:Subject:Date:From;
+	b=or42XwpmzhGHuSBWzVRtaENPX1BZSaOk/mksrYYXK1Wk1cmkimGKT/p6KShTcSqbj
+	 16h4pVLezeTQviuGIXackRKbpaHt0HaUiWp6sAxPaX5Nrj3IHiqlzjW5G/JZStl3gQ
+	 vqqvYF3b6HWmNRIFQCdtd9Ybncd4k9b2/cW4ZhGzUjw9JtAHoQTUR6nLp9KSP4zlCW
+	 1ss/FGv7Coz/qbCbRSGu5wPGvhVhvhMJmKslKo5hOXPll/s9P/Ez43HqQtja/RnOjV
+	 9Wd0ZqmdkNbsA6z+Wtek8GuG8F7Qj+fxNgZOT86K7505zv9scOaW77XWP/vFQ5VnVU
+	 dRsYHPbbHmN8A==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20684378-cf3e-0299-d390-287b7bafbda5@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: matthias.bgg@gmail.com
+Cc: robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	amergnat@baylibre.com,
+	flora.fu@mediatek.com,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	kernel@collabora.com,
+	phone-devel@vger.kernel.org,
+	~postmarketos/upstreaming@lists.sr.ht,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 0/6] MediaTek Helio X10 MT6795 - MT6331/6332 PMIC Wrapper
+Date: Wed, 12 Apr 2023 15:12:10 +0200
+Message-Id: <20230412131216.198313-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.40.0
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230412_060356_141974_67F511C6 
-X-CRM114-Status: GOOD (  14.17  )
+X-CRM114-CacheID: sfid-20230412_061223_106728_1A219004 
+X-CRM114-Status: UNSURE (   9.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,56 +81,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 12/04/23 14:59, Alexandre Mergnat ha scritto:
-> On 12/04/2023 13:27, AngeloGioacchino Del Regno wrote:
->> Add a compatible string for MediaTek Helio X10 MT6795: this SoC uses
->> the same DSI PHY as MT8173.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml | 4 ++++
->>   1 file changed, 4 insertions(+)
->>
->> diff --git a/Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml 
->> b/Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml
->> index 26f2b887cfc1..a9f78344efdb 100644
->> --- a/Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml
->> +++ b/Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml
->> @@ -24,6 +24,10 @@ properties:
->>             - enum:
->>                 - mediatek,mt7623-mipi-tx
->>             - const: mediatek,mt2701-mipi-tx
->> +      - items:
->> +          - enum:
->> +              - mediatek,mt6795-mipi-tx
->> +          - const: mediatek,mt8173-mipi-tx
-> 
-> AFAIK, it should be:
->        - items:
->            - const: mediatek,mt6795-mipi-tx
->            - const: mediatek,mt8173-mipi-tx
-> 
-> Since it isn't respected above for mt7623, it may be tolerated.
-> Please, take this comment as a suggestion, isn't a NAK from me.
-> 
+Changes in v3:
+ - Rebased on next-20230412
+ - Changed if branch to switch in pwrap_init() as suggested
+   by Matthias and Alexandre.
 
-First of all, Thanks!
-I want to explain, though, the reason for that.
+Changes in v2:
+ - Rebased on next-20230323
+ - Changed pwrap.txt addition to new yaml file addition
 
-If you check all the commits, on some I did it as you just proposed, while
-on some others I did it with an enum before const: that's simply because I
-*totally expect* some to grow, while others (const - const) I was either
-unsure, or totally *not* expecting them to grow soon!
+In an effort to give some love to the apparently forgotten MT6795 SoC,
+I am upstreaming more components that are necessary to support platforms
+powered by this one apart from a simple boot to serial console.
 
->>         - items:
->>             - enum:
->>                 - mediatek,mt8365-mipi-tx
-> 
-> Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
-> 
+This series introduces support in the PMIC Wrapper for a different PMIC
+topology, which is commonly found on smartphone boards, using one main
+PMIC and one Companion/Sub PMIC, both accessible *only* through the pwrap;
+be aware that this kind of topology is not *specific to* the Helio X10
+SoC, but common across many kinds of MediaTek smartphone oriented SoCs
+and board designs.
 
-Thanks again!
+That said, support for the PMIC combo MT6331+MT6332 is provided in this
+series in a form that will be able to initialize the PMICs with crypto
+and DualIO but nothing else: these PMICs are very featureful, so I have
+decided to add this support in more than just one step, as there will
+be multiple patches for multiple different subsystems (..it's a mfd!..).
 
-Cheers,
-Angelo
+Tested on a MT6795 Sony Xperia M5 (codename "Holly") smartphone.
+
+AngeloGioacchino Del Regno (6):
+  dt-bindings: soc: mediatek: pwrap: Add compatible for MT6795 Helio X10
+  soc: mediatek: pwrap: Move PMIC read test sequence in function
+  soc: mediatek: pwrap: Add kerneldoc for struct pwrap_slv_type
+  soc: mediatek: mtk-pmic-wrap: Add support for companion PMICs
+  soc: mediatek: mtk-pmic-wrap: Add support for MT6331 w/ MT6332
+    companion
+  soc: mediatek: pwrap: Add support for MT6795 Helio X10
+
+ .../bindings/soc/mediatek/mediatek,pwrap.yaml |   1 +
+ drivers/soc/mediatek/mtk-pmic-wrap.c          | 292 ++++++++++++++++--
+ 2 files changed, 267 insertions(+), 26 deletions(-)
+
+-- 
+2.40.0
+
 
