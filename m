@@ -4,69 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F842C77B77
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 21:04:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65E68C7619A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 21:11:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Subject:Message-Id:
-	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=djvELGPiz2X7+nxWdiXWHHU3TDK+TW+pNOfsGeO7c30=; b=hYl7SHff3Xx67nS0/FdTEqsjKg
-	7YgY4z1x7X8+xVYCosbW0gmEEKl6k6B1/vpDb2KmpUO8k1dPNlpK00Lgyv6Z0DXS5YSOF7O02kjwq
-	85fYwPlCxJtm9K5yh8ZMtNBchBSVDAVcAwyWUUebSlq70p7XJ1YkuQ1oQ4sco/Aij7k4WoqGUg0rd
-	7XjoS3m4AVFjRW4A6UaGN3d+A7ntt7k5bl+OPWC1mzQFxSZbZ4RSd5xVkm8dj4kwuKmPdzQRyfbxd
-	Ou7yFa8nBMpq3q77F6ZCUBUmO38pQVUHv3mBtCL3biTCiKJxq+8+6lfXkzFsZ0GFQTl53tcGXhTZd
-	4Dcaw45g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2SaoIHjQPTaBlztW3XPxW1aaHMDuvqPG5Cg12mQ2L0M=; b=nA5qlMmRco+G+BynM4w5eCZYda
+	GXTGt0cg46x29E/nscAYVz4AptrmgHFcwt2CgsgcKEIEwluQqNZ8aqCsEhEujMqmYSnHixb3PEURv
+	dxc+YkyPedcbI8swyyLpV2adblIugywjjxTQclx17kJ1lthXzNxSltzru+L3Eo/b+RKI5+w3i5tH4
+	Gp10jMFrIzEElVCphCvJDc1iVRwGqW4TdG8eJAv/YL2T+X+06djoMCCB0kdNLh5bIerku/LfEernh
+	qTqsk1bGAK/VTFWY0CELdmjZBnPsxA2D8JrVUctK9AQXreF6uZyreBhAIZ7B/29EKpITQyKnY3IJe
+	KQcZUB9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmhdK-004LQH-0h;
-	Wed, 12 Apr 2023 21:04:02 +0000
-Received: from mail-ot1-f48.google.com ([209.85.210.48])
+	id 1pmhkb-004MRA-02;
+	Wed, 12 Apr 2023 21:11:33 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmhdG-004LPM-2p;
-	Wed, 12 Apr 2023 21:04:00 +0000
-Received: by mail-ot1-f48.google.com with SMTP id bu14-20020a0568300d0e00b0069fab3f4cafso6179854otb.9;
-        Wed, 12 Apr 2023 14:03:58 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681333436; x=1683925436;
-        h=date:subject:message-id:references:in-reply-to:cc:to:from
-         :mime-version:content-transfer-encoding:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=djvELGPiz2X7+nxWdiXWHHU3TDK+TW+pNOfsGeO7c30=;
-        b=Ea99Tpxu3hmlbechHElRrjx2IjOArOP556N/tKqn8sJhSdNg+GR4AimgM+AxiNckA0
-         Igx6IEXZ4FPWpGyOcpec0qjDO6s3CKudzAHEA5RixohqagsaterH4JQdv0QDuFb86aaE
-         FZzms6dO3Xebi8ACq2H+NEO7JsOEPdSAeBX430lpdX3NBINNR1XIcNaBL0dKH5KK6Y6p
-         UqIv3/3Mo6fjFIqpbZyA4BeDjtDVFPv6ovRF9iXBSSEKH9JOZHGIJAz9xQrOK347SCdO
-         eUrFttc+5jVzifFSXBWvf/tcUVUE6nxWUsuk14cDndToRTIs9eJz1LWux7WkwDb3kmnO
-         ZYNw==
-X-Gm-Message-State: AAQBX9c9YDrIRpoXDqmOyMKtBQlTFvGAisar8d3KJzsnM5BFVz7CPz+5
-	z6DaXCUuXqqe/PowNRXQNg==
-X-Google-Smtp-Source: AKy350ZPaxQqCIVs+haHZm96AVYtUTY7Qo26AYMJnx+qKKJp/dAi3OmoVXf+cund9KGn0KbJXB+BWw==
-X-Received: by 2002:a9d:7d0e:0:b0:6a1:42ee:1f5e with SMTP id v14-20020a9d7d0e000000b006a142ee1f5emr6568051otn.0.1681333436323;
-        Wed, 12 Apr 2023 14:03:56 -0700 (PDT)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id q22-20020a056830019600b0069d602841e7sm20803ota.72.2023.04.12.14.03.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 12 Apr 2023 14:03:56 -0700 (PDT)
-Received: (nullmailer pid 3200539 invoked by uid 1000);
-	Wed, 12 Apr 2023 21:03:44 -0000
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1pmhkY-004MQG-1t
+	for linux-mediatek@lists.infradead.org;
+	Wed, 12 Apr 2023 21:11:31 +0000
+X-UUID: 92be5cccd97611ed8687db9d93187ff1-20230412
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=2SaoIHjQPTaBlztW3XPxW1aaHMDuvqPG5Cg12mQ2L0M=;
+	b=OSAwdosub5ZxMRvZMsitYK51E6bVwVdUvU/sd5EQnl/EvAITIIyOr2QE4EV1MOv0ni1oW9xpqvtmIGsXLq0OtK+Ta6b37iugQQLMo1+p1DC/oIYCLpqZ9d1vgvGGlMHakGkQsDJwsdl+/Z9Uho9KYTjg6WpJDYY7WeqxpL5xt08=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22,REQID:da5eeec6-4e43-41bc-ae4c-efc4bc0057cc,IP:0,U
+	RL:0,TC:0,Content:100,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:100
+X-CID-META: VersionHash:120426c,CLOUDID:fd99db83-cd9c-45f5-8134-710979e3df0e,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:801|102,TC:nil,Content:3,EDM:-3,IP:n
+	il,URL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: 92be5cccd97611ed8687db9d93187ff1-20230412
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <sean.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 495127861; Wed, 12 Apr 2023 14:11:20 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Thu, 13 Apr 2023 05:11:18 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Thu, 13 Apr 2023 05:11:18 +0800
+From: <sean.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+	<Leon.Yen@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
+	<Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, <jenhao.yang@mediatek.com>,
+	<robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
+	<ted.huang@mediatek.com>, <Stella.Chang@mediatek.com>,
+	<Tom.Chou@mediatek.com>, <steve.lee@mediatek.com>, <jsiuda@google.com>,
+	<arowa@google.org>, <frankgor@google.com>, <kuabhs@google.com>,
+	<druth@google.com>, <abhishekpandit@google.com>, <shawnku@google.com>,
+	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Quan
+ Zhou <quan.zhou@mediatek.com>, Deren Wu <deren.wu@mediatek.com>, Wang Zhao
+	<wang.zhao@mediatek.com>
+Subject: [PATCH v2 2/2] wifi: mt76: mt7921e: stop chip reset worker in unregister hook
+Date: Thu, 13 Apr 2023 05:11:14 +0800
+Message-ID: <ba421df2ada4ebad13ac7a712c1d9c3e977b59c8.1681333416.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <bd53c5cf67a5a1cac3e94713704a5dc4e17431c9.1681333416.git.objelf@gmail.com>
+References: <bd53c5cf67a5a1cac3e94713704a5dc4e17431c9.1681333416.git.objelf@gmail.com>
 MIME-Version: 1.0
-From: Rob Herring <robh@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: daniel@ffwll.ch, xinlei.lee@mediatek.com, dri-devel@lists.freedesktop.org, jitao.shi@mediatek.com, thierry.reding@gmail.com, phone-devel@vger.kernel.org, matthias.bgg@gmail.com, kernel@collabora.com, jassisinghbrar@gmail.com, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, linux-mediatek@lists.infradead.org, u.kleine-koenig@pengutronix.de, linux-phy@lists.infradead.org, p.zabel@pengutronix.de, airlied@gmail.com, linux-arm-kernel@lists.infradead.org, houlong.wei@mediatek.com, chunkuang.hu@kernel.org, chunfeng.yun@mediatek.com, ck.hu@mediatek.com, linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org, kishon@kernel.org, vkoul@kernel.org, ~postmarketos/upstreaming@lists.sr.ht, devicetree@vger.kernel.org
-In-Reply-To: <20230412112739.160376-14-angelogioacchino.delregno@collabora.com>
-References: <20230412112739.160376-1-angelogioacchino.delregno@collabora.com>
- <20230412112739.160376-14-angelogioacchino.delregno@collabora.com>
-Message-Id: <168133319867.3191434.734350328370744826.robh@kernel.org>
-Subject: Re: [PATCH 13/27] dt-bindings: display: mediatek: ufoe: Add
- compatible for MediaTek MT6795
-Date: Wed, 12 Apr 2023 16:03:44 -0500
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230412_140358_909993_F5D4875D 
-X-CRM114-Status: GOOD (  10.30  )
+X-CRM114-CacheID: sfid-20230412_141130_654667_E8142D04 
+X-CRM114-Status: GOOD (  14.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,31 +91,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Quan Zhou <quan.zhou@mediatek.com>
 
-On Wed, 12 Apr 2023 13:27:25 +0200, AngeloGioacchino Del Regno wrote:
-> Add a compatible string for MediaTek Helio X10 MT6795's UFOE block: this
-> is the same as MT8173.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  .../devicetree/bindings/display/mediatek/mediatek,ufoe.yaml    | 3 +++
->  1 file changed, 3 insertions(+)
-> 
+If the chip reset worker is triggered during the remove process, the chip
+DMA may not be properly pushed back to the idle state. This can lead to
+corruption of the DMA flow due to the chip reset. Therefore, it is
+necessary to stop the chip reset before the DMA is finalized.
 
-Running 'make dtbs_check' with the schema in this patch gives the
-following warnings. Consider if they are expected or the schema is
-incorrect. These may not be new warnings.
+To avoid resetting the chip after the reset worker is cancelled, use
+__mt7921_mcu_drv_pmctrl() instead of mt7921_mcu_drv_pmctrl(). It is safe to
+ignore the pm mutex because the pm worker and wake worker have already been
+cancelled.
 
-Note that it is not yet a requirement to have 0 warnings for dtbs_check.
-This will change in the future.
+Fixes: 033ae79b3830 ("mt76: mt7921: refactor init.c to be bus independent")
+Co-developed-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Co-developed-by: Deren Wu <deren.wu@mediatek.com>
+Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+Co-developed-by: Wang Zhao <wang.zhao@mediatek.com>
+Signed-off-by: Wang Zhao <wang.zhao@mediatek.com>
+Signed-off-by: Quan Zhou <quan.zhou@mediatek.com>
+---
+v2: update the commit message to ensure that it is consistent between the
+    patch content and the documentation. This will help to accurately
+    reflect the changes made and make it easier for other developers to
+    understand the purpose of the update.
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-Full log is available here: https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20230412112739.160376-14-angelogioacchino.delregno@collabora.com
-
-
-ufoe@1401a000: 'mediatek,gce-client-reg' does not match any of the regexes: 'pinctrl-[0-9]+'
-	arch/arm64/boot/dts/mediatek/mt8173-elm.dtb
-	arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtb
-	arch/arm64/boot/dts/mediatek/mt8173-elm-hana-rev7.dtb
-	arch/arm64/boot/dts/mediatek/mt8173-evb.dtb
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+index 1a8a54a46dcc..c592903157d0 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+@@ -115,9 +115,10 @@ static void mt7921e_unregister_device(struct mt7921_dev *dev)
+ 		napi_disable(&dev->mt76.napi[i]);
+ 	cancel_delayed_work_sync(&pm->ps_work);
+ 	cancel_work_sync(&pm->wake_work);
++	cancel_work_sync(&dev->reset_work);
+ 
+ 	mt7921_tx_token_put(dev);
+-	mt7921_mcu_drv_pmctrl(dev);
++	__mt7921_mcu_drv_pmctrl(dev);
+ 	mt7921_dma_cleanup(dev);
+ 	mt7921_wfsys_reset(dev);
+ 	skb_queue_purge(&dev->mt76.mcu.res_q);
+-- 
+2.25.1
 
 
