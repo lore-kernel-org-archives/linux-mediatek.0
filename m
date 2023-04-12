@@ -4,94 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8AB2C77B6E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 15:11:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AAA8C77B72
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 15:29:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HzEN9DPAQbfT9SmW2PXpsCMsLE8IPuhf+M6dEj567A4=; b=HNUyB8ir7+Mkm3tOqUDZPN55OM
-	1u29fzA4y6yPNFOrD3iCFlmCkrwZjkbal+WNV6SC3THAYBQUTLFVyySqzldPYnbaRQbC4FLIgyBvW
-	ySmWr4MQCZJ3o2ihWZTvsPwME0YAKIx2FQ7NXAreCwY1R6OjuxGAY1euz3cIWOwziRnYCUIOjEmsC
-	qjANkfz3jHfO9o3AX11zAa/ZuzO2wqNJYH+6xFT1DzH8v9yxyCh1dO9xVp7MI5CtR+QCDhK7kzyjW
-	j+uWBySbOF+KNzr7nzMV2eLRYVOx0BoMlb4OGih6weMZvas+294joWqs3/KRZkowhy2lOJGvTCUce
-	ov1xSWLg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=50O75KA8u/5k4lv9dNR7Wc4tJ/zHDY3B45koMlzvUN0=; b=CIcwJqEN0LoF9avbETmiI6WNpD
+	+/Xhb2FHJ+BAJbTg1laZAy+Fr4MLwpd1nTt7fSUtYASETZc6sUuon/q6WXOn7BWGZWTi/99ehphdG
+	cx55RQcgmKf4pFQ0AGHnRxEDqyN+53w+hEvQ65o5Op1MHC+W2A2LzPDtyseo7q2Eg67CBTTR/Y86h
+	YRaVDby4JLnIaVW20N3H2Op72IuOWF2xv/DgaelEsUMKPVPjd8tUGbzbnUgQteaQ982sfBnXFkqPz
+	kd9IkF0CVBiObYBrMlJle/x5lqJOrLvs2DeEDcU2PkeXsNN9vmSguG02Or4Co7cBrgkdj9h/6Uk3X
+	52TwQiYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmc8C-003aRR-2i;
-	Wed, 12 Apr 2023 15:11:32 +0000
-Received: from mout.gmx.net ([212.227.17.21])
+	id 1pmcPX-003dUA-1u;
+	Wed, 12 Apr 2023 15:29:27 +0000
+Received: from e10edge.fintech.ru ([195.54.195.159] helo=exchange.fintech.ru)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmc87-003aQC-2l;
-	Wed, 12 Apr 2023 15:11:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1681312277; i=frank-w@public-files.de;
-	bh=rqVjKHBgGD009ldYSsk+/seWGZgvzvn/D8ANy1/A438=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=Y+S4FnaZtL5I/U0A/wed+gda0MO9rdx9o2ORKO2z4f31ifZEG5gUcHA6Yc16gizND
-	 EPM3j/pfkq/KmeniIiBSNA4/hxrS1eBnJwi18Ex7B9pLJx2+d/q1OYErTS8M2hhAwl
-	 4LRfsaylk8iYIXd9iqn9gi/oK0iw26b53qIK1rL0mpUBAzVdH3EtFknKzp5+C+LX0n
-	 QAsca7OzMvxDzDBQ7E4wqd8hv7jiDiHyZ08JqLla9gBnU8L+3aD7ZKOg94TiB57CSg
-	 8GIPSDkZWatwBM3jraW8x8lFtJnuY2nNMJEQgQwaioTwuxpUOvgbgcuQluCjKWQ/rB
-	 D4DhCdKiO47Aw==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [217.61.157.203] ([217.61.157.203]) by web-mail.gmx.net
- (3c-app-gmx-bap50.server.lan [172.19.172.120]) (via HTTP); Wed, 12 Apr 2023
- 17:11:17 +0200
+	id 1pmcPS-003dSJ-33;
+	Wed, 12 Apr 2023 15:29:25 +0000
+Received: from Ex16-01.fintech.ru (10.0.10.18) by exchange.fintech.ru
+ (195.54.195.159) with Microsoft SMTP Server (TLS) id 14.3.498.0; Wed, 12 Apr
+ 2023 18:29:14 +0300
+Received: from localhost (10.0.253.138) by Ex16-01.fintech.ru (10.0.10.18)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.4; Wed, 12 Apr
+ 2023 18:29:14 +0300
+From: Nikita Zhandarovich <n.zhandarovich@fintech.ru>
+To: David Airlie <airlied@gmail.com>
+CC: Nikita Zhandarovich <n.zhandarovich@fintech.ru>, Daniel Vetter
+	<daniel@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+	Jani Nikula <jani.nikula@linux.intel.com>, Joonas Lahtinen
+	<joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+	Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Helge Deller <deller@gmx.de>,
+	<dri-devel@lists.freedesktop.org>, <linux-kernel@vger.kernel.org>,
+	<intel-gfx@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <amd-gfx@lists.freedesktop.org>,
+	<linux-tegra@vger.kernel.org>, <linux-fbdev@vger.kernel.org>,
+	<lvc-project@linuxtesting.org>
+Subject: [PATCH] video/hdmi: minor fixes for *_infoframe_init functions
+Date: Wed, 12 Apr 2023 08:29:10 -0700
+Message-ID: <20230412152910.9486-1-n.zhandarovich@fintech.ru>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Message-ID: <trinity-489cdc3b-e861-49d0-b1ec-e964f00388df-1681312277092@3c-app-gmx-bap50>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: =?UTF-8?Q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, erkin.bozoglu@xeront.com
-Subject: Aw: Re:  Re: Re: Re: [PATCH v3 0/5] arm: dts: mt7623: relocate
- gmacs, mt7530 switch, and add port@5
-Content-Type: text/plain; charset=UTF-8
-Date: Wed, 12 Apr 2023 17:11:17 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <703ad8a8-f84e-6404-4cce-5386bfaa2bd7@arinc9.com>
-References: <20230210182505.24597-1-arinc.unal@arinc9.com>
- <c3ab9a9b-3eb2-8fb0-d5d7-c0b7c684d3a7@arinc9.com>
- <trinity-dab715b9-3953-40da-bc25-c4c2a5e9b7c3-1676715866453@3c-app-gmx-bap53>
- <27a26da8-8297-5327-7493-54d8359b6970@arinc9.com>
- <trinity-dd260791-3637-4193-8f93-a9fcdb013dcb-1676722705920@3c-app-gmx-bap53>
- <2dc2fc39-b0d5-c872-36bf-fde851debe4b@arinc9.com>
- <A329B2DF-04B7-40FA-BBCE-1F1012A6DBBD@public-files.de>
- <fb96d8eb-2eb7-db19-1135-1a833294dd67@arinc9.com>
- <trinity-899c01a6-0fc5-4900-aea8-2b43802c8329-1676814734826@3c-app-gmx-bs35>
- <trinity-3f46d325-bc45-4ee7-ae86-c8db4467aa94-1681303779505@3c-app-gmx-bap50>
- <703ad8a8-f84e-6404-4cce-5386bfaa2bd7@arinc9.com>
-Content-Transfer-Encoding: quoted-printable
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:u6GFzg6pOcWqX8zGUBq6aqA1eVvOXgiODPGrvbT/KrzCmOVPknlh/A1ThikyZLO+nEXzO
- LaKlbvyfTjPFoOcun91BJQ7KtZIwSov5xChMOzlfkyYuUcpRg2XLlXqOa7Tc6nMqwLBOBI5wwBq/
- dm2ApV+g+ZIEX1oKC1/HpgOQ0iNigAqP40UgaSqtC+2OoPpTYwftZnC84NvGOVO5mv6fHTkk4OFC
- T7zPc01fIT8NQfzUuwDBrtxbY02atQqQUCw1y2xno2A220eXOHSEqCFapF88Qem6GXkSj+FvogqL
- Yc=
-UI-OutboundReport: notjunk:1;M01:P0:wiky/k8vdBM=;uI1fbKp2Pxc7LqTwFPA3iJFNsjz
- DolfLJ2/jUi/tB8mZr0h3tTYUKFPvfKOFpbtiQoiS3Ef6y2haaNBZSov0UP9eKeir624vWyiL
- TkGE74CTdikZdtOfea63+M1F3eukE0rAZLRVfFCHQybA5Vdq6Mj46mIDm5ffVMKQzz7lVs8ba
- FDRYDEs3pzKtOjA+Bq6C0youwytVBoz4M4IBfudtYmjciEQDuv75sanrXGsGBAGLEcRrxAIdA
- iDItV4jHcEH299EGyWYmupw4sodnP584AA7jEwn75v1ODPNBLcF9u2y9HSer9XwNan1fxpyvs
- OCRJlaTXflKqukGB/6so+XZ+mT7kBm5OFL40jXvqRjZo7kUXTnVRCL0aHIYsmI5Y5FymICUaR
- 2G9CU5XSmNurqi42j9SQZImwUsg3BcJpIw83HF3jCLimVrf+Apna2Lpkchn6vE0obV7vwcwlW
- S6pErjcS7MnU8LzRG6l/oOp83oJiBxkAnSwjlpMRK7f4qgz25UkXaUI/2Kc5u+whGU1sfAz9X
- 9D/3MVH0sE2ZE33YOlyMJjdJlXsElsifmJxDyj4W3sYCUpJOvm9SeNaVBAIlievlY8CiUCWGu
- ETd197n8VpciRA1TKgiAhsYk4RYoDR5Zx/MU4h2CRjI/uq0eK1UvjNnWJAOw4cD+C920saVyr
- WVN/SD9tTmx7N09UKtxZljw6SxiYAeaVqKZn+Ogjuf/oBVidlxjaWc8SKuptWW1IN83C0z62F
- VfFoOQzX5nS3Oju1z60jiCH1uLFOjdyqOt0UxMAGugxkSgiuzm1HA5onxNHHvzO+BIO/0ih8R
- y8lpHgIoHL47GdDcw4WLz6lA==
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.0.253.138]
+X-ClientProxiedBy: Ex16-02.fintech.ru (10.0.10.19) To Ex16-01.fintech.ru
+ (10.0.10.18)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230412_081128_184650_C85EEC54 
-X-CRM114-Status: GOOD (  10.13  )
+X-CRM114-CacheID: sfid-20230412_082923_180904_C4013593 
+X-CRM114-Status: GOOD (  17.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,224 +76,416 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
+Multiple hdmi_*_infoframe_init() functions that initialize different
+types of hdmi infoframes only return default 0 value (contrary to their
+descriptions). Yet these functions are still checked against possible
+errors in case of failure.
 
-> Gesendet: Mittwoch, 12=2E April 2023 um 16:31 Uhr
-> Von: "Ar=C4=B1n=C3=A7 =C3=9CNAL" <arinc=2Eunal@arinc9=2Ecom>
-> > looks good so far, but i have not managed how to change dsa master fro=
-m the preferred port (eth0) to the second one=2E=2E=2E
-> > any idea how the correct syntax is for iproute2?
->=20
-> https://www=2Ekernel=2Eorg/doc/html/latest/networking/dsa/configuration=
-=2Ehtml#affinity-of-user-ports-to-cpu-ports
->=20
-> In short: ip link set lan0 type dsa conduit eth1
+This patch removes redundant checks for errors in calls to following
+functions:
+- hdmi_spd_infoframe_init
+- hdmi_audio_infoframe_init
+- hdmi_vendor_infoframe_init
+- hdmi_drm_infoframe_init
 
-thanks, it changes the master when i upgrade iproute to 6=2E1 (from debian=
- bullseye-backports), but i cannot do any traffic on it after switching to =
-gmac1=2E=2E=2E
+Also, change their return types to void and fix descriptions.
 
-5: wan@eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue stat=
-e UP group default qlen 1000
-    link/ether f2:d2:51:56:cd:3d brd ff:ff:ff:ff:ff:ff
-    inet 192=2E168=2E0=2E11/24 scope global wan
-       valid_lft forever preferred_lft forever
+Fixes: 2c676f378edb ("[media] hdmi: added unpack and logging functions for InfoFrames")
+Signed-off-by: Nikita Zhandarovich <n.zhandarovich@fintech.ru>
+---
+ drivers/gpu/drm/display/drm_hdmi_helper.c |  5 +---
+ drivers/gpu/drm/drm_edid.c                |  5 +---
+ drivers/gpu/drm/i915/display/intel_hdmi.c |  4 +--
+ drivers/gpu/drm/mediatek/mtk_hdmi.c       | 14 ++--------
+ drivers/gpu/drm/radeon/r600_hdmi.c        |  6 +----
+ drivers/gpu/drm/sti/sti_hdmi.c            |  6 +----
+ drivers/gpu/drm/tegra/hdmi.c              |  7 +----
+ drivers/gpu/drm/tegra/sor.c               |  6 +----
+ drivers/gpu/drm/vc4/vc4_hdmi.c            |  7 +----
+ drivers/video/hdmi.c                      | 44 ++++++-------------------------
+ include/linux/hdmi.h                      |  8 +++---
+ 11 files changed, 23 insertions(+), 89 deletions(-)
 
-see no p5-TX/gmac-rx
-
-root@bpi-r2:~# ethtool -S eth1                                            =
-                                                                           =
-                         =20
-NIC statistics:                                                           =
-                                                                           =
-                         =20
-     tx_bytes: 5156                                                       =
-                                                                           =
-                         =20
-     tx_packets: 61                                                       =
-                                                                           =
-                         =20
-     tx_skip: 0                                                           =
-                                                                           =
-                         =20
-     tx_collisions: 0                                                     =
-                                                                           =
-                         =20
-     rx_bytes: 0                                                          =
-                                                                           =
-                         =20
-     rx_packets: 0                                                        =
-                                                                           =
-                         =20
-     rx_overflow: 0                                                       =
-                                                                           =
-                         =20
-     rx_fcs_errors: 0                                                     =
-                                                                           =
-                         =20
-     rx_short_errors: 0                                                   =
-                                                                           =
-                         =20
-     rx_long_errors: 0                                                    =
-                                                                           =
-                         =20
-     rx_checksum_errors: 0                                                =
-                                                                           =
-                         =20
-     rx_flow_control_packets: 0                                           =
-                                                                           =
-                         =20
-     rx_xdp_redirect: 0                                                   =
-                                                                           =
-                         =20
-     rx_xdp_pass: 0                                                       =
-                                                                           =
-                         =20
-     rx_xdp_drop: 0                                                       =
-                                                                           =
-                         =20
-     rx_xdp_tx: 0                                                         =
-                                                                           =
-                         =20
-     rx_xdp_tx_errors: 0                                                  =
-                                                                           =
-                         =20
-     tx_xdp_xmit: 0                                                       =
-                                                                           =
-                         =20
-     tx_xdp_xmit_errors: 0                                                =
-                                                                           =
-                         =20
-     p05_TxDrop: 0                                                        =
-                                                                           =
-                         =20
-     p05_TxCrcErr: 0                                                      =
-                                                                           =
-                         =20
-     p05_TxUnicast: 0                                                     =
-                                                                           =
-                         =20
-     p05_TxMulticast: 0                                                   =
-                                                                           =
-                         =20
-     p05_TxBroadcast: 0                                                   =
-                                                                           =
-                         =20
-     p05_TxCollision: 0                                                   =
-                                                                           =
-                         =20
-     p05_TxSingleCollision: 0                                             =
-                                                                           =
-                         =20
-     p05_TxMultipleCollision: 0                                           =
-                                                                           =
-                         =20
-     p05_TxDeferred: 0                                                    =
-                                                                           =
-                         =20
-     p05_TxLateCollision: 0                                               =
-                                                                           =
-                         =20
-     p05_TxExcessiveCollistion: 0                                         =
-                                                                           =
-                         =20
-     p05_TxPause: 0                                                       =
-                                                                           =
-                         =20
-     p05_TxPktSz64: 0                                                     =
-                                                                           =
-                         =20
-     p05_TxPktSz65To127: 0                                                =
-                                                                           =
-                         =20
-     p05_TxPktSz128To255: 0                                               =
-                                                                           =
-                         =20
-     p05_TxPktSz256To511: 0                                               =
-                                                                           =
-                         =20
-     p05_TxPktSz512To1023: 0                                              =
-                                                                           =
-                         =20
-     p05_Tx1024ToMax: 0                                                   =
-                                                                           =
-                         =20
-     p05_TxBytes: 0                                                       =
-                                                                           =
-                         =20
-     p05_RxDrop: 0                                                        =
-                                                                           =
-                         =20
-     p05_RxFiltering: 16                                                  =
-                                                                           =
-                         =20
-     p05_RxUnicast: 11                                                    =
-                                                                           =
-                         =20
-     p05_RxMulticast: 38                                                  =
-                                                                           =
-                         =20
-     p05_RxBroadcast: 12                                                  =
-                                                                           =
-                         =20
-     p05_RxAlignErr: 0                                                    =
-                                                                           =
-                         =20
-     p05_RxCrcErr: 0                                                      =
-                                                                           =
-                         =20
-     p05_RxUnderSizeErr: 0                                                =
-                                                                           =
-                         =20
-     p05_RxFragErr: 0                                                     =
-                                                                           =
-                         =20
-     p05_RxOverSzErr: 0                                                   =
-                                                                           =
-                         =20
-     p05_RxJabberErr: 0                                                   =
-                                                                           =
-                         =20
-     p05_RxPause: 0                                                       =
-                                                                           =
-                         =20
-     p05_RxPktSz64: 17                                                    =
-                                                                           =
-                         =20
-     p05_RxPktSz65To127: 44                                               =
-                                                                           =
-                         =20
-     p05_RxPktSz128To255: 0                                               =
-                                                                           =
-                         =20
-     p05_RxPktSz256To511: 0                                               =
-                                                                           =
-                         =20
-     p05_RxPktSz512To1023: 0                                              =
-                                                                           =
-                         =20
-     p05_RxPktSz1024ToMax: 0                                              =
-                                                                           =
-                         =20
-     p05_RxBytes: 5156                                                    =
-                                                                           =
-                         =20
-     p05_RxCtrlDrop: 0                                                    =
-                                                                           =
-                         =20
-     p05_RxIngressDrop: 0                                                 =
-                                                                           =
-                         =20
-     p05_RxArlDrop: 0
-
-maybe i miss something?
-
-i'm not sure it is a problem with richards Patch or p5/gmac1
-
-> > at least vladimirs patch should be included when applying this series
->=20
-> I'm currently cleaning up the DSA driver, I'll get to this at some point=
-=2E
-
-regards Frank
+diff --git a/drivers/gpu/drm/display/drm_hdmi_helper.c b/drivers/gpu/drm/display/drm_hdmi_helper.c
+index faf5e9efa7d3..ce7038a3a183 100644
+--- a/drivers/gpu/drm/display/drm_hdmi_helper.c
++++ b/drivers/gpu/drm/display/drm_hdmi_helper.c
+@@ -27,7 +27,6 @@ int drm_hdmi_infoframe_set_hdr_metadata(struct hdmi_drm_infoframe *frame,
+ {
+ 	struct drm_connector *connector;
+ 	struct hdr_output_metadata *hdr_metadata;
+-	int err;
+ 
+ 	if (!frame || !conn_state)
+ 		return -EINVAL;
+@@ -47,9 +46,7 @@ int drm_hdmi_infoframe_set_hdr_metadata(struct hdmi_drm_infoframe *frame,
+ 	    connector->hdr_sink_metadata.hdmi_type1.eotf))
+ 		DRM_DEBUG_KMS("Unknown EOTF %d\n", hdr_metadata->hdmi_metadata_type1.eotf);
+ 
+-	err = hdmi_drm_infoframe_init(frame);
+-	if (err < 0)
+-		return err;
++	hdmi_drm_infoframe_init(frame);
+ 
+ 	frame->eotf = hdr_metadata->hdmi_metadata_type1.eotf;
+ 	frame->metadata_type = hdr_metadata->hdmi_metadata_type1.metadata_type;
+diff --git a/drivers/gpu/drm/drm_edid.c b/drivers/gpu/drm/drm_edid.c
+index 261a62e15934..c268148502d6 100644
+--- a/drivers/gpu/drm/drm_edid.c
++++ b/drivers/gpu/drm/drm_edid.c
+@@ -7159,7 +7159,6 @@ drm_hdmi_vendor_infoframe_from_display_mode(struct hdmi_vendor_infoframe *frame,
+ 	 */
+ 	bool has_hdmi_infoframe = connector ?
+ 		connector->display_info.has_hdmi_infoframe : false;
+-	int err;
+ 
+ 	if (!frame || !mode)
+ 		return -EINVAL;
+@@ -7167,9 +7166,7 @@ drm_hdmi_vendor_infoframe_from_display_mode(struct hdmi_vendor_infoframe *frame,
+ 	if (!has_hdmi_infoframe)
+ 		return -EINVAL;
+ 
+-	err = hdmi_vendor_infoframe_init(frame);
+-	if (err < 0)
+-		return err;
++	hdmi_vendor_infoframe_init(frame);
+ 
+ 	/*
+ 	 * Even if it's not absolutely necessary to send the infoframe
+diff --git a/drivers/gpu/drm/i915/display/intel_hdmi.c b/drivers/gpu/drm/i915/display/intel_hdmi.c
+index c0ce6d3dc505..2190dcf68f7f 100644
+--- a/drivers/gpu/drm/i915/display/intel_hdmi.c
++++ b/drivers/gpu/drm/i915/display/intel_hdmi.c
+@@ -778,9 +778,9 @@ intel_hdmi_compute_spd_infoframe(struct intel_encoder *encoder,
+ 		intel_hdmi_infoframe_enable(HDMI_INFOFRAME_TYPE_SPD);
+ 
+ 	if (IS_DGFX(i915))
+-		ret = hdmi_spd_infoframe_init(frame, "Intel", "Discrete gfx");
++		hdmi_spd_infoframe_init(frame, "Intel", "Discrete gfx");
+ 	else
+-		ret = hdmi_spd_infoframe_init(frame, "Intel", "Integrated gfx");
++		hdmi_spd_infoframe_init(frame, "Intel", "Integrated gfx");
+ 
+ 	if (drm_WARN_ON(encoder->base.dev, ret))
+ 		return false;
+diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+index 0a8e0a13f516..75899e4a011f 100644
+--- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
++++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+@@ -995,12 +995,7 @@ static int mtk_hdmi_setup_spd_infoframe(struct mtk_hdmi *hdmi,
+ 	u8 buffer[HDMI_INFOFRAME_HEADER_SIZE + HDMI_SPD_INFOFRAME_SIZE];
+ 	ssize_t err;
+ 
+-	err = hdmi_spd_infoframe_init(&frame, vendor, product);
+-	if (err < 0) {
+-		dev_err(hdmi->dev, "Failed to initialize SPD infoframe: %zd\n",
+-			err);
+-		return err;
+-	}
++	hdmi_spd_infoframe_init(&frame, vendor, product);
+ 
+ 	err = hdmi_spd_infoframe_pack(&frame, buffer, sizeof(buffer));
+ 	if (err < 0) {
+@@ -1018,12 +1013,7 @@ static int mtk_hdmi_setup_audio_infoframe(struct mtk_hdmi *hdmi)
+ 	u8 buffer[HDMI_INFOFRAME_HEADER_SIZE + HDMI_AUDIO_INFOFRAME_SIZE];
+ 	ssize_t err;
+ 
+-	err = hdmi_audio_infoframe_init(&frame);
+-	if (err < 0) {
+-		dev_err(hdmi->dev, "Failed to setup audio infoframe: %zd\n",
+-			err);
+-		return err;
+-	}
++	hdmi_audio_infoframe_init(&frame);
+ 
+ 	frame.coding_type = HDMI_AUDIO_CODING_TYPE_STREAM;
+ 	frame.sample_frequency = HDMI_AUDIO_SAMPLE_FREQUENCY_STREAM;
+diff --git a/drivers/gpu/drm/radeon/r600_hdmi.c b/drivers/gpu/drm/radeon/r600_hdmi.c
+index f3551ebaa2f0..b690254562e8 100644
+--- a/drivers/gpu/drm/radeon/r600_hdmi.c
++++ b/drivers/gpu/drm/radeon/r600_hdmi.c
+@@ -432,11 +432,7 @@ void r600_hdmi_update_audio_settings(struct drm_encoder *encoder)
+ 	DRM_DEBUG("0x%02X IEC60958 status bits and 0x%02X category code\n",
+ 		  (int)audio.status_bits, (int)audio.category_code);
+ 
+-	err = hdmi_audio_infoframe_init(&frame);
+-	if (err < 0) {
+-		DRM_ERROR("failed to setup audio infoframe\n");
+-		return;
+-	}
++	hdmi_audio_infoframe_init(&frame);
+ 
+ 	frame.channels = audio.channels;
+ 
+diff --git a/drivers/gpu/drm/sti/sti_hdmi.c b/drivers/gpu/drm/sti/sti_hdmi.c
+index 8539fe1fedc4..1f92db1fb960 100644
+--- a/drivers/gpu/drm/sti/sti_hdmi.c
++++ b/drivers/gpu/drm/sti/sti_hdmi.c
+@@ -1321,11 +1321,7 @@ static int sti_hdmi_bind(struct device *dev, struct device *master, void *data)
+ 	}
+ 
+ 	/* Initialize audio infoframe */
+-	err = hdmi_audio_infoframe_init(&hdmi->audio.cea);
+-	if (err) {
+-		DRM_ERROR("Failed to init audio infoframe\n");
+-		goto err_sysfs;
+-	}
++	hdmi_audio_infoframe_init(&hdmi->audio.cea);
+ 
+ 	cec_fill_conn_info_from_drm(&conn_info, drm_connector);
+ 	hdmi->notifier = cec_notifier_conn_register(&hdmi->dev, NULL,
+diff --git a/drivers/gpu/drm/tegra/hdmi.c b/drivers/gpu/drm/tegra/hdmi.c
+index 40ec3e6cf204..fe8fcd1b056b 100644
+--- a/drivers/gpu/drm/tegra/hdmi.c
++++ b/drivers/gpu/drm/tegra/hdmi.c
+@@ -747,12 +747,7 @@ static void tegra_hdmi_setup_audio_infoframe(struct tegra_hdmi *hdmi)
+ 	u8 buffer[14];
+ 	ssize_t err;
+ 
+-	err = hdmi_audio_infoframe_init(&frame);
+-	if (err < 0) {
+-		dev_err(hdmi->dev, "failed to setup audio infoframe: %zd\n",
+-			err);
+-		return;
+-	}
++	hdmi_audio_infoframe_init(&frame);
+ 
+ 	frame.channels = hdmi->format.channels;
+ 
+diff --git a/drivers/gpu/drm/tegra/sor.c b/drivers/gpu/drm/tegra/sor.c
+index 8af632740673..d8cd93d5af10 100644
+--- a/drivers/gpu/drm/tegra/sor.c
++++ b/drivers/gpu/drm/tegra/sor.c
+@@ -2021,11 +2021,7 @@ static int tegra_sor_hdmi_enable_audio_infoframe(struct tegra_sor *sor)
+ 	u32 value;
+ 	int err;
+ 
+-	err = hdmi_audio_infoframe_init(&frame);
+-	if (err < 0) {
+-		dev_err(sor->dev, "failed to setup audio infoframe: %d\n", err);
+-		return err;
+-	}
++	hdmi_audio_infoframe_init(&frame);
+ 
+ 	frame.channels = sor->format.channels;
+ 
+diff --git a/drivers/gpu/drm/vc4/vc4_hdmi.c b/drivers/gpu/drm/vc4/vc4_hdmi.c
+index ea22c9bf223a..d7de86b41901 100644
+--- a/drivers/gpu/drm/vc4/vc4_hdmi.c
++++ b/drivers/gpu/drm/vc4/vc4_hdmi.c
+@@ -816,13 +816,8 @@ static void vc4_hdmi_set_avi_infoframe(struct drm_encoder *encoder)
+ static void vc4_hdmi_set_spd_infoframe(struct drm_encoder *encoder)
+ {
+ 	union hdmi_infoframe frame;
+-	int ret;
+ 
+-	ret = hdmi_spd_infoframe_init(&frame.spd, "Broadcom", "Videocore");
+-	if (ret < 0) {
+-		DRM_ERROR("couldn't fill SPD infoframe\n");
+-		return;
+-	}
++	hdmi_spd_infoframe_init(&frame.spd, "Broadcom", "Videocore");
+ 
+ 	frame.spd.sdi = HDMI_SPD_SDI_PC;
+ 
+diff --git a/drivers/video/hdmi.c b/drivers/video/hdmi.c
+index 03c7f27dde49..a4a1359415a0 100644
+--- a/drivers/video/hdmi.c
++++ b/drivers/video/hdmi.c
+@@ -216,10 +216,8 @@ EXPORT_SYMBOL(hdmi_avi_infoframe_pack);
+  * @frame: HDMI SPD infoframe
+  * @vendor: vendor string
+  * @product: product string
+- *
+- * Returns 0 on success or a negative error code on failure.
+  */
+-int hdmi_spd_infoframe_init(struct hdmi_spd_infoframe *frame,
++void hdmi_spd_infoframe_init(struct hdmi_spd_infoframe *frame,
+ 			    const char *vendor, const char *product)
+ {
+ 	size_t len;
+@@ -234,8 +232,6 @@ int hdmi_spd_infoframe_init(struct hdmi_spd_infoframe *frame,
+ 	memcpy(frame->vendor, vendor, min(len, sizeof(frame->vendor)));
+ 	len = strlen(product);
+ 	memcpy(frame->product, product, min(len, sizeof(frame->product)));
+-
+-	return 0;
+ }
+ EXPORT_SYMBOL(hdmi_spd_infoframe_init);
+ 
+@@ -348,18 +344,14 @@ EXPORT_SYMBOL(hdmi_spd_infoframe_pack);
+ /**
+  * hdmi_audio_infoframe_init() - initialize an HDMI audio infoframe
+  * @frame: HDMI audio infoframe
+- *
+- * Returns 0 on success or a negative error code on failure.
+  */
+-int hdmi_audio_infoframe_init(struct hdmi_audio_infoframe *frame)
++void hdmi_audio_infoframe_init(struct hdmi_audio_infoframe *frame)
+ {
+ 	memset(frame, 0, sizeof(*frame));
+ 
+ 	frame->type = HDMI_INFOFRAME_TYPE_AUDIO;
+ 	frame->version = 1;
+ 	frame->length = HDMI_AUDIO_INFOFRAME_SIZE;
+-
+-	return 0;
+ }
+ EXPORT_SYMBOL(hdmi_audio_infoframe_init);
+ 
+@@ -526,10 +518,8 @@ EXPORT_SYMBOL(hdmi_audio_infoframe_pack_for_dp);
+ /**
+  * hdmi_vendor_infoframe_init() - initialize an HDMI vendor infoframe
+  * @frame: HDMI vendor infoframe
+- *
+- * Returns 0 on success or a negative error code on failure.
+  */
+-int hdmi_vendor_infoframe_init(struct hdmi_vendor_infoframe *frame)
++void hdmi_vendor_infoframe_init(struct hdmi_vendor_infoframe *frame)
+ {
+ 	memset(frame, 0, sizeof(*frame));
+ 
+@@ -544,8 +534,6 @@ int hdmi_vendor_infoframe_init(struct hdmi_vendor_infoframe *frame)
+ 	 */
+ 	frame->s3d_struct = HDMI_3D_STRUCTURE_INVALID;
+ 	frame->length = HDMI_VENDOR_INFOFRAME_SIZE;
+-
+-	return 0;
+ }
+ EXPORT_SYMBOL(hdmi_vendor_infoframe_init);
+ 
+@@ -698,18 +686,14 @@ hdmi_vendor_any_infoframe_check_only(const union hdmi_vendor_any_infoframe *fram
+  * hdmi_drm_infoframe_init() - initialize an HDMI Dynaminc Range and
+  * mastering infoframe
+  * @frame: HDMI DRM infoframe
+- *
+- * Returns 0 on success or a negative error code on failure.
+  */
+-int hdmi_drm_infoframe_init(struct hdmi_drm_infoframe *frame)
++void hdmi_drm_infoframe_init(struct hdmi_drm_infoframe *frame)
+ {
+ 	memset(frame, 0, sizeof(*frame));
+ 
+ 	frame->type = HDMI_INFOFRAME_TYPE_DRM;
+ 	frame->version = 1;
+ 	frame->length = HDMI_DRM_INFOFRAME_SIZE;
+-
+-	return 0;
+ }
+ EXPORT_SYMBOL(hdmi_drm_infoframe_init);
+ 
+@@ -1661,7 +1645,6 @@ static int hdmi_spd_infoframe_unpack(struct hdmi_spd_infoframe *frame,
+ 				     const void *buffer, size_t size)
+ {
+ 	const u8 *ptr = buffer;
+-	int ret;
+ 
+ 	if (size < HDMI_INFOFRAME_SIZE(SPD))
+ 		return -EINVAL;
+@@ -1677,9 +1660,7 @@ static int hdmi_spd_infoframe_unpack(struct hdmi_spd_infoframe *frame,
+ 
+ 	ptr += HDMI_INFOFRAME_HEADER_SIZE;
+ 
+-	ret = hdmi_spd_infoframe_init(frame, ptr, ptr + 8);
+-	if (ret)
+-		return ret;
++	hdmi_spd_infoframe_init(frame, ptr, ptr + 8);
+ 
+ 	frame->sdi = ptr[24];
+ 
+@@ -1703,7 +1684,6 @@ static int hdmi_audio_infoframe_unpack(struct hdmi_audio_infoframe *frame,
+ 				       const void *buffer, size_t size)
+ {
+ 	const u8 *ptr = buffer;
+-	int ret;
+ 
+ 	if (size < HDMI_INFOFRAME_SIZE(AUDIO))
+ 		return -EINVAL;
+@@ -1717,9 +1697,7 @@ static int hdmi_audio_infoframe_unpack(struct hdmi_audio_infoframe *frame,
+ 	if (hdmi_infoframe_checksum(buffer, HDMI_INFOFRAME_SIZE(AUDIO)) != 0)
+ 		return -EINVAL;
+ 
+-	ret = hdmi_audio_infoframe_init(frame);
+-	if (ret)
+-		return ret;
++	hdmi_audio_infoframe_init(frame);
+ 
+ 	ptr += HDMI_INFOFRAME_HEADER_SIZE;
+ 
+@@ -1755,7 +1733,6 @@ hdmi_vendor_any_infoframe_unpack(union hdmi_vendor_any_infoframe *frame,
+ {
+ 	const u8 *ptr = buffer;
+ 	size_t length;
+-	int ret;
+ 	u8 hdmi_video_format;
+ 	struct hdmi_vendor_infoframe *hvf = &frame->hdmi;
+ 
+@@ -1789,9 +1766,7 @@ hdmi_vendor_any_infoframe_unpack(union hdmi_vendor_any_infoframe *frame,
+ 	if (hdmi_video_format > 0x2)
+ 		return -EINVAL;
+ 
+-	ret = hdmi_vendor_infoframe_init(hvf);
+-	if (ret)
+-		return ret;
++	hdmi_vendor_infoframe_init(hvf);
+ 
+ 	hvf->length = length;
+ 
+@@ -1837,15 +1812,12 @@ int hdmi_drm_infoframe_unpack_only(struct hdmi_drm_infoframe *frame,
+ 	const u8 *temp;
+ 	u8 x_lsb, x_msb;
+ 	u8 y_lsb, y_msb;
+-	int ret;
+ 	int i;
+ 
+ 	if (size < HDMI_DRM_INFOFRAME_SIZE)
+ 		return -EINVAL;
+ 
+-	ret = hdmi_drm_infoframe_init(frame);
+-	if (ret)
+-		return ret;
++	hdmi_drm_infoframe_init(frame);
+ 
+ 	frame->eotf = ptr[0] & 0x7;
+ 	frame->metadata_type = ptr[1] & 0x7;
+diff --git a/include/linux/hdmi.h b/include/linux/hdmi.h
+index 2f4dcc8d060e..e60a28d181f2 100644
+--- a/include/linux/hdmi.h
++++ b/include/linux/hdmi.h
+@@ -214,7 +214,7 @@ ssize_t hdmi_avi_infoframe_pack(struct hdmi_avi_infoframe *frame, void *buffer,
+ ssize_t hdmi_avi_infoframe_pack_only(const struct hdmi_avi_infoframe *frame,
+ 				     void *buffer, size_t size);
+ int hdmi_avi_infoframe_check(struct hdmi_avi_infoframe *frame);
+-int hdmi_drm_infoframe_init(struct hdmi_drm_infoframe *frame);
++void hdmi_drm_infoframe_init(struct hdmi_drm_infoframe *frame);
+ ssize_t hdmi_drm_infoframe_pack(struct hdmi_drm_infoframe *frame, void *buffer,
+ 				size_t size);
+ ssize_t hdmi_drm_infoframe_pack_only(const struct hdmi_drm_infoframe *frame,
+@@ -249,7 +249,7 @@ struct hdmi_spd_infoframe {
+ 	enum hdmi_spd_sdi sdi;
+ };
+ 
+-int hdmi_spd_infoframe_init(struct hdmi_spd_infoframe *frame,
++void hdmi_spd_infoframe_init(struct hdmi_spd_infoframe *frame,
+ 			    const char *vendor, const char *product);
+ ssize_t hdmi_spd_infoframe_pack(struct hdmi_spd_infoframe *frame, void *buffer,
+ 				size_t size);
+@@ -331,7 +331,7 @@ struct hdmi_audio_infoframe {
+ 
+ };
+ 
+-int hdmi_audio_infoframe_init(struct hdmi_audio_infoframe *frame);
++void hdmi_audio_infoframe_init(struct hdmi_audio_infoframe *frame);
+ ssize_t hdmi_audio_infoframe_pack(struct hdmi_audio_infoframe *frame,
+ 				  void *buffer, size_t size);
+ ssize_t hdmi_audio_infoframe_pack_only(const struct hdmi_audio_infoframe *frame,
+@@ -393,7 +393,7 @@ struct hdr_sink_metadata {
+ 	};
+ };
+ 
+-int hdmi_vendor_infoframe_init(struct hdmi_vendor_infoframe *frame);
++void hdmi_vendor_infoframe_init(struct hdmi_vendor_infoframe *frame);
+ ssize_t hdmi_vendor_infoframe_pack(struct hdmi_vendor_infoframe *frame,
+ 				   void *buffer, size_t size);
+ ssize_t hdmi_vendor_infoframe_pack_only(const struct hdmi_vendor_infoframe *frame,
 
