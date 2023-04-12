@@ -4,66 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86272C77B6E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 15:31:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00C4CC77B72
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 15:33:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jVIUX30CHSeuMRIZ4MbX/VFPgD+9bUpANKvI3RmLVRc=; b=FqJCATIrZFfNOln9SKpgqWcyD0
-	m/SnZNuVWJoVdy3U4rNV4RERYyYegUyYH5XeDLWYb4wDDj/jpw32IS750fbvvCMrc2jD4Ru0sv4tK
-	Dp5QNRfnwuI912Mjb9nw/UTJi3sOl0rNmsdrHSGrILxRJ1AF+p16RHa7ZAaOoGv5Ak3yZ8Egx7eRT
-	p85ZUvi0X5cV0VZ09JEL0l/oXdUZB/mHEHRZpWc90R1KYSc3HwbysUKI8wwbIRGKOiY3dHbRrM6x5
-	GJxj6tdvlymBvhTe9Ski8gz/nwz5kGg05qJYDGeaDJm1Ny6J34LJ8EP/dkxk5Zc/5ZYZ4VyPhiypH
-	AxQx9+0w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NKb+Kw1nbwEgcIVC/c3hjgxT0HqVMKIH7j1hLSvTyxg=; b=i3mahx1BTiv8IoN0z91QueiM5z
+	q2W0fsslT3ONo9cefQMDQxCyDDoAzO+Z9nLgSu7aG+kpCe7SfpaxOcW9tBS/BRk5IEmFjHUpj/i1A
+	dxx/XkuagO8ljIljd1YqxW1kUfFs2vCM01zr7qhJqfBJE24HYJIhwp9C8frkJxyXGrcnPqKLuuhbn
+	u36rbBHV7F2SzU5fbseI1wp+0T0mm56KZ/ndlYn0f/QxVSjXmU43dcgxANlIRMuMlh1PkrOaH+U/l
+	HdFZeDVMaTIT8bHaWmScrSIDyvo2V7hVvmkBAFGA9ng8itcw073Qm+RSFGslwgRMPYYJlTSsdMVIj
+	46llcpUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmcRn-003dpx-2m;
-	Wed, 12 Apr 2023 15:31:47 +0000
-Received: from hch by bombadil.infradead.org with local (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmcRi-003dp9-1Q;
-	Wed, 12 Apr 2023 15:31:42 +0000
-Date: Wed, 12 Apr 2023 08:31:42 -0700
-From: Christoph Hellwig <hch@infradead.org>
-To: David Howells <dhowells@redhat.com>
-Cc: netdev@vger.kernel.org, "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Willem de Bruijn <willemdebruijn.kernel@gmail.com>,
-	David Ahern <dsahern@kernel.org>,
-	Matthew Wilcox <willy@infradead.org>,
-	Al Viro <viro@zeniv.linux.org.uk>,
-	Christoph Hellwig <hch@infradead.org>, Jens Axboe <axboe@kernel.dk>,
-	Jeff Layton <jlayton@kernel.org>,
-	Christian Brauner <brauner@kernel.org>,
-	Chuck Lever III <chuck.lever@oracle.com>,
-	Linus Torvalds <torvalds@linux-foundation.org>,
-	linux-fsdevel@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-mm@kvack.org, Jeroen de Borst <jeroendb@google.com>,
-	Catherine Sullivan <csully@google.com>,
-	Shailend Chand <shailend@google.com>, Felix Fietkau <nbd@nbd.name>,
-	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Keith Busch <kbusch@kernel.org>, Jens Axboe <axboe@fb.com>,
-	Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>,
-	Chaitanya Kulkarni <kch@nvidia.com>,
-	Andrew Morton <akpm@linux-foundation.org>,
+	id 1pmcTM-003eEh-0u;
+	Wed, 12 Apr 2023 15:33:24 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pmcTH-003eAT-2H;
+	Wed, 12 Apr 2023 15:33:21 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3D7A966031FE;
+	Wed, 12 Apr 2023 16:33:17 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1681313597;
+	bh=EHR1tsOkZg+sMKl6Vd5ksBS1wb0tpOxwzLny0ukBUrU=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=RiATp0qJbbv8G77QFQUTh91t/g8efaCPwVvgvleE8jMQ+mpBS/VsFu7mdWZVZyaBl
+	 9tIfsi8DLVRE5uWVzqe9o1sTFn5dPzQCa/LqBEhY/a6bUTucSRWGJNJ46Lf38La8h8
+	 NZXWJdqDUKry+W7vHA/ne0Mc1ak5KMBYE9qn3bm7wUWXThOwAQTqPIcHcpMeBJOBHQ
+	 dh+6hEVU0oxYii7szpaqNbj1gdAc4Pbp9ZatL24GytooWQvGZBOQxyxDyRiyI98m7R
+	 EHbNJxSti+7nfIzsyOavy8ITyelZI7PKUU17/GdtfNSNftBjPsSxVp9fIvCLl+i2jk
+	 2ZB6RAx6U3U6Q==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: pavel@ucw.cz
+Cc: lee@kernel.org,
+	sean.wang@mediatek.com,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com,
+	linux-leds@vger.kernel.org,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-nvme@lists.infradead.org
-Subject: Re: [PATCH net-next v6 04/18] mm: Make the page_frag_cache allocator
- use per-cpu
-Message-ID: <ZDbO3haK/1+7xdRC@infradead.org>
-References: <20230411160902.4134381-1-dhowells@redhat.com>
- <20230411160902.4134381-5-dhowells@redhat.com>
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	kernel@collabora.com,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v2 1/7] dt-bindings: leds: leds-mt6323: Document mt6331 compatible
+Date: Wed, 12 Apr 2023 17:33:04 +0200
+Message-Id: <20230412153310.241046-2-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.40.0
+In-Reply-To: <20230412153310.241046-1-angelogioacchino.delregno@collabora.com>
+References: <20230412153310.241046-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230411160902.4134381-5-dhowells@redhat.com>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20230412_083319_873947_618F0E5A 
+X-CRM114-Status: UNSURE (   9.39  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,18 +84,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 11, 2023 at 05:08:48PM +0100, David Howells wrote:
-> Make the page_frag_cache allocator have a separate allocation bucket for
-> each cpu to avoid racing.  This means that no lock is required, other than
-> preempt disablement, to allocate from it, though if a softirq wants to
-> access it, then softirq disablement will need to be added.
+Add mediatek,mt6331-led compatible for the LED controller found
+in the MT6331 PMIC.
 
-Can you show any performance numbers?
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ Documentation/devicetree/bindings/leds/leds-mt6323.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-> Make the NVMe, mediatek and GVE drivers pass in NULL to page_frag_cache()
-> and use the default allocation buckets rather than defining their own.
-
-Let me ask a third time as I've not got an answer the last two times:
-why are these callers treated different from the others?
+diff --git a/Documentation/devicetree/bindings/leds/leds-mt6323.txt b/Documentation/devicetree/bindings/leds/leds-mt6323.txt
+index 73353692efa1..7dc63af41562 100644
+--- a/Documentation/devicetree/bindings/leds/leds-mt6323.txt
++++ b/Documentation/devicetree/bindings/leds/leds-mt6323.txt
+@@ -12,7 +12,9 @@ For MediaTek PMIC wrapper bindings see:
+ Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
+ 
+ Required properties:
+-- compatible : Must be "mediatek,mt6323-led"
++- compatible : Must be one of
++  - "mediatek,mt6323-led"
++  - "mediatek,mt6331-led"
+ - address-cells : Must be 1
+ - size-cells : Must be 0
+ 
+-- 
+2.40.0
 
 
