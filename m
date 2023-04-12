@@ -4,87 +4,171 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 208F9C7619A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 13:49:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15DE6C7619A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Apr 2023 14:13:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Bb6P2byqyLNvxYx5mpnu/HADSn0CeAL5J6+dhakFGrg=; b=qUX4iLUHFIaFky2x/IRE1SxcKe
-	RtI0xH+hiwt+V3ZQUwHDqQrjzcdQ3A+EF/s95uv8y/I9tr+3COii8oPBg19VmfSLsdcwFVl7VmDIG
-	mR6ch7plftGPz2Ab0Qxl0+PehymyeUIdQfE5wI7qaWAKUgsNTzYHqLTf7W2wW+k9x9paAPqFTkvHG
-	8+xn+LA21rciPXjqIHS0XKCd73bpobRwVhas1dFpczSAUbv05wswpfvw4Oa2XHl7dxhooL78ttjAF
-	ArgbxyUYOjCym5qSnnXA2W0aX3mqdfXe+RjfVH/6BFiT6AcpbRIiX/1D4BDNtZ+0KHlEv1KXcpQC3
-	sMVuGm6g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nwEnKrHgj+ukbtNgasJTGRONNCGek8hRnOHMgyDD2U4=; b=qOxaRVo5p7foqckHwnr4qHW2QE
+	9vx4DX1jIuCgQHTFdcArh5dY2v6Kvs7GI6d87oItayaln8CQUSExF3PkjHMK+JCPskeYZJJTVKGtx
+	BGNCvi9IU5HwPb/t4ZbugYLj5X5P6WGKAC8WItjdf9MyEsurJgKoeS5JUdvuHDHuT+lyz0qwDDly0
+	d/pIHSi/QpGVIbJCwtIiy9oGsSx42cmVIN5csFru6Lp2ezbOs2gYRKQeurWdeWvXhzqPAHqA6lk5O
+	7/3v6WPgYf7b0xamDLnOHgZTkLRVcbqjk4mAbwjtqvujww9fVoY5S87XVK3da3UaqiLP+nVV47vsL
+	wjl1Z8aA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmar5-003Otj-16;
-	Wed, 12 Apr 2023 13:49:47 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1pmbDo-003RnE-1A;
+	Wed, 12 Apr 2023 14:13:16 +0000
+Received: from mga02.intel.com ([134.134.136.20])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmar1-003OrB-1j
-	for linux-mediatek@lists.infradead.org;
-	Wed, 12 Apr 2023 13:49:45 +0000
-Received: by mail-wm1-x332.google.com with SMTP id o6-20020a05600c4fc600b003ef6e6754c5so4289312wmq.5
-        for <linux-mediatek@lists.infradead.org>; Wed, 12 Apr 2023 06:49:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1681307382; x=1683899382;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=Bb6P2byqyLNvxYx5mpnu/HADSn0CeAL5J6+dhakFGrg=;
-        b=B9v3Cr72e/au74c7iF4mlnBofvVBf0by7QnZev1/Fg+aA5h0JtHabAGNwWsTm1dhJb
-         QaHZJk3eU9ZK5/S+ufoY0/U9W83wj8VLxD2sX4rqNIlHS7bbp9sDlk6iqXgC1mTacuk4
-         +RI4jowaObwXoqScKuNcmsqBGuxn86bKGkm97Dv1CgBDCmVWFt+tnlRyfPEBC9BpQZS2
-         YDSEKlsByawXVG/u3DR52AD1jUzzVoJbsyNWCCHPx07GuxHSi/fktwXGh2oun3AqtCE6
-         dJNXUJvNoW6UQrP40bI4//QvWskJftzd1z+RQhoRADiCG8FBuJYsaSPonV/kamY1STsa
-         0GNQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1681307382; x=1683899382;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Bb6P2byqyLNvxYx5mpnu/HADSn0CeAL5J6+dhakFGrg=;
-        b=3oHlInQX5O2ajA+XDMD5BIZ5xockO7QAxqi7u7T22EqGx/Fr3IXHRCXHQhJ92B0AZf
-         7qTj7LOheES+kfKuRHBCnTy602JSFEII6I0rRzdaPeozJFFQqOWo/AdrtyVjb+LDP6Bs
-         VKy2LSodtqPej3vbJIJDbHujflcpUBVpz5BPEkkMt+LNxkcn1Q8Bxa/FIiFjTaA0ybbl
-         uQAfeBnTAs1b+lNvd4ZaodhO2t2M9a7skVYufcfdmn+fkJ/8tsGSZZvdDna4QzHo3cM3
-         me35C2oKxT+8Evey/8aosguAbEDTcAQp1Jqnugs59jvP8WHbrLXksLUdyPRvxVjjE+Zg
-         b/4A==
-X-Gm-Message-State: AAQBX9chO7f6WGejnfb3VXHUa9yHX0PSY3719+glbLzk3AmWyNVfZGtE
-	QRz5RTVsSztjj1Q38Yj+NNF2Cw==
-X-Google-Smtp-Source: AKy350ZXbR07ORT2zgwh1nwhJhmgY6mdrSYJvMKUTwK7WgHD/vtESiSZPZKxhQzGEBaaP+LS9j+LgQ==
-X-Received: by 2002:a05:600c:ad2:b0:3ed:9ed7:d676 with SMTP id c18-20020a05600c0ad200b003ed9ed7d676mr5037319wmr.13.1681307382012;
-        Wed, 12 Apr 2023 06:49:42 -0700 (PDT)
-Received: from [192.168.1.172] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id i19-20020a1c5413000000b003edf2ae2432sm2466316wmb.7.2023.04.12.06.49.41
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 12 Apr 2023 06:49:41 -0700 (PDT)
-Message-ID: <de13cb5f-abf2-86b3-d2e0-2b1131cd8dfa@baylibre.com>
-Date: Wed, 12 Apr 2023 15:49:40 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH -next 3/3] drm/mediatek: Use
- devm_platform_ioremap_resource()
+	id 1pmbDk-003Rkx-2v;
+	Wed, 12 Apr 2023 14:13:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1681308792; x=1712844792;
+  h=message-id:date:subject:to:cc:references:from:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=AA3JNz177+CiLjgBZ5KXzeziWT+mfnlRMAcCC1An4Gw=;
+  b=dcJ4SeEp106bu11GeDSpP1RaeETYcQTRM14ZMpYBvX7CFaaQvyhrDdRa
+   yYkmVohsCHt3QrsSvSju9rluohSbDwh7Z3AiPKCDorMTE7137DzZc73NH
+   YbyvTcnstq+m//tgkHD3sIhqF7lMXOobdRElZTMMLjVfKuMyJy3Qy2+YC
+   5NGVkBSBaMicGi7GOUjmtCcW5Z7zgXxaMtrD0/Zs+7D3lLxptmjrw9QUT
+   ZVDQVRUI0E5nezpks0udWw9qLD1VqTnLk/e/G4ndS0QGozuQiSVrWMT1q
+   NT7YwbQSjaqUwfigigqghozngXTs3VlfPFHig+ZkMZ3qaYiIGMkGMVAMI
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10678"; a="332605343"
+X-IronPort-AV: E=Sophos;i="5.98,339,1673942400"; 
+   d="scan'208";a="332605343"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Apr 2023 07:13:01 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10678"; a="719389735"
+X-IronPort-AV: E=Sophos;i="5.98,339,1673942400"; 
+   d="scan'208";a="719389735"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+  by orsmga008.jf.intel.com with ESMTP; 12 Apr 2023 07:13:00 -0700
+Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23; Wed, 12 Apr 2023 07:13:00 -0700
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23 via Frontend Transport; Wed, 12 Apr 2023 07:13:00 -0700
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.168)
+ by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.23; Wed, 12 Apr 2023 07:12:59 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=lddUoHUXPKU+ocY+iuks+EaWEF/W2lIiiJJ44YvpVOQbO6rMwQKk8hRPp+jiwMUiP4F6jqxpHYiUUVBqIvYoKeHGq/7Ao+PdhQRZfk/uEbDurZhs0HlE1YW/iE8cJj/iAAVpOIQyO3SR9KEpiqygJyDyBP2SKVRNYlKwO6y2FpbkroFsFR7i3+5MpZxEKSM2DhoFdx27FxcXaGxlpYJ7frXYXyWRNmwK3U4qaTAfcsoem+FzgRTECE5Aq6NxjdjgilPjpckEoqegxof/YSyulc3BNIu8xBKqG4NIQpwxwIgRUqA+AYXigccsSrgOLXxc+vAsvetjZGD7uOGnyU6yNg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=nwEnKrHgj+ukbtNgasJTGRONNCGek8hRnOHMgyDD2U4=;
+ b=Jx+1Tu18k+xgZVnmjAlfqmeYXOSKA1PHD7Zp1TYWnGazF1RXYKu5U3VtJSRB4IaYFles+DAyrtRc3cdMSRW+GqjAi44cD6CyNWKAoz3r1pd7JGyonNnf3/75duoImPGF20Dfpo3pe5xJjsqncdn/Lmvie8EUhV4GtqaEMtwOZSIYbDB5QpKp6ToRpnltU7Mke97gmCoRJzIS0IcpkeMIbnmpQ/0zYAr8JVQvnqoo2oKBeKPUAciLYYFyfeASZxIsG6HUz90Qd1kz3Qyw9pKyV4uLuip+21J2czObyEbQhEJS/v2cUMJjZXw94YQhs229w86EZ/b9e4W+60VhBOJhDg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Received: from PH0PR11MB4886.namprd11.prod.outlook.com (2603:10b6:510:33::22)
+ by MW3PR11MB4571.namprd11.prod.outlook.com (2603:10b6:303:59::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6277.38; Wed, 12 Apr
+ 2023 14:12:56 +0000
+Received: from PH0PR11MB4886.namprd11.prod.outlook.com
+ ([fe80::922:4817:b4f2:c7b3]) by PH0PR11MB4886.namprd11.prod.outlook.com
+ ([fe80::922:4817:b4f2:c7b3%5]) with mapi id 15.20.6298.030; Wed, 12 Apr 2023
+ 14:12:56 +0000
+Message-ID: <11811efa-7722-fded-b0bb-64808cfc1336@intel.com>
+Date: Wed, 12 Apr 2023 09:12:52 -0500
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.1
+Subject: Re: [PATCH] wifi: mt76: mt7921: fix missing unwind goto in
+ `mt7921u_probe`
+To: Jiefeng Li <jiefeng_li@hust.edu.cn>, Felix Fietkau <nbd@nbd.name>,
+	"Lorenzo Bianconi" <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
+	"Shayne Chen" <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+	"Kalle Valo" <kvalo@kernel.org>, "David S. Miller" <davem@davemloft.net>,
+	"Eric Dumazet" <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo
+ Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: Dongliang Mu <dzm91@hust.edu.cn>, <linux-wireless@vger.kernel.org>,
+	<netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+References: <20230412062234.4810-1-jiefeng_li@hust.edu.cn>
 Content-Language: en-US
-To: Yang Li <yang.lee@linux.alibaba.com>, airlied@gmail.com
-Cc: daniel@ffwll.ch, matthias.bgg@gmail.com, chunkuang.hu@kernel.org,
- p.zabel@pengutronix.de, angelogioacchino.delregno@collabora.com,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-References: <20230412064635.41315-1-yang.lee@linux.alibaba.com>
- <20230412064635.41315-3-yang.lee@linux.alibaba.com>
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20230412064635.41315-3-yang.lee@linux.alibaba.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+From: "Samudrala, Sridhar" <sridhar.samudrala@intel.com>
+In-Reply-To: <20230412062234.4810-1-jiefeng_li@hust.edu.cn>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: BYAPR04CA0004.namprd04.prod.outlook.com
+ (2603:10b6:a03:40::17) To PH0PR11MB4886.namprd11.prod.outlook.com
+ (2603:10b6:510:33::22)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH0PR11MB4886:EE_|MW3PR11MB4571:EE_
+X-MS-Office365-Filtering-Correlation-Id: 95a27486-f69d-4148-b419-08db3b600322
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: Agxbn/jNCXctAR1QQS+w/zMsqPCSuDFvrDmhOS5GVZlQzcQyFQXmSdQupZJtYh91+PBsUr6uiY2NuJ3MlpMut8uet17ac/N9c0KvJV4W1M1+f5YdfkjGN9xVGTBjRT5fk3fcpkyzv8Xvw+5ksRO3AqLvXeH5b/JecqDtpuBI8kGb5ZTUtZRthx4jsSjG9Ezg04NuN4eFDBx2GG3u0R5vlJbDMHdNqhYP1IoMWHlMm+ju2lX58f9sR3Aik4L7rRBsmfU1Smq1k/bAToZwL6fx+D+SrNDa9bTo/fQgSLbWwupHBBmBDXXpzMKcS7cd+UPRvgxT8TmWe0bSK/3J4IUfOYmZSN4aZSQwMIDOkL1UpqqbW2xjyyJ/iexmKJMt2M//grQtnbrj/3NO3gekzSaW892rC+ii9bI7Fb4SlFzke3LEu7Vk1McZ3Py9trg/4geidEjQbZZGHxuioFfMWuWLwcDbMv9oxVQFJ5ZXnYl6l3siaVmaod0lTY8M9rEHDRwMpZglSRI7keppD2jE9c8FDv2OLItRIxxkBzeV94HErmP3vm4sn8ag5sNYh5QHqnVLXL24vi4Acsip2Lw+sIoZPcY6ZrWRH1YjFKJ7mVwZ//17UgY/v+kCR6r0NjlHQNJXg63LcIJuIu6rw46Cd6nbLYa6dMZYMjJvfFOJhAxRJHHYJ1lFV9pfV5jD1p26TVrk
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR11MB4886.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(376002)(396003)(39860400002)(136003)(346002)(366004)(451199021)(66946007)(6666004)(66476007)(66556008)(4326008)(8676002)(83380400001)(6506007)(26005)(186003)(6512007)(53546011)(86362001)(921005)(38100700002)(31696002)(2616005)(82960400001)(316002)(6486002)(36756003)(478600001)(110136005)(2906002)(31686004)(41300700001)(5660300002)(7416002)(8936002)(81973001)(45980500001)(43740500002);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?d0o5OHBPT1RoR2lEeFNHeG9GL0M2MFAxWjd2azhydDNwbzNoUFpCRkJkZDFT?=
+ =?utf-8?B?akhTU0ZyYmxYRUJqS3pNVlJ2RUkxeE1kZkVhbjVMOE5GeVBFK3lYbTl3MEgv?=
+ =?utf-8?B?djE2RVU2akMwbGZ3ZGdxSmxGVS9iZlJrSndzUnB2a0wrQWhkSTQ4NUREL0VN?=
+ =?utf-8?B?NFhCOTdiNjZMaGxsa0w2VnNpeGVBRDZpaHBYTWJ5cDZ1dkRaTndBckJVMEc4?=
+ =?utf-8?B?Ti83eHV3VmtxdndCd1AzSWdlNTMxWkprZUpzVElOckRkd3R6ZkxrTGV5ZDha?=
+ =?utf-8?B?OE45U0UzdDhyMlU1QW5pMVp4SVpEMmU0VkpGUTFHempvdmFNQmRFT25aN3l3?=
+ =?utf-8?B?VktmMjRxZVZWazRIdTh6RXVxWVZVaGlVS0d5YUVVYmJ1Y2xxYmZBbGxoSlp5?=
+ =?utf-8?B?UWJLTWFvL2puQU5wWEhWQzJjTUxVM3NYSWxaWEo0TWdQSzNQNVBGZFh0c3Q3?=
+ =?utf-8?B?RldUaUJRMktOQUZpNE01M1BHYVFCTGt6V3hOeEV4NHlleGtDZHRvOS8xQkRK?=
+ =?utf-8?B?ZUc5RzVuZzQrWnBsa0dlaERBTWRWa01WL1o5NGlDVG1QVTM5bU1HaWJpaEli?=
+ =?utf-8?B?a3RaTXR1K1JKOUk0SkNLeXB5a2xVWUx0U3JLZG1WdjVUcGpsVTBZb0ZHUHZU?=
+ =?utf-8?B?Z2dwakkzdHVDTlo3cXpVR0pOdkQrUEpidVFJSldhMXlpSDlGNGs0dTVnQnhn?=
+ =?utf-8?B?MGlDQzRyTjRjSFhKcjdBTGMvbU1lN2E2c2tKcGkyRHk2TVBEN2ZYMmFUTDNk?=
+ =?utf-8?B?a2xIYkw0Smp4Mjl2R0NSZFJuMnlqYThqWjdPUU5oWTMxZUlGU0V4Qmp4MUpV?=
+ =?utf-8?B?WjN2YU9NOElOVWVtWGZkVERsakt5VFhlUEtvcUZEZWhJdnczNWduaVRHWU04?=
+ =?utf-8?B?Um9YOUl4ZVNpdzlwem50NHR3dXM1SG5jUjdTcHl5VjlJUjhNTzF1cFkzWkpo?=
+ =?utf-8?B?bndZK3ErSVBMdDZDMllWNm1iK0w0TE1ubDNLMlNmRlNuQUtVL1RBcURIY1Bh?=
+ =?utf-8?B?Mkdxb2h1eUpIYjBYRzliUEZLZ1E3L3JiOXdycFFGbEg0bkFNaEptR2hwOWpv?=
+ =?utf-8?B?MkJnN3E3Z2haeXpmQVh5SkRSQW4wTU1BZnExdXJPTVY2MGxWdDBpZjF6dEZm?=
+ =?utf-8?B?UjZpUUY3VSt6aFo1WGZQMlBXb0NPSlpsYU4xMVh2SWtnRGh1WUdONkhEWk1E?=
+ =?utf-8?B?d2FsanBiQzdra0J6U3lESGI2ZDl4RUFCNUg5dzVQa242WUtTRmx6eWkrRzFj?=
+ =?utf-8?B?RFRtRnpoejB0c0dSOWFXM2Jrb1lza2xHNkpoaW1iNWJkdWhPSVFQdWhOQlV0?=
+ =?utf-8?B?RG0xVjRSdHJNc3pKWlQzK3hpTUJtaEdraEZaWjZYZXZmdzBjd3pCNnRqUCtq?=
+ =?utf-8?B?UmNiYzAxN2dIbHQrSmpzVFhXa1E3UG1tbWcrOHNJejFoQ2ZtNFJHZW5FN3h1?=
+ =?utf-8?B?VGRNeXlCdnA2VzM3WUt1TktqTkVwR003QlpmVm5wc0x4a1NSWGlXSEF0SGFD?=
+ =?utf-8?B?WGFnY2tLKzY0em9NM1JEOUhGUDk3SGVSNzFtOUpXRUlEMm1ST25RU1JJZkJo?=
+ =?utf-8?B?M2FzOU5HckcxV1ZjellPQkNxdHhJV1ZUR2lLVEVndytTU0xFZUJXblZEWDdI?=
+ =?utf-8?B?ZmFkRTl2SDMwcXh4UXZxeEVxSnJ4SmdqQmNPTmJ6LzFTSXlPVHZVSm1WV0N3?=
+ =?utf-8?B?T0tZbGFzOThJY1JLN05YQ1R4SlBha3dCZGVzSEx2WkYrVW1kN2pPMVhxQTMw?=
+ =?utf-8?B?RHhVazNCdk8vM2xRejBMaTJ2eXdhN1A1N3VCTTFKT0pGYWh6Q0lRSmtrc0p6?=
+ =?utf-8?B?NlhJSDE1YnFWZE14bXlWOVBhY1VRams3T04wRzRBN092a0NVUlNBb3NPcGlx?=
+ =?utf-8?B?c2h0czNyYmRZZjFQd3l1LzZWOWp3V3dGMlo1U2pncDZPUDZNSVMrbWhNbW00?=
+ =?utf-8?B?R1BIQ3Q2bk1pYTFseEUzTVVaTU5GVCsxU3UxUmxuYmxyTGN1SlRzcllseXB4?=
+ =?utf-8?B?ellrMVhlWFJXWTJlVjhxR2wwVks5aDgzczduUmppZjE3RG54US9nbEk5d0Rr?=
+ =?utf-8?B?dnFpWlFkTUJ0ZWN5VlUwOWttMzhtN2RVVU00UHdJRFF4VnNIL21aVzNacTY5?=
+ =?utf-8?B?NXNvN0t2Y2xUYmVvMS9yYkU2UDZaTTZUNlNoZStzMUl2SDA1TjN0VEIxS0Y2?=
+ =?utf-8?B?YVE9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 95a27486-f69d-4148-b419-08db3b600322
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB4886.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Apr 2023 14:12:56.0950
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: S4UPHYlnLNKYs3xVyXxLyj59+yi2Uutx8koJYmiP5ZUiSrKAiQ0CZijRJ0YBO5kwVyh+eak/wLWA5GtGEl6j+3Yw/YscBeWnzZljel74txk=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW3PR11MB4571
+X-OriginatorOrg: intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230412_064943_594243_9472C8D1 
-X-CRM114-Status: UNSURE (   7.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230412_071313_017320_701C83FD 
+X-CRM114-Status: GOOD (  18.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,18 +183,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/04/2023 08:46, Yang Li wrote:
-> Remove variable 'res' and convert platform_get_resource(),
-> devm_ioremap_resource() to a single call to
-> devm_platform_ioremap_resource(), as this is exactly what this function
-> does.
+
+
+On 4/12/2023 1:22 AM, Jiefeng Li wrote:
+> `mt7921u_dma_init` can only return zero or negative number according to its
+> definition. When it returns non-zero number, there exists an error and this
+> function should handle this error rather than return directly.
 > 
-> Signed-off-by: Yang Li<yang.lee@linux.alibaba.com>
+> Fixes: 0d2afe09fad5 ("mt76: mt7921: add mt7921u driver")
+> Signed-off-by: Jiefeng Li <jiefeng_li@hust.edu.cn>
+> Reviewed-by: Dongliang Mu <dzm91@hust.edu.cn>
 
-Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+Reviewed-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
 
--- 
-Regards,
-Alexandre
-
+> ---
+> The issue is discovered by static analysis, and the patch is not tested yet.
+> ---
+>   drivers/net/wireless/mediatek/mt76/mt7921/usb.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
+> index 8fef09ed29c9..70c9bbdbf60e 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
+> @@ -272,7 +272,7 @@ static int mt7921u_probe(struct usb_interface *usb_intf,
+>   
+>   	ret = mt7921u_dma_init(dev, false);
+>   	if (ret)
+> -		return ret;
+> +		goto error;
+>   
+>   	hw = mt76_hw(dev);
+>   	/* check hw sg support in order to enable AMSDU */
 
