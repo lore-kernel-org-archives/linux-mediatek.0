@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 428D2C77B76
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Apr 2023 06:09:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54250C77B61
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Apr 2023 06:19:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=NSAEsm+B43z8/D9Tccqcqtf5P15Y+HR/vIbePCa2H3g=; b=gJBg7A4gd3c5w7BhKApmsPEqxL
-	1VerYLSViTTH4wCEETFSq+AeegjcirZ1PusL2CfqsSHhktfkNOefwERxWMN1qtxqX9SS0ESYAxSId
-	yzBK4LDj8WZBPRxl+sb95BErW5SUbmdA25nVJXyOsanalMq618o/UbNEvsICJpXKYgrE9s0z5wgwP
-	domMjSpy/0kTvPhrHOleq8EK+EQsSrBbnjjdPAuk9L6tkZrpKRpWyTwjZCZ93U8esssBCjDoLxXdv
-	uzOQJlMMRPVzKP3m+TSAxXGE0Z0qYeAiDBqqVKckG5fm0EpD1xFQaEwsIPgoMC88Xy8TZ/eMnw2iP
-	+OO/B+8A==;
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cooVt/7DyMIfNymQDJe2zBqzAP0xjJRI2g2y8h0vqO4=; b=oBdr6U7fWbXqqDYSYyUEz9OPWG
+	hSafIUSxQVlUWyKxiu+HXUF0qQtisPyDaHAF+JXEB5qy/spqtkv06Kh3zgvBK4r/c3z4nBr56UrvS
+	lyVQTJHwwXKVrJ6BBLtwvH0rbZvKHq7Tv8MDAqC8gcuYeAQBTex4SbLpUYozOOU2ObLV6/iHPb9iv
+	f2yjWwIR8PnT5pb2j7XmJdo6j4yd0jRP48JW9OT4Vyw90LE2rvTCuNzQr8RD9OhWbuLbkRwuCuhw/
+	Xp1kJ2xWn5GCYFnXKXobXD64kMNpFu2PgsuM0QqWJv7wVkQU7OTPFUmriL3cOlk/YGVgiHIzH7dw+
+	ilLCiR0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmq9N-0057vb-0F;
-	Thu, 13 Apr 2023 06:09:41 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pmqJ1-0059ML-1x;
+	Thu, 13 Apr 2023 06:19:39 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmq9F-0057t5-2d;
-	Thu, 13 Apr 2023 06:09:36 +0000
-X-UUID: bf0b6180d9c111edb7d8d11f642b8e78-20230412
+	id 1pmqIx-0059Lk-32;
+	Thu, 13 Apr 2023 06:19:37 +0000
+X-UUID: 283364e0d9c311ed8687db9d93187ff1-20230412
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=NSAEsm+B43z8/D9Tccqcqtf5P15Y+HR/vIbePCa2H3g=;
-	b=tA5iyidIPhQQMHw5xWSFXHXMJVeSTZWQsJuq8ylbR5rPYmIE97zyEP7xbBllsgXwyF8KDxKdaasewCNpqKgXtqM1SGpTDFSi95bvrbIVPazIzrbW0XaBVS/VM8tAWOm9BcpPRWMf/oOC5fhN4lczrSkR4Nv2wXdRtN3p5ZWWFQ4=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=cooVt/7DyMIfNymQDJe2zBqzAP0xjJRI2g2y8h0vqO4=;
+	b=Htq0n6dz1KPeMU5iAX/9cGoikK/kx3m4D/XzhZfCSL5MIA0vwEFH3nABRsd9FW2qUpVAsguGkbDzE0e9J/TjUqx2nNf98miWNyMWVLSBP8RLkLzO3v9o5j6gidu/OWJznM6Tpm4fw+QAqeD3I5+soXWSCqo1oIgOg5cIxZ8Aluk=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:a463f5f2-6641-4df3-a9d7-266ccdb6e4d7,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:120426c,CLOUDID:fb542ea1-8fcb-430b-954a-ba3f00fa94a5,B
+X-CID-O-INFO: VERSION:1.1.22,REQID:3937efc4-2230-4306-8ce8-f046b0cd0bb7,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:120426c,CLOUDID:fda4e983-cd9c-45f5-8134-710979e3df0e,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-UUID: bf0b6180d9c111edb7d8d11f642b8e78-20230412
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+X-UUID: 283364e0d9c311ed8687db9d93187ff1-20230412
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <xinlei.lee@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1605008473; Wed, 12 Apr 2023 23:09:27 -0700
+	with ESMTP id 1118818717; Wed, 12 Apr 2023 23:19:33 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Thu, 13 Apr 2023 14:09:25 +0800
+ 15.2.1118.25; Thu, 13 Apr 2023 14:09:29 +0800
 Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Thu, 13 Apr 2023 14:09:24 +0800
+ 15.2.1118.25 via Frontend Transport; Thu, 13 Apr 2023 14:09:29 +0800
 From: <xinlei.lee@mediatek.com>
 To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
 	<daniel@ffwll.ch>, <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
@@ -61,17 +61,18 @@ CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-arm-kernel@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Xinlei Lee
 	<xinlei.lee@mediatek.com>
-Subject: [PATCH 0/3] Add mt8188 compatiable for DSI cmd packet control
-Date: Thu, 13 Apr 2023 14:09:19 +0800
-Message-ID: <1681366162-4949-1-git-send-email-xinlei.lee@mediatek.com>
+Subject: [PATCH 3/3] drm/mediatek: dsi: Add dsi cmdq_ctl to send panel initial code
+Date: Thu, 13 Apr 2023 14:09:22 +0800
+Message-ID: <1681366162-4949-4-git-send-email-xinlei.lee@mediatek.com>
 X-Mailer: git-send-email 2.6.4
+In-Reply-To: <1681366162-4949-1-git-send-email-xinlei.lee@mediatek.com>
+References: <1681366162-4949-1-git-send-email-xinlei.lee@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230412_230933_888680_FAEA774F 
-X-CRM114-Status: UNSURE (   7.48  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230412_231936_009588_6C9FA745 
+X-CRM114-Status: GOOD (  11.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,25 +89,77 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Xinlei Lee <xinlei.lee@mediatek.com>
 
-Add dt-binding documentation of DSI for MediaTek MT8188 SoC.
-Because of the difference between SOC and DSI cmd packet control, for
-MT8188, it is necessary to increase the DSI_CMDQ_SIZE control when
-sending long packets to initialize the panel. Of course, this will not
-affect the sending of short packets.
+For mt8188, add dsi cmdq reg control to send long packets to panel initialization.
 
-Base on the branch of linus/master v6.3.
+Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-Xinlei Lee (3):
-  dt-bindings: display: mediatek: dsi: Add compatible for MediaTek
-    MT8188
-  drm/mediatek: Add mt8188 dsi compatible to mtk_dsi.c
-  drm/mediatek: dsi: Add dsi cmdq_ctl to send panel initial code
-
- .../display/mediatek/mediatek,dsi.yaml        |  1 +
- drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  2 ++
- drivers/gpu/drm/mediatek/mtk_dsi.c            | 20 +++++++++++++++++++
- 3 files changed, 23 insertions(+)
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index 500a3054282d..cbfe5df4647c 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -86,6 +86,7 @@
+ 
+ #define DSI_CMDQ_SIZE		0x60
+ #define CMDQ_SIZE			0x3f
++#define CMDQ_SIZE_SEL			BIT(15)
+ 
+ #define DSI_HSTX_CKL_WC		0x64
+ 
+@@ -178,6 +179,7 @@ struct mtk_dsi_driver_data {
+ 	const u32 reg_cmdq_off;
+ 	bool has_shadow_ctl;
+ 	bool has_size_ctl;
++	bool cmdq_long_packet_ctl;
+ };
+ 
+ struct mtk_dsi {
+@@ -965,6 +967,11 @@ static u32 mtk_dsi_recv_cnt(u8 type, u8 *read_data)
+ 	return 0;
+ }
+ 
++static void mtk_dsi_cmd_packet_ctl(struct mtk_dsi *dsi)
++{
++	mtk_dsi_mask(dsi, DSI_CMDQ_SIZE, CMDQ_SIZE_SEL, CMDQ_SIZE_SEL);
++}
++
+ static void mtk_dsi_cmdq(struct mtk_dsi *dsi, const struct mipi_dsi_msg *msg)
+ {
+ 	const char *tx_buf = msg->tx_buf;
+@@ -996,6 +1003,8 @@ static void mtk_dsi_cmdq(struct mtk_dsi *dsi, const struct mipi_dsi_msg *msg)
+ 
+ 	mtk_dsi_mask(dsi, reg_cmdq_off, cmdq_mask, reg_val);
+ 	mtk_dsi_mask(dsi, DSI_CMDQ_SIZE, CMDQ_SIZE, cmdq_size);
++	if (dsi->driver_data->cmdq_long_packet_ctl)
++		mtk_dsi_cmd_packet_ctl(dsi);
+ }
+ 
+ static ssize_t mtk_dsi_host_send_cmd(struct mtk_dsi *dsi,
+@@ -1200,18 +1209,21 @@ static const struct mtk_dsi_driver_data mt8183_dsi_driver_data = {
+ 	.reg_cmdq_off = 0x200,
+ 	.has_shadow_ctl = true,
+ 	.has_size_ctl = true,
++	.cmdq_long_packet_ctl = false,
+ };
+ 
+ static const struct mtk_dsi_driver_data mt8186_dsi_driver_data = {
+ 	.reg_cmdq_off = 0xd00,
+ 	.has_shadow_ctl = true,
+ 	.has_size_ctl = true,
++	.cmdq_long_packet_ctl = false,
+ };
+ 
+ static const struct mtk_dsi_driver_data mt8188_dsi_driver_data = {
+ 	.reg_cmdq_off = 0xd00,
+ 	.has_shadow_ctl = true,
+ 	.has_size_ctl = true,
++	.cmdq_long_packet_ctl = true,
+ };
+ 
+ static const struct of_device_id mtk_dsi_of_match[] = {
 -- 
 2.18.0
 
