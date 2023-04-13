@@ -4,89 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A86BC77B71
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Apr 2023 14:07:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C8ABC77B61
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Apr 2023 14:15:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uOzV2SBhFw+VHfjQBSFk6nelhOdTCbmbhdmw181xaw4=; b=KANuKXxTSl89DtAQkTUPup9UpP
-	EJ96KBB0h0Yt9mG8UCSouE5unVNSshWpB3Vam2wh2hZdFoYIvpr/fd+6p9L3JFO44rFcP5WHaxuqR
-	DXwoAeu2sQQsIlqzO78RaMI5/CR1xczlWseEhjfJPM8ScYXMtyzhTYlFcO/JB05MtTnmhHERokIwJ
-	/g+hkq0UJfzsZ41BqZUpuK00Tva9GHw7RsvqLFq3A8Ymd8oRKj8rjaKonRRchuMd7Wu2+oI28prOq
-	wr4mnuzzRfr7QeNyvUhn7Hm/SOVtTRq7Z+WKaWhxCWG6KLSwBhvDjJmylSzyUu4NNHD7gmSLF75Py
-	QQXFaEKA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MRfAy08dzFs9jrLzTP2yzZd0SgYGwdvqIMzg+AZsfrw=; b=SB9xM4NZsQrHBvGrxqw0KMGX6T
+	LHjKaV4tCpbUT+xfFuHnAN/3wmi1RfARHVN7GdbWLww7jSIQBIOjI2RfpMme/iOQnxywZcN5IVCNz
+	OvZqxnZl1iXmpyW6KC1EWDuAN7MPo5BsYyNDEr8a0hPCPCWRhxzkUCjebPpQ5TfKnrTrFJd5Si+Lc
+	PSD7DZulqLBDUQpniOQZpx7mb2srYCHy4h9obayYZ6BrZtRFUbI6JYop7d3E+CMcxcbbedqAHVrgO
+	mvA5EoyfORa6Lfaq11kpUNvf1BcG7HAHtr17DDhBdqfFOYEWp2CSSL13sX7QIVcU+NMtx81d2deyL
+	RpcEOeJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmxbf-006M7d-2W;
-	Thu, 13 Apr 2023 14:07:23 +0000
-Received: from mga07.intel.com ([134.134.136.100])
+	id 1pmxjK-006NPB-1Z;
+	Thu, 13 Apr 2023 14:15:18 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmxbb-006M4b-1s;
-	Thu, 13 Apr 2023 14:07:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1681394839; x=1712930839;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=o3ui4+B9QONrA1DxR7CqtVx0f1GoF/Cuz8I+r7IyAkc=;
-  b=kVduAYet/lOoMO3G1c1BwnoFMnr7ytY+gT/TQwOCCLT/h2R6Gav6iF6s
-   wLX99SF+iSzeV/cd6sS+8yYijpQNWaNgtLIg/PBbYDYlbQ7zlGRzXDOgh
-   Jcw8lTdHieCyfCTB442G5Q/tt2TaEquSL/RmSxYhN3KH3z/lKnLX9f+c2
-   d67SA7WSYvdCNrPpDWJd5FxXJZZA/zWym0uA1mCEakoA+l6a8Grb8sM/A
-   QKdEUrGSiIhBvPxDM1sNulrS8RyoSrYP5sIEmGCVY7fGh/kmzWm66hyoN
-   6AgcRFbwT6EfUmVPrDPSkiIChUGMndY+rO3d3CPrT7AAxhoOU1GChFhlO
-   A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10679"; a="409359222"
-X-IronPort-AV: E=Sophos;i="5.99,193,1677571200"; 
-   d="scan'208";a="409359222"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
-  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Apr 2023 06:34:56 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10679"; a="833154339"
-X-IronPort-AV: E=Sophos;i="5.99,193,1677571200"; 
-   d="scan'208";a="833154339"
-Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
-  by fmsmga001.fm.intel.com with ESMTP; 13 Apr 2023 06:34:50 -0700
-Received: from kbuild by b613635ddfff with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1pmx69-000YiI-2u;
-	Thu, 13 Apr 2023 13:34:49 +0000
-Date: Thu, 13 Apr 2023 21:34:41 +0800
-From: kernel test robot <lkp@intel.com>
-To: Yi-De Wu <yi-de.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Jonathan Corbet <corbet@lwn.net>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Yingshiuan Pan <yingshiuan.pan@mediatek.com>
-Cc: oe-kbuild-all@lists.linux.dev, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Jades Shih <jades.shih@mediatek.com>,
-	Miles Chen <miles.chen@mediatek.com>,
-	Ivan Tseng <ivan.tseng@mediatek.com>,
-	My Chuang <my.chuang@mediatek.com>,
-	Shawn Hsiao <shawn.hsiao@mediatek.com>,
-	PeiLun Suei <peilun.suei@mediatek.com>,
-	Ze-Yu Wang <ze-yu.wang@mediatek.com>,
-	Liju Chen <liju-clr.chen@mediatek.com>,
-	Yi-De Wu <yi-de.wu@mediatek.com>
-Subject: Re: [PATCH v1 6/6] soc: mediatek: virt: geniezone: Add irqfd support
-Message-ID: <202304132123.rrVq3AEP-lkp@intel.com>
-References: <20230413090735.4182-7-yi-de.wu@mediatek.com>
+	id 1pmxjF-006NNq-2L
+	for linux-mediatek@lists.infradead.org;
+	Thu, 13 Apr 2023 14:15:16 +0000
+Received: by mail-wr1-x432.google.com with SMTP id w24so4721297wra.10
+        for <linux-mediatek@lists.infradead.org>; Thu, 13 Apr 2023 07:15:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1681395311; x=1683987311;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=MRfAy08dzFs9jrLzTP2yzZd0SgYGwdvqIMzg+AZsfrw=;
+        b=yZGhMppM2itR8z2kOIDEYtZO7EyMhZxDJLRDKFmrU6jReA8T/cjBRXwY8MX7eejWLa
+         zX3WgpISqyd1HoXJ6EJLJj92m7Bd3wp+f3dyWsj39cNX5BNW3c+xXMq3sEZd/V8Kx06k
+         at9l6cUW7kBsQJcPEwsUxNJCkbXHoCy6ly2nb/6M1LORIz/BxfJSliLpe3J4dyGsAm35
+         ZZ5GJhG+fJ3ZHAkz9X35T9DCxX64N4mrGZQRLwyFlF+xmBHAJ/fwew/iKMdq7BO0YQD0
+         u2KVUIuf1LqjlQA7VG8cCGkoeRjH5PTW6kJUSofVSjA6kR4363/RhVL5xha0zHVcoWJ9
+         fOoQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1681395311; x=1683987311;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=MRfAy08dzFs9jrLzTP2yzZd0SgYGwdvqIMzg+AZsfrw=;
+        b=bsvpUBGDNxAqqdMI06aIHrgg9nEAJHsnTKIsEWKaxL6l5wEG2MzfJEwZofkJxFyrN+
+         OtYslM5lKQi8vbJinLLCTNMIIgqT0NiU7e+28wl+qyo5osbEzlTSulE9N11BoMq2DePw
+         6eotMlOlJjGPENFKCgtn3z3FKyKm1AXf8mQyTi1pN5vFcB7Br/6yFFhqtQKBfzSKDGYu
+         zLoX48RAFTpqSlrSePGN1VTfDfXhMaY4CwdX6cmZap3GnO5hHvMkuuVqpHfQLJACEZXj
+         bMVTSwrcZr0LD3pZea4fXmWOhKFZamJd8VbmFhs71Aetv1uy/I5KnCNGSpM8pB452nBJ
+         Cscw==
+X-Gm-Message-State: AAQBX9eqVVdkQ4kkxvskzch5qRXd5xLHU/TjEbtwb6B9XvM5V5bzFb3F
+	D6+R4imDwl67QWu2MzW2QcIFxA==
+X-Google-Smtp-Source: AKy350ZKcbVoL90ZeMzRxiOHGtnzEmpUBRa1+BVtdc7Jb+lSdMVUYkQumizo6lVe732La8+OX0Cetw==
+X-Received: by 2002:adf:dc8d:0:b0:2f5:83a8:a9a9 with SMTP id r13-20020adfdc8d000000b002f583a8a9a9mr1799903wrj.16.1681395311380;
+        Thu, 13 Apr 2023 07:15:11 -0700 (PDT)
+Received: from [10.1.3.59] (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
+        by smtp.gmail.com with ESMTPSA id x12-20020adff0cc000000b002d64fcb362dsm1364069wro.111.2023.04.13.07.15.10
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 13 Apr 2023 07:15:10 -0700 (PDT)
+Message-ID: <00c0b699-ba1a-951c-185a-ef8f09abf6f3@baylibre.com>
+Date: Thu, 13 Apr 2023 16:15:09 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230413090735.4182-7-yi-de.wu@mediatek.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH v2 7/7] leds: leds-mt6323: Add support for WLEDs and
+ MT6332
+Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ pavel@ucw.cz
+Cc: lee@kernel.org, sean.wang@mediatek.com, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+ linux-leds@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com
+References: <20230412153310.241046-1-angelogioacchino.delregno@collabora.com>
+ <20230412153310.241046-8-angelogioacchino.delregno@collabora.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <20230412153310.241046-8-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230413_070719_667706_BB598399 
-X-CRM114-Status: GOOD (  14.40  )
+X-CRM114-CacheID: sfid-20230413_071513_986237_C45598DB 
+X-CRM114-Status: GOOD (  31.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,71 +100,314 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yi-De,
+On 12/04/2023 17:33, AngeloGioacchino Del Regno wrote:
+> Add basic code to turn on and off WLEDs and wire up MT6332 support
+> to take advantage of it.
+> This is a simple approach due to to the aforementioned PMIC supporting
+> only on/off status so, at the time of writing, it is impossible for me
+> to validate more advanced functionality due to lack of hardware.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>   drivers/leds/leds-mt6323.c | 171 +++++++++++++++++++++++++++++++++++--
+>   1 file changed, 164 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/leds/leds-mt6323.c b/drivers/leds/leds-mt6323.c
+> index 5d95dbd9a761..202b38ac32f6 100644
+> --- a/drivers/leds/leds-mt6323.c
+> +++ b/drivers/leds/leds-mt6323.c
+> @@ -20,6 +20,11 @@
+>   #define RG_DRV_32K_CK_PDN		BIT(11)
+>   #define RG_DRV_32K_CK_PDN_MASK		BIT(11)
+>   
+> +/* 32K/1M/6M clock common for WLED device */
+> +#define RG_VWLED_1M_CK_PDN		BIT(0)
+> +#define RG_VWLED_32K_CK_PDN		BIT(12)
+> +#define RG_VWLED_6M_CK_PDN		BIT(13)
+> +
+>   /*
+>    * Register field for TOP_CKPDN2 to enable
+>    * individual clock for LED device.
+> @@ -73,7 +78,7 @@ struct mt6323_led {
+>   	int			id;
+>   	struct mt6323_leds	*parent;
+>   	struct led_classdev	cdev;
+> -	enum led_brightness	current_brightness;
+> +	unsigned int		current_brightness;
+>   };
+>   
+>   /**
+> @@ -86,6 +91,7 @@ struct mt6323_led {
+>    * @num_isink_con:	Number of ISINKx_CON registers
+>    * @isink_max_regs:	Number of ISINK[0..x] registers
+>    * @isink_en_ctrl:	Offset to ISINK_EN_CTRL register
+> + * @iwled_en_ctrl:	Offset to IWLED_EN_CTRL register
+>    */
+>   struct mt6323_regs {
+>   	const u16 *top_ckpdn;
+> @@ -96,18 +102,21 @@ struct mt6323_regs {
+>   	u8 num_isink_con;
+>   	u8 isink_max_regs;
+>   	u16 isink_en_ctrl;
+> +	u16 iwled_en_ctrl;
+>   };
+>   
+>   /**
+>    * struct mt6323_hwspec - hardware specific parameters
+>    * @max_period:		Maximum period for all LEDs
+>    * @max_leds:		Maximum number of supported LEDs
+> + * @max_wleds:		Maximum number of WLEDs
+>    * @max_brightness:	Maximum brightness for all LEDs
+>    * @unit_duty:		Steps of duty per period
+>    */
+>   struct mt6323_hwspec {
+>   	u16 max_period;
+>   	u8 max_leds;
+> +	u8 max_wleds;
+>   	u16 max_brightness;
+>   	u16 unit_duty;
+>   };
+> @@ -379,6 +388,117 @@ static int mt6323_led_set_brightness(struct led_classdev *cdev,
+>   	return ret;
+>   }
+>   
+> +static int mtk_wled_hw_on(struct led_classdev *cdev)
+> +{
+> +	struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
+> +	struct mt6323_leds *leds = led->parent;
+> +	const struct mt6323_regs *regs = leds->pdata->regs;
+> +	struct regmap *regmap = leds->hw->regmap;
+> +	int ret;
+> +
+> +	ret = regmap_clear_bits(regmap, regs->top_ckpdn[0], RG_VWLED_32K_CK_PDN);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = regmap_clear_bits(regmap, regs->top_ckpdn[0], RG_VWLED_6M_CK_PDN);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = regmap_clear_bits(regmap, regs->top_ckpdn[0], RG_VWLED_1M_CK_PDN);
+> +	if (ret)
+> +		return ret;
+> +
+> +	usleep_range(5000, 6000);
+> +
+> +	/* Enable WLED channel pair */
+> +	ret = regmap_set_bits(regmap, regs->iwled_en_ctrl, BIT(led->id));
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = regmap_set_bits(regmap, regs->iwled_en_ctrl, BIT(led->id + 1));
+> +	if (ret)
+> +		return ret;
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_wled_hw_off(struct led_classdev *cdev)
+> +{
+> +	struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
+> +	struct mt6323_leds *leds = led->parent;
+> +	const struct mt6323_regs *regs = leds->pdata->regs;
+> +	struct regmap *regmap = leds->hw->regmap;
+> +	int ret;
+> +
+> +	ret = regmap_clear_bits(regmap, regs->iwled_en_ctrl, BIT(led->id + 1));
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = regmap_clear_bits(regmap, regs->iwled_en_ctrl, BIT(led->id));
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = regmap_set_bits(regmap, regs->top_ckpdn[0], RG_VWLED_32K_CK_PDN);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = regmap_set_bits(regmap, regs->top_ckpdn[0], RG_VWLED_6M_CK_PDN);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = regmap_set_bits(regmap, regs->top_ckpdn[0], RG_VWLED_1M_CK_PDN);
+> +	if (ret)
+> +		return ret;
+> +
+> +	return 0;
+> +}
+> +
+> +static unsigned int mt6323_get_wled_brightness(struct led_classdev *cdev)
+> +{
+> +	struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
+> +	struct mt6323_leds *leds = led->parent;
+> +	const struct mt6323_regs *regs = leds->pdata->regs;
+> +	struct regmap *regmap = leds->hw->regmap;
+> +	unsigned int status;
+> +	int ret;
+> +
+> +	ret = regmap_read(regmap, regs->iwled_en_ctrl, &status);
+> +	if (ret)
+> +		return 0;
+> +
+> +	/* Always two channels per WLED */
+> +	status &= BIT(led->id) | BIT(led->id + 1);
+> +
+> +	return status ? led->current_brightness : 0;
+> +}
+> +
+> +static int mt6323_wled_set_brightness(struct led_classdev *cdev,
+> +				      unsigned int brightness)
+> +{
+> +	struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
+> +	struct mt6323_leds *leds = led->parent;
+> +	int ret = 0;
+> +
+> +	mutex_lock(&leds->lock);
+> +
+> +	if (brightness) {
+> +		if (!led->current_brightness)
+> +			ret = mtk_wled_hw_on(cdev);
+> +		if (ret)
+> +			goto out;
+> +	} else {
+> +		ret = mtk_wled_hw_off(cdev);
+> +		if (ret)
+> +			goto out;
+> +	}
+> +
+> +	led->current_brightness = brightness;
+> +out:
+> +	mutex_unlock(&leds->lock);
+> +
+> +	return ret;
+> +}
+> +
+>   static int mt6323_led_set_dt_default(struct led_classdev *cdev,
+>   				     struct device_node *np)
+>   {
+> @@ -418,6 +538,7 @@ static int mt6323_led_probe(struct platform_device *pdev)
+>   	int ret;
+>   	unsigned int status;
+>   	u32 reg;
+> +	u8 max_leds;
+>   
+>   	leds = devm_kzalloc(dev, sizeof(*leds), GFP_KERNEL);
+>   	if (!leds)
+> @@ -428,6 +549,7 @@ static int mt6323_led_probe(struct platform_device *pdev)
+>   	leds->pdata = device_get_match_data(dev);
+>   	regs = leds->pdata->regs;
+>   	spec = leds->pdata->spec;
+> +	max_leds = spec->max_leds + spec->max_wleds;
 
-kernel test robot noticed the following build warnings:
+I haven't access to the datasheet so I have to ask you:
+Why the max leds value is the addition of max led and wled ?
 
-[auto build test WARNING on robh/for-next]
-[also build test WARNING on krzk-dt/for-next arm64/for-next/core lwn/docs-next linus/master v6.3-rc6 next-20230412]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+IMO, the datasheed give you the max supported led OR wled on its bus 
+function to the maximum supplied current by the PMIC (I assume LED or 
+WLED have different need). Or the PMIC has 2 bus, one for led and 
+another for wled ?
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Yi-De-Wu/docs-geniezone-Introduce-GenieZone-hypervisor/20230413-170932
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
-patch link:    https://lore.kernel.org/r/20230413090735.4182-7-yi-de.wu%40mediatek.com
-patch subject: [PATCH v1 6/6] soc: mediatek: virt: geniezone: Add irqfd support
-config: arm64-allyesconfig (https://download.01.org/0day-ci/archive/20230413/202304132123.rrVq3AEP-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 12.1.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/ae996a1c7d12837f16f28975712a8bf63525cac4
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Yi-De-Wu/docs-geniezone-Introduce-GenieZone-hypervisor/20230413-170932
-        git checkout ae996a1c7d12837f16f28975712a8bf63525cac4
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=arm64 olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=arm64 SHELL=/bin/bash drivers/soc/mediatek/virt/geniezone/
-
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Link: https://lore.kernel.org/oe-kbuild-all/202304132123.rrVq3AEP-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
->> drivers/soc/mediatek/virt/geniezone/gzvm_eventfd.c:463:6: warning: no previous prototype for 'gzvm_irqfd_release' [-Wmissing-prototypes]
-     463 | void gzvm_irqfd_release(struct gzvm *gzvm)
-         |      ^~~~~~~~~~~~~~~~~~
-
-
-vim +/gzvm_irqfd_release +463 drivers/soc/mediatek/virt/geniezone/gzvm_eventfd.c
-
-   458	
-   459	/*
-   460	 * This function is called as the gzvm VM fd is being released. Shutdown all
-   461	 * irqfds that still remain open
-   462	 */
- > 463	void gzvm_irqfd_release(struct gzvm *gzvm)
-   464	{
-   465		struct gzvm_kernel_irqfd *irqfd, *tmp;
-   466	
-   467		spin_lock_irq(&gzvm->irqfds.lock);
-   468	
-   469		list_for_each_entry_safe(irqfd, tmp, &gzvm->irqfds.items, list)
-   470			irqfd_deactivate(irqfd);
-   471	
-   472		spin_unlock_irq(&gzvm->irqfds.lock);
-   473	
-   474		/*
-   475		 * Block until we know all outstanding shutdown jobs have completed.
-   476		 */
-   477		flush_workqueue(irqfd_cleanup_wq);
-   478	}
-   479	
+>   
+>   	/*
+>   	 * leds->hw points to the underlying bus for the register
+> @@ -447,6 +569,7 @@ static int mt6323_led_probe(struct platform_device *pdev)
+>   
+>   	for_each_available_child_of_node(np, child) {
+>   		struct led_init_data init_data = {};
+> +		bool is_wled;
+>   
+>   		ret = of_property_read_u32(child, "reg", &reg);
+>   		if (ret) {
+> @@ -454,7 +577,7 @@ static int mt6323_led_probe(struct platform_device *pdev)
+>   			goto put_child_node;
+>   		}
+>   
+> -		if (reg >= spec->max_leds || reg >= MAX_SUPPORTED_LEDS ||
+> +		if (reg >= max_leds || reg >= MAX_SUPPORTED_LEDS ||
+>   		    leds->led[reg]) {
+>   			dev_err(dev, "Invalid led reg %u\n", reg);
+>   			ret = -EINVAL;
+> @@ -467,14 +590,24 @@ static int mt6323_led_probe(struct platform_device *pdev)
+>   			goto put_child_node;
+>   		}
+>   
+> +		is_wled = of_property_read_bool(child, "mediatek,is-wled");
+> +
+>   		leds->led[reg] = led;
+>   		leds->led[reg]->id = reg;
+>   		leds->led[reg]->cdev.max_brightness = spec->max_brightness;
+> -		leds->led[reg]->cdev.brightness_set_blocking =
+> -					mt6323_led_set_brightness;
+> -		leds->led[reg]->cdev.blink_set = mt6323_led_set_blink;
+> -		leds->led[reg]->cdev.brightness_get =
+> -					mt6323_get_led_hw_brightness;
+> +
+> +		if (is_wled) {
+> +			leds->led[reg]->cdev.brightness_set_blocking =
+> +						mt6323_wled_set_brightness;
+> +			leds->led[reg]->cdev.brightness_get =
+> +						mt6323_get_wled_brightness;
+> +		} else {
+> +			leds->led[reg]->cdev.brightness_set_blocking =
+> +						mt6323_led_set_brightness;
+> +			leds->led[reg]->cdev.blink_set = mt6323_led_set_blink;
+> +			leds->led[reg]->cdev.brightness_get =
+> +						mt6323_get_led_hw_brightness;
+> +		}
+>   		leds->led[reg]->parent = leds;
+>   
+>   		ret = mt6323_led_set_dt_default(&leds->led[reg]->cdev, child);
+> @@ -542,6 +675,17 @@ static const struct mt6323_regs mt6331_registers = {
+>   	.isink_en_ctrl = 0x43a,
+>   };
+>   
+> +static const struct mt6323_regs mt6332_registers = {
+> +	.top_ckpdn = (const u16[]){ 0x8094, 0x809a, 0x80a0 },
+> +	.num_top_ckpdn = 3,
+> +	.top_ckcon = (const u16[]){ 0x80a6, 0x80ac },
+> +	.num_top_ckcon = 2,
+> +	.isink_con = (const u16[]){ 0x8cd4 },
+> +	.num_isink_con = 1,
+> +	.isink_max_regs = 12, /* IWLED[0..2, 3..9] */
+> +	.iwled_en_ctrl = 0x8cda,
+> +};
+> +
+>   static const struct mt6323_hwspec mt6323_spec = {
+>   	.max_period = 10000,
+>   	.max_leds = 4,
+> @@ -549,6 +693,13 @@ static const struct mt6323_hwspec mt6323_spec = {
+>   	.unit_duty = 3125,
+>   };
+>   
+> +static const struct mt6323_hwspec mt6332_spec = {
+> +	/* There are no LEDs in MT6332. Only WLEDs are present. */
+> +	.max_leds = 0,
+> +	.max_wleds = 1,
+> +	.max_brightness = 1024,
+> +};
+> +
+>   static const struct mt6323_data mt6323_pdata = {
+>   	.regs = &mt6323_registers,
+>   	.spec = &mt6323_spec,
+> @@ -559,9 +710,15 @@ static const struct mt6323_data mt6331_pdata = {
+>   	.spec = &mt6323_spec,
+>   };
+>   
+> +static const struct mt6323_data mt6332_pdata = {
+> +	.regs = &mt6332_registers,
+> +	.spec = &mt6332_spec,
+> +};
+> +
+>   static const struct of_device_id mt6323_led_dt_match[] = {
+>   	{ .compatible = "mediatek,mt6323-led", .data = &mt6323_pdata},
+>   	{ .compatible = "mediatek,mt6331-led", .data = &mt6331_pdata },
+> +	{ .compatible = "mediatek,mt6332-led", .data = &mt6332_pdata },
+>   	{},
+>   };
+>   MODULE_DEVICE_TABLE(of, mt6323_led_dt_match);
 
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+Regards,
+Alexandre
+
 
