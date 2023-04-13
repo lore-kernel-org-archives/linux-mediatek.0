@@ -4,95 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7672C77B61
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Apr 2023 17:09:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 654A0C77B71
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Apr 2023 18:40:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
+	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vUAnBlFRSGBlwXwSQXAqm7P10EiEl+48o/NRTbPOIwI=; b=XBQi8PP5mAQ0cp159vs44WlfEM
-	NKMuvms96TLMnG1oUAZ+uIHHiSzu7WvSYz3uC+989fO4fRLdD8HYFIAynBpoHTcOCnsNrTZkt1qHp
-	F+LSeBt8ZXcKezZXxz9nWVGvShpPMA0Pp2kXWEYpwVT5y5QbrLdcW6Af4Xhw/lPH/WjUYhRjmi5HG
-	qMZRdvgQ+be0kW3dMiyw6hIK8GEk7ks3G/InvvPjb8TQnx2QiC9o1beWQ63cbZ8wmditfYaPUu6nS
-	93ZWAfLFFv70RNLOeKuVYCAAAPc6M4I2hm+pcpE7XVMfy6f+yqFNAkOfivxgz6KBncQy5WvyUuuup
-	2f9sepzQ==;
+	bh=2A0Cbt+qgxFGgrMPnwGwp48JgCRL27ag+TlcYsekpC4=; b=dj1XfIxf0AuOtjyHYOJGItoapE
+	Q3xLQgPbcckRButBh2Onf62HdunnP6w95a2LPuI2TsczqoHTKRPtfMvB7jyQ/iy2EMYf+hvmapBic
+	ug760WAInsdssgz6pTbbFZ6hnC+npUgFf9pJAyI06P1zyDkh+bRrbLNJl2F1VVliOtXNFF43T1rZg
+	Kg4GqVm1sQeQSNFLebkdDKsCrpy3ByhO89idkzOeGtR7+cjul69hduGpzcG8vMlB4ofCY7NqJCUKS
+	RuC8CAVde2b85T+bHOeco5mZoZ0iVPIDgYzlCsH7yTZgF0tKL/mP2Cy7SFVrLE0oUltV/N5+hp0HZ
+	ra2Ab6uQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pn0RL-006m4F-1o;
-	Thu, 13 Apr 2023 17:08:55 +0000
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+	id 1pn1rx-006vX2-10;
+	Thu, 13 Apr 2023 18:40:29 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pn0RH-006m1N-1t;
-	Thu, 13 Apr 2023 17:08:52 +0000
-Received: by mail-wr1-x434.google.com with SMTP id g5so18295257wrb.5;
-        Thu, 13 Apr 2023 10:08:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1681405727; x=1683997727;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=vUAnBlFRSGBlwXwSQXAqm7P10EiEl+48o/NRTbPOIwI=;
-        b=HWYW8/RVFPxSHRWBcro0ZM0vclYoDzFo9NEifLGdrjORDSE6iDq9AwFwfenSd8GxEt
-         rfRXewl/Bk7aKC89XahV+cxJJK05ZfxJY1Dp8BnrMhAPCHXF7I83wXYNTPf2jfmZmVT1
-         GkUe8G3rSbx0xGKbSHUu3PI5f7NRRPzrcgUIA30sxCAzFKjb+37KblE4FEkktfMna2ja
-         nSI5tXZ/8XawREqOXVtRL81+F26lOMjqD1toA7oWuaBseU9a4dPlQTCmVx9ETv2rL7ub
-         EGOqzjQXE46D1peydsH0koKhuHs41ofPDUSD1Z7SIUAqvdyYrS5UTWfMYAfDE7RlNSCW
-         632w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681405727; x=1683997727;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=vUAnBlFRSGBlwXwSQXAqm7P10EiEl+48o/NRTbPOIwI=;
-        b=gwcB0CujlPr8SdP1X4zJ8sZzqTq0hYr2M6IRurF9gwTCTsv+Y+ad7DLDnARFTfUIwh
-         0kuZDkwm6qE3PWg7r5ox+gyL3mIL0mPMyMTIt9smqPQloJqWjV+ruaMf8DN7Av9BzL9J
-         /kMwIJlVHOZs+3SHuZRVSBOK7JcdJgjE5jujXjx2zX4t07mrB5zd90Cw3rJdvWCaERsK
-         ZSayliBuYG+ictJ5zZEM3GOUP+PtyBWsC0PaR3ycnWTFGbDJU+Mh6vceu+pHpAsStfZ9
-         3N+lIKlv/KyLykB6dN1AHiqK0jXaujtOLyLMffL94aLs8iSOewokiq930T7URtf1kYhk
-         tJhQ==
-X-Gm-Message-State: AAQBX9c4ZZwnnOe1eKg9v5rPH/CgNwX/R/bJL8s8943APDiN2m7nmMuz
-	YlgBfNAvs+V6wz2NYd+yx7I=
-X-Google-Smtp-Source: AKy350arxfCCpaVx1w4hHZM1E1HpJLjfl+cRZdLDdeSnQNukXu4TUaQgzkTfOoR3xnpv2XCmUfu/vg==
-X-Received: by 2002:a5d:63c4:0:b0:2ef:f9d:6adf with SMTP id c4-20020a5d63c4000000b002ef0f9d6adfmr2154403wrw.35.1681405726957;
-        Thu, 13 Apr 2023 10:08:46 -0700 (PDT)
-Received: from [192.168.0.32] ([37.222.243.26])
-        by smtp.gmail.com with ESMTPSA id u8-20020a5d6ac8000000b002eaac3a9beesm1700208wrw.8.2023.04.13.10.08.43
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 13 Apr 2023 10:08:45 -0700 (PDT)
-Message-ID: <5c1d69c8-d973-fa7b-1f14-c72729ff5594@gmail.com>
-Date: Thu, 13 Apr 2023 19:08:41 +0200
+	id 1pn1rt-006vW5-2W;
+	Thu, 13 Apr 2023 18:40:26 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 2401C640D0;
+	Thu, 13 Apr 2023 18:40:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 536EDC433EF;
+	Thu, 13 Apr 2023 18:40:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1681411224;
+	bh=mwYnTH2xTUlzJflPd1vC123IfsPEl3nEWJIFOU/ryso=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=C1b7JS3gODDSYYlBDTIpxlgxG1R4XL1R85N0pALFWGPerftCQh/QgRTkSYmNuEYE9
+	 L/Edkv3kS7VyqrGIxRIIdjjQO2xm/Qoe5ITC3m4M51owUTozFTFYrb45KhE0FrHJ9E
+	 yjniCCFn4wdkU5OC0UqrILGm8af4piU0eXT+ootGLCww0CkSFCgOTSkv41JoWKduH1
+	 wNXgpYg6SbGBH3SUhdHfLx6632/mSuRMo2Q/jkQfKPur8yk4bqg7cVIAPHLTp5pE43
+	 rCPZVphcdd8JaZowPPREGMbP25Ke1cssVQFxLKe/7IZLp0MzhMSd+NPktv81meIG13
+	 zpAqAywMfmBGA==
+Message-ID: <f09425fde83f4b21ee301ef8810c4c29.sboyd@kernel.org>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH v1 3/6] soc: mediatek: virt: geniezone: Introduce
- GenieZone hypervisor support
-Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Yi-De Wu <yi-de.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Jonathan Corbet <corbet@lwn.net>, Catalin Marinas <catalin.marinas@arm.com>,
- Will Deacon <will@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Yingshiuan Pan <yingshiuan.pan@mediatek.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Jades Shih <jades.shih@mediatek.com>,
- Miles Chen <miles.chen@mediatek.com>, Ivan Tseng <ivan.tseng@mediatek.com>,
- My Chuang <my.chuang@mediatek.com>, Shawn Hsiao <shawn.hsiao@mediatek.com>,
- PeiLun Suei <peilun.suei@mediatek.com>, Ze-Yu Wang
- <ze-yu.wang@mediatek.com>, Liju Chen <liju-clr.chen@mediatek.com>
-References: <20230413090735.4182-1-yi-de.wu@mediatek.com>
- <20230413090735.4182-4-yi-de.wu@mediatek.com>
- <1aa701cc-92ca-71be-0663-df4bfae66c2f@linaro.org>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <1aa701cc-92ca-71be-0663-df4bfae66c2f@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20230413090128.60119-1-gehao@kylinos.cn>
+References: <20230413090128.60119-1-gehao@kylinos.cn>
+Subject: Re: [PATCH] mediatek/clk-mt8173-apmixedsys: convert to devm_platform_ioremap_resource
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: gehao@kylinos.cn, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Hao Ge <gehao@kylinos.cn>, matthias.bgg@gmail.com, mturquette@baylibre.com
+Date: Thu, 13 Apr 2023 11:40:22 -0700
+User-Agent: alot/0.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230413_100851_628238_8751ACF7 
-X-CRM114-Status: GOOD (  14.50  )
+X-CRM114-CacheID: sfid-20230413_114025_859492_C909E10D 
+X-CRM114-Status: UNSURE (   9.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,41 +73,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Quoting Hao Ge (2023-04-13 02:01:28)
+> diff --git a/drivers/clk/mediatek/clk-mt8173-apmixedsys.c b/drivers/clk/m=
+ediatek/clk-mt8173-apmixedsys.c
+> index a56c5845d07a..fe386bf8225d 100644
+> --- a/drivers/clk/mediatek/clk-mt8173-apmixedsys.c
+> +++ b/drivers/clk/mediatek/clk-mt8173-apmixedsys.c
+> @@ -90,7 +90,7 @@ static int clk_mt8173_apmixed_probe(struct platform_dev=
+ice *pdev)
+>         struct clk_hw *hw;
+>         int r;
+> =20
+> -       base =3D of_iomap(node, 0);
+> +       base =3D devm_platform_ioremap_resource(pdev, 0);
+>         if (!base)
 
+This needs to be updated.
 
-On 13/04/2023 14:55, Krzysztof Kozlowski wrote:
-> On 13/04/2023 11:07, Yi-De Wu wrote:
->> From: "Yingshiuan Pan" <yingshiuan.pan@mediatek.com>
->>
->> GenieZone is MediaTek proprietary hypervisor solution, and it is running
->> in EL2 stand alone as a type-I hypervisor. This patch exports a set of
->> ioctl interfaces for userspace VMM (e.g., crosvm) to operate guest VMs
->> lifecycle (creation, running, and destroy) on GenieZone.
->>
->> Signed-off-by: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
->> Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
->> ---
->>   arch/arm64/include/uapi/asm/gzvm_arch.h       |  79 ++++
->>   drivers/soc/mediatek/Kconfig                  |   2 +
->>   drivers/soc/mediatek/Makefile                 |   1 +
->>   drivers/soc/mediatek/virt/geniezone/Kconfig   |  17 +
-> 
-> Hypervisor drivers do not go to soc. Stop shoving there everything from
-> your downstream. Find appropriate directory, e.g. maybe drivers/virt.
+>                 return PTR_ERR(base);
 
-Acked, what is the reason you want to add this to drivers/soc instead of 
-drivers/virt?
-
-Regards,
-Matthias
-
-> See:
-> https://lore.kernel.org/all/20230304010632.2127470-1-quic_eberman@quicinc.com/
-> 
-> You should follow that discussion as well and be sure that all concerns
-> raised for Gunyah are solved also here.
-> 
-> Best regards,
-> Krzysztof
-> 
+And PTR_ERR(NULL) is 0, which is wrong.
 
