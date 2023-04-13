@@ -4,80 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57A77C77B76
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Apr 2023 02:37:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CFA2C77B6C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Apr 2023 04:07:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=d/yiFmClf4lDuOOtw2W7qpmE+hwyChznjYTWrJTEjlo=; b=o4hvxe95krUKjqoZEZWZMxSKHw
-	7rfqLoPikN0yGbr1aYX6EYuofnkcjiA5A0as7Hwz6RhizwECsD7nu8J35rxXmbpMj3gWHQhpydNCf
-	sESHmYm3B2wMjBqXLl2IfIPSTOeS5UL2S0Gcu6/AHI9DnJ9Q8WXaIM8GradU2vMyzpI/sVcxRLk9z
-	jX7jzta5y+k+/m8IpRmBKg8YxRMeCP7sBaqLXz8bGj24ifB4mmPCdtuhFFMFCt8XxidyWYmGVvQsv
-	U2BPOJiV2mumGjJHXOyEoqq8Ab4CGbDkUrjRawcSBHkutBZrSAbKDLmjP7aJpUOWcEmU3GcGrRk3h
-	5MmXU6+g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=J9/3gRvZKQh9PBsv2u0f/zwWnC9OfkhakSj8L5mtnJ0=; b=TW4rPjhrSWKL0Ivfnxn1ab03Pd
+	O6G/8BRhc1sKAheOCok+7kI/u119EGixTK0XRBAZCTBBvYZJHamMFCsxiFsxTtZHGYhotYy9+NOwo
+	I7HxzRPPp+Q5GJ89dq8+NQ/qy3NYzqdlJzAEQapGOnLIh0xwXpHXgBOGDv9BgfekHNSDQWbLOr6Nx
+	Nnmj8wAqtiuBrSidCeGGitWAlft0O3LKNVtoNKLbdBahK1gadak8cpuqruc7bgP1Ta2qZfmF2aByF
+	X4ofzpko6du8ZH+b+yqSUbFCuzQBfqNEhqzLQT4ushvLTJEleWzhaRbaEk+SpdOLOC+lHDmZyV+Qq
+	0sGxqxbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmmpp-004pd7-0e;
-	Thu, 13 Apr 2023 02:37:17 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pmoEX-004xz2-07;
+	Thu, 13 Apr 2023 04:06:53 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmmpl-004pbS-0O;
-	Thu, 13 Apr 2023 02:37:14 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id AA7F063A8B;
-	Thu, 13 Apr 2023 02:37:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 05D9DC433EF;
-	Thu, 13 Apr 2023 02:37:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1681353432;
-	bh=jsjBEOZwB8RMsZXCuZdkFvfdRD0+Z8644G2JCLOQ6+c=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=GIBZE3JT8ahYgezYRdoUqHJnRxvI9GbDS+7T2VOVjFpbMcVHuVCGi93otKdQvZd4r
-	 ++RPW+d7GttOqqQme8/uNrLQN4g6nzQ4rORsVBEH23dpCt0voGOgW2Mdz+qZqg5ls7
-	 c/iA5llnW2D1DyjfgTvCMMe0ZAiRFhT4BaYqjRecDDAzLDlim/7Wlif/cwb8gFndEu
-	 3J8l6eTk/cjsSrpizxVc4wfYMotH5zVNF5lI1nAKZWeBLmRhgSpRqnLjzD0gOZuVe3
-	 c3aq3gtrOsUxPg9Tn3wYzu290c75//5F2u5tWfuUPiNp7yNrEQ6DCT4cvA2UECLDbQ
-	 dFyOHoF3r8RFw==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: "Jiri Slaby (SUSE)" <jirislaby@kernel.org>,
-	Chandrashekar Devegowda <chandrashekar.devegowda@intel.com>,
-	Intel Corporation <linuxwwan@intel.com>,
-	Chiranjeevi Rapolu <chiranjeevi.rapolu@linux.intel.com>,
-	Liu Haijun <haijun.liu@mediatek.com>,
-	M Chetan Kumar <m.chetan.kumar@linux.intel.com>,
-	Ricardo Martinez <ricardo.martinez@linux.intel.com>,
-	Loic Poulain <loic.poulain@linaro.org>,
-	Sergey Ryazanov <ryazanov.s.a@gmail.com>,
-	Johannes Berg <johannes@sipsolutions.net>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	netdev@vger.kernel.org,
-	Sasha Levin <sashal@kernel.org>,
-	matthias.bgg@gmail.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.1 09/17] net: wwan: t7xx: do not compile with -Werror
-Date: Wed, 12 Apr 2023 22:36:37 -0400
-Message-Id: <20230413023647.74661-9-sashal@kernel.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230413023647.74661-1-sashal@kernel.org>
-References: <20230413023647.74661-1-sashal@kernel.org>
+	id 1pmoET-004xxa-1G;
+	Thu, 13 Apr 2023 04:06:50 +0000
+X-UUID: 9820d4e4d9b011edb7d8d11f642b8e78-20230412
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=J9/3gRvZKQh9PBsv2u0f/zwWnC9OfkhakSj8L5mtnJ0=;
+	b=gfy8+G8RnDoTOaUeZa1OyteREK6iu+vk4vX4CCI95SQMhlnKFFxEz6Z++uafiZ2/DiXjkIpjJbOxgCDWx76dDf3WhQ2+agPSvW5k1zTW+mTH9gVQ2k9UmhEpDoOJm91NkJlT8tiYFpZuW02f0cGflXbq7tIu98PgP1jhLxnYtvw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22,REQID:dcd4ea9d-52e1-4af9-a920-09b4a878c3b9,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:90
+X-CID-INFO: VERSION:1.1.22,REQID:dcd4ea9d-52e1-4af9-a920-09b4a878c3b9,IP:0,URL
+	:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
+	N:quarantine,TS:90
+X-CID-META: VersionHash:120426c,CLOUDID:d4212ba1-8fcb-430b-954a-ba3f00fa94a5,B
+	ulkID:230413120642XB6MOJBC,BulkQuantity:0,Recheck:0,SF:38|29|28|17|19|48,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+	,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: 9820d4e4d9b011edb7d8d11f642b8e78-20230412
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <xinlei.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1857710912; Wed, 12 Apr 2023 21:06:40 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Thu, 13 Apr 2023 12:06:38 +0800
+Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Thu, 13 Apr 2023 12:06:37 +0800
+From: <xinlei.lee@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
+	<daniel@ffwll.ch>, <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+	<matthias.bgg@gmail.com>, <jitao.shi@mediatek.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Xinlei Lee
+	<xinlei.lee@mediatek.com>
+Subject: [PATCH 0/2] Add compatible to increase MT8188 audio control
+Date: Thu, 13 Apr 2023 12:06:23 +0800
+Message-ID: <1681358785-6930-1-git-send-email-xinlei.lee@mediatek.com>
+X-Mailer: git-send-email 2.6.4
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230412_193713_233347_3CA83680 
-X-CRM114-Status: GOOD (  11.53  )
+X-CRM114-CacheID: sfid-20230412_210649_571497_50D39AA4 
+X-CRM114-Status: UNSURE (   7.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,60 +89,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Jiri Slaby (SUSE)" <jirislaby@kernel.org>
+From: Xinlei Lee <xinlei.lee@mediatek.com>
 
-[ Upstream commit 362f0b6678ad1377c322a7dd237ea6785efc7342 ]
+Add dt-binding documentation of dp-tx for MediaTek MT8188 SoC.
+Mainly add the following two flag:
 
-When playing with various compilers or their versions, some choke on
-the t7xx code. For example (with gcc 13):
- In file included from ./arch/s390/include/generated/asm/rwonce.h:1,
-                  from ../include/linux/compiler.h:247,
-                  from ../include/linux/build_bug.h:5,
-                  from ../include/linux/bits.h:22,
-                  from ../drivers/net/wwan/t7xx/t7xx_state_monitor.c:17:
- In function 'preempt_count',
-     inlined from 't7xx_fsm_append_event' at ../drivers/net/wwan/t7xx/t7xx_state_monitor.c:439:43:
- ../include/asm-generic/rwonce.h:44:26: error: array subscript 0 is outside array bounds of 'const volatile int[0]' [-Werror=array-bounds=]
+1.The audio packet arrangement function is to only arrange audio
+packets into the Hblanking area. In order to align with the HW
+default setting of g1200, this function needs to be turned off.
 
-There is no reason for any code in the kernel to be built with -Werror
-by default. Note that we have generic CONFIG_WERROR. So if anyone wants
--Werror, they can enable that.
+2.Due to the difference of HW, different dividers need to be set.
 
-Signed-off-by: Jiri Slaby (SUSE) <jirislaby@kernel.org>
-Link: https://lore.kernel.org/all/20230330232717.1f8bf5ea@kernel.org/
-Cc: Chandrashekar Devegowda <chandrashekar.devegowda@intel.com>
-Cc: Intel Corporation <linuxwwan@intel.com>
-Cc: Chiranjeevi Rapolu <chiranjeevi.rapolu@linux.intel.com>
-Cc: Liu Haijun <haijun.liu@mediatek.com>
-Cc: M Chetan Kumar <m.chetan.kumar@linux.intel.com>
-Cc: Ricardo Martinez <ricardo.martinez@linux.intel.com>
-Cc: Loic Poulain <loic.poulain@linaro.org>
-Cc: Sergey Ryazanov <ryazanov.s.a@gmail.com>
-Cc: Johannes Berg <johannes@sipsolutions.net>
-Cc: "David S. Miller" <davem@davemloft.net>
-Cc: Eric Dumazet <edumazet@google.com>
-Cc: Jakub Kicinski <kuba@kernel.org>
-Cc: Paolo Abeni <pabeni@redhat.com>
-Cc: netdev@vger.kernel.org
-Signed-off-by: David S. Miller <davem@davemloft.net>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/net/wwan/t7xx/Makefile | 2 --
- 1 file changed, 2 deletions(-)
+Base on the branch of linus/master v6.3.
 
-diff --git a/drivers/net/wwan/t7xx/Makefile b/drivers/net/wwan/t7xx/Makefile
-index dc6a7d682c159..5e6398b527e72 100644
---- a/drivers/net/wwan/t7xx/Makefile
-+++ b/drivers/net/wwan/t7xx/Makefile
-@@ -1,7 +1,5 @@
- # SPDX-License-Identifier: GPL-2.0-only
- 
--ccflags-y += -Werror
--
- obj-${CONFIG_MTK_T7XX} := mtk_t7xx.o
- mtk_t7xx-y:=	t7xx_pci.o \
- 		t7xx_pcie_mac.o \
+Xinlei Lee (2):
+  dt-bindings: display: mediatek: dp: Add compatible for MediaTek MT8188
+  drm/mediatek: dp: Add the audio control to mtk_dp_data struct
+
+ .../display/mediatek/mediatek,dp.yaml         |  1 +
+ drivers/gpu/drm/mediatek/mtk_dp.c             | 32 ++++++++++++++++++-
+ drivers/gpu/drm/mediatek/mtk_dp_reg.h         |  5 +++
+ 3 files changed, 37 insertions(+), 1 deletion(-)
+
 -- 
-2.39.2
+2.18.0
 
 
