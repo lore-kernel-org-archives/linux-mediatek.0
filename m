@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0141EC77B76
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Apr 2023 10:47:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A11AC77B6E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Apr 2023 10:47:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vDvbn+OKU+FkX+vzHaassPaSvu45aIpxIwkfP4GTe8g=; b=TKsFI/EljBDPDpOTVXZvlpzSlz
-	lSQvmRhDXUouFFMJiZDSuYWbqS6aBNYP+zYa7q6OQHTsHowE4GmuIvLLKObmF+JVtsBSHmOnrxrMX
-	BFmf+3Ny2VcbmeGLkz/OkGtU9Deygg4bSqy/6/Ggbe1PL3aUefkw27jCuzsjZW7Rs6xfIhYs+OLAm
-	VtXgCyHBUkcuf/C+CN47O9DlMGNGwYEDXp5kehVGjKXAeHJTystSDQdmFTBlZMs+Sm852bR1t4nT2
-	l/rbc7wZ1YMDiUHylqKh77EcnKZtzENL+TyXPP/qy/ZI8P6ZEZx2jC5ELhqNozzq/yitc1PU8YRrX
-	xfgnx3PQ==;
+	bh=iQxj2f8v6Hq2mM43K9p34deiZ+cOeCScETZMUSLPaL4=; b=xReBwcQrD3D4s4TbkB1O9RhRxr
+	NxHvWDdPCffJwQjWVW18sGouNei0XnSI2HAzN4PBsRkJsTlEZKsRyp8ONMp4IHChrc/F0Awagn58N
+	FJeIwSO7TkXpIEhm6cJBGZUeyz9whkcKbR4ts6lLvjijbAGBBZTdWIBhJk/OGIOp98uGU2YRR0HST
+	OtN0F4Cfz74banuqEhzI7bxs0wCTYCc+n2NEE1BBW1ELdkP+pbXlYCNUBWTZQG+RNIpkFG+D6dItF
+	Yi1qOt5DJWNE7nNel3jOJ7RySoqEVfLCQQcNPRTRynZMO+zjopkB7GkUTkJy36wa39E5aNebk20kM
+	HtCmsa1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmuUS-005umV-0q;
-	Thu, 13 Apr 2023 10:47:44 +0000
+	id 1pmuUH-005uhy-2K;
+	Thu, 13 Apr 2023 10:47:33 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmuUF-005ufi-2c;
-	Thu, 13 Apr 2023 10:47:33 +0000
-X-UUID: 908fe4dad9e811edb7d8d11f642b8e78-20230413
+	id 1pmuUD-005ufY-2Q;
+	Thu, 13 Apr 2023 10:47:31 +0000
+X-UUID: 91567078d9e811edb7d8d11f642b8e78-20230413
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=vDvbn+OKU+FkX+vzHaassPaSvu45aIpxIwkfP4GTe8g=;
-	b=qWVp7ay+00anKGtdTUQam98cd1Cb4og/r0QW0+60Nhx3OAIt3TpiiAbcAtUzrj2HlebXd8IJ5BFhjhtzFOgC4XG0nRUxKxQaQ1yAwQ5KAlLKwEIqXIizHMpUy8KcvxmwQ/l6iH+IcdDgznNo/BabWu+bqmDLEu4qPs3YZXl/2J8=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=iQxj2f8v6Hq2mM43K9p34deiZ+cOeCScETZMUSLPaL4=;
+	b=mQlTj9/+hvbU7lV4QzkpboYtY3dQAgbNkV9VJFLg7lxUtAfCa5v82LZDCL5KagkGseOi6Gqz3kY47JS53G/fsc5TnTkdEPj9m/VY0fvZp0F962wD5ASO+FHXHONOFpC2vHgjnBOV6P8kIudE+AIKqjQIQs3wlbpY5gvvRyrSa9M=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:6bde77c7-3350-4daa-ad43-daad3a89bf37,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:120426c,CLOUDID:88bff283-cd9c-45f5-8134-710979e3df0e,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-O-INFO: VERSION:1.1.22,REQID:966ad3a9-b11d-4000-9b53-fdc7af646f0a,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACT
+	ION:release,TS:-55
+X-CID-META: VersionHash:120426c,CLOUDID:555ed9ea-db6f-41fe-8b83-13fe7ed1ef52,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:2,IP:nil,UR
+	L:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-UUID: 908fe4dad9e811edb7d8d11f642b8e78-20230413
+X-UUID: 91567078d9e811edb7d8d11f642b8e78-20230413
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <trevor.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 82538700; Thu, 13 Apr 2023 03:47:19 -0700
+	with ESMTP id 339178552; Thu, 13 Apr 2023 03:47:21 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Thu, 13 Apr 2023 18:47:17 +0800
+ 15.2.1118.25; Thu, 13 Apr 2023 18:47:18 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Thu, 13 Apr 2023 18:47:17 +0800
+ 15.2.1118.25 via Frontend Transport; Thu, 13 Apr 2023 18:47:18 +0800
 From: Trevor Wu <trevor.wu@mediatek.com>
 To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
 	<perex@perex.cz>, <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
@@ -58,9 +58,9 @@ To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
 CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
 	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>
-Subject: [PATCH 1/7] ASoC: mediatek: mt8188: remove supply AUDIO_HIRES
-Date: Thu, 13 Apr 2023 18:47:07 +0800
-Message-ID: <20230413104713.7174-2-trevor.wu@mediatek.com>
+Subject: [PATCH 5/7] ASoC: mediatek: mt8188: combine afe component registration
+Date: Thu, 13 Apr 2023 18:47:11 +0800
+Message-ID: <20230413104713.7174-6-trevor.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230413104713.7174-1-trevor.wu@mediatek.com>
 References: <20230413104713.7174-1-trevor.wu@mediatek.com>
@@ -68,9 +68,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230413_034731_856151_1B5A1A4F 
-X-CRM114-Status: UNSURE (   9.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230413_034729_787976_7FE83909 
+X-CRM114-Status: GOOD (  13.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,90 +84,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-AUDIO_HIRES is not required in MT8188. Because top_audio_h is disabled
-when hires clock is not used, set_parent is a redundant operation.
+There is no benefit to separate two components for AFE, so DAI driver
+registration is moved to dev_snd_soc_register_component to merge these
+two components.
 
 Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
 ---
- sound/soc/mediatek/mt8188/mt8188-dai-adda.c | 37 ---------------------
- 1 file changed, 37 deletions(-)
+ sound/soc/mediatek/mt8188/mt8188-afe-pcm.c | 37 ++--------------------
+ 1 file changed, 2 insertions(+), 35 deletions(-)
 
-diff --git a/sound/soc/mediatek/mt8188/mt8188-dai-adda.c b/sound/soc/mediatek/mt8188/mt8188-dai-adda.c
-index d71696901553..fed9f927e623 100644
---- a/sound/soc/mediatek/mt8188/mt8188-dai-adda.c
-+++ b/sound/soc/mediatek/mt8188/mt8188-dai-adda.c
-@@ -18,7 +18,6 @@
- #define ADDA_HIRES_THRES 48000
+diff --git a/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c b/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
+index e5f9373bed56..fecc891f892d 100644
+--- a/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
++++ b/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
+@@ -1898,10 +1898,6 @@ static const struct snd_kcontrol_new mt8188_memif_controls[] = {
+ 			    MT8188_AFE_MEMIF_UL10),
+ };
  
- enum {
--	SUPPLY_SEQ_CLOCK_SEL,
- 	SUPPLY_SEQ_ADDA_DL_ON,
- 	SUPPLY_SEQ_ADDA_MTKAIF_CFG,
- 	SUPPLY_SEQ_ADDA_UL_ON,
-@@ -242,34 +241,6 @@ static int mtk_adda_ul_event(struct snd_soc_dapm_widget *w,
- 	return 0;
+-static const struct snd_soc_component_driver mt8188_afe_pcm_dai_component = {
+-	.name = "mt8188-afe-pcm-dai",
+-};
+-
+ static const struct mtk_base_memif_data memif_data[MT8188_AFE_MEMIF_NUM] = {
+ 	[MT8188_AFE_MEMIF_DL2] = {
+ 		.name = "DL2",
+@@ -3142,9 +3138,8 @@ static int mt8188_afe_pcm_dev_probe(struct platform_device *pdev)
+ 	struct mtk_base_afe *afe;
+ 	struct mt8188_afe_private *afe_priv;
+ 	struct device *dev;
+-	int i, irq_id, ret;
+-	struct snd_soc_component *component;
+ 	struct reset_control *rstc;
++	int i, irq_id, ret;
+ 
+ 	ret = dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(33));
+ 	if (ret)
+@@ -3280,34 +3275,12 @@ static int mt8188_afe_pcm_dev_probe(struct platform_device *pdev)
+ 
+ 	/* register component */
+ 	ret = devm_snd_soc_register_component(dev, &mt8188_afe_component,
+-					      NULL, 0);
++					      afe->dai_drivers, afe->num_dai_drivers);
+ 	if (ret) {
+ 		dev_warn(dev, "err_platform\n");
+ 		goto err_pm_put;
+ 	}
+ 
+-	component = devm_kzalloc(&pdev->dev, sizeof(*component), GFP_KERNEL);
+-	if (!component) {
+-		ret = -ENOMEM;
+-		goto err_pm_put;
+-	}
+-
+-	ret = snd_soc_component_initialize(component,
+-					   &mt8188_afe_pcm_dai_component,
+-					   &pdev->dev);
+-	if (ret)
+-		goto err_pm_put;
+-#ifdef CONFIG_DEBUG_FS
+-	component->debugfs_prefix = "pcm";
+-#endif
+-	ret = snd_soc_add_component(component,
+-				    afe->dai_drivers,
+-				    afe->num_dai_drivers);
+-	if (ret) {
+-		dev_warn(dev, "err_add_component\n");
+-		goto err_pm_put;
+-	}
+-
+ 	mt8188_afe_init_registers(afe);
+ 
+ 	pm_runtime_put_sync(&pdev->dev);
+@@ -3323,11 +3296,6 @@ static int mt8188_afe_pcm_dev_probe(struct platform_device *pdev)
+ 	return ret;
  }
  
--static int mtk_audio_hires_event(struct snd_soc_dapm_widget *w,
--				 struct snd_kcontrol *kcontrol,
--				 int event)
+-static void mt8188_afe_pcm_dev_remove(struct platform_device *pdev)
 -{
--	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
--	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
--	struct mt8188_afe_private *afe_priv = afe->platform_priv;
--	struct clk *clk = afe_priv->clk[MT8188_CLK_TOP_AUDIO_H_SEL];
--	struct clk *clk_parent;
--
--	dev_dbg(afe->dev, "%s(), name %s, event 0x%x\n",
--		__func__, w->name, event);
--
--	switch (event) {
--	case SND_SOC_DAPM_PRE_PMU:
--		clk_parent = afe_priv->clk[MT8188_CLK_APMIXED_APLL1];
--		break;
--	case SND_SOC_DAPM_POST_PMD:
--		clk_parent = afe_priv->clk[MT8188_CLK_XTAL_26M];
--		break;
--	default:
--		return 0;
--	}
--	mt8188_afe_set_clk_parent(afe, clk, clk_parent);
--
--	return 0;
+-	snd_soc_unregister_component(&pdev->dev);
 -}
 -
- static int mtk_afe_adc_hires_connect(struct snd_soc_dapm_widget *source,
- 				     struct snd_soc_dapm_widget *sink)
- {
-@@ -364,12 +335,6 @@ static const struct snd_soc_dapm_widget mtk_dai_adda_widgets[] = {
- 			      mtk_adda_ul_event,
- 			      SND_SOC_DAPM_PRE_PMU | SND_SOC_DAPM_POST_PMD),
+ static const struct of_device_id mt8188_afe_pcm_dt_match[] = {
+ 	{ .compatible = "mediatek,mt8188-afe", },
+ 	{},
+@@ -3346,7 +3314,6 @@ static struct platform_driver mt8188_afe_pcm_driver = {
+ 		   .pm = &mt8188_afe_pm_ops,
+ 	},
+ 	.probe = mt8188_afe_pcm_dev_probe,
+-	.remove_new = mt8188_afe_pcm_dev_remove,
+ };
  
--	SND_SOC_DAPM_SUPPLY_S("AUDIO_HIRES", SUPPLY_SEQ_CLOCK_SEL,
--			      SND_SOC_NOPM,
--			      0, 0,
--			      mtk_audio_hires_event,
--			      SND_SOC_DAPM_PRE_PMU | SND_SOC_DAPM_POST_PMD),
--
- 	SND_SOC_DAPM_SUPPLY_S("ADDA_MTKAIF_CFG", SUPPLY_SEQ_ADDA_MTKAIF_CFG,
- 			      SND_SOC_NOPM,
- 			      0, 0,
-@@ -397,7 +362,6 @@ static const struct snd_soc_dapm_route mtk_dai_adda_routes[] = {
- 	{"ADDA Capture", NULL, "ADDA_MTKAIF_CFG"},
- 	{"ADDA Capture", NULL, "aud_adc"},
- 	{"ADDA Capture", NULL, "aud_adc_hires", mtk_afe_adc_hires_connect},
--	{"aud_adc_hires", NULL, "AUDIO_HIRES"},
- 
- 	{"I168", NULL, "ADDA Capture"},
- 	{"I169", NULL, "ADDA Capture"},
-@@ -406,7 +370,6 @@ static const struct snd_soc_dapm_route mtk_dai_adda_routes[] = {
- 	{"ADDA Playback", NULL, "ADDA Playback Enable"},
- 	{"ADDA Playback", NULL, "aud_dac"},
- 	{"ADDA Playback", NULL, "aud_dac_hires", mtk_afe_dac_hires_connect},
--	{"aud_dac_hires", NULL, "AUDIO_HIRES"},
- 
- 	{"DL_GAIN", NULL, "O176"},
- 	{"DL_GAIN", NULL, "O177"},
+ module_platform_driver(mt8188_afe_pcm_driver);
 -- 
 2.18.0
 
