@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B75A8C77B6C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Apr 2023 09:02:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 000D4C77B6C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Apr 2023 09:02:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hePEpcTr4MAQXnMqmGvunBUBaXlfTQunP3G36DUCNCs=; b=u76+Ipy92Iu01in9TTpWhqr8Ja
-	pgFCNxuTg+K9hXe4mNf4UkCUE2HaPThhOqcfuxAkcna9hcFwaeLhji3KpRn606o5g7ZWwCH2M0FMJ
-	0iDiD6xRk9b+2pidwMrRerGnipnqJtNditaTNa/twP53bK2GQGUQERsVq7b0vTI/aZWkaYzoqzIes
-	H8lCowZwCzozL1Raw6QFRRenWgM7ThGJ+gHLs3z8MEUbaB80yMMJHKBLbImGHnRJFeww2Vc8/IKC9
-	LBcvA5JderAgfE05TiWtMtpen++Mikwc2qOpq1mvMoVMskMB33YiebyzTu8RXio4OQ51OQzqvjfhM
-	DIcK8YcA==;
+	bh=ldTjgbcAixArTLp8Y3OwHiWDDm8sGdVLf5wYTEAfqeg=; b=tM/ljvA8b02uCuF/BsLjxRdioI
+	e11otAmV6s6tSiqaRxYUBB1udaKOXWHX757nnb3RBR3GO7H5/fmMqlMuJ2DY5xixe9JtjKk6FC0Oi
+	gyVd0IrzZJZT+zHvhJTYp2xE/ejrsZXKXGF9lHlQQRFDxO4gb5SaQztXuYyCHdqWlvqkrnw3iAy1V
+	Pwd2eyFfuq4rqoRcdCYHkMMnBOYwQTk9FoRNBZbZHRA9CYoyW+HZkADLwqcFPbWpuNIOUxk0TEzoH
+	gdNYyNui/jttKHrD8Urnngz+RMb6hu5hxEuHK/hyVb8oUyi7bm0v7OsSLJ9veWzaY96rmMLH8iJh/
+	o3tQ8H8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmsqW-005V8C-2z;
-	Thu, 13 Apr 2023 09:02:24 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1pmsqi-005VDN-02;
+	Thu, 13 Apr 2023 09:02:36 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmsqS-005V54-27;
-	Thu, 13 Apr 2023 09:02:23 +0000
-Received: by mail-wm1-x330.google.com with SMTP id i8-20020a05600c354800b003ee93d2c914so9307036wmq.2;
-        Thu, 13 Apr 2023 02:02:18 -0700 (PDT)
+	id 1pmsqe-005VA4-2O;
+	Thu, 13 Apr 2023 09:02:34 +0000
+Received: by mail-wr1-x429.google.com with SMTP id w24so3867157wra.10;
+        Thu, 13 Apr 2023 02:02:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1681376537; x=1683968537;
+        d=gmail.com; s=20221208; t=1681376548; x=1683968548;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=hePEpcTr4MAQXnMqmGvunBUBaXlfTQunP3G36DUCNCs=;
-        b=i384PkJRVYCYGBvDYMZG66hIP7oQMpQ+MeQp/fPjllVefZwhzkl3kDUOGFu/vypz8T
-         D6tL+cedlOpEaUDl2/IgVaOdz7L8MEpodY9vNHfqICdYqG8q7ChwsFNgjN7fZtv3mDSW
-         gJPmjsKow89Ry8rWAXCZGQao+/+nYq7MLq6ne7d2RLTRxdBNxPufaWEPyI38RV8QShp/
-         qlKh7Oq95ZAXhbB+RFkVTwXyyKtwMH/zm3QUHdzXfM3TxZAWK0FXb+dVTv1NMJzdjfTa
-         +IMnx+ov+3BB/U97k1VQNoHS0DRz6SXfXLtn1HBSl0R/hCTO3meFsJhRVNi3SSLWq6JN
-         XYdQ==
+        bh=ldTjgbcAixArTLp8Y3OwHiWDDm8sGdVLf5wYTEAfqeg=;
+        b=Sq5siWuukFu2ZV2SC5RtzEOr90Zr3KADENV26Bcj0bkBKMEDDDiM4JLiedIbsGmM6/
+         BpcIyDVkAfqs0T5sp4+dhaJ/a8fvtOtLU/dVNXQtVb6muPxOUfylQpCtAPUnf9ZDnD1N
+         OUsXuUxo4AcxJGPKCiv29bMPXUeeKmzTa5jzzYG9xelseWYh7pI/mtRJw26RhA9rqU+6
+         PQMoTZ4VJX8y2aAEA4TQrdn8lu4dKPxyjcspBIKNTkRnc21PjvOPW2Z8ABijJgHRH18k
+         VV9O2EQfumjBnwcdMIxGuo+bLSkMnncdkcRHP6m4jYcMjXXD2cjI1EktepxPYL6li4Nc
+         I5kA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681376537; x=1683968537;
+        d=1e100.net; s=20221208; t=1681376548; x=1683968548;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=hePEpcTr4MAQXnMqmGvunBUBaXlfTQunP3G36DUCNCs=;
-        b=ZzZPE01wnACjjtbL+hpeFU/8xzTiYbLVYx7Acatl7ASq19V2TX4h77jQ/rmhpqf99R
-         wUkex2VN4xyS8xrvIQdnG+yHkAAKjLI7eq++5tEU9FJuakPKHkinGqk/tpsfQs3eLH0r
-         umxdT+PVByZN2qF2kDp4mNK4pzLULoIxF7/EHCThkhr70vL+Fgf3btzZgkemasUIQ98g
-         zObPhIXvVnBQ2Cptv9SCccnXBjloInVS/ZWA+GYfTHDMI4xK2sJFw9wsRAZBiVtcRR6d
-         YfCzteKCVvXfNMPMN7fqpo5Jb4Z7lxtXgSocBUy4LYHytLJdH9fq4KYt8LvsJk0tci7C
-         PCaw==
-X-Gm-Message-State: AAQBX9ca1McZFPahPignS1cLTWn0Nqv1G+4rgv8o7PVT0ARd6PR4m6Cj
-	kOKeVHn8jXFqP2euo7spFxk=
-X-Google-Smtp-Source: AKy350aPIkSil2eNqxWa6pty/dkpEVy0N3KQzirw3H6p8KpaxSec/NGQXd6t3JGm8Dit1W6dKyunfA==
-X-Received: by 2002:a7b:cd0b:0:b0:3f0:310c:e3cf with SMTP id f11-20020a7bcd0b000000b003f0310ce3cfmr1204986wmj.37.1681376536720;
-        Thu, 13 Apr 2023 02:02:16 -0700 (PDT)
+        bh=ldTjgbcAixArTLp8Y3OwHiWDDm8sGdVLf5wYTEAfqeg=;
+        b=I3f2tEkIxlifCgZz4j4UDqUc13lGiHQSeVGxkkty1Q9YXna4+G7gM0QH/ut203f1N3
+         DPNGUc9Gz8rjlOj6zDB4L4FhnWQNwppRzRi8++dvsgWpdsv7tbtELxzpeE8JWx9gRJUX
+         O+U1GEnFsqrU2Gyj6NS/KDUtQCF45ndLJ+rjmSWCkjm41ZsXIe+x99kCVaHQzmNEyKzK
+         0+tpJkkhgZvkKqbLzluoRiLYXkq9+xHfycK0etU/UAmsN/WWlxraJqx4ekF9YwmUk1TI
+         iZkuHketyMSPzkEDqFEDm2Fpc8GNII+bvmN2JPwyAXlkF0K8q8XAcrh1rzxRAhToctqp
+         tr/A==
+X-Gm-Message-State: AAQBX9egfd2dQfK/8RdveXMerhOPvEDlgSE9/i7hv2tUAsuNw9w4G25s
+	u8exlRQg/0JPbw3/C1YlXuw=
+X-Google-Smtp-Source: AKy350asP4+G83mAEIf1p9IarcfPfSoPgb5XVETZON+sPwEmFsRqvaVHYjROuiy2L1CPru9rX5YgVQ==
+X-Received: by 2002:a5d:4d0c:0:b0:2ce:fd37:938c with SMTP id z12-20020a5d4d0c000000b002cefd37938cmr907993wrt.50.1681376548080;
+        Thu, 13 Apr 2023 02:02:28 -0700 (PDT)
 Received: from [192.168.0.32] ([37.222.243.26])
-        by smtp.gmail.com with ESMTPSA id x19-20020a1c7c13000000b003ef5b011b30sm1267080wmc.8.2023.04.13.02.02.15
+        by smtp.gmail.com with ESMTPSA id r16-20020a056000015000b002f21a96c161sm820964wrx.70.2023.04.13.02.02.26
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 13 Apr 2023 02:02:15 -0700 (PDT)
-Message-ID: <83323c24-304c-b129-88fa-f001c0d9e04d@gmail.com>
-Date: Thu, 13 Apr 2023 11:02:14 +0200
+        Thu, 13 Apr 2023 02:02:27 -0700 (PDT)
+Message-ID: <b986d097-6cb4-cbde-3cd1-b8d68d222d9d@gmail.com>
+Date: Thu, 13 Apr 2023 11:02:25 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.1
-Subject: Re: [PATCH 1/3] dt-bindings: display: mediatek: dsi: Add compatible
- for MediaTek MT8188
+Subject: Re: [PATCH 2/3] drm/mediatek: Add mt8188 dsi compatible to mtk_dsi.c
 Content-Language: en-US
 To: xinlei.lee@mediatek.com, chunkuang.hu@kernel.org, p.zabel@pengutronix.de,
  airlied@linux.ie, daniel@ffwll.ch, robh+dt@kernel.org,
@@ -78,14 +77,14 @@ Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <1681366162-4949-1-git-send-email-xinlei.lee@mediatek.com>
- <1681366162-4949-2-git-send-email-xinlei.lee@mediatek.com>
+ <1681366162-4949-3-git-send-email-xinlei.lee@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <1681366162-4949-2-git-send-email-xinlei.lee@mediatek.com>
+In-Reply-To: <1681366162-4949-3-git-send-email-xinlei.lee@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230413_020220_702525_7DFE295F 
-X-CRM114-Status: GOOD (  12.20  )
+X-CRM114-CacheID: sfid-20230413_020232_791948_C28052FD 
+X-CRM114-Status: GOOD (  15.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,7 +104,8 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On 13/04/2023 08:09, xinlei.lee@mediatek.com wrote:
 > From: Xinlei Lee <xinlei.lee@mediatek.com>
 > 
-> Add dt-binding documentation of dsi for MediaTek MT8188 SoC.
+> Add the compatible because there are different definitions for cmdq
+> register bit control in mt8188.
 > 
 > Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
 > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
@@ -113,19 +113,47 @@ On 13/04/2023 08:09, xinlei.lee@mediatek.com wrote:
 Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
 > ---
->   .../devicetree/bindings/display/mediatek/mediatek,dsi.yaml       | 1 +
->   1 file changed, 1 insertion(+)
+>   drivers/gpu/drm/mediatek/mtk_drm_drv.c | 2 ++
+>   drivers/gpu/drm/mediatek/mtk_dsi.c     | 8 ++++++++
+>   2 files changed, 10 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
-> index 4707b60238b0..13fa76299254 100644
-> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
-> @@ -29,6 +29,7 @@ properties:
->         - mediatek,mt8173-dsi
->         - mediatek,mt8183-dsi
->         - mediatek,mt8186-dsi
-> +      - mediatek,mt8188-dsi
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> index a13b36ac03a1..9ba05961479d 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> @@ -654,6 +654,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+>   	  .data = (void *)MTK_DSI },
+>   	{ .compatible = "mediatek,mt8186-dsi",
+>   	  .data = (void *)MTK_DSI },
+> +	{ .compatible = "mediatek,mt8188-dsi",
+> +	  .data = (void *)MTK_DSI },
+>   	{ }
+>   };
 >   
->     reg:
->       maxItems: 1
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> index 7d5250351193..500a3054282d 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -1208,6 +1208,12 @@ static const struct mtk_dsi_driver_data mt8186_dsi_driver_data = {
+>   	.has_size_ctl = true,
+>   };
+>   
+> +static const struct mtk_dsi_driver_data mt8188_dsi_driver_data = {
+> +	.reg_cmdq_off = 0xd00,
+> +	.has_shadow_ctl = true,
+> +	.has_size_ctl = true,
+> +};
+> +
+>   static const struct of_device_id mtk_dsi_of_match[] = {
+>   	{ .compatible = "mediatek,mt2701-dsi",
+>   	  .data = &mt2701_dsi_driver_data },
+> @@ -1217,6 +1223,8 @@ static const struct of_device_id mtk_dsi_of_match[] = {
+>   	  .data = &mt8183_dsi_driver_data },
+>   	{ .compatible = "mediatek,mt8186-dsi",
+>   	  .data = &mt8186_dsi_driver_data },
+> +	{ .compatible = "mediatek,mt8188-dsi",
+> +	  .data = &mt8188_dsi_driver_data },
+>   	{ },
+>   };
+>   MODULE_DEVICE_TABLE(of, mtk_dsi_of_match);
 
