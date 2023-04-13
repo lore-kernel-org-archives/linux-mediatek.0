@@ -4,78 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E7CBC77B6E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Apr 2023 16:41:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7672C77B61
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Apr 2023 17:09:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vGGwL9n4j9XBfhQxXlt7x2mowxQu7Cn68mznFVTPEG4=; b=vJhOAOjgnGE6gerVfZvq6vQT9O
-	oM8cO/EHZitCB4iPfh5ThX04IyN15sKd8iD+FHJCOenTillkHeTB0GDNApF5GCNRQ9QKZD9Q3q704
-	1PfmLrzVpqYcszsSl2msVpMR9icbqkbB0r2la/o8rohzoagezbuYPBRRQ1bTKj5zMhW9e7ptGYrEN
-	3NjRR+FigfPL5yypU8xSPty7C5MNi8iMpy0P176M9uhvsSAdUKUw5AH1mYSt7QcjjZ+cLrkTokJaO
-	S45We94AYWFrNLtAFlxFmecIEV4y9fC2yOwFsiRKhaTIsJMAysnjIJqU5B7qFLGrUJ7a2A/TEBbr/
-	Gn3DWy0w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vUAnBlFRSGBlwXwSQXAqm7P10EiEl+48o/NRTbPOIwI=; b=XBQi8PP5mAQ0cp159vs44WlfEM
+	NKMuvms96TLMnG1oUAZ+uIHHiSzu7WvSYz3uC+989fO4fRLdD8HYFIAynBpoHTcOCnsNrTZkt1qHp
+	F+LSeBt8ZXcKezZXxz9nWVGvShpPMA0Pp2kXWEYpwVT5y5QbrLdcW6Af4Xhw/lPH/WjUYhRjmi5HG
+	qMZRdvgQ+be0kW3dMiyw6hIK8GEk7ks3G/InvvPjb8TQnx2QiC9o1beWQ63cbZ8wmditfYaPUu6nS
+	93ZWAfLFFv70RNLOeKuVYCAAAPc6M4I2hm+pcpE7XVMfy6f+yqFNAkOfivxgz6KBncQy5WvyUuuup
+	2f9sepzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pn00N-006heo-2D;
-	Thu, 13 Apr 2023 16:41:03 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pn0RL-006m4F-1o;
+	Thu, 13 Apr 2023 17:08:55 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pn00J-006hd8-25;
-	Thu, 13 Apr 2023 16:41:01 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 2AE9664012;
-	Thu, 13 Apr 2023 16:40:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AF6EAC433D2;
-	Thu, 13 Apr 2023 16:40:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1681404058;
-	bh=vGGwL9n4j9XBfhQxXlt7x2mowxQu7Cn68mznFVTPEG4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Q4qbU++oL30gleJ1QlYq4GTotO8Lmvh6YytyVZCcRuR5s3IjDvF3uWhOhIyZLz/Mx
-	 wNd7acKvpf6+VIvor+hSln8Y4FrVW9d1nIvQnXbfPBQUxMVCBJ+7QO72f7X0wSJRJu
-	 s7BRD23eXgNPfOlzP0GFAVepvej/hRbj2YUmduUwJOEV2xFb0uTTiS1ZGiYljdi/l7
-	 YDKnY9pDZEIE6CqO06G9fMrAwli+1ERQOSXOuvSsh2RwjycGzlsV+vIEtDWPJLmdQW
-	 WCDJh+XnseI+rFyIqP5h0mmKBGBiM9ZGcMr+4Wvg9rxtIpZo/BX+ARRALfPBV1tS72
-	 8G89xntCCgHyg==
-Date: Thu, 13 Apr 2023 18:40:53 +0200
-From: Wolfram Sang <wsa@kernel.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: linux-i2c@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org, Qii Wang <qii.wang@mediatek.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Sam Shih <sam.shih@mediatek.com>
-Subject: Re: [PATCH v3 2/2] i2c: mediatek: add support for MT7981 SoC
-Message-ID: <ZDgwlY2kR9CCRV4h@sai>
-Mail-Followup-To: Wolfram Sang <wsa@kernel.org>,
-	Daniel Golle <daniel@makrotopia.org>, linux-i2c@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org, Qii Wang <qii.wang@mediatek.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Sam Shih <sam.shih@mediatek.com>
-References: <cover.1680857025.git.daniel@makrotopia.org>
- <7b5c6ba8da51ea6145fb71815a2f65a9e1d341c1.1680857025.git.daniel@makrotopia.org>
+	id 1pn0RH-006m1N-1t;
+	Thu, 13 Apr 2023 17:08:52 +0000
+Received: by mail-wr1-x434.google.com with SMTP id g5so18295257wrb.5;
+        Thu, 13 Apr 2023 10:08:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1681405727; x=1683997727;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=vUAnBlFRSGBlwXwSQXAqm7P10EiEl+48o/NRTbPOIwI=;
+        b=HWYW8/RVFPxSHRWBcro0ZM0vclYoDzFo9NEifLGdrjORDSE6iDq9AwFwfenSd8GxEt
+         rfRXewl/Bk7aKC89XahV+cxJJK05ZfxJY1Dp8BnrMhAPCHXF7I83wXYNTPf2jfmZmVT1
+         GkUe8G3rSbx0xGKbSHUu3PI5f7NRRPzrcgUIA30sxCAzFKjb+37KblE4FEkktfMna2ja
+         nSI5tXZ/8XawREqOXVtRL81+F26lOMjqD1toA7oWuaBseU9a4dPlQTCmVx9ETv2rL7ub
+         EGOqzjQXE46D1peydsH0koKhuHs41ofPDUSD1Z7SIUAqvdyYrS5UTWfMYAfDE7RlNSCW
+         632w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1681405727; x=1683997727;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=vUAnBlFRSGBlwXwSQXAqm7P10EiEl+48o/NRTbPOIwI=;
+        b=gwcB0CujlPr8SdP1X4zJ8sZzqTq0hYr2M6IRurF9gwTCTsv+Y+ad7DLDnARFTfUIwh
+         0kuZDkwm6qE3PWg7r5ox+gyL3mIL0mPMyMTIt9smqPQloJqWjV+ruaMf8DN7Av9BzL9J
+         /kMwIJlVHOZs+3SHuZRVSBOK7JcdJgjE5jujXjx2zX4t07mrB5zd90Cw3rJdvWCaERsK
+         ZSayliBuYG+ictJ5zZEM3GOUP+PtyBWsC0PaR3ycnWTFGbDJU+Mh6vceu+pHpAsStfZ9
+         3N+lIKlv/KyLykB6dN1AHiqK0jXaujtOLyLMffL94aLs8iSOewokiq930T7URtf1kYhk
+         tJhQ==
+X-Gm-Message-State: AAQBX9c4ZZwnnOe1eKg9v5rPH/CgNwX/R/bJL8s8943APDiN2m7nmMuz
+	YlgBfNAvs+V6wz2NYd+yx7I=
+X-Google-Smtp-Source: AKy350arxfCCpaVx1w4hHZM1E1HpJLjfl+cRZdLDdeSnQNukXu4TUaQgzkTfOoR3xnpv2XCmUfu/vg==
+X-Received: by 2002:a5d:63c4:0:b0:2ef:f9d:6adf with SMTP id c4-20020a5d63c4000000b002ef0f9d6adfmr2154403wrw.35.1681405726957;
+        Thu, 13 Apr 2023 10:08:46 -0700 (PDT)
+Received: from [192.168.0.32] ([37.222.243.26])
+        by smtp.gmail.com with ESMTPSA id u8-20020a5d6ac8000000b002eaac3a9beesm1700208wrw.8.2023.04.13.10.08.43
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 13 Apr 2023 10:08:45 -0700 (PDT)
+Message-ID: <5c1d69c8-d973-fa7b-1f14-c72729ff5594@gmail.com>
+Date: Thu, 13 Apr 2023 19:08:41 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="SUToNKZpPJbTqz61"
-Content-Disposition: inline
-In-Reply-To: <7b5c6ba8da51ea6145fb71815a2f65a9e1d341c1.1680857025.git.daniel@makrotopia.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [PATCH v1 3/6] soc: mediatek: virt: geniezone: Introduce
+ GenieZone hypervisor support
+Content-Language: en-US
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Yi-De Wu <yi-de.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Jonathan Corbet <corbet@lwn.net>, Catalin Marinas <catalin.marinas@arm.com>,
+ Will Deacon <will@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Yingshiuan Pan <yingshiuan.pan@mediatek.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Jades Shih <jades.shih@mediatek.com>,
+ Miles Chen <miles.chen@mediatek.com>, Ivan Tseng <ivan.tseng@mediatek.com>,
+ My Chuang <my.chuang@mediatek.com>, Shawn Hsiao <shawn.hsiao@mediatek.com>,
+ PeiLun Suei <peilun.suei@mediatek.com>, Ze-Yu Wang
+ <ze-yu.wang@mediatek.com>, Liju Chen <liju-clr.chen@mediatek.com>
+References: <20230413090735.4182-1-yi-de.wu@mediatek.com>
+ <20230413090735.4182-4-yi-de.wu@mediatek.com>
+ <1aa701cc-92ca-71be-0663-df4bfae66c2f@linaro.org>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <1aa701cc-92ca-71be-0663-df4bfae66c2f@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230413_094059_724131_183A1B2E 
-X-CRM114-Status: GOOD (  13.02  )
+X-CRM114-CacheID: sfid-20230413_100851_628238_8751ACF7 
+X-CRM114-Status: GOOD (  14.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,41 +108,40 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---SUToNKZpPJbTqz61
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Mon, Apr 10, 2023 at 05:19:38PM +0100, Daniel Golle wrote:
-> Add support for the I2C units found in the MediaTek MT7981 and MT7988
-> SoCs. Just like other recent MediaTek I2C units that also uses v3
-> register offsets (which differ from v2 only by OFFSET_SLAVE_ADDR being
-> 0x94 instead of 0x4).
->=20
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+On 13/04/2023 14:55, Krzysztof Kozlowski wrote:
+> On 13/04/2023 11:07, Yi-De Wu wrote:
+>> From: "Yingshiuan Pan" <yingshiuan.pan@mediatek.com>
+>>
+>> GenieZone is MediaTek proprietary hypervisor solution, and it is running
+>> in EL2 stand alone as a type-I hypervisor. This patch exports a set of
+>> ioctl interfaces for userspace VMM (e.g., crosvm) to operate guest VMs
+>> lifecycle (creation, running, and destroy) on GenieZone.
+>>
+>> Signed-off-by: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
+>> Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
+>> ---
+>>   arch/arm64/include/uapi/asm/gzvm_arch.h       |  79 ++++
+>>   drivers/soc/mediatek/Kconfig                  |   2 +
+>>   drivers/soc/mediatek/Makefile                 |   1 +
+>>   drivers/soc/mediatek/virt/geniezone/Kconfig   |  17 +
+> 
+> Hypervisor drivers do not go to soc. Stop shoving there everything from
+> your downstream. Find appropriate directory, e.g. maybe drivers/virt.
 
-Applied to for-next, thanks!
+Acked, what is the reason you want to add this to drivers/soc instead of 
+drivers/virt?
 
+Regards,
+Matthias
 
---SUToNKZpPJbTqz61
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmQ4MJUACgkQFA3kzBSg
-KbZdHBAAjyez1DTIsDARrKzP/UbWCGoQjGTYY7501ZMxXITGsLlJbWBUic04H0Bg
-lQSbfeGUjbr2hE11zUxTyNN05JfrmaLuyHJzRnIyew3h0c1Hvj60Z6o5C1fPKaCY
-SO9Y+q3+vwU93/qitrfsv263+se3N90bjlZy9VBZy8hZqCRkEHRpQtUIoKbqIpds
-FVLazo5j/C/dY9J02Hti+Tdc7VcE8BOynIzRFuNVHD3aKFylPsBkYBllO407OSY1
-VaPWsz9gYUgssfaRx+b68r+Ao/lT6Dsr/lKuUDXHAUqK6gcSl2X+6L6CKSQgnyZ+
-Pfv+kSi/YfZmmiHT2Ym6o1AfO+vBh1tULOqWkkRYrFGy6gnWHxNGqaSUT4qKaJL6
-hHfra1uVuk6jiJbJw8AuAQJV2homfAaiy3IBSN//hkmEon5yAlxZaKdpy4ujX6/l
-QUR7QmJKDzNiqRnh40OrICT5J8LDJaiMwedvM1Ru4yuAz0qhEnANYLbsdvIHMVfR
-QJDP1fX9Pxui8TpZbS3ixThB35WLuz6fG6SntT8jIG6xO636d7LNFhIUVlprHxDn
-gUHMePhVPqcKWSAYSApp1qgSwOJRgcWMAiTMDVYVIFmcWgul66ynlVM0613plwco
-7wzfMvgh2HtW3vT1iCz0WI7E8AcJkiIIGtCSvfWcSVNw4SJTj70=
-=5gZL
------END PGP SIGNATURE-----
-
---SUToNKZpPJbTqz61--
+> See:
+> https://lore.kernel.org/all/20230304010632.2127470-1-quic_eberman@quicinc.com/
+> 
+> You should follow that discussion as well and be sure that all concerns
+> raised for Gunyah are solved also here.
+> 
+> Best regards,
+> Krzysztof
+> 
 
