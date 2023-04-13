@@ -4,87 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADEB3C77B61
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Apr 2023 13:19:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A1CDC77B6E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Apr 2023 13:20:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3uZ2L6Z2WT9YlA2M5FGrOlxdAqlFCV2dHB/1lrAHpy8=; b=nhXp9E3SMpiXoDiPBAaJBaQy0I
-	6hMvsXnh6SNMKKf1kh4BnBph61UmZZXVp6hunfI4r2z3vWT79ZSJDDdbRQHc/H1tZXkTpbCQVvspt
-	qE/Y/eXG6WCG5iZYfN/pe+W87e8dU7FMSiPKQd/P7lMchXkR+nUCVBsjPJqkf4qxOYxX86G4tJ0Ds
-	OphyM339sV486sr4EhxCMUSO5ZRFv2o0wKbOwTi9zqJwsauC2xFctfOulzQ2zKJF4DhqbUFoDmUSY
-	aYTY0MISt/YLATgs/rEFD8XAkyhoBFUZB93QwagNc6lYUhbeMIjjHCec+la84AfBHokv2IPDsVoIj
-	13hlycWg==;
+	bh=WNFLBm9P5zjQNegZlohtpQtHq2lLlOO2MMnDqkjQZGA=; b=ppL4e9YgHdE/JA4iyfvyHB3Xaz
+	NaXY9Vvu3TEPWm1BsMzfuXoKOLvNeaoQrxFh3/HCblHh38iOt/yWcEgYgTic4jEhyWTzVWxEgBtlv
+	+kDRU2k7+i8WPWSkL7Qtd1RUevCBgxhijH/AW8AwFC6iTUmRp9hrphtiUyi9UZ2wF8heYwo5y8n4t
+	ZYOot5uPigrr4tJi4u3xXjlFiuHIoZDIDQtNP17minOhpVxY9Ce2guSQ5iTj8BnQXU9FG9P2lbJLn
+	PlycET1LP3LlUgGifH10lJ6PKtsZVT32p6hS5YGUEX42U1Jeug9DSEw+10L2XC/sXfHVnxfVKiv3E
+	sqZLWjnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmwrI-006FAM-0i;
-	Thu, 13 Apr 2023 13:19:28 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1pmwrw-006FUS-10;
+	Thu, 13 Apr 2023 13:20:08 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmwrD-006F7k-0j
-	for linux-mediatek@lists.infradead.org;
-	Thu, 13 Apr 2023 13:19:24 +0000
-Received: by mail-wm1-x336.google.com with SMTP id o6-20020a05600c4fc600b003ef6e6754c5so6157777wmq.5
-        for <linux-mediatek@lists.infradead.org>; Thu, 13 Apr 2023 06:19:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1681391961; x=1683983961;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=3uZ2L6Z2WT9YlA2M5FGrOlxdAqlFCV2dHB/1lrAHpy8=;
-        b=Ov3hk06jdZM9d+LdbrIweTCN7GSwWPVPVn8K7uK0TKIk+ttnUmCxFAYbX4B6Qow0v+
-         3yxNPHKSoX2xPg9VEAaI3ryZWdl4wWd/HpP2FFf1eXrfTpZR4R0T+KRJvq+SAkW4ypn4
-         rmgp4zxq7aKbyPsofkCGIkZkYE/9WOE9S8AlekWZERnszbZxr3jypF8yuwgsit2BKiYG
-         wJZrp/pLgjCxK0TxZCADbqdMrY/1YuvexbDG5OEcrI5YL2x7RqFPzNKG/UEEGOT9mLe/
-         bhE4rgwiO9H+h5ViytfFeTrueDyueuH0RrL/moWptinT8DITBsTLuN+LUJ2b+22rugnl
-         oHDQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681391961; x=1683983961;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=3uZ2L6Z2WT9YlA2M5FGrOlxdAqlFCV2dHB/1lrAHpy8=;
-        b=E4p2NBf8chgCxfa+l8Aacj2a2L5vruIguvhkKkqCsB4tkHbCz8Qcd/Dk9cjiBxVGyT
-         Ftom6sSY5kVNz5r8/mgaMitQ1s5K0g2x+d7MfXSsfXrIxRjHH06TGNAZMDtD2NiFVNef
-         gLvB+L4dP+ylmG/j4/IeDnHHgr7gzhz+OIJ6G5ah8dtoYMt5ltFf/2wiTJZjdbA/gdG4
-         gTSq0iRXusRdR5QNPl2xDwpeBMROYCX5Td4mX8EvjrU8hkhtIkSnapNoCxJG3inZgV6T
-         eKstNziGKrq47USbQtprjBZlo5X6h+911RCZmkg/kWHyqXVMkUoQPv2lnzGa0URJRShf
-         r6bA==
-X-Gm-Message-State: AAQBX9ff2ZUwFeayJ20DDgwplLPIJwUrErMdaAKOWNMwmeXaPn0vDITR
-	hwaLrcdrHsSE4uRNxsGKL6LC2Q==
-X-Google-Smtp-Source: AKy350ahHJ2R0u9+ILirA6SYvVmLljxqBN6oqzCFoHvHTKwkDlxy0i7/480WgJIzYZwsrG2RkQgdPg==
-X-Received: by 2002:a7b:cd15:0:b0:3ed:c468:ab11 with SMTP id f21-20020a7bcd15000000b003edc468ab11mr1819189wmj.28.1681391960810;
-        Thu, 13 Apr 2023 06:19:20 -0700 (PDT)
-Received: from [10.1.3.59] (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
-        by smtp.gmail.com with ESMTPSA id m2-20020a05600c3b0200b003f0652084b8sm5463491wms.20.2023.04.13.06.19.19
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 13 Apr 2023 06:19:20 -0700 (PDT)
-Message-ID: <32450a66-78ff-8ec8-2f31-6e5d91e38a5b@baylibre.com>
-Date: Thu, 13 Apr 2023 15:19:19 +0200
+	id 1pmwrq-006FQl-0L;
+	Thu, 13 Apr 2023 13:20:05 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id DBD726603218;
+	Thu, 13 Apr 2023 14:19:59 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1681392000;
+	bh=zyLNmnfNyceNKY5LBE9mhScILY9Dbz+FbeLmTMBp8cI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=cIUmClu7FHs9xjiZexEXmR0VU1d1P+tGwjVpRX4TWVwOZElm4SUn04vjhvZtr3nB2
+	 RKOAO9gIeSpqAciIquSuCiAZvOIOQ5i6jBFabD15GZzyxsNO/ln1NrWMYBj5ibtT8i
+	 A5zp7xgt/QP21zGOovUYf24THw2egu5cLb6sEE8+p08GGgG/ilL0PaY6in2022QgPr
+	 BgENQvB70mbOOkS4n8eaW+DpvpqAxkNcZnkYOJYgVvWnhKJng0Uh49Yrn194vnEBgc
+	 UFfkNGDGELPO2TI5fNikL3WgDAGJIzpcbhIRHt6UAtXYtOHITGyFHVvy0cqXhEj4mh
+	 PzRyRSAaBpHdA==
+Message-ID: <23dea66b-27cd-dbeb-37f5-ad9566e50962@collabora.com>
+Date: Thu, 13 Apr 2023 15:19:57 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH v2 6/7] leds: leds-mt6323: Add support for MT6331 leds
+ Thunderbird/102.9.1
+Subject: Re: [PATCH 6/7] ASoC: mediatek: mt8188: add bus protection
 Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- pavel@ucw.cz
-Cc: lee@kernel.org, sean.wang@mediatek.com, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
- linux-leds@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, kernel@collabora.com
-References: <20230412153310.241046-1-angelogioacchino.delregno@collabora.com>
- <20230412153310.241046-7-angelogioacchino.delregno@collabora.com>
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20230412153310.241046-7-angelogioacchino.delregno@collabora.com>
+To: Trevor Wu <trevor.wu@mediatek.com>, broonie@kernel.org,
+ lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com
+Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org
+References: <20230413104713.7174-1-trevor.wu@mediatek.com>
+ <20230413104713.7174-7-trevor.wu@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230413104713.7174-7-trevor.wu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230413_061923_282139_39B0C29D 
-X-CRM114-Status: UNSURE (   6.80  )
+X-CRM114-CacheID: sfid-20230413_062002_321812_56E47715 
+X-CRM114-Status: UNSURE (   7.65  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -100,14 +80,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/04/2023 17:33, AngeloGioacchino Del Regno wrote:
-> Add the register offsets for MT6331. The hwspec is the same as MT6323.
+Il 13/04/23 12:47, Trevor Wu ha scritto:
+> Add bus protection for reset controller.
 > 
-> Signed-off-by: AngeloGioacchino Del Regno<angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
 
-Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+Is MT8188 the only SoC that will ever use bus protection for reset, now and
+in the future?
+
+...otherwise, I think that the best solution here would be to implement that
+into the reset controller itself.
 
 Regards,
-Alexandre
-
+Angelo
 
