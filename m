@@ -4,88 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C8ABC77B61
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Apr 2023 14:15:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E34DC77B6E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Apr 2023 14:23:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MRfAy08dzFs9jrLzTP2yzZd0SgYGwdvqIMzg+AZsfrw=; b=SB9xM4NZsQrHBvGrxqw0KMGX6T
-	LHjKaV4tCpbUT+xfFuHnAN/3wmi1RfARHVN7GdbWLww7jSIQBIOjI2RfpMme/iOQnxywZcN5IVCNz
-	OvZqxnZl1iXmpyW6KC1EWDuAN7MPo5BsYyNDEr8a0hPCPCWRhxzkUCjebPpQ5TfKnrTrFJd5Si+Lc
-	PSD7DZulqLBDUQpniOQZpx7mb2srYCHy4h9obayYZ6BrZtRFUbI6JYop7d3E+CMcxcbbedqAHVrgO
-	mvA5EoyfORa6Lfaq11kpUNvf1BcG7HAHtr17DDhBdqfFOYEWp2CSSL13sX7QIVcU+NMtx81d2deyL
-	RpcEOeJA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=dJfSt0c1qEYHwo/A5jCf0jYwf5CjfTaU3H7cgZUezu8=; b=vKj6Yxzz3w1fBDCDk2JarFyqKe
+	xoO0U4X9v0n1l7+4li/BV9xe/QSA2CiW9A8isJPOD+inQp0ws3eBacZ9VK3J1mrvjLkJ/V0PRRMJc
+	9JpSayySRk+XMfbHBwOw+LMd2cyf8SRu8ZgQkE7MCQIIZKrxmFq7mvXqPNwY1xVbTCY2uY4WOfIvd
+	oz9ekVckkQMYKLKNRYm5bZmfQ5yNOUF2bw8lKKbmB3L2tE2QrKEFo93pGT91hVSN1vijPMr0IOLFa
+	B4a8s4MlEgZOV9Da2AYrIpX/wXCG7aPLduulAYNTLnYl2huA8X/tql/63Jhfg9s3c8F3jA0vs72ht
+	F3JRKibg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmxjK-006NPB-1Z;
-	Thu, 13 Apr 2023 14:15:18 +0000
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+	id 1pmxr9-006ODc-3A;
+	Thu, 13 Apr 2023 14:23:23 +0000
+Received: from e10edge.fintech.ru ([195.54.195.159] helo=exchange.fintech.ru)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmxjF-006NNq-2L
-	for linux-mediatek@lists.infradead.org;
-	Thu, 13 Apr 2023 14:15:16 +0000
-Received: by mail-wr1-x432.google.com with SMTP id w24so4721297wra.10
-        for <linux-mediatek@lists.infradead.org>; Thu, 13 Apr 2023 07:15:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1681395311; x=1683987311;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=MRfAy08dzFs9jrLzTP2yzZd0SgYGwdvqIMzg+AZsfrw=;
-        b=yZGhMppM2itR8z2kOIDEYtZO7EyMhZxDJLRDKFmrU6jReA8T/cjBRXwY8MX7eejWLa
-         zX3WgpISqyd1HoXJ6EJLJj92m7Bd3wp+f3dyWsj39cNX5BNW3c+xXMq3sEZd/V8Kx06k
-         at9l6cUW7kBsQJcPEwsUxNJCkbXHoCy6ly2nb/6M1LORIz/BxfJSliLpe3J4dyGsAm35
-         ZZ5GJhG+fJ3ZHAkz9X35T9DCxX64N4mrGZQRLwyFlF+xmBHAJ/fwew/iKMdq7BO0YQD0
-         u2KVUIuf1LqjlQA7VG8cCGkoeRjH5PTW6kJUSofVSjA6kR4363/RhVL5xha0zHVcoWJ9
-         fOoQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681395311; x=1683987311;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=MRfAy08dzFs9jrLzTP2yzZd0SgYGwdvqIMzg+AZsfrw=;
-        b=bsvpUBGDNxAqqdMI06aIHrgg9nEAJHsnTKIsEWKaxL6l5wEG2MzfJEwZofkJxFyrN+
-         OtYslM5lKQi8vbJinLLCTNMIIgqT0NiU7e+28wl+qyo5osbEzlTSulE9N11BoMq2DePw
-         6eotMlOlJjGPENFKCgtn3z3FKyKm1AXf8mQyTi1pN5vFcB7Br/6yFFhqtQKBfzSKDGYu
-         zLoX48RAFTpqSlrSePGN1VTfDfXhMaY4CwdX6cmZap3GnO5hHvMkuuVqpHfQLJACEZXj
-         bMVTSwrcZr0LD3pZea4fXmWOhKFZamJd8VbmFhs71Aetv1uy/I5KnCNGSpM8pB452nBJ
-         Cscw==
-X-Gm-Message-State: AAQBX9eqVVdkQ4kkxvskzch5qRXd5xLHU/TjEbtwb6B9XvM5V5bzFb3F
-	D6+R4imDwl67QWu2MzW2QcIFxA==
-X-Google-Smtp-Source: AKy350ZKcbVoL90ZeMzRxiOHGtnzEmpUBRa1+BVtdc7Jb+lSdMVUYkQumizo6lVe732La8+OX0Cetw==
-X-Received: by 2002:adf:dc8d:0:b0:2f5:83a8:a9a9 with SMTP id r13-20020adfdc8d000000b002f583a8a9a9mr1799903wrj.16.1681395311380;
-        Thu, 13 Apr 2023 07:15:11 -0700 (PDT)
-Received: from [10.1.3.59] (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
-        by smtp.gmail.com with ESMTPSA id x12-20020adff0cc000000b002d64fcb362dsm1364069wro.111.2023.04.13.07.15.10
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 13 Apr 2023 07:15:10 -0700 (PDT)
-Message-ID: <00c0b699-ba1a-951c-185a-ef8f09abf6f3@baylibre.com>
-Date: Thu, 13 Apr 2023 16:15:09 +0200
+	id 1pmxr4-006OCD-02;
+	Thu, 13 Apr 2023 14:23:21 +0000
+Received: from Ex16-01.fintech.ru (10.0.10.18) by exchange.fintech.ru
+ (195.54.195.159) with Microsoft SMTP Server (TLS) id 14.3.498.0; Thu, 13 Apr
+ 2023 17:22:55 +0300
+Received: from localhost (10.0.253.138) by Ex16-01.fintech.ru (10.0.10.18)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.4; Thu, 13 Apr
+ 2023 17:22:55 +0300
+From: Nikita Zhandarovich <n.zhandarovich@fintech.ru>
+To: David Airlie <airlied@gmail.com>
+CC: Nikita Zhandarovich <n.zhandarovich@fintech.ru>, Daniel Vetter
+	<daniel@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+	Jani Nikula <jani.nikula@linux.intel.com>, Joonas Lahtinen
+	<joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+	Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Helge Deller <deller@gmx.de>,
+	<dri-devel@lists.freedesktop.org>, <linux-kernel@vger.kernel.org>,
+	<intel-gfx@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <amd-gfx@lists.freedesktop.org>,
+	<linux-tegra@vger.kernel.org>, <linux-fbdev@vger.kernel.org>,
+	<lvc-project@linuxtesting.org>
+Subject: [PATCH v2] video/hdmi: minor fixes for *_infoframe_init functions
+Date: Thu, 13 Apr 2023 07:22:38 -0700
+Message-ID: <20230413142238.19011-1-n.zhandarovich@fintech.ru>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH v2 7/7] leds: leds-mt6323: Add support for WLEDs and
- MT6332
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- pavel@ucw.cz
-Cc: lee@kernel.org, sean.wang@mediatek.com, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
- linux-leds@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, kernel@collabora.com
-References: <20230412153310.241046-1-angelogioacchino.delregno@collabora.com>
- <20230412153310.241046-8-angelogioacchino.delregno@collabora.com>
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20230412153310.241046-8-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.0.253.138]
+X-ClientProxiedBy: Ex16-02.fintech.ru (10.0.10.19) To Ex16-01.fintech.ru
+ (10.0.10.18)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230413_071513_986237_C45598DB 
-X-CRM114-Status: GOOD (  31.78  )
+X-CRM114-CacheID: sfid-20230413_072318_573631_80207ECC 
+X-CRM114-Status: GOOD (  16.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,314 +76,429 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/04/2023 17:33, AngeloGioacchino Del Regno wrote:
-> Add basic code to turn on and off WLEDs and wire up MT6332 support
-> to take advantage of it.
-> This is a simple approach due to to the aforementioned PMIC supporting
-> only on/off status so, at the time of writing, it is impossible for me
-> to validate more advanced functionality due to lack of hardware.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->   drivers/leds/leds-mt6323.c | 171 +++++++++++++++++++++++++++++++++++--
->   1 file changed, 164 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/leds/leds-mt6323.c b/drivers/leds/leds-mt6323.c
-> index 5d95dbd9a761..202b38ac32f6 100644
-> --- a/drivers/leds/leds-mt6323.c
-> +++ b/drivers/leds/leds-mt6323.c
-> @@ -20,6 +20,11 @@
->   #define RG_DRV_32K_CK_PDN		BIT(11)
->   #define RG_DRV_32K_CK_PDN_MASK		BIT(11)
->   
-> +/* 32K/1M/6M clock common for WLED device */
-> +#define RG_VWLED_1M_CK_PDN		BIT(0)
-> +#define RG_VWLED_32K_CK_PDN		BIT(12)
-> +#define RG_VWLED_6M_CK_PDN		BIT(13)
-> +
->   /*
->    * Register field for TOP_CKPDN2 to enable
->    * individual clock for LED device.
-> @@ -73,7 +78,7 @@ struct mt6323_led {
->   	int			id;
->   	struct mt6323_leds	*parent;
->   	struct led_classdev	cdev;
-> -	enum led_brightness	current_brightness;
-> +	unsigned int		current_brightness;
->   };
->   
->   /**
-> @@ -86,6 +91,7 @@ struct mt6323_led {
->    * @num_isink_con:	Number of ISINKx_CON registers
->    * @isink_max_regs:	Number of ISINK[0..x] registers
->    * @isink_en_ctrl:	Offset to ISINK_EN_CTRL register
-> + * @iwled_en_ctrl:	Offset to IWLED_EN_CTRL register
->    */
->   struct mt6323_regs {
->   	const u16 *top_ckpdn;
-> @@ -96,18 +102,21 @@ struct mt6323_regs {
->   	u8 num_isink_con;
->   	u8 isink_max_regs;
->   	u16 isink_en_ctrl;
-> +	u16 iwled_en_ctrl;
->   };
->   
->   /**
->    * struct mt6323_hwspec - hardware specific parameters
->    * @max_period:		Maximum period for all LEDs
->    * @max_leds:		Maximum number of supported LEDs
-> + * @max_wleds:		Maximum number of WLEDs
->    * @max_brightness:	Maximum brightness for all LEDs
->    * @unit_duty:		Steps of duty per period
->    */
->   struct mt6323_hwspec {
->   	u16 max_period;
->   	u8 max_leds;
-> +	u8 max_wleds;
->   	u16 max_brightness;
->   	u16 unit_duty;
->   };
-> @@ -379,6 +388,117 @@ static int mt6323_led_set_brightness(struct led_classdev *cdev,
->   	return ret;
->   }
->   
-> +static int mtk_wled_hw_on(struct led_classdev *cdev)
-> +{
-> +	struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
-> +	struct mt6323_leds *leds = led->parent;
-> +	const struct mt6323_regs *regs = leds->pdata->regs;
-> +	struct regmap *regmap = leds->hw->regmap;
-> +	int ret;
-> +
-> +	ret = regmap_clear_bits(regmap, regs->top_ckpdn[0], RG_VWLED_32K_CK_PDN);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = regmap_clear_bits(regmap, regs->top_ckpdn[0], RG_VWLED_6M_CK_PDN);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = regmap_clear_bits(regmap, regs->top_ckpdn[0], RG_VWLED_1M_CK_PDN);
-> +	if (ret)
-> +		return ret;
-> +
-> +	usleep_range(5000, 6000);
-> +
-> +	/* Enable WLED channel pair */
-> +	ret = regmap_set_bits(regmap, regs->iwled_en_ctrl, BIT(led->id));
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = regmap_set_bits(regmap, regs->iwled_en_ctrl, BIT(led->id + 1));
-> +	if (ret)
-> +		return ret;
-> +
-> +	return 0;
-> +}
-> +
-> +static int mtk_wled_hw_off(struct led_classdev *cdev)
-> +{
-> +	struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
-> +	struct mt6323_leds *leds = led->parent;
-> +	const struct mt6323_regs *regs = leds->pdata->regs;
-> +	struct regmap *regmap = leds->hw->regmap;
-> +	int ret;
-> +
-> +	ret = regmap_clear_bits(regmap, regs->iwled_en_ctrl, BIT(led->id + 1));
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = regmap_clear_bits(regmap, regs->iwled_en_ctrl, BIT(led->id));
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = regmap_set_bits(regmap, regs->top_ckpdn[0], RG_VWLED_32K_CK_PDN);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = regmap_set_bits(regmap, regs->top_ckpdn[0], RG_VWLED_6M_CK_PDN);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = regmap_set_bits(regmap, regs->top_ckpdn[0], RG_VWLED_1M_CK_PDN);
-> +	if (ret)
-> +		return ret;
-> +
-> +	return 0;
-> +}
-> +
-> +static unsigned int mt6323_get_wled_brightness(struct led_classdev *cdev)
-> +{
-> +	struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
-> +	struct mt6323_leds *leds = led->parent;
-> +	const struct mt6323_regs *regs = leds->pdata->regs;
-> +	struct regmap *regmap = leds->hw->regmap;
-> +	unsigned int status;
-> +	int ret;
-> +
-> +	ret = regmap_read(regmap, regs->iwled_en_ctrl, &status);
-> +	if (ret)
-> +		return 0;
-> +
-> +	/* Always two channels per WLED */
-> +	status &= BIT(led->id) | BIT(led->id + 1);
-> +
-> +	return status ? led->current_brightness : 0;
-> +}
-> +
-> +static int mt6323_wled_set_brightness(struct led_classdev *cdev,
-> +				      unsigned int brightness)
-> +{
-> +	struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
-> +	struct mt6323_leds *leds = led->parent;
-> +	int ret = 0;
-> +
-> +	mutex_lock(&leds->lock);
-> +
-> +	if (brightness) {
-> +		if (!led->current_brightness)
-> +			ret = mtk_wled_hw_on(cdev);
-> +		if (ret)
-> +			goto out;
-> +	} else {
-> +		ret = mtk_wled_hw_off(cdev);
-> +		if (ret)
-> +			goto out;
-> +	}
-> +
-> +	led->current_brightness = brightness;
-> +out:
-> +	mutex_unlock(&leds->lock);
-> +
-> +	return ret;
-> +}
-> +
->   static int mt6323_led_set_dt_default(struct led_classdev *cdev,
->   				     struct device_node *np)
->   {
-> @@ -418,6 +538,7 @@ static int mt6323_led_probe(struct platform_device *pdev)
->   	int ret;
->   	unsigned int status;
->   	u32 reg;
-> +	u8 max_leds;
->   
->   	leds = devm_kzalloc(dev, sizeof(*leds), GFP_KERNEL);
->   	if (!leds)
-> @@ -428,6 +549,7 @@ static int mt6323_led_probe(struct platform_device *pdev)
->   	leds->pdata = device_get_match_data(dev);
->   	regs = leds->pdata->regs;
->   	spec = leds->pdata->spec;
-> +	max_leds = spec->max_leds + spec->max_wleds;
+Multiple hdmi_*_infoframe_init() functions that initialize different
+types of hdmi infoframes only return default 0 value (contrary to their
+descriptions). Yet these functions are still checked against possible
+errors in case of failure.
 
-I haven't access to the datasheet so I have to ask you:
-Why the max leds value is the addition of max led and wled ?
+This patch removes redundant checks for errors in calls to following
+functions:
+- hdmi_spd_infoframe_init
+- hdmi_audio_infoframe_init
+- hdmi_vendor_infoframe_init
+- hdmi_drm_infoframe_init
 
-IMO, the datasheed give you the max supported led OR wled on its bus 
-function to the maximum supplied current by the PMIC (I assume LED or 
-WLED have different need). Or the PMIC has 2 bus, one for led and 
-another for wled ?
+Also, change their return types to void and fix descriptions.
 
->   
->   	/*
->   	 * leds->hw points to the underlying bus for the register
-> @@ -447,6 +569,7 @@ static int mt6323_led_probe(struct platform_device *pdev)
->   
->   	for_each_available_child_of_node(np, child) {
->   		struct led_init_data init_data = {};
-> +		bool is_wled;
->   
->   		ret = of_property_read_u32(child, "reg", &reg);
->   		if (ret) {
-> @@ -454,7 +577,7 @@ static int mt6323_led_probe(struct platform_device *pdev)
->   			goto put_child_node;
->   		}
->   
-> -		if (reg >= spec->max_leds || reg >= MAX_SUPPORTED_LEDS ||
-> +		if (reg >= max_leds || reg >= MAX_SUPPORTED_LEDS ||
->   		    leds->led[reg]) {
->   			dev_err(dev, "Invalid led reg %u\n", reg);
->   			ret = -EINVAL;
-> @@ -467,14 +590,24 @@ static int mt6323_led_probe(struct platform_device *pdev)
->   			goto put_child_node;
->   		}
->   
-> +		is_wled = of_property_read_bool(child, "mediatek,is-wled");
-> +
->   		leds->led[reg] = led;
->   		leds->led[reg]->id = reg;
->   		leds->led[reg]->cdev.max_brightness = spec->max_brightness;
-> -		leds->led[reg]->cdev.brightness_set_blocking =
-> -					mt6323_led_set_brightness;
-> -		leds->led[reg]->cdev.blink_set = mt6323_led_set_blink;
-> -		leds->led[reg]->cdev.brightness_get =
-> -					mt6323_get_led_hw_brightness;
-> +
-> +		if (is_wled) {
-> +			leds->led[reg]->cdev.brightness_set_blocking =
-> +						mt6323_wled_set_brightness;
-> +			leds->led[reg]->cdev.brightness_get =
-> +						mt6323_get_wled_brightness;
-> +		} else {
-> +			leds->led[reg]->cdev.brightness_set_blocking =
-> +						mt6323_led_set_brightness;
-> +			leds->led[reg]->cdev.blink_set = mt6323_led_set_blink;
-> +			leds->led[reg]->cdev.brightness_get =
-> +						mt6323_get_led_hw_brightness;
-> +		}
->   		leds->led[reg]->parent = leds;
->   
->   		ret = mt6323_led_set_dt_default(&leds->led[reg]->cdev, child);
-> @@ -542,6 +675,17 @@ static const struct mt6323_regs mt6331_registers = {
->   	.isink_en_ctrl = 0x43a,
->   };
->   
-> +static const struct mt6323_regs mt6332_registers = {
-> +	.top_ckpdn = (const u16[]){ 0x8094, 0x809a, 0x80a0 },
-> +	.num_top_ckpdn = 3,
-> +	.top_ckcon = (const u16[]){ 0x80a6, 0x80ac },
-> +	.num_top_ckcon = 2,
-> +	.isink_con = (const u16[]){ 0x8cd4 },
-> +	.num_isink_con = 1,
-> +	.isink_max_regs = 12, /* IWLED[0..2, 3..9] */
-> +	.iwled_en_ctrl = 0x8cda,
-> +};
-> +
->   static const struct mt6323_hwspec mt6323_spec = {
->   	.max_period = 10000,
->   	.max_leds = 4,
-> @@ -549,6 +693,13 @@ static const struct mt6323_hwspec mt6323_spec = {
->   	.unit_duty = 3125,
->   };
->   
-> +static const struct mt6323_hwspec mt6332_spec = {
-> +	/* There are no LEDs in MT6332. Only WLEDs are present. */
-> +	.max_leds = 0,
-> +	.max_wleds = 1,
-> +	.max_brightness = 1024,
-> +};
-> +
->   static const struct mt6323_data mt6323_pdata = {
->   	.regs = &mt6323_registers,
->   	.spec = &mt6323_spec,
-> @@ -559,9 +710,15 @@ static const struct mt6323_data mt6331_pdata = {
->   	.spec = &mt6323_spec,
->   };
->   
-> +static const struct mt6323_data mt6332_pdata = {
-> +	.regs = &mt6332_registers,
-> +	.spec = &mt6332_spec,
-> +};
-> +
->   static const struct of_device_id mt6323_led_dt_match[] = {
->   	{ .compatible = "mediatek,mt6323-led", .data = &mt6323_pdata},
->   	{ .compatible = "mediatek,mt6331-led", .data = &mt6331_pdata },
-> +	{ .compatible = "mediatek,mt6332-led", .data = &mt6332_pdata },
->   	{},
->   };
->   MODULE_DEVICE_TABLE(of, mt6323_led_dt_match);
+Fixes: 2c676f378edb ("[media] hdmi: added unpack and logging functions for InfoFrames")
+Signed-off-by: Nikita Zhandarovich <n.zhandarovich@fintech.ru>
+---
+v2: Fix build warning by removing unnecessary call to drm_WARN_ON()
+    with uninitialized value.
+    Reported-by: kernel test robot <lkp@intel.com>
+    Link: https://lore.kernel.org/oe-kbuild-all/202304131234.hT3mzkju-lkp@intel.com/
 
--- 
-Regards,
-Alexandre
+ drivers/gpu/drm/display/drm_hdmi_helper.c |  5 +---
+ drivers/gpu/drm/drm_edid.c                |  5 +---
+ drivers/gpu/drm/i915/display/intel_hdmi.c |  4 +--
+ drivers/gpu/drm/mediatek/mtk_hdmi.c       | 14 ++--------
+ drivers/gpu/drm/radeon/r600_hdmi.c      
+ drivers/gpu/drm/display/drm_hdmi_helper.c |  5 +---
+ drivers/gpu/drm/drm_edid.c                |  5 +---
+ drivers/gpu/drm/i915/display/intel_hdmi.c |  7 ++---
+ drivers/gpu/drm/mediatek/mtk_hdmi.c       | 14 ++--------
+ drivers/gpu/drm/radeon/r600_hdmi.c        |  6 +----
+ drivers/gpu/drm/sti/sti_hdmi.c            |  6 +----
+ drivers/gpu/drm/tegra/hdmi.c              |  7 +----
+ drivers/gpu/drm/tegra/sor.c               |  6 +----
+ drivers/gpu/drm/vc4/vc4_hdmi.c            |  7 +----
+ drivers/video/hdmi.c                      | 44 ++++++-------------------------
+ include/linux/hdmi.h                      |  8 +++---
+ 11 files changed, 23 insertions(+), 92 deletions(-)
 
+diff --git a/drivers/gpu/drm/display/drm_hdmi_helper.c b/drivers/gpu/drm/display/drm_hdmi_helper.c
+index faf5e9efa7d3..ce7038a3a183 100644
+--- a/drivers/gpu/drm/display/drm_hdmi_helper.c
++++ b/drivers/gpu/drm/display/drm_hdmi_helper.c
+@@ -27,7 +27,6 @@ int drm_hdmi_infoframe_set_hdr_metadata(struct hdmi_drm_infoframe *frame,
+ {
+ 	struct drm_connector *connector;
+ 	struct hdr_output_metadata *hdr_metadata;
+-	int err;
+ 
+ 	if (!frame || !conn_state)
+ 		return -EINVAL;
+@@ -47,9 +46,7 @@ int drm_hdmi_infoframe_set_hdr_metadata(struct hdmi_drm_infoframe *frame,
+ 	    connector->hdr_sink_metadata.hdmi_type1.eotf))
+ 		DRM_DEBUG_KMS("Unknown EOTF %d\n", hdr_metadata->hdmi_metadata_type1.eotf);
+ 
+-	err = hdmi_drm_infoframe_init(frame);
+-	if (err < 0)
+-		return err;
++	hdmi_drm_infoframe_init(frame);
+ 
+ 	frame->eotf = hdr_metadata->hdmi_metadata_type1.eotf;
+ 	frame->metadata_type = hdr_metadata->hdmi_metadata_type1.metadata_type;
+diff --git a/drivers/gpu/drm/drm_edid.c b/drivers/gpu/drm/drm_edid.c
+index 261a62e15934..c268148502d6 100644
+--- a/drivers/gpu/drm/drm_edid.c
++++ b/drivers/gpu/drm/drm_edid.c
+@@ -7159,7 +7159,6 @@ drm_hdmi_vendor_infoframe_from_display_mode(struct hdmi_vendor_infoframe *frame,
+ 	 */
+ 	bool has_hdmi_infoframe = connector ?
+ 		connector->display_info.has_hdmi_infoframe : false;
+-	int err;
+ 
+ 	if (!frame || !mode)
+ 		return -EINVAL;
+@@ -7167,9 +7166,7 @@ drm_hdmi_vendor_infoframe_from_display_mode(struct hdmi_vendor_infoframe *frame,
+ 	if (!has_hdmi_infoframe)
+ 		return -EINVAL;
+ 
+-	err = hdmi_vendor_infoframe_init(frame);
+-	if (err < 0)
+-		return err;
++	hdmi_vendor_infoframe_init(frame);
+ 
+ 	/*
+ 	 * Even if it's not absolutely necessary to send the infoframe
+diff --git a/drivers/gpu/drm/i915/display/intel_hdmi.c b/drivers/gpu/drm/i915/display/intel_hdmi.c
+index c0ce6d3dc505..59e2f53015c0 100644
+--- a/drivers/gpu/drm/i915/display/intel_hdmi.c
++++ b/drivers/gpu/drm/i915/display/intel_hdmi.c
+@@ -778,12 +778,9 @@ intel_hdmi_compute_spd_infoframe(struct intel_encoder *encoder,
+ 		intel_hdmi_infoframe_enable(HDMI_INFOFRAME_TYPE_SPD);
+ 
+ 	if (IS_DGFX(i915))
+-		ret = hdmi_spd_infoframe_init(frame, "Intel", "Discrete gfx");
++		hdmi_spd_infoframe_init(frame, "Intel", "Discrete gfx");
+ 	else
+-		ret = hdmi_spd_infoframe_init(frame, "Intel", "Integrated gfx");
+-
+-	if (drm_WARN_ON(encoder->base.dev, ret))
+-		return false;
++		hdmi_spd_infoframe_init(frame, "Intel", "Integrated gfx");
+ 
+ 	frame->sdi = HDMI_SPD_SDI_PC;
+ 
+diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+index 0a8e0a13f516..75899e4a011f 100644
+--- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
++++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+@@ -995,12 +995,7 @@ static int mtk_hdmi_setup_spd_infoframe(struct mtk_hdmi *hdmi,
+ 	u8 buffer[HDMI_INFOFRAME_HEADER_SIZE + HDMI_SPD_INFOFRAME_SIZE];
+ 	ssize_t err;
+ 
+-	err = hdmi_spd_infoframe_init(&frame, vendor, product);
+-	if (err < 0) {
+-		dev_err(hdmi->dev, "Failed to initialize SPD infoframe: %zd\n",
+-			err);
+-		return err;
+-	}
++	hdmi_spd_infoframe_init(&frame, vendor, product);
+ 
+ 	err = hdmi_spd_infoframe_pack(&frame, buffer, sizeof(buffer));
+ 	if (err < 0) {
+@@ -1018,12 +1013,7 @@ static int mtk_hdmi_setup_audio_infoframe(struct mtk_hdmi *hdmi)
+ 	u8 buffer[HDMI_INFOFRAME_HEADER_SIZE + HDMI_AUDIO_INFOFRAME_SIZE];
+ 	ssize_t err;
+ 
+-	err = hdmi_audio_infoframe_init(&frame);
+-	if (err < 0) {
+-		dev_err(hdmi->dev, "Failed to setup audio infoframe: %zd\n",
+-			err);
+-		return err;
+-	}
++	hdmi_audio_infoframe_init(&frame);
+ 
+ 	frame.coding_type = HDMI_AUDIO_CODING_TYPE_STREAM;
+ 	frame.sample_frequency = HDMI_AUDIO_SAMPLE_FREQUENCY_STREAM;
+diff --git a/drivers/gpu/drm/radeon/r600_hdmi.c b/drivers/gpu/drm/radeon/r600_hdmi.c
+index f3551ebaa2f0..b690254562e8 100644
+--- a/drivers/gpu/drm/radeon/r600_hdmi.c
++++ b/drivers/gpu/drm/radeon/r600_hdmi.c
+@@ -432,11 +432,7 @@ void r600_hdmi_update_audio_settings(struct drm_encoder *encoder)
+ 	DRM_DEBUG("0x%02X IEC60958 status bits and 0x%02X category code\n",
+ 		  (int)audio.status_bits, (int)audio.category_code);
+ 
+-	err = hdmi_audio_infoframe_init(&frame);
+-	if (err < 0) {
+-		DRM_ERROR("failed to setup audio infoframe\n");
+-		return;
+-	}
++	hdmi_audio_infoframe_init(&frame);
+ 
+ 	frame.channels = audio.channels;
+ 
+diff --git a/drivers/gpu/drm/sti/sti_hdmi.c b/drivers/gpu/drm/sti/sti_hdmi.c
+index 8539fe1fedc4..1f92db1fb960 100644
+--- a/drivers/gpu/drm/sti/sti_hdmi.c
++++ b/drivers/gpu/drm/sti/sti_hdmi.c
+@@ -1321,11 +1321,7 @@ static int sti_hdmi_bind(struct device *dev, struct device *master, void *data)
+ 	}
+ 
+ 	/* Initialize audio infoframe */
+-	err = hdmi_audio_infoframe_init(&hdmi->audio.cea);
+-	if (err) {
+-		DRM_ERROR("Failed to init audio infoframe\n");
+-		goto err_sysfs;
+-	}
++	hdmi_audio_infoframe_init(&hdmi->audio.cea);
+ 
+ 	cec_fill_conn_info_from_drm(&conn_info, drm_connector);
+ 	hdmi->notifier = cec_notifier_conn_register(&hdmi->dev, NULL,
+diff --git a/drivers/gpu/drm/tegra/hdmi.c b/drivers/gpu/drm/tegra/hdmi.c
+index 40ec3e6cf204..fe8fcd1b056b 100644
+--- a/drivers/gpu/drm/tegra/hdmi.c
++++ b/drivers/gpu/drm/tegra/hdmi.c
+@@ -747,12 +747,7 @@ static void tegra_hdmi_setup_audio_infoframe(struct tegra_hdmi *hdmi)
+ 	u8 buffer[14];
+ 	ssize_t err;
+ 
+-	err = hdmi_audio_infoframe_init(&frame);
+-	if (err < 0) {
+-		dev_err(hdmi->dev, "failed to setup audio infoframe: %zd\n",
+-			err);
+-		return;
+-	}
++	hdmi_audio_infoframe_init(&frame);
+ 
+ 	frame.channels = hdmi->format.channels;
+ 
+diff --git a/drivers/gpu/drm/tegra/sor.c b/drivers/gpu/drm/tegra/sor.c
+index 8af632740673..d8cd93d5af10 100644
+--- a/drivers/gpu/drm/tegra/sor.c
++++ b/drivers/gpu/drm/tegra/sor.c
+@@ -2021,11 +2021,7 @@ static int tegra_sor_hdmi_enable_audio_infoframe(struct tegra_sor *sor)
+ 	u32 value;
+ 	int err;
+ 
+-	err = hdmi_audio_infoframe_init(&frame);
+-	if (err < 0) {
+-		dev_err(sor->dev, "failed to setup audio infoframe: %d\n", err);
+-		return err;
+-	}
++	hdmi_audio_infoframe_init(&frame);
+ 
+ 	frame.channels = sor->format.channels;
+ 
+diff --git a/drivers/gpu/drm/vc4/vc4_hdmi.c b/drivers/gpu/drm/vc4/vc4_hdmi.c
+index ea22c9bf223a..d7de86b41901 100644
+--- a/drivers/gpu/drm/vc4/vc4_hdmi.c
++++ b/drivers/gpu/drm/vc4/vc4_hdmi.c
+@@ -816,13 +816,8 @@ static void vc4_hdmi_set_avi_infoframe(struct drm_encoder *encoder)
+ static void vc4_hdmi_set_spd_infoframe(struct drm_encoder *encoder)
+ {
+ 	union hdmi_infoframe frame;
+-	int ret;
+ 
+-	ret = hdmi_spd_infoframe_init(&frame.spd, "Broadcom", "Videocore");
+-	if (ret < 0) {
+-		DRM_ERROR("couldn't fill SPD infoframe\n");
+-		return;
+-	}
++	hdmi_spd_infoframe_init(&frame.spd, "Broadcom", "Videocore");
+ 
+ 	frame.spd.sdi = HDMI_SPD_SDI_PC;
+ 
+diff --git a/drivers/video/hdmi.c b/drivers/video/hdmi.c
+index 03c7f27dde49..a4a1359415a0 100644
+--- a/drivers/video/hdmi.c
++++ b/drivers/video/hdmi.c
+@@ -216,10 +216,8 @@ EXPORT_SYMBOL(hdmi_avi_infoframe_pack);
+  * @frame: HDMI SPD infoframe
+  * @vendor: vendor string
+  * @product: product string
+- *
+- * Returns 0 on success or a negative error code on failure.
+  */
+-int hdmi_spd_infoframe_init(struct hdmi_spd_infoframe *frame,
++void hdmi_spd_infoframe_init(struct hdmi_spd_infoframe *frame,
+ 			    const char *vendor, const char *product)
+ {
+ 	size_t len;
+@@ -234,8 +232,6 @@ int hdmi_spd_infoframe_init(struct hdmi_spd_infoframe *frame,
+ 	memcpy(frame->vendor, vendor, min(len, sizeof(frame->vendor)));
+ 	len = strlen(product);
+ 	memcpy(frame->product, product, min(len, sizeof(frame->product)));
+-
+-	return 0;
+ }
+ EXPORT_SYMBOL(hdmi_spd_infoframe_init);
+ 
+@@ -348,18 +344,14 @@ EXPORT_SYMBOL(hdmi_spd_infoframe_pack);
+ /**
+  * hdmi_audio_infoframe_init() - initialize an HDMI audio infoframe
+  * @frame: HDMI audio infoframe
+- *
+- * Returns 0 on success or a negative error code on failure.
+  */
+-int hdmi_audio_infoframe_init(struct hdmi_audio_infoframe *frame)
++void hdmi_audio_infoframe_init(struct hdmi_audio_infoframe *frame)
+ {
+ 	memset(frame, 0, sizeof(*frame));
+ 
+ 	frame->type = HDMI_INFOFRAME_TYPE_AUDIO;
+ 	frame->version = 1;
+ 	frame->length = HDMI_AUDIO_INFOFRAME_SIZE;
+-
+-	return 0;
+ }
+ EXPORT_SYMBOL(hdmi_audio_infoframe_init);
+ 
+@@ -526,10 +518,8 @@ EXPORT_SYMBOL(hdmi_audio_infoframe_pack_for_dp);
+ /**
+  * hdmi_vendor_infoframe_init() - initialize an HDMI vendor infoframe
+  * @frame: HDMI vendor infoframe
+- *
+- * Returns 0 on success or a negative error code on failure.
+  */
+-int hdmi_vendor_infoframe_init(struct hdmi_vendor_infoframe *frame)
++void hdmi_vendor_infoframe_init(struct hdmi_vendor_infoframe *frame)
+ {
+ 	memset(frame, 0, sizeof(*frame));
+ 
+@@ -544,8 +534,6 @@ int hdmi_vendor_infoframe_init(struct hdmi_vendor_infoframe *frame)
+ 	 */
+ 	frame->s3d_struct = HDMI_3D_STRUCTURE_INVALID;
+ 	frame->length = HDMI_VENDOR_INFOFRAME_SIZE;
+-
+-	return 0;
+ }
+ EXPORT_SYMBOL(hdmi_vendor_infoframe_init);
+ 
+@@ -698,18 +686,14 @@ hdmi_vendor_any_infoframe_check_only(const union hdmi_vendor_any_infoframe *fram
+  * hdmi_drm_infoframe_init() - initialize an HDMI Dynaminc Range and
+  * mastering infoframe
+  * @frame: HDMI DRM infoframe
+- *
+- * Returns 0 on success or a negative error code on failure.
+  */
+-int hdmi_drm_infoframe_init(struct hdmi_drm_infoframe *frame)
++void hdmi_drm_infoframe_init(struct hdmi_drm_infoframe *frame)
+ {
+ 	memset(frame, 0, sizeof(*frame));
+ 
+ 	frame->type = HDMI_INFOFRAME_TYPE_DRM;
+ 	frame->version = 1;
+ 	frame->length = HDMI_DRM_INFOFRAME_SIZE;
+-
+-	return 0;
+ }
+ EXPORT_SYMBOL(hdmi_drm_infoframe_init);
+ 
+@@ -1661,7 +1645,6 @@ static int hdmi_spd_infoframe_unpack(struct hdmi_spd_infoframe *frame,
+ 				     const void *buffer, size_t size)
+ {
+ 	const u8 *ptr = buffer;
+-	int ret;
+ 
+ 	if (size < HDMI_INFOFRAME_SIZE(SPD))
+ 		return -EINVAL;
+@@ -1677,9 +1660,7 @@ static int hdmi_spd_infoframe_unpack(struct hdmi_spd_infoframe *frame,
+ 
+ 	ptr += HDMI_INFOFRAME_HEADER_SIZE;
+ 
+-	ret = hdmi_spd_infoframe_init(frame, ptr, ptr + 8);
+-	if (ret)
+-		return ret;
++	hdmi_spd_infoframe_init(frame, ptr, ptr + 8);
+ 
+ 	frame->sdi = ptr[24];
+ 
+@@ -1703,7 +1684,6 @@ static int hdmi_audio_infoframe_unpack(struct hdmi_audio_infoframe *frame,
+ 				       const void *buffer, size_t size)
+ {
+ 	const u8 *ptr = buffer;
+-	int ret;
+ 
+ 	if (size < HDMI_INFOFRAME_SIZE(AUDIO))
+ 		return -EINVAL;
+@@ -1717,9 +1697,7 @@ static int hdmi_audio_infoframe_unpack(struct hdmi_audio_infoframe *frame,
+ 	if (hdmi_infoframe_checksum(buffer, HDMI_INFOFRAME_SIZE(AUDIO)) != 0)
+ 		return -EINVAL;
+ 
+-	ret = hdmi_audio_infoframe_init(frame);
+-	if (ret)
+-		return ret;
++	hdmi_audio_infoframe_init(frame);
+ 
+ 	ptr += HDMI_INFOFRAME_HEADER_SIZE;
+ 
+@@ -1755,7 +1733,6 @@ hdmi_vendor_any_infoframe_unpack(union hdmi_vendor_any_infoframe *frame,
+ {
+ 	const u8 *ptr = buffer;
+ 	size_t length;
+-	int ret;
+ 	u8 hdmi_video_format;
+ 	struct hdmi_vendor_infoframe *hvf = &frame->hdmi;
+ 
+@@ -1789,9 +1766,7 @@ hdmi_vendor_any_infoframe_unpack(union hdmi_vendor_any_infoframe *frame,
+ 	if (hdmi_video_format > 0x2)
+ 		return -EINVAL;
+ 
+-	ret = hdmi_vendor_infoframe_init(hvf);
+-	if (ret)
+-		return ret;
++	hdmi_vendor_infoframe_init(hvf);
+ 
+ 	hvf->length = length;
+ 
+@@ -1837,15 +1812,12 @@ int hdmi_drm_infoframe_unpack_only(struct hdmi_drm_infoframe *frame,
+ 	const u8 *temp;
+ 	u8 x_lsb, x_msb;
+ 	u8 y_lsb, y_msb;
+-	int ret;
+ 	int i;
+ 
+ 	if (size < HDMI_DRM_INFOFRAME_SIZE)
+ 		return -EINVAL;
+ 
+-	ret = hdmi_drm_infoframe_init(frame);
+-	if (ret)
+-		return ret;
++	hdmi_drm_infoframe_init(frame);
+ 
+ 	frame->eotf = ptr[0] & 0x7;
+ 	frame->metadata_type = ptr[1] & 0x7;
+diff --git a/include/linux/hdmi.h b/include/linux/hdmi.h
+index 2f4dcc8d060e..e60a28d181f2 100644
+--- a/include/linux/hdmi.h
++++ b/include/linux/hdmi.h
+@@ -214,7 +214,7 @@ ssize_t hdmi_avi_infoframe_pack(struct hdmi_avi_infoframe *frame, void *buffer,
+ ssize_t hdmi_avi_infoframe_pack_only(const struct hdmi_avi_infoframe *frame,
+ 				     void *buffer, size_t size);
+ int hdmi_avi_infoframe_check(struct hdmi_avi_infoframe *frame);
+-int hdmi_drm_infoframe_init(struct hdmi_drm_infoframe *frame);
++void hdmi_drm_infoframe_init(struct hdmi_drm_infoframe *frame);
+ ssize_t hdmi_drm_infoframe_pack(struct hdmi_drm_infoframe *frame, void *buffer,
+ 				size_t size);
+ ssize_t hdmi_drm_infoframe_pack_only(const struct hdmi_drm_infoframe *frame,
+@@ -249,7 +249,7 @@ struct hdmi_spd_infoframe {
+ 	enum hdmi_spd_sdi sdi;
+ };
+ 
+-int hdmi_spd_infoframe_init(struct hdmi_spd_infoframe *frame,
++void hdmi_spd_infoframe_init(struct hdmi_spd_infoframe *frame,
+ 			    const char *vendor, const char *product);
+ ssize_t hdmi_spd_infoframe_pack(struct hdmi_spd_infoframe *frame, void *buffer,
+ 				size_t size);
+@@ -331,7 +331,7 @@ struct hdmi_audio_infoframe {
+ 
+ };
+ 
+-int hdmi_audio_infoframe_init(struct hdmi_audio_infoframe *frame);
++void hdmi_audio_infoframe_init(struct hdmi_audio_infoframe *frame);
+ ssize_t hdmi_audio_infoframe_pack(struct hdmi_audio_infoframe *frame,
+ 				  void *buffer, size_t size);
+ ssize_t hdmi_audio_infoframe_pack_only(const struct hdmi_audio_infoframe *frame,
+@@ -393,7 +393,7 @@ struct hdr_sink_metadata {
+ 	};
+ };
+ 
+-int hdmi_vendor_infoframe_init(struct hdmi_vendor_infoframe *frame);
++void hdmi_vendor_infoframe_init(struct hdmi_vendor_infoframe *frame);
+ ssize_t hdmi_vendor_infoframe_pack(struct hdmi_vendor_infoframe *frame,
+ 				   void *buffer, size_t size);
+ ssize_t hdmi_vendor_infoframe_pack_only(const struct hdmi_vendor_infoframe *frame,
 
