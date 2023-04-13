@@ -4,71 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A35C4C77B6C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Apr 2023 11:07:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17799C77B61
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Apr 2023 11:30:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=MyZMZdgvFlBgGHc9fU8TE+T3ZTrU0IQYLqH+CTEw/R8=; b=RRBtE+RuLHxKtWzmgCqiVFukMh
-	Zd7R1e8FUKMMj3A/00WgAvdlgDu0twbtg/d30qE7juBPWWu4u+9svgLshiB4j7CzjVRfXvnaOmR/o
-	OjPXApg7YgFGRqBdu23u+fuAM47s5eMChRnVTrqzAJQHfgHKLZM4Vt3wV6ySm3u/vwb6icopXQavx
-	KSffbpOjetfw0Qywm3eTjHyKakwNaOGtbeNaUyBMrVJxGBBbBCxJc/xgqvb22SXwZrgBmVwIp6ZBd
-	sJP1H8VkInYRJOXmsSF1YoJdEEVG9/5g93buAeIIiDvQGAc5XNqPVe9AnSUA9ewxM0qQPWn1I5e8K
-	qZmo0SEA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+evFeqDgoOOhuBezSSuNAhwY/dJnnKnQbx4DeUDujUc=; b=1yke5gwv6QkKiFjQ5FYo/m5rx9
+	E8laDH+GHR743h72cxIzWqBCDZF3zTXJOiXqubEUy32OULWtOlKN1nVqb0jjBJuRC3OonltCUXKzz
+	OehcTH18Fw+effJDRRTdBtS+KcXioZSHlEcaiResgTUflDdYAaeRtMpttGAikCcKFwblC5zXQ0Zb3
+	TNVsRmC/14HhLCGF7L7fR+R1MKWRjbLJK2/kT2opbXBUAIgHebOYP6Gf7QxKQ2RkbRZqwaZUTVR0n
+	GIWJMcJ3FCzLGgaroddsHhEl8ZOtMPPv18nvUgke7wy9ocUWmV49TIWufHvyRm5QNwEHoLCAuCuah
+	x2J/QTSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmunp-005zuB-1F;
-	Thu, 13 Apr 2023 11:07:45 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pmv9K-0064fh-0I;
+	Thu, 13 Apr 2023 11:29:58 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmunV-005zgV-2v;
-	Thu, 13 Apr 2023 11:07:39 +0000
-X-UUID: 5c21f6c2d9eb11edb7d8d11f642b8e78-20230413
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=MyZMZdgvFlBgGHc9fU8TE+T3ZTrU0IQYLqH+CTEw/R8=;
-	b=gLm8EM70fkxwpaIUFG0epXDZELlcBk2NyVQrz/GWZlGNqlyBJHUdb00w5HntlHYPYYOWA1NdMuM6UkKADZbkv26/uOaNaNjGD1O5/eHMnX6wbLBJfl/TQN5ROUdGImdN8aBbANpbZqoXiMUMpgD1wfPDEZ2ci5qrJaFYwtEzwDY=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:10acdcc4-c57a-4a20-a081-8f53ef874692,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:120426c,CLOUDID:af30f383-cd9c-45f5-8134-710979e3df0e,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-UUID: 5c21f6c2d9eb11edb7d8d11f642b8e78-20230413
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <trevor.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1435793433; Thu, 13 Apr 2023 04:07:20 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Thu, 13 Apr 2023 18:47:17 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Thu, 13 Apr 2023 18:47:17 +0800
-From: Trevor Wu <trevor.wu@mediatek.com>
-To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
-	<perex@perex.cz>, <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
-	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>
-CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>
-Subject: [PATCH 0/7] ASoC: mediatek: mt8188: revise AFE driver
-Date: Thu, 13 Apr 2023 18:47:06 +0800
-Message-ID: <20230413104713.7174-1-trevor.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1pmv9G-0064eD-0y;
+	Thu, 13 Apr 2023 11:29:55 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A5D446603212;
+	Thu, 13 Apr 2023 12:29:49 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1681385390;
+	bh=bvenpCUXdyjjQEZArC0d3YuEErYsBVLrl7zmm7hLLgU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Bm0jDJcBNEQXa1Ue8FRql2CVOwseKGKuXaSAt56oxwcwKKfMJ5mWYSTO+Afclx9Uh
+	 Cp+YADPst8MAbWzan1Vaz0Zt2LjLK9Yx2/+uQaFfO6DreqPEwBI3MnnzgqFN84TdSz
+	 Ze5TZBYW6zQ8ALWAA/b9KgqguuGe1kuP1PbGl2V/eWzJrTtrIQJPd489fcC3TlGHOP
+	 rJ/FY3ljHLAxXd1Z4RVu9hUqkOQcIzKV1v92BPGoiEPWCjZvYlCsx7EI2AEice40RU
+	 0prTs0NN2AOGbT2R4HVI6mkgqftOrE/W4u+PXzbNChFKLsAyQ7RTo3r+3cslonBtjS
+	 9Uz5SVc5lJD2Q==
+Message-ID: <04d2b53e-4f5e-81ec-3397-e58898b7039e@collabora.com>
+Date: Thu, 13 Apr 2023 13:29:46 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.1
+Subject: Re: [PATCH v2 7/7] leds: leds-mt6323: Add support for WLEDs and
+ MT6332
+Content-Language: en-US
+To: Pavel Machek <pavel@ucw.cz>
+Cc: lee@kernel.org, sean.wang@mediatek.com, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+ linux-leds@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com
+References: <20230412153310.241046-1-angelogioacchino.delregno@collabora.com>
+ <20230412153310.241046-8-angelogioacchino.delregno@collabora.com>
+ <ZDfiNSAs3Bc7xe1l@duo.ucw.cz>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <ZDfiNSAs3Bc7xe1l@duo.ucw.cz>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230413_040725_980795_9FDB6563 
-X-CRM114-Status: UNSURE (   7.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230413_042954_466798_0B2C9EDB 
+X-CRM114-Status: GOOD (  16.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,32 +81,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The series of patches consists of three major changes.
-First, remove redundant supply for ADDA DAI dirver. Second, revise ETDM
-control including APLL dynamic switch via DAPM, so APLL can be enabled
-when it is really required. Finally, AFE probe function is updated. Bus
-protection change was dropped at the previous patch because the dependent
-change was not accepted.
+Il 13/04/23 13:06, Pavel Machek ha scritto:
+> Hi!
+> 
+>> Add basic code to turn on and off WLEDs and wire up MT6332 support
+>> to take advantage of it.
+>> This is a simple approach due to to the aforementioned PMIC supporting
+>> only on/off status so, at the time of writing, it is impossible for me
+>> to validate more advanced functionality due to lack of hardware.
+> 
+> 
+>> @@ -467,14 +590,24 @@ static int mt6323_led_probe(struct platform_device *pdev)
+>>   			goto put_child_node;
+>>   		}
+>>   
+>> +		is_wled = of_property_read_bool(child, "mediatek,is-wled");
+>> +
+> 
+> This needs documenting in the binding, no?
+> 
+>> +static const struct mt6323_hwspec mt6332_spec = {
+>> +	/* There are no LEDs in MT6332. Only WLEDs are present. */
+> 
+> "Only WLED is present"?
+> 
+>> +	.max_leds = 0,
+>> +	.max_wleds = 1,
+>> +	.max_brightness = 1024,
+>> +};
+>> +
+> 
+> Is there chip with both LED and WLEDs? (I'm wondering if this makes
+> sense in single driver).
+> 
 
-Trevor Wu (7):
-  ASoC: mediatek: mt8188: remove supply AUDIO_HIRES
-  ASoC: mediatek: mt8188: complete set_tdm_slot function
-  ASoC: mediatek: mt8188: revise ETDM control flow
-  ASoC: mediatek: mt8188: refine APLL control
-  ASoC: mediatek: mt8188: combine afe component registration
-  ASoC: mediatek: mt8188: add bus protection
-  ASoC: dt-bindings: mediatek,mt8188-afe: add audio properties
+Some PMICs have got both LED(s) and WLED(s), yes - this is only on smartphone
+designs though.
 
- .../bindings/sound/mediatek,mt8188-afe.yaml   |  18 +
- sound/soc/mediatek/mt8188/mt8188-afe-clk.c    | 138 ++-
- sound/soc/mediatek/mt8188/mt8188-afe-clk.h    |  11 +
- sound/soc/mediatek/mt8188/mt8188-afe-pcm.c    | 113 ++-
- sound/soc/mediatek/mt8188/mt8188-dai-adda.c   |  37 -
- sound/soc/mediatek/mt8188/mt8188-dai-etdm.c   | 922 ++++++++++--------
- sound/soc/mediatek/mt8188/mt8188-reg.h        |   2 +
- 7 files changed, 759 insertions(+), 482 deletions(-)
-
--- 
-2.18.0
+Regards,
+Angelo
 
 
