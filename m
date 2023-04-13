@@ -4,74 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBB3BC77B61
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Apr 2023 10:00:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57B41C77B6C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Apr 2023 10:12:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BvLa1Vn6ocoA4vzewCKEMqDF6kAcKPd9x2XkED7bhUs=; b=LTrmhUqFmA9txDTEoxqIRM3EWS
-	j76e3BJZXjbqWBV+fDRZGBsHkNuV9hZkby2OK968N7oU999E4aFEEpeqEbTgTL+CIuwNFGzksVjnh
-	q81J9DCX6Ina6g9Kk2wh2hlbTSUjYk1CV6+//2jW+rtMzU/wwNGzV7PBXN390A2ZJpTWDtjWNJ7MT
-	sqdw9rmZUE+sjhdujOuwai74i9P9TYTsnbdWvLndHOnKbr1kUjl9Fp7wanjnYBYPTfHBvdMeCMxj4
-	RfKziiDbQWtY3XAAIHgizhICyf3WKr2FbIUDW9fpQy+dIdFe/S0IAHwqxEKMgVvqJ7vxAOvGT7YRd
-	P1dy3VmQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Rh1gldBq6zKF54NhdToFqztzBsv3VTQhW4I1lS7ak3s=; b=S2o7bZ8PFkkNJdApQeuBkI30FT
+	RrFNuQEuZbKU2rHXPNC/Qo7YzwbZNXjrzG1D9okQYnH8FJ0EN4YWoOMXsxzcTfIYyTday0nAW81Tm
+	OdWu4WseA7mgR1vm5oID8ZMDpbU+42NDxhIJLbkc2mBGR4oxRwWraOOF+vjKVcP8pLgIRkAshG8Uh
+	kt78faCPdsvIlDISe6FF4riu5AIP3RJ5L+8MQqX3gfridFb+4265zVCDv/GklvKoJZOW1mtwAvisl
+	bjMnYhnjsI36mkV3HjPS4lBnATb4yUCpwiqGBoR7u+b3Ar3ixkM+6zWIhCmuSTMjySkIyhvQ33zRA
+	BqOJ7g5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmtkJ-005iBE-0A;
-	Thu, 13 Apr 2023 10:00:03 +0000
-Received: from mail.8bytes.org ([85.214.250.239])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmtkF-005iA6-1S;
-	Thu, 13 Apr 2023 10:00:00 +0000
-Received: from 8bytes.org (p200300c27714bc0086ad4f9d2505dd0d.dip0.t-ipconnect.de [IPv6:2003:c2:7714:bc00:86ad:4f9d:2505:dd0d])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.8bytes.org (Postfix) with ESMTPSA id 809C8242A7C;
-	Thu, 13 Apr 2023 11:59:57 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=8bytes.org;
-	s=default; t=1681379998;
-	bh=n0QJW4lfoz67Y+PljUooZl3qQdKxzEidqXgT7gCTOns=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=p7P++pYu0u5ZAUDr7m9Y3K32VnwYTUtaeIkOi+SP2qpJd3H1pIjv5fiKdGsvuICdP
-	 oD9F5kPhUwZgRcFruMin1d5RaAe95EtzgwmWM9+hWaEt5xIc+LIvd7eXhfPoByVwoa
-	 EspFxywwWpN8/ly+m+IzvyzMz5vH6RA6oQMKVYDjvDsr9AicYHV5Dpxbi7YIpJOrnw
-	 wsx9UzHCjPQEHjd0a9yUAA/so51aftNC6agS//Yi+Xun3KR1pkXx+McsTN0kqnOo52
-	 4KvehtZZb/UvV0qGtR3djbZOQGRLsfzF0PQXSo+UhyuzME5sTOti+cxDuoI6niMspr
-	 hjvzH71h3XnDg==
-Date: Thu, 13 Apr 2023 11:59:56 +0200
-From: Joerg Roedel <joro@8bytes.org>
-To: Yong Wu <yong.wu@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>, Will Deacon <will@kernel.org>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Hans Verkuil <hverkuil@xs4all.nl>, nfraprado@collabora.com,
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	iommu@lists.linux.dev,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	mingyuan.ma@mediatek.com, yf.wang@mediatek.com,
-	jianjiao.zeng@mediatek.com, Yunfei Dong <yunfei.dong@mediatek.com>,
-	kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>,
-	chengci.xu@mediatek.com, youlin.pei@mediatek.com,
-	anan.sun@mediatek.com
-Subject: Re: [PATCH v7 00/14] Adjust the dma-ranges for MTK IOMMU
-Message-ID: <ZDfSnOXqqVP3MNg4@8bytes.org>
-References: <20230411093144.2690-1-yong.wu@mediatek.com>
+	id 1pmtvm-005jpx-0y;
+	Thu, 13 Apr 2023 10:11:54 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pmtvi-005joI-1J
+	for linux-mediatek@lists.infradead.org;
+	Thu, 13 Apr 2023 10:11:52 +0000
+Received: by mail-wm1-x332.google.com with SMTP id l16so7670870wms.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 13 Apr 2023 03:11:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1681380705; x=1683972705;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Rh1gldBq6zKF54NhdToFqztzBsv3VTQhW4I1lS7ak3s=;
+        b=cd/3lqYYREcX6JZjYJCzZcFEiAlsmLK9yPaLNG2ggAfQWA03NDHYlNe6RFe5ctjv9j
+         qkE5Cf1F+oJYzQo3r73M21KKBaPIzK3KyQFLDTKYYiBkxV5Q356zFVhXMe5hyo1ilEoX
+         qyGs1bAiedY+adpUXbxa1aaOjAzy4huTTBHKeWvcHoFd2EWjO4UiZMMDFIfFLr5scngV
+         d38urRIbk2oz8ofRbz43x2+gQIRnGxFCRxeiPsgvEjT/ikUExlhCMUQ+YQW52jtDV8TR
+         owvkvvgib9FfCWgDC/jd3QaVLUOmQKeQd7MXLeZQdehb2kkpHs4EYCf22Z4waE/Y2o4J
+         FEzw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1681380705; x=1683972705;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Rh1gldBq6zKF54NhdToFqztzBsv3VTQhW4I1lS7ak3s=;
+        b=lRPY6pwyMRuh/0rjt9Cl2icUD2UV4Zq15Q++3RN6MW5sGPvrIdebkT7XaOkMz0eyj5
+         5Lkc4a1L8UgEkEyorpn6Kz/TDlzZCFTvBZn0fUc0AIoi/43RB7j+UDSXaSYHW7Zz29sZ
+         e3uhuUhbVF16eaWPj/M8WjDd6mjNokP00PtPMTN4YIGzQus7QxSKMPfYpva0ul0b6lcv
+         WPHLg+VoBl9Z41gzNQ3r/zuwlOA/kcf7u/Ya9Iw9tit8m26MT8G/UtCNZis8LA2zsiE8
+         qh8uMJ48GZsNF517UhFRJ7guRXIUI554xBPKeIK4poGd2UwmKlcWhlGgfwe/+XWoQwJS
+         WO7w==
+X-Gm-Message-State: AAQBX9ceK66FWfKODs+3A86F7MqyKvDTnmzF7mKL6qfIJ8N5F2uQ5yvi
+	yqy2aBh09Bwe/kR6HAspyN5BlQ==
+X-Google-Smtp-Source: AKy350ZFAT71PMZf5H+HAkQEk6xT99x0FuglrvXuwh0ry9ycBGd2Dz0LsyxMOMG0AoEOw6ril9Fmig==
+X-Received: by 2002:a7b:ce88:0:b0:3f0:7ddf:d8e4 with SMTP id q8-20020a7bce88000000b003f07ddfd8e4mr1279283wmj.17.1681380705280;
+        Thu, 13 Apr 2023 03:11:45 -0700 (PDT)
+Received: from [10.1.3.59] (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
+        by smtp.gmail.com with ESMTPSA id 8-20020a05600c228800b003edef091b17sm1381662wmf.37.2023.04.13.03.11.43
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 13 Apr 2023 03:11:44 -0700 (PDT)
+Message-ID: <40f79e51-db8b-7105-5cc1-4465ca818416@baylibre.com>
+Date: Thu, 13 Apr 2023 12:11:43 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230411093144.2690-1-yong.wu@mediatek.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH v2 3/7] leds: leds-mt6323: Specify registers and specs in
+ platform data
+Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ pavel@ucw.cz
+Cc: lee@kernel.org, sean.wang@mediatek.com, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+ linux-leds@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com
+References: <20230412153310.241046-1-angelogioacchino.delregno@collabora.com>
+ <20230412153310.241046-4-angelogioacchino.delregno@collabora.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <20230412153310.241046-4-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230413_025959_637755_F9A7485E 
-X-CRM114-Status: UNSURE (   8.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230413_031150_662136_79BA5F63 
+X-CRM114-Status: GOOD (  15.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,22 +100,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 11, 2023 at 05:31:30PM +0800, Yong Wu wrote:
-> Yong Wu (14):
->   dt-bindings: media: mediatek,vcodec: Remove dma-ranges property
->   dt-bindings: media: mediatek,jpeg: Remove dma-ranges property
->   iommu/mediatek: Improve comment for the current region/bank
->   iommu/mediatek: Get regionid from larb/port id
->   iommu/mediatek: mt8192: Add iova_region_larb_msk
->   iommu/mediatek: mt8195: Add iova_region_larb_msk
->   iommu/mediatek: mt8186: Add iova_region_larb_msk
->   iommu/mediatek: Add a gap for the iova regions
->   iommu/mediatek: Set dma_mask for the master devices
->   media: mtk-jpegdec: Remove the setting for dma_mask
->   media: mediatek: vcodec: Remove the setting for dma_mask
->   arm64: dts: mt8195: Remove the unnecessary dma-ranges
->   arm64: dts: mt8195: Add dma-ranges for the parent "soc" node
->   arm64: dts: mt8186: Add dma-ranges for the parent "soc" node
+On 12/04/2023 17:33, AngeloGioacchino Del Regno wrote:
+> In order to enhance the flexibility of this driver and let it support
+> more than just one MediaTek LEDs IP for more than just one PMIC,
+> add platform data structure specifying the register offsets and
+> data that commonly varies between different IPs.
+> 
+> This commit brings no functional changes.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>   drivers/leds/leds-mt6323.c | 145 ++++++++++++++++++++++++++++---------
+>   1 file changed, 112 insertions(+), 33 deletions(-)
+> 
+> diff --git a/drivers/leds/leds-mt6323.c b/drivers/leds/leds-mt6323.c
+> index 17ee88043f52..a5b2d06e9d63 100644
+> --- a/drivers/leds/leds-mt6323.c
+> +++ b/drivers/leds/leds-mt6323.c
+> @@ -37,18 +37,16 @@
+>    * Register for MT6323_ISINK_CON0 to setup the
 
-Applied, thanks.
+Comment should be changed.
+
+>    * duty cycle of the blink.
+>    */
+> -#define MT6323_ISINK_CON0(i)		(MT6323_ISINK0_CON0 + 0x8 * (i))
+> +#define MT6323_ISINK_CON(r, i)		(r + 0x8 * (i))
+>   #define MT6323_ISINK_DIM_DUTY_MASK	(0x1f << 8)
+>   #define MT6323_ISINK_DIM_DUTY(i)	(((i) << 8) & \
+>   					MT6323_ISINK_DIM_DUTY_MASK)
+>   
+
+
+After that, it should be ok.
+
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+
+Regards,
+Alexandre
+
 
