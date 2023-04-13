@@ -4,90 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87BCFC77B6E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Apr 2023 12:43:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 200F4C77B61
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Apr 2023 12:51:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uoNrg34kc+6lem2kMar0uYOihFZSJhPiBifZFvTS5g0=; b=AbFl8OYRH26x2G8MhCDKJegDwf
-	0BxgHQy74gnBaGee69RqSzoKiqk9OQQbdrkPSTrQgBJ4Ci+jJfQq3XbUggoj6Fxgaz1Cjzov/h2SH
-	b7FkqaVtbuZ8i19XnnZ+bAUbsZtN9teCjSy66ysdq6OXZGJhDv6Z+eb/OpzjV4JST9Y3IztVcSIvn
-	2F6oDJv6DTj5K5CqTjTaagXc0uwurpbS9JfYe9Pp7SK1S8izczCFC42aSt0ANe5B6Zubd6QVjfzyG
-	H7DeROWJawcVWSiw2XT2gNANL6vhFYCSBrhJGsOLwgO/PPAPlYnkpPM7v4c5NmqLbVEqEQYtOcd6G
-	/ZAOZEyQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pfiB0dyNF5IN+dDnQ49hhgOP3vgf9O+J5xAGBbme+xg=; b=3abFma33KDsLGZ+AR203H2WzFz
+	/XJiYwUglHEhQfmQvk437UrZU3BOjI9ggnFabfYyBgPtrOHuEGLLNZBZB/yn0y8H9FB/EkPEBGrcB
+	iNgs/7voI3rhIjOibcVmcbbbGjdS6pw+ylLvsrmOI5GEWue1vWQa+7gnhaD9lK3oy9wmfoUgwFQNz
+	LSWMuq2g0/w1BM8f/Rvv3A+a105M3Ekm+ZYVOHFp4JR8Ztd6k/TpRNjLH0U/QG1K9B3IjUKfbJcPg
+	9wPjs4tvi2yMp/JBVJDrWdLh49mN/N8WwHZOL1VJ4QZMBPCMHLh6p3Ri1xrB4bb4syEZkdm+YHeK2
+	SyApzMDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmwIJ-0069uS-0y;
-	Thu, 13 Apr 2023 12:43:19 +0000
-Received: from mga04.intel.com ([192.55.52.120])
+	id 1pmwQY-006Af0-0T;
+	Thu, 13 Apr 2023 12:51:50 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmwIE-0069tM-2E;
-	Thu, 13 Apr 2023 12:43:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1681389793; x=1712925793;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=AUmRE/yebNXpdkid5N0KqFC4R4ByzvArot+xXbENuPM=;
-  b=LIeJTh9VK0cCdpLMCF4UUPJa09/Q4WensQUeQu3hWV7CHmWxbSIqrhCA
-   XnalD0+gLX9nShW8p0WYbSIuEzpSwTnqe6gih8daj0cTnCpcxYwjd+Smz
-   K+Y/eYDroCmNP2xaue4tIFYzp9kqPuUpx5ddrKdLWW8u3zQhzuUdFZwgD
-   z/FXMWQluiIsOkMgc14zydqX73mCZ7+VOhBeIGikeZPc9bVc7LQMk4n7X
-   bwU0qHfiWqnj1Bgk9hd6ep50NiC1830L5PQ0on4xYdIAe2Nz+fIzIMckc
-   MHid3F/xoYs/tFAFGVOhpqblxtuPBqt4mlCg2jyI97d3KX2gPkt2zpLUt
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10678"; a="342916938"
-X-IronPort-AV: E=Sophos;i="5.99,193,1677571200"; 
-   d="scan'208";a="342916938"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
-  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Apr 2023 05:42:58 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10678"; a="800801980"
-X-IronPort-AV: E=Sophos;i="5.99,193,1677571200"; 
-   d="scan'208";a="800801980"
-Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
-  by fmsmga002.fm.intel.com with ESMTP; 13 Apr 2023 05:42:54 -0700
-Received: from kbuild by b613635ddfff with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1pmwHo-000YgZ-2M;
-	Thu, 13 Apr 2023 12:42:48 +0000
-Date: Thu, 13 Apr 2023 20:42:27 +0800
-From: kernel test robot <lkp@intel.com>
-To: Yi-De Wu <yi-de.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Jonathan Corbet <corbet@lwn.net>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Yingshiuan Pan <yingshiuan.pan@mediatek.com>
-Cc: oe-kbuild-all@lists.linux.dev, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Jades Shih <jades.shih@mediatek.com>,
-	Miles Chen <miles.chen@mediatek.com>,
-	Ivan Tseng <ivan.tseng@mediatek.com>,
-	My Chuang <my.chuang@mediatek.com>,
-	Shawn Hsiao <shawn.hsiao@mediatek.com>,
-	PeiLun Suei <peilun.suei@mediatek.com>,
-	Ze-Yu Wang <ze-yu.wang@mediatek.com>,
-	Liju Chen <liju-clr.chen@mediatek.com>,
-	Yi-De Wu <yi-de.wu@mediatek.com>
-Subject: Re: [PATCH v1 3/6] soc: mediatek: virt: geniezone: Introduce
- GenieZone hypervisor support
-Message-ID: <202304132051.wGFK08qz-lkp@intel.com>
-References: <20230413090735.4182-4-yi-de.wu@mediatek.com>
+	id 1pmwQS-006Ab7-0C
+	for linux-mediatek@lists.infradead.org;
+	Thu, 13 Apr 2023 12:51:47 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id he13so13408656wmb.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 13 Apr 2023 05:51:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1681390300; x=1683982300;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=pfiB0dyNF5IN+dDnQ49hhgOP3vgf9O+J5xAGBbme+xg=;
+        b=jt9lPv4lNrVGnYs0/3pm0ZbWLL22vClDmV9Mi1AjKNPGPhp2Z1qGKvnTZxfZ2IH6Va
+         kdWB9Vni+Q2YbR5aVEZCe1q10+kzpEoLsR96keXGahTbBCxs1Gw4Rf4FvtwtSZ7HVKN3
+         C81hq4PEchuYqdXF9E0329vVtPniqlkTwnJJ+uxVfTuZcKBHUJIiO6LOLKb21khCxIfq
+         KaSXyJEqR4mqIBxAuPCklrrhmsA+bnWVtMAjwFperuNLjMPZ2+tDlEdIBc5Io+l0ofVe
+         E9obFN/51kCQ1pDsVpsDL0sTjweGDhw6VzcDBOGCHtbPxDwugox0FApsENkM9nt4vwjQ
+         tf2g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1681390300; x=1683982300;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=pfiB0dyNF5IN+dDnQ49hhgOP3vgf9O+J5xAGBbme+xg=;
+        b=GvSn01r0afIBYWDLR5xGhnJBXDTb/fsIw+dqnpY1wP/tP21p8fGnYnd+cmV+Zyqa/u
+         9XAMfwcLVfRn9CVHb4xq9Ys6JUp5uO++JfTHIQxB44Ubfa4UpRc03x4eLYAuXbZXBMim
+         5NjcoD0Wr/68XEeT05G1M4tzwqYjSe/qUDmltW2M2nK713EzEoQb57dtkK6UYlxLFFkB
+         TPpjJ8mWilIw0g2k28bdYBBDVbddAdxrnyaZ3FTDOrRaEpnQMeo6FKQE/RZzqE9nT90e
+         eyhSJz2SUjRr/0dnw04UreQ+FZAPRJ/HYtfhzlANHTtdvHOB/ondPnEbn2cD1vGKKnR1
+         9wGA==
+X-Gm-Message-State: AAQBX9eL0h0ZZYav4BksFbD08E0ueWxVN4bwHgSHQv7xLxj28SKIpDQD
+	E7QzzGzsx2MAAhHbJzo7htLPMQ==
+X-Google-Smtp-Source: AKy350ZhM3KTvTuJ+Clczlm2zRYmzA4Al3yjFIK+ApB//dgCEkIZNS4r1rOYNFbWtYCj5wo3UmI1kQ==
+X-Received: by 2002:a7b:ca57:0:b0:3ed:4685:4618 with SMTP id m23-20020a7bca57000000b003ed46854618mr1728570wml.34.1681390300370;
+        Thu, 13 Apr 2023 05:51:40 -0700 (PDT)
+Received: from [127.0.0.1] ([82.66.159.240])
+        by smtp.gmail.com with ESMTPSA id k17-20020a5d66d1000000b002f67e4d1c63sm156356wrw.12.2023.04.13.05.51.39
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Apr 2023 05:51:40 -0700 (PDT)
+From: Guillaume Ranquet <granquet@baylibre.com>
+Date: Thu, 13 Apr 2023 14:46:25 +0200
+Subject: [PATCH 1/2] phy: mediatek: hdmi: mt8195: fix uninitialized
+ variable usage in pll_calc
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230413090735.4182-4-yi-de.wu@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20230413-fixes-for-mt8195-hdmi-phy-v1-1-b8482458df0d@baylibre.com>
+References: <20230413-fixes-for-mt8195-hdmi-phy-v1-0-b8482458df0d@baylibre.com>
+In-Reply-To: <20230413-fixes-for-mt8195-hdmi-phy-v1-0-b8482458df0d@baylibre.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
+ Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Guillaume Ranquet <granquet@baylibre.com>, 
+ kernel test robot <lkp@intel.com>
+X-Mailer: b4 0.13-dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230413_054314_746252_730FFF76 
-X-CRM114-Status: GOOD (  14.97  )
+X-CRM114-CacheID: sfid-20230413_055144_396540_DF54157C 
+X-CRM114-Status: GOOD (  11.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,84 +100,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yi-De,
+The ret variable in mtk_hdmi_pll_calc() was used unitialized as reported
+by the kernel test robot.
 
-kernel test robot noticed the following build warnings:
+Fix the issue by removing the variable altogether and testing out the
+return value of mtk_hdmi_pll_set_hw()
 
-[auto build test WARNING on robh/for-next]
-[also build test WARNING on krzk-dt/for-next arm64/for-next/core lwn/docs-next linus/master v6.3-rc6 next-20230412]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Fixes: 45810d486bb44 ("phy: mediatek: add support for phy-mtk-hdmi-mt8195")
+Reported-by: kernel test robot <lkp@intel.com>
+Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+---
+ drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Yi-De-Wu/docs-geniezone-Introduce-GenieZone-hypervisor/20230413-170932
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
-patch link:    https://lore.kernel.org/r/20230413090735.4182-4-yi-de.wu%40mediatek.com
-patch subject: [PATCH v1 3/6] soc: mediatek: virt: geniezone: Introduce GenieZone hypervisor support
-config: arm64-allyesconfig (https://download.01.org/0day-ci/archive/20230413/202304132051.wGFK08qz-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 12.1.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/2d01949ddd48b1bc2cc9849154afe60781068f39
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Yi-De-Wu/docs-geniezone-Introduce-GenieZone-hypervisor/20230413-170932
-        git checkout 2d01949ddd48b1bc2cc9849154afe60781068f39
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=arm64 olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=arm64 SHELL=/bin/bash drivers/soc/mediatek/virt/geniezone/
-
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Link: https://lore.kernel.org/oe-kbuild-all/202304132051.wGFK08qz-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
->> drivers/soc/mediatek/virt/geniezone/gzvm_vm.c:31:5: warning: no previous prototype for 'gzvm_gfn_to_pfn_memslot' [-Wmissing-prototypes]
-      31 | int gzvm_gfn_to_pfn_memslot(struct gzvm_memslot *memslot, u64 gfn, u64 *pfn)
-         |     ^~~~~~~~~~~~~~~~~~~~~~~
-
-
-vim +/gzvm_gfn_to_pfn_memslot +31 drivers/soc/mediatek/virt/geniezone/gzvm_vm.c
-
-    19	
-    20	
-    21	/**
-    22	 * @brief Translate gfn (guest ipa) to pfn (host pa), result is in @pfn
-    23	 *
-    24	 * Leverage KVM's `gfn_to_pfn_memslot`. Because `gfn_to_pfn_memslot` needs
-    25	 * kvm_memory_slot as parameter, this function populates necessary fileds
-    26	 * for calling `gfn_to_pfn_memslot`.
-    27	 *
-    28	 * @retval 0 succeed
-    29	 * @retval -EFAULT failed to convert
-    30	 */
-  > 31	int gzvm_gfn_to_pfn_memslot(struct gzvm_memslot *memslot, u64 gfn, u64 *pfn)
-    32	{
-    33		hfn_t __pfn;
-    34		struct kvm_memory_slot kvm_slot = {0};
-    35	
-    36		kvm_slot.base_gfn = memslot->base_gfn;
-    37		kvm_slot.npages = memslot->npages;
-    38		kvm_slot.dirty_bitmap = NULL;
-    39		kvm_slot.userspace_addr = memslot->userspace_addr;
-    40		kvm_slot.flags = memslot->flags;
-    41		kvm_slot.id = memslot->slot_id;
-    42		kvm_slot.as_id = 0;
-    43	
-    44		__pfn = gfn_to_pfn_memslot(&kvm_slot, gfn);
-    45		if (is_error_noslot_pfn(__pfn)) {
-    46			*pfn = 0;
-    47			return -EFAULT;
-    48		}
-    49	
-    50		*pfn = __pfn;
-    51		return 0;
-    52	}
-    53	
+diff --git a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
+index abfc077fb0a8..e10da6c4147e 100644
+--- a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
++++ b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
+@@ -213,7 +213,7 @@ static int mtk_hdmi_pll_calc(struct mtk_hdmi_phy *hdmi_phy, struct clk_hw *hw,
+ 	u64 tmds_clk, pixel_clk, da_hdmitx21_ref_ck, ns_hdmipll_ck, pcw;
+ 	u8 txpredivs[4] = { 2, 4, 6, 12 };
+ 	u32 fbkdiv_low;
+-	int i, ret;
++	int i;
+ 
+ 	pixel_clk = rate;
+ 	tmds_clk = pixel_clk;
+@@ -292,10 +292,9 @@ static int mtk_hdmi_pll_calc(struct mtk_hdmi_phy *hdmi_phy, struct clk_hw *hw,
+ 	if (!(digital_div <= 32 && digital_div >= 1))
+ 		return -EINVAL;
+ 
+-	mtk_hdmi_pll_set_hw(hw, PLL_PREDIV, fbkdiv_high, fbkdiv_low,
++	if (mtk_hdmi_pll_set_hw(hw, PLL_PREDIV, fbkdiv_high, fbkdiv_low,
+ 			    PLL_FBKDIV_HS3, posdiv1, posdiv2, txprediv,
+-			    txposdiv, digital_div);
+-	if (ret)
++			    txposdiv, digital_div))
+ 		return -EINVAL;
+ 
+ 	return 0;
 
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+2.39.2
+
 
