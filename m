@@ -4,76 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62EDFC77B6F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Apr 2023 09:29:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 614B5C77B6C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Apr 2023 09:37:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=D3U2hfqICh/t0rTR8QFky9kB6NZAGED0nHUzfdyq10E=; b=Y5QAT3nw4e+oGdxJHhaQt/vcMs
-	LM5NhNzL4GFURtuJ4cLBGT3jaIAVuXUJ0G17vCl8h2sUdpg/OWNaVBY3iNMoWcHHQ8KkrV5hEQbIb
-	U02XGNF8IURbs4vDEo/jbPpgxzVG6IdHpvDe0//MfEn6To9heL+Rklm1fk334/7xAYkJnv6Zrbdm1
-	oewaiQcZtPltNjSu8hL3hrJGu4F56W+rtaJiHPgUzUptYFzfW+/uxSnGc/NPQ9l2IpTnZQP3kcTxX
-	I0VxYei5sl5F0sfN+1Nm7XFKIXM7kij76tZcEybR3y+dkVNef/a1UiKhev6+1ikRNThLUcaWy4LN+
-	UkGJJLLw==;
+	bh=7qmRsOqjOUeFEAObOHM4G+xJcIEgvL4vfHkv/prXzOo=; b=FhNJimu6MbATAuiin3oV0kxwQO
+	t/emGKKqOI6hO/Nup49LDJZ7F5P5IhIGJ45KcofRwx7uoIsqaJhYSPbGrq3u/qilbkDJNzDknTDgS
+	JO4ciPh3/SP6EF20S2HrIc8HrKBVR6o6xkrW/dPVjniN+wxh/oVK83vPbV7odgfHJwmerlBXuWjVd
+	CPBdtnVxvTzEdW83WbzSbAhAK0es//OLXPLF38LQuPMnxDgu56oUkhEcZTvq6pnzWKJICPKUO7QV0
+	WYs2rhWHVvXGekQvAQ+VfAlj4woGb1s4sYDDb0RF9yHtp8Lxmb4WF28l7dpPaCsWvOEuhJy5CvvJb
+	QHgK0eFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmtGJ-005cxT-0H;
-	Thu, 13 Apr 2023 09:29:03 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pmtOc-005eSF-2T;
+	Thu, 13 Apr 2023 09:37:38 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmtGB-005csn-0b;
-	Thu, 13 Apr 2023 09:28:56 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 461686603207;
-	Thu, 13 Apr 2023 10:28:52 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1681378133;
-	bh=XjK0zXGcRUwWwMF6tZnTtwrjb64IJRzNjt7p/8KBhjs=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=d6UgCefhED/N6R8YjSiNAxuQU77pHTuH671k0sortzz+h8HWsWRqZ+jYQSW7fvRuT
-	 eyERdIo/mVGeDewj1B8XzdivfyeIBoj4BbuwUO+g6g4nueknODvGQJMPlI4yxePiu7
-	 NuOwzs1nxxvQLZoT6Gz6QqlumXZ/LPPtoRalL/PNZBRzWi21FDr1ERMSzf5/YdQ0ao
-	 SuCRTmMDLW4w6pVFA5oYs7uzGfTMJDl8OlQ+a74HPRNcFs/xWKKxq7XUUUEEK9E3RM
-	 B6DPGx+OyIBsldxVd+4s/2jbWuEmIGhyaXfSXOHhbMSK51XO+1b02CwJ3aQWBP1d/D
-	 z/bAWlEu4eshg==
-Message-ID: <4a016428-be44-27e3-5bc2-dc517922fa15@collabora.com>
-Date: Thu, 13 Apr 2023 11:28:49 +0200
+	id 1pmtOZ-005eQY-2N;
+	Thu, 13 Apr 2023 09:37:37 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id g5so16946011wrb.5;
+        Thu, 13 Apr 2023 02:37:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1681378651; x=1683970651;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=7qmRsOqjOUeFEAObOHM4G+xJcIEgvL4vfHkv/prXzOo=;
+        b=WZhODdmsBmq0DDpYW5QhnP8UogRsjl3uxILhG7rzMdzvOaPrFt9vMZ/l05hsyRcjsM
+         g41zMBTGZvqX7hyFGIFDenwO5z7v6pE++aQthO0EU4G1d2GzJvpABGSLqurZuS+3ExdT
+         +rGiJF1aN3cZsb5JYgJhgTqhl70ZXt4zyrCoUmp+5vhTohyftdzsSp9ycF6sKoRDHkSF
+         3VQvFTlsH/FbG+nZtuUL+KfSGXSOv7aNO3kcZvCGmBBqkFJN5iGPCQS+mfKa5/6mZjuX
+         Jx2orYPy+oK4nCygJeIoTB60mGh/uxV3t21CAVkQWiDqEu8AtMYIwFmZDcn9TOw51VaN
+         RSBQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1681378651; x=1683970651;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=7qmRsOqjOUeFEAObOHM4G+xJcIEgvL4vfHkv/prXzOo=;
+        b=jFQGgbYgDPoEtYa/MEkZfzwj6MZgMvIau4GSeUkDj00nJnzcX5fv5DEuHL1xIv1IfU
+         SWrZeRrvNUGQz5eBWcrm1LqOWnaBQn3d0hsTGTRqJ7nY6ppZq0a/m4GNbj4JFFRoqamH
+         SOj3/lD1oF2CFZPyZG1vo6Xf1ASF5wHGjNMYnEj1jNg9s+P/JBBGq0W6x+g/aoQDtVWJ
+         iIUV4Op0Za1w3Vmgz3Ls5wYNPuBJjU0wsweXWdTWjUf4lOmiOlwr5Gg6bVW40jcwKMdd
+         FcgD6w+H3xcQ36+mG9vZH1z2cVgE5p7v5yd7i0VAdEPXEHp3zyhJhjSbpnHn38DdQhH6
+         CLyw==
+X-Gm-Message-State: AAQBX9e+8TZZW7T42uMm32EYqEFEWw/OiQu9QcKh73W+xyvZEZzWkM+k
+	KjWrS8V2wGW8ZGH8qkfvzr0=
+X-Google-Smtp-Source: AKy350Zm5/ATFD50uFkvJSI4h7GVs83srZ2sleq5RncSnBnC4X7VSxN0NN70mOhkcAIMMl0GJDBRIg==
+X-Received: by 2002:a5d:55cf:0:b0:2f5:aadb:4642 with SMTP id i15-20020a5d55cf000000b002f5aadb4642mr945310wrw.41.1681378650844;
+        Thu, 13 Apr 2023 02:37:30 -0700 (PDT)
+Received: from [192.168.0.32] ([37.222.243.26])
+        by smtp.gmail.com with ESMTPSA id w16-20020a5d6810000000b002e5ff05765esm883268wru.73.2023.04.13.02.37.21
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 13 Apr 2023 02:37:29 -0700 (PDT)
+Message-ID: <a311d52c-a07a-fdfe-5b48-502d05f70737@gmail.com>
+Date: Thu, 13 Apr 2023 11:37:12 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.1
-Subject: Re: [PATCH 01/27] dt-bindings: pwm: Add compatible for MediaTek
- MT6795
+ Thunderbird/102.6.1
+Subject: Re: [PATCH] soc: mediatek: mtk-svs: change the function
+ IS_ERR_OR_NULL() to IS_ERR()
 Content-Language: en-US
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>
-Cc: p.zabel@pengutronix.de, linux-pwm@vger.kernel.org, kernel@collabora.com,
- chunkuang.hu@kernel.org, linux-phy@lists.infradead.org, ck.hu@mediatek.com,
- jitao.shi@mediatek.com, houlong.wei@mediatek.com,
- linux-kernel@vger.kernel.org, phone-devel@vger.kernel.org, vkoul@kernel.org,
- chunfeng.yun@mediatek.com, daniel@ffwll.ch, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, xinlei.lee@mediatek.com,
- airlied@gmail.com, u.kleine-koenig@pengutronix.de,
- linux-arm-kernel@lists.infradead.org, krzysztof.kozlowski+dt@linaro.org,
- kishon@kernel.org, ~postmarketos/upstreaming@lists.sr.ht,
- thierry.reding@gmail.com, devicetree@vger.kernel.org,
- dri-devel@lists.freedesktop.org, jassisinghbrar@gmail.com
-References: <20230412112739.160376-1-angelogioacchino.delregno@collabora.com>
- <20230412112739.160376-2-angelogioacchino.delregno@collabora.com>
- <168133318912.3190428.16120880490622098945.robh@kernel.org>
- <5c0bc1f2-5917-ab84-8b0b-f2adc48f8be7@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <5c0bc1f2-5917-ab84-8b0b-f2adc48f8be7@gmail.com>
+To: =?UTF-8?B?5YiY57Sr55C0?= <ziqin_l@hust.edu.cn>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Dongliang Mu <dzm91@hust.edu.cn>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230406024200.3126080-1-ziqin_l@hust.edu.cn>
+ <1b48b0ec.3b004.1877971d059.Coremail.ziqin_l@hust.edu.cn>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <1b48b0ec.3b004.1877971d059.Coremail.ziqin_l@hust.edu.cn>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230413_022855_367986_AC42F1E8 
-X-CRM114-Status: GOOD (  13.66  )
+X-CRM114-CacheID: sfid-20230413_023735_770749_D87CCBAB 
+X-CRM114-Status: GOOD (  14.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,34 +96,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 13/04/23 10:52, Matthias Brugger ha scritto:
-> 
-> 
-> On 12/04/2023 23:03, Rob Herring wrote:
->>
->> On Wed, 12 Apr 2023 13:27:13 +0200, AngeloGioacchino Del Regno wrote:
->>> Add a compatible string for MediaTek Helio X10 MT6795's display PWM
->>> block: this is the same as MT8173.
->>>
->>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>> ---
->>>   Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml | 4 +++-
->>>   1 file changed, 3 insertions(+), 1 deletion(-)
->>>
->>
->> Running 'make dtbs_check' with the schema in this patch gives the
->> following warnings. Consider if they are expected or the schema is
->> incorrect. These may not be new warnings.
->>
-> 
-> These are not new warnings. I think we should address them in a different patch. In 
-> my opinion it shouldn't block this patch. In the end it only add as compatible here.
+
+
+On 13/04/2023 09:08, 刘紫琴 wrote:
+> ping?
 > 
 
-I agree. These warnings should not block this patch, as they're totally unrelated
-to it.
+Please be patient, maintainers are sometimes busy and can't cope with all the 
+patches at a time.
 
-Regards,
-Angelo
+Please don't top post :)
 
+This was already fixed and applied to linux-next via
+https://lore.kernel.org/all/20230202124104.16504-2-roger.lu@mediatek.com/
+
+Best regards,
+Matthias
+
+> "Ziqin Liu" <ziqin_l@hust.edu.cn>写道：
+>> nvmem_cell_get() will return an ERR_PTR() on error or a valid pointer to a
+>> struct nvmem_cell but won't return NULL, the check function should be
+>> IS_ERR() instead of IS_ERR_OR_NULL()
+>>
+>> Signed-off-by: Ziqin Liu <ziqin_l@hust.edu.cn>
+>> Reviewed-by: Dongliang Mu <dzm91@hust.edu.cn>
+>> ---
+>>   drivers/soc/mediatek/mtk-svs.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
+>> index a7eb019b5157..8127fb6d587b 100644
+>> --- a/drivers/soc/mediatek/mtk-svs.c
+>> +++ b/drivers/soc/mediatek/mtk-svs.c
+>> @@ -1726,7 +1726,7 @@ static int svs_get_efuse_data(struct svs_platform *svsp,
+>>   	struct nvmem_cell *cell;
+>>   
+>>   	cell = nvmem_cell_get(svsp->dev, nvmem_cell_name);
+>> -	if (IS_ERR_OR_NULL(cell)) {
+>> +	if (IS_ERR(cell)) {
+>>   		dev_err(svsp->dev, "no \"%s\"? %ld\n",
+>>   			nvmem_cell_name, PTR_ERR(cell));
+>>   		return PTR_ERR(cell);
+>> -- 
+>> 2.25.1
 
