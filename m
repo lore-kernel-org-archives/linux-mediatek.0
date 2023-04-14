@@ -4,100 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD8D2C77B6E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Apr 2023 12:23:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A9ABC77B6E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Apr 2023 12:28:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=yPCGffG6qbUGI7F6FTErQ0LH3cHGPkEEbnsErQvfFxw=; b=29od1Y6rt7RIqMgLSTAk3NxbvM
-	BrxOTnnfLiLViP5NQVKzLngqxYXthnK/aLwfOffNrZ8KQ0jKPuo3ptxfY5wuypJR1PafKPKDrEHIp
-	8n97fGyFj6Jl+SPiBhrKJkwQseQKbebJHybJVDDB8r9x17CInWCg/AYXDZrtSznUobHKnBwyJxtxW
-	0Lec1FeM5xZWTUWN604kGpjeCaguOXOWIAqkzWJxyg2CDtUGzdB5qjbrBUuYc95UHkn/iJ2q7fYMk
-	tLMfjBA7rHQT4A7qWAmS22LLAZzsBFnK6wdvnvg7jpOQbgUSeehdeINZqU3jqISxPh5/ds6KLdQVb
-	v5TTCy3A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=z2XOASLEKsa7wqjYtuo8NoqmkS3+OiypWGH4rl3hN5o=; b=iYEIWFLNxEl06w
+	3MmuITAy3gJM5lWDjW85PzExEZrz2rzHgKU6/S+pNSF0GMBtkQXd9WPG/0k5jxfOqCjymVa/7vLd7
+	uIxrJ6oJdoRYfCR2YI8aOJQWrsXFnU4DlXuOp12e3pH9M4M3/MCF4DoYJxjaBaQZ4xxAESDIYEtjs
+	Reiv5U6GewywtbF4nCtbjhzHDE9VhJHKT/iE1YGoavpXulVclAGHGcG9Q7TMPhn00C+nCh+Nf59MO
+	ZZiYpeLfkgUSdc2slDGGhesreFeoIUMHpGEPnWjzMASWKHwizIy3OwCApFuvmMTZ1l+yW4qJyVPl5
+	AhwZhUqqzizOavTQucMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pnISJ-009VAy-2F;
-	Fri, 14 Apr 2023 12:23:07 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1pnIX7-009WLr-2B;
+	Fri, 14 Apr 2023 12:28:05 +0000
+Received: from sender3-op-o18.zoho.com ([136.143.184.18])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pnISF-009V8d-0O
-	for linux-mediatek@lists.infradead.org;
-	Fri, 14 Apr 2023 12:23:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1681474980;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=yPCGffG6qbUGI7F6FTErQ0LH3cHGPkEEbnsErQvfFxw=;
-	b=b/1x6luHPegLm6mZpHK+2Wu7u9um7zXBw4i5l0Nf8vNQ80OtffQ5G+t6Zp6VU1POQVBy0U
-	hqVEro3JB2lpnud/yUB+qJ9zELPxDEk2SrvW0v3W9KtAd24y25/KehfumMKH24AN+uS/KG
-	mc7xrjy9YUijjMtWCkbsvUiZl145+z8=
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
- [209.85.160.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-457-8_kA8cGnPjK9Vf1k78Vcpg-1; Fri, 14 Apr 2023 08:22:57 -0400
-X-MC-Unique: 8_kA8cGnPjK9Vf1k78Vcpg-1
-Received: by mail-qt1-f198.google.com with SMTP id s6-20020ac85cc6000000b003e6372b917dso450594qta.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 14 Apr 2023 05:22:57 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681474977; x=1684066977;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=yPCGffG6qbUGI7F6FTErQ0LH3cHGPkEEbnsErQvfFxw=;
-        b=aek+MV5jXta5lAvEo284GPKM7mBoGHZwQf91FaGEblkry5FKTUwkojB959pwGC/tj/
-         XTnjpGmw7LSpj2DQIJyvzJcsoOaInROer1awaGHiaggJFgkNx7a6EgKn/8vFLMqnFZkj
-         Xg5sOWyAtNX3/T0Q8qhPm+e3IheVUt5rZgEDumE6Oy8WCZmf04VwEpEY4gMF8W6D1YAa
-         1v0umGgwQZ8vyQwr4nVWW4ZH0OFgnTh4AmFpw3fy+liqFeBsySh3zK4o8CN0VjvXGPtw
-         Cyo9GUoODpcRyxjR5RRNki8ev+jd/nPSS02B014gkzwvsFZ++BdyMkMIzSD1Kpg7UlAm
-         HnYg==
-X-Gm-Message-State: AAQBX9dFz+FMSzxSQHyX3s6f1a0Z8KOtjxMqNtwgfmGgQ1AonRZ858hk
-	H2akhZ5Z3ybmOLZBShug0R4uaxrU0vHw49rVV8cUzpoS5M7ReFlmiQQEVrmD6hzJInyZQKL9Twt
-	8hX1Nr7A+nmvai/sy1IL66DtxORkBNbEe
-X-Received: by 2002:ac8:5945:0:b0:3e4:e2fa:66b0 with SMTP id 5-20020ac85945000000b003e4e2fa66b0mr7771664qtz.29.1681474977171;
-        Fri, 14 Apr 2023 05:22:57 -0700 (PDT)
-X-Google-Smtp-Source: AKy350ZrFNjLa1K+ogArho3OQ0SXUeh36MSY9HRSMAimwdY9UWoY7qElQIx2CPz+MS7Z6iLrkNomrA==
-X-Received: by 2002:ac8:5945:0:b0:3e4:e2fa:66b0 with SMTP id 5-20020ac85945000000b003e4e2fa66b0mr7771633qtz.29.1681474976909;
-        Fri, 14 Apr 2023 05:22:56 -0700 (PDT)
-Received: from dell-per740-01.7a2m.lab.eng.bos.redhat.com (nat-pool-bos-t.redhat.com. [66.187.233.206])
-        by smtp.gmail.com with ESMTPSA id r4-20020ac85e84000000b003e302c1f498sm1193420qtx.37.2023.04.14.05.22.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 14 Apr 2023 05:22:56 -0700 (PDT)
-From: Tom Rix <trix@redhat.com>
-To: chunkuang.hu@kernel.org,
-	p.zabel@pengutronix.de,
-	chunfeng.yun@mediatek.com,
-	vkoul@kernel.org,
-	kishon@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	nathan@kernel.org,
-	ndesaulniers@google.com,
-	granquet@baylibre.com
-Cc: dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-phy@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	llvm@lists.linux.dev,
-	Tom Rix <trix@redhat.com>
-Subject: [PATCH] phy: mediatek: fix returning garbage
-Date: Fri, 14 Apr 2023 08:22:53 -0400
-Message-Id: <20230414122253.3171524-1-trix@redhat.com>
-X-Mailer: git-send-email 2.27.0
+	id 1pnIX2-009WJG-2D;
+	Fri, 14 Apr 2023 12:28:02 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1681475224; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=muEMiNc6X4kpwNuB2j+lTCvzYfl6q+EGl/it36G5HLiA3/9geCnrIwoZS+5IMBjFrMD6I9JS3J/QHnPeqgWqlsKMWC4PTc0XHqhXpI4GcfCtWDB6eFUWkU1omEqhge7ytalffWzH/IKHufx79x5QLPriEoPt1K7VFJooQ1SfnuE=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1681475224; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=z2XOASLEKsa7wqjYtuo8NoqmkS3+OiypWGH4rl3hN5o=; 
+	b=DAUZoXsgTbfo69eoDV4OtSGZn5XHU3YCDAInDfEWFcmX9w13n8n/2kyMXSBe46FopoaxOr6IvRxO1SZYot+8vsqpHjtkZPnlrmM0DnqrwxA+cQsELSrw6GWjuG7vJWpHkxry7BKHSANntEO9M1iIYdbzQ+d8I6YegrwoKUxFXA0=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1681475224;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=z2XOASLEKsa7wqjYtuo8NoqmkS3+OiypWGH4rl3hN5o=;
+	b=DjqWN6YlqTqNN4n1AGNJz1sT6czOolvvH75qmlhf+KpyMwkRDxemDPPSA5W3UUcW
+	RJbXmLviSSPQr62y2I1GQA8farT0tSXq82a9RW6Ib6zTCt+TSqvGI2uF5LrM8tkP2Jc
+	ntCwcyFDSZJvuWb3h4eh0+mxQDnS7BGuk0DkUqFM=
+Received: from [10.10.10.3] (149.91.1.15 [149.91.1.15]) by mx.zohomail.com
+	with SMTPS id 1681475222132610.1878987362392; Fri, 14 Apr 2023 05:27:02 -0700 (PDT)
+Message-ID: <60d11eba-9532-48ea-b4ce-28a332f2b7df@arinc9.com>
+Date: Fri, 14 Apr 2023 15:26:52 +0300
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH net] net: dsa: mt7530: permit port 5 to work without port
+ 6 on MT7621 SoC
+Content-Language: en-US
+To: Vladimir Oltean <vladimir.oltean@nxp.com>, netdev@vger.kernel.org
+References: <20230307155411.868573-1-vladimir.oltean@nxp.com>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <20230307155411.868573-1-vladimir.oltean@nxp.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"; x-default=true
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230414_052303_242389_6A04BD25 
-X-CRM114-Status: UNSURE (   9.30  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230414_052800_797299_E871FF5E 
+X-CRM114-Status: GOOD (  16.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,40 +75,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>, =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>, Eric Dumazet <edumazet@google.com>, erkin.bozoglu@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Greg Ungerer <gerg@kernel.org>, arinc9.unal@gmail.com, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, Alexander Couzens <lynxis@fe80.eu>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-clang reports
-drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:298:6: error: variable
-  'ret' is uninitialized when used here [-Werror,-Wuninitialized]
-        if (ret)
-            ^~~
-ret should have been set by the preceding call to mtk_hdmi_pll_set_hw.
+On 7.03.2023 18:54, Vladimir Oltean wrote:
+> The MT7530 switch from the MT7621 SoC has 2 ports which can be set up as
+> internal: port 5 and 6. Arınç reports that the GMAC1 attached to port 5
+> receives corrupted frames, unless port 6 (attached to GMAC0) has been
+> brought up by the driver. This is true regardless of whether port 5 is
+> used as a user port or as a CPU port (carrying DSA tags).
+> 
+> Offline debugging (blind for me) which began in the linked thread showed
+> experimentally that the configuration done by the driver for port 6
+> contains a step which is needed by port 5 as well - the write to
+> CORE_GSWPLL_GRP2 (note that I've no idea as to what it does, apart from
+> the comment "Set core clock into 500Mhz"). Prints put by Arınç show that
+> the reset value of CORE_GSWPLL_GRP2 is RG_GSWPLL_POSDIV_500M(1) |
+> RG_GSWPLL_FBKDIV_500M(40) (0x128), both on the MCM MT7530 from the
+> MT7621 SoC, as well as on the standalone MT7530 from MT7623NI Bananapi
+> BPI-R2. Apparently, port 5 on the standalone MT7530 can work under both
+> values of the register, while on the MT7621 SoC it cannot.
 
-Fixes: 45810d486bb4 ("phy: mediatek: add support for phy-mtk-hdmi-mt8195")
-Signed-off-by: Tom Rix <trix@redhat.com>
----
- drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+I finally found out why. Looking at gsw_mt7623.c [0], setting the core 
+clock into 500Mhz is done for 40MHz XTAL. With some dev_info code, I was 
+able to confirm that the MCM MT7530 on my MT7621 board runs at 40MHz 
+whilst the standalone MT7530 on my Bananapi BPI-R2 runs at 25MHz.
 
-diff --git a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
-index abfc077fb0a8..c63294e451d6 100644
---- a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
-+++ b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
-@@ -292,9 +292,9 @@ static int mtk_hdmi_pll_calc(struct mtk_hdmi_phy *hdmi_phy, struct clk_hw *hw,
- 	if (!(digital_div <= 32 && digital_div >= 1))
- 		return -EINVAL;
- 
--	mtk_hdmi_pll_set_hw(hw, PLL_PREDIV, fbkdiv_high, fbkdiv_low,
--			    PLL_FBKDIV_HS3, posdiv1, posdiv2, txprediv,
--			    txposdiv, digital_div);
-+	ret = mtk_hdmi_pll_set_hw(hw, PLL_PREDIV, fbkdiv_high, fbkdiv_low,
-+				  PLL_FBKDIV_HS3, posdiv1, posdiv2, txprediv,
-+				  txposdiv, digital_div);
- 	if (ret)
- 		return -EINVAL;
- 
--- 
-2.27.0
+[0] 
+https://github.com/BPI-SINOVOIP/BPI-R2-bsp/blob/master/linux-mt/drivers/net/ethernet/mediatek/gsw_mt7623.c#L1039
 
+Arınç
 
