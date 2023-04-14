@@ -4,89 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 863A1C77B78
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Apr 2023 17:01:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86FEDC77B72
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Apr 2023 17:18:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Subject:From:Cc:To:MIME-Version:Date:Message-ID:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=tpYSQRcLoZ2NNWNhd1p0+Azk81/34fPL8j6kX4EVcck=; b=skAoRoCZJ1hq5NMVWVE9U3wkhf
-	GsS+KhaSm6xNgqJ6oXEINOiZJMEJEJJf2Gn0LI8i7rXXdhEfBcKYaDNsdM1TKZ3JP9uk6ZWQqOwW5
-	7pJhvwUeR3ZR7C4Lt5vb7NYygiugJh7sC1FY/ng9CXLRd16bL/Mr6Npt4rr8F8+PGXV0O77lleb25
-	1jo1VzO7hwrbZTWXosO/V1W2AcbJHF54Ce8R8EEqwK21lk3gKyxqC47upV1rCyp1CZKxmRMQK9HgP
-	RIrRacjK9UFuSX3tDvInPXTIJQ6L8sscbOhEb3yDwX6g/ssjzDkyv9BLvFZupDvkh9MH2/IsuO3j9
-	K7PjMYsQ==;
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PHnCsKlX2VKhgBwGvCNwM50VyEkwpSDcgXFOlOFMHv0=; b=cC7V/xewipXuM6xI6f0HR/BZg0
+	JH7TPgalp4VbuQrUowfScwKoHIP4tYIrqxJvcVuOs6a2zNX0uDFRvVRGSqXdBJ+xKXk8EagWAUzee
+	++wyooJ2AosMGrt4m2KRF90dgs4zqr1FT3AxrJhdsGdgGs6wt3401gCMYai/BOpZ34SkMr7nlQEiY
+	MLiPpAtqY22x1IZ8jx14/yRyNpuYZuExEZ3HN4PWHcc9JDwGK/m0D01xFGLehehLL7aQRH1sTKRmw
+	RuMFKKz49VNUkQZvlaRWAUywsTTlvNYhN04gziP19FStJN+mrxzyz7Fkq15mC+p4z/0BBDthLhuss
+	zJ6wDJ8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pnMnn-00ABX3-2J;
-	Fri, 14 Apr 2023 17:01:35 +0000
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+	id 1pnN4O-00ADZN-1F;
+	Fri, 14 Apr 2023 17:18:44 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pnMnl-00ABVu-0g;
-	Fri, 14 Apr 2023 17:01:35 +0000
-Received: by mail-wr1-x432.google.com with SMTP id s2so14939549wra.7;
-        Fri, 14 Apr 2023 10:01:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1681491691; x=1684083691;
-        h=content-transfer-encoding:subject:from:cc:to:content-language
-         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=tpYSQRcLoZ2NNWNhd1p0+Azk81/34fPL8j6kX4EVcck=;
-        b=bCcjSgTmtygluGkiwy7ZH/Yg6HWR0r9DKq71+6NqvqyaNyOEphhiAkiGDpBAzwPhaN
-         dTr6esiOR89FgDRQZnFMsUi+/pepQmeSxKUKGlBd0OIUg1yhmJXB1XUXvv5MQThF7P+C
-         VKdhWZZwhdM/j4K4326XCaghhFj4meAaTgjj92PdQw9v8Xsjr+CIJmSZf0Vi2eYynABj
-         cgxRjtCLjXoYKAqXCiK6F5DW7UzRBjllC0zUSZ+GcEXawPabqaPMCXHhTZ0Nu+D/y3Pg
-         CyKk17+PaR0qVMytzUuW39c1DO5Cp1qTr9AWE+0GndRH2pFS0JlHMWpVYkWFNk3myGDM
-         PIlA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681491691; x=1684083691;
-        h=content-transfer-encoding:subject:from:cc:to:content-language
-         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=tpYSQRcLoZ2NNWNhd1p0+Azk81/34fPL8j6kX4EVcck=;
-        b=JYhAbzf3bQIqmb5qP1Irko/DSQdrHs+OQcTCJY4L02oFqx14LMqfzBQ5UohSbQM0VC
-         5YF+FDEV3XJXCivv1meBUe49K9ut3CL2gDnuI/wZAIi5qM6YCKZqjSdmMBf5VwxUuEkd
-         ZttQpZIbFJc2Lbihwiibwwls5OLNi7A3DLEqBFyJ+uYFUZmQtsgR41Tv6HNUVPIPItOk
-         FrBSfQoo52L/+biMZXGH6vOs0JBOGUB64eRDlNGzdTMknw4vFxTp5DOvhU1yoJZ3aZyL
-         tq+sI9IbznI8Z+s5hndwyaXyH+cbYCL1hzYFW0DkBfLWWR59u8hsKZ4Cmres8z0+lZ/O
-         o/XQ==
-X-Gm-Message-State: AAQBX9fL1haWlIkguKQJexg2+czJDK4GmezapaEfWZat2oyIjStv9McD
-	5aiQSsjUvJGUm2PXknpCiN0=
-X-Google-Smtp-Source: AKy350ZrjI0stSD4JEQTpCjrHz4ZUNwDVniU/jwdDHZurgbltaw4iFK4TqKYrpFEcd3N7ZOwacMAgw==
-X-Received: by 2002:adf:e352:0:b0:2f5:a651:6bb2 with SMTP id n18-20020adfe352000000b002f5a6516bb2mr4356304wrj.15.1681491691190;
-        Fri, 14 Apr 2023 10:01:31 -0700 (PDT)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id j15-20020a5d564f000000b002f7780eee10sm1250868wrw.59.2023.04.14.10.01.28
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 14 Apr 2023 10:01:29 -0700 (PDT)
-Message-ID: <6920736b-ddb3-29df-d0b2-46db40cef49f@gmail.com>
-Date: Fri, 14 Apr 2023 19:01:28 +0200
+	id 1pnN4K-00ADVa-0F;
+	Fri, 14 Apr 2023 17:18:41 +0000
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 33EGgm5P031366;
+	Fri, 14 Apr 2023 17:17:49 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=PHnCsKlX2VKhgBwGvCNwM50VyEkwpSDcgXFOlOFMHv0=;
+ b=A/rTOjNtZ3dtrQdZrIwBIBv3Wv3b5E2SHJyJjH7A3zfWcM+6+KVpoPc+bVcZgwOE4oda
+ +94kxeUKJp06uDiujg2Mdd2zxWattjPbwv2jxwHtgOZ5OJLzcxGRznYLaRjct0cyscHI
+ Swt/NmzlsgPat5nEA3ACDOfXFW7tsVDFDaXBWRvX+eHXrbIJPss4kh+aVeDZ03MkqHwi
+ 2BF0Ln9Uwy3O/a12NhHqVFUIKuleHD5o5EUrzf0AjKCHSz5bbvZXbZSQwhshT4aDLngC
+ B7OT24RvrvLO7604s52ITj2NSCpn2XKwRshC081eZirHfATnzbFeSv3d7ZwqB4bzXaWB mg== 
+Received: from nasanppmta01.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3pxe66kngr-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 14 Apr 2023 17:17:49 +0000
+Received: from nasanex01a.na.qualcomm.com (nasanex01a.na.qualcomm.com [10.52.223.231])
+	by NASANPPMTA01.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 33EHHmam011887
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 14 Apr 2023 17:17:48 GMT
+Received: from [10.110.60.111] (10.80.80.8) by nasanex01a.na.qualcomm.com
+ (10.52.223.231) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.42; Fri, 14 Apr
+ 2023 10:17:47 -0700
+Message-ID: <85b92732-5310-92ed-0d33-458dec906495@quicinc.com>
+Date: Fri, 14 Apr 2023 10:17:46 -0700
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH v1 3/6] soc: mediatek: virt: geniezone: Introduce
+ GenieZone hypervisor support
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+        =?UTF-8?B?WWktRGUgV3UgKOWQs+S4gOW+tyk=?= <Yi-De.Wu@mediatek.com>,
+        "corbet@lwn.net" <corbet@lwn.net>,
+        "robh+dt@kernel.org" <robh+dt@kernel.org>,
+        "catalin.marinas@arm.com" <catalin.marinas@arm.com>,
+        "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+        =?UTF-8?B?WWluZ3NoaXVhbiBQYW4gKOa9mOepjui7kik=?=
+	<Yingshiuan.Pan@mediatek.com>,
+        "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>,
+        "angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>,
+        "will@kernel.org"
+	<will@kernel.org>
+CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+        "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+        =?UTF-8?B?TVkgQ2h1YW5nICjojormmI7ouo0p?= <MY.Chuang@mediatek.com>,
+        "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+        =?UTF-8?B?UGVpTHVuIFN1ZWkgKOmai+WfueWAqyk=?= <PeiLun.Suei@mediatek.com>,
+        =?UTF-8?B?TGlqdS1jbHIgQ2hlbiAo6Zmz6bqX5aaCKQ==?=
+	<Liju-clr.Chen@mediatek.com>,
+        =?UTF-8?B?SmFkZXMgU2hpaCAo5pa95ZCR546oKQ==?=
+	<jades.shih@mediatek.com>,
+        "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>,
+        =?UTF-8?B?U2hhd24gSHNpYW8gKOiVreW/l+elpSk=?= <shawn.hsiao@mediatek.com>,
+        =?UTF-8?B?TWlsZXMgQ2hlbiAo6Zmz5rCR5qi6KQ==?= <Miles.Chen@mediatek.com>,
+        "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
+        =?UTF-8?B?SXZhbiBUc2VuZyAo5pu+5b+X6LuSKQ==?= <ivan.tseng@mediatek.com>,
+        =?UTF-8?B?WmUteXUgV2FuZyAo546L5r6k5a6HKQ==?= <Ze-yu.Wang@mediatek.com>
+References: <20230413090735.4182-1-yi-de.wu@mediatek.com>
+ <20230413090735.4182-4-yi-de.wu@mediatek.com>
+ <1aa701cc-92ca-71be-0663-df4bfae66c2f@linaro.org>
+ <5c1d69c8-d973-fa7b-1f14-c72729ff5594@gmail.com>
+ <533a1a9b653cf63f1e5df7f95d1b23902809561d.camel@mediatek.com>
+ <7256414b-5553-e025-334f-b8df48f40c31@linaro.org>
 Content-Language: en-US
-To: arm-soc <arm@kernel.org>, SoC Team <soc@kernel.org>
-Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Balsam CHIHI <bchihi@baylibre.com>, Fabien Parent <fparent@baylibre.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Moudy Ho <moudy.ho@mediatek.com>, "Nancy.Lin" <nancy.lin@mediatek.com>,
- =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- "Roy-CW.Yeh" <roy-cw.yeh@mediatek.com>,
- Xiangsheng Hou <xiangsheng.hou@mediatek.com>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [GIT PULL] MediaTek ARM64 DTS updates for 6.4 (resend)
-Content-Type: text/plain; charset=UTF-8; format=flowed
+From: Trilok Soni <quic_tsoni@quicinc.com>
+In-Reply-To: <7256414b-5553-e025-334f-b8df48f40c31@linaro.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nasanex01a.na.qualcomm.com (10.52.223.231)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: wqjVgE8LIVOZn6RtkiAIA6zkpNIZCase
+X-Proofpoint-ORIG-GUID: wqjVgE8LIVOZn6RtkiAIA6zkpNIZCase
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.254,Aquarius:18.0.942,Hydra:6.0.573,FMLib:17.11.170.22
+ definitions=2023-04-14_10,2023-04-14_01,2023-02-09_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxlogscore=999 phishscore=0
+ lowpriorityscore=0 spamscore=0 impostorscore=0 adultscore=0 clxscore=1011
+ mlxscore=0 suspectscore=0 bulkscore=0 malwarescore=0 priorityscore=1501
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2303200000
+ definitions=main-2304140152
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230414_100133_251656_5D4F9D66 
-X-CRM114-Status: GOOD (  16.47  )
+X-CRM114-CacheID: sfid-20230414_101840_136152_AE8A5779 
+X-CRM114-Status: GOOD (  23.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,164 +130,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-[resending as I forgot to CC the mailinglists]
+On 4/14/2023 1:51 AM, Krzysztof Kozlowski wrote:
+> On 14/04/2023 10:43, Yi-De Wu (吳一德) wrote:
+>> On Thu, 2023-04-13 at 19:08 +0200, Matthias Brugger wrote:
+>>> External email : Please do not click links or open attachments until
+>>> you have verified the sender or the content.
+>>>
+>>>
+>>> On 13/04/2023 14:55, Krzysztof Kozlowski wrote:
+>>>> On 13/04/2023 11:07, Yi-De Wu wrote:
+>>>>> From: "Yingshiuan Pan" <yingshiuan.pan@mediatek.com>
+>>>>>
+>>>>> GenieZone is MediaTek proprietary hypervisor solution, and it is
+>>>>> running
+>>>>> in EL2 stand alone as a type-I hypervisor. This patch exports a
+>>>>> set of
+>>>>> ioctl interfaces for userspace VMM (e.g., crosvm) to operate
+>>>>> guest VMs
+>>>>> lifecycle (creation, running, and destroy) on GenieZone.
+>>>>>
+>>>>> Signed-off-by: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
+>>>>> Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
+>>>>> ---
+>>>>>    arch/arm64/include/uapi/asm/gzvm_arch.h       |  79 ++++
+>>>>>    drivers/soc/mediatek/Kconfig                  |   2 +
+>>>>>    drivers/soc/mediatek/Makefile                 |   1 +
+>>>>>    drivers/soc/mediatek/virt/geniezone/Kconfig   |  17 +
+>>>>
+>>>> Hypervisor drivers do not go to soc. Stop shoving there everything
+>>>> from
+>>>> your downstream. Find appropriate directory, e.g. maybe
+>>>> drivers/virt.
+>>>
+>>> Acked, what is the reason you want to add this to drivers/soc instead
+>>> of
+>>> drivers/virt?
+>>>
+>>> Regards,
+>>> Matthias
+>>>
+>> Noted. We would take your advice and move it from
+>> drivers/soc/mediatek/virt to /drivers/virt on next version.
+>>
+>> The reason we put it under our soc/ is that the drver is highly
+>> propietary for mediatek's product and for aarch64 only. Maybe it's not
+>> general enough to put in under /drivers/virt.
+> 
+> If virt folks reject the driver, because it is highly proprietary, then
+> it is not suitable for soc/mediatek either.
+> 
+> Your argument is actually not helping you. It's rather a proof that this
+> driver might not be suitable for Linux kernel at all.
+> 
+>>
+> https://android-review.googlesource.com/c/kernel/common/+/2447547/1..2/drivers/virt/geniezone/gzvm.h#b91
+> 
+> I don't see there anything suggesting moving to soc/mediatek. Comment
+> from Trilok (+Cc) suggests that your code is simply not portable. Write
+> code which is portable and properly organized.
 
-Hi Olof and Arnd,
+Thanks for the CC. I don't know how different these patches are from the 
+ACK post, but if they are similar then I am surprised that patches of 
+that state are posted here since they will need lot of work to get it 
+reviewed here.
 
-Please have a look to the 64 bit changes for MediaTek chips. We had quite some 
-activity to get GPU on the different SoCs used in Chromebooks up and running.
+Also, do you plan to open-source your hypervisor? I am not sure if that 
+is the requirement but it will be good to know if some version of your 
+Hypervisor is open-sourced or you have plan for that.
 
-Apart from that we got support for the MT8365 SoC and EVK. Also support the Sony 
-Xperia M5 (based on MT6795) get more mature. It's nice to see how MediaTek 
-upstream support is taking over other areas then 'just' Chromebooks.
+---Trilok Soni
 
-Regards,
-Matthias
-
----
-The following changes since commit fe15c26ee26efa11741a7b632e9f23b01aca4cc6:
-
-   Linux 6.3-rc1 (2023-03-05 14:52:03 -0800)
-
-are available in the Git repository at:
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/ 
-tags/v6.3-next-dts64
-
-for you to fetch changes up to 13961ef828cbc254cc272221b7fc54851caa39a7:
-
-   arm64: dts: mediatek: mt6795-xperia-m5: Add Bosch BMM050 Magnetometer 
-(2023-04-12 14:44:15 +0200)
-
-----------------------------------------------------------------
-mt6795
-- enable frequency hopping controller (FHCTL)
-- add i2c, power domains and some clocks for video enconde/decode
-- Sony Xperia M5 enable touchscreen, proximity sensor, accelerometer
-   and NFC
-
-mt8173
-- align keys with DT binding
-
-mt8183
-- enable GPU DVFS
-
-mt8186
-- enable GPU
-
-mt8192
-- enable GPU
-
-mt8195
-- add mutex for Video Processor Pipeline Subsystem (VPP)
-- add support for Mali-G57 Valhall Natt GPU baked by panfrost
-- add support for display on vdosys1
-- add thermal support
-- add display PWM
-
-mt8365
-- add support for the eval kit including i2c, pmic-wrapper, mmc and
-   ethernet
-
-----------------------------------------------------------------
-Alexandre Bailon (1):
-       arm64: dts: mediatek: Increase the size BL31 reserved memory
-
-Alexandre Mergnat (5):
-       arm64: dts: mediatek: add i2c support for mt8365 SoC
-       arm64: dts: mediatek: enable i2c0 for mt8365-evk board
-       arm64: dts: mediatek: add pwrap support to mt8365 SoC
-       arm64: dts: mediatek: add mmc support for mt8365 SoC
-       arm64: dts: mediatek: add ethernet support for mt8365 SoC
-
-Alyssa Rosenzweig (2):
-       arm64: dts: mediatek: mt8192: Add GPU nodes
-       arm64: dts: mediatek: mt8192-asurada: Enable GPU
-
-AngeloGioacchino Del Regno (31):
-       arm64: dts: mediatek: mt8183-kukui: Couple VGPU and VSRAM_GPU regulators
-       arm64: dts: mediatek: mt8183-kukui: Override vgpu/vsram_gpu constraints
-       arm64: dts: mediatek: mt8183: Remove second opp-microvolt entries from 
-gpu table
-       arm64: dts: mt8183-pumpkin: Couple VGPU and VSRAM_GPU regulators
-       arm64: dts: mediatek: mt8183-evb: Couple VGPU and VSRAM_GPU regulators
-       arm64: dts: mediatek: mt8183: Use mediatek,mt8183b-mali as GPU compatible
-       arm64: dts: mediatek: mt8192: Add mfg_ref_sel clock to MFG0 domain
-       arm64: dts: mediatek: mt8192-asurada: Assign sram supply to MFG1 pd
-       arm64: dts: mediatek: mt8192-asurada: Fix voltage constraint for Vgpu
-       arm64: dts: mediatek: mt8192-asurada: Couple VGPU and VSRAM_OTHER regulators
-       arm64: dts: mediatek: mt8195: Add mfg_core_tmp clock to MFG1 domain
-       arm64: dts: mt8195: Add panfrost node for Mali-G57 Valhall Natt GPU
-       arm64: dts: mediatek: mt8195-cherry: Enable Mali-G57 GPU
-       arm64: dts: mediatek: mt8186: Add GPU node
-       arm64: dts: mediatek: mt8183-pumpkin: Override vgpu/vsram_gpu constraints
-       arm64: dts: mediatek: mt8183-evb: Override vgpu/vsram_gpu constraints
-       arm64: dts: mediatek: mt8195: Add display pwm nodes
-       arm64: dts: mediatek: cherry: Add configuration for display backlight
-       arm64: dts: mediatek: mt6795: Add Frequency Hopping Controller node
-       arm64: dts: mediatek: mt6795: Add apmixedsys syscon node
-       arm64: dts: mediatek: mt6795: xperia-m5: Enable Frequency Hopping
-       arm64: dts: mediatek: mt6795: Add nodes for I2C controllers
-       arm64: dts: mediatek: mt6795: Add SoC power domains
-       arm64: dts: mediatek: mt6795: Add VDECSYS and VENCSYS clocks
-       arm64: dts: mediatek: mt6795-xperia-m5: Enable I2C 0-3 busses
-       arm64: dts: mediatek: mt6795-xperia-m5: Add Synaptics RMI4 Touchscreen
-       arm64: dts: mediatek: mt6795-xperia-m5: Add Sensortek STK3310 Proximity
-       arm64: dts: mediatek: mt6795-xperia-m5: Add NXP PN547 NFC on I2C3
-       arm64: dts: mediatek: mt6795: Add tertiary PWM node
-       arm64: dts: mediatek: mt6795-xperia-m5: Add Bosch BMA255 Accelerometer
-       arm64: dts: mediatek: mt6795-xperia-m5: Add Bosch BMM050 Magnetometer
-
-Balsam CHIHI (2):
-       arm64: dts: mediatek: mt8195: Add thermal zones and thermal nodes
-       arm64: dts: mediatek: mt8195: Add temperature mitigation threshold
-
-Fabien Parent (2):
-       arm64: dts: mediatek: Initial mt8365-evk support
-       arm64: dts: mediatek: add mt6357 device-tree
-
-Krzysztof Kozlowski (1):
-       arm64: dts: mediatek: mt8173: correct GPIO keys wakeup
-
-Matthias Brugger (1):
-       arm64: dts: mt8167: Align mmsys node name with dtschema
-
-Moudy Ho (1):
-       arm64: dts: mediatek: mt8195: add MUTEX configuration for VPPSYS
-
-Nancy.Lin (1):
-       arm64: dts: mt8195: add display node for vdosys1
-
-Nícolas F. R. A. Prado (1):
-       arm64: dts: mediatek: mt8192-asurada: Add MFG0 domain supply
-
-Roy-CW.Yeh (1):
-       arm64: dts: mediatek: mt8195: add MMSYS configuration for VPPSYS
-
-Xiangsheng Hou (1):
-       arm64: dts: mediatek: Fix existing NAND controller node name
-
-  arch/arm64/boot/dts/mediatek/Makefile              |   1 +
-  arch/arm64/boot/dts/mediatek/mt2712e.dtsi          |   2 +-
-  arch/arm64/boot/dts/mediatek/mt6357.dtsi           | 282 +++++++++
-  .../boot/dts/mediatek/mt6795-sony-xperia-m5.dts    | 166 ++++++
-  arch/arm64/boot/dts/mediatek/mt6795.dtsi           | 182 ++++++
-  arch/arm64/boot/dts/mediatek/mt7622.dtsi           |   2 +-
-  arch/arm64/boot/dts/mediatek/mt8167.dtsi           |   2 +-
-  arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi       |   6 +-
-  arch/arm64/boot/dts/mediatek/mt8183-evb.dts        |  17 +-
-  arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi     |  17 +-
-  arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts    |  17 +-
-  arch/arm64/boot/dts/mediatek/mt8183.dtsi           |  34 +-
-  arch/arm64/boot/dts/mediatek/mt8186.dtsi           |  17 +
-  arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi   |  24 +-
-  arch/arm64/boot/dts/mediatek/mt8192.dtsi           | 116 +++-
-  arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi    |  29 +
-  arch/arm64/boot/dts/mediatek/mt8195.dtsi           | 633 ++++++++++++++++++++-
-  arch/arm64/boot/dts/mediatek/mt8365-evk.dts        | 183 ++++++
-  arch/arm64/boot/dts/mediatek/mt8365.dtsi           | 488 ++++++++++++++++
-  19 files changed, 2181 insertions(+), 37 deletions(-)
-  create mode 100644 arch/arm64/boot/dts/mediatek/mt6357.dtsi
-  create mode 100644 arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-  create mode 100644 arch/arm64/boot/dts/mediatek/mt8365.dtsi
 
