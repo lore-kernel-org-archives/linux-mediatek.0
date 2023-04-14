@@ -4,69 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD33FC77B6F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Apr 2023 10:19:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8ED49C77B70
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Apr 2023 10:26:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RQ2h7QdLnKKNLnQNg2CjqOluQMEMdPRUm8cojK6u8bE=; b=k2Zidsgj7RHXXqFEw5Uq8Ku8Uy
-	WFzjdsrimEq369DHWN16LmWqvqsCgvdPLE0PjuewGcMrAeVD2XV3SqetHmIpmZco38bfK69SssvIf
-	v3K9J2GdCBtDPRlu+Sty1XlaH0nk1bjtnP6sOk+d9Dhr+BLzyWwSpdJPVJi8psw2BelSFEegd8Eny
-	ljOzyGg/1fJOArPuppH2fjTliaAxySHCZ3ti7HJYwQKOA5PONGSl9kxKDYM0dwBezHQ+Rr3dM6+26
-	u9WTpNf0ozIfMzymKW7J9RKRKSQr4fg0EmAt8UQPVCeYEe2cGG8PgkuUcnuuIlv1TgXhocjm2acdx
-	BpOj0T8w==;
+	bh=m/1Rrq6ub5iVfN9FeT2otXgTHenu1AJtgKyZFEEHtFA=; b=uzomPJR4Wz1Kuka7i2pUiX5XfU
+	rjHNfEwFAglOmKmVYI+eyYFzebY7kH54r08exTkawG32XpSdeD9zR2BHSUN3FEvlmO28ilYYOF0fg
+	A26VX0MAa5UPIzC1BMycAVBXo3m+fBmD0J865PYsJV6MaB8zAAB2UV/66F8Pg3aSZf0M+U70Bo/g6
+	OKHy/wACdkBMFt4HazTecLLFRIh26vuanNQHmypl1ExSlQ+b/2kNf/yKAucWxB4883zzCSAFP+Bj0
+	P5cGQUgBQl9qcgGIJ23uNgEdwpMTU0TWjWowSMwNfOZKijDMRI/2bfHsYu16htHLiJKYuP8epSk0z
+	OFzs1kkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pnGWZ-00930A-1X;
-	Fri, 14 Apr 2023 10:19:23 +0000
+	id 1pnGd5-00977F-0H;
+	Fri, 14 Apr 2023 10:26:07 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pnGWU-0092vK-2u;
-	Fri, 14 Apr 2023 10:19:20 +0000
+	id 1pnGd1-00973m-1G;
+	Fri, 14 Apr 2023 10:26:04 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5052A6603221;
-	Fri, 14 Apr 2023 11:19:09 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 227E5660321F;
+	Fri, 14 Apr 2023 11:26:00 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1681467550;
-	bh=VeLJmPRvnvEQ5IsnqXZVpDeqo2cwm0kmKEbVshVuBp8=;
+	s=mail; t=1681467961;
+	bh=mNoM/ta8cg4ngqxg7oipt2WWk68MhPf2irdlQ2bTH6c=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=D4l4IvXvCtqC3q5kEPR63kKHkXr3NXvxuaNRo9Tu3sa2jvRz7b6V543y+h/1EObv5
-	 UzpIhgf2ablwIZJHwB3fKsigC0ozALklq9Bu1D9+Bk635GloxxsT2oTvjFU+0E7m8a
-	 hux5psPRVFbuKQT/p1/o1MSsLzFyReEIeuvshJ6BUZ/1ywpiWV59Sht2JvsCOG+EKc
-	 fm9fWjVZn+XubQ2RVUMNyKx1Ll1e6qF2eJcAft3lXVL65oktw3u5RhmWgODO9O8Myh
-	 ZkC33DerM75vwRrpMwG+MTzFxteIVSodfbzBMp41kGdwTGH2beS9ACWzW4gLXXAIys
-	 VEMo3Vlw5OoMA==
-Message-ID: <d1f54cd7-99c0-3d1c-460b-9f15f33b95c1@collabora.com>
-Date: Fri, 14 Apr 2023 12:19:06 +0200
+	b=HWaowAFI7MZZLy46RcM67hcrKHR7EFPgMqFHgvDEIAiWxpvjNQicUt31wS4wYDL1S
+	 1KaDj/aqxFkJEeq8RwQxDv4iWZzhP5+BuJxaGDFTauwzHvJBay7+0AlEpI4hi2S2WT
+	 8rB98KbBmtvP6fj7GoWG/FROcIKx2n+XiN5KBI7sj2xzE5hpGwMgpWbRB83wQ9s6Zu
+	 RNpJkWLksBfef+SsnXarFVl1bPEzxQJWSpshnHOEDjJ1/tkYDqZe9CGGGXBfwgHl8k
+	 cUvig8zyWy3zW5Dg58B8CVzegX5HKHhQRhIgzyDe+cANCSJ4z+VhzYfo/Vc0yR6bUB
+	 +8AotLP+x+XDA==
+Message-ID: <13fe3e54-caa5-098c-0a86-3d2f8475c23f@collabora.com>
+Date: Fri, 14 Apr 2023 12:25:57 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.9.1
-Subject: Re: [PATCH v2 7/7] leds: leds-mt6323: Add support for WLEDs and
- MT6332
+Subject: Re: [PATCH 01/27] dt-bindings: pwm: Add compatible for MediaTek
+ MT6795
 Content-Language: en-US
-To: Alexandre Mergnat <amergnat@baylibre.com>, pavel@ucw.cz
-Cc: lee@kernel.org, sean.wang@mediatek.com, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
- linux-leds@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, kernel@collabora.com
-References: <20230412153310.241046-1-angelogioacchino.delregno@collabora.com>
- <20230412153310.241046-8-angelogioacchino.delregno@collabora.com>
- <00c0b699-ba1a-951c-185a-ef8f09abf6f3@baylibre.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: matthias.bgg@gmail.com, p.zabel@pengutronix.de, airlied@gmail.com,
+ daniel@ffwll.ch, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ jassisinghbrar@gmail.com, chunfeng.yun@mediatek.com, vkoul@kernel.org,
+ kishon@kernel.org, thierry.reding@gmail.com, chunkuang.hu@kernel.org,
+ ck.hu@mediatek.com, jitao.shi@mediatek.com, xinlei.lee@mediatek.com,
+ houlong.wei@mediatek.com, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-phy@lists.infradead.org, linux-pwm@vger.kernel.org,
+ kernel@collabora.com, phone-devel@vger.kernel.org,
+ ~postmarketos/upstreaming@lists.sr.ht
+References: <20230412112739.160376-1-angelogioacchino.delregno@collabora.com>
+ <20230412112739.160376-2-angelogioacchino.delregno@collabora.com>
+ <aaeeb18d-f8e8-d6c1-1272-e5b797554b9e@linaro.org>
+ <20230414083019.cpomx37tax4ibe5u@pengutronix.de>
+ <f8a4fd52-52b6-dded-c8b7-864be549e2ad@linaro.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <00c0b699-ba1a-951c-185a-ef8f09abf6f3@baylibre.com>
+In-Reply-To: <f8a4fd52-52b6-dded-c8b7-864be549e2ad@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230414_031919_159444_DE643905 
-X-CRM114-Status: GOOD (  19.88  )
+X-CRM114-CacheID: sfid-20230414_032603_567311_8C2DA4F6 
+X-CRM114-Status: GOOD (  17.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,60 +90,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 13/04/23 16:15, Alexandre Mergnat ha scritto:
-> On 12/04/2023 17:33, AngeloGioacchino Del Regno wrote:
->> Add basic code to turn on and off WLEDs and wire up MT6332 support
->> to take advantage of it.
->> This is a simple approach due to to the aforementioned PMIC supporting
->> only on/off status so, at the time of writing, it is impossible for me
->> to validate more advanced functionality due to lack of hardware.
+Il 14/04/23 10:34, Krzysztof Kozlowski ha scritto:
+> On 14/04/2023 10:30, Uwe Kleine-König wrote:
+>> On Fri, Apr 14, 2023 at 10:21:05AM +0200, Krzysztof Kozlowski wrote:
+>>> On 12/04/2023 13:27, AngeloGioacchino Del Regno wrote:
+>>>> Add a compatible string for MediaTek Helio X10 MT6795's display PWM
+>>>> block: this is the same as MT8173.
+>>>>
+>>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>>> ---
+>>>>   Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml | 4 +++-
+>>>>   1 file changed, 3 insertions(+), 1 deletion(-)
+>>>>
+>>>> diff --git a/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml b/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
+>>>> index 0088bc8e7c54..153e146df7d4 100644
+>>>> --- a/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
+>>>> +++ b/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
+>>>> @@ -22,7 +22,9 @@ properties:
+>>>>             - mediatek,mt8173-disp-pwm
+>>>>             - mediatek,mt8183-disp-pwm
+>>>>         - items:
+>>>> -          - const: mediatek,mt8167-disp-pwm
+>>>> +          - enum:
+>>>> +              - mediatek,mt6795-disp-pwm
+>>>> +              - mediatek,mt8167-disp-pwm
+>>>
+>>> This does not look correct. You do not add compatible, you replace
+>>> breaking all mt8167-disp-pwm. At least it looks like this from context.
 >>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   drivers/leds/leds-mt6323.c | 171 +++++++++++++++++++++++++++++++++++--
->>   1 file changed, 164 insertions(+), 7 deletions(-)
+>> I thought the old semantic to be:
 >>
->> diff --git a/drivers/leds/leds-mt6323.c b/drivers/leds/leds-mt6323.c
->> index 5d95dbd9a761..202b38ac32f6 100644
->> --- a/drivers/leds/leds-mt6323.c
->> +++ b/drivers/leds/leds-mt6323.c
-
-..snip..
-
->> @@ -418,6 +538,7 @@ static int mt6323_led_probe(struct platform_device *pdev)
->>       int ret;
->>       unsigned int status;
->>       u32 reg;
->> +    u8 max_leds;
->>       leds = devm_kzalloc(dev, sizeof(*leds), GFP_KERNEL);
->>       if (!leds)
->> @@ -428,6 +549,7 @@ static int mt6323_led_probe(struct platform_device *pdev)
->>       leds->pdata = device_get_match_data(dev);
->>       regs = leds->pdata->regs;
->>       spec = leds->pdata->spec;
->> +    max_leds = spec->max_leds + spec->max_wleds;
+>> 	"mediatek,mt8167-disp-pwm"
+>>
+>> and the new
+>>
+>> 	"mediatek,mt6795-disp-pwm" or "mediatek,mt8167-disp-pwm"
+>>
+>> . What am I missing?
 > 
-> I haven't access to the datasheet so I have to ask you:
-> Why the max leds value is the addition of max led and wled ?
-> 
-> IMO, the datasheed give you the max supported led OR wled on its bus function to 
-> the maximum supplied current by the PMIC (I assume LED or WLED have different 
-> need). Or the PMIC has 2 bus, one for led and another for wled ?
+> The new is ok for mt6795 but it is not valid for mt8167.
 > 
 
-I don't have access to the datasheet for MT6332 as well - but anyway, the only
-purpose of the max_leds variable is to validate the maximum number of 'reg'
-spaces that we're supposed to read from devicetree, that's all.
+Sorry, why is it not valid for MT8167?
 
-The alternative would've been to check if there's any led, then any wled in the
-mt6323_hwspec from platform data - then:
+This is changing the doc from:
 
-if only wleds, max_leds = wleds;
-else if only leds, max_leds = leds;
-else if leds and wleds, max_leds = leds + wleds;
+OLD:
+       - items:
+           - const: mediatek,mt8167-disp-pwm
+           - const: mediatek,mt8173-disp-pwm
+NEW:
 
-You see that it doesn't make any sense to do such check, and we can go with
-just adding wleds+leds.
+       - items:
+           - enum:
+               - mediatek,mt6795-disp-pwm
+               - mediatek,mt8167-disp-pwm
+           - const: mediatek,mt8173-disp-pwm
+
+For me, that's totally valid, as the old semantic was:
+
+compatible = "mediatek,mt8167-disp-pwm", "mediatek,mt8173-disp-pwm";
+
+...and the new semantic is .. the same; this commit only *adds* the
+possibility to get a
+
+compatible = "mediatek,mt6795-disp-pwm", "mediatek,mt8173-disp-pwm";
+
+without breaking anything.
 
 Regards,
 Angelo
