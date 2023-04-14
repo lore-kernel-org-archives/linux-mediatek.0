@@ -4,95 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32EBAC77B6E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Apr 2023 08:27:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D3AFC77B6E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Apr 2023 08:30:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FfV+vHgOiOTb/T8PGJETWUjU9ShSgfKqGb/lRZ9bS+Q=; b=j8fEZpGBya21jfVraEoMq3HP77
-	+wcllGzGiexkGRm8zbmXiKaoqh0cac4QbQkTR0EfV4aG7YeeDlNBPm5RFZp0HZKquYXEoHTGAGEcR
-	3Gncsgrq+R6NO11qzP89DCsx2Z2cBTGMKoOu7ye56mg0T6VYtwSDein/NaeqiDFx4F1cDOZ2KDwDF
-	xTlaaIjccBxvUPjTQY0ULpLTKpVr9qz09rkcPPg7sjOBp30MR5vVPRbawsamIBZNjbDe0cqd92ta0
-	GS0BOqtcR25uoo/fepaPRp4/+8siAbtdr3DHGYHdIYKrihtDYDkoB66Z6XWpVqxOOVyC389rgm4fW
-	JN2XXvsg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ODmOou4dP2D+Ic6NcnaQVbegvlzOFe+7UVvOKRAhDdU=; b=SCpSMY4Hgt3Lc66SUrD7Nxm26Y
+	w3a1soIALaIfU0LN+ntFXEAJxtz5Z8aTWMpuYj7uWBLOpfTpP019DNINY22SWRpxGxvhkT9E/lwrS
+	fQCh/5r2SSVec5LDvyVn12NYUUKN3lm9po474d10BZxZVlFyZlZbArJgmCLiqguV02e8mZhiPJsR5
+	1XA11Fa9mEP+6LXVKaQDseqZ2hrEasZ8Fn+ZCeX8yuFNcPlPVYeqYEe8gQZ/x97zjODnvbUJChrQI
+	qwq5N9p3kXhy1m23zDsjRWl3oY25mmZGS+4EYcZ5WUuCW6Lk4cGipRTPk27/6PJ1VpmYpUf61BJF7
+	5n0vEs4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pnEm6-008hQN-0N;
-	Fri, 14 Apr 2023 08:27:18 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1pnEpX-008iP4-0C;
+	Fri, 14 Apr 2023 08:30:51 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pnEm0-008h4v-2g
+	id 1pnEpT-008iMi-2h
 	for linux-mediatek@lists.infradead.org;
-	Fri, 14 Apr 2023 08:27:16 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id xd13so9811329ejb.4
-        for <linux-mediatek@lists.infradead.org>; Fri, 14 Apr 2023 01:27:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1681460832; x=1684052832;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=FfV+vHgOiOTb/T8PGJETWUjU9ShSgfKqGb/lRZ9bS+Q=;
-        b=TXtg+5vSMswTh++PcVMw4FZVIJqiJXwtBF4esfUNcovAdf/NpcKSjcUBpatbisjxWJ
-         1m3+T5xQIJMtC6itqvIY24p8+E3w3ulSHduTDMIz6GS7nU6oZ44ajbOjyIS8bdz7mJpy
-         qxNUKmIeFOHGKpcVhauyQ/Ct94cEDQNwloMkJQzoPNWXy8VK7wgirOKomhYBd05xfbsm
-         6nFmgoLKnZN10M2aIP00kyw3jXrKfO5vThqEULTFKVKu367PJgNidsKBUcg0i9HVQsUm
-         VlrXmuInv8FGw66mhBXkZPMxcFgx1eqLzoDO+PsZE4esAJ1vYNVK6veTbl+F6t7oVHkl
-         k20g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681460832; x=1684052832;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=FfV+vHgOiOTb/T8PGJETWUjU9ShSgfKqGb/lRZ9bS+Q=;
-        b=HBaKTa1ZskGzR69VgRZSd9GhmAPXfi+MWjFCWDUe/nK7acfv+CjrZQdDEvXzMDNMMp
-         2DnGw8Hj3MGH8yPF4VJs82MJqdZLMFv8QCDpXVQQUXPdzhV2Ok8HjJgT6vTiZVDniWzg
-         o7fff2K1ddYDXuu5y35dgLUa9lkovZOId7BkQQICSRxpqpmcMZSvD9QQTIl24LVeUf0E
-         bw8vyOXu+W9PFVaptZVEML0eL3pEBaGjHKchhkH7cp2PlKeOqqdvhPFR7nbRTORVguqn
-         LIbz3AQyQexoX5dDtTl5YBXYrGMzPKdHjU7xk6h8rW1G5zWNNwpWKqY+v7urPVy8NNdc
-         nqCA==
-X-Gm-Message-State: AAQBX9dmJ0NYH6+Kh76C85AUZx0uKnvwfvlrru31vAT/QvPeHm7HzAJa
-	4nlQof1X+O/LNXYs6hAcmD3Vyg==
-X-Google-Smtp-Source: AKy350bROMqGwlhCVGwl5H8OJ+bgHbDFNGXpnOwYOw4FLgadYWAX0xpuhZWD9cFLA3D4vEUtaQZhkg==
-X-Received: by 2002:a17:907:10ca:b0:94a:5a9e:9da0 with SMTP id rv10-20020a17090710ca00b0094a5a9e9da0mr5236919ejb.77.1681460832272;
-        Fri, 14 Apr 2023 01:27:12 -0700 (PDT)
-Received: from ?IPV6:2a02:810d:15c0:828:8a60:6b0f:105a:eefb? ([2a02:810d:15c0:828:8a60:6b0f:105a:eefb])
-        by smtp.gmail.com with ESMTPSA id ss23-20020a170907c01700b0094a611b21a8sm2072758ejc.223.2023.04.14.01.27.10
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 14 Apr 2023 01:27:11 -0700 (PDT)
-Message-ID: <ca69a9a0-5abb-e3b8-dbd7-0389da955bd1@linaro.org>
-Date: Fri, 14 Apr 2023 10:27:10 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.1
-Subject: Re: [PATCH 10/27] dt-bindings: display: mediatek: gamma: Add
- compatible for MediaTek MT6795
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- matthias.bgg@gmail.com
-Cc: p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- jassisinghbrar@gmail.com, chunfeng.yun@mediatek.com, vkoul@kernel.org,
- kishon@kernel.org, thierry.reding@gmail.com, u.kleine-koenig@pengutronix.de,
- chunkuang.hu@kernel.org, ck.hu@mediatek.com, jitao.shi@mediatek.com,
- xinlei.lee@mediatek.com, houlong.wei@mediatek.com,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
- linux-pwm@vger.kernel.org, kernel@collabora.com,
- phone-devel@vger.kernel.org, ~postmarketos/upstreaming@lists.sr.ht
+	Fri, 14 Apr 2023 08:30:49 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1pnEp5-0004l4-Vm; Fri, 14 Apr 2023 10:30:24 +0200
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1pnEp2-00B9ki-OF; Fri, 14 Apr 2023 10:30:20 +0200
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1pnEp1-00D6uj-Ur; Fri, 14 Apr 2023 10:30:19 +0200
+Date: Fri, 14 Apr 2023 10:30:19 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	matthias.bgg@gmail.com, p.zabel@pengutronix.de, airlied@gmail.com,
+	daniel@ffwll.ch, robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, jassisinghbrar@gmail.com,
+	chunfeng.yun@mediatek.com, vkoul@kernel.org, kishon@kernel.org,
+	thierry.reding@gmail.com, chunkuang.hu@kernel.org,
+	ck.hu@mediatek.com, jitao.shi@mediatek.com, xinlei.lee@mediatek.com,
+	houlong.wei@mediatek.com, dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-phy@lists.infradead.org, linux-pwm@vger.kernel.org,
+	kernel@collabora.com, phone-devel@vger.kernel.org,
+	~postmarketos/upstreaming@lists.sr.ht
+Subject: Re: [PATCH 01/27] dt-bindings: pwm: Add compatible for MediaTek
+ MT6795
+Message-ID: <20230414083019.cpomx37tax4ibe5u@pengutronix.de>
 References: <20230412112739.160376-1-angelogioacchino.delregno@collabora.com>
- <20230412112739.160376-11-angelogioacchino.delregno@collabora.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230412112739.160376-11-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+ <20230412112739.160376-2-angelogioacchino.delregno@collabora.com>
+ <aaeeb18d-f8e8-d6c1-1272-e5b797554b9e@linaro.org>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="meuxombxxc4zwoxv"
+Content-Disposition: inline
+In-Reply-To: <aaeeb18d-f8e8-d6c1-1272-e5b797554b9e@linaro.org>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230414_012712_879623_91827D4B 
-X-CRM114-Status: UNSURE (   8.59  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230414_013047_868981_7BE2735B 
+X-CRM114-Status: GOOD (  20.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,19 +87,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/04/2023 13:27, AngeloGioacchino Del Regno wrote:
-> Add a compatible string for MediaTek Helio X10 MT6795's GAMMA block: this
-> is the same as MT8173.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  .../devicetree/bindings/display/mediatek/mediatek,gamma.yaml  | 4 ++++
->  1 file changed, 4 insertions(+)
 
+--meuxombxxc4zwoxv
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+On Fri, Apr 14, 2023 at 10:21:05AM +0200, Krzysztof Kozlowski wrote:
+> On 12/04/2023 13:27, AngeloGioacchino Del Regno wrote:
+> > Add a compatible string for MediaTek Helio X10 MT6795's display PWM
+> > block: this is the same as MT8173.
+> >=20
+> > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@co=
+llabora.com>
+> > ---
+> >  Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml | 4 +++-
+> >  1 file changed, 3 insertions(+), 1 deletion(-)
+> >=20
+> > diff --git a/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.ya=
+ml b/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
+> > index 0088bc8e7c54..153e146df7d4 100644
+> > --- a/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
+> > +++ b/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
+> > @@ -22,7 +22,9 @@ properties:
+> >            - mediatek,mt8173-disp-pwm
+> >            - mediatek,mt8183-disp-pwm
+> >        - items:
+> > -          - const: mediatek,mt8167-disp-pwm
+> > +          - enum:
+> > +              - mediatek,mt6795-disp-pwm
+> > +              - mediatek,mt8167-disp-pwm
+>=20
+> This does not look correct. You do not add compatible, you replace
+> breaking all mt8167-disp-pwm. At least it looks like this from context.
 
-Best regards,
-Krzysztof
+I thought the old semantic to be:
 
+	"mediatek,mt8167-disp-pwm"
+
+and the new
+
+	"mediatek,mt6795-disp-pwm" or "mediatek,mt8167-disp-pwm"
+
+=2E What am I missing?
+
+Best regards
+Uwe
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--meuxombxxc4zwoxv
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmQ5DxoACgkQj4D7WH0S
+/k4b0gf/XGg5FqG1Mgkx3HAKSgi3PZuY2KSNIop4uRKh9jD6sSxX8ZOB5wNtwFbz
+OwOpF/4bmEy9R4vW++134sQENrXwVv2QR8aMaolP298zl6s+qqTm1/8USwc3TVep
+kTXMWWKuKFTBbj2viZrKSJUBT7C7I+VPcblxqtQnYe9AUZYJRCtLalvkECL+FgiZ
+EbKGM99/7nbD7NPk33LTt0uEiaBrWoe7p4ehasD9uVW/7dhZAs44xQLFOR+XiT4U
+Upy4cMJQtRqfISF44KBNw0Bm2Rm+Tqw3NoKTtPOQ1C36xzTHBnC+hp8ZoPFR/dYo
+T9uMy4x52AKlzE9EAH2T/lOj/Rs5uQ==
+=6UO4
+-----END PGP SIGNATURE-----
+
+--meuxombxxc4zwoxv--
 
