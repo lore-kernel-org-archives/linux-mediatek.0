@@ -4,83 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99E65C77B76
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Apr 2023 12:53:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D8BEC77B6E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Apr 2023 15:29:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:MIME-Version:In-Reply-To:References:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c1mRBvmkKWpgvM1gONebrVKM3TA+ePdq5Jwjyb83ndI=; b=cR+aLLes0FwmByeVd9Q04oPVPR
-	9EORdR3dqCiksdaaucaD/SFA6sauzdXfz9rn/fawJpUpaeaedMRosY6d2BgbaQjRzGUnywFYd/4Hm
-	8BUuYbEuq+DEBE/HV+EHelAAZMbahqiP0VGkbyqU2G9Bc3jKfJrSGCh8ruvqIBMoWqaiWZWfca/QO
-	OuJagsDsQ46u3Tbx6Ns7U2ozIY4O+9HtzyD9nGRP7aIfjiDBsMkHMEIyYn2umYLr2BdWLNYNyVG8D
-	swHVd7zqEhVsLdX2nFVfwY8yHucaYotlqm7Pz14Ylz1WIqoS5du4oMoRsZ4/pLft1ShLg7RQ+78EF
-	60AkRiKw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HtvEF7ctih6jlBUmz6x/cmRorGRIdeQUmzhDbFqzUMQ=; b=PucOqhbXCqpOQWBry/ShMdguPH
+	pIeC2UCPAgGgXOwdoptSpLsogHeY13rfDT+9I7F8MBc712NSmwPWl3OaEV+dP6iiq/TB2iBFh6KgY
+	doLOweCgrYGloxMMFj3yV+MfwcNAttpu6TlrjSgqn4l0mOjfJsRpt35ZBYr5XkD5skAa4e65LHy/B
+	nAv8vrHU+0xleV4NLNezA1xs5V08higC2ZzAfNBxbIMZZcyH9kexOSQBjbvn8SCs97V5CsFHzSDlM
+	5u+3DjZJ4fYZ/qNQno3D99UKw2spaKrMoOvJbOvZQ/IQ3ky+MtDHlH5nob5mlvMFZUHenbAYL6a98
+	4Q3ahc/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pnIvM-009ZKm-1K;
-	Fri, 14 Apr 2023 12:53:08 +0000
-Received: from mail-qv1-xf32.google.com ([2607:f8b0:4864:20::f32])
+	id 1pnLMm-009yAH-32;
+	Fri, 14 Apr 2023 15:29:36 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pnIvG-009ZIM-0x
-	for linux-mediatek@lists.infradead.org;
-	Fri, 14 Apr 2023 12:53:05 +0000
-Received: by mail-qv1-xf32.google.com with SMTP id dl14so28711qvb.6
-        for <linux-mediatek@lists.infradead.org>; Fri, 14 Apr 2023 05:53:01 -0700 (PDT)
+	id 1pnLMk-009y8U-0j;
+	Fri, 14 Apr 2023 15:29:35 +0000
+Received: by mail-wm1-x336.google.com with SMTP id hg25-20020a05600c539900b003f05a99a841so17937696wmb.3;
+        Fri, 14 Apr 2023 08:29:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1681476779; x=1684068779;
-        h=cc:to:subject:message-id:date:mime-version:in-reply-to:references
-         :user-agent:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=c1mRBvmkKWpgvM1gONebrVKM3TA+ePdq5Jwjyb83ndI=;
-        b=VpQRy4va372KFFJdHvLJvrJAZYVUGwIMDqJdUBHiZm+SlWgRrvUXbZ5x4mYafTmtLe
-         YCw23P4CRpv4yX6g3vnmkbz1PGSUgj0NxigrzPiYTWz7OznRggKt4XWzI4M9wk7OHK+L
-         kDUq56pwCoPgEb63CYUdmcpSKvda0vtu7wd2LXWHdcdFHsAlEVZXSidG+P5F8jlPzI3l
-         RksZL1fBCAgLTgaiaNpqFl/9Ux78OH8OayE5Wg4yto1m33qUt9J757Hl3BObiqjzwmxh
-         oPxOC0Cbo/siv+/ih3tQEKSCUlFE5IH0/zzDG42FAElxZSQoq1VamBYAIEYmJejmwy87
-         Orsg==
+        d=gmail.com; s=20221208; t=1681486169; x=1684078169;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=HtvEF7ctih6jlBUmz6x/cmRorGRIdeQUmzhDbFqzUMQ=;
+        b=qGZQxhLElmhzJf9nLKo4r6pq51rc+4IyPDfzuvQ3gAUsJ6/Y65MzYa6I9BK0cz9KNF
+         stVUm/P2RdtVbOU1aGZISu5RMETCa/RffUliJ/MLHAEFLdSbyckAoXSVsH6b9egMRFIX
+         TgVSJX6L1Sg9SQ1eoWC/gn+tM235APmaoraCI2vruVNVLxcPKdTNrq841NStrTlE2/p1
+         wn7pTiP/S1Sy9RZ3VuwaDcRD92ap89W6450zE890yMDyXbzlcfczRj1CUBKYWmwMA9la
+         OHvDTRrPJPEIwLRPvasejlfJEFC2FhHQ95rmoy2cI6HgM8WEm8kENox7BXc2E+oOIXVK
+         BoMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681476779; x=1684068779;
-        h=cc:to:subject:message-id:date:mime-version:in-reply-to:references
-         :user-agent:from:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=c1mRBvmkKWpgvM1gONebrVKM3TA+ePdq5Jwjyb83ndI=;
-        b=h6aAADgTf7Bt6OB1iZFyFSrSXPKlWCDFgaJI2CDZAwVUi507zAU8K5+pFDkHpGctaG
-         Bba6TcIW79eILfEi6dP/uR8+9iNSYzBiIl0SwfxKEnPRhkjPnjP7RlZ7ho2mZtPPHQmY
-         mnroiZvoU3Tnp/k6drgupN0PViiXh5DORNh/sHnZyPQAiijXeon1FI6XbQCt5UxW7YKb
-         FTQbhwwT+eXUETJ++mOZmStfevJtSL41ZHFcmwwsrHMVx2JJpGinx++CJbVNLi7RXGR8
-         kFJ+tyvGlcivHE3sv7h94Yc575BRDa/FoyAdTjbP9nBtKARC8PXyx9FOFqQnh6rIBXel
-         YCNA==
-X-Gm-Message-State: AAQBX9ebcTQMaRyjwk0dt9SKjbtZg7r6JaA/F5PaE1sDA8qjNsygYyhu
-	H/rlkfbyHaOz+We97o1PbRLCNgU4DWcgTkNRTTBPtw==
-X-Google-Smtp-Source: AKy350bwrlQ1k6Id6taPs74WKZ2MYVEoCM7n+Fk3n2G+lg7Txm3HQS1LILK4QlW1vfVH9uPVwc8hFNllM10fhh8EPyk=
-X-Received: by 2002:a05:6214:2504:b0:56f:728:19d4 with SMTP id
- gf4-20020a056214250400b0056f072819d4mr3900460qvb.26.1681476777521; Fri, 14
- Apr 2023 05:52:57 -0700 (PDT)
-Received: from 753933720722 named unknown by gmailapi.google.com with
- HTTPREST; Fri, 14 Apr 2023 05:52:57 -0700
-From: Guillaume Ranquet <granquet@baylibre.com>
-User-Agent: meli 0.7.2
-References: <20230413-fixes-for-mt8195-hdmi-phy-v1-0-b8482458df0d@baylibre.com>
- <20230413-fixes-for-mt8195-hdmi-phy-v1-1-b8482458df0d@baylibre.com> <ada769e0-0141-634f-3753-eb3a50f0eee3@collabora.com>
-In-Reply-To: <ada769e0-0141-634f-3753-eb3a50f0eee3@collabora.com>
+        d=1e100.net; s=20221208; t=1681486169; x=1684078169;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=HtvEF7ctih6jlBUmz6x/cmRorGRIdeQUmzhDbFqzUMQ=;
+        b=ioXKnPp4fg47QOrWOiVtnEooh/t2Xs+7HzCVR4FewmT6VpBhxg6J6LOqnNB0JMJc+9
+         SDRjZgLRadzBgYfRD3w8hghv5WEWQfHhiewuaF+T9ta1TCeF1Gop6OJ0SGPiJ+N5lpbQ
+         2nNcW2ZIAGqJQZD8q5BV1V8MAIKsE74u/47GjTe9JO0tLWKhVo4VCjsBiJa6IqbwrIAk
+         yIQ+q+cmQ5p3Q97aPG+xBX57OvJgOSOigFZq/+oo6lvFC/luA0ubxRTA1RO/5cLhdWKB
+         LBWD538EFVjEi4GIIukrrY6MCzWRLlewM2/BNZzldeZl6vDfjzDp79rqK5avI8LTDlR+
+         jrjw==
+X-Gm-Message-State: AAQBX9eNJug/tApkFtGCIrGydJiMrg4XYyBj7tMdwz1IyUpsHBkVQOSX
+	5Q4bGA07B+opO6X9tJeYItY=
+X-Google-Smtp-Source: AKy350baTmaodBGZvLaW/t3L808sxui2s3mXy0yd4/BPSh2Or7HSibikk/nbTxRns3ESdPZBy2bm3g==
+X-Received: by 2002:a05:600c:2904:b0:3ee:3df6:e411 with SMTP id i4-20020a05600c290400b003ee3df6e411mr4750042wmd.28.1681486168723;
+        Fri, 14 Apr 2023 08:29:28 -0700 (PDT)
+Received: from [192.168.2.177] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id i8-20020a05600c354800b003f15e5a16b1sm880791wmq.30.2023.04.14.08.29.26
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 14 Apr 2023 08:29:27 -0700 (PDT)
+Message-ID: <a2dcebee-7a2a-08b1-a35a-45a4a08c9d26@gmail.com>
+Date: Fri, 14 Apr 2023 17:29:25 +0200
 MIME-Version: 1.0
-Date: Fri, 14 Apr 2023 05:52:57 -0700
-Message-ID: <CABnWg9v+DXatKqUkwDZBRxivtg869SocPGtHibtFNr7tnyVggg@mail.gmail.com>
-Subject: Re: [PATCH 1/2] phy: mediatek: hdmi: mt8195: fix uninitialized
- variable usage in pll_calc
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Chunfeng Yun <chunfeng.yun@mediatek.com>, 
-	Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, kernel test robot <lkp@intel.com>
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [PATCH v1 2/6] dt-bindings: hypervisor: Add binding for MediaTek
+ GenieZone hypervisor
+Content-Language: en-US
+To: =?UTF-8?B?WWktRGUgV3UgKOWQs+S4gOW+tyk=?= <Yi-De.Wu@mediatek.com>,
+ "corbet@lwn.net" <corbet@lwn.net>, "robh+dt@kernel.org"
+ <robh+dt@kernel.org>,
+ "krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>,
+ "catalin.marinas@arm.com" <catalin.marinas@arm.com>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+ =?UTF-8?B?WWluZ3NoaXVhbiBQYW4gKOa9mOepjui7kik=?=
+ <Yingshiuan.Pan@mediatek.com>,
+ "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>, "will@kernel.org"
+ <will@kernel.org>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ =?UTF-8?B?TVkgQ2h1YW5nICjojormmI7ouo0p?= <MY.Chuang@mediatek.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ =?UTF-8?B?UGVpTHVuIFN1ZWkgKOmai+WfueWAqyk=?= <PeiLun.Suei@mediatek.com>,
+ =?UTF-8?B?TGlqdS1jbHIgQ2hlbiAo6Zmz6bqX5aaCKQ==?=
+ <Liju-clr.Chen@mediatek.com>, =?UTF-8?B?SmFkZXMgU2hpaCAo5pa95ZCR546oKQ==?=
+ <jades.shih@mediatek.com>, "dbrazdil@google.com" <dbrazdil@google.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ =?UTF-8?B?U2hhd24gSHNpYW8gKOiVreW/l+elpSk=?= <shawn.hsiao@mediatek.com>,
+ =?UTF-8?B?TWlsZXMgQ2hlbiAo6Zmz5rCR5qi6KQ==?= <Miles.Chen@mediatek.com>,
+ "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
+ =?UTF-8?B?SXZhbiBUc2VuZyAo5pu+5b+X6LuSKQ==?= <ivan.tseng@mediatek.com>,
+ =?UTF-8?B?WmUteXUgV2FuZyAo546L5r6k5a6HKQ==?= <Ze-yu.Wang@mediatek.com>
+References: <20230413090735.4182-1-yi-de.wu@mediatek.com>
+ <20230413090735.4182-3-yi-de.wu@mediatek.com>
+ <8ace9b0f-742a-7ebc-555f-1f8be04a5955@linaro.org>
+ <7b4492efa4a1becbdfb79d23a0a0c0fe11dba5f4.camel@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <7b4492efa4a1becbdfb79d23a0a0c0fe11dba5f4.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230414_055302_336028_93C7EAAD 
-X-CRM114-Status: GOOD (  15.20  )
+X-CRM114-CacheID: sfid-20230414_082934_267443_8120F8F0 
+X-CRM114-Status: GOOD (  22.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,77 +120,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 14 Apr 2023 12:31, AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->Il 13/04/23 14:46, Guillaume Ranquet ha scritto:
->> The ret variable in mtk_hdmi_pll_calc() was used unitialized as reported
->> by the kernel test robot.
->>
->> Fix the issue by removing the variable altogether and testing out the
->> return value of mtk_hdmi_pll_set_hw()
->>
->> Fixes: 45810d486bb44 ("phy: mediatek: add support for phy-mtk-hdmi-mt8195")
->> Reported-by: kernel test robot <lkp@intel.com>
->> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
->> ---
->>   drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c | 7 +++----
->>   1 file changed, 3 insertions(+), 4 deletions(-)
->>
->> diff --git a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
->> index abfc077fb0a8..e10da6c4147e 100644
->> --- a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
->> +++ b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
->> @@ -213,7 +213,7 @@ static int mtk_hdmi_pll_calc(struct mtk_hdmi_phy *hdmi_phy, struct clk_hw *hw,
->>   	u64 tmds_clk, pixel_clk, da_hdmitx21_ref_ck, ns_hdmipll_ck, pcw;
->>   	u8 txpredivs[4] = { 2, 4, 6, 12 };
->>   	u32 fbkdiv_low;
->> -	int i, ret;
->> +	int i;
->>
->>   	pixel_clk = rate;
->>   	tmds_clk = pixel_clk;
->> @@ -292,10 +292,9 @@ static int mtk_hdmi_pll_calc(struct mtk_hdmi_phy *hdmi_phy, struct clk_hw *hw,
->>   	if (!(digital_div <= 32 && digital_div >= 1))
->>   		return -EINVAL;
->>
->> -	mtk_hdmi_pll_set_hw(hw, PLL_PREDIV, fbkdiv_high, fbkdiv_low,
->> +	if (mtk_hdmi_pll_set_hw(hw, PLL_PREDIV, fbkdiv_high, fbkdiv_low,
->>   			    PLL_FBKDIV_HS3, posdiv1, posdiv2, txprediv,
->> -			    txposdiv, digital_div);
->> -	if (ret)
->> +			    txposdiv, digital_div))
->>   		return -EINVAL;
->>
->
->I don't get why we're returning -EINVAL unconditionally in the first place, here.
->
->Function mtk_hdmi_pll_set_hw() should return zero or a negative error number: in
->that case, the previous *intention* was fine, so this should be
->
 
-Hi Angelo,
-I was maybe a bit too quick on fixing this that way.
-Anyway it doesn't change a thing as mtk_hdmi_pll_set_hw() eitheir
-returns 0 or -EINVAL.
-But I agree that the logic is dubious and propagating the return value
-is the right thing
-to do.
 
-I see that Arnd and Tom posted versions that you might prefer:
+On 14/04/2023 10:35, Yi-De Wu (吳一德) wrote:
+> On Thu, 2023-04-13 at 15:05 +0200, Krzysztof Kozlowski wrote:
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>>
+>>
+>> On 13/04/2023 11:07, Yi-De Wu wrote:
+>>> From: "Yingshiuan Pan" <yingshiuan.pan@mediatek.com>
+>>>
+>>> Add documentation for GenieZone(gzvm) node. This node informs gzvm
+>>> driver to start probing if geniezone hypervisor is available and
+>>
+>> Subject: drop second/last, redundant "binding for". The "dt-bindings"
+>> prefix is already stating that these are bindings.
+>>
+> Thank you for the review comments. We would remove the "binding for"
+> wording in the subject on the next version.
+> 
+>>> able to do virtual machine operations.
+>>>
+>>> Signed-off-by: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
+>>> Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
+>>> ---
+>>>   .../bindings/hypervisor/mediatek,gzvm.yaml    | 30
+>>> +++++++++++++++++++
+>>>   1 file changed, 30 insertions(+)
+>>>   create mode 100644
+>>> Documentation/devicetree/bindings/hypervisor/mediatek,gzvm.yaml
+>>>
+>>> diff --git
+>>> a/Documentation/devicetree/bindings/hypervisor/mediatek,gzvm.yaml
+>>> b/Documentation/devicetree/bindings/hypervisor/mediatek,gzvm.yaml
+>>> new file mode 100644
+>>> index 000000000000..35e1e5b18e47
+>>> --- /dev/null
+>>> +++
+>>> b/Documentation/devicetree/bindings/hypervisor/mediatek,gzvm.yaml
+>>> @@ -0,0 +1,30 @@
+>>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+>>> +%YAML 1.2
+>>> +---
+>>> +$id:
+>>> https://urldefense.com/v3/__http://devicetree.org/schemas/hypervisor/mediatek,gzvm.yaml*__;Iw!!CTRNKA9wMg0ARbw!lp4d4WBp26cpOeEGcKn_aHcNGfyl1Y--BYzfR8oR_0Xzr9TLvUELfOQAAdqHlLIOra1W_QdjVSJv0-HMpLesJmA3TPJSag$
+>>> +$schema:
+>>> https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!lp4d4WBp26cpOeEGcKn_aHcNGfyl1Y--BYzfR8oR_0Xzr9TLvUELfOQAAdqHlLIOra1W_QdjVSJv0-HMpLesJmDSXil_Qw$
+>>> +
+>>> +title: MediaTek GenieZone hypervisor
+>>> +
+>>> +maintainers:
+>>> +  - Yingshiuan Pan <yingshiuan.pan@mediatek.com>
+>>> +
+>>> +description:
+>>> +  GenieZone is MediaTek proprietary hypervisor. This device node
+>>> informs its
+>>> +  driver, gzvm, to probe if platform supports running virtual
+>>> machines.
+>>
+>> Do not describe Linux, we all know how driver binding works, but
+>> hardware/firmware/hypervisor.
+>>
+> Noted. We would enhance the description on next version.
+> 
+>> I don't know if we actually want to support proprietary hypervisors.
+>> There can be hundreds of them, one per each SoC manufacturer, and
+>> they
+>> can come with many ridiculous ideas.
+>>
+> MediaTek, as a partner of Android, our GenieZone hypervisor has been
+> one of the backend options under Android Virtualization Framework(AVF)
+> now.
+> Thus, we'd like to donate these patches for better supporting the
+> Linux/Android ecosystem.
+> 
+> Reference link: https://crosvm.dev/book/hypervisors.html#geniezone
+> 
 
-https://lore.kernel.org/linux-phy/20230414075842.4006164-1-arnd@kernel.org/
-https://lore.kernel.org/linux-phy/20230414122253.3171524-1-trix@redhat.com/
+What is the difference between geniezone and gunyah? Why will we need both of 
+them? Couldn't we just get one hypervisor implementation merged that includes 
+all the needed features. In the end it will be used with the same VMM.
 
-Thx,
-Guillaume.
+Regards,
+Matthias
 
->	ret = mtk_hdmi_pll_set_hw(....)
->	if (ret)
->		return ret;
->
->	return 0;
->
->
->Regards,
->Angelo
+>>> +
+>>> +properties:
+>>> +  compatible:
+>>> +    const: mediatek,gzvm
+>>> +
+>>> +required:
+>>> +  - compatible
+>>> +
+>>> +additionalProperties: false
+>>> +
+>>> +examples:
+>>> +  - |
+>>> +    hypervisor {
+>>> +        compatible = "mediatek,gzvm";
+>>> +        status = "okay";
+>>
+>> Drop status.
+>>
+>> Best regards,
+>> Krzysztof
+>>
 
