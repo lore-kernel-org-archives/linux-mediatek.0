@@ -4,76 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E3FAC77B70
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Apr 2023 07:52:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 462D8C77B70
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Apr 2023 07:59:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=L3io+Knzom+lL7mFSatWDZ82uMqT8xu7kfeg5qSH/GQ=; b=nMXXxePfKlvQqi96TpQjsa+Hf8
-	V/Q0rVbR8E27mLKlDgjYR9jm4K3a7c1XqbC9P4atyikYEEzme4AKCY+nN12hXtT3QS9p5eLcUQjJg
-	s0H2ow84X9kHhY2/asIxRByEUyziuo5lwARk6F7duAPuttMj0OvxYrf9oN+ORWvbJ3NNWPcwiK09s
-	EFizI5Pbc42O5Qs4mQfmGK/gfzEubr6I6ZWzsvxgfMgtVwI4b7XjfUZChQQvjDeo+JGl9tZTP0o+a
-	GsYuEF5hpsawklDUw6+KIt6BLX8qZC1TXz0gdz7eCdxydoa06941Co9rVNy7UfbitECCpfUpqp3nO
-	XENjyE8A==;
+	bh=sw5tPVfTa8rqYZUJ0bWp29tqdTzFgc46B/CniGzsliQ=; b=ndfa3FbgY6IxwGawqk3+1leT4B
+	ZDGUwVZ/0akYs7YuBrNUuNseWj0DIOeGgOgA3q8oijGhNaZVIRVImeMNyrRjZLhORvcLE6wg3dhEn
+	6BdUu+TwmTluKkBbpgkCRUirb2WPPKUYv8COt+7WSj/dWRCsK2oy738739O3YS3DtvhZYJIH1rBsG
+	hAhCL3T/vVvCNWEr04bfSoGeqBdnmYnLGApf9I4YfKXCwNwZbE1+pFxIItvPpmbe2Jp9t/V8xXBJT
+	hEmlQMxjDu4pl8Y5JCjfSpeyXi/GBk+C504b1sm/bofsnXnWpCXaQRAx0k6IwS4HqMVy3zRBcK+7w
+	K+e230ig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pnEEU-008bgG-2E;
-	Fri, 14 Apr 2023 07:52:34 +0000
-Received: from mga02.intel.com ([134.134.136.20])
+	id 1pnEKf-008cYV-24;
+	Fri, 14 Apr 2023 07:58:57 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pnEEP-008beu-1S;
-	Fri, 14 Apr 2023 07:52:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1681458749; x=1712994749;
-  h=date:from:to:cc:subject:message-id:mime-version:
-   content-transfer-encoding;
-  bh=apPnk8MSDAWiqnUc2dL0KMnoOM44EeOt0KpzA494jLE=;
-  b=j/VsZPuYP6QNj6KgnckcSZLrAh2piBvmacheIIPNTwF8pYB3gkrKtGjD
-   AT1o9NxOIiUdTbMao1RSUV/lHKsu+6jYvDVjNbw98OE7fSvAuof9f8DHw
-   /QQAIsIsZVaUQWebXjmY4jjQz1bdQAinbsFI4DNJRc9RX37v3pkKtt2pg
-   zIrgL1g8GaeBfGq7GDRlTTQVKhxfP0/NyIemIunvEaMs2XYHjCAXfUP3V
-   2GmdBltcCQLP8HuSHyqwFLu/WGd7XpSxZYFcgL1nO/AYTU2ZYLhomNgIE
-   bWRQtJQrTFtG222EbjiAUCRy4JZHxMVGIM86LjGKpiHGJnBEtDCHjUCHe
-   A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10679"; a="333177187"
-X-IronPort-AV: E=Sophos;i="5.99,195,1677571200"; 
-   d="scan'208";a="333177187"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
-  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Apr 2023 00:52:26 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10679"; a="754357413"
-X-IronPort-AV: E=Sophos;i="5.99,195,1677571200"; 
-   d="scan'208";a="754357413"
-Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
-  by fmsmga008.fm.intel.com with ESMTP; 14 Apr 2023 00:52:22 -0700
-Received: from kbuild by b613635ddfff with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1pnEEH-000ZLT-0x;
-	Fri, 14 Apr 2023 07:52:21 +0000
-Date: Fri, 14 Apr 2023 15:52:10 +0800
-From: kernel test robot <lkp@intel.com>
-To: Andrew Morton <akpm@linux-foundation.org>
-Cc: Mark Brown <broonie@kernel.org>, linux-wireless@vger.kernel.org,
- linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-clk@vger.kernel.org, linux-bluetooth@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-acpi@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
- Linux Memory Management List <linux-mm@kvack.org>
-Subject: [linux-next:master] BUILD REGRESSION
- e3342532ecd39bbd9c2ab5b9001cec1589bc37e9
-Message-ID: <6439062a.+h0V1xopv/DQCX6A%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+	id 1pnEKa-008cWc-0r;
+	Fri, 14 Apr 2023 07:58:54 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 50B3B61DD8;
+	Fri, 14 Apr 2023 07:58:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 92945C433EF;
+	Fri, 14 Apr 2023 07:58:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1681459130;
+	bh=5IXMcCGZ5JMUwrrA2+vd6giEvp0O8L09VYAkdAhZsTw=;
+	h=From:To:Cc:Subject:Date:From;
+	b=Mntiwu7gm5T9qziVw/XFrrGwzP83mt84k1p0nFbBAVFh4ROMAY/VmWpKGdWRtiDky
+	 b8Xdu79gmgHLr3U6Yix2WfUZnSY1wDUQPCLumHiT5Y5DUs8dPO7bdWRsmuDmU1k9DQ
+	 vVAx9ctcLeKXVdcXCdBAcZg/w9XOFFYYksIYLwVJOwn+MxQwTJCKp/4jHeROaVLHsx
+	 aXnkhPjETRgl/agW0B4VKJui0zID/yfc7ruOsmRpTcMVQ4cKXBqfqbapZGgUs7rThW
+	 drTwjCJfkrqWgyq1zIvIUA9bb1T3sJ8T+w2G4d+8rAcIroTNDQPD6rZTvpnWhUeGe1
+	 nrC6ivOmY2E5w==
+From: Arnd Bergmann <arnd@kernel.org>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Guillaume Ranquet <granquet@baylibre.com>
+Cc: Arnd Bergmann <arnd@arndb.de>,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-phy@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] phy: mediatek/mt8195: fx mtk_hdmi_pll_calc() return code
+Date: Fri, 14 Apr 2023 09:58:26 +0200
+Message-Id: <20230414075842.4006164-1-arnd@kernel.org>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230414_005229_657628_35D4E5EB 
-X-CRM114-Status: UNSURE (   7.29  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230414_005852_341362_01BD4742 
+X-CRM114-Status: GOOD (  12.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,360 +81,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
-branch HEAD: e3342532ecd39bbd9c2ab5b9001cec1589bc37e9  Add linux-next specific files for 20230413
+From: Arnd Bergmann <arnd@arndb.de>
 
-Error/Warning reports:
+The newly added function returns an uninitialized variable:
 
-https://lore.kernel.org/oe-kbuild-all/202303161521.jbGbaFjJ-lkp@intel.com
-https://lore.kernel.org/oe-kbuild-all/202304061839.hi01VPl1-lkp@intel.com
-https://lore.kernel.org/oe-kbuild-all/202304102354.Q4VOXGTE-lkp@intel.com
-https://lore.kernel.org/oe-kbuild-all/202304140706.aOBNhUj2-lkp@intel.com
-https://lore.kernel.org/oe-kbuild-all/202304140707.CoH337Ux-lkp@intel.com
-https://lore.kernel.org/oe-kbuild-all/202304140732.NZcq7RdC-lkp@intel.com
+drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:298:6: error: variable 'ret' is uninitialized when used here [-Werror,-Wuninitialized]
 
-Error/Warning: (recently discovered and may have been fixed)
+Wire it up to the return code of the function called just before,
+assuming that this was the intention originally.
 
-drivers/bluetooth/hci_qca.c:1894:37: warning: unused variable 'qca_soc_data_wcn6855' [-Wunused-const-variable]
-drivers/clk/clk-sp7021.c:316:8: warning: result of comparison of constant 18446744073709551615 with expression of type 'typeof (_Generic((_m), char: (unsigned char)0, unsigned char: (unsigned char)0, signed char: (unsigned char)0, unsigned short: (unsigned short)0, short: (unsigned short)0, unsigned int: (unsigned int)0, int: (unsigned int)0, unsigned long: (unsigned long)0, long: (unsigned long)0, unsigned long long: (unsigned long long)0, long long: (unsigned long long)0, default: (_m)))' (aka 'unsigned int') is always false [-Wtautological-constant-out-of-range-compare]
-drivers/gpu/drm/amd/amdgpu/../display/dc/link/link_validation.c:351:13: warning: variable 'bw_needed' set but not used [-Wunused-but-set-variable]
-drivers/gpu/drm/amd/amdgpu/../display/dc/link/link_validation.c:352:25: warning: variable 'link' set but not used [-Wunused-but-set-variable]
-drivers/gpu/drm/i915/gt/uc/guc_capture_fwif.h:62: warning: wrong kernel-doc identifier on line:
-drivers/gpu/drm/i915/i915_pmu.h:41: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
-drivers/gpu/drm/i915/i915_request.h:176: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
-drivers/gpu/drm/i915/i915_vma.h:145: warning: expecting prototype for i915_vma_offset(). Prototype was for i915_vma_size() instead
-drivers/net/wireless/legacy/ray_cs.c:628:17: warning: 'strncpy' specified bound 32 equals destination size [-Wstringop-truncation]
-drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:240: undefined reference to `__floatundidf'
-drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:298:6: warning: variable 'ret' is uninitialized when used here [-Wuninitialized]
-kismet: WARNING: unmet direct dependencies detected for RESET_STARFIVE_JH7110 when selected by CLK_STARFIVE_JH7110_SYS
-loongarch64-linux-ld: drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:240: undefined reference to `__ltdf2'
-loongarch64-linux-ld: drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:242: undefined reference to `__gedf2'
-phy-mtk-hdmi-mt8195.c:(.text+0x228): undefined reference to `__floatundidf'
-phy-mtk-hdmi-mt8195.c:(.text+0x23c): undefined reference to `__ltdf2'
-phy-mtk-hdmi-mt8195.c:(.text+0x264): undefined reference to `__gedf2'
+Fixes: 45810d486bb4 ("phy: mediatek: add support for phy-mtk-hdmi-mt8195")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+---
+ drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Unverified Error/Warning (likely false positive, please contact us if interested):
-
-drivers/acpi/property.c:985 acpi_data_prop_read_single() error: potentially dereferencing uninitialized 'obj'.
-drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:240 mtk_hdmi_pll_calc() warn: impossible condition '(tmds_clk < 1.483500e+02 * 1000000) => (0.000000e+00-1.844674e+19 < -1.786711e-113)'
-drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:242 mtk_hdmi_pll_calc() warn: always true condition '(tmds_clk >= 1.483500e+02 * 1000000) => (0-u64max >= -1.786711e-113)'
-drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:242 mtk_hdmi_pll_calc() warn: impossible condition '(tmds_clk < 2.967000e+02 * 1000000) => (0.000000e+00-1.844674e+19 < -4.419080e+60)'
-drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:244 mtk_hdmi_pll_calc() warn: always true condition '(tmds_clk >= 2.967000e+02 * 1000000) => (0-u64max >= -4.419080e+60)'
-drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:331 mtk_hdmi_pll_drv_setting() warn: always true condition '(pixel_clk >= 7.417500e+01 * 1000000) => (0-u32max >= -7.223985e-287)'
-drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:336 mtk_hdmi_pll_drv_setting() warn: impossible condition '(pixel_clk < 7.417500e+01 * 1000000) => (0.000000e+00-4.294967e+09 < -7.223985e-287)'
-
-Error/Warning ids grouped by kconfigs:
-
-gcc_recent_errors
-|-- alpha-allyesconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
-|   `-- drivers-net-wireless-legacy-ray_cs.c:warning:strncpy-specified-bound-equals-destination-size
-|-- alpha-randconfig-r021-20230414
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
-|-- arc-allyesconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
-|-- arm-allmodconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
-|-- arm-allyesconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
-|-- arm64-allyesconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
-|-- csky-allnoconfig
-|   `-- kismet:WARNING:unmet-direct-dependencies-detected-for-RESET_STARFIVE_JH7110-when-selected-by-CLK_STARFIVE_JH7110_SYS
-|-- i386-allyesconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
-|-- i386-randconfig-m021
-|   `-- drivers-acpi-property.c-acpi_data_prop_read_single()-error:potentially-dereferencing-uninitialized-obj-.
-|-- ia64-allmodconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
-|   `-- drivers-net-wireless-legacy-ray_cs.c:warning:strncpy-specified-bound-equals-destination-size
-|-- ia64-buildonly-randconfig-r005-20230409
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
-|-- loongarch-allmodconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
-|-- loongarch-defconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
-|-- loongarch-randconfig-r016-20230410
-|   |-- drivers-phy-mediatek-phy-mtk-hdmi-mt8195.c:undefined-reference-to-__floatundidf
-|   |-- loongarch64-linux-ld:drivers-phy-mediatek-phy-mtk-hdmi-mt8195.c:undefined-reference-to-__gedf2
-|   `-- loongarch64-linux-ld:drivers-phy-mediatek-phy-mtk-hdmi-mt8195.c:undefined-reference-to-__ltdf2
-|-- loongarch-randconfig-r034-20230410
-|   |-- phy-mtk-hdmi-mt8195.c:(.text):undefined-reference-to-__floatundidf
-|   |-- phy-mtk-hdmi-mt8195.c:(.text):undefined-reference-to-__gedf2
-|   `-- phy-mtk-hdmi-mt8195.c:(.text):undefined-reference-to-__ltdf2
-|-- mips-allmodconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
-|-- mips-allyesconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
-|-- mips-randconfig-r034-20230409
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
-|-- openrisc-randconfig-r002-20230409
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
-|-- parisc-buildonly-randconfig-r003-20230410
-|   `-- drivers-net-wireless-legacy-ray_cs.c:warning:strncpy-specified-bound-equals-destination-size
-|-- powerpc-allmodconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
-|-- powerpc-randconfig-s053-20230413
-|   `-- drivers-spi-spi-fsl-cpm.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-unsigned-short-usertype-got-restricted-__le16
-|-- riscv-allmodconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
-|-- s390-allyesconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
-|-- sparc-allyesconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
-|   `-- drivers-net-wireless-legacy-ray_cs.c:warning:strncpy-specified-bound-equals-destination-size
-|-- x86_64-allyesconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
-`-- xtensa-randconfig-m041-20230411
-    |-- drivers-phy-mediatek-phy-mtk-hdmi-mt8195.c-mtk_hdmi_pll_calc()-warn:always-true-condition-(tmds_clk-.483500e-)-(-u64max-.786711e-)
-    |-- drivers-phy-mediatek-phy-mtk-hdmi-mt8195.c-mtk_hdmi_pll_calc()-warn:always-true-condition-(tmds_clk-.967000e-)-(-u64max-.419080e-)
-    |-- drivers-phy-mediatek-phy-mtk-hdmi-mt8195.c-mtk_hdmi_pll_calc()-warn:impossible-condition-(tmds_clk-.483500e-)-(.000000e-.844674e-.786711e-)
-    |-- drivers-phy-mediatek-phy-mtk-hdmi-mt8195.c-mtk_hdmi_pll_calc()-warn:impossible-condition-(tmds_clk-.967000e-)-(.000000e-.844674e-.419080e-)
-    |-- drivers-phy-mediatek-phy-mtk-hdmi-mt8195.c-mtk_hdmi_pll_drv_setting()-warn:always-true-condition-(pixel_clk-.417500e-)-(-u32max-.223985e-)
-    `-- drivers-phy-mediatek-phy-mtk-hdmi-mt8195.c-mtk_hdmi_pll_drv_setting()-warn:impossible-condition-(pixel_clk-.417500e-)-(.000000e-.294967e-.223985e-)
-clang_recent_errors
-|-- arm-randconfig-r046-20230409
-|   `-- drivers-phy-mediatek-phy-mtk-hdmi-mt8195.c:warning:variable-ret-is-uninitialized-when-used-here
-|-- arm-randconfig-r046-20230412
-|   `-- drivers-phy-mediatek-phy-mtk-hdmi-mt8195.c:warning:variable-ret-is-uninitialized-when-used-here
-|-- arm64-randconfig-r003-20230409
-|   `-- drivers-phy-mediatek-phy-mtk-hdmi-mt8195.c:warning:variable-ret-is-uninitialized-when-used-here
-|-- arm64-randconfig-r015-20230413
-|   `-- drivers-phy-mediatek-phy-mtk-hdmi-mt8195.c:warning:variable-ret-is-uninitialized-when-used-here
-|-- hexagon-allyesconfig
-|   `-- drivers-clk-clk-sp7021.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((_m)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(unsigned-char)-unsigned-
-|-- riscv-randconfig-r035-20230410
-|   `-- drivers-phy-mediatek-phy-mtk-hdmi-mt8195.c:warning:variable-ret-is-uninitialized-when-used-here
-|-- x86_64-randconfig-a003-20230410
-|   `-- drivers-bluetooth-hci_qca.c:warning:unused-variable-qca_soc_data_wcn6855
-`-- x86_64-randconfig-a005-20230410
-    |-- drivers-gpu-drm-i915-gt-uc-guc_capture_fwif.h:warning:wrong-kernel-doc-identifier-on-line:
-    |-- drivers-gpu-drm-i915-i915_pmu.h:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-    |-- drivers-gpu-drm-i915-i915_request.h:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-    `-- drivers-gpu-drm-i915-i915_vma.h:warning:expecting-prototype-for-i915_vma_offset().-Prototype-was-for-i915_vma_size()-instead
-
-elapsed time: 723m
-
-configs tested: 194
-configs skipped: 20
-
-tested configs:
-alpha                            allyesconfig   gcc  
-alpha                               defconfig   gcc  
-alpha                randconfig-r003-20230410   gcc  
-alpha                randconfig-r003-20230412   gcc  
-alpha                randconfig-r013-20230410   gcc  
-alpha                randconfig-r021-20230414   gcc  
-alpha                randconfig-r023-20230414   gcc  
-alpha                randconfig-r026-20230414   gcc  
-arc                              allyesconfig   gcc  
-arc          buildonly-randconfig-r003-20230409   gcc  
-arc          buildonly-randconfig-r006-20230412   gcc  
-arc                                 defconfig   gcc  
-arc                  randconfig-r005-20230410   gcc  
-arc                  randconfig-r025-20230414   gcc  
-arc                  randconfig-r031-20230410   gcc  
-arc                  randconfig-r036-20230413   gcc  
-arc                  randconfig-r043-20230412   gcc  
-arc                  randconfig-r043-20230413   gcc  
-arm                              allmodconfig   gcc  
-arm                              allyesconfig   gcc  
-arm                                 defconfig   gcc  
-arm                         orion5x_defconfig   clang
-arm                          pxa3xx_defconfig   gcc  
-arm                  randconfig-r002-20230412   gcc  
-arm                  randconfig-r022-20230414   clang
-arm                  randconfig-r046-20230412   clang
-arm                  randconfig-r046-20230413   gcc  
-arm                             rpc_defconfig   gcc  
-arm64                            allyesconfig   gcc  
-arm64        buildonly-randconfig-r002-20230412   clang
-arm64        buildonly-randconfig-r006-20230413   gcc  
-arm64                               defconfig   gcc  
-arm64                randconfig-r003-20230409   clang
-arm64                randconfig-r015-20230413   clang
-csky                                defconfig   gcc  
-csky                 randconfig-r015-20230409   gcc  
-csky                 randconfig-r031-20230409   gcc  
-csky                 randconfig-r034-20230414   gcc  
-hexagon              randconfig-r003-20230413   clang
-hexagon              randconfig-r033-20230414   clang
-hexagon              randconfig-r041-20230412   clang
-hexagon              randconfig-r041-20230413   clang
-hexagon              randconfig-r045-20230412   clang
-hexagon              randconfig-r045-20230413   clang
-i386                             allyesconfig   gcc  
-i386         buildonly-randconfig-r006-20230410   clang
-i386                              debian-10.3   gcc  
-i386                                defconfig   gcc  
-i386                 randconfig-a001-20230410   clang
-i386                 randconfig-a002-20230410   clang
-i386                 randconfig-a003-20230410   clang
-i386                 randconfig-a004-20230410   clang
-i386                 randconfig-a005-20230410   clang
-i386                 randconfig-a006-20230410   clang
-i386                 randconfig-a011-20230410   gcc  
-i386                 randconfig-a012-20230410   gcc  
-i386                 randconfig-a013-20230410   gcc  
-i386                 randconfig-a014-20230410   gcc  
-i386                 randconfig-a015-20230410   gcc  
-i386                 randconfig-a016-20230410   gcc  
-i386                 randconfig-r006-20230410   clang
-ia64                             allmodconfig   gcc  
-ia64         buildonly-randconfig-r001-20230410   gcc  
-ia64         buildonly-randconfig-r002-20230409   gcc  
-ia64         buildonly-randconfig-r005-20230409   gcc  
-ia64                                defconfig   gcc  
-loongarch                        allmodconfig   gcc  
-loongarch                         allnoconfig   gcc  
-loongarch                           defconfig   gcc  
-loongarch            randconfig-r004-20230409   gcc  
-loongarch            randconfig-r032-20230414   gcc  
-loongarch            randconfig-r034-20230410   gcc  
-loongarch            randconfig-r035-20230409   gcc  
-m68k                             allmodconfig   gcc  
-m68k                                defconfig   gcc  
-m68k                 randconfig-r005-20230409   gcc  
-m68k                 randconfig-r016-20230409   gcc  
-m68k                 randconfig-r021-20230410   gcc  
-m68k                 randconfig-r024-20230409   gcc  
-m68k                          sun3x_defconfig   gcc  
-microblaze   buildonly-randconfig-r004-20230410   gcc  
-microblaze           randconfig-r023-20230410   gcc  
-microblaze           randconfig-r024-20230414   gcc  
-microblaze           randconfig-r036-20230410   gcc  
-mips                             allmodconfig   gcc  
-mips                             allyesconfig   gcc  
-mips         buildonly-randconfig-r001-20230409   gcc  
-mips         buildonly-randconfig-r006-20230409   gcc  
-mips                     cu1000-neo_defconfig   clang
-mips                        omega2p_defconfig   clang
-mips                 randconfig-r001-20230409   gcc  
-mips                 randconfig-r001-20230410   gcc  
-mips                 randconfig-r001-20230412   gcc  
-mips                 randconfig-r005-20230412   gcc  
-mips                 randconfig-r012-20230410   clang
-mips                 randconfig-r014-20230413   gcc  
-mips                 randconfig-r023-20230409   clang
-mips                 randconfig-r032-20230413   clang
-mips                 randconfig-r034-20230409   gcc  
-nios2        buildonly-randconfig-r004-20230413   gcc  
-nios2        buildonly-randconfig-r005-20230412   gcc  
-nios2                               defconfig   gcc  
-nios2                randconfig-r001-20230413   gcc  
-nios2                randconfig-r011-20230409   gcc  
-nios2                randconfig-r013-20230409   gcc  
-nios2                randconfig-r015-20230410   gcc  
-nios2                randconfig-r016-20230410   gcc  
-nios2                randconfig-r034-20230413   gcc  
-openrisc             randconfig-r002-20230409   gcc  
-openrisc             randconfig-r006-20230412   gcc  
-openrisc             randconfig-r024-20230410   gcc  
-openrisc             randconfig-r036-20230414   gcc  
-parisc       buildonly-randconfig-r003-20230410   gcc  
-parisc                              defconfig   gcc  
-parisc64                         alldefconfig   gcc  
-parisc64                            defconfig   gcc  
-powerpc                      acadia_defconfig   clang
-powerpc                          allmodconfig   gcc  
-powerpc                           allnoconfig   gcc  
-powerpc                        fsp2_defconfig   clang
-powerpc                      katmai_defconfig   clang
-powerpc                     kilauea_defconfig   clang
-powerpc                      makalu_defconfig   gcc  
-powerpc                mpc7448_hpc2_defconfig   gcc  
-powerpc                      ppc44x_defconfig   clang
-powerpc                         ps3_defconfig   gcc  
-powerpc              randconfig-r002-20230410   clang
-powerpc              randconfig-r006-20230409   clang
-powerpc              randconfig-r011-20230410   gcc  
-powerpc              randconfig-r026-20230410   gcc  
-powerpc              randconfig-r033-20230413   gcc  
-powerpc                         wii_defconfig   gcc  
-riscv                            allmodconfig   gcc  
-riscv                             allnoconfig   gcc  
-riscv        buildonly-randconfig-r002-20230410   gcc  
-riscv        buildonly-randconfig-r004-20230412   gcc  
-riscv                               defconfig   gcc  
-riscv                randconfig-r014-20230410   gcc  
-riscv                randconfig-r035-20230410   clang
-riscv                randconfig-r042-20230412   gcc  
-riscv                randconfig-r042-20230413   clang
-riscv                          rv32_defconfig   gcc  
-s390                             allmodconfig   gcc  
-s390                             allyesconfig   gcc  
-s390         buildonly-randconfig-r001-20230413   clang
-s390         buildonly-randconfig-r003-20230412   gcc  
-s390                                defconfig   gcc  
-s390                 randconfig-r004-20230413   gcc  
-s390                 randconfig-r035-20230414   clang
-s390                 randconfig-r044-20230412   gcc  
-s390                 randconfig-r044-20230413   clang
-sh                               allmodconfig   gcc  
-sh                                  defconfig   gcc  
-sh                               j2_defconfig   gcc  
-sh                   randconfig-r006-20230413   gcc  
-sh                   randconfig-r011-20230413   gcc  
-sh                   randconfig-r035-20230413   gcc  
-sh                      rts7751r2d1_defconfig   gcc  
-sh                           se7722_defconfig   gcc  
-sh                   secureedge5410_defconfig   gcc  
-sh                  sh7785lcr_32bit_defconfig   gcc  
-sh                            titan_defconfig   gcc  
-sparc        buildonly-randconfig-r003-20230413   gcc  
-sparc        buildonly-randconfig-r005-20230413   gcc  
-sparc                               defconfig   gcc  
-sparc                       sparc32_defconfig   gcc  
-sparc64              randconfig-r016-20230413   gcc  
-sparc64              randconfig-r022-20230410   gcc  
-sparc64              randconfig-r032-20230409   gcc  
-sparc64              randconfig-r033-20230409   gcc  
-sparc64              randconfig-r036-20230409   gcc  
-um                             i386_defconfig   gcc  
-um                           x86_64_defconfig   gcc  
-x86_64                            allnoconfig   gcc  
-x86_64                           allyesconfig   gcc  
-x86_64                              defconfig   gcc  
-x86_64                                  kexec   gcc  
-x86_64               randconfig-a001-20230410   clang
-x86_64               randconfig-a002-20230410   clang
-x86_64               randconfig-a003-20230410   clang
-x86_64               randconfig-a004-20230410   clang
-x86_64               randconfig-a005-20230410   clang
-x86_64               randconfig-a006-20230410   clang
-x86_64               randconfig-a011-20230410   gcc  
-x86_64               randconfig-a012-20230410   gcc  
-x86_64               randconfig-a013-20230410   gcc  
-x86_64               randconfig-a014-20230410   gcc  
-x86_64               randconfig-a015-20230410   gcc  
-x86_64               randconfig-a016-20230410   gcc  
-x86_64                               rhel-8.3   gcc  
-xtensa       buildonly-randconfig-r004-20230409   gcc  
-xtensa               randconfig-r031-20230413   gcc  
-xtensa               randconfig-r031-20230414   gcc  
-xtensa               randconfig-r033-20230410   gcc  
-
+diff --git a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
+index abfc077fb0a8..c8e540665fcb 100644
+--- a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
++++ b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
+@@ -292,7 +292,7 @@ static int mtk_hdmi_pll_calc(struct mtk_hdmi_phy *hdmi_phy, struct clk_hw *hw,
+ 	if (!(digital_div <= 32 && digital_div >= 1))
+ 		return -EINVAL;
+ 
+-	mtk_hdmi_pll_set_hw(hw, PLL_PREDIV, fbkdiv_high, fbkdiv_low,
++	ret = mtk_hdmi_pll_set_hw(hw, PLL_PREDIV, fbkdiv_high, fbkdiv_low,
+ 			    PLL_FBKDIV_HS3, posdiv1, posdiv2, txprediv,
+ 			    txposdiv, digital_div);
+ 	if (ret)
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+2.39.2
+
 
