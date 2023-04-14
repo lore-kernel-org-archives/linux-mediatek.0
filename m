@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A5B8C77B70
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Apr 2023 08:26:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B260CC77B70
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Apr 2023 08:26:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PFWS76R3h9QsLpCttf9/B+rEP4aR/9nRNw2d0vU0q/Q=; b=1WbGjpUpK/Qu/7FCdvSYPMVoE8
-	0nLLRKxEnMODhe7aC4oBMXpZN2y3VbzHldXUT2nf+KzcKbhc33fLhuWZCtOj1hSzJfgB+BK1hyF8n
-	OdnQaoMqCwcLKDuja7gsH+ycd4l1syg9Qj3XOEEvGuUkmrKLkWhsULscVtndC8SBHWMDHbXC6Hxlx
-	1/GeYB/9e5YVtrwOc9JWPP3J6TRyDHxPh2n9KANHPbCVuxZzGO1akP1hgAAz0AYdkiaEMwnLnAOr8
-	YJZJZ84NS2ThLNIyJYc22RpIMLeDLMyppUajH/Ehp+WHOemv2oU3lfb7NLRov0BFSUQ+ZmfoTQF3L
-	0VwX6X5A==;
+	bh=cc3XhoVrKsfuWOuFNSb6VleyMIegrRaVdqtu2PiBP6Y=; b=OiMXHgvJbhWusF9P62Ur71k5C/
+	7CAA/20FYc9osA4ZzF87WM13VN3UL6lxA5VDGotheOYE0iaPEe6U3Y733euGIswFK8I/gRoYahAMg
+	Bc9saAH0B8YV+EoUldrhW45R4SBOKV1mNGiQ55TqogViCiNe8VHz3NQ/WsvStnPPMUoHKgybQSgLa
+	4Ze+fbD1lfnHaMT1opu+gsbgPRpWQg/Jd7F77BT9eI8DWa78EEKwHWi6cNSys14m1v78PJuUQKNxj
+	sLJG3Js+lZTA4LOEMvSgrPA5eo69wyUgreBgCUOfmNH27gPO8S9MuP7hlR1gLP4H+gzma4dVguxM6
+	JNlhn8rQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pnElN-008h1D-11;
-	Fri, 14 Apr 2023 08:26:33 +0000
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+	id 1pnElZ-008h9I-1S;
+	Fri, 14 Apr 2023 08:26:45 +0000
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pnElL-008gzw-1D
+	id 1pnElX-008h4v-04
 	for linux-mediatek@lists.infradead.org;
-	Fri, 14 Apr 2023 08:26:32 +0000
-Received: by mail-ej1-x635.google.com with SMTP id q23so34238027ejz.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 14 Apr 2023 01:26:31 -0700 (PDT)
+	Fri, 14 Apr 2023 08:26:44 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id xd13so9808243ejb.4
+        for <linux-mediatek@lists.infradead.org>; Fri, 14 Apr 2023 01:26:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1681460790; x=1684052790;
+        d=linaro.org; s=google; t=1681460799; x=1684052799;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=PFWS76R3h9QsLpCttf9/B+rEP4aR/9nRNw2d0vU0q/Q=;
-        b=EcASPij0WvVh/rYuXhVEmf5faAZloZE2t4UYU0BXcdl4gTgSUptbQsLFtLsc7ugH/A
-         VrkIrW84WOgQuStS05zVMJHWUe4c60KIWeP898ib604lbZIJHMhzk5zWw4XBD/U4cQNp
-         /nBpe9QZNg4yyQvy9MF1YgjjAcfNJT534gqGHyCdC+lWaH9RtX65VLbIwaBnz3VhFIh7
-         EwLo7mMECzYoatF6jbhVPpS5Jkdcp6WJ5nQaEUGBI9hXYcudDyP5AIP1lCG6Ax/q+qTm
-         b9atbsfLXC9G8dlgmHO2tRxUmC/H+Phz/2AEgStkivf3dXs0wmFVuQsDGtp5K3HWDeQ3
-         KKXA==
+        bh=cc3XhoVrKsfuWOuFNSb6VleyMIegrRaVdqtu2PiBP6Y=;
+        b=bt73naGw+ZXi4dc8Cmhv0FLtGUbeOgrPuV1QMF4QPK4DWhqcDIiQyq2SXqDshVY58+
+         9i5EZRohDL67399mm6hHhCeQV/EJor+rJ8VeOerrE+yvaisOQ2EXVIzVKEzSqBMW6Bsj
+         /QStpG4ys+runlabZaXcTBjIl7IH/NVwijX7kgLZam1r0Xs+zSdWpyc9iow1Bl3P9Zr6
+         qTEXFqfz9+7uepReMSv77u28y+M74JLZY3/yfgzdzoLj7xro2lSoL8qMvur81rANjaL9
+         4QuNXgOvOjBgmIoG5TjRbKELD2WjLfk+HiPP6p9vqHmpim7DFpm87T/BjxLYHqgQTBqD
+         uyUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681460790; x=1684052790;
+        d=1e100.net; s=20221208; t=1681460799; x=1684052799;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=PFWS76R3h9QsLpCttf9/B+rEP4aR/9nRNw2d0vU0q/Q=;
-        b=N57h4RvkG6f/D908BHWlaxtCJ7cS8dPowcwttn7ZcWiJ8cGV+tcHNzo/ouG5Gyf4eX
-         7yYr8ugWbJfkcjixqOY5x2kG402jQtZA8FuKOMpsrspzVFcoaYNvMox6YkQy0iShLhqQ
-         wR6HTxJ6jQvQp3dO222gwztHlQ4r44CREpoT6X8t5X9+3giIcINVcStp7rusKO4SrpyP
-         q/DUYSJH0cctYjKw8+JW30BIS8bTAt0twY7on6wyFvOs1YylzAoiaehGD4DGYjAzEutb
-         qBhPwo8vkKud4L+5me9NybiAeBzL+gS5FVd98G6SAZS0xE8YWJDFlGrQiAVwFZUU0SnP
-         bICQ==
-X-Gm-Message-State: AAQBX9eCG8Y25e89Wv/kYdzHDN0R11b9gUZd2cebsPaYcPMEfNOmNeWc
-	oNgSq0ntC65aVAL+Dm5Ap0rNCA==
-X-Google-Smtp-Source: AKy350aXAAH9oxumIB0VCkKQ6X1tv2Gkk4qCEQ1975WV1xW90sQ4HbH3w6xNPv+SaTTgdUMIba9+kA==
-X-Received: by 2002:a17:906:e096:b0:90b:53f6:fd8a with SMTP id gh22-20020a170906e09600b0090b53f6fd8amr6544095ejb.10.1681460790073;
-        Fri, 14 Apr 2023 01:26:30 -0700 (PDT)
+        bh=cc3XhoVrKsfuWOuFNSb6VleyMIegrRaVdqtu2PiBP6Y=;
+        b=fN0D8ItFAmY0A/RBITBjUuorLHbY5/t4N6csZQER0LCOWEXIRaqkDtOynu9VeaknvZ
+         Q4jApMdlXP0Dgaybou9CtwXvX2HvHDUQ/fuI2+w8tNuSRsn1UyW71GLFrYoq4bz4wQFP
+         s837qwnPSTPk15CbFpG2fQ4EFEa5NH2O0XYFk4xHXaPZsZMm96JVHvzhiJf+/KOuOnQc
+         q+w0yY/Cc2t6ghdnJ12HAHS8ESc0/Mah8FgvXNayI2GEOYKa5FWX4Q2xey2hznnJG8TQ
+         Az1u1GUzrtFcIAUEfPYnMOuQSQEpmRwbx7p3X5E+vfK5VVrWfkmHWiYlImTcJTzyzWLR
+         4n8w==
+X-Gm-Message-State: AAQBX9cYQoN0yx4PedcN8V6UmMbCWlKL8VSfBGEGN2PoArHj19lNrX6m
+	UKc1yq55y3Ho8sp1vBh5nASnaA==
+X-Google-Smtp-Source: AKy350ZHB0iX4SpIl6nSdBkIW18ThkfNLzwYurPIDtNAv4p6SmGfIue6rSdxEw2SmolXbx+cb6/kbQ==
+X-Received: by 2002:a17:906:b2d4:b0:94e:d17f:eacf with SMTP id cf20-20020a170906b2d400b0094ed17feacfmr2364045ejb.23.1681460799195;
+        Fri, 14 Apr 2023 01:26:39 -0700 (PDT)
 Received: from ?IPV6:2a02:810d:15c0:828:8a60:6b0f:105a:eefb? ([2a02:810d:15c0:828:8a60:6b0f:105a:eefb])
-        by smtp.gmail.com with ESMTPSA id gz1-20020a170907a04100b0094a6ba1f5ccsm2125915ejc.22.2023.04.14.01.26.28
+        by smtp.gmail.com with ESMTPSA id a10-20020a1709064a4a00b0094a4e970508sm2117803ejv.57.2023.04.14.01.26.37
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 14 Apr 2023 01:26:29 -0700 (PDT)
-Message-ID: <5b6b5a21-1dcc-0b96-b4c7-01622af7e64a@linaro.org>
-Date: Fri, 14 Apr 2023 10:26:28 +0200
+        Fri, 14 Apr 2023 01:26:38 -0700 (PDT)
+Message-ID: <d5580870-a440-a3b7-1c67-26db193a7f8f@linaro.org>
+Date: Fri, 14 Apr 2023 10:26:37 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.9.1
-Subject: Re: [PATCH 08/27] dt-bindings: display: mediatek: wdma: Add
+Subject: Re: [PATCH 09/27] dt-bindings: display: mediatek: color: Add
  compatible for MediaTek MT6795
 Content-Language: en-US
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -84,14 +84,14 @@ Cc: p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
  linux-pwm@vger.kernel.org, kernel@collabora.com,
  phone-devel@vger.kernel.org, ~postmarketos/upstreaming@lists.sr.ht
 References: <20230412112739.160376-1-angelogioacchino.delregno@collabora.com>
- <20230412112739.160376-9-angelogioacchino.delregno@collabora.com>
+ <20230412112739.160376-10-angelogioacchino.delregno@collabora.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230412112739.160376-9-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230412112739.160376-10-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230414_012631_412558_2AC97FAB 
-X-CRM114-Status: UNSURE (   7.74  )
+X-CRM114-CacheID: sfid-20230414_012643_099218_619431D0 
+X-CRM114-Status: UNSURE (   7.78  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -108,12 +108,12 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 12/04/2023 13:27, AngeloGioacchino Del Regno wrote:
-> Add a compatible string for MediaTek Helio X10 MT6795's WDMA block: this
+> Add a compatible string for MediaTek Helio X10 MT6795's COLOR block: this
 > is the same as MT8173.
 > 
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  .../devicetree/bindings/display/mediatek/mediatek,wdma.yaml    | 3 +++
+>  .../devicetree/bindings/display/mediatek/mediatek,color.yaml     | 1 +
 
 Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
