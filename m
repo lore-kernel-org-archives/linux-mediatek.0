@@ -4,65 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7881C77B71
-	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Apr 2023 07:16:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D53C9C77B71
+	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Apr 2023 09:01:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:
-	Content-Type:Content-Transfer-Encoding:References:In-Reply-To:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PsMLVKLM2Go1fbxCbBnVhP+aGCFr/a9FbJE33iu30wo=; b=XEYTkoB1R79Avhoimql7L4kfv3
-	YaoOZaXzjDuLSfbPIzDvjKQSrNCUZuotzww2MEHPM8TvEmhM17CZrkNAI1M5guwciIzbgTWBHTogp
-	yfLhQNUwZjlABt/z/Mm1pfk5jRv0iK4K6MnlEHT80bkhgZVxgP1+PhPPy0ZGSR4fqlvufnlSEpjS9
-	g/f1P+5Zg/BfqrAPu0DdaGAHeO4EQutdmnUb6k4pUdtnwfYzo4CLtKNBRE24beQ/N+Uj8TKBwrFzc
-	S8Oh9QzSZ8VVJ8SJqHWUt3dxJSvT/WdPkjsTlktLBj+U23BhDw3y5uysMIWVoUVSquTap/AIbgWfj
-	R6hknqWw==;
+	bh=h7bWAyZyLD6uo7vF/WlVxj3C8Ki8eISz7a0rWcMvR1k=; b=rKhEPTct6vjYq4Tuu8AQexC7/n
+	dWTnY6iEzH1qwGug3wvp5UN0MC9UXOi5A5a4fxw8tCt57Yj1DdB6hXoQpaJwHRbpZqfyZgz0XmGMu
+	OxlBSNW+4MjA8EBI0DjLKkGN61IOv6UUuTN+Cwp7u57gPvErneax0SSe6R6rsqKspzTbNtOfxxJkR
+	E8lmTod9J2GchR9qS3OI7A4rWvNQZMXqHJD85zu8G1/f9pzAhCwIjXWt8yDH+ZENvNgrXYmyOlrte
+	Fx6jC5jKPPEWtTpM00BfMaRmYX4XpgkBp72O4Xv+88YB2TlL9X50LF3kf0PVflIszNkgle8wSntwY
+	8ndIgNHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pna8Z-00BWYO-0i;
-	Sat, 15 Apr 2023 07:15:55 +0000
-Received: from mail.hust.edu.cn ([202.114.0.240] helo=hust.edu.cn)
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pna8W-00BWXo-0A;
-	Sat, 15 Apr 2023 07:15:53 +0000
-Received: from void0red$hust.edu.cn ( [172.16.0.254] ) by ajax-webmail-app2
- (Coremail) ; Sat, 15 Apr 2023 15:14:35 +0800 (GMT+08:00)
-X-Originating-IP: [172.16.0.254]
-Date: Sat, 15 Apr 2023 15:14:35 +0800 (GMT+08:00)
-X-CM-HeaderCharset: UTF-8
-From: void0red@hust.edu.cn
-To: daniel.lezcano@linaro.org
-Cc: amitk@kernel.org, angelogioacchino.delregno@collabora.com, 
-	bchihi@baylibre.com, daniel@makrotopia.org, dzm91@hust.edu.cn, 
-	error27@gmail.com, henry.yen@mediatek.com, 
-	hust-os-kernel-patches@googlegroups.com, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, 
-	matthias.bgg@gmail.com, rafael@kernel.org, rdunlap@infradead.org, 
-	rui.zhang@intel.com, void0red@gmail.com
-Subject: Re: [PATCH v3 2/2] thermal: mediatek: change clk_prepare_enable to
- devm_clk_get_enabled in mtk_thermal_probe
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20220802(cbd923c5)
- Copyright (c) 2002-2023 www.mailtech.cn hust
-In-Reply-To: <20230411063531.3976354-2-void0red@hust.edu.cn>
-References: <b2e5ef14-9a12-15d5-8016-d0994c1177c3@linaro.org>
- <20230411063531.3976354-1-void0red@hust.edu.cn>
- <20230411063531.3976354-2-void0red@hust.edu.cn>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset=UTF-8
+	id 1pnbmE-00Bg4S-1S;
+	Sat, 15 Apr 2023 09:00:58 +0000
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pnbm9-00Bg3V-28
+	for linux-mediatek@lists.infradead.org;
+	Sat, 15 Apr 2023 09:00:55 +0000
+Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-94f1a6e66c9so22469966b.2
+        for <linux-mediatek@lists.infradead.org>; Sat, 15 Apr 2023 02:00:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1681549251; x=1684141251;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=h7bWAyZyLD6uo7vF/WlVxj3C8Ki8eISz7a0rWcMvR1k=;
+        b=Co0OwPVRZSFCKAUtHmKZxfLEAl4+Yk9tRoSp0clTuJuTTsTWsesS7PWBTgdyTOlyEd
+         bvErnPDwam2MuQ/85GuljVZSjqxCU4lay98TPaSI6eh+3DbgqXhKiXdeP4hhJpLgBzPR
+         QONKjBWMsLwAiAUmhgHneXIT4yUvIfDtAd04MVj6qXuGPQUYtah+cHnfkZdJ8xwDwzWf
+         7Z9urp7g82zxPXKJlqXl+ZFL0g2kh8xhmkrijuXx0FCo30I0AJvnYWTlWadx5OQb7KT8
+         1nGYSyuKtZOANDAyIr4QKAl1B3jd6va4NY5Nb/G/jEvrtXDSn+wV122H06cH5GFbxNPp
+         XIDQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1681549251; x=1684141251;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=h7bWAyZyLD6uo7vF/WlVxj3C8Ki8eISz7a0rWcMvR1k=;
+        b=WP78ntCstG7v6GB/a508zeqwVJm5re2GwuPMo9Bqww4AS+NjwqTlbXmhapa07XHSWI
+         kkPdvqtQ+uhPhYQCtbQkNlzcz86q+0LqHbdwp1Dtb/g/W/xOlEpavVR8cAQSbigulmE7
+         n+ysMqFDfcRkI1Sl3VfOr5CSfphYK6lbqWGJJ+RVqZ52Gh/YH/5Wp4l54Ly+IF1phdMJ
+         mNpfHmFUjl7cuk3CWinv5yZZn8+TPf2jRdAAfeTX01N/eBRhG9i2Lcmsk5KqhE2HIDxn
+         7JceHmTpdn+BfF+VmfiKlpY7pNj1KJTZ1vGH1Ysl4h7a+sBOeHkQ3bkPt+VqYIaOfLS2
+         uXkQ==
+X-Gm-Message-State: AAQBX9em8sG39kpNlcm7dLWFnCacgQU1YQoO1NaOkSXu61h6vrtmjhPv
+	H7HSWXAid5KdH1V/fVEHLyhuBQ==
+X-Google-Smtp-Source: AKy350aEJnSqnbH8WH/aQ9lyPmdapGYw/EYooeirvjzag7l10B9FqEzScCXV7gADNUZ63773fFSs4A==
+X-Received: by 2002:a05:6402:1a2c:b0:506:7d14:984c with SMTP id be12-20020a0564021a2c00b005067d14984cmr6282723edb.19.1681549251217;
+        Sat, 15 Apr 2023 02:00:51 -0700 (PDT)
+Received: from ?IPV6:2a02:810d:15c0:828:a3bf:4ed:6c53:2a36? ([2a02:810d:15c0:828:a3bf:4ed:6c53:2a36])
+        by smtp.gmail.com with ESMTPSA id wt10-20020a170906ee8a00b0094f225c0cd3sm421385ejb.86.2023.04.15.02.00.50
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 15 Apr 2023 02:00:50 -0700 (PDT)
+Message-ID: <310e8979-de96-dda8-6c95-0e6033d8b403@linaro.org>
+Date: Sat, 15 Apr 2023 11:00:49 +0200
 MIME-Version: 1.0
-Message-ID: <4fed91ef.3c256.18783c407e3.Coremail.void0red@hust.edu.cn>
-X-Coremail-Locale: en_US
-X-CM-TRANSID: GQEQrABnSU7bTjpkkInBAg--.44137W
-X-CM-SenderInfo: rpsqjiaxrxjmo6kx23oohg3hdfq/1tbiAQsBAl7Em5Ce0gABsV
-X-Coremail-Antispam: 1Ur529EdanIXcx71UUUUU7IcSsGvfJ3iIAIbVAYjsxI4VW7Jw
-	CS07vEb4IE77IF4wCS07vE1I0E4x80FVAKz4kxMIAIbVAFxVCaYxvI4VCIwcAKzIAtYxBI
-	daVFxhVjvjDU=
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH 7/7] ASoC: dt-bindings: mediatek,mt8188-afe: add audio
+ properties
+Content-Language: en-US
+To: Trevor Wu <trevor.wu@mediatek.com>, broonie@kernel.org,
+ lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com
+Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org
+References: <20230413104713.7174-1-trevor.wu@mediatek.com>
+ <20230413104713.7174-8-trevor.wu@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230413104713.7174-8-trevor.wu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230415_001552_472671_D53B9CE3 
-X-CRM114-Status: GOOD (  18.76  )
+X-CRM114-CacheID: sfid-20230415_020053_724256_B465C742 
+X-CRM114-Status: GOOD (  15.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,79 +100,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-CgoKPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2VzLS0tLS0KPiBGcm9tOiAiS2FuZyBDaGVuIiA8dm9p
-ZDByZWRAaHVzdC5lZHUuY24+Cj4gU2VudCBUaW1lOiAyMDIzLTA0LTExIDE0OjM1OjMxIChUdWVz
-ZGF5KQo+IFRvOiBkYW5pZWwubGV6Y2Fub0BsaW5hcm8ub3JnCj4gQ2M6IGFtaXRrQGtlcm5lbC5v
-cmcsIGFuZ2Vsb2dpb2FjY2hpbm8uZGVscmVnbm9AY29sbGFib3JhLmNvbSwgYmNoaWhpQGJheWxp
-YnJlLmNvbSwgZGFuaWVsQG1ha3JvdG9waWEub3JnLCBkem05MUBodXN0LmVkdS5jbiwgZXJyb3Iy
-N0BnbWFpbC5jb20sIGhlbnJ5LnllbkBtZWRpYXRlay5jb20sIGh1c3Qtb3Mta2VybmVsLXBhdGNo
-ZXNAZ29vZ2xlZ3JvdXBzLmNvbSwgbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3Jn
-LCBsaW51eC1rZXJuZWxAdmdlci5rZXJuZWwub3JnLCBsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZy
-YWRlYWQub3JnLCBsaW51eC1wbUB2Z2VyLmtlcm5lbC5vcmcsIG1hdHRoaWFzLmJnZ0BnbWFpbC5j
-b20sIHJhZmFlbEBrZXJuZWwub3JnLCByZHVubGFwQGluZnJhZGVhZC5vcmcsIHJ1aS56aGFuZ0Bp
-bnRlbC5jb20sIHZvaWQwcmVkQGdtYWlsLmNvbSwgdm9pZDByZWRAaHVzdC5lZHUuY24KPiBTdWJq
-ZWN0OiBbUEFUQ0ggdjMgMi8yXSB0aGVybWFsOiBtZWRpYXRlazogY2hhbmdlIGNsa19wcmVwYXJl
-X2VuYWJsZSB0byBkZXZtX2Nsa19nZXRfZW5hYmxlZCBpbiBtdGtfdGhlcm1hbF9wcm9iZQo+IAo+
-IHVzZSBkZXZtX2Nsa19nZXRfZW5hYmxlZCB0byBkbyBhdXRvbWF0aWMgcmVzb3VyY2UgbWFuYWdl
-bWVudC4KPiBNZWFud2hpbGUsIHJlbW92ZSBlcnJvciBoYW5kbGluZyBsYWJlbHMgaW4gdGhlIHBy
-b2JlIGZ1bmN0aW9uIGFuZAo+IHRoZSB3aG9sZSByZW1vdmUgZnVuY3Rpb24uCj4gCj4gU2lnbmVk
-LW9mZi1ieTogS2FuZyBDaGVuIDx2b2lkMHJlZEBodXN0LmVkdS5jbj4KPiBSZXZpZXdlZC1ieTog
-RG9uZ2xpYW5nIE11IDxkem05MUBodXN0LmVkdS5jbj4KPiAtLS0KPiB2MyAtPiB2MjogcmVtb3Zl
-IHNvbWUgdXNlbGVzIGZ1bmMgY2FsbHMuCj4gdjIgLT4gdjE6IGluaXQKPiAKPiBOb3RpY2UgdGhl
-IGRldm1fY2xrX2dldF9lbmFibGVkIGRvIHRoZSBjbGtfZ2V0IGFuZCBjbGtfcHJlcGFyZV9lbmFi
-bGUKPiBhdCB0aGUgc2FtZSB0aW1lLgo+IEknbSBub3Qgc3VyZSBpZiB0aGlzIGhhcyBhbnkgc2lk
-ZSBlZmZlY3RzIGluIGluaXRpYWxpemF0aW9uLgo+IAo+ICBkcml2ZXJzL3RoZXJtYWwvbWVkaWF0
-ZWsvYXV4YWRjX3RoZXJtYWwuYyB8IDQ4ICsrKysrLS0tLS0tLS0tLS0tLS0tLS0tCj4gIDEgZmls
-ZSBjaGFuZ2VkLCAxMCBpbnNlcnRpb25zKCspLCAzOCBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0t
-Z2l0IGEvZHJpdmVycy90aGVybWFsL21lZGlhdGVrL2F1eGFkY190aGVybWFsLmMgYi9kcml2ZXJz
-L3RoZXJtYWwvbWVkaWF0ZWsvYXV4YWRjX3RoZXJtYWwuYwo+IGluZGV4IDMzNzJmN2MyOTYyNi4u
-OTk1ODM3Y2UzZWEyIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvdGhlcm1hbC9tZWRpYXRlay9hdXhh
-ZGNfdGhlcm1hbC5jCj4gKysrIGIvZHJpdmVycy90aGVybWFsL21lZGlhdGVrL2F1eGFkY190aGVy
-bWFsLmMKPiBAQCAtMTExNiwxNCArMTExNiw2IEBAIHN0YXRpYyBpbnQgbXRrX3RoZXJtYWxfcHJv
-YmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgCj4gIAltdC0+Y29uZiA9IG9mX2Rl
-dmljZV9nZXRfbWF0Y2hfZGF0YSgmcGRldi0+ZGV2KTsKPiAgCj4gLQltdC0+Y2xrX3BlcmlfdGhl
-cm0gPSBkZXZtX2Nsa19nZXQoJnBkZXYtPmRldiwgInRoZXJtIik7Cj4gLQlpZiAoSVNfRVJSKG10
-LT5jbGtfcGVyaV90aGVybSkpCj4gLQkJcmV0dXJuIFBUUl9FUlIobXQtPmNsa19wZXJpX3RoZXJt
-KTsKPiAtCj4gLQltdC0+Y2xrX2F1eGFkYyA9IGRldm1fY2xrX2dldCgmcGRldi0+ZGV2LCAiYXV4
-YWRjIik7Cj4gLQlpZiAoSVNfRVJSKG10LT5jbGtfYXV4YWRjKSkKPiAtCQlyZXR1cm4gUFRSX0VS
-UihtdC0+Y2xrX2F1eGFkYyk7Cj4gLQo+ICAJbXQtPnRoZXJtYWxfYmFzZSA9IGRldm1fcGxhdGZv
-cm1fZ2V0X2FuZF9pb3JlbWFwX3Jlc291cmNlKHBkZXYsIDAsIE5VTEwpOwo+ICAJaWYgKElTX0VS
-UihtdC0+dGhlcm1hbF9iYXNlKSkKPiAgCQlyZXR1cm4gUFRSX0VSUihtdC0+dGhlcm1hbF9iYXNl
-KTsKPiBAQCAtMTE4MiwxNiArMTE3NCwxNiBAQCBzdGF0aWMgaW50IG10a190aGVybWFsX3Byb2Jl
-KHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIAlpZiAocmV0KQo+ICAJCXJldHVybiBy
-ZXQ7Cj4gIAo+IC0JcmV0ID0gY2xrX3ByZXBhcmVfZW5hYmxlKG10LT5jbGtfYXV4YWRjKTsKPiAt
-CWlmIChyZXQpIHsKPiAtCQlkZXZfZXJyKCZwZGV2LT5kZXYsICJDYW4ndCBlbmFibGUgYXV4YWRj
-IGNsazogJWRcbiIsIHJldCk7Cj4gLQkJcmV0dXJuIHJldDsKPiArCW10LT5jbGtfYXV4YWRjID0g
-ZGV2bV9jbGtfZ2V0X2VuYWJsZWQoJnBkZXYtPmRldiwgImF1eGFkYyIpOwo+ICsJaWYgKElTX0VS
-UihtdC0+Y2xrX2F1eGFkYykpIHsKPiArCQlkZXZfZXJyKCZwZGV2LT5kZXYsICJDYW4ndCBlbmFi
-bGUgYXV4YWRjIGNsazogJWRcbiIsIG10LT5jbGtfYXV4YWRjKTsKPiArCQlyZXR1cm4gUFRSX0VS
-UihtdC0+Y2xrX2F1eGFkYyk7Cj4gIAl9Cj4gIAo+IC0JcmV0ID0gY2xrX3ByZXBhcmVfZW5hYmxl
-KG10LT5jbGtfcGVyaV90aGVybSk7Cj4gLQlpZiAocmV0KSB7Cj4gLQkJZGV2X2VycigmcGRldi0+
-ZGV2LCAiQ2FuJ3QgZW5hYmxlIHBlcmkgY2xrOiAlZFxuIiwgcmV0KTsKPiAtCQlnb3RvIGVycl9k
-aXNhYmxlX2Nsa19hdXhhZGM7Cj4gKwltdC0+Y2xrX3BlcmlfdGhlcm0gPSBkZXZtX2Nsa19nZXRf
-ZW5hYmxlZCgmcGRldi0+ZGV2LCAidGhlcm0iKTsKPiArCWlmIChJU19FUlIobXQtPmNsa19wZXJp
-X3RoZXJtKSkgewo+ICsJCWRldl9lcnIoJnBkZXYtPmRldiwgIkNhbid0IGVuYWJsZSBwZXJpIGNs
-azogJWRcbiIsIG10LT5jbGtfcGVyaV90aGVybSk7Cj4gKwkJcmV0dXJuIFBUUl9FUlIobXQtPmNs
-a19wZXJpX3RoZXJtKTsKPiAgCX0KPiAgCj4gIAlpZiAobXQtPmNvbmYtPnZlcnNpb24gIT0gTVRL
-X1RIRVJNQUxfVjEpIHsKPiBAQCAtMTIxNSwzOCArMTIwNywxOCBAQCBzdGF0aWMgaW50IG10a190
-aGVybWFsX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIAo+ICAJdHpkZXYg
-PSBkZXZtX3RoZXJtYWxfb2Zfem9uZV9yZWdpc3RlcigmcGRldi0+ZGV2LCAwLCBtdCwKPiAgCQkJ
-CQkgICAgICAmbXRrX3RoZXJtYWxfb3BzKTsKPiAtCWlmIChJU19FUlIodHpkZXYpKSB7Cj4gLQkJ
-cmV0ID0gUFRSX0VSUih0emRldik7Cj4gLQkJZ290byBlcnJfZGlzYWJsZV9jbGtfcGVyaV90aGVy
-bTsKPiAtCX0KPiArCWlmIChJU19FUlIodHpkZXYpKQo+ICsJCXJldHVybiBQVFJfRVJSKHR6ZGV2
-KTsKPiAgCj4gIAlyZXQgPSBkZXZtX3RoZXJtYWxfYWRkX2h3bW9uX3N5c2ZzKHR6ZGV2KTsKPiAg
-CWlmIChyZXQpCj4gIAkJZGV2X3dhcm4oJnBkZXYtPmRldiwgImVycm9yIGluIHRoZXJtYWxfYWRk
-X2h3bW9uX3N5c2ZzIik7Cj4gIAo+ICAJcmV0dXJuIDA7Cj4gLQo+IC1lcnJfZGlzYWJsZV9jbGtf
-cGVyaV90aGVybToKPiAtCWNsa19kaXNhYmxlX3VucHJlcGFyZShtdC0+Y2xrX3BlcmlfdGhlcm0p
-Owo+IC1lcnJfZGlzYWJsZV9jbGtfYXV4YWRjOgo+IC0JY2xrX2Rpc2FibGVfdW5wcmVwYXJlKG10
-LT5jbGtfYXV4YWRjKTsKPiAtCj4gLQlyZXR1cm4gcmV0Owo+IC19Cj4gLQo+IC1zdGF0aWMgaW50
-IG10a190aGVybWFsX3JlbW92ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+IC17Cj4g
-LQlzdHJ1Y3QgbXRrX3RoZXJtYWwgKm10ID0gcGxhdGZvcm1fZ2V0X2RydmRhdGEocGRldik7Cj4g
-LQo+IC0JY2xrX2Rpc2FibGVfdW5wcmVwYXJlKG10LT5jbGtfcGVyaV90aGVybSk7Cj4gLQljbGtf
-ZGlzYWJsZV91bnByZXBhcmUobXQtPmNsa19hdXhhZGMpOwo+IC0KPiAtCXJldHVybiAwOwo+ICB9
-Cj4gIAo+ICBzdGF0aWMgc3RydWN0IHBsYXRmb3JtX2RyaXZlciBtdGtfdGhlcm1hbF9kcml2ZXIg
-PSB7Cj4gIAkucHJvYmUgPSBtdGtfdGhlcm1hbF9wcm9iZSwKPiAtCS5yZW1vdmUgPSBtdGtfdGhl
-cm1hbF9yZW1vdmUsCj4gIAkuZHJpdmVyID0gewo+ICAJCS5uYW1lID0gIm10ay10aGVybWFsIiwK
-PiAgCQkub2ZfbWF0Y2hfdGFibGUgPSBtdGtfdGhlcm1hbF9vZl9tYXRjaCwKPiAtLSAKPiAyLjM0
-LjEKCnBpbmc/Cg==
+On 13/04/2023 12:47, Trevor Wu wrote:
+> Assign top_a1sys_hp clock to 26M, and add apll1_d4 to clocks for switching
+> the parent of top_a1sys_hp dynamically
+> On the other hand, "mediatek,infracfg" is included for bus protection.
+> 
+> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+> ---
+>  .../bindings/sound/mediatek,mt8188-afe.yaml    | 18 ++++++++++++++++++
+>  1 file changed, 18 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8188-afe.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8188-afe.yaml
+> index 82ccb32f08f2..03301d5082f3 100644
+> --- a/Documentation/devicetree/bindings/sound/mediatek,mt8188-afe.yaml
+> +++ b/Documentation/devicetree/bindings/sound/mediatek,mt8188-afe.yaml
+> @@ -29,6 +29,10 @@ properties:
+>      $ref: /schemas/types.yaml#/definitions/phandle
+>      description: The phandle of the mediatek topckgen controller
+>  
+> +  mediatek,infracfg:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description: The phandle of the mediatek infracfg controller
+> +
+>    power-domains:
+>      maxItems: 1
+>  
+> @@ -37,6 +41,7 @@ properties:
+>        - description: 26M clock
+>        - description: audio pll1 clock
+>        - description: audio pll2 clock
+> +      - description: audio pll1 divide 4
+>        - description: clock divider for i2si1_mck
+>        - description: clock divider for i2si2_mck
+>        - description: clock divider for i2so1_mck
+> @@ -58,6 +63,7 @@ properties:
+>        - const: clk26m
+>        - const: apll1
+>        - const: apll2
+> +      - const: apll1_d4
+
+Why do you add clocks in the middle? The order is strict, so you just
+broke all DTS.
+
+>        - const: apll12_div0
+>        - const: apll12_div1
+>        - const: apll12_div2
+> @@ -74,6 +80,12 @@ properties:
+>        - const: i2si2_m_sel
+>        - const: adsp_audio_26m
+>  
+> +  assigned-clocks:
+> +    maxItems: 1
+> +
+> +  assigned-clock-parents:
+> +    maxItems: 1
+
+Usually these two are not needed.
+
+> +
+>    mediatek,etdm-in1-cowork-source:
+>      $ref: /schemas/types.yaml#/definitions/uint32
+>      description:
+> @@ -147,6 +159,8 @@ required:
+>    - power-domains
+>    - clocks
+>    - clock-names
+> +  - assigned-clocks
+> +  - assigned-clock-parents
+
+Why making them required?
+Best regards,
+Krzysztof
+
 
