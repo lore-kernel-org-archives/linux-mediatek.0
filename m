@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1B23C77B7C
-	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Apr 2023 09:58:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4372C77B71
+	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Apr 2023 09:58:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=qBW7voqUuCZ1/G9Ruo0KBFBVOsPyocZSL7gk/zrdikA=; b=SlsFmahYtxO1F6GMBcY567LKT3
-	yGl/UhrUoOZq10++ttHtuNjMtkowpSh/QywXu2OGS1i3DgYf7Z28I2B+UwqLla4ZroZOLL2fDwg1E
-	d8YMZzTBl70/hlcb11FfeyFXFW/RPRStHL4x6EsOZ2g55DIJQ6ADyLX1rDKjDi0zbMQSGQ0pG2EFC
-	H7jtipW4xdotIyP71P0tltH3AlCUjerSZKxjngtdujDd2qN+omIfjGKWsHSCssimHpS4jGigKSJoe
-	5G2P7wS27Xq1UG+ow0UVarhfxPYMmpV22mui6ELLj300PacD1btXj1tzuJKlsGqN+M8A5SYJqvmuH
-	Mr5joFmg==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hT0dzvsXvb7f698PuX8ThKiPZDrN3+S4Z3pmgV6QSpo=; b=EQ0aCbGggVx+oxL4AmExMpD1ko
+	z7ri2AkrAz62uzs5aO84CgqDkNBcpj5FruRcwF8m/pGh1zPIRmLs9lO4oMe5YjXT1kFs8n9cymK/d
+	+GhDUvHcn/gjp2zwdbmFAPGqFFC2mRhZ1WtTWJNbxMvENnmeJDuv5pp+dt6XR3q1kelesavU5yCVg
+	E0GERtHu4V8fNvg3VMRfcTGQLc+SC2RJx1y62jGWZHKaNHMt91VeJj+din45Bitvik3v/5gk486h2
+	3Iu0Xkc2S+JG6fllvrCaW9cl47YOWl2KxzxLYO460tN6BYvV6NUMvSqvy2eBGXYjEUk0e7GiwO2HX
+	Ju9vs8/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pncfh-00Bm0E-0f;
-	Sat, 15 Apr 2023 09:58:17 +0000
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+	id 1pncfp-00Bm5Y-2N;
+	Sat, 15 Apr 2023 09:58:25 +0000
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pncfe-00Blyr-0l
+	id 1pncfk-00Bm1B-2b
 	for linux-mediatek@lists.infradead.org;
-	Sat, 15 Apr 2023 09:58:15 +0000
-Received: by mail-ej1-x634.google.com with SMTP id q23so42213190ejz.3
-        for <linux-mediatek@lists.infradead.org>; Sat, 15 Apr 2023 02:58:13 -0700 (PDT)
+	Sat, 15 Apr 2023 09:58:22 +0000
+Received: by mail-ej1-x632.google.com with SMTP id dx24so7653163ejb.11
+        for <linux-mediatek@lists.infradead.org>; Sat, 15 Apr 2023 02:58:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1681552693; x=1684144693;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=qBW7voqUuCZ1/G9Ruo0KBFBVOsPyocZSL7gk/zrdikA=;
-        b=vV0UVC8YX5hmGr0O97HyyHm2Xo8rJmT7MUThJiturG/vbsOZEQRCW+4Z0YLug1TOuA
-         9Fl8JfgAPV0dxpjL6yz1awbckIWcCiv4Hd8gj0dA972smjEZDmZv4JjOqq7iZVpBW1sY
-         mF5wUG94gjCJkPbW3xKn1lVAPzwYVtZa1qeOWVyYbG8fUaE7YKWfd8oS2zh10JImfbRT
-         O8lCVvmjaHsSea0ZY/SQAum9EPpDkCtdmnt2u3aFbMLw2G9sg2x+R/EdSXH/RcSPmxwH
-         Iu3rdR7zRs4CK/5xpJtAtfDsmNTydHU8iff+2leZXDusAHTEaDLK7m0Ywax1Mb5TkID/
-         qMrg==
+        d=linaro.org; s=google; t=1681552698; x=1684144698;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=hT0dzvsXvb7f698PuX8ThKiPZDrN3+S4Z3pmgV6QSpo=;
+        b=bTJHqYbGlp4UGrO9oKw8Bghu6wDHkK/qnJECB0OENhFCw2eZ/EZszvWSjj70/YPJYt
+         e+SbWG3F0D4EqrDyxt6GxI8XihIfzTdjOTHapVRqqT6cKzhUCJtTQ3r0G4h44nzNLWWQ
+         ux2Kjc8ytqLSZQAEKogyli0FMWqt/vZNMr9SEyUA2YTNUpD7/nItuVCDjwdg+MiJuJW1
+         vANBOgpdSnvkdN9ZVr1N13DrgR+Gp4mx0gNHxIXIeJLfdX7IeqmgcSTF9N/UZTh/L0Ry
+         wxJlWA70/mXfUjCxjF7exBcKLFTWKawIgeepbswAsogQGBefk2Bd6BbI99WZQHoonpcn
+         J1uw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681552693; x=1684144693;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=qBW7voqUuCZ1/G9Ruo0KBFBVOsPyocZSL7gk/zrdikA=;
-        b=SD4Ue3PZrlT8hvhst2Ji7uSbKi9397Dw6aiFgf6Hk9azD/N8Ic9nXuOhrdktU9TLKt
-         t7IpV+ygMPD4hpGqv3B5LCU8ZXU+WbLPiGrnJcL8pSIzO+XqclZOvV8iArz2beDA6jB9
-         hkZYoa0KnvLamzEIsc69eqZA1NgQ6mwUTSThxRd+tRP0EoxRjUkio5RC3yMy+enTLkSE
-         4lXkBwiQ5+v77q7CDrPPhthk8xVxnfGHj75o5GFRgIsKc1mnHjNuG75y9HR+p+Bqt99b
-         E0mRVzrjvWhCmwPWQfZ+C2qIzyUJwDCaq+BgQvsikIAs/HdinPKVLqcoX2x8V7A74FOb
-         DlyA==
-X-Gm-Message-State: AAQBX9f3OSS301K1ixnwepsDOfM6rWKngERLKclWWfymX+wfywLpisa7
-	WE7HdbtmTA2QJBvwzBFv76G2TQ==
-X-Google-Smtp-Source: AKy350ZYKRSYuyMEh5n5Qwf2//t0LPyGrPZqab6XuiqTfYLkjAF0dCA9it0pvgVfMz92eYuf6M/tYA==
-X-Received: by 2002:a17:907:1245:b0:94e:6294:9d23 with SMTP id wc5-20020a170907124500b0094e62949d23mr1342399ejb.26.1681552692687;
-        Sat, 15 Apr 2023 02:58:12 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1681552698; x=1684144698;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=hT0dzvsXvb7f698PuX8ThKiPZDrN3+S4Z3pmgV6QSpo=;
+        b=ERrQD+a9Y+dInPJKhBAf7HpPu3lfhKPlgUB2a8IFK4HJukmNjrNO7HG6Ov36vf3+nC
+         4HHq4BDxb6IRpDqVKRYUd5zFdWLkVxyj1x0LtST/FH1RC8idKcmzhv/t6iiwNxf0tAD7
+         Y4xGI5xACCS/MGHXLl6F6lnQO8H5O9bCuNMwQ4XrXhBmyWQ1Ra7V8uL94hM9cBkMSAzD
+         2DoVfGe+T+gPun4p8JaPgU04cZYCKKb6hlpe8MvP6ZM6/Hyz5Yt7uDOcZ5CJWl2hBjMq
+         s5tCW9tftKF3cV/zD0ilQ85tpPfYJcF50g3ZN/KXlc+55LR1Wbvo1uQFcfrRxZ817K+a
+         ZiRg==
+X-Gm-Message-State: AAQBX9fJf/dgrCfXsmvBA9fL8+D2PiIOR72EAbuCoSJ/MS51R0VCyvtE
+	4ThSBW6IwmkJN1k9KfjzghyNGw==
+X-Google-Smtp-Source: AKy350aa/SbsRtF67gLeFejSr20s5v+RMrFrIbspoXpE7GmfmW1U/LDuriV5iYIvkKV83gJzv44SFQ==
+X-Received: by 2002:a17:907:77cc:b0:94e:e30e:7245 with SMTP id kz12-20020a17090777cc00b0094ee30e7245mr1380769ejc.8.1681552698443;
+        Sat, 15 Apr 2023 02:58:18 -0700 (PDT)
 Received: from krzk-bin.. ([2a02:810d:15c0:828:a3bf:4ed:6c53:2a36])
-        by smtp.gmail.com with ESMTPSA id gn23-20020a1709070d1700b009373f1b5c4esm3594248ejc.161.2023.04.15.02.58.10
+        by smtp.gmail.com with ESMTPSA id gn23-20020a1709070d1700b009373f1b5c4esm3594248ejc.161.2023.04.15.02.58.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 15 Apr 2023 02:58:12 -0700 (PDT)
+        Sat, 15 Apr 2023 02:58:17 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Wim Van Sebroeck <wim@linux-watchdog.org>,
 	Guenter Roeck <linux@roeck-us.net>,
@@ -120,15 +121,17 @@ To: Wim Van Sebroeck <wim@linux-watchdog.org>,
 	linux-stm32@st-md-mailman.stormreply.com,
 	linux-renesas-soc@vger.kernel.org
 Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH 1/6] dt-bindings: watchdog: drop duplicated GPIO watchdog bindings
-Date: Sat, 15 Apr 2023 11:51:07 +0200
-Message-Id: <20230415095112.51257-1-krzysztof.kozlowski@linaro.org>
+Subject: [PATCH 3/6] dt-bindings: watchdog: arm,sp805: drop unneeded minItems
+Date: Sat, 15 Apr 2023 11:51:09 +0200
+Message-Id: <20230415095112.51257-3-krzysztof.kozlowski@linaro.org>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230415095112.51257-1-krzysztof.kozlowski@linaro.org>
+References: <20230415095112.51257-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230415_025814_281078_13257C36 
-X-CRM114-Status: GOOD (  15.70  )
+X-CRM114-CacheID: sfid-20230415_025820_848548_48A0EB4E 
+X-CRM114-Status: GOOD (  11.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -143,128 +146,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Two conversions to DT schema of GPIO watchdog binding happened and came
-through different trees.  Merge them into one:
-1. Combine maintainers,
-2. Use more descriptive property descriptions and constraints from
-   gpio-wdt.yaml,
-3. Switch to unevaluatedProperties:false, to allow generic watchdog
-   properties.
+There is no need to specify minItems when they are equal to maxItems,
+because it is implied by maxItems.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- .../bindings/watchdog/gpio-wdt.yaml           | 55 -------------------
- .../bindings/watchdog/linux,wdt-gpio.yaml     | 17 +++++-
- 2 files changed, 15 insertions(+), 57 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/watchdog/gpio-wdt.yaml
+ Documentation/devicetree/bindings/watchdog/arm,sp805.yaml | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/watchdog/gpio-wdt.yaml b/Documentation/devicetree/bindings/watchdog/gpio-wdt.yaml
-deleted file mode 100644
-index 155dc7965e9b..000000000000
---- a/Documentation/devicetree/bindings/watchdog/gpio-wdt.yaml
-+++ /dev/null
-@@ -1,55 +0,0 @@
--# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
--%YAML 1.2
-----
--$id: http://devicetree.org/schemas/watchdog/gpio-wdt.yaml#
--$schema: http://devicetree.org/meta-schemas/core.yaml#
--
--title: GPIO controlled watchdog
--
--maintainers:
--  - Robert Marko <robert.marko@sartura.hr>
--
--properties:
--  compatible:
--    const: linux,wdt-gpio
--
--  gpios:
--    maxItems: 1
--    description: GPIO connected to the WDT reset pin
--
--  hw_algo:
--    $ref: /schemas/types.yaml#/definitions/string
--    description: Algorithm used by the driver
--    oneOf:
--      - description:
--          Either a high-to-low or a low-to-high transition clears the WDT counter.
--          The watchdog timer is disabled when GPIO is left floating or connected
--          to a three-state buffer.
--        const: toggle
--      - description:
--          Low or high level starts counting WDT timeout, the opposite level
--          disables the WDT.
--          Active level is determined by the GPIO flags.
--        const: level
--
--  hw_margin_ms:
--    $ref: /schemas/types.yaml#/definitions/uint32
--    description: Maximum time to reset watchdog circuit (in milliseconds)
--    minimum: 2
--    maximum: 65535
--
--  always-running:
--    type: boolean
--    description:
--      If the watchdog timer cannot be disabled, add this flag to have the driver
--      keep toggling the signal without a client.
--      It will only cease to toggle the signal when the device is open and the
--      timeout elapsed.
--
--required:
--  - compatible
--  - gpios
--  - hw_algo
--  - hw_margin_ms
--
--unevaluatedProperties: false
-diff --git a/Documentation/devicetree/bindings/watchdog/linux,wdt-gpio.yaml b/Documentation/devicetree/bindings/watchdog/linux,wdt-gpio.yaml
-index 50af79af6416..499f1b7e03f9 100644
---- a/Documentation/devicetree/bindings/watchdog/linux,wdt-gpio.yaml
-+++ b/Documentation/devicetree/bindings/watchdog/linux,wdt-gpio.yaml
-@@ -8,6 +8,7 @@ title: GPIO-controlled Watchdog
+diff --git a/Documentation/devicetree/bindings/watchdog/arm,sp805.yaml b/Documentation/devicetree/bindings/watchdog/arm,sp805.yaml
+index a69cac8ec208..7aea255b301b 100644
+--- a/Documentation/devicetree/bindings/watchdog/arm,sp805.yaml
++++ b/Documentation/devicetree/bindings/watchdog/arm,sp805.yaml
+@@ -43,7 +43,6 @@ properties:
+       Clocks driving the watchdog timer hardware. The first clock is used
+       for the actual watchdog counter. The second clock drives the register
+       interface.
+-    minItems: 2
+     maxItems: 2
  
- maintainers:
-   - Guenter Roeck <linux@roeck-us.net>
-+  - Robert Marko <robert.marko@sartura.hr>
- 
- properties:
-   compatible:
-@@ -19,11 +20,23 @@ properties:
- 
-   hw_algo:
-     description: The algorithm used by the driver.
--    enum: [ level, toggle ]
-+    oneOf:
-+      - description:
-+          Either a high-to-low or a low-to-high transition clears the WDT counter.
-+          The watchdog timer is disabled when GPIO is left floating or connected
-+          to a three-state buffer.
-+        const: toggle
-+      - description:
-+          Low or high level starts counting WDT timeout, the opposite level
-+          disables the WDT.
-+          Active level is determined by the GPIO flags.
-+        const: level
- 
-   hw_margin_ms:
-     description: Maximum time to reset watchdog circuit (milliseconds).
-     $ref: /schemas/types.yaml#/definitions/uint32
-+    minimum: 2
-+    maximum: 65535
- 
-   always-running:
-     type: boolean
-@@ -42,7 +55,7 @@ required:
- allOf:
-   - $ref: watchdog.yaml#
- 
--additionalProperties: false
-+unevaluatedProperties: false
- 
- examples:
-   - |
+   clock-names:
 -- 
 2.34.1
 
