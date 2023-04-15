@@ -4,88 +4,131 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D53C9C77B71
-	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Apr 2023 09:01:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1B23C77B7C
+	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Apr 2023 09:58:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=h7bWAyZyLD6uo7vF/WlVxj3C8Ki8eISz7a0rWcMvR1k=; b=rKhEPTct6vjYq4Tuu8AQexC7/n
-	dWTnY6iEzH1qwGug3wvp5UN0MC9UXOi5A5a4fxw8tCt57Yj1DdB6hXoQpaJwHRbpZqfyZgz0XmGMu
-	OxlBSNW+4MjA8EBI0DjLKkGN61IOv6UUuTN+Cwp7u57gPvErneax0SSe6R6rsqKspzTbNtOfxxJkR
-	E8lmTod9J2GchR9qS3OI7A4rWvNQZMXqHJD85zu8G1/f9pzAhCwIjXWt8yDH+ZENvNgrXYmyOlrte
-	Fx6jC5jKPPEWtTpM00BfMaRmYX4XpgkBp72O4Xv+88YB2TlL9X50LF3kf0PVflIszNkgle8wSntwY
-	8ndIgNHw==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=qBW7voqUuCZ1/G9Ruo0KBFBVOsPyocZSL7gk/zrdikA=; b=SlsFmahYtxO1F6GMBcY567LKT3
+	yGl/UhrUoOZq10++ttHtuNjMtkowpSh/QywXu2OGS1i3DgYf7Z28I2B+UwqLla4ZroZOLL2fDwg1E
+	d8YMZzTBl70/hlcb11FfeyFXFW/RPRStHL4x6EsOZ2g55DIJQ6ADyLX1rDKjDi0zbMQSGQ0pG2EFC
+	H7jtipW4xdotIyP71P0tltH3AlCUjerSZKxjngtdujDd2qN+omIfjGKWsHSCssimHpS4jGigKSJoe
+	5G2P7wS27Xq1UG+ow0UVarhfxPYMmpV22mui6ELLj300PacD1btXj1tzuJKlsGqN+M8A5SYJqvmuH
+	Mr5joFmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pnbmE-00Bg4S-1S;
-	Sat, 15 Apr 2023 09:00:58 +0000
+	id 1pncfh-00Bm0E-0f;
+	Sat, 15 Apr 2023 09:58:17 +0000
 Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pnbm9-00Bg3V-28
+	id 1pncfe-00Blyr-0l
 	for linux-mediatek@lists.infradead.org;
-	Sat, 15 Apr 2023 09:00:55 +0000
-Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-94f1a6e66c9so22469966b.2
-        for <linux-mediatek@lists.infradead.org>; Sat, 15 Apr 2023 02:00:52 -0700 (PDT)
+	Sat, 15 Apr 2023 09:58:15 +0000
+Received: by mail-ej1-x634.google.com with SMTP id q23so42213190ejz.3
+        for <linux-mediatek@lists.infradead.org>; Sat, 15 Apr 2023 02:58:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1681549251; x=1684141251;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=h7bWAyZyLD6uo7vF/WlVxj3C8Ki8eISz7a0rWcMvR1k=;
-        b=Co0OwPVRZSFCKAUtHmKZxfLEAl4+Yk9tRoSp0clTuJuTTsTWsesS7PWBTgdyTOlyEd
-         bvErnPDwam2MuQ/85GuljVZSjqxCU4lay98TPaSI6eh+3DbgqXhKiXdeP4hhJpLgBzPR
-         QONKjBWMsLwAiAUmhgHneXIT4yUvIfDtAd04MVj6qXuGPQUYtah+cHnfkZdJ8xwDwzWf
-         7Z9urp7g82zxPXKJlqXl+ZFL0g2kh8xhmkrijuXx0FCo30I0AJvnYWTlWadx5OQb7KT8
-         1nGYSyuKtZOANDAyIr4QKAl1B3jd6va4NY5Nb/G/jEvrtXDSn+wV122H06cH5GFbxNPp
-         XIDQ==
+        d=linaro.org; s=google; t=1681552693; x=1684144693;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=qBW7voqUuCZ1/G9Ruo0KBFBVOsPyocZSL7gk/zrdikA=;
+        b=vV0UVC8YX5hmGr0O97HyyHm2Xo8rJmT7MUThJiturG/vbsOZEQRCW+4Z0YLug1TOuA
+         9Fl8JfgAPV0dxpjL6yz1awbckIWcCiv4Hd8gj0dA972smjEZDmZv4JjOqq7iZVpBW1sY
+         mF5wUG94gjCJkPbW3xKn1lVAPzwYVtZa1qeOWVyYbG8fUaE7YKWfd8oS2zh10JImfbRT
+         O8lCVvmjaHsSea0ZY/SQAum9EPpDkCtdmnt2u3aFbMLw2G9sg2x+R/EdSXH/RcSPmxwH
+         Iu3rdR7zRs4CK/5xpJtAtfDsmNTydHU8iff+2leZXDusAHTEaDLK7m0Ywax1Mb5TkID/
+         qMrg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681549251; x=1684141251;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=h7bWAyZyLD6uo7vF/WlVxj3C8Ki8eISz7a0rWcMvR1k=;
-        b=WP78ntCstG7v6GB/a508zeqwVJm5re2GwuPMo9Bqww4AS+NjwqTlbXmhapa07XHSWI
-         kkPdvqtQ+uhPhYQCtbQkNlzcz86q+0LqHbdwp1Dtb/g/W/xOlEpavVR8cAQSbigulmE7
-         n+ysMqFDfcRkI1Sl3VfOr5CSfphYK6lbqWGJJ+RVqZ52Gh/YH/5Wp4l54Ly+IF1phdMJ
-         mNpfHmFUjl7cuk3CWinv5yZZn8+TPf2jRdAAfeTX01N/eBRhG9i2Lcmsk5KqhE2HIDxn
-         7JceHmTpdn+BfF+VmfiKlpY7pNj1KJTZ1vGH1Ysl4h7a+sBOeHkQ3bkPt+VqYIaOfLS2
-         uXkQ==
-X-Gm-Message-State: AAQBX9em8sG39kpNlcm7dLWFnCacgQU1YQoO1NaOkSXu61h6vrtmjhPv
-	H7HSWXAid5KdH1V/fVEHLyhuBQ==
-X-Google-Smtp-Source: AKy350aEJnSqnbH8WH/aQ9lyPmdapGYw/EYooeirvjzag7l10B9FqEzScCXV7gADNUZ63773fFSs4A==
-X-Received: by 2002:a05:6402:1a2c:b0:506:7d14:984c with SMTP id be12-20020a0564021a2c00b005067d14984cmr6282723edb.19.1681549251217;
-        Sat, 15 Apr 2023 02:00:51 -0700 (PDT)
-Received: from ?IPV6:2a02:810d:15c0:828:a3bf:4ed:6c53:2a36? ([2a02:810d:15c0:828:a3bf:4ed:6c53:2a36])
-        by smtp.gmail.com with ESMTPSA id wt10-20020a170906ee8a00b0094f225c0cd3sm421385ejb.86.2023.04.15.02.00.50
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 15 Apr 2023 02:00:50 -0700 (PDT)
-Message-ID: <310e8979-de96-dda8-6c95-0e6033d8b403@linaro.org>
-Date: Sat, 15 Apr 2023 11:00:49 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH 7/7] ASoC: dt-bindings: mediatek,mt8188-afe: add audio
- properties
-Content-Language: en-US
-To: Trevor Wu <trevor.wu@mediatek.com>, broonie@kernel.org,
- lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com
-Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org
-References: <20230413104713.7174-1-trevor.wu@mediatek.com>
- <20230413104713.7174-8-trevor.wu@mediatek.com>
+        d=1e100.net; s=20221208; t=1681552693; x=1684144693;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=qBW7voqUuCZ1/G9Ruo0KBFBVOsPyocZSL7gk/zrdikA=;
+        b=SD4Ue3PZrlT8hvhst2Ji7uSbKi9397Dw6aiFgf6Hk9azD/N8Ic9nXuOhrdktU9TLKt
+         t7IpV+ygMPD4hpGqv3B5LCU8ZXU+WbLPiGrnJcL8pSIzO+XqclZOvV8iArz2beDA6jB9
+         hkZYoa0KnvLamzEIsc69eqZA1NgQ6mwUTSThxRd+tRP0EoxRjUkio5RC3yMy+enTLkSE
+         4lXkBwiQ5+v77q7CDrPPhthk8xVxnfGHj75o5GFRgIsKc1mnHjNuG75y9HR+p+Bqt99b
+         E0mRVzrjvWhCmwPWQfZ+C2qIzyUJwDCaq+BgQvsikIAs/HdinPKVLqcoX2x8V7A74FOb
+         DlyA==
+X-Gm-Message-State: AAQBX9f3OSS301K1ixnwepsDOfM6rWKngERLKclWWfymX+wfywLpisa7
+	WE7HdbtmTA2QJBvwzBFv76G2TQ==
+X-Google-Smtp-Source: AKy350ZYKRSYuyMEh5n5Qwf2//t0LPyGrPZqab6XuiqTfYLkjAF0dCA9it0pvgVfMz92eYuf6M/tYA==
+X-Received: by 2002:a17:907:1245:b0:94e:6294:9d23 with SMTP id wc5-20020a170907124500b0094e62949d23mr1342399ejb.26.1681552692687;
+        Sat, 15 Apr 2023 02:58:12 -0700 (PDT)
+Received: from krzk-bin.. ([2a02:810d:15c0:828:a3bf:4ed:6c53:2a36])
+        by smtp.gmail.com with ESMTPSA id gn23-20020a1709070d1700b009373f1b5c4esm3594248ejc.161.2023.04.15.02.58.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 15 Apr 2023 02:58:12 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230413104713.7174-8-trevor.wu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+To: Wim Van Sebroeck <wim@linux-watchdog.org>,
+	Guenter Roeck <linux@roeck-us.net>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Julius Werner <jwerner@chromium.org>,
+	Evan Benn <evanbenn@chromium.org>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Sander Vanheule <sander@svanheule.net>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Fu Wei <fu.wei@linaro.org>,
+	Viresh Kumar <vireshk@kernel.org>,
+	Eugen Hristev <eugen.hristev@collabora.com>,
+	Justin Chen <justinpopo6@gmail.com>,
+	=?UTF-8?q?=82ecki?= <rafal@milecki.pl>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Corentin Labbe <clabbe@baylibre.com>,
+	Anson Huang <Anson.Huang@nxp.com>,
+	Robert Marko <robert.marko@sartura.hr>,
+	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+	Sai Prakash Ranjan <quic_saipraka@quicinc.com>,
+	Wolfram Sang <wsa+renesas@sang-engineering.com>,
+	Jamie Iles <jamie@jamieiles.com>,
+	Yannick Fertre <yannick.fertre@foss.st.com>,
+	Christophe Roullier <christophe.roullier@foss.st.com>,
+	Shubhrajyoti Datta <shubhrajyoti.datta@xilinx.com>,
+	Srinivas Neeli <srinivas.neeli@xilinx.com>,
+	linux-watchdog@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-renesas-soc@vger.kernel.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH 1/6] dt-bindings: watchdog: drop duplicated GPIO watchdog bindings
+Date: Sat, 15 Apr 2023 11:51:07 +0200
+Message-Id: <20230415095112.51257-1-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230415_020053_724256_B465C742 
-X-CRM114-Status: GOOD (  15.56  )
+X-CRM114-CacheID: sfid-20230415_025814_281078_13257C36 
+X-CRM114-Status: GOOD (  15.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,76 +143,129 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13/04/2023 12:47, Trevor Wu wrote:
-> Assign top_a1sys_hp clock to 26M, and add apll1_d4 to clocks for switching
-> the parent of top_a1sys_hp dynamically
-> On the other hand, "mediatek,infracfg" is included for bus protection.
-> 
-> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
-> ---
->  .../bindings/sound/mediatek,mt8188-afe.yaml    | 18 ++++++++++++++++++
->  1 file changed, 18 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8188-afe.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8188-afe.yaml
-> index 82ccb32f08f2..03301d5082f3 100644
-> --- a/Documentation/devicetree/bindings/sound/mediatek,mt8188-afe.yaml
-> +++ b/Documentation/devicetree/bindings/sound/mediatek,mt8188-afe.yaml
-> @@ -29,6 +29,10 @@ properties:
->      $ref: /schemas/types.yaml#/definitions/phandle
->      description: The phandle of the mediatek topckgen controller
->  
-> +  mediatek,infracfg:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description: The phandle of the mediatek infracfg controller
-> +
->    power-domains:
->      maxItems: 1
->  
-> @@ -37,6 +41,7 @@ properties:
->        - description: 26M clock
->        - description: audio pll1 clock
->        - description: audio pll2 clock
-> +      - description: audio pll1 divide 4
->        - description: clock divider for i2si1_mck
->        - description: clock divider for i2si2_mck
->        - description: clock divider for i2so1_mck
-> @@ -58,6 +63,7 @@ properties:
->        - const: clk26m
->        - const: apll1
->        - const: apll2
-> +      - const: apll1_d4
+Two conversions to DT schema of GPIO watchdog binding happened and came
+through different trees.  Merge them into one:
+1. Combine maintainers,
+2. Use more descriptive property descriptions and constraints from
+   gpio-wdt.yaml,
+3. Switch to unevaluatedProperties:false, to allow generic watchdog
+   properties.
 
-Why do you add clocks in the middle? The order is strict, so you just
-broke all DTS.
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ .../bindings/watchdog/gpio-wdt.yaml           | 55 -------------------
+ .../bindings/watchdog/linux,wdt-gpio.yaml     | 17 +++++-
+ 2 files changed, 15 insertions(+), 57 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/watchdog/gpio-wdt.yaml
 
->        - const: apll12_div0
->        - const: apll12_div1
->        - const: apll12_div2
-> @@ -74,6 +80,12 @@ properties:
->        - const: i2si2_m_sel
->        - const: adsp_audio_26m
->  
-> +  assigned-clocks:
-> +    maxItems: 1
-> +
-> +  assigned-clock-parents:
-> +    maxItems: 1
-
-Usually these two are not needed.
-
-> +
->    mediatek,etdm-in1-cowork-source:
->      $ref: /schemas/types.yaml#/definitions/uint32
->      description:
-> @@ -147,6 +159,8 @@ required:
->    - power-domains
->    - clocks
->    - clock-names
-> +  - assigned-clocks
-> +  - assigned-clock-parents
-
-Why making them required?
-Best regards,
-Krzysztof
+diff --git a/Documentation/devicetree/bindings/watchdog/gpio-wdt.yaml b/Documentation/devicetree/bindings/watchdog/gpio-wdt.yaml
+deleted file mode 100644
+index 155dc7965e9b..000000000000
+--- a/Documentation/devicetree/bindings/watchdog/gpio-wdt.yaml
++++ /dev/null
+@@ -1,55 +0,0 @@
+-# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+-%YAML 1.2
+----
+-$id: http://devicetree.org/schemas/watchdog/gpio-wdt.yaml#
+-$schema: http://devicetree.org/meta-schemas/core.yaml#
+-
+-title: GPIO controlled watchdog
+-
+-maintainers:
+-  - Robert Marko <robert.marko@sartura.hr>
+-
+-properties:
+-  compatible:
+-    const: linux,wdt-gpio
+-
+-  gpios:
+-    maxItems: 1
+-    description: GPIO connected to the WDT reset pin
+-
+-  hw_algo:
+-    $ref: /schemas/types.yaml#/definitions/string
+-    description: Algorithm used by the driver
+-    oneOf:
+-      - description:
+-          Either a high-to-low or a low-to-high transition clears the WDT counter.
+-          The watchdog timer is disabled when GPIO is left floating or connected
+-          to a three-state buffer.
+-        const: toggle
+-      - description:
+-          Low or high level starts counting WDT timeout, the opposite level
+-          disables the WDT.
+-          Active level is determined by the GPIO flags.
+-        const: level
+-
+-  hw_margin_ms:
+-    $ref: /schemas/types.yaml#/definitions/uint32
+-    description: Maximum time to reset watchdog circuit (in milliseconds)
+-    minimum: 2
+-    maximum: 65535
+-
+-  always-running:
+-    type: boolean
+-    description:
+-      If the watchdog timer cannot be disabled, add this flag to have the driver
+-      keep toggling the signal without a client.
+-      It will only cease to toggle the signal when the device is open and the
+-      timeout elapsed.
+-
+-required:
+-  - compatible
+-  - gpios
+-  - hw_algo
+-  - hw_margin_ms
+-
+-unevaluatedProperties: false
+diff --git a/Documentation/devicetree/bindings/watchdog/linux,wdt-gpio.yaml b/Documentation/devicetree/bindings/watchdog/linux,wdt-gpio.yaml
+index 50af79af6416..499f1b7e03f9 100644
+--- a/Documentation/devicetree/bindings/watchdog/linux,wdt-gpio.yaml
++++ b/Documentation/devicetree/bindings/watchdog/linux,wdt-gpio.yaml
+@@ -8,6 +8,7 @@ title: GPIO-controlled Watchdog
+ 
+ maintainers:
+   - Guenter Roeck <linux@roeck-us.net>
++  - Robert Marko <robert.marko@sartura.hr>
+ 
+ properties:
+   compatible:
+@@ -19,11 +20,23 @@ properties:
+ 
+   hw_algo:
+     description: The algorithm used by the driver.
+-    enum: [ level, toggle ]
++    oneOf:
++      - description:
++          Either a high-to-low or a low-to-high transition clears the WDT counter.
++          The watchdog timer is disabled when GPIO is left floating or connected
++          to a three-state buffer.
++        const: toggle
++      - description:
++          Low or high level starts counting WDT timeout, the opposite level
++          disables the WDT.
++          Active level is determined by the GPIO flags.
++        const: level
+ 
+   hw_margin_ms:
+     description: Maximum time to reset watchdog circuit (milliseconds).
+     $ref: /schemas/types.yaml#/definitions/uint32
++    minimum: 2
++    maximum: 65535
+ 
+   always-running:
+     type: boolean
+@@ -42,7 +55,7 @@ required:
+ allOf:
+   - $ref: watchdog.yaml#
+ 
+-additionalProperties: false
++unevaluatedProperties: false
+ 
+ examples:
+   - |
+-- 
+2.34.1
 
 
