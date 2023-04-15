@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82000C77B79
-	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Apr 2023 09:58:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A229FC77B73
+	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Apr 2023 09:58:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CmxkZcjuc9h3zUcXWa8XXrQDCIFUkDmlnhNQOMaskCY=; b=oWjwz4v53euQsC3X6iGGpnI84w
-	i4UQrWhJ8LQAuUajk2xdKuWbqG0eLK2CyK0QYowYblXik6XDf6i8FUI85sgx/EKJurjxouq+4h7Kq
-	jP8cpXQFfW2bTFwLv5GTZ22c/nBLXEMRvZiKeuRDyNeuGTmcBkClBHkpGzeSNXQJA5zamUKnU6EyZ
-	ygJw10xXSh0+bClNctUkhKCvtczIG3bCoAQUg8FbEHjppUcC08+YDRjIczsKzajjxJVyT7YEd2RQe
-	RqcNN6icmSRBiWvTKdmrAh3ObHvBUlBAIyVQy7MOHWJ82NaXgkhhscXe1dCsXf1HsKjzL7N4At8FQ
-	etwAg1lA==;
+	bh=X++FhK1t/fMQBncyu3FeTc1IPRncKd5sGne3lbXD1HA=; b=EWTOyCpbIyP11GI1Zagk7HSw+T
+	jzftsr9t4ESLpDJhm3UxIiWYAi1/meZCULpmbgoKJh3hfrejhNl9tBx6pKyef55J5mFRvMMkyHpNT
+	HVVS6HGg1f5R2Y22hCuvfnA2tR6l5Hh6bVZg+xVHFIt06/V5P+8/5yPMFDgncFeVxgRFWc6CcnoDp
+	/6wnSAQcDYem092BmcECWZpGFt2ZRXPFHz4me1KOcA3u0FZZjfsGgrBZ5mW78KXBa04f01RYuPZ4u
+	mVyGOdynTlSY/HG+9/BH9z8jHto9+o30psK2Zq0OclHCJaIMAGTk2MZtSVdngermuMOGEwt1MBBgF
+	QyYgRPdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pncfp-00Bm53-0w;
-	Sat, 15 Apr 2023 09:58:25 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1pncft-00Bm9y-2x;
+	Sat, 15 Apr 2023 09:58:29 +0000
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pncfh-00BlzW-1w
+	id 1pncfm-00Bm2T-0S
 	for linux-mediatek@lists.infradead.org;
-	Sat, 15 Apr 2023 09:58:22 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id gc14so6587146ejc.5
-        for <linux-mediatek@lists.infradead.org>; Sat, 15 Apr 2023 02:58:16 -0700 (PDT)
+	Sat, 15 Apr 2023 09:58:23 +0000
+Received: by mail-ej1-x632.google.com with SMTP id qb20so51294356ejc.6
+        for <linux-mediatek@lists.infradead.org>; Sat, 15 Apr 2023 02:58:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1681552695; x=1684144695;
+        d=linaro.org; s=google; t=1681552701; x=1684144701;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=CmxkZcjuc9h3zUcXWa8XXrQDCIFUkDmlnhNQOMaskCY=;
-        b=veMCUgsXeYcj50yeemx75bwT83FvJTk2oUF3q/Hp8U00+ppyS8TnLbjyVfkFLybTnB
-         iAT+SvYZo2Ul7VmEb6ROQpTUYbdR7wg/zM+IC1QoeS4ZMVJewIZkRoiYIxiCEcgz1pnk
-         Ia8kDjXb7ooOzWk+BgKaiVVzk5u8WOCQyOZ3zGrCenLxHTLB30YgQd33EHQpqEeWNN/h
-         RiFnz+kdbeIQs7Nqn+y3t70aa9dK38iqjkx4u2S3ts1vEajN5Jvk8vg88xt2qW7OHNnD
-         gwLZwCg6DhRMY1YJ6ajHQQvpXxaSJ6QEp7nqwtiTC/jHo7RtaaUzxaULAbm7jgIGDSpD
-         FKiA==
+        bh=X++FhK1t/fMQBncyu3FeTc1IPRncKd5sGne3lbXD1HA=;
+        b=ElHS0DixfV4Wx0/NRCOiZ3tsYfPcSyO/g1j7g/FJw5/YfXipUfJBvmFPzXl13E2Tvf
+         SlSdK+EcP2/VLC4TtP1izTSZh2TYXhQwqrEHTP4zmLknPDHuF6W0Ez3oOwri2AO4Ln8J
+         DKM/IsZIxge+Q36axXN56jyjNpGR6y1DekpVmrGRzkbCcPf8lzZTffR5fyyV3yf3kqgU
+         XY3Jr5gNhHwtScMoax+woXvPJV+LbcS1d3mQ8aHbvrtS9cqK7eNuaskGH+C3p4x28hPk
+         gE0r2qXpKKwQao2swDA6m552WDpf1EkvhZhgjtn7/+5P2CZIcSXmPfyymhrvI2osVwKR
+         mSyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681552695; x=1684144695;
+        d=1e100.net; s=20221208; t=1681552701; x=1684144701;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=CmxkZcjuc9h3zUcXWa8XXrQDCIFUkDmlnhNQOMaskCY=;
-        b=QOhUXtMu8PrzGUBVEK4WuIBMx4K85w0g67Pj0ZvafN8WDYy5VjQuKvui7n8S3KdGei
-         iwuuHkflV6sVk1klgbmdkroFMlFZcgzLpPEBudcZwMX6Y7FQiIFvmpdShyqOwnTw5yCv
-         QaQOszWmp8cA8UJE9hAAK/KvMvkJQuTx4UKgXcnqjoFs0q7CZya9+QYjhxq3lKvEgQJh
-         FVw7DVkoFItBXGQuQRGeDcgHjVcjkM3Ol4Y2FJibjXJlMlBktKRL8DU9/OBabnpYHIMy
-         /9TO3Buos4mK7w2ckrZuDm8bLQmL1elaNpjPqr4Gf4NUeaA4SI+HS6iTLzEOsEv4cdjx
-         KHYQ==
-X-Gm-Message-State: AAQBX9eOC/iDfcRlAboic6WC9Bc+BXPI54Co0xqiFVCqA90gNhaBsERD
-	8TgUFkj4vrVOVJ49Gxr29OPzxw==
-X-Google-Smtp-Source: AKy350bO9nbXwbWqp+m9c6xd/y0XxBKrHf9YMvk/RebBUko3pSASrl/8sZ/3IvcoHy11DMakiSbHAg==
-X-Received: by 2002:a17:907:210e:b0:879:ab3:93cd with SMTP id qn14-20020a170907210e00b008790ab393cdmr1497819ejb.46.1681552695051;
-        Sat, 15 Apr 2023 02:58:15 -0700 (PDT)
+        bh=X++FhK1t/fMQBncyu3FeTc1IPRncKd5sGne3lbXD1HA=;
+        b=cPMlO5n2KLBYgiaD70r4y6mQ4e61Eqc3EbCzQ5Sh4MN9oARUBVpJeTxKngNPoMuUki
+         rf7MGvse384ZmXfe8MAo6WLos2DbZaMyGlzrZDYUNPrRfKqfE2bZWxJNmm237rGIF5uM
+         r/AKGCbTyIs5XC4dUxLSNdDNHBTKVFZ/XMA2vaURct0o2SvrbMwYL5BpIOvDDsyd/O8m
+         GHQwCJQ45r4yCj0aYXG9wm2NWIdKH0/nO3phpQn16qg6l0WFV2A3rRkygFIAjmx6QpVw
+         aL9QZBOcW4W6H3eOSFlVsgTxFZJ0Jr2NrjG1Gr3SLat9a/IZlpUBnrW4ERUsFlOth5Pb
+         H4NA==
+X-Gm-Message-State: AAQBX9c1TtN6I88oGtdoCeBdPeu/Q1OLUZk9MDEtYIyYZoZX7fwZNBSS
+	A1+a8+bTObBtOy5oP+IMekqngQ==
+X-Google-Smtp-Source: AKy350Yav0SQe0tEvR6ZtIMRzAj9K6H8406yqb7Hzclv9sLARZM1w9Vr1g/iMuC5RnPGGtv3bjO69Q==
+X-Received: by 2002:a17:906:149b:b0:948:b9ea:3302 with SMTP id x27-20020a170906149b00b00948b9ea3302mr1901974ejc.1.1681552700850;
+        Sat, 15 Apr 2023 02:58:20 -0700 (PDT)
 Received: from krzk-bin.. ([2a02:810d:15c0:828:a3bf:4ed:6c53:2a36])
-        by smtp.gmail.com with ESMTPSA id gn23-20020a1709070d1700b009373f1b5c4esm3594248ejc.161.2023.04.15.02.58.12
+        by smtp.gmail.com with ESMTPSA id gn23-20020a1709070d1700b009373f1b5c4esm3594248ejc.161.2023.04.15.02.58.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 15 Apr 2023 02:58:14 -0700 (PDT)
+        Sat, 15 Apr 2023 02:58:20 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Wim Van Sebroeck <wim@linux-watchdog.org>,
 	Guenter Roeck <linux@roeck-us.net>,
@@ -121,17 +121,18 @@ To: Wim Van Sebroeck <wim@linux-watchdog.org>,
 	linux-stm32@st-md-mailman.stormreply.com,
 	linux-renesas-soc@vger.kernel.org
 Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH 2/6] dt-bindings: watchdog: indentation, quotes and white-space cleanup
-Date: Sat, 15 Apr 2023 11:51:08 +0200
-Message-Id: <20230415095112.51257-2-krzysztof.kozlowski@linaro.org>
+Subject: [PATCH 4/6] dt-bindings: watchdog: fsl-imx7ulp-wdt: simplify with unevaluatedProperties
+Date: Sat, 15 Apr 2023 11:51:10 +0200
+Message-Id: <20230415095112.51257-4-krzysztof.kozlowski@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230415095112.51257-1-krzysztof.kozlowski@linaro.org>
 References: <20230415095112.51257-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230415_025817_680995_1DC8F952 
-X-CRM114-Status: GOOD (  12.19  )
+X-CRM114-CacheID: sfid-20230415_025822_246991_B0F4CBF5 
+X-CRM114-Status: UNSURE (   9.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -146,349 +147,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Minor cleanup without functional impact:
-1. Indent DTS examples to preferred four-spaces (more readable for DTS),
-2. Drop unneeded quotes,
-3. Add/drop blank lines to make the code readable.
+Allow generic watchdog properties by using unevaluatedProperties: false.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- .../watchdog/amlogic,meson-gxbb-wdt.yaml      | 10 +++---
- .../bindings/watchdog/arm,sbsa-gwdt.yaml      |  1 -
- .../bindings/watchdog/arm,twd-wdt.yaml        |  6 ++--
- .../bindings/watchdog/arm-smc-wdt.yaml        |  7 ++--
- .../bindings/watchdog/atmel,sama5d4-wdt.yaml  | 14 ++++----
- .../bindings/watchdog/brcm,bcm7038-wdt.yaml   |  6 ++--
- .../bindings/watchdog/faraday,ftwdt010.yaml   | 16 +++++-----
- .../watchdog/mediatek,mt7621-wdt.yaml         |  6 ++--
- .../bindings/watchdog/qcom-wdt.yaml           | 32 +++++++++----------
- .../bindings/watchdog/renesas,wdt.yaml        | 14 ++++----
- .../bindings/watchdog/snps,dw-wdt.yaml        | 32 +++++++++----------
- .../bindings/watchdog/st,stm32-iwdg.yaml      | 10 +++---
- .../watchdog/xlnx,xps-timebase-wdt.yaml       | 12 +++----
- 13 files changed, 83 insertions(+), 83 deletions(-)
+ .../devicetree/bindings/watchdog/fsl-imx7ulp-wdt.yaml         | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/watchdog/amlogic,meson-gxbb-wdt.yaml b/Documentation/devicetree/bindings/watchdog/amlogic,meson-gxbb-wdt.yaml
-index 497d60408ea0..f5cc7aa1b93b 100644
---- a/Documentation/devicetree/bindings/watchdog/amlogic,meson-gxbb-wdt.yaml
-+++ b/Documentation/devicetree/bindings/watchdog/amlogic,meson-gxbb-wdt.yaml
-@@ -2,8 +2,8 @@
- # Copyright 2019 BayLibre, SAS
- %YAML 1.2
- ---
--$id: "http://devicetree.org/schemas/watchdog/amlogic,meson-gxbb-wdt.yaml#"
--$schema: "http://devicetree.org/meta-schemas/core.yaml#"
-+$id: http://devicetree.org/schemas/watchdog/amlogic,meson-gxbb-wdt.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/Documentation/devicetree/bindings/watchdog/fsl-imx7ulp-wdt.yaml b/Documentation/devicetree/bindings/watchdog/fsl-imx7ulp-wdt.yaml
+index d3790f1a96a2..4b7ed1355701 100644
+--- a/Documentation/devicetree/bindings/watchdog/fsl-imx7ulp-wdt.yaml
++++ b/Documentation/devicetree/bindings/watchdog/fsl-imx7ulp-wdt.yaml
+@@ -30,15 +30,13 @@ properties:
+   clocks:
+     maxItems: 1
  
- title: Meson GXBB SoCs Watchdog timer
- 
-@@ -36,7 +36,7 @@ unevaluatedProperties: false
- examples:
-   - |
-     watchdog@98d0 {
--          compatible = "amlogic,meson-gxbb-wdt";
--          reg = <0x98d0 0x10>;
--          clocks = <&xtal>;
-+        compatible = "amlogic,meson-gxbb-wdt";
-+        reg = <0x98d0 0x10>;
-+        clocks = <&xtal>;
-     };
-diff --git a/Documentation/devicetree/bindings/watchdog/arm,sbsa-gwdt.yaml b/Documentation/devicetree/bindings/watchdog/arm,sbsa-gwdt.yaml
-index 6bfa46353c4e..aa804f96acba 100644
---- a/Documentation/devicetree/bindings/watchdog/arm,sbsa-gwdt.yaml
-+++ b/Documentation/devicetree/bindings/watchdog/arm,sbsa-gwdt.yaml
-@@ -40,7 +40,6 @@ unevaluatedProperties: false
- 
- examples:
-   - |
+-  timeout-sec: true
 -
-     watchdog@2a440000 {
-         compatible = "arm,sbsa-gwdt";
-         reg = <0x2a440000 0x1000>,
-diff --git a/Documentation/devicetree/bindings/watchdog/arm,twd-wdt.yaml b/Documentation/devicetree/bindings/watchdog/arm,twd-wdt.yaml
-index bb8901854222..9646ac72051e 100644
---- a/Documentation/devicetree/bindings/watchdog/arm,twd-wdt.yaml
-+++ b/Documentation/devicetree/bindings/watchdog/arm,twd-wdt.yaml
-@@ -44,7 +44,7 @@ examples:
-     #include <dt-bindings/interrupt-controller/arm-gic.h>
+ required:
+   - compatible
+   - interrupts
+   - reg
+   - clocks
  
-     watchdog@2c000620 {
--            compatible = "arm,arm11mp-twd-wdt";
--            reg = <0x2c000620 0x20>;
--            interrupts = <GIC_PPI 14 0xf01>;
-+        compatible = "arm,arm11mp-twd-wdt";
-+        reg = <0x2c000620 0x20>;
-+        interrupts = <GIC_PPI 14 0xf01>;
-     };
-diff --git a/Documentation/devicetree/bindings/watchdog/arm-smc-wdt.yaml b/Documentation/devicetree/bindings/watchdog/arm-smc-wdt.yaml
-index fa05d6252982..b5573852ef5a 100644
---- a/Documentation/devicetree/bindings/watchdog/arm-smc-wdt.yaml
-+++ b/Documentation/devicetree/bindings/watchdog/arm-smc-wdt.yaml
-@@ -16,6 +16,7 @@ properties:
-   compatible:
-     enum:
-       - arm,smc-wdt
-+
-   arm,smc-id:
-     $ref: /schemas/types.yaml#/definitions/uint32
-     description: |
-@@ -30,9 +31,9 @@ unevaluatedProperties: false
+-additionalProperties: false
++unevaluatedProperties: false
+ 
  examples:
    - |
-     watchdog {
--      compatible = "arm,smc-wdt";
--      arm,smc-id = <0x82003D06>;
--      timeout-sec = <15>;
-+        compatible = "arm,smc-wdt";
-+        arm,smc-id = <0x82003D06>;
-+        timeout-sec = <15>;
-     };
- 
- ...
-diff --git a/Documentation/devicetree/bindings/watchdog/atmel,sama5d4-wdt.yaml b/Documentation/devicetree/bindings/watchdog/atmel,sama5d4-wdt.yaml
-index b28f7b57c36b..816f85ee2c77 100644
---- a/Documentation/devicetree/bindings/watchdog/atmel,sama5d4-wdt.yaml
-+++ b/Documentation/devicetree/bindings/watchdog/atmel,sama5d4-wdt.yaml
-@@ -65,13 +65,13 @@ examples:
-     #include <dt-bindings/interrupt-controller/irq.h>
- 
-     watchdog@fc068640 {
--      compatible = "atmel,sama5d4-wdt";
--      reg = <0xfc068640 0x10>;
--      interrupts = <4 IRQ_TYPE_LEVEL_HIGH 5>;
--      timeout-sec = <10>;
--      atmel,watchdog-type = "hardware";
--      atmel,dbg-halt;
--      atmel,idle-halt;
-+        compatible = "atmel,sama5d4-wdt";
-+        reg = <0xfc068640 0x10>;
-+        interrupts = <4 IRQ_TYPE_LEVEL_HIGH 5>;
-+        timeout-sec = <10>;
-+        atmel,watchdog-type = "hardware";
-+        atmel,dbg-halt;
-+        atmel,idle-halt;
-     };
- 
- ...
-diff --git a/Documentation/devicetree/bindings/watchdog/brcm,bcm7038-wdt.yaml b/Documentation/devicetree/bindings/watchdog/brcm,bcm7038-wdt.yaml
-index 428004e7f0c3..526ff908d134 100644
---- a/Documentation/devicetree/bindings/watchdog/brcm,bcm7038-wdt.yaml
-+++ b/Documentation/devicetree/bindings/watchdog/brcm,bcm7038-wdt.yaml
-@@ -37,7 +37,7 @@ required:
- examples:
-   - |
-     watchdog@f040a7e8 {
--      compatible = "brcm,bcm7038-wdt";
--      reg = <0xf040a7e8 0x16>;
--      clocks = <&upg_fixed>;
-+        compatible = "brcm,bcm7038-wdt";
-+        reg = <0xf040a7e8 0x16>;
-+        clocks = <&upg_fixed>;
-     };
-diff --git a/Documentation/devicetree/bindings/watchdog/faraday,ftwdt010.yaml b/Documentation/devicetree/bindings/watchdog/faraday,ftwdt010.yaml
-index 6e135f48b3ba..726dc872ad02 100644
---- a/Documentation/devicetree/bindings/watchdog/faraday,ftwdt010.yaml
-+++ b/Documentation/devicetree/bindings/watchdog/faraday,ftwdt010.yaml
-@@ -52,16 +52,16 @@ examples:
-   - |
-     #include <dt-bindings/interrupt-controller/irq.h>
-     watchdog@41000000 {
--      compatible = "faraday,ftwdt010";
--      reg = <0x41000000 0x1000>;
--      interrupts = <3 IRQ_TYPE_LEVEL_HIGH>;
--      timeout-sec = <5>;
-+        compatible = "faraday,ftwdt010";
-+        reg = <0x41000000 0x1000>;
-+        interrupts = <3 IRQ_TYPE_LEVEL_HIGH>;
-+        timeout-sec = <5>;
-     };
-   - |
-     watchdog: watchdog@98500000 {
--      compatible = "moxa,moxart-watchdog", "faraday,ftwdt010";
--      reg = <0x98500000 0x10>;
--      clocks = <&clk_apb>;
--      clock-names = "PCLK";
-+        compatible = "moxa,moxart-watchdog", "faraday,ftwdt010";
-+        reg = <0x98500000 0x10>;
-+        clocks = <&clk_apb>;
-+        clock-names = "PCLK";
-     };
- ...
-diff --git a/Documentation/devicetree/bindings/watchdog/mediatek,mt7621-wdt.yaml b/Documentation/devicetree/bindings/watchdog/mediatek,mt7621-wdt.yaml
-index a668d0c2f14b..18160869c378 100644
---- a/Documentation/devicetree/bindings/watchdog/mediatek,mt7621-wdt.yaml
-+++ b/Documentation/devicetree/bindings/watchdog/mediatek,mt7621-wdt.yaml
-@@ -34,7 +34,7 @@ additionalProperties: false
- examples:
-   - |
-     watchdog@100 {
--      compatible = "mediatek,mt7621-wdt";
--      reg = <0x100 0x100>;
--      mediatek,sysctl = <&sysc>;
-+        compatible = "mediatek,mt7621-wdt";
-+        reg = <0x100 0x100>;
-+        mediatek,sysctl = <&sysc>;
-     };
-diff --git a/Documentation/devicetree/bindings/watchdog/qcom-wdt.yaml b/Documentation/devicetree/bindings/watchdog/qcom-wdt.yaml
-index 6448b633c970..eccfd23c50f4 100644
---- a/Documentation/devicetree/bindings/watchdog/qcom-wdt.yaml
-+++ b/Documentation/devicetree/bindings/watchdog/qcom-wdt.yaml
-@@ -113,26 +113,26 @@ examples:
-     #include <dt-bindings/interrupt-controller/arm-gic.h>
- 
-     watchdog@17c10000 {
--      compatible = "qcom,apss-wdt-sm8150", "qcom,kpss-wdt";
--      reg = <0x17c10000 0x1000>;
--      clocks = <&sleep_clk>;
--      interrupts = <GIC_SPI 0 IRQ_TYPE_LEVEL_HIGH>;
--      timeout-sec = <10>;
-+        compatible = "qcom,apss-wdt-sm8150", "qcom,kpss-wdt";
-+        reg = <0x17c10000 0x1000>;
-+        clocks = <&sleep_clk>;
-+        interrupts = <GIC_SPI 0 IRQ_TYPE_LEVEL_HIGH>;
-+        timeout-sec = <10>;
-     };
- 
-   - |
-     #include <dt-bindings/interrupt-controller/arm-gic.h>
- 
-     watchdog@200a000 {
--      compatible = "qcom,kpss-wdt-ipq8064", "qcom,kpss-timer", "qcom,msm-timer";
--      interrupts = <GIC_PPI 1 (GIC_CPU_MASK_SIMPLE(2) | IRQ_TYPE_EDGE_RISING)>,
--                   <GIC_PPI 2 (GIC_CPU_MASK_SIMPLE(2) | IRQ_TYPE_EDGE_RISING)>,
--                   <GIC_PPI 3 (GIC_CPU_MASK_SIMPLE(2) | IRQ_TYPE_EDGE_RISING)>,
--                   <GIC_PPI 4 (GIC_CPU_MASK_SIMPLE(2) | IRQ_TYPE_EDGE_RISING)>,
--                   <GIC_PPI 5 (GIC_CPU_MASK_SIMPLE(2) | IRQ_TYPE_EDGE_RISING)>;
--      reg = <0x0200a000 0x100>;
--      clock-frequency = <25000000>;
--      clocks = <&sleep_clk>;
--      clock-names = "sleep";
--      cpu-offset = <0x80000>;
-+        compatible = "qcom,kpss-wdt-ipq8064", "qcom,kpss-timer", "qcom,msm-timer";
-+        interrupts = <GIC_PPI 1 (GIC_CPU_MASK_SIMPLE(2) | IRQ_TYPE_EDGE_RISING)>,
-+                     <GIC_PPI 2 (GIC_CPU_MASK_SIMPLE(2) | IRQ_TYPE_EDGE_RISING)>,
-+                     <GIC_PPI 3 (GIC_CPU_MASK_SIMPLE(2) | IRQ_TYPE_EDGE_RISING)>,
-+                     <GIC_PPI 4 (GIC_CPU_MASK_SIMPLE(2) | IRQ_TYPE_EDGE_RISING)>,
-+                     <GIC_PPI 5 (GIC_CPU_MASK_SIMPLE(2) | IRQ_TYPE_EDGE_RISING)>;
-+        reg = <0x0200a000 0x100>;
-+        clock-frequency = <25000000>;
-+        clocks = <&sleep_clk>;
-+        clock-names = "sleep";
-+        cpu-offset = <0x80000>;
-     };
-diff --git a/Documentation/devicetree/bindings/watchdog/renesas,wdt.yaml b/Documentation/devicetree/bindings/watchdog/renesas,wdt.yaml
-index 50c5c48ee6fb..951a7d54135a 100644
---- a/Documentation/devicetree/bindings/watchdog/renesas,wdt.yaml
-+++ b/Documentation/devicetree/bindings/watchdog/renesas,wdt.yaml
-@@ -177,11 +177,11 @@ examples:
-     #include <dt-bindings/power/r8a7795-sysc.h>
-     #include <dt-bindings/interrupt-controller/arm-gic.h>
-     wdt0: watchdog@e6020000 {
--            compatible = "renesas,r8a7795-wdt", "renesas,rcar-gen3-wdt";
--            reg = <0xe6020000 0x0c>;
--            interrupts = <GIC_SPI 140 IRQ_TYPE_LEVEL_HIGH>;
--            clocks = <&cpg CPG_MOD 402>;
--            power-domains = <&sysc R8A7795_PD_ALWAYS_ON>;
--            resets = <&cpg 402>;
--            timeout-sec = <60>;
-+        compatible = "renesas,r8a7795-wdt", "renesas,rcar-gen3-wdt";
-+        reg = <0xe6020000 0x0c>;
-+        interrupts = <GIC_SPI 140 IRQ_TYPE_LEVEL_HIGH>;
-+        clocks = <&cpg CPG_MOD 402>;
-+        power-domains = <&sysc R8A7795_PD_ALWAYS_ON>;
-+        resets = <&cpg 402>;
-+        timeout-sec = <60>;
-     };
-diff --git a/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml b/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
-index 39139586611b..76eceeddd150 100644
---- a/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
-+++ b/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
-@@ -83,25 +83,25 @@ required:
- examples:
-   - |
-     watchdog@ffd02000 {
--      compatible = "snps,dw-wdt";
--      reg = <0xffd02000 0x1000>;
--      interrupts = <0 171 4>;
--      clocks = <&per_base_clk>;
--      resets = <&wdt_rst>;
-+        compatible = "snps,dw-wdt";
-+        reg = <0xffd02000 0x1000>;
-+        interrupts = <0 171 4>;
-+        clocks = <&per_base_clk>;
-+        resets = <&wdt_rst>;
-     };
- 
-   - |
-     watchdog@ffd02000 {
--      compatible = "snps,dw-wdt";
--      reg = <0xffd02000 0x1000>;
--      interrupts = <0 171 4>;
--      clocks = <&per_base_clk>;
--      clock-names = "tclk";
--      snps,watchdog-tops = <0x000000FF 0x000001FF 0x000003FF
--                            0x000007FF 0x0000FFFF 0x0001FFFF
--                            0x0003FFFF 0x0007FFFF 0x000FFFFF
--                            0x001FFFFF 0x003FFFFF 0x007FFFFF
--                            0x00FFFFFF 0x01FFFFFF 0x03FFFFFF
--                            0x07FFFFFF>;
-+        compatible = "snps,dw-wdt";
-+        reg = <0xffd02000 0x1000>;
-+        interrupts = <0 171 4>;
-+        clocks = <&per_base_clk>;
-+        clock-names = "tclk";
-+        snps,watchdog-tops = <0x000000FF 0x000001FF 0x000003FF
-+                              0x000007FF 0x0000FFFF 0x0001FFFF
-+                              0x0003FFFF 0x0007FFFF 0x000FFFFF
-+                              0x001FFFFF 0x003FFFFF 0x007FFFFF
-+                              0x00FFFFFF 0x01FFFFFF 0x03FFFFFF
-+                              0x07FFFFFF>;
-     };
- ...
-diff --git a/Documentation/devicetree/bindings/watchdog/st,stm32-iwdg.yaml b/Documentation/devicetree/bindings/watchdog/st,stm32-iwdg.yaml
-index 2cb1a2ed0f7b..6b13bfc11e11 100644
---- a/Documentation/devicetree/bindings/watchdog/st,stm32-iwdg.yaml
-+++ b/Documentation/devicetree/bindings/watchdog/st,stm32-iwdg.yaml
-@@ -48,11 +48,11 @@ examples:
-   - |
-     #include <dt-bindings/clock/stm32mp1-clks.h>
-     watchdog@5a002000 {
--      compatible = "st,stm32mp1-iwdg";
--      reg = <0x5a002000 0x400>;
--      clocks = <&rcc IWDG2>, <&rcc CK_LSI>;
--      clock-names = "pclk", "lsi";
--      timeout-sec = <32>;
-+        compatible = "st,stm32mp1-iwdg";
-+        reg = <0x5a002000 0x400>;
-+        clocks = <&rcc IWDG2>, <&rcc CK_LSI>;
-+        clock-names = "pclk", "lsi";
-+        timeout-sec = <32>;
-     };
- 
- ...
-diff --git a/Documentation/devicetree/bindings/watchdog/xlnx,xps-timebase-wdt.yaml b/Documentation/devicetree/bindings/watchdog/xlnx,xps-timebase-wdt.yaml
-index 493a1c954707..8444c56dd602 100644
---- a/Documentation/devicetree/bindings/watchdog/xlnx,xps-timebase-wdt.yaml
-+++ b/Documentation/devicetree/bindings/watchdog/xlnx,xps-timebase-wdt.yaml
-@@ -58,11 +58,11 @@ unevaluatedProperties: false
- examples:
-   - |
-     watchdog@40100000 {
--      compatible = "xlnx,xps-timebase-wdt-1.00.a";
--      reg = <0x40100000 0x1000>;
--      clock-frequency = <50000000>;
--      clocks = <&clkc 15>;
--      xlnx,wdt-enable-once = <0x0>;
--      xlnx,wdt-interval = <0x1b>;
-+        compatible = "xlnx,xps-timebase-wdt-1.00.a";
-+        reg = <0x40100000 0x1000>;
-+        clock-frequency = <50000000>;
-+        clocks = <&clkc 15>;
-+        xlnx,wdt-enable-once = <0x0>;
-+        xlnx,wdt-interval = <0x1b>;
-     };
- ...
 -- 
 2.34.1
 
