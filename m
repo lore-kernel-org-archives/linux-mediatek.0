@@ -4,125 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50457C7619A
-	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Apr 2023 16:48:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62A47C77B61
+	for <linux-mediatek@archiver.kernel.org>; Sun, 16 Apr 2023 09:13:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c07ixhDHpQnBulkQZ2Nw0JwAr36rnVLPuwgUhNxAuT8=; b=Cquq4hOO/9nzpHbIDoc8oy06vy
-	YObqqcBC5u1XPBACnJwWl/pzHDWVeJveWzO7BOtIhtR2FxQcR56jgLwZ+u3/GTpQRuyIgS37bewaq
-	tTacji3sVXyNDHxprDwS9XhmKTIUdm3RKHDdf9N1+WZBTHbPKwP2wqs223BAlRifvBjQ4JFBtKBXV
-	awd3Wb//ZL9dTbakAL7mzEjO48cuGzMOBQ594I1CsYnm/UBEQirVrPVxmjJir1y2+5h6r5Zh4ONDK
-	3X+d447gBJ863X4tXS3p2QBcBFWNBjbGabgJUu3h0f1Q1yr/5KLd1vXB/HrOA/yCNRgp/rNAh91eR
-	O3R5Y5vA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=KSatJAZyCfwpD4TZPKhwQdPlv6+YyvJv4XQLuenDj2A=; b=acP1Pjs/M1W0bW
+	Jwg+LDVpbyDNKkG+J1nmKMgu2I6vsZXAhecceFnXtIm0HkK4L+9fjBdxjvliSaQzr7pZPjOzjGpp0
+	9Lp/bxpW7Aj5nFH8A4mRXY2ox2/pU28Wxf/zsTRy17goqDyHsKiAJgrPi2GfiggRHOAg7UYM77X6Z
+	nopTt1mqHogiEbjX0L2fuIMkp8Dg8qvXsWqCo1iUKXQ9wcFctuLGaRCui8tOxxAg745B086x7GHfn
+	fg/xQCo8QV+Ln1qIP4We2HlvLnDqW4msNBgZes1pjN6ys5fFJpvR0mx6uKILQNxCe1tkY85HdpcqQ
+	d8UWxzzlCtviV4mJlAyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pnj4O-00CUEm-35;
-	Sat, 15 Apr 2023 16:48:12 +0000
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+	id 1pnyRz-00DQO0-1P;
+	Sun, 16 Apr 2023 09:13:35 +0000
+Received: from mxout4.routing.net ([2a03:2900:1:a::9])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pnj4K-00CUDM-3B;
-	Sat, 15 Apr 2023 16:48:10 +0000
-Received: by mail-pl1-x632.google.com with SMTP id kc3so4380249plb.6;
-        Sat, 15 Apr 2023 09:48:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1681577287; x=1684169287;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=c07ixhDHpQnBulkQZ2Nw0JwAr36rnVLPuwgUhNxAuT8=;
-        b=VAm7lLW2qbtDmFHkaygXoNVicYRA7IQ6GgoHgPsyCQNfa+OPX88B/mb3fyqCdcZYlB
-         Qb6vBWg9yf0V1FZ1UQn8AGxwQkqUXoHNh66IZq4PycRZbyKno5D9WgQs5jpy9jFw2OXy
-         ce4dYeMqFtLPPcZeThBJekZ6hAAsuKU1TctgtzHrqbIhKsI2kAQJ4q4Gs3G6ONvGbrWK
-         Ne6ZQXeA5MJrTDw9XVhAgoii6otPIhbaurxAW8ahIEkNhLiakjovuK/CPOrgqQXhSbEn
-         qRGynIgdugnm3uE6whko3Q6+snSfYAMf2eC7Dp6jXGfBroLZjjfXXrZ1Yl9zLi2CHTyD
-         LS1g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681577287; x=1684169287;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=c07ixhDHpQnBulkQZ2Nw0JwAr36rnVLPuwgUhNxAuT8=;
-        b=aWdMZJy+bmEtNXttRi6zQxi7goiQAC7Fw4jlJ6ZD5Vwf7ppCmqHobBfkaAkq5DtrH4
-         l9uqeyyLcavbh80aCj/WRuef9Z0bNHeSamPEmC/07m+MHc3PmfjbyXfXmFQey7Y7kj1r
-         rGcIB4Kb2JsJ1NLxqsABt6jSf2SualMC/rtlLvueB7DsupVR57ofyyFVBzBcv8KDLa8g
-         ktjhnMxevWfDYSP3hQfi0b1nQviBP04j3bPx+6BAoajZ4B1IGHLCujYigwFftQF3Kmeu
-         fcU8bNtQ5ufMVD8djx9cC3UNN6xA1808zu+2IdVKGkctXDN41+IoMKXETcwkraGGddga
-         d0/g==
-X-Gm-Message-State: AAQBX9dyiYNcYn9uCYuRPxu2OLtQsk0GxyZGVfKDVvWPJ13rR+YqCbFx
-	WIiU2ZhHlEAOYHCJ3jTgwMI=
-X-Google-Smtp-Source: AKy350asRVcaBN4vEj52+Al3i6LdhYun2dQh4zNs0zIu8tfWua87lcM2Lbo7pD9ZdRNAVxvnTiBCow==
-X-Received: by 2002:a17:90a:f409:b0:247:900:12db with SMTP id ch9-20020a17090af40900b00247090012dbmr9261041pjb.24.1681577286671;
-        Sat, 15 Apr 2023 09:48:06 -0700 (PDT)
-Received: from [192.168.86.135] ([136.52.74.64])
-        by smtp.gmail.com with ESMTPSA id r11-20020a65498b000000b004e28be19d1csm4492195pgs.32.2023.04.15.09.48.03
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 15 Apr 2023 09:48:06 -0700 (PDT)
-Message-ID: <f059c09d-b9a4-d86b-e4bb-1aea096263f2@gmail.com>
-Date: Sat, 15 Apr 2023 09:48:03 -0700
+	id 1pnyRt-00DQN3-1v;
+	Sun, 16 Apr 2023 09:13:31 +0000
+Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
+	by mxout4.routing.net (Postfix) with ESMTP id 09A601012C4;
+	Sun, 16 Apr 2023 09:13:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1681636403;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=KSatJAZyCfwpD4TZPKhwQdPlv6+YyvJv4XQLuenDj2A=;
+	b=A9mOekSEXDx7Zp1E9gy+f6GvqZskvOPcfTOwPI/YSnYoclR6u1WyETS6vXTKSRG3NGgVZJ
+	G1mxhuD/5tZ1l2w8a85Lqgj+OeucODT3B1r50jasNfVJAOVSt/QXQUQw46I9KYp46Bymex
+	tsjZOt7NFjxOR9VmelXciagSNvikFbQ=
+Received: from frank-G5.. (fttx-pool-217.61.152.230.bambit.de [217.61.152.230])
+	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id 9AD651013A7;
+	Sun, 16 Apr 2023 09:11:35 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: Felix Fietkau <nbd@nbd.name>,
+	Vladimir Oltean <vladimir.oltean@nxp.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
+Subject: [RFC/RFT v1] net: ethernet: mtk_eth_soc: drop generic vlan rx offload, only use DSA untagging
+Date: Sun, 16 Apr 2023 11:10:38 +0200
+Message-Id: <20230416091038.54479-1-linux@fw-web.de>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH 2/6] dt-bindings: watchdog: indentation, quotes and
- white-space cleanup
-Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
- <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Julius Werner <jwerner@chromium.org>, Evan Benn <evanbenn@chromium.org>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Claudiu Beznea <claudiu.beznea@microchip.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>,
- Sander Vanheule <sander@svanheule.net>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Magnus Damm <magnus.damm@gmail.com>, Fu Wei <fu.wei@linaro.org>,
- Viresh Kumar <vireshk@kernel.org>,
- Eugen Hristev <eugen.hristev@collabora.com>, =?UTF-8?B?77+9ZWNraQ==?=
- <rafal@milecki.pl>, Linus Walleij <linus.walleij@linaro.org>,
- Corentin Labbe <clabbe@baylibre.com>, Anson Huang <Anson.Huang@nxp.com>,
- Robert Marko <robert.marko@sartura.hr>,
- Sergio Paracuellos <sergio.paracuellos@gmail.com>,
- Sai Prakash Ranjan <quic_saipraka@quicinc.com>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>,
- Jamie Iles <jamie@jamieiles.com>, Yannick Fertre
- <yannick.fertre@foss.st.com>,
- Christophe Roullier <christophe.roullier@foss.st.com>,
- Shubhrajyoti Datta <shubhrajyoti.datta@xilinx.com>,
- Srinivas Neeli <srinivas.neeli@xilinx.com>, linux-watchdog@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-renesas-soc@vger.kernel.org
-References: <20230415095112.51257-1-krzysztof.kozlowski@linaro.org>
- <20230415095112.51257-2-krzysztof.kozlowski@linaro.org>
-From: Justin Chen <justinpopo6@gmail.com>
-In-Reply-To: <20230415095112.51257-2-krzysztof.kozlowski@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+X-Mail-ID: 33c41008-f1e3-46f3-802e-ecce294b5d3c
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230415_094809_049334_60FF3649 
-X-CRM114-Status: UNSURE (   7.59  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230416_021329_962802_DF1FAA5E 
+X-CRM114-Status: GOOD (  21.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,21 +67,224 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Russell King <linux@armlinux.org.uk>, Mark Lee <Mark-MC.Lee@mediatek.com>, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 4/15/2023 2:51 AM, Krzysztof Kozlowski wrote:
-> Minor cleanup without functional impact:
-> 1. Indent DTS examples to preferred four-spaces (more readable for DTS),
-> 2. Drop unneeded quotes,
-> 3. Add/drop blank lines to make the code readable.
-> 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> ---
->   .../bindings/watchdog/brcm,bcm7038-wdt.yaml   |  6 ++--
+From: Felix Fietkau <nbd@nbd.name>
 
-Acked-by: Justin Chen <justinpopo6@gmail.com>
+Through testing I found out that hardware vlan rx offload support seems to
+have some hardware issues. At least when using multiple MACs and when receiving
+tagged packets on the secondary MAC, the hardware can sometimes start to emit
+wrong tags on the first MAC as well.
 
-Justin
+In order to avoid such issues, drop the feature configuration and use the
+offload feature only for DSA hardware untagging on MT7621/MT7622 devices which
+only use one MAC.
+
+Tested-by: Frank Wunderlich <frank-w@public-files.de>
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+---
+used felix Patch as base and ported up to 6.3-rc6 which seems to get lost
+and the original bug is not handled again.
+
+it reverts changes from vladimirs patch
+
+1a3245fe0cf8 net: ethernet: mtk_eth_soc: fix DSA TX tag hwaccel for switch port 0
+
+tested this on bananapi-r3 on non-dsa gmac1 and dsa aware eth0 (wan).
+on both vlan is working, but maybe it breaks HW-vlan-untagging
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 105 ++++++++------------
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h |   1 -
+ 2 files changed, 39 insertions(+), 67 deletions(-)
+
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index e14050e17862..20c60cee6aa7 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -1921,9 +1921,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
+ 
+ 	while (done < budget) {
+ 		unsigned int pktlen, *rxdcsum;
+-		bool has_hwaccel_tag = false;
+ 		struct net_device *netdev;
+-		u16 vlan_proto, vlan_tci;
+ 		dma_addr_t dma_addr;
+ 		u32 hash, reason;
+ 		int mac = 0;
+@@ -2058,31 +2056,16 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
+ 			skb_checksum_none_assert(skb);
+ 		skb->protocol = eth_type_trans(skb, netdev);
+ 
+-		if (netdev->features & NETIF_F_HW_VLAN_CTAG_RX) {
+-			if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2)) {
+-				if (trxd.rxd3 & RX_DMA_VTAG_V2) {
+-					vlan_proto = RX_DMA_VPID(trxd.rxd4);
+-					vlan_tci = RX_DMA_VID(trxd.rxd4);
+-					has_hwaccel_tag = true;
+-				}
+-			} else if (trxd.rxd2 & RX_DMA_VTAG) {
+-				vlan_proto = RX_DMA_VPID(trxd.rxd3);
+-				vlan_tci = RX_DMA_VID(trxd.rxd3);
+-				has_hwaccel_tag = true;
+-			}
+-		}
+-
+ 		/* When using VLAN untagging in combination with DSA, the
+ 		 * hardware treats the MTK special tag as a VLAN and untags it.
+ 		 */
+-		if (has_hwaccel_tag && netdev_uses_dsa(netdev)) {
+-			unsigned int port = vlan_proto & GENMASK(2, 0);
++		if (!MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2) &&
++		    (trxd.rxd2 & RX_DMA_VTAG) && netdev_uses_dsa(netdev)) {
++			unsigned int port = RX_DMA_VPID(trxd.rxd3) & GENMASK(2, 0);
+ 
+ 			if (port < ARRAY_SIZE(eth->dsa_meta) &&
+ 			    eth->dsa_meta[port])
+ 				skb_dst_set_noref(skb, &eth->dsa_meta[port]->dst);
+-		} else if (has_hwaccel_tag) {
+-			__vlan_hwaccel_put_tag(skb, htons(vlan_proto), vlan_tci);
+ 		}
+ 
+ 		if (reason == MTK_PPE_CPU_REASON_HIT_UNBIND_RATE_REACHED)
+@@ -2910,29 +2893,11 @@ static netdev_features_t mtk_fix_features(struct net_device *dev,
+ 
+ static int mtk_set_features(struct net_device *dev, netdev_features_t features)
+ {
+-	struct mtk_mac *mac = netdev_priv(dev);
+-	struct mtk_eth *eth = mac->hw;
+ 	netdev_features_t diff = dev->features ^ features;
+-	int i;
+ 
+ 	if ((diff & NETIF_F_LRO) && !(features & NETIF_F_LRO))
+ 		mtk_hwlro_netdev_disable(dev);
+ 
+-	/* Set RX VLAN offloading */
+-	if (!(diff & NETIF_F_HW_VLAN_CTAG_RX))
+-		return 0;
+-
+-	mtk_w32(eth, !!(features & NETIF_F_HW_VLAN_CTAG_RX),
+-		MTK_CDMP_EG_CTRL);
+-
+-	/* sync features with other MAC */
+-	for (i = 0; i < MTK_MAC_COUNT; i++) {
+-		if (!eth->netdev[i] || eth->netdev[i] == dev)
+-			continue;
+-		eth->netdev[i]->features &= ~NETIF_F_HW_VLAN_CTAG_RX;
+-		eth->netdev[i]->features |= features & NETIF_F_HW_VLAN_CTAG_RX;
+-	}
+-
+ 	return 0;
+ }
+ 
+@@ -3250,30 +3215,6 @@ static int mtk_open(struct net_device *dev)
+ 	struct mtk_eth *eth = mac->hw;
+ 	int i, err;
+ 
+-	if (mtk_uses_dsa(dev) && !eth->prog) {
+-		for (i = 0; i < ARRAY_SIZE(eth->dsa_meta); i++) {
+-			struct metadata_dst *md_dst = eth->dsa_meta[i];
+-
+-			if (md_dst)
+-				continue;
+-
+-			md_dst = metadata_dst_alloc(0, METADATA_HW_PORT_MUX,
+-						    GFP_KERNEL);
+-			if (!md_dst)
+-				return -ENOMEM;
+-
+-			md_dst->u.port_info.port_id = i;
+-			eth->dsa_meta[i] = md_dst;
+-		}
+-	} else {
+-		/* Hardware special tag parsing needs to be disabled if at least
+-		 * one MAC does not use DSA.
+-		 */
+-		u32 val = mtk_r32(eth, MTK_CDMP_IG_CTRL);
+-		val &= ~MTK_CDMP_STAG_EN;
+-		mtk_w32(eth, val, MTK_CDMP_IG_CTRL);
+-	}
+-
+ 	err = phylink_of_phy_connect(mac->phylink, mac->of_node, 0);
+ 	if (err) {
+ 		netdev_err(dev, "%s: could not attach PHY: %d\n", __func__,
+@@ -3312,6 +3253,39 @@ static int mtk_open(struct net_device *dev)
+ 	phylink_start(mac->phylink);
+ 	netif_tx_start_all_queues(dev);
+ 
++	if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2))
++		return 0;
++
++	if (mtk_uses_dsa(dev) && !eth->prog) {
++		for (i = 0; i < ARRAY_SIZE(eth->dsa_meta); i++) {
++			struct metadata_dst *md_dst = eth->dsa_meta[i];
++
++			if (md_dst)
++				continue;
++
++			md_dst = metadata_dst_alloc(0, METADATA_HW_PORT_MUX,
++						    GFP_KERNEL);
++			if (!md_dst)
++				return -ENOMEM;
++
++			md_dst->u.port_info.port_id = i;
++			eth->dsa_meta[i] = md_dst;
++		}
++	} else {
++		/* Hardware special tag parsing needs to be disabled if at least
++		 * one MAC does not use DSA.
++		 */
++		u32 val = mtk_r32(eth, MTK_CDMP_IG_CTRL);
++		val &= ~MTK_CDMP_STAG_EN;
++		mtk_w32(eth, val, MTK_CDMP_IG_CTRL);
++
++		val = mtk_r32(eth, MTK_CDMQ_IG_CTRL);
++		val &= ~MTK_CDMQ_STAG_EN;
++		mtk_w32(eth, val, MTK_CDMQ_IG_CTRL);
++
++		mtk_w32(eth, 0, MTK_CDMP_EG_CTRL);
++	}
++
+ 	return 0;
+ }
+ 
+@@ -3796,10 +3770,9 @@ static int mtk_hw_init(struct mtk_eth *eth, bool reset)
+ 	if (!MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2)) {
+ 		val = mtk_r32(eth, MTK_CDMP_IG_CTRL);
+ 		mtk_w32(eth, val | MTK_CDMP_STAG_EN, MTK_CDMP_IG_CTRL);
+-	}
+ 
+-	/* Enable RX VLan Offloading */
+-	mtk_w32(eth, 1, MTK_CDMP_EG_CTRL);
++		mtk_w32(eth, 1, MTK_CDMP_EG_CTRL);
++	}
+ 
+ 	/* set interrupt delays based on current Net DIM sample */
+ 	mtk_dim_rx(&eth->rx_dim.work);
+@@ -4437,7 +4410,7 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
+ 		eth->netdev[id]->hw_features |= NETIF_F_LRO;
+ 
+ 	eth->netdev[id]->vlan_features = eth->soc->hw_features &
+-		~(NETIF_F_HW_VLAN_CTAG_TX | NETIF_F_HW_VLAN_CTAG_RX);
++		~NETIF_F_HW_VLAN_CTAG_TX;
+ 	eth->netdev[id]->features |= eth->soc->hw_features;
+ 	eth->netdev[id]->ethtool_ops = &mtk_ethtool_ops;
+ 
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index 084a6badef6d..ac57dc87c59a 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -48,7 +48,6 @@
+ #define MTK_HW_FEATURES		(NETIF_F_IP_CSUM | \
+ 				 NETIF_F_RXCSUM | \
+ 				 NETIF_F_HW_VLAN_CTAG_TX | \
+-				 NETIF_F_HW_VLAN_CTAG_RX | \
+ 				 NETIF_F_SG | NETIF_F_TSO | \
+ 				 NETIF_F_TSO6 | \
+ 				 NETIF_F_IPV6_CSUM |\
+-- 
+2.34.1
 
 
