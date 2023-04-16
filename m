@@ -4,161 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED12AC77B61
-	for <linux-mediatek@archiver.kernel.org>; Sun, 16 Apr 2023 21:12:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E1D7C77B73
+	for <linux-mediatek@archiver.kernel.org>; Sun, 16 Apr 2023 21:29:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PcdhZzelGiLWVRkQSPYVU84yN6BDoaInWPYe2mWzyWI=; b=N0yQ/xPo3epNICV8off+YfeYHM
-	oWouuqXOiYiU0G/MMWg8QQcYLKoypaP0Ww3hpFTMY9VJKacfgxAT6PWvVNKo4jUbYJCAIjnu8Vc3w
-	Mnt4k/t4j4inzg2gi87WuVqmAi09am2kZ7warU0PpoPK9nR4owUrQbN0Bp2iACiBkA2YN+BcZ4AYI
-	ofx10il81+JgzJ2LUsgqmXndVTHTQuxw1fkjtUzD6NJsIT8mKWmDhl3BsUtZ3Leh1qBir4CGe5Zhg
-	EhOnKyYqp/F0QMjE2BtPrfwjtiXA5u5o7Xf6qIZGtr1uCXBIR+egjPdYjPzVxXnmtM5ygdkI0xC9m
-	zlwu2Bpg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dwGEPtLK0WYqjAT8ygXmQLZmIHK63VdeV8vdrcfKE+Q=; b=nNidiqHf2nPfP300kf06raHPc6
+	H9CNUdeEOK8pwJWY7ioUBYkskvKUsI1tj0C/euq1wgmW7kmczQYmUNA6PP/KL6pDOu6V4SIPQfQJ1
+	IJfoX0B03YsR3MQZHgi+lr9NETaKA9o9ads9tFOGkz+xr51DgsgOm6uEqOtnxcaFLBX6M/Enpi1yI
+	f0JHs8f9gpde2EyT8DkeHui+zb7r5KH+r9wynAG/FIWCyNtqh+/mCf4/LuYw3WFyWAFeuk6aUd0Q3
+	pQAXyOrX+cf5oGy2WQzgry3P8rHUAs5TnsLk15iZbtutqZ4rgoqlGbdFydKcPvy5jSlarL2NVZ8GS
+	rSLYnzHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1po9fq-00ERNR-0x;
-	Sun, 16 Apr 2023 21:12:38 +0000
-Received: from www.zeus03.de ([194.117.254.33] helo=mail.zeus03.de)
+	id 1po9wN-00ES8M-1y;
+	Sun, 16 Apr 2023 21:29:43 +0000
+Received: from sender4-op-o10.zoho.com ([136.143.188.10])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1po9fk-00ERM0-2w
-	for linux-mediatek@lists.infradead.org;
-	Sun, 16 Apr 2023 21:12:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple; d=sang-engineering.com; h=
-	date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:in-reply-to; s=k1; bh=PcdhZzelGiLWVRkQSPYVU84yN6BD
-	oaInWPYe2mWzyWI=; b=0vlvYnXM0yc2UOV09gFwoU0Plkbv9q8QVtBV91C/Xct+
-	nQaNG2FpJ5ue/IGfl/+vqlk/skwVcvLJ/OiMlAMchiTrl0GtHOLktk8sjvMT1ycY
-	6D3x7GP9CzLuMSAWyzexEUQPLk1ptIFAEipKhWYtxMOtuO22My5NQaelxoDf/TM=
-Received: (qmail 2639833 invoked from network); 16 Apr 2023 23:12:19 +0200
-Received: by mail.zeus03.de with ESMTPSA (TLS_AES_256_GCM_SHA384 encrypted, authenticated); 16 Apr 2023 23:12:19 +0200
-X-UD-Smtp-Session: l3s3148p1@dHlEh3r5xr4gAQnoAEhOALUKm+CIhvWF
-Date: Sun, 16 Apr 2023 23:12:13 +0200
-From: Wolfram Sang <wsa+renesas@sang-engineering.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Wim Van Sebroeck <wim@linux-watchdog.org>,
-	Guenter Roeck <linux@roeck-us.net>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Julius Werner <jwerner@chromium.org>,
-	Evan Benn <evanbenn@chromium.org>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Sander Vanheule <sander@svanheule.net>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>, Fu Wei <fu.wei@linaro.org>,
-	Viresh Kumar <vireshk@kernel.org>,
-	Eugen Hristev <eugen.hristev@collabora.com>,
-	Justin Chen <justinpopo6@gmail.com>,
-	=?utf-8?B?77+9ZWNraQ==?= <rafal@milecki.pl>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Corentin Labbe <clabbe@baylibre.com>,
-	Anson Huang <Anson.Huang@nxp.com>,
-	Robert Marko <robert.marko@sartura.hr>,
-	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
-	Sai Prakash Ranjan <quic_saipraka@quicinc.com>,
-	Jamie Iles <jamie@jamieiles.com>,
-	Yannick Fertre <yannick.fertre@foss.st.com>,
-	Christophe Roullier <christophe.roullier@foss.st.com>,
-	Shubhrajyoti Datta <shubhrajyoti.datta@xilinx.com>,
-	Srinivas Neeli <srinivas.neeli@xilinx.com>,
-	linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-renesas-soc@vger.kernel.org
-Subject: Re: [PATCH 2/6] dt-bindings: watchdog: indentation, quotes and
- white-space cleanup
-Message-ID: <ZDxkrVOhrEMg0oWh@sai>
-Mail-Followup-To: Wolfram Sang <wsa+renesas@sang-engineering.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Wim Van Sebroeck <wim@linux-watchdog.org>,
-	Guenter Roeck <linux@roeck-us.net>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Julius Werner <jwerner@chromium.org>,
-	Evan Benn <evanbenn@chromium.org>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Sander Vanheule <sander@svanheule.net>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>, Fu Wei <fu.wei@linaro.org>,
-	Viresh Kumar <vireshk@kernel.org>,
-	Eugen Hristev <eugen.hristev@collabora.com>,
-	Justin Chen <justinpopo6@gmail.com>,
-	=?utf-8?B?77+9ZWNraQ==?= <rafal@milecki.pl>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Corentin Labbe <clabbe@baylibre.com>,
-	Anson Huang <Anson.Huang@nxp.com>,
-	Robert Marko <robert.marko@sartura.hr>,
-	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
-	Sai Prakash Ranjan <quic_saipraka@quicinc.com>,
-	Jamie Iles <jamie@jamieiles.com>,
-	Yannick Fertre <yannick.fertre@foss.st.com>,
-	Christophe Roullier <christophe.roullier@foss.st.com>,
-	Shubhrajyoti Datta <shubhrajyoti.datta@xilinx.com>,
-	Srinivas Neeli <srinivas.neeli@xilinx.com>,
-	linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-renesas-soc@vger.kernel.org
-References: <20230415095112.51257-1-krzysztof.kozlowski@linaro.org>
- <20230415095112.51257-2-krzysztof.kozlowski@linaro.org>
+	id 1po9wJ-00ES7n-0b;
+	Sun, 16 Apr 2023 21:29:41 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1681680547; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=B1vxEcLr1ew7b2Ewu7S9F9yBNYySLw5WwOmnAMXPvREXFBiFGqfwsRLDEmVsHrqOU/KTagi79sMtgaXt4H/Jzmrn5bZL2482nUNnBIqTXrHv0J/4c5/llG92SfdkbU1Rc8gldd1oo7d74ExvZK4X06Qtefe8rf6tc5GHBuJeVEA=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1681680547; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=dwGEPtLK0WYqjAT8ygXmQLZmIHK63VdeV8vdrcfKE+Q=; 
+	b=Dx6N28WYQ/urtoRdB/eavwC1uAUwj1ecCmlqqLw8FWTPDe+x1XyODa6BwTZEUeGRwXgB4kj7sKda5b3WA+lDjyld40mRCV1Ipz3evK1FKMurwnnwF0NGwKuGvqMMeOgoPwjlsrmy64RNBq17l0ORw5Lfs976/QjQArr/6ZpZNgo=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1681680547;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=dwGEPtLK0WYqjAT8ygXmQLZmIHK63VdeV8vdrcfKE+Q=;
+	b=J9dFI7GMpdKjo/LZGEX56d8lb1wmvcUhLaZ1ijccRLLa6BE1WPxG7HghVwstB+Xy
+	//wbpUgB/80FIzYPlqO+KysiV6wvlncpxjiSU0TkVKvWmdfQVUlC7fSV/PV/r4kONZW
+	OQ1JcldLcIKefpOxBV1Et7FfR9MkmuGrKbumCzoU=
+Received: from [10.10.10.3] (149.91.1.15 [149.91.1.15]) by mx.zohomail.com
+	with SMTPS id 1681680546151439.83375093791324; Sun, 16 Apr 2023 14:29:06 -0700 (PDT)
+Message-ID: <f125954e-d4ac-121f-18c4-bc7db25efa1c@arinc9.com>
+Date: Mon, 17 Apr 2023 00:28:57 +0300
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="+8XwfRVUNrqARVTo"
-Content-Disposition: inline
-In-Reply-To: <20230415095112.51257-2-krzysztof.kozlowski@linaro.org>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.1
+Subject: Re: [PATCH net-next v2] net: dsa: mt7530: fix support for MT7531BE
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
+ DENG Qingfang <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
+ <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Russell King <linux@armlinux.org.uk>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>
+References: <ZDvlLhhqheobUvOK@makrotopia.org>
+ <8d36ff3b-e084-9f79-4c00-ec832f2cdbb3@arinc9.com>
+ <ZDwDs6BHRo0ukfGF@makrotopia.org>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <ZDwDs6BHRo0ukfGF@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230416_141233_838939_2BE8FE51 
-X-CRM114-Status: UNSURE (   8.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230416_142939_284589_5FEE2A59 
+X-CRM114-Status: GOOD (  60.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -173,43 +90,204 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 16/04/2023 17:18, Daniel Golle wrote:
+> On Sun, Apr 16, 2023 at 04:48:23PM +0300, Arınç ÜNAL wrote:
+>> On 16.04.2023 15:08, Daniel Golle wrote:
+>>> There are two variants of the MT7531 switch IC which got different
+>>> features (and pins) regarding port 5:
+>>>    * MT7531AE: SGMII/1000Base-X/2500Base-X SerDes PCS
+>>>    * MT7531BE: RGMII
+>>>
+>>> Moving the creation of the SerDes PCS from mt753x_setup to mt7530_probe
+>>> with commit 6de285229773 ("net: dsa: mt7530: move SGMII PCS creation
+>>> to mt7530_probe function") works fine for MT7531AE which got two
+>>> instances of mtk-pcs-lynxi, however, MT7531BE requires mt7531_pll_setup
+>>> to setup clocks before the single PCS on port 6 (usually used as CPU
+>>> port) starts to work and hence the PCS creation failed on MT7531BE.
+>>>
+>>> Fix this by introducing a pointer to mt7531_create_sgmii function in
+>>> struct mt7530_priv and call it again at the end of mt753x_setup like it
+>>> was before commit 6de285229773 ("net: dsa: mt7530: move SGMII PCS
+>>> creation to mt7530_probe function").
+>>>
+>>> Fixes: 6de285229773 ("net: dsa: mt7530: move SGMII PCS creation to mt7530_probe function")
+>>> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+>>
+>> I'll put my 2 cents about the patch along with responding to your points on
+>> the other thread here.
+>>
+>>> Why don't we use my original solution [1] which has some advantages:
+>>>
+>>>   * It doesn't requrire additional export of mt7530_regmap_bus
+>>>
+>>>   * It doesn't move PCS creation to mt7530.c, hence PCS_MTK_LYNXI is
+>>>     only required for MDIO-connected switches
+>>>     (with your patch we would have to move the dependency on PCS_MTK_LYNXI
+>>>     from NET_DSA_MT7530_MDIO to NET_DSA_MT7530)
+>>
+>> Maybe this is what should happen. Maybe the PCS creation (and therefore
+>> mt7530_regmap_bus) should be on the core driver. Both are on the MDIO driver
+>> for the sole reason of only the devices on the MDIO driver currently using
+>> it. It's not an MDIO-specific operation as far as I can tell. Having it on
+>> the core driver would make more sense in the long run.
+> 
+> Which "long run" are you talking about?
+> regmap creation is bus-specific, and so is the existence of LynxI PCS.
+> There simply aren't any MMIO-connected switches which come with that IP.
+> And I strongly doubt there ever will be. And even if, why should we now
+> prepare for an entirely speculative future? If it actually happens, ie.
+> in case there is going to be a new SoC with MMIO-connected switch which
+> does comes with LynxI PCS (e.g. for port 5 only) we can still move the
+> code.
 
---+8XwfRVUNrqARVTo
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Makes sense.
 
-On Sat, Apr 15, 2023 at 11:51:08AM +0200, Krzysztof Kozlowski wrote:
-> Minor cleanup without functional impact:
-> 1. Indent DTS examples to preferred four-spaces (more readable for DTS),
-> 2. Drop unneeded quotes,
-> 3. Add/drop blank lines to make the code readable.
->=20
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> 
+>>
+>>>
+>>>   * It doesn't expose the dysfunctional SerDes PCS for port 5 on MT7531BE
+>>>     This will still fail and hence result in probing on MT7531 to exit
+>>>     prematurely, preventing the switch driver from being loaded.
+>>>     Before 9ecc00164dc23 ("net: dsa: mt7530: refactor SGMII PCS creation")
+>>>     the return value of mtk_pcs_lynxi_create was ignored, now it isn't...
+>>
+>> Ok, so checking whether port 5 is SGMII or not on the PCS creation code
+>> should be done on the same patch that fixes this issue.
+>>
+>>>
+>>>   * It changes much less in terms of LoC
+>>
+>> I'd rather prefer a better logic than the "least amount of changes possible"
+>> approach.
+>>
+>> Let's analyse what this patch does:
+>>
+>> With this patch, mt7531_create_sgmii() is run after mt7530_setup_mdio is
+>> run, under mt753x_setup(). mt7531_pll_setup() and, as the last requirement,
+>> mt7530_setup_mdio() must be run to be able to create the PCS instances. That
+>> also means running mt7530_free_irq_common must be avoided since the device
+>> uses MDIO so mt7530_free_mdio_irq needs to be run too.
+>>
+>> While probing the driver, the priv->create_sgmii pointer will be made to
+>> point to mt7531_create_sgmii, if MT7531 is detected. Why? This pointer won't
+>> be used for any other devices and sgmii will always be created for any
+>> MT7531 variants, so it's always going to point to mt7531_create_sgmii when
+>> priv->id is ID_MT7531. So you're introducing a new pointer just to be able
+>> to call mt7531_create_sgmii() on mt7530-mdio.c from mt7530.c.
+>>
+>> On mt753x_setup(), if priv->create_sgmii is pointing to something it will
+>> now run whatever it points to with two arguments. One being the priv table
+>> and the other being mt7531_dual_sgmii_supported() which returns 1 or 0 by
+>> looking at the very same priv table. That looks bad. What could be done
+>> instead is introduce a new field on the priv table that keeps the
+>> information of whether port 5 on the MT7531 switch is SGMII or not.
+> 
+> Yes, and on a 64-bit system that means 8 bytes of memory for each instance.
+> Exporting a function or const implies significantly more overhead, and
+> it would not be as nicely limited in scope as a function pointer would be.
+> 
+> There are no other users in the kernel of the const you would export in
+> your variant of the fix, so why have it exported?
+> 
+>>
+>> A similar logic is already there on the U-Boot MediaTek ethernet driver.
+>>
+>> https://github.com/u-boot/u-boot/blob/a94ab561e2f49a80d8579930e840b810ab1a1330/drivers/net/mtk_eth.c#L903
+>>
+>> So this patch fixes the issue with the only consideration being changing as
+>> less lines of code as possible.
+> 
+> You are ignore two more important arguments:
+>   * It doesn't requrire additional export of mt7530_regmap_bus
+>     (which would imply significantly more storage overhead compared to
+>     an additional function pointer in a priv struct)
+> 
+>   * It doesn't move PCS creation to mt7530.c, hence PCS_MTK_LYNXI is
+>     only required for MDIO-connected switches
+>     (with your patch we would have to move the dependency on PCS_MTK_LYNXI
+>     from NET_DSA_MT7530_MDIO to NET_DSA_MT7530)
 
-Reviewed-by: Wolfram Sang <wsa+renesas@sang-engineering.com> # for Renesas =
-WDT
+Understood.
 
+> 
+>> And that's okay. We can make the least
+>> amount of changes to fix the issue first, then improve the driver. But
+>> there's nothing new made on the driver after the commit that caused this
+>> issue, backportability to the stable trees is a non-issue. So why not do it
+>> properly the first time?
+> 
+> Most of all I'd rather have it fixed before net-next is merged to Linus'
+> tree and also before net-next will close again.
+> 
+> However, I also simply don't see what would be more "proper" about your
+> solution.
 
---+8XwfRVUNrqARVTo
-Content-Type: application/pgp-signature; name="signature.asc"
+Nothing. Your patch here is perfectly fine after reading your points. 
+One thing I'd like to ask is, if I understand correctly, instead of 
+exporting mt7531_create_sgmii(), defining a pointer that points to it 
+causes less overhead?
 
------BEGIN PGP SIGNATURE-----
+The current patch looks very similar to exporting a function. Instead of 
+putting EXPORT_SYMBOL_GPL and declaring the function prototype on the 
+header file, you declare a function pointer on the priv structure, then 
+assign it to the function.
 
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmQ8ZKIACgkQFA3kzBSg
-KbYctA//WZaNN4qBA3XDpxqd0lCrFYt2SAthM8gh8vN6cczN1b9Nak3ux3+Boc1k
-TKtCJ81t8g4Gg65bxDolozTwVxdZ3qsHXLOtRJrlLwn4SQjNtyjQPxt+FSYxe/AJ
-gDf8hNvHEHfeKRFI4boNK2fzxDkjE9R8RMrZnh63OnGtcCNQvEp6MkZimwStVVlX
-TwYmE7rf6r8dbq7n3yDuWZFJB+eXi1ld0LNJrsROMMc5m88KNRHWi4r9Dxjg+UfK
-VjpH5kYQFUtnFrd9Q8kcPdV/r9L9sVW3jdZJG5KB5xMPfZk4sX8wpXf28gqyOrW0
-ENNFH8YV1rbQxZ8c6wszQs5+HJDbJmAetk9rJ32K98sTissdzrVZxm3hM8jSbO63
-3oD8Gsy5wFifbAKlMukOSCavhnsbHQEUs0QLkBDOnOBCRGItoabDJLAT3TsLMyKq
-ln8lCA9vu9InZ0UCtC0RJKpkFHxXorcEGZ3mu7xPeT7eUW9Qj6hsJ3nhvfgD9Tsd
-jOFUoL9NSbGmTvFfM3wQDG1e9kFKvVZ01wN/8GRDEkKlOxP5O3oCvUW4VSa1Rq6u
-fXpV0eFgzt0452QFbx0/Q5RU9+N25EOGcM3zZXzc7SHs2/yvNnCWvmB/RY9o6wxB
-2YGS7nThdzLseBhIGuQPyyrmhwtJImDqa8043vnHIxUJ4RiG4i4=
-=fYC2
------END PGP SIGNATURE-----
+> 
+>>
+>> Whatever the outcome with this patch is, on my upcoming patch series, I
+>> intend to move mt7531_create_sgmii to mt7530.c. Then introduce
+>> priv->p5_sgmii to get rid of mt7531_dual_sgmii_supported().
+> 
+> What is the argument for that?
 
---+8XwfRVUNrqARVTo--
+Nothing for moving mt7531_create_sgmii() but I think introducing 
+priv->p5_sgmii with later patches is in the clear?
+
+> 
+> There is not a single MMIO-connected switch which comes with LynxI PCS.
+> (see above)
+> 
+> Imho we should rather try to work into the opposite direction and move
+> more code only used on either MDIO or MMIO from core to the
+> bus-specific drivers. If needed we can even split them more, eg. have
+> different modules for MT7530 and MT7531, so that even the driver for
+> MDIO-connected MT7530 would not require MTK_PCS_LYNXI.
+
+Interesting, I may work on this in the future. This could benefit my 
+folks too.
+
+> 
+> In that sense I'm a big fan of the structure of the mt76 wireless
+> driver: Have a core module for shared helper functions and then
+> device-specific driver modules. Unfortunately many if not most drivers
+> are doing the exact opposite approach, ie. having some abstration layer
+> which will always need to be extended and changed with every
+> unforeseeable new hardware to be supported which just results in lots
+> of overhead and is a burden to maintain. You can see that in the rt2x00
+> wireless driver which I also worked on a lot: Most of the abstractions
+> aren't even useful with any of the latest hardware generations.
+> 
+> tl;dr: What's wrong with moving functions specific to either variant
+> (MMIO vs. MDIO) into the corresponding modules and keeping the core
+> slim and really only cover shared functionality? This is also why I
+> originally wanted the names of files and Kconfig symbols to reflect the
+> supported hardware rather than the supported bus-type -- I've changed
+> that upon your request and now believe I should have argued more
+> clearly why I made my choice like I did...
+
+Ah that makes sense. I'd like to address this. I was already planning to 
+to do some renaming on the driver. Please, allow me to do the work.
+
+I intend to do this slightly different than your initial patch series 
+though. Like calling the core driver core, instead of common, and making 
+it selectable, and only imply the MT7530 MDIO driver.
+
+We could split the core and mdio/mmio drivers in a way that there's just 
+the core, then the device-specific driver modules. This would mean 
+splitting the MT7530 MDIO driver to MT7530 and MT7531 along with moving 
+code from core to these two drivers. I believe this would apply for 
+MT7988 too. There would be a bit of reused code but it should follow the 
+idea of what you say above. Then we can configure the kconfig accordingly.
+
+Arınç
 
