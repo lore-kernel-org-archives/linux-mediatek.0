@@ -4,92 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28D90C77B76
-	for <linux-mediatek@archiver.kernel.org>; Sun, 16 Apr 2023 11:10:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E45B8C77B61
+	for <linux-mediatek@archiver.kernel.org>; Sun, 16 Apr 2023 12:08:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ymxhQ9TX2WQdTJ+ydPfC8GgwxHoF1StrwXLPfQQbXrc=; b=3GHIeNP83niWpWfz+ZC/hyMhpM
-	qw3+XTUhZtQEtYBzkgxg5w2zhPatPndyMwhohY/clFeJ4/saqWMazlrmsAamgcOEDw9O03yltfnpq
-	OyGtr4+5qGYmWoFtzIKNYrSE8q78EOXuf37Ef7lDu/3SrxNqJOCVKWN490eOn40l18eHFHyo5HCZR
-	6sblC7meJzhdXxBdp81wPHEHTYc/xUfF8O/Q/YhOqi1bv8mqmCFsgZvWelg0OYe7YjAOKvqFYrfAv
-	36nI/4zX46LdGc7WfwJk5mNgVt8rC0LVF0jcSm25gAuKnSQ9SnvHqr/0KFK//74GcheFF/4/NKu7Z
-	TRrlCmIg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=39+OeDsm6CL12dq9k8oC/qsOISai6u0dzCt9lfduzug=; b=bfcvULZxVctaJe0dXSgrnCQVU/
+	ZUw7U72z5h4FgdUP5EiE/p4i2YdSFTclamJkMS+w9D7k9sS0jta6UBga8WOjv6mHCA6fk+4ixGbWO
+	kIgWj1xIy0WVg2oozSuKBJ3EAgLkeD9PXEh6/vhMyurBiMtBTL3SSV/5tyZ+e1ZWz0kkrOXGMnK3b
+	TYnmkXe9JOjB9kZAfSQ1HdoXFgu9N/k0th5+Y2+w2LRT2ljOSIc8hRq82PbwrhAVThqXsaLGJkDsO
+	9cvxWnUwRpHKyNFHtq+Ddr+uxstoinOUMOCRWjfSdNshoAKCYI8LWChXp5IXiwcSdzXJX9dUkEal1
+	wP1aKorA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1po0Gp-00Di5U-0B;
-	Sun, 16 Apr 2023 11:10:11 +0000
-Received: from mout.gmx.net ([212.227.17.21])
+	id 1po1BK-00Dm4h-2Z;
+	Sun, 16 Apr 2023 12:08:34 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1po0Gk-00Di4q-2t;
-	Sun, 16 Apr 2023 11:10:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1681643386; i=frank-w@public-files.de;
-	bh=ymxhQ9TX2WQdTJ+ydPfC8GgwxHoF1StrwXLPfQQbXrc=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=IFWzxJ56LXpFRMyFSPNTvIA5v9oJ0terq/FW1KKzCKls9n9hD44LkqrzQc7kfEtHT
-	 Js1Yld/8V7iktVyv0o8nWLnRDJZpzetxONeMV3S10DU6a34x8YLEcpkeMzHD9yuxW3
-	 IEOPbWlw42EkiYDmCWx7kK4a8ORW/w7UaVBS7AhZkkPXDGwam9k00+wZhids2lxFNY
-	 wlSFbQ3ZtwVyIUz7TwX4mJFW1/eoO/BZt5cUUdclu9uCCEvpVYIBo6Ap/LxzlNCXuE
-	 eOJtQgzRSKKvRbmNHbqJXBhMjffqC/HYunRhYvtREk9UbyslTwUrT+EYjBZf2kOpcO
-	 KSSKBRYBQCGJg==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [217.61.152.230] ([217.61.152.230]) by web-mail.gmx.net
- (3c-app-gmx-bap64.server.lan [172.19.172.134]) (via HTTP); Sun, 16 Apr 2023
- 13:09:46 +0200
+	id 1po1BH-00Dm48-2S;
+	Sun, 16 Apr 2023 12:08:33 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1po1B7-00081r-0z;
+	Sun, 16 Apr 2023 14:08:21 +0200
+Date: Sun, 16 Apr 2023 13:08:14 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Russell King <linux@armlinux.org.uk>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	=?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+	Jesse Brandeburg <jesse.brandeburg@intel.com>
+Subject: [PATCH net-next v2] net: dsa: mt7530: fix support for MT7531BE
+Message-ID: <ZDvlLhhqheobUvOK@makrotopia.org>
 MIME-Version: 1.0
-Message-ID: <trinity-753f5441-ab68-43df-9640-b9b0db7f8491-1681643386248@3c-app-gmx-bap64>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: =?UTF-8?Q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
-Cc: Frank Wunderlich <linux@fw-web.de>, Felix Fietkau <nbd@nbd.name>,
- Vladimir Oltean <vladimir.oltean@nxp.com>, Daniel Golle
- <daniel@makrotopia.org>, John Crispin <john@phrozen.org>, Sean Wang
- <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo
- Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo
- Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Aw: Re: [RFC/RFT v1] net: ethernet: mtk_eth_soc: drop generic vlan
- rx offload, only use DSA untagging
-Content-Type: text/plain; charset=UTF-8
-Date: Sun, 16 Apr 2023 13:09:46 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <2ad08330-59a0-d3b2-214e-13d93dbe35a1@arinc9.com>
-References: <20230416091038.54479-1-linux@fw-web.de>
- <c657f6a2-74fa-2cc1-92cf-18f25464b1e1@arinc9.com>
- <161044DF-0663-42D4-94B8-03741C91B1A4@public-files.de>
- <2ad08330-59a0-d3b2-214e-13d93dbe35a1@arinc9.com>
-Content-Transfer-Encoding: quoted-printable
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:SUiR8hF+FewDGgljpxCW1y4S4fpM7gECbaE3CkqBMqIdBAyTY7LETYV1hoM742uPFLHIr
- YVkhQKp/qAoom3V3ymdrd0oZ0evtIxGs5zB4lMfeXU05+OVgeHWh58OTb6NUxBve93bA7DU4+Fjs
- sTUdhsSTWAC+FU6CukKrqjTmKyQ3bvThF5vuyjRI8TjEgMV4F99+sxyABA4PxjthyKO9Oow++Alg
- LUZIG2pB79ewfbE1KUAtlHqJSVa4lbce5EQO7sYvUma8YScoPXi2ew1ntiKiMQM44+lU7Fohy5IM
- 1Y=
-UI-OutboundReport: notjunk:1;M01:P0:C+O3HvvEQuY=;EO/g9Mg78RLMbfAH98AuOMYVGWF
- BwyDHPC1IuOZneV8Xvdsq97XR6Esw6D5GCGIOeB3oWnXcxMjUJnC9ELwNoN5tPgoB4kKtm298
- sCkMSA3TnIipuJFN1QT69ADzc54ii1oNpoAy+TXk3HCbAS6z1QQ9pBq2C+NJPBC0d7apjGvfx
- KkGh39fEjAI8gw+0fWdGyp9G7RZ9p7OinQzB5aAKqwJEXyTy5lfGyDc1qqWD6/S4YOKvrkSty
- QhHQij9Y2G26+RubsTXICBBVcP7IPUnj2FeFOjhJeeAXrSsesAszCADcq5R+4KUPwsRjKiZzf
- amcM1ag0vWEi/uG6289PhhfQQHocHSLzVIJND9VS9qUn+3E7KP3JbrbIOf5+vXytJnOTKtxUi
- jj9PayiBEThiDVPjII29eSrId3dRgXcQ6ebEmJcB/YO4XyD0i3dntbcRUasswX8NaWgIvTCl8
- qY4C/IKwuFHnAQvLHIwPgoqMwJpck3oIuXW0l+bE3TaTqbTrW0A6Z7QaMS2ZV7p2T1c0PTnV/
- k38IyMRbugvgSaZT1BQ3le0OU3mEceInu01Cm+nw97LmYpTt8QYh7GVHHpEBcW8tXjk0hzx2P
- kwutZgr/iby2n4hywzbeU7pNjpqKQkZfiNz8rfoATjpKujoNZn7yFxqQzmzyigAerEgs+Pc2O
- TipzsYSibSgYyFg462ej3vTU3tpiDR+EIie9pAeb32ZZcU7zAeN2UwobnYaUyLoGU4/540pAP
- USFvAtnhQ/MiVYVzZ6r91A/LZ2gPnmg13Ta49XEWk0OMybh72qjy83/SBxCsun5zIYBaT/vuw
- Ov3cUKT9k8V/jpP17TLOwNJw==
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230416_041007_228765_6E13EE35 
-X-CRM114-Status: GOOD (  25.21  )
+X-CRM114-CacheID: sfid-20230416_050831_797213_96DF13CF 
+X-CRM114-Status: GOOD (  19.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,79 +71,122 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Gesendet: Sonntag, 16=2E April 2023 um 12:55 Uhr
-> Von: "Ar=C4=B1n=C3=A7 =C3=9CNAL" <arinc=2Eunal@arinc9=2Ecom>
-> On 16=2E04=2E2023 13:15, Frank Wunderlich wrote:
-> > Am 16=2E April 2023 11:52:31 MESZ schrieb "Ar=C4=B1n=C3=A7 =C3=9CNAL" =
-<arinc=2Eunal@arinc9=2Ecom>:
-> >> On 16=2E04=2E2023 12:10, Frank Wunderlich wrote:
-> >>> From: Felix Fietkau <nbd@nbd=2Ename>
-> >>>
-> >>> Through testing I found out that hardware vlan rx offload support se=
-ems to
-> >>> have some hardware issues=2E At least when using multiple MACs and w=
-hen receiving
-> >>> tagged packets on the secondary MAC, the hardware can sometimes star=
-t to emit
-> >>> wrong tags on the first MAC as well=2E
-> >>>
-> >>> In order to avoid such issues, drop the feature configuration and us=
-e the
-> >>> offload feature only for DSA hardware untagging on MT7621/MT7622 dev=
-ices which
-> >>> only use one MAC=2E
-> >>
-> >> MT7621 devices most certainly use both MACs=2E
-> >>
-> >>>
-> >>> Tested-by: Frank Wunderlich <frank-w@public-files=2Ede>
-> >>> Signed-off-by: Felix Fietkau <nbd@nbd=2Ename>
-> >>> Signed-off-by: Frank Wunderlich <frank-w@public-files=2Ede>
-> >>> ---
-> >>> used felix Patch as base and ported up to 6=2E3-rc6 which seems to g=
-et lost
-> >>> and the original bug is not handled again=2E
-> >>>
-> >>> it reverts changes from vladimirs patch
-> >>>
-> >>> 1a3245fe0cf8 net: ethernet: mtk_eth_soc: fix DSA TX tag hwaccel for =
-switch port 0
-> >>
-> >> Do I understand correctly that this is considered being reverted beca=
-use the feature it fixes is being removed?
-> >=20
-> > As far as i understood, vladimirs patch fixes one
-> > cornercase of hw rx offload where felix original
-> > patch was fixing more=2E=2Esent it as rft to you to test
-> > if your bug (which vladimir fixed) is not coming in
-> > again=2E If it does we can try to merge both
-> > attempts=2E But current state has broken vlan on
-> > bpi-r3 non-dsa gmac1 (sfp-wan)=2E
->=20
-> I tested this patch on MT7621AT and MT7623NI SoCs on the current=20
-> linux-next=2E Port 0 keeps working fine=2E
+There are two variants of the MT7531 switch IC which got different
+features (and pins) regarding port 5:
+ * MT7531AE: SGMII/1000Base-X/2500Base-X SerDes PCS
+ * MT7531BE: RGMII
 
-looks good so far ;)
+Moving the creation of the SerDes PCS from mt753x_setup to mt7530_probe
+with commit 6de285229773 ("net: dsa: mt7530: move SGMII PCS creation
+to mt7530_probe function") works fine for MT7531AE which got two
+instances of mtk-pcs-lynxi, however, MT7531BE requires mt7531_pll_setup
+to setup clocks before the single PCS on port 6 (usually used as CPU
+port) starts to work and hence the PCS creation failed on MT7531BE.
 
-> So when you use VLANs on non-DSA gmac1, network connectivity is broken?
+Fix this by introducing a pointer to mt7531_create_sgmii function in
+struct mt7530_priv and call it again at the end of mt753x_setup like it
+was before commit 6de285229773 ("net: dsa: mt7530: move SGMII PCS
+creation to mt7530_probe function").
 
-the vlan does not work=2E=2E=2Eit looks it is untagged on rx path=2E i see=
- tagged frames on the other
-end, send tagged back and these are not received tagged on the mac=2E=2E=
-=2Ethis behaviour has brought
-me to felix patch i had rebased here=2E the non-vlan traffic is not affect=
-ed=2E
+Fixes: 6de285229773 ("net: dsa: mt7530: move SGMII PCS creation to mt7530_probe function")
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ drivers/net/dsa/mt7530-mdio.c | 16 ++++++++--------
+ drivers/net/dsa/mt7530.c      |  6 ++++++
+ drivers/net/dsa/mt7530.h      |  4 ++--
+ 3 files changed, 16 insertions(+), 10 deletions(-)
 
-> I've got an MT7621AT device which gmac1 is connected to an external phy=
-=20
-> (sfp-wan, the same case as yours)=2E I'll test VLANs there=2E See if MT7=
-621=20
-> is affected by this as well since the patch log here states this feature=
-=20
-> is kept enabled for MT7621 because only gmac0 is used which is false=2E
+diff --git a/drivers/net/dsa/mt7530-mdio.c b/drivers/net/dsa/mt7530-mdio.c
+index 34a547b88e497..088533663b83b 100644
+--- a/drivers/net/dsa/mt7530-mdio.c
++++ b/drivers/net/dsa/mt7530-mdio.c
+@@ -81,14 +81,17 @@ static const struct regmap_bus mt7530_regmap_bus = {
+ };
+ 
+ static int
+-mt7531_create_sgmii(struct mt7530_priv *priv)
++mt7531_create_sgmii(struct mt7530_priv *priv, bool dual_sgmii)
+ {
+-	struct regmap_config *mt7531_pcs_config[2];
++	struct regmap_config *mt7531_pcs_config[2] = {};
+ 	struct phylink_pcs *pcs;
+ 	struct regmap *regmap;
+ 	int i, ret = 0;
+ 
+-	for (i = 0; i < 2; i++) {
++	/* MT7531AE has two SGMII units for port 5 and port 6
++	 * MT7531BE has only one SGMII unit for port 6
++	 */
++	for (i = dual_sgmii ? 0 : 1; i < 2; i++) {
+ 		mt7531_pcs_config[i] = devm_kzalloc(priv->dev,
+ 						    sizeof(struct regmap_config),
+ 						    GFP_KERNEL);
+@@ -208,11 +211,8 @@ mt7530_probe(struct mdio_device *mdiodev)
+ 	if (IS_ERR(priv->regmap))
+ 		return PTR_ERR(priv->regmap);
+ 
+-	if (priv->id == ID_MT7531) {
+-		ret = mt7531_create_sgmii(priv);
+-		if (ret)
+-			return ret;
+-	}
++	if (priv->id == ID_MT7531)
++		priv->create_sgmii = mt7531_create_sgmii;
+ 
+ 	return dsa_register_switch(priv->ds);
+ }
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index e4bb5037d3525..c680873819b01 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -3018,6 +3018,12 @@ mt753x_setup(struct dsa_switch *ds)
+ 	if (ret && priv->irq)
+ 		mt7530_free_irq_common(priv);
+ 
++	if (priv->create_sgmii) {
++		ret = priv->create_sgmii(priv, mt7531_dual_sgmii_supported(priv));
++		if (ret && priv->irq)
++			mt7530_free_irq(priv);
++	}
++
+ 	return ret;
+ }
+ 
+diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+index 01db5c9724fa8..5084f48a88691 100644
+--- a/drivers/net/dsa/mt7530.h
++++ b/drivers/net/dsa/mt7530.h
+@@ -748,10 +748,10 @@ struct mt753x_info {
+  *			registers
+  * @p6_interface	Holding the current port 6 interface
+  * @p5_intf_sel:	Holding the current port 5 interface select
+- *
+  * @irq:		IRQ number of the switch
+  * @irq_domain:		IRQ domain of the switch irq_chip
+  * @irq_enable:		IRQ enable bits, synced to SYS_INT_EN
++ * @create_sgmii:	Pointer to function creating SGMII PCS instance(s)
+  */
+ struct mt7530_priv {
+ 	struct device		*dev;
+@@ -770,7 +770,6 @@ struct mt7530_priv {
+ 	unsigned int		p5_intf_sel;
+ 	u8			mirror_rx;
+ 	u8			mirror_tx;
+-
+ 	struct mt7530_port	ports[MT7530_NUM_PORTS];
+ 	struct mt753x_pcs	pcs[MT7530_NUM_PORTS];
+ 	/* protect among processes for registers access*/
+@@ -778,6 +777,7 @@ struct mt7530_priv {
+ 	int irq;
+ 	struct irq_domain *irq_domain;
+ 	u32 irq_enable;
++	int (*create_sgmii)(struct mt7530_priv *priv, bool dual_sgmii);
+ };
+ 
+ struct mt7530_hw_vlan_entry {
 
-good idea :)
-
-> Ar=C4=B1n=C3=A7
+base-commit: e61caf04b9f8a2626714ffd12e734c555c758af4
+-- 
+2.40.0
 
 
