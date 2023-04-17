@@ -4,79 +4,166 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8307CC77B70
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Apr 2023 05:59:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4184C77B61
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Apr 2023 06:02:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=HKlZSLWEWS27TmmrJsjEb6N5fnhnBs3PEftroRy9UD4=; b=ApdhKVwtvE+7y5Hp6AvRRV3wNe
-	DLjXEDQSK3tl/SLo/MPyYbzyz4KXFLjfFR3J+bIn6YwXE+4+uPgXfaVgW6oXnN5GVZmOnYM23mvtX
-	ycQl2Z+4y+F+iHgLbCW+LZL2HDZKD+tuk5MpWaXglLTNMKwvvYZn2v2CCWt5aNaLKoTMfHf21zi22
-	UMt99fbJEvEn723sCO6K/A4u9vqU8I/6uhMMGF3C23o84aBAXCCsgtiqsmMhWpbZKXLs4FgSapSR0
-	BBE9N1mlw4DuHXUgyjSSYeyqoXDw8dafWZoXPb8yvbZhNViDA4QZMqE/lnhN0mOtKT1L5mUf4wsYf
-	5n8ySR5g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SAy1SpkTyQo9QZs/9Bm9XvAlxhnNS4FmTew0chg6IgY=; b=SglwozAH4Udx64HKLN4fN+rRAw
+	H8cEUSpnUxCs0qAI3G5kaTdtqF2BdVbml6iXT7Qw6+++AMV1DFBsYNjTvIN1DysFyWxC13UJ1sR4A
+	6kUfWQkfG+kMDx93uIJx9NIEsxbS0RC4zosNGc0ewVg0gNe2g4A2dnsj/fQw6q4ZDCJ1pNalMKmWg
+	fjvyvI9ghqnhCmXd6GLVtDHeizw0ZJz7uJXEwY46QlZipl2kdqkrUamADHxhTsSR5bDIuX4HDus6i
+	U0f4oDfZk0RooW2WSctWjjJWq3XTy3QJh1qsdii1DcbHUVRsIgUnyTCgZQrZ9ClkRxhQVGkEEqog3
+	WxfxLXBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1poHtF-00EyH2-2Q;
-	Mon, 17 Apr 2023 05:59:01 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1poHwc-00EyyS-1h;
+	Mon, 17 Apr 2023 06:02:30 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1poHtD-00EyFl-1r;
-	Mon, 17 Apr 2023 05:59:00 +0000
-X-UUID: eea51898dce411ed8687db9d93187ff1-20230416
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=HKlZSLWEWS27TmmrJsjEb6N5fnhnBs3PEftroRy9UD4=;
-	b=sPR1D3BGJkQ8+bsjJP8F3d2LCf1OkwqB2UVoGQMpnIO/ukJsbA7rxL9Tp4u7rGrHVwRBafBqlT13ZZANzuAAJMAEL5XN60cqjcDkdo4J5uEy/gjO5ov2ioHntzWDvIL+CmfcW4BxMpYsC+XEALnMVHJwnQDQnDgwDYgL2rtptdI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:d1412e16-2982-49cb-a501-4a9984f017f7,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:120426c,CLOUDID:cb222feb-db6f-41fe-8b83-13fe7ed1ef52,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: eea51898dce411ed8687db9d93187ff1-20230416
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1106738079; Sun, 16 Apr 2023 22:58:53 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Mon, 17 Apr 2023 13:48:18 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Mon, 17 Apr 2023 13:48:17 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Chen-Yu Tsai <wenst@chromium.org>, Nicolas Dufresne
-	<nicolas@ndufresne.ca>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	id 1poHwZ-00EyxO-0M
+	for linux-mediatek@lists.infradead.org;
+	Mon, 17 Apr 2023 06:02:29 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1poHwH-0002G1-KI; Mon, 17 Apr 2023 08:02:09 +0200
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1poHwE-00Bnsb-Cs; Mon, 17 Apr 2023 08:02:06 +0200
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1poHwD-00Dolu-4U; Mon, 17 Apr 2023 08:02:05 +0200
+Date: Mon, 17 Apr 2023 08:02:03 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: linux-aspeed@lists.ozlabs.org, Alim Akhtar <alim.akhtar@samsung.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Benson Leung <bleung@chromium.org>,
+	Ajye Huang <ajye_huang@compal.corp-partner.google.com>,
+	Rory Liu <hellojacky0226@hotmail.com>,
+	Scott Chao <scott_chao@wistron.corp-partner.google.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Ettore Chimenti <ek5.chimenti@gmail.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Sean Young <sean@mess.org>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Ricardo Ribalda <ribalda@chromium.org>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Yang Yingliang <yangyingliang@huawei.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Antti Palosaari <crope@iki.fi>,
+	Michael Tretter <m.tretter@pengutronix.de>,
+	Ming Qian <ming.qian@nxp.com>, Zhou Peng <eagle.zhou@nxp.com>,
+	Eddie James <eajames@linux.ibm.com>, Joel Stanley <joel@jms.id.au>,
+	Eugen Hristev <eugen.hristev@collabora.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Bin Liu <bin.liu@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+	Houlong Wei <houlong.wei@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Moudy Ho <moudy.ho@mediatek.com>, Qiheng Lin <linqiheng@huawei.com>,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Dmitry Osipenko <digetx@gmail.com>,
+	Xavier Roumegue <xavier.roumegue@oss.nxp.com>,
+	Mirela Rabulea <mirela.rabulea@nxp.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Rui Miguel Silva <rmfrfs@gmail.com>, Robert Foss <rfoss@kernel.org>,
+	Todor Tomov <todor.too@gmail.com>, Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Stanimir Varbanov <stanimir.k.varbanov@gmail.com>,
+	Vikash Garodia <quic_vgarodia@quicinc.com>,
+	Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>,
+	Fabrizio Castro <fabrizio.castro.jz@renesas.com>,
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+	Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>,
+	Jacopo Mondi <jacopo@jmondi.org>,
+	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
+	Nathan Chancellor <nathan@kernel.org>,
+	Yang Li <yang.lee@linux.alibaba.com>,
+	Dan Carpenter <error27@gmail.com>,
+	Jacob Chen <jacob-chen@iotwrt.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Dafna Hirschfeld <dafna@fastmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Colin Ian King <colin.i.king@gmail.com>,
+	Sylwester Nawrocki <s.nawrocki@samsung.com>,
+	Sylwester Nawrocki <sylvester.nawrocki@gmail.com>,
+	=?utf-8?Q?=C5=81ukasz?= Stelmach <l.stelmach@samsung.com>,
+	Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
+	Jacek Anaszewski <jacek.anaszewski@gmail.com>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Fabien Dessenne <fabien.dessenne@foss.st.com>,
+	Patrice Chotard <patrice.chotard@foss.st.com>,
+	Hugues Fruchet <hugues.fruchet@foss.st.com>,
+	Jean-Christophe Trotin <jean-christophe.trotin@foss.st.com>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Yong Deng <yong.deng@magewell.com>,
+	Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+	"Lad, Prabhakar" <prabhakar.csengg@gmail.com>,
+	Benoit Parrot <bparrot@ti.com>, Hyun Kwon <hyun.kwon@xilinx.com>,
+	Michal Simek <michal.simek@xilinx.com>,
+	ye xingchen <ye.xingchen@zte.com.cn>,
+	Eduardo Valentin <edubezval@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	"Daniel W. S. Almeida" <dwlsalmeida@gmail.com>,
+	Shuah Khan <skhan@linuxfoundation.org>,
+	Daniel Almeida <daniel.almeida@collabora.com>,
+	Hans Verkuil <hverkuil@xs4all.nl>,
+	Guenter Roeck <groeck@chromium.org>,
+	Fabio Estevam <festevam@gmail.com>,
+	linux-stm32@st-md-mailman.stormreply.com,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	chrome-platform@lists.linux.dev, linux-samsung-soc@vger.kernel.org,
+	Konrad Dybcio <konrad.dybcio@linaro.org>, openbmc@lists.ozlabs.org,
+	Kieran Bingham <kieran.bingham@ideasonboard.com>,
+	linux-rockchip@lists.infradead.org,
+	NXP Linux Team <linux-imx@nxp.com>, linux-sunxi@lists.linux.dev,
+	linux-media@vger.kernel.org,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-tegra@vger.kernel.org, linux-amlogic@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>, Yunfei Dong <yunfei.dong@mediatek.com>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, Hsin-Yi Wang
-	<hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter
-	<daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH 0/6] media: mediatek: vcodec: Fix decoder under flow and plt test fails randomly 
-Date: Mon, 17 Apr 2023 13:48:10 +0800
-Message-ID: <20230417054816.17097-1-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	Andrew Jeffery <andrew@aj.id.au>, linux-renesas-soc@vger.kernel.org,
+	kernel@pengutronix.de
+Subject: Re: [PATCH 000/117] media: Convert to platform remove callback
+ returning void
+Message-ID: <20230417060203.le3izz56wt73si6k@pengutronix.de>
+References: <20230326143224.572654-1-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="ogmoi7vlr4vxdkq5"
+Content-Disposition: inline
+In-Reply-To: <20230326143224.572654-1-u.kleine-koenig@pengutronix.de>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230416_225859_628593_1EA3BDC5 
-X-CRM114-Status: UNSURE (   7.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230416_230227_309811_98DA9BE4 
+X-CRM114-Status: GOOD (  23.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,34 +178,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-1: Getting decoder under flow error randomly when do stress test with youtube;
-2: Video display black when do plt test with one night.
 
-patch 1 can't regard getting lat buffer as fail.
-patch 2 ~ 3 using decoder status instead of core work count.
-patch 4 ~ 6 using empty lat buffer as the last one to flush decoder.
----
-Yunfei Dong (6):
-  media: mediatek: vcodec: can`t regard getting lat buffer fail as error
-  media: mediatek: vcodec: add the definition of decoder status
-  media: mediatek: vcodec: using decoder status instead of core work
-    count
-  media: mediatek: vcodec: add one empty lat buffer as the last one to
-    decode
-  media: mediatek: vcodec: move core context from device to each
-    instance
-  media: mediatek: vcodec: using empty lat buffer as the last one
+--ogmoi7vlr4vxdkq5
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
- .../mediatek/vcodec/mtk_vcodec_dec_drv.c      |   1 -
- .../vcodec/mtk_vcodec_dec_stateless.c         |   2 +-
- .../platform/mediatek/vcodec/mtk_vcodec_drv.h |   2 -
- .../vcodec/vdec/vdec_h264_req_multi_if.c      |   6 +-
- .../vcodec/vdec/vdec_vp9_req_lat_if.c         |   4 +-
- .../platform/mediatek/vcodec/vdec_msg_queue.c | 105 ++++++++----------
- .../platform/mediatek/vcodec/vdec_msg_queue.h |  23 +++-
- 7 files changed, 69 insertions(+), 74 deletions(-)
+Hello Mauro
 
--- 
-2.18.0
+On Sun, Mar 26, 2023 at 04:30:25PM +0200, Uwe Kleine-K=F6nig wrote:
+> Hello,
+>=20
+> this series adapts the platform drivers below drivers/pci to use the
 
+copy&paste failure here: s/pci/media/ of course.
+
+> .remove_new() callback. Compared to the traditional .remove() callback
+> .remove_new() returns no value. This is a good thing because the driver c=
+ore
+> doesn't (and cannot) cope for errors during remove. The only effect of a
+> non-zero return value in .remove() is that the driver core emits a warnin=
+g. The
+> device is removed anyhow and an early return from .remove() usually yield=
+s a
+> resource leak.
+>=20
+> By changing the remove callback to return void driver authors cannot
+> reasonably assume any more that there is some kind of cleanup later.
+>=20
+> Only three drivers needed some preparation first to make sure they
+> return 0 unconditionally in their remove callback. Then all drivers
+> could be trivially converted without side effects to .remove_new().
+>=20
+> The changes to the individual drivers are all orthogonal. If I need to
+> resend some patches because of some review feedback, I'd like to only
+> send the patches that actually needed changes, so please pick up the
+> remaining patches that don't need changing to reduce the amount of mail.
+
+I didn't hear anything back about application of this series. Is there a
+blocker somewhere?
+
+Apart from the three preparatory patches that are a precondition to the
+conversion of the respective drivers, the patches are all pairwise
+orthogonal. So from my POV the best would be to apply all patches that
+still apply (which might be all), I will care for the fallout later
+then.
+
+Best regards
+Uwe
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--ogmoi7vlr4vxdkq5
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmQ84NoACgkQj4D7WH0S
+/k65OwgAkM/14eqkcxTg0/453d2uwhPt/jiDru0C14NvpnN4AFU0sa+yzp1GfYRO
+WfxjudHvw/OXq+eolRu8PrqJIpLHvQhOyjblYLXPqTB8RvdJSXI2Q1ZJjozYjCNJ
+WeBerHqAXGOnxd+2kbfCs2VZWYgmJpj1VCXeRYekMB7Kv1tmfXNXetaHIH7Rypw1
++Si1nhZN4Sk68bdXU+RaQc6UP5/E0VohPVWnSB1tsTQVL4sogBkjfDl4tueHEZxj
+959kirh12hfcFcqtz1mQ1u7V1dIc136PR+Kg/2b+GNaFbe/Zdsno5HbnbQl+NwL/
+GWFmd+GksqXkwA3k1tkqVdOFEPO4cQ==
+=K38Q
+-----END PGP SIGNATURE-----
+
+--ogmoi7vlr4vxdkq5--
 
