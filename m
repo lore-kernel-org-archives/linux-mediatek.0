@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 066F1C77B72
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Apr 2023 12:42:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C227C77B72
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Apr 2023 12:44:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3wAUppwb1XgTB3vYZKNO4rgejlRYe2gMDz1cNcEyobE=; b=dahUFPItHvYk95QHKv9XweGPAX
-	HSErjyON6BVsN70ABOBws7D+FJrx40MydZ+Ep5BEOeJZUSbVguWxOHtSsfzaiMQUp5eB/jgrZn72t
-	Zu7VeZrGugX45IdAjgcJpKRrFgRWZuGJZlesdw+8SdbybpZsVXWbX4Y652WaPaJ2y9K4dmd3M6hMl
-	NiQXRAmMGZTaJy+Amw+vEaa+NCGQ06YC1pZyFR+5H0n3xQp3D6Hd3CH+3Dj9pkD3ShwSt1pKRzuXk
-	HK0ryBunDDOQUWrGSRW63uqKn6J0z22Spv1VfpuY/odluUhpmKaXk8FHcTCKrrqmFsT7HA5b4dpqS
-	tC6EMznQ==;
+	bh=AdTNdfngFza79TJjlriNkVPuTF/kZATl6LItXTeXEWE=; b=v9YtPZ3QJQfnaB+SwS5HNF1ixh
+	5cWzgdWJY9qhthrAPsGUFsur78juA2v9p7t4QzVRJpD4Ao7RoS8LJS4sXUvrGZCHEYgqnIoTKewda
+	dIEamqOjv24znd4E6vRz+P9ryd8TRisp74OEvB8BaYKbOugc0JshaxcIAyUs9aviX/OPx9LBM+uEc
+	NABlUmAMQ9LzkeBG75+msTdj8vcXpzjkCCBxETiEpXAJFjgr2oH0aDLKrzqz9SvcHjmn+LSHIokbQ
+	wIYwaDz9nNK+eQ0UU4Vs01bVtHNFiPas1wzSilrcjouST7264cgS3V3O0G4Vkto9xzg1b/1/hDybA
+	PAYT4+cQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1poOBe-00GBAk-0E;
-	Mon, 17 Apr 2023 12:42:26 +0000
-Received: from mout.web.de ([212.227.15.14])
+	id 1poODo-00GBkG-0Q;
+	Mon, 17 Apr 2023 12:44:40 +0000
+Received: from mout.web.de ([212.227.15.3])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1poOBZ-00GB98-2r;
-	Mon, 17 Apr 2023 12:42:23 +0000
+	id 1poODj-00GBiC-32;
+	Mon, 17 Apr 2023 12:44:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de; s=s29768273;
-	t=1681735321; i=markus.elfring@web.de;
-	bh=/7c9gMj4NjcLvGOLI8XeYKs0UQMjflGtLvrD94aZldM=;
+	t=1681735456; i=markus.elfring@web.de;
+	bh=qDbD7coCJdS/2vghLIEPg9MEuMfbhlibiv4/QKu/6Ko=;
 	h=X-UI-Sender-Class:Date:Subject:From:To:Cc:References:In-Reply-To;
-	b=Yr6MzbXfXp6dUy1u9zOA1ynxGRukQ6znbHe9Xu38jlkZMWrFPs8tRDJh/MvWx5mIP
-	 9nLOjvAchnSwqS9DRLdu7RZf9j6txlI5FhP8k9zaBUh2cVVkijlgjTPMn5L9pD6lQ4
-	 bPRAixQJutGqTtzwBpm8ZcKsNA89Ucz7N6TQIsuMBPKpvkU/IX7QodF+r+mtCOxjHg
-	 FerXX+Vfzc6sLrt+1cA8iO/so4BRGW37s3GLuszDPUnYbFo7eyAfsIhgXLoBF8EB42
-	 68ctrtMoP9ASeDZUL1+k4ynlSMZGOkw5kJ7niZMjEOBT/rnScWZnFD2RA7/ZKZ4KAC
-	 m0DmPmrvbNtjg==
+	b=KEjOgP7eoC1d5PY6UHjH1inXCHIIDZLUn/kLNZRyKkntwWD2tiVRU60xuD2DIpdOV
+	 yY5871reCDzSeViBoG7BQ+JOSZC6HgiYTOGfy54QUF3fztBcQAJ/mSsG+5QK8XgL5m
+	 tdAT7alHVL99YMva8SIOzkxgo5qVGYGZmXm8zdDyX5MT3mdCy450IcfMQxLlBZ6su9
+	 PkJb8o8tKK9d5E0f9pLnlyFt3g+CAjGdb3KcvVpOzlqdWit+AacQoq1OGX7K1sv5X4
+	 csF/On+W6fvLyD8p20o9+0AADmvIV/UVK9qehvLbimc7cM5FjX5Bl16BpcUSLbf5BM
+	 e0sjeD/2hKugA==
 X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.178.21] ([94.31.85.83]) by smtp.web.de (mrweb006
- [213.165.67.108]) with ESMTPSA (Nemesis) id 1MFayw-1pYNDa3oy6-00HVAa; Mon, 17
- Apr 2023 14:42:00 +0200
-Message-ID: <12efbbad-cc54-0816-c729-d9e2c81d591d@web.de>
-Date: Mon, 17 Apr 2023 14:41:57 +0200
+Received: from [192.168.178.21] ([94.31.85.83]) by smtp.web.de (mrweb005
+ [213.165.67.108]) with ESMTPSA (Nemesis) id 1MPrPT-1q1ucW3HwR-00Mp6E; Mon, 17
+ Apr 2023 14:44:15 +0200
+Message-ID: <4a357fbe-4f9d-37d1-0be1-93ca754698e9@web.de>
+Date: Mon, 17 Apr 2023 14:44:14 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.0
-Subject: [PATCH 1/2] media: mediatek: vcodec: Delete null pointer checks in
- vdec_vp9_slice_single_decode()
+Subject: [PATCH 2/2] media: mediatek: vcodec: Move variable assignments behind
+ null pointer checks in vdec_vp9_slice_single_decode()
 Content-Language: en-GB
 From: Markus Elfring <Markus.Elfring@web.de>
 To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, kernel-janitors@vger.kernel.org,
@@ -70,27 +70,28 @@ References: <40c60719-4bfe-b1a4-ead7-724b84637f55@web.de>
 In-Reply-To: <1d945069-00d3-7d9e-b783-96c368ff114b@web.de>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:dmpSxqFnjQJG39btpsm/kJMi8zW5CbPNG2lpTaUEWts4Tb1l5n5
- j8DBuas0b2aKLCdMHlPQ2hupkb6bMJa45EtyuOq/LUSYnyiy87LEnoHQ5CyBJ9tSGctQOxz
- VvEge1nQ6mKXNb3HjKiL/r0qjwxRRiWaOtAGOALFMxQDjR9UxTa2QFb3QokMpDdAVd7n+Uj
- CaplmyzTnzmvAJo4ifPYA==
-UI-OutboundReport: notjunk:1;M01:P0:Easlr+g+S+E=;dHeKA2+2cVRkKDVnkADABh4UljX
- OnDwg80UsQK6yGs6txcyAnJMy0jlbSqmhXzJB8eHxNzpPuaPFFmoOwh1KyK/Qx+jUK/ctUr9e
- FTiCJm5dHw4JgX2KpEEROgom8M6vKcfLcsGb+U+XAgTHNctyzpHBLswx+WJLpitCK9qHMX9TQ
- fGPsppc4/TWkNr2SsU/UMbo0V92Q8inaTD5OngjfXFaaiRqrlhUOj0DTe9ptMGi9uqzSyETXS
- BiIsOfwdcC3Ym8Rw10wK2m3u2cus65xkTUUC61JHeZ8llN9j/yxoLCbcrNtdQNEuaoIfJ2cVW
- 5XiyyKgAU3V6NfjovRsyK5aDn5yKQBQ61LEc6hFvLOvot/H4ocHXP9xwb4MHnC0m3ZQZg/TO4
- w3w41y1FuODY79hjubw08GrIf5qYrrgxKwqFtri10O6kCo4/M85toriF8kFcr8f90PegVYFOE
- OB+RfnqGj6TpWn3NwJc6wHj4OJJeP8TfGH1l9s6/Z0BdPIHJetNY2UOgx3lSgVcF8nkyFq6r0
- /Lz3EH2Esr5wEGyx7cErGLGH8HTxSuNWdU/7Fpi3ew+o/olKfvSqs2Mol2df2+NPPWb1N75pO
- LA/gaOOTZKG4QSNE4Zbyl+pWH82CqYDqPnKE+yzHfznvTpxObkPciaoae+TsO6dYhx339+5u3
- c+dI8LKJvJE6gI+5O10KccJTaYISUAIY8mBnYQqxie8C94y0RQK42o9b7sjlToHjVHXziCJxz
- hcOzlPDDEE+ZNVICKZH4IlmDrMjsKECoFY6MWs6Q6KJ7r1wISaBdEds2dB4SJ0qqqjsyw6RzC
- BKYiydO1Oo8McfeFZ6kc4DLCkrh94WuMO9B0fNQTg12vVzrZtzuHYegLJaLGBe3hhCUi6y/s/
- teDfBz15//6hj6Drda9DdNGtZOS1zsDg90fEUPcSkxpQcBT3SX3i/UVeh
+X-Provags-ID: V03:K1:6QuD1QlYQUklTPHI55F/pOJ74eoA08cFgoFR3pUXzqg7KkqkCGb
+ vfSW0TZWJeguxYecDytyW8/z9+6AUkN6oXtchooluTt+S62j3IV+JyC86VDiFE65xtZa2Gh
+ /68nhN6TfWRwWLTxgyzzmYPFt8D9Xlpyz2VTQlorBP/oo9rMUQTkqlkDuQ+26YtK0P6839A
+ A1eAkYZIagDBFkTfXKAQA==
+UI-OutboundReport: notjunk:1;M01:P0:CWNCASpe+a4=;1DRkwAqrwvRiACXmvTDeqvXjEmi
+ oqdABA8YJZc/XMyY9mcjY4XPxroiRBLH/w3MpNK1GXPH8Sp/x/rSGZahYZm7U7Ry5c6d2YpYw
+ GLC4ixDQ1QLfWFvzW6OtTHRmE/Dg5VjbocNbkIvuYprq50ytv7PlzMm07j7CrBMRtK9DQ9gAi
+ T5Y4B1k5BHfTihy7o2w6NvdAIAe3nxOwBnR5aUgQjEWLFubluPSthoM4bvO1WLaaLzNKyJN5+
+ Opg3KtWSABK5gvA35jorZ1SVmjXrlLn9pFJuEFmOQL20xydpD6wZlVXrKiOlJvR59+Nv/k949
+ FhUtFYk6ij26La5xnOtnmLufrFWedksMGmOWDnmcoERfxvV4ObCaxm6Rx1huSnKTskEecso2G
+ aNARatVRcVXOoIu15lSHBNF6pxAkctxLcbJzkkTL4Gb8vW30KVZ7eYM2Mi72E8IrTAdfQcgYC
+ YohrIDyOvpYvkYbYj8Q3wF4pOrfb4QUDxAzICihFVXFQGo0CPoaAcRdaiJfo6SAf/KEhEd3Wr
+ xsTaLG47SyU8PbszIs2cFP8kPJsZAuvuk/ZNimp3yIWgNLcXi7ifM/kkFYHZ29M1RyPf2YKm/
+ K9TI71NA/iOFeGwPM+FL3Odn7EAUvsNj4bU1JgyHhhsbiazpT2NlqbAaxG3LDpYCRwF4PWXjo
+ kk8naRv50fhphndGuElqL+ueTy56Fyw2xvkNnUXAMxhmkF879Bbey8JowItOV2B0ImhHqF4YO
+ 4Y1Bc0ANxy2d5q3Oewcr3+VSgM6h4msR4ayU+4jF8v1QbOxtBsrm4Rf7XHOsjOfSgB4pGtfkJ
+ W4fFeUbInMnkj/H/YOVLxHvLW1rDW5ph8K4aTzZJcFyAWzrMNGuack9PIFNMW7KBAun9ZlxeJ
+ lJ0eDPbY0nKn07JGThVfwaCKRewgIGmRh5F5gUESYo6rquJ0jhkT2o7xnimnS1U70JSWPYO08
+ ooWviw==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230417_054222_205712_63FAEBB5 
-X-CRM114-Status: UNSURE (   8.32  )
+X-CRM114-CacheID: sfid-20230417_054436_271076_857705A6 
+X-CRM114-Status: UNSURE (   9.66  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -106,35 +107,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Date: Mon, 17 Apr 2023 13:43:31 +0200
+Date: Mon, 17 Apr 2023 14:19:13 +0200
 
-Extra null pointer checks became unwanted for
-the input parameter validation in the implementation of
-the function =E2=80=9Cvdec_vp9_slice_single_decode=E2=80=9D.
-Thus omit an if statement at the beginning.
+The addresses which were assigned to the variables =E2=80=9Cinstance=E2=80=
+=9D,
+=E2=80=9Cpfc=E2=80=9D and =E2=80=9Cctx=E2=80=9D would not be used if a nul=
+l pointer was passed by
+the input parameter =E2=80=9Cbs=E2=80=9D.
+Thus move these assignments behind corresponding pointer checks.
 
-Link: https://lore.kernel.org/kernel-janitors/0341924c-7f0a-28aa-eeae-f7de=
-69ab36d8@xs4all.nl/
 Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
 =2D--
- .../media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c   | 2 --
- 1 file changed, 2 deletions(-)
+ .../platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c  | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_=
 if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-index cf16cf2807f0..8430098ed0b1 100644
+index 8430098ed0b1..562fe07d3731 100644
 =2D-- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
 +++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-@@ -1995,8 +1995,6 @@ static int vdec_vp9_slice_single_decode(void *h_vdec=
-, struct mtk_vcodec_mem *bs,
+@@ -1989,22 +1989,23 @@ static int vdec_vp9_slice_get_param(void *h_vdec, =
+enum vdec_get_param_type type,
+ static int vdec_vp9_slice_single_decode(void *h_vdec, struct mtk_vcodec_m=
+em *bs,
+ 					struct vdec_fb *fb, bool *res_chg)
+ {
+-	struct vdec_vp9_slice_instance *instance =3D h_vdec;
+-	struct vdec_vp9_slice_pfc *pfc =3D &instance->sc_pfc;
++	struct vdec_vp9_slice_instance *instance;
++	struct vdec_vp9_slice_pfc *pfc;
+ 	struct vdec_vp9_slice_vsi *vsi;
  	struct mtk_vcodec_ctx *ctx;
  	int ret;
 
--	if (!instance || !instance->ctx)
--		return -EINVAL;
- 	ctx =3D instance->ctx;
-
+-	ctx =3D instance->ctx;
+-
  	/* bs NULL means flush decoder */
+ 	if (!bs)
+ 		return vdec_vp9_slice_flush(h_vdec, bs, fb, res_chg);
+
++	instance =3D h_vdec;
++	ctx =3D instance->ctx;
+ 	fb =3D ctx->dev->vdec_pdata->get_cap_buffer(ctx);
+ 	if (!fb)
+ 		return -EBUSY;
+
++	pfc =3D &instance->sc_pfc;
+ 	vsi =3D &pfc->vsi;
+
+ 	ret =3D vdec_vp9_slice_setup_single(instance, bs, fb, pfc);
 =2D-
 2.40.0
 
