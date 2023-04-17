@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22CF4C77B78
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Apr 2023 09:36:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 751B8C77B72
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Apr 2023 09:47:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2dhkFMtEgbv1YyjhhA/IlP4o0TCsb74Fq1hPNph8NtM=; b=AmnzyV7F0SdD8hXkyQ58kZCxSk
-	Fg8NLhFCgVNmu968qxfucQ0bKAAppHMR7OcZ9HF7PiU9VgCNJYe5NLgIoBz5CZzuugVEvmZuYjY6s
-	VskzYGxd6tcYKJuCPhHxATmF4mxfvppmicnjynykagS5xAz8xx/op0nm4z7DQBE+w9iHgwCYPQ5SU
-	xY0pyV4wug56AjLLIl2iIFvOwpCZWFEfbnzxWf3zC+Ms2Tv8SqKaIFxBGOZIvOdXu5xNI0+IMoBmh
-	B70CrCTgzV86K4xZF1QDSAegp/qH9pgjmgVdfTawYJ1bzOAgkGLcEqCt/0NM19/Mo0/OvSZAQ4cw2
-	YiQnQBnw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NKCkdEg5aJ3JRFS1sh5Igra4N928b73FCh4yQqzNjv4=; b=ExOufe8ayovekk49wEICy0TT+H
+	ijLfZ3fEyztu+55yIgV6qt76odtr79D7jvFrsGpGDEgaAh1O3LQjK8YfPQkE42wIv9BrVmU22XowQ
+	aec21jCuwPdtRLd+NZGslCFOa4Ex01DEr1mH05TLnpoXbEc9e5PLKlIDARS6gDy9iOPydqb+dS6un
+	eOgv9wyQSZTTy/UdwqC4X34aUQANNVzy0Y794flkIRr4VVtPtcLO1PqDLzNRQwt5FJkZO2fCUgFB6
+	kcYqJWltoQ3kgxKWex1gYwamABZZ46I2ii3UA3Y/Awsyggk5WzIpP62kTBiVw9ZFZsQ5lj9cphTFx
+	Pbq6CpgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1poLHD-00Fanf-1G;
-	Mon, 17 Apr 2023 09:35:59 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1poLRl-00FceN-2L;
+	Mon, 17 Apr 2023 09:46:53 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1poLHA-00FamR-0B;
-	Mon, 17 Apr 2023 09:35:57 +0000
-Received: from [IPV6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2] (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D032F66030BF;
-	Mon, 17 Apr 2023 10:35:53 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1681724154;
-	bh=2ela0OE3EzNbVcej6d6Wb6FQs6kE2UzvgK4k9tO5HZE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=gKKxXKWq2YTjMOxBZqZoQVdZ6AYtfX6HoOa/p48i2UL9jPXOpqrB2mX2F/wq8FWWU
-	 PsaAK0O1E0SPtQ9kP+NppDYxglNsUgSw1VcIdyfS/BmF/oyifBP39g86P1gNyGMNsF
-	 Wf17/y0+0sKLIP5ZErZrXgycCe7XKQ+G0lbWEp8G5ykF8kwkIrPy+SV3WZplJ9iHGP
-	 WW8EeZHPHDRL4fyOb1F8Nh+zmcFtg2R+E5e1CbZIuBJVJXgzcbPopUv+CGEu/tHeZl
-	 rk53Kqoi2CCPMii78chkcps4iq91BrEYfKV5hep1DJh1dKwTKDsYrq3gw879OoC2fq
-	 UgH+4Fcj1HCfA==
-Message-ID: <4b58c2a9-0861-e79a-c740-954cdc193599@collabora.com>
-Date: Mon, 17 Apr 2023 11:35:50 +0200
+	id 1poLRg-00Fccl-0A;
+	Mon, 17 Apr 2023 09:46:51 +0000
+X-UUID: c16bd996dd0411edb7d8d11f642b8e78-20230417
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=NKCkdEg5aJ3JRFS1sh5Igra4N928b73FCh4yQqzNjv4=;
+	b=jtfTwGqREXCUrVwa22WUWAw6bMPxl8f++eVgFFmbJ64h/w8eqoupY/MrIBUSezYDoVAJQgZawPVDh4iXW8Me2fI0zyxBda9yJfulWbLvQliwGFi3nGTX4Wu1iBJWyANYSSAA+kQl7mLaa/SXCdjPEiRU9TIgVnnQKhS8IM4qQTg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22,REQID:4b7ca3a5-34b0-4cf2-8b9a-ce0cbb33572f,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:120426c,CLOUDID:b99996a1-8fcb-430b-954a-ba3f00fa94a5,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|-5,EDM:-3,IP:ni
+	l,URL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 1,FCT|NGT
+X-CID-BAS: 1,FCT|NGT,0,_
+X-UUID: c16bd996dd0411edb7d8d11f642b8e78-20230417
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <haibo.li@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1255314862; Mon, 17 Apr 2023 02:46:41 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Mon, 17 Apr 2023 17:46:38 +0800
+Received: from mszsdtlt102.gcn.mediatek.inc (10.16.4.142) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Mon, 17 Apr 2023 17:46:38 +0800
+From: Haibo Li <haibo.li@mediatek.com>
+To: <linus.walleij@linaro.org>
+CC: <a.anurag@samsung.com>, <alexander.sverdlin@nokia.com>,
+	<amergnat@baylibre.com>, <angelogioacchino.delregno@collabora.com>,
+	<ardb@kernel.org>, <catalin.marinas@arm.com>, <haibo.li@mediatek.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <linux@armlinux.org.uk>,
+	<matthias.bgg@gmail.com>, <rmk+kernel@armlinux.org.uk>,
+	<xiaoming.yu@mediatek.com>
+Subject: Re: [PATCH v3] ARM:unwind:fix unwind abort for uleb128 case
+Date: Mon, 17 Apr 2023 17:46:38 +0800
+Message-ID: <20230417094638.153213-1-haibo.li@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <CACRpkdZf0vQL9bJtGaKfn0wBPTQTZWsg0G7UTB1dmXhfi_2KmA@mail.gmail.com>
+References: <CACRpkdZf0vQL9bJtGaKfn0wBPTQTZWsg0G7UTB1dmXhfi_2KmA@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.1
-Subject: Re: [PATCH 4/6] media: mediatek: vcodec: add one empty lat buffer as
- the last one to decode
-Content-Language: en-US
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai
- <wenst@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?= <nfraprado@collabora.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
- Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20230417054816.17097-1-yunfei.dong@mediatek.com>
- <20230417054816.17097-5-yunfei.dong@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230417054816.17097-5-yunfei.dong@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230417_023556_225129_6AA4F4DE 
-X-CRM114-Status: UNSURE (   8.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230417_024648_107179_98264C01 
+X-CRM114-Status: GOOD (  12.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,18 +87,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/04/23 07:48, Yunfei Dong ha scritto:
-> Adding one empty lat buffer with the parameter 'is_empty_flag = true' used
-> to flush core work queue decode.
-> 
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-
-Since commit [6/6] depends on this one, you should either squash this with [6/6]
-or add the same Fixes tag to this.
-
-I think that the most sensible option is to squash it.
-
-
-Regards,
-Angelo
+> On Fri, Apr 14, 2023 at 8:10 AM Haibo Li <haibo.li@mediatek.com> wrote:=0D
+> =0D
+> > When unwind instruction is 0xb2,the subsequent instructions are=0D
+> > uleb128 bytes.=0D
+> > For now,it uses only the first uleb128 byte in code.=0D
+> >=0D
+> > For vsp increments of 0x204~0x400,use one uleb128 byte like below:=0D
+> > 0xc06a00e4 <unwind_test_work>: 0x80b27fac=0D
+> >   Compact model index: 0=0D
+> >   0xb2 0x7f vsp =3D vsp + 1024=0D
+> >   0xac      pop {r4, r5, r6, r7, r8, r14}=0D
+> >=0D
+> > For vsp increments larger than 0x400,use two uleb128 bytes like below:=
+=0D
+> > 0xc06a00e4 <unwind_test_work>: @0xc0cc9e0c=0D
+> >   Compact model index: 1=0D
+> >   0xb2 0x81 0x01 vsp =3D vsp + 1032=0D
+> >   0xac      pop {r4, r5, r6, r7, r8, r14}=0D
+> > The unwind works well since the decoded uleb128 byte is also 0x81.=0D
+> >=0D
+> > For vsp increments larger than 0x600,use two uleb128 bytes like below:=
+=0D
+> > 0xc06a00e4 <unwind_test_work>: @0xc0cc9e0c=0D
+> >   Compact model index: 1=0D
+> >   0xb2 0x81 0x02 vsp =3D vsp + 1544=0D
+> >   0xac      pop {r4, r5, r6, r7, r8, r14}=0D
+> > In this case,the decoded uleb128 result is 0x101(vsp=3D0x204+(0x101<<2)=
+).=0D
+> > While the uleb128 used in code is 0x81(vsp=3D0x204+(0x81<<2)).=0D
+> > The unwind aborts at this frame since it gets incorrect vsp.=0D
+> >=0D
+> > To fix this,add uleb128 decode to cover all the above case.=0D
+> >=0D
+> > Signed-off-by: Haibo Li <haibo.li@mediatek.com>=0D
+> =0D
+> Way to go, remember to collect all the Reviewed-by tags before you put th=
+e=0D
+> patch into Russell's patch tracker.=0D
+> =0D
+> Yours,=0D
+> Linus Walleij=0D
+Thanks for reminding.I put the patch into Russell's patch tracker just now,=
+=0D
+together with the three Reviewed-by tags from you,=0D
+Alexandre Mergnat and AngeloGioacchino Del Regno.=0D
+Thank you all.=0D
+=0D
 
