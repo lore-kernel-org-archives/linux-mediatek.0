@@ -4,162 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F894C77B70
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Apr 2023 07:35:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 296B5C77B72
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Apr 2023 07:37:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LRS1q/i5oxjmN3u+rlhxxRQun9KmZeMEw+0DBaQKXiQ=; b=uIwMFYWzivLk0lP144koiqUvOf
-	rFC2T9Cx1d8Ctmoej+MDGRSC57Gxr8iVhWWbkhyZr1hmQRcoUN8RtbfG0jgteZXWb6BoFU4OrPNOO
-	CZRJYNHEBOB9t4Eac+8GZN4wIbbKokqszCOAvGUpbVz2PcBE3fDXBapV12MaaqENjpUwzBRPanFOQ
-	XpLwOBcSpKB9Eelw4tW7CULt1ZSzsFJy9X8fiU9KmBhkVYB7AI925oT13ukCKhBM7mYegEteyohaw
-	fuptllf95ifsRvxYmNU7+kGNS9gJrelHxpZIuwjceZQr0TIyvKWt2p076xHHuTIl+/9zeBU2WPhq/
-	w5+Vzcow==;
+	bh=FPcoXCoNcP+b2FdYzMchlIGbMO6MtADMk5DJwKWIjDU=; b=l1BhREaD/52bhw1II7TV0k1iYY
+	HaFqXE39NJMpJqR3vjWcj7p20cpqTHfUjLq2Z99ey0sKJ8MZStNvi1beqvYOfjKjOTivul/0wH+eX
+	NKmLInAaoedQqB923VF4PMGeExuj6bk5c379+IwNAuyq8HNT1nadj60vZ4giqnyeS/hK/xrhwM/G3
+	1r6t14fkZu4jB91EnjLRd7/cSjLUup9AbaIFv0g+f54M6FFR4hItU0aqgv9tW3RQsiJsW5FLndrxQ
+	pIpp61i9O/Gs5jmbhbJgYTZWkR8iAPMrYVvxfFDBUFO/1oVlUI9fDkthpQmosVXBgv6uyna0MnlF8
+	GIEKw9uA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1poJOY-00FC2r-03;
-	Mon, 17 Apr 2023 07:35:26 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1poJQU-00FCT0-2u;
+	Mon, 17 Apr 2023 07:37:26 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1poJOT-00FC1Q-0t;
-	Mon, 17 Apr 2023 07:35:22 +0000
-Received: from pendragon.ideasonboard.com (133-32-181-51.west.xps.vectant.ne.jp [133.32.181.51])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 10E72DE6;
-	Mon, 17 Apr 2023 09:35:10 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1681716911;
-	bh=+nNnkWr6Y0n06KrbbCtAOSHIusgnvBhnkukVuDNhkEc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=NbcvuQnyQJAGVrRDp382kWJkH39Ilus9pmqcciT6N67Pdpgd9FeFZlZZ9XsqwFkHA
-	 Hzp4QDnGHlkDQGFg8p4k3P9nhygT8DNN9tzAcFlOgEHnSZXwgRJBNMHh4MaQ2gyksv
-	 vBVHMMH+GTSQftGIrThbwBm2FcmUTup6+MKy2H7I=
-Date: Mon, 17 Apr 2023 10:35:27 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Heiko Stuebner <heiko@sntech.de>, Eddie James <eajames@linux.ibm.com>,
-	Hans Verkuil <hverkuil@xs4all.nl>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Dmitry Osipenko <digetx@gmail.com>,
-	linux-stm32@st-md-mailman.stormreply.com,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	linux-samsung-soc@vger.kernel.org, Robert Foss <rfoss@kernel.org>,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Michal Simek <michal.simek@xilinx.com>,
-	Antti Palosaari <crope@iki.fi>, NXP Linux Team <linux-imx@nxp.com>,
-	Jerome Brunet <jbrunet@baylibre.com>, linux-sunxi@lists.linux.dev,
-	ye xingchen <ye.xingchen@zte.com.cn>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	=?utf-8?Q?=C5=81ukasz?= Stelmach <l.stelmach@samsung.com>,
-	Eugen Hristev <eugen.hristev@collabora.com>,
-	Shuah Khan <skhan@linuxfoundation.org>,
-	Hyun Kwon <hyun.kwon@xilinx.com>, Andrew Jeffery <andrew@aj.id.au>,
-	Michael Tretter <m.tretter@pengutronix.de>,
-	Moudy Ho <moudy.ho@mediatek.com>, kernel@pengutronix.de,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Ming Qian <ming.qian@nxp.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>,
-	linux-aspeed@lists.ozlabs.org,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	"Lad, Prabhakar" <prabhakar.csengg@gmail.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Guenter Roeck <groeck@chromium.org>,
-	chrome-platform@lists.linux.dev,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	linux-rockchip@lists.infradead.org,
-	Fabien Dessenne <fabien.dessenne@foss.st.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
-	Colin Ian King <colin.i.king@gmail.com>,
-	linux-media@vger.kernel.org, Jacopo Mondi <jacopo@jmondi.org>,
-	Rory Liu <hellojacky0226@hotmail.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	linux-arm-msm@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Fabrizio Castro <fabrizio.castro.jz@renesas.com>,
-	linux-amlogic@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Zhou Peng <eagle.zhou@nxp.com>,
-	Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	linux-mediatek@lists.infradead.org,
-	Jacek Anaszewski <jacek.anaszewski@gmail.com>,
-	Dan Carpenter <error27@gmail.com>, Sean Young <sean@mess.org>,
-	Xavier Roumegue <xavier.roumegue@oss.nxp.com>,
-	Ettore Chimenti <ek5.chimenti@gmail.com>,
-	Vikash Garodia <quic_vgarodia@quicinc.com>,
-	linux-tegra@vger.kernel.org, Eduardo Valentin <edubezval@gmail.com>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Fabio Estevam <festevam@gmail.com>,
-	Jean-Christophe Trotin <jean-christophe.trotin@foss.st.com>,
-	Stanimir Varbanov <stanimir.k.varbanov@gmail.com>,
-	Kieran Bingham <kieran.bingham@ideasonboard.com>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Chen-Yu Tsai <wens@csie.org>, Jacob Chen <jacob-chen@iotwrt.com>,
-	Joel Stanley <joel@jms.id.au>,
-	Yang Yingliang <yangyingliang@huawei.com>,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	Bin Liu <bin.liu@mediatek.com>,
-	Nathan Chancellor <nathan@kernel.org>,
-	Sylwester Nawrocki <sylvester.nawrocki@gmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Benson Leung <bleung@chromium.org>,
-	"Daniel W. S. Almeida" <dwlsalmeida@gmail.com>,
-	Qiheng Lin <linqiheng@huawei.com>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
-	Yang Li <yang.lee@linux.alibaba.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Ricardo Ribalda <ribalda@chromium.org>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
-	Daniel Almeida <daniel.almeida@collabora.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Todor Tomov <todor.too@gmail.com>,
-	Mirela Rabulea <mirela.rabulea@nxp.com>,
-	Ajye Huang <ajye_huang@compal.corp-partner.google.com>,
-	Scott Chao <scott_chao@wistron.corp-partner.google.com>,
-	linux-renesas-soc@vger.kernel.org,
-	Hugues Fruchet <hugues.fruchet@foss.st.com>,
-	openbmc@lists.ozlabs.org, Andy Gross <agross@kernel.org>,
-	Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>,
-	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
-	Benoit Parrot <bparrot@ti.com>, Rui Miguel Silva <rmfrfs@gmail.com>,
-	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
-	Yong Deng <yong.deng@magewell.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Tiffany Lin <tiffany.lin@mediatek.com>,
+	id 1poJQS-00FCPe-0R;
+	Mon, 17 Apr 2023 07:37:25 +0000
+X-UUID: acad9b0adcf211ed8687db9d93187ff1-20230417
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=FPcoXCoNcP+b2FdYzMchlIGbMO6MtADMk5DJwKWIjDU=;
+	b=U3UDT7O6SaxNkWt4S5Yy2fWUsXfc4oYhT7UvMZAXYMwDUC+//R3c4NQbsl8rFoGi9NODCGNdFRW3ykLlly15zsLEbtgdbdxr97tb1osg2sDaa8xex1f05WowGkc7o2JY8vlfl24h5QYRuQeh7eaex50AIpa7hWL2TwVwbWvdtg0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22,REQID:55478a21-f5b9-41bf-bd30-6b5f98eab042,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:95
+X-CID-INFO: VERSION:1.1.22,REQID:55478a21-f5b9-41bf-bd30-6b5f98eab042,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTION
+	:quarantine,TS:95
+X-CID-META: VersionHash:120426c,CLOUDID:718291a1-8fcb-430b-954a-ba3f00fa94a5,B
+	ulkID:230417153653CPHI4FVC,BulkQuantity:2,Recheck:0,SF:38|29|28|17|19|48,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
+	OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: acad9b0adcf211ed8687db9d93187ff1-20230417
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <yong.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 819874094; Mon, 17 Apr 2023 00:37:15 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Mon, 17 Apr 2023 15:36:51 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Mon, 17 Apr 2023 15:36:51 +0800
+From: Yong Wu <yong.wu@mediatek.com>
+To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, Rob Herring
+	<robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Yong Wu <yong.wu@mediatek.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Houlong Wei <houlong.wei@mediatek.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>
-Subject: Re: [PATCH 000/117] media: Convert to platform remove callback
- returning void
-Message-ID: <20230417073527.GE28551@pendragon.ideasonboard.com>
-References: <20230326143224.572654-1-u.kleine-koenig@pengutronix.de>
- <20230417060203.le3izz56wt73si6k@pengutronix.de>
- <20230417061928.GD28551@pendragon.ideasonboard.com>
- <20230417073049.2b5b35hpjrjcrlge@pengutronix.de>
+	<iommu@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <mingyuan.ma@mediatek.com>,
+	<yf.wang@mediatek.com>, <jianjiao.zeng@mediatek.com>,
+	<chengci.xu@mediatek.com>
+Subject: [PATCH v10 2/7] iommu/mediatek: Fix two IOMMU share pagetable issue
+Date: Mon, 17 Apr 2023 15:36:01 +0800
+Message-ID: <20230417073606.25729-3-yong.wu@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230417073606.25729-1-yong.wu@mediatek.com>
+References: <20230417073606.25729-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230417073049.2b5b35hpjrjcrlge@pengutronix.de>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230417_003521_465224_12D876C1 
-X-CRM114-Status: GOOD (  28.55  )
+X-CRM114-CacheID: sfid-20230417_003724_184608_7000FE8D 
+X-CRM114-Status: GOOD (  18.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -174,61 +93,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 17, 2023 at 09:30:49AM +0200, Uwe Kleine-König wrote:
-> Hello Laurent,
-> 
-> On Mon, Apr 17, 2023 at 09:19:28AM +0300, Laurent Pinchart wrote:
-> > On Mon, Apr 17, 2023 at 08:02:03AM +0200, Uwe Kleine-König wrote:
-> > > On Sun, Mar 26, 2023 at 04:30:25PM +0200, Uwe Kleine-König wrote:
-> > > > Hello,
-> > > > 
-> > > > this series adapts the platform drivers below drivers/pci to use the
-> > > 
-> > > copy&paste failure here: s/pci/media/ of course.
-> > > 
-> > > > .remove_new() callback. Compared to the traditional .remove() callback
-> > > > .remove_new() returns no value. This is a good thing because the driver core
-> > > > doesn't (and cannot) cope for errors during remove. The only effect of a
-> > > > non-zero return value in .remove() is that the driver core emits a warning. The
-> > > > device is removed anyhow and an early return from .remove() usually yields a
-> > > > resource leak.
-> > > > 
-> > > > By changing the remove callback to return void driver authors cannot
-> > > > reasonably assume any more that there is some kind of cleanup later.
-> > > > 
-> > > > Only three drivers needed some preparation first to make sure they
-> > > > return 0 unconditionally in their remove callback. Then all drivers
-> > > > could be trivially converted without side effects to .remove_new().
-> > > > 
-> > > > The changes to the individual drivers are all orthogonal. If I need to
-> > > > resend some patches because of some review feedback, I'd like to only
-> > > > send the patches that actually needed changes, so please pick up the
-> > > > remaining patches that don't need changing to reduce the amount of mail.
-> > > 
-> > > I didn't hear anything back about application of this series. Is there a
-> > > blocker somewhere?
-> > 
-> > I think the series got applied to the master branch of
-> > git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git.
-> > It should thus appear in v6.4.
-> 
-> I guess that linux-stable.git is a copy&paste failure (and it's not
-> there). I don't see the series in the master branch of
-> git://linuxtv.org/media_tree.git either.
+From: "Chengci.Xu" <chengci.xu@mediatek.com>
 
-Oops sorry. It was a copy & paste mistake indeed, I meant
+Prepare for mt8188 to fix a two IOMMU HWs share pagetable issue.
 
-git://linuxtv.org/media_stage.git
+We have two MM IOMMU HWs in mt8188, one is VPP-IOMMU, the other is
+VDO-IOMMU. The 2 MM IOMMU HWs share pagetable don't work in this case:
+ a) VPP-IOMMU probe firstly.
+ b) VDO-IOMMU probe.
+ c) The master for VDO-IOMMU probe (means frstdata is vpp-iommu).
+ d) The master in another domain probe. No matter it is vdo or vpp.
+Then it still create a new pagetable in step d). The problem is
+"frstdata->bank[0]->m4u_dom" was not initialized. Then when d) enter, it
+still create a new one.
 
-> .. a bit later ...
-> 
-> ah, it's in git://linuxtv.org/mchehab/media-next.git
-> 
-> I guess I was just to quick and probably the series will be included in
-> today's next.
+In this patch, we create a new variable "share_dom" for this share
+pgtable case, it should be helpful for readable. and put all the share
+pgtable logic in the mtk_iommu_domain_finalise.
 
+In mt8195, the master of VPP-IOMMU probes before than VDO-IOMMU
+from its dtsi node sequence, we don't see this issue in it. Prepare for
+mt8188.
+
+Fixes: 645b87c190c9 ("iommu/mediatek: Fix 2 HW sharing pgtable issue")
+Signed-off-by: Chengci.Xu <chengci.xu@mediatek.com>
+Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+---
+ drivers/iommu/mtk_iommu.c | 22 ++++++++++++++--------
+ 1 file changed, 14 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index f58b970dccf2..4eb6742ec5f9 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -258,6 +258,8 @@ struct mtk_iommu_data {
+ 	struct device			*smicomm_dev;
+ 
+ 	struct mtk_iommu_bank_data	*bank;
++	struct mtk_iommu_domain		*share_dom; /* For 2 HWs share pgtable */
++
+ 	struct regmap			*pericfg;
+ 	struct mutex			mutex; /* Protect m4u_group/m4u_dom above */
+ 
+@@ -620,15 +622,14 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom,
+ 				     struct mtk_iommu_data *data,
+ 				     unsigned int region_id)
+ {
++	struct mtk_iommu_domain	*share_dom = data->share_dom;
+ 	const struct mtk_iommu_iova_region *region;
+-	struct mtk_iommu_domain	*m4u_dom;
+-
+-	/* Always use bank0 in sharing pgtable case */
+-	m4u_dom = data->bank[0].m4u_dom;
+-	if (m4u_dom) {
+-		dom->iop = m4u_dom->iop;
+-		dom->cfg = m4u_dom->cfg;
+-		dom->domain.pgsize_bitmap = m4u_dom->cfg.pgsize_bitmap;
++
++	/* Always use share domain in sharing pgtable case */
++	if (MTK_IOMMU_HAS_FLAG(data->plat_data, SHARE_PGTABLE) && share_dom) {
++		dom->iop = share_dom->iop;
++		dom->cfg = share_dom->cfg;
++		dom->domain.pgsize_bitmap = share_dom->cfg.pgsize_bitmap;
+ 		goto update_iova_region;
+ 	}
+ 
+@@ -658,6 +659,9 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom,
+ 	/* Update our support page sizes bitmap */
+ 	dom->domain.pgsize_bitmap = dom->cfg.pgsize_bitmap;
+ 
++	if (MTK_IOMMU_HAS_FLAG(data->plat_data, SHARE_PGTABLE))
++		data->share_dom = dom;
++
+ update_iova_region:
+ 	/* Update the iova region for this domain */
+ 	region = data->plat_data->iova_region + region_id;
+@@ -708,7 +712,9 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
+ 		/* Data is in the frstdata in sharing pgtable case. */
+ 		frstdata = mtk_iommu_get_frst_data(hw_list);
+ 
++		mutex_lock(&frstdata->mutex);
+ 		ret = mtk_iommu_domain_finalise(dom, frstdata, region_id);
++		mutex_unlock(&frstdata->mutex);
+ 		if (ret) {
+ 			mutex_unlock(&dom->mutex);
+ 			return ret;
 -- 
-Regards,
+2.25.1
 
-Laurent Pinchart
 
