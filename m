@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 514C9C77B72
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Apr 2023 08:25:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA924C77B70
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Apr 2023 08:26:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=WSGsGsyZmAAWE39HbT7EAIDHhqghH7oH+F9PicR6RAE=; b=M0nQM7EqPxyNaSsi6EmNjeskhC
-	RiyqM3PB4hIiG0hjSUdFTT95FTi5fRUjRjNx9w/VXtolCJ++2gOnwhzfklcYtZhCjpvjuw8gndX2+
-	2EqSrIkchSmPq+g/+ZeHDYkhnMpDzrPqcZ9hstHc4Ymf70vHo7/JGTrP2LgwHW0DfXRB+ft1Yq46e
-	vWFMMGNNfoShPk39XL7DGlda16p/rWi09F1AnXwOwpcBWjUhFBeUzqhKka2NNDS+m5tgpSmB+6GER
-	yte35fnLwIYFnC6C/mVUNRXpe2/cc4khKSU7HE1bHmdCseYtNG1Hnzi7N4E+wCj7ViVi3MdCoL7eM
-	5w/MuFhw==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DQv2qOPx5dYPZdNgHn6YjWMVC72EGZL4V7OLMRx5WoA=; b=QjpQkapsFQyCE9oYboqxMyluL+
+	Wx+rA6Gv5cP1+fgpxR64XWMdIWFrRvGIuKF5JBzXMWbJCoiq6BkSkRLSEmtA0SZE8KjrvylSrrO6y
+	+ofVd7Vu95CylzsR3N+qkrG0GJa72sZ6xuW5vE/Sihwz5iy+DgvvIiU2+TSaCWj/hWwIxZY5E5rES
+	yUOx4+RIN0PlKw3MaitqpIp7OLdIS4jk9PUfbvCRKvSoaoCa02oFF4cZsSfjSfazxxaBexcRZ1IvD
+	d7vjx3a11swXFkJdHe7tXeqEedIyDYG+/5TZnUdm/2dsJhAf0Dwy7EsDauumWAZLFxVvb4tty2rlF
+	VfFBQfcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1poJZi-00FFrQ-0J;
-	Mon, 17 Apr 2023 07:46:58 +0000
+	id 1poJkn-00FIV5-0i;
+	Mon, 17 Apr 2023 07:58:25 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1poJZe-00FFpw-2u;
-	Mon, 17 Apr 2023 07:46:56 +0000
-X-UUID: 01674154dcf411edb7d8d11f642b8e78-20230417
+	id 1poJki-00FIRQ-2m;
+	Mon, 17 Apr 2023 07:58:22 +0000
+X-UUID: 9aebf94adcf511edb7d8d11f642b8e78-20230417
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=WSGsGsyZmAAWE39HbT7EAIDHhqghH7oH+F9PicR6RAE=;
-	b=OUAR/DcwqrYj7gBePI3X4WeRYcvK/PBlCTlvZqXZ/fv77DWDEeSS0OWqH2Z/JeyUoF5rENdJ0jQTlFkCsJiVHGtiNCPlhjpvBRdRmItkQEHr7sQ8F0XXz+KUqCI3sXhV5w/m0g7soeW1gvqzyEZxOyHQulY4pmNYy693wK0bP80=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=DQv2qOPx5dYPZdNgHn6YjWMVC72EGZL4V7OLMRx5WoA=;
+	b=l0yYBaQkBpdjhIZhwTXm1UfCbO80DkHRKg+oPYZF7/Iszmfx4U0t/YxIJEBKdICqIjo4JVHtbnijGPwUDS/2ygr6fPU6YxgW5V57+MXX3BF7Q1FbpwtUe0m/qBcA1QP/ZnLQ20VNQgcqSF/99W5V+O19jPBV1PGjnCjwhgt2mXE=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:6d0291c9-80fb-4adf-82d8-a27db7b12110,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:120426c,CLOUDID:a1e191a1-8fcb-430b-954a-ba3f00fa94a5,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-O-INFO: VERSION:1.1.22,REQID:9b6162b1-0b4c-478b-9e0d-95f83c20d795,IP:0,U
+	RL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-20
+X-CID-META: VersionHash:120426c,CLOUDID:86604d84-cd9c-45f5-8134-710979e3df0e,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:1,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-UUID: 01674154dcf411edb7d8d11f642b8e78-20230417
+X-UUID: 9aebf94adcf511edb7d8d11f642b8e78-20230417
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <yong.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 189997701; Mon, 17 Apr 2023 00:46:47 -0700
+	with ESMTP id 2007471476; Mon, 17 Apr 2023 00:58:14 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Mon, 17 Apr 2023 15:36:12 +0800
+ 15.2.1118.25; Mon, 17 Apr 2023 15:37:36 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Mon, 17 Apr 2023 15:36:11 +0800
+ 15.2.1118.25 via Frontend Transport; Mon, 17 Apr 2023 15:37:35 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, Rob Herring
 	<robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
@@ -62,17 +62,19 @@ CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
 	<linux-arm-kernel@lists.infradead.org>, <mingyuan.ma@mediatek.com>,
 	<yf.wang@mediatek.com>, <jianjiao.zeng@mediatek.com>,
 	<chengci.xu@mediatek.com>
-Subject: [PATCH v10 0/7] MT8188 IOMMU SUPPORT
-Date: Mon, 17 Apr 2023 15:35:59 +0800
-Message-ID: <20230417073606.25729-1-yong.wu@mediatek.com>
+Subject: [PATCH v10 6/7] iommu/mediatek: mt8188: Add iova_region_larb_msk
+Date: Mon, 17 Apr 2023 15:36:05 +0800
+Message-ID: <20230417073606.25729-7-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230417073606.25729-1-yong.wu@mediatek.com>
+References: <20230417073606.25729-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230417_004654_949342_D7E55085 
-X-CRM114-Status: GOOD (  17.41  )
+X-CRM114-CacheID: sfid-20230417_005820_916546_923B5CAD 
+X-CRM114-Status: GOOD (  10.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,114 +89,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT8188 have 3 IOMMU HWs. 2 IOMMU HW is for multimedia, and 1 IOMMU HW
-is for infra-master, like PCIe.
+Add iova_region_larb_msk for mt8188. We separate the 16GB iova regions
+by each device's larbid/portid.
+Refer to include/dt-bindings/memory/mediatek,mt8188-memory-port.h
 
-About the 2 MM IOMMU HW, the connection could be something like this:
+As commented in the code, larb19(21) means it's larb19 while its SW index
+is 21.
 
-        IOMMU(VDO)          IOMMU(VPP)
-           |                   |
-      SMI_COMMON(VDO)      SMI_COMMON(VPP)
-      ---------------     ----------------
-      |      |   ...      |      |     ...
-    larb0 larb2  ...    larb1 larb3    ...
+Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/iommu/mtk_iommu.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
-INFRA IOMMU does not have SMI, the master connects to IOMMU directly.
-
-Although multiple banks supported in MT8188, we only use one of them,
-which means PCIe is put in bank0 of INFRA IOMMU.
-
-So we have two pgtable for MT8188, specifically, these two MM IOMMU HW
-share a pgtable while INFRA IOMMU HW use a independent pgtable.
-
-Another change is that we add some SMC command for INFRA master to 
-enable/disable INFRA IOMMU in ATF considering security concerns.
-
-We also adjust the flow of mtk_iommu_config to reduce indention.
-
-Change in v10:
-  - Add a Fixes tag for [2/7].
-  - Rebase on mtk-iommu-dma-range-v7:
-    https://lore.kernel.org/linux-mediatek/20230411093144.2690-1-yong.wu@mediatek.com/
-
-change since v9:
-  https://lore.kernel.org/linux-mediatek/20230317085541.20447-1-yong.wu@mediatek.com/
-  - Move the patch about setting set_dma_mask out from this patchset.
-  - Add a MAINTAINER patch since the header file was added a prefix "mediatek,"
-
-change since v8:
-    https://lore.kernel.org/linux-mediatek/20230307080555.14399-1-yong.wu@mediatek.com/
-  - Base on v6.3-rc1 and mtk-iommu-dma-range-v5:
-    https://lore.kernel.org/linux-mediatek/20230307023507.13306-1-yong.wu@mediatek.com/
-  - Add a new patch set_dma_mask about since mt8188 support the PA of pgtable 35bits.
-
-changes since v7:
-    https://lore.kernel.org/linux-mediatek/20230216053322.11596-1-yong.wu@mediatek.com/
-  - Base on mtk-iommu-dma-range-v4:
-    https://lore.kernel.org/linux-mediatek/20230215062544.8677-1-yong.wu@mediatek.com/
-  - Add a new patch for two IOMMU share pagetable issue.
-  - Add a new patch for adding iova_region_larb_msk for mt8188.
-  - Add the comment in the dt-binding header file about larb index.
-    This is for readable when updating the iova_region_larb_msk.
-    
-    Since there is something wrong for chengci's mail account when sending
-    to devicetree mail list, we don't know why. I help send this patchset.
-    https://lore.kernel.org/linux-mediatek/5a916595-12ee-92e6-d380-84146dd75218@linaro.org/
-
-changes since v6:
-    https://lore.kernel.org/linux-mediatek/20221223101439.494-1-chengci.xu@mediatek.com/
-  - base on tag: next-20221220.
-  - update commit message of patch[2/4].
-
-changes since v5:
-  - base on tag: next-20221205.
-  - add flag PGTABLE_PA_35_EN for all IOMMU in MT8188.
-  - modify the type of "portid_msk" from "u32" to "unsigned long".
-
-changes since v4:
-  - base on tag: next-20221018.
-  - add patch[2/4] to reduce indention by adjust mtk_iommu_config flow.
-
-changes since v3:
-  - base on tag: next-20220916.
-  - use license "GPL-2.0-only OR BSD-2-Clause" in bingings head file.
-  - drop redundant "portid" assignment when configure infra master.
-  - reduce indentation by using "else if" when config infra master.
-  - update probe flow about "pericfg" for CFG_IFA_MASTER_IN_ATF.
-  - drop unused "pericfg_comp_str" in mt8188_data_infra.
-  - drop words like "This commit/patch".
-
-changes since v2:
-  - base on tag: next-20220831.
-  - rename "mt8188-memory-port.h" to "mediatek,mt8188-memory-port.h".
-  - use dual-license in "mediatek,mt8188-memory-port.h"
-  - remove unnecessary "()" when define SMI_LARB_ID
-
-changes since v1:
-  - base on tag: next-20220803.
-  - adds MT8188 IOMMU support.
-
-Chengci.Xu (5):
-  dt-bindings: mediatek: mt8188: Add binding for MM & INFRA IOMMU
-  iommu/mediatek: Fix two IOMMU share pagetable issue
-  iommu/mediatek: Adjust mtk_iommu_config flow
-  iommu/mediatek: Add enable IOMMU SMC command for INFRA masters
-  iommu/mediatek: Add MT8188 IOMMU Support
-
-Yong Wu (2):
-  iommu/mediatek: mt8188: Add iova_region_larb_msk
-  MAINTAINERS: iommu/mediatek: Update the header file name
-
- .../bindings/iommu/mediatek,iommu.yaml        |  12 +-
- MAINTAINERS                                   |   2 +-
- drivers/iommu/mtk_iommu.c                     | 151 ++++--
- .../memory/mediatek,mt8188-memory-port.h      | 489 ++++++++++++++++++
- include/soc/mediatek/smi.h                    |   1 +
- 5 files changed, 622 insertions(+), 33 deletions(-)
- create mode 100644 include/dt-bindings/memory/mediatek,mt8188-memory-port.h
-
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index fa46c4309f35..876624f807d6 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -1599,6 +1599,20 @@ static const struct mtk_iommu_plat_data mt8188_data_infra = {
+ 	.iova_region_nr   = ARRAY_SIZE(single_domain),
+ };
+ 
++static const u32 mt8188_larb_region_msk[MT8192_MULTI_REGION_NR_MAX][MTK_LARB_NR_MAX] = {
++	[0] = {~0, ~0, ~0, ~0},               /* Region0: all ports for larb0/1/2/3 */
++	[1] = {0, 0, 0, 0, 0, 0, 0, 0,
++	       0, 0, 0, 0, 0, 0, 0, 0,
++	       0, 0, 0, 0, 0, ~0, ~0, ~0},    /* Region1: larb19(21)/21(22)/23 */
++	[2] = {0, 0, 0, 0, ~0, ~0, ~0, ~0,    /* Region2: the other larbs. */
++	       ~0, ~0, ~0, ~0, ~0, ~0, ~0, ~0,
++	       ~0, ~0, ~0, ~0, ~0, 0, 0, 0,
++	       0, ~0},
++	[3] = {0},
++	[4] = {[24] = BIT(0) | BIT(1)},       /* Only larb27(24) port0/1 */
++	[5] = {[24] = BIT(2) | BIT(3)},       /* Only larb27(24) port2/3 */
++};
++
+ static const struct mtk_iommu_plat_data mt8188_data_vdo = {
+ 	.m4u_plat       = M4U_MT8188,
+ 	.flags          = HAS_BCLK | HAS_SUB_COMM_3BITS | OUT_ORDER_WR_EN |
+@@ -1610,6 +1624,7 @@ static const struct mtk_iommu_plat_data mt8188_data_vdo = {
+ 	.banks_enable   = {true},
+ 	.iova_region    = mt8192_multi_dom,
+ 	.iova_region_nr = ARRAY_SIZE(mt8192_multi_dom),
++	.iova_region_larb_msk = mt8188_larb_region_msk,
+ 	.larbid_remap   = {{2}, {0}, {21}, {0}, {19}, {9, 10,
+ 			   11 /* 11a */, 25 /* 11c */},
+ 			   {13, 0, 29 /* 16b */, 30 /* 17b */, 0}, {5}},
+@@ -1626,6 +1641,7 @@ static const struct mtk_iommu_plat_data mt8188_data_vpp = {
+ 	.banks_enable   = {true},
+ 	.iova_region    = mt8192_multi_dom,
+ 	.iova_region_nr = ARRAY_SIZE(mt8192_multi_dom),
++	.iova_region_larb_msk = mt8188_larb_region_msk,
+ 	.larbid_remap   = {{1}, {3}, {23}, {7}, {MTK_INVALID_LARBID},
+ 			   {12, 15, 24 /* 11b */}, {14, MTK_INVALID_LARBID,
+ 			   16 /* 16a */, 17 /* 17a */, MTK_INVALID_LARBID,
 -- 
-2.18.0
-
+2.25.1
 
 
