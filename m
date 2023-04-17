@@ -4,62 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F9BDC77B72
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Apr 2023 10:18:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F37A6C77B70
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Apr 2023 10:32:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:
-	Content-Transfer-Encoding:Cc:Date:In-Reply-To:From:Subject:Mime-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HIW2spNKQHoaWo5bzZyygaUnAYHQ1S8BPzr5pgx85f4=; b=GrrdDRuF0VpO8ZUnDF7w3o2Np8
-	f0BrDDiZ3r14Rxb5RUlUJDszqcg2NvNe2XRuWgg5TphHYug4OAd4has9PC1VGL2djVlns2IHfJvc8
-	/5K9UuolVdHBDx5UgwqPw984hiwdasjnqL8g51b3WXQCAIM8hYgxCfH6ei4kxlAFytyaTl76MNFMo
-	je6T1XuCe4XxRrzBERaEq5bqEF0eOImco3UfNXUbPS7fh6fmYWluAmcCCdY2ZNZMmjS1DX6IjIMaW
-	FrsFraONqQ/cPSPtVpGLopMY3z83LZ52K/MQ52MkoMUHQ+BthFVy+8VxFSgv1ISZv5sG0Cor1tZsu
-	O7IJFLpA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=lIGsizS4ngh9LSjRNQp+AMveHy/oDH48lzZQqb9Er+s=; b=kt+76Zubkr0aYLY6sguisecd6U
+	p5XiLCLJIgLnV+YEpkU48UL8mgBE+niIKp6QE7JdmaFAM3j+7e55zkIt+TOSVzr+2y6FZDHPY2y6x
+	tfahCKsZjoOzWt4u8MLyR1LKiJ0tN2JkBjSAcvsPV3w98TLx8o7PbB1sMbdQ9K1Qm616ur/p5o1+o
+	5aqakxxVTWO12VBnlwSAJUDGqaSVGUY7hMPN46aFWqrhpH7qd0HdcgF/Ssz3IR0pIbUHwRqHwd8Jj
+	2PHYK4+NH8lgl2k9aK5xKX8NjE8Xu7cYtY8piEjCZE2bUjEmv4772TjUewTqicDpj3xGgvY3XVxXX
+	7F3V+Vug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1poLwD-00FhzO-0z;
-	Mon, 17 Apr 2023 10:18:21 +0000
-Received: from [202.114.0.240] (helo=hust.edu.cn)
+	id 1poM9O-00Fjyy-2v;
+	Mon, 17 Apr 2023 10:31:58 +0000
+Received: from laurent.telenet-ops.be ([2a02:1800:110:4::f00:19])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1poLvy-00Fhvm-0Q;
-	Mon, 17 Apr 2023 10:18:20 +0000
-Received: from smtpclient.apple ([172.16.0.254])
-	(user=void0red@hust.edu.cn mech=PLAIN bits=0)
-	by mx1.hust.edu.cn  with ESMTP id 33HAFCBJ018476-33HAFCBL018476
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
-	Mon, 17 Apr 2023 18:15:12 +0800
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3731.400.51.1.1\))
-Subject: Re: [PATCH v3 2/2] thermal: mediatek: change clk_prepare_enable to
- devm_clk_get_enabled in mtk_thermal_probe
-From: Kang Chen <void0red@hust.edu.cn>
-In-Reply-To: <cfb7743b-03b0-96c4-fcc3-7095694f6fbb@linaro.org>
-Date: Mon, 17 Apr 2023 18:15:02 +0800
-Cc: amitk@kernel.org, angelogioacchino.delregno@collabora.com,
-        bchihi@baylibre.com, daniel@makrotopia.org, dzm91@hust.edu.cn,
-        error27@gmail.com, henry.yen@mediatek.com,
-        hust-os-kernel-patches@googlegroups.com,
-        linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-        linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
-        matthias.bgg@gmail.com, rafael@kernel.org, rdunlap@infradead.org,
-        rui.zhang@intel.com, void0red@gmail.com
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <6108982E-A3DC-4B7E-829E-20BBAC9C503F@hust.edu.cn>
-References: <b2e5ef14-9a12-15d5-8016-d0994c1177c3@linaro.org>
- <20230411063531.3976354-1-void0red@hust.edu.cn>
- <20230411063531.3976354-2-void0red@hust.edu.cn>
- <4fed91ef.3c256.18783c407e3.Coremail.void0red@hust.edu.cn>
- <cfb7743b-03b0-96c4-fcc3-7095694f6fbb@linaro.org>
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-X-Mailer: Apple Mail (2.3731.400.51.1.1)
-X-FEAS-AUTH-USER: void0red@hust.edu.cn
+	id 1poM9J-00FjwF-1u
+	for linux-mediatek@lists.infradead.org;
+	Mon, 17 Apr 2023 10:31:56 +0000
+Received: from ramsan.of.borg ([84.195.187.55])
+	by laurent.telenet-ops.be with bizsmtp
+	id lmXe2900C1C8whw01mXeGh; Mon, 17 Apr 2023 12:31:48 +0200
+Received: from rox.of.borg ([192.168.97.57])
+	by ramsan.of.borg with esmtp (Exim 4.95)
+	(envelope-from <geert@linux-m68k.org>)
+	id 1poM8A-00GzWt-SH;
+	Mon, 17 Apr 2023 12:31:38 +0200
+Received: from geert by rox.of.borg with local (Exim 4.95)
+	(envelope-from <geert@linux-m68k.org>)
+	id 1poM94-007KQx-FS;
+	Mon, 17 Apr 2023 12:31:38 +0200
+From: Geert Uytterhoeven <geert+renesas@glider.be>
+To: Bin Liu <bin.liu@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>,
+	Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
+	Jacek Anaszewski <jacek.anaszewski@gmail.com>,
+	Sylwester Nawrocki <s.nawrocki@samsung.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
+Cc: linux-media@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	kernel test robot <lkp@intel.com>
+Subject: [PATCH] media: Add common header file with JPEG marker definitions
+Date: Mon, 17 Apr 2023 12:31:35 +0200
+Message-Id: <bcb81f910f03eef4ed964d39883df0d33c762f9f.1681727493.git.geert+renesas@glider.be>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230417_031806_531916_20B35131 
-X-CRM114-Status: GOOD (  23.14  )
+X-CRM114-CacheID: sfid-20230417_033153_777563_97C51678 
+X-CRM114-Status: GOOD (  19.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,178 +79,259 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+When compile-testing on mips/RB532 with W=1:
 
+    arch/mips/include/asm/mach-rc32434/rb.h:13: note: this is the location of the previous definition
+       13 | #define RST  (1 << 15)
+	  |
+    drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_parse.c:15: warning: "RST" redefined
+       15 | #define RST 0xd0
+	  |
+    drivers/media/platform/renesas/rcar_jpu.c:77: warning: "RST" redefined
+       77 | #define RST 0xd0
+	  |
 
-> 2023=E5=B9=B44=E6=9C=8817=E6=97=A5 17:52=EF=BC=8CDaniel Lezcano =
-<daniel.lezcano@linaro.org> =E5=86=99=E9=81=93=EF=BC=9A
->=20
->=20
-> Hi,
->=20
-> this patch does not apply:
->=20
-> Analyzing 9 messages in the thread
-> Will use the latest revision: v3
-> You can pick other revisions using the -vN flag
-> Checking attestation on all messages, may take a moment...
-> ---
->  [PATCH v3 2/2] thermal: mediatek: change clk_prepare_enable to =
-devm_clk_get_enabled in mtk_thermal_probe
->    + Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
->    + Link: =
-https://lore.kernel.org/r/20230411063531.3976354-2-void0red@hust.edu.cn
-> ---
-> Total patches: 1 (cherrypicked: 2)
-> ---
-> Link: =
-https://lore.kernel.org/r/20230411063531.3976354-1-void0red@hust.edu.cn
-> Base: not specified
-> Applying: thermal: mediatek: change clk_prepare_enable to =
-devm_clk_get_enabled in mtk_thermal_probe
-> error: patch failed: drivers/thermal/mediatek/auxadc_thermal.c:1182
-> error: drivers/thermal/mediatek/auxadc_thermal.c: patch does not apply
-> Patch failed at 0001 thermal: mediatek: change clk_prepare_enable to =
-devm_clk_get_enabled in mtk_thermal_probe
-Could you show me your work tree? I can apply it on mainline-6.3-rc7...
-> hint: Use 'git am --show-current-patch=3Ddiff' to see the failed patch
-> When you have resolved this problem, run "git am --continue".
-> If you prefer to skip this patch, run "git am --skip" instead.
-> To restore the original branch and stop patching, run "git am =
---abort".
->=20
->=20
->=20
-> On 15/04/2023 09:14, void0red@hust.edu.cn wrote:
->>> -----Original Messages-----
->>> From: "Kang Chen" <void0red@hust.edu.cn>
->>> Sent Time: 2023-04-11 14:35:31 (Tuesday)
->>> To: daniel.lezcano@linaro.org
->>> Cc: amitk@kernel.org, angelogioacchino.delregno@collabora.com, =
-bchihi@baylibre.com, daniel@makrotopia.org, dzm91@hust.edu.cn, =
-error27@gmail.com, henry.yen@mediatek.com, =
-hust-os-kernel-patches@googlegroups.com, =
-linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, =
-linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, =
-matthias.bgg@gmail.com, rafael@kernel.org, rdunlap@infradead.org, =
-rui.zhang@intel.com, void0red@gmail.com, void0red@hust.edu.cn
->>> Subject: [PATCH v3 2/2] thermal: mediatek: change clk_prepare_enable =
-to devm_clk_get_enabled in mtk_thermal_probe
->>>=20
->>> use devm_clk_get_enabled to do automatic resource management.
->>> Meanwhile, remove error handling labels in the probe function and
->>> the whole remove function.
->>>=20
->>> Signed-off-by: Kang Chen <void0red@hust.edu.cn>
->>> Reviewed-by: Dongliang Mu <dzm91@hust.edu.cn>
->>> ---
->>> v3 -> v2: remove some useles func calls.
->>> v2 -> v1: init
->>>=20
->>> Notice the devm_clk_get_enabled do the clk_get and =
-clk_prepare_enable
->>> at the same time.
->>> I'm not sure if this has any side effects in initialization.
->>>=20
->>>  drivers/thermal/mediatek/auxadc_thermal.c | 48 =
-+++++------------------
->>>  1 file changed, 10 insertions(+), 38 deletions(-)
->>>=20
->>> diff --git a/drivers/thermal/mediatek/auxadc_thermal.c =
-b/drivers/thermal/mediatek/auxadc_thermal.c
->>> index 3372f7c29626..995837ce3ea2 100644
->>> --- a/drivers/thermal/mediatek/auxadc_thermal.c
->>> +++ b/drivers/thermal/mediatek/auxadc_thermal.c
->>> @@ -1116,14 +1116,6 @@ static int mtk_thermal_probe(struct =
-platform_device *pdev)
->>>    	mt->conf =3D of_device_get_match_data(&pdev->dev);
->>>  -	mt->clk_peri_therm =3D devm_clk_get(&pdev->dev, "therm");
->>> -	if (IS_ERR(mt->clk_peri_therm))
->>> -		return PTR_ERR(mt->clk_peri_therm);
->>> -
->>> -	mt->clk_auxadc =3D devm_clk_get(&pdev->dev, "auxadc");
->>> -	if (IS_ERR(mt->clk_auxadc))
->>> -		return PTR_ERR(mt->clk_auxadc);
->>> -
->>>  	mt->thermal_base =3D =
-devm_platform_get_and_ioremap_resource(pdev, 0, NULL);
->>>  	if (IS_ERR(mt->thermal_base))
->>>  		return PTR_ERR(mt->thermal_base);
->>> @@ -1182,16 +1174,16 @@ static int mtk_thermal_probe(struct =
-platform_device *pdev)
->>>  	if (ret)
->>>  		return ret;
->>>  -	ret =3D clk_prepare_enable(mt->clk_auxadc);
->>> -	if (ret) {
->>> -		dev_err(&pdev->dev, "Can't enable auxadc clk: %d\n", =
-ret);
->>> -		return ret;
->>> +	mt->clk_auxadc =3D devm_clk_get_enabled(&pdev->dev, "auxadc");
->>> +	if (IS_ERR(mt->clk_auxadc)) {
->>> +		dev_err(&pdev->dev, "Can't enable auxadc clk: %d\n", =
-mt->clk_auxadc);
->>> +		return PTR_ERR(mt->clk_auxadc);
->>>  	}
->>>  -	ret =3D clk_prepare_enable(mt->clk_peri_therm);
->>> -	if (ret) {
->>> -		dev_err(&pdev->dev, "Can't enable peri clk: %d\n", ret);
->>> -		goto err_disable_clk_auxadc;
->>> +	mt->clk_peri_therm =3D devm_clk_get_enabled(&pdev->dev, =
-"therm");
->>> +	if (IS_ERR(mt->clk_peri_therm)) {
->>> +		dev_err(&pdev->dev, "Can't enable peri clk: %d\n", =
-mt->clk_peri_therm);
->>> +		return PTR_ERR(mt->clk_peri_therm);
->>>  	}
->>>    	if (mt->conf->version !=3D MTK_THERMAL_V1) {
->>> @@ -1215,38 +1207,18 @@ static int mtk_thermal_probe(struct =
-platform_device *pdev)
->>>    	tzdev =3D devm_thermal_of_zone_register(&pdev->dev, 0, mt,
->>>  					      &mtk_thermal_ops);
->>> -	if (IS_ERR(tzdev)) {
->>> -		ret =3D PTR_ERR(tzdev);
->>> -		goto err_disable_clk_peri_therm;
->>> -	}
->>> +	if (IS_ERR(tzdev))
->>> +		return PTR_ERR(tzdev);
->>>    	ret =3D devm_thermal_add_hwmon_sysfs(tzdev);
->>>  	if (ret)
->>>  		dev_warn(&pdev->dev, "error in =
-thermal_add_hwmon_sysfs");
->>>    	return 0;
->>> -
->>> -err_disable_clk_peri_therm:
->>> -	clk_disable_unprepare(mt->clk_peri_therm);
->>> -err_disable_clk_auxadc:
->>> -	clk_disable_unprepare(mt->clk_auxadc);
->>> -
->>> -	return ret;
->>> -}
->>> -
->>> -static int mtk_thermal_remove(struct platform_device *pdev)
->>> -{
->>> -	struct mtk_thermal *mt =3D platform_get_drvdata(pdev);
->>> -
->>> -	clk_disable_unprepare(mt->clk_peri_therm);
->>> -	clk_disable_unprepare(mt->clk_auxadc);
->>> -
->>> -	return 0;
->>>  }
->>>    static struct platform_driver mtk_thermal_driver =3D {
->>>  	.probe =3D mtk_thermal_probe,
->>> -	.remove =3D mtk_thermal_remove,
->>>  	.driver =3D {
->>>  		.name =3D "mtk-thermal",
->>>  		.of_match_table =3D mtk_thermal_of_match,
->>> --=20
->>> 2.34.1
->> ping?
->=20
-> --=20
-> <http://www.linaro.org/> Linaro.org =E2=94=82 Open source software for =
-ARM SoCs
->=20
-> Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-> <http://twitter.com/#!/linaroorg> Twitter |
-> <http://www.linaro.org/linaro-blog/> Blog
+"RST" is indeed a name too short to be conflict-free.
+
+Fix this by creating a common <media/jpeg.h> header file, containing
+definitions for all JPEG markers used, prefixed by "JPEG_MARKER_", based
+on the existing private definitions in the Samsung S5P JPEG driver, and
+convert all affected drivers.
+
+Reported-by: kernel test robot <lkp@intel.com>
+Link: https://lore.kernel.org/oe-kbuild-all/202304152346.hJOPxPRh-lkp@intel.com/
+Link: https://lore.kernel.org/oe-kbuild-all/202304150059.bHUyuriy-lkp@intel.com/
+Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+---
+No change in generated code before/after.
+---
+ .../mediatek/jpeg/mtk_jpeg_dec_parse.c        | 17 ++----
+ drivers/media/platform/renesas/rcar_jpu.c     | 55 +++++++++----------
+ .../platform/samsung/s5p-jpeg/jpeg-core.h     | 12 +---
+ include/media/jpeg.h                          | 20 +++++++
+ 4 files changed, 52 insertions(+), 52 deletions(-)
+ create mode 100644 include/media/jpeg.h
+
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_parse.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_parse.c
+index b95c45791c29edc5..bb9cdc9e0e90912b 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_parse.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_parse.c
+@@ -7,15 +7,10 @@
+ 
+ #include <linux/kernel.h>
+ #include <linux/videodev2.h>
++#include <media/jpeg.h>
+ 
+ #include "mtk_jpeg_dec_parse.h"
+ 
+-#define TEM	0x01
+-#define SOF0	0xc0
+-#define RST	0xd0
+-#define SOI	0xd8
+-#define EOI	0xd9
+-
+ struct mtk_jpeg_stream {
+ 	u8 *addr;
+ 	u32 size;
+@@ -83,7 +78,7 @@ static bool mtk_jpeg_do_parse(struct mtk_jpeg_dec_param *param, u8 *src_addr_va,
+ 
+ 		length = 0;
+ 		switch (byte) {
+-		case SOF0:
++		case JPEG_MARKER_SOF0:
+ 			/* length */
+ 			if (read_word_be(&stream, &word))
+ 				break;
+@@ -123,10 +118,10 @@ static bool mtk_jpeg_do_parse(struct mtk_jpeg_dec_param *param, u8 *src_addr_va,
+ 
+ 			notfound = !(i == param->comp_num);
+ 			break;
+-		case RST ... RST + 7:
+-		case SOI:
+-		case EOI:
+-		case TEM:
++		case JPEG_MARKER_RST ... JPEG_MARKER_RST + 7:
++		case JPEG_MARKER_SOI:
++		case JPEG_MARKER_EOI:
++		case JPEG_MARKER_TEM:
+ 			break;
+ 		default:
+ 			if (read_word_be(&stream, &word))
+diff --git a/drivers/media/platform/renesas/rcar_jpu.c b/drivers/media/platform/renesas/rcar_jpu.c
+index d1dda68bfb5e2087..25d3f0376d6709ba 100644
+--- a/drivers/media/platform/renesas/rcar_jpu.c
++++ b/drivers/media/platform/renesas/rcar_jpu.c
+@@ -28,6 +28,7 @@
+ #include <linux/spinlock.h>
+ #include <linux/string.h>
+ #include <linux/videodev2.h>
++#include <media/jpeg.h>
+ #include <media/v4l2-ctrls.h>
+ #include <media/v4l2-device.h>
+ #include <media/v4l2-event.h>
+@@ -71,19 +72,6 @@
+ #define JPU_JPEG_DEFAULT_422_PIX_FMT V4L2_PIX_FMT_NV16M
+ #define JPU_JPEG_DEFAULT_420_PIX_FMT V4L2_PIX_FMT_NV12M
+ 
+-/* JPEG markers */
+-#define TEM	0x01
+-#define SOF0	0xc0
+-#define RST	0xd0
+-#define SOI	0xd8
+-#define EOI	0xd9
+-#define DHP	0xde
+-#define DHT	0xc4
+-#define COM	0xfe
+-#define DQT	0xdb
+-#define DRI	0xdd
+-#define APP0	0xe0
+-
+ #define JPU_RESET_TIMEOUT	100 /* ms */
+ #define JPU_JOB_TIMEOUT		300 /* ms */
+ #define JPU_MAX_QUALITY		4
+@@ -330,26 +318,32 @@ static const u8 zigzag[] = {
+  * Huffman tables; Padding with 0xff (33.3.27 R01UH0501EJ0100 Rev.1.00)
+  */
+ #define JPU_JPEG_HDR_BLOB {                                                    \
+-	0xff, SOI, 0xff, DQT, 0x00, JPU_JPEG_QTBL_SIZE + 0x3, JPU_JPEG_LUM,    \
+-	[JPU_JPEG_QTBL_LUM_OFFSET ...                                          \
++	0xff, JPEG_MARKER_SOI, 0xff, JPEG_MARKER_DQT, 0x00,		       \
++	JPU_JPEG_QTBL_SIZE + 0x3, JPU_JPEG_LUM,				       \
++	[JPU_JPEG_QTBL_LUM_OFFSET ...					       \
+ 		JPU_JPEG_QTBL_LUM_OFFSET + JPU_JPEG_QTBL_SIZE - 1] = 0x00,     \
+-	0xff, DQT, 0x00, JPU_JPEG_QTBL_SIZE + 0x3, JPU_JPEG_CHR,               \
++	0xff, JPEG_MARKER_DQT, 0x00, JPU_JPEG_QTBL_SIZE + 0x3, JPU_JPEG_CHR,   \
+ 	[JPU_JPEG_QTBL_CHR_OFFSET ... JPU_JPEG_QTBL_CHR_OFFSET +               \
+-		JPU_JPEG_QTBL_SIZE - 1] = 0x00, 0xff, SOF0, 0x00, 0x11, 0x08,  \
++		JPU_JPEG_QTBL_SIZE - 1] = 0x00,				       \
++	0xff, JPEG_MARKER_SOF0, 0x00, 0x11, 0x08,			       \
+ 	[JPU_JPEG_HEIGHT_OFFSET ... JPU_JPEG_HEIGHT_OFFSET + 1] = 0x00,        \
+ 	[JPU_JPEG_WIDTH_OFFSET ... JPU_JPEG_WIDTH_OFFSET + 1] = 0x00,          \
+ 	0x03, 0x01, [JPU_JPEG_SUBS_OFFSET] = 0x00, JPU_JPEG_LUM,               \
+ 	0x02, 0x11, JPU_JPEG_CHR, 0x03, 0x11, JPU_JPEG_CHR,                    \
+-	0xff, DHT, 0x00, JPU_JPEG_HDCTBL_SIZE + 0x3, JPU_JPEG_LUM|JPU_JPEG_DC, \
++	0xff, JPEG_MARKER_DHT, 0x00, JPU_JPEG_HDCTBL_SIZE + 0x3,	       \
++	JPU_JPEG_LUM | JPU_JPEG_DC,					       \
+ 	[JPU_JPEG_HDCTBL_LUM_OFFSET ...                                        \
+ 		JPU_JPEG_HDCTBL_LUM_OFFSET + JPU_JPEG_HDCTBL_SIZE - 1] = 0x00, \
+-	0xff, DHT, 0x00, JPU_JPEG_HACTBL_SIZE + 0x3, JPU_JPEG_LUM|JPU_JPEG_AC, \
++	0xff, JPEG_MARKER_DHT, 0x00, JPU_JPEG_HACTBL_SIZE + 0x3,	       \
++	JPU_JPEG_LUM | JPU_JPEG_AC,					       \
+ 	[JPU_JPEG_HACTBL_LUM_OFFSET ...                                        \
+ 		JPU_JPEG_HACTBL_LUM_OFFSET + JPU_JPEG_HACTBL_SIZE - 1] = 0x00, \
+-	0xff, DHT, 0x00, JPU_JPEG_HDCTBL_SIZE + 0x3, JPU_JPEG_CHR|JPU_JPEG_DC, \
++	0xff, JPEG_MARKER_DHT, 0x00, JPU_JPEG_HDCTBL_SIZE + 0x3,	       \
++	JPU_JPEG_CHR | JPU_JPEG_DC,					       \
+ 	[JPU_JPEG_HDCTBL_CHR_OFFSET ...                                        \
+ 		JPU_JPEG_HDCTBL_CHR_OFFSET + JPU_JPEG_HDCTBL_SIZE - 1] = 0x00, \
+-	0xff, DHT, 0x00, JPU_JPEG_HACTBL_SIZE + 0x3, JPU_JPEG_CHR|JPU_JPEG_AC, \
++	0xff, JPEG_MARKER_DHT, 0x00, JPU_JPEG_HACTBL_SIZE + 0x3,	       \
++	JPU_JPEG_CHR | JPU_JPEG_AC,					       \
+ 	[JPU_JPEG_HACTBL_CHR_OFFSET ...                                        \
+ 		JPU_JPEG_HACTBL_CHR_OFFSET + JPU_JPEG_HACTBL_SIZE - 1] = 0x00, \
+ 	[JPU_JPEG_PADDING_OFFSET ... JPU_JPEG_HDR_SIZE - 1] = 0xff             \
+@@ -613,7 +607,8 @@ static u8 jpu_parse_hdr(void *buffer, unsigned long size, unsigned int *width,
+ 	 * basic size check and EOI - we don't want to let JPU cross
+ 	 * buffer bounds in any case. Hope it's stopping by EOI.
+ 	 */
+-	if (size < JPU_JPEG_MIN_SIZE || *(u8 *)(buffer + size - 1) != EOI)
++	if (size < JPU_JPEG_MIN_SIZE ||
++	    *(u8 *)(buffer + size - 1) != JPEG_MARKER_EOI)
+ 		return 0;
+ 
+ 	for (;;) {
+@@ -624,14 +619,14 @@ static u8 jpu_parse_hdr(void *buffer, unsigned long size, unsigned int *width,
+ 			c = get_byte(&jpeg_buffer);
+ 		while (c == 0xff || c == 0);
+ 
+-		if (!soi && c == SOI) {
++		if (!soi && c == JPEG_MARKER_SOI) {
+ 			soi = true;
+ 			continue;
+-		} else if (soi != (c != SOI))
++		} else if (soi != (c != JPEG_MARKER_SOI))
+ 			return 0;
+ 
+ 		switch (c) {
+-		case SOF0: /* SOF0: baseline JPEG */
++		case JPEG_MARKER_SOF0: /* SOF0: baseline JPEG */
+ 			skip(&jpeg_buffer, 3); /* segment length and bpp */
+ 			if (get_word_be(&jpeg_buffer, height) ||
+ 			    get_word_be(&jpeg_buffer, width) ||
+@@ -640,11 +635,11 @@ static u8 jpu_parse_hdr(void *buffer, unsigned long size, unsigned int *width,
+ 
+ 			skip(&jpeg_buffer, 1);
+ 			return get_byte(&jpeg_buffer);
+-		case DHT:
+-		case DQT:
+-		case COM:
+-		case DRI:
+-		case APP0 ... APP0 + 0x0f:
++		case JPEG_MARKER_DHT:
++		case JPEG_MARKER_DQT:
++		case JPEG_MARKER_COM:
++		case JPEG_MARKER_DRI:
++		case JPEG_MARKER_APP0 ... JPEG_MARKER_APP0 + 0x0f:
+ 			if (get_word_be(&jpeg_buffer, &word))
+ 				return 0;
+ 			skip(&jpeg_buffer, (long)word - 2);
+diff --git a/drivers/media/platform/samsung/s5p-jpeg/jpeg-core.h b/drivers/media/platform/samsung/s5p-jpeg/jpeg-core.h
+index 5570c79f122f5a09..4b665a3b630f8bf9 100644
+--- a/drivers/media/platform/samsung/s5p-jpeg/jpeg-core.h
++++ b/drivers/media/platform/samsung/s5p-jpeg/jpeg-core.h
+@@ -11,6 +11,7 @@
+ #define JPEG_CORE_H_
+ 
+ #include <linux/interrupt.h>
++#include <media/jpeg.h>
+ #include <media/v4l2-device.h>
+ #include <media/v4l2-fh.h>
+ #include <media/v4l2-ctrls.h>
+@@ -36,17 +37,6 @@
+ 
+ #define EXYNOS3250_IRQ_TIMEOUT		0x10000000
+ 
+-/* a selection of JPEG markers */
+-#define JPEG_MARKER_TEM				0x01
+-#define JPEG_MARKER_SOF0				0xc0
+-#define JPEG_MARKER_DHT				0xc4
+-#define JPEG_MARKER_RST				0xd0
+-#define JPEG_MARKER_SOI				0xd8
+-#define JPEG_MARKER_EOI				0xd9
+-#define	JPEG_MARKER_SOS				0xda
+-#define JPEG_MARKER_DQT				0xdb
+-#define JPEG_MARKER_DHP				0xde
+-
+ /* Flags that indicate a format can be used for capture/output */
+ #define SJPEG_FMT_FLAG_ENC_CAPTURE	(1 << 0)
+ #define SJPEG_FMT_FLAG_ENC_OUTPUT	(1 << 1)
+diff --git a/include/media/jpeg.h b/include/media/jpeg.h
+new file mode 100644
+index 0000000000000000..a01e142e99a7d001
+--- /dev/null
++++ b/include/media/jpeg.h
+@@ -0,0 +1,20 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++
++#ifndef _MEDIA_JPEG_H_
++#define _MEDIA_JPEG_H_
++
++/* JPEG markers */
++#define JPEG_MARKER_TEM		0x01
++#define JPEG_MARKER_SOF0	0xc0
++#define JPEG_MARKER_DHT		0xc4
++#define JPEG_MARKER_RST		0xd0
++#define JPEG_MARKER_SOI		0xd8
++#define JPEG_MARKER_EOI		0xd9
++#define JPEG_MARKER_SOS		0xda
++#define JPEG_MARKER_DQT		0xdb
++#define JPEG_MARKER_DRI		0xdd
++#define JPEG_MARKER_DHP		0xde
++#define JPEG_MARKER_APP0	0xe0
++#define JPEG_MARKER_COM		0xfe
++
++#endif /* _MEDIA_JPEG_H_ */
+-- 
+2.34.1
 
 
