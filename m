@@ -4,77 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 317E4C77B61
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Apr 2023 02:43:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D54A4C77B77
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Apr 2023 02:52:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=rPhxw80N6FEBy21KT6JKdnb7Rk8Y3VIbK2ia2FDIwSQ=; b=WwmeBFEc+0jPk1re7EW/TP9qDN
-	WKFSWiY5nIo+FYSNj+kBQVq4PDnD5hJrpWtUdAbU26Ty2iIw6CygRvhL8PzuEXGvwCEHcyy7jb44p
-	9S6quwDelnjuZx/j4ENV14AGm7/tFtcfwEt2CJxgY5T4wXpQJzKBqZ5nQJ9606kZsaGuGmfhPG0S0
-	sKM+7lXUF1EjQ0nl+7vmG40EqSMCJ5ZdJM8Belf3EraTpjdgQkJ4MQ8kX353Le1+NvsC5yJ2qvl4c
-	qAxTVzd8wN6gxKf+jC6QrH77kLVzbbP5KinXmRYrhW2nr97qS5NtfGuJNSpFm8Hi7ETJU9XM2sXrM
-	FKtk7udg==;
+	bh=ejR+XuzhyQVgZP+TJeLCfwXAB17U9qlUN9dfvgvCkck=; b=FI2LiqDzSpdEn4A8uUy3CzU2ou
+	97ZzAam9QrEeB6icE6OrZwYdOSjiTsmaYXD9ZQurZK4lqtmwGwGjRu54iO/q9UW0CHydFHacH5tX8
+	SIHx1nDmpXJXiV1bc6BfYT3CEbyIu2U5ho4shsrIZcsn4FozWfmT4efliZejVjQjnJNXfBRFtKXRi
+	eEI3afDoLmApu1ftVEhh8aep2bRJ4wluYsoY0NZ06xM7DwLxltJ7K6Hue+SWuBILrpVoxmGi+y75O
+	SmmYA+85wCjo/aP2X+wcW4xu9kcVRNOpduhMQtU1ViiWbVm+joniH3aLL+tNMgY6bZDVzzIIo0S+l
+	ZqAlrmJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1poEpS-00Ehll-23;
-	Mon, 17 Apr 2023 02:42:54 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1poEyW-00EiUH-1o;
+	Mon, 17 Apr 2023 02:52:16 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1poEpP-00Ehku-0t;
-	Mon, 17 Apr 2023 02:42:52 +0000
-X-UUID: 8a0ca632dcc911edb7d8d11f642b8e78-20230416
+	id 1poEyT-00EiSf-12;
+	Mon, 17 Apr 2023 02:52:14 +0000
+X-UUID: d8093656dcca11ed8687db9d93187ff1-20230416
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=rPhxw80N6FEBy21KT6JKdnb7Rk8Y3VIbK2ia2FDIwSQ=;
-	b=m2Kqs15VjsPNlF6/VKHKuWev5qCkpxyB/udWcZv2hv2P8NlpONd+PZgLxAMieCgptRapEFeWahOZTmlxTSmEGGKk9hqH6YpFYIL8Duwz3f153LMRF4pnBzYktggh6U/ILjtd5N7tlLIEUJHLN8qb26opyI/YlYB6riOSjyWqUkk=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=ejR+XuzhyQVgZP+TJeLCfwXAB17U9qlUN9dfvgvCkck=;
+	b=CiWs7+3iWV4KsaTwoGgxYf+BSUTOO6lryBUFYloulVcG5QbkmggCTPA0Wzzos+nivP2Bl0twgbn3A1NZWUbzQvF8WraIrZI6KxrtrMjYGNNv1WVz3sq52E0pYORXDAXvdn4orBNLMq2Rgf7XUduG4fEKw5tubKCUx81J5pFONgk=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:bad59ba3-b347-4e97-86ef-b95db8084430,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:120426c,CLOUDID:220086a1-8fcb-430b-954a-ba3f00fa94a5,B
+X-CID-O-INFO: VERSION:1.1.22,REQID:d2ff2d0b-0213-481a-9aa8-8237b57670f8,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:120426c,CLOUDID:a26386a1-8fcb-430b-954a-ba3f00fa94a5,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-UUID: 8a0ca632dcc911edb7d8d11f642b8e78-20230416
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+X-UUID: d8093656dcca11ed8687db9d93187ff1-20230416
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
 	(envelope-from <chunfeng.yun@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1645069003; Sun, 16 Apr 2023 19:42:48 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+	with ESMTP id 1170913214; Sun, 16 Apr 2023 19:52:08 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Mon, 17 Apr 2023 10:42:15 +0800
+ 15.2.1118.25; Mon, 17 Apr 2023 10:52:05 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Mon, 17 Apr 2023 10:42:14 +0800
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Mon, 17 Apr 2023 10:52:05 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring
 	<robh+dt@kernel.org>
 CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Krzysztof Kozlowski
 	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
 	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Mathias Nyman
-	<mathias.nyman@intel.com>, <linux-usb@vger.kernel.org>,
+	<angelogioacchino.delregno@collabora.com>, <linux-usb@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Tianping Fang
-	<tianping.fang@mediatek.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v3 1/2] dt-bindings: usb: mtk-xhci: add an optional frame count clock
-Date: Mon, 17 Apr 2023 10:42:12 +0800
-Message-ID: <20230417024213.17973-1-chunfeng.yun@mediatek.com>
+	<tianping.fang@mediatek.com>
+Subject: [PATCH v3 1/7] usb: mtu3: give back request when rx error happens
+Date: Mon, 17 Apr 2023 10:51:57 +0800
+Message-ID: <20230417025203.18097-1-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230416_194251_321113_02A1A5FA 
-X-CRM114-Status: UNSURE (   8.03  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230416_195213_363025_0616709E 
+X-CRM114-Status: GOOD (  13.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,40 +86,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add optional clock 'frmcnt_ck' used on 4nm or advanced process SoC
+When the Rx enconnter errors, currently, only print error logs, that
+may cause class driver's RX halt, shall give back the request with
+error status meanwhile.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
-v3: add acked-by and Reviewed-by tags
-
-v2: based the patch:
-    https://patchwork.kernel.org/project/linux-mediatek/patch/20230403191850.374839-1-krzysztof.kozlowski@linaro.org/
+v3: no changes
+v2: remove @req suggested by AngeloGioacchino
 ---
- Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/usb/mtu3/mtu3_qmu.c | 37 ++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 36 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-index 1b0dfaa6b3dd..f2f926cf4039 100644
---- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-+++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-@@ -77,6 +77,7 @@ properties:
-       - description: Mcu bus clock for register access
-       - description: DMA bus clock for data transfer
-       - description: controller clock
-+      - description: frame count clock
+diff --git a/drivers/usb/mtu3/mtu3_qmu.c b/drivers/usb/mtu3/mtu3_qmu.c
+index a2fdab8b63b2..a4da1af0b2c0 100644
+--- a/drivers/usb/mtu3/mtu3_qmu.c
++++ b/drivers/usb/mtu3/mtu3_qmu.c
+@@ -466,6 +466,37 @@ static void qmu_tx_zlp_error_handler(struct mtu3 *mtu, u8 epnum)
+ 	mtu3_qmu_resume(mep);
+ }
  
-   clock-names:
-     minItems: 1
-@@ -86,6 +87,7 @@ properties:
-       - const: mcu_ck
-       - const: dma_ck
-       - const: xhci_ck
-+      - const: frmcnt_ck
++/*
++ * when rx error happens (except zlperr), QMU will stop, and RQCPR saves
++ * the GPD encountered error, Done irq will arise after resuming QMU again.
++ */
++static void qmu_error_rx(struct mtu3 *mtu, u8 epnum)
++{
++	struct mtu3_ep *mep = mtu->out_eps + epnum;
++	struct mtu3_gpd_ring *ring = &mep->gpd_ring;
++	struct qmu_gpd *gpd_current = NULL;
++	struct mtu3_request *mreq;
++	dma_addr_t cur_gpd_dma;
++
++	cur_gpd_dma = read_rxq_cur_addr(mtu->mac_base, epnum);
++	gpd_current = gpd_dma_to_virt(ring, cur_gpd_dma);
++
++	mreq = next_request(mep);
++	if (!mreq || mreq->gpd != gpd_current) {
++		dev_err(mtu->dev, "no correct RX req is found\n");
++		return;
++	}
++
++	mreq->request.status = -EAGAIN;
++
++	/* by pass the current GDP */
++	gpd_current->dw0_info |= cpu_to_le32(GPD_FLAGS_BPS | GPD_FLAGS_HWO);
++	mtu3_qmu_resume(mep);
++
++	dev_dbg(mtu->dev, "%s EP%d, current=%p, req=%p\n",
++		__func__, epnum, gpd_current, mreq);
++}
++
+ /*
+  * NOTE: request list maybe is already empty as following case:
+  * queue_tx --> qmu_interrupt(clear interrupt pending, schedule tasklet)-->
+@@ -571,14 +602,18 @@ static void qmu_exception_isr(struct mtu3 *mtu, u32 qmu_status)
  
-   phys:
-     description:
+ 	if ((qmu_status & RXQ_CSERR_INT) || (qmu_status & RXQ_LENERR_INT)) {
+ 		errval = mtu3_readl(mbase, U3D_RQERRIR0);
++		mtu3_writel(mbase, U3D_RQERRIR0, errval);
++
+ 		for (i = 1; i < mtu->num_eps; i++) {
+ 			if (errval & QMU_RX_CS_ERR(i))
+ 				dev_err(mtu->dev, "Rx %d CS error!\n", i);
+ 
+ 			if (errval & QMU_RX_LEN_ERR(i))
+ 				dev_err(mtu->dev, "RX %d Length error\n", i);
++
++			if (errval & (QMU_RX_CS_ERR(i) | QMU_RX_LEN_ERR(i)))
++				qmu_error_rx(mtu, i);
+ 		}
+-		mtu3_writel(mbase, U3D_RQERRIR0, errval);
+ 	}
+ 
+ 	if (qmu_status & RXQ_ZLPERR_INT) {
 -- 
 2.18.0
 
