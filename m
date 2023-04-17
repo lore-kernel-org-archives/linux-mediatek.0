@@ -4,80 +4,161 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BB44C77B72
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Apr 2023 06:08:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73A06C77B72
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Apr 2023 06:19:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QeR9CpCczbRyPimR+qG2haOdePkMQhWTy8Vcp1T4SpM=; b=jWvAwfEDPGwz86foTI0i9vFe5I
-	vUs4xi/aaf9MGE5g15mKUmEYD/1fUU7St1/NTttabplF5qTR8Aw0sD3+NyBlXXVRpluaCsJAUY1r1
-	upojfFXOeQe3vgudc3kkcJ5+6363/E6WmQlAbXP57YH8DjPilV1EUQVZp92pSIopW9J7Bd59bsIXr
-	l1MnRzZ4e7hStYVbKw3Pl+E+23hkCOtT71Mq3GfzxvdU5AEmlPoqYc70HCJaU7fc/uW1VHKEnbV1r
-	NwKyBGUr3qYPlCSHZY766Ypl8BvgedhiwXZSnXucNQdzT30ml2qVN6dCjFvFksDPtCeOmc1vujT/O
-	gkkY07Ow==;
+	bh=wSTlGsl8yt+AMaRsvbtTCLynspIMCtdcQoxE1OgkeP0=; b=Y1K8ySZSDuj11P/P7mhDBT+4A/
+	ffbC2kzNG6ty22qxp3n2kNFyy97SIjrMdLe4kgtigBUBk++CORfO7XNjErwhPAvhFtK6PpHv2F3Sx
+	PjDpGxPg5HBJ/H8FQCQPMtWEQY/TH/Wzh656SdTU1B0MKE0H+Y66T7NjOJj/Kn+z/DzNKqKqG6xfN
+	f9muOBgaM6Zaz+FGihzARN6NFH8WMCovdfrO4weSZA6Ye8jxBtTciKkC+zPU9pLHCYJcrLypYxLgG
+	kmW9+fFe3LBJFwxqTMPeIKOjf9K32eskpRY+rilxviW7HYBceS+LVANv1JEfxQ4NTsej9Qg1baMVF
+	V8ij9Ztw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1poI2T-00Ezsc-15;
-	Mon, 17 Apr 2023 06:08:33 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1poICy-00F1lK-2O;
+	Mon, 17 Apr 2023 06:19:24 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1poI2Q-00Ezs6-37;
-	Mon, 17 Apr 2023 06:08:32 +0000
-X-UUID: 44e35f8edce611ed8687db9d93187ff1-20230416
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=QeR9CpCczbRyPimR+qG2haOdePkMQhWTy8Vcp1T4SpM=;
-	b=Grr9pzJN64s3KMg3OJX2efqjwjVABhUuouQXaEV4m1XZ2x8GrD5jM/NL+yZoMdXHoCSvI/mN+nheY7FaHwl3dyhbhMhpoyp8GmkJMcUjzH7J9UHS4pMmyYxVQteDa5K0+cXIheGkL5114yiylQdyKWyt5rgbcndp5ZJCzVhON5U=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:21e9db4f-ee18-4ac6-84c5-b792d4cb783b,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:120426c,CLOUDID:6e8a2feb-db6f-41fe-8b83-13fe7ed1ef52,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: 44e35f8edce611ed8687db9d93187ff1-20230416
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 592478463; Sun, 16 Apr 2023 23:08:27 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Mon, 17 Apr 2023 13:48:24 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Mon, 17 Apr 2023 13:48:23 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Chen-Yu Tsai <wenst@chromium.org>, Nicolas Dufresne
-	<nicolas@ndufresne.ca>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	id 1poICt-00F1jF-1W;
+	Mon, 17 Apr 2023 06:19:22 +0000
+Received: from pendragon.ideasonboard.com (133-32-181-51.west.xps.vectant.ne.jp [133.32.181.51])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id B70CC75B;
+	Mon, 17 Apr 2023 08:19:10 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1681712352;
+	bh=hUS3oAOWF+giUHWBAsyfYtTSnpYPnmumb+DnGnesqJ8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Q+UHkgsqoMg+RbmFKgO/pKG4ltOgU+p0CEbmAeVPPRN4I/Z0MDEKluVIEqTeJBTh9
+	 iHu44ev6JJI4FvruskDtoyatzHO41OXYRlqntM4853wlvujiEUW9lTQTFW+9URIaRu
+	 Pthp2nfBkldHSvMHEeDw0JIfxddwHLTf+oIOMJpY=
+Date: Mon, 17 Apr 2023 09:19:28 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	linux-aspeed@lists.ozlabs.org,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Benson Leung <bleung@chromium.org>,
+	Ajye Huang <ajye_huang@compal.corp-partner.google.com>,
+	Rory Liu <hellojacky0226@hotmail.com>,
+	Scott Chao <scott_chao@wistron.corp-partner.google.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Ettore Chimenti <ek5.chimenti@gmail.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Sean Young <sean@mess.org>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Ricardo Ribalda <ribalda@chromium.org>,
+	Yang Yingliang <yangyingliang@huawei.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Antti Palosaari <crope@iki.fi>,
+	Michael Tretter <m.tretter@pengutronix.de>,
+	Ming Qian <ming.qian@nxp.com>, Zhou Peng <eagle.zhou@nxp.com>,
+	Eddie James <eajames@linux.ibm.com>, Joel Stanley <joel@jms.id.au>,
+	Eugen Hristev <eugen.hristev@collabora.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Bin Liu <bin.liu@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+	Houlong Wei <houlong.wei@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Moudy Ho <moudy.ho@mediatek.com>, Qiheng Lin <linqiheng@huawei.com>,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Dmitry Osipenko <digetx@gmail.com>,
+	Xavier Roumegue <xavier.roumegue@oss.nxp.com>,
+	Mirela Rabulea <mirela.rabulea@nxp.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Rui Miguel Silva <rmfrfs@gmail.com>, Robert Foss <rfoss@kernel.org>,
+	Todor Tomov <todor.too@gmail.com>, Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Stanimir Varbanov <stanimir.k.varbanov@gmail.com>,
+	Vikash Garodia <quic_vgarodia@quicinc.com>,
+	Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>,
+	Fabrizio Castro <fabrizio.castro.jz@renesas.com>,
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+	Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>,
+	Jacopo Mondi <jacopo@jmondi.org>,
+	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
+	Nathan Chancellor <nathan@kernel.org>,
+	Yang Li <yang.lee@linux.alibaba.com>,
+	Dan Carpenter <error27@gmail.com>,
+	Jacob Chen <jacob-chen@iotwrt.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Dafna Hirschfeld <dafna@fastmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Colin Ian King <colin.i.king@gmail.com>,
+	Sylwester Nawrocki <s.nawrocki@samsung.com>,
+	Sylwester Nawrocki <sylvester.nawrocki@gmail.com>,
+	=?utf-8?Q?=C5=81ukasz?= Stelmach <l.stelmach@samsung.com>,
+	Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
+	Jacek Anaszewski <jacek.anaszewski@gmail.com>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Fabien Dessenne <fabien.dessenne@foss.st.com>,
+	Patrice Chotard <patrice.chotard@foss.st.com>,
+	Hugues Fruchet <hugues.fruchet@foss.st.com>,
+	Jean-Christophe Trotin <jean-christophe.trotin@foss.st.com>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Yong Deng <yong.deng@magewell.com>,
+	Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+	"Lad, Prabhakar" <prabhakar.csengg@gmail.com>,
+	Benoit Parrot <bparrot@ti.com>, Hyun Kwon <hyun.kwon@xilinx.com>,
+	Michal Simek <michal.simek@xilinx.com>,
+	ye xingchen <ye.xingchen@zte.com.cn>,
+	Eduardo Valentin <edubezval@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	"Daniel W. S. Almeida" <dwlsalmeida@gmail.com>,
+	Shuah Khan <skhan@linuxfoundation.org>,
+	Daniel Almeida <daniel.almeida@collabora.com>,
+	Hans Verkuil <hverkuil@xs4all.nl>,
+	Guenter Roeck <groeck@chromium.org>,
+	Fabio Estevam <festevam@gmail.com>,
+	linux-stm32@st-md-mailman.stormreply.com,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	chrome-platform@lists.linux.dev, linux-samsung-soc@vger.kernel.org,
+	Konrad Dybcio <konrad.dybcio@linaro.org>, openbmc@lists.ozlabs.org,
+	Kieran Bingham <kieran.bingham@ideasonboard.com>,
+	linux-rockchip@lists.infradead.org,
+	NXP Linux Team <linux-imx@nxp.com>, linux-sunxi@lists.linux.dev,
+	linux-media@vger.kernel.org,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-tegra@vger.kernel.org, linux-amlogic@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>, Yunfei Dong <yunfei.dong@mediatek.com>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, Hsin-Yi Wang
-	<hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter
-	<daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH 6/6] media: mediatek: vcodec: using empty lat buffer as the last one
-Date: Mon, 17 Apr 2023 13:48:16 +0800
-Message-ID: <20230417054816.17097-7-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230417054816.17097-1-yunfei.dong@mediatek.com>
-References: <20230417054816.17097-1-yunfei.dong@mediatek.com>
+	Andrew Jeffery <andrew@aj.id.au>, linux-renesas-soc@vger.kernel.org,
+	kernel@pengutronix.de
+Subject: Re: [PATCH 000/117] media: Convert to platform remove callback
+ returning void
+Message-ID: <20230417061928.GD28551@pendragon.ideasonboard.com>
+References: <20230326143224.572654-1-u.kleine-koenig@pengutronix.de>
+ <20230417060203.le3izz56wt73si6k@pengutronix.de>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+In-Reply-To: <20230417060203.le3izz56wt73si6k@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230416_230831_011211_640A634D 
-X-CRM114-Status: GOOD (  11.32  )
+X-CRM114-CacheID: sfid-20230416_231919_683652_C88731EE 
+X-CRM114-Status: GOOD (  24.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,74 +173,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Queue the empty lat buffer to core list when driver need to flush decode.
-It's mean core already decode all existed lat buffer when get empty lat
-buffer, then wake up core decode done event, the driver will exit when getting
-core dec done event.
+Hi Uwe,
 
-Fixes: d227af847ac2 ("media: mediatek: vcodec: add core decode done event")
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
----
- .../platform/mediatek/vcodec/vdec_msg_queue.c | 30 +++++++++----------
- 1 file changed, 15 insertions(+), 15 deletions(-)
+On Mon, Apr 17, 2023 at 08:02:03AM +0200, Uwe Kleine-König wrote:
+> Hello Mauro
+> 
+> On Sun, Mar 26, 2023 at 04:30:25PM +0200, Uwe Kleine-König wrote:
+> > Hello,
+> > 
+> > this series adapts the platform drivers below drivers/pci to use the
+> 
+> copy&paste failure here: s/pci/media/ of course.
+> 
+> > .remove_new() callback. Compared to the traditional .remove() callback
+> > .remove_new() returns no value. This is a good thing because the driver core
+> > doesn't (and cannot) cope for errors during remove. The only effect of a
+> > non-zero return value in .remove() is that the driver core emits a warning. The
+> > device is removed anyhow and an early return from .remove() usually yields a
+> > resource leak.
+> > 
+> > By changing the remove callback to return void driver authors cannot
+> > reasonably assume any more that there is some kind of cleanup later.
+> > 
+> > Only three drivers needed some preparation first to make sure they
+> > return 0 unconditionally in their remove callback. Then all drivers
+> > could be trivially converted without side effects to .remove_new().
+> > 
+> > The changes to the individual drivers are all orthogonal. If I need to
+> > resend some patches because of some review feedback, I'd like to only
+> > send the patches that actually needed changes, so please pick up the
+> > remaining patches that don't need changing to reduce the amount of mail.
+> 
+> I didn't hear anything back about application of this series. Is there a
+> blocker somewhere?
 
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
-index a74bd839d7e2..d2e48eefc958 100644
---- a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
-+++ b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
-@@ -177,9 +177,6 @@ void vdec_msg_queue_update_ube_wptr(struct vdec_msg_queue *msg_queue, uint64_t u
- 
- bool vdec_msg_queue_wait_lat_buf_full(struct vdec_msg_queue *msg_queue)
- {
--	int ret;
--	long timeout_jiff;
--
- 	if (atomic_read(&msg_queue->lat_list_cnt) == NUM_BUFFER_COUNT) {
- 		mtk_v4l2_debug(3, "wait buf full: list(%d %d) ready_num:%d status:%d",
- 			       atomic_read(&msg_queue->lat_list_cnt),
-@@ -189,19 +186,14 @@ bool vdec_msg_queue_wait_lat_buf_full(struct vdec_msg_queue *msg_queue)
- 		return true;
- 	}
- 
--	timeout_jiff = msecs_to_jiffies(1000 * (NUM_BUFFER_COUNT + 2));
--	ret = wait_event_timeout(msg_queue->ctx->msg_queue.core_dec_done,
--				 msg_queue->lat_ctx.ready_num == NUM_BUFFER_COUNT,
--				 timeout_jiff);
--	if (ret) {
--		mtk_v4l2_debug(3, "success to get lat buf: %d",
--			       msg_queue->lat_ctx.ready_num);
--		return true;
--	}
-+	msg_queue->flush_done = false;
-+	vdec_msg_queue_qbuf(&msg_queue->core_ctx, &msg_queue->empty_lat_buf);
-+	wait_event(msg_queue->core_dec_done, msg_queue->flush_done);
- 
--	mtk_v4l2_err("failed with lat buf isn't full: list(%d %d)",
--		     atomic_read(&msg_queue->lat_list_cnt),
--		     atomic_read(&msg_queue->core_list_cnt));
-+	mtk_v4l2_debug("flush done => ready_num:%d status:%d list(%d %d)",
-+		       msg_queue->lat_ctx.ready_num, msg_queue->status,
-+		       atomic_read(&msg_queue->lat_list_cnt),
-+		       atomic_read(&msg_queue->core_list_cnt));
- 
- 	return false;
- }
-@@ -250,6 +242,14 @@ static void vdec_msg_queue_core_work(struct work_struct *work)
- 	if (!lat_buf)
- 		return;
- 
-+	if (lat_buf->is_last_frame) {
-+		ctx->msg_queue.status = CONTEXT_LIST_DEC_DONE;
-+		msg_queue->flush_done = true;
-+		wake_up(&ctx->msg_queue.core_dec_done);
-+
-+		return;
-+	}
-+
- 	ctx = lat_buf->ctx;
- 	mtk_vcodec_dec_enable_hardware(ctx, MTK_VDEC_CORE);
- 	mtk_vcodec_set_curr_ctx(dev, ctx, MTK_VDEC_CORE);
+I think the series got applied to the master branch of
+git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git.
+It should thus appear in v6.4.
+
+The corresponding series for staging media drivers has also been applied
+to the same branch as far as I can tell.
+
+> Apart from the three preparatory patches that are a precondition to the
+> conversion of the respective drivers, the patches are all pairwise
+> orthogonal. So from my POV the best would be to apply all patches that
+> still apply (which might be all), I will care for the fallout later
+> then.
+
 -- 
-2.18.0
+Regards,
 
+Laurent Pinchart
 
