@@ -4,76 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45C6DC77B72
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Apr 2023 08:23:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C85ADC77B76
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Apr 2023 08:24:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LYOzFsuWn1COfGneRm6WY2fOcnr/qQKQgzZ3kCyOVbM=; b=hXmJygBYJWPzWMn9nvK1U0DChR
-	2P0inmlznNvXzPySS6n3YLp6sJdbsbob44wXO6oVFgSu3YwhfUKCan3rFxcEFLQlXapEh0t8pZM+/
-	5nawkOJjah9dWFe1z1f7IvKSFcucCdtGh4PkEsDPPkQDDBYQGSdIZShMMOSVTewGXPdDj8Y+wHXHA
-	rfhaJ2qG+n73qPsX4iJLJUCb/fKlRu0+rXf1Y2UHKMYXGKE2wDbV1pKRUbetYo4eR9HWh9QeE0dI/
-	jcFdMgPoeKApJlUhDUR5X4+w5gJZ0rH7vRRt3XKZtpSIVqRK2hoTFOHNN8L6iq0+XBmSnxTWPtfsi
-	THMkYW5g==;
+	bh=Lq8gf/+PZy12Pln5l0vIzWR9sJn2wB5gsLjdklHwRh0=; b=38ImpNTJwXeDT+lW7K6xQbpmkl
+	vs4MBIp24/0ApiButpRJE/G0cp/8+uWE8k19nxDJZdl1N8XSQbP1TG8N6i2Hyu4OFJcuTxGDB4WHX
+	Iv37pmb9JJjsKz8Zpp/pOEZfO6aO5g0NalFUK/CJMPWBDQ28qHCH8A/RP2nZ7qHTS5SXZN+j/ow7s
+	zeLG61NyecPqHhc8n7c4+tx8DCSdtnyZ4kCekfOoGhaY3GQbphdZZ5wPGzyvCDT7d5oMg3RdCWC/m
+	tHb6h0djd3998AkQEMI0NS9fe0ORUW+IonNptpyovvxZWgxaLQqVwb2R+OZD+p7Mb7lZkKKXdkfIM
+	cQxImq1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1poJXc-00FFPE-1H;
-	Mon, 17 Apr 2023 07:44:48 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1poJhu-00FH35-2o;
+	Mon, 17 Apr 2023 07:55:26 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1poJXY-00FFNd-0k;
-	Mon, 17 Apr 2023 07:44:45 +0000
+	id 1poJhr-00FH1t-05;
+	Mon, 17 Apr 2023 07:55:24 +0000
 Received: from [IPV6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2] (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id AD2346602F91;
-	Mon, 17 Apr 2023 08:44:41 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 912EA6600014;
+	Mon, 17 Apr 2023 08:55:18 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1681717482;
-	bh=4ju2sjdECGeN8KyDD+a8vUNcwUjOKUkgswflyYi99Wg=;
+	s=mail; t=1681718119;
+	bh=5N232Jlo3FBfPVIuaIIjg0Kg1+Qi6wc39jlYxC2rskQ=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=md97EAfMLICLqvYW/f+XUwyoMyVlvKHug1PQ/NPDtwv+z02yXSSAB24+d5spuEXxG
-	 OMYX1Gt2+6g6KY/ZvjT5sQ/TQaGoQtjZFPLuQdAOW5RC/IO0eelyn/5eeOgZ5+SRDh
-	 zKl1F5FCEZSyBAWVq3Td3sl0pH3wbh6IqdsCL/oRw2mM9ln1izz8BA+rdnamGIJFTL
-	 +QckzYq0H5ePOVfjZ24MhoV95jSxUwF0rXH7VtLxh0Z48j1DTZGN13FkYqVwXxvmk4
-	 aeQ57ikMa3pS1XWYHJIKEKSZ9F7bJxT9BJ0HVBtjksrzvwIT4sEnAyZ8bVhR/M/1yb
-	 +jH9qa2cndHKQ==
-Message-ID: <ad088fd1-d96e-76df-4c9d-07e0929813f7@collabora.com>
-Date: Mon, 17 Apr 2023 09:44:39 +0200
+	b=WZEc1aIy9AqxZiSJrJNoMOoh5l5pa3wEGLliWPoQlmLQcHpsq3jaa52jJeynoZXsj
+	 oT6qRNm9bjhZZraMHEj4gcWCJvtE35UOi2KSK69DH/p276Av8pJn2HY5Ol0uNH7o8e
+	 t80AoxtAkXawFYF+H3sQVCybt2tB/BHH0y5CP1tmzwASpg39DZ1gGG3rWhxA0/6k23
+	 X1fvWuzj2/TQJpQbyeIL8SoRPX8NNEbeGKAtGjiq/3ahFrL3sxe3PrmYHZdfT5KpaP
+	 ycJ+adZP1hLIAPfUi1fodh2cEWxIc6T4T2/ZMqyIPjHTcwkBxv+ZmuquQDReEYP7oP
+	 wQxablvJup/ug==
+Message-ID: <382bc15e-f4e3-3a9f-9dbc-4d46ac1d76d6@collabora.com>
+Date: Mon, 17 Apr 2023 09:55:16 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.9.1
-Subject: Re: [PATCH] media: mediatek: vcodec: Move a variable assignment
- behind condition checks in vdec_vp9_slice_single_decode()
+Subject: Re: [PATCH 7/7] ASoC: dt-bindings: mediatek,mt8188-afe: add audio
+ properties
 Content-Language: en-US
-To: Markus Elfring <Markus.Elfring@web.de>, kernel-janitors@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Guo Zhengkui <guozhengkui@vivo.com>, Hans Verkuil
- <hverkuil-cisco@xs4all.nl>, Haowen Bai <baihaowen@meizu.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Mingjia Zhang <mingjia.zhang@mediatek.com>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Xiaoyong Lu <xiaoyong.lu@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>
-Cc: cocci@inria.fr, LKML <linux-kernel@vger.kernel.org>
-References: <40c60719-4bfe-b1a4-ead7-724b84637f55@web.de>
- <1a11455f-ab57-dce0-1677-6beb8492a257@web.de>
- <b98dcc94-13f3-a6cb-f5bd-f1f8644d87d1@web.de>
+To: =?UTF-8?B?VHJldm9yIFd1ICjlkLPmlofoia8p?= <Trevor.Wu@mediatek.com>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>,
+ "broonie@kernel.org" <broonie@kernel.org>, "tiwai@suse.com"
+ <tiwai@suse.com>, "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "perex@perex.cz" <perex@perex.cz>
+Cc: "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>
+References: <20230413104713.7174-1-trevor.wu@mediatek.com>
+ <20230413104713.7174-8-trevor.wu@mediatek.com>
+ <310e8979-de96-dda8-6c95-0e6033d8b403@linaro.org>
+ <b9daeea6d823b8e84db0ca0df0e04d3716a6b944.camel@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <b98dcc94-13f3-a6cb-f5bd-f1f8644d87d1@web.de>
+In-Reply-To: <b9daeea6d823b8e84db0ca0df0e04d3716a6b944.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230417_004444_394572_98B20965 
-X-CRM114-Status: GOOD (  11.12  )
+X-CRM114-CacheID: sfid-20230417_005523_193428_2327EED4 
+X-CRM114-Status: GOOD (  17.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,22 +90,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 14/04/23 20:30, Markus Elfring ha scritto:
-> Date: Fri, 14 Apr 2023 20:07:01 +0200
+Il 17/04/23 04:44, Trevor Wu (吳文良) ha scritto:
+> On Sat, 2023-04-15 at 11:00 +0200, Krzysztof Kozlowski wrote:
+>>
+>> On 13/04/2023 12:47, Trevor Wu wrote:
+>>> Assign top_a1sys_hp clock to 26M, and add apll1_d4 to clocks for
+>>> switching
+>>> the parent of top_a1sys_hp dynamically
+>>> On the other hand, "mediatek,infracfg" is included for bus
+>>> protection.
+>>>
+>>> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+>>> ---
+>>>   .../bindings/sound/mediatek,mt8188-afe.yaml    | 18
+>>> ++++++++++++++++++
+>>>   1 file changed, 18 insertions(+)
+>>>
+>>> diff --git
+>>> a/Documentation/devicetree/bindings/sound/mediatek,mt8188-afe.yaml
+>>> b/Documentation/devicetree/bindings/sound/mediatek,mt8188-afe.yaml
+>>> index 82ccb32f08f2..03301d5082f3 100644
+>>> --- a/Documentation/devicetree/bindings/sound/mediatek,mt8188-
+>>> afe.yaml
+>>> +++ b/Documentation/devicetree/bindings/sound/mediatek,mt8188-
+>>> afe.yaml
+>>> @@ -29,6 +29,10 @@ properties:
+>>>       $ref: /schemas/types.yaml#/definitions/phandle
+>>>       description: The phandle of the mediatek topckgen controller
+>>>
+>>> +  mediatek,infracfg:
+>>> +    $ref: /schemas/types.yaml#/definitions/phandle
+>>> +    description: The phandle of the mediatek infracfg controller
+>>> +
+>>>     power-domains:
+>>>       maxItems: 1
+>>>
+>>> @@ -37,6 +41,7 @@ properties:
+>>>         - description: 26M clock
+>>>         - description: audio pll1 clock
+>>>         - description: audio pll2 clock
+>>> +      - description: audio pll1 divide 4
+>>>         - description: clock divider for i2si1_mck
+>>>         - description: clock divider for i2si2_mck
+>>>         - description: clock divider for i2so1_mck
+>>> @@ -58,6 +63,7 @@ properties:
+>>>         - const: clk26m
+>>>         - const: apll1
+>>>         - const: apll2
+>>> +      - const: apll1_d4
+>>
+>> Why do you add clocks in the middle? The order is strict, so you just
+>> broke all DTS.
+>>
 > 
-> The address of a data structure member was determined before
-> a corresponding null pointer check in the implementation of
-> the function “vdec_vp9_slice_single_decode”.
+> In DTS file, I only need to make sure that the order in clocks should
+> be the same as clock-names, so I misunderstood that I can add the clock
+> in the middle based on the clock type.
 > 
-> Thus avoid the risk for undefined behaviour by moving the assignment
-> for the variable “pfc” behind some condition checks.
+> Sorry, I didn't know the order is strict. I will move the new clock to
+> the last one in v2.
 > 
-> This issue was detected by using the Coccinelle software.
-> 
-> Fixes: b0f407c19648ae9110c932c91d6e1b9381ec0aeb ("media: mediatek: vcodec: add vp9 decoder driver for mt8186")
-> Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Actually, doing that is borderline-ok... there's no devicetree for MT8188
+upstream, so that's not breaking anything at all.
+In any case, I agree that you should generally avoid doing that but I think
+that in this specific case it's fine; I'm not a devicetree maintainer though.
+
+P.S.: Trevor, next time please make reviewers aware of the fact that no 8188
+       devicetree is present upstream!
+
+Regards,
+Angelo
 
 
 
