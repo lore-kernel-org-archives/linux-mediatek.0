@@ -4,105 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83A41C77B70
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Apr 2023 09:13:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1987C77B72
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Apr 2023 09:18:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ugn0tF7BDKzSh48Bi2FzY0cxR1IhIvrfHVPHfcTin10=; b=kNnbslohha4S3imlAdz7uMCEke
-	hpdDgEEt9kTDux9NA1+asr8v12AZMwxs8NyXhNy2FIc1NRUii9CIF3EvPFfLAeUMVw9ZKKmXD72TT
-	L7ExRpZ70T8fj30qp3ppcqTE8vCcQHWgZL5Zr2ng1mlV9fgHt8uftGVSaiQqRo2HdGcECjJKbtqGh
-	N/5aJIRz1l3kT6NweDjMi3VuLGUXH+YMEiSuZMXtFd3613RTvD4s6h2GQNmdK3I6HOwbFIipw1sFS
-	xD/dzDuObCiTAlU9uAJT3xH/z7oEAL4Ypg5tSbgupMbKrvaK3eDb6fIFmHro8g1hbao0naMsfIPam
-	qB9jcr6A==;
+	bh=jFLkdQxQwIy0kwyYHkCouJTe4tR41JTRH3lRK0CUzjk=; b=Yd6xUQiwg7Gqy7hKdat7J/XWch
+	8t5KU3vlxfwlVGdzIjRO+Sq5bqJzo89iEHGO9L+A1hxHg9z/Pf55d6A/uOBb88BwFPLPOOUzvt23M
+	m9e384maW6aUoyWMMx9MVj7MI5ThblnWxLLjPYBusDBH02UgSoDbBxwFxBtyD0KmCC+JhNG4HhaQ0
+	1jpSpNp3hunwwKuwXMyfmCmv2TCw4bkA3pFIS2fYk7ifVkMyRh4cYZuJfrusls5cU8BQ+ikFqmzSV
+	W7VjfzelZvHiyeG3eK93BCJ1eL81ejXq+Wn6qtfMt7rxIl6sREYQCJ0tKP9FWqttPCSzT9sdkC2oV
+	lSECZ8Ig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1poKv6-00FU8v-2P;
-	Mon, 17 Apr 2023 09:13:08 +0000
-Received: from mail-oa1-f44.google.com ([209.85.160.44])
+	id 1poL0D-00FV0f-1Z;
+	Mon, 17 Apr 2023 09:18:25 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1poKv2-00FU7G-34;
-	Mon, 17 Apr 2023 09:13:06 +0000
-Received: by mail-oa1-f44.google.com with SMTP id 586e51a60fabf-187bee46f9dso8149553fac.11;
-        Mon, 17 Apr 2023 02:13:02 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681722782; x=1684314782;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Ugn0tF7BDKzSh48Bi2FzY0cxR1IhIvrfHVPHfcTin10=;
-        b=gZ3Z+olH7XVbjvcpFO70J8Rz2KDzfJrJKP3OxkDjpuXw4vjLqYZ1BA4C07IUjludjL
-         fxqZUkL5h5u8wha1gh4XNj6zj3+z9zPOYjIxXFWqLe75gxd1VrJSvyTiUEuyCit6MVjt
-         x/+czm2EIT4BZguGDdK9Ajw9UBy5jOqz2yxbaaYqOXG+kh89oYhfDTxofKjRs7JFWc2F
-         8I2ofHh34TQzv3X4fF0tQRYBVkvocVGCi9ngoglUuRMLMG2rBX80ndT6hW1tLDITBdai
-         bBbSOMmgzQwFqqrNikv47WHsEFDaAfO351ADR5KTrwUDH87HIZS5QCk0q8wHoNE8SJ6+
-         ZG2A==
-X-Gm-Message-State: AAQBX9eTvY/mgc3rp6ruM/CCactDwCGziR9JKH5QOg+jmnQLU7LkvpHm
-	Uhry8o1D1Z/GENWYqPvmKmwTCmsnMR1lkQ==
-X-Google-Smtp-Source: AKy350beZQdOIZLn5yDA2L1VEHzuBpfNxmgXQkQfO43MN5PCLs3BIUAi24OuBW3kUeHqEfV/M9ktGA==
-X-Received: by 2002:a05:6870:658f:b0:187:c066:a39a with SMTP id fp15-20020a056870658f00b00187c066a39amr4666123oab.16.1681722781819;
-        Mon, 17 Apr 2023 02:13:01 -0700 (PDT)
-Received: from mail-oi1-f177.google.com (mail-oi1-f177.google.com. [209.85.167.177])
-        by smtp.gmail.com with ESMTPSA id o1-20020a05687072c100b0018456166c7asm4318117oak.39.2023.04.17.02.13.01
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 17 Apr 2023 02:13:01 -0700 (PDT)
-Received: by mail-oi1-f177.google.com with SMTP id p133so6407957oih.2;
-        Mon, 17 Apr 2023 02:13:01 -0700 (PDT)
-X-Received: by 2002:a25:d057:0:b0:b8f:5c64:cc2e with SMTP id
- h84-20020a25d057000000b00b8f5c64cc2emr6890649ybg.12.1681722760298; Mon, 17
- Apr 2023 02:12:40 -0700 (PDT)
+	id 1poL08-00FUzN-1T;
+	Mon, 17 Apr 2023 09:18:21 +0000
+Received: from [IPV6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2] (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 115E3660309E;
+	Mon, 17 Apr 2023 10:18:18 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1681723099;
+	bh=B6LbGft4HxAIqoilnk5IC83grPCkk/Hif1oJBGNxpWU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=jebdwN5kgEG64iYOCZj683+YGj3wMzGsaamuIPbrw7rTfny4mghm2QLnsviE9sNuV
+	 TLUfGHqyQZvtoMVtvnjYLI210dt4ZZupgQ0WHJNrgBpnha92v/5dx251GIkO1OX38t
+	 CLR3CAd1YLab+xYyY5unuL3GgDAMKU2eJvGZJhyJy1CeUMoGD33aMXhW8OXH2n77je
+	 vjNudg7KXB/jWsj5P96Yz9zvgxRzfad6MvpYtv3+vY4KEdvT3P2tNs1gi4K7tMgMv0
+	 ocBThx1DCx2vT6aSVt4XK05xHxlZA6zO2heIV19bFQBN0FUNAUmzd/eFH9Xc+fb1KX
+	 fEEdYW5UOdqrQ==
+Message-ID: <37b56f69-99c2-adf0-cc9f-572fbdaa2eee@collabora.com>
+Date: Mon, 17 Apr 2023 11:18:15 +0200
 MIME-Version: 1.0
-References: <20230415095112.51257-1-krzysztof.kozlowski@linaro.org> <20230415095112.51257-2-krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230415095112.51257-2-krzysztof.kozlowski@linaro.org>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Mon, 17 Apr 2023 11:12:28 +0200
-X-Gmail-Original-Message-ID: <CAMuHMdX=H_ypo82C4G8e_ytS9R6GNwnvVD_0L2GzPQdyaUHhdw@mail.gmail.com>
-Message-ID: <CAMuHMdX=H_ypo82C4G8e_ytS9R6GNwnvVD_0L2GzPQdyaUHhdw@mail.gmail.com>
-Subject: Re: [PATCH 2/6] dt-bindings: watchdog: indentation, quotes and
- white-space cleanup
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, 
-	Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
-	Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Julius Werner <jwerner@chromium.org>, 
-	Evan Benn <evanbenn@chromium.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, 
-	Claudiu Beznea <claudiu.beznea@microchip.com>, Florian Fainelli <f.fainelli@gmail.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andy Gross <agross@kernel.org>, 
-	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
-	Sander Vanheule <sander@svanheule.net>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
-	Fu Wei <fu.wei@linaro.org>, Viresh Kumar <vireshk@kernel.org>, 
-	Eugen Hristev <eugen.hristev@collabora.com>, Justin Chen <justinpopo6@gmail.com>, 
-	=?UTF-8?B?4oCaZWNraQ==?= <rafal@milecki.pl>, 
-	Linus Walleij <linus.walleij@linaro.org>, Corentin Labbe <clabbe@baylibre.com>, 
-	Anson Huang <Anson.Huang@nxp.com>, Robert Marko <robert.marko@sartura.hr>, 
-	Sergio Paracuellos <sergio.paracuellos@gmail.com>, 
-	Sai Prakash Ranjan <quic_saipraka@quicinc.com>, Wolfram Sang <wsa+renesas@sang-engineering.com>, 
-	Jamie Iles <jamie@jamieiles.com>, Yannick Fertre <yannick.fertre@foss.st.com>, 
-	Christophe Roullier <christophe.roullier@foss.st.com>, 
-	Shubhrajyoti Datta <shubhrajyoti.datta@xilinx.com>, Srinivas Neeli <srinivas.neeli@xilinx.com>, 
-	linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, 
-	linux-renesas-soc@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.1
+Subject: Re: [PATCH 1/6] media: mediatek: vcodec: can`t regard getting lat
+ buffer fail as error
+Content-Language: en-US
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai
+ <wenst@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?= <nfraprado@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20230417054816.17097-1-yunfei.dong@mediatek.com>
+ <20230417054816.17097-2-yunfei.dong@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230417054816.17097-2-yunfei.dong@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230417_021304_988443_BFB8BA67 
-X-CRM114-Status: GOOD (  14.70  )
+X-CRM114-CacheID: sfid-20230417_021820_627483_31598EBD 
+X-CRM114-Status: GOOD (  10.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,30 +86,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Apr 15, 2023 at 11:58=E2=80=AFAM Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> wrote:
-> Minor cleanup without functional impact:
-> 1. Indent DTS examples to preferred four-spaces (more readable for DTS),
-> 2. Drop unneeded quotes,
-> 3. Add/drop blank lines to make the code readable.
->
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Il 17/04/23 07:48, Yunfei Dong ha scritto:
+> The speed of lat decoder is much faster than core, need to get trans
+> buffer again when lat fail to get trans buffer.
+> 
 
->  .../bindings/watchdog/renesas,wdt.yaml        | 14 ++++----
+The commit description is misleading, looks like you're doing functional
+changes, but you're just changing loglevels... and the title is also a
+little confusing, so.. I would propose:
 
-Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
+media: mediatek: vcodec: Avoid unneeded error logging
 
-Gr{oetje,eeting}s,
+Since the LAT decoder works faster than its CORE, getting the trans buffer may
+be done only after CORE finishes processing: avoid printing an error if the
+decode function returns -EAGAIN, as this means that the buffer from CORE is not
+yet available, but will be at a later time.
 
-                        Geert
+Also change the log level for calls to vdec_msg_queue_dqbuf() in H264 and VP9
+LAT decoder drivers to avoid excessive logging.
 
---=20
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
-.org
+Cheers,
+Angelo
 
-In personal conversations with technical people, I call myself a hacker. Bu=
-t
-when I'm talking to journalists I just say "programmer" or something like t=
-hat.
-                                -- Linus Torvalds
+
 
