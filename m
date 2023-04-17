@@ -4,64 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98C25C77B76
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Apr 2023 15:27:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6264EC77B7A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Apr 2023 18:12:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Dim/eRKwOshrQgrP39p6MYdsVDVSpbxAyUQgA3V2W3o=; b=yWhp0FmtMr91bYzyKpMOxor0mp
-	2vRxTkXnm1vmBLNjHU+OeDCfyioWhshj3ron4iGXC2gjnam8kscclDnbXG6LLfhL6gjzlJL1qOkIg
-	N28hAvgVIuxmbLehehx+oIXqeapklIhTbh/wsQc24q+AxB9yg9yqd+Rue7oXxLJm1hRO9j8OfIae2
-	yQ6G1Twd17l+jYvnWSHFnAIG/tUL3S/tFGAeqovRDHWt4VH1MGV5ICL9rGr8/YctXQVgW07J3HA7E
-	bxQn/WMi0WHjwuLaLLTXPtDm6g4KZqN039J8fmqId0OeNwm8Ip+UDjqljN9B40wmHCFDydWBMLMS5
-	VvXJrIeQ==;
+	bh=FVPFlkCWGbx2AUI+Aq7ZHWQcyKexNy/PYpt15ANVKgY=; b=4rEMOjKTrRX6oZbDHR/FT90d1o
+	nAw1FiNkRui/4NSLURzn7ZCIPsmdSoqy9Z1jR2g9OXH/czhp62OtbcWoC8myGvZ/wPfeWxjQIs63a
+	mIVOWjQoeQ5ImTzEwmwXuqSMDnXZABGJSnZwBLnF4h4kPdA/J/dKE+51SQOEW0Si6SAXNJJvTMTkQ
+	QyGHJiTywxcKp1jgz6gwOe6Yh9TeDH737mKVkvubhvGlaWbgyveh2M070LkFeqeU5w/EwPwikSRky
+	hg3HlNbk/xkK1ECCo8tiup0WuFjNyTHn4/rMZfJSZwC0mm0i48yp05vYRgZhjTq4zgBS4RraxoNQG
+	A/q+NM3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1poQlT-00Gsh6-1J;
-	Mon, 17 Apr 2023 15:27:35 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1poTKk-00HI5G-13;
+	Mon, 17 Apr 2023 18:12:10 +0000
+Received: from mail-sn1nam02on20629.outbound.protection.outlook.com ([2a01:111:f400:7ea9::629] helo=NAM02-SN1-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1poQlO-00Gsch-1G;
-	Mon, 17 Apr 2023 15:27:32 +0000
-Received: from pendragon.ideasonboard.com (133-32-181-51.west.xps.vectant.ne.jp [133.32.181.51])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id C3A04F95;
-	Mon, 17 Apr 2023 17:27:15 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1681745236;
-	bh=wthbCcSWIU8JnT/FLJdbW67i7ir9ec7QjMVQSyi39pc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Gb+003oPOYMGEOt6ITB4fiWdMUGOtBLfDNsiakYuu4dNmTBe3AZwHnLUkUYCQbuZa
-	 SoAgcezFEBlZqOtaeBnR0KpYjQMlFGqHDENsfbDwv1UluAR2j6Sq3UQgAsDt7ZVofs
-	 TTWClk4abQJZEaC1lrTvzrkCyszuQvmUCbqFBGuM=
-Date: Mon, 17 Apr 2023 18:27:31 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Geert Uytterhoeven <geert+renesas@glider.be>
-Cc: Bin Liu <bin.liu@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>,
-	Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
-	Jacek Anaszewski <jacek.anaszewski@gmail.com>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-media@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	kernel test robot <lkp@intel.com>
-Subject: Re: [PATCH] media: Add common header file with JPEG marker
- definitions
-Message-ID: <20230417152731.GC19964@pendragon.ideasonboard.com>
-References: <bcb81f910f03eef4ed964d39883df0d33c762f9f.1681727493.git.geert+renesas@glider.be>
+	id 1poTKe-00HI1e-22;
+	Mon, 17 Apr 2023 18:12:06 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Q0ewRoiknnlgkOXjbnpS9dvyw1gFhwyG3/rSly+Kf+RlUT606HqWVsIFE2gQ0mzwfczmSC6oL4ssQXeXll+/gDLsr+9PLJcc64neeLHJvOVTTiz6GJoUkE0rFcksaSB2q4Jz/YAGO+u9BeH5tuGhpKDgfZ1Figc6w55GAGmDL/6UPT/1krycbOpLWERF6mCenDtfcV3OcoP0/s2OgUN4GMXQJAegukJXJPv0Ff/KcN3UVGSRSR1cFy+59Slse94zBIPps2vBWol3THciM2TvVlfezj2aY0luedUF5iPX0M5D+yN2aqrxyTxlVxjhUQV825Xh4TgfQreoRxfKPHc9lA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=FVPFlkCWGbx2AUI+Aq7ZHWQcyKexNy/PYpt15ANVKgY=;
+ b=PlC+wSGIbNkKX7btB3Xdj08k7FjYoMMDCXzLYyvUoj4J++BAU0EqaKTAK68NgHX1pDhMRkSnHAqmUYrdPDX19iylShAjEL+YUK/8E+TiE5pRexqx+UBo/j+MGGAOexdlWtXnZGRvR5VmviQfaXhFn6pQMHa1JOWq3VpaFXXeAvqmDt0qc695Up4VuQhUgZC2srNw8moWjcbOlSphe1hVL8qd2U101XUALdxWDE+cKDIHQ9EkHYfL3fAwZBwHDU76rwgtpigCglkCVjtLirisIeGmNwbyalE7V7/Qz1zfDI3CXhtA1cxwBP4q4nQyq87mQnU7O7+j5QtKSqvaLdRqRg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=nbd.name smtp.mailfrom=amd.com; dmarc=pass
+ (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=FVPFlkCWGbx2AUI+Aq7ZHWQcyKexNy/PYpt15ANVKgY=;
+ b=RoY3taR1T4JXRKg9v3GBe54lzZdfeVfALN9KSWfZ0GiWHfnjI0EUVmozBR+Bl/sDXh80EBSfQkaVquNcIe008zdvKXVl97s1eoq1FZxMMU6Z3ai7pCi4KxeNTyhTzR8L9ZjYon1tVzM553n1p4HRcsdin7zPxfy2rgFeARgsM/g=
+Received: from MW4PR03CA0308.namprd03.prod.outlook.com (2603:10b6:303:dd::13)
+ by MW5PR12MB5652.namprd12.prod.outlook.com (2603:10b6:303:1a0::15) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6298.30; Mon, 17 Apr
+ 2023 18:11:46 +0000
+Received: from CO1NAM11FT083.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:303:dd:cafe::77) by MW4PR03CA0308.outlook.office365.com
+ (2603:10b6:303:dd::13) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6298.46 via Frontend
+ Transport; Mon, 17 Apr 2023 18:11:46 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
+ smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
+Received: from SATLEXMB04.amd.com (165.204.84.17) by
+ CO1NAM11FT083.mail.protection.outlook.com (10.13.174.92) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.6319.20 via Frontend Transport; Mon, 17 Apr 2023 18:11:46 +0000
+Received: from AUS-LX-MLIMONCI.amd.com (10.180.168.240) by SATLEXMB04.amd.com
+ (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.34; Mon, 17 Apr
+ 2023 13:11:44 -0500
+From: Mario Limonciello <mario.limonciello@amd.com>
+To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, "Lorenzo
+ Bianconi" <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: Kai-Heng Feng <kai.heng.feng@canonical.com>, Mario Limonciello
+	<mario.limonciello@amd.com>, Anson Tsao <anson.tsao@amd.com>, Sean Wang
+	<sean.wang@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Kalle Valo
+	<kvalo@kernel.org>, "David S. Miller" <davem@davemloft.net>, Eric Dumazet
+	<edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+	<pabeni@redhat.com>, <linux-wireless@vger.kernel.org>,
+	<netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v2] wifi: mt76: mt7921e: Set memory space enable in PCI_COMMAND if unset
+Date: Mon, 17 Apr 2023 13:11:30 -0500
+Message-ID: <20230417181130.4445-2-mario.limonciello@amd.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230417181130.4445-1-mario.limonciello@amd.com>
+References: <20230417181130.4445-1-mario.limonciello@amd.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <bcb81f910f03eef4ed964d39883df0d33c762f9f.1681727493.git.geert+renesas@glider.be>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.180.168.240]
+X-ClientProxiedBy: SATLEXMB04.amd.com (10.181.40.145) To SATLEXMB04.amd.com
+ (10.181.40.145)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CO1NAM11FT083:EE_|MW5PR12MB5652:EE_
+X-MS-Office365-Filtering-Correlation-Id: febcff06-71e2-45d8-5390-08db3f6f350d
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	2aHYYuvZ7Z3lsceNoAGAruipanXIiJqfKoo5OZ9MlNH83bY8ZejsrPxEoQ5EYvADML45cbkLxt3bgh1BueCjjWVsK3bdclyuuuZGvNzAXfGgFy2n5s1OmI/XgghppHBbAfNV8HecYJDFrKMGQJlYzTJENXQweV/qrqHwl+Dd0G64enT0yGVDNU002opCygTs7QKmyw6esmLGX3upmJba0BEuiT3qRL60i1IxgIAeXM73yRSaQRijM4sqtdPwJ04ppON6MHRbAryfpsuw5jHL1VBKdHSGU8Jtv2PAoTKsK8nC9fpaVrVq48gHiwbLW4W4Wxlf8b63GkqAapVS4pjULqb1OheFiecDd5ZLGbRzdjYkyyqedxlJL61p6zqaqDMlcxkaA+5sSR/fHj473RyKImUgpH5GilmWgClKHzZmAgWkprbdR6yTbdVfYiMpBaNlmfHFn27xbZKEUVPrO7C0tsgqjYejVbng7NMbCP/D+o3yuXAUzL5ZZXxUrzdoHqXwKnRz52BMjiEP2fTS38NpxbcChCpXmKyzoKYzJlzBYtj/xKIWo+1i2yEDcbjHMYYyA1+kET40rUFstslL6dUJos5YgcN2gRneYECzYwsafQ4aFcwRClB/8rdcB5YnQB18QFxVXuAtsANGsIk6BKF8d3ItGBZB2CTKuwpVlIscYr7R1HWl454L7Yo0mdzuCDUlvbwtIKDwNDwIW2eFbCDO1VZJRM2QF58xS5j8khqHWSo=
+X-Forefront-Antispam-Report: 	CIP:165.204.84.17;CTRY:US;LANG:en;SCL:1;SRV:;IPV:CAL;SFV:NSPM;H:SATLEXMB04.amd.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230028)(4636009)(376002)(39860400002)(346002)(396003)(136003)(451199021)(46966006)(40470700004)(36840700001)(110136005)(336012)(426003)(26005)(1076003)(54906003)(40480700001)(47076005)(186003)(83380400001)(2616005)(16526019)(36860700001)(40460700003)(7696005)(5660300002)(478600001)(41300700001)(6666004)(82310400005)(316002)(8676002)(82740400003)(356005)(8936002)(86362001)(81166007)(70206006)(70586007)(36756003)(4326008)(2906002)(7416002)(44832011)(36900700001);DIR:OUT;SFP:1101;
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Apr 2023 18:11:46.5324
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: febcff06-71e2-45d8-5390-08db3f6f350d
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d;Ip=[165.204.84.17];Helo=[SATLEXMB04.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: 	CO1NAM11FT083.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW5PR12MB5652
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230417_082730_596665_BF4C4B99 
-X-CRM114-Status: GOOD (  28.55  )
+X-CRM114-CacheID: sfid-20230417_111204_696616_BBFDDE51 
+X-CRM114-Status: GOOD (  11.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,269 +125,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Geert,
+When the BIOS has been configured for Fast Boot, systems with mt7921e
+have non-functional wifi.  Turning on Fast boot caused both bus master
+enable and memory space enable bits in PCI_COMMAND not to get configured.
 
-Thank you for the patch.
+The mt7921 driver already sets bus master enable, but explicitly check
+and set memory access enable as well to fix this problem.
 
-On Mon, Apr 17, 2023 at 12:31:35PM +0200, Geert Uytterhoeven wrote:
-> When compile-testing on mips/RB532 with W=1:
-> 
->     arch/mips/include/asm/mach-rc32434/rb.h:13: note: this is the location of the previous definition
->        13 | #define RST  (1 << 15)
-> 	  |
->     drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_parse.c:15: warning: "RST" redefined
->        15 | #define RST 0xd0
-> 	  |
->     drivers/media/platform/renesas/rcar_jpu.c:77: warning: "RST" redefined
->        77 | #define RST 0xd0
-> 	  |
-> 
-> "RST" is indeed a name too short to be conflict-free.
-> 
-> Fix this by creating a common <media/jpeg.h> header file, containing
-> definitions for all JPEG markers used, prefixed by "JPEG_MARKER_", based
-> on the existing private definitions in the Samsung S5P JPEG driver, and
-> convert all affected drivers.
-> 
-> Reported-by: kernel test robot <lkp@intel.com>
-> Link: https://lore.kernel.org/oe-kbuild-all/202304152346.hJOPxPRh-lkp@intel.com/
-> Link: https://lore.kernel.org/oe-kbuild-all/202304150059.bHUyuriy-lkp@intel.com/
-> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+Tested-by: Anson Tsao <anson.tsao@amd.com>
+Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+Acked-by: Sean Wang <sean.wang@mediatek.com>
+---
+v1->v2:
+ * Pick up tag from Sean
+ drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-Reviewed-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
-
-> ---
-> No change in generated code before/after.
-> ---
->  .../mediatek/jpeg/mtk_jpeg_dec_parse.c        | 17 ++----
->  drivers/media/platform/renesas/rcar_jpu.c     | 55 +++++++++----------
->  .../platform/samsung/s5p-jpeg/jpeg-core.h     | 12 +---
->  include/media/jpeg.h                          | 20 +++++++
->  4 files changed, 52 insertions(+), 52 deletions(-)
->  create mode 100644 include/media/jpeg.h
-> 
-> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_parse.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_parse.c
-> index b95c45791c29edc5..bb9cdc9e0e90912b 100644
-> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_parse.c
-> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_parse.c
-> @@ -7,15 +7,10 @@
->  
->  #include <linux/kernel.h>
->  #include <linux/videodev2.h>
-> +#include <media/jpeg.h>
->  
->  #include "mtk_jpeg_dec_parse.h"
->  
-> -#define TEM	0x01
-> -#define SOF0	0xc0
-> -#define RST	0xd0
-> -#define SOI	0xd8
-> -#define EOI	0xd9
-> -
->  struct mtk_jpeg_stream {
->  	u8 *addr;
->  	u32 size;
-> @@ -83,7 +78,7 @@ static bool mtk_jpeg_do_parse(struct mtk_jpeg_dec_param *param, u8 *src_addr_va,
->  
->  		length = 0;
->  		switch (byte) {
-> -		case SOF0:
-> +		case JPEG_MARKER_SOF0:
->  			/* length */
->  			if (read_word_be(&stream, &word))
->  				break;
-> @@ -123,10 +118,10 @@ static bool mtk_jpeg_do_parse(struct mtk_jpeg_dec_param *param, u8 *src_addr_va,
->  
->  			notfound = !(i == param->comp_num);
->  			break;
-> -		case RST ... RST + 7:
-> -		case SOI:
-> -		case EOI:
-> -		case TEM:
-> +		case JPEG_MARKER_RST ... JPEG_MARKER_RST + 7:
-> +		case JPEG_MARKER_SOI:
-> +		case JPEG_MARKER_EOI:
-> +		case JPEG_MARKER_TEM:
->  			break;
->  		default:
->  			if (read_word_be(&stream, &word))
-> diff --git a/drivers/media/platform/renesas/rcar_jpu.c b/drivers/media/platform/renesas/rcar_jpu.c
-> index d1dda68bfb5e2087..25d3f0376d6709ba 100644
-> --- a/drivers/media/platform/renesas/rcar_jpu.c
-> +++ b/drivers/media/platform/renesas/rcar_jpu.c
-> @@ -28,6 +28,7 @@
->  #include <linux/spinlock.h>
->  #include <linux/string.h>
->  #include <linux/videodev2.h>
-> +#include <media/jpeg.h>
->  #include <media/v4l2-ctrls.h>
->  #include <media/v4l2-device.h>
->  #include <media/v4l2-event.h>
-> @@ -71,19 +72,6 @@
->  #define JPU_JPEG_DEFAULT_422_PIX_FMT V4L2_PIX_FMT_NV16M
->  #define JPU_JPEG_DEFAULT_420_PIX_FMT V4L2_PIX_FMT_NV12M
->  
-> -/* JPEG markers */
-> -#define TEM	0x01
-> -#define SOF0	0xc0
-> -#define RST	0xd0
-> -#define SOI	0xd8
-> -#define EOI	0xd9
-> -#define DHP	0xde
-> -#define DHT	0xc4
-> -#define COM	0xfe
-> -#define DQT	0xdb
-> -#define DRI	0xdd
-> -#define APP0	0xe0
-> -
->  #define JPU_RESET_TIMEOUT	100 /* ms */
->  #define JPU_JOB_TIMEOUT		300 /* ms */
->  #define JPU_MAX_QUALITY		4
-> @@ -330,26 +318,32 @@ static const u8 zigzag[] = {
->   * Huffman tables; Padding with 0xff (33.3.27 R01UH0501EJ0100 Rev.1.00)
->   */
->  #define JPU_JPEG_HDR_BLOB {                                                    \
-> -	0xff, SOI, 0xff, DQT, 0x00, JPU_JPEG_QTBL_SIZE + 0x3, JPU_JPEG_LUM,    \
-> -	[JPU_JPEG_QTBL_LUM_OFFSET ...                                          \
-> +	0xff, JPEG_MARKER_SOI, 0xff, JPEG_MARKER_DQT, 0x00,		       \
-> +	JPU_JPEG_QTBL_SIZE + 0x3, JPU_JPEG_LUM,				       \
-> +	[JPU_JPEG_QTBL_LUM_OFFSET ...					       \
->  		JPU_JPEG_QTBL_LUM_OFFSET + JPU_JPEG_QTBL_SIZE - 1] = 0x00,     \
-> -	0xff, DQT, 0x00, JPU_JPEG_QTBL_SIZE + 0x3, JPU_JPEG_CHR,               \
-> +	0xff, JPEG_MARKER_DQT, 0x00, JPU_JPEG_QTBL_SIZE + 0x3, JPU_JPEG_CHR,   \
->  	[JPU_JPEG_QTBL_CHR_OFFSET ... JPU_JPEG_QTBL_CHR_OFFSET +               \
-> -		JPU_JPEG_QTBL_SIZE - 1] = 0x00, 0xff, SOF0, 0x00, 0x11, 0x08,  \
-> +		JPU_JPEG_QTBL_SIZE - 1] = 0x00,				       \
-> +	0xff, JPEG_MARKER_SOF0, 0x00, 0x11, 0x08,			       \
->  	[JPU_JPEG_HEIGHT_OFFSET ... JPU_JPEG_HEIGHT_OFFSET + 1] = 0x00,        \
->  	[JPU_JPEG_WIDTH_OFFSET ... JPU_JPEG_WIDTH_OFFSET + 1] = 0x00,          \
->  	0x03, 0x01, [JPU_JPEG_SUBS_OFFSET] = 0x00, JPU_JPEG_LUM,               \
->  	0x02, 0x11, JPU_JPEG_CHR, 0x03, 0x11, JPU_JPEG_CHR,                    \
-> -	0xff, DHT, 0x00, JPU_JPEG_HDCTBL_SIZE + 0x3, JPU_JPEG_LUM|JPU_JPEG_DC, \
-> +	0xff, JPEG_MARKER_DHT, 0x00, JPU_JPEG_HDCTBL_SIZE + 0x3,	       \
-> +	JPU_JPEG_LUM | JPU_JPEG_DC,					       \
->  	[JPU_JPEG_HDCTBL_LUM_OFFSET ...                                        \
->  		JPU_JPEG_HDCTBL_LUM_OFFSET + JPU_JPEG_HDCTBL_SIZE - 1] = 0x00, \
-> -	0xff, DHT, 0x00, JPU_JPEG_HACTBL_SIZE + 0x3, JPU_JPEG_LUM|JPU_JPEG_AC, \
-> +	0xff, JPEG_MARKER_DHT, 0x00, JPU_JPEG_HACTBL_SIZE + 0x3,	       \
-> +	JPU_JPEG_LUM | JPU_JPEG_AC,					       \
->  	[JPU_JPEG_HACTBL_LUM_OFFSET ...                                        \
->  		JPU_JPEG_HACTBL_LUM_OFFSET + JPU_JPEG_HACTBL_SIZE - 1] = 0x00, \
-> -	0xff, DHT, 0x00, JPU_JPEG_HDCTBL_SIZE + 0x3, JPU_JPEG_CHR|JPU_JPEG_DC, \
-> +	0xff, JPEG_MARKER_DHT, 0x00, JPU_JPEG_HDCTBL_SIZE + 0x3,	       \
-> +	JPU_JPEG_CHR | JPU_JPEG_DC,					       \
->  	[JPU_JPEG_HDCTBL_CHR_OFFSET ...                                        \
->  		JPU_JPEG_HDCTBL_CHR_OFFSET + JPU_JPEG_HDCTBL_SIZE - 1] = 0x00, \
-> -	0xff, DHT, 0x00, JPU_JPEG_HACTBL_SIZE + 0x3, JPU_JPEG_CHR|JPU_JPEG_AC, \
-> +	0xff, JPEG_MARKER_DHT, 0x00, JPU_JPEG_HACTBL_SIZE + 0x3,	       \
-> +	JPU_JPEG_CHR | JPU_JPEG_AC,					       \
->  	[JPU_JPEG_HACTBL_CHR_OFFSET ...                                        \
->  		JPU_JPEG_HACTBL_CHR_OFFSET + JPU_JPEG_HACTBL_SIZE - 1] = 0x00, \
->  	[JPU_JPEG_PADDING_OFFSET ... JPU_JPEG_HDR_SIZE - 1] = 0xff             \
-> @@ -613,7 +607,8 @@ static u8 jpu_parse_hdr(void *buffer, unsigned long size, unsigned int *width,
->  	 * basic size check and EOI - we don't want to let JPU cross
->  	 * buffer bounds in any case. Hope it's stopping by EOI.
->  	 */
-> -	if (size < JPU_JPEG_MIN_SIZE || *(u8 *)(buffer + size - 1) != EOI)
-> +	if (size < JPU_JPEG_MIN_SIZE ||
-> +	    *(u8 *)(buffer + size - 1) != JPEG_MARKER_EOI)
->  		return 0;
->  
->  	for (;;) {
-> @@ -624,14 +619,14 @@ static u8 jpu_parse_hdr(void *buffer, unsigned long size, unsigned int *width,
->  			c = get_byte(&jpeg_buffer);
->  		while (c == 0xff || c == 0);
->  
-> -		if (!soi && c == SOI) {
-> +		if (!soi && c == JPEG_MARKER_SOI) {
->  			soi = true;
->  			continue;
-> -		} else if (soi != (c != SOI))
-> +		} else if (soi != (c != JPEG_MARKER_SOI))
->  			return 0;
->  
->  		switch (c) {
-> -		case SOF0: /* SOF0: baseline JPEG */
-> +		case JPEG_MARKER_SOF0: /* SOF0: baseline JPEG */
->  			skip(&jpeg_buffer, 3); /* segment length and bpp */
->  			if (get_word_be(&jpeg_buffer, height) ||
->  			    get_word_be(&jpeg_buffer, width) ||
-> @@ -640,11 +635,11 @@ static u8 jpu_parse_hdr(void *buffer, unsigned long size, unsigned int *width,
->  
->  			skip(&jpeg_buffer, 1);
->  			return get_byte(&jpeg_buffer);
-> -		case DHT:
-> -		case DQT:
-> -		case COM:
-> -		case DRI:
-> -		case APP0 ... APP0 + 0x0f:
-> +		case JPEG_MARKER_DHT:
-> +		case JPEG_MARKER_DQT:
-> +		case JPEG_MARKER_COM:
-> +		case JPEG_MARKER_DRI:
-> +		case JPEG_MARKER_APP0 ... JPEG_MARKER_APP0 + 0x0f:
->  			if (get_word_be(&jpeg_buffer, &word))
->  				return 0;
->  			skip(&jpeg_buffer, (long)word - 2);
-> diff --git a/drivers/media/platform/samsung/s5p-jpeg/jpeg-core.h b/drivers/media/platform/samsung/s5p-jpeg/jpeg-core.h
-> index 5570c79f122f5a09..4b665a3b630f8bf9 100644
-> --- a/drivers/media/platform/samsung/s5p-jpeg/jpeg-core.h
-> +++ b/drivers/media/platform/samsung/s5p-jpeg/jpeg-core.h
-> @@ -11,6 +11,7 @@
->  #define JPEG_CORE_H_
->  
->  #include <linux/interrupt.h>
-> +#include <media/jpeg.h>
->  #include <media/v4l2-device.h>
->  #include <media/v4l2-fh.h>
->  #include <media/v4l2-ctrls.h>
-> @@ -36,17 +37,6 @@
->  
->  #define EXYNOS3250_IRQ_TIMEOUT		0x10000000
->  
-> -/* a selection of JPEG markers */
-> -#define JPEG_MARKER_TEM				0x01
-> -#define JPEG_MARKER_SOF0				0xc0
-> -#define JPEG_MARKER_DHT				0xc4
-> -#define JPEG_MARKER_RST				0xd0
-> -#define JPEG_MARKER_SOI				0xd8
-> -#define JPEG_MARKER_EOI				0xd9
-> -#define	JPEG_MARKER_SOS				0xda
-> -#define JPEG_MARKER_DQT				0xdb
-> -#define JPEG_MARKER_DHP				0xde
-> -
->  /* Flags that indicate a format can be used for capture/output */
->  #define SJPEG_FMT_FLAG_ENC_CAPTURE	(1 << 0)
->  #define SJPEG_FMT_FLAG_ENC_OUTPUT	(1 << 1)
-> diff --git a/include/media/jpeg.h b/include/media/jpeg.h
-> new file mode 100644
-> index 0000000000000000..a01e142e99a7d001
-> --- /dev/null
-> +++ b/include/media/jpeg.h
-> @@ -0,0 +1,20 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only */
-> +
-> +#ifndef _MEDIA_JPEG_H_
-> +#define _MEDIA_JPEG_H_
-> +
-> +/* JPEG markers */
-> +#define JPEG_MARKER_TEM		0x01
-> +#define JPEG_MARKER_SOF0	0xc0
-> +#define JPEG_MARKER_DHT		0xc4
-> +#define JPEG_MARKER_RST		0xd0
-> +#define JPEG_MARKER_SOI		0xd8
-> +#define JPEG_MARKER_EOI		0xd9
-> +#define JPEG_MARKER_SOS		0xda
-> +#define JPEG_MARKER_DQT		0xdb
-> +#define JPEG_MARKER_DRI		0xdd
-> +#define JPEG_MARKER_DHP		0xde
-> +#define JPEG_MARKER_APP0	0xe0
-> +#define JPEG_MARKER_COM		0xfe
-> +
-> +#endif /* _MEDIA_JPEG_H_ */
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+index 5c23c827abe47..41be108e1d5a1 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+@@ -263,6 +263,7 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
+ 	struct mt76_dev *mdev;
+ 	u8 features;
+ 	int ret;
++	u16 cmd;
+ 
+ 	ret = pcim_enable_device(pdev);
+ 	if (ret)
+@@ -272,6 +273,11 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
+ 	if (ret)
+ 		return ret;
+ 
++	pci_read_config_word(pdev, PCI_COMMAND, &cmd);
++	if (!(cmd & PCI_COMMAND_MEMORY)) {
++		cmd |= PCI_COMMAND_MEMORY;
++		pci_write_config_word(pdev, PCI_COMMAND, cmd);
++	}
+ 	pci_set_master(pdev);
+ 
+ 	ret = pci_alloc_irq_vectors(pdev, 1, 1, PCI_IRQ_ALL_TYPES);
 -- 
-Regards,
+2.25.1
 
-Laurent Pinchart
 
