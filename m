@@ -4,92 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5359C77B70
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Apr 2023 09:52:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90D8EC77B72
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Apr 2023 10:01:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gcr5YmlYoVcdrEFDHra0XuIJQfELMbNwudSm2TRrzow=; b=3HeVzbCLYaR/lQwZSlo+ICI/Bj
-	Ed7Znyy+4q7Ky0N+5Lc1Kf3khHZkSnJIsrjUWDl3KCaBv9O2L/muG/XgY04lnOdrP6xNEKUhupfAB
-	Z4uzutOq6dqVSj4ARZgzH47SJ5GQxZdm/CTA3Xt3CKol2HMB5en1hL4BkR7M+RWlnOMQXAUbK6c6k
-	Ei8ZON9Vo6obmPy+kHqWyonEpR8IRrR1MNdVJXECmrdwHrS2skzGQW6QLF8j5gw5vxHM+Be2wfGH4
-	3YbQMN2sd8+Ux8f4B+2TDjukz6hsghui7mhIx6dpySLcuZU8KyGiu14zFGSQbb1ZfikvrGanduUKl
-	tKsl4hng==;
+	bh=OK6P58x0m7vLvplwz340XhE9IhH6CK4jlCcZUmcdwjg=; b=RZThl9F0XTqnJN8bvVhps5HbkP
+	jgGjyv2rmRBfuQM0BW+3jYeS9GyvhVHH6cOXaNkfxaqtBgJBgu11ZSghmrCs0QCJkgQraw6xfpH24
+	lfXYJOPsoyBEQz8ex3RKYe9ni7ZSTKPaOBE4NRqxj4mlvfyEVo3mfNdIv87kXmgUbEnI9xw0uqsWP
+	Uag5tV+4efLRl2X8M7UudYRnLBWheCn26zrwFaHIHkxzzHr0Nl5X1nzraMHFLsi4huMkKapFgkk8H
+	d/pVrHUWJb75x/caXxr1oU0iHYarOuckLS4yfskSiFmHQhHabTYbSrQjivccRKAkvEiB+A/Cb8KQI
+	ECsj1hnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1poLXZ-00FdQs-1g;
-	Mon, 17 Apr 2023 09:52:53 +0000
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+	id 1poLfs-00FeWv-07;
+	Mon, 17 Apr 2023 10:01:28 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1poLXU-00FdPe-2G
-	for linux-mediatek@lists.infradead.org;
-	Mon, 17 Apr 2023 09:52:52 +0000
-Received: by mail-ej1-x62a.google.com with SMTP id fy21so19561687ejb.9
-        for <linux-mediatek@lists.infradead.org>; Mon, 17 Apr 2023 02:52:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1681725167; x=1684317167;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=gcr5YmlYoVcdrEFDHra0XuIJQfELMbNwudSm2TRrzow=;
-        b=hNQPAeO7roIO6GhA/CDHT/L+bHgrIpMw4KHbMpBZt+dcE0MT6BRNLElolGrIjj06uL
-         v0oeBt2oeiJD/PcMLXUpALj+R/gjciFhBbDSBvlWc8jurdVgST8yMwJAQqDf0jj7nRYO
-         2obf9bHKgUan3lsRWrvnkF+95LCpROpb5aXOe9LtCYeUutwNJGuZfA2boOJbSjgrno/r
-         S0TiHu7by/zGq+suQPr8zXNBbbpY9ECY3eskJjihRzEdLZFeJE9hthxtuNd70b/ERSss
-         E2FPAGCAq38un6VzIXUF3v1w8vuPdlW7XlAX2+HFWQ/pS1QVSD6w5AP9qkBT9NISEGzP
-         u//g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681725167; x=1684317167;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=gcr5YmlYoVcdrEFDHra0XuIJQfELMbNwudSm2TRrzow=;
-        b=HUxGr8LUZsSjXpy7Qb4fKRinC0CGV7j0qGQYW2QZEEL6kcE2UInlK/uBY7ipyHuLOq
-         3Jn9tocCYzPHXftb2MKTErKaBgHz4GlQJodEJDqyTgYjvghHcObnKhLGwKLw1KstXz0N
-         mXjIdfe1YgaulCdq1yA5zXKAYGjbMcwGsELggTj8O5RkXk3Skk7NW8Q5wzSbot4CHhww
-         7q++n2XXKbYn33kLY09e4m9QNRW/2fevYghDBzdbfXKRkxa9DsuRmSvWKj2u/R8zP7R2
-         fS559TGd7I5rpz6gjZa1DvfGIXbDgoPFzvag0we5qDFvzKf85D80NIkCGoPUCtFMs980
-         hMvQ==
-X-Gm-Message-State: AAQBX9dcwRQp/zccEP2YaZo+xjw7wcyQjqhKm9dVuWxU1UKb19vBXGJS
-	CeaRnAWPfDXMcJYNKfjCdHyuiQ==
-X-Google-Smtp-Source: AKy350YsZx2nKFyEnXBZglFwnu+EZhMUrIcOvtxJAINOd9ys3x1JK5D6h749rW6LsTd/MCLy+Pzwlw==
-X-Received: by 2002:a17:906:e2d4:b0:94e:8d26:f610 with SMTP id gr20-20020a170906e2d400b0094e8d26f610mr6489616ejb.28.1681725167046;
-        Mon, 17 Apr 2023 02:52:47 -0700 (PDT)
-Received: from [192.168.2.1] (146725694.box.freepro.com. [130.180.211.218])
-        by smtp.googlemail.com with ESMTPSA id h3-20020a170906530300b0093a0e5977e2sm6357961ejo.225.2023.04.17.02.52.44
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 17 Apr 2023 02:52:46 -0700 (PDT)
-Message-ID: <cfb7743b-03b0-96c4-fcc3-7095694f6fbb@linaro.org>
-Date: Mon, 17 Apr 2023 11:52:36 +0200
+	id 1poLfk-00FeUM-1k;
+	Mon, 17 Apr 2023 10:01:24 +0000
+Received: from [IPV6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2] (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 007E26603050;
+	Mon, 17 Apr 2023 11:01:17 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1681725679;
+	bh=B0H7Xc8pFJmEgctk+ZRRF3aNKm7rElFH0bnnlDlQbD4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=I9U/Xvg6M9NzMGqGFPDKP+SNzfidPj4xuKy5l3xAe+xzrJsSasPjxW/UmVJ9HYX5O
+	 fJf0X6VoV3NLH8YmOWvrl+bE/JIr9G4QDsIo1Ze5VRKj1Ka9NM/rQIRBFiN4Mb3U0h
+	 K8Wqv6nPJsbJBPNEfSHcX0DIpvxU4vJ4vjeZjiT+dkwOKAmC7QfiYQwvJtcOiiqv+c
+	 S/yj8Mkc/X5lhArSCPu8t7C+AKLEVvJDr1N1bojF0MSH9Hsob5L43gcVpgpUmqAOZf
+	 OyygQWO6S1yOMWd3pueGDa9965KjEM89yYvG4CGktP5UdcjZRYKlvltI60jDb5yQR8
+	 AtHuQrS1OGfAg==
+Message-ID: <f3f01c18-a2cc-9329-d186-421f5170e08a@collabora.com>
+Date: Mon, 17 Apr 2023 12:01:15 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH v3 2/2] thermal: mediatek: change clk_prepare_enable to
- devm_clk_get_enabled in mtk_thermal_probe
-To: void0red@hust.edu.cn
-Cc: amitk@kernel.org, angelogioacchino.delregno@collabora.com,
- bchihi@baylibre.com, daniel@makrotopia.org, dzm91@hust.edu.cn,
- error27@gmail.com, henry.yen@mediatek.com,
- hust-os-kernel-patches@googlegroups.com,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
- matthias.bgg@gmail.com, rafael@kernel.org, rdunlap@infradead.org,
- rui.zhang@intel.com, void0red@gmail.com
-References: <b2e5ef14-9a12-15d5-8016-d0994c1177c3@linaro.org>
- <20230411063531.3976354-1-void0red@hust.edu.cn>
- <20230411063531.3976354-2-void0red@hust.edu.cn>
- <4fed91ef.3c256.18783c407e3.Coremail.void0red@hust.edu.cn>
+ Thunderbird/102.9.1
+Subject: Re: [PATCH] clocksource/drivers/arm_arch_timer: Add workaround for
+ MediaTek MMIO timer
 Content-Language: en-US
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <4fed91ef.3c256.18783c407e3.Coremail.void0red@hust.edu.cn>
+To: walter.chang@mediatek.com, Catalin Marinas <catalin.marinas@arm.com>,
+ Will Deacon <will@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Thomas Gleixner <tglx@linutronix.de>, Mark Rutland <mark.rutland@arm.com>,
+ Marc Zyngier <maz@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: wsd_upstream@mediatek.com, stanley.chu@mediatek.com,
+ Chun-hung.Wu@mediatek.com, Freddy.Hsin@mediatek.com,
+ linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20230417090635.13202-1-walter.chang@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230417090635.13202-1-walter.chang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230417_025248_813677_F9BF72B0 
-X-CRM114-Status: GOOD (  21.74  )
+X-CRM114-CacheID: sfid-20230417_030120_920433_5784483C 
+X-CRM114-Status: GOOD (  29.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,163 +82,130 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-Hi,
-
-this patch does not apply:
-
-Analyzing 9 messages in the thread
-Will use the latest revision: v3
-You can pick other revisions using the -vN flag
-Checking attestation on all messages, may take a moment...
----
-   [PATCH v3 2/2] thermal: mediatek: change clk_prepare_enable to 
-devm_clk_get_enabled in mtk_thermal_probe
-     + Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-     + Link: 
-https://lore.kernel.org/r/20230411063531.3976354-2-void0red@hust.edu.cn
----
-Total patches: 1 (cherrypicked: 2)
----
-  Link: 
-https://lore.kernel.org/r/20230411063531.3976354-1-void0red@hust.edu.cn
-  Base: not specified
-Applying: thermal: mediatek: change clk_prepare_enable to 
-devm_clk_get_enabled in mtk_thermal_probe
-error: patch failed: drivers/thermal/mediatek/auxadc_thermal.c:1182
-error: drivers/thermal/mediatek/auxadc_thermal.c: patch does not apply
-Patch failed at 0001 thermal: mediatek: change clk_prepare_enable to 
-devm_clk_get_enabled in mtk_thermal_probe
-hint: Use 'git am --show-current-patch=diff' to see the failed patch
-When you have resolved this problem, run "git am --continue".
-If you prefer to skip this patch, run "git am --skip" instead.
-To restore the original branch and stop patching, run "git am --abort".
-
-
-
-On 15/04/2023 09:14, void0red@hust.edu.cn wrote:
+Il 17/04/23 11:06, walter.chang@mediatek.com ha scritto:
+> From: Walter Chang <walter.chang@mediatek.com>
 > 
+> The MT69XX series SoCs have the incomplete implementation issue in the
+> mmio timer. Specifically, the hardware only implements the TVAL
+> functionality, but not the CVAL functionality. This hardware limitation
+> will cause set_next_event_mem() fail to set the actual expiration time
+> when writing a value to the CVAL. On these platforms, the mmio timer's
+> internal expiration time will still be judged as 0 (the value of TVAL),
+> resulting in the mmio timer not functioning as intended.
 > 
+> The workaround is to use TVAL in addition to CVAL for these affected
+> platforms.
 > 
->> -----Original Messages-----
->> From: "Kang Chen" <void0red@hust.edu.cn>
->> Sent Time: 2023-04-11 14:35:31 (Tuesday)
->> To: daniel.lezcano@linaro.org
->> Cc: amitk@kernel.org, angelogioacchino.delregno@collabora.com, bchihi@baylibre.com, daniel@makrotopia.org, dzm91@hust.edu.cn, error27@gmail.com, henry.yen@mediatek.com, hust-os-kernel-patches@googlegroups.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, matthias.bgg@gmail.com, rafael@kernel.org, rdunlap@infradead.org, rui.zhang@intel.com, void0red@gmail.com, void0red@hust.edu.cn
->> Subject: [PATCH v3 2/2] thermal: mediatek: change clk_prepare_enable to devm_clk_get_enabled in mtk_thermal_probe
->>
->> use devm_clk_get_enabled to do automatic resource management.
->> Meanwhile, remove error handling labels in the probe function and
->> the whole remove function.
->>
->> Signed-off-by: Kang Chen <void0red@hust.edu.cn>
->> Reviewed-by: Dongliang Mu <dzm91@hust.edu.cn>
->> ---
->> v3 -> v2: remove some useles func calls.
->> v2 -> v1: init
->>
->> Notice the devm_clk_get_enabled do the clk_get and clk_prepare_enable
->> at the same time.
->> I'm not sure if this has any side effects in initialization.
->>
->>   drivers/thermal/mediatek/auxadc_thermal.c | 48 +++++------------------
->>   1 file changed, 10 insertions(+), 38 deletions(-)
->>
->> diff --git a/drivers/thermal/mediatek/auxadc_thermal.c b/drivers/thermal/mediatek/auxadc_thermal.c
->> index 3372f7c29626..995837ce3ea2 100644
->> --- a/drivers/thermal/mediatek/auxadc_thermal.c
->> +++ b/drivers/thermal/mediatek/auxadc_thermal.c
->> @@ -1116,14 +1116,6 @@ static int mtk_thermal_probe(struct platform_device *pdev)
->>   
->>   	mt->conf = of_device_get_match_data(&pdev->dev);
->>   
->> -	mt->clk_peri_therm = devm_clk_get(&pdev->dev, "therm");
->> -	if (IS_ERR(mt->clk_peri_therm))
->> -		return PTR_ERR(mt->clk_peri_therm);
->> -
->> -	mt->clk_auxadc = devm_clk_get(&pdev->dev, "auxadc");
->> -	if (IS_ERR(mt->clk_auxadc))
->> -		return PTR_ERR(mt->clk_auxadc);
->> -
->>   	mt->thermal_base = devm_platform_get_and_ioremap_resource(pdev, 0, NULL);
->>   	if (IS_ERR(mt->thermal_base))
->>   		return PTR_ERR(mt->thermal_base);
->> @@ -1182,16 +1174,16 @@ static int mtk_thermal_probe(struct platform_device *pdev)
->>   	if (ret)
->>   		return ret;
->>   
->> -	ret = clk_prepare_enable(mt->clk_auxadc);
->> -	if (ret) {
->> -		dev_err(&pdev->dev, "Can't enable auxadc clk: %d\n", ret);
->> -		return ret;
->> +	mt->clk_auxadc = devm_clk_get_enabled(&pdev->dev, "auxadc");
->> +	if (IS_ERR(mt->clk_auxadc)) {
->> +		dev_err(&pdev->dev, "Can't enable auxadc clk: %d\n", mt->clk_auxadc);
->> +		return PTR_ERR(mt->clk_auxadc);
->>   	}
->>   
->> -	ret = clk_prepare_enable(mt->clk_peri_therm);
->> -	if (ret) {
->> -		dev_err(&pdev->dev, "Can't enable peri clk: %d\n", ret);
->> -		goto err_disable_clk_auxadc;
->> +	mt->clk_peri_therm = devm_clk_get_enabled(&pdev->dev, "therm");
->> +	if (IS_ERR(mt->clk_peri_therm)) {
->> +		dev_err(&pdev->dev, "Can't enable peri clk: %d\n", mt->clk_peri_therm);
->> +		return PTR_ERR(mt->clk_peri_therm);
->>   	}
->>   
->>   	if (mt->conf->version != MTK_THERMAL_V1) {
->> @@ -1215,38 +1207,18 @@ static int mtk_thermal_probe(struct platform_device *pdev)
->>   
->>   	tzdev = devm_thermal_of_zone_register(&pdev->dev, 0, mt,
->>   					      &mtk_thermal_ops);
->> -	if (IS_ERR(tzdev)) {
->> -		ret = PTR_ERR(tzdev);
->> -		goto err_disable_clk_peri_therm;
->> -	}
->> +	if (IS_ERR(tzdev))
->> +		return PTR_ERR(tzdev);
->>   
->>   	ret = devm_thermal_add_hwmon_sysfs(tzdev);
->>   	if (ret)
->>   		dev_warn(&pdev->dev, "error in thermal_add_hwmon_sysfs");
->>   
->>   	return 0;
->> -
->> -err_disable_clk_peri_therm:
->> -	clk_disable_unprepare(mt->clk_peri_therm);
->> -err_disable_clk_auxadc:
->> -	clk_disable_unprepare(mt->clk_auxadc);
->> -
->> -	return ret;
->> -}
->> -
->> -static int mtk_thermal_remove(struct platform_device *pdev)
->> -{
->> -	struct mtk_thermal *mt = platform_get_drvdata(pdev);
->> -
->> -	clk_disable_unprepare(mt->clk_peri_therm);
->> -	clk_disable_unprepare(mt->clk_auxadc);
->> -
->> -	return 0;
->>   }
->>   
->>   static struct platform_driver mtk_thermal_driver = {
->>   	.probe = mtk_thermal_probe,
->> -	.remove = mtk_thermal_remove,
->>   	.driver = {
->>   		.name = "mtk-thermal",
->>   		.of_match_table = mtk_thermal_of_match,
->> -- 
->> 2.34.1
+> Signed-off-by: Walter Chang <walter.chang@mediatek.com>
+> ---
+>   Documentation/arm64/silicon-errata.rst |  4 ++++
+>   drivers/clocksource/Kconfig            |  9 ++++++++
+>   drivers/clocksource/arm_arch_timer.c   | 29 ++++++++++++++++++++++++++
+>   3 files changed, 42 insertions(+)
 > 
-> ping?
+> diff --git a/Documentation/arm64/silicon-errata.rst b/Documentation/arm64/silicon-errata.rst
+> index ec5f889d7681..ca1893713a4c 100644
+> --- a/Documentation/arm64/silicon-errata.rst
+> +++ b/Documentation/arm64/silicon-errata.rst
+> @@ -209,3 +209,7 @@ stable kernels.
+>   +----------------+-----------------+-----------------+-----------------------------+
+>   | Fujitsu        | A64FX           | E#010001        | FUJITSU_ERRATUM_010001      |
+>   +----------------+-----------------+-----------------+-----------------------------+
+> +
+> ++----------------+-----------------+-----------------+-----------------------------+
+> +| MediaTek       | MT69XX series   | #690001         | MEDIATEK_ERRATUM_690001     |
+> ++----------------+-----------------+-----------------+-----------------------------+
+> diff --git a/drivers/clocksource/Kconfig b/drivers/clocksource/Kconfig
+> index 5fc8f0e7fb38..475356b8dbdc 100644
+> --- a/drivers/clocksource/Kconfig
+> +++ b/drivers/clocksource/Kconfig
+> @@ -368,6 +368,15 @@ config SUN50I_ERRATUM_UNKNOWN1
+>   	  the Allwinner A64 SoC. The workaround will only be active if the
+>   	  allwinner,erratum-unknown1 property is found in the timer node.
+>   
+> +config MEDIATEK_ERRATUM_690001
+> +	bool "Workaround for MediaTek MT69XX erratum 690001"
+> +	depends on ARM_ARCH_TIMER && ARM64
+> +	help
+> +	  This option enables a workaround for incomplete implementation
+> +	  in the MMIO timer on the MediaTek MT69XX SoCs. The workaround
+> +	  will only be active if mediatek,erratum-690001 property is
+> +	  found in the timer node.
+> +
+>   config ARM_GLOBAL_TIMER
+>   	bool "Support for the ARM global timer" if COMPILE_TEST
+>   	select TIMER_OF if OF
+> diff --git a/drivers/clocksource/arm_arch_timer.c b/drivers/clocksource/arm_arch_timer.c
+> index e09d4427f604..920570d57fc0 100644
+> --- a/drivers/clocksource/arm_arch_timer.c
+> +++ b/drivers/clocksource/arm_arch_timer.c
+> @@ -389,6 +389,10 @@ static u64 notrace sun50i_a64_read_cntvct_el0(void)
+>   }
+>   #endif
+>   
+> +#ifdef CONFIG_MEDIATEK_ERRATUM_690001
+> +static bool arch_timer_mem_sne_use_tval __ro_after_init;
 
--- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+What about reusing part of the CONFIG_ARM_ARCH_TIMER_OOL_WORKAROUND logic and
+adding something like CONFIG_ARM_ARCH_TIMER_MEM_WORKAROUND?
 
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+That would make you able to reuse the already existing infrastructure to parse
+the device-tree and possibly more.
+
+Regards,
+Angelo
+
+> +#endif
+> +
+>   #ifdef CONFIG_ARM_ARCH_TIMER_OOL_WORKAROUND
+>   DEFINE_PER_CPU(const struct arch_timer_erratum_workaround *, timer_unstable_counter_workaround);
+>   EXPORT_SYMBOL_GPL(timer_unstable_counter_workaround);
+> @@ -783,6 +787,19 @@ static __always_inline void set_next_event_mem(const int access, unsigned long e
+>   		cnt = arch_counter_get_cnt_mem(timer, CNTPCT_LO);
+>   
+>   	arch_timer_reg_write(access, ARCH_TIMER_REG_CVAL, evt + cnt, clk);
+> +#ifdef CONFIG_MEDIATEK_ERRATUM_690001
+> +	if (arch_timer_mem_sne_use_tval) {
+> +		/* Due to the incomplete implementation of mmio timer on
+> +		 * specific MediaTek platforms, CVAL has not been implemented.
+> +		 * Therefore, the workaround is to use TVAL in addition to
+> +		 * CVAL.
+> +		 */
+> +		if (access == ARCH_TIMER_MEM_VIRT_ACCESS)
+> +			writel_relaxed(evt, timer->base + 0x38);
+> +		else
+> +			writel_relaxed(evt, timer->base + 0x28);
+> +	}
+> +#endif
+>   	arch_timer_reg_write(access, ARCH_TIMER_REG_CTRL, ctrl, clk);
+>   }
+>   
+> @@ -878,7 +895,16 @@ static void __arch_timer_setup(unsigned type,
+>   				arch_timer_set_next_event_phys_mem;
+>   		}
+>   
+> +#ifdef CONFIG_MEDIATEK_ERRATUM_690001
+> +		if (arch_timer_mem_sne_use_tval) {
+> +			pr_info("Enabling mediatek,erratum-690001 for mmio timer\n");
+> +			max_delta = CLOCKSOURCE_MASK(31);
+> +		} else {
+> +			max_delta = CLOCKSOURCE_MASK(56);
+> +		}
+> +#else
+>   		max_delta = CLOCKSOURCE_MASK(56);
+> +#endif
+>   	}
+>   
+>   	clk->set_state_shutdown(clk);
+> @@ -1591,6 +1617,9 @@ static int __init arch_timer_mem_of_init(struct device_node *np)
+>   		frame->valid = true;
+>   	}
+>   
+> +#ifdef CONFIG_MEDIATEK_ERRATUM_690001
+> +	arch_timer_mem_sne_use_tval = of_property_read_bool(np, "mediatek,erratum-690001");
+> +#endif
+>   	frame = arch_timer_mem_find_best_frame(timer_mem);
+>   	if (!frame) {
+>   		pr_err("Unable to find a suitable frame in timer @ %pa\n",
 
 
