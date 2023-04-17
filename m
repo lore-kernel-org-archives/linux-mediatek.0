@@ -4,78 +4,170 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E1D7C77B73
-	for <linux-mediatek@archiver.kernel.org>; Sun, 16 Apr 2023 21:29:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE4EBC77B61
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Apr 2023 01:07:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dwGEPtLK0WYqjAT8ygXmQLZmIHK63VdeV8vdrcfKE+Q=; b=nNidiqHf2nPfP300kf06raHPc6
-	H9CNUdeEOK8pwJWY7ioUBYkskvKUsI1tj0C/euq1wgmW7kmczQYmUNA6PP/KL6pDOu6V4SIPQfQJ1
-	IJfoX0B03YsR3MQZHgi+lr9NETaKA9o9ads9tFOGkz+xr51DgsgOm6uEqOtnxcaFLBX6M/Enpi1yI
-	f0JHs8f9gpde2EyT8DkeHui+zb7r5KH+r9wynAG/FIWCyNtqh+/mCf4/LuYw3WFyWAFeuk6aUd0Q3
-	pQAXyOrX+cf5oGy2WQzgry3P8rHUAs5TnsLk15iZbtutqZ4rgoqlGbdFydKcPvy5jSlarL2NVZ8GS
-	rSLYnzHg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xNeEzuq5nAC+2wTuz9s9aNIFaDsrIvInebk8HAP3N9o=; b=ogL89zgBcpemJyCwzBh2s1WaDj
+	qEEqa5L1kRwycosyU9rKLPUzEo8eATejtb4KrtLVcGRQqM7dGkd/PvJ5JXdgG76B3IyjZAaSUXCby
+	NcN402UyowuE8gk4vUTort9tU9Hoi3wq1g0sDCk96X1f1qTrK0KIrklZVKuiY2bR4RGsxSbATZ8+Z
+	mZBNlbB8v5cutjY/zEb9619kbOfyhvFeYsBcdeuWYoN1IgcZaqee4yIo8C78jUCvLO8+Z6MxycRl5
+	YXNlRNNdyhvYHWt/VdBaxhq0f9gPA7x0kmGhNGPhkBfNVTY/Xzi3VsVPKbZjZhnjvCv+hChXLOb98
+	mjLPAdGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1po9wN-00ES8M-1y;
-	Sun, 16 Apr 2023 21:29:43 +0000
-Received: from sender4-op-o10.zoho.com ([136.143.188.10])
+	id 1poDL4-00EbmF-2K;
+	Mon, 17 Apr 2023 01:07:26 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1po9wJ-00ES7n-0b;
-	Sun, 16 Apr 2023 21:29:41 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1681680547; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=B1vxEcLr1ew7b2Ewu7S9F9yBNYySLw5WwOmnAMXPvREXFBiFGqfwsRLDEmVsHrqOU/KTagi79sMtgaXt4H/Jzmrn5bZL2482nUNnBIqTXrHv0J/4c5/llG92SfdkbU1Rc8gldd1oo7d74ExvZK4X06Qtefe8rf6tc5GHBuJeVEA=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1681680547; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=dwGEPtLK0WYqjAT8ygXmQLZmIHK63VdeV8vdrcfKE+Q=; 
-	b=Dx6N28WYQ/urtoRdB/eavwC1uAUwj1ecCmlqqLw8FWTPDe+x1XyODa6BwTZEUeGRwXgB4kj7sKda5b3WA+lDjyld40mRCV1Ipz3evK1FKMurwnnwF0NGwKuGvqMMeOgoPwjlsrmy64RNBq17l0ORw5Lfs976/QjQArr/6ZpZNgo=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1681680547;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=dwGEPtLK0WYqjAT8ygXmQLZmIHK63VdeV8vdrcfKE+Q=;
-	b=J9dFI7GMpdKjo/LZGEX56d8lb1wmvcUhLaZ1ijccRLLa6BE1WPxG7HghVwstB+Xy
-	//wbpUgB/80FIzYPlqO+KysiV6wvlncpxjiSU0TkVKvWmdfQVUlC7fSV/PV/r4kONZW
-	OQ1JcldLcIKefpOxBV1Et7FfR9MkmuGrKbumCzoU=
-Received: from [10.10.10.3] (149.91.1.15 [149.91.1.15]) by mx.zohomail.com
-	with SMTPS id 1681680546151439.83375093791324; Sun, 16 Apr 2023 14:29:06 -0700 (PDT)
-Message-ID: <f125954e-d4ac-121f-18c4-bc7db25efa1c@arinc9.com>
-Date: Mon, 17 Apr 2023 00:28:57 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.1
-Subject: Re: [PATCH net-next v2] net: dsa: mt7530: fix support for MT7531BE
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- DENG Qingfang <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Russell King <linux@armlinux.org.uk>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>
-References: <ZDvlLhhqheobUvOK@makrotopia.org>
- <8d36ff3b-e084-9f79-4c00-ec832f2cdbb3@arinc9.com>
- <ZDwDs6BHRo0ukfGF@makrotopia.org>
+	id 1poDKz-00EblQ-2j;
+	Mon, 17 Apr 2023 01:07:24 +0000
+X-UUID: 3063e170dcbc11edb7d8d11f642b8e78-20230416
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=xNeEzuq5nAC+2wTuz9s9aNIFaDsrIvInebk8HAP3N9o=;
+	b=TY18iU3j6TGLm2rqVTilFjrj/2lhk8PpGlXu9Wsw5cJIYQsPmC68Irc/OE7MsP+A/T/guf+iMK54Tm9uaY7OpzQMDF8UHW52yrFpM/56rGvpEUdgznyhhEQUFZXqfsAcT7AjXXos4VIYuroS+A9KPzPVjIP6aOCiB8WwdLxm9Xg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22,REQID:8f8b6e5a-e810-4144-a276-0182fa402b3c,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:120426c,CLOUDID:e31c82a1-8fcb-430b-954a-ba3f00fa94a5,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: 3063e170dcbc11edb7d8d11f642b8e78-20230416
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <chunfeng.yun@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1182540214; Sun, 16 Apr 2023 18:07:14 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Mon, 17 Apr 2023 09:07:11 +0800
+Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.239)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Mon, 17 Apr 2023 09:07:11 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=VErI7m5TaqsIWi5rZWphlVd8OSwgoiSA7fNiEnZr9V1syyUDT9KTcGwq4lVk64SDOC7lvEyaYZ99UbMhm1b3qOj6cRKgb4QG/ex/xiTweFZDY6zMCZu/FQ11LTSRFTNjyMGekFcaaFruxJpwYwN4YegcGGYAaow/MZUf0vVDDox0z2VQ892sBLYIf/1dIw91QutBzT7Iwg85kN5guilLhJVC2GnCxXgEKkNnVS2hrKkEqx4iOPjRlAq0UCt5eLzaGK/qfMtf1RmLgR38L7vhrSkBxYc3Z+1U4CsKT8OzRcQ3biPn5NiFYBzRHWH+/j+JjYrsAGf2WwKP5juiPEjEFA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=xNeEzuq5nAC+2wTuz9s9aNIFaDsrIvInebk8HAP3N9o=;
+ b=Bc2GQj2s5XyBcJ9t/HZj2Ut4+XwvMmq4tdApqzOcwdXo5nD1FrIdBfn7RUqtQL1wHzl86IONE707JN5QSDUQkA52Jh06jilMX5IeU+H+b/qqT/TNV+fI0dVCvZCqtbvEk0xb13Ibj28ggRUhiDfUCP9/PaftlPdTb9mOD89Dc6GE3I0TecKbarK5IL5KaQHXMfoe2SlSbOTUABgYrkecMp8/3Ig3DFIw/3/rKKUj4iNIHly3jAggOoAHsMROhA6KNBtGcFfDUBINZ33mel2fY+ySI4Dvc6v+4b2V2ngkbUpeSXrHaKIlSoigBjCr006FrYBd0BFbCodPb00OtTxlGQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=xNeEzuq5nAC+2wTuz9s9aNIFaDsrIvInebk8HAP3N9o=;
+ b=oedui0g7ig6PjlJsrXZJofeqfQkpIjVau93qL0EVU+XaQeCfINdVBaNofAOeHVGpdmD8p0oEtkuHdELkaShAd0FsLLo3ezvWb2z10xri03iTv2U9cRUwbV3ltLZD4azmPvy/JlzZuq+1tsvPQmey0+cveunUPNq+K9u55JEOo94=
+Received: from KL1PR03MB5062.apcprd03.prod.outlook.com (2603:1096:820:1a::22)
+ by KL1PR0302MB5460.apcprd03.prod.outlook.com (2603:1096:820:33::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6298.45; Mon, 17 Apr
+ 2023 01:07:09 +0000
+Received: from KL1PR03MB5062.apcprd03.prod.outlook.com
+ ([fe80::5f8a:bed1:bdb3:7677]) by KL1PR03MB5062.apcprd03.prod.outlook.com
+ ([fe80::5f8a:bed1:bdb3:7677%5]) with mapi id 15.20.6298.045; Mon, 17 Apr 2023
+ 01:07:09 +0000
+From: =?utf-8?B?Q2h1bmZlbmcgWXVuICjkupHmmKXls7Ap?= <Chunfeng.Yun@mediatek.com>
+To: "angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>, "gregkh@linuxfoundation.org"
+	<gregkh@linuxfoundation.org>, "robh+dt@kernel.org" <robh+dt@kernel.org>
+CC: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	=?utf-8?B?RWRkaWUgSHVuZyAo5rSq5q2j6ZGrKQ==?= <Eddie.Hung@mediatek.com>,
+	=?utf-8?B?VGlhbnBpbmcgRmFuZyAo5pa55aSp5bmzKQ==?=
+	<Tianping.Fang@mediatek.com>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "krzysztof.kozlowski+dt@linaro.org"
+	<krzysztof.kozlowski+dt@linaro.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>
+Subject: Re: [PATCH 1/7] usb: mtu3: give back request when rx error happens
+Thread-Topic: [PATCH 1/7] usb: mtu3: give back request when rx error happens
+Thread-Index: AQHZZddXFpkvr0lWZECE7OMyd+pUOa8ZhNEAgAXzNYA=
+Date: Mon, 17 Apr 2023 01:07:08 +0000
+Message-ID: <bdaf5fed70321a2fcead837a90f0aded57610cc5.camel@mediatek.com>
+References: <20230403025230.25035-1-chunfeng.yun@mediatek.com>
+	 <6626cb88-9d9e-593f-f4c9-44c3035bad43@collabora.com>
+In-Reply-To: <6626cb88-9d9e-593f-f4c9-44c3035bad43@collabora.com>
+Accept-Language: en-US
 Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <ZDwDs6BHRo0ukfGF@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: KL1PR03MB5062:EE_|KL1PR0302MB5460:EE_
+x-ms-office365-filtering-correlation-id: ca9160fe-c5d7-45fe-c054-08db3ee01180
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: K5Bqs2/TInei8DwSKVFCiSBy2U7MDhG19l8z/JsYas37FR8dV3ldXkckolIMA31iJwIXpt5NV1j8j+lV3kzM56Pyf0rsbpVZR3uBCk06dtVqqdRuFJSBOoJKlks0tKA7OZzUT1InMfd840AcRKzdl/Cpu1bCJCZZky8t0m+WgJP9BDHxEJqGKcWZBHoDZI/mOoOHwRcdJor36TRYPakKu8JzCcNRYH4McRbhl+3hC9yXsq8biEJBxgrX9bVTb+BvVR6RfY82z4gGrLp9SWHyoZvD6GiyQFHv786QAOH58v7q6F7zoJZ1tcmeLAHyd6YmUitpwCSZoiEpuITMtLj4roow63TRMDPllybwUV/I16JSn6X5acEHpaDyJrVQ7H5Seu4OZRSYJV6MxfAPBrfOQe4OZ9vKqBRVyqX4zLq/953UlgJFeq45proNI8yY8VQ5pQMtDwm3a+F0pLvGLwhOdiof9L80f8gXcY4QfK2bROUgdSBKYalI6pqDcJw+wCQzRtaKGap4rzp7QuJcIodxyPF9C/pVZmcs898VFl69r5rgHLidAwjhlDJTDBzlVRpRKfj9NNHRxdCVXSzYc2taQG9bIN8aujo8UiOkO50I4rm1BJqzC+2vtpWjOemKtRivxNm6f9QmUcuRdBDiuktYslceiFA6bWzomG46ryPkmDbOXj6FsD9Xvw2wHBmXCsCm
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:KL1PR03MB5062.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(39860400002)(136003)(396003)(366004)(346002)(376002)(451199021)(36756003)(85182001)(7416002)(38070700005)(2906002)(5660300002)(8936002)(8676002)(41300700001)(122000001)(38100700002)(86362001)(478600001)(54906003)(2616005)(110136005)(6506007)(26005)(6512007)(71200400001)(186003)(6486002)(4326008)(64756008)(66446008)(66476007)(66556008)(66946007)(76116006)(316002)(83380400001)(99106002);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?eDZvb0g5Z2JXb0h2cDFVczAyVUgzMlhvV3dQNmN0RkJ6MVJ4YytnUlRKV2Q2?=
+ =?utf-8?B?MEtHbDRNVE9PanVIeTkvbC9VczUwcFh6ZmZoVWxGTS9uUjNoMExnTTJQd0h4?=
+ =?utf-8?B?MVhxaGEyejdlQUNFZy9Md25rNEd4a1RPRTNKR0EwR2FsSW40M1Z1Y3NiY2xI?=
+ =?utf-8?B?V0ZnUkxXOER1ams5anBFSWhmTFE3cjlKNUhON1lZMHhVU1YybkllWDZtWnpE?=
+ =?utf-8?B?cWhmYUtGYnRRbzFTQnN3NDBlakJpWXNRRWEvZ1p4K0M5ak1HSlRVTGZ5RDlD?=
+ =?utf-8?B?ZjhkbkcrR0lPVGlEWW9ka0ZtOVRPbFFuejVIckVFOUx1Z0dSY0RuWGxid3pp?=
+ =?utf-8?B?K0tRL3JZT01QMENTU0pEdE0vMmhGR1hYQ3pSdG1xTkwvZGtjeTFuUmRndDU1?=
+ =?utf-8?B?ZlRqWFkwclBiUEJFaEtUWFpvWW1rVEl2MVBwZDBLU21EYTlXOXNPaDFxazlx?=
+ =?utf-8?B?YXg4MGVWdDIxRUZHRmFxWTR5aWIrUXBQcklBU1RtZ2VjT0lPREdUUzJjOWRq?=
+ =?utf-8?B?YjAzNkJnalRyNFhPMGZORmw5ekRlYjZ3SkZucGhxWDFJTWdOdHA4cmpyYnhu?=
+ =?utf-8?B?aUxRRllUNTIxUkZiVk0wdC9CaEQ5a01EMGVEZThNeU01YnoxNW15VHFNSlh6?=
+ =?utf-8?B?Y1FoN1l5VC9JeEpGNzNGTzZDaU9LMmxEcWkwYi9IaGlYRjhhYkd2NS9qWUFx?=
+ =?utf-8?B?NTFZV0JWbFBuRmpZZXVONGJBWTYvNFRlcy82RGNIRklOZGdzYisyK2hnNDhS?=
+ =?utf-8?B?VlNsQi93Zmlrd3hnQWNlTjhXbHJlb0ZGdXlrcWh5emlTa2JwaTJEdnNramV6?=
+ =?utf-8?B?RkhuL0RiWFM5TnpJd1BPaFNIWXFGT1ZFQUtncjc3Q2N5OTlLdGt2SEx6aWtj?=
+ =?utf-8?B?RjNVYzhTSWFkK1dBQzJWOGtYbnVvbzFYU3JVMlB1aFFkSTl3U2hXU0hXZ2M5?=
+ =?utf-8?B?Q0s0UDVWcmtvQjVwL1Y2NmNRc0VyRGFqT1k5WWMyYytUbVBrZVdDMVUvQ2tx?=
+ =?utf-8?B?TFdacEVxaVZWeG43ODdDaTFvelVHSVUwL2d6U1A5OUQzUURqWWVCTjlqSWdR?=
+ =?utf-8?B?T1BIZGlNQnAwTS9VRG42Y015Q1FYc2g4QzVFcGRNbjE4Zyt4TGFaWTBLaTBJ?=
+ =?utf-8?B?S2drem82WjY0MTZ4K3QxQWErYzZ0R3g3blNFSUFIV1NkS3hRU3RkaE1mQjAw?=
+ =?utf-8?B?ZXJ5OTRYQitSR05wdGVaUmlGUG9GTk4vdzFVTkRwbktCZkxJUmRFM0hoQS9y?=
+ =?utf-8?B?UElRdHZtSFlBVkNTcmF6b0xHSVRSNjhYSGxPM2lGWGpWMUpmTm53aTZDK1g1?=
+ =?utf-8?B?aGlkMVlyaGpKc0J0VDVscElzbWs2T08yVEJQbWhuVkE3V3lJMGcxdGN4S0Vm?=
+ =?utf-8?B?Tm9YRFdyVWZjQit5alZ0V2RMYWtOaTFuL3hCbmoxQitGMEhXVlF3ZndlWXcy?=
+ =?utf-8?B?aTNmdEdlRTl0RFdMbTNPUHNaaWM2UDJIejBwaDl2VHJwVTVJZTU1ZGIyUHVC?=
+ =?utf-8?B?U05OQWI3a3JrTVVnY1oxR1RtdStPQjB1Nk01bkhnNkpibDRlYStFVVdSMTdX?=
+ =?utf-8?B?dThSSDByd0RrS3Z6dHpTWEo5WStneUNmUHl1ek1FTGZEQVlINmEzUTBOWDB6?=
+ =?utf-8?B?UmxWcFZHUWpWRStGNldhNDE4YXg5NDllODBrS3dKemUyamRONC82d0Z4ejRL?=
+ =?utf-8?B?d3NMeFh3SDJOeGRiWFNwdTZwNEVSTmVBbmpwd2EwS3JpRExja1RIaFB6VVYr?=
+ =?utf-8?B?ajZwankxTk1NOTJkbm9rb2VoR0kySFdNeVZadUpmcldFa291UUZELzVhTTRq?=
+ =?utf-8?B?VGFnbTZpYkxFVzIzRXIzYy80cXB2c3Zqb05LcktXbXQzbCtPTzR5elUyWlFY?=
+ =?utf-8?B?Z2tLcmwvV0RBSEx0SmhqbHpBTDBUMS92K0ZtaS9IenFkbkpleTJUWUV1MHpH?=
+ =?utf-8?B?dGUwVUNCL0ZDUy85ZW5wZlZRMkRlSEVrUUpsNmhpL1FaUjdjZXJQbEtnZ1NU?=
+ =?utf-8?B?MGVvUGtia1NOMXo1QkRHQ2FNU1JSZGpJVUlFN0V1dTJPZURvVnBrNkhsbEdC?=
+ =?utf-8?B?K3RxYkc3T0g0Z2JwcWhrcys0KzBhZGQvcXhCazRPNFE4NFN6dTMwRENZL0ha?=
+ =?utf-8?B?dUgybVhOdFI3MmVNR0Zkdm9QaDRYMnBEdk0vQ05NVnNkanhUT3c5c0VwbVNV?=
+ =?utf-8?B?MlE9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <002D59971C805C4BB6FE5CCDCE476859@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: KL1PR03MB5062.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ca9160fe-c5d7-45fe-c054-08db3ee01180
+X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Apr 2023 01:07:09.0016
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 0MoiVAxE2IdNuIvbAGVPZSRXxXi7oUqB9txIuLOYSnySk/S1cMbC2mwR1eDXS4ByzDhleV/H6snqyxuEVz8KgHO6XNWPbjR145ji0knUKpU=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR0302MB5460
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230416_142939_284589_5FEE2A59 
-X-CRM114-Status: GOOD (  60.80  )
+X-CRM114-CacheID: sfid-20230416_180722_070699_3DAB2211 
+X-CRM114-Status: GOOD (  27.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,204 +182,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 16/04/2023 17:18, Daniel Golle wrote:
-> On Sun, Apr 16, 2023 at 04:48:23PM +0300, Arınç ÜNAL wrote:
->> On 16.04.2023 15:08, Daniel Golle wrote:
->>> There are two variants of the MT7531 switch IC which got different
->>> features (and pins) regarding port 5:
->>>    * MT7531AE: SGMII/1000Base-X/2500Base-X SerDes PCS
->>>    * MT7531BE: RGMII
->>>
->>> Moving the creation of the SerDes PCS from mt753x_setup to mt7530_probe
->>> with commit 6de285229773 ("net: dsa: mt7530: move SGMII PCS creation
->>> to mt7530_probe function") works fine for MT7531AE which got two
->>> instances of mtk-pcs-lynxi, however, MT7531BE requires mt7531_pll_setup
->>> to setup clocks before the single PCS on port 6 (usually used as CPU
->>> port) starts to work and hence the PCS creation failed on MT7531BE.
->>>
->>> Fix this by introducing a pointer to mt7531_create_sgmii function in
->>> struct mt7530_priv and call it again at the end of mt753x_setup like it
->>> was before commit 6de285229773 ("net: dsa: mt7530: move SGMII PCS
->>> creation to mt7530_probe function").
->>>
->>> Fixes: 6de285229773 ("net: dsa: mt7530: move SGMII PCS creation to mt7530_probe function")
->>> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
->>
->> I'll put my 2 cents about the patch along with responding to your points on
->> the other thread here.
->>
->>> Why don't we use my original solution [1] which has some advantages:
->>>
->>>   * It doesn't requrire additional export of mt7530_regmap_bus
->>>
->>>   * It doesn't move PCS creation to mt7530.c, hence PCS_MTK_LYNXI is
->>>     only required for MDIO-connected switches
->>>     (with your patch we would have to move the dependency on PCS_MTK_LYNXI
->>>     from NET_DSA_MT7530_MDIO to NET_DSA_MT7530)
->>
->> Maybe this is what should happen. Maybe the PCS creation (and therefore
->> mt7530_regmap_bus) should be on the core driver. Both are on the MDIO driver
->> for the sole reason of only the devices on the MDIO driver currently using
->> it. It's not an MDIO-specific operation as far as I can tell. Having it on
->> the core driver would make more sense in the long run.
-> 
-> Which "long run" are you talking about?
-> regmap creation is bus-specific, and so is the existence of LynxI PCS.
-> There simply aren't any MMIO-connected switches which come with that IP.
-> And I strongly doubt there ever will be. And even if, why should we now
-> prepare for an entirely speculative future? If it actually happens, ie.
-> in case there is going to be a new SoC with MMIO-connected switch which
-> does comes with LynxI PCS (e.g. for port 5 only) we can still move the
-> code.
-
-Makes sense.
-
-> 
->>
->>>
->>>   * It doesn't expose the dysfunctional SerDes PCS for port 5 on MT7531BE
->>>     This will still fail and hence result in probing on MT7531 to exit
->>>     prematurely, preventing the switch driver from being loaded.
->>>     Before 9ecc00164dc23 ("net: dsa: mt7530: refactor SGMII PCS creation")
->>>     the return value of mtk_pcs_lynxi_create was ignored, now it isn't...
->>
->> Ok, so checking whether port 5 is SGMII or not on the PCS creation code
->> should be done on the same patch that fixes this issue.
->>
->>>
->>>   * It changes much less in terms of LoC
->>
->> I'd rather prefer a better logic than the "least amount of changes possible"
->> approach.
->>
->> Let's analyse what this patch does:
->>
->> With this patch, mt7531_create_sgmii() is run after mt7530_setup_mdio is
->> run, under mt753x_setup(). mt7531_pll_setup() and, as the last requirement,
->> mt7530_setup_mdio() must be run to be able to create the PCS instances. That
->> also means running mt7530_free_irq_common must be avoided since the device
->> uses MDIO so mt7530_free_mdio_irq needs to be run too.
->>
->> While probing the driver, the priv->create_sgmii pointer will be made to
->> point to mt7531_create_sgmii, if MT7531 is detected. Why? This pointer won't
->> be used for any other devices and sgmii will always be created for any
->> MT7531 variants, so it's always going to point to mt7531_create_sgmii when
->> priv->id is ID_MT7531. So you're introducing a new pointer just to be able
->> to call mt7531_create_sgmii() on mt7530-mdio.c from mt7530.c.
->>
->> On mt753x_setup(), if priv->create_sgmii is pointing to something it will
->> now run whatever it points to with two arguments. One being the priv table
->> and the other being mt7531_dual_sgmii_supported() which returns 1 or 0 by
->> looking at the very same priv table. That looks bad. What could be done
->> instead is introduce a new field on the priv table that keeps the
->> information of whether port 5 on the MT7531 switch is SGMII or not.
-> 
-> Yes, and on a 64-bit system that means 8 bytes of memory for each instance.
-> Exporting a function or const implies significantly more overhead, and
-> it would not be as nicely limited in scope as a function pointer would be.
-> 
-> There are no other users in the kernel of the const you would export in
-> your variant of the fix, so why have it exported?
-> 
->>
->> A similar logic is already there on the U-Boot MediaTek ethernet driver.
->>
->> https://github.com/u-boot/u-boot/blob/a94ab561e2f49a80d8579930e840b810ab1a1330/drivers/net/mtk_eth.c#L903
->>
->> So this patch fixes the issue with the only consideration being changing as
->> less lines of code as possible.
-> 
-> You are ignore two more important arguments:
->   * It doesn't requrire additional export of mt7530_regmap_bus
->     (which would imply significantly more storage overhead compared to
->     an additional function pointer in a priv struct)
-> 
->   * It doesn't move PCS creation to mt7530.c, hence PCS_MTK_LYNXI is
->     only required for MDIO-connected switches
->     (with your patch we would have to move the dependency on PCS_MTK_LYNXI
->     from NET_DSA_MT7530_MDIO to NET_DSA_MT7530)
-
-Understood.
-
-> 
->> And that's okay. We can make the least
->> amount of changes to fix the issue first, then improve the driver. But
->> there's nothing new made on the driver after the commit that caused this
->> issue, backportability to the stable trees is a non-issue. So why not do it
->> properly the first time?
-> 
-> Most of all I'd rather have it fixed before net-next is merged to Linus'
-> tree and also before net-next will close again.
-> 
-> However, I also simply don't see what would be more "proper" about your
-> solution.
-
-Nothing. Your patch here is perfectly fine after reading your points. 
-One thing I'd like to ask is, if I understand correctly, instead of 
-exporting mt7531_create_sgmii(), defining a pointer that points to it 
-causes less overhead?
-
-The current patch looks very similar to exporting a function. Instead of 
-putting EXPORT_SYMBOL_GPL and declaring the function prototype on the 
-header file, you declare a function pointer on the priv structure, then 
-assign it to the function.
-
-> 
->>
->> Whatever the outcome with this patch is, on my upcoming patch series, I
->> intend to move mt7531_create_sgmii to mt7530.c. Then introduce
->> priv->p5_sgmii to get rid of mt7531_dual_sgmii_supported().
-> 
-> What is the argument for that?
-
-Nothing for moving mt7531_create_sgmii() but I think introducing 
-priv->p5_sgmii with later patches is in the clear?
-
-> 
-> There is not a single MMIO-connected switch which comes with LynxI PCS.
-> (see above)
-> 
-> Imho we should rather try to work into the opposite direction and move
-> more code only used on either MDIO or MMIO from core to the
-> bus-specific drivers. If needed we can even split them more, eg. have
-> different modules for MT7530 and MT7531, so that even the driver for
-> MDIO-connected MT7530 would not require MTK_PCS_LYNXI.
-
-Interesting, I may work on this in the future. This could benefit my 
-folks too.
-
-> 
-> In that sense I'm a big fan of the structure of the mt76 wireless
-> driver: Have a core module for shared helper functions and then
-> device-specific driver modules. Unfortunately many if not most drivers
-> are doing the exact opposite approach, ie. having some abstration layer
-> which will always need to be extended and changed with every
-> unforeseeable new hardware to be supported which just results in lots
-> of overhead and is a burden to maintain. You can see that in the rt2x00
-> wireless driver which I also worked on a lot: Most of the abstractions
-> aren't even useful with any of the latest hardware generations.
-> 
-> tl;dr: What's wrong with moving functions specific to either variant
-> (MMIO vs. MDIO) into the corresponding modules and keeping the core
-> slim and really only cover shared functionality? This is also why I
-> originally wanted the names of files and Kconfig symbols to reflect the
-> supported hardware rather than the supported bus-type -- I've changed
-> that upon your request and now believe I should have argued more
-> clearly why I made my choice like I did...
-
-Ah that makes sense. I'd like to address this. I was already planning to 
-to do some renaming on the driver. Please, allow me to do the work.
-
-I intend to do this slightly different than your initial patch series 
-though. Like calling the core driver core, instead of common, and making 
-it selectable, and only imply the MT7530 MDIO driver.
-
-We could split the core and mdio/mmio drivers in a way that there's just 
-the core, then the device-specific driver modules. This would mean 
-splitting the MT7530 MDIO driver to MT7530 and MT7531 along with moving 
-code from core to these two drivers. I believe this would apply for 
-MT7988 too. There would be a bit of reused code but it should follow the 
-idea of what you say above. Then we can configure the kconfig accordingly.
-
-Arınç
+T24gTW9uLCAyMDIzLTA0LTAzIGF0IDE0OjMxICswMjAwLCBBbmdlbG9HaW9hY2NoaW5vIERlbCBS
+ZWdubyB3cm90ZToNCj4gRXh0ZXJuYWwgZW1haWwgOiBQbGVhc2UgZG8gbm90IGNsaWNrIGxpbmtz
+IG9yIG9wZW4gYXR0YWNobWVudHMgdW50aWwNCj4geW91IGhhdmUgdmVyaWZpZWQgdGhlIHNlbmRl
+ciBvciB0aGUgY29udGVudC4NCj4gDQo+IA0KPiBJbCAwMy8wNC8yMyAwNDo1MiwgQ2h1bmZlbmcg
+WXVuIGhhIHNjcml0dG86DQo+ID4gV2hlbiB0aGUgUnggZW5jb25udGVyIGVycm9ycywgY3VycmVu
+dGx5LCBvbmx5IHByaW50IGVycm9yIGxvZ3MsDQo+ID4gdGhhdA0KPiA+IG1heSBjYXVzZSBjbGFz
+cyBkcml2ZXIncyBSWCBoYWx0LCBzaGFsbCBnaXZlIGJhY2sgdGhlIHJlcXVlc3Qgd2l0aA0KPiA+
+IGVycm9yIHN0YXR1cyBtZWFud2hpbGUuDQo+ID4gDQo+ID4gU2lnbmVkLW9mZi1ieTogQ2h1bmZl
+bmcgWXVuIDxjaHVuZmVuZy55dW5AbWVkaWF0ZWsuY29tPg0KPiANCj4gIEZyb20gd2hhdCBJIHVu
+ZGVyc3RhbmQsIHRoaXMgaXMgbm90IGEgbmV3IGZlYXR1cmUsIGJ1dCBhIGZpeCBmb3IgYQ0KPiB1
+bndhbnRlZCBRTVUNCj4gaGFsdC4NCj4gVGhpcyBtZWFucyB0aGF0IHRoaXMgY29tbWl0IG5lZWRz
+IGEgRml4ZXMgdGFnLg0KSSBkaWQgbm90IHRha2UgaW50byBhY2NvdW50IHRoaXMgY2FzZXMgd2hl
+biB3cml0ZSB0aGlzIGRyaXZlciwgaXQNCmNhdXNlZCB0aGUgaXNzdWUgYnkgdGhlIGJ1ZyBvZiBo
+b3N0IGRyaXZlci4NCg0KPiANCj4gPiAtLS0NCj4gPiAgIGRyaXZlcnMvdXNiL210dTMvbXR1M19x
+bXUuYyB8IDM5DQo+ID4gKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrLQ0KPiA+
+ICAgMSBmaWxlIGNoYW5nZWQsIDM4IGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkNCj4gPiAN
+Cj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy91c2IvbXR1My9tdHUzX3FtdS5jDQo+ID4gYi9kcml2
+ZXJzL3VzYi9tdHUzL210dTNfcW11LmMNCj4gPiBpbmRleCBhMmZkYWI4YjYzYjIuLjdiZTRlNGJl
+MWE2YSAxMDA2NDQNCj4gPiAtLS0gYS9kcml2ZXJzL3VzYi9tdHUzL210dTNfcW11LmMNCj4gPiAr
+KysgYi9kcml2ZXJzL3VzYi9tdHUzL210dTNfcW11LmMNCj4gPiBAQCAtNDY2LDYgKzQ2NiwzOSBA
+QCBzdGF0aWMgdm9pZCBxbXVfdHhfemxwX2Vycm9yX2hhbmRsZXIoc3RydWN0DQo+ID4gbXR1MyAq
+bXR1LCB1OCBlcG51bSkNCj4gPiAgICAgICBtdHUzX3FtdV9yZXN1bWUobWVwKTsNCj4gPiAgIH0N
+Cj4gPiANCj4gPiArLyoNCj4gPiArICogd2hlbiByeCBlcnJvciBoYXBwZW5zIChleGNlcHQgemxw
+ZXJyKSwgUU1VIHdpbGwgc3RvcCwgYW5kIFJRQ1BSDQo+ID4gc2F2ZXMNCj4gPiArICogdGhlIEdQ
+RCBlbmNvdW50ZXJlZCBlcnJvciwgRG9uZSBpcnEgd2lsbCBhcmlzZSBhZnRlciByZXN1bWluZw0K
+PiA+IFFNVSBhZ2Fpbi4NCj4gPiArICovDQo+ID4gK3N0YXRpYyB2b2lkIHFtdV9lcnJvcl9yeChz
+dHJ1Y3QgbXR1MyAqbXR1LCB1OCBlcG51bSkNCj4gPiArew0KPiA+ICsgICAgIHN0cnVjdCBtdHUz
+X2VwICptZXAgPSBtdHUtPm91dF9lcHMgKyBlcG51bTsNCj4gPiArICAgICBzdHJ1Y3QgbXR1M19n
+cGRfcmluZyAqcmluZyA9ICZtZXAtPmdwZF9yaW5nOw0KPiA+ICsgICAgIHN0cnVjdCBxbXVfZ3Bk
+ICpncGRfY3VycmVudCA9IE5VTEw7DQo+ID4gKyAgICAgc3RydWN0IHVzYl9yZXF1ZXN0ICpyZXEg
+PSBOVUxMOw0KPiA+ICsgICAgIHN0cnVjdCBtdHUzX3JlcXVlc3QgKm1yZXE7DQo+ID4gKyAgICAg
+ZG1hX2FkZHJfdCBjdXJfZ3BkX2RtYTsNCj4gPiArDQo+ID4gKyAgICAgY3VyX2dwZF9kbWEgPSBy
+ZWFkX3J4cV9jdXJfYWRkcihtdHUtPm1hY19iYXNlLCBlcG51bSk7DQo+ID4gKyAgICAgZ3BkX2N1
+cnJlbnQgPSBncGRfZG1hX3RvX3ZpcnQocmluZywgY3VyX2dwZF9kbWEpOw0KPiA+ICsNCj4gPiAr
+ICAgICBtcmVxID0gbmV4dF9yZXF1ZXN0KG1lcCk7DQo+ID4gKyAgICAgaWYgKCFtcmVxIHx8IG1y
+ZXEtPmdwZCAhPSBncGRfY3VycmVudCkgew0KPiA+ICsgICAgICAgICAgICAgZGV2X2VycihtdHUt
+PmRldiwgIm5vIGNvcnJlY3QgUlggcmVxIGlzIGZvdW5kXG4iKTsNCj4gPiArICAgICAgICAgICAg
+IHJldHVybjsNCj4gPiArICAgICB9DQo+ID4gKw0KPiA+ICsgICAgIHJlcSA9ICZtcmVxLT5yZXF1
+ZXN0Ow0KPiA+ICsgICAgIHJlcS0+c3RhdHVzID0gLUVBR0FJTjsNCj4gDQo+IFlvdSBkb24ndCBu
+ZWVkIGEgKnJlcSBwb2ludGVyIGZvciBqdXN0IG9uZSBzaW1wbGUgYXNzaWdubWVudC4NCj4gDQo+
+ICAgICAgICAgbXJlcS0+cmVxdWVzdC5zdGF0dXMgPSAtRUFHQUlOOw0KPiANCj4gdGhhdCdsbCBk
+by4NClRoYXQncyBnb29kLCBJJ2xsIG1vZGlmeSBpdCwgdGhhbmtzDQo+IA0KPiA+ICsNCj4gPiAr
+ICAgICAvKiBieSBwYXNzIHRoZSBjdXJyZW50IEdEUCAqLw0KPiA+ICsgICAgIGdwZF9jdXJyZW50
+LT5kdzBfaW5mbyB8PSBjcHVfdG9fbGUzMihHUERfRkxBR1NfQlBTIHwNCj4gPiBHUERfRkxBR1Nf
+SFdPKTsNCj4gPiArICAgICBtdHUzX3FtdV9yZXN1bWUobWVwKTsNCj4gPiArDQo+ID4gKyAgICAg
+ZGV2X2RiZyhtdHUtPmRldiwgIiVzIEVQJWQsIGN1cnJlbnQ9JXAsIHJlcT0lcFxuIiwNCj4gPiAr
+ICAgICAgICAgICAgIF9fZnVuY19fLCBlcG51bSwgZ3BkX2N1cnJlbnQsIG1yZXEpOw0KPiA+ICt9
+DQo+ID4gKw0KPiA+ICAgLyoNCj4gPiAgICAqIE5PVEU6IHJlcXVlc3QgbGlzdCBtYXliZSBpcyBh
+bHJlYWR5IGVtcHR5IGFzIGZvbGxvd2luZyBjYXNlOg0KPiA+ICAgICogcXVldWVfdHggLS0+IHFt
+dV9pbnRlcnJ1cHQoY2xlYXIgaW50ZXJydXB0IHBlbmRpbmcsIHNjaGVkdWxlDQo+ID4gdGFza2xl
+dCktLT4NCj4gPiBAQCAtNTcxLDE0ICs2MDQsMTggQEAgc3RhdGljIHZvaWQgcW11X2V4Y2VwdGlv
+bl9pc3Ioc3RydWN0IG10dTMNCj4gPiAqbXR1LCB1MzIgcW11X3N0YXR1cykNCj4gPiANCj4gPiAg
+ICAgICBpZiAoKHFtdV9zdGF0dXMgJiBSWFFfQ1NFUlJfSU5UKSB8fCAocW11X3N0YXR1cyAmDQo+
+ID4gUlhRX0xFTkVSUl9JTlQpKSB7DQo+ID4gICAgICAgICAgICAgICBlcnJ2YWwgPSBtdHUzX3Jl
+YWRsKG1iYXNlLCBVM0RfUlFFUlJJUjApOw0KPiA+ICsgICAgICAgICAgICAgbXR1M193cml0ZWwo
+bWJhc2UsIFUzRF9SUUVSUklSMCwgZXJydmFsKTsNCj4gDQo+IFBsZWFzZSBtZW50aW9uIGluIHRo
+ZSBjb21taXQgZGVzY3JpcHRpb24gdGhlIHJlYXNvbiB3aHkgeW91J3JlIG1vdmluZw0KPiB0aGlz
+IHJlZ2lzdGVyDQo+IHdyaXRlIGhlcmUuDQpJdCBjbGVhcnMgaXJxIHN0YXR1cyBiZWZvcmUgaGFu
+ZGxpbmcgdGhlIGVycm9yOw0KDQo+IA0KPiBSZWdhcmRzLA0KPiBBbmdlbG8NCg==
 
