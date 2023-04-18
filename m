@@ -4,68 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAF30C77B71
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Apr 2023 09:28:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B00A2C77B76
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Apr 2023 10:09:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iDqp1SgzROa/7M8TqdAaMU2o1J0hj8rCWz0qyNlos7g=; b=LiQ3qAUf8F/OD/
-	ciG/BzOO8UiLkcjQ2ZzBzEVi3KWqSsCcPIIELjRPtVYAr06/P0lBgVl5XKaww4D7cnQ/izoE2HXtN
-	driS4w/8jbdfaXZAo1NgXghO1Avi1iJk8ZJJAv+0Lzwo183aOYzO0JRk8YEKFPf6firsbaE158lHV
-	JTooh9PMKfvwzr/eimFW0dCT4bJcXRNRrUNGXTu5Oz/eY/So9/Nh+FlA6xasmgbURbFlFAlV8s3a+
-	NCoEvd2QpYrhdPZoqT+/EJO4uj+1Mtc6Jv4Vd0htl/IKMXIiiq+1X7/PJwSZ13BJSzTgbjjuVYa6+
-	41EKZU36oHnGUWxBxB5w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kiGL0nw3SPTN1i6NTadmIruBbC6lrzzz9tE3a5FFbUI=; b=srBMJviLe8BoAt9zm3MbIYDSBH
+	qoibx9l/7XdC6UqQqeHPUAXdHpktgJy/rBjv+OqY+h/OAzTvyTw0iFwuUNI7Y+Lpgl2ckpIkICNO8
+	QX/O+jHLvWT4X2m0RX2fK72+l/8h3pcyALa/DoNHMGThQLKWBHBxDjr9ow4SSl9MmuetmeWdmp19Q
+	X/lrqr2fD85A8GDvx27tU+5aILrFBEmC4FHuBEswLaKB1aSEzGrGx/mEKMOumTt1MJ1flF64D2tJk
+	b50b9Nh3s66r7o5c1MeqXuPxGhMttI7mQDSmX/J/KaoSuY512seyRPX7xX/22/d/iYOjHau3GDq9P
+	RQzTLFtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pohdl-001TGS-08;
-	Tue, 18 Apr 2023 09:28:45 +0000
-Received: from sender3-op-o17.zoho.com ([136.143.184.17])
+	id 1poiH9-001auz-1r;
+	Tue, 18 Apr 2023 10:09:27 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pohdg-001TEy-1r;
-	Tue, 18 Apr 2023 09:28:42 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1681810087; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=lLvySzOabgFP/7Ao7CJlTBRyDWY6A1ilWyhW0ndfEuusPbEDT/0r6cNX0iW6rkVXOG6NWtr+YcioR5CAKESG8PQV1kHmvhgSM4b/qsI74Nid/Aor+bLFdq0n7IQZHqOB6nIIUPVzDQlXI8o6yrqhZ2YliJeGvY17RiBgcZSvpcY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1681810087; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=iDqp1SgzROa/7M8TqdAaMU2o1J0hj8rCWz0qyNlos7g=; 
-	b=TVBBWawTRu16UVXrfJRP+h+QvQU2AGOKSh7y3WQFpUwKF6uiKUW6EnKXM529ta0kbCwCRLGfS+kMeljHzOVNzuThnMP5+7mt5NV2apcWaHw5q6uZhUFPTLcqGnu2fXVdnk2nYvSmIQBy9XYI1HJQAR3pAx1lxhdutoO80dw8Vho=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1681810087;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=iDqp1SgzROa/7M8TqdAaMU2o1J0hj8rCWz0qyNlos7g=;
-	b=L2sWvgxViPh4NyfAkwuFIx7NalD2FR/IBDd8b8LCwpo/A7XWgzOQ5aHw3UCh6UVg
-	89+HHmOSBXo0t3J7QsjLaGCrYPl2Ryhz7RRyqZIAoJCx61K78v4loU0AVXRktEtOH53
-	C5+7pH7qQd1tNuFS1pj5axwiG+3i8SY7ZoGo3QqM=
-Received: from [10.10.10.3] (149.91.1.15 [149.91.1.15]) by mx.zohomail.com
-	with SMTPS id 168181008614670.97003674812629; Tue, 18 Apr 2023 02:28:06 -0700 (PDT)
-Message-ID: <e8accb50-6e46-4309-adf3-62f7445e18f2@arinc9.com>
-Date: Tue, 18 Apr 2023 12:27:59 +0300
+	id 1poiH4-001atf-2s;
+	Tue, 18 Apr 2023 10:09:24 +0000
+Received: from [IPV6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2] (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C84E86603207;
+	Tue, 18 Apr 2023 11:09:20 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1681812561;
+	bh=M02j6J00DW4BHPxDoeFFjdunyDui7f39d9NcSUm8Ib0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=jOXXUIEYMbEDjlnmc0t56ObEdygXOBIUDBtRtUUPmg7SKEIzjWE9al6/nZqOWddHz
+	 nXSEcXq2KC7QAu4UwMxBDFkVw+Sb958AX/NFjsRjsB9vvUb/BDBCEQr9gIj6t5BUnR
+	 O3n+ssPFpMns37Q2Re5dc8nabd7PkLJmJOQHJnx8mTTUj2R71DNFE8mc5ksVD1ASmR
+	 +PRZW5QjaYV+55Dbm9Yu777ey3G8zbt09UTnkhFmBGe51Nnx/z5lHQRMKKV6jt6bud
+	 UEUvD/RzALElyuJ7AOd/WYbEAXd+TXMs+JN5kgBnJ87zc2IgH2qATUxM4NUPR+rw4n
+	 zpJC5VPFUiwkg==
+Message-ID: <9bfd1641-3f58-ca6e-1e80-13acea834ea5@collabora.com>
+Date: Tue, 18 Apr 2023 12:09:17 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [RFC/RFT v1] net: ethernet: mtk_eth_soc: drop generic vlan rx
- offload, only use DSA untagging
-To: Frank Wunderlich <linux@fw-web.de>, Felix Fietkau <nbd@nbd.name>,
- Vladimir Oltean <vladimir.oltean@nxp.com>,
- Daniel Golle <daniel@makrotopia.org>
-References: <20230416091038.54479-1-linux@fw-web.de>
+ Thunderbird/102.9.1
+Subject: Re: [PATCH] soc: mdediatek: devapc: use
+ devm_platform_ioremap_resource() instead of of_iomap()
 Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20230416091038.54479-1-linux@fw-web.de>
+To: zhengkang huang <zkhuang@hust.edu.cn>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Dongliang Mu <dzm91@hust.edu.cn>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230414092113.64514-1-zkhuang@hust.edu.cn>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230414092113.64514-1-zkhuang@hust.edu.cn>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230418_022840_672526_C76B5F1F 
-X-CRM114-Status: GOOD (  14.44  )
+X-CRM114-CacheID: sfid-20230418_030923_052598_2E86FB44 
+X-CRM114-Status: UNSURE (   9.20  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,71 +75,26 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Russell King <linux@armlinux.org.uk>, Mark Lee <Mark-MC.Lee@mediatek.com>, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 16.04.2023 12:10, Frank Wunderlich wrote:
-> From: Felix Fietkau <nbd@nbd.name>
+Il 14/04/23 11:21, zhengkang huang ha scritto:
+> In mtk_devapc_probe(), if of_iomap succeeds and any following error occurs,
+> it needs to deallocate the resource.
 > 
-> Through testing I found out that hardware vlan rx offload support seems to
-> have some hardware issues. At least when using multiple MACs and when receiving
-> tagged packets on the secondary MAC, the hardware can sometimes start to emit
-> wrong tags on the first MAC as well.
+> Fix this by repalcing of_iomap with devm_platform_ioremap_resource, which
+> automatically self-manages the resource. This can avoid modifying error
+> handling code.
 > 
-> In order to avoid such issues, drop the feature configuration and use the
-> offload feature only for DSA hardware untagging on MT7621/MT7622 devices which
-> only use one MAC.
+> Signed-off-by: zhengkang huang <zkhuang@hust.edu.cn>
+> Reviewed-by: Dongliang Mu <dzm91@hust.edu.cn>
 
-I would change this part to:
+You haven't tested this patch on any MediaTek SoC, have you?
 
-In order to avoid such issues, drop the feature configuration and use 
-the offload feature only for DSA hardware untagging on MT7621/MT7622 
-devices where this feature works properly.
+This will break devapc.
 
-I tried this on linux-next with my defconfig and devicetree [0], on a 
-MikroTik RouterBOARD 760iGS. I tried both VLAN configurations possible, 
-VLAN subinterface of the eth1 interface, and bridge VLAN filtering on a 
-bridge with eth1 joined. In both cases, both sides receive VLAN tagged 
-frames whether this patch is applied or not.
+Regards,
+Angelo
 
-My computer is plugged to the RJ45 SFP module which is connected to the 
-Qualcomm Atheros AR8031/AR8033 PHY which is connected to MT7621's gmac1.
 
-My computer:
-sudo ip l add link enp9s0 name enp9s0.10 type vlan id 10
-sudo ip a add 192.168.3.2/24 dev enp9s0.10
-sudo ip l set up enp9s0
-
-MT7621 VLAN subinterface test:
-ip l add l eth1 name eth1.10 type vlan id 10
-ip a add 192.168.3.1/24 dev eth1.10
-ip l set up eth1
-ip l set up eth1.10
-ping 192.168.3.2
-
-MT7621 bridge VLAN filtering test:
-
-ip l del eth1.10
-ip l add br0 type bridge vlan_filtering 1
-ip l set eth1 master br0
-bridge v add vid 10 dev eth1
-bridge v add vid 10 dev br0 self
-ip l add l br0 name br0.10 type vlan id 10
-ip a add 192.168.3.1/24 dev br0.10
-ip l set up br0
-ip l set up br0.10
-ping 192.168.3.2
-
-In conclusion, it's not that VLAN RX offloading is being kept enabled 
-for MT7621 because it uses only one MAC. It's because it just works. I 
-am assuming this is the same case for MT7622.
-
-With that:
-
-Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-
-[0] https://github.com/arinc9/linux/commits/test-on-linuxnext
-
-Arınç
 
