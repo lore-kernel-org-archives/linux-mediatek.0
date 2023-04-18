@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 415C6C6FD18
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Apr 2023 16:27:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8F7FC6FD18
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Apr 2023 16:28:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KA3Wj6o+Guvdyn6RVWvc15n99JJqv1Kt6CugaXzG/F8=; b=gwrtOnExFERKob1ikDHB92R1J7
-	04fT9ujHZJEbIeil9HG/1g0vqnWhBswa81bMsf2pbqM3pw8Kbpl3UZOkWcHNvVTsrhYcQ8197fsqW
-	e3N2kl9y6DN8swGKgKWT3S0IUHgUzl8WztPIKihHbjSpnEG+wfhagHk+4ai1uf33ZxpAzDVcCtzLX
-	VfZZ6G+km6O3iG9tVviXSHG2R07fafhVHsZX3FsX8Z7I/HsdPFc6uyiVo+lMo8TB5CtLb3QvqQSXS
-	81yKssMaaClrB8dAebj/7F/PthI4LnZpQn9bVlDNmUV5eDNKEMugOeeqLRRqBMv7o7kzimnSsXMPA
-	gg5Xn3iA==;
+	bh=jTdlBH7gDMe1gwvvIrce6g7Kee26bgpxsr6cq5gCaQM=; b=LOKN09nnFqCWBX6htedNbmGZ1I
+	xfSJ4cr97EBC4HhdunxWl0PIuK4fCykzWl4tFlp7WNnMS7tcLPkhJeYZD1cJbtKWhfskH6k3zKue2
+	rrxVF3Twvadw8PRPlHDCCunfHcJPMApHI6brukWNW850mkX/XwpYuGWbmtVV9woMRU2OQAQkeF1S+
+	ACy7A4rDwJpx4fhmyfYx3SafN981yzI8FukZY0Sv/gHLoifunrKG3t0INTZCdWnq6WheLfm2bsmP4
+	r5W6lk+8XjInwdtwFQ1ZkQE/49kAM2P444oYLwYGxdGAtvl+w+bNL2ONfHc9cFFj9EdzFQrllJUIg
+	P8E7Jfbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pooAw-002lrW-1b;
-	Tue, 18 Apr 2023 16:27:26 +0000
-Received: from mail-oi1-f178.google.com ([209.85.167.178])
+	id 1pooCB-002mBt-10;
+	Tue, 18 Apr 2023 16:28:43 +0000
+Received: from mail-ot1-f43.google.com ([209.85.210.43])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pooAu-002lqo-0t;
-	Tue, 18 Apr 2023 16:27:25 +0000
-Received: by mail-oi1-f178.google.com with SMTP id 5614622812f47-38c00f19654so582761b6e.2;
-        Tue, 18 Apr 2023 09:27:22 -0700 (PDT)
+	id 1pooC6-002mAG-2h;
+	Tue, 18 Apr 2023 16:28:40 +0000
+Received: by mail-ot1-f43.google.com with SMTP id 46e09a7af769-6a5f21a0604so635593a34.2;
+        Tue, 18 Apr 2023 09:28:38 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681835242; x=1684427242;
+        d=1e100.net; s=20221208; t=1681835318; x=1684427318;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=KA3Wj6o+Guvdyn6RVWvc15n99JJqv1Kt6CugaXzG/F8=;
-        b=Fqg4u6QMMnM9aYBc4wFwtaz271sINcfCw0IWAMFhx27ZQS1e+1mRvDhXJIWVHqUaCz
-         LL48EQaQkR1o/hJFRV0KUAwwIe3eiiTwpIThG+uJgD18AGRrOpKI89sU020up5m31SGe
-         frc9q9AAYYerF8TozWAtbgbJaJaN0H9dTxZ+UYSHnxfoFGbklRPaLnYGUYXIVdcaWify
-         6EZmNXaobZxo6G/qHaR7wSNFhur0EiPg4RSmoSSU4WjT29+tRqfqUSkFy5BQveRsSy1M
-         piPvWwq8RamRCdMO/fSNKPmYPCspJV8EgW5THw/cTSV2AUNTXncqj3la74AQUBtEzxL3
-         p4gQ==
-X-Gm-Message-State: AAQBX9cThA1/ZtfnAQuxdjbL+0VspWIrQOIwna4ReS12P5F+3QnCLABJ
-	SIhN45KJwquW1txxp7Vxvg==
-X-Google-Smtp-Source: AKy350bBHLRqNa07Du4N0WmT6K0vuSFaG9g8fJGUXZXaLSnM3rdYMjG2JcU3ECFR82i0sqHbDMgiyw==
-X-Received: by 2002:a05:6808:2203:b0:38e:390b:777b with SMTP id bd3-20020a056808220300b0038e390b777bmr1228732oib.59.1681835241818;
-        Tue, 18 Apr 2023 09:27:21 -0700 (PDT)
+        bh=jTdlBH7gDMe1gwvvIrce6g7Kee26bgpxsr6cq5gCaQM=;
+        b=GigAWhtw+0qM3cnlRSaOZKXPVwEXYKvfKpTXV2cjckzMTd4t/SnEajnt62LCC0+/y/
+         BlIwhIM2SGkocgpuFKRf8pFS3RHUTmy/nYU3QLCbwAsYWTIVBup9zNgPk5n/f5NI91SJ
+         AAccAs7BWeceoI+ZLJs3Yi8UHCo2uv0ih3d81Uj0gWBO2oGKC2am9cWOA+2D56K84tOY
+         7RgiPHJ0UfP/ZahhhB6IM9z1J0Krxg8lOLr42CdH8iAQnYF9xnJevOwAcwp7Z1EEAdvx
+         rfCzj8hlPDfCXN5g+LaQKHs78Rj6J3+IaX511a2fpVAlFwru+pN8hWzMeBkbdgHXhDIE
+         pdIg==
+X-Gm-Message-State: AAQBX9e/N8bniziGMb4KyLE6PmBYOVDdGgeh9CKWIHObOBaIv/IRV8By
+	ebCQ+Npc7Jyc2g4r/+P5hA==
+X-Google-Smtp-Source: AKy350ZFkf368usk4zZSQ/xerYs5DI4VOYXV+JxF5CSCs1hhDwPdmg4CpIlRzCupHO97xwwOs5n1Dw==
+X-Received: by 2002:a9d:7b45:0:b0:6a5:fdec:e1 with SMTP id f5-20020a9d7b45000000b006a5fdec00e1mr1075466oto.16.1681835318049;
+        Tue, 18 Apr 2023 09:28:38 -0700 (PDT)
 Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id i11-20020aca3b0b000000b0038c235e24fesm2204031oia.48.2023.04.18.09.27.20
+        by smtp.gmail.com with ESMTPSA id l23-20020a9d7a97000000b006864b5f4650sm5788490otn.46.2023.04.18.09.28.37
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 18 Apr 2023 09:27:20 -0700 (PDT)
-Received: (nullmailer pid 1810183 invoked by uid 1000);
-	Tue, 18 Apr 2023 16:27:19 -0000
-Date: Tue, 18 Apr 2023 11:27:19 -0500
+        Tue, 18 Apr 2023 09:28:37 -0700 (PDT)
+Received: (nullmailer pid 1811524 invoked by uid 1000);
+	Tue, 18 Apr 2023 16:28:36 -0000
+Date: Tue, 18 Apr 2023 11:28:36 -0500
 From: Rob Herring <robh@kernel.org>
-To: Thierry Reding <thierry.reding@gmail.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>, Bjorn Helgaas <bhelgaas@google.com>, Jonathan Hunter <jonathanh@nvidia.com>, Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang <jianjun.wang@mediatek.com>, Tyrel Datwyler <tyreld@linux.ibm.com>, Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>, Christophe Leroy <christophe.leroy@csgroup.eu>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org, linuxppc-dev@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH] PCI: Use of_property_present() for testing DT property
- presence
-Message-ID: <20230418162719.GF1764573-robh@kernel.org>
-References: <20230310144719.1544443-1-robh@kernel.org>
+To: "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, Amit Kucheria <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] thermal: mediatek: Use of_address_to_resource()
+Message-ID: <20230418162836.GG1764573-robh@kernel.org>
+References: <20230319163231.226738-1-robh@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230310144719.1544443-1-robh@kernel.org>
+In-Reply-To: <20230319163231.226738-1-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230418_092724_312502_57118683 
-X-CRM114-Status: GOOD (  20.67  )
+X-CRM114-CacheID: sfid-20230418_092838_874363_139E0E99 
+X-CRM114-Status: GOOD (  15.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,95 +79,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 10, 2023 at 08:47:19AM -0600, Rob Herring wrote:
-> It is preferred to use typed property access functions (i.e.
-> of_property_read_<type> functions) rather than low-level
-> of_get_property/of_find_property functions for reading properties. As
-> part of this, convert of_get_property/of_find_property calls to the
-> recently added of_property_present() helper when we just want to test
-> for presence of a property and nothing more.
+On Sun, Mar 19, 2023 at 11:32:31AM -0500, Rob Herring wrote:
+> Replace of_get_address() and of_translate_address() calls with single
+> call to of_address_to_resource().
 > 
 > Signed-off-by: Rob Herring <robh@kernel.org>
 > ---
->  drivers/pci/controller/pci-tegra.c     | 4 ++--
->  drivers/pci/controller/pcie-mediatek.c | 2 +-
->  drivers/pci/hotplug/rpaphp_core.c      | 4 ++--
->  drivers/pci/of.c                       | 2 +-
->  4 files changed, 6 insertions(+), 6 deletions(-)
+>  drivers/thermal/mediatek/auxadc_thermal.c | 8 +++-----
+>  1 file changed, 3 insertions(+), 5 deletions(-)
 
 Ping!
 
 > 
-> diff --git a/drivers/pci/controller/pci-tegra.c b/drivers/pci/controller/pci-tegra.c
-> index 74c109f14ff0..79630885b9c8 100644
-> --- a/drivers/pci/controller/pci-tegra.c
-> +++ b/drivers/pci/controller/pci-tegra.c
-> @@ -1375,7 +1375,7 @@ static int tegra_pcie_phys_get(struct tegra_pcie *pcie)
->  	struct tegra_pcie_port *port;
->  	int err;
+> diff --git a/drivers/thermal/mediatek/auxadc_thermal.c b/drivers/thermal/mediatek/auxadc_thermal.c
+> index ab730f9552d0..c8a3acaf56c1 100644
+> --- a/drivers/thermal/mediatek/auxadc_thermal.c
+> +++ b/drivers/thermal/mediatek/auxadc_thermal.c
+> @@ -897,14 +897,12 @@ static void mtk_thermal_init_bank(struct mtk_thermal *mt, int num,
 >  
-> -	if (!soc->has_gen2 || of_find_property(np, "phys", NULL) != NULL)
-> +	if (!soc->has_gen2 || of_property_present(np, "phys"))
->  		return tegra_pcie_phys_get_legacy(pcie);
+>  static u64 of_get_phys_base(struct device_node *np)
+>  {
+> -	u64 size64;
+> -	const __be32 *regaddr_p;
+> +	struct resource res;
 >  
->  	list_for_each_entry(port, &pcie->ports, list) {
-> @@ -1944,7 +1944,7 @@ static bool of_regulator_bulk_available(struct device_node *np,
->  	for (i = 0; i < num_supplies; i++) {
->  		snprintf(property, 32, "%s-supply", supplies[i].supply);
+> -	regaddr_p = of_get_address(np, 0, &size64, NULL);
+> -	if (!regaddr_p)
+> +	if (of_address_to_resource(np, 0, &res))
+>  		return OF_BAD_ADDR;
 >  
-> -		if (of_find_property(np, property, NULL) == NULL)
-> +		if (!of_property_present(np, property))
->  			return false;
->  	}
+> -	return of_translate_address(np, regaddr_p);
+> +	return res.start;
+>  }
 >  
-> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-> index ae5ad05ddc1d..31de7a29192c 100644
-> --- a/drivers/pci/controller/pcie-mediatek.c
-> +++ b/drivers/pci/controller/pcie-mediatek.c
-> @@ -643,7 +643,7 @@ static int mtk_pcie_setup_irq(struct mtk_pcie_port *port,
->  		return err;
->  	}
->  
-> -	if (of_find_property(dev->of_node, "interrupt-names", NULL))
-> +	if (of_property_present(dev->of_node, "interrupt-names"))
->  		port->irq = platform_get_irq_byname(pdev, "pcie_irq");
->  	else
->  		port->irq = platform_get_irq(pdev, port->slot);
-> diff --git a/drivers/pci/hotplug/rpaphp_core.c b/drivers/pci/hotplug/rpaphp_core.c
-> index 491986197c47..2316de0fd198 100644
-> --- a/drivers/pci/hotplug/rpaphp_core.c
-> +++ b/drivers/pci/hotplug/rpaphp_core.c
-> @@ -278,7 +278,7 @@ int rpaphp_check_drc_props(struct device_node *dn, char *drc_name,
->  		return -EINVAL;
->  	}
->  
-> -	if (of_find_property(dn->parent, "ibm,drc-info", NULL))
-> +	if (of_property_present(dn->parent, "ibm,drc-info"))
->  		return rpaphp_check_drc_props_v2(dn, drc_name, drc_type,
->  						be32_to_cpu(*my_index));
->  	else
-> @@ -440,7 +440,7 @@ int rpaphp_add_slot(struct device_node *dn)
->  	if (!of_node_name_eq(dn, "pci"))
->  		return 0;
->  
-> -	if (of_find_property(dn, "ibm,drc-info", NULL))
-> +	if (of_property_present(dn, "ibm,drc-info"))
->  		return rpaphp_drc_info_add_slot(dn);
->  	else
->  		return rpaphp_drc_add_slot(dn);
-> diff --git a/drivers/pci/of.c b/drivers/pci/of.c
-> index 196834ed44fe..e085f2eca372 100644
-> --- a/drivers/pci/of.c
-> +++ b/drivers/pci/of.c
-> @@ -447,7 +447,7 @@ static int of_irq_parse_pci(const struct pci_dev *pdev, struct of_phandle_args *
->  		return -ENODEV;
->  
->  	/* Local interrupt-map in the device node? Use it! */
-> -	if (of_get_property(dn, "interrupt-map", NULL)) {
-> +	if (of_property_present(dn, "interrupt-map")) {
->  		pin = pci_swizzle_interrupt_pin(pdev, pin);
->  		ppnode = dn;
->  	}
+>  static int mtk_thermal_extract_efuse_v1(struct mtk_thermal *mt, u32 *buf)
 > -- 
 > 2.39.2
 > 
