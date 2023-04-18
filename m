@@ -4,67 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8F7FC6FD18
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Apr 2023 16:28:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5738C6FD18
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Apr 2023 18:02:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jTdlBH7gDMe1gwvvIrce6g7Kee26bgpxsr6cq5gCaQM=; b=LOKN09nnFqCWBX6htedNbmGZ1I
-	xfSJ4cr97EBC4HhdunxWl0PIuK4fCykzWl4tFlp7WNnMS7tcLPkhJeYZD1cJbtKWhfskH6k3zKue2
-	rrxVF3Twvadw8PRPlHDCCunfHcJPMApHI6brukWNW850mkX/XwpYuGWbmtVV9woMRU2OQAQkeF1S+
-	ACy7A4rDwJpx4fhmyfYx3SafN981yzI8FukZY0Sv/gHLoifunrKG3t0INTZCdWnq6WheLfm2bsmP4
-	r5W6lk+8XjInwdtwFQ1ZkQE/49kAM2P444oYLwYGxdGAtvl+w+bNL2ONfHc9cFFj9EdzFQrllJUIg
-	P8E7Jfbg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dq1XDLxilwUbRdN2NKx0IAo9lxfpPYiUEXJI1fFrVu0=; b=tf/qOJBuqOE44mB61zcuwzKL4I
+	xPIOpedNZPc5LNvkip82q2FGSTZRkLCCi/3gP3npqYivPRAuTMhRWzJ3dRugvBYJ90oZ1Amf8bbjG
+	OO+bQ4xn5RkSgyV6bsNVDU22GGFWnQm6ENExUiKf2iJKF7npleAAt0eJcEtWZPfq/eF7sy3mvd8qb
+	SbxMliI0GeY89lZdrBEmVuEvdE/f9SHdP13OWBOiDuPLIxq0Msu41A3ka3C+dCXdSO/LWOiSwBQ/i
+	7mLK4ayc5Sy346MtTCrfhROueHmecFoMgDmTjx26Ro7TAXkTuHxzDTnohL6+gbjLFaMmC6g0c3dgv
+	Z6D3PtrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pooCB-002mBt-10;
-	Tue, 18 Apr 2023 16:28:43 +0000
-Received: from mail-ot1-f43.google.com ([209.85.210.43])
+	id 1popfA-0030fK-1r;
+	Tue, 18 Apr 2023 18:02:44 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pooC6-002mAG-2h;
-	Tue, 18 Apr 2023 16:28:40 +0000
-Received: by mail-ot1-f43.google.com with SMTP id 46e09a7af769-6a5f21a0604so635593a34.2;
-        Tue, 18 Apr 2023 09:28:38 -0700 (PDT)
+	id 1popf8-0030eE-2B
+	for linux-mediatek@lists.infradead.org;
+	Tue, 18 Apr 2023 18:02:43 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-3f167d0c91bso27343845e9.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 18 Apr 2023 11:02:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1681840959; x=1684432959;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=dq1XDLxilwUbRdN2NKx0IAo9lxfpPYiUEXJI1fFrVu0=;
+        b=BuyxldTXbucsx62EFsiScrzThNIX0m+NcsbtdxeiOSQpufd77ss2oho1H1Cxey9a+y
+         4hqMr8pzk3HxS3cPiYBvO5UmddlMxpW4dvw35iv3PKPnXVAg6kn8hvxcK9QXGnAfsKfN
+         Lm0uMZHHkGAwwbW0iqmlTNZ2a2Z5Q/Jm14GxYs49YdCYdGHzdgFu+YvRRqB9p5Ro82j6
+         hkhStFuALXFHpsTakvF4Y3GvsrOQCKDrBpu4A7RGmZ1Fld2rnw+RKGjs4CmpP7j0fTWz
+         //9BDnAoAlZmOIwB5gS9gfVj51ri4m+aoSbq+T+2tqYVkM4YS4GcymAkpUWQsYhrGhdd
+         q3Kw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681835318; x=1684427318;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=jTdlBH7gDMe1gwvvIrce6g7Kee26bgpxsr6cq5gCaQM=;
-        b=GigAWhtw+0qM3cnlRSaOZKXPVwEXYKvfKpTXV2cjckzMTd4t/SnEajnt62LCC0+/y/
-         BlIwhIM2SGkocgpuFKRf8pFS3RHUTmy/nYU3QLCbwAsYWTIVBup9zNgPk5n/f5NI91SJ
-         AAccAs7BWeceoI+ZLJs3Yi8UHCo2uv0ih3d81Uj0gWBO2oGKC2am9cWOA+2D56K84tOY
-         7RgiPHJ0UfP/ZahhhB6IM9z1J0Krxg8lOLr42CdH8iAQnYF9xnJevOwAcwp7Z1EEAdvx
-         rfCzj8hlPDfCXN5g+LaQKHs78Rj6J3+IaX511a2fpVAlFwru+pN8hWzMeBkbdgHXhDIE
-         pdIg==
-X-Gm-Message-State: AAQBX9e/N8bniziGMb4KyLE6PmBYOVDdGgeh9CKWIHObOBaIv/IRV8By
-	ebCQ+Npc7Jyc2g4r/+P5hA==
-X-Google-Smtp-Source: AKy350ZFkf368usk4zZSQ/xerYs5DI4VOYXV+JxF5CSCs1hhDwPdmg4CpIlRzCupHO97xwwOs5n1Dw==
-X-Received: by 2002:a9d:7b45:0:b0:6a5:fdec:e1 with SMTP id f5-20020a9d7b45000000b006a5fdec00e1mr1075466oto.16.1681835318049;
-        Tue, 18 Apr 2023 09:28:38 -0700 (PDT)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id l23-20020a9d7a97000000b006864b5f4650sm5788490otn.46.2023.04.18.09.28.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 18 Apr 2023 09:28:37 -0700 (PDT)
-Received: (nullmailer pid 1811524 invoked by uid 1000);
-	Tue, 18 Apr 2023 16:28:36 -0000
-Date: Tue, 18 Apr 2023 11:28:36 -0500
-From: Rob Herring <robh@kernel.org>
-To: "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, Amit Kucheria <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] thermal: mediatek: Use of_address_to_resource()
-Message-ID: <20230418162836.GG1764573-robh@kernel.org>
-References: <20230319163231.226738-1-robh@kernel.org>
+        d=1e100.net; s=20221208; t=1681840959; x=1684432959;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=dq1XDLxilwUbRdN2NKx0IAo9lxfpPYiUEXJI1fFrVu0=;
+        b=J8oN5w+p7J8wTr/+XGjFa1UMraEZkfLhV1/DAXC6ia+52azQGyMSoxj1wLkiGFAZBd
+         dP+5kU5oKiJivDL3cQN0UD0x0n6IfWPsajCs/4PJqIQVlU2ae1SmSjYMSLtCBxF+kW2m
+         dV6W7yeBlE2TWLc8lgAm3jEJotvicXIX+WMuhTyLfWAY/Z8GwASz2fyNbglfwn99U4mA
+         PoJku4txphB6ilcQHCT56dwe4qALfE2dfLDjZqhzOl6QI/l/WkE8VqqABI0HP2DIBQHM
+         gXyCSC5cnaNxWjNZ2zoVHLny/uJN90IVo0aYVQnh4aYYHZefzFeIcqqXKKZWiZw6IPya
+         WNvQ==
+X-Gm-Message-State: AAQBX9ekSleeNSvaqehF/4cPM+CIWIxOk65qgwaTcBlh14Y+6qXhGbbd
+	Jbcs4zEZtErdMDZg//TM6ak=
+X-Google-Smtp-Source: AKy350bcOoocdidKn1c/bC+dVipSJtRDm24yqfKPnERXZZIxB81yRoRfcgQB2SuJ83eRc0ODohf6Qw==
+X-Received: by 2002:adf:f2c9:0:b0:2ef:b052:1296 with SMTP id d9-20020adff2c9000000b002efb0521296mr2699430wrp.22.1681840958643;
+        Tue, 18 Apr 2023 11:02:38 -0700 (PDT)
+Received: from [192.168.1.135] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id z1-20020a5d4d01000000b002e5f6f8fc4fsm13611818wrt.100.2023.04.18.11.02.37
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 18 Apr 2023 11:02:37 -0700 (PDT)
+Message-ID: <f19562fa-a8c6-4870-e413-7593419b800f@gmail.com>
+Date: Tue, 18 Apr 2023 20:02:36 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230319163231.226738-1-robh@kernel.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [PATCH 1/2] dt-bindings: input: goodix: Add powered-in-suspend
+ property
+Content-Language: en-US
+To: Fei Shao <fshao@chromium.org>,
+ Benjamin Tissoires <benjamin.tissoires@redhat.com>,
+ Douglas Anderson <dianders@chromium.org>, Rob Herring <robh+dt@kernel.org>
+Cc: devicetree@vger.kernel.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ linux-kernel@vger.kernel.org,
+ linux-mediatek <linux-mediatek@lists.infradead.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ linux-input@vger.kernel.org
+References: <20230418124953.3170028-1-fshao@chromium.org>
+ <20230418124953.3170028-2-fshao@chromium.org>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20230418124953.3170028-2-fshao@chromium.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230418_092838_874363_139E0E99 
-X-CRM114-Status: GOOD (  15.84  )
+X-CRM114-CacheID: sfid-20230418_110242_716547_8BEEFC0F 
+X-CRM114-Status: GOOD (  20.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,41 +101,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Mar 19, 2023 at 11:32:31AM -0500, Rob Herring wrote:
-> Replace of_get_address() and of_translate_address() calls with single
-> call to of_address_to_resource().
+
+
+On 18/04/2023 14:49, Fei Shao wrote:
+> We observed that on Chromebook device Steelix, if Goodix GT7375P
+> touchscreen is powered in suspend (because, for example, it connects to
+> an always-on regulator) and with the reset GPIO asserted, it will
+> introduce about 14mW power leakage.
 > 
-> Signed-off-by: Rob Herring <robh@kernel.org>
+> This property is used to indicate that the touchscreen is powered in
+> suspend. If it's set, the driver will stop asserting the reset GPIO in
+> power-down, and it will do it in power-up instead to ensure that the
+> state is always reset after resuming.
+> 
+> Signed-off-by: Fei Shao <fshao@chromium.org>
+
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
 > ---
->  drivers/thermal/mediatek/auxadc_thermal.c | 8 +++-----
->  1 file changed, 3 insertions(+), 5 deletions(-)
-
-Ping!
-
 > 
-> diff --git a/drivers/thermal/mediatek/auxadc_thermal.c b/drivers/thermal/mediatek/auxadc_thermal.c
-> index ab730f9552d0..c8a3acaf56c1 100644
-> --- a/drivers/thermal/mediatek/auxadc_thermal.c
-> +++ b/drivers/thermal/mediatek/auxadc_thermal.c
-> @@ -897,14 +897,12 @@ static void mtk_thermal_init_bank(struct mtk_thermal *mt, int num,
->  
->  static u64 of_get_phys_base(struct device_node *np)
->  {
-> -	u64 size64;
-> -	const __be32 *regaddr_p;
-> +	struct resource res;
->  
-> -	regaddr_p = of_get_address(np, 0, &size64, NULL);
-> -	if (!regaddr_p)
-> +	if (of_address_to_resource(np, 0, &res))
->  		return OF_BAD_ADDR;
->  
-> -	return of_translate_address(np, regaddr_p);
-> +	return res.start;
->  }
->  
->  static int mtk_thermal_extract_efuse_v1(struct mtk_thermal *mt, u32 *buf)
-> -- 
-> 2.39.2
+>   Documentation/devicetree/bindings/input/goodix,gt7375p.yaml | 6 ++++++
+>   1 file changed, 6 insertions(+)
 > 
+> diff --git a/Documentation/devicetree/bindings/input/goodix,gt7375p.yaml b/Documentation/devicetree/bindings/input/goodix,gt7375p.yaml
+> index ce18d7dadae2..942acb286d77 100644
+> --- a/Documentation/devicetree/bindings/input/goodix,gt7375p.yaml
+> +++ b/Documentation/devicetree/bindings/input/goodix,gt7375p.yaml
+> @@ -43,6 +43,12 @@ properties:
+>         itself as long as it allows the main board to make signals compatible
+>         with what the touchscreen is expecting for its IO rails.
+>   
+> +  powered-in-suspend:
+> +    description:
+> +      This indicates that the touchscreen is powered in suspend, so the driver
+> +      will not assert the reset GPIO in power-down to prevent power leakage.
+> +    type: boolean
+> +
+>   required:
+>     - compatible
+>     - reg
 
