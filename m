@@ -4,100 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA523C77B75
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Apr 2023 21:25:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F106C77B75
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Apr 2023 21:26:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7yT4GcMjbrel2c9kDi9IQ9tl5o6MfO8exlHC9/eKTb0=; b=Md+7K+XKFBfg+ChEeuWtdKR1Hl
-	0Me2WaPoaCfJh3PO+2BxBgcceuS8itrTexilXn49eNRSuOqcS+atBjpBhJi32rmFLphl+WdEPsFSZ
-	pQWrcbo+c+UcHYtMbOjRtqoYWR9Y1gLBtdV0S3xH7dZVON45isa7nTBdgddjNJKhf588p7/mRoTpT
-	9j5bY5SZpjfVCQAJmjHqT8d8qjBh6g7ZK2XVFvfZPP4gfsJkCHjEqJFFCszsTHoVUjoX4czWm5EPq
-	rOUfW+tnJih5ECNved2ImcPJyIii85KaNcfakT3oLwF0N+Lyu3xhbO4BztE3cF0AC5gzAdoNEztT3
-	zXEvDoiw==;
+	bh=t1y++hWxszbxdwjn4XHYGat0BkERR+aOKZ06U2V4Qsw=; b=hbsVazVNuCIZoMDtg9B0PA9IKF
+	19+Pj+Um9xqz6DvF5Gz1v/nDwqtrxpbbySxdwFF5fivwWamc4UlR6bU5SZFQOgreyLGwv4uKi1f7r
+	PeGWV/uVUArfu3Gh02lv3yV6FD++oVnyk4Waslxj/TXjLxxIhmPk72RNuc2K3T15+vA3ncn6Ik/j8
+	sHhch1iNtUW3RVi3j/z7YZhFB+Bo/MZ027YySVqFvFTyeNqEYl3a9cDBR09JP4Dx+/IFpv6flnwO2
+	GgpQrksinO2W943tv3kN7FCtnZq+pe9PYa8PMsR2EPT1Bg6xHAWjniUItaVWheDxv27iVMzC29Nep
+	esE8ADwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pospU-003NZa-00;
-	Tue, 18 Apr 2023 21:25:36 +0000
-Received: from mail-oo1-f54.google.com ([209.85.161.54])
+	id 1pospt-003Nee-1r;
+	Tue, 18 Apr 2023 21:26:01 +0000
+Received: from mail-ot1-f46.google.com ([209.85.210.46])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pospQ-003NVt-16;
-	Tue, 18 Apr 2023 21:25:33 +0000
-Received: by mail-oo1-f54.google.com with SMTP id 006d021491bc7-546de76c250so638839eaf.3;
-        Tue, 18 Apr 2023 14:25:30 -0700 (PDT)
+	id 1pospq-003NdW-0T;
+	Tue, 18 Apr 2023 21:25:59 +0000
+Received: by mail-ot1-f46.google.com with SMTP id 46e09a7af769-6a437526b7cso736407a34.1;
+        Tue, 18 Apr 2023 14:25:56 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681853130; x=1684445130;
+        d=1e100.net; s=20221208; t=1681853156; x=1684445156;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=7yT4GcMjbrel2c9kDi9IQ9tl5o6MfO8exlHC9/eKTb0=;
-        b=ii1JfRvSX1YdzQEjEHLSrpN6p8JG667cpufPKp332VtynFJ2vMoioGr/5l1lIbyH7F
-         aWpgy33MaYChDeAr/9dvNQ9iBFIaC0hZD+cqmWXUmD0n7VG2ae1HFR840nG+8T00aSWu
-         qxHqRioWC1RXz7h5WUA6BGICo9PaIjvRMdhfwtFxpxBtiYNPfOVSl9iZdhB4i+ZQx4HX
-         BEk4xkR4781Qi74R0PbdaXXMW8uztfUViedgze74hc7uSiGySLM2421OHPhCRZHI7ihg
-         0Nydf1nV5tBd/tdqhaOs8wfmMOtdHN5MdM76yJi9Q6XV414qUzRHao+4AEMRm3GPQhEJ
-         4Lxw==
-X-Gm-Message-State: AAQBX9dSe9UFBa83LftmSAG110Yl/t1ymo9y1tfLkIdji8seak813y25
-	jQXyKsbJzODFu/fvVBJTzw==
-X-Google-Smtp-Source: AKy350bJbf7E4XDwA3/8131dQDn0lBGN26VByKnBFlDX2ebpKxcur0FYvrpyn2ImyGuSOquucrCuNQ==
-X-Received: by 2002:a05:6808:ab7:b0:38c:17a7:5b80 with SMTP id r23-20020a0568080ab700b0038c17a75b80mr1621062oij.37.1681853130221;
-        Tue, 18 Apr 2023 14:25:30 -0700 (PDT)
+        bh=t1y++hWxszbxdwjn4XHYGat0BkERR+aOKZ06U2V4Qsw=;
+        b=UJguGAq6JNEew5Io3SDtkvJV1WN7Ubarbv3ddPEk3a3ngXu0OOtl2AyEnYqKEcB6m3
+         waX6B/hHe5feJgBsq3q42K7aou7i0Bt3oRPttB8d87ZjVLGwZReImpZ+MPTVToBtrbrR
+         QlJRNQJeWH7q5zEehl1Hs45XRVNk5NJ3NUycrjJr4oxGgWp7Nk/bFvj8FnlCoLX106gf
+         mIdODSgbqfXLH0dXGOr2gctPymIs/ZqYjJSYlbDxsTxHZ7kbSCbhGEzJG+12FUelHnIL
+         YizTEiwBHHNq6er6IJVmIN1zdzWdNkPPRAjmeFD/KLztDEMTq8Oj52+miLnhe5+qro4p
+         Drsg==
+X-Gm-Message-State: AAQBX9etH65eOs5MvSPMeP43lsox8vhWoNKzY7h0Q5lbSbi8Nk15j2ZM
+	rmBfijWMABq1wmIMMm0YFQ==
+X-Google-Smtp-Source: AKy350a/OTdllCATjmGezPT1m6bdviDcFkCirlifvfPn2ydSCEej4nyQRiMWdgkdCNUBPOZoo/lCZA==
+X-Received: by 2002:a05:6870:b14d:b0:184:8536:ce54 with SMTP id a13-20020a056870b14d00b001848536ce54mr1896652oal.28.1681853156080;
+        Tue, 18 Apr 2023 14:25:56 -0700 (PDT)
 Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id v124-20020a4a5a82000000b0051ffe0fe11bsm6369196ooa.6.2023.04.18.14.25.28
+        by smtp.gmail.com with ESMTPSA id e6-20020a056870944600b0017fea9c156esm6023892oal.18.2023.04.18.14.25.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 18 Apr 2023 14:25:29 -0700 (PDT)
-Received: (nullmailer pid 2361549 invoked by uid 1000);
-	Tue, 18 Apr 2023 21:25:27 -0000
-Date: Tue, 18 Apr 2023 16:25:27 -0500
+        Tue, 18 Apr 2023 14:25:55 -0700 (PDT)
+Received: (nullmailer pid 2362107 invoked by uid 1000);
+	Tue, 18 Apr 2023 21:25:53 -0000
+Date: Tue, 18 Apr 2023 16:25:53 -0500
 From: Rob Herring <robh@kernel.org>
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: linux-renesas-soc@vger.kernel.org, Florian Fainelli <f.fainelli@gmail.com>, 
-	Rob Herring <robh+dt@kernel.org>, Srinivas Neeli <srinivas.neeli@xilinx.com>, 
-	Kevin Hilman <khilman@baylibre.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, 
-	Sergio Paracuellos <sergio.paracuellos@gmail.com>, Robert Marko <robert.marko@sartura.hr>, 
-	Corentin Labbe <clabbe@baylibre.com>, 
+Cc: Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+	linux-arm-kernel@lists.infradead.org, Anson Huang <Anson.Huang@nxp.com>, 
+	Shubhrajyoti Datta <shubhrajyoti.datta@xilinx.com>, Viresh Kumar <vireshk@kernel.org>, 
+	Nicolas Ferre <nicolas.ferre@microchip.com>, Claudiu Beznea <claudiu.beznea@microchip.com>, 
+	=?UTF-8?B?77+9ZWNraQ==?= <rafal@milecki.pl>, 
+	Eugen Hristev <eugen.hristev@collabora.com>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Justin Chen <justinpopo6@gmail.com>, 
+	linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org, 
+	Rob Herring <robh+dt@kernel.org>, Andy Gross <agross@kernel.org>, 
+	Srinivas Neeli <srinivas.neeli@xilinx.com>, devicetree@vger.kernel.org, 
+	Sander Vanheule <sander@svanheule.net>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Robert Marko <robert.marko@sartura.hr>, 
+	Wim Van Sebroeck <wim@linux-watchdog.org>, 
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Viresh Kumar <vireshk@kernel.org>, 
-	NXP Linux Team <linux-imx@nxp.com>, Anson Huang <Anson.Huang@nxp.com>, 
-	Eugen Hristev <eugen.hristev@collabora.com>, linux-arm-kernel@lists.infradead.org, 
-	linux-stm32@st-md-mailman.stormreply.com, 
-	Wim Van Sebroeck <wim@linux-watchdog.org>, Andy Gross <agross@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Claudiu Beznea <claudiu.beznea@microchip.com>, 
-	Konrad Dybcio <konrad.dybcio@linaro.org>, Linus Walleij <linus.walleij@linaro.org>, 
-	Sai Prakash Ranjan <quic_saipraka@quicinc.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Wolfram Sang <wsa+renesas@sang-engineering.com>, 
-	Christophe Roullier <christophe.roullier@foss.st.com>, linux-amlogic@lists.infradead.org, 
-	Shubhrajyoti Datta <shubhrajyoti.datta@xilinx.com>, Fabio Estevam <festevam@gmail.com>, 
-	Bjorn Andersson <andersson@kernel.org>, Yannick Fertre <yannick.fertre@foss.st.com>, 
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
-	Julius Werner <jwerner@chromium.org>, Magnus Damm <magnus.damm@gmail.com>, 
-	Jamie Iles <jamie@jamieiles.com>, Evan Benn <evanbenn@chromium.org>, =?UTF-8?B?77+9ZWNraQ==?= <rafal@milecki.pl>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Sander Vanheule <sander@svanheule.net>, 
-	Fu Wei <fu.wei@linaro.org>, linux-watchdog@vger.kernel.org, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
-	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, devicetree@vger.kernel.org, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	linux-kernel@vger.kernel.org, Shawn Guo <shawnguo@kernel.org>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, Justin Chen <justinpopo6@gmail.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Guenter Roeck <linux@roeck-us.net>
-Subject: Re: [PATCH 2/6] dt-bindings: watchdog: indentation, quotes and
- white-space cleanup
-Message-ID: <168185312747.2361485.10895999899602826593.robh@kernel.org>
+	Sergio Paracuellos <sergio.paracuellos@gmail.com>, Guenter Roeck <linux@roeck-us.net>, 
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Evan Benn <evanbenn@chromium.org>, 
+	Linus Walleij <linus.walleij@linaro.org>, Florian Fainelli <f.fainelli@gmail.com>, 
+	Fabio Estevam <festevam@gmail.com>, Sai Prakash Ranjan <quic_saipraka@quicinc.com>, 
+	Christophe Roullier <christophe.roullier@foss.st.com>, Corentin Labbe <clabbe@baylibre.com>, 
+	Yannick Fertre <yannick.fertre@foss.st.com>, 
+	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, linux-stm32@st-md-mailman.stormreply.com, 
+	linux-renesas-soc@vger.kernel.org, Bjorn Andersson <andersson@kernel.org>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
+	NXP Linux Team <linux-imx@nxp.com>, Julius Werner <jwerner@chromium.org>, 
+	Jamie Iles <jamie@jamieiles.com>, linux-mediatek@lists.infradead.org, 
+	Magnus Damm <magnus.damm@gmail.com>, linux-watchdog@vger.kernel.org, 
+	linux-arm-msm@vger.kernel.org, Shawn Guo <shawnguo@kernel.org>, 
+	Fu Wei <fu.wei@linaro.org>, Wolfram Sang <wsa+renesas@sang-engineering.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
+	Jerome Brunet <jbrunet@baylibre.com>, Neil Armstrong <neil.armstrong@linaro.org>
+Subject: Re: [PATCH 3/6] dt-bindings: watchdog: arm,sp805: drop unneeded
+ minItems
+Message-ID: <168185315346.2362046.17065820066385103041.robh@kernel.org>
 References: <20230415095112.51257-1-krzysztof.kozlowski@linaro.org>
- <20230415095112.51257-2-krzysztof.kozlowski@linaro.org>
+ <20230415095112.51257-3-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230415095112.51257-2-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230415095112.51257-3-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230418_142532_380538_43D50368 
-X-CRM114-Status: GOOD (  10.62  )
+X-CRM114-CacheID: sfid-20230418_142558_185131_DEF94D6B 
+X-CRM114-Status: GOOD (  11.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,28 +113,14 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Sat, 15 Apr 2023 11:51:08 +0200, Krzysztof Kozlowski wrote:
-> Minor cleanup without functional impact:
-> 1. Indent DTS examples to preferred four-spaces (more readable for DTS),
-> 2. Drop unneeded quotes,
-> 3. Add/drop blank lines to make the code readable.
+On Sat, 15 Apr 2023 11:51:09 +0200, Krzysztof Kozlowski wrote:
+> There is no need to specify minItems when they are equal to maxItems,
+> because it is implied by maxItems.
 > 
 > Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 > ---
->  .../watchdog/amlogic,meson-gxbb-wdt.yaml      | 10 +++---
->  .../bindings/watchdog/arm,sbsa-gwdt.yaml      |  1 -
->  .../bindings/watchdog/arm,twd-wdt.yaml        |  6 ++--
->  .../bindings/watchdog/arm-smc-wdt.yaml        |  7 ++--
->  .../bindings/watchdog/atmel,sama5d4-wdt.yaml  | 14 ++++----
->  .../bindings/watchdog/brcm,bcm7038-wdt.yaml   |  6 ++--
->  .../bindings/watchdog/faraday,ftwdt010.yaml   | 16 +++++-----
->  .../watchdog/mediatek,mt7621-wdt.yaml         |  6 ++--
->  .../bindings/watchdog/qcom-wdt.yaml           | 32 +++++++++----------
->  .../bindings/watchdog/renesas,wdt.yaml        | 14 ++++----
->  .../bindings/watchdog/snps,dw-wdt.yaml        | 32 +++++++++----------
->  .../bindings/watchdog/st,stm32-iwdg.yaml      | 10 +++---
->  .../watchdog/xlnx,xps-timebase-wdt.yaml       | 12 +++----
->  13 files changed, 83 insertions(+), 83 deletions(-)
+>  Documentation/devicetree/bindings/watchdog/arm,sp805.yaml | 1 -
+>  1 file changed, 1 deletion(-)
 > 
 
 Reviewed-by: Rob Herring <robh@kernel.org>
