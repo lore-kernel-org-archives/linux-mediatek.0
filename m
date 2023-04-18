@@ -4,99 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78ED6C77B75
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Apr 2023 21:39:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F6DCC77B75
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Apr 2023 21:51:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9FTQgI3HTIujYCvmdGvbn1iYHKKTz5bkM55o7VU7wfs=; b=Gw76kbU10z8KOWMrxJphDqA5nQ
-	joxrIDZJti/93TafWSKNWWmH1xqVYQ6qpJb9bKwkjy6vWbwvK/rsdMC0BhXIsrUPj1eZjBIE3vZoX
-	nLc0qPJC2SRGOqTfbjsLM9BrHd/HroeORMeEA2K0xjkiBJA4ByKGvKN45nl/kG9eTcyDcy0QtklCE
-	wM9hc+yL4KPCEirQ004Z2femTP4GQAAec4ltrNMMB0pyrIiSKJ2WpWgOsX5XMd/GzpqBfMFbcRRQ+
-	NB/IZAdFg/AMSgU57K2r+eKVdIs2eXONwut+NnmTj3PciDNL3qVfd3uj3IV7rnHrRkgXll4V6lNjf
-	97u8+K9Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=JaCzHqUqjCq6B1gERTBfnXC5SsiBwvsRDlsSMbIHYf4=; b=qqp/U8NDLBGUYwfGC/XaGIpcRI
+	ZK4WxOdkRGmsaqEsOlsQFH/0NjM6gXnHuA+pnMfxQ5e96BfSZb3jP8sVB4Ywlsy02kvdCDEW5BRVN
+	hD0d8k1Ru7PYwRapc8L5y/iIkKy82x+MQz5f7E+oSrBFwyuQs54Pdrli9FIbSaaIn72JlQoXXPyhk
+	dH+BhL1kku/ay7SqmqZpC9Vjnkgnzl5nOz0h62LAiz1oE9oTg97XS8V6KXdxYTjOE4jXdUXG4mBfm
+	tstkbAtmE7o/AdL5oCD3Ol2HySpO1MCBiJkc+y27gZoGo0WHl5GK40lpvbFs1ic0e3xToF66H4PRl
+	2mMorYBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pot39-003Pug-1O;
-	Tue, 18 Apr 2023 21:39:43 +0000
-Received: from mail-oi1-f181.google.com ([209.85.167.181])
+	id 1potEA-003Rct-1O;
+	Tue, 18 Apr 2023 21:51:06 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pot35-003PsL-2a;
-	Tue, 18 Apr 2023 21:39:40 +0000
-Received: by mail-oi1-f181.google.com with SMTP id 5614622812f47-38c6bbbeeb3so456174b6e.1;
-        Tue, 18 Apr 2023 14:39:38 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681853976; x=1684445976;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=9FTQgI3HTIujYCvmdGvbn1iYHKKTz5bkM55o7VU7wfs=;
-        b=VrNl+2Xr+uLyBzfLHjZmXGaBbt7mfH9AghmxOXw7YnTOgYom8FiJHTzfcZrK6jp1XY
-         eR5uaFRQFADqfr8zTTp/QjWgtvtZhRamzENBDvCH/J6U+2r2Th5NMaxqoRyPRFFRYFlC
-         AWMBi9KP57vwEnKqSDwFNpNCiZYzwlY/mpNMfs3aCQdwQXBoqJupfbbsZiNI9ehTPQpn
-         ZZE1cPqtb4Y6pQ1wSE6mE4RmM+PZ7anFnTF5dLbETbpyVU/ktDl5L2DLLAZYuN695cTJ
-         E5R/zdZJCyJKCKLxBqEuDtHsi4X+DyM/uPN7+VeTa5visik7ER1JsXRpj0ZDXbdatIVZ
-         64bg==
-X-Gm-Message-State: AAQBX9dy86RqaxtYBmGnuEBngxY5YTpUBv3jlIjz1A12ms45lpRuOTjn
-	TerWwAci+UqRfW+P0xVkuQ==
-X-Google-Smtp-Source: AKy350ad1gFJziMA7uFDXKgRYHOImiDLZc2+2kux8SA8FrsvhCP7QU7dcKoZR+twA7gAQFYNGfgJUA==
-X-Received: by 2002:aca:644:0:b0:378:2df5:49f5 with SMTP id 65-20020aca0644000000b003782df549f5mr1944858oig.2.1681853974837;
-        Tue, 18 Apr 2023 14:39:34 -0700 (PDT)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id n3-20020aca2403000000b0038bffe1332dsm3950756oic.57.2023.04.18.14.39.30
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 18 Apr 2023 14:39:31 -0700 (PDT)
-Received: (nullmailer pid 2376874 invoked by uid 1000);
-	Tue, 18 Apr 2023 21:39:29 -0000
-Date: Tue, 18 Apr 2023 16:39:29 -0500
-From: Rob Herring <robh@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: linux-arm-kernel@lists.infradead.org, Andy Gross <agross@kernel.org>, 
-	linux-watchdog@vger.kernel.org, Fu Wei <fu.wei@linaro.org>, 
-	Jamie Iles <jamie@jamieiles.com>, linux-renesas-soc@vger.kernel.org, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	linux-stm32@st-md-mailman.stormreply.com, Shawn Guo <shawnguo@kernel.org>, 
-	linux-amlogic@lists.infradead.org, =?UTF-8?B?77+9ZWNraQ==?= <rafal@milecki.pl>, 
-	Julius Werner <jwerner@chromium.org>, Sergio Paracuellos <sergio.paracuellos@gmail.com>, 
-	Eugen Hristev <eugen.hristev@collabora.com>, Magnus Damm <magnus.damm@gmail.com>, 
-	Christophe Roullier <christophe.roullier@foss.st.com>, Robert Marko <robert.marko@sartura.hr>, 
-	Wolfram Sang <wsa+renesas@sang-engineering.com>, Rob Herring <robh+dt@kernel.org>, 
-	Florian Fainelli <f.fainelli@gmail.com>, Viresh Kumar <vireshk@kernel.org>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Fabio Estevam <festevam@gmail.com>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, Justin Chen <justinpopo6@gmail.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Claudiu Beznea <claudiu.beznea@microchip.com>, Kevin Hilman <khilman@baylibre.com>, 
-	linux-kernel@vger.kernel.org, Konrad Dybcio <konrad.dybcio@linaro.org>, 
-	Shubhrajyoti Datta <shubhrajyoti.datta@xilinx.com>, NXP Linux Team <linux-imx@nxp.com>, 
-	Guenter Roeck <linux@roeck-us.net>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	linux-mediatek@lists.infradead.org, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, devicetree@vger.kernel.org, 
-	linux-arm-msm@vger.kernel.org, Evan Benn <evanbenn@chromium.org>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Srinivas Neeli <srinivas.neeli@xilinx.com>, 
-	Sai Prakash Ranjan <quic_saipraka@quicinc.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Bjorn Andersson <andersson@kernel.org>, Yannick Fertre <yannick.fertre@foss.st.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Jerome Brunet <jbrunet@baylibre.com>, Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, 
-	Wim Van Sebroeck <wim@linux-watchdog.org>, Linus Walleij <linus.walleij@linaro.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Anson Huang <Anson.Huang@nxp.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
-	Corentin Labbe <clabbe@baylibre.com>, Sander Vanheule <sander@svanheule.net>
-Subject: Re: [PATCH 6/6] dt-bindings: watchdog: realtek,otto-wdt: simplify
- requiring interrupt-names
-Message-ID: <168185396909.2376821.8732982905359058158.robh@kernel.org>
-References: <20230415095112.51257-1-krzysztof.kozlowski@linaro.org>
- <20230415095112.51257-6-krzysztof.kozlowski@linaro.org>
+	id 1potE7-003RbO-0x;
+	Tue, 18 Apr 2023 21:51:04 +0000
+Received: from notapiano.myfiosgateway.com (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8599B6603206;
+	Tue, 18 Apr 2023 22:50:58 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1681854660;
+	bh=RGjq8g5zSwAVgKk0TGPC1T322t6+hUZkLQBY3DZCsjA=;
+	h=From:To:Cc:Subject:Date:From;
+	b=Br0CFSM/bNNEoa2cmi08w2PcL224kZEvs14SsLrjZDiVhdEyj0BqUKp3AfK19sIlY
+	 BUae7lT0Kx8nvK/46VxRjtetrMQA1FsfQFqk2Y7qIjFuDkYMMAY4BcMfbMp+NaJRip
+	 jSxSYACVjbo1zKHQBPAMksA51SPcEfdnzMoUUwDKGtXbjQP/zY0DE/guGbz5xjRytL
+	 gkFZ8vJ9XWXI2bRtZQ30UySsit0/moqKCeUF1FC8K0WyLVO+1+vqJ1GVvTOWAlopFu
+	 mrPowIxJJapDbkbovtst0QIhQ9DgmRRmR9IU0d66a+aZAo1AbC0E18fhAOLB+lePyV
+	 LirMr8K+BJeEg==
+From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: kernel@collabora.com,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-media@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] Revert "media: mediatek: vcodec: Fix bitstream crop information error"
+Date: Tue, 18 Apr 2023 17:50:52 -0400
+Message-Id: <20230418215052.2371755-1-nfraprado@collabora.com>
+X-Mailer: git-send-email 2.40.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230415095112.51257-6-krzysztof.kozlowski@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230418_143939_838026_758CD6EE 
-X-CRM114-Status: GOOD (  11.69  )
+X-CRM114-CacheID: sfid-20230418_145103_484375_5202C2C8 
+X-CRM114-Status: GOOD (  14.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,18 +81,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+This reverts commit cd61f3c6794bea2b717fe6083ca2ad189db75418. That
+commit's purpose was to prevent the padding from being decoded when
+userspace didn't set a selection, relying on the default one.
 
-On Sat, 15 Apr 2023 11:51:12 +0200, Krzysztof Kozlowski wrote:
-> Required properties should be listed in "required:" block.  Since
-> interrupts are already there, the dependency of interrupt-names on the
-> interrupts can be simplified.
-> 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> ---
->  .../devicetree/bindings/watchdog/realtek,otto-wdt.yaml        | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
-> 
+However, as described in the Step 6 of the Initialization procedure for
+the Memory-to-Memory Stateful Video Encoder Interface [1]:
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+"Set the visible resolution for the stream metadata via
+VIDIOC_S_SELECTION() on the OUTPUT queue if it is desired to be
+different than the full OUTPUT resolution."
+
+And from the Note:
+
+"To avoid encoding the padding, the client needs to explicitly configure
+this selection target"
+
+Hence the behavior in the original commit doesn't follow the interface
+and needs to be reverted.
+
+This fixes the following v4l2-compliance failure observed on
+mt8192-asurada-spherion:
+
+		fail: v4l2-test-formats.cpp(924): sel.r.width != fmt.g_width()
+	test VIDIOC_S_FMT: FAIL
+
+[1] https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/dev-encoder.html#initialization
+
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+
+---
+Hi,
+
+With this patch applied, there's only one failure left on
+mt8192-asurada-spherion:
+
+                fail: v4l2-test-controls.cpp(1167): node->codec_mask & STATEFUL_ENCODER
+        test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: FAIL
+
+But from the documentation I see that the V4L2_EVENT_EOS for stateful
+encoder is deprecated behavior, so should the v4l2-compliance test be
+the one changed to not require this?
+
+We're enabling running v4l2-compliance with this driver in KernelCI [2],
+so after we fix these two remaining issues it should be easy to notice
+if any failures are introduced.
+
+Thanks,
+Nícolas
+
+[2] https://github.com/kernelci/kernelci-core/pull/1889
+
+ drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
+index db65e77bd373..9ff439a50f53 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
+@@ -505,13 +505,13 @@ static int vidioc_venc_s_fmt_out(struct file *file, void *priv,
+ 		f->fmt.pix.pixelformat = fmt->fourcc;
+ 	}
+ 
+-	q_data->visible_width = f->fmt.pix_mp.width;
+-	q_data->visible_height = f->fmt.pix_mp.height;
+-	q_data->fmt = fmt;
+-	ret = vidioc_try_fmt_out(ctx, f, q_data->fmt);
++	ret = vidioc_try_fmt_out(ctx, f, fmt);
+ 	if (ret)
+ 		return ret;
+ 
++	q_data->fmt = fmt;
++	q_data->visible_width = f->fmt.pix_mp.width;
++	q_data->visible_height = f->fmt.pix_mp.height;
+ 	q_data->coded_width = f->fmt.pix_mp.width;
+ 	q_data->coded_height = f->fmt.pix_mp.height;
+ 
+-- 
+2.40.0
 
 
