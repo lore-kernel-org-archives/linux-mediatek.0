@@ -4,128 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54AAFC77B75
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Apr 2023 14:17:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1875C77B78
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Apr 2023 14:19:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jhF8k5oV0/utwMtZSGAzycwMywgHgHKH8/OmfAM+0BA=; b=u9KvCXLyg54FuA+JaqeYQeqFav
-	ZBeX6XAI6KJlRmnCKH1G3XKmPhNtqZkiPvvDIfLnOYBkk38iBWJUWi2oGk0NoSwMn1Ym+Puet2S21
-	zAYjTAmnrbUEY6K+UMmbJ2aqJby7Lk+IJJ2LigCTtO7wp8oqUQbSpOnyYcc88/GedSyUQkkHwOceS
-	VDZbEDn8V2PStzvCqSl74QFtSrR0M3OQLW0GmP1N0NlxmgMVoMzKl2bVBY/qG5lUv4gOu3OncUdj4
-	k6w8fYeSe0cC1yl8vj3d5m5ZPA2FKjQR6v/287MM1StNxK0G4PW/3AvmZlaVj92BTY4X2/D/a4oRi
-	uWh3fE1Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zST2ogY5xFX7piRNXStlaVQvyezkCUdzLc+A/+WCH/0=; b=Gy+F3IUP7GoZ7R2EViHnCeJMmJ
+	cXjf3v7SH9MOXoRT6qKtROeirGyvTGRS2tsNOSwnLJVort4NXLoEwoH33kLOuBGP4Ri1cyYxSIa/q
+	NTveBx22ki42K8zbgVIMX0O9tuRXHjpI9eGgQpo6WbW+c1QlYbMDZfXI7LBjiRAGXeoZRLZv4d5gT
+	kSZabpJmiJOa6OgpPouVxNheqLeXgfgpAlu3KeCmTGB4KXpWeEguOXhBjskrTm7WneiH+at0Iabef
+	+lTYbPskJaQGvYLHzruoGaM4WQGV+WdwrC2E85FaPfJtNDSle267rBcyL+FXzZT0VE54gdgAhQeTR
+	wmUqnuzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pom9A-002PCH-28;
-	Tue, 18 Apr 2023 14:17:28 +0000
-Received: from mail-dm6nam11on20718.outbound.protection.outlook.com ([2a01:111:f400:7eaa::718] helo=NAM11-DM6-obe.outbound.protection.outlook.com)
+	id 1pomAZ-002PO0-1B;
+	Tue, 18 Apr 2023 14:18:55 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pom95-002PB2-2E;
-	Tue, 18 Apr 2023 14:17:25 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=OHaThSro5gV6KnKeyG0caF3Df4Glnlx8YCrlrTWuPZqkoK9l1b6jZ0vZYe+ee7IxVHT/TTpYBqr0c2WhwrqROmj/18kga5jgvqVce128d2K6BB9ynJ5yxAROh5+7cg89ZTR/SwoRVR4F7g85XLp85hB/02C7kMsqI8pZRUHQ8lqemTnDXnA14QFVSVdesGdjUNRmOtslgVMAuZuLZtLk1vgXbOJOlONDgc7OX3Le6dw4OQ23I+JiFpu7g2xFVM1kVaOaHn3Cqz+U9HDwCTYNlXviehcmDZXliGoOlN242k8Ee8OFDZNNThFyqSXk2Y5yEGAYHkh1upqkezAw0AXQ5g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=jhF8k5oV0/utwMtZSGAzycwMywgHgHKH8/OmfAM+0BA=;
- b=mhSacyghBz9blS+Z63gsMLa6EAXMYdJ3wLYIqogXBWxLheKUbMdqJW+BEkssNy0OJjHnUTEniIrs3z+38gtfJW/0+8HwXjgiB808XtgamkMQyEOvbjcdSmbVPzZwgsvruTpcUtASKIJlgRN3uzzPmx70PZKYzwASy8xQCr4m8JDZfnhnPwBeF/lXwqcCq1J2aZh15JYtHYw9HR/mRZ5I8rgyUcdFCQMAkk/xalhY4vDxCgcajRmpFFKHdXaTwrzQxL+1xJeCf7Dpkv9tYi9whRY8RspoKw0zDEKuCUCU/LtSZChD24Rp5rosj0j5aAL2FqbKT1IWrMqq9Wh3eB8VoQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=corigine.com; dmarc=pass action=none header.from=corigine.com;
- dkim=pass header.d=corigine.com; arc=none
+	id 1pomAW-002PMy-1P
+	for linux-mediatek@lists.infradead.org;
+	Tue, 18 Apr 2023 14:18:53 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id dm2so73736754ejc.8
+        for <linux-mediatek@lists.infradead.org>; Tue, 18 Apr 2023 07:18:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=corigine.onmicrosoft.com; s=selector2-corigine-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=jhF8k5oV0/utwMtZSGAzycwMywgHgHKH8/OmfAM+0BA=;
- b=Pc5qTF2C926GYlP8nvIxFVHaPVrWNZOKjJB8lm2amcFX+Ks4vOkT5hLPRvFNQwmzaCscd+aRDoW4z1tCFx0mAPmAXI2KpHSDhJm4jqv6w/6GICr9mTRPVe6Xm37jnVzNInTTrZEYrEfPQdpOUEh1IdjF/ExHhlydVtzEG2ZO1dk=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=corigine.com;
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com (2603:10b6:510:78::6)
- by MW3PR13MB4043.namprd13.prod.outlook.com (2603:10b6:303:2d::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6298.45; Tue, 18 Apr
- 2023 14:17:17 +0000
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::89d1:63f2:2ed4:9169]) by PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::89d1:63f2:2ed4:9169%5]) with mapi id 15.20.6298.045; Tue, 18 Apr 2023
- 14:17:17 +0000
-Date: Tue, 18 Apr 2023 16:17:10 +0200
-From: Simon Horman <simon.horman@corigine.com>
-To: Naresh Kamboju <naresh.kamboju@linaro.org>
-Cc: open list <linux-kernel@vger.kernel.org>, lkft-triage@lists.linaro.org,
-	llvm@lists.linux.dev, linux-phy@lists.infradead.org,
-	"moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
-	Guillaume Ranquet <granquet@baylibre.com>,
-	Vinod Koul <vkoul@kernel.org>, Kishon <kishon@ti.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Netdev <netdev@vger.kernel.org>, chunfeng.yun@mediatek.com
-Subject: Re: next: allmodconfig: phy-mtk-hdmi-mt8195.c:298:6: error: variable
- 'ret' is uninitialized when used here [-Werror,-Wuninitialized]
-Message-ID: <ZD6mZv2n2yUZKA1G@corigine.com>
-References: <CA+G9fYu4o0-ZKSthi7kdCjz_kFazZS-rn17Z2NPz3=1Oayr9cw@mail.gmail.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CA+G9fYu4o0-ZKSthi7kdCjz_kFazZS-rn17Z2NPz3=1Oayr9cw@mail.gmail.com>
-X-ClientProxiedBy: AM0PR05CA0090.eurprd05.prod.outlook.com
- (2603:10a6:208:136::30) To PH0PR13MB4842.namprd13.prod.outlook.com
- (2603:10b6:510:78::6)
+        d=chromium.org; s=google; t=1681827527; x=1684419527;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=zST2ogY5xFX7piRNXStlaVQvyezkCUdzLc+A/+WCH/0=;
+        b=BygM/wM5k1MV5OG0uIeGXhl1I4Y8uM9RBcI23wGX2dXSi9Gd0VZELJJkozAjvziOIe
+         iXFp32fIzPuKr9Yb8XA7sAaYznKrdWVvCNnPGBIfnuCnwx2I3UPM1SrpEiH8MwDcKsqv
+         csUptvD/Ce7lo1Z8QTcggfoEcm8xeOXs9acrQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1681827527; x=1684419527;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=zST2ogY5xFX7piRNXStlaVQvyezkCUdzLc+A/+WCH/0=;
+        b=ZKdbTW44zEFN57tWVHRhmp1ggZJ1nAeVumlX1gED18uHk8vcBZ9Y4BPD6EdXKYWCFR
+         d6K7054/7zUQtwXH2/dCc5JL0N0N74V0lnOekyfYELmtM/tYtCZqLLsSsIKOMrjZnbhY
+         9VbRAtRBODu/MkM+JJFj9B45QUAwIsPda5n+rn0gznypLAqlmTbLY6HNzqeeoO//sBVm
+         ysxceei3g9eNX49qCY+1cSn6wkc1xLqAPYNSMomdLNMtcJO1zQUZdtGjny/wGTwVy9L7
+         z/wDr+T96LyOKCFGR/iyxq/Tcnu96eOq+LDv0NnKSuzlsGRPQ9aGBMF5nND+96wHlz5f
+         P5tQ==
+X-Gm-Message-State: AAQBX9eAZya8/wY8Yr2pHsrWsTpWdXMBvEVPO1ZtcSRaEtb+OcPKn4oC
+	dtHnrX267d31QjD1zQhv7upIlfMEnMDMD7HXt2enSw==
+X-Google-Smtp-Source: AKy350bNmhZw8emLJsU1fDSOk/NWScGojbaAkrZ0lnv/inF82VxH7gsOHDv18Y9c/K9jZLyg0demcA==
+X-Received: by 2002:a17:906:3ac7:b0:94a:5819:5a24 with SMTP id z7-20020a1709063ac700b0094a58195a24mr12402082ejd.18.1681827527091;
+        Tue, 18 Apr 2023 07:18:47 -0700 (PDT)
+Received: from mail-wm1-f48.google.com (mail-wm1-f48.google.com. [209.85.128.48])
+        by smtp.gmail.com with ESMTPSA id t16-20020a170906269000b00932ba722482sm8278954ejc.149.2023.04.18.07.18.44
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 18 Apr 2023 07:18:45 -0700 (PDT)
+Received: by mail-wm1-f48.google.com with SMTP id 5b1f17b1804b1-3f173af6712so15612735e9.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 18 Apr 2023 07:18:44 -0700 (PDT)
+X-Received: by 2002:adf:e803:0:b0:2fa:d7ac:6462 with SMTP id
+ o3-20020adfe803000000b002fad7ac6462mr485497wrm.11.1681827524446; Tue, 18 Apr
+ 2023 07:18:44 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR13MB4842:EE_|MW3PR13MB4043:EE_
-X-MS-Office365-Filtering-Correlation-Id: 184862bd-940d-4cd2-7bec-08db40179d1e
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	2+qUp06GAFeH6HLOaUyUpW0NDaaz9b3SVzoe78ao64JOTlYaT+IVNGEOVwqcc7w+SCsiQLHry9LPeYrurVlREGH4gLobVgQynAL7YqWj1KKa58jYqetWzgtbkMBrzGgoWXFLw4Mn3+AbQFYe0DxSkveioM3LYmTcIN+wORIkKwcstLlm3lZNeEPUoGiWRont306+SBcftdFUUK9tm7ErTC62YgB3hlUXOFwX0iXtM8BobeN8Yk8F7ySuPivV0hhgpccYLyikYx1+YAn0Na4Aa0pjZ8CFpdhciOWw/xVYK2f2+0uTaYcUEWyIIOOC+xv0PvvCZYMgjBs6+Zox8MvMDCXhpXjfSV/jtHsS0yFQtGrkM+ZjNiTQ9lJTERSHK22qr0zyUyOVF9lmUCYrLR0uVE90ZP5EBkL9X01g1h40WCaowCu8Uk2CNpnJd4u7R13KrAls17F/YOyj5AyZfoQ7r6dLcINj4zlvwj13BnrEacBuQ76pSaCu2mXz1/ue9MmMrwaoeHUaL98xylLOOqcJCZVlnaGEiI9nKAzzpANZFxk7qLwkyU9uKDGB8+bPkhh3Gib1QA8sKf28H8nhnSfVqBVrm9MK9ciaZ0jsxMx7TCI=
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR13MB4842.namprd13.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(346002)(136003)(39840400004)(366004)(376002)(396003)(451199021)(36756003)(38100700002)(8936002)(8676002)(44832011)(5660300002)(7416002)(2906002)(4744005)(86362001)(478600001)(6486002)(6666004)(54906003)(186003)(2616005)(966005)(6512007)(66946007)(6506007)(66476007)(41300700001)(316002)(83380400001)(6916009)(4326008)(66556008);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?ifEvLNH6OdSzX1YmiP5hiQTo7ZerqkjKrsvWMMyXarE+lJAeno0EvZaD489f?=
- =?us-ascii?Q?UH2ky7WiM0lJortTc8cEeZCYdF4PTSpKkVBQybZ2X4/8FC7CaYnwiiow5a0f?=
- =?us-ascii?Q?eJn2khdIzpbeDX9rmsVHfFLyYo+MycB4I2CNMRkHPOi8N4gSyPEuB7unYNJv?=
- =?us-ascii?Q?6Q4H9gj63NOThQ1xdwZeAQh9E7FhK3IXMc5AwH4yyeaGLpwq5cLAYXsgP9JZ?=
- =?us-ascii?Q?wDVAFghNZ3B/N5TbYCQHatu0U4rltKbnrKWGMt0erIO2rO/u5SYXv/r95utH?=
- =?us-ascii?Q?UcMFMdJ1dwdcD8b9zOuowySVwBytje9jF9pWhddmah/GDKUFuV313LSU5hiC?=
- =?us-ascii?Q?/sXsTae0WmX+2RQwaPtETRndq/5p6sl7EWSDuSmYnZ+wrJf5MhC2KLiN5Kwy?=
- =?us-ascii?Q?4spYsTtcvN2exqOLs5tG2cP8WF9iaVNUJsKgvwtpqzMNLPG3z0ZkVQaR9TjZ?=
- =?us-ascii?Q?nB8o4pqdSI0nF/JEmdc4SfgxcV4sLzQzF2yB9qiEuTPDyPcOrjGFOogWFYZV?=
- =?us-ascii?Q?2KnHyPyAQhXhly/CG5lG0GlforhLfyttxCQiP6vqGyqisC8U2Tgj8QKgPZi+?=
- =?us-ascii?Q?/I5Ll+Wgq6q+5b8yQ2R1uo8Zz1rfrHxMo9pzbgVgdwDxbdgJoZzpwXlIPu2P?=
- =?us-ascii?Q?sZkDiNC5yCqKV5ieNY0QpV4lmU2MY4oJDjpu4AG1lzQV4wbqI7770lJ2Si2G?=
- =?us-ascii?Q?U44U60o8G/+/97pRabhsCf+jGuVhx4+E7yCy10oIiLsyUDgPJhKi3p3CUxMz?=
- =?us-ascii?Q?djHnyWDyaYHLwdF7qMF8ez+euCGkfuaP2JcA607SVdlGI55ksbzfH3P0B4Q2?=
- =?us-ascii?Q?f88IloAm6p0LlH/Efae9O2KoWBNiJBz5aNn1aP6Q8aGhBDGCFouqXde7kgjy?=
- =?us-ascii?Q?p6eRLClsW+XM/HHDUhayvt6SvE/dndVqnZY7ZGTGtoNggo8NQ2odobCl7eq1?=
- =?us-ascii?Q?wovEskpaM8eTsbmp/HjCnOHqJ6LGNOKmLvl4aa9aKdRWgh+ImO27U/t5eSRF?=
- =?us-ascii?Q?DRqPHrgBourlf3xswWmT9DiVLoFasd6+mSvUSEWn5VP8H8ohx3tTZ4Y9yXa9?=
- =?us-ascii?Q?xYJIECOp5dnBzLIYFUA8nhc4c19DEVdJ/vXcQjBOVB/Yhjy/+ACUmaPK/u34?=
- =?us-ascii?Q?LZVJoZtUT4kAncayfFzBOubuWwWDHBq45MBAcFoqWb7mZympjHXUpEXXIKWJ?=
- =?us-ascii?Q?/DD88kFm/36lDjrLA8tjiQeWjaSMMOWSdt+FAfl2P/ZDx/Aeay6h4k8dPerM?=
- =?us-ascii?Q?bFKYPRXoNIUWlpQWUuos6jdNeoTgRL2S5clX6M2ADFlS0fjqPXlW08D2ytqT?=
- =?us-ascii?Q?wpg1y6N8Ra/gp/9JNk4zROOoLqCxNEr1IOcFS4b0VRGRbom0veISSwyefx/b?=
- =?us-ascii?Q?uxhX7Agjpcw199OmUV1LGCpRYl2rvBRsRUIarzq1ecfFXWl36ZuB/qVsmBGO?=
- =?us-ascii?Q?1Fi3zsbhyuurU25hR7k2vLLPYq8RXWDZgcoPC0Hg8H3PazSRFE7Ay/l5SAnI?=
- =?us-ascii?Q?FFwwgsyUivCENQVIM/7/QLx7sGQRUPAlPel84vYGajzbEZIFMAq2QNacMj8o?=
- =?us-ascii?Q?eSJ3oVNYRugyUibQ3Y0wParouE1fPK91Mv03Xkuran8CmvMKbXgB5AaV5kWD?=
- =?us-ascii?Q?A+NMcrfK6qheK7QmzRnsYPYBrhSfUxN4D6Kd3tL6P0fJT8hyqnbeE9b0iNOS?=
- =?us-ascii?Q?F+Chgg=3D=3D?=
-X-OriginatorOrg: corigine.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 184862bd-940d-4cd2-7bec-08db40179d1e
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR13MB4842.namprd13.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Apr 2023 14:17:16.9798
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: fe128f2c-073b-4c20-818e-7246a585940c
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: QmYulTcqj7EgAma7/vdam3mxXucoHafi7nqJJDp3TbBqTvf5WKzfR0kcIq9psQX0a5e2d2DK8N9R4B5K8v/l8dJ6UY62w4ECPfeyF2OXBXs=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW3PR13MB4043
+References: <20230418124953.3170028-1-fshao@chromium.org> <20230418124953.3170028-2-fshao@chromium.org>
+In-Reply-To: <20230418124953.3170028-2-fshao@chromium.org>
+From: Doug Anderson <dianders@chromium.org>
+Date: Tue, 18 Apr 2023 07:18:32 -0700
+X-Gmail-Original-Message-ID: <CAD=FV=V8ZN3969RrPu2-zZYoEE=LDxpi8K_E8EziiDpGOSsq1w@mail.gmail.com>
+Message-ID: <CAD=FV=V8ZN3969RrPu2-zZYoEE=LDxpi8K_E8EziiDpGOSsq1w@mail.gmail.com>
+Subject: Re: [PATCH 1/2] dt-bindings: input: goodix: Add powered-in-suspend property
+To: Fei Shao <fshao@chromium.org>
+Cc: Benjamin Tissoires <benjamin.tissoires@redhat.com>, Rob Herring <robh+dt@kernel.org>, 
+	linux-mediatek <linux-mediatek@lists.infradead.org>, 
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, devicetree@vger.kernel.org, 
+	linux-input@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230418_071723_800910_23EC0368 
-X-CRM114-Status: UNSURE (   7.79  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230418_071852_501451_BDF166B6 
+X-CRM114-Status: GOOD (  29.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -140,26 +98,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 14, 2023 at 03:14:27PM +0530, Naresh Kamboju wrote:
-> Following build warnings / errors noticed while building allmodconfig for arm64
-> with clang-16 on Linux next-20230414.
-> 
-> Reported-by: Linux Kernel Functional Testing <lkft@linaro.org>
-> 
-> drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:298:6: error: variable
-> 'ret' is uninitialized when used here [-Werror,-Wuninitialized]
->         if (ret)
->             ^~~
-> drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:216:12: note: initialize
-> the variable 'ret' to silence this warning
->         int i, ret;
->                   ^
->                    = 0
-> 1 error generated.
+Hi,
 
-I believe a fix for this has been submitted but not yet applied.
+On Tue, Apr 18, 2023 at 5:50=E2=80=AFAM Fei Shao <fshao@chromium.org> wrote=
+:
+>
+> We observed that on Chromebook device Steelix, if Goodix GT7375P
+> touchscreen is powered in suspend (because, for example, it connects to
+> an always-on regulator) and with the reset GPIO asserted, it will
+> introduce about 14mW power leakage.
+>
+> This property is used to indicate that the touchscreen is powered in
+> suspend. If it's set, the driver will stop asserting the reset GPIO in
+> power-down, and it will do it in power-up instead to ensure that the
+> state is always reset after resuming.
+>
+> Signed-off-by: Fei Shao <fshao@chromium.org>
+> ---
+>
+>  Documentation/devicetree/bindings/input/goodix,gt7375p.yaml | 6 ++++++
+>  1 file changed, 6 insertions(+)
+>
+> diff --git a/Documentation/devicetree/bindings/input/goodix,gt7375p.yaml =
+b/Documentation/devicetree/bindings/input/goodix,gt7375p.yaml
+> index ce18d7dadae2..942acb286d77 100644
+> --- a/Documentation/devicetree/bindings/input/goodix,gt7375p.yaml
+> +++ b/Documentation/devicetree/bindings/input/goodix,gt7375p.yaml
+> @@ -43,6 +43,12 @@ properties:
+>        itself as long as it allows the main board to make signals compati=
+ble
+>        with what the touchscreen is expecting for its IO rails.
+>
+> +  powered-in-suspend:
+> +    description:
+> +      This indicates that the touchscreen is powered in suspend, so the =
+driver
+> +      will not assert the reset GPIO in power-down to prevent power leak=
+age.
+> +    type: boolean
 
-- [PATCH v2 1/2] phy: mediatek: hdmi: mt8195: fix uninitialized variable usage in pll_calc
+This seems OK to me. The overall idea is that if we ever turn off the
+power to the touchscreen we have to assert reset (active low) before
+doing so, but we don't want to hold reset if we're not actually going
+to turn the power off because it causes the touchscreen to go into a
+high power state. This gets complicated if the power rail is always-on
+or shared with another device.
 
-Link: https://lore.kernel.org/all/20230413-fixes-for-mt8195-hdmi-phy-v2-1-bbad62e64321@baylibre.com/
+Alternatives I could think of:
+
+1. In the OS, monitor the regulator and see when it's about to go off
+and then assert reset. This is what I tried to do in previous patches
+but it got too messy in Linux. It also wasn't perfect since it's
+(theoretically) possible for a regulator to turn off outside of the
+scope of the OS (some PMICs will auto turn off rails when the main
+processor says it's off).
+
+2. In the OS, peek to see if our regulator is marked "always on". This
+doesn't handle the shared rail case, of course. Also, regulators that
+are "always on" from the OS perspective could still (theoretically)
+get turned off at suspend time by the PMIC.
+
+3. Don't even hook up the reset line and just leave the touchscreen
+out of reset all the time. This has the disadvantage that we can't
+reset the touchscreen if it gets into a bad state, which could be even
+more important if the touchscreen is on an always-on or shared rail.
+
+
+Given the above, the solution in ${SUBJECT} patch seems reasonable.
+
+Reviewed-by: Douglas Anderson <dianders@chromium.org>
 
