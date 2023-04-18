@@ -4,87 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58850C6FD18
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Apr 2023 14:22:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 415C6C6FD18
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Apr 2023 16:27:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mr9HMDo/MJuNTypI5wjgUQXDgpx9NKUHRJlWMwJUMe0=; b=jxdFrgoj8ZonWZncQ6Vc4gpPO4
-	RsI8xL3sx1AvV1TAgVCiy31w29X3AoITBT+WzKL+KBKTV4NiU06lfxpr/v1cSezGA/b5bIy7/bYkj
-	WYzeMHYCW9GfbLQgXB2Z7GMfEgQC7JFl9u0ssFJAF5k/7/L2Q9Z4ublmExVicxUsOGY1YAvVt93qQ
-	J1Pe1YIof3X11lJRo28cmfqlxiPcian/j4eV/H1Dop7Ej70O6EBi6/+nXXAZMkyUzR7BvqOWz0yuX
-	lVQwRAD/IymHM+ZaI+PLsIn+2Fh8LFM25mlBDb0ixTxS7PKUMcD9OX+1OUYO+f7zjSjfksUbSHdxk
-	AfWTAq5g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KA3Wj6o+Guvdyn6RVWvc15n99JJqv1Kt6CugaXzG/F8=; b=gwrtOnExFERKob1ikDHB92R1J7
+	04fT9ujHZJEbIeil9HG/1g0vqnWhBswa81bMsf2pbqM3pw8Kbpl3UZOkWcHNvVTsrhYcQ8197fsqW
+	e3N2kl9y6DN8swGKgKWT3S0IUHgUzl8WztPIKihHbjSpnEG+wfhagHk+4ai1uf33ZxpAzDVcCtzLX
+	VfZZ6G+km6O3iG9tVviXSHG2R07fafhVHsZX3FsX8Z7I/HsdPFc6uyiVo+lMo8TB5CtLb3QvqQSXS
+	81yKssMaaClrB8dAebj/7F/PthI4LnZpQn9bVlDNmUV5eDNKEMugOeeqLRRqBMv7o7kzimnSsXMPA
+	gg5Xn3iA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pomE7-002Q2t-1R;
-	Tue, 18 Apr 2023 14:22:35 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1pooAw-002lrW-1b;
+	Tue, 18 Apr 2023 16:27:26 +0000
+Received: from mail-oi1-f178.google.com ([209.85.167.178])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pomE4-002Q1f-2G
-	for linux-mediatek@lists.infradead.org;
-	Tue, 18 Apr 2023 14:22:34 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id q23so64184252ejz.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 18 Apr 2023 07:22:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1681827748; x=1684419748;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=mr9HMDo/MJuNTypI5wjgUQXDgpx9NKUHRJlWMwJUMe0=;
-        b=lRk+QFnlSqDxzU3eT4rs73hVScoqFv1RrT3WJsME63uRLoBjSHoyorSQTcGqboKkhS
-         ZSrmb6GYzdM95LJjof5njuIyOwaP8wKZZcJgjArXB21he8BNind+ICxQuOocobrvsbmo
-         pPpLErigyJTAVFr5YO6I4CGiltD9xWzBSEDLk=
+	id 1pooAu-002lqo-0t;
+	Tue, 18 Apr 2023 16:27:25 +0000
+Received: by mail-oi1-f178.google.com with SMTP id 5614622812f47-38c00f19654so582761b6e.2;
+        Tue, 18 Apr 2023 09:27:22 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681827748; x=1684419748;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=mr9HMDo/MJuNTypI5wjgUQXDgpx9NKUHRJlWMwJUMe0=;
-        b=k+ONU72L3se+B43SGuD4br0t2RH5FP4ScApOO2bAzgxlBEpem+ivnZ8OiUnyYj3uFA
-         voKhCfkp1RTqtt0RUCMbk5SLHbsWuQNhs0m7hfll+EkitLmflrzzgahn5zndJiiuOC3F
-         ASvIRq3PVegXH6YQqKwcV6VnA+GjyR5OOVuI2okmAiW/v8CSDgUHylWc2eMbCfHsQ/6H
-         95Cfs+eNrqmPhC5UH3hMMLpjdX+Qp9tzgcg+4tA3Hu40wzBaMwO0GYZ/iLosp7No8bQO
-         0Epa1wSTs8VVSQBYzzBmWq4/Oy0mcn/kl64vf6e9UkD0menSLHI77utm6+lGuyAB7BLd
-         e1Xg==
-X-Gm-Message-State: AAQBX9cbP+6yJ+B8L9pLg0rI54ehqtzEzS7DxtsyLYKgJOlqJJwNgVGN
-	0eTB6B/tgSOXVMYkfId8gE+esa1HTcl6HmVU2572FQ==
-X-Google-Smtp-Source: AKy350Zj49AFVSgsrMyTJ/cCZ9u+MVO/moxSMxg/IOc94ZJPt8ry8RLaZr5x8cfgZDAkko9qBQHCZQ==
-X-Received: by 2002:a17:906:89a4:b0:94e:23b:75e9 with SMTP id gg36-20020a17090689a400b0094e023b75e9mr10044670ejc.43.1681827747722;
-        Tue, 18 Apr 2023 07:22:27 -0700 (PDT)
-Received: from mail-wm1-f51.google.com (mail-wm1-f51.google.com. [209.85.128.51])
-        by smtp.gmail.com with ESMTPSA id w3-20020a170906b18300b0094b5ce9d43dsm8113236ejy.85.2023.04.18.07.22.27
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 18 Apr 2023 07:22:27 -0700 (PDT)
-Received: by mail-wm1-f51.google.com with SMTP id 5b1f17b1804b1-3f17b967bfbso9068645e9.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 18 Apr 2023 07:22:27 -0700 (PDT)
-X-Received: by 2002:adf:e195:0:b0:2d7:9771:fc4b with SMTP id
- az21-20020adfe195000000b002d79771fc4bmr620802wrb.5.1681827746736; Tue, 18 Apr
- 2023 07:22:26 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1681835242; x=1684427242;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=KA3Wj6o+Guvdyn6RVWvc15n99JJqv1Kt6CugaXzG/F8=;
+        b=Fqg4u6QMMnM9aYBc4wFwtaz271sINcfCw0IWAMFhx27ZQS1e+1mRvDhXJIWVHqUaCz
+         LL48EQaQkR1o/hJFRV0KUAwwIe3eiiTwpIThG+uJgD18AGRrOpKI89sU020up5m31SGe
+         frc9q9AAYYerF8TozWAtbgbJaJaN0H9dTxZ+UYSHnxfoFGbklRPaLnYGUYXIVdcaWify
+         6EZmNXaobZxo6G/qHaR7wSNFhur0EiPg4RSmoSSU4WjT29+tRqfqUSkFy5BQveRsSy1M
+         piPvWwq8RamRCdMO/fSNKPmYPCspJV8EgW5THw/cTSV2AUNTXncqj3la74AQUBtEzxL3
+         p4gQ==
+X-Gm-Message-State: AAQBX9cThA1/ZtfnAQuxdjbL+0VspWIrQOIwna4ReS12P5F+3QnCLABJ
+	SIhN45KJwquW1txxp7Vxvg==
+X-Google-Smtp-Source: AKy350bBHLRqNa07Du4N0WmT6K0vuSFaG9g8fJGUXZXaLSnM3rdYMjG2JcU3ECFR82i0sqHbDMgiyw==
+X-Received: by 2002:a05:6808:2203:b0:38e:390b:777b with SMTP id bd3-20020a056808220300b0038e390b777bmr1228732oib.59.1681835241818;
+        Tue, 18 Apr 2023 09:27:21 -0700 (PDT)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id i11-20020aca3b0b000000b0038c235e24fesm2204031oia.48.2023.04.18.09.27.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 18 Apr 2023 09:27:20 -0700 (PDT)
+Received: (nullmailer pid 1810183 invoked by uid 1000);
+	Tue, 18 Apr 2023 16:27:19 -0000
+Date: Tue, 18 Apr 2023 11:27:19 -0500
+From: Rob Herring <robh@kernel.org>
+To: Thierry Reding <thierry.reding@gmail.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>, Bjorn Helgaas <bhelgaas@google.com>, Jonathan Hunter <jonathanh@nvidia.com>, Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang <jianjun.wang@mediatek.com>, Tyrel Datwyler <tyreld@linux.ibm.com>, Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>, Christophe Leroy <christophe.leroy@csgroup.eu>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org, linuxppc-dev@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH] PCI: Use of_property_present() for testing DT property
+ presence
+Message-ID: <20230418162719.GF1764573-robh@kernel.org>
+References: <20230310144719.1544443-1-robh@kernel.org>
 MIME-Version: 1.0
-References: <20230418124953.3170028-1-fshao@chromium.org> <20230418124953.3170028-3-fshao@chromium.org>
-In-Reply-To: <20230418124953.3170028-3-fshao@chromium.org>
-From: Doug Anderson <dianders@chromium.org>
-Date: Tue, 18 Apr 2023 07:22:14 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=WVH3H9R=dnrOkiCEa-+izcSKjfdXbRDP8bc4xo_AhMnw@mail.gmail.com>
-Message-ID: <CAD=FV=WVH3H9R=dnrOkiCEa-+izcSKjfdXbRDP8bc4xo_AhMnw@mail.gmail.com>
-Subject: Re: [PATCH 2/2] HID: i2c-hid: goodix: Add support for
- powered-in-suspend property
-To: Fei Shao <fshao@chromium.org>
-Cc: Benjamin Tissoires <benjamin.tissoires@redhat.com>, Rob Herring <robh+dt@kernel.org>, 
-	linux-mediatek <linux-mediatek@lists.infradead.org>, 
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>, Jiri Kosina <jikos@kernel.org>, 
-	Matthias Kaehlcke <mka@chromium.org>, Stephen Kitt <steve@sk2.org>, linux-input@vger.kernel.org, 
-	linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230310144719.1544443-1-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230418_072232_736944_90156556 
-X-CRM114-Status: GOOD (  23.84  )
+X-CRM114-CacheID: sfid-20230418_092724_312502_57118683 
+X-CRM114-Status: GOOD (  20.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,47 +80,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Tue, Apr 18, 2023 at 5:51=E2=80=AFAM Fei Shao <fshao@chromium.org> wrote=
-:
->
-> In the beginning, commit 18eeef46d359 ("HID: i2c-hid: goodix: Tie the
-> reset line to true state of the regulator") introduced a change to tie
-> the reset line of the Goodix touchscreen to the state of the regulator
-> to fix a power leakage issue in suspend.
->
-> After some time, the change was deemed unnecessary and was reverted in
-> commit 557e05fa9fdd ("HID: i2c-hid: goodix: Stop tying the reset line to
-> the regulator") due to difficulties in managing regulator notifiers for
-> designs like Evoker, which provides a second power rail to touchscreen.
->
-> However, the revert caused a power regression on another Chromebook
-> device Steelix in the field, which has a dedicated always-on regulator
-> for touchscreen and was covered by the workaround in the first commit.
->
-> To address both cases, this patch adds the support for the
-> `powered-in-suspend` property in the driver that allows the driver to
-> determine whether the touchscreen is still powered in suspend, and
-> handle the reset GPIO accordingly as below:
-> - When set to true, the driver does not assert the reset GPIO in power
->   down. To ensure a clean start and the consistent behavior, it does the
->   assertion in power up instead.
->   This is for designs with a dedicated always-on regulator.
-> - When set to false, the driver uses the original control flow and
->   asserts GPIO and disable regulators normally.
->   This is for the two-regulator and shared-regulator designs.
->
-> Signed-off-by: Fei Shao <fshao@chromium.org>
->
+On Fri, Mar 10, 2023 at 08:47:19AM -0600, Rob Herring wrote:
+> It is preferred to use typed property access functions (i.e.
+> of_property_read_<type> functions) rather than low-level
+> of_get_property/of_find_property functions for reading properties. As
+> part of this, convert of_get_property/of_find_property calls to the
+> recently added of_property_present() helper when we just want to test
+> for presence of a property and nothing more.
+> 
+> Signed-off-by: Rob Herring <robh@kernel.org>
 > ---
->
->  drivers/hid/i2c-hid/i2c-hid-of-goodix.c | 46 +++++++++++++++++++++----
->  1 file changed, 39 insertions(+), 7 deletions(-)
+>  drivers/pci/controller/pci-tegra.c     | 4 ++--
+>  drivers/pci/controller/pcie-mediatek.c | 2 +-
+>  drivers/pci/hotplug/rpaphp_core.c      | 4 ++--
+>  drivers/pci/of.c                       | 2 +-
+>  4 files changed, 6 insertions(+), 6 deletions(-)
 
-I privately reviewed earlier versions of this patch, so it's
-unsurprising that I have no comments. Assuming that the DT folks don't
-have any objections to the bindings change, this LGTM.
+Ping!
 
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
+> 
+> diff --git a/drivers/pci/controller/pci-tegra.c b/drivers/pci/controller/pci-tegra.c
+> index 74c109f14ff0..79630885b9c8 100644
+> --- a/drivers/pci/controller/pci-tegra.c
+> +++ b/drivers/pci/controller/pci-tegra.c
+> @@ -1375,7 +1375,7 @@ static int tegra_pcie_phys_get(struct tegra_pcie *pcie)
+>  	struct tegra_pcie_port *port;
+>  	int err;
+>  
+> -	if (!soc->has_gen2 || of_find_property(np, "phys", NULL) != NULL)
+> +	if (!soc->has_gen2 || of_property_present(np, "phys"))
+>  		return tegra_pcie_phys_get_legacy(pcie);
+>  
+>  	list_for_each_entry(port, &pcie->ports, list) {
+> @@ -1944,7 +1944,7 @@ static bool of_regulator_bulk_available(struct device_node *np,
+>  	for (i = 0; i < num_supplies; i++) {
+>  		snprintf(property, 32, "%s-supply", supplies[i].supply);
+>  
+> -		if (of_find_property(np, property, NULL) == NULL)
+> +		if (!of_property_present(np, property))
+>  			return false;
+>  	}
+>  
+> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+> index ae5ad05ddc1d..31de7a29192c 100644
+> --- a/drivers/pci/controller/pcie-mediatek.c
+> +++ b/drivers/pci/controller/pcie-mediatek.c
+> @@ -643,7 +643,7 @@ static int mtk_pcie_setup_irq(struct mtk_pcie_port *port,
+>  		return err;
+>  	}
+>  
+> -	if (of_find_property(dev->of_node, "interrupt-names", NULL))
+> +	if (of_property_present(dev->of_node, "interrupt-names"))
+>  		port->irq = platform_get_irq_byname(pdev, "pcie_irq");
+>  	else
+>  		port->irq = platform_get_irq(pdev, port->slot);
+> diff --git a/drivers/pci/hotplug/rpaphp_core.c b/drivers/pci/hotplug/rpaphp_core.c
+> index 491986197c47..2316de0fd198 100644
+> --- a/drivers/pci/hotplug/rpaphp_core.c
+> +++ b/drivers/pci/hotplug/rpaphp_core.c
+> @@ -278,7 +278,7 @@ int rpaphp_check_drc_props(struct device_node *dn, char *drc_name,
+>  		return -EINVAL;
+>  	}
+>  
+> -	if (of_find_property(dn->parent, "ibm,drc-info", NULL))
+> +	if (of_property_present(dn->parent, "ibm,drc-info"))
+>  		return rpaphp_check_drc_props_v2(dn, drc_name, drc_type,
+>  						be32_to_cpu(*my_index));
+>  	else
+> @@ -440,7 +440,7 @@ int rpaphp_add_slot(struct device_node *dn)
+>  	if (!of_node_name_eq(dn, "pci"))
+>  		return 0;
+>  
+> -	if (of_find_property(dn, "ibm,drc-info", NULL))
+> +	if (of_property_present(dn, "ibm,drc-info"))
+>  		return rpaphp_drc_info_add_slot(dn);
+>  	else
+>  		return rpaphp_drc_add_slot(dn);
+> diff --git a/drivers/pci/of.c b/drivers/pci/of.c
+> index 196834ed44fe..e085f2eca372 100644
+> --- a/drivers/pci/of.c
+> +++ b/drivers/pci/of.c
+> @@ -447,7 +447,7 @@ static int of_irq_parse_pci(const struct pci_dev *pdev, struct of_phandle_args *
+>  		return -ENODEV;
+>  
+>  	/* Local interrupt-map in the device node? Use it! */
+> -	if (of_get_property(dn, "interrupt-map", NULL)) {
+> +	if (of_property_present(dn, "interrupt-map")) {
+>  		pin = pci_swizzle_interrupt_pin(pdev, pin);
+>  		ppnode = dn;
+>  	}
+> -- 
+> 2.39.2
+> 
 
