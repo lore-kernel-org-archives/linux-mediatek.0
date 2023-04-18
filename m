@@ -4,75 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9620CC77B76
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Apr 2023 21:03:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7215EC6FD18
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Apr 2023 21:23:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=2nRqGI+1yDYgoqUbav8I47rzM1qyMus3m+VyAGA7X3Y=; b=S+c9usYDSPEomB
-	veOif2Sh0VZIhQ8FYtFHrfzMEdHFG8NvSRsyCQkQltyZ2OQCfiGOyGnaPsWm/L8yOncsa+CBvAaQC
-	BdnOUFAXTx84yv335+vqVtMkuqmU6b5N4HWxSKJBNkSmyCoVxA8x84cCTVd26XLxs4UVbg1ADOvHU
-	Whou+eC9fdiTGuNIMIr0i8R/HDwDNQsjCbAvI/YE8Osvq0ubfFqlJ3HhtwCpovnvdTMWgHc6Ytv54
-	1ze7odda1UcAC77G85JAzDdje7R8aWHR1aXFzfA3EoeKn6XlrCkedrOBBFMs4Z7QWITIEAxkbZm1T
-	OWrmUt20tD+3vh1tmFYw==;
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RKdLQJ2WfynsAnQi4i43G4jU69vCcdQQMLvbvIaqAHQ=; b=TXqW90hQyHWpYt7nFMnx3IRtQz
+	10y3nKtQUNbTcrF07OJHzBth4fZZFMi4qDjEt3+Fgq8WjEakCDBrAwN3jlBr4iWsdFIOhnYbvC9S3
+	Vkg2tDWLBNC9U6IAxFx7bz5fSNZfDCtQRP3oqiIjxS0++zdLTYsKpZTPbkgYPmQUjS4zJBs0+cEMN
+	0TymnlM9VvOZOO0fCE+lOvuiFWT9iiuhNkUS5Gv/cBb+hySkiXvEwMyqDBq4pR7wm1A0A3zd+hiZQ
+	GsNFhdtVd1a0Jl7yihm71cDs74Z+h8xsZJ/XhpHqQ8wBqJOQFDteE7LpI80M3ya7ssZQSyO2GMF5w
+	Vlfl6J2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1posTo-003LYF-0H;
-	Tue, 18 Apr 2023 21:03:12 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1posnG-003NEE-0O;
+	Tue, 18 Apr 2023 21:23:18 +0000
+Received: from mail-oa1-f42.google.com ([209.85.160.42])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1posTj-003LX9-1k;
-	Tue, 18 Apr 2023 21:03:09 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id DF34F638DD;
-	Tue, 18 Apr 2023 21:03:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 155EEC433EF;
-	Tue, 18 Apr 2023 21:03:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1681851786;
-	bh=wUDQT7v4d9CA1v22EaRJl1H3C9V5twleJc7yXsj1qDA=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=d5Uz3AqaD26Yv+nr9cFaoJzGbvLA3JqeJLNEPT8wSh1eb6X6EvRFOZ1SKuGjyCYpx
-	 eH2HpI20aWdUaPs3W5D/b6IG/WZzl6KwS/RFlYyRmrj2rU8u8rhD2yi+B+D2Asy1aG
-	 QZzpLc0Q40QmOcm3NtyQ0h0gD2NQ5jFUlsl5BFNaodBkqBr1SPZwgBdjChL8Vl6K7q
-	 VzDjHXH+ceP1GDR16/ib2INaiLJASQIi75eyNC3TBuwxzV7EIo15vKo9ljsrRpjMPA
-	 0kVyQPK6wtnK0kOGYyaRSwpiVK5b41MoX34NS0IlllNjSRS+UpeVDKG7EhBSgiUjHy
-	 8RPrv8vYiZQzA==
-Date: Tue, 18 Apr 2023 16:03:04 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Rob Herring <robh@kernel.org>
-Cc: Thierry Reding <thierry.reding@gmail.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Tyrel Datwyler <tyreld@linux.ibm.com>,
-	Michael Ellerman <mpe@ellerman.id.au>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Christophe Leroy <christophe.leroy@csgroup.eu>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	devicetree@vger.kernel.org, linux-tegra@vger.kernel.org,
-	linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linuxppc-dev@lists.ozlabs.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH] PCI: Use of_property_present() for testing DT property
- presence
-Message-ID: <20230418210304.GA158193@bhelgaas>
+	id 1posnC-003NDU-1D;
+	Tue, 18 Apr 2023 21:23:15 +0000
+Received: by mail-oa1-f42.google.com with SMTP id 586e51a60fabf-18777914805so6246615fac.1;
+        Tue, 18 Apr 2023 14:23:13 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1681852993; x=1684444993;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=RKdLQJ2WfynsAnQi4i43G4jU69vCcdQQMLvbvIaqAHQ=;
+        b=FK47f4qr2QnnRYOEfURJq09Hv86QfXF8OR7oIaas5SOADarqm3a+D4pRSlxiz3nlQj
+         hweoW3PmyOA5NQh/+3SCgN9AV7fSl29CQx3+n2dw1Un6IWiZK8ctdRt9fKtVYiE0k0At
+         bawqt7ivEBoZu0O004poYpCNN0UkmQWp1BQn8GDEFcw2pFOXYHf8Dn1d89RHyHIPFnN4
+         CI5w1RFL3n4ZyXFJ0B8HjYQGufar7489y78kyHWXpMhKixh3TsUFJFlah3i5FVWy+Hy2
+         Bwf+af0K6nSMp6KJ0VpkLbE4OstFF9DHWZWFnbH1bU0e18RPKk525BvsQgORl2a23WVG
+         ysBQ==
+X-Gm-Message-State: AAQBX9egG/YlUZT8fk4eW/Uy+ep1Y0pa3ycAV+8ahLyEuD3IpOfhPJ4s
+	NxCBWBBvU59oZbEIRdwHHA==
+X-Google-Smtp-Source: AKy350bdmvWWvs8e3IniLnnX6QWq/ARMeVjy2OYmobsGssJEfW0Lm1T3KwueQwpXlw4Lj4ZiKOdsBA==
+X-Received: by 2002:aca:c256:0:b0:38e:3d5a:abb5 with SMTP id s83-20020acac256000000b0038e3d5aabb5mr114233oif.9.1681852991281;
+        Tue, 18 Apr 2023 14:23:11 -0700 (PDT)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id e190-20020a4a55c7000000b0054542d3219asm3883392oob.11.2023.04.18.14.23.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 18 Apr 2023 14:23:10 -0700 (PDT)
+Received: (nullmailer pid 2358722 invoked by uid 1000);
+	Tue, 18 Apr 2023 21:23:08 -0000
+Date: Tue, 18 Apr 2023 16:23:08 -0500
+From: Rob Herring <robh@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: =?UTF-8?B?77+9ZWNraQ==?= <rafal@milecki.pl>, 
+	linux-arm-kernel@lists.infradead.org, 
+	Claudiu Beznea <claudiu.beznea@microchip.com>, Eugen Hristev <eugen.hristev@collabora.com>, 
+	Nicolas Ferre <nicolas.ferre@microchip.com>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Rob Herring <robh+dt@kernel.org>, 
+	Fabio Estevam <festevam@gmail.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Kevin Hilman <khilman@baylibre.com>, Sai Prakash Ranjan <quic_saipraka@quicinc.com>, 
+	Shubhrajyoti Datta <shubhrajyoti.datta@xilinx.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	linux-arm-msm@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	NXP Linux Team <linux-imx@nxp.com>, Robert Marko <robert.marko@sartura.hr>, 
+	linux-renesas-soc@vger.kernel.org, 
+	Sergio Paracuellos <sergio.paracuellos@gmail.com>, linux-mediatek@lists.infradead.org, 
+	Christophe Roullier <christophe.roullier@foss.st.com>, 
+	Yannick Fertre <yannick.fertre@foss.st.com>, Linus Walleij <linus.walleij@linaro.org>, 
+	Bjorn Andersson <andersson@kernel.org>, Florian Fainelli <f.fainelli@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Julius Werner <jwerner@chromium.org>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
+	Anson Huang <Anson.Huang@nxp.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Magnus Damm <magnus.damm@gmail.com>, 
+	Corentin Labbe <clabbe@baylibre.com>, Jamie Iles <jamie@jamieiles.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Evan Benn <evanbenn@chromium.org>, 
+	Andy Gross <agross@kernel.org>, Wolfram Sang <wsa+renesas@sang-engineering.com>, 
+	linux-amlogic@lists.infradead.org, Sander Vanheule <sander@svanheule.net>, 
+	Justin Chen <justinpopo6@gmail.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+	Viresh Kumar <vireshk@kernel.org>, Wim Van Sebroeck <wim@linux-watchdog.org>, 
+	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, 
+	Srinivas Neeli <srinivas.neeli@xilinx.com>, Shawn Guo <shawnguo@kernel.org>, 
+	Fu Wei <fu.wei@linaro.org>, linux-watchdog@vger.kernel.org, 
+	Konrad Dybcio <konrad.dybcio@linaro.org>, Guenter Roeck <linux@roeck-us.net>
+Subject: Re: [PATCH 1/6] dt-bindings: watchdog: drop duplicated GPIO watchdog
+ bindings
+Message-ID: <168185298846.2358657.13423905325582795303.robh@kernel.org>
+References: <20230415095112.51257-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230310144719.1544443-1-robh@kernel.org>
+In-Reply-To: <20230415095112.51257-1-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230418_140307_680642_6AD50FC8 
-X-CRM114-Status: GOOD (  23.21  )
+X-CRM114-CacheID: sfid-20230418_142314_417647_78E80029 
+X-CRM114-Status: GOOD (  11.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,102 +111,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 10, 2023 at 08:47:19AM -0600, Rob Herring wrote:
-> It is preferred to use typed property access functions (i.e.
-> of_property_read_<type> functions) rather than low-level
-> of_get_property/of_find_property functions for reading properties. As
-> part of this, convert of_get_property/of_find_property calls to the
-> recently added of_property_present() helper when we just want to test
-> for presence of a property and nothing more.
+
+On Sat, 15 Apr 2023 11:51:07 +0200, Krzysztof Kozlowski wrote:
+> Two conversions to DT schema of GPIO watchdog binding happened and came
+> through different trees.  Merge them into one:
+> 1. Combine maintainers,
+> 2. Use more descriptive property descriptions and constraints from
+>    gpio-wdt.yaml,
+> 3. Switch to unevaluatedProperties:false, to allow generic watchdog
+>    properties.
 > 
-> Signed-off-by: Rob Herring <robh@kernel.org>
-
-Applied with AngeloGioacchino's reviewed-by to pci/enumeration for
-v6.4, thanks!
-
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 > ---
->  drivers/pci/controller/pci-tegra.c     | 4 ++--
->  drivers/pci/controller/pcie-mediatek.c | 2 +-
->  drivers/pci/hotplug/rpaphp_core.c      | 4 ++--
->  drivers/pci/of.c                       | 2 +-
->  4 files changed, 6 insertions(+), 6 deletions(-)
+>  .../bindings/watchdog/gpio-wdt.yaml           | 55 -------------------
+>  .../bindings/watchdog/linux,wdt-gpio.yaml     | 17 +++++-
+>  2 files changed, 15 insertions(+), 57 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/watchdog/gpio-wdt.yaml
 > 
-> diff --git a/drivers/pci/controller/pci-tegra.c b/drivers/pci/controller/pci-tegra.c
-> index 74c109f14ff0..79630885b9c8 100644
-> --- a/drivers/pci/controller/pci-tegra.c
-> +++ b/drivers/pci/controller/pci-tegra.c
-> @@ -1375,7 +1375,7 @@ static int tegra_pcie_phys_get(struct tegra_pcie *pcie)
->  	struct tegra_pcie_port *port;
->  	int err;
->  
-> -	if (!soc->has_gen2 || of_find_property(np, "phys", NULL) != NULL)
-> +	if (!soc->has_gen2 || of_property_present(np, "phys"))
->  		return tegra_pcie_phys_get_legacy(pcie);
->  
->  	list_for_each_entry(port, &pcie->ports, list) {
-> @@ -1944,7 +1944,7 @@ static bool of_regulator_bulk_available(struct device_node *np,
->  	for (i = 0; i < num_supplies; i++) {
->  		snprintf(property, 32, "%s-supply", supplies[i].supply);
->  
-> -		if (of_find_property(np, property, NULL) == NULL)
-> +		if (!of_property_present(np, property))
->  			return false;
->  	}
->  
-> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-> index ae5ad05ddc1d..31de7a29192c 100644
-> --- a/drivers/pci/controller/pcie-mediatek.c
-> +++ b/drivers/pci/controller/pcie-mediatek.c
-> @@ -643,7 +643,7 @@ static int mtk_pcie_setup_irq(struct mtk_pcie_port *port,
->  		return err;
->  	}
->  
-> -	if (of_find_property(dev->of_node, "interrupt-names", NULL))
-> +	if (of_property_present(dev->of_node, "interrupt-names"))
->  		port->irq = platform_get_irq_byname(pdev, "pcie_irq");
->  	else
->  		port->irq = platform_get_irq(pdev, port->slot);
-> diff --git a/drivers/pci/hotplug/rpaphp_core.c b/drivers/pci/hotplug/rpaphp_core.c
-> index 491986197c47..2316de0fd198 100644
-> --- a/drivers/pci/hotplug/rpaphp_core.c
-> +++ b/drivers/pci/hotplug/rpaphp_core.c
-> @@ -278,7 +278,7 @@ int rpaphp_check_drc_props(struct device_node *dn, char *drc_name,
->  		return -EINVAL;
->  	}
->  
-> -	if (of_find_property(dn->parent, "ibm,drc-info", NULL))
-> +	if (of_property_present(dn->parent, "ibm,drc-info"))
->  		return rpaphp_check_drc_props_v2(dn, drc_name, drc_type,
->  						be32_to_cpu(*my_index));
->  	else
-> @@ -440,7 +440,7 @@ int rpaphp_add_slot(struct device_node *dn)
->  	if (!of_node_name_eq(dn, "pci"))
->  		return 0;
->  
-> -	if (of_find_property(dn, "ibm,drc-info", NULL))
-> +	if (of_property_present(dn, "ibm,drc-info"))
->  		return rpaphp_drc_info_add_slot(dn);
->  	else
->  		return rpaphp_drc_add_slot(dn);
-> diff --git a/drivers/pci/of.c b/drivers/pci/of.c
-> index 196834ed44fe..e085f2eca372 100644
-> --- a/drivers/pci/of.c
-> +++ b/drivers/pci/of.c
-> @@ -447,7 +447,7 @@ static int of_irq_parse_pci(const struct pci_dev *pdev, struct of_phandle_args *
->  		return -ENODEV;
->  
->  	/* Local interrupt-map in the device node? Use it! */
-> -	if (of_get_property(dn, "interrupt-map", NULL)) {
-> +	if (of_property_present(dn, "interrupt-map")) {
->  		pin = pci_swizzle_interrupt_pin(pdev, pin);
->  		ppnode = dn;
->  	}
-> -- 
-> 2.39.2
-> 
-> 
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+
+Reviewed-by: Rob Herring <robh@kernel.org>
+
 
