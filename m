@@ -4,75 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42C0DC77B73
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Apr 2023 14:30:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F312AC77B73
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Apr 2023 14:38:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=dCm+IgLcW6GU2C5O6111M1l5269Z3huwJVqMgl2CcbE=; b=ZZUb3T6luna7jyf/jo74z/IQnS
-	LWlgpuul+pVU4AhQTmE4NhefhiTFmx6HnAZaaTeVSq0z+GlYHzDJ/4oL3Xi9nx5TMYoUr6Moy9lAh
-	PTqmbXk44gGOvSopDysMWZ7ygASMjRqazcpTG8QoFL1+hc5T4QimGPMM2xiH29NJa6eyJkSunZmsj
-	2/Iy4trqHHoShPpaXgTqLxSuIOrh4MSh8Tlq6K40CWwr0tWIuOYt1GmiHdpJI8e+341nC2BpzOO5e
-	OS+6tpOVa62SL6cF8XBeUmjeqeJlXxZy/uPtS4BUyKjQ8wkSye7rOpea5Dskm0y2mcYB8wRgGjBLR
-	O1alH2Cg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ilxu6Q/jc5aOhDRIt3j6AWcNhm/qlHFPZW+HtjiMVA4=; b=2F40s6uDM8uUxD6wnNGlSk7w3m
+	F4pWiXX0wPDnAu4hqOzr44jZNcAaQL5kgY+mrnJS0XDyh38dlfRkcdMQ+7g2lhIhGbbob6mZp5JOW
+	rRKrzwxUgdT76YJFc557ATkb1Iw2YTMWNyMdoREybwWkPDPh8EbLA48aOWeECJ75B/4lnFfqlHrhd
+	gb6K182FcHEVQ4L5pr7f7jx8YwzQQnekoAyWT+CuROk3NX7ZYydaPI0QIsP+rlIwhcRwLE82s5Bzz
+	g2n7kvquhV2GN6Ov+2AqnBCXPN07mHedQIc8EWqEjglcEy95eNvq4oc0LlB46pdrxZJIY6wlHCKau
+	XUMl5VQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pp8pZ-005g6C-3A;
-	Wed, 19 Apr 2023 14:30:45 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1pp8xB-005hDU-2o;
+	Wed, 19 Apr 2023 14:38:37 +0000
+Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pp8pX-005g2i-2b
+	id 1pp8x8-005hBe-1u
 	for linux-mediatek@lists.infradead.org;
-	Wed, 19 Apr 2023 14:30:45 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-3f09b4a156eso23525075e9.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 19 Apr 2023 07:30:41 -0700 (PDT)
+	Wed, 19 Apr 2023 14:38:36 +0000
+Received: by mail-yw1-x1132.google.com with SMTP id 00721157ae682-54fbee98814so1374997b3.8
+        for <linux-mediatek@lists.infradead.org>; Wed, 19 Apr 2023 07:38:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1681914640; x=1684506640;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=dCm+IgLcW6GU2C5O6111M1l5269Z3huwJVqMgl2CcbE=;
-        b=m3j4mDzif3R3xAC9As18EgfUFgTbUvwaDJKU8oKJW6vg3SW6fF+Oo17L3fBuKD/qQP
-         oda2A9rVjuznyh6BFoX88TPNLolaaz6NcnQ/uvOmwb6G5blao3E9RBtVKCogfd2OY/+W
-         p1okWH5XbYrGrc4pGbaLhWP3Qzl6k7R6SC887U5FM6urhfKfkTGLcWsvZv/1YP7yyhjN
-         2mmeQOIX2LXhc/DryN7vvTuGMRAlk5Sz617pzHO7GeGj/RpaqiXL7jTL8N8+dSlX8S5o
-         Za+8cG4Dk9Xg76MQ162YZe1iIIJtibhqokaEd67in8M21KYmVZ+mKup84z+QbURKa5xA
-         QDPQ==
+        d=chromium.org; s=google; t=1681915109; x=1684507109;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Ilxu6Q/jc5aOhDRIt3j6AWcNhm/qlHFPZW+HtjiMVA4=;
+        b=Y4Dwi9Qjd7z55btxkOVIzDbrweoWBrZC0tXJKFLazw/HJwdo2SrulBS23eyI1GNc0Y
+         vtkcBEBX01QiRtQrv3nvwelmqLNUCSDxDLr9X75fQEaJ3JhNV3WH7C8F6/DXNEhw95cu
+         DXpqLmUHa+yl73oQMUtUrbaY+fHJf9vYv7nLQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681914640; x=1684506640;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=dCm+IgLcW6GU2C5O6111M1l5269Z3huwJVqMgl2CcbE=;
-        b=L3MMnG5YBF30YrTPyBr2JSiSUivQTEpOq74NEZEpu7lyBHwKMVVL4iEE5SJKqSdT0R
-         6sIn2noVC1xWESEGmsm0W7EbcCtR/dMVo4HehBHPE7jH326/7vOmB+a7KbTOvlOapHW7
-         zfP4jEMMPSnFxtgbw+VtnS2wTPacd+VtJVS30WDJgbhAjQ+g2Ol2XhrBef9Iwk1mVXaH
-         zuxQOgwdseHLFTxz0EU88cFlPGG+WP3By98QIx2hq1F3MTMpGnSkcNHmb1K7dxXNIWmm
-         64zA8RCklxsPFQVCI8hC+hzEGVqRqhTnIe+eO9Q6D7NaTYSZMZ5UW10bfmlfqDuu93Zk
-         /uGg==
-X-Gm-Message-State: AAQBX9fypJfsRwImOwlqSrOlpjy2A+ecEI1++x9gWr4oh6/xoD5DU99E
-	IRVdx/FY1+qSbXOGYxvjdZlE/clKcxrpDp5nD+jOKcQA
-X-Google-Smtp-Source: AKy350aP3pcnz64DP3IwwNvE6n2eHRNMSVqTAobG4MYC1T0hN8TvI73wS34lRuvuDbmawZ+KZzIJXQ==
-X-Received: by 2002:adf:ee8f:0:b0:2f9:ae41:5b07 with SMTP id b15-20020adfee8f000000b002f9ae415b07mr4598114wro.44.1681914639987;
-        Wed, 19 Apr 2023 07:30:39 -0700 (PDT)
-Received: from localhost ([102.36.222.112])
-        by smtp.gmail.com with ESMTPSA id o6-20020a5d6846000000b002fa5a73bf9bsm8306794wrw.89.2023.04.19.07.30.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 19 Apr 2023 07:30:39 -0700 (PDT)
-Date: Wed, 19 Apr 2023 17:30:37 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: granquet@baylibre.com
-Cc: linux-mediatek@lists.infradead.org
-Subject: [bug report] drm/mediatek: dp: Audio support for MT8195
-Message-ID: <71a035db-4a1d-415f-813f-9061a0dccdf5@kili.mountain>
+        d=1e100.net; s=20221208; t=1681915109; x=1684507109;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Ilxu6Q/jc5aOhDRIt3j6AWcNhm/qlHFPZW+HtjiMVA4=;
+        b=dfF3KezNWWv/CYJqRFkKT7/cBU2c1ESZYneD9jdKHyOx89VD0crwDBeTBcXc6yD6o/
+         ju2BYnzHP437lGhN8O0SVVZiFPJKeSSWlKlRccxbEUiXqzgy8XfwZINSNg+mMkTPFFly
+         +e/sWL8vbk7mBFOGCvLMs5gK6azo9+07/++q2ZZd8dsPvMc2l8zwJOYbYNlvvCXjoIR4
+         L3HXoPwtZCj1rbTCFsbDq/urRKZqCTKJ2gzS4qAdQK++CW0Rum+omr2rFN3Inab7lOT1
+         7mmabXC7WTx3amLF0Hyy2I+f5AYeEZVrd1OzUocOaq0aU+uNXJNE0EPTVykhQneHaFgn
+         B26g==
+X-Gm-Message-State: AAQBX9fFx6VAXeNt3IGLYDm7jhJwmSgEQN/bpHo1SvraRBj0w3fnaclK
+	LJSdvPN6dldfVh6rheTOqTN9Cl0GS/CZ5d0bqxz5xQ==
+X-Google-Smtp-Source: AKy350Z1eYFXlv8QGfwcJyOtsMfmSR/5IqWu1Wwud8MWJzA2qeEv59OAm+7GQxEV66bFxL4Rp2UTUw==
+X-Received: by 2002:a0d:eb04:0:b0:552:e5d9:1e6e with SMTP id u4-20020a0deb04000000b00552e5d91e6emr3773803ywe.44.1681915107859;
+        Wed, 19 Apr 2023 07:38:27 -0700 (PDT)
+Received: from mail-yb1-f182.google.com (mail-yb1-f182.google.com. [209.85.219.182])
+        by smtp.gmail.com with ESMTPSA id b186-20020a811bc3000000b0054eff15530asm4482772ywb.90.2023.04.19.07.38.26
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 19 Apr 2023 07:38:26 -0700 (PDT)
+Received: by mail-yb1-f182.google.com with SMTP id n17so4799583ybq.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 19 Apr 2023 07:38:26 -0700 (PDT)
+X-Received: by 2002:a25:7687:0:b0:b96:7676:db4a with SMTP id
+ r129-20020a257687000000b00b967676db4amr16246ybc.0.1681915105828; Wed, 19 Apr
+ 2023 07:38:25 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+References: <20230418124953.3170028-1-fshao@chromium.org> <20230418124953.3170028-2-fshao@chromium.org>
+ <ZD8z57MBvcfExJx8@nixie71> <CAC=S1ngBt9DmBobMkQXWhqE1UUxFv2U6iFd42nT=1N7r8+pFUg@mail.gmail.com>
+In-Reply-To: <CAC=S1ngBt9DmBobMkQXWhqE1UUxFv2U6iFd42nT=1N7r8+pFUg@mail.gmail.com>
+From: Doug Anderson <dianders@chromium.org>
+Date: Wed, 19 Apr 2023 07:38:13 -0700
+X-Gmail-Original-Message-ID: <CAD=FV=U_i26a8uJYmqYf6PUgmTUgmEB5L2DkVga0zDX_iDcGQg@mail.gmail.com>
+Message-ID: <CAD=FV=U_i26a8uJYmqYf6PUgmTUgmEB5L2DkVga0zDX_iDcGQg@mail.gmail.com>
+Subject: Re: [PATCH 1/2] dt-bindings: input: goodix: Add powered-in-suspend property
+To: Fei Shao <fshao@chromium.org>
+Cc: Jeff LaBundy <jeff@labundy.com>, Benjamin Tissoires <benjamin.tissoires@redhat.com>, 
+	Rob Herring <robh+dt@kernel.org>, linux-mediatek <linux-mediatek@lists.infradead.org>, 
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, devicetree@vger.kernel.org, 
+	linux-input@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230419_073043_841881_09496814 
-X-CRM114-Status: UNSURE (   5.77  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230419_073834_628429_8CB8E11F 
+X-CRM114-Status: GOOD (  34.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,27 +99,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Guillaume Ranquet,
+Hi,
 
-The patch e71a8ebbe086: "drm/mediatek: dp: Audio support for MT8195"
-from Sep 1, 2022, leads to the following Smatch static checker
-warning:
+On Wed, Apr 19, 2023 at 3:44=E2=80=AFAM Fei Shao <fshao@chromium.org> wrote=
+:
+>
+> Hi Jeff,
+>
+> On Wed, Apr 19, 2023 at 8:21=E2=80=AFAM Jeff LaBundy <jeff@labundy.com> w=
+rote:
+> >
+> > Hi Fei,
+> >
+> > On Tue, Apr 18, 2023 at 08:49:51PM +0800, Fei Shao wrote:
+> > > We observed that on Chromebook device Steelix, if Goodix GT7375P
+> > > touchscreen is powered in suspend (because, for example, it connects =
+to
+> > > an always-on regulator) and with the reset GPIO asserted, it will
+> > > introduce about 14mW power leakage.
+> > >
+> > > This property is used to indicate that the touchscreen is powered in
+> > > suspend. If it's set, the driver will stop asserting the reset GPIO i=
+n
+> > > power-down, and it will do it in power-up instead to ensure that the
+> > > state is always reset after resuming.
+> > >
+> > > Signed-off-by: Fei Shao <fshao@chromium.org>
+> > > ---
+> >
+> > This is an interesting problem; were you able to root-cause why the sil=
+icon
+> > exhibits this behavior? Simply asserting reset should not cause it to d=
+raw
+> > additional power, let alone 14 mW. This almost sounds like a back-power=
+ing
+> > problem during suspend.
+> >
+> There was a fix for this behavior before so I didn't dig into it on
+> the silicon side.
+> I can ask internally and see if we can have Goodix to confirm this is
+> a known HW erratum.
 
-drivers/gpu/drm/mediatek/mtk_dp.c:680 mtk_dp_disable_sdp_aui() warn: odd binop '0x30a8 & 0x3'
-drivers/gpu/drm/mediatek/mtk_dp.c:692 mtk_dp_setup_sdp_aui() warn: odd binop '0x30a8 & 0x3'
+Certainly it doesn't hurt to check, but it's not really that shocking
+to me that asserting reset could cause a power draw on some hardware.
+Reset puts hardware into a default state and that's not necessarily
+low power. I guess ideally hardware would act like it's "off" when
+reset is asserted and then then init to the default state on the edge
+as reset was deasserted, but I not all hardware is designed in an
+ideal way.
 
-drivers/gpu/drm/mediatek/mtk_dp.c
-    676 static void mtk_dp_disable_sdp_aui(struct mtk_dp *mtk_dp)
-    677 {
-    678         /* Disable periodic send */
-    679         mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_30A8 & 0xfffc, 0,
---> 680                            0xff << ((MTK_DP_ENC0_P0_30A8 & 3) * 8));
 
-MTK_DP_ENC0_P0_30A8 is 0x30a8 as the name implies.  So 0x30a8 & 3 is
-always zero.  It's not clear what's happening here.
+> > If this is truly expected behavior, is it sufficient to use the always_=
+on
+> > constraint of the relevant regulator(s) to make this decision as oppose=
+d to
+> > introducing a new property?
+> >
+> That sounds good to me. IIUC, for the existing designs, the boards
+> that would set this property would also exclusively set
+> `regulator-always-on` in their supply, so that should suffice.
+> Let me revise the patch. Thanks!
 
-    681 }
+Yeah, I thought about this too and talked about it in my original
+reply. It doesn't handle the shared-rail case, but then again neither
+does ${SUBJECT} patch. ...then I guess the only argument against it is
+my argument that the regulator could be marked "always-on" in the
+device tree but still turned off by an external entity (PMIC or EC) in
+S3. In theory this should be specified by
+"regulator-state-(standby|mem|disk)", but I could believe it being
+tricky to figure out (what if a parent regulator gets turned off
+automatically but the child isn't explicit?). Specifically, if a
+regulator is always-on but somehow gets shut off in suspend then we
+_do_ want to assert reset (active low) during suspend, otherwise we'll
+have a power leak through the reset GPIO... :-P
 
-regards,
-dan carpenter
+...so I guess I'll continue to assert that I don't think peeking at
+the regulator's "always-on" property is the best way to go. If
+everyone else disagrees with me then I won't stand in the way, but IMO
+the extra property like Fei's patch adds is better.
+
+[1] https://lore.kernel.org/r/CAD=3DFV=3DV8ZN3969RrPu2-zZYoEE=3DLDxpi8K_E8E=
+ziiDpGOSsq1w@mail.gmail.com
 
