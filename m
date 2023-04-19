@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D741BC6FD18
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Apr 2023 07:50:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB910C77B73
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Apr 2023 07:50:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IHhBOfUYeT77YquBREt22vcfy911MiykLSdiMpD9Yo0=; b=In949EsX2BVk0FVKsVsY55io1Q
-	vCOgZ2Nlz9UxPtyqk9VFx4+LF03YNCq8njPpFgH/i51YpEzAf2bJB3ko6jcyP/BVQND5EB9hAdclV
-	qbCjEGtoTMzL/iDqH4adCLtTUNyP5W06MZqrorfncl42sMJAMCYBo5svo/6QqQ8V5/nVjVO0PioPX
-	xPnkJtMnL58pOqbRRfaxE72TCErK6QcfelpDu32GupD5s6qjudMQf/IA7MEfmhjWQ86B7GX4IdQBG
-	F8SI8ga5KSnSbna3uOeOdFLv3RbslXmGjtU/7749AU6lgnwMaP8O4rYERbS/pP9NDn+oDaVrRkMpb
-	jTefH9LA==;
+	bh=kV0J1/FM+1iF9G81TOXk0JsrKpONZFmg5K8V55ImZCc=; b=UJH9SuYMBL06/AqY67MdnuDnTf
+	FPvsUOvOsGhhJNkoj+7ME/cGd8H/2t2wxwr05Y2qfoH7XIDiLQ53j5zh2DPJjmKC1EQCNnFJ/smjq
+	wLKUc8cO1/1SpNstvwp+iK2XX695GqLBG7LIOzlncQ660QEChC+dRHNSfir/pnt864xDwFsLDIS6j
+	E7AWPL8+BQsytIXv0ZgdWZnZNfBIvECTHfT7pRyUAhA0AojEZ8uoBuP1MWsdnca5ZXXv1v66MQgUt
+	tZNUs4s9kD+Tp7gOfvuJRuCyiS9+F1yt8RlJ1k5ZFGuJF4IVf0lLhKAuShRW+9N78kbwcf32xe6eJ
+	XGNwprPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pp2Zj-004TKq-2C;
-	Wed, 19 Apr 2023 07:49:59 +0000
+	id 1pp2a7-004TaU-0A;
+	Wed, 19 Apr 2023 07:50:23 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pp2Zg-004TIU-2Q;
-	Wed, 19 Apr 2023 07:49:58 +0000
-X-UUID: c403ca8cde8611ed8687db9d93187ff1-20230419
+	id 1pp2a2-004TXy-2X;
+	Wed, 19 Apr 2023 07:50:20 +0000
+X-UUID: d19e1f12de8611ed8687db9d93187ff1-20230419
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=IHhBOfUYeT77YquBREt22vcfy911MiykLSdiMpD9Yo0=;
-	b=rFcmb5xMxej7NRtBhk/SzLJTLmt+c2Cxowdk2S98KjpUHk/hl3u3dgms1J8fArLLXPBArfSgMsIVTmKL8Z/T6KtjEdQ3T2dnc1q2RUzc74U9qW+wGBlDGYxDqGE4PJJ87Q2u3ENhbzzqcwikCgY1EjGD2zsBserZ7wyITvAqafk=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=kV0J1/FM+1iF9G81TOXk0JsrKpONZFmg5K8V55ImZCc=;
+	b=QQSw9JL9NdPf0Y9tBuMgpDH3KDXX1M/N/0PqGsr9KXEEx1oAzUzfyau+zHDnGdQhJtIIRWIEIZFa3HsOorfl1ZYxNhiU8waXPyS89d/pTM2sVbpY1PW9dAk5gfEmUmexNjYvWQpgXARTxqmbtF42nKMHV4/V8NbD42uwgyNXdHg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:fbd939b5-0158-42c4-8442-d6773a3211e7,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:120426c,CLOUDID:561ed5a1-8fcb-430b-954a-ba3f00fa94a5,B
+X-CID-O-INFO: VERSION:1.1.22,REQID:7714abe9-6a3f-4360-9267-e6ebc1480f08,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:120426c,CLOUDID:59469084-cd9c-45f5-8134-710979e3df0e,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-UUID: c403ca8cde8611ed8687db9d93187ff1-20230419
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: d19e1f12de8611ed8687db9d93187ff1-20230419
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <walter.chang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1997371166; Wed, 19 Apr 2023 00:49:51 -0700
+	with ESMTP id 1521429239; Wed, 19 Apr 2023 00:50:14 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Wed, 19 Apr 2023 15:49:48 +0800
+ 15.2.1118.25; Wed, 19 Apr 2023 15:49:37 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Wed, 19 Apr 2023 15:49:48 +0800
+ 15.2.1118.25 via Frontend Transport; Wed, 19 Apr 2023 15:49:37 +0800
 From: <walter.chang@mediatek.com>
 To: Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner
 	<tglx@linutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>,
@@ -61,17 +61,17 @@ CC: <wsd_upstream@mediatek.com>, <stanley.chu@mediatek.com>,
 	<walter.chang@mediatek.com>, Chun-Hung Wu <chun-hung.wu@mediatek.com>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH linux-next v3 4/4] clocksource/drivers/timer-mediatek: Make timer-mediatek become loadable module
-Date: Wed, 19 Apr 2023 15:49:08 +0800
-Message-ID: <20230419074910.10809-5-walter.chang@mediatek.com>
+Subject: [PATCH linux-next v3 1/4] time/sched_clock: Export sched_clock_register()
+Date: Wed, 19 Apr 2023 15:49:05 +0800
+Message-ID: <20230419074910.10809-2-walter.chang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230419074910.10809-1-walter.chang@mediatek.com>
 References: <20230419074910.10809-1-walter.chang@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230419_004956_800919_EEA2233B 
-X-CRM114-Status: GOOD (  15.96  )
+X-CRM114-CacheID: sfid-20230419_005018_841134_E878A588 
+X-CRM114-Status: GOOD (  11.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,86 +88,38 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Chun-Hung Wu <chun-hung.wu@mediatek.com>
 
-Make the timer-mediatek driver which can register
-an always-on timer as tick_broadcast_device on
-MediaTek SoCs become loadable module in GKI.
+clocksource driver may use sched_clock_register()
+to resigter itself as a sched_clock source.
+Export it to support building such driver
+as module, like timer-mediatek.c
 
-Tested-by: Walter Chang <walter.chang@mediatek.com>
 Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
 ---
- drivers/clocksource/Kconfig          |  2 +-
- drivers/clocksource/timer-mediatek.c | 39 ++++++++++++++++++++++++++++
- 2 files changed, 40 insertions(+), 1 deletion(-)
+ kernel/time/sched_clock.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/clocksource/Kconfig b/drivers/clocksource/Kconfig
-index 526382dc7482..a7413ad7b6ad 100644
---- a/drivers/clocksource/Kconfig
-+++ b/drivers/clocksource/Kconfig
-@@ -472,7 +472,7 @@ config SYS_SUPPORTS_SH_CMT
- 	bool
- 
- config MTK_TIMER
--	bool "Mediatek timer driver" if COMPILE_TEST
-+	tristate "Mediatek timer driver"
- 	depends on HAS_IOMEM
- 	select TIMER_OF
- 	select CLKSRC_MMIO
-diff --git a/drivers/clocksource/timer-mediatek.c b/drivers/clocksource/timer-mediatek.c
-index 7bcb4a3f26fb..3448848682c0 100644
---- a/drivers/clocksource/timer-mediatek.c
-+++ b/drivers/clocksource/timer-mediatek.c
-@@ -13,6 +13,9 @@
- #include <linux/clocksource.h>
- #include <linux/interrupt.h>
- #include <linux/irqreturn.h>
-+#include <linux/module.h>
-+#include <linux/of_device.h>
-+#include <linux/platform_device.h>
- #include <linux/sched_clock.h>
- #include <linux/slab.h>
- #include "timer-of.h"
-@@ -337,5 +340,41 @@ static int __init mtk_gpt_init(struct device_node *node)
- 
- 	return 0;
+diff --git a/kernel/time/sched_clock.c b/kernel/time/sched_clock.c
+index 8464c5acc913..8e49e87d1221 100644
+--- a/kernel/time/sched_clock.c
++++ b/kernel/time/sched_clock.c
+@@ -150,8 +150,7 @@ static enum hrtimer_restart sched_clock_poll(struct hrtimer *hrt)
+ 	return HRTIMER_RESTART;
  }
-+
-+#ifdef MODULE
-+static int mtk_timer_probe(struct platform_device *pdev)
-+{
-+	int (*timer_init)(struct device_node *node);
-+	struct device_node *np = pdev->dev.of_node;
-+
-+	timer_init = of_device_get_match_data(&pdev->dev);
-+	return timer_init(np);
-+}
-+
-+static const struct of_device_id mtk_timer_match_table[] = {
-+	{
-+		.compatible = "mediatek,mt6577-timer",
-+		.data = mtk_gpt_init,
-+	},
-+	{
-+		.compatible = "mediatek,mt6765-timer",
-+		.data = mtk_syst_init,
-+	},
-+	{}
-+};
-+
-+static struct platform_driver mtk_timer_driver = {
-+	.probe = mtk_timer_probe,
-+	.driver = {
-+		.name = "mtk-timer",
-+		.of_match_table = mtk_timer_match_table,
-+	},
-+};
-+module_platform_driver(mtk_timer_driver);
-+
-+MODULE_DESCRIPTION("MediaTek Module Timer driver");
-+MODULE_LICENSE("GPL v2");
-+#else
- TIMER_OF_DECLARE(mtk_mt6577, "mediatek,mt6577-timer", mtk_gpt_init);
- TIMER_OF_DECLARE(mtk_mt6765, "mediatek,mt6765-timer", mtk_syst_init);
-+#endif
+ 
+-void __init
+-sched_clock_register(u64 (*read)(void), int bits, unsigned long rate)
++void sched_clock_register(u64 (*read)(void), int bits, unsigned long rate)
+ {
+ 	u64 res, wrap, new_mask, new_epoch, cyc, ns;
+ 	u32 new_mult, new_shift;
+@@ -223,6 +222,7 @@ sched_clock_register(u64 (*read)(void), int bits, unsigned long rate)
+ 
+ 	pr_debug("Registered %pS as sched_clock source\n", read);
+ }
++EXPORT_SYMBOL_GPL(sched_clock_register);
+ 
+ void __init generic_sched_clock_init(void)
+ {
 -- 
 2.18.0
 
