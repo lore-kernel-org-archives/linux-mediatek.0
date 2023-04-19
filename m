@@ -4,87 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CC3FC6FD18
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Apr 2023 10:45:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE1D3C77B7C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Apr 2023 12:21:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZC1F9AUB3Liv54B7ZdgG3WiGq9lyqgr8Df3/jIkfoOU=; b=r0OAhymVRCcayox/ko195nrr+X
-	x5llQ29X/0kK9zxn4ElHw2M3viL1VAH2g5A2LwmvbY7/8wS3u565Qxq3CbTNWJMFNx4NcPN2VXfk4
-	Db/x3WEcHO26HuNe3vrVmM2iZdfmIpqJriq5rFmgrvDpxLcNzwoOGV/p170TPgNIzRnwo9ntiBJPc
-	CUJYfgAdyXqYxGTqa2KpD62jCzSQJF302/9kS7WOcxAnU54Wsuzl2b7QyYdDcJMxxctHXjRHKFUsW
-	JUmz+X+Sur72BfYi6zCRfFgPgPGgeoULePowE9RtNfQMy5vkN8yyYEV/eb3ddN/YUJqLA27rH5iIr
-	PT5LVBwg==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ikj7vNEeHwYqr2Sk7V2uWjly1AUS+w1dHEa9aKVsIKM=; b=2kIlqLTAGmK9/gCXJwcuVEsnMf
+	QR8/yaTwoCo+7hyEWQgX9FzHYMOShUwZ1qbHQrzXf5a5Y6NIre8Kasf+IC9Hj9mFWiE5XYl23M6UZ
+	f6xlA2Q3/kXQ0Sv/xIv52JzwYT6MPJfOkAp13UrSk9teRSpqTKOBwtrT1FguNuBkXbC7ryoR1KQHp
+	ALhDInQargAJu/jeDye1MVh/NWCDF9tEYUNoKKn+VF9JDuT31M7VrZjcz/3fwL0EuLNcACt7feiz+
+	6Ov8cDeImYcRHZSM+aYiXC7JI32o/kccRia1M6Us+HrNJQiS+Eoj4nHa9hdrd7D7yIAm75OAt2BFl
+	Qexejrgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pp5J2-0054qY-1W;
-	Wed, 19 Apr 2023 10:44:56 +0000
-Received: from mail-il1-x12c.google.com ([2607:f8b0:4864:20::12c])
+	id 1pp6om-005Kqr-1W;
+	Wed, 19 Apr 2023 12:21:48 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pp5Iz-0054pE-12
-	for linux-mediatek@lists.infradead.org;
-	Wed, 19 Apr 2023 10:44:54 +0000
-Received: by mail-il1-x12c.google.com with SMTP id e9e14a558f8ab-32b437f4607so5165025ab.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 19 Apr 2023 03:44:50 -0700 (PDT)
+	id 1pp6od-005KiP-2y;
+	Wed, 19 Apr 2023 12:21:44 +0000
+Received: by mail-ej1-x630.google.com with SMTP id kt6so42977798ejb.0;
+        Wed, 19 Apr 2023 05:21:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1681901090; x=1684493090;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ZC1F9AUB3Liv54B7ZdgG3WiGq9lyqgr8Df3/jIkfoOU=;
-        b=DkzPBN9I5LHhIsDlFpY1hThuwHGBVF2rLOb3SSNH5om9lIwYi8QR+lhZK5wDHD35QZ
-         h/bo7dbB7insCGHEs4pfMu+B7EMTB/xVkL38LttW7JheuaN3uHwAdZIW0bwxJWByL/l6
-         iFYZyWdf7TeMzDDbSEXN6G5dk3QbKIJQi9elg=
+        d=gmail.com; s=20221208; t=1681906895; x=1684498895;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=ikj7vNEeHwYqr2Sk7V2uWjly1AUS+w1dHEa9aKVsIKM=;
+        b=J0WEgBeH3AuzjTRnY6ZMAG+N2rXXBrZyAUVHDGkCg8XMJg3kPYmEZgrl8woiQWbSKh
+         nmMR2xLDudD6Js9Xv6FiFugNVUnAoes4bVBkYwLAWJlEoEQJ9MTUyBrigihKJk7Q5OF6
+         pW/Z6pWzYoxgWsGgZpsJTrS068RSJ1yHtPSWLICYYIJ7V5Ozov5wb5+cH8ahPC6mZUab
+         uMFxC6RmGEMq6Gqp+fl59jLcNW0UXM7N4Oynkam5frnH3Ol5hdwUXX80rLHKMrWE+ff+
+         b6oTsATSAPpAsMuOCtjhUX7M1+/Oiwaa/HvdD3/+nRsnsuXzR5VjtbjdKC1Vr1JNiEuO
+         lqlg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681901090; x=1684493090;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ZC1F9AUB3Liv54B7ZdgG3WiGq9lyqgr8Df3/jIkfoOU=;
-        b=F8H2w+geB0hpkOv1gQi6Qwn/f0ckhKOH6Tq6wIlrfbr3JH0WJJI/17/6+9NewH4w8a
-         GAkFoIVGMeP+NGzz2zjXR1OqB1ciG+wfl+0uOfOADsj0TecYxNZ4juXaZjQsLYFJhhbE
-         Xzh+3gsVe1n5Cc54ZlY2O1gCUljq+01LvHbfpUjpKWnrhC1AG3Ft7NxkryjeYxQERtRG
-         geT+TKmIQyVRgzQzY3xHr9O9sU7PynXH1CoOF1kFKGgRed1K0qgVmBtlaxqMyDBazb2p
-         WrvlbWHM9g77g14R31DVHQs9he91xSqgW7CGPpmSfy4uX8DQtnLaWRYfmn0H9A9e2I9s
-         OU1A==
-X-Gm-Message-State: AAQBX9esU3G1OKzTLo5O7ltMsF3gr5HZZip7wORAK55Wo/UBotRsn/Iw
-	Z5WYWHlXu/cDKYxXZKMcIw+G7UQfmmqLd3vVZPj/3ZwH
-X-Google-Smtp-Source: AKy350YhPLU/v8Aan9+VDXBuKE3HAPDQtGUFMenKq/fBz1hh1EkbnMOOqwDazSACiokpa44UJh/HlA==
-X-Received: by 2002:a92:cb52:0:b0:32b:68e9:9ea7 with SMTP id f18-20020a92cb52000000b0032b68e99ea7mr3429778ilq.11.1681901090058;
-        Wed, 19 Apr 2023 03:44:50 -0700 (PDT)
-Received: from mail-il1-f173.google.com (mail-il1-f173.google.com. [209.85.166.173])
-        by smtp.gmail.com with ESMTPSA id p71-20020a02294a000000b0040f6f565d5dsm4580533jap.97.2023.04.19.03.44.48
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 19 Apr 2023 03:44:48 -0700 (PDT)
-Received: by mail-il1-f173.google.com with SMTP id e9e14a558f8ab-32ac0743030so27417665ab.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 19 Apr 2023 03:44:48 -0700 (PDT)
-X-Received: by 2002:a92:ced0:0:b0:329:4c5e:15d8 with SMTP id
- z16-20020a92ced0000000b003294c5e15d8mr10421971ilq.2.1681901088205; Wed, 19
- Apr 2023 03:44:48 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1681906895; x=1684498895;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ikj7vNEeHwYqr2Sk7V2uWjly1AUS+w1dHEa9aKVsIKM=;
+        b=BfhKoyxX0ZL9dQ/0W4XJDUnh6WDqw2vRT+xEkAh8520wHjgEtG8JzFuFWZ/+hJxLW4
+         RJmCvdDpNbTtFq1/pdLTyrSHlV7lq8NDR70W1kpAtMkQf7WS1ajVfxePtwTWYsKwD313
+         +Cvd315atX526zmBdxSvgXy4ehP03DYu3VAqMk9X6den7XiKHye4bIhugI7KPEwnCJqR
+         jnvynCkEOLAtBN4r5Vk6SNiurvB2GaMj9VuzwveD+ibAlB7pajeXvxoSjlwFRGEOwR9h
+         MLR3x+/nvcyA03TI+ctKWioujnHqC3CMePxvpEyEcV57f/9QSASVtB3JXtYiq6J+RlfG
+         fzwQ==
+X-Gm-Message-State: AAQBX9d2B5bs4Z6B3WPKAZc7c0pxkCKLY0wHXYg2BBw70+CEYQPsbfMH
+	yBWgVugcIHno7HQ3drzJIB41ropruq4=
+X-Google-Smtp-Source: AKy350bBzkE95kos0q33LINUgkdtibn6mLbBpYxYOmoVIVcQa18X2jgahr1RB6ARihB/OGEiyt7aTw==
+X-Received: by 2002:a17:906:dc1:b0:94a:474a:4dd5 with SMTP id p1-20020a1709060dc100b0094a474a4dd5mr14037623eji.9.1681906895099;
+        Wed, 19 Apr 2023 05:21:35 -0700 (PDT)
+Received: from localhost (p200300e41f053a00f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f05:3a00:f22f:74ff:fe1f:3a53])
+        by smtp.gmail.com with ESMTPSA id mm14-20020a170906cc4e00b0094f507aa0e9sm5208323ejb.19.2023.04.19.05.21.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 19 Apr 2023 05:21:34 -0700 (PDT)
+From: Thierry Reding <thierry.reding@gmail.com>
+To: Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Guillaume Ranquet <granquet@baylibre.com>,
+	linux-mediatek@lists.infradead.org,
+	linux-phy@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	Jonathan Hunter <jonathanh@nvidia.com>
+Subject: [PATCH] phy: mediatek: Avoid floating point constants
+Date: Wed, 19 Apr 2023 14:21:31 +0200
+Message-Id: <20230419122131.2167122-1-thierry.reding@gmail.com>
+X-Mailer: git-send-email 2.40.0
 MIME-Version: 1.0
-References: <20230418124953.3170028-1-fshao@chromium.org> <20230418124953.3170028-2-fshao@chromium.org>
- <ZD8z57MBvcfExJx8@nixie71>
-In-Reply-To: <ZD8z57MBvcfExJx8@nixie71>
-From: Fei Shao <fshao@chromium.org>
-Date: Wed, 19 Apr 2023 18:44:11 +0800
-X-Gmail-Original-Message-ID: <CAC=S1ngBt9DmBobMkQXWhqE1UUxFv2U6iFd42nT=1N7r8+pFUg@mail.gmail.com>
-Message-ID: <CAC=S1ngBt9DmBobMkQXWhqE1UUxFv2U6iFd42nT=1N7r8+pFUg@mail.gmail.com>
-Subject: Re: [PATCH 1/2] dt-bindings: input: goodix: Add powered-in-suspend property
-To: Jeff LaBundy <jeff@labundy.com>
-Cc: Benjamin Tissoires <benjamin.tissoires@redhat.com>, Douglas Anderson <dianders@chromium.org>, 
-	Rob Herring <robh+dt@kernel.org>, linux-mediatek <linux-mediatek@lists.infradead.org>, 
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, devicetree@vger.kernel.org, 
-	linux-input@vger.kernel.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230419_034453_382689_9BBE1408 
-X-CRM114-Status: GOOD (  30.79  )
+X-CRM114-CacheID: sfid-20230419_052139_964080_8A9668C3 
+X-CRM114-Status: GOOD (  13.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,80 +96,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Jeff,
+From: Thierry Reding <treding@nvidia.com>
 
-On Wed, Apr 19, 2023 at 8:21=E2=80=AFAM Jeff LaBundy <jeff@labundy.com> wro=
-te:
->
-> Hi Fei,
->
-> On Tue, Apr 18, 2023 at 08:49:51PM +0800, Fei Shao wrote:
-> > We observed that on Chromebook device Steelix, if Goodix GT7375P
-> > touchscreen is powered in suspend (because, for example, it connects to
-> > an always-on regulator) and with the reset GPIO asserted, it will
-> > introduce about 14mW power leakage.
-> >
-> > This property is used to indicate that the touchscreen is powered in
-> > suspend. If it's set, the driver will stop asserting the reset GPIO in
-> > power-down, and it will do it in power-up instead to ensure that the
-> > state is always reset after resuming.
-> >
-> > Signed-off-by: Fei Shao <fshao@chromium.org>
-> > ---
->
-> This is an interesting problem; were you able to root-cause why the silic=
-on
-> exhibits this behavior? Simply asserting reset should not cause it to dra=
-w
-> additional power, let alone 14 mW. This almost sounds like a back-powerin=
-g
-> problem during suspend.
->
-There was a fix for this behavior before so I didn't dig into it on
-the silicon side.
-I can ask internally and see if we can have Goodix to confirm this is
-a known HW erratum.
+When building with old versions of GCC (6.3 in this case), the compiler
+stumbles over the floating point constants in this driver:
 
-> If this is truly expected behavior, is it sufficient to use the always_on
-> constraint of the relevant regulator(s) to make this decision as opposed =
-to
-> introducing a new property?
->
-That sounds good to me. IIUC, for the existing designs, the boards
-that would set this property would also exclusively set
-`regulator-always-on` in their supply, so that should suffice.
-Let me revise the patch. Thanks!
+	drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c: In function ‘mtk_hdmi_pll_prepare’:
+	drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:331:23: error: ‘-mgeneral-regs-only’ is incompatible with floating-point code
+	  } else if (pixel_clk >= 74.175 * MEGA && pixel_clk <= 300 * MEGA) {
 
-Fei
-> >
-> >  Documentation/devicetree/bindings/input/goodix,gt7375p.yaml | 6 ++++++
-> >  1 file changed, 6 insertions(+)
-> >
-> > diff --git a/Documentation/devicetree/bindings/input/goodix,gt7375p.yam=
-l b/Documentation/devicetree/bindings/input/goodix,gt7375p.yaml
-> > index ce18d7dadae2..942acb286d77 100644
-> > --- a/Documentation/devicetree/bindings/input/goodix,gt7375p.yaml
-> > +++ b/Documentation/devicetree/bindings/input/goodix,gt7375p.yaml
-> > @@ -43,6 +43,12 @@ properties:
-> >        itself as long as it allows the main board to make signals compa=
-tible
-> >        with what the touchscreen is expecting for its IO rails.
-> >
-> > +  powered-in-suspend:
-> > +    description:
-> > +      This indicates that the touchscreen is powered in suspend, so th=
-e driver
-> > +      will not assert the reset GPIO in power-down to prevent power le=
-akage.
-> > +    type: boolean
-> > +
-> >  required:
-> >    - compatible
-> >    - reg
-> > --
-> > 2.40.0.634.g4ca3ef3211-goog
-> >
->
-> Kind regards,
-> Jeff LaBundy
+	drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:361:12: error: ‘-mgeneral-regs-only’ is incompatible with floating-point code
+	 static int mtk_hdmi_pll_prepare(struct clk_hw *hw)
+		    ^~~~~~~~~~~~~~~~~~~~
+	drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:361:12: error: ‘-mgeneral-regs-only’ is incompatible with floating-point code
+
+Fix this by switching to the KILO macro instead and multiplying the
+constants by 1000 to get rid of the floating point.
+
+Fixes: 45810d486bb4 ("phy: mediatek: add support for phy-mtk-hdmi-mt8195")
+Reported-by: Jonathan Hunter <jonathanh@nvidia.com>
+Signed-off-by: Thierry Reding <treding@nvidia.com>
+---
+ drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
+index abfc077fb0a8..b10af26cad2f 100644
+--- a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
++++ b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
+@@ -239,9 +239,9 @@ static int mtk_hdmi_pll_calc(struct mtk_hdmi_phy *hdmi_phy, struct clk_hw *hw,
+ 		txposdiv = 8;
+ 	else if (tmds_clk >= 54 * MEGA && tmds_clk < 148.35 * MEGA)
+ 		txposdiv = 4;
+-	else if (tmds_clk >= 148.35 * MEGA && tmds_clk < 296.7 * MEGA)
++	else if (tmds_clk >= 148350 * KILO && tmds_clk < 296700 * KILO)
+ 		txposdiv = 2;
+-	else if (tmds_clk >= 296.7 * MEGA && tmds_clk <= 594 * MEGA)
++	else if (tmds_clk >= 296700 * KILO && tmds_clk <= 594 * MEGA)
+ 		txposdiv = 1;
+ 	else
+ 		return -EINVAL;
+@@ -328,12 +328,12 @@ static int mtk_hdmi_pll_drv_setting(struct clk_hw *hw)
+ 		clk_channel_bias = 0x34; /* 20mA */
+ 		impedance_en = 0xf;
+ 		impedance = 0x36; /* 100ohm */
+-	} else if (pixel_clk >= 74.175 * MEGA && pixel_clk <= 300 * MEGA) {
++	} else if (pixel_clk >= 74175 * KILO && pixel_clk <= 300 * MEGA) {
+ 		data_channel_bias = 0x34; /* 20mA */
+ 		clk_channel_bias = 0x2c; /* 16mA */
+ 		impedance_en = 0xf;
+ 		impedance = 0x36; /* 100ohm */
+-	} else if (pixel_clk >= 27 * MEGA && pixel_clk < 74.175 * MEGA) {
++	} else if (pixel_clk >= 27 * MEGA && pixel_clk < 74175 * KILO) {
+ 		data_channel_bias = 0x14; /* 10mA */
+ 		clk_channel_bias = 0x14; /* 10mA */
+ 		impedance_en = 0x0;
+-- 
+2.40.0
+
 
