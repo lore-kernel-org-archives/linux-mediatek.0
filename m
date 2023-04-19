@@ -4,93 +4,133 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39591C77B75
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Apr 2023 15:10:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 664E3C6FD18
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Apr 2023 15:19:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	In-Reply-To:Content-Transfer-Encoding:Content-Type:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9xYRx4lxSwrTz8KomOP3X7PYWUvothv5g/ZoMajkQIs=; b=pwXucDshV0Vbz/6B/ERc97rOUj
-	0Yj+VHpmFXzEsytnOM11tcmUbvmFndOTp4dVbuVhbAQ9jPZoD5XVKZ6QHfMBCTr9owb8VcMlxHJNQ
-	wye2UvrQq9jZi7PmsAq+Bljxab5OO+0jJagoAeRFV8otIssw4YUSlXHx8tkk4eDBjYAd4/UUMwW8V
-	D/aoEgHz2kGPgDY4TtSTDXelPtiS4t305jlzpOV3RT7d5PXd3Uh3dh2LibwUpTV2oFGlu2X6OdKKB
-	d6snUT44dWkLoU29ZsTTOg0pQfNn8MVWZLtFUfY+yp2GPtwuhaEeUw2lhidzRR2Q0lS0gqKRRRSWt
-	9r2KjRWw==;
+	bh=IIIyPCFGCyq1xAaTYAeFtZuSQc4ahvT962Tvey5+jQ4=; b=2OIH7cTsW3qFlMEP9PxE0TNLxj
+	pYNlmuZ2q88cPjSttVHAsEzfS7vw/NS/9uamVyZ8O2ssT9GB0EEe9fGoz7Fm2AqcDIB9AtIrQO1Bj
+	7F9coqSa3wFl84ps1MaeLG7FN8SWalk712GjrynqaxmrUeeGs4+qNJb+Huc3dflTl7qjPXIM1+PY7
+	YUGYrCzjukFR0+VpXa6182lhaliSLPCR9JagqLduZdW1kcOsa0f+JedG8ZbA7kGUX84VK/BIAQ24r
+	qp88uJWFV3EoBHLGkaVZR2WfZ/KSG3PHKSHFXs/UIjy9XTnR6t2bW6TylcsoBK/Vdx9WksiXr4UWg
+	xaAbbpvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pp9RU-005kSB-0H;
-	Wed, 19 Apr 2023 15:09:56 +0000
-Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
+	id 1pp9a9-005lUF-01;
+	Wed, 19 Apr 2023 15:18:53 +0000
+Received: from mail-dm6nam11on20630.outbound.protection.outlook.com ([2a01:111:f400:7eaa::630] helo=NAM11-DM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pp9RQ-005kQu-1z
+	id 1pp9a5-005lTX-2r
 	for linux-mediatek@lists.infradead.org;
-	Wed, 19 Apr 2023 15:09:54 +0000
-Received: by mail-pg1-x52e.google.com with SMTP id 41be03b00d2f7-52160f75920so229584a12.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 19 Apr 2023 08:09:50 -0700 (PDT)
+	Wed, 19 Apr 2023 15:18:51 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=cxZ9ybCwqAIFuZUE6hkm51YqIF8lhRSU8aICI2NJFfFqQdGfOd/dsOSqGXkWyLq9YaISWzvfI+242tJXAh8wFNtpZ8Bt+ZD+N+gOvgB5KO2hmIoes9oLA3f1Mv7ts7tPZctmA9ztBhF63S9iWx1PDZUUwjQcGcDRgZrpm8UF/YT0aVnnmO6Yniaig8IyQbM9LQORa/3K3ikMwNeIs59lyZx4rmebiNyp8wPw29LanFIDe/eZqxVbiESY2KanHZFdm4JvnbciHjiB6Z88bH1UqrVs9FqhDOtAAbTWmZ64yMJ+vBNvaU7r5XRPRur5bxNVJaxnelptwwh2LUyzHzDZqw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=IIIyPCFGCyq1xAaTYAeFtZuSQc4ahvT962Tvey5+jQ4=;
+ b=kaA1TPRo+bjgoMOXxYGFoxnGm+e0Qh+HhPgdhahSIqWejoaoxWOhYTsVORGjNMAQD/taqN6p/PX5Eex14WPSXcnWeNiFU+mOc0ttJWWUBTl/gIP0CHe1cTalqSKEj1kgB3vrs1l31mctiVD0rKGMfN8+qgeQ9rnK7O+nlkzyNXo+A5uPF8MF3di5jwQnK2WmB9c9woMbrqRQnIHMcKHr8Ftr6OyZcaIU3TpSL0ePuxlQDEvCgKgDOtqBD2LuhXmAVexfYfZEPjm3yDzt3yxn9y/rO6IOOFA7BaV69jjpFfzTtoB6slbNtfaHWyC3B0SZVJbvLHcIlDdk8zc+53ma8w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=labundy.com; dmarc=pass action=none header.from=labundy.com;
+ dkim=pass header.d=labundy.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1681916990; x=1684508990;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=9xYRx4lxSwrTz8KomOP3X7PYWUvothv5g/ZoMajkQIs=;
-        b=sXPBCslnv6R9uVZX7Gq3xtSsKpgzb0/01i98xXOZQx+KbP4KqVddhPYdcEVIH92o4/
-         pmZSEaoq7K27ohwgJ+wenSjn0dMQerb+uCo2ZucB/ttrkOH+5nH3PbagzZ3PTu4MLinA
-         TuKX/J6WZKuecdQ+SbtWPDBxIT9YSQFdk9EpXU82KxmWB7eepY+FOWYRQZw89n6lAOaK
-         XrVRagqX0pIaFphG3FrY/Kf+S15ViKgyd1zdDEgbm2ZGDCRg5ygwZkCfIxnA/TylLYqo
-         kupYb4zacsCkJMBL3td7FdPMMyd0LNOaVeCVWWXhum1Qx2Kzg3cACS2tSOJI8K/kMrPz
-         X4Yg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681916990; x=1684508990;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=9xYRx4lxSwrTz8KomOP3X7PYWUvothv5g/ZoMajkQIs=;
-        b=FTvkajl1UrlPCu1irXJJtTufoorFMqrEnTZfXzvWk1lsnDXhfrLSaGx02O2fSEFpEY
-         mdFVJ6QiWkSAGVI4b0KQ+YFOG/c9hHsC2lIzcDkASd/BiIs3qepu5fHllTib0UhjzaIa
-         a0tCh578DLYgN55g+dfnpo/2u+cS1CpkKTH3u7FhD0rlhjCIoQayJB1NTgybfrEFtmIs
-         CZuofYNlebTZlmg9gCE8QX5ZM+C9coQdtylm97oT244ZMJKXhkQ/mHhOK7rLi9V7ZRWK
-         OSF4h91MOx1Dr+mCsvBszxtIzAF4/fOSe1CUQ6xbcUc/WZfDLwIkPY2Bf3cibcGh5nr1
-         OwJw==
-X-Gm-Message-State: AAQBX9fMIbY+FTaF3tJIX1WuweMDk9NoCDf0Cf86koh4KZ4ED4bEjLAz
-	NOLTseY7PGFVrLrFE75gcc6Few==
-X-Google-Smtp-Source: AKy350ZOsj/rgDa7m85kCFSt/yyAxPXdtikhF0MU23Wn0WjNTH8dh6EXRwbGslBJniiqLHyCe3xjGQ==
-X-Received: by 2002:a17:90a:72c8:b0:246:9bad:2354 with SMTP id l8-20020a17090a72c800b002469bad2354mr3110204pjk.43.1681916990193;
-        Wed, 19 Apr 2023 08:09:50 -0700 (PDT)
-Received: from p14s ([2604:3d09:148c:c800:302c:551a:91d2:840f])
-        by smtp.gmail.com with ESMTPSA id ip11-20020a17090b314b00b00246626343aesm1541885pjb.25.2023.04.19.08.09.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 19 Apr 2023 08:09:49 -0700 (PDT)
-Date: Wed, 19 Apr 2023 09:09:47 -0600
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: TingHan Shen =?utf-8?B?KOayiOW7t+e/sCk=?= <TingHan.Shen@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"robh+dt@kernel.org" <robh+dt@kernel.org>,
-	"linux-remoteproc@vger.kernel.org" <linux-remoteproc@vger.kernel.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"andersson@kernel.org" <andersson@kernel.org>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v9 05/11] remoteproc: mediatek: Extract remoteproc
- initialization flow
-Message-ID: <ZEAEO3ZOptIoIskz@p14s>
-References: <20230328022733.29910-1-tinghan.shen@mediatek.com>
- <20230328022733.29910-6-tinghan.shen@mediatek.com>
- <20230331174431.GA3504605@p14s>
- <46baff1f95fa13976d7a07b5e50ff2175e464baa.camel@mediatek.com>
-MIME-Version: 1.0
+ d=NETORG5796793.onmicrosoft.com; s=selector1-NETORG5796793-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=IIIyPCFGCyq1xAaTYAeFtZuSQc4ahvT962Tvey5+jQ4=;
+ b=LAex7n5suRKX5FQ4Ychjpe3yAmXoK/9AQcJFEywy7Nlfe+IjYP50+8UXpYgcQeMsjtLOvA1AF+yN7iloRrNf4LvA2ttW3xUmy0XghM+0DLqEEy9z1va5CwCbXfLLbFoTnFsTMla0umVnOJ1Sr7LqPNAbEOAYXu4S1bvHTdhPF98=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=labundy.com;
+Received: from SN4PR0801MB3774.namprd08.prod.outlook.com
+ (2603:10b6:803:43::21) by CO3PR08MB7958.namprd08.prod.outlook.com
+ (2603:10b6:303:166::17) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6319.21; Wed, 19 Apr
+ 2023 15:18:44 +0000
+Received: from SN4PR0801MB3774.namprd08.prod.outlook.com
+ ([fe80::d2d1:7af4:ef32:542]) by SN4PR0801MB3774.namprd08.prod.outlook.com
+ ([fe80::d2d1:7af4:ef32:542%6]) with mapi id 15.20.6298.045; Wed, 19 Apr 2023
+ 15:18:44 +0000
+Date: Wed, 19 Apr 2023 10:18:38 -0500
+From: Jeff LaBundy <jeff@labundy.com>
+To: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH 1/2] dt-bindings: input: goodix: Add powered-in-suspend
+ property
+Message-ID: <ZEAGTiGyvynGA9P1@nixie71>
+References: <20230418124953.3170028-1-fshao@chromium.org>
+ <20230418124953.3170028-2-fshao@chromium.org>
+ <ZD8z57MBvcfExJx8@nixie71>
+ <CAC=S1ngBt9DmBobMkQXWhqE1UUxFv2U6iFd42nT=1N7r8+pFUg@mail.gmail.com>
+ <CAD=FV=U_i26a8uJYmqYf6PUgmTUgmEB5L2DkVga0zDX_iDcGQg@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <46baff1f95fa13976d7a07b5e50ff2175e464baa.camel@mediatek.com>
+In-Reply-To: <CAD=FV=U_i26a8uJYmqYf6PUgmTUgmEB5L2DkVga0zDX_iDcGQg@mail.gmail.com>
+X-ClientProxiedBy: SA1P222CA0003.NAMP222.PROD.OUTLOOK.COM
+ (2603:10b6:806:22c::31) To SN4PR0801MB3774.namprd08.prod.outlook.com
+ (2603:10b6:803:43::21)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SN4PR0801MB3774:EE_|CO3PR08MB7958:EE_
+X-MS-Office365-Filtering-Correlation-Id: a739dad0-d2d6-4fad-607b-08db40e95d3a
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	7jp4YFX5W5TF2pnu2k690+I6QTM2ocNY14SYOVSzV9TpF+MmvruQml1cb9qnh0Trpz233lCzX4HUzB8i7OC35x9X6IuA3Lv9jRsxGmxnkU5BLYIICb40JMs5uvTvcsNT5UUzyA9ffo58sQCsRrJXjRYx9pW0aIeHJSg1KA+NR7wX6gfg8P16rsXF9f9fBGHHp9l+jo5QsvG3DRy4fk+BtPiY0gzaNFa8oOAoyrXLYqTE+yV7vqoqtla1j7CKU6XXt4nW4RX53vNkHC9BYoFpjN5yIiBhL/05iMUmuWiGtqsifN4eoDxjjTvUkTaRV8z2ptaBSuKBvQpXNdlt2NA0LD0nT0Jo9RifS9QM1feqYb64AHYxARwhllPeHsPnlaTPSWUk9B4Miq/3YipWeVecvWWsd7bBHkR1GMXyRIAVIp7FxRW4IpzrSAEMj8humtBIxGFHr96euh/J1fUZV91l2FFeRJTrA95FLnsIOwnwK8x0YCvS+Wf+9zDZgzGTRmJXrqUQWGcMXUSicemq/TnVq4WYJuG1Fr/hBY9usILH4KY=
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SN4PR0801MB3774.namprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(7916004)(366004)(346002)(136003)(39830400003)(396003)(376002)(451199021)(186003)(9686003)(6512007)(6506007)(26005)(53546011)(966005)(38100700002)(41300700001)(6666004)(6486002)(83380400001)(478600001)(66899021)(7416002)(15650500001)(4326008)(6916009)(66556008)(66476007)(66946007)(316002)(5660300002)(54906003)(33716001)(86362001)(2906002)(8676002)(8936002);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?a0V5MXRMRW42ZHUvbXV2NGF3RnQ0MlBBZzBxM0hlb0NZWTFQaEd2dnVaUHB5?=
+ =?utf-8?B?ZTJZckNyUVJzeTVvNkJOSjRXOWh1TmFFbStNWFRlRW9zMCtqNndVeXpmdHcz?=
+ =?utf-8?B?Y29WOWFDeC9vL0Vtc2lhRWY3UndGc3NLU0FLaTdERCs4c0dXM0ZLQytSY3I1?=
+ =?utf-8?B?RHErbStSbVVUSVI4bFJjRUZWR05nNWFhYi9icHlrTjNINXZQb2lzT1pLb2ox?=
+ =?utf-8?B?TjFIdkdZWVRSTW5wNHhKaVNIYXlUbmxzR3hQTllyck0zT3pHRGlhVGpDeFVl?=
+ =?utf-8?B?eVZDODAzWTdLWlBwQ2U1a1Y1VTVjN3BEU1gzR3dDMGdzT3NFL1B4NDhydEtW?=
+ =?utf-8?B?OVh4Q3dMVzluRUFWYXpYN0p1ZU5saVJKdWxneHZ6V3hYMnI0aTFmb01UaXhN?=
+ =?utf-8?B?aFFVaGZuOElUYzJuQjJ4OE05VTFaOWNNYTRwam9qUFg1Z3NKRzVEMFVFdVpy?=
+ =?utf-8?B?RTdQclNFbEp0Y0QrMUhENXFrQjhlRXVUbWlqR0hZbjFwUngzOWJmM3hTakFo?=
+ =?utf-8?B?RUE3NGxBRnhJNlFraGxmQWM3aDFRc1JnOWVjSXo4S3dqNnRGSlhpMDJYL29G?=
+ =?utf-8?B?ZmJUY2Q2UXFkOEwzZnVXaHJEaDJOWkZ0S0F6UStjMitma0xNUW8rTmlyRXJN?=
+ =?utf-8?B?OUVHWkd1REZTMGhTNzg4dUExZVkxNWNFeGxLaE1rZTFtR25qRW02YjBXMHBV?=
+ =?utf-8?B?amJXWGRIZ0lFZ2lPOWE2OUx2OFBFbnJHRy91V2FDNW53YkNDdzN1Nys3aHE1?=
+ =?utf-8?B?U0NpODlTYXlOQ0hyeXVza1JMSGo4ZjBBUVBsb2hyTFh0VG1WTkg0MkJGSCtj?=
+ =?utf-8?B?aGpIVUJXNm1mQXQ2eUd1ZVFKQ0trWUdsbVB4UnpidWhiT1NhalZzQUUwcUJW?=
+ =?utf-8?B?UEdKcEpKVUVMak5nclhxYzhSSmNGNmF5Z0dEM2o0NFdZMXB0SzBTY0Nmc0sw?=
+ =?utf-8?B?WWdjbVg4bVd2YWNJTnlZaEoxVDV5ZmdrcWx1SDVLNmNidXVVMW0zTnZ6TlM2?=
+ =?utf-8?B?NjFZVG9DaE51eU9OR0l6WlFMT2F1aWh2NENORDlnZFFCM0duR2IyMlpERWQ1?=
+ =?utf-8?B?bVZxcG9MbXVKdm91K25tWFllSDFnTDFYUW9WK3AxT1FhRms3TUlkdi9zNDgw?=
+ =?utf-8?B?V3VHZlVQdWVQOEtFRE1jTFNQOVBwcWY5Nks2ZmhSaVZTZjQ2eE5nVXgvOEQ1?=
+ =?utf-8?B?bFdnVjV1a3A1ZWJsUzRiUGJwTmtCZDEyV2VleDd1aGNnanRqN1hjNGwwLzVC?=
+ =?utf-8?B?a2s2bmxicHJZNkcvY3pJK0pMeTdQL01aMFhBV284empOMmNjRGtyZGFFREFU?=
+ =?utf-8?B?QWY2eXlqWllVc0ZGSzUvMnFsbGtoYW5HSUs0Z0tidnpuK0VVT2txRFhuZjVB?=
+ =?utf-8?B?TWZBZU44UzY2MWgxYk91eGdCN3hYQVBLTjAyNFRnWHhaTGhYbDRNYjB3MVNG?=
+ =?utf-8?B?aFA0czZTdkw4cGlyMGUyKzRVWFhKbnZtSERBV3kwYTNHUUw5dVNNblU2cDA4?=
+ =?utf-8?B?THU1eVArYm9LRTBKTG4xcVZaK3IvOUF5U2ZlTlRycEtxYzh6ZnlvMENLZHFq?=
+ =?utf-8?B?UXVueWdHTW0wRXVsM0pLZG9ZYWQyNDJwbXhjYVVIdHhkS3ZYMjNUZXk1ZXNw?=
+ =?utf-8?B?ZTVPd2JBelR0TmlVVFprMDVJSUFna3hiQVZQZlY5Q3dRWHBwUitrQlZua1d5?=
+ =?utf-8?B?TlozN3JETzRXZTFwVkN4d0JoOC9XNnNaS0hxQ3lzWWlNNW13eFE3eTZmVEsx?=
+ =?utf-8?B?dTVWNU5sQ3ZuTndFQjBWSlIzSEhMdnRYNkdVVWhveDUwSnZuL2JGLy94MTFZ?=
+ =?utf-8?B?MWthTW9SV1JBVkZNVmpSYWtIT3k1WmxhNnl0bG5jWDByaHQxTUNDeVBsWkpW?=
+ =?utf-8?B?aTlyWWE4UDVNKzgxNTZORzEwaGludGljcEhiQUFNeTh5djVyOEpXWmpVOVZR?=
+ =?utf-8?B?VE9pWFVTZ0NPSlRzZWo5b0x3YjNtUXl2bUIxR1BIVVFGZWhWM0QwQXlaR3V3?=
+ =?utf-8?B?MXR0ZDlBaHord3hyUmZ2Z1NMekV3NUlPbld6L0lQS3BDQlg0U2ZuOU1LSk80?=
+ =?utf-8?B?dktwN2NFUzhJSDY3cXZCZUdDa2d5cDVMQ0ZBM29QaFRHaHMrSFlNQm52TXor?=
+ =?utf-8?Q?FM9wOWEUUNmiBuo1+afuhTYES?=
+X-OriginatorOrg: labundy.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a739dad0-d2d6-4fad-607b-08db40e95d3a
+X-MS-Exchange-CrossTenant-AuthSource: SN4PR0801MB3774.namprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Apr 2023 15:18:44.0385
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 00b69d09-acab-4585-aca7-8fb7c6323e6f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: M776EARZ1t6ix5d/ojHLbEEUHo9oIrjNeP3S97LTXbh91YlAN5dRot2lZXuv2uA+WILznfFh1JRvDEKvgD+QwA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO3PR08MB7958
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230419_080953_114883_28B45C19 
-X-CRM114-Status: GOOD (  34.01  )
+X-CRM114-CacheID: sfid-20230419_081849_970314_3797EAA9 
+X-CRM114-Status: GOOD (  45.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,159 +142,110 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Benjamin Tissoires <benjamin.tissoires@redhat.com>, linux-mediatek <linux-mediatek@lists.infradead.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-input@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 19, 2023 at 03:38:14AM +0000, TingHan Shen (沈廷翰) wrote:
-> Hi Mathieu,
-> 
-> On Fri, 2023-03-31 at 11:44 -0600, Mathieu Poirier wrote:
-> > External email : Please do not click links or open attachments until you have verified the sender or the content.
-> > 
-> > 
-> > On Tue, Mar 28, 2023 at 10:27:27AM +0800, Tinghan Shen wrote:
-> > > This is the preparation for probing multi-core SCP. The remoteproc
-> > > initialization flow is similar on cores and is reused to avoid
-> > > redundant code.
-> > > 
-> > > The registers of config and l1tcm are shared for multi-core
-> > > SCP. Reuse the mapped addresses for all cores.
-> > > 
-> > > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> > > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > > ---
-> > >  drivers/remoteproc/mtk_scp.c | 64 +++++++++++++++++++++++++-----------
-> > >  1 file changed, 45 insertions(+), 19 deletions(-)
-> > > 
-> > > diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> > > index a3b9bc158cd9..32ecd1450c6f 100644
-> > > --- a/drivers/remoteproc/mtk_scp.c
-> > > +++ b/drivers/remoteproc/mtk_scp.c
-> > > @@ -23,6 +23,13 @@
-> > >  #define MAX_CODE_SIZE 0x500000
-> > >  #define SECTION_NAME_IPI_BUFFER ".ipi_buffer"
-> > > 
-> > > +struct mtk_scp_of_regs {
-> > > +     void __iomem *reg_base;
-> > > +     void __iomem *l1tcm_base;
-> > > +     size_t l1tcm_size;
-> > > +     phys_addr_t l1tcm_phys;
-> > > +};
-> > > +
-> > 
-> > This should represent the cluster with a list of mtk_scp instead of @cluster_cores as
-> > introduced in the next patch.
-> 
-> If I'm understanding you correctly, you're suggesting that @cluster_cores should be included 
-> as a member of this structure. Is that correct?
+Hi Doug and Fei,
 
-Correct.  Than this structure is allocated in probe() and added as driver data
-for the platform device.  Its name should also be something like
-mtk_scp_cluster or something like that.  I suggest you look at what has been
-done in ti_k3_r5_remoteproc.c, your end design should be quite similar to that.
-In fact you are close but a few things need to be addressed.
+Thank you for the informative discussion; I can empathize with the pain
+these issues bring.
+
+On Wed, Apr 19, 2023 at 07:38:13AM -0700, Doug Anderson wrote:
+> Hi,
+> 
+> On Wed, Apr 19, 2023 at 3:44 AM Fei Shao <fshao@chromium.org> wrote:
+> >
+> > Hi Jeff,
+> >
+> > On Wed, Apr 19, 2023 at 8:21 AM Jeff LaBundy <jeff@labundy.com> wrote:
+> > >
+> > > Hi Fei,
+> > >
+> > > On Tue, Apr 18, 2023 at 08:49:51PM +0800, Fei Shao wrote:
+> > > > We observed that on Chromebook device Steelix, if Goodix GT7375P
+> > > > touchscreen is powered in suspend (because, for example, it connects to
+> > > > an always-on regulator) and with the reset GPIO asserted, it will
+> > > > introduce about 14mW power leakage.
+> > > >
+> > > > This property is used to indicate that the touchscreen is powered in
+> > > > suspend. If it's set, the driver will stop asserting the reset GPIO in
+> > > > power-down, and it will do it in power-up instead to ensure that the
+> > > > state is always reset after resuming.
+> > > >
+> > > > Signed-off-by: Fei Shao <fshao@chromium.org>
+> > > > ---
+> > >
+> > > This is an interesting problem; were you able to root-cause why the silicon
+> > > exhibits this behavior? Simply asserting reset should not cause it to draw
+> > > additional power, let alone 14 mW. This almost sounds like a back-powering
+> > > problem during suspend.
+> > >
+> > There was a fix for this behavior before so I didn't dig into it on
+> > the silicon side.
+> > I can ask internally and see if we can have Goodix to confirm this is
+> > a known HW erratum.
+> 
+> Certainly it doesn't hurt to check, but it's not really that shocking
+> to me that asserting reset could cause a power draw on some hardware.
+> Reset puts hardware into a default state and that's not necessarily
+> low power. I guess ideally hardware would act like it's "off" when
+> reset is asserted and then then init to the default state on the edge
+> as reset was deasserted, but I not all hardware is designed in an
+> ideal way.
+
+While that is true in theory, I have never, ever seen that to be the case
+when there is not some other underlying problem.
+
+What I have seen, however, is that asserting reset actually causes the GPIO
+to sink current from some other supply and through the IC. I loosely suspect
+that if you probe the IC's rails and digital I/O during the failure condition,
+you may find one of them resting at some mid-rail voltage or diode drop. It
+seems you have a similar suspicion.
+
+In that case, it may mean that some other supply in the system should actually
+be kept on, or that supplies are being brought down out of order. In which
+case, the solution should actually be a patch to the affected platform(s) dts
+and not the mainline driver.
 
 > 
-> Best regards,
-> TingHan
 > 
-> > 
-> > >  /**
-> > >   * scp_get() - get a reference to SCP.
-> > >   *
-> > > @@ -855,7 +862,8 @@ static void scp_remove_rpmsg_subdev(struct mtk_scp *scp)
-> > >       }
-> > >  }
-> > > 
-> > > -static int scp_probe(struct platform_device *pdev)
-> > > +static int scp_rproc_init(struct platform_device *pdev,
-> > > +                       struct mtk_scp_of_regs *of_regs)
-> > >  {
-> > >       struct device *dev = &pdev->dev;
-> > >       struct device_node *np = dev->of_node;
-> > > @@ -879,6 +887,11 @@ static int scp_probe(struct platform_device *pdev)
-> > >       scp->data = of_device_get_match_data(dev);
-> > >       platform_set_drvdata(pdev, scp);
-> > > 
-> > > +     scp->reg_base = of_regs->reg_base;
-> > > +     scp->l1tcm_base = of_regs->l1tcm_base;
-> > > +     scp->l1tcm_size = of_regs->l1tcm_size;
-> > > +     scp->l1tcm_phys = of_regs->l1tcm_phys;
-> > > +
-> > >       res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "sram");
-> > >       scp->sram_base = devm_ioremap_resource(dev, res);
-> > >       if (IS_ERR(scp->sram_base))
-> > > @@ -888,24 +901,6 @@ static int scp_probe(struct platform_device *pdev)
-> > >       scp->sram_size = resource_size(res);
-> > >       scp->sram_phys = res->start;
-> > > 
-> > > -     /* l1tcm is an optional memory region */
-> > > -     res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "l1tcm");
-> > > -     scp->l1tcm_base = devm_ioremap_resource(dev, res);
-> > > -     if (IS_ERR(scp->l1tcm_base)) {
-> > > -             ret = PTR_ERR(scp->l1tcm_base);
-> > > -             if (ret != -EINVAL) {
-> > > -                     return dev_err_probe(dev, ret, "Failed to map l1tcm memory\n");
-> > > -             }
-> > > -     } else {
-> > 
-> >                 scp->l1tcm_base = NULL;
-> > 
-> > > -             scp->l1tcm_size = resource_size(res);
-> > > -             scp->l1tcm_phys = res->start;
-> > > -     }
-> > > -
-> > > -     scp->reg_base = devm_platform_ioremap_resource_byname(pdev, "cfg");
-> > > -     if (IS_ERR(scp->reg_base))
-> > > -             return dev_err_probe(dev, PTR_ERR(scp->reg_base),
-> > > -                                  "Failed to parse and map cfg memory\n");
-> > > -
-> > >       ret = scp->data->scp_clk_get(scp);
-> > >       if (ret)
-> > >               return ret;
-> > > @@ -957,6 +952,37 @@ static int scp_probe(struct platform_device *pdev)
-> > >       return ret;
-> > >  }
-> > > 
-> > > +static int scp_probe(struct platform_device *pdev)
-> > > +{
-> > > +     struct device *dev = &pdev->dev;
-> > > +     struct mtk_scp_of_regs scp_regs;
-> > > +     struct resource *res;
-> > > +     int ret;
-> > > +
-> > > +     res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "cfg");
-> > > +     scp_regs.reg_base = devm_ioremap_resource(dev, res);
-> > > +     if (IS_ERR(scp_regs.reg_base))
-> > > +             return dev_err_probe(dev, PTR_ERR(scp_regs.reg_base),
-> > > +                                  "Failed to parse and map cfg memory\n");
-> > > +
-> > > +     /* l1tcm is an optional memory region */
-> > > +     res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "l1tcm");
-> > > +     scp_regs.l1tcm_base = devm_ioremap_resource(dev, res);
-> > > +     if (IS_ERR(scp_regs.l1tcm_base)) {
-> > > +             ret = PTR_ERR(scp_regs.l1tcm_base);
-> > > +             if (ret != -EINVAL)
-> > > +                     return dev_err_probe(dev, ret, "Failed to map l1tcm memory\n");
-> > > +
-> > > +             scp_regs.l1tcm_size = 0;
-> > > +             scp_regs.l1tcm_phys = 0;
-> > > +     } else {
-> > > +             scp_regs.l1tcm_size = resource_size(res);
-> > > +             scp_regs.l1tcm_phys = res->start;
-> > > +     }
-> > > +
-> > > +     return scp_rproc_init(pdev, &scp_regs);
-> > > +}
-> > > +
-> > >  static int scp_remove(struct platform_device *pdev)
-> > >  {
-> > >       struct mtk_scp *scp = platform_get_drvdata(pdev);
-> > > --
-> > > 2.18.0
-> > > 
+> > > If this is truly expected behavior, is it sufficient to use the always_on
+> > > constraint of the relevant regulator(s) to make this decision as opposed to
+> > > introducing a new property?
+> > >
+> > That sounds good to me. IIUC, for the existing designs, the boards
+> > that would set this property would also exclusively set
+> > `regulator-always-on` in their supply, so that should suffice.
+> > Let me revise the patch. Thanks!
 > 
-> -- 
-> Best regards,
-> TingHan
+> Yeah, I thought about this too and talked about it in my original
+> reply. It doesn't handle the shared-rail case, but then again neither
+> does ${SUBJECT} patch. ...then I guess the only argument against it is
+> my argument that the regulator could be marked "always-on" in the
+> device tree but still turned off by an external entity (PMIC or EC) in
+> S3. In theory this should be specified by
+> "regulator-state-(standby|mem|disk)", but I could believe it being
+> tricky to figure out (what if a parent regulator gets turned off
+> automatically but the child isn't explicit?). Specifically, if a
+> regulator is always-on but somehow gets shut off in suspend then we
+> _do_ want to assert reset (active low) during suspend, otherwise we'll
+> have a power leak through the reset GPIO... :-P
+
+D'oh! Sorry I missed your original reply. My concern is that either solution
+is a band-aid and does not address the root cause. I would rather see a patch
+that addresses what seems to be a back-powering problem so that the driver may
+freely assert reset. That is just my $.02; let me know if I have misunderstood
+or there are other factors that prevent that path from being viable.
+
+> 
+> ...so I guess I'll continue to assert that I don't think peeking at
+> the regulator's "always-on" property is the best way to go. If
+> everyone else disagrees with me then I won't stand in the way, but IMO
+> the extra property like Fei's patch adds is better.
+> 
+> [1] https://lore.kernel.org/r/CAD=FV=V8ZN3969RrPu2-zZYoEE=LDxpi8K_E8EziiDpGOSsq1w@mail.gmail.com
+
+Kind regards,
+Jeff LaBundy
 
