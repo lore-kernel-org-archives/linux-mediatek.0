@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC246C6FD18
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79944C77B75
 	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Apr 2023 02:11:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=L5B2mor7wfM1NVifsuInJU4zVvF/2DkdPBPqN7dTKMM=; b=OT4RDnc8cpQPWj35xHNH/iHdVw
-	oIG5+wPoLH8qvUyUgEjMoDlW84Lt78OyU2KoD5eSFCAOGUWIDp70EgF6+jlw59aqBguKJq6OCmx0v
-	AsH7BlZmDoY1mr7DFRHAsCmG/Eta0tHFX3CJFjts7Q08ra/IqzErQ0bJ2ERRHnwFAO/vP791CIDXe
-	bnHOTCwuhMYJquP1+qeTnU9NKNofVPn8ihg16HHoBAL+U1qKBB9Weeed0+f+gh48M08mRaKpfkdEg
-	cyz2wWOxfNJDLtbr/AWoCrsUY9e0NPo6BzgZlFJ84IDv6H55ZTxC6ZB6tIbDWYHcYty9xitJ8g4r4
-	UyBp7LXw==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=k/33bWMCjVTHkAxRL+jVkYpwhXgOAclT5cOzRfoL3E4=; b=Fvl/VnrjTMtALIHz7vUY1gN3rA
+	ltRQX7usuCC4UEIHj47BU4+xQRpvLifuhuE3z12iUkdUZVbtkqiknx9bdmGKO6M7m6mjxGx4HPygk
+	uJHQhq4MapQZgU61Hi4zrj/KXslnRT0H1GZ/MiT82sGvdlwa7rSknp3ev44jONwZNmSBrQp84wRZV
+	U35LeXbSF2kZs96sOi/yBgO/PeWhndm9VGyZEzZE9p31eErby+66M7F+KyeTSr572tWUEWTyFPoJI
+	nHIvNhX1f3LC7S7G1EjiFZpOkLTUi4HRzBRgFyYndGEdYsv3pTFKjOmYmufH5M7pp7bOHIvykPm9Z
+	Z8wLDOBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1poxHd-003kwy-2d;
+	id 1poxHd-003kwr-1E;
 	Wed, 19 Apr 2023 02:10:57 +0000
 Received: from [202.114.0.240] (helo=hust.edu.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1poxHQ-003kuw-1W;
+	id 1poxHQ-003kuQ-1W;
 	Wed, 19 Apr 2023 02:10:55 +0000
 Received: from passwd123-ThinkStation-P920.. ([222.20.94.23])
 	(user=void0red@hust.edu.cn mech=LOGIN bits=0)
-	by mx1.hust.edu.cn  with ESMTP id 33J27wUg015429-33J27wUh015429
+	by mx1.hust.edu.cn  with ESMTP id 33J27wUg015429-33J27wUi015429
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
-	Wed, 19 Apr 2023 10:07:58 +0800
+	Wed, 19 Apr 2023 10:08:00 +0800
 From: Kang Chen <void0red@hust.edu.cn>
 To: daniel.lezcano@linaro.org
 Cc: amitk@kernel.org, angelogioacchino.delregno@collabora.com,
@@ -41,16 +41,18 @@ Cc: amitk@kernel.org, angelogioacchino.delregno@collabora.com,
         linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
         matthias.bgg@gmail.com, rafael@kernel.org, rdunlap@infradead.org,
         rui.zhang@intel.com, Kang Chen <void0red@hust.edu.cn>
-Subject: [PATCH v5 1/2] thermal: mediatek: use devm_of_iomap to avoid resource leak in mtk_thermal_probe
-Date: Wed, 19 Apr 2023 10:07:48 +0800
-Message-Id: <20230419020749.621257-1-void0red@hust.edu.cn>
+Subject: [PATCH v5 2/2] thermal: mediatek: change clk_prepare_enable to devm_clk_get_enabled in mtk_thermal_probe
+Date: Wed, 19 Apr 2023 10:07:49 +0800
+Message-Id: <20230419020749.621257-2-void0red@hust.edu.cn>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230419020749.621257-1-void0red@hust.edu.cn>
+References: <20230419020749.621257-1-void0red@hust.edu.cn>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-FEAS-AUTH-USER: void0red@hust.edu.cn
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230418_191044_711841_9B181625 
-X-CRM114-Status: GOOD (  10.29  )
+X-CRM114-CacheID: sfid-20230418_191044_861393_74B0CB6B 
+X-CRM114-Status: GOOD (  12.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,58 +67,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Smatch reports:
-1. mtk_thermal_probe() warn: 'apmixed_base' from of_iomap() not released.
-2. mtk_thermal_probe() warn: 'auxadc_base' from of_iomap() not released.
+use devm_clk_get_enabled to do automatic resource management.
+Meanwhile, remove error handling labels in the probe function and
+the whole remove function.
 
-The original code forgets to release iomap resource when handling errors,
-fix it by switch to devm_of_iomap.
-
-Fixes: 89945047b166 ("thermal: mediatek: Add tsensor support for V2 thermal system")
 Signed-off-by: Kang Chen <void0red@hust.edu.cn>
 Reviewed-by: Dongliang Mu <dzm91@hust.edu.cn>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
-v5 -> v4: no modify
-v4 -> v3: no modify
-v3 -> v2: fix typo and put of_node in error handling
-v2 -> v1: use devm_of_iomap instead.
+v5 -> v4: use PTR_ERR to convert err ptr to err code
+v4 -> v3: port to linux-next tree
+v3 -> v2: remove some useles func calls.
+v2 -> v1: init
 
- drivers/thermal/mediatek/auxadc_thermal.c | 14 ++++++++++++--
- 1 file changed, 12 insertions(+), 2 deletions(-)
+ drivers/thermal/mediatek/auxadc_thermal.c | 44 +++++------------------
+ 1 file changed, 9 insertions(+), 35 deletions(-)
 
 diff --git a/drivers/thermal/mediatek/auxadc_thermal.c b/drivers/thermal/mediatek/auxadc_thermal.c
-index b6bb9eaafb74..dcc64237ea60 100644
+index dcc64237ea60..a488e1797f3d 100644
 --- a/drivers/thermal/mediatek/auxadc_thermal.c
 +++ b/drivers/thermal/mediatek/auxadc_thermal.c
-@@ -1212,7 +1212,12 @@ static int mtk_thermal_probe(struct platform_device *pdev)
- 		return -ENODEV;
+@@ -1186,14 +1186,6 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+ 
+ 	mt->conf = of_device_get_match_data(&pdev->dev);
+ 
+-	mt->clk_peri_therm = devm_clk_get(&pdev->dev, "therm");
+-	if (IS_ERR(mt->clk_peri_therm))
+-		return PTR_ERR(mt->clk_peri_therm);
+-
+-	mt->clk_auxadc = devm_clk_get(&pdev->dev, "auxadc");
+-	if (IS_ERR(mt->clk_auxadc))
+-		return PTR_ERR(mt->clk_auxadc);
+-
+ 	mt->thermal_base = devm_platform_get_and_ioremap_resource(pdev, 0, NULL);
+ 	if (IS_ERR(mt->thermal_base))
+ 		return PTR_ERR(mt->thermal_base);
+@@ -1252,16 +1244,18 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+ 	if (ret)
+ 		return ret;
+ 
+-	ret = clk_prepare_enable(mt->clk_auxadc);
+-	if (ret) {
++	mt->clk_auxadc = devm_clk_get_enabled(&pdev->dev, "auxadc");
++	if (IS_ERR(mt->clk_auxadc)) {
++		ret = PTR_ERR(mt->clk_auxadc);
+ 		dev_err(&pdev->dev, "Can't enable auxadc clk: %d\n", ret);
+ 		return ret;
  	}
  
--	auxadc_base = of_iomap(auxadc, 0);
-+	auxadc_base = devm_of_iomap(&pdev->dev, auxadc, 0, NULL);
-+	if (IS_ERR(auxadc_base)) {
-+		of_node_put(auxadc);
-+		return PTR_ERR(auxadc_base);
-+	}
-+
- 	auxadc_phys_base = of_get_phys_base(auxadc);
- 
- 	of_node_put(auxadc);
-@@ -1228,7 +1233,12 @@ static int mtk_thermal_probe(struct platform_device *pdev)
- 		return -ENODEV;
+-	ret = clk_prepare_enable(mt->clk_peri_therm);
+-	if (ret) {
++	mt->clk_peri_therm = devm_clk_get_enabled(&pdev->dev, "therm");
++	if (IS_ERR(mt->clk_peri_therm)) {
++		ret = PTR_ERR(mt->clk_peri_therm);
+ 		dev_err(&pdev->dev, "Can't enable peri clk: %d\n", ret);
+-		goto err_disable_clk_auxadc;
++		return ret;
  	}
  
--	apmixed_base = of_iomap(apmixedsys, 0);
-+	apmixed_base = devm_of_iomap(&pdev->dev, apmixedsys, 0, NULL);
-+	if (IS_ERR(apmixed_base)) {
-+		of_node_put(apmixedsys);
-+		return PTR_ERR(apmixed_base);
-+	}
-+
- 	apmixed_phys_base = of_get_phys_base(apmixedsys);
+ 	mtk_thermal_turn_on_buffer(mt, apmixed_base);
+@@ -1288,38 +1282,18 @@ static int mtk_thermal_probe(struct platform_device *pdev)
  
- 	of_node_put(apmixedsys);
+ 	tzdev = devm_thermal_of_zone_register(&pdev->dev, 0, mt,
+ 					      &mtk_thermal_ops);
+-	if (IS_ERR(tzdev)) {
+-		ret = PTR_ERR(tzdev);
+-		goto err_disable_clk_peri_therm;
+-	}
++	if (IS_ERR(tzdev))
++		return PTR_ERR(tzdev);
+ 
+ 	ret = devm_thermal_add_hwmon_sysfs(&pdev->dev, tzdev);
+ 	if (ret)
+ 		dev_warn(&pdev->dev, "error in thermal_add_hwmon_sysfs");
+ 
+ 	return 0;
+-
+-err_disable_clk_peri_therm:
+-	clk_disable_unprepare(mt->clk_peri_therm);
+-err_disable_clk_auxadc:
+-	clk_disable_unprepare(mt->clk_auxadc);
+-
+-	return ret;
+-}
+-
+-static int mtk_thermal_remove(struct platform_device *pdev)
+-{
+-	struct mtk_thermal *mt = platform_get_drvdata(pdev);
+-
+-	clk_disable_unprepare(mt->clk_peri_therm);
+-	clk_disable_unprepare(mt->clk_auxadc);
+-
+-	return 0;
+ }
+ 
+ static struct platform_driver mtk_thermal_driver = {
+ 	.probe = mtk_thermal_probe,
+-	.remove = mtk_thermal_remove,
+ 	.driver = {
+ 		.name = "mtk-thermal",
+ 		.of_match_table = mtk_thermal_of_match,
 -- 
 2.34.1
 
