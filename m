@@ -4,70 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AFD0C77B73
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Apr 2023 08:11:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91771C6FD18
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Apr 2023 08:13:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DQx6nhTVvuCdBiRpJCFo7tMmqAkYGkm9XwTq4Dc07/c=; b=Qe5yV7uovC0OJKjm822JCaNACL
-	QmNu91ENHbUoNaee+qrslxM1HcYjTiD03zfPhiHW6M3f16YNf1POC1smha1/tqazaCHYT42Uyeq0D
-	eWM2UOqMWNRKaGZVoZWOTpAa99bGSdn871mRLG5fdhuhF2io4i1LalAJzc79JCOmH2UfzZzfaPT2H
-	n4WqvwAXej4bC5xoNlUOkZ/pxKV93C2AwVrTOoebM/0zEgEZkQ5GnVJeGWsA10z8cbrE+lWKFVqAO
-	nLbZsh3QA8iGRWSKDUA5rVh+XLclCkB4k4o3yT51oq/WibnHAd4rumDotnz0Ia2oWwItko1ndaKzF
-	FxocXgTw==;
+	Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ghGwRT5W8D/JXjICIpBiSCJh40/tqXWAKt1RoKkHims=; b=hSuiPpPmEVWSZ80MfUSlddVbpK
+	FsadFQEDB2sPm6ZtM/7/WJSPQkZQaufSc67X/Gbyhy0YNo+balxzk8XCrSYy4iHeQcI6t38xB5eWH
+	xAf/0qcQYH3pxwUOdskg05c7Sh2fMD029frPy3Oiuc3TpqUVDDRWjM22v3+oGP6zC4+JrrXa2MNH1
+	mR8q+TWKT6l7SKhRhN3uyNBLND4iBRr6RM3RzyCHo5Z6+dqho286K+srdth9RWscI4zKpzlolbhVd
+	PkbQmKf4OWlQNHgLBktpTbzkK+QRvE1qLwiSII3lj7dQLIRtMfRZcOJ1aRBlkgJTdCJSWB1E8uUmm
+	eEhNr6Sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pp2uI-004Y0m-0W;
-	Wed, 19 Apr 2023 08:11:14 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pp2wp-004YP6-0E;
+	Wed, 19 Apr 2023 08:13:51 +0000
+Received: from mga09.intel.com ([134.134.136.24])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pp2uB-004Xxx-1T;
-	Wed, 19 Apr 2023 08:11:11 +0000
-Received: from [IPV6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2] (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 403FB660324C;
-	Wed, 19 Apr 2023 09:11:00 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1681891861;
-	bh=N9N5Z5PUO2VBsvggGI6LzSyVWaQ71ALkM8ielchtweQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=oe0VZA1rILmQ75rbPrJ+2gbcSIw4gNsBHM7Cw4E4GeHiEjkksuUYU5keH3A3B8p4x
-	 zy4l6tqfIgoE8mwzTQye/Lh6zZV36EPcYjX5RMORPVh1NBJou8L7NOO4jUGBzQ+pDu
-	 hzbzTCbOHRHHoapv6JY0Zw2Czdc0QBGFRYNrvbsfnJN62hOeOvdDKmMkvpvMLmyiX8
-	 EEmht/5D3QSyrQwTpjgeXVAcl2SjN8jGEZYIqB0/gOMYeTfGMHV4EpTUniSDZ5RlvM
-	 /nMo77nkSmvPqG3tx84BEuHIFIhmKHCHKgG1wZ7uoe/7MJlTPscfES/YzaW8hjQYKd
-	 PIP6FyBICkujQ==
-Message-ID: <3dac0be8-6a49-43db-da65-e99d2e9719e6@collabora.com>
-Date: Wed, 19 Apr 2023 10:10:58 +0200
+	id 1pp2wl-004YOD-28;
+	Wed, 19 Apr 2023 08:13:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1681892027; x=1713428027;
+  h=date:from:to:cc:subject:message-id:mime-version:
+   content-transfer-encoding;
+  bh=NtG9yCpDsoVnQMDuNihHlz/T8n5B0GSOlfSlXJ6FE3k=;
+  b=LhnIr/lbmfCzijobNkQsPH7Pf1gpMRWy00rBt/PzH8VO9QQu9qc17A53
+   dJM5i1oSXvUYBa9AgP9XdDMnPmSAcr7ZWYKSUIN8QttPGmaYoBJY2UYJx
+   WCbZH19Z03nwQ6kM2G9zuqsuwCt3No0Yu+cDs0AHKtjwIiSVtyrhdrDu3
+   Qc6BAL41NX54yEgwjjH9/zxDj/ZMS4jk8ET1fWW0A35aX7bpgIj7ry0dr
+   bwXBib/27/TLOwcxHHF7it5FV9RzsBlhmFKMrQsblZCQDeFn+CUG+zKJM
+   aG+hWnH86YcCsw79KnKgITCipDLYkKgAHAFJyhzZ9sjhGJ+5aiR67x0SW
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10684"; a="347241761"
+X-IronPort-AV: E=Sophos;i="5.99,208,1677571200"; 
+   d="scan'208";a="347241761"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Apr 2023 01:13:46 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10684"; a="641673544"
+X-IronPort-AV: E=Sophos;i="5.99,208,1677571200"; 
+   d="scan'208";a="641673544"
+Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
+  by orsmga003.jf.intel.com with ESMTP; 19 Apr 2023 01:13:43 -0700
+Received: from kbuild by b613635ddfff with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1pp2wg-000ej9-2X;
+	Wed, 19 Apr 2023 08:13:42 +0000
+Date: Wed, 19 Apr 2023 16:13:06 +0800
+From: kernel test robot <lkp@intel.com>
+To: Andrew Morton <akpm@linux-foundation.org>
+Cc: Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, intel-gfx@lists.freedesktop.org,
+ amd-gfx@lists.freedesktop.org,
+ Linux Memory Management List <linux-mm@kvack.org>
+Subject: [linux-next:master] BUILD REGRESSION
+ 67d5d9f013d6c3829383c08162939cabff14fccc
+Message-ID: <643fa292.aBkpazL95JxIhnL3%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.1
-Subject: Re: [PATCH linux-next v3 4/4] clocksource/drivers/timer-mediatek:
- Make timer-mediatek become loadable module
-To: walter.chang@mediatek.com, Daniel Lezcano <daniel.lezcano@linaro.org>,
- Thomas Gleixner <tglx@linutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "Maciej W . Rozycki" <macro@orcam.me.uk>, John Stultz <jstultz@google.com>
-Cc: wsd_upstream@mediatek.com, stanley.chu@mediatek.com,
- Chun-hung.Wu@mediatek.com, Freddy.Hsin@mediatek.com,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20230419074910.10809-1-walter.chang@mediatek.com>
- <20230419074910.10809-5-walter.chang@mediatek.com>
-Content-Language: en-US
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230419074910.10809-5-walter.chang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230419_011107_952044_6DC82A7D 
-X-CRM114-Status: GOOD (  27.96  )
+X-CRM114-CacheID: sfid-20230419_011347_808633_A29F29B0 
+X-CRM114-Status: UNSURE (   7.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,137 +86,255 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 19/04/23 09:49, walter.chang@mediatek.com ha scritto:
-> From: Chun-Hung Wu <chun-hung.wu@mediatek.com>
-> 
-> Make the timer-mediatek driver which can register
-> an always-on timer as tick_broadcast_device on
-> MediaTek SoCs become loadable module in GKI.
-> 
-> Tested-by: Walter Chang <walter.chang@mediatek.com>
-> Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
+branch HEAD: 67d5d9f013d6c3829383c08162939cabff14fccc  Add linux-next specific files for 20230418
 
-I think I typoed your email when sending the example patch for the
-conversion to platform_device. Check [1], it may be better to just
-iterate through that? (please ignore the pure_initcall() part, that's
-a mistake, it's never gonna happen as it automatically becomes a
-module_init() call).
+Error/Warning reports:
 
-It depends on what maintainers think about that clocksource.h addition,
-the patch got zero comments, so if you're interested in that perhaps we
-can explicitly ask what would be the best option between yours and mine;
-that addition is done only to avoid the big ifdef party that this patch
-proposes and makes things a bit shorter if this timer modularization
-goes on with more drivers, but I don't have strong opinions anyway.
+https://lore.kernel.org/oe-kbuild-all/202304102354.Q4VOXGTE-lkp@intel.com
 
-In the meanwhile, just to eventually speed up integrating this, or the
-other patch - I'll still give you a review of this one.
+Error/Warning: (recently discovered and may have been fixed)
 
-[1]: 
-https://patchwork.kernel.org/project/linux-mediatek/patch/20230309132119.175650-1-angelogioacchino.delregno@collabora.com/
+ERROR: modpost: "__floatundidf" [drivers/phy/mediatek/phy-mtk-hdmi-drv.ko] undefined!
+ERROR: modpost: "__gedf2" [drivers/phy/mediatek/phy-mtk-hdmi-drv.ko] undefined!
+ERROR: modpost: "__ltdf2" [drivers/phy/mediatek/phy-mtk-hdmi-drv.ko] undefined!
+drivers/gpu/drm/amd/amdgpu/../display/dc/link/link_validation.c:351:13: warning: variable 'bw_needed' set but not used [-Wunused-but-set-variable]
+drivers/gpu/drm/amd/amdgpu/../display/dc/link/link_validation.c:352:25: warning: variable 'link' set but not used [-Wunused-but-set-variable]
+drivers/gpu/drm/i915/gt/uc/guc_capture_fwif.h:62: warning: wrong kernel-doc identifier on line:
+drivers/gpu/drm/i915/i915_pmu.h:41: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
+drivers/gpu/drm/i915/i915_request.h:176: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
+drivers/gpu/drm/i915/i915_vma.h:145: warning: expecting prototype for i915_vma_offset(). Prototype was for i915_vma_size() instead
+drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:298:6: warning: variable 'ret' is uninitialized when used here [-Wuninitialized]
+ld.lld: error: .btf.vmlinux.bin.o: unknown file type
 
-> ---
->   drivers/clocksource/Kconfig          |  2 +-
->   drivers/clocksource/timer-mediatek.c | 39 ++++++++++++++++++++++++++++
->   2 files changed, 40 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/clocksource/Kconfig b/drivers/clocksource/Kconfig
-> index 526382dc7482..a7413ad7b6ad 100644
-> --- a/drivers/clocksource/Kconfig
-> +++ b/drivers/clocksource/Kconfig
-> @@ -472,7 +472,7 @@ config SYS_SUPPORTS_SH_CMT
->   	bool
->   
->   config MTK_TIMER
-> -	bool "Mediatek timer driver" if COMPILE_TEST
-> +	tristate "Mediatek timer driver"
+Error/Warning ids grouped by kconfigs:
 
-While at it, you could also fix the text, Mediatek -> MediaTek
+gcc_recent_errors
+|-- alpha-allyesconfig
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
+|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
+|-- arc-allyesconfig
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
+|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
+|-- arm-allmodconfig
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
+|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
+|-- arm-allyesconfig
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
+|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
+|-- arm64-allyesconfig
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
+|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
+|-- arm64-randconfig-r012-20230416
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
+|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
+|-- i386-allyesconfig
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
+|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
+|-- ia64-allmodconfig
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
+|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
+|-- loongarch-allmodconfig
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
+|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
+|-- loongarch-defconfig
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
+|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
+|-- mips-allmodconfig
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
+|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
+|-- mips-allyesconfig
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
+|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
+|-- powerpc-allmodconfig
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
+|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
+|-- riscv-allmodconfig
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
+|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
+|-- riscv-randconfig-r033-20230417
+|   |-- ERROR:__floatundidf-drivers-phy-mediatek-phy-mtk-hdmi-drv.ko-undefined
+|   |-- ERROR:__gedf2-drivers-phy-mediatek-phy-mtk-hdmi-drv.ko-undefined
+|   `-- ERROR:__ltdf2-drivers-phy-mediatek-phy-mtk-hdmi-drv.ko-undefined
+|-- s390-allyesconfig
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
+|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
+|-- sparc-allyesconfig
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
+|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
+`-- x86_64-allyesconfig
+    |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-bw_needed-set-but-not-used
+    `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-link-link_validation.c:warning:variable-link-set-but-not-used
+clang_recent_errors
+|-- arm64-randconfig-r004-20230418
+|   `-- ld.lld:error:.btf.vmlinux.bin.o:unknown-file-type
+|-- powerpc-randconfig-r032-20230416
+|   `-- drivers-phy-mediatek-phy-mtk-hdmi-mt8195.c:warning:variable-ret-is-uninitialized-when-used-here
+`-- x86_64-randconfig-a011-20230417
+    |-- drivers-gpu-drm-i915-gt-uc-guc_capture_fwif.h:warning:wrong-kernel-doc-identifier-on-line:
+    |-- drivers-gpu-drm-i915-i915_pmu.h:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
+    |-- drivers-gpu-drm-i915-i915_request.h:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
+    `-- drivers-gpu-drm-i915-i915_vma.h:warning:expecting-prototype-for-i915_vma_offset().-Prototype-was-for-i915_vma_size()-instead
 
->   	depends on HAS_IOMEM
->   	select TIMER_OF
->   	select CLKSRC_MMIO
-> diff --git a/drivers/clocksource/timer-mediatek.c b/drivers/clocksource/timer-mediatek.c
-> index 7bcb4a3f26fb..3448848682c0 100644
-> --- a/drivers/clocksource/timer-mediatek.c
-> +++ b/drivers/clocksource/timer-mediatek.c
-> @@ -13,6 +13,9 @@
->   #include <linux/clocksource.h>
->   #include <linux/interrupt.h>
->   #include <linux/irqreturn.h>
-> +#include <linux/module.h>
-> +#include <linux/of_device.h>
-> +#include <linux/platform_device.h>
->   #include <linux/sched_clock.h>
->   #include <linux/slab.h>
->   #include "timer-of.h"
-> @@ -337,5 +340,41 @@ static int __init mtk_gpt_init(struct device_node *node)
->   
->   	return 0;
->   }
-> +
-> +#ifdef MODULE
+elapsed time: 726m
 
-#ifndef MODULE
-... two lines...
-#else
-... a bunch of lines ...
-#endif
+configs tested: 151
+configs skipped: 15
 
-looks more readable. I'd go with that.
+tested configs:
+alpha                            allyesconfig   gcc  
+alpha                               defconfig   gcc  
+arc                              allyesconfig   gcc  
+arc                                 defconfig   gcc  
+arc                  randconfig-r013-20230416   gcc  
+arc                  randconfig-r025-20230417   gcc  
+arc                  randconfig-r043-20230416   gcc  
+arc                  randconfig-r043-20230417   gcc  
+arc                  randconfig-r043-20230418   gcc  
+arm                              allmodconfig   gcc  
+arm                              allyesconfig   gcc  
+arm          buildonly-randconfig-r005-20230416   clang
+arm                                 defconfig   gcc  
+arm                  randconfig-r011-20230416   clang
+arm                  randconfig-r021-20230416   clang
+arm                  randconfig-r025-20230416   clang
+arm                  randconfig-r034-20230417   clang
+arm                  randconfig-r034-20230418   gcc  
+arm                  randconfig-r035-20230418   gcc  
+arm                  randconfig-r046-20230416   clang
+arm                  randconfig-r046-20230417   gcc  
+arm                  randconfig-r046-20230418   clang
+arm64                            allyesconfig   gcc  
+arm64                               defconfig   gcc  
+arm64                randconfig-r004-20230418   clang
+arm64                randconfig-r006-20230417   gcc  
+arm64                randconfig-r012-20230416   gcc  
+arm64                randconfig-r026-20230416   gcc  
+csky                                defconfig   gcc  
+csky                 randconfig-r016-20230417   gcc  
+csky                 randconfig-r023-20230416   gcc  
+csky                 randconfig-r035-20230417   gcc  
+hexagon              randconfig-r001-20230417   clang
+hexagon              randconfig-r041-20230416   clang
+hexagon              randconfig-r041-20230417   clang
+hexagon              randconfig-r041-20230418   clang
+hexagon              randconfig-r045-20230416   clang
+hexagon              randconfig-r045-20230417   clang
+hexagon              randconfig-r045-20230418   clang
+i386                             allyesconfig   gcc  
+i386                              debian-10.3   gcc  
+i386                                defconfig   gcc  
+i386                          randconfig-a001   gcc  
+i386                          randconfig-a002   clang
+i386                          randconfig-a003   gcc  
+i386                          randconfig-a004   clang
+i386                          randconfig-a005   gcc  
+i386                          randconfig-a006   clang
+i386                 randconfig-a011-20230417   clang
+i386                 randconfig-a012-20230417   clang
+i386                 randconfig-a013-20230417   clang
+i386                 randconfig-a014-20230417   clang
+i386                 randconfig-a015-20230417   clang
+i386                 randconfig-a016-20230417   clang
+i386                 randconfig-r023-20230417   clang
+ia64                             allmodconfig   gcc  
+ia64         buildonly-randconfig-r001-20230417   gcc  
+ia64         buildonly-randconfig-r005-20230418   gcc  
+ia64                                defconfig   gcc  
+ia64                 randconfig-r004-20230416   gcc  
+ia64                 randconfig-r005-20230416   gcc  
+ia64                 randconfig-r006-20230416   gcc  
+loongarch                        allmodconfig   gcc  
+loongarch                         allnoconfig   gcc  
+loongarch                           defconfig   gcc  
+m68k                             allmodconfig   gcc  
+m68k         buildonly-randconfig-r006-20230416   gcc  
+m68k                                defconfig   gcc  
+m68k                 randconfig-r005-20230418   gcc  
+m68k                 randconfig-r006-20230418   gcc  
+m68k                 randconfig-r014-20230417   gcc  
+m68k                 randconfig-r031-20230417   gcc  
+m68k                 randconfig-r033-20230418   gcc  
+m68k                 randconfig-r035-20230416   gcc  
+m68k                 randconfig-r036-20230417   gcc  
+microblaze   buildonly-randconfig-r004-20230418   gcc  
+microblaze   buildonly-randconfig-r006-20230418   gcc  
+microblaze           randconfig-r003-20230416   gcc  
+microblaze           randconfig-r021-20230417   gcc  
+microblaze           randconfig-r024-20230416   gcc  
+mips                             allmodconfig   gcc  
+mips                             allyesconfig   gcc  
+mips                 randconfig-r002-20230418   gcc  
+mips                 randconfig-r004-20230417   clang
+nios2        buildonly-randconfig-r001-20230416   gcc  
+nios2                               defconfig   gcc  
+nios2                randconfig-r005-20230417   gcc  
+nios2                randconfig-r022-20230417   gcc  
+openrisc             randconfig-r031-20230418   gcc  
+parisc       buildonly-randconfig-r003-20230416   gcc  
+parisc                              defconfig   gcc  
+parisc64                            defconfig   gcc  
+powerpc                          allmodconfig   gcc  
+powerpc                           allnoconfig   gcc  
+powerpc      buildonly-randconfig-r003-20230417   clang
+powerpc      buildonly-randconfig-r004-20230417   clang
+powerpc              randconfig-r016-20230416   gcc  
+powerpc              randconfig-r032-20230416   clang
+riscv                            allmodconfig   gcc  
+riscv                             allnoconfig   gcc  
+riscv        buildonly-randconfig-r001-20230418   gcc  
+riscv                               defconfig   gcc  
+riscv                randconfig-r002-20230417   gcc  
+riscv                randconfig-r015-20230416   gcc  
+riscv                randconfig-r033-20230417   gcc  
+riscv                randconfig-r034-20230416   clang
+riscv                randconfig-r042-20230416   gcc  
+riscv                randconfig-r042-20230417   clang
+riscv                randconfig-r042-20230418   gcc  
+riscv                          rv32_defconfig   gcc  
+s390                             allmodconfig   gcc  
+s390                             allyesconfig   gcc  
+s390         buildonly-randconfig-r004-20230416   gcc  
+s390                                defconfig   gcc  
+s390                 randconfig-r012-20230417   clang
+s390                 randconfig-r015-20230417   clang
+s390                 randconfig-r044-20230416   gcc  
+s390                 randconfig-r044-20230417   clang
+s390                 randconfig-r044-20230418   gcc  
+sh                               allmodconfig   gcc  
+sh           buildonly-randconfig-r002-20230416   gcc  
+sh           buildonly-randconfig-r005-20230417   gcc  
+sh                   randconfig-r001-20230418   gcc  
+sh                   randconfig-r003-20230417   gcc  
+sh                   randconfig-r031-20230416   gcc  
+sh                   randconfig-r036-20230416   gcc  
+sparc                               defconfig   gcc  
+sparc                randconfig-r032-20230417   gcc  
+sparc                randconfig-r036-20230418   gcc  
+sparc64      buildonly-randconfig-r002-20230417   gcc  
+sparc64      buildonly-randconfig-r003-20230418   gcc  
+um                             i386_defconfig   gcc  
+um                           x86_64_defconfig   gcc  
+x86_64                            allnoconfig   gcc  
+x86_64                           allyesconfig   gcc  
+x86_64                              defconfig   gcc  
+x86_64                                  kexec   gcc  
+x86_64               randconfig-a001-20230417   gcc  
+x86_64               randconfig-a002-20230417   gcc  
+x86_64               randconfig-a003-20230417   gcc  
+x86_64               randconfig-a004-20230417   gcc  
+x86_64               randconfig-a005-20230417   gcc  
+x86_64               randconfig-a006-20230417   gcc  
+x86_64               randconfig-a011-20230417   clang
+x86_64               randconfig-a012-20230417   clang
+x86_64               randconfig-a013-20230417   clang
+x86_64               randconfig-a014-20230417   clang
+x86_64               randconfig-a015-20230417   clang
+x86_64               randconfig-a016-20230417   clang
+x86_64                               rhel-8.3   gcc  
+xtensa               randconfig-r001-20230416   gcc  
 
-> +static int mtk_timer_probe(struct platform_device *pdev)
-> +{
-> +	int (*timer_init)(struct device_node *node);
-> +	struct device_node *np = pdev->dev.of_node;
-> +
-> +	timer_init = of_device_get_match_data(&pdev->dev);
-> +	return timer_init(np);
-> +}
-> +
-> +static const struct of_device_id mtk_timer_match_table[] = {
-> +	{
-> +		.compatible = "mediatek,mt6577-timer",
-> +		.data = mtk_gpt_init,
-
-Fits in one line!
-
-> +	},
-> +	{
-> +		.compatible = "mediatek,mt6765-timer",
-> +		.data = mtk_syst_init,
-
-ditto.
-
-> +	},
-> +	{}
-
-Always end with { /* sentinel */ }
-
-> +};
-> +
-> +static struct platform_driver mtk_timer_driver = {
-> +	.probe = mtk_timer_probe,
-> +	.driver = {
-> +		.name = "mtk-timer",
-
-"mediatek-timer" looks nicer :-)
-
-> +		.of_match_table = mtk_timer_match_table,
-> +	},
-> +};
-> +module_platform_driver(mtk_timer_driver);
-> +
-> +MODULE_DESCRIPTION("MediaTek Module Timer driver");
-
-"MediaTek Timer driver" is enough, "Module" gets misleading if this gets compiled
-as built in platform driver (instead of built in timer_of).
-
-> +MODULE_LICENSE("GPL v2");
-> +#else
->   TIMER_OF_DECLARE(mtk_mt6577, "mediatek,mt6577-timer", mtk_gpt_init);
->   TIMER_OF_DECLARE(mtk_mt6765, "mediatek,mt6765-timer", mtk_syst_init);
-> +#endif
-
-
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
 
