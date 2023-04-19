@@ -4,75 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9441C6FD18
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Apr 2023 10:21:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CC3FC6FD18
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Apr 2023 10:45:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=NEe0NpnWpFWLDYDVlG1mOdgbx4oOhUH/eiSAn6qpqbg=; b=Jd/wmQUcrdHGS/N3kwUBqLRP7R
-	+ckivZNYzg8cx11eSP78cwgTikH1IiXVqn372zxmng7PiINhCdkkI91rnkysDG54ykZVEEHxo+1Oa
-	T5tOtdwDwkoO40kJtJ85wXjgevbWphn/jLbOl/crmzvBSx0o+NJ7ogEJbPcYFlVKqiM0MYICJB8En
-	PBUj1H7v+0+dwCP6qsnLrAbnwfmV674VkHAvCvqcjcTklcAizaxBvc+4rF/HL8iL31ABzTac3sBXs
-	pcC2h4k4S8oOCPAyGFt+ajPgjW4SV37Fd5EHxUp3YGgo3Lf+zJiLY1VIaJrJ+wXnwv/TAYaZ6ue3M
-	kSNaYtCA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZC1F9AUB3Liv54B7ZdgG3WiGq9lyqgr8Df3/jIkfoOU=; b=r0OAhymVRCcayox/ko195nrr+X
+	x5llQ29X/0kK9zxn4ElHw2M3viL1VAH2g5A2LwmvbY7/8wS3u565Qxq3CbTNWJMFNx4NcPN2VXfk4
+	Db/x3WEcHO26HuNe3vrVmM2iZdfmIpqJriq5rFmgrvDpxLcNzwoOGV/p170TPgNIzRnwo9ntiBJPc
+	CUJYfgAdyXqYxGTqa2KpD62jCzSQJF302/9kS7WOcxAnU54Wsuzl2b7QyYdDcJMxxctHXjRHKFUsW
+	JUmz+X+Sur72BfYi6zCRfFgPgPGgeoULePowE9RtNfQMy5vkN8yyYEV/eb3ddN/YUJqLA27rH5iIr
+	PT5LVBwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pp4vp-004snD-24;
-	Wed, 19 Apr 2023 10:20:57 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1pp5J2-0054qY-1W;
+	Wed, 19 Apr 2023 10:44:56 +0000
+Received: from mail-il1-x12c.google.com ([2607:f8b0:4864:20::12c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pp4vm-004smE-0p
+	id 1pp5Iz-0054pE-12
 	for linux-mediatek@lists.infradead.org;
-	Wed, 19 Apr 2023 10:20:55 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-3f17b967bfbso28025455e9.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 19 Apr 2023 03:20:54 -0700 (PDT)
+	Wed, 19 Apr 2023 10:44:54 +0000
+Received: by mail-il1-x12c.google.com with SMTP id e9e14a558f8ab-32b437f4607so5165025ab.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 19 Apr 2023 03:44:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1681899653; x=1684491653;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=NEe0NpnWpFWLDYDVlG1mOdgbx4oOhUH/eiSAn6qpqbg=;
-        b=WLazIsjjrYAGGyIiKWVBk+lEgPzUZOsdUJ3FA156vbrHSGMeBw4b5pxZUsyy7iwpar
-         gd6s1/pi2PRr8GJrXx7OQHcI8kWetTFJvg+0ZdZrbteaFIhan1EuMxrkXj9XBShfh99r
-         2VUMCNG0oLLfaSsHPGlX1nqjRlhaGs7wv5g2A8R/YGK8xsDi5eyopoTw6j7NZ5e3qelZ
-         X3FkbBbK029Z52fVZ4lxmx8nQtFZeETrnICFtuc5ASVX7SDuwHRMWrHPRS0Wlm1IEPIv
-         ImIv7bimBRBJS8GIpp4vQUjwJGeXTg2Y6judfzq7FVvp8cG57UBALsWmenMopNzASvgO
-         SgjA==
+        d=chromium.org; s=google; t=1681901090; x=1684493090;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ZC1F9AUB3Liv54B7ZdgG3WiGq9lyqgr8Df3/jIkfoOU=;
+        b=DkzPBN9I5LHhIsDlFpY1hThuwHGBVF2rLOb3SSNH5om9lIwYi8QR+lhZK5wDHD35QZ
+         h/bo7dbB7insCGHEs4pfMu+B7EMTB/xVkL38LttW7JheuaN3uHwAdZIW0bwxJWByL/l6
+         iFYZyWdf7TeMzDDbSEXN6G5dk3QbKIJQi9elg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681899653; x=1684491653;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=NEe0NpnWpFWLDYDVlG1mOdgbx4oOhUH/eiSAn6qpqbg=;
-        b=W5h0NGB2x2QdQ85iO/zXPFvXUETKWtAvvRW1PfeG2Tuz4prWvouXLjIRuUsFS/S52S
-         EkRj1TzAVxWjjzu/ugAZ4f1IdIk4o4tHcinf7Fb5BYWWMZXfoKKxK21UAS4jkuA4Rl8R
-         AV1i7YxWTjH8H5buF2hcLak+BeZUQnMlQ2Ga3sz6OvE8JvgqQ5RaxgRXT6x3PaRat8aD
-         u/V7BoQSzvcdQVWGnemKVZ25baQ3FjwUgfy392MLr5Gm47yPUBrWz4FlP/Rxpi76ZYP+
-         OLWmosDmeNaJsaLJVmQf8PtBRCARi+lnyXwMrVs3rsGFIstLZv3PBJgIl/sepBfNX414
-         tsIA==
-X-Gm-Message-State: AAQBX9f+bwbxFlFqsY9BAKiEzfqfEmAp80JxYi/qiNkt46o1DUsvrGUp
-	LJR4oXc+E43ZGLqDinQQcbO65Edq/fVahboZiX3G8E03
-X-Google-Smtp-Source: AKy350Zly8Abjlk5FZCpkeo/ALvtL4giCpBEjXOQsTfnwJBECnf+5G1Ls+akQW5tArxj5F4kV2NRcQ==
-X-Received: by 2002:adf:f0d1:0:b0:2f1:ef98:8d18 with SMTP id x17-20020adff0d1000000b002f1ef988d18mr1585359wro.26.1681899652946;
-        Wed, 19 Apr 2023 03:20:52 -0700 (PDT)
-Received: from localhost ([102.36.222.112])
-        by smtp.gmail.com with ESMTPSA id h12-20020adffa8c000000b002d322b9a7f5sm15447841wrr.88.2023.04.19.03.20.49
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 19 Apr 2023 03:20:52 -0700 (PDT)
-Date: Wed, 19 Apr 2023 13:20:39 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: nancy.lin@mediatek.com
-Cc: linux-mediatek@lists.infradead.org
-Subject: [bug report] drm/mediatek: Add drm ovl_adaptor sub driver for MT8195
-Message-ID: <58bfb6b0-8dea-4d96-925e-bb96d80629b2@kili.mountain>
+        d=1e100.net; s=20221208; t=1681901090; x=1684493090;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=ZC1F9AUB3Liv54B7ZdgG3WiGq9lyqgr8Df3/jIkfoOU=;
+        b=F8H2w+geB0hpkOv1gQi6Qwn/f0ckhKOH6Tq6wIlrfbr3JH0WJJI/17/6+9NewH4w8a
+         GAkFoIVGMeP+NGzz2zjXR1OqB1ciG+wfl+0uOfOADsj0TecYxNZ4juXaZjQsLYFJhhbE
+         Xzh+3gsVe1n5Cc54ZlY2O1gCUljq+01LvHbfpUjpKWnrhC1AG3Ft7NxkryjeYxQERtRG
+         geT+TKmIQyVRgzQzY3xHr9O9sU7PynXH1CoOF1kFKGgRed1K0qgVmBtlaxqMyDBazb2p
+         WrvlbWHM9g77g14R31DVHQs9he91xSqgW7CGPpmSfy4uX8DQtnLaWRYfmn0H9A9e2I9s
+         OU1A==
+X-Gm-Message-State: AAQBX9esU3G1OKzTLo5O7ltMsF3gr5HZZip7wORAK55Wo/UBotRsn/Iw
+	Z5WYWHlXu/cDKYxXZKMcIw+G7UQfmmqLd3vVZPj/3ZwH
+X-Google-Smtp-Source: AKy350YhPLU/v8Aan9+VDXBuKE3HAPDQtGUFMenKq/fBz1hh1EkbnMOOqwDazSACiokpa44UJh/HlA==
+X-Received: by 2002:a92:cb52:0:b0:32b:68e9:9ea7 with SMTP id f18-20020a92cb52000000b0032b68e99ea7mr3429778ilq.11.1681901090058;
+        Wed, 19 Apr 2023 03:44:50 -0700 (PDT)
+Received: from mail-il1-f173.google.com (mail-il1-f173.google.com. [209.85.166.173])
+        by smtp.gmail.com with ESMTPSA id p71-20020a02294a000000b0040f6f565d5dsm4580533jap.97.2023.04.19.03.44.48
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 19 Apr 2023 03:44:48 -0700 (PDT)
+Received: by mail-il1-f173.google.com with SMTP id e9e14a558f8ab-32ac0743030so27417665ab.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 19 Apr 2023 03:44:48 -0700 (PDT)
+X-Received: by 2002:a92:ced0:0:b0:329:4c5e:15d8 with SMTP id
+ z16-20020a92ced0000000b003294c5e15d8mr10421971ilq.2.1681901088205; Wed, 19
+ Apr 2023 03:44:48 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+References: <20230418124953.3170028-1-fshao@chromium.org> <20230418124953.3170028-2-fshao@chromium.org>
+ <ZD8z57MBvcfExJx8@nixie71>
+In-Reply-To: <ZD8z57MBvcfExJx8@nixie71>
+From: Fei Shao <fshao@chromium.org>
+Date: Wed, 19 Apr 2023 18:44:11 +0800
+X-Gmail-Original-Message-ID: <CAC=S1ngBt9DmBobMkQXWhqE1UUxFv2U6iFd42nT=1N7r8+pFUg@mail.gmail.com>
+Message-ID: <CAC=S1ngBt9DmBobMkQXWhqE1UUxFv2U6iFd42nT=1N7r8+pFUg@mail.gmail.com>
+Subject: Re: [PATCH 1/2] dt-bindings: input: goodix: Add powered-in-suspend property
+To: Jeff LaBundy <jeff@labundy.com>
+Cc: Benjamin Tissoires <benjamin.tissoires@redhat.com>, Douglas Anderson <dianders@chromium.org>, 
+	Rob Herring <robh+dt@kernel.org>, linux-mediatek <linux-mediatek@lists.infradead.org>, 
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, devicetree@vger.kernel.org, 
+	linux-input@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230419_032054_295434_D0D1A515 
-X-CRM114-Status: UNSURE (   7.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230419_034453_382689_9BBE1408 
+X-CRM114-Status: GOOD (  30.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,87 +99,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Nancy.Lin,
+Hi Jeff,
 
-The patch 0d9eee9118b7: "drm/mediatek: Add drm ovl_adaptor sub driver
-for MT8195" from Mar 21, 2023, leads to the following Smatch static
-checker warning:
+On Wed, Apr 19, 2023 at 8:21=E2=80=AFAM Jeff LaBundy <jeff@labundy.com> wro=
+te:
+>
+> Hi Fei,
+>
+> On Tue, Apr 18, 2023 at 08:49:51PM +0800, Fei Shao wrote:
+> > We observed that on Chromebook device Steelix, if Goodix GT7375P
+> > touchscreen is powered in suspend (because, for example, it connects to
+> > an always-on regulator) and with the reset GPIO asserted, it will
+> > introduce about 14mW power leakage.
+> >
+> > This property is used to indicate that the touchscreen is powered in
+> > suspend. If it's set, the driver will stop asserting the reset GPIO in
+> > power-down, and it will do it in power-up instead to ensure that the
+> > state is always reset after resuming.
+> >
+> > Signed-off-by: Fei Shao <fshao@chromium.org>
+> > ---
+>
+> This is an interesting problem; were you able to root-cause why the silic=
+on
+> exhibits this behavior? Simply asserting reset should not cause it to dra=
+w
+> additional power, let alone 14 mW. This almost sounds like a back-powerin=
+g
+> problem during suspend.
+>
+There was a fix for this behavior before so I didn't dig into it on
+the silicon side.
+I can ask internally and see if we can have Goodix to confirm this is
+a known HW erratum.
 
-	drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c:606 mtk_ddp_comp_init()
-	error: uninitialized symbol 'comp_pdev'.
+> If this is truly expected behavior, is it sufficient to use the always_on
+> constraint of the relevant regulator(s) to make this decision as opposed =
+to
+> introducing a new property?
+>
+That sounds good to me. IIUC, for the existing designs, the boards
+that would set this property would also exclusively set
+`regulator-always-on` in their supply, so that should suffice.
+Let me revise the patch. Thanks!
 
-drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-    546 int mtk_ddp_comp_init(struct device_node *node, struct mtk_ddp_comp *comp,
-    547                       unsigned int comp_id)
-    548 {
-    549         struct platform_device *comp_pdev;
-    550         enum mtk_ddp_comp_type type;
-    551         struct mtk_ddp_comp_dev *priv;
-    552 #if IS_REACHABLE(CONFIG_MTK_CMDQ)
-    553         int ret;
-    554 #endif
-    555 
-    556         if (comp_id < 0 || comp_id >= DDP_COMPONENT_DRM_ID_MAX)
-    557                 return -EINVAL;
-    558 
-    559         type = mtk_ddp_matches[comp_id].type;
-    560 
-    561         comp->id = comp_id;
-    562         comp->funcs = mtk_ddp_matches[comp_id].funcs;
-    563         /* Not all drm components have a DTS device node, such as ovl_adaptor,
-    564          * which is the drm bring up sub driver
-    565          */
-    566         if (node) {
-    567                 comp_pdev = of_find_device_by_node(node);
-    568                 if (!comp_pdev) {
-    569                         DRM_INFO("Waiting for device %s\n", node->full_name);
-    570                         return -EPROBE_DEFER;
-    571                 }
-    572                 comp->dev = &comp_pdev->dev;
-    573         }
-
-comp_pdev not initialized on else path.
-
-    574 
-    575         if (type == MTK_DISP_AAL ||
-    576             type == MTK_DISP_BLS ||
-    577             type == MTK_DISP_CCORR ||
-    578             type == MTK_DISP_COLOR ||
-    579             type == MTK_DISP_GAMMA ||
-    580             type == MTK_DISP_MERGE ||
-    581             type == MTK_DISP_OVL ||
-    582             type == MTK_DISP_OVL_2L ||
-    583             type == MTK_DISP_OVL_ADAPTOR ||
-    584             type == MTK_DISP_PWM ||
-    585             type == MTK_DISP_RDMA ||
-    586             type == MTK_DPI ||
-    587             type == MTK_DP_INTF ||
-    588             type == MTK_DSI)
-    589                 return 0;
-    590 
-    591         priv = devm_kzalloc(comp->dev, sizeof(*priv), GFP_KERNEL);
-    592         if (!priv)
-    593                 return -ENOMEM;
-    594 
-    595         priv->regs = of_iomap(node, 0);
-    596         priv->clk = of_clk_get(node, 0);
-    597         if (IS_ERR(priv->clk))
-    598                 return PTR_ERR(priv->clk);
-    599 
-    600 #if IS_REACHABLE(CONFIG_MTK_CMDQ)
-    601         ret = cmdq_dev_get_client_reg(comp->dev, &priv->cmdq_reg, 0);
-    602         if (ret)
-    603                 dev_dbg(comp->dev, "get mediatek,gce-client-reg fail!\n");
-    604 #endif
-    605 
---> 606         platform_set_drvdata(comp_pdev, priv);
-                                     ^^^^^^^^^
-Warning msg triggered here.
-
-    607 
-    608         return 0;
-    609 }
-
-regards,
-dan carpenter
+Fei
+> >
+> >  Documentation/devicetree/bindings/input/goodix,gt7375p.yaml | 6 ++++++
+> >  1 file changed, 6 insertions(+)
+> >
+> > diff --git a/Documentation/devicetree/bindings/input/goodix,gt7375p.yam=
+l b/Documentation/devicetree/bindings/input/goodix,gt7375p.yaml
+> > index ce18d7dadae2..942acb286d77 100644
+> > --- a/Documentation/devicetree/bindings/input/goodix,gt7375p.yaml
+> > +++ b/Documentation/devicetree/bindings/input/goodix,gt7375p.yaml
+> > @@ -43,6 +43,12 @@ properties:
+> >        itself as long as it allows the main board to make signals compa=
+tible
+> >        with what the touchscreen is expecting for its IO rails.
+> >
+> > +  powered-in-suspend:
+> > +    description:
+> > +      This indicates that the touchscreen is powered in suspend, so th=
+e driver
+> > +      will not assert the reset GPIO in power-down to prevent power le=
+akage.
+> > +    type: boolean
+> > +
+> >  required:
+> >    - compatible
+> >    - reg
+> > --
+> > 2.40.0.634.g4ca3ef3211-goog
+> >
+>
+> Kind regards,
+> Jeff LaBundy
 
