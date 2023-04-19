@@ -4,87 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F312AC77B73
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Apr 2023 14:38:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39591C77B75
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Apr 2023 15:10:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ilxu6Q/jc5aOhDRIt3j6AWcNhm/qlHFPZW+HtjiMVA4=; b=2F40s6uDM8uUxD6wnNGlSk7w3m
-	F4pWiXX0wPDnAu4hqOzr44jZNcAaQL5kgY+mrnJS0XDyh38dlfRkcdMQ+7g2lhIhGbbob6mZp5JOW
-	rRKrzwxUgdT76YJFc557ATkb1Iw2YTMWNyMdoREybwWkPDPh8EbLA48aOWeECJ75B/4lnFfqlHrhd
-	gb6K182FcHEVQ4L5pr7f7jx8YwzQQnekoAyWT+CuROk3NX7ZYydaPI0QIsP+rlIwhcRwLE82s5Bzz
-	g2n7kvquhV2GN6Ov+2AqnBCXPN07mHedQIc8EWqEjglcEy95eNvq4oc0LlB46pdrxZJIY6wlHCKau
-	XUMl5VQA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9xYRx4lxSwrTz8KomOP3X7PYWUvothv5g/ZoMajkQIs=; b=pwXucDshV0Vbz/6B/ERc97rOUj
+	0Yj+VHpmFXzEsytnOM11tcmUbvmFndOTp4dVbuVhbAQ9jPZoD5XVKZ6QHfMBCTr9owb8VcMlxHJNQ
+	wye2UvrQq9jZi7PmsAq+Bljxab5OO+0jJagoAeRFV8otIssw4YUSlXHx8tkk4eDBjYAd4/UUMwW8V
+	D/aoEgHz2kGPgDY4TtSTDXelPtiS4t305jlzpOV3RT7d5PXd3Uh3dh2LibwUpTV2oFGlu2X6OdKKB
+	d6snUT44dWkLoU29ZsTTOg0pQfNn8MVWZLtFUfY+yp2GPtwuhaEeUw2lhidzRR2Q0lS0gqKRRRSWt
+	9r2KjRWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pp8xB-005hDU-2o;
-	Wed, 19 Apr 2023 14:38:37 +0000
-Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
+	id 1pp9RU-005kSB-0H;
+	Wed, 19 Apr 2023 15:09:56 +0000
+Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pp8x8-005hBe-1u
+	id 1pp9RQ-005kQu-1z
 	for linux-mediatek@lists.infradead.org;
-	Wed, 19 Apr 2023 14:38:36 +0000
-Received: by mail-yw1-x1132.google.com with SMTP id 00721157ae682-54fbee98814so1374997b3.8
-        for <linux-mediatek@lists.infradead.org>; Wed, 19 Apr 2023 07:38:30 -0700 (PDT)
+	Wed, 19 Apr 2023 15:09:54 +0000
+Received: by mail-pg1-x52e.google.com with SMTP id 41be03b00d2f7-52160f75920so229584a12.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 19 Apr 2023 08:09:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1681915109; x=1684507109;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Ilxu6Q/jc5aOhDRIt3j6AWcNhm/qlHFPZW+HtjiMVA4=;
-        b=Y4Dwi9Qjd7z55btxkOVIzDbrweoWBrZC0tXJKFLazw/HJwdo2SrulBS23eyI1GNc0Y
-         vtkcBEBX01QiRtQrv3nvwelmqLNUCSDxDLr9X75fQEaJ3JhNV3WH7C8F6/DXNEhw95cu
-         DXpqLmUHa+yl73oQMUtUrbaY+fHJf9vYv7nLQ=
+        d=linaro.org; s=google; t=1681916990; x=1684508990;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=9xYRx4lxSwrTz8KomOP3X7PYWUvothv5g/ZoMajkQIs=;
+        b=sXPBCslnv6R9uVZX7Gq3xtSsKpgzb0/01i98xXOZQx+KbP4KqVddhPYdcEVIH92o4/
+         pmZSEaoq7K27ohwgJ+wenSjn0dMQerb+uCo2ZucB/ttrkOH+5nH3PbagzZ3PTu4MLinA
+         TuKX/J6WZKuecdQ+SbtWPDBxIT9YSQFdk9EpXU82KxmWB7eepY+FOWYRQZw89n6lAOaK
+         XrVRagqX0pIaFphG3FrY/Kf+S15ViKgyd1zdDEgbm2ZGDCRg5ygwZkCfIxnA/TylLYqo
+         kupYb4zacsCkJMBL3td7FdPMMyd0LNOaVeCVWWXhum1Qx2Kzg3cACS2tSOJI8K/kMrPz
+         X4Yg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681915109; x=1684507109;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Ilxu6Q/jc5aOhDRIt3j6AWcNhm/qlHFPZW+HtjiMVA4=;
-        b=dfF3KezNWWv/CYJqRFkKT7/cBU2c1ESZYneD9jdKHyOx89VD0crwDBeTBcXc6yD6o/
-         ju2BYnzHP437lGhN8O0SVVZiFPJKeSSWlKlRccxbEUiXqzgy8XfwZINSNg+mMkTPFFly
-         +e/sWL8vbk7mBFOGCvLMs5gK6azo9+07/++q2ZZd8dsPvMc2l8zwJOYbYNlvvCXjoIR4
-         L3HXoPwtZCj1rbTCFsbDq/urRKZqCTKJ2gzS4qAdQK++CW0Rum+omr2rFN3Inab7lOT1
-         7mmabXC7WTx3amLF0Hyy2I+f5AYeEZVrd1OzUocOaq0aU+uNXJNE0EPTVykhQneHaFgn
-         B26g==
-X-Gm-Message-State: AAQBX9fFx6VAXeNt3IGLYDm7jhJwmSgEQN/bpHo1SvraRBj0w3fnaclK
-	LJSdvPN6dldfVh6rheTOqTN9Cl0GS/CZ5d0bqxz5xQ==
-X-Google-Smtp-Source: AKy350Z1eYFXlv8QGfwcJyOtsMfmSR/5IqWu1Wwud8MWJzA2qeEv59OAm+7GQxEV66bFxL4Rp2UTUw==
-X-Received: by 2002:a0d:eb04:0:b0:552:e5d9:1e6e with SMTP id u4-20020a0deb04000000b00552e5d91e6emr3773803ywe.44.1681915107859;
-        Wed, 19 Apr 2023 07:38:27 -0700 (PDT)
-Received: from mail-yb1-f182.google.com (mail-yb1-f182.google.com. [209.85.219.182])
-        by smtp.gmail.com with ESMTPSA id b186-20020a811bc3000000b0054eff15530asm4482772ywb.90.2023.04.19.07.38.26
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 19 Apr 2023 07:38:26 -0700 (PDT)
-Received: by mail-yb1-f182.google.com with SMTP id n17so4799583ybq.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 19 Apr 2023 07:38:26 -0700 (PDT)
-X-Received: by 2002:a25:7687:0:b0:b96:7676:db4a with SMTP id
- r129-20020a257687000000b00b967676db4amr16246ybc.0.1681915105828; Wed, 19 Apr
- 2023 07:38:25 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1681916990; x=1684508990;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=9xYRx4lxSwrTz8KomOP3X7PYWUvothv5g/ZoMajkQIs=;
+        b=FTvkajl1UrlPCu1irXJJtTufoorFMqrEnTZfXzvWk1lsnDXhfrLSaGx02O2fSEFpEY
+         mdFVJ6QiWkSAGVI4b0KQ+YFOG/c9hHsC2lIzcDkASd/BiIs3qepu5fHllTib0UhjzaIa
+         a0tCh578DLYgN55g+dfnpo/2u+cS1CpkKTH3u7FhD0rlhjCIoQayJB1NTgybfrEFtmIs
+         CZuofYNlebTZlmg9gCE8QX5ZM+C9coQdtylm97oT244ZMJKXhkQ/mHhOK7rLi9V7ZRWK
+         OSF4h91MOx1Dr+mCsvBszxtIzAF4/fOSe1CUQ6xbcUc/WZfDLwIkPY2Bf3cibcGh5nr1
+         OwJw==
+X-Gm-Message-State: AAQBX9fMIbY+FTaF3tJIX1WuweMDk9NoCDf0Cf86koh4KZ4ED4bEjLAz
+	NOLTseY7PGFVrLrFE75gcc6Few==
+X-Google-Smtp-Source: AKy350ZOsj/rgDa7m85kCFSt/yyAxPXdtikhF0MU23Wn0WjNTH8dh6EXRwbGslBJniiqLHyCe3xjGQ==
+X-Received: by 2002:a17:90a:72c8:b0:246:9bad:2354 with SMTP id l8-20020a17090a72c800b002469bad2354mr3110204pjk.43.1681916990193;
+        Wed, 19 Apr 2023 08:09:50 -0700 (PDT)
+Received: from p14s ([2604:3d09:148c:c800:302c:551a:91d2:840f])
+        by smtp.gmail.com with ESMTPSA id ip11-20020a17090b314b00b00246626343aesm1541885pjb.25.2023.04.19.08.09.48
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 19 Apr 2023 08:09:49 -0700 (PDT)
+Date: Wed, 19 Apr 2023 09:09:47 -0600
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: TingHan Shen =?utf-8?B?KOayiOW7t+e/sCk=?= <TingHan.Shen@mediatek.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"robh+dt@kernel.org" <robh+dt@kernel.org>,
+	"linux-remoteproc@vger.kernel.org" <linux-remoteproc@vger.kernel.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"andersson@kernel.org" <andersson@kernel.org>,
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v9 05/11] remoteproc: mediatek: Extract remoteproc
+ initialization flow
+Message-ID: <ZEAEO3ZOptIoIskz@p14s>
+References: <20230328022733.29910-1-tinghan.shen@mediatek.com>
+ <20230328022733.29910-6-tinghan.shen@mediatek.com>
+ <20230331174431.GA3504605@p14s>
+ <46baff1f95fa13976d7a07b5e50ff2175e464baa.camel@mediatek.com>
 MIME-Version: 1.0
-References: <20230418124953.3170028-1-fshao@chromium.org> <20230418124953.3170028-2-fshao@chromium.org>
- <ZD8z57MBvcfExJx8@nixie71> <CAC=S1ngBt9DmBobMkQXWhqE1UUxFv2U6iFd42nT=1N7r8+pFUg@mail.gmail.com>
-In-Reply-To: <CAC=S1ngBt9DmBobMkQXWhqE1UUxFv2U6iFd42nT=1N7r8+pFUg@mail.gmail.com>
-From: Doug Anderson <dianders@chromium.org>
-Date: Wed, 19 Apr 2023 07:38:13 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=U_i26a8uJYmqYf6PUgmTUgmEB5L2DkVga0zDX_iDcGQg@mail.gmail.com>
-Message-ID: <CAD=FV=U_i26a8uJYmqYf6PUgmTUgmEB5L2DkVga0zDX_iDcGQg@mail.gmail.com>
-Subject: Re: [PATCH 1/2] dt-bindings: input: goodix: Add powered-in-suspend property
-To: Fei Shao <fshao@chromium.org>
-Cc: Jeff LaBundy <jeff@labundy.com>, Benjamin Tissoires <benjamin.tissoires@redhat.com>, 
-	Rob Herring <robh+dt@kernel.org>, linux-mediatek <linux-mediatek@lists.infradead.org>, 
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, devicetree@vger.kernel.org, 
-	linux-input@vger.kernel.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <46baff1f95fa13976d7a07b5e50ff2175e464baa.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230419_073834_628429_8CB8E11F 
-X-CRM114-Status: GOOD (  34.94  )
+X-CRM114-CacheID: sfid-20230419_080953_114883_28B45C19 
+X-CRM114-Status: GOOD (  34.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,85 +105,156 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Wed, Apr 19, 2023 at 3:44=E2=80=AFAM Fei Shao <fshao@chromium.org> wrote=
-:
->
-> Hi Jeff,
->
-> On Wed, Apr 19, 2023 at 8:21=E2=80=AFAM Jeff LaBundy <jeff@labundy.com> w=
-rote:
-> >
-> > Hi Fei,
-> >
-> > On Tue, Apr 18, 2023 at 08:49:51PM +0800, Fei Shao wrote:
-> > > We observed that on Chromebook device Steelix, if Goodix GT7375P
-> > > touchscreen is powered in suspend (because, for example, it connects =
-to
-> > > an always-on regulator) and with the reset GPIO asserted, it will
-> > > introduce about 14mW power leakage.
-> > >
-> > > This property is used to indicate that the touchscreen is powered in
-> > > suspend. If it's set, the driver will stop asserting the reset GPIO i=
-n
-> > > power-down, and it will do it in power-up instead to ensure that the
-> > > state is always reset after resuming.
-> > >
-> > > Signed-off-by: Fei Shao <fshao@chromium.org>
+On Wed, Apr 19, 2023 at 03:38:14AM +0000, TingHan Shen (沈廷翰) wrote:
+> Hi Mathieu,
+> 
+> On Fri, 2023-03-31 at 11:44 -0600, Mathieu Poirier wrote:
+> > External email : Please do not click links or open attachments until you have verified the sender or the content.
+> > 
+> > 
+> > On Tue, Mar 28, 2023 at 10:27:27AM +0800, Tinghan Shen wrote:
+> > > This is the preparation for probing multi-core SCP. The remoteproc
+> > > initialization flow is similar on cores and is reused to avoid
+> > > redundant code.
+> > > 
+> > > The registers of config and l1tcm are shared for multi-core
+> > > SCP. Reuse the mapped addresses for all cores.
+> > > 
+> > > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+> > > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > > > ---
-> >
-> > This is an interesting problem; were you able to root-cause why the sil=
-icon
-> > exhibits this behavior? Simply asserting reset should not cause it to d=
-raw
-> > additional power, let alone 14 mW. This almost sounds like a back-power=
-ing
-> > problem during suspend.
-> >
-> There was a fix for this behavior before so I didn't dig into it on
-> the silicon side.
-> I can ask internally and see if we can have Goodix to confirm this is
-> a known HW erratum.
+> > >  drivers/remoteproc/mtk_scp.c | 64 +++++++++++++++++++++++++-----------
+> > >  1 file changed, 45 insertions(+), 19 deletions(-)
+> > > 
+> > > diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+> > > index a3b9bc158cd9..32ecd1450c6f 100644
+> > > --- a/drivers/remoteproc/mtk_scp.c
+> > > +++ b/drivers/remoteproc/mtk_scp.c
+> > > @@ -23,6 +23,13 @@
+> > >  #define MAX_CODE_SIZE 0x500000
+> > >  #define SECTION_NAME_IPI_BUFFER ".ipi_buffer"
+> > > 
+> > > +struct mtk_scp_of_regs {
+> > > +     void __iomem *reg_base;
+> > > +     void __iomem *l1tcm_base;
+> > > +     size_t l1tcm_size;
+> > > +     phys_addr_t l1tcm_phys;
+> > > +};
+> > > +
+> > 
+> > This should represent the cluster with a list of mtk_scp instead of @cluster_cores as
+> > introduced in the next patch.
+> 
+> If I'm understanding you correctly, you're suggesting that @cluster_cores should be included 
+> as a member of this structure. Is that correct?
 
-Certainly it doesn't hurt to check, but it's not really that shocking
-to me that asserting reset could cause a power draw on some hardware.
-Reset puts hardware into a default state and that's not necessarily
-low power. I guess ideally hardware would act like it's "off" when
-reset is asserted and then then init to the default state on the edge
-as reset was deasserted, but I not all hardware is designed in an
-ideal way.
+Correct.  Than this structure is allocated in probe() and added as driver data
+for the platform device.  Its name should also be something like
+mtk_scp_cluster or something like that.  I suggest you look at what has been
+done in ti_k3_r5_remoteproc.c, your end design should be quite similar to that.
+In fact you are close but a few things need to be addressed.
 
-
-> > If this is truly expected behavior, is it sufficient to use the always_=
-on
-> > constraint of the relevant regulator(s) to make this decision as oppose=
-d to
-> > introducing a new property?
-> >
-> That sounds good to me. IIUC, for the existing designs, the boards
-> that would set this property would also exclusively set
-> `regulator-always-on` in their supply, so that should suffice.
-> Let me revise the patch. Thanks!
-
-Yeah, I thought about this too and talked about it in my original
-reply. It doesn't handle the shared-rail case, but then again neither
-does ${SUBJECT} patch. ...then I guess the only argument against it is
-my argument that the regulator could be marked "always-on" in the
-device tree but still turned off by an external entity (PMIC or EC) in
-S3. In theory this should be specified by
-"regulator-state-(standby|mem|disk)", but I could believe it being
-tricky to figure out (what if a parent regulator gets turned off
-automatically but the child isn't explicit?). Specifically, if a
-regulator is always-on but somehow gets shut off in suspend then we
-_do_ want to assert reset (active low) during suspend, otherwise we'll
-have a power leak through the reset GPIO... :-P
-
-...so I guess I'll continue to assert that I don't think peeking at
-the regulator's "always-on" property is the best way to go. If
-everyone else disagrees with me then I won't stand in the way, but IMO
-the extra property like Fei's patch adds is better.
-
-[1] https://lore.kernel.org/r/CAD=3DFV=3DV8ZN3969RrPu2-zZYoEE=3DLDxpi8K_E8E=
-ziiDpGOSsq1w@mail.gmail.com
+> 
+> Best regards,
+> TingHan
+> 
+> > 
+> > >  /**
+> > >   * scp_get() - get a reference to SCP.
+> > >   *
+> > > @@ -855,7 +862,8 @@ static void scp_remove_rpmsg_subdev(struct mtk_scp *scp)
+> > >       }
+> > >  }
+> > > 
+> > > -static int scp_probe(struct platform_device *pdev)
+> > > +static int scp_rproc_init(struct platform_device *pdev,
+> > > +                       struct mtk_scp_of_regs *of_regs)
+> > >  {
+> > >       struct device *dev = &pdev->dev;
+> > >       struct device_node *np = dev->of_node;
+> > > @@ -879,6 +887,11 @@ static int scp_probe(struct platform_device *pdev)
+> > >       scp->data = of_device_get_match_data(dev);
+> > >       platform_set_drvdata(pdev, scp);
+> > > 
+> > > +     scp->reg_base = of_regs->reg_base;
+> > > +     scp->l1tcm_base = of_regs->l1tcm_base;
+> > > +     scp->l1tcm_size = of_regs->l1tcm_size;
+> > > +     scp->l1tcm_phys = of_regs->l1tcm_phys;
+> > > +
+> > >       res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "sram");
+> > >       scp->sram_base = devm_ioremap_resource(dev, res);
+> > >       if (IS_ERR(scp->sram_base))
+> > > @@ -888,24 +901,6 @@ static int scp_probe(struct platform_device *pdev)
+> > >       scp->sram_size = resource_size(res);
+> > >       scp->sram_phys = res->start;
+> > > 
+> > > -     /* l1tcm is an optional memory region */
+> > > -     res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "l1tcm");
+> > > -     scp->l1tcm_base = devm_ioremap_resource(dev, res);
+> > > -     if (IS_ERR(scp->l1tcm_base)) {
+> > > -             ret = PTR_ERR(scp->l1tcm_base);
+> > > -             if (ret != -EINVAL) {
+> > > -                     return dev_err_probe(dev, ret, "Failed to map l1tcm memory\n");
+> > > -             }
+> > > -     } else {
+> > 
+> >                 scp->l1tcm_base = NULL;
+> > 
+> > > -             scp->l1tcm_size = resource_size(res);
+> > > -             scp->l1tcm_phys = res->start;
+> > > -     }
+> > > -
+> > > -     scp->reg_base = devm_platform_ioremap_resource_byname(pdev, "cfg");
+> > > -     if (IS_ERR(scp->reg_base))
+> > > -             return dev_err_probe(dev, PTR_ERR(scp->reg_base),
+> > > -                                  "Failed to parse and map cfg memory\n");
+> > > -
+> > >       ret = scp->data->scp_clk_get(scp);
+> > >       if (ret)
+> > >               return ret;
+> > > @@ -957,6 +952,37 @@ static int scp_probe(struct platform_device *pdev)
+> > >       return ret;
+> > >  }
+> > > 
+> > > +static int scp_probe(struct platform_device *pdev)
+> > > +{
+> > > +     struct device *dev = &pdev->dev;
+> > > +     struct mtk_scp_of_regs scp_regs;
+> > > +     struct resource *res;
+> > > +     int ret;
+> > > +
+> > > +     res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "cfg");
+> > > +     scp_regs.reg_base = devm_ioremap_resource(dev, res);
+> > > +     if (IS_ERR(scp_regs.reg_base))
+> > > +             return dev_err_probe(dev, PTR_ERR(scp_regs.reg_base),
+> > > +                                  "Failed to parse and map cfg memory\n");
+> > > +
+> > > +     /* l1tcm is an optional memory region */
+> > > +     res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "l1tcm");
+> > > +     scp_regs.l1tcm_base = devm_ioremap_resource(dev, res);
+> > > +     if (IS_ERR(scp_regs.l1tcm_base)) {
+> > > +             ret = PTR_ERR(scp_regs.l1tcm_base);
+> > > +             if (ret != -EINVAL)
+> > > +                     return dev_err_probe(dev, ret, "Failed to map l1tcm memory\n");
+> > > +
+> > > +             scp_regs.l1tcm_size = 0;
+> > > +             scp_regs.l1tcm_phys = 0;
+> > > +     } else {
+> > > +             scp_regs.l1tcm_size = resource_size(res);
+> > > +             scp_regs.l1tcm_phys = res->start;
+> > > +     }
+> > > +
+> > > +     return scp_rproc_init(pdev, &scp_regs);
+> > > +}
+> > > +
+> > >  static int scp_remove(struct platform_device *pdev)
+> > >  {
+> > >       struct mtk_scp *scp = platform_get_drvdata(pdev);
+> > > --
+> > > 2.18.0
+> > > 
+> 
+> -- 
+> Best regards,
+> TingHan
 
