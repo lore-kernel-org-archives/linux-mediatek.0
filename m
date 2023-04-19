@@ -4,84 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46B8FC6FD18
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Apr 2023 13:52:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42C0DC77B73
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Apr 2023 14:30:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:MIME-Version:In-Reply-To:
-	References:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FPjrLq9D2NGXVQL2kIu0v3AaBsn7YPrZkOXYspxigx0=; b=JBItK0TnSSEo/OjVUBniUeWDIn
-	G7sE5ZNNrZj/wIS0U4v4ZMRiLtTLyrQ6Gk3Qnb7R7Rf0gM7CaKlcVm1tVhdqvJAAy0+Gvk8NZuIgz
-	sZ1l3R1rHKrD+T//mAGiNEPo2KgUkWJT5XocuR0rcaTl2vyYSkXtmmAFaAQlqHMfpZyNx+CMp7w2P
-	o4lAnOn21dZZIlmb7UGq0G+2arwI/dGPf5rIOxFsH9mHyXgkPNInmeKmCqDzf75K6PGCizfLYuIBx
-	3q/CFRgMNVLxnAXbTxztPhX7NAeh7z28P1FXhWegioMKwb/rIRcRiJLc8tMJtJ6WXmQ6FSgRIiGla
-	1BtsR3tw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=dCm+IgLcW6GU2C5O6111M1l5269Z3huwJVqMgl2CcbE=; b=ZZUb3T6luna7jyf/jo74z/IQnS
+	LWlgpuul+pVU4AhQTmE4NhefhiTFmx6HnAZaaTeVSq0z+GlYHzDJ/4oL3Xi9nx5TMYoUr6Moy9lAh
+	PTqmbXk44gGOvSopDysMWZ7ygASMjRqazcpTG8QoFL1+hc5T4QimGPMM2xiH29NJa6eyJkSunZmsj
+	2/Iy4trqHHoShPpaXgTqLxSuIOrh4MSh8Tlq6K40CWwr0tWIuOYt1GmiHdpJI8e+341nC2BpzOO5e
+	OS+6tpOVa62SL6cF8XBeUmjeqeJlXxZy/uPtS4BUyKjQ8wkSye7rOpea5Dskm0y2mcYB8wRgGjBLR
+	O1alH2Cg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pp8En-005ZP5-0m;
-	Wed, 19 Apr 2023 13:52:45 +0000
-Received: from mail-qv1-xf30.google.com ([2607:f8b0:4864:20::f30])
+	id 1pp8pZ-005g6C-3A;
+	Wed, 19 Apr 2023 14:30:45 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pp8Ei-005ZMS-0K
+	id 1pp8pX-005g2i-2b
 	for linux-mediatek@lists.infradead.org;
-	Wed, 19 Apr 2023 13:52:43 +0000
-Received: by mail-qv1-xf30.google.com with SMTP id o7so29055709qvs.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 19 Apr 2023 06:52:38 -0700 (PDT)
+	Wed, 19 Apr 2023 14:30:45 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-3f09b4a156eso23525075e9.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 19 Apr 2023 07:30:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1681912357; x=1684504357;
-        h=content-transfer-encoding:cc:to:subject:message-id:date
-         :mime-version:in-reply-to:references:user-agent:from:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=FPjrLq9D2NGXVQL2kIu0v3AaBsn7YPrZkOXYspxigx0=;
-        b=fi3j63QI2hRJJqEPPrC0RFh2ARuCl2lLAooXulavHnWokQVzUGIWqjFHEYBPcJ1OTi
-         wfnbfYwrLToEwwC8cMmIyPQgnCSgawqdR/wo/xo8Ri63rtB9WB0skau7BMYm9igb40+n
-         Il7yCzWrJKYa9+FtJBykUsfYCDg5ZR23Whx46r41NGYKp8oxRFAYU7cP1ppCNEARQ6p0
-         TSj9l0FZ34cztLvvNcJNGXUMoO/6AOIg+slZn7ytIodY+WO68mV1JVeu8/ppb0MBIsNN
-         v86q1naPa6AtheeVYvy1i51MaYf5miOUx4TBrB5k9I0K0mowEiEcUygWDp1RyQZt/4xv
-         YlGw==
+        d=linaro.org; s=google; t=1681914640; x=1684506640;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=dCm+IgLcW6GU2C5O6111M1l5269Z3huwJVqMgl2CcbE=;
+        b=m3j4mDzif3R3xAC9As18EgfUFgTbUvwaDJKU8oKJW6vg3SW6fF+Oo17L3fBuKD/qQP
+         oda2A9rVjuznyh6BFoX88TPNLolaaz6NcnQ/uvOmwb6G5blao3E9RBtVKCogfd2OY/+W
+         p1okWH5XbYrGrc4pGbaLhWP3Qzl6k7R6SC887U5FM6urhfKfkTGLcWsvZv/1YP7yyhjN
+         2mmeQOIX2LXhc/DryN7vvTuGMRAlk5Sz617pzHO7GeGj/RpaqiXL7jTL8N8+dSlX8S5o
+         Za+8cG4Dk9Xg76MQ162YZe1iIIJtibhqokaEd67in8M21KYmVZ+mKup84z+QbURKa5xA
+         QDPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681912357; x=1684504357;
-        h=content-transfer-encoding:cc:to:subject:message-id:date
-         :mime-version:in-reply-to:references:user-agent:from
+        d=1e100.net; s=20221208; t=1681914640; x=1684506640;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=FPjrLq9D2NGXVQL2kIu0v3AaBsn7YPrZkOXYspxigx0=;
-        b=dnxvS7b8x5/jKuEwzWqVXDM/Cand6Ep8OfRSRJM/PREZnsO8aown/LVY77Hixw8EsF
-         5QjhL1eUXz1+jbwbGWU1kx6tMRu7aU4QgS9elr7kTFxv0qEEw0raVy0bIb+cvLoqjmTf
-         /Z1nya8DoVnHsLOaiFdvD59hdmyWnGObjr6HtzlLfw3F/RmYdfCwq2W+2KB8WmgM/6Ja
-         3BLHGZu2kdw6Kx1TLX2ibLXv4dcQmt0UL/dxxeqEEdWDtj9sZ0g3oJi0SsRwTK83hx8+
-         SJCkPS+N2udv1c4WbOuwH8no4uTN1kRNY2Ee9hbBLV9ngk0f/YTE/VhowdTGplABrDB8
-         CKlA==
-X-Gm-Message-State: AAQBX9fGc3BwXoFrzhP/zPBFZjb0y9NcShB8VJAC2Mw1t4jcPVgLTeUQ
-	+4mIBrE3W7RW5tp8hui1NnA1s5NiNtzSjIou3ZMkCQ==
-X-Google-Smtp-Source: AKy350bqSRMHi7mtCynvIyCs4PEfhJSxOVP7yhnmkrSs9ps3OwCrZt5hBXC3DVgKOCg654JGHtMmNafIr7aQqM2fbKs=
-X-Received: by 2002:a05:6214:1c8a:b0:5ef:4ae4:4da6 with SMTP id
- ib10-20020a0562141c8a00b005ef4ae44da6mr22429745qvb.31.1681912357324; Wed, 19
- Apr 2023 06:52:37 -0700 (PDT)
-Received: from 753933720722 named unknown by gmailapi.google.com with
- HTTPREST; Wed, 19 Apr 2023 06:52:36 -0700
-From: Guillaume Ranquet <granquet@baylibre.com>
-User-Agent: meli 0.7.2
-References: <20230419122131.2167122-1-thierry.reding@gmail.com>
-In-Reply-To: <20230419122131.2167122-1-thierry.reding@gmail.com>
+        bh=dCm+IgLcW6GU2C5O6111M1l5269Z3huwJVqMgl2CcbE=;
+        b=L3MMnG5YBF30YrTPyBr2JSiSUivQTEpOq74NEZEpu7lyBHwKMVVL4iEE5SJKqSdT0R
+         6sIn2noVC1xWESEGmsm0W7EbcCtR/dMVo4HehBHPE7jH326/7vOmB+a7KbTOvlOapHW7
+         zfP4jEMMPSnFxtgbw+VtnS2wTPacd+VtJVS30WDJgbhAjQ+g2Ol2XhrBef9Iwk1mVXaH
+         zuxQOgwdseHLFTxz0EU88cFlPGG+WP3By98QIx2hq1F3MTMpGnSkcNHmb1K7dxXNIWmm
+         64zA8RCklxsPFQVCI8hC+hzEGVqRqhTnIe+eO9Q6D7NaTYSZMZ5UW10bfmlfqDuu93Zk
+         /uGg==
+X-Gm-Message-State: AAQBX9fypJfsRwImOwlqSrOlpjy2A+ecEI1++x9gWr4oh6/xoD5DU99E
+	IRVdx/FY1+qSbXOGYxvjdZlE/clKcxrpDp5nD+jOKcQA
+X-Google-Smtp-Source: AKy350aP3pcnz64DP3IwwNvE6n2eHRNMSVqTAobG4MYC1T0hN8TvI73wS34lRuvuDbmawZ+KZzIJXQ==
+X-Received: by 2002:adf:ee8f:0:b0:2f9:ae41:5b07 with SMTP id b15-20020adfee8f000000b002f9ae415b07mr4598114wro.44.1681914639987;
+        Wed, 19 Apr 2023 07:30:39 -0700 (PDT)
+Received: from localhost ([102.36.222.112])
+        by smtp.gmail.com with ESMTPSA id o6-20020a5d6846000000b002fa5a73bf9bsm8306794wrw.89.2023.04.19.07.30.39
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 19 Apr 2023 07:30:39 -0700 (PDT)
+Date: Wed, 19 Apr 2023 17:30:37 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: granquet@baylibre.com
+Cc: linux-mediatek@lists.infradead.org
+Subject: [bug report] drm/mediatek: dp: Audio support for MT8195
+Message-ID: <71a035db-4a1d-415f-813f-9061a0dccdf5@kili.mountain>
 MIME-Version: 1.0
-Date: Wed, 19 Apr 2023 06:52:36 -0700
-Message-ID: <CABnWg9v_1PuQ5w7+=mAWL-T8j=taF8L63Q0Xa268PvjK1yW_Eg@mail.gmail.com>
-Subject: Re: [PATCH] phy: mediatek: Avoid floating point constants
-To: Thierry Reding <thierry.reding@gmail.com>, Vinod Koul <vkoul@kernel.org>, 
-	Kishon Vijay Abraham I <kishon@kernel.org>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Guillaume Ranquet <granquet@baylibre.com>, linux-mediatek@lists.infradead.org, 
-	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	Jonathan Hunter <jonathanh@nvidia.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230419_065240_150555_5A07899F 
-X-CRM114-Status: GOOD (  10.50  )
+X-CRM114-CacheID: sfid-20230419_073043_841881_09496814 
+X-CRM114-Status: UNSURE (   5.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,74 +87,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 19 Apr 2023 14:21, Thierry Reding <thierry.reding@gmail.com> wrote:
->From: Thierry Reding <treding@nvidia.com>
->
->When building with old versions of GCC (6.3 in this case), the compiler
->stumbles over the floating point constants in this driver:
->
->	drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c: In function =E2=80=98mtk_hdmi=
-_pll_prepare=E2=80=99:
->	drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:331:23: error: =E2=80=98-mgene=
-ral-regs-only=E2=80=99 is incompatible with floating-point code
->	  } else if (pixel_clk >=3D 74.175 * MEGA && pixel_clk <=3D 300 * MEGA) {
->
->	drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:361:12: error: =E2=80=98-mgene=
-ral-regs-only=E2=80=99 is incompatible with floating-point code
->	 static int mtk_hdmi_pll_prepare(struct clk_hw *hw)
->		    ^~~~~~~~~~~~~~~~~~~~
->	drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:361:12: error: =E2=80=98-mgene=
-ral-regs-only=E2=80=99 is incompatible with floating-point code
->
->Fix this by switching to the KILO macro instead and multiplying the
->constants by 1000 to get rid of the floating point.
->
->Fixes: 45810d486bb4 ("phy: mediatek: add support for phy-mtk-hdmi-mt8195")
->Reported-by: Jonathan Hunter <jonathanh@nvidia.com>
->Signed-off-by: Thierry Reding <treding@nvidia.com>
->---
-> drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c | 8 ++++----
-> 1 file changed, 4 insertions(+), 4 deletions(-)
->
->diff --git a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c b/drivers/phy/medi=
-atek/phy-mtk-hdmi-mt8195.c
->index abfc077fb0a8..b10af26cad2f 100644
->--- a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
->+++ b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
->@@ -239,9 +239,9 @@ static int mtk_hdmi_pll_calc(struct mtk_hdmi_phy *hdmi=
-_phy, struct clk_hw *hw,
-> 		txposdiv =3D 8;
-> 	else if (tmds_clk >=3D 54 * MEGA && tmds_clk < 148.35 * MEGA)
-> 		txposdiv =3D 4;
->-	else if (tmds_clk >=3D 148.35 * MEGA && tmds_clk < 296.7 * MEGA)
->+	else if (tmds_clk >=3D 148350 * KILO && tmds_clk < 296700 * KILO)
-> 		txposdiv =3D 2;
->-	else if (tmds_clk >=3D 296.7 * MEGA && tmds_clk <=3D 594 * MEGA)
->+	else if (tmds_clk >=3D 296700 * KILO && tmds_clk <=3D 594 * MEGA)
-> 		txposdiv =3D 1;
-> 	else
-> 		return -EINVAL;
->@@ -328,12 +328,12 @@ static int mtk_hdmi_pll_drv_setting(struct clk_hw *h=
-w)
-> 		clk_channel_bias =3D 0x34; /* 20mA */
-> 		impedance_en =3D 0xf;
-> 		impedance =3D 0x36; /* 100ohm */
->-	} else if (pixel_clk >=3D 74.175 * MEGA && pixel_clk <=3D 300 * MEGA) {
->+	} else if (pixel_clk >=3D 74175 * KILO && pixel_clk <=3D 300 * MEGA) {
-> 		data_channel_bias =3D 0x34; /* 20mA */
-> 		clk_channel_bias =3D 0x2c; /* 16mA */
-> 		impedance_en =3D 0xf;
-> 		impedance =3D 0x36; /* 100ohm */
->-	} else if (pixel_clk >=3D 27 * MEGA && pixel_clk < 74.175 * MEGA) {
->+	} else if (pixel_clk >=3D 27 * MEGA && pixel_clk < 74175 * KILO) {
-> 		data_channel_bias =3D 0x14; /* 10mA */
-> 		clk_channel_bias =3D 0x14; /* 10mA */
-> 		impedance_en =3D 0x0;
->--
->2.40.0
->
+Hello Guillaume Ranquet,
 
-Thx for the fix!
+The patch e71a8ebbe086: "drm/mediatek: dp: Audio support for MT8195"
+from Sep 1, 2022, leads to the following Smatch static checker
+warning:
 
-Reviewed-by: Guillaume Ranquet <granquet@baylibre.com>
+drivers/gpu/drm/mediatek/mtk_dp.c:680 mtk_dp_disable_sdp_aui() warn: odd binop '0x30a8 & 0x3'
+drivers/gpu/drm/mediatek/mtk_dp.c:692 mtk_dp_setup_sdp_aui() warn: odd binop '0x30a8 & 0x3'
+
+drivers/gpu/drm/mediatek/mtk_dp.c
+    676 static void mtk_dp_disable_sdp_aui(struct mtk_dp *mtk_dp)
+    677 {
+    678         /* Disable periodic send */
+    679         mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_30A8 & 0xfffc, 0,
+--> 680                            0xff << ((MTK_DP_ENC0_P0_30A8 & 3) * 8));
+
+MTK_DP_ENC0_P0_30A8 is 0x30a8 as the name implies.  So 0x30a8 & 3 is
+always zero.  It's not clear what's happening here.
+
+    681 }
+
+regards,
+dan carpenter
 
