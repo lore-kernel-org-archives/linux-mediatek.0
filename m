@@ -4,66 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D0C6C6FD18
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Apr 2023 06:16:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F90DC6FD18
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Apr 2023 06:19:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=L4RT4SPfa8tEnIJBQ76BlTnSELLoEvSWqes0RQyC4HU=; b=4zEXe1UMDqgFqr128XjOJFUhVJ
-	cexQBNB5avQc6TwVG2bb/tRPKay3u6S6oye+J6wdGauFK/Dtg+cqq6z+cpOYAlGkjSHpG5khSes2H
-	ZpiY90IoLjk4XL0++ygyvzhx/N0XA6B3dJjJ2YT5NM+GT6xRQCsfsCS1lrtE2wDC2uaCLS1kReb2y
-	oK9HDsKPKWytKQn2hLaTWpPtKx3QDzQU7hArvQaCjctqufYOtz8gRsX1uQ8qOFpYA6cjRPbLH0dnH
-	sJf1KEhm82Q14eXof1o8fwPTNNRsAiS7k349eZlo/t4ikaolhmafHzjKFcOlvVroEpAbdEydqqJeM
-	tIcgeeEg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8If3OHblNkpEWCKRVPetaaHJ1wakSJYUSHI1OWQ7MlA=; b=FCd2fUjk0TCQEF/AW5NujkQPmO
+	Oyr7lPgzH7vte4RIdfHdM30RZlrUUkimdkfSVT2UUAuY5wa3irmtebv+ysM0fWD4rGuKOGyhVpYqO
+	TY6UVr2LbG6sAPZ0yQ4fuVeQ/+OHRBF2L8e3zVkdp6YbPPOw7OwYHMaT1RNXRku+IKYNvAUS3g+Xa
+	6Q20aKpoBfF6KWSVeYep+CvqqRDEFlVfUXEeV1CC+1GAEN2vohqXZMuCYTGeRtGaWKfQAxF7k/kVr
+	BVkqy+sseENiRktvEdtqaESf42RlbzJTSuI9UVrQXPQzDd0Gitqfwk1NZa6MMyKM922OP9zpSpnNx
+	RryebnoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pp17M-004BlY-2z;
-	Wed, 19 Apr 2023 06:16:36 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pp19b-004Cc7-2C;
+	Wed, 19 Apr 2023 06:18:55 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pp17I-004BkK-2z;
-	Wed, 19 Apr 2023 06:16:34 +0000
-Received: from [IPV6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2] (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id F0547660318E;
-	Wed, 19 Apr 2023 07:16:30 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1681884991;
-	bh=bWxInygmnDUySp/Z/CBRWlkSud/aUMTg/zbRKc98Frc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=MY2upY96vakUBLWHLlC00twx9VhBCWVBU+yzuFoHgsVG8oKB6WduOFyn1T9y/Bmm2
-	 kmQ1XB0oL3pBxImyRBgLzdz57OzoMk5D2M+6IRsR5tG4RySWMHxrDINFIMJUWsKNgJ
-	 OzTwhvn9RggX3Xb3LLOkQuIjdsExNjSI6xniH7R8DO0XhK+/3J29E9EvwG1bSRSTfv
-	 4SzeeKKg/tSz3GUkopxHUWIa6dOC/NhdV7PlwZapCgMYx4MCO/fjEc5d405aElQyKv
-	 TyRFNlQwoUS02Vv3/1YCr0Xtw+WJ8oTA9tPyz1SSwKkqd2h4D+JOuDfe3AvVQWnQAt
-	 u0+Uxigp3npFg==
-Message-ID: <fcb6638b-0298-74b7-c375-f563a8115596@collabora.com>
-Date: Wed, 19 Apr 2023 08:16:28 +0200
+	id 1pp19Y-004CZ7-1y
+	for linux-mediatek@lists.infradead.org;
+	Wed, 19 Apr 2023 06:18:53 +0000
+X-UUID: 09f6a6acde7a11ed8687db9d93187ff1-20230418
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=8If3OHblNkpEWCKRVPetaaHJ1wakSJYUSHI1OWQ7MlA=;
+	b=ldiOOUiQsJxOwYEb2H/SmYy3bo3gWlewY19AmOenVbPoDb5emI3wB5g5LcFnCtSdZsme1QA7gkT40ZYCDaABbbDo7ronwUUdVE677GhE2YZpPKPGQAyEowjPMeniVMqArl2k/2j/1d9BkdNZak35iv+J227+9o+/tz9Mup1pQIs=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22,REQID:1505afda-0d18-495c-ae4d-bd70706d0e88,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:120426c,CLOUDID:c2e9d1a1-8fcb-430b-954a-ba3f00fa94a5,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: 09f6a6acde7a11ed8687db9d93187ff1-20230418
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <ryder.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 683893202; Tue, 18 Apr 2023 23:18:45 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Wed, 19 Apr 2023 13:58:42 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Wed, 19 Apr 2023 13:58:42 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt7996: fill txd by host driver
+Date: Wed, 19 Apr 2023 13:58:40 +0800
+Message-ID: <d292aca5cdf0f52bd4132b73214ebd4f8d271a65.1681864336.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.1
-Subject: Re: [PATCH] drm/mediatek: Clarify/finish documentation for some
- driver structures
-Content-Language: en-US
-To: chunkuang.hu@kernel.org
-Cc: lee@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
- daniel@ffwll.ch, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, kernel@collabora.com
-References: <20230321111448.270110-1-angelogioacchino.delregno@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230321111448.270110-1-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230418_231633_229115_26CE6EBB 
-X-CRM114-Status: GOOD (  22.24  )
+X-CRM114-CacheID: sfid-20230418_231852_663537_F35A5C87 
+X-CRM114-Status: GOOD (  10.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,166 +81,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 21/03/23 12:14, AngeloGioacchino Del Regno ha scritto:
-> The documentation for some of the driver structures in mediatek-drm
-> was set to be kerneldoc but some code additions didn't actually update
-> the comments accordingly and this caused triggering some warnings.
-> 
-> Add comments for the remaining undocumented entries; while at it, also
-> clarify some acronyms for various display HW blocks and fix some comment
-> blocks to actually get parsed as kerneldoc.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+The hardware SDO has issue to fill txd for the moment, so fallback to
+driver filling method.
 
-Hello CK,
-I just noticed that this patch is getting stale and forgotten.
+Fixes: 98686cd21624 (wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices)
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7996/mac.c | 13 ++++---------
+ 1 file changed, 4 insertions(+), 9 deletions(-)
 
-Please take a look at it, as this solves kerneldoc warnings during kernel build.
-
-Regards,
-Angelo
-
-> --- >   drivers/gpu/drm/mediatek/mtk_disp_aal.c   |  8 +++++---
->   drivers/gpu/drm/mediatek/mtk_disp_ccorr.c |  8 +++++---
->   drivers/gpu/drm/mediatek/mtk_disp_color.c | 11 +++++++----
->   drivers/gpu/drm/mediatek/mtk_disp_gamma.c |  8 ++++++--
->   drivers/gpu/drm/mediatek/mtk_disp_ovl.c   | 13 +++++++++----
->   drivers/gpu/drm/mediatek/mtk_disp_rdma.c  | 12 +++++++++---
->   6 files changed, 41 insertions(+), 19 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_aal.c b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-> index 434e8a9ce8ab..12d1800c1d34 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-> @@ -27,9 +27,11 @@ struct mtk_disp_aal_data {
->   };
->   
->   /**
-> - * struct mtk_disp_aal - DISP_AAL driver structure
-> - * @ddp_comp - structure containing type enum and hardware resources
-> - * @crtc - associated crtc to report irq events to
-> + * struct mtk_disp_aal - Display Adaptive Ambient Light driver structure
-> + * @clk:      clock for DISP_AAL controller
-> + * @regs:     MMIO registers base
-> + * @cmdq_reg: CMDQ Client register
-> + * @data:     platform specific data for DISP_AAL
->    */
->   struct mtk_disp_aal {
->   	struct clk *clk;
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-> index 1773379b2439..b173aa058573 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-> @@ -35,9 +35,11 @@ struct mtk_disp_ccorr_data {
->   };
->   
->   /**
-> - * struct mtk_disp_ccorr - DISP_CCORR driver structure
-> - * @ddp_comp - structure containing type enum and hardware resources
-> - * @crtc - associated crtc to report irq events to
-> + * struct mtk_disp_ccorr - Display Color Correction driver structure
-> + * @clk:      clock for DISP_CCORR block
-> + * @regs:     MMIO registers base
-> + * @cmdq_reg: CMDQ Client register
-> + * @data:     platform specific data for DISP_CCORR
->    */
->   struct mtk_disp_ccorr {
->   	struct clk *clk;
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_color.c b/drivers/gpu/drm/mediatek/mtk_disp_color.c
-> index cac9206079e7..7884f4736b7c 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_color.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_color.c
-> @@ -31,10 +31,13 @@ struct mtk_disp_color_data {
->   	unsigned int color_offset;
->   };
->   
-> -/*
-> - * struct mtk_disp_color - DISP_COLOR driver structure
-> - * @crtc: associated crtc to report irq events to
-> - * @data: platform colour driver data
-> +/**
-> + * struct mtk_disp_color - DISP_COLOR (Display Color) driver structure
-> + * @crtc:     associated crtc to report irq events to
-> + * @clk:      clock for DISP_COLOR block
-> + * @regs:     MMIO registers base
-> + * @cmdq_reg: CMDQ Client register
-> + * @data:     platform specific data for DISP_COLOR
->    */
->   struct mtk_disp_color {
->   	struct drm_crtc				*crtc;
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-> index c844942603f7..7e748613fccb 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-> @@ -31,8 +31,12 @@ struct mtk_disp_gamma_data {
->   	bool lut_diff;
->   };
->   
-> -/*
-> - * struct mtk_disp_gamma - DISP_GAMMA driver structure
-> +/**
-> + * struct mtk_disp_gamma - Display Gamma driver structure
-> + * @clk:      clock for DISP_GAMMA block
-> + * @regs:     MMIO registers base
-> + * @cmdq_reg: CMDQ Client register
-> + * @data:     platform data for DISP_GAMMA
->    */
->   struct mtk_disp_gamma {
->   	struct clk *clk;
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> index 9d8c986700ee..00f2871fd1a4 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> @@ -76,10 +76,15 @@ struct mtk_disp_ovl_data {
->   	bool supports_afbc;
->   };
->   
-> -/*
-> - * struct mtk_disp_ovl - DISP_OVL driver structure
-> - * @crtc: associated crtc to report vblank events to
-> - * @data: platform data
-> +/**
-> + * struct mtk_disp_ovl - Display Overlay driver structure
-> + * @crtc:           associated crtc to report vblank events to
-> + * @clk:            clock for DISP_OVL block
-> + * @regs:           MMIO registers base
-> + * @cmdq_reg:       CMDQ Client register
-> + * @data:           platform data
-> + * @vblank_cb:      vblank callback function
-> + * @vblank_cb_data: pointer to data that will be passed to vblank_cb()
->    */
->   struct mtk_disp_ovl {
->   	struct drm_crtc			*crtc;
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-> index e8e337903b0d..74f4a0bce5cc 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-> @@ -59,9 +59,15 @@ struct mtk_disp_rdma_data {
->   	unsigned int fifo_size;
->   };
->   
-> -/*
-> - * struct mtk_disp_rdma - DISP_RDMA driver structure
-> - * @data: local driver data
-> +/**
-> + * struct mtk_disp_rdma - Display Read DMA driver structure
-> + * @clk:            clock for DISP_RDMA block
-> + * @regs:           MMIO registers base
-> + * @cmdq_reg:       CMDQ Client register
-> + * @data:           platform data
-> + * @vblank_cb:      vblank callback function
-> + * @vblank_cb_data: pointer to data that will be passed to vblank_cb()
-> + * @fifo_size:      size of DISP_RDMA block's FIFO
->    */
->   struct mtk_disp_rdma {
->   	struct clk			*clk;
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+index 6ce75243e40d..ff8464fe0528 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+@@ -1117,11 +1117,8 @@ int mt7996_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
+ 		return id;
+ 
+ 	pid = mt76_tx_status_skb_add(mdev, wcid, tx_info->skb);
+-	memset(txwi_ptr, 0, MT_TXD_SIZE);
+-	/* Transmit non qos data by 802.11 header and need to fill txd by host*/
+-	if (!is_8023 || pid >= MT_PACKET_ID_FIRST)
+-		mt7996_mac_write_txwi(dev, txwi_ptr, tx_info->skb, wcid, key,
+-				      pid, qid, 0);
++	mt7996_mac_write_txwi(dev, txwi_ptr, tx_info->skb, wcid, key,
++			      pid, qid, 0);
+ 
+ 	txp = (struct mt76_connac_txp_common *)(txwi + MT_TXD_SIZE);
+ 	for (i = 0; i < nbuf; i++) {
+@@ -1130,10 +1127,8 @@ int mt7996_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
+ 	}
+ 	txp->fw.nbuf = nbuf;
+ 
+-	txp->fw.flags = cpu_to_le16(MT_CT_INFO_FROM_HOST);
+-
+-	if (!is_8023 || pid >= MT_PACKET_ID_FIRST)
+-		txp->fw.flags |= cpu_to_le16(MT_CT_INFO_APPLY_TXD);
++	txp->fw.flags =
++		cpu_to_le16(MT_CT_INFO_FROM_HOST | MT_CT_INFO_APPLY_TXD);
+ 
+ 	if (!key)
+ 		txp->fw.flags |= cpu_to_le16(MT_CT_INFO_NONE_CIPHER_FRAME);
 -- 
-AngeloGioacchino Del Regno
-Software Engineer
-
-Collabora Ltd.
-Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK
-Registered in England & Wales, no. 5513718
+2.18.0
 
 
