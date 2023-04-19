@@ -4,58 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE3DBC6FD18
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Apr 2023 19:05:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51843C77B73
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Apr 2023 19:16:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F45UzTj4xsAwlT7Xf12zmKoApQ324lriJEm4bTv4O2s=; b=smnuQ1csVfGw0FAAdDz45og0gc
-	f2Lr/3xM6uzWbckm4Eiptg3zY8riolUswoklBpiCCS5WYC92quhKn5ZFNlO4Qou73uYIAZ1hfM7ik
-	IXBlzrm9yXtX44QeNEwfKmyARmYbM31sstigducguu7W3zWjs0n5+YOOnAEQ/3Qs6E9Ncvi4lAIrc
-	21Z3nTuaM5yKZr+lDBkGJAZ3fPuJfxKKG23wJWApPrZvvdrz/3VtqraeHbsBP8hkZILCO67IBeKhJ
-	eXlaavLzgOI1J/TxHb4mVUaEDDtCaQsMVdKCF2Gt9x5vHwKMltBFzjCX1S1VLcgc4VnhXhUc2wYxb
-	/Tx7v5Hg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Kx4ScIwodZZdp5YVes34mvncFAPh7iF0I6vBg8NkTqs=; b=YuxNMjAogY2TMuddfcADe8ohMF
+	mbr67js8y+dCX/1J3cljTTA4ms+1PcAetni+9fetev7oyIZokiMEOLDw/ePU6Bn86JW3QJmDdKDKA
+	EZcg9r3Vy/qF/en0E2ex4AVIH2UQVoiTBjAmHfpMc2yzTyqwVVCtru2AmJQNMSXLsIg3QVPIxP04I
+	CRy7dPDKfgVtdtS8inrkwtLlyann81yk0AckZgQ5N5xjU8bRTpaJm+KzEkYy7RdzJPFkmHGGY8cbz
+	cO5mxY2c72Pl3a35ku8QTL32FWWgcRZQQWrHpEU0Fh01rlS1Hqgz2BXLqtFzq9oSwRAJJ5LvgAE0R
+	roOwUgmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppD7Q-006DMi-0S;
-	Wed, 19 Apr 2023 19:05:28 +0000
+	id 1ppDHg-006EV7-2G;
+	Wed, 19 Apr 2023 19:16:04 +0000
 Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppD7M-006DL7-2b;
-	Wed, 19 Apr 2023 19:05:26 +0000
+	id 1ppDHd-006EUf-3D;
+	Wed, 19 Apr 2023 19:16:03 +0000
 Received: from local
 	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1ppD7K-0003n3-2L;
-	Wed, 19 Apr 2023 21:05:22 +0200
-Date: Wed, 19 Apr 2023 20:05:16 +0100
+	id 1ppDHa-0003rR-2a;
+	Wed, 19 Apr 2023 21:15:58 +0200
+Date: Wed, 19 Apr 2023 20:15:53 +0100
 From: Daniel Golle <daniel@makrotopia.org>
-To: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+To: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH net-next 2/2] net: ethernet: mtk_eth_soc: use WO firmware for
- MT7981
-Message-ID: <2651cfd1427175ac1ad08d5b7be146c55d94b674.1681930898.git.daniel@makrotopia.org>
-References: <cover.1681930898.git.daniel@makrotopia.org>
+Subject: [PATCH 1/2] arm64: dts: mt7622: declare SPI-NAND present on BPI-R64
+Message-ID: <ZEA96dmaXqTpk8u8@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1681930898.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230419_120524_841205_1E5656E2 
-X-CRM114-Status: GOOD (  11.62  )
+X-CRM114-CacheID: sfid-20230419_121602_056458_45B71493 
+X-CRM114-Status: GOOD (  12.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,51 +62,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In order to support wireless offloading on MT7981 we need to load the
-appropriate firmware. Recognize MT7981 and load mt7981_wo.bin.
+The SPI-NOR node in the device tree of the BananaPi R64 has most likely
+been copied from the reference board's device tree even though the R64
+comes with an SPI-NAND chip rather than SPI-NOR.
+
+Setup the Serial NAND Flash Interface (SNFI) controller, enable
+hardware BCH error detection and correction engine and add the SPI-NAND
+chip including basic partitions,
 
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
- drivers/net/ethernet/mediatek/mtk_wed_mcu.c | 7 ++++++-
- drivers/net/ethernet/mediatek/mtk_wed_wo.h  | 1 +
- 2 files changed, 7 insertions(+), 1 deletion(-)
+ .../dts/mediatek/mt7622-bananapi-bpi-r64.dts  | 39 ++++++++++++++++---
+ 1 file changed, 34 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed_mcu.c b/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
-index 6bad0d262f286..071ed3dea860d 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
-@@ -326,7 +326,11 @@ mtk_wed_mcu_load_firmware(struct mtk_wed_wo *wo)
- 		wo->hw->index + 1);
- 
- 	/* load firmware */
--	fw_name = wo->hw->index ? MT7986_FIRMWARE_WO1 : MT7986_FIRMWARE_WO0;
-+	if (of_device_is_compatible(wo->hw->node, "mediatek,mt7981-wed"))
-+		fw_name = MT7981_FIRMWARE_WO;
-+	else
-+		fw_name = wo->hw->index ? MT7986_FIRMWARE_WO1 : MT7986_FIRMWARE_WO0;
-+
- 	ret = request_firmware(&fw, fw_name, wo->hw->dev);
- 	if (ret)
- 		return ret;
-@@ -386,5 +390,6 @@ int mtk_wed_mcu_init(struct mtk_wed_wo *wo)
- 				  100, MTK_FW_DL_TIMEOUT);
- }
- 
-+MODULE_FIRMWARE(MT7981_FIRMWARE_WO);
- MODULE_FIRMWARE(MT7986_FIRMWARE_WO0);
- MODULE_FIRMWARE(MT7986_FIRMWARE_WO1);
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.h b/drivers/net/ethernet/mediatek/mtk_wed_wo.h
-index dbcf42ce9173c..7a1a2a28f1acb 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed_wo.h
-+++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.h
-@@ -88,6 +88,7 @@ enum mtk_wed_dummy_cr_idx {
- 	MTK_WED_DUMMY_CR_WO_STATUS,
+diff --git a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+index af3fe61e40938..d583e816684cf 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+@@ -248,14 +248,42 @@ &nandc {
+ 	status = "disabled";
  };
  
-+#define MT7981_FIRMWARE_WO	"mediatek/mt7981_wo.bin"
- #define MT7986_FIRMWARE_WO0	"mediatek/mt7986_wo_0.bin"
- #define MT7986_FIRMWARE_WO1	"mediatek/mt7986_wo_1.bin"
+-&nor_flash {
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&spi_nor_pins>;
+-	status = "disabled";
++&bch {
++	status = "okay";
++};
  
++&snfi {
++	pinctrl-names = "default";
++	pinctrl-0 = <&serial_nand_pins>;
++	status = "okay";
+ 	flash@0 {
+-		compatible = "jedec,spi-nor";
++		compatible = "spi-nand";
+ 		reg = <0>;
++		spi-tx-bus-width = <4>;
++		spi-rx-bus-width = <4>;
++		nand-ecc-engine = <&snfi>;
++		partitions {
++			compatible = "fixed-partitions";
++			#address-cells = <1>;
++			#size-cells = <1>;
++
++			partition@0 {
++				label = "bl2";
++				reg = <0x0 0x80000>;
++				read-only;
++			};
++
++			partition@80000 {
++				label = "fip";
++				reg = <0x80000 0x200000>;
++				read-only;
++			};
++
++			ubi: partition@280000 {
++				label = "ubi";
++				reg = <0x280000 0x7d80000>;
++			};
++		};
+ 	};
+ };
+ 
+
+base-commit: 13961ef828cbc254cc272221b7fc54851caa39a7
 -- 
 2.40.0
 
