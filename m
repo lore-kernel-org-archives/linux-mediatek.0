@@ -4,73 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 338FEC77B73
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Apr 2023 10:51:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE82FC77B72
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Apr 2023 11:02:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=HRqBpQlE3SEtleY2HNlMwleNJ7KOCqqrXuqNhzkdE4c=; b=uCQAwIx8A9oKA46jM7HdC2+Td2
-	sdWNrT127q2JnjYke2UcV0OMvXpZWmADwCGWNAwol37fiscrJljO37xWeW3a5Tqu7E4zfYS6Xhh2L
-	UXdy5GMokINwbRCWZ6/a9IQoHEmx3ix5f0w7kYF0CrYBXh6hGEkvqUEYF264VEzA5LCnYsavHjJui
-	NNPYZVCl0J28zbld39MVV4L07ZRcxg+idjBgwx6QhRWAA2KkdyBzRc02/4jbxygC2lP0P/z9hljWV
-	3nLeBcTuieGEnViuSct+ftDVBEqMheYyfpxQUEsF9X5MNiQn+1Brt2POY8c8DR+TvMpjnCtkHnXhs
-	wM0eB/cw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=K0TRS7OwgljX124kIWnyU9cYELypAaO9S3oRs0pdStc=; b=YxlT2Fr8yLCHV80tvbI3pofACt
+	HwgUVvl5Zg7kYiSK4pgYDjIq8PIVv68cRnqee0eAOEL8+J7xqFLl0xyldWDBXKecUivvjwUbv375X
+	ewXBjKMphBrFGIjxTxPR5ZxmdYR/+3XeDrUpFVrTbcWUladmgVb3YhkHIyoNZsv/W4YYxmLOMzCeX
+	sWHlHNGnCXgAxVeM4V0En+QiF1ix69tbueczorFbdzDG7KEuOJuBRb7oNHldu64T/ngtUJXHpS960
+	vThPLYiqdnieO6M6HSarZDLnWhO4yIkIOJlIzDHqXibHpD8/1WJhi7ERg5VkwGsHxmGCKuLhPVwet
+	ocUnm5pQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppRsv-007qcn-2H;
-	Thu, 20 Apr 2023 10:51:29 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ppS3Q-007sMN-2N;
+	Thu, 20 Apr 2023 11:02:20 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppRsq-007qYX-27;
-	Thu, 20 Apr 2023 10:51:25 +0000
-X-UUID: 4745122edf6911ed8687db9d93187ff1-20230420
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=HRqBpQlE3SEtleY2HNlMwleNJ7KOCqqrXuqNhzkdE4c=;
-	b=lArS8IsVqfpuASQWV3UylxA7sSdwc+bPrce29Y1B59PYJ3bEuDYUtfm2XcInsy2ETvrA29odFX6cA1AwgsEaHv71Z6y0PpLrb8xHWxQ1cihCNZvZIa3KPk5A+rBdd4pHKJtLApay6pAWwscV9Q4TdZh+lpkRkEPDuhZkzGZvzKo=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:d29e3e82-aecd-4008-8104-589c2a266c92,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:120426c,CLOUDID:141dfaa1-8fcb-430b-954a-ba3f00fa94a5,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: 4745122edf6911ed8687db9d93187ff1-20230420
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <nancy.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 624355772; Thu, 20 Apr 2023 03:51:17 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Thu, 20 Apr 2023 18:51:16 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Thu, 20 Apr 2023 18:51:16 +0800
-From: Nancy.Lin <nancy.lin@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
-	<p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
-	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<clang-built-linux@googlegroups.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<singo.chang@mediatek.com>, Nancy.Lin <nancy.lin@mediatek.com>
-Subject: [PATCH] drm/mediatek: fix uninitialized symbol
-Date: Thu, 20 Apr 2023 18:51:15 +0800
-Message-ID: <20230420105115.26838-1-nancy.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1ppS3M-007sKP-1q;
+	Thu, 20 Apr 2023 11:02:18 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id D5133647D1;
+	Thu, 20 Apr 2023 11:02:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4CEFEC433D2;
+	Thu, 20 Apr 2023 11:02:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1681988535;
+	bh=QlA/nQG7SitaTN/sKCqXnsi2+TBW9xYbBV61Vs+0pRc=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=TgIIxfSR2kbxtQilCFLL+Y5C8/n4/AbpawIwwez9Z34zKdAAvF8xxBW4mnl3TbaaL
+	 M2WrNAINmvxlV+bwQYbybyc4nJSov7PbpjhV82vdo1wFFTfno8dwQzptLX8GmnuEBG
+	 B7uuvqVjHd2DC0s2PglXs7jhFNpLdwxHQJjA8XBEHBfcjCN1ijariP0xTcHzpZ56tQ
+	 ZkNOMtvW5+/0gvirnesFtoVQLnQq5NtqSXlhLJdQdAaqWSkdx+OdvUKbrvfB7V16Lo
+	 BIWBEKUEsW1YsdDh5rBq39wEIwqijZU1/EW5XA/dkb0Lkuu4Qk+GVpWCbJVWAVlQvT
+	 IrsBn8gEiie2Q==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: "Jiri Slaby (SUSE)" <jirislaby@kernel.org>,
+	Chandrashekar Devegowda <chandrashekar.devegowda@intel.com>,
+	Intel Corporation <linuxwwan@intel.com>,
+	Chiranjeevi Rapolu <chiranjeevi.rapolu@linux.intel.com>,
+	Liu Haijun <haijun.liu@mediatek.com>,
+	M Chetan Kumar <m.chetan.kumar@linux.intel.com>,
+	Ricardo Martinez <ricardo.martinez@linux.intel.com>,
+	Loic Poulain <loic.poulain@linaro.org>,
+	Sergey Ryazanov <ryazanov.s.a@gmail.com>,
+	Johannes Berg <johannes@sipsolutions.net>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	netdev@vger.kernel.org,
+	Sasha Levin <sashal@kernel.org>,
+	matthias.bgg@gmail.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.2 10/17] net: wwan: t7xx: do not compile with -Werror
+Date: Thu, 20 Apr 2023 07:01:39 -0400
+Message-Id: <20230420110148.505779-10-sashal@kernel.org>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230420110148.505779-1-sashal@kernel.org>
+References: <20230420110148.505779-1-sashal@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+X-stable: review
+X-Patchwork-Hint: Ignore
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230420_035124_701247_FDA8A774 
-X-CRM114-Status: GOOD (  12.15  )
+X-CRM114-CacheID: sfid-20230420_040216_688524_30A6FA33 
+X-CRM114-Status: GOOD (  12.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,38 +92,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-fix Smatch static checker warning
-  - uninitialized symbol comp_pdev in mtk_ddp_comp_init.
+From: "Jiri Slaby (SUSE)" <jirislaby@kernel.org>
 
-Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+[ Upstream commit 362f0b6678ad1377c322a7dd237ea6785efc7342 ]
+
+When playing with various compilers or their versions, some choke on
+the t7xx code. For example (with gcc 13):
+ In file included from ./arch/s390/include/generated/asm/rwonce.h:1,
+                  from ../include/linux/compiler.h:247,
+                  from ../include/linux/build_bug.h:5,
+                  from ../include/linux/bits.h:22,
+                  from ../drivers/net/wwan/t7xx/t7xx_state_monitor.c:17:
+ In function 'preempt_count',
+     inlined from 't7xx_fsm_append_event' at ../drivers/net/wwan/t7xx/t7xx_state_monitor.c:439:43:
+ ../include/asm-generic/rwonce.h:44:26: error: array subscript 0 is outside array bounds of 'const volatile int[0]' [-Werror=array-bounds=]
+
+There is no reason for any code in the kernel to be built with -Werror
+by default. Note that we have generic CONFIG_WERROR. So if anyone wants
+-Werror, they can enable that.
+
+Signed-off-by: Jiri Slaby (SUSE) <jirislaby@kernel.org>
+Link: https://lore.kernel.org/all/20230330232717.1f8bf5ea@kernel.org/
+Cc: Chandrashekar Devegowda <chandrashekar.devegowda@intel.com>
+Cc: Intel Corporation <linuxwwan@intel.com>
+Cc: Chiranjeevi Rapolu <chiranjeevi.rapolu@linux.intel.com>
+Cc: Liu Haijun <haijun.liu@mediatek.com>
+Cc: M Chetan Kumar <m.chetan.kumar@linux.intel.com>
+Cc: Ricardo Martinez <ricardo.martinez@linux.intel.com>
+Cc: Loic Poulain <loic.poulain@linaro.org>
+Cc: Sergey Ryazanov <ryazanov.s.a@gmail.com>
+Cc: Johannes Berg <johannes@sipsolutions.net>
+Cc: "David S. Miller" <davem@davemloft.net>
+Cc: Eric Dumazet <edumazet@google.com>
+Cc: Jakub Kicinski <kuba@kernel.org>
+Cc: Paolo Abeni <pabeni@redhat.com>
+Cc: netdev@vger.kernel.org
+Signed-off-by: David S. Miller <davem@davemloft.net>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ drivers/net/wwan/t7xx/Makefile | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index f114da4d36a9..e987ac4481bc 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -546,7 +546,7 @@ unsigned int mtk_drm_find_possible_crtc_by_comp(struct drm_device *drm,
- int mtk_ddp_comp_init(struct device_node *node, struct mtk_ddp_comp *comp,
- 		      unsigned int comp_id)
- {
--	struct platform_device *comp_pdev;
-+	struct platform_device *comp_pdev = NULL;
- 	enum mtk_ddp_comp_type type;
- 	struct mtk_ddp_comp_dev *priv;
- #if IS_REACHABLE(CONFIG_MTK_CMDQ)
-@@ -588,6 +588,9 @@ int mtk_ddp_comp_init(struct device_node *node, struct mtk_ddp_comp *comp,
- 	    type == MTK_DSI)
- 		return 0;
+diff --git a/drivers/net/wwan/t7xx/Makefile b/drivers/net/wwan/t7xx/Makefile
+index 268ff9e87e5b3..2652cd00504e6 100644
+--- a/drivers/net/wwan/t7xx/Makefile
++++ b/drivers/net/wwan/t7xx/Makefile
+@@ -1,7 +1,5 @@
+ # SPDX-License-Identifier: GPL-2.0-only
  
-+	if (!comp_pdev)
-+		return -EPROBE_DEFER;
-+
- 	priv = devm_kzalloc(comp->dev, sizeof(*priv), GFP_KERNEL);
- 	if (!priv)
- 		return -ENOMEM;
+-ccflags-y += -Werror
+-
+ obj-${CONFIG_MTK_T7XX} := mtk_t7xx.o
+ mtk_t7xx-y:=	t7xx_pci.o \
+ 		t7xx_pcie_mac.o \
 -- 
-2.18.0
+2.39.2
 
 
