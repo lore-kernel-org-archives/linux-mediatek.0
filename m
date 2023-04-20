@@ -4,58 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C927EC77B76
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Apr 2023 12:36:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B49AAC77B73
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Apr 2023 12:36:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3wd5FAKMHJkTahKY9JJtXlNmZfB6CgtiI8PYPgNN8KI=; b=4Ja5I6mNmW1niQv0fLO0BPQDfQ
-	iWDnUzSOMyyxAGmduBQMhTQ77+ZSIi8AU3Cv2fA9NOQGArY8URhQfZdXD6hrILsPc9xKIdKSwi4GT
-	vAfapGNZ103KtiO/MGQAD7z54LOWX3KDqxF4ttfVqe03e8N97YKnj0NRnFsoXcHyFB3jZdU5v3pdc
-	0IXSQe/H67dDc8/DHWca8uN3bAg1zgFMZx9qg4RBhKMlx2G/P5lNEpWmFyokHMmhs2b96vjft/q9V
-	qKGr0tEer9RYBqNFn6hCKRXHb3/txMCDymkNb9rUJT0knQdyZLs61liP98nA1LPefwj6fqtzED/gD
-	R/Kr5Fsw==;
+	bh=eLpSYAegpxY7NjaX/YgkK/7RMMj/JIX8fCYP8Mrk+Dk=; b=cTllDxx0gV6LZsAJ+TKxQ9Porz
+	NwxphtpFfZNfL6C36zXHfPQbfFlLa/OcrUpHSUxH6eii1obykfnOF5PG/GopUeAGPRxfLVvvRn38D
+	rlmvHNoKKtHiMmIlVBEeH0M6CxAT9oOA8S9P4v630W+AboE0xutwdpERR3EPTazcUTGV9rTSKI2Pz
+	juieImUn4wj38HBjRpY+AZhA/se2XtJunhi87bueJkT3VMtf0i1Fi9ZPnXAEuLPdY2CY4AiVkUbCf
+	fdV4mPFxoozX0j5/f0iEFwnkYxVriIy/gELDouK2JLgmoiSVimLnYb+5utautFWzvsdWvGsZYWGuv
+	a3IK9SJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppTW6-0085KN-0m;
-	Thu, 20 Apr 2023 12:36:02 +0000
+	id 1ppTWb-0085WU-2J;
+	Thu, 20 Apr 2023 12:36:33 +0000
 Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppTW2-0085Is-0M;
-	Thu, 20 Apr 2023 12:36:00 +0000
+	id 1ppTWY-0085Us-35;
+	Thu, 20 Apr 2023 12:36:32 +0000
 Received: from local
 	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1ppTW0-0005Vz-2e;
-	Thu, 20 Apr 2023 14:35:56 +0200
-Date: Thu, 20 Apr 2023 13:35:51 +0100
+	id 1ppTWX-0005XF-2E;
+	Thu, 20 Apr 2023 14:36:29 +0200
+Date: Thu, 20 Apr 2023 13:36:23 +0100
 From: Daniel Golle <daniel@makrotopia.org>
-To: devicetree@vger.kernel.org, linux-pwm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
+To: linux-pwm@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Thierry Reding <thierry.reding@gmail.com>,
 	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	John Crispin <john@phrozen.org>
-Subject: [PATCH v2 1/2] dt-bindings: pwm: mediatek: Add mediatek,mt7981
- compatible
-Message-ID: <2662c29ec80458852bb8c9041656bca46e2662dd.1681992038.git.daniel@makrotopia.org>
+Subject: [PATCH v2 2/2] pwm: mediatek: Add support for MT7981
+Message-ID: <7c6e31c844642c199f223f4229a04a37b57a34f3.1681992038.git.daniel@makrotopia.org>
 References: <cover.1681992038.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1681992038.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230420_053558_152544_DAE0AE47 
-X-CRM114-Status: UNSURE (   9.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230420_053630_995060_E291C6C3 
+X-CRM114-Status: GOOD (  15.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,29 +65,148 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add compatible string for the PWM unit found of the MediaTek MT7981 SoC.
-This is in preparation to adding support in the pwm-mediatek.c driver.
+The PWM unit on MT7981 uses different register offsets than previous
+MediaTek PWM units. Add support for these new offsets and add support
+for PWM on MT7981 which has 3 PWM channels, one of them is typically
+used for a temperature controlled fan.
 
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
-No changes since v1.
+Changes since v1:
+ * use pointer to reg_offset instead of u8 reg_ver and if-else
 
- Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/pwm/pwm-mediatek.c | 39 ++++++++++++++++++++++++++++++--------
+ 1 file changed, 31 insertions(+), 8 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml b/Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml
-index 8e176ba7a525f..0fbe8a6469eb2 100644
---- a/Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml
-+++ b/Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml
-@@ -22,6 +22,7 @@ properties:
-           - mediatek,mt7623-pwm
-           - mediatek,mt7628-pwm
-           - mediatek,mt7629-pwm
-+          - mediatek,mt7981-pwm
-           - mediatek,mt7986-pwm
-           - mediatek,mt8183-pwm
-           - mediatek,mt8365-pwm
+diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
+index 5b5eeaff35da6..7a51d210a8778 100644
+--- a/drivers/pwm/pwm-mediatek.c
++++ b/drivers/pwm/pwm-mediatek.c
+@@ -38,6 +38,7 @@ struct pwm_mediatek_of_data {
+ 	unsigned int num_pwms;
+ 	bool pwm45_fixup;
+ 	bool has_ck_26m_sel;
++	const unsigned int *reg_offset;
+ };
+ 
+ /**
+@@ -59,10 +60,14 @@ struct pwm_mediatek_chip {
+ 	const struct pwm_mediatek_of_data *soc;
+ };
+ 
+-static const unsigned int pwm_mediatek_reg_offset[] = {
++static const unsigned int mtk_pwm_reg_offset_v1[] = {
+ 	0x0010, 0x0050, 0x0090, 0x00d0, 0x0110, 0x0150, 0x0190, 0x0220
+ };
+ 
++static const unsigned int mtk_pwm_reg_offset_v2[] = {
++	0x0080, 0x00c0, 0x0100, 0x0140, 0x0180, 0x01c0, 0x0200, 0x0240
++};
++
+ static inline struct pwm_mediatek_chip *
+ to_pwm_mediatek_chip(struct pwm_chip *chip)
+ {
+@@ -111,7 +116,7 @@ static inline void pwm_mediatek_writel(struct pwm_mediatek_chip *chip,
+ 				       unsigned int num, unsigned int offset,
+ 				       u32 value)
+ {
+-	writel(value, chip->regs + pwm_mediatek_reg_offset[num] + offset);
++	writel(value, chip->regs + chip->soc->reg_offset[num] + offset);
+ }
+ 
+ static int pwm_mediatek_config(struct pwm_chip *chip, struct pwm_device *pwm,
+@@ -285,60 +290,77 @@ static const struct pwm_mediatek_of_data mt2712_pwm_data = {
+ 	.num_pwms = 8,
+ 	.pwm45_fixup = false,
+ 	.has_ck_26m_sel = false,
++	.reg_offset = mtk_pwm_reg_offset_v1,
+ };
+ 
+ static const struct pwm_mediatek_of_data mt6795_pwm_data = {
+ 	.num_pwms = 7,
+ 	.pwm45_fixup = false,
+ 	.has_ck_26m_sel = false,
++	.reg_offset = mtk_pwm_reg_offset_v1,
+ };
+ 
+ static const struct pwm_mediatek_of_data mt7622_pwm_data = {
+ 	.num_pwms = 6,
+ 	.pwm45_fixup = false,
+ 	.has_ck_26m_sel = true,
++	.reg_offset = mtk_pwm_reg_offset_v1,
+ };
+ 
+ static const struct pwm_mediatek_of_data mt7623_pwm_data = {
+ 	.num_pwms = 5,
+ 	.pwm45_fixup = true,
+ 	.has_ck_26m_sel = false,
++	.reg_offset = mtk_pwm_reg_offset_v1,
+ };
+ 
+ static const struct pwm_mediatek_of_data mt7628_pwm_data = {
+ 	.num_pwms = 4,
+ 	.pwm45_fixup = true,
+ 	.has_ck_26m_sel = false,
++	.reg_offset = mtk_pwm_reg_offset_v1,
+ };
+ 
+ static const struct pwm_mediatek_of_data mt7629_pwm_data = {
+ 	.num_pwms = 1,
+ 	.pwm45_fixup = false,
+ 	.has_ck_26m_sel = false,
++	.reg_offset = mtk_pwm_reg_offset_v1,
+ };
+ 
+-static const struct pwm_mediatek_of_data mt8183_pwm_data = {
+-	.num_pwms = 4,
++static const struct pwm_mediatek_of_data mt7981_pwm_data = {
++	.num_pwms = 3,
+ 	.pwm45_fixup = false,
+ 	.has_ck_26m_sel = true,
++	.reg_offset = mtk_pwm_reg_offset_v2,
+ };
+ 
+-static const struct pwm_mediatek_of_data mt8365_pwm_data = {
+-	.num_pwms = 3,
++static const struct pwm_mediatek_of_data mt7986_pwm_data = {
++	.num_pwms = 2,
+ 	.pwm45_fixup = false,
+ 	.has_ck_26m_sel = true,
++	.reg_offset = mtk_pwm_reg_offset_v1,
+ };
+ 
+-static const struct pwm_mediatek_of_data mt7986_pwm_data = {
+-	.num_pwms = 2,
++static const struct pwm_mediatek_of_data mt8183_pwm_data = {
++	.num_pwms = 4,
++	.pwm45_fixup = false,
++	.has_ck_26m_sel = true,
++	.reg_offset = mtk_pwm_reg_offset_v1,
++};
++
++static const struct pwm_mediatek_of_data mt8365_pwm_data = {
++	.num_pwms = 3,
+ 	.pwm45_fixup = false,
+ 	.has_ck_26m_sel = true,
++	.reg_offset = mtk_pwm_reg_offset_v1,
+ };
+ 
+ static const struct pwm_mediatek_of_data mt8516_pwm_data = {
+ 	.num_pwms = 5,
+ 	.pwm45_fixup = false,
+ 	.has_ck_26m_sel = true,
++	.reg_offset = mtk_pwm_reg_offset_v1,
+ };
+ 
+ static const struct of_device_id pwm_mediatek_of_match[] = {
+@@ -348,6 +370,7 @@ static const struct of_device_id pwm_mediatek_of_match[] = {
+ 	{ .compatible = "mediatek,mt7623-pwm", .data = &mt7623_pwm_data },
+ 	{ .compatible = "mediatek,mt7628-pwm", .data = &mt7628_pwm_data },
+ 	{ .compatible = "mediatek,mt7629-pwm", .data = &mt7629_pwm_data },
++	{ .compatible = "mediatek,mt7981-pwm", .data = &mt7981_pwm_data },
+ 	{ .compatible = "mediatek,mt7986-pwm", .data = &mt7986_pwm_data },
+ 	{ .compatible = "mediatek,mt8183-pwm", .data = &mt8183_pwm_data },
+ 	{ .compatible = "mediatek,mt8365-pwm", .data = &mt8365_pwm_data },
 -- 
 2.40.0
 
