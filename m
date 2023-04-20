@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A6F2C77B72
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Apr 2023 09:45:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F42DC77B73
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Apr 2023 09:45:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Ik5TTlRPT7tJMlvVvigTxTqvVCu8p0TQbmvPThlaP2Q=; b=FZ2UUt8x3tOUPpNu8zw83WkSao
-	ns3pL/eVgqenlqcL0PX1/i+YhRSuSbkTZcRwsEodkrDT2x7HceuMnJlKWdF+GRiRyu+aqNx3U4VdI
-	+m5UR2+CEBw+/zNBo5HTd/RESCB79jyvClSxQwUPRyv6k/Soy5Oedvcm6o0DYNmbHzDOd0JMQbAWI
-	3Ihlzo4mvhb9aVEAqWzMJfi+EyywbiYQ0O/XqHCK5dwsIcx5z+jRmUQy/a0c4/jFHFU5IHbcJHsiI
-	6rrzNvVmq5Uk2QAPvsGqqH3Nk24Wq+JDd3itAGZCxas/2ku1ttfbM/5NXrBFNDId2gr7z+P4hRwis
-	Erb5SMbA==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Tdh7ek24ZSmi+j5bVgdAWjluQjV4G1M6gj6jbA0FQ3I=; b=BeziVJa0N3kBb8rujYR7fU3ehL
+	KtVW54NsJdBmJilw0PVFAODr6GPJsGESdLUceYNrkaSwAsnP/wr9RT1KdK+NYp8ahWDQORerML0Ud
+	rIfD55S0S5U1SqJowWoF5o3nw+fIeoPYoZFsUQIEIvPlN8pD6+6ZwxBgtISXn5/edc5CY/Ey8QeHu
+	bRiBGfWAusLbTGouokrP1cWytIn/4XOiVoF1a3k5FZWBGxzXYzsTWEBv2SWsllg5BZLZ+VRFYIjED
+	Hr0shqzJ9ZJuoad4QV56EUJoGQbvKFqLhSANCgG0GrqqxDh/6yIDNieUIOx1OBxjbcwwNvCzN99UV
+	b68ijbpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppQqU-007ZRl-1M;
+	id 1ppQqU-007ZRw-2i;
 	Thu, 20 Apr 2023 09:44:54 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppQqO-007ZNU-15;
-	Thu, 20 Apr 2023 09:44:49 +0000
+	id 1ppQqO-007ZNb-2E;
+	Thu, 20 Apr 2023 09:44:50 +0000
 Received: from IcarusMOD.eternityproject.eu (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E314E660325E;
-	Thu, 20 Apr 2023 10:44:43 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A2623660325F;
+	Thu, 20 Apr 2023 10:44:44 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1681983884;
-	bh=68zdNUXDpJ8cN3/P2jWta2FlLdWOTdLtngTHhQNCf+Y=;
-	h=From:To:Cc:Subject:Date:From;
-	b=mDHqb5aPFBSb6iBFtvaXQENJchILKhe40cIAYr4YP6mXnRq7MDs8i9KloFU+5Gxgw
-	 RFItZvxuuBafyihdNczuWdqN6ngIDx01l3styj4ozPvtobLyDsY7PLkpv4l5zVq8fv
-	 JiEaxKOYmyK/pZIoSIxT8v7QrvJmTVeQu1Jda2RaLMY9Mdj7x/aaElL3YB8kNaWtB5
-	 bpo02cIJnUxYWlpeF8jkAbJ51Ug1gN4NilvT3Eof9oKM01ErYb7JQX05KcOttyaW+w
-	 W/wcYe0+OiQuwugPYwXHgiKADfKuUK+JYt8xJMIt5Z/NQJF17ijADs/RGf6eQE4Lsv
-	 sshJhnY85+QKA==
+	s=mail; t=1681983885;
+	bh=PtQuyZxzHrAdWjzyoJUqzJ9rjp5UV6ThgnDDcqGxVug=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=b4S+8bt+073+UwfKxzK89eiqxVuRMMQgGnGr70NmyPi3J6VbHYcHCkefFnKxZpFvC
+	 z7TgkhKfSDFbAKiVVhbO2pwQIkcW1xOM6Ua2nIGFhl5ogZZSVNgc+/jVtyGpvFOBIZ
+	 C3zu0NOH1i1sFOY498TZILfd6Sb4K3/r+4AsmV17NyJFgyh0EnAGUz7c5H54K1++HE
+	 WG0865c4HPmP0VaQ/AGs6Vqqnvali8JV6M9XJEfeJ/aQqEqwAfTw2POZZVM/xzIgcb
+	 Oa+ZxdbxjKDcigvIW+B66EMwSNfxWEsIxBCKq25LZ9JhR4/1rdZwzaAonUWlT6vvfr
+	 DPF84fekwmrgw==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: robh+dt@kernel.org,
@@ -53,16 +53,17 @@ Cc: robh+dt@kernel.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 0/5] MT8195 Acer Tomato - devicetrees Part 3
-Date: Thu, 20 Apr 2023 11:44:28 +0200
-Message-Id: <20230420094433.42794-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 1/5] arm64: dts: mediatek: cherry: Add platform thermal configuration
+Date: Thu, 20 Apr 2023 11:44:29 +0200
+Message-Id: <20230420094433.42794-2-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.40.0
+In-Reply-To: <20230420094433.42794-1-angelogioacchino.delregno@collabora.com>
+References: <20230420094433.42794-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230420_024448_601687_70F52321 
-X-CRM114-Status: UNSURE (   8.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230420_024448_879107_BCA5482B 
+X-CRM114-Status: GOOD (  11.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,32 +78,146 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series adds support for the WiFi card on PCI-Express,
-eDP (internal) and DP (external) displays and adds thermal
-configuration for the "extra" thermistors present on Cherry boards.
+This platform has three auxiliary NTC thermistors, connected to the
+SoC's ADC pins. Enable the auxadc in order to be able to read the
+ADC values, add a generic-adc-thermal LUT for each and finally assign
+them to the SoC's thermal zones.
 
-All Cherry Chromebooks now have working display and wireless
-connectivity!
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../boot/dts/mediatek/mt8195-cherry.dtsi      | 105 ++++++++++++++++++
+ 1 file changed, 105 insertions(+)
 
-At this point, the only missing component is vcodec decoders, but
-that's to be done in mt8195.dtsi, globally, not machine specific.
-Please note that in this series the eDP panel was put on aux-bus,
-hence this depends on the series introducing support for it [1]
-in the mtk-dp driver.
-
-[1]: https://lore.kernel.org/lkml/20230404104800.301150-1-angelogioacchino.delregno@collabora.com/
-
-AngeloGioacchino Del Regno (5):
-  arm64: dts: mediatek: cherry: Add platform thermal configuration
-  arm64: dts: mediatek: cherry: Assign dp-intf aliases
-  arm64: dts: mediatek: cherry: Configure eDP and internal display
-  arm64: dts: mediatek: cherry: Enable PCI-Express ports for WiFi
-  arm64: dts: mediatek: cherry-tomato-r1: Enable NVMe PCI-Express port
-
- .../dts/mediatek/mt8195-cherry-tomato-r1.dts  |   7 +
- .../boot/dts/mediatek/mt8195-cherry.dtsi      | 164 ++++++++++++++++++
- 2 files changed, 171 insertions(+)
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+index 8ac80a136c37..0820e9ba3829 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+@@ -114,6 +114,77 @@ ppvar_sys: regulator-ppvar-sys {
+ 		regulator-boot-on;
+ 	};
+ 
++	/* Murata NCP03WF104F05RL */
++	tboard_thermistor1: thermal-sensor-t1 {
++		compatible = "generic-adc-thermal";
++		#thermal-sensor-cells = <0>;
++		io-channels = <&auxadc 0>;
++		io-channel-names = "sensor-channel";
++		temperature-lookup-table = <	(-10000) 1553
++						(-5000) 1485
++						0 1406
++						5000 1317
++						10000 1219
++						15000 1115
++						20000 1007
++						25000 900
++						30000 796
++						35000 697
++						40000 605
++						45000 523
++						50000 449
++						55000 384
++						60000 327
++						65000 279
++						70000 237
++						75000 202
++						80000 172
++						85000 147
++						90000 125
++						95000 107
++						100000 92
++						105000 79
++						110000 68
++						115000 59
++						120000 51
++						125000 44>;
++	};
++
++	tboard_thermistor2: thermal-sensor-t2 {
++		compatible = "generic-adc-thermal";
++		#thermal-sensor-cells = <0>;
++		io-channels = <&auxadc 1>;
++		io-channel-names = "sensor-channel";
++		temperature-lookup-table = <	(-10000) 1553
++						(-5000) 1485
++						0 1406
++						5000 1317
++						10000 1219
++						15000 1115
++						20000 1007
++						25000 900
++						30000 796
++						35000 697
++						40000 605
++						45000 523
++						50000 449
++						55000 384
++						60000 327
++						65000 279
++						70000 237
++						75000 202
++						80000 172
++						85000 147
++						90000 125
++						95000 107
++						100000 92
++						105000 79
++						110000 68
++						115000 59
++						120000 51
++						125000 44>;
++	};
++
+ 	usb_vbus: regulator-5v0-usb-vbus {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "usb-vbus";
+@@ -260,6 +331,10 @@ &gpu {
+ 	mali-supply = <&mt6315_7_vbuck1>;
+ };
+ 
++&auxadc {
++	status = "okay";
++};
++
+ &i2c0 {
+ 	status = "okay";
+ 
+@@ -1098,6 +1173,36 @@ mt6315_7_vbuck1: vbuck1 {
+ 	};
+ };
+ 
++&thermal_zones {
++	soc_area_ntc {
++		polling-delay = <1000>;
++		polling-delay-passive = <250>;
++		thermal-sensors = <&tboard_thermistor1>;
++
++		trips {
++			trip-crit {
++				temperature = <95000>;
++				hysteresis = <2000>;
++				type = "critical";
++			};
++		};
++	};
++
++	pmic_area_ntc {
++		polling-delay = <1000>;
++		polling-delay-passive = <0>;
++		thermal-sensors = <&tboard_thermistor2>;
++
++		trips {
++			trip-crit {
++				temperature = <95000>;
++				hysteresis = <2000>;
++				type = "critical";
++			};
++		};
++	};
++};
++
+ &u3phy0 {
+ 	status = "okay";
+ };
 -- 
 2.40.0
 
