@@ -4,83 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCA24C77B73
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Apr 2023 09:12:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A6F2C77B72
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Apr 2023 09:45:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rULVDRFLy4mQ5APNLbHeqA/Dh8cWRZbwRv1r8JwmeAQ=; b=Gae6guDDNtt+6+z5uHYnhRYS2x
-	yktcxUL6vqIEedz7rzi86jNYAAIpkwaM5EQ30Tag6N0VET7GIQvOHU4ugFKWyY3Bb0TjpyDaFkIaI
-	xnAZAqRC55tXk87NSkbhHY1TokgNu5LI2jO585sAByUukjShHy6fDh14200dC9Gl7KK+8VhCt4QjK
-	YTA9mYakbJoe5yGwrePocoonOisdIPqVJOWcKfL2HV0NqA7SuHUc/Q8SqB3b8txOnkVnTrFihznXU
-	6MnJ7jOLGDq7UANXJla0On2D/+ubBUJ9b8vcTmye38hjT3+i8e0dhNTMfsaIDQRI1K4x6gWiBswbC
-	o/fL3HMQ==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Ik5TTlRPT7tJMlvVvigTxTqvVCu8p0TQbmvPThlaP2Q=; b=FZ2UUt8x3tOUPpNu8zw83WkSao
+	ns3pL/eVgqenlqcL0PX1/i+YhRSuSbkTZcRwsEodkrDT2x7HceuMnJlKWdF+GRiRyu+aqNx3U4VdI
+	+m5UR2+CEBw+/zNBo5HTd/RESCB79jyvClSxQwUPRyv6k/Soy5Oedvcm6o0DYNmbHzDOd0JMQbAWI
+	3Ihlzo4mvhb9aVEAqWzMJfi+EyywbiYQ0O/XqHCK5dwsIcx5z+jRmUQy/a0c4/jFHFU5IHbcJHsiI
+	6rrzNvVmq5Uk2QAPvsGqqH3Nk24Wq+JDd3itAGZCxas/2ku1ttfbM/5NXrBFNDId2gr7z+P4hRwis
+	Erb5SMbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppQKY-007VAu-0G;
-	Thu, 20 Apr 2023 09:11:54 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1ppQqU-007ZRl-1M;
+	Thu, 20 Apr 2023 09:44:54 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppQKW-007V9a-12;
-	Thu, 20 Apr 2023 09:11:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=rULVDRFLy4mQ5APNLbHeqA/Dh8cWRZbwRv1r8JwmeAQ=; b=kX83zqN2lATYGlnPXR1+TvtL/0
-	Xr49Eju8Z+DVBaGOuUvhV/TR2/Pp3yh+UU5cEoP8N0OIgzFZc4uDr/8rtVdhIof7SHckk/PbPXv4A
-	3LUO8+TWJ7kT17MTSQ4Ulqu9HRI/sZgz61DaMayTbQUgyxfdbJ1mMfZAwTm8/ZgOSWF59CfXDxNKn
-	I1nUOx3rrkSuOzF0UpjKhG/CU6D97iHw31R3xUFNIe5gHd/Dt5w85qbomV0vztj1meqUULG8y/4iG
-	UTEqbfKDWLp3NjzbfHjVCavnyHSCitmcPrVzLzFetJDNFxMLfD5o+nG9YXufjqXqxfyFCheEoKxtP
-	vEsKDMrg==;
-Received: from mailgw.kylinos.cn ([124.126.103.232])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppQKG-003jfJ-24;
-	Thu, 20 Apr 2023 09:11:40 +0000
-X-UUID: 496a3981a3724ed9863cfd24002f4a03-20230420
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:6a5a27f8-f086-46c8-ab10-ba7c001f65f5,IP:5,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:-9,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-9
-X-CID-INFO: VERSION:1.1.22,REQID:6a5a27f8-f086-46c8-ab10-ba7c001f65f5,IP:5,URL
-	:0,TC:0,Content:-5,EDM:0,RT:0,SF:-9,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:-9
-X-CID-META: VersionHash:120426c,CLOUDID:d90999eb-db6f-41fe-8b83-13fe7ed1ef52,B
-	ulkID:230420171125Q0UCYOKU,BulkQuantity:0,Recheck:0,SF:38|24|17|19|45|102,
-	TC:nil,Content:0,EDM:-3,IP:-2,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-	,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: 496a3981a3724ed9863cfd24002f4a03-20230420
-X-User: gehao@kylinos.cn
-Received: from localhost.localdomain [(116.128.244.169)] by mailgw
-	(envelope-from <gehao@kylinos.cn>)
-	(Generic MTA)
-	with ESMTP id 1812346153; Thu, 20 Apr 2023 17:11:23 +0800
-From: Hao Ge <gehao@kylinos.cn>
-To: sboyd@kernel.org,
-	mturquette@baylibre.com,
-	matthias.bgg@gmail.com
-Cc: gehao@kylinos.cn,
-	linux-arm-kernel@lists.infradead.org,
-	linux-clk@vger.kernel.org,
+	id 1ppQqO-007ZNU-15;
+	Thu, 20 Apr 2023 09:44:49 +0000
+Received: from IcarusMOD.eternityproject.eu (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E314E660325E;
+	Thu, 20 Apr 2023 10:44:43 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1681983884;
+	bh=68zdNUXDpJ8cN3/P2jWta2FlLdWOTdLtngTHhQNCf+Y=;
+	h=From:To:Cc:Subject:Date:From;
+	b=mDHqb5aPFBSb6iBFtvaXQENJchILKhe40cIAYr4YP6mXnRq7MDs8i9KloFU+5Gxgw
+	 RFItZvxuuBafyihdNczuWdqN6ngIDx01l3styj4ozPvtobLyDsY7PLkpv4l5zVq8fv
+	 JiEaxKOYmyK/pZIoSIxT8v7QrvJmTVeQu1Jda2RaLMY9Mdj7x/aaElL3YB8kNaWtB5
+	 bpo02cIJnUxYWlpeF8jkAbJ51Ug1gN4NilvT3Eof9oKM01ErYb7JQX05KcOttyaW+w
+	 W/wcYe0+OiQuwugPYwXHgiKADfKuUK+JYt8xJMIt5Z/NQJF17ijADs/RGf6eQE4Lsv
+	 sshJhnY85+QKA==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: matthias.bgg@gmail.com
+Cc: robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	gehao618@163.com
-Subject: [PATCH V2] mediatek/clk-mt8173-apmixedsys: convert to devm_platform_ioremap_resource
-Date: Thu, 20 Apr 2023 17:11:21 +0800
-Message-Id: <20230420091121.28642-1-gehao@kylinos.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <7b162010-4fa3-4572-c834-7264eb937e4a@kylinos.cn>
-References: <7b162010-4fa3-4572-c834-7264eb937e4a@kylinos.cn>
+	kernel@collabora.com,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 0/5] MT8195 Acer Tomato - devicetrees Part 3
+Date: Thu, 20 Apr 2023 11:44:28 +0200
+Message-Id: <20230420094433.42794-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.40.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230420_101137_305491_11D0946C 
-X-CRM114-Status: GOOD (  10.37  )
+X-CRM114-CacheID: sfid-20230420_024448_601687_70F52321 
+X-CRM114-Status: UNSURE (   8.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,38 +77,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use devm_platform_ioremap_resource to take the place of of_iomap for
-avoid that we don't called iounmap when return some error or remove
-device.
+This series adds support for the WiFi card on PCI-Express,
+eDP (internal) and DP (external) displays and adds thermal
+configuration for the "extra" thermistors present on Cherry boards.
 
-Signed-off-by: Hao Ge <gehao@kylinos.cn>
-Suggested-by: Stephen Boyd <sboyd@kernel.org>
----
+All Cherry Chromebooks now have working display and wireless
+connectivity!
 
-v2: fix error handle condition for devm_platform_ioremap_resource
----
- drivers/clk/mediatek/clk-mt8173-apmixedsys.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+At this point, the only missing component is vcodec decoders, but
+that's to be done in mt8195.dtsi, globally, not machine specific.
+Please note that in this series the eDP panel was put on aux-bus,
+hence this depends on the series introducing support for it [1]
+in the mtk-dp driver.
 
-diff --git a/drivers/clk/mediatek/clk-mt8173-apmixedsys.c b/drivers/clk/mediatek/clk-mt8173-apmixedsys.c
-index a56c5845d07a..73c29d1dccc6 100644
---- a/drivers/clk/mediatek/clk-mt8173-apmixedsys.c
-+++ b/drivers/clk/mediatek/clk-mt8173-apmixedsys.c
-@@ -90,8 +90,8 @@ static int clk_mt8173_apmixed_probe(struct platform_device *pdev)
- 	struct clk_hw *hw;
- 	int r;
- 
--	base = of_iomap(node, 0);
--	if (!base)
-+	base = devm_platform_ioremap_resource(pdev, 0);
-+	if (IS_ERR(base))
- 		return PTR_ERR(base);
- 
- 	clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
+[1]: https://lore.kernel.org/lkml/20230404104800.301150-1-angelogioacchino.delregno@collabora.com/
+
+AngeloGioacchino Del Regno (5):
+  arm64: dts: mediatek: cherry: Add platform thermal configuration
+  arm64: dts: mediatek: cherry: Assign dp-intf aliases
+  arm64: dts: mediatek: cherry: Configure eDP and internal display
+  arm64: dts: mediatek: cherry: Enable PCI-Express ports for WiFi
+  arm64: dts: mediatek: cherry-tomato-r1: Enable NVMe PCI-Express port
+
+ .../dts/mediatek/mt8195-cherry-tomato-r1.dts  |   7 +
+ .../boot/dts/mediatek/mt8195-cherry.dtsi      | 164 ++++++++++++++++++
+ 2 files changed, 171 insertions(+)
+
 -- 
-2.25.1
+2.40.0
 
-
-No virus found
-		Checked by Hillstone Network AntiVirus
 
