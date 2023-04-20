@@ -4,67 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0989AC7618E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Apr 2023 20:44:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADD23C7618E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Apr 2023 21:07:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XdeZ8xzgVHosFDJ9K3Fl96nM7x/G+I3DI1EVKMB5/cI=; b=q297RqK+9F4hF6Xu+ijVzV3tgv
-	P3ZziSodj80XNxoEeqi4dlkvZWHf2O6thf/PQ7bV92kBa4STb4p0UAF37vITtMHPzdX6iR1JDRab5
-	A4LJoISngl8Nqk/RhBpcyxXOOliIX1SqLRFMz1jNWG8U9SflKWC0HLWNd74dn37teZTohc3CVGkjY
-	rqbseyUgA+RDxsp496gsB7VAGpvuc2THJwukYbHraDv/tpXOLOvHvcrEQTv3PufB6S++/a/7/UIYk
-	3Xals2PrcamlvOB3YVCxQUloiNwnigr/hMMzr0xvQU9BQjCBnZhHE4KjQYvRVIniY+9FhdSXUgy16
-	coC1ahfQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=CEIIxz47kughbPq/IHjwOs7hBKb5DVOHOPKww/Vy0Ww=; b=TM6esdHpDX3t3gIzsqGoy6BwGQ
+	yVihM4ppqLeT62jd7i4LTCK4KiZdXn1apoXd4cDkYbtAE8OoL9TaS5QfY1iTtnCaHA1aFBVgnkNQz
+	yd6Wb3s/kxfM0tu1CFffBnPcW/+VOmpvyDlFg1SIR8LV/xAWF0zJTqG8pCDei73kZu5x7m/S3dhl0
+	Zgg1Irs7mj9FEVB6pS2aKpitmDWij72Bi6nUgpP8H/M8CfHBEubrvvC7D3ydy//JTpTno8JFB++xo
+	bSgCJIL89E6jw7ADi9dUln6vZMZ3RjMhSPwvbUwhYSQ4yw0tI6II0DxUd+oow4hHXrY3+2S2QsJW/
+	nsh5id1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppb8f-008yOy-1c;
-	Thu, 20 Apr 2023 20:44:21 +0000
-Received: from mail-oa1-f43.google.com ([209.85.160.43])
+	id 1ppbUY-0090QT-18;
+	Thu, 20 Apr 2023 21:06:58 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppb8a-008yO1-2K;
-	Thu, 20 Apr 2023 20:44:18 +0000
-Received: by mail-oa1-f43.google.com with SMTP id 586e51a60fabf-187df75c901so475861fac.1;
-        Thu, 20 Apr 2023 13:44:15 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682023455; x=1684615455;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=XdeZ8xzgVHosFDJ9K3Fl96nM7x/G+I3DI1EVKMB5/cI=;
-        b=cVhqG6n1ZblzS+2z7N9AHcsyrn5IgfPaMxfZnQl6zSOHBqDuNzQPu6vb2OPgYx7dQf
-         A7I+7bWGfKkHMntnBvqvh7AZMVzTyBvz/NwXg2ffmdrRDaXfJH9twVFkYMli2FHvEdoU
-         IBjAG2oQAOxGle3qZQJz79ivgUbCTzN5LDaGc63LrsP7naONdlUMV9fvGSkPM2jIhHOB
-         f+AYz7xS7CD7XfgYtreXzyyDpIlpm92kif8OKVtt+vyDK9hcce6+de5rRap1KxynaSAR
-         LwCpBUhgFyCtRo2kD4qyS2TqpRE8CSToBRDL1yuXmhTQu13pp7MY79lx6Dk46XUawEOO
-         V1cg==
-X-Gm-Message-State: AAQBX9dSvdQR+yLOFRAugr9zJYj0uvZVCvcjq6o9gN0Dmj09iTVzurVT
-	Eldr3gYuqsXJKkkKjcNiyUtPcYXncA==
-X-Google-Smtp-Source: AKy350aEuuhzmBltlqVshkcKGlza/qYtsoMU4SNFpJGHeliRLT5wVxIePHagH1cABEcZFMnqjpbW7A==
-X-Received: by 2002:a05:6870:e749:b0:17a:aeff:5228 with SMTP id t9-20020a056870e74900b0017aaeff5228mr2130851oak.47.1682023454819;
-        Thu, 20 Apr 2023 13:44:14 -0700 (PDT)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id g11-20020a9d618b000000b006a3f4c6f138sm1091275otk.36.2023.04.20.13.44.14
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Apr 2023 13:44:14 -0700 (PDT)
-Received: (nullmailer pid 3467149 invoked by uid 1000);
-	Thu, 20 Apr 2023 20:44:13 -0000
-Date: Thu, 20 Apr 2023 15:44:13 -0500
-From: Rob Herring <robh@kernel.org>
-To: Rob Herring <robh@kernel.org>
-Cc: devicetree@vger.kernel.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] dt-bindings: arm/soc: mediatek: Drop unneeded quotes
-Message-ID: <168202340162.3466084.977084044786860402.robh@kernel.org>
-References: <20230322173501.3970991-1-robh@kernel.org>
+	id 1ppbUW-0090PR-1o;
+	Thu, 20 Apr 2023 21:06:57 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1ppbUP-0002gY-0C;
+	Thu, 20 Apr 2023 23:06:49 +0200
+Date: Thu, 20 Apr 2023 22:06:42 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH net-next] net: mtk_eth_soc: mediatek: fix ppe flow accounting
+ for v1 hardware
+Message-ID: <d8474a95a528a4bec5121252205d179f357c7124.1682024624.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230322173501.3970991-1-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230420_134416_781106_DC71C848 
-X-CRM114-Status: GOOD (  10.20  )
+X-CRM114-CacheID: sfid-20230420_140656_600015_D859635D 
+X-CRM114-Status: GOOD (  11.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,29 +68,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Felix Fietkau <nbd@nbd.name>
 
-On Wed, 22 Mar 2023 12:34:59 -0500, Rob Herring wrote:
-> Cleanup bindings dropping unneeded quotes. Once all these are fixed,
-> checking for this can be enabled in yamllint.
-> 
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
->  .../devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml   | 4 ++--
->  .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml      | 4 ++--
->  .../bindings/arm/mediatek/mediatek,mt7622-pcie-mirror.yaml    | 4 ++--
->  .../devicetree/bindings/arm/mediatek/mediatek,mt7622-wed.yaml | 4 ++--
->  .../bindings/arm/mediatek/mediatek,mt7986-wed-pcie.yaml       | 4 ++--
->  .../bindings/arm/mediatek/mediatek,mt8186-clock.yaml          | 4 ++--
->  .../bindings/arm/mediatek/mediatek,mt8186-sys-clock.yaml      | 4 ++--
->  .../bindings/arm/mediatek/mediatek,mt8192-clock.yaml          | 4 ++--
->  .../bindings/arm/mediatek/mediatek,mt8192-sys-clock.yaml      | 4 ++--
->  .../bindings/arm/mediatek/mediatek,mt8195-clock.yaml          | 4 ++--
->  .../bindings/arm/mediatek/mediatek,mt8195-sys-clock.yaml      | 4 ++--
->  .../devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml    | 4 ++--
->  Documentation/devicetree/bindings/soc/mediatek/devapc.yaml    | 4 ++--
->  13 files changed, 26 insertions(+), 26 deletions(-)
-> 
+Older chips (like MT7622) use a different bit in ib2 to enable hardware
+counter support. Add macros for both and select the appropriate bit.
 
-Applied, thanks!
+Fixes: 3fbe4d8c0e53 ("net: ethernet: mtk_eth_soc: ppe: add support for flow accounting")
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ drivers/net/ethernet/mediatek/mtk_ppe.c | 10 ++++++++--
+ drivers/net/ethernet/mediatek/mtk_ppe.h |  3 ++-
+ 2 files changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
+index dd9581334b054..9129821f3ab8f 100644
+--- a/drivers/net/ethernet/mediatek/mtk_ppe.c
++++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
+@@ -601,6 +601,7 @@ __mtk_foe_entry_commit(struct mtk_ppe *ppe, struct mtk_foe_entry *entry,
+ 	struct mtk_eth *eth = ppe->eth;
+ 	u16 timestamp = mtk_eth_timestamp(eth);
+ 	struct mtk_foe_entry *hwe;
++	u32 val;
+ 
+ 	if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2)) {
+ 		entry->ib1 &= ~MTK_FOE_IB1_BIND_TIMESTAMP_V2;
+@@ -617,8 +618,13 @@ __mtk_foe_entry_commit(struct mtk_ppe *ppe, struct mtk_foe_entry *entry,
+ 	wmb();
+ 	hwe->ib1 = entry->ib1;
+ 
+-	if (ppe->accounting)
+-		*mtk_foe_entry_ib2(eth, hwe) |= MTK_FOE_IB2_MIB_CNT;
++	if (ppe->accounting) {
++		if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2))
++			val = MTK_FOE_IB2_MIB_CNT_V2;
++		else
++			val = MTK_FOE_IB2_MIB_CNT;
++		*mtk_foe_entry_ib2(eth, hwe) |= val;
++	}
+ 
+ 	dma_wmb();
+ 
+diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.h b/drivers/net/ethernet/mediatek/mtk_ppe.h
+index e1aab2e8e2629..e51de31a52ec6 100644
+--- a/drivers/net/ethernet/mediatek/mtk_ppe.h
++++ b/drivers/net/ethernet/mediatek/mtk_ppe.h
+@@ -55,9 +55,10 @@ enum {
+ #define MTK_FOE_IB2_PSE_QOS		BIT(4)
+ #define MTK_FOE_IB2_DEST_PORT		GENMASK(7, 5)
+ #define MTK_FOE_IB2_MULTICAST		BIT(8)
++#define MTK_FOE_IB2_MIB_CNT		BIT(10)
+ 
+ #define MTK_FOE_IB2_WDMA_QID2		GENMASK(13, 12)
+-#define MTK_FOE_IB2_MIB_CNT		BIT(15)
++#define MTK_FOE_IB2_MIB_CNT_V2		BIT(15)
+ #define MTK_FOE_IB2_WDMA_DEVIDX		BIT(16)
+ #define MTK_FOE_IB2_WDMA_WINFO		BIT(17)
+ 
+-- 
+2.40.0
 
 
