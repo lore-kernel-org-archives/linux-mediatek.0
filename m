@@ -4,54 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFD5CC7618E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Apr 2023 19:04:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07E1FC77B76
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Apr 2023 19:07:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UhLjyN4tYEO6qiQco1Fdg6Ccp2OH168n/MpjpP46Wr4=; b=G3FZRYxmm7NOFUZjVrtuq7d6Kg
-	3Q77GdZ2gFI+iibubDa6HG9vC76XgolfIxH9JkiKuPk+ZkWtbQKSGIJkVSTe2BURJlRYOF83I4u28
-	kVBJVPZdGpb4yRxOXC/XXiBJZ5KGf2U8dRqHngzu3j8SVYmLxPBNDiYFK1T9vDoGULfMp0gq6wcKz
-	jm32AdwI924THlgqmP5VWVMkOP9FaGZrVT1p/CvKA84Tu2MqAEzc6qHuPoeBzn9uo+YbBkEPg+lRa
-	yG/KcRwsMK9KXoJP80Qbo7UL2i8rktyGvC/wUFtryZbIICtTksELK/DU4r772my8n+fTAaUaJ/MEW
-	y9z8ueBA==;
+	bh=GZGv9cQrrre1lqWgC7IqFyZLxHbrSjanKLwNZbrl950=; b=JSOq47MiYUXPX1hHU+XEa2WzDj
+	fWuMZoUyQdaqlebZTS8Y8DQrWozRlTeREnbbtZ1ToEYek2B//85DfWylq4UhGk3g3gDvklRhrvaI4
+	VB9f/WVA2L93/92iLQsiGtxSeUn3jkRR1pAJHmi0m3VfumdACTeJgicpmfH7W1qPYbXz9lWqyHn91
+	TxWMJSxQV+whh9L1E2w/gxeSVcnzQAAUAMc/1YgN6SFtpPnje4NElVOaX8QMpeodEgHoDVfSIO+pX
+	dx5DuuogLgx2hJtWXEp4XJ2MY3Mgosea6zUDbfqSKYgnLDjIJoUznmRcMyklUjjfy+zBiZCAw7gIo
+	xz/gfL6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppw36-00Bgs6-24;
-	Fri, 21 Apr 2023 19:04:00 +0000
+	id 1ppw5u-00BhG1-2x;
+	Fri, 21 Apr 2023 19:06:54 +0000
 Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppw33-00BgrE-0T;
-	Fri, 21 Apr 2023 19:03:58 +0000
+	id 1ppw5q-00BhDy-1A;
+	Fri, 21 Apr 2023 19:06:51 +0000
 Received: from local
 	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1ppw2m-0002mI-06;
-	Fri, 21 Apr 2023 21:03:40 +0200
-Date: Fri, 21 Apr 2023 20:03:37 +0100
+	id 1ppw5N-0002na-2t;
+	Fri, 21 Apr 2023 21:06:22 +0200
+Date: Fri, 21 Apr 2023 20:06:18 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Subject: Re: [RFC PATCH net-next 08/22] net: dsa: mt7530: change
- p{5,6}_interface to p{5,6}_configured
-Message-ID: <ZELeCYZ0_eHTKFF_@makrotopia.org>
+Subject: Re: [RFC PATCH net-next 20/22] net: dsa: mt7530: force link-down on
+ MACs before reset on MT7530
+Message-ID: <ZELeqnUKQApQPxUR@makrotopia.org>
 References: <20230421143648.87889-1-arinc.unal@arinc9.com>
- <20230421143648.87889-9-arinc.unal@arinc9.com>
- <ZELH2RlYLPjJGx6Y@makrotopia.org>
- <810aa47b-7007-7d53-9a23-c2d17d43d8a8@arinc9.com>
- <f1c38c13-a1f6-93d8-90ae-4ea3f7e06dc2@arinc9.com>
- <235c80fc-3f1b-a9c9-6364-6f50ee45b21b@arinc9.com>
+ <20230421143648.87889-21-arinc.unal@arinc9.com>
+ <ZELZAd4O9SyHLkwn@makrotopia.org>
+ <7982894a-029c-585a-9ab5-3a6295c6abaa@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <235c80fc-3f1b-a9c9-6364-6f50ee45b21b@arinc9.com>
+In-Reply-To: <7982894a-029c-585a-9ab5-3a6295c6abaa@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230421_120357_179926_DB77208E 
-X-CRM114-Status: GOOD (  37.43  )
+X-CRM114-CacheID: sfid-20230421_120650_394979_7416F924 
+X-CRM114-Status: GOOD (  25.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,73 +65,77 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, Floria
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 21, 2023 at 09:25:39PM +0300, Arınç ÜNAL wrote:
-> 
-> 
-> On 21.04.2023 21:20, Arınç ÜNAL wrote:
-> > On 21.04.2023 21:17, Arınç ÜNAL wrote:
-> > > On 21.04.2023 20:28, Daniel Golle wrote:
-> > > > On Fri, Apr 21, 2023 at 05:36:34PM +0300, arinc9.unal@gmail.com wrote:
-> > > > > From: Arınç ÜNAL <arinc.unal@arinc9.com>
-> > > > > 
-> > > > > The idea of p5_interface and p6_interface pointers is to prevent
-> > > > > mt753x_mac_config() from running twice for MT7531, as it's
-> > > > > already run with
-> > > > > mt753x_cpu_port_enable() from mt7531_setup_common(), if the
-> > > > > port is used as
-> > > > > a CPU port.
-> > > > > 
-> > > > > Change p5_interface and p6_interface to p5_configured and
-> > > > > p6_configured.
-> > > > > Make them boolean.
-> > > > > 
-> > > > > Do not set them for any other reason.
-> > > > > 
-> > > > > The priv->p5_intf_sel check is useless as in this code path,
-> > > > > it will always
-> > > > > be P5_INTF_SEL_GMAC5.
-> > > > > 
-> > > > > There was also no need to set priv->p5_interface and
-> > > > > priv->p6_interface to
-> > > > > PHY_INTERFACE_MODE_NA on mt7530_setup() and mt7531_setup()
-> > > > > as they would
-> > > > > already be set to that when "priv" is allocated. The
-> > > > > pointers were of the
-> > > > > phy_interface_t enumeration type, and the first element of the enum is
-> > > > > PHY_INTERFACE_MODE_NA. There was nothing in between that
-> > > > > would change this
-> > > > > beforehand.
-> > > > > 
-> > > > > Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> > > > > Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> > > > 
-> > > > NACK. This assumes that a user port is configured exactly once.
-> > > > However, interface mode may change because of mode-changing PHYs (e.g.
-> > > > often using Cisco SGMII for 10M/100M/1000M but using 2500Base-X for
-> > > > 2500M, ie. depending on actual link speed).
-> > > > 
-> > > > Also when using SFP modules (which can be hotplugged) the interface
-> > > > mode may change after initially setting up the driver, e.g. when SFP
-> > > > driver is loaded or a module is plugged or replaced.
+On Fri, Apr 21, 2023 at 09:47:16PM +0300, Arınç ÜNAL wrote:
+> On 21.04.2023 21:42, Daniel Golle wrote:
+> > On Fri, Apr 21, 2023 at 05:36:46PM +0300, arinc9.unal@gmail.com wrote:
+> > > From: Arınç ÜNAL <arinc.unal@arinc9.com>
 > > > 
-> > > I'm not sure I understand. pX_configured would be set to true only
-> > > when the port is used as a CPU port. mt753x_mac_config() should run
-> > > for user or DSA ports more than once, if needed.
+> > > Force link-down on all MACs before internal reset. Let's follow suit commit
+> > > 728c2af6ad8c ("net: mt7531: ensure all MACs are powered down before
+> > > reset").
+> > > 
+> > > Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> > > Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> > > ---
+> > >   drivers/net/dsa/mt7530.c | 4 ++++
+> > >   1 file changed, 4 insertions(+)
+> > > 
+> > > diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> > > index ac1e3c58aaac..8ece3d0d820c 100644
+> > > --- a/drivers/net/dsa/mt7530.c
+> > > +++ b/drivers/net/dsa/mt7530.c
+> > > @@ -2203,6 +2203,10 @@ mt7530_setup(struct dsa_switch *ds)
+> > >   		return -EINVAL;
+> > >   	}
+> > > +	/* Force link-down on all MACs before internal reset */
+> > > +	for (i = 0; i < MT7530_NUM_PORTS; i++)
+> > > +		mt7530_write(priv, MT7530_PMCR_P(i), PMCR_FORCE_LNK);
+> > > +
 > > 
-> > Looking at this again, once pX_interface is true, the check will prevent
-> > even user or DSA ports to be configured again. What about setting
-> > pX_interface to false after mt753x_mac_config() is run?
+> > Moving this part to mt753x_setup just before calling priv->info->sw_setup(ds);
+> > is probably better. Though it isn't documented I assume that the requirement
+> > to have the ports in force-link-down may also apply to MT7988, and for sure
+> > it doesn't do any harm.
+> > 
+> > Hence I suggest to squash this change:
+> > diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> > index a2cb7e296165e..998c4e8930cd3 100644
+> > --- a/drivers/net/dsa/mt7530.c
+> > +++ b/drivers/net/dsa/mt7530.c
+> > @@ -2203,10 +2203,6 @@ mt7530_setup(struct dsa_switch *ds)
+> >   		return -EINVAL;
+> >   	}
+> > -	/* Force link-down on all MACs before internal reset */
+> > -	for (i = 0; i < MT7530_NUM_PORTS; i++)
+> > -		mt7530_write(priv, MT7530_PMCR_P(i), PMCR_FORCE_LNK);
+> > -
+> >   	/* Reset the switch through internal reset */
+> >   	mt7530_write(priv, MT7530_SYS_CTRL,
+> >   		     SYS_CTRL_PHY_RST | SYS_CTRL_SW_RST |
+> > @@ -2423,10 +2419,6 @@ mt7531_setup(struct dsa_switch *ds)
+> >   		dev_info(priv->dev, "found MT7531BE\n");
+> >   	}
+> > -	/* all MACs must be forced link-down before sw reset */
+> > -	for (i = 0; i < MT7530_NUM_PORTS; i++)
+> > -		mt7530_write(priv, MT7530_PMCR_P(i), MT7531_FORCE_LNK);
+> > -
+> >   	/* Reset the switch through internal reset */
+> >   	mt7530_write(priv, MT7530_SYS_CTRL,
+> >   		     SYS_CTRL_PHY_RST | SYS_CTRL_SW_RST |
+> > @@ -2907,6 +2899,10 @@ mt753x_setup(struct dsa_switch *ds)
+> >   		priv->pcs[i].port = i;
+> >   	}
+> > +	/* Force link-down on all MACs before setup */
+> > +	for (i = 0; i < MT7530_NUM_PORTS; i++)
+> > +		mt7530_write(priv, MT7530_PMCR_P(i), PMCR_FORCE_LNK);
 > 
-> On a third thought, pX_interface will never be true for the port if it's a
-> user or DSA port so this should not be a problem at all.
+> MT7531 has got a different bit on the register for this, MT7531_FORCE_LNK.
+> Are you sure PMCR_FORCE_LNK would work for MT7531 too?
 
-I also followed the individual codepaths and conclude that you are
-right. I've also tested this by now on several boards with MT753x,
-incl. BPi-R3 and SerDes interface mode switching is anyway handled in
-the PCS driver (I should have rembered that...)
+No, I had overlooked that. As the effects of not doing the
+force-link-down before the reset are subtle and depend on the
+link-partners I may not have cought them in my tests.
 
-Hence
-Acked-by: Daniel Golle <daniel@makrotopia.org>
 
 > 
 > Arınç
