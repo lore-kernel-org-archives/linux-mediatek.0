@@ -4,94 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14D5DC7618E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Apr 2023 16:36:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16D2DC77B61
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Apr 2023 16:44:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B3xXYf8TTlU2/1ojoFhSjIL55VCuhyAcA1eyWc0djEo=; b=Gkk8WriXhck012InUs3oe+th8S
-	8aHiyNziMbW8Qo8VQlPVUO1WPX/N3tHF+kqFwalZoSlbMyrq38zjnaRG6aYjvRn+zKgqbGJ9/HrEl
-	S5y2JOrgR180zyKhW4qHq7zFunLOlweoHHnXrcPjC5Sjv2BZfYNgGOaL7DMkwtmOe0qKuSD7FfkI3
-	uaZGESO1PAvVUsrCQJ78oKwB/0l/Ob4t/hd+R5ryDKKK2HMMKDvnQ37y/MIZJlygbeJIYhuVmEC+g
-	+QF1/qrWXB4iWbmpfbmSAF++55CfmpUDDwE9ezQBvDbbcO1EQOA0M6Vh4PvpSTkiw8P/kAEmE5Ljr
-	an6ecKIQ==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sIuJOr9KDqgRyNZKu6Tt8XNVFok6Ecpq3eqDXh3VdVw=; b=Ld++TUrzCfgtZ493shQ6VInL2g
+	YllUBTc3146ab6gyevuNMnVg9w9rVxKgr4V8aKcpdlWEEbMsuqWjSjT8ZI2ffDbXc/KRdyh0IkVOz
+	IPJzpUHcm3E1QOgpIrNs1F8C7ETIYOyXa1Dy/05kea2jYfwW4VQKA40Knw7R4pUB6afgd5NikOfVU
+	0DEdZXFQeKof2bAHEgEfaXK/eFiFWTAGFbEojY+r7X2n9uZS+Icujltoqi1cmDqLf8MLaFauauCQ5
+	ZufDmw6pXHsoVdCGI0mOxbYInUCLtg9yEEcpnbYd3ElCjF16hWa0SJH2j7HwKjbkLMvigGuwAxYLF
+	ZU9H06yQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pptju-00BOjl-0Q;
-	Fri, 21 Apr 2023 16:36:02 +0000
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+	id 1pptrW-00BPrt-0f;
+	Fri, 21 Apr 2023 16:43:54 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pptjq-00BOiM-34
+	id 1pptrS-00BPqi-1t
 	for linux-mediatek@lists.infradead.org;
-	Fri, 21 Apr 2023 16:36:00 +0000
-Received: by mail-ed1-x52f.google.com with SMTP id 4fb4d7f45d1cf-506bfe81303so3113512a12.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 21 Apr 2023 09:35:57 -0700 (PDT)
+	Fri, 21 Apr 2023 16:43:51 +0000
+Received: by mail-ed1-x531.google.com with SMTP id 4fb4d7f45d1cf-5055141a8fdso2692633a12.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 21 Apr 2023 09:43:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1682094957; x=1684686957;
-        h=content-transfer-encoding:in-reply-to:from:references:to
+        d=linaro.org; s=google; t=1682095429; x=1684687429;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=B3xXYf8TTlU2/1ojoFhSjIL55VCuhyAcA1eyWc0djEo=;
-        b=Sor67hOA1/JULAkvGJjP+cDue/xFOhnaoY7aiqCjAPBgbRT1GNh0cKKYbMhF5M4XyE
-         LfSrbGuEhHHdBgzvuMdEMLvFuTyeDjT0YFf6JbkqnsN4a9oFjSnvOwvJwicU9Z0X+OJ1
-         vwC4Fq0U1F+0T/okj1wlboZFVddCtNyk4Ch7LsgXx36Ap7ACQYN3jPQUBpE6z6GtFNiw
-         u0JyXneZmaMcs5JROQiZw5EPfUMWgdTSJrfsv1k4hbBSSyJoZbqDQSwcy4K2yOC+K7MD
-         k/ULY3OkHyXcE8d/64BAXNAA7dG6yTf5tvv5qeQnDE5lTHpPPHRWRwwnIvqzAGQle1gG
-         K+Eg==
+        bh=sIuJOr9KDqgRyNZKu6Tt8XNVFok6Ecpq3eqDXh3VdVw=;
+        b=lBQgSPyCip8rYuFpD+Us5fMponEiWICDi4kBwWqP5Gu6VnZDpRxF90JVMutN889EKh
+         BklKXuWF0K0mMfc8jCX0zhVJHYmQ+OgHRfrDSwZnXv7BwbkN9TkrGVS+6VLWtIftCalK
+         24g4MpMs+/2fwlJ5QYO+dTLQFWz9aW1Ma200XNRjpdyriDrKqyP6AguuNqgJrIXFFmAr
+         Zo/Hx+b4IfPpjTKYCqYBPhgDzx6NDyCLPKbm0LnfGvwwyBbTRnhH+1TYmJa7Ffd4xug2
+         INwJ+T5PyDE3ETo4Wy3lM7AJjxq5t3KThmm+D580q14eObdPzLZku1G2h6G6rH6Q1KAO
+         bzBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682094957; x=1684686957;
-        h=content-transfer-encoding:in-reply-to:from:references:to
+        d=1e100.net; s=20221208; t=1682095429; x=1684687429;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=B3xXYf8TTlU2/1ojoFhSjIL55VCuhyAcA1eyWc0djEo=;
-        b=dbY50xL/yVSaixesEKmOmuManHAzKeSuoFa7COMJoQ+gFSCKsK6BjKbaR7+NR26OMj
-         iFhgDwDgD3FjqPnVVp3o6Scp3Nux5TxdvwgZh2LE7kevIBzQglBMjrpOXLWH/Yrxgl0T
-         1H8AV7ZakOHx8vbmNQL3nP2aX8xRRn6rS1xNG0397Ep5FHqboErxZZKNrl6JWCvQVTyw
-         xpjK9kV249poo+tUGokS2FLb363p2Gp0SxmGyv+2Apr5tLnZTPfhCQ1wKEWFqFiAqmWX
-         urbVD9bvx5TQDnG+Jo7Y6415POTZfR8FL4Xt0a8M38jUcnHiQ0GW5RINZpOBDpBcKf4p
-         7o1g==
-X-Gm-Message-State: AAQBX9dN8IID+jI4niUjDk0/z8aVqeQNYF4XNvSQUKxM2FNDyrkeSqPG
-	fZuQeTA9CSVDpl341R6hDiXxxA==
-X-Google-Smtp-Source: AKy350boQF7CjGbGArouyeaz2RM7OfQUMW7bsH6kjiwVj9BdnlvnjW2wn3qWocJsMuzqFUF8Kjdsqg==
-X-Received: by 2002:aa7:da41:0:b0:506:8660:77a3 with SMTP id w1-20020aa7da41000000b00506866077a3mr5948346eds.37.1682094956706;
-        Fri, 21 Apr 2023 09:35:56 -0700 (PDT)
+        bh=sIuJOr9KDqgRyNZKu6Tt8XNVFok6Ecpq3eqDXh3VdVw=;
+        b=j0lUjXmX1CiJG0ngLHDZyDprq1yszAqebbITJpDaoeI24Uaz9rd+hL4KdBLeoBAyvJ
+         UQq1wzldfwE+LyjnPZBLSE/XcEKt5bl9+KCX2A1SxbdQo0annJiIZtZR/BWPaHtfCCdR
+         9z8hft5rdvvvALBRIkOUXwbrklpCNI6fLGrwB645rk89oZ1WVcFldCFS7boZ0bcgxSRR
+         e4kOyTatKE4gBiSJdgdh27KAMkGdMQ3HJ9XFlkPexjgLCUjSWXEFWXqY5yvinqUSdfh9
+         B/fqtPAs+v+zUpbV7YRL+EPYSULh2Vl4Pxn2iKFz3JnyL+QSZYzt347Sxi+TmYEfKWqQ
+         9/9g==
+X-Gm-Message-State: AAQBX9eSxwhDym7E4Ls/bRHS3zkInj2XmbRv32CRteHE3xg5ZF2hDeoZ
+	6XP1+AAlDK9QyjRxJZz/A0PPgg==
+X-Google-Smtp-Source: AKy350Z9W1Awuyb/afDJDAwM+gnsZX1x4JGUQFrDP8K1cSk1huw1//Tq6t/V1q559iCtPTZ58No0sA==
+X-Received: by 2002:a17:907:e92:b0:94a:4d06:3de3 with SMTP id ho18-20020a1709070e9200b0094a4d063de3mr3205814ejc.72.1682095428846;
+        Fri, 21 Apr 2023 09:43:48 -0700 (PDT)
 Received: from ?IPV6:2a02:810d:15c0:828:687d:8c5:41cb:9883? ([2a02:810d:15c0:828:687d:8c5:41cb:9883])
-        by smtp.gmail.com with ESMTPSA id w22-20020aa7d296000000b004fa99a22c3bsm1957151edq.61.2023.04.21.09.35.55
+        by smtp.gmail.com with ESMTPSA id t18-20020a17090616d200b0094f969e877bsm2242742ejd.43.2023.04.21.09.43.47
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 21 Apr 2023 09:35:56 -0700 (PDT)
-Message-ID: <bc454390-3658-f16b-aa48-58bdeef52d22@linaro.org>
-Date: Fri, 21 Apr 2023 18:35:55 +0200
+        Fri, 21 Apr 2023 09:43:48 -0700 (PDT)
+Message-ID: <5e622e88-5287-1ffc-aa9b-c7c85a661fd9@linaro.org>
+Date: Fri, 21 Apr 2023 18:43:47 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.0
-Subject: Re: [PATCH v2 1/2] dt-bindings: net: mediatek: add WED RX binding for
- MT7981 eth driver
+Subject: Re: [PATCH v2 7/7] ASoC: dt-bindings: mediatek,mt8188-afe: add audio
+ properties
 Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>, devicetree@vger.kernel.org,
- netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+To: Trevor Wu <trevor.wu@mediatek.com>, broonie@kernel.org,
+ lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com
+Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
- Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-References: <cover.1681994362.git.daniel@makrotopia.org>
- <b355493ed3d56396af91492b86f77f613485272a.1681994362.git.daniel@makrotopia.org>
+ devicetree@vger.kernel.org
+References: <20230421100905.28045-1-trevor.wu@mediatek.com>
+ <20230421100905.28045-8-trevor.wu@mediatek.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <b355493ed3d56396af91492b86f77f613485272a.1681994362.git.daniel@makrotopia.org>
+In-Reply-To: <20230421100905.28045-8-trevor.wu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230421_093558_984916_6136FF4B 
-X-CRM114-Status: UNSURE (   8.55  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230421_094350_627917_A2F73DA7 
+X-CRM114-Status: GOOD (  15.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,14 +100,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 20/04/2023 18:04, Daniel Golle wrote:
-> Add compatible string for mediatek,mt7981-wed as MT7981 also supports
-> RX WED just like MT7986, but needs a different firmware file.
+On 21/04/2023 12:09, Trevor Wu wrote:
+> Assign top_a1sys_hp clock to 26M, and add apll1_d4 to clocks for switching
+> the parent of top_a1sys_hp dynamically
+> On the other hand, "mediatek,infracfg" is included for bus protection.
 > 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
 > ---
+>  .../bindings/sound/mediatek,mt8188-afe.yaml      | 16 ++++++++++++++--
+>  1 file changed, 14 insertions(+), 2 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8188-afe.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8188-afe.yaml
+> index 82ccb32f08f2..812e0702ca36 100644
+> --- a/Documentation/devicetree/bindings/sound/mediatek,mt8188-afe.yaml
+> +++ b/Documentation/devicetree/bindings/sound/mediatek,mt8188-afe.yaml
+> @@ -29,6 +29,10 @@ properties:
+>      $ref: /schemas/types.yaml#/definitions/phandle
+>      description: The phandle of the mediatek topckgen controller
+>  
+> +  mediatek,infracfg:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description: The phandle of the mediatek infracfg controller
+> +
+>    power-domains:
+>      maxItems: 1
+>  
+> @@ -52,6 +56,7 @@ properties:
+>        - description: mux for i2si1_mck
+>        - description: mux for i2si2_mck
+>        - description: audio 26m clock
+> +      - description: audio pll1 divide 4
+>  
+>    clock-names:
+>      items:
+> @@ -73,6 +78,7 @@ properties:
+>        - const: i2si1_m_sel
+>        - const: i2si2_m_sel
+>        - const: adsp_audio_26m
+> +      - const: apll1_d4
+>  
+>    mediatek,etdm-in1-cowork-source:
+>      $ref: /schemas/types.yaml#/definitions/uint32
+> @@ -147,6 +153,8 @@ required:
+>    - power-domains
+>    - clocks
+>    - clock-names
+> +  - assigned-clocks
+> +  - assigned-clock-parents
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+You were explaining it last time, but it did not solve my concerns.
+Requiring these properties means that your hardware boots with incorrect
+clock parents, including result of any firmware, and there is no way it
+can correctly work without reparenting. What's more, this means that
+your clock hierarchy does not include these clocks for some reason, e.g.
+you need to reparent parents of some parent of your clock input,
+otherwise device cannot work. Cannot work never ever.
+
+Is this the case?
+
+Have in mind that bindings are used also by other OS and projects, like
+bootloaders, firmware etc.
 
 Best regards,
 Krzysztof
