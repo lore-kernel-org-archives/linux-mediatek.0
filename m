@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 651D2C7618E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Apr 2023 03:48:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D5E1C77B75
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Apr 2023 03:48:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=53j2Zr5g1CHI4OUeg0l8fF8afX2h7OOtLqGtKgBQpXk=; b=Phr9dsimUPmu3WioZtpIFRKe4+
-	Dro8+KcY8hTBT/OBBWCSXGl1UpRRhz2/WA6iZrXgDy76FCeWC2RffNRhDELngdOrqsSjKlS0XJmBY
-	AYBJ9FzZJ0Q6rAA74pQacbapB6DyRPxt4Qe3nKiouEQvIYpRBL4kITJNv64vy6BkFx15xr1YwYJBl
-	q13TAr3f8Wuoy1L8pHlGaqKb6G8+f06RL2E7FlQ05V51wvIthQw65ufmmpBgjPzFh/ZWiEb0a/GSc
-	TlkmcqYJxGKDiTwMm01pXKPCXbquAJqpBHNS2V7Ofj+tGhpAsbqJqRPY0HW2mYbUwuedkdWVHO8q7
-	lAKrsbzg==;
+	bh=VDM/X9Rv4Dnk0OZyDBmi3fSTCK369lUNj0HJzi93FoY=; b=hYSOv0vOfqVD/Jo5t1hFu6sYRv
+	UZQv5YCaA44LtRJwSzEBtHaRZhBgXFoUXvjpY+hq/MZxfC6peF11Viv+6+WLTpecPQ2CWWBh6Qf3S
+	OOjWq9p/lT/x3X7WP1h6GdlOU0rDA7HlgpaLhEHr2qXJOgakYpa9UycrLKKN9EiNFEBizu6eGem9/
+	Ej4bx6FjtgAv0sEXoUFBtK1AtFE8fAw3yR90MbBeUaugb3YEKChJ1cCWKq2IoR2O6/bSgKM1fSoZ2
+	Tocr70B2j6GkAmY6+8NuzE/pSX3xlUve4szea83xmJ2SvZliR83sWbG4z1CKFvFiTGHnMNpg4g/XN
+	4r24a6WQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pphkb-009YdT-2e;
-	Fri, 21 Apr 2023 03:47:57 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pphkc-009Ydu-19;
+	Fri, 21 Apr 2023 03:47:58 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pphkZ-009Ybu-0r;
+	id 1pphkZ-009Yc6-0X;
 	Fri, 21 Apr 2023 03:47:56 +0000
-X-UUID: 48e63de0dff711ed8687db9d93187ff1-20230420
+X-UUID: 4b2c5170dff711edb7d8d11f642b8e78-20230420
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=53j2Zr5g1CHI4OUeg0l8fF8afX2h7OOtLqGtKgBQpXk=;
-	b=FppUqMuU4gcz0NMiKgDRxxsoMasocPzdOVEdDOh/ogmK0x/LBuVOGAtFYtc9FlnOBHR/oXMlC8HB8JWF+XEynP2jv42YHL3QVBFdBkjWIJIXjI6SkGrZzeuu6Poam07d6PKIB8J+mDJ/q9nWZi/1ul2hF1GRZ+O3mh4CKVjpFbk=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=VDM/X9Rv4Dnk0OZyDBmi3fSTCK369lUNj0HJzi93FoY=;
+	b=a2JTOoiO226LwJkA7GXNw21hhLZxL7jH1FIFqJzn3pSmv1uRxoOQ2En2ZwHapXMxblFUsQHJUd4K3shZ0HE9Yu/t8Gu5SmTg/COD6N7yvIre5i9cEbxDoITjjwCCpfxT4MEFbwv6csYP/nBJbmKMaPrv0wZsC+Xr8FYz5C2eBog=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:e49f0748-4d99-4066-901a-3028352a7f0a,IP:0,U
+X-CID-O-INFO: VERSION:1.1.22,REQID:fb66ee2d-b2e3-4e0d-b73b-8d26d0868839,IP:0,U
 	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
 	:release,TS:-5
-X-CID-META: VersionHash:120426c,CLOUDID:bd98c684-cd9c-45f5-8134-710979e3df0e,B
+X-CID-META: VersionHash:120426c,CLOUDID:2699c684-cd9c-45f5-8134-710979e3df0e,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
-X-UUID: 48e63de0dff711ed8687db9d93187ff1-20230420
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: 4b2c5170dff711edb7d8d11f642b8e78-20230420
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
 	(envelope-from <walter.chang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 759648590; Thu, 20 Apr 2023 20:47:49 -0700
+	with ESMTP id 497251780; Thu, 20 Apr 2023 20:47:52 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Fri, 21 Apr 2023 11:47:46 +0800
+ 15.2.1118.25; Fri, 21 Apr 2023 11:47:50 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Fri, 21 Apr 2023 11:47:46 +0800
+ 15.2.1118.25 via Frontend Transport; Fri, 21 Apr 2023 11:47:50 +0800
 From: <walter.chang@mediatek.com>
 To: Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner
 	<tglx@linutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>,
@@ -61,17 +61,17 @@ CC: <wsd_upstream@mediatek.com>, <stanley.chu@mediatek.com>,
 	<walter.chang@mediatek.com>, Chun-Hung Wu <chun-hung.wu@mediatek.com>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH linux-next v4 2/4] clocksource/drivers/mmio: Export clocksource_mmio_init()
-Date: Fri, 21 Apr 2023 11:46:47 +0800
-Message-ID: <20230421034649.15247-3-walter.chang@mediatek.com>
+Subject: [PATCH linux-next v4 3/4] clocksource/drivers/timer-of: Remove __init markings
+Date: Fri, 21 Apr 2023 11:46:48 +0800
+Message-ID: <20230421034649.15247-4-walter.chang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230421034649.15247-1-walter.chang@mediatek.com>
 References: <20230421034649.15247-1-walter.chang@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230420_204755_312066_42CCEB09 
-X-CRM114-Status: GOOD (  10.03  )
+X-CRM114-CacheID: sfid-20230420_204755_212558_85516DD8 
+X-CRM114-Status: GOOD (  12.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,45 +88,119 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Chun-Hung Wu <chun-hung.wu@mediatek.com>
 
-Export clocksource_mmio_init() and clocksource_mmio_readl_up()
-to support building clocksource driver as module,
-such as timer-mediatek.c.
+Remove __init markings to allow timer drivers
+can be compiled as modules.
 
 Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
 ---
- drivers/clocksource/mmio.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+ drivers/clocksource/timer-of.c | 23 ++++++++++++-----------
+ drivers/clocksource/timer-of.h |  6 +++---
+ 2 files changed, 15 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/clocksource/mmio.c b/drivers/clocksource/mmio.c
-index 9de751531831..b08b2f9d7a8b 100644
---- a/drivers/clocksource/mmio.c
-+++ b/drivers/clocksource/mmio.c
-@@ -21,6 +21,7 @@ u64 clocksource_mmio_readl_up(struct clocksource *c)
- {
- 	return (u64)readl_relaxed(to_mmio_clksrc(c)->reg);
- }
-+EXPORT_SYMBOL_GPL(clocksource_mmio_readl_up);
- 
- u64 clocksource_mmio_readl_down(struct clocksource *c)
- {
-@@ -46,9 +47,9 @@ u64 clocksource_mmio_readw_down(struct clocksource *c)
-  * @bits:	Number of valid bits
-  * @read:	One of clocksource_mmio_read*() above
+diff --git a/drivers/clocksource/timer-of.c b/drivers/clocksource/timer-of.c
+index c3f54d9912be..59bc5921acad 100644
+--- a/drivers/clocksource/timer-of.c
++++ b/drivers/clocksource/timer-of.c
+@@ -19,7 +19,7 @@
+  *
+  * Free the irq resource
   */
--int __init clocksource_mmio_init(void __iomem *base, const char *name,
--	unsigned long hz, int rating, unsigned bits,
--	u64 (*read)(struct clocksource *))
-+int clocksource_mmio_init(void __iomem *base, const char *name,
-+			  unsigned long hz, int rating, unsigned bits,
-+			  u64 (*read)(struct clocksource *))
+-static __init void timer_of_irq_exit(struct of_timer_irq *of_irq)
++static void timer_of_irq_exit(struct of_timer_irq *of_irq)
  {
- 	struct clocksource_mmio *cs;
+ 	struct timer_of *to = container_of(of_irq, struct timer_of, of_irq);
  
-@@ -68,3 +69,4 @@ int __init clocksource_mmio_init(void __iomem *base, const char *name,
+@@ -47,8 +47,8 @@ static __init void timer_of_irq_exit(struct of_timer_irq *of_irq)
+  *
+  * Returns 0 on success, < 0 otherwise
+  */
+-static __init int timer_of_irq_init(struct device_node *np,
+-				    struct of_timer_irq *of_irq)
++static int timer_of_irq_init(struct device_node *np,
++			     struct of_timer_irq *of_irq)
+ {
+ 	int ret;
+ 	struct timer_of *to = container_of(of_irq, struct timer_of, of_irq);
+@@ -91,7 +91,7 @@ static __init int timer_of_irq_init(struct device_node *np,
+  *
+  * Disables and releases the refcount on the clk
+  */
+-static __init void timer_of_clk_exit(struct of_timer_clk *of_clk)
++static void timer_of_clk_exit(struct of_timer_clk *of_clk)
+ {
+ 	of_clk->rate = 0;
+ 	clk_disable_unprepare(of_clk->clk);
+@@ -107,8 +107,8 @@ static __init void timer_of_clk_exit(struct of_timer_clk *of_clk)
+  *
+  * Returns 0 on success, < 0 otherwise
+  */
+-static __init int timer_of_clk_init(struct device_node *np,
+-				    struct of_timer_clk *of_clk)
++static int timer_of_clk_init(struct device_node *np,
++			     struct of_timer_clk *of_clk)
+ {
+ 	int ret;
  
- 	return clocksource_register_hz(&cs->clksrc, hz);
+@@ -146,13 +146,13 @@ static __init int timer_of_clk_init(struct device_node *np,
+ 	goto out;
  }
-+EXPORT_SYMBOL_GPL(clocksource_mmio_init);
+ 
+-static __init void timer_of_base_exit(struct of_timer_base *of_base)
++static void timer_of_base_exit(struct of_timer_base *of_base)
+ {
+ 	iounmap(of_base->base);
+ }
+ 
+-static __init int timer_of_base_init(struct device_node *np,
+-				     struct of_timer_base *of_base)
++static int timer_of_base_init(struct device_node *np,
++			      struct of_timer_base *of_base)
+ {
+ 	of_base->base = of_base->name ?
+ 		of_io_request_and_map(np, of_base->index, of_base->name) :
+@@ -165,7 +165,7 @@ static __init int timer_of_base_init(struct device_node *np,
+ 	return 0;
+ }
+ 
+-int __init timer_of_init(struct device_node *np, struct timer_of *to)
++int timer_of_init(struct device_node *np, struct timer_of *to)
+ {
+ 	int ret = -EINVAL;
+ 	int flags = 0;
+@@ -209,6 +209,7 @@ int __init timer_of_init(struct device_node *np, struct timer_of *to)
+ 		timer_of_base_exit(&to->of_base);
+ 	return ret;
+ }
++EXPORT_SYMBOL_GPL(timer_of_init);
+ 
+ /**
+  * timer_of_cleanup - release timer_of resources
+@@ -217,7 +218,7 @@ int __init timer_of_init(struct device_node *np, struct timer_of *to)
+  * Release the resources that has been used in timer_of_init().
+  * This function should be called in init error cases
+  */
+-void __init timer_of_cleanup(struct timer_of *to)
++void timer_of_cleanup(struct timer_of *to)
+ {
+ 	if (to->flags & TIMER_OF_IRQ)
+ 		timer_of_irq_exit(&to->of_irq);
+diff --git a/drivers/clocksource/timer-of.h b/drivers/clocksource/timer-of.h
+index a5478f3e8589..5d1472846346 100644
+--- a/drivers/clocksource/timer-of.h
++++ b/drivers/clocksource/timer-of.h
+@@ -66,9 +66,9 @@ static inline unsigned long timer_of_period(struct timer_of *to)
+ 	return to->of_clk.period;
+ }
+ 
+-extern int __init timer_of_init(struct device_node *np,
+-				struct timer_of *to);
++extern int timer_of_init(struct device_node *np,
++			 struct timer_of *to);
+ 
+-extern void __init timer_of_cleanup(struct timer_of *to);
++extern void timer_of_cleanup(struct timer_of *to);
+ 
+ #endif
 -- 
 2.18.0
 
