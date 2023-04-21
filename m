@@ -4,91 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F066DC7618E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Apr 2023 14:41:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46117C77B71
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Apr 2023 15:17:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZmJp66E7f+Y6znObj42iK8swVGPa549Lcio15ZPSnxQ=; b=4RhEGrt+IBWaSG
-	Lm2Y0/2vttFFJruFOGmzbc3bA21JzBcPUnvAOqEEQPFqD/f8zLzqtOYXF9fyD8ang+7/H5BI98u3c
-	OilaTZw/tHcYmOrfOXBC+CuLBFANqXwCT5ZJt3Zff2szIdsG4agy4evt6OWPjnVaHnsQj3l/z6N1E
-	IFNlsEVgtKS6SLK3iuK6G/ZJT+i/3Y2ejk2gXsdKw5epEMZhdmJtb4iMzaPF8nl+xb5IgkWfgz9vI
-	UPccfLJtBiP2HOp0arhNLmJRCEgGKvvkJtedr4H27SfCVusc3Q5RlHWnPYUkuUe66/7H/aU6kjkJZ
-	aOAMrWy9lXBQNH6xFrkg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vgIIApKncp2FGzYrfgVqy8Lu8lTrBgKXnpjMVL+JTh8=; b=r63GOtGX4U7sAB4ltOtrmZZPHj
+	GwdZ+Uomdar6k50NChH5tt7mHbCOfnJGkhOZ0kb8dRYuu0O8MvwnfK3k3UkUKh5U+cKuQxizv8Rwf
+	w3dGuANA/mVAmiGvZNfiPNBsXtRyiqwoVR/tFqTlhNH5tQhzaQNIw5eGJ+4Fk3Tx7GR5kJd6O2OWk
+	QLt73Zla+Fu5hfxMTICe7q86Y0tYee96k7rIhtfGDg0Uj1j3pWJSEQqcSEJX8DMULQxUlmt2kZQKv
+	9iKaYlO5OEDdD+/hcsqxBU/5GVMnLEFjFTMQmaQiFy1i5yziPKpB5kp6bc9rnsAKpRrz64FmNmmM2
+	6a9BFDkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pprwl-00BATh-03;
-	Fri, 21 Apr 2023 14:41:11 +0000
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+	id 1ppsVe-00BFs6-0X;
+	Fri, 21 Apr 2023 15:17:14 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pprtR-00B7ot-1S;
-	Fri, 21 Apr 2023 14:37:47 +0000
-Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-94f6c285d22so288950566b.2;
-        Fri, 21 Apr 2023 07:37:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1682087863; x=1684679863;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ZmJp66E7f+Y6znObj42iK8swVGPa549Lcio15ZPSnxQ=;
-        b=XHY8SQ0nVRKoZTcLzj4l+LM5LQOi8vlGiwQ8QoZI9l9DoGKtf1oaT+Pvrqs5SYtQNC
-         E1Cbp25l2IAMrunqWeAVFKQ58dOvSlKEhVWTr86vD8ThF+pbDbeKQa3/9YtGxVg/hgb6
-         CtPBuW6XBrT0g2RvqCY8NSwKoto8XFK3yjRMJBXK6vDpIHYlXXbbfjjXXsWJJMgyZpbg
-         /6XqE566YLIzLZu50HHjScG+6S3nzGnJgL6pWYhGjhQPslMG0EkraTr+rdXUpcVyOFZA
-         mT1AWFhTnNtL0OJ7meUXco+omY1i9zKP9MklOigmu2QjhojyT35rHQX9jMxdWOF2FoUM
-         kuFw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682087863; x=1684679863;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ZmJp66E7f+Y6znObj42iK8swVGPa549Lcio15ZPSnxQ=;
-        b=e6Qnjwd+3ADp6fdo/QfIj20XQVkC8x7pC9xoVEurU+c8lWyI7CE2+c3AYDK08sH2tu
-         acRbhddlrRUutBlnjjvB5LRbp6NDT3Tg4eMvRNn5bRF/Oi3BsLQOK45Ptu/I2c39cwtp
-         pqfkIUIadLRdNGA0IYhPeEYievTettW2LyKepwWsdSLjmDVlD0ZhiFIlYnO87XFr7M7v
-         EzP6LUje2yVXAMU1Agv/Lsl6Ig42f8XZNKf/6TkXqDKM+14pKr+gaRw3iUfKGXeyR673
-         N38g+Fnxp6AWpkxYUMcamTb8P8wv39Jx/kGafd29Wc3S37wErmcfAfVbAzH29X7ivZAx
-         UDTQ==
-X-Gm-Message-State: AAQBX9diwP9P8sVkQTogKluex1pyABuMr/y2hQgL/+BZI6R6RbecaDJ5
-	UwHF1p/HqdmnFLRC6YN9EY4=
-X-Google-Smtp-Source: AKy350awrJxVPyo3L53jJ5gYw7X144Hv7XTVmv+bBVZdnRD1U32Up7K/6/LnxfMVoGT02rrdv/xbVg==
-X-Received: by 2002:a17:906:63d1:b0:94f:cee:56f2 with SMTP id u17-20020a17090663d100b0094f0cee56f2mr2546057ejk.4.1682087863051;
-        Fri, 21 Apr 2023 07:37:43 -0700 (PDT)
-Received: from arinc9-PC.lan ([149.91.1.15])
-        by smtp.gmail.com with ESMTPSA id q27-20020a170906361b00b0094e1026bc66sm2168244ejb.140.2023.04.21.07.37.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 21 Apr 2023 07:37:42 -0700 (PDT)
-From: arinc9.unal@gmail.com
-X-Google-Original-From: arinc.unal@arinc9.com
-To: Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Russell King <linux@armlinux.org.uk>
-Subject: [RFC PATCH net-next 22/22] net: dsa: mt7530: rename p5_intf_sel and use only for MT7530 switch
-Date: Fri, 21 Apr 2023 17:36:48 +0300
-Message-Id: <20230421143648.87889-23-arinc.unal@arinc9.com>
-X-Mailer: git-send-email 2.37.2
-In-Reply-To: <20230421143648.87889-1-arinc.unal@arinc9.com>
-References: <20230421143648.87889-1-arinc.unal@arinc9.com>
+	id 1ppsVZ-00BFr9-0I;
+	Fri, 21 Apr 2023 15:17:11 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 7B6BD6516C;
+	Fri, 21 Apr 2023 15:17:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4DE69C4339B;
+	Fri, 21 Apr 2023 15:17:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1682090227;
+	bh=uGmykEQ+sAUoIFdOX/TTQ1KRjOgr/SSZzJwxckXmszI=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=IcxyV3b39cNIKWPBuzx424A3OyD19EjqnGKaF0Q1mW0RDMEQzJbj2GHFmUqNrT4UQ
+	 SSpOr2BydgVm7eQ6X6qglffTWP+2IRgkmq3sf9obij7+MllWwac3PLzTz7liL7IV4G
+	 mYp7w7zpW22kA3QzfKEFkDMf9+6uICkz+qOi7RItHVllpAZlA13PLr5FFy3hsMrYQw
+	 OO+EBrv9y4jeRRL/p/tB1AS3/wobG4vVIsUDyut/EW3sdZT/2Ptzzb3I6xM0F+sf8Y
+	 OeJ1leh82j8r97ZwOIDz2Z6pkkr7TFjrVBUJ/MHWTX2JiB4YFmUNSSKwwPhQaoNs73
+	 rnRV4XzjdPeMg==
+Received: by mail-lf1-f54.google.com with SMTP id 2adb3069b0e04-4eed6ddcae1so8074807e87.0;
+        Fri, 21 Apr 2023 08:17:07 -0700 (PDT)
+X-Gm-Message-State: AAQBX9fkRMYuF6vPIb8SAr5FkRa0IA846oLymbSRDFvN3brB0c4QnoZS
+	1ECIuvpULWB3OOu2ykYFUQhIXRW1IdUDETzX5A==
+X-Google-Smtp-Source: AKy350ahkWsBaP7t9IXGI5kl9NyoFnRYHN6184HWY8QF3H5T0Hfl4AGmM1AI5vogctWKfLhyxnzvmuZOFzFcfX/AKfM=
+X-Received: by 2002:a05:6512:401a:b0:4eb:4440:e12 with SMTP id
+ br26-20020a056512401a00b004eb44400e12mr2888376lfb.15.1682090225254; Fri, 21
+ Apr 2023 08:17:05 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+References: <20230321111448.270110-1-angelogioacchino.delregno@collabora.com> <fcb6638b-0298-74b7-c375-f563a8115596@collabora.com>
+In-Reply-To: <fcb6638b-0298-74b7-c375-f563a8115596@collabora.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Fri, 21 Apr 2023 23:16:53 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_9MGCNMPzt7os0xJhxFTObL46VJSrA_ovOrRirFTqvBMQ@mail.gmail.com>
+Message-ID: <CAAOTY_9MGCNMPzt7os0xJhxFTObL46VJSrA_ovOrRirFTqvBMQ@mail.gmail.com>
+Subject: Re: [PATCH] drm/mediatek: Clarify/finish documentation for some
+ driver structures
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: chunkuang.hu@kernel.org, lee@kernel.org, p.zabel@pengutronix.de, 
+	airlied@gmail.com, daniel@ffwll.ch, matthias.bgg@gmail.com, 
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	kernel@collabora.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230421_073745_521411_37DE01F5 
-X-CRM114-Status: GOOD (  20.44  )
+X-CRM114-CacheID: sfid-20230421_081709_211111_D40CE3ED 
+X-CRM114-Status: GOOD (  25.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,194 +82,193 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Richard van Schagen <vschagen@cs.com>, linux-kernel@vger.kernel.org, Richard van Schagen <richard@routerhints.com>, =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>, linux-mediatek@lists.infradead.org, erkin.bozoglu@xeront.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arınç ÜNAL <arinc.unal@arinc9.com>
+Hi, Angelo:
 
-The p5_intf_sel pointer is used to store the information of whether PHY
-muxing is used or not. PHY muxing is a feature specific to port 5 of the
-MT7530 switch. Do not use it for other switch models.
+AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> =E6=96=
+=BC
+2023=E5=B9=B44=E6=9C=8819=E6=97=A5 =E9=80=B1=E4=B8=89 =E4=B8=8B=E5=8D=882:1=
+6=E5=AF=AB=E9=81=93=EF=BC=9A
+>
+> Il 21/03/23 12:14, AngeloGioacchino Del Regno ha scritto:
+> > The documentation for some of the driver structures in mediatek-drm
+> > was set to be kerneldoc but some code additions didn't actually update
+> > the comments accordingly and this caused triggering some warnings.
+> >
+> > Add comments for the remaining undocumented entries; while at it, also
+> > clarify some acronyms for various display HW blocks and fix some commen=
+t
+> > blocks to actually get parsed as kerneldoc.
+> >
+> > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@co=
+llabora.com>
+>
+> Hello CK,
+> I just noticed that this patch is getting stale and forgotten.
+>
+> Please take a look at it, as this solves kerneldoc warnings during kernel=
+ build.
 
-Rename the pointer to p5_mode to store the mode the port is being used in.
-Rename the p5_interface_select enum to mt7530_p5_mode, the string
-representation to mt7530_p5_mode_str, and the enum elements.
+There is conflict when I apply this patch. Please base on
+mediatek-drm-next to send patch.
 
-If PHY muxing is not detected, the default mode, GMAC5, will be used.
+Regards,
+Chun-Kuang.
 
-Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
----
- drivers/net/dsa/mt7530.c | 61 ++++++++++++++++------------------------
- drivers/net/dsa/mt7530.h | 15 +++++-----
- 2 files changed, 32 insertions(+), 44 deletions(-)
-
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 3d19e06061cb..63b108ef5e0e 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -873,19 +873,15 @@ mt7530_set_ageing_time(struct dsa_switch *ds, unsigned int msecs)
- 	return 0;
- }
- 
--static const char *p5_intf_modes(unsigned int p5_interface)
--{
--	switch (p5_interface) {
--	case P5_DISABLED:
--		return "DISABLED";
--	case P5_INTF_SEL_PHY_P0:
--		return "PHY P0";
--	case P5_INTF_SEL_PHY_P4:
--		return "PHY P4";
--	case P5_INTF_SEL_GMAC5:
--		return "GMAC5";
-+static const char *mt7530_p5_mode_str(unsigned int mode)
-+{
-+	switch (mode) {
-+	case MUX_PHY_P0:
-+		return "MUX PHY P0";
-+	case MUX_PHY_P4:
-+		return "MUX PHY P4";
- 	default:
--		return "unknown";
-+		return "GMAC5";
- 	}
- }
- 
-@@ -902,23 +898,21 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
- 	val |= MHWTRAP_MANUAL | MHWTRAP_P5_MAC_SEL | MHWTRAP_P5_DIS;
- 	val &= ~MHWTRAP_P5_RGMII_MODE & ~MHWTRAP_PHY0_SEL;
- 
--	switch (priv->p5_intf_sel) {
--	case P5_INTF_SEL_PHY_P0:
--		/* MT7530_P5_MODE_GPHY_P0: 2nd GMAC -> P5 -> P0 */
-+	switch (priv->p5_mode) {
-+	case MUX_PHY_P0:
-+		/* MUX_PHY_P0: P0 -> P5 -> SoC MAC */
- 		val |= MHWTRAP_PHY0_SEL;
- 		fallthrough;
--	case P5_INTF_SEL_PHY_P4:
--		/* MT7530_P5_MODE_GPHY_P4: 2nd GMAC -> P5 -> P4 */
-+	case MUX_PHY_P4:
-+		/* MUX_PHY_P4: P4 -> P5 -> SoC MAC */
- 		val &= ~MHWTRAP_P5_MAC_SEL & ~MHWTRAP_P5_DIS;
- 
- 		/* Setup the MAC by default for the cpu port */
- 		mt7530_write(priv, MT7530_PMCR_P(5), 0x56300);
- 		break;
--	case P5_INTF_SEL_GMAC5:
--		/* MT7530_P5_MODE_GMAC: P5 -> External phy or 2nd GMAC */
--		val &= ~MHWTRAP_P5_DIS;
--		break;
- 	default:
-+		/* GMAC5: P5 -> SoC MAC or external PHY */
-+		val &= ~MHWTRAP_P5_DIS;
- 		break;
- 	}
- 
-@@ -942,8 +936,8 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
- 
- 	mt7530_write(priv, MT7530_MHWTRAP, val);
- 
--	dev_dbg(ds->dev, "Setup P5, HWTRAP=0x%x, intf_sel=%s, phy-mode=%s\n",
--		val, p5_intf_modes(priv->p5_intf_sel), phy_modes(interface));
-+	dev_dbg(ds->dev, "Setup P5, HWTRAP=0x%x, mode=%s, phy-mode=%s\n", val,
-+		mt7530_p5_mode_str(priv->p5_mode), phy_modes(interface));
- 
- 	mutex_unlock(&priv->reg_mutex);
- }
-@@ -2261,13 +2255,11 @@ mt7530_setup(struct dsa_switch *ds)
- 	if (ret)
- 		return ret;
- 
--	/* Setup port 5 */
--	if (!dsa_is_unused_port(ds, 5)) {
--		priv->p5_intf_sel = P5_INTF_SEL_GMAC5;
--	} else {
-+	/* Check for PHY muxing on port 5 */
-+	if (dsa_is_unused_port(ds, 5)) {
- 		/* Scan the ethernet nodes. Look for GMAC1, lookup the used PHY.
--		 * Set priv->p5_intf_sel to the appropriate value if PHY muxing
--		 * is detected.
-+		 * Set priv->p5_mode to the appropriate value if PHY muxing is
-+		 * detected.
- 		 */
- 		for_each_child_of_node(dn, mac_np) {
- 			if (!of_device_is_compatible(mac_np,
-@@ -2291,17 +2283,17 @@ mt7530_setup(struct dsa_switch *ds)
- 				}
- 				id = of_mdio_parse_addr(ds->dev, phy_node);
- 				if (id == 0)
--					priv->p5_intf_sel = P5_INTF_SEL_PHY_P0;
-+					priv->p5_mode = MUX_PHY_P0;
- 				if (id == 4)
--					priv->p5_intf_sel = P5_INTF_SEL_PHY_P4;
-+					priv->p5_mode = MUX_PHY_P4;
- 			}
- 			of_node_put(mac_np);
- 			of_node_put(phy_node);
- 			break;
- 		}
- 
--		if (priv->p5_intf_sel == P5_INTF_SEL_PHY_P0 ||
--		    priv->p5_intf_sel == P5_INTF_SEL_PHY_P4)
-+		if (priv->p5_mode == MUX_PHY_P0 ||
-+		    priv->p5_mode == MUX_PHY_P4)
- 			mt7530_setup_port5(ds, interface);
- 	}
- 
-@@ -2444,9 +2436,6 @@ mt7531_setup(struct dsa_switch *ds)
- 			   MT7531_EXT_P_MDIO_12);
- 	}
- 
--	if (!dsa_is_unused_port(ds, 5))
--		priv->p5_intf_sel = P5_INTF_SEL_GMAC5;
--
- 	mt7530_rmw(priv, MT7531_GPIO_MODE0, MT7531_GPIO0_MASK,
- 		   MT7531_GPIO0_INTERRUPT);
- 
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index ee2b3d2d6258..8187d77603f8 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -673,13 +673,12 @@ struct mt7530_port {
- 	struct phylink_pcs *sgmii_pcs;
- };
- 
--/* Port 5 interface select definitions */
-+/* Port 5 mode definitions of the MT7530 switch */
- typedef enum {
--	P5_DISABLED,
--	P5_INTF_SEL_PHY_P0,
--	P5_INTF_SEL_PHY_P4,
--	P5_INTF_SEL_GMAC5,
--} p5_interface_select;
-+	GMAC5,
-+	MUX_PHY_P0,
-+	MUX_PHY_P4,
-+} mt7530_p5_mode;
- 
- struct mt7530_priv;
- 
-@@ -746,7 +745,7 @@ struct mt753x_info {
-  *			is already configured
-  * @p5_configured:	Flag for distinguishing if port 5 of the MT7531 switch
-  *			is already configured
-- * @p5_intf_sel:	Holding the current port 5 interface select
-+ * @p5_mode:		Holding the current port 5 mode of the MT7530 switch
-  * @p5_sgmii:		Flag for distinguishing if port 5 of the MT7531 switch
-  *			has got SGMII
-  * @irq:		IRQ number of the switch
-@@ -768,7 +767,7 @@ struct mt7530_priv {
- 	bool			mcm;
- 	bool			p6_configured;
- 	bool			p5_configured;
--	p5_interface_select	p5_intf_sel;
-+	mt7530_p5_mode		p5_mode;
- 	bool			p5_sgmii;
- 	u8			mirror_rx;
- 	u8			mirror_tx;
--- 
-2.37.2
-
+>
+> Regards,
+> Angelo
+>
+> > --- >   drivers/gpu/drm/mediatek/mtk_disp_aal.c   |  8 +++++---
+> >   drivers/gpu/drm/mediatek/mtk_disp_ccorr.c |  8 +++++---
+> >   drivers/gpu/drm/mediatek/mtk_disp_color.c | 11 +++++++----
+> >   drivers/gpu/drm/mediatek/mtk_disp_gamma.c |  8 ++++++--
+> >   drivers/gpu/drm/mediatek/mtk_disp_ovl.c   | 13 +++++++++----
+> >   drivers/gpu/drm/mediatek/mtk_disp_rdma.c  | 12 +++++++++---
+> >   6 files changed, 41 insertions(+), 19 deletions(-)
+> >
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_aal.c b/drivers/gpu/drm/=
+mediatek/mtk_disp_aal.c
+> > index 434e8a9ce8ab..12d1800c1d34 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+> > @@ -27,9 +27,11 @@ struct mtk_disp_aal_data {
+> >   };
+> >
+> >   /**
+> > - * struct mtk_disp_aal - DISP_AAL driver structure
+> > - * @ddp_comp - structure containing type enum and hardware resources
+> > - * @crtc - associated crtc to report irq events to
+> > + * struct mtk_disp_aal - Display Adaptive Ambient Light driver structu=
+re
+> > + * @clk:      clock for DISP_AAL controller
+> > + * @regs:     MMIO registers base
+> > + * @cmdq_reg: CMDQ Client register
+> > + * @data:     platform specific data for DISP_AAL
+> >    */
+> >   struct mtk_disp_aal {
+> >       struct clk *clk;
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c b/drivers/gpu/dr=
+m/mediatek/mtk_disp_ccorr.c
+> > index 1773379b2439..b173aa058573 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
+> > @@ -35,9 +35,11 @@ struct mtk_disp_ccorr_data {
+> >   };
+> >
+> >   /**
+> > - * struct mtk_disp_ccorr - DISP_CCORR driver structure
+> > - * @ddp_comp - structure containing type enum and hardware resources
+> > - * @crtc - associated crtc to report irq events to
+> > + * struct mtk_disp_ccorr - Display Color Correction driver structure
+> > + * @clk:      clock for DISP_CCORR block
+> > + * @regs:     MMIO registers base
+> > + * @cmdq_reg: CMDQ Client register
+> > + * @data:     platform specific data for DISP_CCORR
+> >    */
+> >   struct mtk_disp_ccorr {
+> >       struct clk *clk;
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_color.c b/drivers/gpu/dr=
+m/mediatek/mtk_disp_color.c
+> > index cac9206079e7..7884f4736b7c 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_disp_color.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_color.c
+> > @@ -31,10 +31,13 @@ struct mtk_disp_color_data {
+> >       unsigned int color_offset;
+> >   };
+> >
+> > -/*
+> > - * struct mtk_disp_color - DISP_COLOR driver structure
+> > - * @crtc: associated crtc to report irq events to
+> > - * @data: platform colour driver data
+> > +/**
+> > + * struct mtk_disp_color - DISP_COLOR (Display Color) driver structure
+> > + * @crtc:     associated crtc to report irq events to
+> > + * @clk:      clock for DISP_COLOR block
+> > + * @regs:     MMIO registers base
+> > + * @cmdq_reg: CMDQ Client register
+> > + * @data:     platform specific data for DISP_COLOR
+> >    */
+> >   struct mtk_disp_color {
+> >       struct drm_crtc                         *crtc;
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c b/drivers/gpu/dr=
+m/mediatek/mtk_disp_gamma.c
+> > index c844942603f7..7e748613fccb 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> > @@ -31,8 +31,12 @@ struct mtk_disp_gamma_data {
+> >       bool lut_diff;
+> >   };
+> >
+> > -/*
+> > - * struct mtk_disp_gamma - DISP_GAMMA driver structure
+> > +/**
+> > + * struct mtk_disp_gamma - Display Gamma driver structure
+> > + * @clk:      clock for DISP_GAMMA block
+> > + * @regs:     MMIO registers base
+> > + * @cmdq_reg: CMDQ Client register
+> > + * @data:     platform data for DISP_GAMMA
+> >    */
+> >   struct mtk_disp_gamma {
+> >       struct clk *clk;
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/=
+mediatek/mtk_disp_ovl.c
+> > index 9d8c986700ee..00f2871fd1a4 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> > @@ -76,10 +76,15 @@ struct mtk_disp_ovl_data {
+> >       bool supports_afbc;
+> >   };
+> >
+> > -/*
+> > - * struct mtk_disp_ovl - DISP_OVL driver structure
+> > - * @crtc: associated crtc to report vblank events to
+> > - * @data: platform data
+> > +/**
+> > + * struct mtk_disp_ovl - Display Overlay driver structure
+> > + * @crtc:           associated crtc to report vblank events to
+> > + * @clk:            clock for DISP_OVL block
+> > + * @regs:           MMIO registers base
+> > + * @cmdq_reg:       CMDQ Client register
+> > + * @data:           platform data
+> > + * @vblank_cb:      vblank callback function
+> > + * @vblank_cb_data: pointer to data that will be passed to vblank_cb()
+> >    */
+> >   struct mtk_disp_ovl {
+> >       struct drm_crtc                 *crtc;
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm=
+/mediatek/mtk_disp_rdma.c
+> > index e8e337903b0d..74f4a0bce5cc 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+> > @@ -59,9 +59,15 @@ struct mtk_disp_rdma_data {
+> >       unsigned int fifo_size;
+> >   };
+> >
+> > -/*
+> > - * struct mtk_disp_rdma - DISP_RDMA driver structure
+> > - * @data: local driver data
+> > +/**
+> > + * struct mtk_disp_rdma - Display Read DMA driver structure
+> > + * @clk:            clock for DISP_RDMA block
+> > + * @regs:           MMIO registers base
+> > + * @cmdq_reg:       CMDQ Client register
+> > + * @data:           platform data
+> > + * @vblank_cb:      vblank callback function
+> > + * @vblank_cb_data: pointer to data that will be passed to vblank_cb()
+> > + * @fifo_size:      size of DISP_RDMA block's FIFO
+> >    */
+> >   struct mtk_disp_rdma {
+> >       struct clk                      *clk;
+>
+> --
+> AngeloGioacchino Del Regno
+> Software Engineer
+>
+> Collabora Ltd.
+> Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK
+> Registered in England & Wales, no. 5513718
+>
 
