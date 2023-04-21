@@ -4,70 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71C15C77B78
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Apr 2023 18:26:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A47A7C7618E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Apr 2023 18:28:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:To:From:Subject
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gAERKVRg6pqZtkYAZeOg+BzUO9hWZqA/1cyFdbAA+mw=; b=z4Eg5+r4ouZhLR
-	FOlRB4XDIqwuvSLIYSZg/n0+9Pd+bl+01JMxl+J7LIvbTJRE3KMGC8gAW9kEl9EyuF+3HTGkVLGZW
-	Szq/czGemS2eOOigkZmG4RR8hTnXFzvt8C9LglcYr3m7GAx7u/ui3vrhXrLZEq0Lp2EOM2I5q/lCu
-	XvfrPiCzRo9BuD9MIJH8iXmEnm63RBeK8IGV17Jq18VHcM98SBYMCuquBmLFdtDAGgBItXJJlwy/x
-	lAzQGvTOIGM2Yf68wKnlx5ILuwbxUTgQ2Tiui9C2iIFEk6RZ2IcPQIGZ4tuOX6kbvgKKFry8lSAxN
-	v2PU2gHk4x0O4amxd4QA==;
+	List-Owner; bh=HhtGCpgs8VG3ou8855pH8L7tkz77AnXTHtobCoUAuVM=; b=ZTw3FDvYaaF/q6
+	Bl7GxaKHVEqr05e0J6jIpU+3oS99fVIGt/B5VMCCv6cV/jy+myGubJrplKNcpARJgHj/DV9RA/h+e
+	7TL0qw2/q3pX+TPHsDpK/AahpCHArVP4YRmJV/IO7Apy5wP5XLThN1ybcKSqJ/s4wEwj1QVcX4byy
+	5LJ0igfQHfZNciYVrfnYNOCS7GETVuKftFAq9QplL1IRa8zcf4xzyLeOlOtNX8V3kAhM/CUN3TaG+
+	0Mx+li0hKn8aSSMsdadM2OOcThU7wSkEDt5e53F9t7+4RXxvSb+xV3ifG2q8dZaYcHLacdyXNS2mF
+	m2W8HXxnDyE66WXg5sRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppvSf-00BcIv-1e;
-	Fri, 21 Apr 2023 18:26:21 +0000
+	id 1ppvUl-00BciH-1o;
+	Fri, 21 Apr 2023 18:28:31 +0000
 Received: from sender3-op-o18.zoho.com ([136.143.184.18])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppvSa-00BcHG-2a;
-	Fri, 21 Apr 2023 18:26:18 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1682101549; cv=none; 
+	id 1ppvUi-00Bch2-0I;
+	Fri, 21 Apr 2023 18:28:29 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1682101673; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=ds5/t7tB/NXM7HvrlG/DEhVQjQSPN9lS2QcmvahcM/5pTa0KmZEjjAFxJiH4WvXUICPoFmLKgF3CHbdT+f8KaQN+G6y+ekdhd4lXd2uN9mmGnuz7ozKbcRvlUGADaddw6/uALn41InwJ6T+1gVIIqXaDIbCZELLkKNu12ljBTxQ=
+	b=SaSBoPob1vx8UxWGw/1V+TbNRkGJAsK90tRye9/VlpgU8VwLnDSHghVoWUYgAjhPjoRrCWPMCItu6Twjq/fMouX8cle3IP85FsAzQ+fuTOMJmV5hyfaI60KAaEpIB/vcn4xbhatpIi6wyGmnthH1/wbL4H8s7U2zI4yryNVrGJw=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1682101549; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=gAERKVRg6pqZtkYAZeOg+BzUO9hWZqA/1cyFdbAA+mw=; 
-	b=WN1nZ0Ht8kq0jdrxnnF+EQwbQ/VnQnIWuGNlQNFLE6kyal2Nyqjye0EUT5TyOOlW1+dRR3GWlHwiTpXhbsYvgvaC4ClC2iOnDpIPAmRHGMil2tN6zX75QQOjckKY1kgxN+p3rT1Auxk/K0sCzWdQ7NdBc07+zFU7F4Eg1yJ+irk=
+	t=1682101673; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=HhtGCpgs8VG3ou8855pH8L7tkz77AnXTHtobCoUAuVM=; 
+	b=jDUZmxX2h5DWOd56WLqqY9Owk6FnqPIR/pjpPBoRhXGffhpEG2g6jacEeok7CPfMWcXKqXOzA3fnFRfr7ixvriIPCROSr12kBjLl+wwxcdmvK4iU4832VvBUlD6ZpN+GV/UISRD/tKMd2OnKwmjglhADyikmXLq165b5dpL6p0U=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=arinc9.com;
 	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
 	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1682101549;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1682101673;
 	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:From:From:To:To:Cc:Cc:References:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=gAERKVRg6pqZtkYAZeOg+BzUO9hWZqA/1cyFdbAA+mw=;
-	b=Zo4JC4PDTjErNWz6V6pNir51eG6T2A5En1K4G2Ghzj7dUp/oWkZTk+LE+8PsE5vz
-	tSbQ+zxFcKtclizo4FdjOz8SSOIAwgVSmzoajW/ep7HHo7MX7kkGHrQoQ8CRsL94sCA
-	J2qwKMo3AZ2jZfCRi492/xpMwejx2Ew2D3ebxGcg=
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=HhtGCpgs8VG3ou8855pH8L7tkz77AnXTHtobCoUAuVM=;
+	b=Y4ageSokWBom/G2ZCmFb/b81B/hbHdFJvx36UnHpALK+9EHjrIBm1URAAg1Ra1hW
+	zPny3BfiOWOHfbi26F2qoXjgHI4nSL9KeR0quy6dEeAEPYHP63eaiDKdgtiimB8c9Tv
+	gRdrOTcPG0Ix59uu3nHkY8IwbIQc9FTHmFcxDIAc=
 Received: from [10.10.10.3] (149.91.1.15 [149.91.1.15]) by mx.zohomail.com
-	with SMTPS id 1682101548505326.82901676703693; Fri, 21 Apr 2023 11:25:48 -0700 (PDT)
-Message-ID: <235c80fc-3f1b-a9c9-6364-6f50ee45b21b@arinc9.com>
-Date: Fri, 21 Apr 2023 21:25:39 +0300
+	with SMTPS id 1682101672038904.708571478262; Fri, 21 Apr 2023 11:27:52 -0700 (PDT)
+Message-ID: <6493c52f-247c-c9c0-8352-4b312b7e67e4@arinc9.com>
+Date: Fri, 21 Apr 2023 21:27:43 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.0
-Subject: Re: [RFC PATCH net-next 08/22] net: dsa: mt7530: change
- p{5,6}_interface to p{5,6}_configured
+Subject: Re: [RFC PATCH net-next 02/22] net: dsa: mt7530: use
+ p5_interface_select as data type for p5_intf_sel
 Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
 To: Daniel Golle <daniel@makrotopia.org>
 References: <20230421143648.87889-1-arinc.unal@arinc9.com>
- <20230421143648.87889-9-arinc.unal@arinc9.com>
- <ZELH2RlYLPjJGx6Y@makrotopia.org>
- <810aa47b-7007-7d53-9a23-c2d17d43d8a8@arinc9.com>
- <f1c38c13-a1f6-93d8-90ae-4ea3f7e06dc2@arinc9.com>
-In-Reply-To: <f1c38c13-a1f6-93d8-90ae-4ea3f7e06dc2@arinc9.com>
+ <20230421143648.87889-3-arinc.unal@arinc9.com>
+ <ZEK4gVx-WQv0j2cR@makrotopia.org>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <ZEK4gVx-WQv0j2cR@makrotopia.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230421_112616_899322_BF044B30 
-X-CRM114-Status: GOOD (  19.00  )
+X-CRM114-CacheID: sfid-20230421_112828_174445_497B19E4 
+X-CRM114-Status: GOOD (  17.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,64 +81,55 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, Floria
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 21.04.2023 21:20, Arınç ÜNAL wrote:
-> On 21.04.2023 21:17, Arınç ÜNAL wrote:
->> On 21.04.2023 20:28, Daniel Golle wrote:
->>> On Fri, Apr 21, 2023 at 05:36:34PM +0300, arinc9.unal@gmail.com wrote:
->>>> From: Arınç ÜNAL <arinc.unal@arinc9.com>
->>>>
->>>> The idea of p5_interface and p6_interface pointers is to prevent
->>>> mt753x_mac_config() from running twice for MT7531, as it's already 
->>>> run with
->>>> mt753x_cpu_port_enable() from mt7531_setup_common(), if the port is 
->>>> used as
->>>> a CPU port.
->>>>
->>>> Change p5_interface and p6_interface to p5_configured and 
->>>> p6_configured.
->>>> Make them boolean.
->>>>
->>>> Do not set them for any other reason.
->>>>
->>>> The priv->p5_intf_sel check is useless as in this code path, it will 
->>>> always
->>>> be P5_INTF_SEL_GMAC5.
->>>>
->>>> There was also no need to set priv->p5_interface and 
->>>> priv->p6_interface to
->>>> PHY_INTERFACE_MODE_NA on mt7530_setup() and mt7531_setup() as they 
->>>> would
->>>> already be set to that when "priv" is allocated. The pointers were 
->>>> of the
->>>> phy_interface_t enumeration type, and the first element of the enum is
->>>> PHY_INTERFACE_MODE_NA. There was nothing in between that would 
->>>> change this
->>>> beforehand.
->>>>
->>>> Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->>>> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->>>
->>> NACK. This assumes that a user port is configured exactly once.
->>> However, interface mode may change because of mode-changing PHYs (e.g.
->>> often using Cisco SGMII for 10M/100M/1000M but using 2500Base-X for
->>> 2500M, ie. depending on actual link speed).
->>>
->>> Also when using SFP modules (which can be hotplugged) the interface
->>> mode may change after initially setting up the driver, e.g. when SFP
->>> driver is loaded or a module is plugged or replaced.
+On 21.04.2023 19:23, Daniel Golle wrote:
+> On Fri, Apr 21, 2023 at 05:36:28PM +0300, arinc9.unal@gmail.com wrote:
+>> From: Arınç ÜNAL <arinc.unal@arinc9.com>
 >>
->> I'm not sure I understand. pX_configured would be set to true only 
->> when the port is used as a CPU port. mt753x_mac_config() should run 
->> for user or DSA ports more than once, if needed.
+>> Use the p5_interface_select enumeration as the data type for the
+>> p5_intf_sel field. This ensures p5_intf_sel can only take the values
+>> defined in the p5_interface_select enumeration.
+>>
+>> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+>> ---
+>>   drivers/net/dsa/mt7530.h | 8 ++++----
+>>   1 file changed, 4 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+>> index 845f5dd16d83..703f8a528317 100644
+>> --- a/drivers/net/dsa/mt7530.h
+>> +++ b/drivers/net/dsa/mt7530.h
+>> @@ -674,13 +674,13 @@ struct mt7530_port {
+>>   };
+>>   
+>>   /* Port 5 interface select definitions */
+>> -enum p5_interface_select {
+>> -	P5_DISABLED = 0,
+>> +typedef enum {
 > 
-> Looking at this again, once pX_interface is true, the check will prevent 
-> even user or DSA ports to be configured again. What about setting 
-> pX_interface to false after mt753x_mac_config() is run?
+> We usually avoid adding typedef in kernel code. If the purpose is
+> just to be more verbose in the struct definition, you can as well
+> also just use 'enum p5_interface_select as type in the struct.
+> 
+>> +	P5_DISABLED,
+>>   	P5_INTF_SEL_PHY_P0,
+>>   	P5_INTF_SEL_PHY_P4,
+>>   	P5_INTF_SEL_GMAC5,
+>>   	P5_INTF_SEL_GMAC5_SGMII,
+>> -};
+>> +} p5_interface_select;
+>>   
+>>   struct mt7530_priv;
+>>   
+>> @@ -768,7 +768,7 @@ struct mt7530_priv {
+>>   	bool			mcm;
+>>   	phy_interface_t		p6_interface;
+>>   	phy_interface_t		p5_interface;
+>> -	unsigned int		p5_intf_sel;
+>> +	p5_interface_select	p5_intf_sel;
+> 
+> enum p5_interface_select	p5_intf_sel;
 
-On a third thought, pX_interface will never be true for the port if it's 
-a user or DSA port so this should not be a problem at all.
+Will do, thanks.
 
 Arınç
 
