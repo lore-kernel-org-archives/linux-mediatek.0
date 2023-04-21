@@ -4,76 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C4D4C7618E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Apr 2023 07:59:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F38BC77B75
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Apr 2023 09:23:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TsFQTffpj1Xt6EEubhQjH3aWod2zGCnn4KBG/LKkMVc=; b=k/rd91Ekt8i4ZcE5gbozM7FZCW
-	+kgEdSPW1VP/gs3eAm/61F80CL+1DBz5v9Me9KnRZh99PeCp4zKfC3fQjmbhCCF5SQ29F6zF9a9I4
-	w6eEOXqgfbRHejTTVXFmIElYd2tSb1PdcUq8kqr/dDUegIobgEjQZS/Dn6ftNKPc6ptALcBIgPzwH
-	ero+E8BHD4XQEs4H2t9/Swo2JMyVBMn5PQiHU/DTexfJ8I0dMtbLy5nW8YvuFPXrQnkYUjZfwWZZ/
-	36CFMo/4FfcFK5SDLA/1ZPuqxcC4UB44u/YXcN8bOlMkw6+glAllWhzcYF2w8FGbKJv6wsI5dBAaa
-	Pyt7dgRw==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=mji8Si/CDp8EbxEq8kPo+OLFCx2xbPLHn4wz0Thx6pI=; b=rjStuwWVSy+JLH53QccfbDHKv6
+	RKVzDVdT7UTaX4nYE0wAu518qWE3KFA0kurjgpDdyJM+jgBETR/JHeruTVQt98VqtuBsqmKqHWHRm
+	EryPKaGYM0ArTcTLKArVMCxXeBgjWYqpcGUPnZfvM2YXkMwMgXV0iks8uJhN6XeR2HUbAI3+jgLM9
+	eu2nSqdJURMv4Q3zAlKEn6exqgzhFG7fZcGD9Y2VCNGbNGJa+7Cq4yqAgHtVFSf9e8BRNuxcNsaad
+	FAH6PVHg1vTsVH/7aoKxuypqgw4356NyqLPqDGxTSx8f/c4jzEzc46aSjxGJZh/yAAWAjPDR86Sll
+	zeQTb9zQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pplg9-00A2zG-1Q;
-	Fri, 21 Apr 2023 07:59:37 +0000
-Received: from mail-vk1-xa30.google.com ([2607:f8b0:4864:20::a30])
+	id 1ppmzB-00AEAQ-2U;
+	Fri, 21 Apr 2023 09:23:21 +0000
+Received: from [202.114.0.240] (helo=hust.edu.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pplg5-00A2xe-2i
-	for linux-mediatek@lists.infradead.org;
-	Fri, 21 Apr 2023 07:59:36 +0000
-Received: by mail-vk1-xa30.google.com with SMTP id 71dfb90a1353d-4409088bab4so486998e0c.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 21 Apr 2023 00:59:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1682063972; x=1684655972;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=TsFQTffpj1Xt6EEubhQjH3aWod2zGCnn4KBG/LKkMVc=;
-        b=Tmi1HPl8De+dM8cYuH01zP1eu7WpzTHXIIRqdP2r7MJimFSp9mhE22JjnelGT42cbi
-         4MuEOlCB4DO4bsrcvDXMkOL1dOq7Hl6OF4sgZ1947z7xRCsKGAjTYq4aY1ujkzSfq48s
-         HgOa/j95PnjLn4uUVg7sFgeOVGZnivQsUeqCI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682063972; x=1684655972;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=TsFQTffpj1Xt6EEubhQjH3aWod2zGCnn4KBG/LKkMVc=;
-        b=Ga7mmjmtN/orJejnz740TCoj3PW/L87SocCYUQldfKVg1Y78SI+dfZb+vfLazPendE
-         XiTFaBwcBYfBueLJ3zk3bK5+CYnZ11boaqXLGe0hXefIq3W7zi1Y6izfHNuaIPRc6cnm
-         cESeId3iD28DRenYaBY5GKDEMNJWk/RDReTrDqm3D6EiR0g1q0yoL2hth6MdNe5jJwjt
-         XWT7t8HoZmCIN8qwD5PhX4q9LBn/5Cb5K7qOqm5yofXYnHZntonW7XVNncI/c8JbRHz7
-         8oUrKd8KOBJ22QFyml8pQg36JdaCVUWZ9g/HxsCZy88R55zLXf20NzgdEXO7J3ya2HZU
-         ilfg==
-X-Gm-Message-State: AAQBX9fj5FuPC3PxJYf9t8sr/7x/vzBnPzQcESGogIviukaYnLWcU9Sm
-	SV8Yx2jHLvqr2gzTM5PTvU70vLlTqSZuwMFzIQ6SrQ==
-X-Google-Smtp-Source: AKy350abxmzPvOdsOw+/nW5Sft49OJtVLhvaAiOW8MiTGTePQk9FTNcoDjKCrAk7Yi89F46K7XNWaTPhPpGDXRijY9o=
-X-Received: by 2002:a1f:cb02:0:b0:43f:a097:5e8c with SMTP id
- b2-20020a1fcb02000000b0043fa0975e8cmr337979vkg.16.1682063972345; Fri, 21 Apr
- 2023 00:59:32 -0700 (PDT)
+	id 1ppmyx-00AE7x-2V;
+	Fri, 21 Apr 2023 09:23:20 +0000
+Received: from wjk.. ([10.12.190.56])
+	(user=wangjikai@hust.edu.cn mech=LOGIN bits=0)
+	by mx1.hust.edu.cn  with ESMTP id 33L9M1k7026707-33L9M1k8026707;
+	Fri, 21 Apr 2023 17:22:06 +0800
+From: Wang Jikai <wangjikai@hust.edu.cn>
+To: Jakub Kicinski <kuba@kernel.org>, Kalle Valo <kvalo@kernel.org>,
+        "David S. Miller" <davem@davemloft.net>,
+        Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: hust-os-kernel-patches@googlegroups.com,
+        Wang Jikai <wangjikai@hust.edu.cn>, linux-wireless@vger.kernel.org,
+        netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org
+Subject: [PATCH v2] wifi: mt7601u: delete dead code checking debugfs returns
+Date: Fri, 21 Apr 2023 09:22:00 +0000
+Message-Id: <20230421092200.24456-1-wangjikai@hust.edu.cn>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-References: <20230420094433.42794-1-angelogioacchino.delregno@collabora.com> <20230420094433.42794-6-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230420094433.42794-6-angelogioacchino.delregno@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 21 Apr 2023 15:59:21 +0800
-Message-ID: <CAGXv+5GJroyKkj8oZw+BQxiUkiGCb-RBOxnKRkURQz5T6=EvNQ@mail.gmail.com>
-Subject: Re: [PATCH 5/5] arm64: dts: mediatek: cherry-tomato-r1: Enable NVMe
- PCI-Express port
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: matthias.bgg@gmail.com, robh+dt@kernel.org, 
-	krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, kernel@collabora.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-FEAS-AUTH-USER: wangjikai@hust.edu.cn
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230421_005933_917697_287345BF 
-X-CRM114-Status: GOOD (  13.78  )
+X-CRM114-CacheID: sfid-20230421_022308_361676_C3A16726 
+X-CRM114-Status: UNSURE (   8.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,53 +66,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 20, 2023 at 5:45=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> On Tomato rev1 the PCIe0 controller is used for NVMe storage.
+Smatch reports that:
+drivers/net/wireless/mediatek/mt7601u/debugfs.c:130
+mt7601u_init_debugfs() warn: 'dir' is an error pointer or valid".
 
-This was slightly confusing for me. AFAIK rev1 is not an actual Tomato
-device. It should be the prototype board, which is the original Cherry
-reference design by Google [1].
+Debugfs code is not supposed to need error checking so instead of
+changing this to if (IS_ERR()) the correct thing is to just delete
+the dead code.
 
-There is an actual Cherry derived device that has NVMe, though it's under
-another brand and another name.
+Signed-off-by: Wang Jikai <wangjikai@hust.edu.cn>
+---
+v1 -> v2: not add redundant removal of debugfs dir. remove fixes
+tag.
 
-ChenYu
+The issue is found by static analysis and remains untested.
+---
+ drivers/net/wireless/mediatek/mt7601u/debugfs.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-[1] Much like Kukui & Jacuzzi (MT8183), and Asurada (MT8192) are the
-    reference designs.  I don't think we ever upstream the reference
-    boards because they don't really end up in the hands of people
-    outside of the project, and the ones we do have tend to be quite
-    beaten up or no longer working due to extensive testing.
+diff --git a/drivers/net/wireless/mediatek/mt7601u/debugfs.c b/drivers/net/wireless/mediatek/mt7601u/debugfs.c
+index 230b0e1061a7..dbddf256921b 100644
+--- a/drivers/net/wireless/mediatek/mt7601u/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt7601u/debugfs.c
+@@ -127,8 +127,6 @@ void mt7601u_init_debugfs(struct mt7601u_dev *dev)
+ 	struct dentry *dir;
+ 
+ 	dir = debugfs_create_dir("mt7601u", dev->hw->wiphy->debugfsdir);
+-	if (!dir)
+-		return;
+ 
+ 	debugfs_create_u8("temperature", 0400, dir, &dev->raw_temp);
+ 	debugfs_create_u32("temp_mode", 0400, dir, &dev->temp_mode);
+-- 
+2.34.1
 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
-> ---
->  arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts | 7 +++++++
->  1 file changed, 7 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts b/a=
-rch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
-> index 2d5e8f371b6d..11fc83ddf236 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
-> @@ -20,6 +20,13 @@ &sound {
->         model =3D "mt8195_r1019_5682";
->  };
->
-> +&pcie0 {
-> +       status =3D "okay";
-> +
-> +       pinctrl-names =3D "default";
-> +       pinctrl-0 =3D <&pcie0_pins_default>;
-> +};
-> +
->  &ts_10 {
->         status =3D "okay";
->  };
-> --
-> 2.40.0
->
->
 
