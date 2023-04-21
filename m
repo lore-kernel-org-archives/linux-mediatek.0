@@ -4,80 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B6F0C7618E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Apr 2023 11:11:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3F62C7618E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Apr 2023 11:30:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=LJ4eKElwcXuAb6zZfl+qVzBQVUqclnD1hUAJWdjMu78=; b=OOmHN4ieD/q8xemTtuyAZcBYUZ
-	neuI/+vxxfksPlhYBgDV+shNT9j3uokQYUwaU9/7GS1629Mn0VX0c+cpqzclBRwaN9fLqfXbvSC4A
-	JLEgOaatWaHFEqqzL23uQlc6AjMb1kZnC8x9IzZrIDQ9W/EZggikTQKsYs+Y6X+bbHNV/jT18Ospi
-	imlEuShBxvu500Yv/d6jpx2Kl2vqsbS43HN0TCZvXv1bpV06UgdbMa9x8V9sHhE7UntbY2zi088d2
-	Kl6hITJn6cTi/toPwiUETgO5y5f6+ZKmp1Huvsa51UnDopC1NVcYOzwu/t2zkcGcyWQJGJTy+BqE5
-	8+Pqf04Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zTnxtp6hN8hNECyGyeAIWXn7uB5lZFLas1G7S96mRtQ=; b=26ghiUlWPOV1Og/BO8cMFI0ECn
+	pyz3LvxYSphR5OyORHef+wNL4eZohiaDQgrF6KkHl7QlI93Z/ntJ6KKJgufrV5NhWuAUkUdPXhy1w
+	KcTIdcUuyQUpdCq9thCfM+jWthSjVVdFsuT2+tqeFEahN7Ex/p+Ks8qSLY13A/ShOxvqvN5cTUsBn
+	qrGA7z3C0tcukx58hriGMx9aczpnu74O0L7PPRwDet/hyJ0Tdpf2wjncHSDUIQY7TUjEpT1vJR5mF
+	tL9Hzr410VqMi1QXC3MlTi/bpH4wJofMQVL+1Q+NwVtpp4BUDOnv99uyy4XeV9GOs5zVd7WsxJMw6
+	TOsrjpOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppofx-00AgUh-1d;
-	Fri, 21 Apr 2023 11:11:37 +0000
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+	id 1ppoyc-00AiaV-1W;
+	Fri, 21 Apr 2023 11:30:54 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppoft-00AgTx-07
-	for linux-mediatek@lists.infradead.org;
-	Fri, 21 Apr 2023 11:11:34 +0000
-Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-63b4bf2d74aso1762581b3a.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 21 Apr 2023 04:11:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1682075491; x=1684667491;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=LJ4eKElwcXuAb6zZfl+qVzBQVUqclnD1hUAJWdjMu78=;
-        b=l9Cq+zu1tu3PWplXH9Uj+nBZKyq3Rnk2OdYC4CsMxNwxy1eLaZNZQXRZalzD/SaNF8
-         O7qI0bCblAILe+N6lNiuhXsyfK46Q6dt3FcSeKctUFp+66jAkg7b5tvMvDUUJPYAEeUX
-         EWp/H37UdqKNTDzMK0c7LEh0zDkZlLmhDVjjA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682075491; x=1684667491;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=LJ4eKElwcXuAb6zZfl+qVzBQVUqclnD1hUAJWdjMu78=;
-        b=FeFynpY40wxtPHK+F04bsTNTqnG9hglNGK5kW+HPIMuQ9DOkS0rT7lZpxcw1TfryXW
-         nEMhNCNKw1i0owwxfP6ifW2B839sZnlKjSzQa6XgLqFhmLtYlqZfQ7O0Co/7vYJ/0Udj
-         MLTfV0+m42lSeQk9hC6m/nkx0hjrpePSIHcJnF8llh+975urrKthHfwh32IbGnZ88Ijf
-         N30GVjVRMhOFAHJi2YkGW4APRU0GTDimBWNbsZWuXKADQthfEnqu3ePsyXO2KRbKFMWu
-         QSKllPiUFmsHNNkbFMR42otJLPI22vdtKSRjyYn2uhZ8Bw7tCcnEuXos9HN46GkesSh8
-         DBLQ==
-X-Gm-Message-State: AAQBX9dG1jvGR7AxD1INEJtBJ4p3g6TFEVuPJ7EjQ5Cqf7d8yJY34FF3
-	VY00feB/p/zHQXeUsBkfEr7w+w==
-X-Google-Smtp-Source: AKy350YjnNhyz/5DJTFMIFsnSfoBoVKhugxroxKYawrehd6/D9CSJXkJCdAySnCEcB05FVhuF+9sqg==
-X-Received: by 2002:a05:6a00:15ce:b0:63d:3411:f9e3 with SMTP id o14-20020a056a0015ce00b0063d3411f9e3mr6904730pfu.19.1682075491514;
-        Fri, 21 Apr 2023 04:11:31 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:47fa:fa8d:a971:f6ac])
-        by smtp.gmail.com with ESMTPSA id x4-20020a628604000000b00639fc7124c2sm2840983pfd.148.2023.04.21.04.11.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 21 Apr 2023 04:11:31 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Stephen Boyd <sboyd@kernel.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-clk@vger.kernel.org
-Subject: [PATCH] clk: mediatek: Enable all MT8192 clocks by default
-Date: Fri, 21 Apr 2023 19:11:25 +0800
-Message-ID: <20230421111125.2397368-1-wenst@chromium.org>
-X-Mailer: git-send-email 2.40.0.634.g4ca3ef3211-goog
+	id 1ppnrm-00ATDT-32;
+	Fri, 21 Apr 2023 10:19:48 +0000
+X-UUID: 0956fec6e02e11ed8687db9d93187ff1-20230421
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=zTnxtp6hN8hNECyGyeAIWXn7uB5lZFLas1G7S96mRtQ=;
+	b=rCV3cqgnQjxmsar9+rDUtm5E3PAZoONcHmVEKpiDeYhRm2Q7mQUfFvf2s9jeVDxteKYf8AT855kZIChGKJwM3uzlBquiGKtJhGw2baHsk1umcZDZjDyiEZ7+YJQUAF1KA2WRoJgxjp7R8xwpqp+d/LYhEPVSW/3YPwQ5htVkps0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22,REQID:71b8609c-41ac-4760-a8c8-6c4b273332e5,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:120426c,CLOUDID:2f17b9eb-db6f-41fe-8b83-13fe7ed1ef52,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: 0956fec6e02e11ed8687db9d93187ff1-20230421
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <trevor.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1795868208; Fri, 21 Apr 2023 03:19:44 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Fri, 21 Apr 2023 18:09:07 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Fri, 21 Apr 2023 18:09:07 +0800
+From: Trevor Wu <trevor.wu@mediatek.com>
+To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
+	<perex@perex.cz>, <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>
+CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>
+Subject: [PATCH v2 2/7] ASoC: mediatek: mt8188: complete set_tdm_slot function
+Date: Fri, 21 Apr 2023 18:09:00 +0800
+Message-ID: <20230421100905.28045-3-trevor.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230421100905.28045-1-trevor.wu@mediatek.com>
+References: <20230421100905.28045-1-trevor.wu@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230421_041133_119320_95F92F3A 
-X-CRM114-Status: UNSURE (   9.31  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230421_031946_989065_A29749E8 
+X-CRM114-Status: GOOD (  13.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,109 +84,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Currently the base MT8192 clock drivers are enabled by default, but all
-the other clock drivers need to be enabled by hand. This is extremely
-confusing and inconvenient for end users. For the MT8192 platform to be
-useful, most if not all the clock drivers driving the hardware blocks
-need to be enabled.
+User can configures slot number of TDM mode via set_tdm_slot callback.
 
-Enable them by default whenever MT8192 base clock driver is enabled.
-
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
 ---
- drivers/clk/mediatek/Kconfig | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ sound/soc/mediatek/mt8188/mt8188-dai-etdm.c | 21 ++++++++++++++++++---
+ 1 file changed, 18 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-index 99e67c07e638..48b42d11111c 100644
---- a/drivers/clk/mediatek/Kconfig
-+++ b/drivers/clk/mediatek/Kconfig
-@@ -781,72 +781,84 @@ config COMMON_CLK_MT8192
- config COMMON_CLK_MT8192_AUDSYS
- 	tristate "Clock driver for MediaTek MT8192 audsys"
- 	depends on COMMON_CLK_MT8192
-+	default COMMON_CLK_MT8192
- 	help
- 	  This driver supports MediaTek MT8192 audsys clocks.
+diff --git a/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c b/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c
+index 7a37752d4244..fddecf5bf7c6 100644
+--- a/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c
++++ b/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c
+@@ -1909,6 +1909,10 @@ static int mtk_dai_etdm_hw_params(struct snd_pcm_substream *substream,
+ 		if (!is_valid_etdm_dai(mst_dai_id))
+ 			return -EINVAL;
  
- config COMMON_CLK_MT8192_CAMSYS
- 	tristate "Clock driver for MediaTek MT8192 camsys"
- 	depends on COMMON_CLK_MT8192
-+	default COMMON_CLK_MT8192
- 	help
- 	  This driver supports MediaTek MT8192 camsys and camsys_raw clocks.
++		mst_etdm_data = afe_priv->dai_priv[mst_dai_id];
++		if (mst_etdm_data->slots)
++			channels = mst_etdm_data->slots;
++
+ 		ret = mtk_dai_etdm_mclk_configure(afe, mst_dai_id);
+ 		if (ret)
+ 			return ret;
+@@ -1918,7 +1922,6 @@ static int mtk_dai_etdm_hw_params(struct snd_pcm_substream *substream,
+ 		if (ret)
+ 			return ret;
  
- config COMMON_CLK_MT8192_IMGSYS
- 	tristate "Clock driver for MediaTek MT8192 imgsys"
- 	depends on COMMON_CLK_MT8192
-+	default COMMON_CLK_MT8192
- 	help
- 	  This driver supports MediaTek MT8192 imgsys and imgsys2 clocks.
+-		mst_etdm_data = afe_priv->dai_priv[mst_dai_id];
+ 		for (i = 0; i < mst_etdm_data->cowork_slv_count; i++) {
+ 			slv_dai_id = mst_etdm_data->cowork_slv_id[i];
+ 			ret = mtk_dai_etdm_configure(afe, rate, channels,
+@@ -1931,6 +1934,12 @@ static int mtk_dai_etdm_hw_params(struct snd_pcm_substream *substream,
+ 				return ret;
+ 		}
+ 	} else {
++		if (!is_valid_etdm_dai(dai->id))
++			return -EINVAL;
++		mst_etdm_data = afe_priv->dai_priv[dai->id];
++		if (mst_etdm_data->slots)
++			channels = mst_etdm_data->slots;
++
+ 		ret = mtk_dai_etdm_mclk_configure(afe, dai->id);
+ 		if (ret)
+ 			return ret;
+@@ -2073,10 +2082,16 @@ static int mtk_dai_etdm_set_tdm_slot(struct snd_soc_dai *dai,
+ 	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
+ 	struct mt8188_afe_private *afe_priv = afe->platform_priv;
+ 	struct mtk_dai_etdm_priv *etdm_data;
++	int dai_id;
  
- config COMMON_CLK_MT8192_IMP_IIC_WRAP
- 	tristate "Clock driver for MediaTek MT8192 imp_iic_wrap"
- 	depends on COMMON_CLK_MT8192
-+	default COMMON_CLK_MT8192
- 	help
- 	  This driver supports MediaTek MT8192 imp_iic_wrap clocks.
+-	if (!is_valid_etdm_dai(dai->id))
++	if (is_cowork_mode(dai))
++		dai_id = get_etdm_cowork_master_id(dai);
++	else
++		dai_id = dai->id;
++
++	if (!is_valid_etdm_dai(dai_id))
+ 		return -EINVAL;
+-	etdm_data = afe_priv->dai_priv[dai->id];
++	etdm_data = afe_priv->dai_priv[dai_id];
  
- config COMMON_CLK_MT8192_IPESYS
- 	tristate "Clock driver for MediaTek MT8192 ipesys"
- 	depends on COMMON_CLK_MT8192
-+	default COMMON_CLK_MT8192
- 	help
- 	  This driver supports MediaTek MT8192 ipesys clocks.
- 
- config COMMON_CLK_MT8192_MDPSYS
- 	tristate "Clock driver for MediaTek MT8192 mdpsys"
- 	depends on COMMON_CLK_MT8192
-+	default COMMON_CLK_MT8192
- 	help
- 	  This driver supports MediaTek MT8192 mdpsys clocks.
- 
- config COMMON_CLK_MT8192_MFGCFG
- 	tristate "Clock driver for MediaTek MT8192 mfgcfg"
- 	depends on COMMON_CLK_MT8192
-+	default COMMON_CLK_MT8192
- 	help
- 	  This driver supports MediaTek MT8192 mfgcfg clocks.
- 
- config COMMON_CLK_MT8192_MMSYS
- 	tristate "Clock driver for MediaTek MT8192 mmsys"
- 	depends on COMMON_CLK_MT8192
-+	default COMMON_CLK_MT8192
- 	help
- 	  This driver supports MediaTek MT8192 mmsys clocks.
- 
- config COMMON_CLK_MT8192_MSDC
- 	tristate "Clock driver for MediaTek MT8192 msdc"
- 	depends on COMMON_CLK_MT8192
-+	default COMMON_CLK_MT8192
- 	help
- 	  This driver supports MediaTek MT8192 msdc and msdc_top clocks.
- 
- config COMMON_CLK_MT8192_SCP_ADSP
- 	tristate "Clock driver for MediaTek MT8192 scp_adsp"
- 	depends on COMMON_CLK_MT8192
-+	default COMMON_CLK_MT8192
- 	help
- 	  This driver supports MediaTek MT8192 scp_adsp clocks.
- 
- config COMMON_CLK_MT8192_VDECSYS
- 	tristate "Clock driver for MediaTek MT8192 vdecsys"
- 	depends on COMMON_CLK_MT8192
-+	default COMMON_CLK_MT8192
- 	help
- 	  This driver supports MediaTek MT8192 vdecsys and vdecsys_soc clocks.
- 
- config COMMON_CLK_MT8192_VENCSYS
- 	tristate "Clock driver for MediaTek MT8192 vencsys"
- 	depends on COMMON_CLK_MT8192
-+	default COMMON_CLK_MT8192
- 	help
- 	  This driver supports MediaTek MT8192 vencsys clocks.
- 
+ 	dev_dbg(dai->dev, "%s id %d slot_width %d\n",
+ 		__func__, dai->id, slot_width);
 -- 
-2.40.0.634.g4ca3ef3211-goog
+2.18.0
 
 
