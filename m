@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EEB7C7618E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Apr 2023 18:33:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4E63C77B76
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Apr 2023 18:42:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5xhs85aQkTRgCJRjbjY7O4iRGRT2kG1Og2r2mzLD7Ic=; b=OBopmrf01SXmLh5x6A4/powJQV
-	PQOLYpd83thyXWcCT7zc2zOutAc+CsVcYslhKwHVcZI//k7WDHdUx9sCkTA2XiCYy1uIVrJ1PFc1r
-	7I9rFoPglXOBD0JJnuMXQ/fg/q0qfhe/+f5xiqmbiPN6pfma7Jg3fYzfbZOyDeqDnSeJ0pvsckWm5
-	QYsRv20JsT1iYICn6UhZ/kSoxcdYoej+17k8LsSTUa9Z1JGwWwpJuFXhDgxU4JNRzmOAPkd7M0wRZ
-	pcATASEgnBeMV2mnaAbGFiI5Ylqnl4q+YjhN0KT9SgitS1ZpZgw4hN2NghZtxu9qjpnMxEe2XNcWI
-	PowsQQfA==;
+	bh=9hyVc455qwkTDVodAeGWe5yxYiZFrLt4dr7LjiuaDwY=; b=YwsehGz4VZjuZzCH16/21nM2Oe
+	hSLmBD7i7AJAykXBrXq/deh3AiJA9A2rGckHuN0uQ4fc8eyCyleJrDSTvgjbkJYfzvjsI30Z66DOP
+	7B2cTTFBicKNbc49i+Gqod/hBgTNZ7v2EDMbYAH2ht2EcwKuuecesaoSZaHNkjAxAu/PW+Fy9NTXD
+	gv1e7RQMA6bdNsfhWkGhgGoTVu7cwdfC1Q2hFT++i7ligVbDTnEnFHbrDWrQfxqHvoPrPYmBjSgJg
+	7EsrwiTMmw6tli0a2yxfY0JRWt7EYJSdptlJZBw/viyz7+SJowcnatY+RwoaZZnCpP5nCYSK/gTLG
+	BM/JkvKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppvZw-00BdUV-1b;
-	Fri, 21 Apr 2023 18:33:52 +0000
+	id 1ppviX-00BeFL-1g;
+	Fri, 21 Apr 2023 18:42:45 +0000
 Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppvZq-00BdSo-0Y;
-	Fri, 21 Apr 2023 18:33:50 +0000
+	id 1ppviT-00BeEZ-10;
+	Fri, 21 Apr 2023 18:42:42 +0000
 Received: from local
 	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1ppvZB-0002bf-2a;
-	Fri, 21 Apr 2023 20:33:06 +0200
-Date: Fri, 21 Apr 2023 19:32:58 +0100
+	id 1ppvi0-0002fM-1F;
+	Fri, 21 Apr 2023 20:42:12 +0200
+Date: Fri, 21 Apr 2023 19:42:09 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: arinc9.unal@gmail.com
-Subject: Re: [RFC PATCH net-next 19/22] net: dsa: mt7530: set interrupt
- register only for MT7530
-Message-ID: <ZELW2plBzam0r8EF@makrotopia.org>
+Subject: Re: [RFC PATCH net-next 20/22] net: dsa: mt7530: force link-down on
+ MACs before reset on MT7530
+Message-ID: <ZELZAd4O9SyHLkwn@makrotopia.org>
 References: <20230421143648.87889-1-arinc.unal@arinc9.com>
- <20230421143648.87889-20-arinc.unal@arinc9.com>
+ <20230421143648.87889-21-arinc.unal@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230421143648.87889-20-arinc.unal@arinc9.com>
+In-Reply-To: <20230421143648.87889-21-arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230421_113346_209450_9FF9384E 
-X-CRM114-Status: GOOD (  16.46  )
+X-CRM114-CacheID: sfid-20230421_114241_366398_C3D6D8F4 
+X-CRM114-Status: GOOD (  18.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,38 +63,73 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Eric Dumazet <edumazet@google.com>, erkin.bozo
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 21, 2023 at 05:36:45PM +0300, arinc9.unal@gmail.com wrote:
+On Fri, Apr 21, 2023 at 05:36:46PM +0300, arinc9.unal@gmail.com wrote:
 > From: Arınç ÜNAL <arinc.unal@arinc9.com>
 > 
-> Setting this register related to interrupts is only needed for the MT7530
-> switch. Make an exclusive check to ensure this.
+> Force link-down on all MACs before internal reset. Let's follow suit commit
+> 728c2af6ad8c ("net: mt7531: ensure all MACs are powered down before
+> reset").
 > 
+> Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 > Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-
-Acked-by: Daniel Golle <daniel@makrotopia.org>
-Tested-by: Daniel Golle <daniel@makrotopia.org>
-(on MT7988 which is the relevant hardware regarding this change,
-interrupts still work fine)
-
-
 > ---
->  drivers/net/dsa/mt7530.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  drivers/net/dsa/mt7530.c | 4 ++++
+>  1 file changed, 4 insertions(+)
 > 
 > diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index a66a762cb5db..ac1e3c58aaac 100644
+> index ac1e3c58aaac..8ece3d0d820c 100644
 > --- a/drivers/net/dsa/mt7530.c
 > +++ b/drivers/net/dsa/mt7530.c
-> @@ -2034,7 +2034,7 @@ mt7530_setup_irq(struct mt7530_priv *priv)
+> @@ -2203,6 +2203,10 @@ mt7530_setup(struct dsa_switch *ds)
+>  		return -EINVAL;
 >  	}
 >  
->  	/* This register must be set for MT7530 to properly fire interrupts */
-> -	if (priv->id != ID_MT7531)
-> +	if (priv->id == ID_MT7530 || priv->id == ID_MT7621)
->  		mt7530_set(priv, MT7530_TOP_SIG_CTRL, TOP_SIG_CTRL_NORMAL);
->  
->  	ret = request_threaded_irq(priv->irq, NULL, mt7530_irq_thread_fn,
-> -- 
-> 2.37.2
-> 
+> +	/* Force link-down on all MACs before internal reset */
+> +	for (i = 0; i < MT7530_NUM_PORTS; i++)
+> +		mt7530_write(priv, MT7530_PMCR_P(i), PMCR_FORCE_LNK);
+> +
+
+Moving this part to mt753x_setup just before calling priv->info->sw_setup(ds);
+is probably better. Though it isn't documented I assume that the requirement
+to have the ports in force-link-down may also apply to MT7988, and for sure
+it doesn't do any harm.
+
+Hence I suggest to squash this change:
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index a2cb7e296165e..998c4e8930cd3 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -2203,10 +2203,6 @@ mt7530_setup(struct dsa_switch *ds)
+ 		return -EINVAL;
+ 	}
+ 
+-	/* Force link-down on all MACs before internal reset */
+-	for (i = 0; i < MT7530_NUM_PORTS; i++)
+-		mt7530_write(priv, MT7530_PMCR_P(i), PMCR_FORCE_LNK);
+-
+ 	/* Reset the switch through internal reset */
+ 	mt7530_write(priv, MT7530_SYS_CTRL,
+ 		     SYS_CTRL_PHY_RST | SYS_CTRL_SW_RST |
+@@ -2423,10 +2419,6 @@ mt7531_setup(struct dsa_switch *ds)
+ 		dev_info(priv->dev, "found MT7531BE\n");
+ 	}
+ 
+-	/* all MACs must be forced link-down before sw reset */
+-	for (i = 0; i < MT7530_NUM_PORTS; i++)
+-		mt7530_write(priv, MT7530_PMCR_P(i), MT7531_FORCE_LNK);
+-
+ 	/* Reset the switch through internal reset */
+ 	mt7530_write(priv, MT7530_SYS_CTRL,
+ 		     SYS_CTRL_PHY_RST | SYS_CTRL_SW_RST |
+@@ -2907,6 +2899,10 @@ mt753x_setup(struct dsa_switch *ds)
+ 		priv->pcs[i].port = i;
+ 	}
+ 
++	/* Force link-down on all MACs before setup */
++	for (i = 0; i < MT7530_NUM_PORTS; i++)
++		mt7530_write(priv, MT7530_PMCR_P(i), PMCR_FORCE_LNK);
++
+ 	ret = priv->info->sw_setup(ds);
+ 	if (ret)
+ 		return ret;
 
