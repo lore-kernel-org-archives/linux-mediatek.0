@@ -4,80 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A24B1C7618E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Apr 2023 12:16:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08226C77B75
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Apr 2023 12:16:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=m0I1sPCdYN0SbjWyDhk4aoTpPCovY0PSzi4d7N1NDJg=; b=mr1g9qi4cOw6ZLhDiZw+7ntkfZ
-	HSsOROvp1PY+oVpnR8QesNdNHCiiVh4Y5JJzQPPMRkaiMGLz348xzJCV1XeoJlAbgMU6p8Umzcn/4
-	Kp1smkkp9eOHftohdE16n5QWphB4ajWPsGi8kWdOoCO0pfVyCXgDkqrjWLGV8HFw6qUQ+rDNxBqLu
-	OqjFZcFHMZ1IHZ+JIfxvn82Fm4unf5Q0xUTCQ9PTp2kYaC35oLSZBDz9qNfRoJ+YaQpAXd2bcYrUx
-	Tsc1gZNglNFgGDAApM2YTiToUAfisXi+NxTrQtYqC5mnbkI4eIeeJXCzd8rl8ptFkYa9vYYsrkeCP
-	HrEYsBqA==;
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VORdF8L+8h/i+KPNmACF69HETqtwPJvceFFMYDoUfrg=; b=z2c3EgXFsLVzd59uq/sJBg2ViG
+	vnq1Pzhd9D/LeE4CVSowD3j3Hqd1lOn66WqDJHLYH91D0fGiHlab8z+iKBB60RXJqx1OG/JCDSEZ8
+	7iVj/8Rbo2soEfMhaYOlyA+r1iXJ12U+b6UV97zSv/hBW6Jg73wwsV+Ap36PZbI2+I1U8tn16P5Kk
+	+hG5XP1eogzE6J+0IMuhR3RbAkDCpxyu3q4JGhXOukCHJ+khISae0jo6zlSLjNb64goUqpUg/oGsl
+	Yj8M51CdvvEyuhT4PnZAQe96D3xcprh0EDPXyM7bF+XVT1mQ+kqARqgziOxg3cf/qVv2+df6X+uhM
+	YlWYMUrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pppgD-00Aq6S-35;
-	Fri, 21 Apr 2023 12:15:57 +0000
-Received: from mail-pf1-f179.google.com ([209.85.210.179])
+	id 1pppgE-00Aq6f-2a;
+	Fri, 21 Apr 2023 12:15:58 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppoYE-00Afw3-2t
-	for linux-mediatek@lists.infradead.org;
-	Fri, 21 Apr 2023 11:03:40 +0000
-Received: by mail-pf1-f179.google.com with SMTP id d2e1a72fcca58-63b52ad6311so2590906b3a.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 21 Apr 2023 04:03:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1682075017; x=1684667017;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=m0I1sPCdYN0SbjWyDhk4aoTpPCovY0PSzi4d7N1NDJg=;
-        b=mc1zwRaK4FAH7g6eSmoxngIMQ+5NXpyIKsfLdgr5W8xUrUlq9W7TbZkKtInZhi+DfH
-         +otn/a7Mxi6OW2qTj0rtw+7PHVob4Hzgl+wa8tfdAwGGhx5SPWFzGlHv/cNk6hzFBOUP
-         y+jq2HY6gxEhJJlakAZcN6zK4wg1LXE4/we4Y=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682075017; x=1684667017;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=m0I1sPCdYN0SbjWyDhk4aoTpPCovY0PSzi4d7N1NDJg=;
-        b=dwt0Y8uJbEVkXdwFkIHZVhcVADspBFEaj6b/czazvN71JblGY2vNVElusZhXLtQ2dE
-         tcd1qXRP+JcCLYzpBAmiygmV28ltvpJLRv/JmYt1hQlymFgKovpkTS5rRMhq5NS/J7qh
-         thcriNrjo+GAIT/+bfa11uMHm4/T4e3VL7C1iueyQwDgXRFJmrf/2K6rWbusT0B1T38e
-         JOKKf2kMCxzsei58KnjtQ/Ud0Ft4OKdHb3Wem/QQQMK7Gd2VR9IT47jzNr8vUUhLqfoQ
-         ACWXprejcw/eXxJHLu6iSwbUSVdDjaxWpikeGqRDqhwMpsyF7lKyCZWu2gy8qNoQS7dC
-         Vu4w==
-X-Gm-Message-State: AAQBX9dUXUBjpdOTyv19Gzau/syaKJ8sfD1OWfEfrfS0CePkW4i5QVSQ
-	IXJsKiL3zAvQMcjtX4sVgotRdg==
-X-Google-Smtp-Source: AKy350bwnnxLR6pYSUpKWU0Q4r+z54dq3jUrc4qFIiJZ2/JeH/C++AywzL44Oskd0E07kjJUUHSwww==
-X-Received: by 2002:a05:6a20:4323:b0:ef:acca:9e19 with SMTP id h35-20020a056a20432300b000efacca9e19mr6865535pzk.14.1682075017705;
-        Fri, 21 Apr 2023 04:03:37 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:47fa:fa8d:a971:f6ac])
-        by smtp.gmail.com with ESMTPSA id fb31-20020a056a002d9f00b005e5b11335b3sm2801286pfb.57.2023.04.21.04.03.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 21 Apr 2023 04:03:37 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Subject: [PATCH] arm64: dts: mediatek: mt8192-asurada-hayato: Enable Bluetooth
-Date: Fri, 21 Apr 2023 19:03:27 +0800
-Message-ID: <20230421110327.2395804-1-wenst@chromium.org>
-X-Mailer: git-send-email 2.40.0.634.g4ca3ef3211-goog
+	id 1ppoa1-00Ag3p-2V;
+	Fri, 21 Apr 2023 11:05:31 +0000
+Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 33LB1R9l016474;
+	Fri, 21 Apr 2023 11:05:13 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=VORdF8L+8h/i+KPNmACF69HETqtwPJvceFFMYDoUfrg=;
+ b=Q3dxV9zEVagfVWLSH+hDpcbcAHa7kjxIM2tzBj1LknoLWnAzWmX9mvrKP2qn0AknV07o
+ JVGLeYRwMVBW235W4iFbgy07VdP8WZ0ksFilGFd8aitL7FDOGnkWh1edftAnKv1vmloo
+ vmIvZIf6Tpuv91chuymwttWIBcPT4sZ4gZDaWpEBozFPDtJCpgyAjapKg3txlC2xwrqR
+ LRvnAAmJ5+TMkqtJiacjtAY+EGeL/HQ6/Ner97qKW6yUWJvJEVv4sF2RizJNzi6U1AHd
+ YtfAumC0Gz35UctlDkCWapdZYiNsxaNA/NQ8dk1n0heQ7WwQA3bWnAH6L5WWkO8hpCZL Lw== 
+Received: from nalasppmta04.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3q3e34sar9-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 21 Apr 2023 11:05:13 +0000
+Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
+	by NALASPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 33LB5CGX024180
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 21 Apr 2023 11:05:12 GMT
+Received: from [10.110.31.143] (10.80.80.8) by nalasex01a.na.qualcomm.com
+ (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.42; Fri, 21 Apr
+ 2023 04:05:07 -0700
+Message-ID: <b8c0b908-1947-6b6a-6b01-42289a521e5e@quicinc.com>
+Date: Fri, 21 Apr 2023 19:05:04 +0800
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH 1/1] ufs: core: fix &hwq->cq_lock deadlock issue
+To: Alice Chao <alice.chao@mediatek.com>, <alim.akhtar@samsung.com>,
+        <avri.altman@wdc.com>, <bvanassche@acm.org>, <jejb@linux.ibm.com>,
+        <martin.petersen@oracle.com>, <matthias.bgg@gmail.com>,
+        <angelogioacchino.delregno@collabora.com>, <quic_asutoshd@quicinc.com>,
+        <mani@kernel.org>, <linux-scsi@vger.kernel.org>,
+        <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+        <linux-mediatek@lists.infradead.org>
+CC: <stanley.chu@mediatek.com>, <peter.wang@mediatek.com>,
+        <chun-hung.wu@mediatek.com>, <powen.kao@mediatek.com>,
+        <naomi.chu@mediatek.com>, <cc.chou@mediatek.com>,
+        <chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
+        <tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
+        <wsd_upstream@mediatek.com>
+References: <20230421075636.24946-1-alice.chao@mediatek.com>
+Content-Language: en-US
+From: Can Guo <quic_cang@quicinc.com>
+In-Reply-To: <20230421075636.24946-1-alice.chao@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nalasex01a.na.qualcomm.com (10.47.209.196)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: 4k1ChLXiNHPUbNdOMLEi6aMoZ46W3XH9
+X-Proofpoint-GUID: 4k1ChLXiNHPUbNdOMLEi6aMoZ46W3XH9
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.254,Aquarius:18.0.942,Hydra:6.0.573,FMLib:17.11.170.22
+ definitions=2023-04-21_04,2023-04-21_01,2023-02-09_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxscore=0 suspectscore=0
+ clxscore=1011 malwarescore=0 phishscore=0 mlxlogscore=999 spamscore=0
+ impostorscore=0 adultscore=0 bulkscore=0 lowpriorityscore=0
+ priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2303200000 definitions=main-2304210095
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230421_040338_966040_D7157A40 
-X-CRM114-Status: GOOD (  10.23  )
+X-CRM114-CacheID: sfid-20230421_040529_970023_F2513A90 
+X-CRM114-Status: GOOD (  21.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,111 +107,107 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hayato's Realtek WiFi/BT module has it's Bluetooth function wired to
-UART1.
 
-Add and enable the relevant device nodes for it.
+On 4/21/2023 3:56 PM, Alice Chao wrote:
+> [name:lockdep&]WARNING: inconsistent lock state
+> [name:lockdep&]--------------------------------
+> [name:lockdep&]inconsistent {IN-HARDIRQ-W} -> {HARDIRQ-ON-W} usage.
+> [name:lockdep&]kworker/u16:4/260 [HC0[0]:SC0[0]:HE1:SE1] takes:
+>    ffffff8028444600 (&hwq->cq_lock){?.-.}-{2:2}, at:
+> ufshcd_mcq_poll_cqe_lock+0x30/0xe0
+> [name:lockdep&]{IN-HARDIRQ-W} state was registered at:
+>    lock_acquire+0x17c/0x33c
+>    _raw_spin_lock+0x5c/0x7c
+>    ufshcd_mcq_poll_cqe_lock+0x30/0xe0
+>    ufs_mtk_mcq_intr+0x60/0x1bc [ufs_mediatek_mod]
+>    __handle_irq_event_percpu+0x140/0x3ec
+>    handle_irq_event+0x50/0xd8
+>    handle_fasteoi_irq+0x148/0x2b0
+>    generic_handle_domain_irq+0x4c/0x6c
+>    gic_handle_irq+0x58/0x134
+>    call_on_irq_stack+0x40/0x74
+>    do_interrupt_handler+0x84/0xe4
+>    el1_interrupt+0x3c/0x78
+> <snip>
+>
+> Possible unsafe locking scenario:
+>         CPU0
+>         ----
+>    lock(&hwq->cq_lock);
+>    <Interrupt>
+>      lock(&hwq->cq_lock);
+>    *** DEADLOCK ***
+> 2 locks held by kworker/u16:4/260:
+>
+> [name:lockdep&]
+>   stack backtrace:
+> CPU: 7 PID: 260 Comm: kworker/u16:4 Tainted: G S      W  OE
+> 6.1.17-mainline-android14-2-g277223301adb #1
+> Workqueue: ufs_eh_wq_0 ufshcd_err_handler
+>
+>   Call trace:
+>    dump_backtrace+0x10c/0x160
+>    show_stack+0x20/0x30
+>    dump_stack_lvl+0x98/0xd8
+>    dump_stack+0x20/0x60
+>    print_usage_bug+0x584/0x76c
+>    mark_lock_irq+0x488/0x510
+>    mark_lock+0x1ec/0x25c
+>    __lock_acquire+0x4d8/0xffc
+>    lock_acquire+0x17c/0x33c
+>    _raw_spin_lock+0x5c/0x7c
+>    ufshcd_mcq_poll_cqe_lock+0x30/0xe0
+>    ufshcd_poll+0x68/0x1b0
+>    ufshcd_transfer_req_compl+0x9c/0xc8
+>    ufshcd_err_handler+0x3bc/0xea0
+>    process_one_work+0x2f4/0x7e8
+>    worker_thread+0x234/0x450
+>    kthread+0x110/0x134
+>    ret_from_fork+0x10/0x20
+>
+> ufs_mtk_mcq_intr() could refer to
+> https://lore.kernel.org/all/20230328103423.10970-3-powen.kao@mediatek.com/
+>
+> When ufshcd_err_handler() is executed, CQ event interrupt can enter
+> waiting for the same lock. It could happened in upstream code path
+> ufshcd_handle_mcq_cq_events() and also in ufs_mtk_mcq_intr(). This
+> warning message will be generated when &hwq->cq_lock is used in IRQ
+> context with IRQ enabled. Use ufshcd_mcq_poll_cqe_lock() with
+> spin_lock_irqsave instead of spin_lock to resolve the deadlock issue.
+>
+> Signed-off-by: Alice Chao <alice.chao@mediatek.com>
+> ---
+>   drivers/ufs/core/ufs-mcq.c | 6 +++---
+>   1 file changed, 3 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
+> index 31df052fbc41..202ff71e1b58 100644
+> --- a/drivers/ufs/core/ufs-mcq.c
+> +++ b/drivers/ufs/core/ufs-mcq.c
+> @@ -299,11 +299,11 @@ EXPORT_SYMBOL_GPL(ufshcd_mcq_poll_cqe_nolock);
+>   unsigned long ufshcd_mcq_poll_cqe_lock(struct ufs_hba *hba,
+>   				       struct ufs_hw_queue *hwq)
+>   {
+> -	unsigned long completed_reqs;
+> +	unsigned long completed_reqs, flags;
+>   
+> -	spin_lock(&hwq->cq_lock);
+> +	spin_lock_irqsave(&hwq->cq_lock, flags);
+>   	completed_reqs = ufshcd_mcq_poll_cqe_nolock(hba, hwq);
+> -	spin_unlock(&hwq->cq_lock);
+> +	spin_unlock_irqrestore(&hwq->cq_lock, flags);
+>   
+>   	return completed_reqs;
+>   }
 
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
- .../dts/mediatek/mt8192-asurada-hayato-r1.dts | 80 +++++++++++++++++++
- 1 file changed, 80 insertions(+)
+Reviewed-by: Can Guo <quic_cang@quicinc.com>
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts b/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts
-index 43a823990a92..6a7d7870525b 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts
-@@ -40,9 +40,89 @@ CROS_STD_MAIN_KEYMAP
- 	>;
- };
- 
-+&pio {
-+	bt_pins: bt-pins {
-+		bt_kill: pins-bt-kill {
-+			pinmux = <PINMUX_GPIO144__FUNC_GPIO144>; /* BT_KILL_L */
-+			output-low;
-+		};
-+
-+		bt_wake: pins-bt-wake {
-+			pinmux = <PINMUX_GPIO22__FUNC_GPIO22>;  /* bt to wake ap */
-+			bias-pull-up;
-+		};
-+
-+		ap_wake_bt: pins-ap-wake-bt {
-+			pinmux = <PINMUX_GPIO168__FUNC_GPIO168>; /* AP_WAKE_BT_H */
-+			output-low;
-+		};
-+	};
-+
-+	uart1_pins: uart1-pins {
-+		pins-rx {
-+			pinmux = <PINMUX_GPIO94__FUNC_URXD1>;
-+			input-enable;
-+			bias-pull-up;
-+		};
-+
-+		pins-tx {
-+			pinmux = <PINMUX_GPIO95__FUNC_UTXD1>;
-+		};
-+
-+		pins-cts {
-+			pinmux = <PINMUX_GPIO166__FUNC_UCTS1>;
-+			input-enable;
-+		};
-+
-+		pins-rts {
-+			pinmux = <PINMUX_GPIO167__FUNC_URTS1>;
-+			output-enable;
-+		};
-+	};
-+
-+	uart1_pins_sleep: uart1-pins-sleep {
-+		pins-rx {
-+			pinmux = <PINMUX_GPIO94__FUNC_GPIO94>;
-+			input-enable;
-+			bias-pull-up;
-+		};
-+		pins-tx {
-+			pinmux = <PINMUX_GPIO95__FUNC_UTXD1>;
-+		};
-+		pins-cts {
-+			pinmux = <PINMUX_GPIO166__FUNC_UCTS1>;
-+			input-enable;
-+		};
-+		pins-rts {
-+			pinmux = <PINMUX_GPIO167__FUNC_URTS1>;
-+			output-enable;
-+		};
-+	};
-+};
-+
- &touchscreen {
- 	compatible = "hid-over-i2c";
- 	post-power-on-delay-ms = <10>;
- 	hid-descr-addr = <0x0001>;
- 	vdd-supply = <&pp3300_u>;
- };
-+
-+&uart1 {
-+	status = "okay";
-+	pinctrl-names = "default", "sleep";
-+	pinctrl-0 = <&uart1_pins>;
-+	pinctrl-1 = <&uart1_pins_sleep>;
-+	/delete-property/ interrupts;
-+	interrupts-extended = <&gic GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH 0>,
-+			      <&pio 94 IRQ_TYPE_EDGE_FALLING>;
-+
-+	bluetooth: bluetooth {
-+		compatible = "realtek,rtl8822cs-bt";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&bt_pins>;
-+
-+		enable-gpios = <&pio 144 GPIO_ACTIVE_HIGH>;
-+		device-wake-gpios = <&pio 168 GPIO_ACTIVE_HIGH>;
-+		host-wake-gpios = <&pio 22 GPIO_ACTIVE_LOW>;
-+	};
-+};
--- 
-2.40.0.634.g4ca3ef3211-goog
+
+Thanks for the fix.
+
+
+Regards,
+
+Can Guo.
 
 
