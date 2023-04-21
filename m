@@ -4,119 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41ADAC7618E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Apr 2023 22:54:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEE8DC7618E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Apr 2023 23:46:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=mELlUqW4AbyCDe4YEzFWz+4xEQdak/IDTVWgfLrFmT4=; b=mkrIUOj/gpKy9vVS1K4y/jmddD
-	jnvb++1Ro86rX83ebhWFKhhiPYVJuzCm7CdnUG4UTVnpztv9XtTA5v0raeDEpeNrs+mNX7YKHYVMW
-	1jfMR/zf6YBNL28/T6nZy6hLF4ThbWH5t6PnxIykPUuz2j2XYycRdIL9fgIcFV6mpRXt4nPb3cl5s
-	PamS0sTx2qvSfHT7Ko350tsQ/2p+dq0X0Noi6dOUBqPcTGnjv6eYvOZ6K5HhGuxhfMEnzIIquBajx
-	f53ZBUtyLmsiifyViAw+tK6Al565q3JqKI8oVtL2pizFlIY3LajJjXD680fm2LT1oQxPpXv/NkaPY
-	wxvm64/w==;
+	bh=nTS3BJHQfpV/cAmIYwndGJ4XuY5RhYMBsw8wnrdpZE0=; b=3tO7VkEh5T5SxcttzmTRoxhhcI
+	X3BxYmqhzELSBHByScL85KansHjkXM7UV/4bt/aQsGvbw4Fwsx988tMU6duYwPscGeCzMZRZ/URNY
+	JrAMR2xM1HOWPzG2C/hOOMXw23hxqO57iamOSEyBdqXWusGGaqWdA9Ka0taWLHZ5WNaZzCiOztYLI
+	OiHXTjjOFkxdQ2yi0YhSBYEGOfZX4ChCB1fSMMrUH+avTEKif5DlF5WqsMgvFOlyrnCvy+xk4sK9e
+	oFECMNRZw8U3jvkLN2aMeDtJxo9mZAvr+0PTrXPmmLujS4I4R53uMvoN42O+mpXsAMHGNxX0kNXwb
+	9i7OiTXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppzdz-00C16x-30;
-	Fri, 21 Apr 2023 22:54:19 +0000
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
+	id 1pq0S7-00C57u-2U;
+	Fri, 21 Apr 2023 23:46:07 +0000
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppzdv-00C15X-0x
+	id 1ppzIO-00BxNj-1F
 	for linux-mediatek@lists.infradead.org;
-	Fri, 21 Apr 2023 22:54:19 +0000
-Received: by mail-pf1-x431.google.com with SMTP id d2e1a72fcca58-63b67a26069so3737817b3a.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 21 Apr 2023 15:54:14 -0700 (PDT)
+	Fri, 21 Apr 2023 22:32:01 +0000
+Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-94a34d3812cso374823866b.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 21 Apr 2023 15:32:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1682117653; x=1684709653;
+        d=linaro.org; s=google; t=1682116319; x=1684708319;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=mELlUqW4AbyCDe4YEzFWz+4xEQdak/IDTVWgfLrFmT4=;
-        b=I537B93BE4SyhIglWazgbMSgEGGzx/t6bHmp9W0Gs5MykaQwXgXBFkhZvKwXZhC0kQ
-         8CKzPO+WWpu8Ii1sPclc0ru5G1ZYDA34Za7kGwxskkVyrw/fi2iEWdAFmnYoyg7qRD9q
-         m2K/nybBbi9eoxfWsFVQCn9ShLyVGXfSZE9gI=
+        bh=nTS3BJHQfpV/cAmIYwndGJ4XuY5RhYMBsw8wnrdpZE0=;
+        b=hUf60pt9SYsbHNOBCqTdtDAJYGPxwWgJjjpYvXAyCp9Gs/Nh79FGr5ya2k8mA2ZOX/
+         wRd5FiNNVnZRtXcrwzS0qNruVrNJF2ksSbj4ZE0rlHlDd1PFjpodCuQ4J38m1kM7E0w3
+         Iyu98fQ95p78Oym7Y1BCNO43sA3kAmgRziuGGe8ZL6wqM+sOAyXsU9fBnCtghG6iazke
+         3zWJH0s/D1RM9/yPDyHJXs3Y1z/shUn4u4X62loFj4VFfLwBWD3dCRikb2gCtVBREaqI
+         pa44cYZwH9RM0DoTvMCaIVvfG4lSEYeeeqHdr36l0SDCg1tZY7RW9IZgDJjIENrerf3h
+         kxAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682117653; x=1684709653;
+        d=1e100.net; s=20221208; t=1682116319; x=1684708319;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=mELlUqW4AbyCDe4YEzFWz+4xEQdak/IDTVWgfLrFmT4=;
-        b=jrCJHE4x5WcNNe2T/md4/N1VX88xqjMN3boCA2s+Jq7rCVRoijeNra2szsPkvqNLe0
-         140alGD3C3SrsG3XYYcykuRaOfK4Ili+eqkFdvminn0uknuNBzRw5uDjwgDvm5FpffmO
-         k/Ao5RH86bFApuFqLL6PKbooyjw/IRbb0wZbwgBrX9Gy+8XPscSmiO2lo2h0vK+AV5kl
-         cUqUa9dZoIez5ClWQ5XDCRSC1pfMbzC+XviBWzCUKf5cNJSPNZmGxi6UzwZv/05IWLeK
-         jsoPMDTeLHtqGNZh/3VasX3wcGGhsSq7v2cB0NYm7idWVaE+SOY6xL+DR29R/byobiAB
-         HdzA==
-X-Gm-Message-State: AAQBX9fdAvC3jNpX8SIWJPg+1pGKHlMQuogQwIZB1i/I23s994NT/4uY
-	P6D3VwsCw4gm1ScsFD+MeG3v1A==
-X-Google-Smtp-Source: AKy350bvdFHtuRG9FeSf9dRybswhjk4lzuv66Lyr2+yMDXVigSfLZiR8l+1N2nJRI83dBBHH3q1F2w==
-X-Received: by 2002:a17:903:2287:b0:1a6:a405:f714 with SMTP id b7-20020a170903228700b001a6a405f714mr4673142plh.63.1682117653510;
-        Fri, 21 Apr 2023 15:54:13 -0700 (PDT)
-Received: from tictac2.mtv.corp.google.com ([2620:15c:9d:2:3b01:cf70:df30:8ace])
-        by smtp.gmail.com with ESMTPSA id ji9-20020a170903324900b001a6ed2d0ef8sm3144827plb.273.2023.04.21.15.54.10
+        bh=nTS3BJHQfpV/cAmIYwndGJ4XuY5RhYMBsw8wnrdpZE0=;
+        b=Xw+HLePhJ1qNkiNKo6DrQ3baAK9UJkLGWhMxnHbUbA444xVHI3UqsiozRQNLNhZrdN
+         4WxNqPAciMzgb/mV9iW8G4/GHqQydGjhE1xf5nccMwpmFgGz9/1tTXh2UigU4/Ljy1QX
+         0iubL71j+JlgTBbMR75zArAMCuLNsqvttFXXr1qGzzAu+Do8+ntho8On8lgxgokVoZIS
+         U6960Ged/4BxiobjenG688yL3ae2co3PUGg6AjbmweISv/D7f+r1AWR3xKeyM6PtdrMH
+         bjbcrQj7CYIW4LilVW3Z9NbLkMzeGTGKYnREUnjFVUMNvKCMkOktgz4pD0Eouvz/qoY5
+         pKXQ==
+X-Gm-Message-State: AAQBX9dO+YCZ7NuPK5yT+hmKw7VGnYtUajfZ1hfA5bt9NSbeqIEpITDX
+	B/NBFEjeh3OojARUcIHx/zfiXA==
+X-Google-Smtp-Source: AKy350ahA/i9BjvklpN80iEkUEuB3+ynJvh5flYH+2DE5tgTm7Xoz0w7YWIJ7AKdq0IKk4YEd9Ba6w==
+X-Received: by 2002:a17:907:a688:b0:953:4d9e:4dc5 with SMTP id vv8-20020a170907a68800b009534d9e4dc5mr3267106ejc.22.1682116319070;
+        Fri, 21 Apr 2023 15:31:59 -0700 (PDT)
+Received: from krzk-bin.. ([2a02:810d:15c0:828:687d:8c5:41cb:9883])
+        by smtp.gmail.com with ESMTPSA id g11-20020a170906394b00b0094f4f2db7e0sm2623765eje.143.2023.04.21.15.31.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 21 Apr 2023 15:54:12 -0700 (PDT)
-From: Douglas Anderson <dianders@chromium.org>
-To: Petr Mladek <pmladek@suse.com>,
-	Andrew Morton <akpm@linux-foundation.org>
-Cc: Lecopzer Chen <lecopzer.chen@mediatek.com>,
-	Daniel Thompson <daniel.thompson@linaro.org>,
-	Stephen Boyd <swboyd@chromium.org>,
-	Chen-Yu Tsai <wens@csie.org>,
-	linux-arm-kernel@lists.infradead.org,
-	kgdb-bugreport@lists.sourceforge.net,
-	Marc Zyngier <maz@kernel.org>,
-	linux-perf-users@vger.kernel.org,
-	Mark Rutland <mark.rutland@arm.com>,
-	Masayoshi Mizuma <msys.mizuma@gmail.com>,
-	Will Deacon <will@kernel.org>,
-	ito-yuichi@fujitsu.com,
-	Sumit Garg <sumit.garg@linaro.org>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Colin Cross <ccross@android.com>,
-	Matthias Kaehlcke <mka@chromium.org>,
-	Guenter Roeck <groeck@chromium.org>,
-	Tzung-Bi Shih <tzungbi@chromium.org>,
-	Douglas Anderson <dianders@chromium.org>,
-	Alexander Potapenko <glider@google.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Dan Williams <dan.j.williams@intel.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Ingo Molnar <mingo@kernel.org>,
-	John Ogness <john.ogness@linutronix.de>,
-	Josh Poimboeuf <jpoimboe@kernel.org>,
-	Juergen Gross <jgross@suse.com>,
-	Kees Cook <keescook@chromium.org>,
-	Laurent Dufour <ldufour@linux.ibm.com>,
-	Liam Howlett <liam.howlett@oracle.com>,
-	Marco Elver <elver@google.com>,
+        Fri, 21 Apr 2023 15:31:58 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	Michael Ellerman <mpe@ellerman.id.au>,
-	Miguel Ojeda <ojeda@kernel.org>,
-	Nathan Chancellor <nathan@kernel.org>,
-	Nick Desaulniers <ndesaulniers@google.com>,
-	"Paul E. McKenney" <paulmck@kernel.org>,
-	Peter Zijlstra <peterz@infradead.org>,
-	Randy Dunlap <rdunlap@infradead.org>,
-	Rasmus Villemoes <linux@rasmusvillemoes.dk>,
-	Sami Tolvanen <samitolvanen@google.com>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Vlastimil Babka <vbabka@suse.cz>,
-	Zhaoyang Huang <zhaoyang.huang@unisoc.com>,
-	Zhen Lei <thunder.leizhen@huawei.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH] hardlockup: detect hard lockups using secondary (buddy) cpus
-Date: Fri, 21 Apr 2023 15:53:30 -0700
-Message-ID: <20230421155255.1.I6bf789d21d0c3d75d382e7e51a804a7a51315f2c@changeid>
-X-Mailer: git-send-email 2.40.0.634.g4ca3ef3211-goog
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH] arm64: dts: mediatek: add missing cache properties
+Date: Sat, 22 Apr 2023 00:31:57 +0200
+Message-Id: <20230421223157.115367-1-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230421_155415_335423_C97FDE83 
-X-CRM114-Status: GOOD (  39.89  )
+X-CRM114-CacheID: sfid-20230421_153200_428555_61122718 
+X-CRM114-Status: UNSURE (   9.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,409 +95,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Colin Cross <ccross@android.com>
+As all level 2 and level 3 caches are unified, add required
+cache-unified properties to fix warnings like:
 
-Implement a hardlockup detector that can be enabled on SMP systems
-that don't have an arch provided one or one implemented atop perf by
-using interrupts on other cpus. Each cpu will use its softlockup
-hrtimer to check that the next cpu is processing hrtimer interrupts by
-verifying that a counter is increasing.
+  mt7622-rfb1.dtb: l2-cache: 'cache-unified' is a required property
 
-NOTE: unlike the other hard lockup detectors, the buddy one can't
-easily provide a backtrace on the CPU that locked up. It relies on
-some other mechanism in the system to get information about the locked
-up CPUs. This could be support for NMI backtraces like [1], it could
-be a mechanism for printing the PC of locked CPUs like [2], or it
-could be something else.
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-This style of hardlockup detector originated in some downstream
-Android trees and has been rebased on / carried in ChromeOS trees for
-quite a long time for use on arm and arm64 boards. Historically on
-these boards we've leveraged mechanism [2] to get information about
-hung CPUs, but we could move to [1].
-
-NOTE: the buddy system is not really useful to enable on any
-architectures that have a better mechanism. On arm64 folks have been
-trying to get a better mechanism for years and there has even been
-recent posts of patches adding support [3]. However, nothing about the
-buddy system is tied to arm64 and several archs (even arm32, where it
-was originally developed) could find it useful.
-
-[1] https://lore.kernel.org/r/20230419225604.21204-1-dianders@chromium.org
-[2] https://issuetracker.google.com/172213129
-[3] https://lore.kernel.org/linux-arm-kernel/20220903093415.15850-1-lecopzer.chen@mediatek.com/
-
-Signed-off-by: Colin Cross <ccross@android.com>
-Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
-Signed-off-by: Guenter Roeck <groeck@chromium.org>
-Signed-off-by: Tzung-Bi Shih <tzungbi@chromium.org>
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
 ---
-This patch has been rebased in ChromeOS kernel trees many times, and
-each time someone had to do work on it they added their
-Signed-off-by. I've included those here. I've also left the author as
-Colin Cross since the core code is still his.
 
-I'll also note that the CC list is pretty giant, but that's what
-get_maintainers came up with (plus a few other folks I thought would
-be interested). As far as I can tell, there's no true MAINTAINER
-listed for the existing watchdog code. Assuming people don't hate
-this, maybe it would go through Andrew Morton's tree?
+Please take the patch via sub-arch SoC tree.
+---
+ arch/arm64/boot/dts/mediatek/mt7622.dtsi | 1 +
+ arch/arm64/boot/dts/mediatek/mt8186.dtsi | 2 ++
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 2 ++
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 2 ++
+ 4 files changed, 7 insertions(+)
 
- include/linux/nmi.h         |  18 ++++-
- kernel/Makefile             |   1 +
- kernel/watchdog.c           |  24 ++++--
- kernel/watchdog_buddy_cpu.c | 141 ++++++++++++++++++++++++++++++++++++
- lib/Kconfig.debug           |  19 ++++-
- 5 files changed, 192 insertions(+), 11 deletions(-)
- create mode 100644 kernel/watchdog_buddy_cpu.c
-
-diff --git a/include/linux/nmi.h b/include/linux/nmi.h
-index 048c0b9aa623..35f6c5c2378b 100644
---- a/include/linux/nmi.h
-+++ b/include/linux/nmi.h
-@@ -45,6 +45,8 @@ extern void touch_softlockup_watchdog(void);
- extern void touch_softlockup_watchdog_sync(void);
- extern void touch_all_softlockup_watchdogs(void);
- extern unsigned int  softlockup_panic;
-+DECLARE_PER_CPU(unsigned long, hrtimer_interrupts);
-+DECLARE_PER_CPU(unsigned long, hrtimer_interrupts_saved);
+diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+index 006cd639059f..36ef2dbe8add 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+@@ -101,6 +101,7 @@ cpu1: cpu@1 {
+ 		L2: l2-cache {
+ 			compatible = "cache";
+ 			cache-level = <2>;
++			cache-unified;
+ 		};
+ 	};
  
- extern int lockup_detector_online_cpu(unsigned int cpu);
- extern int lockup_detector_offline_cpu(unsigned int cpu);
-@@ -81,14 +83,14 @@ static inline void reset_hung_task_detector(void) { }
- #define NMI_WATCHDOG_ENABLED      (1 << NMI_WATCHDOG_ENABLED_BIT)
- #define SOFT_WATCHDOG_ENABLED     (1 << SOFT_WATCHDOG_ENABLED_BIT)
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+index 5e83d4e9efa4..d4f9a9b6bca8 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+@@ -250,6 +250,7 @@ l2_0: l2-cache0 {
+ 			cache-line-size = <64>;
+ 			cache-sets = <512>;
+ 			next-level-cache = <&l3_0>;
++			cache-unified;
+ 		};
  
--#if defined(CONFIG_HARDLOCKUP_DETECTOR)
-+#if defined(CONFIG_HARDLOCKUP_DETECTOR_CORE)
- extern void hardlockup_detector_disable(void);
- extern unsigned int hardlockup_panic;
- #else
- static inline void hardlockup_detector_disable(void) {}
- #endif
+ 		l2_1: l2-cache1 {
+@@ -259,6 +260,7 @@ l2_1: l2-cache1 {
+ 			cache-line-size = <64>;
+ 			cache-sets = <512>;
+ 			next-level-cache = <&l3_0>;
++			cache-unified;
+ 		};
  
--#if defined(CONFIG_HAVE_NMI_WATCHDOG) || defined(CONFIG_HARDLOCKUP_DETECTOR)
-+#if defined(CONFIG_HAVE_NMI_WATCHDOG) || defined(CONFIG_HARDLOCKUP_DETECTOR_CORE)
- # define NMI_WATCHDOG_SYSCTL_PERM	0644
- #else
- # define NMI_WATCHDOG_SYSCTL_PERM	0444
-@@ -124,6 +126,14 @@ void watchdog_nmi_disable(unsigned int cpu);
+ 		l3_0: l3-cache {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+index 5c30caf74026..faaff39155dc 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+@@ -228,6 +228,7 @@ l2_0: l2-cache0 {
+ 			cache-line-size = <64>;
+ 			cache-sets = <512>;
+ 			next-level-cache = <&l3_0>;
++			cache-unified;
+ 		};
  
- void lockup_detector_reconfigure(void);
+ 		l2_1: l2-cache1 {
+@@ -237,6 +238,7 @@ l2_1: l2-cache1 {
+ 			cache-line-size = <64>;
+ 			cache-sets = <512>;
+ 			next-level-cache = <&l3_0>;
++			cache-unified;
+ 		};
  
-+#ifdef CONFIG_HARDLOCKUP_DETECTOR_BUDDY_CPU
-+void buddy_cpu_touch_watchdog(void);
-+void watchdog_check_hardlockup(void);
-+#else
-+static inline void buddy_cpu_touch_watchdog(void) {}
-+static inline void watchdog_check_hardlockup(void) {}
-+#endif
-+
- /**
-  * touch_nmi_watchdog - restart NMI watchdog timeout.
-  *
-@@ -134,6 +144,7 @@ void lockup_detector_reconfigure(void);
- static inline void touch_nmi_watchdog(void)
- {
- 	arch_touch_nmi_watchdog();
-+	buddy_cpu_touch_watchdog();
- 	touch_softlockup_watchdog();
- }
+ 		l3_0: l3-cache {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index a44aae4ab953..eee3160e7901 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -283,6 +283,7 @@ l2_0: l2-cache0 {
+ 			cache-line-size = <64>;
+ 			cache-sets = <512>;
+ 			next-level-cache = <&l3_0>;
++			cache-unified;
+ 		};
  
-@@ -196,8 +207,7 @@ static inline bool trigger_single_cpu_backtrace(int cpu)
- u64 hw_nmi_get_sample_period(int watchdog_thresh);
- #endif
+ 		l2_1: l2-cache1 {
+@@ -292,6 +293,7 @@ l2_1: l2-cache1 {
+ 			cache-line-size = <64>;
+ 			cache-sets = <512>;
+ 			next-level-cache = <&l3_0>;
++			cache-unified;
+ 		};
  
--#if defined(CONFIG_HARDLOCKUP_CHECK_TIMESTAMP) && \
--    defined(CONFIG_HARDLOCKUP_DETECTOR)
-+#if defined(CONFIG_HARDLOCKUP_CHECK_TIMESTAMP) && defined(CONFIG_HARDLOCKUP_DETECTOR_PERF)
- void watchdog_update_hrtimer_threshold(u64 period);
- #else
- static inline void watchdog_update_hrtimer_threshold(u64 period) { }
-diff --git a/kernel/Makefile b/kernel/Makefile
-index 10ef068f598d..a2054f16f9f4 100644
---- a/kernel/Makefile
-+++ b/kernel/Makefile
-@@ -91,6 +91,7 @@ obj-$(CONFIG_FAIL_FUNCTION) += fail_function.o
- obj-$(CONFIG_KGDB) += debug/
- obj-$(CONFIG_DETECT_HUNG_TASK) += hung_task.o
- obj-$(CONFIG_LOCKUP_DETECTOR) += watchdog.o
-+obj-$(CONFIG_HARDLOCKUP_DETECTOR_BUDDY_CPU) += watchdog_buddy_cpu.o
- obj-$(CONFIG_HARDLOCKUP_DETECTOR_PERF) += watchdog_hld.o
- obj-$(CONFIG_SECCOMP) += seccomp.o
- obj-$(CONFIG_RELAY) += relay.o
-diff --git a/kernel/watchdog.c b/kernel/watchdog.c
-index 8e61f21e7e33..1199043689ae 100644
---- a/kernel/watchdog.c
-+++ b/kernel/watchdog.c
-@@ -29,7 +29,7 @@
- 
- static DEFINE_MUTEX(watchdog_mutex);
- 
--#if defined(CONFIG_HARDLOCKUP_DETECTOR) || defined(CONFIG_HAVE_NMI_WATCHDOG)
-+#if defined(CONFIG_HARDLOCKUP_DETECTOR_CORE) || defined(CONFIG_HAVE_NMI_WATCHDOG)
- # define WATCHDOG_DEFAULT	(SOFT_WATCHDOG_ENABLED | NMI_WATCHDOG_ENABLED)
- # define NMI_WATCHDOG_DEFAULT	1
- #else
-@@ -47,7 +47,7 @@ static int __read_mostly nmi_watchdog_available;
- struct cpumask watchdog_cpumask __read_mostly;
- unsigned long *watchdog_cpumask_bits = cpumask_bits(&watchdog_cpumask);
- 
--#ifdef CONFIG_HARDLOCKUP_DETECTOR
-+#ifdef CONFIG_HARDLOCKUP_DETECTOR_CORE
- 
- # ifdef CONFIG_SMP
- int __read_mostly sysctl_hardlockup_all_cpu_backtrace;
-@@ -85,7 +85,9 @@ static int __init hardlockup_panic_setup(char *str)
- }
- __setup("nmi_watchdog=", hardlockup_panic_setup);
- 
--#endif /* CONFIG_HARDLOCKUP_DETECTOR */
-+#endif /* CONFIG_HARDLOCKUP_DETECTOR_CORE */
-+
-+#ifdef CONFIG_HARDLOCKUP_DETECTOR
- 
- /*
-  * These functions can be overridden if an architecture implements its
-@@ -106,6 +108,13 @@ void __weak watchdog_nmi_disable(unsigned int cpu)
- 	hardlockup_detector_perf_disable();
- }
- 
-+#else
-+
-+int __weak watchdog_nmi_enable(unsigned int cpu) { return 0; }
-+void __weak watchdog_nmi_disable(unsigned int cpu) { return; }
-+
-+#endif /* CONFIG_HARDLOCKUP_DETECTOR */
-+
- /* Return 0, if a NMI watchdog is available. Error code otherwise */
- int __weak __init watchdog_nmi_probe(void)
- {
-@@ -179,8 +188,8 @@ static DEFINE_PER_CPU(unsigned long, watchdog_touch_ts);
- static DEFINE_PER_CPU(unsigned long, watchdog_report_ts);
- static DEFINE_PER_CPU(struct hrtimer, watchdog_hrtimer);
- static DEFINE_PER_CPU(bool, softlockup_touch_sync);
--static DEFINE_PER_CPU(unsigned long, hrtimer_interrupts);
--static DEFINE_PER_CPU(unsigned long, hrtimer_interrupts_saved);
-+DEFINE_PER_CPU(unsigned long, hrtimer_interrupts);
-+DEFINE_PER_CPU(unsigned long, hrtimer_interrupts_saved);
- static unsigned long soft_lockup_nmi_warn;
- 
- static int __init nowatchdog_setup(char *str)
-@@ -364,6 +373,9 @@ static enum hrtimer_restart watchdog_timer_fn(struct hrtimer *hrtimer)
- 	/* kick the hardlockup detector */
- 	watchdog_interrupt_count();
- 
-+	/* test for hardlockups */
-+	watchdog_check_hardlockup();
-+
- 	/* kick the softlockup detector */
- 	if (completion_done(this_cpu_ptr(&softlockup_completion))) {
- 		reinit_completion(this_cpu_ptr(&softlockup_completion));
-@@ -820,7 +832,7 @@ static struct ctl_table watchdog_sysctls[] = {
- 	},
- #endif /* CONFIG_SMP */
- #endif
--#ifdef CONFIG_HARDLOCKUP_DETECTOR
-+#ifdef CONFIG_HARDLOCKUP_DETECTOR_CORE
- 	{
- 		.procname	= "hardlockup_panic",
- 		.data		= &hardlockup_panic,
-diff --git a/kernel/watchdog_buddy_cpu.c b/kernel/watchdog_buddy_cpu.c
-new file mode 100644
-index 000000000000..db813b00e6ef
---- /dev/null
-+++ b/kernel/watchdog_buddy_cpu.c
-@@ -0,0 +1,141 @@
-+// SPDX-License-Identifier: GPL-2.0
-+
-+#include <linux/cpu.h>
-+#include <linux/cpumask.h>
-+#include <linux/kernel.h>
-+#include <linux/nmi.h>
-+#include <linux/percpu-defs.h>
-+
-+static DEFINE_PER_CPU(bool, watchdog_touch);
-+static DEFINE_PER_CPU(bool, hard_watchdog_warn);
-+static cpumask_t __read_mostly watchdog_cpus;
-+
-+static unsigned long hardlockup_allcpu_dumped;
-+
-+int __init watchdog_nmi_probe(void)
-+{
-+	return 0;
-+}
-+
-+notrace void buddy_cpu_touch_watchdog(void)
-+{
-+	/*
-+	 * Using __raw here because some code paths have
-+	 * preemption enabled.  If preemption is enabled
-+	 * then interrupts should be enabled too, in which
-+	 * case we shouldn't have to worry about the watchdog
-+	 * going off.
-+	 */
-+	raw_cpu_write(watchdog_touch, true);
-+}
-+EXPORT_SYMBOL_GPL(buddy_cpu_touch_watchdog);
-+
-+static unsigned int watchdog_next_cpu(unsigned int cpu)
-+{
-+	cpumask_t cpus = watchdog_cpus;
-+	unsigned int next_cpu;
-+
-+	next_cpu = cpumask_next(cpu, &cpus);
-+	if (next_cpu >= nr_cpu_ids)
-+		next_cpu = cpumask_first(&cpus);
-+
-+	if (next_cpu == cpu)
-+		return nr_cpu_ids;
-+
-+	return next_cpu;
-+}
-+
-+int watchdog_nmi_enable(unsigned int cpu)
-+{
-+	/*
-+	 * The new cpu will be marked online before the first hrtimer interrupt
-+	 * runs on it.  If another cpu tests for a hardlockup on the new cpu
-+	 * before it has run its first hrtimer, it will get a false positive.
-+	 * Touch the watchdog on the new cpu to delay the first check for at
-+	 * least 3 sampling periods to guarantee one hrtimer has run on the new
-+	 * cpu.
-+	 */
-+	per_cpu(watchdog_touch, cpu) = true;
-+	/* Match with smp_rmb() in watchdog_check_hardlockup() */
-+	smp_wmb();
-+	cpumask_set_cpu(cpu, &watchdog_cpus);
-+	return 0;
-+}
-+
-+void watchdog_nmi_disable(unsigned int cpu)
-+{
-+	unsigned int next_cpu = watchdog_next_cpu(cpu);
-+
-+	/*
-+	 * Offlining this cpu will cause the cpu before this one to start
-+	 * checking the one after this one.  If this cpu just finished checking
-+	 * the next cpu and updating hrtimer_interrupts_saved, and then the
-+	 * previous cpu checks it within one sample period, it will trigger a
-+	 * false positive.  Touch the watchdog on the next cpu to prevent it.
-+	 */
-+	if (next_cpu < nr_cpu_ids)
-+		per_cpu(watchdog_touch, next_cpu) = true;
-+	/* Match with smp_rmb() in watchdog_check_hardlockup() */
-+	smp_wmb();
-+	cpumask_clear_cpu(cpu, &watchdog_cpus);
-+}
-+
-+static int is_hardlockup_buddy_cpu(unsigned int cpu)
-+{
-+	unsigned long hrint = per_cpu(hrtimer_interrupts, cpu);
-+
-+	if (per_cpu(hrtimer_interrupts_saved, cpu) == hrint)
-+		return 1;
-+
-+	per_cpu(hrtimer_interrupts_saved, cpu) = hrint;
-+	return 0;
-+}
-+
-+void watchdog_check_hardlockup(void)
-+{
-+	unsigned int next_cpu;
-+
-+	/*
-+	 * Test for hardlockups every 3 samples.  The sample period is
-+	 *  watchdog_thresh * 2 / 5, so 3 samples gets us back to slightly over
-+	 *  watchdog_thresh (over by 20%).
-+	 */
-+	if (__this_cpu_read(hrtimer_interrupts) % 3 != 0)
-+		return;
-+
-+	/* check for a hardlockup on the next cpu */
-+	next_cpu = watchdog_next_cpu(smp_processor_id());
-+	if (next_cpu >= nr_cpu_ids)
-+		return;
-+
-+	/* Match with smp_wmb() in watchdog_nmi_enable() / watchdog_nmi_disable() */
-+	smp_rmb();
-+
-+	if (per_cpu(watchdog_touch, next_cpu) == true) {
-+		per_cpu(watchdog_touch, next_cpu) = false;
-+		return;
-+	}
-+
-+	if (is_hardlockup_buddy_cpu(next_cpu)) {
-+		/* only warn once */
-+		if (per_cpu(hard_watchdog_warn, next_cpu) == true)
-+			return;
-+
-+		/*
-+		 * Perform all-CPU dump only once to avoid multiple hardlockups
-+		 * generating interleaving traces
-+		 */
-+		if (sysctl_hardlockup_all_cpu_backtrace &&
-+				!test_and_set_bit(0, &hardlockup_allcpu_dumped))
-+			trigger_allbutself_cpu_backtrace();
-+
-+		if (hardlockup_panic)
-+			panic("Watchdog detected hard LOCKUP on cpu %u", next_cpu);
-+		else
-+			WARN(1, "Watchdog detected hard LOCKUP on cpu %u", next_cpu);
-+
-+		per_cpu(hard_watchdog_warn, next_cpu) = true;
-+	} else {
-+		per_cpu(hard_watchdog_warn, next_cpu) = false;
-+	}
-+}
-diff --git a/lib/Kconfig.debug b/lib/Kconfig.debug
-index 39d1d93164bd..9eb86bc9f5ee 100644
---- a/lib/Kconfig.debug
-+++ b/lib/Kconfig.debug
-@@ -1036,6 +1036,9 @@ config HARDLOCKUP_DETECTOR_PERF
- config HARDLOCKUP_CHECK_TIMESTAMP
- 	bool
- 
-+config HARDLOCKUP_DETECTOR_CORE
-+	bool
-+
- #
- # arch/ can define HAVE_HARDLOCKUP_DETECTOR_ARCH to provide their own hard
- # lockup detector rather than the perf based detector.
-@@ -1045,6 +1048,7 @@ config HARDLOCKUP_DETECTOR
- 	depends on DEBUG_KERNEL && !S390
- 	depends on HAVE_HARDLOCKUP_DETECTOR_PERF || HAVE_HARDLOCKUP_DETECTOR_ARCH
- 	select LOCKUP_DETECTOR
-+	select HARDLOCKUP_DETECTOR_CORE
- 	select HARDLOCKUP_DETECTOR_PERF if HAVE_HARDLOCKUP_DETECTOR_PERF
- 	help
- 	  Say Y here to enable the kernel to act as a watchdog to detect
-@@ -1055,9 +1059,22 @@ config HARDLOCKUP_DETECTOR
- 	  chance to run.  The current stack trace is displayed upon detection
- 	  and the system will stay locked up.
- 
-+config HARDLOCKUP_DETECTOR_BUDDY_CPU
-+	bool "Buddy CPU hardlockup detector"
-+	depends on DEBUG_KERNEL && SMP
-+	depends on !HARDLOCKUP_DETECTOR && !HAVE_NMI_WATCHDOG
-+	depends on !S390
-+	select HARDLOCKUP_DETECTOR_CORE
-+	select SOFTLOCKUP_DETECTOR
-+	help
-+	  Say Y here to enable a hardlockup detector where CPUs check
-+	  each other for lockup. Each cpu uses its softlockup hrtimer
-+	  to check that the next cpu is processing hrtimer interrupts by
-+	  verifying that a counter is increasing.
-+
- config BOOTPARAM_HARDLOCKUP_PANIC
- 	bool "Panic (Reboot) On Hard Lockups"
--	depends on HARDLOCKUP_DETECTOR
-+	depends on HARDLOCKUP_DETECTOR_CORE
- 	help
- 	  Say Y here to enable the kernel to panic on "hard lockups",
- 	  which are bugs that cause the kernel to loop in kernel
+ 		l3_0: l3-cache {
 -- 
-2.40.0.634.g4ca3ef3211-goog
+2.34.1
 
 
