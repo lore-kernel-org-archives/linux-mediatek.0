@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58A01C7618E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Apr 2023 06:57:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CD45C77B75
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Apr 2023 07:07:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SJKGDTicdDOydwAyS5XLugqVzczoGrGZVxyOPeyI0mE=; b=1Io2pSSsYnmspCAbj4VH/IfFYD
-	GNv9DuaOkzLDNXMiVe3s3INFu/uGvKu8yeZbj4lKpF5MzYXNqbdxhgmspm7kX4Q+3f04PFUCch3N/
-	PJQMQ6+ubnmzqTMftQHeh6Xdf4Iwb4sbinls+TgjAFmB6WmgsoVtXzym9eveE/37HX5/n0YBiP2v0
-	W++Cv1lt6YScnPGasuHzTlCq1+wGq1h+lH2dRMzD3tbzF+XY00emVzas7Ab7z2/Z7HhtYBjpj8Hu+
-	icdXWu9cHOHEzuVNSa2ZPURBeYy0rHr/chmk6FIBXTPzhMaq2qqQY5QNeWsGzHgHsC4iEuxfQe3OL
-	X3IxOl7Q==;
+	bh=LSYmFIBvo/39//HYsPHxDg04iiAQgWsffOlw6b/gJqc=; b=k4xIO812YovqTRkdym3Lk/Og1l
+	zQhmjnGX7qPC28nI0U29kpxu2anOxbODFGLP52lUcG9B3zFRiFuTcZya7Qcy4OKJkVMyFOeBsC0HN
+	rwaz8l8tjCVq//MN8AQCgFy6V9zI7tYjqO3KZcvJxqXdrzyg0WCl7SNeoo3MUtXa2SUuLgxMCO5Sl
+	vcLQvd7ihD1xNH2YnOI+1F38R7DzfnZ5fpaDxGTmuXUom4dM3OXgoxxQqcIuG8FEL3WBLBoJTk+GU
+	iq1GfW2BVzEOzUnQKb/XBL+GBIX0SkTtfOhbdVyARWrNnbm0pYFKF9BsdYw0WOdW8Zf6Tsk+vQ6S7
+	oE5njs5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppkiF-009tZ4-0E;
-	Fri, 21 Apr 2023 06:57:43 +0000
-Received: from mail-vk1-xa2a.google.com ([2607:f8b0:4864:20::a2a])
+	id 1ppkrv-009uwh-0U;
+	Fri, 21 Apr 2023 07:07:43 +0000
+Received: from mail-ua1-x934.google.com ([2607:f8b0:4864:20::934])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppkiA-009tXY-2P
+	id 1ppkrh-009usx-2J
 	for linux-mediatek@lists.infradead.org;
-	Fri, 21 Apr 2023 06:57:40 +0000
-Received: by mail-vk1-xa2a.google.com with SMTP id 71dfb90a1353d-44058ece4f3so831829e0c.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 20 Apr 2023 23:57:38 -0700 (PDT)
+	Fri, 21 Apr 2023 07:07:32 +0000
+Received: by mail-ua1-x934.google.com with SMTP id a1e0cc1a2514c-77106047c7dso433476241.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 21 Apr 2023 00:07:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1682060257; x=1684652257;
+        d=chromium.org; s=google; t=1682060848; x=1684652848;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=SJKGDTicdDOydwAyS5XLugqVzczoGrGZVxyOPeyI0mE=;
-        b=Idit8eCqCgTG3r3YDXJ4riHvsH9dFKDnOm4WUrpndwWlD5IUcVzFvKa9odfDNhtPfP
-         1aco9mVjUHcqvupq4gv2tRpyTSeCR91veQ0NNgA6NppySxMU22vOB4DF3UhsVTL5PeiF
-         46bvAdmy4tRKYKlptuX6lbpjqLIh+0srq8WnI=
+        bh=LSYmFIBvo/39//HYsPHxDg04iiAQgWsffOlw6b/gJqc=;
+        b=MSuKI7etY84g7qPA6Ywqcgqm89D6KVhjjgiAsSocKkQSQSFdYhnYHtJ0dMfO2sswY8
+         yEAldvBimU9hLPOTZALoxeIWDfKszFJN4t2z3OSHPX4c5z4jD27y4UDG8XdekTUjEKGV
+         9GzeLmCMTLHjYQ7YtEL8aA0Jtb4dAX8Do+TPg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682060257; x=1684652257;
+        d=1e100.net; s=20221208; t=1682060848; x=1684652848;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=SJKGDTicdDOydwAyS5XLugqVzczoGrGZVxyOPeyI0mE=;
-        b=J91059mBpeJ0W/A0wWlWjNHZakDXWZQABZ4r0SgBBiesfKWsCrKjSkdXUyjLmr84Ym
-         osSAHa7UYzVUPnLP9W1rFCJwdr71r9w8P+Xoysi8ZXOx1A9tGq6gWDDsBJnbJCTgaE8p
-         n0JGx17WDn8M26qgIdE9mAinDPJUWNG/emS4SuLVNI2quag5cZjsmqKLOjiayXk1nUug
-         g4PKboXuxbWQd+vE6HUew8OfCUTU0pqeAyov4JVp2JqsqBkHJlCR1F2eX4gUTnGv4xCx
-         K1azRvWH/BhaARgYZ1htN0eTmBO+++7/QpobmqdaydmfPYv+QuyWi+9PoPgMR+HsbZ9X
-         rZHw==
-X-Gm-Message-State: AAQBX9cVAsgbEE+8UZ56jeZm3qyXVnQM5d0j4OWuCyk1vB7Tbq1rfElk
-	Ev+kzJJXJyzA6h5ehZqRDC5KhWXKEdmfYrIUhgukfsfjFiKRClevwKo=
-X-Google-Smtp-Source: AKy350baBuLFoDL6dTLHo8N9DcJGnnvarEUOSLvi+u2GONsBq5/4u9NgF9Gejms6x5qeKN4B4rq7fak2/O9S3xQEQDE=
-X-Received: by 2002:a1f:4349:0:b0:43f:cc0e:6eae with SMTP id
- q70-20020a1f4349000000b0043fcc0e6eaemr533384vka.10.1682060257462; Thu, 20 Apr
- 2023 23:57:37 -0700 (PDT)
+        bh=LSYmFIBvo/39//HYsPHxDg04iiAQgWsffOlw6b/gJqc=;
+        b=lyIpIqs78m0n7Mk610s3CYgOdAJYEhGhsFIAkK1Q00w6EESwutw+Rv7XV48ceFduhM
+         JIZxlf5GXNQxPLiWctaHNmB+lYv2QKOpstp9GBW27z8h3P6cJrriA9ZCRIPF9BlvW0u6
+         oPFsvExiNlne/Ie/qXHNXzWZBSXn0JZVABT+TDcRyKdZrXXOJs+Ej4bRTIauSRFahR2A
+         TSmDgyldeO4fg0hpKPSnMgke6FX6XZi5RgioyV/3qzK2Nw+G/8iVWY1beIr693tw/XJt
+         Y+kN35JaXt4WRIZpQICNyZ3VAsne2acho474nvkGt3sFXnQpFjUbpfzPyqcxImUmddt8
+         lwrg==
+X-Gm-Message-State: AAQBX9d3g4m98QYGpwLL1uYlMjiBaE7OTV4XBWGe8iDp3hboEyaikCo5
+	dRgnlY0UtIKlUnpttU7lk8XV7/EciE9Gw+VmIJ7O3A==
+X-Google-Smtp-Source: AKy350acAl/SE2HRNGSc35n0Xobw7Q6eRphLA9qWh3FvDA1yrtZsodgQn6llJUsD9hRFeXzrI4cIXFlpeq/s5aOrZfI=
+X-Received: by 2002:a67:b10b:0:b0:42c:79a7:f2ed with SMTP id
+ w11-20020a67b10b000000b0042c79a7f2edmr2164074vsl.34.1682060848155; Fri, 21
+ Apr 2023 00:07:28 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230420094433.42794-1-angelogioacchino.delregno@collabora.com> <20230420094433.42794-4-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230420094433.42794-4-angelogioacchino.delregno@collabora.com>
+References: <20230420094433.42794-1-angelogioacchino.delregno@collabora.com> <20230420094433.42794-5-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230420094433.42794-5-angelogioacchino.delregno@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 21 Apr 2023 14:57:26 +0800
-Message-ID: <CAGXv+5GXuvw+o=JEjLP+hkKzL=stzmEHWZ18N2RJDbcWeioxnQ@mail.gmail.com>
-Subject: Re: [PATCH 3/5] arm64: dts: mediatek: cherry: Configure eDP and
- internal display
+Date: Fri, 21 Apr 2023 15:07:17 +0800
+Message-ID: <CAGXv+5Fiqpzn-M2yEGSETCyReGJRnTk45wrOyNBi9k=qymOW1Q@mail.gmail.com>
+Subject: Re: [PATCH 4/5] arm64: dts: mediatek: cherry: Enable PCI-Express
+ ports for WiFi
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: matthias.bgg@gmail.com, robh+dt@kernel.org, 
 	krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org, 
@@ -72,8 +72,9 @@ Cc: matthias.bgg@gmail.com, robh+dt@kernel.org,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230420_235738_823773_439C02B5 
-X-CRM114-Status: GOOD (  13.02  )
+X-CRM114-CacheID: sfid-20230421_000729_785304_4BFDD5EF 
+X-CRM114-Status: UNSURE (   6.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,86 +92,12 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Thu, Apr 20, 2023 at 5:45=E2=80=AFPM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> Add the required nodes to enable the DisplayPort interface, connected
-> to the Embedded DisplayPort port, where we have an internal display.
+> On the Cherry platform, a MT7621 WiFi+Bluetooth combo is connected
+> over PCI-Express (for WiFi) and USB (for BT): enable the PCIe ports
+> to enable enumerating this chip.
 >
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
 abora.com>
-> ---
->  .../boot/dts/mediatek/mt8195-cherry.dtsi      | 32 +++++++++++++++++++
->  1 file changed, 32 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64=
-/boot/dts/mediatek/mt8195-cherry.dtsi
-> index 918380697a9a..46f1c8091498 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> @@ -49,6 +49,18 @@ memory@40000000 {
->                 reg =3D <0 0x40000000 0 0x80000000>;
->         };
->
-> +       pp3300_disp_x: regulator-pp3300-disp-x {
-> +               compatible =3D "regulator-fixed";
-> +               regulator-name =3D "pp3300_disp_x";
-> +               regulator-min-microvolt =3D <3300000>;
-> +               regulator-max-microvolt =3D <3300000>;
 
-From the schematics:
-                  vin-supply =3D <&pp3300_z2>;
-
-Also, this is an RT9742. The datasheet says the typical enable time is
-2.1ms. For a bit of margin, I'd say we could model it as 2.5ms? So:
-
-                  regulator-enable-ramp-delay =3D <2500>;
-
-ChenYu
-
-> +               enable-active-high;
-> +               gpio =3D <&pio 55 GPIO_ACTIVE_HIGH>;
-> +               pinctrl-names =3D "default";
-> +               pinctrl-0 =3D <&panel_fixed_pins>;
-> +               regulator-always-on;
-> +       };
-> +
->         /* system wide LDO 3.3V power rail */
->         pp3300_z5: regulator-pp3300-ldo-z5 {
->                 compatible =3D "regulator-fixed";
-> @@ -290,6 +302,20 @@ port@1 {
->                         reg =3D <1>;
->                         edp_out: endpoint {
->                                 data-lanes =3D <0 1 2 3>;
-> +                               remote-endpoint =3D <&panel_in>;
-> +                       };
-> +               };
-> +       };
-> +
-> +       aux-bus {
-> +               panel {
-> +                       compatible =3D "edp-panel";
-> +                       power-supply =3D <&pp3300_disp_x>;
-> +                       backlight =3D <&backlight_lcd0>;
-> +                       port {
-> +                               panel_in: endpoint {
-> +                                       remote-endpoint =3D <&edp_out>;
-> +                               };
->                         };
->                 };
->         };
-> @@ -929,6 +955,12 @@ pins-cs {
->                 };
->         };
->
-> +       panel_fixed_pins: panel-pwr-default-pins {
-> +               pins-vreg-en {
-> +                       pinmux =3D <PINMUX_GPIO55__FUNC_GPIO55>;
-> +               };
-> +       };
-> +
->         pio_default: pio-default-pins {
->                 pins-wifi-enable {
->                         pinmux =3D <PINMUX_GPIO58__FUNC_GPIO58>;
-> --
-> 2.40.0
->
->
+Tested-by: Chen-Yu Tsai <wenst@chromium.org>
 
