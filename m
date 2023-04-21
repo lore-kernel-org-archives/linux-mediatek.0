@@ -4,72 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3F62C7618E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Apr 2023 11:30:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A24B1C7618E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Apr 2023 12:16:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zTnxtp6hN8hNECyGyeAIWXn7uB5lZFLas1G7S96mRtQ=; b=26ghiUlWPOV1Og/BO8cMFI0ECn
-	pyz3LvxYSphR5OyORHef+wNL4eZohiaDQgrF6KkHl7QlI93Z/ntJ6KKJgufrV5NhWuAUkUdPXhy1w
-	KcTIdcUuyQUpdCq9thCfM+jWthSjVVdFsuT2+tqeFEahN7Ex/p+Ks8qSLY13A/ShOxvqvN5cTUsBn
-	qrGA7z3C0tcukx58hriGMx9aczpnu74O0L7PPRwDet/hyJ0Tdpf2wjncHSDUIQY7TUjEpT1vJR5mF
-	tL9Hzr410VqMi1QXC3MlTi/bpH4wJofMQVL+1Q+NwVtpp4BUDOnv99uyy4XeV9GOs5zVd7WsxJMw6
-	TOsrjpOg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=m0I1sPCdYN0SbjWyDhk4aoTpPCovY0PSzi4d7N1NDJg=; b=mr1g9qi4cOw6ZLhDiZw+7ntkfZ
+	HSsOROvp1PY+oVpnR8QesNdNHCiiVh4Y5JJzQPPMRkaiMGLz348xzJCV1XeoJlAbgMU6p8Umzcn/4
+	Kp1smkkp9eOHftohdE16n5QWphB4ajWPsGi8kWdOoCO0pfVyCXgDkqrjWLGV8HFw6qUQ+rDNxBqLu
+	OqjFZcFHMZ1IHZ+JIfxvn82Fm4unf5Q0xUTCQ9PTp2kYaC35oLSZBDz9qNfRoJ+YaQpAXd2bcYrUx
+	Tsc1gZNglNFgGDAApM2YTiToUAfisXi+NxTrQtYqC5mnbkI4eIeeJXCzd8rl8ptFkYa9vYYsrkeCP
+	HrEYsBqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppoyc-00AiaV-1W;
-	Fri, 21 Apr 2023 11:30:54 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pppgD-00Aq6S-35;
+	Fri, 21 Apr 2023 12:15:57 +0000
+Received: from mail-pf1-f179.google.com ([209.85.210.179])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppnrm-00ATDT-32;
-	Fri, 21 Apr 2023 10:19:48 +0000
-X-UUID: 0956fec6e02e11ed8687db9d93187ff1-20230421
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=zTnxtp6hN8hNECyGyeAIWXn7uB5lZFLas1G7S96mRtQ=;
-	b=rCV3cqgnQjxmsar9+rDUtm5E3PAZoONcHmVEKpiDeYhRm2Q7mQUfFvf2s9jeVDxteKYf8AT855kZIChGKJwM3uzlBquiGKtJhGw2baHsk1umcZDZjDyiEZ7+YJQUAF1KA2WRoJgxjp7R8xwpqp+d/LYhEPVSW/3YPwQ5htVkps0=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:71b8609c-41ac-4760-a8c8-6c4b273332e5,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:120426c,CLOUDID:2f17b9eb-db6f-41fe-8b83-13fe7ed1ef52,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: 0956fec6e02e11ed8687db9d93187ff1-20230421
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <trevor.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1795868208; Fri, 21 Apr 2023 03:19:44 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Fri, 21 Apr 2023 18:09:07 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Fri, 21 Apr 2023 18:09:07 +0800
-From: Trevor Wu <trevor.wu@mediatek.com>
-To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
-	<perex@perex.cz>, <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
-	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>
-CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>
-Subject: [PATCH v2 2/7] ASoC: mediatek: mt8188: complete set_tdm_slot function
-Date: Fri, 21 Apr 2023 18:09:00 +0800
-Message-ID: <20230421100905.28045-3-trevor.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230421100905.28045-1-trevor.wu@mediatek.com>
-References: <20230421100905.28045-1-trevor.wu@mediatek.com>
+	id 1ppoYE-00Afw3-2t
+	for linux-mediatek@lists.infradead.org;
+	Fri, 21 Apr 2023 11:03:40 +0000
+Received: by mail-pf1-f179.google.com with SMTP id d2e1a72fcca58-63b52ad6311so2590906b3a.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 21 Apr 2023 04:03:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1682075017; x=1684667017;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=m0I1sPCdYN0SbjWyDhk4aoTpPCovY0PSzi4d7N1NDJg=;
+        b=mc1zwRaK4FAH7g6eSmoxngIMQ+5NXpyIKsfLdgr5W8xUrUlq9W7TbZkKtInZhi+DfH
+         +otn/a7Mxi6OW2qTj0rtw+7PHVob4Hzgl+wa8tfdAwGGhx5SPWFzGlHv/cNk6hzFBOUP
+         y+jq2HY6gxEhJJlakAZcN6zK4wg1LXE4/we4Y=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1682075017; x=1684667017;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=m0I1sPCdYN0SbjWyDhk4aoTpPCovY0PSzi4d7N1NDJg=;
+        b=dwt0Y8uJbEVkXdwFkIHZVhcVADspBFEaj6b/czazvN71JblGY2vNVElusZhXLtQ2dE
+         tcd1qXRP+JcCLYzpBAmiygmV28ltvpJLRv/JmYt1hQlymFgKovpkTS5rRMhq5NS/J7qh
+         thcriNrjo+GAIT/+bfa11uMHm4/T4e3VL7C1iueyQwDgXRFJmrf/2K6rWbusT0B1T38e
+         JOKKf2kMCxzsei58KnjtQ/Ud0Ft4OKdHb3Wem/QQQMK7Gd2VR9IT47jzNr8vUUhLqfoQ
+         ACWXprejcw/eXxJHLu6iSwbUSVdDjaxWpikeGqRDqhwMpsyF7lKyCZWu2gy8qNoQS7dC
+         Vu4w==
+X-Gm-Message-State: AAQBX9dUXUBjpdOTyv19Gzau/syaKJ8sfD1OWfEfrfS0CePkW4i5QVSQ
+	IXJsKiL3zAvQMcjtX4sVgotRdg==
+X-Google-Smtp-Source: AKy350bwnnxLR6pYSUpKWU0Q4r+z54dq3jUrc4qFIiJZ2/JeH/C++AywzL44Oskd0E07kjJUUHSwww==
+X-Received: by 2002:a05:6a20:4323:b0:ef:acca:9e19 with SMTP id h35-20020a056a20432300b000efacca9e19mr6865535pzk.14.1682075017705;
+        Fri, 21 Apr 2023 04:03:37 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:47fa:fa8d:a971:f6ac])
+        by smtp.gmail.com with ESMTPSA id fb31-20020a056a002d9f00b005e5b11335b3sm2801286pfb.57.2023.04.21.04.03.35
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 21 Apr 2023 04:03:37 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Subject: [PATCH] arm64: dts: mediatek: mt8192-asurada-hayato: Enable Bluetooth
+Date: Fri, 21 Apr 2023 19:03:27 +0800
+Message-ID: <20230421110327.2395804-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.40.0.634.g4ca3ef3211-goog
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230421_031946_989065_A29749E8 
-X-CRM114-Status: GOOD (  13.15  )
+X-CRM114-CacheID: sfid-20230421_040338_966040_D7157A40 
+X-CRM114-Status: GOOD (  10.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,69 +92,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-User can configures slot number of TDM mode via set_tdm_slot callback.
+Hayato's Realtek WiFi/BT module has it's Bluetooth function wired to
+UART1.
 
-Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+Add and enable the relevant device nodes for it.
+
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- sound/soc/mediatek/mt8188/mt8188-dai-etdm.c | 21 ++++++++++++++++++---
- 1 file changed, 18 insertions(+), 3 deletions(-)
+ .../dts/mediatek/mt8192-asurada-hayato-r1.dts | 80 +++++++++++++++++++
+ 1 file changed, 80 insertions(+)
 
-diff --git a/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c b/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c
-index 7a37752d4244..fddecf5bf7c6 100644
---- a/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c
-+++ b/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c
-@@ -1909,6 +1909,10 @@ static int mtk_dai_etdm_hw_params(struct snd_pcm_substream *substream,
- 		if (!is_valid_etdm_dai(mst_dai_id))
- 			return -EINVAL;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts b/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts
+index 43a823990a92..6a7d7870525b 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts
+@@ -40,9 +40,89 @@ CROS_STD_MAIN_KEYMAP
+ 	>;
+ };
  
-+		mst_etdm_data = afe_priv->dai_priv[mst_dai_id];
-+		if (mst_etdm_data->slots)
-+			channels = mst_etdm_data->slots;
++&pio {
++	bt_pins: bt-pins {
++		bt_kill: pins-bt-kill {
++			pinmux = <PINMUX_GPIO144__FUNC_GPIO144>; /* BT_KILL_L */
++			output-low;
++		};
 +
- 		ret = mtk_dai_etdm_mclk_configure(afe, mst_dai_id);
- 		if (ret)
- 			return ret;
-@@ -1918,7 +1922,6 @@ static int mtk_dai_etdm_hw_params(struct snd_pcm_substream *substream,
- 		if (ret)
- 			return ret;
- 
--		mst_etdm_data = afe_priv->dai_priv[mst_dai_id];
- 		for (i = 0; i < mst_etdm_data->cowork_slv_count; i++) {
- 			slv_dai_id = mst_etdm_data->cowork_slv_id[i];
- 			ret = mtk_dai_etdm_configure(afe, rate, channels,
-@@ -1931,6 +1934,12 @@ static int mtk_dai_etdm_hw_params(struct snd_pcm_substream *substream,
- 				return ret;
- 		}
- 	} else {
-+		if (!is_valid_etdm_dai(dai->id))
-+			return -EINVAL;
-+		mst_etdm_data = afe_priv->dai_priv[dai->id];
-+		if (mst_etdm_data->slots)
-+			channels = mst_etdm_data->slots;
++		bt_wake: pins-bt-wake {
++			pinmux = <PINMUX_GPIO22__FUNC_GPIO22>;  /* bt to wake ap */
++			bias-pull-up;
++		};
 +
- 		ret = mtk_dai_etdm_mclk_configure(afe, dai->id);
- 		if (ret)
- 			return ret;
-@@ -2073,10 +2082,16 @@ static int mtk_dai_etdm_set_tdm_slot(struct snd_soc_dai *dai,
- 	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
- 	struct mt8188_afe_private *afe_priv = afe->platform_priv;
- 	struct mtk_dai_etdm_priv *etdm_data;
-+	int dai_id;
- 
--	if (!is_valid_etdm_dai(dai->id))
-+	if (is_cowork_mode(dai))
-+		dai_id = get_etdm_cowork_master_id(dai);
-+	else
-+		dai_id = dai->id;
++		ap_wake_bt: pins-ap-wake-bt {
++			pinmux = <PINMUX_GPIO168__FUNC_GPIO168>; /* AP_WAKE_BT_H */
++			output-low;
++		};
++	};
 +
-+	if (!is_valid_etdm_dai(dai_id))
- 		return -EINVAL;
--	etdm_data = afe_priv->dai_priv[dai->id];
-+	etdm_data = afe_priv->dai_priv[dai_id];
- 
- 	dev_dbg(dai->dev, "%s id %d slot_width %d\n",
- 		__func__, dai->id, slot_width);
++	uart1_pins: uart1-pins {
++		pins-rx {
++			pinmux = <PINMUX_GPIO94__FUNC_URXD1>;
++			input-enable;
++			bias-pull-up;
++		};
++
++		pins-tx {
++			pinmux = <PINMUX_GPIO95__FUNC_UTXD1>;
++		};
++
++		pins-cts {
++			pinmux = <PINMUX_GPIO166__FUNC_UCTS1>;
++			input-enable;
++		};
++
++		pins-rts {
++			pinmux = <PINMUX_GPIO167__FUNC_URTS1>;
++			output-enable;
++		};
++	};
++
++	uart1_pins_sleep: uart1-pins-sleep {
++		pins-rx {
++			pinmux = <PINMUX_GPIO94__FUNC_GPIO94>;
++			input-enable;
++			bias-pull-up;
++		};
++		pins-tx {
++			pinmux = <PINMUX_GPIO95__FUNC_UTXD1>;
++		};
++		pins-cts {
++			pinmux = <PINMUX_GPIO166__FUNC_UCTS1>;
++			input-enable;
++		};
++		pins-rts {
++			pinmux = <PINMUX_GPIO167__FUNC_URTS1>;
++			output-enable;
++		};
++	};
++};
++
+ &touchscreen {
+ 	compatible = "hid-over-i2c";
+ 	post-power-on-delay-ms = <10>;
+ 	hid-descr-addr = <0x0001>;
+ 	vdd-supply = <&pp3300_u>;
+ };
++
++&uart1 {
++	status = "okay";
++	pinctrl-names = "default", "sleep";
++	pinctrl-0 = <&uart1_pins>;
++	pinctrl-1 = <&uart1_pins_sleep>;
++	/delete-property/ interrupts;
++	interrupts-extended = <&gic GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH 0>,
++			      <&pio 94 IRQ_TYPE_EDGE_FALLING>;
++
++	bluetooth: bluetooth {
++		compatible = "realtek,rtl8822cs-bt";
++		pinctrl-names = "default";
++		pinctrl-0 = <&bt_pins>;
++
++		enable-gpios = <&pio 144 GPIO_ACTIVE_HIGH>;
++		device-wake-gpios = <&pio 168 GPIO_ACTIVE_HIGH>;
++		host-wake-gpios = <&pio 22 GPIO_ACTIVE_LOW>;
++	};
++};
 -- 
-2.18.0
+2.40.0.634.g4ca3ef3211-goog
 
 
