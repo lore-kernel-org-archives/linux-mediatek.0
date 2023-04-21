@@ -4,73 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46117C77B71
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Apr 2023 15:17:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82900C77B71
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Apr 2023 15:23:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vgIIApKncp2FGzYrfgVqy8Lu8lTrBgKXnpjMVL+JTh8=; b=r63GOtGX4U7sAB4ltOtrmZZPHj
-	GwdZ+Uomdar6k50NChH5tt7mHbCOfnJGkhOZ0kb8dRYuu0O8MvwnfK3k3UkUKh5U+cKuQxizv8Rwf
-	w3dGuANA/mVAmiGvZNfiPNBsXtRyiqwoVR/tFqTlhNH5tQhzaQNIw5eGJ+4Fk3Tx7GR5kJd6O2OWk
-	QLt73Zla+Fu5hfxMTICe7q86Y0tYee96k7rIhtfGDg0Uj1j3pWJSEQqcSEJX8DMULQxUlmt2kZQKv
-	9iKaYlO5OEDdD+/hcsqxBU/5GVMnLEFjFTMQmaQiFy1i5yziPKpB5kp6bc9rnsAKpRrz64FmNmmM2
-	6a9BFDkg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6yU3bVLWmD/cnrQZoacLrvOAIiB6bsX34ZPpyHC6aGc=; b=0smDWKQUHLO0tbpxk4aL9CV4YN
+	97nP55tGs5JtrxJ3xGKiS7TK6+WIjRRYLodBVh7L1oCnWt6h6r+P/s5cJQY3XWEmnIthdWLjLJsv7
+	G8wM6C6sHvpwInQ5xVkMzejmKynj3Ztgzfh/qoNnBZRfADxRLVOMAG/yjMxMromw4vAIVRC6uhnpw
+	esC3oRkoqXU2wB8sdVyOuiucifmqIBrEjDcYSF7+feCPujxmpIu0H9M4m/FLMZXjBfVLMPpzRLd+f
+	5AyU1qeB4HJZP2yoiUhWGBn0wXgcPN/hxFHbLawbYYnXyPVAxURMuWZMUTBm6ncxPDVV98qpT8Pde
+	5wE4JLRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppsVe-00BFs6-0X;
-	Fri, 21 Apr 2023 15:17:14 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1ppsbA-00BGSU-3D;
+	Fri, 21 Apr 2023 15:22:57 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppsVZ-00BFr9-0I;
-	Fri, 21 Apr 2023 15:17:11 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 7B6BD6516C;
-	Fri, 21 Apr 2023 15:17:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4DE69C4339B;
-	Fri, 21 Apr 2023 15:17:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1682090227;
-	bh=uGmykEQ+sAUoIFdOX/TTQ1KRjOgr/SSZzJwxckXmszI=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=IcxyV3b39cNIKWPBuzx424A3OyD19EjqnGKaF0Q1mW0RDMEQzJbj2GHFmUqNrT4UQ
-	 SSpOr2BydgVm7eQ6X6qglffTWP+2IRgkmq3sf9obij7+MllWwac3PLzTz7liL7IV4G
-	 mYp7w7zpW22kA3QzfKEFkDMf9+6uICkz+qOi7RItHVllpAZlA13PLr5FFy3hsMrYQw
-	 OO+EBrv9y4jeRRL/p/tB1AS3/wobG4vVIsUDyut/EW3sdZT/2Ptzzb3I6xM0F+sf8Y
-	 OeJ1leh82j8r97ZwOIDz2Z6pkkr7TFjrVBUJ/MHWTX2JiB4YFmUNSSKwwPhQaoNs73
-	 rnRV4XzjdPeMg==
-Received: by mail-lf1-f54.google.com with SMTP id 2adb3069b0e04-4eed6ddcae1so8074807e87.0;
-        Fri, 21 Apr 2023 08:17:07 -0700 (PDT)
-X-Gm-Message-State: AAQBX9fkRMYuF6vPIb8SAr5FkRa0IA846oLymbSRDFvN3brB0c4QnoZS
-	1ECIuvpULWB3OOu2ykYFUQhIXRW1IdUDETzX5A==
-X-Google-Smtp-Source: AKy350ahkWsBaP7t9IXGI5kl9NyoFnRYHN6184HWY8QF3H5T0Hfl4AGmM1AI5vogctWKfLhyxnzvmuZOFzFcfX/AKfM=
-X-Received: by 2002:a05:6512:401a:b0:4eb:4440:e12 with SMTP id
- br26-20020a056512401a00b004eb44400e12mr2888376lfb.15.1682090225254; Fri, 21
- Apr 2023 08:17:05 -0700 (PDT)
+	id 1ppsb5-00BGR1-0y;
+	Fri, 21 Apr 2023 15:22:53 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1ppsaS-0001Qt-1f;
+	Fri, 21 Apr 2023 17:22:12 +0200
+Date: Fri, 21 Apr 2023 16:22:07 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: arinc9.unal@gmail.com
+Subject: Re: [RFC PATCH net-next 03/22] net: dsa: mt7530: properly support
+ MT7531AE and MT7531BE
+Message-ID: <ZEKqH2oELsJKANkh@makrotopia.org>
+References: <20230421143648.87889-1-arinc.unal@arinc9.com>
+ <20230421143648.87889-4-arinc.unal@arinc9.com>
 MIME-Version: 1.0
-References: <20230321111448.270110-1-angelogioacchino.delregno@collabora.com> <fcb6638b-0298-74b7-c375-f563a8115596@collabora.com>
-In-Reply-To: <fcb6638b-0298-74b7-c375-f563a8115596@collabora.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Fri, 21 Apr 2023 23:16:53 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_9MGCNMPzt7os0xJhxFTObL46VJSrA_ovOrRirFTqvBMQ@mail.gmail.com>
-Message-ID: <CAAOTY_9MGCNMPzt7os0xJhxFTObL46VJSrA_ovOrRirFTqvBMQ@mail.gmail.com>
-Subject: Re: [PATCH] drm/mediatek: Clarify/finish documentation for some
- driver structures
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chunkuang.hu@kernel.org, lee@kernel.org, p.zabel@pengutronix.de, 
-	airlied@gmail.com, daniel@ffwll.ch, matthias.bgg@gmail.com, 
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	kernel@collabora.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230421143648.87889-4-arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230421_081709_211111_D40CE3ED 
-X-CRM114-Status: GOOD (  25.89  )
+X-CRM114-CacheID: sfid-20230421_082251_505004_FEC69179 
+X-CRM114-Status: GOOD (  34.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,193 +59,239 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Eric Dumazet <edumazet@google.com>, erkin.bozoglu@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Angelo:
+On Fri, Apr 21, 2023 at 05:36:29PM +0300, arinc9.unal@gmail.com wrote:
+> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+> 
+> Introduce the p5_sgmii pointer to store the information for whether port 5
+> has got SGMII or not. Print "found MT7531AE" if it's got it, print "found
+> MT7531BE" if it hasn't.
+> 
+> Move the comment about MT7531AE and MT7531BE to mt7531_setup(), where the
+> switch is identified.
+> 
+> Get rid of mt7531_dual_sgmii_supported() now that priv->p5_sgmii stores the
+> information. Address the code where mt7531_dual_sgmii_supported() is used.
+> 
+> Get rid of mt7531_is_rgmii_port() which just prints the opposite of
+> priv->p5_sgmii.
+> 
+> Remove P5_INTF_SEL_GMAC5_SGMII. The p5_interface_select enum is supposed to
+> represent the mode that port 5 is used in, not the hardware information of
+> port 5. Set p5_intf_sel to P5_INTF_SEL_GMAC5 instead, if port 5 is not
+> dsa_is_unused_port().
+> 
+> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> ---
+>  drivers/net/dsa/mt7530-mdio.c |  7 ++---
+>  drivers/net/dsa/mt7530.c      | 49 +++++++++++++++--------------------
+>  drivers/net/dsa/mt7530.h      |  6 +++--
+>  3 files changed, 27 insertions(+), 35 deletions(-)
+> 
+> diff --git a/drivers/net/dsa/mt7530-mdio.c b/drivers/net/dsa/mt7530-mdio.c
+> index 088533663b83..fa3ee85a99c1 100644
+> --- a/drivers/net/dsa/mt7530-mdio.c
+> +++ b/drivers/net/dsa/mt7530-mdio.c
+> @@ -81,17 +81,14 @@ static const struct regmap_bus mt7530_regmap_bus = {
+>  };
+>  
+>  static int
+> -mt7531_create_sgmii(struct mt7530_priv *priv, bool dual_sgmii)
+> +mt7531_create_sgmii(struct mt7530_priv *priv)
+>  {
+>  	struct regmap_config *mt7531_pcs_config[2] = {};
+>  	struct phylink_pcs *pcs;
+>  	struct regmap *regmap;
+>  	int i, ret = 0;
+>  
+> -	/* MT7531AE has two SGMII units for port 5 and port 6
+> -	 * MT7531BE has only one SGMII unit for port 6
+> -	 */
+> -	for (i = dual_sgmii ? 0 : 1; i < 2; i++) {
+> +	for (i = priv->p5_sgmii ? 0 : 1; i < 2; i++) {
+>  		mt7531_pcs_config[i] = devm_kzalloc(priv->dev,
+>  						    sizeof(struct regmap_config),
+>  						    GFP_KERNEL);
+> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> index c680873819b0..edc34be745b2 100644
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+> @@ -473,15 +473,6 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
+>  	return 0;
+>  }
+>  
+> -static bool mt7531_dual_sgmii_supported(struct mt7530_priv *priv)
+> -{
+> -	u32 val;
+> -
+> -	val = mt7530_read(priv, MT7531_TOP_SIG_SR);
+> -
+> -	return (val & PAD_DUAL_SGMII_EN) != 0;
+> -}
+> -
+>  static int
+>  mt7531_pad_setup(struct dsa_switch *ds, phy_interface_t interface)
+>  {
+> @@ -496,7 +487,7 @@ mt7531_pll_setup(struct mt7530_priv *priv)
+>  	u32 xtal;
+>  	u32 val;
+>  
+> -	if (mt7531_dual_sgmii_supported(priv))
+> +	if (priv->p5_sgmii)
+>  		return;
+>  
+>  	val = mt7530_read(priv, MT7531_CREV);
+> @@ -907,8 +898,6 @@ static const char *p5_intf_modes(unsigned int p5_interface)
+>  		return "PHY P4";
+>  	case P5_INTF_SEL_GMAC5:
+>  		return "GMAC5";
+> -	case P5_INTF_SEL_GMAC5_SGMII:
+> -		return "GMAC5_SGMII";
+>  	default:
+>  		return "unknown";
+>  	}
+> @@ -2440,6 +2429,18 @@ mt7531_setup(struct dsa_switch *ds)
+>  		return -ENODEV;
+>  	}
+>  
+> +	/* MT7531AE has got two SGMII units. One for port 5, one for port 6.
+> +	 * MT7531BE has got only one SGMII unit which is for port 6.
+> +	 */
+> +	val = mt7530_read(priv, MT7531_TOP_SIG_SR);
+> +
+> +	if ((val & PAD_DUAL_SGMII_EN) != 0) {
+> +		priv->p5_sgmii = true;
+> +		dev_info(priv->dev, "found MT7531AE\n");
+> +	} else {
+> +		dev_info(priv->dev, "found MT7531BE\n");
 
-AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> =E6=96=
-=BC
-2023=E5=B9=B44=E6=9C=8819=E6=97=A5 =E9=80=B1=E4=B8=89 =E4=B8=8B=E5=8D=882:1=
-6=E5=AF=AB=E9=81=93=EF=BC=9A
->
-> Il 21/03/23 12:14, AngeloGioacchino Del Regno ha scritto:
-> > The documentation for some of the driver structures in mediatek-drm
-> > was set to be kerneldoc but some code additions didn't actually update
-> > the comments accordingly and this caused triggering some warnings.
-> >
-> > Add comments for the remaining undocumented entries; while at it, also
-> > clarify some acronyms for various display HW blocks and fix some commen=
-t
-> > blocks to actually get parsed as kerneldoc.
-> >
-> > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@co=
-llabora.com>
->
-> Hello CK,
-> I just noticed that this patch is getting stale and forgotten.
->
-> Please take a look at it, as this solves kerneldoc warnings during kernel=
- build.
+I don't think dev_info is useful here for regular users.
+If you really want this output, use dev_dbg to reduce log pollution.
+Imho completely removing the else branch and only silently
+setting priv->p5_sgmii is sufficient, as users can also turn on
+dyndbg for drivers/net/pcs/pcs-mtk-lynxi.c and will then be informed
+about the created SGMII/1000Base-X/2500Base-X PCS instances.
 
-There is conflict when I apply this patch. Please base on
-mediatek-drm-next to send patch.
 
-Regards,
-Chun-Kuang.
-
->
-> Regards,
-> Angelo
->
-> > --- >   drivers/gpu/drm/mediatek/mtk_disp_aal.c   |  8 +++++---
-> >   drivers/gpu/drm/mediatek/mtk_disp_ccorr.c |  8 +++++---
-> >   drivers/gpu/drm/mediatek/mtk_disp_color.c | 11 +++++++----
-> >   drivers/gpu/drm/mediatek/mtk_disp_gamma.c |  8 ++++++--
-> >   drivers/gpu/drm/mediatek/mtk_disp_ovl.c   | 13 +++++++++----
-> >   drivers/gpu/drm/mediatek/mtk_disp_rdma.c  | 12 +++++++++---
-> >   6 files changed, 41 insertions(+), 19 deletions(-)
-> >
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_aal.c b/drivers/gpu/drm/=
-mediatek/mtk_disp_aal.c
-> > index 434e8a9ce8ab..12d1800c1d34 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-> > @@ -27,9 +27,11 @@ struct mtk_disp_aal_data {
-> >   };
-> >
-> >   /**
-> > - * struct mtk_disp_aal - DISP_AAL driver structure
-> > - * @ddp_comp - structure containing type enum and hardware resources
-> > - * @crtc - associated crtc to report irq events to
-> > + * struct mtk_disp_aal - Display Adaptive Ambient Light driver structu=
-re
-> > + * @clk:      clock for DISP_AAL controller
-> > + * @regs:     MMIO registers base
-> > + * @cmdq_reg: CMDQ Client register
-> > + * @data:     platform specific data for DISP_AAL
-> >    */
-> >   struct mtk_disp_aal {
-> >       struct clk *clk;
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c b/drivers/gpu/dr=
-m/mediatek/mtk_disp_ccorr.c
-> > index 1773379b2439..b173aa058573 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-> > @@ -35,9 +35,11 @@ struct mtk_disp_ccorr_data {
-> >   };
-> >
-> >   /**
-> > - * struct mtk_disp_ccorr - DISP_CCORR driver structure
-> > - * @ddp_comp - structure containing type enum and hardware resources
-> > - * @crtc - associated crtc to report irq events to
-> > + * struct mtk_disp_ccorr - Display Color Correction driver structure
-> > + * @clk:      clock for DISP_CCORR block
-> > + * @regs:     MMIO registers base
-> > + * @cmdq_reg: CMDQ Client register
-> > + * @data:     platform specific data for DISP_CCORR
-> >    */
-> >   struct mtk_disp_ccorr {
-> >       struct clk *clk;
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_color.c b/drivers/gpu/dr=
-m/mediatek/mtk_disp_color.c
-> > index cac9206079e7..7884f4736b7c 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_disp_color.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_color.c
-> > @@ -31,10 +31,13 @@ struct mtk_disp_color_data {
-> >       unsigned int color_offset;
-> >   };
-> >
-> > -/*
-> > - * struct mtk_disp_color - DISP_COLOR driver structure
-> > - * @crtc: associated crtc to report irq events to
-> > - * @data: platform colour driver data
-> > +/**
-> > + * struct mtk_disp_color - DISP_COLOR (Display Color) driver structure
-> > + * @crtc:     associated crtc to report irq events to
-> > + * @clk:      clock for DISP_COLOR block
-> > + * @regs:     MMIO registers base
-> > + * @cmdq_reg: CMDQ Client register
-> > + * @data:     platform specific data for DISP_COLOR
-> >    */
-> >   struct mtk_disp_color {
-> >       struct drm_crtc                         *crtc;
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c b/drivers/gpu/dr=
-m/mediatek/mtk_disp_gamma.c
-> > index c844942603f7..7e748613fccb 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-> > @@ -31,8 +31,12 @@ struct mtk_disp_gamma_data {
-> >       bool lut_diff;
-> >   };
-> >
-> > -/*
-> > - * struct mtk_disp_gamma - DISP_GAMMA driver structure
-> > +/**
-> > + * struct mtk_disp_gamma - Display Gamma driver structure
-> > + * @clk:      clock for DISP_GAMMA block
-> > + * @regs:     MMIO registers base
-> > + * @cmdq_reg: CMDQ Client register
-> > + * @data:     platform data for DISP_GAMMA
-> >    */
-> >   struct mtk_disp_gamma {
-> >       struct clk *clk;
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/=
-mediatek/mtk_disp_ovl.c
-> > index 9d8c986700ee..00f2871fd1a4 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> > @@ -76,10 +76,15 @@ struct mtk_disp_ovl_data {
-> >       bool supports_afbc;
-> >   };
-> >
-> > -/*
-> > - * struct mtk_disp_ovl - DISP_OVL driver structure
-> > - * @crtc: associated crtc to report vblank events to
-> > - * @data: platform data
-> > +/**
-> > + * struct mtk_disp_ovl - Display Overlay driver structure
-> > + * @crtc:           associated crtc to report vblank events to
-> > + * @clk:            clock for DISP_OVL block
-> > + * @regs:           MMIO registers base
-> > + * @cmdq_reg:       CMDQ Client register
-> > + * @data:           platform data
-> > + * @vblank_cb:      vblank callback function
-> > + * @vblank_cb_data: pointer to data that will be passed to vblank_cb()
-> >    */
-> >   struct mtk_disp_ovl {
-> >       struct drm_crtc                 *crtc;
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm=
-/mediatek/mtk_disp_rdma.c
-> > index e8e337903b0d..74f4a0bce5cc 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-> > @@ -59,9 +59,15 @@ struct mtk_disp_rdma_data {
-> >       unsigned int fifo_size;
-> >   };
-> >
-> > -/*
-> > - * struct mtk_disp_rdma - DISP_RDMA driver structure
-> > - * @data: local driver data
-> > +/**
-> > + * struct mtk_disp_rdma - Display Read DMA driver structure
-> > + * @clk:            clock for DISP_RDMA block
-> > + * @regs:           MMIO registers base
-> > + * @cmdq_reg:       CMDQ Client register
-> > + * @data:           platform data
-> > + * @vblank_cb:      vblank callback function
-> > + * @vblank_cb_data: pointer to data that will be passed to vblank_cb()
-> > + * @fifo_size:      size of DISP_RDMA block's FIFO
-> >    */
-> >   struct mtk_disp_rdma {
-> >       struct clk                      *clk;
->
-> --
-> AngeloGioacchino Del Regno
-> Software Engineer
->
-> Collabora Ltd.
-> Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK
-> Registered in England & Wales, no. 5513718
->
+> +	}
+> +
+>  	/* all MACs must be forced link-down before sw reset */
+>  	for (i = 0; i < MT7530_NUM_PORTS; i++)
+>  		mt7530_write(priv, MT7530_PMCR_P(i), MT7531_FORCE_LNK);
+> @@ -2451,19 +2452,16 @@ mt7531_setup(struct dsa_switch *ds)
+>  
+>  	mt7531_pll_setup(priv);
+>  
+> -	if (mt7531_dual_sgmii_supported(priv)) {
+> -		priv->p5_intf_sel = P5_INTF_SEL_GMAC5_SGMII;
+> -
+> +	if (priv->p5_sgmii) {
+>  		/* Let ds->slave_mii_bus be able to access external phy. */
+>  		mt7530_rmw(priv, MT7531_GPIO_MODE1, MT7531_GPIO11_RG_RXD2_MASK,
+>  			   MT7531_EXT_P_MDC_11);
+>  		mt7530_rmw(priv, MT7531_GPIO_MODE1, MT7531_GPIO12_RG_RXD3_MASK,
+>  			   MT7531_EXT_P_MDIO_12);
+> -	} else {
+> -		priv->p5_intf_sel = P5_INTF_SEL_GMAC5;
+>  	}
+> -	dev_dbg(ds->dev, "P5 support %s interface\n",
+> -		p5_intf_modes(priv->p5_intf_sel));
+> +
+> +	if (!dsa_is_unused_port(ds, 5))
+> +		priv->p5_intf_sel = P5_INTF_SEL_GMAC5;
+>  
+>  	mt7530_rmw(priv, MT7531_GPIO_MODE0, MT7531_GPIO0_MASK,
+>  		   MT7531_GPIO0_INTERRUPT);
+> @@ -2523,11 +2521,6 @@ static void mt7530_mac_port_get_caps(struct dsa_switch *ds, int port,
+>  	}
+>  }
+>  
+> -static bool mt7531_is_rgmii_port(struct mt7530_priv *priv, u32 port)
+> -{
+> -	return (port == 5) && (priv->p5_intf_sel != P5_INTF_SEL_GMAC5_SGMII);
+> -}
+> -
+>  static void mt7531_mac_port_get_caps(struct dsa_switch *ds, int port,
+>  				     struct phylink_config *config)
+>  {
+> @@ -2540,7 +2533,7 @@ static void mt7531_mac_port_get_caps(struct dsa_switch *ds, int port,
+>  		break;
+>  
+>  	case 5: /* 2nd cpu port supports either rgmii or sgmii/8023z */
+> -		if (mt7531_is_rgmii_port(priv, port)) {
+> +		if (!priv->p5_sgmii) {
+>  			phy_interface_set_rgmii(config->supported_interfaces);
+>  			break;
+>  		}
+> @@ -2607,7 +2600,7 @@ static int mt7531_rgmii_setup(struct mt7530_priv *priv, u32 port,
+>  {
+>  	u32 val;
+>  
+> -	if (!mt7531_is_rgmii_port(priv, port)) {
+> +	if (priv->p5_sgmii) {
+>  		dev_err(priv->dev, "RGMII mode is not available for port %d\n",
+>  			port);
+>  		return -EINVAL;
+> @@ -2860,7 +2853,7 @@ mt7531_cpu_port_config(struct dsa_switch *ds, int port)
+>  
+>  	switch (port) {
+>  	case 5:
+> -		if (mt7531_is_rgmii_port(priv, port))
+> +		if (!priv->p5_sgmii)
+>  			interface = PHY_INTERFACE_MODE_RGMII;
+>  		else
+>  			interface = PHY_INTERFACE_MODE_2500BASEX;
+> @@ -3019,7 +3012,7 @@ mt753x_setup(struct dsa_switch *ds)
+>  		mt7530_free_irq_common(priv);
+>  
+>  	if (priv->create_sgmii) {
+> -		ret = priv->create_sgmii(priv, mt7531_dual_sgmii_supported(priv));
+> +		ret = priv->create_sgmii(priv);
+>  		if (ret && priv->irq)
+>  			mt7530_free_irq(priv);
+>  	}
+> diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+> index 703f8a528317..f58828577520 100644
+> --- a/drivers/net/dsa/mt7530.h
+> +++ b/drivers/net/dsa/mt7530.h
+> @@ -679,7 +679,6 @@ typedef enum {
+>  	P5_INTF_SEL_PHY_P0,
+>  	P5_INTF_SEL_PHY_P4,
+>  	P5_INTF_SEL_GMAC5,
+> -	P5_INTF_SEL_GMAC5_SGMII,
+>  } p5_interface_select;
+>  
+>  struct mt7530_priv;
+> @@ -749,6 +748,8 @@ struct mt753x_info {
+>   * @p6_interface:	Holding the current port 6 interface
+>   * @p5_interface:	Holding the current port 5 interface
+>   * @p5_intf_sel:	Holding the current port 5 interface select
+> + * @p5_sgmii:		Flag for distinguishing if port 5 of the MT7531 switch
+> + *			has got SGMII
+>   * @irq:		IRQ number of the switch
+>   * @irq_domain:		IRQ domain of the switch irq_chip
+>   * @irq_enable:		IRQ enable bits, synced to SYS_INT_EN
+> @@ -769,6 +770,7 @@ struct mt7530_priv {
+>  	phy_interface_t		p6_interface;
+>  	phy_interface_t		p5_interface;
+>  	p5_interface_select	p5_intf_sel;
+> +	bool			p5_sgmii;
+>  	u8			mirror_rx;
+>  	u8			mirror_tx;
+>  	struct mt7530_port	ports[MT7530_NUM_PORTS];
+> @@ -778,7 +780,7 @@ struct mt7530_priv {
+>  	int irq;
+>  	struct irq_domain *irq_domain;
+>  	u32 irq_enable;
+> -	int (*create_sgmii)(struct mt7530_priv *priv, bool dual_sgmii);
+> +	int (*create_sgmii)(struct mt7530_priv *priv);
+>  };
+>  
+>  struct mt7530_hw_vlan_entry {
+> -- 
+> 2.37.2
+> 
 
