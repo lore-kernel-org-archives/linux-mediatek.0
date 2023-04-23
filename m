@@ -4,82 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01230C77B60
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Apr 2023 15:08:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D510AC77B60
+	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Apr 2023 21:39:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=IuLX6n22q+dbXa0VFAcvggvBNepD8bsnQ2lqmRcCa0c=; b=I2JS5hTfgVpH5CRDDPUx81wIDL
-	b/SIi1YNt3VPsbWtDFAeuxPLzSeOp/SSfqppuIG33Y8HGhv7dnKau3KMlUCKqEDw2q0aUIrfJjYk+
-	DdpWuDH6VeRuKgcuHtICguCiwvF6Po5rOKfDhyYYYZe+Tbuz0dTb68mP9Y1zb8Z2frI7O0Ai4bsaO
-	LJ+fTnMS40Qwbh20JAvo2f2BR3RwWQXj/5pMGe0UQPgTM+761GmR556F42vI4HPxQEOxTlXA+A6Gf
-	6YzBfVlPyAa/AAjwIk+h+2VUnTumE8js4V7M7DOoXWt/xHVi0pCUV9jcE2oDM3URVet43aO+rHY3+
-	VeGWth0g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BBn3QEzegzb0p42nF9E4XKquKjHmcytH4/jiephNRUc=; b=SZLMwQU6lyQRKjSfs/XgDtznth
+	K+QMVbunMi6a1tt0QS4h2Rmi3DNGWOaHflrN0th1QoWym1WUygluDiz7XPkQyUXljkkI5SKxmznob
+	coXdPgzTr4CaLUeW89naY2Za5KqLJkjJziRYehFZQ4uDI+NwI1I71XzD4mVUhYICgfTwUHmfY+y4F
+	tiq2eRhi5Dh1ghVeuUCMmVJhV0C5L2iw2K43Q1mfEvM99r8kZDtGNK53bA0FXlpbDt7YpCQO0XGbe
+	rONycTkTy+HWgBqO4YFQvlDDu09SolziiwD2qqQ9zuahmcFUtUBR5TqCSAjJxGoMOZ8cXCGhWXzRc
+	oZxH3mAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pqbKR-00ERwk-0C;
-	Sun, 23 Apr 2023 15:08:39 +0000
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+	id 1pqhQW-00En6q-1m;
+	Sun, 23 Apr 2023 21:39:20 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pqbKN-00ERvc-2S
+	id 1pqhQT-00En5a-0W
 	for linux-mediatek@lists.infradead.org;
-	Sun, 23 Apr 2023 15:08:37 +0000
-Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-5050497df77so5169654a12.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 23 Apr 2023 08:08:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1682262508; x=1684854508;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=IuLX6n22q+dbXa0VFAcvggvBNepD8bsnQ2lqmRcCa0c=;
-        b=ljLj9ZrdHyUvR9noreY2cCdb6yGNNSBCGJYqjUt1XCpcsM4Kjax3u6xRTvQLDzwoY1
-         /WPxALxkg5TrwMzjTimoJ7miZMGEjWw85XKv5ipNlZKCMbtAXZN6B+XjRfTTsJeSGLz6
-         iLU4eC1g072IUshxzMlIzzQ6U7/9pztyXr9fTQJ5xw2Ns2oNza3GZBz4lJW1b8TefVfH
-         h3oK6N+toYbCoFH/P/4077Aw9b2j4Dy2n3+izM+P6zgTgWfIQezGQMmgMItgtgHIvBBA
-         IRCmHMq9mGmvuuYqgAYMAn/gk2jYpslPxe2AhOhCXGqNGDdkOhQQP9abwQW+IjeOn5Uq
-         R0Uw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682262508; x=1684854508;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=IuLX6n22q+dbXa0VFAcvggvBNepD8bsnQ2lqmRcCa0c=;
-        b=YGAKrcM5MOEgF1IX3c3PTmjgCGJgH1/1j4Z7F6zgTCqX02hjTMmldeeH+S6Bk5+9bR
-         Nom75p5Sqc7nxJil6wICNv7E8/hUtwwbOlpUc9KYt/9mEOMEyD2ygkfI9lGpcjnDeKV/
-         TLC2TdbVuR3Si1PBEmR26sUVzjrHP/wOvyUj91haV+9qkY8gCY5tuaPLdpGIY5vzS8bY
-         X0DHdhvL+E90QF7MeEhrnYjKFwf6lE9oIcIYRQHNGxCAcvLeriz7KIR21NhN30Xe+McO
-         hoj5ik2Ey9lJR+uvcvLehfkxy8B4dhMbb4VRNLk8yu16Iyt+HtwecPKu7/PmJblItgvT
-         nbmg==
-X-Gm-Message-State: AAQBX9dsyWX8i29F0IhAQ2x1MebkzlGGkp1Br7Lu44xW0Md9QhHxQBDm
-	jv6dt5uHEB6WTLOPjKJorOf2/A==
-X-Google-Smtp-Source: AKy350bDpsVMNhD58NOSG7sY6lnuKQeOJFhZMI5m9y6vPvn0snrtJoLgzwkjK0Y7Z2TUwtH2ccKERA==
-X-Received: by 2002:a05:6402:110b:b0:504:8905:5218 with SMTP id u11-20020a056402110b00b0050489055218mr10098234edv.1.1682262508503;
-        Sun, 23 Apr 2023 08:08:28 -0700 (PDT)
-Received: from krzk-bin.. ([2a02:810d:15c0:828:5d52:d466:d57f:118c])
-        by smtp.gmail.com with ESMTPSA id g18-20020a056402181200b004c2158e87e6sm3741393edy.97.2023.04.23.08.08.27
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 23 Apr 2023 08:08:28 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH] ARM: dts: en7523: add missing cache properties
-Date: Sun, 23 Apr 2023 17:08:24 +0200
-Message-Id: <20230423150824.118430-1-krzysztof.kozlowski@linaro.org>
-X-Mailer: git-send-email 2.34.1
+	Sun, 23 Apr 2023 21:39:18 +0000
+X-UUID: 487dca88e21f11ed8687db9d93187ff1-20230423
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=BBn3QEzegzb0p42nF9E4XKquKjHmcytH4/jiephNRUc=;
+	b=MrZHj8NRSFQ2rbnk46R1PKjS6CbsOfPXOQs9znxkKD/FAZ4oaROM8xY8YqLaKlVRkPXghwh+Qsbsn0OVywSIArcbNfWZ5400JiitIv6qZGC7+1YP5OfCvNY4UQd7hj5IOaP1+vqrVpgOV3ETZaFit+Oxzgnk65unCaYPRgHEGHw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22,REQID:aa8916b0-00ca-466b-9a80-72b676f442c5,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:95
+X-CID-INFO: VERSION:1.1.22,REQID:aa8916b0-00ca-466b-9a80-72b676f442c5,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTION
+	:quarantine,TS:95
+X-CID-META: VersionHash:120426c,CLOUDID:6ddff684-cd9c-45f5-8134-710979e3df0e,B
+	ulkID:230424053912QFIKJV3N,BulkQuantity:0,Recheck:0,SF:19|48|38|29|28|17,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+	,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: 487dca88e21f11ed8687db9d93187ff1-20230423
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <ryder.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 870550809; Sun, 23 Apr 2023 14:39:10 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 24 Apr 2023 05:39:08 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Mon, 24 Apr 2023 05:39:08 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH 2/2] wifi: mt76: connac: fix stats->tx_bytes calculation
+Date: Mon, 24 Apr 2023 05:39:06 +0800
+Message-ID: <b3cd45596943cf5a06b2e08e2fe732ab0b51311b.1682285873.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <16fa938373e3b145cb07a2c98d2428fea2abadba.1682285873.git.ryder.lee@mediatek.com>
+References: <16fa938373e3b145cb07a2c98d2428fea2abadba.1682285873.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230423_080835_806642_7543B347 
-X-CRM114-Status: UNSURE (   9.11  )
+X-CRM114-CacheID: sfid-20230423_143917_210049_431D7A8B 
+X-CRM114-Status: UNSURE (   9.63  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -95,31 +88,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-As all level 2 and level 3 caches are unified, add required
-cache-unified and cache-level properties to fix warnings like:
+The stats->tx_bytes shall subtract retry byte from tx byte.
 
-  en7523-evb.dtb: l2-cache0: 'cache-level' is a required property
-  en7523-evb.dtb: l2-cache0: 'cache-unified' is a required property
-
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Fixes: 43eaa3689507 (wifi: mt76: add PPDU based TxS support for WED device)
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- arch/arm/boot/dts/en7523.dtsi | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt76_connac2_mac.h | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c  | 3 ++-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm/boot/dts/en7523.dtsi b/arch/arm/boot/dts/en7523.dtsi
-index 7f839331a777..b523a868c4ad 100644
---- a/arch/arm/boot/dts/en7523.dtsi
-+++ b/arch/arm/boot/dts/en7523.dtsi
-@@ -81,6 +81,8 @@ cpu1: cpu@1 {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac2_mac.h b/drivers/net/wireless/mediatek/mt76/mt76_connac2_mac.h
+index a5ec0f631385..fabf637bdf7f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac2_mac.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac2_mac.h
+@@ -173,7 +173,7 @@ enum {
+ #define MT_TXS5_MPDU_TX_CNT		GENMASK(31, 23)
  
- 		L2_0: l2-cache0 {
- 			compatible = "cache";
-+			cache-level = <2>;
-+			cache-unified;
- 		};
- 	};
+ #define MT_TXS6_MPDU_FAIL_CNT		GENMASK(31, 23)
+-
++#define MT_TXS7_MPDU_RETRY_BYTE		GENMASK(22, 0)
+ #define MT_TXS7_MPDU_RETRY_CNT		GENMASK(31, 23)
  
+ /* RXD DW0 */
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
+index ee0fbfcd07d6..d39a3cc5e381 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
+@@ -608,7 +608,8 @@ bool mt76_connac2_mac_fill_txs(struct mt76_dev *dev, struct mt76_wcid *wcid,
+ 	/* PPDU based reporting */
+ 	if (FIELD_GET(MT_TXS0_TXS_FORMAT, txs) > 1) {
+ 		stats->tx_bytes +=
+-			le32_get_bits(txs_data[5], MT_TXS5_MPDU_TX_BYTE);
++			le32_get_bits(txs_data[5], MT_TXS5_MPDU_TX_BYTE) -
++			le32_get_bits(txs_data[7], MT_TXS7_MPDU_RETRY_BYTE);
+ 		stats->tx_packets +=
+ 			le32_get_bits(txs_data[5], MT_TXS5_MPDU_TX_CNT);
+ 		stats->tx_failed +=
 -- 
-2.34.1
+2.18.0
 
 
