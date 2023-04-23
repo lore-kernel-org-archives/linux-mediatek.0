@@ -4,60 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30F3FC77B60
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Apr 2023 12:47:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55B93C77B73
+	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Apr 2023 12:50:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WyFT1OE2/htKooqP1M5cdEY1eb4eAgd3c/gsT7iApcE=; b=KWm8DTIwuzQlgU
-	xYqvevEWYagSS0y6YT+nyTxJbEz/Fk6LVyHe2nWGclZ7DuEXUWKvyrfgIxz29TumYsU3fV87aLyns
-	tqeUSYRDwINbWCK7uWgxv2Z5I283YN8NmDPxJLxDc0KF9m0gT3+961+jCBklDFsOQGF6ChWEXJQlp
-	0SBaOKuRev52DcDNkfQQtAruASvxuazgDBsNaueKoCC9Exw2juj4tpQEltVIb5Gs0QZRhqVXfJn0C
-	cIrzldJpL5AsgqfEL9UG0jQ98HDYoG65fJtmGT8phFoqEU9l+qmzom77/3PiOHw2pEulc+V/Gh1i+
-	9PqiEH2MjuOCHOv5rFPQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ff0NfxhQnu8LLrD7EYe23V9dXb1Lq0Ktv9UwdB2G140=; b=Qu9RvGwdkCJ8x9A5Ty1xtVSjOJ
+	mWmFWkYIKJjY1bL4MEtill0LJPRjya92OC2j5w2InotZsxN6Cn7kGMSKmOz3rQSzPOEE5WkDju8eA
+	4oZd3P94K+7/srWBRFVZL8EMs6/DZPfsjFj6w+17A/kwP6XK+W880OD+7MmK64PRY2wlh+g8VrRGd
+	17J4gqJ6cKyTUXEsYR8Cvh6ntZSbUKdb6/Ae/B9bYnsZx2NfKt1f0u8Rn1u1whMEtmWZPqMYRs2rK
+	vXuCZ5479AaqC16hpryvldI5AMfanPGr1WARKglSFQtpCg7egkkgpIxJaItv0Kmr5+x7mrmDo/HYy
+	HSKZ4nKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pqZ7l-00EJoK-1y;
-	Sun, 23 Apr 2023 12:47:25 +0000
+	id 1pqZAc-00EK9C-1v;
+	Sun, 23 Apr 2023 12:50:22 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pqZ7g-00EJmw-0L;
-	Sun, 23 Apr 2023 12:47:21 +0000
+	id 1pqZAY-00EK7e-2U;
+	Sun, 23 Apr 2023 12:50:20 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id BB08860DEC;
-	Sun, 23 Apr 2023 12:47:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D6B9FC433EF;
-	Sun, 23 Apr 2023 12:47:14 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 2C66560EB8;
+	Sun, 23 Apr 2023 12:50:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 8B2A4C433D2;
+	Sun, 23 Apr 2023 12:50:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1682254038;
-	bh=eGIoQHOJZfoILARB2pz6hMBq1nDSmvzLHJKWEe0ma+w=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=T7mQuPTQFPWuWy1mJDy7UEmWdGrDE2z68wNTYlADK1cY+MHtDCBpyPlSLQa4/no5p
-	 q8b/8MVcD1U927TGdXuiNm8cIT4wPGJPms35oCY35Xik4tzPFlwETQdDQJjaXxS6J4
-	 jzmDMqOgTXKg1wgq4c+Hp2xN7cVeumCgFJ2v8U0ZNVRI7SsBO8rF1swtCaynXAMHEO
-	 jY9kYSBOM7JXLD64g0tBOUI+IPsLyGXzUJWKMkiiVSixWSbRTqoP/+Iv/sp878U2J9
-	 wldxbB2P6SEIuPqoxh+FHoC04X1o4iJ1Uu2rs/rqdTzU7wQRVgVxWuH/zob+INIpfu
-	 b/1MQtu4ds3Bw==
-Date: Sun, 23 Apr 2023 14:02:52 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Frank Wunderlich <linux@fw-web.de>
-Subject: Re: [PATCH v1 2/7] dt-bindings: iio: adc: Add support for MT7986
-Message-ID: <20230423140252.7b018c46@jic23-huawei>
-In-Reply-To: <20230421132047.42166-3-linux@fw-web.de>
-References: <20230421132047.42166-1-linux@fw-web.de>
-	<20230421132047.42166-3-linux@fw-web.de>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.37; x86_64-pc-linux-gnu)
+	s=k20201202; t=1682254217;
+	bh=0XtrEUR1rKRDtOBaE4iikDH8y7lfxm9ELVPwc7pzzWw=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=Nv25gNiN1wBjMxGYgUFvfAbNrvZBRAZwHoDHlCAIDjTb2WjzUqa+TficF7srYiUPe
+	 hfSWeG1xbBWFm/pXe6wEB5BajErzMq3A9pgLulZIMr6plG/NheHWgXWYDzuIho54/c
+	 GgwagxGXeDB96wFXF/gJIQdvFxqtRwvDJKpvZbvO9iu2OK7Wp4Gh5r+5jPRtOrFHrD
+	 Qp+/uXM1kkIcjVo/QXj2x53GJMzxsMiivdmLNepjYX6PNigcSEE+NPKp3e/XV36ChX
+	 h3Po8zhL81iieORMEXc5uRnM365n2Ho7EtMND3tJyZrGYi4KombEH+VTaQI8+nkI1q
+	 dn92sGky5Worg==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 6DD07E270E1;
+	Sun, 23 Apr 2023 12:50:17 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH] net: ethernet: mediatek: remove return value check of
+ `mtk_wed_hw_add_debugfs`
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id:  <168225421744.16046.7230758740526095778.git-patchwork-notify@kernel.org>
+Date: Sun, 23 Apr 2023 12:50:17 +0000
+References: <20230421151010.130695-1-silver_code@hust.edu.cn>
+In-Reply-To: <20230421151010.130695-1-silver_code@hust.edu.cn>
+To: Wang Zhang <silver_code@hust.edu.cn>
+Cc: nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
+ Mark-MC.Lee@mediatek.com, lorenzo@kernel.org, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ hust-os-kernel-patches@googlegroups.com, dzm91@hust.edu.cn,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230423_054720_217768_FEBD670F 
-X-CRM114-Status: GOOD (  16.83  )
+X-CRM114-CacheID: sfid-20230423_055018_853525_FBC58D0F 
+X-CRM114-Status: GOOD (  11.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,44 +78,33 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Lars-Peter Clausen <lars@metafoo.de>, Lala Lin <lala.lin@mediatek.com>, linux-iio@vger.kernel.org, Zhiyong Tao <zhiyong.tao@mediatek.com>, "Hui.Liu" <hui.liu@mediatek.com>, linux-kernel@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 21 Apr 2023 15:20:42 +0200
-Frank Wunderlich <linux@fw-web.de> wrote:
+Hello:
 
-> From: Frank Wunderlich <frank-w@public-files.de>
+This patch was applied to netdev/net.git (main)
+by David S. Miller <davem@davemloft.net>:
+
+On Fri, 21 Apr 2023 23:10:09 +0800 you wrote:
+> Smatch complains that:
+> mtk_wed_hw_add_debugfs() warn: 'dir' is an error pointer or valid
 > 
-> Add compatible string and specific clock property for mt7986.
+> Debugfs checks are generally not supposed to be checked
+> for errors and it is not necessary here.
 > 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-
-Given how trivial this is, I'll apply it without waiting for the DT maintainers
-to get to it.
-
-Applied to the togreg branch of iio.git and pushed out as testing for 0-day
-to take a look at it.
-
-Thanks,
-
-Jonathan
-
-> ---
->  .../devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml      | 1 +
->  1 file changed, 1 insertion(+)
+> fix it by just deleting the dead code.
 > 
-> diff --git a/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml b/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml
-> index 7f79a06e76f5..6168b44ea72c 100644
-> --- a/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml
-> +++ b/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml
-> @@ -26,6 +26,7 @@ properties:
->            - mediatek,mt2712-auxadc
->            - mediatek,mt6765-auxadc
->            - mediatek,mt7622-auxadc
-> +          - mediatek,mt7986-auxadc
->            - mediatek,mt8173-auxadc
->        - items:
->            - enum:
+> [...]
+
+Here is the summary with links:
+  - net: ethernet: mediatek: remove return value check of `mtk_wed_hw_add_debugfs`
+    https://git.kernel.org/netdev/net/c/b148b9abc844
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
