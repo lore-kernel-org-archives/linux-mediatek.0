@@ -4,68 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B14F6C77B73
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Apr 2023 12:30:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30F3FC77B60
+	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Apr 2023 12:47:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+AnNBXk3AZDPdvId2vFvC5gakmJE6N0aXsoxnXzo2hw=; b=N2ET+rbznDEzO7HLsawTQnskhE
-	JAM04XoHzlL8UgKmEgH+QoTdeA6NtygLu97tbDZZMF94xVcylU6oKsdT0iWNAjXW+DGHd9l4XdAC5
-	HV6xe5vfAlgwGUiTW++ot1nnxRAyf5ooC0wbdB1204wPnPXE4I2dNcX8j/9ag49/w10Lq4ClM7Ogh
-	QezDS53rgZMc7pLUvrXFJNYT+wRkRiU3FGLZ20roOz/sFDo0I1UKgDpEaJcAr2M9Luu4wh4xH1lMM
-	R9an3nLPNx74jX2bBmpWXJTzIfYSo+v89J8xRoyAMgslXMQSAxqKcprVFeXSrVBgcaq614duYSe12
-	jBbK5QjQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=WyFT1OE2/htKooqP1M5cdEY1eb4eAgd3c/gsT7iApcE=; b=KWm8DTIwuzQlgU
+	xYqvevEWYagSS0y6YT+nyTxJbEz/Fk6LVyHe2nWGclZ7DuEXUWKvyrfgIxz29TumYsU3fV87aLyns
+	tqeUSYRDwINbWCK7uWgxv2Z5I283YN8NmDPxJLxDc0KF9m0gT3+961+jCBklDFsOQGF6ChWEXJQlp
+	0SBaOKuRev52DcDNkfQQtAruASvxuazgDBsNaueKoCC9Exw2juj4tpQEltVIb5Gs0QZRhqVXfJn0C
+	cIrzldJpL5AsgqfEL9UG0jQ98HDYoG65fJtmGT8phFoqEU9l+qmzom77/3PiOHw2pEulc+V/Gh1i+
+	9PqiEH2MjuOCHOv5rFPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pqYrH-00EI1H-0g;
-	Sun, 23 Apr 2023 12:30:23 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pqZ7l-00EJoK-1y;
+	Sun, 23 Apr 2023 12:47:25 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pqYrD-00EI0Y-2c;
-	Sun, 23 Apr 2023 12:30:21 +0000
+	id 1pqZ7g-00EJmw-0L;
+	Sun, 23 Apr 2023 12:47:21 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 127A660F6E;
-	Sun, 23 Apr 2023 12:30:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 673D6C4339B;
-	Sun, 23 Apr 2023 12:30:18 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id BB08860DEC;
+	Sun, 23 Apr 2023 12:47:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D6B9FC433EF;
+	Sun, 23 Apr 2023 12:47:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1682253018;
-	bh=x3u0o4CRVGoUpTOcZqcBpH3LsucNfjILoz6/opJTae8=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=a39wzx2PLQSP+XYGNFoLqNiK0NnciJyggIxNn8dKzcfAO23vSLJ+RY6n3YkL1p2Ns
-	 LMm8g82DD6NErlwTkWeC71sLLkSvcV96SzxrCDwHPI87hwX/zli0wj6JYtLmDycQg7
-	 qYnuOwL6XgfJP+fWCrr5gcte/KF8gwBMPdqsnBvBFF77BlwS4IEI04BIPrYrbhb6uo
-	 m8C6KhFsSsmTX7DHlWYAGO57/12aCw73xhhdTq8pM2L49ppWWLBO6xJ1WcruuGCI+C
-	 fhCS1qo21R39aGQ2NGWDa9fRmnZRtjcO3vgmxMyQxfO+JCxs0On+FrVjYQM9ynzNoq
-	 sO+1BAItIcsvA==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 406ACC395EA;
-	Sun, 23 Apr 2023 12:30:18 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1682254038;
+	bh=eGIoQHOJZfoILARB2pz6hMBq1nDSmvzLHJKWEe0ma+w=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=T7mQuPTQFPWuWy1mJDy7UEmWdGrDE2z68wNTYlADK1cY+MHtDCBpyPlSLQa4/no5p
+	 q8b/8MVcD1U927TGdXuiNm8cIT4wPGJPms35oCY35Xik4tzPFlwETQdDQJjaXxS6J4
+	 jzmDMqOgTXKg1wgq4c+Hp2xN7cVeumCgFJ2v8U0ZNVRI7SsBO8rF1swtCaynXAMHEO
+	 jY9kYSBOM7JXLD64g0tBOUI+IPsLyGXzUJWKMkiiVSixWSbRTqoP/+Iv/sp878U2J9
+	 wldxbB2P6SEIuPqoxh+FHoC04X1o4iJ1Uu2rs/rqdTzU7wQRVgVxWuH/zob+INIpfu
+	 b/1MQtu4ds3Bw==
+Date: Sun, 23 Apr 2023 14:02:52 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Frank Wunderlich <linux@fw-web.de>
+Subject: Re: [PATCH v1 2/7] dt-bindings: iio: adc: Add support for MT7986
+Message-ID: <20230423140252.7b018c46@jic23-huawei>
+In-Reply-To: <20230421132047.42166-3-linux@fw-web.de>
+References: <20230421132047.42166-1-linux@fw-web.de>
+	<20230421132047.42166-3-linux@fw-web.de>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.37; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next] net: mtk_eth_soc: mediatek: fix ppe flow accounting
- for v1 hardware
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id:  <168225301826.6341.12919802141863070642.git-patchwork-notify@kernel.org>
-Date: Sun, 23 Apr 2023 12:30:18 +0000
-References: <d8474a95a528a4bec5121252205d179f357c7124.1682024624.git.daniel@makrotopia.org>
-In-Reply-To: <d8474a95a528a4bec5121252205d179f357c7124.1682024624.git.daniel@makrotopia.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
- Mark-MC.Lee@mediatek.com, lorenzo@kernel.org, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230423_053019_895159_232C6205 
-X-CRM114-Status: GOOD (  11.12  )
+X-CRM114-CacheID: sfid-20230423_054720_217768_FEBD670F 
+X-CRM114-Status: GOOD (  16.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,34 +69,44 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Lars-Peter Clausen <lars@metafoo.de>, Lala Lin <lala.lin@mediatek.com>, linux-iio@vger.kernel.org, Zhiyong Tao <zhiyong.tao@mediatek.com>, "Hui.Liu" <hui.liu@mediatek.com>, linux-kernel@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+On Fri, 21 Apr 2023 15:20:42 +0200
+Frank Wunderlich <linux@fw-web.de> wrote:
 
-This patch was applied to netdev/net-next.git (main)
-by David S. Miller <davem@davemloft.net>:
-
-On Thu, 20 Apr 2023 22:06:42 +0100 you wrote:
-> From: Felix Fietkau <nbd@nbd.name>
+> From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> Older chips (like MT7622) use a different bit in ib2 to enable hardware
-> counter support. Add macros for both and select the appropriate bit.
+> Add compatible string and specific clock property for mt7986.
 > 
-> Fixes: 3fbe4d8c0e53 ("net: ethernet: mtk_eth_soc: ppe: add support for flow accounting")
-> Signed-off-by: Felix Fietkau <nbd@nbd.name>
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+
+Given how trivial this is, I'll apply it without waiting for the DT maintainers
+to get to it.
+
+Applied to the togreg branch of iio.git and pushed out as testing for 0-day
+to take a look at it.
+
+Thanks,
+
+Jonathan
+
+> ---
+>  .../devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml      | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> [...]
-
-Here is the summary with links:
-  - [net-next] net: mtk_eth_soc: mediatek: fix ppe flow accounting for v1 hardware
-    https://git.kernel.org/netdev/net-next/c/4eaeca1fc43a
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+> diff --git a/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml b/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml
+> index 7f79a06e76f5..6168b44ea72c 100644
+> --- a/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml
+> +++ b/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml
+> @@ -26,6 +26,7 @@ properties:
+>            - mediatek,mt2712-auxadc
+>            - mediatek,mt6765-auxadc
+>            - mediatek,mt7622-auxadc
+> +          - mediatek,mt7986-auxadc
+>            - mediatek,mt8173-auxadc
+>        - items:
+>            - enum:
 
 
