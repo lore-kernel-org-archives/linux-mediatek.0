@@ -4,72 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F390AC77B61
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Apr 2023 07:40:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 655B8C7618E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Apr 2023 08:04:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FmAw5jSKSFxbzKFICaohcNFnFZEV2JoB4WCulCZTz2o=; b=njAmnLq05PDHwSFDHN+kcoHz3a
-	aKmMN8Fg6W1ionofPdERzHgvWQ8mcCVQAa7kVMq0TxIN/H1nIRnyqCp3+kQJ2mosSvWb0pDjiinuw
-	LAfQryejEPXodF6v/I+SxwfycccTA2gs2+pRpO/KoPT/MA71CAlmd0lMOF3HCom/hsqMsV2DwNkd5
-	SsqVqxWEiEwb8AWJnRAwH6Qxe6vAuIX0XxltqNaBrNpLcIDsdv1j6Nu8vL8FKLcYXalbSzuQxrdtL
-	kUOQoqOSVSP5JWlgrY9zpj12Vfafw9RWV2hGxTp9SE+NamAvR9yFLmHNnlpb/fnS2bJSrc5tlq6BA
-	8ZGEqatg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=nArHEf93lLs4kl0maPyf7eFjEu8BzOOYTL22bRX4/1U=; b=YJ/S34ZxijldYZGCjD/VlEO75p
+	Heh9+qx8j55hJo1DmsgKG6cmi9ikqbJ/+N73Y/fPMVAQmgAsSLZjkdfzEPEc+GgMdP0fsh5H9Tw00
+	kh/En4md5Pxl/oM1f+4dD2Bc0kSP/D3PWHKJhlxifRWMjAuqISglfKhWw0u5IHL8tkjp3PNdhCpRM
+	cpqtimuiPGue7X6Whe5EfPbHk1/v7bZ1oteyZl6wNw3CcQ8g8jOYNZO5t4uxufeA6FSNmkK537e7v
+	7aDvn0bN2iLIeG/tLX+8lnpa+xXijMa6zkqi4wdYSGuOqrLjPaPvvVLVYLskSFZFFoARBo2N0VX1i
+	qbsZggbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pqqoa-00FbR1-13;
-	Mon, 24 Apr 2023 07:40:48 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pqrBJ-00FdFI-0U;
+	Mon, 24 Apr 2023 08:04:17 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pqqoV-00FbPN-22;
-	Mon, 24 Apr 2023 07:40:45 +0000
-Received: from [IPV6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2] (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 762376602097;
-	Mon, 24 Apr 2023 08:40:38 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1682322039;
-	bh=cIDw4bo9W+NAgm/8tIV6FQYtHcogF7cLjrNY/+Ashgw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=D8MC/8sP905WNAn7bhbIwt6KyjAWrgo2x9YsbL7az82njzG/qtsobZjNCF5xglABp
-	 a+nQyw49M6WSnt5HIDxOlUKYe07CTLXfMjIYwbbChP4CPvfYLHnumLoLLNFUZgOI83
-	 ldsjmH82nfEUnVrYN6LJ3xsqwbepHq+Ab/YpfP0IOEcarSvkBvkTeG58uXbTReFCSm
-	 5su4HEaXF+mAt6ttMSRm1Gdf+5ufboXqJJKi230YGS/BgDsKr8UT6fE1wkyx0FyByf
-	 juwIMtwikknFy0Tr5b0+waEFwaScP7CZSOx7gcLFlGJ6XoibB4i7Y+wuIrOlLh0Wy/
-	 zoXJhUGLwUFPA==
-Message-ID: <a052b2ba-e211-c997-7508-0d012663dedb@collabora.com>
-Date: Mon, 24 Apr 2023 09:40:36 +0200
+	id 1pqrBF-00FdEN-02;
+	Mon, 24 Apr 2023 08:04:14 +0000
+X-UUID: 94c0c204e27611edb7d8d11f642b8e78-20230424
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=nArHEf93lLs4kl0maPyf7eFjEu8BzOOYTL22bRX4/1U=;
+	b=Cskj5IUPOnoNhwJSFFqZNQk/WohTdVOEzIw3L2SgeMvAyG101XkDsaf/Sd257wbXcRjEbfzSfg6pTqVUUbDPuZYTc9rGaXWDayYHP2xNyHw3tOrPzrWy4x4cZnkMClpbhNBRZ7f/ywxmNCN2mu7wd0KIYjEle0uxbrIsNBm/738=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22,REQID:1f4fa11f-4764-4952-8dd7-494a4437eb94,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:120426c,CLOUDID:46770985-cd9c-45f5-8134-710979e3df0e,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: 94c0c204e27611edb7d8d11f642b8e78-20230424
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <alice.chao@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 440904307; Mon, 24 Apr 2023 01:04:04 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 24 Apr 2023 16:04:02 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 24 Apr 2023 16:04:02 +0800
+From: Alice Chao <alice.chao@mediatek.com>
+To: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
+	Bart Van Assche <bvanassche@acm.org>, "James E.J. Bottomley"
+	<jejb@linux.ibm.com>, "Martin K. Petersen" <martin.petersen@oracle.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Can Guo <quic_cang@quicinc.com>,
+	Asutosh Das <quic_asutoshd@quicinc.com>, Stanley Chu
+	<stanley.chu@mediatek.com>, Manivannan Sadhasivam <mani@kernel.org>
+CC: <peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+	<alice.chao@mediatek.com>, <powen.kao@mediatek.com>,
+	<naomi.chu@mediatek.com>, <cc.chou@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
+	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
+	<wsd_upstream@mediatek.com>, <linux-scsi@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+Subject: [PATCH v3 1/1] scsi: ufs: core: Fix &hwq->cq_lock deadlock issue
+Date: Mon, 24 Apr 2023 16:03:56 +0800
+Message-ID: <20230424080400.8955-1-alice.chao@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH 1/5] arm64: dts: mediatek: cherry: Add platform thermal
- configuration
-Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- matthias.bgg@gmail.com, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel@collabora.com
-References: <20230420094433.42794-1-angelogioacchino.delregno@collabora.com>
- <20230420094433.42794-2-angelogioacchino.delregno@collabora.com>
- <CAGXv+5GuEQMxYTKrnia1ipYHLt_B2h6By7EejE7MjCypfavnFg@mail.gmail.com>
- <5ede9421-54d6-4dda-91af-2acbf46c2d3e@notapiano>
- <097d60ba-5604-a2c9-c6d2-121db2d55e36@collabora.com>
- <CAGXv+5G9Qh2ftB0NG4Km3wHQCgyxHK+Ae17QWJrv8V9VJaBH4A@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAGXv+5G9Qh2ftB0NG4Km3wHQCgyxHK+Ae17QWJrv8V9VJaBH4A@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230424_004044_176716_A5C618A2 
-X-CRM114-Status: GOOD (  22.85  )
+X-CRM114-CacheID: sfid-20230424_010413_083850_013BADE1 
+X-CRM114-Status: GOOD (  13.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,197 +91,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 24/04/23 09:38, Chen-Yu Tsai ha scritto:
-> On Mon, Apr 24, 2023 at 2:31 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> Il 21/04/23 22:53, Nícolas F. R. A. Prado ha scritto:
->>> On Fri, Apr 21, 2023 at 03:37:52PM +0800, Chen-Yu Tsai wrote:
->>>> On Thu, Apr 20, 2023 at 5:45 PM AngeloGioacchino Del Regno
->>>> <angelogioacchino.delregno@collabora.com> wrote:
->>>>>
->>>>> This platform has three auxiliary NTC thermistors, connected to the
->>>>> SoC's ADC pins. Enable the auxadc in order to be able to read the
->>>>> ADC values, add a generic-adc-thermal LUT for each and finally assign
->>>>> them to the SoC's thermal zones.
->>>>>
->>>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>>>> ---
->>>>>    .../boot/dts/mediatek/mt8195-cherry.dtsi      | 105 ++++++++++++++++++
->>>>>    1 file changed, 105 insertions(+)
->>>>>
->>>>> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
->>>>> index 8ac80a136c37..0820e9ba3829 100644
->>>>> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
->>>>> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
->>>>> @@ -114,6 +114,77 @@ ppvar_sys: regulator-ppvar-sys {
->>>>>                   regulator-boot-on;
->>>>>           };
->>>>>
->>>>> +       /* Murata NCP03WF104F05RL */
->>>>> +       tboard_thermistor1: thermal-sensor-t1 {
->>>>> +               compatible = "generic-adc-thermal";
->>>>> +               #thermal-sensor-cells = <0>;
->>>>> +               io-channels = <&auxadc 0>;
->>>>> +               io-channel-names = "sensor-channel";
->>>>> +               temperature-lookup-table = <    (-10000) 1553
->>>>> +                                               (-5000) 1485
->>>>> +                                               0 1406
->>>>> +                                               5000 1317
->>>>> +                                               10000 1219
->>>>> +                                               15000 1115
->>>>> +                                               20000 1007
->>>>> +                                               25000 900
->>>>> +                                               30000 796
->>>>> +                                               35000 697
->>>>> +                                               40000 605
->>>>> +                                               45000 523
->>>>> +                                               50000 449
->>>>> +                                               55000 384
->>>>> +                                               60000 327
->>>>> +                                               65000 279
->>>>> +                                               70000 237
->>>>> +                                               75000 202
->>>>> +                                               80000 172
->>>>> +                                               85000 147
->>>>> +                                               90000 125
->>>>> +                                               95000 107
->>>>> +                                               100000 92
->>>>> +                                               105000 79
->>>>> +                                               110000 68
->>>>> +                                               115000 59
->>>>> +                                               120000 51
->>>>> +                                               125000 44>;
->>>>> +       };
->>>>> +
->>>>> +       tboard_thermistor2: thermal-sensor-t2 {
->>>>> +               compatible = "generic-adc-thermal";
->>>>> +               #thermal-sensor-cells = <0>;
->>>>> +               io-channels = <&auxadc 1>;
->>>>> +               io-channel-names = "sensor-channel";
->>>>> +               temperature-lookup-table = <    (-10000) 1553
->>>>> +                                               (-5000) 1485
->>>>> +                                               0 1406
->>>>> +                                               5000 1317
->>>>> +                                               10000 1219
->>>>> +                                               15000 1115
->>>>> +                                               20000 1007
->>>>> +                                               25000 900
->>>>> +                                               30000 796
->>>>> +                                               35000 697
->>>>> +                                               40000 605
->>>>> +                                               45000 523
->>>>> +                                               50000 449
->>>>> +                                               55000 384
->>>>> +                                               60000 327
->>>>> +                                               65000 279
->>>>> +                                               70000 237
->>>>> +                                               75000 202
->>>>> +                                               80000 172
->>>>> +                                               85000 147
->>>>> +                                               90000 125
->>>>> +                                               95000 107
->>>>> +                                               100000 92
->>>>> +                                               105000 79
->>>>> +                                               110000 68
->>>>> +                                               115000 59
->>>>> +                                               120000 51
->>>>> +                                               125000 44>;
->>>>> +       };
->>>>> +
->>>>>           usb_vbus: regulator-5v0-usb-vbus {
->>>>>                   compatible = "regulator-fixed";
->>>>>                   regulator-name = "usb-vbus";
->>>>> @@ -260,6 +331,10 @@ &gpu {
->>>>>           mali-supply = <&mt6315_7_vbuck1>;
->>>>>    };
->>>>>
->>>>> +&auxadc {
->>>>> +       status = "okay";
->>>>> +};
->>>>> +
->>>>>    &i2c0 {
->>>>>           status = "okay";
->>>>>
->>>>> @@ -1098,6 +1173,36 @@ mt6315_7_vbuck1: vbuck1 {
->>>>>           };
->>>>>    };
->>>>>
->>>>> +&thermal_zones {
->>>>> +       soc_area_ntc {
->>>
->>> Not sure if that's what's causing the issue, but the thermal zone name should
->>> end with -thermal as per the binding. Also note that it needs to be under 20
->>> characters otherwise it will fail to be registered with -22 like below.
->>> (Also, node names shouldn't contain underscore)
->>>
->>> Thanks,
->>> Nícolas
->>>
->>>>> +               polling-delay = <1000>;
->>>>> +               polling-delay-passive = <250>;
->>>>> +               thermal-sensors = <&tboard_thermistor1>;
->>>>> +
->>>>> +               trips {
->>>>> +                       trip-crit {
->>>>> +                               temperature = <95000>;
->>>>> +                               hysteresis = <2000>;
->>>>> +                               type = "critical";
->>>>> +                       };
->>>>> +               };
->>>>> +       };
->>>>> +
->>>>> +       pmic_area_ntc {
->>>>> +               polling-delay = <1000>;
->>>>> +               polling-delay-passive = <0>;
->>>>> +               thermal-sensors = <&tboard_thermistor2>;
->>>>> +
->>>>> +               trips {
->>>>> +                       trip-crit {
->>>>> +                               temperature = <95000>;
->>>>> +                               hysteresis = <2000>;
->>>>> +                               type = "critical";
->>>>> +                       };
->>>>> +               };
->>>>> +       };
->>>>
->>>> I'm still getting:
->>>>
->>>> thermal_sys: Failed to find 'trips' node
->>>> thermal_sys: Failed to find trip points for thermal-sensor-t1 id=0
->>>> generic-adc-thermal thermal-sensor-t1: Thermal zone sensor register failed: -22
->>>> generic-adc-thermal: probe of thermal-sensor-t1 failed with error -22
->>>> thermal_sys: Failed to find 'trips' node
->>>> thermal_sys: Failed to find trip points for thermal-sensor-t2 id=0
->>>> generic-adc-thermal thermal-sensor-t2: Thermal zone sensor register failed: -22
->>>> generic-adc-thermal: probe of thermal-sensor-t2 failed with error -22
->>>> thermal_sys: Failed to find 'trips' node
->>>> thermal_sys: Failed to find trip points for thermal-sensor-t3 id=0
->>>> generic-adc-thermal thermal-sensor-t3: Thermal zone sensor register failed: -22
->>>> generic-adc-thermal: probe of thermal-sensor-t3 failed with error -22
->>>>
->>
->> I think you have something wrong locally - there's no thermal-sensor-t3 in this
->> devicetree...
-> 
-> I seem to have run a stale kernel image. Rebuilt the kernel and everything
-> seems to work OK now.
-> 
-> BTW, I think the design went for a lower trip point. At least the hardware
-> thermal protection IC on the Acer device trips at 85 degrees C, instead of
-> 95 degrees C. Maybe that's accounting for the fact that these are external
-> thermal sensors and have some latency and temperature difference. The PMIC
-> specifies 85 degrees C maximum ambient air temperature. The SoC doesn't
-> specify.
-> 
+[name:lockdep&]WARNING: inconsistent lock state
+[name:lockdep&]--------------------------------
+[name:lockdep&]inconsistent {IN-HARDIRQ-W} -> {HARDIRQ-ON-W} usage.
+[name:lockdep&]kworker/u16:4/260 [HC0[0]:SC0[0]:HE1:SE1] takes:
+  ffffff8028444600 (&hwq->cq_lock){?.-.}-{2:2}, at:
+ufshcd_mcq_poll_cqe_lock+0x30/0xe0
+[name:lockdep&]{IN-HARDIRQ-W} state was registered at:
+  lock_acquire+0x17c/0x33c
+  _raw_spin_lock+0x5c/0x7c
+  ufshcd_mcq_poll_cqe_lock+0x30/0xe0
+  ufs_mtk_mcq_intr+0x60/0x1bc [ufs_mediatek_mod]
+  __handle_irq_event_percpu+0x140/0x3ec
+  handle_irq_event+0x50/0xd8
+  handle_fasteoi_irq+0x148/0x2b0
+  generic_handle_domain_irq+0x4c/0x6c
+  gic_handle_irq+0x58/0x134
+  call_on_irq_stack+0x40/0x74
+  do_interrupt_handler+0x84/0xe4
+  el1_interrupt+0x3c/0x78
+<snip>
 
-Let's play safe then, I'll change that to 85 for the next version.
+Possible unsafe locking scenario:
+       CPU0
+       ----
+  lock(&hwq->cq_lock);
+  <Interrupt>
+    lock(&hwq->cq_lock);
+  *** DEADLOCK ***
+2 locks held by kworker/u16:4/260:
 
-> Either way this is
-> 
-> Tested-by: Chen-Yu Tsai <wenst@chromium.org>
-> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+[name:lockdep&]
+ stack backtrace:
+CPU: 7 PID: 260 Comm: kworker/u16:4 Tainted: G S      W  OE
+6.1.17-mainline-android14-2-g277223301adb #1
+Workqueue: ufs_eh_wq_0 ufshcd_err_handler
 
-Thanks!
+ Call trace:
+  dump_backtrace+0x10c/0x160
+  show_stack+0x20/0x30
+  dump_stack_lvl+0x98/0xd8
+  dump_stack+0x20/0x60
+  print_usage_bug+0x584/0x76c
+  mark_lock_irq+0x488/0x510
+  mark_lock+0x1ec/0x25c
+  __lock_acquire+0x4d8/0xffc
+  lock_acquire+0x17c/0x33c
+  _raw_spin_lock+0x5c/0x7c
+  ufshcd_mcq_poll_cqe_lock+0x30/0xe0
+  ufshcd_poll+0x68/0x1b0
+  ufshcd_transfer_req_compl+0x9c/0xc8
+  ufshcd_err_handler+0x3bc/0xea0
+  process_one_work+0x2f4/0x7e8
+  worker_thread+0x234/0x450
+  kthread+0x110/0x134
+  ret_from_fork+0x10/0x20
+
+ufs_mtk_mcq_intr() could refer to
+https://lore.kernel.org/all/20230328103423.10970-3-powen.kao@mediatek.com/
+
+When ufshcd_err_handler() is executed, CQ event interrupt can enter
+waiting for the same lock. It could happened in upstream code path
+ufshcd_handle_mcq_cq_events() and also in ufs_mtk_mcq_intr(). This
+warning message will be generated when &hwq->cq_lock is used in IRQ
+context with IRQ enabled. Use ufshcd_mcq_poll_cqe_lock() with
+spin_lock_irqsave instead of spin_lock to resolve the deadlock issue.
+
+Fixes: ed975065c31c ("scsi: ufs: core: mcq: Add completion support in poll")
+Reviewed-by: Can Guo <quic_cang@quicinc.com>
+Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
+Signed-off-by: Alice Chao <alice.chao@mediatek.com>
+---
+Change since v2
+-Add commit: Add Reviewed-by: tag
+---
+ drivers/ufs/core/ufs-mcq.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
+index 31df052fbc41..202ff71e1b58 100644
+--- a/drivers/ufs/core/ufs-mcq.c
++++ b/drivers/ufs/core/ufs-mcq.c
+@@ -299,11 +299,11 @@ EXPORT_SYMBOL_GPL(ufshcd_mcq_poll_cqe_nolock);
+ unsigned long ufshcd_mcq_poll_cqe_lock(struct ufs_hba *hba,
+ 				       struct ufs_hw_queue *hwq)
+ {
+-	unsigned long completed_reqs;
++	unsigned long completed_reqs, flags;
+ 
+-	spin_lock(&hwq->cq_lock);
++	spin_lock_irqsave(&hwq->cq_lock, flags);
+ 	completed_reqs = ufshcd_mcq_poll_cqe_nolock(hba, hwq);
+-	spin_unlock(&hwq->cq_lock);
++	spin_unlock_irqrestore(&hwq->cq_lock, flags);
+ 
+ 	return completed_reqs;
+ }
+-- 
+2.18.0
 
 
