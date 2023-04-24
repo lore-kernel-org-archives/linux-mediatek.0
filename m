@@ -4,70 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC010C77B61
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Apr 2023 09:59:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73A66C77B61
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Apr 2023 10:04:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EZrViyOOQTlmyzkZxlxdSE/AYI5IQpXFuh8HBWtjtrU=; b=tb2HtEgvy0/dTqwm9l1zCcbUWV
-	/hEDmwHHZ8EoAnDN7EKsFKsdXmb3Zk02Z3EWVb+ZMaXeQxGm3ZG5sDbys2/Ptvk52i/Ro4L7GMWgU
-	RdEeB+Vpn9dh8R0f7mv7RkRJHKVqKf6zIwIZ+q3KPuOyswwH7+DcxXEk9X99efDe7DOAl5ncF0+Dq
-	yXcnqt6kXtZh9Hw8g3TitQSA35quszwM4xmjklfezPQiO4MKYdYRYsyU2kTfBbjr96cK2J9JdxzmN
-	e4yEnvXOV/h7hpGdKEnTCCv98avNNC1ZsSF8nfoLni9nOiSnQVh4rZV3xbEZDSuOMmq05BkeDa8Mr
-	WrwlWkgg==;
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=V2WsBy9D+hRfwOWkrxwmd3lLjMwOzTRUf9EB9Q/QdtQ=; b=GimCda1nzR1ARsmjhOKEQBXlhF
+	ba9q0rNyArLzKyzThj8bhaT69KOt1IRVK5kqawMAlNZGcHx9IE6W08dpInWWBcnrQAuf+5vYr8ZFf
+	7hs/wIgO+F36o6NXCurcW8/UETTnYIlhXP9DC4o1yB70qVnEgAXaJ3txQfWxlLJCcxoNTCzkI0GLu
+	kLcJOAxZyP1NX26lfNPsbtW2F7+mD2VI2dtHQfKWVKU9W5uwpp3G4XChTrsb9C7RCsDAaNZvEer7X
+	NvYEqH6BjKE0rUVDw8XRygP/9VR4efvUR5KgTbUm0H1WAhQpLODxKDoNZkFzzB3w2ugze4NWeF3h5
+	UQmtz2Rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pqsz6-00Ftj5-14;
-	Mon, 24 Apr 2023 09:59:48 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pqt3q-00FuSb-3A;
+	Mon, 24 Apr 2023 10:04:42 +0000
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pqsz2-00FtgY-1Z;
-	Mon, 24 Apr 2023 09:59:46 +0000
-Received: from [IPV6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2] (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2E10F660324B;
-	Mon, 24 Apr 2023 10:59:37 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1682330377;
-	bh=d4/ywTBBYaIdjKCxRKNX5qZ5Mog0dm0wH5iUfUYbv2M=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=gUlACtRVAMqeFR53ajNoYxRLdl3NeUNwell40eVgBz/jW8mDh4DyWz7/BiNlyPYXc
-	 8E62BuLw3e+7K/zeVd5iAUXJNVbOHiVAXs7KfPpwCwfRRiXeExInvFrcnoEYcRvNmO
-	 UWs8m27DaQ3mVENoOWt73ozjNnWPeVAASIUekBbdIAQGHBlC2reRR1ejCuET+1xX+Y
-	 Qotg8gu7tryiUqifKtqcW9PGzTyAGKN5wWE3dH23KNEaK56YBFo4xzuajlTYPFL5cb
-	 5r7o2EHmVfq+NGd5H0jO+Y2+CJC0YWA2PbBcdKCtTTrIqy0GY7svNrDiJW+Oien2Sm
-	 XeyXw7Z5J7RoQ==
-Message-ID: <db95dbbd-d740-2c78-e0dc-55c17d5b9a04@collabora.com>
-Date: Mon, 24 Apr 2023 11:59:34 +0200
+	id 1pqt3n-00FuRS-10
+	for linux-mediatek@lists.infradead.org;
+	Mon, 24 Apr 2023 10:04:41 +0000
+Received: by mail-pf1-x432.google.com with SMTP id d2e1a72fcca58-63b4a64c72bso3449209b3a.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 24 Apr 2023 03:04:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1682330676; x=1684922676;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=V2WsBy9D+hRfwOWkrxwmd3lLjMwOzTRUf9EB9Q/QdtQ=;
+        b=QAT8s9jI9J/mNPQLSP2R9Gv0/pCLs36KQ58Jrhu8C6+SrP/N1F/G4CaLqL7IRuYz9m
+         o92u1G+OMIkgsdt4DEhrbqxoL4BiGD/GHiQou79/lSFaMsx8t0AIU0c5ARh/U93oJRRO
+         hVJ/4lbG3A+A/vWLmsD/lBxcGAuDpvi+5OrPo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1682330676; x=1684922676;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=V2WsBy9D+hRfwOWkrxwmd3lLjMwOzTRUf9EB9Q/QdtQ=;
+        b=AiOL9Qm/jkU4q+2RvIuTRGNIY36C5Vr9U6O/XVjaPM16DFKu+NjYNoPvhSoBlMNos5
+         Bw1PaX3BNEWrECn4s2Nc48f39DbebLD3bo+Zv1eTvW4dydE4kNznxm7CWekF+Ng7erLV
+         vBYvk6lQUodZ5TnOsVwDOnc4x0qSY72Ei6jCxhhMfaAyhTEw9ZIQe98bY0hdKURbozOU
+         Jg5wsIpMatQAf/gEFzWja+9DN0rd75AkZ+lNaN/hzPSYU7snYfSqkLXPKVCZKkyKKOhU
+         fkEuJkVRrDCEvPAa1AMbcNJhQUsmUy1B5Fspo8AcWorCrV7xTG1yOtllZNVrZL33/Yzo
+         lJcw==
+X-Gm-Message-State: AAQBX9ch2JPSf8Wnyj+HknVu6tjgJYHT8CcOLGlccE3XNktZTk8YAOD2
+	YmDMoXiOUS0uKyJLGvk7cSkxug==
+X-Google-Smtp-Source: AKy350bj/iADyzfE4iDotwQ7l2Rxbf6TbBeW1F3yNWU/4SiigkNJRyIeCg1s+Cm+cSH3JmiMZNXFWQ==
+X-Received: by 2002:a05:6a00:cd2:b0:627:6328:79f1 with SMTP id b18-20020a056a000cd200b00627632879f1mr18330546pfv.34.1682330676591;
+        Mon, 24 Apr 2023 03:04:36 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:1d00:1ac0:e499:fc5b])
+        by smtp.gmail.com with ESMTPSA id j18-20020a056a00235200b0063d46ec5777sm7084425pfj.158.2023.04.24.03.04.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 24 Apr 2023 03:04:36 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Subject: [PATCH v2] arm64: dts: mediatek: mt8192-asurada-hayato: Enable Bluetooth
+Date: Mon, 24 Apr 2023 18:04:09 +0800
+Message-ID: <20230424100409.2992418-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.40.0.634.g4ca3ef3211-goog
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH 5/5] arm64: dts: mediatek: cherry-tomato-r1: Enable NVMe
- PCI-Express port
-Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: matthias.bgg@gmail.com, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel@collabora.com
-References: <20230420094433.42794-1-angelogioacchino.delregno@collabora.com>
- <20230420094433.42794-6-angelogioacchino.delregno@collabora.com>
- <CAGXv+5GJroyKkj8oZw+BQxiUkiGCb-RBOxnKRkURQz5T6=EvNQ@mail.gmail.com>
- <eb78450a-1eed-f914-58be-ee18d85a2d62@collabora.com>
- <CAGXv+5E5Ei9YffWQednLcmWBr2eXfsfjXBFRzxKJd+=O290xdQ@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAGXv+5E5Ei9YffWQednLcmWBr2eXfsfjXBFRzxKJd+=O290xdQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230424_025944_737000_3D572C41 
-X-CRM114-Status: GOOD (  19.73  )
+X-CRM114-CacheID: sfid-20230424_030439_372186_87E4FAA4 
+X-CRM114-Status: UNSURE (   9.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,86 +94,120 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 24/04/23 11:40, Chen-Yu Tsai ha scritto:
-> On Mon, Apr 24, 2023 at 4:13 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> Il 21/04/23 09:59, Chen-Yu Tsai ha scritto:
->>> On Thu, Apr 20, 2023 at 5:45 PM AngeloGioacchino Del Regno
->>> <angelogioacchino.delregno@collabora.com> wrote:
->>>>
->>>> On Tomato rev1 the PCIe0 controller is used for NVMe storage.
->>>
->>> This was slightly confusing for me. AFAIK rev1 is not an actual Tomato
->>> device. It should be the prototype board, which is the original Cherry
->>> reference design by Google [1].
->>>
->>> There is an actual Cherry derived device that has NVMe, though it's under
->>> another brand and another name.
->>>
->>
->> If revision 1 is not an actual Tomato device, and you can confirm that it is
->> the prototype board... I can send a commit to entirely drop R1 as having it
->> upstream would be of no use at all.
-> 
->  From what I gathered from my colleagues, revision 1 was a Tomato prototype,
-> and also the second Cherry prototype board. There shouldn't be any of these
-> out in the wild.
-> 
-> FTR, the production version of Tomato is revision 4. Rev 2 and rev 3
-> engineering samples are available to partners, but otherwise limited.
-> 
+Hayato's Realtek WiFi/BT module has it's Bluetooth function wired to
+UART1.
 
-Good! Thanks for the information.
+Add and enable the relevant device nodes for it.
 
-> ChenYu
-> 
->> Cheers,
->> Angelo
->>
->>> ChenYu
->>>
->>> [1] Much like Kukui & Jacuzzi (MT8183), and Asurada (MT8192) are the
->>>       reference designs.  I don't think we ever upstream the reference
->>>       boards because they don't really end up in the hands of people
->>>       outside of the project, and the ones we do have tend to be quite
->>>       beaten up or no longer working due to extensive testing.
->>>
->>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>>> ---
->>>>    arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts | 7 +++++++
->>>>    1 file changed, 7 insertions(+)
->>>>
->>>> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
->>>> index 2d5e8f371b6d..11fc83ddf236 100644
->>>> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
->>>> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
->>>> @@ -20,6 +20,13 @@ &sound {
->>>>           model = "mt8195_r1019_5682";
->>>>    };
->>>>
->>>> +&pcie0 {
->>>> +       status = "okay";
->>>> +
->>>> +       pinctrl-names = "default";
->>>> +       pinctrl-0 = <&pcie0_pins_default>;
->>>> +};
->>>> +
->>>>    &ts_10 {
->>>>           status = "okay";
->>>>    };
->>>> --
->>>> 2.40.0
->>>>
->>>>
->>
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+Changes since v1:
+- Dropped unreferenced labels
+- Dropped GPIO line name comments
+- Fixed pinctrl node names
+- Dropped "output-enable" property
+- Added spacing between device nodes for consistency
 
+ .../dts/mediatek/mt8192-asurada-hayato-r1.dts | 81 +++++++++++++++++++
+ 1 file changed, 81 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts b/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts
+index 43a823990a92..6e23428a3ed2 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts
+@@ -40,9 +40,90 @@ CROS_STD_MAIN_KEYMAP
+ 	>;
+ };
+ 
++&pio {
++	bt_pins: bt-pins {
++		pins-bt-kill {
++			pinmux = <PINMUX_GPIO144__FUNC_GPIO144>;
++			output-low;
++		};
++
++		pins-bt-wake {
++			pinmux = <PINMUX_GPIO22__FUNC_GPIO22>;
++			bias-pull-up;
++		};
++
++		pins-ap-wake-bt {
++			pinmux = <PINMUX_GPIO168__FUNC_GPIO168>;
++			output-low;
++		};
++	};
++
++	uart1_pins: uart1-pins {
++		pins-rx {
++			pinmux = <PINMUX_GPIO94__FUNC_URXD1>;
++			input-enable;
++			bias-pull-up;
++		};
++
++		pins-tx {
++			pinmux = <PINMUX_GPIO95__FUNC_UTXD1>;
++		};
++
++		pins-cts {
++			pinmux = <PINMUX_GPIO166__FUNC_UCTS1>;
++			input-enable;
++		};
++
++		pins-rts {
++			pinmux = <PINMUX_GPIO167__FUNC_URTS1>;
++		};
++	};
++
++	uart1_pins_sleep: uart1-sleep-pins {
++		pins-rx {
++			pinmux = <PINMUX_GPIO94__FUNC_GPIO94>;
++			input-enable;
++			bias-pull-up;
++		};
++
++		pins-tx {
++			pinmux = <PINMUX_GPIO95__FUNC_UTXD1>;
++		};
++
++		pins-cts {
++			pinmux = <PINMUX_GPIO166__FUNC_UCTS1>;
++			input-enable;
++		};
++
++		pins-rts {
++			pinmux = <PINMUX_GPIO167__FUNC_URTS1>;
++		};
++	};
++};
++
+ &touchscreen {
+ 	compatible = "hid-over-i2c";
+ 	post-power-on-delay-ms = <10>;
+ 	hid-descr-addr = <0x0001>;
+ 	vdd-supply = <&pp3300_u>;
+ };
++
++&uart1 {
++	status = "okay";
++	pinctrl-names = "default", "sleep";
++	pinctrl-0 = <&uart1_pins>;
++	pinctrl-1 = <&uart1_pins_sleep>;
++	/delete-property/ interrupts;
++	interrupts-extended = <&gic GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH 0>,
++			      <&pio 94 IRQ_TYPE_EDGE_FALLING>;
++
++	bluetooth {
++		compatible = "realtek,rtl8822cs-bt";
++		pinctrl-names = "default";
++		pinctrl-0 = <&bt_pins>;
++
++		enable-gpios = <&pio 144 GPIO_ACTIVE_HIGH>;
++		device-wake-gpios = <&pio 168 GPIO_ACTIVE_HIGH>;
++		host-wake-gpios = <&pio 22 GPIO_ACTIVE_LOW>;
++	};
++};
 -- 
-AngeloGioacchino Del Regno
-Software Engineer
-
-Collabora Ltd.
-Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK
-Registered in England & Wales, no. 5513718
+2.40.0.634.g4ca3ef3211-goog
 
 
