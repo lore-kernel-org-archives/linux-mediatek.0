@@ -4,79 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A668C7618E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Apr 2023 03:41:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4496C7618E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Apr 2023 03:59:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=rufuQJCAOdKnUGjIUY2GYqY80xE/3+D5NJdIz0DZjaA=; b=orD9JclnpnX2Mh4z2t9Uhc1MnE
-	B1iL9fmjjpXywAZDzOpMSVC45M3JKqWSQSazG1TXd28V+MrMserz+iNETFtQkygxIMg7WEL6g5hCT
-	a7AsFEH0qBv2PkGe1d8svGck17eD3J2JXSPBfktExXgU4SbcpaCbwVZDhY0HI2t3M9gsIaxNGEDgo
-	LYSlLxHeG9w5iqR7+yuta5wZZzC7pT/GZi5DjUlsXeDvvnCPztwXI4cQuPtvB0NVzKaTHBb8IzzBI
-	2i1+9XgmPyd/SDzPCZj/SgsM6GP4ge4iJP8uJDDQXi6+aElQIbvNd4+zPovZktvDl0NvXw6r43Y6I
-	7knJh92w==;
+	bh=cJjSUzYBS7tQHc7k1Nb/PjaSB03OxKluK5vLuchdEOM=; b=xUwNSc0ASqbOzQbhoLLLNkcdKD
+	wYO4/6lHfiTEyNNOjAfSiXY5LPgDIxlAkcbYXuAEmWPOK2mnGvyhi1QOca07jMhFsVdiAT5q2FaxV
+	/zidW2PgKB3TJfi/DTifAq38+0HfAFAE6I/GFf+nlCSTKauWK9kgOe+LYU8lnbY2wzXu0UtrWDHZr
+	ysnMujo67EEpXSGbkW0uB1JPcByiP/KXcIXw7ueW0HJ6F39NfmEA6izLIzTrcfPduL/WFErNzhrzE
+	KmQLsbOFNt8tPDEsNELgc1t6+KQULn6X6JcMbxEELsSSL7J3c3EzZ0rKDB37kp/p1+4f6MSVVomvv
+	X9n33B8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pqn57-00FE7D-0M;
-	Mon, 24 Apr 2023 03:41:37 +0000
+	id 1pqnMH-00FFjr-1v;
+	Mon, 24 Apr 2023 03:59:21 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pqn54-00FE6m-1m;
-	Mon, 24 Apr 2023 03:41:36 +0000
-X-UUID: e578fa7ee25111edb7d8d11f642b8e78-20230423
+	id 1pqnMF-00FFjJ-02;
+	Mon, 24 Apr 2023 03:59:20 +0000
+X-UUID: 6228cf66e25411edb7d8d11f642b8e78-20230423
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=rufuQJCAOdKnUGjIUY2GYqY80xE/3+D5NJdIz0DZjaA=;
-	b=j6hKZXgVSWa0XJrXRpm5HJ0bJo7dnnvdrNrmMwjs/pnv2NhmF++oiNzO6XpilGDDNZGy7QAOku5Tl2rW6hOJgx0pzs0ejHSdvfjIxMdiCEuJAI+s3UdPcdqZ2nOY/o1130LQPyjH2/5BlEbWrWoaDDV/NScjx1StqcA7IZWgLpw=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=cJjSUzYBS7tQHc7k1Nb/PjaSB03OxKluK5vLuchdEOM=;
+	b=Gnbdezs3Dbpc9uMkiPeGsDZgwSwjb84otZ9fR7T+jLjfos37cbQ7aP+83y97ycn+l9VsbznkfCHCNUt4RYCU6GbQm9Tc3Ie3VSmbeV/6ptkFbOsoBO++58lDMAX8pHFjiRgquH4M28Hbk7lsv5pPaYMhZ7FjhCGesjGYrRTz+2Q=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:2fa54306-7fb3-4c84-8ba6-8632a0b2fcf1,IP:0,U
+X-CID-O-INFO: VERSION:1.1.22,REQID:7280bda5-ee8d-4a62-b94a-6242e64a8b40,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:120426c,CLOUDID:48a245a2-8fcb-430b-954a-ba3f00fa94a5,B
+X-CID-META: VersionHash:120426c,CLOUDID:9330e8eb-db6f-41fe-8b83-13fe7ed1ef52,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
-X-UUID: e578fa7ee25111edb7d8d11f642b8e78-20230423
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+X-UUID: 6228cf66e25411edb7d8d11f642b8e78-20230423
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <alice.chao@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1951617534; Sun, 23 Apr 2023 20:41:28 -0700
+	with ESMTP id 1676130373; Sun, 23 Apr 2023 20:59:17 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 24 Apr 2023 11:40:52 +0800
+ 15.2.1118.26; Mon, 24 Apr 2023 11:38:42 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Mon, 24 Apr 2023 11:40:52 +0800
+ 15.2.1118.25 via Frontend Transport; Mon, 24 Apr 2023 11:38:42 +0800
 From: Alice Chao <alice.chao@mediatek.com>
 To: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
 	Bart Van Assche <bvanassche@acm.org>, "James E.J. Bottomley"
 	<jejb@linux.ibm.com>, "Martin K. Petersen" <martin.petersen@oracle.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Manivannan Sadhasivam
-	<mani@kernel.org>, Can Guo <quic_cang@quicinc.com>, Stanley Chu
-	<stanley.chu@mediatek.com>
+	<angelogioacchino.delregno@collabora.com>, Asutosh Das
+	<quic_asutoshd@quicinc.com>, Stanley Chu <stanley.chu@mediatek.com>,
+	Manivannan Sadhasivam <mani@kernel.org>, Can Guo <quic_cang@quicinc.com>
 CC: <peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
 	<alice.chao@mediatek.com>, <powen.kao@mediatek.com>,
 	<naomi.chu@mediatek.com>, <cc.chou@mediatek.com>,
 	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
 	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
-	<wsd_upstream@mediatek.com>, Asutosh Das <quic_asutoshd@quicinc.com>,
-	<linux-scsi@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v2 1/1] scsi: ufs: core: Fix &hwq->cq_lock deadlock issue
-Date: Mon, 24 Apr 2023 11:40:35 +0800
-Message-ID: <20230424034039.20529-2-alice.chao@mediatek.com>
+	<wsd_upstream@mediatek.com>, <linux-scsi@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+Subject: [PATCH 1/1] scsi: ufs: core: Fix &hwq->cq_lock deadlock issue
+Date: Mon, 24 Apr 2023 11:38:35 +0800
+Message-ID: <20230424033839.20410-1-alice.chao@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230423_204134_598779_7E995696 
-X-CRM114-Status: GOOD (  13.26  )
+X-CRM114-CacheID: sfid-20230423_205919_060473_75AE09CE 
+X-CRM114-Status: GOOD (  13.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -159,7 +159,10 @@ spin_lock_irqsave instead of spin_lock to resolve the deadlock issue.
 
 Fixes: ed975065c31c ("scsi: ufs: core: mcq: Add completion support in poll")
 Signed-off-by: Alice Chao <alice.chao@mediatek.com>
-Change-Id: Iaff190c061c8e1308b893bff059a8bb556e5b888
+---
+Change since v1
+-Change commit: Fix title
+-Add commit: Add Fixes: tag
 ---
  drivers/ufs/core/ufs-mcq.c | 6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
