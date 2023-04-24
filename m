@@ -4,119 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 385FFC77B61
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Apr 2023 12:54:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE557C77B73
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Apr 2023 14:09:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=y93RjN7osl+y397UDjyIqrYTNL58RSMeMDAuuxAAix4=; b=ZjP5LE5CH1ifAaNuZ7tNhzGdBQ
-	qFgMuWbKRDUUKy2MDW4YmnsEBJyBIz8ajEav3GCZXSjgOx/Dd2S2aJPCOjDBg8TZyzxNFCJj74LFh
-	W2EsSxqj/Q8BxbLClfg9FamETV9xIPb7TtZ2gfY+eVSAbKxvgvmYeJJ8bfT+SKR5IuJ456nbd8dSI
-	BEONqB8JgOi6tgrHN8BSefkZDmiEX1MgMeaoHUadmn1dqkAkJ5vXbxE6e+gUL6C4VQXfGXPd2gmVl
-	/IqAWwLlTRo/00suAKcv8yvdIkEPJ3dyozPZxK4BtviV1+42ldi883Rog83PuosyM9CGRP0pZgFe2
-	TqJc+WYg==;
+	bh=pY2dsiuQjsigfKKccMaQxUsjqHtJUgSYs4jr/8+VbN4=; b=ExoUsM274vg7uhdvhOYtMjHwwU
+	SxM53AaCjkXxeI8NETETp0gNqm33nxGi7DcltBxfBfLV6rmFxHyB/H7CwtTqv4RGjdMlmzVrfgrFT
+	fD/5ACnZLuOnuSQ0LjS4Wxv8tEfsVGY8wHETf0Vdeeo2ISPAlFhv06/JFJSizwIwTVoJi698gsaPq
+	anpQilqUHUI4b5GK0EvskNNA5LPQCUWh0LhaH/11fIcEUO9bAAr3lMy52x1oY2fUF0+clGRkkKN/N
+	DfYFbFgS6Oj7vL+he0qYeG+4Ucmq45MkP3FR41t2WZV1nHM06N4PQZs6krTLGJytBI9fK8MSysek4
+	1NpKPBbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pqvhl-00GMPZ-2g;
-	Mon, 24 Apr 2023 12:54:05 +0000
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
+	id 1pqwsL-00GXDV-2G;
+	Mon, 24 Apr 2023 14:09:05 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pqvhh-00GMNj-2d
-	for linux-mediatek@lists.infradead.org;
-	Mon, 24 Apr 2023 12:54:03 +0000
-Received: by mail-wr1-x443.google.com with SMTP id ffacd0b85a97d-2fa47de5b04so4250554f8f.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 24 Apr 2023 05:53:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1682340837; x=1684932837;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=y93RjN7osl+y397UDjyIqrYTNL58RSMeMDAuuxAAix4=;
-        b=fx/YbkRLMKg6m8Sa/za26aYtpnzU44YMASX9fjcUXDJGn8yR7Ruei6kmPPnj/ae8FY
-         HTHCbo3Isb3+XAu5RDllgPIvu+vM5eBl5KwVAu/AaHbS6MhzPEDUJZbg57ayDeCKYuTC
-         UHgqvXe9X8597K9pW5JsXW57AuSoxWHROFMGSRXoF4Oq0pTHOG+UAwWSJsY0kMPJPAhg
-         1JiDorHB2655MBErHTYyR8twSll1r4wll3jKGWTnjqvio3OIamM/gzFSw6dhhPQZxSvA
-         lrEQA0mdYBoRg/iDaPUg11FtaHkubjJsf9tnC1gsP+JyK/1IisATdHSc0f/PEvHsMoHO
-         fy0Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682340837; x=1684932837;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=y93RjN7osl+y397UDjyIqrYTNL58RSMeMDAuuxAAix4=;
-        b=gO1w+C4bkpCFA1k5s/2BqNQKman4qfy6wEG+0YKkIFR2NVElFNi24sE5vZJS7SNmeo
-         knbKu0PxrIMXGSiyIt+KuPHxE+We/ODj5YF5GyRtHFqDuq+ueNd0pvhrwkmRSBSAeQPB
-         58CPGQwMtLZ2Y+0whgJNVF+I8rwPR1dMRzeEEPBjKqlsnha4McI9ZHhAq7uu/BedFSVA
-         7TzYw0NxzkLSJIcLDni5DaISC21Hj+z/Yyjk4Fuwrz0jWAx+MNfO6oVnRuBuj90Z5v8t
-         Sr18EDjwJ6nWRKLwF94aaNLP18dt/eUo4W6JKd58lA6QTOe9sIS/hLnVPhR0iuO6Ttw9
-         HoDA==
-X-Gm-Message-State: AAQBX9fNlVavyhT6aZePPox/wgoL4811CiHtiyRNOS2mga7+xy2FkHxd
-	UsX1iaT5616u58QoWx/030sUBA==
-X-Google-Smtp-Source: AKy350ZskqXT7f/yELNEwYyk5svk4rLkjJJaBd/6wdB6QV5y6ygNp++IlFQN/sJSnWMbL/nLJZkT5Q==
-X-Received: by 2002:adf:ec86:0:b0:2f6:fb98:fa62 with SMTP id z6-20020adfec86000000b002f6fb98fa62mr9644645wrn.40.1682340837364;
-        Mon, 24 Apr 2023 05:53:57 -0700 (PDT)
-Received: from aspen.lan ([31.221.30.162])
-        by smtp.gmail.com with ESMTPSA id h3-20020a5d5043000000b002c70ce264bfsm10695285wrt.76.2023.04.24.05.53.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 24 Apr 2023 05:53:56 -0700 (PDT)
-Date: Mon, 24 Apr 2023 13:53:55 +0100
-From: Daniel Thompson <daniel.thompson@linaro.org>
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Petr Mladek <pmladek@suse.com>,
-	Andrew Morton <akpm@linux-foundation.org>,
-	Lecopzer Chen <lecopzer.chen@mediatek.com>,
-	Stephen Boyd <swboyd@chromium.org>, Chen-Yu Tsai <wens@csie.org>,
-	linux-arm-kernel@lists.infradead.org,
-	kgdb-bugreport@lists.sourceforge.net, Marc Zyngier <maz@kernel.org>,
-	linux-perf-users@vger.kernel.org,
-	Mark Rutland <mark.rutland@arm.com>,
-	Masayoshi Mizuma <msys.mizuma@gmail.com>,
-	Will Deacon <will@kernel.org>, ito-yuichi@fujitsu.com,
-	Sumit Garg <sumit.garg@linaro.org>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Colin Cross <ccross@android.com>,
-	Matthias Kaehlcke <mka@chromium.org>,
-	Guenter Roeck <groeck@chromium.org>,
-	Tzung-Bi Shih <tzungbi@chromium.org>,
-	Alexander Potapenko <glider@google.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Dan Williams <dan.j.williams@intel.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Ingo Molnar <mingo@kernel.org>,
-	John Ogness <john.ogness@linutronix.de>,
-	Josh Poimboeuf <jpoimboe@kernel.org>,
-	Juergen Gross <jgross@suse.com>, Kees Cook <keescook@chromium.org>,
-	Laurent Dufour <ldufour@linux.ibm.com>,
-	Liam Howlett <liam.howlett@oracle.com>,
-	Marco Elver <elver@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Michael Ellerman <mpe@ellerman.id.au>,
-	Miguel Ojeda <ojeda@kernel.org>,
-	Nathan Chancellor <nathan@kernel.org>,
-	Nick Desaulniers <ndesaulniers@google.com>,
-	"Paul E. McKenney" <paulmck@kernel.org>,
-	Peter Zijlstra <peterz@infradead.org>,
-	Randy Dunlap <rdunlap@infradead.org>,
-	Rasmus Villemoes <linux@rasmusvillemoes.dk>,
-	Sami Tolvanen <samitolvanen@google.com>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Vlastimil Babka <vbabka@suse.cz>,
-	Zhaoyang Huang <zhaoyang.huang@unisoc.com>,
-	Zhen Lei <thunder.leizhen@huawei.com>, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] hardlockup: detect hard lockups using secondary (buddy)
- cpus
-Message-ID: <20230424125355.GA4054@aspen.lan>
-References: <20230421155255.1.I6bf789d21d0c3d75d382e7e51a804a7a51315f2c@changeid>
+	id 1pqwsG-00GXAO-1N;
+	Mon, 24 Apr 2023 14:09:01 +0000
+X-UUID: 8b06a84ae2a911ed8687db9d93187ff1-20230424
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=pY2dsiuQjsigfKKccMaQxUsjqHtJUgSYs4jr/8+VbN4=;
+	b=h3UoiiKlhSeRzP66kcjiSob3COUrezIbzSG+u0G8gARwHZbV9zXZtYXJIzW+laALEaJm+nrS0PmUwJK5r0BGTwZD25UvWj6BotgfTUu4ITQYmh75aDw1fY/5unrCAJIfTeMWjXJvPmkWcMz7jtZ4TFMiWJDI4DUlt5kfVAt1vkY=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22,REQID:c0c668a0-b6d7-4fdd-9e0e-ee761a2c3bee,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:120426c,CLOUDID:b821f9eb-db6f-41fe-8b83-13fe7ed1ef52,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: 8b06a84ae2a911ed8687db9d93187ff1-20230424
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <powen.kao@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1498926574; Mon, 24 Apr 2023 07:08:52 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Mon, 24 Apr 2023 22:08:50 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Mon, 24 Apr 2023 22:08:50 +0800
+From: Po-Wen Kao <powen.kao@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
+	Bart Van Assche <bvanassche@acm.org>, "James E.J. Bottomley"
+	<jejb@linux.ibm.com>, "Martin K. Petersen" <martin.petersen@oracle.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <wsd_upstream@mediatek.com>, <peter.wang@mediatek.com>,
+	<stanley.chu@mediatek.com>, <powen.kao@mediatek.com>,
+	<alice.chao@mediatek.com>, <naomi.chu@mediatek.com>,
+	<chun-hung.wu@mediatek.com>, <cc.chou@mediatek.com>,
+	<eddie.huang@mediatek.com>, <mason.zhang@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>
+Subject: [PATCH v5 2/3] scsi: ufs: core: Rename symbol sizeof_utp_transfer_cmd_desc()
+Date: Mon, 24 Apr 2023 22:08:34 +0800
+Message-ID: <20230424140839.22358-3-powen.kao@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230424140839.22358-1-powen.kao@mediatek.com>
+References: <20230424140839.22358-1-powen.kao@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230421155255.1.I6bf789d21d0c3d75d382e7e51a804a7a51315f2c@changeid>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230424_055401_894115_DA2B3634 
-X-CRM114-Status: GOOD (  20.13  )
+X-CRM114-CacheID: sfid-20230424_070900_470703_7E8CBFAB 
+X-CRM114-Status: GOOD (  13.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,32 +91,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 21, 2023 at 03:53:30PM -0700, Douglas Anderson wrote:
-> From: Colin Cross <ccross@android.com>
->
-> Implement a hardlockup detector that can be enabled on SMP systems
-> that don't have an arch provided one or one implemented atop perf by
-> using interrupts on other cpus. Each cpu will use its softlockup
-> hrtimer to check that the next cpu is processing hrtimer interrupts by
-> verifying that a counter is increasing.
->
-> NOTE: unlike the other hard lockup detectors, the buddy one can't
-> easily provide a backtrace on the CPU that locked up. It relies on
-> some other mechanism in the system to get information about the locked
-> up CPUs. This could be support for NMI backtraces like [1], it could
-> be a mechanism for printing the PC of locked CPUs like [2], or it
-> could be something else.
->
-> This style of hardlockup detector originated in some downstream
-> Android trees and has been rebased on / carried in ChromeOS trees for
-> quite a long time for use on arm and arm64 boards. Historically on
-> these boards we've leveraged mechanism [2] to get information about
-> hung CPUs, but we could move to [1].
+Naming the functions after standard operators like sizeof may cause
+confusion. So let's rename it to ufshcd_get_ucd_size().
 
-On the Arm platforms is this code able to leverage the existing
-infrastructure to extract status from stuck CPUs:
-https://docs.kernel.org/trace/coresight/coresight-cpu-debug.html
+Signed-off-by: Po-Wen Kao <powen.kao@mediatek.com>
+Suggested-by: Manivannan Sadhasivam <mani@kernel.org>
+Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
+Reviewed-by: Ziqi Chen <quic_ziqichen@quicinc.com>
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+---
+ drivers/ufs/core/ufs-mcq.c | 2 +-
+ drivers/ufs/core/ufshcd.c  | 8 ++++----
+ include/ufs/ufshcd.h       | 2 +-
+ 3 files changed, 6 insertions(+), 6 deletions(-)
 
+diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
+index 3a27fa4b0024..a39746b2a8be 100644
+--- a/drivers/ufs/core/ufs-mcq.c
++++ b/drivers/ufs/core/ufs-mcq.c
+@@ -265,7 +265,7 @@ static int ufshcd_mcq_get_tag(struct ufs_hba *hba,
+ 	addr = (le64_to_cpu(cqe->command_desc_base_addr) & CQE_UCD_BA) -
+ 		hba->ucdl_dma_addr;
+ 
+-	return div_u64(addr, sizeof_utp_transfer_cmd_desc(hba));
++	return div_u64(addr, ufshcd_get_ucd_size(hba));
+ }
+ 
+ static void ufshcd_mcq_process_cqe(struct ufs_hba *hba,
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index 17d7bb875fee..21d1831b5faf 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -2849,10 +2849,10 @@ static void ufshcd_map_queues(struct Scsi_Host *shost)
+ static void ufshcd_init_lrb(struct ufs_hba *hba, struct ufshcd_lrb *lrb, int i)
+ {
+ 	struct utp_transfer_cmd_desc *cmd_descp = (void *)hba->ucdl_base_addr +
+-		i * sizeof_utp_transfer_cmd_desc(hba);
++		i * ufshcd_get_ucd_size(hba);
+ 	struct utp_transfer_req_desc *utrdlp = hba->utrdl_base_addr;
+ 	dma_addr_t cmd_desc_element_addr = hba->ucdl_dma_addr +
+-		i * sizeof_utp_transfer_cmd_desc(hba);
++		i * ufshcd_get_ucd_size(hba);
+ 	u16 response_offset = offsetof(struct utp_transfer_cmd_desc,
+ 				       response_upiu);
+ 	u16 prdt_offset = offsetof(struct utp_transfer_cmd_desc, prd_table);
+@@ -3761,7 +3761,7 @@ static int ufshcd_memory_alloc(struct ufs_hba *hba)
+ 	size_t utmrdl_size, utrdl_size, ucdl_size;
+ 
+ 	/* Allocate memory for UTP command descriptors */
+-	ucdl_size = sizeof_utp_transfer_cmd_desc(hba) * hba->nutrs;
++	ucdl_size = ufshcd_get_ucd_size(hba) * hba->nutrs;
+ 	hba->ucdl_base_addr = dmam_alloc_coherent(hba->dev,
+ 						  ucdl_size,
+ 						  &hba->ucdl_dma_addr,
+@@ -3861,7 +3861,7 @@ static void ufshcd_host_memory_configure(struct ufs_hba *hba)
+ 	prdt_offset =
+ 		offsetof(struct utp_transfer_cmd_desc, prd_table);
+ 
+-	cmd_desc_size = sizeof_utp_transfer_cmd_desc(hba);
++	cmd_desc_size = ufshcd_get_ucd_size(hba);
+ 	cmd_desc_dma_addr = hba->ucdl_dma_addr;
+ 
+ 	for (i = 0; i < hba->nutrs; i++) {
+diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
+index f7553293ba98..df1d04f7a542 100644
+--- a/include/ufs/ufshcd.h
++++ b/include/ufs/ufshcd.h
+@@ -1133,7 +1133,7 @@ static inline size_t ufshcd_sg_entry_size(const struct ufs_hba *hba)
+ 	({ (void)(hba); BUILD_BUG_ON(sg_entry_size != sizeof(struct ufshcd_sg_entry)); })
+ #endif
+ 
+-static inline size_t sizeof_utp_transfer_cmd_desc(const struct ufs_hba *hba)
++static inline size_t ufshcd_get_ucd_size(const struct ufs_hba *hba)
+ {
+ 	return sizeof(struct utp_transfer_cmd_desc) + SG_ALL * ufshcd_sg_entry_size(hba);
+ }
+-- 
+2.18.0
 
-Daniel.
 
