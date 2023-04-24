@@ -4,75 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A425C77B61
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Apr 2023 08:07:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEBCCC77B61
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Apr 2023 08:14:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VyUAwVndLKyz2OuOwFAyDEBY/0Eoo2W/05HV1tDiLOk=; b=HRvTqadBpRVNCjxnUQ+fUopP8p
-	82fl1mCKLjgqbLeItdPFbNox7hY3RxYvG0ohEQH8vxCGK+IErNXW2o4/bOcMFqmpZwXTDV+sURqmv
-	5uC2L5nU6CpCouI7W3HL67XUypDBKbFE//hzl7y4ro/7JBh+orWqqvOu+DL9leGmeIqw6ziiFmmWd
-	4urVYKyQzyxuD7fCKFgH78tG6n8FacpfGRDZ9PrAwMSJASbO4s8bxZneIdIt/4261SUVthtFNHG7M
-	58a4zSoLxMFhTTJi/B77v6XfeRH0BPYuoXziqPNJ+etfxToyWxA/tn0nuT0F55/nR3t1cmVVFCXaP
-	kshzV20g==;
+	bh=K3GxftPRvrN8wPIWW5OkcgHpI130rHWEXA4ecGP3t4o=; b=daO6Sgcbw7LZa1kn154Nf1VTiC
+	1219TnmMqM6q6UbqhIjbQrhVd6pzyM/RA7S4+nVZWU0IujPC2fe1DyPWbYf8zIbUEnXYR/tjEmiEq
+	qJko8qMrO4sQHGmQvHIZmCfVvo1YS4ia4d7BsZEQeLgSZpqBne1OAHBBWpvggdXvxcirtoNyzFA04
+	9tLSDsAyVgevEDakVIGYIRP63xvoHHdIdlCl8ks439knPwvLM/DscEJv1akxV5K7NlXQKx3n3bjhv
+	J7gpki/rUjsW2aE0Ka/KBmSTvET090fXc2bhjOayAIidRDxiNZyoNxyz04QOpJMmAr+37zIVUHE/g
+	8YBWcyZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pqrED-00Fdbd-29;
-	Mon, 24 Apr 2023 08:07:17 +0000
+	id 1pqrKf-00Feag-23;
+	Mon, 24 Apr 2023 08:13:57 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pqrE9-00FdZv-2e;
-	Mon, 24 Apr 2023 08:07:15 +0000
+	id 1pqrKb-00FeZJ-24;
+	Mon, 24 Apr 2023 08:13:55 +0000
 Received: from [IPV6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2] (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id BF3F066031C8;
-	Mon, 24 Apr 2023 09:07:09 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2248D6603284;
+	Mon, 24 Apr 2023 09:13:51 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1682323631;
-	bh=fk2JF4cqUutVFMf5ReNQ5Z96Nq9fCMd68NIqprhYP4I=;
+	s=mail; t=1682324031;
+	bh=JAwvVEqwtoFNuCe2pt5CT0Xo4i8K/F43W7FlOkm5Sks=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=MnGUwRkrnSGoo5I2HpQ1KCjotEMOiHWLBKexRH7q759Dy2mH4gixRn5awN7Gi/NZu
-	 dD6TwzsjthF4hzHgSj2Y3IjJ6qT7th+XS4dCDBJHzFjX26vEOdpi48GcGSGQzU7GOy
-	 keTScAocTMzmC7GznLLAcu+31IA5HZ+FxSkS4XFUslc1ZE6CjaHV5hdWvRWzHRcXkH
-	 o3KdMzNRNiKVkICdhKOX/zTVmQZcU7DR2j0gk8riSVQde61lz+TgJYY8ytdxSQ/fGf
-	 BDfVSjES2saNVdhBQKoiienboJ8tM0eDhKUvd4PSPmeqFdCXbRKaACkzWr6+GW598X
-	 JxqlYseu52+lA==
-Message-ID: <da2e268a-b209-f16e-7257-336fee2aad52@collabora.com>
-Date: Mon, 24 Apr 2023 10:07:07 +0200
+	b=DEtra85tnDonxl9vUfuEs9Z2Je0MsBN6ouVRa+GkEF22zUmatqhWh1ZI23i9vT7UI
+	 PoCnU3rDkutjFFcC/A79r91jJW/Dchhmwo5Tye5OOWudNPBrFdLfJAAHUa1OG7iyol
+	 E7VZGtEqari1SLk4FonnQjZLGeXr6lumsyc+DaFC+q2IKoxnv/7vjK2e2LR7FOtpPe
+	 IC1Q2EYpMLx0gsk3Eqc395ZX4c4eHSgc2q+VBH/eGasyiYOIcw32Il14FIzfLKkZkK
+	 NVPPNgGg4uByH7bTL8NJmotOMleCeWs9ruimmCt7ccy498t6z0AFxtJr3bPUpn/KEG
+	 iYaECEANNWs0w==
+Message-ID: <eb78450a-1eed-f914-58be-ee18d85a2d62@collabora.com>
+Date: Mon, 24 Apr 2023 10:13:47 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.0
-Subject: Re: [PATCH v3 1/1] scsi: ufs: core: Fix &hwq->cq_lock deadlock issue
+Subject: Re: [PATCH 5/5] arm64: dts: mediatek: cherry-tomato-r1: Enable NVMe
+ PCI-Express port
 Content-Language: en-US
-To: Alice Chao <alice.chao@mediatek.com>,
- Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
- Bart Van Assche <bvanassche@acm.org>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Can Guo <quic_cang@quicinc.com>,
- Asutosh Das <quic_asutoshd@quicinc.com>,
- Stanley Chu <stanley.chu@mediatek.com>,
- Manivannan Sadhasivam <mani@kernel.org>
-Cc: peter.wang@mediatek.com, chun-hung.wu@mediatek.com,
- powen.kao@mediatek.com, naomi.chu@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, tun-yu.yu@mediatek.com,
- eddie.huang@mediatek.com, wsd_upstream@mediatek.com,
- linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230424080400.8955-1-alice.chao@mediatek.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: matthias.bgg@gmail.com, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, kernel@collabora.com
+References: <20230420094433.42794-1-angelogioacchino.delregno@collabora.com>
+ <20230420094433.42794-6-angelogioacchino.delregno@collabora.com>
+ <CAGXv+5GJroyKkj8oZw+BQxiUkiGCb-RBOxnKRkURQz5T6=EvNQ@mail.gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230424080400.8955-1-alice.chao@mediatek.com>
+In-Reply-To: <CAGXv+5GJroyKkj8oZw+BQxiUkiGCb-RBOxnKRkURQz5T6=EvNQ@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230424_010713_994271_33916A0F 
-X-CRM114-Status: GOOD (  14.58  )
+X-CRM114-CacheID: sfid-20230424_011353_810239_743FA749 
+X-CRM114-Status: GOOD (  19.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,85 +80,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 24/04/23 10:03, Alice Chao ha scritto:
-> [name:lockdep&]WARNING: inconsistent lock state
-> [name:lockdep&]--------------------------------
-> [name:lockdep&]inconsistent {IN-HARDIRQ-W} -> {HARDIRQ-ON-W} usage.
-> [name:lockdep&]kworker/u16:4/260 [HC0[0]:SC0[0]:HE1:SE1] takes:
->    ffffff8028444600 (&hwq->cq_lock){?.-.}-{2:2}, at:
-> ufshcd_mcq_poll_cqe_lock+0x30/0xe0
-> [name:lockdep&]{IN-HARDIRQ-W} state was registered at:
->    lock_acquire+0x17c/0x33c
->    _raw_spin_lock+0x5c/0x7c
->    ufshcd_mcq_poll_cqe_lock+0x30/0xe0
->    ufs_mtk_mcq_intr+0x60/0x1bc [ufs_mediatek_mod]
->    __handle_irq_event_percpu+0x140/0x3ec
->    handle_irq_event+0x50/0xd8
->    handle_fasteoi_irq+0x148/0x2b0
->    generic_handle_domain_irq+0x4c/0x6c
->    gic_handle_irq+0x58/0x134
->    call_on_irq_stack+0x40/0x74
->    do_interrupt_handler+0x84/0xe4
->    el1_interrupt+0x3c/0x78
-> <snip>
+Il 21/04/23 09:59, Chen-Yu Tsai ha scritto:
+> On Thu, Apr 20, 2023 at 5:45 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+>>
+>> On Tomato rev1 the PCIe0 controller is used for NVMe storage.
 > 
-> Possible unsafe locking scenario:
->         CPU0
->         ----
->    lock(&hwq->cq_lock);
->    <Interrupt>
->      lock(&hwq->cq_lock);
->    *** DEADLOCK ***
-> 2 locks held by kworker/u16:4/260:
+> This was slightly confusing for me. AFAIK rev1 is not an actual Tomato
+> device. It should be the prototype board, which is the original Cherry
+> reference design by Google [1].
 > 
-> [name:lockdep&]
->   stack backtrace:
-> CPU: 7 PID: 260 Comm: kworker/u16:4 Tainted: G S      W  OE
-> 6.1.17-mainline-android14-2-g277223301adb #1
-> Workqueue: ufs_eh_wq_0 ufshcd_err_handler
+> There is an actual Cherry derived device that has NVMe, though it's under
+> another brand and another name.
 > 
->   Call trace:
->    dump_backtrace+0x10c/0x160
->    show_stack+0x20/0x30
->    dump_stack_lvl+0x98/0xd8
->    dump_stack+0x20/0x60
->    print_usage_bug+0x584/0x76c
->    mark_lock_irq+0x488/0x510
->    mark_lock+0x1ec/0x25c
->    __lock_acquire+0x4d8/0xffc
->    lock_acquire+0x17c/0x33c
->    _raw_spin_lock+0x5c/0x7c
->    ufshcd_mcq_poll_cqe_lock+0x30/0xe0
->    ufshcd_poll+0x68/0x1b0
->    ufshcd_transfer_req_compl+0x9c/0xc8
->    ufshcd_err_handler+0x3bc/0xea0
->    process_one_work+0x2f4/0x7e8
->    worker_thread+0x234/0x450
->    kthread+0x110/0x134
->    ret_from_fork+0x10/0x20
-> 
-> ufs_mtk_mcq_intr() could refer to
-> https://lore.kernel.org/all/20230328103423.10970-3-powen.kao@mediatek.com/
-> 
-> When ufshcd_err_handler() is executed, CQ event interrupt can enter
-> waiting for the same lock. It could happened in upstream code path
-> ufshcd_handle_mcq_cq_events() and also in ufs_mtk_mcq_intr(). This
-> warning message will be generated when &hwq->cq_lock is used in IRQ
-> context with IRQ enabled. Use ufshcd_mcq_poll_cqe_lock() with
-> spin_lock_irqsave instead of spin_lock to resolve the deadlock issue.
-> 
-> Fixes: ed975065c31c ("scsi: ufs: core: mcq: Add completion support in poll")
-> Reviewed-by: Can Guo <quic_cang@quicinc.com>
-> Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
-> Signed-off-by: Alice Chao <alice.chao@mediatek.com>
 
+If revision 1 is not an actual Tomato device, and you can confirm that it is
+the prototype board... I can send a commit to entirely drop R1 as having it
+upstream would be of no use at all.
 
-For readability purposes only - next time please put the actual description at
-the beginning and the log at the end.
+Cheers,
+Angelo
 
-Anyway,
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
+> ChenYu
+> 
+> [1] Much like Kukui & Jacuzzi (MT8183), and Asurada (MT8192) are the
+>      reference designs.  I don't think we ever upstream the reference
+>      boards because they don't really end up in the hands of people
+>      outside of the project, and the ones we do have tend to be quite
+>      beaten up or no longer working due to extensive testing.
+> 
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts | 7 +++++++
+>>   1 file changed, 7 insertions(+)
+>>
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
+>> index 2d5e8f371b6d..11fc83ddf236 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
+>> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
+>> @@ -20,6 +20,13 @@ &sound {
+>>          model = "mt8195_r1019_5682";
+>>   };
+>>
+>> +&pcie0 {
+>> +       status = "okay";
+>> +
+>> +       pinctrl-names = "default";
+>> +       pinctrl-0 = <&pcie0_pins_default>;
+>> +};
+>> +
+>>   &ts_10 {
+>>          status = "okay";
+>>   };
+>> --
+>> 2.40.0
+>>
+>>
 
 
