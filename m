@@ -4,85 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C57F4C7618E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Apr 2023 18:15:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2883CC7618E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Apr 2023 18:16:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=blVk5F8wi1jpNsCC6o8Ei6j9sVKcdv4aLvP/rqf73i4=; b=UVlSzt0ZJ61Qk7
-	4j+8poiZjQyUROeOowA0XQX8+5zBI7dQf3lsDWnpu0SojQoZ0a/levn+hZAMtr7WkA8fkvBYxJgpY
-	m8mebHrTY6JBekcSeOqwfD3BgkemYlzH5tgrHTMDJWrdATOVVU9ubwv7qDaR9mem2VmuzIimwc9yN
-	vgTZXseKD12zjieHFBQ9xkHsRXviDo3hNl/xSDXL7ZYlQ59c5xB56Yx/T6RtbNZYAOcWroxLHjiR2
-	rzlhozNJ6NoeKs/Df8NUVPEGDhXbq2cau7hBHzUik5IheaTz5GFvBowSHxgC/JjRC9VYrEKWWpLvE
-	hN33lg+M6XeQhVi5JZdA==;
+	List-Owner; bh=j798mRgzagav4OXiZ0yBmBHNPfVDqUqZ2VrQzSezYUw=; b=EWJGA1SkwCN0Rf
+	n/mL8YJNAmlfaJnYvMfqhqPjpC7uLqJOwnEcxH2cQCcqVIpAhqz8ZRXzaTiFXJJ4wWzjM8ZrBkhzr
+	lyVne/q7O0h9cWsYntoSrfRvZ0NChQon28nRz815QwEJOXkRlpPbkgq7cGTOemtUzdecYcNuMOolF
+	+eOP2OW20SHNUTzgV99Vm/usSloamtuvhNa2hc+DIP65T5OBgk6FPMeXbWrcMxRrJSHffm7VecqJc
+	NhS1QI6ZepInURy19aiqcVIgCbccRg8AlUGhOP5KjmBV29M0byYum6ZD70M7S+cRTxaz4cmfc96er
+	XM/niFaw/D4Q4bGDjN3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pr0ia-00GyAt-1q;
-	Mon, 24 Apr 2023 18:15:16 +0000
-Received: from mail-io1-xd2f.google.com ([2607:f8b0:4864:20::d2f])
+	id 1pr0jk-00GyGO-2b;
+	Mon, 24 Apr 2023 18:16:28 +0000
+Received: from mail-il1-x12f.google.com ([2607:f8b0:4864:20::12f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pr0iX-00GyAY-2G
+	id 1pr0ji-00GyG3-20
 	for linux-mediatek@lists.infradead.org;
-	Mon, 24 Apr 2023 18:15:15 +0000
-Received: by mail-io1-xd2f.google.com with SMTP id ca18e2360f4ac-763c34315c1so125714339f.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 24 Apr 2023 11:15:12 -0700 (PDT)
+	Mon, 24 Apr 2023 18:16:27 +0000
+Received: by mail-il1-x12f.google.com with SMTP id e9e14a558f8ab-32b4e379000so13341755ab.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 24 Apr 2023 11:16:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1682360110; x=1684952110;
+        d=chromium.org; s=google; t=1682360183; x=1684952183;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=blVk5F8wi1jpNsCC6o8Ei6j9sVKcdv4aLvP/rqf73i4=;
-        b=Hv6C9zeyJ7FAaoxMJTATINYuKa9zQsaQlTAzWbRmHNWnXWGihxKY6LHruRufkvsuzo
-         5NO1FifkUkfHDEWWJPKKBrGcCWT1Fzp+X8pDNEv5dFHzVQwfyShlotWN/zj9Vx0eJr5z
-         4Ei9KuT1drUAbMOHwRpzb8ev4T6f+o8CVRc50=
+        bh=j798mRgzagav4OXiZ0yBmBHNPfVDqUqZ2VrQzSezYUw=;
+        b=G9KdJUHkkTe/bsKhq9J+4u0KFgFeFlCihRF4Y4sDSojvSCKNKBYWjVPGn4hUv2QAOt
+         HaEbHGEhDVK4SDeNjFnDo4iuM5w1pYk3ZsnS4tlp2M53c7dzr6a51F2A4gQB+IgzDSyF
+         0UtGy+7aTo2bjwqw63zoPf4pyKYVWE3MBtywk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682360110; x=1684952110;
+        d=1e100.net; s=20221208; t=1682360183; x=1684952183;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=blVk5F8wi1jpNsCC6o8Ei6j9sVKcdv4aLvP/rqf73i4=;
-        b=Bi6LCbSDQ6Hoh2tAr/99dVlG2CzyLrxWuGGu2NinueAkkd8G12SRRN4m0YOToyeQwf
-         jU8gu44w/LyVMjAJxFpAFLoyhhvYf2kLXwNmrJj2/Ub7HOLSdC0CiJC2m0NxGtS+R30O
-         6eRGF31JQ+rPgTsQfbQ+Z1vlgaEeQ9bep0HMgOw4nDQiOuORjEkwZax2VNugTazM4CIc
-         R8BT3j/pa/st4uS/PqIxisADbk5RAGEGyCgreqMzeY4XE0Lg5CD+PN02MFcSJ9aMMJ5y
-         wrOPVVE4VMxaQwGlJvugzTO1d0zZNSl63KaF+3AyejjFJ2KWEVOI84/QV2CVKySpAoiR
-         SyaQ==
-X-Gm-Message-State: AAQBX9dJeTddAFOBLJv76CxRK0S9wpZgU3aY88P00SWG+3xjUvmji3wF
-	ayYBAfYNw+ih0+vSCSK+dC66vKdE75WP8ByccP8=
-X-Google-Smtp-Source: AKy350ZARlyGZUcMQGV0qDFyFAXesPRvNGuDCMkQI3kpaGZobQYxT/D/MYf7OBi+EmCT91cxToclLA==
-X-Received: by 2002:a5d:9916:0:b0:763:684d:7f11 with SMTP id x22-20020a5d9916000000b00763684d7f11mr6322540iol.5.1682360110225;
-        Mon, 24 Apr 2023 11:15:10 -0700 (PDT)
-Received: from mail-il1-f177.google.com (mail-il1-f177.google.com. [209.85.166.177])
-        by smtp.gmail.com with ESMTPSA id f29-20020a02a11d000000b0040b38102b79sm3435192jag.82.2023.04.24.11.15.08
+        bh=j798mRgzagav4OXiZ0yBmBHNPfVDqUqZ2VrQzSezYUw=;
+        b=QxMBugrBZoUfMnA1PcJTl2Jw3mLupP9i63XiIs5XLY6P+PNYjxKS3hwBm+7RgBSe1u
+         zuUC7Mh3UMcdk7i0w+ydZpxGLXbZuFiiAmfeFcG84o8rv0cPaEqBB7sfgCVvYbwnvZjW
+         kIvoBSxWitim2/47u6Gv3hCeZagdbUrrf9rArJPHOUmbGfVdIU9qTQKOoRDU915OnJ8t
+         pguWiq/5LswNWyQmYUMumuZXc0jC3CVii7jbJ2fOFjoIZ39z9mPe+sUnyArqIkX1SiHt
+         mYn6BAG+GFGD6UZ2DnZgqXSxjXf68uROc4vYxBHU8mzQa/hptVz7lGys7D4bknQA/sfa
+         JyHg==
+X-Gm-Message-State: AAQBX9c6j+wkS9PqdfmjifTyyuHFBpruaogXEp4Zl1312qyqbpTNgKnp
+	eq463CNoiej7CcYD3mO/70+pvpqvZuMP8Iky/1M=
+X-Google-Smtp-Source: AKy350ZrTxE+n75VrnDCeX592GuCGN7/BhPRdMmXqJWBLkfNJPNpIOew6QlpXV1Wl+JI/+c5WDMDwQ==
+X-Received: by 2002:a92:d686:0:b0:32b:f9b:82fb with SMTP id p6-20020a92d686000000b0032b0f9b82fbmr6277423iln.7.1682360183125;
+        Mon, 24 Apr 2023 11:16:23 -0700 (PDT)
+Received: from mail-il1-f174.google.com (mail-il1-f174.google.com. [209.85.166.174])
+        by smtp.gmail.com with ESMTPSA id cx27-20020a056638491b00b0040fa19472bcsm3505782jab.92.2023.04.24.11.16.21
         for <linux-mediatek@lists.infradead.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 24 Apr 2023 11:15:09 -0700 (PDT)
-Received: by mail-il1-f177.google.com with SMTP id e9e14a558f8ab-328cb023b1dso1095115ab.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 24 Apr 2023 11:15:08 -0700 (PDT)
-X-Received: by 2002:a05:6e02:1d09:b0:32e:561d:b42d with SMTP id
- i9-20020a056e021d0900b0032e561db42dmr34592ila.16.1682360107716; Mon, 24 Apr
- 2023 11:15:07 -0700 (PDT)
+        Mon, 24 Apr 2023 11:16:22 -0700 (PDT)
+Received: by mail-il1-f174.google.com with SMTP id e9e14a558f8ab-316d901b2ecso1108405ab.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 24 Apr 2023 11:16:21 -0700 (PDT)
+X-Received: by 2002:a05:6e02:1b83:b0:32a:f2a9:d1b7 with SMTP id
+ h3-20020a056e021b8300b0032af2a9d1b7mr19498ili.10.1682360181408; Mon, 24 Apr
+ 2023 11:16:21 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230418124953.3170028-1-fshao@chromium.org> <20230418124953.3170028-2-fshao@chromium.org>
- <ZD8z57MBvcfExJx8@nixie71> <CAC=S1ngBt9DmBobMkQXWhqE1UUxFv2U6iFd42nT=1N7r8+pFUg@mail.gmail.com>
- <CAD=FV=U_i26a8uJYmqYf6PUgmTUgmEB5L2DkVga0zDX_iDcGQg@mail.gmail.com>
- <ZEAGTiGyvynGA9P1@nixie71> <CAD=FV=UB393Z1zhK54Apgr-iRcvgiK0t36jt6-t5-5zz3m8OZQ@mail.gmail.com>
- <CAC=S1nj8VTXOovvianPWDYnsrbek0APD76SBNquFObaw8Vg4BQ@mail.gmail.com> <ZEX4BEVMf6GtvaAP@nixie71>
-In-Reply-To: <ZEX4BEVMf6GtvaAP@nixie71>
+References: <20230418124953.3170028-1-fshao@chromium.org> <20230418124953.3170028-3-fshao@chromium.org>
+ <ZEX5tc2LSZoVswc2@nixie71>
+In-Reply-To: <ZEX5tc2LSZoVswc2@nixie71>
 From: Doug Anderson <dianders@chromium.org>
-Date: Mon, 24 Apr 2023 11:14:55 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=VtrJDVB0gQp-O82V3mgU6MFVMSGrvzh0fRa7sYAt_Pqw@mail.gmail.com>
-Message-ID: <CAD=FV=VtrJDVB0gQp-O82V3mgU6MFVMSGrvzh0fRa7sYAt_Pqw@mail.gmail.com>
-Subject: Re: [PATCH 1/2] dt-bindings: input: goodix: Add powered-in-suspend property
+Date: Mon, 24 Apr 2023 11:16:10 -0700
+X-Gmail-Original-Message-ID: <CAD=FV=XnrSskS=0UKRGGPBxSnPYQtUkJeoBm44bDnwKVBHJLyA@mail.gmail.com>
+Message-ID: <CAD=FV=XnrSskS=0UKRGGPBxSnPYQtUkJeoBm44bDnwKVBHJLyA@mail.gmail.com>
+Subject: Re: [PATCH 2/2] HID: i2c-hid: goodix: Add support for
+ powered-in-suspend property
 To: Jeff LaBundy <jeff@labundy.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230424_111513_782750_A22DE787 
-X-CRM114-Status: GOOD (  28.96  )
+X-CRM114-CacheID: sfid-20230424_111626_686575_3A1696FA 
+X-CRM114-Status: GOOD (  25.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,73 +92,69 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Benjamin Tissoires <benjamin.tissoires@redhat.com>, linux-mediatek <linux-mediatek@lists.infradead.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-input@vger.kernel.org
+Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Stephen Kitt <steve@sk2.org>, Jiri Kosina <jikos@kernel.org>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Benjamin Tissoires <benjamin.tissoires@redhat.com>, linux-mediatek <linux-mediatek@lists.infradead.org>, linux-input@vger.kernel.org, Matthias Kaehlcke <mka@chromium.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Hi,
 
-On Sun, Apr 23, 2023 at 8:31=E2=80=AFPM Jeff LaBundy <jeff@labundy.com> wro=
+On Sun, Apr 23, 2023 at 8:38=E2=80=AFPM Jeff LaBundy <jeff@labundy.com> wro=
 te:
 >
-> Back-powering can come in two forms:
+> > @@ -37,13 +38,34 @@ static int goodix_i2c_hid_power_up(struct i2chid_op=
+s *ops)
+> >               container_of(ops, struct i2c_hid_of_goodix, ops);
+> >       int ret;
+> >
+> > -     ret =3D regulator_enable(ihid_goodix->vdd);
+> > -     if (ret)
+> > -             return ret;
+> > -
+> > -     ret =3D regulator_enable(ihid_goodix->vddio);
+> > -     if (ret)
+> > -             return ret;
+> > +     /*
+> > +      * This is to ensure that the reset GPIO will be asserted and the
+> > +      * regulators will be enabled for all cases.
+> > +      */
+> > +     if (ihid_goodix->powered_in_suspend) {
+> > +             /*
+> > +              * This is not mandatory, but we assert reset here (inste=
+ad of
+> > +              * in power-down) to ensure that the device will have a c=
+lean
+> > +              * state later on just like the normal scenarios would ha=
+ve.
+> > +              *
+> > +              * Also, since the regulators were not disabled in power-=
+down,
+> > +              * we don't need to enable them here.
+> > +              */
+> > +             gpiod_set_value_cansleep(ihid_goodix->reset_gpio, 1);
+> > +     } else {
+> > +             /*
+> > +              * In this case, the reset is already asserted (either in
+> > +              * probe or power-down).
+> > +              * All we need is to enable the regulators.
+> > +              */
+> > +             ret =3D regulator_enable(ihid_goodix->vdd);
+> > +             if (ret)
+> > +                     return ret;
+> > +
+> > +             ret =3D regulator_enable(ihid_goodix->vddio);
+> > +             if (ret)
+> > +                     return ret;
+> > +     }
 >
-> 1. The one you've described, which is by far the most common. As you ment=
-ion,
-> it is not the case here since the issue happens only when we drive the GP=
-IO
-> low and not high.
+> Please let me know in case I have misunderstood, but I don't see a need
+> to change the regulator_enable/disable() logic if this property is set.
+> If the regulators are truly always-on, the regulator core already knows
+> what to do and we should not duplicate that logic here.
 >
-> 2. Through a forbidden power supply sequence, an input pin of an IC with
-> multiple power supplies becomes a weak power supply itself. Grounding the
-> GPIO then sinks current into the SoC.
->
-> This problem smelled like (2), especially since asserting the GPIO or pow=
-ering
-> down the supply alleviates the symptom. Most Goodix controllers I've work=
-ed
-> with have two or more supplies, and the datasheet requires them to be ena=
-bled
-> or disabled in a specific order.
->
-> Based on Fei's feedback, however, this IC does not seem to be one of thos=
-e
-> since there is reportedly only a single rail. I guess either vdd or vddio=
- is
-> tied to a dummy regulator? If so, then perhaps we can scratch this theory=
-.
+> Based on the alleged silicon erratum discussed in patch [1/2], it seems
+> we only want to control the behavior of the reset GPIO. Therefore, only
+> the calls to gpiod_set_value_cansleep() should be affected and the name
+> of the property updated to reflect what it's actually doing.
 
-There is one rail provided from the main board, but there can be two
-voltage levels involved depending on stuffings on the touchscreen
-itself. I talked a bit about this in commit 1d18c1f3b7d9
-("dt-bindings: HID: i2c-hid: goodix: Add mainboard-vddio-supply").
-
-
-> Fair enough, I was simply sketpical that this was the _right_ workaround.
-> Were this an issue of only supply A left on yet the IC datasheet requires
-> supply B to remain on if supply A is on, I would rather see this solved b=
-y
-> updating a regulator dts node, trusted FW sequence, etc.
-
-Right. That type of stuff was looked at in detail by two separate
-teams, so I don't think this is the issue.
-
-
-> Thanks for your due diligence; if this really is a silicon issue, then
-> the driver should indeed accommodate it.
->
-> That being said, the name 'powered-in-suspend' seems a bit conflated. We
-> should not be duplicating regulator policy in this driver; the existing
-> naming also may cause confusion for other HW configurations that do leave
-> vdd and vddio on during suspend, but don't have this problem.
->
-> Here, we actually mean to control the behavior of the reset GPIO through
-> suspend and therefore something like 'goodix,no-reset-during-suspend' is
-> closer to what I understand us to intend to do. I will add more details
-> in patch [2/2].
-
-I'd be fine with that name. ...ah, and adding the "goodix," prefix is
-a good call.
-
--Doug
+This would be OK w/ me.
 
