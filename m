@@ -4,106 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5624C77B73
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Apr 2023 15:42:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AA23C77B61
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Apr 2023 16:49:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hxcjgeLi5mR/+Rnc6mrQlDv9TmBqIx7WXWMzAgilAKE=; b=CWDN3qcBC2WR3kCOfiidzY+7w+
-	DHYIqkrhSkNMUdJ7+iQ4bw2jYVnXz8oO0yr87IxX4VrtiS92GkKxVlDfo/gE7u9jsuGL/VeLXIDbL
-	b/YV3wjM7MMy9nDJl4FIGnK5Bhpj9G4XM9eZ3VtXJsjkBkGNyGCxTIYTWHbNRu/9Ozah2rfaz/5XH
-	8NyHrQHXmLlIEC4bSq15QeJFzHwGuEzaTLpmm8DXwrNB37ZSUpQ2OtKXHyrED2k3s7Ju6Q8ewCy+g
-	Sgzh0KtaGkutSPz2710maj0ZWnnNqZJLpXQchA00ObSfYW6NKuwbqmKvPWPY4Md1REVF6Z8ulRbEE
-	bv8kejPw==;
+	bh=pQPzlQXVK7yiO98rLUpsr4qSlOZNSd2wUC44NfOzC5o=; b=xNq0TiwK6JNj1KR9ucRdegLIR3
+	i446Pyx0p/1gECGwFmu9bJ36DBI29gxzciqum6QfDojpLeQq7WPLvQzdiHG7CP7YU3CpbNZEGM/AX
+	rr5FSHW4iZCjcWgdg0BBkxOvkmCx+UytIx4DHHkPOc5M/kypLSVb1fePK01tyZ14nmIE0QDEeBqdJ
+	JrXBuQozOc5UfdFU0rVzHYvUBiwLnG0+1S5wpcZ/d8Pmgb2YiW/JWGd9F7xJ+MgVndtnG1cv+f9AN
+	3B0iTyHWm2ym+43d9U91FNnz7bqLsYd3b18Z4QFQYJzTA56YBxCnJpyCiHcbqwp/UKGdG8BnrX2TV
+	QTqeezOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pqyKQ-00Givl-0n;
-	Mon, 24 Apr 2023 15:42:10 +0000
-Received: from mail-io1-xd30.google.com ([2607:f8b0:4864:20::d30])
+	id 1pqzNV-00GqgZ-1J;
+	Mon, 24 Apr 2023 16:49:25 +0000
+Received: from mail-pj1-f45.google.com ([209.85.216.45])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pqyKN-00Giuh-0f
-	for linux-mediatek@lists.infradead.org;
-	Mon, 24 Apr 2023 15:42:08 +0000
-Received: by mail-io1-xd30.google.com with SMTP id ca18e2360f4ac-76073fb4511so100369339f.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 24 Apr 2023 08:42:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1682350925; x=1684942925;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=hxcjgeLi5mR/+Rnc6mrQlDv9TmBqIx7WXWMzAgilAKE=;
-        b=hHYQc29xYc0+ez0n0gxPaHPhBIuwJH5yRsYC58a/hCmWlnOnldtEuYw0pYW0cfX52W
-         Y695ymaGQtV4o5/Tahis8uUDjd6tjdN0gu5T3g8kwneBuPSt2WewI+1pOb2QfuwWGoB2
-         EQPE0SBT7IvZnNo0mcjIbBaRLv7/YFHaFU0yA=
+	id 1pqzNR-00Gqf2-1n;
+	Mon, 24 Apr 2023 16:49:23 +0000
+Received: by mail-pj1-f45.google.com with SMTP id 98e67ed59e1d1-24b89b9a72cso1662370a91.1;
+        Mon, 24 Apr 2023 09:49:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682350925; x=1684942925;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=hxcjgeLi5mR/+Rnc6mrQlDv9TmBqIx7WXWMzAgilAKE=;
-        b=ZuoCMuhptH6DR4Q7zG3/8OLaJvLp4HKClq8yu9n191yUIVb9xJGs81hzI9SKdGsKP8
-         JtVXvtSAhod1m8iEApM8IThT3qJ78R5Bpu77xPJx6+ZaS+mR0vV4olLqhZ+X6yIPva71
-         3wYWI6umelvjt7DtzCfpSQWAB4Oy+Y5Z9A59srWnnmDbOviFb8RMC4/b2PnB0hvDEMFy
-         RtAy8DVAbfE7o1GpqA4x+ekvldPdCaCO7MfjD54qcw6LN6KYzSO3mAjPsF5UKktR2V/M
-         T0MWXO/O2yADcvr5uvWgY3iBUJ5xpYMq+/mBJzl8BHyp1w/EZJX3Yuh1Tz94ktk0TSSf
-         hsXg==
-X-Gm-Message-State: AAQBX9dMLL+Q3sE24K/XjmBuD386HcyemInYFW9H7Neljc7yAgvV1JGh
-	lUcHqfurSU9h1Q7lJxntcVV6tPvDYxV/nx6GpJ8=
-X-Google-Smtp-Source: AKy350bfVz7p8OQCKQOz+NSRvKAhi/8eu7Ax7YogIwT3lzTHm+bv8ynaj75A2y0Ok2VHv4HPj32l1Q==
-X-Received: by 2002:a92:b0a:0:b0:325:da54:ae8b with SMTP id b10-20020a920b0a000000b00325da54ae8bmr6305810ilf.9.1682350925364;
-        Mon, 24 Apr 2023 08:42:05 -0700 (PDT)
-Received: from mail-il1-f173.google.com (mail-il1-f173.google.com. [209.85.166.173])
-        by smtp.gmail.com with ESMTPSA id q31-20020a056638345f00b0040f91a65669sm3468090jav.21.2023.04.24.08.42.02
-        for <linux-mediatek@lists.infradead.org>
+        d=1e100.net; s=20221208; t=1682354957; x=1684946957;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=pQPzlQXVK7yiO98rLUpsr4qSlOZNSd2wUC44NfOzC5o=;
+        b=QMQVqmuNKW5RE8siJhDoL5v4TEGC8XzFSOT4MQwHi3RV0FSoZaPX1XmYzHnNzgTE7R
+         7BCncy8OcInBNtUUrNtVWOla8jNZ6GVouMh/vO500gm3WD7qbfIxvc+KRCw656Kaj88W
+         L+lvysa3HM0lhNiCtATsTztUNwDFNTDPE0A4zM2LB8jEpbHZchwMbKxbuqfMhNpvnsv9
+         KUFW5/CwN7EBnKruD9dTx5HPJphLG4wb9zv6VA2Nd9MQWjNte/ON2PegKIfp6lKKTbG/
+         u6Fv1ZKaO2oQhjlAvhegjWfWuGryyfYGPdyu6LF5BwRspvJSRQiA1rx2BPCelcE7h7Bm
+         htOw==
+X-Gm-Message-State: AAQBX9eFd4wWPC0bgCU26Ld0cOyqIalp9NtxhtgbSuFG79dpJdo9wt0V
+	iMlYbFJMTgfYJPQOFXrAELc=
+X-Google-Smtp-Source: AKy350buLU0OlbzX25JOXcAqUZe69CK7FS254G2Wob6KCJ3eWiKz4m8UCiG1J0FN5j8wYX04LKmdtg==
+X-Received: by 2002:a17:90a:ca81:b0:247:a272:71be with SMTP id y1-20020a17090aca8100b00247a27271bemr14748647pjt.46.1682354957075;
+        Mon, 24 Apr 2023 09:49:17 -0700 (PDT)
+Received: from ?IPV6:2620:15c:211:201:1f14:a83c:1e8:6ae2? ([2620:15c:211:201:1f14:a83c:1e8:6ae2])
+        by smtp.gmail.com with ESMTPSA id o5-20020a17090aac0500b0024677263e36sm6528524pjq.43.2023.04.24.09.49.14
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 24 Apr 2023 08:42:02 -0700 (PDT)
-Received: by mail-il1-f173.google.com with SMTP id e9e14a558f8ab-328cb023b1dso1063115ab.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 24 Apr 2023 08:42:02 -0700 (PDT)
-X-Received: by 2002:a05:6e02:1606:b0:315:8e3a:f546 with SMTP id
- t6-20020a056e02160600b003158e3af546mr480218ilu.6.1682350901412; Mon, 24 Apr
- 2023 08:41:41 -0700 (PDT)
+        Mon, 24 Apr 2023 09:49:16 -0700 (PDT)
+Message-ID: <8948f2b1-e11f-8f84-62e7-e5b13be587b4@acm.org>
+Date: Mon, 24 Apr 2023 09:49:13 -0700
 MIME-Version: 1.0
-References: <20230421155255.1.I6bf789d21d0c3d75d382e7e51a804a7a51315f2c@changeid>
- <20230424125355.GA4054@aspen.lan>
-In-Reply-To: <20230424125355.GA4054@aspen.lan>
-From: Doug Anderson <dianders@chromium.org>
-Date: Mon, 24 Apr 2023 08:41:28 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=W2f37XUSWgSrr9AjGZ5WLBm-+6EkGx6YiOEPDsyYQn=w@mail.gmail.com>
-Message-ID: <CAD=FV=W2f37XUSWgSrr9AjGZ5WLBm-+6EkGx6YiOEPDsyYQn=w@mail.gmail.com>
-Subject: Re: [PATCH] hardlockup: detect hard lockups using secondary (buddy) cpus
-To: Daniel Thompson <daniel.thompson@linaro.org>
-Cc: Petr Mladek <pmladek@suse.com>, Andrew Morton <akpm@linux-foundation.org>, 
-	Lecopzer Chen <lecopzer.chen@mediatek.com>, Stephen Boyd <swboyd@chromium.org>, 
-	Chen-Yu Tsai <wens@csie.org>, linux-arm-kernel@lists.infradead.org, 
-	kgdb-bugreport@lists.sourceforge.net, Marc Zyngier <maz@kernel.org>, 
-	linux-perf-users@vger.kernel.org, Mark Rutland <mark.rutland@arm.com>, 
-	Masayoshi Mizuma <msys.mizuma@gmail.com>, Will Deacon <will@kernel.org>, ito-yuichi@fujitsu.com, 
-	Sumit Garg <sumit.garg@linaro.org>, Catalin Marinas <catalin.marinas@arm.com>, 
-	Colin Cross <ccross@android.com>, Matthias Kaehlcke <mka@chromium.org>, 
-	Guenter Roeck <groeck@chromium.org>, Tzung-Bi Shih <tzungbi@chromium.org>, 
-	Alexander Potapenko <glider@google.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Dan Williams <dan.j.williams@intel.com>, Geert Uytterhoeven <geert+renesas@glider.be>, 
-	Ingo Molnar <mingo@kernel.org>, John Ogness <john.ogness@linutronix.de>, 
-	Josh Poimboeuf <jpoimboe@kernel.org>, Juergen Gross <jgross@suse.com>, Kees Cook <keescook@chromium.org>, 
-	Laurent Dufour <ldufour@linux.ibm.com>, Liam Howlett <liam.howlett@oracle.com>, 
-	Marco Elver <elver@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Michael Ellerman <mpe@ellerman.id.au>, Miguel Ojeda <ojeda@kernel.org>, 
-	Nathan Chancellor <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>, 
-	"Paul E. McKenney" <paulmck@kernel.org>, Peter Zijlstra <peterz@infradead.org>, 
-	Randy Dunlap <rdunlap@infradead.org>, Rasmus Villemoes <linux@rasmusvillemoes.dk>, 
-	Sami Tolvanen <samitolvanen@google.com>, Stefano Stabellini <sstabellini@kernel.org>, 
-	Vlastimil Babka <vbabka@suse.cz>, Zhaoyang Huang <zhaoyang.huang@unisoc.com>, 
-	Zhen Lei <thunder.leizhen@huawei.com>, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.1
+Subject: Re: [PATCH v3 1/1] scsi: ufs: core: Fix &hwq->cq_lock deadlock issue
+Content-Language: en-US
+To: Alice Chao <alice.chao@mediatek.com>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Can Guo <quic_cang@quicinc.com>, Asutosh Das <quic_asutoshd@quicinc.com>,
+ Stanley Chu <stanley.chu@mediatek.com>,
+ Manivannan Sadhasivam <mani@kernel.org>
+Cc: peter.wang@mediatek.com, chun-hung.wu@mediatek.com,
+ powen.kao@mediatek.com, naomi.chu@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, tun-yu.yu@mediatek.com,
+ eddie.huang@mediatek.com, wsd_upstream@mediatek.com,
+ linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230424080400.8955-1-alice.chao@mediatek.com>
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20230424080400.8955-1-alice.chao@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230424_084207_248071_3BA2EBE4 
-X-CRM114-Status: GOOD (  29.26  )
+X-CRM114-CacheID: sfid-20230424_094921_589641_C3556A35 
+X-CRM114-Status: GOOD (  13.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,47 +93,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On 4/24/23 01:03, Alice Chao wrote:
+> [name:lockdep&]WARNING: inconsistent lock state
+> [name:lockdep&]--------------------------------
+> [name:lockdep&]inconsistent {IN-HARDIRQ-W} -> {HARDIRQ-ON-W} usage.
+> [name:lockdep&]kworker/u16:4/260 [HC0[0]:SC0[0]:HE1:SE1] takes:
+>    ffffff8028444600 (&hwq->cq_lock){?.-.}-{2:2}, at:
+> ufshcd_mcq_poll_cqe_lock+0x30/0xe0
+> [name:lockdep&]{IN-HARDIRQ-W} state was registered at:
+>    lock_acquire+0x17c/0x33c
+>    _raw_spin_lock+0x5c/0x7c
+>    ufshcd_mcq_poll_cqe_lock+0x30/0xe0
+>    ufs_mtk_mcq_intr+0x60/0x1bc [ufs_mediatek_mod]
+>    __handle_irq_event_percpu+0x140/0x3ec
+>    handle_irq_event+0x50/0xd8
+>    handle_fasteoi_irq+0x148/0x2b0
+>    generic_handle_domain_irq+0x4c/0x6c
+>    gic_handle_irq+0x58/0x134
+>    call_on_irq_stack+0x40/0x74
+>    do_interrupt_handler+0x84/0xe4
+>    el1_interrupt+0x3c/0x78
+> <snip>
+> 
+> Possible unsafe locking scenario:
+>         CPU0
+>         ----
+>    lock(&hwq->cq_lock);
+>    <Interrupt>
+>      lock(&hwq->cq_lock);
+>    *** DEADLOCK ***
+> 2 locks held by kworker/u16:4/260:
+> 
+> [name:lockdep&]
+>   stack backtrace:
+> CPU: 7 PID: 260 Comm: kworker/u16:4 Tainted: G S      W  OE
+> 6.1.17-mainline-android14-2-g277223301adb #1
+> Workqueue: ufs_eh_wq_0 ufshcd_err_handler
+> 
+>   Call trace:
+>    dump_backtrace+0x10c/0x160
+>    show_stack+0x20/0x30
+>    dump_stack_lvl+0x98/0xd8
+>    dump_stack+0x20/0x60
+>    print_usage_bug+0x584/0x76c
+>    mark_lock_irq+0x488/0x510
+>    mark_lock+0x1ec/0x25c
+>    __lock_acquire+0x4d8/0xffc
+>    lock_acquire+0x17c/0x33c
+>    _raw_spin_lock+0x5c/0x7c
+>    ufshcd_mcq_poll_cqe_lock+0x30/0xe0
+>    ufshcd_poll+0x68/0x1b0
+>    ufshcd_transfer_req_compl+0x9c/0xc8
+>    ufshcd_err_handler+0x3bc/0xea0
+>    process_one_work+0x2f4/0x7e8
+>    worker_thread+0x234/0x450
+>    kthread+0x110/0x134
+>    ret_from_fork+0x10/0x20
+> 
+> ufs_mtk_mcq_intr() could refer to
+> https://lore.kernel.org/all/20230328103423.10970-3-powen.kao@mediatek.com/
+> 
+> When ufshcd_err_handler() is executed, CQ event interrupt can enter
+> waiting for the same lock. It could happened in upstream code path
+> ufshcd_handle_mcq_cq_events() and also in ufs_mtk_mcq_intr(). This
+> warning message will be generated when &hwq->cq_lock is used in IRQ
+> context with IRQ enabled. Use ufshcd_mcq_poll_cqe_lock() with
+> spin_lock_irqsave instead of spin_lock to resolve the deadlock issue.
 
-On Mon, Apr 24, 2023 at 5:54=E2=80=AFAM Daniel Thompson
-<daniel.thompson@linaro.org> wrote:
->
-> On Fri, Apr 21, 2023 at 03:53:30PM -0700, Douglas Anderson wrote:
-> > From: Colin Cross <ccross@android.com>
-> >
-> > Implement a hardlockup detector that can be enabled on SMP systems
-> > that don't have an arch provided one or one implemented atop perf by
-> > using interrupts on other cpus. Each cpu will use its softlockup
-> > hrtimer to check that the next cpu is processing hrtimer interrupts by
-> > verifying that a counter is increasing.
-> >
-> > NOTE: unlike the other hard lockup detectors, the buddy one can't
-> > easily provide a backtrace on the CPU that locked up. It relies on
-> > some other mechanism in the system to get information about the locked
-> > up CPUs. This could be support for NMI backtraces like [1], it could
-> > be a mechanism for printing the PC of locked CPUs like [2], or it
-> > could be something else.
-> >
-> > This style of hardlockup detector originated in some downstream
-> > Android trees and has been rebased on / carried in ChromeOS trees for
-> > quite a long time for use on arm and arm64 boards. Historically on
-> > these boards we've leveraged mechanism [2] to get information about
-> > hung CPUs, but we could move to [1].
->
-> On the Arm platforms is this code able to leverage the existing
-> infrastructure to extract status from stuck CPUs:
-> https://docs.kernel.org/trace/coresight/coresight-cpu-debug.html
+For future patches, please make sure that the patch description occurs 
+before the call traces. Anyway:
 
-Yup! I wasn't explicit about this, but that's where you end up if you
-follow the whole bug tracker item that was linked as [2].
-Specifically, we used to have downstream patches in the ChromeOS that
-just reached into the coresight range from a SoC specific driver and
-printed out the CPU_DBGPCSR. When Brian was uprevving rk3399
-Chromebooks he found that the equivalent functionality had made it
-upstream in a generic way through the coresight framework. Brian
-confirmed it was working on rk3399 and made all of the device tree
-changes needed to get it all hooked up, so (at least for that SoC) it
-should work on that SoC.
-
-[2] https://issuetracker.google.com/172213129
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
 
