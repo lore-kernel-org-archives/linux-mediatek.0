@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93741C7618E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Apr 2023 11:25:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CCE5C77B61
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Apr 2023 11:25:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bYN7f1CAByVYvlLzXuUMejik+2qClzRig2YDd5no2cI=; b=as/YuvSjbXfjgP8zDV2syamvWx
-	3a/4dOWzfga62j0Q2CPe35H12fkXWLz/Fx19xT4tbrueGrXT+gpC3OvGsGrx/sHhU7NO7aMTFLQIn
-	B0xID2yZxqUOH2OL6yDRbMRvBdMl6Q8NiIvjj5RKLZCf1lChdDf7ux4zqVktlp0jWpOZk32lm0njC
-	Tf4u4/AYkyDYzPaLGnAuNR6pMKdaAW/C9IixTI10XVT80dXSp3v+IkR4NZbEQaj4w8GKYFGYf8oTV
-	hmeDwLqrg1urZugYD3Ho8Tia33Yhaj5BlrnCVpZ+dSio5USThhu9g8O6OxImusqCEwU+qTPUYCKVi
-	ZvL9TsnQ==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=FySLVtRUqALQ8pnoAX/D79ZcODZut2tbwpSzv/0IXMc=; b=0LJe0KnPCsIYPSxVzSsAMSeqO9
+	PrtBv2i/TnxWLm0/XFv67DMcCcmZk4J3DiPxWsLv2TYsg5rJNjJtygXzIyNC905CrB7Mifg9Xc/6N
+	5HLo4mE0ShmKVU4b1HsYjWGH0qSS36EbZtXm8nHzDIv+53BhpTvhsMf1zPrxltMNsjrvnWWnGMIse
+	BRoQMWKOnV0PgbHyRDJw00zywi1zfJGo5TLH0gwLLfQbtwWi0xoZsVjsNeVquwa70Xl7wQU04nRjg
+	Gi32z+AMqBNuLsive7EEjQXmgCBFJE0fjv2AH7NvUBpsW74TlLh6yq0lj7OEnsixAJ0YxbeV6cPb/
+	MoM2mRBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pquKG-00GBgM-1N;
-	Mon, 24 Apr 2023 11:25:44 +0000
+	id 1pquKI-00GBhr-1k;
+	Mon, 24 Apr 2023 11:25:46 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pquK5-00GBZr-2K;
+	id 1pquK5-00GBZo-2L;
 	Mon, 24 Apr 2023 11:25:35 +0000
 Received: from IcarusMOD.eternityproject.eu (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id CED3166032A3;
-	Mon, 24 Apr 2023 12:25:29 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3EB56660316A;
+	Mon, 24 Apr 2023 12:25:28 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1682335530;
-	bh=E3a2HggcnHyNJ74IvNKxPxlRZM32GuP7ERQkfR2uopU=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=c05bQPsdHBaHdIUKTGFwCDDnZRKlU1p2vYIE+90NQ712UgdQYDYbtMoKDWv1bNONZ
-	 4DUvoHgzRW6g3Wj8baavyazYFU0eUvhI9QH2CkaJTjQPI9LIgPWm/PfYiveaSV8Jl9
-	 oh0daANq1QosxicEdaigSdqmKqUSrtuOg9PgY83F4RFMEgLcloSCer2RGYoBuwrrQc
-	 oB5eZC6Y4Kvhrrom/hEGgF7qZriyD56pN3e85qCLwVYUWPb9bgV8p/d5NChdMW6lrX
-	 TBXTzWXPe4GjWNqzJcRL2xJxp9v/Gs09st2hOvjgk+m5rHqrH1cQTXj4CCJu9AuW8s
-	 maXVRW3bSDlnQ==
+	s=mail; t=1682335528;
+	bh=l0uXiEnDZ2ULACJcoCCIgBv1dIqJ+NUHoS3OdWQeveo=;
+	h=From:To:Cc:Subject:Date:From;
+	b=BvfsqqiMm8jbd0sTjSdeqVJq2WscjqOufL6ldhQNMPq/IFRv3V+uGO+J0LB0x92YY
+	 UvEdoIIwRmtXEA/X5uKhFBwe4B8K6goiDdMCzV/IcDOxnRk41tt2hhZEcLXgzq4gDF
+	 bwuToe7UO1H8DrEyGuZhNtigOcL2FJm75QRDLWWEK3HF1unX/jr1RmX1bh6FFaxraB
+	 MSh+cax2jkB5tIh+WdWl3ULAQxwsYcRzX8jilBUA1rjSDQHaQMlX8/yxveO+rsDiTP
+	 //J//4YWsVahKBjY7sO+kgSYmgiFaiM7gkK2WLknKTe6oryx2UB5erpkZ62s1FQTx0
+	 9JCKd2XNLxR4w==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: robh+dt@kernel.org,
@@ -53,17 +53,15 @@ Cc: robh+dt@kernel.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2 2/4] arm64: dts: mediatek: mt8195: Assign dp-intf aliases
-Date: Mon, 24 Apr 2023 13:25:21 +0200
-Message-Id: <20230424112523.1436926-3-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 0/4] MT8195 Acer Tomato - devicetrees Part 3
+Date: Mon, 24 Apr 2023 13:25:19 +0200
+Message-Id: <20230424112523.1436926-1-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.40.0
-In-Reply-To: <20230424112523.1436926-1-angelogioacchino.delregno@collabora.com>
-References: <20230424112523.1436926-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230424_042533_917784_2D09A222 
-X-CRM114-Status: UNSURE (   8.41  )
+X-CRM114-CacheID: sfid-20230424_042533_920245_FD3220BE 
+X-CRM114-Status: UNSURE (   9.58  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,27 +77,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Assign aliases for the primary and secondary dp-intf IP to properly
-and reliably enable DisplayPort functionality.
+Changes in v2:
+ - Dropped tomato-r1 PCIe0 enablement
+ - dp-intf aliases addition transferred to mt8195.dtsi
+ - Changed thermal zones names and critical trip point temperatures
+   for Linux to initiate thermal shutdown before HW protection kick-in.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 2 ++
- 1 file changed, 2 insertions(+)
+This series adds support for the WiFi card on PCI-Express,
+eDP (internal) and DP (external) displays and adds thermal
+configuration for the "extra" thermistors present on Cherry boards.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index a44aae4ab953..b03a42fe27a6 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -24,6 +24,8 @@ / {
- 	#size-cells = <2>;
- 
- 	aliases {
-+		dp-intf0 = &dp_intf0;
-+		dp-intf1 = &dp_intf1;
- 		gce0 = &gce0;
- 		gce1 = &gce1;
- 		ethdr0 = &ethdr0;
+All Cherry Chromebooks now have working display and wireless
+connectivity!
+
+At this point, the only missing component is vcodec decoders, but
+that's to be done in mt8195.dtsi, globally, not machine specific.
+Please note that in this series the eDP panel was put on aux-bus,
+hence this depends on the series introducing support for it [1]
+in the mtk-dp driver.
+
+[1]: https://lore.kernel.org/lkml/20230404104800.301150-1-angelogioacchino.delregno@collabora.com/
+
+AngeloGioacchino Del Regno (4):
+  arm64: dts: mediatek: cherry: Add platform thermal configuration
+  arm64: dts: mediatek: mt8195: Assign dp-intf aliases
+  arm64: dts: mediatek: cherry: Configure eDP and internal display
+  arm64: dts: mediatek: cherry: Enable PCI-Express ports for WiFi
+
+ .../boot/dts/mediatek/mt8195-cherry.dtsi      | 162 ++++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi      |   2 +
+ 2 files changed, 164 insertions(+)
+
 -- 
 2.40.0
 
