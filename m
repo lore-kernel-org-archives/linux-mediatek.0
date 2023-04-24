@@ -4,70 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74461C77B61
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Apr 2023 17:01:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C57F4C7618E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Apr 2023 18:15:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=poIrmZi4s1zYm/2xaVP1qwgNvWRkJPjP8E8y43VdDUs=; b=wDJTv2YAbxh8lJWHEwfoWKfTx1
-	wz7Lv/UQO/76ZkCA7OxorLiVuNYah3gZVyhcic09AMctYI/t4/Zh4iaO+alNNwLd4RShmLvm31PSy
-	RRtL4C8UsDhNz4Nr1SpLvvzoC/pQf1Or0dvkEKYnIUVyDMmUEu5LrFMSvCUMFiE01UkJypDSO8OCu
-	HBPCqG8bDraTWmCx1UXA5Q4s9VitcPdObqrhzl3mlWLADKQyI6o0x0H1TCQXp3rU8Fja2lvS1ojtA
-	IhemhgATGx38roGLAWAw4Ymn8SWlWKi3jwRJ4p9LE5EgL1zh/Jl0xdyhdahnqyxkgvTHnMDBv2kYQ
-	7vuh+HVQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=blVk5F8wi1jpNsCC6o8Ei6j9sVKcdv4aLvP/rqf73i4=; b=UVlSzt0ZJ61Qk7
+	4j+8poiZjQyUROeOowA0XQX8+5zBI7dQf3lsDWnpu0SojQoZ0a/levn+hZAMtr7WkA8fkvBYxJgpY
+	m8mebHrTY6JBekcSeOqwfD3BgkemYlzH5tgrHTMDJWrdATOVVU9ubwv7qDaR9mem2VmuzIimwc9yN
+	vgTZXseKD12zjieHFBQ9xkHsRXviDo3hNl/xSDXL7ZYlQ59c5xB56Yx/T6RtbNZYAOcWroxLHjiR2
+	rzlhozNJ6NoeKs/Df8NUVPEGDhXbq2cau7hBHzUik5IheaTz5GFvBowSHxgC/JjRC9VYrEKWWpLvE
+	hN33lg+M6XeQhVi5JZdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pqzYn-00Grt7-1h;
-	Mon, 24 Apr 2023 17:01:05 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pr0ia-00GyAt-1q;
+	Mon, 24 Apr 2023 18:15:16 +0000
+Received: from mail-io1-xd2f.google.com ([2607:f8b0:4864:20::d2f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pqzYj-00GrrK-1a
+	id 1pr0iX-00GyAY-2G
 	for linux-mediatek@lists.infradead.org;
-	Mon, 24 Apr 2023 17:01:03 +0000
-X-UUID: 92a6d31ee2c111ed8687db9d93187ff1-20230424
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=poIrmZi4s1zYm/2xaVP1qwgNvWRkJPjP8E8y43VdDUs=;
-	b=SeA0ZK8C9qWIHsDMQzeOSAUFewMOADhSItovtfQPhVlJV+SlQL6e6rd7JRgPJLXo5OpSe9SgRMwA0DsZG1pPJahkOgv/Rn1rAwem8RNMJOYaURWYiianJdGQac/4ipqbVlxR0bqPxmMMC1OnFdJAVKevT2MvC8Vu/K4jrgnaIVs=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:0f0a4f5c-5d90-4b72-802e-05d1d825f184,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:120426c,CLOUDID:e0cc59a2-8fcb-430b-954a-ba3f00fa94a5,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-UUID: 92a6d31ee2c111ed8687db9d93187ff1-20230424
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <ryder.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 781985703; Mon, 24 Apr 2023 10:00:53 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 25 Apr 2023 01:00:19 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 25 Apr 2023 01:00:19 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
-	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
-	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>,
-	Peter Chiu <chui-hao.chiu@mediatek.com>
-Subject: [PATCH] wifi: mt76: mt7915: report tx retries/failed counts for non-WED path
-Date: Tue, 25 Apr 2023 01:00:15 +0800
-Message-ID: <18bc7b966560a6025bdf71722482fb32d99793c2.1682318521.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	Mon, 24 Apr 2023 18:15:15 +0000
+Received: by mail-io1-xd2f.google.com with SMTP id ca18e2360f4ac-763c34315c1so125714339f.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 24 Apr 2023 11:15:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1682360110; x=1684952110;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=blVk5F8wi1jpNsCC6o8Ei6j9sVKcdv4aLvP/rqf73i4=;
+        b=Hv6C9zeyJ7FAaoxMJTATINYuKa9zQsaQlTAzWbRmHNWnXWGihxKY6LHruRufkvsuzo
+         5NO1FifkUkfHDEWWJPKKBrGcCWT1Fzp+X8pDNEv5dFHzVQwfyShlotWN/zj9Vx0eJr5z
+         4Ei9KuT1drUAbMOHwRpzb8ev4T6f+o8CVRc50=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1682360110; x=1684952110;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=blVk5F8wi1jpNsCC6o8Ei6j9sVKcdv4aLvP/rqf73i4=;
+        b=Bi6LCbSDQ6Hoh2tAr/99dVlG2CzyLrxWuGGu2NinueAkkd8G12SRRN4m0YOToyeQwf
+         jU8gu44w/LyVMjAJxFpAFLoyhhvYf2kLXwNmrJj2/Ub7HOLSdC0CiJC2m0NxGtS+R30O
+         6eRGF31JQ+rPgTsQfbQ+Z1vlgaEeQ9bep0HMgOw4nDQiOuORjEkwZax2VNugTazM4CIc
+         R8BT3j/pa/st4uS/PqIxisADbk5RAGEGyCgreqMzeY4XE0Lg5CD+PN02MFcSJ9aMMJ5y
+         wrOPVVE4VMxaQwGlJvugzTO1d0zZNSl63KaF+3AyejjFJ2KWEVOI84/QV2CVKySpAoiR
+         SyaQ==
+X-Gm-Message-State: AAQBX9dJeTddAFOBLJv76CxRK0S9wpZgU3aY88P00SWG+3xjUvmji3wF
+	ayYBAfYNw+ih0+vSCSK+dC66vKdE75WP8ByccP8=
+X-Google-Smtp-Source: AKy350ZARlyGZUcMQGV0qDFyFAXesPRvNGuDCMkQI3kpaGZobQYxT/D/MYf7OBi+EmCT91cxToclLA==
+X-Received: by 2002:a5d:9916:0:b0:763:684d:7f11 with SMTP id x22-20020a5d9916000000b00763684d7f11mr6322540iol.5.1682360110225;
+        Mon, 24 Apr 2023 11:15:10 -0700 (PDT)
+Received: from mail-il1-f177.google.com (mail-il1-f177.google.com. [209.85.166.177])
+        by smtp.gmail.com with ESMTPSA id f29-20020a02a11d000000b0040b38102b79sm3435192jag.82.2023.04.24.11.15.08
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 24 Apr 2023 11:15:09 -0700 (PDT)
+Received: by mail-il1-f177.google.com with SMTP id e9e14a558f8ab-328cb023b1dso1095115ab.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 24 Apr 2023 11:15:08 -0700 (PDT)
+X-Received: by 2002:a05:6e02:1d09:b0:32e:561d:b42d with SMTP id
+ i9-20020a056e021d0900b0032e561db42dmr34592ila.16.1682360107716; Mon, 24 Apr
+ 2023 11:15:07 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+References: <20230418124953.3170028-1-fshao@chromium.org> <20230418124953.3170028-2-fshao@chromium.org>
+ <ZD8z57MBvcfExJx8@nixie71> <CAC=S1ngBt9DmBobMkQXWhqE1UUxFv2U6iFd42nT=1N7r8+pFUg@mail.gmail.com>
+ <CAD=FV=U_i26a8uJYmqYf6PUgmTUgmEB5L2DkVga0zDX_iDcGQg@mail.gmail.com>
+ <ZEAGTiGyvynGA9P1@nixie71> <CAD=FV=UB393Z1zhK54Apgr-iRcvgiK0t36jt6-t5-5zz3m8OZQ@mail.gmail.com>
+ <CAC=S1nj8VTXOovvianPWDYnsrbek0APD76SBNquFObaw8Vg4BQ@mail.gmail.com> <ZEX4BEVMf6GtvaAP@nixie71>
+In-Reply-To: <ZEX4BEVMf6GtvaAP@nixie71>
+From: Doug Anderson <dianders@chromium.org>
+Date: Mon, 24 Apr 2023 11:14:55 -0700
+X-Gmail-Original-Message-ID: <CAD=FV=VtrJDVB0gQp-O82V3mgU6MFVMSGrvzh0fRa7sYAt_Pqw@mail.gmail.com>
+Message-ID: <CAD=FV=VtrJDVB0gQp-O82V3mgU6MFVMSGrvzh0fRa7sYAt_Pqw@mail.gmail.com>
+Subject: Re: [PATCH 1/2] dt-bindings: input: goodix: Add powered-in-suspend property
+To: Jeff LaBundy <jeff@labundy.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230424_100101_673522_DC1AE512 
-X-CRM114-Status: GOOD (  12.72  )
+X-CRM114-CacheID: sfid-20230424_111513_782750_A22DE787 
+X-CRM114-Status: GOOD (  28.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,117 +94,73 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Benjamin Tissoires <benjamin.tissoires@redhat.com>, linux-mediatek <linux-mediatek@lists.infradead.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-input@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Get missing tx retries/failed counts from txfree done events and report
-them via mt7915_sta_statistics().
+Hi,
 
-Co-developed-by: Peter Chiu <chui-hao.chiu@mediatek.com>
-Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- .../net/wireless/mediatek/mt76/mt7915/mac.c   | 22 +++++++++++++++++--
- .../net/wireless/mediatek/mt76/mt7915/mac.h   |  7 +++++-
- .../net/wireless/mediatek/mt76/mt7915/main.c  | 12 +++++-----
- 3 files changed, 32 insertions(+), 9 deletions(-)
+On Sun, Apr 23, 2023 at 8:31=E2=80=AFPM Jeff LaBundy <jeff@labundy.com> wro=
+te:
+>
+> Back-powering can come in two forms:
+>
+> 1. The one you've described, which is by far the most common. As you ment=
+ion,
+> it is not the case here since the issue happens only when we drive the GP=
+IO
+> low and not high.
+>
+> 2. Through a forbidden power supply sequence, an input pin of an IC with
+> multiple power supplies becomes a weak power supply itself. Grounding the
+> GPIO then sinks current into the SoC.
+>
+> This problem smelled like (2), especially since asserting the GPIO or pow=
+ering
+> down the supply alleviates the symptom. Most Goodix controllers I've work=
+ed
+> with have two or more supplies, and the datasheet requires them to be ena=
+bled
+> or disabled in a specific order.
+>
+> Based on Fei's feedback, however, this IC does not seem to be one of thos=
+e
+> since there is reportedly only a single rail. I guess either vdd or vddio=
+ is
+> tied to a dummy regulator? If so, then perhaps we can scratch this theory=
+.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-index 7df8d95fc3fb..8c34535e9c1e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-@@ -951,6 +951,7 @@ mt7915_mac_tx_free(struct mt7915_dev *dev, void *data, int len)
- 	struct mt76_dev *mdev = &dev->mt76;
- 	struct mt76_txwi_cache *txwi;
- 	struct ieee80211_sta *sta = NULL;
-+	struct mt76_wcid *wcid = NULL;
- 	LIST_HEAD(free_list);
- 	void *end = data + len;
- 	bool v3, wake = false;
-@@ -977,7 +978,6 @@ mt7915_mac_tx_free(struct mt7915_dev *dev, void *data, int len)
- 		info = le32_to_cpu(*cur_info);
- 		if (info & MT_TX_FREE_PAIR) {
- 			struct mt7915_sta *msta;
--			struct mt76_wcid *wcid;
- 			u16 idx;
- 
- 			idx = FIELD_GET(MT_TX_FREE_WLAN_ID, info);
-@@ -994,7 +994,25 @@ mt7915_mac_tx_free(struct mt7915_dev *dev, void *data, int len)
- 			continue;
- 		}
- 
--		if (v3 && (info & MT_TX_FREE_MPDU_HEADER))
-+		if (!mtk_wed_device_active(&mdev->mmio.wed) && wcid) {
-+			u32 tx_retries = 0, tx_failed = 0;
-+
-+			if (v3 && (info & MT_TX_FREE_MPDU_HEADER_V3)) {
-+				tx_retries =
-+					FIELD_GET(MT_TX_FREE_COUNT_V3, info) - 1;
-+				tx_failed = tx_retries +
-+					!!FIELD_GET(MT_TX_FREE_STAT_V3, info);
-+			} else {
-+				tx_retries =
-+					FIELD_GET(MT_TX_FREE_COUNT, info) - 1;
-+				tx_failed = tx_retries +
-+					!!FIELD_GET(MT_TX_FREE_STAT, info);
-+			}
-+			wcid->stats.tx_retries += tx_retries;
-+			wcid->stats.tx_failed += tx_failed;
-+		}
-+
-+		if (v3 && (info & MT_TX_FREE_MPDU_HEADER_V3))
- 			continue;
- 
- 		for (i = 0; i < 1 + v3; i++) {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.h b/drivers/net/wireless/mediatek/mt76/mt7915/mac.h
-index ce94f87e2042..448b1b380190 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.h
-@@ -9,7 +9,12 @@
- #define MT_TX_FREE_VER			GENMASK(18, 16)
- #define MT_TX_FREE_MSDU_CNT_V0		GENMASK(6, 0)
- /* 0: success, others: dropped */
--#define MT_TX_FREE_MPDU_HEADER		BIT(30)
-+#define MT_TX_FREE_COUNT		GENMASK(12, 0)
-+#define MT_TX_FREE_COUNT_V3		GENMASK(27, 24)
-+#define MT_TX_FREE_STAT			GENMASK(14, 13)
-+#define MT_TX_FREE_STAT_V3		GENMASK(29, 28)
-+#define MT_TX_FREE_MPDU_HEADER		BIT(15)
-+#define MT_TX_FREE_MPDU_HEADER_V3	BIT(30)
- #define MT_TX_FREE_MSDU_ID_V3		GENMASK(14, 0)
- 
- #define MT_TXS5_F0_FINAL_MPDU		BIT(31)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-index 2ada2806de66..61157248d742 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-@@ -1046,12 +1046,6 @@ static void mt7915_sta_statistics(struct ieee80211_hw *hw,
- 		sinfo->tx_packets = msta->wcid.stats.tx_packets;
- 		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_PACKETS);
- 
--		sinfo->tx_failed = msta->wcid.stats.tx_failed;
--		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_FAILED);
--
--		sinfo->tx_retries = msta->wcid.stats.tx_retries;
--		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_RETRIES);
--
- 		if (mtk_wed_get_rx_capa(&phy->dev->mt76.mmio.wed)) {
- 			sinfo->rx_bytes = msta->wcid.stats.rx_bytes;
- 			sinfo->filled |= BIT_ULL(NL80211_STA_INFO_RX_BYTES64);
-@@ -1061,6 +1055,12 @@ static void mt7915_sta_statistics(struct ieee80211_hw *hw,
- 		}
- 	}
- 
-+	sinfo->tx_failed = msta->wcid.stats.tx_failed;
-+	sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_FAILED);
-+
-+	sinfo->tx_retries = msta->wcid.stats.tx_retries;
-+	sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_RETRIES);
-+
- 	sinfo->ack_signal = (s8)msta->ack_signal;
- 	sinfo->filled |= BIT_ULL(NL80211_STA_INFO_ACK_SIGNAL);
- 
--- 
-2.18.0
+There is one rail provided from the main board, but there can be two
+voltage levels involved depending on stuffings on the touchscreen
+itself. I talked a bit about this in commit 1d18c1f3b7d9
+("dt-bindings: HID: i2c-hid: goodix: Add mainboard-vddio-supply").
 
+
+> Fair enough, I was simply sketpical that this was the _right_ workaround.
+> Were this an issue of only supply A left on yet the IC datasheet requires
+> supply B to remain on if supply A is on, I would rather see this solved b=
+y
+> updating a regulator dts node, trusted FW sequence, etc.
+
+Right. That type of stuff was looked at in detail by two separate
+teams, so I don't think this is the issue.
+
+
+> Thanks for your due diligence; if this really is a silicon issue, then
+> the driver should indeed accommodate it.
+>
+> That being said, the name 'powered-in-suspend' seems a bit conflated. We
+> should not be duplicating regulator policy in this driver; the existing
+> naming also may cause confusion for other HW configurations that do leave
+> vdd and vddio on during suspend, but don't have this problem.
+>
+> Here, we actually mean to control the behavior of the reset GPIO through
+> suspend and therefore something like 'goodix,no-reset-during-suspend' is
+> closer to what I understand us to intend to do. I will add more details
+> in patch [2/2].
+
+I'd be fine with that name. ...ah, and adding the "goodix," prefix is
+a good call.
+
+-Doug
 
