@@ -4,74 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87A60C77B61
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Apr 2023 22:22:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B0EAC7618E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Apr 2023 22:24:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2SJPzuirjAfFiTY8FQ9IYaZLP4oV7shJiAvT+VNeGJ8=; b=bhwzec7hzjRCKRqZ4aaI18n5Am
-	of8gcHxszCAoqW9t0Ha7BVVuAES0KHL7o5Egb3mEOXZhT6dTrzz7ZXkKuzIjQR65+4TIq1l7xo5aP
-	sZfZEvTy/n6A3qKj6blXRwMNvInanOIPmRKgLp2KYRqo8jAis/ST6dASwmpk/m8UHtkAAYK4o8+xR
-	Bi8FJQleYTZeawnv18zO/kuJP2Fb2WjSD2m2pF+BB2gWM2s5a4inF64D2aASy+c+M7+qK5A1G/wcv
-	OeR/E0vPPoKAfFhfNR62ScmQTNM1z3YtJtvf87Yrb7OlBDORbT4kQNXKmvJw05R5PI6XzIeucdHc8
-	/l6+YI7A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=29IkbevyZ1JNfaYOQPn+HUpDLJ8b+PXRIDIYtEtvSPw=; b=BrtaX6N1L4Re7PrTY1M85ZUrw6
+	Wr7da1eEzoH54h5+RvNkm0poYvQcVvQN4oeShsHwcrolEvcW0XDQOM8oD6uuN2FeMxwcJBGP1YQWq
+	5NfErlo17clSNgBKJXhvgvqQHy1j6AzC79w87L0cV478uoNGak5zIw4poOrvqb3vCmuX4/dqVltqe
+	QkZKyX6MJT8BHPCJ4EEuIaWr1+zAXLJ82yfo5Ntt3g1s7jxpYnP8bWRvOV8fthvhVsei0NOs3L2bC
+	hEJd3d/JIE8L7X5ZPb7B2AopeejDIxOA4mQvE2+ZZee5AQ8Ga3rr62l/A5MSOWUhCWkL38eHE6GaY
+	Etc4Xmwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pr4ZO-00HGQs-33;
-	Mon, 24 Apr 2023 22:22:02 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pr4bX-00HGmC-1I;
+	Mon, 24 Apr 2023 22:24:15 +0000
+Received: from mail-qk1-x734.google.com ([2607:f8b0:4864:20::734])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pr4ZK-00HGPW-00;
-	Mon, 24 Apr 2023 22:21:59 +0000
-Received: from notapiano (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C99816603278;
-	Mon, 24 Apr 2023 23:21:49 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1682374911;
-	bh=ESGQTysb9bAcGF9NJuR8F+/xLoyGAWa3On+CkdrCRPQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Aki1CjZPU4EnCrslc7TQ86Ho3ZnoKio1p21RY4+oS61iwpdgsTuF6huK330rG3T/I
-	 ZuvBbxjlTmL+RsFStGkFNvok4fgZn/wEunikeZo1M1OFCpC7WmuU2qZj07SRRW/xpO
-	 lBUcZ6JyE6eT448Vu2yd/ftAqwdm9UPphAeY38MA7p2d+SUOQIbYa3jEvDzMaYkx1f
-	 pYYkIEDN2B3ovWxAI01GHkvz6+umqc0reKzJFsrDNo6gq0caZROmDPuMwMIyZM5Lww
-	 x36xMLO5duIzRf33QulYcrg431fdHZB3dHOkEe6w3XztCg4eZFqKrdQaZvWtpqBX5c
-	 27ie6G8kOAwOQ==
-Date: Mon, 24 Apr 2023 18:21:44 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Balsam CHIHI <bchihi@baylibre.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, daniel.lezcano@linaro.org,
-	angelogioacchino.delregno@collabora.com, rafael@kernel.org,
-	amitk@kernel.org, rui.zhang@intel.com, matthias.bgg@gmail.com,
-	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	rdunlap@infradead.org, ye.xingchen@zte.com.cn,
-	p.zabel@pengutronix.de, linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	khilman@baylibre.com, james.lo@mediatek.com,
-	rex-bc.chen@mediatek.com
-Subject: Re: [PATCH 0/4] Add LVTS support for mt8192
-Message-ID: <fab67eef-4dc9-420d-b127-aedc6f54cad0@notapiano>
-References: <20230307163413.143334-1-bchihi@baylibre.com>
- <CAGXv+5E0wUJYUVD3wx3-=uES612ARQmUE0rxgAruFHxpZCBjzA@mail.gmail.com>
- <CAGuA+ooi7Kx05gagLzXAN3upDiSqDUNOM_djYdGftw6ogVx5gw@mail.gmail.com>
- <CAGuA+oqDPPYFJef_8=YrOpHQNVJ3xgm_zXS6fq_HG2Jy_6t-Zg@mail.gmail.com>
- <CAGXv+5EZPWohGN5CaEiqVrM4MyAar3cPEUhHtGY_9wTJSJNVFQ@mail.gmail.com>
- <CAGuA+oqF4jFMyEo09VDmCf-_7g0ua3XDKDAJ+t3Gat14pDM9NA@mail.gmail.com>
+	id 1pr4bR-00HGkK-19;
+	Mon, 24 Apr 2023 22:24:11 +0000
+Received: by mail-qk1-x734.google.com with SMTP id af79cd13be357-74dd7f52f18so1440544985a.0;
+        Mon, 24 Apr 2023 15:24:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1682375046; x=1684967046;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=29IkbevyZ1JNfaYOQPn+HUpDLJ8b+PXRIDIYtEtvSPw=;
+        b=IenoMxH48zII5fB58Gv60rUYDA9EtMMTbp/ZPDsVe6TBLDWwJpDQNL0U/+HtpDrCsX
+         fYcOvs90TmBzvujQKZgX1eQmTxHrD8IQ8eq3PJOqaDLWqpZdTwfMfBvVmqcqO28ToIw7
+         /P7xxKrOhgtS2jNLZBQf3OSYmuIwjEkZ1S/W3qfD2WGO2+JW+Io3zDwpMSpXDXbRTpHh
+         uitadTIFC1oliUm/1Zh59RVMfDNq9tD4dKeTBpg9+/lExxyEH32RZcEQz0uV3npjXStN
+         Fms3lNhl1J8Rm6im79IxUzwKmWZ7e0Mj4EIC16F0L0FGCYsa066ivIKjU382HCqCopQ+
+         ujLA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1682375046; x=1684967046;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=29IkbevyZ1JNfaYOQPn+HUpDLJ8b+PXRIDIYtEtvSPw=;
+        b=jLGTgiw3xeuJAdXOiIpnxXYoFMeDiiV7uGbCCd+RU/AL1G7OIv6/D1uCi61ak8QPoM
+         x7D52eTL+nKJNOCTgCmaKjFgCh8EmwcIwjvf5i67lGRZ4PJfale0nwYzAwjEYZfoutFi
+         M9Fm9fjhZ34fR4HmD8d4vhQkzjK+pDZSz/RkYxrSa3hLlOfz8I2sw5NRnsC4bZWfpoiQ
+         shkQRnBtyluv3dndO65VxDiGXOmyy8j1dxNWYL0ikwr62Ks7Kw7J+GZHoTTinTI/lZJI
+         sAh+E20wuVOjclHn5LJeXhmP4mEoxUth3yHqhWb1y93JHarN6uPfIOJopgR0iD7eD7Kr
+         58yg==
+X-Gm-Message-State: AAQBX9d+LlIYT1IoPenuH/Ox0O90DySR3aa4bzuQKkrwJ9mDsM58kUCr
+	tNEI37Y9K/BhGzwk3GJIWBbsQ5D6HTuwaP1k3xQ=
+X-Google-Smtp-Source: AKy350ZaN4hyLvIPAT5s597oFwGJxWUglXzPuWB3KyxTTdt5lEGprQ4ln3wBEVVlH0j6U9Xj73/XDG6Es3m1QFoaTr0=
+X-Received: by 2002:a05:6214:5195:b0:5ef:512d:2d47 with SMTP id
+ kl21-20020a056214519500b005ef512d2d47mr22906279qvb.19.1682375046222; Mon, 24
+ Apr 2023 15:24:06 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAGuA+oqF4jFMyEo09VDmCf-_7g0ua3XDKDAJ+t3Gat14pDM9NA@mail.gmail.com>
+References: <20220328000915.15041-1-ansuelsmth@gmail.com> <85eb14ec-f465-7447-ad77-a3dabc666f47@kernel.org>
+ <YkKRYnN84D9VZhGj@Ansuel-xps.localdomain> <CAL_Jsq+RQQ-ADMxLPUFwk6S6kGmb6oNDy4k52fnU0EtbUvqmSA@mail.gmail.com>
+In-Reply-To: <CAL_Jsq+RQQ-ADMxLPUFwk6S6kGmb6oNDy4k52fnU0EtbUvqmSA@mail.gmail.com>
+From: Ansuel Smith <ansuelsmth@gmail.com>
+Date: Tue, 25 Apr 2023 00:23:54 +0200
+Message-ID: <CA+_ehUw3eAEHRsi1ATSKeK4jtX+EoVSwUodNL3bcpTJaX-r9cA@mail.gmail.com>
+Subject: Re: [RFC PATCH 0/1] Categorize ARM dts directory
+To: Rob Herring <robh+dt@kernel.org>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-actions@lists.infradead.org, 
+	linux-sunxi@lists.linux.dev, linux-omap@vger.kernel.org, 
+	linux-amlogic@lists.infradead.org, linux-arm-kernel@axis.com, 
+	linux-aspeed@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org, 
+	chrome-platform@lists.linux.dev, linux-renesas-soc@vger.kernel.org, 
+	linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, 
+	kernel@dh-electronics.com, linux-mediatek@lists.infradead.org, 
+	openbmc@lists.ozlabs.org, linux-tegra@vger.kernel.org, linux-oxnas@groups.io, 
+	linux-arm-msm@vger.kernel.org, linux-unisoc@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-realtek-soc@lists.infradead.org, 
+	Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230424_152158_407688_1569E0F1 
-X-CRM114-Status: GOOD (  37.88  )
+X-CRM114-CacheID: sfid-20230424_152409_400405_5C1516AF 
+X-CRM114-Status: GOOD (  55.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,158 +99,152 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 28, 2023 at 02:20:24AM +0200, Balsam CHIHI wrote:
-> On Sat, Mar 25, 2023 at 5:33 AM Chen-Yu Tsai <wenst@chromium.org> wrote:
+Il giorno mar 25 apr 2023 alle ore 00:10 Rob Herring
+<robh+dt@kernel.org> ha scritto:
+>
+> On Tue, Mar 29, 2022 at 8:27=E2=80=AFAM Ansuel Smith <ansuelsmth@gmail.co=
+m> wrote:
 > >
-> > On Wed, Mar 22, 2023 at 8:48 PM Balsam CHIHI <bchihi@baylibre.com> wrote:
+> > On Tue, Mar 29, 2022 at 03:20:18PM +0200, Krzysztof Kozlowski wrote:
+> > > On 28/03/2022 02:09, Ansuel Smith wrote:
+> > > > Hi,
+> > > > as the title say, the intention of this ""series"" is to finally ca=
+tegorize
+> > > > the ARM dts directory in subdirectory for each oem.
+> > > >
+> > > > The main reason for this is that it became unpractical to handle 26=
+00
+> > > > dts files and try to even understand/edit/check the situation for a
+> > > > specific target.
+> > > >
+> > > > In arm64 we already have this kind of separation and I honestly thi=
+nk
+> > > > that this was never proposed for ARM due to the fact that there are
+> > > > 2600+ files to sort and the fact that it will be a mess to merge th=
+is
+> > > > entirely but IMHO with a little bit of effort we can finally solve =
+this
+> > > > problem and have a well organized directory just like arm64.
+> > > >
+> > > > Some prerequisite on how this work was done:
+> > > > - This comes entirely from a python script created by me for the ta=
+sk.
+> > > >   linked here [1]
+> > > > - I had to manually categorize all the different arch in the makefi=
+le
+> > > >   based on the oem. I searched every arch on the internet trying to
+> > > >   understand the correct oem. I hope they are correct but I would l=
+ove
+> > > >   some comments about them.
+> > > > - This current ""series"" is all squashed in one big commit to bett=
+er
+> > > >   receive comments for this. The final version ideally would have a=
+ll
+> > > >   changes in separate commits. The script can already do this, it's=
+ just
+> > > >   commented.
+> > > >
+> > > > Here is a list of some discoveries while doing all the sorting.
+> > > > These are totally additional reason why we need this.
+> > > >
+> > > > While creating the script I discovered some funny things:
+> > > > - We have orphan dts! There are dts that are never compiled and are
+> > > >   there just for reference. We would never have noticed this withou=
+t this
+> > > >   change and probably nobody noticed it. They are currently all lis=
+ted
+> > > >   in the python script.
+> > > > - We have dtsi shared across different oem. My current solution for=
+ them
+> > > >   is: NOT SORT THEM and leave them in the generic directory and cre=
+ate a
+> > > >   link in each oem dts that points to these dtsi. This is to try in
+> > > >   every way possible to skip any additional changes to the dts.
+> > > >   Current dtsi that suffers from this are only 3. (listed in the sc=
+ript)
+> > > > - arm64 dts and dtsi reference ARM dts. Obviously this change would=
+ cause
+> > > >   broken include for these special dtsi. The script creates a depen=
+dency
+> > > >   table of the entire arm64 directory and fix every broken dependen=
+cy
+> > > >   (hoping they all use a sane include logic... regex is used to par=
+se
+> > > >   all the different dependency)
+> > > >
+> > > > So in short the script does the following steps:
+> > > > 1. Enumerate all the action to do... (dts to move, scan dependency =
+for
+> > > >    the dts...)
+> > > > 2. Generate the arm64 dependency
+> > > > 3. Creates the Makefile
+> > > > 4. Generate the Makefiles for the current oem
+> > > > 5. Move all the related dts and dtsi for the current oem
+> > > > 6. Check broken dependency and fix them by editing the dts and writ=
+ing
+> > > >    the correct include (or fix any symbolic link)
+> > > >
+> > > > This is an output that describes all the things done by the script =
+[2]
+> > > >
+> > > > I really hope I didn't commit any logic mistake in the script but m=
+ost
+> > > > of the work should be done.
+> > > >
 > > >
-> > > Hi Chen-Yu,
+> > > +Cc Arnd and Olof,
 > > >
-> > > I suspect the bug comes from incorrect calibration data offsets for AP
-> > > Domain because you confirm that MCU Domain probe runs without issues.
-> > > Is it possible to test something for us to confirm this theory (i
-> > > don't have an mt8192 board on hand now), when you have the time of
-> > > course?
-> > > We would like to test AP Domain's calibration data offsets with a
-> > > working one, for example :
+> > > Ansuel,
+> > > Thanks for you patch. Please cc the SoC maintainers in such submissio=
+ns.
+> > > It seems that you got some quite nice discussion, but still the core
+> > > folks are not Cced, so no one would be able to take your patch...
 > > >
-> > >  static const struct lvts_ctrl_data mt8192_lvts_ap_data_ctrl[] = {
-> > >                 {
-> > > -               .cal_offset = { 0x25, 0x28 },
-> > > +               .cal_offset = { 0x04, 0x04 },
-> > >                 .lvts_sensor = {
-> > >                         { .dt_id = MT8192_AP_VPU0 },
-> > >                         { .dt_id = MT8192_AP_VPU1 }
-> > > @@ -1336,7 +1336,7 @@ static const struct lvts_ctrl_data
-[..]
-> > >
-> > > This example is tested and works for mt8195,
-> > > (all sensors use the same calibration data offset for testing purposes).
-> > >
-> > > Thank you in advance for your help.
 > >
-> > The MCU ones are still tripping though. If I change all of them to 0x04,
-> > then nothing trips. There's also a bug in the interrupt handling code
-> > that needs to be dealt with.
+> > I had some problem with gmail and sending mail too much users. I put Ro=
+b
+> > and You and all the various list to try to workaround the "gmail spam
+> > protection"
 > >
-> > AFAICT the calibration data is stored differently. If you look at ChromeOS's
-> > downstream v5.10 driver, you'll see mt6873_efuse_to_cal_data() for MT8192,
-> > and mt8195_efuse_to_cal_data() for MT8195. The difference sums up to:
-> > MT8195 has all data sequentially stored, while MT8192 has most data stored
-> > in lower 24 bits of each 32-bit word, and the highest 8 bits are then used
-> > to pack data for the remaining sensors.
+> > > I am pretty sure we were discussing such split idea in the past and i=
+t
+> > > did not get traction, but I cannot recall the exact discussion.
+> > >
 > >
-> > Regards
-> > ChenYu
-> 
-> Hi Chen-Yu Tsai,
-> 
-> Thank you very much for helping me testing this suggestion.
-> 
-> Indeed, calibration data is stored differently in the mt8192 compared to mt8195.
-> So, the mt8192's support will be delayed for now, to allow further debugging.
-> 
-> In the mean time, we will only continue to upstream the remaining
-> mt8195's source code, so it will get full LVTS support.
-> A new series will be submitted soon.
+> > I think the main issue here is how to handle bot and how problematic is
+> > to merge this. As written in the cover letter the final version of this
+> > should be a big series of 50+ patch with every commit specific to each
+> > oem. In theory we should be able to merge the different oem separately
+> > and try to at least start the categorization.
+> > Another idea I got to at least have a "migration path" is to convert
+> > every dts in the dts/ directory to a symbolic link that target the dts
+> > in the correct oem. But I assume that would fix only part of the proble=
+m
+> > and git am will still be problematic.
+>
+> I have a script[1] that does the conversion written the last time this
+> came up. Just have to agree on directory names. I think the easiest
+> would be for Arnd/Olof to run it at the end of a merge window before
+> rc1.
+>
+> I'm very much in favor of this happening especially before *any*
+> overlays are added to add to the mess (it's probably already
+> happened).
+>
+> Rob
+>
+> [1] https://lore.kernel.org/all/20181204183649.GA5716@bogus/
 
-Hi Balsam,
+Hi Rob,
+thanks for recovering this. I remember also providing a script.
 
-like Chen-Yu mentioned, the calibration data is stored with 4 byte alignment for
-MT8192, but the data that is split between non-contiguous bytes is for the
-thermal controllers (called Resistor-Capacitor Calibration downstream) not the
-sensors. The controller calibration isn't currently handled in this driver (and
-downstream it also isn't used, since a current value is read from the controller
-instead), so we can just ignore those.
+Anyway considering the amount of stuff to move, I feel like some
+OEM might be problematic to move due to rebase and merging problems.
 
-The patch below adjusts the addresseses for the sensors and gives me reasonable
-reads, so the machine no longer reboots. Can you integrate it into your series?
+We should consider accepting moving only some and keep other
+in the unsorted path. And move them at the first time possible with
+the help of the maintainers.
 
-Thanks,
-Nícolas
-
-From 4506f03b806f3eeb89887bac2c1c86d61da97281 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?=
- <nfraprado@collabora.com>
-Date: Mon, 24 Apr 2023 17:42:42 -0400
-Subject: [PATCH] thermal/drivers/mediatek/lvts_thermal: Fix calibration
- offsets for MT8192
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
----
- drivers/thermal/mediatek/lvts_thermal.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-index b6956c89d557..f8afbc2ac190 100644
---- a/drivers/thermal/mediatek/lvts_thermal.c
-+++ b/drivers/thermal/mediatek/lvts_thermal.c
-@@ -1261,7 +1261,7 @@ static const struct lvts_ctrl_data mt8195_lvts_ap_data_ctrl[] = {
- 
- static const struct lvts_ctrl_data mt8192_lvts_mcu_data_ctrl[] = {
- 	{
--		.cal_offset = { 0x04, 0x07 },
-+		.cal_offset = { 0x04, 0x08 },
- 		.lvts_sensor = {
- 			{ .dt_id = MT8192_MCU_BIG_CPU0 },
- 			{ .dt_id = MT8192_MCU_BIG_CPU1 }
-@@ -1271,7 +1271,7 @@ static const struct lvts_ctrl_data mt8192_lvts_mcu_data_ctrl[] = {
- 		.hw_tshut_temp = LVTS_HW_SHUTDOWN_MT8192,
- 	},
- 	{
--		.cal_offset = { 0x0d, 0x10 },
-+		.cal_offset = { 0x0c, 0x10 },
- 		.lvts_sensor = {
- 			{ .dt_id = MT8192_MCU_BIG_CPU2 },
- 			{ .dt_id = MT8192_MCU_BIG_CPU3 }
-@@ -1281,7 +1281,7 @@ static const struct lvts_ctrl_data mt8192_lvts_mcu_data_ctrl[] = {
- 		.hw_tshut_temp = LVTS_HW_SHUTDOWN_MT8192,
- 	},
- 	{
--		.cal_offset = { 0x16, 0x19, 0x1c, 0x1f },
-+		.cal_offset = { 0x14, 0x18, 0x1c, 0x20 },
- 		.lvts_sensor = {
- 			{ .dt_id = MT8192_MCU_LITTLE_CPU0 },
- 			{ .dt_id = MT8192_MCU_LITTLE_CPU1 },
-@@ -1296,7 +1296,7 @@ static const struct lvts_ctrl_data mt8192_lvts_mcu_data_ctrl[] = {
- 
- static const struct lvts_ctrl_data mt8192_lvts_ap_data_ctrl[] = {
- 		{
--		.cal_offset = { 0x25, 0x28 },
-+		.cal_offset = { 0x24, 0x28 },
- 		.lvts_sensor = {
- 			{ .dt_id = MT8192_AP_VPU0 },
- 			{ .dt_id = MT8192_AP_VPU1 }
-@@ -1306,7 +1306,7 @@ static const struct lvts_ctrl_data mt8192_lvts_ap_data_ctrl[] = {
- 		.hw_tshut_temp = LVTS_HW_SHUTDOWN_MT8192,
- 	},
- 	{
--		.cal_offset = { 0x2e, 0x31 },
-+		.cal_offset = { 0x2c, 0x30 },
- 		.lvts_sensor = {
- 			{ .dt_id = MT8192_AP_GPU0 },
- 			{ .dt_id = MT8192_AP_GPU1 }
-@@ -1316,7 +1316,7 @@ static const struct lvts_ctrl_data mt8192_lvts_ap_data_ctrl[] = {
- 		.hw_tshut_temp = LVTS_HW_SHUTDOWN_MT8192,
- 	},
- 	{
--		.cal_offset = { 0x37, 0x3a },
-+		.cal_offset = { 0x34, 0x38 },
- 		.lvts_sensor = {
- 			{ .dt_id = MT8192_AP_INFRA },
- 			{ .dt_id = MT8192_AP_CAM },
-@@ -1326,7 +1326,7 @@ static const struct lvts_ctrl_data mt8192_lvts_ap_data_ctrl[] = {
- 		.hw_tshut_temp = LVTS_HW_SHUTDOWN_MT8192,
- 	},
- 	{
--		.cal_offset = { 0x40, 0x43, 0x46 },
-+		.cal_offset = { 0x3c, 0x40, 0x44 },
- 		.lvts_sensor = {
- 			{ .dt_id = MT8192_AP_MD0 },
- 			{ .dt_id = MT8192_AP_MD1 },
--- 
-2.40.0
+One main blocker of this is some qcom dts that are linked to arm64
+directory, so for some dts special care is needed.
 
