@@ -4,81 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AA23C77B61
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Apr 2023 16:49:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74461C77B61
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Apr 2023 17:01:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pQPzlQXVK7yiO98rLUpsr4qSlOZNSd2wUC44NfOzC5o=; b=xNq0TiwK6JNj1KR9ucRdegLIR3
-	i446Pyx0p/1gECGwFmu9bJ36DBI29gxzciqum6QfDojpLeQq7WPLvQzdiHG7CP7YU3CpbNZEGM/AX
-	rr5FSHW4iZCjcWgdg0BBkxOvkmCx+UytIx4DHHkPOc5M/kypLSVb1fePK01tyZ14nmIE0QDEeBqdJ
-	JrXBuQozOc5UfdFU0rVzHYvUBiwLnG0+1S5wpcZ/d8Pmgb2YiW/JWGd9F7xJ+MgVndtnG1cv+f9AN
-	3B0iTyHWm2ym+43d9U91FNnz7bqLsYd3b18Z4QFQYJzTA56YBxCnJpyCiHcbqwp/UKGdG8BnrX2TV
-	QTqeezOQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=poIrmZi4s1zYm/2xaVP1qwgNvWRkJPjP8E8y43VdDUs=; b=wDJTv2YAbxh8lJWHEwfoWKfTx1
+	wz7Lv/UQO/76ZkCA7OxorLiVuNYah3gZVyhcic09AMctYI/t4/Zh4iaO+alNNwLd4RShmLvm31PSy
+	RRtL4C8UsDhNz4Nr1SpLvvzoC/pQf1Or0dvkEKYnIUVyDMmUEu5LrFMSvCUMFiE01UkJypDSO8OCu
+	HBPCqG8bDraTWmCx1UXA5Q4s9VitcPdObqrhzl3mlWLADKQyI6o0x0H1TCQXp3rU8Fja2lvS1ojtA
+	IhemhgATGx38roGLAWAw4Ymn8SWlWKi3jwRJ4p9LE5EgL1zh/Jl0xdyhdahnqyxkgvTHnMDBv2kYQ
+	7vuh+HVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pqzNV-00GqgZ-1J;
-	Mon, 24 Apr 2023 16:49:25 +0000
-Received: from mail-pj1-f45.google.com ([209.85.216.45])
+	id 1pqzYn-00Grt7-1h;
+	Mon, 24 Apr 2023 17:01:05 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pqzNR-00Gqf2-1n;
-	Mon, 24 Apr 2023 16:49:23 +0000
-Received: by mail-pj1-f45.google.com with SMTP id 98e67ed59e1d1-24b89b9a72cso1662370a91.1;
-        Mon, 24 Apr 2023 09:49:17 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682354957; x=1684946957;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=pQPzlQXVK7yiO98rLUpsr4qSlOZNSd2wUC44NfOzC5o=;
-        b=QMQVqmuNKW5RE8siJhDoL5v4TEGC8XzFSOT4MQwHi3RV0FSoZaPX1XmYzHnNzgTE7R
-         7BCncy8OcInBNtUUrNtVWOla8jNZ6GVouMh/vO500gm3WD7qbfIxvc+KRCw656Kaj88W
-         L+lvysa3HM0lhNiCtATsTztUNwDFNTDPE0A4zM2LB8jEpbHZchwMbKxbuqfMhNpvnsv9
-         KUFW5/CwN7EBnKruD9dTx5HPJphLG4wb9zv6VA2Nd9MQWjNte/ON2PegKIfp6lKKTbG/
-         u6Fv1ZKaO2oQhjlAvhegjWfWuGryyfYGPdyu6LF5BwRspvJSRQiA1rx2BPCelcE7h7Bm
-         htOw==
-X-Gm-Message-State: AAQBX9eFd4wWPC0bgCU26Ld0cOyqIalp9NtxhtgbSuFG79dpJdo9wt0V
-	iMlYbFJMTgfYJPQOFXrAELc=
-X-Google-Smtp-Source: AKy350buLU0OlbzX25JOXcAqUZe69CK7FS254G2Wob6KCJ3eWiKz4m8UCiG1J0FN5j8wYX04LKmdtg==
-X-Received: by 2002:a17:90a:ca81:b0:247:a272:71be with SMTP id y1-20020a17090aca8100b00247a27271bemr14748647pjt.46.1682354957075;
-        Mon, 24 Apr 2023 09:49:17 -0700 (PDT)
-Received: from ?IPV6:2620:15c:211:201:1f14:a83c:1e8:6ae2? ([2620:15c:211:201:1f14:a83c:1e8:6ae2])
-        by smtp.gmail.com with ESMTPSA id o5-20020a17090aac0500b0024677263e36sm6528524pjq.43.2023.04.24.09.49.14
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 24 Apr 2023 09:49:16 -0700 (PDT)
-Message-ID: <8948f2b1-e11f-8f84-62e7-e5b13be587b4@acm.org>
-Date: Mon, 24 Apr 2023 09:49:13 -0700
+	id 1pqzYj-00GrrK-1a
+	for linux-mediatek@lists.infradead.org;
+	Mon, 24 Apr 2023 17:01:03 +0000
+X-UUID: 92a6d31ee2c111ed8687db9d93187ff1-20230424
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=poIrmZi4s1zYm/2xaVP1qwgNvWRkJPjP8E8y43VdDUs=;
+	b=SeA0ZK8C9qWIHsDMQzeOSAUFewMOADhSItovtfQPhVlJV+SlQL6e6rd7JRgPJLXo5OpSe9SgRMwA0DsZG1pPJahkOgv/Rn1rAwem8RNMJOYaURWYiianJdGQac/4ipqbVlxR0bqPxmMMC1OnFdJAVKevT2MvC8Vu/K4jrgnaIVs=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22,REQID:0f0a4f5c-5d90-4b72-802e-05d1d825f184,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:120426c,CLOUDID:e0cc59a2-8fcb-430b-954a-ba3f00fa94a5,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: 92a6d31ee2c111ed8687db9d93187ff1-20230424
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <ryder.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 781985703; Mon, 24 Apr 2023 10:00:53 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 25 Apr 2023 01:00:19 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 25 Apr 2023 01:00:19 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>,
+	Peter Chiu <chui-hao.chiu@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt7915: report tx retries/failed counts for non-WED path
+Date: Tue, 25 Apr 2023 01:00:15 +0800
+Message-ID: <18bc7b966560a6025bdf71722482fb32d99793c2.1682318521.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.1
-Subject: Re: [PATCH v3 1/1] scsi: ufs: core: Fix &hwq->cq_lock deadlock issue
-Content-Language: en-US
-To: Alice Chao <alice.chao@mediatek.com>,
- Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Can Guo <quic_cang@quicinc.com>, Asutosh Das <quic_asutoshd@quicinc.com>,
- Stanley Chu <stanley.chu@mediatek.com>,
- Manivannan Sadhasivam <mani@kernel.org>
-Cc: peter.wang@mediatek.com, chun-hung.wu@mediatek.com,
- powen.kao@mediatek.com, naomi.chu@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, tun-yu.yu@mediatek.com,
- eddie.huang@mediatek.com, wsd_upstream@mediatek.com,
- linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230424080400.8955-1-alice.chao@mediatek.com>
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20230424080400.8955-1-alice.chao@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230424_094921_589641_C3556A35 
-X-CRM114-Status: GOOD (  13.22  )
+X-CRM114-CacheID: sfid-20230424_100101_673522_DC1AE512 
+X-CRM114-Status: GOOD (  12.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,75 +82,114 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 4/24/23 01:03, Alice Chao wrote:
-> [name:lockdep&]WARNING: inconsistent lock state
-> [name:lockdep&]--------------------------------
-> [name:lockdep&]inconsistent {IN-HARDIRQ-W} -> {HARDIRQ-ON-W} usage.
-> [name:lockdep&]kworker/u16:4/260 [HC0[0]:SC0[0]:HE1:SE1] takes:
->    ffffff8028444600 (&hwq->cq_lock){?.-.}-{2:2}, at:
-> ufshcd_mcq_poll_cqe_lock+0x30/0xe0
-> [name:lockdep&]{IN-HARDIRQ-W} state was registered at:
->    lock_acquire+0x17c/0x33c
->    _raw_spin_lock+0x5c/0x7c
->    ufshcd_mcq_poll_cqe_lock+0x30/0xe0
->    ufs_mtk_mcq_intr+0x60/0x1bc [ufs_mediatek_mod]
->    __handle_irq_event_percpu+0x140/0x3ec
->    handle_irq_event+0x50/0xd8
->    handle_fasteoi_irq+0x148/0x2b0
->    generic_handle_domain_irq+0x4c/0x6c
->    gic_handle_irq+0x58/0x134
->    call_on_irq_stack+0x40/0x74
->    do_interrupt_handler+0x84/0xe4
->    el1_interrupt+0x3c/0x78
-> <snip>
-> 
-> Possible unsafe locking scenario:
->         CPU0
->         ----
->    lock(&hwq->cq_lock);
->    <Interrupt>
->      lock(&hwq->cq_lock);
->    *** DEADLOCK ***
-> 2 locks held by kworker/u16:4/260:
-> 
-> [name:lockdep&]
->   stack backtrace:
-> CPU: 7 PID: 260 Comm: kworker/u16:4 Tainted: G S      W  OE
-> 6.1.17-mainline-android14-2-g277223301adb #1
-> Workqueue: ufs_eh_wq_0 ufshcd_err_handler
-> 
->   Call trace:
->    dump_backtrace+0x10c/0x160
->    show_stack+0x20/0x30
->    dump_stack_lvl+0x98/0xd8
->    dump_stack+0x20/0x60
->    print_usage_bug+0x584/0x76c
->    mark_lock_irq+0x488/0x510
->    mark_lock+0x1ec/0x25c
->    __lock_acquire+0x4d8/0xffc
->    lock_acquire+0x17c/0x33c
->    _raw_spin_lock+0x5c/0x7c
->    ufshcd_mcq_poll_cqe_lock+0x30/0xe0
->    ufshcd_poll+0x68/0x1b0
->    ufshcd_transfer_req_compl+0x9c/0xc8
->    ufshcd_err_handler+0x3bc/0xea0
->    process_one_work+0x2f4/0x7e8
->    worker_thread+0x234/0x450
->    kthread+0x110/0x134
->    ret_from_fork+0x10/0x20
-> 
-> ufs_mtk_mcq_intr() could refer to
-> https://lore.kernel.org/all/20230328103423.10970-3-powen.kao@mediatek.com/
-> 
-> When ufshcd_err_handler() is executed, CQ event interrupt can enter
-> waiting for the same lock. It could happened in upstream code path
-> ufshcd_handle_mcq_cq_events() and also in ufs_mtk_mcq_intr(). This
-> warning message will be generated when &hwq->cq_lock is used in IRQ
-> context with IRQ enabled. Use ufshcd_mcq_poll_cqe_lock() with
-> spin_lock_irqsave instead of spin_lock to resolve the deadlock issue.
+Get missing tx retries/failed counts from txfree done events and report
+them via mt7915_sta_statistics().
 
-For future patches, please make sure that the patch description occurs 
-before the call traces. Anyway:
+Co-developed-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ .../net/wireless/mediatek/mt76/mt7915/mac.c   | 22 +++++++++++++++++--
+ .../net/wireless/mediatek/mt76/mt7915/mac.h   |  7 +++++-
+ .../net/wireless/mediatek/mt76/mt7915/main.c  | 12 +++++-----
+ 3 files changed, 32 insertions(+), 9 deletions(-)
 
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index 7df8d95fc3fb..8c34535e9c1e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -951,6 +951,7 @@ mt7915_mac_tx_free(struct mt7915_dev *dev, void *data, int len)
+ 	struct mt76_dev *mdev = &dev->mt76;
+ 	struct mt76_txwi_cache *txwi;
+ 	struct ieee80211_sta *sta = NULL;
++	struct mt76_wcid *wcid = NULL;
+ 	LIST_HEAD(free_list);
+ 	void *end = data + len;
+ 	bool v3, wake = false;
+@@ -977,7 +978,6 @@ mt7915_mac_tx_free(struct mt7915_dev *dev, void *data, int len)
+ 		info = le32_to_cpu(*cur_info);
+ 		if (info & MT_TX_FREE_PAIR) {
+ 			struct mt7915_sta *msta;
+-			struct mt76_wcid *wcid;
+ 			u16 idx;
+ 
+ 			idx = FIELD_GET(MT_TX_FREE_WLAN_ID, info);
+@@ -994,7 +994,25 @@ mt7915_mac_tx_free(struct mt7915_dev *dev, void *data, int len)
+ 			continue;
+ 		}
+ 
+-		if (v3 && (info & MT_TX_FREE_MPDU_HEADER))
++		if (!mtk_wed_device_active(&mdev->mmio.wed) && wcid) {
++			u32 tx_retries = 0, tx_failed = 0;
++
++			if (v3 && (info & MT_TX_FREE_MPDU_HEADER_V3)) {
++				tx_retries =
++					FIELD_GET(MT_TX_FREE_COUNT_V3, info) - 1;
++				tx_failed = tx_retries +
++					!!FIELD_GET(MT_TX_FREE_STAT_V3, info);
++			} else {
++				tx_retries =
++					FIELD_GET(MT_TX_FREE_COUNT, info) - 1;
++				tx_failed = tx_retries +
++					!!FIELD_GET(MT_TX_FREE_STAT, info);
++			}
++			wcid->stats.tx_retries += tx_retries;
++			wcid->stats.tx_failed += tx_failed;
++		}
++
++		if (v3 && (info & MT_TX_FREE_MPDU_HEADER_V3))
+ 			continue;
+ 
+ 		for (i = 0; i < 1 + v3; i++) {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.h b/drivers/net/wireless/mediatek/mt76/mt7915/mac.h
+index ce94f87e2042..448b1b380190 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.h
+@@ -9,7 +9,12 @@
+ #define MT_TX_FREE_VER			GENMASK(18, 16)
+ #define MT_TX_FREE_MSDU_CNT_V0		GENMASK(6, 0)
+ /* 0: success, others: dropped */
+-#define MT_TX_FREE_MPDU_HEADER		BIT(30)
++#define MT_TX_FREE_COUNT		GENMASK(12, 0)
++#define MT_TX_FREE_COUNT_V3		GENMASK(27, 24)
++#define MT_TX_FREE_STAT			GENMASK(14, 13)
++#define MT_TX_FREE_STAT_V3		GENMASK(29, 28)
++#define MT_TX_FREE_MPDU_HEADER		BIT(15)
++#define MT_TX_FREE_MPDU_HEADER_V3	BIT(30)
+ #define MT_TX_FREE_MSDU_ID_V3		GENMASK(14, 0)
+ 
+ #define MT_TXS5_F0_FINAL_MPDU		BIT(31)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+index 2ada2806de66..61157248d742 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+@@ -1046,12 +1046,6 @@ static void mt7915_sta_statistics(struct ieee80211_hw *hw,
+ 		sinfo->tx_packets = msta->wcid.stats.tx_packets;
+ 		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_PACKETS);
+ 
+-		sinfo->tx_failed = msta->wcid.stats.tx_failed;
+-		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_FAILED);
+-
+-		sinfo->tx_retries = msta->wcid.stats.tx_retries;
+-		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_RETRIES);
+-
+ 		if (mtk_wed_get_rx_capa(&phy->dev->mt76.mmio.wed)) {
+ 			sinfo->rx_bytes = msta->wcid.stats.rx_bytes;
+ 			sinfo->filled |= BIT_ULL(NL80211_STA_INFO_RX_BYTES64);
+@@ -1061,6 +1055,12 @@ static void mt7915_sta_statistics(struct ieee80211_hw *hw,
+ 		}
+ 	}
+ 
++	sinfo->tx_failed = msta->wcid.stats.tx_failed;
++	sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_FAILED);
++
++	sinfo->tx_retries = msta->wcid.stats.tx_retries;
++	sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_RETRIES);
++
+ 	sinfo->ack_signal = (s8)msta->ack_signal;
+ 	sinfo->filled |= BIT_ULL(NL80211_STA_INFO_ACK_SIGNAL);
+ 
+-- 
+2.18.0
+
 
