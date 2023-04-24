@@ -4,83 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A123CC7618E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Apr 2023 20:42:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C3AAC77B61
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Apr 2023 22:10:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F5ZMC5VZS+YuBCnDNL+LpSQZtLatJs+u2JnjBvK8Odc=; b=uypXOGtXO3Pw+SuAHzoAiW6kw7
-	bfo5TwIzVAjo8Db9GdWCurahaO+jS55IaE2DZU4Wqu2Du+Zic0PEPiPij12mLCFfqvE3HUw/u4UZP
-	sQcAzhvSyArRJws7rbj7Hs0Gx2elZ/KUsS2QYWiYvHLdn1DmYzo6Oqq7xkMNhYdz0Se3S3WJC0fse
-	nIv6wr6HDNSOlBrIVYS4Y/SEtTV+lfFWY0IWShck20wNRa9vsI9yAhCBgSA66N3W4UjvGzVM0Os4H
-	U6opu1xC3QYCJlGcOaygtU7tdOJIKKbzcsNas8nssee8vc55bWl2t5Po52JmyBxTdMe9vUC5ULcDh
-	Vpmxip1Q==;
+	bh=YL3kJ71xVQmIde5dfm/VYegPY3x3Trs3KU6FOiBnub4=; b=xQny+pvKG2dJEBM8Pdoev1r4MQ
+	r39+9IRMFwphh+sAk373RbjcLMidsHf8Ge5+orR6Dq0I6wiZ/nrhi5+UOliXUe6I7QPZprrhVTkUH
+	uREAIuVT1tmxHvhqMdQA9Al6CNhMwecLhq0jusbVebhb+XSBbBmOuLq0pOE6R/RUiBs7ebSEe2Upz
+	EuaBOJyQo4gHzl1wL1niHlGBUQ8r+qABUcdCA4Qt1bvVu5AgC+bleywcgYtk9FtdFBeYB/m+gg1RZ
+	IIOXXQl26Pa3LyXPO7Y0EpBpeHue1OQx3ZsCDXZpEB5LDIXt2FfuictS2hJY9RhW1P5WpeBlpHUgR
+	ZIXCMQRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pr312-00H9UO-0t;
-	Mon, 24 Apr 2023 20:42:28 +0000
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+	id 1pr4OR-00HFg5-0L;
+	Mon, 24 Apr 2023 22:10:43 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pr30y-00H9Ru-2V
-	for linux-mediatek@lists.infradead.org;
-	Mon, 24 Apr 2023 20:42:26 +0000
-Received: by mail-pf1-x434.google.com with SMTP id d2e1a72fcca58-63b73203e0aso30837486b3a.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 24 Apr 2023 13:42:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20221208; t=1682368939; x=1684960939;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=F5ZMC5VZS+YuBCnDNL+LpSQZtLatJs+u2JnjBvK8Odc=;
-        b=DGbRYrvKbvAoKpxgR0HQbFQbYXIsz+xp2DGSkA2iOQ8mk1waOeWr+SQSqHjNuasxPf
-         8n+vMTsSnPigKcKIoYZz5PxLBhE5efTfaOCZ8JQV/rP6KgWH3nnIBQVYIr26Po+rSVfL
-         XKUeFmdh9NNpkHFwRbRXZrVl72cOFnBWI8Dgk+co7z1DsCZf3I+iGPR2qA6JciXH6DEX
-         Qh0waztvz2vfOG82eC66kLBXYiKWml2zHWu/0w++9GWg6HxYxWvVKbS71C6Drwt+GaGj
-         UnoKPfxkLl/YsG6phBs1KAw1BycVRWcxeqF4Q9S3pHsn0wCjS3bASvhbon6oYA/iVdX2
-         4r2Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682368939; x=1684960939;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=F5ZMC5VZS+YuBCnDNL+LpSQZtLatJs+u2JnjBvK8Odc=;
-        b=l3tGRIuRcIRE8Ej0WpghgNeDPfzbBDYcZq9TnQ3SjMfB1FUbwQuMwBwj4AkQBxML9E
-         SI7iBM8yLaDCndpxQQ7F96I+M6AuoYN/5nnDLyrLT87l6bvCPlo3oa17A4EpCCNjGh82
-         un3ejMYPgsBfyciSvXvE6fYf9e//x3VArk08TcnVHwqWJcT91i9wlRNYN2Ctpes+lIoi
-         fhMvFDZt135e0sXi+sm/uboLLpebqbGccBcZ1jpgCwdSlc/V/rJaMaCgfW9tdse7CsSD
-         Zv9yYoJlPKiMmO3ZinDhCtYEVVWR6dppdSsfQYtnSOYPG4/hJpWlVgrW2BhHF7+IK0r4
-         fNqw==
-X-Gm-Message-State: AAQBX9fUlI3GmKbMnmIke4sPYBvNW21bEV9O6bqVskh2y9MZXRmjMoKu
-	3/Eg6Y+txxM0Mb8oyb8HaRc2vN4wQvh7ei93wQgnlw==
-X-Google-Smtp-Source: AKy350bsHQq1EzNGt73/j+nTzeIplaa5l3Hebw0touKLhbf8se1E6Dle8Z8ftc4k7i07Zf4ORu/GiUefhBFP9DGqO5w=
-X-Received: by 2002:a17:90a:6b43:b0:246:9517:30b6 with SMTP id
- x3-20020a17090a6b4300b00246951730b6mr22012160pjl.4.1682368939446; Mon, 24 Apr
- 2023 13:42:19 -0700 (PDT)
+	id 1pr4OL-00HFex-1S;
+	Mon, 24 Apr 2023 22:10:39 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 3502B6297D;
+	Mon, 24 Apr 2023 22:10:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9740EC433D2;
+	Mon, 24 Apr 2023 22:10:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1682374235;
+	bh=FnGcqvrEdLbzUlljWiXhCsHy+qSn4AIL5KgH7iNawGA=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=vD/FFfAqifz1nnj6u1cKoYA6GH2xWLs1V+ea4SuOBpAHQh0NGFjWQSVbhpBcJcyWf
+	 5aOCD+ypac0Bq6YZR1YiJlplzcuSYM9Rj/cS7VNwTmIarJqdDGwq0siT8Z1Rx3pyFd
+	 uIF6CG+ld0p/DXJ2MDysgwFGm33oDzMbh8FK4uTfw2dpxgA6gSYi2UnPj9+YrUqTUc
+	 RO+7Hri8oZZphp3UiJzPteyEuQ/oIqhua7BNO+3B52D/6VB2MsknlXdeKRKeWTnwr9
+	 uVKS0ASFJVltj9jRqGi5XDys6F6NjS3eMd3J8yY7nKHNNoZ64TPWpTB1RlyDqpRbtD
+	 Lm7Fysb+fVYSQ==
+Received: by mail-yb1-f170.google.com with SMTP id 3f1490d57ef6-b8f5276baa3so3727636276.3;
+        Mon, 24 Apr 2023 15:10:35 -0700 (PDT)
+X-Gm-Message-State: AAQBX9dSWTOY7ZerrU0Jak4IbqfeFQY8PGyw1J3l0n6PLNFUwSCUrv6j
+	+xU1zTYp9L0U4oQCDhykUOYxo5+uP/i97tFwDQ==
+X-Google-Smtp-Source: AKy350Z8fwjeT6uilQZV5elUBNHPlU26+hD27eSWPRlQhPwmqTcN2nXurF+nyFvBNi+9INgYk5eGXnlLE8/dW8JHY5k=
+X-Received: by 2002:a0d:e2c9:0:b0:54f:752e:9b63 with SMTP id
+ l192-20020a0de2c9000000b0054f752e9b63mr9341801ywe.15.1682374234531; Mon, 24
+ Apr 2023 15:10:34 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230413-fixes-for-mt8195-hdmi-phy-v2-0-bbad62e64321@baylibre.com>
- <20230413-fixes-for-mt8195-hdmi-phy-v2-1-bbad62e64321@baylibre.com> <20230421221330.GA3657732@dev-arch.thelio-3990X>
-In-Reply-To: <20230421221330.GA3657732@dev-arch.thelio-3990X>
-From: Nick Desaulniers <ndesaulniers@google.com>
-Date: Mon, 24 Apr 2023 13:42:08 -0700
-Message-ID: <CAKwvOd=5szkx5yA0bxcyktx85opAwLrB3_4n13SMV7p3m9x7LQ@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] phy: mediatek: hdmi: mt8195: fix uninitialized
- variable usage in pll_calc
-To: Matthias Brugger <matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, 
-	Vinod Koul <vkoul@kernel.org>
-Cc: Guillaume Ranquet <granquet@baylibre.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Kishon Vijay Abraham I <kishon@kernel.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	kernel test robot <lkp@intel.com>, llvm@lists.linux.dev, Nathan Chancellor <nathan@kernel.org>
+References: <20220328000915.15041-1-ansuelsmth@gmail.com> <85eb14ec-f465-7447-ad77-a3dabc666f47@kernel.org>
+ <YkKRYnN84D9VZhGj@Ansuel-xps.localdomain>
+In-Reply-To: <YkKRYnN84D9VZhGj@Ansuel-xps.localdomain>
+From: Rob Herring <robh+dt@kernel.org>
+Date: Mon, 24 Apr 2023 17:10:23 -0500
+X-Gmail-Original-Message-ID: <CAL_Jsq+RQQ-ADMxLPUFwk6S6kGmb6oNDy4k52fnU0EtbUvqmSA@mail.gmail.com>
+Message-ID: <CAL_Jsq+RQQ-ADMxLPUFwk6S6kGmb6oNDy4k52fnU0EtbUvqmSA@mail.gmail.com>
+Subject: Re: [RFC PATCH 0/1] Categorize ARM dts directory
+To: Ansuel Smith <ansuelsmth@gmail.com>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-actions@lists.infradead.org, 
+	linux-sunxi@lists.linux.dev, linux-omap@vger.kernel.org, 
+	linux-amlogic@lists.infradead.org, linux-arm-kernel@axis.com, 
+	linux-aspeed@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org, 
+	chrome-platform@lists.linux.dev, linux-renesas-soc@vger.kernel.org, 
+	linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, 
+	kernel@dh-electronics.com, linux-mediatek@lists.infradead.org, 
+	openbmc@lists.ozlabs.org, linux-tegra@vger.kernel.org, linux-oxnas@groups.io, 
+	linux-arm-msm@vger.kernel.org, linux-unisoc@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-realtek-soc@lists.infradead.org, 
+	Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230424_134224_811825_164371ED 
-X-CRM114-Status: GOOD (  20.57  )
+X-CRM114-CacheID: sfid-20230424_151037_597908_4BA9815E 
+X-CRM114-Status: GOOD (  53.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,83 +93,125 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 21, 2023 at 3:13=E2=80=AFPM Nathan Chancellor <nathan@kernel.or=
-g> wrote:
+On Tue, Mar 29, 2022 at 8:27=E2=80=AFAM Ansuel Smith <ansuelsmth@gmail.com>=
+ wrote:
 >
-> On Fri, Apr 14, 2023 at 06:07:46PM +0200, Guillaume Ranquet wrote:
-> > The ret variable in mtk_hdmi_pll_calc() was used unitialized as reporte=
+> On Tue, Mar 29, 2022 at 03:20:18PM +0200, Krzysztof Kozlowski wrote:
+> > On 28/03/2022 02:09, Ansuel Smith wrote:
+> > > Hi,
+> > > as the title say, the intention of this ""series"" is to finally cate=
+gorize
+> > > the ARM dts directory in subdirectory for each oem.
+> > >
+> > > The main reason for this is that it became unpractical to handle 2600
+> > > dts files and try to even understand/edit/check the situation for a
+> > > specific target.
+> > >
+> > > In arm64 we already have this kind of separation and I honestly think
+> > > that this was never proposed for ARM due to the fact that there are
+> > > 2600+ files to sort and the fact that it will be a mess to merge this
+> > > entirely but IMHO with a little bit of effort we can finally solve th=
+is
+> > > problem and have a well organized directory just like arm64.
+> > >
+> > > Some prerequisite on how this work was done:
+> > > - This comes entirely from a python script created by me for the task=
+.
+> > >   linked here [1]
+> > > - I had to manually categorize all the different arch in the makefile
+> > >   based on the oem. I searched every arch on the internet trying to
+> > >   understand the correct oem. I hope they are correct but I would lov=
+e
+> > >   some comments about them.
+> > > - This current ""series"" is all squashed in one big commit to better
+> > >   receive comments for this. The final version ideally would have all
+> > >   changes in separate commits. The script can already do this, it's j=
+ust
+> > >   commented.
+> > >
+> > > Here is a list of some discoveries while doing all the sorting.
+> > > These are totally additional reason why we need this.
+> > >
+> > > While creating the script I discovered some funny things:
+> > > - We have orphan dts! There are dts that are never compiled and are
+> > >   there just for reference. We would never have noticed this without =
+this
+> > >   change and probably nobody noticed it. They are currently all liste=
 d
-> > by the kernel test robot.
+> > >   in the python script.
+> > > - We have dtsi shared across different oem. My current solution for t=
+hem
+> > >   is: NOT SORT THEM and leave them in the generic directory and creat=
+e a
+> > >   link in each oem dts that points to these dtsi. This is to try in
+> > >   every way possible to skip any additional changes to the dts.
+> > >   Current dtsi that suffers from this are only 3. (listed in the scri=
+pt)
+> > > - arm64 dts and dtsi reference ARM dts. Obviously this change would c=
+ause
+> > >   broken include for these special dtsi. The script creates a depende=
+ncy
+> > >   table of the entire arm64 directory and fix every broken dependency
+> > >   (hoping they all use a sane include logic... regex is used to parse
+> > >   all the different dependency)
+> > >
+> > > So in short the script does the following steps:
+> > > 1. Enumerate all the action to do... (dts to move, scan dependency fo=
+r
+> > >    the dts...)
+> > > 2. Generate the arm64 dependency
+> > > 3. Creates the Makefile
+> > > 4. Generate the Makefiles for the current oem
+> > > 5. Move all the related dts and dtsi for the current oem
+> > > 6. Check broken dependency and fix them by editing the dts and writin=
+g
+> > >    the correct include (or fix any symbolic link)
+> > >
+> > > This is an output that describes all the things done by the script [2=
+]
+> > >
+> > > I really hope I didn't commit any logic mistake in the script but mos=
+t
+> > > of the work should be done.
+> > >
 > >
-> > Fix the issue by removing the variable altogether and testing out the
-> > return value of mtk_hdmi_pll_set_hw()
+> > +Cc Arnd and Olof,
 > >
-> > Fixes: 45810d486bb44 ("phy: mediatek: add support for phy-mtk-hdmi-mt81=
-95")
-> > Reported-by: kernel test robot <lkp@intel.com>
-> > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
->
-> Reviewed-by: Nathan Chancellor <nathan@kernel.org>
->
-> Can somebody pick this up? It fixes a rather obvious warning, which is
-> breaking clang builds (as evidenced by three versions of the same fix).
-
-$ ./scripts/get_maintainer.pl -f
-drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c | grep maintainer
-Chunfeng Yun <chunfeng.yun@mediatek.com> (maintainer:ARM/Mediatek USB3
-PHY DRIVER)
-Matthias Brugger <matthias.bgg@gmail.com> (maintainer:ARM/Mediatek SoC supp=
-ort)
-
-Chunfeng, Matthias, can one of you pick this up, please?
-
-Or Vinod who merged 45810d486bb44 FWICT?
-
->
-> > ---
-> >  drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c | 8 ++------
-> >  1 file changed, 2 insertions(+), 6 deletions(-)
-> >
-> > diff --git a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c b/drivers/phy/m=
-ediatek/phy-mtk-hdmi-mt8195.c
-> > index abfc077fb0a8..054b73cb31ee 100644
-> > --- a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
-> > +++ b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
-> > @@ -213,7 +213,7 @@ static int mtk_hdmi_pll_calc(struct mtk_hdmi_phy *h=
-dmi_phy, struct clk_hw *hw,
-> >       u64 tmds_clk, pixel_clk, da_hdmitx21_ref_ck, ns_hdmipll_ck, pcw;
-> >       u8 txpredivs[4] =3D { 2, 4, 6, 12 };
-> >       u32 fbkdiv_low;
-> > -     int i, ret;
-> > +     int i;
-> >
-> >       pixel_clk =3D rate;
-> >       tmds_clk =3D pixel_clk;
-> > @@ -292,13 +292,9 @@ static int mtk_hdmi_pll_calc(struct mtk_hdmi_phy *=
-hdmi_phy, struct clk_hw *hw,
-> >       if (!(digital_div <=3D 32 && digital_div >=3D 1))
-> >               return -EINVAL;
-> >
-> > -     mtk_hdmi_pll_set_hw(hw, PLL_PREDIV, fbkdiv_high, fbkdiv_low,
-> > +     return mtk_hdmi_pll_set_hw(hw, PLL_PREDIV, fbkdiv_high, fbkdiv_lo=
-w,
-> >                           PLL_FBKDIV_HS3, posdiv1, posdiv2, txprediv,
-> >                           txposdiv, digital_div);
-> > -     if (ret)
-> > -             return -EINVAL;
-> > -
-> > -     return 0;
-> >  }
-> >
-> >  static int mtk_hdmi_pll_drv_setting(struct clk_hw *hw)
-> >
-> > --
-> > 2.40.0
+> > Ansuel,
+> > Thanks for you patch. Please cc the SoC maintainers in such submissions=
+.
+> > It seems that you got some quite nice discussion, but still the core
+> > folks are not Cced, so no one would be able to take your patch...
 > >
 >
+> I had some problem with gmail and sending mail too much users. I put Rob
+> and You and all the various list to try to workaround the "gmail spam
+> protection"
+>
+> > I am pretty sure we were discussing such split idea in the past and it
+> > did not get traction, but I cannot recall the exact discussion.
+> >
+>
+> I think the main issue here is how to handle bot and how problematic is
+> to merge this. As written in the cover letter the final version of this
+> should be a big series of 50+ patch with every commit specific to each
+> oem. In theory we should be able to merge the different oem separately
+> and try to at least start the categorization.
+> Another idea I got to at least have a "migration path" is to convert
+> every dts in the dts/ directory to a symbolic link that target the dts
+> in the correct oem. But I assume that would fix only part of the problem
+> and git am will still be problematic.
 
+I have a script[1] that does the conversion written the last time this
+came up. Just have to agree on directory names. I think the easiest
+would be for Arnd/Olof to run it at the end of a merge window before
+rc1.
 
---=20
-Thanks,
-~Nick Desaulniers
+I'm very much in favor of this happening especially before *any*
+overlays are added to add to the mess (it's probably already
+happened).
+
+Rob
+
+[1] https://lore.kernel.org/all/20181204183649.GA5716@bogus/
 
