@@ -4,137 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49FF2C6FD18
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Apr 2023 14:48:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0178EC77B61
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Apr 2023 15:07:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2Z9xscxrsAsgngjIzMB6+vzGDqIX8rHhJnudaSYumkM=; b=4a8D5MjcV8DxNJI1ul5Q2WyFix
-	T6Rma83GlhhyYTvJKsHkrzM7efPzSSBN7Iux2x6tqXAk+zHQCzvuAb+uP05cXaJ3n+RdDKrAF7NEZ
-	GA0tt1p4D6XZV5kF+vae8j55/HxljHMqYaaloMN1fw+6q84ScRGuisZR7sp32fDEb2lMmtqtpHdtZ
-	wvchOn+NrPKBT8/IvlwejLsqqB4ABvcIPAiHvsUiVbpkIHt/7gQ1zcpJRr58eqSHXhlFXGTOJ6qnD
-	S2YubZZMxQGHTdtPekNHUsSFb6mlaa3/3vkj54uepZw09iDkQv55PQa4zreH4iMikz/xY1QdXXW6a
-	CqL8q7uw==;
+	bh=cj+/HGjjucarzuWOhYilky60sctx6PyuETInNaF+6Q4=; b=M0ZEcqoMbqssubPdGA9J7ZhJf6
+	hzA26CC/QHvVa4iNxNX7sNoOq37YOKvQrZN9LqA6Csx+UM3zKIxXr6RzywKRcHlZvBaKbLgoKNiaT
+	883d9D4ommTzSu2uBKL5m9lIkwEStSUpszxwywl1h9uAvbcdLDxk+DGB6GHUakYa4AsD+6PnVWEVs
+	vTr0Bwx2HAXiNNHFo2fHU7Oyg7v24DDSLP+U9gqWvd15or66sHyeN6MY2gFqjnQ98epIB6ySBUer6
+	ef4i0FJBaiV7NRxSmMEYga/2HsjqAnz/NoWxDyFb76vMJP82u26anQCwVlbM0VsLovrytCxB548rO
+	6QFAmLMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1prJy7-001SlH-0a;
-	Tue, 25 Apr 2023 14:48:35 +0000
-Received: from new2-smtp.messagingengine.com ([66.111.4.224])
+	id 1prKGM-001UTa-1l;
+	Tue, 25 Apr 2023 15:07:26 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prJy3-001Sk7-1b;
-	Tue, 25 Apr 2023 14:48:32 +0000
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailnew.nyi.internal (Postfix) with ESMTP id B9A47582063;
-	Tue, 25 Apr 2023 10:48:30 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
-  by compute4.internal (MEProxy); Tue, 25 Apr 2023 10:48:30 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
-	:cc:content-type:content-type:date:date:from:from:in-reply-to
-	:in-reply-to:message-id:mime-version:references:reply-to:sender
-	:subject:subject:to:to; s=fm2; t=1682434110; x=1682441310; bh=2Z
-	9xscxrsAsgngjIzMB6+vzGDqIX8rHhJnudaSYumkM=; b=qBJOkoVe+VNibxNNQO
-	VK2js4W7TzTuIpkDDa3BLdnOC7eWX0KgROExYuxUdEFqCJsGyLbF+D2tvbjjep3U
-	bAgos8DrJ/Hjkb2ZGyXZzyFpvNCDW+gofoAROAJGv7CQnlCLqe6ATS1J4MJRcmwg
-	4Q4K2ZOUhpVU1cAQnmuGP1cxN/fjHKicRyETbAXCNO2Qviwt8gxnXoRRWuv/7jMb
-	lpg2wS+gSdjofHEnqblqp4x8V5wAiRkLnum/Bj+m5Ab2mWfdXh50k0IcR2nmhcwk
-	FuFT4cztt9au15O9HposWQfpC/GQXa6ocvA7cTgvabmtqhnoORgHy7MV3BJ+J4+o
-	madw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:content-type:date:date
-	:feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
-	:x-sasl-enc; s=fm3; t=1682434110; x=1682441310; bh=2Z9xscxrsAsgn
-	gjIzMB6+vzGDqIX8rHhJnudaSYumkM=; b=ZbXzsek9V7jy7FBZZjfe3bm2cOnrh
-	g8hTeK6Fhh/HecH47BxVkmvQT4XP9+M+x5KplHQbt5qHnZNNXyfRp06v//jCH0RC
-	DUCYVonbAkK2V/lr/TciWCARVwImuF5DwfEBVrzgz0SHl4MSBuyPKdc91oYeLqSY
-	pE8IfifJ7qSu7D2RWCrnrGGBDOMDaHkY8R6kvjVE+3WFWd4tRjO7Xt6yE3jhSCc/
-	Aij9bWtJ1nykUzu0l0UP7BqeLIIqSMgUzPkplevnEdX0QwHjeP3gh+71Je/iz0dF
-	+ymAW48RTZj+2K+0DcXQ9oCXzPQ8kyrHTzGj8aWYJ9U2KnGQiFEba+s3w==
-X-ME-Sender: <xms:PuhHZDLbuxmUpnoqvk2pbFPZI4YCEbbSxOZ4NXL8FtOSYnAeA4UioA>
-    <xme:PuhHZHJc-XHI78gu6IZO_LN-Huzr4JDWRbrFwQHAhOqfTcfuJqSNIVVshGEm_Ojen
-    4xz68r8IBuWi29LLgA>
-X-ME-Received: <xmr:PuhHZLsgs5wGOs9cdcbI9NeM9EwJqurgjDl5URQyrdXV8HLV8_Bn08oaxPWQYfQojWZpWChXh1eu7rgS2E_nLBg9Mez76dY>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrfeduvddgkedtucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhepfffhvfevuffkfhggtggujgesghdtsfertddtvdenucfhrhhomhepofgrgihi
-    mhgvucftihhprghrugcuoehmrgigihhmvgestggvrhhnohdrthgvtghhqeenucggtffrrg
-    htthgvrhhnpeeuveduheeutdekvefgudevjeeufedvvdevhfejgfelgfdtkeevueegteek
-    gfelfeenucevlhhushhtvghrufhiiigvpedunecurfgrrhgrmhepmhgrihhlfhhrohhmpe
-    hmrgigihhmvgestggvrhhnohdrthgvtghh
-X-ME-Proxy: <xmx:PuhHZMZd9EIBUl1Wyry-TbjgK_2L_TMsq-N8aN870T0DkJ8bJyUOzw>
-    <xmx:PuhHZKaVF3HvOGKJpBoJT0DtU3QQ5hT6MNvdpXdzvoWzV37ERODA5g>
-    <xmx:PuhHZAB4bMGgrV5lZuu5ELLK3c9LN4lJ_EJCMX6Bpm6vKa8U0femUA>
-    <xmx:PuhHZOgJU5V6hv_jQmVadgi43lNAg_tfkJs7WPvVbbwAPmeqE1qC2w>
-Feedback-ID: i8771445c:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 25 Apr 2023 10:48:28 -0400 (EDT)
-Date: Tue, 25 Apr 2023 16:48:27 +0200
-From: Maxime Ripard <maxime@cerno.tech>
-To: Dinh Nguyen <dinguyen@kernel.org>
-Cc: Michael Turquette <mturquette@baylibre.com>,
- 	Stephen Boyd <sboyd@kernel.org>,
- Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>,
- 	Manivannan Sadhasivam <mani@kernel.org>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- 	Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Claudiu Beznea <claudiu.beznea@microchip.com>,
- 	Max Filippov <jcmvbkbc@gmail.com>,
- Charles Keepax <ckeepax@opensource.cirrus.com>,
- 	Richard Fitzgerald <rf@opensource.cirrus.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- 	Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- 	David Lechner <david@lechnology.com>, Sekhar Nori <nsekhar@ti.com>,
- Abel Vesa <abelvesa@kernel.org>, 	Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- 	Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, 	NXP Linux Team <linux-imx@nxp.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- 	Geert Uytterhoeven <geert+renesas@glider.be>,
- Peter De Schrijver <pdeschrijver@nvidia.com>,
- 	Prashant Gaikwad <pgaikwad@nvidia.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- 	Jonathan Hunter <jonathanh@nvidia.com>,
- Ulf Hansson <ulf.hansson@linaro.org>,
- 	Linus Walleij <linus.walleij@linaro.org>,
- David Airlie <airlied@gmail.com>, 	Daniel Vetter <daniel@ffwll.ch>,
- Vinod Koul <vkoul@kernel.org>,
- 	Kishon Vijay Abraham I <kishon@kernel.org>,
- Alessandro Zummo <a.zummo@towertech.it>, 	Chen-Yu Tsai <wens@csie.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- 	Samuel Holland <samuel@sholland.org>,
- Liam Girdwood <lgirdwood@gmail.com>, 	Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- 	Paul Cercueil <paul@crapouillou.net>, Orson Zhai <orsonzhai@gmail.com>,
- 	Baolin Wang <baolin.wang@linux.alibaba.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>, linux-clk@vger.kernel.org,
- 	linux-kernel@vger.kernel.org,
- 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-arm-kernel@lists.infradead.org, 	linux-actions@lists.infradead.org,
- patches@opensource.cirrus.com, 	linux-stm32@st-md-mailman.stormreply.com,
- linux-mediatek@lists.infradead.org, 	linux-renesas-soc@vger.kernel.org,
- linux-tegra@vger.kernel.org, dri-devel@lists.freedesktop.org,
- 	linux-phy@lists.infradead.org, linux-rtc@vger.kernel.org,
- linux-sunxi@lists.linux.dev, 	alsa-devel@alsa-project.org,
- linux-mips@vger.kernel.org
-Subject: Re: [PATCH v3 29/65] clk: socfpga: gate: Add a determine_rate hook
-Message-ID: <sjlp5ubnpvulgwhhymmfkmmobkgxacyqwagqozodkee3di2qik@3igj6k3zgbk6>
-References: <20221018-clk-range-checks-fixes-v3-0-9a1358472d52@cerno.tech>
- <20221018-clk-range-checks-fixes-v3-29-9a1358472d52@cerno.tech>
- <679921ee-98d4-d6ef-5934-e009fd4b31fc@kernel.org>
+	id 1prKGI-001URw-09;
+	Tue, 25 Apr 2023 15:07:23 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1prKFU-0004Uh-0Z;
+	Tue, 25 Apr 2023 17:06:32 +0200
+Date: Tue, 25 Apr 2023 16:04:42 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: arinc9.unal@gmail.com
+Subject: Re: [PATCH net-next 04/24] net: dsa: mt7530: properly support
+ MT7531AE and MT7531BE
+Message-ID: <ZEfsCit0XX8zqUIJ@makrotopia.org>
+References: <20230425082933.84654-1-arinc.unal@arinc9.com>
+ <20230425082933.84654-5-arinc.unal@arinc9.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="635dxoh2qhipywob"
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <679921ee-98d4-d6ef-5934-e009fd4b31fc@kernel.org>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230425082933.84654-5-arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230425_074831_600691_1E9FC77E 
-X-CRM114-Status: GOOD (  34.95  )
+X-CRM114-CacheID: sfid-20230425_080722_235924_24D77377 
+X-CRM114-Status: GOOD (  34.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -146,94 +59,231 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Eric Dumazet <edumazet@google.com>, erkin.bozoglu@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Apr 25, 2023 at 11:29:13AM +0300, arinc9.unal@gmail.com wrote:
+> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+> 
+> Introduce the p5_sgmii pointer to store the information for whether port 5
+> has got SGMII or not.
 
---635dxoh2qhipywob
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+The p5_sgmii your are introducing to struct mt7530_priv is a boolean
+variable, and not a pointer.
 
-Hi Dinh,
+> 
+> Move the comment about MT7531AE and MT7531BE to mt7531_setup(), where the
+> switch is identified.
+> 
+> Get rid of mt7531_dual_sgmii_supported() now that priv->p5_sgmii stores the
+> information. Address the code where mt7531_dual_sgmii_supported() is used.
+> 
+> Get rid of mt7531_is_rgmii_port() which just prints the opposite of
+> priv->p5_sgmii.
+> 
+> Remove P5_INTF_SEL_GMAC5_SGMII. The p5_interface_select enum is supposed to
+> represent the mode that port 5 is being used in, not the hardware
+> information of port 5. Set p5_intf_sel to P5_INTF_SEL_GMAC5 instead, if
+> port 5 is not dsa_is_unused_port().
+> 
+> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> ---
 
-On Mon, Apr 24, 2023 at 01:32:28PM -0500, Dinh Nguyen wrote:
-> On 4/4/23 05:11, Maxime Ripard wrote:
-> > The SoCFGPA gate clock implements a mux with a set_parent hook, but
-> > doesn't provide a determine_rate implementation.
-> >=20
-> > This is a bit odd, since set_parent() is there to, as its name implies,
-> > change the parent of a clock. However, the most likely candidate to
-> > trigger that parent change is a call to clk_set_rate(), with
-> > determine_rate() figuring out which parent is the best suited for a
-> > given rate.
-> >=20
-> > The other trigger would be a call to clk_set_parent(), but it's far less
-> > used, and it doesn't look like there's any obvious user for that clock.
-> >=20
-> > So, the set_parent hook is effectively unused, possibly because of an
-> > oversight. However, it could also be an explicit decision by the
-> > original author to avoid any reparenting but through an explicit call to
-> > clk_set_parent().
-> >=20
-> > The latter case would be equivalent to setting the flag
-> > CLK_SET_RATE_NO_REPARENT, together with setting our determine_rate hook
-> > to __clk_mux_determine_rate(). Indeed, if no determine_rate
-> > implementation is provided, clk_round_rate() (through
-> > clk_core_round_rate_nolock()) will call itself on the parent if
-> > CLK_SET_RATE_PARENT is set, and will not change the clock rate
-> > otherwise. __clk_mux_determine_rate() has the exact same behavior when
-> > CLK_SET_RATE_NO_REPARENT is set.
-> >=20
-> > And if it was an oversight, then we are at least explicit about our
-> > behavior now and it can be further refined down the line.
-> >=20
-> > Signed-off-by: Maxime Ripard <maxime@cerno.tech>
-> > ---
-> >   drivers/clk/socfpga/clk-gate.c | 3 ++-
-> >   1 file changed, 2 insertions(+), 1 deletion(-)
-> >=20
-> > diff --git a/drivers/clk/socfpga/clk-gate.c b/drivers/clk/socfpga/clk-g=
-ate.c
-> > index 32ccda960f28..cbba8462a09e 100644
-> > --- a/drivers/clk/socfpga/clk-gate.c
-> > +++ b/drivers/clk/socfpga/clk-gate.c
-> > @@ -110,6 +110,7 @@ static unsigned long socfpga_clk_recalc_rate(struct=
- clk_hw *hwclk,
-> >   static struct clk_ops gateclk_ops =3D {
-> >   	.recalc_rate =3D socfpga_clk_recalc_rate,
-> > +	.determine_rate =3D __clk_mux_determine_rate,
-> >   	.get_parent =3D socfpga_clk_get_parent,
-> >   	.set_parent =3D socfpga_clk_set_parent,
-> >   };
-> > @@ -166,7 +167,7 @@ void __init socfpga_gate_init(struct device_node *n=
-ode)
-> >   	init.name =3D clk_name;
-> >   	init.ops =3D ops;
-> > -	init.flags =3D 0;
-> > +	init.flags =3D CLK_SET_RATE_NO_REPARENT;
-> >   	init.num_parents =3D of_clk_parent_fill(node, parent_name, SOCFPGA_M=
-AX_PARENTS);
-> >   	if (init.num_parents < 2) {
-> >=20
->=20
-> This patch broke SoCFPGA boot serial port. The characters are mangled.
+Other than the comment above this change makes sense and looks good to
+me, so once you correct the commit message, you may add my Acked-by.
 
-Do you have any other access to that board? If so, could you dump
-clk_summary in debugfs with and without that patch?
-
-Maxime
-
---635dxoh2qhipywob
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZEfoOwAKCRDj7w1vZxhR
-xavIAP9NdWOgKUDjN4zLo7wwwqFUwBI6vcLYDH178vQMtvLupgD9GDdlERsfJpng
-mzdl0IfdqknQqk5qHgVllUa6sstbpgY=
-=0zSO
------END PGP SIGNATURE-----
-
---635dxoh2qhipywob--
+>  drivers/net/dsa/mt7530-mdio.c |  7 ++----
+>  drivers/net/dsa/mt7530.c      | 43 ++++++++++++-----------------------
+>  drivers/net/dsa/mt7530.h      |  6 +++--
+>  3 files changed, 21 insertions(+), 35 deletions(-)
+> 
+> diff --git a/drivers/net/dsa/mt7530-mdio.c b/drivers/net/dsa/mt7530-mdio.c
+> index 088533663b83..fa3ee85a99c1 100644
+> --- a/drivers/net/dsa/mt7530-mdio.c
+> +++ b/drivers/net/dsa/mt7530-mdio.c
+> @@ -81,17 +81,14 @@ static const struct regmap_bus mt7530_regmap_bus = {
+>  };
+>  
+>  static int
+> -mt7531_create_sgmii(struct mt7530_priv *priv, bool dual_sgmii)
+> +mt7531_create_sgmii(struct mt7530_priv *priv)
+>  {
+>  	struct regmap_config *mt7531_pcs_config[2] = {};
+>  	struct phylink_pcs *pcs;
+>  	struct regmap *regmap;
+>  	int i, ret = 0;
+>  
+> -	/* MT7531AE has two SGMII units for port 5 and port 6
+> -	 * MT7531BE has only one SGMII unit for port 6
+> -	 */
+> -	for (i = dual_sgmii ? 0 : 1; i < 2; i++) {
+> +	for (i = priv->p5_sgmii ? 0 : 1; i < 2; i++) {
+>  		mt7531_pcs_config[i] = devm_kzalloc(priv->dev,
+>  						    sizeof(struct regmap_config),
+>  						    GFP_KERNEL);
+> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> index 7d9f9563dbda..29abf2745294 100644
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+> @@ -473,15 +473,6 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
+>  	return 0;
+>  }
+>  
+> -static bool mt7531_dual_sgmii_supported(struct mt7530_priv *priv)
+> -{
+> -	u32 val;
+> -
+> -	val = mt7530_read(priv, MT7531_TOP_SIG_SR);
+> -
+> -	return (val & PAD_DUAL_SGMII_EN) != 0;
+> -}
+> -
+>  static int
+>  mt7531_pad_setup(struct dsa_switch *ds, phy_interface_t interface)
+>  {
+> @@ -496,7 +487,7 @@ mt7531_pll_setup(struct mt7530_priv *priv)
+>  	u32 xtal;
+>  	u32 val;
+>  
+> -	if (mt7531_dual_sgmii_supported(priv))
+> +	if (priv->p5_sgmii)
+>  		return;
+>  
+>  	val = mt7530_read(priv, MT7531_CREV);
+> @@ -907,8 +898,6 @@ static const char *p5_intf_modes(unsigned int p5_interface)
+>  		return "PHY P4";
+>  	case P5_INTF_SEL_GMAC5:
+>  		return "GMAC5";
+> -	case P5_INTF_SEL_GMAC5_SGMII:
+> -		return "GMAC5_SGMII";
+>  	default:
+>  		return "unknown";
+>  	}
+> @@ -2440,6 +2429,12 @@ mt7531_setup(struct dsa_switch *ds)
+>  		return -ENODEV;
+>  	}
+>  
+> +	/* MT7531AE has got two SGMII units. One for port 5, one for port 6.
+> +	 * MT7531BE has got only one SGMII unit which is for port 6.
+> +	 */
+> +	val = mt7530_read(priv, MT7531_TOP_SIG_SR);
+> +	priv->p5_sgmii = !!(val & PAD_DUAL_SGMII_EN);
+> +
+>  	/* all MACs must be forced link-down before sw reset */
+>  	for (i = 0; i < MT7530_NUM_PORTS; i++)
+>  		mt7530_write(priv, MT7530_PMCR_P(i), MT7531_FORCE_LNK);
+> @@ -2451,19 +2446,16 @@ mt7531_setup(struct dsa_switch *ds)
+>  
+>  	mt7531_pll_setup(priv);
+>  
+> -	if (mt7531_dual_sgmii_supported(priv)) {
+> -		priv->p5_intf_sel = P5_INTF_SEL_GMAC5_SGMII;
+> -
+> +	if (priv->p5_sgmii) {
+>  		/* Let ds->slave_mii_bus be able to access external phy. */
+>  		mt7530_rmw(priv, MT7531_GPIO_MODE1, MT7531_GPIO11_RG_RXD2_MASK,
+>  			   MT7531_EXT_P_MDC_11);
+>  		mt7530_rmw(priv, MT7531_GPIO_MODE1, MT7531_GPIO12_RG_RXD3_MASK,
+>  			   MT7531_EXT_P_MDIO_12);
+> -	} else {
+> -		priv->p5_intf_sel = P5_INTF_SEL_GMAC5;
+>  	}
+> -	dev_dbg(ds->dev, "P5 support %s interface\n",
+> -		p5_intf_modes(priv->p5_intf_sel));
+> +
+> +	if (!dsa_is_unused_port(ds, 5))
+> +		priv->p5_intf_sel = P5_INTF_SEL_GMAC5;
+>  
+>  	mt7530_rmw(priv, MT7531_GPIO_MODE0, MT7531_GPIO0_MASK,
+>  		   MT7531_GPIO0_INTERRUPT);
+> @@ -2523,11 +2515,6 @@ static void mt7530_mac_port_get_caps(struct dsa_switch *ds, int port,
+>  	}
+>  }
+>  
+> -static bool mt7531_is_rgmii_port(struct mt7530_priv *priv, u32 port)
+> -{
+> -	return (port == 5) && (priv->p5_intf_sel != P5_INTF_SEL_GMAC5_SGMII);
+> -}
+> -
+>  static void mt7531_mac_port_get_caps(struct dsa_switch *ds, int port,
+>  				     struct phylink_config *config)
+>  {
+> @@ -2540,7 +2527,7 @@ static void mt7531_mac_port_get_caps(struct dsa_switch *ds, int port,
+>  		break;
+>  
+>  	case 5: /* 2nd cpu port supports either rgmii or sgmii/8023z */
+> -		if (mt7531_is_rgmii_port(priv, port)) {
+> +		if (!priv->p5_sgmii) {
+>  			phy_interface_set_rgmii(config->supported_interfaces);
+>  			break;
+>  		}
+> @@ -2607,7 +2594,7 @@ static int mt7531_rgmii_setup(struct mt7530_priv *priv, u32 port,
+>  {
+>  	u32 val;
+>  
+> -	if (!mt7531_is_rgmii_port(priv, port)) {
+> +	if (priv->p5_sgmii) {
+>  		dev_err(priv->dev, "RGMII mode is not available for port %d\n",
+>  			port);
+>  		return -EINVAL;
+> @@ -2860,7 +2847,7 @@ mt7531_cpu_port_config(struct dsa_switch *ds, int port)
+>  
+>  	switch (port) {
+>  	case 5:
+> -		if (mt7531_is_rgmii_port(priv, port))
+> +		if (!priv->p5_sgmii)
+>  			interface = PHY_INTERFACE_MODE_RGMII;
+>  		else
+>  			interface = PHY_INTERFACE_MODE_2500BASEX;
+> @@ -3019,7 +3006,7 @@ mt753x_setup(struct dsa_switch *ds)
+>  		mt7530_free_irq_common(priv);
+>  
+>  	if (priv->create_sgmii) {
+> -		ret = priv->create_sgmii(priv, mt7531_dual_sgmii_supported(priv));
+> +		ret = priv->create_sgmii(priv);
+>  		if (ret && priv->irq)
+>  			mt7530_free_irq(priv);
+>  	}
+> diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+> index 415d8ea07472..2602c95fd3a5 100644
+> --- a/drivers/net/dsa/mt7530.h
+> +++ b/drivers/net/dsa/mt7530.h
+> @@ -679,7 +679,6 @@ enum p5_interface_select {
+>  	P5_INTF_SEL_PHY_P0,
+>  	P5_INTF_SEL_PHY_P4,
+>  	P5_INTF_SEL_GMAC5,
+> -	P5_INTF_SEL_GMAC5_SGMII,
+>  };
+>  
+>  struct mt7530_priv;
+> @@ -749,6 +748,8 @@ struct mt753x_info {
+>   * @p6_interface:	Holding the current port 6 interface
+>   * @p5_interface:	Holding the current port 5 interface
+>   * @p5_intf_sel:	Holding the current port 5 interface select
+> + * @p5_sgmii:		Flag for distinguishing if port 5 of the MT7531 switch
+> + *			has got SGMII
+>   * @irq:		IRQ number of the switch
+>   * @irq_domain:		IRQ domain of the switch irq_chip
+>   * @irq_enable:		IRQ enable bits, synced to SYS_INT_EN
+> @@ -769,6 +770,7 @@ struct mt7530_priv {
+>  	phy_interface_t		p6_interface;
+>  	phy_interface_t		p5_interface;
+>  	enum p5_interface_select p5_intf_sel;
+> +	bool			p5_sgmii;
+>  	u8			mirror_rx;
+>  	u8			mirror_tx;
+>  	struct mt7530_port	ports[MT7530_NUM_PORTS];
+> @@ -778,7 +780,7 @@ struct mt7530_priv {
+>  	int irq;
+>  	struct irq_domain *irq_domain;
+>  	u32 irq_enable;
+> -	int (*create_sgmii)(struct mt7530_priv *priv, bool dual_sgmii);
+> +	int (*create_sgmii)(struct mt7530_priv *priv);
+>  };
+>  
+>  struct mt7530_hw_vlan_entry {
+> -- 
+> 2.37.2
+> 
 
