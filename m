@@ -4,76 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCD4BC77B61
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Apr 2023 08:25:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60A1DC77B71
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Apr 2023 08:30:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EagTYKGNK6lO5EWiNmyq6BDWbqfgu0PNzfW6Qz+RZcw=; b=cusfbW5DYvSQVut8sVpyuWygYw
-	tmP4B31CVsSQJADt5qOTgRUI6JPSfzj+ZXinwB5MU9tw1a/SYrJu1o/rAHB3v0OkazFj+z1US0yCI
-	vjEOCRmrB7GoYq1SfUXtla6TYIhi1yVBZtoq+SfjyhlFwMTvrtQbM7IFxgOEfMH5kKN/1d50v7ICu
-	4+C5patRXCsreG2hszHRtBkH1PUBpUDYQTrt4P9VzxZQReF9wIff/tfH1vgKRByyL2vw2L7vXAIlV
-	wnamQAnoaa7VUeJmFnnn5YuMBcARkAd/qkze7Ruf1cfnA4HdzySc8FxnMAG3hz5R44xXUIMVar+da
-	hs+UIDtg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=NqprM4j549SEj5PGLmZ1hb+z7DxjMV0RONCnIDIKuDU=; b=nXWa3HoeLPuiQt
+	Vc6eUF1KQILoYJ2kRqSAY4eQTSBsQ6gOpYuavqk6762zJENQu69nGlpt2jSiOC9OjjmPlZkF5DF7W
+	zwKW8Y5eqVl99iAOXqJQEiwaj3SMn2h2ItOF1md52iRGNtOGbHaKaoAoP0EQ2y/+XpYX1zTx0uupo
+	YMjsgZ5e+AOG/ig9M1onLkiU6aTmy3qJmobvPRtwQRWZH2TiXZLpvOmgRU7U6UrR7AagGgcmvb6UD
+	UjpzAr336TXxTndJXdXHMXT48a6EDQScn4Swc5uEwCBsqpluGiG/P6kIzEtnGmQCu+0IqiTAeaxbV
+	L2hu3yvwoxZunn9z7alw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1prDzd-000Trq-0l;
-	Tue, 25 Apr 2023 08:25:45 +0000
-Received: from mail-vk1-xa2c.google.com ([2607:f8b0:4864:20::a2c])
+	id 1prE3l-000UZs-0K;
+	Tue, 25 Apr 2023 08:30:01 +0000
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prDza-000TpL-08
-	for linux-mediatek@lists.infradead.org;
-	Tue, 25 Apr 2023 08:25:43 +0000
-Received: by mail-vk1-xa2c.google.com with SMTP id 71dfb90a1353d-44307db5d24so1782208e0c.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 25 Apr 2023 01:25:37 -0700 (PDT)
+	id 1prE3h-000UXU-0W;
+	Tue, 25 Apr 2023 08:29:58 +0000
+Received: by mail-ej1-x631.google.com with SMTP id a640c23a62f3a-94a34a0b9e2so785144066b.1;
+        Tue, 25 Apr 2023 01:29:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1682411136; x=1685003136;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=EagTYKGNK6lO5EWiNmyq6BDWbqfgu0PNzfW6Qz+RZcw=;
-        b=U6OrDrUM1GmENXF8WYe8ocV7bnUwN51NadjwaQUq2YR7VWexpqeK3cEcIzfQh6kaka
-         HxpKew5iLlOP4m3q403RiJWu+3rtiA3VJaW/tPnVWjZ2rP0gOZDdsr6V7O9y0ne3NeZL
-         L7VdvmMBdUiGjFzPp2XVUoWD18wndom4AncqI=
+        d=gmail.com; s=20221208; t=1682411392; x=1685003392;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=NqprM4j549SEj5PGLmZ1hb+z7DxjMV0RONCnIDIKuDU=;
+        b=pEkw7S14spvkt5NISAw0C4+oNzPySVYl/MvbEPKRwfGL7imGuTnZO2B21h4xyQJaRG
+         ooGEXHxCDQT/1Q/nM5Z/zLpm+DNWSx1CN82hydEqLaX2NxR+xuboylmDUEJV84X+2ctF
+         Xz8EvODtFQ/iSDOyR8RYAI3WOwIdKlHJs4SmMMLrvzqRIsnRwlV+0d0iDwk/ujwgUKRD
+         IMWRq4XDQ3kWXrlPjcPtk4L8pIAqPiG/B160N9oWTgH4gj8wgX3oh6vhOy4IhjBz0faA
+         UCOQewOydBCZyzhJaYyOkIP7UPOf+tPZzylDkkyj2Exj9bb/pT03SppSeJNoOVt55QKX
+         IEsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682411136; x=1685003136;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=EagTYKGNK6lO5EWiNmyq6BDWbqfgu0PNzfW6Qz+RZcw=;
-        b=ctwnyE3vxmt5mzoRaGD3vncKrmx+Z7T7JqWJHqem2Vd+wGF55WqVCIaGa9MKgEXp1R
-         s9JxvJ9w2tPjpXaSU8ma0p90i6wnrKbLsDBAcZl1vKfRfxVTeZSHGYjh3NsfUr353ENf
-         Q3vPiCTCrG+GwoQ+HnCo1UO4JBK/n73/QHo/pUNb86d03ILml63dAHsp4YlHV6xKeBt7
-         B7lvVD+hILGiijdrFH8AFStpqR18NTu3Us+5192Xi66UqMT5U0MDCWUyvv3FhsLzrpLL
-         uVPhxkBT+gCOM6Sn/56Sl/9iWoP0ZKKMpjP0vo65unMblHbOUtyhmzf9qVwsGKCtFeCQ
-         fUSQ==
-X-Gm-Message-State: AAQBX9fktfl3Iy2EJnl1V2SAn7hNgOYBe27JvWSVovKD7asOpE7Dyh6H
-	CItbalRpa5fLGImoglOtfJ9CXykc1C93uagKaYTiFw==
-X-Google-Smtp-Source: AKy350YhcoGqhVqNt5WXPIhi5+U894y/gxCPIbGqm9Af3HXXxVtXCfd/efWsN5790EYhzuWriECmkqwACsF4uECb0hw=
-X-Received: by 2002:a1f:c142:0:b0:432:2abc:fc2b with SMTP id
- r63-20020a1fc142000000b004322abcfc2bmr4178714vkf.0.1682411136465; Tue, 25 Apr
- 2023 01:25:36 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1682411392; x=1685003392;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=NqprM4j549SEj5PGLmZ1hb+z7DxjMV0RONCnIDIKuDU=;
+        b=EtRGWD5vp+uhnhUal5JdMp3tzINODN7D4lwC6uls5bVDrtI/uZsSk0j4jy0FkY09en
+         BS9I0bZWktZPkpSh48N4wb1F5JGz51+AIL9XO1sgjZQ5s9qOaWkLrrmI8cTl5JZ4a/Mh
+         hG8fS2dqRIiZ8olHachjJwBg7Ptdj8TRhkMyMfKCHyCaxO8aogRL3hK8yMjoXT9Bq3R+
+         ta4kVbhcJNNnOWFOCj96HTZvhz0xHiq0QfLrXY+6otdvxJ7AMgb80GBCqsTbA2owkNrD
+         hhdkxdNi6S9kt4u6iqlRaU0D9nGtfrMfxEpk9Dfqv073oXrRvQ1zrOUtoCcZMmWyyGRE
+         vAeg==
+X-Gm-Message-State: AAQBX9dWohQdwQaWS7V1bwyXYQJkmmO6eifjIZ2lIui1qZ2vB7rUt+0v
+	EXj+THyiYgDceJXJr49PNv6QB5wS9aROTfFs
+X-Google-Smtp-Source: AKy350bmAiS/zfdqkRBA3U7z2tq+V3Tcvi18IZiqM8unXqQQDybRedf1t8QhcIPwUjxRt222iBPK/w==
+X-Received: by 2002:a17:907:8a18:b0:94a:5c6d:3207 with SMTP id sc24-20020a1709078a1800b0094a5c6d3207mr16112893ejc.44.1682411392225;
+        Tue, 25 Apr 2023 01:29:52 -0700 (PDT)
+Received: from arinc9-PC.lan ([149.91.1.15])
+        by smtp.gmail.com with ESMTPSA id mc2-20020a170906eb4200b0094ca077c985sm6439028ejb.213.2023.04.25.01.29.49
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 25 Apr 2023 01:29:51 -0700 (PDT)
+From: arinc9.unal@gmail.com
+X-Google-Original-From: arinc.unal@arinc9.com
+To: Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Russell King <linux@armlinux.org.uk>
+Subject: [PATCH net-next 00/24] net: dsa: MT7530, MT7531, and MT7988 improvements
+Date: Tue, 25 Apr 2023 11:29:09 +0300
+Message-Id: <20230425082933.84654-1-arinc.unal@arinc9.com>
+X-Mailer: git-send-email 2.37.2
 MIME-Version: 1.0
-References: <20230424112523.1436926-1-angelogioacchino.delregno@collabora.com> <20230424112523.1436926-5-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230424112523.1436926-5-angelogioacchino.delregno@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 25 Apr 2023 16:25:25 +0800
-Message-ID: <CAGXv+5GX1CqH4OEoL7tQ9bherzXOVpJrNGrSYQj4Oh3ecUJh3Q@mail.gmail.com>
-Subject: Re: [PATCH v2 4/4] arm64: dts: mediatek: cherry: Enable PCI-Express
- ports for WiFi
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: matthias.bgg@gmail.com, robh+dt@kernel.org, 
-	krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, kernel@collabora.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230425_012542_073843_3A09DC8D 
-X-CRM114-Status: GOOD (  15.02  )
+X-CRM114-CacheID: sfid-20230425_012957_199083_79C46FF8 
+X-CRM114-Status: GOOD (  15.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,75 +97,91 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, Richard van Schagen <vschagen@cs.com>, linux-kernel@vger.kernel.org, Richard van Schagen <richard@routerhints.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, erkin.bozoglu@xeront.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 24, 2023 at 7:25=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> On the Cherry platform, a MT7621 WiFi+Bluetooth combo is connected
-> over PCI-Express (for WiFi) and USB (for BT): enable the PCIe ports
-> to enable enumerating this chip.
->
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
-> Tested-by: Chen-Yu Tsai <wenst@chromium.org>
-> ---
->  .../boot/dts/mediatek/mt8195-cherry.dtsi      | 25 +++++++++++++++++++
->  1 file changed, 25 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64=
-/boot/dts/mediatek/mt8195-cherry.dtsi
-> index adbda4dccdd5..eca5df85fe33 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> @@ -565,6 +565,13 @@ flash@0 {
->         };
->  };
->
-> +&pcie1 {
-> +       status =3D "okay";
-> +
-> +       pinctrl-names =3D "default";
-> +       pinctrl-0 =3D <&pcie1_pins_default>;
-> +};
-> +
->  &pio {
->         mediatek,rsel-resistance-in-si-unit;
->         pinctrl-names =3D "default";
-> @@ -959,6 +966,24 @@ pins-vreg-en {
->                 };
->         };
->
-> +       pcie0_pins_default: pcie0-default-pins {
-> +               pins-bus {
-> +                       pinmux =3D <PINMUX_GPIO19__FUNC_WAKEN>,
-> +                                <PINMUX_GPIO20__FUNC_PERSTN>,
-> +                                <PINMUX_GPIO21__FUNC_CLKREQN>;
-> +                                bias-pull-up;
-> +               };
-> +       };
+Hello!
 
-I think we should remove this. We can add it later with the actual device
-that has NVMe.
+This patch series is focused on simplifying the code, and improving the
+logic of the support for MT7530, MT7531, and MT7988 SoC switches.
 
-Otherwise,
+There're two fixes. One for fixing the corrupt frames using trgmii on MCM
+MT7530 with 40 MHz oscillator on certain MT7621 SoCs. The other for fixing
+the port capabilities of the switch on the MT7988 SoC.
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Currently, using multiple ports as CPU ports won't work properly. I am
+working on fixing it.
 
-> +       pcie1_pins_default: pcie1-default-pins {
-> +               pins-bus {
-> +                       pinmux =3D <PINMUX_GPIO22__FUNC_PERSTN_1>,
-> +                                <PINMUX_GPIO23__FUNC_CLKREQN_1>,
-> +                                <PINMUX_GPIO24__FUNC_WAKEN_1>;
-> +                                bias-pull-up;
-> +               };
-> +       };
-> +
->         pio_default: pio-default-pins {
->                 pins-wifi-enable {
->                         pinmux =3D <PINMUX_GPIO58__FUNC_GPIO58>;
-> --
-> 2.40.0
->
+I am leaving this information for the record, as I have not received any
+comments on my RFC series regarding this. The register may need to be
+protected from being accessed by processes while the operation that
+modifies the MT7530_MHWTRAP register on mt7530_setup_port6() is being done.
+I don't see this being done on mt7530_setup() but it's there on
+mt7530_setup_port5(). My tests haven't shown any apparent issues but if you
+experience any issues with port 6, this is where to look first.
+
+I have done iperf3 and ping tests on all ports of the MT7530 switch with
+this patch series applied. I tested every possible configuration on the MCM
+and standalone MT7530 switch. I'll let the name of the dtb files speak for
+themselves.
+
+MT7621 Unielec:
+
+only-gmac0-mt7621-unielec-u7621-06-16m.dtb
+rgmii-only-gmac0-mt7621-unielec-u7621-06-16m.dtb
+only-gmac1-mt7621-unielec-u7621-06-16m.dtb
+gmac0-and-gmac1-mt7621-unielec-u7621-06-16m.dtb
+phy0-muxing-mt7621-unielec-u7621-06-16m.dtb
+phy4-muxing-mt7621-unielec-u7621-06-16m.dtb
+port5-as-user-mt7621-unielec-u7621-06-16m.dtb
+
+tftpboot 0x80008000 mips-uzImage.bin; tftpboot 0x83000000 mips-rootfs.cpio.uboot; tftpboot 0x83f00000 $dtb; bootm 0x80008000 0x83000000 0x83f00000
+
+MT7623 Bananapi:
+
+only-gmac0-mt7623n-bananapi-bpi-r2.dtb
+rgmii-only-gmac0-mt7623n-bananapi-bpi-r2.dtb
+only-gmac1-mt7623n-bananapi-bpi-r2.dtb
+gmac0-and-gmac1-mt7623n-bananapi-bpi-r2.dtb
+phy0-muxing-mt7623n-bananapi-bpi-r2.dtb
+phy4-muxing-mt7623n-bananapi-bpi-r2.dtb
+port5-as-user-mt7623n-bananapi-bpi-r2.dtb
+
+tftpboot 0x80008000 arm-uImage; tftpboot 0x83000000 arm-rootfs.cpio.uboot; tftpboot 0x83f00000 $dtb; bootm 0x80008000 0x83000000 0x83f00000
+
+Arınç
+
+Arınç ÜNAL (24):
+  net: dsa: mt7530: fix corrupt frames using trgmii on 40 MHz XTAL MT7621
+  net: dsa: mt7530: add missing @p5_interface to mt7530_priv description
+  net: dsa: mt7530: use p5_interface_select as data type for p5_intf_sel
+  net: dsa: mt7530: properly support MT7531AE and MT7531BE
+  net: dsa: mt7530: improve comments regarding port 5 and 6
+  net: dsa: mt7530: read XTAL value from correct register
+  net: dsa: mt7530: improve code path for setting up port 5
+  net: dsa: mt7530: do not run mt7530_setup_port5() if port 5 is disabled
+  net: dsa: mt7530: change p{5,6}_interface to p{5,6}_configured
+  net: dsa: mt7530: empty default case on mt7530_setup_port5()
+  net: dsa: mt7530: call port 6 setup from mt7530_mac_config()
+  net: dsa: mt7530: remove pad_setup function pointer
+  net: dsa: mt7530: move XTAL check to mt7530_setup()
+  net: dsa: mt7530: move enabling port 6 to mt7530_setup_port6()
+  net: dsa: mt7530: switch to if/else statements on mt7530_setup_port6()
+  net: dsa: mt7530: set TRGMII RD TAP if trgmii is being used
+  net: dsa: mt7530: move lowering port 5 RGMII driving to mt7530_setup()
+  net: dsa: mt7530: fix port capabilities for MT7988
+  net: dsa: mt7530: remove .mac_port_config for MT7988 and make it optional
+  net: dsa: mt7530: set interrupt register only for MT7530
+  net: dsa: mt7530: force link-down on MACs before reset on MT7530
+  net: dsa: mt7530: get rid of useless error returns on phylink code path
+  net: dsa: mt7530: rename p5_intf_sel and use only for MT7530 switch
+  net: dsa: mt7530: run mt7530_pll_setup() only with 40 MHz XTAL
+
+ drivers/net/dsa/mt7530-mdio.c |   7 +-
+ drivers/net/dsa/mt7530.c      | 372 +++++++++++++------------------------
+ drivers/net/dsa/mt7530.h      |  35 ++--
+ 3 files changed, 145 insertions(+), 269 deletions(-)
+
+
 
