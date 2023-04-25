@@ -4,77 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96A6EC77B61
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Apr 2023 08:31:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B423C77B71
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Apr 2023 08:31:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4MATvTsgGeOmEQ/GANoUT20RiIWs3kO1MdMdepZzbt0=; b=dx2CubTgwRlTw3
-	7xeO9IWjYqH/cMvH3aBj84tHnOfaYyMP9yJfRLlsw06IKkLb1VPSornR4AHnR+Ie8IFzo3RT5t4Vf
-	1teSBI+tw8LSW0MLqhSe5Lrmlqf5VgxqOhbg5KRzBOhMNnPm8pyeJN99b+so8cZe70Aaa1iYEShYH
-	1h0TbNN198Liw6Nw8/b/72OaIXUSLj4R9CEBAlpg/CsFJr1/bU5htLrwkUPhsClsC4TfASc9pWcZb
-	zEp/Ij7HslBD/xW/e4xPZEub5ACDLSTl5S0LhbG37tnRUAv6bkjTtBTTJ8F8XeTjBEogOrAXqGkyu
-	1uvLQqvbi+eRaPZu1KTg==;
+	List-Owner; bh=JLm5jhMS6rFgBzI8z+1W06D+EQwsGdSNOt8/QtnXpBI=; b=QA+lGz4MEgckNJ
+	QiFqNI26QGWEDRBHUUgEyzo48zO7hSuDOWvYixi0a0G3xDfIJXCXzgPTfxp6d4Cl6QvW2rUEtq/qG
+	yf8+E/xRtHgkAojLYmwr2TnK8/EKxp2orreVoKJg1RPZDyJzn3ChQxy24vOZc2OkG87oIWZcKcr+a
+	aFKvcd8J38tenXrP0s8GjwI7VRPovlns3QgGPRpa1q75NT5lcZc4qW/xZZrvrNcp5oqvb0qJ6HBmc
+	swSVOOLRcF5lEByFpZsE1P5AkWWF+zyOSpJCEp/Zn9KkVsg31rlljbIoBr0HCySWiK11x96AxT14V
+	e6qpMyYfAvEbHSjhnIMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1prE5C-000Vgw-0m;
-	Tue, 25 Apr 2023 08:31:30 +0000
+	id 1prE5J-000Vmi-2L;
+	Tue, 25 Apr 2023 08:31:37 +0000
 Received: from desiato.infradead.org ([90.155.92.199])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prE4L-000V06-0s;
-	Tue, 25 Apr 2023 08:30:37 +0000
+	id 1prE4O-000V2w-2D;
+	Tue, 25 Apr 2023 08:30:40 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
 	:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Sender:Reply-To:Content-ID:Content-Description;
-	bh=4MATvTsgGeOmEQ/GANoUT20RiIWs3kO1MdMdepZzbt0=; b=VCgtKq2KJH4yEIE0L+Lm3CAdz7
-	0j3Jrw4/9UDzPmqYjnVlehIqN9CPNFqrzKXRbk5/J3bd6tk8qlwkNN5PwFwmqEJ3k9PUM+//T24KB
-	LHF3XTfFSOXUge8TsR5mt2upGcZlfX0gSNrApfXKTS4iuWCN/YTDy63Nu64Aa+rlID/moKxIXjT+i
-	ngpxpUcgP3OQ7vygnGmUZpTaGm8tgnkMvkBNQaED9ULnQiY+6FXlnpWNb01K57G37rdLNU/kXe8Ec
-	4DYtxwN1yuA440xqRvY9JHSdUFa1q2jzwiabHJxMU63Sy7RLcsVyVUGPHhfw7JCetH0Opza10/QnN
-	qhC8OG8A==;
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+	bh=JLm5jhMS6rFgBzI8z+1W06D+EQwsGdSNOt8/QtnXpBI=; b=jQuFBXlS6iAq0O/Z0R/lOsP0hk
+	neXo4bKyo2G8QU7OwqNqSoUjySXBq0kzXjqgXzgzLW5Rlvfb0uyWltwBQOB87XYegRJWC9oJ7c95G
+	+VFlZ0ke7ApbHp7kG8EsY5BbgjOOR0xZztq1EKiYdQfSyQ5qPiwzOWvLRY5sXsOCox04q6umDJP0T
+	YIsSyx8ytyRQ54gAmpC89+KGYz5l/OTaWewRLHVazVZuXhl/koz/7kMM5bUm5nxRYEq68LwdihvaA
+	T7Q/6UEHcxxHGrvhJoAnSNwN71Ky4c1LLtbD53ee+ymnxoJMZuFISzSShV2UvfTP0UDDFF2BPrOdb
+	L4IiycAQ==;
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prE4F-009ZwA-0z;
-	Tue, 25 Apr 2023 08:30:34 +0000
-Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-956eacbe651so958824866b.3;
-        Tue, 25 Apr 2023 01:30:29 -0700 (PDT)
+	id 1prE4K-009Zwh-2V;
+	Tue, 25 Apr 2023 08:30:39 +0000
+Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-94f32588c13so784887266b.2;
+        Tue, 25 Apr 2023 01:30:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1682411427; x=1685003427;
+        d=gmail.com; s=20221208; t=1682411435; x=1685003435;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=4MATvTsgGeOmEQ/GANoUT20RiIWs3kO1MdMdepZzbt0=;
-        b=bjcPp1ixgcYS0CdsMEKFpoRu5Vl9iYehRJyOq+x3P+aPBuYpVbrBkxhDE60ijZq4Cn
-         jsAE6U7+b2vCL4yZJg6hDCZrZkjgZXqD1Fk+FHc30mWrtj31wfLnjVvbNfceZ7xwlOE9
-         dcVL9knnSHgtpJFYrObMrkCAWBD0JhQJKWW2VmvOVEg7E7XuL0yCSc6RKFSPmvlVamG+
-         ztYFGQInl27UNENF0L6JukJ63mBAw1u1lZE+RxMDKVeZNrVOXIbsAOVAE8t0rpzFF/j+
-         CZhTBxMbN5iW0l+3973AX/+j6/Z0WSfZ2qxvPR5aXn/3v7Pfi94NFbkeQbnDROUntJoU
-         DLAg==
+        bh=JLm5jhMS6rFgBzI8z+1W06D+EQwsGdSNOt8/QtnXpBI=;
+        b=Ap33L6THf74ai+r6w//IbTznSDtVocBHM7PTMhbUVfihCpZZoQIMHkxxJxGeEJcFC/
+         m7DTVjUb7UVORIdFwiVaP2fX40jbGS+gPtiHiGOl/PJYrToSEyBp8AYAo8enkovg4GFT
+         4UNqxOpTWde9ytaO7rCQgHe2y9ifeACQWjT3Bwk2AXYZkf0BHGACL98CiV57oeUR7jr0
+         uJQO69lTIf9GkCBwWdtWCNNfVIZQkCQw8pFL2zFYnURSiNEGHW21iFFJlv2xR46grMhS
+         YRwwT2rwFyD2euHDZhxdEyl3AQfWZIo0WFToBHaa1RGWxwnjIfqla7zrbTT0UglGusru
+         GM8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682411427; x=1685003427;
+        d=1e100.net; s=20221208; t=1682411435; x=1685003435;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=4MATvTsgGeOmEQ/GANoUT20RiIWs3kO1MdMdepZzbt0=;
-        b=h6MaNhyXvfQeBjnV+YOSExbFpyujQRxEe51ngkMPuFNCdTR78b/t2X5cXoJQZoIewD
-         nWphXLiFmG5JOG1Kf2jbCBYEw/FYX5TLI0tbz1XITHuhVuKupo3sSbiT4751fzzM4RCR
-         MyAS8V9SjuQmqIXsJwXmoE9GYABPcqeY56zlhIcKmmii3CeP9xFeGRdCuu1n6yrrfpQz
-         vRhNroywQXbj6rmDbN+uerzGxqj+P5jRONen27J45WlVosDyauUerdhM9ei1gsRubR/s
-         6qXpSPSvM4UpQPao7wcvFT3Jdncf3Ut2bmekrWOcV76XxQIG+qxUGkqsrRCQKC3IG9uR
-         hjeA==
-X-Gm-Message-State: AAQBX9fV0qELwk3evwpO/k/GU0QXx+7/QjQIG6g/6gePuRXZJ7AQ9cEL
-	tP7A5asjUBPtS120rKUCesg=
-X-Google-Smtp-Source: AKy350Ym3aXZPGeAbGZAmIl+ZSX9R9HZR20W6VN0rTWWg05z4lCRUaNGqdiq7x1Mun7p5ti0Rr6aog==
-X-Received: by 2002:a17:906:9bfa:b0:94e:c4b:4d95 with SMTP id de58-20020a1709069bfa00b0094e0c4b4d95mr12322934ejc.69.1682411427432;
-        Tue, 25 Apr 2023 01:30:27 -0700 (PDT)
+        bh=JLm5jhMS6rFgBzI8z+1W06D+EQwsGdSNOt8/QtnXpBI=;
+        b=TNBvaVB3v4dHAcKFnaSjLkw92NR9p1OJbvG4wqlTvSqRvb9v3Zqwf9K1ADG83ROzrw
+         1lxcC1Hzl1Sd9nxjllS3kXs8pB76XL0siOZaM64AKvRUaF6ak9eWsNlHxaiF2205Dfwu
+         UwtTpXI5QoqTIUiX32cxXNhBM4fUpP/HMW6RM6k0QBg2YdEJsB9kxVguseKT7blEy9od
+         6Jnnhzsxb9elxjkp+eqCghIV+rYK8SBa8c6lhH4vK8stekiWuEZgL+1GqnogejyA9t2n
+         8VcDEfk3zbvIvMwCWsepqcXmZXVzP77u5G/SIvAXSQTYEuLxinOvpnWOT0fqlxTWFETh
+         6zNQ==
+X-Gm-Message-State: AAQBX9c8yFJEsgtIapQyqzMzxaqF+6rEzXS/4C5qkA64z1HAmJXTVxQn
+	bmfvz5E68kycCcG+5mIeen8=
+X-Google-Smtp-Source: AKy350ZHnHWTezegV98s6VGWqeQ9P96T/8gc+hf2umUdZqmtltCd4D7zYoSKx0DLOxIbyURM78gaRQ==
+X-Received: by 2002:a17:906:170e:b0:947:c221:eb38 with SMTP id c14-20020a170906170e00b00947c221eb38mr12120196eje.13.1682411434710;
+        Tue, 25 Apr 2023 01:30:34 -0700 (PDT)
 Received: from arinc9-PC.lan ([149.91.1.15])
-        by smtp.gmail.com with ESMTPSA id mc2-20020a170906eb4200b0094ca077c985sm6439028ejb.213.2023.04.25.01.30.23
+        by smtp.gmail.com with ESMTPSA id mc2-20020a170906eb4200b0094ca077c985sm6439028ejb.213.2023.04.25.01.30.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 25 Apr 2023 01:30:26 -0700 (PDT)
+        Tue, 25 Apr 2023 01:30:34 -0700 (PDT)
 From: arinc9.unal@gmail.com
 X-Google-Original-From: arinc.unal@arinc9.com
 To: Sean Wang <sean.wang@mediatek.com>,
@@ -91,9 +91,9 @@ To: Sean Wang <sean.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Russell King <linux@armlinux.org.uk>
-Subject: [PATCH net-next 14/24] net: dsa: mt7530: move enabling port 6 to mt7530_setup_port6()
-Date: Tue, 25 Apr 2023 11:29:23 +0300
-Message-Id: <20230425082933.84654-15-arinc.unal@arinc9.com>
+Subject: [PATCH net-next 17/24] net: dsa: mt7530: move lowering port 5 RGMII driving to mt7530_setup()
+Date: Tue, 25 Apr 2023 11:29:26 +0300
+Message-Id: <20230425082933.84654-18-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.37.2
 In-Reply-To: <20230425082933.84654-1-arinc.unal@arinc9.com>
 References: <20230425082933.84654-1-arinc.unal@arinc9.com>
@@ -101,8 +101,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230425_093031_567568_DB249BA2 
-X-CRM114-Status: GOOD (  11.81  )
+X-CRM114-CacheID: sfid-20230425_093036_964465_A53933B0 
+X-CRM114-Status: GOOD (  12.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,44 +120,44 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-Enable port 6 only when port 6 is being used. Update the comment on
-mt7530_setup() with a better explanation.
+Move lowering Tx driving of rgmii on port 5 to right before lowering of Tx
+driving of trgmii on port 6 on mt7530_setup().
+
+This way, the switch should consume less power regardless of port 5 being
+used.
 
 Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- drivers/net/dsa/mt7530.c | 10 +++++++---
- 1 file changed, 7 insertions(+), 3 deletions(-)
+ drivers/net/dsa/mt7530.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 04a48829465c..980d59170ba2 100644
+index 0108af681d50..468c50b3f43b 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -404,7 +404,11 @@ static int
- mt7530_setup_port6(struct dsa_switch *ds, phy_interface_t interface)
- {
- 	struct mt7530_priv *priv = ds->priv;
--	u32 ncpo1, ssc_delta, trgint, xtal;
-+	u32 ncpo1, ssc_delta, trgint, xtal, val;
-+
-+	val = mt7530_read(priv, MT7530_MHWTRAP);
-+	val &= ~MHWTRAP_P6_DIS;
-+	mt7530_write(priv, MT7530_MHWTRAP, val);
+@@ -938,10 +938,6 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
+ 		/* P5 RGMII TX Clock Control: delay x */
+ 		mt7530_write(priv, MT7530_P5RGMIITXCR,
+ 			     CSR_RGMII_TXC_CFG(0x10 + tx_delay));
+-
+-		/* reduce P5 RGMII Tx driving, 8mA */
+-		mt7530_write(priv, MT7530_IO_DRV_CR,
+-			     P5_IO_CLK_DRV(1) | P5_IO_DATA_DRV(1));
+ 	}
  
- 	xtal = mt7530_read(priv, MT7530_HWTRAP) & HWTRAP_XTAL_MASK;
- 
-@@ -2224,9 +2228,9 @@ mt7530_setup(struct dsa_switch *ds)
- 		mt7530_rmw(priv, MT7530_TRGMII_RD(i),
- 			   RD_TAP_MASK, RD_TAP(16));
- 
--	/* Enable port 6 */
-+	/* Enable PHY access and operate in manual mode */
- 	val = mt7530_read(priv, MT7530_MHWTRAP);
--	val &= ~MHWTRAP_P6_DIS & ~MHWTRAP_PHY_ACCESS;
-+	val &= ~MHWTRAP_PHY_ACCESS;
- 	val |= MHWTRAP_MANUAL;
  	mt7530_write(priv, MT7530_MHWTRAP, val);
+@@ -2214,6 +2210,10 @@ mt7530_setup(struct dsa_switch *ds)
  
+ 	mt7530_pll_setup(priv);
+ 
++	/* Lower P5 RGMII Tx driving, 8mA */
++	mt7530_write(priv, MT7530_IO_DRV_CR,
++			P5_IO_CLK_DRV(1) | P5_IO_DATA_DRV(1));
++
+ 	/* Lower Tx driving for TRGMII path */
+ 	for (i = 0; i < NUM_TRGMII_CTRL; i++)
+ 		mt7530_write(priv, MT7530_TRGMII_TD_ODT(i),
 -- 
 2.37.2
 
