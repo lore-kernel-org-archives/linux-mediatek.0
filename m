@@ -4,91 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76C86C6FD18
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Apr 2023 09:45:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1759C77B61
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Apr 2023 10:00:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=co2jsjwTwJzbd0CfvHd0rFDJW53+yrpC0IXVfcexPcs=; b=uKy3bru9wehpk9
-	Ryhvz19hIq6DXfYW59aI/PaESFtUtsAQEePNwfM50X6bZ4eqZfBNEuCWsjvuUPQAPHxR8HeA9g8vO
-	dwQzRhg4ItPWLuC7rFWTJt3liYUFsY1fCmbdr1sqZU/4reTVretbACVxt5KsO7Gv/rocj/1cuSvBK
-	z7FeFrZ4EKUIyKm1ItMXHtIeQuh289kQ5R0KyyHdzB6HVpT51FIPtpRGw9BCc/TokA/SRbziKAIBf
-	+WS020jgJEc/3i7gLDY2vnNdCnPDat34MQOXvDSBtWRkqewazynXHCu8YyYPRIy4f5UDznZKDidd3
-	eIV63dYZrJLhjFbhoU1A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=U9xmfBHDsyYLJBu4ZPKPVrdek0zQAAxRnmR1aPAecu8=; b=VcXwaVrgBV/UDthBUASD0/UB1x
+	LQzRB/vddLuKldTu6qUCpUqlifp5WFbRE7lmzKM6Yt/ecoYzFza12ZM9RyOICmmLJGZqb7OB2v1//
+	NJTSlVX5D2BeoueAzXRpF8TrHGcqqiM4Cn9MUgw7wrX0ipGU/jCnjRE7jLOSQ1Akj2RArVgiWe9nw
+	K74bSJ/cJluuEe8Tx2a2DAED/pr9IldgpnAlwKMnXXr2J2YeRZaMo97/eiJjbosf9VNgi9NnxEPXJ
+	eIxPbtlqJtiKF0AerrAY0VX0a1haWZsHRuBeCG7jJWVq+AP4u13OQcPNbInhPPTk4KE/I4bRfR6BM
+	AnC24Mag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1prFEk-000gFG-2J;
-	Tue, 25 Apr 2023 09:45:26 +0000
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+	id 1prFT1-000iBp-1k;
+	Tue, 25 Apr 2023 10:00:11 +0000
+Received: from mail-vs1-xe34.google.com ([2607:f8b0:4864:20::e34])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prE4E-000Ukd-1a;
-	Tue, 25 Apr 2023 08:30:32 +0000
-Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-94ef0a8546fso856443566b.1;
-        Tue, 25 Apr 2023 01:30:30 -0700 (PDT)
+	id 1prFSy-000iAH-14
+	for linux-mediatek@lists.infradead.org;
+	Tue, 25 Apr 2023 10:00:10 +0000
+Received: by mail-vs1-xe34.google.com with SMTP id ada2fe7eead31-42e58fcbfb4so1196908137.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 25 Apr 2023 03:00:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1682411430; x=1685003430;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+        d=chromium.org; s=google; t=1682416805; x=1685008805;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=co2jsjwTwJzbd0CfvHd0rFDJW53+yrpC0IXVfcexPcs=;
-        b=XKb6hqva9cpaCTomkMHevUFoOT7/EU2Bze1fOeF/HN9vi9NOc1a+AGZkDack/8l0MD
-         CdM/Ra+IIeBSyktSfQbpm8gj15u1/9FXIW0O+Js7Q/Zl/xgIyxVlCtvzxz8Sy2x49uxo
-         LZKNfuW3TxpjjSjRph7wkZHXTgWZZCfeH3jdjen2DgyAWNwf0mYfOkNd6TV4NKXQqkit
-         yeL2gxBcpSfcHwx9HlamE1NhYdEkYIpH1YEyXBfnhgiJch7oesiUG4A+HnisISEyjG3p
-         6sbfi3IxOUWc/OL21CNwTZVx2ETn3oV+llgn4CMEDJtM2pLu+L+nG4oFDQDgIJTm+wuV
-         I9hQ==
+        bh=U9xmfBHDsyYLJBu4ZPKPVrdek0zQAAxRnmR1aPAecu8=;
+        b=QM45xtlfA30Qv+jhT+5wfAhCZ0DlI6NMjjFtywDiocqqbhmjSnALrxYO1+HD09LTxh
+         ghmFdMfXOE5XAf1RD76xiY+3li/Zw7UPFpNIbMymFlpJd7Yo3qr8rwQ9Tf16N0pHbtlN
+         /EtMhdr4cIITH1IR/kg7yJyukNsfVztBx751Q=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682411430; x=1685003430;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20221208; t=1682416805; x=1685008805;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=co2jsjwTwJzbd0CfvHd0rFDJW53+yrpC0IXVfcexPcs=;
-        b=DGaX8g8t1/CfvxukvWRaAYdzTWjnUo6TaEmi0Gc1MljZZ0J+Kh2cNv5NPiX11jo0QT
-         PGS3sSLl8JxRroUpCFR1MMkJOIJ9ijRXUvcDkoyS0eLZMQBxujlFICpIE2lPPkDBzSdq
-         Un1XGIlmRylFhzLhkZVjJ6WGwQpnijgRq4KqrVuStfjmQufQe91OWOcYadH3CP6nxloe
-         YmjQR+6HNNjmnc9z87XmZHea8MDDcYg8iEmrtGBHwiuQ0CF+JhBPgA7UKgR+E+kTh0FY
-         XJ2ZtYNL1CBgeAGENVw7p9sUw80E4fT28+mDsbnl1vQhffC6TeymINJOjWQ8doWiiRvE
-         /JVA==
-X-Gm-Message-State: AAQBX9dirMsseHnu7OKF2dKpFzJfoJmb+xKHFbuQo6L5Kl8+eZpwjYAE
-	R+B+JmlvbL44f/6D6d+eV5U=
-X-Google-Smtp-Source: AKy350byQOy4L1omedzexSzAU2byBGn+c47N2fDo8+2S0flJALDDrH1iY3icL0zV3jg3N5AK/4u2nA==
-X-Received: by 2002:a17:906:69ca:b0:94a:5925:56e2 with SMTP id g10-20020a17090669ca00b0094a592556e2mr12028586ejs.22.1682411429791;
-        Tue, 25 Apr 2023 01:30:29 -0700 (PDT)
-Received: from arinc9-PC.lan ([149.91.1.15])
-        by smtp.gmail.com with ESMTPSA id mc2-20020a170906eb4200b0094ca077c985sm6439028ejb.213.2023.04.25.01.30.27
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 25 Apr 2023 01:30:29 -0700 (PDT)
-From: arinc9.unal@gmail.com
-X-Google-Original-From: arinc.unal@arinc9.com
-To: Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Russell King <linux@armlinux.org.uk>
-Subject: [PATCH net-next 15/24] net: dsa: mt7530: switch to if/else statements on mt7530_setup_port6()
-Date: Tue, 25 Apr 2023 11:29:24 +0300
-Message-Id: <20230425082933.84654-16-arinc.unal@arinc9.com>
-X-Mailer: git-send-email 2.37.2
-In-Reply-To: <20230425082933.84654-1-arinc.unal@arinc9.com>
-References: <20230425082933.84654-1-arinc.unal@arinc9.com>
+        bh=U9xmfBHDsyYLJBu4ZPKPVrdek0zQAAxRnmR1aPAecu8=;
+        b=gbRXx2P8t+pJwyXkw/9NLNClvKJESrPqmM6qu9YyXKuJJPVtQORci/t2SC+sgG3hUX
+         eXXhnnVJwmtWf1AGJFfMm2771q9FprutfgEbTDaWUHB2m2MCKV+wLDrHnkEes3xLfpkN
+         O9BVidovT5cJyzrTtF+CNcdCQIXdcx4X5y7imQMGQVUJI4zfN7OsfKkMYUd4EuGIUEcm
+         LRybgBqVToXcSM4QPaH6mUN6N36d9hLw7wyJxPhsmPG+MvcH4vyWsJGDSlQl61We0Ef/
+         /wgcgXqwOgisKa/Wtk3kQ9XptFGB28nVTj3mT5t+Vgd3GynWsp4ucbzrG1XYTKCta5Rl
+         3wyA==
+X-Gm-Message-State: AAQBX9d3mA5pIBlw5x/kpVloDBvxY9QTCdq4o14kkHBoUvYFIpFOVoyW
+	iU4DD58XRW8Is9Ei/927mj9dWGiYkkApbUqLPIz17g==
+X-Google-Smtp-Source: AKy350ZIrxbuOVfg1D290EFt3hdIL/m5W7tSw54IyZTFKXYrYG44B1Dl4VD9Ls0ZfUe1vaHU5vafRdgoqBYlvDfzC7w=
+X-Received: by 2002:a67:fe41:0:b0:42e:676c:bab8 with SMTP id
+ m1-20020a67fe41000000b0042e676cbab8mr7413428vsr.16.1682416805303; Tue, 25 Apr
+ 2023 03:00:05 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+References: <20230307163413.143334-1-bchihi@baylibre.com> <CAGXv+5E0wUJYUVD3wx3-=uES612ARQmUE0rxgAruFHxpZCBjzA@mail.gmail.com>
+ <CAGuA+ooi7Kx05gagLzXAN3upDiSqDUNOM_djYdGftw6ogVx5gw@mail.gmail.com>
+ <CAGuA+oqDPPYFJef_8=YrOpHQNVJ3xgm_zXS6fq_HG2Jy_6t-Zg@mail.gmail.com>
+ <CAGXv+5EZPWohGN5CaEiqVrM4MyAar3cPEUhHtGY_9wTJSJNVFQ@mail.gmail.com>
+ <CAGuA+oqF4jFMyEo09VDmCf-_7g0ua3XDKDAJ+t3Gat14pDM9NA@mail.gmail.com> <fab67eef-4dc9-420d-b127-aedc6f54cad0@notapiano>
+In-Reply-To: <fab67eef-4dc9-420d-b127-aedc6f54cad0@notapiano>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 25 Apr 2023 17:59:54 +0800
+Message-ID: <CAGXv+5E0rzByZBn91d60MQ7P0=GbAQUH=PK9EYDu3Upr33td6A@mail.gmail.com>
+Subject: Re: [PATCH 0/4] Add LVTS support for mt8192
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: Balsam CHIHI <bchihi@baylibre.com>, daniel.lezcano@linaro.org, 
+	angelogioacchino.delregno@collabora.com, rafael@kernel.org, amitk@kernel.org, 
+	rui.zhang@intel.com, matthias.bgg@gmail.com, robh+dt@kernel.org, 
+	krzysztof.kozlowski+dt@linaro.org, rdunlap@infradead.org, 
+	ye.xingchen@zte.com.cn, p.zabel@pengutronix.de, linux-pm@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+	khilman@baylibre.com, james.lo@mediatek.com, rex-bc.chen@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230425_013030_538779_55FC5CC9 
-X-CRM114-Status: GOOD (  15.45  )
+X-CRM114-CacheID: sfid-20230425_030008_389869_258E33AE 
+X-CRM114-Status: GOOD (  43.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,115 +92,199 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Richard van Schagen <vschagen@cs.com>, linux-kernel@vger.kernel.org, Richard van Schagen <richard@routerhints.com>, =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, erkin.bozoglu@xeront.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arınç ÜNAL <arinc.unal@arinc9.com>
+On Tue, Apr 25, 2023 at 6:21=E2=80=AFAM N=C3=ADcolas F. R. A. Prado
+<nfraprado@collabora.com> wrote:
+>
+> On Tue, Mar 28, 2023 at 02:20:24AM +0200, Balsam CHIHI wrote:
+> > On Sat, Mar 25, 2023 at 5:33=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.or=
+g> wrote:
+> > >
+> > > On Wed, Mar 22, 2023 at 8:48=E2=80=AFPM Balsam CHIHI <bchihi@baylibre=
+.com> wrote:
+> > > >
+> > > > Hi Chen-Yu,
+> > > >
+> > > > I suspect the bug comes from incorrect calibration data offsets for=
+ AP
+> > > > Domain because you confirm that MCU Domain probe runs without issue=
+s.
+> > > > Is it possible to test something for us to confirm this theory (i
+> > > > don't have an mt8192 board on hand now), when you have the time of
+> > > > course?
+> > > > We would like to test AP Domain's calibration data offsets with a
+> > > > working one, for example :
+> > > >
+> > > >  static const struct lvts_ctrl_data mt8192_lvts_ap_data_ctrl[] =3D =
+{
+> > > >                 {
+> > > > -               .cal_offset =3D { 0x25, 0x28 },
+> > > > +               .cal_offset =3D { 0x04, 0x04 },
+> > > >                 .lvts_sensor =3D {
+> > > >                         { .dt_id =3D MT8192_AP_VPU0 },
+> > > >                         { .dt_id =3D MT8192_AP_VPU1 }
+> > > > @@ -1336,7 +1336,7 @@ static const struct lvts_ctrl_data
+> [..]
+> > > >
+> > > > This example is tested and works for mt8195,
+> > > > (all sensors use the same calibration data offset for testing purpo=
+ses).
+> > > >
+> > > > Thank you in advance for your help.
+> > >
+> > > The MCU ones are still tripping though. If I change all of them to 0x=
+04,
+> > > then nothing trips. There's also a bug in the interrupt handling code
+> > > that needs to be dealt with.
+> > >
+> > > AFAICT the calibration data is stored differently. If you look at Chr=
+omeOS's
+> > > downstream v5.10 driver, you'll see mt6873_efuse_to_cal_data() for MT=
+8192,
+> > > and mt8195_efuse_to_cal_data() for MT8195. The difference sums up to:
+> > > MT8195 has all data sequentially stored, while MT8192 has most data s=
+tored
+> > > in lower 24 bits of each 32-bit word, and the highest 8 bits are then=
+ used
+> > > to pack data for the remaining sensors.
+> > >
+> > > Regards
+> > > ChenYu
+> >
+> > Hi Chen-Yu Tsai,
+> >
+> > Thank you very much for helping me testing this suggestion.
+> >
+> > Indeed, calibration data is stored differently in the mt8192 compared t=
+o mt8195.
+> > So, the mt8192's support will be delayed for now, to allow further debu=
+gging.
+> >
+> > In the mean time, we will only continue to upstream the remaining
+> > mt8195's source code, so it will get full LVTS support.
+> > A new series will be submitted soon.
+>
+> Hi Balsam,
+>
+> like Chen-Yu mentioned, the calibration data is stored with 4 byte alignm=
+ent for
+> MT8192, but the data that is split between non-contiguous bytes is for th=
+e
+> thermal controllers (called Resistor-Capacitor Calibration downstream) no=
+t the
+> sensors. The controller calibration isn't currently handled in this drive=
+r (and
+> downstream it also isn't used, since a current value is read from the con=
+troller
+> instead), so we can just ignore those.
+>
+> The patch below adjusts the addresseses for the sensors and gives me reas=
+onable
+> reads, so the machine no longer reboots. Can you integrate it into your s=
+eries?
 
-This code is from before this driver was converted to phylink API. Phylink
-deals with the unsupported interface cases before mt7530_setup_port6() is
-run. Therefore, the default case would never run. However, it must be
-defined nonetheless to handle all the remaining enumeration values, the
-phy-modes.
+Not sure what I got wrong, but on my machine the VPU0 and VPU1 zone interru=
+pts
+are still tripping excessively. The readings seem normal though. Specifical=
+ly,
+it's bits 16 and 17 that are tripping.
 
-Switch to if/else statements which simplifies the code.
-
-Change mt7530_setup_port6() to void now that there're no error cases left.
-
-Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
----
- drivers/net/dsa/mt7530.c | 35 +++++++++++------------------------
- 1 file changed, 11 insertions(+), 24 deletions(-)
-
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 980d59170ba2..ea023e32313c 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -400,11 +400,11 @@ static void mt7530_pll_setup(struct mt7530_priv *priv)
- }
- 
- /* Setup port 6 interface mode and TRGMII TX circuit */
--static int
-+static void
- mt7530_setup_port6(struct dsa_switch *ds, phy_interface_t interface)
- {
- 	struct mt7530_priv *priv = ds->priv;
--	u32 ncpo1, ssc_delta, trgint, xtal, val;
-+	u32 ncpo1, ssc_delta, xtal, val;
- 
- 	val = mt7530_read(priv, MT7530_MHWTRAP);
- 	val &= ~MHWTRAP_P6_DIS;
-@@ -412,16 +412,18 @@ mt7530_setup_port6(struct dsa_switch *ds, phy_interface_t interface)
- 
- 	xtal = mt7530_read(priv, MT7530_HWTRAP) & HWTRAP_XTAL_MASK;
- 
--	switch (interface) {
--	case PHY_INTERFACE_MODE_RGMII:
--		trgint = 0;
--		break;
--	case PHY_INTERFACE_MODE_TRGMII:
--		trgint = 1;
-+	if (interface == PHY_INTERFACE_MODE_RGMII) {
-+		mt7530_rmw(priv, MT7530_P6ECR, P6_INTF_MODE_MASK,
-+			   P6_INTF_MODE(0));
-+	} else {
-+		mt7530_rmw(priv, MT7530_P6ECR, P6_INTF_MODE_MASK,
-+			   P6_INTF_MODE(1));
-+
- 		if (xtal == HWTRAP_XTAL_25MHZ)
- 			ssc_delta = 0x57;
- 		else
- 			ssc_delta = 0x87;
-+
- 		if (priv->id == ID_MT7621) {
- 			/* PLL frequency: 125MHz: 1.0GBit */
- 			if (xtal == HWTRAP_XTAL_40MHZ)
-@@ -434,17 +436,7 @@ mt7530_setup_port6(struct dsa_switch *ds, phy_interface_t interface)
- 			if (xtal == HWTRAP_XTAL_25MHZ)
- 				ncpo1 = 0x1400;
- 		}
--		break;
--	default:
--		dev_err(priv->dev, "xMII interface %d not supported\n",
--			interface);
--		return -EINVAL;
--	}
- 
--	mt7530_rmw(priv, MT7530_P6ECR, P6_INTF_MODE_MASK,
--		   P6_INTF_MODE(trgint));
--
--	if (trgint) {
- 		/* Disable the MT7530 TRGMII clocks */
- 		core_clear(priv, CORE_TRGMII_GSW_CLK_CG, REG_TRGMIICK_EN);
- 
-@@ -466,8 +458,6 @@ mt7530_setup_port6(struct dsa_switch *ds, phy_interface_t interface)
- 		/* Enable the MT7530 TRGMII clocks */
- 		core_set(priv, CORE_TRGMII_GSW_CLK_CG, REG_TRGMIICK_EN);
- 	}
--
--	return 0;
- }
- 
- static void
-@@ -2562,14 +2552,11 @@ mt7530_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
- 		  phy_interface_t interface)
- {
- 	struct mt7530_priv *priv = ds->priv;
--	int ret;
- 
- 	if (port == 5) {
- 		mt7530_setup_port5(priv->ds, interface);
- 	} else if (port == 6) {
--		ret = mt7530_setup_port6(priv->ds, interface);
--		if (ret)
--			return ret;
-+		mt7530_setup_port6(priv->ds, interface);
- 	}
- 
- 	return 0;
--- 
-2.37.2
-
+> Thanks,
+> N=C3=ADcolas
+>
+> From 4506f03b806f3eeb89887bac2c1c86d61da97281 Mon Sep 17 00:00:00 2001
+> From: =3D?UTF-8?q?N=3DC3=3DADcolas=3D20F=3D2E=3D20R=3D2E=3D20A=3D2E=3D20P=
+rado?=3D
+>  <nfraprado@collabora.com>
+> Date: Mon, 24 Apr 2023 17:42:42 -0400
+> Subject: [PATCH] thermal/drivers/mediatek/lvts_thermal: Fix calibration
+>  offsets for MT8192
+> MIME-Version: 1.0
+> Content-Type: text/plain; charset=3DUTF-8
+> Content-Transfer-Encoding: 8bit
+>
+> Signed-off-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
+> ---
+>  drivers/thermal/mediatek/lvts_thermal.c | 14 +++++++-------
+>  1 file changed, 7 insertions(+), 7 deletions(-)
+>
+> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/me=
+diatek/lvts_thermal.c
+> index b6956c89d557..f8afbc2ac190 100644
+> --- a/drivers/thermal/mediatek/lvts_thermal.c
+> +++ b/drivers/thermal/mediatek/lvts_thermal.c
+> @@ -1261,7 +1261,7 @@ static const struct lvts_ctrl_data mt8195_lvts_ap_d=
+ata_ctrl[] =3D {
+>
+>  static const struct lvts_ctrl_data mt8192_lvts_mcu_data_ctrl[] =3D {
+>         {
+> -               .cal_offset =3D { 0x04, 0x07 },
+> +               .cal_offset =3D { 0x04, 0x08 },
+>                 .lvts_sensor =3D {
+>                         { .dt_id =3D MT8192_MCU_BIG_CPU0 },
+>                         { .dt_id =3D MT8192_MCU_BIG_CPU1 }
+> @@ -1271,7 +1271,7 @@ static const struct lvts_ctrl_data mt8192_lvts_mcu_=
+data_ctrl[] =3D {
+>                 .hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8192,
+>         },
+>         {
+> -               .cal_offset =3D { 0x0d, 0x10 },
+> +               .cal_offset =3D { 0x0c, 0x10 },
+>                 .lvts_sensor =3D {
+>                         { .dt_id =3D MT8192_MCU_BIG_CPU2 },
+>                         { .dt_id =3D MT8192_MCU_BIG_CPU3 }
+> @@ -1281,7 +1281,7 @@ static const struct lvts_ctrl_data mt8192_lvts_mcu_=
+data_ctrl[] =3D {
+>                 .hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8192,
+>         },
+>         {
+> -               .cal_offset =3D { 0x16, 0x19, 0x1c, 0x1f },
+> +               .cal_offset =3D { 0x14, 0x18, 0x1c, 0x20 },
+>                 .lvts_sensor =3D {
+>                         { .dt_id =3D MT8192_MCU_LITTLE_CPU0 },
+>                         { .dt_id =3D MT8192_MCU_LITTLE_CPU1 },
+> @@ -1296,7 +1296,7 @@ static const struct lvts_ctrl_data mt8192_lvts_mcu_=
+data_ctrl[] =3D {
+>
+>  static const struct lvts_ctrl_data mt8192_lvts_ap_data_ctrl[] =3D {
+>                 {
+> -               .cal_offset =3D { 0x25, 0x28 },
+> +               .cal_offset =3D { 0x24, 0x28 },
+>                 .lvts_sensor =3D {
+>                         { .dt_id =3D MT8192_AP_VPU0 },
+>                         { .dt_id =3D MT8192_AP_VPU1 }
+> @@ -1306,7 +1306,7 @@ static const struct lvts_ctrl_data mt8192_lvts_ap_d=
+ata_ctrl[] =3D {
+>                 .hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8192,
+>         },
+>         {
+> -               .cal_offset =3D { 0x2e, 0x31 },
+> +               .cal_offset =3D { 0x2c, 0x30 },
+>                 .lvts_sensor =3D {
+>                         { .dt_id =3D MT8192_AP_GPU0 },
+>                         { .dt_id =3D MT8192_AP_GPU1 }
+> @@ -1316,7 +1316,7 @@ static const struct lvts_ctrl_data mt8192_lvts_ap_d=
+ata_ctrl[] =3D {
+>                 .hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8192,
+>         },
+>         {
+> -               .cal_offset =3D { 0x37, 0x3a },
+> +               .cal_offset =3D { 0x34, 0x38 },
+>                 .lvts_sensor =3D {
+>                         { .dt_id =3D MT8192_AP_INFRA },
+>                         { .dt_id =3D MT8192_AP_CAM },
+> @@ -1326,7 +1326,7 @@ static const struct lvts_ctrl_data mt8192_lvts_ap_d=
+ata_ctrl[] =3D {
+>                 .hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8192,
+>         },
+>         {
+> -               .cal_offset =3D { 0x40, 0x43, 0x46 },
+> +               .cal_offset =3D { 0x3c, 0x40, 0x44 },
+>                 .lvts_sensor =3D {
+>                         { .dt_id =3D MT8192_AP_MD0 },
+>                         { .dt_id =3D MT8192_AP_MD1 },
+> --
+> 2.40.0
 
