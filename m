@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8302DC77B61
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Apr 2023 15:08:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B6B2C77B61
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Apr 2023 15:15:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yKetS0BduABo9wi8mcskz8sSRGjTmmkO8q3V6sunxQk=; b=Qzu15P4B/3f+lJlz+1ug67jPGH
-	fz2h4MvzwKt3LKl4ESj2LChXWxLwq9/ieGbv3UOnbUs3/tEAiNMbgYdZxoodMv1NDepLw9OPhGxmA
-	s1FsfjqiU8lM2YdhiFm+EW8GnCYoTbe3/pFPJOpNdTtGtgjAtA7uMDNjfQIF8aR2LkIEIPTKmuySl
-	rzEKfnm8vin/rpud1wH53ywyDYBGxjO/zXxfdt6jVOudPnJgYbCWf3n3brYTgff3BOaebH8s4zIaJ
-	m33tbnWwK29zuaq8ieqU0dhAYL9EurjF1XQBMk7YyP66yz3lypdT3+4/iOkInWIciLK+VA8KORMC/
-	PGAejx5Q==;
+	bh=CNYT42o+Do+WGXJABDHdnKjDYOgndsXuitKJD1bWb2s=; b=y3LI4u4RxvM7CZEK04Qs0WSKbH
+	iZ88tVieh0+lB1UHwS31A9IHzAjAzooV4JJT4JC8YrEMHi6xzBWi/ShKdr3Td3QBUht/sP7BgG2oD
+	Txq2BJixF+1hQ8S0TPAC7/wdhCzw4SAIJPxYmecGZTipaaNKLdsvM0bgFcY7Ows5+wdxYY1YENP6i
+	IQ05pfeUYi44niyovLAO8HIWP9i//D1BHhoW7VAZP5ljJypr5pLUwccmuMaEqNJhjjnl0iVdgVMrJ
+	oSdL6Tk+UNMHphSN9ZZm3Yq0FwllG0sECgSHNlpvDgWGejWcYag13us3AtTe+vVQwL2jrLocCqPRD
+	MBL+HA9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1prKHO-001Ug4-1w;
-	Tue, 25 Apr 2023 15:08:30 +0000
+	id 1prKOU-001Vw4-06;
+	Tue, 25 Apr 2023 15:15:50 +0000
 Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prKHK-001UeN-1l;
-	Tue, 25 Apr 2023 15:08:27 +0000
+	id 1prKOQ-001Vv6-1z;
+	Tue, 25 Apr 2023 15:15:47 +0000
 Received: from local
 	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1prKGx-0004W6-1Y;
-	Tue, 25 Apr 2023 17:08:03 +0200
-Date: Tue, 25 Apr 2023 16:06:13 +0100
+	id 1prKO6-0004ZF-0X;
+	Tue, 25 Apr 2023 17:15:26 +0200
+Date: Tue, 25 Apr 2023 16:13:36 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: arinc9.unal@gmail.com
-Subject: Re: [PATCH net-next 03/24] net: dsa: mt7530: use p5_interface_select
- as data type for p5_intf_sel
-Message-ID: <ZEfsZY0crdV2qryM@makrotopia.org>
+Subject: Re: [PATCH net-next 10/24] net: dsa: mt7530: empty default case on
+ mt7530_setup_port5()
+Message-ID: <ZEfuIHET4Nva0hj4@makrotopia.org>
 References: <20230425082933.84654-1-arinc.unal@arinc9.com>
- <20230425082933.84654-4-arinc.unal@arinc9.com>
+ <20230425082933.84654-11-arinc.unal@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230425082933.84654-4-arinc.unal@arinc9.com>
+In-Reply-To: <20230425082933.84654-11-arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230425_080826_585516_C4F0CAE7 
-X-CRM114-Status: GOOD (  16.63  )
+X-CRM114-CacheID: sfid-20230425_081546_672260_2748D95F 
+X-CRM114-Status: GOOD (  19.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,43 +63,65 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Eric Dumazet <edumazet@google.com>, erkin.bozo
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 25, 2023 at 11:29:12AM +0300, arinc9.unal@gmail.com wrote:
+On Tue, Apr 25, 2023 at 11:29:19AM +0300, arinc9.unal@gmail.com wrote:
 > From: Arınç ÜNAL <arinc.unal@arinc9.com>
 > 
-> Use the p5_interface_select enumeration as the data type for the
-> p5_intf_sel field. This ensures p5_intf_sel can only take the values
-> defined in the p5_interface_select enumeration.
+> There're two code paths for setting up port 5:
 > 
+> mt7530_setup()
+> -> mt7530_setup_port5()
+> 
+> mt753x_phylink_mac_config()
+> -> mt753x_mac_config()
+>    -> mt7530_mac_config()
+>       -> mt7530_setup_port5()
+> 
+> On the first code path, priv->p5_intf_sel is either set to
+> P5_INTF_SEL_PHY_P0 or P5_INTF_SEL_PHY_P4 when mt7530_setup_port5() is run.
+> 
+> On the second code path, priv->p5_intf_sel is set to P5_INTF_SEL_GMAC5 when
+> mt7530_setup_port5() is run.
+> 
+> Empty the default case which will never run but is needed nonetheless to
+> handle all the remaining enumeration values.
+
+If the default: case is really just unreachable code because of the
+sound reasoning you presented above, then you should just remove it.
+
+> 
+> Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 > Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-
-Acked-by: Daniel Golle <daniel@makrotopia.org>
-
 > ---
->  drivers/net/dsa/mt7530.h | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  drivers/net/dsa/mt7530.c | 5 +----
+>  1 file changed, 1 insertion(+), 4 deletions(-)
 > 
-> diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-> index 845f5dd16d83..415d8ea07472 100644
-> --- a/drivers/net/dsa/mt7530.h
-> +++ b/drivers/net/dsa/mt7530.h
-> @@ -675,7 +675,7 @@ struct mt7530_port {
+> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> index aab9ebb54d7d..b3db68d6939a 100644
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+> @@ -933,9 +933,7 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
+>  		val &= ~MHWTRAP_P5_DIS;
+>  		break;
+>  	default:
+> -		dev_err(ds->dev, "Unsupported p5_intf_sel %d\n",
+> -			priv->p5_intf_sel);
+> -		goto unlock_exit;
+> +		break;
+
+I suppose you can also rather just remove the default: case alltogether
+instead of keeping it and making it a no-op.
+
+>  	}
 >  
->  /* Port 5 interface select definitions */
->  enum p5_interface_select {
-> -	P5_DISABLED = 0,
-> +	P5_DISABLED,
->  	P5_INTF_SEL_PHY_P0,
->  	P5_INTF_SEL_PHY_P4,
->  	P5_INTF_SEL_GMAC5,
-> @@ -768,7 +768,7 @@ struct mt7530_priv {
->  	bool			mcm;
->  	phy_interface_t		p6_interface;
->  	phy_interface_t		p5_interface;
-> -	unsigned int		p5_intf_sel;
-> +	enum p5_interface_select p5_intf_sel;
->  	u8			mirror_rx;
->  	u8			mirror_tx;
->  	struct mt7530_port	ports[MT7530_NUM_PORTS];
+>  	/* Setup RGMII settings */
+> @@ -965,7 +963,6 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
+>  	dev_dbg(ds->dev, "Setup P5, HWTRAP=0x%x, intf_sel=%s, phy-mode=%s\n",
+>  		val, p5_intf_modes(priv->p5_intf_sel), phy_modes(interface));
+>  
+> -unlock_exit:
+>  	mutex_unlock(&priv->reg_mutex);
+>  }
+>  
 > -- 
 > 2.37.2
 > 
