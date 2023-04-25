@@ -4,76 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 544A3C77B61
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Apr 2023 06:15:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8881AC77B61
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Apr 2023 06:38:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=OJN3EnoiBVXJreeu/r1Tq1DY/8Hi0jIDpAU1kc8k2m0=; b=gxUmY8i5OXkdOXH54M3Wb7XJNj
-	Y2twpijKi5w8FD/HmD1yHMGDhljQHCcktUw2BwxdfRmWHacGknZVFvbJdtxvabR3WQIUpXQpeTbAp
-	hNwt7FI6EKfxrP8SF0zPMmP2oRdi/YOltrUSR0I7s7z0sjsYMdM/mWZTrCkGKs21GJMlOwrW6+Fg1
-	BWrVvAxX3cZ44Xhgh222w8ozKzKMzN4Ms7nnaIQqxknAF8Y4QzAzxrHe78JL/hYzqan6FvWL8CLsL
-	3eO3GiOzrAE4Y2h+lQXj3d25oGGA40pQwPo9UETwj2O2wUTlZdyvS5YvoQlM35xG3i8yuCR9IVR5U
-	e5xuy/3Q==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=x/4po1Ej3WlfOvU1adXzD1g1bzAX945MwQFA0TAxTFI=; b=IFVpF6uvinqDTk/1vFtrDvB2fz
+	Ad0BxrdJzlIcVtHfcOSUXXuRX25HhEDA6Phk8+f4F+NgMaLwmQW36GWrtM3Zi7LL3NSt3KRT63zJP
+	8CVinpw7z+5zOBRBBgf6dlf10OOKpW5EFxW0Io07/y//KFiMI3f2olZW8w4GNUZqQdszYrR4Stcmj
+	xpw7ze5y9Um5II5WsVf/kXt40VPwNM+I3NkoaPsK4QAAJxWxIOKxZWKyu5TA/o8V1x7a14dN3ptK5
+	iJrzG75zJvp2gnbgNHNcWnqy4UxOzrRxgmLUnT+JPUiVchsg6SKDndHDJf7ZR4ruZu1BXP0aHSXH6
+	lgUuANzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1prBxc-000HL7-00;
-	Tue, 25 Apr 2023 06:15:32 +0000
-Received: from mga01.intel.com ([192.55.52.88])
+	id 1prCJx-000J2d-1p;
+	Tue, 25 Apr 2023 06:38:37 +0000
+Received: from mail-ua1-x936.google.com ([2607:f8b0:4864:20::936])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prBxX-000HKI-1T;
-	Tue, 25 Apr 2023 06:15:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1682403327; x=1713939327;
-  h=date:from:to:cc:subject:message-id:mime-version:
-   content-transfer-encoding;
-  bh=PpE5xgIuFUvLC9eQAoWE55iNZlf+kGreK92j1hfooKY=;
-  b=Z4Wq3w75l5s5k21n/oPmQH4qVpTXSV2w2n4cDFF1z6pZjUkDmoIgqdBE
-   07BH+izrEu1IzU5bM9h9fMpv2xcM5Q96GdPpvCSjtNl2vZvEeSymC4Sqq
-   /6bdZiEsD9bDFgKnZGRTF8SozK/+eu2HV32mmAbmig+3+SBdBq98D2sJa
-   n7lhGmfGXAm6VnY5OBajs001LzO1HZxgjdKSR3+oYdyfQf6+R/XsQHkP+
-   xWae4rSO4Ylp8xW9/FBaOgTck3vTDK4dlh6UCTql3s6sqTVw3ZezVwwSI
-   t+Mc2x2oxIhuPhT7xHN0Sr+rgYEb3+58+e2tjqp4vi3nwvMr6YBKCR7OE
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10690"; a="374615819"
-X-IronPort-AV: E=Sophos;i="5.99,224,1677571200"; 
-   d="scan'208";a="374615819"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
-  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Apr 2023 23:15:24 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10690"; a="1023011049"
-X-IronPort-AV: E=Sophos;i="5.99,224,1677571200"; 
-   d="scan'208";a="1023011049"
-Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
-  by fmsmga005.fm.intel.com with ESMTP; 24 Apr 2023 23:15:20 -0700
-Received: from kbuild by b613635ddfff with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1prBxP-000j4U-0w;
-	Tue, 25 Apr 2023 06:15:19 +0000
-Date: Tue, 25 Apr 2023 14:14:26 +0800
-From: kernel test robot <lkp@intel.com>
-To: Andrew Morton <akpm@linux-foundation.org>
-Cc: Mark Brown <broonie@kernel.org>, linux-um@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-ext4@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-acpi@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- amd-gfx@lists.freedesktop.org,
- Linux Memory Management List <linux-mm@kvack.org>
-Subject: [linux-next:master] BUILD REGRESSION
- 3b85b9b39960c08f29fa91b8d984d055dde6017e
-Message-ID: <64476fc2.kS7ptLxEZBTdxXbf%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+	id 1prCJv-000J10-0K
+	for linux-mediatek@lists.infradead.org;
+	Tue, 25 Apr 2023 06:38:36 +0000
+Received: by mail-ua1-x936.google.com with SMTP id a1e0cc1a2514c-76fd0036c7fso1379133241.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 24 Apr 2023 23:38:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1682404712; x=1684996712;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=x/4po1Ej3WlfOvU1adXzD1g1bzAX945MwQFA0TAxTFI=;
+        b=nFbieztOPswW5GxKKRLXOuztCpyAKY9mEjRZBMEICHGO1mEr4lOyasrgFTeqpGgjkM
+         ZVarB5HMqvVpOvv0t0+9B1RcIWFMy1IH+lchfuVbvAR5ex1IiPV2XfN06pd0Epa4XknE
+         WOuntHpjHKejNoMhtXaT2wWCOPaKUPevx4HHw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1682404712; x=1684996712;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=x/4po1Ej3WlfOvU1adXzD1g1bzAX945MwQFA0TAxTFI=;
+        b=NQvTkyxwzjLNewFBiJ4oKr+qHvFAP2m/PbhHfIdILQs81Ou9+nrRkVaID7Aed45/U2
+         hSm9rWuMBPKTniNLER44W65ua1yQKZL9EGjcF1j6f721crRivSw6nkGnFj5o2V6Auaa4
+         Gmr3VlhkTB9OPpT/B2NwVMvst/wIIEeIN8MCm54wl5paHQDEDRradc4Rg+NTxmwn5734
+         6ZOqwZv0Mx3zduDgV7lFob6TQfrogK3hTjr6XhHBv1bVfO4EvCdilvVUWkIsvdxVVtYO
+         LhOyNNX/oKIedQU4zHxjHwE0V5viF0TE94QNgL2IJ3Ia6kx8ORAKaDwdnBXo+ctB4pdg
+         CtNw==
+X-Gm-Message-State: AAQBX9caN6TMWAE7ZZWWLZbFU7k7KunfYGRJgzFmcOw9OFuZuDJImSSb
+	anU2NJXRCsiVUBNqtQoX3dRlAZIxnyB4AJDlnXlJCQ==
+X-Google-Smtp-Source: AKy350bAqm4/VLyKdgzolsEnGjY/HHjmxsgcud09926UX90Ij1K67+wBUb5KDEvOlucOh39eKpAS/LkMZ7WwxRXo5PA=
+X-Received: by 2002:a1f:3f44:0:b0:43b:ef4d:f6c0 with SMTP id
+ m65-20020a1f3f44000000b0043bef4df6c0mr4118847vka.0.1682404711878; Mon, 24 Apr
+ 2023 23:38:31 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+References: <20230422103905.1995271-1-treapking@chromium.org>
+In-Reply-To: <20230422103905.1995271-1-treapking@chromium.org>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 25 Apr 2023 14:38:20 +0800
+Message-ID: <CAGXv+5HszT12aSaupe0occaFSC-9pZUmaCiKagbFSA5++X3xcA@mail.gmail.com>
+Subject: Re: [PATCH] media: mediatek: vcodec: Only apply 4K frame sizes on
+ decoder formats
+To: Pin-yen Lin <treapking@chromium.org>
+Cc: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
+	Yunfei Dong <yunfei.dong@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
+	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>, 
+	"open list:MEDIA INPUT INFRASTRUCTURE (V4L/DVB)" <linux-media@vger.kernel.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230424_231527_577827_21FA6FD7 
-X-CRM114-Status: UNSURE (   7.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230424_233835_139728_A310DC27 
+X-CRM114-Status: GOOD (  15.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,323 +93,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
-branch HEAD: 3b85b9b39960c08f29fa91b8d984d055dde6017e  Add linux-next specific files for 20230424
+On Sat, Apr 22, 2023 at 6:39=E2=80=AFPM Pin-yen Lin <treapking@chromium.org=
+> wrote:
+>
+> When VCODEC_CAPABILITY_4K_DISABLED is not set in dec_capability, skip
+> formats that are not MTK_FMT_DEC so only decoder formats is updated in
+> mtk_init_vdec_params.
+>
+> Fixes: e25528e1dbe5 ("media: mediatek: vcodec: Use 4K frame size when sup=
+ported by stateful decoder")
+> Signed-off-by: Pin-yen Lin <treapking@chromium.org>
 
-Error/Warning reports:
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
-https://lore.kernel.org/oe-kbuild-all/202304102354.Q4VOXGTE-lkp@intel.com
-https://lore.kernel.org/oe-kbuild-all/202304210303.nlMI0sRQ-lkp@intel.com
-https://lore.kernel.org/oe-kbuild-all/202304210349.DykCi88S-lkp@intel.com
-https://lore.kernel.org/oe-kbuild-all/202304230014.YbScpx20-lkp@intel.com
-https://lore.kernel.org/oe-kbuild-all/202304250419.YtCLtUhG-lkp@intel.com
-
-Error/Warning: (recently discovered and may have been fixed)
-
-arch/um/drivers/harddog_user.c:6:10: fatal error: stdio.h: No such file or directory
-drivers/accel/habanalabs/gaudi/gaudi.c:117:19: warning: unused variable 'gaudi_irq_name' [-Wunused-const-variable]
-drivers/base/regmap/regcache-maple.c:113:23: warning: 'lower_index' is used uninitialized [-Wuninitialized]
-drivers/base/regmap/regcache-maple.c:113:36: warning: 'lower_last' is used uninitialized [-Wuninitialized]
-drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c:456:16: warning: variable 'j' set but not used [-Wunused-but-set-variable]
-drivers/gpu/drm/amd/amdgpu/gfx_v9_4_3.c:1078:6: warning: no previous prototype for 'gfx_v9_4_3_disable_gpa_mode' [-Wmissing-prototypes]
-drivers/gpu/drm/amd/amdgpu/gfx_v9_4_3.c:1078:6: warning: no previous prototype for function 'gfx_v9_4_3_disable_gpa_mode' [-Wmissing-prototypes]
-drivers/gpu/drm/amd/amdgpu/gfx_v9_4_3.c:48:38: warning: unused variable 'golden_settings_gc_9_4_3' [-Wunused-const-variable]
-drivers/gpu/drm/i915/gt/uc/guc_capture_fwif.h:62: warning: wrong kernel-doc identifier on line:
-drivers/gpu/drm/i915/i915_pmu.h:41: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
-drivers/gpu/drm/i915/i915_request.h:176: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
-drivers/gpu/drm/i915/i915_vma.h:145: warning: expecting prototype for i915_vma_offset(). Prototype was for i915_vma_size() instead
-drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:298:6: warning: variable 'ret' is uninitialized when used here [-Wuninitialized]
-fs/ext4/super.c:1262:13: warning: unused variable 'i' [-Wunused-variable]
-fs/ext4/super.c:1262:6: warning: unused variable 'i' [-Wunused-variable]
-ld.lld: error: .btf.vmlinux.bin.o: unknown file type
-
-Unverified Error/Warning (likely false positive, please contact us if interested):
-
-drivers/acpi/property.c:985 acpi_data_prop_read_single() error: potentially dereferencing uninitialized 'obj'.
-
-Error/Warning ids grouped by kconfigs:
-
-gcc_recent_errors
-|-- alpha-allyesconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-amdgpu_gfx.c:warning:variable-j-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:no-previous-prototype-for-gfx_v9_4_3_disable_gpa_mode
-|-- arc-allyesconfig
-|   |-- drivers-base-regmap-regcache-maple.c:warning:lower_index-is-used-uninitialized
-|   |-- drivers-base-regmap-regcache-maple.c:warning:lower_last-is-used-uninitialized
-|   |-- drivers-gpu-drm-amd-amdgpu-amdgpu_gfx.c:warning:variable-j-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:no-previous-prototype-for-gfx_v9_4_3_disable_gpa_mode
-|-- arc-randconfig-r043-20230424
-|   |-- drivers-gpu-drm-amd-amdgpu-amdgpu_gfx.c:warning:variable-j-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:no-previous-prototype-for-gfx_v9_4_3_disable_gpa_mode
-|-- arm-allmodconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-amdgpu_gfx.c:warning:variable-j-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:no-previous-prototype-for-gfx_v9_4_3_disable_gpa_mode
-|-- arm-allyesconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-amdgpu_gfx.c:warning:variable-j-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:no-previous-prototype-for-gfx_v9_4_3_disable_gpa_mode
-|-- arm64-allyesconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-amdgpu_gfx.c:warning:variable-j-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:no-previous-prototype-for-gfx_v9_4_3_disable_gpa_mode
-|-- arm64-buildonly-randconfig-r001-20230423
-|   |-- drivers-gpu-drm-amd-amdgpu-amdgpu_gfx.c:warning:variable-j-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:no-previous-prototype-for-gfx_v9_4_3_disable_gpa_mode
-|-- i386-allyesconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-amdgpu_gfx.c:warning:variable-j-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:no-previous-prototype-for-gfx_v9_4_3_disable_gpa_mode
-|-- i386-randconfig-a011-20230424
-|   `-- fs-ext4-super.c:warning:unused-variable-i
-|-- i386-randconfig-a016-20230424
-|   `-- fs-ext4-super.c:warning:unused-variable-i
-|-- i386-randconfig-m021
-|   `-- drivers-acpi-property.c-acpi_data_prop_read_single()-error:potentially-dereferencing-uninitialized-obj-.
-|-- ia64-allmodconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-amdgpu_gfx.c:warning:variable-j-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:no-previous-prototype-for-gfx_v9_4_3_disable_gpa_mode
-|-- ia64-randconfig-c031-20230423
-|   |-- drivers-gpu-drm-amd-amdgpu-amdgpu_gfx.c:warning:variable-j-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:no-previous-prototype-for-gfx_v9_4_3_disable_gpa_mode
-|-- ia64-randconfig-r026-20230424
-|   |-- drivers-gpu-drm-amd-amdgpu-amdgpu_gfx.c:warning:variable-j-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:no-previous-prototype-for-gfx_v9_4_3_disable_gpa_mode
-|-- ia64-randconfig-r033-20230423
-|   |-- drivers-gpu-drm-amd-amdgpu-amdgpu_gfx.c:warning:variable-j-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:no-previous-prototype-for-gfx_v9_4_3_disable_gpa_mode
-|-- loongarch-allmodconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-amdgpu_gfx.c:warning:variable-j-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:no-previous-prototype-for-gfx_v9_4_3_disable_gpa_mode
-|-- loongarch-buildonly-randconfig-r001-20230424
-|   |-- drivers-gpu-drm-amd-amdgpu-amdgpu_gfx.c:warning:variable-j-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:no-previous-prototype-for-gfx_v9_4_3_disable_gpa_mode
-|-- loongarch-defconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-amdgpu_gfx.c:warning:variable-j-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:no-previous-prototype-for-gfx_v9_4_3_disable_gpa_mode
-|-- loongarch-loongson3_defconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-amdgpu_gfx.c:warning:variable-j-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:no-previous-prototype-for-gfx_v9_4_3_disable_gpa_mode
-|-- loongarch-randconfig-r004-20230423
-|   |-- drivers-gpu-drm-amd-amdgpu-amdgpu_gfx.c:warning:variable-j-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:no-previous-prototype-for-gfx_v9_4_3_disable_gpa_mode
-|-- loongarch-randconfig-r006-20230424
-|   |-- drivers-gpu-drm-amd-amdgpu-amdgpu_gfx.c:warning:variable-j-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:no-previous-prototype-for-gfx_v9_4_3_disable_gpa_mode
-|-- loongarch-randconfig-r011-20230424
-|   |-- drivers-gpu-drm-amd-amdgpu-amdgpu_gfx.c:warning:variable-j-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:no-previous-prototype-for-gfx_v9_4_3_disable_gpa_mode
-|-- mips-allmodconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-amdgpu_gfx.c:warning:variable-j-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:no-previous-prototype-for-gfx_v9_4_3_disable_gpa_mode
-|-- mips-allyesconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-amdgpu_gfx.c:warning:variable-j-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:no-previous-prototype-for-gfx_v9_4_3_disable_gpa_mode
-|-- powerpc-allmodconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-amdgpu_gfx.c:warning:variable-j-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:no-previous-prototype-for-gfx_v9_4_3_disable_gpa_mode
-|-- riscv-allmodconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-amdgpu_gfx.c:warning:variable-j-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:no-previous-prototype-for-gfx_v9_4_3_disable_gpa_mode
-|-- s390-allyesconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-amdgpu_gfx.c:warning:variable-j-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:no-previous-prototype-for-gfx_v9_4_3_disable_gpa_mode
-|-- s390-randconfig-r044-20230424
-|   |-- drivers-gpu-drm-amd-amdgpu-amdgpu_gfx.c:warning:variable-j-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:no-previous-prototype-for-gfx_v9_4_3_disable_gpa_mode
-|-- sparc-allyesconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-amdgpu_gfx.c:warning:variable-j-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:no-previous-prototype-for-gfx_v9_4_3_disable_gpa_mode
-|-- um-allmodconfig
-|   `-- arch-um-drivers-harddog_user.c:fatal-error:stdio.h:No-such-file-or-directory
-|-- x86_64-allyesconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-amdgpu_gfx.c:warning:variable-j-set-but-not-used
-|   `-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:no-previous-prototype-for-gfx_v9_4_3_disable_gpa_mode
-|-- x86_64-randconfig-a012-20230424
-|   `-- fs-ext4-super.c:warning:unused-variable-i
-|-- x86_64-randconfig-a014-20230424
-|   `-- fs-ext4-super.c:warning:unused-variable-i
-`-- xtensa-buildonly-randconfig-r003-20230424
-    |-- drivers-gpu-drm-amd-amdgpu-amdgpu_gfx.c:warning:variable-j-set-but-not-used
-    `-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:no-previous-prototype-for-gfx_v9_4_3_disable_gpa_mode
-clang_recent_errors
-|-- arm-randconfig-r046-20230424
-|   `-- drivers-phy-mediatek-phy-mtk-hdmi-mt8195.c:warning:variable-ret-is-uninitialized-when-used-here
-|-- arm64-randconfig-r032-20230424
-|   |-- drivers-phy-mediatek-phy-mtk-hdmi-mt8195.c:warning:variable-ret-is-uninitialized-when-used-here
-|   `-- ld.lld:error:.btf.vmlinux.bin.o:unknown-file-type
-|-- i386-randconfig-a001-20230424
-|   `-- fs-ext4-super.c:warning:unused-variable-i
-|-- i386-randconfig-a003-20230424
-|   `-- fs-ext4-super.c:warning:unused-variable-i
-|-- i386-randconfig-a004-20230424
-|   |-- drivers-gpu-drm-i915-gt-uc-guc_capture_fwif.h:warning:wrong-kernel-doc-identifier-on-line:
-|   |-- drivers-gpu-drm-i915-i915_pmu.h:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-|   |-- drivers-gpu-drm-i915-i915_request.h:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-|   `-- drivers-gpu-drm-i915-i915_vma.h:warning:expecting-prototype-for-i915_vma_offset().-Prototype-was-for-i915_vma_size()-instead
-|-- i386-randconfig-a005-20230424
-|   `-- fs-ext4-super.c:warning:unused-variable-i
-|-- powerpc-randconfig-r015-20230423
-|   |-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:no-previous-prototype-for-function-gfx_v9_4_3_disable_gpa_mode
-|   `-- drivers-gpu-drm-amd-amdgpu-gfx_v9_4_3.c:warning:unused-variable-golden_settings_gc_9_4_3
-|-- x86_64-randconfig-a001-20230424
-|   `-- fs-ext4-super.c:warning:unused-variable-i
-|-- x86_64-randconfig-a003-20230424
-|   `-- fs-ext4-super.c:warning:unused-variable-i
-|-- x86_64-randconfig-a004-20230424
-|   |-- drivers-accel-habanalabs-gaudi-gaudi.c:warning:unused-variable-gaudi_irq_name
-|   `-- fs-ext4-super.c:warning:unused-variable-i
-|-- x86_64-randconfig-a005-20230424
-|   `-- fs-ext4-super.c:warning:unused-variable-i
-`-- x86_64-randconfig-a006-20230424
-    `-- fs-ext4-super.c:warning:unused-variable-i
-
-elapsed time: 736m
-
-configs tested: 142
-configs skipped: 10
-
-tested configs:
-alpha                            allyesconfig   gcc  
-alpha                               defconfig   gcc  
-arc                               allnoconfig   gcc  
-arc                              allyesconfig   gcc  
-arc                                 defconfig   gcc  
-arc                  randconfig-r012-20230423   gcc  
-arc                  randconfig-r031-20230423   gcc  
-arc                  randconfig-r034-20230424   gcc  
-arc                  randconfig-r043-20230423   gcc  
-arc                  randconfig-r043-20230424   gcc  
-arm                              allmodconfig   gcc  
-arm                               allnoconfig   gcc  
-arm                              allyesconfig   gcc  
-arm                         bcm2835_defconfig   clang
-arm                                 defconfig   gcc  
-arm                  randconfig-r004-20230424   gcc  
-arm                  randconfig-r013-20230424   clang
-arm                  randconfig-r046-20230423   gcc  
-arm                  randconfig-r046-20230424   clang
-arm64                            allyesconfig   gcc  
-arm64        buildonly-randconfig-r001-20230423   gcc  
-arm64                               defconfig   gcc  
-arm64                randconfig-r021-20230424   gcc  
-arm64                randconfig-r032-20230424   clang
-arm64                randconfig-r036-20230423   gcc  
-csky         buildonly-randconfig-r004-20230424   gcc  
-csky                                defconfig   gcc  
-hexagon              randconfig-r025-20230423   clang
-hexagon              randconfig-r041-20230423   clang
-hexagon              randconfig-r041-20230424   clang
-hexagon              randconfig-r045-20230423   clang
-hexagon              randconfig-r045-20230424   clang
-i386                             allyesconfig   gcc  
-i386                              debian-10.3   gcc  
-i386                                defconfig   gcc  
-i386                 randconfig-a001-20230424   clang
-i386                 randconfig-a002-20230424   clang
-i386                 randconfig-a003-20230424   clang
-i386                 randconfig-a004-20230424   clang
-i386                 randconfig-a005-20230424   clang
-i386                 randconfig-a006-20230424   clang
-i386                 randconfig-a011-20230424   gcc  
-i386                 randconfig-a012-20230424   gcc  
-i386                 randconfig-a013-20230424   gcc  
-i386                 randconfig-a014-20230424   gcc  
-i386                 randconfig-a015-20230424   gcc  
-i386                 randconfig-a016-20230424   gcc  
-i386                 randconfig-r015-20230424   gcc  
-i386                 randconfig-r016-20230424   gcc  
-ia64                             allmodconfig   gcc  
-ia64         buildonly-randconfig-r002-20230424   gcc  
-ia64                                defconfig   gcc  
-ia64                 randconfig-r003-20230424   gcc  
-ia64                 randconfig-r005-20230424   gcc  
-ia64                 randconfig-r026-20230424   gcc  
-ia64                 randconfig-r033-20230423   gcc  
-loongarch                        allmodconfig   gcc  
-loongarch                         allnoconfig   gcc  
-loongarch    buildonly-randconfig-r001-20230424   gcc  
-loongarch    buildonly-randconfig-r005-20230423   gcc  
-loongarch    buildonly-randconfig-r006-20230423   gcc  
-loongarch                           defconfig   gcc  
-loongarch                 loongson3_defconfig   gcc  
-loongarch            randconfig-r004-20230423   gcc  
-loongarch            randconfig-r006-20230424   gcc  
-loongarch            randconfig-r011-20230424   gcc  
-loongarch            randconfig-r013-20230423   gcc  
-loongarch            randconfig-r022-20230423   gcc  
-m68k                             allmodconfig   gcc  
-m68k                                defconfig   gcc  
-m68k                 randconfig-r002-20230423   gcc  
-m68k                 randconfig-r024-20230423   gcc  
-m68k                 randconfig-r035-20230423   gcc  
-microblaze   buildonly-randconfig-r003-20230423   gcc  
-microblaze           randconfig-r014-20230423   gcc  
-microblaze           randconfig-r016-20230423   gcc  
-microblaze           randconfig-r022-20230424   gcc  
-microblaze           randconfig-r023-20230424   gcc  
-mips                             allmodconfig   gcc  
-mips                             allyesconfig   gcc  
-mips                     cu1000-neo_defconfig   clang
-mips                      malta_kvm_defconfig   clang
-mips                 randconfig-r014-20230424   clang
-nios2        buildonly-randconfig-r002-20230423   gcc  
-nios2        buildonly-randconfig-r005-20230424   gcc  
-nios2                               defconfig   gcc  
-nios2                randconfig-r012-20230424   gcc  
-nios2                randconfig-r035-20230424   gcc  
-openrisc             randconfig-r036-20230424   gcc  
-parisc                           alldefconfig   gcc  
-parisc                              defconfig   gcc  
-parisc64                            defconfig   gcc  
-powerpc                          allmodconfig   gcc  
-powerpc                           allnoconfig   gcc  
-powerpc              randconfig-r015-20230423   clang
-powerpc              randconfig-r024-20230424   gcc  
-riscv                            allmodconfig   gcc  
-riscv                             allnoconfig   gcc  
-riscv                               defconfig   gcc  
-riscv                    nommu_virt_defconfig   clang
-riscv                randconfig-r042-20230423   clang
-riscv                randconfig-r042-20230424   gcc  
-riscv                          rv32_defconfig   gcc  
-s390                             allmodconfig   gcc  
-s390                             allyesconfig   gcc  
-s390                                defconfig   gcc  
-s390                 randconfig-r032-20230423   gcc  
-s390                 randconfig-r044-20230423   clang
-s390                 randconfig-r044-20230424   gcc  
-sh                               allmodconfig   gcc  
-sh           buildonly-randconfig-r006-20230424   gcc  
-sh                        edosk7760_defconfig   gcc  
-sh                   randconfig-r034-20230423   gcc  
-sparc                               defconfig   gcc  
-sparc                randconfig-r003-20230423   gcc  
-sparc64              randconfig-r021-20230423   gcc  
-sparc64              randconfig-r026-20230423   gcc  
-um                             i386_defconfig   gcc  
-um                           x86_64_defconfig   gcc  
-x86_64                            allnoconfig   gcc  
-x86_64                           allyesconfig   gcc  
-x86_64                              defconfig   gcc  
-x86_64                                  kexec   gcc  
-x86_64               randconfig-a001-20230424   clang
-x86_64               randconfig-a002-20230424   clang
-x86_64               randconfig-a003-20230424   clang
-x86_64               randconfig-a004-20230424   clang
-x86_64               randconfig-a005-20230424   clang
-x86_64               randconfig-a006-20230424   clang
-x86_64               randconfig-a011-20230424   gcc  
-x86_64               randconfig-a012-20230424   gcc  
-x86_64               randconfig-a013-20230424   gcc  
-x86_64               randconfig-a014-20230424   gcc  
-x86_64               randconfig-a015-20230424   gcc  
-x86_64               randconfig-a016-20230424   gcc  
-x86_64                               rhel-8.3   gcc  
-xtensa       buildonly-randconfig-r003-20230424   gcc  
-xtensa               randconfig-r002-20230424   gcc  
-xtensa               randconfig-r011-20230423   gcc  
-xtensa               randconfig-r023-20230423   gcc  
-xtensa               randconfig-r025-20230424   gcc  
-xtensa               randconfig-r033-20230424   gcc  
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+> ---
+>
+>  .../media/platform/mediatek/vcodec/mtk_vcodec_dec_stateful.c   | 3 +++
+>  1 file changed, 3 insertions(+)
+>
+> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_statef=
+ul.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateful.c
+> index 29991551cf61..0fbd030026c7 100644
+> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateful.c
+> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateful.c
+> @@ -584,6 +584,9 @@ static void mtk_init_vdec_params(struct mtk_vcodec_ct=
+x *ctx)
+>
+>         if (!(ctx->dev->dec_capability & VCODEC_CAPABILITY_4K_DISABLED)) =
+{
+>                 for (i =3D 0; i < num_supported_formats; i++) {
+> +                       if (mtk_video_formats[i].type !=3D MTK_FMT_DEC)
+> +                               continue;
+> +
+>                         mtk_video_formats[i].frmsize.max_width =3D
+>                                 VCODEC_DEC_4K_CODED_WIDTH;
+>                         mtk_video_formats[i].frmsize.max_height =3D
+> --
+> 2.40.0.634.g4ca3ef3211-goog
+>
 
