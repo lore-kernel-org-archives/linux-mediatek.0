@@ -4,99 +4,137 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48692C77B61
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Apr 2023 14:45:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D899C77B61
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Apr 2023 14:47:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xDyX15c4y3riamcjrdLMF5pPD4/84jZH8J69KsbOpF0=; b=S7iT7ISaGLB49oU5qaj9AhhXsv
-	AJJ5l6JLwK9CRVWUTq29jkNOFouEqIpnrUC3SqPTXzAkIG4oJTbu5Vr0POQenyenq/8gMNUddJWja
-	1+Ld/oTKy5h12uZV5jTb36z1LatCaw930Jb+Ofw1kSDhgdOSJZ4k4CCur54TQziQc7ZwyT8bktJqW
-	MSmqf+KahZCKPIz5/IfGzEPbhvsIdO/fvAqSNqZe84BqEKioOJiOf6q5J0AgqZwfZXNi43fTdlSXI
-	rlE7I02P/j7AAArUUWjuPxOJkP1VG9VapH7dMVR0fGYHMKq8jUxcjEcPeet3osdCQ0tgp7e9W3PMf
-	KOx3R+hA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=en1RVV51OfqfCNU3FiRu/BosXNaMgZdQKojjPV9z+Rc=; b=Ui2xuoHG48lo0pdHIHquVKnRem
+	/hMoaB20CWDbpOfh2j+f+6HZpiYf0vt6GupZ1fw+GZYeIPRzWLiAyJrFD40JhIE3s7HaEZbjW7GHq
+	i+eShJ9HsAigD+r8tmLwltfsRrRGACvLEqPq1wAhhpiAB91oaTw9xKWwKsen3e2H5pyJ6xrFSZfNX
+	K+WbWXWYwgX91qFCHYodnEQECq0xy0DPsJQDHz4MLIesxUCcDdigM/JdScR1mDBxNtXI4FCAJgW5e
+	1PWbYAnoIheTJPhWgS7XbtbEdOm4PqxlSc1ati8xrx3owWxXyvviB3+Z1Xa8wxJg6d25Ekcs92IN5
+	hqXnIZEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1prJv5-001SC9-2K;
-	Tue, 25 Apr 2023 14:45:27 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1prJwk-001SXM-1J;
+	Tue, 25 Apr 2023 14:47:10 +0000
+Received: from new2-smtp.messagingengine.com ([66.111.4.224])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prIl8-001EVo-0N
-	for linux-mediatek@lists.infradead.org;
-	Tue, 25 Apr 2023 13:31:07 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-2fc3f1d6f8cso3626396f8f.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 25 Apr 2023 06:30:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1682429457; x=1685021457;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=xDyX15c4y3riamcjrdLMF5pPD4/84jZH8J69KsbOpF0=;
-        b=1OUmbyzN0xF/mDJ1gUGkqSjXYr2z+M5aimUYWd9TNVfidYxTNxjh2AtzJkq94h84se
-         F1r6So8ybYynTOFUbiBR+B7R7r3yVfjalof12uKPCrxFGRoR8TBkkRBoBsSEfzttgbxE
-         DeYWaiRnA/NUUATsH8ng8QjPP1ibPa5zg0at9vGqz9DPLlo1RCJJohmyRS1Dt81VNJmq
-         8e5Qt5oMrzwUpORj3g22uN406FLzpVuyzKaFQZ2spHQHh98Uulw/s1bJHlLbsbkDW5Zb
-         Rg7WPZmU+sWOeDXSS/APn4biXVeKfFF5ZDyGuqLXWeXx6Ee1Nh0GC58fFKtLsZlIn83r
-         s8Xg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682429457; x=1685021457;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=xDyX15c4y3riamcjrdLMF5pPD4/84jZH8J69KsbOpF0=;
-        b=M5H2H0t6a9N92My1tZdXnIfnmiGW+VRFBP6bMEZoNDlIs+7urqTKjDeHJhz89i0TX8
-         uLg6L+zD6taCXHR0nUYA5aDKTxOftSX7y41QSCdYW8FQfYxdS4Q4GVRW4skBCsEVG3Ah
-         E5zGFOnxWrQsbVBeHpM+s2AH5bdkx0Pj1z5mNa9sSO0HsLoj3c21gnAwwSE5GRkX4lFy
-         b6ol+qdrJ6AfCucpNVvDgvfQZjyScY3mftnNkpclk9Wd7yXcbllsf0RfH2YCUzrpDvjp
-         0Hb3R7ucU/97lNp31uUPm1zZ6JXEDHN8x4SWB2HfEPoPPUhWUeEnKFOjA3dQz/8i1Wyc
-         9ZTw==
-X-Gm-Message-State: AAQBX9cB4j00oB97k6G6178CM/TLA2sfSujhxuzXxQ+8z6sPuJXlVgqu
-	Q2Ge00lnqp0LE+/P2mdjBOHlRA==
-X-Google-Smtp-Source: AKy350YyCGlFSEPWOXnlFISBuLHAPdnh04Ht+/tDW8FG9nCjr2WWTpXNTxCyBqmmPnR3q5N39NDk7A==
-X-Received: by 2002:a5d:4f8e:0:b0:2fb:2567:bc1 with SMTP id d14-20020a5d4f8e000000b002fb25670bc1mr12267998wru.8.1682429456731;
-        Tue, 25 Apr 2023 06:30:56 -0700 (PDT)
-Received: from localhost.localdomain (laubervilliers-657-1-248-155.w90-24.abo.wanadoo.fr. [90.24.137.155])
-        by smtp.gmail.com with ESMTPSA id t10-20020a05600c198a00b003f16932fe7dsm18575434wmq.38.2023.04.25.06.30.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 25 Apr 2023 06:30:56 -0700 (PDT)
-From: bchihi@baylibre.com
-To: daniel.lezcano@linaro.org,
-	angelogioacchino.delregno@collabora.com,
-	rafael@kernel.org,
-	amitk@kernel.org,
-	rui.zhang@intel.com,
-	matthias.bgg@gmail.com,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	rdunlap@infradead.org,
-	ye.xingchen@zte.com.cn,
-	p.zabel@pengutronix.de
-Cc: linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	wenst@chromium.org,
-	james.lo@mediatek.com,
-	rex-bc.chen@mediatek.com,
-	nfraprado@collabora.com,
-	abailon@baylibre.com,
-	amergnat@baylibre.com,
-	khilman@baylibre.com
-Subject: [PATCH v2 1/5] thermal/drivers/mediatek/lvts_thermal: Add suspend and resume
-Date: Tue, 25 Apr 2023 15:30:48 +0200
-Message-Id: <20230425133052.199767-2-bchihi@baylibre.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230425133052.199767-1-bchihi@baylibre.com>
-References: <20230425133052.199767-1-bchihi@baylibre.com>
+	id 1prJwg-001STl-1S;
+	Tue, 25 Apr 2023 14:47:07 +0000
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailnew.nyi.internal (Postfix) with ESMTP id 07934582407;
+	Tue, 25 Apr 2023 10:46:53 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+  by compute4.internal (MEProxy); Tue, 25 Apr 2023 10:46:53 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
+	:cc:content-type:content-type:date:date:from:from:in-reply-to
+	:in-reply-to:message-id:mime-version:references:reply-to:sender
+	:subject:subject:to:to; s=fm2; t=1682434013; x=1682441213; bh=en
+	1RVV51OfqfCNU3FiRu/BosXNaMgZdQKojjPV9z+Rc=; b=fQzHTOZ6paF2GmxznV
+	Yv4EqX4UawQN8UDH75BiX1XxbOrFyU34s885PjMpGmyFMhfA2Gsr+GJx6hMQ05IV
+	0gJ+lU3HbK6G0vkyPFGb5q6b03Ka/Q4k6BOLyanUIeemgQyB0Ih17ta8J99y/cug
+	hpRzOQ0KZRKhiCAUBGW5XcWVmf6BFlMx5FwlMlfY5UXqPWl0BcywSTzuBly2UEjc
+	h7AU70R3O5OqjWix8REwSV3sblDjCOI2srd7fKlv5IWutajBwGjvCxdr76mhCs9N
+	qkjPjTojtlO9cHj0dmUJuooH30DNVLAGbFufLHaBIbG9LKaU3ZUUmQji0imf2S/V
+	N9aw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-type:content-type:date:date
+	:feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+	:message-id:mime-version:references:reply-to:sender:subject
+	:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+	:x-sasl-enc; s=fm3; t=1682434013; x=1682441213; bh=en1RVV51OfqfC
+	NU3FiRu/BosXNaMgZdQKojjPV9z+Rc=; b=I4t0FWm0dd6OFi2aSkWgpBABu+oaf
+	WqgmyEJsiXORvFRmbJmFTqpY0AGTB7ZiQOFWetUU/JNxbjy4awAyYQ4JFunU6fQf
+	Rz+Oo/78vsrhL7Xkd8XgDdzZc58Sn+bc2bhSNb9apFI6z32c4uxp7Jb7/JF84hLo
+	50q5CCLpg7WyRTIQ/jjJak+lY0QtglRaq5zbBVpM7F0ejZDuJ3Jty6mNptPCS4lH
+	IAavcbAaVhI2BTifppMGXs2pXMyXaUtNaP1H9y8Nfjphg2Obw5TFmGQit0AgN9sQ
+	e6tJfBVMAZW+5CiaANrEmAqkn2M7v02jYqf1Ma7CXd24tcB0Zncp/Xktw==
+X-ME-Sender: <xms:2udHZFwZ_QIiF6SL-QlmC_Lewd6M6MaNvyZn1MfROHTcLFhUquQfCw>
+    <xme:2udHZFSQUhtCOxwN2fiIy3C_t4pC3IVp_h6i1PqECr5h6skrj7BGyl2fDN84P5jZV
+    ibCEta40AdQ2KE4Rb8>
+X-ME-Received: <xmr:2udHZPVDo6xGsCdHJlh86bbHJAp8xNFq-UiRmarNnxxDS1F3L26uiLFS8bOwjYUZsR7ELMSYtIqVyZm7eHacuuXL5xIZwXg>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrfeduvddgkedtucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+    cujfgurhepfffhvfevuffkfhggtggujgesghdtsfertddtvdenucfhrhhomhepofgrgihi
+    mhgvucftihhprghrugcuoehmrgigihhmvgestggvrhhnohdrthgvtghhqeenucggtffrrg
+    htthgvrhhnpeeuveduheeutdekvefgudevjeeufedvvdevhfejgfelgfdtkeevueegteek
+    gfelfeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
+    hmrgigihhmvgestggvrhhnohdrthgvtghh
+X-ME-Proxy: <xmx:2udHZHh5UZHEMBw8jN195wMlo8i_gan7Xb4fMuWhW1OoxPCppna0Zg>
+    <xmx:2udHZHBMtlk6pfPmyMwPAprlvh-iE56gRWWUWOQmEoL8Gji1fZrb8g>
+    <xmx:2udHZALIcRP02Uga96xJwRNOAbOCCE-tsfoPqljmdqRavM_KDfchpg>
+    <xmx:3edHZBNJxelcn1gOxFFPqvUDnAdocnUy8ZCixw6-Tz1yPY9Rt8skdg>
+Feedback-ID: i8771445c:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
+ 25 Apr 2023 10:46:48 -0400 (EDT)
+Date: Tue, 25 Apr 2023 16:46:47 +0200
+From: Maxime Ripard <maxime@cerno.tech>
+To: Stephen Boyd <sboyd@kernel.org>
+Cc: Abel Vesa <abelvesa@kernel.org>,
+ 	Alessandro Zummo <a.zummo@towertech.it>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ 	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>,
+ 	Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Charles Keepax <ckeepax@opensource.cirrus.com>,
+ 	Chen-Yu Tsai <wens@csie.org>, Chunyan Zhang <zhang.lyra@gmail.com>,
+ 	Claudiu Beznea <claudiu.beznea@microchip.com>,
+ Daniel Vetter <daniel@ffwll.ch>, 	David Airlie <airlied@gmail.com>,
+ David Lechner <david@lechnology.com>, 	Dinh Nguyen <dinguyen@kernel.org>,
+ Fabio Estevam <festevam@gmail.com>,
+ 	Geert Uytterhoeven <geert+renesas@glider.be>,
+ Jaroslav Kysela <perex@perex.cz>,
+ 	Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ 	Kishon Vijay Abraham I <kishon@kernel.org>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ 	Linus Walleij <linus.walleij@linaro.org>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ 	Manivannan Sadhasivam <mani@kernel.org>,
+ Mark Brown <broonie@kernel.org>,
+ 	Matthias Brugger <matthias.bgg@gmail.com>,
+ Max Filippov <jcmvbkbc@gmail.com>,
+ 	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Michael Turquette <mturquette@baylibre.com>,
+ 	NXP Linux Team <linux-imx@nxp.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ 	Orson Zhai <orsonzhai@gmail.com>, Paul Cercueil <paul@crapouillou.net>,
+ 	Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Peter De Schrijver <pdeschrijver@nvidia.com>,
+ 	Prashant Gaikwad <pgaikwad@nvidia.com>,
+ Richard Fitzgerald <rf@opensource.cirrus.com>,
+ 	Samuel Holland <samuel@sholland.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>, 	Sekhar Nori <nsekhar@ti.com>,
+ Shawn Guo <shawnguo@kernel.org>, Takashi Iwai <tiwai@suse.com>,
+ 	Thierry Reding <thierry.reding@gmail.com>,
+ Ulf Hansson <ulf.hansson@linaro.org>, 	Vinod Koul <vkoul@kernel.org>,
+ linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+ 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-arm-kernel@lists.infradead.org, 	linux-actions@lists.infradead.org,
+ patches@opensource.cirrus.com, 	linux-stm32@st-md-mailman.stormreply.com,
+ linux-mediatek@lists.infradead.org, 	linux-renesas-soc@vger.kernel.org,
+ linux-tegra@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ 	linux-phy@lists.infradead.org, linux-rtc@vger.kernel.org,
+ linux-sunxi@lists.linux.dev, 	alsa-devel@alsa-project.org,
+ linux-mips@vger.kernel.org, Liam Beguin <liambeguin@gmail.com>
+Subject: Re: [PATCH v3 00/65] clk: Make determine_rate mandatory for muxes
+Message-ID: <3nwpjtfa46zorfpuvvugximqe5qmovff76dqphoxbndr6mczcc@ndau7cegfxb2>
+References: <20221018-clk-range-checks-fixes-v3-0-9a1358472d52@cerno.tech>
+ <636b8f855b6009ba068010e00c20e7f5.sboyd@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="75sfg4dfrxr3i5xc"
+Content-Disposition: inline
+In-Reply-To: <636b8f855b6009ba068010e00c20e7f5.sboyd@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230425_063106_166232_AEFC1118 
-X-CRM114-Status: GOOD (  14.87  )
+X-CRM114-CacheID: sfid-20230425_074706_556568_98A1AB52 
+X-CRM114-Status: GOOD (  24.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,68 +149,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Balsam CHIHI <bchihi@baylibre.com>
 
-Add suspend and resume support to LVTS driver.
+--75sfg4dfrxr3i5xc
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
----
- drivers/thermal/mediatek/lvts_thermal.c | 34 +++++++++++++++++++++++++
- 1 file changed, 34 insertions(+)
+On Thu, Apr 13, 2023 at 02:44:51PM -0700, Stephen Boyd wrote:
+> Quoting Maxime Ripard (2023-04-04 03:10:50)
+> > Hi,
+> >=20
+> > This is a follow-up to a previous series that was printing a warning
+> > when a mux has a set_parent implementation but is missing
+> > determine_rate().
+> >=20
+> > The rationale is that set_parent() is very likely to be useful when
+> > changing the rate, but it's determine_rate() that takes the parenting
+> > decision. If we're missing it, then the current parent is always going
+> > to be used, and thus set_parent() will not be used. The only exception
+> > being a direct call to clk_set_parent(), but those are fairly rare
+> > compared to clk_set_rate().
+> >=20
+> > Stephen then asked to promote the warning to an error, and to fix up all
+> > the muxes that are in that situation first. So here it is :)
+> >=20
+>=20
+> Thanks for resending.
+>=20
+> I was thinking that we apply this patch first and then set
+> determine_rate clk_ops without setting the clk flag. The function name
+> is up for debate.
 
-diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-index d0a3f95b7884b..5ea8a9d569ea6 100644
---- a/drivers/thermal/mediatek/lvts_thermal.c
-+++ b/drivers/thermal/mediatek/lvts_thermal.c
-@@ -1169,6 +1169,38 @@ static int lvts_remove(struct platform_device *pdev)
- 	return 0;
- }
- 
-+static int lvts_suspend(struct platform_device *pdev, pm_message_t state)
-+{
-+	struct lvts_domain *lvts_td;
-+	int i;
-+
-+	lvts_td = platform_get_drvdata(pdev);
-+
-+	for (i = 0; i < lvts_td->num_lvts_ctrl; i++)
-+		lvts_ctrl_set_enable(&lvts_td->lvts_ctrl[i], false);
-+
-+	clk_disable_unprepare(lvts_td->clk);
-+
-+	return 0;
-+}
-+
-+static int lvts_resume(struct platform_device *pdev)
-+{
-+	struct lvts_domain *lvts_td;
-+	int i, ret;
-+
-+	lvts_td = platform_get_drvdata(pdev);
-+
-+	ret = clk_prepare_enable(lvts_td->clk);
-+	if (ret)
-+		return ret;
-+
-+	for (i = 0; i < lvts_td->num_lvts_ctrl; i++)
-+		lvts_ctrl_set_enable(&lvts_td->lvts_ctrl[i], true);
-+
-+	return 0;
-+}
-+
- static const struct lvts_ctrl_data mt8195_lvts_mcu_data_ctrl[] = {
- 	{
- 		.cal_offset = { 0x04, 0x07 },
-@@ -1268,6 +1300,8 @@ MODULE_DEVICE_TABLE(of, lvts_of_match);
- static struct platform_driver lvts_driver = {
- 	.probe = lvts_probe,
- 	.remove = lvts_remove,
-+	.suspend = lvts_suspend,
-+	.resume = lvts_resume,
- 	.driver = {
- 		.name = "mtk-lvts-thermal",
- 		.of_match_table = lvts_of_match,
--- 
-2.34.1
+Ack, I'll send a new version following your proposal
 
+Maxime
+
+--75sfg4dfrxr3i5xc
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZEfn1wAKCRDj7w1vZxhR
+xaSaAP96/77zpjIZ1yxHOKTWolPnSBrvZZStILbYFUHTfnf4ZQEAy9TnDb76xLC+
+cV82CRmIHcP1MQoDgnjetPo+R14sLwk=
+=xg1X
+-----END PGP SIGNATURE-----
+
+--75sfg4dfrxr3i5xc--
 
