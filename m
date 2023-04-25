@@ -4,71 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9324FC77B61
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Apr 2023 16:21:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45DF5C77B61
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Apr 2023 16:58:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=518NqRonnFHD2DxxKO+SEaWfT76uscNDaew1RMNKyb8=; b=Pu7pZtonbWC3K+9QEojDBxsZqg
-	2cNT4jTcpKEzkyHaBbXJ3E2gLnIUwQyrAyLSb9b/gLxPWfLVYfJoH7T8yeV4iOzX3VqbaX7+ju6Z1
-	1Wt8YsnDnkInNrKrE8DZ0dsPUdKxDXs0PC0fN6pG0ShxeS8IPRSYM7mdlF6ou2rN7B0xa8/Bkaca+
-	zB7MAprim3mV/WGsP2AQDpxkx3jvVs+BPQJJ8blS11HdmqRlvC9EhDhng6m7CSZYlzequTZy1zxfT
-	lT52Im1Ii7lZ3r3uaSuQf5RxAuocth0yXJCDGiysL91JVqfsOgS5OY/y49fj1C2ZAbnHpFKTlcfJ5
-	o8auCVBA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3hibjsUgkh4rIjqHqF11vAV9z5AiHWYuAjZ/XubPcUE=; b=PgasxD28AgqAa7gMLjBVQ4sv8p
+	eVvWH5uMx+uJJnCQAmhdc2YYvIKZG2X3CKBE89HpHJThePMBAKsQ4oXqqJKzw36r0wQvD167iXiZJ
+	T3rWCYtqeiyWU7Ip6mcqidJT5WPHJ9lTc1jZrbTjwa5EmyeayB2ixsXCo+dyKse5+mejuBMPJ7ZEa
+	ijmKQOrUdHgCo+hL7L5z09fZc0dy8FlZQB0NzeOx2Nuli4Yhwl81R1YpSYcnNcwCHLKYLm8WWjCIe
+	9GesBSbNmBjniVd1q5VRlV2I46W3WGgEZot/ugO2Z67ICXsobZAJmgCLZr16rlJj3tuxk+s2Qj6CV
+	kLb7PK/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1prLQF-001efZ-2V;
-	Tue, 25 Apr 2023 16:21:43 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1prLQB-001ee5-05;
-	Tue, 25 Apr 2023 16:21:40 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 6E2F24B3;
-	Tue, 25 Apr 2023 09:22:19 -0700 (PDT)
-Received: from [10.1.196.40] (e121345-lin.cambridge.arm.com [10.1.196.40])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id CD31A3F587;
-	Tue, 25 Apr 2023 09:21:31 -0700 (PDT)
-Message-ID: <45bc13a8-1442-2dd3-b9ea-1ed2f5962bac@arm.com>
-Date: Tue, 25 Apr 2023 17:21:30 +0100
+	id 1prLzh-001jpP-08;
+	Tue, 25 Apr 2023 16:58:21 +0000
+Received: from mga02.intel.com ([134.134.136.20])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1prLzd-001jme-0Y;
+	Tue, 25 Apr 2023 16:58:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1682441897; x=1713977897;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=YqqMtoC9cWi/0V4GCglSo1y9g8dhnon56YoIruvJfJw=;
+  b=TsJd78WHioiEdE2nPPC0vJ960X1xaXo/0z7HR1/rhGygJAywylH7F0kz
+   jYBf2o2uEhQ1Ks0bT+h5uib59TnPwUZUhMPzfiv9KD+1ZE+xtkgXLGIMe
+   aD3wOsiw5SVwYto3bvWAuqYwKgL1kKV1JaTsmMNj/FgjvP/hbb3YRtse1
+   JC8zdYHVeZN9efzSYAwjwRK7n9B9CrdGg4cWwYGRUJfR1+yJ03HlIZF48
+   R89oIYMTqmeeyTH61dm27tJvkef9JTSEh3StrClifEz+e+kHAXmOUHY/Q
+   k1dAJEYXlhSlRNpdjM/6Qch1ARIJjufpnosK+3x3UZ7J3ErAZ8TgMqx3f
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10691"; a="335736972"
+X-IronPort-AV: E=Sophos;i="5.99,225,1677571200"; 
+   d="scan'208";a="335736972"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Apr 2023 09:58:08 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10691"; a="696262494"
+X-IronPort-AV: E=Sophos;i="5.99,225,1677571200"; 
+   d="scan'208";a="696262494"
+Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
+  by fmsmga007.fm.intel.com with ESMTP; 25 Apr 2023 09:57:52 -0700
+Received: from kbuild by b613635ddfff with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1prLzD-000jbM-1u;
+	Tue, 25 Apr 2023 16:57:51 +0000
+Date: Wed, 26 Apr 2023 00:56:59 +0800
+From: kernel test robot <lkp@intel.com>
+To: Ziqin Liu <ziqin_l@hust.edu.cn>, dzm91@hust.edu.cn,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	hust-os-kernel-patches@googlegroups.com,
+	Ziqin Liu <ziqin_l@hust.edu.cn>, linux-clk@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] clk: mediatek: clk-mt8173: fix memory leak in
+ clk_mt8173_apmixed_probe
+Message-ID: <202304260006.3Am8FGjt-lkp@intel.com>
+References: <20230425132601.106181-1-ziqin_l@hust.edu.cn>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [RFC PATCH 0/1] Categorize ARM dts directory
-Content-Language: en-GB
-To: Nicolas Ferre <nicolas.ferre@microchip.com>,
- Daniel Palmer <daniel@0x0f.com>, Ansuel Smith <ansuelsmth@gmail.com>,
- Claudiu Beznea <Claudiu.Beznea@microchip.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Santiago Esteban <Santiago.Esteban@microchip.com>,
- Cristian Birsan <Cristian.Birsan@microchip.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzk+dt@kernel.org>, linux-arm-kernel
- <linux-arm-kernel@lists.infradead.org>, DTML <devicetree@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-actions@lists.infradead.org, linux-sunxi@lists.linux.dev,
- linux-omap@vger.kernel.org, linux-amlogic@lists.infradead.org,
- linux-arm-kernel@axis.com, linux-aspeed@lists.ozlabs.org,
- linux-rpi-kernel@lists.infradead.org, chrome-platform@lists.linux.dev,
- linux-renesas-soc@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com, kernel@dh-electronics.com,
- linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org,
- linux-tegra@vger.kernel.org, linux-oxnas@groups.io,
- linux-arm-msm@vger.kernel.org, linux-unisoc@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-realtek-soc@lists.infradead.org
-References: <20220328000915.15041-1-ansuelsmth@gmail.com>
- <CAFr9PXkgrRe-=E=GhNnZ4w1x_FMb97-_RmX6ND1vEd74_TbZSw@mail.gmail.com>
- <4ff4f171-c5f8-87af-aad1-5e7686292288@microchip.com>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <4ff4f171-c5f8-87af-aad1-5e7686292288@microchip.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230425132601.106181-1-ziqin_l@hust.edu.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230425_092139_154069_6B07F70F 
-X-CRM114-Status: GOOD (  23.15  )
+X-CRM114-CacheID: sfid-20230425_095817_253248_79B70931 
+X-CRM114-Status: GOOD (  14.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,57 +91,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 29/03/2022 9:50 am, Nicolas Ferre wrote:
-> Ansuel, All,
-> 
-> On 28/03/2022 at 10:55, Daniel Palmer wrote:
->> Hi Ansuel
->>
->> On Mon, 28 Mar 2022 at 09:09, Ansuel Smith <ansuelsmth@gmail.com> wrote:
->>>
->>> Hi,
->>> as the title say, the intention of this ""series"" is to finally 
->>> categorize
->>> the ARM dts directory in subdirectory for each oem.
->>
->> While I agree with this change and think it's for the good (browsing
->> the ARM dts directory at the moment is frustrating..) I think
->> buildroot and others need to be told about this as it'll potentially
->> break their kernel build scripting for ARM and probably messes up the
->> configs they have for existing boards.
-> 
-> This aspect mustn't be underestimated and I anticipate lots of issues 
-> during a long time on this particular topic of "build systems".
-> 
-> Another aspect is CI and public or private testing farms we all have 
-> running.
+Hi Ziqin,
 
-Yet another is if this affects what `make dtbs_install` does (I don't 
-know for sure, but I'd be inclined to suspect it might). Some distros 
-use that to deliver the DTBs as part of their kernel package, so if 
-paths suddenly change it could break end users' bootloader setups too.
+kernel test robot noticed the following build errors:
 
-Thanks,
-Robin.
+[auto build test ERROR on clk/clk-next]
+[also build test ERROR on linus/master v6.3 next-20230425]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-> These aspects always refrained me to change anything in the naming 
-> scheme of our DT files, but if we go in this direction, we must really 
-> be prepared and I'm still not convince it's worth it...
-> 
-> 
-> If this has to happen, I would also like to queue some file name changes 
-> to do all modifications in one go in order to lower the annoyance level 
-> of those who would need to adapt to those changes.
-> 
-> BTW, is there a common scheme for dts/dtsi file naming? Is it more 
-> enforced in one way or another for arm64 in a sense that I can take some 
-> norm as an example?
-> 
-> [..]
-> 
-> Best regards,
->    Nicolas
-> 
-> 
-> 
+url:    https://github.com/intel-lab-lkp/linux/commits/Ziqin-Liu/clk-mediatek-clk-mt8173-fix-memory-leak-in-clk_mt8173_apmixed_probe/20230425-212917
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/clk/linux.git clk-next
+patch link:    https://lore.kernel.org/r/20230425132601.106181-1-ziqin_l%40hust.edu.cn
+patch subject: [PATCH] clk: mediatek: clk-mt8173: fix memory leak in clk_mt8173_apmixed_probe
+config: arm64-randconfig-r011-20230423 (https://download.01.org/0day-ci/archive/20230426/202304260006.3Am8FGjt-lkp@intel.com/config)
+compiler: clang version 17.0.0 (https://github.com/llvm/llvm-project 437b7602e4a998220871de78afcb020b9c14a661)
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # install arm64 cross compiling tool for clang build
+        # apt-get install binutils-aarch64-linux-gnu
+        # https://github.com/intel-lab-lkp/linux/commit/cb4be4dcd48924984a6d0e3df7809cfc26286032
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Ziqin-Liu/clk-mediatek-clk-mt8173-fix-memory-leak-in-clk_mt8173_apmixed_probe/20230425-212917
+        git checkout cb4be4dcd48924984a6d0e3df7809cfc26286032
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm64 olddefconfig
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm64 SHELL=/bin/bash drivers/clk/mediatek/
+
+If you fix the issue, kindly add following tag where applicable
+| Reported-by: kernel test robot <lkp@intel.com>
+| Link: https://lore.kernel.org/oe-kbuild-all/202304260006.3Am8FGjt-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+>> drivers/clk/mediatek/clk-mt8173-apmixedsys.c:149:23: error: passing 'struct device' to parameter of incompatible type 'struct device *'; take the address with &
+           base = devm_of_iomap(pdev->dev, node, 0, NULL);
+                                ^~~~~~~~~
+                                &
+   include/linux/device.h:241:44: note: passing argument to parameter 'dev' here
+   void __iomem *devm_of_iomap(struct device *dev,
+                                              ^
+   1 error generated.
+
+
+vim +149 drivers/clk/mediatek/clk-mt8173-apmixedsys.c
+
+   139	
+   140	static int clk_mt8173_apmixed_probe(struct platform_device *pdev)
+   141	{
+   142		const u8 *fhctl_node = "mediatek,mt8173-fhctl";
+   143		struct device_node *node = pdev->dev.of_node;
+   144		struct clk_hw_onecell_data *clk_data;
+   145		void __iomem *base;
+   146		struct clk_hw *hw;
+   147		int r;
+   148	
+ > 149		base = devm_of_iomap(pdev->dev, node, 0, NULL);
+   150		if (!base)
+   151			return PTR_ERR(base);
+   152	
+   153		clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
+   154		if (IS_ERR_OR_NULL(clk_data))
+   155			return -ENOMEM;
+   156	
+   157		fhctl_parse_dt(fhctl_node, pllfhs, ARRAY_SIZE(pllfhs));
+   158		r = mtk_clk_register_pllfhs(node, plls, ARRAY_SIZE(plls),
+   159					    pllfhs, ARRAY_SIZE(pllfhs), clk_data);
+   160		if (r)
+   161			goto free_clk_data;
+   162	
+   163		hw = mtk_clk_register_ref2usb_tx("ref2usb_tx", "clk26m", base + REGOFF_REF2USB);
+   164		if (IS_ERR(hw)) {
+   165			r = PTR_ERR(hw);
+   166			dev_err(&pdev->dev, "Failed to register ref2usb_tx: %d\n", r);
+   167			goto unregister_plls;
+   168		}
+   169		clk_data->hws[CLK_APMIXED_REF2USB_TX] = hw;
+   170	
+   171		hw = devm_clk_hw_register_divider(&pdev->dev, "hdmi_ref", "tvdpll_594m", 0,
+   172						  base + REGOFF_HDMI_REF, 16, 3,
+   173						  CLK_DIVIDER_POWER_OF_TWO, NULL);
+   174		clk_data->hws[CLK_APMIXED_HDMI_REF] = hw;
+   175	
+   176		r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+   177		if (r)
+   178			goto unregister_ref2usb;
+   179	
+   180		return 0;
+   181	
+   182	unregister_ref2usb:
+   183		mtk_clk_unregister_ref2usb_tx(clk_data->hws[CLK_APMIXED_REF2USB_TX]);
+   184	unregister_plls:
+   185		mtk_clk_unregister_pllfhs(plls, ARRAY_SIZE(plls), pllfhs,
+   186					  ARRAY_SIZE(pllfhs), clk_data);
+   187	free_clk_data:
+   188		mtk_free_clk_data(clk_data);
+   189		return r;
+   190	}
+   191	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
 
