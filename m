@@ -4,79 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45DF5C77B61
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Apr 2023 16:58:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1BE6C77B61
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Apr 2023 18:06:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3hibjsUgkh4rIjqHqF11vAV9z5AiHWYuAjZ/XubPcUE=; b=PgasxD28AgqAa7gMLjBVQ4sv8p
-	eVvWH5uMx+uJJnCQAmhdc2YYvIKZG2X3CKBE89HpHJThePMBAKsQ4oXqqJKzw36r0wQvD167iXiZJ
-	T3rWCYtqeiyWU7Ip6mcqidJT5WPHJ9lTc1jZrbTjwa5EmyeayB2ixsXCo+dyKse5+mejuBMPJ7ZEa
-	ijmKQOrUdHgCo+hL7L5z09fZc0dy8FlZQB0NzeOx2Nuli4Yhwl81R1YpSYcnNcwCHLKYLm8WWjCIe
-	9GesBSbNmBjniVd1q5VRlV2I46W3WGgEZot/ugO2Z67ICXsobZAJmgCLZr16rlJj3tuxk+s2Qj6CV
-	kLb7PK/A==;
+	bh=X376wL3T8sy/ZF3e8JDdjXowqGN/pb6h2TwQ05Gxs1U=; b=raWk+m1TIAF9wbstnp9qkZq1Fu
+	nEMZ7H6tGu4eJZaLvUJhsJfeerSLVSoCfR5PbZP4Ei2y9SGyT+DjbaAzuaABqgdq5KZ6yqz50Hfku
+	hNJO+BeTB/uwOQJaeOBGyJE6zQQwMtHRVNgRsF0zZG+g7znAI7/mxpCS7hSTIqYI4w6WTTFDPLXbK
+	FG65ZqRJhHCs12rjrIlVsMLBHtOWRmYeBPT9lX1b79leg+FIh81tpcAqrkMl9Y/4TGvZIQgeg7eue
+	ABok+vdCWMwJ6CVMtqc2l/oEJUF+tO+CBDm9kepQn/iRzPl+AOcMkF8LTNcjGQJR6CpnkXaiBJiaa
+	EIFH74Wg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1prLzh-001jpP-08;
-	Tue, 25 Apr 2023 16:58:21 +0000
-Received: from mga02.intel.com ([134.134.136.20])
+	id 1prN3K-001uII-02;
+	Tue, 25 Apr 2023 18:06:10 +0000
+Received: from mail-oi1-f171.google.com ([209.85.167.171])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prLzd-001jme-0Y;
-	Tue, 25 Apr 2023 16:58:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1682441897; x=1713977897;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=YqqMtoC9cWi/0V4GCglSo1y9g8dhnon56YoIruvJfJw=;
-  b=TsJd78WHioiEdE2nPPC0vJ960X1xaXo/0z7HR1/rhGygJAywylH7F0kz
-   jYBf2o2uEhQ1Ks0bT+h5uib59TnPwUZUhMPzfiv9KD+1ZE+xtkgXLGIMe
-   aD3wOsiw5SVwYto3bvWAuqYwKgL1kKV1JaTsmMNj/FgjvP/hbb3YRtse1
-   JC8zdYHVeZN9efzSYAwjwRK7n9B9CrdGg4cWwYGRUJfR1+yJ03HlIZF48
-   R89oIYMTqmeeyTH61dm27tJvkef9JTSEh3StrClifEz+e+kHAXmOUHY/Q
-   k1dAJEYXlhSlRNpdjM/6Qch1ARIJjufpnosK+3x3UZ7J3ErAZ8TgMqx3f
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10691"; a="335736972"
-X-IronPort-AV: E=Sophos;i="5.99,225,1677571200"; 
-   d="scan'208";a="335736972"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
-  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Apr 2023 09:58:08 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10691"; a="696262494"
-X-IronPort-AV: E=Sophos;i="5.99,225,1677571200"; 
-   d="scan'208";a="696262494"
-Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
-  by fmsmga007.fm.intel.com with ESMTP; 25 Apr 2023 09:57:52 -0700
-Received: from kbuild by b613635ddfff with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1prLzD-000jbM-1u;
-	Tue, 25 Apr 2023 16:57:51 +0000
-Date: Wed, 26 Apr 2023 00:56:59 +0800
-From: kernel test robot <lkp@intel.com>
-To: Ziqin Liu <ziqin_l@hust.edu.cn>, dzm91@hust.edu.cn,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	hust-os-kernel-patches@googlegroups.com,
-	Ziqin Liu <ziqin_l@hust.edu.cn>, linux-clk@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] clk: mediatek: clk-mt8173: fix memory leak in
- clk_mt8173_apmixed_probe
-Message-ID: <202304260006.3Am8FGjt-lkp@intel.com>
-References: <20230425132601.106181-1-ziqin_l@hust.edu.cn>
+	id 1prN3F-001uGc-2t;
+	Tue, 25 Apr 2023 18:06:07 +0000
+Received: by mail-oi1-f171.google.com with SMTP id 5614622812f47-38bef71c258so4335178b6e.2;
+        Tue, 25 Apr 2023 11:06:03 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1682445963; x=1685037963;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=X376wL3T8sy/ZF3e8JDdjXowqGN/pb6h2TwQ05Gxs1U=;
+        b=DB2vEzLhL1ChAk9hwhLZEkyXYRyMmhaSfkDVaS7dhTXryaraSR7qDV+lv5q7q5WXGp
+         r4vVWa482Z874yxlODjMCa5R51nblWLsKk2mNQf4ypmZ1vsH5YKB7TVyXxGNsBe1elCS
+         r3Q5OXKA9lIl0uZcW0Eia7OJzREODzvr480/tHfFKxSvs/DFNxGtxNvh7FaiBrjKy2iE
+         OB/acmS1wv4nZ6//eUtFB6d3VI0rOcWYUEwtDruzz9Wa8+cRb3TnWTFwneYvyeOPt54R
+         yWm31Wk5raGS3hO4123JOnywClo28BXu4ojaJgpM35MZ9VjHbo6856h9nsd4D4di+TK5
+         ztNg==
+X-Gm-Message-State: AAQBX9fcJMFsQqsReLoctA+DAnqKrB2Ocaf2DmYTFOsGl6d2zCCNrDMC
+	VUUbTUzxneytvYuZa3UmlA==
+X-Google-Smtp-Source: AKy350ZnwmyDkZuMRppHglz4M32pu2rq/AGDWRh6cTIJ06tg15gqMgSWbRzzsxN4kZf8EtIbVksCgQ==
+X-Received: by 2002:a05:6808:2389:b0:38e:2993:be7f with SMTP id bp9-20020a056808238900b0038e2993be7fmr11625977oib.38.1682445962905;
+        Tue, 25 Apr 2023 11:06:02 -0700 (PDT)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id b24-20020a056808011800b0038c0cf168afsm5852298oie.7.2023.04.25.11.06.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 25 Apr 2023 11:06:02 -0700 (PDT)
+Received: (nullmailer pid 2025900 invoked by uid 1000);
+	Tue, 25 Apr 2023 18:06:01 -0000
+Date: Tue, 25 Apr 2023 13:06:01 -0500
+From: Rob Herring <robh@kernel.org>
+To: Frank Wunderlich <linux@fw-web.de>
+Subject: Re: [PATCH v1 1/7] dt-bindings: nvmem: mediatek: efuse: add support
+ for mt7986
+Message-ID: <168244596061.2025844.2232344223319000455.robh@kernel.org>
+References: <20230421132047.42166-1-linux@fw-web.de>
+ <20230421132047.42166-2-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230425132601.106181-1-ziqin_l@hust.edu.cn>
+In-Reply-To: <20230421132047.42166-2-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230425_095817_253248_79B70931 
-X-CRM114-Status: GOOD (  14.85  )
+X-CRM114-CacheID: sfid-20230425_110605_935524_DAC946F0 
+X-CRM114-Status: GOOD (  10.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,112 +77,22 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Lars-Peter Clausen <lars@metafoo.de>, Lala Lin <lala.lin@mediatek.com>, linux-iio@vger.kernel.org, Zhiyong Tao <zhiyong.tao@mediatek.com>, "Hui.Liu" <hui.liu@mediatek.com>, linux-kernel@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Jonathan Cameron <jic23@kernel.org>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Ziqin,
 
-kernel test robot noticed the following build errors:
+On Fri, 21 Apr 2023 15:20:41 +0200, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
+> 
+> Add compatible string for mt7986 SoC.
+> 
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+>  Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+> 
 
-[auto build test ERROR on clk/clk-next]
-[also build test ERROR on linus/master v6.3 next-20230425]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Acked-by: Rob Herring <robh@kernel.org>
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Ziqin-Liu/clk-mediatek-clk-mt8173-fix-memory-leak-in-clk_mt8173_apmixed_probe/20230425-212917
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/clk/linux.git clk-next
-patch link:    https://lore.kernel.org/r/20230425132601.106181-1-ziqin_l%40hust.edu.cn
-patch subject: [PATCH] clk: mediatek: clk-mt8173: fix memory leak in clk_mt8173_apmixed_probe
-config: arm64-randconfig-r011-20230423 (https://download.01.org/0day-ci/archive/20230426/202304260006.3Am8FGjt-lkp@intel.com/config)
-compiler: clang version 17.0.0 (https://github.com/llvm/llvm-project 437b7602e4a998220871de78afcb020b9c14a661)
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # install arm64 cross compiling tool for clang build
-        # apt-get install binutils-aarch64-linux-gnu
-        # https://github.com/intel-lab-lkp/linux/commit/cb4be4dcd48924984a6d0e3df7809cfc26286032
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Ziqin-Liu/clk-mediatek-clk-mt8173-fix-memory-leak-in-clk_mt8173_apmixed_probe/20230425-212917
-        git checkout cb4be4dcd48924984a6d0e3df7809cfc26286032
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm64 olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm64 SHELL=/bin/bash drivers/clk/mediatek/
-
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Link: https://lore.kernel.org/oe-kbuild-all/202304260006.3Am8FGjt-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
->> drivers/clk/mediatek/clk-mt8173-apmixedsys.c:149:23: error: passing 'struct device' to parameter of incompatible type 'struct device *'; take the address with &
-           base = devm_of_iomap(pdev->dev, node, 0, NULL);
-                                ^~~~~~~~~
-                                &
-   include/linux/device.h:241:44: note: passing argument to parameter 'dev' here
-   void __iomem *devm_of_iomap(struct device *dev,
-                                              ^
-   1 error generated.
-
-
-vim +149 drivers/clk/mediatek/clk-mt8173-apmixedsys.c
-
-   139	
-   140	static int clk_mt8173_apmixed_probe(struct platform_device *pdev)
-   141	{
-   142		const u8 *fhctl_node = "mediatek,mt8173-fhctl";
-   143		struct device_node *node = pdev->dev.of_node;
-   144		struct clk_hw_onecell_data *clk_data;
-   145		void __iomem *base;
-   146		struct clk_hw *hw;
-   147		int r;
-   148	
- > 149		base = devm_of_iomap(pdev->dev, node, 0, NULL);
-   150		if (!base)
-   151			return PTR_ERR(base);
-   152	
-   153		clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
-   154		if (IS_ERR_OR_NULL(clk_data))
-   155			return -ENOMEM;
-   156	
-   157		fhctl_parse_dt(fhctl_node, pllfhs, ARRAY_SIZE(pllfhs));
-   158		r = mtk_clk_register_pllfhs(node, plls, ARRAY_SIZE(plls),
-   159					    pllfhs, ARRAY_SIZE(pllfhs), clk_data);
-   160		if (r)
-   161			goto free_clk_data;
-   162	
-   163		hw = mtk_clk_register_ref2usb_tx("ref2usb_tx", "clk26m", base + REGOFF_REF2USB);
-   164		if (IS_ERR(hw)) {
-   165			r = PTR_ERR(hw);
-   166			dev_err(&pdev->dev, "Failed to register ref2usb_tx: %d\n", r);
-   167			goto unregister_plls;
-   168		}
-   169		clk_data->hws[CLK_APMIXED_REF2USB_TX] = hw;
-   170	
-   171		hw = devm_clk_hw_register_divider(&pdev->dev, "hdmi_ref", "tvdpll_594m", 0,
-   172						  base + REGOFF_HDMI_REF, 16, 3,
-   173						  CLK_DIVIDER_POWER_OF_TWO, NULL);
-   174		clk_data->hws[CLK_APMIXED_HDMI_REF] = hw;
-   175	
-   176		r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
-   177		if (r)
-   178			goto unregister_ref2usb;
-   179	
-   180		return 0;
-   181	
-   182	unregister_ref2usb:
-   183		mtk_clk_unregister_ref2usb_tx(clk_data->hws[CLK_APMIXED_REF2USB_TX]);
-   184	unregister_plls:
-   185		mtk_clk_unregister_pllfhs(plls, ARRAY_SIZE(plls), pllfhs,
-   186					  ARRAY_SIZE(pllfhs), clk_data);
-   187	free_clk_data:
-   188		mtk_free_clk_data(clk_data);
-   189		return r;
-   190	}
-   191	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
 
