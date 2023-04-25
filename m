@@ -4,91 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EB64C77B71
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Apr 2023 09:30:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72703C77B71
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Apr 2023 09:45:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZV9/o17xPvhI7zBC/LGreGcB1RV1tqZFpx81rZya07Y=; b=x+Dfdxq3xodgvm
-	2IxoEhnULyv7VF//VGir/HKWGdYUzBqm8uP4abp31c/PUpw9/vqiBx/b/er1slSWJgdMda45seAGa
-	hTItWDC3XJ7mXk7FejtsdlSfleqKRUnhXP8gW+ElDqOha+p1bPwa+jjz5x9IgU9qoQqOWKKDLfXt/
-	BHd3YdsxRagdTAGUQcQkeV9MycS5MLaCqM98Lnn/5x9tuA08HdXrNmYZa7mtNVIf+CTUjJ2bkEz2K
-	nM4ZIwgtQU3QxdajbibvcON5qU3XoMoiwlDFMCuHsjI8U90xUkhu+/NmkBSE2SCPD8zmv6VLddXpB
-	is8B1Mf0pLR87MW/6nbw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Z0N5VlX9/JlryGOL5I747Le9USomZJCRNNGRT3LbbKc=; b=Wi7gQHUoFKnco/Khcn5KSFZx2R
+	CLN+EHNl4sjq6FBtHsAw9q5Og4AcZpAqkkBPwXUZT4ax69JJOj/DKWDAUYDZpB+4+XFqX9rR84bnV
+	Ymypfw6TSHG+DPlslCNouyWjL3DpR7cxSIJW5C8ykcIvb9WAIpGuf6kHnajem9hS6AMYPvztLFCbn
+	43sJ+tn0NkSYkLJ7665rWtIEeT/di+ppBO4I3QvFs8FcLiLZ5LkMpWhHEMtmahS0lbA3Uj2Vu0grj
+	LNvZQx+qyUd7JuBjp4UkCMSA4TyLoGeKVvfhFk0iUnPda8gIR4tmIWXKWRlZyfCvU2UTi4jFWPLK2
+	bPOKyFNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1prF0J-000e2H-1j;
-	Tue, 25 Apr 2023 09:30:31 +0000
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+	id 1prFEb-000gBA-2X;
+	Tue, 25 Apr 2023 09:45:17 +0000
+Received: from mail.lokoho.com ([217.61.105.98])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prE3x-000UgS-2f;
-	Tue, 25 Apr 2023 08:30:15 +0000
-Received: by mail-ed1-x52e.google.com with SMTP id 4fb4d7f45d1cf-504eb1155d3so40857223a12.1;
-        Tue, 25 Apr 2023 01:30:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1682411411; x=1685003411;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ZV9/o17xPvhI7zBC/LGreGcB1RV1tqZFpx81rZya07Y=;
-        b=ofF8cvyb2QFgkMaFU0VQLXptVklQ8QYHBxZEsNaTCvxJxJ3ZrhXI/Kj50pdwhqZ4Nd
-         m4n/+USQGMKuN19yf+k41GD10ZUE3PQ2WoFFOe0XRWKmbhI7c/8sGw1va7ICq9H+RGdD
-         pK4ocmhO/8mJ52fZJKcc+y3JE1N97UrkRTg+W6J9siDVo1kusSSfs/7yIjZQ+zgq1rQr
-         Aiz2rplD7AvhqFoGRHPS7nx74qZEE9VrsWqoNhTTDFsDeZkRZ2NJ7po/x3mkDfsXy4/U
-         WqzsJvin3es+my7E9TziBOYDLUD/qvx8CAkofVU1wR7lCrw1TgL5gb+fckZmxLm3zXK9
-         d/Rg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682411411; x=1685003411;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ZV9/o17xPvhI7zBC/LGreGcB1RV1tqZFpx81rZya07Y=;
-        b=WKWl3Q9dmnqhqp40tpVau78AMuyJkHZRm91SQqZ0unGyvIkZVcNqhYOQCsLYtSBqUX
-         XYQGNej9xuEqKKricRd7WkBxr1UAR/9SOANUQ4e3pT+zFYdDaSOSQrcvZtXZkpaJXx71
-         7bNUqDVTNB8kSUS++sJZ8rXJVwDbqedV3ip+/3yJ3o8mvA1L3uMa+uuwQxQj3OK3wkaf
-         3TCUpoVWyfaR3oy2ClQNEhzBnz4hf9EsuW+fy3n0McXWmtnwtPhuSNkhpu6cMLb2tC2W
-         HndgYDhHjGHwmdoFMR7Ojl3Yjrk8/sqeTY4YGbF6jweVGemfHtqcbdo2pwPNJZ3deP28
-         557w==
-X-Gm-Message-State: AAQBX9fBnom0bU2UT/2XDxzjrmwYuDpDSsPeLXAFEwM0XIli7S9447lj
-	nNNNGpjbrxLedCIgP+2aV2k=
-X-Google-Smtp-Source: AKy350bQmjuao9lRHA+a9WNEY9AKrZ9G8JjIfn1vNnMwMltc90lAEtjbhzBai4IroqCXikVVgfWq9Q==
-X-Received: by 2002:a17:906:edc5:b0:953:7f08:a9ee with SMTP id sb5-20020a170906edc500b009537f08a9eemr12950081ejb.1.1682411411128;
-        Tue, 25 Apr 2023 01:30:11 -0700 (PDT)
-Received: from arinc9-PC.lan ([149.91.1.15])
-        by smtp.gmail.com with ESMTPSA id mc2-20020a170906eb4200b0094ca077c985sm6439028ejb.213.2023.04.25.01.30.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 25 Apr 2023 01:30:10 -0700 (PDT)
-From: arinc9.unal@gmail.com
-X-Google-Original-From: arinc.unal@arinc9.com
-To: Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Russell King <linux@armlinux.org.uk>
-Subject: [PATCH net-next 08/24] net: dsa: mt7530: do not run mt7530_setup_port5() if port 5 is disabled
-Date: Tue, 25 Apr 2023 11:29:17 +0300
-Message-Id: <20230425082933.84654-9-arinc.unal@arinc9.com>
-X-Mailer: git-send-email 2.37.2
-In-Reply-To: <20230425082933.84654-1-arinc.unal@arinc9.com>
-References: <20230425082933.84654-1-arinc.unal@arinc9.com>
+	id 1prFEZ-000g9i-0o
+	for linux-mediatek@lists.infradead.org;
+	Tue, 25 Apr 2023 09:45:16 +0000
+Received: by mail.lokoho.com (Postfix, from userid 1001)
+	id 7333B83606; Tue, 25 Apr 2023 10:44:18 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=lokoho.com; s=mail;
+	t=1682415871; bh=Z0N5VlX9/JlryGOL5I747Le9USomZJCRNNGRT3LbbKc=;
+	h=Date:From:To:Subject:From;
+	b=C9GHCOu4Q3gmGxoLYWoZc6chhEi5mAXDqIeXmy95bzXp+d3hnsR8lCG9anYCg4+JD
+	 bZRvgg48s354iWvEFyj18kCsycMkyBCoP8kIHtGYCnz8oeJ+eDsE8zFfm1hH0O8xLa
+	 mSDYyLqF1wceuJO8AQ4kk7EM+Dc4sxzz5q1dmMNuDAjKzI8xyH4XhtOcRRBCrhMaOj
+	 n4SkXbbLNT/7m1HzdWgLn8c/4w60NgSMsr+fffJWJ+tH1OGuw2eDLQuz2S/jhHUicl
+	 XHJrWZULXs2a2R/ldZBIeYXzj1aZ1j82ey/oHCXg03oM8XNrE3vXkPVmAPHutbd8ub
+	 H+R8RvyL41Meg==
+Received: by mail.lokoho.com for <linux-mediatek@lists.infradead.org>; Tue, 25 Apr 2023 09:42:51 GMT
+Message-ID: <20230425102243-0.1.5k.201g7.0.msq8mod8eq@lokoho.com>
+Date: Tue, 25 Apr 2023 09:42:51 GMT
+From: "Adam Charachuta" <adam.charachuta@lokoho.com>
+To: <linux-mediatek@lists.infradead.org>
+Subject: =?UTF-8?Q?S=C5=82owa_kluczowe_do_wypozycjonowania?=
+X-Mailer: mail.lokoho.com
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230425_013013_868847_B32F3AF8 
-X-CRM114-Status: GOOD (  13.27  )
+X-CRM114-CacheID: sfid-20230425_024515_452148_06C6DFAB 
+X-CRM114-Status: UNSURE (   1.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,66 +63,23 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Richard van Schagen <vschagen@cs.com>, linux-kernel@vger.kernel.org, Richard van Schagen <richard@routerhints.com>, =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, erkin.bozoglu@xeront.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arınç ÜNAL <arinc.unal@arinc9.com>
+Dzie=C5=84 dobry,
 
-There's no need to run all the code on mt7530_setup_port5() if port 5 is
-disabled. The only case for calling mt7530_setup_port5() from
-mt7530_setup() is when PHY muxing is enabled. That is because port 5 is not
-defined as a port on the devicetree, therefore, it cannot be controlled by
-phylink.
+zapozna=C5=82em si=C4=99 z Pa=C5=84stwa ofert=C4=85 i z przyjemno=C5=9Bci=
+=C4=85 przyznaj=C4=99, =C5=BCe przyci=C4=85ga uwag=C4=99 i zach=C4=99ca d=
+o dalszych rozm=C3=B3w.=20
 
-Because of this, run mt7530_setup_port5() if priv->p5_intf_sel is
-P5_INTF_SEL_PHY_P0 or P5_INTF_SEL_PHY_P4. Remove the P5_DISABLED case from
-mt7530_setup_port5().
+Pomy=C5=9Bla=C5=82em, =C5=BCe mo=C5=BCe m=C3=B3g=C5=82bym mie=C4=87 sw=C3=
+=B3j wk=C5=82ad w Pa=C5=84stwa rozw=C3=B3j i pom=C3=B3c dotrze=C4=87 z t=C4=
+=85 ofert=C4=85 do wi=C4=99kszego grona odbiorc=C3=B3w. Pozycjonuj=C4=99 =
+strony www, dzi=C4=99ki czemu generuj=C4=85 =C5=9Bwietny ruch w sieci.
 
-Stop initialising the interface variable as the remaining cases will always
-call mt7530_setup_port5() with it initialised.
+Mo=C5=BCemy porozmawia=C4=87 w najbli=C5=BCszym czasie?
 
-Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
----
- drivers/net/dsa/mt7530.c | 9 +++------
- 1 file changed, 3 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index f3d238a46543..5ef348b6a4b2 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -932,9 +932,6 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
- 		/* MT7530_P5_MODE_GMAC: P5 -> External phy or 2nd GMAC */
- 		val &= ~MHWTRAP_P5_DIS;
- 		break;
--	case P5_DISABLED:
--		interface = PHY_INTERFACE_MODE_NA;
--		break;
- 	default:
- 		dev_err(ds->dev, "Unsupported p5_intf_sel %d\n",
- 			priv->p5_intf_sel);
-@@ -2282,8 +2279,6 @@ mt7530_setup(struct dsa_switch *ds)
- 		 * Set priv->p5_intf_sel to the appropriate value if PHY muxing
- 		 * is detected.
- 		 */
--		interface = PHY_INTERFACE_MODE_NA;
--
- 		for_each_child_of_node(dn, mac_np) {
- 			if (!of_device_is_compatible(mac_np,
- 						     "mediatek,eth-mac"))
-@@ -2315,7 +2310,9 @@ mt7530_setup(struct dsa_switch *ds)
- 			break;
- 		}
- 
--		mt7530_setup_port5(ds, interface);
-+		if (priv->p5_intf_sel == P5_INTF_SEL_PHY_P0 ||
-+		    priv->p5_intf_sel == P5_INTF_SEL_PHY_P4)
-+			mt7530_setup_port5(ds, interface);
- 	}
- 
- #ifdef CONFIG_GPIOLIB
--- 
-2.37.2
-
+Pozdrawiam
+Adam Charachuta
 
