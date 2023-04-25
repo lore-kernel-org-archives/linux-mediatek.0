@@ -4,98 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87805C77B71
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Apr 2023 13:57:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57EDBC77B61
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Apr 2023 14:24:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7P8SMWBA+RBPPYGo/Nxb/0udZK58dNXX+gwvTfNxDxA=; b=3fy0+mwss8WxySGivfrnESjSU4
-	FMhK0DcLBpTzuws98pI+ieq6ozrdOS6UBELzHGVR3410vxF05LiBXjWV7+sdInHQaI1weRPBPUAoB
-	MUlpOsYwUhrqD62aiQSDqGXnkKM+yMNGHQYee8QK/hdma4s8ALZ9UOoSFO6e68+3l4g3j1kBVtM8j
-	Q62JGchqnLDqzaD9yayumhKNYGgIMDstsZNAQIhXc7GRmOxcFzNgth9VHTAdpNa+Ne0iKixkHSht+
-	zPYZuXIN23byOEbAAftJBKQxBnHGjmoHwo2cWcM1daH2riiEQMWXhkhB2kEvebvVKw5ESdgAXDX/V
-	4XPs8wqQ==;
+	bh=b2gy5ow7cG2NlnMJB2Q2VwlBrlh2rFjQI9/JeOXmqJI=; b=sx8HS0ieP5IRtPMmJ98GaZe0oS
+	FxR7XM2vcgmmbRrbhbZ9ODCin5Gcx/E5hhbu94eNWrhEdtBU08bn2mtlMVu/ZWBAXUzTuKakTAQEJ
+	S49treBXuJsnq9pvW2fHX9m8dg7Z7MuDdsVnBYAFXd9fS1VlhFhmeiikHb7C4EzZEI4jlEJ60GHed
+	q6wPQfRT09NgJB7fqLDYs6I+mjkXjmRQAhuDbqnwwFIFb1ioahZscPH8QLJDmqDdxE5I3HlqAQmGp
+	DJpeFdOVZ78OUslgyzmS15wzqBWDmu3ZzaT3gbV2/5+cgORBhFydrLWS0z7z2RFXYFss8wHlX/xdU
+	EbLR+y0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1prJA5-001KIy-1U;
-	Tue, 25 Apr 2023 13:56:53 +0000
-Received: from mail-oi1-x231.google.com ([2607:f8b0:4864:20::231])
+	id 1prJaV-001Nh0-2i;
+	Tue, 25 Apr 2023 14:24:11 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prJA2-001KIM-0S
-	for linux-mediatek@lists.infradead.org;
-	Tue, 25 Apr 2023 13:56:51 +0000
-Received: by mail-oi1-x231.google.com with SMTP id 5614622812f47-38e2740958aso2138331b6e.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 25 Apr 2023 06:56:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1682431006; x=1685023006;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=7P8SMWBA+RBPPYGo/Nxb/0udZK58dNXX+gwvTfNxDxA=;
-        b=TdOqC6cMRGC2vzLDfuTn7My6uuegXXZRS4a9becExazuyXDhdGFyThCyv6H4Usv0YZ
-         E+yIFNpE6fbOK1ky553BvzspXTqb0pL4WTv9lQbZgiF20YT+1lEc5G8LkFVzYH2fsMpp
-         Qdzs39jyAHSqFMF1wCbDcN19jWmJod2SHcBKOlR78/GmqluYYg2H62m1j5VxZIWRbZk2
-         OsLWDFgTcA7FGw7pDZJ5WO9w+iY2Ob0KLyIRzMO59l70TwDj4MwPSvy9Vrj2U+fXbC2u
-         DNBizgDE/4bX/Zj8PNhvKr3c7VsK6rqYNEnWMYe2MnL462h2LZgPfz/Lwk9QRCPcRins
-         XmOg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682431006; x=1685023006;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=7P8SMWBA+RBPPYGo/Nxb/0udZK58dNXX+gwvTfNxDxA=;
-        b=KVPe2zEtQPWsQXE9GFkAl44Z+VtvvpHsQ88IAeJ6XeZqfXLkUu1htVILuCmmBIH90R
-         ln4KTO/93AD5ZEh2KwgRyMsRz7ecB9P+0GlEyMKjcCRjk7NUj9ThZyytn04NKWhtlyW1
-         rHOq+lCAEhCcE4WllZ1Dkt9x3SURhMu+5KrQCAK/Y3v1kaxyhWTaLIhQ26Y670n8zS4P
-         7YMoEVXoc3FbRLZxWgzUQqVT1XQ/K7FD6qJlHMqXNyLva148+ffgpNSCiSeqQgrvDMH3
-         fAfMlKVl9r6r8rS8G1PbPCFaNlVP8vQsv9CzWp9pm8zcployySMAE860UTB7Pqq44HFO
-         RIqw==
-X-Gm-Message-State: AAQBX9eIq3R5Z4DRVC+3rE7Tyvz8A+9uNi1GfvuIO2rMIEFk8dIN+0ZM
-	oNLCFjSYwC3VOgVu/7VMqwNqiAZLFDALLw0q3PNMHQ==
-X-Google-Smtp-Source: AKy350ZF4qRTH2OA79A8jprfuZM3L7YMZFpSDSfKYgsWMCqP/j8wuXaJ1ZXdIRHjbp1yxqZM2EjtQu73xgaLWAEmCbI=
-X-Received: by 2002:a05:6808:2229:b0:38e:2f8f:e53c with SMTP id
- bd41-20020a056808222900b0038e2f8fe53cmr12771482oib.21.1682431005856; Tue, 25
- Apr 2023 06:56:45 -0700 (PDT)
+	id 1prJaR-001Nfw-12;
+	Tue, 25 Apr 2023 14:24:08 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id D2F0A60A13;
+	Tue, 25 Apr 2023 14:24:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9DE62C433D2;
+	Tue, 25 Apr 2023 14:24:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1682432646;
+	bh=yliYoqpOgm0dIutKl8oAPe72ftrxSi7X6V4lwrOfkLA=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=cYe0gfy7XAzZ49rDBexhAmSFOO5duqhrkvX08mLuEdSLlIZuvrEUA0wnABu7Go3Ei
+	 pZOaYTqCP4I9mms9GBI+RAhoaNcVT25ExCJwHZF2pSOVsvSsm5BXiupNAfXCUWZaIG
+	 N706B/E1DNAwz8eaTZ5/3E8+GGvV6tdTaaabFLCaP4cxnyqlxubcJobnU/2X16Vb5O
+	 aE0OULprxkOs3j7ej1xl8ug2/CULqKkDjJvAIQoxw4gP25z2IyIbhpc9ATFUga+6YK
+	 qHbnt1NDX7BkackKR5Fy0X2BHtMBT7ypthSvAK75DxIDkaub6mmZGhJqItZGZzumR6
+	 UbWnWqwnl3CtQ==
+Date: Tue, 25 Apr 2023 07:24:04 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>
+Cc: Heiner Kallweit <hkallweit1@gmail.com>, netdev@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Russell King <linux@armlinux.org.uk>, "David
+ S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo
+ Abeni <pabeni@redhat.com>, Qingfang Deng <dqfext@gmail.com>, SkyLake Huang
+ <SkyLake.Huang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno        
+ <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2] net: phy: add driver for MediaTek SoC built-in GE
+ PHYs
+Message-ID: <20230425072404.28b798e1@kernel.org>
+In-Reply-To: <ZEePDK2oW5xkiEIv@makrotopia.org>
+References: <ZEPU6oahOGwknkSc@makrotopia.org>
+	<20230424183755.3fac65b0@kernel.org>
+	<ZEePDK2oW5xkiEIv@makrotopia.org>
 MIME-Version: 1.0
-References: <20230317080942.183514-1-yanchao.yang@mediatek.com>
- <20230317080942.183514-2-yanchao.yang@mediatek.com> <CAMZdPi9_xYO_MQ0BpxcqDci761uu=ZoczGMg81qkEDeOsP6apw@mail.gmail.com>
- <462e25346631c6f195ccc3d85ea58d4d0da66e86.camel@mediatek.com> <bbcd7e5155421d7671c995212d69ca7d8f575375.camel@mediatek.com>
-In-Reply-To: <bbcd7e5155421d7671c995212d69ca7d8f575375.camel@mediatek.com>
-From: Loic Poulain <loic.poulain@linaro.org>
-Date: Tue, 25 Apr 2023 15:56:09 +0200
-Message-ID: <CAMZdPi-=jbsxYJp1VCoTyPZMH+TYdrVo5aTe3mphVJSsWZ=kLQ@mail.gmail.com>
-Subject: Re: [PATCH net-next v4 01/10] net: wwan: tmi: Add PCIe core
-To: =?UTF-8?B?WWFuY2hhbyBZYW5nICjmnajlvabotoUp?= <Yanchao.Yang@mediatek.com>
-Cc: =?UTF-8?B?Q2hyaXMgRmVuZyAo5Yav5L+d5p6XKQ==?= <Chris.Feng@mediatek.com>, 
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	=?UTF-8?B?TWluZ2xpYW5nIFh1ICjlvpDmmI7kuq4p?= <mingliang.xu@mediatek.com>, 
-	=?UTF-8?B?TWluIERvbmcgKOiRo+aVjyk=?= <min.dong@mediatek.com>, 
-	"linuxwwan@intel.com" <linuxwwan@intel.com>, "m.chetan.kumar@intel.com" <m.chetan.kumar@intel.com>, 
-	=?UTF-8?B?TGlhbmcgTHUgKOWQleS6rik=?= <liang.lu@mediatek.com>, 
-	=?UTF-8?B?SGFpanVuIExpdSAo5YiY5rW35YabKQ==?= <haijun.liu@mediatek.com>, 
-	=?UTF-8?B?SGFvemhlIENoYW5nICjluLjmtanlk7Ip?= <Haozhe.Chang@mediatek.com>, 
-	=?UTF-8?B?SHVhIFlhbmcgKOadqOWNjik=?= <Hua.Yang@mediatek.com>, 
-	"ryazanov.s.a@gmail.com" <ryazanov.s.a@gmail.com>, "kuba@kernel.org" <kuba@kernel.org>, 
-	=?UTF-8?B?QWlkZW4gV2FuZyAo546L5ZKP6bqSKQ==?= <Aiden.Wang@mediatek.com>, 
-	"edumazet@google.com" <edumazet@google.com>, "pabeni@redhat.com" <pabeni@redhat.com>, 
-	=?UTF-8?B?VGluZyBXYW5nICjnjovmjLop?= <ting.wang@mediatek.com>, 
-	"johannes@sipsolutions.net" <johannes@sipsolutions.net>, 
-	"netdev@vger.kernel.org" <netdev@vger.kernel.org>, 
-	=?UTF-8?B?R3VvaGFvIFpoYW5nICjlvKDlm73osaop?= <Guohao.Zhang@mediatek.com>, 
-	=?UTF-8?B?RmVsaXggQ2hlbiAo6ZmI6Z2eKQ==?= <Felix.Chen@mediatek.com>, 
-	=?UTF-8?B?TGFtYmVydCBXYW5nICjnjovkvJ8p?= <Lambert.Wang@mediatek.com>, 
-	"davem@davemloft.net" <davem@davemloft.net>, 
-	=?UTF-8?B?TWluZ2NodWFuZyBRaWFvICjkuZTmmI7pl68p?= <Mingchuang.Qiao@mediatek.com>, 
-	=?UTF-8?B?WGlheXUgWmhhbmcgKOW8oOWkj+Wuhyk=?= <Xiayu.Zhang@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230425_065650_208538_94A663DC 
-X-CRM114-Status: GOOD (  43.28  )
+X-CRM114-CacheID: sfid-20230425_072407_420888_383041C4 
+X-CRM114-Status: GOOD (  19.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,223 +81,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
+On Tue, 25 Apr 2023 09:27:56 +0100 Daniel Golle wrote:
+> > Daniel, is it high prio for you to get it into 6.4 or 6.5 is okay?  
+> 
+> No rush, as this is mostly relevant for OpenWrt the thing which matters
+> most to me is having it in the next LTS kernel, so 6.5 should still be
+> fine I suppose.
+> 
+> > 
+> > I'm trying to get a read on whether we should merge it because it's 
+> > kind of on the goal line for this merge window. 
+> > 
+> > If nobody feels strongly we can do this the traditional way - I'll 
+> > just complain about RCT, hence kicking it back out into the field :)  
+> 
+> I understand Andrew's concerns and will resubmit for the next merge
+> window in 2 weeks, and without the LED part for now until PHY LED
+> infrastructure is more ready (ie. able to offload 'netdev' trigger
+> to hardware)
 
-
-On Mon, 10 Apr 2023 at 14:16, Yanchao Yang (=E6=9D=A8=E5=BD=A6=E8=B6=85)
-<Yanchao.Yang@mediatek.com> wrote:
->
-> Hi Loic,
->
-> sorry for late response, please check following reply.
->
-> On Mon, 2023-03-20 at 21:26 +0800, Yanchao Yang wrote:
-> > Hi Loic,
-> >
-> > On Fri, 2023-03-17 at 13:34 +0100, Loic Poulain wrote:
-> > > Hi Yanchao,
-> > >
-> > > On Fri, 17 Mar 2023 at 09:10, Yanchao Yang <
-> > > yanchao.yang@mediatek.com
-> > > > wrote:
-> > > >
-> > > > Registers the TMI device driver with the kernel. Set up all the
-> > > > fundamental
-> > > > configurations for the device: PCIe layer, Modem Host Cross Core
-> > > > Interface
-> > > > (MHCCIF), Reset Generation Unit (RGU), modem common control
-> > > > operations and
-> > > > build infrastructure.
-> > > >
-> > > > * PCIe layer code implements driver probe and removal, MSI-X
-> > > > interrupt
-> > > > initialization and de-initialization, and the way of resetting
-> > > > the
-> > > > device.
-> > > > * MHCCIF provides interrupt channels to communicate events such
-> > > > as
-> > > > handshake,
-> > > > PM and port enumeration.
-> > > > * RGU provides interrupt channels to generate notifications from
-> > > > the device
-> > > > so that the TMI driver could get the device reset.
-> > > > * Modem common control operations provide the basic read/write
-> > > > functions of
-> > > > the device's hardware registers, mask/unmask/get/clear functions
-> > > > of
-> > > > the
-> > > > device's interrupt registers and inquiry functions of the
-> > > > device's
-> > > > status.
-> > > >
-> > > > Signed-off-by: Yanchao Yang <yanchao.yang@mediatek.com>
-> > > > Signed-off-by: Ting Wang <ting.wang@mediatek.com>
-> > > > ---
-> > > >  drivers/net/wwan/Kconfig                 |  14 +
-> > > >  drivers/net/wwan/Makefile                |   1 +
-> > > >  drivers/net/wwan/mediatek/Makefile       |   8 +
-> > > >  drivers/net/wwan/mediatek/mtk_dev.h      | 203 ++++++
-> > > >  drivers/net/wwan/mediatek/pcie/mtk_pci.c | 887
-> > > > +++++++++++++++++++++++
-> > > >  drivers/net/wwan/mediatek/pcie/mtk_pci.h | 144 ++++
-> > > >  drivers/net/wwan/mediatek/pcie/mtk_reg.h |  69 ++
-> > > >  7 files changed, 1326 insertions(+)
-> > > >  create mode 100644 drivers/net/wwan/mediatek/Makefile
-> > > >  create mode 100644 drivers/net/wwan/mediatek/mtk_dev.h
-> > > >  create mode 100644 drivers/net/wwan/mediatek/pcie/mtk_pci.c
-> > > >  create mode 100644 drivers/net/wwan/mediatek/pcie/mtk_pci.h
-> > > >  create mode 100644 drivers/net/wwan/mediatek/pcie/mtk_reg.h
-> > > >
-> > >
-> > > [...]
-> > >
-> > > > +static int mtk_pci_get_virq_id(struct mtk_md_dev *mdev, int
-> > > > irq_id)
-> > > > +{
-> > > > +       struct pci_dev *pdev =3D to_pci_dev(mdev->dev);
-> > > > +       int nr =3D 0;
-> > > > +
-> > > > +       if (pdev->msix_enabled)
-> > > > +               nr =3D irq_id % mdev->msi_nvecs;
-> > > > +
-> > > > +       return pci_irq_vector(pdev, nr);
-> > > > +}
-> > > > +
-> > > > +static int mtk_pci_register_irq(struct mtk_md_dev *mdev, int
-> > > > irq_id,
-> > > > +                               int (*irq_cb)(int irq_id, void
-> > > > *data), void *data)
-> > > > +{
-> > > > +       struct mtk_pci_priv *priv =3D mdev->hw_priv;
-> > > > +
-> > > > +       if (unlikely((irq_id < 0 || irq_id >=3D MTK_IRQ_CNT_MAX) ||
-> > > > !irq_cb))
-> > > > +               return -EINVAL;
-> > > > +
-> > > > +       if (priv->irq_cb_list[irq_id]) {
-> > > > +               dev_err(mdev->dev,
-> > > > +                       "Unable to register irq, irq_id=3D%d, it's
-> > > > already been register by %ps.\n",
-> > > > +                       irq_id, priv->irq_cb_list[irq_id]);
-> > > > +               return -EFAULT;
-> > > > +       }
-> > > > +       priv->irq_cb_list[irq_id] =3D irq_cb;
-> > > > +       priv->irq_cb_data[irq_id] =3D data;
-> > >
-> > > So it looks like you re-implement your own irq chip internally.
-> > > What
-> > > about creating a new irq-chip/domain for this (cf
-> > > irq_domain_add_simple)?
-> > > That would allow the client code to use the regular irq interface
-> > > and
-> > > helpers
-> > > and it should simply code and improve its debuggability
-> > > (/proc/irq...).
-> >
-> > We will check it and update you later.
-> No, we don=E2=80=99t re-implement irq chip. After studying the irq_domain
-> interface you suggest, the TMI driver leverages on MSI irq domain. We
-> use pci_alloc_irq_vectors to allocate MSI-X irq desc and use
-> pci_request_irq to bind interrupt sources with irq handlers.
-
-What I mean is that you're implementing some interrupt muxing into
-your driver, which could possibly be abstracted with a 'virtual' irq
-domain and generic ops (e.g with proper irq domain your
-mtk_pci_register_irq method could be replaced with the usual
-request_irq), Think about it as future improvement, I assume we can go
-with the current solution for now.
-
-> > >
-> > > [...]
-> > >
-> > > > +static int mtk_mhccif_register_evt(struct mtk_md_dev *mdev, u32
-> > > > chs,
-> > > > +                                  int (*evt_cb)(u32 status, void
-> > > > *data), void *data)
-> > > > +{
-> > > > +       struct mtk_pci_priv *priv =3D mdev->hw_priv;
-> > > > +       struct mtk_mhccif_cb *cb;
-> > > > +       unsigned long flag;
-> > > > +       int ret =3D 0;
-> > > > +
-> > > > +       if (!chs || !evt_cb)
-> > > > +               return -EINVAL;
-> > > > +
-> > > > +       spin_lock_irqsave(&priv->mhccif_lock, flag);
-> > >
-> > > Why spinlock here and not mutex. AFAIU, you always take this lock
-> > > in
-> > > a
-> > > non-atomic/process context.
-> >
-> > Currently, the function is only called in the FSM initialization and
-> > PM(power management) initialization process. Both are atomic.
-> > On the other hand, this registration function will operate the global
-> > variables =E2=80=9Cmhccif_cb_list=E2=80=9D, but it takes very little ti=
-me. So, we
-> > think
-> > spinlock is preferred.
-> Any ideas or comments for this? Please help share it at your
-> convenience.
-
-They do not seem atomic... moreover you're using the _irqsave variant
-while you're never accessing the list from (hard|soft)irq context.
-
-> >
-> > >
-> > > > +       list_for_each_entry(cb, &priv->mhccif_cb_list, entry) {
-> > > > +               if (cb->chs & chs) {
-> > > > +                       ret =3D -EFAULT;
-> > > > +                       dev_err(mdev->dev,
-> > > > +                               "Unable to register evt,
-> > > > chs=3D0x%08X&0x%08X registered_cb=3D%ps\n",
-> > > > +                               chs, cb->chs, cb->evt_cb);
-> > > > +                       goto err;
-> > > > +               }
-> > > > +       }
-> > > > +       cb =3D devm_kzalloc(mdev->dev, sizeof(*cb), GFP_ATOMIC);
-
-Maybe alloc this outside the lock, so that you can use the 'regular'
-GFP_KERNEL alloc.
-
-> > > > +       if (!cb) {
-> > > > +               ret =3D -ENOMEM;
-> > > > +               goto err;
-> > > > +       }
-> > > > +       cb->evt_cb =3D evt_cb;
-> > > > +       cb->data =3D data;
-> > > > +       cb->chs =3D chs;
-> > > > +       list_add_tail(&cb->entry, &priv->mhccif_cb_list);
-> > > > +
-> > > > +err:
-> > > > +       spin_unlock_irqrestore(&priv->mhccif_lock, flag);
-> > > > +
-> > > > +       return ret;
-> > > > +}
-> > >
-> > > [...]
-> > >
-> > > > +
-> > > > +MODULE_LICENSE("GPL");
-> > > > diff --git a/drivers/net/wwan/mediatek/pcie/mtk_pci.h
-> > > > b/drivers/net/wwan/mediatek/pcie/mtk_pci.h
-> > > > new file mode 100644
-> > > > index 000000000000..b487ca9b302e
-> > > > --- /dev/null
-> > > > +++ b/drivers/net/wwan/mediatek/pcie/mtk_pci.h
-> > >
-> > > Why a separated header file, isn't the content (e.g. mtk_pci_priv)
-> > > used only from mtk_pci.c?
-> >
-> > Do you mean that we should move all contents of =E2=80=9Cmtk_pci.h=E2=
-=80=9D into
-> > =E2=80=9Cmtk_pci.c=E2=80=9D directly? The =E2=80=9Cmtk_pci.h=E2=80=9D s=
-eems to be redundant, right?
-> Any ideas or comments for this? Please help share it at your
-> convenience.
-
-Yes, keep that in the  .c file.
-
-Regards,
-Loic
+Perfect, thanks!
 
