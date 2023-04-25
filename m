@@ -4,91 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18BEEC6FD18
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Apr 2023 08:35:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BDA3C6FD18
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Apr 2023 08:37:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=V8YLT0UnqpNi70lcfgxzgtqlJHlXNg/RRy71f8KnOqk=; b=NuS935gIpIr+Xlt/Csj8vAyh2Y
-	M70CaooceOAvgxy8cLfKPIgXOKItVKrQ5gRpQt3oT1kAzIJMJTBLOnnLInZZ1tnJ25yJU+FuH3Bdk
-	UZkA/cKHO1hGhh2ITqaFFCRXV0ao/sWbhVhuDTi6y5/qqeMI4YHQhDP9HAL1X7+0yDhYdcoTroGeZ
-	QwM7Fx1nVlc9GKIDouHwy8hbRufU6xRWiKcNe71dANzWbS4Yqt/8re8yGBxj1XDEmPyYgeJoupN/4
-	aZPuf1iN1mdcjwizYinoD83w2As862U8Ou/g6tFo2cfB+v4AKvbnvfpzAUdZpLbKqgo+mwyrp841V
-	3WPG72rA==;
+	bh=pJCGkPHoGSFZY63Jqk/nlt1gBwH2vblI+IkzLVWvpyw=; b=tshEp7R8CwFQ85ZBHHnXblCxoS
+	HvQLQT/wJ+Ieexcr564opHcBMS6Foxu0InRsR8i1tNlmmc5Y0+YU9Ht0HopoOJvwSShjgZrr7+j4+
+	sZaMs5qMUDKypgPI1zTPCdkOVzmCvdNJ+lVvW6Le/a0/0i2fPzc67/2xl4UKnw9Ta/nOrBDVww2K7
+	Jo36GqlDnly9T4b2lK5H3qkf5X1f4qYaIBQgFUaQVOP6Q8MYb6pR6lguNGS4urlNDwgXFRaArvbXY
+	v5krFViTqZOTBUB7ICQ3sFbD+PlH1ihNTcrLcSaf4rlkMJ8CcytKsNCUi3W+iirZf4590A6Z5Z6hU
+	y4K21Pgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1prE8g-000YEZ-08;
-	Tue, 25 Apr 2023 08:35:06 +0000
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+	id 1prEAw-000Z9e-11;
+	Tue, 25 Apr 2023 08:37:26 +0000
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prE8Y-000Y8k-14
+	id 1prEAq-000Z7Q-1N
 	for linux-mediatek@lists.infradead.org;
-	Tue, 25 Apr 2023 08:35:03 +0000
-Received: by mail-ed1-x52b.google.com with SMTP id 4fb4d7f45d1cf-5051abd03a7so8053017a12.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 25 Apr 2023 01:34:57 -0700 (PDT)
+	Tue, 25 Apr 2023 08:37:23 +0000
+Received: by mail-ed1-x533.google.com with SMTP id 4fb4d7f45d1cf-506bdf29712so40988252a12.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 25 Apr 2023 01:37:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1682411696; x=1685003696;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1682411837; x=1685003837;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=V8YLT0UnqpNi70lcfgxzgtqlJHlXNg/RRy71f8KnOqk=;
-        b=PIo9Y2l7ySzRWf4ElHDwGrVNhiJjaKop46hMvkg/AIu96nJAE2BER9LarKqol+RBgP
-         uN1jlV3ymft+bKn6Gs9wzs/hhFteJEdLc1/qvsubkSJByL1UVP6moi8KErw3bmzAcEGW
-         xuHFYEqwZtjH8Fi288v1GPbyJ3gzk7Wof/sDM=
+        bh=pJCGkPHoGSFZY63Jqk/nlt1gBwH2vblI+IkzLVWvpyw=;
+        b=qwfqHUkBa7MLPI/9HCXNiZc76W0GkP5Ath0jV1H3+r0utDr49cmvw5UBWdJ69LgKbI
+         kQAEOU9N2BqTGmrCaEK/vo0+T2JHyTap65Pq9oze1UpbpGCFnftJil9yx/8njN5kiEbS
+         2raHHC5Ci+xvifegJ4Syjenb6nDAyBcRf6fmloy9SGRJxifER74ESVUGSoWIpG65im6w
+         jV4TwQDS+0Kjl6VkVvcV5v48L3ufniarmCglJzgwvS2qUkPUC3pk6xZkn7eyc6w5vfhh
+         9ttyNT8VXpKD+/vNpQmAWEcvpBd3hq2oWqHDW8GxTuOLilBbBEvdAIYMmqXhQLvGRmOP
+         IfdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682411696; x=1685003696;
+        d=1e100.net; s=20221208; t=1682411837; x=1685003837;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=V8YLT0UnqpNi70lcfgxzgtqlJHlXNg/RRy71f8KnOqk=;
-        b=H7ZSOBy/fe80RXzcd1hq9mdUxr8Rxfcpn600/bsSQf3wtSi0EsXaqyYJpjMJv3pjdk
-         grzDxSf4cCr5nnmnvAorEa9zfinl1QZ09/yiQ6lyG8kU4d5nJhU3ggHOGHMhtUU/bSaZ
-         4a6iemOk+dAV1phfWhdtbCpr+awUWgj8v/cWQgLfH66fozu6cV8DJt+dxTjfAZLD5xpf
-         Ow6RxDcWD7j1g4LrLIi5kWIneQRbAza7VKkMzVRvAyhwnsuz02+2XcHab7Sycgh1+Uue
-         6jf/DWs3ec7EUi/S1iyKpvcYvRwmOA4/QRU1rct6CmUPbxbEJD7blWmXCAKyVOebWr4l
-         O/sg==
-X-Gm-Message-State: AAQBX9c+In87iUl3TAzEXlNolpHXJS2dAY8Yi08w0pi9eyl1bwVEtmCX
-	v3RzDV72I7O4MqlIAoWPQbgUV3x2FI3P+/7rPMLf1A==
-X-Google-Smtp-Source: AKy350bYFFQpH9uBgZydaNDfl5zSI1h0+0qneshXBpQUgOZoVi3ve1VdcLM6U8MAj+Dm+KlNyre6Vw==
-X-Received: by 2002:a05:6402:419:b0:509:c1c2:373e with SMTP id q25-20020a056402041900b00509c1c2373emr10112380edv.8.1682411696098;
-        Tue, 25 Apr 2023 01:34:56 -0700 (PDT)
-Received: from mail-wm1-f44.google.com (mail-wm1-f44.google.com. [209.85.128.44])
-        by smtp.gmail.com with ESMTPSA id by14-20020a0564021b0e00b0050844e1c98fsm5469820edb.82.2023.04.25.01.34.54
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 25 Apr 2023 01:34:54 -0700 (PDT)
-Received: by mail-wm1-f44.google.com with SMTP id 5b1f17b1804b1-3f1950f5628so41786425e9.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 25 Apr 2023 01:34:54 -0700 (PDT)
-X-Received: by 2002:a5d:428d:0:b0:2fa:c982:dd6a with SMTP id
- k13-20020a5d428d000000b002fac982dd6amr11970067wrq.64.1682411693905; Tue, 25
- Apr 2023 01:34:53 -0700 (PDT)
+        bh=pJCGkPHoGSFZY63Jqk/nlt1gBwH2vblI+IkzLVWvpyw=;
+        b=LyRC6LH5hSKoV5jDGaXdTec4fw0E77toD87aR5J9OJPONl5an2XralBCC8+1DE8yBl
+         p1a+GrwlBShUYNDlygOTmceNZn0BlmWl6wHLQE3n0AwBlZVgaQnctsuR31htiFWf4YVC
+         uk0TT3bituEjJmBXhnGkEdydZSlHsdQGrlVCVVQnEFBpcGTPwrb+I+M6vW3GMirM/0AY
+         60pK3aRsXj1gyYxX9y0T2oq7iAfvXNlwWxjL4C6XSR3o0mk4o8bkXhdLB4xaWhN5sPNf
+         dTORQhEsy64ibqaPZhNcL2Ec4sanNF0rp+y5w0JdhMUAf8FUL66ptM0p+eBdNCSYhZ1O
+         TYnw==
+X-Gm-Message-State: AAQBX9fVCc7/aHzhgbcEVmJBGu1udAMTjth6AombXJ6fc3nDKczQplW0
+	zT4kuJSFqNjsHvBpN489ePry8dbLm6/yWgkC6zYUJw==
+X-Google-Smtp-Source: AKy350ZzCimN5VBMy4odr40aNaphS9WPL5s1QsFomwpin6cX6Jv2A3zwror5ZbdEtmZc6/prsBRh7o0cC4Z0CxnVDwY=
+X-Received: by 2002:aa7:c84d:0:b0:504:b11e:8cfb with SMTP id
+ g13-20020aa7c84d000000b00504b11e8cfbmr15104412edt.13.1682411837571; Tue, 25
+ Apr 2023 01:37:17 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230418124953.3170028-1-fshao@chromium.org> <20230418124953.3170028-2-fshao@chromium.org>
- <ZD8z57MBvcfExJx8@nixie71> <CAC=S1ngBt9DmBobMkQXWhqE1UUxFv2U6iFd42nT=1N7r8+pFUg@mail.gmail.com>
- <CAD=FV=U_i26a8uJYmqYf6PUgmTUgmEB5L2DkVga0zDX_iDcGQg@mail.gmail.com>
- <ZEAGTiGyvynGA9P1@nixie71> <CAD=FV=UB393Z1zhK54Apgr-iRcvgiK0t36jt6-t5-5zz3m8OZQ@mail.gmail.com>
- <CAC=S1nj8VTXOovvianPWDYnsrbek0APD76SBNquFObaw8Vg4BQ@mail.gmail.com>
- <ZEX4BEVMf6GtvaAP@nixie71> <CAD=FV=VtrJDVB0gQp-O82V3mgU6MFVMSGrvzh0fRa7sYAt_Pqw@mail.gmail.com>
-In-Reply-To: <CAD=FV=VtrJDVB0gQp-O82V3mgU6MFVMSGrvzh0fRa7sYAt_Pqw@mail.gmail.com>
-From: Fei Shao <fshao@chromium.org>
-Date: Tue, 25 Apr 2023 16:34:16 +0800
-X-Gmail-Original-Message-ID: <CAC=S1nhFNq_kK5zJCWQiGBuJbDXiC8BstJ5BT7pi5O8hLDQSfA@mail.gmail.com>
-Message-ID: <CAC=S1nhFNq_kK5zJCWQiGBuJbDXiC8BstJ5BT7pi5O8hLDQSfA@mail.gmail.com>
-Subject: Re: [PATCH 1/2] dt-bindings: input: goodix: Add powered-in-suspend property
-To: Doug Anderson <dianders@chromium.org>
-Cc: Jeff LaBundy <jeff@labundy.com>, Benjamin Tissoires <benjamin.tissoires@redhat.com>, 
-	Rob Herring <robh+dt@kernel.org>, linux-mediatek <linux-mediatek@lists.infradead.org>, 
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, devicetree@vger.kernel.org, 
-	linux-input@vger.kernel.org, linux-kernel@vger.kernel.org
+References: <20230307163413.143334-1-bchihi@baylibre.com> <CAGXv+5E0wUJYUVD3wx3-=uES612ARQmUE0rxgAruFHxpZCBjzA@mail.gmail.com>
+ <CAGuA+ooi7Kx05gagLzXAN3upDiSqDUNOM_djYdGftw6ogVx5gw@mail.gmail.com>
+ <CAGuA+oqDPPYFJef_8=YrOpHQNVJ3xgm_zXS6fq_HG2Jy_6t-Zg@mail.gmail.com>
+ <CAGXv+5EZPWohGN5CaEiqVrM4MyAar3cPEUhHtGY_9wTJSJNVFQ@mail.gmail.com>
+ <CAGuA+oqF4jFMyEo09VDmCf-_7g0ua3XDKDAJ+t3Gat14pDM9NA@mail.gmail.com> <fab67eef-4dc9-420d-b127-aedc6f54cad0@notapiano>
+In-Reply-To: <fab67eef-4dc9-420d-b127-aedc6f54cad0@notapiano>
+From: Balsam CHIHI <bchihi@baylibre.com>
+Date: Tue, 25 Apr 2023 10:36:41 +0200
+Message-ID: <CAGuA+ooRGAjXONtXi9G_jTwxrHG0=OerAfK2b3mo0Z+RhPW4Wg@mail.gmail.com>
+Subject: Re: [PATCH 0/4] Add LVTS support for mt8192
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, daniel.lezcano@linaro.org, 
+	angelogioacchino.delregno@collabora.com, rafael@kernel.org, amitk@kernel.org, 
+	rui.zhang@intel.com, matthias.bgg@gmail.com, robh+dt@kernel.org, 
+	krzysztof.kozlowski+dt@linaro.org, rdunlap@infradead.org, 
+	ye.xingchen@zte.com.cn, p.zabel@pengutronix.de, linux-pm@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+	khilman@baylibre.com, james.lo@mediatek.com, rex-bc.chen@mediatek.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230425_013458_404597_4B6BCE42 
-X-CRM114-Status: GOOD (  37.23  )
+X-CRM114-CacheID: sfid-20230425_013720_468885_F6316BF5 
+X-CRM114-Status: GOOD (  42.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,85 +98,200 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 25, 2023 at 2:15=E2=80=AFAM Doug Anderson <dianders@chromium.or=
+On Tue, Apr 25, 2023 at 12:21=E2=80=AFAM N=C3=ADcolas F. R. A. Prado
+<nfraprado@collabora.com> wrote:
+>
+> On Tue, Mar 28, 2023 at 02:20:24AM +0200, Balsam CHIHI wrote:
+> > On Sat, Mar 25, 2023 at 5:33=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.or=
 g> wrote:
->
-> Hi,
->
-> On Sun, Apr 23, 2023 at 8:31=E2=80=AFPM Jeff LaBundy <jeff@labundy.com> w=
-rote:
+> > >
+> > > On Wed, Mar 22, 2023 at 8:48=E2=80=AFPM Balsam CHIHI <bchihi@baylibre=
+.com> wrote:
+> > > >
+> > > > Hi Chen-Yu,
+> > > >
+> > > > I suspect the bug comes from incorrect calibration data offsets for=
+ AP
+> > > > Domain because you confirm that MCU Domain probe runs without issue=
+s.
+> > > > Is it possible to test something for us to confirm this theory (i
+> > > > don't have an mt8192 board on hand now), when you have the time of
+> > > > course?
+> > > > We would like to test AP Domain's calibration data offsets with a
+> > > > working one, for example :
+> > > >
+> > > >  static const struct lvts_ctrl_data mt8192_lvts_ap_data_ctrl[] =3D =
+{
+> > > >                 {
+> > > > -               .cal_offset =3D { 0x25, 0x28 },
+> > > > +               .cal_offset =3D { 0x04, 0x04 },
+> > > >                 .lvts_sensor =3D {
+> > > >                         { .dt_id =3D MT8192_AP_VPU0 },
+> > > >                         { .dt_id =3D MT8192_AP_VPU1 }
+> > > > @@ -1336,7 +1336,7 @@ static const struct lvts_ctrl_data
+> [..]
+> > > >
+> > > > This example is tested and works for mt8195,
+> > > > (all sensors use the same calibration data offset for testing purpo=
+ses).
+> > > >
+> > > > Thank you in advance for your help.
+> > >
+> > > The MCU ones are still tripping though. If I change all of them to 0x=
+04,
+> > > then nothing trips. There's also a bug in the interrupt handling code
+> > > that needs to be dealt with.
+> > >
+> > > AFAICT the calibration data is stored differently. If you look at Chr=
+omeOS's
+> > > downstream v5.10 driver, you'll see mt6873_efuse_to_cal_data() for MT=
+8192,
+> > > and mt8195_efuse_to_cal_data() for MT8195. The difference sums up to:
+> > > MT8195 has all data sequentially stored, while MT8192 has most data s=
+tored
+> > > in lower 24 bits of each 32-bit word, and the highest 8 bits are then=
+ used
+> > > to pack data for the remaining sensors.
+> > >
+> > > Regards
+> > > ChenYu
 > >
-> > Back-powering can come in two forms:
+> > Hi Chen-Yu Tsai,
 > >
-> > 1. The one you've described, which is by far the most common. As you me=
-ntion,
-> > it is not the case here since the issue happens only when we drive the =
-GPIO
-> > low and not high.
+> > Thank you very much for helping me testing this suggestion.
 > >
-> > 2. Through a forbidden power supply sequence, an input pin of an IC wit=
-h
-> > multiple power supplies becomes a weak power supply itself. Grounding t=
-he
-> > GPIO then sinks current into the SoC.
+> > Indeed, calibration data is stored differently in the mt8192 compared t=
+o mt8195.
+> > So, the mt8192's support will be delayed for now, to allow further debu=
+gging.
 > >
-> > This problem smelled like (2), especially since asserting the GPIO or p=
-owering
-> > down the supply alleviates the symptom. Most Goodix controllers I've wo=
-rked
-> > with have two or more supplies, and the datasheet requires them to be e=
-nabled
-> > or disabled in a specific order.
-> >
-> > Based on Fei's feedback, however, this IC does not seem to be one of th=
-ose
-> > since there is reportedly only a single rail. I guess either vdd or vdd=
-io is
-> > tied to a dummy regulator? If so, then perhaps we can scratch this theo=
-ry.
+> > In the mean time, we will only continue to upstream the remaining
+> > mt8195's source code, so it will get full LVTS support.
+> > A new series will be submitted soon.
 >
-> There is one rail provided from the main board, but there can be two
-> voltage levels involved depending on stuffings on the touchscreen
-> itself. I talked a bit about this in commit 1d18c1f3b7d9
-> ("dt-bindings: HID: i2c-hid: goodix: Add mainboard-vddio-supply").
+> Hi Balsam,
 >
->
-> > Fair enough, I was simply sketpical that this was the _right_ workaroun=
-d.
-> > Were this an issue of only supply A left on yet the IC datasheet requir=
-es
-> > supply B to remain on if supply A is on, I would rather see this solved=
- by
-> > updating a regulator dts node, trusted FW sequence, etc.
->
-> Right. That type of stuff was looked at in detail by two separate
-> teams, so I don't think this is the issue.
->
->
-> > Thanks for your due diligence; if this really is a silicon issue, then
-> > the driver should indeed accommodate it.
-> >
-> > That being said, the name 'powered-in-suspend' seems a bit conflated. W=
+> like Chen-Yu mentioned, the calibration data is stored with 4 byte alignm=
+ent for
+> MT8192, but the data that is split between non-contiguous bytes is for th=
 e
-> > should not be duplicating regulator policy in this driver; the existing
-> > naming also may cause confusion for other HW configurations that do lea=
-ve
-> > vdd and vddio on during suspend, but don't have this problem.
-> >
-> > Here, we actually mean to control the behavior of the reset GPIO throug=
-h
-> > suspend and therefore something like 'goodix,no-reset-during-suspend' i=
-s
-> > closer to what I understand us to intend to do. I will add more details
-> > in patch [2/2].
+> thermal controllers (called Resistor-Capacitor Calibration downstream) no=
+t the
+> sensors. The controller calibration isn't currently handled in this drive=
+r (and
+> downstream it also isn't used, since a current value is read from the con=
+troller
+> instead), so we can just ignore those.
 >
-> I'd be fine with that name. ...ah, and adding the "goodix," prefix is
-> a good call.
+> The patch below adjusts the addresseses for the sensors and gives me reas=
+onable
+> reads, so the machine no longer reboots. Can you integrate it into your s=
+eries?
 >
-> -Doug
+> Thanks,
+> N=C3=ADcolas
+>
 
-That sounds good to me, too. I'll update the name in the next patch.
+Hello N=C3=ADcolas,
 
-Regards,
-Fei
+Thank you very much for your help!
+I really appreciate it.
+Yes, of course I will integrate your fix to the series immediately.
+
+Best regards,
+Balsam
+
+> From 4506f03b806f3eeb89887bac2c1c86d61da97281 Mon Sep 17 00:00:00 2001
+> From: =3D?UTF-8?q?N=3DC3=3DADcolas=3D20F=3D2E=3D20R=3D2E=3D20A=3D2E=3D20P=
+rado?=3D
+>  <nfraprado@collabora.com>
+> Date: Mon, 24 Apr 2023 17:42:42 -0400
+> Subject: [PATCH] thermal/drivers/mediatek/lvts_thermal: Fix calibration
+>  offsets for MT8192
+> MIME-Version: 1.0
+> Content-Type: text/plain; charset=3DUTF-8
+> Content-Transfer-Encoding: 8bit
+>
+> Signed-off-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
+> ---
+>  drivers/thermal/mediatek/lvts_thermal.c | 14 +++++++-------
+>  1 file changed, 7 insertions(+), 7 deletions(-)
+>
+> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/me=
+diatek/lvts_thermal.c
+> index b6956c89d557..f8afbc2ac190 100644
+> --- a/drivers/thermal/mediatek/lvts_thermal.c
+> +++ b/drivers/thermal/mediatek/lvts_thermal.c
+> @@ -1261,7 +1261,7 @@ static const struct lvts_ctrl_data mt8195_lvts_ap_d=
+ata_ctrl[] =3D {
+>
+>  static const struct lvts_ctrl_data mt8192_lvts_mcu_data_ctrl[] =3D {
+>         {
+> -               .cal_offset =3D { 0x04, 0x07 },
+> +               .cal_offset =3D { 0x04, 0x08 },
+>                 .lvts_sensor =3D {
+>                         { .dt_id =3D MT8192_MCU_BIG_CPU0 },
+>                         { .dt_id =3D MT8192_MCU_BIG_CPU1 }
+> @@ -1271,7 +1271,7 @@ static const struct lvts_ctrl_data mt8192_lvts_mcu_=
+data_ctrl[] =3D {
+>                 .hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8192,
+>         },
+>         {
+> -               .cal_offset =3D { 0x0d, 0x10 },
+> +               .cal_offset =3D { 0x0c, 0x10 },
+>                 .lvts_sensor =3D {
+>                         { .dt_id =3D MT8192_MCU_BIG_CPU2 },
+>                         { .dt_id =3D MT8192_MCU_BIG_CPU3 }
+> @@ -1281,7 +1281,7 @@ static const struct lvts_ctrl_data mt8192_lvts_mcu_=
+data_ctrl[] =3D {
+>                 .hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8192,
+>         },
+>         {
+> -               .cal_offset =3D { 0x16, 0x19, 0x1c, 0x1f },
+> +               .cal_offset =3D { 0x14, 0x18, 0x1c, 0x20 },
+>                 .lvts_sensor =3D {
+>                         { .dt_id =3D MT8192_MCU_LITTLE_CPU0 },
+>                         { .dt_id =3D MT8192_MCU_LITTLE_CPU1 },
+> @@ -1296,7 +1296,7 @@ static const struct lvts_ctrl_data mt8192_lvts_mcu_=
+data_ctrl[] =3D {
+>
+>  static const struct lvts_ctrl_data mt8192_lvts_ap_data_ctrl[] =3D {
+>                 {
+> -               .cal_offset =3D { 0x25, 0x28 },
+> +               .cal_offset =3D { 0x24, 0x28 },
+>                 .lvts_sensor =3D {
+>                         { .dt_id =3D MT8192_AP_VPU0 },
+>                         { .dt_id =3D MT8192_AP_VPU1 }
+> @@ -1306,7 +1306,7 @@ static const struct lvts_ctrl_data mt8192_lvts_ap_d=
+ata_ctrl[] =3D {
+>                 .hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8192,
+>         },
+>         {
+> -               .cal_offset =3D { 0x2e, 0x31 },
+> +               .cal_offset =3D { 0x2c, 0x30 },
+>                 .lvts_sensor =3D {
+>                         { .dt_id =3D MT8192_AP_GPU0 },
+>                         { .dt_id =3D MT8192_AP_GPU1 }
+> @@ -1316,7 +1316,7 @@ static const struct lvts_ctrl_data mt8192_lvts_ap_d=
+ata_ctrl[] =3D {
+>                 .hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8192,
+>         },
+>         {
+> -               .cal_offset =3D { 0x37, 0x3a },
+> +               .cal_offset =3D { 0x34, 0x38 },
+>                 .lvts_sensor =3D {
+>                         { .dt_id =3D MT8192_AP_INFRA },
+>                         { .dt_id =3D MT8192_AP_CAM },
+> @@ -1326,7 +1326,7 @@ static const struct lvts_ctrl_data mt8192_lvts_ap_d=
+ata_ctrl[] =3D {
+>                 .hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8192,
+>         },
+>         {
+> -               .cal_offset =3D { 0x40, 0x43, 0x46 },
+> +               .cal_offset =3D { 0x3c, 0x40, 0x44 },
+>                 .lvts_sensor =3D {
+>                         { .dt_id =3D MT8192_AP_MD0 },
+>                         { .dt_id =3D MT8192_AP_MD1 },
+> --
+> 2.40.0
 
