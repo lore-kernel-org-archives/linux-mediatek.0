@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C1F5C6FD18
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E633C77B61
 	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Apr 2023 09:30:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
@@ -12,55 +12,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eABp2T9EGqsly6qmK4v+G30KCoQ1T2FiObQ9xyRbH5o=; b=I0kWRnPFB6CjAB
-	DBBPVUf1mBvDOR5fUsN3p3TIhPrGnv0Rq2c8Qcrx/qxVZZS3F3on4fPAW68+zCSHBlAdwhUdahLyK
-	VdZXRlULqLeGf0HNrWdzVWhMk+DizTC43OROkCYEwvyj/XiIYvKGXQ5PA6/xUU9PbR0aYmJ1YbKoD
-	XKt4c8Qp+a/ThmG+NYsuEmKw0kv6okwXY8sY/s23z5Rfqs5BaO1EcvGQmww/kEVIAUwGYi0HxRU7X
-	X9CFxmo9vs7rWmL8d5jIbjfmj78++/VzpD3D3X7GEc3T8xaxJ0Zy34luOWVehejLP+imnUdti3psu
-	XInnI8YFaNwCXQcg5yvw==;
+	List-Owner; bh=Tfx+BLJ2lT7W1hbyqlRkyETFUUJ2bPA0crwpD9qp128=; b=KXsyOkBlbJFH8t
+	lhVahVmyzksStp0a51upNN7mPw2lhnDKIq2eA5eszYWR/zj9rCZ3adG0/cSp1N6P2xQ4NbfJ1jsLT
+	MYdzxjRHbefXBOWaXHm7dCJgxUhL57mFkMOCZ4p+Lf2tDnnXc+0Wb6Z9X1WNOc/Du0D78W0F8/BFp
+	x750085OXR2E8hJWOhNyB5R92WZ5pgApRdqEv8Uq45gOvAQKJ7+Oedq7IYqcqGYgPZ/R0D2uOyJvD
+	VnI6v7do9ES6WFFX/ykSvZ/mEJE/krLOZnejR0xlWR5ltg9B00ajy2TTYYTrzXqIHZmaqlqBT7ck0
+	NgC8wOXcKFl0iRcYds7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1prF0D-000dzk-1O;
-	Tue, 25 Apr 2023 09:30:25 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1prF0E-000e03-2W;
+	Tue, 25 Apr 2023 09:30:26 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prE3q-000Uce-0l;
-	Tue, 25 Apr 2023 08:30:07 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-94f6c285d92so1016487466b.3;
-        Tue, 25 Apr 2023 01:30:05 -0700 (PDT)
+	id 1prE3t-000Udy-1P;
+	Tue, 25 Apr 2023 08:30:10 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-9536df4b907so1010295566b.0;
+        Tue, 25 Apr 2023 01:30:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1682411404; x=1685003404;
+        d=gmail.com; s=20221208; t=1682411407; x=1685003407;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=eABp2T9EGqsly6qmK4v+G30KCoQ1T2FiObQ9xyRbH5o=;
-        b=cB2aKGIKnK8sXy/Np6pdmxyc+H4rqYNIVyGo0WJHquZ4p1zxP/OkiRB7B5VPV33B7T
-         E6fuLwcVajOBonc8NJ6DBT3VMTZXWjNyYQ1mnvg1dCh/5jN6rKD9LJGPhXB9ivuhPK8C
-         rItsC6KgUAbEEiIYHncPzBKzs0p0kZdUP2hGnO06QAUHSiYr8gTlUZBpomQ0dzCVzaOK
-         fntcT2UXSJ17Zv+v3gE/FHQ6gmKtNZeZU+819BJ8KyzWOxKYYRegkWHY+8/7YOD35cIR
-         txiPeeN6E4etTGJ9qROOlONRBmkSa6alo7mf5poLGjr9q/yfXmkrSUk7sq6qaCU686Bm
-         Qodg==
+        bh=Tfx+BLJ2lT7W1hbyqlRkyETFUUJ2bPA0crwpD9qp128=;
+        b=lZ86hWU04mqxssyBsem/asz8Vblm4BlcY+EtZFE6dNEGktzls4r3kDlzKQwLR1TdGL
+         yh2JVg8uFn2wmGxT97pc16iIJcFEjFkNIvZ53K9aYOXT4lXDB4tATbaNh0cL+keRKc9v
+         lVKlxpYEkFeqr1dtSZa84/DzY6AjztgSKrpEqZh+hHTVRX6wAy3gkmHMBaQ2vZjCbU5h
+         jnP8sqAQ0ek2XpIbBALycsChBgYaQjewRe5/j6VnK1INVv0xGTcgYF2l0jBgIe35SlTk
+         6gy7iExOLnqjRIiqgEbfxMnlOrsKV8sKBhwtn+V1L+9ClSZv0GzJxYhqoT8MCK2mZU7P
+         e/gQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682411404; x=1685003404;
+        d=1e100.net; s=20221208; t=1682411407; x=1685003407;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=eABp2T9EGqsly6qmK4v+G30KCoQ1T2FiObQ9xyRbH5o=;
-        b=BWdctE0MsAyuEN0Q1IMgn5QYrQ+MWHgygZcWTrWmg9/5eMfU9fvSWtIC+mg3J5Zyyx
-         AW/Nepnzn2hd9SFxXI6i139Ryedz6KQ7j/gfT4ggvS5A5lAjl0zCE9w13FY1K/cuuTdK
-         cNpeC1zP/IyYoxkGDhiQbRDey0r4juigmPDqEUexdnRMZQCePt5m69dGSJCr+DoFmbgn
-         jc0cZ9N9R7+FM8j+fLGPJFht44M4FD1qmgO0mFG6uUl7rBUnF+Dc15RsLYmofQ1sFsoC
-         /6Fog8IC0SVXpGi6thv5IA30fcveWXBaIRKDtqqmKy2HOcC6i9ZFEQixzI9h2FlGfb+A
-         /D2w==
-X-Gm-Message-State: AAQBX9cqTyBdOGkIUKGl3wW6pk8p7Pk9wlrJt7Ug7LTILN64rmKA5zDc
-	+WDv755VvViYhLeUlgSS12g=
-X-Google-Smtp-Source: AKy350Yfh4FNIpf1J1n9WFWtoIVX5lNY5G4I5kWaXKL49JEYOX0YSizzV0wjGFCcMhOxnyzB565mnA==
-X-Received: by 2002:a17:907:c06:b0:949:cb6a:b6f7 with SMTP id ga6-20020a1709070c0600b00949cb6ab6f7mr15611951ejc.56.1682411404365;
-        Tue, 25 Apr 2023 01:30:04 -0700 (PDT)
+        bh=Tfx+BLJ2lT7W1hbyqlRkyETFUUJ2bPA0crwpD9qp128=;
+        b=eoc9iidFHItH0nS6Iztxo/cZAKrW0Df1mK74A3swVJGxvEJ+PE61FAZiU6dFMsnefa
+         B7dz34eio1o9lcFFwrL2fdBPCBcbFKCeWaO8ccllzDD/OVaoXms91Ja2GjFasE7xxi3d
+         JC9esnGJWu/ty33+gNrhsKyI40xhvhJO0RUk4wGGmV7vv2LV5cIOnxQ9QxIUJY9q7PBF
+         iNSqEP0McW8vQBnBjDYW9qpQG3c2uqoqw94N2XBAjSAbVB5gcpjJgDwfDe7B40+F8CeE
+         M8+uFB980Nyx+mJtT6iH8okTS/yAkyQ+O/+4Iro2FJYMxfd3+sOYmv07EIFSz7BOox1k
+         8eKw==
+X-Gm-Message-State: AAQBX9dAcoicQaj4CeMlqv4uDLJoB+VeSmGZ4FoIaPuyDUd6Cis/nHKF
+	mHU2/AGm1HPbC12pltllq4A=
+X-Google-Smtp-Source: AKy350ZD6hZxk3RZBq4dVJ0BB2vezChvZmKmMxTOeiV4iOmfOvMgxynKFkCZYPOAMRNP2pPpfHi9Rg==
+X-Received: by 2002:a17:907:80ce:b0:959:5454:1db7 with SMTP id io14-20020a17090780ce00b0095954541db7mr5667977ejc.3.1682411406637;
+        Tue, 25 Apr 2023 01:30:06 -0700 (PDT)
 Received: from arinc9-PC.lan ([149.91.1.15])
-        by smtp.gmail.com with ESMTPSA id mc2-20020a170906eb4200b0094ca077c985sm6439028ejb.213.2023.04.25.01.30.02
+        by smtp.gmail.com with ESMTPSA id mc2-20020a170906eb4200b0094ca077c985sm6439028ejb.213.2023.04.25.01.30.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 25 Apr 2023 01:30:03 -0700 (PDT)
+        Tue, 25 Apr 2023 01:30:06 -0700 (PDT)
 From: arinc9.unal@gmail.com
 X-Google-Original-From: arinc.unal@arinc9.com
 To: Sean Wang <sean.wang@mediatek.com>,
@@ -77,9 +77,9 @@ To: Sean Wang <sean.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Russell King <linux@armlinux.org.uk>
-Subject: [PATCH net-next 05/24] net: dsa: mt7530: improve comments regarding port 5 and 6
-Date: Tue, 25 Apr 2023 11:29:14 +0300
-Message-Id: <20230425082933.84654-6-arinc.unal@arinc9.com>
+Subject: [PATCH net-next 06/24] net: dsa: mt7530: read XTAL value from correct register
+Date: Tue, 25 Apr 2023 11:29:15 +0300
+Message-Id: <20230425082933.84654-7-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.37.2
 In-Reply-To: <20230425082933.84654-1-arinc.unal@arinc9.com>
 References: <20230425082933.84654-1-arinc.unal@arinc9.com>
@@ -87,8 +87,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230425_013006_276154_2E104529 
-X-CRM114-Status: GOOD (  13.36  )
+X-CRM114-CacheID: sfid-20230425_013009_475061_CB02306E 
+X-CRM114-Status: GOOD (  13.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,93 +106,33 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-There's no logic to numerically order the CPU ports. State the port number
-and its capability of being used as a CPU port instead.
+On commit 7ef6f6f8d237 ("net: dsa: mt7530: Add MT7621 TRGMII mode support")
+bit mask macros were added under the MT7530_HWTRAP register to read the
+crystal frequency. However, the value given to the xtal variable on
+mt7530_pad_clk_setup() is read from the MT7530_MHWTRAP register instead.
 
-Remove the irrelevant PHY muxing information from
-mt7530_mac_port_get_caps(). Explain the supported MII modes instead.
+It doesn't seem to matter as my testing on MCM and standalone MT7530 shows
+the value is correctly read from both registers but change it anyway.
 
-Remove the out of place PHY muxing information from
-mt753x_phylink_mac_config(). The function is for both the MT7530 and MT7531
-switches but there's no PHY muxing on MT7531.
-
-These comments were gradually introduced with the commits below.
-ca366d6c889b ("net: dsa: mt7530: Convert to PHYLINK API")
-38f790a80560 ("net: dsa: mt7530: Add support for port 5")
-88bdef8be9f6 ("net: dsa: mt7530: Extend device data ready for adding a new
-hardware")
-c288575f7810 ("net: dsa: mt7530: Add the support of MT7531 switch")
-
+Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-Acked-by: Daniel Golle <daniel@makrotopia.org>
 ---
- drivers/net/dsa/mt7530.c | 19 +++++++++++++------
- 1 file changed, 13 insertions(+), 6 deletions(-)
+ drivers/net/dsa/mt7530.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 29abf2745294..d0eae8e8c41d 100644
+index d0eae8e8c41d..98ef5ba0b19b 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -2498,7 +2498,9 @@ static void mt7530_mac_port_get_caps(struct dsa_switch *ds, int port,
- 			  config->supported_interfaces);
- 		break;
+@@ -406,7 +406,7 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
+ 	struct mt7530_priv *priv = ds->priv;
+ 	u32 ncpo1, ssc_delta, trgint, xtal;
  
--	case 5: /* 2nd cpu port with phy of port 0 or 4 / external phy */
-+	case 5: /* Port 5 which can be used as a CPU port supports rgmii with
-+		 * delays, mii, and gmii.
-+		 */
- 		phy_interface_set_rgmii(config->supported_interfaces);
- 		__set_bit(PHY_INTERFACE_MODE_MII,
- 			  config->supported_interfaces);
-@@ -2506,7 +2508,9 @@ static void mt7530_mac_port_get_caps(struct dsa_switch *ds, int port,
- 			  config->supported_interfaces);
- 		break;
+-	xtal = mt7530_read(priv, MT7530_MHWTRAP) & HWTRAP_XTAL_MASK;
++	xtal = mt7530_read(priv, MT7530_HWTRAP) & HWTRAP_XTAL_MASK;
  
--	case 6: /* 1st cpu port */
-+	case 6: /* Port 6 which can be used as a CPU port supports rgmii and
-+		 * trgmii.
-+		 */
- 		__set_bit(PHY_INTERFACE_MODE_RGMII,
- 			  config->supported_interfaces);
- 		__set_bit(PHY_INTERFACE_MODE_TRGMII,
-@@ -2526,14 +2530,17 @@ static void mt7531_mac_port_get_caps(struct dsa_switch *ds, int port,
- 			  config->supported_interfaces);
- 		break;
- 
--	case 5: /* 2nd cpu port supports either rgmii or sgmii/8023z */
-+	case 5: /* Port 5 which can be used as a CPU port supports rgmii with
-+		 * delays on MT7531BE, sgmii/802.3z on MT7531AE.
-+		 */
- 		if (!priv->p5_sgmii) {
- 			phy_interface_set_rgmii(config->supported_interfaces);
- 			break;
- 		}
- 		fallthrough;
- 
--	case 6: /* 1st cpu port supports sgmii/8023z only */
-+	case 6: /* Port 6 which can be used as a CPU port supports sgmii/802.3z.
-+		 */
- 		__set_bit(PHY_INTERFACE_MODE_SGMII,
- 			  config->supported_interfaces);
- 		__set_bit(PHY_INTERFACE_MODE_1000BASEX,
-@@ -2725,7 +2732,7 @@ mt753x_phylink_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
- 		    state->interface != PHY_INTERFACE_MODE_INTERNAL)
- 			goto unsupported;
- 		break;
--	case 5: /* 2nd cpu port with phy of port 0 or 4 / external phy */
-+	case 5: /* Port 5, can be used as a CPU port. */
- 		if (priv->p5_interface == state->interface)
- 			break;
- 
-@@ -2735,7 +2742,7 @@ mt753x_phylink_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
- 		if (priv->p5_intf_sel != P5_DISABLED)
- 			priv->p5_interface = state->interface;
- 		break;
--	case 6: /* 1st cpu port */
-+	case 6: /* Port 6, can be used as a CPU port. */
- 		if (priv->p6_interface == state->interface)
- 			break;
- 
+ 	if (xtal == HWTRAP_XTAL_20MHZ) {
+ 		dev_err(priv->dev,
 -- 
 2.37.2
 
