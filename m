@@ -4,77 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B423C77B71
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Apr 2023 08:31:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 536F9C77B71
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Apr 2023 08:32:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JLm5jhMS6rFgBzI8z+1W06D+EQwsGdSNOt8/QtnXpBI=; b=QA+lGz4MEgckNJ
-	QiFqNI26QGWEDRBHUUgEyzo48zO7hSuDOWvYixi0a0G3xDfIJXCXzgPTfxp6d4Cl6QvW2rUEtq/qG
-	yf8+E/xRtHgkAojLYmwr2TnK8/EKxp2orreVoKJg1RPZDyJzn3ChQxy24vOZc2OkG87oIWZcKcr+a
-	aFKvcd8J38tenXrP0s8GjwI7VRPovlns3QgGPRpa1q75NT5lcZc4qW/xZZrvrNcp5oqvb0qJ6HBmc
-	swSVOOLRcF5lEByFpZsE1P5AkWWF+zyOSpJCEp/Zn9KkVsg31rlljbIoBr0HCySWiK11x96AxT14V
-	e6qpMyYfAvEbHSjhnIMA==;
+	List-Owner; bh=1uLav40hri3eanK3Jy4AVy91JvuI98IGXe5BAzhG3qY=; b=yaJlIArVYAuEAd
+	thoHRHCxf9ShJc+4xa83g31wYKBYYJXcYvwnbEKTlWOy7cecrtd6Rp/qt+CUqWC6JXbUXbDJGEgVz
+	8/uVeUrekY/YnaNgjoOrWqQ4aDiIZP5cJbjssxbwwC4MvbnAbUNx2yLHv/psoXeoKH+XeaI9T1/4Z
+	0ruZ3cJvIAnBwjK9OhVgIoatgA87+VLvuWepMO6wjhxF+SP5OH2QzNUE0zntVamEDOtqYn2G58VHA
+	ktC3y99BAH3xrsEtlbeKnJQPy3qPX/0hW9e75FlNzJHSQB619HKyMRTTi+kxglYQgd+VrGkpZ703R
+	SEgMOkNt1glmEPgHQN5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1prE5J-000Vmi-2L;
-	Tue, 25 Apr 2023 08:31:37 +0000
-Received: from desiato.infradead.org ([90.155.92.199])
+	id 1prE5h-000W4r-1g;
+	Tue, 25 Apr 2023 08:32:01 +0000
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prE4O-000V2w-2D;
-	Tue, 25 Apr 2023 08:30:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=JLm5jhMS6rFgBzI8z+1W06D+EQwsGdSNOt8/QtnXpBI=; b=jQuFBXlS6iAq0O/Z0R/lOsP0hk
-	neXo4bKyo2G8QU7OwqNqSoUjySXBq0kzXjqgXzgzLW5Rlvfb0uyWltwBQOB87XYegRJWC9oJ7c95G
-	+VFlZ0ke7ApbHp7kG8EsY5BbgjOOR0xZztq1EKiYdQfSyQ5qPiwzOWvLRY5sXsOCox04q6umDJP0T
-	YIsSyx8ytyRQ54gAmpC89+KGYz5l/OTaWewRLHVazVZuXhl/koz/7kMM5bUm5nxRYEq68LwdihvaA
-	T7Q/6UEHcxxHGrvhJoAnSNwN71Ky4c1LLtbD53ee+ymnxoJMZuFISzSShV2UvfTP0UDDFF2BPrOdb
-	L4IiycAQ==;
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prE4K-009Zwh-2V;
-	Tue, 25 Apr 2023 08:30:39 +0000
-Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-94f32588c13so784887266b.2;
-        Tue, 25 Apr 2023 01:30:36 -0700 (PDT)
+	id 1prE4O-000Umd-0q;
+	Tue, 25 Apr 2023 08:30:41 +0000
+Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-959a3e2dc72so416412166b.2;
+        Tue, 25 Apr 2023 01:30:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1682411435; x=1685003435;
+        d=gmail.com; s=20221208; t=1682411440; x=1685003440;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=JLm5jhMS6rFgBzI8z+1W06D+EQwsGdSNOt8/QtnXpBI=;
-        b=Ap33L6THf74ai+r6w//IbTznSDtVocBHM7PTMhbUVfihCpZZoQIMHkxxJxGeEJcFC/
-         m7DTVjUb7UVORIdFwiVaP2fX40jbGS+gPtiHiGOl/PJYrToSEyBp8AYAo8enkovg4GFT
-         4UNqxOpTWde9ytaO7rCQgHe2y9ifeACQWjT3Bwk2AXYZkf0BHGACL98CiV57oeUR7jr0
-         uJQO69lTIf9GkCBwWdtWCNNfVIZQkCQw8pFL2zFYnURSiNEGHW21iFFJlv2xR46grMhS
-         YRwwT2rwFyD2euHDZhxdEyl3AQfWZIo0WFToBHaa1RGWxwnjIfqla7zrbTT0UglGusru
-         GM8g==
+        bh=1uLav40hri3eanK3Jy4AVy91JvuI98IGXe5BAzhG3qY=;
+        b=cvjH75DPQqlRxJGSfXV8bb+spvakoCPO+pRgYvaHQhjszaR4HJIfty1kIxqdkvg507
+         /kmGLkGSTYoGmbMSdDzQaG9+PPXEADtQ4T3LOTnowyVyp+boUz166MNb4r9MS4IVaBCE
+         8CzFmkZtnCdxpmvkzxqpVsN0y2chhZfUo+WhJI7KldRU+TBQzt2inwO0+fEcHnJhZwlQ
+         Bly5F3SodqWFsNQ2jB9pDnnCXnUKKJownQ9HUQhJV9vp9cUyNHNnADgGkl7D1qnmFrvt
+         UUtQ/buQ5W63FzO+dmwUnIh/s/7F/dJ7r+2bo5QrFB3FVigVsnTCD+iNDgJDdWN+AdsK
+         pdew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682411435; x=1685003435;
+        d=1e100.net; s=20221208; t=1682411440; x=1685003440;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=JLm5jhMS6rFgBzI8z+1W06D+EQwsGdSNOt8/QtnXpBI=;
-        b=TNBvaVB3v4dHAcKFnaSjLkw92NR9p1OJbvG4wqlTvSqRvb9v3Zqwf9K1ADG83ROzrw
-         1lxcC1Hzl1Sd9nxjllS3kXs8pB76XL0siOZaM64AKvRUaF6ak9eWsNlHxaiF2205Dfwu
-         UwtTpXI5QoqTIUiX32cxXNhBM4fUpP/HMW6RM6k0QBg2YdEJsB9kxVguseKT7blEy9od
-         6Jnnhzsxb9elxjkp+eqCghIV+rYK8SBa8c6lhH4vK8stekiWuEZgL+1GqnogejyA9t2n
-         8VcDEfk3zbvIvMwCWsepqcXmZXVzP77u5G/SIvAXSQTYEuLxinOvpnWOT0fqlxTWFETh
-         6zNQ==
-X-Gm-Message-State: AAQBX9c8yFJEsgtIapQyqzMzxaqF+6rEzXS/4C5qkA64z1HAmJXTVxQn
-	bmfvz5E68kycCcG+5mIeen8=
-X-Google-Smtp-Source: AKy350ZHnHWTezegV98s6VGWqeQ9P96T/8gc+hf2umUdZqmtltCd4D7zYoSKx0DLOxIbyURM78gaRQ==
-X-Received: by 2002:a17:906:170e:b0:947:c221:eb38 with SMTP id c14-20020a170906170e00b00947c221eb38mr12120196eje.13.1682411434710;
-        Tue, 25 Apr 2023 01:30:34 -0700 (PDT)
+        bh=1uLav40hri3eanK3Jy4AVy91JvuI98IGXe5BAzhG3qY=;
+        b=gxWPsHnNy9vsShT0a333UK6V+/jo+/+Da+e1wergWJDG1CDlPqVRzU7qNt5OQSkh+D
+         YBqTnj2Rfr+vwieGF5TmeH1kffblnrsCi9x7qfO+05CG+dchZUBVWojzxY95TBUebq/o
+         Nmv37kpzeG2uda0SOvvMoIPJszc6FBIxWTjSEVLUXzlGiG4p7hhgm3PKP84OWCQFNyHx
+         BCCQt4etX2asatiqC1+MDSn/wKF1OQHOl44ZCWww27bdc47YTtSdC1q6Jkuo7S7/vy2u
+         y9pcqR1Uuai/40qE4qT1kAXj+VZlIbv2eh8q8SQYoDW+772cYLIYeMB1GD04HEzQ4Te5
+         0tMA==
+X-Gm-Message-State: AAQBX9c82bTgZ4wrp6VuFSiEV5hg6oplzOiqni08KDa3ptpYu783oe+U
+	NvtugS4ZwIOA0V6XHmVsd5Y=
+X-Google-Smtp-Source: AKy350ZKkzSKbtmxddOSln/bZb1aezgAR66i8vfy7x3dBj2ysqx42JxhlOsAxkxx3wSoJxv2IlopoA==
+X-Received: by 2002:a17:906:ecb7:b0:8b1:3467:d71b with SMTP id qh23-20020a170906ecb700b008b13467d71bmr12844134ejb.48.1682411439716;
+        Tue, 25 Apr 2023 01:30:39 -0700 (PDT)
 Received: from arinc9-PC.lan ([149.91.1.15])
-        by smtp.gmail.com with ESMTPSA id mc2-20020a170906eb4200b0094ca077c985sm6439028ejb.213.2023.04.25.01.30.32
+        by smtp.gmail.com with ESMTPSA id mc2-20020a170906eb4200b0094ca077c985sm6439028ejb.213.2023.04.25.01.30.37
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 25 Apr 2023 01:30:34 -0700 (PDT)
+        Tue, 25 Apr 2023 01:30:39 -0700 (PDT)
 From: arinc9.unal@gmail.com
 X-Google-Original-From: arinc.unal@arinc9.com
 To: Sean Wang <sean.wang@mediatek.com>,
@@ -91,9 +77,9 @@ To: Sean Wang <sean.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Russell King <linux@armlinux.org.uk>
-Subject: [PATCH net-next 17/24] net: dsa: mt7530: move lowering port 5 RGMII driving to mt7530_setup()
-Date: Tue, 25 Apr 2023 11:29:26 +0300
-Message-Id: <20230425082933.84654-18-arinc.unal@arinc9.com>
+Subject: [PATCH net-next 19/24] net: dsa: mt7530: remove .mac_port_config for MT7988 and make it optional
+Date: Tue, 25 Apr 2023 11:29:28 +0300
+Message-Id: <20230425082933.84654-20-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.37.2
 In-Reply-To: <20230425082933.84654-1-arinc.unal@arinc9.com>
 References: <20230425082933.84654-1-arinc.unal@arinc9.com>
@@ -101,8 +87,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230425_093036_964465_A53933B0 
-X-CRM114-Status: GOOD (  12.14  )
+X-CRM114-CacheID: sfid-20230425_013040_322219_CB228363 
+X-CRM114-Status: GOOD (  15.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,44 +106,75 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-Move lowering Tx driving of rgmii on port 5 to right before lowering of Tx
-driving of trgmii on port 6 on mt7530_setup().
+For the switch on the MT7988 SoC, the code in mac_port_config for MT7988 is
+not needed as the interface of the CPU port is already handled on
+mt7988_mac_port_get_caps().
 
-This way, the switch should consume less power regardless of port 5 being
-used.
+Make .mac_port_config optional. Before calling
+priv->info->mac_port_config(), if there's no mac_port_config member in the
+priv->info table, exit mt753x_mac_config() successfully.
 
-Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Remove mac_port_config from the sanity check as the sanity check requires a
+pointer to a mac_port_config function to be non-NULL. This will fail for
+MT7988 as mac_port_config won't be a member of its info table.
+
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Co-authored-by: Daniel Golle <daniel@makrotopia.org>
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
- drivers/net/dsa/mt7530.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/net/dsa/mt7530.c | 18 ++++--------------
+ 1 file changed, 4 insertions(+), 14 deletions(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 0108af681d50..468c50b3f43b 100644
+index aee1e4d71547..bdd3f63fe1ef 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -938,10 +938,6 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
- 		/* P5 RGMII TX Clock Control: delay x */
- 		mt7530_write(priv, MT7530_P5RGMIITXCR,
- 			     CSR_RGMII_TXC_CFG(0x10 + tx_delay));
+@@ -2613,17 +2613,6 @@ static bool mt753x_is_mac_port(u32 port)
+ 	return (port == 5 || port == 6);
+ }
+ 
+-static int
+-mt7988_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
+-		  phy_interface_t interface)
+-{
+-	if (dsa_is_cpu_port(ds, port) &&
+-	    interface == PHY_INTERFACE_MODE_INTERNAL)
+-		return 0;
 -
--		/* reduce P5 RGMII Tx driving, 8mA */
--		mt7530_write(priv, MT7530_IO_DRV_CR,
--			     P5_IO_CLK_DRV(1) | P5_IO_DATA_DRV(1));
- 	}
+-	return -EINVAL;
+-}
+-
+ static int
+ mt7531_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
+ 		  phy_interface_t interface)
+@@ -2664,6 +2653,9 @@ mt753x_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
+ {
+ 	struct mt7530_priv *priv = ds->priv;
  
- 	mt7530_write(priv, MT7530_MHWTRAP, val);
-@@ -2214,6 +2210,10 @@ mt7530_setup(struct dsa_switch *ds)
- 
- 	mt7530_pll_setup(priv);
- 
-+	/* Lower P5 RGMII Tx driving, 8mA */
-+	mt7530_write(priv, MT7530_IO_DRV_CR,
-+			P5_IO_CLK_DRV(1) | P5_IO_DATA_DRV(1));
++	if (!priv->info->mac_port_config)
++		return 0;
 +
- 	/* Lower Tx driving for TRGMII path */
- 	for (i = 0; i < NUM_TRGMII_CTRL; i++)
- 		mt7530_write(priv, MT7530_TRGMII_TD_ODT(i),
+ 	return priv->info->mac_port_config(ds, port, mode, state->interface);
+ }
+ 
+@@ -3107,7 +3099,6 @@ const struct mt753x_info mt753x_table[] = {
+ 		.phy_write_c45 = mt7531_ind_c45_phy_write,
+ 		.cpu_port_config = mt7988_cpu_port_config,
+ 		.mac_port_get_caps = mt7988_mac_port_get_caps,
+-		.mac_port_config = mt7988_mac_config,
+ 	},
+ };
+ EXPORT_SYMBOL_GPL(mt753x_table);
+@@ -3135,8 +3126,7 @@ mt7530_probe_common(struct mt7530_priv *priv)
+ 	 * properly.
+ 	 */
+ 	if (!priv->info->sw_setup || !priv->info->phy_read_c22 ||
+-	    !priv->info->phy_write_c22 || !priv->info->mac_port_get_caps ||
+-	    !priv->info->mac_port_config)
++	    !priv->info->phy_write_c22 || !priv->info->mac_port_get_caps)
+ 		return -EINVAL;
+ 
+ 	priv->id = priv->info->id;
 -- 
 2.37.2
 
