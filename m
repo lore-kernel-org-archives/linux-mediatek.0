@@ -4,63 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24D3FC77B61
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Apr 2023 08:31:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96A6EC77B61
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Apr 2023 08:31:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BDhIHtzgrt1JK0OHDfth9yreKDguDZ1mwE1kdBlBcjc=; b=39/atS2f3kFy98
-	x6kvMDKkIyQOZOEgp+fvrM0Tg0AA9KNQBeStGU76cHfgiOiYRycrm+1fgfIldQ+yY3z0c+vPsV0Gc
-	VB0YhF50L9UB9bU4SRfOevLJojUzzynNkXEPJqFYBJ26nzUszqfVQ0aiiy+d4PpmI015sHyXLXvNQ
-	2TGDlesDGQ/5KDLMksR0vR6EQlaCj2Uwb8ltAt6m5//+Y69Y/n4y5O7c36ay7fWYHNEk7uI/euZCR
-	OabChyaRbw1KsG2mi4hgBcMuOUT57Mn1HYAiHrwX37uoynPE/CsMkbTVeqiqBM0wCSqJpB3FgwMnG
-	d0k+rbou8TzH1AfLQTsA==;
+	List-Owner; bh=4MATvTsgGeOmEQ/GANoUT20RiIWs3kO1MdMdepZzbt0=; b=dx2CubTgwRlTw3
+	7xeO9IWjYqH/cMvH3aBj84tHnOfaYyMP9yJfRLlsw06IKkLb1VPSornR4AHnR+Ie8IFzo3RT5t4Vf
+	1teSBI+tw8LSW0MLqhSe5Lrmlqf5VgxqOhbg5KRzBOhMNnPm8pyeJN99b+so8cZe70Aaa1iYEShYH
+	1h0TbNN198Liw6Nw8/b/72OaIXUSLj4R9CEBAlpg/CsFJr1/bU5htLrwkUPhsClsC4TfASc9pWcZb
+	zEp/Ij7HslBD/xW/e4xPZEub5ACDLSTl5S0LhbG37tnRUAv6bkjTtBTTJ8F8XeTjBEogOrAXqGkyu
+	1uvLQqvbi+eRaPZu1KTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1prE51-000VXu-16;
-	Tue, 25 Apr 2023 08:31:19 +0000
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+	id 1prE5C-000Vgw-0m;
+	Tue, 25 Apr 2023 08:31:30 +0000
+Received: from desiato.infradead.org ([90.155.92.199])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prE4G-000Umd-33;
+	id 1prE4L-000V06-0s;
+	Tue, 25 Apr 2023 08:30:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=4MATvTsgGeOmEQ/GANoUT20RiIWs3kO1MdMdepZzbt0=; b=VCgtKq2KJH4yEIE0L+Lm3CAdz7
+	0j3Jrw4/9UDzPmqYjnVlehIqN9CPNFqrzKXRbk5/J3bd6tk8qlwkNN5PwFwmqEJ3k9PUM+//T24KB
+	LHF3XTfFSOXUge8TsR5mt2upGcZlfX0gSNrApfXKTS4iuWCN/YTDy63Nu64Aa+rlID/moKxIXjT+i
+	ngpxpUcgP3OQ7vygnGmUZpTaGm8tgnkMvkBNQaED9ULnQiY+6FXlnpWNb01K57G37rdLNU/kXe8Ec
+	4DYtxwN1yuA440xqRvY9JHSdUFa1q2jzwiabHJxMU63Sy7RLcsVyVUGPHhfw7JCetH0Opza10/QnN
+	qhC8OG8A==;
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1prE4F-009ZwA-0z;
 	Tue, 25 Apr 2023 08:30:34 +0000
-Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-959a3e2dc72so416383666b.2;
-        Tue, 25 Apr 2023 01:30:32 -0700 (PDT)
+Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-956eacbe651so958824866b.3;
+        Tue, 25 Apr 2023 01:30:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1682411432; x=1685003432;
+        d=gmail.com; s=20221208; t=1682411427; x=1685003427;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=BDhIHtzgrt1JK0OHDfth9yreKDguDZ1mwE1kdBlBcjc=;
-        b=Vs7/n3A14u40HN1zzZMUGkdqqU9uVQOs1pjNjF0fMuwj/qtPPRYsXL8b4BPsX4RZAC
-         srr/fOeNSSA3GQpurqa6UjH0SXhSXTUUDfXwDYOF/UeakUP8z1XSZWUrwNml3PlzJ4zY
-         gveSaBym8bK7QvSbG9pEwPvdz1obEtHS/Nh9TK73tGzL2ScCyyXbn49Ulel2kKoTUs+M
-         tPLK6wCoGlIJR0Q19k4rvJZJ3Cb0UEgOjWzkqOLqKOtVCbY34t0v6/PNeoFJ1m2wY08+
-         qxOPb43iBf3jUBBmUynwG5OwA1xsMqWZd+raPGX5d1g2nBsSpzBez9f90x1cycfwA5mo
-         xiuA==
+        bh=4MATvTsgGeOmEQ/GANoUT20RiIWs3kO1MdMdepZzbt0=;
+        b=bjcPp1ixgcYS0CdsMEKFpoRu5Vl9iYehRJyOq+x3P+aPBuYpVbrBkxhDE60ijZq4Cn
+         jsAE6U7+b2vCL4yZJg6hDCZrZkjgZXqD1Fk+FHc30mWrtj31wfLnjVvbNfceZ7xwlOE9
+         dcVL9knnSHgtpJFYrObMrkCAWBD0JhQJKWW2VmvOVEg7E7XuL0yCSc6RKFSPmvlVamG+
+         ztYFGQInl27UNENF0L6JukJ63mBAw1u1lZE+RxMDKVeZNrVOXIbsAOVAE8t0rpzFF/j+
+         CZhTBxMbN5iW0l+3973AX/+j6/Z0WSfZ2qxvPR5aXn/3v7Pfi94NFbkeQbnDROUntJoU
+         DLAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682411432; x=1685003432;
+        d=1e100.net; s=20221208; t=1682411427; x=1685003427;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=BDhIHtzgrt1JK0OHDfth9yreKDguDZ1mwE1kdBlBcjc=;
-        b=RJkL1mdKDDrr/w26xi8rjC2AaCZltF/QTByqH9Htl2O0fx2wWFn0EV1jbm/RR/RadH
-         Ce4XkgwBPs6KvG5fgxTVmyxQI0DTQRzZPap2GokRyhEv2DeqG97oZR9+xRCb5tXvKoEM
-         PF6EZYwBv490GDy0ujBJSH7uwOBipcgDd01loQgLi1UVDUxDOUK0xCNesn4+FkMsAflm
-         0QpOCpyW6Phuu/ynSP7ndIisGIuxqtSrEPVyoim+P0A5pIRJxRETZoI/CR4u2l+4FoLD
-         cYnAoKW/VlKI8XPiOLCPph9raNprx/3+sOB2Y8jHu+cvxDjNpdh92H7KwUFHEbqMSRgD
-         7dpQ==
-X-Gm-Message-State: AAQBX9fmkaHNFt3eny8/+s2Ga1oluWpvzLJ8UoqQJvnUw4RpbHGiefnH
-	kaijPnKlNTZEwtppa1I2Kgc=
-X-Google-Smtp-Source: AKy350aRWIhqNZBAvc3x7nhtFqt59Dfm4+hxInSRx/S8/Kxa5racJG5jce4um2W1h3R8yESoFZbBFQ==
-X-Received: by 2002:a17:906:3086:b0:94a:8291:a1e3 with SMTP id 6-20020a170906308600b0094a8291a1e3mr11236909ejv.74.1682411432342;
-        Tue, 25 Apr 2023 01:30:32 -0700 (PDT)
+        bh=4MATvTsgGeOmEQ/GANoUT20RiIWs3kO1MdMdepZzbt0=;
+        b=h6MaNhyXvfQeBjnV+YOSExbFpyujQRxEe51ngkMPuFNCdTR78b/t2X5cXoJQZoIewD
+         nWphXLiFmG5JOG1Kf2jbCBYEw/FYX5TLI0tbz1XITHuhVuKupo3sSbiT4751fzzM4RCR
+         MyAS8V9SjuQmqIXsJwXmoE9GYABPcqeY56zlhIcKmmii3CeP9xFeGRdCuu1n6yrrfpQz
+         vRhNroywQXbj6rmDbN+uerzGxqj+P5jRONen27J45WlVosDyauUerdhM9ei1gsRubR/s
+         6qXpSPSvM4UpQPao7wcvFT3Jdncf3Ut2bmekrWOcV76XxQIG+qxUGkqsrRCQKC3IG9uR
+         hjeA==
+X-Gm-Message-State: AAQBX9fV0qELwk3evwpO/k/GU0QXx+7/QjQIG6g/6gePuRXZJ7AQ9cEL
+	tP7A5asjUBPtS120rKUCesg=
+X-Google-Smtp-Source: AKy350Ym3aXZPGeAbGZAmIl+ZSX9R9HZR20W6VN0rTWWg05z4lCRUaNGqdiq7x1Mun7p5ti0Rr6aog==
+X-Received: by 2002:a17:906:9bfa:b0:94e:c4b:4d95 with SMTP id de58-20020a1709069bfa00b0094e0c4b4d95mr12322934ejc.69.1682411427432;
+        Tue, 25 Apr 2023 01:30:27 -0700 (PDT)
 Received: from arinc9-PC.lan ([149.91.1.15])
-        by smtp.gmail.com with ESMTPSA id mc2-20020a170906eb4200b0094ca077c985sm6439028ejb.213.2023.04.25.01.30.29
+        by smtp.gmail.com with ESMTPSA id mc2-20020a170906eb4200b0094ca077c985sm6439028ejb.213.2023.04.25.01.30.23
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 25 Apr 2023 01:30:31 -0700 (PDT)
+        Tue, 25 Apr 2023 01:30:26 -0700 (PDT)
 From: arinc9.unal@gmail.com
 X-Google-Original-From: arinc.unal@arinc9.com
 To: Sean Wang <sean.wang@mediatek.com>,
@@ -77,9 +91,9 @@ To: Sean Wang <sean.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Russell King <linux@armlinux.org.uk>
-Subject: [PATCH net-next 16/24] net: dsa: mt7530: set TRGMII RD TAP if trgmii is being used
-Date: Tue, 25 Apr 2023 11:29:25 +0300
-Message-Id: <20230425082933.84654-17-arinc.unal@arinc9.com>
+Subject: [PATCH net-next 14/24] net: dsa: mt7530: move enabling port 6 to mt7530_setup_port6()
+Date: Tue, 25 Apr 2023 11:29:23 +0300
+Message-Id: <20230425082933.84654-15-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.37.2
 In-Reply-To: <20230425082933.84654-1-arinc.unal@arinc9.com>
 References: <20230425082933.84654-1-arinc.unal@arinc9.com>
@@ -87,8 +101,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230425_013033_004572_BA9797D0 
-X-CRM114-Status: GOOD (  16.09  )
+X-CRM114-CacheID: sfid-20230425_093031_567568_DB249BA2 
+X-CRM114-Status: GOOD (  11.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,66 +120,44 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-This code sets the Read Data (RD) TAP value to 16 for all TRGMII control
-registers.
-
-The for loop iterates over all the TRGMII control registers, and
-mt7530_rmw() function is used to perform a read-modify-write operation on
-each register's RD_TAP field to set its value to 16.
-
-This operation is used to tune the timing of the read data signal in
-TRGMII to match the TX signal of the link partner.
-
-Run this if trgmii is being used. Since this code doesn't lower the
-driving, there's no apparent benefit to run this if trgmii is not being
-used.
-
-Add a comment to explain the code.
-
-Thanks to 趙皎宏 (Landen Chao) for pointing out what the code does.
+Enable port 6 only when port 6 is being used. Update the comment on
+mt7530_setup() with a better explanation.
 
 Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- drivers/net/dsa/mt7530.c | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
+ drivers/net/dsa/mt7530.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index ea023e32313c..0108af681d50 100644
+index 04a48829465c..980d59170ba2 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -404,7 +404,7 @@ static void
+@@ -404,7 +404,11 @@ static int
  mt7530_setup_port6(struct dsa_switch *ds, phy_interface_t interface)
  {
  	struct mt7530_priv *priv = ds->priv;
--	u32 ncpo1, ssc_delta, xtal, val;
-+	u32 ncpo1, ssc_delta, i, xtal, val;
- 
- 	val = mt7530_read(priv, MT7530_MHWTRAP);
- 	val &= ~MHWTRAP_P6_DIS;
-@@ -457,6 +457,11 @@ mt7530_setup_port6(struct dsa_switch *ds, phy_interface_t interface)
- 
- 		/* Enable the MT7530 TRGMII clocks */
- 		core_set(priv, CORE_TRGMII_GSW_CLK_CG, REG_TRGMIICK_EN);
+-	u32 ncpo1, ssc_delta, trgint, xtal;
++	u32 ncpo1, ssc_delta, trgint, xtal, val;
 +
-+		/* Set the Read Data TAP value of the MT7530 TRGMII */
-+		for (i = 0; i < NUM_TRGMII_CTRL; i++)
-+			mt7530_rmw(priv, MT7530_TRGMII_RD(i),
-+				   RD_TAP_MASK, RD_TAP(16));
- 	}
- }
++	val = mt7530_read(priv, MT7530_MHWTRAP);
++	val &= ~MHWTRAP_P6_DIS;
++	mt7530_write(priv, MT7530_MHWTRAP, val);
  
-@@ -2214,10 +2219,6 @@ mt7530_setup(struct dsa_switch *ds)
- 		mt7530_write(priv, MT7530_TRGMII_TD_ODT(i),
- 			     TD_DM_DRVP(8) | TD_DM_DRVN(8));
+ 	xtal = mt7530_read(priv, MT7530_HWTRAP) & HWTRAP_XTAL_MASK;
  
--	for (i = 0; i < NUM_TRGMII_CTRL; i++)
--		mt7530_rmw(priv, MT7530_TRGMII_RD(i),
--			   RD_TAP_MASK, RD_TAP(16));
--
- 	/* Enable PHY access and operate in manual mode */
+@@ -2224,9 +2228,9 @@ mt7530_setup(struct dsa_switch *ds)
+ 		mt7530_rmw(priv, MT7530_TRGMII_RD(i),
+ 			   RD_TAP_MASK, RD_TAP(16));
+ 
+-	/* Enable port 6 */
++	/* Enable PHY access and operate in manual mode */
  	val = mt7530_read(priv, MT7530_MHWTRAP);
- 	val &= ~MHWTRAP_PHY_ACCESS;
+-	val &= ~MHWTRAP_P6_DIS & ~MHWTRAP_PHY_ACCESS;
++	val &= ~MHWTRAP_PHY_ACCESS;
+ 	val |= MHWTRAP_MANUAL;
+ 	mt7530_write(priv, MT7530_MHWTRAP, val);
+ 
 -- 
 2.37.2
 
