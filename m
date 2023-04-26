@@ -4,100 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5BB3C77B78
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Apr 2023 19:24:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5131BC77B60
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Apr 2023 21:10:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=623I+b9sj9JQHMoE8gUBonB4YWYfafGdl6RvYOXiA9s=; b=Am/ZKcrefa0UaPoQqHU6/yjWNa
-	l3nx0TmvjokE4aL/y/0DfttNR77UznwbCnwyuQ4YyIMvi0zGjW5cRBpm4nGRhK+AEbzVFinsfpZX1
-	53p6nK4akw1qB1DJ/nO5z4bMLvMAGpbEW18sKG4ZDMPeERBZZFbeiSyPbTAdcCePYAIu5yvUscGkl
-	Vh6NdxIGkXfgHwk117DXi8Xe0NuJrJwr4KplnwyB78bCJDfKjBKfYyhwi2685GjsB4b1OXjRKUym6
-	LV5XcT7cqnnDoxCbflzVQw1ilUdkch3nZi687pHs5NFTKugYUman7RKDYaR9MeXPkHwHHMJ5tesCM
-	ncDUyt4Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mu0CENun8oFZTueHArmv4VmXak5XmpNKe7QDDJtnNAM=; b=sWEJinHrhBkx74o7qWBo2LmURI
+	wH0jxFamulXLBrZzDxwb35CMziOcxBwVkaZQk55Ubf6xOMRXYBWaZ53qezMSdgXf75DYNsyIDIV1I
+	xozd1ltmk+7hpdAY+dJlu8p5av29M+lbg1MkjR/9vEZwyx24kinEd2N+/x2isewHtC0PHfT+76hu4
+	qD5936vZINBCzVEIZ77dCH/ajSyecIF5EsF3A2W+LJbYyjLJnrwZ+8Xm+WNSGqVJWxwHNbeNAgADn
+	lLpbEqVhgsBU4+6NFfkfc+p1yqi9Qa4J9lDZwDuGoBWKV9JnpEncelu01nZ7103L7LUNv87lJBoHH
+	CbKLIW0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1prkkq-004hJ7-1y;
-	Wed, 26 Apr 2023 19:24:40 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1prmP1-004sLG-0I;
+	Wed, 26 Apr 2023 21:10:15 +0000
+Received: from mail-oi1-f175.google.com ([209.85.167.175])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prkkl-004hHm-22
-	for linux-mediatek@lists.infradead.org;
-	Wed, 26 Apr 2023 19:24:38 +0000
-Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-3f19323259dso63727775e9.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 26 Apr 2023 12:24:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1682537073; x=1685129073;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=623I+b9sj9JQHMoE8gUBonB4YWYfafGdl6RvYOXiA9s=;
-        b=txkwhL2liSvbgv2V/br5OZELzu6PxeKpE67gU/OpfSZOLRPr0Q4IV/1S3HnN8lZxEB
-         ULpXoOzuVoXSeHCYF68J/dRTwZmz+IVYElEolOaUDHtcxkLXqj6+IvkayBKFSIAFU4Cp
-         Cj5tlC/+5zaEq08fnKxONhIGkLIlq+eUak7jnRM0QfKTF3Q521FOP1ObWWn8JWtjgHZT
-         5YcQnB8aF+8t67t/8ISkHQy+Wb2BIvnvRly7vLpGjbQg82slREEwpsVsnd0eS6Bg6v2u
-         XynQPcxW3uibdKTUncqjLaGbT6tgNC7YGI8ux5ZLDPpwboRld+QuiKDSuGlsw8iWee/9
-         BaFw==
+	id 1prmOw-004sKX-1s;
+	Wed, 26 Apr 2023 21:10:11 +0000
+Received: by mail-oi1-f175.google.com with SMTP id 5614622812f47-38dee9a7795so2840485b6e.3;
+        Wed, 26 Apr 2023 14:10:08 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682537073; x=1685129073;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=623I+b9sj9JQHMoE8gUBonB4YWYfafGdl6RvYOXiA9s=;
-        b=AGYPudL1o2rLmTFbkEQ5w6TItSwQu/wJyISfRvTmGpdKHs0qyEXFtUTF44ecZHUZmB
-         ehKLO+J6x/ugw4l5DxEN47QP4NRlJeSEIcfMfQ/WHmq+HjOVpF3uWVNM8o+PQ2cufsNW
-         3ITy3JeGUDRcfPW44SUx67vLMvjGzDYUFs7H+1vRIG7QYKGXPRsdgkeexpITUV/kRnp2
-         FHwH3iTC0ZlNPCKBavS6OJsB4dQOj9xnw/BRsrrUKTG4oDfm17oZ3kMrnqnK1y+rUYbX
-         m2EnwNPKGpQH6thyltdc01Fa8RNMX/0UxeTusr0aaNu/rTQiDrnRpa41msljXQvb0dez
-         77rA==
-X-Gm-Message-State: AAQBX9dJ4ND9jCfvtLDQ1f5GSNa0O1xTxcwzZHm/9nKf+cl0SLzL2aB5
-	iC8hNyBrBgL8mcj+FzmfmJJ2HQ==
-X-Google-Smtp-Source: AKy350b61s1hT/fGboWfJrsEyVqrqX9zy/B/kQ0qe65IuuQ1Z++YEaoBMpkDWIvqEtn+zzLVEq47Sw==
-X-Received: by 2002:a7b:cb47:0:b0:3f0:967e:2cfb with SMTP id v7-20020a7bcb47000000b003f0967e2cfbmr14555881wmj.36.1682537072613;
-        Wed, 26 Apr 2023 12:24:32 -0700 (PDT)
-Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id m6-20020a05600c4f4600b003ee5fa61f45sm22482137wmq.3.2023.04.26.12.24.31
+        d=1e100.net; s=20221208; t=1682543408; x=1685135408;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=mu0CENun8oFZTueHArmv4VmXak5XmpNKe7QDDJtnNAM=;
+        b=fJKew+voK0YVbJh+nA8KKKvQsJ7o3CqNIWbmSbWaIseKGbqEmlZon7j3yFuMxpzXPR
+         Ob8GQ8Gr1/4rPeo4/taryVSuPccvtzNxqq2UP5rcq9NyHfthkGYUyjrD70fAt7gI6Kko
+         txxqNLIpOXezuTRk7uZeqN6pGkIzLH1/ZH3D5wfa39Fa+UA+chyfD/FLa/lpeuY8N/Ar
+         BSO+0bJgaGx9aVYrgRDWtcX/S/ht1iItb+Bbx7z+bJt6bbXceXiE02/BXQ1OsJczySdV
+         x84Gt9Gko4l3MdyjKUE6uzhqEpLtkRkEtBgjNnq9Vj1z69pAReIVGoMggzLR8ZisfmRP
+         n0UQ==
+X-Gm-Message-State: AAQBX9etxNv/w3ST7QsGqd3PgCOvA/bMKrcdi7i5UG1ICSuNLhYWqUtN
+	qmZD8fG80v4f4sMEaNksHQ==
+X-Google-Smtp-Source: AKy350ZiQQZVuONWZ4qZ3rjKWFp/+fC6WoEIdnMn+PbZciaDx8naIN2vbcz6/nEY74IMf5U9XKf8aQ==
+X-Received: by 2002:a05:6808:21a2:b0:38e:6cb1:298b with SMTP id be34-20020a05680821a200b0038e6cb1298bmr11228463oib.53.1682543407669;
+        Wed, 26 Apr 2023 14:10:07 -0700 (PDT)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id b82-20020aca3455000000b0038ec2b341c2sm4366485oia.12.2023.04.26.14.10.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 26 Apr 2023 12:24:31 -0700 (PDT)
-From: amergnat@baylibre.com
-Date: Wed, 26 Apr 2023 21:24:20 +0200
-Subject: [PATCH] usb: mtu3: Don't check the USB3 status bits if the max
- speed is USB2
+        Wed, 26 Apr 2023 14:10:07 -0700 (PDT)
+Received: (nullmailer pid 1240028 invoked by uid 1000);
+	Wed, 26 Apr 2023 21:10:06 -0000
+Date: Wed, 26 Apr 2023 16:10:06 -0500
+From: Rob Herring <robh@kernel.org>
+To: Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Kevin Hilman <khilman@baylibre.com>
+Subject: Re: [PATCH v6 03/12] dt-bindings: watchdog: mediatek,mtk-wdt: add
+ mt8365
+Message-ID: <20230426211006.GA1227761-robh@kernel.org>
+References: <20230203-evk-board-support-v6-0-8d6b1cfe7f29@baylibre.com>
+ <20230203-evk-board-support-v6-3-8d6b1cfe7f29@baylibre.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20230426-usb-mtu3-improvement-v1-1-1cf02434b478@baylibre.com>
-X-B4-Tracking: v=1; b=H4sIAGN6SWQC/23OSw6CMBSF4a2Qjr0WqFJwK8ZBHxe5gz7SlsaEs
- HfBscN/8J2cjWVMhJk9mo0lrJQp+CO6S8PMovwbgezRrG970d76AdaswZVVALmYQkWHvoCUdhq
- lxXmakR1Uq4ygk/JmOfEaeR2uApLpeAmRDHdlFMOd/xs7fUw40+d36/na9y9zOhGspgAAAA==
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Alexandre Bailon <abailon@baylibre.com>, 
- Fabien Parent <fparent@baylibre.com>, 
- Alexandre Mergnat <amergnat@baylibre.com>
-X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1260; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=lnjx8kcqUDfgilr0fGyRB+NAq/rLS5pv35XuHVTlGDc=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkSXpvI7p5QNlCaGzZG7dVJB/7HfFq9BIZoExjwmkv
- 080ExUCJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZEl6bwAKCRArRkmdfjHURY+HD/
- 4hwG+Mdt3GhTLAJLObbayoktgbVLjxIFDSoY/xq48qazZ9BPkPhY2Qte2zfBbTjYjy8rJ2mBsSiRB0
- eZ1CCWQSwaCsiT//hW2xlKAjSPb4k5ceRUF0HssuEtBokGnZMK95x5J+FcEiS5OwRnd/BDc/Xx/cHE
- 0UoYi5hMJUiUtJA0yQzSRmwL1k7c7mTZrM3v60qAU2/EV1V04OdQUOifGw2d2BaY4WGRhEyiu2C8gM
- NyiCGqXNsvHTLKdQsNQ1YXFi8g8NIT3NNzAmLAd8W8RjnRCP8i3icnvygNKzm6mDY5JEtgbdSt3u9L
- NUKgxtJ6UF7TQNEb8BjY1aAS0aGyKRJ5O936nOq0HY0oIMKqWqSD4vk3GTugAIkWGSjtFKp3qS/gp2
- 9imZjJlZtyK8jMF0N1frygUANSKcqd/1oIS0qSB7YgR6yPv99JJEqzxHyr1QfPLbZPfklU1lRbAASZ
- I1v1/PZROhA8SSc5FRGiceKuOJ+v25kBk92Jjs0oPwraLRVxDPqCTBd8nFyslj+Hc4QocqgNpCi7I+
- /unp2jqRGVoo9iEh3kZp/AJ2CNPySp9rCsfeZo1xX2c4PBb1eBvrCnv9eXhl+VUTadHPpgipqHFcHU
- PvCjX56Zf08oS7nE6mMbS0m1gESio5CeRG0Ps3FhjWsOBc4c1KvLuT1kjIDA==
-X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
- fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230203-evk-board-support-v6-3-8d6b1cfe7f29@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230426_122435_887336_19F1757E 
-X-CRM114-Status: GOOD (  12.49  )
+X-CRM114-CacheID: sfid-20230426_141010_642908_E0F3BC29 
+X-CRM114-Status: GOOD (  10.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,42 +81,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Alexandre Bailon <abailon@baylibre.com>
+On Wed, Apr 26, 2023 at 12:49:03PM +0200, Alexandre Mergnat wrote:
+> Add binding description for mediatek,mt8365-wdt
+> 
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Tested-by: Kevin Hilman <khilman@baylibre.com>
+> Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> ---
+>  Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml | 1 +
+>  1 file changed, 1 insertion(+)
 
-If the IP is U3, the driver will check some USB3 status bits.
-This could fail if only USB2 is used.
-This only check these bits if USB operate at USB3 speed.
+This has already been applied by Guenter.
 
-Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
-Signed-off-by: Fabien Parent <fparent@baylibre.com>
-Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
----
-This patch is ported from downstream. Without this fix, USB doesn't
-work if USB2 protocol is used first.
----
- drivers/usb/mtu3/mtu3_core.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/usb/mtu3/mtu3_core.c b/drivers/usb/mtu3/mtu3_core.c
-index a3a6282893d0..00dba871aff8 100644
---- a/drivers/usb/mtu3/mtu3_core.c
-+++ b/drivers/usb/mtu3/mtu3_core.c
-@@ -100,7 +100,7 @@ static int mtu3_device_enable(struct mtu3 *mtu)
- 
- 	mtu3_clrbits(ibase, U3D_SSUSB_IP_PW_CTRL2, SSUSB_IP_DEV_PDN);
- 
--	if (mtu->u3_capable) {
-+	if (mtu->u3_capable && mtu->max_speed >= USB_SPEED_SUPER) {
- 		check_clk = SSUSB_U3_MAC_RST_B_STS;
- 		mtu3_clrbits(ibase, SSUSB_U3_CTRL(0),
- 			(SSUSB_U3_PORT_DIS | SSUSB_U3_PORT_PDN |
-
----
-base-commit: fe15c26ee26efa11741a7b632e9f23b01aca4cc6
-change-id: 20230426-usb-mtu3-improvement-77d987def9fe
-
-Best regards,
--- 
-Alexandre Mergnat <amergnat@baylibre.com>
-
+Rob
 
