@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5131BC77B60
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Apr 2023 21:10:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D9CAC7618E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Apr 2023 23:05:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mu0CENun8oFZTueHArmv4VmXak5XmpNKe7QDDJtnNAM=; b=sWEJinHrhBkx74o7qWBo2LmURI
-	wH0jxFamulXLBrZzDxwb35CMziOcxBwVkaZQk55Ubf6xOMRXYBWaZ53qezMSdgXf75DYNsyIDIV1I
-	xozd1ltmk+7hpdAY+dJlu8p5av29M+lbg1MkjR/9vEZwyx24kinEd2N+/x2isewHtC0PHfT+76hu4
-	qD5936vZINBCzVEIZ77dCH/ajSyecIF5EsF3A2W+LJbYyjLJnrwZ+8Xm+WNSGqVJWxwHNbeNAgADn
-	lLpbEqVhgsBU4+6NFfkfc+p1yqi9Qa4J9lDZwDuGoBWKV9JnpEncelu01nZ7103L7LUNv87lJBoHH
-	CbKLIW0w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Tryf26oI7NZspdhQrPCelEOu5SNun7TuTLvbo5UwH9k=; b=TeHDBE4/2bylPZBX7jJ3eEehBt
+	XTE95iqA8tQF/JWDUOMB/LcQwO4KmJD0KN7UFUuCInuccUGpMgs8sa8siTP/9pdjyFPN95kkqlzgU
+	V236WbJxSqyKviwug9z+N+KXtS9qRX2ZIPjozsTk8lBuBR0p8YHABfa3Uperw0FReFrrfLCYX3txu
+	1F92BwtZZmcueg9DtyiY782cA53Fb8tiJjXq4RWUxml4NeYLJ2Z+ikOtCMBLxpCgFVeDB3id12v5N
+	gC9h0xbWJPmyazKbGRwxPgiQyMNModHyU3S9flsmYYUtxrlmGnzHNxr+ElYfBbv83HZeNwWEBW4nU
+	LhNCQzFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1prmP1-004sLG-0I;
-	Wed, 26 Apr 2023 21:10:15 +0000
-Received: from mail-oi1-f175.google.com ([209.85.167.175])
+	id 1proCp-0050Ek-09;
+	Wed, 26 Apr 2023 23:05:47 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prmOw-004sKX-1s;
-	Wed, 26 Apr 2023 21:10:11 +0000
-Received: by mail-oi1-f175.google.com with SMTP id 5614622812f47-38dee9a7795so2840485b6e.3;
-        Wed, 26 Apr 2023 14:10:08 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682543408; x=1685135408;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=mu0CENun8oFZTueHArmv4VmXak5XmpNKe7QDDJtnNAM=;
-        b=fJKew+voK0YVbJh+nA8KKKvQsJ7o3CqNIWbmSbWaIseKGbqEmlZon7j3yFuMxpzXPR
-         Ob8GQ8Gr1/4rPeo4/taryVSuPccvtzNxqq2UP5rcq9NyHfthkGYUyjrD70fAt7gI6Kko
-         txxqNLIpOXezuTRk7uZeqN6pGkIzLH1/ZH3D5wfa39Fa+UA+chyfD/FLa/lpeuY8N/Ar
-         BSO+0bJgaGx9aVYrgRDWtcX/S/ht1iItb+Bbx7z+bJt6bbXceXiE02/BXQ1OsJczySdV
-         x84Gt9Gko4l3MdyjKUE6uzhqEpLtkRkEtBgjNnq9Vj1z69pAReIVGoMggzLR8ZisfmRP
-         n0UQ==
-X-Gm-Message-State: AAQBX9etxNv/w3ST7QsGqd3PgCOvA/bMKrcdi7i5UG1ICSuNLhYWqUtN
-	qmZD8fG80v4f4sMEaNksHQ==
-X-Google-Smtp-Source: AKy350ZiQQZVuONWZ4qZ3rjKWFp/+fC6WoEIdnMn+PbZciaDx8naIN2vbcz6/nEY74IMf5U9XKf8aQ==
-X-Received: by 2002:a05:6808:21a2:b0:38e:6cb1:298b with SMTP id be34-20020a05680821a200b0038e6cb1298bmr11228463oib.53.1682543407669;
-        Wed, 26 Apr 2023 14:10:07 -0700 (PDT)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id b82-20020aca3455000000b0038ec2b341c2sm4366485oia.12.2023.04.26.14.10.06
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 26 Apr 2023 14:10:07 -0700 (PDT)
-Received: (nullmailer pid 1240028 invoked by uid 1000);
-	Wed, 26 Apr 2023 21:10:06 -0000
-Date: Wed, 26 Apr 2023 16:10:06 -0500
-From: Rob Herring <robh@kernel.org>
-To: Alexandre Mergnat <amergnat@baylibre.com>
-Cc: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Kevin Hilman <khilman@baylibre.com>
-Subject: Re: [PATCH v6 03/12] dt-bindings: watchdog: mediatek,mtk-wdt: add
- mt8365
-Message-ID: <20230426211006.GA1227761-robh@kernel.org>
-References: <20230203-evk-board-support-v6-0-8d6b1cfe7f29@baylibre.com>
- <20230203-evk-board-support-v6-3-8d6b1cfe7f29@baylibre.com>
+	id 1proCl-0050Dp-1Q
+	for linux-mediatek@lists.infradead.org;
+	Wed, 26 Apr 2023 23:05:44 +0000
+X-UUID: dc3d838ae48611edb7d8d11f642b8e78-20230426
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Tryf26oI7NZspdhQrPCelEOu5SNun7TuTLvbo5UwH9k=;
+	b=R8d/oKOWoMyjgRsz7JQiAyPz4DEfD65Wd1PoQTl5Z3bsLRFEcjIgvCWkr4A4487Yh2aXzEelb01tjYw34JrZIxkkSd0Rxn31sHB4Xv5PtwSd1cRUPXfjsGA4bnzwGYW3vL7ay1hjCiZPNO7GF7QbJAevM3NdOnWlvAsGXGS0Dpg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22,REQID:e65bce53-8e57-4405-ad22-1d6eebdad5c7,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:120426c,CLOUDID:08845b85-cd9c-45f5-8134-710979e3df0e,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: dc3d838ae48611edb7d8d11f642b8e78-20230426
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <ryder.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 786504283; Wed, 26 Apr 2023 16:05:39 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 27 Apr 2023 07:05:36 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 27 Apr 2023 07:05:36 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt7996: fix header translation logic
+Date: Thu, 27 Apr 2023 07:05:15 +0800
+Message-ID: <1ba50091a50574ff9700723a4485bccb3d93322f.1682549983.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230203-evk-board-support-v6-3-8d6b1cfe7f29@baylibre.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230426_141010_642908_E0F3BC29 
-X-CRM114-Status: GOOD (  10.41  )
+X-CRM114-CacheID: sfid-20230426_160543_488471_C9FCB6E4 
+X-CRM114-Status: GOOD (  11.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,20 +81,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 26, 2023 at 12:49:03PM +0200, Alexandre Mergnat wrote:
-> Add binding description for mediatek,mt8365-wdt
-> 
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Tested-by: Kevin Hilman <khilman@baylibre.com>
-> Reviewed-by: Guenter Roeck <linux@roeck-us.net>
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-> ---
->  Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml | 1 +
->  1 file changed, 1 insertion(+)
+When header translation failure is indicated, the hardware will insert
+an extra 2-byte field containing the data length after the protocol
+type field. This happens either when the LLC-SNAP pattern did not match,
+or if a VLAN header was detected.
 
-This has already been applied by Guenter.
+The previous commit accidentally breaks the logic, so reverts back.
 
-Rob
+Fixes: 27db47ab1f47 (wifi: mt76: mt7996: enable mesh HW amsdu/de-amsdu support)
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7996/mac.c | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+index 39a4a73ef8e6..4c03d5a3bcea 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+@@ -836,14 +836,19 @@ mt7996_mac_fill_rx(struct mt7996_dev *dev, struct sk_buff *skb)
+ 		skb_pull(skb, hdr_gap);
+ 		if (!hdr_trans && status->amsdu && !(ieee80211_has_a4(fc) && is_mesh)) {
+ 			pad_start = ieee80211_get_hdrlen_from_skb(skb);
+-		} else if (hdr_trans && (rxd2 & MT_RXD2_NORMAL_HDR_TRANS_ERROR) &&
+-			   get_unaligned_be16(skb->data + pad_start) == ETH_P_8021Q) {
++		} else if (hdr_trans && (rxd2 & MT_RXD2_NORMAL_HDR_TRANS_ERROR)) {
+ 			/* When header translation failure is indicated,
+ 			 * the hardware will insert an extra 2-byte field
+ 			 * containing the data length after the protocol
+-			 * type field.
++			 * type field. This happens either when the LLC-SNAP
++			 * pattern did not match, or if a VLAN header was
++			 * detected.
+ 			 */
+-			pad_start = 16;
++			pad_start = 12;
++			if (get_unaligned_be16(skb->data + pad_start) == ETH_P_8021Q)
++				pad_start += 4;
++			else
++				pad_start = 0;
+ 		}
+ 
+ 		if (pad_start) {
+-- 
+2.18.0
+
 
