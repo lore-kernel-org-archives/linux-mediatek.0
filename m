@@ -4,80 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8679AC7618E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Apr 2023 10:15:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C935C7618E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Apr 2023 10:49:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=i11IgZo79qKkHh9NToFxjKigNknjUuIXFqIoGJe+41M=; b=FF9H+qMOiEMgDuuO9Q/GmdJCM+
-	EP61HDzPhulePzN3QAeYEWDqvfSdBCK51bzBOdJ/6J8aKic73m2is7YhnvmjYxvBlaU+UNsavWG0n
-	NBtBtZKbmoVX/DHE7sBsZTMuNHkX4xDWnFSrrR+gHO2jWE0MAlDmkAkYsbpuyZLMSn0cdBCE+NPLv
-	H7ks4F586qrZUoInfP52JgZMMQvhMyZm+EnW3cpUcQXnDZ9WxKMtNbIfkxHdfX0QR2qfrYdiQe8eA
-	h8dVZBlEh3p8YGKYIT90EWLqEZ2GASb6KCjN64vCRotnBkJUlvOAPQMvtQdxDXJQLKFfm/yaIaxwT
-	gdxAFKLg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=uXqpOIhkzwPRXmqDg52P5Pe8HaS6m4zR8JovEcwwVoo=; b=4VhGSc1FwDR3eE
+	cBAOVOcuhZMQSIWZp+ZB2YY3zOQYo9M3fMMbGjfjZ3MeIMrdPxiWAO3iO/MUdjvNn606X4evJ60kv
+	2dx187lDc37dxK4gK2ekxOMlwMzrtKYwbJUAMtUTEh9NoHqkLLNkLmoSxpKDeFmwjNFBlxxoumgcr
+	mYyFkzeJSCbUEpjn4havFFOr/IfN1zynbXKRV/Q6UTW5d1U2/D7sWRCgZFamM+LO8n58niFDZ/rTW
+	sSaslurONq1Q+BXF8m39KQs3ETHHQHhNgIxW1KLreqirsev57kYh2MN5nuPl2pyMaCWjxidk3UwGY
+	NOG0chtiVN73vpwVp5RQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1prcBR-003PnW-0Z;
-	Wed, 26 Apr 2023 10:15:33 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1prcif-003ebM-3C;
+	Wed, 26 Apr 2023 10:49:53 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prbCz-003FJR-0S;
-	Wed, 26 Apr 2023 09:13:06 +0000
-X-UUID: 8ac4f034e41211edb7d8d11f642b8e78-20230426
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=i11IgZo79qKkHh9NToFxjKigNknjUuIXFqIoGJe+41M=;
-	b=DwTbsZZzl8HQ/4jnbeUKugC3O+Zx2SR0kxUWeO/NjuBfm/D2+hqAYmAHqtIDIGp0j2ULKgJRDM0mOLrctDFWiOa3yjwzG6oWBiyfIkOPz7bfeupd/WtNxZkjs+IMsJMDG7bhhrwyUUC34wZqgiFqEP3O5+HRK5BWQPQAFoPJ/Xc=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:8f8f83a7-d273-45fb-9760-e9c8f03f6bbb,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:95
-X-CID-INFO: VERSION:1.1.22,REQID:8f8f83a7-d273-45fb-9760-e9c8f03f6bbb,IP:0,URL
-	:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTION
-	:quarantine,TS:95
-X-CID-META: VersionHash:120426c,CLOUDID:a4e492a2-8fcb-430b-954a-ba3f00fa94a5,B
-	ulkID:2304261712486KT5H5GU,BulkQuantity:1,Recheck:0,SF:28|17|19|48|38|29,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
-	OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-UUID: 8ac4f034e41211edb7d8d11f642b8e78-20230426
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <tinghan.shen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 486879135; Wed, 26 Apr 2023 02:13:00 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 26 Apr 2023 17:12:25 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Wed, 26 Apr 2023 17:12:25 +0800
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
-	<mathieu.poirier@linaro.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof
- Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Tinghan Shen
-	<tinghan.shen@mediatek.com>
-CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v10 07/11] remoteproc: mediatek: Control SCP core 1 by rproc subdevice
-Date: Wed, 26 Apr 2023 17:12:07 +0800
-Message-ID: <20230426091211.21557-8-tinghan.shen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230426091211.21557-1-tinghan.shen@mediatek.com>
-References: <20230426091211.21557-1-tinghan.shen@mediatek.com>
+	id 1prciS-003eRI-1E
+	for linux-mediatek@lists.infradead.org;
+	Wed, 26 Apr 2023 10:49:44 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-3f1957e80a2so146848425e9.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 26 Apr 2023 03:49:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1682506176; x=1685098176;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=uXqpOIhkzwPRXmqDg52P5Pe8HaS6m4zR8JovEcwwVoo=;
+        b=ZDpQ1hhLsbi7CS535pqYF3gnHiml9s00kPPxdCtw+mPgIgeqReJQSGyKQ6lNzHebJ1
+         WuWIymVAaKiRUlhMzYIxLZcOh0FqvOEvPUs2zCSUJMTEkyYtjfq3mN5DWvjS0JpLV/FI
+         IPzruLvzHylyUBUnIhB5l+7gxBT2QDnJgHCoJfUPfcI86Yw+fuFnJ51aS/VCl9fwk1NH
+         OyGVjrEoZ80VLJByUaU3+1HDdgnXT3tBQhoiMiYj00sK5TObslC+cj7zbPapE4lOCJgN
+         LDFIiyvYeWG3bD5N01l+mn7VRc3Vk3BrJYh/lP+VVbCdftZCCSzRI973roq7c8/SaQ+Q
+         LdYg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1682506176; x=1685098176;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=uXqpOIhkzwPRXmqDg52P5Pe8HaS6m4zR8JovEcwwVoo=;
+        b=I8EOPld8+YCrUGHkKzmJDGS7FbzgsiHe+54X1y9B+O+gZF8hlFlD76U7FnmwYl97gx
+         2hm1wHOjP47TcG2zh7wef9Tg7VRRxMtK12jvrUcbOt83/yCjuMnPjs+s83EiP2ZhZa2V
+         KOWAGz1KCJAQuFh4bsLQAdWJicPT/5b/nRvZhNfgl6f7eB6Dx1fF/EVgOFxEWcifGmGq
+         bSWDsjI8OHcfRa2SerLUAl+RD3IB2Q+lZEHiqqb2QPBEKq+GoCBQnrkSnLyXG8vxlKRs
+         LSIMKARyRldqgljLEzQpBJsvX8c+vwyiZH0Rz4ns/Zu+Cu/NPwgoOFEIfFazoCsUkBY+
+         Xe8w==
+X-Gm-Message-State: AC+VfDy4Tmp46kehV1rtolVMBwUdNvyS++te7pJ9hRzCWes84U9ZkjSR
+	kZ+n1UifqkpYWXD+g2pJeWu0pQ==
+X-Google-Smtp-Source: ACHHUZ4enVDWy52+KhmMnqjQXLUOxop4/WasL/L+Qo7S3eViLzsO6QqIXDK2o9bhjpKEDPNf/LAbsw==
+X-Received: by 2002:a05:600c:474e:b0:3f1:7510:62e8 with SMTP id w14-20020a05600c474e00b003f1751062e8mr1486385wmo.3.1682506176383;
+        Wed, 26 Apr 2023 03:49:36 -0700 (PDT)
+Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
+        by smtp.googlemail.com with ESMTPSA id 25-20020a05600c025900b003ed2c0a0f37sm17601988wmj.35.2023.04.26.03.49.35
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 26 Apr 2023 03:49:35 -0700 (PDT)
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Subject: [PATCH v6 00/12] Improve the MT8365 SoC and EVK board support
+Date: Wed, 26 Apr 2023 12:49:00 +0200
+Message-Id: <20230203-evk-board-support-v6-0-8d6b1cfe7f29@baylibre.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAJwBSWQC/4XOwW7DIAwG4FepOI/JQCB0p73HtAMYZ0HLQgUtU
+ lXl3eftOEXLyfot/Z/9EI1qpiZeTg9RqeeWy8rBPZ0EzmH9IJkTZ6FBG9BgJPVPGUuoSbbb5VL
+ qVSYbx+DNmdIYBfdiaCRjDSvO3Fxvy8LLObdrqfffO13xePuP7EqCBAdGj2AHlexrDPclx0rPW
+ L7EO4NdHyKaEUc4YooKEKcdxBwi5ucTAEMeCOC898lwiAyMWJwmci4Yj7CD2EPEMqK8N6jiADa
+ kP8i2bd91ymqSzgEAAA==
+To: Catalin Marinas <catalin.marinas@arm.com>, 
+ Will Deacon <will@kernel.org>, Wim Van Sebroeck <wim@linux-watchdog.org>, 
+ Guenter Roeck <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, 
+ Alexandre Mergnat <amergnat@baylibre.com>, 
+ Kevin Hilman <khilman@baylibre.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+ Fabien Parent <fparent@baylibre.com>, 
+ Amjad Ouled-Ameur <aouledameur@baylibre.com>
+X-Mailer: b4 0.12.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4220; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=3cpMqoAIbEB/10TKO6xL48InNMRQARuO5SZVvhSL3Js=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkSQG+qCzT9ucovl/oxsyKVndun3w9oEpHSRG/jODy
+ 9ZtYqhSJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZEkBvgAKCRArRkmdfjHURT+/EA
+ DASggB/c5arZeYIIB3jJA4rPhLRODAMysf2Ftpmx9t9b1WYkM2prj3jAEzhuAUTuFEEqN5VdGO2L4c
+ w5hwiH6skyFQEy5yBmX1GU3jwhCkCDuQ90r1p45Sn6hysKJqJcRWNNOyYiWCo6TiPK+LQeMmEKCRdo
+ Y4QLoQgiMZASwjkmRH4pJphax5nyNAP7Re1Rq2sIWaTsCGNxkwBQtBUwMhENDaa4KnT77DiwVUtiVb
+ x5zXBB848IUgavMF+vh20pA7pi6xtJW8XDK3BsYZNSGKB5FDi9vFD/ndoZNBPRZ4iCSbkuofRtAtie
+ VBrVKNncGrpvgTPtHYekr/R5/QJAfVElZZ6Z4A3zCGTlCjGkCwGTUB4B4jjXSYhAOHmfR225ITo+aL
+ BDi8ewAB2f3YPkr4e2QqUdoC5YZXNt3jtwenqaGmFSAMlOPTA82ZjZI+hX1cNm6LmFsCfP4TYFojBy
+ mPj/Uf4E10FS9yp9lgN8OSTo15oZ5xB6Oq6E1dRJh9LKRuSSxTFNvokNFZl01H6KSWt3QuJcWB1QjT
+ qaZNtCDEv2v97SWZTy37nJa5Q881qVRRkqIuah/ZWO2qPfcMoRvlWknn4Kl60XaUYUC4jlTbIWAMtt
+ xvD1qiOdrSyajdqzbA/4e8iPOuOr8kJSTRgfBJJA56KrdPzgDfcaK9st8NBg==
+X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
+ fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230426_021305_202691_5DA9133A 
-X-CRM114-Status: GOOD (  16.68  )
+X-CRM114-CacheID: sfid-20230426_034940_614860_D3F1ED2E 
+X-CRM114-Status: GOOD (  15.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,139 +120,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Register SCP core 1 as a subdevice of core 0 for the boot sequence
-and watchdog timeout handling. The core 1 has to boot after core 0
-because the SCP clock and SRAM power is controlled by SCP core 0.
-As for watchdog timeout handling, the remoteproc framework helps to
-stop/start subdevices automatically when SCP driver receives watchdog
-timeout event.
+This commits are based on the Fabien Parent <fparent@baylibre.com> work.
 
-Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+The purpose of this series is to add the following HWs / IPs support for
+the mt8365-evk board:
+- Watchdog
+- Power Management Integrated Circuit "PMIC" wrapper
+- MT6357 PMIC
+- MultiMediaCard "MMC" & Secure Digital "SD" controller
+- USB controller
+- Ethernet MAC controller
+
+Add CPU Freq & IDLE support for this board.
+
+This series depends to anothers which add support for MT8365 EVK board
+[1], add the MT8365 I2C support [2] (both are currently applied) and
+finally the pinctrl binding cleanup [3].
+
+=== Build:
+
+To test this serie, cherry-pick patches from the dependent series ([1],[2],[3])
+and the applied patches from this serie (documented in the "Changes" below).
+Be carefull, the pinctrl serie [3] is rebased to linusw/linux-pinctrl,
+cherry-pick will not be straightforward.
+Finally, cherry-pick this serie.
+
+You can also take my branch [4] which have all the needed patches
+retrieved from the instructions above.
+
+Use the arm64 defconfig to make the build.
+
+Regards,
+Alex
+
+[1]: https://lore.kernel.org/all/20230309213501.794764-1-bero@baylibre.com/
+[2]: https://lore.kernel.org/all/20221122-mt8365-i2c-support-v6-0-e1009c8afd53@baylibre.com/
+[3]: https://lore.kernel.org/all/20230327-cleanup-pinctrl-binding-v3-0-6f56d5c7a8de@baylibre.com/
+[4]: https://gitlab.baylibre.com/baylibre/mediatek/bsp/linux/-/commits/amergnat/i350-evk-board-support
+
+Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- drivers/remoteproc/mtk_common.h |  9 +++++
- drivers/remoteproc/mtk_scp.c    | 66 +++++++++++++++++++++++++++++++++
- 2 files changed, 75 insertions(+)
+Changes in v6:
+- Add commit message for the arm64 defconfig changes
+- Fix the mail list
+- Link to v5: https://lore.kernel.org/r/20230203-evk-board-support-v5-0-1883c1b405ad@baylibre.com
 
-diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
-index b73b60c22ea1..f1a021ad7f66 100644
---- a/drivers/remoteproc/mtk_common.h
-+++ b/drivers/remoteproc/mtk_common.h
-@@ -100,6 +100,13 @@ struct mtk_scp_of_data {
- 	size_t ipi_buf_offset;
- };
- 
-+struct mtk_scp_core_subdev {
-+	struct rproc_subdev subdev;
-+	struct mtk_scp *scp;
-+};
-+
-+#define to_core_subdev(d) container_of(d, struct mtk_scp_core_subdev, subdev)
-+
- struct mtk_scp {
- 	struct device *dev;
- 	struct rproc *rproc;
-@@ -131,6 +138,8 @@ struct mtk_scp {
- 
- 	struct list_head elem;
- 	struct list_head *cluster;
-+
-+	struct mtk_scp_core_subdev *core_subdev;
- };
- 
- /**
-diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-index 0b052b0acf2e..8232dab655c0 100644
---- a/drivers/remoteproc/mtk_scp.c
-+++ b/drivers/remoteproc/mtk_scp.c
-@@ -863,6 +863,60 @@ static void scp_remove_rpmsg_subdev(struct mtk_scp *scp)
- 	}
- }
- 
-+static int scp_core_subdev_start(struct rproc_subdev *subdev)
-+{
-+	struct mtk_scp_core_subdev *core_subdev = to_core_subdev(subdev);
-+	struct mtk_scp *scp = core_subdev->scp;
-+
-+	rproc_boot(scp->rproc);
-+
-+	return 0;
-+}
-+
-+static void scp_core_subdev_stop(struct rproc_subdev *subdev, bool crashed)
-+{
-+	struct mtk_scp_core_subdev *core_subdev = to_core_subdev(subdev);
-+	struct mtk_scp *scp = core_subdev->scp;
-+
-+	rproc_shutdown(scp->rproc);
-+}
-+
-+static int scp_core_subdev_register(struct mtk_scp *scp)
-+{
-+	struct device *dev = scp->dev;
-+	struct mtk_scp_core_subdev *core_subdev;
-+	struct mtk_scp *scp_c0;
-+
-+	scp_c0 = list_first_entry(scp->cluster, struct mtk_scp, elem);
-+	if (!scp_c0)
-+		return -ENODATA;
-+
-+	core_subdev = devm_kzalloc(dev, sizeof(*core_subdev), GFP_KERNEL);
-+	if (!core_subdev)
-+		return -ENOMEM;
-+
-+	core_subdev->scp = scp;
-+	core_subdev->subdev.start = scp_core_subdev_start;
-+	core_subdev->subdev.stop = scp_core_subdev_stop;
-+
-+	scp->core_subdev = core_subdev;
-+	rproc_add_subdev(scp_c0->rproc, &scp->core_subdev->subdev);
-+
-+	return 0;
-+}
-+
-+static void scp_core_subdev_unregister(struct mtk_scp *scp)
-+{
-+	struct mtk_scp *scp_c0;
-+
-+	if (scp->core_subdev) {
-+		scp_c0 = list_first_entry(scp->cluster, struct mtk_scp, elem);
-+		rproc_remove_subdev(scp_c0->rproc, &scp->core_subdev->subdev);
-+		devm_kfree(scp->dev, scp->core_subdev);
-+		scp->core_subdev = NULL;
-+	}
-+}
-+
- static int scp_rproc_init(struct platform_device *cluster_pdev,
- 			  struct platform_device *core_pdev,
- 			  const struct mtk_scp_of_data *of_data)
-@@ -963,6 +1017,7 @@ static void scp_rproc_free(struct mtk_scp *scp)
- {
- 	int i;
- 
-+	scp_core_subdev_unregister(scp);
- 	scp_remove_rpmsg_subdev(scp);
- 	scp_ipi_unregister(scp, SCP_IPI_INIT);
- 	scp_unmap_memory_region(scp);
-@@ -1054,6 +1109,17 @@ static int scp_cluster_init(struct platform_device *pdev)
- 	}
- 
- 	list_for_each_entry_safe_reverse(scp, temp, cluster, elem) {
-+		if (!list_is_first(&scp->elem, cluster)) {
-+			ret = scp_core_subdev_register(scp);
-+			if (ret) {
-+				dev_err_probe(scp->dev, ret, "Failed to register as subdev\n");
-+				goto add_fail;
-+			}
-+
-+			/* sub cores are booted as subdevices of core 0 */
-+			scp->rproc->auto_boot = false;
-+		}
-+
- 		ret = rproc_add(scp->rproc);
- 		if (ret)
- 			goto add_fail;
+Changes in v5:
+- Add patches to build the MT6357 regulator driver and MTK PMIC keys by default
+- Remove "dt-bindings: pinctrl: mediatek,mt8365-pinctrl: add drive strength property"
+  patch from this serie and add it to the pinctrl serie [3]
+- Link to v4: https://lore.kernel.org/r/20230203-evk-board-support-v4-0-5cffe66a38c0@baylibre.com
+
+Changes in v4:
+- Remove v3 applied patch from the serie:
+  - arm64: dts: mediatek: add ethernet support for mt8365 SoC
+  - arm64: dts: mediatek: add mmc support for mt8365 SoC
+  - arm64: dts: mediatek: add mt6357 device-tree
+  - arm64: dts: mediatek: add pwrap support to mt8365 SoC
+  - arm64: dts: mediatek: Increase the size BL31 reserved memory
+- Drop "arm64: dts: mediatek: fix systimer properties" which is done [1]
+- Fix style, typo and re-order properties.
+- Use interrupts-extended for the PMIC node.
+- Link to v3: https://lore.kernel.org/r/20230203-evk-board-support-v3-0-0003e80e0095@baylibre.com
+
+Changes in v3:
+- Remove v2 applied patch from the serie:
+  - dt-bindings: mmc: mediatek,mtk-sd: add mt8365
+- Add trailers and simply resend.
+- Link to v2: https://lore.kernel.org/r/20230203-evk-board-support-v2-0-6ec7cdb10ccf@baylibre.com
+
+---
+Alexandre Mergnat (10):
+      arm64: defconfig: enable MT6357 regulator
+      arm64: defconfig: enable Mediatek PMIC key
+      dt-bindings: watchdog: mediatek,mtk-wdt: add mt8365
+      arm64: dts: mediatek: add watchdog support for mt8365 SoC
+      arm64: dts: mediatek: add mt6357 PMIC support for mt8365-evk
+      arm64: dts: mediatek: add mmc support for mt8365-evk
+      arm64: dts: mediatek: add usb controller support for mt8365-evk
+      arm64: dts: mediatek: add ethernet support for mt8365-evk
+      arm64: dts: mediatek: add OPP support for mt8365 SoC
+      arm64: dts: mediatek: add cpufreq support for mt8365-evk
+
+Amjad Ouled-Ameur (1):
+      arm64: dts: mediatek: Add CPU Idle support
+
+Fabien Parent (1):
+      arm64: dts: mediatek: set vmc regulator as always on
+
+ .../bindings/watchdog/mediatek,mtk-wdt.yaml        |   1 +
+ arch/arm64/boot/dts/mediatek/mt8365-evk.dts        | 249 +++++++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt8365.dtsi           | 142 ++++++++++++
+ arch/arm64/configs/defconfig                       |   2 +
+ 4 files changed, 394 insertions(+)
+---
+base-commit: 4f2a499a344b36ebb325e610265452ea88541116
+change-id: 20230203-evk-board-support-d5b7a839ed7b
+
+Best regards,
 -- 
-2.18.0
+Alexandre Mergnat <amergnat@baylibre.com>
 
 
