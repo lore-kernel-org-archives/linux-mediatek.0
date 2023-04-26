@@ -4,74 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12D90C7EE21
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Apr 2023 09:33:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0E2BC77B78
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Apr 2023 09:33:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=tiC1EixoNe9TvcsXGi4HMFFCigO3LAC2XK4QXXLhOuY=; b=R0Sf0js+fQwVX7
-	GWbVBdArgkJOCdmsOfQcNUzpqLL2my4DYM8q/YZE48gYKBqmKY64S3C2xGJV2O7SH4znrIf9CpgDq
-	XfsY6IEjLNVedvRUqM/jKSPL84qmbd6+UTuRObCO5SOIyIj/rz/N2CVk7+WZk/lL84AFTBK4L8i0N
-	6Bn47+KPhrX+nwrfz84v/uCvFWUgSdTpCCFCfUkYYpMgGbOeI51TEjjKBVeE6d3fzqwzssK2qvA04
-	H4Bx6X4newMI4ozaTytV4KATQPZD0rG7lL+9yfvCXTzlinwJAS4Fm/wDS8uUo3Gh5PjY3If8UVnti
-	2ZYRq1UynbZagKeoqv5A==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=uvPQ+p6p7LPXccnkrXRgDzY3F78Ex853x9Swf3yMEqY=; b=FzY73mRvgWV459
+	ohVP/g0ApOdk5yVRjYaU0pPIUrhqNjVtnlrEhA16b5R9+kBKCYM8AuFM3uer6h+H4sUWG3dktUL7z
+	bfrXs/DdiH79ZJFsbdwpzfb7tTzy9i30Usa2mhazAQQEN4ahlm2oVZmg/A9IN4JUT2HYj6ZfEFDTR
+	HoW/I1wohC7iqvonGl9BEq5bvbsz08msKWGWUaEqf3oYnAi50J/X0hB2HbqHbYy6C5zSfbgq6uM7M
+	scLxav+2apdKbPoCrbpZQ+xi/a60Jp5E+d+rqkJP92zoqkCK9Y0wytGGY3rxwFGQYn6CO67PItOWC
+	Q2C5bLuTWnEr+Ga2RA6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1prbWt-003K4n-2n;
-	Wed, 26 Apr 2023 09:33:39 +0000
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+	id 1prbWv-003K5k-1A;
+	Wed, 26 Apr 2023 09:33:41 +0000
+Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prbWr-003K2w-0Q
+	id 1prbWs-003K3s-31
 	for linux-mediatek@lists.infradead.org;
-	Wed, 26 Apr 2023 09:33:38 +0000
-Received: by mail-pf1-x434.google.com with SMTP id d2e1a72fcca58-63b5fca48bcso5686360b3a.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 26 Apr 2023 02:33:35 -0700 (PDT)
+	Wed, 26 Apr 2023 09:33:40 +0000
+Received: by mail-pg1-x534.google.com with SMTP id 41be03b00d2f7-517bb01bac9so4929182a12.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 26 Apr 2023 02:33:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1682501615; x=1685093615;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=tiC1EixoNe9TvcsXGi4HMFFCigO3LAC2XK4QXXLhOuY=;
-        b=N/4d2/dnYSkhGgmo1yEJ21nMJwso80TVv1R2jKDFELl94n03lMwt6NogcEwg1IsE6c
-         kSjyQUDyCFg3pECB7tQBBB3Q1iX4k7l08KYKz/UoU9ccAOok4Svwduyt0D01gNr1L2Ma
-         LvwNagl9VKFmb+/D6nQBPH3LJbb40OXlhjzlE=
+        d=chromium.org; s=google; t=1682501618; x=1685093618;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=uvPQ+p6p7LPXccnkrXRgDzY3F78Ex853x9Swf3yMEqY=;
+        b=UN9smnlgDaW5ESWDJZoeDD7OlyBxrsIf28fmOhRxgm4lMwF6p8cR8ZIYRXZbuDIspr
+         YybIhG7VpOorRriLB+GvVyUHM/p1Hb6FjJ+OLjzchNz19jZmWkbZgywjgs17uqCMeIlf
+         fA4mCMYzACCi0X1GaK4qaVvMvfnlCYLoP87mI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682501615; x=1685093615;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=tiC1EixoNe9TvcsXGi4HMFFCigO3LAC2XK4QXXLhOuY=;
-        b=AxmtGc7+6EDUQRrvAD1xcoUFU/z1wZYkv8XfAGk0HVq2iYvkhUeo5EirgkV8iY6eft
-         yGKkuAyI2MArDaLl80StDmpBuUKVMTfmZY5kq3kyUMbdijTnXrAo7xHlGyWelgPUbyrr
-         NbLetGSbx6Cd8TYgRtiezpmVrkdv/pfpA9CuUyxo23wJpiEHDSTX0NOpVaYgC04VlLlK
-         NPU449ztCxPo6a73YuydJcuBoK8MlTLqKpZbBGwZPtuMsBmzIB+W+Ks+M2ekVpmeRsRP
-         v1UM0dSyWIRw9wse5IBETqoKIopbPcc/EwdF5oidx1kJoM5XiZ2evtvcqqnuSVwXEtJm
-         /LYA==
-X-Gm-Message-State: AAQBX9dSUHSygVIOMbonTMdI5i2xF371QuhGae0Ze2E9m3G8C/hCKnk5
-	DUQJy6bMM4rHJyT/oueV52DexA==
-X-Google-Smtp-Source: AKy350aRbFyZHOGKWRhhNxNRmhRppBdI6Qj5Hf5cU5Xv1kPX2Am2QNrW4+QfzRy/3gQG4MmiMaD/Rg==
-X-Received: by 2002:a05:6a00:10cc:b0:63a:cefa:9d44 with SMTP id d12-20020a056a0010cc00b0063acefa9d44mr23043975pfu.14.1682501615312;
-        Wed, 26 Apr 2023 02:33:35 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1682501618; x=1685093618;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=uvPQ+p6p7LPXccnkrXRgDzY3F78Ex853x9Swf3yMEqY=;
+        b=NXcduKlRHvbOaeaYicvUaPTXmPi18vxEJFkcGq2k+i/O8ZuLrQbAIJs/dhWlV2BTJR
+         /2wwe5nSm4RHAB6zH75NGhL9Mo8rlUT1P4cOwVPj2bQDEa41ErrIZBWKvRKMsV2i46aM
+         k5wwlAoXrbvvAMstuWgS8Kub0EHHP7T1Djehrv6aIW1n+mJH/luOkdLSC9u6UArO/OQ7
+         IiIDGOUsxpsS8bPECqW4I7lzTE2ujDT+7gil+niA7wAdvU/yh8X1SXdKPbDMMOazkJWI
+         xeVCG3H+vYxZiKSb0KbPeT4rEDNHmrMUNYQyz7nEwV59kL2bH/48dCv2FRsvNfGJcpCD
+         ykvw==
+X-Gm-Message-State: AAQBX9dinehoqjeI5Q+1NvhwbpGbi1KsivsO3QEG0jD15Dh7tJTax0ag
+	Q72VPaE12yX5sz3F5oyieG8cSaOT+ZFScTMGkcs=
+X-Google-Smtp-Source: AKy350YjtwjO/wAtSJ0FYazTCI27tdYfzjYulYfZEnuLWJzP+p7+c5W5QWYGIc03oOV+EW2KT9YN/g==
+X-Received: by 2002:a05:6a20:7350:b0:f2:745a:b87e with SMTP id v16-20020a056a20735000b000f2745ab87emr22849547pzc.12.1682501617975;
+        Wed, 26 Apr 2023 02:33:37 -0700 (PDT)
 Received: from fshao-glinux.tpe.corp.google.com ([2401:fa00:1:10:dcf6:797f:140d:6d])
-        by smtp.gmail.com with ESMTPSA id g1-20020a056a00078100b005810c4286d6sm10730075pfu.0.2023.04.26.02.33.32
+        by smtp.gmail.com with ESMTPSA id g1-20020a056a00078100b005810c4286d6sm10730075pfu.0.2023.04.26.02.33.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 26 Apr 2023 02:33:34 -0700 (PDT)
+        Wed, 26 Apr 2023 02:33:37 -0700 (PDT)
 From: Fei Shao <fshao@chromium.org>
 To: Jeff LaBundy <jeff@labundy.com>,
 	Douglas Anderson <dianders@chromium.org>,
 	Benjamin Tissoires <benjamin.tissoires@redhat.com>,
 	Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH v2 0/2] Fix Goodix touchscreen power leakage for MT8186 boards
-Date: Wed, 26 Apr 2023 17:32:28 +0800
-Message-ID: <20230426093231.1466984-1-fshao@chromium.org>
+Subject: [PATCH v2 1/2] dt-bindings: input: goodix: Add "goodix,no-reset-during-suspend" property
+Date: Wed, 26 Apr 2023 17:32:29 +0800
+Message-ID: <20230426093231.1466984-2-fshao@chromium.org>
 X-Mailer: git-send-email 2.40.1.495.gc816e09b53d-goog
+In-Reply-To: <20230426093231.1466984-1-fshao@chromium.org>
+References: <20230426093231.1466984-1-fshao@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230426_023337_195288_32413A0E 
-X-CRM114-Status: GOOD (  12.18  )
+X-CRM114-CacheID: sfid-20230426_023338_973189_AEB89DF5 
+X-CRM114-Status: GOOD (  12.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,45 +86,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Stephen Kitt <steve@sk2.org>, Jiri Kosina <jikos@kernel.org>, linux-kernel@vger.kernel.org, Matthias Kaehlcke <mka@chromium.org>, linux-mediatek <linux-mediatek@lists.infradead.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-input@vger.kernel.org
+Cc: devicetree@vger.kernel.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-kernel@vger.kernel.org, linux-mediatek <linux-mediatek@lists.infradead.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-input@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-These changes are based on the series in [1], which modified the
-i2c-hid-of-goodix driver and removed the workaround for a power leakage
-issue, so the issue revisits on Mediatek MT8186 boards (Steelix).
+We observed that on Chromebook device Steelix, if Goodix GT7375P
+touchscreen is powered in suspend (because, for example, it connects to
+an always-on regulator) and with the reset GPIO asserted, it will
+introduce about 14mW power leakage.
 
-The root cause is that the touchscreen can be powered in different ways
-depending on the hardware designs, and it's not as easy to come up with
-a solution that is both simple and elegant for all the known designs.
+To address that, we add this property to skip reset during suspend.
+If it's set, the driver will stop asserting the reset GPIO during
+power-down. Refer to the comments in the driver for details.
 
-To address the issue, I ended up adding a new boolean property for the
-driver so that we can control the power up/down sequence depending on
-that.
-
-Adding a new property might not be the cleanest approach for this, but
-at least the intention would be easy enough to understand, and it
-introduces relatively small change to the code and fully preserves the
-original control flow.
-I hope this is something acceptable, and I'm open to any better
-approaches.
-
-[1] https://lore.kernel.org/all/20230207024816.525938-1-dianders@chromium.org/
+Signed-off-by: Fei Shao <fshao@chromium.org>
+Reviewed-by: Douglas Anderson <dianders@chromium.org>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+---
 
 Changes in v2:
 - Use a more accurate property name and with "goodix," prefix.
-- Do not change the regulator_enable logic during power-up.
 
-Fei Shao (2):
-  dt-bindings: input: goodix: Add "goodix,no-reset-during-suspend"
-    property
-  HID: i2c-hid: goodix: Add support for "goodix,no-reset-during-suspend"
-    property
+ .../devicetree/bindings/input/goodix,gt7375p.yaml        | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
- .../bindings/input/goodix,gt7375p.yaml        |  9 +++++++
- drivers/hid/i2c-hid/i2c-hid-of-goodix.c       | 26 +++++++++++++++++++
- 2 files changed, 35 insertions(+)
-
+diff --git a/Documentation/devicetree/bindings/input/goodix,gt7375p.yaml b/Documentation/devicetree/bindings/input/goodix,gt7375p.yaml
+index ce18d7dadae2..1edad1da1196 100644
+--- a/Documentation/devicetree/bindings/input/goodix,gt7375p.yaml
++++ b/Documentation/devicetree/bindings/input/goodix,gt7375p.yaml
+@@ -43,6 +43,15 @@ properties:
+       itself as long as it allows the main board to make signals compatible
+       with what the touchscreen is expecting for its IO rails.
+ 
++  goodix,no-reset-during-suspend:
++    description:
++      Set this to true to enforce the driver to not assert the reset GPIO
++      during suspend.
++      Due to potential touchscreen hardware flaw, back-powering could happen in
++      suspend if the power supply is on and with active-low reset GPIO asserted.
++      This property is used to avoid the back-powering issue.
++    type: boolean
++
+ required:
+   - compatible
+   - reg
 -- 
 2.40.1.495.gc816e09b53d-goog
 
