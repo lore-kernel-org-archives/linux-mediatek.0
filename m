@@ -4,58 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27C02C77B61
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Apr 2023 02:58:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B42DC77B60
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Apr 2023 05:51:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vPOcC8Sjn4PZ1LkIW+3rHEQIOfbca8Ik34O9CerwbMs=; b=4BKBSEsUmYshvbY6ABexTEDAnc
-	o+2fECOWSRI5grnTgoRtyebNgxzpyKXl5tyGERSQtCDLwkVRZeBjfEI2/8tuh4y3zPAPkx4cWQDnG
-	u/b3pAw5TE3Ducm+qKQE6S9qzILGFai90s+1uRBPwr0wWGXB2pEXBR9J85P3znXkodgkXJw+rDNaT
-	UMk7B0I3INleeP5Thpc4XlRpNYIsAPZaySGWaZTF3QnUn+G1bOaQe7rYDwMrmNw1mFCMDVwUad3Gj
-	PcQ0dXoeO/DOxrhDpO8T0SWcz81hrMw69Ud6tptfSkTfOXJFO02bfJ0XBZMYam9YQCgC20QdPeU6N
-	P+VrNFIg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zTnxtp6hN8hNECyGyeAIWXn7uB5lZFLas1G7S96mRtQ=; b=nir/54YMv5RWAVJuHikmqeNhoG
+	OvkuiOzxxn1D2Ur2r0qSXNLKkG2fVyRBrobVMkQB+EOF3cbdQh8WgTySaUfZT4ZQbjgd1pGS/nJL2
+	57sxG4Pk1BJGxMu7QVfKh7AN4C4Ve/MU+aPgKDJVKKPowHnoEpwq6aPMSUr1vVci4JFZ1Nb5AMP2c
+	WIqYMW8TmlfyDBV99/wcOU5O5BnO/r66aUE+7xzihEEDsK6aY/zrKH73igjS/pOjSN5DvFS2RrcYN
+	0R5AlALX+ilOgD03qUfULftdsMz1jMclVSYlTa+8BpddIFu6lRb5aSVHRwqNIczM1rrVEaJXPocPc
+	Men2/JDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1prVMl-002gSd-0X;
-	Wed, 26 Apr 2023 02:58:47 +0000
-Received: from shards.monkeyblade.net ([23.128.96.9] helo=mail.monkeyblade.net)
+	id 1prY41-002rMc-0O;
+	Wed, 26 Apr 2023 05:51:37 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prVMh-002gRn-0p;
-	Wed, 26 Apr 2023 02:58:44 +0000
-Received: from [IPV6:2620:137:e001:0:c663:d265:4cca:c19] (unknown [IPv6:2620:137:e001:0:c663:d265:4cca:c19])
-	by mail.monkeyblade.net (Postfix) with ESMTPSA id C5DFA8420026;
-	Tue, 25 Apr 2023 19:58:37 -0700 (PDT)
-Message-ID: <e3d77a20-fd14-5846-5d46-de2db69af45b@eaglescrag.net>
-Date: Tue, 25 Apr 2023 19:58:36 -0700
+	id 1prY3x-002rKS-1k;
+	Wed, 26 Apr 2023 05:51:34 +0000
+X-UUID: 633fcde8e3f611ed8687db9d93187ff1-20230425
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=zTnxtp6hN8hNECyGyeAIWXn7uB5lZFLas1G7S96mRtQ=;
+	b=jxeeTHmjzvpeeh4s3Vj8BgXHKdVqyb4WKhjLU80wrKUYegGFWKVXQ8YkP6x6JdmqSSP0Vinhz5eo/R/pqA/XVePuH+0pwdqQaY5wbKGr9wqoaXKZDutgpaut50NCJBsXjzJSUJ8jZalkxrH6Ro+drWfDfdOSWQ4eIgKoWe9UrA8=;
+X-CID-UNFAMILIAR: 1
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22,REQID:ed903058-e054-4dac-8b7c-24f2c71293c4,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:100
+X-CID-INFO: VERSION:1.1.22,REQID:ed903058-e054-4dac-8b7c-24f2c71293c4,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
+	N:quarantine,TS:100
+X-CID-META: VersionHash:120426c,CLOUDID:03ae4685-cd9c-45f5-8134-710979e3df0e,B
+	ulkID:230426135127JW1ALX48,BulkQuantity:1,Recheck:0,SF:19|48|38|29|28|16,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
+	OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: 633fcde8e3f611ed8687db9d93187ff1-20230425
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <trevor.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1016426481; Tue, 25 Apr 2023 22:51:28 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 26 Apr 2023 13:51:26 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Wed, 26 Apr 2023 13:51:25 +0800
+From: Trevor Wu <trevor.wu@mediatek.com>
+To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
+	<perex@perex.cz>, <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>
+CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>
+Subject: [PATCH v3 2/7] ASoC: mediatek: mt8188: complete set_tdm_slot function
+Date: Wed, 26 Apr 2023 13:51:19 +0800
+Message-ID: <20230426055124.16529-3-trevor.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230426055124.16529-1-trevor.wu@mediatek.com>
+References: <20230426055124.16529-1-trevor.wu@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH v5] ring-buffer: Ensure proper resetting of atomic
- variables in ring_buffer_reset_online_cpus
-Content-Language: en-MW
-To: Steven Rostedt <rostedt@goodmis.org>, "Tze-nan.Wu"
- <Tze-nan.Wu@mediatek.com>
-Cc: mhiramat@kernel.org, bobule.chang@mediatek.com,
- cheng-jui.wang@mediatek.com, wsd_upstream@mediatek.com,
- stable@vger.kernel.org, npiggin@gmail.com,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "Paul E. McKenney" <paulmck@kernel.org>, linux-kernel@vger.kernel.org,
- linux-trace-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20230426010446.10753-1-Tze-nan.Wu@mediatek.com>
- <20230425211737.757208b3@gandalf.local.home>
-From: John 'Warthog9' Hawley <warthog9@eaglescrag.net>
-In-Reply-To: <20230425211737.757208b3@gandalf.local.home>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Greylist: Sender succeeded SMTP AUTH, not delayed by milter-greylist-4.6.2 (mail.monkeyblade.net [0.0.0.0]); Tue, 25 Apr 2023 19:58:38 -0700 (PDT)
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230425_195843_295793_6F0651DC 
-X-CRM114-Status: GOOD (  21.25  )
+X-CRM114-CacheID: sfid-20230425_225133_593005_CE28CBB8 
+X-CRM114-Status: GOOD (  13.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,104 +89,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Ran afoul of the taboo filters:
+User can configures slot number of TDM mode via set_tdm_slot callback.
 
-Illegal-Object: Syntax error in From: address found on vger.kernel.org:
-         From:   Tze-nan.Wu<Tze-nan.Wu@mediatek.com>
-                                   ^-missing end of mailbox
+Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+---
+ sound/soc/mediatek/mt8188/mt8188-dai-etdm.c | 21 ++++++++++++++++++---
+ 1 file changed, 18 insertions(+), 3 deletions(-)
 
-I've seen a few of these but I've been unable to replicate the problem. 
-I've a suspicion but so far been unable to prove the theory on what's wrong.
+diff --git a/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c b/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c
+index 7a37752d4244..fddecf5bf7c6 100644
+--- a/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c
++++ b/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c
+@@ -1909,6 +1909,10 @@ static int mtk_dai_etdm_hw_params(struct snd_pcm_substream *substream,
+ 		if (!is_valid_etdm_dai(mst_dai_id))
+ 			return -EINVAL;
+ 
++		mst_etdm_data = afe_priv->dai_priv[mst_dai_id];
++		if (mst_etdm_data->slots)
++			channels = mst_etdm_data->slots;
++
+ 		ret = mtk_dai_etdm_mclk_configure(afe, mst_dai_id);
+ 		if (ret)
+ 			return ret;
+@@ -1918,7 +1922,6 @@ static int mtk_dai_etdm_hw_params(struct snd_pcm_substream *substream,
+ 		if (ret)
+ 			return ret;
+ 
+-		mst_etdm_data = afe_priv->dai_priv[mst_dai_id];
+ 		for (i = 0; i < mst_etdm_data->cowork_slv_count; i++) {
+ 			slv_dai_id = mst_etdm_data->cowork_slv_id[i];
+ 			ret = mtk_dai_etdm_configure(afe, rate, channels,
+@@ -1931,6 +1934,12 @@ static int mtk_dai_etdm_hw_params(struct snd_pcm_substream *substream,
+ 				return ret;
+ 		}
+ 	} else {
++		if (!is_valid_etdm_dai(dai->id))
++			return -EINVAL;
++		mst_etdm_data = afe_priv->dai_priv[dai->id];
++		if (mst_etdm_data->slots)
++			channels = mst_etdm_data->slots;
++
+ 		ret = mtk_dai_etdm_mclk_configure(afe, dai->id);
+ 		if (ret)
+ 			return ret;
+@@ -2073,10 +2082,16 @@ static int mtk_dai_etdm_set_tdm_slot(struct snd_soc_dai *dai,
+ 	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
+ 	struct mt8188_afe_private *afe_priv = afe->platform_priv;
+ 	struct mtk_dai_etdm_priv *etdm_data;
++	int dai_id;
+ 
+-	if (!is_valid_etdm_dai(dai->id))
++	if (is_cowork_mode(dai))
++		dai_id = get_etdm_cowork_master_id(dai);
++	else
++		dai_id = dai->id;
++
++	if (!is_valid_etdm_dai(dai_id))
+ 		return -EINVAL;
+-	etdm_data = afe_priv->dai_priv[dai->id];
++	etdm_data = afe_priv->dai_priv[dai_id];
+ 
+ 	dev_dbg(dai->dev, "%s id %d slot_width %d\n",
+ 		__func__, dai->id, slot_width);
+-- 
+2.18.0
 
-- John
-
-On 4/25/23 18:17, Steven Rostedt wrote:
-> 
-> For some reason, this email did not make it to
-> linux-trace-kernel@vger.kernel.org, and therefore did not make it into
-> patchwork?
-> 
-> John?
-> 
-> -- Steve
-> 
-> 
-> On Wed, 26 Apr 2023 09:04:44 +0800
-> Tze-nan.Wu <Tze-nan.Wu@mediatek.com> wrote:
-> 
->> From: "Tze-nan Wu" <Tze-nan.Wu@mediatek.com>
->>
->> In ring_buffer_reset_online_cpus, the buffer_size_kb write operation
->> may permanently fail if the cpu_online_mask changes between two
->> for_each_online_buffer_cpu loops. The number of increases and decreases
->> on both cpu_buffer->resize_disabled and cpu_buffer->record_disabled may be
->> inconsistent, causing some CPUs to have non-zero values for these atomic
->> variables after the function returns.
->>
->> This issue can be reproduced by "echo 0 > trace" while hotplugging cpu.
->> After reproducing success, we can find out buffer_size_kb will not be
->> functional anymore.
->>
->> To prevent leaving 'resize_disabled' and 'record_disabled' non-zero after
->> ring_buffer_reset_online_cpus returns, we ensure that each atomic variable
->> has been set up before atomic_sub() to it.
->>
->> Cc: stable@vger.kernel.org
->> Cc: npiggin@gmail.com
->> Fixes: b23d7a5f4a07 ("ring-buffer: speed up buffer resets by avoiding synchronize_rcu for each CPU")
->> Reviewed-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
->> Signed-off-by: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
->> ---
->> Changes from v4 to v5: https://lore.kernel.org/lkml/20230412112401.25081-1-Tze-nan.Wu@mediatek.com/
->>    - Move the define before the function
->> ---
->>   kernel/trace/ring_buffer.c | 16 +++++++++++++---
->>   1 file changed, 13 insertions(+), 3 deletions(-)
->>
->> diff --git a/kernel/trace/ring_buffer.c b/kernel/trace/ring_buffer.c
->> index 76a2d91eecad..253ef85a9ec3 100644
->> --- a/kernel/trace/ring_buffer.c
->> +++ b/kernel/trace/ring_buffer.c
->> @@ -5345,6 +5345,9 @@ void ring_buffer_reset_cpu(struct trace_buffer *buffer, int cpu)
->>   }
->>   EXPORT_SYMBOL_GPL(ring_buffer_reset_cpu);
->>   
->> +/* Flag to ensure proper resetting of atomic variables */
->> +#define RESET_BIT	(1 << 30)
->> +
->>   /**
->>    * ring_buffer_reset_online_cpus - reset a ring buffer per CPU buffer
->>    * @buffer: The ring buffer to reset a per cpu buffer of
->> @@ -5361,20 +5364,27 @@ void ring_buffer_reset_online_cpus(struct trace_buffer *buffer)
->>   	for_each_online_buffer_cpu(buffer, cpu) {
->>   		cpu_buffer = buffer->buffers[cpu];
->>   
->> -		atomic_inc(&cpu_buffer->resize_disabled);
->> +		atomic_add(RESET_BIT, &cpu_buffer->resize_disabled);
->>   		atomic_inc(&cpu_buffer->record_disabled);
->>   	}
->>   
->>   	/* Make sure all commits have finished */
->>   	synchronize_rcu();
->>   
->> -	for_each_online_buffer_cpu(buffer, cpu) {
->> +	for_each_buffer_cpu(buffer, cpu) {
->>   		cpu_buffer = buffer->buffers[cpu];
->>   
->> +		/*
->> +		 * If a CPU came online during the synchronize_rcu(), then
->> +		 * ignore it.
->> +		 */
->> +		if (!(atomic_read(&cpu_buffer->resize_disabled) & RESET_BIT))
->> +			continue;
->> +
->>   		reset_disabled_cpu_buffer(cpu_buffer);
->>   
->>   		atomic_dec(&cpu_buffer->record_disabled);
->> -		atomic_dec(&cpu_buffer->resize_disabled);
->> +		atomic_sub(RESET_BIT, &cpu_buffer->resize_disabled);
->>   	}
->>   
->>   	mutex_unlock(&buffer->mutex);
-> 
 
