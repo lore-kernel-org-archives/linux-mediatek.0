@@ -4,84 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEFD5C7618E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Apr 2023 17:42:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6993C77B78
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Apr 2023 17:52:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lnrsEB7Na53/pN7K0RQxU5xYX7Pua/KH6NC5ctAUi7I=; b=GcyljSXeunoBWzBN3lp9dOYFLE
-	jXn+cM5s4x88uoKcb01Uvmt6Fdj23GmYd+uCUdv8zjLcUOMVmWq28st3Ot7wmD5JW3h8MmErXvUCz
-	A6AXhaFq5AvF99KnveYoag3LoEFkUKsnf+dZr7cZ5kcYJcWTIiYIlmmfh7BwUQgsXe3QynjNzexEN
-	bGFbfqAF6L52pBV09Jygkx4GZUzBUEvxt9HHKL0Huh0g7MomytpUCpyM3x2SbEuGhvrVPCMcIzdXq
-	nEPim6o8J8j7x84RlKeUJ28EdNm05FseRN6f7aO4fZQCTdHH1eugnH/1TnVDA+TXMYR6v+Ztbz6J4
-	bOJS92mg==;
+	bh=4lj3hzEx9aj2YGe6xhhebIwqwsB+duLc+uUUaIkR490=; b=co5+tIEVMQX2Cn0KNL4cMO+LO3
+	Gv/+Z653Mhixke1zjlarEQ5LpaPzo06H3vcZ1JaE2YcUo2xAqk6Te0xFrfOyH1DwvQG0j3nbVRDSp
+	aBRsMlEB3B+DVpvjP26hj/Fz0K+ULEcIEDRiZXTflwhKOIDgkpI1QyTQWihEf0BeBfB2hxDOSw69G
+	KsnYz5BSJ8Y77EJoujtAZ4QummdaN9yEyZSdigAES4adP9FBS2Vz9cFx0Mpo1ZAxFZ4FztI3KPRiE
+	pG0pYcl9xAnd7NzU1vugE5Xd8kzUzwc5W8meooAbkV7gF2EiDphjXsexWxFrR1vQTYeKat3NElzDT
+	QHh4IrNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1prj9Y-004YXH-1z;
-	Wed, 26 Apr 2023 17:42:04 +0000
-Received: from mout.gmx.net ([212.227.15.15])
+	id 1prjJI-004Zcm-2n;
+	Wed, 26 Apr 2023 17:52:08 +0000
+Received: from sender4-op-o10.zoho.com ([136.143.188.10])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prj9V-004YWi-0T;
-	Wed, 26 Apr 2023 17:42:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1682530907; i=frank-w@public-files.de;
-	bh=fzBJ9aehgljKPhYXz04ylxft46ZFFyfph0GM2HpSX6A=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=NixrjmA8i3Beg06Lq02m7wWxG+Yk1fc0N1mn2pCZWB+GmCNBsRnyF5CQ4Yv/a+KYa
-	 uKkYDovjyxp0gPRVelMaN/nWtXJniW/iZLV5dBFLwkWUC5+kvy1Va2ltROViJsNv9G
-	 o4nTP0PyKQixWHRHu8SY8f2pl1Vm7uA5F5bJLdlrFESA7QdTBw8SEWTWxvMduWDC7y
-	 AcftTYKE+LLUOv3A79Gv2q50/fHuIGB17uKpuQTv8/A0lsEQY5Te+5r72RlEHrcEVl
-	 IB1siCJKwBrRMdjjwa18V6f+mopynDWdUA0f2uWUB2KLvEtDkMQ9rMfM6W5O0k/KRa
-	 eoikXsOBNtc0Q==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [217.61.146.19] ([217.61.146.19]) by web-mail.gmx.net
- (3c-app-gmx-bs05.server.lan [172.19.170.54]) (via HTTP); Wed, 26 Apr 2023
- 19:41:47 +0200
+	id 1prjJG-004Zc7-1w;
+	Wed, 26 Apr 2023 17:52:07 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1682531500; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=UCY20pq6hBUDq0BErUNSiq1JHZ08krIPzKXZK7mW/4B2BuIcCj66ICA2dghtnCRJLxvc86ynDnyizCk9nZEmARNqW//E5+jIQmg1fAsZGPBs9iX7xumDZ2hFuNmWAEK4FQLG/uLYfURSCKeVZ8LDoLgmmlOrVp0WgPQyY0mmmfs=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1682531500; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=4lj3hzEx9aj2YGe6xhhebIwqwsB+duLc+uUUaIkR490=; 
+	b=eEAM0y2k8X1ksxQ1DnRUJZAXbzmGMjrE5+W7xFSfZZ9VkYEzgI66FFRxWKa+lBIMv28a3crOWsqmctGkH4JgR+gFLwH9htoLXLFwnLhCSI8jlwbnwhhE8aFYGolb24L55L/+tk6IGiVpUnvCbbSVaddLyC584ZpRDJZWllVDlho=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1682531500;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=4lj3hzEx9aj2YGe6xhhebIwqwsB+duLc+uUUaIkR490=;
+	b=ddav/KHAVz77stAmuPr8bcAfjb9xzsS2PNTT5Nz2hBTOS/cS/e3T52npvHN6oOs/
+	qFAtunt4wBYth5yPzcTQ4+R2q2PogL1gEtQFxbG5mTedydRWpGERdZdvaDBocb+wk+k
+	9G6wWw4ba44fRRB630eg6Rwiik3QgGFfEQZ27b6I=
+Received: from [10.10.10.3] (149.91.1.15 [149.91.1.15]) by mx.zohomail.com
+	with SMTPS id 1682531497603365.41163959637413; Wed, 26 Apr 2023 10:51:37 -0700 (PDT)
+Message-ID: <9f8f082d-7bc7-2271-9b6c-cd7bf96c755b@arinc9.com>
+Date: Wed, 26 Apr 2023 20:51:22 +0300
 MIME-Version: 1.0
-Message-ID: <trinity-8c5502f4-34bc-456b-9e4b-37edac37c3ed-1682530907724@3c-app-gmx-bs05>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Frank Wunderlich <linux@fw-web.de>
-Cc: linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>,
- Jianjun Wang <jianjun.wang@mediatek.com>, Lorenzo Pieralisi
- <lpieralisi@kernel.org>, Rob Herring <robh@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, Bjorn Helgaas
- <bhelgaas@google.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-Subject: Aw: [PATCH] PCI: mediatek-gen3: handle PERST after reset
-Content-Type: text/plain; charset=UTF-8
-Date: Wed, 26 Apr 2023 19:41:47 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <20230402131347.99268-1-linux@fw-web.de>
-References: <20230402131347.99268-1-linux@fw-web.de>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:dzORq1CAzMS2PqaF9FBOyc0gBlknMTC94Yf2KX1DHMdfdevuyPq8M6Ei6iJ7PM5D9PeKN
- 8L+RD84dEQ4WCZpamp7vgRtYvOMf0Y9aCwthhw0qFpBa34dMx7A5mYqQpvHltcvN4C3cNhcjydGG
- eUWPVPzEloSvIMAzNvZoDm3QK6vxi0Y6HvZZ4msiato/LLTZc5/hOLwwIAs9fe9OzLesvIVNSmAj
- CaIc2miW5cxVFMKcl1ijALj0px70aIJ+bFJtcMIlnGNDPp1LQLdvSeB4yG/HxTP0LqNMbyFI9MOl
- v8=
-UI-OutboundReport: notjunk:1;M01:P0:ZJ7W47MwB30=;LKsCmYzAPuDvFS+HNRFqVjZU1lF
- mdKzDe116qQyuDI2RanO1UYZ8pecJImM2lKT/paapBa02gD1iANY8Jf3AztrQudk3ljBfFk8P
- 7oL6paNP7Iltz06q7neYttlPG+8nhVUpj/Jicv4+5SQ8HG96EekPSha56/92G2VuKwUGVufku
- kkKCEVSoWW/h0lwKHVdFN0oc2C9SI9+YF66CQozj2GckutLB+IJZp5L3NdfJGw4fCTJTyWXbp
- Rb+gEFzNArmMyHzkMbgrc6GHASVXIrcfcrFW2vjql7ty1qCF1bwXOG4x8IFkNABkSWRxMNJQQ
- yhDGkqr1spNyYTUwJHOpayxNFyriCl7MpiSgYZECykoBmlkEDmwUhhj2HG619JxrD6pBGKlzX
- s569ZRGb3yy1HVVZd65iF/iqp+nPNZZuYpSqilnVPYGgJY5ZwsEP0pHtB9SfwniApiv/UbeQJ
- WY9bekR8z/E21BBOO2BN18tAejf2exZDzM4en1Xi0QcskuLOQF2PlCY2S1imDw1Jj4b2c22o1
- sYcpD8VepJem38lXLJtUyVfriPNhux0nKAYaFCFD6Kb69sCogKyV3IbbTI/WFEl5eHVFPmTGp
- PSEAbFDznQ3CDaCm8c+IGiZ/+SuEKOqhheNcv5aJFR0TXHLHDMEUgaHgAirhRAGRR16YA/nnB
- j3onTZRjj277pRTG+if9nBBbABqEAp9Ku1acg5E6YXKzHWlq/IEVtLyKswLnGonkfXW9e1/Bx
- Crx8j3lY9fbvXvfdK3oQZRepH7pmXrPR/QxYyYDVMbMhSkTk6QeS6u4JfPuIpgtRwCyeBxaG2
- 2AkVrWbi2BnKs6yPvTA8CfgojJpW2fdOE5Q0z1Stfg+ao=
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: Aw: Re: [net v2] net: ethernet: mtk_eth_soc: drop generic vlan rx
+ offload, only use DSA untagging
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
+ Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+ Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ stable@vger.kernel.org
+References: <20230426172153.8352-1-linux@fw-web.de>
+ <61ea49b7-8a04-214d-ef02-3ef6181619e9@arinc9.com>
+ <trinity-bb65fd35-fe52-45d2-975c-230e504cc93f-1682530288982@3c-app-gmx-bs05>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <trinity-bb65fd35-fe52-45d2-975c-230e504cc93f-1682530288982@3c-app-gmx-bs05>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230426_104201_474221_F239BFD3 
-X-CRM114-Status: GOOD (  16.13  )
+X-CRM114-CacheID: sfid-20230426_105206_699418_56919417 
+X-CRM114-Status: GOOD (  14.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,53 +91,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
+On 26/04/2023 20:31, Frank Wunderlich wrote:
+> 
+>> Gesendet: Mittwoch, 26. April 2023 um 19:25 Uhr
+>> Von: "Arınç ÜNAL" <arinc.unal@arinc9.com>
+>> On 26/04/2023 20:21, Frank Wunderlich wrote:
+>>> From: Felix Fietkau <nbd@nbd.name>
+>>>
+>>> Through testing I found out that hardware vlan rx offload support seems to
+>>> have some hardware issues. At least when using multiple MACs and when
+>>> receiving tagged packets on the secondary MAC, the hardware can sometimes
+>>> start to emit wrong tags on the first MAC as well.
+>>>
+>>> In order to avoid such issues, drop the feature configuration and use
+>>> the offload feature only for DSA hardware untagging on MT7621/MT7622
+>>> devices where this feature works properly.
+>>>
+>>> Fixes: 08666cbb7dd5 ("net: ethernet: mtk_eth_soc: add support for configuring vlan rx offload")
+>>> Tested-by: Frank Wunderlich <frank-w@public-files.de>
+>>> Signed-off-by: Felix Fietkau <nbd@nbd.name>
+>>> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+>>> Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+>>
+>> I'm confused by this. What is HW-vlan-untagging, and which SoCs do you
+>> think this patch would break this feature? How can I utilise this
+>> feature on Linux so I can confirm whether it works or not?
+> 
+> the feature itself breaks vlan on mac of bpi-r3
+> 
+> 1 mac is connected to switch and uses dsa tags, the other mac is directly accessible and vlan-tag
+> there is stripped by this feature.
+> 
+> with this patch i can use vlans on the "standalone" mac again (see tagged packets incoming).
 
-> Gesendet: Sonntag, 02. April 2023 um 15:13 Uhr
-> Von: "Frank Wunderlich" <linux@fw-web.de>
-> De-assert PERST in separate step after reset signals to fully comply
-> the PCIe CEM clause 2.2.
->
-> This fixes some NVME detection issues on mt7986.
->
-> Fixes: d3bf75b579b9 ("PCI: mediatek-gen3: Add MediaTek Gen3 driver for M=
-T8192")
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
-> Patch is taken from user Ruslan aka RRKh61 (permitted me to send it
-> with me as author).
->
-> https://forum.banana-pi.org/t/bpi-r3-nvme-connection-issue/14563/17
-> ---
->  drivers/pci/controller/pcie-mediatek-gen3.c | 8 +++++++-
->  1 file changed, 7 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/c=
-ontroller/pcie-mediatek-gen3.c
-> index b8612ce5f4d0..176b1a04565d 100644
-> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
-> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-> @@ -350,7 +350,13 @@ static int mtk_pcie_startup_port(struct mtk_gen3_pc=
-ie *pcie)
->  	msleep(100);
->
->  	/* De-assert reset signals */
-> -	val &=3D ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RST=
-B);
-> +	val &=3D ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB);
-> +	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-> +
-> +	msleep(100);
-> +
-> +	/* De-assert PERST# signals */
-> +	val &=3D ~(PCIE_PE_RSTB);
->  	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
->
->  	/* Check if the link is up or not */
+Ok, since this patch is disabling the feature, the patch cannot possibly 
+break the feature. That's why I was confused as to why you mentioned 
+this in a way that gives the impression that this patch may break the 
+said feature.
 
-Hi
+Anyhow:
 
-just a friendly reminder....do i miss any recipient?
+Acked-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-regards Frank
+Arınç
 
