@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B42DC77B60
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92080C7618E
 	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Apr 2023 05:51:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,50 +12,49 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zTnxtp6hN8hNECyGyeAIWXn7uB5lZFLas1G7S96mRtQ=; b=nir/54YMv5RWAVJuHikmqeNhoG
-	OvkuiOzxxn1D2Ur2r0qSXNLKkG2fVyRBrobVMkQB+EOF3cbdQh8WgTySaUfZT4ZQbjgd1pGS/nJL2
-	57sxG4Pk1BJGxMu7QVfKh7AN4C4Ve/MU+aPgKDJVKKPowHnoEpwq6aPMSUr1vVci4JFZ1Nb5AMP2c
-	WIqYMW8TmlfyDBV99/wcOU5O5BnO/r66aUE+7xzihEEDsK6aY/zrKH73igjS/pOjSN5DvFS2RrcYN
-	0R5AlALX+ilOgD03qUfULftdsMz1jMclVSYlTa+8BpddIFu6lRb5aSVHRwqNIczM1rrVEaJXPocPc
-	Men2/JDw==;
+	bh=MfA0LdoxFOdzbOhOzbH0wz/ZeMwbs/1gRdyK3bwQCXQ=; b=yVdel6bnOzH1/y7cSzkCYGO1LT
+	WcMtRgcKsiksb7oojeMIm3DUkT4/f/hJ/5hc3Ktum3ooBC89AfOJZXUg8tJIjjzjrYU/xLJxjQQQw
+	DSItyGJitKFo+2ZrjabPYd+oM1niRBVhAeu7gsbPgyCw8FMYA3ZhlOvKzVo4ROAMzCu7a+ekEDpbP
+	rXdZL/THxaSaiZUBf2D4anuYNmvKop/oHSNMj+7wCWZAp2QCXfPzFgZpCmStuZnj9b/L/8a8KSI6P
+	f7G61aQuJ2Kgv/4NUJcbkQ34olyz/cxSitBtfkDyPD2laNFrsTU1uhdRD1SBC4zFTm4uJDMLUKWYl
+	fKWtAGHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1prY41-002rMc-0O;
-	Wed, 26 Apr 2023 05:51:37 +0000
+	id 1prY45-002rOk-2Q;
+	Wed, 26 Apr 2023 05:51:41 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prY3x-002rKS-1k;
-	Wed, 26 Apr 2023 05:51:34 +0000
-X-UUID: 633fcde8e3f611ed8687db9d93187ff1-20230425
+	id 1prY3y-002rKS-2r;
+	Wed, 26 Apr 2023 05:51:36 +0000
+X-UUID: 6417c0f4e3f611ed8687db9d93187ff1-20230425
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=zTnxtp6hN8hNECyGyeAIWXn7uB5lZFLas1G7S96mRtQ=;
-	b=jxeeTHmjzvpeeh4s3Vj8BgXHKdVqyb4WKhjLU80wrKUYegGFWKVXQ8YkP6x6JdmqSSP0Vinhz5eo/R/pqA/XVePuH+0pwdqQaY5wbKGr9wqoaXKZDutgpaut50NCJBsXjzJSUJ8jZalkxrH6Ro+drWfDfdOSWQ4eIgKoWe9UrA8=;
-X-CID-UNFAMILIAR: 1
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=MfA0LdoxFOdzbOhOzbH0wz/ZeMwbs/1gRdyK3bwQCXQ=;
+	b=oIYAYKr7PqkJ+Fj27YSs6eKSOl0/rOgj7BqAj33l+lzLuXIQOffg6xQQd6d5rSfkHHBpwXTXpQm1O7XYQuuj1lT5c+2JRAR0zuYWqj34Fp0MRrqZHdIwkCVZdP+3ay1S0etrP24RLjnkQefwWXAALdQ7PWGVjjyyWtJUYCBsIkA=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:ed903058-e054-4dac-8b7c-24f2c71293c4,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:100
-X-CID-INFO: VERSION:1.1.22,REQID:ed903058-e054-4dac-8b7c-24f2c71293c4,IP:0,URL
-	:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
-	N:quarantine,TS:100
-X-CID-META: VersionHash:120426c,CLOUDID:03ae4685-cd9c-45f5-8134-710979e3df0e,B
-	ulkID:230426135127JW1ALX48,BulkQuantity:1,Recheck:0,SF:19|48|38|29|28|16,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
-	OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: 633fcde8e3f611ed8687db9d93187ff1-20230425
+X-CID-O-INFO: VERSION:1.1.22,REQID:6eb0d20e-fafe-4aed-a577-600f549e5c0d,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:95
+X-CID-INFO: VERSION:1.1.22,REQID:6eb0d20e-fafe-4aed-a577-600f549e5c0d,IP:0,URL
+	:0,TC:0,Content:-5,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
+	ON:quarantine,TS:95
+X-CID-META: VersionHash:120426c,CLOUDID:c7472dec-db6f-41fe-8b83-13fe7ed1ef52,B
+	ulkID:230426135132K14MMIEE,BulkQuantity:0,Recheck:0,SF:48|38|29|28|17|19,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+	,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: 6417c0f4e3f611ed8687db9d93187ff1-20230425
 Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
 	(envelope-from <trevor.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1016426481; Tue, 25 Apr 2023 22:51:28 -0700
+	with ESMTP id 35354925; Tue, 25 Apr 2023 22:51:29 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Wed, 26 Apr 2023 13:51:26 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Wed, 26 Apr 2023 13:51:25 +0800
+ 15.2.1118.25 via Frontend Transport; Wed, 26 Apr 2023 13:51:26 +0800
 From: Trevor Wu <trevor.wu@mediatek.com>
 To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
 	<perex@perex.cz>, <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
@@ -63,9 +62,9 @@ To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
 CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
 	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>
-Subject: [PATCH v3 2/7] ASoC: mediatek: mt8188: complete set_tdm_slot function
-Date: Wed, 26 Apr 2023 13:51:19 +0800
-Message-ID: <20230426055124.16529-3-trevor.wu@mediatek.com>
+Subject: [PATCH v3 7/7] ASoC: dt-bindings: mediatek,mt8188-afe: add audio properties
+Date: Wed, 26 Apr 2023 13:51:24 +0800
+Message-ID: <20230426055124.16529-8-trevor.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230426055124.16529-1-trevor.wu@mediatek.com>
 References: <20230426055124.16529-1-trevor.wu@mediatek.com>
@@ -73,8 +72,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230425_225133_593005_CE28CBB8 
-X-CRM114-Status: GOOD (  13.52  )
+X-CRM114-CacheID: sfid-20230425_225134_949684_56741380 
+X-CRM114-Status: GOOD (  10.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,68 +88,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-User can configures slot number of TDM mode via set_tdm_slot callback.
+Add apll1_d4 to clocks for switching the parent of top_a1sys_hp
+dynamically. On the other hand, "mediatek,infracfg" is included for bus
+protection.
 
 Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
 ---
- sound/soc/mediatek/mt8188/mt8188-dai-etdm.c | 21 ++++++++++++++++++---
- 1 file changed, 18 insertions(+), 3 deletions(-)
+ .../bindings/sound/mediatek,mt8188-afe.yaml          | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
-diff --git a/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c b/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c
-index 7a37752d4244..fddecf5bf7c6 100644
---- a/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c
-+++ b/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c
-@@ -1909,6 +1909,10 @@ static int mtk_dai_etdm_hw_params(struct snd_pcm_substream *substream,
- 		if (!is_valid_etdm_dai(mst_dai_id))
- 			return -EINVAL;
+diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8188-afe.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8188-afe.yaml
+index 82ccb32f08f2..eb58de8c0e68 100644
+--- a/Documentation/devicetree/bindings/sound/mediatek,mt8188-afe.yaml
++++ b/Documentation/devicetree/bindings/sound/mediatek,mt8188-afe.yaml
+@@ -29,6 +29,10 @@ properties:
+     $ref: /schemas/types.yaml#/definitions/phandle
+     description: The phandle of the mediatek topckgen controller
  
-+		mst_etdm_data = afe_priv->dai_priv[mst_dai_id];
-+		if (mst_etdm_data->slots)
-+			channels = mst_etdm_data->slots;
++  mediatek,infracfg:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description: The phandle of the mediatek infracfg controller
 +
- 		ret = mtk_dai_etdm_mclk_configure(afe, mst_dai_id);
- 		if (ret)
- 			return ret;
-@@ -1918,7 +1922,6 @@ static int mtk_dai_etdm_hw_params(struct snd_pcm_substream *substream,
- 		if (ret)
- 			return ret;
+   power-domains:
+     maxItems: 1
  
--		mst_etdm_data = afe_priv->dai_priv[mst_dai_id];
- 		for (i = 0; i < mst_etdm_data->cowork_slv_count; i++) {
- 			slv_dai_id = mst_etdm_data->cowork_slv_id[i];
- 			ret = mtk_dai_etdm_configure(afe, rate, channels,
-@@ -1931,6 +1934,12 @@ static int mtk_dai_etdm_hw_params(struct snd_pcm_substream *substream,
- 				return ret;
- 		}
- 	} else {
-+		if (!is_valid_etdm_dai(dai->id))
-+			return -EINVAL;
-+		mst_etdm_data = afe_priv->dai_priv[dai->id];
-+		if (mst_etdm_data->slots)
-+			channels = mst_etdm_data->slots;
-+
- 		ret = mtk_dai_etdm_mclk_configure(afe, dai->id);
- 		if (ret)
- 			return ret;
-@@ -2073,10 +2082,16 @@ static int mtk_dai_etdm_set_tdm_slot(struct snd_soc_dai *dai,
- 	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
- 	struct mt8188_afe_private *afe_priv = afe->platform_priv;
- 	struct mtk_dai_etdm_priv *etdm_data;
-+	int dai_id;
+@@ -52,6 +56,7 @@ properties:
+       - description: mux for i2si1_mck
+       - description: mux for i2si2_mck
+       - description: audio 26m clock
++      - description: audio pll1 divide 4
  
--	if (!is_valid_etdm_dai(dai->id))
-+	if (is_cowork_mode(dai))
-+		dai_id = get_etdm_cowork_master_id(dai);
-+	else
-+		dai_id = dai->id;
-+
-+	if (!is_valid_etdm_dai(dai_id))
- 		return -EINVAL;
--	etdm_data = afe_priv->dai_priv[dai->id];
-+	etdm_data = afe_priv->dai_priv[dai_id];
+   clock-names:
+     items:
+@@ -73,6 +78,7 @@ properties:
+       - const: i2si1_m_sel
+       - const: i2si2_m_sel
+       - const: adsp_audio_26m
++      - const: apll1_d4
  
- 	dev_dbg(dai->dev, "%s id %d slot_width %d\n",
- 		__func__, dai->id, slot_width);
+   mediatek,etdm-in1-cowork-source:
+     $ref: /schemas/types.yaml#/definitions/uint32
+@@ -184,7 +190,8 @@ examples:
+                  <&topckgen 78>, //CLK_TOP_I2SO2
+                  <&topckgen 79>, //CLK_TOP_I2SI1
+                  <&topckgen 80>, //CLK_TOP_I2SI2
+-                 <&adsp_audio26m 0>; //CLK_AUDIODSP_AUDIO26M
++                 <&adsp_audio26m 0>, //CLK_AUDIODSP_AUDIO26M
++                 <&topckgen 136>; //CLK_TOP_APLL1_D4
+         clock-names = "clk26m",
+                       "apll1",
+                       "apll2",
+@@ -202,7 +209,8 @@ examples:
+                       "i2so2_m_sel",
+                       "i2si1_m_sel",
+                       "i2si2_m_sel",
+-                      "adsp_audio_26m";
++                      "adsp_audio_26m",
++                      "apll1_d4";
+     };
+ 
+ ...
 -- 
 2.18.0
 
