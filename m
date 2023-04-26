@@ -4,68 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 105CEC7618E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Apr 2023 08:47:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E6EFC7EE24
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Apr 2023 09:12:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xPrZaOurunCZkN/2TvmjCQYHKqLyJqrrjIlvNq4VWq0=; b=WHMqN7k2O517j40JQANwvvM5XM
-	e09P5OBlPVcrAiJ0XT6mrzfHbUnLxTy2URsVvU/Vc9bSzBtJ2vOegmxOQP8SosoexzLoO29tsTP92
-	aR3oTnRf9yiyMg3zyKeTQB3B/dCWlzMWAua8O3h33RyCLbFmu7961dL2r4g30T0gBksyGuTrHSf5H
-	Ahf4K9ZeVog4Xis1q8wKOkgmKTawj7aHYVu4QCeM8JAPTaw/IesOynkJgutRmehuj6XA81foXLFJe
-	XY5iO4gkSLz0AVWd5qlB1kcC5VvVGWy3XtbzoBPdwlRhJwvNamwcqr9jJKYW2qSd1FHuV0GdyZaan
-	1lVs0j7A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=X5BMOUCftBqUoS89OY1vJghk0U8zsFcVshTFWmsRm4E=; b=vH6nvZFDGO1iY2X2g6/u+XQg7G
+	Gt8xmp9kpg1LlE4DQ8Ea26w0zRc7BqxLwbJ/hOTwsMKFFGgMc1cgNi5xGiP7H60GSWKzLgN3VFmjy
+	g8LPX6/KEJ399lPc6w1JvwfCO15sYW3nVJb5TFggYWv5KZHZpC6Z7+tmkG4Hf1KesAf1C1tSqdnlQ
+	89Ap6bcdoQhvc/0YgpSd2dBq6QxVeoqfkyWJTMxeSzY07HYUC1kQiFWAamG2Hmfy+C2L1cc/Xdh69
+	zHV8k1eMJDR0r0B0i9j/YZYEFeTCEVhFsVYTMWJPYOhk3ryDVKWHuZmxpjqcxbNGgeb+CODP+DULa
+	9oNszcsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pranl-003C4n-0z;
-	Wed, 26 Apr 2023 08:47:01 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1prbCU-003F63-1w;
+	Wed, 26 Apr 2023 09:12:34 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prang-003C3g-3D;
-	Wed, 26 Apr 2023 08:46:58 +0000
-Received: from [IPV6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2] (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 813D166032A7;
-	Wed, 26 Apr 2023 09:46:51 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1682498812;
-	bh=MIvypk/ABXRS6CkQmUf5Gqt/bwzeB1sNeZv/ERfJSDU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ALh0W156IH1Nx33oly0SGgoCItZYpLTyGen+40TGR2AL+WKyNGa7tuWkft6Wmzbg+
-	 X9VRSMsRc1u7z2xGEFL8cRQeHfq33j6l1LK3WatZ71b4vtmZyhnYUTIUtsb0YgtFG1
-	 5Q2/w6wiqZtB7q2p58mdWekJqBruEBiA0o0710VpP7wyHyPgKKUY/kAXxxfAN9qYvv
-	 hHdap9S0gBEU8rtNr9cl0eNM1ti3BkrtC2CS5wqvfNfSsitXffHa6Qjj4PILsWkwwn
-	 J0FW8hW/9jgXUw5HVNnCXsVKPLPSsExCF7/UYmw4f5HkdzkJp65kpzIvL7CoYhxOQo
-	 vrptfWDWLfmHg==
-Message-ID: <f7a2c3f7-5a25-07ed-0c77-e87e40a7d88a@collabora.com>
-Date: Wed, 26 Apr 2023 10:46:49 +0200
+	id 1prbCR-003F5G-2p;
+	Wed, 26 Apr 2023 09:12:33 +0000
+X-UUID: 76a8fe9ce41211edb7d8d11f642b8e78-20230426
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=X5BMOUCftBqUoS89OY1vJghk0U8zsFcVshTFWmsRm4E=;
+	b=cGdRaE4fZAkJ9C0QfYzazZF/ynwvuk7yLlDI+uo6aoOsydawcUneSZ7IFB0XM9IVIVXXCeSQAvf5QuBH5TJ/GfMlYKfM3hWhRc4LopsuctWiDdxwBHhEF0kJt5qIQaaLlzO8ScbXh01MEnmjeepKNvGGuXW5/XruhZk+fnhB2NE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22,REQID:05a78764-add8-4a73-a257-68fb94cdf0f6,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:120426c,CLOUDID:1a254e85-cd9c-45f5-8134-710979e3df0e,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: 76a8fe9ce41211edb7d8d11f642b8e78-20230426
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <tinghan.shen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 669544604; Wed, 26 Apr 2023 02:12:26 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Wed, 26 Apr 2023 17:12:24 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Wed, 26 Apr 2023 17:12:24 +0800
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
+	<mathieu.poirier@linaro.org>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
+ Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Tinghan Shen
+	<tinghan.shen@mediatek.com>
+CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v10 01/11] dt-bindings: remoteproc: mediatek: Improve the rpmsg subnode definition
+Date: Wed, 26 Apr 2023 17:12:01 +0800
+Message-ID: <20230426091211.21557-2-tinghan.shen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230426091211.21557-1-tinghan.shen@mediatek.com>
+References: <20230426091211.21557-1-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH v2 3/4] arm64: dts: mediatek: cherry: Configure eDP and
- internal display
-Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: matthias.bgg@gmail.com, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel@collabora.com
-References: <20230424112523.1436926-1-angelogioacchino.delregno@collabora.com>
- <20230424112523.1436926-4-angelogioacchino.delregno@collabora.com>
- <CAGXv+5EHAGMYE7Z-n6Wtss-sXXa0Rvv=jkse2sqyTOtGYpqR-A@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAGXv+5EHAGMYE7Z-n6Wtss-sXXa0Rvv=jkse2sqyTOtGYpqR-A@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230426_014657_178326_DFEE19E4 
-X-CRM114-Status: GOOD (  15.59  )
+X-CRM114-CacheID: sfid-20230426_021231_926049_12B91625 
+X-CRM114-Status: GOOD (  13.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,88 +88,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/04/23 10:24, Chen-Yu Tsai ha scritto:
-> On Mon, Apr 24, 2023 at 7:25 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> Add the required nodes to enable the DisplayPort interface, connected
->> to the Embedded DisplayPort port, where we have an internal display.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   .../boot/dts/mediatek/mt8195-cherry.dtsi      | 32 +++++++++++++++++++
->>   1 file changed, 32 insertions(+)
->>
->> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
->> index 4229f4f7dc2f..adbda4dccdd5 100644
->> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
->> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
->> @@ -47,6 +47,18 @@ memory@40000000 {
->>                  reg = <0 0x40000000 0 0x80000000>;
->>          };
->>
->> +       pp3300_disp_x: regulator-pp3300-disp-x {
->> +               compatible = "regulator-fixed";
->> +               regulator-name = "pp3300_disp_x";
->> +               regulator-min-microvolt = <3300000>;
->> +               regulator-max-microvolt = <3300000>;
->> +               enable-active-high;
->> +               gpio = <&pio 55 GPIO_ACTIVE_HIGH>;
->> +               pinctrl-names = "default";
->> +               pinctrl-0 = <&panel_fixed_pins>;
->> +               regulator-always-on;
-> 
-> I think you missed my comment on v1 about this regulator's supplier and
-> enable delay.
-> 
+Improve the definition of the rpmsg subnode by
+assigning a distinct node name and adding the
+definition source of node properties.
 
-Sorry, it wasn't my intention to ignore that. Will check that out and
-push a v3 asap.
+Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+Acked-by: Rob Herring <robh@kernel.org>
+---
+ .../bindings/remoteproc/mtk,scp.yaml          | 31 +++++++++----------
+ 1 file changed, 15 insertions(+), 16 deletions(-)
 
-> ChenYu
-> 
->> +       };
->> +
->>          /* system wide LDO 3.3V power rail */
->>          pp3300_z5: regulator-pp3300-ldo-z5 {
->>                  compatible = "regulator-fixed";
->> @@ -288,6 +300,20 @@ port@1 {
->>                          reg = <1>;
->>                          edp_out: endpoint {
->>                                  data-lanes = <0 1 2 3>;
->> +                               remote-endpoint = <&panel_in>;
->> +                       };
->> +               };
->> +       };
->> +
->> +       aux-bus {
->> +               panel {
->> +                       compatible = "edp-panel";
->> +                       power-supply = <&pp3300_disp_x>;
->> +                       backlight = <&backlight_lcd0>;
->> +                       port {
->> +                               panel_in: endpoint {
->> +                                       remote-endpoint = <&edp_out>;
->> +                               };
->>                          };
->>                  };
->>          };
->> @@ -927,6 +953,12 @@ pins-cs {
->>                  };
->>          };
->>
->> +       panel_fixed_pins: panel-pwr-default-pins {
->> +               pins-vreg-en {
->> +                       pinmux = <PINMUX_GPIO55__FUNC_GPIO55>;
->> +               };
->> +       };
->> +
->>          pio_default: pio-default-pins {
->>                  pins-wifi-enable {
->>                          pinmux = <PINMUX_GPIO58__FUNC_GPIO58>;
->> --
->> 2.40.0
->>
->>
+diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
+index 895415772d1d..271081df0e46 100644
+--- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
++++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
+@@ -58,6 +58,18 @@ properties:
+   memory-region:
+     maxItems: 1
+ 
++  cros-ec-rpmsg:
++    $ref: /schemas/mfd/google,cros-ec.yaml
++    description:
++      This subnode represents the rpmsg device. The properties
++      of this node are defined by the individual bindings for
++      the rpmsg devices.
++
++    required:
++      - mediatek,rpmsg-name
++
++    unevaluatedProperties: false
++
+ required:
+   - compatible
+   - reg
+@@ -89,21 +101,7 @@ allOf:
+         reg-names:
+           maxItems: 2
+ 
+-additionalProperties:
+-  type: object
+-  description:
+-    Subnodes of the SCP represent rpmsg devices. The names of the devices
+-    are not important. The properties of these nodes are defined by the
+-    individual bindings for the rpmsg devices.
+-  properties:
+-    mediatek,rpmsg-name:
+-      $ref: /schemas/types.yaml#/definitions/string-array
+-      description:
+-        Contains the name for the rpmsg device. Used to match
+-        the subnode to rpmsg device announced by SCP.
+-
+-  required:
+-    - mediatek,rpmsg-name
++additionalProperties: false
+ 
+ examples:
+   - |
+@@ -118,7 +116,8 @@ examples:
+         clocks = <&infracfg CLK_INFRA_SCPSYS>;
+         clock-names = "main";
+ 
+-        cros_ec {
++        cros-ec-rpmsg {
++            compatible = "google,cros-ec-rpmsg";
+             mediatek,rpmsg-name = "cros-ec-rpmsg";
+         };
+     };
+-- 
+2.18.0
 
 
