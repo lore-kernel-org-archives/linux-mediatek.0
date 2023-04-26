@@ -4,105 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C35CC77B60
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Apr 2023 12:00:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32339C77B60
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Apr 2023 12:06:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tDMAZYC6PlfAvsYSrf+M4iyNDJFAF/AM883C7PrISNc=; b=Si1Uip/N7P4x7CIrjkROyI+5H3
-	P3prj/hUHcvxmk3zjotSAXS85h08GVvaGi3/3/4AnH7lwXgzcTeB5dng3CqauuMOX9CjcReRcMhKq
-	xBxtIKAudV8hNinD2pmGNA5I8rL3IDFh7JjuBXW1UBWMwBuyp23KY/prhdK2izbdXF6y4zs0MC3vz
-	iCS+Q2IJw5JskpqFCilzPiiG1tHQtr4qj0jab6xQHuwmKItw85ImAG0fDa35A2gfBGEX9oWsobdEw
-	INf2ndsOV27aVSxadGXjYQL+eDW04s7mbw3xibWTajVvAaW5i/+hxHobMNFFSdmENHieUFZlkATYn
-	lKpdtVyQ==;
+	bh=Xd2Fnrc1cKluIizbB+ao8XWgX8NkyDey/s8AgbSNtrs=; b=RUqFWJznwL/ZZzBscYRS55mdmJ
+	Tjih2Fkz3EVdFSWe5kzeZ/sISpX3zgdvvO2r7Rt8C9IsjIbvc68xEYGuxF8edSyoGxVkVKmIefTTX
+	44UkMlKASoTwa1+SJavJl8g00y7nZ94exxM7MC4hf3/RXGvRXKHplee/fB/CgjdTZPwSCdqEtrCUw
+	KHEE1P1v4LSLZRmuysJC2vOie0UmYuUvEnCwLGNZISKrlWefPozmgBo23fIh7G5+AVeds/b2voQv5
+	BRNKkW3S8OH/yQQjoxgo04iKAJtqI6IUG4gd+CKrKr6R0m2iBSt70fttQKZWpPtGgSIk3NszvvQqz
+	W8hr8mKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1prdp7-003qL6-19;
-	Wed, 26 Apr 2023 12:00:37 +0000
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+	id 1prdv4-003rYL-2R;
+	Wed, 26 Apr 2023 12:06:46 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prciW-003eTx-2t
-	for linux-mediatek@lists.infradead.org;
-	Wed, 26 Apr 2023 10:49:47 +0000
-Received: by mail-wr1-x432.google.com with SMTP id ffacd0b85a97d-2f55ffdbaedso4392339f8f.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 26 Apr 2023 03:49:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1682506181; x=1685098181;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=tDMAZYC6PlfAvsYSrf+M4iyNDJFAF/AM883C7PrISNc=;
-        b=NiEogC6rbyFJM1FSnl/FadpIxfug9RR3ut5ke27eotswvuUD9tQ+ZPJnmwSClqSspI
-         fiOKARPv2qxgl7E917M9JrviRwIK8bkkuyAOsDgKWAtn3z8nr9nkZiabEmc81LKtGKMd
-         Cj5wv3w8A1Id7aYOKxzU4fki/G5rs/rQwthN/4AjQ4PWBCbGOKqz5fpRB47U9FrNIvZS
-         txF5En/9GWm7rNxSNlltDsQDgPhudCTXxd58kIrPiEcLFyHVXS8JL6AFIiPr1y7C8iIm
-         GfO67v8qK8Tf/XJVi3a6Mi9s0MtXeV7Kh6juhhi9GQDm3DxhfCcdL6t+aadbsnAUkZ5Z
-         plUg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682506181; x=1685098181;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=tDMAZYC6PlfAvsYSrf+M4iyNDJFAF/AM883C7PrISNc=;
-        b=Xh+ttf87jTPWbwK3e4Yy55Q30uv8OcNw6c5s1UCvBG3ASWUO0RGb/8Ro2q7yOcrNFN
-         iJGLLQqCpZg2YnTl7B4f0kVSuqSNwayLMmcM25UpO299KHM3BDt377U97OUqxNc2F5YD
-         Oug4O5bZ1w6+OeQYEkzW1BFzA/N2bueqifBIrUQPXUkxrt61VhZuNwnKXjiBN4nkMS6L
-         EA8EMDTBxKhP6mqxGstnk3oE2CuHJbTFg4DtT9xD1lucet7YEa9LSXeWgA6TW2xswBjq
-         dJTOvIzW/cBKLYtY86sWeFMiyUzRGDQz7QCoicGLHVb7zRvXvJAXisEk7D4Uz1vR8a0M
-         7n2w==
-X-Gm-Message-State: AAQBX9fU0yf0sXkdXBXl00Vvyv11A07MmGwreT7s5bY/4nGmtEKq1C6u
-	F102seZnKYUzy6OpMiailmOodg==
-X-Google-Smtp-Source: AKy350bKZiYHUtnWnoZ/S+mQWOjCDaBV8/pXElR7HzrGZxI91UvC4qjfknWCal1E/D79mT5NQhIeGA==
-X-Received: by 2002:adf:ce0c:0:b0:2f2:1fb6:7b0c with SMTP id p12-20020adfce0c000000b002f21fb67b0cmr14157207wrn.49.1682506181105;
-        Wed, 26 Apr 2023 03:49:41 -0700 (PDT)
-Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id 25-20020a05600c025900b003ed2c0a0f37sm17601988wmj.35.2023.04.26.03.49.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 26 Apr 2023 03:49:40 -0700 (PDT)
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Wed, 26 Apr 2023 12:49:04 +0200
-Subject: [PATCH v6 04/12] arm64: dts: mediatek: add watchdog support for
- mt8365 SoC
+	id 1prduq-003rPw-1x;
+	Wed, 26 Apr 2023 12:06:34 +0000
+Received: from [IPV6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2] (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6420A660036F;
+	Wed, 26 Apr 2023 13:06:21 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1682510782;
+	bh=OfMlzuTrSWbL6RmSjUOMVmGVdnb1BVtFW+nmxN56VS4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=DPPysip393PCjfe9Jv+L2SXJuYsGGsHvvK1XWXBikxECYbVFvi/PhDIaAeepxrAL7
+	 +wJpLFS1g8wTc4+JN6TZYN4waXDzKuSCrFSe3UPdGsalhSBUGqqMWAbSASbRC0hSW3
+	 AODPeJIo40uTfCCReDOlt15TyZCnMp0yEA6AEhkqlYUuxbXrzQoxHX/qPeUX8MOEdr
+	 eKD9lPe+MzEvZrNTxRJziSdAgghr//60ohBw/K9jvUEPgjHfVUQ26TERUBZ2QlWsoI
+	 kTEze4VfJf0ahBK+l+o6Ht28PDMQZmwAp4oU3WEkBZ3hX+ugF17r7KN+TpWLYFpC0r
+	 jQVZrI6+fNDRQ==
+Message-ID: <0c8d08e2-770a-1ec2-e990-1d48bfc0eac6@collabora.com>
+Date: Wed, 26 Apr 2023 14:06:19 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH RESEND v3 6/9] drm/mediatek: Add gamma support different
+ bank_size for other SoC
+Content-Language: en-US
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: CK Hu <ck.hu@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>,
+ Singo Chang <singo.chang@mediatek.com>, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220912013006.27541-1-jason-jh.lin@mediatek.com>
+ <20220912013006.27541-7-jason-jh.lin@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220912013006.27541-7-jason-jh.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Message-Id: <20230203-evk-board-support-v6-4-8d6b1cfe7f29@baylibre.com>
-References: <20230203-evk-board-support-v6-0-8d6b1cfe7f29@baylibre.com>
-In-Reply-To: <20230203-evk-board-support-v6-0-8d6b1cfe7f29@baylibre.com>
-To: Catalin Marinas <catalin.marinas@arm.com>, 
- Will Deacon <will@kernel.org>, Wim Van Sebroeck <wim@linux-watchdog.org>, 
- Guenter Roeck <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, 
- Alexandre Mergnat <amergnat@baylibre.com>, 
- Kevin Hilman <khilman@baylibre.com>
-X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=940; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=9yZG6Lt2sYetnfjl+HHfU8vcDGstMCEZ7QfVbikE4Lw=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkSQG/9dRLMit9NDtAeVEHD4K8h7SA0jlkRUAkyK7c
- vhslhDaJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZEkBvwAKCRArRkmdfjHUReltD/
- 96zwsIpIprtKIFhuSZKMpzQzb0vDdpAYbF8n1sVod99junEYGKg2rISq32DZ9oXBSB0KYfC2pvxMkH
- skByJa1ebTo/ELlMp7pGhekvGFazgU/LEawPKmIfPHmG0O6LtigrQnYnM87d9ARcoKmnhnW7mmuUvX
- RvQKLH1tFj8oQNzik21hfmG2G5UjdASP6KeB/7ZG7aMF4uAWjUqjC9ezg8dD/DpKNobHTiNzi4sOZY
- 3HgQywmf64FxsHQXlrAlvMPqz1/yz0D82Ov1xwiJC8w4XIb0GXHwYrgs4gOx1ahixnxJsSW0q6b2qz
- ibvBJTWftnxAUFeZLybrj+xj/b2ePi93SU2ztGgzTVDwurKnFXChuIBIAPEp/Y7hy92MeI4JGDW7mZ
- X38XEYjIAxEvtu4v2qrzUcEEaLdAGDP4c1tAlN4qfehl/8rVUCHPy2c2Kg9UU/IdUmcV+sPQ4j31dC
- CBZJ2IP+61XAmN/NfE4osSuCCExR5Hv4WN18KOvYcRtFdBXLQemtd8wyoGRTRq9S+9ixUlmGDzL54Y
- XR0yxyRJnf2roHJK8Z1Cvv8Evfm7A20DKpSvJ1uvbkjOGdX08EYh2Fzxz1sttowPpOODCyxVAEhRPf
- wXczUxs2nd2M7tZO4I/lWlY4yz1o5/J+mS/p77zvo9GSUC0agPwfQATwF09w==
-X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
- fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230426_034944_972591_CCFE8C66 
-X-CRM114-Status: UNSURE (   9.33  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230426_050632_775606_FF0DEDF1 
+X-CRM114-Status: GOOD (  16.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,34 +83,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add watchdog support.
+Il 12/09/22 03:30, Jason-JH.Lin ha scritto:
+> Add multiple bank support for mt8195.
+> If bank size is 0 which means no bank support.
+> 
+> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+> ---
+>   drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 45 +++++++++++++----------
+>   1 file changed, 26 insertions(+), 19 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> index be82d15a5204..45da2b6206c8 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> @@ -21,6 +21,7 @@
+>   #define GAMMA_LUT_EN					BIT(1)
+>   #define GAMMA_DITHERING					BIT(2)
+>   #define DISP_GAMMA_SIZE				0x0030
+> +#define DISP_GAMMA_BANK				0x0100
+>   #define DISP_GAMMA_LUT				0x0700
+>   
+>   #define LUT_10BIT_MASK				0x03ff
+> @@ -33,6 +34,7 @@ struct mtk_disp_gamma_data {
+>   	bool lut_diff;
+>   	u16 lut_size;
+>   	u8 lut_bits;
+> +	u16 bank_size;
+>   };
+>   
+>   /*
+> @@ -75,9 +77,10 @@ void mtk_gamma_set_common(struct device *dev, void __iomem *regs, struct drm_crt
+>   	struct mtk_disp_gamma *gamma = dev_get_drvdata(dev);
+>   	bool lut_diff = false;
+>   	u16 lut_size = LUT_SIZE_DEFAULT;
+> +	u16 bank_size = lut_size;
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Tested-by: Kevin Hilman <khilman@baylibre.com>
-Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
----
- arch/arm64/boot/dts/mediatek/mt8365.dtsi | 6 ++++++
- 1 file changed, 6 insertions(+)
+Just use gamma->data->bank_size directly, as platform data is always present.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-index 1f6b48359115..bb45aab2e6a9 100644
---- a/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-@@ -162,6 +162,12 @@ syscfg_pctl: syscfg-pctl@10005000 {
- 			reg = <0 0x10005000 0 0x1000>;
- 		};
- 
-+		watchdog: watchdog@10007000 {
-+			compatible = "mediatek,mt8365-wdt", "mediatek,mt6589-wdt";
-+			reg = <0 0x10007000 0 0x100>;
-+			#reset-cells = <1>;
-+		};
-+
- 		pio: pinctrl@1000b000 {
- 			compatible = "mediatek,mt8365-pinctrl";
- 			reg = <0 0x1000b000 0 0x1000>;
+>   	u8 lut_bits = LUT_BITS_DEFAULT;
+>   	u8 shift_bits;
+> -	unsigned int i, reg;
+> +	unsigned int i, j, reg, bank_num;
+>   	struct drm_color_lut *lut;
+>   	void __iomem *lut_base;
+>   	u32 word, mask;
+> @@ -87,8 +90,10 @@ void mtk_gamma_set_common(struct device *dev, void __iomem *regs, struct drm_crt
+>   		lut_diff = gamma->data->lut_diff;
+>   		lut_size = gamma->data->lut_size;
+>   		lut_bits = gamma->data->lut_bits;
+> +		bank_size = gamma->data->bank_size;
 
--- 
-2.25.1
+You shall set bank_size = 512 to MT8173 and MT8183, otherwise they break, as this
+will set bank_size to 0.
+
+>   	}
+>   
+> +	bank_num = lut_size / bank_size;
+>   	shift_bits = LUT_INPUT_BITS - lut_bits;
+>   	mask = GENMASK(lut_bits - 1, 0);
+>   
+
+Regards,
+Angelo
 
 
