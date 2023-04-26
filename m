@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C456C7618E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Apr 2023 08:24:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 105CEC7618E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Apr 2023 08:47:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2X1REwQCCwFMihGCGVH5kfEg/ebeje+8z4vEKJ17BBI=; b=faykruQXbI2w3N
-	+RtMrrZgJKioWk9ThTZFj0/BZHe+RTBJ/+PRoBPsXTF2TcaA7Xo8K/TmZrNUZ5KqGIPfdwg36Xu0u
-	OYTr7186M/zFNIIk6BWZyahLGTTRGkI0HJMvTmemRQhUwwbj6TvgpuYhlbQOUwGsLKMmeclw+GGHs
-	kHVAT+6zbGpL/nqWzZInY3lrVvHvuD48f10kFc+5yYNA/YspdOJZWebVkEeSaGZzvF1oejYFiHZA3
-	qgNbfZVURhDJTJGVTSga02ZqijZZz5THMh7z5aMSPCcHNa3emb2mP+of7Mkr+zt333y//hdj2xtXq
-	QXtFwmhd0ZieK3jaLXFA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xPrZaOurunCZkN/2TvmjCQYHKqLyJqrrjIlvNq4VWq0=; b=WHMqN7k2O517j40JQANwvvM5XM
+	e09P5OBlPVcrAiJ0XT6mrzfHbUnLxTy2URsVvU/Vc9bSzBtJ2vOegmxOQP8SosoexzLoO29tsTP92
+	aR3oTnRf9yiyMg3zyKeTQB3B/dCWlzMWAua8O3h33RyCLbFmu7961dL2r4g30T0gBksyGuTrHSf5H
+	Ahf4K9ZeVog4Xis1q8wKOkgmKTawj7aHYVu4QCeM8JAPTaw/IesOynkJgutRmehuj6XA81foXLFJe
+	XY5iO4gkSLz0AVWd5qlB1kcC5VvVGWy3XtbzoBPdwlRhJwvNamwcqr9jJKYW2qSd1FHuV0GdyZaan
+	1lVs0j7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1praRT-0039qA-1m;
-	Wed, 26 Apr 2023 08:23:59 +0000
-Received: from sender4-op-o10.zoho.com ([136.143.188.10])
+	id 1pranl-003C4n-0z;
+	Wed, 26 Apr 2023 08:47:01 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1praRP-0039p3-2U;
-	Wed, 26 Apr 2023 08:23:57 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1682497373; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=QsalfbtmyXdTRKWmIqSJrHutOkrEm5PNdAvf5pAyCv2tfxvK+vGsXGmMdPAsCsXw/5wTlh8ippCXkAqSz/Wz2PDQA5S3oKqTpuYwy8ksYthBasGEHDrx9Ox28caRBQlsKVOYwnlfHT7u0EGrGyJWF7qiqQh7gx+TOkTNI7H9Hfo=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1682497373; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=2X1REwQCCwFMihGCGVH5kfEg/ebeje+8z4vEKJ17BBI=; 
-	b=mLpT4MBvg9136utdDd6vWSlWaHSiwkDJP0xntKU9KgXSN3ooAOWAWDYTp6axo3ozCGtZ6iwHBVE1AC4WGEMXikWO1QqD/jkXzlcfvJWgMF8+OVd3pIvtfq9z/gHaZJ8MWiEEPR0hU5AWC0GGGxDCXSt7uqw63CfgJpo+6vJpZF8=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1682497373;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=2X1REwQCCwFMihGCGVH5kfEg/ebeje+8z4vEKJ17BBI=;
-	b=dMH6pKBH/AR+ywpNXtkCeS1fzqvzz5NWSDlkRYQYrxfWRWSnrndOUqBhWsbtQma+
-	D4GlsXiQziPgUns2b7hG04d178DmE/KcPOA5RAe+wAnLt0HlJuFd1QHidU48cPUpy4Q
-	QRvLkV5yv1oEa9usMzo5qdW1eF+jpM81inrFLtGo=
-Received: from [10.10.10.3] (149.91.1.15 [149.91.1.15]) by mx.zohomail.com
-	with SMTPS id 1682497371872497.30592440788405; Wed, 26 Apr 2023 01:22:51 -0700 (PDT)
-Message-ID: <0e42a392-f497-125f-d07c-734ecb474771@arinc9.com>
-Date: Wed, 26 Apr 2023 11:22:37 +0300
+	id 1prang-003C3g-3D;
+	Wed, 26 Apr 2023 08:46:58 +0000
+Received: from [IPV6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2] (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 813D166032A7;
+	Wed, 26 Apr 2023 09:46:51 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1682498812;
+	bh=MIvypk/ABXRS6CkQmUf5Gqt/bwzeB1sNeZv/ERfJSDU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ALh0W156IH1Nx33oly0SGgoCItZYpLTyGen+40TGR2AL+WKyNGa7tuWkft6Wmzbg+
+	 X9VRSMsRc1u7z2xGEFL8cRQeHfq33j6l1LK3WatZ71b4vtmZyhnYUTIUtsb0YgtFG1
+	 5Q2/w6wiqZtB7q2p58mdWekJqBruEBiA0o0710VpP7wyHyPgKKUY/kAXxxfAN9qYvv
+	 hHdap9S0gBEU8rtNr9cl0eNM1ti3BkrtC2CS5wqvfNfSsitXffHa6Qjj4PILsWkwwn
+	 J0FW8hW/9jgXUw5HVNnCXsVKPLPSsExCF7/UYmw4f5HkdzkJp65kpzIvL7CoYhxOQo
+	 vrptfWDWLfmHg==
+Message-ID: <f7a2c3f7-5a25-07ed-0c77-e87e40a7d88a@collabora.com>
+Date: Wed, 26 Apr 2023 10:46:49 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.0
-Subject: Re: [PATCH net-next 10/24] net: dsa: mt7530: empty default case on
- mt7530_setup_port5()
+Subject: Re: [PATCH v2 3/4] arm64: dts: mediatek: cherry: Configure eDP and
+ internal display
 Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>
-References: <20230425082933.84654-1-arinc.unal@arinc9.com>
- <20230425082933.84654-11-arinc.unal@arinc9.com>
- <ZEfuIHET4Nva0hj4@makrotopia.org>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <ZEfuIHET4Nva0hj4@makrotopia.org>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: matthias.bgg@gmail.com, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, kernel@collabora.com
+References: <20230424112523.1436926-1-angelogioacchino.delregno@collabora.com>
+ <20230424112523.1436926-4-angelogioacchino.delregno@collabora.com>
+ <CAGXv+5EHAGMYE7Z-n6Wtss-sXXa0Rvv=jkse2sqyTOtGYpqR-A@mail.gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <CAGXv+5EHAGMYE7Z-n6Wtss-sXXa0Rvv=jkse2sqyTOtGYpqR-A@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230426_012355_867296_4D76EB12 
-X-CRM114-Status: GOOD (  19.98  )
+X-CRM114-CacheID: sfid-20230426_014657_178326_DFEE19E4 
+X-CRM114-Status: GOOD (  15.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,73 +77,91 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Eric Dumazet <edumazet@google.com>, erkin.bozoglu@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 25.04.2023 18:13, Daniel Golle wrote:
-> On Tue, Apr 25, 2023 at 11:29:19AM +0300, arinc9.unal@gmail.com wrote:
->> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+Il 25/04/23 10:24, Chen-Yu Tsai ha scritto:
+> On Mon, Apr 24, 2023 at 7:25 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
 >>
->> There're two code paths for setting up port 5:
+>> Add the required nodes to enable the DisplayPort interface, connected
+>> to the Embedded DisplayPort port, where we have an internal display.
 >>
->> mt7530_setup()
->> -> mt7530_setup_port5()
->>
->> mt753x_phylink_mac_config()
->> -> mt753x_mac_config()
->>     -> mt7530_mac_config()
->>        -> mt7530_setup_port5()
->>
->> On the first code path, priv->p5_intf_sel is either set to
->> P5_INTF_SEL_PHY_P0 or P5_INTF_SEL_PHY_P4 when mt7530_setup_port5() is run.
->>
->> On the second code path, priv->p5_intf_sel is set to P5_INTF_SEL_GMAC5 when
->> mt7530_setup_port5() is run.
->>
->> Empty the default case which will never run but is needed nonetheless to
->> handle all the remaining enumeration values.
-> 
-> If the default: case is really just unreachable code because of the
-> sound reasoning you presented above, then you should just remove it.
-
-The compiler prints warnings if all enumeration values are not handled.
-
-   CC      drivers/net/dsa/mt7530.o
-   CC      drivers/net/dsa/mt7530-mdio.o
-   CC      drivers/net/dsa/mt7530-mmio.o
-drivers/net/dsa/mt7530.c: In function ‘mt7530_setup_port5’:
-drivers/net/dsa/mt7530.c:919:9: warning: enumeration value ‘P5_DISABLED’ 
-not handled in switch [-Wswitch]
-   919 |         switch (priv->p5_intf_sel) {
-       |         ^~~~~~
-
-> 
->>
->> Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 >> ---
->>   drivers/net/dsa/mt7530.c | 5 +----
->>   1 file changed, 1 insertion(+), 4 deletions(-)
+>>   .../boot/dts/mediatek/mt8195-cherry.dtsi      | 32 +++++++++++++++++++
+>>   1 file changed, 32 insertions(+)
 >>
->> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
->> index aab9ebb54d7d..b3db68d6939a 100644
->> --- a/drivers/net/dsa/mt7530.c
->> +++ b/drivers/net/dsa/mt7530.c
->> @@ -933,9 +933,7 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
->>   		val &= ~MHWTRAP_P5_DIS;
->>   		break;
->>   	default:
->> -		dev_err(ds->dev, "Unsupported p5_intf_sel %d\n",
->> -			priv->p5_intf_sel);
->> -		goto unlock_exit;
->> +		break;
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+>> index 4229f4f7dc2f..adbda4dccdd5 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+>> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+>> @@ -47,6 +47,18 @@ memory@40000000 {
+>>                  reg = <0 0x40000000 0 0x80000000>;
+>>          };
+>>
+>> +       pp3300_disp_x: regulator-pp3300-disp-x {
+>> +               compatible = "regulator-fixed";
+>> +               regulator-name = "pp3300_disp_x";
+>> +               regulator-min-microvolt = <3300000>;
+>> +               regulator-max-microvolt = <3300000>;
+>> +               enable-active-high;
+>> +               gpio = <&pio 55 GPIO_ACTIVE_HIGH>;
+>> +               pinctrl-names = "default";
+>> +               pinctrl-0 = <&panel_fixed_pins>;
+>> +               regulator-always-on;
 > 
-> I suppose you can also rather just remove the default: case alltogether
-> instead of keeping it and making it a no-op.
+> I think you missed my comment on v1 about this regulator's supplier and
+> enable delay.
+> 
 
-I make use of the default case with ("net: dsa: mt7530: rename 
-p5_intf_sel and use only for MT7530 switch") so I'd rather keep this.
+Sorry, it wasn't my intention to ignore that. Will check that out and
+push a v3 asap.
 
-Arınç
+> ChenYu
+> 
+>> +       };
+>> +
+>>          /* system wide LDO 3.3V power rail */
+>>          pp3300_z5: regulator-pp3300-ldo-z5 {
+>>                  compatible = "regulator-fixed";
+>> @@ -288,6 +300,20 @@ port@1 {
+>>                          reg = <1>;
+>>                          edp_out: endpoint {
+>>                                  data-lanes = <0 1 2 3>;
+>> +                               remote-endpoint = <&panel_in>;
+>> +                       };
+>> +               };
+>> +       };
+>> +
+>> +       aux-bus {
+>> +               panel {
+>> +                       compatible = "edp-panel";
+>> +                       power-supply = <&pp3300_disp_x>;
+>> +                       backlight = <&backlight_lcd0>;
+>> +                       port {
+>> +                               panel_in: endpoint {
+>> +                                       remote-endpoint = <&edp_out>;
+>> +                               };
+>>                          };
+>>                  };
+>>          };
+>> @@ -927,6 +953,12 @@ pins-cs {
+>>                  };
+>>          };
+>>
+>> +       panel_fixed_pins: panel-pwr-default-pins {
+>> +               pins-vreg-en {
+>> +                       pinmux = <PINMUX_GPIO55__FUNC_GPIO55>;
+>> +               };
+>> +       };
+>> +
+>>          pio_default: pio-default-pins {
+>>                  pins-wifi-enable {
+>>                          pinmux = <PINMUX_GPIO58__FUNC_GPIO58>;
+>> --
+>> 2.40.0
+>>
+>>
+
 
