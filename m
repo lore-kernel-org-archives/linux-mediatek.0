@@ -4,82 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9066FC7618E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Apr 2023 14:40:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDB4DC77B78
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Apr 2023 14:44:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U3fMS6vGtNlmEZteMKVTwMOKhjb7WLirh4B0WOh1xiU=; b=lbnjY1om4ZzqzGIhRpC2nj8UIq
-	Z7QTtA7fF5y/p4pFNuHhzAKVl+dmDYNzXsUwKu+MvgZMlj91iANdpuasmNSlmqxdAvkT4oi16krH6
-	7T/hQprlVL+XJYUiQapOeHPWPpWjy9S9ouFaKLHkQdzwBk8oGT7CLTvC57O7uCYfn+HczaRfbQ7Hw
-	A7VBtE9Y249qoy6Dn7/1g7YRkQOFevHjWNBBCiUP+D18MrrhNlhsJ4fSIH4DFZNBPe02M78/r07JJ
-	PVMXngfHx6rPpvF6Jp2VFNJCXfct8Owf5JcQP5Ywg/PnEGnGNR+eCvCTeoq0p6U+1EIOFeNnXGdgg
-	oS5ymIvw==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=RMNClM9ik+szOvJOLzfRpbcMxADOReFPHjEqSl9MgW0=; b=CRm5dxZ2u4w9SJ
+	lTbIMUHTc4a5x2VOrgVSynyxLYMcIcqVJf/j49gr587zsHhRr8nWvvqEOpGp/iZ6IrYoW0CFhTp7r
+	qNzE3rzkYJNOZjwwdhEG4OJLjQiO8u2i/sAebwsWi1CfromOr/vRgCpT60ke1qINt3djf5KEndMna
+	A9HWCWQF3aGHilZZOdaDpXz+j4GQ1mJIVBaIeURov9TnaW2jrzQNn7hxh29+slYVFKyJzxTX7ZgLK
+	rVlhAggRKzyYA1mHtqmGFFyM4l2wlqOgrM607g++9sKFd7hxBDJWs5WUD2sNMCwykJyLw4YAP91zB
+	4DgTkq2ZJwxz2pcNyYSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1prgJH-004Dxa-0E;
-	Wed, 26 Apr 2023 14:39:55 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1prgNo-004EXn-2V;
+	Wed, 26 Apr 2023 14:44:36 +0000
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prgJD-004DwS-0M;
-	Wed, 26 Apr 2023 14:39:52 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-94eee951c70so1157439666b.3;
-        Wed, 26 Apr 2023 07:39:49 -0700 (PDT)
+	id 1prgNm-004EX0-0S
+	for linux-mediatek@lists.infradead.org;
+	Wed, 26 Apr 2023 14:44:35 +0000
+Received: by mail-pf1-x42e.google.com with SMTP id d2e1a72fcca58-63b73203e0aso43668708b3a.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 26 Apr 2023 07:44:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1682519988; x=1685111988;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=U3fMS6vGtNlmEZteMKVTwMOKhjb7WLirh4B0WOh1xiU=;
-        b=QaFZNT6fNhNXKLHPDrFxEtroaaMbguLx43qCTMCyoUuNX2Ag1/Y92xZJp60AzURdk0
-         dxIvq0SjOBv97cdPwEHj5HPEtjE+doViBSeQpUIUJfXtiTet7PoNCHbF4/Bxl+KRHUvx
-         lV9lcl5lLTJuA0JaEITMtM1JVc5JF4oQTFpaTgB6MI4AJcR4RmkN+4Sae74M1c9J+vYv
-         Q8Hk2Cy60n0SpC7qfJWQt0QxAkhdQ+op2RcyIYqHLCU55iobl0ZthHflxPRdAU0oiEwL
-         lDCN0KToZa569MY6col+EPk0zJ3fs51uLh34iiD2xI9Cnh/kvF0cE6nJqing/uEwurKR
-         N1Yg==
+        d=chromium.org; s=google; t=1682520271; x=1685112271;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=RMNClM9ik+szOvJOLzfRpbcMxADOReFPHjEqSl9MgW0=;
+        b=T1qwsRZgAaz7PgyfGME8hLTr+BlhLPS7hZWDSk7H9HG+U/in5nh4UEAeuL4awFu7Kh
+         vvYQ74hjznhzvQQZ6ipUybRF6I83VVUuO8PQrWmuojfajIXZcwe72Vn8Bp6qakLrEUeT
+         MSl0I6qTjgjLGXWar+a/gXZSDsWsiIMMymcxk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682519988; x=1685111988;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=U3fMS6vGtNlmEZteMKVTwMOKhjb7WLirh4B0WOh1xiU=;
-        b=GEtTMiilxX7RBX4ILt8DLPKBDObxplcUISqnsxrWXfW9gTzNkG6HfG85d1eKF071bh
-         S83Xa5zpiPhnQkYHSa2dD7I3IRKbdDgVPyiW+iD3h5TfiMvvLYLNH8tFQ/kz6avd+sK4
-         BnwUPfvGmi/jBRTgw1HUupck5Tf8v2Lo49ZRL6CZCk2pB8rYR9m1AUv86BDh5Q5CD6CG
-         nDAU3LU7S5unZNIPP7NIK6feWlQNz0lk8Oslg/qGo5ytxdNQtOeebaBAXftAbjjbJ5oC
-         0UMMKIDDBn0Lxzq5e3P7yBvyaeVHKRKJMTnmlYV2MEFt+WiGCXp3xAUaAUonwzs+67Ta
-         fGXQ==
-X-Gm-Message-State: AAQBX9cbyLVqMoC5nfUjB6v85hffp7ACfVH84YQGZqArj2m0bParQXmX
-	SutchTP9aJ4PpG7kQxSgXaU=
-X-Google-Smtp-Source: AKy350ZO3Dl/D/t3V1YrnB4ch7JxvOvlsOl56w/4tw57jx6R8bv580ZQXGKSR3kO9256Hh1y6aicIg==
-X-Received: by 2002:a17:907:8b87:b0:94f:21f3:b5f8 with SMTP id tb7-20020a1709078b8700b0094f21f3b5f8mr17218081ejc.21.1682519987596;
-        Wed, 26 Apr 2023 07:39:47 -0700 (PDT)
-Received: from skbuf ([188.27.184.189])
-        by smtp.gmail.com with ESMTPSA id qt2-20020a170906ece200b0094e1344ddfdsm8232330ejb.34.2023.04.26.07.39.46
+        d=1e100.net; s=20221208; t=1682520271; x=1685112271;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=RMNClM9ik+szOvJOLzfRpbcMxADOReFPHjEqSl9MgW0=;
+        b=e4sA4yCHSrtR54zlff+HBZhHxhx+jT9egAnWpkgNuKCYJVkxsSY7Gy9oxLJft8vSuR
+         9iMi8aJFPD+rCAcyNgKjEItwujbLlfy50dLJmqjHfEvZXFc3Az4tr5QtNqQ2CjgfUSKj
+         1ZuY5GyWLCy7sbYY+zq8I2+g1mwjx4x2IXL5ipomIGvgvVZHZbypsJpM6jlcwaXv46Ad
+         TMm5h5poYTTyNO6WvZBsS5EMpXJKHUXHYSMFDBHmGW23N21Q4bATCxIY7k8n1KwTp7Cw
+         kIR94uTG04sqIw0G6cX3Iw8UoVYGZZaktyDgBFA6HYlvhAmKWrFImHDGx0HYYhl1ymyd
+         U+zQ==
+X-Gm-Message-State: AC+VfDxxYB5VOY1BkuyOWgqJqnKMzHCxn773AqQWp+0BmsrIWUBjxBfW
+	UY/d2rvKnn1lg+a9B0SGZVotzg==
+X-Google-Smtp-Source: ACHHUZ4VGDqLe4ucoBanVPHSiLZqrXQslXJ89MS3u5x7RjaMFE2ziXuibgHtnrtIF88PtTG4jGJEVA==
+X-Received: by 2002:a05:6a21:9993:b0:ee:bcf3:be0c with SMTP id ve19-20020a056a21999300b000eebcf3be0cmr3657144pzb.0.1682520271275;
+        Wed, 26 Apr 2023 07:44:31 -0700 (PDT)
+Received: from fshao-glinux.tpe.corp.google.com ([2401:fa00:1:10:dcf6:797f:140d:6d])
+        by smtp.gmail.com with ESMTPSA id f17-20020a631011000000b00502f20aa4desm8750495pgl.70.2023.04.26.07.44.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 26 Apr 2023 07:39:47 -0700 (PDT)
-Date: Wed, 26 Apr 2023 17:39:44 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Daniel Golle <daniel@makrotopia.org>
-Subject: Re: [PATCH net-next 04/24] net: dsa: mt7530: properly support
- MT7531AE and MT7531BE
-Message-ID: <20230426143944.s5vmhloepa3yodrj@skbuf>
-References: <20230425082933.84654-1-arinc.unal@arinc9.com>
- <20230425082933.84654-5-arinc.unal@arinc9.com>
- <ZEfsCit0XX8zqUIJ@makrotopia.org>
- <ce681fac-5f00-f0fc-b2cf-89907c50ee7c@arinc9.com>
- <ZEkiIQZsspBlDyEn@makrotopia.org>
+        Wed, 26 Apr 2023 07:44:30 -0700 (PDT)
+From: Fei Shao <fshao@chromium.org>
+To: Jeff LaBundy <jeff@labundy.com>,
+	Douglas Anderson <dianders@chromium.org>,
+	Benjamin Tissoires <benjamin.tissoires@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>
+Subject: [PATCH v3 0/2] Fix Goodix touchscreen power leakage for MT8186 boards
+Date: Wed, 26 Apr 2023 22:44:20 +0800
+Message-ID: <20230426144423.2820826-1-fshao@chromium.org>
+X-Mailer: git-send-email 2.40.1.495.gc816e09b53d-goog
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <ZEkiIQZsspBlDyEn@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230426_073951_149146_8458EB06 
-X-CRM114-Status: GOOD (  17.10  )
+X-CRM114-CacheID: sfid-20230426_074434_195914_50C121DA 
+X-CRM114-Status: GOOD (  13.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,29 +83,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Eric Dumazet <edumazet@google.com>, erkin.bozoglu@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, "David S. Miller" <davem@davemloft.net>
+Cc: devicetree@vger.kernel.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Stephen Kitt <steve@sk2.org>, Jiri Kosina <jikos@kernel.org>, linux-kernel@vger.kernel.org, Matthias Kaehlcke <mka@chromium.org>, linux-mediatek <linux-mediatek@lists.infradead.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-input@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 26, 2023 at 02:07:45PM +0100, Daniel Golle wrote:
-> On Wed, Apr 26, 2023 at 11:12:09AM +0300, Arınç ÜNAL wrote:
-> > On 25.04.2023 18:04, Daniel Golle wrote:
-> > > On Tue, Apr 25, 2023 at 11:29:13AM +0300, arinc9.unal@gmail.com wrote:
-> > > > From: Arınç ÜNAL <arinc.unal@arinc9.com>
-> > > > 
-> > > > Introduce the p5_sgmii pointer to store the information for whether port 5
-> > > > has got SGMII or not.
-> > > 
-> > > The p5_sgmii your are introducing to struct mt7530_priv is a boolean
-> > > variable, and not a pointer.
-> > 
-> > I must've meant to say field.
-> 
-> Being just a single boolean variable also 'field' would not be the right
-> word here. We use 'field' as in 'bitfield', ie. usually disguised integer
-> types in which each bit has an assigned meaning.
+These changes are based on the series in [1], which modified the
+i2c-hid-of-goodix driver and removed the workaround for a power leakage
+issue, so the issue revisits on Mediatek MT8186 boards (Steelix).
 
-"field" is a perfectly legal name for a member of a C structure.
-https://en.wikipedia.org/wiki/Struct_(C_programming_language)
-Not to be confused with bitfield.
+The root cause is that the touchscreen can be powered in different ways
+depending on the hardware designs, and it's not as easy to come up with
+a solution that is both simple and elegant for all the known designs.
+
+To address the issue, I ended up adding a new boolean property for the
+driver so that we can control the power up/down sequence depending on
+that.
+
+Adding a new property might not be the cleanest approach for this, but
+at least the intention would be easy enough to understand, and it
+introduces relatively small change to the code and fully preserves the
+original control flow.
+I hope this is something acceptable, and I'm open to any better
+approaches.
+
+[1] https://lore.kernel.org/all/20230207024816.525938-1-dianders@chromium.org/
+
+Changes in v3:
+- In power-down, only skip the GPIO but not the regulator calls if the
+  flag is set
+
+Changes in v2:
+- Use a more accurate property name and with "goodix," prefix.
+- Do not change the regulator_enable logic during power-up.
+
+Fei Shao (2):
+  dt-bindings: input: goodix: Add "goodix,no-reset-during-suspend"
+    property
+  HID: i2c-hid: goodix: Add support for "goodix,no-reset-during-suspend"
+    property
+
+ .../bindings/input/goodix,gt7375p.yaml           |  9 +++++++++
+ drivers/hid/i2c-hid/i2c-hid-of-goodix.c          | 16 +++++++++++++++-
+ 2 files changed, 24 insertions(+), 1 deletion(-)
+
+-- 
+2.40.1.495.gc816e09b53d-goog
+
 
