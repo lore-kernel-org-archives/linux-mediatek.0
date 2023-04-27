@@ -4,84 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2FEEC77B60
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Apr 2023 00:15:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E677EC7618E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Apr 2023 01:02:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uDtZLXbFAFSrRNTaQlnsorvortW5QL/pjkB8Q4Z32Is=; b=umROymTAXwLEK0h3dBS8FyWOgs
-	I85xkL880ad+K4SyGKslywnd14A7NGIST4u11IL3JwBAs6a+qg7g/Y5lM1K7q47F9Jz7VRTSr1MNQ
-	V0HozLVF/3PdgjXWFq9F1gL2KA8eVuYAsmYiMoFGWEXooiLllT0uMVTLGyo0lIoR/drkKyEmQ+0qU
-	TvhMAf/JgL3CIuyqXvlMYuBAOhphfdIoaan7jQoLBPoZgV9r4FydkzjYDrGwquKwrBGmuwFXylna/
-	g2mDrrylKfz206iuiVhDELwZQsQKaJfPKgZ5KXFQWhQyrIb94jNqmk3C3e8DiFm3S3lafKEaSFZ3K
-	D2Cumfmw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DWvIQfFrKED3a8bPL/biZTNzvOLUkXx2VH4tDMdecL4=; b=KTTo59eUwu5AJtsL9gGi13WhdO
+	5LllCuY5AHTpuAxfXPWwryIdjD11P7Y2Tawjgvdl0/Eq83eigRrCMBXz3Gc7lis30yVq6kB5PwC/H
+	PbU1EhSR5rQc9QCz5g7qfzPwhYfcQX1WS230W14c+FzVq7IIcXJVye/OVHZHRWovXnN1WulvZ0YMz
+	nqQuzHkLe0pdzG9Y4jvp4kPL+jLzZNaoRDE4/NAgckuOmmArLE9KCH4mhccwan5ocxQxMdKLhV/nY
+	mnnHu+ScRtUDoGuXlRz5LyALbI4cWE15BZwUr3Tzt6AGjynHflX9HA81fZdCE4+FFOYJkPup6i56s
+	paNLMqEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1prpHy-0057xT-2m;
-	Thu, 27 Apr 2023 00:15:10 +0000
-Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
+	id 1prq1H-005B5k-33;
+	Thu, 27 Apr 2023 01:01:59 +0000
+Received: from mail-bn8nam12on20618.outbound.protection.outlook.com ([2a01:111:f400:fe5b::618] helo=NAM12-BN8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prpHv-0057wJ-1i
+	id 1prq1F-005B52-0F
 	for linux-mediatek@lists.infradead.org;
-	Thu, 27 Apr 2023 00:15:09 +0000
-Received: by mail-lj1-x231.google.com with SMTP id 38308e7fff4ca-2a8bbea12d7so77508171fa.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 26 Apr 2023 17:15:03 -0700 (PDT)
+	Thu, 27 Apr 2023 01:01:58 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=l4o0Ar3v2vd+CQeyu0Fs9U6lkjHgO5SoPIg0Wk5Imo3kd+KHUWOWcKZLnNLaUr/1nTlGrvklYp33n/hA46G0Kdzv+HRPf0q707t0q1SBOIzlcJkHhw7D1p+VNbOIESOynvI0eSKn+b2TDLa8/KE+TLpg0/mSx2PFvwuDORtfkFjR572URPfDHLemD27SnBPoEX4zCSIcDCl8ilB3vYafj7YaphzNJ2LjDDJ1EiknAUUA3QK68iOFg0KxUsio7pgVlFlQKjZj8AhqXv7N6G2G5x7YtaMN8JjH+ZWKuyzPtKcjzriYRymhJx2ERwSLzdI5ThmWzd3mEHH+VLk96j5EXw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=DWvIQfFrKED3a8bPL/biZTNzvOLUkXx2VH4tDMdecL4=;
+ b=DRjIJaQBbMSNzYJYmyt+ih84u1MwF42s0bDtM1GGQ0qOCFkj9kYwG8DyhHKPZalTKv1Wd5YAwaOvfvTGe/NPGue2NsJ3btXGOsJN/9dIoWICfCguizizdz/lIPlmKtXAmGxqapnJcNKplfb15ukfgc8dQ/bygHx/KYlxoc2bhKzEnMbD7wr4IhFMqPC/90UxNysosYzZpxS4V5GA9iRYw2XnIyZ7scyOkooDGKFP/t04eKUIg1kUE7/RtfTHwhUSjMfvZK5o8k9vJZip/2RAL9w8Im8NLUHcOnSI2WKp7nbjQbJavssTtuguMMD9dD65Zj6qL/nDqNR77OkExl4rmw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=labundy.com; dmarc=pass action=none header.from=labundy.com;
+ dkim=pass header.d=labundy.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1682554502; x=1685146502;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=uDtZLXbFAFSrRNTaQlnsorvortW5QL/pjkB8Q4Z32Is=;
-        b=RZihgal0CecRiC7bMBIdK4Hz2KHEQYEU69BRREeG9M+OHILW5hFEt8xqxIm60ZlAsP
-         qBppGFJoMdA1tiifALmzzfpeV05lZs1Hrw1wtNMy66pLlFT/ucGYFnDtSF6t6xBf04yL
-         4ERpFIjrI59Lg83ML0A5YUnZcn5OPwRiq7jpXRgn/vsRCXbeAtqn6MKt3pV+0/YiE3xM
-         CHy77QEJ3KYtT7VYYKgnxVMunUHCz4DyxKHxnyylQ8bsTmq3JQFTOubbZ4LFYnAo7xxL
-         XkhiB9B2w1aO+IqaKCMHMx0fvJISrdXNl7DmHTJ62rYwa+NBopnH3IPVJyOHuZmnSYJo
-         DgrA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682554502; x=1685146502;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=uDtZLXbFAFSrRNTaQlnsorvortW5QL/pjkB8Q4Z32Is=;
-        b=lNhtKvd2B0u1qlS7TazmUoAdIf2ZZe0WgPVqLZwxfN6CBokpKhC47yRRQgg/h14faE
-         HauHykUplbziiTL1TmsT61tm/TuKjbZ7CxYSZ7B9EnkKtZ8K/QCVcbzU8mLPOG/K8c4z
-         cq3a7g+e6QApYMaLPPp2dbkgjNMEfCITpiZanEAKvMnV5CLbx4QGS6IFX2yWeUoUJoik
-         bzMEChTgsbSgV7ziEmJTgmWeDUIs/Dlm1zW9jffHtd5TUvn0wKD37z84mPc/rfO62CRT
-         UpP4O5Nl1Qu72T9e6IKG4eYd5LMz6/0lTFPKrA4zKMBCHnU3Va8kkAg5DHpLUkEhv0E3
-         1PFw==
-X-Gm-Message-State: AC+VfDxDJAFhS61lkOn+FAzLiskHy+1C6EGDT4fCAhY2iPjKnZ5eYaYK
-	+vL9OxOvC1TGq4Y+az3/W/y3AUMS/PEr5XX7tg4=
-X-Google-Smtp-Source: ACHHUZ4bP+Ko9tHz5/ZZiHbFlbAjbb0NQW1Vpn/otJ2zBNkcVIZB1FD5YJsvdD/K7GJQ6wXNetyZVYoYg1lp/OBkAQY=
-X-Received: by 2002:a2e:680d:0:b0:2a8:a859:b5c7 with SMTP id
- c13-20020a2e680d000000b002a8a859b5c7mr38959lja.0.1682554502249; Wed, 26 Apr
- 2023 17:15:02 -0700 (PDT)
+ d=NETORG5796793.onmicrosoft.com; s=selector1-NETORG5796793-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=DWvIQfFrKED3a8bPL/biZTNzvOLUkXx2VH4tDMdecL4=;
+ b=MH/A5ssLMP8cezVYRRdbOwvoOf+ZyzOeCdZSPIkBpMGKalEZ2bGW4txLRqswobGKf4dsgILuN6Y8N0WEdydaOpOtYZIDm7KlvQyUasKF/y0dvzYGSUjJQn8eLCA+1w5IeY+D79TXY214OSOpx+FIjUWQMquYksPZLCmCkj7Vs+o=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=labundy.com;
+Received: from DM5PR0801MB3767.namprd08.prod.outlook.com (2603:10b6:4:7c::37)
+ by SJ0PR08MB7767.namprd08.prod.outlook.com (2603:10b6:a03:3de::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6319.32; Thu, 27 Apr
+ 2023 01:01:49 +0000
+Received: from DM5PR0801MB3767.namprd08.prod.outlook.com
+ ([fe80::20b4:97da:18df:16dc]) by DM5PR0801MB3767.namprd08.prod.outlook.com
+ ([fe80::20b4:97da:18df:16dc%3]) with mapi id 15.20.6340.021; Thu, 27 Apr 2023
+ 01:01:48 +0000
+Date: Wed, 26 Apr 2023 20:01:43 -0500
+From: Jeff LaBundy <jeff@labundy.com>
+To: Fei Shao <fshao@chromium.org>
+Cc: Douglas Anderson <dianders@chromium.org>,
+	Benjamin Tissoires <benjamin.tissoires@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	devicetree@vger.kernel.org, linux-input@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3 1/2] dt-bindings: input: goodix: Add
+ "goodix,no-reset-during-suspend" property
+Message-ID: <ZEnJd5ph4LCGPBwF@nixie71>
+References: <20230426144423.2820826-1-fshao@chromium.org>
+ <20230426144423.2820826-2-fshao@chromium.org>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230426144423.2820826-2-fshao@chromium.org>
+X-ClientProxiedBy: SA1P222CA0131.NAMP222.PROD.OUTLOOK.COM
+ (2603:10b6:806:3c2::12) To DM5PR0801MB3767.namprd08.prod.outlook.com
+ (2603:10b6:4:7c::37)
 MIME-Version: 1.0
-References: <4699f59b36d522ec263dcea71eda40ae939004f8.1682549719.git.objelf@gmail.com>
- <037a3ab699b7f545884b493c5ea5a4b7e7b667a8.1682549719.git.objelf@gmail.com>
-In-Reply-To: <037a3ab699b7f545884b493c5ea5a4b7e7b667a8.1682549719.git.objelf@gmail.com>
-From: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
-Date: Wed, 26 Apr 2023 17:14:50 -0700
-Message-ID: <CABBYNZKPGZnWDP_fmp9Hf0XEa08tO_X80SxkhOnE+5QB2bZ6eg@mail.gmail.com>
-Subject: Re: [PATCH v4 2/3] Bluetooth: btmtk: introduce btmtk reset work
-To: sean.wang@mediatek.com
-Cc: marcel@holtmann.org, johan.hedberg@gmail.com, chris.lu@mediatek.com, 
-	Soul.Huang@mediatek.com, Leon.Yen@mediatek.com, Deren.Wu@mediatek.com, 
-	km.lin@mediatek.com, robin.chiu@mediatek.com, Eddie.Chen@mediatek.com, 
-	ch.yeh@mediatek.com, jenhao.yang@mediatek.com, Stella.Chang@mediatek.com, 
-	Tom.Chou@mediatek.com, steve.lee@mediatek.com, jsiuda@google.com, 
-	frankgor@google.com, abhishekpandit@google.com, michaelfsun@google.com, 
-	abhishekpandit@chromium.org, mcchou@chromium.org, shawnku@google.com, 
-	linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Jing Cai <jing.cai@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM5PR0801MB3767:EE_|SJ0PR08MB7767:EE_
+X-MS-Office365-Filtering-Correlation-Id: f36838a1-a2e7-4e25-cfeb-08db46bafa94
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	K8LAhyLxxyrrzPycQnIQ412Wy3FDaEh8d69eNauLSAGL+g5m12uvsQf/BCpNOYxuyxg5lbTwyLVfxNJGL5bOPnPE4Ci+3weNkS3QEycsFfiicqgdO03LYIb2pgOfyp9q4tHluCpTCOGYi15DiIK2W4Z7bDTZEX1Q7w1JZli8cnVAENLeT/htcJ9yiI6FzefooKa8TXzFhHykoSQkn+JXfvRCCvHK+75n7QLDfyJjKDhUOebTHhQ4DUsOSXbcC9jqWcWQt1tsQ4/SNQUXZpEdPCC0iGeoznod+X7fe7KfpHViPp0aRdW8DQurVKb5/yHSYhQY029S7pp5SdWawXKhefea7murg7QLmaSCvZ5hqp622gwcmrMy2OqpVfm0YKvIQLjbYJO7cc3vB4tPWNwLOQEwCefkm+mTCfs0u7wTMtvEQae0NgpenYmeAngFJUT15OyhGdNMn0jcKZsHjkgl9AOEyZw0VtwHRFh1N0KCoNF594dJgaqZxlc4N7yp1Jga/AyGKYJUGRDozCnfJGy+RWbFx9y6uRenC+tf7DvKb2IUu10atwLK9pyjzq8cKP9o
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DM5PR0801MB3767.namprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(7916004)(376002)(366004)(396003)(136003)(346002)(39830400003)(451199021)(33716001)(186003)(86362001)(26005)(6512007)(9686003)(6506007)(15650500001)(38100700002)(5660300002)(6486002)(6666004)(83380400001)(478600001)(54906003)(41300700001)(8936002)(2906002)(8676002)(7416002)(6916009)(66556008)(316002)(66476007)(66946007)(4326008);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?FQvi1j2XkgTFeMX4Btg2Rp/0P942nVpk46hwdSR58aNTAsaWan2u49r7JwXg?=
+ =?us-ascii?Q?aSWGBmXQva2D4PCqfHLkapsqhNXj22dj8BNJkvs6bxY9V838i3+z7t2kn4A+?=
+ =?us-ascii?Q?Jfrsd6SdHEZd9ZyVaNeSHu9hdN054lqwjEEATJ5oPofwCRbd8MIl/mo8tgXY?=
+ =?us-ascii?Q?zOEIwPpy3DjRCkKdsnqazSYS1Mmh/G/CjZ9UVvOMfLn6fRB8RgdNQWYsa/jE?=
+ =?us-ascii?Q?VWuOX4ejn7BQelLPAq2vsPf2T60b4KpSuXTMEQLHIqYp3gdlduIE4vjlGZXe?=
+ =?us-ascii?Q?gWWZ/rykWyMDNyVwLx7MC30Hr7skiadKg6HwBCi9DEWaZzpqH6hfF7Kt572o?=
+ =?us-ascii?Q?77CO9ptsZr6UEko3KCQAJTqSlYmvyVwypTqxD8OGMSmC4ye6DwLEOy2kjElG?=
+ =?us-ascii?Q?dBoKvWJDlMKpCvZBHO1YSLf5GklWNY2Srj5iEN+gHkDwbtlt3wpsVpaY6LdJ?=
+ =?us-ascii?Q?kykczeprV21T4/OZnWA8Vl6L4iUwed6K/IhwROag8n1Ok076cpIsAGroyYo6?=
+ =?us-ascii?Q?mUvqCZCXGukIk2Ok/4DK5YOL48gkbNRBNsw6hs8MMTyf8qbOtfiJok6CYtSM?=
+ =?us-ascii?Q?ylsoKbst8u7vqbW/cH1WrTKn/7ijS/XlHC9OpHlTi8r24eEVg2AX+kQg0Rms?=
+ =?us-ascii?Q?AtVyq63cvJkAEADvF6O1XI1y8U/ZqMQyjxnILGQJVjUVXUqQP9QwZdoy81S6?=
+ =?us-ascii?Q?yYgld10lziBkgC2bt5ACWbXxeJb1xqSxeoC/aYh4pKEg9fItfJdZUWCM8cxC?=
+ =?us-ascii?Q?+cPK3mxjY5B8C6QJqljOonmSWlqJtA7sW13Gc2OeWbzET3QHr7I32uChrqoX?=
+ =?us-ascii?Q?yxMuAfOr0+FU3m5QSYEP4uAHzLz3+q07eTM/vB+OJVJbYTSeWkPNgjQJj3Tn?=
+ =?us-ascii?Q?2AwkKaKTPyMW+bPr3tLFAfF6L2jlCg5T3AjoRxyCWyNUjVngQaDGxuK8aXW0?=
+ =?us-ascii?Q?+A1otKmgXNN7/pj4DoaIaQjwl2Vg/rjD8U+gfAS9LAIfj+YmBbCGGm4OMAeZ?=
+ =?us-ascii?Q?nPVXKuGndZZDFR7NUKiL6Rnel3jciplKxeGAS3YQsaQR9xPZAxh+HSBCEsom?=
+ =?us-ascii?Q?V6w0nlXPMKv0YYOqWrTuqazqm2oAMMXwuUfucGVBjaY/UFAnFWofMqLfI+40?=
+ =?us-ascii?Q?2VXmVW4so6HbZ8HHbYbarBWJkbid0+NwLK0Gq4dU8s1KuYXiRYQ9Lnu2xBhq?=
+ =?us-ascii?Q?DaBwWhcaSpTugAnCg+pTetRYvFJ25bkSb40obEo9S4akAqrFmB8TBKlA40Tn?=
+ =?us-ascii?Q?q6SdqVQC/iv8r6pyHWurpM2Gage7XPeS27a3j1n7ZY8mcJVBCXRwtp/SLMAP?=
+ =?us-ascii?Q?2aDuyEukuBekxNILZLa8mUWDtAlIFComcRifLwUpAWElDQXFbfrCZKGPUpfT?=
+ =?us-ascii?Q?Yh8o67xZaFnPC6orOzGTN4Wpk2YPDuK2gXg9NdMEoSh6UvxqxvMNXQVfm1ag?=
+ =?us-ascii?Q?0o+LsbdZ72rBPLXf0I+VKVJdECR8tU35wwT+wXKz8iUJSE+AuaQAWB20qVt2?=
+ =?us-ascii?Q?Butyyatc2Ak3cXI9+NhEtDJmhsPc8duuupKYmWPRXh2+Pqldt03bLya4B6yx?=
+ =?us-ascii?Q?+ExJUfj39gdIw0NigVXtFXt7/Nfn0Cf+jpApA+N7?=
+X-OriginatorOrg: labundy.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f36838a1-a2e7-4e25-cfeb-08db46bafa94
+X-MS-Exchange-CrossTenant-AuthSource: DM5PR0801MB3767.namprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Apr 2023 01:01:48.7939
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 00b69d09-acab-4585-aca7-8fb7c6323e6f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 5KkBapo2dR/DBk96RZmE//+qMIxaPhMYbfHrFS+I1Fp8GQoeJsKOPNl+2/c3E535MkzCwcWFdquGDtqf9zpKqA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR08MB7767
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230426_171507_575082_B776E178 
-X-CRM114-Status: GOOD (  22.24  )
+X-CRM114-CacheID: sfid-20230426_180157_144534_4F5D7435 
+X-CRM114-Status: GOOD (  21.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,261 +141,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Sean,
+Hi Fei,
 
-On Wed, Apr 26, 2023 at 4:08=E2=80=AFPM <sean.wang@mediatek.com> wrote:
->
-> From: Jing Cai <jing.cai@mediatek.com>
->
-> Introduce btmtk_reset_work which can be called whenever the firmware abor=
-t,
-> HCI command timeout, other fatal error happen.
->
-> Co-developed-by: Sean Wang <sean.wang@mediatek.com>
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> Signed-off-by: Jing Cai <jing.cai@mediatek.com>
+On Wed, Apr 26, 2023 at 10:44:21PM +0800, Fei Shao wrote:
+> We observed that on Chromebook device Steelix, if Goodix GT7375P
+> touchscreen is powered in suspend (because, for example, it connects to
+> an always-on regulator) and with the reset GPIO asserted, it will
+> introduce about 14mW power leakage.
+> 
+> To address that, we add this property to skip reset during suspend.
+> If it's set, the driver will stop asserting the reset GPIO during
+> power-down. Refer to the comments in the driver for details.
+> 
+> Signed-off-by: Fei Shao <fshao@chromium.org>
+> Reviewed-by: Douglas Anderson <dianders@chromium.org>
+> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 > ---
-> v2, v3, v4: rebase onto the latest codebase
-> ---
->  drivers/bluetooth/btmtk.c |  16 ++++++
->  drivers/bluetooth/btmtk.h |  14 +++++
->  drivers/bluetooth/btusb.c | 106 ++++++++++++++++++++------------------
->  3 files changed, 86 insertions(+), 50 deletions(-)
->
-> diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-> index 809762d64fc6..77df7b5c3ef3 100644
-> --- a/drivers/bluetooth/btmtk.c
-> +++ b/drivers/bluetooth/btmtk.c
-> @@ -53,6 +53,8 @@ struct btmtk_section_map {
->         };
->  } __packed;
->
-> +static struct btmtk_reset_work reset_work;
-> +
->  int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
->                               wmt_cmd_sync_func_t wmt_cmd_sync)
->  {
-> @@ -280,6 +282,20 @@ int btmtk_set_bdaddr(struct hci_dev *hdev, const bda=
-ddr_t *bdaddr)
->  }
->  EXPORT_SYMBOL_GPL(btmtk_set_bdaddr);
->
-> +void btmtk_init_reset_work(struct hci_dev *hdev, work_func_t func)
-> +{
-> +       reset_work.hdev =3D hdev;
-> +       INIT_WORK(&reset_work.work, func);
-> +}
-> +EXPORT_SYMBOL_GPL(btmtk_init_reset_work);
-> +
-> +void btmtk_reset_sync(struct hci_dev *hdev)
-> +{
-> +       schedule_work(&reset_work.work);
-> +       flush_work(&reset_work.work);
-> +}
-> +EXPORT_SYMBOL_GPL(btmtk_reset_sync);
 
-Lets stop assuming there is only one controller in the system, so
-works like reset_work need to be store on a per hdev basis, not using
-a global variable, also Im not sure why you would need dedicated work
-for reset? Can't you use hci_cmd_sync_queue/hci_cmd_sync_submit?
+Reviewed-by: Jeff LaBundy <jeff@labundy.com>
 
->  MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
->  MODULE_AUTHOR("Mark Chen <mark-yw.chen@mediatek.com>");
->  MODULE_DESCRIPTION("Bluetooth support for MediaTek devices ver " VERSION=
-);
-> diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
-> index 2a88ea8e475e..22d39f637652 100644
-> --- a/drivers/bluetooth/btmtk.h
-> +++ b/drivers/bluetooth/btmtk.h
-> @@ -119,6 +119,11 @@ struct btmtk_hci_wmt_params {
->         u32 *status;
->  };
->
-> +struct btmtk_reset_work {
-> +       struct hci_dev *hdev;
-> +       struct work_struct work;
-> +};
+> 
+> (no changes since v2)
+> 
+> Changes in v2:
+> - Use a more accurate property name and with "goodix," prefix.
+> 
+>  .../devicetree/bindings/input/goodix,gt7375p.yaml        | 9 +++++++++
+>  1 file changed, 9 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/input/goodix,gt7375p.yaml b/Documentation/devicetree/bindings/input/goodix,gt7375p.yaml
+> index ce18d7dadae2..1edad1da1196 100644
+> --- a/Documentation/devicetree/bindings/input/goodix,gt7375p.yaml
+> +++ b/Documentation/devicetree/bindings/input/goodix,gt7375p.yaml
+> @@ -43,6 +43,15 @@ properties:
+>        itself as long as it allows the main board to make signals compatible
+>        with what the touchscreen is expecting for its IO rails.
+>  
+> +  goodix,no-reset-during-suspend:
+> +    description:
+> +      Set this to true to enforce the driver to not assert the reset GPIO
+> +      during suspend.
+> +      Due to potential touchscreen hardware flaw, back-powering could happen in
+> +      suspend if the power supply is on and with active-low reset GPIO asserted.
+> +      This property is used to avoid the back-powering issue.
+> +    type: boolean
 > +
->  typedef int (*wmt_cmd_sync_func_t)(struct hci_dev *,
->                                    struct btmtk_hci_wmt_params *);
->
-> @@ -131,6 +136,8 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, c=
-onst char *fwname,
->
->  int btmtk_setup_firmware(struct hci_dev *hdev, const char *fwname,
->                          wmt_cmd_sync_func_t wmt_cmd_sync);
-> +void btmtk_init_reset_work(struct hci_dev *hdev, work_func_t func);
-> +void btmtk_reset_sync(struct hci_dev *hdev);
->  #else
->
->  static inline int btmtk_set_bdaddr(struct hci_dev *hdev,
-> @@ -151,4 +158,11 @@ static int btmtk_setup_firmware(struct hci_dev *hdev=
-, const char *fwname,
->         return -EOPNOTSUPP;
->  }
->
-> +static void btmtk_init_reset_work(struct hci_dev *hdev, work_func_t func=
-)
-> +{
-> +}
-> +
-> +static void btmtk_reset_sync(struct hci_dev *hdev)
-> +{
-> +}
->  #endif
-> diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-> index 275e0666503d..e84f1a8d03a3 100644
-> --- a/drivers/bluetooth/btusb.c
-> +++ b/drivers/bluetooth/btusb.c
-> @@ -2946,6 +2946,59 @@ static u32 btusb_mtk_reset_done(struct hci_dev *hd=
-ev)
->         return val & MTK_BT_RST_DONE;
->  }
->
-> +static void btusb_mtk_reset_work(struct work_struct *work)
-> +{
-> +       struct btmtk_reset_work *info =3D container_of(work,
-> +                                                    struct btmtk_reset_w=
-ork,
-> +                                                    work);
-> +       struct hci_dev *hdev =3D info->hdev;
-> +       struct btusb_data *data =3D hci_get_drvdata(hdev);
-> +       u32 val;
-> +       int err;
-> +
-> +       /* It's MediaTek specific bluetooth reset mechanism via USB */
-> +       if (test_and_set_bit(BTUSB_HW_RESET_ACTIVE, &data->flags)) {
-> +               bt_dev_err(hdev, "last reset failed? Not resetting again"=
-);
-> +               return;
-> +       }
-> +
-> +       err =3D usb_autopm_get_interface(data->intf);
-> +       if (err < 0)
-> +               return;
-> +
-> +       btusb_stop_traffic(data);
-> +       usb_kill_anchored_urbs(&data->tx_anchor);
-> +
-> +       /* It's Device EndPoint Reset Option Register */
-> +       bt_dev_dbg(hdev, "Initiating reset mechanism via uhw");
-> +       btusb_mtk_uhw_reg_write(data, MTK_EP_RST_OPT, MTK_EP_RST_IN_OUT_O=
-PT);
-> +       btusb_mtk_uhw_reg_read(data, MTK_BT_WDT_STATUS, &val);
-> +
-> +       /* Reset the bluetooth chip via USB interface. */
-> +       btusb_mtk_uhw_reg_write(data, MTK_BT_SUBSYS_RST, 1);
-> +       btusb_mtk_uhw_reg_write(data, MTK_UDMA_INT_STA_BT, 0x000000FF);
-> +       btusb_mtk_uhw_reg_read(data, MTK_UDMA_INT_STA_BT, &val);
-> +       btusb_mtk_uhw_reg_write(data, MTK_UDMA_INT_STA_BT1, 0x000000FF);
-> +       btusb_mtk_uhw_reg_read(data, MTK_UDMA_INT_STA_BT1, &val);
-> +       /* MT7921 need to delay 20ms between toggle reset bit */
-> +       msleep(20);
-> +       btusb_mtk_uhw_reg_write(data, MTK_BT_SUBSYS_RST, 0);
-> +       btusb_mtk_uhw_reg_read(data, MTK_BT_SUBSYS_RST, &val);
-> +
-> +       err =3D readx_poll_timeout(btusb_mtk_reset_done, hdev, val,
-> +                                val & MTK_BT_RST_DONE, 20000, 1000000);
-> +       if (err < 0)
-> +               bt_dev_err(hdev, "Reset timeout");
-> +
-> +       btusb_mtk_id_get(data, 0x70010200, &val);
-> +       if (!val)
-> +               bt_dev_err(hdev, "Can't get device id, subsys reset fail.=
-");
-> +
-> +       usb_queue_reset_device(data->intf);
-> +
-> +       clear_bit(BTUSB_HW_RESET_ACTIVE, &data->flags);
-> +}
-> +
->  static int btusb_mtk_setup(struct hci_dev *hdev)
->  {
->         struct btusb_data *data =3D hci_get_drvdata(hdev);
-> @@ -2982,6 +3035,8 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
->                 }
->         }
->
-> +       btmtk_init_reset_work(hdev, btusb_mtk_reset_work);
-> +
->         switch (dev_id) {
->         case 0x7663:
->                 fwname =3D FIRMWARE_MT7663;
-> @@ -3131,55 +3186,6 @@ static int btusb_mtk_shutdown(struct hci_dev *hdev=
-)
->         return 0;
->  }
->
-> -static void btusb_mtk_cmd_timeout(struct hci_dev *hdev)
-> -{
-> -       struct btusb_data *data =3D hci_get_drvdata(hdev);
-> -       u32 val;
-> -       int err;
-> -
-> -       /* It's MediaTek specific bluetooth reset mechanism via USB */
-> -       if (test_and_set_bit(BTUSB_HW_RESET_ACTIVE, &data->flags)) {
-> -               bt_dev_err(hdev, "last reset failed? Not resetting again"=
-);
-> -               return;
-> -       }
-> -
-> -       err =3D usb_autopm_get_interface(data->intf);
-> -       if (err < 0)
-> -               return;
-> -
-> -       btusb_stop_traffic(data);
-> -       usb_kill_anchored_urbs(&data->tx_anchor);
-> -
-> -       /* It's Device EndPoint Reset Option Register */
-> -       bt_dev_dbg(hdev, "Initiating reset mechanism via uhw");
-> -       btusb_mtk_uhw_reg_write(data, MTK_EP_RST_OPT, MTK_EP_RST_IN_OUT_O=
-PT);
-> -       btusb_mtk_uhw_reg_read(data, MTK_BT_WDT_STATUS, &val);
-> -
-> -       /* Reset the bluetooth chip via USB interface. */
-> -       btusb_mtk_uhw_reg_write(data, MTK_BT_SUBSYS_RST, 1);
-> -       btusb_mtk_uhw_reg_write(data, MTK_UDMA_INT_STA_BT, 0x000000FF);
-> -       btusb_mtk_uhw_reg_read(data, MTK_UDMA_INT_STA_BT, &val);
-> -       btusb_mtk_uhw_reg_write(data, MTK_UDMA_INT_STA_BT1, 0x000000FF);
-> -       btusb_mtk_uhw_reg_read(data, MTK_UDMA_INT_STA_BT1, &val);
-> -       /* MT7921 need to delay 20ms between toggle reset bit */
-> -       msleep(20);
-> -       btusb_mtk_uhw_reg_write(data, MTK_BT_SUBSYS_RST, 0);
-> -       btusb_mtk_uhw_reg_read(data, MTK_BT_SUBSYS_RST, &val);
-> -
-> -       err =3D readx_poll_timeout(btusb_mtk_reset_done, hdev, val,
-> -                                val & MTK_BT_RST_DONE, 20000, 1000000);
-> -       if (err < 0)
-> -               bt_dev_err(hdev, "Reset timeout");
-> -
-> -       btusb_mtk_id_get(data, 0x70010200, &val);
-> -       if (!val)
-> -               bt_dev_err(hdev, "Can't get device id, subsys reset fail.=
-");
-> -
-> -       usb_queue_reset_device(data->intf);
-> -
-> -       clear_bit(BTUSB_HW_RESET_ACTIVE, &data->flags);
-> -}
-> -
->  static int btusb_recv_acl_mtk(struct hci_dev *hdev, struct sk_buff *skb)
->  {
->         struct btusb_data *data =3D hci_get_drvdata(hdev);
-> @@ -4301,7 +4307,7 @@ static int btusb_probe(struct usb_interface *intf,
->                 hdev->setup =3D btusb_mtk_setup;
->                 hdev->shutdown =3D btusb_mtk_shutdown;
->                 hdev->manufacturer =3D 70;
-> -               hdev->cmd_timeout =3D btusb_mtk_cmd_timeout;
-> +               hdev->cmd_timeout =3D btmtk_reset_sync;
->                 hdev->set_bdaddr =3D btmtk_set_bdaddr;
->                 set_bit(HCI_QUIRK_BROKEN_ENHANCED_SETUP_SYNC_CONN, &hdev-=
->quirks);
->                 set_bit(HCI_QUIRK_NON_PERSISTENT_SETUP, &hdev->quirks);
-> --
-> 2.25.1
->
+>  required:
+>    - compatible
+>    - reg
+> -- 
+> 2.40.1.495.gc816e09b53d-goog
+> 
 
+Many thanks to you and Doug for the informative discussion.
 
---=20
-Luiz Augusto von Dentz
+Kind regards,
+Jeff LaBundy
 
