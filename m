@@ -4,100 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6D34C77B73
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Apr 2023 07:37:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25C23C77B73
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Apr 2023 07:47:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oxehQfcmJryVNtOnqjPU8dcl4daH8QR4oPGx8PetHgc=; b=rWFfYqLznHDfKZcAkggoT6VZnF
-	y5G/m//oWdaA3FLa9yy/gsY3ZPoV+eUZtn9DRGM10+PaS8Nhs5wGbxsUnOr1onOjXNpO+UAK+EH4H
-	twJTZ7IRsQeUbNqsmzQbY8/rsYfO7C/yg9XXNKy4y62FfbG/G4XJ3SdJvnE0wF4T1lIR+4S5lW1Ej
-	mtdYeCrQa/BNDmDKtS2amI3kde6CE9erKmuPvEMbe9PxAnDJ+LN+qhp3B+TqcI37E9zlUcdmWJ6sc
-	FrCt6zYjW6mML0z1b+u7uaEwSyhxjEpdoKcG3lUUbHhLTRcia3ChDIsdT+LfM3Hjq6z3eDaS1PHKx
-	ywc1M9CA==;
+	bh=EEqTvNM+jsZjZI+7JGQt1mFWY94TcOH6GPmA2DQxr8s=; b=mZQ7k0W6DGqo12ey6OhDM0sPuO
+	Sy7SU6BwLr8DNEQIK+ozmBsjuOsNVH0W4JnURSbLepEio2wqyDHcHytTvVSJjxEbNz92YXWPHe9Eb
+	sOoiRDK7AX1ExirrgS5vqppJ06HqUtM9f2xPJKZAxA3qj1L2HzTSGaf7Cpw7EHN9tSu5OW1qtQESb
+	LB3LnMuFpR/VAkuCS3UE8Wv4MhJ37kZnUn40PYcbfftkqLLK5NErpSDhmd/Zb8PaOWs77J68Pyo+U
+	YctuUa6KQp/ZIfxloITd36oenL5QQBWQfhdPoiLmTuQP6nsVGu4ZHQdoSRSPV4sqUuS9COZIPYd3P
+	RR/7MeGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1prwBl-005h7Q-0d;
-	Thu, 27 Apr 2023 07:37:13 +0000
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+	id 1prwLP-005iUb-2T;
+	Thu, 27 Apr 2023 07:47:11 +0000
+Received: from mail-yw1-f176.google.com ([209.85.128.176])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prwBg-005h56-1a;
-	Thu, 27 Apr 2023 07:37:09 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-2f95231618aso5151754f8f.1;
-        Thu, 27 Apr 2023 00:37:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1682581024; x=1685173024;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=oxehQfcmJryVNtOnqjPU8dcl4daH8QR4oPGx8PetHgc=;
-        b=A9A1kf0aU5n5maWaTYSpwFq+dFDGkdZCkeAcCwkLD9kYlmE85jcd+hdkN4nKiQWQe+
-         RVnhbx9f5wFVudnxQnUsSqLoUc+G3JM+O42GX9gNZfKeD8PN2HWTR2M+4STfmZxQqx7A
-         ULQDVvEq1TUhKtYHjEQgZl7Jn4EVzSTkmRE2Oecxpq3Lqgdq1vonGcIN3aUKzLbJD2io
-         FpSv3YS013V0nX3CVl5ec1a5D04GehDx526Kyx7RUB+XA1EFrTaBRu+mhMmPRXhFDy36
-         7PFiOvnoAlRW92DFpieLR1YprFoJEGerJot6aeQ7uIG8PKhFuzZejCpTBKtwwOV0mzu8
-         YerA==
+	id 1prwLE-005iPR-33;
+	Thu, 27 Apr 2023 07:47:02 +0000
+Received: by mail-yw1-f176.google.com with SMTP id 00721157ae682-54fb89e1666so63621177b3.3;
+        Thu, 27 Apr 2023 00:46:59 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682581024; x=1685173024;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=oxehQfcmJryVNtOnqjPU8dcl4daH8QR4oPGx8PetHgc=;
-        b=WZMJBNagbdvRsGm5sXpq5Ea1iWNxHRmHUmTb5MaXCTQr0khtz+3EuXcx/jATSXJzDE
-         Gb/ptTJxkUObjUcgOe0O2JuD8bqDFCRMuzDWPpakmL9GOT60TmtkwgPrOdtR5XwYj1WK
-         XSnnhqIShrSI2OidVN+L6uwys9rxq7W1s2sb22QvmrlFr1/ZVLTwtcsYV5Lsve8nUTOl
-         uy2vtVVlmKHAyCsOH787BdInO2xBrTGJO2CB5fUIqjakkOM7iTDuxns4HrPdHqamadNs
-         0ODhSHULE+OoZuAfXykDplUT5vwpZR0GTTvuYrMNXKxWOgZxOHdRz8abSMisKkpNjIh3
-         GvMw==
-X-Gm-Message-State: AC+VfDzKG7XS4lEk9yfaMOIjTKxjl60U16fU1zAOi/g2R8Kr83GoG8Ds
-	qHAjk5SfR9GdNgmXnQJRKxQ=
-X-Google-Smtp-Source: ACHHUZ6j08kRlenxNEOxuCRn5D3dpBgWAxIWK0iOstSqplZ+yyO01YFGKwmwZRllZUj/HWkWlwS2Ow==
-X-Received: by 2002:a5d:5312:0:b0:2f0:df59:1ea7 with SMTP id e18-20020a5d5312000000b002f0df591ea7mr504125wrv.31.1682581024316;
-        Thu, 27 Apr 2023 00:37:04 -0700 (PDT)
-Received: from [192.168.1.135] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id i6-20020a5d6306000000b002fed865c55esm17706733wru.56.2023.04.27.00.37.01
+        d=1e100.net; s=20221208; t=1682581618; x=1685173618;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=EEqTvNM+jsZjZI+7JGQt1mFWY94TcOH6GPmA2DQxr8s=;
+        b=IiumWP0e9gZnZsaXALjuaxM2Xs+oiS+qdFLBSI4e/ilIW8tlhSNlmETYMwIgtrqQ/b
+         4mYsLuV8JOa6F2xYx/qQBk/hPq/4h7HgGRLHJMNKoP/R8qXlcU/1XF7ZIZw+kxjlW4Tr
+         L8aqncInpg457yKgu9q3CHlAlDnKuBHIz4Or0vjpaX3byET9GTEJ5tmWC6dgaMNBMoDt
+         XWo4ZPVno7p7voVhPYMN2kjgCmzShuIHDAeQfL+tR1WVR431OxtQ4zkMleTrV0X8q9kZ
+         BQHJSdu9h8w0j75Cv705YFyFPUxgGJlfS2JDR7rHtoh6vaqMwcljRtwMAlcEtTMLfQoA
+         vHVg==
+X-Gm-Message-State: AC+VfDwuymkcpEqdPAyM3kuC+ZJGfHaH/tOtXfQC5wQ5rCuGOjqg++C9
+	Grw2wbYl0kc48LPC5/JkpmwQJ7TwbeM21w==
+X-Google-Smtp-Source: ACHHUZ6F5KAsp/g5rnkVccRSZ8t06ir3Lk6ES+kOo3utTAcqLuluiFvN7F/MYHx8MAfC8RUDbl9vbg==
+X-Received: by 2002:a0d:d6c3:0:b0:54e:ddbb:64df with SMTP id y186-20020a0dd6c3000000b0054eddbb64dfmr544680ywd.30.1682581618030;
+        Thu, 27 Apr 2023 00:46:58 -0700 (PDT)
+Received: from mail-yw1-f172.google.com (mail-yw1-f172.google.com. [209.85.128.172])
+        by smtp.gmail.com with ESMTPSA id y73-20020a81a14c000000b0054f52b73ea8sm4631403ywg.26.2023.04.27.00.46.56
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 27 Apr 2023 00:37:03 -0700 (PDT)
-Message-ID: <1cfc224b-f8b0-3143-42d2-188b56368c61@gmail.com>
-Date: Thu, 27 Apr 2023 09:37:01 +0200
+        Thu, 27 Apr 2023 00:46:56 -0700 (PDT)
+Received: by mail-yw1-f172.google.com with SMTP id 00721157ae682-5529f3b8623so63581017b3.2;
+        Thu, 27 Apr 2023 00:46:56 -0700 (PDT)
+X-Received: by 2002:a0d:d712:0:b0:54e:ed46:6b39 with SMTP id
+ z18-20020a0dd712000000b0054eed466b39mr582224ywd.31.1682581616022; Thu, 27 Apr
+ 2023 00:46:56 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [RFC PATCH 0/1] Categorize ARM dts directory
-Content-Language: en-US, ca-ES, es-ES
-To: Rob Herring <robh+dt@kernel.org>,
- Geert Uytterhoeven <geert@linux-m68k.org>, Arnd Bergmann <arnd@arndb.de>,
- Olof Johansson <olof@lixom.net>
-Cc: Ansuel Smith <ansuelsmth@gmail.com>, Krzysztof Kozlowski
- <krzk@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-actions@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-omap@vger.kernel.org,
- linux-amlogic@lists.infradead.org, linux-arm-kernel@axis.com,
- linux-aspeed@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org,
- chrome-platform@lists.linux.dev, linux-renesas-soc@vger.kernel.org,
- linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- kernel@dh-electronics.com, linux-mediatek@lists.infradead.org,
- openbmc@lists.ozlabs.org, linux-tegra@vger.kernel.org,
- linux-oxnas@groups.io, linux-arm-msm@vger.kernel.org,
- linux-unisoc@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-realtek-soc@lists.infradead.org
-References: <20220328000915.15041-1-ansuelsmth@gmail.com>
- <85eb14ec-f465-7447-ad77-a3dabc666f47@kernel.org>
- <YkKRYnN84D9VZhGj@Ansuel-xps.localdomain>
- <CAL_Jsq+RQQ-ADMxLPUFwk6S6kGmb6oNDy4k52fnU0EtbUvqmSA@mail.gmail.com>
+References: <20220328000915.15041-1-ansuelsmth@gmail.com> <85eb14ec-f465-7447-ad77-a3dabc666f47@kernel.org>
+ <YkKRYnN84D9VZhGj@Ansuel-xps.localdomain> <CAL_Jsq+RQQ-ADMxLPUFwk6S6kGmb6oNDy4k52fnU0EtbUvqmSA@mail.gmail.com>
  <CAMuHMdWNTE48MFy6fqxAsfMWz9b6E7dVNXtXtESP95sxk2PGwA@mail.gmail.com>
- <CAL_JsqJthKTm8bhRF2B=ae1tvtPeYYXx_Tm76qQtSwLtH5C6VA@mail.gmail.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <CAL_JsqJthKTm8bhRF2B=ae1tvtPeYYXx_Tm76qQtSwLtH5C6VA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+ <CAL_JsqJthKTm8bhRF2B=ae1tvtPeYYXx_Tm76qQtSwLtH5C6VA@mail.gmail.com> <1cfc224b-f8b0-3143-42d2-188b56368c61@gmail.com>
+In-Reply-To: <1cfc224b-f8b0-3143-42d2-188b56368c61@gmail.com>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Thu, 27 Apr 2023 09:46:40 +0200
+X-Gmail-Original-Message-ID: <CAMuHMdU91NtZeFKe6mB3B48TNb64wfPu77xRbOEVX4tV65e38w@mail.gmail.com>
+Message-ID: <CAMuHMdU91NtZeFKe6mB3B48TNb64wfPu77xRbOEVX4tV65e38w@mail.gmail.com>
+Subject: Re: [RFC PATCH 0/1] Categorize ARM dts directory
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>, 
+	Ansuel Smith <ansuelsmth@gmail.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-actions@lists.infradead.org, linux-sunxi@lists.linux.dev, 
+	linux-omap@vger.kernel.org, linux-amlogic@lists.infradead.org, 
+	linux-arm-kernel@axis.com, linux-aspeed@lists.ozlabs.org, 
+	linux-rpi-kernel@lists.infradead.org, chrome-platform@lists.linux.dev, 
+	linux-renesas-soc@vger.kernel.org, linux-samsung-soc@vger.kernel.org, 
+	linux-stm32@st-md-mailman.stormreply.com, kernel@dh-electronics.com, 
+	linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org, 
+	linux-tegra@vger.kernel.org, linux-oxnas@groups.io, 
+	linux-arm-msm@vger.kernel.org, linux-unisoc@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-realtek-soc@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230427_003708_535106_D105CB4A 
-X-CRM114-Status: GOOD (  19.96  )
+X-CRM114-CacheID: sfid-20230427_004700_984800_DAA4E7F3 
+X-CRM114-Status: GOOD (  25.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,64 +99,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, Apr 27, 2023 at 9:37=E2=80=AFAM Matthias Brugger <matthias.bgg@gmai=
+l.com> wrote:
+> On 25/04/2023 17:57, Rob Herring wrote:
+> > On Tue, Apr 25, 2023 at 2:28=E2=80=AFAM Geert Uytterhoeven <geert@linux=
+-m68k.org> wrote:
+> >> On Tue, Apr 25, 2023 at 12:16=E2=80=AFAM Rob Herring <robh+dt@kernel.o=
+rg> wrote:
+> >>> I have a script[1] that does the conversion written the last time thi=
+s
+> >>> came up. Just have to agree on directory names. I think the easiest
+> >>> would be for Arnd/Olof to run it at the end of a merge window before
+> >>> rc1.
+> >>
+> >> "emev2" and "sh7" are missing for renesas.
+> >
+> > No doubt it's been bitrotting (or I may have missed some).
+> >
+> >> Does your script also cater for .dts files not matching any pattern,
+> >> but including a .dtsi file that does match a pattern?
+> >
+> > I assume I built everything after moving, but maybe not...
+> >
+> > That's all just "details". First, we need agreement on a) moving
+> > things to subdirs and b) doing it 1-by-1 or all at once. So far we've
+> > been stuck on a) for being 'too much churn'.
+> >
+>
+> I think it makes sense to move them and probably the best way to do so is=
+, as
+> you proposed: that Arnd or Olof run the script to move them just before -=
+rc1
 
+FTR, no objections from my side.
 
-On 25/04/2023 17:57, Rob Herring wrote:
-> On Tue, Apr 25, 2023 at 2:28 AM Geert Uytterhoeven <geert@linux-m68k.org> wrote:
->>
->> Hi Rob,
->>
->> On Tue, Apr 25, 2023 at 12:16 AM Rob Herring <robh+dt@kernel.org> wrote:
->>> I have a script[1] that does the conversion written the last time this
->>> came up. Just have to agree on directory names. I think the easiest
->>> would be for Arnd/Olof to run it at the end of a merge window before
->>> rc1.
->>
->> "emev2" and "sh7" are missing for renesas.
-> 
-> No doubt it's been bitrotting (or I may have missed some).
-> 
->> Does your script also cater for .dts files not matching any pattern,
->> but including a .dtsi file that does match a pattern?
-> 
-> I assume I built everything after moving, but maybe not...
-> 
-> That's all just "details". First, we need agreement on a) moving
-> things to subdirs and b) doing it 1-by-1 or all at once. So far we've
-> been stuck on a) for being 'too much churn'.
-> 
+Gr{oetje,eeting}s,
 
-I think it makes sense to move them and probably the best way to do so is, as 
-you proposed: that Arnd or Olof run the script to move them just before -rc1
+                        Geert
 
-Regards,
-Matthias
+--=20
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
+.org
 
-> One nice thing with subdirs is 'make CHECK_DTBS=y
-> arch/arm/boot/dts/foo/' can build everything for a platform family
-> without having to mess with the kconfig. Maybe most folks don't care,
-> but I do. My CI job running schema checks looks like this to deal with
-> grouping the arm dts files (this list is probably out of date too, but
-> less so):
-> 
->          if [ "$ARCH" = "arm" ]; then
->              VENDOR_LIST="alphascale alpine artpec aspeed axm bcm cx9
-> (ecx|highbank) \
->                efm ep7 imx1 imx23 imx28 imx27 imx5 imx6 imx7 ls vf qcom \
->                (am3|am4|am5|dra|keystone|omap|compulab|logicpd|elpida|motorola-cpcap|da|dm)
-> \
->                nspire armada dove kirkwood orion mvebu mmp2 berlin pxa
-> (arm-|integ|mps|ve) \
->                (at91|sama|usb_|tny_|mpa1600|animeo_ip|aks-cdu|ethernut5|evk-pro3|pm9g45|ge86)
-> \
->                exynos s3c s5p gemini (hisi|hi3|hip) mt meson moxa nuvo
-> lpc owl ox8 \
->                (r7|r8|r9|emev2|sh73a|gr-|iwg) (rk|rv11) socfpga stm
-> (sti|st-pin) ste \
->                spear (sun|axp) tegra uniph (vt8500|wm8) xen zynq"
->          else
->              VENDOR_LIST=$(ls arch/$ARCH/boot/dts/ | xargs)
->          fi
-> 
-> Rob
+In personal conversations with technical people, I call myself a hacker. Bu=
+t
+when I'm talking to journalists I just say "programmer" or something like t=
+hat.
+                                -- Linus Torvalds
 
