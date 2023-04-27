@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B9FAC77B73
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Apr 2023 15:15:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFCF1C77B61
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Apr 2023 16:54:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9/EKIsgM1Et8Edo3e9mPXB9vHCUIW5dTubzPJl1BxfM=; b=qN4286kd7c77dPdBZw5v11sa+4
-	j9iziNeUA0Vfi5eo+pqKL8wEE15QyYwrQFFAxNeHr4rYKRx0N14xrDSitDkPR0s1U7uZZufg2FyMi
-	43g17CY+KdYJCpsjIslWdUAoNPuIY2lmtoLnHlIe47eUOVxVHkygbbpvooI2TclKuO7fDU+G1FaJO
-	qrBdcGQeroYKqTZrDwbsDyfwHVS2w1GB7Y7zoJbgPC9BE+cZGkQwep/xw3LqBBvWtLi5b7qSvgJ0v
-	idhvmVXKctivpbP3xPam7n8RnOEtk+3RJvnIQ9kOA5YMAEgGKqwYVsmWdWhzWhfVb/O9CAAPgLHDP
-	DNvgj2Ew==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=eX0d5MnDIx5piR+VxcyO07pAYaKUIeZr/3Oco6tsuCI=; b=quz7DOyOy815GLo/27rhAbIpgR
+	PDHwnpUFgrVQVPtkytHpBYWh+56/my6O8e7QERBcVp1/PjwAXyJum/BdaGg06jCq/n/pIHgZvgzWb
+	fAhzjyc1QjsztbYVEfoIV2AVO9hxPRYuccusBnras3tv3coKEAiN6PDlOi4Pa5IrACkpvlMRmBz/N
+	PPJY7WOSNNdWz7tis22fCRC/TEy28KC9+am6F67e72n0SJ4FrfRF7p7k9LJbnSLFMA0JZgK2XARl1
+	r4TWf1g8PHgTmOK8jV9PKVNK3gkq+fSYEWgYx2T2hZEXiOPlqhvRcLX27ijJIm+e3cnjNUWFrLczd
+	pMHzWGGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ps3LJ-006rdu-2G;
-	Thu, 27 Apr 2023 15:15:33 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1ps4sU-0072Pg-0a;
+	Thu, 27 Apr 2023 16:53:54 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ps3LF-006rbX-1M;
-	Thu, 27 Apr 2023 15:15:30 +0000
-Received: from [IPV6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2] (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id EDD7B66032B5;
-	Thu, 27 Apr 2023 16:15:20 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1682608522;
-	bh=wx4QwWQd9NsnskAEPQUncauUhMSHJCUjAMBurj5VCPw=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=Jm/XTqkVdeGNCtWpZpEhTDlndoLNfCkYlhVE0tRHH+AnSHsVTPcFlQUYWKu5Q7O2Y
-	 hpQn5J88h7AS7Aj6hrxV1wJH0yVIBH81FJKTkx/4JEgSD9br9/nP2VIs/Jouzq4+GZ
-	 +XhVlV4yCgAdpn+yWv6IoqMBabKshxpvQcen9A/Lv0BicMihifmbxjDiUQqL7CQqPx
-	 q5gu7ZjrTVBE+6HLa/d7p4V+n6cQnigJR3HzoyjvPAMCjihPRFukIkbQzciS8/3Rnv
-	 OttUxoMFyh7orzPjG2FgdrOVgjsqJHBE88TBNtK25tiRtZZyaTAdt/Dvn8gdxmP4vu
-	 92WRXZjLmQjBg==
-Message-ID: <17525028-80bb-cd03-fbc9-b8ff65378517@collabora.com>
-Date: Thu, 27 Apr 2023 17:15:18 +0200
+	id 1ps4sQ-0072Oo-2p
+	for linux-mediatek@lists.infradead.org;
+	Thu, 27 Apr 2023 16:53:52 +0000
+X-UUID: 0fb86ffae51c11ed8ff21b58f8242069-20230427
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=eX0d5MnDIx5piR+VxcyO07pAYaKUIeZr/3Oco6tsuCI=;
+	b=L+aoMTFDDJlekMWnStzoemubFEqnpGJ+Am8d6s0aun0bVjU4j2k5UGM0J3IeGDMPk/4GqDRxlhwvQlpvYAMzN6OCnJxZgr5ED0yZcQoAHFgL6knNN1VrLJb1JoihZil0Z4OL5OGazoweHZ4qHtnaaciuP+18PdODQisqGB+aK4I=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22,REQID:6e5d4226-e052-4dc5-bfc0-2cc2da7b2f7a,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:120426c,CLOUDID:5d941930-6935-4eab-a959-f84f8da15543,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: 0fb86ffae51c11ed8ff21b58f8242069-20230427
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <ryder.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 665554140; Thu, 27 Apr 2023 09:53:40 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 28 Apr 2023 00:43:36 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Fri, 28 Apr 2023 00:43:36 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>,
+	Peter Chiu <chui-hao.chiu@mediatek.com>
+Subject: [PATCH v2] wifi: mt76: mt7915: report tx retries/failed counts for non-WED path
+Date: Fri, 28 Apr 2023 00:43:35 +0800
+Message-ID: <ddee913411aa77046ec6a42181833f31ce043f38.1682613710.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH RESEND v3 0/9] Add gamma lut support for mt8195
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: CK Hu <ck.hu@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>,
- Singo Chang <singo.chang@mediatek.com>, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220912013006.27541-1-jason-jh.lin@mediatek.com>
- <c6a12ebc-99f1-855d-e366-e5a4833dc562@collabora.com>
-Content-Language: en-US
-In-Reply-To: <c6a12ebc-99f1-855d-e366-e5a4833dc562@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230427_081529_608476_835F3E2C 
-X-CRM114-Status: GOOD (  16.05  )
+X-CRM114-CacheID: sfid-20230427_095350_925000_49323480 
+X-CRM114-Status: GOOD (  12.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,36 +82,116 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/04/23 13:43, AngeloGioacchino Del Regno ha scritto:
-> Il 12/09/22 03:29, Jason-JH.Lin ha scritto:
->> Since the gamma_set_common() function for previous SoC,
->> such as  mt8173 and mt8183, is designed for 9bit-to-10bit
->> conversion.
->> mt8195 is using 10bit-to-12bit conversion, which is
->> not compatible with the previous function.
->>
->> Thus, need to update the function to fit the need of mt8195.
-> 
-> Hello,
-> can you please respin and fix this series on the latest linux-next?
-> 
-> Besides, please test it carefully: as far as I can see, GNOME Night Light
-> (or others) are not working on MT8195 (color temperature/ccorr).
-> As for gamma itself, that's not working either; you can test it with a tool
-> that will create a color profile by applying a new VCGT table, please look
-> at [1] if you need tools.
-> 
-> We can confirm that color correction works on at least MT8192 (colord), so
-> it's MT8195 at fault.
-> 
-> [1]: https://github.com/zb3/gnome-gamma-tool
-> 
+Get missing tx retries/failed counts from txfree done events and report
+them via mt7915_sta_statistics().
 
-Nevermind. I've actually fixed this code and refactored it a bit as well.
+Co-developed-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+v2 - add a missing check for non-v3 format
+---
+ .../net/wireless/mediatek/mt76/mt7915/mac.c   | 22 +++++++++++++++++--
+ .../net/wireless/mediatek/mt76/mt7915/mac.h   |  7 +++++-
+ .../net/wireless/mediatek/mt76/mt7915/main.c  | 12 +++++-----
+ 3 files changed, 32 insertions(+), 9 deletions(-)
 
-I'll push my own version soon. No action required.
-
-Regards,
-Angelo
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index 7df8d95fc3fb..9b2ccd99854e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -951,6 +951,7 @@ mt7915_mac_tx_free(struct mt7915_dev *dev, void *data, int len)
+ 	struct mt76_dev *mdev = &dev->mt76;
+ 	struct mt76_txwi_cache *txwi;
+ 	struct ieee80211_sta *sta = NULL;
++	struct mt76_wcid *wcid = NULL;
+ 	LIST_HEAD(free_list);
+ 	void *end = data + len;
+ 	bool v3, wake = false;
+@@ -977,7 +978,6 @@ mt7915_mac_tx_free(struct mt7915_dev *dev, void *data, int len)
+ 		info = le32_to_cpu(*cur_info);
+ 		if (info & MT_TX_FREE_PAIR) {
+ 			struct mt7915_sta *msta;
+-			struct mt76_wcid *wcid;
+ 			u16 idx;
+ 
+ 			idx = FIELD_GET(MT_TX_FREE_WLAN_ID, info);
+@@ -994,7 +994,25 @@ mt7915_mac_tx_free(struct mt7915_dev *dev, void *data, int len)
+ 			continue;
+ 		}
+ 
+-		if (v3 && (info & MT_TX_FREE_MPDU_HEADER))
++		if (!mtk_wed_device_active(&mdev->mmio.wed) && wcid) {
++			u32 tx_retries = 0, tx_failed = 0;
++
++			if (v3 && (info & MT_TX_FREE_MPDU_HEADER_V3)) {
++				tx_retries =
++					FIELD_GET(MT_TX_FREE_COUNT_V3, info) - 1;
++				tx_failed = tx_retries +
++					!!FIELD_GET(MT_TX_FREE_STAT_V3, info);
++			} else if (!v3 && (info & MT_TX_FREE_MPDU_HEADER)) {
++				tx_retries =
++					FIELD_GET(MT_TX_FREE_COUNT, info) - 1;
++				tx_failed = tx_retries +
++					!!FIELD_GET(MT_TX_FREE_STAT, info);
++			}
++			wcid->stats.tx_retries += tx_retries;
++			wcid->stats.tx_failed += tx_failed;
++		}
++
++		if (v3 && (info & MT_TX_FREE_MPDU_HEADER_V3))
+ 			continue;
+ 
+ 		for (i = 0; i < 1 + v3; i++) {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.h b/drivers/net/wireless/mediatek/mt76/mt7915/mac.h
+index ce94f87e2042..448b1b380190 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.h
+@@ -9,7 +9,12 @@
+ #define MT_TX_FREE_VER			GENMASK(18, 16)
+ #define MT_TX_FREE_MSDU_CNT_V0		GENMASK(6, 0)
+ /* 0: success, others: dropped */
+-#define MT_TX_FREE_MPDU_HEADER		BIT(30)
++#define MT_TX_FREE_COUNT		GENMASK(12, 0)
++#define MT_TX_FREE_COUNT_V3		GENMASK(27, 24)
++#define MT_TX_FREE_STAT			GENMASK(14, 13)
++#define MT_TX_FREE_STAT_V3		GENMASK(29, 28)
++#define MT_TX_FREE_MPDU_HEADER		BIT(15)
++#define MT_TX_FREE_MPDU_HEADER_V3	BIT(30)
+ #define MT_TX_FREE_MSDU_ID_V3		GENMASK(14, 0)
+ 
+ #define MT_TXS5_F0_FINAL_MPDU		BIT(31)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+index 2ada2806de66..61157248d742 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+@@ -1046,12 +1046,6 @@ static void mt7915_sta_statistics(struct ieee80211_hw *hw,
+ 		sinfo->tx_packets = msta->wcid.stats.tx_packets;
+ 		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_PACKETS);
+ 
+-		sinfo->tx_failed = msta->wcid.stats.tx_failed;
+-		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_FAILED);
+-
+-		sinfo->tx_retries = msta->wcid.stats.tx_retries;
+-		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_RETRIES);
+-
+ 		if (mtk_wed_get_rx_capa(&phy->dev->mt76.mmio.wed)) {
+ 			sinfo->rx_bytes = msta->wcid.stats.rx_bytes;
+ 			sinfo->filled |= BIT_ULL(NL80211_STA_INFO_RX_BYTES64);
+@@ -1061,6 +1055,12 @@ static void mt7915_sta_statistics(struct ieee80211_hw *hw,
+ 		}
+ 	}
+ 
++	sinfo->tx_failed = msta->wcid.stats.tx_failed;
++	sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_FAILED);
++
++	sinfo->tx_retries = msta->wcid.stats.tx_retries;
++	sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_RETRIES);
++
+ 	sinfo->ack_signal = (s8)msta->ack_signal;
+ 	sinfo->filled |= BIT_ULL(NL80211_STA_INFO_ACK_SIGNAL);
+ 
+-- 
+2.18.0
 
 
