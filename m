@@ -4,128 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 145B5C77B60
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Apr 2023 01:08:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E04F3C77B73
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Apr 2023 03:20:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qAUq711HcYSqYuPgIlxU/avkF3pSpFk4gqq8i8Eh2zE=; b=DkHPht4Rvjc/emdAbmowC5iDYh
-	/E0FsPMuo2o/c1TbouDwVt7AM3SD59uFWhNTfN0Fs9N3XXP5LgZ3vx5Lp9kXvnXMZbzmfzzR8AR2e
-	FFHC062DsoRwLe7VGk1XoA2zTmoL7Q7JmEjpB1F5ohqmzX2nPinEM4XTx83qtH9w8lXpXTMNoEerZ
-	rT7HNbx0A+Nwdg0KUmBZ9ZzB5RCuXNej7wxZvATbFcjG49LfK31YYobFE5MXw9z0wYPkZxbsXruMx
-	tVIJaAyqchvMIDfNHaGYyJQfIQCXuDTPgtfpO5dWcUOqYt95bR8UiAVwupLPP/QlSHmKdAWvVre/W
-	hL0lxg6w==;
+	bh=uMjStWtWzxzZbXAKKOvMi2mncZ8hIjyS5ZjKmxD1A54=; b=uEry+gJdRhBaHDkbpGWhxxVNQp
+	30KV1GMbyleAXpigW2mviGo4E3P4giM3OnkdiKuOUw3NvcQAEB77zxBy7Iz2ry6zqapYr1bIgljXQ
+	q8+UvLIZmjMKNdTwE9a1snlLlkFBMrQYtct9TKwI9BscefcFHMt4bd09UrqWfXrZafv/kdK4ZzPT6
+	P9wQXY6KorKgC5JGrCxOaPGcgduXxbuaBXrMkvT2x+KEzxisL3MMc9v1t/EUhdsOeq0eFoEaOkCHh
+	Bg22A+5uIh8duSU3iWefnG3xLc/mHV968rYo2EOEHHAxGuiq/DRk7p8xBhbXhWv50PhXQ0CliSrqh
+	BdGF3gGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1prq7G-005Bed-0m;
-	Thu, 27 Apr 2023 01:08:10 +0000
-Received: from mail-bn8nam12on2060a.outbound.protection.outlook.com ([2a01:111:f400:fe5b::60a] helo=NAM12-BN8-obe.outbound.protection.outlook.com)
+	id 1prsBZ-005LGq-0t;
+	Thu, 27 Apr 2023 03:20:45 +0000
+Received: from mga05.intel.com ([192.55.52.43])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prq7D-005Be0-15
+	id 1prsBV-005LFP-33
 	for linux-mediatek@lists.infradead.org;
-	Thu, 27 Apr 2023 01:08:08 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=JR7j42Z5mNNhZUJS/HsgT7MEsNIxGS88NZe2bbmgmTjDSW5V7B9FDBPNARFm5KnDFEzkX1KszqhN0h5q2ubGny1JzzTZSdTLQRwq8we1Fza1tTjljuT2xuhq3ipeYGQM11leSuPGJfe6gBUxeo/DGvT1+rpw1QKNClQqCqJiaZtJXicisbY0jprrEyXE3+7OXDag4lPkkwvXoUiPfK0Hz6Z0YkMTCxcPSF63i6afOWDnP9nKW4aYqXCqAHCTAYcNux+raX8GlfGyB5tEU6asvDKsxqwVtmfa39NCrtjbZhrApoNpQcMPSSLAXR+26U3WXmrQeQaM0p5GFiEY47AENw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=qAUq711HcYSqYuPgIlxU/avkF3pSpFk4gqq8i8Eh2zE=;
- b=D18yE27YufomwbNkVsUGjGlxailkvn7ysxAe0HM87+khgezIXdXy/UK5xfhziMzoiH6907qegaYP7fQLAcKKyv+Q8Ze5CE34++FJUnmTx2ZEAMzoOVk6SL723YBw2umOaXfTj5k2Oj67GrlY4mcY8WiusKVfbNQS6OxictTabDUhvuqJ5UByggTeusjKkMsoOOCrTg2PlAT3Pkfk7w6gCKM1d1ecuYp4oLfe6iOBhf5d46hF3Be1O3r39lM3o1mGHEYvfXE9plTTeEJ5h0N8OllI2qep/VHDPhHDaCYGIrmQdG+akLcnuHehDN+i8/NNI1IA/mDOMFme9rxaObM6BQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=labundy.com; dmarc=pass action=none header.from=labundy.com;
- dkim=pass header.d=labundy.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=NETORG5796793.onmicrosoft.com; s=selector1-NETORG5796793-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=qAUq711HcYSqYuPgIlxU/avkF3pSpFk4gqq8i8Eh2zE=;
- b=VI+tBHEZGQgyAew5hqtcwlprAkSvILqqtm/OnFsBG5n/Onu/n8bpczm4iNLSzc8dpOkZvAINetrHQDWrMhFrvUfY73Vza0ONxhsJHAnlqb29cfROyNwjYXKYHbRi9F7SCPnLxI1/gBLVGt7GcvwlxgTocVuYAEZZvCQ5EbIU1lI=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=labundy.com;
-Received: from DM5PR0801MB3767.namprd08.prod.outlook.com (2603:10b6:4:7c::37)
- by CH0PR08MB8684.namprd08.prod.outlook.com (2603:10b6:610:18c::15) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6319.34; Thu, 27 Apr
- 2023 01:07:59 +0000
-Received: from DM5PR0801MB3767.namprd08.prod.outlook.com
- ([fe80::20b4:97da:18df:16dc]) by DM5PR0801MB3767.namprd08.prod.outlook.com
- ([fe80::20b4:97da:18df:16dc%3]) with mapi id 15.20.6340.021; Thu, 27 Apr 2023
- 01:07:59 +0000
-Date: Wed, 26 Apr 2023 20:07:57 -0500
-From: Jeff LaBundy <jeff@labundy.com>
-To: Fei Shao <fshao@chromium.org>
-Cc: Douglas Anderson <dianders@chromium.org>,
-	Benjamin Tissoires <benjamin.tissoires@redhat.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	linux-mediatek <linux-mediatek@lists.infradead.org>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Jiri Kosina <jikos@kernel.org>,
-	Matthias Kaehlcke <mka@chromium.org>, Stephen Kitt <steve@sk2.org>,
-	linux-input@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 2/2] HID: i2c-hid: goodix: Add support for
- "goodix,no-reset-during-suspend" property
-Message-ID: <ZEnK7bQkl+fkcHkb@nixie71>
-References: <20230426144423.2820826-1-fshao@chromium.org>
- <20230426144423.2820826-3-fshao@chromium.org>
+	Thu, 27 Apr 2023 03:20:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1682565641; x=1714101641;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=OyXNcul4Z1z505giNdrRSXjTIM440X0mC1Ilj99V4kQ=;
+  b=CY53eoHGU64MOHsQadbqj4NES3i8N3vVUvZijwxrTcp1oHf2YbSbVsmR
+   3TJvUjUDNYW4u1nFZsVPdcgvaBJLRQi0fBKOcBOlctkmHkWNaKH83O4Dh
+   /BnMo6Lc31QamzTt2rgki15KoVq8Ht7z0rL+8ZkAtnhLH9n3vDimysOWZ
+   Q+fVfLO96YyWkuXuAJTiAeWuNcYIuo3HtGEf8Dap6PRMsdR40GeXDrswe
+   Bj6PFcwGTaHBcOT2yDAh8X/Ipug6FRIABVO1DaNmKoV0kbu+nYGdTq8jR
+   llZ7UUfi3XMQR07T6HBz7JNnxiE2IT7s9qxy+DK43YWdjT6/kQFBJ0GII
+   A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10692"; a="433594188"
+X-IronPort-AV: E=Sophos;i="5.99,230,1677571200"; 
+   d="scan'208";a="433594188"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Apr 2023 20:20:33 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10692"; a="838192114"
+X-IronPort-AV: E=Sophos;i="5.99,230,1677571200"; 
+   d="scan'208";a="838192114"
+Received: from lkp-server01.sh.intel.com (HELO 848ce1e85e7c) ([10.239.97.150])
+  by fmsmga001.fm.intel.com with ESMTP; 26 Apr 2023 20:20:26 -0700
+Received: from kbuild by 848ce1e85e7c with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1prsBF-000015-2g;
+	Thu, 27 Apr 2023 03:20:25 +0000
+Date: Thu, 27 Apr 2023 11:20:09 +0800
+From: kernel test robot <lkp@intel.com>
+To: sean.wang@mediatek.com, marcel@holtmann.org, johan.hedberg@gmail.com,
+	luiz.dentz@gmail.com
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	sean.wang@mediatek.com, chris.lu@mediatek.com,
+	Soul.Huang@mediatek.com, Leon.Yen@mediatek.com,
+	Deren.Wu@mediatek.com, km.lin@mediatek.com, robin.chiu@mediatek.com,
+	Eddie.Chen@mediatek.com, ch.yeh@mediatek.com,
+	jenhao.yang@mediatek.com, Stella.Chang@mediatek.com,
+	Tom.Chou@mediatek.com, steve.lee@mediatek.com, jsiuda@google.com,
+	frankgor@google.com, abhishekpandit@google.com,
+	michaelfsun@google.com, abhishekpandit@chromium.org,
+	mcchou@chromium.org, shawnku@google.com,
+	linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org, Jing Cai <jing.cai@mediatek.com>
+Subject: Re: [PATCH v4 3/3] Bluetooth: btusb: mediatek: add MediaTek
+ devcoredump support
+Message-ID: <202304271131.HetsXcxM-lkp@intel.com>
+References: <01d3fe06d3a1e333b193e7d9fbc9cbfb4ee5d02b.1682549719.git.objelf@gmail.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230426144423.2820826-3-fshao@chromium.org>
-X-ClientProxiedBy: DS7PR03CA0022.namprd03.prod.outlook.com
- (2603:10b6:5:3b8::27) To DM5PR0801MB3767.namprd08.prod.outlook.com
- (2603:10b6:4:7c::37)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DM5PR0801MB3767:EE_|CH0PR08MB8684:EE_
-X-MS-Office365-Filtering-Correlation-Id: 94f53591-8648-4172-e0fb-08db46bbd798
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	JK0rpSzMjyeruR/+o9YJidC0GYYxEnOl9Q9G40SLB7pixUh/pOMG0yirBDpqKwW6pQckaCkoqcdnouX5sy9T0npsUNjZtRmnxYKaPVZkZhpvYAv057xC0F8MRiZFfUoKHt+ROpy7Cjt2+KoGwKkcArKg1b3Y0pfXKoBTYLTGZiLTcLoNmwWRrLvIUFMVYMkYL1G90/MAvQo6THc7WVLK63MqA6d6THJtlnkFAWShr2T4DgbyCTrxEzaVidBVNSW2t3gejxp9x0kVCs6tic2Xgm9yWlD5r08AABf153bY2SJLoHj8gFXszIsuUnDp2eU8AvtxGSAxHu40o25Kt/091f7Qqn5hFB9pooS6eNw6WcWRb4MrKnMlq6xfmxPD2H4JN2KbupSAC0o303RNPyEmzcR45919Cuu+hJe7ji9r1OOWBf4N8BVKNQlXMnIQGmbWa07aUNvnvlGY1cMOrwSbU9yK83wM5Sk8hFmUZud9PeVdtniISe1kNJ1NtKXm6PTf/QPm+FiGLZkqy97KBavsvNwpYyIxIATOn+FxpwY8Ag7PFoUAH7megIqsI/UVWxzDMgbGkCWbmmJ1OMqQzzi9A5INvhhNZr7Dikwl8G/lQng=
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DM5PR0801MB3767.namprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(7916004)(376002)(366004)(39830400003)(136003)(346002)(396003)(451199021)(54906003)(478600001)(86362001)(38100700002)(33716001)(8676002)(2906002)(8936002)(7416002)(6916009)(15650500001)(4326008)(66476007)(66556008)(316002)(66946007)(5660300002)(41300700001)(6512007)(186003)(26005)(6506007)(9686003)(83380400001)(6486002)(67856001);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?LdkbYZElJX/FFeSAhufRIJoQ2XebNUSVIIBIKrjbWGug6DUnepLFwgISMaAN?=
- =?us-ascii?Q?yoQtE3AoRN0IaNzktXV0hnTu1IaLSOxGcP58zJ0aSZvPoRSu6bIyrTfWhY2w?=
- =?us-ascii?Q?S2XGGFjAWRGiT9pas1rcMYGcJSsXDOKPhJY9y/D2DeeCtYjoLZ5n2vHNduIE?=
- =?us-ascii?Q?bKZjQ6GwP7KRomx1VNHNjaFnTe6WZbWrn9JlfALpS12mMoo+A9BHWQ39GL/w?=
- =?us-ascii?Q?L37OJuLYSotucFjcqwqV9u6kIl+paXfKNrYd4rkCUOF19eKtT27TwJZT0smp?=
- =?us-ascii?Q?YsayV2sb3EjtIob98D5vyWgg6Aun8Uo2OL7UbeNuFssqkGeudR7/mGCXfTig?=
- =?us-ascii?Q?yeJ4fvQIT/3p6tADjpXgLdHj5yihsYthHslTiHF3yCUFAkCsHOdkX51jah9G?=
- =?us-ascii?Q?SEb/7TVaXLGLXCttOvfMhi+UbeJU4LIiOs6QfCpX8NGDOj3+2EWxizT0C8Ac?=
- =?us-ascii?Q?G9swvhaN1C2vid1pAo3C2X8Ph43fS3e7dJDEeGUoSKFeUmKCWuHihJJ4EKPi?=
- =?us-ascii?Q?MI6i6hAlieLIEmpJN52uLiKmPpmzCR8To16Wlryk/abPq5EVE25Z3e3/i+Vk?=
- =?us-ascii?Q?BMnWC/kEPL3f8nRT0gpExl7toabZgsOfPeGXQqFWcDIO21UxA1m92XIjZ7wa?=
- =?us-ascii?Q?nGp/1STpFaYOMb2YNbI/JcENewKux0S6goQMsb4HrKkA13X7dWfwmKeKpuK9?=
- =?us-ascii?Q?wz6hjIE/fMDaH8nPAeOpSWlzUkQW7zCJHYrWvKZMKqu+Yp2I2u/3fEYjV2SJ?=
- =?us-ascii?Q?lv44izAZ9QktLuqDrO7KYnFxWy3TgAf4F7eivxJ8gkehuGKEsjkVg+MFfS2b?=
- =?us-ascii?Q?c5nxU1aOnbqd7DaxLcSgPlWOjKlPpOsREgVIeZLjzOvIJN77UJCE7ybQK1W+?=
- =?us-ascii?Q?y1vmpUCTqA4KrMRpj84L+6r8H6bRuDXbeaznn+qno1DqSYD2lB+//zSRzrkF?=
- =?us-ascii?Q?fcnLor+BVbo5yy+fLN1fRe4PV5Wh4Tka/s78QYaEKRMcWd21Gtr8hLdLoZ9J?=
- =?us-ascii?Q?qNeZII6bFZ4wAXzkNJgLQwx1zGKpNS1nSjy0/OkoSxxnhJIzeg3RrtHSPAgO?=
- =?us-ascii?Q?JsS9YAve9mNOKssv7w0cxrIRmJWjb3CkQsq11yzuQlx2sKmyP1RLkB4Zy1dZ?=
- =?us-ascii?Q?1qBXNYxadznUCanTkayYd+HdPQPaZPy2MiBbaSxj/5sc8Df5ZGs2+CBd5iYc?=
- =?us-ascii?Q?EyfCk23rEpmlLCZuFaU2AilC35zb1WIDmlcr9KM4kCJV8lZhQDUfskJp4inm?=
- =?us-ascii?Q?FBT+4q3ujh4dopqSbZYejLERdpTYnns7aBIHqilGNGjapm+dPLG5RjVvwC9G?=
- =?us-ascii?Q?1LXEuBL1xFgduQ9sTckEYVCECe8Wco/xNnOetxcMOkwOdiQ9Y3e/gV8VEP6N?=
- =?us-ascii?Q?Tl3pcZT9h4eWPoILPi02z207zPNJHqF4uoB65LQampZtiU+E1kxtGa8K1DlH?=
- =?us-ascii?Q?oFnQsaZundZPE0TqdEK6PYCzxX9vyE6p4HYBptUH5Ip4au0bGnzeJL2jhYkH?=
- =?us-ascii?Q?euJHGIKWaPX+dmjvlawosHW2BIPvbuFMWZHS13MnYV5/nPy+p/JNZWSLGNCh?=
- =?us-ascii?Q?0FecsGSCmrgl/1y6INF3KVoTYlkHxId9Rb+B2PiP?=
-X-OriginatorOrg: labundy.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 94f53591-8648-4172-e0fb-08db46bbd798
-X-MS-Exchange-CrossTenant-AuthSource: DM5PR0801MB3767.namprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Apr 2023 01:07:59.4596
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 00b69d09-acab-4585-aca7-8fb7c6323e6f
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: mZIgLvIU/wEN4JgKivm9ygwiJagtNF01RAGEifQ5s48xWLRpPwlkFT+LayijiIeJcMFs5v8tqkKvw/aWZjoxjQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR08MB8684
+In-Reply-To: <01d3fe06d3a1e333b193e7d9fbc9cbfb4ee5d02b.1682549719.git.objelf@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230426_180807_378671_FF4A1937 
-X-CRM114-Status: GOOD (  35.78  )
+X-CRM114-CacheID: sfid-20230426_202042_001104_57AB55A4 
+X-CRM114-Status: GOOD (  12.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -140,119 +96,112 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Fei,
+Hi,
 
-On Wed, Apr 26, 2023 at 10:44:22PM +0800, Fei Shao wrote:
-> In the beginning, commit 18eeef46d359 ("HID: i2c-hid: goodix: Tie the
-> reset line to true state of the regulator") introduced a change to tie
-> the reset line of the Goodix touchscreen to the state of the regulator
-> to fix a power leakage issue in suspend.
-> 
-> After some time, the change was deemed unnecessary and was reverted in
-> commit 557e05fa9fdd ("HID: i2c-hid: goodix: Stop tying the reset line to
-> the regulator") due to difficulties in managing regulator notifiers for
-> designs like Evoker, which provides a second power rail to touchscreen.
-> 
-> However, the revert caused a power regression on another Chromebook
-> device Steelix in the field, which has a dedicated always-on regulator
-> for touchscreen and was covered by the workaround in the first commit.
-> 
-> To address both cases, this patch adds the support for the new
-> "goodix,no-reset-during-suspend" property in the driver:
-> - When set to true, the driver does not assert the reset GPIO during
->   power-down.
->   Instead, the GPIO will be asserted during power-up to ensure the
->   touchscreen always has a clean start and consistent behavior after
->   resuming.
->   This is for designs with a dedicated always-on regulator.
-> - When set to false or unset, the driver uses the original control flow
->   and asserts GPIO and disables regulators normally.
->   This is for the two-regulator and shared-regulator designs.
-> 
-> Signed-off-by: Fei Shao <fshao@chromium.org>
-> Reviewed-by: Douglas Anderson <dianders@chromium.org>
+kernel test robot noticed the following build errors:
 
-Great work; one tiny nit below. If you do not agree with it or have found
-precedent that suggests it is OK, feel free to ignore it. Either way:
+[auto build test ERROR on bluetooth/master]
+[also build test ERROR on bluetooth-next/master linus/master v6.3 next-20230426]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-Reviewed-by: Jeff LaBundy <jeff@labundy.com>
+url:    https://github.com/intel-lab-lkp/linux/commits/sean-wang-mediatek-com/Bluetooth-btmtk-introduce-btmtk-reset-work/20230427-071054
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/bluetooth/bluetooth.git master
+patch link:    https://lore.kernel.org/r/01d3fe06d3a1e333b193e7d9fbc9cbfb4ee5d02b.1682549719.git.objelf%40gmail.com
+patch subject: [PATCH v4 3/3] Bluetooth: btusb: mediatek: add MediaTek devcoredump support
+config: i386-randconfig-a013 (https://download.01.org/0day-ci/archive/20230427/202304271131.HetsXcxM-lkp@intel.com/config)
+compiler: clang version 14.0.6 (https://github.com/llvm/llvm-project f28c006a5895fc0e329fe15fead81e37457cb1d1)
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://github.com/intel-lab-lkp/linux/commit/d253c927e94cb7e88bfcd0182449d29e477ca011
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review sean-wang-mediatek-com/Bluetooth-btmtk-introduce-btmtk-reset-work/20230427-071054
+        git checkout d253c927e94cb7e88bfcd0182449d29e477ca011
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=i386 olddefconfig
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=i386 SHELL=/bin/bash drivers/bluetooth/
 
-> 
-> ---
-> 
-> Changes in v3:
-> - In power-down, only skip the GPIO but not the regulator calls if the
->   flag is set
-> 
-> Changes in v2:
-> - Do not change the regulator_enable logic during power-up.
-> 
->  drivers/hid/i2c-hid/i2c-hid-of-goodix.c | 16 +++++++++++++++-
->  1 file changed, 15 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/hid/i2c-hid/i2c-hid-of-goodix.c b/drivers/hid/i2c-hid/i2c-hid-of-goodix.c
-> index 0060e3dcd775..3ed365b50432 100644
-> --- a/drivers/hid/i2c-hid/i2c-hid-of-goodix.c
-> +++ b/drivers/hid/i2c-hid/i2c-hid-of-goodix.c
-> @@ -28,6 +28,7 @@ struct i2c_hid_of_goodix {
->  	struct regulator *vdd;
->  	struct regulator *vddio;
->  	struct gpio_desc *reset_gpio;
-> +	bool no_reset_during_suspend;
->  	const struct goodix_i2c_hid_timing_data *timings;
->  };
->  
-> @@ -37,6 +38,14 @@ static int goodix_i2c_hid_power_up(struct i2chid_ops *ops)
->  		container_of(ops, struct i2c_hid_of_goodix, ops);
->  	int ret;
->  
-> +	if (ihid_goodix->no_reset_during_suspend) {
-> +		/*
-> +		 * We assert reset GPIO here (instead of during power-down) to
-> +		 * ensure the device will have a clean state after powering up,
-> +		 * just like the normal scenarios will have.
-> +		 */
-> +		gpiod_set_value_cansleep(ihid_goodix->reset_gpio, 1);
-> +	}
+If you fix the issue, kindly add following tag where applicable
+| Reported-by: kernel test robot <lkp@intel.com>
+| Link: https://lore.kernel.org/oe-kbuild-all/202304271131.HetsXcxM-lkp@intel.com/
 
-I don't think curly braces are technically required here, as there is only
-one statement within the conditional despite the comments making it appear
-otherwise. Maybe this would work too:
+All errors (new ones prefixed by >>):
 
-	/* ... */
-	if (...)
-		gpiod_set_value_cansleep(...);
+>> drivers/bluetooth/btmtk.c:104:7: error: use of undeclared identifier 'HCI_DEVCOREDUMP_IDLE'
+           case HCI_DEVCOREDUMP_IDLE:
+                ^
+>> drivers/bluetooth/btmtk.c:107:7: error: use of undeclared identifier 'HCI_DEVCOREDUMP_ACTIVE'; did you mean 'BTMTK_COREDUMP_ACTIVE'?
+           case HCI_DEVCOREDUMP_ACTIVE:
+                ^~~~~~~~~~~~~~~~~~~~~~
+                BTMTK_COREDUMP_ACTIVE
+   drivers/bluetooth/btmtk.c:28:2: note: 'BTMTK_COREDUMP_ACTIVE' declared here
+           BTMTK_COREDUMP_ACTIVE,
+           ^
+>> drivers/bluetooth/btmtk.c:110:7: error: use of undeclared identifier 'HCI_DEVCOREDUMP_TIMEOUT'
+           case HCI_DEVCOREDUMP_TIMEOUT:
+                ^
+>> drivers/bluetooth/btmtk.c:111:7: error: use of undeclared identifier 'HCI_DEVCOREDUMP_ABORT'
+           case HCI_DEVCOREDUMP_ABORT:
+                ^
+>> drivers/bluetooth/btmtk.c:112:7: error: use of undeclared identifier 'HCI_DEVCOREDUMP_DONE'
+           case HCI_DEVCOREDUMP_DONE:
+                ^
+>> drivers/bluetooth/btmtk.c:372:2: error: implicit declaration of function 'hci_devcd_register' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
+           hci_devcd_register(hdev, btmtk_coredump, btmtk_coredump_hdr,
+           ^
+>> drivers/bluetooth/btmtk.c:389:9: error: implicit declaration of function 'hci_devcd_init' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
+                   err = hci_devcd_init(hdev, MTK_COREDUMP_SIZE);
+                         ^
+   drivers/bluetooth/btmtk.c:389:9: note: did you mean 'hci_sock_init'?
+   include/net/bluetooth/bluetooth.h:577:5: note: 'hci_sock_init' declared here
+   int hci_sock_init(void);
+       ^
+>> drivers/bluetooth/btmtk.c:393:32: error: no member named 'dump' in 'struct hci_dev'
+                   schedule_delayed_work(&hdev->dump.dump_timeout,
+                                          ~~~~  ^
+>> drivers/bluetooth/btmtk.c:398:9: error: implicit declaration of function 'hci_devcd_append' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
+                   err = hci_devcd_append(hdev, skb);
+                         ^
+   drivers/bluetooth/btmtk.c:398:9: note: did you mean 'hci_dev_open'?
+   include/net/bluetooth/hci_core.h:1500:5: note: 'hci_dev_open' declared here
+   int hci_dev_open(__u16 dev);
+       ^
+>> drivers/bluetooth/btmtk.c:405:4: error: implicit declaration of function 'hci_devcd_complete' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
+                           hci_devcd_complete(hdev);
+                           ^
+   drivers/bluetooth/btmtk.c:405:4: note: did you mean 'hci_devcd_append'?
+   drivers/bluetooth/btmtk.c:398:9: note: 'hci_devcd_append' declared here
+                   err = hci_devcd_append(hdev, skb);
+                         ^
+   10 errors generated.
 
-Again however, I do not feel strongly about this.
 
->  	ret = regulator_enable(ihid_goodix->vdd);
->  	if (ret)
->  		return ret;
-> @@ -60,7 +69,9 @@ static void goodix_i2c_hid_power_down(struct i2chid_ops *ops)
->  	struct i2c_hid_of_goodix *ihid_goodix =
->  		container_of(ops, struct i2c_hid_of_goodix, ops);
->  
-> -	gpiod_set_value_cansleep(ihid_goodix->reset_gpio, 1);
-> +	if (!ihid_goodix->no_reset_during_suspend)
-> +		gpiod_set_value_cansleep(ihid_goodix->reset_gpio, 1);
-> +
->  	regulator_disable(ihid_goodix->vddio);
->  	regulator_disable(ihid_goodix->vdd);
->  }
-> @@ -91,6 +102,9 @@ static int i2c_hid_of_goodix_probe(struct i2c_client *client)
->  	if (IS_ERR(ihid_goodix->vddio))
->  		return PTR_ERR(ihid_goodix->vddio);
->  
-> +	ihid_goodix->no_reset_during_suspend =
-> +		of_property_read_bool(client->dev.of_node, "goodix,no-reset-during-suspend");
-> +
->  	ihid_goodix->timings = device_get_match_data(&client->dev);
->  
->  	return i2c_hid_core_probe(client, &ihid_goodix->ops, 0x0001, 0);
-> -- 
-> 2.40.1.495.gc816e09b53d-goog
-> 
+vim +/HCI_DEVCOREDUMP_IDLE +104 drivers/bluetooth/btmtk.c
 
-Kind regards,
-Jeff LaBundy
+   100	
+   101	static void btmtk_coredump_notify(struct hci_dev *hdev, int state)
+   102	{
+   103		switch (state) {
+ > 104		case HCI_DEVCOREDUMP_IDLE:
+   105			coredump_info.state = BTMTK_COREDUMP_INIT;
+   106			break;
+ > 107		case HCI_DEVCOREDUMP_ACTIVE:
+   108			coredump_info.state = BTMTK_COREDUMP_ACTIVE;
+   109			break;
+ > 110		case HCI_DEVCOREDUMP_TIMEOUT:
+ > 111		case HCI_DEVCOREDUMP_ABORT:
+ > 112		case HCI_DEVCOREDUMP_DONE:
+   113			coredump_info.state = BTMTK_COREDUMP_INIT;
+   114			btmtk_reset_sync(coredump_info.hdev);
+   115			break;
+   116		}
+   117	}
+   118	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
 
