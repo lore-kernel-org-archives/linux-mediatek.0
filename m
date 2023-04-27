@@ -4,106 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63B68C77B73
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Apr 2023 19:10:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BC98C77B73
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Apr 2023 23:00:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ORcTtoIaT/xaWhcNzW/7WrZeTdFcl8peFP6vRBUfHiA=; b=J1ENiz0qDLDJD0FJKTK7tt6s9k
-	J2P3uiNQS00uAGSWuLl7QxljmHDmXSc3fhaWJ87W76HQUA9kfAHNqdW0jTAyHoYQyoDHqbLyzzMpw
-	UKDpFUoeES8e1TGcX8UHFkt+7p9qh2KuA6nHFoKRXX1I+jlj5Tvy1yhE7tgc+pVemSc4tQo4XDw9T
-	BQkiYrletNORwMk0d2/fnAIm3fz1yNKWo/cxgzFQQoW+eZuTdSbtoWeydufIN7vd89uZK7ACYJ2NL
-	v3OtPA/XzwnLcXCz3PF/rclfNuXmMySzjupAwDaRAJ+CuKm5psPM+XFZX/fFzrncxYyexDLF4Wzn3
-	XWzDuqHQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ibZNawFMAjADf2IQ8Wssk5fpWCpRz5r71nvdnT+MRkA=; b=Shu4hDu1kOaZd1E0fanXdhW/vh
+	K+5xaBbTmz3+DkEOty61JleYmJH7e/FLhhHi+jiXYACvWvExzoU1nIH71LcECFdg+z3s8d9x+mhYY
+	hz0adUIvadSa2TtdG94EBdi/Ebr3HFWLB2VvIceGqbt24BJ++A1HuGk8GbSzI3WD8fpnwQ3f9/gWk
+	HfW2SaIIHTxkyaoJZzsupsi0w5G+uvL2+XCCHT+i9KzOwAclvH+bjH10aqfXYPOLYCgN4WV6hTBlL
+	X0Daw9sGNl2AyEI1SNMtI75rL+ulw42uCZjw75uhJzebXOrzwRNbN5NcKDDKw02LLpmBfdPkz26L3
+	miqVuH7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ps70C-007IYQ-1M;
-	Thu, 27 Apr 2023 19:10:00 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1psAaq-007kKg-2l;
+	Thu, 27 Apr 2023 23:00:04 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ps708-007IXP-1u;
-	Thu, 27 Apr 2023 19:09:58 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 65910637E8;
-	Thu, 27 Apr 2023 19:09:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9DAF8C433EF;
-	Thu, 27 Apr 2023 19:09:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1682622594;
-	bh=4MuGyWTQQD8YDc9ZDP5EuTvCXfhs1RGXEGefTe8GbFs=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=OEyoAdAg2oHj1kpUaFAUQnORGNgUcMTwXna94WirWc4/7OFURAmKcVKLlVxGAFkME
-	 toxsg2t0o0U7Q+9nKKAWfOe1B/t1z3g1kRabot2L3KU7VvngL293h0JsGHTQ534ZJP
-	 wb/t5pQP0ryuyOaWJAQ0Akswuclq647TVGmt1KHHbj8adW21pY6mXqBy4ogxoG3XiT
-	 nl8v4DuX6FhDVh3IAmmeTltphT6HmwSaAdaxUAAee3iYvoH2HR36H28EF1sUk2sy35
-	 kac9ZjDMYlfFNHS8ZZYJ4TPcDUlbU3BEvZYy9X6SsaJklf3YKOr0nvFwrR0eNy/XBZ
-	 ccVK16xunjKbA==
-Message-ID: <57dd81d0-510e-0fab-670d-1109eb8dd974@kernel.org>
-Date: Thu, 27 Apr 2023 14:09:48 -0500
+	id 1psAan-007kJp-2r
+	for linux-mediatek@lists.infradead.org;
+	Thu, 27 Apr 2023 23:00:03 +0000
+X-UUID: 39cddc70e54f11ed8ff21b58f8242069-20230427
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=ibZNawFMAjADf2IQ8Wssk5fpWCpRz5r71nvdnT+MRkA=;
+	b=TXTnoVmtl2JKF025tX2s3R8Y/uqpAH/zus20+RRj59jNnV7CCglmWawqFhxp3zH/cTT+diO/kK1ADPpg4TrpWZh6LIV3kHvLH9REFMxxgHhbFirS55EOtvONDSeVgCYPV+7IsuE0ZOfV7f9QnHT4Hzc5Ix/PBChfmuCHpH1BmAk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22,REQID:b5d668b3-680a-4a03-9ffe-908d5e272cd9,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:120426c,CLOUDID:26541d30-6935-4eab-a959-f84f8da15543,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: 39cddc70e54f11ed8ff21b58f8242069-20230427
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <ryder.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 585290942; Thu, 27 Apr 2023 15:59:55 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 28 Apr 2023 06:49:52 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 28 Apr 2023 06:49:52 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>,
+	Peter Chiu <chui-hao.chiu@mediatek.com>
+Subject: [PATCH v3] wifi: mt76: mt7915: report tx retries/failed counts for non-WED path
+Date: Fri, 28 Apr 2023 06:49:51 +0800
+Message-ID: <b582aef1382d933d5a8e76f6007c2a2ac456bfa2.1682635303.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH v3 29/65] clk: socfpga: gate: Add a determine_rate hook
-Content-Language: en-US
-To: Maxime Ripard <maxime@cerno.tech>
-Cc: Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, =?UTF-8?Q?Andreas_F=c3=a4rber?=
- <afaerber@suse.de>, Manivannan Sadhasivam <mani@kernel.org>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Claudiu Beznea <claudiu.beznea@microchip.com>,
- Max Filippov <jcmvbkbc@gmail.com>,
- Charles Keepax <ckeepax@opensource.cirrus.com>,
- Richard Fitzgerald <rf@opensource.cirrus.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- David Lechner <david@lechnology.com>, Sekhar Nori <nsekhar@ti.com>,
- Abel Vesa <abelvesa@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Peter De Schrijver <pdeschrijver@nvidia.com>,
- Prashant Gaikwad <pgaikwad@nvidia.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, Ulf Hansson
- <ulf.hansson@linaro.org>, Linus Walleij <linus.walleij@linaro.org>,
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
- Alessandro Zummo <a.zummo@towertech.it>, Chen-Yu Tsai <wens@csie.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>, Liam Girdwood <lgirdwood@gmail.com>,
- Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>, Paul Cercueil <paul@crapouillou.net>,
- Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
- <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
- linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-arm-kernel@lists.infradead.org, linux-actions@lists.infradead.org,
- patches@opensource.cirrus.com, linux-stm32@st-md-mailman.stormreply.com,
- linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
- linux-tegra@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-phy@lists.infradead.org, linux-rtc@vger.kernel.org,
- linux-sunxi@lists.linux.dev, alsa-devel@alsa-project.org,
- linux-mips@vger.kernel.org
-References: <20221018-clk-range-checks-fixes-v3-0-9a1358472d52@cerno.tech>
- <20221018-clk-range-checks-fixes-v3-29-9a1358472d52@cerno.tech>
- <679921ee-98d4-d6ef-5934-e009fd4b31fc@kernel.org>
- <sjlp5ubnpvulgwhhymmfkmmobkgxacyqwagqozodkee3di2qik@3igj6k3zgbk6>
-From: Dinh Nguyen <dinguyen@kernel.org>
-In-Reply-To: <sjlp5ubnpvulgwhhymmfkmmobkgxacyqwagqozodkee3di2qik@3igj6k3zgbk6>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230427_120956_707835_9E04FC37 
-X-CRM114-Status: GOOD (  26.15  )
+X-CRM114-CacheID: sfid-20230427_160002_066655_EA1E5C26 
+X-CRM114-Status: GOOD (  14.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,72 +82,133 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Maxime,
+Get missing tx retries/failed counts from txfree done events and report
+them via mt7915_sta_statistics().
 
-On 4/25/23 09:48, Maxime Ripard wrote:
-> Hi Dinh,
-> 
-> On Mon, Apr 24, 2023 at 01:32:28PM -0500, Dinh Nguyen wrote:
->> On 4/4/23 05:11, Maxime Ripard wrote:
->>> The SoCFGPA gate clock implements a mux with a set_parent hook, but
->>> doesn't provide a determine_rate implementation.
->>>
->>> This is a bit odd, since set_parent() is there to, as its name implies,
->>> change the parent of a clock. However, the most likely candidate to
->>> trigger that parent change is a call to clk_set_rate(), with
->>> determine_rate() figuring out which parent is the best suited for a
->>> given rate.
->>>
->>> The other trigger would be a call to clk_set_parent(), but it's far less
->>> used, and it doesn't look like there's any obvious user for that clock.
->>>
->>> So, the set_parent hook is effectively unused, possibly because of an
->>> oversight. However, it could also be an explicit decision by the
->>> original author to avoid any reparenting but through an explicit call to
->>> clk_set_parent().
->>>
->>> The latter case would be equivalent to setting the flag
->>> CLK_SET_RATE_NO_REPARENT, together with setting our determine_rate hook
->>> to __clk_mux_determine_rate(). Indeed, if no determine_rate
->>> implementation is provided, clk_round_rate() (through
->>> clk_core_round_rate_nolock()) will call itself on the parent if
->>> CLK_SET_RATE_PARENT is set, and will not change the clock rate
->>> otherwise. __clk_mux_determine_rate() has the exact same behavior when
->>> CLK_SET_RATE_NO_REPARENT is set.
->>>
->>> And if it was an oversight, then we are at least explicit about our
->>> behavior now and it can be further refined down the line.
->>>
->>> Signed-off-by: Maxime Ripard <maxime@cerno.tech>
->>> ---
->>>    drivers/clk/socfpga/clk-gate.c | 3 ++-
->>>    1 file changed, 2 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/drivers/clk/socfpga/clk-gate.c b/drivers/clk/socfpga/clk-gate.c
->>> index 32ccda960f28..cbba8462a09e 100644
->>> --- a/drivers/clk/socfpga/clk-gate.c
->>> +++ b/drivers/clk/socfpga/clk-gate.c
->>> @@ -110,6 +110,7 @@ static unsigned long socfpga_clk_recalc_rate(struct clk_hw *hwclk,
->>>    static struct clk_ops gateclk_ops = {
->>>    	.recalc_rate = socfpga_clk_recalc_rate,
->>> +	.determine_rate = __clk_mux_determine_rate,
->>>    	.get_parent = socfpga_clk_get_parent,
->>>    	.set_parent = socfpga_clk_set_parent,
->>>    };
->>> @@ -166,7 +167,7 @@ void __init socfpga_gate_init(struct device_node *node)
->>>    	init.name = clk_name;
->>>    	init.ops = ops;
->>> -	init.flags = 0;
->>> +	init.flags = CLK_SET_RATE_NO_REPARENT;
->>>    	init.num_parents = of_clk_parent_fill(node, parent_name, SOCFPGA_MAX_PARENTS);
->>>    	if (init.num_parents < 2) {
->>>
->>
->> This patch broke SoCFPGA boot serial port. The characters are mangled.
-> 
-> Do you have any other access to that board? If so, could you dump
-> clk_summary in debugfs with and without that patch?
-> 
+Co-developed-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+v3 - add a missing check for mt7921
+v2 - add a missing check for non-v3 format
+---
+ .../wireless/mediatek/mt76/mt76_connac_mac.c  |  4 +++-
+ .../net/wireless/mediatek/mt76/mt7915/mac.c   | 22 +++++++++++++++++--
+ .../net/wireless/mediatek/mt76/mt7915/mac.h   |  7 +++++-
+ .../net/wireless/mediatek/mt76/mt7915/main.c  | 12 +++++-----
+ 4 files changed, 35 insertions(+), 10 deletions(-)
 
-That dump from the clk_summary are identical for both cases.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
+index d39a3cc5e381..1fd36f9375ba 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
+@@ -738,7 +738,9 @@ bool mt76_connac2_mac_add_txs_skb(struct mt76_dev *dev, struct mt76_wcid *wcid,
+ 		info->status.ampdu_ack_len = !noacked;
+ 		info->status.rates[0].idx = -1;
+ 
+-		wcid->stats.tx_failed += noacked;
++		/* avoid double counting if dev supports txfree event */
++		if (is_mt7921(dev))
++			wcid->stats.tx_failed += noacked;
+ 
+ 		mt76_connac2_mac_fill_txs(dev, wcid, txs_data);
+ 		mt76_tx_status_skb_done(dev, skb, &list);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index 7df8d95fc3fb..9b2ccd99854e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -951,6 +951,7 @@ mt7915_mac_tx_free(struct mt7915_dev *dev, void *data, int len)
+ 	struct mt76_dev *mdev = &dev->mt76;
+ 	struct mt76_txwi_cache *txwi;
+ 	struct ieee80211_sta *sta = NULL;
++	struct mt76_wcid *wcid = NULL;
+ 	LIST_HEAD(free_list);
+ 	void *end = data + len;
+ 	bool v3, wake = false;
+@@ -977,7 +978,6 @@ mt7915_mac_tx_free(struct mt7915_dev *dev, void *data, int len)
+ 		info = le32_to_cpu(*cur_info);
+ 		if (info & MT_TX_FREE_PAIR) {
+ 			struct mt7915_sta *msta;
+-			struct mt76_wcid *wcid;
+ 			u16 idx;
+ 
+ 			idx = FIELD_GET(MT_TX_FREE_WLAN_ID, info);
+@@ -994,7 +994,25 @@ mt7915_mac_tx_free(struct mt7915_dev *dev, void *data, int len)
+ 			continue;
+ 		}
+ 
+-		if (v3 && (info & MT_TX_FREE_MPDU_HEADER))
++		if (!mtk_wed_device_active(&mdev->mmio.wed) && wcid) {
++			u32 tx_retries = 0, tx_failed = 0;
++
++			if (v3 && (info & MT_TX_FREE_MPDU_HEADER_V3)) {
++				tx_retries =
++					FIELD_GET(MT_TX_FREE_COUNT_V3, info) - 1;
++				tx_failed = tx_retries +
++					!!FIELD_GET(MT_TX_FREE_STAT_V3, info);
++			} else if (!v3 && (info & MT_TX_FREE_MPDU_HEADER)) {
++				tx_retries =
++					FIELD_GET(MT_TX_FREE_COUNT, info) - 1;
++				tx_failed = tx_retries +
++					!!FIELD_GET(MT_TX_FREE_STAT, info);
++			}
++			wcid->stats.tx_retries += tx_retries;
++			wcid->stats.tx_failed += tx_failed;
++		}
++
++		if (v3 && (info & MT_TX_FREE_MPDU_HEADER_V3))
+ 			continue;
+ 
+ 		for (i = 0; i < 1 + v3; i++) {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.h b/drivers/net/wireless/mediatek/mt76/mt7915/mac.h
+index ce94f87e2042..448b1b380190 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.h
+@@ -9,7 +9,12 @@
+ #define MT_TX_FREE_VER			GENMASK(18, 16)
+ #define MT_TX_FREE_MSDU_CNT_V0		GENMASK(6, 0)
+ /* 0: success, others: dropped */
+-#define MT_TX_FREE_MPDU_HEADER		BIT(30)
++#define MT_TX_FREE_COUNT		GENMASK(12, 0)
++#define MT_TX_FREE_COUNT_V3		GENMASK(27, 24)
++#define MT_TX_FREE_STAT			GENMASK(14, 13)
++#define MT_TX_FREE_STAT_V3		GENMASK(29, 28)
++#define MT_TX_FREE_MPDU_HEADER		BIT(15)
++#define MT_TX_FREE_MPDU_HEADER_V3	BIT(30)
+ #define MT_TX_FREE_MSDU_ID_V3		GENMASK(14, 0)
+ 
+ #define MT_TXS5_F0_FINAL_MPDU		BIT(31)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+index 2ada2806de66..61157248d742 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+@@ -1046,12 +1046,6 @@ static void mt7915_sta_statistics(struct ieee80211_hw *hw,
+ 		sinfo->tx_packets = msta->wcid.stats.tx_packets;
+ 		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_PACKETS);
+ 
+-		sinfo->tx_failed = msta->wcid.stats.tx_failed;
+-		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_FAILED);
+-
+-		sinfo->tx_retries = msta->wcid.stats.tx_retries;
+-		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_RETRIES);
+-
+ 		if (mtk_wed_get_rx_capa(&phy->dev->mt76.mmio.wed)) {
+ 			sinfo->rx_bytes = msta->wcid.stats.rx_bytes;
+ 			sinfo->filled |= BIT_ULL(NL80211_STA_INFO_RX_BYTES64);
+@@ -1061,6 +1055,12 @@ static void mt7915_sta_statistics(struct ieee80211_hw *hw,
+ 		}
+ 	}
+ 
++	sinfo->tx_failed = msta->wcid.stats.tx_failed;
++	sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_FAILED);
++
++	sinfo->tx_retries = msta->wcid.stats.tx_retries;
++	sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_RETRIES);
++
+ 	sinfo->ack_signal = (s8)msta->ack_signal;
+ 	sinfo->filled |= BIT_ULL(NL80211_STA_INFO_ACK_SIGNAL);
+ 
+-- 
+2.18.0
+
 
