@@ -4,89 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51A0EC77B73
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Apr 2023 14:09:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68003C77B61
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Apr 2023 14:48:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EDVPbB4cbDPN+tvnZTEmrx6KIXqzDTSeZfB1ppLbXmg=; b=lVuFKyvv8WGLhddfmWEwBSzJd7
-	GhwgQEFNq07RgLOE4RVtY9+Q7eRTk3tm27cCjDyo248S5VlZYLYR+H/K7XT95tNCxs5C61gQr6jp/
-	oMuxKPVl3hMOrXa2zhHEx6WLwfv3O1UOhxRNkBhy6hf5ZcAHaiAfkFUKK0YW52Cu4ZELU4SYYWs84
-	XO2jFRxhagdXk++GhJrALNHT2QshN0MndPCcbLqtAjHLcQVFlwyM6FhOK660UWZ+UuzffmBltYadv
-	cGs7hS/geGmJWmEyXfYbrrLBLofwvyW4ftp/dJzqIJ4HAgGMch74W6TEhRX/2V5EZjNtcO8cRmjb0
-	k8ZI95xA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=M31n+XREzugmZ1EKOJc53wCBLFu4hpN+NfwfiegJw4Y=; b=QL4C3gcJ9+5UGuWHN+a0D/GQ89
+	UNOm4GtbDv8y6xW1UldkMeRn2jprAq/nj0nUQbU9WtEYjENIMMwj7twklUl0E+318cnJEgIb7c/Vr
+	sDykI8Vi/SWjbsDaG9+nK0pb+fszrxULauEIgXDz7KkfDeKaRovx0Chvz9MVkXf0wthqaBU2XsaVN
+	pNa9PmKwPYUWfZJRnYdQqWBPg4pUvKdeJOAt1pkfXrQ1qKubBVmm2EwxGW22HIh/kOTtg8FVuL8+q
+	/MPdWkbiEcobfew2TwRuIjazmgsHH84vOH2C7fE+cyQgccx8HW/vlDyfKIa4TxdNN4EeLATpLa+Ud
+	+VVjeC3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ps2Is-006iS6-1n;
-	Thu, 27 Apr 2023 14:08:58 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1ps2vF-006ogD-1A;
+	Thu, 27 Apr 2023 14:48:37 +0000
+Received: from mail-ot1-f49.google.com ([209.85.210.49])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ps2Io-006iP1-13
-	for linux-mediatek@lists.infradead.org;
-	Thu, 27 Apr 2023 14:08:56 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-506bfe81303so14435343a12.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 27 Apr 2023 07:08:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1682604529; x=1685196529;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=EDVPbB4cbDPN+tvnZTEmrx6KIXqzDTSeZfB1ppLbXmg=;
-        b=QBwSHc3Dz3srMXZNvIyh//l7YRkzVarnD5Y+5t1vcWgEbZwzXMbzaTO0lnUTS6+rOK
-         5yYcV2jgESD9U1YrMtEWVk2AmJnY2DLZNvecgCFSeqXyZ9jAyP7amUdlCuNRgDl7t3u9
-         Z+yuYOb7ICthH7KX/9PChM4j+ZqDFIFRPgmrAc+ljU0gUpW0mUhAf1k91TIhJWEZiHC3
-         ync5MzexAnw7JIfmV1W8oXZWYSefwr23F2r34WCJYgHhX+G0Qe6lW9lUgYoHE1J8LGTf
-         B277Z3Ls4kG/ZWLY3q48xBRYMe8AQiPIeILMQ2XMlm+nkZfifwu2qTn05Y4ztwvmF1HY
-         ZMUQ==
+	id 1ps2vC-006ofX-2f;
+	Thu, 27 Apr 2023 14:48:36 +0000
+Received: by mail-ot1-f49.google.com with SMTP id 46e09a7af769-6a60460a23dso6730530a34.0;
+        Thu, 27 Apr 2023 07:48:34 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682604529; x=1685196529;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=EDVPbB4cbDPN+tvnZTEmrx6KIXqzDTSeZfB1ppLbXmg=;
-        b=KMUcLjcMJscxT9P7Q+oYuhTz2nnR0/X0I9qHaQDpKXiJkYhXdJnKORkg7Oji8SME7G
-         Fv17f82bTEPJM5wm2vgNV2mdOaLG0t70Ns+AUMrlxEAroGgduA95zgy/P8a2b/8icRS6
-         2YSRbKMNDlNO59dIQgxgI27Fb8P30dWvqOpeffzwBN1ykONPKL7TVK13OcJeoWR55Bvi
-         QE1fWkHgxVyXyBhpuoRHwUdJl2BwB+qvWFjTNh/MBeyDudzuhh8+FcIYTbx+xzpI0eu8
-         e41uyEBqj/APO28WuZINq13nL2WfoHV7AGoJdKRI71MU7OQeu/sA3QOEUR5pQqbwplwR
-         R/Iw==
-X-Gm-Message-State: AC+VfDxgMOaQn3jovRoJiJGQkX7Kip96rgapK58/QB4+wJgCN+PhMkiX
-	QG9ED1OozlUKDLGlXqBOX8owf6U4k9Ec3xgNz3Yx+w==
-X-Google-Smtp-Source: ACHHUZ7CEMh3fwxTQ4zHqXl5d3SwmPzb30WFXBGaftLZN2Lus97dMKq7+b5aHGMhdHRItwoZAx2Ky4I6Ret8wXSjlo8=
-X-Received: by 2002:a05:6402:18c:b0:509:ee5c:6bf1 with SMTP id
- r12-20020a056402018c00b00509ee5c6bf1mr1753567edv.1.1682604529555; Thu, 27 Apr
- 2023 07:08:49 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1682606914; x=1685198914;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=M31n+XREzugmZ1EKOJc53wCBLFu4hpN+NfwfiegJw4Y=;
+        b=ZttfJJ1gMkw3MC0FjNGruYH88d2kiFSVD2eEKxp0BKS//v6H973r0w0A6EMiyQieMh
+         QGrbjEGZvJQgqR0nKMAbb74VaCjD2DuYqhnaP1WUkS2Nor77gc+ZNqUuJ58WH/Th7508
+         MDSUH4x2OVMMFYK4kGQqhQGj4RXC5n+AvOUBRGQZ0llsnt1vGxoHkipkIg/Mc/VWd91t
+         7x/2YHuCC4vh+IylCUDzfZ8j/Rz2wJ5oN+tLpqzIAhzLIRN6QY7Teq+QQ6cYsIPnXAfs
+         A7d//huWzey76GYA6q8y3yCAHfw3nyX7rpC9Q0b/VqL73mudh8tMrBKd/pf4xA0fOzqW
+         SwsQ==
+X-Gm-Message-State: AC+VfDxEfiZQ5hqVsnnlkyex7mf/4Sirz63EDUllHzaUuxFd6F2pDNpR
+	D4bsALLZ9R8MrOzjsk8UsQ==
+X-Google-Smtp-Source: ACHHUZ7Gy9jZRZPv3O8hPWV17h7xoBKxBXZHUuJlHDEj5firr1OAVrcrJ0Ju0D2jaIC1gyaw5XDBgQ==
+X-Received: by 2002:a9d:6404:0:b0:6a4:2f1d:133e with SMTP id h4-20020a9d6404000000b006a42f1d133emr771755otl.3.1682606913964;
+        Thu, 27 Apr 2023 07:48:33 -0700 (PDT)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id z5-20020a9d65c5000000b006a12509bd94sm8042181oth.13.2023.04.27.07.48.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 27 Apr 2023 07:48:33 -0700 (PDT)
+Received: (nullmailer pid 3018266 invoked by uid 1000);
+	Thu, 27 Apr 2023 14:48:32 -0000
+Date: Thu, 27 Apr 2023 09:48:32 -0500
+From: Rob Herring <robh@kernel.org>
+To: Trevor Wu <trevor.wu@mediatek.com>
+Cc: broonie@kernel.org, lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
+Subject: Re: [PATCH v3 7/7] ASoC: dt-bindings: mediatek,mt8188-afe: add audio
+ properties
+Message-ID: <20230427144832.GA2992031-robh@kernel.org>
+References: <20230426055124.16529-1-trevor.wu@mediatek.com>
+ <20230426055124.16529-8-trevor.wu@mediatek.com>
 MIME-Version: 1.0
-References: <20230307163413.143334-1-bchihi@baylibre.com> <CAGXv+5E0wUJYUVD3wx3-=uES612ARQmUE0rxgAruFHxpZCBjzA@mail.gmail.com>
- <CAGuA+ooi7Kx05gagLzXAN3upDiSqDUNOM_djYdGftw6ogVx5gw@mail.gmail.com>
- <CAGuA+oqDPPYFJef_8=YrOpHQNVJ3xgm_zXS6fq_HG2Jy_6t-Zg@mail.gmail.com>
- <CAGXv+5EZPWohGN5CaEiqVrM4MyAar3cPEUhHtGY_9wTJSJNVFQ@mail.gmail.com>
- <CAGuA+oqF4jFMyEo09VDmCf-_7g0ua3XDKDAJ+t3Gat14pDM9NA@mail.gmail.com>
- <fab67eef-4dc9-420d-b127-aedc6f54cad0@notapiano> <CAGXv+5E0rzByZBn91d60MQ7P0=GbAQUH=PK9EYDu3Upr33td6A@mail.gmail.com>
- <CAGuA+oo0w8n9zEKdd1UfYx+F08wK4CcUGqRbBi4C-xNYp+vtDA@mail.gmail.com> <28e50e45-53cf-4a34-a81c-10f1faab2d4e@notapiano>
-In-Reply-To: <28e50e45-53cf-4a34-a81c-10f1faab2d4e@notapiano>
-From: Balsam CHIHI <bchihi@baylibre.com>
-Date: Thu, 27 Apr 2023 16:08:13 +0200
-Message-ID: <CAGuA+oprz06WS0reC1Edqr1fMn-TjSrCgoO_M54JYQ4x8UnTOg@mail.gmail.com>
-Subject: Re: [PATCH 0/4] Add LVTS support for mt8192
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, daniel.lezcano@linaro.org, 
-	angelogioacchino.delregno@collabora.com, rafael@kernel.org, amitk@kernel.org, 
-	rui.zhang@intel.com, matthias.bgg@gmail.com, robh+dt@kernel.org, 
-	krzysztof.kozlowski+dt@linaro.org, rdunlap@infradead.org, 
-	ye.xingchen@zte.com.cn, p.zabel@pengutronix.de, linux-pm@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
-	khilman@baylibre.com, james.lo@mediatek.com, rex-bc.chen@mediatek.com, 
-	Alexandre Bailon <abailon@baylibre.com>, Alexandre Mergnat <amergnat@baylibre.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230426055124.16529-8-trevor.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230427_070854_364943_A1E97EC3 
-X-CRM114-Status: GOOD (  45.65  )
+X-CRM114-CacheID: sfid-20230427_074834_861795_3F6D140E 
+X-CRM114-Status: GOOD (  16.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,153 +81,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 27, 2023 at 1:20=E2=80=AFAM N=C3=ADcolas F. R. A. Prado
-<nfraprado@collabora.com> wrote:
->
-> On Tue, Apr 25, 2023 at 01:28:39PM +0200, Balsam CHIHI wrote:
-> > On Tue, Apr 25, 2023 at 12:00=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.o=
-rg> wrote:
-> > >
-> > > On Tue, Apr 25, 2023 at 6:21=E2=80=AFAM N=C3=ADcolas F. R. A. Prado
-> > > <nfraprado@collabora.com> wrote:
-> > > >
-> > > > On Tue, Mar 28, 2023 at 02:20:24AM +0200, Balsam CHIHI wrote:
-> > > > > On Sat, Mar 25, 2023 at 5:33=E2=80=AFAM Chen-Yu Tsai <wenst@chrom=
-ium.org> wrote:
-> > > > > >
-> > > > > > On Wed, Mar 22, 2023 at 8:48=E2=80=AFPM Balsam CHIHI <bchihi@ba=
-ylibre.com> wrote:
-> [..]
-> > > > >
-> > > > > Hi Chen-Yu Tsai,
-> > > > >
-> > > > > Thank you very much for helping me testing this suggestion.
-> > > > >
-> > > > > Indeed, calibration data is stored differently in the mt8192 comp=
-ared to mt8195.
-> > > > > So, the mt8192's support will be delayed for now, to allow furthe=
-r debugging.
-> > > > >
-> > > > > In the mean time, we will only continue to upstream the remaining
-> > > > > mt8195's source code, so it will get full LVTS support.
-> > > > > A new series will be submitted soon.
-> > > >
-> > > > Hi Balsam,
-> > > >
-> > > > like Chen-Yu mentioned, the calibration data is stored with 4 byte =
-alignment for
-> > > > MT8192, but the data that is split between non-contiguous bytes is =
-for the
-> > > > thermal controllers (called Resistor-Capacitor Calibration downstre=
-am) not the
-> > > > sensors. The controller calibration isn't currently handled in this=
- driver (and
-> > > > downstream it also isn't used, since a current value is read from t=
-he controller
-> > > > instead), so we can just ignore those.
-> > > >
-> > > > The patch below adjusts the addresseses for the sensors and gives m=
-e reasonable
-> > > > reads, so the machine no longer reboots. Can you integrate it into =
-your series?
-> > >
-> > > Not sure what I got wrong, but on my machine the VPU0 and VPU1 zone i=
-nterrupts
-> > > are still tripping excessively. The readings seem normal though. Spec=
-ifically,
-> > > it's bits 16 and 17 that are tripping.
-> > >
-> >
-> > Hi Chen-Yu,
-> >
-> > Thank you for testing!
-> >
-> > As the readings are normal that proves that calibration data offsets
-> > are correct.
-> > would you like that I send the v2 of series to add mt8192 support?
-> > Then we could deal with the interrupts later in a separate fix,
-> > because the interrupt code in common for both SoC (mt8192 and mt8195)?
-> >
-> > Does N=C3=ADcolas also have tripping interrupts?
-> > On my side, I've got no interrupts tripping on mt8195.
-> >
-> > Any other suggestions (a question for everyone)?
->
-> Hi,
->
-> sorry for the delay.
->
-> Indeed the interrupts are constantly tripping on mt8192 here as well.
->
-> I do not see the same bits as Chen-Yu mentioned however, I see
->
-> LVTS_MONINTSTS =3D 0x08070000
->
-> which corresponds to
->
->         Hot threshold on sense point 3
->         high to normal offset on sense point 2
->         high offset on sense point 2
->         low offset on sense point 2
->
-> and it's the same on all controllers and domains here, which is weird. I =
-noticed
-> we have offset interrupts enabled even though we don't configure the valu=
-es for
-> those, but even after disabling them and clearing the status register, th=
-e
-> interrupts keep triggering and the status is the same, so for some reason
-> LVTS_MONINT doesn't seem to be honored.
->
-> I also tried using the filtered mode instead of immediate for the sensors=
-, and
-> that together with disabling the extra interrupts, got me a zeroed
-> LVTS_MONINTSTS. However no interrupts seem to be triggered at all (nor
-> LVTS_MONINTSTS updated) when the temperature goes over the configured one=
- in
-> LVTS_HTHRE.
->
-> I tried the driver on mt8195 (Tomato chromebook) as well, and it has the =
-same
-> LVTS_MONINTSTS =3D 0x08070000
-> even though the interrupts aren't being triggered, but in fact I don't se=
-e them
-> triggering over the threshold either, so I suspect the irq number might b=
-e
-> incorrectly described in the DT there.
->
-> Do either of you have it working correctly on mt8195?
->
-> Anyway, I'll keep digging and reply here when I find a solution.
+On Wed, Apr 26, 2023 at 01:51:24PM +0800, Trevor Wu wrote:
+> Add apll1_d4 to clocks for switching the parent of top_a1sys_hp
+> dynamically. On the other hand, "mediatek,infracfg" is included for bus
+> protection.
 
-Hi N=C3=ADcolas,
+Bus protection? Meaning access controls for the device? If so, there's a 
+proposed binding[1] for just that. If that's something Mediatek needs 
+too, please participate in that discussion. It's easier to define new 
+common bindings if there is more than one user.
 
-Thank your for your time testing and investigating the interrupt issues!
+> 
+> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+> ---
+>  .../bindings/sound/mediatek,mt8188-afe.yaml          | 12 ++++++++++--
+>  1 file changed, 10 insertions(+), 2 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8188-afe.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8188-afe.yaml
+> index 82ccb32f08f2..eb58de8c0e68 100644
+> --- a/Documentation/devicetree/bindings/sound/mediatek,mt8188-afe.yaml
+> +++ b/Documentation/devicetree/bindings/sound/mediatek,mt8188-afe.yaml
+> @@ -29,6 +29,10 @@ properties:
+>      $ref: /schemas/types.yaml#/definitions/phandle
+>      description: The phandle of the mediatek topckgen controller
+>  
+> +  mediatek,infracfg:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description: The phandle of the mediatek infracfg controller
+> +
+>    power-domains:
+>      maxItems: 1
+>  
+> @@ -52,6 +56,7 @@ properties:
+>        - description: mux for i2si1_mck
+>        - description: mux for i2si2_mck
+>        - description: audio 26m clock
+> +      - description: audio pll1 divide 4
+>  
+>    clock-names:
+>      items:
+> @@ -73,6 +78,7 @@ properties:
+>        - const: i2si1_m_sel
+>        - const: i2si2_m_sel
+>        - const: adsp_audio_26m
+> +      - const: apll1_d4
 
-I only have an mt8195 based board (i1200-demo), and I could not
-trigger any interrupt on it.
-I whish that MediaTek could reply to this thread to give us more
-information (I avoid disclosing MediaTek's internal information).
-And now, it's clear that mt8192 interrupts does work at least (but not
-properly, may be we could fix it at driver level).
+A new required entry may break the ABI. If that's okay, it needs to be 
+explained in the commit msg.
 
-It's been a couple of days since I sent a v2 of the series that adds
-LVTS support for mt8192 SoC (+ Suspend and Resume, + Doc update):
-"https://lore.kernel.org/all/20230425133052.199767-1-bchihi@baylibre.com/".
-I wish that it will be applied very soon, then we could patch the core driv=
-er.
+Rob
 
-My colleagues "Alexandre Mergnat (amergnat@baylibre.com)" and
-"Alexandre Bailon (abailon@baylibre.com)" are now part of this
-project.
-Please let them know of future information.
-
-Thanks again for suggesting solutions!
-
-Best regards,
-Balsam
-
->
-> Thanks,
-> N=C3=ADcolas
+[1] https://lore.kernel.org/lkml/cover.1668070216.git.oleksii_moisieiev@epam.com/
 
