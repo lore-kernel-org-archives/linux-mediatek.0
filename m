@@ -4,70 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFCF1C77B61
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Apr 2023 16:54:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2883CC77B61
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Apr 2023 17:23:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=eX0d5MnDIx5piR+VxcyO07pAYaKUIeZr/3Oco6tsuCI=; b=quz7DOyOy815GLo/27rhAbIpgR
-	PDHwnpUFgrVQVPtkytHpBYWh+56/my6O8e7QERBcVp1/PjwAXyJum/BdaGg06jCq/n/pIHgZvgzWb
-	fAhzjyc1QjsztbYVEfoIV2AVO9hxPRYuccusBnras3tv3coKEAiN6PDlOi4Pa5IrACkpvlMRmBz/N
-	PPJY7WOSNNdWz7tis22fCRC/TEy28KC9+am6F67e72n0SJ4FrfRF7p7k9LJbnSLFMA0JZgK2XARl1
-	r4TWf1g8PHgTmOK8jV9PKVNK3gkq+fSYEWgYx2T2hZEXiOPlqhvRcLX27ijJIm+e3cnjNUWFrLczd
-	pMHzWGGg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wcGlD52OBDRB2HJoc6HQTgtvZYyR7QplzYFBh6TMSUk=; b=P2l3tgYETBvhiD1yrAKrZ2//Us
+	XjuQwNRPd7ttiBR8SVJDopM8uC6P65rf640jJ0ONmfHdwh02Omi8GO4ZTXzoGLPB3GbI00BuN4/3w
+	DhCC2465AS2tw95XAvYmunv9tdmMelWjqJi+a5fxgI29GnS3w4OksT7d4QQarOYaL+xcJVFs8+LSu
+	4kQATWXR8xm6tntz1lQyxh3UbeDeL4PagDocP5csDQeZcMqmiD37UVHA7w7MleeAMcZvFhFeLcOyF
+	dmDMBkVuWCk2n4dp706nSTVhv4X8lzruYy1efLbvX+Ug01Z4kLVV8OAyVjADgR7oxPNzXIv/lwZb1
+	ux/Ho3Lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ps4sU-0072Pg-0a;
-	Thu, 27 Apr 2023 16:53:54 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ps5Ku-0076O4-1Z;
+	Thu, 27 Apr 2023 17:23:16 +0000
+Received: from mga11.intel.com ([192.55.52.93])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ps4sQ-0072Oo-2p
+	id 1ps5Kr-0076NO-0b
 	for linux-mediatek@lists.infradead.org;
-	Thu, 27 Apr 2023 16:53:52 +0000
-X-UUID: 0fb86ffae51c11ed8ff21b58f8242069-20230427
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=eX0d5MnDIx5piR+VxcyO07pAYaKUIeZr/3Oco6tsuCI=;
-	b=L+aoMTFDDJlekMWnStzoemubFEqnpGJ+Am8d6s0aun0bVjU4j2k5UGM0J3IeGDMPk/4GqDRxlhwvQlpvYAMzN6OCnJxZgr5ED0yZcQoAHFgL6knNN1VrLJb1JoihZil0Z4OL5OGazoweHZ4qHtnaaciuP+18PdODQisqGB+aK4I=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:6e5d4226-e052-4dc5-bfc0-2cc2da7b2f7a,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:120426c,CLOUDID:5d941930-6935-4eab-a959-f84f8da15543,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-UUID: 0fb86ffae51c11ed8ff21b58f8242069-20230427
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <ryder.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 665554140; Thu, 27 Apr 2023 09:53:40 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 28 Apr 2023 00:43:36 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Fri, 28 Apr 2023 00:43:36 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
-	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
-	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>,
-	Peter Chiu <chui-hao.chiu@mediatek.com>
-Subject: [PATCH v2] wifi: mt76: mt7915: report tx retries/failed counts for non-WED path
-Date: Fri, 28 Apr 2023 00:43:35 +0800
-Message-ID: <ddee913411aa77046ec6a42181833f31ce043f38.1682613710.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	Thu, 27 Apr 2023 17:23:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1682616193; x=1714152193;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=e7t003heJi1XAtLbnW5RQXVk9/BjNHIn2f+EIk07P0Y=;
+  b=UVbr1XIDJy32QL/HOhtYOdQBEmmC20jzF99MKDDuSiXq+BPVTBQfNCoO
+   X/kcbzSOvqRmsYmnvGRHOXLn0sKeAvjl8UtIhCsG4sUnpWAPUYgupPpzJ
+   hqy47UER5Lc8w7dDVpHNBHRV6ORtpUiDKDU2ChuDzc3KDPCVLwDD0Q1Cp
+   bwAb1hmg8RDpbtkVk6liUb5JDPcYHA28gPrKwm8/T1MxjXMNyc9Xk8MBt
+   K+afqcfso2EEfLzu7DbPhKjCtzZIZDXXQneOlxn2+y82UfdqhL7BUmcC3
+   P8+5yCY0JmpWWbVONr0grqrMl03IWD9Lm1kcdo+8DAwxxmfARvGAGvP34
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10693"; a="344962034"
+X-IronPort-AV: E=Sophos;i="5.99,232,1677571200"; 
+   d="scan'208";a="344962034"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Apr 2023 10:21:30 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10693"; a="868809209"
+X-IronPort-AV: E=Sophos;i="5.99,232,1677571200"; 
+   d="scan'208";a="868809209"
+Received: from lkp-server01.sh.intel.com (HELO b95e16499b55) ([10.239.97.150])
+  by orsmga005.jf.intel.com with ESMTP; 27 Apr 2023 10:21:23 -0700
+Received: from kbuild by b95e16499b55 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1ps5J4-00002z-2a;
+	Thu, 27 Apr 2023 17:21:22 +0000
+Date: Fri, 28 Apr 2023 01:20:53 +0800
+From: kernel test robot <lkp@intel.com>
+To: sean.wang@mediatek.com, marcel@holtmann.org, johan.hedberg@gmail.com,
+	luiz.dentz@gmail.com
+Cc: oe-kbuild-all@lists.linux.dev, sean.wang@mediatek.com,
+	chris.lu@mediatek.com, Soul.Huang@mediatek.com,
+	Leon.Yen@mediatek.com, Deren.Wu@mediatek.com, km.lin@mediatek.com,
+	robin.chiu@mediatek.com, Eddie.Chen@mediatek.com,
+	ch.yeh@mediatek.com, jenhao.yang@mediatek.com,
+	Stella.Chang@mediatek.com, Tom.Chou@mediatek.com,
+	steve.lee@mediatek.com, jsiuda@google.com, frankgor@google.com,
+	abhishekpandit@google.com, michaelfsun@google.com,
+	abhishekpandit@chromium.org, mcchou@chromium.org,
+	shawnku@google.com, linux-bluetooth@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Jing Cai <jing.cai@mediatek.com>
+Subject: Re: [PATCH v4 3/3] Bluetooth: btusb: mediatek: add MediaTek
+ devcoredump support
+Message-ID: <202304280130.Aoglg07c-lkp@intel.com>
+References: <01d3fe06d3a1e333b193e7d9fbc9cbfb4ee5d02b.1682549719.git.objelf@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <01d3fe06d3a1e333b193e7d9fbc9cbfb4ee5d02b.1682549719.git.objelf@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230427_095350_925000_49323480 
-X-CRM114-Status: GOOD (  12.59  )
+X-CRM114-CacheID: sfid-20230427_102313_236885_24294ECB 
+X-CRM114-Status: GOOD (  12.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,116 +96,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Get missing tx retries/failed counts from txfree done events and report
-them via mt7915_sta_statistics().
+Hi,
 
-Co-developed-by: Peter Chiu <chui-hao.chiu@mediatek.com>
-Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
-v2 - add a missing check for non-v3 format
----
- .../net/wireless/mediatek/mt76/mt7915/mac.c   | 22 +++++++++++++++++--
- .../net/wireless/mediatek/mt76/mt7915/mac.h   |  7 +++++-
- .../net/wireless/mediatek/mt76/mt7915/main.c  | 12 +++++-----
- 3 files changed, 32 insertions(+), 9 deletions(-)
+kernel test robot noticed the following build warnings:
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-index 7df8d95fc3fb..9b2ccd99854e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-@@ -951,6 +951,7 @@ mt7915_mac_tx_free(struct mt7915_dev *dev, void *data, int len)
- 	struct mt76_dev *mdev = &dev->mt76;
- 	struct mt76_txwi_cache *txwi;
- 	struct ieee80211_sta *sta = NULL;
-+	struct mt76_wcid *wcid = NULL;
- 	LIST_HEAD(free_list);
- 	void *end = data + len;
- 	bool v3, wake = false;
-@@ -977,7 +978,6 @@ mt7915_mac_tx_free(struct mt7915_dev *dev, void *data, int len)
- 		info = le32_to_cpu(*cur_info);
- 		if (info & MT_TX_FREE_PAIR) {
- 			struct mt7915_sta *msta;
--			struct mt76_wcid *wcid;
- 			u16 idx;
- 
- 			idx = FIELD_GET(MT_TX_FREE_WLAN_ID, info);
-@@ -994,7 +994,25 @@ mt7915_mac_tx_free(struct mt7915_dev *dev, void *data, int len)
- 			continue;
- 		}
- 
--		if (v3 && (info & MT_TX_FREE_MPDU_HEADER))
-+		if (!mtk_wed_device_active(&mdev->mmio.wed) && wcid) {
-+			u32 tx_retries = 0, tx_failed = 0;
-+
-+			if (v3 && (info & MT_TX_FREE_MPDU_HEADER_V3)) {
-+				tx_retries =
-+					FIELD_GET(MT_TX_FREE_COUNT_V3, info) - 1;
-+				tx_failed = tx_retries +
-+					!!FIELD_GET(MT_TX_FREE_STAT_V3, info);
-+			} else if (!v3 && (info & MT_TX_FREE_MPDU_HEADER)) {
-+				tx_retries =
-+					FIELD_GET(MT_TX_FREE_COUNT, info) - 1;
-+				tx_failed = tx_retries +
-+					!!FIELD_GET(MT_TX_FREE_STAT, info);
-+			}
-+			wcid->stats.tx_retries += tx_retries;
-+			wcid->stats.tx_failed += tx_failed;
-+		}
-+
-+		if (v3 && (info & MT_TX_FREE_MPDU_HEADER_V3))
- 			continue;
- 
- 		for (i = 0; i < 1 + v3; i++) {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.h b/drivers/net/wireless/mediatek/mt76/mt7915/mac.h
-index ce94f87e2042..448b1b380190 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.h
-@@ -9,7 +9,12 @@
- #define MT_TX_FREE_VER			GENMASK(18, 16)
- #define MT_TX_FREE_MSDU_CNT_V0		GENMASK(6, 0)
- /* 0: success, others: dropped */
--#define MT_TX_FREE_MPDU_HEADER		BIT(30)
-+#define MT_TX_FREE_COUNT		GENMASK(12, 0)
-+#define MT_TX_FREE_COUNT_V3		GENMASK(27, 24)
-+#define MT_TX_FREE_STAT			GENMASK(14, 13)
-+#define MT_TX_FREE_STAT_V3		GENMASK(29, 28)
-+#define MT_TX_FREE_MPDU_HEADER		BIT(15)
-+#define MT_TX_FREE_MPDU_HEADER_V3	BIT(30)
- #define MT_TX_FREE_MSDU_ID_V3		GENMASK(14, 0)
- 
- #define MT_TXS5_F0_FINAL_MPDU		BIT(31)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-index 2ada2806de66..61157248d742 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-@@ -1046,12 +1046,6 @@ static void mt7915_sta_statistics(struct ieee80211_hw *hw,
- 		sinfo->tx_packets = msta->wcid.stats.tx_packets;
- 		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_PACKETS);
- 
--		sinfo->tx_failed = msta->wcid.stats.tx_failed;
--		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_FAILED);
--
--		sinfo->tx_retries = msta->wcid.stats.tx_retries;
--		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_RETRIES);
--
- 		if (mtk_wed_get_rx_capa(&phy->dev->mt76.mmio.wed)) {
- 			sinfo->rx_bytes = msta->wcid.stats.rx_bytes;
- 			sinfo->filled |= BIT_ULL(NL80211_STA_INFO_RX_BYTES64);
-@@ -1061,6 +1055,12 @@ static void mt7915_sta_statistics(struct ieee80211_hw *hw,
- 		}
- 	}
- 
-+	sinfo->tx_failed = msta->wcid.stats.tx_failed;
-+	sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_FAILED);
-+
-+	sinfo->tx_retries = msta->wcid.stats.tx_retries;
-+	sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_RETRIES);
-+
- 	sinfo->ack_signal = (s8)msta->ack_signal;
- 	sinfo->filled |= BIT_ULL(NL80211_STA_INFO_ACK_SIGNAL);
- 
+[auto build test WARNING on bluetooth/master]
+[also build test WARNING on bluetooth-next/master linus/master v6.3 next-20230426]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/sean-wang-mediatek-com/Bluetooth-btmtk-introduce-btmtk-reset-work/20230427-071054
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/bluetooth/bluetooth.git master
+patch link:    https://lore.kernel.org/r/01d3fe06d3a1e333b193e7d9fbc9cbfb4ee5d02b.1682549719.git.objelf%40gmail.com
+patch subject: [PATCH v4 3/3] Bluetooth: btusb: mediatek: add MediaTek devcoredump support
+config: x86_64-randconfig-r035-20211003 (https://download.01.org/0day-ci/archive/20230428/202304280130.Aoglg07c-lkp@intel.com/config)
+compiler: gcc-11 (Debian 11.3.0-12) 11.3.0
+reproduce (this is a W=1 build):
+        # https://github.com/intel-lab-lkp/linux/commit/d253c927e94cb7e88bfcd0182449d29e477ca011
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review sean-wang-mediatek-com/Bluetooth-btmtk-introduce-btmtk-reset-work/20230427-071054
+        git checkout d253c927e94cb7e88bfcd0182449d29e477ca011
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        make W=1 O=build_dir ARCH=x86_64 olddefconfig
+        make W=1 O=build_dir ARCH=x86_64 SHELL=/bin/bash drivers/
+
+If you fix the issue, kindly add following tag where applicable
+| Reported-by: kernel test robot <lkp@intel.com>
+| Link: https://lore.kernel.org/oe-kbuild-all/202304280130.Aoglg07c-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+   In file included from drivers/bluetooth/btusb.c:28:
+>> drivers/bluetooth/btmtk.h:172:6: warning: no previous prototype for 'btmtk_register_coredump' [-Wmissing-prototypes]
+     172 | void btmtk_register_coredump(struct hci_dev *hdev, u32 dev_id, const char *name,
+         |      ^~~~~~~~~~~~~~~~~~~~~~~
+
+
+vim +/btmtk_register_coredump +172 drivers/bluetooth/btmtk.h
+
+   171	
+ > 172	void btmtk_register_coredump(struct hci_dev *hdev, u32 dev_id, const char *name,
+   173				     u32 fw_version)
+   174	{
+   175	}
+   176	
+
 -- 
-2.18.0
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
 
