@@ -4,70 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FF12C77B61
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Apr 2023 17:35:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63B68C77B73
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Apr 2023 19:10:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VS2BzFYKAolsNat9wyZK+OK7oQITTHm6Vb53qON0eds=; b=VyuAQTAyPJhrUFILR3vIwbv6Z7
-	T8+Wq/cxEBhV9wOpyoD7TBuvL8W2yKG0YWSu4nEpf08x4gz2JiGQGBKfp3IrAHrExghqdEh5YnYbk
-	qHAOCYY/XVLCbImhJi/cPEg0zjjI2o9wRsYjelQWhIwWASQi4zlknwFzaYKLN2SNQRDlg9Ld6xFGx
-	AKEcJgGLp/idcEgg/OfFqV6sE115up4zAe55lNcj6cC0JYbfNK5qVtehndHBXiw0CerBgZSYzAmSd
-	EGLnMABuYngEF9Djfw0ciE/THBu8As6rce6lZe69sNYtX9XwjzhfZKmLZS5W4MEcs7y5ewedW1pHy
-	uqa/Uz9g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ORcTtoIaT/xaWhcNzW/7WrZeTdFcl8peFP6vRBUfHiA=; b=J1ENiz0qDLDJD0FJKTK7tt6s9k
+	J2P3uiNQS00uAGSWuLl7QxljmHDmXSc3fhaWJ87W76HQUA9kfAHNqdW0jTAyHoYQyoDHqbLyzzMpw
+	UKDpFUoeES8e1TGcX8UHFkt+7p9qh2KuA6nHFoKRXX1I+jlj5Tvy1yhE7tgc+pVemSc4tQo4XDw9T
+	BQkiYrletNORwMk0d2/fnAIm3fz1yNKWo/cxgzFQQoW+eZuTdSbtoWeydufIN7vd89uZK7ACYJ2NL
+	v3OtPA/XzwnLcXCz3PF/rclfNuXmMySzjupAwDaRAJ+CuKm5psPM+XFZX/fFzrncxYyexDLF4Wzn3
+	XWzDuqHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ps5Wr-00781I-0J;
-	Thu, 27 Apr 2023 17:35:37 +0000
-Received: from mail-ot1-f47.google.com ([209.85.210.47])
+	id 1ps70C-007IYQ-1M;
+	Thu, 27 Apr 2023 19:10:00 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ps5Wo-0077zu-13
-	for linux-mediatek@lists.infradead.org;
-	Thu, 27 Apr 2023 17:35:35 +0000
-Received: by mail-ot1-f47.google.com with SMTP id 46e09a7af769-6a5f6349ec3so3669550a34.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 27 Apr 2023 10:35:31 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682616931; x=1685208931;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=VS2BzFYKAolsNat9wyZK+OK7oQITTHm6Vb53qON0eds=;
-        b=ALS9eVjtY0/Op6ZF1oAXHkC3yKe/3gMMNJ6Oj/Cc+VbqNJudDBtpCRCwz/P+lTgqYH
-         y2ZZkPAXv7vuDS5hL5xcTVSOa+leQ4LMWJGhTAGHaboVimQv7Ax0m4BkjmSLNx79TdI/
-         zpfUfnj6E5vcVaMQ8nXAATy/TqbP0lMndDogd+8/cIu1IxDIStKd4gh/5wYFazAL3UVo
-         fsHbYwDc82ZbHTpDEc5EWzTkIV9ujU2ImbIo5R+QaiaUA8fh+VIodichXW2WT8DmkNPX
-         DvQLWikX9voTDv8315GxJeEWpE2cGjJJ26dzekSOODbOj6pJtP6STl3neJC5LrCZAJ70
-         FAFQ==
-X-Gm-Message-State: AC+VfDyStakaF3UfXyB29Et2GsBhmUBys6Qee0tuB6Jh4KCimZCxUA6L
-	cnkL1dKK4PLohKp65dQKlQ==
-X-Google-Smtp-Source: ACHHUZ6ddHGGah/wSHp7AFR/6L61y0V+EFA9mkWxr0viW192TYKd7OtQlFDnNHKOzpEZD60myXvxKw==
-X-Received: by 2002:a05:6830:2054:b0:6a5:ce05:a5b1 with SMTP id f20-20020a056830205400b006a5ce05a5b1mr1200472otp.3.1682616930360;
-        Thu, 27 Apr 2023 10:35:30 -0700 (PDT)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id l2-20020a05683004a200b006a43519523fsm3592765otd.1.2023.04.27.10.35.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 27 Apr 2023 10:35:29 -0700 (PDT)
-Received: (nullmailer pid 3205401 invoked by uid 1000);
-	Thu, 27 Apr 2023 17:35:29 -0000
-Date: Thu, 27 Apr 2023 12:35:29 -0500
-From: Rob Herring <robh@kernel.org>
-To: Fei Shao <fshao@chromium.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Benjamin Tissoires <benjamin.tissoires@redhat.com>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-input@vger.kernel.org, devicetree@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, Jeff LaBundy <jeff@labundy.com>, linux-kernel@vger.kernel.org, linux-mediatek <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH v4 1/2] dt-bindings: input: goodix: Add
- "goodix,no-reset-during-suspend" property
-Message-ID: <168261692866.3205353.5077242811275926416.robh@kernel.org>
-References: <20230427035656.1962698-1-fshao@chromium.org>
- <20230427035656.1962698-2-fshao@chromium.org>
+	id 1ps708-007IXP-1u;
+	Thu, 27 Apr 2023 19:09:58 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 65910637E8;
+	Thu, 27 Apr 2023 19:09:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9DAF8C433EF;
+	Thu, 27 Apr 2023 19:09:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1682622594;
+	bh=4MuGyWTQQD8YDc9ZDP5EuTvCXfhs1RGXEGefTe8GbFs=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=OEyoAdAg2oHj1kpUaFAUQnORGNgUcMTwXna94WirWc4/7OFURAmKcVKLlVxGAFkME
+	 toxsg2t0o0U7Q+9nKKAWfOe1B/t1z3g1kRabot2L3KU7VvngL293h0JsGHTQ534ZJP
+	 wb/t5pQP0ryuyOaWJAQ0Akswuclq647TVGmt1KHHbj8adW21pY6mXqBy4ogxoG3XiT
+	 nl8v4DuX6FhDVh3IAmmeTltphT6HmwSaAdaxUAAee3iYvoH2HR36H28EF1sUk2sy35
+	 kac9ZjDMYlfFNHS8ZZYJ4TPcDUlbU3BEvZYy9X6SsaJklf3YKOr0nvFwrR0eNy/XBZ
+	 ccVK16xunjKbA==
+Message-ID: <57dd81d0-510e-0fab-670d-1109eb8dd974@kernel.org>
+Date: Thu, 27 Apr 2023 14:09:48 -0500
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230427035656.1962698-2-fshao@chromium.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH v3 29/65] clk: socfpga: gate: Add a determine_rate hook
+Content-Language: en-US
+To: Maxime Ripard <maxime@cerno.tech>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, =?UTF-8?Q?Andreas_F=c3=a4rber?=
+ <afaerber@suse.de>, Manivannan Sadhasivam <mani@kernel.org>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Claudiu Beznea <claudiu.beznea@microchip.com>,
+ Max Filippov <jcmvbkbc@gmail.com>,
+ Charles Keepax <ckeepax@opensource.cirrus.com>,
+ Richard Fitzgerald <rf@opensource.cirrus.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ David Lechner <david@lechnology.com>, Sekhar Nori <nsekhar@ti.com>,
+ Abel Vesa <abelvesa@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Peter De Schrijver <pdeschrijver@nvidia.com>,
+ Prashant Gaikwad <pgaikwad@nvidia.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Ulf Hansson
+ <ulf.hansson@linaro.org>, Linus Walleij <linus.walleij@linaro.org>,
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
+ Alessandro Zummo <a.zummo@towertech.it>, Chen-Yu Tsai <wens@csie.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>, Liam Girdwood <lgirdwood@gmail.com>,
+ Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
+ Takashi Iwai <tiwai@suse.com>, Paul Cercueil <paul@crapouillou.net>,
+ Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
+ <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
+ linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-arm-kernel@lists.infradead.org, linux-actions@lists.infradead.org,
+ patches@opensource.cirrus.com, linux-stm32@st-md-mailman.stormreply.com,
+ linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
+ linux-tegra@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-phy@lists.infradead.org, linux-rtc@vger.kernel.org,
+ linux-sunxi@lists.linux.dev, alsa-devel@alsa-project.org,
+ linux-mips@vger.kernel.org
+References: <20221018-clk-range-checks-fixes-v3-0-9a1358472d52@cerno.tech>
+ <20221018-clk-range-checks-fixes-v3-29-9a1358472d52@cerno.tech>
+ <679921ee-98d4-d6ef-5934-e009fd4b31fc@kernel.org>
+ <sjlp5ubnpvulgwhhymmfkmmobkgxacyqwagqozodkee3di2qik@3igj6k3zgbk6>
+From: Dinh Nguyen <dinguyen@kernel.org>
+In-Reply-To: <sjlp5ubnpvulgwhhymmfkmmobkgxacyqwagqozodkee3di2qik@3igj6k3zgbk6>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230427_103534_364501_0AFE7996 
-X-CRM114-Status: GOOD (  14.28  )
+X-CRM114-CacheID: sfid-20230427_120956_707835_9E04FC37 
+X-CRM114-Status: GOOD (  26.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,32 +118,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Maxime,
 
-On Thu, 27 Apr 2023 11:56:55 +0800, Fei Shao wrote:
-> We observed that on Chromebook device Steelix, if Goodix GT7375P
-> touchscreen is powered in suspend (because, for example, it connects to
-> an always-on regulator) and with the reset GPIO asserted, it will
-> introduce about 14mW power leakage.
+On 4/25/23 09:48, Maxime Ripard wrote:
+> Hi Dinh,
 > 
-> To address that, we add this property to skip reset during suspend.
-> If it's set, the driver will stop asserting the reset GPIO during
-> power-down. Refer to the comments in the driver for details.
+> On Mon, Apr 24, 2023 at 01:32:28PM -0500, Dinh Nguyen wrote:
+>> On 4/4/23 05:11, Maxime Ripard wrote:
+>>> The SoCFGPA gate clock implements a mux with a set_parent hook, but
+>>> doesn't provide a determine_rate implementation.
+>>>
+>>> This is a bit odd, since set_parent() is there to, as its name implies,
+>>> change the parent of a clock. However, the most likely candidate to
+>>> trigger that parent change is a call to clk_set_rate(), with
+>>> determine_rate() figuring out which parent is the best suited for a
+>>> given rate.
+>>>
+>>> The other trigger would be a call to clk_set_parent(), but it's far less
+>>> used, and it doesn't look like there's any obvious user for that clock.
+>>>
+>>> So, the set_parent hook is effectively unused, possibly because of an
+>>> oversight. However, it could also be an explicit decision by the
+>>> original author to avoid any reparenting but through an explicit call to
+>>> clk_set_parent().
+>>>
+>>> The latter case would be equivalent to setting the flag
+>>> CLK_SET_RATE_NO_REPARENT, together with setting our determine_rate hook
+>>> to __clk_mux_determine_rate(). Indeed, if no determine_rate
+>>> implementation is provided, clk_round_rate() (through
+>>> clk_core_round_rate_nolock()) will call itself on the parent if
+>>> CLK_SET_RATE_PARENT is set, and will not change the clock rate
+>>> otherwise. __clk_mux_determine_rate() has the exact same behavior when
+>>> CLK_SET_RATE_NO_REPARENT is set.
+>>>
+>>> And if it was an oversight, then we are at least explicit about our
+>>> behavior now and it can be further refined down the line.
+>>>
+>>> Signed-off-by: Maxime Ripard <maxime@cerno.tech>
+>>> ---
+>>>    drivers/clk/socfpga/clk-gate.c | 3 ++-
+>>>    1 file changed, 2 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/drivers/clk/socfpga/clk-gate.c b/drivers/clk/socfpga/clk-gate.c
+>>> index 32ccda960f28..cbba8462a09e 100644
+>>> --- a/drivers/clk/socfpga/clk-gate.c
+>>> +++ b/drivers/clk/socfpga/clk-gate.c
+>>> @@ -110,6 +110,7 @@ static unsigned long socfpga_clk_recalc_rate(struct clk_hw *hwclk,
+>>>    static struct clk_ops gateclk_ops = {
+>>>    	.recalc_rate = socfpga_clk_recalc_rate,
+>>> +	.determine_rate = __clk_mux_determine_rate,
+>>>    	.get_parent = socfpga_clk_get_parent,
+>>>    	.set_parent = socfpga_clk_set_parent,
+>>>    };
+>>> @@ -166,7 +167,7 @@ void __init socfpga_gate_init(struct device_node *node)
+>>>    	init.name = clk_name;
+>>>    	init.ops = ops;
+>>> -	init.flags = 0;
+>>> +	init.flags = CLK_SET_RATE_NO_REPARENT;
+>>>    	init.num_parents = of_clk_parent_fill(node, parent_name, SOCFPGA_MAX_PARENTS);
+>>>    	if (init.num_parents < 2) {
+>>>
+>>
+>> This patch broke SoCFPGA boot serial port. The characters are mangled.
 > 
-> Signed-off-by: Fei Shao <fshao@chromium.org>
-> Reviewed-by: Douglas Anderson <dianders@chromium.org>
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-> Reviewed-by: Jeff LaBundy <jeff@labundy.com>
-> ---
-> 
-> (no changes since v2)
-> 
-> Changes in v2:
-> - Use a more accurate property name and with "goodix," prefix.
-> 
->  .../devicetree/bindings/input/goodix,gt7375p.yaml        | 9 +++++++++
->  1 file changed, 9 insertions(+)
+> Do you have any other access to that board? If so, could you dump
+> clk_summary in debugfs with and without that patch?
 > 
 
-Acked-by: Rob Herring <robh@kernel.org>
-
+That dump from the clk_summary are identical for both cases.
 
