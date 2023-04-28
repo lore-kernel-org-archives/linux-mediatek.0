@@ -4,70 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D04F7C77B61
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Apr 2023 21:25:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A55B0C77B61
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Apr 2023 22:13:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=8QTO1WD8W7HV/SL8ZRpB5UQg+fY0vtSUDxlHLxfK2dU=; b=EsyFF+jOePVUU7KHPGZPO1UMWo
-	8C1hYO4yUQuULWNr1x0h2FwdrzX0modjXXWrdTv2L4SBwr5XuJKl3WHtyafmxcXt1UPY8863+EPjN
-	ZrsJ2/hak8DJ1B4qXtK9/qBhEVl3c5H3XPL4IiNN6SbvGRZCPb2sF8Ra9WuYLaQzJ2fDuinI5iMOr
-	ThUA+3eQXwrYNd0ic1QBu7pUjcgnAS9heKxhiBUUIcNDR3jRRwb+ZdsTtM++F0HaPlpn8fYuILWeR
-	wez0pdUNTwY+YyX92V4G32sa98kYqYqZULPYdogFTNZ90pFAXtdEOUtLtkyCcK/A77N5MjgVyJxrD
-	rxAZ6D6g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jjnow/hERcqLs+9l02N0sD30pAQRGDmf+yQ9hUa/7ec=; b=hv/JPB0fM1J2s3bR3fkXeLgiB1
+	FOu4jGoqx8wnLjF1HYJPwHRvMFP0M8jV/lXdZahXOM1UmyrTLrvnWTDyCrYyHggIflelt0bmmjpXZ
+	gx/QBGYf+OVwg4ww0j8L3uTViGpgi4xF7gXYu++GXceJZeuYOuHLZt8yI1Li66XdHeiUXNXEz1xnK
+	54OsMWGsRB6lmINCjQlf4hSZr3XK9CQoyHPDUf8MWnYvflM4eDY2SHWzAoXVFN8xNVxsxWwkb7GPu
+	Q28hlwrsAmy5/IKqBJEH8Y0FXaB5z+nbLj1FN2llFiSfWWaisQWLyZBInR218oYb+NY1PaO9eqbAB
+	H8easQZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1psVaS-00BnEZ-17;
-	Fri, 28 Apr 2023 21:25:04 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1psWKl-00Bqxr-0d;
+	Fri, 28 Apr 2023 22:12:55 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1psVaP-00BnCX-2m
-	for linux-mediatek@lists.infradead.org;
-	Fri, 28 Apr 2023 21:25:03 +0000
-X-UUID: 1e2accc8e60b11ed912e1518a6540028-20230428
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=8QTO1WD8W7HV/SL8ZRpB5UQg+fY0vtSUDxlHLxfK2dU=;
-	b=KhbKXlmuh2xpeoxTHGfABwEBtK7HJwGtRF3mAi0Z0qDq5TAwTyLNTdMGad445FUc8MUwG/8NSeYGdfekf3g4Fllk9D91ettcOb3fi4viNicwOcG6G12MzQz9WRRp1QPDUVrox2tdDN9KXnaa6AlBBhDHDhiqf1CIqFV0DLh89Ps=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:c733629c-6e08-424a-8464-6e99911a4e90,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:120426c,CLOUDID:ba87416a-2f20-4998-991c-3b78627e4938,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-UUID: 1e2accc8e60b11ed912e1518a6540028-20230428
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <ryder.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 881163559; Fri, 28 Apr 2023 14:24:54 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Sat, 29 Apr 2023 05:04:51 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Sat, 29 Apr 2023 05:04:51 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
-	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
-	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>,
-	Peter Chiu <chui-hao.chiu@mediatek.com>
-Subject: [PATCH v4] wifi: mt76: mt7915: report tx retries/failed counts for non-WED path
-Date: Sat, 29 Apr 2023 05:04:49 +0800
-Message-ID: <285a241e695a10d108435a7b624c90f3c66f379b.1682715662.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1psWKg-00Bqwt-0V;
+	Fri, 28 Apr 2023 22:12:52 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 5272B60F72;
+	Fri, 28 Apr 2023 22:12:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8E1BCC433EF;
+	Fri, 28 Apr 2023 22:12:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1682719968;
+	bh=oNgvn++SjCGaoghcsNnZ3RoY6kUPb4GZMImWoU2Gr20=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=kVjMdfCnMdh7YZR252KnbUdlxLjalWQpuU37hYb+hD4wJSOagdlKoX2G+Vs5wgNzl
+	 T8uZQxUDb4cmU8hpAlUaFnuagcQVjnlY4NMfNEvP6xf1h56mHOeWDf9FrjyQvz0r9e
+	 78Z3XjJqkJeTFtguqNzo3eGzBwoHBasyTiHP36HIEqjlLxXpdK9RNpeRehxdFgpkEc
+	 b9M2cyGxcJarEDUS8I4Yvbi1cWD42Kgp84rli7zu8P7D9RHIJ6+Fh9VeG72FebrTMP
+	 3NUVagGRLGWEopQMZ4kGBfv2D2NN6Ysbf4iR9ts+lfmOn7m+NEBUVxu1djKOpsvmDu
+	 oCLJrljF+KDXA==
+Received: from disco-boy.misterjones.org ([217.182.43.188] helo=www.loen.fr)
+	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.95)
+	(envelope-from <maz@kernel.org>)
+	id 1psWKc-00BwtV-2u;
+	Fri, 28 Apr 2023 23:12:46 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Date: Fri, 28 Apr 2023 23:12:45 +0100
+From: Marc Zyngier <maz@kernel.org>
+To: Yi-De Wu <yi-de.wu@mediatek.com>
+Cc: Yingshiuan Pan <yingshiuan.pan@mediatek.com>, Ze-Yu Wang
+ <ze-yu.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof
+ Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Jonathan Corbet
+ <corbet@lwn.net>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon
+ <will@kernel.org>, Arnd Bergmann <arnd@arndb.de>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-arch@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, David Bradil <dbrazdil@google.com>,
+ Trilok Soni <quic_tsoni@quicinc.com>, Jade Shih <jades.shih@mediatek.com>,
+ Miles Chen <miles.chen@mediatek.com>, Ivan Tseng <ivan.tseng@mediatek.com>,
+ My Chuang <my.chuang@mediatek.com>, Shawn Hsiao <shawn.hsiao@mediatek.com>,
+ PeiLun Suei <peilun.suei@mediatek.com>, Liju Chen
+ <liju-clr.chen@mediatek.com>
+Subject: Re: [PATCH v2 3/7] virt: geniezone: Introduce GenieZone hypervisor
+ support
+In-Reply-To: <20230428103622.18291-4-yi-de.wu@mediatek.com>
+References: <20230428103622.18291-1-yi-de.wu@mediatek.com>
+ <20230428103622.18291-4-yi-de.wu@mediatek.com>
+User-Agent: Roundcube Webmail/1.4.13
+Message-ID: <904abf67ec4ba7d37fc1e500e8a2dbd1@kernel.org>
+X-Sender: maz@kernel.org
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+Content-Transfer-Encoding: 7bit
+X-SA-Exim-Connect-IP: 217.182.43.188
+X-SA-Exim-Rcpt-To: yi-de.wu@mediatek.com, yingshiuan.pan@mediatek.com, ze-yu.wang@mediatek.com, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, corbet@lwn.net, catalin.marinas@arm.com, will@kernel.org, arnd@arndb.de, matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-arch@vger.kernel.org, linux-mediatek@lists.infradead.org, dbrazdil@google.com, quic_tsoni@quicinc.com, jades.shih@mediatek.com, miles.chen@mediatek.com, ivan.tseng@mediatek.com, my.chuang@mediatek.com, shawn.hsiao@mediatek.com, peilun.suei@mediatek.com, liju-clr.chen@mediatek.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230428_142502_045517_B587BC13 
-X-CRM114-Status: GOOD (  16.14  )
+X-CRM114-CacheID: sfid-20230428_151250_293606_6CE33031 
+X-CRM114-Status: GOOD (  31.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,163 +100,459 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Get missing tx retries/failed counts from txfree done events and report
-them via mt7915_sta_statistics().
+On 2023-04-28 11:36, Yi-De Wu wrote:
+> From: "Yingshiuan Pan" <yingshiuan.pan@mediatek.com>
+> 
+> GenieZone is MediaTek hypervisor solution, and it is running in EL2
+> stand alone as a type-I hypervisor. This patch exports a set of ioctl
+> interfaces for userspace VMM (e.g., crosvm) to operate guest VMs
+> lifecycle (creation and destroy) on GenieZone.
+> 
+> Signed-off-by: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
+> Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
+> ---
+>  MAINTAINERS                             |   6 +
+>  arch/arm64/Kbuild                       |   1 +
+>  arch/arm64/geniezone/Makefile           |   9 +
+>  arch/arm64/geniezone/gzvm_arch.c        | 189 +++++++++++++
+>  arch/arm64/geniezone/gzvm_arch.h        |  50 ++++
+>  arch/arm64/include/uapi/asm/gzvm_arch.h |  18 ++
+>  drivers/virt/Kconfig                    |   2 +
+>  drivers/virt/geniezone/Kconfig          |  17 ++
+>  drivers/virt/geniezone/Makefile         |  10 +
+>  drivers/virt/geniezone/gzvm_main.c      | 146 ++++++++++
+>  drivers/virt/geniezone/gzvm_vm.c        | 336 ++++++++++++++++++++++++
+>  include/linux/gzvm_drv.h                |  98 +++++++
+>  include/uapi/asm-generic/gzvm_arch.h    |  10 +
+>  include/uapi/linux/gzvm.h               |  99 +++++++
+>  14 files changed, 991 insertions(+)
+>  create mode 100644 arch/arm64/geniezone/Makefile
+>  create mode 100644 arch/arm64/geniezone/gzvm_arch.c
+>  create mode 100644 arch/arm64/geniezone/gzvm_arch.h
+>  create mode 100644 arch/arm64/include/uapi/asm/gzvm_arch.h
+>  create mode 100644 drivers/virt/geniezone/Kconfig
+>  create mode 100644 drivers/virt/geniezone/Makefile
+>  create mode 100644 drivers/virt/geniezone/gzvm_main.c
+>  create mode 100644 drivers/virt/geniezone/gzvm_vm.c
+>  create mode 100644 include/linux/gzvm_drv.h
+>  create mode 100644 include/uapi/asm-generic/gzvm_arch.h
+>  create mode 100644 include/uapi/linux/gzvm.h
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 1e911d1d9741..09a8ccf77b01 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -8700,6 +8700,12 @@ M:	Ze-Yu Wang <ze-yu.wang@mediatek.com>
+>  M:	Yi-De Wu <yi-de.wu@mediatek.com>
+>  
+> F:	Documentation/devicetree/bindings/hypervisor/mediatek,geniezone-hyp.yaml
+>  F:	Documentation/virt/geniezone/
+> +F:	arch/arm64/geniezone/
+> +F:	arch/arm64/include/uapi/asm/gzvm_arch.h
+> +F:	drivers/virt/geniezone/
+> +F:	include/linux/gzvm_drv.h
+> +F	include/uapi/asm-generic/gzvm_arch.h
+> +F:	include/uapi/linux/gzvm.h
+> 
+>  GENWQE (IBM Generic Workqueue Card)
+>  M:	Frank Haverkamp <haver@linux.ibm.com>
+> diff --git a/arch/arm64/Kbuild b/arch/arm64/Kbuild
+> index 5bfbf7d79c99..0c3cca572919 100644
+> --- a/arch/arm64/Kbuild
+> +++ b/arch/arm64/Kbuild
+> @@ -4,6 +4,7 @@ obj-$(CONFIG_KVM)	+= kvm/
+>  obj-$(CONFIG_XEN)	+= xen/
+>  obj-$(subst m,y,$(CONFIG_HYPERV))	+= hyperv/
+>  obj-$(CONFIG_CRYPTO)	+= crypto/
+> +obj-$(CONFIG_MTK_GZVM)	+= geniezone/
+> 
+>  # for cleaning
+>  subdir- += boot
+> diff --git a/arch/arm64/geniezone/Makefile 
+> b/arch/arm64/geniezone/Makefile
+> new file mode 100644
+> index 000000000000..5720c076d73c
+> --- /dev/null
+> +++ b/arch/arm64/geniezone/Makefile
+> @@ -0,0 +1,9 @@
+> +# SPDX-License-Identifier: GPL-2.0-only
+> +#
+> +# Main Makefile for gzvm, this one includes 
+> drivers/virt/geniezone/Makefile
+> +#
+> +include $(srctree)/drivers/virt/geniezone/Makefile
+> +
+> +gzvm-y += gzvm_arch.o
+> +
+> +obj-$(CONFIG_MTK_GZVM) += gzvm.o
+> diff --git a/arch/arm64/geniezone/gzvm_arch.c 
+> b/arch/arm64/geniezone/gzvm_arch.c
+> new file mode 100644
+> index 000000000000..2fc76f7d440f
+> --- /dev/null
+> +++ b/arch/arm64/geniezone/gzvm_arch.c
+> @@ -0,0 +1,189 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (c) 2023 MediaTek Inc.
+> + */
+> +
+> +#include <linux/arm-smccc.h>
+> +#include <linux/err.h>
+> +#include <linux/uaccess.h>
+> +
+> +#include <linux/gzvm.h>
+> +#include <linux/gzvm_drv.h>
+> +#include "gzvm_arch.h"
+> +
+> +/**
+> + * geniezone_hypercall_wrapper()
+> + *
+> + * Return: The wrapper helps caller to convert geniezone errno to 
+> Linux errno.
+> + */
+> +static int gzvm_hypcall_wrapper(unsigned long a0, unsigned long a1,
+> +				unsigned long a2, unsigned long a3,
+> +				unsigned long a4, unsigned long a5,
+> +				unsigned long a6, unsigned long a7,
+> +				struct arm_smccc_res *res)
+> +{
+> +	arm_smccc_hvc(a0, a1, a2, a3, a4, a5, a6, a7, res);
+> +	return gz_err_to_errno(res->a0);
+> +}
+> +
+> +int gzvm_arch_probe(void)
+> +{
+> +	struct arm_smccc_res res;
+> +
+> +	arm_smccc_hvc(MT_HVC_GZVM_PROBE, 0, 0, 0, 0, 0, 0, 0, &res);
+> +	if (res.a0 == 0)
+> +		return 0;
+> +
+> +	return -ENXIO;
+> +}
+> +
+> +int gzvm_arch_set_memregion(gzvm_id_t vm_id, size_t buf_size,
+> +			    phys_addr_t region)
+> +{
+> +	struct arm_smccc_res res;
+> +
+> +	return gzvm_hypcall_wrapper(MT_HVC_GZVM_SET_MEMREGION, vm_id,
+> +				    buf_size, region, 0, 0, 0, 0, &res);
+> +}
+> +
+> +static int gzvm_cap_arm_vm_ipa_size(void __user *argp)
+> +{
+> +	__u64 value = CONFIG_ARM64_PA_BITS;
+> +
+> +	if (copy_to_user(argp, &value, sizeof(__u64)))
+> +		return -EFAULT;
+> +
+> +	return 0;
+> +}
+> +
+> +int gzvm_arch_check_extension(struct gzvm *gzvm, __u64 cap, void 
+> __user *argp)
+> +{
+> +	int ret = -EOPNOTSUPP;
+> +
+> +	switch (cap) {
+> +	case GZVM_CAP_ARM_PROTECTED_VM: {
+> +		__u64 success = 1;
+> +
+> +		if (copy_to_user(argp, &success, sizeof(__u64)))
+> +			return -EFAULT;
+> +		ret = 0;
+> +		break;
+> +	}
+> +	case GZVM_CAP_ARM_VM_IPA_SIZE: {
+> +		ret = gzvm_cap_arm_vm_ipa_size(argp);
+> +		break;
+> +	}
+> +	default:
+> +		ret = -EOPNOTSUPP;
+> +	}
+> +
+> +	return ret;
+> +}
+> +
+> +/**
+> + * gzvm_arch_create_vm()
+> + *
+> + * Return:
+> + * * positive value	- VM ID
+> + * * -ENOMEM		- Memory not enough for storing VM data
+> + */
+> +int gzvm_arch_create_vm(void)
+> +{
+> +	struct arm_smccc_res res;
+> +	int ret;
+> +
+> +	ret = gzvm_hypcall_wrapper(MT_HVC_GZVM_CREATE_VM, 0, 0, 0, 0, 0, 0, 
+> 0,
+> +				   &res);
+> +
+> +	if (ret == 0)
+> +		return res.a1;
+> +	else
+> +		return ret;
+> +}
+> +
+> +int gzvm_arch_destroy_vm(gzvm_id_t vm_id)
+> +{
+> +	struct arm_smccc_res res;
+> +
+> +	return gzvm_hypcall_wrapper(MT_HVC_GZVM_DESTROY_VM, vm_id, 0, 0, 0, 
+> 0,
+> +				    0, 0, &res);
+> +}
+> +
+> +int gzvm_vm_arch_enable_cap(struct gzvm *gzvm, struct gzvm_enable_cap 
+> *cap,
+> +			    struct arm_smccc_res *res)
+> +{
+> +	return gzvm_hypcall_wrapper(MT_HVC_GZVM_ENABLE_CAP, gzvm->vm_id,
+> +				   cap->cap, cap->args[0], cap->args[1],
+> +				   cap->args[2], cap->args[3], cap->args[4],
+> +				   res);
+> +}
+> +
+> +/**
+> + * gzvm_vm_ioctl_get_pvmfw_size() - Get pvmfw size from hypervisor, 
+> return
+> + *				    in x1, and return to userspace in args.
+> + *
+> + * Return:
+> + * * 0			- Succeed
+> + * * -EINVAL		- Hypervisor return invalid results
+> + * * -EFAULT		- Fail to copy back to userspace buffer
+> + */
+> +static int gzvm_vm_ioctl_get_pvmfw_size(struct gzvm *gzvm,
+> +					struct gzvm_enable_cap *cap,
+> +					void __user *argp)
+> +{
+> +	struct arm_smccc_res res = {0};
+> +
+> +	if (gzvm_vm_arch_enable_cap(gzvm, cap, &res) != 0)
+> +		return -EINVAL;
+> +
+> +	cap->args[1] = res.a1;
+> +	if (copy_to_user(argp, cap, sizeof(*cap)))
+> +		return -EFAULT;
+> +
+> +	return 0;
+> +}
+> +
+> +/**
+> + * gzvm_vm_ioctl_cap_pvm() - Proceed GZVM_CAP_ARM_PROTECTED_VM's 
+> subcommands
+> + *
+> + * Return:
+> + * * 0			- Succeed
+> + * * -EINVAL		- Invalid subcommand or arguments
+> + */
+> +static int gzvm_vm_ioctl_cap_pvm(struct gzvm *gzvm, struct
+> gzvm_enable_cap *cap,
+> +				 void __user *argp)
+> +{
+> +	int ret = -EINVAL;
+> +	struct arm_smccc_res res = {0};
+> +
+> +	switch (cap->args[0]) {
+> +	case GZVM_CAP_ARM_PVM_SET_PVMFW_IPA:
+> +		ret = gzvm_vm_arch_enable_cap(gzvm, cap, &res);
+> +		break;
+> +	case GZVM_CAP_ARM_PVM_GET_PVMFW_SIZE:
+> +		ret = gzvm_vm_ioctl_get_pvmfw_size(gzvm, cap, argp);
+> +		break;
+> +	default:
+> +		ret = -EINVAL;
+> +		break;
+> +	}
+> +
+> +	return ret;
+> +}
+> +
+> +int gzvm_vm_ioctl_arch_enable_cap(struct gzvm *gzvm, struct
+> gzvm_enable_cap *cap,
+> +				  void __user *argp)
+> +{
+> +	int ret = -EINVAL;
+> +
+> +	switch (cap->cap) {
+> +	case GZVM_CAP_ARM_PROTECTED_VM:
+> +		ret = gzvm_vm_ioctl_cap_pvm(gzvm, cap, argp);
+> +		break;
+> +	default:
+> +		ret = -EINVAL;
+> +		break;
+> +	}
+> +
+> +	return ret;
+> +}
+> diff --git a/arch/arm64/geniezone/gzvm_arch.h 
+> b/arch/arm64/geniezone/gzvm_arch.h
+> new file mode 100644
+> index 000000000000..dd0b7b5f7c65
+> --- /dev/null
+> +++ b/arch/arm64/geniezone/gzvm_arch.h
+> @@ -0,0 +1,50 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/*
+> + * Copyright (c) 2023 MediaTek Inc.
+> + */
+> +
+> +#ifndef __GZ_ARCH_H__
+> +#define __GZ_ARCH_H__
+> +
+> +#include <linux/arm-smccc.h>
+> +
+> +enum {
+> +	GZVM_FUNC_CREATE_VM = 0,
+> +	GZVM_FUNC_DESTROY_VM,
+> +	GZVM_FUNC_CREATE_VCPU,
+> +	GZVM_FUNC_DESTROY_VCPU,
+> +	GZVM_FUNC_SET_MEMREGION,
+> +	GZVM_FUNC_RUN,
+> +	GZVM_FUNC_GET_REGS,
+> +	GZVM_FUNC_SET_REGS,
+> +	GZVM_FUNC_GET_ONE_REG,
+> +	GZVM_FUNC_SET_ONE_REG,
+> +	GZVM_FUNC_IRQ_LINE,
+> +	GZVM_FUNC_CREATE_DEVICE,
+> +	GZVM_FUNC_PROBE,
+> +	GZVM_FUNC_ENABLE_CAP,
+> +	NR_GZVM_FUNC
+> +};
+> +
+> +#define SMC_ENTITY_MTK			59
+> +#define GZVM_FUNCID_START		(0x1000)
+> +#define GZVM_HCALL_ID(func)						\
+> +	ARM_SMCCC_CALL_VAL(ARM_SMCCC_FAST_CALL, ARM_SMCCC_SMC_32,	\
+> +			   SMC_ENTITY_MTK, (GZVM_FUNCID_START + (func)))
+> +
+> +#define MT_HVC_GZVM_CREATE_VM		GZVM_HCALL_ID(GZVM_FUNC_CREATE_VM)
+> +#define MT_HVC_GZVM_DESTROY_VM		GZVM_HCALL_ID(GZVM_FUNC_DESTROY_VM)
+> +#define MT_HVC_GZVM_CREATE_VCPU		GZVM_HCALL_ID(GZVM_FUNC_CREATE_VCPU)
+> +#define MT_HVC_GZVM_DESTROY_VCPU	GZVM_HCALL_ID(GZVM_FUNC_DESTROY_VCPU)
+> +#define 
+> MT_HVC_GZVM_SET_MEMREGION	GZVM_HCALL_ID(GZVM_FUNC_SET_MEMREGION)
+> +#define MT_HVC_GZVM_RUN			GZVM_HCALL_ID(GZVM_FUNC_RUN)
+> +#define MT_HVC_GZVM_GET_REGS		GZVM_HCALL_ID(GZVM_FUNC_GET_REGS)
+> +#define MT_HVC_GZVM_SET_REGS		GZVM_HCALL_ID(GZVM_FUNC_SET_REGS)
+> +#define MT_HVC_GZVM_GET_ONE_REG		GZVM_HCALL_ID(GZVM_FUNC_GET_ONE_REG)
+> +#define MT_HVC_GZVM_SET_ONE_REG		GZVM_HCALL_ID(GZVM_FUNC_SET_ONE_REG)
+> +#define MT_HVC_GZVM_IRQ_LINE		GZVM_HCALL_ID(GZVM_FUNC_IRQ_LINE)
+> +#define 
+> MT_HVC_GZVM_CREATE_DEVICE	GZVM_HCALL_ID(GZVM_FUNC_CREATE_DEVICE)
+> +#define MT_HVC_GZVM_PROBE		GZVM_HCALL_ID(GZVM_FUNC_PROBE)
+> +#define MT_HVC_GZVM_ENABLE_CAP		GZVM_HCALL_ID(GZVM_FUNC_ENABLE_CAP)
+> +
+> +#endif /* __GZVM_ARCH_H__ */
+> diff --git a/arch/arm64/include/uapi/asm/gzvm_arch.h
+> b/arch/arm64/include/uapi/asm/gzvm_arch.h
+> new file mode 100644
+> index 000000000000..e7927f3dcb11
+> --- /dev/null
+> +++ b/arch/arm64/include/uapi/asm/gzvm_arch.h
+> @@ -0,0 +1,18 @@
+> +/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+> +/*
+> + * Copyright (c) 2023 MediaTek Inc.
+> + */
+> +
+> +#ifndef __GZVM_ARCH_H__
+> +#define __GZVM_ARCH_H__
+> +
+> +#include <linux/types.h>
+> +
+> +#define GZVM_CAP_ARM_VM_IPA_SIZE	165
+> +#define GZVM_CAP_ARM_PROTECTED_VM	0xffbadab1
+> +
+> +/* sub-commands put in args[0] for GZVM_CAP_ARM_PROTECTED_VM */
+> +#define GZVM_CAP_ARM_PVM_SET_PVMFW_IPA		0
+> +#define GZVM_CAP_ARM_PVM_GET_PVMFW_SIZE		1
+> +
+> +#endif /* __GZVM_ARCH_H__ */
+> diff --git a/drivers/virt/Kconfig b/drivers/virt/Kconfig
+> index f79ab13a5c28..9bbf0bdf672c 100644
+> --- a/drivers/virt/Kconfig
+> +++ b/drivers/virt/Kconfig
+> @@ -54,4 +54,6 @@ source "drivers/virt/coco/sev-guest/Kconfig"
+> 
+>  source "drivers/virt/coco/tdx-guest/Kconfig"
+> 
+> +source "drivers/virt/geniezone/Kconfig"
+> +
+>  endif
+> diff --git a/drivers/virt/geniezone/Kconfig 
+> b/drivers/virt/geniezone/Kconfig
+> new file mode 100644
+> index 000000000000..6fad3c30f8d9
+> --- /dev/null
+> +++ b/drivers/virt/geniezone/Kconfig
+> @@ -0,0 +1,17 @@
+> +# SPDX-License-Identifier: GPL-2.0-only
+> +
+> +config MTK_GZVM
+> +	tristate "GenieZone Hypervisor driver for guest VM operation"
+> +	depends on ARM64
+> +	depends on KVM
 
-Co-developed-by: Peter Chiu <chui-hao.chiu@mediatek.com>
-Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
-v4 - switch from Tx latency report to enable Tx count in txfree path for non-v3 format
-v3 - add a missing check for mt7921
-v2 - add a missing check for non-v3 format
----
- .../wireless/mediatek/mt76/mt76_connac_mac.c  |  4 +++-
- .../net/wireless/mediatek/mt76/mt7915/init.c  |  2 ++
- .../net/wireless/mediatek/mt76/mt7915/mac.c   | 22 +++++++++++++++++--
- .../net/wireless/mediatek/mt76/mt7915/mac.h   |  7 +++++-
- .../net/wireless/mediatek/mt76/mt7915/main.c  | 12 +++++-----
- .../net/wireless/mediatek/mt76/mt7915/regs.h  |  3 +++
- 6 files changed, 40 insertions(+), 10 deletions(-)
+NAK.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-index d39a3cc5e381..1fd36f9375ba 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-@@ -738,7 +738,9 @@ bool mt76_connac2_mac_add_txs_skb(struct mt76_dev *dev, struct mt76_wcid *wcid,
- 		info->status.ampdu_ack_len = !noacked;
- 		info->status.rates[0].idx = -1;
- 
--		wcid->stats.tx_failed += noacked;
-+		/* avoid double counting if dev supports txfree event */
-+		if (is_mt7921(dev))
-+			wcid->stats.tx_failed += noacked;
- 
- 		mt76_connac2_mac_fill_txs(dev, wcid, txs_data);
- 		mt76_tx_status_skb_done(dev, skb, &list);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-index ac2049f49bb3..8d6e09605dc4 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-@@ -581,6 +581,8 @@ void mt7915_mac_init(struct mt7915_dev *dev)
- 
- 	if (!is_mt7915(&dev->mt76))
- 		mt76_clear(dev, MT_MDP_DCR2, MT_MDP_DCR2_RX_TRANS_SHORT);
-+	else
-+		mt76_clear(dev, MT_PLE_HOST_RPT0, MT_PLE_HOST_RPT0_TX_LATENCY);
- 
- 	/* enable hardware de-agg */
- 	mt76_set(dev, MT_MDP_DCR0, MT_MDP_DCR0_DAMSDU_EN);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-index 7df8d95fc3fb..9b2ccd99854e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-@@ -951,6 +951,7 @@ mt7915_mac_tx_free(struct mt7915_dev *dev, void *data, int len)
- 	struct mt76_dev *mdev = &dev->mt76;
- 	struct mt76_txwi_cache *txwi;
- 	struct ieee80211_sta *sta = NULL;
-+	struct mt76_wcid *wcid = NULL;
- 	LIST_HEAD(free_list);
- 	void *end = data + len;
- 	bool v3, wake = false;
-@@ -977,7 +978,6 @@ mt7915_mac_tx_free(struct mt7915_dev *dev, void *data, int len)
- 		info = le32_to_cpu(*cur_info);
- 		if (info & MT_TX_FREE_PAIR) {
- 			struct mt7915_sta *msta;
--			struct mt76_wcid *wcid;
- 			u16 idx;
- 
- 			idx = FIELD_GET(MT_TX_FREE_WLAN_ID, info);
-@@ -994,7 +994,25 @@ mt7915_mac_tx_free(struct mt7915_dev *dev, void *data, int len)
- 			continue;
- 		}
- 
--		if (v3 && (info & MT_TX_FREE_MPDU_HEADER))
-+		if (!mtk_wed_device_active(&mdev->mmio.wed) && wcid) {
-+			u32 tx_retries = 0, tx_failed = 0;
-+
-+			if (v3 && (info & MT_TX_FREE_MPDU_HEADER_V3)) {
-+				tx_retries =
-+					FIELD_GET(MT_TX_FREE_COUNT_V3, info) - 1;
-+				tx_failed = tx_retries +
-+					!!FIELD_GET(MT_TX_FREE_STAT_V3, info);
-+			} else if (!v3 && (info & MT_TX_FREE_MPDU_HEADER)) {
-+				tx_retries =
-+					FIELD_GET(MT_TX_FREE_COUNT, info) - 1;
-+				tx_failed = tx_retries +
-+					!!FIELD_GET(MT_TX_FREE_STAT, info);
-+			}
-+			wcid->stats.tx_retries += tx_retries;
-+			wcid->stats.tx_failed += tx_failed;
-+		}
-+
-+		if (v3 && (info & MT_TX_FREE_MPDU_HEADER_V3))
- 			continue;
- 
- 		for (i = 0; i < 1 + v3; i++) {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.h b/drivers/net/wireless/mediatek/mt76/mt7915/mac.h
-index ce94f87e2042..448b1b380190 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.h
-@@ -9,7 +9,12 @@
- #define MT_TX_FREE_VER			GENMASK(18, 16)
- #define MT_TX_FREE_MSDU_CNT_V0		GENMASK(6, 0)
- /* 0: success, others: dropped */
--#define MT_TX_FREE_MPDU_HEADER		BIT(30)
-+#define MT_TX_FREE_COUNT		GENMASK(12, 0)
-+#define MT_TX_FREE_COUNT_V3		GENMASK(27, 24)
-+#define MT_TX_FREE_STAT			GENMASK(14, 13)
-+#define MT_TX_FREE_STAT_V3		GENMASK(29, 28)
-+#define MT_TX_FREE_MPDU_HEADER		BIT(15)
-+#define MT_TX_FREE_MPDU_HEADER_V3	BIT(30)
- #define MT_TX_FREE_MSDU_ID_V3		GENMASK(14, 0)
- 
- #define MT_TXS5_F0_FINAL_MPDU		BIT(31)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-index 2ada2806de66..61157248d742 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-@@ -1046,12 +1046,6 @@ static void mt7915_sta_statistics(struct ieee80211_hw *hw,
- 		sinfo->tx_packets = msta->wcid.stats.tx_packets;
- 		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_PACKETS);
- 
--		sinfo->tx_failed = msta->wcid.stats.tx_failed;
--		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_FAILED);
--
--		sinfo->tx_retries = msta->wcid.stats.tx_retries;
--		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_RETRIES);
--
- 		if (mtk_wed_get_rx_capa(&phy->dev->mt76.mmio.wed)) {
- 			sinfo->rx_bytes = msta->wcid.stats.rx_bytes;
- 			sinfo->filled |= BIT_ULL(NL80211_STA_INFO_RX_BYTES64);
-@@ -1061,6 +1055,12 @@ static void mt7915_sta_statistics(struct ieee80211_hw *hw,
- 		}
- 	}
- 
-+	sinfo->tx_failed = msta->wcid.stats.tx_failed;
-+	sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_FAILED);
-+
-+	sinfo->tx_retries = msta->wcid.stats.tx_retries;
-+	sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_RETRIES);
-+
- 	sinfo->ack_signal = (s8)msta->ack_signal;
- 	sinfo->filled |= BIT_ULL(NL80211_STA_INFO_ACK_SIGNAL);
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-index c8e478a55081..71fa9576ad0e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-@@ -145,6 +145,9 @@ enum offs_rev {
- #define MT_PLE_BASE			0x820c0000
- #define MT_PLE(ofs)			(MT_PLE_BASE + (ofs))
- 
-+#define MT_PLE_HOST_RPT0		MT_PLE(0x030)
-+#define MT_PLE_HOST_RPT0_TX_LATENCY	BIT(3)
-+
- #define MT_FL_Q_EMPTY			MT_PLE(__OFFS(PLE_FL_Q_EMPTY))
- #define MT_FL_Q0_CTRL			MT_PLE(__OFFS(PLE_FL_Q_CTRL))
- #define MT_FL_Q2_CTRL			MT_PLE(__OFFS(PLE_FL_Q_CTRL) + 0x8)
+Either this is KVM, and this code serves no purpose, or it is a 
+standalone
+hypervisor, and it *cannot* have a dependency on KVM.
+
+[...]
+
+> +/**
+> + * gzvm_gfn_to_pfn_memslot() - Translate gfn (guest ipa) to pfn (host 
+> pa),
+> + *			       result is in @pfn
+> + *
+> + * Leverage KVM's gfn_to_pfn_memslot(). Because gfn_to_pfn_memslot() 
+> needs
+> + * kvm_memory_slot as parameter, this function populates necessary 
+> fileds
+> + * for calling gfn_to_pfn_memslot().
+> + *
+> + * Return:
+> + * * 0			- Succeed
+> + * * -EFAULT		- Failed to convert
+> + */
+> +static int gzvm_gfn_to_pfn_memslot(struct gzvm_memslot *memslot, u64
+> gfn, u64 *pfn)
+> +{
+> +	hfn_t __pfn;
+> +	struct kvm_memory_slot kvm_slot = {0};
+> +
+> +	kvm_slot.base_gfn = memslot->base_gfn;
+> +	kvm_slot.npages = memslot->npages;
+> +	kvm_slot.dirty_bitmap = NULL;
+> +	kvm_slot.userspace_addr = memslot->userspace_addr;
+> +	kvm_slot.flags = memslot->flags;
+> +	kvm_slot.id = memslot->slot_id;
+> +	kvm_slot.as_id = 0;
+> +
+> +	__pfn = gfn_to_pfn_memslot(&kvm_slot, gfn);
+
+Again, I absolutely oppose this horror. This is internal to KVM,
+and we want to be able to change this without having to mess
+with your own code that we cannot test anyway.
+
+What if we start using the extra fields that you don't populate
+as they mean nothing to you? Or add a backpointer to the kvm
+structure to do fancy accounting?
+
+You have your own hypervisor, that's well and good. Since your
+main argument is that it is supposed to be standalone, make it
+*really* standalone and don't use KVM as a prop.
+
+Thanks,
+
+         M.
 -- 
-2.18.0
-
+Jazz is not dead. It just smells funny...
 
