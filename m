@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65A58C77B61
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Apr 2023 19:54:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B22E6C77B60
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Apr 2023 19:54:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Nto3QpLIxq7f02fM9QgxTTYEGhXSmdxIDvVc6NTHq/k=; b=t3MXvB6M847UH32uBwwgGMCdWh
-	54q0dpwZUWbZEwajD7V8ONOdh/Uz4LtSdQ266XNxijb5eFlgc7M4HdK8IOkvPdW59zSpEbJacjDxP
-	H4baCJbGCeqrEucfTIdz+8T9D50IJxgPRNQrDuBVohDfOMU+OBz7Xu+PWM/ol/0e2kaNhqVWarQxe
-	Qmyxv2psdIdNqsTc5/5NZaPVHmZUO0ZDNHixC6cICWU8T64A+w91pFUGsNPnokLdS3O0iZgyha70i
-	yfNJt8PMa/+YMkwWd0SPlFuXdeg6miYDTBsArNsA4Fg3Ds9c2WDaDsoX6BJnRTaFbvuLR+ZKDR6AX
-	WKe8rgXA==;
+	bh=bEkhhkaYLCppVBjylgDTKdDafZ7PTt5JklFPUhPnK6c=; b=MxW3VpufAWHie0+6vOEOUjkY0Z
+	M2ZpYuT041G9q5nutsa3A4Bdn+lAouBBJgBUXCMEo81hmLQzwTD6oLzztfeCa+aoGxdo8JKXH8gaA
+	euLjgHD1uAmXTMeL7ZFudaK+hcoNb5GbwNH6dnU62xYtWuuGXABxj1y1GjJi6DsMlxfS8ikLcYTqZ
+	ulZRv+arQ6Q6JwwS8Kk1sNoUO221kjo/1624sPc2PBY+Pwq7kM+vojzULXa/N7CDLeNNFU/UuT0sx
+	6P16HO85C+KbOoRdTioG33eezBPYiXShCT9J8sEctthAsJT7z8vcrCmTotr5dZDk8JWjszbx7ncnd
+	0Udx6wZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1psUAa-00BfQE-2A;
-	Fri, 28 Apr 2023 19:54:16 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1psUAj-00BfUW-1N;
+	Fri, 28 Apr 2023 19:54:25 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1psUAS-00BfKv-0U;
-	Fri, 28 Apr 2023 19:54:09 +0000
+	id 1psUAU-00BfMD-1d;
+	Fri, 28 Apr 2023 19:54:11 +0000
 Received: from notapiano.myfiosgateway.com (unknown [194.36.25.39])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B582B66032D2;
-	Fri, 28 Apr 2023 20:54:02 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3748066032CF;
+	Fri, 28 Apr 2023 20:54:06 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1682711645;
-	bh=d0b9MdV/5wAa6Hp3wihVNXWvZyuFwK31hjmQOR8KfI8=;
+	s=mail; t=1682711649;
+	bh=qCAjiE5j9EjfpbQvxb5vblMTGK9ocfii2bzneXSlr5U=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=UGaTJ76/5PyATVE9t5Pypv2rlMWHH/HDkdM8stiOLUAHuyQeMqw70L5z+LQzOfF+R
-	 yC46NIjxjEb6ahLjlEkQqdfBuW/OmF+pamiqCpTGv9qNmdlD8ePD39031sIaOkwSJP
-	 svAsMOx+Efr9bTpyaf0OqpccU1pdtuI/y3E4u9mUm3dX5op+4VIpa5ayKIDg5tjhhL
-	 1HfzGzmUuxCIK3Iceqgl00vbmeZqV3fM2Zj5nDjueqjCIn1rfwGirSwAmPyMa2+TuF
-	 CYMqT+NY69mey/DDMhGkOitr0wuQWagdHdvHUEeGMP9GXdHM5matF3AYlOpihvOqPl
-	 kJBaEzp3iSFOA==
+	b=BCdTxO1YUgbH2MXRuUFjFat6l8VH4JlcIQNNP7JvLgUsLMqXuwf5riMEs2ft1YUzz
+	 J9XiS/YcfFVAqGdeT7ZA4WL7Q3QnWuSPyuTPlh5vqs9a6kPWXHYJctllEpavb9ugb2
+	 7egpM9O0ucEl0Zc87wWz5OUdvrcHzuYW1yWfRs0Z0kAGPwxqLTbkPQRXxZ8KSKTEYq
+	 l0T9jfzXlTz7CAwoLHxKlMHe12aD+cZl0VFt5cIVA7ZMzgPq7i8YibUzBdt7zLhNue
+	 c7NqizvXgwhZpt5pRPCjiJkhm7+ymTZpWka7YPEnvUh9VscGpJYp3m0KBJEyveXvnO
+	 mtnDE2mMC2d6Q==
 From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
 To: Daniel Lezcano <daniel.lezcano@linaro.org>
 Cc: Alexandre Bailon <abailon@baylibre.com>,
@@ -60,9 +60,9 @@ Cc: Alexandre Bailon <abailon@baylibre.com>,
 	linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	linux-pm@vger.kernel.org
-Subject: [PATCH 2/3] thermal/drivers/mediatek/lvts_thermal: Honor sensors in immediate mode
-Date: Fri, 28 Apr 2023 15:53:46 -0400
-Message-Id: <20230428195347.3832687-3-nfraprado@collabora.com>
+Subject: [PATCH 3/3] thermal/drivers/mediatek/lvts_thermal: Disable undesired interrupts
+Date: Fri, 28 Apr 2023 15:53:47 -0400
+Message-Id: <20230428195347.3832687-4-nfraprado@collabora.com>
 X-Mailer: git-send-email 2.40.0
 In-Reply-To: <20230428195347.3832687-1-nfraprado@collabora.com>
 References: <20230428195347.3832687-1-nfraprado@collabora.com>
@@ -70,8 +70,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230428_125408_450637_0F459736 
-X-CRM114-Status: GOOD (  16.57  )
+X-CRM114-CacheID: sfid-20230428_125410_681994_427DEB0F 
+X-CRM114-Status: GOOD (  12.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,107 +86,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Each controller can be configured to operate on immediate or filtered
-mode. On filtered mode, the sensors are enabled by setting the
-corresponding bits in MONCTL0, while on immediate mode, by setting
-MSRCTL1.
+Out of the many interrupts supported by the hardware, the only ones of
+interest to the driver currently are:
+* The temperature went over the hot threshold, for any of the sensors
+* The temperature went over the hot to normal threshold, for any of the
+  sensors
+* The temperature went over the stage3 threshold
 
-Previously, the code would set MSRCTL1 for all four sensors when
-configured to immediate mode, but given that the controller might not
-have all four sensors connected, this would cause interrupts to trigger
-for non-existent sensors. Fix this by handling the MSRCTL1 register
-analogously to the MONCTL0: only enable the sensors that were declared.
+These are the only thresholds configured by the driver through the
+HTHRE, H2NTHRE, and PROTTC registers, respectively.
+
+The current interrupt mask in LVTS_MONINT_CONF, enables many more
+interrupts, including offset detection and data ready on sensors for
+both filtered and immediate mode. These are not only not handled by the
+driver, but they are also triggered too often, causing unneeded
+overhead. Disable these unnecessary interrupts.
+
+The meaning of each bit can be seen in the comment describing
+LVTS_MONINTST in the IRQ handler.
 
 Fixes: f5f633b18234 ("thermal/drivers/mediatek: Add the Low Voltage Thermal Sensor driver")
 Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 ---
 
- drivers/thermal/mediatek/lvts_thermal.c | 50 +++++++++++++------------
- 1 file changed, 26 insertions(+), 24 deletions(-)
+ drivers/thermal/mediatek/lvts_thermal.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-index 56b24c5b645f..29d10eaa8dfc 100644
+index 29d10eaa8dfc..300ce22a7471 100644
 --- a/drivers/thermal/mediatek/lvts_thermal.c
 +++ b/drivers/thermal/mediatek/lvts_thermal.c
-@@ -894,24 +894,6 @@ static int lvts_ctrl_configure(struct device *dev, struct lvts_ctrl *lvts_ctrl)
- 			LVTS_HW_FILTER << 3 | LVTS_HW_FILTER;
- 	writel(value, LVTS_MSRCTL0(lvts_ctrl->base));
+@@ -63,7 +63,7 @@
+ #define LVTS_HW_FILTER				0x2
+ #define LVTS_TSSEL_CONF				0x13121110
+ #define LVTS_CALSCALE_CONF			0x300
+-#define LVTS_MONINT_CONF			0x9FBF7BDE
++#define LVTS_MONINT_CONF			0x84804A52
  
--	/*
--	 * LVTS_MSRCTL1 : Measurement control
--	 *
--	 * Bits:
--	 *
--	 * 9: Ignore MSRCTL0 config and do immediate measurement on sensor3
--	 * 6: Ignore MSRCTL0 config and do immediate measurement on sensor2
--	 * 5: Ignore MSRCTL0 config and do immediate measurement on sensor1
--	 * 4: Ignore MSRCTL0 config and do immediate measurement on sensor0
--	 *
--	 * That configuration will ignore the filtering and the delays
--	 * introduced below in MONCTL1 and MONCTL2
--	 */
--	if (lvts_ctrl->mode == LVTS_MSR_IMMEDIATE_MODE) {
--		value = BIT(9) | BIT(6) | BIT(5) | BIT(4);
--		writel(value, LVTS_MSRCTL1(lvts_ctrl->base));
--	}
--
- 	/*
- 	 * LVTS_MONCTL1 : Period unit and group interval configuration
- 	 *
-@@ -976,6 +958,8 @@ static int lvts_ctrl_start(struct device *dev, struct lvts_ctrl *lvts_ctrl)
- 	struct lvts_sensor *lvts_sensors = lvts_ctrl->sensors;
- 	struct thermal_zone_device *tz;
- 	u32 sensor_map = 0;
-+	u32 sensor_map_bits[][4] = {{BIT(4), BIT(5), BIT(6), BIT(9)},
-+				    {BIT(0), BIT(1), BIT(2), BIT(3)}};
- 	int i;
- 
- 	for (i = 0; i < lvts_ctrl->num_lvts_sensor; i++) {
-@@ -1012,20 +996,38 @@ static int lvts_ctrl_start(struct device *dev, struct lvts_ctrl *lvts_ctrl)
- 		 * map, so we can enable the temperature monitoring in
- 		 * the hardware thermal controller.
- 		 */
--		sensor_map |= BIT(i);
-+		sensor_map |= sensor_map_bits[lvts_ctrl->mode][i];
- 	}
- 
- 	/*
--	 * Bits:
--	 *      9: Single point access flow
--	 *    0-3: Enable sensing point 0-3
--	 *
- 	 * The initialization of the thermal zones give us
- 	 * which sensor point to enable. If any thermal zone
- 	 * was not described in the device tree, it won't be
- 	 * enabled here in the sensor map.
- 	 */
--	writel(sensor_map | BIT(9), LVTS_MONCTL0(lvts_ctrl->base));
-+	if (lvts_ctrl->mode == LVTS_MSR_IMMEDIATE_MODE) {
-+		/*
-+		 * LVTS_MSRCTL1 : Measurement control
-+		 *
-+		 * Bits:
-+		 *
-+		 * 9: Ignore MSRCTL0 config and do immediate measurement on sensor3
-+		 * 6: Ignore MSRCTL0 config and do immediate measurement on sensor2
-+		 * 5: Ignore MSRCTL0 config and do immediate measurement on sensor1
-+		 * 4: Ignore MSRCTL0 config and do immediate measurement on sensor0
-+		 *
-+		 * That configuration will ignore the filtering and the delays
-+		 * introduced in MONCTL1 and MONCTL2
-+		 */
-+		writel(sensor_map, LVTS_MSRCTL1(lvts_ctrl->base));
-+	} else {
-+		/*
-+		 * Bits:
-+		 *      9: Single point access flow
-+		 *    0-3: Enable sensing point 0-3
-+		 */
-+		writel(sensor_map | BIT(9), LVTS_MONCTL0(lvts_ctrl->base));
-+	}
- 
- 	return 0;
- }
+ #define LVTS_INT_SENSOR0			0x0009001F
+ #define LVTS_INT_SENSOR1			0x001203E0
 -- 
 2.40.0
 
