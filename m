@@ -4,79 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2C90C77B7E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Apr 2023 20:01:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D98CCC77B61
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Apr 2023 20:08:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=71Hj1US0pSM/IwfSeQssNoD3szbJK4N2OqLUHAmgjD4=; b=QgSLOa4/C2Ejk4+D0rDEeLAkWK
-	hncZi0CZbhXm9eQVKG1Hh5DLVACaP+04zqeCUIuWWquU62pB4SBQkm4CMVUdebTjlp6eDPInOZ2sN
-	gCQFDEt6Br+I7BnJ5Wm7YLfLsTnxb1ae0BbVKyXegujWl/08TclUiBglbe9L+NpRszyMCpNylIeNM
-	whs88zZHHSUPxANxKIwwb0uzcCfxMK6NAKOWCiXjvXWf6u+dwwEyTknoC3DXuYHwoyD00N8MgS+YZ
-	JYpMYOIUCl/Zx9CvrBOqGUe0QKaH+MH066NPpfyB85q/rLjXGxslk0LRaXFqeTfXA6bDKV1TYeOLu
-	hiyXrnrw==;
+	bh=kYn5o6MTCl+kR8xQeqOfDTAl9QCVyoyCsDwxcpnn9Yg=; b=4MPD8fFHNTzaVm+1QH83Y7dxOE
+	KBDGY+j8xGEJfbjBbBimmMFnGOl4ZtoIiKZ28HMxGP1vyMtT7wLq/2o9iq3FEvbDNrhdqRCAZjYF4
+	vs12b+QUKmwP+quRsuc8zYHpjpHBPUQcoDMyr3ibasF1ydhUhGMRMGvrmjxlqIPQKqIZ75I17UhAJ
+	iONncJau/2FCpjgHY2LUBMocmxrRYzXXi+Os+sdklpHHTevZXS39bzzqUZtJIe9aPg1aFq5m9B51o
+	p/SVEc0v7xCbNMBc0vr97PZTBHL3dkwzCQNfRo6uqOaGuA35bqhyZRgRg99HFcVdI/nWDO2Hj25sL
+	9bOjgCAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1psUH7-00Bgfp-11;
-	Fri, 28 Apr 2023 20:01:01 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1psUNo-00BhP7-1T;
+	Fri, 28 Apr 2023 20:07:56 +0000
+Received: from mga04.intel.com ([192.55.52.120])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1psUH2-00Bge0-1L;
-	Fri, 28 Apr 2023 20:00:58 +0000
-Received: from notapiano (unknown [194.36.25.39])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id ACF8F66032CF;
-	Fri, 28 Apr 2023 21:00:50 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1682712054;
-	bh=6i1JUq29VFHhcwxsShC8PZn9X8kOz1TV4HuL2Wb9A2A=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=X0iioVLUW03JDY5ecGWdF3jrGqspgJ31dBgi6MIyuHKvh809IXfDbjNkLqzXlt3Pg
-	 b4C6QSUOlxbf7vbKPiddSQft0WbwieHVXxlOwskGjfWnoFGAJs/cw1E3FTqiD8DRto
-	 c5tA469u0nmiDbw8vESjqzPYHRJa6i1onhQh2x6J9pZkMfZe7se0j7Hmj5NyjtUvFT
-	 2LQF6TSTvW9n/hagf71iviV+PR9UIn1g7SUM4BeZftDCbQifMSZL9tWMcniVTlV9AQ
-	 XCc8s3k0kyHEFU0Sj4hwpTdcLBjgv+6aRAjdMnA67NWqg154TXkeLLerjmTXJjqimM
-	 h8Huc8mnGBJRA==
-Date: Fri, 28 Apr 2023 16:00:45 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Balsam CHIHI <bchihi@baylibre.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, daniel.lezcano@linaro.org,
-	angelogioacchino.delregno@collabora.com, rafael@kernel.org,
-	amitk@kernel.org, rui.zhang@intel.com, matthias.bgg@gmail.com,
-	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	rdunlap@infradead.org, ye.xingchen@zte.com.cn,
-	p.zabel@pengutronix.de, linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	khilman@baylibre.com, james.lo@mediatek.com,
-	rex-bc.chen@mediatek.com, Alexandre Bailon <abailon@baylibre.com>,
-	Alexandre Mergnat <amergnat@baylibre.com>
-Subject: Re: [PATCH 0/4] Add LVTS support for mt8192
-Message-ID: <5a437b3c-e134-40df-830a-7ea0f21849fc@notapiano>
-References: <CAGXv+5E0wUJYUVD3wx3-=uES612ARQmUE0rxgAruFHxpZCBjzA@mail.gmail.com>
- <CAGuA+ooi7Kx05gagLzXAN3upDiSqDUNOM_djYdGftw6ogVx5gw@mail.gmail.com>
- <CAGuA+oqDPPYFJef_8=YrOpHQNVJ3xgm_zXS6fq_HG2Jy_6t-Zg@mail.gmail.com>
- <CAGXv+5EZPWohGN5CaEiqVrM4MyAar3cPEUhHtGY_9wTJSJNVFQ@mail.gmail.com>
- <CAGuA+oqF4jFMyEo09VDmCf-_7g0ua3XDKDAJ+t3Gat14pDM9NA@mail.gmail.com>
- <fab67eef-4dc9-420d-b127-aedc6f54cad0@notapiano>
- <CAGXv+5E0rzByZBn91d60MQ7P0=GbAQUH=PK9EYDu3Upr33td6A@mail.gmail.com>
- <CAGuA+oo0w8n9zEKdd1UfYx+F08wK4CcUGqRbBi4C-xNYp+vtDA@mail.gmail.com>
- <28e50e45-53cf-4a34-a81c-10f1faab2d4e@notapiano>
- <CAGuA+oprz06WS0reC1Edqr1fMn-TjSrCgoO_M54JYQ4x8UnTOg@mail.gmail.com>
+	id 1psUNj-00BhNm-1h;
+	Fri, 28 Apr 2023 20:07:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1682712471; x=1714248471;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=PRZUzl2+jUQ5/3Y8Iv0j6iOFtZtJybzPsYUqZNHp0vc=;
+  b=MSBIiQPkbfQPaJzyGnqRjxkZm/3ZKv1ZD2RpL/VydHJleUCtNICM2U69
+   Shk5AgRZEUn6tZFdmtqxIc0hAwU97L+rR8lCCoLM2ZtA0Pihay9Tr4Cdt
+   qrDE960pN47a0GXgjgUDaf4FqbvLj1fea29nIcatCeUF4l58WE4XvjcC0
+   pe1ATTByqB64toH38aqjOoCwm8PTPdQYi/0ogi/3nf8icaW9m8JRfI5YA
+   coj+RRY4TKreUJcsbVB2Z/KbosBfx2a6/zyUek8UQwQKHAUu8dsSTEvcr
+   XYyJayM0N02zY60E5Prz0LN+DmmJB5Eoaok5A01t+iXXoyytvRSQh+7U7
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10694"; a="346616665"
+X-IronPort-AV: E=Sophos;i="5.99,235,1677571200"; 
+   d="scan'208";a="346616665"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Apr 2023 13:07:49 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10694"; a="838971503"
+X-IronPort-AV: E=Sophos;i="5.99,235,1677571200"; 
+   d="scan'208";a="838971503"
+Received: from lkp-server01.sh.intel.com (HELO 5bad9d2b7fcb) ([10.239.97.150])
+  by fmsmga001.fm.intel.com with ESMTP; 28 Apr 2023 13:07:43 -0700
+Received: from kbuild by 5bad9d2b7fcb with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1psUNa-0000er-12;
+	Fri, 28 Apr 2023 20:07:42 +0000
+Date: Sat, 29 Apr 2023 04:07:12 +0800
+From: kernel test robot <lkp@intel.com>
+To: Yi-De Wu <yi-de.wu@mediatek.com>,
+	Yingshiuan Pan <yingshiuan.pan@mediatek.com>,
+	Ze-Yu Wang <ze-yu.wang@mediatek.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Jonathan Corbet <corbet@lwn.net>,
+	Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: oe-kbuild-all@lists.linux.dev, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-arch@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	David Bradil <dbrazdil@google.com>,
+	Trilok Soni <quic_tsoni@quicinc.com>,
+	Jade Shih <jades.shih@mediatek.com>,
+	Miles Chen <miles.chen@mediatek.com>,
+	Ivan Tseng <ivan.tseng@mediatek.com>,
+	My Chuang <my.chuang@mediatek.com>,
+	Shawn Hsiao <shawn.hsiao@mediatek.com>,
+	PeiLun Suei <peilun.suei@mediatek.com>,
+	Liju Chen <liju-clr.chen@mediatek.com>
+Subject: Re: [PATCH v2 3/7] virt: geniezone: Introduce GenieZone hypervisor
+ support
+Message-ID: <202304290334.fCw7PKYU-lkp@intel.com>
+References: <20230428103622.18291-4-yi-de.wu@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAGuA+oprz06WS0reC1Edqr1fMn-TjSrCgoO_M54JYQ4x8UnTOg@mail.gmail.com>
+In-Reply-To: <20230428103622.18291-4-yi-de.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230428_130056_709246_7C8D5E7E 
-X-CRM114-Status: GOOD (  55.93  )
+X-CRM114-CacheID: sfid-20230428_130751_581425_13758976 
+X-CRM114-Status: GOOD (  16.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,140 +104,174 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 27, 2023 at 04:08:13PM +0200, Balsam CHIHI wrote:
-> On Thu, Apr 27, 2023 at 1:20 AM Nícolas F. R. A. Prado
-> <nfraprado@collabora.com> wrote:
-> >
-> > On Tue, Apr 25, 2023 at 01:28:39PM +0200, Balsam CHIHI wrote:
-> > > On Tue, Apr 25, 2023 at 12:00 PM Chen-Yu Tsai <wenst@chromium.org> wrote:
-> > > >
-> > > > On Tue, Apr 25, 2023 at 6:21 AM Nícolas F. R. A. Prado
-> > > > <nfraprado@collabora.com> wrote:
-> > > > >
-> > > > > On Tue, Mar 28, 2023 at 02:20:24AM +0200, Balsam CHIHI wrote:
-> > > > > > On Sat, Mar 25, 2023 at 5:33 AM Chen-Yu Tsai <wenst@chromium.org> wrote:
-> > > > > > >
-> > > > > > > On Wed, Mar 22, 2023 at 8:48 PM Balsam CHIHI <bchihi@baylibre.com> wrote:
-> > [..]
-> > > > > >
-> > > > > > Hi Chen-Yu Tsai,
-> > > > > >
-> > > > > > Thank you very much for helping me testing this suggestion.
-> > > > > >
-> > > > > > Indeed, calibration data is stored differently in the mt8192 compared to mt8195.
-> > > > > > So, the mt8192's support will be delayed for now, to allow further debugging.
-> > > > > >
-> > > > > > In the mean time, we will only continue to upstream the remaining
-> > > > > > mt8195's source code, so it will get full LVTS support.
-> > > > > > A new series will be submitted soon.
-> > > > >
-> > > > > Hi Balsam,
-> > > > >
-> > > > > like Chen-Yu mentioned, the calibration data is stored with 4 byte alignment for
-> > > > > MT8192, but the data that is split between non-contiguous bytes is for the
-> > > > > thermal controllers (called Resistor-Capacitor Calibration downstream) not the
-> > > > > sensors. The controller calibration isn't currently handled in this driver (and
-> > > > > downstream it also isn't used, since a current value is read from the controller
-> > > > > instead), so we can just ignore those.
-> > > > >
-> > > > > The patch below adjusts the addresseses for the sensors and gives me reasonable
-> > > > > reads, so the machine no longer reboots. Can you integrate it into your series?
-> > > >
-> > > > Not sure what I got wrong, but on my machine the VPU0 and VPU1 zone interrupts
-> > > > are still tripping excessively. The readings seem normal though. Specifically,
-> > > > it's bits 16 and 17 that are tripping.
-> > > >
-> > >
-> > > Hi Chen-Yu,
-> > >
-> > > Thank you for testing!
-> > >
-> > > As the readings are normal that proves that calibration data offsets
-> > > are correct.
-> > > would you like that I send the v2 of series to add mt8192 support?
-> > > Then we could deal with the interrupts later in a separate fix,
-> > > because the interrupt code in common for both SoC (mt8192 and mt8195)?
-> > >
-> > > Does Nícolas also have tripping interrupts?
-> > > On my side, I've got no interrupts tripping on mt8195.
-> > >
-> > > Any other suggestions (a question for everyone)?
-> >
-> > Hi,
-> >
-> > sorry for the delay.
-> >
-> > Indeed the interrupts are constantly tripping on mt8192 here as well.
-> >
-> > I do not see the same bits as Chen-Yu mentioned however, I see
-> >
-> > LVTS_MONINTSTS = 0x08070000
-> >
-> > which corresponds to
-> >
-> >         Hot threshold on sense point 3
-> >         high to normal offset on sense point 2
-> >         high offset on sense point 2
-> >         low offset on sense point 2
-> >
-> > and it's the same on all controllers and domains here, which is weird. I noticed
-> > we have offset interrupts enabled even though we don't configure the values for
-> > those, but even after disabling them and clearing the status register, the
-> > interrupts keep triggering and the status is the same, so for some reason
-> > LVTS_MONINT doesn't seem to be honored.
-> >
-> > I also tried using the filtered mode instead of immediate for the sensors, and
-> > that together with disabling the extra interrupts, got me a zeroed
-> > LVTS_MONINTSTS. However no interrupts seem to be triggered at all (nor
-> > LVTS_MONINTSTS updated) when the temperature goes over the configured one in
-> > LVTS_HTHRE.
-> >
-> > I tried the driver on mt8195 (Tomato chromebook) as well, and it has the same
-> > LVTS_MONINTSTS = 0x08070000
-> > even though the interrupts aren't being triggered, but in fact I don't see them
-> > triggering over the threshold either, so I suspect the irq number might be
-> > incorrectly described in the DT there.
-> >
-> > Do either of you have it working correctly on mt8195?
-> >
-> > Anyway, I'll keep digging and reply here when I find a solution.
-> 
-> Hi Nícolas,
-> 
-> Thank your for your time testing and investigating the interrupt issues!
-> 
-> I only have an mt8195 based board (i1200-demo), and I could not
-> trigger any interrupt on it.
-> I whish that MediaTek could reply to this thread to give us more
-> information (I avoid disclosing MediaTek's internal information).
-> And now, it's clear that mt8192 interrupts does work at least (but not
-> properly, may be we could fix it at driver level).
-> 
-> It's been a couple of days since I sent a v2 of the series that adds
-> LVTS support for mt8192 SoC (+ Suspend and Resume, + Doc update):
-> "https://lore.kernel.org/all/20230425133052.199767-1-bchihi@baylibre.com/".
-> I wish that it will be applied very soon, then we could patch the core driver.
-> 
-> My colleagues "Alexandre Mergnat (amergnat@baylibre.com)" and
-> "Alexandre Bailon (abailon@baylibre.com)" are now part of this
-> project.
-> Please let them know of future information.
-> 
-> Thanks again for suggesting solutions!
+Hi Yi-De,
 
-Hi,
+kernel test robot noticed the following build warnings:
 
-finally managed to fix the issues. I had mis-read the interrupt status bits,
-which made things a whole lot more confusing...
+[auto build test WARNING on arm64/for-next/core]
+[also build test WARNING on robh/for-next arnd-asm-generic/master linus/master v6.3 next-20230428]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-I CC'ed you on the series, but for the archive this is it:
-https://lore.kernel.org/all/20230428195347.3832687-1-nfraprado@collabora.com/
+url:    https://github.com/intel-lab-lkp/linux/commits/Yi-De-Wu/docs-geniezone-Introduce-GenieZone-hypervisor/20230428-183738
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/arm64/linux.git for-next/core
+patch link:    https://lore.kernel.org/r/20230428103622.18291-4-yi-de.wu%40mediatek.com
+patch subject: [PATCH v2 3/7] virt: geniezone: Introduce GenieZone hypervisor support
+config: arm64-allyesconfig (https://download.01.org/0day-ci/archive/20230429/202304290334.fCw7PKYU-lkp@intel.com/config)
+compiler: aarch64-linux-gcc (GCC) 12.1.0
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://github.com/intel-lab-lkp/linux/commit/0e3f05a6e4547eb309032d047115a47d8f59641d
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Yi-De-Wu/docs-geniezone-Introduce-GenieZone-hypervisor/20230428-183738
+        git checkout 0e3f05a6e4547eb309032d047115a47d8f59641d
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=arm64 olddefconfig
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=arm64 SHELL=/bin/bash arch/arm64/geniezone/ drivers/virt/geniezone/
 
-Please review/test it if you have the time.
+If you fix the issue, kindly add following tag where applicable
+| Reported-by: kernel test robot <lkp@intel.com>
+| Link: https://lore.kernel.org/oe-kbuild-all/202304290334.fCw7PKYU-lkp@intel.com/
 
-I have one extra comment regarding the mt8192 support, but I'll write it on the
-v2 of this series.
+All warnings (new ones prefixed by >>):
 
-Thanks,
-Nícolas
+>> arch/arm64/geniezone/gzvm_arch.c:112:5: warning: no previous prototype for 'gzvm_vm_arch_enable_cap' [-Wmissing-prototypes]
+     112 | int gzvm_vm_arch_enable_cap(struct gzvm *gzvm, struct gzvm_enable_cap *cap,
+         |     ^~~~~~~~~~~~~~~~~~~~~~~
+--
+   arch/arm64/geniezone/gzvm_arch.c:24: warning: Function parameter or member 'a0' not described in 'gzvm_hypcall_wrapper'
+   arch/arm64/geniezone/gzvm_arch.c:24: warning: Function parameter or member 'a1' not described in 'gzvm_hypcall_wrapper'
+   arch/arm64/geniezone/gzvm_arch.c:24: warning: Function parameter or member 'a2' not described in 'gzvm_hypcall_wrapper'
+   arch/arm64/geniezone/gzvm_arch.c:24: warning: Function parameter or member 'a3' not described in 'gzvm_hypcall_wrapper'
+   arch/arm64/geniezone/gzvm_arch.c:24: warning: Function parameter or member 'a4' not described in 'gzvm_hypcall_wrapper'
+   arch/arm64/geniezone/gzvm_arch.c:24: warning: Function parameter or member 'a5' not described in 'gzvm_hypcall_wrapper'
+   arch/arm64/geniezone/gzvm_arch.c:24: warning: Function parameter or member 'a6' not described in 'gzvm_hypcall_wrapper'
+   arch/arm64/geniezone/gzvm_arch.c:24: warning: Function parameter or member 'a7' not described in 'gzvm_hypcall_wrapper'
+   arch/arm64/geniezone/gzvm_arch.c:24: warning: Function parameter or member 'res' not described in 'gzvm_hypcall_wrapper'
+>> arch/arm64/geniezone/gzvm_arch.c:24: warning: expecting prototype for geniezone_hypercall_wrapper(). Prototype was for gzvm_hypcall_wrapper() instead
+   arch/arm64/geniezone/gzvm_arch.c:133: warning: Function parameter or member 'gzvm' not described in 'gzvm_vm_ioctl_get_pvmfw_size'
+   arch/arm64/geniezone/gzvm_arch.c:133: warning: Function parameter or member 'cap' not described in 'gzvm_vm_ioctl_get_pvmfw_size'
+   arch/arm64/geniezone/gzvm_arch.c:133: warning: Function parameter or member 'argp' not described in 'gzvm_vm_ioctl_get_pvmfw_size'
+   arch/arm64/geniezone/gzvm_arch.c:155: warning: Function parameter or member 'gzvm' not described in 'gzvm_vm_ioctl_cap_pvm'
+   arch/arm64/geniezone/gzvm_arch.c:155: warning: Function parameter or member 'cap' not described in 'gzvm_vm_ioctl_cap_pvm'
+   arch/arm64/geniezone/gzvm_arch.c:155: warning: Function parameter or member 'argp' not described in 'gzvm_vm_ioctl_cap_pvm'
+
+
+vim +/gzvm_vm_arch_enable_cap +112 arch/arm64/geniezone/gzvm_arch.c
+
+    13	
+    14	/**
+    15	 * geniezone_hypercall_wrapper()
+    16	 *
+    17	 * Return: The wrapper helps caller to convert geniezone errno to Linux errno.
+    18	 */
+    19	static int gzvm_hypcall_wrapper(unsigned long a0, unsigned long a1,
+    20					unsigned long a2, unsigned long a3,
+    21					unsigned long a4, unsigned long a5,
+    22					unsigned long a6, unsigned long a7,
+    23					struct arm_smccc_res *res)
+  > 24	{
+    25		arm_smccc_hvc(a0, a1, a2, a3, a4, a5, a6, a7, res);
+    26		return gz_err_to_errno(res->a0);
+    27	}
+    28	
+    29	int gzvm_arch_probe(void)
+    30	{
+    31		struct arm_smccc_res res;
+    32	
+    33		arm_smccc_hvc(MT_HVC_GZVM_PROBE, 0, 0, 0, 0, 0, 0, 0, &res);
+    34		if (res.a0 == 0)
+    35			return 0;
+    36	
+    37		return -ENXIO;
+    38	}
+    39	
+    40	int gzvm_arch_set_memregion(gzvm_id_t vm_id, size_t buf_size,
+    41				    phys_addr_t region)
+    42	{
+    43		struct arm_smccc_res res;
+    44	
+    45		return gzvm_hypcall_wrapper(MT_HVC_GZVM_SET_MEMREGION, vm_id,
+    46					    buf_size, region, 0, 0, 0, 0, &res);
+    47	}
+    48	
+    49	static int gzvm_cap_arm_vm_ipa_size(void __user *argp)
+    50	{
+    51		__u64 value = CONFIG_ARM64_PA_BITS;
+    52	
+    53		if (copy_to_user(argp, &value, sizeof(__u64)))
+    54			return -EFAULT;
+    55	
+    56		return 0;
+    57	}
+    58	
+    59	int gzvm_arch_check_extension(struct gzvm *gzvm, __u64 cap, void __user *argp)
+    60	{
+    61		int ret = -EOPNOTSUPP;
+    62	
+    63		switch (cap) {
+    64		case GZVM_CAP_ARM_PROTECTED_VM: {
+    65			__u64 success = 1;
+    66	
+    67			if (copy_to_user(argp, &success, sizeof(__u64)))
+    68				return -EFAULT;
+    69			ret = 0;
+    70			break;
+    71		}
+    72		case GZVM_CAP_ARM_VM_IPA_SIZE: {
+    73			ret = gzvm_cap_arm_vm_ipa_size(argp);
+    74			break;
+    75		}
+    76		default:
+    77			ret = -EOPNOTSUPP;
+    78		}
+    79	
+    80		return ret;
+    81	}
+    82	
+    83	/**
+    84	 * gzvm_arch_create_vm()
+    85	 *
+    86	 * Return:
+    87	 * * positive value	- VM ID
+    88	 * * -ENOMEM		- Memory not enough for storing VM data
+    89	 */
+    90	int gzvm_arch_create_vm(void)
+    91	{
+    92		struct arm_smccc_res res;
+    93		int ret;
+    94	
+    95		ret = gzvm_hypcall_wrapper(MT_HVC_GZVM_CREATE_VM, 0, 0, 0, 0, 0, 0, 0,
+    96					   &res);
+    97	
+    98		if (ret == 0)
+    99			return res.a1;
+   100		else
+   101			return ret;
+   102	}
+   103	
+   104	int gzvm_arch_destroy_vm(gzvm_id_t vm_id)
+   105	{
+   106		struct arm_smccc_res res;
+   107	
+   108		return gzvm_hypcall_wrapper(MT_HVC_GZVM_DESTROY_VM, vm_id, 0, 0, 0, 0,
+   109					    0, 0, &res);
+   110	}
+   111	
+ > 112	int gzvm_vm_arch_enable_cap(struct gzvm *gzvm, struct gzvm_enable_cap *cap,
+   113				    struct arm_smccc_res *res)
+   114	{
+   115		return gzvm_hypcall_wrapper(MT_HVC_GZVM_ENABLE_CAP, gzvm->vm_id,
+   116					   cap->cap, cap->args[0], cap->args[1],
+   117					   cap->args[2], cap->args[3], cap->args[4],
+   118					   res);
+   119	}
+   120	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
 
