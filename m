@@ -4,86 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBCC2C77B60
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Apr 2023 11:45:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54968C77B61
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Apr 2023 12:26:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7D0+YocoeJvf1thUGaGSO463SdmHYCVEGmBaguCXaH0=; b=23Uv8q9zxTcUmzuwJHVHfGAmY8
-	TX9/fGX4JuWYJMrmlj45x2szKVc8awbG0PUbtiJJrajF/Xocq07jEhKK9h3UtP9QHeaqMHA/Er5Ky
-	9Jye4xJUi5VZJdffVF2bbdIiuBUC1y7H6oLwsAHCRXCKyFFhxXRfAUJuG8tn9C/tBsd8U6NNlzDab
-	D+2Ra1V9LrgcKC4voiG9csEnaFwAA2Zn2BuEu9PlFfBaAP2KjXGmoDyiw14EB6/IbLkvbISJoP3lb
-	Ew3nQ6bQngQz9NW3XQcAfe/p9K45sAv3DH8KFsQno3+Jbu5kuj+E/DAM8OCC6DsGmTlLlx7ceOmf4
-	RFDNwHLQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FCZD7/skKxELiLiQ/Kgtq9xL2gK3ugZhkE8UlBHv94Q=; b=r8osSTZSVOytKkG1MTwW/fvtD7
+	r3jtxm0SzTz1oyJO5DzC/a2qWSg10KJb6nyIT4NAkl1FExQWO8B3LWM8OzBce4Ml0AQ8PwvTxIWj1
+	QYr7tJIwJChyYmP+aiq70PX0bBy8HMvg54kyXg8rrrYWuip3f6lWrxhN9+5gDTa/nWzfz4iO7vkYi
+	owTe/eV3cuEmAgPreB5MjKEcOBJ3zffjglb+NoPbn/4OYkuPXDROdm7FVw0DFzI9rT9xuJn8mZ23l
+	czPjGiX9AFO9fvGZMcrKDhUj999KJ86/LsPCMFBIydVgZfFIxCMcqNn4UuQ8jzvBrIu3juiETu+4T
+	x7RmBf8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1psMXb-009NCU-2j;
-	Fri, 28 Apr 2023 11:45:31 +0000
-Received: from mga09.intel.com ([134.134.136.24])
+	id 1psNAk-009mWu-0x;
+	Fri, 28 Apr 2023 12:25:58 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1psMXW-009N63-0g;
-	Fri, 28 Apr 2023 11:45:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1682682325; x=1714218325;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=rBbdv+hk3UP8M0WMEzt4+wWIQYS5wnCgtva4F2d/DLY=;
-  b=gbe23I3nmbcQ99dJWXtTYKtBvR+x1qYa4Om146pQ93mCLwCl1JYClzyY
-   L7vCGJA97m3vw6KaGAvOJJnxhZ+DyDt7+Tu25dfwCMJvmGDJz6MAbVUa3
-   MkFjCNvjIpM7NYUCLTXlpFA8aJZuHbISTRF7DVZiIaDJPwK/GDikr5L6l
-   Yo9pk1/yI//MTacbWVYbhwi/Vccby0HTF87o9YfSGLPAxBeKXZzvRqJJe
-   xFrX/DgtPlvCbPKMd7nxvQv92bbcEk9U1nrcMLQsXFFyU5DmGjnwCM41f
-   gImjdeIJKW0BZLxaoL28Y7M/6fKHLBAemJ4mq8MuNhzz8JUy9YRycWQdg
-   A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10693"; a="349750750"
-X-IronPort-AV: E=Sophos;i="5.99,234,1677571200"; 
-   d="scan'208";a="349750750"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
-  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Apr 2023 04:42:37 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10693"; a="645092016"
-X-IronPort-AV: E=Sophos;i="5.99,234,1677571200"; 
-   d="scan'208";a="645092016"
-Received: from lkp-server01.sh.intel.com (HELO 5bad9d2b7fcb) ([10.239.97.150])
-  by orsmga003.jf.intel.com with ESMTP; 28 Apr 2023 04:42:31 -0700
-Received: from kbuild by 5bad9d2b7fcb with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1psMUh-0000Ov-0s;
-	Fri, 28 Apr 2023 11:42:31 +0000
-Date: Fri, 28 Apr 2023 19:41:55 +0800
-From: kernel test robot <lkp@intel.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Hans Verkuil <hverkuil@xs4all.nl>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	"Nicolas F . R . A . Prado" <nfraprado@collabora.com>
-Cc: oe-kbuild-all@lists.linux.dev,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	Hsin-Yi Wang <hsinyi@chromium.org>,
-	Fritz Koenig <frkoenig@chromium.org>,
-	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v2] media: mediatek: vcodec: support stateless hevc
- decoder
-Message-ID: <202304281935.cHbo4d1P-lkp@intel.com>
-References: <20230428082329.28606-1-yunfei.dong@mediatek.com>
+	id 1psNAc-009mMz-1z
+	for linux-mediatek@lists.infradead.org;
+	Fri, 28 Apr 2023 12:25:52 +0000
+Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-3f178da21b5so67722595e9.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 28 Apr 2023 05:25:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1682684748; x=1685276748;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=FCZD7/skKxELiLiQ/Kgtq9xL2gK3ugZhkE8UlBHv94Q=;
+        b=uUgsJRet2rXqZzO39tKpNe1PPCmGNTTEXDP7+XoXX1WhwC7n6SFii4fWBlBlWhWUDh
+         Cnf3M/2voFfRkjanUwYgCBz2zCXELwRizuCZBuFMvKdhaRKabEg5/MXCGrzW+C6B6KJw
+         mX+2F7apsDTDVgcLM6qxspDdmRl8vNGYIGdV09Q4ePTOB33MExIIjbOChffFbCNI8qoT
+         IZdbIkrfFL1rjadYFEWADsvwPALuUxud15Tap5wnQgVssXZJAIpGqFxnqiCbs9SjDET1
+         C7TPKyeBELoVR5mTyMPLZTyX9Clh0qZRpKcsOhjsNYZ73uRCw0qLpuqVYlgdzd7Fkeow
+         60Jg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1682684748; x=1685276748;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=FCZD7/skKxELiLiQ/Kgtq9xL2gK3ugZhkE8UlBHv94Q=;
+        b=GNwWPUEWLrPjOkyOWZPV+iMf8LEwXlPB4QveCty5Pb4uwSDs/fwdwwicNuaNcdGoJM
+         5d/JvWJvHrW/pGEG8xA0B80qc+nR/peV8HYKOmyfL2hOiyqasDwjCi1wcxrxfS7n9csJ
+         QTq1JoZOUvRQ+D+BcvtdeRRU9NRQ/7/lZ3EabLCfw8030GuiylaXKjLjQB7shnU/nvxf
+         gu/bPbco3uy3dLHtZEcdQaUu3HSq91Oz4FKvhDo1ViC14KIqa4wZjTwI7tfTweTDRlZn
+         zTRfkjXo3dYBjusFiLj1xfpX14o3HfdXvJzkdMJKpD6xnitI11Tje1tbrrllpn8fW7qZ
+         MwvA==
+X-Gm-Message-State: AC+VfDytEA3cuqi1TF9RA0Jk//GJYae8dm/GrX36W5wfY+D5qcsLzr1x
+	dz0hybVxnsXK6mmW9/uiWuI87w==
+X-Google-Smtp-Source: ACHHUZ7jrGfG5E3rVbh1rlyewG/33jkn7z+iNaDOwZOeE24lokjSTMXbm+oex+abJk6U0bKResFC0Q==
+X-Received: by 2002:a05:600c:d7:b0:3f1:93c2:4df6 with SMTP id u23-20020a05600c00d700b003f193c24df6mr3758700wmm.12.1682684748414;
+        Fri, 28 Apr 2023 05:25:48 -0700 (PDT)
+Received: from [172.23.2.142] ([195.167.132.10])
+        by smtp.gmail.com with ESMTPSA id i40-20020a05600c4b2800b003ee6aa4e6a9sm27367821wmp.5.2023.04.28.05.25.47
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 28 Apr 2023 05:25:47 -0700 (PDT)
+Message-ID: <00e293fc-e5f7-d451-5547-def284ac2214@linaro.org>
+Date: Fri, 28 Apr 2023 14:25:46 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230428082329.28606-1-yunfei.dong@mediatek.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH v2 0/7] GenieZone hypervisor drivers
+Content-Language: en-US
+To: Yi-De Wu <yi-de.wu@mediatek.com>,
+ Yingshiuan Pan <yingshiuan.pan@mediatek.com>,
+ Ze-Yu Wang <ze-yu.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Jonathan Corbet <corbet@lwn.net>, Catalin Marinas <catalin.marinas@arm.com>,
+ Will Deacon <will@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-arch@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ David Bradil <dbrazdil@google.com>, Trilok Soni <quic_tsoni@quicinc.com>,
+ Jade Shih <jades.shih@mediatek.com>, Miles Chen <miles.chen@mediatek.com>,
+ Ivan Tseng <ivan.tseng@mediatek.com>, My Chuang <my.chuang@mediatek.com>,
+ Shawn Hsiao <shawn.hsiao@mediatek.com>,
+ PeiLun Suei <peilun.suei@mediatek.com>,
+ Liju Chen <liju-clr.chen@mediatek.com>
+References: <20230428103622.18291-1-yi-de.wu@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230428103622.18291-1-yi-de.wu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230428_044526_398386_F7FC8511 
-X-CRM114-Status: GOOD (  15.10  )
+X-CRM114-CacheID: sfid-20230428_052550_656056_8E4495B4 
+X-CRM114-Status: GOOD (  10.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,93 +108,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yunfei,
+On 28/04/2023 12:36, Yi-De Wu wrote:
+> This series is based on linux-next, tag: next-20230427.
+> 
+> Changes in v2:
+> - Refactor: move to drivers/virt/geniezone
+> - Refactor: decouple arch-dependent and arch-independent
+> - Check pending signal before entering guest context
+> - Fix reviewer's comments
+> 
 
-kernel test robot noticed the following build warnings:
+Please explain what is Geniezone, where we can find it, what's the plan
+for open-sourcing it etc.
 
-[auto build test WARNING on media-tree/master]
-[also build test WARNING on linus/master v6.3 next-20230427]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+That's what cover letter is for.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Yunfei-Dong/media-mediatek-vcodec-support-stateless-hevc-decoder/20230428-162427
-base:   git://linuxtv.org/media_tree.git master
-patch link:    https://lore.kernel.org/r/20230428082329.28606-1-yunfei.dong%40mediatek.com
-patch subject: [PATCH v2] media: mediatek: vcodec: support stateless hevc decoder
-config: sparc-allyesconfig (https://download.01.org/0day-ci/archive/20230428/202304281935.cHbo4d1P-lkp@intel.com/config)
-compiler: sparc64-linux-gcc (GCC) 12.1.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/193b8e8eece4506c90eac97b973ef059aaf5c0e1
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Yunfei-Dong/media-mediatek-vcodec-support-stateless-hevc-decoder/20230428-162427
-        git checkout 193b8e8eece4506c90eac97b973ef059aaf5c0e1
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=sparc olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=sparc SHELL=/bin/bash drivers/media/
+Best regards,
+Krzysztof
 
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Link: https://lore.kernel.org/oe-kbuild-all/202304281935.cHbo4d1P-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   drivers/media/platform/mediatek/vcodec/vdec/vdec_hevc_req_multi_if.c: In function 'vdec_hevc_fill_dpb_info':
->> drivers/media/platform/mediatek/vcodec/vdec/vdec_hevc_req_multi_if.c:412:24: warning: ordered comparison of pointer with integer zero [-Wextra]
-     412 |                 if (vb < 0) {
-         |                        ^
-   drivers/media/platform/mediatek/vcodec/vdec/vdec_hevc_req_multi_if.c: In function 'vdec_hevc_copy_decode_params':
-   drivers/media/platform/mediatek/vcodec/vdec/vdec_hevc_req_multi_if.c:587:63: error: 'const struct v4l2_ctrl_hevc_decode_params' has no member named 'num_delta_pocs_of_ref_rps_idx'
-     587 |         dst_params->num_delta_pocs_of_ref_rps_idx = src_params->num_delta_pocs_of_ref_rps_idx;
-         |                                                               ^~
-   drivers/media/platform/mediatek/vcodec/vdec/vdec_hevc_req_multi_if.c: In function 'vdec_hevc_slice_fill_decode_parameters':
-   drivers/media/platform/mediatek/vcodec/vdec/vdec_hevc_req_multi_if.c:630:27: error: 'const struct v4l2_ctrl_hevc_decode_params' has no member named 'num_delta_pocs_of_ref_rps_idx'
-     630 |                 dec_params->num_delta_pocs_of_ref_rps_idx;
-         |                           ^~
-
-
-vim +412 drivers/media/platform/mediatek/vcodec/vdec/vdec_hevc_req_multi_if.c
-
-   395	
-   396	static void vdec_hevc_fill_dpb_info(struct mtk_vcodec_ctx *ctx,
-   397					    struct slice_api_hevc_decode_param *decode_params,
-   398					    struct mtk_hevc_dpb_info *hevc_dpb_info)
-   399	{
-   400		const struct slice_hevc_dpb_entry *dpb;
-   401		struct vb2_queue *vq;
-   402		struct vb2_buffer *vb;
-   403		int index;
-   404	
-   405		vq = v4l2_m2m_get_vq(ctx->m2m_ctx, V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
-   406		for (index = 0; index < V4L2_HEVC_DPB_ENTRIES_NUM_MAX; index++) {
-   407			dpb = &decode_params->dpb[index];
-   408			if (index >= decode_params->num_active_dpb_entries)
-   409				continue;
-   410	
-   411			vb = vb2_find_buffer(vq, dpb->timestamp);
- > 412			if (vb < 0) {
-   413				dev_err(&ctx->dev->plat_dev->dev,
-   414					"Reference invalid: dpb_index(%d) timestamp(%lld)",
-   415					index, dpb->timestamp);
-   416				continue;
-   417			}
-   418	
-   419			hevc_dpb_info[index].field = dpb->field_pic;
-   420	
-   421			hevc_dpb_info[index].y_dma_addr = vb2_dma_contig_plane_dma_addr(vb, 0);
-   422			if (ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes == 2)
-   423				hevc_dpb_info[index].c_dma_addr = vb2_dma_contig_plane_dma_addr(vb, 1);
-   424			else
-   425				hevc_dpb_info[index].c_dma_addr =
-   426					hevc_dpb_info[index].y_dma_addr + ctx->picinfo.fb_sz[0];
-   427		}
-   428	}
-   429	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
 
