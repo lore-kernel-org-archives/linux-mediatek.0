@@ -4,92 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D98CCC77B61
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Apr 2023 20:08:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 193F7C77B60
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Apr 2023 20:09:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kYn5o6MTCl+kR8xQeqOfDTAl9QCVyoyCsDwxcpnn9Yg=; b=4MPD8fFHNTzaVm+1QH83Y7dxOE
-	KBDGY+j8xGEJfbjBbBimmMFnGOl4ZtoIiKZ28HMxGP1vyMtT7wLq/2o9iq3FEvbDNrhdqRCAZjYF4
-	vs12b+QUKmwP+quRsuc8zYHpjpHBPUQcoDMyr3ibasF1ydhUhGMRMGvrmjxlqIPQKqIZ75I17UhAJ
-	iONncJau/2FCpjgHY2LUBMocmxrRYzXXi+Os+sdklpHHTevZXS39bzzqUZtJIe9aPg1aFq5m9B51o
-	p/SVEc0v7xCbNMBc0vr97PZTBHL3dkwzCQNfRo6uqOaGuA35bqhyZRgRg99HFcVdI/nWDO2Hj25sL
-	9bOjgCAw==;
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=ot16bbSWratITeieuZ2M5pTku5YX9XBembicO/4iWAk=; b=RhjG0GLaBroTtN
+	y1iTw+/+x635/6iY3xrIRiFlYnDeHsBKv3rdhfpdpzwr/1F444jcoFkJ/dVssHCoBtlnowxdrWbKi
+	Gobk+eBZm7OrfwkpheZOJj5YCdhAC2eG+h1vzAWNctsJTNnl84+c02Vnz8dzSt0xbggCj43T7CSDJ
+	xR5gl3yr0D0JkyWCq1QfexuQDFFtqgdDMcG9XwAvZk7u7J6onOWM3iR1vndpBWTwHJ7975iqGa4XJ
+	vfbkOlyiRnaCL+mgdeWAKnpOYNEzxiOGhKFLHuFsNcK558ot5eqV3vEsHYc5dc+kEOwdrrKC9vyRr
+	oQbA/DpWfSNiPjYaQVfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1psUNo-00BhP7-1T;
-	Fri, 28 Apr 2023 20:07:56 +0000
-Received: from mga04.intel.com ([192.55.52.120])
+	id 1psUPG-00BhhP-0h;
+	Fri, 28 Apr 2023 20:09:26 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1psUNj-00BhNm-1h;
-	Fri, 28 Apr 2023 20:07:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1682712471; x=1714248471;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=PRZUzl2+jUQ5/3Y8Iv0j6iOFtZtJybzPsYUqZNHp0vc=;
-  b=MSBIiQPkbfQPaJzyGnqRjxkZm/3ZKv1ZD2RpL/VydHJleUCtNICM2U69
-   Shk5AgRZEUn6tZFdmtqxIc0hAwU97L+rR8lCCoLM2ZtA0Pihay9Tr4Cdt
-   qrDE960pN47a0GXgjgUDaf4FqbvLj1fea29nIcatCeUF4l58WE4XvjcC0
-   pe1ATTByqB64toH38aqjOoCwm8PTPdQYi/0ogi/3nf8icaW9m8JRfI5YA
-   coj+RRY4TKreUJcsbVB2Z/KbosBfx2a6/zyUek8UQwQKHAUu8dsSTEvcr
-   XYyJayM0N02zY60E5Prz0LN+DmmJB5Eoaok5A01t+iXXoyytvRSQh+7U7
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10694"; a="346616665"
-X-IronPort-AV: E=Sophos;i="5.99,235,1677571200"; 
-   d="scan'208";a="346616665"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
-  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Apr 2023 13:07:49 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10694"; a="838971503"
-X-IronPort-AV: E=Sophos;i="5.99,235,1677571200"; 
-   d="scan'208";a="838971503"
-Received: from lkp-server01.sh.intel.com (HELO 5bad9d2b7fcb) ([10.239.97.150])
-  by fmsmga001.fm.intel.com with ESMTP; 28 Apr 2023 13:07:43 -0700
-Received: from kbuild by 5bad9d2b7fcb with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1psUNa-0000er-12;
-	Fri, 28 Apr 2023 20:07:42 +0000
-Date: Sat, 29 Apr 2023 04:07:12 +0800
-From: kernel test robot <lkp@intel.com>
-To: Yi-De Wu <yi-de.wu@mediatek.com>,
-	Yingshiuan Pan <yingshiuan.pan@mediatek.com>,
-	Ze-Yu Wang <ze-yu.wang@mediatek.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Jonathan Corbet <corbet@lwn.net>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
+	id 1psUPB-00Bhfx-25;
+	Fri, 28 Apr 2023 20:09:23 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id A922B61291;
+	Fri, 28 Apr 2023 20:09:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CBE2DC433D2;
+	Fri, 28 Apr 2023 20:09:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1682712559;
+	bh=audxmFyFfzKOzyoEf7CTSzuG77aOVueJU+fs+OT6QdM=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=gmwmeh3nYlaOJciNrWIxTRgwUw5/hXOkHvvVy1aYvbFtfN5+EpxW2zz6bXYD2JtY5
+	 r/iFRuaIJFNiHddfPEXA0VigK56abay3652iAhmUYyWDFYQM1abYps8AqZ0G8u9HkQ
+	 JBTf+moZ3ny3l2ZNWzXp0Vff6iDJ+7KMiNOiSiumbHO1Z0tRwax1Icf1eTRVAM0OxE
+	 5ApUk8Vcc0TY4MrfIeXzxMOFIKdyto5geze7Aiktfv0DL/bkSlUeTwv3McX1Ep41Io
+	 XCVbfWDK3dKw1OdOSRlJXogNkh7YfZTLkBVNqPD7Z3uE0vgrxVLxiNHEEwBZlzT6cw
+	 C7ckCPuGonLMg==
+Date: Fri, 28 Apr 2023 15:09:16 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Frank Wunderlich <linux@fw-web.de>
+Cc: linux-mediatek@lists.infradead.org, Rob Herring <robh@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	linux-pci@vger.kernel.org,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	linux-kernel@vger.kernel.org,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: oe-kbuild-all@lists.linux.dev, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-arch@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	David Bradil <dbrazdil@google.com>,
-	Trilok Soni <quic_tsoni@quicinc.com>,
-	Jade Shih <jades.shih@mediatek.com>,
-	Miles Chen <miles.chen@mediatek.com>,
-	Ivan Tseng <ivan.tseng@mediatek.com>,
-	My Chuang <my.chuang@mediatek.com>,
-	Shawn Hsiao <shawn.hsiao@mediatek.com>,
-	PeiLun Suei <peilun.suei@mediatek.com>,
-	Liju Chen <liju-clr.chen@mediatek.com>
-Subject: Re: [PATCH v2 3/7] virt: geniezone: Introduce GenieZone hypervisor
- support
-Message-ID: <202304290334.fCw7PKYU-lkp@intel.com>
-References: <20230428103622.18291-4-yi-de.wu@mediatek.com>
+	Bjorn Helgaas <bhelgaas@google.com>,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH] PCI: mediatek-gen3: handle PERST after reset
+Message-ID: <20230428200916.GA361406@bhelgaas>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230428103622.18291-4-yi-de.wu@mediatek.com>
+In-Reply-To: <20230402131347.99268-1-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230428_130751_581425_13758976 
-X-CRM114-Status: GOOD (  16.88  )
+X-CRM114-CacheID: sfid-20230428_130921_742018_6C27A9D6 
+X-CRM114-Status: GOOD (  23.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,174 +79,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yi-De,
+On Sun, Apr 02, 2023 at 03:13:47PM +0200, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
+> 
+> De-assert PERST in separate step after reset signals to fully comply
+> the PCIe CEM clause 2.2.
 
-kernel test robot noticed the following build warnings:
+I guess this refers to PCIe CEM r5.0, sec 2.2.
 
-[auto build test WARNING on arm64/for-next/core]
-[also build test WARNING on robh/for-next arnd-asm-generic/master linus/master v6.3 next-20230428]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+> This fixes some NVME detection issues on mt7986.
+> 
+> Fixes: d3bf75b579b9 ("PCI: mediatek-gen3: Add MediaTek Gen3 driver for MT8192")
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+> Patch is taken from user Ruslan aka RRKh61 (permitted me to send it
+> with me as author).
+> 
+> https://forum.banana-pi.org/t/bpi-r3-nvme-connection-issue/14563/17
+> ---
+>  drivers/pci/controller/pcie-mediatek-gen3.c | 8 +++++++-
+>  1 file changed, 7 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+> index b8612ce5f4d0..176b1a04565d 100644
+> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
+> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+> @@ -350,7 +350,13 @@ static int mtk_pcie_startup_port(struct mtk_gen3_pcie *pcie)
+>  	msleep(100);
+>  
+>  	/* De-assert reset signals */
+> -	val &= ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB);
+> +	val &= ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB);
+> +	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
+> +
+> +	msleep(100);
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Yi-De-Wu/docs-geniezone-Introduce-GenieZone-hypervisor/20230428-183738
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/arm64/linux.git for-next/core
-patch link:    https://lore.kernel.org/r/20230428103622.18291-4-yi-de.wu%40mediatek.com
-patch subject: [PATCH v2 3/7] virt: geniezone: Introduce GenieZone hypervisor support
-config: arm64-allyesconfig (https://download.01.org/0day-ci/archive/20230429/202304290334.fCw7PKYU-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 12.1.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/0e3f05a6e4547eb309032d047115a47d8f59641d
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Yi-De-Wu/docs-geniezone-Introduce-GenieZone-hypervisor/20230428-183738
-        git checkout 0e3f05a6e4547eb309032d047115a47d8f59641d
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=arm64 olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=arm64 SHELL=/bin/bash arch/arm64/geniezone/ drivers/virt/geniezone/
+There should be a #define for the 100ms value since it is required by
+the generic PCIe CEM spec, not by anything specific to mediatek.  If
+one already exists, we should use it.  If not, we should add one.
 
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Link: https://lore.kernel.org/oe-kbuild-all/202304290334.fCw7PKYU-lkp@intel.com/
+pcie-tegra194.c and pcie-mediatek.c (at least) also have similar
+delays and should also use the same #define.  There are several other
+drivers that contain "msleep(100)", but I didn't look to see their
+purpose.
 
-All warnings (new ones prefixed by >>):
-
->> arch/arm64/geniezone/gzvm_arch.c:112:5: warning: no previous prototype for 'gzvm_vm_arch_enable_cap' [-Wmissing-prototypes]
-     112 | int gzvm_vm_arch_enable_cap(struct gzvm *gzvm, struct gzvm_enable_cap *cap,
-         |     ^~~~~~~~~~~~~~~~~~~~~~~
---
-   arch/arm64/geniezone/gzvm_arch.c:24: warning: Function parameter or member 'a0' not described in 'gzvm_hypcall_wrapper'
-   arch/arm64/geniezone/gzvm_arch.c:24: warning: Function parameter or member 'a1' not described in 'gzvm_hypcall_wrapper'
-   arch/arm64/geniezone/gzvm_arch.c:24: warning: Function parameter or member 'a2' not described in 'gzvm_hypcall_wrapper'
-   arch/arm64/geniezone/gzvm_arch.c:24: warning: Function parameter or member 'a3' not described in 'gzvm_hypcall_wrapper'
-   arch/arm64/geniezone/gzvm_arch.c:24: warning: Function parameter or member 'a4' not described in 'gzvm_hypcall_wrapper'
-   arch/arm64/geniezone/gzvm_arch.c:24: warning: Function parameter or member 'a5' not described in 'gzvm_hypcall_wrapper'
-   arch/arm64/geniezone/gzvm_arch.c:24: warning: Function parameter or member 'a6' not described in 'gzvm_hypcall_wrapper'
-   arch/arm64/geniezone/gzvm_arch.c:24: warning: Function parameter or member 'a7' not described in 'gzvm_hypcall_wrapper'
-   arch/arm64/geniezone/gzvm_arch.c:24: warning: Function parameter or member 'res' not described in 'gzvm_hypcall_wrapper'
->> arch/arm64/geniezone/gzvm_arch.c:24: warning: expecting prototype for geniezone_hypercall_wrapper(). Prototype was for gzvm_hypcall_wrapper() instead
-   arch/arm64/geniezone/gzvm_arch.c:133: warning: Function parameter or member 'gzvm' not described in 'gzvm_vm_ioctl_get_pvmfw_size'
-   arch/arm64/geniezone/gzvm_arch.c:133: warning: Function parameter or member 'cap' not described in 'gzvm_vm_ioctl_get_pvmfw_size'
-   arch/arm64/geniezone/gzvm_arch.c:133: warning: Function parameter or member 'argp' not described in 'gzvm_vm_ioctl_get_pvmfw_size'
-   arch/arm64/geniezone/gzvm_arch.c:155: warning: Function parameter or member 'gzvm' not described in 'gzvm_vm_ioctl_cap_pvm'
-   arch/arm64/geniezone/gzvm_arch.c:155: warning: Function parameter or member 'cap' not described in 'gzvm_vm_ioctl_cap_pvm'
-   arch/arm64/geniezone/gzvm_arch.c:155: warning: Function parameter or member 'argp' not described in 'gzvm_vm_ioctl_cap_pvm'
-
-
-vim +/gzvm_vm_arch_enable_cap +112 arch/arm64/geniezone/gzvm_arch.c
-
-    13	
-    14	/**
-    15	 * geniezone_hypercall_wrapper()
-    16	 *
-    17	 * Return: The wrapper helps caller to convert geniezone errno to Linux errno.
-    18	 */
-    19	static int gzvm_hypcall_wrapper(unsigned long a0, unsigned long a1,
-    20					unsigned long a2, unsigned long a3,
-    21					unsigned long a4, unsigned long a5,
-    22					unsigned long a6, unsigned long a7,
-    23					struct arm_smccc_res *res)
-  > 24	{
-    25		arm_smccc_hvc(a0, a1, a2, a3, a4, a5, a6, a7, res);
-    26		return gz_err_to_errno(res->a0);
-    27	}
-    28	
-    29	int gzvm_arch_probe(void)
-    30	{
-    31		struct arm_smccc_res res;
-    32	
-    33		arm_smccc_hvc(MT_HVC_GZVM_PROBE, 0, 0, 0, 0, 0, 0, 0, &res);
-    34		if (res.a0 == 0)
-    35			return 0;
-    36	
-    37		return -ENXIO;
-    38	}
-    39	
-    40	int gzvm_arch_set_memregion(gzvm_id_t vm_id, size_t buf_size,
-    41				    phys_addr_t region)
-    42	{
-    43		struct arm_smccc_res res;
-    44	
-    45		return gzvm_hypcall_wrapper(MT_HVC_GZVM_SET_MEMREGION, vm_id,
-    46					    buf_size, region, 0, 0, 0, 0, &res);
-    47	}
-    48	
-    49	static int gzvm_cap_arm_vm_ipa_size(void __user *argp)
-    50	{
-    51		__u64 value = CONFIG_ARM64_PA_BITS;
-    52	
-    53		if (copy_to_user(argp, &value, sizeof(__u64)))
-    54			return -EFAULT;
-    55	
-    56		return 0;
-    57	}
-    58	
-    59	int gzvm_arch_check_extension(struct gzvm *gzvm, __u64 cap, void __user *argp)
-    60	{
-    61		int ret = -EOPNOTSUPP;
-    62	
-    63		switch (cap) {
-    64		case GZVM_CAP_ARM_PROTECTED_VM: {
-    65			__u64 success = 1;
-    66	
-    67			if (copy_to_user(argp, &success, sizeof(__u64)))
-    68				return -EFAULT;
-    69			ret = 0;
-    70			break;
-    71		}
-    72		case GZVM_CAP_ARM_VM_IPA_SIZE: {
-    73			ret = gzvm_cap_arm_vm_ipa_size(argp);
-    74			break;
-    75		}
-    76		default:
-    77			ret = -EOPNOTSUPP;
-    78		}
-    79	
-    80		return ret;
-    81	}
-    82	
-    83	/**
-    84	 * gzvm_arch_create_vm()
-    85	 *
-    86	 * Return:
-    87	 * * positive value	- VM ID
-    88	 * * -ENOMEM		- Memory not enough for storing VM data
-    89	 */
-    90	int gzvm_arch_create_vm(void)
-    91	{
-    92		struct arm_smccc_res res;
-    93		int ret;
-    94	
-    95		ret = gzvm_hypcall_wrapper(MT_HVC_GZVM_CREATE_VM, 0, 0, 0, 0, 0, 0, 0,
-    96					   &res);
-    97	
-    98		if (ret == 0)
-    99			return res.a1;
-   100		else
-   101			return ret;
-   102	}
-   103	
-   104	int gzvm_arch_destroy_vm(gzvm_id_t vm_id)
-   105	{
-   106		struct arm_smccc_res res;
-   107	
-   108		return gzvm_hypcall_wrapper(MT_HVC_GZVM_DESTROY_VM, vm_id, 0, 0, 0, 0,
-   109					    0, 0, &res);
-   110	}
-   111	
- > 112	int gzvm_vm_arch_enable_cap(struct gzvm *gzvm, struct gzvm_enable_cap *cap,
-   113				    struct arm_smccc_res *res)
-   114	{
-   115		return gzvm_hypcall_wrapper(MT_HVC_GZVM_ENABLE_CAP, gzvm->vm_id,
-   116					   cap->cap, cap->args[0], cap->args[1],
-   117					   cap->args[2], cap->args[3], cap->args[4],
-   118					   res);
-   119	}
-   120	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+> +	/* De-assert PERST# signals */
+> +	val &= ~(PCIE_PE_RSTB);
+>  	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
+>  
+>  	/* Check if the link is up or not */
+> -- 
+> 2.34.1
+> 
+> 
 
