@@ -4,62 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D9EFC77B60
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Apr 2023 05:03:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22A1FC77B61
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Apr 2023 05:51:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Z9KKcOWkZxv9F5nb0AoNIcd5rFp5IWlyC4X48M+D4h4=; b=hQ4IFAv8SDpbyg+aKg933PVcxt
-	EDV74LGXxMzLj/ZwhzdTyC6kPAL4sEdi6VnHVZ+GN1ruNX3qYOmewYOhb3sJMUypf+2wanxP5Iwwx
-	eKEcW2EpiQG+CbA5ZkIngKVDF6zt/tZxwdXxBR2Q3v7eHGBtkbHZ0mEIKrdW8APl5dhBVP6Q3YaVm
-	OpvgX/Ho6iH3TfCTM8W88bYc87EUAAXnPbVrZoAE9F9GBhqKEpeZWf2SCH2OpV8cr+bYFI8UAnLwB
-	zADeUebfvd/rezry0Nu+xSxzjLFM8T7ZpXpMN++LkLNxGEe29ZevnmoFNb5WR74LChLx2ahioPq+l
-	YjCud2WA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:References:In-Reply-To:Subject:CC:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CDtkCIn/nLZXXWzX5To63sdeI+HDe6I42ogqmZDgdf0=; b=j9nnghDQFStRG6mK6UXvTe3XBW
+	qACvrDgKQyY1MT/ScPeZ18WqqSxotE20wt4pplHofghh2qLEyreQDQ7yF8qemWBxfXBh1csD/S5uP
+	0qwRFsVdUoHiBrYxymZAwsPS92RF5hZTtcD4CNQzmlZcY60GasoX568IO5KVfS0TZ8jfq7XLdCg8e
+	CWVv3lBnihCiSTfQUYtA+DQb8MGQK6Xge5W3jh8jkwEe7IUcdUnKkG3n6dChM3E9+w8lMBjAH0rSF
+	g/kENbG3gDXnDt0/lFxHUmMxH1Qp5UNNdoMolkNe3Fld1qtF0XleoUbhuOND5VbmGJn+CfJjtr91J
+	dBnJTtcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1psGGa-008BEW-2q;
-	Fri, 28 Apr 2023 05:03:32 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1psH0Q-008FIV-1Y;
+	Fri, 28 Apr 2023 05:50:54 +0000
+Received: from mxout2.routing.net ([2a03:2900:1:a::b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1psGGU-008BDR-1p
-	for linux-mediatek@lists.infradead.org;
-	Fri, 28 Apr 2023 05:03:31 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id E121E614A8;
-	Fri, 28 Apr 2023 05:03:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E2F7FC433D2;
-	Fri, 28 Apr 2023 05:03:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1682658205;
-	bh=KeAjELWR8MQg9MqM1OtAJaVWpO2/4TbzOdm52pKlkq8=;
-	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
-	b=nCLGyvI4OOaNgy/CQ2++p2r6avT//Yh9fHaTXLGdNrG059hHwVCZMCz7J6jYudvZo
-	 GJiRKrU9B9iDbg7oZqtR6uRkWC7Vi00mkPTpyxEBgaHubmk6X/34v06omt3d2p6RgP
-	 JcKTon/eupRUM0f6yKCbd7z3jNW0ELrQcI5KDRFEFeyE1AtmAiSPEtAgpl4v6S4+Ty
-	 r0SvCp134W80BUM2oJ+/Ri7xUbP8KHU2crp7CBFacYcdSSnQkCbDNApJLLvP+AiZua
-	 xlWPlQvcY4a3HcXlPQhgHfugbLFn3/LODRR9EGYmT0Ko74LLu3pZacQUV+P3GjfwVV
-	 8A6LTUDc3k8tw==
-From: Kalle Valo <kvalo@kernel.org>
-To: Ryder Lee <ryder.lee@mediatek.com>
-Cc: Felix Fietkau <nbd@nbd.name>,  <linux-wireless@vger.kernel.org>,  Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,  Shayne Chen <shayne.chen@mediatek.com>,  Evelyn Tsai <evelyn.tsai@mediatek.com>,  <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH 1/2] wifi: mt76: mt7996: fix endianness of MT_TXD6_TX_RATE
-References: <16fa938373e3b145cb07a2c98d2428fea2abadba.1682285873.git.ryder.lee@mediatek.com>
-Date: Fri, 28 Apr 2023 08:03:18 +0300
-In-Reply-To: <16fa938373e3b145cb07a2c98d2428fea2abadba.1682285873.git.ryder.lee@mediatek.com>
-	(Ryder Lee's message of "Mon, 24 Apr 2023 05:39:05 +0800")
-Message-ID: <87r0s4ppih.fsf@kernel.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+	id 1psH0L-008FGo-1o;
+	Fri, 28 Apr 2023 05:50:51 +0000
+Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
+	by mxout2.routing.net (Postfix) with ESMTP id 773436047E;
+	Fri, 28 Apr 2023 05:50:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1682661042;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=CDtkCIn/nLZXXWzX5To63sdeI+HDe6I42ogqmZDgdf0=;
+	b=CqPTpYqYfwrWmCuNy8oY8e/tOk5LM6+xGW21v3EuWn9CJHqJIqAA/OB890+1ccgm1Bl5Vb
+	4PLkfD9stcFJIElUdbgFIu7nb1apqoq8840sceTb9EifsoBtkj8EyPNA89nMgApi/Gyv8f
+	B13+zPYBGgPe5N2uY88mGfioCCpb6gQ=
+Received: from [127.0.0.1] (fttx-pool-217.61.155.215.bambit.de [217.61.155.215])
+	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 936D53605FC;
+	Fri, 28 Apr 2023 05:50:41 +0000 (UTC)
+Date: Fri, 28 Apr 2023 07:50:42 +0200
+From: Frank Wunderlich <linux@fw-web.de>
+To: =?UTF-8?B?Smlhbmp1biBXYW5nICjnjovlu7rlhpsp?= <Jianjun.Wang@mediatek.com>,
+ "frank-w@public-files.de" <frank-w@public-files.de>
+CC: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ =?UTF-8?B?SmlleXkgWWFuZyAo5p2o5rSBKQ==?= <Jieyy.Yang@mediatek.com>,
+ "robh@kernel.org" <robh@kernel.org>, "kw@linux.com" <kw@linux.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
+ "lpieralisi@kernel.org" <lpieralisi@kernel.org>,
+ Ryder Lee <Ryder.Lee@mediatek.com>,
+ "bhelgaas@google.com" <bhelgaas@google.com>
+Subject: Re: Aw: [PATCH] PCI: mediatek-gen3: handle PERST after reset
+User-Agent: K-9 Mail for Android
+In-Reply-To: <74149a72313c1b944c870a45b55893e1b9331c8e.camel@mediatek.com>
+References: <20230402131347.99268-1-linux@fw-web.de> <trinity-8c5502f4-34bc-456b-9e4b-37edac37c3ed-1682530907724@3c-app-gmx-bs05> <74149a72313c1b944c870a45b55893e1b9331c8e.camel@mediatek.com>
+Message-ID: <EF6EF3CD-5741-449E-B7E0-27DF9A6C297D@fw-web.de>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Mail-ID: 755e09e7-e3b0-4594-969c-7546f4326435
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230427_220326_667769_626737B6 
-X-CRM114-Status: UNSURE (   8.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230427_225049_901077_36002C50 
+X-CRM114-Status: GOOD (  19.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,23 +83,100 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Ryder Lee <ryder.lee@mediatek.com> writes:
-
-> To avoid sparse warning:
-> sparse: warning: invalid assignment: |=
-> sparse:    left side has type restricted __le32
-> sparse:    right side has type unsigned lon
+Am 27=2E April 2023 10:31:07 MESZ schrieb "Jianjun Wang (=E7=8E=8B=E5=BB=BA=
+=E5=86=9B)" <Jianjun=2EWang@mediatek=2Ecom>:
+>Hi Frank,
 >
-> Fixes: 15ee62e73705 ("wifi: mt76: mt7996: enable BSS_CHANGED_BASIC_RATES support")
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+>Seems this patch has huge impact on boot time, I'm curious about the
+>NVMe detection issue on mt7986, can you share the SSD model that you
+>are using and the bootup logs with that SSD?
 
-I guess this is the fix for Jakub's report? I should take it to wireless
-then?
+Which "huge" delay do you get in which setup? It adds a 100ms delay yes,bu=
+t this seems needed to some devices working=2Ei found several sources talki=
+ng about the 100ms wake-up time=2E=2E=2E
 
-What about patch 2, should I also take it to wireless? Felix, ack?
+I do not have this issue,but some users in bpi-forum reorted it=2E Pcie-co=
+ntroller on mt7986/bpi-r3 does simply not detect the nvme and returned ETIM=
+EDOUT (110)=2E
 
--- 
-https://patchwork.kernel.org/project/linux-wireless/list/
+# dmesg | grep 'pci'
+[ 5=2E235564] mtk-pcie-gen3 11280000=2Epcie: host bridge /soc/pcie@1128000=
+0 ranges:
+[ 5=2E242938] mtk-pcie-gen3 11280000=2Epcie: Parsing ranges property=2E=2E=
+=2E
+[ 5=2E249235] mtk-pcie-gen3 11280000=2Epcie: MEM 0x0020000000=2E=2E0x002ff=
+fffff -> 0x0020000000=20
+[ 5=2E478062] mtk-pcie-gen3 11280000=2Epcie: PCIe link down, current LTSSM=
+ state: detect=2Eactive (0x10 00001)
+[ 5=2E487491] mtk-pcie-gen3: probe of 11280000=2Epcie failed with error -1=
+10
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+One specific hardware is reported as example:
+
+Adata Legend710 512GB x3
+
+>Thanks=2E
+>
+>On Wed, 2023-04-26 at 19:41 +0200, Frank Wunderlich wrote:
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content=2E
+>>=20
+>>=20
+>> Hi
+>>=20
+>> > Gesendet: Sonntag, 02=2E April 2023 um 15:13 Uhr
+>> > Von: "Frank Wunderlich" <linux@fw-web=2Ede>
+>> > De-assert PERST in separate step after reset signals to fully
+>> > comply
+>> > the PCIe CEM clause 2=2E2=2E
+>> >=20
+>> > This fixes some NVME detection issues on mt7986=2E
+>> >=20
+>> > Fixes: d3bf75b579b9 ("PCI: mediatek-gen3: Add MediaTek Gen3 driver
+>> > for MT8192")
+>> > Signed-off-by: Frank Wunderlich <frank-w@public-files=2Ede>
+>> > ---
+>> > Patch is taken from user Ruslan aka RRKh61 (permitted me to send it
+>> > with me as author)=2E
+>> >=20
+>> >=20
+>https://urldefense=2Ecom/v3/__https://forum=2Ebanana-pi=2Eorg/t/bpi-r3-nv=
+me-connection-issue/14563/17__;!!CTRNKA9wMg0ARbw!nCXEM685pkUpoiZYGKptPYccNr=
+WMeN2D3jIO5_irwxZJ7c6ZzEeACIx-V2WeZHAP_0FKlDDIQ0RbDJ892prtoToDv30$
+>> > ---
+>> >  drivers/pci/controller/pcie-mediatek-gen3=2Ec | 8 +++++++-
+>> >  1 file changed, 7 insertions(+), 1 deletion(-)
+>> >=20
+>> > diff --git a/drivers/pci/controller/pcie-mediatek-gen3=2Ec
+>> > b/drivers/pci/controller/pcie-mediatek-gen3=2Ec
+>> > index b8612ce5f4d0=2E=2E176b1a04565d 100644
+>> > --- a/drivers/pci/controller/pcie-mediatek-gen3=2Ec
+>> > +++ b/drivers/pci/controller/pcie-mediatek-gen3=2Ec
+>> > @@ -350,7 +350,13 @@ static int mtk_pcie_startup_port(struct
+>> > mtk_gen3_pcie *pcie)
+>> >       msleep(100);
+>> >=20
+>> >       /* De-assert reset signals */
+>> > -     val &=3D ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB |
+>> > PCIE_PE_RSTB);
+>> > +     val &=3D ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB);
+>> > +     writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
+>> > +
+>> > +     msleep(100);
+>> > +
+>> > +     /* De-assert PERST# signals */
+>> > +     val &=3D ~(PCIE_PE_RSTB);
+>> >       writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
+>> >=20
+>> >       /* Check if the link is up or not */
+>>=20
+>> Hi
+>>=20
+>> just a friendly reminder=2E=2E=2E=2Edo i miss any recipient?
+>>=20
+>> regards Frank
+>>=20
+
+
+regards Frank
 
