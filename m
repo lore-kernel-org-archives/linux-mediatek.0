@@ -4,88 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA466C77B61
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Apr 2023 18:59:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBAD6C77B7E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Apr 2023 19:54:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=arBeCPo6gDtdDOXqBkzSf+4JcCaS3cv0F/CffNGCQuk=; b=C1NN3nd9+P+Ws/U0Eh2dulYGgN
-	3Ntw0frHJ0atm2F17GSAF0h+oeOw3QAyy5QH3j117wD2AHtMI9zbWtcI429RC/8sOa/dEY1Eal6hC
-	0pPlRegRJXA8DzfBEGVH3VQg6qWtBgzyv7uVT9UflIQEDs180Gqy0w6b6fO57meTIOWfrn4c/NONU
-	Gzh2JKpPMu9HGJN0sxq5OBNQhVaq4j2NwL0HIy/5OzmopjFo8Ip+REtJG+pUDYxulpzgqcSHJnQLP
-	va+sMXm34yfcikkalHVSsP930Suu8DBUK5J19IIiuQgoFh1m0FRefS1VyO/vStvbUSkRz0/PexlFJ
-	pmgchFTw==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=jL8ly+CfKo6LhwXU7c3qJpMEIgPsmgnoE5p5hHdViHE=; b=kjZifODmOQZjVQV7I2UVf3gJQM
+	mbjapdOR0qcUFUyp2h7xyY0n+zHjAY4YosyN6Ip2MOX4AXXzK9GKZUtqus6avBmylJ8SE5Puj6DLD
+	YNK3rmnIla2kqrP8B7YHTzC6MGM/TcwyCzIDznqQwrLcnfih2VYpAaVP+MiHzsfa3vMFGSEnWtzTG
+	hdBT5Brg6Ulz2z8vcvDzOBYuP4I9M3jvIscN4wZmVjO/7BBrFzitA9Nevy/uTmclFbFCCEgZhshfa
+	LP1Z3KW42wzKZLoFL8F3wm6YvNEicHHkdi3mVSkrBYq+ohSUMT6H/v/xOzcXtwh9HJkzlLJcXiEOn
+	e6Cht2WA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1psTJW-00BZlQ-1P;
-	Fri, 28 Apr 2023 18:59:26 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1psUAS-00BfLF-09;
+	Fri, 28 Apr 2023 19:54:08 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1psTJS-00BZjj-2A;
-	Fri, 28 Apr 2023 18:59:24 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1psUAN-00BfJP-1g;
+	Fri, 28 Apr 2023 19:54:05 +0000
+Received: from notapiano.myfiosgateway.com (unknown [194.36.25.39])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id C231D635A6;
-	Fri, 28 Apr 2023 18:59:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 272F6C433D2;
-	Fri, 28 Apr 2023 18:59:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1682708361;
-	bh=43v0rS1a68oLAY9zCNF8YNoMJZ5s4pw7kzode4WufbU=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=p6f6cyvLinSytdCRb5DBqvUQZA7z4ZLu6tiME//ST2zZ0iIUjxqdF6VNc8bdEazQI
-	 19jQw714m/ngf/wh90qa2nRhdk5rJ/tHHfSkeNZMJtjTnyZLsVTE01juNHG3LfgWAz
-	 xrhqfSj9lHz7nhRKsTR76C2X6c9gosqLw1bePV2j1O6If35MGgHQf6ioa3Bred2Y3d
-	 KoW4/oWaKGdyeBx9wUIHwXuhDyqOaiSKs67iTvzR+zCFLMXvP64vusWeIkr4uJXKbc
-	 xdcmZ6qfNArAEt0yY1ciYzRW2jHeKHoiDGwzDFJnsY2e2oYUIVdjADvUppR1rSpwTA
-	 JAmf0aMgAAKEA==
-Received: from disco-boy.misterjones.org ([217.182.43.188] helo=www.loen.fr)
-	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.95)
-	(envelope-from <maz@kernel.org>)
-	id 1psTJO-00BvAe-KO;
-	Fri, 28 Apr 2023 19:59:18 +0100
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 106F766032CF;
+	Fri, 28 Apr 2023 20:53:54 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1682711638;
+	bh=JJHjN58c2mTlQgbqU0pQ4tNlxG5r2+HmlKXQ3BAuk+o=;
+	h=From:To:Cc:Subject:Date:From;
+	b=glQT9Nc5Fm1X0sY7HRriotmjWXWM8rHX7Ssnhp8NSKuX3Q2C9ke2dwBfsmOvjiOSb
+	 4a2NH9EUemf4HwmsCO2aPJLDXXuAoP0ARcDqRbAnGIt0tvvusDgEA7NtPdDrlKFN7c
+	 eBXhnxz4PE7wszf4ySAXakrgFMQBmTqaLb9IyCTlM4Jp74zOsjKDfTaWZB4g17ducj
+	 zpnNgtGehzWhsPyJlBfU2jPTNzSGJIx2388uQ9/gl+7AmxIONZlRX6fPBk0AUvxjLR
+	 fakUBs5ZKNVzvqifBEsnkRmq20LXaEOoSVZiMkyeMqi8W5UeTLjFB2kg1qtIsjYwHI
+	 LcEel/B38M7ag==
+From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: Alexandre Bailon <abailon@baylibre.com>,
+	kernel@collabora.com,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Balsam CHIHI <bchihi@baylibre.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Alexandre Mergnat <amergnat@baylibre.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
+	Amit Kucheria <amitk@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Zhang Rui <rui.zhang@intel.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-pm@vger.kernel.org
+Subject: [PATCH 0/3] thermal/drivers/mediatek/lvts_thermal: Fixes to the interrupt handling
+Date: Fri, 28 Apr 2023 15:53:44 -0400
+Message-Id: <20230428195347.3832687-1-nfraprado@collabora.com>
+X-Mailer: git-send-email 2.40.0
 MIME-Version: 1.0
-Date: Fri, 28 Apr 2023 19:59:18 +0100
-From: Marc Zyngier <maz@kernel.org>
-To: Yi-De Wu <yi-de.wu@mediatek.com>
-Cc: Yingshiuan Pan <yingshiuan.pan@mediatek.com>, Ze-Yu Wang
- <ze-yu.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof
- Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Jonathan Corbet
- <corbet@lwn.net>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon
- <will@kernel.org>, Arnd Bergmann <arnd@arndb.de>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-arch@vger.kernel.org,
- linux-mediatek@lists.infradead.org, David Bradil <dbrazdil@google.com>,
- Trilok Soni <quic_tsoni@quicinc.com>, Jade Shih <jades.shih@mediatek.com>,
- Miles Chen <miles.chen@mediatek.com>, Ivan Tseng <ivan.tseng@mediatek.com>,
- My Chuang <my.chuang@mediatek.com>, Shawn Hsiao <shawn.hsiao@mediatek.com>,
- PeiLun Suei <peilun.suei@mediatek.com>, Liju Chen
- <liju-clr.chen@mediatek.com>
-Subject: Re: [PATCH v2 5/7] virt: geniezone: Add irqchip support for virtual
- interrupt injection
-In-Reply-To: <20230428103622.18291-6-yi-de.wu@mediatek.com>
-References: <20230428103622.18291-1-yi-de.wu@mediatek.com>
- <20230428103622.18291-6-yi-de.wu@mediatek.com>
-User-Agent: Roundcube Webmail/1.4.13
-Message-ID: <f1c8c1c1c091be87dfbc27b9178fc3e6@kernel.org>
-X-Sender: maz@kernel.org
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
-Content-Transfer-Encoding: 7bit
-X-SA-Exim-Connect-IP: 217.182.43.188
-X-SA-Exim-Rcpt-To: yi-de.wu@mediatek.com, yingshiuan.pan@mediatek.com, ze-yu.wang@mediatek.com, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, corbet@lwn.net, catalin.marinas@arm.com, will@kernel.org, arnd@arndb.de, matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-arch@vger.kernel.org, linux-mediatek@lists.infradead.org, dbrazdil@google.com, quic_tsoni@quicinc.com, jades.shih@mediatek.com, miles.chen@mediatek.com, ivan.tseng@mediatek.com, my.chuang@mediatek.com, shawn.hsiao@mediatek.com, peilun.suei@mediatek.com, liju-clr.chen@mediatek.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230428_115922_808876_E61EDDFF 
-X-CRM114-Status: GOOD (  22.71  )
+X-CRM114-CacheID: sfid-20230428_125403_790331_D91FBEB7 
+X-CRM114-Status: UNSURE (   7.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,77 +85,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2023-04-28 11:36, Yi-De Wu wrote:
-> From: "Yingshiuan Pan" <yingshiuan.pan@mediatek.com>
-> 
-> Enable GenieZone to handle virtual interrupt injection request.
-> 
-> Signed-off-by: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
-> Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
-> ---
->  arch/arm64/geniezone/Makefile       |  2 +-
->  arch/arm64/geniezone/gzvm_arch.c    | 24 ++++++--
->  arch/arm64/geniezone/gzvm_arch.h    | 11 ++++
->  arch/arm64/geniezone/gzvm_irqchip.c | 88 +++++++++++++++++++++++++++++
->  drivers/virt/geniezone/gzvm_vm.c    | 75 ++++++++++++++++++++++++
->  include/linux/gzvm_drv.h            |  4 ++
->  include/uapi/linux/gzvm.h           | 38 ++++++++++++-
->  7 files changed, 235 insertions(+), 7 deletions(-)
->  create mode 100644 arch/arm64/geniezone/gzvm_irqchip.c
 
-[...]
+Fixes in the interrupt handling of the LVTS thermal driver noticed while
+testing it on the Spherion Chromebook (mt8192-asurada-spherion) with the
+MT8192 support series [1].
 
-> +++ b/arch/arm64/geniezone/gzvm_irqchip.c
-> @@ -0,0 +1,88 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (c) 2023 MediaTek Inc.
-> + */
-> +
-> +#include <linux/irqchip/arm-gic-v3.h>
-> +#include <kvm/arm_vgic.h>
+These are standalone fixes and don't depend on anything else.
 
-NAK.
+[1] https://lore.kernel.org/all/20230307163413.143334-1-bchihi@baylibre.com/
 
-There is no way you can rely on anything from KVM in
-your own hypervisor code.
+Thanks,
+Nícolas
 
-> +
-> +#include <linux/gzvm.h>
-> +#include <linux/gzvm_drv.h>
-> +#include "gzvm_arch.h"
-> +
-> +/**
-> + * gzvm_sync_vgic_state() - Check all LRs synced from gz hypervisor
-> + *
-> + * Traverse all LRs, see if any EOIed vint, notify_acked_irq if any.
-> + * GZ does not fold/unfold everytime KVM_RUN, so we have to traverse 
-> all saved
-> + * LRs. It will not takes much more time comparing to fold/unfold 
-> everytime
-> + * GZVM_RUN, because there are only few LRs.
-> + */
-> +void gzvm_sync_vgic_state(struct gzvm_vcpu *vcpu)
-> +{
-> +}
-> +
-> +/* is_irq_valid() - Check the irq number and irq_type are matched */
-> +static bool is_irq_valid(u32 irq, u32 irq_type)
-> +{
-> +	switch (irq_type) {
-> +	case GZVM_IRQ_TYPE_CPU:
-> +		/*  0 ~ 15: SGI */
-> +		if (likely(irq <= GZVM_IRQ_CPU_FIQ))
-> +			return true;
-> +		break;
-> +	case GZVM_IRQ_TYPE_PPI:
-> +		/* 16 ~ 31: PPI */
-> +		if (likely(irq >= VGIC_NR_SGIS && irq < VGIC_NR_PRIVATE_IRQS))
 
-What happens if I redefine all these macros tomorrow? None of
-this code should rely on anything that is *INTERNAL* to KVM.
+Nícolas F. R. A. Prado (3):
+  thermal/drivers/mediatek/lvts_thermal: Handle IRQ on all controllers
+  thermal/drivers/mediatek/lvts_thermal: Honor sensors in immediate mode
+  thermal/drivers/mediatek/lvts_thermal: Disable undesired interrupts
 
-         M.
+ drivers/thermal/mediatek/lvts_thermal.c | 54 +++++++++++++------------
+ 1 file changed, 28 insertions(+), 26 deletions(-)
+
 -- 
-Jazz is not dead. It just smells funny...
+2.40.0
+
 
