@@ -4,68 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE114C77B60
-	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Apr 2023 15:38:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92860C77B60
+	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Apr 2023 18:25:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FoO8GtlEEfShlzES7R1A0L+o88kt7MrkfhdZxdS1mIU=; b=jzffk1nNJi8x9p
-	YeJbSOnCSaZRoTMo5vIljAwcFJYEuaPSugqu1mZQW/LbJfuBaVHt803TfSkgLaHyP8XGmCASNEeEE
-	BCHk5BB3tri+LXK+4oUZan4tK4LmDgZP2qP0h8Ep5lYvlDEdnBi6+2EPDwsM64q4+LemRdXGzeaFh
-	w0k+espT1wU8DuHp1Ui74ax7IrolPKt0WibA4+z5ITE+bXxC/oIfWlfGfA/N/VpWpxO0323XK3xP4
-	C/CtTe48imagZ3Z5jpiPXEri6vblVjlrWm6T8UEoXPquqC44Nxy2wlOym8JGlm8gGbSkPRREjOHeX
-	4e19benLRG/nUzAj9cZQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Mime-Version:Message-ID:To:From:CC:In-Reply-To:Subject:Date:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	bh=KGl5HMSK57VmBSwKSnwgm3VXr902jH6XBJlNczgIzTY=; b=S5D+sGgGlPEes02AeaVkGWStz0
+	xYNGde12oxUZ2KVW3M18HWby2eLo7zNs0mJPVdU0sbNbU4w6LA7MuEPukYSHUN6h+/ds7PTO7Qrob
+	3iGeA0IktrKO+a4ek+wC/G4xYXSht/hMDrTrssutx5vMY+whSEK/jJZ51fUctc39VxEJrgP+oh4Hv
+	/OzXDqRxe+7SmlLv9A1TG0u2vaZ05+UXl4gAClQ5Ojqp1cZw8ObUGNzbRUujdt2iS464cmsDvRiMv
+	hs8xpP72y7JkeR00pVr021fZK/rfvsW9wd67K6a/S6Fu3OzYvhho8CBZ5vtpr5fYiWb8/w+BAxpgO
+	W48T4OMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1psmee-00Cr7k-25;
-	Sat, 29 Apr 2023 15:38:32 +0000
-Received: from sender3-op-o17.zoho.com ([136.143.184.17])
+	id 1pspFh-00CzzT-2a;
+	Sat, 29 Apr 2023 18:24:57 +0000
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1psmeZ-00Cr6q-08;
-	Sat, 29 Apr 2023 15:38:28 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1682782659; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=VFyR3ye08EJmM5ySRRHjn1Iyo+VtlJPvjMSLAy0S/63KUfkVFZXUdzXyPXqJigcBK8stujWFB/I6tT2+pco2RBUx45h8AqhslPZZKD2nnJFl/iEj+ftT6ZEr/V+EUoVdIWrLWzebK5/s8gRoXafnXioYK2BA6npMw2SVDx5phUY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1682782659; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=FoO8GtlEEfShlzES7R1A0L+o88kt7MrkfhdZxdS1mIU=; 
-	b=TdiU0AxjdNKv/baFo/+CY1YKhaS16SapyPcZysi40FrKr+vuGpysB6OPqOclzIYNTrb4P2Qhg+Sukr4293h9UfQtz0EbZYGr8lCEw8VTzipopocgoRWP7xoE8GuQNb36QRo8ITLilJTpHcfezYeOnAkGlmryiJC98sZRR6rvIzw=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1682782659;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=FoO8GtlEEfShlzES7R1A0L+o88kt7MrkfhdZxdS1mIU=;
-	b=bHY3QMarE/DGX3+PqtMCZm92igCcmd9MWWdF2GzC6iqXPb2+LX+ZDHVsKSmyI7CX
-	mvil6GjOtfIzoIYm8rJ0zg1PJkL5LXMRPbioniWZy5s5Jn0zAeRLaFfWeGY5iQf9pvq
-	mApr+kDXDBor1BQqlj8cZ7EEso/oeQRLGRqUwL+8=
-Received: from [10.10.10.3] (149.91.1.15 [149.91.1.15]) by mx.zohomail.com
-	with SMTPS id 1682782658162526.4446392840155; Sat, 29 Apr 2023 08:37:38 -0700 (PDT)
-Message-ID: <428b1582-7444-308b-6c45-f49a616875ca@arinc9.com>
-Date: Sat, 29 Apr 2023 18:37:18 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [RFC PATCH net-next 20/22] net: dsa: mt7530: force link-down on
- MACs before reset on MT7530
-To: Daniel Golle <daniel@makrotopia.org>
-References: <20230421143648.87889-1-arinc.unal@arinc9.com>
- <20230421143648.87889-21-arinc.unal@arinc9.com>
- <ZELZAd4O9SyHLkwn@makrotopia.org>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <ZELZAd4O9SyHLkwn@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+	id 1pspFd-00CzxU-1h
+	for linux-mediatek@lists.infradead.org;
+	Sat, 29 Apr 2023 18:24:54 +0000
+Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-1a6670671e3so9276565ad.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 29 Apr 2023 11:24:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=dabbelt-com.20221208.gappssmtp.com; s=20221208; t=1682792692; x=1685384692;
+        h=content-transfer-encoding:mime-version:message-id:to:from:cc
+         :in-reply-to:subject:date:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=KGl5HMSK57VmBSwKSnwgm3VXr902jH6XBJlNczgIzTY=;
+        b=l+H0JwRFKwAD4TzkKtg69sq/SE0iMjDe/NX6Txlv16Ba4kBdBRnOLJE9cuEp/EtowJ
+         pvTfeswVQQvBqhKyncNpPdAR29BMkNe6LB9ZMzoVyBV5Q9aGwXPM1Fc+6Qr50SDIiKsJ
+         q9xyHClsPNOcAaBRr9fQ8UfCjonz6jsBwXrYvJjTpLiOgKgKgvN8uwk1fTPbl8XK+035
+         m3QY80DvBeDJf799u5hnhHuLgfMpPNb4a9jtTjDBw2OzLziw75OHG2J322CH+dAw1HCw
+         HsmmVI7grjIDtuj7uBS5rk+EMADzgTEglzedbNWVOsorwBluoILEBWp5M0RLFiHKNfCf
+         2+Mg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1682792692; x=1685384692;
+        h=content-transfer-encoding:mime-version:message-id:to:from:cc
+         :in-reply-to:subject:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=KGl5HMSK57VmBSwKSnwgm3VXr902jH6XBJlNczgIzTY=;
+        b=PxqETzq429Hxwi4mnplC5bru4+QKheXPMB+BSuyUTdbjl+vInPT+laFzZJLvfBHjFo
+         7188sqp8gbEFT6cTv4bOm2XP6FtOpS1CHc8d+znQVFXnsW74z/A/sDwffYyQR3LXH97x
+         eKP7oEcTgN+iRwZ2/miS9yuyY/zTs8YcF6/hosAyp8Wz1I+zMPWCtL6cEN6a1f8zVjLr
+         5rxrdh0QK/lcTAZYx8CA6vFdXd7gjAmi3CRqFgardr5ATX5n+omO+VSqvMRwzOK0/ABD
+         qy5X6fMOJ5r86hWIDMG6jISiqpVmuZgIFXNdTvBQBLXhqqyQ1SVgVOe2fsVRIkd+soSO
+         /yXg==
+X-Gm-Message-State: AC+VfDycYaZC9pvhQcHtI8FHnBG3CXjWGYy0P1EJnsjt4dhEwxDpPMvN
+	aPggg/q+lSj3MnBJeW7KR+jy1g==
+X-Google-Smtp-Source: ACHHUZ6ZiLzN9eR+ckFMqg7tN3D4bPpq4geojnHO1Jqz7HXa46oxZHVvxREPvQQtQygRvSqX/lxFkg==
+X-Received: by 2002:a17:903:124b:b0:1a2:8c7e:f315 with SMTP id u11-20020a170903124b00b001a28c7ef315mr10630845plh.21.1682792692014;
+        Sat, 29 Apr 2023 11:24:52 -0700 (PDT)
+Received: from localhost ([50.221.140.188])
+        by smtp.gmail.com with ESMTPSA id z2-20020a170902708200b001a19196af48sm15137375plk.64.2023.04.29.11.24.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 29 Apr 2023 11:24:51 -0700 (PDT)
+Date: Sat, 29 Apr 2023 11:24:51 -0700 (PDT)
+X-Google-Original-Date: Sat, 29 Apr 2023 11:24:33 PDT (-0700)
+Subject: Re: [PATCH 09/19] riscv: cacheinfo: Adjust includes to remove of_device.h
+In-Reply-To: <20230329-dt-cpu-header-cleanups-v1-9-581e2605fe47@kernel.org>
+CC: davem@davemloft.net, robh+dt@kernel.org, frowand.list@gmail.com,
+  linux@armlinux.org.uk, wens@csie.org, jernej.skrabec@gmail.com, samuel@sholland.org,
+  Paul Walmsley <paul.walmsley@sifive.com>, aou@eecs.berkeley.edu, Greg KH <gregkh@linuxfoundation.org>, rafael@kernel.org,
+  daniel.lezcano@linaro.org, tglx@linutronix.de, amit.kachhap@gmail.com, viresh.kumar@linaro.org,
+  lukasz.luba@arm.com, amitk@kernel.org, rui.zhang@intel.com, matthias.bgg@gmail.com,
+  angelogioacchino.delregno@collabora.com, mpe@ellerman.id.au, npiggin@gmail.com, christophe.leroy@csgroup.eu,
+  thierry.reding@gmail.com, jonathanh@nvidia.com, tiny.windzz@gmail.com, lpieralisi@kernel.org,
+  sudeep.holla@arm.com, agross@kernel.org, andersson@kernel.org, konrad.dybcio@linaro.org,
+  anup@brainfault.org, chenhuacai@kernel.org, jiaxun.yang@flygoat.com, Marc Zyngier <maz@kernel.org>,
+  vireshk@kernel.org, nm@ti.com, sboyd@kernel.org, sparclinux@vger.kernel.org,
+  linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+  linux-sunxi@lists.linux.dev, linux-riscv@lists.infradead.org, linux-pm@vger.kernel.org,
+  linux-mediatek@lists.infradead.org, linuxppc-dev@lists.ozlabs.org, linux-tegra@vger.kernel.org,
+  linux-arm-msm@vger.kernel.org, linux-mips@vger.kernel.org
+From: Palmer Dabbelt <palmer@dabbelt.com>
+To: robh@kernel.org
+Message-ID: <mhng-8827afbb-9f5f-4a6d-b528-4b79b1a32f8a@palmer-ri-x1c9a>
+Mime-Version: 1.0 (MHng)
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230429_083827_148241_9BCE358A 
-X-CRM114-Status: GOOD (  20.86  )
+X-CRM114-CacheID: sfid-20230429_112453_603720_8FE011A7 
+X-CRM114-Status: GOOD (  17.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,61 +100,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, Florian Fainelli <f.fainelli@gmail.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org, Richard van Schagen <richard@routerhints.com>, DENG Qingfang <dqfext@gmail.com>, Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, linux-mediatek@lists.infradead.org, Richard van Schagen <vschagen@cs.com>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Vladimir Oltean <olteanv@gmail.com>, erkin.bozoglu@xeront.com, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 21.04.2023 21:42, Daniel Golle wrote:
-> On Fri, Apr 21, 2023 at 05:36:46PM +0300, arinc9.unal@gmail.com wrote:
->> From: Arınç ÜNAL <arinc.unal@arinc9.com>
->>
->> Force link-down on all MACs before internal reset. Let's follow suit commit
->> 728c2af6ad8c ("net: mt7531: ensure all MACs are powered down before
->> reset").
->>
->> Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->> ---
->>   drivers/net/dsa/mt7530.c | 4 ++++
->>   1 file changed, 4 insertions(+)
->>
->> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
->> index ac1e3c58aaac..8ece3d0d820c 100644
->> --- a/drivers/net/dsa/mt7530.c
->> +++ b/drivers/net/dsa/mt7530.c
->> @@ -2203,6 +2203,10 @@ mt7530_setup(struct dsa_switch *ds)
->>   		return -EINVAL;
->>   	}
->>   
->> +	/* Force link-down on all MACs before internal reset */
->> +	for (i = 0; i < MT7530_NUM_PORTS; i++)
->> +		mt7530_write(priv, MT7530_PMCR_P(i), PMCR_FORCE_LNK);
->> +
-> 
-> Moving this part to mt753x_setup just before calling priv->info->sw_setup(ds);
-> is probably better. Though it isn't documented I assume that the requirement
-> to have the ports in force-link-down may also apply to MT7988, and for sure
-> it doesn't do any harm.
+On Wed, 29 Mar 2023 08:52:06 PDT (-0700), robh@kernel.org wrote:
+> Now that of_cpu_device_node_get() is defined in of.h, of_device.h is just
+> implicitly including other includes, and is no longer needed. Adjust the
+> include files with what was implicitly included by of_device.h (cpu.h and
+> of.h) and drop including of_device.h.
+>
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+> Please ack and I will take the series via the DT tree.
+> ---
+>  arch/riscv/kernel/cacheinfo.c | 1 -
+>  1 file changed, 1 deletion(-)
+>
+> diff --git a/arch/riscv/kernel/cacheinfo.c b/arch/riscv/kernel/cacheinfo.c
+> index 3a13113f1b29..e3829d2de5d9 100644
+> --- a/arch/riscv/kernel/cacheinfo.c
+> +++ b/arch/riscv/kernel/cacheinfo.c
+> @@ -5,7 +5,6 @@
+>
+>  #include <linux/cpu.h>
+>  #include <linux/of.h>
+> -#include <linux/of_device.h>
+>  #include <asm/cacheinfo.h>
+>
+>  static struct riscv_cacheinfo_ops *rv_cache_ops;
 
-Now that I'm reading through the programming guide for MT7531 [0] and 
-MT7530 [1], I see that the SW_PHY_RST bit on the SYS_CTRL register 
-doesn't exist for MT7531. This is likely why forcing link-down on the 
-MACs is necessary for MT7531.
-
-I didn't come across any documentation for the switch on the MT7988 SoC. 
-Should I assume the registers are identical with MT7531 or have you got 
-a document I can look at?
-
-You also don't do system or register reset for the switch on the MT7988 
-SoC, what's up with that?
-
-I'm not going to do this change for MT7530 as I think SW_PHY_RST is 
-sufficient, and there's no mention to this like on MT7531.
-
-[0] 
-https://drive.google.com/file/d/1aVdQz3rbKWjkvdga8-LQ-VFXjmHR8yf9/view?usp=sharing
-[1] 
-https://github.com/vschagen/documents/blob/main/MT7621_ProgrammingGuide_GSW_v0_3.pdf
-
-Arınç
+Reviewed-by: Palmer Dabbelt <palmer@rivosinc.com>
+Acked-by: Palmer Dabbelt <palmer@rivosinc.com>
 
