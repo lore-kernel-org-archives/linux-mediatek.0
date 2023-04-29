@@ -4,65 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4087FC77B7C
-	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Apr 2023 11:18:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE114C77B60
+	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Apr 2023 15:38:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZE0h0DcEAJL5LiOpSMfb1J7VmBH1Sr5fwQ0949oyNo0=; b=4pZKnY3F+N6AI9StqtxiPeLFYI
-	Jg7lSv2w9PV1wWbCQt4fBP9wkHnCHnBnBYB82C/Ez9Ha0Nf70lxjclHpntyBsO/nS/YQJDumCehR9
-	dItUwbTwPRONiNr3LqMeTRC7ALKqQgG6S1vPezJ+44y9/QSSG47dzlT6ke7RH6f5NSeupEKcFvefS
-	Y85X6g2X3nZBF5hWxsgmrg9QRWHyq5NuPmXIQwQu1eARD1HGTLVQ7ZHb6iW2syd9VRWXPCpOPffVN
-	1/eTcx9LZOY2520k62/MSZ02bpecZmzoNVbW17WqV/5dhGKeo9jdzNlQBsYDc+aGljpHjTbomorHz
-	pFc3FGNA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=FoO8GtlEEfShlzES7R1A0L+o88kt7MrkfhdZxdS1mIU=; b=jzffk1nNJi8x9p
+	YeJbSOnCSaZRoTMo5vIljAwcFJYEuaPSugqu1mZQW/LbJfuBaVHt803TfSkgLaHyP8XGmCASNEeEE
+	BCHk5BB3tri+LXK+4oUZan4tK4LmDgZP2qP0h8Ep5lYvlDEdnBi6+2EPDwsM64q4+LemRdXGzeaFh
+	w0k+espT1wU8DuHp1Ui74ax7IrolPKt0WibA4+z5ITE+bXxC/oIfWlfGfA/N/VpWpxO0323XK3xP4
+	C/CtTe48imagZ3Z5jpiPXEri6vblVjlrWm6T8UEoXPquqC44Nxy2wlOym8JGlm8gGbSkPRREjOHeX
+	4e19benLRG/nUzAj9cZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1psib4-00Cgyg-25;
-	Sat, 29 Apr 2023 11:18:34 +0000
-Received: from vulcan.natalenko.name ([104.207.131.136])
+	id 1psmee-00Cr7k-25;
+	Sat, 29 Apr 2023 15:38:32 +0000
+Received: from sender3-op-o17.zoho.com ([136.143.184.17])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1psib0-00CgxR-02
-	for linux-mediatek@lists.infradead.org;
-	Sat, 29 Apr 2023 11:18:32 +0000
-Received: from spock.localnet (unknown [83.148.33.151])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by vulcan.natalenko.name (Postfix) with ESMTPSA id 8ED0512E6B67;
-	Sat, 29 Apr 2023 13:18:21 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=natalenko.name;
-	s=dkim-20170712; t=1682767101;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ZE0h0DcEAJL5LiOpSMfb1J7VmBH1Sr5fwQ0949oyNo0=;
-	b=VMb1I8bNBOzACCD3JTYnUFS0mAJJTsOmmqHEoSH9J3EKqfrEgXhI8B8tbh1vHEyMR52tES
-	JEXwDm3E8HmWC7ZrU0ssoI74IiqyCmFdji2iNMV1JBIkAVCNrgNTnY2vOpw/3v10gHQAkm
-	AxLKxWPDWnK8rIXfuaeTk/NYZQTTUT8=
-From: Oleksandr Natalenko <oleksandr@natalenko.name>
-To: Felix Fietkau <nbd@nbd.name>, MeiChia Chiu <MeiChia.Chiu@mediatek.com>
-Cc: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
- Shayne Chen <shayne.chen@mediatek.com>,
- Evelyn Tsai <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
- MeiChia Chiu <MeiChia.Chiu@mediatek.com>,
- Money Wang <Money.Wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>
-Subject: Re: [PATCH v2] wifi: mt76: mt7915: remove BW160 and BW80+80 support
-Date: Sat, 29 Apr 2023 13:18:19 +0200
-Message-ID: <2313900.mqelP9QxOF@natalenko.name>
-In-Reply-To: <20230104090352.31938-1-MeiChia.Chiu@mediatek.com>
-References: <20230104090352.31938-1-MeiChia.Chiu@mediatek.com>
+	id 1psmeZ-00Cr6q-08;
+	Sat, 29 Apr 2023 15:38:28 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1682782659; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=VFyR3ye08EJmM5ySRRHjn1Iyo+VtlJPvjMSLAy0S/63KUfkVFZXUdzXyPXqJigcBK8stujWFB/I6tT2+pco2RBUx45h8AqhslPZZKD2nnJFl/iEj+ftT6ZEr/V+EUoVdIWrLWzebK5/s8gRoXafnXioYK2BA6npMw2SVDx5phUY=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1682782659; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=FoO8GtlEEfShlzES7R1A0L+o88kt7MrkfhdZxdS1mIU=; 
+	b=TdiU0AxjdNKv/baFo/+CY1YKhaS16SapyPcZysi40FrKr+vuGpysB6OPqOclzIYNTrb4P2Qhg+Sukr4293h9UfQtz0EbZYGr8lCEw8VTzipopocgoRWP7xoE8GuQNb36QRo8ITLilJTpHcfezYeOnAkGlmryiJC98sZRR6rvIzw=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1682782659;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=FoO8GtlEEfShlzES7R1A0L+o88kt7MrkfhdZxdS1mIU=;
+	b=bHY3QMarE/DGX3+PqtMCZm92igCcmd9MWWdF2GzC6iqXPb2+LX+ZDHVsKSmyI7CX
+	mvil6GjOtfIzoIYm8rJ0zg1PJkL5LXMRPbioniWZy5s5Jn0zAeRLaFfWeGY5iQf9pvq
+	mApr+kDXDBor1BQqlj8cZ7EEso/oeQRLGRqUwL+8=
+Received: from [10.10.10.3] (149.91.1.15 [149.91.1.15]) by mx.zohomail.com
+	with SMTPS id 1682782658162526.4446392840155; Sat, 29 Apr 2023 08:37:38 -0700 (PDT)
+Message-ID: <428b1582-7444-308b-6c45-f49a616875ca@arinc9.com>
+Date: Sat, 29 Apr 2023 18:37:18 +0300
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [RFC PATCH net-next 20/22] net: dsa: mt7530: force link-down on
+ MACs before reset on MT7530
+To: Daniel Golle <daniel@makrotopia.org>
+References: <20230421143648.87889-1-arinc.unal@arinc9.com>
+ <20230421143648.87889-21-arinc.unal@arinc9.com>
+ <ZELZAd4O9SyHLkwn@makrotopia.org>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <ZELZAd4O9SyHLkwn@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230429_041830_524532_999FA0A3 
-X-CRM114-Status: GOOD (  19.82  )
+X-CRM114-CacheID: sfid-20230429_083827_148241_9BCE358A 
+X-CRM114-Status: GOOD (  20.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,151 +77,61 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, Florian Fainelli <f.fainelli@gmail.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org, Richard van Schagen <richard@routerhints.com>, DENG Qingfang <dqfext@gmail.com>, Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, linux-mediatek@lists.infradead.org, Richard van Schagen <vschagen@cs.com>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Vladimir Oltean <olteanv@gmail.com>, erkin.bozoglu@xeront.com, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello.
+On 21.04.2023 21:42, Daniel Golle wrote:
+> On Fri, Apr 21, 2023 at 05:36:46PM +0300, arinc9.unal@gmail.com wrote:
+>> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+>>
+>> Force link-down on all MACs before internal reset. Let's follow suit commit
+>> 728c2af6ad8c ("net: mt7531: ensure all MACs are powered down before
+>> reset").
+>>
+>> Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+>> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+>> ---
+>>   drivers/net/dsa/mt7530.c | 4 ++++
+>>   1 file changed, 4 insertions(+)
+>>
+>> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+>> index ac1e3c58aaac..8ece3d0d820c 100644
+>> --- a/drivers/net/dsa/mt7530.c
+>> +++ b/drivers/net/dsa/mt7530.c
+>> @@ -2203,6 +2203,10 @@ mt7530_setup(struct dsa_switch *ds)
+>>   		return -EINVAL;
+>>   	}
+>>   
+>> +	/* Force link-down on all MACs before internal reset */
+>> +	for (i = 0; i < MT7530_NUM_PORTS; i++)
+>> +		mt7530_write(priv, MT7530_PMCR_P(i), PMCR_FORCE_LNK);
+>> +
+> 
+> Moving this part to mt753x_setup just before calling priv->info->sw_setup(ds);
+> is probably better. Though it isn't documented I assume that the requirement
+> to have the ports in force-link-down may also apply to MT7988, and for sure
+> it doesn't do any harm.
 
-On st=C5=99eda 4. ledna 2023 10:03:52 CEST MeiChia Chiu wrote:
-> Remove BW160 and BW80+80 capability in mt7915.
->=20
-> Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabor=
-a.com>
-> Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
-> Reviewed-by: Shayne Chen <shayne.chen@mediatek.com>
-> Signed-off-by: Money Wang<Money.Wang@mediatek.com>
-> Signed-off-by: MeiChia Chiu <MeiChia.Chiu@mediatek.com>
-> ---
-> v2: update commit message and title
-> ---
->  .../net/wireless/mediatek/mt76/mt7915/init.c  | 38 +++++--------------
->  1 file changed, 9 insertions(+), 29 deletions(-)
->=20
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/n=
-et/wireless/mediatek/mt76/mt7915/init.c
-> index 571c94835942..c72d673f02dd 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-> @@ -38,8 +38,7 @@ static const struct ieee80211_iface_combination if_comb=
-[] =3D {
->  				       BIT(NL80211_CHAN_WIDTH_20) |
->  				       BIT(NL80211_CHAN_WIDTH_40) |
->  				       BIT(NL80211_CHAN_WIDTH_80) |
-> -				       BIT(NL80211_CHAN_WIDTH_160) |
-> -				       BIT(NL80211_CHAN_WIDTH_80P80),
-> +				       BIT(NL80211_CHAN_WIDTH_160),
->  	}
->  };
-> =20
-> @@ -394,11 +393,6 @@ mt7915_init_wiphy(struct mt7915_phy *phy)
->  			phy->mt76->sband_5g.sband.vht_cap.cap |=3D
->  				IEEE80211_VHT_CAP_MAX_MPDU_LENGTH_7991 |
->  				IEEE80211_VHT_CAP_MAX_A_MPDU_LENGTH_EXPONENT_MASK;
-> -
-> -			if (!dev->dbdc_support)
-> -				phy->mt76->sband_5g.sband.vht_cap.cap |=3D
-> -					IEEE80211_VHT_CAP_SHORT_GI_160 |
-> -					IEEE80211_VHT_CAP_SUPP_CHAN_WIDTH_160_80PLUS80MHZ;
->  		} else {
->  			phy->mt76->sband_5g.sband.vht_cap.cap |=3D
->  				IEEE80211_VHT_CAP_MAX_MPDU_LENGTH_11454 |
-> @@ -834,13 +828,9 @@ mt7915_set_stream_he_txbf_caps(struct mt7915_phy *ph=
-y,
->  	int sts =3D hweight8(phy->mt76->chainmask);
->  	u8 c, sts_160 =3D sts;
-> =20
-> -	/* Can do 1/2 of STS in 160Mhz mode for mt7915 */
-> -	if (is_mt7915(&dev->mt76)) {
-> -		if (!dev->dbdc_support)
-> -			sts_160 /=3D 2;
-> -		else
-> -			sts_160 =3D 0;
-> -	}
-> +	/* mt7915 doesn't support bw160 */
-> +	if (is_mt7915(&dev->mt76))
-> +		sts_160 =3D 0;
-> =20
->  #ifdef CONFIG_MAC80211_MESH
->  	if (vif =3D=3D NL80211_IFTYPE_MESH_POINT)
-> @@ -894,9 +884,6 @@ mt7915_set_stream_he_txbf_caps(struct mt7915_phy *phy,
->  	elem->phy_cap_info[3] |=3D IEEE80211_HE_PHY_CAP3_SU_BEAMFORMER;
->  	elem->phy_cap_info[4] |=3D IEEE80211_HE_PHY_CAP4_MU_BEAMFORMER;
-> =20
-> -	/* num_snd_dim
-> -	 * for mt7915, max supported sts is 2 for bw > 80MHz and 0 if dbdc
-> -	 */
->  	c =3D FIELD_PREP(IEEE80211_HE_PHY_CAP5_BEAMFORMEE_NUM_SND_DIM_UNDER_80M=
-HZ_MASK,
->  		       sts - 1);
->  	if (sts_160)
-> @@ -944,15 +931,10 @@ mt7915_init_he_caps(struct mt7915_phy *phy, enum nl=
-80211_band band,
->  	int i, idx =3D 0, nss =3D hweight8(phy->mt76->antenna_mask);
->  	u16 mcs_map =3D 0;
->  	u16 mcs_map_160 =3D 0;
-> -	u8 nss_160;
-> +	u8 nss_160 =3D nss;
-> =20
-> -	if (!is_mt7915(&dev->mt76))
-> -		nss_160 =3D nss;
-> -	else if (!dev->dbdc_support)
-> -		/* Can do 1/2 of NSS streams in 160Mhz mode for mt7915 */
-> -		nss_160 =3D nss / 2;
-> -	else
-> -		/* Can't do 160MHz with mt7915 dbdc */
-> +	/* Can't do 160MHz with mt7915 */
-> +	if (is_mt7915(&dev->mt76))
->  		nss_160 =3D 0;
-> =20
->  	for (i =3D 0; i < 8; i++) {
-> @@ -1002,8 +984,7 @@ mt7915_init_he_caps(struct mt7915_phy *phy, enum nl8=
-0211_band band,
->  		else if (nss_160)
->  			he_cap_elem->phy_cap_info[0] =3D
->  				IEEE80211_HE_PHY_CAP0_CHANNEL_WIDTH_SET_40MHZ_80MHZ_IN_5G |
-> -				IEEE80211_HE_PHY_CAP0_CHANNEL_WIDTH_SET_160MHZ_IN_5G |
-> -				IEEE80211_HE_PHY_CAP0_CHANNEL_WIDTH_SET_80PLUS80_MHZ_IN_5G;
-> +				IEEE80211_HE_PHY_CAP0_CHANNEL_WIDTH_SET_160MHZ_IN_5G;
->  		else
->  			he_cap_elem->phy_cap_info[0] =3D
->  				IEEE80211_HE_PHY_CAP0_CHANNEL_WIDTH_SET_40MHZ_80MHZ_IN_5G;
-> @@ -1075,12 +1056,11 @@ mt7915_init_he_caps(struct mt7915_phy *phy, enum =
-nl80211_band band,
->  			break;
->  		}
-> =20
-> +		memset(he_mcs, 0, sizeof(*he_mcs));
->  		he_mcs->rx_mcs_80 =3D cpu_to_le16(mcs_map);
->  		he_mcs->tx_mcs_80 =3D cpu_to_le16(mcs_map);
->  		he_mcs->rx_mcs_160 =3D cpu_to_le16(mcs_map_160);
->  		he_mcs->tx_mcs_160 =3D cpu_to_le16(mcs_map_160);
-> -		he_mcs->rx_mcs_80p80 =3D cpu_to_le16(mcs_map_160);
-> -		he_mcs->tx_mcs_80p80 =3D cpu_to_le16(mcs_map_160);
-> =20
->  		mt7915_set_stream_he_txbf_caps(phy, he_cap, i);
+Now that I'm reading through the programming guide for MT7531 [0] and 
+MT7530 [1], I see that the SW_PHY_RST bit on the SYS_CTRL register 
+doesn't exist for MT7531. This is likely why forcing link-down on the 
+MACs is necessary for MT7531.
 
-I was negatively surprised by this as I had `VHT160-80PLUS80` in my hostapd=
- config file, and the AP worked just fine, and stopped working after upgrad=
-ing the machine to v6.3.
+I didn't come across any documentation for the switch on the MT7988 SoC. 
+Should I assume the registers are identical with MT7531 or have you got 
+a document I can look at?
 
-I do understand that the chip doesn't support 80+80, and my AP just works i=
-n VHT160 mode, so replacing `VHT160-80PLUS80` with `VHT160` in the config f=
-ixed the issue for me. Thanks for bringing BW160 back later in c2f73eacee3b.
+You also don't do system or register reset for the switch on the MT7988 
+SoC, what's up with that?
 
-But I do want to point out that the commit message should explain the reaso=
-n for removal. Also, I'm one of those users of:
+I'm not going to do this change for MT7530 as I think SW_PHY_RST is 
+sufficient, and there's no mention to this like on MT7531.
 
-```
-01:00.0 Unclassified device [0002]: MEDIATEK Corp. MT7915E 802.11ax PCI Exp=
-ress Wireless Network Adapter
-```
+[0] 
+https://drive.google.com/file/d/1aVdQz3rbKWjkvdga8-LQ-VFXjmHR8yf9/view?usp=sharing
+[1] 
+https://github.com/vschagen/documents/blob/main/MT7621_ProgrammingGuide_GSW_v0_3.pdf
 
-for whom BW160 works just fine.
-
-Thanks.
-
-=2D-=20
-Oleksandr Natalenko (post-factum)
-
-
+Arınç
 
