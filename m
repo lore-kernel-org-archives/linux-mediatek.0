@@ -4,80 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B534EC77B60
-	for <linux-mediatek@archiver.kernel.org>; Sun, 30 Apr 2023 16:18:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF09EC77B73
+	for <linux-mediatek@archiver.kernel.org>; Sun, 30 Apr 2023 17:18:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=V23TsjyY1dD7n4GR0wkMYD0yPbsZ48d23pahmY6bjZY=; b=CmMAxPyuhDWDeA7jtMkIZbW2Wv
-	rQ6AJlW39t7XniWyCk2pK5tgmXoGox7UCnom0yXJXcjNiDyJAHXUx9VM1wR6EyBursFD+KW2cwV4V
-	wjQjRwH5aUOWhnLaQn6GTD8eXFfJQQGMYkcObHvC5Oktivqepe6nXbcrnnnnQVRXRNVNAqAP+9jx3
-	DPO2XAwynxtHmK/5IF1f8Np3l/lCzDZv0xwZRp2ai5j0EzrV3MVgrWoSd2Mxcnyncaw9nFsQffTVB
-	FWGoXI5HZ80Wz0bzcM9l1ygX0MtPSF0Y8RmdRp64amIbEa+NEpm2gr3ovSiN9wP+SIvZ28DBPDRBc
-	hIKTIzdw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=W2m9o5cAZcUL4YwF6LNqupdePboCY6WLH6EEUshsr3k=; b=cJ+fig4cZG1z0cwzK/XKZzgdNb
+	/uXjMH4i8K6pkVAtxLKtH/txjlZ4gVOJ8gpNqEgk1lUGbwH9Uc3xgTNtuJunTbzNKQIlUydeo673h
+	ORfvJGdnD92+F0/Izr8cqbaPtLFdMZElnbR/uGr1Icxw9iZ1reot8I/a4MJfOeUH7onSL5ZLG0qPY
+	aNCbZ+rBg+CKFuA7JfYoUMcyjkaEKIHut7ehcLuzunHIKDtFyyOhGcxkAz5nHQi9uP72Mdj/mFlo5
+	SSBs0GwgusXKoo3TqPDW1PU2TZ3ozSty26RWy/UxTZ/SF45QKqPSiKc0vbiv5S1qDQkFWtfqY9PB/
+	pp3ZUyLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pt9kT-00ENv0-1v;
-	Sun, 30 Apr 2023 16:18:05 +0000
-Received: from sender4-op-o10.zoho.com ([136.143.188.10])
+	id 1ptAh2-00ETB9-1o;
+	Sun, 30 Apr 2023 17:18:36 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pt9kO-00ENty-1J;
-	Sun, 30 Apr 2023 16:18:01 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1682871453; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=RcKG0fq2Np8JTd1gJDHJ3xZGFExtlqzo5T7irO6pWfeZ/2/M2ZDm/jLBhjXs8kSkqYWKltiQnIDcEIfTBO7FtArT7A896bpZWX/bHXkDg1+sETSGhTQpfGWVAB0eCN0DF1yZRCAZon+5uG7q4OXL3GaSDy2zq2ERlpX200I2kq4=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1682871453; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=V23TsjyY1dD7n4GR0wkMYD0yPbsZ48d23pahmY6bjZY=; 
-	b=egBI5N2x2xYD8oG6Kr7GWcgP9HX9ZmakF1ZNRuSnbe2Adsizk6Cd/KsfzZTavi2qqAUbis9aHymScsoIY7Cl8QpEXxKuW9JW/MEn3HvzSTzSD8PHtAzRRg6QyEtX/5W3pYCIJqQQT5LWlxzpfhUDqT2h168wLDyrOlfqDwO/V9E=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1682871453;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:From:From:To:To:Cc:Cc:References:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=V23TsjyY1dD7n4GR0wkMYD0yPbsZ48d23pahmY6bjZY=;
-	b=FFkIp0TaDngLCZzkJ4tp5UabOW70Lfj1EnSKtRxj2nB+3YW1YNS1QrZ8kNC+JliO
-	OUTaUiy6xEo6mlWlpI1mzcCGLner8djPP+Lpq8LkAJFYiKG637OUtDZVVOs6EkIEVef
-	sklI13M03UKQ6L4dcgDVp7QB2mfB6EADw01b7t/8=
-Received: from [10.10.10.3] (149.91.1.15 [149.91.1.15]) by mx.zohomail.com
-	with SMTPS id 1682871451193369.77097793382404; Sun, 30 Apr 2023 09:17:31 -0700 (PDT)
-Message-ID: <396fad42-89d0-114d-c02e-ac483c1dd1ed@arinc9.com>
-Date: Sun, 30 Apr 2023 19:17:10 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
+	id 1ptAgy-00ET8I-25;
+	Sun, 30 Apr 2023 17:18:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Transfer-Encoding:Content-Disposition:
+	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:From:
+	Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Content-Disposition:
+	In-Reply-To:References; bh=W2m9o5cAZcUL4YwF6LNqupdePboCY6WLH6EEUshsr3k=; b=h/
+	v1BqlSOSj4XcZqtRa6+SdSZW7KyYBo8pN4hWyOTz+aKTF/WiuNz2KryyZ+I7WmRK9FCVsahgmC/qx
+	Gcgk+6q+8JKcX8VvNm23QRkNth3TIQea829DuinR4SMHPcZ/7/WlqUJTXcaPw8QepSNQOSHRJ0iJv
+	qKBPQzX4m04tydo=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1ptAgT-00BYs6-15; Sun, 30 Apr 2023 19:18:01 +0200
+Date: Sun, 30 Apr 2023 19:18:01 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Cc: David Bauer <mail@david-bauer.net>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
 Subject: Re: [PATCH 2/2] dt-bindings: net: dsa: mediatek,mt7530: document
  MDIO-bus
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-To: David Bauer <mail@david-bauer.net>, Andrew Lunn <andrew@lunn.ch>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>
-Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+Message-ID: <04cc2904-6d61-416e-bfbe-c24d96fe261b@lunn.ch>
 References: <20230430112834.11520-1-mail@david-bauer.net>
  <20230430112834.11520-2-mail@david-bauer.net>
  <e4feeac2-636b-8b75-53a5-7603325fb411@arinc9.com>
-Content-Language: en-US
-In-Reply-To: <e4feeac2-636b-8b75-53a5-7603325fb411@arinc9.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ <396fad42-89d0-114d-c02e-ac483c1dd1ed@arinc9.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+In-Reply-To: <396fad42-89d0-114d-c02e-ac483c1dd1ed@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230430_091800_526122_1FB9099A 
-X-CRM114-Status: GOOD (  14.84  )
+X-CRM114-CacheID: sfid-20230430_101832_690571_93864225 
+X-CRM114-Status: GOOD (  15.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,47 +87,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 30.04.2023 15:34, Arınç ÜNAL wrote:
-> On 30.04.2023 14:28, David Bauer wrote:
->> Document the ability to add nodes for the MDIO bus connecting the
->> switch-internal PHYs.
+On Sun, Apr 30, 2023 at 07:17:10PM +0300, Arınç ÜNAL wrote:
+> On 30.04.2023 15:34, Arınç ÜNAL wrote:
+> > On 30.04.2023 14:28, David Bauer wrote:
+> > > Document the ability to add nodes for the MDIO bus connecting the
+> > > switch-internal PHYs.
+> > 
+> > This is quite interesting. Currently the PHY muxing feature for the
+> > MT7530 switch looks for some fake ethernet-phy definitions on the
+> > mdio-bus where the switch is also defined.
+> > 
+> > Looking at the binding here, there will be an mdio node under the switch
+> > node. This could be useful to define the ethernet-phys for PHY muxing
+> > here instead, so we don't waste the register addresses on the parent
+> > mdio-bus for fake things. It looks like this should work right out of
+> > the box. I will do some tests.
 > 
-> This is quite interesting. Currently the PHY muxing feature for the 
-> MT7530 switch looks for some fake ethernet-phy definitions on the 
-> mdio-bus where the switch is also defined.
-> 
-> Looking at the binding here, there will be an mdio node under the switch 
-> node. This could be useful to define the ethernet-phys for PHY muxing 
-> here instead, so we don't waste the register addresses on the parent 
-> mdio-bus for fake things. It looks like this should work right out of 
-> the box. I will do some tests.
+> Once I start using the mdio node it forces me to define all the PHYs which
+> were defined as ports.
 
-Once I start using the mdio node it forces me to define all the PHYs 
-which were defined as ports.
+Try setting ds->slave_mii_bus to the MDIO bus you register via
+of_mdiobus_register().
 
-[    4.159534] mt7530-mdio mdio-bus:1f lan0 (uninitialized): no phy at 1
-[    4.166002] mt7530-mdio mdio-bus:1f lan0 (uninitialized): failed to 
-connect to PHY: -ENODEV
-[    4.174421] mt7530-mdio mdio-bus:1f lan0 (uninitialized): error -19 
-setting up PHY for tree 0, switch 0, port 1
-[    4.185236] mt7530-mdio mdio-bus:1f lan1 (uninitialized): no phy at 2
-[    4.191753] mt7530-mdio mdio-bus:1f lan1 (uninitialized): failed to 
-connect to PHY: -ENODEV
-[    4.200150] mt7530-mdio mdio-bus:1f lan1 (uninitialized): error -19 
-setting up PHY for tree 0, switch 0, port 2
-[    4.210844] mt7530-mdio mdio-bus:1f lan2 (uninitialized): no phy at 3
-[    4.217361] mt7530-mdio mdio-bus:1f lan2 (uninitialized): failed to 
-connect to PHY: -ENODEV
-[    4.225734] mt7530-mdio mdio-bus:1f lan2 (uninitialized): error -19 
-setting up PHY for tree 0, switch 0, port 3
-[    4.236394] mt7530-mdio mdio-bus:1f lan3 (uninitialized): no phy at 4
-[    4.242901] mt7530-mdio mdio-bus:1f lan3 (uninitialized): failed to 
-connect to PHY: -ENODEV
-[    4.251297] mt7530-mdio mdio-bus:1f lan3 (uninitialized): error -19 
-setting up PHY for tree 0, switch 0, port 4
-
-We can either force defining the PHYs on the mdio node which would break 
-the ABI, or forget about doing PHY muxing this way.
-
-Arınç
+	Andrew
 
