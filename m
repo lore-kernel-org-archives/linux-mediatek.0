@@ -4,155 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 746A9C77B7C
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 May 2023 18:06:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4E2EC77B73
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 May 2023 18:33:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pcP8DQHgXbM6a7LL08KrIsleN5gYDTh0k9ASZVl/rnE=; b=G9xJBfsWosZ/tqKEAnqSlo9ce7
-	d8EgDbF4s6EB6DhX0xUymD01NJ3cRi397KnvUb4E3F6PVX5glMfXzVYPJoCWOst6dxyKT5NrCRNlt
-	VVJRk5aLGdRPmFuW8ORn/k7trQNGjc2XHnwv5zPTkXBEnsdt0PfrphrFzwz8dOFWZvat24qE2RMKr
-	wXJryWtqMov+S4R23SE5K0gsSmLNmu5i8WaYX2NibMxd5+ygTIfl2uubQfX8U/cMJr8ETYTARz+YH
-	aL3F01nzu75oL2qvH/5E97zmwJcAZ4nCUMMPWP1lUAbyjMT0ppMleqaktKqHuzCK43IA1piTMNVcq
-	tPOapfkg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=6A1dW7hrcJbyNOQT+fMhA0InvfL3QrG+RoN83ZNMrW0=; b=vj/D5GsLDS0knBBFAsii+yPCr1
+	BPW2akpsot8bnzE2qq6EKwejNggsRnnRyCFoG8cWSktRuqtgSJwTf20qf2RtXEt3F6AK/RWUK/F7k
+	jPdtBi7DHQkVoUKwbmYpE22VbUcindLYUSgYarVYAA5EB6K/vNktEccITRilBJ4ueVOvaIYrrxEfo
+	2ko5G2XB7X3fNf9pEkb8W/YRWnQdJKw5jdf1IzutCMNrKJx0Bv3lIlQZCszMHZvoi+1oVAx/Td2uZ
+	aTNabBmwooGJmdshORlpBTqthZqKdvp8QYDd2kzgRtIXL6IoLWu51I9A6EI630d5l/CdYiPYp/YLo
+	14Q4D20A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptXuu-00GV6r-09;
-	Mon, 01 May 2023 18:06:28 +0000
-Received: from mail-mw2nam10on20616.outbound.protection.outlook.com ([2a01:111:f400:7e89::616] helo=NAM10-MW2-obe.outbound.protection.outlook.com)
+	id 1ptYLE-00GYeo-2N;
+	Mon, 01 May 2023 18:33:40 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptXs6-00GS56-38;
-	Mon, 01 May 2023 18:03:39 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=iFUSWoiBRsX6qgrwibuqU9Ndoj73o5nM8Sfi7pT8THexwg1uiNW0TEtalHw/62m6VoNKOFKTdwOVg+YBjdC/oWd69rvspLtF40GhFw3b1Mp0pntakahIz11cl68y19+pl0rCdLmfFrDNRftkrr3sNi8AHIIqPg+EblW/zs1iZkUTRqIXZBCHZMd7Uj7Uk/t9J9qna8wzQk9qeUZ8Z3pN3Pg9EER2jHboalnm/2ngoepOhG47CDpH3MYOknv1lH5xHkzYWm9W10PrujUIyl/ZOcUqdtnp449ljo/4lgt4fQ15Rv17Vg+S1wefFjFZygAnxp0g7ZkTUYmJtpbAs6418w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=pcP8DQHgXbM6a7LL08KrIsleN5gYDTh0k9ASZVl/rnE=;
- b=Zt2j9AhlwE08BJImQ+fyt7r0ZRdQ8jBz79/YAhAA6Hzr832Evj4BjuN550Bj1fSfwta/0Y5KBk14RrsqT4RrYjp685ptdhrG6XhQ/JTqi9HnpPsWv/aqANaRjghzrOlYOLYOfNI5fnR9ZC36bSTBdoy+vwCtTbtkRUwmPMeZMQbxqcpmTIQh4aeww2n/83aZKRTyl/NpFHND6rniyIiCx5PqgWP3xnoLE380fT04JcwpkzFP+AHBb5UAhXbDbtUmKEyzYEQtss77ve6u8Ps1/0HzdAz3LIsfCd88NX1j8PTkw5nAbRRkUe4JiTUE/eCTzD+KjvDjs/8JaGHWHB7uNw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=pcP8DQHgXbM6a7LL08KrIsleN5gYDTh0k9ASZVl/rnE=;
- b=pDXB6/RiqgPu43/3gQybNOwshw6VN1vCykATUwyMazXNftnvvRSyoS5WtdW+fOxN6NRkk1xIgZzjbwDsrl3r0s/cIZJ1oiBXK1GWmmeGiBjNIkvgEMHo+8g+w89FudBdefx02NlaMdyqqPkLdbiHixnPDAFr0hG0bxyMbNuwixSw15mCKC0+qSDQLX2HC7pcKt3p/KAS2p6noBeKAV6KauLN05IoBsDUKioEdPh52UPA5obqRMlcB+xQnb9Q4uxZ4Cr5wEBFJC9FxHwnhQt13qfbihFEwIFPRTgw1qaPWrdjLqWmXY/1yYWnH4UYT6PS8Kfqb8ipAfpaMDX0nDzIIQ==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
- by IA1PR12MB6457.namprd12.prod.outlook.com (2603:10b6:208:3ab::17) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6340.30; Mon, 1 May
- 2023 18:03:15 +0000
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::f7a7:a561:87e9:5fab]) by LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::f7a7:a561:87e9:5fab%6]) with mapi id 15.20.6340.030; Mon, 1 May 2023
- 18:03:15 +0000
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Andy Gross <agross@kernel.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	iommu@lists.linux.dev,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Joerg Roedel <joro@8bytes.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-s390@vger.kernel.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
+	id 1ptYL7-00GYe1-0n;
+	Mon, 01 May 2023 18:33:39 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1ptYKz-00077z-1m;
+	Mon, 01 May 2023 20:33:25 +0200
+Date: Mon, 1 May 2023 19:33:14 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Mark Brown <broonie@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	Matthew Rosato <mjrosato@linux.ibm.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Rob Clark <robdclark@gmail.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Niklas Schnelle <schnelle@linux.ibm.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Krishna Reddy <vdumpa@nvidia.com>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Will Deacon <will@kernel.org>,
-	Yong Wu <yong.wu@mediatek.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>
-Cc: Lu Baolu <baolu.lu@linux.intel.com>,
-	Kevin Tian <kevin.tian@intel.com>,
-	Nicolin Chen <nicolinc@nvidia.com>,
-	Steven Price <steven.price@arm.com>
-Subject: [PATCH 01/20] iommu: Add IOMMU_DOMAIN_PLATFORM
-Date: Mon,  1 May 2023 15:02:45 -0300
-Message-Id: <1-v1-21cc72fcfb22+a7a-iommu_all_defdom_jgg@nvidia.com>
-In-Reply-To: <0-v1-21cc72fcfb22+a7a-iommu_all_defdom_jgg@nvidia.com>
-References: 
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: BL0PR03CA0011.namprd03.prod.outlook.com
- (2603:10b6:208:2d::24) To LV2PR12MB5869.namprd12.prod.outlook.com
- (2603:10b6:408:176::16)
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Leilk Liu <leilk.liu@mediatek.com>
+Subject: [PATCH] spi: mt65xx: make sure operations completed before unloading
+Message-ID: <ZFAF6pJxMu1z6k4w@makrotopia.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|IA1PR12MB6457:EE_
-X-MS-Office365-Filtering-Correlation-Id: 2deba80c-bad4-427c-8e08-08db4a6e51d4
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	5j2riQiTaNUM3UlGHzviShO8D/ol6n+R3xtLRbKq3tJRUbSSeU3JAThwKseho64r8sKY6Cg8hWYFS7aby/g7H/UVv6ivQjh1eikK4R4Qi2kLMKRxY4dQR2I+ZSN8TepegGPNZJIGgj4MMAhCOvc8UuMDeeNboO/5fOEK0k0hNOd650E8O3hOKh+gytLLFi8G2yGCfR4xQ3dSm+Ev57X1rY9P8WO+ZvNiBvPt/OyVynr0NcBVnyJkIvGTEwQoa0nlDrxTA5a5cgKQA99lcxUyl2nkX4PX/BUYn+aOXhF8+sCLv01OBftY7GWrAek9Kn1CZxmFSNT+YQBZJLEYEWlgnfl4HcJFCC+A5xc5eYBc3TgGVhuYEp1pGK0mabRYDY7/df4WcCrez6UfxCbVba/+03CiZo8NN7tSWVDyMW/RcTXs2gtV+QKfToyyCAn04lIhOqNe8E4WxU1xBTBn16PQg/WDpw8Og6H6bkP0X9g9izeSJ+cs329Wieinm7bP6u61bhuqh5ps6OMY9OTMoP/P58D4OJIVTHNGDN/nJcGMKQZY09oECw8VZVJPHBBek0yHArFO+MjK0qBB6S4eGfx9fhSEeDe2tSyNy+SFZ4f7XzlIN9Foqnni0Uu7OdVzr4kw
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV2PR12MB5869.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(396003)(39860400002)(366004)(346002)(136003)(376002)(451199021)(6506007)(186003)(6486002)(26005)(83380400001)(2616005)(4326008)(5660300002)(316002)(66476007)(66556008)(66946007)(6512007)(41300700001)(8676002)(8936002)(7406005)(54906003)(478600001)(6666004)(2906002)(110136005)(36756003)(7416002)(86362001)(38100700002)(921005)(4216001);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?hsRvXcj2FmGpHgEod8sLHwd7evkuKvn1U/BjFBJGkE8iuokcpTNJZ2D3c7eb?=
- =?us-ascii?Q?POAFgNJWCO0VN7j92/PVuoLnd8mjzhkLrBak9f0PYde+h9C/dfU/PsdGtCLf?=
- =?us-ascii?Q?N8ydBRhnUyYG4lxbn4IijVodxxjfE4lT5Mav8YlpffL9arkkrXYAWU4aVl2o?=
- =?us-ascii?Q?TCV2NX6dNfDTP2Wlt/WJDxNDvCLhe83KcuhScO+DZFjARv4L1c7tDLAIsWOR?=
- =?us-ascii?Q?KeUajhpx+oM11CUb2pgUUin6XPRDKxa6ezwrISl6lwXjtLl7tfUPB/9HEXEc?=
- =?us-ascii?Q?lJePtZLh3RP012n6IEX1suU/7tscwPUWKXMkCDnROIwDProm1MdGZBB88e9h?=
- =?us-ascii?Q?gAwTR/NgXP+pKW2ZkLNs28MuMRvgd9NJmgeBxzeZsf2iC5XhNhzCTKHbclW5?=
- =?us-ascii?Q?LYb9W8YjjXHwKEIrO7lDB3s81cXnhZy/c72bl2W+KjYsQn2tQmA6mHRu4vFP?=
- =?us-ascii?Q?1hBj4ctrjOBSc65PdNGexCG92M6MQZPdo3Luoq83g0bmR3mYbU/6A/+KwVgI?=
- =?us-ascii?Q?c+MwebHMHtkyjGfx6WirMhCTmzozIppEIoKmyRe2iYAUhlCpj7YqqINOsA/9?=
- =?us-ascii?Q?MrYioI+YiNOi6dvZFZS4Y8/dc+/doQ7uYKyFOiF7mfQJWOY5KUYHXrakdO6q?=
- =?us-ascii?Q?oEjtIfqSwLjtMTZQgfkieUL00iwEfMLZ46Cbx8UypsZjrlMR4GBY8QpCgyCx?=
- =?us-ascii?Q?SopBUcLN6i06oYOvZE3gevyRHW3c3gtKkEigstBj62imezvA/T1KOfTD8jRO?=
- =?us-ascii?Q?wreBy/H3x5E8eHcvKrdvM1Z+phzlqTP5rRmCIhvNv16VHPNbP7Qm3XR82xfL?=
- =?us-ascii?Q?LL+2QSegf03LRyyu7qioRvnvtEBlBto4f8vrE4fpa8peOpYCioja/PsiYCwc?=
- =?us-ascii?Q?1IHfakH1E5AEvyN5oyoF8LNTpCcXrIx+kp29jU58e0xHepg9pWmGOR79Bwga?=
- =?us-ascii?Q?IOMajySylsZ76sjiwbiwK76ZrIRBfu60F8sQYqeDmPynOY166Tgq3VsAw2GP?=
- =?us-ascii?Q?MdcmalQQq+2WqumTC/LapRUpdIGmU+peZoHbmO0HT1ZOgXzVXw5OYxvs+BP7?=
- =?us-ascii?Q?Uw9VBsIcTi856Uhyr3NbfwKLBlK+XEsDl3/ngKczx7mXJHqJ+OZbPsBFtBT5?=
- =?us-ascii?Q?sQeEoqeo8CbRc7Uw2kuiDrseqoOLQwyr6m5FrC1Capa7ZGVE3GYWgNI3rXTO?=
- =?us-ascii?Q?e5UYFXl/V3TZmVXiO2S0Cak6sDHgFecvzUmZJD/iM3tzXYOLW4PlOo3DkHK4?=
- =?us-ascii?Q?dD4lYvO6uCecXRsu8ZSfwcWfE4Zqjy385JrvQnYdezckNun3si1fevYj8FI7?=
- =?us-ascii?Q?yR/hwnYJxR+DM5TMA4ULO6KwlH+8T7KuQHVc2eLSbJSh9XC0VCWd5iAiLQ51?=
- =?us-ascii?Q?6TQHjyn4OYUdt4Tx66JTfoRc5Jo6tcqXZ3H5T8duIVbg+jg/GbxTigtQB+vy?=
- =?us-ascii?Q?PMAPqkZiROtA5Ev39Sj/nDvJzKLNJI3Nu1Xoh7QdIyzs2bkpJ5rQPssu7SEQ?=
- =?us-ascii?Q?SVESKRon8ZV/TZw6k/4Ui4qMpJ75h9kKsvtqN1OL7VZdO6rauN7fDhgkeDKw?=
- =?us-ascii?Q?XkW/vpx6OK9/3Dt/C1fHPO1JD710dSl0G8BuqsIr?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2deba80c-bad4-427c-8e08-08db4a6e51d4
-X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 May 2023 18:03:08.4638
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: IGj5Vuy26RiGIwYPEL0vSW0MBrawwOVgheyvBr2aPrzTpqZRUXB6tdM5G/9BwLFc
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB6457
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230501_110335_089980_F99D391D 
-X-CRM114-Status: GOOD (  17.63  )
+X-CRM114-CacheID: sfid-20230501_113333_309720_D727D522 
+X-CRM114-Status: GOOD (  11.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -167,106 +62,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is an opaque domain type that is an escape hatch for tegra-gart and
-fsl_pamu that we can't figure out how to convert into actual BLOCKING or
-IDENTITY domains. It is designed to preserve the original
-ops->detach_dev() semantic that these drivers were built around.
+When unloading the spi-mt65xx kernel module during an ongoing spi-mem
+operation the kernel will Oops shortly after unloading the module.
+This is because wait_for_completion_timeout was still running and
+returning into the no longer loaded module:
 
-The PLATFORM domain will be set as the default domain and attached as
-normal during probe. The drivers will ignore the initial attach from a
-NULL domain to the PLATFORM domain.
+Internal error: Oops: 0000000096000005 [#1] SMP
+Modules linked in: [many, but spi-mt65xx is no longer there]
+CPU: 0 PID: 2578 Comm: block Tainted: G        W  O       6.3.0-next-20230428+ #0
+Hardware name: Bananapi BPI-R3 (DT)
+pstate: 804000c5 (Nzcv daIF +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+pc : __lock_acquire+0x18c/0x20e8
+lr : __lock_acquire+0x9b8/0x20e8
+sp : ffffffc009ec3400
+x29: ffffffc009ec3400 x28: 0000000000000001 x27: 0000000000000004
+x26: ffffff80082888c8 x25: 0000000000000000 x24: 0000000000000000
+x23: ffffffc009609da8 x22: ffffff8008288000 x21: ffffff8008288968
+x20: 00000000000003c2 x19: ffffff8008be7990 x18: 00000000000002af
+x17: 0000000000000000 x16: 0000000000000000 x15: ffffffc008d78970
+x14: 000000000000080d x13: 00000000000002af x12: 00000000ffffffea
+x11: 00000000ffffefff x10: ffffffc008dd0970 x9 : ffffffc008d78918
+x8 : 0000000000017fe8 x7 : 0000000000000001 x6 : 0000000000000000
+x5 : ffffff807fb53910 x4 : 0000000000000000 x3 : 0000000000000027
+x2 : 0000000000000027 x1 : 0000000000000000 x0 : 00000000000c03c2
+Call trace:
+ __lock_acquire+0x18c/0x20e8
+ lock_acquire+0x100/0x2a4
+ _raw_spin_lock_irq+0x58/0x74
+ __wait_for_common+0xe0/0x1b4
+ wait_for_completion_timeout+0x1c/0x24
+ 0xffffffc000acc8a4 <--- used to be mtk_spi_transfer_wait
+ spi_mem_exec_op+0x390/0x3ec
+ spi_mem_no_dirmap_read+0x6c/0x88
+ spi_mem_dirmap_read+0xcc/0x12c
+ spinand_read_page+0xf8/0x1dc
+ spinand_mtd_read+0x1b4/0x2fc
+ mtd_read_oob_std+0x58/0x7c
+ mtd_read_oob+0x8c/0x148
+ mtd_read+0x50/0x6c
+ ...
 
-After this, the PLATFORM domain's attach_dev will be called whenever we
-detach from an UNMANAGED domain (eg for VFIO). This is the same time the
-original design would have called op->detach_dev().
+Prevent this by completing in mtk_spi_remove if needed.
 
-Add an ops->default_domain member so drivers can trivially opt into this
-mode.
-
-Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+Fixes: 9f763fd20da7 ("spi: mediatek: add spi memory support for ipm design")
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
- drivers/iommu/iommu.c | 14 +++++++++++++-
- include/linux/iommu.h |  6 ++++++
- 2 files changed, 19 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
-index 532383e4e90f05..ba7f38630665b5 100644
---- a/drivers/iommu/iommu.c
-+++ b/drivers/iommu/iommu.c
-@@ -1640,6 +1640,17 @@ iommu_group_alloc_default_domain(struct iommu_group *group, int req_type)
+A short grep revealed that many if not most other SPI drivers may need
+the same fix. However, I can impossibly test all of them, so let's
+start with this one.
+
+ drivers/spi/spi-mt65xx.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
+index 21c321f437667..d7432e2219d85 100644
+--- a/drivers/spi/spi-mt65xx.c
++++ b/drivers/spi/spi-mt65xx.c
+@@ -1275,6 +1275,9 @@ static int mtk_spi_remove(struct platform_device *pdev)
+ 	struct mtk_spi *mdata = spi_master_get_devdata(master);
+ 	int ret;
  
- 	lockdep_assert_held(&group->mutex);
- 
-+	/*
-+	 * Allow legacy drivers to specify the domain that will be the default
-+	 * domain. This should always be either an IDENTITY or PLATFORM domain.
-+	 * Do not use in new drivers.
-+	 */
-+	if (bus->iommu_ops->default_domain) {
-+		if (req_type)
-+			return ERR_PTR(-EINVAL);
-+		return bus->iommu_ops->default_domain;
-+	}
++	if (mdata->use_spimem && !completion_done(&mdata->spimem_done))
++		complete(&mdata->spimem_done);
 +
- 	if (req_type)
- 		return __iommu_group_alloc_default_domain(bus, group, req_type);
- 
-@@ -1945,7 +1956,8 @@ void iommu_domain_free(struct iommu_domain *domain)
- 	if (domain->type == IOMMU_DOMAIN_SVA)
- 		mmdrop(domain->mm);
- 	iommu_put_dma_cookie(domain);
--	domain->ops->free(domain);
-+	if (domain->ops->free)
-+		domain->ops->free(domain);
- }
- EXPORT_SYMBOL_GPL(iommu_domain_free);
- 
-diff --git a/include/linux/iommu.h b/include/linux/iommu.h
-index 7dbdd13d7ce046..ddcad3597c177b 100644
---- a/include/linux/iommu.h
-+++ b/include/linux/iommu.h
-@@ -64,6 +64,7 @@ struct iommu_domain_geometry {
- #define __IOMMU_DOMAIN_DMA_FQ	(1U << 3)  /* DMA-API uses flush queue    */
- 
- #define __IOMMU_DOMAIN_SVA	(1U << 4)  /* Shared process address space */
-+#define __IOMMU_DOMAIN_PLATFORM	(1U << 5)
- 
- /*
-  * This are the possible domain-types
-@@ -80,6 +81,8 @@ struct iommu_domain_geometry {
-  *				  invalidation.
-  *	IOMMU_DOMAIN_SVA	- DMA addresses are shared process addresses
-  *				  represented by mm_struct's.
-+ *	IOMMU_DOMAIN_PLATFORM	- Legacy domain for drivers that do their own
-+ *				  dma_api stuff. Do not use in new drivers.
-  */
- #define IOMMU_DOMAIN_BLOCKED	(0U)
- #define IOMMU_DOMAIN_IDENTITY	(__IOMMU_DOMAIN_PT)
-@@ -90,6 +93,7 @@ struct iommu_domain_geometry {
- 				 __IOMMU_DOMAIN_DMA_API |	\
- 				 __IOMMU_DOMAIN_DMA_FQ)
- #define IOMMU_DOMAIN_SVA	(__IOMMU_DOMAIN_SVA)
-+#define IOMMU_DOMAIN_PLATFORM	(__IOMMU_DOMAIN_PLATFORM)
- 
- struct iommu_domain {
- 	unsigned type;
-@@ -248,6 +252,7 @@ struct iommu_iotlb_gather {
-  *                    will be blocked by the hardware.
-  * @pgsize_bitmap: bitmap of all possible supported page sizes
-  * @owner: Driver module providing these ops
-+ * @default_domain: If not NULL this will always be set as the default domain.
-  */
- struct iommu_ops {
- 	bool (*capable)(struct device *dev, enum iommu_cap);
-@@ -281,6 +286,7 @@ struct iommu_ops {
- 	const struct iommu_domain_ops *default_domain_ops;
- 	unsigned long pgsize_bitmap;
- 	struct module *owner;
-+	struct iommu_domain *default_domain;
- };
- 
- /**
+ 	ret = pm_runtime_resume_and_get(&pdev->dev);
+ 	if (ret < 0)
+ 		return ret;
 -- 
-2.40.0
+2.40.1
 
 
