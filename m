@@ -4,91 +4,155 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D331BC77B73
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 May 2023 17:48:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BB35C87FDC
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 May 2023 18:03:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7zn2qiz0PMcDlMBZ9iY+p8RStjdYbRZl/cnGOAd2Vqg=; b=4aXzIIP2xuVIv0
-	NKNHCl4eevQLJ3EjL+hn0OwHpdZaHcDY9ZewKegX7Z0W1e5tgsXcX8L6TizWjb3zWU8nZGGSeO8dd
-	+I+QE+3GuiiEaUGj4/jUz3Kkk3bzXWBJkn/6KyhooJomoy6cIlL+XyWewCebKqAlRnrmkQ73PapHu
-	yYXj3mHcF0+9FyQZGU4UzRB9OlRL0YJJUTcExYFCc6Wk1W2qzn4A19lxhdECCvBZ7rszOgOAkH3/h
-	0VDQmV7R9sizvhmwJrTWBa+JwND/8kvlzUN0FhhrC1YH0M8TdlepJUANmcgaTL8E9JpSh1Wh20nZD
-	xNJjN0gOrWGKG+A8RrpQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xknJqFhASn/4agduoYXueJ6BdwXbF1MQIUJUFXVhUH8=; b=3hwvE5cFCh5u+LWaMjX2ceYLKE
+	i+oSRxkpcQjM7ENyc6r+wilvAn8HHZn3SCE3dieOo1RLc3PEqInx6Z75/1SR9kZ4nXrUY50eJ4pLW
+	H1c8yIo8Lrjy2LATUNxq/D7VeVxWMUdEIujf1wDsetJcHnPrWDOZ4yBtaJA6ri4pKXCmktRgIEGq7
+	iY8Z8qpoPGUt3av/ymQhRXaNTnmcsZmAEYsBPkVdsO9LOyrQROYnVZReiOAK71jpl6M5fPV0+k4NG
+	oXhk7pqaGO4n2BgjNgnTEUx7AJEtobNp0M5TRpdxBTQPJOZDI1crd9hJjjzfjxILkhJV5PQPK547U
+	7NDDNa2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptXdI-00GQsy-2b;
-	Mon, 01 May 2023 17:48:16 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1ptXrr-00GS7l-2G;
+	Mon, 01 May 2023 18:03:19 +0000
+Received: from mail-mw2nam10on20623.outbound.protection.outlook.com ([2a01:111:f400:7e89::623] helo=NAM10-MW2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptXdE-00GQqy-1Z;
-	Mon, 01 May 2023 17:48:13 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-94f109b1808so557065266b.1;
-        Mon, 01 May 2023 10:48:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1682963290; x=1685555290;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=7zn2qiz0PMcDlMBZ9iY+p8RStjdYbRZl/cnGOAd2Vqg=;
-        b=E909MYKQQE2H2eABVhK2NB2EqRseF2MVkG26I7NnkE2LTNq3iiK3sZ81J8yuInxdGL
-         eW3sEbuz5qp4p2RIgknB0EVVXKRnynjZiH0thBBrmil/LtpvY1/bIcpCofrxAHux7e80
-         SKTbBF3OiYADM3Bb7nxbhGkOyIaP7WmZnHe8BAu8bwPfTLGaudGxhDcyPSl3ewstPzVA
-         lyHqfgjtqYI2UdaRwTle2opR6/x81jeMs6AgrChQM3B2DBFxUL9p2Pu/seAWY/ZTVsww
-         DKEjP4ZsIt5FDfuV+zUnwRLcA+6Xwkhd6k/ny3ZePUqP9Mbcx3xgTRFP1IciGEaoW1B5
-         0PQA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682963290; x=1685555290;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=7zn2qiz0PMcDlMBZ9iY+p8RStjdYbRZl/cnGOAd2Vqg=;
-        b=Hsn6fHEdlGcLC8bxHJVqrNsq8xJZiEML2ZSH5Ij9t/Fdsn1nj+MsRaMidrw1APAHrE
-         ZlW+nqwl/hXw93u7DejfDob4LzL6RZjpqI2OnchdMZq77b/O46k9NSx9CATF/wvRxT9J
-         IitvUtfpzAnVyb+4fyh88FNbVRTxlRU80Q7i1OfurTS8MnuBNO/GD7XKeQda99A0ttog
-         11NEnfVp5t0g6Xjejcp15y2fVVwLmJeY1kLvgkgOuruxxSIHExcUhbTbreDVU74yL6Jb
-         DehnrCsTmpBbawNQ1JCzRC1DBIO0alNP4JSgFYt6Sj3ntumVENgxpMkNs2vzHKXWAfbm
-         pE2w==
-X-Gm-Message-State: AC+VfDwbVAEVYh/3o2q9rf0w4Zkb1OWT/ywGkbDE0ldlVnwoBhFcE21k
-	T+ohCel5Vm75GylOsKJhlOc=
-X-Google-Smtp-Source: ACHHUZ5DEcNfC1UtuRNa7f50gd0sYliwOZl7OqRIA3Ob1gb+R7LWKSfIJGKY1dall4G8t5nc+y4xrw==
-X-Received: by 2002:a17:907:a4c:b0:94e:bc04:1e19 with SMTP id be12-20020a1709070a4c00b0094ebc041e19mr12339374ejc.71.1682963290375;
-        Mon, 01 May 2023 10:48:10 -0700 (PDT)
-Received: from arinc9-PC.lan ([149.91.1.15])
-        by smtp.gmail.com with ESMTPSA id se20-20020a170907a39400b0095ef737dbd7sm7745282ejc.93.2023.05.01.10.48.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 01 May 2023 10:48:10 -0700 (PDT)
-From: arinc9.unal@gmail.com
-X-Google-Original-From: arinc.unal@arinc9.com
-To: Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1ptXrk-00GS1w-1Z;
+	Mon, 01 May 2023 18:03:14 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=N+QYeZ/TzrG8aiuGz+aPXMxbw1gFBp4Eil7+6GgruLu4yKORXHkM50GJOBdUuwLAU8oxwBoav30HvuWnbQ10JEleKq/9mSY7bVB9I6+VoitdYSmGKfxdq4kfP5MQZkIueRFBWAgN+3fAFfHdUxQ+K0jgTRZ9l+b10TciRhhNP54RB38CEIosnzG1hixJ1fZR6V4idP/Diwxl6XafCa4QJDiEfPVJsvE4w0rUuRPqEuXJ5OFuwEVtTeEd8iWjfeZIW+mhUwA4YLhOLbHtU3ry62xpPXJmXLwkBIepaFoK+7dNbauopeqPCr8NcVhHq5ESIlPQM8XIIDfwrDif4ivRDA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=xknJqFhASn/4agduoYXueJ6BdwXbF1MQIUJUFXVhUH8=;
+ b=KKCSXUCVdDlkkASDrivuuqwTBuGYGuzG3p7E9kg/CfFx3nOVBOs00sQ69teB9HTVLTMzTc9CtM1uC3vMt0qzkMpq/6j38nl4kKG3DSpWD5mFq3fFtZx3bbGTKejmSm9+tFJN0sBVYNddLnwg9lAk0JYHjwK1605SItRZ67dr0DJKpaImNAC36CvLHMaaZTAj5a5B9QB/PyK6OPfaOPujHuHBoVAkhUJuOQSZjWq9P2FO48rddx0Cx2vWdLWTyxQSZYwEjCQo/F5NxivuOQnTcC8PvWpJheB06P68XrWa+TySn/kVsRlUsOsdjU0GAQA1D0PzU9aRa1Dc/HwdqCwGNQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=xknJqFhASn/4agduoYXueJ6BdwXbF1MQIUJUFXVhUH8=;
+ b=PZaznm/qMXJuqJpQgfX3ApgXARarFhgxD/FD2FO2xzKy8jcJqrnaWK3OpMMJSbOaPOvofqwaZ0UZfBMzvCI33CxMybwdbD8y/3VNhoq8h2Bm1ES0dtyGoa/9On7OgkxfcpujDMtd1n/oMMhFRz6S4iWxYSvTuaquiZdR1RCwlq2aXuLBavpAxORU29SMi4L2CFU2SsWZ2Uj67W7BL2ELg0slcHGzcDmGQB9YpuzPKpj6aswNPMYmi7Xj7b9ysjCoO5cY54YkgKGnTSHpolFdjkDJs8Q96+TkJeHHz1kAX0NHpAM/4IRZJI8suY3R7H+BpHOkznXCI2FSQAVQ16FBtA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by IA1PR12MB6457.namprd12.prod.outlook.com (2603:10b6:208:3ab::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6340.30; Mon, 1 May
+ 2023 18:03:06 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::f7a7:a561:87e9:5fab]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::f7a7:a561:87e9:5fab%6]) with mapi id 15.20.6340.030; Mon, 1 May 2023
+ 18:03:06 +0000
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Andy Gross <agross@kernel.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Bjorn Andersson <andersson@kernel.org>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	=?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>
-Subject: [PATCH v2 net 2/2] net: dsa: mt7530: fix network connectivity with multiple CPU ports
-Date: Mon,  1 May 2023 20:47:43 +0300
-Message-Id: <20230501174743.95897-2-arinc.unal@arinc9.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230501174743.95897-1-arinc.unal@arinc9.com>
-References: <20230501174743.95897-1-arinc.unal@arinc9.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	iommu@lists.linux.dev,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Joerg Roedel <joro@8bytes.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-s390@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Matthew Rosato <mjrosato@linux.ibm.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Rob Clark <robdclark@gmail.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Niklas Schnelle <schnelle@linux.ibm.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Krishna Reddy <vdumpa@nvidia.com>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Will Deacon <will@kernel.org>,
+	Yong Wu <yong.wu@mediatek.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>
+Cc: Lu Baolu <baolu.lu@linux.intel.com>,
+	Kevin Tian <kevin.tian@intel.com>,
+	Nicolin Chen <nicolinc@nvidia.com>,
+	Steven Price <steven.price@arm.com>
+Subject: [PATCH 07/20] iommu/tegra-smmu: Implement an IDENTITY domain
+Date: Mon,  1 May 2023 15:02:51 -0300
+Message-Id: <7-v1-21cc72fcfb22+a7a-iommu_all_defdom_jgg@nvidia.com>
+In-Reply-To: <0-v1-21cc72fcfb22+a7a-iommu_all_defdom_jgg@nvidia.com>
+References: 
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: MN2PR18CA0014.namprd18.prod.outlook.com
+ (2603:10b6:208:23c::19) To LV2PR12MB5869.namprd12.prod.outlook.com
+ (2603:10b6:408:176::16)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|IA1PR12MB6457:EE_
+X-MS-Office365-Filtering-Correlation-Id: 01a95472-c511-40b8-c911-08db4a6e5035
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	rbeZdLbPfLqyIV2E6L3iTjE/zdIrAoPWJPN8sq/vKDaT0t15WSYrIzPxgUBfYq7DzNHpbK0NKIepNbqQcvkJZOUdrBNJA3XV3oKKrWjYuEY/FPvk2jRKbC3ztUmvyQIDTl8R22foJieNjcX3yGgwzvsPqBZyKnJMpv7jPI5d41fFH0fQV2K3eMYQvmdGeOxzCz+zAM9GvJ9kesOFC/1aSz9TLiod6EF/lFpP/CizxamuA2suWjEyAT//D5GCDETdQjiUS5u1z9uN2TV05tQbwZvKu/KF3w6UCWZG2izRyKR3cPrIAAo5p+wj2lKbuhU5xXTzr7eB9A0T8bsvqF83jTlHmktbJqrhBdB31eBcvmlY/AWi49rkTWGcLJFTYcpQmR2gZKx2vSJEZuAsr7XumNU22NhjllrnaPWFDr+AjuqznZ7lxiKSNumLmqTRpTRrdX9iaVIhgkQRIoRyx+5aLh0M+3pvAj7IUPBYFMylJuwNMOhUmNM1xSNVBh6X63gFxKbYdly2E/lyOv8XS00AUAGQDtKM6hoCEpCKHKoZc8i9PS/f1eC18aIqzDJKRoe1I7+ZJnnPH7xIKuu1sL+6uw1sED03H6riOr3WmCnmXKk6ZP9TWP1HD/kbeDLmXpJ0
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV2PR12MB5869.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(396003)(39860400002)(366004)(346002)(136003)(376002)(451199021)(6506007)(186003)(6486002)(26005)(83380400001)(2616005)(4326008)(5660300002)(316002)(66476007)(66556008)(66946007)(6512007)(41300700001)(8676002)(8936002)(7406005)(54906003)(478600001)(6666004)(2906002)(110136005)(36756003)(7416002)(86362001)(38100700002)(921005)(4216001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?AD3aoS0JNdc0owfrl6ClZh+3NiSP4vTJbYQqj/mfEmBfMox9OtNd+RZVCmN2?=
+ =?us-ascii?Q?GehGbqBRt/CbqUwtoV3jDQ4bF+0+MdIQ6Leyj64U6FUL+l+DWD7tdfSwm35E?=
+ =?us-ascii?Q?o20SGQ1QpNxHJYuG+7UIeazivRb9/DWWUzcVcOEQJ8b7J6Gs7BRjrU7uj68o?=
+ =?us-ascii?Q?0cuel1F3uSO+mirMdIdEmv7EyVFgKXxuUASpke/W6itUuavYy6HfxCoZ4lr3?=
+ =?us-ascii?Q?Wq9QwIbPIJgh0GUO9SuUZvrJhHnWCAdMFKTBCNNpLktibebdFJLsc1CCXBpi?=
+ =?us-ascii?Q?Z+4AKrwjyzHUZ3HcCNDAWMxg5QU2CRh7mq1DE2BqmFUybNldbhYulr8Pvs7g?=
+ =?us-ascii?Q?Pd4wb05xa2J5gBrZwZOBSSH6KKZ4pSCPw0gJx4RrmV9KunEwktuY4BHiyE96?=
+ =?us-ascii?Q?dr1hf/s7GuE/gM729ywVn4JT+p5xQTQOte+M0oakqLY/tT8ndmG8K8+6ZmAs?=
+ =?us-ascii?Q?91gGLsM9pPyW3t4CTZcXAFgT3stGyuH7jvAMQlfuGkyC6yao81LzcJgjpQu+?=
+ =?us-ascii?Q?RLsPPvE8IsZFKoeaPvJmmz8YHN3rSIn9YYb7w63t39SiZRPVBUf5HH7msLmC?=
+ =?us-ascii?Q?nX1yimaHfzYga6wPGNRH3MKiThc3lbBLo4pD3IgdEXxzS1f6Z17KC5xy98uf?=
+ =?us-ascii?Q?7rccC42flHKNEVreZ7aS8qO6e4ksXl6PUVcTMJDj3pOoEPR5QQkqcw4ndj9q?=
+ =?us-ascii?Q?fDldJXlUPwqH+dzakw2xM/CQIpWXHWLUlMB0ytFdTm5vLnVaWwIdbOddbvaY?=
+ =?us-ascii?Q?zlwq67sqhJ4HGZmdB4ktjgWST2xqIefZt4Cf//ahi2V43H2fhmBXHnIYL6s2?=
+ =?us-ascii?Q?Mg7l5ykWQ+s5eqYJ1UQJH23QLfsDBjkfVVGcGpYYzYawamBVmgs8lJpvxNIE?=
+ =?us-ascii?Q?MIx4FpJlBdreQXDbMtfCW8BeHerHcnYibqIpb5xPCuq0XSGehLaPzaRQF/53?=
+ =?us-ascii?Q?dkag7kVKUGi+0CDi7WZ/vLIL6UCEAPrT2chNofPebucKJ2v+xd9fBuDVoAc5?=
+ =?us-ascii?Q?GQzd+NcIeIktrjLhsutDr+IJRn0RhvXrMzqKjaD/JhRRPBIWpSD+uX3mFwsX?=
+ =?us-ascii?Q?mw2UpOSarf71l+7A6Zpfl8NUE5fJ3qP3fAmnSgfQpktB2IPDNf/Hlf+pBV9N?=
+ =?us-ascii?Q?31HxbvK/F7EJmzUhmF1niQKhP4fjWFzhbQHDhrgYIVqdea42Js8EF+niNzhm?=
+ =?us-ascii?Q?/tGp0LZdiVfYxsRP4Tu+0CU6B8UimBUfYlN6pkjE1k7LI8Uk9OrSJTE2cMbA?=
+ =?us-ascii?Q?RCqVBggLHQOk4Ph7ZjeSYWzAC1+/zlq3QI6Mb/BK59pMbb7ZZ3VjzrEapqCt?=
+ =?us-ascii?Q?Ld3Q3bSwBv08lNra7G75NE2Bih993THY1mXwg8GPwCFg5RAu0lCP+e4brO3g?=
+ =?us-ascii?Q?YONL98WY91fHJloJO95gVLV52wse2m2pmOmDfQICaPoI5zG8K33SZHlfaoQf?=
+ =?us-ascii?Q?GOqrCEBXBfg8VeZHCC53xE6mIytxJYgUXRNGOQ9+tR4zdAGDlDNg5DXERHQr?=
+ =?us-ascii?Q?LIqkNomaU7XDN8FIdnkenctwIeCSvuKJZXYtWI9K76zK6ibcSQ/OBfSrhRkp?=
+ =?us-ascii?Q?Lu8n8mcdUCaXvss1fvpzoBwx/uFGqgbjRGC5IlKJ?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 01a95472-c511-40b8-c911-08db4a6e5035
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 May 2023 18:03:05.7623
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: D73iNRCgZHLfufA6CWjU3R3w34/+U7G6PDS/JTyXOJ36b9dK/77NiFQaUwEm59QX
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB6457
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230501_104812_528626_1D769EFC 
-X-CRM114-Status: GOOD (  18.45  )
+X-CRM114-CacheID: sfid-20230501_110312_528388_538E95A9 
+X-CRM114-Status: GOOD (  12.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,80 +164,81 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: erkin.bozoglu@xeront.com, Richard van Schagen <vschagen@cs.com>, linux-kernel@vger.kernel.org, Richard van Schagen <richard@routerhints.com>, =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, netdev@vger.kernel.org, mithat.guner@xeront.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arınç ÜNAL <arinc.unal@arinc9.com>
+What tegra-smmu does during tegra_smmu_set_platform_dma() is actually
+putting the iommu into identity mode.
 
-On mt753x_cpu_port_enable() there's code that enables flooding for the CPU
-port only. Since mt753x_cpu_port_enable() runs twice when both CPU ports
-are enabled, port 6 becomes the only port to forward the frames to. But
-port 5 is the active port, so no frames received from the user ports will
-be forwarded to port 5 which breaks network connectivity.
+Move to the new core support for ARM_DMA_USE_IOMMU by defining
+ops->identity_domain.
 
-Every bit of the BC_FFP, UNM_FFP, and UNU_FFP bits represents a port. Fix
-this issue by setting the bit that corresponds to the CPU port without
-overwriting the other bits.
-
-Clear the bits beforehand only for the MT7531 switch. According to the
-documents MT7621 Giga Switch Programming Guide v0.3 and MT7531 Reference
-Manual for Development Board v1.0, after reset, the BC_FFP, UNM_FFP, and
-UNU_FFP bits are set to 1 for MT7531, 0 for MT7530.
-
-The commit 5e5502e012b8 ("net: dsa: mt7530: fix roaming from DSA user
-ports") silently changed the method to set the bits on the MT7530_MFC.
-Instead of clearing the relevant bits before mt7530_cpu_port_enable()
-which runs under a for loop, the commit started doing it on
-mt7530_cpu_port_enable().
-
-Back then, this didn't really matter as only a single CPU port could be
-used since the CPU port number was hardcoded. The driver was later changed
-with commit 1f9a6abecf53 ("net: dsa: mt7530: get cpu-port via dp->cpu_dp
-instead of constant") to retrieve the CPU port via dp->cpu_dp. With that,
-this silent change became an issue for when using multiple CPU ports.
-
-Fixes: 5e5502e012b8 ("net: dsa: mt7530: fix roaming from DSA user ports")
-Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
 ---
+ drivers/iommu/tegra-smmu.c | 26 +++++++++++++++++++++-----
+ 1 file changed, 21 insertions(+), 5 deletions(-)
 
-v2: Add the fixes tag and information about the commit that caused this
-issue.
-
----
- drivers/net/dsa/mt7530.c | 10 +++++++---
- 1 file changed, 7 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 7d9f9563dbda..9bc54e1348cb 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -1002,9 +1002,9 @@ mt753x_cpu_port_enable(struct dsa_switch *ds, int port)
- 	mt7530_write(priv, MT7530_PVC_P(port),
- 		     PORT_SPEC_TAG);
+diff --git a/drivers/iommu/tegra-smmu.c b/drivers/iommu/tegra-smmu.c
+index 1cbf063ccf147a..153ea0b5de8db4 100644
+--- a/drivers/iommu/tegra-smmu.c
++++ b/drivers/iommu/tegra-smmu.c
+@@ -511,23 +511,39 @@ static int tegra_smmu_attach_dev(struct iommu_domain *domain,
+ 	return err;
+ }
  
--	/* Disable flooding by default */
--	mt7530_rmw(priv, MT7530_MFC, BC_FFP_MASK | UNM_FFP_MASK | UNU_FFP_MASK,
--		   BC_FFP(BIT(port)) | UNM_FFP(BIT(port)) | UNU_FFP(BIT(port)));
-+	/* Enable flooding on the CPU port */
-+	mt7530_set(priv, MT7530_MFC, BC_FFP(BIT(port)) | UNM_FFP(BIT(port)) |
-+		   UNU_FFP(BIT(port)));
+-static void tegra_smmu_set_platform_dma(struct device *dev)
++static int tegra_smmu_identity_attach(struct iommu_domain *identity_domain,
++				      struct device *dev)
+ {
+ 	struct iommu_domain *domain = iommu_get_domain_for_dev(dev);
+ 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+-	struct tegra_smmu_as *as = to_smmu_as(domain);
+-	struct tegra_smmu *smmu = as->smmu;
++	struct tegra_smmu_as *as;
++	struct tegra_smmu *smmu;
+ 	unsigned int index;
  
- 	/* Set CPU port number */
- 	if (priv->id == ID_MT7621)
-@@ -2367,6 +2367,10 @@ mt7531_setup_common(struct dsa_switch *ds)
- 	/* Enable and reset MIB counters */
- 	mt7530_mib_reset(ds);
+ 	if (!fwspec)
+-		return;
++		return -ENODEV;
  
-+	/* Disable flooding on all ports */
-+	mt7530_clear(priv, MT7530_MFC, BC_FFP_MASK | UNM_FFP_MASK |
-+		     UNU_FFP_MASK);
++	if (domain == identity_domain || !domain)
++		return 0;
 +
- 	for (i = 0; i < MT7530_NUM_PORTS; i++) {
- 		/* Disable forwarding by default on all ports */
- 		mt7530_rmw(priv, MT7530_PCR_P(i), PCR_MATRIX_MASK,
++	as = to_smmu_as(domain);
++	smmu = as->smmu;
+ 	for (index = 0; index < fwspec->num_ids; index++) {
+ 		tegra_smmu_disable(smmu, fwspec->ids[index], as->id);
+ 		tegra_smmu_as_unprepare(smmu, as);
+ 	}
++	return 0;
+ }
+ 
++static struct iommu_domain_ops tegra_smmu_identity_ops = {
++	.attach_dev = tegra_smmu_identity_attach,
++};
++
++static struct iommu_domain tegra_smmu_identity_domain = {
++	.type = IOMMU_DOMAIN_IDENTITY,
++	.ops = &tegra_smmu_identity_ops,
++};
++
+ static void tegra_smmu_set_pde(struct tegra_smmu_as *as, unsigned long iova,
+ 			       u32 value)
+ {
+@@ -963,10 +979,10 @@ static int tegra_smmu_of_xlate(struct device *dev,
+ }
+ 
+ static const struct iommu_ops tegra_smmu_ops = {
++	.identity_domain = &tegra_smmu_identity_domain,
+ 	.domain_alloc = tegra_smmu_domain_alloc,
+ 	.probe_device = tegra_smmu_probe_device,
+ 	.device_group = tegra_smmu_device_group,
+-	.set_platform_dma_ops = tegra_smmu_set_platform_dma,
+ 	.of_xlate = tegra_smmu_of_xlate,
+ 	.pgsize_bitmap = SZ_4K,
+ 	.default_domain_ops = &(const struct iommu_domain_ops) {
 -- 
-2.39.2
+2.40.0
 
 
