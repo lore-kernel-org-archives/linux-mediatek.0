@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3E17C77B60
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 May 2023 02:59:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5677C77B73
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 May 2023 03:02:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vv6GGfQoCCsEVzrI8zbqyeKtCeys1LEvMb8h1CYFlRo=; b=cfGoBLS3eXbe4PCsOWrzo0u62Z
-	G58qSlskDJF78Xcf3vlrE/o7XYwhdOlD2Cew5+6cMSbOD3RKIK9HAdmkL+4wL8SmDQiFkLK3IP0DS
-	DjeLlVbe1VcQP80tvFN8hf5fduCpU7ysYDYLiVj5ZgLukaIClURy1Y5DBcNw8vg7oHGklBExdThWk
-	pP3buZ/H8JDK2Fk/N72anizWfLWnVimhJ8nVNskeD5dCeTXMn8ce19kUtW0+VknFhMi0K8j79RX96
-	FJOzkL+3UmynLjZ/+szabvS+Mjf9XF2p/rE9r/ER/ZGImEaqGr2bAXtxuYG4J3oNT4IzGZKpHVPeg
-	AsjoLKgQ==;
+	bh=vv6GGfQoCCsEVzrI8zbqyeKtCeys1LEvMb8h1CYFlRo=; b=HRkGYEpUWNOWbHVWawDuV7T9H+
+	sr27zwr0fjNSSutjIj810LP/RX0nsDYwDSibNTHx4TtgSpX8pq2gmoWPte3yjB94iFwzH2mnEgpio
+	pnkgla472umA78Kn3q19Io/8Vv1QTsnON+tZ2JIBC3bpalUuvKiFcYQQRX5NdUMvIu1vvDS4DCFoN
+	REZwUuZKcDRa6fFc3+xX9BqH/jdaxQuVBOOZ+ujKuinDc6cQ3ELHuwM3rPV6kaudHzm/txo5Vsjyd
+	xurWcJHtxSi4ZNIAXcVwXysgdFk3ze6P8HFRclX67H6vKlVNEipzRKBuXt2TL6USrhyEbYzQXXc5E
+	mcErbkfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptJlR-00F55x-0i;
-	Mon, 01 May 2023 02:59:45 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1ptJoE-00F6nb-2a;
+	Mon, 01 May 2023 03:02:38 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptJlO-00F545-15;
-	Mon, 01 May 2023 02:59:43 +0000
+	id 1ptJo2-00F6fC-2p;
+	Mon, 01 May 2023 03:02:33 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id E41E561717;
-	Mon,  1 May 2023 02:59:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 70184C433EF;
-	Mon,  1 May 2023 02:59:39 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 3CF9160EA5;
+	Mon,  1 May 2023 03:02:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 72949C4339B;
+	Mon,  1 May 2023 03:02:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1682909980;
+	s=k20201202; t=1682910145;
 	bh=YKojEJiiV1QvwHI5f0ezVGrRBJg+sS7nU5ba/bX9Vb8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=p9AzbP/kx+wSby7ytTnMivAm3jk1V+SGZZXz941qqCeaVX9eCs+7ZYNfAiDa/v+iJ
-	 ThW+a+ZicUbSPKwJ5lWDqFIrytV1nZbsaktsHB8dSFAsOOidhwUoYo8RRSXr/xtLCg
-	 npqYgTaCz5kS32kTyZe1s5mmErZHrztaoXsIZvPEbt8WlC+L8LZ0xMuBla+UUVx4IV
-	 34NQQAGU7ZG4GRT4dLDIt5vb/JohOqqbgaMhz/4O2oV8j+HFjzysaPpCyPPnR03w43
-	 EHsSUa/0J5X0mqRagA/PpqpgFG5M2UeIeqqLSKmcUZu30dFnq6ls7z/NbryxePF58T
-	 hlQ3fAX5fzhPA==
+	b=E7lzNj8z3Ur2TBcpTKvLZaWGFplvtk0nM/amsC4EOBooycfCfIf42Kt3GmW7OMPpB
+	 xWlN9YPGhBFcWpnDLvSRNBuvetW3kQ/RIm95pfeYTxaxjtrHJ6B/qxuDn63pWNsY52
+	 BBjkgwsvOKsZFocxCEsUIqdMpITRx52grEYL01CREyW1RMIusMG37jLQynH85FTtvv
+	 MFNsCepp6zHrbXiuEIi3ZTcmDQTzJazzjJYdFm38yNr4DPt9rKZv+M2ePTq+gw2cuW
+	 7pdmnzLdLpl/GhrwJm54uPZ9ftd338I0NG/xD4Ql+1KbLUrGOViiSU0uy+fNNkPMcp
+	 j1Udy1MI0VkWw==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -57,18 +57,18 @@ Cc: Wei Chen <harperchen1110@gmail.com>,
 	linux-media@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.3 42/44] media: mediatek: vcodec: Fix potential array out-of-bounds in decoder queue_setup
-Date: Sun, 30 Apr 2023 22:56:30 -0400
-Message-Id: <20230501025632.3253067-42-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.2 37/37] media: mediatek: vcodec: Fix potential array out-of-bounds in decoder queue_setup
+Date: Sun, 30 Apr 2023 22:59:45 -0400
+Message-Id: <20230501025945.3253774-37-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230501025632.3253067-1-sashal@kernel.org>
-References: <20230501025632.3253067-1-sashal@kernel.org>
+In-Reply-To: <20230501025945.3253774-1-sashal@kernel.org>
+References: <20230501025945.3253774-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230430_195942_412721_65DF09AA 
+X-CRM114-CacheID: sfid-20230430_200226_990484_4967BB51 
 X-CRM114-Status: GOOD (  13.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
