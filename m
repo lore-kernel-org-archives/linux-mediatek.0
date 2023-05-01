@@ -4,69 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E2BBC77B7E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 May 2023 04:30:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0C81C77B7E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 May 2023 05:42:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=wQre5lq5KPulOOTISLtbugBiyYNx+lFX9Va3I8xt8is=; b=3DjhUwMym7ZpBnyyH4xTPJuKtg
-	UTcwVJf6Nfy1JkxjNxHwHKLi9hSnwu8Iu5cu965xFdQSAtACG0AXVqlLji7GiRkPGWQS7i/KHhaSh
-	1hOK5lB3A9szyg2AA6uQXSoh7rJGr/TndD0Ngmk6l06RJgRukXqx8n2doVZmrgJ/4TgCyN464AfgH
-	MXcDOFNDrFPkEl33mTknrs/81cRsji2ZrGYmFpufrYJ1UAs0yupT95tIy1pNAsufWE+QgBc+r77aI
-	5KNMA/wrM40iv9JCDUUKZRs3viHnWZiBgvZ7Ce+sFsZvIYYran7xWFE5Uo4t4dWFR8lDytbiRM1GG
-	iPhfqVaA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=C2mbpKRY/IaHURPbi8xdkp6Ux75t8HAEwDPxIJfytoY=; b=WfXotrNZX5LDsjM9i5IDZO47rp
+	z+IprwfTsuwnhSKFmU1I+BCA3j5NCquPyEJjNB6DhBS8yjXTSPPqWbx7wxGh9kz9Igim8Qaa/B/9/
+	u1feBaK8aBJM7ZxxNCj/dpzFtz9Z+mw1BPrHBM6uLvBP51BBDdPCd1aNOFD0wVYFVHuCWV/8cvauR
+	pqSrjvxcXGJ8LfI8Q627+407ra+XOTRjnJCCYgyuVhhIOHhWTlPxIrWIA0RjFdmsjFoCHJKBWuxaZ
+	omkf4XXKnDwB7x8YSduzLV7sCa785HB3QFiSjwbUcHVW2PyvmVUDIqQHG96bognsICxvNz40tMot8
+	s+F7Fa2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pthei-0005n1-2J;
-	Tue, 02 May 2023 04:30:31 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ptiml-000EA3-3C;
+	Tue, 02 May 2023 05:42:47 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptgdk-00HZSl-1C
+	id 1ptimk-000E9Z-1X
+	for linux-mediatek@bombadil.infradead.org;
+	Tue, 02 May 2023 05:42:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=C2mbpKRY/IaHURPbi8xdkp6Ux75t8HAEwDPxIJfytoY=; b=GRdXgF761szqEg4CNDG4iJrg9J
+	11VvbbAcKWkw5/si6IQ33s0lRm6p934RNt6ht80jxpr9YqgUctKtFZGheNbZfMKA/Ryn8lDiQ/V+/
+	IyKWMGIN6GkWysc+kNfWIu2Zwj3dIKdxFDuK8Rv/IV8DcdndRxXQiH/klbsJHeznHjIVqR17XlikS
+	RxXqlsh8nAshh3vAfXGz+quiKjziRZFbz541IK30e6WgZUngPrHjyAsx2KBAlyGsb6ggq/S2lYbZK
+	pNeyk6KwFW574wOsk1xL0q+BsEKBG2ebPp4diJXZEA/u4NMfPZ1Wu5qDlDdzZS0iKEegEdc5YJB0s
+	cUH9/zcg==;
+Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1ptc35-00F21e-0p
 	for linux-mediatek@lists.infradead.org;
-	Tue, 02 May 2023 03:25:21 +0000
-X-UUID: d96f19ace89611ed912e1518a6540028-20230501
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=wQre5lq5KPulOOTISLtbugBiyYNx+lFX9Va3I8xt8is=;
-	b=i69ilZ1tYsG8w2GQeXOAeUpV6eZuHtovG3I7lz3egamSkRw/+gFcxi+C9LEAu6dxmVEbrS0xr0822AYmHijR4gB4yFoU06CWnDM46XvZdU/8pZ8N1neIYHPXq0QMBrI+5YCrRiW34eC2UMLS+kcFko+1vM/Bpgf62tl31jekYMM=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:02fc7555-4ad0-4457-a6cc-e8f4541b3f74,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:120426c,CLOUDID:a5cd7fbf-e32c-4c97-918d-fbb3fc224d4e,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: d96f19ace89611ed912e1518a6540028-20230501
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
-	(envelope-from <ryder.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 11605085; Mon, 01 May 2023 20:10:10 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Tue, 2 May 2023 11:10:08 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 2 May 2023 11:10:08 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
-	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
-	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH v3 1/2] wifi: mt76: mt7996: enable BSS_CHANGED_MU_GROUPS support
-Date: Tue, 2 May 2023 11:10:05 +0800
-Message-ID: <0a7809914a0c480ed4761158142e3c7d2f41ca76.1682971025.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	Mon, 01 May 2023 22:31:14 +0000
+Received: by mail-pj1-x1032.google.com with SMTP id 98e67ed59e1d1-24e09b4153eso905196a91.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 01 May 2023 15:31:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1682980266; x=1685572266;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=C2mbpKRY/IaHURPbi8xdkp6Ux75t8HAEwDPxIJfytoY=;
+        b=MydnFHypJbySOooSNZ9ETF/1six5mxjw+FHQ/I0otqcS1LXMwfEvVXYaQ84i5fkAHQ
+         mIOXyOYXsS53MNOAMHN4W27MqHBITLQpmtr6GE+UoofZVIPqMfrC+P0l+HJ2maZ6YrjK
+         xoTJuPWVM8p8d4jiwCPNIeWShoFKXuKJWx0D9Vq59m6C/IvKIhEKDjWfXzIADkq3GEiN
+         HEX62ptt5RPbRgwl49ncfXRC26rWw1WJVdblIw4dFUE0+PJB/VyOnrnCV/TeaP6Iz1np
+         6z2bPR/6HNftXXyudyR7nKPh0CxerIyZg6TsNLxxmbqeV8KV4yKCdUlBOj/AhOacGO2P
+         Xttw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1682980266; x=1685572266;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=C2mbpKRY/IaHURPbi8xdkp6Ux75t8HAEwDPxIJfytoY=;
+        b=Xhdrw+QATTyn+ywOT7XZuy6Qr9d5TRV2muqrlCH5llNX8N2/5IApv0HQ/xUhAdnNCM
+         Q4/5S12S5hPkYQL1LI9ukrV7dRsqICIFiW2kpVmHekklTNHmCtfIaLbKa52p/szUndH8
+         Lo4Ncp4Gty/221254YXVW8lrTdeXHYHcoWo1lgTln0A8Dtt0lbZljiAi0gfeUiDnUpYR
+         LHORlfBeio3qO7L8aeHWYQwwsTAsehUvarqK95f0fTtuv9GCzLjqHYoT5/31IyZKxwPU
+         yGDNB42G9GyKT08idBt/quQPGfc/zIuMXarXoxsCIcVwise+/EbzvZEpts6V0c5ZPFxE
+         I8jw==
+X-Gm-Message-State: AC+VfDzzR5v1+JLpLZHm6r2KjlMajsK6YA/bVYbGJ2CsMdkda/FzYl9O
+	ESEwB3je7asQrqhEO5IhIGcjJF76qi953udYXrI=
+X-Google-Smtp-Source: ACHHUZ4pCZfkOETLVMCNCYFPb2sUFVmgge5RUxvMRnpMtAoB0d+G3DquSEMud4Mw95ryPYROdal3lg==
+X-Received: by 2002:a17:90a:bd02:b0:23d:1143:c664 with SMTP id y2-20020a17090abd0200b0023d1143c664mr15870863pjr.31.1682980266099;
+        Mon, 01 May 2023 15:31:06 -0700 (PDT)
+Received: from p14s ([2604:3d09:148c:c800:2609:c92d:9942:6f79])
+        by smtp.gmail.com with ESMTPSA id gw13-20020a17090b0a4d00b002470b9503desm19672979pjb.55.2023.05.01.15.31.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 01 May 2023 15:31:05 -0700 (PDT)
+Date: Mon, 1 May 2023 16:31:03 -0600
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: Tinghan Shen <tinghan.shen@mediatek.com>
+Cc: Bjorn Andersson <andersson@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v10 06/11] remoteproc: mediatek: Probe multi-core SCP
+Message-ID: <ZFA9p2feS7Kiwkqh@p14s>
+References: <20230426091211.21557-1-tinghan.shen@mediatek.com>
+ <20230426091211.21557-7-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230426091211.21557-7-tinghan.shen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230501_202520_422149_2072E945 
-X-CRM114-Status: GOOD (  12.73  )
+X-CRM114-CacheID: sfid-20230501_233111_554882_2A99DE3D 
+X-CRM114-Status: GOOD (  36.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,115 +113,314 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Group ID Management frame is an Action frame of category VHT.
-It is transmitted by the AP to assign or change the user position
-of a STA for one or more group IDs.
+On Wed, Apr 26, 2023 at 05:12:06PM +0800, Tinghan Shen wrote:
+> The difference of single-core SCP and multi-core SCP device tree is
+> the presence of child device nodes described SCP cores. The SCP
+> driver populates the platform device and checks the child nodes
+> to identify whether it's a single-core SCP or a multi-core SCP.
+> 
+> Add the remoteproc instances for single-core SCP and multi-core SCP to
+> the new added SCP cluster list. When the SCP driver is removed, it
+> cleanup resources by walking through the cluster list.
+> 
+> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+> ---
+>  drivers/remoteproc/mtk_common.h |   3 +
+>  drivers/remoteproc/mtk_scp.c    | 188 ++++++++++++++++++++++++++++----
+>  2 files changed, 172 insertions(+), 19 deletions(-)
+> 
+> diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
+> index c0905aec3b4b..b73b60c22ea1 100644
+> --- a/drivers/remoteproc/mtk_common.h
+> +++ b/drivers/remoteproc/mtk_common.h
+> @@ -128,6 +128,9 @@ struct mtk_scp {
+>  	size_t dram_size;
+>  
+>  	struct rproc_subdev *rpmsg_subdev;
+> +
+> +	struct list_head elem;
+> +	struct list_head *cluster;
+>  };
+>  
+>  /**
+> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+> index 5e4982f4d5dc..0b052b0acf2e 100644
+> --- a/drivers/remoteproc/mtk_scp.c
+> +++ b/drivers/remoteproc/mtk_scp.c
+> @@ -28,6 +28,7 @@ struct mtk_scp_of_cluster {
+>  	void __iomem *l1tcm_base;
+>  	size_t l1tcm_size;
+>  	phys_addr_t l1tcm_phys;
+> +	struct list_head mtk_scp_cluster;
+>  };
+>  
+>  /**
+> @@ -862,21 +863,31 @@ static void scp_remove_rpmsg_subdev(struct mtk_scp *scp)
+>  	}
+>  }
+>  
+> -static int scp_rproc_init(struct platform_device *pdev)
+> +static int scp_rproc_init(struct platform_device *cluster_pdev,
+> +			  struct platform_device *core_pdev,
+> +			  const struct mtk_scp_of_data *of_data)
+>  {
+> -	struct device *dev = &pdev->dev;
+> -	struct device_node *np = dev->of_node;
+> -	struct mtk_scp_of_cluster *of_cluster = platform_get_drvdata(pdev);
+> +	struct platform_device *pdev;
+> +	struct device *dev;
+> +	struct device_node *np;
+> +	struct mtk_scp_of_cluster *of_cluster = platform_get_drvdata(cluster_pdev);
+>  	struct mtk_scp *scp;
+>  	struct rproc *rproc;
+>  	struct resource *res;
+>  	const char *fw_name = "scp.img";
+>  	int ret, i;
+>  
+> +	if (core_pdev)
+> +		pdev = core_pdev;
+> +	else
+> +		pdev = cluster_pdev;
 
-Also, sniffer can use a given group id to monitor STA that belongs
-to that group.
+After following my comment from the previous patch, there won't be a need to do
+this.  
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- .../net/wireless/mediatek/mt76/mt7996/init.c  |  1 +
- .../net/wireless/mediatek/mt76/mt7996/main.c  | 23 +++++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7996/regs.h  | 21 +++++++++++------
- 3 files changed, 38 insertions(+), 7 deletions(-)
+> +
+> +	dev = &pdev->dev;
+>  	ret = rproc_of_parse_firmware(dev, 0, &fw_name);
+>  	if (ret < 0 && ret != -EINVAL)
+>  		return ret;
+>  
+> +	np = dev->of_node;
+>  	rproc = devm_rproc_alloc(dev, np->name, &scp_ops, fw_name, sizeof(*scp));
+>  	if (!rproc)
+>  		return dev_err_probe(dev, -ENOMEM, "unable to allocate remoteproc\n");
+> @@ -884,7 +895,7 @@ static int scp_rproc_init(struct platform_device *pdev)
+>  	scp = rproc->priv;
+>  	scp->rproc = rproc;
+>  	scp->dev = dev;
+> -	scp->data = of_device_get_match_data(dev);
+> +	scp->data = of_data;
+>  	platform_set_drvdata(pdev, scp);
+>  
+>  	scp->reg_base = of_cluster->reg_base;
+> @@ -934,10 +945,6 @@ static int scp_rproc_init(struct platform_device *pdev)
+>  		goto remove_subdev;
+>  	}
+>  
+> -	ret = rproc_add(rproc);
+> -	if (ret)
+> -		goto remove_subdev;
+> -
+>  	return 0;
+>  
+>  remove_subdev:
+> @@ -952,6 +959,121 @@ static int scp_rproc_init(struct platform_device *pdev)
+>  	return ret;
+>  }
+>  
+> +static void scp_rproc_free(struct mtk_scp *scp)
+> +{
+> +	int i;
+> +
+> +	scp_remove_rpmsg_subdev(scp);
+> +	scp_ipi_unregister(scp, SCP_IPI_INIT);
+> +	scp_unmap_memory_region(scp);
+> +	for (i = 0; i < SCP_IPI_MAX; i++)
+> +		mutex_destroy(&scp->ipi_desc[i].lock);
+> +	mutex_destroy(&scp->send_lock);
+> +}
+> +
+> +static int scp_is_single_core(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct device_node *np = dev_of_node(dev);
+> +	struct device_node *child;
+> +
+> +	child = of_get_next_available_child(np, NULL);
+> +	if (!child)
+> +		return dev_err_probe(dev, -ENODEV, "No child node\n");
+> +
+> +	of_node_put(child);
+> +	return of_node_name_eq(child, "cros-ec-rpmsg");
+> +}
+> +
+> +static int scp_cluster_init(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct device_node *np = dev_of_node(dev);
+> +	struct platform_device *cpdev;
+> +	struct device_node *child;
+> +	struct mtk_scp_of_cluster *of_cluster = platform_get_drvdata(pdev);
+> +	const struct mtk_scp_of_data **cluster_of_data;
+> +	struct list_head *cluster = &of_cluster->mtk_scp_cluster;
+> +	struct mtk_scp *scp, *temp;
+> +	int core_id = 0;
+> +	int ret;
+> +
+> +	ret = scp_is_single_core(pdev);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	if (ret) {
+> +		dev_dbg(dev, "single-core scp\n");
+> +
+> +		/* When using the SCP node phandle on exported SCP APIs, the drvdata
+> +		 * is expected to be the mtk_scp object, and as a result, it is intended
+> +		 * to be overwritten for single-core SCP usage.
+> +		 */
+> +		ret = scp_rproc_init(pdev, NULL, of_device_get_match_data(dev));
+> +		if (ret)
+> +			return dev_err_probe(dev, ret, "Failed to initialize single-core scp\n");
+> +
+> +		scp = platform_get_drvdata(pdev);
+> +		list_add_tail(&scp->elem, cluster);
+> +		scp->cluster = cluster;
+> +	} else {
+> +		dev_dbg(dev, "multi-core scp\n");
+> +
+> +		cluster_of_data = (const struct mtk_scp_of_data **)of_device_get_match_data(dev);
+> +
+> +		for_each_available_child_of_node(np, child) {
+> +			if (!cluster_of_data[core_id]) {
+> +				ret = -EINVAL;
+> +				dev_err(dev, "Not support core %d\n", core_id);
+> +				of_node_put(child);
+> +				goto init_fail;
+> +			}
+> +
+> +			cpdev = of_find_device_by_node(child);
+> +			if (!cpdev) {
+> +				ret = -ENODEV;
+> +				dev_err(dev, "Not found platform device for core %d\n", core_id);
+> +				of_node_put(child);
+> +				goto init_fail;
+> +			}
+> +
+> +			ret = scp_rproc_init(pdev, cpdev, cluster_of_data[core_id]);
+> +			if (ret) {
+> +				dev_err(dev, "Failed to initialize core %d rproc\n", core_id);
+> +				put_device(&cpdev->dev);
+> +				of_node_put(child);
+> +				goto init_fail;
+> +			}
+> +			scp = platform_get_drvdata(cpdev);
+> +			list_add_tail(&scp->elem, cluster);
+> +			scp->cluster = cluster;
+> +			put_device(&cpdev->dev);
+> +
+> +			core_id++;
+> +		}
+> +	}
+> +
+> +	list_for_each_entry_safe_reverse(scp, temp, cluster, elem) {
+> +		ret = rproc_add(scp->rproc);
+> +		if (ret)
+> +			goto add_fail;
+> +	}
+> +
+> +	return 0;
+> +
+> +add_fail:
+> +	list_for_each_entry_continue(scp, cluster, elem) {
+> +		rproc_del(scp->rproc);
+> +	}
+> +init_fail:
+> +	list_for_each_entry_safe_reverse(scp, temp, cluster, elem) {
+> +		list_del(&scp->elem);
+> +		scp_rproc_free(scp);
+> +	}
+> +
+> +	return ret;
+> +}
+> +
+>  static int scp_probe(struct platform_device *pdev)
+>  {
+>  	struct device *dev = &pdev->dev;
+> @@ -983,23 +1105,44 @@ static int scp_probe(struct platform_device *pdev)
+>  		of_cluster->l1tcm_phys = res->start;
+>  	}
+>  
+> +	INIT_LIST_HEAD(&of_cluster->mtk_scp_cluster);
+>  	platform_set_drvdata(pdev, of_cluster);
+>  
+> -	return scp_rproc_init(pdev);
+> +	ret = devm_of_platform_populate(dev);
+> +	if (ret)
+> +		return dev_err_probe(dev, ret, "Failed to populate platform devices\n");
+> +
+> +	ret = scp_cluster_init(pdev);
+> +	if (ret)
+> +		return dev_err_probe(dev, ret, "Failed to initialize scp cluster\n");
+> +
+> +	return 0;
+>  }
+>  
+>  static int scp_remove(struct platform_device *pdev)
+>  {
+> -	struct mtk_scp *scp = platform_get_drvdata(pdev);
+> -	int i;
+> +	struct mtk_scp *scp, *temp;
+> +	struct mtk_scp_of_cluster *of_cluster;
+> +	struct list_head *cluster;
+> +	int ret;
+>  
+> -	rproc_del(scp->rproc);
+> -	scp_remove_rpmsg_subdev(scp);
+> -	scp_ipi_unregister(scp, SCP_IPI_INIT);
+> -	scp_unmap_memory_region(scp);
+> -	for (i = 0; i < SCP_IPI_MAX; i++)
+> -		mutex_destroy(&scp->ipi_desc[i].lock);
+> -	mutex_destroy(&scp->send_lock);
+> +	ret = scp_is_single_core(pdev);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	if (ret) {
+> +		scp = platform_get_drvdata(pdev);
+> +		cluster = scp->cluster;
+> +	} else {
+> +		of_cluster = platform_get_drvdata(pdev);
+> +		cluster = &of_cluster->mtk_scp_cluster;
+> +	}
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-index f1b48cdda58f..3569fef20cd9 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-@@ -183,6 +183,7 @@ mt7996_init_wiphy(struct ieee80211_hw *hw)
- 	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_FILS_DISCOVERY);
- 	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_ACK_SIGNAL_SUPPORT);
- 	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_CAN_REPLACE_PTK0);
-+	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_MU_MIMO_AIR_SNIFFER);
- 
- 	if (!mdev->dev->of_node ||
- 	    !of_property_read_bool(mdev->dev->of_node,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-index f2d0b2982c6b..cb99932318aa 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-@@ -537,6 +537,26 @@ mt7996_get_rates_table(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 	return mvif->basic_rates_idx;
- }
- 
-+static void
-+mt7996_update_mu_group(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
-+		       struct ieee80211_bss_conf *info)
-+{
-+	struct mt7996_vif *mvif = (struct mt7996_vif *)vif->drv_priv;
-+	struct mt7996_dev *dev = mt7996_hw_dev(hw);
-+	u8 band = mvif->mt76.band_idx;
-+	u32 *mu;
-+
-+	mu = (u32 *)info->mu_group.membership;
-+	mt76_wr(dev, MT_WF_PHYRX_BAND_GID_TAB_VLD0(band), mu[0]);
-+	mt76_wr(dev, MT_WF_PHYRX_BAND_GID_TAB_VLD1(band), mu[1]);
-+
-+	mu = (u32 *)info->mu_group.position;
-+	mt76_wr(dev, MT_WF_PHYRX_BAND_GID_TAB_POS0(band), mu[0]);
-+	mt76_wr(dev, MT_WF_PHYRX_BAND_GID_TAB_POS1(band), mu[1]);
-+	mt76_wr(dev, MT_WF_PHYRX_BAND_GID_TAB_POS2(band), mu[2]);
-+	mt76_wr(dev, MT_WF_PHYRX_BAND_GID_TAB_POS3(band), mu[3]);
-+}
-+
- static void mt7996_bss_info_changed(struct ieee80211_hw *hw,
- 				    struct ieee80211_vif *vif,
- 				    struct ieee80211_bss_conf *info,
-@@ -609,6 +629,9 @@ static void mt7996_bss_info_changed(struct ieee80211_hw *hw,
- 	    changed & BSS_CHANGED_FILS_DISCOVERY)
- 		mt7996_mcu_beacon_inband_discov(dev, vif, changed);
- 
-+	if (changed & BSS_CHANGED_MU_GROUPS)
-+		mt7996_update_mu_group(hw, vif, info);
-+
- 	mutex_unlock(&dev->mt76.mutex);
- }
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/regs.h b/drivers/net/wireless/mediatek/mt76/mt7996/regs.h
-index df871361a7e1..43285328ce47 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/regs.h
-@@ -559,22 +559,29 @@ enum base_rev {
- 
- #define MT_PCIE1_MAC_INT_ENABLE			MT_PCIE1_MAC(0x188)
- 
-+/* PHYRX CSD */
-+#define MT_WF_PHYRX_CSD_BASE			0x83000000
-+#define MT_WF_PHYRX_CSD(_band, _wf, ofs)	(MT_WF_PHYRX_CSD_BASE + \
-+						 ((_band) << 20) + \
-+						 ((_wf) << 16) + (ofs))
-+#define MT_WF_PHYRX_CSD_IRPI(_band, _wf)	MT_WF_PHYRX_CSD(_band, _wf, 0x1000)
-+
- /* PHYRX CTRL */
- #define MT_WF_PHYRX_BAND_BASE			0x83080000
- #define MT_WF_PHYRX_BAND(_band, ofs)		(MT_WF_PHYRX_BAND_BASE + \
- 						 ((_band) << 20) + (ofs))
- 
-+#define MT_WF_PHYRX_BAND_GID_TAB_VLD0(_band)	MT_WF_PHYRX_BAND(_band, 0x1054)
-+#define MT_WF_PHYRX_BAND_GID_TAB_VLD1(_band)	MT_WF_PHYRX_BAND(_band, 0x1058)
-+#define MT_WF_PHYRX_BAND_GID_TAB_POS0(_band)	MT_WF_PHYRX_BAND(_band, 0x105c)
-+#define MT_WF_PHYRX_BAND_GID_TAB_POS1(_band)	MT_WF_PHYRX_BAND(_band, 0x1060)
-+#define MT_WF_PHYRX_BAND_GID_TAB_POS2(_band)	MT_WF_PHYRX_BAND(_band, 0x1064)
-+#define MT_WF_PHYRX_BAND_GID_TAB_POS3(_band)	MT_WF_PHYRX_BAND(_band, 0x1068)
-+
- #define MT_WF_PHYRX_BAND_RX_CTRL1(_band)	MT_WF_PHYRX_BAND(_band, 0x2004)
- #define MT_WF_PHYRX_BAND_RX_CTRL1_IPI_EN	GENMASK(2, 0)
- #define MT_WF_PHYRX_BAND_RX_CTRL1_STSCNT_EN	GENMASK(11, 9)
- 
--/* PHYRX CSD */
--#define MT_WF_PHYRX_CSD_BASE			0x83000000
--#define MT_WF_PHYRX_CSD(_band, _wf, ofs)	(MT_WF_PHYRX_CSD_BASE + \
--						 ((_band) << 20) + \
--						 ((_wf) << 16) + (ofs))
--#define MT_WF_PHYRX_CSD_IRPI(_band, _wf)	MT_WF_PHYRX_CSD(_band, _wf, 0x1000)
--
- /* PHYRX CSD BAND */
- #define MT_WF_PHYRX_CSD_BAND_RXTD12(_band)		MT_WF_PHYRX_BAND(_band, 0x8230)
- #define MT_WF_PHYRX_CSD_BAND_RXTD12_IRPI_SW_CLR_ONLY	BIT(18)
--- 
-2.18.0
+If single and multi core systems were presented the same way, i.e with a cluster
+and a list of SCPs, you wouldn't have to do this.  I will stop here for this
+revision.
 
+Thanks,
+Mathieu
+
+> +
+> +	list_for_each_entry_safe_reverse(scp, temp, cluster, elem) {
+> +		list_del(&scp->elem);
+> +		rproc_del(scp->rproc);
+> +		scp_rproc_free(scp);
+> +	}
+>  
+>  	return 0;
+>  }
+> @@ -1078,12 +1221,19 @@ static const struct mtk_scp_of_data mt8195_of_data_c1 = {
+>  	.host_to_scp_int_bit = MT8195_CORE1_HOST_IPC_INT_BIT,
+>  };
+>  
+> +static const struct mtk_scp_of_data *mt8195_of_data_cores[] = {
+> +	&mt8195_of_data,
+> +	&mt8195_of_data_c1,
+> +	NULL
+> +};
+> +
+>  static const struct of_device_id mtk_scp_of_match[] = {
+>  	{ .compatible = "mediatek,mt8183-scp", .data = &mt8183_of_data },
+>  	{ .compatible = "mediatek,mt8186-scp", .data = &mt8186_of_data },
+>  	{ .compatible = "mediatek,mt8188-scp", .data = &mt8188_of_data },
+>  	{ .compatible = "mediatek,mt8192-scp", .data = &mt8192_of_data },
+>  	{ .compatible = "mediatek,mt8195-scp", .data = &mt8195_of_data },
+> +	{ .compatible = "mediatek,mt8195-scp-dual", .data = &mt8195_of_data_cores },
+>  	{},
+>  };
+>  MODULE_DEVICE_TABLE(of, mtk_scp_of_match);
+> -- 
+> 2.18.0
+> 
 
