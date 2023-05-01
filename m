@@ -4,50 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4E2EC77B73
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 May 2023 18:33:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47BAEC77B7C
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 May 2023 21:35:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=6A1dW7hrcJbyNOQT+fMhA0InvfL3QrG+RoN83ZNMrW0=; b=vj/D5GsLDS0knBBFAsii+yPCr1
-	BPW2akpsot8bnzE2qq6EKwejNggsRnnRyCFoG8cWSktRuqtgSJwTf20qf2RtXEt3F6AK/RWUK/F7k
-	jPdtBi7DHQkVoUKwbmYpE22VbUcindLYUSgYarVYAA5EB6K/vNktEccITRilBJ4ueVOvaIYrrxEfo
-	2ko5G2XB7X3fNf9pEkb8W/YRWnQdJKw5jdf1IzutCMNrKJx0Bv3lIlQZCszMHZvoi+1oVAx/Td2uZ
-	aTNabBmwooGJmdshORlpBTqthZqKdvp8QYDd2kzgRtIXL6IoLWu51I9A6EI630d5l/CdYiPYp/YLo
-	14Q4D20A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YjLNqirGMeeH0OkwBgzTQUadLwyAUu+gKD+DbjDt/fI=; b=joJsIf1YlJ249v5LIDyydVxJv5
+	q5lPSDtwUNqGAdT0FfafIE5c9ySurqHH+R+y/ZHBE9iUCaUcbxd1alHr7KCEHjryS8FL9D4KN3D7Q
+	lnLg7YupUxLAtcVekiyrgtNTkeT3uU1sNbqdwww9s+7OROvBmyZd9gweGH++AKvjDlkWp202VGXLh
+	OAMTQIVU/yZO9qQFaxvizkesbSk9Vf4KJl7y4Up1ql47fARROYzntstH6orrzUxgXmnQIQsifEaig
+	ly+Dvgf4YcBTt+BaGLMHUE8spXx2z0dLErzkIA+lUxtzQWey45Y28ACo3nHz2Nqr5lMfyMqi4l3RK
+	sXi1gBtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptYLE-00GYeo-2N;
-	Mon, 01 May 2023 18:33:40 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1ptbAs-00H0BB-0W;
+	Mon, 01 May 2023 21:35:10 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptYL7-00GYe1-0n;
-	Mon, 01 May 2023 18:33:39 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1ptYKz-00077z-1m;
-	Mon, 01 May 2023 20:33:25 +0200
-Date: Mon, 1 May 2023 19:33:14 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Mark Brown <broonie@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Leilk Liu <leilk.liu@mediatek.com>
-Subject: [PATCH] spi: mt65xx: make sure operations completed before unloading
-Message-ID: <ZFAF6pJxMu1z6k4w@makrotopia.org>
+	id 1ptbAo-00H09s-27;
+	Mon, 01 May 2023 21:35:07 +0000
+Received: from [77.22.52.211] (helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1ptbAV-0002yo-Hz; Mon, 01 May 2023 23:34:47 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Andy Gross <agross@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Gerald Schaefer <gerald.schaefer@linux.ibm.com>, iommu@lists.linux.dev,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>, Orson Zhai <orsonzhai@gmail.com>,
+ Rob Clark <robdclark@gmail.com>, Robin Murphy <robin.murphy@arm.com>,
+ Samuel Holland <samuel@sholland.org>,
+ Niklas Schnelle <schnelle@linux.ibm.com>,
+ Thierry Reding <thierry.reding@gmail.com>, Krishna Reddy <vdumpa@nvidia.com>,
+ Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>,
+ Yong Wu <yong.wu@mediatek.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
+ Jason Gunthorpe <jgg@nvidia.com>
+Cc: Lu Baolu <baolu.lu@linux.intel.com>, Kevin Tian <kevin.tian@intel.com>,
+ Nicolin Chen <nicolinc@nvidia.com>, Steven Price <steven.price@arm.com>
+Subject: Re: [PATCH 00/20] iommu: Make default_domain's mandatory
+Date: Mon, 01 May 2023 23:34:45 +0200
+Message-ID: <7005781.1IzOArtZ34@diego>
+In-Reply-To: <0-v1-21cc72fcfb22+a7a-iommu_all_defdom_jgg@nvidia.com>
+References: <0-v1-21cc72fcfb22+a7a-iommu_all_defdom_jgg@nvidia.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230501_113333_309720_D727D522 
-X-CRM114-Status: GOOD (  11.30  )
+X-CRM114-CacheID: sfid-20230501_143506_714101_AEA1CDCE 
+X-CRM114-Status: UNSURE (   8.24  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,74 +83,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When unloading the spi-mt65xx kernel module during an ongoing spi-mem
-operation the kernel will Oops shortly after unloading the module.
-This is because wait_for_completion_timeout was still running and
-returning into the no longer loaded module:
+Hi,
 
-Internal error: Oops: 0000000096000005 [#1] SMP
-Modules linked in: [many, but spi-mt65xx is no longer there]
-CPU: 0 PID: 2578 Comm: block Tainted: G        W  O       6.3.0-next-20230428+ #0
-Hardware name: Bananapi BPI-R3 (DT)
-pstate: 804000c5 (Nzcv daIF +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-pc : __lock_acquire+0x18c/0x20e8
-lr : __lock_acquire+0x9b8/0x20e8
-sp : ffffffc009ec3400
-x29: ffffffc009ec3400 x28: 0000000000000001 x27: 0000000000000004
-x26: ffffff80082888c8 x25: 0000000000000000 x24: 0000000000000000
-x23: ffffffc009609da8 x22: ffffff8008288000 x21: ffffff8008288968
-x20: 00000000000003c2 x19: ffffff8008be7990 x18: 00000000000002af
-x17: 0000000000000000 x16: 0000000000000000 x15: ffffffc008d78970
-x14: 000000000000080d x13: 00000000000002af x12: 00000000ffffffea
-x11: 00000000ffffefff x10: ffffffc008dd0970 x9 : ffffffc008d78918
-x8 : 0000000000017fe8 x7 : 0000000000000001 x6 : 0000000000000000
-x5 : ffffff807fb53910 x4 : 0000000000000000 x3 : 0000000000000027
-x2 : 0000000000000027 x1 : 0000000000000000 x0 : 00000000000c03c2
-Call trace:
- __lock_acquire+0x18c/0x20e8
- lock_acquire+0x100/0x2a4
- _raw_spin_lock_irq+0x58/0x74
- __wait_for_common+0xe0/0x1b4
- wait_for_completion_timeout+0x1c/0x24
- 0xffffffc000acc8a4 <--- used to be mtk_spi_transfer_wait
- spi_mem_exec_op+0x390/0x3ec
- spi_mem_no_dirmap_read+0x6c/0x88
- spi_mem_dirmap_read+0xcc/0x12c
- spinand_read_page+0xf8/0x1dc
- spinand_mtd_read+0x1b4/0x2fc
- mtd_read_oob_std+0x58/0x7c
- mtd_read_oob+0x8c/0x148
- mtd_read+0x50/0x6c
- ...
+Am Montag, 1. Mai 2023, 20:02:44 CEST schrieb Jason Gunthorpe:
+> This follows the prior series:
+> 
+> https://lore.kernel.org/r/0-v4-79d0c229580a+650-iommu_err_unwind_jgg@nvidia.com
 
-Prevent this by completing in mtk_spi_remove if needed.
+which probably will need an update for Greg's recent
+b18d0a0f92a8 ("iommu: make the pointer to struct bus_type constant")
 
-Fixes: 9f763fd20da7 ("spi: mediatek: add spi memory support for ipm design")
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
+I've fixed that locally for me for testing
 
-A short grep revealed that many if not most other SPI drivers may need
-the same fix. However, I can impossibly test all of them, so let's
-start with this one.
+Heiko
 
- drivers/spi/spi-mt65xx.c | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
-index 21c321f437667..d7432e2219d85 100644
---- a/drivers/spi/spi-mt65xx.c
-+++ b/drivers/spi/spi-mt65xx.c
-@@ -1275,6 +1275,9 @@ static int mtk_spi_remove(struct platform_device *pdev)
- 	struct mtk_spi *mdata = spi_master_get_devdata(master);
- 	int ret;
- 
-+	if (mdata->use_spimem && !completion_done(&mdata->spimem_done))
-+		complete(&mdata->spimem_done);
-+
- 	ret = pm_runtime_resume_and_get(&pdev->dev);
- 	if (ret < 0)
- 		return ret;
--- 
-2.40.1
 
 
