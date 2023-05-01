@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91E9CC77B7C
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 May 2023 17:48:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D331BC77B73
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 May 2023 17:48:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=qI1N6Zt1ichZ6d+bawiKp7X6Hia786Ixe1XzJA/8a1M=; b=IbSaMtar0Ws9Fn
-	cOgUnfb/REa+VcvMNYOB3+XFHZQ1QigbTE6U2+d5mkhTAuMOz/dRqG7mD61LpGajVdAUWHEsW0xp+
-	bPaPO8dKq8ZOYhZkBntM/OZTp4IoPlkaLAfIVXEfGFqFC1BaP1fsLRqZ9HnY/S8DclBpuj3LLojhm
-	2F503lkpPgwWy2ADgsmZEa3ki+XJTw/8ep60mImWdwy3JLoxmEZb97038cT58qmcwRxA15uHg7uzi
-	nGyvO0dmHMB82kKjHxlIoIM5VaO3Kioj5Oe3rOihUu4NlcUrW14lQxbBES8tsyf90oXdM54urdkOv
-	2w0AdFc/gAepyGz6OQOA==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=7zn2qiz0PMcDlMBZ9iY+p8RStjdYbRZl/cnGOAd2Vqg=; b=4aXzIIP2xuVIv0
+	NKNHCl4eevQLJ3EjL+hn0OwHpdZaHcDY9ZewKegX7Z0W1e5tgsXcX8L6TizWjb3zWU8nZGGSeO8dd
+	+I+QE+3GuiiEaUGj4/jUz3Kkk3bzXWBJkn/6KyhooJomoy6cIlL+XyWewCebKqAlRnrmkQ73PapHu
+	yYXj3mHcF0+9FyQZGU4UzRB9OlRL0YJJUTcExYFCc6Wk1W2qzn4A19lxhdECCvBZ7rszOgOAkH3/h
+	0VDQmV7R9sizvhmwJrTWBa+JwND/8kvlzUN0FhhrC1YH0M8TdlepJUANmcgaTL8E9JpSh1Wh20nZD
+	xNJjN0gOrWGKG+A8RrpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptXdH-00GQrd-0T;
-	Mon, 01 May 2023 17:48:15 +0000
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+	id 1ptXdI-00GQsy-2b;
+	Mon, 01 May 2023 17:48:16 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptXdC-00GQqZ-0t;
-	Mon, 01 May 2023 17:48:11 +0000
-Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-94a342f7c4cso559681866b.0;
-        Mon, 01 May 2023 10:48:09 -0700 (PDT)
+	id 1ptXdE-00GQqy-1Z;
+	Mon, 01 May 2023 17:48:13 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-94f109b1808so557065266b.1;
+        Mon, 01 May 2023 10:48:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1682963288; x=1685555288;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=qI1N6Zt1ichZ6d+bawiKp7X6Hia786Ixe1XzJA/8a1M=;
-        b=lmE7WGlLGrME4epC57gTjPU0aUj16Grms5aQKdEtvi90ImHoewFujkBINSKYc9GXXI
-         hvz+21dt6GXQsWG3BteSk9p1bJMqRVoEYZ/GRlR0jc6qjZArII9vyr0D3TvQpsrW764a
-         iHeMjvuy/hr2cU6R1Au5Gc2pmHtgasxTWFSXf+oO0LpECeK+LRzaatwTRmvUBpTVO6JX
-         9ir44g/tp/E0zr3w7zx8NO551T/d31QC4Kl7U3hQF5kvP4x8Q4r0Z4A4+MRqADFkv2Vv
-         F6/k992ug7yMHiBnYIPgifHZb+ZUdJ6pJ6Q/MtPMd0jSB62S7LP+BlV1xuUJWnUp2aYA
-         cZqA==
+        d=gmail.com; s=20221208; t=1682963290; x=1685555290;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=7zn2qiz0PMcDlMBZ9iY+p8RStjdYbRZl/cnGOAd2Vqg=;
+        b=E909MYKQQE2H2eABVhK2NB2EqRseF2MVkG26I7NnkE2LTNq3iiK3sZ81J8yuInxdGL
+         eW3sEbuz5qp4p2RIgknB0EVVXKRnynjZiH0thBBrmil/LtpvY1/bIcpCofrxAHux7e80
+         SKTbBF3OiYADM3Bb7nxbhGkOyIaP7WmZnHe8BAu8bwPfTLGaudGxhDcyPSl3ewstPzVA
+         lyHqfgjtqYI2UdaRwTle2opR6/x81jeMs6AgrChQM3B2DBFxUL9p2Pu/seAWY/ZTVsww
+         DKEjP4ZsIt5FDfuV+zUnwRLcA+6Xwkhd6k/ny3ZePUqP9Mbcx3xgTRFP1IciGEaoW1B5
+         0PQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682963288; x=1685555288;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=qI1N6Zt1ichZ6d+bawiKp7X6Hia786Ixe1XzJA/8a1M=;
-        b=UgXFzgj8vE3RWmp8hSCPs+LXrdlUtDAwjIP6+AFsNM/44qu4Lnh2A/Xa6Wl6YRccNV
-         QcIEBArxusin9sVtcuP/bdvPI8VYTCG2qQv+DFpAPF3e48Oe2hatqbSq5kD0emZ954js
-         hVYDF0DfiwYqAAqSZYK/hXjr09XdV62IL71FH4wGwsJOd5nXmthPmAF84fUvGm1i4xBh
-         yI38Gx7RFyKGeRuoqhv/znkvD7JzkKRZY/FAF+F8Qz3xsh96uJWOWmtbjQ6cWzQGgRLI
-         iD4wFPtE3GS+0hJdOiusFlBekg8h1tWA+Jyiuz8ZVqqiQt6Sy4LsyarXS6jCQ46EgKzt
-         eBBg==
-X-Gm-Message-State: AC+VfDz/QdtOEGySRkbcSM8Ix+kAGDXc2+f6WQx3nIzkDB2Gx/GHFK5U
-	ZnAWjsNRsP9qh0c5iFjjspM=
-X-Google-Smtp-Source: ACHHUZ51gmO+BlobpsctJj4Kl2cSXLWvxQ/F9MjBGUzNp9G/uelXavA5/b6R7ImxR6gMX7nKRSnn1w==
-X-Received: by 2002:a17:907:c23:b0:94f:2852:1d2b with SMTP id ga35-20020a1709070c2300b0094f28521d2bmr13090056ejc.72.1682963288063;
-        Mon, 01 May 2023 10:48:08 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1682963290; x=1685555290;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=7zn2qiz0PMcDlMBZ9iY+p8RStjdYbRZl/cnGOAd2Vqg=;
+        b=Hsn6fHEdlGcLC8bxHJVqrNsq8xJZiEML2ZSH5Ij9t/Fdsn1nj+MsRaMidrw1APAHrE
+         ZlW+nqwl/hXw93u7DejfDob4LzL6RZjpqI2OnchdMZq77b/O46k9NSx9CATF/wvRxT9J
+         IitvUtfpzAnVyb+4fyh88FNbVRTxlRU80Q7i1OfurTS8MnuBNO/GD7XKeQda99A0ttog
+         11NEnfVp5t0g6Xjejcp15y2fVVwLmJeY1kLvgkgOuruxxSIHExcUhbTbreDVU74yL6Jb
+         DehnrCsTmpBbawNQ1JCzRC1DBIO0alNP4JSgFYt6Sj3ntumVENgxpMkNs2vzHKXWAfbm
+         pE2w==
+X-Gm-Message-State: AC+VfDwbVAEVYh/3o2q9rf0w4Zkb1OWT/ywGkbDE0ldlVnwoBhFcE21k
+	T+ohCel5Vm75GylOsKJhlOc=
+X-Google-Smtp-Source: ACHHUZ5DEcNfC1UtuRNa7f50gd0sYliwOZl7OqRIA3Ob1gb+R7LWKSfIJGKY1dall4G8t5nc+y4xrw==
+X-Received: by 2002:a17:907:a4c:b0:94e:bc04:1e19 with SMTP id be12-20020a1709070a4c00b0094ebc041e19mr12339374ejc.71.1682963290375;
+        Mon, 01 May 2023 10:48:10 -0700 (PDT)
 Received: from arinc9-PC.lan ([149.91.1.15])
-        by smtp.gmail.com with ESMTPSA id se20-20020a170907a39400b0095ef737dbd7sm7745282ejc.93.2023.05.01.10.48.05
+        by smtp.gmail.com with ESMTPSA id se20-20020a170907a39400b0095ef737dbd7sm7745282ejc.93.2023.05.01.10.48.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 01 May 2023 10:48:07 -0700 (PDT)
+        Mon, 01 May 2023 10:48:10 -0700 (PDT)
 From: arinc9.unal@gmail.com
 X-Google-Original-From: arinc.unal@arinc9.com
 To: Sean Wang <sean.wang@mediatek.com>,
@@ -76,16 +77,18 @@ To: Sean Wang <sean.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	=?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>
-Subject: [PATCH v2 net 1/2] net: dsa: mt7530: fix corrupt frames using trgmii on 40 MHz XTAL MT7621
-Date: Mon,  1 May 2023 20:47:42 +0300
-Message-Id: <20230501174743.95897-1-arinc.unal@arinc9.com>
+Subject: [PATCH v2 net 2/2] net: dsa: mt7530: fix network connectivity with multiple CPU ports
+Date: Mon,  1 May 2023 20:47:43 +0300
+Message-Id: <20230501174743.95897-2-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230501174743.95897-1-arinc.unal@arinc9.com>
+References: <20230501174743.95897-1-arinc.unal@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230501_104810_310482_13119F7C 
-X-CRM114-Status: GOOD (  14.43  )
+X-CRM114-CacheID: sfid-20230501_104812_528626_1D769EFC 
+X-CRM114-Status: GOOD (  18.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,53 +106,73 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-The multi-chip module MT7530 switch with a 40 MHz oscillator on the
-MT7621AT, MT7621DAT, and MT7621ST SoCs forwards corrupt frames using
-trgmii.
+On mt753x_cpu_port_enable() there's code that enables flooding for the CPU
+port only. Since mt753x_cpu_port_enable() runs twice when both CPU ports
+are enabled, port 6 becomes the only port to forward the frames to. But
+port 5 is the active port, so no frames received from the user ports will
+be forwarded to port 5 which breaks network connectivity.
 
-This is caused by the assumption that MT7621 SoCs have got 150 MHz PLL,
-hence using the ncpo1 value, 0x0780.
+Every bit of the BC_FFP, UNM_FFP, and UNU_FFP bits represents a port. Fix
+this issue by setting the bit that corresponds to the CPU port without
+overwriting the other bits.
 
-My testing shows this value works on Unielec U7621-06, Bartel's testing
-shows it won't work on Hi-Link HLK-MT7621A and Netgear WAC104. All devices
-tested have got 40 MHz oscillators.
+Clear the bits beforehand only for the MT7531 switch. According to the
+documents MT7621 Giga Switch Programming Guide v0.3 and MT7531 Reference
+Manual for Development Board v1.0, after reset, the BC_FFP, UNM_FFP, and
+UNU_FFP bits are set to 1 for MT7531, 0 for MT7530.
 
-Using the value for 125 MHz PLL, 0x0640, works on all boards at hand. The
-definitions for 125 MHz PLL exist on the Banana Pi BPI-R2 BSP source code
-whilst 150 MHz PLL don't.
+The commit 5e5502e012b8 ("net: dsa: mt7530: fix roaming from DSA user
+ports") silently changed the method to set the bits on the MT7530_MFC.
+Instead of clearing the relevant bits before mt7530_cpu_port_enable()
+which runs under a for loop, the commit started doing it on
+mt7530_cpu_port_enable().
 
-Forwarding frames using trgmii on the MCM MT7530 switch with a 25 MHz
-oscillator on the said MT7621 SoCs works fine because the ncpo1 value
-defined for it is for 125 MHz PLL.
+Back then, this didn't really matter as only a single CPU port could be
+used since the CPU port number was hardcoded. The driver was later changed
+with commit 1f9a6abecf53 ("net: dsa: mt7530: get cpu-port via dp->cpu_dp
+instead of constant") to retrieve the CPU port via dp->cpu_dp. With that,
+this silent change became an issue for when using multiple CPU ports.
 
-Change the 150 MHz PLL comment to 125 MHz PLL, and use the 125 MHz PLL
-ncpo1 values for both oscillator frequencies.
-
-Link: https://github.com/BPI-SINOVOIP/BPI-R2-bsp/blob/81d24bbce7d99524d0771a8bdb2d6663e4eb4faa/u-boot-mt/drivers/net/rt2880_eth.c#L2195
-Fixes: 7ef6f6f8d237 ("net: dsa: mt7530: Add MT7621 TRGMII mode support")
-Tested-by: Bartel Eerdekens <bartel.eerdekens@constell8.be>
+Fixes: 5e5502e012b8 ("net: dsa: mt7530: fix roaming from DSA user ports")
 Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- drivers/net/dsa/mt7530.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+
+v2: Add the fixes tag and information about the commit that caused this
+issue.
+
+---
+ drivers/net/dsa/mt7530.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index c680873819b0..7d9f9563dbda 100644
+index 7d9f9563dbda..9bc54e1348cb 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -426,9 +426,9 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
- 		else
- 			ssc_delta = 0x87;
- 		if (priv->id == ID_MT7621) {
--			/* PLL frequency: 150MHz: 1.2GBit */
-+			/* PLL frequency: 125MHz: 1.0GBit */
- 			if (xtal == HWTRAP_XTAL_40MHZ)
--				ncpo1 = 0x0780;
-+				ncpo1 = 0x0640;
- 			if (xtal == HWTRAP_XTAL_25MHZ)
- 				ncpo1 = 0x0a00;
- 		} else { /* PLL frequency: 250MHz: 2.0Gbit */
+@@ -1002,9 +1002,9 @@ mt753x_cpu_port_enable(struct dsa_switch *ds, int port)
+ 	mt7530_write(priv, MT7530_PVC_P(port),
+ 		     PORT_SPEC_TAG);
+ 
+-	/* Disable flooding by default */
+-	mt7530_rmw(priv, MT7530_MFC, BC_FFP_MASK | UNM_FFP_MASK | UNU_FFP_MASK,
+-		   BC_FFP(BIT(port)) | UNM_FFP(BIT(port)) | UNU_FFP(BIT(port)));
++	/* Enable flooding on the CPU port */
++	mt7530_set(priv, MT7530_MFC, BC_FFP(BIT(port)) | UNM_FFP(BIT(port)) |
++		   UNU_FFP(BIT(port)));
+ 
+ 	/* Set CPU port number */
+ 	if (priv->id == ID_MT7621)
+@@ -2367,6 +2367,10 @@ mt7531_setup_common(struct dsa_switch *ds)
+ 	/* Enable and reset MIB counters */
+ 	mt7530_mib_reset(ds);
+ 
++	/* Disable flooding on all ports */
++	mt7530_clear(priv, MT7530_MFC, BC_FFP_MASK | UNM_FFP_MASK |
++		     UNU_FFP_MASK);
++
+ 	for (i = 0; i < MT7530_NUM_PORTS; i++) {
+ 		/* Disable forwarding by default on all ports */
+ 		mt7530_rmw(priv, MT7530_PCR_P(i), PCR_MATRIX_MASK,
 -- 
 2.39.2
 
