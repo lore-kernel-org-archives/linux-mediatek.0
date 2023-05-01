@@ -4,95 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2A72C77B73
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 May 2023 02:57:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3E17C77B60
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 May 2023 02:59:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=T0ZkpApH9Uyl/XYPLTJH+Oty+sLxkUjSVHrKn2yb7ns=; b=ChcAjYFjAAtbG/SMkxxAZ44t9K
-	RQbhgLONPLctsVLlvs3q1rvoQlFWko2kJTdY+0DPNE4bfy4ubYPNATrfHTQT0KlyTD+4MdIFMMB9p
-	6x6XrpMFS4NZAI8QPoSyS5CygT6eOsGQMcCIayQC34AtGbGmhlKESGx3SM09oBe4OW8Kbu2T2WhkQ
-	htkP++8hVt6DpKfs5EdYKq23rnv/DKDFGMZdeNsbKfIj1tCIRmTFPu+jKBFz+ta2S95k0ny9qA/xv
-	KnUP8NmWmTCwntcOAhbppVd8h2XaF+YNy7ZmTG5PU4AYeIBNixE87bc09BBFmheHmdGcn+BMI0HcC
-	Zytnb+KQ==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vv6GGfQoCCsEVzrI8zbqyeKtCeys1LEvMb8h1CYFlRo=; b=cfGoBLS3eXbe4PCsOWrzo0u62Z
+	G58qSlskDJF78Xcf3vlrE/o7XYwhdOlD2Cew5+6cMSbOD3RKIK9HAdmkL+4wL8SmDQiFkLK3IP0DS
+	DjeLlVbe1VcQP80tvFN8hf5fduCpU7ysYDYLiVj5ZgLukaIClURy1Y5DBcNw8vg7oHGklBExdThWk
+	pP3buZ/H8JDK2Fk/N72anizWfLWnVimhJ8nVNskeD5dCeTXMn8ce19kUtW0+VknFhMi0K8j79RX96
+	FJOzkL+3UmynLjZ/+szabvS+Mjf9XF2p/rE9r/ER/ZGImEaqGr2bAXtxuYG4J3oNT4IzGZKpHVPeg
+	AsjoLKgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptJjD-00F44s-1h;
-	Mon, 01 May 2023 02:57:27 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1ptJlR-00F55x-0i;
+	Mon, 01 May 2023 02:59:45 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptJj9-00F43F-2v
-	for linux-mediatek@lists.infradead.org;
-	Mon, 01 May 2023 02:57:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1682909841;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=T0ZkpApH9Uyl/XYPLTJH+Oty+sLxkUjSVHrKn2yb7ns=;
-	b=COMFe4VyR+AuULFo/o/q2buVnJhO4ROuY+OSpvRJG+l1tyl0yoR6QRGzekUmaGsQq+wDbd
-	4vE75NjXq2NQBpnikoBwEKNOOtl6ylpNY3Vrt9irvHMA/VNvEXpf7pPexQ8MQZLjq1ZMKm
-	2TqZozQklLeGITZtBETZqc2DmRix5bo=
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-128-uv6sGWcSPAieL4-nUcnXYA-1; Sun, 30 Apr 2023 22:57:20 -0400
-X-MC-Unique: uv6sGWcSPAieL4-nUcnXYA-1
-Received: by mail-qk1-f198.google.com with SMTP id af79cd13be357-7515a7ba88aso217181085a.3
-        for <linux-mediatek@lists.infradead.org>; Sun, 30 Apr 2023 19:57:20 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682909840; x=1685501840;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=T0ZkpApH9Uyl/XYPLTJH+Oty+sLxkUjSVHrKn2yb7ns=;
-        b=V40vXdMR89pNpeTl3o3f7uEOmBHttBX71i4su2fB9apQA6K5NRL5nWMKYFphoKv7rG
-         xgLzJxq+QxltpkRs86gkzE9rzPErF6JlNiPmeX7Xk/K/c+9bDPaeqbNvruG/13gbWOeV
-         zTpnAYfUtJ9nCBqOnvLRxvtqUUio9HuqikIOmWfhN5Xdvp2gzGFNtvbj7VUKvnNy7ffP
-         Bdyxl3WoSqnR/4ID571xTh4dS0Ql7PWmYlNNqxPFtL/cg2umjCSPuL0DLZi3muUKDThK
-         yy12zK8iWN2qEm9bj475xjJ6ThMx607b/UDtDh70Xz1EbdWZXndVz/Yqkr5eIlht7fOB
-         cRUQ==
-X-Gm-Message-State: AC+VfDxqXVyBEKwioE/G7ez1CuQhrXCmoYJyCKSJDXjvQcGVq+RYbfg1
-	sYpwfyqhbAlW+27KWxUUefCZNKxZjz5/z8Y1TBmOVX6BGtta+9PISvgd9aiB5sJYP49yfw8P35Y
-	DMicrlOI6/fLgVlk5POl+u9/kJPbjODcj
-X-Received: by 2002:a05:6214:c82:b0:60e:98be:8694 with SMTP id r2-20020a0562140c8200b0060e98be8694mr16050596qvr.46.1682909839914;
-        Sun, 30 Apr 2023 19:57:19 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4/ljLsU87nCmXWBl5vPSzg7xYiesizXksCYmzOcSH/wrxt2VTaDcOJnMVYcKodfsqf+KRBQA==
-X-Received: by 2002:a05:6214:c82:b0:60e:98be:8694 with SMTP id r2-20020a0562140c8200b0060e98be8694mr16050578qvr.46.1682909839687;
-        Sun, 30 Apr 2023 19:57:19 -0700 (PDT)
-Received: from dell-per740-01.7a2m.lab.eng.bos.redhat.com (nat-pool-bos-t.redhat.com. [66.187.233.206])
-        by smtp.gmail.com with ESMTPSA id i7-20020a056214030700b005eedb5cebd1sm8307482qvu.130.2023.04.30.19.57.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 30 Apr 2023 19:57:19 -0700 (PDT)
-From: Tom Rix <trix@redhat.com>
-To: chunkuang.hu@kernel.org,
-	p.zabel@pengutronix.de,
-	chunfeng.yun@mediatek.com,
-	vkoul@kernel.org,
-	kishon@kernel.org,
+	id 1ptJlO-00F545-15;
+	Mon, 01 May 2023 02:59:43 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id E41E561717;
+	Mon,  1 May 2023 02:59:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 70184C433EF;
+	Mon,  1 May 2023 02:59:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1682909980;
+	bh=YKojEJiiV1QvwHI5f0ezVGrRBJg+sS7nU5ba/bX9Vb8=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=p9AzbP/kx+wSby7ytTnMivAm3jk1V+SGZZXz941qqCeaVX9eCs+7ZYNfAiDa/v+iJ
+	 ThW+a+ZicUbSPKwJ5lWDqFIrytV1nZbsaktsHB8dSFAsOOidhwUoYo8RRSXr/xtLCg
+	 npqYgTaCz5kS32kTyZe1s5mmErZHrztaoXsIZvPEbt8WlC+L8LZ0xMuBla+UUVx4IV
+	 34NQQAGU7ZG4GRT4dLDIt5vb/JohOqqbgaMhz/4O2oV8j+HFjzysaPpCyPPnR03w43
+	 EHsSUa/0J5X0mqRagA/PpqpgFG5M2UeIeqqLSKmcUZu30dFnq6ls7z/NbryxePF58T
+	 hlQ3fAX5fzhPA==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Wei Chen <harperchen1110@gmail.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Sasha Levin <sashal@kernel.org>,
+	tiffany.lin@mediatek.com,
+	andrew-ct.chen@mediatek.com,
+	yunfei.dong@mediatek.com,
 	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com
-Cc: dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
+	linux-media@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-phy@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Tom Rix <trix@redhat.com>
-Subject: [PATCH] phy: mediatek: rework the floating point comparisons to fixed point
-Date: Sun, 30 Apr 2023 22:57:16 -0400
-Message-Id: <20230501025716.2905609-1-trix@redhat.com>
-X-Mailer: git-send-email 2.27.0
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.3 42/44] media: mediatek: vcodec: Fix potential array out-of-bounds in decoder queue_setup
+Date: Sun, 30 Apr 2023 22:56:30 -0400
+Message-Id: <20230501025632.3253067-42-sashal@kernel.org>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230501025632.3253067-1-sashal@kernel.org>
+References: <20230501025632.3253067-1-sashal@kernel.org>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
+X-stable: review
+X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230430_195724_034534_6706A076 
-X-CRM114-Status: GOOD (  11.27  )
+X-CRM114-CacheID: sfid-20230430_195942_412721_65DF09AA 
+X-CRM114-Status: GOOD (  13.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,55 +84,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-gcc on aarch64 reports
-drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c: In function ‘mtk_hdmi_pll_set_rate’:
-drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:240:52: error: ‘-mgeneral-regs-only’
-  is incompatible with the use of floating-point types
-  240 |         else if (tmds_clk >= 54 * MEGA && tmds_clk < 148.35 * MEGA)
+From: Wei Chen <harperchen1110@gmail.com>
 
-Floating point should not be used, so rework the floating point comparisons
-to fixed point.
+[ Upstream commit 8fbcf730cb89c3647f3365226fe7014118fa93c7 ]
 
-Signed-off-by: Tom Rix <trix@redhat.com>
+variable *nplanes is provided by user via system call argument. The
+possible value of q_data->fmt->num_planes is 1-3, while the value
+of *nplanes can be 1-8. The array access by index i can cause array
+out-of-bounds.
+
+Fix this bug by checking *nplanes against the array size.
+
+Signed-off-by: Wei Chen <harperchen1110@gmail.com>
+Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
-index abfc077fb0a8..c9501a3d90a5 100644
---- a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
-+++ b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
-@@ -237,11 +237,11 @@ static int mtk_hdmi_pll_calc(struct mtk_hdmi_phy *hdmi_phy, struct clk_hw *hw,
- 	 */
- 	if (tmds_clk < 54 * MEGA)
- 		txposdiv = 8;
--	else if (tmds_clk >= 54 * MEGA && tmds_clk < 148.35 * MEGA)
-+	else if (tmds_clk >= 54 * MEGA && (tmds_clk * 100) < 14835 * MEGA)
- 		txposdiv = 4;
--	else if (tmds_clk >= 148.35 * MEGA && tmds_clk < 296.7 * MEGA)
-+	else if ((tmds_clk * 100) >= 14835 * MEGA && (tmds_clk * 10) < 2967 * MEGA)
- 		txposdiv = 2;
--	else if (tmds_clk >= 296.7 * MEGA && tmds_clk <= 594 * MEGA)
-+	else if ((tmds_clk * 10) >= 2967 * MEGA && tmds_clk <= 594 * MEGA)
- 		txposdiv = 1;
- 	else
- 		return -EINVAL;
-@@ -328,12 +328,12 @@ static int mtk_hdmi_pll_drv_setting(struct clk_hw *hw)
- 		clk_channel_bias = 0x34; /* 20mA */
- 		impedance_en = 0xf;
- 		impedance = 0x36; /* 100ohm */
--	} else if (pixel_clk >= 74.175 * MEGA && pixel_clk <= 300 * MEGA) {
-+	} else if ((pixel_clk * 1000) >= 74175 * MEGA && pixel_clk <= 300 * MEGA) {
- 		data_channel_bias = 0x34; /* 20mA */
- 		clk_channel_bias = 0x2c; /* 16mA */
- 		impedance_en = 0xf;
- 		impedance = 0x36; /* 100ohm */
--	} else if (pixel_clk >= 27 * MEGA && pixel_clk < 74.175 * MEGA) {
-+	} else if (pixel_clk >= 27 * MEGA && (pixel_clk * 1000) < 74175 * MEGA) {
- 		data_channel_bias = 0x14; /* 10mA */
- 		clk_channel_bias = 0x14; /* 10mA */
- 		impedance_en = 0x0;
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+index 641f533c417fd..173407664cf42 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+@@ -753,6 +753,13 @@ int vb2ops_vdec_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers,
+ 	}
+ 
+ 	if (*nplanes) {
++		if (vq->type == V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE) {
++			if (*nplanes != q_data->fmt->num_planes)
++				return -EINVAL;
++		} else {
++			if (*nplanes != 1)
++				return -EINVAL;
++		}
+ 		for (i = 0; i < *nplanes; i++) {
+ 			if (sizes[i] < q_data->sizeimage[i])
+ 				return -EINVAL;
 -- 
-2.27.0
+2.39.2
 
 
