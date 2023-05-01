@@ -4,71 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A77B4C77B61
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 May 2023 07:51:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14248C77B73
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 May 2023 09:23:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:References:In-Reply-To:Subject:CC:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Z0oEgBhbgkatdW/gn/4BePOt2CMODf7qHT2G4Wu1GCU=; b=1m6Morj1seLiEMrkUSKAh0l/36
-	SGAtg2sBuV3bB2Re9JvZVlIpCuWXgBY7uvHCV5C7xw4hk7j9ELR9gFHW995sVgN/XaQw7MzufofRn
-	tQCgVERueXW9nsGSqiaXAuVoXX68UcjvlEQ+kYBJRnMNKEWS0xJdvSJiKbQb5dbDqZEeLIE9E9i6O
-	4jOexoLEKqLYMPIyAoR3aULXnTM0Z9/GO4sm71kL6KU8yeKm2HdygU90QRuN+0bJJQ7RUutJAlD8C
-	e8Yzq7LMN/7unjJCJ9IUFCAdzOEJaO9pTNmIsyHX6a/Kix4BZhet8XTim2ZqyXmKefLlj1pNor3KY
-	QXBcYEAA==;
+	bh=Y09aEpsjG2NpER25NLjgFvC/DUFZb+el/WbMrnDQ5ME=; b=Rqd2Uvxh7UZoDlLHVG4Tkgt7uF
+	fbQ99LSFYZyn+i8yLVAtNJBwwUsHRf5nTwYtMAPR85g+lduld2BKUOrQpEhqoTKcqTP90BE8QhDaq
+	MvpzyUJhiFDEModdeZBqUpnZkdorfZW4162BAkqISeUouWnczTLDS3I9A8SsHMMUBy2X3/Auehxym
+	NIE9pWE9u0XMR3KjU2VGcXFeybsY9rIQbRKZ+w923gN8kRQZvjTkkI3YDr7AovHmHJqEunFBxI7fS
+	65ZFGSkXySb+PIE0sKxrDPDiNIhjnC7HKIYEPMYEDlr0tBtLC93qsT929eK2MEQY6Dk081XBBg2ym
+	MRjXS74g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptOJb-00FQ7o-31;
-	Mon, 01 May 2023 07:51:19 +0000
-Received: from mxout1.routing.net ([2a03:2900:1:a::a])
+	id 1ptPkQ-00FXFo-0H;
+	Mon, 01 May 2023 09:23:06 +0000
+Received: from perseus.uberspace.de ([95.143.172.134])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptOJX-00FQ5f-13;
-	Mon, 01 May 2023 07:51:17 +0000
-Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
-	by mxout1.routing.net (Postfix) with ESMTP id CFD64400E8;
-	Mon,  1 May 2023 07:51:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1682927467;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Z0oEgBhbgkatdW/gn/4BePOt2CMODf7qHT2G4Wu1GCU=;
-	b=WEMV8dmHrsdCXTVLpmZlng2C0yOQHzsMoiVhnUYlKTzAfpr+qRv33PIv6YdmJq+6IDyQRE
-	GXfJqF4jzDI+NzesOna7gWy/9AKf1xPdRrtA80vyhcKdhWK4cme7p3DLlv2q2CdH3kfrA4
-	f/7i9dUDZCRXEj38fR6TTieADvR9oGE=
-Received: from [127.0.0.1] (fttx-pool-217.61.150.65.bambit.de [217.61.150.65])
-	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id E98873605FA;
-	Mon,  1 May 2023 07:51:05 +0000 (UTC)
-Date: Mon, 01 May 2023 09:51:06 +0200
-From: Frank Wunderlich <linux@fw-web.de>
-To: frank-w@public-files.de, Frank Wunderlich <frank-w@public-files.de>,
- =?UTF-8?B?Smlhbmp1biBXYW5nICjnjovlu7rlhpsp?= <Jianjun.Wang@mediatek.com>
-CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- =?UTF-8?B?SmlleXkgWWFuZyAo5p2o5rSBKQ==?= <Jieyy.Yang@mediatek.com>,
- "robh@kernel.org" <robh@kernel.org>, "kw@linux.com" <kw@linux.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
- "lpieralisi@kernel.org" <lpieralisi@kernel.org>,
- Ryder Lee <Ryder.Lee@mediatek.com>,
- "bhelgaas@google.com" <bhelgaas@google.com>
-Subject: Re: Aw: [PATCH] PCI: mediatek-gen3: handle PERST after reset
-User-Agent: K-9 Mail for Android
-In-Reply-To: <82F47DB2-CFB9-4DA0-97A7-81F1B939A025@public-files.de>
-References: <20230402131347.99268-1-linux@fw-web.de> <trinity-8c5502f4-34bc-456b-9e4b-37edac37c3ed-1682530907724@3c-app-gmx-bs05> <74149a72313c1b944c870a45b55893e1b9331c8e.camel@mediatek.com> <EF6EF3CD-5741-449E-B7E0-27DF9A6C297D@fw-web.de> <cd7c2672cc7cb97086cdb8d2079ad38c7fd6367f.camel@mediatek.com> <82F47DB2-CFB9-4DA0-97A7-81F1B939A025@public-files.de>
-Message-ID: <D7EAAAC4-B696-422F-A6D6-FF90D351B6F4@fw-web.de>
+	id 1ptPkJ-00FXEj-2C
+	for linux-mediatek@lists.infradead.org;
+	Mon, 01 May 2023 09:23:03 +0000
+Received: (qmail 8168 invoked by uid 988); 1 May 2023 09:22:54 -0000
+Authentication-Results: perseus.uberspace.de;
+	auth=pass (plain)
+Message-ID: <1f759370-af97-e2a4-4b93-183eb854f7cd@david-bauer.net>
+Date: Mon, 1 May 2023 11:22:52 +0200
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Mail-ID: 076819e0-7339-4474-bb1f-9a846e6c2e93
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH 2/2] dt-bindings: net: dsa: mediatek,mt7530: document
+ MDIO-bus
+To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+ Andrew Lunn <andrew@lunn.ch>
+Cc: Florian Fainelli <f.fainelli@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20230430112834.11520-1-mail@david-bauer.net>
+ <20230430112834.11520-2-mail@david-bauer.net>
+ <e4feeac2-636b-8b75-53a5-7603325fb411@arinc9.com>
+ <396fad42-89d0-114d-c02e-ac483c1dd1ed@arinc9.com>
+ <04cc2904-6d61-416e-bfbe-c24d96fe261b@lunn.ch>
+ <a6c6fe83-fbb5-f289-2210-6f1db6585636@arinc9.com>
+ <207753d6-cffd-4a23-be16-658d7c9ceb4a@lunn.ch>
+ <e5476692-aa3a-29b8-2e1d-ce93fd13a23b@arinc9.com>
+Content-Language: en-US
+From: David Bauer <mail@david-bauer.net>
+In-Reply-To: <e5476692-aa3a-29b8-2e1d-ce93fd13a23b@arinc9.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Rspamd-Bar: -
+X-Rspamd-Report: MIME_GOOD(-0.1) BAYES_HAM(-3) SUSPICIOUS_RECIPS(1.5)
+X-Rspamd-Score: -1.6
+Received: from unknown (HELO unkown) (::1)
+	by perseus.uberspace.de (Haraka/3.0.1) with ESMTPSA; Mon, 01 May 2023 11:22:54 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=david-bauer.net; s=uberspace;
+	h=from;
+	bh=QwZKnoaoF4qggiTtg5kg8KcY443HPD6AZLVvdXmng7M=;
+	b=EumWdTO8wEuVeRgdhvZ2g4iQPSswe58duOH/gUbmNWcy2s2D9biyRbmcjEG0fF7xZQZgiC7wvU
+	cbrElEoYqWNgBpHIkWB3mXTccfsEmDNBRmVYvG8+CMc2yuL8NVbYxXBtlDrZBmWd5NZqbqLhK2D1
+	2dLj9zCzC01/G8SGmxywJAf7lBNSs2ehnrbljnpBCLTQqTUW3pPbwbMM8aRI8t6SO1g7sgEHqv6/
+	UIf6TFgjPgmAq/2LRhqgcf2NuDxiLquNOedJmPkoAXNW8Vj9drkpM+Cm7/1dlgeGfLtTUD9SOdrr
+	W89lCARjN+20I013+Gt0cY5nYB81nhDnBBvepqZjLiGkrOTqr2a4pTqjYnVkt4Wn5Ntgxf1JC7kp
+	oE5S7lx4c4LzKnb39z6BPd2mIECgCOm2NcflodxJF2zXxgOc/ofmAnfn6DaOelDfnRTvD/up0U8u
+	xerz+A2oQEf+tyNn2tKwaaLPdSETKC9u2wkRqvj71P4h7PJ15DEZxmv4K20qrKAzdgv5Bkz55jd1
+	l+YCur7JrBLDCPXBsCZaT7cOLRuWE0tRMdXEFvEoR78kHJSAaXJxPtXpqANjhb5Lfq0dQWj1bYvb
+	rQu8U9g5xlQHUjTdtHp8F75/2azyeCWzRjacnu0D4WZmk/t6AYIGtwQ/T6JKeSGj4YIQ9A5YqTvf
+	8=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230501_005115_687961_472E36BC 
-X-CRM114-Status: GOOD (  27.50  )
+X-CRM114-CacheID: sfid-20230501_022300_871615_E367BCBE 
+X-CRM114-Status: GOOD (  35.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,159 +101,176 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 29=2E April 2023 11:03:07 MESZ schrieb Frank Wunderlich <frank-w@public-=
-files=2Ede>:
->Hi
->
->Am 29=2E April 2023 05:15:51 MESZ schrieb "Jianjun Wang (=E7=8E=8B=E5=BB=
-=BA=E5=86=9B)" <Jianjun=2EWang@mediatek=2Ecom>:
->>Hi Frank,
+Hi Arinc,
+
+thanks for spotting this issue.
+
+On 4/30/23 21:54, Arınç ÜNAL wrote:
+> On 30.04.2023 21:48, Andrew Lunn wrote:
+>>>> Try setting ds->slave_mii_bus to the MDIO bus you register via
+>>>> of_mdiobus_register().
+>>>
+>>> That seems to be the case already, under mt7530_setup_mdio():
+>>>
+>>>     bus = devm_mdiobus_alloc(dev);
+>>>     if (!bus)
+>>>         return -ENOMEM;
+>>>
+>>>     ds->slave_mii_bus = bus;
+>>>
+>>> The bus is registered with devm_of_mdiobus_register(), if that matters. (My
+>>> current knowledge about OF or OF helpers for MDIO is next to nothing.)
+>>>
+>>> The same behaviour is there.
 >>
->>On Fri, 2023-04-28 at 07:50 +0200, Frank Wunderlich wrote:
->>> External email : Please do not click links or open attachments until
->>> you have verified the sender or the content=2E
->>>=20
->>>=20
->>> Am 27=2E April 2023 10:31:07 MESZ schrieb "Jianjun Wang (=E7=8E=8B=E5=
-=BB=BA=E5=86=9B)" <
->>> Jianjun=2EWang@mediatek=2Ecom>:
->>> > Hi Frank,
->>> >=20
->>> > Seems this patch has huge impact on boot time, I'm curious about
->>> > the
->>> > NVMe detection issue on mt7986, can you share the SSD model that
->>> > you
->>> > are using and the bootup logs with that SSD?
->>>=20
->>> Which "huge" delay do you get in which setup? It adds a 100ms delay
->>> yes,but this seems needed to some devices working=2Ei found several
->>> sources talking about the 100ms wake-up time=2E=2E=2E
->
->>Some products are very sensitive to the bootup time, especially the
->>platforms with many PCIe ports, adding this 100ms delay for each port
->>will cause the bootup time be increased by multiple times(depending on
->>the number of PCIe ports it uses), and also the wake-up time, since the
->>mtk_pcie_starup_port() function will be called on resume stage=2E
->
->Thanks for taking time for analysing it=2E
->
->>> I do not have this issue,but some users in bpi-forum reorted it=2E
->>> Pcie-controller on mt7986/bpi-r3 does simply not detect the nvme and
->>> returned ETIMEDOUT (110)=2E
->>Since we're already comply with the PCIe CEM specification sections
->>2=2E2(PERST# signal)[1], and this issue only occurs on a few platforms,
->
->I see there is the msleep before the reset,where the patch splits reset a=
-nd perst (and add the sleep between)=2E
->
->So imho the best way is to move the existing msleep between these "splitt=
-ed" signals instead of adding a second one=2E I have to verify it with some=
-one who have the issue currently=2E
-
-Seems this does not make it work=2E=2E=2E
-
-Here are the bootlogs with different versions of this patch:
-
-https://forum=2Ebanana-pi=2Eorg/t/bpi-r3-problem-with-pcie/15152/22
-
->>I'll inclined to it's might be a signal quality issue=2E Also I checked
->>the BPI-R3 schematic diagram[2], and noticed that there are no AC
->>Coupling capacitors on the transmitter side, which described in PCIe
->>CEM Spec sections 4=2E7=2E1, but this schematic diagram only have part o=
-f
->>it, can you help to check the board design or share the full schematic
->>diagram for further analysis?=20
->
->I gave the questions to board vendor in forum=2E
->
->>[1]:=20
->>https://git=2Ekernel=2Eorg/pub/scm/linux/kernel/git/torvalds/linux=2Egit=
-/tree/drivers/pci/controller/pcie-mediatek-gen3=2Ec?h=3Dv6=2E3#n344
->>[2]:
->>https://drive=2Egoogle=2Ecom/file/d/1mxKb8CBbnzfNSd_4esmcX_NovxaXjEb8/vi=
-ew
+>> Maybe take a look at what is going on in dsa_slave_phy_setup() and
+>> dsa_slave_phy_connect().
 >>
->>Thanks=2E
->>>=20
->>> # dmesg | grep 'pci'
->>> [ 5=2E235564] mtk-pcie-gen3 11280000=2Epcie: host bridge=20
->>> /soc/pcie@11280000 ranges:
->>> [ 5=2E242938] mtk-pcie-gen3 11280000=2Epcie: Parsing ranges property=
-=2E=2E=2E
->>> [ 5=2E249235] mtk-pcie-gen3 11280000=2Epcie: MEM
->>> 0x0020000000=2E=2E0x002fffffff -> 0x0020000000
->>> [ 5=2E478062] mtk-pcie-gen3 11280000=2Epcie: PCIe link down, current
->>> LTSSM state: detect=2Eactive (0x10 00001)
->>> [ 5=2E487491] mtk-pcie-gen3: probe of 11280000=2Epcie failed with erro=
-r
->>> -110
->>>=20
->>> One specific hardware is reported as example:
->>>=20
->>> Adata Legend710 512GB x3
->>>=20
->>> > Thanks=2E
->>> >=20
->>> > On Wed, 2023-04-26 at 19:41 +0200, Frank Wunderlich wrote:
->>> > > External email : Please do not click links or open attachments
->>> > > until
->>> > > you have verified the sender or the content=2E
->>> > >=20
->>> > >=20
->>> > > Hi
->>> > >=20
->>> > > > Gesendet: Sonntag, 02=2E April 2023 um 15:13 Uhr
->>> > > > Von: "Frank Wunderlich" <linux@fw-web=2Ede>
->>> > > > De-assert PERST in separate step after reset signals to fully
->>> > > > comply
->>> > > > the PCIe CEM clause 2=2E2=2E
->>> > > >=20
->>> > > > This fixes some NVME detection issues on mt7986=2E
->>> > > >=20
->>> > > > Fixes: d3bf75b579b9 ("PCI: mediatek-gen3: Add MediaTek Gen3
->>> > > > driver
->>> > > > for MT8192")
->>> > > > Signed-off-by: Frank Wunderlich <frank-w@public-files=2Ede>
->>> > > > ---
->>> > > > Patch is taken from user Ruslan aka RRKh61 (permitted me to
->>> > > > send it
->>> > > > with me as author)=2E
->>> > > >=20
->>> > > >=20
->>> >=20
->>> >=20
->>https://urldefense=2Ecom/v3/__https://forum=2Ebanana-pi=2Eorg/t/bpi-r3-n=
-vme-connection-issue/14563/17__;!!CTRNKA9wMg0ARbw!nCXEM685pkUpoiZYGKptPYccN=
-rWMeN2D3jIO5_irwxZJ7c6ZzEeACIx-V2WeZHAP_0FKlDDIQ0RbDJ892prtoToDv30$
->>> > > > ---
->>> > > >  drivers/pci/controller/pcie-mediatek-gen3=2Ec | 8 +++++++-
->>> > > >  1 file changed, 7 insertions(+), 1 deletion(-)
->>> > > >=20
->>> > > > diff --git a/drivers/pci/controller/pcie-mediatek-gen3=2Ec
->>> > > > b/drivers/pci/controller/pcie-mediatek-gen3=2Ec
->>> > > > index b8612ce5f4d0=2E=2E176b1a04565d 100644
->>> > > > --- a/drivers/pci/controller/pcie-mediatek-gen3=2Ec
->>> > > > +++ b/drivers/pci/controller/pcie-mediatek-gen3=2Ec
->>> > > > @@ -350,7 +350,13 @@ static int mtk_pcie_startup_port(struct
->>> > > > mtk_gen3_pcie *pcie)
->>> > > >       msleep(100);
->Maybe the better way is to drop this msleep when adding the new one below=
- the reset asserts?
->
->>> > > >       /* De-assert reset signals */
->>> > > > -     val &=3D ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB |
->>> > > > PCIE_PE_RSTB);
->>> > > > +     val &=3D ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB);
->>> > > > +     writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
->>> > > > +
->>> > > > +     msleep(100);
->>> > > > +
->>> > > > +     /* De-assert PERST# signals */
->>> > > > +     val &=3D ~(PCIE_PE_RSTB);
->>> > > >       writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
->>> > > >=20
->>> > > >       /* Check if the link is up or not */
+>> The way i understand it, is it first looks in DT to see if there is a
+>> phy-handle, and if there is, it uses it. If not, it assumes there is a
+>> 1:1 mapping between port number and PHY address, and looks to see if a
+>> PHY has been found on ds->slave_mii_bus at that address, and uses it.
+>>
+>> So i don't think you need to list the PHY, the fallback should be
+>> used.
+> 
+> Thanks for pointing me in the right direction Andrew.
+> 
+> I applied this diff:
+> 
+> diff --git a/drivers/net/phy/mdio_bus.c b/drivers/net/phy/mdio_bus.c
+> index 389f33a12534..19d0c209e7e9 100644
+> --- a/drivers/net/phy/mdio_bus.c
+> +++ b/drivers/net/phy/mdio_bus.c
+> @@ -117,8 +117,12 @@ struct phy_device *mdiobus_get_phy(struct mii_bus *bus, int addr)
+> 
+>       mdiodev = bus->mdio_map[addr];
+> 
+> -    if (!mdiodev)
+> +    if (!mdiodev) {
+> +        dev_info(&bus->dev, "mdio device doesn't exist\n");
+>           return NULL;
+> +    }
+> +
+> +    dev_info(&bus->dev, "mdio device exists\n");
+> 
+>       if (!(mdiodev->flags & MDIO_DEVICE_FLAG_PHY))
+>           return NULL;
+> diff --git a/net/dsa/slave.c b/net/dsa/slave.c
+> index 165bb2cb8431..0be408e32a76 100644
+> --- a/net/dsa/slave.c
+> +++ b/net/dsa/slave.c
+> @@ -2487,6 +2487,7 @@ static int dsa_slave_phy_setup(struct net_device *slave_dev)
+>           /* We could not connect to a designated PHY or SFP, so try to
+>            * use the switch internal MDIO bus instead
+>            */
+> +        netdev_err(slave_dev, "using switch's internal MDIO bus\n");
+>           ret = dsa_slave_phy_connect(slave_dev, dp->index, phy_flags);
+>       }
+>       if (ret) {
+> 
+> With or without this patch, the switch's internal MDIO bus is used to set
+> up the PHYs.
+> 
+> DT that defines ethphy0 only, without this patch applied:
+> 
+> [    4.660784] mt7530-mdio mdio-bus:1f wan (uninitialized): using switch's internal MDIO bus
+> [    4.669026] mdio_bus mt7530-0: mdio device exists
+> [    4.677693] mt7530-mdio mdio-bus:1f wan (uninitialized): PHY [mt7530-0:00] driver [MediaTek MT7530 PHY] (irq=POLL)
+> [    4.693238] mt7530-mdio mdio-bus:1f lan0 (uninitialized): using switch's internal MDIO bus
+> [    4.701589] mdio_bus mt7530-0: mdio device exists
+> [    4.707101] mt7530-mdio mdio-bus:1f lan0 (uninitialized): PHY [mt7530-0:01] driver [MediaTek MT7530 PHY] (irq=POLL)
+> [    4.718550] mt7530-mdio mdio-bus:1f lan1 (uninitialized): using switch's internal MDIO bus
+> [    4.726856] mdio_bus mt7530-0: mdio device exists
+> [    4.732384] mt7530-mdio mdio-bus:1f lan1 (uninitialized): PHY [mt7530-0:02] driver [MediaTek MT7530 PHY] (irq=POLL)
+> [    4.743822] mt7530-mdio mdio-bus:1f lan2 (uninitialized): using switch's internal MDIO bus
+> [    4.752154] mdio_bus mt7530-0: mdio device exists
+> [    4.757662] mt7530-mdio mdio-bus:1f lan2 (uninitialized): PHY [mt7530-0:03] driver [MediaTek MT7530 PHY] (irq=POLL)
+> [    4.769099] mt7530-mdio mdio-bus:1f lan3 (uninitialized): using switch's internal MDIO bus
+> [    4.781872] mdio_bus mt7530-0: mdio device exists
+> [    4.787413] mt7530-mdio mdio-bus:1f lan3 (uninitialized): PHY [mt7530-0:04] driver [MediaTek MT7530 PHY] (irq=POLL)
+> 
+> Same DT but with this patch applied:
+> 
+> [    4.621547] mt7530-mdio mdio-bus:1f: configuring for fixed/trgmii link mode
+> [    4.631524] mt7530-mdio mdio-bus:1f wan (uninitialized): using switch's internal MDIO bus
+> [    4.639764] mdio_bus mt7530-0: mdio device exists
+> [    4.647770] mt7530-mdio mdio-bus:1f wan (uninitialized): PHY [mt7530-0:00] driver [MediaTek MT7530 PHY] (irq=POLL)
+> [    4.663898] mt7530-mdio mdio-bus:1f lan0 (uninitialized): using switch's internal MDIO bus
+> [    4.672253] mdio_bus mt7530-0: mdio device doesn't exist
+> [    4.677597] mt7530-mdio mdio-bus:1f lan0 (uninitialized): no phy at 1
+> [    4.684053] mt7530-mdio mdio-bus:1f lan0 (uninitialized): failed to connect to PHY: -ENODEV
+> [    4.692435] mt7530-mdio mdio-bus:1f lan0 (uninitialized): error -19 setting up PHY for tree 0, switch 0, port 1
+> [    4.703087] mt7530-mdio mdio-bus:1f lan1 (uninitialized): using switch's internal MDIO bus
+> [    4.711408] mdio_bus mt7530-0: mdio device doesn't exist
+> [    4.716731] mt7530-mdio mdio-bus:1f lan1 (uninitialized): no phy at 2
+> [    4.723214] mt7530-mdio mdio-bus:1f lan1 (uninitialized): failed to connect to PHY: -ENODEV
+> [    4.731597] mt7530-mdio mdio-bus:1f lan1 (uninitialized): error -19 setting up PHY for tree 0, switch 0, port 2
+> [    4.742199] mt7530-mdio mdio-bus:1f lan2 (uninitialized): using switch's internal MDIO bus
+> [    4.755431] mdio_bus mt7530-0: mdio device doesn't exist
+> [    4.760793] mt7530-mdio mdio-bus:1f lan2 (uninitialized): no phy at 3
+> [    4.767263] mt7530-mdio mdio-bus:1f lan2 (uninitialized): failed to connect to PHY: -ENODEV
+> [    4.775632] mt7530-mdio mdio-bus:1f lan2 (uninitialized): error -19 setting up PHY for tree 0, switch 0, port 3
+> [    4.786270] mt7530-mdio mdio-bus:1f lan3 (uninitialized): using switch's internal MDIO bus
+> [    4.794591] mdio_bus mt7530-0: mdio device doesn't exist
+> [    4.799944] mt7530-mdio mdio-bus:1f lan3 (uninitialized): no phy at 4
+> [    4.806397] mt7530-mdio mdio-bus:1f lan3 (uninitialized): failed to connect to PHY: -ENODEV
+> [    4.814782] mt7530-mdio mdio-bus:1f lan3 (uninitialized): error -19 setting up PHY for tree 0, switch 0, port 4
+> 
+> DT without the mdio node defined, with this patch applied:
+> 
+> [    4.650766] mt7530-mdio mdio-bus:1f: configuring for fixed/trgmii link mode
+> [    4.660687] mt7530-mdio mdio-bus:1f wan (uninitialized): using switch's internal MDIO bus
+> [    4.668937] mdio_bus mt7530-0: mdio device exists
+> [    4.677787] mt7530-mdio mdio-bus:1f wan (uninitialized): PHY [mt7530-0:00] driver [MediaTek MT7530 PHY] (irq=POLL)
+> [    4.693165] mt7530-mdio mdio-bus:1f lan0 (uninitialized): using switch's internal MDIO bus
+> [    4.701517] mdio_bus mt7530-0: mdio device exists
+> [    4.707029] mt7530-mdio mdio-bus:1f lan0 (uninitialized): PHY [mt7530-0:01] driver [MediaTek MT7530 PHY] (irq=POLL)
+> [    4.718469] mt7530-mdio mdio-bus:1f lan1 (uninitialized): using switch's internal MDIO bus
+> [    4.726773] mdio_bus mt7530-0: mdio device exists
+> [    4.732322] mt7530-mdio mdio-bus:1f lan1 (uninitialized): PHY [mt7530-0:02] driver [MediaTek MT7530 PHY] (irq=POLL)
+> [    4.743793] mt7530-mdio mdio-bus:1f lan2 (uninitialized): using switch's internal MDIO bus
+> [    4.752143] mdio_bus mt7530-0: mdio device exists
+> [    4.757662] mt7530-mdio mdio-bus:1f lan2 (uninitialized): PHY [mt7530-0:03] driver [MediaTek MT7530 PHY] (irq=POLL)
+> [    4.769105] mt7530-mdio mdio-bus:1f lan3 (uninitialized): using switch's internal MDIO bus
+> [    4.781905] mdio_bus mt7530-0: mdio device exists
+> [    4.787459] mt7530-mdio mdio-bus:1f lan3 (uninitialized): PHY [mt7530-0:04] driver [MediaTek MT7530 PHY] (irq=POLL)
+> 
+> This is how I define it, mind you no phandles.
+> 
+> switch@1f {
+>      ...
+>      mdio {
+>          #address-cells = <0x01>;
+>          #size-cells = <0x00>;
+> 
+>          ethernet-phy@0 {
+>              reg = <0x00>;
+>          };
+>      };
+> };
+> 
+> Like you said, if the mdio node is not defined, the driver will assume 1:1
+> mapping. If not, it will need all the PHYs to be defined on the mdio node
+> along with on the ports node. Hence back to my original statement, we can
+> either force defining the PHYs on the mdio node which would break the ABI,
+> or forget about doing PHY muxing this way.
 
+While i was not aware of this side effect, I don't see how this breaks the ABI.
 
-regards Frank
+Existing device-trees not defining the MDIO node will still continue to work.
+
+Wouldn't we just skip the whole issue by documenting the need for defining all PHYs
+used on the switch when defining the MDIO bus?
+
+Best
+David
+
+> 
+> There are no MDIO operations needed on the PHYs for the PHY muxing anyway,
+> so I'd rather do this some other way.
+> 
+> Thanks for the help.
+> 
+> Arınç
 
