@@ -4,101 +4,173 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0C81C77B7E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 May 2023 05:42:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 584E3C77B73
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 May 2023 05:43:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=C2mbpKRY/IaHURPbi8xdkp6Ux75t8HAEwDPxIJfytoY=; b=WfXotrNZX5LDsjM9i5IDZO47rp
-	z+IprwfTsuwnhSKFmU1I+BCA3j5NCquPyEJjNB6DhBS8yjXTSPPqWbx7wxGh9kz9Igim8Qaa/B/9/
-	u1feBaK8aBJM7ZxxNCj/dpzFtz9Z+mw1BPrHBM6uLvBP51BBDdPCd1aNOFD0wVYFVHuCWV/8cvauR
-	pqSrjvxcXGJ8LfI8Q627+407ra+XOTRjnJCCYgyuVhhIOHhWTlPxIrWIA0RjFdmsjFoCHJKBWuxaZ
-	omkf4XXKnDwB7x8YSduzLV7sCa785HB3QFiSjwbUcHVW2PyvmVUDIqQHG96bognsICxvNz40tMot8
-	s+F7Fa2g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:References:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=u60Tud+7hFRqK1X+1aBMlcowgPhvYr0wyem0e3yFPFM=; b=B0t91z7iioz7gcsr1XA3sUj41A
+	Wtza2UB0V8WVqHLI+yFt1eWrqXOUO9RCqfBRnXIp6XJdUBFtrIqcPyk3vz7SO9IAG4Vd+56VEO4Jc
+	0KK2e/5wmI+BRrWQzuZZV9Hwpey9aBIoz1fHf9bMjt7FPFwD10vvdte+BW/VHDazvLWaNPxIt5vbB
+	HnwQapp70SD/a3XHhPBvm0p983j6nfgWsC7ijK07xcYr2QH2z7USJOlyZewEbxopLUL/65qVvr/i5
+	k26riwpLCyHHxlvGAEgojgAadzBT7I8A1+3yNFDBZwgzXwYf2z3V0rA41/LS5hsoT2SKGVg00k+1k
+	bxrXnLyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptiml-000EA3-3C;
-	Tue, 02 May 2023 05:42:47 +0000
+	id 1ptinT-000ESw-1g;
+	Tue, 02 May 2023 05:43:31 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptimk-000E9Z-1X
-	for linux-mediatek@bombadil.infradead.org;
-	Tue, 02 May 2023 05:42:46 +0000
+	id 1ptinQ-000EPR-0J;
+	Tue, 02 May 2023 05:43:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=C2mbpKRY/IaHURPbi8xdkp6Ux75t8HAEwDPxIJfytoY=; b=GRdXgF761szqEg4CNDG4iJrg9J
-	11VvbbAcKWkw5/si6IQ33s0lRm6p934RNt6ht80jxpr9YqgUctKtFZGheNbZfMKA/Ryn8lDiQ/V+/
-	IyKWMGIN6GkWysc+kNfWIu2Zwj3dIKdxFDuK8Rv/IV8DcdndRxXQiH/klbsJHeznHjIVqR17XlikS
-	RxXqlsh8nAshh3vAfXGz+quiKjziRZFbz541IK30e6WgZUngPrHjyAsx2KBAlyGsb6ggq/S2lYbZK
-	pNeyk6KwFW574wOsk1xL0q+BsEKBG2ebPp4diJXZEA/u4NMfPZ1Wu5qDlDdzZS0iKEegEdc5YJB0s
-	cUH9/zcg==;
-Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
+	d=infradead.org; s=desiato.20200630; h=MIME-Version:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:References:Message-ID:Subject:Cc:To:
+	From:Date:Sender:Reply-To:Content-ID:Content-Description;
+	bh=u60Tud+7hFRqK1X+1aBMlcowgPhvYr0wyem0e3yFPFM=; b=N2FJlhOr/S+PEAnMvqYMOZv/i+
+	o/xJIvItUkFu6Wq8/1II30dz7amrOsV4pa70gbhzdFUUvL9ic5E+aO0ZRd1ArulmYkWFH4eaYgwGP
+	pzRR2gPUZ0Uj0vo/sP0B5oHRAZWrcySFvktwxyQr9XH0cnMYl7sIJ4/5lXLrMhcbMLy4BOulWXt9D
+	6J/Y4s8u7Ks/ow0x6iduGgW0LQ+wFndV2gvX2wUaE74CHA6Y8nwDT8yDfvUs7J1Mz3wXqEnhyFdq5
+	Lq9HbwLBGSs0dqZIrynao76354ns7sYYruQP5Khreol93+WEVPi5XMgxdz7XjtkcMGyYuNOgKKQaX
+	PGLq3piQ==;
+Received: from mail-co1nam11on20606.outbound.protection.outlook.com ([2a01:111:f400:7eab::606] helo=NAM11-CO1-obe.outbound.protection.outlook.com)
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptc35-00F21e-0p
-	for linux-mediatek@lists.infradead.org;
-	Mon, 01 May 2023 22:31:14 +0000
-Received: by mail-pj1-x1032.google.com with SMTP id 98e67ed59e1d1-24e09b4153eso905196a91.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 01 May 2023 15:31:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1682980266; x=1685572266;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=C2mbpKRY/IaHURPbi8xdkp6Ux75t8HAEwDPxIJfytoY=;
-        b=MydnFHypJbySOooSNZ9ETF/1six5mxjw+FHQ/I0otqcS1LXMwfEvVXYaQ84i5fkAHQ
-         mIOXyOYXsS53MNOAMHN4W27MqHBITLQpmtr6GE+UoofZVIPqMfrC+P0l+HJ2maZ6YrjK
-         xoTJuPWVM8p8d4jiwCPNIeWShoFKXuKJWx0D9Vq59m6C/IvKIhEKDjWfXzIADkq3GEiN
-         HEX62ptt5RPbRgwl49ncfXRC26rWw1WJVdblIw4dFUE0+PJB/VyOnrnCV/TeaP6Iz1np
-         6z2bPR/6HNftXXyudyR7nKPh0CxerIyZg6TsNLxxmbqeV8KV4yKCdUlBOj/AhOacGO2P
-         Xttw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682980266; x=1685572266;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=C2mbpKRY/IaHURPbi8xdkp6Ux75t8HAEwDPxIJfytoY=;
-        b=Xhdrw+QATTyn+ywOT7XZuy6Qr9d5TRV2muqrlCH5llNX8N2/5IApv0HQ/xUhAdnNCM
-         Q4/5S12S5hPkYQL1LI9ukrV7dRsqICIFiW2kpVmHekklTNHmCtfIaLbKa52p/szUndH8
-         Lo4Ncp4Gty/221254YXVW8lrTdeXHYHcoWo1lgTln0A8Dtt0lbZljiAi0gfeUiDnUpYR
-         LHORlfBeio3qO7L8aeHWYQwwsTAsehUvarqK95f0fTtuv9GCzLjqHYoT5/31IyZKxwPU
-         yGDNB42G9GyKT08idBt/quQPGfc/zIuMXarXoxsCIcVwise+/EbzvZEpts6V0c5ZPFxE
-         I8jw==
-X-Gm-Message-State: AC+VfDzzR5v1+JLpLZHm6r2KjlMajsK6YA/bVYbGJ2CsMdkda/FzYl9O
-	ESEwB3je7asQrqhEO5IhIGcjJF76qi953udYXrI=
-X-Google-Smtp-Source: ACHHUZ4pCZfkOETLVMCNCYFPb2sUFVmgge5RUxvMRnpMtAoB0d+G3DquSEMud4Mw95ryPYROdal3lg==
-X-Received: by 2002:a17:90a:bd02:b0:23d:1143:c664 with SMTP id y2-20020a17090abd0200b0023d1143c664mr15870863pjr.31.1682980266099;
-        Mon, 01 May 2023 15:31:06 -0700 (PDT)
-Received: from p14s ([2604:3d09:148c:c800:2609:c92d:9942:6f79])
-        by smtp.gmail.com with ESMTPSA id gw13-20020a17090b0a4d00b002470b9503desm19672979pjb.55.2023.05.01.15.31.04
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 01 May 2023 15:31:05 -0700 (PDT)
-Date: Mon, 1 May 2023 16:31:03 -0600
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: Tinghan Shen <tinghan.shen@mediatek.com>
-Cc: Bjorn Andersson <andersson@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1ptcCS-00F2GL-0v;
+	Mon, 01 May 2023 22:40:54 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=SRWDwMbWql6Y3mFirjiUmPSQaHdzIm2348OTeBCoyGyy4ejLzS0TreDzRqmEjbugqpn4Hkana8iJTCwL0NQpk/G1WPB+H44tf05uYBVoYdtGoyC/zT8eg5euXwFAVsJZnIMwifO+wMy/pPbF1laUNJVFwHKEKtkrrwdirFwMEUh6wy9njDCIasRYX166ugl5MS4rdrs2MjD0bRmSJ2HfgXk02wLdWySBq3zLVPLremV1QpJcPp/lzjC4MmZfheJsHKyIm6q70QfQ2s4oqGT8XzfKJ51aOjBWkYwej6DQHj9QL1WKjupi7oAw5I6A3rjjTzBwd85Dmk75exqNnsrL6g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=u60Tud+7hFRqK1X+1aBMlcowgPhvYr0wyem0e3yFPFM=;
+ b=Qdir1mirsyJJF/D3hARBEbxJjCJVmD2NXCkHVvRVXNcdSCh8dSshMSVvUf3EKl3rwla22qxJuhyAMSIPtHMJnB6/NkLj6VC8Vle70y3pRrfh8ynlT0GIZ+T8Fmp+cq2kX1/6/idgyAqKDsnPLftczN61OKwWH5G73+rYecInnXaRHyhLADFW5siXLbgYWFgulbqwulBMiff9crVjx2QwlZkmyUPIdxE7yvf0chdH+IoNTYL7Knv48+OYNBLPXlpXHRtkxoZUKVTyD4btFUHRrO9y4IptRj83dyP0W0cy14nP1vJNaL50ZSKcHaQHjVjYl2bjLPQ9Ok8MylrRYD6mQA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=u60Tud+7hFRqK1X+1aBMlcowgPhvYr0wyem0e3yFPFM=;
+ b=Wdwjz4k1rMWlWvvRWd2SoZA3aKOvNzBdJnIuVYnd6Yad0qcQU+jfSZn8TGe4PA8tVnKsYwr52kcBLifTJs2kTqET/sSKEuiju8I8nFZ/aleO7EutmNMxdciPNXocop4ltdNwPi+fuIpPHJzsBNHczItOvWZo92U4aERZtcJ/aviKzvZsSQU8rVo6iTQiYANVEd8BQKtWH52Oq9uJknZQIkg4eItbyeW0Ejm+8ZPj6nZVRROhlu7rA2XCo8jjee/fxAz72sEUgtz9HjJFzfL6RlWklocaCHDGYMGIpNDKJ6XFhYTwp+T+27Zt0r9+KY1ovM3+SH1PHvdLArdtjDwl1A==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by PH8PR12MB8430.namprd12.prod.outlook.com (2603:10b6:510:259::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6340.30; Mon, 1 May
+ 2023 22:40:44 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::f7a7:a561:87e9:5fab]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::f7a7:a561:87e9:5fab%6]) with mapi id 15.20.6340.030; Mon, 1 May 2023
+ 22:40:44 +0000
+Date: Mon, 1 May 2023 19:40:42 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>
+Cc: Andy Gross <agross@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
+	Bjorn Andersson <andersson@kernel.org>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+	iommu@lists.linux.dev, Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Joerg Roedel <joro@8bytes.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v10 06/11] remoteproc: mediatek: Probe multi-core SCP
-Message-ID: <ZFA9p2feS7Kiwkqh@p14s>
-References: <20230426091211.21557-1-tinghan.shen@mediatek.com>
- <20230426091211.21557-7-tinghan.shen@mediatek.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Matthew Rosato <mjrosato@linux.ibm.com>,
+	Orson Zhai <orsonzhai@gmail.com>, Rob Clark <robdclark@gmail.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Niklas Schnelle <schnelle@linux.ibm.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Krishna Reddy <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
+	Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Lu Baolu <baolu.lu@linux.intel.com>,
+	Kevin Tian <kevin.tian@intel.com>,
+	Nicolin Chen <nicolinc@nvidia.com>,
+	Steven Price <steven.price@arm.com>
+Subject: Re: [PATCH 00/20] iommu: Make default_domain's mandatory
+Message-ID: <ZFA/6np8+uXhrK2n@nvidia.com>
+References: <0-v1-21cc72fcfb22+a7a-iommu_all_defdom_jgg@nvidia.com>
+ <7005781.1IzOArtZ34@diego>
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20230426091211.21557-7-tinghan.shen@mediatek.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <7005781.1IzOArtZ34@diego>
+X-ClientProxiedBy: BLAPR05CA0015.namprd05.prod.outlook.com
+ (2603:10b6:208:36e::15) To LV2PR12MB5869.namprd12.prod.outlook.com
+ (2603:10b6:408:176::16)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|PH8PR12MB8430:EE_
+X-MS-Office365-Filtering-Correlation-Id: 9ee8e333-06da-4138-f8cf-08db4a951927
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	E7uT70tzKyh1FBXjd5+IEr6Ee7DPH4NAIjOFRUh9xpTVNITKZPeOUg8+qpgtlokqja2beblryih+Pp1zK8tzxOvwUw+eKHVfrL6ja1Bi5dl4THaA7yZ1OSLsHnAEe8cPZvjtNQ3hSKNgJsNnx+jSuZhu+ePmhR+/G3kP5f+H/c01GpoAWQDBvTvlwx7v7TIVngUIuq69ZO6Z4Au2kQqNofxNGWZB4cZ3uXizsBuDsrGxEUKpbVLUx2H1oj314GEHQ/mXz1NzYuDEj36zPax/HRyYNwOGsCZ6M+szGYtKDwWdvHhNqJdwCQDEK5gOYh1qyCqPFGVD6LtaV7Q+HB6RqG0bhLTgLIWvbbIeLo9uv1OZQmj1FkwA7uwlTRYJXS3ZYj3Zfw8mePn3gOsSHFKVvTrP3HUXuysWODSLWVuml0fGXxEdDFda6hO7au04IFR2ahWsc2yBvX87YkC/qsu5NMH1WM3ngPfWlF+xnXL1d1EoS/WCP3EtJqebj7TZ1t4Swji8xZZNOmU++CQD6c1anrcCN+p9ZmxyIubawrWaMa+sLG9F4o8koc6wwRfyGMmp0XlCiEEyD97fd6p1NE6X6zpmJjngSDdPoIsCaalP9p0=
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV2PR12MB5869.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(346002)(376002)(136003)(366004)(39860400002)(396003)(451199021)(478600001)(2616005)(83380400001)(186003)(4326008)(66556008)(66476007)(6916009)(54906003)(66574015)(966005)(6486002)(26005)(6512007)(6506007)(316002)(8936002)(8676002)(5660300002)(66946007)(41300700001)(7406005)(7416002)(4744005)(2906002)(38100700002)(86362001)(36756003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?clgvK3FabUtkejdzQ3d6Q2w2SHZJRllnd3k1djZsL21lK3NpRnhxMnY1djJ3?=
+ =?utf-8?B?cEtVanVFUXV0WW8zR05YQjdkRzh3WXMvVVV1cFNubHNESmhJMDYvRi9lNnYy?=
+ =?utf-8?B?cFl5VzA2OThQbm9nVm14V1pSRExwL3U0aExQbUR2OHYrbVNpN2lzbGNEVDNi?=
+ =?utf-8?B?NUJTOVNPS3dIaGNvSXp4M0FmZDNkZVZKVG85eE9jYlJvNUIvZ2xnNE96blVK?=
+ =?utf-8?B?QjI3NnVDWTdZc0h1cGpqNk03OXhzaGowOVo0dUZkYWx0T004bjZ4ZEZpVitT?=
+ =?utf-8?B?S2ZNU0xjTUVWK29UZVYrTlNqY1hEM3YvazVSWllQOFo3c0lpWDBoaC9TeUI5?=
+ =?utf-8?B?dWo1dXVMNUF0dCttOW43dHlteVFmTm8yMFNmZ3Z5QWY5QWtKWExJdnBaMExY?=
+ =?utf-8?B?eTRnNHlTeTVGM3BmRWM3elpwK2c4VkNDWExZTUJqMHVTS3hlZW9PanJuYzJF?=
+ =?utf-8?B?dk5WMXJrWFdIaXR6VG0vTEdYZjB0ZWZHejRmZ0dGV1RDSnQ5V0pHSFh2WU9x?=
+ =?utf-8?B?b0ZFQ245djZjTFFZZFB3bVpIYWwxSFdmQlRocnhlRDk5MzhMVEQ4WWZwOEJK?=
+ =?utf-8?B?OTZGb2pWaGZBWjE3OGdNZm02TUpEL2ErcytTQ2VYajNHWHhzdjlWZDMrRWFW?=
+ =?utf-8?B?V2pUZmp3eG1RU1NrYjJrQThUTHUzc2w1RjRpTStVd3VwTFp6SUsvcW80djQ0?=
+ =?utf-8?B?R0V2dnhjMTBxQTV4aVJiS2ZqRFZoS1dTME1DM1dRMWdBdGFqaXl0Tk1aSGND?=
+ =?utf-8?B?WXQ1VWZzVGVtZG5zVCtVcmZ2MkREUnlHMEIzSGhWWlJuZFovdUdMeHlKbkhD?=
+ =?utf-8?B?SGd3SmtxYVdEYlhHT3A4aklSR3JPVGhrU042dVVUdThETktzU053Z3U0Vkx6?=
+ =?utf-8?B?elBwVWxzU0NYSlZlVHhMdExHbnBYYU45SzFXa3k2STYrZXo5OEE5L2FwU3l5?=
+ =?utf-8?B?dDFVdzc5MStYMExDRTNzd1NGc3ZJYVg0azlhajE2RVNETnluOVlVanQrRzdK?=
+ =?utf-8?B?WnovdGZTZmN2ZUQrTXB1cEZucFRvQ3dGSE04QkRFc1NWcTZ2ZFQwUXhRQVM3?=
+ =?utf-8?B?VVFaaUFONE9GZlF6ekQ1L0lCMFlRVjBFTHlWU3pWMEdEdEVvSUlCQm9zWENV?=
+ =?utf-8?B?cEhqTXNUTTRzWjI0cE5JV1FHRGN2U2taaEZXZnpFZnltS0gzNGN5M1RHU3E4?=
+ =?utf-8?B?L29GQWdqeGZUQjU0b0FxSnZOY05xNGtueHRFZXB0Y2NEY0pacHRtZzFqVUJ5?=
+ =?utf-8?B?Y3FFMTI5ajRLYWdwY08vbUV6NHRiN1c0UDBiQ2p5ZWduZERjVnZ1blMvNmhP?=
+ =?utf-8?B?MThzcUh6czRXb2UyTThrQUlSajRadGtoZUlpMlorcmNtMmlqcEFzakJCU2Na?=
+ =?utf-8?B?NE8rTlFmaVEwUzlGQUNGakhGdkNzbjh6ZzI0b2daRVVmTGRNaTJMcVpONUFW?=
+ =?utf-8?B?NHJ3bW91WlNQeDVCcURDU2ZKR2wxY09XTHEvQVFCekNQMGVia2Y1UXlGUmRL?=
+ =?utf-8?B?bXlURGtZazd3NmxQaVZhWXVuMTdvYUxPdmdOUkREcUxRYWQ2dCtYci9MZC9P?=
+ =?utf-8?B?aE8wYWJjUkN3dTc0ZmtCeHo2dnVlWHBSL3VyRVJzUmxEbEJ3TFNOWTMybE9Q?=
+ =?utf-8?B?ODlseUlCMWhTcVhxV0xPVGd6andzbklUc05KYnNzSjVucFZwdjdkNTVDWUll?=
+ =?utf-8?B?UDhqblZHVFhkZHhsdWJmWmdOdk54T0QvSEJCYXVhYnA5UDRRMnJtckduT2Rp?=
+ =?utf-8?B?M3gxMEZZUXMwK1g3MVhnbjVWRUxGczhIeVM5MkZSWVZzbGFIMWo1YWN3Rzlh?=
+ =?utf-8?B?MXRWSkZudWFYQkJWcEdENnpUSVlkTC81MkJDZWtidUpxekdmS1pSeU9HOUFz?=
+ =?utf-8?B?VHZidi93N1RaeHlNTkxmd0FHWUc2eVRjY0JUbmVrMjZuN0xlc2dKZE52UlZy?=
+ =?utf-8?B?VVlLcWlyUkVQdUtXNy9wS3crdXVoRG5HRWhVRHlIbGJ3eVdvSTJkZm5qdkFC?=
+ =?utf-8?B?aUZDTEFhRGpVQnRTa3dKdFNZWllJWFVFdTU5ZTRKVmhSTk9sb0ZiZEk0YmFi?=
+ =?utf-8?B?TTFYRC8wanpuMVZUN0hkcEhYZjk2SFloK3NEcTJLaDdKNHAzMURtbkFWR2hn?=
+ =?utf-8?Q?Y/ng=3D?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9ee8e333-06da-4138-f8cf-08db4a951927
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 May 2023 22:40:43.7512
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: q+uq1QpTeVWOZIPzj35rB7tsKD0g53Y88ErMLo54HYK9NoQSJeuueJ6648Wc/BLB
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH8PR12MB8430
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230501_233111_554882_2A99DE3D 
-X-CRM114-Status: GOOD (  36.33  )
+X-CRM114-CacheID: sfid-20230501_234052_626685_A3E81EED 
+X-CRM114-Status: UNSURE (   9.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,314 +185,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 26, 2023 at 05:12:06PM +0800, Tinghan Shen wrote:
-> The difference of single-core SCP and multi-core SCP device tree is
-> the presence of child device nodes described SCP cores. The SCP
-> driver populates the platform device and checks the child nodes
-> to identify whether it's a single-core SCP or a multi-core SCP.
+On Mon, May 01, 2023 at 11:34:45PM +0200, Heiko Stübner wrote:
+> Hi,
 > 
-> Add the remoteproc instances for single-core SCP and multi-core SCP to
-> the new added SCP cluster list. When the SCP driver is removed, it
-> cleanup resources by walking through the cluster list.
+> Am Montag, 1. Mai 2023, 20:02:44 CEST schrieb Jason Gunthorpe:
+> > This follows the prior series:
+> > 
+> > https://lore.kernel.org/r/0-v4-79d0c229580a+650-iommu_err_unwind_jgg@nvidia.com
 > 
-> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> ---
->  drivers/remoteproc/mtk_common.h |   3 +
->  drivers/remoteproc/mtk_scp.c    | 188 ++++++++++++++++++++++++++++----
->  2 files changed, 172 insertions(+), 19 deletions(-)
+> which probably will need an update for Greg's recent
+> b18d0a0f92a8 ("iommu: make the pointer to struct bus_type constant")
 > 
-> diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
-> index c0905aec3b4b..b73b60c22ea1 100644
-> --- a/drivers/remoteproc/mtk_common.h
-> +++ b/drivers/remoteproc/mtk_common.h
-> @@ -128,6 +128,9 @@ struct mtk_scp {
->  	size_t dram_size;
->  
->  	struct rproc_subdev *rpmsg_subdev;
-> +
-> +	struct list_head elem;
-> +	struct list_head *cluster;
->  };
->  
->  /**
-> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> index 5e4982f4d5dc..0b052b0acf2e 100644
-> --- a/drivers/remoteproc/mtk_scp.c
-> +++ b/drivers/remoteproc/mtk_scp.c
-> @@ -28,6 +28,7 @@ struct mtk_scp_of_cluster {
->  	void __iomem *l1tcm_base;
->  	size_t l1tcm_size;
->  	phys_addr_t l1tcm_phys;
-> +	struct list_head mtk_scp_cluster;
->  };
->  
->  /**
-> @@ -862,21 +863,31 @@ static void scp_remove_rpmsg_subdev(struct mtk_scp *scp)
->  	}
->  }
->  
-> -static int scp_rproc_init(struct platform_device *pdev)
-> +static int scp_rproc_init(struct platform_device *cluster_pdev,
-> +			  struct platform_device *core_pdev,
-> +			  const struct mtk_scp_of_data *of_data)
->  {
-> -	struct device *dev = &pdev->dev;
-> -	struct device_node *np = dev->of_node;
-> -	struct mtk_scp_of_cluster *of_cluster = platform_get_drvdata(pdev);
-> +	struct platform_device *pdev;
-> +	struct device *dev;
-> +	struct device_node *np;
-> +	struct mtk_scp_of_cluster *of_cluster = platform_get_drvdata(cluster_pdev);
->  	struct mtk_scp *scp;
->  	struct rproc *rproc;
->  	struct resource *res;
->  	const char *fw_name = "scp.img";
->  	int ret, i;
->  
-> +	if (core_pdev)
-> +		pdev = core_pdev;
-> +	else
-> +		pdev = cluster_pdev;
+> I've fixed that locally for me for testing
 
-After following my comment from the previous patch, there won't be a need to do
-this.  
-
-> +
-> +	dev = &pdev->dev;
->  	ret = rproc_of_parse_firmware(dev, 0, &fw_name);
->  	if (ret < 0 && ret != -EINVAL)
->  		return ret;
->  
-> +	np = dev->of_node;
->  	rproc = devm_rproc_alloc(dev, np->name, &scp_ops, fw_name, sizeof(*scp));
->  	if (!rproc)
->  		return dev_err_probe(dev, -ENOMEM, "unable to allocate remoteproc\n");
-> @@ -884,7 +895,7 @@ static int scp_rproc_init(struct platform_device *pdev)
->  	scp = rproc->priv;
->  	scp->rproc = rproc;
->  	scp->dev = dev;
-> -	scp->data = of_device_get_match_data(dev);
-> +	scp->data = of_data;
->  	platform_set_drvdata(pdev, scp);
->  
->  	scp->reg_base = of_cluster->reg_base;
-> @@ -934,10 +945,6 @@ static int scp_rproc_init(struct platform_device *pdev)
->  		goto remove_subdev;
->  	}
->  
-> -	ret = rproc_add(rproc);
-> -	if (ret)
-> -		goto remove_subdev;
-> -
->  	return 0;
->  
->  remove_subdev:
-> @@ -952,6 +959,121 @@ static int scp_rproc_init(struct platform_device *pdev)
->  	return ret;
->  }
->  
-> +static void scp_rproc_free(struct mtk_scp *scp)
-> +{
-> +	int i;
-> +
-> +	scp_remove_rpmsg_subdev(scp);
-> +	scp_ipi_unregister(scp, SCP_IPI_INIT);
-> +	scp_unmap_memory_region(scp);
-> +	for (i = 0; i < SCP_IPI_MAX; i++)
-> +		mutex_destroy(&scp->ipi_desc[i].lock);
-> +	mutex_destroy(&scp->send_lock);
-> +}
-> +
-> +static int scp_is_single_core(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct device_node *np = dev_of_node(dev);
-> +	struct device_node *child;
-> +
-> +	child = of_get_next_available_child(np, NULL);
-> +	if (!child)
-> +		return dev_err_probe(dev, -ENODEV, "No child node\n");
-> +
-> +	of_node_put(child);
-> +	return of_node_name_eq(child, "cros-ec-rpmsg");
-> +}
-> +
-> +static int scp_cluster_init(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct device_node *np = dev_of_node(dev);
-> +	struct platform_device *cpdev;
-> +	struct device_node *child;
-> +	struct mtk_scp_of_cluster *of_cluster = platform_get_drvdata(pdev);
-> +	const struct mtk_scp_of_data **cluster_of_data;
-> +	struct list_head *cluster = &of_cluster->mtk_scp_cluster;
-> +	struct mtk_scp *scp, *temp;
-> +	int core_id = 0;
-> +	int ret;
-> +
-> +	ret = scp_is_single_core(pdev);
-> +	if (ret < 0)
-> +		return ret;
-> +
-> +	if (ret) {
-> +		dev_dbg(dev, "single-core scp\n");
-> +
-> +		/* When using the SCP node phandle on exported SCP APIs, the drvdata
-> +		 * is expected to be the mtk_scp object, and as a result, it is intended
-> +		 * to be overwritten for single-core SCP usage.
-> +		 */
-> +		ret = scp_rproc_init(pdev, NULL, of_device_get_match_data(dev));
-> +		if (ret)
-> +			return dev_err_probe(dev, ret, "Failed to initialize single-core scp\n");
-> +
-> +		scp = platform_get_drvdata(pdev);
-> +		list_add_tail(&scp->elem, cluster);
-> +		scp->cluster = cluster;
-> +	} else {
-> +		dev_dbg(dev, "multi-core scp\n");
-> +
-> +		cluster_of_data = (const struct mtk_scp_of_data **)of_device_get_match_data(dev);
-> +
-> +		for_each_available_child_of_node(np, child) {
-> +			if (!cluster_of_data[core_id]) {
-> +				ret = -EINVAL;
-> +				dev_err(dev, "Not support core %d\n", core_id);
-> +				of_node_put(child);
-> +				goto init_fail;
-> +			}
-> +
-> +			cpdev = of_find_device_by_node(child);
-> +			if (!cpdev) {
-> +				ret = -ENODEV;
-> +				dev_err(dev, "Not found platform device for core %d\n", core_id);
-> +				of_node_put(child);
-> +				goto init_fail;
-> +			}
-> +
-> +			ret = scp_rproc_init(pdev, cpdev, cluster_of_data[core_id]);
-> +			if (ret) {
-> +				dev_err(dev, "Failed to initialize core %d rproc\n", core_id);
-> +				put_device(&cpdev->dev);
-> +				of_node_put(child);
-> +				goto init_fail;
-> +			}
-> +			scp = platform_get_drvdata(cpdev);
-> +			list_add_tail(&scp->elem, cluster);
-> +			scp->cluster = cluster;
-> +			put_device(&cpdev->dev);
-> +
-> +			core_id++;
-> +		}
-> +	}
-> +
-> +	list_for_each_entry_safe_reverse(scp, temp, cluster, elem) {
-> +		ret = rproc_add(scp->rproc);
-> +		if (ret)
-> +			goto add_fail;
-> +	}
-> +
-> +	return 0;
-> +
-> +add_fail:
-> +	list_for_each_entry_continue(scp, cluster, elem) {
-> +		rproc_del(scp->rproc);
-> +	}
-> +init_fail:
-> +	list_for_each_entry_safe_reverse(scp, temp, cluster, elem) {
-> +		list_del(&scp->elem);
-> +		scp_rproc_free(scp);
-> +	}
-> +
-> +	return ret;
-> +}
-> +
->  static int scp_probe(struct platform_device *pdev)
->  {
->  	struct device *dev = &pdev->dev;
-> @@ -983,23 +1105,44 @@ static int scp_probe(struct platform_device *pdev)
->  		of_cluster->l1tcm_phys = res->start;
->  	}
->  
-> +	INIT_LIST_HEAD(&of_cluster->mtk_scp_cluster);
->  	platform_set_drvdata(pdev, of_cluster);
->  
-> -	return scp_rproc_init(pdev);
-> +	ret = devm_of_platform_populate(dev);
-> +	if (ret)
-> +		return dev_err_probe(dev, ret, "Failed to populate platform devices\n");
-> +
-> +	ret = scp_cluster_init(pdev);
-> +	if (ret)
-> +		return dev_err_probe(dev, ret, "Failed to initialize scp cluster\n");
-> +
-> +	return 0;
->  }
->  
->  static int scp_remove(struct platform_device *pdev)
->  {
-> -	struct mtk_scp *scp = platform_get_drvdata(pdev);
-> -	int i;
-> +	struct mtk_scp *scp, *temp;
-> +	struct mtk_scp_of_cluster *of_cluster;
-> +	struct list_head *cluster;
-> +	int ret;
->  
-> -	rproc_del(scp->rproc);
-> -	scp_remove_rpmsg_subdev(scp);
-> -	scp_ipi_unregister(scp, SCP_IPI_INIT);
-> -	scp_unmap_memory_region(scp);
-> -	for (i = 0; i < SCP_IPI_MAX; i++)
-> -		mutex_destroy(&scp->ipi_desc[i].lock);
-> -	mutex_destroy(&scp->send_lock);
-> +	ret = scp_is_single_core(pdev);
-> +	if (ret < 0)
-> +		return ret;
-> +
-> +	if (ret) {
-> +		scp = platform_get_drvdata(pdev);
-> +		cluster = scp->cluster;
-> +	} else {
-> +		of_cluster = platform_get_drvdata(pdev);
-> +		cluster = &of_cluster->mtk_scp_cluster;
-> +	}
-
-If single and multi core systems were presented the same way, i.e with a cluster
-and a list of SCPs, you wouldn't have to do this.  I will stop here for this
-revision.
+Yes, I will rebase it to rc1 next week
 
 Thanks,
-Mathieu
-
-> +
-> +	list_for_each_entry_safe_reverse(scp, temp, cluster, elem) {
-> +		list_del(&scp->elem);
-> +		rproc_del(scp->rproc);
-> +		scp_rproc_free(scp);
-> +	}
->  
->  	return 0;
->  }
-> @@ -1078,12 +1221,19 @@ static const struct mtk_scp_of_data mt8195_of_data_c1 = {
->  	.host_to_scp_int_bit = MT8195_CORE1_HOST_IPC_INT_BIT,
->  };
->  
-> +static const struct mtk_scp_of_data *mt8195_of_data_cores[] = {
-> +	&mt8195_of_data,
-> +	&mt8195_of_data_c1,
-> +	NULL
-> +};
-> +
->  static const struct of_device_id mtk_scp_of_match[] = {
->  	{ .compatible = "mediatek,mt8183-scp", .data = &mt8183_of_data },
->  	{ .compatible = "mediatek,mt8186-scp", .data = &mt8186_of_data },
->  	{ .compatible = "mediatek,mt8188-scp", .data = &mt8188_of_data },
->  	{ .compatible = "mediatek,mt8192-scp", .data = &mt8192_of_data },
->  	{ .compatible = "mediatek,mt8195-scp", .data = &mt8195_of_data },
-> +	{ .compatible = "mediatek,mt8195-scp-dual", .data = &mt8195_of_data_cores },
->  	{},
->  };
->  MODULE_DEVICE_TABLE(of, mtk_scp_of_match);
-> -- 
-> 2.18.0
-> 
+Jason
 
