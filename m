@@ -4,85 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF60CC77B73
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 May 2023 20:02:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A94B4C77B78
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 May 2023 20:06:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AatJ62eJfG1sao8+B2BxvzLVDoxSkwxg4Zduy7ve7yw=; b=wlEBFyAQ56Aq8lW2q1D/eXiHuo
-	BqyrYdjhZ9GPGAWvqMMGRKnW9/RH8FAABMI7o1Cae2U6vSiA8WpVIzWiyYrhy6MjuiQAmYExE7enP
-	txvBWZnSHLkBnlZsnp4oOcIPRXrdeSQUhwzowx2PoII8dGMpFLW6MZLdKuQP6l+wOibnquoU3UuBD
-	VXL+swxP9dTLRL5ena2kZe2Qy5UBlxfy1HsAPoAUMhSVzX4vqPN8BefDWeAxPr+k7ON1N4LmObYsx
-	Aud0N3xQ+QzfdfsfLhq70jPHn++MTo1dwY5GAsBhtoiqOJ3kUsQj1QAWSkhYsT0enErKrkLsyJGxl
-	b4mZk5ww==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=jRzQaQYMyheL6/9XvWrDvecv1EQ6rZdy4z1HdYKesGo=; b=TbPRYSJqulSULf
+	Wcnqz+pXrdGEmRmKKmWrfP81W66ZH/vNSZg6p6a8pfG++3P/jolq1q7u4uSGgFZKvGaRxu7NiUMeU
+	kZ+vDKIEaOAiWFvC/kW98E+xf78KFtWhpLUzZVQu9YXDmC/iDLr2HJzdd9TL57wLR3M00D5HoH1uu
+	X9lUpyPmJPXUxYNUbRPNCscR4/rbR+OCvV5t34KIicKpyTfhdxV/5rtZZjKpQM9bFHNl5tkLpK0PA
+	tsQ3j8e98Ok71pdD0WJlUBGN2vxTpR5BWoVQaTunav5+27rtTW1I82hthFjFeGzPqQX8Lv53EzyEC
+	DwZlxnmL/4XZLvpMmSgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptwCb-002Vvf-00;
-	Tue, 02 May 2023 20:02:21 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1ptwGq-002Wik-27;
+	Tue, 02 May 2023 20:06:44 +0000
+Received: from sender4-op-o10.zoho.com ([136.143.188.10])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptwCW-002Vtv-24;
-	Tue, 02 May 2023 20:02:18 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 4B1416286A;
-	Tue,  2 May 2023 20:02:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A606CC433D2;
-	Tue,  2 May 2023 20:02:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1683057733;
-	bh=z65CXUdNhixlNpdcU4cX9MnAhBOpBsEMQ9BKqmjTFr0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=HyuoeVi2h5vX+j5IW8pycatuUewSXr3NeuUPOSs/I37n7qS/vc4fMybMESDh9jPBI
-	 4FJ83i+yxidNuezkHy3yrXC173LFNnftU6kPLMCB9tuPxERwsDu4NYPns+wr4YSE21
-	 gpcWsrKk3Jl22MO0gvxUlmuou+tbdesX2a5K575kTKdKSgJEmPGOpJapGlktKI8I65
-	 gG6CVdb7AZZe5XVqQznvR1MRxW2h9ly9o0/hbOH4UOjKURJ52+ifQjgPVzANSziT4T
-	 seOSJHMW3E30u/+HFBr4rrpBrtok0Fc1sAGtUrlAz85EF3NBm/dk3oC+kikEm+JU0y
-	 DHrd3NwwfYNng==
-Message-ID: <2783a3ba-8fcb-7e5f-3147-91d02e573ba4@kernel.org>
-Date: Tue, 2 May 2023 22:02:03 +0200
+	id 1ptwGm-002WgQ-1I;
+	Tue, 02 May 2023 20:06:42 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1683057967; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=iT9g+M0S+e+kRek4sdOtHe0l/mzpHdAoLIaIEuCqJR6VKV8I3ajk8qHrspCs0wjpbn5pSvgHcRY67yOIN5xlAW17IDoGHE1e0b2CuR1sEEf9SZbQ33fy99Le56jVcI3jGOLlVhL5XHi4iaWuRGLQUlxkDo4Nb+6a9KwstviZIi0=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1683057967; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=jRzQaQYMyheL6/9XvWrDvecv1EQ6rZdy4z1HdYKesGo=; 
+	b=e35bLITHWvU4k3TnGL4PYr+iHwWlVDWcJxjGPRuKsdwAnZ9ClpqsOmVUccrqCQ8Y4jgDlKjxQIomNwrXIKs/q8j7g7CxinYnNw7W8ol3a5mcd49jAwL+KCeOtk19M1hfIxS16kbVI0OWtG+YLvjVFZT9RAJP0Su5ze0UG1CUBfI=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1683057967;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=jRzQaQYMyheL6/9XvWrDvecv1EQ6rZdy4z1HdYKesGo=;
+	b=HwUlBdNPExWNS3ZRm5TUZIeayBebk5apv+VrpEbHIRrfU6SY3qArHdodzmiSDME8
+	+7xbYgJ9gLd+Xtd22VzsnsHVarFvKcD9L4hJHrdYY7gKyZ1NP+5EddBcp4H7SQsoqEI
+	oyflG8ls/YY7SHqW7gO//lvUUtDVX2orxAyUqFj0=
+Received: from [10.10.10.3] (149.91.1.15 [149.91.1.15]) by mx.zohomail.com
+	with SMTPS id 168305796648833.62395961631171; Tue, 2 May 2023 13:06:06 -0700 (PDT)
+Message-ID: <c9765637-4601-0a7d-7e5e-4c3e9d52d90f@arinc9.com>
+Date: Tue, 2 May 2023 23:05:41 +0300
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.1
-Subject: Re: [RFC PATCH 0/1] Categorize ARM dts directory
-To: Rob Herring <robh+dt@kernel.org>, Arnd Bergmann <arnd@arndb.de>
-Cc: Geert Uytterhoeven <geert@linux-m68k.org>, Olof Johansson
- <olof@lixom.net>, Christian Marangi <ansuelsmth@gmail.com>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-actions@lists.infradead.org,
- linux-sunxi@lists.linux.dev, Linux-OMAP <linux-omap@vger.kernel.org>,
- linux-amlogic@lists.infradead.org, linux-arm-kernel@axis.com,
- linux-aspeed@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org,
- chrome-platform@lists.linux.dev,
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
- linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- kernel@dh-electronics.com, linux-mediatek@lists.infradead.org,
- openbmc@lists.ozlabs.org, linux-tegra@vger.kernel.org,
- "linux-oxnas@groups.io" <linux-oxnas@groups.io>,
- linux-arm-msm@vger.kernel.org, linux-unisoc@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-realtek-soc@lists.infradead.org,
- Shawn Guo <shawnguo@kernel.org>
-References: <20220328000915.15041-1-ansuelsmth@gmail.com>
- <85eb14ec-f465-7447-ad77-a3dabc666f47@kernel.org>
- <YkKRYnN84D9VZhGj@Ansuel-xps.localdomain>
- <CAL_Jsq+RQQ-ADMxLPUFwk6S6kGmb6oNDy4k52fnU0EtbUvqmSA@mail.gmail.com>
- <CAMuHMdWNTE48MFy6fqxAsfMWz9b6E7dVNXtXtESP95sxk2PGwA@mail.gmail.com>
- <CAL_JsqJthKTm8bhRF2B=ae1tvtPeYYXx_Tm76qQtSwLtH5C6VA@mail.gmail.com>
- <720a2829-b6b5-411c-ac69-9a53e881f48d@app.fastmail.com>
- <CAL_JsqKCtmkwzKa01gyG65fH8ye6R3KhR41PJbJhOJ4X9j=znA@mail.gmail.com>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH net 2/2] net: dsa: mt7530: fix network connectivity with
+ multiple CPU ports
+To: Florian Fainelli <f.fainelli@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
+ DENG Qingfang <dqfext@gmail.com>, Daniel Golle <daniel@makrotopia.org>,
+ Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>
+References: <20230501121538.57968-1-arinc.unal@arinc9.com>
+ <20230501121538.57968-2-arinc.unal@arinc9.com>
+ <5e00b4c7-8d3f-e1b2-4359-5ee8fdf92ea9@gmail.com>
 Content-Language: en-US
-From: Krzysztof Kozlowski <krzk@kernel.org>
-In-Reply-To: <CAL_JsqKCtmkwzKa01gyG65fH8ye6R3KhR41PJbJhOJ4X9j=znA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <5e00b4c7-8d3f-e1b2-4359-5ee8fdf92ea9@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230502_130216_774708_F0F09BD4 
-X-CRM114-Status: GOOD (  27.48  )
+X-CRM114-CacheID: sfid-20230502_130640_511970_0F91EACE 
+X-CRM114-Status: GOOD (  10.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,176 +85,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: mithat.guner@xeront.com, Richard van Schagen <vschagen@cs.com>, linux-kernel@vger.kernel.org, Richard van Schagen <richard@routerhints.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, netdev@vger.kernel.org, erkin.bozoglu@xeront.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 02/05/2023 21:40, Rob Herring wrote:
-> On Tue, May 2, 2023 at 3:15 AM Arnd Bergmann <arnd@arndb.de> wrote:
+On 02/05/2023 21:30, Florian Fainelli wrote:
+> 
+> 
+> On 5/1/2023 5:15 AM, arinc9.unal@gmail.com wrote:
+>> From: Arınç ÜNAL <arinc.unal@arinc9.com>
 >>
->> On Tue, Apr 25, 2023, at 17:57, Rob Herring wrote:
->>> On Tue, Apr 25, 2023 at 2:28 AM Geert Uytterhoeven <geert@linux-m68k.org> wrote:
->>>
->>>> Does your script also cater for .dts files not matching any pattern,
->>>> but including a .dtsi file that does match a pattern?
->>>
->>> I assume I built everything after moving, but maybe not...
->>>
->>> That's all just "details". First, we need agreement on a) moving
->>> things to subdirs and b) doing it 1-by-1 or all at once. So far we've
->>> been stuck on a) for being 'too much churn'.
+>> On mt753x_cpu_port_enable() there's code that enables flooding for the 
+>> CPU
+>> port only. Since mt753x_cpu_port_enable() runs twice when both CPU ports
+>> are enabled, port 6 becomes the only port to forward the frames to. But
+>> port 5 is the active port, so no frames received from the user ports will
+>> be forwarded to port 5 which breaks network connectivity.
 >>
->> Sorry for missing most of the discussion last week. The script sounds
->> fine to me, the only reason I didn't want to do this in the past is that
->> we had the plan to move platforms out of the kernel tree to an external
->> repository and I wanted to do this platform at a time and also only move
->> each one once. I don't think that is going to happen anytime soon now,
->> so let's just do your script.
+>> Every bit of the BC_FFP, UNM_FFP, and UNU_FFP bits represents a port. Fix
+>> this issue by setting the bit that corresponds to the CPU port without
+>> overwriting the other bits.
 >>
->> Can you send me the script and/or a pull request of the resulting
->> tree based on my soc/dt branch? Everything is merged upstream,
->> and I think git-merge would handle the remaining merges with any
->> other changes in mainline.
+>> Clear the bits beforehand only for the MT7531 switch. According to the
+>> documents MT7621 Giga Switch Programming Guide v0.3 and MT7531 Reference
+>> Manual for Development Board v1.0, after reset, the BC_FFP, UNM_FFP, and
+>> UNU_FFP bits are set to 1 for MT7531, 0 for MT7530.
+>>
+>> Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 > 
-> I've dusted off my script and made a branch[1] with the result.
-> There's just a couple of fixes needed after the script is run (see the
-> top commit). The cross arch includes are all fixed up by the script.
-> dtbs_install maintains a flat install. I compared the number of .dtbs
-> before and after to check the script.
-> 
-> I think the only issue remaining is finalizing the mapping of
-> platforms to subdirs. What I have currently is a mixture of SoC
-> families and vendors. The most notable are all the Freescale/NXP
-> platforms, pxa, socfpga, and stm32. It's not consistent with arm64
-> either. Once that's finalized, I still need to go update MAINTAINERS.
-> 
-> Here's the current mapping:
-> 
-> vendor_map = {
->     'alphascale' : 'alphascale',
->     'alpine' : 'alpine',
->     'artpec' : 'axis',
->     'axm' : 'lsi',
->     'cx9' : 'cnxt',
->     'ecx' : 'calxeda',
->     'highbank' : 'calxeda',
->     'ep7' : 'cirrus',
->     'mxs': 'mxs',
->     'imx23': 'mxs',
->     'imx28': 'mxs',
->     'sun' : 'allwinner',
->     'imx': 'imx',
->     'e6' : 'imx',
->     'e7' : 'imx',
->     'mba6' : 'imx',
->     'ls': 'fsl',
->     'vf': 'fsl',
+> This tag is implied by your Signed-off-by tag. No Fixes tag for this one?
 
-If I remember correctly, Vybrid are a bit closer to iMX than to LS
-(Layerscape), but it should be Shawn's call (+Cc).
+I've put it with v2. Let me send v3 to remove the tested-by and add your 
+reviewed-by to the other patch.
 
->     'qcom': 'qcom',
->     'am3' : 'ti',
->     'am4' : 'ti',
->     'am5' : 'ti',
->     'dra' : 'ti',
->     'keystone' : 'ti',
->     'omap' : 'ti',
->     'compulab' : 'ti',
->     'logicpd' : 'ti',
->     'elpida' : 'ti',
->     'motorola' : 'ti',
->     'twl' : 'ti',
->     'da' : 'ti',
->     'dm' : 'ti',
->     'nspire' : 'nspire',
->     'armada' : 'marvell',
->     'dove' : 'marvell',
->     'kirkwood' : 'marvell',
->     'orion' : 'marvell',
->     'mvebu' : 'marvell',
->     'mmp' : 'marvell',
->     'berlin' : 'berlin',
->     'pxa2' : 'pxa',
->     'pxa3' : 'pxa',
->     'pxa' : 'marvell',
->     'arm-' : 'arm',
->     'integ' : 'arm',
->     'mps' : 'arm',
->     've' : 'arm',
->     'aspeed' : 'aspeed',
->     'ast2' : 'aspeed',
->     'facebook' : 'aspeed',
->     'ibm' : 'aspeed',
->     'openbmc' : 'aspeed',
->     'en7' : 'airoha',
->     'at91' : 'microchip',
->     'sama' : 'microchip',
->     'sam9' : 'microchip',
->     'usb_' : 'microchip',
->     'tny_' : 'microchip',
->     'mpa1600' : 'microchip',
->     'animeo_ip' : 'microchip',
->     'aks-cdu' : 'microchip',
->     'ethernut5' : 'microchip',
->     'evk-pro3' : 'microchip',
->     'pm9g45' : 'microchip',
->     'ge86' : 'microchip',
->     'bcm' : 'brcm',
->     'exynos' : 'samsung',
->     's3c' : 'samsung',
->     's5p' : 'samsung',
-
-For samsung looks good.
-
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
->     'gemini' : 'gemini',
->     'hi3' : 'hisilicon',
->     'hip' : 'hisilicon',
->     'hisi' : 'hisilicon',
->     'sd5' : 'hisilicon',
->     'hpe' : 'hpe',
->     'intel': 'intel',
->     'mt' : 'mediatek',
->     'meson' : 'meson',
->     'moxa' : 'moxa',
->     'mstar' : 'mstar',
->     'nuvo' : 'nuvoton',
->     'lpc' : 'lpc',
->     'lan96' : 'microchip',
->     'owl' : 'actions',
->     'ox8' : 'oxsemi',
->     'rda' : 'rda',
->     'rtd' : 'realtek',
->     'r7' : 'renesas',
->     'r8' : 'renesas',
->     'r9' : 'renesas',
->     'emev2' : 'renesas',
->     'sh73a' : 'renesas',
->     'gr-' : 'renesas',
->     'iwg' : 'renesas',
->     'rk' : 'rockchip',
->     'rv11' : 'rockchip',
->     'rockchip' : 'rockchip',
->     'socfpga' : 'socfpga',
->     'stm' : 'stm32',
->     'sti' : 'sti',
->     'st-pin' : 'sti',
->     'ste' : 'st-ericsson',
->     'spear' : 'spear',
->     'axp' : 'allwinner',
->     'tegra' : 'nvidia',
->     'milbeaut' : 'socionext',
->     'uniph' : 'socionext',
->     'vt8500' : 'vt8500',
->     'wm8' : 'vt8500',
->     'xen' : 'xen',
->     'zx' : 'zte',
->     'zynq' : 'xilinx',
-
-The rest looks good to me, but I don't know half of these :)
-
-Best regards,
-Krzysztof
-
+Arınç
 
