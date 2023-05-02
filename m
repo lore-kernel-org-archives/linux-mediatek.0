@@ -4,75 +4,137 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7AB4C77B7E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 May 2023 17:06:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B85AC77B73
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 May 2023 17:58:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GYLfa8wY9waR/VkVBVCgWUDtIiZliI2aHJRM481JfLs=; b=gDAtc/SNvRuNU6FLFXDtUmLJ/V
-	x0hWpIb+jTAwGi7WSORpCVBjjmootNwmIJw+MFr3dK2EdfCtF5yVAZqS1qYGGHQEReibyTXb5XQ+f
-	zrFnkUX81pklXAXvRRPevuPFsSwHYMx7bK3mVAAsbZ15appkr8mUcMH3+d4xq9g3RlC2Y/7NNa+lS
-	jo6GjuKya6rvB0wIGIeacO9Fm1zkOmpeA//Z3+qMipgjzPxe1xtRqJ8A6Bki7annJHHpTw2dztVcb
-	cKf2A4RhDNy2Cf/qdmqXbK7lP0LjL0x4ClAooF+cT+ro2WoRml/8Yt93l+GuwwFRhG7fQUeVZxi1r
-	hy/6QgJA==;
+	bh=621oHKV9Q4q3NojmG6Twv6Ayhy6gzgsdLbpEBdHVwnE=; b=K34GJdhSIsyrIOsGXj6+Piq3VS
+	GVL6vS+k/eRmvRbCrmpwSiM5RWV7BwIRUtelSTiDTuqGN7tIbAAk87BKVsqJWFDDBvsi0cKrwV8rO
+	Y04zSB9VzwVeucbNVt/tGwYQqfWkFRMmZMQbgKyAsd/brAtZywO5TOPE/75JOfyAOeaDebNpLNhEw
+	4aOIwKW3r762volUJDsV+Me5aGU73PVK4jX0HiGlc58qhIntdHXljok0ZMooWzxbRh94L5y0tLx0X
+	qmn+VZWpbV51rrAUtbJTWdnWUh24sjU7907C9Z5E5L463sD8nbr4qsMVldz/jIKHEjLH+VzvZtsi2
+	74K5wh/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pttSd-002BmS-0m;
-	Tue, 02 May 2023 17:06:43 +0000
-Received: from mga11.intel.com ([192.55.52.93])
+	id 1ptuGm-002ItR-0C;
+	Tue, 02 May 2023 17:58:32 +0000
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pttSa-002Bkx-0N;
-	Tue, 02 May 2023 17:06:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1683047200; x=1714583200;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=fEYMsK1Iiuu4vvTM0awEdj78uMJDPmIYBFIrEeHP8uI=;
-  b=V7fWUZKsEXvmwvlmCHbwxlJp3uFyV/8i34OsX+gew4fuetp55TjGugL6
-   H8Tih4Hp92cVFqz730ru4dlP5fwIyRpWCwj+sq8VEpKDylA4MXcMXnKnl
-   fRFtx5+/1ZQNQbeBYARI+zraH+d5FNsNZXs2wkvDTE71MU7pNQB7OXh3j
-   zmxD9UIa6ttpiLAtNuuXsKZwwWUk9FN7Qa51kSlDxlgxa5//RjWIHsiwJ
-   QiPx0yxmI3P1fdzKCWs/PgVZ/ekZWDAIqjr0jCqTPU0SMfyJCyESQm0Tv
-   VpBJpLtXdd9VQDEjiWRHFKzMHvPo9C4vqxNYc+1IyXONEKHBMJ+MT8tz9
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10698"; a="345936013"
-X-IronPort-AV: E=Sophos;i="5.99,244,1677571200"; 
-   d="scan'208";a="345936013"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 May 2023 10:06:35 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10698"; a="729000952"
-X-IronPort-AV: E=Sophos;i="5.99,244,1677571200"; 
-   d="scan'208";a="729000952"
-Received: from lkp-server01.sh.intel.com (HELO e3434d64424d) ([10.239.97.150])
-  by orsmga001.jf.intel.com with ESMTP; 02 May 2023 10:06:30 -0700
-Received: from kbuild by e3434d64424d with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1pttSQ-0001BM-2i;
-	Tue, 02 May 2023 17:06:30 +0000
-Date: Wed, 3 May 2023 01:06:26 +0800
-From: kernel test robot <lkp@intel.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	chunkuang.hu@kernel.org
-Cc: oe-kbuild-all@lists.linux.dev, linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
-	wenst@chromium.org, matthias.bgg@gmail.com, kernel@collabora.com,
-	linux-arm-kernel@lists.infradead.org,
-	angelogioacchino.delregno@collabora.com
-Subject: Re: [PATCH 06/11] drm/mediatek: gamma: Use bitfield macros
-Message-ID: <202305030043.iaNtiOtW-lkp@intel.com>
-References: <20230502081650.25947-7-angelogioacchino.delregno@collabora.com>
+	id 1ptuGg-002Ir8-0w;
+	Tue, 02 May 2023 17:58:28 +0000
+Received: from pps.filterd (m0353729.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 342Hp0jb024052;
+	Tue, 2 May 2023 17:58:02 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=message-id : subject :
+ from : to : cc : date : in-reply-to : references : content-type :
+ content-transfer-encoding : mime-version; s=pp1;
+ bh=621oHKV9Q4q3NojmG6Twv6Ayhy6gzgsdLbpEBdHVwnE=;
+ b=RGpeH+7Spx3pccPx3n9bfSCmCQ+mcHv5kqAStsFG5zdqKnoxzqdfzAYTXWtk7be8McxO
+ UQZuX9SdrxLl4NUmNPHgm2ATGbTPfhEeyO8DKSUDZGo4EImBN22KsuO0WHFJ46vyRokR
+ bbTDbNhF/pUUMxSGHgNw44E0ePh1akr2G+6uuv1pCAda2hsSJ4YXw6Xd78xwcodys9fZ
+ cOZOMmIm/8Or3YW9LyCcwLkMBEIYOtUKXeQSO95k4p/+1LlweFTK7vOpCGGfKV7Y6z1O
+ UWy0X6TlofXlAYbHPAVuNxcyR4OlOppaJW1xxxrHkNLWvUdNl+4KcVNxf0ngQkigltly 6Q== 
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3qb79g85he-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 02 May 2023 17:58:01 +0000
+Received: from m0353729.ppops.net (m0353729.ppops.net [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 342Hs8Hv032494;
+	Tue, 2 May 2023 17:58:00 GMT
+Received: from ppma04ams.nl.ibm.com (63.31.33a9.ip4.static.sl-reverse.com [169.51.49.99])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3qb79g85g0-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 02 May 2023 17:57:59 +0000
+Received: from pps.filterd (ppma04ams.nl.ibm.com [127.0.0.1])
+	by ppma04ams.nl.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 341LC9Kf005173;
+	Tue, 2 May 2023 17:57:56 GMT
+Received: from smtprelay02.fra02v.mail.ibm.com ([9.218.2.226])
+	by ppma04ams.nl.ibm.com (PPS) with ESMTPS id 3q8tv6sr55-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 02 May 2023 17:57:56 +0000
+Received: from smtpav05.fra02v.mail.ibm.com (smtpav05.fra02v.mail.ibm.com [10.20.54.104])
+	by smtprelay02.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 342HvqTe6816504
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Tue, 2 May 2023 17:57:52 GMT
+Received: from smtpav05.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id AC9B320043;
+	Tue,  2 May 2023 17:57:52 +0000 (GMT)
+Received: from smtpav05.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id E163420040;
+	Tue,  2 May 2023 17:57:50 +0000 (GMT)
+Received: from [9.171.18.35] (unknown [9.171.18.35])
+	by smtpav05.fra02v.mail.ibm.com (Postfix) with ESMTP;
+	Tue,  2 May 2023 17:57:50 +0000 (GMT)
+Message-ID: <619e2ae66038da313b68c0f5d16e97984aebe5e6.camel@linux.ibm.com>
+Subject: Re: [PATCH 03/20] iommu/s390: Replace set_platform_dma_ops() with
+ IOMMU_DOMAIN_PLATFORM
+From: Niklas Schnelle <schnelle@linux.ibm.com>
+To: Jason Gunthorpe <jgg@nvidia.com>, Andy Gross <agross@kernel.org>,
+        Alim
+ Akhtar <alim.akhtar@samsung.com>,
+        Bjorn Andersson <andersson@kernel.org>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Baolin Wang <baolin.wang@linux.alibaba.com>,
+        Gerald Schaefer
+ <gerald.schaefer@linux.ibm.com>,
+        Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
+        Jernej Skrabec <jernej.skrabec@gmail.com>,
+        Jonathan
+ Hunter <jonathanh@nvidia.com>,
+        Joerg Roedel <joro@8bytes.org>,
+        Konrad
+ Dybcio <konrad.dybcio@linaro.org>,
+        Krzysztof Kozlowski
+ <krzysztof.kozlowski@linaro.org>,
+        linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+        linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
+        linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
+        linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+        Marek Szyprowski <m.szyprowski@samsung.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        Matthew Rosato
+ <mjrosato@linux.ibm.com>,
+        Orson Zhai <orsonzhai@gmail.com>, Rob Clark
+ <robdclark@gmail.com>,
+        Robin Murphy <robin.murphy@arm.com>,
+        Samuel Holland
+ <samuel@sholland.org>,
+        Thierry Reding <thierry.reding@gmail.com>,
+        Krishna
+ Reddy <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
+        Will Deacon
+ <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
+        Chunyan Zhang
+ <zhang.lyra@gmail.com>
+Cc: Lu Baolu <baolu.lu@linux.intel.com>, Kevin Tian <kevin.tian@intel.com>,
+        Nicolin Chen <nicolinc@nvidia.com>,
+        Steven Price <steven.price@arm.com>
+Date: Tue, 02 May 2023 19:57:50 +0200
+In-Reply-To: <3-v1-21cc72fcfb22+a7a-iommu_all_defdom_jgg@nvidia.com>
+References: <3-v1-21cc72fcfb22+a7a-iommu_all_defdom_jgg@nvidia.com>
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.48.1 (3.48.1-1.fc38) 
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: _cF4FTDgqHBuVmSLzSX027-cXWersI4c
+X-Proofpoint-ORIG-GUID: 9v3VgFcH_fMov5DWIp_KQp1O0YfHLmEi
+Content-Transfer-Encoding: quoted-printable
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230502081650.25947-7-angelogioacchino.delregno@collabora.com>
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.254,Aquarius:18.0.942,Hydra:6.0.573,FMLib:17.11.170.22
+ definitions=2023-05-02_10,2023-04-27_01,2023-02-09_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 suspectscore=0 malwarescore=0
+ clxscore=1015 mlxlogscore=999 impostorscore=0 spamscore=0 mlxscore=0
+ bulkscore=0 lowpriorityscore=0 adultscore=0 phishscore=0
+ priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2303200000 definitions=main-2305020151
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230502_100640_242986_A8D48ED8 
-X-CRM114-Status: GOOD (  17.73  )
+X-CRM114-CacheID: sfid-20230502_105826_570145_BDE839C2 
+X-CRM114-Status: GOOD (  24.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,111 +149,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi AngeloGioacchino,
+On Mon, 2023-05-01 at 15:02 -0300, Jason Gunthorpe wrote:
+> This is temporary until the S390 dma-iommu.c conversion is merged.
 
-kernel test robot noticed the following build errors:
+For anyone wanting to accelerate the conversion. Comments, testing and
+reviews for the current version of my dma-iommu.c conversion patches is
+welcome and the single flush queue thing might even give others
+(virtio-iommu?) performance benefits:
+https://lore.kernel.org/linux-iommu/20230310-dma_iommu-v8-0-2347dfbed7af@li=
+nux.ibm.com/
 
-[auto build test ERROR on drm-misc/drm-misc-next]
-[also build test ERROR on drm/drm-next drm-exynos/exynos-drm-next drm-intel/for-linux-next drm-intel/for-linux-next-fixes drm-tip/drm-tip linus/master v6.3 next-20230428]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+>=20
+> s390 is actually moving the dma_ops over to platform control.
+>=20
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> ---
+>  drivers/iommu/s390-iommu.c | 21 +++++++++++++++++++--
+>  1 file changed, 19 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/drivers/iommu/s390-iommu.c b/drivers/iommu/s390-iommu.c
+> index fbf59a8db29b11..f0c867c57a5b9b 100644
+> --- a/drivers/iommu/s390-iommu.c
+> +++ b/drivers/iommu/s390-iommu.c
+> @@ -142,14 +142,31 @@ static int s390_iommu_attach_device(struct iommu_do=
+main *domain,
+>  	return 0;
+>  }
+>=20=20
+> -static void s390_iommu_set_platform_dma(struct device *dev)
+> +/*
+> + * Switch control over the IOMMU to S390's internal dma_api ops
+> + */
+> +static int s390_iommu_platform_attach(struct iommu_domain *platform_doma=
+in,
+> +				      struct device *dev)
+>  {
+>  	struct zpci_dev *zdev =3D to_zpci_dev(dev);
+>=20=20
+> +	if (!zdev->s390_domain)
+> +		return 0;
+> +
+>  	__s390_iommu_detach_device(zdev);
+>  	zpci_dma_init_device(zdev);
+> +	return 0;
+>  }
+>=20=20
+> +static struct iommu_domain_ops s390_iommu_platform_ops =3D {
+> +	.attach_dev =3D s390_iommu_platform_attach,
+> +};
+> +
+> +static struct iommu_domain s390_iommu_platform_domain =3D {
+> +	.type =3D IOMMU_DOMAIN_PLATFORM,
+> +	.ops =3D &s390_iommu_platform_ops,
+> +};
+> +
+>  static void s390_iommu_get_resv_regions(struct device *dev,
+>  					struct list_head *list)
+>  {
+> @@ -428,12 +445,12 @@ void zpci_destroy_iommu(struct zpci_dev *zdev)
+>  }
+>=20=20
+>  static const struct iommu_ops s390_iommu_ops =3D {
+> +	.default_domain =3D &s390_iommu_platform_domain,
+>  	.capable =3D s390_iommu_capable,
+>  	.domain_alloc =3D s390_domain_alloc,
+>  	.probe_device =3D s390_iommu_probe_device,
+>  	.release_device =3D s390_iommu_release_device,
+>  	.device_group =3D generic_device_group,
+> -	.set_platform_dma_ops =3D s390_iommu_set_platform_dma,
+>  	.pgsize_bitmap =3D SZ_4K,
+>  	.get_resv_regions =3D s390_iommu_get_resv_regions,
+>  	.default_domain_ops =3D &(const struct iommu_domain_ops) {
 
-url:    https://github.com/intel-lab-lkp/linux/commits/AngeloGioacchino-Del-Regno/drm-mediatek-gamma-Adjust-mtk_drm_gamma_set_common-parameters/20230502-161758
-base:   git://anongit.freedesktop.org/drm/drm-misc drm-misc-next
-patch link:    https://lore.kernel.org/r/20230502081650.25947-7-angelogioacchino.delregno%40collabora.com
-patch subject: [PATCH 06/11] drm/mediatek: gamma: Use bitfield macros
-config: arm-allyesconfig (https://download.01.org/0day-ci/archive/20230503/202305030043.iaNtiOtW-lkp@intel.com/config)
-compiler: arm-linux-gnueabi-gcc (GCC) 12.1.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/171ab0605a0c2b44167dc1339b29dc80c2ac7d4d
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review AngeloGioacchino-Del-Regno/drm-mediatek-gamma-Adjust-mtk_drm_gamma_set_common-parameters/20230502-161758
-        git checkout 171ab0605a0c2b44167dc1339b29dc80c2ac7d4d
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=arm olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=arm SHELL=/bin/bash drivers/gpu/
+Looks good to me and I think semantically this is a good use of an
+IOMMU domain type.
 
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Link: https://lore.kernel.org/oe-kbuild-all/202305030043.iaNtiOtW-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-   drivers/gpu/drm/mediatek/mtk_disp_gamma.c: In function 'mtk_gamma_set_common':
->> drivers/gpu/drm/mediatek/mtk_disp_gamma.c:111:32: error: implicit declaration of function 'FIELD_PREP' [-Werror=implicit-function-declaration]
-     111 |                         word = FIELD_PREP(DISP_GAMMA_LUT_10BIT_R, hwlut.red);
-         |                                ^~~~~~~~~~
-   cc1: some warnings being treated as errors
-
-
-vim +/FIELD_PREP +111 drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-
-    77	
-    78	void mtk_gamma_set_common(struct device *dev, void __iomem *regs, struct drm_crtc_state *state)
-    79	{
-    80		struct mtk_disp_gamma *gamma = dev_get_drvdata(dev);
-    81		unsigned int i;
-    82		struct drm_color_lut *lut;
-    83		void __iomem *lut_base;
-    84		bool lut_diff;
-    85		u16 lut_size;
-    86		u32 cfg_val, word;
-    87	
-    88		/* If there's no gamma lut there's nothing to do here. */
-    89		if (!state->gamma_lut)
-    90			return;
-    91	
-    92		if (gamma && gamma->data) {
-    93			lut_diff = gamma->data->lut_diff;
-    94			lut_size = gamma->data->lut_size;
-    95		} else {
-    96			lut_diff = false;
-    97			lut_size = LUT_SIZE_DEFAULT;
-    98		}
-    99	
-   100		cfg_val = readl(regs + DISP_GAMMA_CFG);
-   101		lut_base = regs + DISP_GAMMA_LUT;
-   102		lut = (struct drm_color_lut *)state->gamma_lut->data;
-   103		for (i = 0; i < lut_size; i++) {
-   104			struct drm_color_lut diff, hwlut;
-   105	
-   106			hwlut.red = drm_color_lut_extract(lut[i].red, LUT_BITS_DEFAULT);
-   107			hwlut.green = drm_color_lut_extract(lut[i].green, LUT_BITS_DEFAULT);
-   108			hwlut.red = drm_color_lut_extract(lut[i].blue, LUT_BITS_DEFAULT);
-   109	
-   110			if (!lut_diff || (i % 2 == 0)) {
- > 111				word = FIELD_PREP(DISP_GAMMA_LUT_10BIT_R, hwlut.red);
-   112				word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_G, hwlut.green);
-   113				word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_B, hwlut.blue);
-   114			} else {
-   115				diff.red = lut[i].red - lut[i - 1].red;
-   116				diff.red = drm_color_lut_extract(diff.red, LUT_BITS_DEFAULT);
-   117	
-   118				diff.green = lut[i].green - lut[i - 1].green;
-   119				diff.green = drm_color_lut_extract(diff.green, LUT_BITS_DEFAULT);
-   120	
-   121				diff.blue = lut[i].blue - lut[i - 1].blue;
-   122				diff.blue = drm_color_lut_extract(diff.blue, LUT_BITS_DEFAULT);
-   123	
-   124				word = FIELD_PREP(DISP_GAMMA_LUT_10BIT_R, diff.red);
-   125				word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_G, diff.green);
-   126				word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_B, diff.blue);
-   127			}
-   128			writel(word, (lut_base + i * 4));
-   129		}
-   130	
-   131		/* Enable the gamma table */
-   132		cfg_val |= FIELD_PREP(GAMMA_LUT_EN, 1);
-   133	
-   134		writel(cfg_val, regs + DISP_GAMMA_CFG);
-   135	}
-   136	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+Reviewed-by: Niklas Schnelle <schnelle@linux.ibm.com>
 
