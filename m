@@ -4,89 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1736C77B73
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 May 2023 18:30:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C15F7C77B78
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 May 2023 19:01:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=h5KPY5V6nk7zcKsejg06UhQdXAoI4rxf/Iee2Sdzh0s=; b=gxWyuCy8XMuKTe
-	xKVIWPqqzQiIO5Piu4XHyL8WBdQstOBvn2l2PJqL2DLml2jNTxfUGcoQw/97tkzmZpDMxFHjpiJWC
-	7fXTcFHQPyKfwmxIHwZGBzR7TmkAgN1blHA0pC4z2z4iXRY2r52hOkWanPzf9KHmvSUbQqmIiN0sH
-	OkQI/Ged8IoIM8xFP5vRqRSZ5bjc4ys9AK0YMml21rrLwMT2+8MmZFCaWlWVs/yJ0Z0kXAnXuSDkO
-	E+P/SkX5/3XTTXQ2WEbuCtnvUPczBacNApTM0opegtvjCm5bR1r8ND6xSqPo3rLThu6zEkBkJnlxy
-	IOP/f2WXIV7iHOX08ZhQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=prkycoKFrtYOB9sqzJph1/Wh7+dUYl73V0ySsrK86tE=; b=h15NUZVxWnCQ0d3cgcO7xFtkxr
+	MSmUo5c5lDHDzj2Dq6PYYhVN7+6rkeJ1f+rY2I+NPAuB8n2Hd0zioHVodT8fjhlxZjSi3yQ9ICB8f
+	+fzJh8TenfcNcvHHGgXbKeJLfBTjcPldzApkpW0WcAuba0/1S9XMVDXXx7hWxjc81kOnc7usfTIx3
+	YuItBwD4AqSWNN8t/qpomhcQEB4HIw82LJtKFS2QDQ3xUQ27q6ajUihP6O/+bvAbzCSY8N5tzBGM/
+	OKquT9ZX7XaaJCjOK1plfdtU6bt3KvcpHAwT9C/tBT6Wa2bXN85VN/+nztB/zXdp4vOwRYFYku9Yk
+	VhFjMbrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptulx-002MxW-0h;
-	Tue, 02 May 2023 18:30:45 +0000
-Received: from mail-qt1-x831.google.com ([2607:f8b0:4864:20::831])
+	id 1ptvFb-002QC9-0s;
+	Tue, 02 May 2023 19:01:23 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptult-002Mvr-2A;
-	Tue, 02 May 2023 18:30:42 +0000
-Received: by mail-qt1-x831.google.com with SMTP id d75a77b69052e-3ef2f81a96cso42219351cf.0;
-        Tue, 02 May 2023 11:30:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1683052239; x=1685644239;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=h5KPY5V6nk7zcKsejg06UhQdXAoI4rxf/Iee2Sdzh0s=;
-        b=huvapiP1o/a5ROF+RrV3LRzVcl8VvchFqlWxmMyY0NsJlusefbB0XvV8hgh3gac6fo
-         fqGq1g63D/En+ZAO6WAdGfLrFNH9C8RkAXnoKz2h9frRYIYjUPjRKoSrewvawZIe/GG/
-         ywI+pevRMWLaUqjPPy8faM0HkoJhrfxh3gDXhnwhl8jh99aaADOFeVogqj308IH7+KGj
-         1tB3pTQayl8TKnvnR1TsUmh88QYiKArDHl+PDtBEJl5XwAdv5GIkXirh1H64z4cEEal5
-         zCd8qPqpJ3raiW4C26zqSdD9DXeozCbVKNWuSNT+FmQiS7tddDCkih+UGCBgft+8QE/b
-         Acvw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683052239; x=1685644239;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=h5KPY5V6nk7zcKsejg06UhQdXAoI4rxf/Iee2Sdzh0s=;
-        b=JBPluCWtNlIyFzJTwOaBkztwgqh/LyEh/Nl9CNmVg2+DyKIIvUWx98RlWee3KAF6jM
-         esmrIfhA3CbX9EVF+3yTqxgDPsbsUzLyJTv1dHGbQnVXnSkLuVRP185znTiyHZAsAfEb
-         uh8SH1EOXNPdr0lZCYPX3uaeFrY9zCpwV7kmF09R/7hl4omTmGWyideI/UJQzbhUR4Og
-         8/agymeePrrTsBhniyap5ae0K7Rm587uhZx3OQsEYgEw37LEvpIF98kzDTgbayU36CW+
-         bajxRULYsXw6FfDrdRMIv/TL7olpMdbqyV4yKMFSfl2EHkZxWkr1Hjug+1Vol9mRECNg
-         6IhQ==
-X-Gm-Message-State: AC+VfDz2h57FMaISCk2wqLlrWKZdhsr4SDFTgqwf/4sn8zAKaFYWz6lF
-	NCI+CyXbDoq/GF6Y6ruH5JA=
-X-Google-Smtp-Source: ACHHUZ4cr3QjY4+z+dN7SsjEHvHkOPquQGdAxCy3mXR0QlFgJ/dhUGxFG6VteZXVkN2h21ws6YF9/A==
-X-Received: by 2002:ac8:5a8b:0:b0:3ef:327d:ac78 with SMTP id c11-20020ac85a8b000000b003ef327dac78mr25703066qtc.36.1683052239136;
-        Tue, 02 May 2023 11:30:39 -0700 (PDT)
-Received: from [10.69.71.131] ([192.19.223.252])
-        by smtp.gmail.com with ESMTPSA id c136-20020ae9ed8e000000b007468b183a65sm9918474qkg.30.2023.05.02.11.30.35
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 02 May 2023 11:30:38 -0700 (PDT)
-Message-ID: <5e00b4c7-8d3f-e1b2-4359-5ee8fdf92ea9@gmail.com>
-Date: Tue, 2 May 2023 11:30:36 -0700
+	id 1ptvFX-002Q9Z-0P;
+	Tue, 02 May 2023 19:01:20 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 23FB062810;
+	Tue,  2 May 2023 19:01:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 12C38C433A7;
+	Tue,  2 May 2023 19:01:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1683054076;
+	bh=prkycoKFrtYOB9sqzJph1/Wh7+dUYl73V0ySsrK86tE=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=rf/Ymu/EiSQOPePfJMJv1847ZBWRjnjneowURtOqNMODuCRTfcl2GQ0h/jO2AdmCs
+	 leEyX7R6GR2dka6/IsiyySID/QcvyxsSv7fNtmEEy0Cm9A6hC1sqxMJ+9jfUBya5xj
+	 ODLup2MnZzYCOUMdIZzoCrk5OSl4AOnL/7/DJbtkd5lptoW7/0YbgOkcgOH14mk6Au
+	 qACeCdnoaBW8B9rF8o7n7shq7gT7w0jQTaVjP3mXHg69IyA+TLldeHm4Y1C5mj86Z3
+	 uRYRPp4016gJq/2Xf9LklNYOIaWs99spKYSrk9MtOv6rk+8yKfvzOFwqXzWomFJ/+X
+	 cezzz3yUhjKtA==
+Received: by mail-lf1-f49.google.com with SMTP id 2adb3069b0e04-4f00d41df22so30189113e87.1;
+        Tue, 02 May 2023 12:01:15 -0700 (PDT)
+X-Gm-Message-State: AC+VfDyG1CQwfwF5bTh/IltplGzpBM/o5QGv0LT4De8A8KsyI85aJvr8
+	Whv4V/Cic/aAclh67qew4f4m2UJmmnGZaAL7Dw==
+X-Google-Smtp-Source: ACHHUZ4aQAyOb+PGJ7PQfIp0PiLUMh7I0dBEHOyVsVppKRO7n40/yktfmotxwSexv0gCD3XVcEmYB9ah5iQIzUMa54Q=
+X-Received: by 2002:a05:6512:3b07:b0:4eb:412e:b06a with SMTP id
+ f7-20020a0565123b0700b004eb412eb06amr237890lfv.22.1683054074001; Tue, 02 May
+ 2023 12:01:14 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.1
-Subject: Re: [PATCH net 2/2] net: dsa: mt7530: fix network connectivity with
- multiple CPU ports
-Content-Language: en-US
-To: arinc9.unal@gmail.com, Sean Wang <sean.wang@mediatek.com>,
- Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>
-References: <20230501121538.57968-1-arinc.unal@arinc9.com>
- <20230501121538.57968-2-arinc.unal@arinc9.com>
-From: Florian Fainelli <f.fainelli@gmail.com>
-In-Reply-To: <20230501121538.57968-2-arinc.unal@arinc9.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20220328000915.15041-1-ansuelsmth@gmail.com> <CAFr9PXkgrRe-=E=GhNnZ4w1x_FMb97-_RmX6ND1vEd74_TbZSw@mail.gmail.com>
+ <4ff4f171-c5f8-87af-aad1-5e7686292288@microchip.com> <45bc13a8-1442-2dd3-b9ea-1ed2f5962bac@arm.com>
+In-Reply-To: <45bc13a8-1442-2dd3-b9ea-1ed2f5962bac@arm.com>
+From: Rob Herring <robh+dt@kernel.org>
+Date: Tue, 2 May 2023 14:01:01 -0500
+X-Gmail-Original-Message-ID: <CAL_JsqL7t47x-5U6STynwW-+4wJUhs_R9wuaQ0YOgX59aJ=vew@mail.gmail.com>
+Message-ID: <CAL_JsqL7t47x-5U6STynwW-+4wJUhs_R9wuaQ0YOgX59aJ=vew@mail.gmail.com>
+Subject: Re: [RFC PATCH 0/1] Categorize ARM dts directory
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: Nicolas Ferre <nicolas.ferre@microchip.com>, Daniel Palmer <daniel@0x0f.com>, 
+	Ansuel Smith <ansuelsmth@gmail.com>, Claudiu Beznea <Claudiu.Beznea@microchip.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+	Santiago Esteban <Santiago.Esteban@microchip.com>, 
+	Cristian Birsan <Cristian.Birsan@microchip.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, DTML <devicetree@vger.kernel.org>, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-actions@lists.infradead.org, 
+	linux-sunxi@lists.linux.dev, linux-omap@vger.kernel.org, 
+	linux-amlogic@lists.infradead.org, linux-arm-kernel@axis.com, 
+	linux-aspeed@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org, 
+	chrome-platform@lists.linux.dev, linux-renesas-soc@vger.kernel.org, 
+	linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, 
+	kernel@dh-electronics.com, linux-mediatek@lists.infradead.org, 
+	openbmc@lists.ozlabs.org, linux-tegra@vger.kernel.org, linux-oxnas@groups.io, 
+	linux-arm-msm@vger.kernel.org, linux-unisoc@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-realtek-soc@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230502_113041_707443_C64D5008 
-X-CRM114-Status: GOOD (  12.60  )
+X-CRM114-CacheID: sfid-20230502_120119_261549_AB48403C 
+X-CRM114-Status: GOOD (  20.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,33 +93,46 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: erkin.bozoglu@xeront.com, Richard van Schagen <vschagen@cs.com>, linux-kernel@vger.kernel.org, Richard van Schagen <richard@routerhints.com>, =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, netdev@vger.kernel.org, mithat.guner@xeront.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Apr 25, 2023 at 11:21=E2=80=AFAM Robin Murphy <robin.murphy@arm.com=
+> wrote:
+>
+> On 29/03/2022 9:50 am, Nicolas Ferre wrote:
+> > Ansuel, All,
+> >
+> > On 28/03/2022 at 10:55, Daniel Palmer wrote:
+> >> Hi Ansuel
+> >>
+> >> On Mon, 28 Mar 2022 at 09:09, Ansuel Smith <ansuelsmth@gmail.com> wrot=
+e:
+> >>>
+> >>> Hi,
+> >>> as the title say, the intention of this ""series"" is to finally
+> >>> categorize
+> >>> the ARM dts directory in subdirectory for each oem.
+> >>
+> >> While I agree with this change and think it's for the good (browsing
+> >> the ARM dts directory at the moment is frustrating..) I think
+> >> buildroot and others need to be told about this as it'll potentially
+> >> break their kernel build scripting for ARM and probably messes up the
+> >> configs they have for existing boards.
+> >
+> > This aspect mustn't be underestimated and I anticipate lots of issues
+> > during a long time on this particular topic of "build systems".
+> >
+> > Another aspect is CI and public or private testing farms we all have
+> > running.
+>
+> Yet another is if this affects what `make dtbs_install` does (I don't
+> know for sure, but I'd be inclined to suspect it might). Some distros
+> use that to deliver the DTBs as part of their kernel package, so if
+> paths suddenly change it could break end users' bootloader setups too.
 
+Indeed, this came up last time. Turns out I had already implemented
+support to maintain the flat install. I just re-wrote it since
+Makefile.dtbinst changed completely since then.
 
-On 5/1/2023 5:15 AM, arinc9.unal@gmail.com wrote:
-> From: Arınç ÜNAL <arinc.unal@arinc9.com>
-> 
-> On mt753x_cpu_port_enable() there's code that enables flooding for the CPU
-> port only. Since mt753x_cpu_port_enable() runs twice when both CPU ports
-> are enabled, port 6 becomes the only port to forward the frames to. But
-> port 5 is the active port, so no frames received from the user ports will
-> be forwarded to port 5 which breaks network connectivity.
-> 
-> Every bit of the BC_FFP, UNM_FFP, and UNU_FFP bits represents a port. Fix
-> this issue by setting the bit that corresponds to the CPU port without
-> overwriting the other bits.
-> 
-> Clear the bits beforehand only for the MT7531 switch. According to the
-> documents MT7621 Giga Switch Programming Guide v0.3 and MT7531 Reference
-> Manual for Development Board v1.0, after reset, the BC_FFP, UNM_FFP, and
-> UNU_FFP bits are set to 1 for MT7531, 0 for MT7530.
-> 
-> Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-
-This tag is implied by your Signed-off-by tag. No Fixes tag for this one?
--- 
-Florian
+Rob
 
