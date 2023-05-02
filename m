@@ -4,95 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AEB8C77B73
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 May 2023 15:26:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7AB4C77B7E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 May 2023 17:06:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CXWn7FssbrSs8MRrutlOtshdeBbrP/crYQCwv1Iexd0=; b=GFm6XvVNzxtQqp+ALTCfb7bQ2F
-	5E+LXqMEMucDZ7fUdAvVvoOuUDITM0QIc1hZv2eTrCXQgH+4/5itCRyGmcVs5MpF/TBtx/8CFIN2U
-	DqODbkhNldLF/tQHbGfR+R00RYP8azKRtCR/gBIKjdMg/RxmcG91h13qy8gJsj3Uy3dukLVyVG4bq
-	Z7Farr1Cs4WFliKoT94CH5pbkut5DPTiV+45cpBF1eSZpxM4l8dAPDS12j0L7VinlqvIIqKLrhQru
-	BsDYjz+OWn0gSPhShviIMKcw/+hcBoJD0oWonqNNTXTMa6hikIfOKUIH/QdZQq3lzC29ZbX3Fy985
-	NcEbcFWg==;
+	bh=GYLfa8wY9waR/VkVBVCgWUDtIiZliI2aHJRM481JfLs=; b=gDAtc/SNvRuNU6FLFXDtUmLJ/V
+	x0hWpIb+jTAwGi7WSORpCVBjjmootNwmIJw+MFr3dK2EdfCtF5yVAZqS1qYGGHQEReibyTXb5XQ+f
+	zrFnkUX81pklXAXvRRPevuPFsSwHYMx7bK3mVAAsbZ15appkr8mUcMH3+d4xq9g3RlC2Y/7NNa+lS
+	jo6GjuKya6rvB0wIGIeacO9Fm1zkOmpeA//Z3+qMipgjzPxe1xtRqJ8A6Bki7annJHHpTw2dztVcb
+	cKf2A4RhDNy2Cf/qdmqXbK7lP0LjL0x4ClAooF+cT+ro2WoRml/8Yt93l+GuwwFRhG7fQUeVZxi1r
+	hy/6QgJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptrtZ-001wpd-0l;
-	Tue, 02 May 2023 15:26:25 +0000
-Received: from smtp-out1.suse.de ([195.135.220.28])
+	id 1pttSd-002BmS-0m;
+	Tue, 02 May 2023 17:06:43 +0000
+Received: from mga11.intel.com ([192.55.52.93])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptrtV-001wnx-30;
-	Tue, 02 May 2023 15:26:23 +0000
-Received: from relay2.suse.de (relay2.suse.de [149.44.160.134])
-	by smtp-out1.suse.de (Postfix) with ESMTP id A531421B0D;
-	Tue,  2 May 2023 15:26:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
-	t=1683041179; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=CXWn7FssbrSs8MRrutlOtshdeBbrP/crYQCwv1Iexd0=;
-	b=XxDdHFZlQui1F2WlF8bhbf41oWW6Fr9rAfk13WKktw/+Jtw97yL5A1Sttz4uqgqOcjRNii
-	pj4J+Cp+HRg6BC0SrBdlXBmUXIj6XkAHYUWf0RbaKYkK6ZbWB8Cclv6Li0bhCJwINGjccy
-	EBYuacjqAOW4uoLsHujhtJf/7MKOnXE=
-Received: from suse.cz (unknown [10.100.201.202])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by relay2.suse.de (Postfix) with ESMTPS id AA2872C141;
-	Tue,  2 May 2023 15:26:18 +0000 (UTC)
-Date: Tue, 2 May 2023 17:26:18 +0200
-From: Petr Mladek <pmladek@suse.com>
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Andrew Morton <akpm@linux-foundation.org>,
-	Mark Rutland <mark.rutland@arm.com>,
-	Randy Dunlap <rdunlap@infradead.org>, Will Deacon <will@kernel.org>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Sumit Garg <sumit.garg@linaro.org>,
-	Daniel Thompson <daniel.thompson@linaro.org>,
-	Ian Rogers <irogers@google.com>, ravi.v.shankar@intel.com,
-	Marc Zyngier <maz@kernel.org>, linux-perf-users@vger.kernel.org,
-	Stephane Eranian <eranian@google.com>,
-	kgdb-bugreport@lists.sourceforge.net, ito-yuichi@fujitsu.com,
+	id 1pttSa-002Bkx-0N;
+	Tue, 02 May 2023 17:06:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1683047200; x=1714583200;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=fEYMsK1Iiuu4vvTM0awEdj78uMJDPmIYBFIrEeHP8uI=;
+  b=V7fWUZKsEXvmwvlmCHbwxlJp3uFyV/8i34OsX+gew4fuetp55TjGugL6
+   H8Tih4Hp92cVFqz730ru4dlP5fwIyRpWCwj+sq8VEpKDylA4MXcMXnKnl
+   fRFtx5+/1ZQNQbeBYARI+zraH+d5FNsNZXs2wkvDTE71MU7pNQB7OXh3j
+   zmxD9UIa6ttpiLAtNuuXsKZwwWUk9FN7Qa51kSlDxlgxa5//RjWIHsiwJ
+   QiPx0yxmI3P1fdzKCWs/PgVZ/ekZWDAIqjr0jCqTPU0SMfyJCyESQm0Tv
+   VpBJpLtXdd9VQDEjiWRHFKzMHvPo9C4vqxNYc+1IyXONEKHBMJ+MT8tz9
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10698"; a="345936013"
+X-IronPort-AV: E=Sophos;i="5.99,244,1677571200"; 
+   d="scan'208";a="345936013"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 May 2023 10:06:35 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10698"; a="729000952"
+X-IronPort-AV: E=Sophos;i="5.99,244,1677571200"; 
+   d="scan'208";a="729000952"
+Received: from lkp-server01.sh.intel.com (HELO e3434d64424d) ([10.239.97.150])
+  by orsmga001.jf.intel.com with ESMTP; 02 May 2023 10:06:30 -0700
+Received: from kbuild by e3434d64424d with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1pttSQ-0001BM-2i;
+	Tue, 02 May 2023 17:06:30 +0000
+Date: Wed, 3 May 2023 01:06:26 +0800
+From: kernel test robot <lkp@intel.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	chunkuang.hu@kernel.org
+Cc: oe-kbuild-all@lists.linux.dev, linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+	wenst@chromium.org, matthias.bgg@gmail.com, kernel@collabora.com,
 	linux-arm-kernel@lists.infradead.org,
-	Stephen Boyd <swboyd@chromium.org>,
-	Masayoshi Mizuma <msys.mizuma@gmail.com>, ricardo.neri@intel.com,
-	Lecopzer Chen <lecopzer.chen@mediatek.com>,
-	Chen-Yu Tsai <wens@csie.org>, Andi Kleen <ak@linux.intel.com>,
-	Colin Cross <ccross@android.com>,
-	Matthias Kaehlcke <mka@chromium.org>,
-	Guenter Roeck <groeck@chromium.org>,
-	Tzung-Bi Shih <tzungbi@chromium.org>,
-	Alexander Potapenko <glider@google.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Juergen Gross <jgross@suse.com>, Kees Cook <keescook@chromium.org>,
-	Laurent Dufour <ldufour@linux.ibm.com>,
-	Liam Howlett <liam.howlett@oracle.com>,
-	Masahiro Yamada <masahiroy@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Michael Ellerman <mpe@ellerman.id.au>,
-	Miguel Ojeda <ojeda@kernel.org>,
-	Nathan Chancellor <nathan@kernel.org>,
-	Nick Desaulniers <ndesaulniers@google.com>,
-	"Paul E. McKenney" <paulmck@kernel.org>,
-	Sami Tolvanen <samitolvanen@google.com>,
-	Vlastimil Babka <vbabka@suse.cz>,
-	Zhaoyang Huang <zhaoyang.huang@unisoc.com>,
-	Zhen Lei <thunder.leizhen@huawei.com>, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: shared code: was: Re: [PATCH v3] hardlockup: detect hard lockups
- using secondary (buddy) CPUs
-Message-ID: <ZFErmshcrcikrSU1@alley>
-References: <20230501082341.v3.1.I6bf789d21d0c3d75d382e7e51a804a7a51315f2c@changeid>
+	angelogioacchino.delregno@collabora.com
+Subject: Re: [PATCH 06/11] drm/mediatek: gamma: Use bitfield macros
+Message-ID: <202305030043.iaNtiOtW-lkp@intel.com>
+References: <20230502081650.25947-7-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230501082341.v3.1.I6bf789d21d0c3d75d382e7e51a804a7a51315f2c@changeid>
+In-Reply-To: <20230502081650.25947-7-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230502_082622_113796_14A57EB5 
-X-CRM114-Status: GOOD (  41.24  )
+X-CRM114-CacheID: sfid-20230502_100640_242986_A8D48ED8 
+X-CRM114-Status: GOOD (  17.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,277 +87,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon 2023-05-01 08:24:46, Douglas Anderson wrote:
-> From: Colin Cross <ccross@android.com>
-> 
-> Implement a hardlockup detector that doesn't doesn't need any extra
-> arch-specific support code to detect lockups. Instead of using
-> something arch-specific we will use the buddy system, where each CPU
-> watches out for another one. Specifically, each CPU will use its
-> softlockup hrtimer to check that the next CPU is processing hrtimer
-> interrupts by verifying that a counter is increasing.
-> 
-> --- a/include/linux/nmi.h
-> +++ b/include/linux/nmi.h
-> @@ -134,6 +144,7 @@ void lockup_detector_reconfigure(void);
->  static inline void touch_nmi_watchdog(void)
->  {
->  	arch_touch_nmi_watchdog();
-> +	buddy_cpu_touch_watchdog();
+Hi AngeloGioacchino,
 
-	touch_buddy_watchdog();    ??? to follow the naming scheme?
+kernel test robot noticed the following build errors:
 
->  	touch_softlockup_watchdog();
->  }
->  
-> --- a/kernel/watchdog.c
-> +++ b/kernel/watchdog.c
-> @@ -106,6 +108,13 @@ void __weak watchdog_nmi_disable(unsigned int cpu)
->  	hardlockup_detector_perf_disable();
->  }
->  
-> +#else
-> +
-> +int __weak watchdog_nmi_enable(unsigned int cpu) { return 0; }
-> +void __weak watchdog_nmi_disable(unsigned int cpu) { return; }
+[auto build test ERROR on drm-misc/drm-misc-next]
+[also build test ERROR on drm/drm-next drm-exynos/exynos-drm-next drm-intel/for-linux-next drm-intel/for-linux-next-fixes drm-tip/drm-tip linus/master v6.3 next-20230428]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-Honestly, the mix of softlockup and hardlockup code was a hard to
-follow even before this patch. And it is going to be worse.
+url:    https://github.com/intel-lab-lkp/linux/commits/AngeloGioacchino-Del-Regno/drm-mediatek-gamma-Adjust-mtk_drm_gamma_set_common-parameters/20230502-161758
+base:   git://anongit.freedesktop.org/drm/drm-misc drm-misc-next
+patch link:    https://lore.kernel.org/r/20230502081650.25947-7-angelogioacchino.delregno%40collabora.com
+patch subject: [PATCH 06/11] drm/mediatek: gamma: Use bitfield macros
+config: arm-allyesconfig (https://download.01.org/0day-ci/archive/20230503/202305030043.iaNtiOtW-lkp@intel.com/config)
+compiler: arm-linux-gnueabi-gcc (GCC) 12.1.0
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://github.com/intel-lab-lkp/linux/commit/171ab0605a0c2b44167dc1339b29dc80c2ac7d4d
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review AngeloGioacchino-Del-Regno/drm-mediatek-gamma-Adjust-mtk_drm_gamma_set_common-parameters/20230502-161758
+        git checkout 171ab0605a0c2b44167dc1339b29dc80c2ac7d4d
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=arm olddefconfig
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=arm SHELL=/bin/bash drivers/gpu/
 
-Anyway, the buddy watchdog is not using NMI at all. It should not
-get enable using a function called *_nmi_enabled().
+If you fix the issue, kindly add following tag where applicable
+| Reported-by: kernel test robot <lkp@intel.com>
+| Link: https://lore.kernel.org/oe-kbuild-all/202305030043.iaNtiOtW-lkp@intel.com/
 
-Also some comments are not longer valid, for example:
+All errors (new ones prefixed by >>):
 
-static void watchdog_enable(unsigned int cpu)
-{
-[...]
-	/* Enable the perf event */
-	if (watchdog_enabled & NMI_WATCHDOG_ENABLED)
-		watchdog_nmi_enable(cpu);
+   drivers/gpu/drm/mediatek/mtk_disp_gamma.c: In function 'mtk_gamma_set_common':
+>> drivers/gpu/drm/mediatek/mtk_disp_gamma.c:111:32: error: implicit declaration of function 'FIELD_PREP' [-Werror=implicit-function-declaration]
+     111 |                         word = FIELD_PREP(DISP_GAMMA_LUT_10BIT_R, hwlut.red);
+         |                                ^~~~~~~~~~
+   cc1: some warnings being treated as errors
 
 
-I do not know. Maybe, fixing the mess is beyond any hope.
-But we shold not make it worse.
+vim +/FIELD_PREP +111 drivers/gpu/drm/mediatek/mtk_disp_gamma.c
 
-I suggest to rename/shuffle at least functions touched
-by this patchset to improve the meaning.
+    77	
+    78	void mtk_gamma_set_common(struct device *dev, void __iomem *regs, struct drm_crtc_state *state)
+    79	{
+    80		struct mtk_disp_gamma *gamma = dev_get_drvdata(dev);
+    81		unsigned int i;
+    82		struct drm_color_lut *lut;
+    83		void __iomem *lut_base;
+    84		bool lut_diff;
+    85		u16 lut_size;
+    86		u32 cfg_val, word;
+    87	
+    88		/* If there's no gamma lut there's nothing to do here. */
+    89		if (!state->gamma_lut)
+    90			return;
+    91	
+    92		if (gamma && gamma->data) {
+    93			lut_diff = gamma->data->lut_diff;
+    94			lut_size = gamma->data->lut_size;
+    95		} else {
+    96			lut_diff = false;
+    97			lut_size = LUT_SIZE_DEFAULT;
+    98		}
+    99	
+   100		cfg_val = readl(regs + DISP_GAMMA_CFG);
+   101		lut_base = regs + DISP_GAMMA_LUT;
+   102		lut = (struct drm_color_lut *)state->gamma_lut->data;
+   103		for (i = 0; i < lut_size; i++) {
+   104			struct drm_color_lut diff, hwlut;
+   105	
+   106			hwlut.red = drm_color_lut_extract(lut[i].red, LUT_BITS_DEFAULT);
+   107			hwlut.green = drm_color_lut_extract(lut[i].green, LUT_BITS_DEFAULT);
+   108			hwlut.red = drm_color_lut_extract(lut[i].blue, LUT_BITS_DEFAULT);
+   109	
+   110			if (!lut_diff || (i % 2 == 0)) {
+ > 111				word = FIELD_PREP(DISP_GAMMA_LUT_10BIT_R, hwlut.red);
+   112				word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_G, hwlut.green);
+   113				word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_B, hwlut.blue);
+   114			} else {
+   115				diff.red = lut[i].red - lut[i - 1].red;
+   116				diff.red = drm_color_lut_extract(diff.red, LUT_BITS_DEFAULT);
+   117	
+   118				diff.green = lut[i].green - lut[i - 1].green;
+   119				diff.green = drm_color_lut_extract(diff.green, LUT_BITS_DEFAULT);
+   120	
+   121				diff.blue = lut[i].blue - lut[i - 1].blue;
+   122				diff.blue = drm_color_lut_extract(diff.blue, LUT_BITS_DEFAULT);
+   123	
+   124				word = FIELD_PREP(DISP_GAMMA_LUT_10BIT_R, diff.red);
+   125				word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_G, diff.green);
+   126				word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_B, diff.blue);
+   127			}
+   128			writel(word, (lut_base + i * 4));
+   129		}
+   130	
+   131		/* Enable the gamma table */
+   132		cfg_val |= FIELD_PREP(GAMMA_LUT_EN, 1);
+   133	
+   134		writel(cfg_val, regs + DISP_GAMMA_CFG);
+   135	}
+   136	
 
-Sigh, it is hard to find a reasonable names. The code
-already uses:
-
-    + watchdog_*
-    + watchdog_nmi_
-
-    + softlockup_*
-
-    + lockup_detector_*
-    + hardlockup_detector_perf_*
-
-and sysctl:
-
-		.procname       = "watchdog",
-		.procname	= "watchdog_thresh",
-		.procname       = "nmi_watchdog",
-		.procname	= "watchdog_cpumask",
-		.procname       = "soft_watchdog",
-		.procname	= "softlockup_panic",
-		.procname	= "softlockup_all_cpu_backtrace",
-		.procname	= "hardlockup_panic",
-		.procname	= "hardlockup_all_cpu_backtrace",
-
-
-So, I suggest, to use the names:
-
-
-    + watchdog_*
-
-	+ for the common infrastructure
-	+ keep it in watchdog.c
-
-    + hardlockup_detector_* or
-      hardlockup_watchdog_* or
-      watchdog_hld_*
-
-	+ for the common hardlockup stuff.
-	+ it t can stay in watchdog.c to keep shuffling bearable
-
-
-    + hardlockup_detector_nmi_* or
-      hardlockup_watchdog_nmi_* or
-      watchdog_hld_nmi_* or
-      watchdog_nmi_*
-
-	+ for the arch specific hardlockup stuff that is
-	  using NMI interrupts.
-
-	+ it might either stay in watchdog_hld.c
-	  or be moved to watchdog_nmi.c or
-	  watchdog_hld_nmi.c
-
-    + hardlockup_detector_buddy_* or
-      hardlockup_watchdog_buddy_* or
-      watchdog_hld_buddy_*
-      watchdog_buddy_*
-
-	+ for the arch specific hardlockup stuff that is
-	  using buddy monitoring
-
-	+ it might either be added to watchdog_hld.c
-	  or be moved to watchdog_buddy.c or
-	  watchdog_hld_buddy.c
-
-
-Opinion:
-
-     The buddy watchdog might actually be used also for
-     softlockup detector. So, watchdog_buddy_* API
-     and watchdog_buddy.c might make sense.
-
-
-> +
-> +#endif /* CONFIG_HARDLOCKUP_DETECTOR */
-> +
->  /* Return 0, if a NMI watchdog is available. Error code otherwise */
->  int __weak __init watchdog_nmi_probe(void)
->  {
-> @@ -364,6 +373,9 @@ static enum hrtimer_restart watchdog_timer_fn(struct hrtimer *hrtimer)
->  	/* kick the hardlockup detector */
->  	watchdog_interrupt_count();
->  
-> +	/* test for hardlockups */
-> +	watchdog_check_hardlockup();
-
-  rename watchdog_buddy_check_hardlockup(); ???
-
-> +
->  	/* kick the softlockup detector */
->  	if (completion_done(this_cpu_ptr(&softlockup_completion))) {
->  		reinit_completion(this_cpu_ptr(&softlockup_completion));
-> --- /dev/null
-> +++ b/kernel/watchdog_buddy_cpu.c
-> @@ -0,0 +1,141 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +
-> +#include <linux/cpu.h>
-> +#include <linux/cpumask.h>
-> +#include <linux/kernel.h>
-> +#include <linux/nmi.h>
-> +#include <linux/percpu-defs.h>
-> +
-> +static DEFINE_PER_CPU(bool, watchdog_touch);
-> +static DEFINE_PER_CPU(bool, hard_watchdog_warn);
-> +static cpumask_t __read_mostly watchdog_cpus;
-> +
-> +static unsigned long hardlockup_allcpu_dumped;
-> +
-> +int __init watchdog_nmi_probe(void)
-> +{
-> +	return 0;
-> +}
-
-This is pretty strange. It shows that it was added a hacky way.
-
-> +
-> +notrace void buddy_cpu_touch_watchdog(void)
-> +{
-> +	/*
-> +	 * Using __raw here because some code paths have
-> +	 * preemption enabled.  If preemption is enabled
-> +	 * then interrupts should be enabled too, in which
-> +	 * case we shouldn't have to worry about the watchdog
-> +	 * going off.
-> +	 */
-> +	raw_cpu_write(watchdog_touch, true);
-> +}
-> +EXPORT_SYMBOL_GPL(buddy_cpu_touch_watchdog);
-
-Cut&pasted arch_touch_nmi_watchdog().
-
-> +
-> +static unsigned int watchdog_next_cpu(unsigned int cpu)
-> +{
-> +	cpumask_t cpus = watchdog_cpus;
-> +	unsigned int next_cpu;
-> +
-> +	next_cpu = cpumask_next(cpu, &cpus);
-> +	if (next_cpu >= nr_cpu_ids)
-> +		next_cpu = cpumask_first(&cpus);
-> +
-> +	if (next_cpu == cpu)
-> +		return nr_cpu_ids;
-> +
-> +	return next_cpu;
-> +}
-> +
-[...]
-> +static int is_hardlockup_buddy_cpu(unsigned int cpu)
-> +{
-> +	unsigned long hrint = per_cpu(hrtimer_interrupts, cpu);
-> +
-> +	if (per_cpu(hrtimer_interrupts_saved, cpu) == hrint)
-> +		return 1;
-> +
-> +	per_cpu(hrtimer_interrupts_saved, cpu) = hrint;
-> +	return 0;
-
-This is cut&pasted is_hardlockup(). And the __this_cpu_* API
-is replaced by per_cpu_* API.
-
-> +}
-> +
-> +void watchdog_check_hardlockup(void)
-> +{
-> +	unsigned int next_cpu;
-> +
-> +	/*
-> +	 * Test for hardlockups every 3 samples. The sample period is
-> +	 *  watchdog_thresh * 2 / 5, so 3 samples gets us back to slightly over
-> +	 *  watchdog_thresh (over by 20%).
-> +	 */
-> +	if (__this_cpu_read(hrtimer_interrupts) % 3 != 0)
-> +		return;
-> +
-> +	/* check for a hardlockup on the next CPU */
-> +	next_cpu = watchdog_next_cpu(smp_processor_id());
-> +	if (next_cpu >= nr_cpu_ids)
-> +		return;
-> +
-> +	/* Match with smp_wmb() in watchdog_nmi_enable() / watchdog_nmi_disable() */
-> +	smp_rmb();
-> +
-> +	if (per_cpu(watchdog_touch, next_cpu) == true) {
-> +		per_cpu(watchdog_touch, next_cpu) = false;
-> +		return;
-> +	}
-> +
-> +	if (is_hardlockup_buddy_cpu(next_cpu)) {
-> +		/* only warn once */
-> +		if (per_cpu(hard_watchdog_warn, next_cpu) == true)
-> +			return;
-> +
-> +		/*
-> +		 * Perform all-CPU dump only once to avoid multiple hardlockups
-> +		 * generating interleaving traces
-> +		 */
-> +		if (sysctl_hardlockup_all_cpu_backtrace &&
-> +				!test_and_set_bit(0, &hardlockup_allcpu_dumped))
-> +			trigger_allbutself_cpu_backtrace();
-> +
-> +		if (hardlockup_panic)
-> +			panic("Watchdog detected hard LOCKUP on cpu %u", next_cpu);
-> +		else
-> +			WARN(1, "Watchdog detected hard LOCKUP on cpu %u", next_cpu);
-> +
-> +		per_cpu(hard_watchdog_warn, next_cpu) = true;
-> +	} else {
-> +		per_cpu(hard_watchdog_warn, next_cpu) = false;
-
-Also this cut&pastes a lots of code from watchdog_overflow_callback().
-
-I wonder if we could somehow share the code between the two hardlockup
-detectors. It would be win-win. It might help a lot with maintenance.
-
-Best Regards,
-Petr
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
 
