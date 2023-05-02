@@ -4,76 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3296AC77B73
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 May 2023 13:20:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FF63C77B73
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 May 2023 14:50:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Lz5NMUc0q2UltpKFgHUF78nAHAjsYVpm0hKXqARW7dg=; b=sF30wx12Ja4fQSCUDGjvwUil4S
-	Gf8jWDeIUxfyk/Bj34EEZ6EBRaGxOFb4SAJbsxN3FbhS+MfmBEbmRvsxLo8A3ywX4bUjj537dqXkx
-	oKDaU+bB9Xzt5Osq94o+U0carzyrmR6UL+JQwwkFn0UUWn2gVQQ4KFBYLjrCqXsZiYDjCV7HExVr5
-	mBePJRuLsYkRI211ZACjs2lVPTqlMiVmn8UDbUq8klOWB/NNsiXmG19u2nr4QxCvx/DYEr1mBms4z
-	dNSZDAsakr9zlcM7667gfbAkOteEPw50Z2IGN4qaeMYuXGBs6sGPXQG7e947VJUbb1yT30VIYuDKr
-	QTe7txLg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XhmeR7C2zfghm/IL/as+Y+pN51ISJ3AaRZIBkHirVVA=; b=jds7e3UP4CPi+BGYUOIgNHh9pt
+	nD2dXyrsUaKiXsfNrfJiqaIt5Rn3NVtWaZUN5GuBYWsG06FP8p+XVTbZ7esNQv9ARSnI1MAtYfeC+
+	sFHT2/ViEuEBO+eBRZGc9+zx8iclYqCd4eCqqRSGMTkNsWV2zSHlKVJgXzCKcZTGCR2VQp23S2CLq
+	wkKUg56p6jQ/jrvQN9TkEwDP4lf6GsWOusrIwCo2pWqwANGmw/98kubFipmRodFgtfx6E52oVE3PO
+	k+C04C6YJc7tENDDuP4uWqNkUwp4e9zP8TbSxFl4PcLfjJUhw+xtJnQr/EuWMl0+tWVva6ZyWoxVq
+	mvbWconQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptpvj-001aV4-0v;
-	Tue, 02 May 2023 13:20:31 +0000
-Received: from mga04.intel.com ([192.55.52.120])
+	id 1ptrKs-001rem-2K;
+	Tue, 02 May 2023 14:50:34 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptpvg-001aUO-3B;
-	Tue, 02 May 2023 13:20:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1683033628; x=1714569628;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=5MA4pkcgt8W4MuoPb0tpe5rk1Xt3o5u3PJ7rZD+vUXA=;
-  b=DNPCrxA9hQTiNCiiA1oU5Alomuf2OcuyY9inRVODmdNrvq7yOZNkW+hc
-   lbb7KFEJG57OuNbnA8hgoq8KKl8D6WLX+k6BGJe39j+U9Yq/8cPxX5nzN
-   q+rgT6aH/0fZtLukmaM9my733qffrgJoQfkg5+9r8ya5aj7KRfihCTtaT
-   oz2U/tgfTtU5XSgu8RmaTFbWEyXU2vgo9SapIhQS5lzGKxDt+7UUTJElo
-   yQICjN/+lDJAQHVTik/FU1BzsNvcQtQjl3429h8vdKWPcbuijXIb+LXjQ
-   82FML4LNh32LqXVvIC1S5LUbE49eT1y16o7mbBtgzd8MeqQG6FGZmRWgq
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10698"; a="347211432"
-X-IronPort-AV: E=Sophos;i="5.99,244,1677571200"; 
-   d="scan'208";a="347211432"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
-  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 May 2023 06:20:28 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10698"; a="690280647"
-X-IronPort-AV: E=Sophos;i="5.99,244,1677571200"; 
-   d="scan'208";a="690280647"
-Received: from lkp-server01.sh.intel.com (HELO e3434d64424d) ([10.239.97.150])
-  by orsmga007.jf.intel.com with ESMTP; 02 May 2023 06:20:25 -0700
-Received: from kbuild by e3434d64424d with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1ptpvc-000148-1i;
-	Tue, 02 May 2023 13:20:24 +0000
-Date: Tue, 2 May 2023 21:20:01 +0800
-From: kernel test robot <lkp@intel.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	chunkuang.hu@kernel.org
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org, wenst@chromium.org,
-	matthias.bgg@gmail.com, kernel@collabora.com,
-	linux-arm-kernel@lists.infradead.org,
+	id 1ptrKp-001rdg-1b
+	for linux-mediatek@lists.infradead.org;
+	Tue, 02 May 2023 14:50:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1683039029;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=XhmeR7C2zfghm/IL/as+Y+pN51ISJ3AaRZIBkHirVVA=;
+	b=ERAMhrv3lSDVezXotdGhSK033aFoiZCby3cyuxxhgoJ5TCOWLeWADjX6BffvRmnVZM3x4y
+	PcUkqN9wSLwS+NHQeXMplGU6dzkqde5EORc42Av4apwGWLcYDlkpxZ+jsOnx+OxD24kvcb
+	pU+aNHbphUtKELKEu2GHvI4Kkl6smxs=
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-443-nNSt_n8zOYy7zJkzeI4SIw-1; Tue, 02 May 2023 10:50:27 -0400
+X-MC-Unique: nNSt_n8zOYy7zJkzeI4SIw-1
+Received: by mail-qk1-f199.google.com with SMTP id af79cd13be357-74dfe945c74so215378285a.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 02 May 2023 07:50:27 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1683039027; x=1685631027;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=XhmeR7C2zfghm/IL/as+Y+pN51ISJ3AaRZIBkHirVVA=;
+        b=bHoFjfaw7Tve/GCJZuy8eMGBpMqb0tbP97TINoIHVBd+RYHgLLHQvRog7ALPlJiSsw
+         fFfPuJMu1B0SnOrX9yWjtwmTrRsTWX23BTaEc/o7vQhVsL5t4f5YzWAVg2QwH7ckz/JH
+         ihciER6zkBIoGZfxg4OPYoT4VtKBIRBC3EC+1LHvh1bNDb2PbW2aKhNsOldK4dzq19Gi
+         I78EaiHY4ls3LrKRPzAZN3Zrl8ZSP546nVOW7UC4wwqAVRPvx7NSOM1MLbMskcIzZB//
+         asR1XUjORkXem4v9nf1Qa4it8Ngsy3+v+2+qp+MMC78nK7ZA9qm1EYBOUGwKJC9HAL3d
+         lSIA==
+X-Gm-Message-State: AC+VfDyB+dLm4Frf9d4E0uaR4qZajHTrV+FKRCOcyl/9W8VsbDbE8UVZ
+	2WWGuTUWSAUfYLlpXVnm6xQXpVi6e6NT0o4su0nRtfifcfJqUZLEOL3L8aGGZn3+ANnq+l2eIKt
+	DXu7fhb9RSTMjBOYxfFiWtGACNnCblHUd
+X-Received: by 2002:a05:622a:143:b0:3ea:bec4:ef57 with SMTP id v3-20020a05622a014300b003eabec4ef57mr28954473qtw.13.1683039027429;
+        Tue, 02 May 2023 07:50:27 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4dHp9unnIVk0+Doy1XuqLSB0Po7DZSJ94Ylm3eZ5tLIvbR2wMADu2J7HkOiAWMy91uB3Mwgg==
+X-Received: by 2002:a05:622a:143:b0:3ea:bec4:ef57 with SMTP id v3-20020a05622a014300b003eabec4ef57mr28954428qtw.13.1683039027172;
+        Tue, 02 May 2023 07:50:27 -0700 (PDT)
+Received: from dell-per740-01.7a2m.lab.eng.bos.redhat.com (nat-pool-bos-t.redhat.com. [66.187.233.206])
+        by smtp.gmail.com with ESMTPSA id g7-20020ac81247000000b003ef3bbd242asm10343812qtj.32.2023.05.02.07.50.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 02 May 2023 07:50:26 -0700 (PDT)
+From: Tom Rix <trix@redhat.com>
+To: chunkuang.hu@kernel.org,
+	p.zabel@pengutronix.de,
+	chunfeng.yun@mediatek.com,
+	vkoul@kernel.org,
+	kishon@kernel.org,
+	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com
-Subject: Re: [PATCH 06/11] drm/mediatek: gamma: Use bitfield macros
-Message-ID: <202305022108.9tmu3iyy-lkp@intel.com>
-References: <20230502081650.25947-7-angelogioacchino.delregno@collabora.com>
+Cc: dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-phy@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Tom Rix <trix@redhat.com>
+Subject: [PATCH v2] phy: mediatek: rework the floating point comparisons to fixed point
+Date: Tue,  2 May 2023 10:50:05 -0400
+Message-Id: <20230502145005.2927101-1-trix@redhat.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230502081650.25947-7-angelogioacchino.delregno@collabora.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230502_062029_033338_0EE0C453 
-X-CRM114-Status: GOOD (  15.32  )
+X-CRM114-CacheID: sfid-20230502_075031_631179_BCE05669 
+X-CRM114-Status: GOOD (  11.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,121 +107,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi AngeloGioacchino,
+gcc on aarch64 reports
+drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c: In function ‘mtk_hdmi_pll_set_rate’:
+drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:240:52: error: ‘-mgeneral-regs-only’
+  is incompatible with the use of floating-point types
+  240 |         else if (tmds_clk >= 54 * MEGA && tmds_clk < 148.35 * MEGA)
 
-kernel test robot noticed the following build errors:
+Floating point should not be used, so rework the floating point comparisons
+to fixed point.
 
-[auto build test ERROR on drm-misc/drm-misc-next]
-[also build test ERROR on drm/drm-next drm-exynos/exynos-drm-next drm-intel/for-linux-next drm-intel/for-linux-next-fixes drm-tip/drm-tip linus/master v6.3 next-20230428]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Signed-off-by: Tom Rix <trix@redhat.com>
+---
+v2: silence robot by casting types to u64
 
-url:    https://github.com/intel-lab-lkp/linux/commits/AngeloGioacchino-Del-Regno/drm-mediatek-gamma-Adjust-mtk_drm_gamma_set_common-parameters/20230502-161758
-base:   git://anongit.freedesktop.org/drm/drm-misc drm-misc-next
-patch link:    https://lore.kernel.org/r/20230502081650.25947-7-angelogioacchino.delregno%40collabora.com
-patch subject: [PATCH 06/11] drm/mediatek: gamma: Use bitfield macros
-config: arm-randconfig-r006-20230501 (https://download.01.org/0day-ci/archive/20230502/202305022108.9tmu3iyy-lkp@intel.com/config)
-compiler: clang version 17.0.0 (https://github.com/llvm/llvm-project b1465cd49efcbc114a75220b153f5a055ce7911f)
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # install arm cross compiling tool for clang build
-        # apt-get install binutils-arm-linux-gnueabi
-        # https://github.com/intel-lab-lkp/linux/commit/171ab0605a0c2b44167dc1339b29dc80c2ac7d4d
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review AngeloGioacchino-Del-Regno/drm-mediatek-gamma-Adjust-mtk_drm_gamma_set_common-parameters/20230502-161758
-        git checkout 171ab0605a0c2b44167dc1339b29dc80c2ac7d4d
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm SHELL=/bin/bash drivers/gpu/drm/mediatek/
+---
+drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Link: https://lore.kernel.org/oe-kbuild-all/202305022108.9tmu3iyy-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
->> drivers/gpu/drm/mediatek/mtk_disp_gamma.c:111:11: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-                           word = FIELD_PREP(DISP_GAMMA_LUT_10BIT_R, hwlut.red);
-                                  ^
-   drivers/gpu/drm/mediatek/mtk_disp_gamma.c:124:11: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-                           word = FIELD_PREP(DISP_GAMMA_LUT_10BIT_R, diff.red);
-                                  ^
-   drivers/gpu/drm/mediatek/mtk_disp_gamma.c:132:13: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-           cfg_val |= FIELD_PREP(GAMMA_LUT_EN, 1);
-                      ^
-   drivers/gpu/drm/mediatek/mtk_disp_gamma.c:151:7: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-           sz = FIELD_PREP(DISP_GAMMA_SIZE_HSIZE, w);
-                ^
-   4 errors generated.
-
-
-vim +/FIELD_PREP +111 drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-
-    77	
-    78	void mtk_gamma_set_common(struct device *dev, void __iomem *regs, struct drm_crtc_state *state)
-    79	{
-    80		struct mtk_disp_gamma *gamma = dev_get_drvdata(dev);
-    81		unsigned int i;
-    82		struct drm_color_lut *lut;
-    83		void __iomem *lut_base;
-    84		bool lut_diff;
-    85		u16 lut_size;
-    86		u32 cfg_val, word;
-    87	
-    88		/* If there's no gamma lut there's nothing to do here. */
-    89		if (!state->gamma_lut)
-    90			return;
-    91	
-    92		if (gamma && gamma->data) {
-    93			lut_diff = gamma->data->lut_diff;
-    94			lut_size = gamma->data->lut_size;
-    95		} else {
-    96			lut_diff = false;
-    97			lut_size = LUT_SIZE_DEFAULT;
-    98		}
-    99	
-   100		cfg_val = readl(regs + DISP_GAMMA_CFG);
-   101		lut_base = regs + DISP_GAMMA_LUT;
-   102		lut = (struct drm_color_lut *)state->gamma_lut->data;
-   103		for (i = 0; i < lut_size; i++) {
-   104			struct drm_color_lut diff, hwlut;
-   105	
-   106			hwlut.red = drm_color_lut_extract(lut[i].red, LUT_BITS_DEFAULT);
-   107			hwlut.green = drm_color_lut_extract(lut[i].green, LUT_BITS_DEFAULT);
-   108			hwlut.red = drm_color_lut_extract(lut[i].blue, LUT_BITS_DEFAULT);
-   109	
-   110			if (!lut_diff || (i % 2 == 0)) {
- > 111				word = FIELD_PREP(DISP_GAMMA_LUT_10BIT_R, hwlut.red);
-   112				word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_G, hwlut.green);
-   113				word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_B, hwlut.blue);
-   114			} else {
-   115				diff.red = lut[i].red - lut[i - 1].red;
-   116				diff.red = drm_color_lut_extract(diff.red, LUT_BITS_DEFAULT);
-   117	
-   118				diff.green = lut[i].green - lut[i - 1].green;
-   119				diff.green = drm_color_lut_extract(diff.green, LUT_BITS_DEFAULT);
-   120	
-   121				diff.blue = lut[i].blue - lut[i - 1].blue;
-   122				diff.blue = drm_color_lut_extract(diff.blue, LUT_BITS_DEFAULT);
-   123	
-   124				word = FIELD_PREP(DISP_GAMMA_LUT_10BIT_R, diff.red);
-   125				word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_G, diff.green);
-   126				word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_B, diff.blue);
-   127			}
-   128			writel(word, (lut_base + i * 4));
-   129		}
-   130	
-   131		/* Enable the gamma table */
-   132		cfg_val |= FIELD_PREP(GAMMA_LUT_EN, 1);
-   133	
-   134		writel(cfg_val, regs + DISP_GAMMA_CFG);
-   135	}
-   136	
-
+diff --git a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
+index abfc077fb0a8..093c4d1da557 100644
+--- a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
++++ b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
+@@ -237,11 +237,11 @@ static int mtk_hdmi_pll_calc(struct mtk_hdmi_phy *hdmi_phy, struct clk_hw *hw,
+ 	 */
+ 	if (tmds_clk < 54 * MEGA)
+ 		txposdiv = 8;
+-	else if (tmds_clk >= 54 * MEGA && tmds_clk < 148.35 * MEGA)
++	else if (tmds_clk >= 54 * MEGA && (tmds_clk * 100) < 14835 * MEGA)
+ 		txposdiv = 4;
+-	else if (tmds_clk >= 148.35 * MEGA && tmds_clk < 296.7 * MEGA)
++	else if ((tmds_clk * 100) >= 14835 * MEGA && (tmds_clk * 10) < 2967 * MEGA)
+ 		txposdiv = 2;
+-	else if (tmds_clk >= 296.7 * MEGA && tmds_clk <= 594 * MEGA)
++	else if ((tmds_clk * 10) >= 2967 * MEGA && tmds_clk <= 594 * MEGA)
+ 		txposdiv = 1;
+ 	else
+ 		return -EINVAL;
+@@ -328,12 +328,12 @@ static int mtk_hdmi_pll_drv_setting(struct clk_hw *hw)
+ 		clk_channel_bias = 0x34; /* 20mA */
+ 		impedance_en = 0xf;
+ 		impedance = 0x36; /* 100ohm */
+-	} else if (pixel_clk >= 74.175 * MEGA && pixel_clk <= 300 * MEGA) {
++	} else if (((u64)pixel_clk * 1000) >= 74175 * MEGA && pixel_clk <= 300 * MEGA) {
+ 		data_channel_bias = 0x34; /* 20mA */
+ 		clk_channel_bias = 0x2c; /* 16mA */
+ 		impedance_en = 0xf;
+ 		impedance = 0x36; /* 100ohm */
+-	} else if (pixel_clk >= 27 * MEGA && pixel_clk < 74.175 * MEGA) {
++	} else if (pixel_clk >= 27 * MEGA && ((u64)pixel_clk * 1000) < 74175 * MEGA) {
+ 		data_channel_bias = 0x14; /* 10mA */
+ 		clk_channel_bias = 0x14; /* 10mA */
+ 		impedance_en = 0x0;
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+2.27.0
+
 
