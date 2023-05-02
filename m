@@ -4,86 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FEDEC77B73
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 May 2023 10:35:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3296AC77B73
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 May 2023 13:20:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1k/rwLcFO2bB3Oa74LdI4dO5dKJGAnDPj2NzOWcALug=; b=2JHnJRlLWnpdtr4C1hvcwSYSHQ
-	7jMDdQ9oagRrgW3ntJvq95e2JkjCJFAsv1fCa5T/YOtQJAgIgJjaY4AGVgxKNSmRNZMrIS/0rBLVi
-	JhbgfJMyapdNyyuyH5OrYUaqDz7aL482T61BVcGOtESWVTWxeICIFTUT8dl0ms09dPJRk3KmEjwtC
-	gvWihi9ED/KFhJb5IjIRiyIfAXCoSw8HSd+Webz1pf9TWsb8kMa3Z764UN3WVAe6gw+q3C5Rh8Vo4
-	O8fs+HTTejBQXqsBbg7AeEj4Xu8QHDNnVL0TWudnK8+HSwTn4sz4ra8uk/dnFBMMsKktx/b89z8YD
-	iilWkasA==;
+	bh=Lz5NMUc0q2UltpKFgHUF78nAHAjsYVpm0hKXqARW7dg=; b=sF30wx12Ja4fQSCUDGjvwUil4S
+	Gf8jWDeIUxfyk/Bj34EEZ6EBRaGxOFb4SAJbsxN3FbhS+MfmBEbmRvsxLo8A3ywX4bUjj537dqXkx
+	oKDaU+bB9Xzt5Osq94o+U0carzyrmR6UL+JQwwkFn0UUWn2gVQQ4KFBYLjrCqXsZiYDjCV7HExVr5
+	mBePJRuLsYkRI211ZACjs2lVPTqlMiVmn8UDbUq8klOWB/NNsiXmG19u2nr4QxCvx/DYEr1mBms4z
+	dNSZDAsakr9zlcM7667gfbAkOteEPw50Z2IGN4qaeMYuXGBs6sGPXQG7e947VJUbb1yT30VIYuDKr
+	QTe7txLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptnMP-000y0u-0Z;
-	Tue, 02 May 2023 10:35:53 +0000
-Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
+	id 1ptpvj-001aV4-0v;
+	Tue, 02 May 2023 13:20:31 +0000
+Received: from mga04.intel.com ([192.55.52.120])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptnMK-000xz7-37
-	for linux-mediatek@lists.infradead.org;
-	Tue, 02 May 2023 10:35:50 +0000
-Received: by mail-pg1-x534.google.com with SMTP id 41be03b00d2f7-518d325b8a2so3116311a12.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 02 May 2023 03:35:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1683023747; x=1685615747;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=1k/rwLcFO2bB3Oa74LdI4dO5dKJGAnDPj2NzOWcALug=;
-        b=FxTb+Whw3s4DsO+LoDJSIj9HK/kqLMLJw5iBHlim3UjK1ozu2HxriBtEICQMGvIr2V
-         z8pWvpLlDbSlP9orffy5OMwDMsOUpoJdfHrJjo5lSH7ZLI0NIrTGkdk9srG+MmqLMyf2
-         rdS9Rsc6sS1J/zPo6ZtaEkyQHUZNiE1pwYrsA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683023747; x=1685615747;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=1k/rwLcFO2bB3Oa74LdI4dO5dKJGAnDPj2NzOWcALug=;
-        b=P9MKlFKh2HmPUpxBTzBumkBgURIxzVhtzQ+8pNqc+h9Y6GU4LUsCsLUohvOX8KzEOU
-         F2HH+XD3/MLJL/SihjVvsRloOqoTTdOHBCB0Kov+GTXj1/UUFz8Ek2jUdWcPsfejXaoj
-         tAj6eZgNHNVzAJDWWaZQDZlbXzBEoRWTY/RDjgLxj+/YHeJcIX4u+OP1/wHwdK2QPA0G
-         Q40JLODgWX595zN1aXh10ZK0w39J7WkJuvkgvrVbDxZtkTyGwmDPl+UIBFi7K5QHSyHb
-         R/hqbenD7zmq6DmY4TlA7dqu3nPf6tghCiCxcUS+wO3rdSR+iLyuzcxfyPdE1g3ENIuX
-         Ac2w==
-X-Gm-Message-State: AC+VfDwm96xW1LdN9JDX+KQse0J5uwFXZNjgfep6Y3DqEXx53FgZtVlw
-	9kfLIY1+cUIid9K7LaJGco2l5Q==
-X-Google-Smtp-Source: ACHHUZ7ArtFdVhB+1t61Ffe4OEgVtAY5Cs3jlOqJpXteLdfbH8M29DO6/5eoroavSX0VUh4PxTp2DA==
-X-Received: by 2002:a05:6a21:329f:b0:f0:a282:a343 with SMTP id yt31-20020a056a21329f00b000f0a282a343mr22950107pzb.16.1683023746979;
-        Tue, 02 May 2023 03:35:46 -0700 (PDT)
-Received: from google.com ([2401:fa00:1:10:b873:4627:7ea:a0dd])
-        by smtp.gmail.com with ESMTPSA id j14-20020a17090a588e00b0024e2980574asm1052755pji.4.2023.05.02.03.35.43
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 02 May 2023 03:35:46 -0700 (PDT)
-Date: Tue, 2 May 2023 18:35:41 +0800
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: bchihi@baylibre.com
-Cc: daniel.lezcano@linaro.org, angelogioacchino.delregno@collabora.com,
-	rafael@kernel.org, amitk@kernel.org, rui.zhang@intel.com,
-	matthias.bgg@gmail.com, robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org, rdunlap@infradead.org,
-	ye.xingchen@zte.com.cn, p.zabel@pengutronix.de,
-	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+	id 1ptpvg-001aUO-3B;
+	Tue, 02 May 2023 13:20:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1683033628; x=1714569628;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=5MA4pkcgt8W4MuoPb0tpe5rk1Xt3o5u3PJ7rZD+vUXA=;
+  b=DNPCrxA9hQTiNCiiA1oU5Alomuf2OcuyY9inRVODmdNrvq7yOZNkW+hc
+   lbb7KFEJG57OuNbnA8hgoq8KKl8D6WLX+k6BGJe39j+U9Yq/8cPxX5nzN
+   q+rgT6aH/0fZtLukmaM9my733qffrgJoQfkg5+9r8ya5aj7KRfihCTtaT
+   oz2U/tgfTtU5XSgu8RmaTFbWEyXU2vgo9SapIhQS5lzGKxDt+7UUTJElo
+   yQICjN/+lDJAQHVTik/FU1BzsNvcQtQjl3429h8vdKWPcbuijXIb+LXjQ
+   82FML4LNh32LqXVvIC1S5LUbE49eT1y16o7mbBtgzd8MeqQG6FGZmRWgq
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10698"; a="347211432"
+X-IronPort-AV: E=Sophos;i="5.99,244,1677571200"; 
+   d="scan'208";a="347211432"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 May 2023 06:20:28 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10698"; a="690280647"
+X-IronPort-AV: E=Sophos;i="5.99,244,1677571200"; 
+   d="scan'208";a="690280647"
+Received: from lkp-server01.sh.intel.com (HELO e3434d64424d) ([10.239.97.150])
+  by orsmga007.jf.intel.com with ESMTP; 02 May 2023 06:20:25 -0700
+Received: from kbuild by e3434d64424d with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1ptpvc-000148-1i;
+	Tue, 02 May 2023 13:20:24 +0000
+Date: Tue, 2 May 2023 21:20:01 +0800
+From: kernel test robot <lkp@intel.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	chunkuang.hu@kernel.org
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org, wenst@chromium.org,
+	matthias.bgg@gmail.com, kernel@collabora.com,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	james.lo@mediatek.com, rex-bc.chen@mediatek.com,
-	nfraprado@collabora.com, abailon@baylibre.com,
-	amergnat@baylibre.com, khilman@baylibre.com
-Subject: Re: [PATCH v2 0/5] Add LVTS support for mt8192
-Message-ID: <20230502103541.GB3388518@google.com>
-References: <20230425133052.199767-1-bchihi@baylibre.com>
+	angelogioacchino.delregno@collabora.com
+Subject: Re: [PATCH 06/11] drm/mediatek: gamma: Use bitfield macros
+Message-ID: <202305022108.9tmu3iyy-lkp@intel.com>
+References: <20230502081650.25947-7-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230425133052.199767-1-bchihi@baylibre.com>
+In-Reply-To: <20230502081650.25947-7-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230502_033549_003366_3A2B4515 
-X-CRM114-Status: GOOD (  13.12  )
+X-CRM114-CacheID: sfid-20230502_062029_033338_0EE0C453 
+X-CRM114-Status: GOOD (  15.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,40 +88,121 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 25, 2023 at 03:30:47PM +0200, bchihi@baylibre.com wrote:
-> From: Balsam CHIHI <bchihi@baylibre.com>
-> 
-> Add full LVTS support (MCU thermal domain + AP thermal domain) to MediaTek MT8192 SoC.
-> Also, add Suspend and Resume support to LVTS Driver (all SoCs),
-> and update the documentation that describes the Calibration Data Offsets.
-> 
-> Changelog:
->     v2 :
->         - Based on top of thermal/linux-next :
->             base-commit: 7ac82227ee046f8234471de4c12a40b8c2d3ddcc
->         - Squash "add thermal zones and thermal nodes" and
->             "add temperature mitigation threshold" commits together to form
->             "arm64: dts: mediatek: mt8192: Add thermal nodes and thermal zones" commit.
->         - Add Suspend and Resume support to LVTS Driver.
->         - Update Calibration Data documentation.
->         - Fix calibration data offsets for mt8192
->             (Thanks to "Chen-Yu Tsai" and "Nícolas F. R. A. Prado").
-> 
->     v1 :
->         - The initial series "Add LVTS support for mt8192" :
->             "https://lore.kernel.org/all/20230307163413.143334-1-bchihi@baylibre.com/".
-> 
-> Balsam CHIHI (5):
->   thermal/drivers/mediatek/lvts_thermal: Add suspend and resume
->   dt-bindings: thermal: mediatek: Add LVTS thermal controller definition
->     for mt8192
->   thermal/drivers/mediatek/lvts_thermal: Add mt8192 support
->   arm64: dts: mediatek: mt8192: Add thermal nodes and thermal zones
->   thermal/drivers/mediatek/lvts_thermal: Update calibration data
->     documentation
+Hi AngeloGioacchino,
 
-Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+kernel test robot noticed the following build errors:
 
-on a MT8192 Hayato Chromebook. Sensor readings look OK. Haven't tried
-stress testing to hit thermal threshold yet.
+[auto build test ERROR on drm-misc/drm-misc-next]
+[also build test ERROR on drm/drm-next drm-exynos/exynos-drm-next drm-intel/for-linux-next drm-intel/for-linux-next-fixes drm-tip/drm-tip linus/master v6.3 next-20230428]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/AngeloGioacchino-Del-Regno/drm-mediatek-gamma-Adjust-mtk_drm_gamma_set_common-parameters/20230502-161758
+base:   git://anongit.freedesktop.org/drm/drm-misc drm-misc-next
+patch link:    https://lore.kernel.org/r/20230502081650.25947-7-angelogioacchino.delregno%40collabora.com
+patch subject: [PATCH 06/11] drm/mediatek: gamma: Use bitfield macros
+config: arm-randconfig-r006-20230501 (https://download.01.org/0day-ci/archive/20230502/202305022108.9tmu3iyy-lkp@intel.com/config)
+compiler: clang version 17.0.0 (https://github.com/llvm/llvm-project b1465cd49efcbc114a75220b153f5a055ce7911f)
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # install arm cross compiling tool for clang build
+        # apt-get install binutils-arm-linux-gnueabi
+        # https://github.com/intel-lab-lkp/linux/commit/171ab0605a0c2b44167dc1339b29dc80c2ac7d4d
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review AngeloGioacchino-Del-Regno/drm-mediatek-gamma-Adjust-mtk_drm_gamma_set_common-parameters/20230502-161758
+        git checkout 171ab0605a0c2b44167dc1339b29dc80c2ac7d4d
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm olddefconfig
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm SHELL=/bin/bash drivers/gpu/drm/mediatek/
+
+If you fix the issue, kindly add following tag where applicable
+| Reported-by: kernel test robot <lkp@intel.com>
+| Link: https://lore.kernel.org/oe-kbuild-all/202305022108.9tmu3iyy-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+>> drivers/gpu/drm/mediatek/mtk_disp_gamma.c:111:11: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+                           word = FIELD_PREP(DISP_GAMMA_LUT_10BIT_R, hwlut.red);
+                                  ^
+   drivers/gpu/drm/mediatek/mtk_disp_gamma.c:124:11: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+                           word = FIELD_PREP(DISP_GAMMA_LUT_10BIT_R, diff.red);
+                                  ^
+   drivers/gpu/drm/mediatek/mtk_disp_gamma.c:132:13: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+           cfg_val |= FIELD_PREP(GAMMA_LUT_EN, 1);
+                      ^
+   drivers/gpu/drm/mediatek/mtk_disp_gamma.c:151:7: error: call to undeclared function 'FIELD_PREP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+           sz = FIELD_PREP(DISP_GAMMA_SIZE_HSIZE, w);
+                ^
+   4 errors generated.
+
+
+vim +/FIELD_PREP +111 drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+
+    77	
+    78	void mtk_gamma_set_common(struct device *dev, void __iomem *regs, struct drm_crtc_state *state)
+    79	{
+    80		struct mtk_disp_gamma *gamma = dev_get_drvdata(dev);
+    81		unsigned int i;
+    82		struct drm_color_lut *lut;
+    83		void __iomem *lut_base;
+    84		bool lut_diff;
+    85		u16 lut_size;
+    86		u32 cfg_val, word;
+    87	
+    88		/* If there's no gamma lut there's nothing to do here. */
+    89		if (!state->gamma_lut)
+    90			return;
+    91	
+    92		if (gamma && gamma->data) {
+    93			lut_diff = gamma->data->lut_diff;
+    94			lut_size = gamma->data->lut_size;
+    95		} else {
+    96			lut_diff = false;
+    97			lut_size = LUT_SIZE_DEFAULT;
+    98		}
+    99	
+   100		cfg_val = readl(regs + DISP_GAMMA_CFG);
+   101		lut_base = regs + DISP_GAMMA_LUT;
+   102		lut = (struct drm_color_lut *)state->gamma_lut->data;
+   103		for (i = 0; i < lut_size; i++) {
+   104			struct drm_color_lut diff, hwlut;
+   105	
+   106			hwlut.red = drm_color_lut_extract(lut[i].red, LUT_BITS_DEFAULT);
+   107			hwlut.green = drm_color_lut_extract(lut[i].green, LUT_BITS_DEFAULT);
+   108			hwlut.red = drm_color_lut_extract(lut[i].blue, LUT_BITS_DEFAULT);
+   109	
+   110			if (!lut_diff || (i % 2 == 0)) {
+ > 111				word = FIELD_PREP(DISP_GAMMA_LUT_10BIT_R, hwlut.red);
+   112				word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_G, hwlut.green);
+   113				word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_B, hwlut.blue);
+   114			} else {
+   115				diff.red = lut[i].red - lut[i - 1].red;
+   116				diff.red = drm_color_lut_extract(diff.red, LUT_BITS_DEFAULT);
+   117	
+   118				diff.green = lut[i].green - lut[i - 1].green;
+   119				diff.green = drm_color_lut_extract(diff.green, LUT_BITS_DEFAULT);
+   120	
+   121				diff.blue = lut[i].blue - lut[i - 1].blue;
+   122				diff.blue = drm_color_lut_extract(diff.blue, LUT_BITS_DEFAULT);
+   123	
+   124				word = FIELD_PREP(DISP_GAMMA_LUT_10BIT_R, diff.red);
+   125				word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_G, diff.green);
+   126				word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_B, diff.blue);
+   127			}
+   128			writel(word, (lut_base + i * 4));
+   129		}
+   130	
+   131		/* Enable the gamma table */
+   132		cfg_val |= FIELD_PREP(GAMMA_LUT_EN, 1);
+   133	
+   134		writel(cfg_val, regs + DISP_GAMMA_CFG);
+   135	}
+   136	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
 
