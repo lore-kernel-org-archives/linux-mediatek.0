@@ -4,89 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AA3AC77B7E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 May 2023 10:00:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28CD8C77B7E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 May 2023 10:34:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DMr9gvF8Pl9mIUWgrETUJDIt0vnyiOv1BE24SgG6Lto=; b=hg7Myo0KxTsvcx8TbYrptxUYRr
-	VM7eM020hNcN2GnqUd+7CYo+m+fP8ond9kwOa8ag4xnjAWFe6ePVJKoxt/NY2uNUxm5FrEk7wFwUs
-	MKup2/NBUIU+6r1AEPDnoaIMdJCSGJsUBw1xjzIDsSldS57/nHeZyYQysc9L1ET7c7N7+lcWjNUmt
-	ZyUWI3rhJ6lDcXDNyCWgs9oiyqwZJG5J7rmBNDPN7MyDK0NyyIToZNqKxgjAaJF75pxmDAWremM+A
-	m3p3wS4Gdr9U9XCxdVefQofFi46lcLEKipp4LDuQ/hQ7HXaMhhIL2fVAHLsYtKj+MAAx/1b2VLAYC
-	JpE7tFPA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+fuCCjs/TuYV/kdxEssyG9fBViHn9SkyVnmjJ20wEqs=; b=TyuPlUyu/ed00GbKeqYSTbWQFA
+	bBTymilRMxAGRVfDj/QQcW8qx/E6vOLalJwmlpxjyy5BR+bLSLOg0vSjauibLgElJczYTWnGid68V
+	w9fZ71V02W+rswZvmhr0sS8piQjsS94L9vxtW4rm8iQ7HFzndaUPIIzD6jjO9ULvgmyXE94kbb3tS
+	turo7PxzbxH5Cfh2jkCPMCX6pkZDqocY2kDrrBSrT10mERPDwua+hvG9NPg/aLsQ6v6gbxo8w/ANs
+	UTSQK/Il9fNhnI2k4PBD4u35pob91VSlP4VOvkGMmTqMlHS0P+JqSZwQZF9e6rpzR99jp0zRP1Mvq
+	ch7JEKBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptmo0-000r0p-2R;
-	Tue, 02 May 2023 10:00:20 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1ptnKV-000xTl-1D;
+	Tue, 02 May 2023 10:33:55 +0000
+Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptmnx-000qyt-2I;
-	Tue, 02 May 2023 10:00:18 +0000
-Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-3063433fa66so681122f8f.3;
-        Tue, 02 May 2023 03:00:15 -0700 (PDT)
+	id 1ptnKR-000xRj-2t
+	for linux-mediatek@lists.infradead.org;
+	Tue, 02 May 2023 10:33:53 +0000
+Received: by mail-pj1-x102a.google.com with SMTP id 98e67ed59e1d1-24e2b2a27ebso506097a91.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 02 May 2023 03:33:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1683021614; x=1685613614;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=DMr9gvF8Pl9mIUWgrETUJDIt0vnyiOv1BE24SgG6Lto=;
-        b=WmA9DGCkjPvr6YFIxM5TUvWVN9FipEkQlHdb5kpX4aVH4FkFW7QTYZ39MqtjtBmfG2
-         +2dM7q8RVXvK7XC+TDSTqEBr+Ud9C5b7EakwQrExotdSZC93eWfv4Y/78ui5QG63BCbP
-         vNCt8OjkdNfvDrwsDM3R8HPiZWh+gWAw5DBR1eJO0BxiW69xF4bwbFqkWyWRExLeBfEG
-         GgCAYrm09/Wq8gus+GTJVU63oeXsiuX1KXF6acCdxWw/wFZHhkloAfg45A70JHE954Ua
-         Erb38k+WOrmrQvpt+8tdaZtHCeOsoEeGmc51OWO9nXiiW+Iokuq+8oV06/XNtWb8OHsi
-         ATbw==
+        d=chromium.org; s=google; t=1683023629; x=1685615629;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=+fuCCjs/TuYV/kdxEssyG9fBViHn9SkyVnmjJ20wEqs=;
+        b=af2cIXWlSqt3grnqXOjULu9dBmX6JlyAsdsMzZ2ah5y8Bg7NJV8LrvhRgsF++6JiOJ
+         GHKBVYgTXvPo0u6l4VWjHP61F2l0pVb0QN1LFhzmHPnIBaVAlgjfFO5mFKToFii46g43
+         YD8RunEGDJ0ju6TNbSmVlwCIHiLQ91ONmioPo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683021614; x=1685613614;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        d=1e100.net; s=20221208; t=1683023629; x=1685615629;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=DMr9gvF8Pl9mIUWgrETUJDIt0vnyiOv1BE24SgG6Lto=;
-        b=P29W6lZUCnjbVsHO+dyRldR44VBOKTP4IUWM32Hoh+dXA9mTm9CL7MAa5D828mlyvJ
-         TIq2330jp+ne0WVPWg1fYSaQMR9O4wsD6zKRA38jKSGv4hJ9WQKT1QE8IrC9HvhTo+lG
-         EfSlxD3Bx9ZNdIdVhG8hvqFwHMsmaVRGSqo+GZeTJHnAmgdwwSSmVbLNlOvbnwqDorph
-         u/KXdSAJVmwumn/o7BSTBxGDeApjo2gVCmKAINGahb/3E8s2ukKgHKOXGgsjjkMlQZdb
-         6YPwxPxtkDj3kQzHLV9iaVY6NdBGv0Ctv4Ss4VRJZEw0OZU7HOu9Zb7uYlNnjwIO+E3h
-         UHLA==
-X-Gm-Message-State: AC+VfDxnhK63tfpxeR4cAr9ufL5Wu2tlPNnzmXtlQXJ3kXH8e3zEM0TO
-	+GP39zWLE3xdsnl7zBk/shY=
-X-Google-Smtp-Source: ACHHUZ5nXwHh+CHAxSN7hBDo8xJZZF/pzllxqaFgnSIb6mXPfrPJBzKX0RwxiNFr6M626CDjvd3NDw==
-X-Received: by 2002:a5d:4fcc:0:b0:306:32c4:7e7b with SMTP id h12-20020a5d4fcc000000b0030632c47e7bmr2951475wrw.41.1683021614402;
-        Tue, 02 May 2023 03:00:14 -0700 (PDT)
-Received: from [192.168.0.91] ([84.76.164.7])
-        by smtp.gmail.com with ESMTPSA id t15-20020adfe10f000000b00304832cd960sm20629439wrz.10.2023.05.02.03.00.11
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 02 May 2023 03:00:12 -0700 (PDT)
-Message-ID: <c1986b45-b8cd-6c1c-7758-086dc943c7e0@gmail.com>
-Date: Tue, 2 May 2023 12:00:10 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH 1/3] thermal/drivers/mediatek/lvts_thermal: Handle IRQ on
- all controllers
-Content-Language: en-US, ca-ES, es-ES
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: Alexandre Bailon <abailon@baylibre.com>, kernel@collabora.com,
- Chen-Yu Tsai <wenst@chromium.org>, Balsam CHIHI <bchihi@baylibre.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Alexandre Mergnat <amergnat@baylibre.com>, Amit Kucheria <amitk@kernel.org>,
- "Rafael J. Wysocki" <rafael@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
+        bh=+fuCCjs/TuYV/kdxEssyG9fBViHn9SkyVnmjJ20wEqs=;
+        b=EkpD/8S0ZuVpFD75DiGB+Rds61iRjZFPuwgFdl9YhkbJD07XqgsH/PzkNXDjBG3B6t
+         OC7Hg/26Vpn/HTYdOQWjyDe5+N1/JZTkP5pj81LSXzMIkQiZCiXZYg5QfWzqLmcqlCCU
+         ba57zs4CsJGqmrITK5Ag749a6vjpA7xdm82sg9fqL2vhrWhBaCXLAVpzr/lfVDdsO4lb
+         9ZxKMOh5bWQFbJNsvzmfuqBWG5dG00AKZX67XFWF2tlcLykVM+AkKWLUm0qq0fL74nnH
+         gaUkKE/XBg4Rtz3PqMtbFyUnLRt1yjARBcOuEo9aC5LFH8fP/rG25gQR5Rk5Fk3rZDNT
+         z0Lg==
+X-Gm-Message-State: AC+VfDy3/b8I09rs1nL+ueMEE3f/fSeZRBzQ9ENUH0DWvVUEnqTLYm8E
+	zu69mvpYSDdnxKU8xKcof1VWLg==
+X-Google-Smtp-Source: ACHHUZ7D5b++XGhn6qJsIBk064qWgKtkGNwvj98P5C8vUDm8zn+JHtAlSMG7N3iifFpFnF9FClShVw==
+X-Received: by 2002:a17:90a:8182:b0:24b:6d50:fed8 with SMTP id e2-20020a17090a818200b0024b6d50fed8mr17168034pjn.24.1683023628961;
+        Tue, 02 May 2023 03:33:48 -0700 (PDT)
+Received: from google.com ([2401:fa00:1:10:b873:4627:7ea:a0dd])
+        by smtp.gmail.com with ESMTPSA id y23-20020a1709029b9700b001a69c1c78e7sm19465521plp.71.2023.05.02.03.33.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 02 May 2023 03:33:48 -0700 (PDT)
+Date: Tue, 2 May 2023 18:33:44 +0800
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: =?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>
+Cc: Daniel Lezcano <daniel.lezcano@linaro.org>,
+	Alexandre Bailon <abailon@baylibre.com>, kernel@collabora.com,
+	Balsam CHIHI <bchihi@baylibre.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Alexandre Mergnat <amergnat@baylibre.com>,
+	Amit Kucheria <amitk@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Zhang Rui <rui.zhang@intel.com>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
+Subject: Re: [PATCH 0/3] thermal/drivers/mediatek/lvts_thermal: Fixes to the
+ interrupt handling
+Message-ID: <20230502103344.GA3388518@google.com>
 References: <20230428195347.3832687-1-nfraprado@collabora.com>
- <20230428195347.3832687-2-nfraprado@collabora.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20230428195347.3832687-2-nfraprado@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230428195347.3832687-1-nfraprado@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230502_030017_755776_51C57430 
-X-CRM114-Status: GOOD (  20.19  )
+X-CRM114-CacheID: sfid-20230502_033351_934222_22E3CCE9 
+X-CRM114-Status: GOOD (  10.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,38 +99,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 28/04/2023 21:53, NÃ­colas F. R. A. Prado wrote:
-> There is a single IRQ handler for each LVTS thermal domain, and it is
-> supposed to check each of its underlying controllers for the origin of
-> the interrupt and clear its status. However due to a typo, only the
-> first controller was ever being handled, which resulted in the interrupt
-> never being cleared when it happened on the other controllers. Add the
-> missing index so interrupts are handled for all controllers.
+On Fri, Apr 28, 2023 at 03:53:44PM -0400, Nícolas F. R. A. Prado wrote:
 > 
-> Fixes: f5f633b18234 ("thermal/drivers/mediatek: Add the Low Voltage Thermal Sensor driver")
-> Signed-off-by: NÃ­colas F. R. A. Prado <nfraprado@collabora.com>
+> Fixes in the interrupt handling of the LVTS thermal driver noticed while
+> testing it on the Spherion Chromebook (mt8192-asurada-spherion) with the
+> MT8192 support series [1].
 > 
+> These are standalone fixes and don't depend on anything else.
+> 
+> [1] https://lore.kernel.org/all/20230307163413.143334-1-bchihi@baylibre.com/
+> 
+> Thanks,
+> Nícolas
+> 
+> 
+> Nícolas F. R. A. Prado (3):
+>   thermal/drivers/mediatek/lvts_thermal: Handle IRQ on all controllers
+>   thermal/drivers/mediatek/lvts_thermal: Honor sensors in immediate mode
+>   thermal/drivers/mediatek/lvts_thermal: Disable undesired interrupts
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+This series seems to have solved all interrupt storm issue I ran into, so
 
-> ---
-> 
->   drivers/thermal/mediatek/lvts_thermal.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-> index d0a3f95b7884..56b24c5b645f 100644
-> --- a/drivers/thermal/mediatek/lvts_thermal.c
-> +++ b/drivers/thermal/mediatek/lvts_thermal.c
-> @@ -449,7 +449,7 @@ static irqreturn_t lvts_irq_handler(int irq, void *data)
->   
->   	for (i = 0; i < lvts_td->num_lvts_ctrl; i++) {
->   
-> -		aux = lvts_ctrl_irq_handler(lvts_td->lvts_ctrl);
-> +		aux = lvts_ctrl_irq_handler(&lvts_td->lvts_ctrl[i]);
->   		if (aux != IRQ_HANDLED)
->   			continue;
->   
+Tested-by: Chen-Yu Tsai <wenst@chromium.org>
 
