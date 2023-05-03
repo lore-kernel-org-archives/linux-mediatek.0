@@ -4,95 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0623BC77B7F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 May 2023 12:14:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09B11C77B7F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 May 2023 12:19:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HLFpTw4Opsx0SIhXDBcwLEPI4lObbahA52WBgGIUVsM=; b=iKXK3kieWUQZ/equQRWzIZXzIS
-	vba6kHnY/fhn0gT2F7NXGWaY3Cq9bxeqbRViYXccchkovoo92qck99JnqJckeaRndQk8tKJKBt3Pf
-	pV1+GQQCwsbIlYnLZvd1SA/tuNL3+HYN5D9OxtmdbNLP6DZLmX7wMtgi4f4DTd33RyLIuWTCriY3R
-	b1XC9sNAi5Y6XawC4J1Js+A4izVfTZJXV7McJS2cDKKJZ9o3TOuud0JVsv6P7gwYYsN957nS+xBUG
-	xt5cjboLaJ9umsc6j8yomaEefifJo2IfOnHHOkUQVRB2RFQahzFDqlV/0SidLtP93IZVWY4E3fao5
-	oMNsO4eA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Subject:Cc:To:
+	From:Date:References:In-Reply-To:Message-Id:Mime-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HcO3xa4y7bILuFGXgJl8e3SDSgP/OqMRFRqQtyylyqE=; b=ZpbPahsuDVhSet38xw+5i3a113
+	wNFIe+g7o6xtRRPRAWU3vPBCYDC/A6uGxhGnvWTIvpfmxvQlVy3xIJkDsah4JK12Il149EjoczRl3
+	LkgKUlCAIBseHI0UKh45MLJPl0HuT0H6emfS8mR1PQj1wUlXSCO7x6OufOR4/99KNDa5HMn80Stcc
+	fstnoeF4dT/xSe3qB5acq9+DlPWGakR8ys9YxJPs+Gj9i69qnLLn7knZR3ThP54QHf9LUXa6rEiOf
+	OtLaj2I2W+RcG99tXXRBY5d86HAZBT68C8SuT+i9jCn9tv899ZCkY+nPgoNbap6uqMMPTbNH1AbJc
+	G7u2yw9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1puBMr-004WJG-2y;
-	Wed, 03 May 2023 12:13:57 +0000
-Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
+	id 1puBSN-004XJy-11;
+	Wed, 03 May 2023 12:19:39 +0000
+Received: from new1-smtp.messagingengine.com ([66.111.4.221])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1puBMm-004WFc-35
-	for linux-mediatek@lists.infradead.org;
-	Wed, 03 May 2023 12:13:55 +0000
-Received: by mail-yw1-x1131.google.com with SMTP id 00721157ae682-55a79671a4dso41640367b3.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 03 May 2023 05:13:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1683116031; x=1685708031;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=HLFpTw4Opsx0SIhXDBcwLEPI4lObbahA52WBgGIUVsM=;
-        b=w24SJl1jEsx1dsysGc/JqXn8TRE0UMobpr8S9T3y+gEnR/nI+CHCSx5trFpTNAVCVG
-         8XS7YABKoVXwdqhydgmtWe9LQJJ7LBPnr1fCtb0rshbAxTDbaTU+5U0WNdSypx0SKblE
-         0CP6meVuOVDCtCX96ONGJ58N4h4LCh6KY7HQXwOPLcftT7CWUqTxxZHaVMF/ygVuJ3xU
-         KtX9ixUBAF79tkLLjx9Hg+1rarQ5Su54dehEmdGZNBkbkoufEbwweYd9rnB2Q94mEjKe
-         bYeSIwtnrv7tEjxTeB2h1XUenyGb9cWojKfDEo4AC69c880iPhtph2axVQ7WlTkbXxO7
-         +S+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683116031; x=1685708031;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=HLFpTw4Opsx0SIhXDBcwLEPI4lObbahA52WBgGIUVsM=;
-        b=dhW5f5K5UoeYJ2hKiUNvsPs3lnK+bem0UCbkGddjEeK4/bgz3pVv618XhXHyNa7p0Z
-         d6RoJuxM9er54+Y6RHLhE2+kHr8OwNI1tyHGhaNiPw12XqMGXtTsJNuZ9n9AijQurmjh
-         wq+Gh+5b1j456AKrdl2PMPssB42XhorVoseO0y+k9mkBGZf0nUAc/nZz3YHS5soMBFEk
-         KsdV9n/7/IbxqYjDTnsBvnerp8KNPG5ED01iex9XRl78QFiiOa7j/vPVM7ihNLCSFJp5
-         dqn5LNOY0BJq+i5Pq1QZgvL/ELKqmKMDXDHA3a1b03sJhgpliW6oUsH+2tHgXWKVlig2
-         XVZQ==
-X-Gm-Message-State: AC+VfDzY183UzH8BKbkL8X5jraMaklXnsYU8A+aSMRL8hAZb4xH4rh4Z
-	MK42XUljaBg86g4JmCUvJ76bcgg828FaRj/0fpwg5A==
-X-Google-Smtp-Source: ACHHUZ66hRgZLiqP0HgNywmuyEJNjQjxpzuYU/Ewr0nLiWAs/k7+ydf4eMIyKQKo0mpz4nSzQd/diYDGzmnUCVXeNlI=
-X-Received: by 2002:a81:4f04:0:b0:54f:ddb9:95e7 with SMTP id
- d4-20020a814f04000000b0054fddb995e7mr20136923ywb.34.1683116031053; Wed, 03
- May 2023 05:13:51 -0700 (PDT)
-MIME-Version: 1.0
-References: <20220328000915.15041-1-ansuelsmth@gmail.com> <85eb14ec-f465-7447-ad77-a3dabc666f47@kernel.org>
- <YkKRYnN84D9VZhGj@Ansuel-xps.localdomain> <CAL_Jsq+RQQ-ADMxLPUFwk6S6kGmb6oNDy4k52fnU0EtbUvqmSA@mail.gmail.com>
+	id 1puBSD-004XFM-25;
+	Wed, 03 May 2023 12:19:35 +0000
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
+	by mailnew.nyi.internal (Postfix) with ESMTP id EC55B580E9F;
+	Wed,  3 May 2023 08:19:18 -0400 (EDT)
+Received: from imap51 ([10.202.2.101])
+  by compute6.internal (MEProxy); Wed, 03 May 2023 08:19:18 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
+	:cc:content-type:content-type:date:date:from:from:in-reply-to
+	:in-reply-to:message-id:mime-version:references:reply-to:sender
+	:subject:subject:to:to; s=fm3; t=1683116358; x=1683123558; bh=Hc
+	O3xa4y7bILuFGXgJl8e3SDSgP/OqMRFRqQtyylyqE=; b=CYoqoLnh1EhLeTmVUE
+	5cRpQddLiBctwaYGkSin0ryx9CrGuqmSZktao5G0snVfi/YooxTewL2EhpR2lwIC
+	el6E+zbGvbiqHmuYjbabAqXf5iBHsJ2VrCaXxr7tlq1xtz1aH5frRg7A4LZ/qIpv
+	p7L1lfFDBGxlzOQw3aNFcHC7XXJMygHv4VlVnWfRHUJyJBQoMYH0YSOWYhP3qKFM
+	scuw7Dw1jLTIjx2CyQvh3qdKlgLRwu0w+JHKuwDdKFLJbU3gm5qs+z4ZbkR/G5HT
+	cNwQuFdyDG+4kEPzw4BwtDaY/jKaFuz0F9jYwKJ6r2pTmjNYxEml317zevCeh0t6
+	N3mw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-type:content-type:date:date
+	:feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+	:message-id:mime-version:references:reply-to:sender:subject
+	:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+	:x-sasl-enc; s=fm3; t=1683116358; x=1683123558; bh=HcO3xa4y7bILu
+	FGXgJl8e3SDSgP/OqMRFRqQtyylyqE=; b=FZgc7BsIe5I0d4KEwq8QTh4l6DcNu
+	V4igPBqmUvcjfdB5Q3L+LyMvrqAd5edxeArYwOixxqz8F8lP415DLXbwXxBV188G
+	6pvT7BVgPp9Hcf01sGX5UofU8e70JGom3b69NVt7dklgyy9PPrPK8RjBkkBh3d85
+	qMoEWxx3Kp6/KNF0XBNLE882iLPYYBupSrAdnR/GBD/k0ThzW1dAD0isIJFbFUB2
+	ATXZaEWKZlOB9A9fflKucksTsekwYRKLNuAzHViCg4HZ6iMwhtQ+1sefPpjiJeSs
+	+eFVv7K6tQKeV4pSxLyzVbcpOe7vuQrf2ddoJ0azNE7j7t/jBe3m/DCQA==
+X-ME-Sender: <xms:RlFSZG2wIaPMnUCk0D7KqEawInmE1-_L62J3SMA4TIiKKHKzfDgyXQ>
+    <xme:RlFSZJEoTCzQnYtgSxDlGxz71cJ60UqBPCZrdIUO7FRmYYIysF7_zfY5NZdszx-a9
+    tVhxfpZE7joCMW8F0E>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrfedvkedggeelucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+    cujfgurhepofgfggfkjghffffhvfevufgtsehttdertderredtnecuhfhrohhmpedftehr
+    nhguuceuvghrghhmrghnnhdfuceorghrnhgusegrrhhnuggsrdguvgeqnecuggftrfgrth
+    htvghrnhepffehueegteeihfegtefhjefgtdeugfegjeelheejueethfefgeeghfektdek
+    teffnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomheprg
+    hrnhgusegrrhhnuggsrdguvg
+X-ME-Proxy: <xmx:RlFSZO7j62MYeAlUvjyPb3-P6o-4wwc37gOw1kgDz6mbK1MgAuf_Mw>
+    <xmx:RlFSZH1Mg0LO6HmIMFrk6mCZ0cidUx4fxvD5CE7W8Ze6Bg_1CeyB-w>
+    <xmx:RlFSZJGjH26FpmK1DgB3wX_QvRn2oXlx3c4mHacW2b7FJimCP_viOQ>
+    <xmx:RlFSZFVn9YA1CIDFg0IEtfl6qrxsa6dB5O8KF0d2IrthVw2W78sneA>
+Feedback-ID: i56a14606:Fastmail
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+	id 9F56BB60086; Wed,  3 May 2023 08:19:18 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.9.0-alpha0-386-g2404815117-fm-20230425.001-g24048151
+Mime-Version: 1.0
+Message-Id: <4e1e70a9-9b28-410b-bd29-fb5f5805798f@app.fastmail.com>
+In-Reply-To:  <CAA8EJpq8x5wQa3fMebaSP3hCdMiCsZRaF+B4Y3N3royW_CeXCA@mail.gmail.com>
+References: <20220328000915.15041-1-ansuelsmth@gmail.com>
+ <85eb14ec-f465-7447-ad77-a3dabc666f47@kernel.org>
+ <YkKRYnN84D9VZhGj@Ansuel-xps.localdomain>
+ <CAL_Jsq+RQQ-ADMxLPUFwk6S6kGmb6oNDy4k52fnU0EtbUvqmSA@mail.gmail.com>
  <CAMuHMdWNTE48MFy6fqxAsfMWz9b6E7dVNXtXtESP95sxk2PGwA@mail.gmail.com>
  <CAL_JsqJthKTm8bhRF2B=ae1tvtPeYYXx_Tm76qQtSwLtH5C6VA@mail.gmail.com>
- <720a2829-b6b5-411c-ac69-9a53e881f48d@app.fastmail.com> <CAL_JsqKCtmkwzKa01gyG65fH8ye6R3KhR41PJbJhOJ4X9j=znA@mail.gmail.com>
- <bce93654-fc36-3d12-282d-76fafb8f51ce@linaro.org> <CAL_JsqJXd_EpOQwwNEAn25mzFfkhEvqzur6ui5Ca+dbt2kA8-Q@mail.gmail.com>
+ <720a2829-b6b5-411c-ac69-9a53e881f48d@app.fastmail.com>
+ <CAL_JsqKCtmkwzKa01gyG65fH8ye6R3KhR41PJbJhOJ4X9j=znA@mail.gmail.com>
+ <bce93654-fc36-3d12-282d-76fafb8f51ce@linaro.org>
+ <CAL_JsqJXd_EpOQwwNEAn25mzFfkhEvqzur6ui5Ca+dbt2kA8-Q@mail.gmail.com>
  <5e318b02-8f33-4e2d-a956-5660e1c60619@app.fastmail.com>
-In-Reply-To: <5e318b02-8f33-4e2d-a956-5660e1c60619@app.fastmail.com>
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Date: Wed, 3 May 2023 15:13:39 +0300
-Message-ID: <CAA8EJpq8x5wQa3fMebaSP3hCdMiCsZRaF+B4Y3N3royW_CeXCA@mail.gmail.com>
+ <CAA8EJpq8x5wQa3fMebaSP3hCdMiCsZRaF+B4Y3N3royW_CeXCA@mail.gmail.com>
+Date: Wed, 03 May 2023 14:18:53 +0200
+From: "Arnd Bergmann" <arnd@arndb.de>
+To: "Dmitry Baryshkov" <dmitry.baryshkov@linaro.org>
+Cc: "Rob Herring" <robh+dt@kernel.org>,
+ "Geert Uytterhoeven" <geert@linux-m68k.org>,
+ "Olof Johansson" <olof@lixom.net>,
+ "Christian Marangi" <ansuelsmth@gmail.com>,
+ "Krzysztof Kozlowski" <krzk@kernel.org>,
+ "Krzysztof Kozlowski" <krzk+dt@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-actions@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, Linux-OMAP <linux-omap@vger.kernel.org>,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@axis.com,
+ linux-aspeed@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org,
+ chrome-platform@lists.linux.dev,
+ Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
+ linux-samsung-soc@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, kernel@dh-electronics.com,
+ linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org,
+ linux-tegra@vger.kernel.org,
+ "linux-oxnas@groups.io" <linux-oxnas@groups.io>,
+ linux-arm-msm@vger.kernel.org, linux-unisoc@lists.infradead.org,
+ linux-rockchip@lists.infradead.org,
+ linux-realtek-soc@lists.infradead.org
 Subject: Re: [RFC PATCH 0/1] Categorize ARM dts directory
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Rob Herring <robh+dt@kernel.org>, Geert Uytterhoeven <geert@linux-m68k.org>, 
-	Olof Johansson <olof@lixom.net>, Christian Marangi <ansuelsmth@gmail.com>, 
-	Krzysztof Kozlowski <krzk@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-actions@lists.infradead.org, 
-	linux-sunxi@lists.linux.dev, Linux-OMAP <linux-omap@vger.kernel.org>, 
-	linux-amlogic@lists.infradead.org, linux-arm-kernel@axis.com, 
-	linux-aspeed@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org, 
-	chrome-platform@lists.linux.dev, 
-	Linux-Renesas <linux-renesas-soc@vger.kernel.org>, linux-samsung-soc@vger.kernel.org, 
-	linux-stm32@st-md-mailman.stormreply.com, kernel@dh-electronics.com, 
-	linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org, 
-	linux-tegra@vger.kernel.org, "linux-oxnas@groups.io" <linux-oxnas@groups.io>, 
-	linux-arm-msm@vger.kernel.org, linux-unisoc@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-realtek-soc@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230503_051353_029560_F386DCCF 
-X-CRM114-Status: GOOD (  20.81  )
+X-CRM114-CacheID: sfid-20230503_051929_749771_EA439B27 
+X-CRM114-Status: UNSURE (   9.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,54 +133,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 3 May 2023 at 13:39, Arnd Bergmann <arnd@arndb.de> wrote:
->
-> On Wed, May 3, 2023, at 03:17, Rob Herring wrote:
-> > On Tue, May 2, 2023 at 5:52=E2=80=AFPM Dmitry Baryshkov <dmitry.baryshk=
-ov@linaro.org> wrote:
-> >> On 02/05/2023 22:40, Rob Herring wrote:
-> >> >      'berlin' : 'berlin',
-> >> >      'pxa2' : 'pxa',
-> >> >      'pxa3' : 'pxa',
-> >> >      'pxa' : 'marvell',
-> >>
-> >> I'd question if it makes sense to split the pxa line. Yes, it was sold
-> >> by Intel to Marvell, but IIRC the devices still had some inheritance.
-> >> So, if we have the 'pxa' subdir, I'd move Marvell PXAs to that dir too=
-.
-> >
-> > I think I probably split it because it was different maintainers.
-> > Though it doesn't look like pxa168 or pxa910 have any maintainer. They
-> > are a mixture of pxa and mmp I think.
->
-> I think the original split here is probably the best we can do,
-> but there is no good way to do it because of the confusing naming
-> and the problem that there is no clear line between pxa and mmp.
-> As far as I can tell, the release timeline was:
->
-> Intel pxa2xx (mach-pxa, xscale, still exists)
-> Intel pxa3xx (mach-pxa, xscale, still exists)
-> Intel pxa90x (never merged)
-> Marvell pxa93x (mach-pxa, xscale, removed in Linux-6.3, no DT)
-> Marvell pxa92x (never merged)
-> Marvell pxa91x (mach-mmp, pj1, still exists)
-> Marvell pxa168 (mach-mmp, pj1, still exists)
-> Marvell pxa95x (mach-pxa, pj4, long gone)
-> Marvell pxa688 (mach-mmp, pj4, known as mmp2)
->
-> So with pxa93x out of the picture, we can simplify it as using
-> 'pxa' as the name for all the above chips with an Intel XScale
-> core, and 'marvell' for all the other ones that have a Marvell
-> core and exist in mach-mmp.
+On Wed, May 3, 2023, at 14:13, Dmitry Baryshkov wrote:
+> On Wed, 3 May 2023 at 13:39, Arnd Bergmann <arnd@arndb.de> wrote:
 
-Should it be 'intel' for pxa[23]xx then?
-
+>> So with pxa93x out of the picture, we can simplify it as using
+>> 'pxa' as the name for all the above chips with an Intel XScale
+>> core, and 'marvell' for all the other ones that have a Marvell
+>> core and exist in mach-mmp.
 >
->      Arnd
+> Should it be 'intel' for pxa[23]xx then?
 
+Probably yes, that would put it next to ixp4xx, which makes
+a lot of sense (same vintage, same cpu core), though it is
+a bit funny to have these together with lsi axxia and
+altera socfpga, both of which are also in the intel
+directory. socfpga is of course the only one that anybody
+at Intel cares about these days.
 
-
---=20
-With best wishes
-Dmitry
+      Arnd
 
