@@ -4,79 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7677C77B78
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 May 2023 14:47:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4F59C77B78
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 May 2023 15:08:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=C3xAax5UMMKBBrbDbSmOKKPeFKZ83BBHuKP/eeSu5p4=; b=ist3ITzR/nxAHjYaXlS5N6D2b5
-	OKd3nbg8qSf5g1OPbxP4EzxC5LYXz685wmQBIAtTI0wWv/iYH++cJH5Oin0sKxZtih6q53GnGfYQZ
-	AwctGsBVKaXckB/3Wp9SarFYHR6Q7qFaukOZbhEALraf9UJcqfjkUAwWn9QArAtDzFjh9QdZOehUF
-	22GcEbM1HhZlVesdZ9yESmUzMGGGrhOkhVjagpXYxwzusaht+SJd4/6UivU9mxLNPlyqUdDZVrw+M
-	hdXgpCxejydSGkO3j1RI1++UGtdxX/vMXcn30lwh9ITNL9oWSkDzts7HBEeaT+e/B8TJ+rb3iEvao
-	n6zK+kog==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=0gC7Ybw7MaxjF6097llexPcJrfXIfdXWbQkrGypoI9c=; b=ulmooVeYCjm5EulZXlQRzBllXg
+	UppWZqj6hgmqwsmTE7kO8kZv2Ozz+gZi9DelnYU3gG96rJUzHuooGz8coDkxFHn60VbTekNMILE7s
+	j4V9JNt3Rn+IHlBVqt8AmDiUGEgKwP6X9LXxKvexR+QD+N70HAb2naHYTBNQFslgBBRs08pj8fRMB
+	SxF0DV8sr4tji75xrG2FwF78ICUquZ8IM5KOjO4U1q8ylegfqiPSXiaDCCHSBtz0qj0q6aUDO9HCO
+	bmexESoCjIGxLhNNro1qrizagrRfXuCIUqMkEg78yGy8CTi2aqzRuZ9QK998DOYsb0GWxrntkQu9d
+	AQStSkvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1puDlM-004rm8-0O;
-	Wed, 03 May 2023 14:47:24 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1puE5y-004ueA-29;
+	Wed, 03 May 2023 15:08:42 +0000
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1puDlJ-004rlJ-3C;
-	Wed, 03 May 2023 14:47:23 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-4ec9c7c6986so6060954e87.0;
-        Wed, 03 May 2023 07:47:19 -0700 (PDT)
+	id 1puE5w-004udL-0D
+	for linux-mediatek@lists.infradead.org;
+	Wed, 03 May 2023 15:08:41 +0000
+Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-2f58125b957so5281260f8f.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 03 May 2023 08:08:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1683125238; x=1685717238;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=C3xAax5UMMKBBrbDbSmOKKPeFKZ83BBHuKP/eeSu5p4=;
-        b=rkCbtRN1t07+/Mm/qp9LWT08mpQB23zqZwKxH/Jugd/NMBBtfp3x2iR88DiiT4MTau
-         0hLjGt4gooDQzdKm/zMhrQOZmt3kYs5BJh/OpiH8gfeO9ZedFFpE6IQckWfdbSWH+MJf
-         fa35lSUFY1CHzRfoZFZmGVxHsgF24HRkm69VfOYsOdnRxmJikPHeCfRHhZhTr+rHTGAd
-         IrCrDkqqi/kFC+V4GhkpIEIMJiUr5KyQfTDoWnd4ATqB/+XK5Xf6u3dHkgW5FBnD2IDc
-         FvfBa9HEGeJDQ1eu+X6q3cPFg1J0JDh1Jl85QNVwKUlnyJQl03KGvLy6eGElL8xrC0nD
-         jvwg==
+        d=linaro.org; s=google; t=1683126516; x=1685718516;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=0gC7Ybw7MaxjF6097llexPcJrfXIfdXWbQkrGypoI9c=;
+        b=gcTHlpPkM5h1IFaR17waMkGzJkbnPTx+VH3iL/lSm8FpIqoeAorqI2NM8aInDOPm7B
+         I3+5ewe2asdSbSZ0TzQZwJHIcu4B6pkhjtY0BYADz2JRQiHpkRpubzebY2io86NDM2Vv
+         Vi4flC/O/UKSoqwf8VO8Pzx4H6XC3vq9RBqFL1fUSxYFgI31YUgeanHIi3zE3U4TIvIb
+         B4LegAjEYLs4nmI/xHSv2IuYc2gBBDK148M6YY5aXjeUt2PHlHRLpSks0so1+Een0VSJ
+         OaLMNNfAF4sfFskTM1lDyMyTeMX1lkMlX9lPLumqhu6MFslVScgRefKywbXVxsTkvUff
+         0d8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683125238; x=1685717238;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=C3xAax5UMMKBBrbDbSmOKKPeFKZ83BBHuKP/eeSu5p4=;
-        b=CvlhcjsASVtQ9GEKz2fz3iFPRQ64r5FkZWMJvghnspUX9iUbol0JrvnE7JmWjvqQWC
-         CW+2fj8iGGUl7g09Aht1ECGxzpN9C6JpGXKVegVAhZMa6gdbAnsJv1VLlesxPu6c0AyR
-         t9hpxLQjmF7plefVUYNCX+FFyNxRLbg9TKlKqdaBkt7glSrd0uP0Ls5mTyqnkPfSJfLs
-         sYDszI1MJi3X1qKHNatHXSwI3JkpUSl2m2XXJzAIqzYheJ7IO5jdT1ponAV7aRWB0hcT
-         +xHwvZTQ83LGupAq3xQJf1HKSCxzS6Kk49S7OCDm5bW8m2j/1258AgOVYtW0i8i8J0It
-         C2ZQ==
-X-Gm-Message-State: AC+VfDwHewn4w/i2ICXnun0Hr6N5NdBPzA+d8+UILexl95IE0FaORMpY
-	/INJrkaIQD++MRmZMtTCHF0RVXxta8GSx3VXsQ==
-X-Google-Smtp-Source: ACHHUZ4wJk4FWZJ47z3eWowcIPsdV23tHhs0Q+a5X+3y6nD0P4oucFwMYwXky460hcvVU2vX04y8rfMGBaSfdbr64fM=
-X-Received: by 2002:ac2:414a:0:b0:4ef:d41d:637 with SMTP id
- c10-20020ac2414a000000b004efd41d0637mr957607lfi.39.1683125238146; Wed, 03 May
- 2023 07:47:18 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1683126516; x=1685718516;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=0gC7Ybw7MaxjF6097llexPcJrfXIfdXWbQkrGypoI9c=;
+        b=IKC2ahpkd9Hu1PzUL1eEH12I5yEhfX7zGT89Wrb2oI3Dou5zhO3KPEi3ytYuxgKu+W
+         aC8fz14/szwFtv9Aq86tJKxYPdlH+bqTLxb8wY98GOwaP+0uroK7cfH0avjoNdbv7zos
+         f6nNmPiP0RXkkcjnJSe5zBQ7kRJe15GGa+YimMFR3Y5/SFH0ytb5Ln8vLr6e001fKi2b
+         1dHp1om+oLHDyqbVEtPvonWMcJ/f1iu6DqFQK9EbdVb13BdQ7Uc/pv/WXG5ssEgF6iFQ
+         Tr08wPJBMjdTrQfz7wIoUxpAEzMLjB+yfawht8jh+JmpzPg+APBpDET4MI+bG+RckFOQ
+         zKAA==
+X-Gm-Message-State: AC+VfDysh0nH0gBz8REXqbLcYo4+RbG/9zKu6RIfUvEw4p7gyD2tDuA2
+	vYbJ8WQf/EARztrlzHcP/fMYFg==
+X-Google-Smtp-Source: ACHHUZ6lmmFf/0ibwe+WKbI0ifv4OuMglfG9u0X3AiYAWAX4tIOowPkYVHoifUkz419xEj0RG2qB4g==
+X-Received: by 2002:a5d:4b90:0:b0:306:3b12:d6aa with SMTP id b16-20020a5d4b90000000b003063b12d6aamr290306wrt.38.1683126516104;
+        Wed, 03 May 2023 08:08:36 -0700 (PDT)
+Received: from localhost ([102.36.222.112])
+        by smtp.gmail.com with ESMTPSA id m7-20020adfe0c7000000b003048477729asm24061876wri.81.2023.05.03.08.08.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 03 May 2023 08:08:34 -0700 (PDT)
+Date: Wed, 3 May 2023 18:08:28 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: ryder.lee@mediatek.com
+Cc: linux-mediatek@lists.infradead.org
+Subject: [bug report] wifi: mt76: mt7996: enable BSS_CHANGED_BASIC_RATES
+ support
+Message-ID: <9b37d4c2-f6bf-442e-950c-5dbbf8f2a01e@kili.mountain>
 MIME-Version: 1.0
-References: <68fce64f-4970-45f1-807e-6c0eecdfcdc2@kili.mountain>
-In-Reply-To: <68fce64f-4970-45f1-807e-6c0eecdfcdc2@kili.mountain>
-From: Stanley Chu <chu.stanley@gmail.com>
-Date: Wed, 3 May 2023 22:47:06 +0800
-Message-ID: <CAGaU9a8eRPyMo9hUekiVL9ppZQspwsqk9RQTtmqHsTPBD7mcjA@mail.gmail.com>
-Subject: Re: [PATCH] scsi: ufs: ufs-mediatek: delete some dead code
-To: Dan Carpenter <dan.carpenter@linaro.org>
-Cc: Stanley Chu <stanley.chu@mediatek.com>, "James E.J. Bottomley" <jejb@linux.ibm.com>, 
-	"Martin K. Petersen" <martin.petersen@oracle.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Andy Teng <andy.teng@mediatek.com>, linux-scsi@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	kernel-janitors@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230503_074722_054313_2567CEF0 
-X-CRM114-Status: UNSURE (   8.27  )
+X-CRM114-CacheID: sfid-20230503_080840_104480_1F9852B4 
+X-CRM114-Status: UNSURE (   5.88  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,16 +88,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dan Carpenter <dan.carpenter@linaro.org> =E6=96=BC 2023=E5=B9=B45=E6=9C=883=
-=E6=97=A5 =E9=80=B1=E4=B8=89 =E4=B8=8B=E5=8D=886:41=E5=AF=AB=E9=81=93=EF=BC=
-=9A
->
-> There is already a test for "if (val =3D=3D state)" earlier so it's not
-> possible here.  Delete the dead code.
->
-> Fixes: 9006e3986f66 ("scsi: ufs-mediatek: Do not gate clocks if auto-hibe=
-rn8 is not entered yet")
-> Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
+Hello Ryder Lee,
 
-Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
+This is a semi-automatic email about new static checker warnings.
+
+The patch 15ee62e73705: "wifi: mt76: mt7996: enable 
+BSS_CHANGED_BASIC_RATES support" from Apr 14, 2023, leads to the 
+following Smatch complaint:
+
+    drivers/net/wireless/mediatek/mt76/mt7996/mac.c:1018 mt7996_mac_write_txwi()
+    warn: variable dereferenced before check 'vif' (see line 1007)
+
+drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+  1006		struct ieee80211_vif *vif = info->control.vif;
+  1007		struct mt7996_vif *mvif = (struct mt7996_vif *)vif->drv_priv;
+                                                               ^^^^^^^^^^^^^
+New dereference.
+
+  1008		u8 band_idx = (info->hw_queue & MT_TX_HW_QUEUE_PHY) >> 2;
+  1009		u8 p_fmt, q_idx, omac_idx = 0, wmm_idx = 0;
+  1010		bool is_8023 = info->flags & IEEE80211_TX_CTL_HW_80211_ENCAP;
+  1011		u16 tx_count = 15;
+  1012		u32 val;
+  1013		bool beacon = !!(changed & (BSS_CHANGED_BEACON |
+  1014					    BSS_CHANGED_BEACON_ENABLED));
+  1015		bool inband_disc = !!(changed & (BSS_CHANGED_UNSOL_BCAST_PROBE_RESP |
+  1016						 BSS_CHANGED_FILS_DISCOVERY));
+  1017	
+  1018		if (vif) {
+                    ^^^
+Too late.
+
+  1019			omac_idx = mvif->mt76.omac_idx;
+  1020			wmm_idx = mvif->mt76.wmm_idx;
+
+regards,
+dan carpenter
 
