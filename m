@@ -4,114 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06D71C77B78
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 May 2023 14:44:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7677C77B78
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 May 2023 14:47:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YD5yiiH8lBdQsuc2FhY28EjAz9S4ScvskXPOKO+HOF0=; b=JGjC2biSOvltu850JdJ4V0YL6L
-	1SP8fqpEBfKSGY5rJVvw9FTpF+O2YT+/ur4qasRgfvuDuftQhjLTAf1v96MNzcIp/xLD0eORsKrSx
-	ftjsVBDsRVgEVZ+ByhjlVc9Kr10i5dwbM9UNbO/jr63FKMg7EGj8gQnuCSyHnjTdGRvQtHgIfa1Ey
-	hUilnlHX5AslLCXJwElnuQOCckPetUJY6WQWnv18pQCWwzRuPXHLi60k5t/RMchgypiFRUWugD0VJ
-	Y7OuD0Kwmc4PP5lfLfc/M/nOovihaC+Vo7W+5Vfqb8ZjnA1CdrPimTVUfdhyKP/juN4Ys8e/uoXBj
-	t2+Y6F/A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=C3xAax5UMMKBBrbDbSmOKKPeFKZ83BBHuKP/eeSu5p4=; b=ist3ITzR/nxAHjYaXlS5N6D2b5
+	OKd3nbg8qSf5g1OPbxP4EzxC5LYXz685wmQBIAtTI0wWv/iYH++cJH5Oin0sKxZtih6q53GnGfYQZ
+	AwctGsBVKaXckB/3Wp9SarFYHR6Q7qFaukOZbhEALraf9UJcqfjkUAwWn9QArAtDzFjh9QdZOehUF
+	22GcEbM1HhZlVesdZ9yESmUzMGGGrhOkhVjagpXYxwzusaht+SJd4/6UivU9mxLNPlyqUdDZVrw+M
+	hdXgpCxejydSGkO3j1RI1++UGtdxX/vMXcn30lwh9ITNL9oWSkDzts7HBEeaT+e/B8TJ+rb3iEvao
+	n6zK+kog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1puDi8-004rNy-2Y;
-	Wed, 03 May 2023 14:44:04 +0000
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+	id 1puDlM-004rm8-0O;
+	Wed, 03 May 2023 14:47:24 +0000
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1puDi4-004rLh-04;
-	Wed, 03 May 2023 14:44:01 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-94f6c285d92so1014900366b.3;
-        Wed, 03 May 2023 07:43:57 -0700 (PDT)
+	id 1puDlJ-004rlJ-3C;
+	Wed, 03 May 2023 14:47:23 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-4ec9c7c6986so6060954e87.0;
+        Wed, 03 May 2023 07:47:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1683125037; x=1685717037;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:from:to:cc:subject:date
+        d=gmail.com; s=20221208; t=1683125238; x=1685717238;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=YD5yiiH8lBdQsuc2FhY28EjAz9S4ScvskXPOKO+HOF0=;
-        b=BpVngYxQivy/XYyW+9EKjJlje9aNIDv72TfZqyRSMsD6UqDZq3629aCFIKMtMntnSK
-         3A0eabHU/498jjmBj1k6CAvZiWEctoQVCcQmdE4Y90sabW3bNVflocQY/yUuNnM2aJ06
-         eLtICAGFaytQGUDTGRbLz3Rvsj73ZDZb9qx0OBbBG1iBCl/rMbjIczEYlOskGjpAcprD
-         xIVegHVTaQjjR01uehTjsEr1l8Ii5MJ0pbHg3+EkZDYEMKYCIPjygV8pA1LLzSFsoSnj
-         aH940XK+coZOmgbi0xEn3TXiVcWWYQZLaIeLQpI5bkBax2/D8osVHILQXD1xO7z5vFbb
-         6o6A==
+        bh=C3xAax5UMMKBBrbDbSmOKKPeFKZ83BBHuKP/eeSu5p4=;
+        b=rkCbtRN1t07+/Mm/qp9LWT08mpQB23zqZwKxH/Jugd/NMBBtfp3x2iR88DiiT4MTau
+         0hLjGt4gooDQzdKm/zMhrQOZmt3kYs5BJh/OpiH8gfeO9ZedFFpE6IQckWfdbSWH+MJf
+         fa35lSUFY1CHzRfoZFZmGVxHsgF24HRkm69VfOYsOdnRxmJikPHeCfRHhZhTr+rHTGAd
+         IrCrDkqqi/kFC+V4GhkpIEIMJiUr5KyQfTDoWnd4ATqB/+XK5Xf6u3dHkgW5FBnD2IDc
+         FvfBa9HEGeJDQ1eu+X6q3cPFg1J0JDh1Jl85QNVwKUlnyJQl03KGvLy6eGElL8xrC0nD
+         jvwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683125037; x=1685717037;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20221208; t=1683125238; x=1685717238;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=YD5yiiH8lBdQsuc2FhY28EjAz9S4ScvskXPOKO+HOF0=;
-        b=DENEr9/6ztuvnpvsCYx4wivBSXDLZ8X5iNZiUSwgV2VhiDbFUGUdTRHOLhXTrZeZZM
-         Koy85cH/J/hcelMnO/UauhDgSwcZmma7UuuGaj75gD3qKE1An1xz4gMaJDCtByyyZC08
-         VgkUIV4S2SBRNqJ/aiTGZECxEl+jbzG4DxbRbGJKTtZ2cr3TCN0bMvjwcXaraL2e7KiF
-         CXA/1zkZ3WP1lD+702tvtWVEvLH0GsG2bYJBHo6Vl2DvlIqW94yEyR/3OQCZxuHsnn8j
-         E7eGFKFSyC7sVUnvwTNDNwNuTTijHMRturJNcU1hRExMaxuKi/MtdWP6PMq78xtJGrvr
-         agVQ==
-X-Gm-Message-State: AC+VfDzK7CQwxqsRDvUsbUROIs1yXhRhpXDXflzAO5uklXdiLG2nG5Hg
-	LtCsoL0k28Wgq2d99DANmHc=
-X-Google-Smtp-Source: ACHHUZ5WJoxOyWTGN4A9/lSdbP7f4gsHndWXSq8WzQbC9D9SdtSML4JV44DrwZ3GjsiS7QI/QvYX5w==
-X-Received: by 2002:a17:907:3684:b0:94e:547b:6301 with SMTP id bi4-20020a170907368400b0094e547b6301mr3242470ejc.8.1683125036374;
-        Wed, 03 May 2023 07:43:56 -0700 (PDT)
-Received: from orome (p200300e41f053a00f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f05:3a00:f22f:74ff:fe1f:3a53])
-        by smtp.gmail.com with ESMTPSA id k9-20020a170906054900b00923f05b2931sm17338188eja.118.2023.05.03.07.43.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 May 2023 07:43:55 -0700 (PDT)
-Date: Wed, 3 May 2023 16:43:53 +0200
-From: Thierry Reding <thierry.reding@gmail.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Cc: Robin Murphy <robin.murphy@arm.com>, Andy Gross <agross@kernel.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
-	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Joerg Roedel <joro@8bytes.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Matthew Rosato <mjrosato@linux.ibm.com>,
-	Orson Zhai <orsonzhai@gmail.com>, Rob Clark <robdclark@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Niklas Schnelle <schnelle@linux.ibm.com>,
-	Krishna Reddy <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
-	Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Lu Baolu <baolu.lu@linux.intel.com>,
-	Kevin Tian <kevin.tian@intel.com>,
-	Nicolin Chen <nicolinc@nvidia.com>,
-	Steven Price <steven.price@arm.com>,
-	Dmitry Osipenko <digetx@gmail.com>
-Subject: Re: [PATCH 02/20] iommu/terga-gart: Replace set_platform_dma_ops()
- with IOMMU_DOMAIN_PLATFORM
-Message-ID: <ZFJzKQcKNFHdIWqy@orome>
-References: <2-v1-21cc72fcfb22+a7a-iommu_all_defdom_jgg@nvidia.com>
- <1db712d2-9e33-4183-2766-34e32f170507@arm.com>
- <ZFI/D6mnLKYpdIqx@nvidia.com>
- <1a995f30-31fe-354f-ddfe-e944fa36e7a0@arm.com>
- <ZFJlZ03lswl9uHD0@nvidia.com>
+        bh=C3xAax5UMMKBBrbDbSmOKKPeFKZ83BBHuKP/eeSu5p4=;
+        b=CvlhcjsASVtQ9GEKz2fz3iFPRQ64r5FkZWMJvghnspUX9iUbol0JrvnE7JmWjvqQWC
+         CW+2fj8iGGUl7g09Aht1ECGxzpN9C6JpGXKVegVAhZMa6gdbAnsJv1VLlesxPu6c0AyR
+         t9hpxLQjmF7plefVUYNCX+FFyNxRLbg9TKlKqdaBkt7glSrd0uP0Ls5mTyqnkPfSJfLs
+         sYDszI1MJi3X1qKHNatHXSwI3JkpUSl2m2XXJzAIqzYheJ7IO5jdT1ponAV7aRWB0hcT
+         +xHwvZTQ83LGupAq3xQJf1HKSCxzS6Kk49S7OCDm5bW8m2j/1258AgOVYtW0i8i8J0It
+         C2ZQ==
+X-Gm-Message-State: AC+VfDwHewn4w/i2ICXnun0Hr6N5NdBPzA+d8+UILexl95IE0FaORMpY
+	/INJrkaIQD++MRmZMtTCHF0RVXxta8GSx3VXsQ==
+X-Google-Smtp-Source: ACHHUZ4wJk4FWZJ47z3eWowcIPsdV23tHhs0Q+a5X+3y6nD0P4oucFwMYwXky460hcvVU2vX04y8rfMGBaSfdbr64fM=
+X-Received: by 2002:ac2:414a:0:b0:4ef:d41d:637 with SMTP id
+ c10-20020ac2414a000000b004efd41d0637mr957607lfi.39.1683125238146; Wed, 03 May
+ 2023 07:47:18 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="xQZEb6e6qgBHbQbj"
-Content-Disposition: inline
-In-Reply-To: <ZFJlZ03lswl9uHD0@nvidia.com>
-User-Agent: Mutt/2.2.10 (2023-03-25)
+References: <68fce64f-4970-45f1-807e-6c0eecdfcdc2@kili.mountain>
+In-Reply-To: <68fce64f-4970-45f1-807e-6c0eecdfcdc2@kili.mountain>
+From: Stanley Chu <chu.stanley@gmail.com>
+Date: Wed, 3 May 2023 22:47:06 +0800
+Message-ID: <CAGaU9a8eRPyMo9hUekiVL9ppZQspwsqk9RQTtmqHsTPBD7mcjA@mail.gmail.com>
+Subject: Re: [PATCH] scsi: ufs: ufs-mediatek: delete some dead code
+To: Dan Carpenter <dan.carpenter@linaro.org>
+Cc: Stanley Chu <stanley.chu@mediatek.com>, "James E.J. Bottomley" <jejb@linux.ibm.com>, 
+	"Martin K. Petersen" <martin.petersen@oracle.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Andy Teng <andy.teng@mediatek.com>, linux-scsi@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	kernel-janitors@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230503_074400_059634_02E05798 
-X-CRM114-Status: GOOD (  54.45  )
+X-CRM114-CacheID: sfid-20230503_074722_054313_2567CEF0 
+X-CRM114-Status: UNSURE (   8.27  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,167 +92,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Dan Carpenter <dan.carpenter@linaro.org> =E6=96=BC 2023=E5=B9=B45=E6=9C=883=
+=E6=97=A5 =E9=80=B1=E4=B8=89 =E4=B8=8B=E5=8D=886:41=E5=AF=AB=E9=81=93=EF=BC=
+=9A
+>
+> There is already a test for "if (val =3D=3D state)" earlier so it's not
+> possible here.  Delete the dead code.
+>
+> Fixes: 9006e3986f66 ("scsi: ufs-mediatek: Do not gate clocks if auto-hibe=
+rn8 is not entered yet")
+> Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
 
---xQZEb6e6qgBHbQbj
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, May 03, 2023 at 10:45:11AM -0300, Jason Gunthorpe wrote:
-> On Wed, May 03, 2023 at 01:01:34PM +0100, Robin Murphy wrote:
-> > On 2023-05-03 12:01, Jason Gunthorpe wrote:
-> > > On Wed, May 03, 2023 at 10:17:29AM +0100, Robin Murphy wrote:
-> > > > On 2023-05-01 19:02, Jason Gunthorpe wrote:
-> > > > > tegra-gart seems to be kind of wonky since from the start its 'de=
-tach_dev'
-> > > > > op doesn't actually touch hardware. It is supposed to empty the G=
-ART of
-> > > > > all translations loaded into it.
-> > > >=20
-> > > > No, detach should never tear down translations - what if other devi=
-ces are
-> > > > still using the domain?
-> > >=20
-> > > ?? All other drivers do this.
-> >=20
-> > The only driver I'm aware of which effectively tore down mappings by fr=
-eeing
-> > its pagetable on detach was sprd-iommu, and that was recently fixed on
-> > account of it being clearly wrong.
->=20
-> By "Teardown" I mean deconfigure the HW.
->=20
-> This driver is odd because it doesn't store a page table in the
-> iommu_domain, it keeps it in the GART registers so it can't actually
-> detach/attach fully correctly. :(
->=20
-> > Yes, I'm not disputing that we expect detach to remove that device's
-> > *access* to the IOVA (which is what GART can't do...), but it should
-> > absolutely not destroy the IOVA mapping itself. Follow that sequence wi=
-th
-> > iommu_attach_device(dom, dev) again and the caller can expect to be abl=
-e to
-> > continue using the same translation.
->=20
-> Yes
-> =20
-> > > If the HW is multi-device then it is supposed to have groups.
-> >=20
-> > Groups are in fact the most practical example: set up a VFIO domain, at=
-tach
-> > two groups to it, map some IOVAs, detach one of the groups, keep using =
-the
-> > other. If the detach carried an implicit iommu_unmap() there would be
-> > fireworks.
->=20
-> Yes, I'm not saying an unmap, I used the word teardown to mean remove
-> the HW parts. This gart function doesn't touch the HW at all, that
-> cannot be correct.
->=20
-> It should have an xarray in the iommu_domain and on detach it should
-> purge the GART registers and on attach it should load the xarray into
-> the GART registers. We are also technically expecting drivers to
-> support map prior to attach, eg for the direct map reserved region
-> setup.
->=20
-> > > Oh yuk, that is not an UNMANAGED domain either as we now assume empty
-> > > UNMANAGED domains are blocking in the core...
-> >=20
-> > They are, in the sense that accesses within the aperture won't go
-> > anywhere.
->=20
-> That is not the definition of BLOCKING we came up with.. It is every
-> IOVA is blocked and the device is safe to hand to VFIO. It can't be just
-> blocking a subset of the IOVA.
->=20
-> > It might help if domain->geometry.force_aperture was meaningful, because
-> > it's never been clear whether it was supposed to reflect a hardware
-> > capability (in which case it should be false for GART) or be an instruc=
-tion
-> > to the user of the domain (wherein it's a bit pointless that everyone a=
-lways
-> > sets it).
->=20
-> force_aperture looks pointless now. Only two drivers don't set it -
-> mtk_v1 and sprd.
->=20
-> The only real reader is dma-iommu.c and mtk_v1 doesn't use that.
->=20
-> So the only possible user is sprd.
->=20
-> The only thing it does is cause dma-iommu.c in ARM64 to use the
-> dma-ranges from OF instead of the domain aperture. sprd has no
-> dma-ranges in arch/arm64/boot/dts/sprd.
->=20
-> Further, sprd hard fails any map attempt outside the aperture, so it
-> looks like a bug if the OF somehow chooses a wider aperture as
-> dma-iommu.c will start failing maps.
-
-That all sounds odd. of_dma_configure_id() already sets up the DMA mask
-based on dma-ranges and the DMA API uses that to restrict what IOVA any
-buffers can get mapped to for a given device.
-
-Drivers can obviously still narrow down the DMA mask further if they
-have any specific needs. On Tegra, for example, we use this to enforce
-bus-level DMA masks. The Ethernet controller for instance might support
-40 bit addresses, but the memory bus has a quirk where bit 39 is used
-for extra "swizzling", so we have to restrict DMA masks to 39 bits for
-all devices, regardless of what the drivers claim.
-
-> Thus, I propose we just remove the whole thing. All drivers must set
-> an aperture and the aperture is the pure HW capability to map an
-> IOPTE at that address. ie it reflects the design of the page table
-> itself and nothing else.
-
-Yeah, that sounds reasonable. If the aperture represents what the IOMMU
-supports. Together with each device's DMA mask we should have everything
-we need.
-
->=20
-> Probably OF dma-ranges should be reflected in the pre-device reserved
-> ranges?
->=20
-> This is great, I was starting to look at this part wishing the OF path
-> wasn't different, and this is a clear way forward :)
->=20
-> For GART, I'm tempted to give GART a blocking domain and just have its
-> attach always fail - this is enough to block VFIO. Keep the weirdness
-> in one place.. Or ignore it since I doubt anyone is actually using
-> this now.
-
-For Tegra GART I think there's indeed no use-cases at the moment. Dmitry
-had at one point tried to make use of it because it can be helpful on
-some of the older devices that were very memory-constrained. That
-support never made it upstream because it required significant changes
-in various places, if I recall correctly. For anything with a decent
-enough amount of RAM, CMA is usually a better option.
-
-This has occasionally come up in the past and I seem to remember that it
-had once been proposed to simply remove tegra-gart and there had been no
-objections. Adding Dmitry, if he doesn't have objections to remaving it,
-neither do I.
-
-Thierry
-
---xQZEb6e6qgBHbQbj
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmRScyYACgkQ3SOs138+
-s6EX8BAAtAoTtMd/zUCfTPSLJoFlCb9irVxChthfIopCBi8kWuCUVdgIcfVQgcGY
-BI0/zkB/gc5Mq/AhGAFyaGsktUAM7HOBtQ70EBiguP6HpJETiADAv/y+IJi74J2E
-2gbSmyuT12xEy1h9lb5AHnxFBQuvauMRacyNXH7gusOQ89U2OmZA/Q4371Swq8Fq
-RkODrJvFQDXdRdHT1g6OsJDmK09GAmWvzn1h6hUdlfDBwE0i4VI+84jh3Qo4Aq8T
-zULABDHeQs0znWOWBouIOEdP/5w6BgBi+qr/G/t3dSSDB3/BEqSCyBZVP+lZFLgm
-lo6kC0LXJfDXMTSqCS8MC/21xIgdvVF4nGe0Ej/ydn6f1RnxSmnyU7tEyLle8h1I
-fW2QQjLg1a/T1wUWDoNd+I66ovQVqEsKhYLRQrDlRbJLHcEj+xBRnEGlk6QShVPl
-eSN/75008q6MS0+Y7La/jGHAVyafbG3cXaBBsDokjaObRGJqtadoyRCs5neTfxJp
-d2jeqvkDbpkKr/pY0KrwFMOOD4sulARAfYylF39Agpiq0Ua1DYxZdJipWVp/LSvE
-eDxBfgrMduV5IplOxCVDzyk++AsjO3YhcrJ0SuS7zfn1fN1SeD4a79x6yq6YvmXh
-Gsb0GU1wuQmTk+v0ZPmXhTM30poxyUtxHUsMlvOfgloocyzN3m8=
-=fUXH
------END PGP SIGNATURE-----
-
---xQZEb6e6qgBHbQbj--
+Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
 
