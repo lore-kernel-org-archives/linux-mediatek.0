@@ -4,84 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB460C7EE22
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 May 2023 09:43:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98BCAC77B78
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 May 2023 10:39:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=K3z3KCVaf41a7u62V6QQc4HTHww8v8Dd8rXW/10QcPU=; b=C+CPfbPFR9VUo6arm9GpdzXN4p
-	lOyCecpxlZDoehDG8iYrGpcrWMRq1GKJGqsmib6uCSC6zFMXyZElNXTEKkAVCvy7Im+7Fczvd4Cd+
-	zTonhuRh7gGfEVvZjCKFq5cTICeKxrLH5f0ZurbNuXrprbB0gF3HvSV/7Q0jGWewh2KEnzXAXJSc2
-	S/SRQQ/zsggu+99tHicUmvPc6JvA/2Pl9chu8ZxaxIKxvHHFf8pDG5ln6MTka9vfWjGdrubTcZZfr
-	BihY2SNgvGZvJZd+Y7qkLvsK5zlK5Mi9Hk2tlOlciu+jiFM3pJwBJQzpV7fh20LuLVtpMv/Poeex+
-	i/v9UIfw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Subject:Cc:To:From:Date:References:In-Reply-To:Message-Id:
+	Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KFS31okKAQr6a5v2aX2V60/5Oir48XmaFQIkt18Yq3s=; b=giMsb01sYBbg7irvN/IlmrKDwK
+	/yQHpEPUw5A6S2FegreeXrUCwKPVnbj7V9FNnspuSypMLgN19CCEvuG4jmtQnHHrHf3CCMNOkBlno
+	IXYpkyBUIknDbgANHINnUE5Zj+pSkWrRWViCvz2K0xcKPmSfgFQ9RxHhC/TM5Og1wxwwBtTNQRZ+e
+	u+aeEJQv45EYJYO7ChtKFObr7OtEbFhUlow8yKcPGrQq4VA674cN/2FhdbBnWFnS7CrEC6nMTl6Ie
+	FoI9f6dvx/U4V1z4og8bZ7Jt1zT9rY+we+lKiAFFhHEs+HeVdvO4YUztxTU4IOdbePsXuyU1/008a
+	e9m31tuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pu916-0043RK-0y;
-	Wed, 03 May 2023 09:43:20 +0000
-Received: from mga09.intel.com ([134.134.136.24])
+	id 1pu9tQ-004BQH-3B;
+	Wed, 03 May 2023 10:39:28 +0000
+Received: from wnew2-smtp.messagingengine.com ([64.147.123.27])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pu913-0043Qj-0V
-	for linux-mediatek@lists.infradead.org;
-	Wed, 03 May 2023 09:43:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1683106997; x=1714642997;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=vhqFdTzhGexCAv6U0OS1J8ZaNH/S/YqaydBy/c8yYQo=;
-  b=XzBOFmSghYbHRl1hKO5DRr9kabrI7FGm1O83Y2w3BGqKPno+yb1993mj
-   brEp4pce+GLWh/ND6GOucbaH05WbBl/KwHOkiZH9OWxLoLLq+SdDt4uqy
-   jKKdBXBHq9IpAHYAgkmdB4oMyEnEYwOdASf4DQqkeZkQXKMxGCDXFBjj1
-   lFw6zI8ke2nrHPPIZSLvP1OclM8mkamsf38AH0QuSYIQA7JIUA+zGGgKf
-   kom8SOrbS9bKeELH4MlP0Y3GY8MWy6xk1WWxDwcG0XZ03Mi56rCd7HWW5
-   +eBjDA8f/UXdD6t8LTHlc12+ObvsU9eCQBecFx2sFlOSC+J2mdvo7A6l2
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10698"; a="350688529"
-X-IronPort-AV: E=Sophos;i="5.99,246,1677571200"; 
-   d="scan'208";a="350688529"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
-  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 May 2023 02:43:15 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10698"; a="1026439652"
-X-IronPort-AV: E=Sophos;i="5.99,246,1677571200"; 
-   d="scan'208";a="1026439652"
-Received: from lkp-server01.sh.intel.com (HELO e3434d64424d) ([10.239.97.150])
-  by fmsmga005.fm.intel.com with ESMTP; 03 May 2023 02:43:09 -0700
-Received: from kbuild by e3434d64424d with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1pu90u-0001ou-2c;
-	Wed, 03 May 2023 09:43:08 +0000
-Date: Wed, 3 May 2023 17:42:09 +0800
-From: kernel test robot <lkp@intel.com>
-To: sean.wang@mediatek.com, marcel@holtmann.org, johan.hedberg@gmail.com,
-	luiz.dentz@gmail.com
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	sean.wang@mediatek.com, chris.lu@mediatek.com,
-	Soul.Huang@mediatek.com, Leon.Yen@mediatek.com,
-	Deren.Wu@mediatek.com, km.lin@mediatek.com, robin.chiu@mediatek.com,
-	Eddie.Chen@mediatek.com, ch.yeh@mediatek.com,
-	jenhao.yang@mediatek.com, Stella.Chang@mediatek.com,
-	Tom.Chou@mediatek.com, steve.lee@mediatek.com, jsiuda@google.com,
-	frankgor@google.com, abhishekpandit@google.com,
-	michaelfsun@google.com, abhishekpandit@chromium.org,
-	mcchou@chromium.org, shawnku@google.com,
-	linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org, Jing Cai <jing.cai@mediatek.com>
-Subject: Re: [PATCH v5 3/3] Bluetooth: btusb: mediatek: add MediaTek
- devcoredump support
-Message-ID: <202305031708.UQZ6jRn6-lkp@intel.com>
-References: <ddcbc509b5024882583d5c143ec5f4520bef860a.1683065391.git.objelf@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ddcbc509b5024882583d5c143ec5f4520bef860a.1683065391.git.objelf@gmail.com>
+	id 1pu9tL-004BIn-1h;
+	Wed, 03 May 2023 10:39:25 +0000
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
+	by mailnew.west.internal (Postfix) with ESMTP id 0B6772B069AF;
+	Wed,  3 May 2023 06:39:16 -0400 (EDT)
+Received: from imap51 ([10.202.2.101])
+  by compute6.internal (MEProxy); Wed, 03 May 2023 06:39:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
+	:cc:content-transfer-encoding:content-type:content-type:date
+	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:sender:subject:subject:to:to; s=fm3; t=
+	1683110356; x=1683117556; bh=KFS31okKAQr6a5v2aX2V60/5Oir48XmaFQI
+	kt18Yq3s=; b=cCNN8RO8bpidd+UJ0C9CSxmE2ngQi1eKpYDtrZ9AfJAY6TIaz13
+	EmGcasdJ7/bdeHe+4ZxWAfgDRZDcpl205W4uAsyflcMpm7RzKXD8rCGxrAmhXpm+
+	PCeZ1wagXERCNPHrZBrne1hUi7JO+8vnwjo7kiOl5T9Xq5BEWuxCCsr+8dcbmVLj
+	q+XJrDl1Pu5hmzTa09GWU8P6qcra38bOTHxoMmdQ/lKD3IANqed6cQjJAG1J8RYr
+	egEn8IJVZXe1OgZjTU2Nk3G5qVKeYylawACz+HYvM8hn4EmX0uUuRV1u3Tq/0zFx
+	ie02zZD4EWP/DkbAuskHq1k33K2j/7XQCMQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:content-type:date:date:feedback-id:feedback-id
+	:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:sender:subject:subject:to:to:x-me-proxy
+	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=
+	1683110356; x=1683117556; bh=KFS31okKAQr6a5v2aX2V60/5Oir48XmaFQI
+	kt18Yq3s=; b=D5Zk9chIXEUE5emL/CiVs88rJWLLH60Bm0GXkiiaFvA8qgE19WR
+	GzE8bCNj6o+6QctI7/9IPXBW37tE3DC4iP+QipUVHJj9l7d1P+Wy7ee74WKE22k6
+	hNikSyF3CVUiHKorJLPFqTJ9qThhfiBr8nGcxcfbRMRHfuZoxq92DIwckGxvV+Og
+	WUmuFOSlIQUKMhPiiyR2dZvW+Aaz9529A7PeI9YNC3vgUs/lSx23D6iGwCd/L8Sy
+	hbDrgfc79i85YURrk415I3trHkE7rYEK0B+dqSXMTG67z/MdANnofW0F9Ju7c9gw
+	wqeI4aNRnMMtaRII6LULrT6GTsS/HftIeLw==
+X-ME-Sender: <xms:1DlSZB7HiFiKBkbDk9Fv7gPm0PBlQwsViA2U0jrJ-zAvaGGXygjRfw>
+    <xme:1DlSZO7Xv3BGjOkExLnmK9KmCr--oWstES3EN49SY5iNy2GzZvlcZGCBKUJPghkrI
+    QHcpC3F6G8-6XDxIKM>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrfedvkedgvdelucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+    cujfgurhepofgfggfkjghffffhvfevufgtgfesthhqredtreerjeenucfhrhhomhepfdet
+    rhhnugcuuegvrhhgmhgrnhhnfdcuoegrrhhnugesrghrnhgusgdruggvqeenucggtffrrg
+    htthgvrhhnpeegfeejhedvledvffeijeeijeeivddvhfeliedvleevheejleetgedukedt
+    gfejveenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
+    grrhhnugesrghrnhgusgdruggv
+X-ME-Proxy: <xmx:1DlSZIccd8i4Vx2LA8c2HM7NFtzw7mZtVBcV3SKmH2AQM6JbCF_CHQ>
+    <xmx:1DlSZKLbrwHphpHQEODq666D9lh730jAC6AHGXPodgu0ZEkePvTEhA>
+    <xmx:1DlSZFLUz-hUAS40dmSCJktAgcIF6Zhaiq8T6Xf-Uy8e1qyU5yr_Tg>
+    <xmx:1DlSZAIqlEfAPQg-BumeZvu2_KmGcwHX44l_oJiCgrykutWtz2oOTfYnqQo>
+Feedback-ID: i56a14606:Fastmail
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+	id E9F69B60086; Wed,  3 May 2023 06:39:15 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.9.0-alpha0-386-g2404815117-fm-20230425.001-g24048151
+Mime-Version: 1.0
+Message-Id: <5e318b02-8f33-4e2d-a956-5660e1c60619@app.fastmail.com>
+In-Reply-To:  <CAL_JsqJXd_EpOQwwNEAn25mzFfkhEvqzur6ui5Ca+dbt2kA8-Q@mail.gmail.com>
+References: <20220328000915.15041-1-ansuelsmth@gmail.com>
+ <85eb14ec-f465-7447-ad77-a3dabc666f47@kernel.org>
+ <YkKRYnN84D9VZhGj@Ansuel-xps.localdomain>
+ <CAL_Jsq+RQQ-ADMxLPUFwk6S6kGmb6oNDy4k52fnU0EtbUvqmSA@mail.gmail.com>
+ <CAMuHMdWNTE48MFy6fqxAsfMWz9b6E7dVNXtXtESP95sxk2PGwA@mail.gmail.com>
+ <CAL_JsqJthKTm8bhRF2B=ae1tvtPeYYXx_Tm76qQtSwLtH5C6VA@mail.gmail.com>
+ <720a2829-b6b5-411c-ac69-9a53e881f48d@app.fastmail.com>
+ <CAL_JsqKCtmkwzKa01gyG65fH8ye6R3KhR41PJbJhOJ4X9j=znA@mail.gmail.com>
+ <bce93654-fc36-3d12-282d-76fafb8f51ce@linaro.org>
+ <CAL_JsqJXd_EpOQwwNEAn25mzFfkhEvqzur6ui5Ca+dbt2kA8-Q@mail.gmail.com>
+Date: Wed, 03 May 2023 12:38:55 +0200
+From: "Arnd Bergmann" <arnd@arndb.de>
+To: "Rob Herring" <robh+dt@kernel.org>,
+ "Dmitry Baryshkov" <dmitry.baryshkov@linaro.org>
+Cc: "Geert Uytterhoeven" <geert@linux-m68k.org>,
+ "Olof Johansson" <olof@lixom.net>,
+ "Christian Marangi" <ansuelsmth@gmail.com>,
+ "Krzysztof Kozlowski" <krzk@kernel.org>,
+ "Krzysztof Kozlowski" <krzk+dt@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-actions@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, Linux-OMAP <linux-omap@vger.kernel.org>,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@axis.com,
+ linux-aspeed@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org,
+ chrome-platform@lists.linux.dev,
+ Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
+ linux-samsung-soc@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, kernel@dh-electronics.com,
+ linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org,
+ linux-tegra@vger.kernel.org,
+ "linux-oxnas@groups.io" <linux-oxnas@groups.io>,
+ linux-arm-msm@vger.kernel.org, linux-unisoc@lists.infradead.org,
+ linux-rockchip@lists.infradead.org,
+ linux-realtek-soc@lists.infradead.org
+Subject: Re: [RFC PATCH 0/1] Categorize ARM dts directory
+Content-Type: text/plain;charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230503_024317_233372_A2D35FB6 
-X-CRM114-Status: GOOD (  13.37  )
+X-CRM114-CacheID: sfid-20230503_033923_828346_CF4AD938 
+X-CRM114-Status: GOOD (  13.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,137 +132,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Wed, May 3, 2023, at 03:17, Rob Herring wrote:
+> On Tue, May 2, 2023 at 5:52=E2=80=AFPM Dmitry Baryshkov <dmitry.barysh=
+kov@linaro.org> wrote:
+>> On 02/05/2023 22:40, Rob Herring wrote:
+>> >      'berlin' : 'berlin',
+>> >      'pxa2' : 'pxa',
+>> >      'pxa3' : 'pxa',
+>> >      'pxa' : 'marvell',
+>>
+>> I'd question if it makes sense to split the pxa line. Yes, it was sold
+>> by Intel to Marvell, but IIRC the devices still had some inheritance.
+>> So, if we have the 'pxa' subdir, I'd move Marvell PXAs to that dir to=
+o.
+>
+> I think I probably split it because it was different maintainers.
+> Though it doesn't look like pxa168 or pxa910 have any maintainer. They
+> are a mixture of pxa and mmp I think.
 
-kernel test robot noticed the following build errors:
+I think the original split here is probably the best we can do,
+but there is no good way to do it because of the confusing naming
+and the problem that there is no clear line between pxa and mmp.
+As far as I can tell, the release timeline was:
 
-[auto build test ERROR on bluetooth/master]
-[also build test ERROR on bluetooth-next/master linus/master v6.3 next-20230428]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Intel pxa2xx (mach-pxa, xscale, still exists)
+Intel pxa3xx (mach-pxa, xscale, still exists)
+Intel pxa90x (never merged)
+Marvell pxa93x (mach-pxa, xscale, removed in Linux-6.3, no DT)
+Marvell pxa92x (never merged)
+Marvell pxa91x (mach-mmp, pj1, still exists)
+Marvell pxa168 (mach-mmp, pj1, still exists)
+Marvell pxa95x (mach-pxa, pj4, long gone)
+Marvell pxa688 (mach-mmp, pj4, known as mmp2)
 
-url:    https://github.com/intel-lab-lkp/linux/commits/sean-wang-mediatek-com/Bluetooth-btmtk-introduce-btmtk-reset-work/20230503-070640
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/bluetooth/bluetooth.git master
-patch link:    https://lore.kernel.org/r/ddcbc509b5024882583d5c143ec5f4520bef860a.1683065391.git.objelf%40gmail.com
-patch subject: [PATCH v5 3/3] Bluetooth: btusb: mediatek: add MediaTek devcoredump support
-config: x86_64-randconfig-a016-20230501 (https://download.01.org/0day-ci/archive/20230503/202305031708.UQZ6jRn6-lkp@intel.com/config)
-compiler: clang version 14.0.6 (https://github.com/llvm/llvm-project f28c006a5895fc0e329fe15fead81e37457cb1d1)
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/635545fc4095e7e6b159177a07b0359b7eafe482
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review sean-wang-mediatek-com/Bluetooth-btmtk-introduce-btmtk-reset-work/20230503-070640
-        git checkout 635545fc4095e7e6b159177a07b0359b7eafe482
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=x86_64 olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=x86_64 SHELL=/bin/bash drivers/bluetooth/
+So with pxa93x out of the picture, we can simplify it as using
+'pxa' as the name for all the above chips with an Intel XScale
+core, and 'marvell' for all the other ones that have a Marvell
+core and exist in mach-mmp.
 
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Link: https://lore.kernel.org/oe-kbuild-all/202305031708.UQZ6jRn6-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-   drivers/bluetooth/btmtk.c:97:7: error: use of undeclared identifier 'HCI_DEVCOREDUMP_IDLE'
-           case HCI_DEVCOREDUMP_IDLE:
-                ^
-   drivers/bluetooth/btmtk.c:100:7: error: use of undeclared identifier 'HCI_DEVCOREDUMP_ACTIVE'; did you mean 'BTMTK_COREDUMP_ACTIVE'?
-           case HCI_DEVCOREDUMP_ACTIVE:
-                ^~~~~~~~~~~~~~~~~~~~~~
-                BTMTK_COREDUMP_ACTIVE
-   drivers/bluetooth/btmtk.c:25:2: note: 'BTMTK_COREDUMP_ACTIVE' declared here
-           BTMTK_COREDUMP_ACTIVE,
-           ^
-   drivers/bluetooth/btmtk.c:103:7: error: use of undeclared identifier 'HCI_DEVCOREDUMP_TIMEOUT'
-           case HCI_DEVCOREDUMP_TIMEOUT:
-                ^
-   drivers/bluetooth/btmtk.c:104:7: error: use of undeclared identifier 'HCI_DEVCOREDUMP_ABORT'
-           case HCI_DEVCOREDUMP_ABORT:
-                ^
-   drivers/bluetooth/btmtk.c:105:7: error: use of undeclared identifier 'HCI_DEVCOREDUMP_DONE'
-           case HCI_DEVCOREDUMP_DONE:
-                ^
-   drivers/bluetooth/btmtk.c:367:9: error: implicit declaration of function 'hci_devcd_register' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-           return hci_devcd_register(hdev, btmtk_coredump, btmtk_coredump_hdr,
-                  ^
-   drivers/bluetooth/btmtk.c:385:9: error: implicit declaration of function 'hci_devcd_init' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                   err = hci_devcd_init(hdev, MTK_COREDUMP_SIZE);
-                         ^
-   drivers/bluetooth/btmtk.c:385:9: note: did you mean 'hci_sock_init'?
-   include/net/bluetooth/bluetooth.h:577:5: note: 'hci_sock_init' declared here
-   int hci_sock_init(void);
-       ^
->> drivers/bluetooth/btmtk.c:389:32: error: no member named 'dump' in 'struct hci_dev'
-                   schedule_delayed_work(&hdev->dump.dump_timeout,
-                                          ~~~~  ^
-   drivers/bluetooth/btmtk.c:394:9: error: implicit declaration of function 'hci_devcd_append' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                   err = hci_devcd_append(hdev, skb);
-                         ^
-   drivers/bluetooth/btmtk.c:394:9: note: did you mean 'hci_dev_open'?
-   include/net/bluetooth/hci_core.h:1500:5: note: 'hci_dev_open' declared here
-   int hci_dev_open(__u16 dev);
-       ^
-   drivers/bluetooth/btmtk.c:401:4: error: implicit declaration of function 'hci_devcd_complete' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                           hci_devcd_complete(hdev);
-                           ^
-   drivers/bluetooth/btmtk.c:401:4: note: did you mean 'hci_devcd_append'?
-   drivers/bluetooth/btmtk.c:394:9: note: 'hci_devcd_append' declared here
-                   err = hci_devcd_append(hdev, skb);
-                         ^
-   10 errors generated.
-
-
-vim +389 drivers/bluetooth/btmtk.c
-
-   371	
-   372	int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb)
-   373	{
-   374		struct btmtk_data *data = hci_get_priv(hdev);
-   375		int err;
-   376	
-   377		if (!IS_ENABLED(CONFIG_DEV_COREDUMP))
-   378			return 0;
-   379	
-   380		switch (data->cd_info.state) {
-   381		case BTMTK_COREDUMP_DISABLED:
-   382			err = -EINVAL;
-   383			break;
-   384		case BTMTK_COREDUMP_INIT:
- > 385			err = hci_devcd_init(hdev, MTK_COREDUMP_SIZE);
-   386			if (err < 0)
-   387				break;
-   388			/* It is supposed coredump can be done within 5 seconds */
- > 389			schedule_delayed_work(&hdev->dump.dump_timeout,
-   390					      msecs_to_jiffies(5000));
-   391			fallthrough;
-   392		case BTMTK_COREDUMP_ACTIVE:
-   393		default:
-   394			err = hci_devcd_append(hdev, skb);
-   395			if (err < 0)
-   396				break;
-   397	
-   398			if (skb->len > 12 &&
-   399			    !strncmp((char *)&skb->data[skb->len - 13],
-   400				     MTK_COREDUMP_END, 12))
-   401				hci_devcd_complete(hdev);
-   402	
-   403			break;
-   404		}
-   405	
-   406		if (err < 0) {
-   407			data->cd_info.state = BTMTK_COREDUMP_DISABLED;
-   408			kfree_skb(skb);
-   409		}
-   410	
-   411		return err;
-   412	}
-   413	EXPORT_SYMBOL_GPL(btmtk_process_coredump);
-   414	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+     Arnd
 
