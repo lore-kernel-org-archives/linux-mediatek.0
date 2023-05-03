@@ -4,71 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53B6DC77B75
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 May 2023 15:12:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5267C77B75
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 May 2023 15:32:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=N8/QoWM7wYnMdW+YSXL8D33vo0cMgL6Xf9YtdcSjrZ4=; b=q66Zo/5ChIDD+JVxnjzWM3vO7q
-	vWCm0NFvHyVnel+g8eBmODniIo9Ei6FSoIjb+8Nh6d3Lowte1oNrZm7CY+x9irv9G1InqaX9p+QSk
-	qlke5Xrtr+12C8F3YNP+lbgvEz0G0/ephc/ZlG8yzsuYeHCVDyUp/M+Qw4l48nLKM5d7d23YohdE5
-	MV3dHdY8BhS2pElMIs65IL8UzqRlpc9RZ6sWjMEZeK/VuUK99i9luYh/6aD63NAZDXVwaM6vajPps
-	46m3Sp/mwjEczRB+zYeF8iuv+s07Ul/fVYKX8z+kpzSlbjjQ6RVEZQo4dLi532b0MggnHMVKTE1d/
-	luEimSkg==;
+	bh=6a695ohgjzZEDs/cnw3dnN77xrck3U8gz3zWhjqFYlY=; b=O6LfEkyR9RYkMdmcb7XqYhElxx
+	6GJszYw3ikC1wm9+38ubpXddhnMoi6Qb2YqQvTWFySYhsenEl3Y/vhOwdUTLaH1u/AWeLEAH81ze+
+	jTwW0DL7dOvN7E2TrB/qNPqRUL2N7HfrkDLREhGIk/4kQOwSkuMWiDMEYNr/eZEhG1x0bnxCNnZBu
+	HWkl8XU+gxjzn4po0XVk6TA+FpPMf/V/aXzGJonj0swSNIiqY/gi3o+o74JjwYb8UfaGRl/+mMLy7
+	oqH7WDc7syNY8S15twgX3Kug/UVQeSoTww+kD4VdxSduC8XnE/YiYXMlJ6gnP7npyHPiTi4W5/Txs
+	/qe1QWVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1puE9X-004vPy-16;
-	Wed, 03 May 2023 15:12:23 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1puE9S-004vNu-0r;
-	Wed, 03 May 2023 15:12:19 +0000
-Received: from [IPV6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2] (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 10AF4660309E;
-	Wed,  3 May 2023 16:12:16 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1683126736;
-	bh=Pi/CSe8nv/Bn/w1ZOAaw3WYXTtUFhF9Hq3jb//Y3+2U=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=FE71iUqcb1QFWFNA3otCiAMTpY/p5HvHJZrIf1+KOPqWzSPysuJcEN/+3wOP6ZXBQ
-	 hvFf/rkkglQMiiyriKdGxXdMVay7nx/w/N9KfAIMNP0/dPqy8uLa3xULtj7FKNOK7l
-	 cjkBSoUog29I+Xt6nN4OXr4I3rkww6T5sRJUd2TWLikIQmW/idr0ACHqHStKr6bIFT
-	 8xatKmjYGMwaQKwNetILI36FgRXr79+8dLdTbuhk6exLPzrkQU+JrO2C99WCE09x7m
-	 Hq0W8m8IvfqXd8NST9C1NXegeNQqxTCdcjkD3MaYi5B6HopXdX+dD0oJ53+yBgaAfH
-	 ziUv1iE+pN5mA==
-Message-ID: <43be865c-c870-f61a-9837-e189d6e4ae00@collabora.com>
-Date: Wed, 3 May 2023 17:12:13 +0200
+	id 1puESZ-004yjB-0n;
+	Wed, 03 May 2023 15:32:03 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1puESU-004yhJ-2O;
+	Wed, 03 May 2023 15:32:00 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 287FE2F4;
+	Wed,  3 May 2023 08:32:33 -0700 (PDT)
+Received: from [10.57.82.232] (unknown [10.57.82.232])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 4E3243F5A1;
+	Wed,  3 May 2023 08:31:43 -0700 (PDT)
+Message-ID: <aaddd64b-6935-f84a-5fda-28011c717051@arm.com>
+Date: Wed, 3 May 2023 16:31:39 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
  Thunderbird/102.10.1
-Subject: Re: [PATCH 3/3] thermal/drivers/mediatek/lvts_thermal: Disable
- undesired interrupts
-Content-Language: en-US
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: Alexandre Bailon <abailon@baylibre.com>, kernel@collabora.com,
- Chen-Yu Tsai <wenst@chromium.org>, Balsam CHIHI <bchihi@baylibre.com>,
- Alexandre Mergnat <amergnat@baylibre.com>, Amit Kucheria <amitk@kernel.org>,
+Subject: Re: [PATCH 06/20] iommu/exynos: Implement an IDENTITY domain
+Content-Language: en-GB
+To: Jason Gunthorpe <jgg@nvidia.com>, Andy Gross <agross@kernel.org>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Bjorn Andersson
+ <andersson@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+ Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
-References: <20230428195347.3832687-1-nfraprado@collabora.com>
- <20230428195347.3832687-4-nfraprado@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230428195347.3832687-4-nfraprado@collabora.com>
+ Matthew Rosato <mjrosato@linux.ibm.com>, Orson Zhai <orsonzhai@gmail.com>,
+ Rob Clark <robdclark@gmail.com>, Samuel Holland <samuel@sholland.org>,
+ Niklas Schnelle <schnelle@linux.ibm.com>,
+ Thierry Reding <thierry.reding@gmail.com>, Krishna Reddy
+ <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
+ Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
+ Chunyan Zhang <zhang.lyra@gmail.com>
+Cc: Lu Baolu <baolu.lu@linux.intel.com>, Kevin Tian <kevin.tian@intel.com>,
+ Nicolin Chen <nicolinc@nvidia.com>, Steven Price <steven.price@arm.com>
+References: <6-v1-21cc72fcfb22+a7a-iommu_all_defdom_jgg@nvidia.com>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <6-v1-21cc72fcfb22+a7a-iommu_all_defdom_jgg@nvidia.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230503_081218_432820_BA6B1CC3 
-X-CRM114-Status: GOOD (  12.27  )
+X-CRM114-CacheID: sfid-20230503_083158_874318_4722FC82 
+X-CRM114-Status: GOOD (  24.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,31 +87,194 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 28/04/23 21:53, Nícolas F. R. A. Prado ha scritto:
-> Out of the many interrupts supported by the hardware, the only ones of
-> interest to the driver currently are:
-> * The temperature went over the hot threshold, for any of the sensors
-> * The temperature went over the hot to normal threshold, for any of the
->    sensors
-> * The temperature went over the stage3 threshold
+On 2023-05-01 19:02, Jason Gunthorpe wrote:
+> What exynos calls exynos_iommu_detach_device is actually putting the iommu
+> into identity mode.
 > 
-> These are the only thresholds configured by the driver through the
-> HTHRE, H2NTHRE, and PROTTC registers, respectively.
+> Move to the new core support for ARM_DMA_USE_IOMMU by defining
+> ops->identity_domain.
 > 
-> The current interrupt mask in LVTS_MONINT_CONF, enables many more
-> interrupts, including offset detection and data ready on sensors for
-> both filtered and immediate mode. These are not only not handled by the
-> driver, but they are also triggered too often, causing unneeded
-> overhead. Disable these unnecessary interrupts.
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> ---
+>   drivers/iommu/exynos-iommu.c | 64 ++++++++++++++++++------------------
+>   1 file changed, 32 insertions(+), 32 deletions(-)
 > 
-> The meaning of each bit can be seen in the comment describing
-> LVTS_MONINTST in the IRQ handler.
-> 
-> Fixes: f5f633b18234 ("thermal/drivers/mediatek: Add the Low Voltage Thermal Sensor driver")
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> diff --git a/drivers/iommu/exynos-iommu.c b/drivers/iommu/exynos-iommu.c
+> index c275fe71c4db32..6ff7901103948a 100644
+> --- a/drivers/iommu/exynos-iommu.c
+> +++ b/drivers/iommu/exynos-iommu.c
+> @@ -24,6 +24,7 @@
+>   
+>   typedef u32 sysmmu_iova_t;
+>   typedef u32 sysmmu_pte_t;
+> +static struct iommu_domain exynos_identity_domain;
+>   
+>   /* We do not consider super section mapping (16MB) */
+>   #define SECT_ORDER 20
+> @@ -829,7 +830,7 @@ static int __maybe_unused exynos_sysmmu_suspend(struct device *dev)
+>   		struct exynos_iommu_owner *owner = dev_iommu_priv_get(master);
+>   
+>   		mutex_lock(&owner->rpm_lock);
+> -		if (data->domain) {
+> +		if (&data->domain->domain != &exynos_identity_domain) {
+>   			dev_dbg(data->sysmmu, "saving state\n");
+>   			__sysmmu_disable(data);
+>   		}
+> @@ -847,7 +848,7 @@ static int __maybe_unused exynos_sysmmu_resume(struct device *dev)
+>   		struct exynos_iommu_owner *owner = dev_iommu_priv_get(master);
+>   
+>   		mutex_lock(&owner->rpm_lock);
+> -		if (data->domain) {
+> +		if (&data->domain->domain != &exynos_identity_domain) {
+>   			dev_dbg(data->sysmmu, "restoring state\n");
+>   			__sysmmu_enable(data);
+>   		}
+> @@ -980,17 +981,22 @@ static void exynos_iommu_domain_free(struct iommu_domain *iommu_domain)
+>   	kfree(domain);
+>   }
+>   
+> -static void exynos_iommu_detach_device(struct iommu_domain *iommu_domain,
+> -				    struct device *dev)
+> +static int exynos_iommu_identity_attach(struct iommu_domain *identity_domain,
+> +					struct device *dev)
+>   {
+> -	struct exynos_iommu_domain *domain = to_exynos_domain(iommu_domain);
+>   	struct exynos_iommu_owner *owner = dev_iommu_priv_get(dev);
+> -	phys_addr_t pagetable = virt_to_phys(domain->pgtable);
+> +	struct exynos_iommu_domain *domain;
+> +	phys_addr_t pagetable;
+>   	struct sysmmu_drvdata *data, *next;
+>   	unsigned long flags;
+>   
+> -	if (!has_sysmmu(dev) || owner->domain != iommu_domain)
+> -		return;
+> +	if (!owner)
+> +		return -ENODEV;
 
+That can't be true - devices can't be attached without having already 
+dereferenced their group, which means they've been through probe_device 
+successfully.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> +	if (owner->domain == identity_domain)
+> +		return 0;
+> +
+> +	domain = to_exynos_domain(owner->domain);
+> +	pagetable = virt_to_phys(domain->pgtable);
 
+Identity domains by definition shouldn't have a pagetable? I don't think 
+virt_to_phys(NULL) can be assumed to be valid or safe in general.
 
+>   
+>   	mutex_lock(&owner->rpm_lock);
+>   
+> @@ -1009,15 +1015,25 @@ static void exynos_iommu_detach_device(struct iommu_domain *iommu_domain,
+>   		list_del_init(&data->domain_node);
+>   		spin_unlock(&data->lock);
+>   	}
+
+This iterates the whole domain->clients list, which may include other 
+devices from other groups belonging to other IOMMU instances. I think 
+that's technically an issue already given that we support cross-instance 
+domain attach here, which the DRM drivers rely on. I can't quite work 
+out off-hand if this is liable to make it any worse or not :/
+
+> -	owner->domain = NULL;
+> +	owner->domain = identity_domain;
+>   	spin_unlock_irqrestore(&domain->lock, flags);
+>   
+>   	mutex_unlock(&owner->rpm_lock);
+>   
+>   	dev_dbg(dev, "%s: Detached IOMMU with pgtable %pa\n", __func__,
+
+This no longer makes much sense.
+
+>   		&pagetable);
+> +	return 0;
+>   }
+>   
+> +static struct iommu_domain_ops exynos_identity_ops = {
+> +	.attach_dev = exynos_iommu_identity_attach,
+> +};
+> +
+> +static struct iommu_domain exynos_identity_domain = {
+> +	.type = IOMMU_DOMAIN_IDENTITY,
+> +	.ops = &exynos_identity_ops,
+> +};
+> +
+>   static int exynos_iommu_attach_device(struct iommu_domain *iommu_domain,
+>   				   struct device *dev)
+>   {
+> @@ -1026,12 +1042,11 @@ static int exynos_iommu_attach_device(struct iommu_domain *iommu_domain,
+>   	struct sysmmu_drvdata *data;
+>   	phys_addr_t pagetable = virt_to_phys(domain->pgtable);
+>   	unsigned long flags;
+> +	int err;
+>   
+> -	if (!has_sysmmu(dev))
+> -		return -ENODEV;
+> -
+> -	if (owner->domain)
+> -		exynos_iommu_detach_device(owner->domain, dev);
+> +	err = exynos_iommu_identity_attach(&exynos_identity_domain, dev);
+> +	if (err)
+> +		return err;
+>   
+>   	mutex_lock(&owner->rpm_lock);
+>   
+> @@ -1407,26 +1422,12 @@ static struct iommu_device *exynos_iommu_probe_device(struct device *dev)
+>   	return &data->iommu;
+>   }
+>   
+> -static void exynos_iommu_set_platform_dma(struct device *dev)
+> -{
+> -	struct exynos_iommu_owner *owner = dev_iommu_priv_get(dev);
+> -
+> -	if (owner->domain) {
+> -		struct iommu_group *group = iommu_group_get(dev);
+> -
+> -		if (group) {
+> -			exynos_iommu_detach_device(owner->domain, dev);
+> -			iommu_group_put(group);
+> -		}
+> -	}
+> -}
+> -
+>   static void exynos_iommu_release_device(struct device *dev)
+>   {
+>   	struct exynos_iommu_owner *owner = dev_iommu_priv_get(dev);
+>   	struct sysmmu_drvdata *data;
+>   
+> -	exynos_iommu_set_platform_dma(dev);
+> +	WARN_ON(exynos_iommu_identity_attach(&exynos_identity_domain, dev));
+>   
+>   	list_for_each_entry(data, &owner->controllers, owner_node)
+>   		device_link_del(data->link);
+> @@ -1457,6 +1458,7 @@ static int exynos_iommu_of_xlate(struct device *dev,
+>   
+>   		INIT_LIST_HEAD(&owner->controllers);
+>   		mutex_init(&owner->rpm_lock);
+> +		owner->domain = &exynos_identity_domain;
+
+I think strictly this would be more of a probe_device thing than an 
+of_xlate thing, but it's not super-important.
+
+Thanks,
+Robin.
+
+>   		dev_iommu_priv_set(dev, owner);
+>   	}
+>   
+> @@ -1471,11 +1473,9 @@ static int exynos_iommu_of_xlate(struct device *dev,
+>   }
+>   
+>   static const struct iommu_ops exynos_iommu_ops = {
+> +	.identity_domain = &exynos_identity_domain,
+>   	.domain_alloc = exynos_iommu_domain_alloc,
+>   	.device_group = generic_device_group,
+> -#ifdef CONFIG_ARM
+> -	.set_platform_dma_ops = exynos_iommu_set_platform_dma,
+> -#endif
+>   	.probe_device = exynos_iommu_probe_device,
+>   	.release_device = exynos_iommu_release_device,
+>   	.pgsize_bitmap = SECT_SIZE | LPAGE_SIZE | SPAGE_SIZE,
 
