@@ -4,69 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4726FC77B7F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 May 2023 11:50:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A08FC77B7F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 May 2023 12:01:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G5c7y0UT7nVX94WUnBP3XjsczxpT/TJ0jMYu1UziX0s=; b=bjBT+RPAgi8Rm11ZczO6VOwUVu
-	cX9qvQF7wu02rV++loCQTku1yCyvIeIUCnrUNJ9ZlCTYRwMb87ZMu+fjBm+jjNYMTSpQbTavIRjOC
-	/6ebevNdMi0TjXFF/vKIt3pmbL1VRV2kghOPOSsx+a2OJRd1eJil7DDFM5g6UG8V8ZA/+qHCZb9cV
-	ZeVNt3mC85pi7UMmbM50hmniNPb8oog3MY971nugTK/vui7nTFs/2w44HfDEv45r/eehKJPnFEr7B
-	6MN2SOED59qBqi6BSZpN8f0T1hIpKp85sjbuvEd34bL6rq3jOwKHEME0OtqdiuAM4sLWLiZBZClKp
-	ZtkCgfBQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ix7N5q3ZVqpzch8HgBmAf+2RPj4ErJP5ku/rS3Udqzo=; b=nPEnfpRTa+u/LOvPghrcimdD7O
+	Ji7kKmUb7m2S3j0FYyE5s1XJsgJBXG2a6W9vwrpANgkLnJn0XX9TzMyHSx/xin+90fygryImRxwsF
+	7nohnB7b2tWsCJ5DN2GwLxI/fe3yyczaeWsRrNJyf9BgkCqxg/RCFY76/6+PSR6keCJBLNOKCXAn1
+	21h6x2aCnqnfo3gIrT4fY32fO0Xygf58maKeVHtwIZykLTvR8kSt+VpjP8LqRahHFpHx0Rrac6UXY
+	X0rXk24M2DtD8DU1XYKBx60o0HMIFvB5ghZ8+ggjWDspZFy6nX2MOcXWBS1GQ+58d3V8kDJcuqD98
+	LZT5T62w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1puB00-004RtU-1l;
-	Wed, 03 May 2023 11:50:20 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1puBAl-004Ugf-2M;
+	Wed, 03 May 2023 12:01:27 +0000
+Received: from smtp2.axis.com ([195.60.68.18])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1puAzN-004R9c-1T;
-	Wed, 03 May 2023 11:49:43 +0000
-Received: from IcarusMOD.eternityproject.eu (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6888266056F7;
-	Wed,  3 May 2023 12:49:39 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1683114580;
-	bh=VyVu+pf1p1xOpUgIaK+PGsX/DVeLntrIgyVC08xqhAk=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=cfMfsPKhizXDp+gvksw1TeJ321YApn/AYVnGnPcAKywO5NY82egG9fn5RBfBUtdeU
-	 f3cBA1my1aDJF/8mDsqmLY9IlN1ENZYBklkXjfQ/oclQLprMc12ZzgsvZ9SEIwJHTA
-	 QA/l8Ypj25CAfq2tkoCfEsO0DS/2RkqHjw02bWqwHeHP+8NzjOsrlxrRCGeJn1fdo4
-	 EL2tjqOwSoQspxEBwHrPwDmE5NY51pN5HN+3XyOwa19nWsx9fQFjRP3hEhh3WZTD0u
-	 zTqOON5lilmgxiU94N/UD221I1k4hqABlQXCHnfJJ/u4HVsQieloPgYBpBzscSZD0p
-	 cSMsxZdE7AAqQ==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: chunkuang.hu@kernel.org
-Cc: p.zabel@pengutronix.de,
-	airlied@gmail.com,
-	daniel@ffwll.ch,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	wenst@chromium.org,
-	kernel@collabora.com
-Subject: [PATCH v2 11/11] drm/mediatek: gamma: Program gamma LUT type for descending or rising
-Date: Wed,  3 May 2023 13:49:23 +0200
-Message-Id: <20230503114923.156985-12-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230503114923.156985-1-angelogioacchino.delregno@collabora.com>
-References: <20230503114923.156985-1-angelogioacchino.delregno@collabora.com>
+	id 1puBAh-004UeI-0Z;
+	Wed, 03 May 2023 12:01:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+  d=axis.com; q=dns/txt; s=axis-central1; t=1683115284;
+  x=1714651284;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=Ix7N5q3ZVqpzch8HgBmAf+2RPj4ErJP5ku/rS3Udqzo=;
+  b=AcVKgBxHfhQn4WeIYDWNjsO8TyCEHpjZkJDDAPlpqbzNutOYP+WJjpGt
+   DQ4Trc98lIuNZX/SurcxDMTnTRo2hPNABV2PbBHmr+V9kKvana9Sr35lY
+   tA1J55zSOSgWIy0+gI3uitp1B3qoSuLkqV6C/V+hi5vk7CWKdsqg39ift
+   UjNE2frBu9aHRzg3c0r/PjbAwqtWmH9YQr0f9R6UG0eC+ykHYX2JRA0fA
+   Nk37xJMHt5qO2QVYKafRET0r0bSkBry+qIP/abnkeiNxW7vK15cRPrIgd
+   Js/vVses32NX4U70/c4o8UWi0Zpds7Lnb0+CAolL1jQiV1u51b0HrjI67
+   g==;
+Date: Wed, 3 May 2023 14:01:12 +0200
+From: Jesper Nilsson <jesper.nilsson@axis.com>
+To: Rob Herring <robh+dt@kernel.org>
+CC: Arnd Bergmann <arnd@arndb.de>, <linux-aspeed@lists.ozlabs.org>,
+	<linux-realtek-soc@lists.infradead.org>, <linux-arm-kernel@axis.com>,
+	<linux-stm32@st-md-mailman.stormreply.com>,
+	<chrome-platform@lists.linux.dev>, <linux-samsung-soc@vger.kernel.org>,
+	<openbmc@lists.ozlabs.org>, Krzysztof Kozlowski <krzk@kernel.org>,
+	<linux-rockchip@lists.infradead.org>, Geert Uytterhoeven
+	<geert@linux-m68k.org>, <linux-sunxi@lists.linux.dev>,
+	<devicetree@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
+	<linux-actions@lists.infradead.org>, <linux-unisoc@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-rpi-kernel@lists.infradead.org>,
+	<linux-tegra@vger.kernel.org>, <linux-amlogic@lists.infradead.org>,
+	Linux-OMAP <linux-omap@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	Christian Marangi <ansuelsmth@gmail.com>, Linux-Renesas
+	<linux-renesas-soc@vger.kernel.org>, <kernel@dh-electronics.com>, "Olof
+ Johansson" <olof@lixom.net>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	"linux-oxnas@groups.io" <linux-oxnas@groups.io>
+Subject: Re: [RFC PATCH 0/1] Categorize ARM dts directory
+Message-ID: <20230503120112.GC19396@axis.com>
+References: <20220328000915.15041-1-ansuelsmth@gmail.com>
+ <85eb14ec-f465-7447-ad77-a3dabc666f47@kernel.org>
+ <YkKRYnN84D9VZhGj@Ansuel-xps.localdomain>
+ <CAL_Jsq+RQQ-ADMxLPUFwk6S6kGmb6oNDy4k52fnU0EtbUvqmSA@mail.gmail.com>
+ <CAMuHMdWNTE48MFy6fqxAsfMWz9b6E7dVNXtXtESP95sxk2PGwA@mail.gmail.com>
+ <CAL_JsqJthKTm8bhRF2B=ae1tvtPeYYXx_Tm76qQtSwLtH5C6VA@mail.gmail.com>
+ <720a2829-b6b5-411c-ac69-9a53e881f48d@app.fastmail.com>
+ <CAL_JsqKCtmkwzKa01gyG65fH8ye6R3KhR41PJbJhOJ4X9j=znA@mail.gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAL_JsqKCtmkwzKa01gyG65fH8ye6R3KhR41PJbJhOJ4X9j=znA@mail.gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230503_044941_640529_A5CEEC7D 
-X-CRM114-Status: GOOD (  13.84  )
+X-CRM114-CacheID: sfid-20230503_050124_038777_6BDB8076 
+X-CRM114-Status: GOOD (  13.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,61 +92,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-All of the SoCs that don't have dithering control in the gamma IP
-have got a GAMMA_LUT_TYPE bit that tells to the IP if the LUT is
-"descending" (bit set) or "rising" (bit cleared): make sure to set
-it correctly after programming the LUT.
+On Tue, May 02, 2023 at 02:40:19PM -0500, Rob Herring wrote:
+> On Tue, May 2, 2023 at 3:15 AM Arnd Bergmann <arnd@arndb.de> wrote:
+> I've dusted off my script and made a branch[1] with the result.
+> There's just a couple of fixes needed after the script is run (see the
+> top commit). The cross arch includes are all fixed up by the script.
+> dtbs_install maintains a flat install. I compared the number of .dtbs
+> before and after to check the script.
+> 
+> I think the only issue remaining is finalizing the mapping of
+> platforms to subdirs. What I have currently is a mixture of SoC
+> families and vendors. The most notable are all the Freescale/NXP
+> platforms, pxa, socfpga, and stm32. It's not consistent with arm64
+> either. Once that's finalized, I still need to go update MAINTAINERS.
+> 
+> Here's the current mapping:
+> 
+> vendor_map = {
+> [...]
+>     'artpec' : 'axis',
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
+Looks good for our platforms also, thanks!
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-index 44f397f88d0a..1cf3c89175a3 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-@@ -23,6 +23,7 @@
- #define GAMMA_RELAY_MODE				BIT(0)
- #define GAMMA_LUT_EN					BIT(1)
- #define GAMMA_DITHERING					BIT(2)
-+#define GAMMA_LUT_TYPE					BIT(2)
- #define DISP_GAMMA_SIZE				0x0030
- #define DISP_GAMMA_SIZE_HSIZE				GENMASK(28, 16)
- #define DISP_GAMMA_SIZE_VSIZE				GENMASK(12, 0)
-@@ -89,6 +90,16 @@ unsigned int mtk_gamma_get_lut_size(struct device *dev)
- 	return lut_size;
- }
- 
-+static bool mtk_gamma_lut_is_descending(struct drm_color_lut *lut, u32 lut_size)
-+{
-+	u64 first, last;
-+
-+	first = lut[0].red + lut[0].green + lut[0].blue;
-+	last = lut[lut_size].red + lut[lut_size].green + lut[lut_size].blue;
-+
-+	return !!(first > last);
-+}
-+
- void mtk_gamma_set_common(struct device *dev, void __iomem *regs, struct drm_crtc_state *state)
- {
- 	struct mtk_disp_gamma *gamma = dev_get_drvdata(dev);
-@@ -182,6 +193,14 @@ void mtk_gamma_set_common(struct device *dev, void __iomem *regs, struct drm_crt
- 		}
- 	}
- 
-+	if (gamma && !gamma->data->has_dither) {
-+		/* Descending or Rising LUT */
-+		if (mtk_gamma_lut_is_descending(lut, lut_size))
-+			cfg_val |= FIELD_PREP(GAMMA_LUT_TYPE, 1);
-+		else
-+			cfg_val &= ~GAMMA_LUT_TYPE;
-+	}
-+
- 	/* Enable the gamma table */
- 	cfg_val |= FIELD_PREP(GAMMA_LUT_EN, 1);
- 
+/^JN - Jesper Nilsson
 -- 
-2.40.1
-
+               Jesper Nilsson -- jesper.nilsson@axis.com
 
