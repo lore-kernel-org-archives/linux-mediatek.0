@@ -4,76 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2C3FC77B78
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 May 2023 09:17:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9E96C77B78
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 May 2023 09:29:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nfMbCoeNhOKj9uJXHZ/QCeL/opdo9KtapCH7XhetnSo=; b=2iOQAxPNNal81SFa5ZkR/WwHc5
-	qVAvPEFMXsPkpMGy6qoVXzAa8hJPr7Qdj+mVAVmsriA+s9pnDu94VvYMdJI+ZGd3y9lHOZblpMeLi
-	akm/j2fDlY4sfG8GZ3n7Ljh2CwlGAyv/FKgdbUcrYKOR2+MRFrDAJDbzFrhqTjjswoioQEevQMJZ8
-	gS4nL4ftYm/38yrYhcGTemDmZeJ4D3t81ufYfReZKo+0WSCs7FX5dVsLQknZdPVGcS7KC7RHO3Gem
-	6dF/v3ISxx30Di781mUFeC1neDhiv/ZXgeRBqlC3MPlZwmULRVOHPAvkM13+fRtuQq8yJ0CmHh5v4
-	Fhcbr+rw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Z0lLixHbQ8wSDaTZTRuJyrz8BaXzgVtyHI8619yCq7I=; b=nJIylYnCs1+POPd85972gK7UFK
+	XQ6zEDDIRmvMsuD3o6u0l8z+TOJ8FLfUfv7wF/k4gznrHogI57zb8ltMbMauYHXXEoNsOCxRO+ztp
+	0avPRqBXymJrTRnvZpfwUHyo3tKUCx2jAIAGRHDkphf/9U67TyqHrkRHwM/v+GqZW9I+L4aIuOIN6
+	VjXDz/a9VyoUDrkC9qe5WXliCBEbAQ5Tr/njolB1tsR7P/tVY+pgDsqwsY2E+MIBDvjdpTLRgxYne
+	3yB1pMXNLPw1z8fg6xe2dh+l+dMzyrLcSJnUa4aGSnZSSD4YnLC97DAhru44BroWFSPrheL7ujvZo
+	8MnOUYrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pu8cQ-003yvD-2M;
-	Wed, 03 May 2023 09:17:50 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pu8cM-003ytQ-0m;
-	Wed, 03 May 2023 09:17:48 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 006112F4;
-	Wed,  3 May 2023 02:18:24 -0700 (PDT)
-Received: from [10.57.82.232] (unknown [10.57.82.232])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 539BE3F67D;
-	Wed,  3 May 2023 02:17:34 -0700 (PDT)
-Message-ID: <1db712d2-9e33-4183-2766-34e32f170507@arm.com>
-Date: Wed, 3 May 2023 10:17:29 +0100
+	id 1pu8nP-0040kB-2g;
+	Wed, 03 May 2023 09:29:11 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pu8nN-0040hz-1f;
+	Wed, 03 May 2023 09:29:10 +0000
+X-UUID: ee207874e99411ed912e1518a6540028-20230503
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Z0lLixHbQ8wSDaTZTRuJyrz8BaXzgVtyHI8619yCq7I=;
+	b=M7xdefALEeyeluoS1ESaCeSOj9Xhz2aZHStZwSLDpXMfUuO8sFrQ1uzbRh0w9c6ghHcjumkKO/1D4PvBplPH0w5Scjz9BmBFDLh5wihTdU1ZlhaQMkDLD9BOZdtSJZ31w3vjcKss06GKOalso6ptSCn3rOXMZLS5MC6ueERCzuY=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.23,REQID:6adb767d-0541-4cda-b43f-1130ffeb84bd,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:697ab71,CLOUDID:4773a8bf-e32c-4c97-918d-fbb3fc224d4e,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: ee207874e99411ed912e1518a6540028-20230503
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <jia-wei.chang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 553867411; Wed, 03 May 2023 02:28:57 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 3 May 2023 17:28:21 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 3 May 2023 17:28:21 +0800
+From: jia-wei.chang <jia-wei.chang@mediatek.com>
+To: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park
+	<kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Johnson Wang
+	<johnson.wang@mediatek.com>, Jia-Wei Chang <jia-wei.chang@mediatek.com>
+CC: <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, <hsinyi@google.com>
+Subject: [PATCH] PM / devfreq: mtk-cci: refactor error handling of probe and remove
+Date: Wed, 3 May 2023 17:27:42 +0800
+Message-ID: <20230503092742.19404-1-jia-wei.chang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
- Thunderbird/102.10.1
-Subject: Re: [PATCH 02/20] iommu/terga-gart: Replace set_platform_dma_ops()
- with IOMMU_DOMAIN_PLATFORM
-To: Jason Gunthorpe <jgg@nvidia.com>, Andy Gross <agross@kernel.org>,
- Alim Akhtar <alim.akhtar@samsung.com>, Bjorn Andersson
- <andersson@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
- Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>, Orson Zhai <orsonzhai@gmail.com>,
- Rob Clark <robdclark@gmail.com>, Samuel Holland <samuel@sholland.org>,
- Niklas Schnelle <schnelle@linux.ibm.com>,
- Thierry Reding <thierry.reding@gmail.com>, Krishna Reddy
- <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
- Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>
-Cc: Lu Baolu <baolu.lu@linux.intel.com>, Kevin Tian <kevin.tian@intel.com>,
- Nicolin Chen <nicolinc@nvidia.com>, Steven Price <steven.price@arm.com>
-References: <2-v1-21cc72fcfb22+a7a-iommu_all_defdom_jgg@nvidia.com>
-Content-Language: en-GB
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <2-v1-21cc72fcfb22+a7a-iommu_all_defdom_jgg@nvidia.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230503_021746_370643_32E7C0AF 
-X-CRM114-Status: GOOD (  23.32  )
+X-CRM114-CacheID: sfid-20230503_022909_566090_BD7DD73B 
+X-CRM114-Status: GOOD (  14.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,139 +84,151 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2023-05-01 19:02, Jason Gunthorpe wrote:
-> tegra-gart seems to be kind of wonky since from the start its 'detach_dev'
-> op doesn't actually touch hardware. It is supposed to empty the GART of
-> all translations loaded into it.
+From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
 
-No, detach should never tear down translations - what if other devices 
-are still using the domain?
+To refactor the regulator/clk handlers so it can follow the way of "Free
+the Last Thing Style".
 
-> Call this weirdness PLATFORM which keeps the basic original
-> ops->detach_dev() semantic alive without needing much special core code
-> support. I'm guessing it really ends up in a BLOCKING configuration, but
-> without any forced cleanup it is unsafe.
-
-The GART translation aperture is in physical address space, so the truth 
-is that all devices have access to it at the same time as having access 
-to the rest of physical address space. Attach/detach here really are 
-only bookkeeping for which domain currently owns the aperture.
-
-FWIW I wrote up this patch a while ago, not sure if it needs rebasing 
-again...
-
-Thanks,
-Robin.
-
------>8-----
-Subject: [PATCH] iommu/tegra-gart: Add default identity domain support
-
-The nature of a GART means that supporting identity domains is as easy
-as doing nothing, so bring the Tegra driver into the modern world of
-default domains with a trivial implementation. Identity domains are
-allowed to exist alongside any explicit domain for the translation
-aperture, since they both simply represent regions of the physical
-address space with no isolation from each other. As such we'll continue
-to do the "wrong" thing with groups to allow that to work, since the
-notion of isolation that groups represent is counterproductive to the
-GART's established usage model.
-
-Signed-off-by: Robin Murphy <robin.murphy@arm.com>
+Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+Fixes: 86d231b1db1b ("PM / devfreq: mediatek: Introduce MediaTek CCI devfreq driver")
 ---
-  drivers/iommu/tegra-gart.c | 39 +++++++++++++++++++-------------------
-  1 file changed, 19 insertions(+), 20 deletions(-)
+ drivers/devfreq/mtk-cci-devfreq.c | 47 ++++++++++++++++++-------------
+ 1 file changed, 28 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/iommu/tegra-gart.c b/drivers/iommu/tegra-gart.c
-index c4136eec1f97..07aa7ea6a306 100644
---- a/drivers/iommu/tegra-gart.c
-+++ b/drivers/iommu/tegra-gart.c
-@@ -111,7 +111,13 @@ static int gart_iommu_attach_dev(struct 
-iommu_domain *domain,
-
-  	spin_lock(&gart->dom_lock);
-
--	if (gart->active_domain && gart->active_domain != domain) {
-+	if (domain->type == IOMMU_DOMAIN_IDENTITY) {
-+		if (dev_iommu_priv_get(dev)) {
-+			dev_iommu_priv_set(dev, NULL);
-+			if (--gart->active_devices == 0)
-+				gart->active_domain = NULL;
-+		}
-+	} else if (gart->active_domain && gart->active_domain != domain) {
-  		ret = -EINVAL;
-  	} else if (dev_iommu_priv_get(dev) != domain) {
-  		dev_iommu_priv_set(dev, domain);
-@@ -124,28 +130,15 @@ static int gart_iommu_attach_dev(struct 
-iommu_domain *domain,
-  	return ret;
-  }
-
--static void gart_iommu_set_platform_dma(struct device *dev)
--{
--	struct iommu_domain *domain = iommu_get_domain_for_dev(dev);
--	struct gart_device *gart = gart_handle;
--
--	spin_lock(&gart->dom_lock);
--
--	if (dev_iommu_priv_get(dev) == domain) {
--		dev_iommu_priv_set(dev, NULL);
--
--		if (--gart->active_devices == 0)
--			gart->active_domain = NULL;
--	}
--
--	spin_unlock(&gart->dom_lock);
--}
--
-  static struct iommu_domain *gart_iommu_domain_alloc(struct device *dev,
-  						    unsigned type)
-  {
-+	static struct iommu_domain identity;
-  	struct iommu_domain *domain;
-
-+	if (type == IOMMU_DOMAIN_IDENTITY)
-+		return &identity;
+diff --git a/drivers/devfreq/mtk-cci-devfreq.c b/drivers/devfreq/mtk-cci-devfreq.c
+index e5458ada5197..d2f743774147 100644
+--- a/drivers/devfreq/mtk-cci-devfreq.c
++++ b/drivers/devfreq/mtk-cci-devfreq.c
+@@ -294,14 +294,14 @@ static int mtk_ccifreq_probe(struct platform_device *pdev)
+ 	if (IS_ERR(drv->sram_reg)) {
+ 		ret = PTR_ERR(drv->sram_reg);
+ 		if (ret == -EPROBE_DEFER)
+-			goto out_free_resources;
++			goto out_disable_proc_reg;
+ 
+ 		drv->sram_reg = NULL;
+ 	} else {
+ 		ret = regulator_enable(drv->sram_reg);
+ 		if (ret) {
+ 			dev_err(dev, "failed to enable sram regulator\n");
+-			goto out_free_resources;
++			goto out_disable_proc_reg;
+ 		}
+ 	}
+ 
+@@ -316,12 +316,16 @@ static int mtk_ccifreq_probe(struct platform_device *pdev)
+ 
+ 	ret = clk_prepare_enable(drv->cci_clk);
+ 	if (ret)
+-		goto out_free_resources;
++		goto out_disable_sram_reg;
 +
-  	if (type != IOMMU_DOMAIN_UNMANAGED)
-  		return NULL;
-
-@@ -162,7 +155,8 @@ static struct iommu_domain 
-*gart_iommu_domain_alloc(struct device *dev,
-  static void gart_iommu_domain_free(struct iommu_domain *domain)
-  {
-  	WARN_ON(gart_handle->active_domain == domain);
--	kfree(domain);
-+	if (domain->type != IOMMU_DOMAIN_IDENTITY)
-+		kfree(domain);
-  }
-
-  static inline int __gart_iommu_map(struct gart_device *gart, unsigned 
-long iova,
-@@ -247,6 +241,11 @@ static struct iommu_device 
-*gart_iommu_probe_device(struct device *dev)
-  	return &gart_handle->iommu;
-  }
-
-+static int gart_iommu_def_domain_type(struct device *dev)
-+{
-+	return IOMMU_DOMAIN_IDENTITY;
-+}
++	ret = clk_prepare_enable(drv->inter_clk);
++	if (ret)
++		goto out_disable_cci_clock;
+ 
+ 	ret = dev_pm_opp_of_add_table(dev);
+ 	if (ret) {
+ 		dev_err(dev, "failed to add opp table: %d\n", ret);
+-		goto out_disable_cci_clk;
++		goto out_disable_inter_clock;
+ 	}
+ 
+ 	rate = clk_get_rate(drv->inter_clk);
+@@ -329,7 +333,7 @@ static int mtk_ccifreq_probe(struct platform_device *pdev)
+ 	if (IS_ERR(opp)) {
+ 		ret = PTR_ERR(opp);
+ 		dev_err(dev, "failed to get intermediate opp: %d\n", ret);
+-		goto out_remove_opp_table;
++		goto out_free_opp_table;
+ 	}
+ 	drv->inter_voltage = dev_pm_opp_get_voltage(opp);
+ 	dev_pm_opp_put(opp);
+@@ -339,7 +343,7 @@ static int mtk_ccifreq_probe(struct platform_device *pdev)
+ 	if (IS_ERR(opp)) {
+ 		dev_err(dev, "failed to get opp\n");
+ 		ret = PTR_ERR(opp);
+-		goto out_remove_opp_table;
++		goto out_free_opp_table;
+ 	}
+ 
+ 	opp_volt = dev_pm_opp_get_voltage(opp);
+@@ -348,13 +352,13 @@ static int mtk_ccifreq_probe(struct platform_device *pdev)
+ 	if (ret) {
+ 		dev_err(dev, "failed to scale to highest voltage %lu in proc_reg\n",
+ 			opp_volt);
+-		goto out_remove_opp_table;
++		goto out_free_opp_table;
+ 	}
+ 
+ 	passive_data = devm_kzalloc(dev, sizeof(*passive_data), GFP_KERNEL);
+ 	if (!passive_data) {
+ 		ret = -ENOMEM;
+-		goto out_remove_opp_table;
++		goto out_free_opp_table;
+ 	}
+ 
+ 	passive_data->parent_type = CPUFREQ_PARENT_DEV;
+@@ -365,29 +369,33 @@ static int mtk_ccifreq_probe(struct platform_device *pdev)
+ 		ret = -EPROBE_DEFER;
+ 		dev_err(dev, "failed to add devfreq device: %ld\n",
+ 			PTR_ERR(drv->devfreq));
+-		goto out_remove_opp_table;
++		goto out_free_opp_table;
+ 	}
+ 
+ 	drv->opp_nb.notifier_call = mtk_ccifreq_opp_notifier;
+ 	ret = dev_pm_opp_register_notifier(dev, &drv->opp_nb);
+ 	if (ret) {
+ 		dev_err(dev, "failed to register opp notifier: %d\n", ret);
+-		goto out_remove_opp_table;
++		goto out_free_opp_table;
+ 	}
+ 	return 0;
+ 
+-out_remove_opp_table:
++out_free_opp_table:
+ 	dev_pm_opp_of_remove_table(dev);
+ 
+-out_disable_cci_clk:
++out_disable_inter_clock:
++	clk_disable_unprepare(drv->inter_clk);
 +
-  static int gart_iommu_of_xlate(struct device *dev,
-  			       struct of_phandle_args *args)
-  {
-@@ -271,9 +270,9 @@ static const struct iommu_ops gart_iommu_ops = {
-  	.domain_alloc	= gart_iommu_domain_alloc,
-  	.probe_device	= gart_iommu_probe_device,
-  	.device_group	= generic_device_group,
--	.set_platform_dma_ops = gart_iommu_set_platform_dma,
-  	.pgsize_bitmap	= GART_IOMMU_PGSIZES,
-  	.of_xlate	= gart_iommu_of_xlate,
-+	.def_domain_type = gart_iommu_def_domain_type,
-  	.default_domain_ops = &(const struct iommu_domain_ops) {
-  		.attach_dev	= gart_iommu_attach_dev,
-  		.map		= gart_iommu_map,
++out_disable_cci_clock:
+ 	clk_disable_unprepare(drv->cci_clk);
+ 
+-out_free_resources:
+-	if (regulator_is_enabled(drv->proc_reg))
+-		regulator_disable(drv->proc_reg);
+-	if (drv->sram_reg && regulator_is_enabled(drv->sram_reg))
++out_disable_sram_reg:
++	if (drv->sram_reg)
+ 		regulator_disable(drv->sram_reg);
+ 
++out_disable_proc_reg:
++	regulator_disable(drv->proc_reg);
++
+ 	return ret;
+ }
+ 
+@@ -398,12 +406,13 @@ static int mtk_ccifreq_remove(struct platform_device *pdev)
+ 
+ 	drv = platform_get_drvdata(pdev);
+ 
+-	dev_pm_opp_unregister_notifier(dev, &drv->opp_nb);
+-	dev_pm_opp_of_remove_table(dev);
+-	clk_disable_unprepare(drv->cci_clk);
+ 	regulator_disable(drv->proc_reg);
+ 	if (drv->sram_reg)
+ 		regulator_disable(drv->sram_reg);
++	clk_disable_unprepare(drv->cci_clk);
++	clk_disable_unprepare(drv->inter_clk);
++	dev_pm_opp_of_remove_table(dev);
++	dev_pm_opp_unregister_notifier(dev, &drv->opp_nb);
+ 
+ 	return 0;
+ }
 -- 
-2.39.2.101.g768bb238c484.dirty
+2.18.0
 
 
