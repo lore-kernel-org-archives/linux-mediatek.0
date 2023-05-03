@@ -4,72 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9E96C77B78
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 May 2023 09:29:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB460C7EE22
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 May 2023 09:43:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Z0lLixHbQ8wSDaTZTRuJyrz8BaXzgVtyHI8619yCq7I=; b=nJIylYnCs1+POPd85972gK7UFK
-	XQ6zEDDIRmvMsuD3o6u0l8z+TOJ8FLfUfv7wF/k4gznrHogI57zb8ltMbMauYHXXEoNsOCxRO+ztp
-	0avPRqBXymJrTRnvZpfwUHyo3tKUCx2jAIAGRHDkphf/9U67TyqHrkRHwM/v+GqZW9I+L4aIuOIN6
-	VjXDz/a9VyoUDrkC9qe5WXliCBEbAQ5Tr/njolB1tsR7P/tVY+pgDsqwsY2E+MIBDvjdpTLRgxYne
-	3yB1pMXNLPw1z8fg6xe2dh+l+dMzyrLcSJnUa4aGSnZSSD4YnLC97DAhru44BroWFSPrheL7ujvZo
-	8MnOUYrA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=K3z3KCVaf41a7u62V6QQc4HTHww8v8Dd8rXW/10QcPU=; b=C+CPfbPFR9VUo6arm9GpdzXN4p
+	lOyCecpxlZDoehDG8iYrGpcrWMRq1GKJGqsmib6uCSC6zFMXyZElNXTEKkAVCvy7Im+7Fczvd4Cd+
+	zTonhuRh7gGfEVvZjCKFq5cTICeKxrLH5f0ZurbNuXrprbB0gF3HvSV/7Q0jGWewh2KEnzXAXJSc2
+	S/SRQQ/zsggu+99tHicUmvPc6JvA/2Pl9chu8ZxaxIKxvHHFf8pDG5ln6MTka9vfWjGdrubTcZZfr
+	BihY2SNgvGZvJZd+Y7qkLvsK5zlK5Mi9Hk2tlOlciu+jiFM3pJwBJQzpV7fh20LuLVtpMv/Poeex+
+	i/v9UIfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pu8nP-0040kB-2g;
-	Wed, 03 May 2023 09:29:11 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pu916-0043RK-0y;
+	Wed, 03 May 2023 09:43:20 +0000
+Received: from mga09.intel.com ([134.134.136.24])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pu8nN-0040hz-1f;
-	Wed, 03 May 2023 09:29:10 +0000
-X-UUID: ee207874e99411ed912e1518a6540028-20230503
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Z0lLixHbQ8wSDaTZTRuJyrz8BaXzgVtyHI8619yCq7I=;
-	b=M7xdefALEeyeluoS1ESaCeSOj9Xhz2aZHStZwSLDpXMfUuO8sFrQ1uzbRh0w9c6ghHcjumkKO/1D4PvBplPH0w5Scjz9BmBFDLh5wihTdU1ZlhaQMkDLD9BOZdtSJZ31w3vjcKss06GKOalso6ptSCn3rOXMZLS5MC6ueERCzuY=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.23,REQID:6adb767d-0541-4cda-b43f-1130ffeb84bd,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:697ab71,CLOUDID:4773a8bf-e32c-4c97-918d-fbb3fc224d4e,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-UUID: ee207874e99411ed912e1518a6540028-20230503
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
-	(envelope-from <jia-wei.chang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 553867411; Wed, 03 May 2023 02:28:57 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 3 May 2023 17:28:21 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 3 May 2023 17:28:21 +0800
-From: jia-wei.chang <jia-wei.chang@mediatek.com>
-To: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park
-	<kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, "Matthias
- Brugger" <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Johnson Wang
-	<johnson.wang@mediatek.com>, Jia-Wei Chang <jia-wei.chang@mediatek.com>
-CC: <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, <hsinyi@google.com>
-Subject: [PATCH] PM / devfreq: mtk-cci: refactor error handling of probe and remove
-Date: Wed, 3 May 2023 17:27:42 +0800
-Message-ID: <20230503092742.19404-1-jia-wei.chang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1pu913-0043Qj-0V
+	for linux-mediatek@lists.infradead.org;
+	Wed, 03 May 2023 09:43:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1683106997; x=1714642997;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=vhqFdTzhGexCAv6U0OS1J8ZaNH/S/YqaydBy/c8yYQo=;
+  b=XzBOFmSghYbHRl1hKO5DRr9kabrI7FGm1O83Y2w3BGqKPno+yb1993mj
+   brEp4pce+GLWh/ND6GOucbaH05WbBl/KwHOkiZH9OWxLoLLq+SdDt4uqy
+   jKKdBXBHq9IpAHYAgkmdB4oMyEnEYwOdASf4DQqkeZkQXKMxGCDXFBjj1
+   lFw6zI8ke2nrHPPIZSLvP1OclM8mkamsf38AH0QuSYIQA7JIUA+zGGgKf
+   kom8SOrbS9bKeELH4MlP0Y3GY8MWy6xk1WWxDwcG0XZ03Mi56rCd7HWW5
+   +eBjDA8f/UXdD6t8LTHlc12+ObvsU9eCQBecFx2sFlOSC+J2mdvo7A6l2
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10698"; a="350688529"
+X-IronPort-AV: E=Sophos;i="5.99,246,1677571200"; 
+   d="scan'208";a="350688529"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 May 2023 02:43:15 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10698"; a="1026439652"
+X-IronPort-AV: E=Sophos;i="5.99,246,1677571200"; 
+   d="scan'208";a="1026439652"
+Received: from lkp-server01.sh.intel.com (HELO e3434d64424d) ([10.239.97.150])
+  by fmsmga005.fm.intel.com with ESMTP; 03 May 2023 02:43:09 -0700
+Received: from kbuild by e3434d64424d with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1pu90u-0001ou-2c;
+	Wed, 03 May 2023 09:43:08 +0000
+Date: Wed, 3 May 2023 17:42:09 +0800
+From: kernel test robot <lkp@intel.com>
+To: sean.wang@mediatek.com, marcel@holtmann.org, johan.hedberg@gmail.com,
+	luiz.dentz@gmail.com
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	sean.wang@mediatek.com, chris.lu@mediatek.com,
+	Soul.Huang@mediatek.com, Leon.Yen@mediatek.com,
+	Deren.Wu@mediatek.com, km.lin@mediatek.com, robin.chiu@mediatek.com,
+	Eddie.Chen@mediatek.com, ch.yeh@mediatek.com,
+	jenhao.yang@mediatek.com, Stella.Chang@mediatek.com,
+	Tom.Chou@mediatek.com, steve.lee@mediatek.com, jsiuda@google.com,
+	frankgor@google.com, abhishekpandit@google.com,
+	michaelfsun@google.com, abhishekpandit@chromium.org,
+	mcchou@chromium.org, shawnku@google.com,
+	linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org, Jing Cai <jing.cai@mediatek.com>
+Subject: Re: [PATCH v5 3/3] Bluetooth: btusb: mediatek: add MediaTek
+ devcoredump support
+Message-ID: <202305031708.UQZ6jRn6-lkp@intel.com>
+References: <ddcbc509b5024882583d5c143ec5f4520bef860a.1683065391.git.objelf@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ddcbc509b5024882583d5c143ec5f4520bef860a.1683065391.git.objelf@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230503_022909_566090_BD7DD73B 
-X-CRM114-Status: GOOD (  14.73  )
+X-CRM114-CacheID: sfid-20230503_024317_233372_A2D35FB6 
+X-CRM114-Status: GOOD (  13.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,151 +96,137 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+Hi,
 
-To refactor the regulator/clk handlers so it can follow the way of "Free
-the Last Thing Style".
+kernel test robot noticed the following build errors:
 
-Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
-Fixes: 86d231b1db1b ("PM / devfreq: mediatek: Introduce MediaTek CCI devfreq driver")
----
- drivers/devfreq/mtk-cci-devfreq.c | 47 ++++++++++++++++++-------------
- 1 file changed, 28 insertions(+), 19 deletions(-)
+[auto build test ERROR on bluetooth/master]
+[also build test ERROR on bluetooth-next/master linus/master v6.3 next-20230428]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-diff --git a/drivers/devfreq/mtk-cci-devfreq.c b/drivers/devfreq/mtk-cci-devfreq.c
-index e5458ada5197..d2f743774147 100644
---- a/drivers/devfreq/mtk-cci-devfreq.c
-+++ b/drivers/devfreq/mtk-cci-devfreq.c
-@@ -294,14 +294,14 @@ static int mtk_ccifreq_probe(struct platform_device *pdev)
- 	if (IS_ERR(drv->sram_reg)) {
- 		ret = PTR_ERR(drv->sram_reg);
- 		if (ret == -EPROBE_DEFER)
--			goto out_free_resources;
-+			goto out_disable_proc_reg;
- 
- 		drv->sram_reg = NULL;
- 	} else {
- 		ret = regulator_enable(drv->sram_reg);
- 		if (ret) {
- 			dev_err(dev, "failed to enable sram regulator\n");
--			goto out_free_resources;
-+			goto out_disable_proc_reg;
- 		}
- 	}
- 
-@@ -316,12 +316,16 @@ static int mtk_ccifreq_probe(struct platform_device *pdev)
- 
- 	ret = clk_prepare_enable(drv->cci_clk);
- 	if (ret)
--		goto out_free_resources;
-+		goto out_disable_sram_reg;
-+
-+	ret = clk_prepare_enable(drv->inter_clk);
-+	if (ret)
-+		goto out_disable_cci_clock;
- 
- 	ret = dev_pm_opp_of_add_table(dev);
- 	if (ret) {
- 		dev_err(dev, "failed to add opp table: %d\n", ret);
--		goto out_disable_cci_clk;
-+		goto out_disable_inter_clock;
- 	}
- 
- 	rate = clk_get_rate(drv->inter_clk);
-@@ -329,7 +333,7 @@ static int mtk_ccifreq_probe(struct platform_device *pdev)
- 	if (IS_ERR(opp)) {
- 		ret = PTR_ERR(opp);
- 		dev_err(dev, "failed to get intermediate opp: %d\n", ret);
--		goto out_remove_opp_table;
-+		goto out_free_opp_table;
- 	}
- 	drv->inter_voltage = dev_pm_opp_get_voltage(opp);
- 	dev_pm_opp_put(opp);
-@@ -339,7 +343,7 @@ static int mtk_ccifreq_probe(struct platform_device *pdev)
- 	if (IS_ERR(opp)) {
- 		dev_err(dev, "failed to get opp\n");
- 		ret = PTR_ERR(opp);
--		goto out_remove_opp_table;
-+		goto out_free_opp_table;
- 	}
- 
- 	opp_volt = dev_pm_opp_get_voltage(opp);
-@@ -348,13 +352,13 @@ static int mtk_ccifreq_probe(struct platform_device *pdev)
- 	if (ret) {
- 		dev_err(dev, "failed to scale to highest voltage %lu in proc_reg\n",
- 			opp_volt);
--		goto out_remove_opp_table;
-+		goto out_free_opp_table;
- 	}
- 
- 	passive_data = devm_kzalloc(dev, sizeof(*passive_data), GFP_KERNEL);
- 	if (!passive_data) {
- 		ret = -ENOMEM;
--		goto out_remove_opp_table;
-+		goto out_free_opp_table;
- 	}
- 
- 	passive_data->parent_type = CPUFREQ_PARENT_DEV;
-@@ -365,29 +369,33 @@ static int mtk_ccifreq_probe(struct platform_device *pdev)
- 		ret = -EPROBE_DEFER;
- 		dev_err(dev, "failed to add devfreq device: %ld\n",
- 			PTR_ERR(drv->devfreq));
--		goto out_remove_opp_table;
-+		goto out_free_opp_table;
- 	}
- 
- 	drv->opp_nb.notifier_call = mtk_ccifreq_opp_notifier;
- 	ret = dev_pm_opp_register_notifier(dev, &drv->opp_nb);
- 	if (ret) {
- 		dev_err(dev, "failed to register opp notifier: %d\n", ret);
--		goto out_remove_opp_table;
-+		goto out_free_opp_table;
- 	}
- 	return 0;
- 
--out_remove_opp_table:
-+out_free_opp_table:
- 	dev_pm_opp_of_remove_table(dev);
- 
--out_disable_cci_clk:
-+out_disable_inter_clock:
-+	clk_disable_unprepare(drv->inter_clk);
-+
-+out_disable_cci_clock:
- 	clk_disable_unprepare(drv->cci_clk);
- 
--out_free_resources:
--	if (regulator_is_enabled(drv->proc_reg))
--		regulator_disable(drv->proc_reg);
--	if (drv->sram_reg && regulator_is_enabled(drv->sram_reg))
-+out_disable_sram_reg:
-+	if (drv->sram_reg)
- 		regulator_disable(drv->sram_reg);
- 
-+out_disable_proc_reg:
-+	regulator_disable(drv->proc_reg);
-+
- 	return ret;
- }
- 
-@@ -398,12 +406,13 @@ static int mtk_ccifreq_remove(struct platform_device *pdev)
- 
- 	drv = platform_get_drvdata(pdev);
- 
--	dev_pm_opp_unregister_notifier(dev, &drv->opp_nb);
--	dev_pm_opp_of_remove_table(dev);
--	clk_disable_unprepare(drv->cci_clk);
- 	regulator_disable(drv->proc_reg);
- 	if (drv->sram_reg)
- 		regulator_disable(drv->sram_reg);
-+	clk_disable_unprepare(drv->cci_clk);
-+	clk_disable_unprepare(drv->inter_clk);
-+	dev_pm_opp_of_remove_table(dev);
-+	dev_pm_opp_unregister_notifier(dev, &drv->opp_nb);
- 
- 	return 0;
- }
+url:    https://github.com/intel-lab-lkp/linux/commits/sean-wang-mediatek-com/Bluetooth-btmtk-introduce-btmtk-reset-work/20230503-070640
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/bluetooth/bluetooth.git master
+patch link:    https://lore.kernel.org/r/ddcbc509b5024882583d5c143ec5f4520bef860a.1683065391.git.objelf%40gmail.com
+patch subject: [PATCH v5 3/3] Bluetooth: btusb: mediatek: add MediaTek devcoredump support
+config: x86_64-randconfig-a016-20230501 (https://download.01.org/0day-ci/archive/20230503/202305031708.UQZ6jRn6-lkp@intel.com/config)
+compiler: clang version 14.0.6 (https://github.com/llvm/llvm-project f28c006a5895fc0e329fe15fead81e37457cb1d1)
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://github.com/intel-lab-lkp/linux/commit/635545fc4095e7e6b159177a07b0359b7eafe482
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review sean-wang-mediatek-com/Bluetooth-btmtk-introduce-btmtk-reset-work/20230503-070640
+        git checkout 635545fc4095e7e6b159177a07b0359b7eafe482
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=x86_64 olddefconfig
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=x86_64 SHELL=/bin/bash drivers/bluetooth/
+
+If you fix the issue, kindly add following tag where applicable
+| Reported-by: kernel test robot <lkp@intel.com>
+| Link: https://lore.kernel.org/oe-kbuild-all/202305031708.UQZ6jRn6-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   drivers/bluetooth/btmtk.c:97:7: error: use of undeclared identifier 'HCI_DEVCOREDUMP_IDLE'
+           case HCI_DEVCOREDUMP_IDLE:
+                ^
+   drivers/bluetooth/btmtk.c:100:7: error: use of undeclared identifier 'HCI_DEVCOREDUMP_ACTIVE'; did you mean 'BTMTK_COREDUMP_ACTIVE'?
+           case HCI_DEVCOREDUMP_ACTIVE:
+                ^~~~~~~~~~~~~~~~~~~~~~
+                BTMTK_COREDUMP_ACTIVE
+   drivers/bluetooth/btmtk.c:25:2: note: 'BTMTK_COREDUMP_ACTIVE' declared here
+           BTMTK_COREDUMP_ACTIVE,
+           ^
+   drivers/bluetooth/btmtk.c:103:7: error: use of undeclared identifier 'HCI_DEVCOREDUMP_TIMEOUT'
+           case HCI_DEVCOREDUMP_TIMEOUT:
+                ^
+   drivers/bluetooth/btmtk.c:104:7: error: use of undeclared identifier 'HCI_DEVCOREDUMP_ABORT'
+           case HCI_DEVCOREDUMP_ABORT:
+                ^
+   drivers/bluetooth/btmtk.c:105:7: error: use of undeclared identifier 'HCI_DEVCOREDUMP_DONE'
+           case HCI_DEVCOREDUMP_DONE:
+                ^
+   drivers/bluetooth/btmtk.c:367:9: error: implicit declaration of function 'hci_devcd_register' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
+           return hci_devcd_register(hdev, btmtk_coredump, btmtk_coredump_hdr,
+                  ^
+   drivers/bluetooth/btmtk.c:385:9: error: implicit declaration of function 'hci_devcd_init' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
+                   err = hci_devcd_init(hdev, MTK_COREDUMP_SIZE);
+                         ^
+   drivers/bluetooth/btmtk.c:385:9: note: did you mean 'hci_sock_init'?
+   include/net/bluetooth/bluetooth.h:577:5: note: 'hci_sock_init' declared here
+   int hci_sock_init(void);
+       ^
+>> drivers/bluetooth/btmtk.c:389:32: error: no member named 'dump' in 'struct hci_dev'
+                   schedule_delayed_work(&hdev->dump.dump_timeout,
+                                          ~~~~  ^
+   drivers/bluetooth/btmtk.c:394:9: error: implicit declaration of function 'hci_devcd_append' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
+                   err = hci_devcd_append(hdev, skb);
+                         ^
+   drivers/bluetooth/btmtk.c:394:9: note: did you mean 'hci_dev_open'?
+   include/net/bluetooth/hci_core.h:1500:5: note: 'hci_dev_open' declared here
+   int hci_dev_open(__u16 dev);
+       ^
+   drivers/bluetooth/btmtk.c:401:4: error: implicit declaration of function 'hci_devcd_complete' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
+                           hci_devcd_complete(hdev);
+                           ^
+   drivers/bluetooth/btmtk.c:401:4: note: did you mean 'hci_devcd_append'?
+   drivers/bluetooth/btmtk.c:394:9: note: 'hci_devcd_append' declared here
+                   err = hci_devcd_append(hdev, skb);
+                         ^
+   10 errors generated.
+
+
+vim +389 drivers/bluetooth/btmtk.c
+
+   371	
+   372	int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb)
+   373	{
+   374		struct btmtk_data *data = hci_get_priv(hdev);
+   375		int err;
+   376	
+   377		if (!IS_ENABLED(CONFIG_DEV_COREDUMP))
+   378			return 0;
+   379	
+   380		switch (data->cd_info.state) {
+   381		case BTMTK_COREDUMP_DISABLED:
+   382			err = -EINVAL;
+   383			break;
+   384		case BTMTK_COREDUMP_INIT:
+ > 385			err = hci_devcd_init(hdev, MTK_COREDUMP_SIZE);
+   386			if (err < 0)
+   387				break;
+   388			/* It is supposed coredump can be done within 5 seconds */
+ > 389			schedule_delayed_work(&hdev->dump.dump_timeout,
+   390					      msecs_to_jiffies(5000));
+   391			fallthrough;
+   392		case BTMTK_COREDUMP_ACTIVE:
+   393		default:
+   394			err = hci_devcd_append(hdev, skb);
+   395			if (err < 0)
+   396				break;
+   397	
+   398			if (skb->len > 12 &&
+   399			    !strncmp((char *)&skb->data[skb->len - 13],
+   400				     MTK_COREDUMP_END, 12))
+   401				hci_devcd_complete(hdev);
+   402	
+   403			break;
+   404		}
+   405	
+   406		if (err < 0) {
+   407			data->cd_info.state = BTMTK_COREDUMP_DISABLED;
+   408			kfree_skb(skb);
+   409		}
+   410	
+   411		return err;
+   412	}
+   413	EXPORT_SYMBOL_GPL(btmtk_process_coredump);
+   414	
+
 -- 
-2.18.0
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
 
