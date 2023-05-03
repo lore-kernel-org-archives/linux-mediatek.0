@@ -4,117 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79AA2C77B7F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 May 2023 11:02:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8982C7EE23
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 May 2023 11:34:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Subject:Cc:To:From:Date:References:In-Reply-To:Message-Id:
-	Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MMamfdw2Idw7oZk+/E3mvL+dBo0TUHD8cWv2z+u/0pc=; b=B5hgH7fzdIpJyZUbhtAomm7oLy
-	WdP809tZSg8DNMsDsboEuuKTK18W0mFNMFcHlHCK1GVlPhrpbUR8oWtRxDzsyl9AUtE9XwTeDm5jz
-	9DDbju/sRDrkiFNKGJzSRVZFIPFoi3BRIW9xj3PQeEV3EUsyKlAvcm65Cb7p6xo0veD6aihQgXMK0
-	T98b5BSoJd//Vu5evKe0SRUANgnhrEKvc1pnDRFCi6oFpYNFl3PhPJM3odRZrBhlG+c9xwnMMg9uf
-	1JOxGw+/M/ah5NN3erEhxDGy2ZHDHzt/PCgzbJNSjkLDg0b8ZbAxpwZC3nkijVFqZ2GH8DSbU72q6
-	PEwHo0Rg==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=oIx7VuqX2K6wDAtw6rgNEigmBfR+TczNCFzj17fnjdE=; b=koG9aiG7LjeRXt+wsPBSvizKMW
+	XfbXqweSDUZCWfa50/n3W5+erfIQh3Q3l32f1PTE69U8fMe9tEynwfAPEnw3fYWvjD9XpKwxYKsvY
+	iL7yFKYNJPrQQWpQhY+/SdonGbAaGTOlnzTBTvBjB2NyJv9aAM/Dug5lwVYs8AEKj68IFlNIqAi9i
+	8Fq8WdylBaTyH63Iw726hdtVeizA/l0i9S6fOHh/PFVXlQQXCLrVY6NIBXnGc8Er3TKX9BFz6Jcv7
+	Y5UhX6mW+IbRf6eG8sHKeeHR9826eDoXsakMIvypeGvfVDKgy0gbuBWLEA/fRXCmOZFxCrinUKYbG
+	c3OLt0ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1puAFs-004L4w-0j;
-	Wed, 03 May 2023 11:02:40 +0000
-Received: from wnew2-smtp.messagingengine.com ([64.147.123.27])
+	id 1puAkf-004OBK-2b;
+	Wed, 03 May 2023 11:34:29 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1puAFn-004L2n-0k;
-	Wed, 03 May 2023 11:02:36 +0000
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
-	by mailnew.west.internal (Postfix) with ESMTP id 6C7392B0671E;
-	Wed,  3 May 2023 07:02:32 -0400 (EDT)
-Received: from imap51 ([10.202.2.101])
-  by compute6.internal (MEProxy); Wed, 03 May 2023 07:02:34 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
-	:cc:content-transfer-encoding:content-type:content-type:date
-	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:sender:subject:subject:to:to; s=fm3; t=
-	1683111752; x=1683118952; bh=MMamfdw2Idw7oZk+/E3mvL+dBo0TUHD8cWv
-	2z+u/0pc=; b=WBctjyvS2xYVsNx/PXLCezyBfk6d0fNGJLAbjyR93iv+JntYfRw
-	1FknZqmA6tsFPUoOxwPIzC92Rp5Y6yMCdnzeprisuAEmk/2FwjwhujnyjmXpkimB
-	SppIL5oaBfr59F6AzPecb7p3PngCPKwbucj2v1SwZaiAn0b8V6yRvxWIATOoB1yT
-	kTJFFdKrKoLxDca9M6vO2wD00yP0v9E+Y6cH9ws5eKi/SUd2UHkyPleSrFe3oyLX
-	8GenDC9VkDzpl0DM3D3MJqCCidmbvb4oXCVvEsbwuVU7zsrm1wOjex4kRkPwyRT1
-	Y3o5kMbVVaclWgwF5PhZKyT7r7Y+YHslZ1Q==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:sender:subject:subject:to:to:x-me-proxy
-	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=
-	1683111752; x=1683118952; bh=MMamfdw2Idw7oZk+/E3mvL+dBo0TUHD8cWv
-	2z+u/0pc=; b=AH+K36zaN4zYugn+q+n765d7RqYhBnYAkyeBKpd/jUwnO4cc17N
-	sOtk4fgnjqgBRejjoUPfmgWTaKFP4N6l86PC9yWkTl7qSHDYKt8zUNrMJm7hgsac
-	MAKOY5kQ55a0V+cd6KgpG+xKpJy4SWbnKyPbmZiW4Z0r+3tL/pAww5DKoBXtHvDI
-	i273D40wtniWtgLX4sC5ApVUdClgCvIzPssLKxyAw/v9JuPv2gH8vOUO3lADSDBb
-	NaXuK10560hVSSAb2s815TRFlAaY6HIsVEB4nLwDJq5pD3D+mqkoaNJij4p9s68c
-	FZWuHfNk6rEKY5SsKc3Dqj2x0oLyHX/paVw==
-X-ME-Sender: <xms:Rj9SZKlTTnbDiHX55Z0zVK4RRHqTtD34Ic0kr9gu8LXRZUd5vW1sNQ>
-    <xme:Rj9SZB2RRbTSlfnvoyCiq-CjuDURcGdNgs5GoDJl4qCHFJ5-ZHoIvp9bWKCYjpXN-
-    ODT0WgrXyw40LeC0sc>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrfedvkedgfeegucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhepofgfggfkjghffffhvfevufgtgfesthhqredtreerjeenucfhrhhomhepfdet
-    rhhnugcuuegvrhhgmhgrnhhnfdcuoegrrhhnugesrghrnhgusgdruggvqeenucggtffrrg
-    htthgvrhhnpeegfeejhedvledvffeijeeijeeivddvhfeliedvleevheejleetgedukedt
-    gfejveenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
-    grrhhnugesrghrnhgusgdruggv
-X-ME-Proxy: <xmx:Rj9SZIovGybcnhaYiLbWAMPNr2wtxMzL-NEtbKfgejz2jVx79Q3BOw>
-    <xmx:Rj9SZOmlZGrdb2-rGVi2XdPxahue8H13hkdPES4NDGwCeY-jXgd-ew>
-    <xmx:Rj9SZI2--fY13skOLwZ1x9wt_VRgsao0yXJv8XyToKLEhPijWfOSBw>
-    <xmx:SD9SZMJstDJSwk6E9VhGeSPmli8W6KuMDF8H4lCfg1AWmdfP8FfC5WnUfw0>
-Feedback-ID: i56a14606:Fastmail
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
-	id B77FBB6008D; Wed,  3 May 2023 07:02:30 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.9.0-alpha0-386-g2404815117-fm-20230425.001-g24048151
-Mime-Version: 1.0
-Message-Id: <99b49e6b-e963-415a-a2c9-72505087833c@app.fastmail.com>
-In-Reply-To:  <CAL_JsqKCtmkwzKa01gyG65fH8ye6R3KhR41PJbJhOJ4X9j=znA@mail.gmail.com>
-References: <20220328000915.15041-1-ansuelsmth@gmail.com>
- <85eb14ec-f465-7447-ad77-a3dabc666f47@kernel.org>
- <YkKRYnN84D9VZhGj@Ansuel-xps.localdomain>
- <CAL_Jsq+RQQ-ADMxLPUFwk6S6kGmb6oNDy4k52fnU0EtbUvqmSA@mail.gmail.com>
- <CAMuHMdWNTE48MFy6fqxAsfMWz9b6E7dVNXtXtESP95sxk2PGwA@mail.gmail.com>
- <CAL_JsqJthKTm8bhRF2B=ae1tvtPeYYXx_Tm76qQtSwLtH5C6VA@mail.gmail.com>
- <720a2829-b6b5-411c-ac69-9a53e881f48d@app.fastmail.com>
- <CAL_JsqKCtmkwzKa01gyG65fH8ye6R3KhR41PJbJhOJ4X9j=znA@mail.gmail.com>
-Date: Wed, 03 May 2023 13:02:10 +0200
-From: "Arnd Bergmann" <arnd@arndb.de>
-To: "Rob Herring" <robh+dt@kernel.org>
-Cc: "Geert Uytterhoeven" <geert@linux-m68k.org>,
- "Olof Johansson" <olof@lixom.net>,
- "Christian Marangi" <ansuelsmth@gmail.com>,
- "Krzysztof Kozlowski" <krzk@kernel.org>,
- "Krzysztof Kozlowski" <krzk+dt@kernel.org>,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-actions@lists.infradead.org,
- linux-sunxi@lists.linux.dev, Linux-OMAP <linux-omap@vger.kernel.org>,
- linux-amlogic@lists.infradead.org, linux-arm-kernel@axis.com,
- linux-aspeed@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org,
- chrome-platform@lists.linux.dev,
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
- linux-samsung-soc@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com, kernel@dh-electronics.com,
- linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org,
- linux-tegra@vger.kernel.org,
- "linux-oxnas@groups.io" <linux-oxnas@groups.io>,
- linux-arm-msm@vger.kernel.org, linux-unisoc@lists.infradead.org,
- linux-rockchip@lists.infradead.org,
- linux-realtek-soc@lists.infradead.org
-Subject: Re: [RFC PATCH 0/1] Categorize ARM dts directory
-Content-Type: text/plain;charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+	id 1puAkb-004O8F-0c;
+	Wed, 03 May 2023 11:34:26 +0000
+Received: from IcarusMOD.eternityproject.eu (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2135C660309E;
+	Wed,  3 May 2023 12:34:19 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1683113660;
+	bh=D4GxHwRdyAouEXBmGeD9y+SB4oSmGvmMfyzdYBUTGVw=;
+	h=From:To:Cc:Subject:Date:From;
+	b=FO9btotfEblnP/1DE5WqXhomqoU+yNbZ7N8+Nsy8eenwAs4MZzxIWUrXh0Y3w2RPu
+	 Vm0llArH4IEy3kOoR5TnPuBeZ2tbWl0qgeN8V2lNfK+Wl4DfkGmR17HAsTYGcrOfzQ
+	 8ALiaC5v8FzihTBzNFFK4YvsMoOf78DVujTY/nVRnxwprAUzlRA4nm+uuq2DMPttFu
+	 KPsHdcA0fWQkHdMWRFoxlI7eOdz5a0Vcv6cSBRO7oki1cZSscyoo2hDR78s8Pr2BPZ
+	 NKs72uI/0J2qEDl22rB4o39wM1rGZxWbj5Xq/fBRCVDOLLw74yO647543yvwaaEpNv
+	 KPPMyudnJeUMg==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: lgirdwood@gmail.com
+Cc: broonie@kernel.org,
+	perex@perex.cz,
+	tiwai@suse.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	pierre-louis.bossart@linux.intel.com,
+	peter.ujfalusi@linux.intel.com,
+	yung-chuan.liao@linux.intel.com,
+	ranjani.sridharan@linux.intel.com,
+	kai.vehmanen@linux.intel.com,
+	daniel.baluta@nxp.com,
+	nicolas.ferre@microchip.com,
+	u.kleine-koenig@pengutronix.de,
+	chunxu.li@mediatek.com,
+	tinghan.shen@mediatek.com,
+	error27@gmail.com,
+	ribalda@chromium.org,
+	yc.hung@mediatek.com,
+	Allen-KH.Cheng@mediatek.com,
+	alsa-devel@alsa-project.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	sound-open-firmware@alsa-project.org,
+	kernel@collabora.com
+Subject: [PATCH 0/5] ASoC: MediaTek MT8195/86 Cleanups
+Date: Wed,  3 May 2023 13:34:08 +0200
+Message-Id: <20230503113413.149235-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.40.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230503_040235_299008_AB6D610A 
-X-CRM114-Status: GOOD (  12.54  )
+X-CRM114-CacheID: sfid-20230503_043425_439561_EF4C8E4F 
+X-CRM114-Status: UNSURE (   6.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,92 +94,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 2, 2023, at 21:40, Rob Herring wrote:
-> On Tue, May 2, 2023 at 3:15=E2=80=AFAM Arnd Bergmann <arnd@arndb.de> w=
-rote:
+This series performs some cleanups for mainly MT8195 and switches
+both MT8195 and MT8186's SOF driver to the snd_sof_ipc_process_reply()
+helper.
 
-> vendor_map =3D {
->     'alphascale' : 'alphascale',
->     'alpine' : 'alpine',
+AngeloGioacchino Del Regno (5):
+  ASoC: SOF: mediatek: mt8195: Use snd_sof_ipc_process_reply() helper
+  ASoC: SOF: mediatek: mt8186: Use snd_sof_ipc_process_reply() helper
+  ASoC: mediatek: mt8195-afe-pcm: Simplify runtime PM during probe
+  ASoC: mediatek: mt8195-afe-pcm: Simplify with dev_err_probe()
+  ASoC: mediatek: mt8195-afe-pcm: Clean up unnecessary functions
 
-I would make this one 'amazon' if we go with current manufacturers.
+ sound/soc/mediatek/mt8195/mt8195-afe-pcm.c | 99 ++++++++--------------
+ sound/soc/sof/mediatek/mt8186/mt8186.c     | 36 +-------
+ sound/soc/sof/mediatek/mt8195/mt8195.c     | 36 +-------
+ 3 files changed, 36 insertions(+), 135 deletions(-)
 
->     'nspire' : 'nspire',
+-- 
+2.40.1
 
-nspire is the name of the end-user product, so that doesn't quite
-fit. The SoC was apparently an LSI logic Zevio, which is now owned
-by Broadcom.
-
->     'mvebu' : 'marvell',
->     'mmp' : 'marvell',
->     'berlin' : 'berlin',
-
-While berlin is related to pxa/mmp, this one is now owned
-by Synaptics, and the 64-bit versions are already in the
-synaptics subdir, so I'd go with teh same here.
-
->     'openbmc' : 'aspeed',
->     'en7' : 'airoha',
-
-airoha is a separate company now, but the hardware is still
-shared with mediatek, so we could consider lumping it into
-that subdir, but a separate one may be better long-term.
-
->     'gemini' : 'gemini',
-
-This one is also a product name, not a company. Apparently,
-gemini was originally made by Storm Semiconductor, and then
-by Cortina, which was subsequently acquired by Inphi, and that ended
-up in Marvell after the product was already discontinued.
-
-Out of the four, I'd probably go with 'cortina' as the
-directory name.
-
->     'meson' : 'meson',
-
--> amlogic
-
->     'moxa' : 'moxa',
->     'mstar' : 'mstar',
-
--> sigmastar
-
->     'nuvo' : 'nuvoton',
->     'lpc' : 'lpc',
-
--> nxp
-
->     'lan96' : 'microchip',
->     'owl' : 'actions',
->     'ox8' : 'oxsemi',
->     'rda' : 'rda',
-
--> unisoc
-
->     'rtd' : 'realtek',
->     'r7' : 'renesas',
->     'r8' : 'renesas',
->     'r9' : 'renesas',
->     'emev2' : 'renesas',
->     'sh73a' : 'renesas',
->     'gr-' : 'renesas',
->     'iwg' : 'renesas',
->     'rk' : 'rockchip',
->     'rv11' : 'rockchip',
->     'rockchip' : 'rockchip',
->     'socfpga' : 'socfpga',
-
--> intel
-
->     'stm' : 'stm32',
->     'sti' : 'sti',
->     'st-pin' : 'sti',
->     'ste' : 'st-ericsson',
->     'spear' : 'spear',
-
-I would put all five of these into 'st'. The ux500 was developed
-in st-ericsson, but last sold by st, and the other ones are all
-original st products.
-
-      Arnd
 
