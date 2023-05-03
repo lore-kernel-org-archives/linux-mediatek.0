@@ -4,78 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 564F4C77B78
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 May 2023 23:23:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D88F2C77B78
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 May 2023 01:04:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mkU/S3bPr0klY6Ssv879wxrIutAv2eYi1dIiSecem24=; b=B6+FMtfvJTSlyOb+6ippwbjQSX
-	3B1JT0NHBorQmOZVqhu4qJZJOhrYHpgY1GNkH9D+1HUBUJP4zOi2NEj7HdDno8P31Vi4RGJ959GEE
-	Pu8O5zUAbdpIrzUxBw0jh5UL6mFflASK1aFHI5P9SSXJHXL+M8Tk0gh08m0aln0LYR7SIAPfLv2n6
-	lgradV4ibgmDoXzkeqel3E8NoIeXyshi7FR1KBTvq1zASyoRfQv2BZG79RzDOgnymXtckU89YDxAn
-	WuEIR5e0YMvCC+J0cpPTfCmv8tlcf+9UUr+AfBnh7Ib59Rgn98Uf+rT6m7ohfd5MPZjzSZiF3QClw
-	gYQ62+sg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vRzuYSUkHTFb4IQekkfuoPXxGjlkLMi8kimY0jvqBfM=; b=yG7Kb6FJQsQNMP/DKhmxcu5wwt
+	G2QRv1Ndox7i/6WDHVV4794k7LRkztYA9yNIKKNdXEWdR9psWvUUo8sDvjgYtMqDJPDJXTbKbF2Cu
+	q1loIin9vOxeDRefwl7oy84LT2cg/nqWgkROM16jqzJSiHWCjfGw/4/GBBv8m7FxecUnJHH9SAusH
+	VE/0FCmlHd0mLRTyyZgKRevrn9++6TR53nH+CPjE08AgEMMEfOIxuE6iUTUsAjSHM3XCX/Vcv28YV
+	VMXU9r/Itl0+6sVBPN9Wp0cNXN7HVuzaNhki1HWzb/jqRewLoq7uHhLT2AtKeZRZKe/rjS75VZNQi
+	cC0x3Vyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptzKq-002szb-0i;
-	Tue, 02 May 2023 23:23:04 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pu0v8-0030rq-3D;
+	Wed, 03 May 2023 01:04:39 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptzKm-002syy-1P
-	for linux-mediatek@lists.infradead.org;
-	Tue, 02 May 2023 23:23:02 +0000
-X-UUID: 42f93dfee94011ed912e1518a6540028-20230502
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=mkU/S3bPr0klY6Ssv879wxrIutAv2eYi1dIiSecem24=;
-	b=q30+JXoAjwvPCPByQuGtoo3V/cae7xK1JidYJOSllfSrYCTMeq117y3vnNAQPS2lETiryCzVUXSf+xHf76Dw+qcXqZhGR5Nb+JTM6xQr1/S7WF4sKKJRguDS8ON9hWEWTu+yyuDTyvfxaMqnLEHWj9ZiuU/T4UzN1SNKebklZLI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:494f43a0-6149-4467-92f1-f281731dbb25,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:120426c,CLOUDID:05d08930-6935-4eab-a959-f84f8da15543,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-UUID: 42f93dfee94011ed912e1518a6540028-20230502
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <sean.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 394338371; Tue, 02 May 2023 16:22:52 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Wed, 3 May 2023 07:02:50 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 3 May 2023 07:02:50 +0800
-From: <sean.wang@mediatek.com>
-To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>, <luiz.dentz@gmail.com>
-CC: <sean.wang@mediatek.com>, <chris.lu@mediatek.com>,
-	<Soul.Huang@mediatek.com>, <Leon.Yen@mediatek.com>, <Deren.Wu@mediatek.com>,
-	<km.lin@mediatek.com>, <robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>,
-	<ch.yeh@mediatek.com>, <jenhao.yang@mediatek.com>,
-	<Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
-	<steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
-	<abhishekpandit@google.com>, <michaelfsun@google.com>,
-	<abhishekpandit@chromium.org>, <mcchou@chromium.org>, <shawnku@google.com>,
-	<linux-bluetooth@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, Jing Cai <jing.cai@mediatek.com>
-Subject: [PATCH v5 3/3] Bluetooth: btusb: mediatek: add MediaTek devcoredump support
-Date: Wed, 3 May 2023 07:02:42 +0800
-Message-ID: <ddcbc509b5024882583d5c143ec5f4520bef860a.1683065391.git.objelf@gmail.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <c90f4606c85f5862e2e3e1dc330af4ac95f2bc9f.1683065391.git.objelf@gmail.com>
-References: <c90f4606c85f5862e2e3e1dc330af4ac95f2bc9f.1683065391.git.objelf@gmail.com>
+	id 1pu0v4-0030qe-1D;
+	Wed, 03 May 2023 01:04:35 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 8B5A1629D1;
+	Wed,  3 May 2023 01:04:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 702F1C433A1;
+	Wed,  3 May 2023 01:04:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1683075872;
+	bh=3tzUPFXqJgNCRsublfj+ZgGaTs7KzeK4/lauS5NgXbw=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=QoGLyyHrVl2A+YTplbrnYiMEIz6wk+jP9SV8dz5UCtY76MWzNfxcDGsWDt7XzaFbR
+	 Xr4LoafVLAa94EjThKoFMtXLMkvCzIlI51WqQfPmq+42ZRGmwhqCuG73rtNFS7wUkc
+	 +fEXrSTR/j+xouT44ufNnuT7bR771W/YBDuqC0FtyyPhTIzbPY4lJHmmC4JrKp+LqL
+	 VUXrPWi4q/OV1Ezdi6st//MbXuMfXSMqmAVFzsUiMTdstEd3wZmJZlVLjAXQcv6nMA
+	 7k3X1222URsa6zFwyiuGaddxH/mAzA1qAvda1W1zjhNGD1pbVwdRUepxFlVrtRcox8
+	 yQNSGRSC9H6BA==
+Received: by mail-lj1-f169.google.com with SMTP id 38308e7fff4ca-2a8b3ecf59fso46418071fa.0;
+        Tue, 02 May 2023 18:04:32 -0700 (PDT)
+X-Gm-Message-State: AC+VfDwpg9RYy75X3hFdzBRUpJUcI4c4SOA8Aw7KgqRKIHqgh6rVAVFX
+	qsKfQtN/X+8nKLiiyhT0wPe7HPC9v2mZv1X/pg==
+X-Google-Smtp-Source: ACHHUZ4mSLqb1ExsMkOjNsdZYIFyOMFO5WWfDnvfwZvuM9fv3TyrxmQhN6hT67g4AYdNW/MVo7uZ6IBv6mL14dd4tuc=
+X-Received: by 2002:a2e:8402:0:b0:2a8:d103:dc8 with SMTP id
+ z2-20020a2e8402000000b002a8d1030dc8mr4705375ljg.2.1683075870337; Tue, 02 May
+ 2023 18:04:30 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+References: <20220328000915.15041-1-ansuelsmth@gmail.com> <85eb14ec-f465-7447-ad77-a3dabc666f47@kernel.org>
+ <YkKRYnN84D9VZhGj@Ansuel-xps.localdomain> <CAL_Jsq+RQQ-ADMxLPUFwk6S6kGmb6oNDy4k52fnU0EtbUvqmSA@mail.gmail.com>
+ <CAMuHMdWNTE48MFy6fqxAsfMWz9b6E7dVNXtXtESP95sxk2PGwA@mail.gmail.com>
+ <CAL_JsqJthKTm8bhRF2B=ae1tvtPeYYXx_Tm76qQtSwLtH5C6VA@mail.gmail.com>
+ <720a2829-b6b5-411c-ac69-9a53e881f48d@app.fastmail.com> <CAL_JsqKCtmkwzKa01gyG65fH8ye6R3KhR41PJbJhOJ4X9j=znA@mail.gmail.com>
+ <d4b52074-d11c-4c7a-ad74-b2fce64c6d30@gmail.com>
+In-Reply-To: <d4b52074-d11c-4c7a-ad74-b2fce64c6d30@gmail.com>
+From: Rob Herring <robh+dt@kernel.org>
+Date: Tue, 2 May 2023 20:04:17 -0500
+X-Gmail-Original-Message-ID: <CAL_JsqKRcMSijAdiP_BpyBGRuMhscZ12QFcLBAeZ+TcaQg7r4g@mail.gmail.com>
+Message-ID: <CAL_JsqKRcMSijAdiP_BpyBGRuMhscZ12QFcLBAeZ+TcaQg7r4g@mail.gmail.com>
+Subject: Re: [RFC PATCH 0/1] Categorize ARM dts directory
+To: Florian Fainelli <f.fainelli@gmail.com>
+Cc: Arnd Bergmann <arnd@arndb.de>, Geert Uytterhoeven <geert@linux-m68k.org>, Olof Johansson <olof@lixom.net>, 
+	Christian Marangi <ansuelsmth@gmail.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-actions@lists.infradead.org, linux-sunxi@lists.linux.dev, 
+	Linux-OMAP <linux-omap@vger.kernel.org>, linux-amlogic@lists.infradead.org, 
+	linux-arm-kernel@axis.com, linux-aspeed@lists.ozlabs.org, 
+	linux-rpi-kernel@lists.infradead.org, chrome-platform@lists.linux.dev, 
+	Linux-Renesas <linux-renesas-soc@vger.kernel.org>, linux-samsung-soc@vger.kernel.org, 
+	linux-stm32@st-md-mailman.stormreply.com, kernel@dh-electronics.com, 
+	linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org, 
+	linux-tegra@vger.kernel.org, "linux-oxnas@groups.io" <linux-oxnas@groups.io>, 
+	linux-arm-msm@vger.kernel.org, linux-unisoc@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-realtek-soc@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230502_162300_489811_594DBE53 
-X-CRM114-Status: GOOD (  21.78  )
+X-CRM114-CacheID: sfid-20230502_180434_494211_B1992D38 
+X-CRM114-Status: GOOD (  30.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,279 +98,130 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jing Cai <jing.cai@mediatek.com>
+On Tue, May 2, 2023 at 6:02=E2=80=AFPM Florian Fainelli <f.fainelli@gmail.c=
+om> wrote:
+>
+> On 5/2/23 12:40, Rob Herring wrote:
+> > On Tue, May 2, 2023 at 3:15=E2=80=AFAM Arnd Bergmann <arnd@arndb.de> wr=
+ote:
+> >>
+> >> On Tue, Apr 25, 2023, at 17:57, Rob Herring wrote:
+> >>> On Tue, Apr 25, 2023 at 2:28=E2=80=AFAM Geert Uytterhoeven <geert@lin=
+ux-m68k.org> wrote:
+> >>>
+> >>>> Does your script also cater for .dts files not matching any pattern,
+> >>>> but including a .dtsi file that does match a pattern?
+> >>>
+> >>> I assume I built everything after moving, but maybe not...
+> >>>
+> >>> That's all just "details". First, we need agreement on a) moving
+> >>> things to subdirs and b) doing it 1-by-1 or all at once. So far we've
+> >>> been stuck on a) for being 'too much churn'.
+> >>
+> >> Sorry for missing most of the discussion last week. The script sounds
+> >> fine to me, the only reason I didn't want to do this in the past is th=
+at
+> >> we had the plan to move platforms out of the kernel tree to an externa=
+l
+> >> repository and I wanted to do this platform at a time and also only mo=
+ve
+> >> each one once. I don't think that is going to happen anytime soon now,
+> >> so let's just do your script.
+> >>
+> >> Can you send me the script and/or a pull request of the resulting
+> >> tree based on my soc/dt branch? Everything is merged upstream,
+> >> and I think git-merge would handle the remaining merges with any
+> >> other changes in mainline.
+> >
+> > I've dusted off my script and made a branch[1] with the result.
+> > There's just a couple of fixes needed after the script is run (see the
+> > top commit). The cross arch includes are all fixed up by the script.
+> > dtbs_install maintains a flat install. I compared the number of .dtbs
+> > before and after to check the script.
+> >
+> > I think the only issue remaining is finalizing the mapping of
+> > platforms to subdirs. What I have currently is a mixture of SoC
+> > families and vendors. The most notable are all the Freescale/NXP
+> > platforms, pxa, socfpga, and stm32. It's not consistent with arm64
+> > either. Once that's finalized, I still need to go update MAINTAINERS.
+> >
+> > Here's the current mapping:
+> >
+> > vendor_map =3D {
+> >      'alphascale' : 'alphascale',
+> >      'alpine' : 'alpine',
+> >      'artpec' : 'axis',
+> >      'axm' : 'lsi',
+> >      'cx9' : 'cnxt',
+> >      'ecx' : 'calxeda',
+> >      'highbank' : 'calxeda',
+> >      'ep7' : 'cirrus',
+> >      'mxs': 'mxs',
+> >      'imx23': 'mxs',
+> >      'imx28': 'mxs',
+> >      'sun' : 'allwinner',
+> >      'imx': 'imx',
+> >      'e6' : 'imx',
+> >      'e7' : 'imx',
+> >      'mba6' : 'imx',
+> >      'ls': 'fsl',
+> >      'vf': 'fsl',
+> >      'qcom': 'qcom',
+> >      'am3' : 'ti',
+> >      'am4' : 'ti',
+> >      'am5' : 'ti',
+> >      'dra' : 'ti',
+> >      'keystone' : 'ti',
+> >      'omap' : 'ti',
+> >      'compulab' : 'ti',
+> >      'logicpd' : 'ti',
+> >      'elpida' : 'ti',
+> >      'motorola' : 'ti',
+> >      'twl' : 'ti',
+> >      'da' : 'ti',
+> >      'dm' : 'ti',
+> >      'nspire' : 'nspire',
+> >      'armada' : 'marvell',
+> >      'dove' : 'marvell',
+> >      'kirkwood' : 'marvell',
+> >      'orion' : 'marvell',
+> >      'mvebu' : 'marvell',
+> >      'mmp' : 'marvell',
+> >      'berlin' : 'berlin',
+> >      'pxa2' : 'pxa',
+> >      'pxa3' : 'pxa',
+> >      'pxa' : 'marvell',
+> >      'arm-' : 'arm',
+> >      'integ' : 'arm',
+> >      'mps' : 'arm',
+> >      've' : 'arm',
+> >      'aspeed' : 'aspeed',
+> >      'ast2' : 'aspeed',
+> >      'facebook' : 'aspeed',
+> >      'ibm' : 'aspeed',
+> >      'openbmc' : 'aspeed',
+> >      'en7' : 'airoha',
+> >      'at91' : 'microchip',
+> >      'sama' : 'microchip',
+> >      'sam9' : 'microchip',
+> >      'usb_' : 'microchip',
+> >      'tny_' : 'microchip',
+> >      'mpa1600' : 'microchip',
+> >      'animeo_ip' : 'microchip',
+> >      'aks-cdu' : 'microchip',
+> >      'ethernut5' : 'microchip',
+> >      'evk-pro3' : 'microchip',
+> >      'pm9g45' : 'microchip',
+> >      'ge86' : 'microchip',
+> >      'bcm' : 'brcm',
+>
+> How about we use 'broadcom' here, to follow what arm64 does? I could
+> rename arch/mips/boot/dts/brcm to arch/mips/boot/dts/broadcom for
+> consistency, too?
 
-This patch implement function .coredump() and dmp_hdr() in btusb
-driver for MediaTek controller.  FW core dump was triggered by FW
-specific event to show something unexpected happened in the controller.
+Okay, though if starting clean I'd somewhat prefer to use the vendor
+prefix. I guess since arm and arm64 share dtsi files, they should
+match.
 
-The driver would be responsible for collecting and uploading the device
-core dump pieces in hci driver using core dump API. Once we finished
-the whole process, the driver would reset the controller to recover the
-kind of fatal error.
-
-Co-developed-by: Chris Lu <chris.lu@mediatek.com>
-Signed-off-by: Chris Lu <chris.lu@mediatek.com>
-Co-developed-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Jing Cai <jing.cai@mediatek.com>
----
-v2, v3: rebase onto the latest codebase
-v4: update the newest API usage for the coredump which was already
-    into the upstream
-v5: support devcoredump on hdev basis
----
- drivers/bluetooth/btmtk.c | 117 ++++++++++++++++++++++++++++++++++++++
- drivers/bluetooth/btmtk.h |  28 +++++++++
- drivers/bluetooth/btusb.c |  14 +++++
- 3 files changed, 159 insertions(+)
-
-diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-index ac2fac7e3c5f..657792f9dcab 100644
---- a/drivers/bluetooth/btmtk.c
-+++ b/drivers/bluetooth/btmtk.c
-@@ -19,6 +19,12 @@
- #define MTK_SEC_MAP_COMMON_SIZE	12
- #define MTK_SEC_MAP_NEED_SEND_SIZE	52
- 
-+enum {
-+	BTMTK_COREDUMP_INIT,
-+	BTMTK_COREDUMP_DISABLED,
-+	BTMTK_COREDUMP_ACTIVE,
-+};
-+
- struct btmtk_patch_header {
- 	u8 datetime[16];
- 	u8 platform[4];
-@@ -53,6 +59,56 @@ struct btmtk_section_map {
- 	};
- } __packed;
- 
-+static void btmtk_coredump(struct hci_dev *hdev)
-+{
-+	int err;
-+
-+	err = __hci_cmd_send(hdev, 0xfd5b, 0, NULL);
-+	if (err < 0)
-+		bt_dev_err(hdev, "Coredump failed (%d)", err);
-+}
-+
-+static void btmtk_coredump_hdr(struct hci_dev *hdev, struct sk_buff *skb)
-+{
-+	struct btmtk_data *data = hci_get_priv(hdev);
-+	char buf[80];
-+
-+	snprintf(buf, sizeof(buf), "Controller Name: 0x%X\n",
-+		 data->cd_info.dev_id);
-+	skb_put_data(skb, buf, strlen(buf));
-+
-+	snprintf(buf, sizeof(buf), "Firmware Version: 0x%X\n",
-+		 data->cd_info.fw_version);
-+	skb_put_data(skb, buf, strlen(buf));
-+
-+	snprintf(buf, sizeof(buf), "Driver: %s\n",
-+		 data->cd_info.driver_name);
-+	skb_put_data(skb, buf, strlen(buf));
-+
-+	snprintf(buf, sizeof(buf), "Vendor: MediaTek\n");
-+	skb_put_data(skb, buf, strlen(buf));
-+}
-+
-+static void btmtk_coredump_notify(struct hci_dev *hdev, int state)
-+{
-+	struct btmtk_data *data = hci_get_priv(hdev);
-+
-+	switch (state) {
-+	case HCI_DEVCOREDUMP_IDLE:
-+		data->cd_info.state = BTMTK_COREDUMP_INIT;
-+		break;
-+	case HCI_DEVCOREDUMP_ACTIVE:
-+		data->cd_info.state = BTMTK_COREDUMP_ACTIVE;
-+		break;
-+	case HCI_DEVCOREDUMP_TIMEOUT:
-+	case HCI_DEVCOREDUMP_ABORT:
-+	case HCI_DEVCOREDUMP_DONE:
-+		data->cd_info.state = BTMTK_COREDUMP_INIT;
-+		btmtk_reset_sync(hdev);
-+		break;
-+	}
-+}
-+
- int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
- 			      wmt_cmd_sync_func_t wmt_cmd_sync)
- {
-@@ -295,6 +351,67 @@ void btmtk_reset_sync(struct hci_dev *hdev)
- }
- EXPORT_SYMBOL_GPL(btmtk_reset_sync);
- 
-+int btmtk_register_coredump(struct hci_dev *hdev, u32 dev_id,
-+			     const char *name, u32 fw_version)
-+{
-+	struct btmtk_data *data = hci_get_priv(hdev);
-+
-+	if (!IS_ENABLED(CONFIG_DEV_COREDUMP))
-+		return -EOPNOTSUPP;
-+
-+	data->cd_info.dev_id = dev_id;
-+	data->cd_info.fw_version = fw_version;
-+	data->cd_info.state = BTMTK_COREDUMP_INIT;
-+	strncpy(data->cd_info.driver_name, name, MTK_DRIVER_NAME_LEN - 1);
-+
-+	return hci_devcd_register(hdev, btmtk_coredump, btmtk_coredump_hdr,
-+				  btmtk_coredump_notify);
-+}
-+EXPORT_SYMBOL_GPL(btmtk_register_coredump);
-+
-+int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb)
-+{
-+	struct btmtk_data *data = hci_get_priv(hdev);
-+	int err;
-+
-+	if (!IS_ENABLED(CONFIG_DEV_COREDUMP))
-+		return 0;
-+
-+	switch (data->cd_info.state) {
-+	case BTMTK_COREDUMP_DISABLED:
-+		err = -EINVAL;
-+		break;
-+	case BTMTK_COREDUMP_INIT:
-+		err = hci_devcd_init(hdev, MTK_COREDUMP_SIZE);
-+		if (err < 0)
-+			break;
-+		/* It is supposed coredump can be done within 5 seconds */
-+		schedule_delayed_work(&hdev->dump.dump_timeout,
-+				      msecs_to_jiffies(5000));
-+		fallthrough;
-+	case BTMTK_COREDUMP_ACTIVE:
-+	default:
-+		err = hci_devcd_append(hdev, skb);
-+		if (err < 0)
-+			break;
-+
-+		if (skb->len > 12 &&
-+		    !strncmp((char *)&skb->data[skb->len - 13],
-+			     MTK_COREDUMP_END, 12))
-+			hci_devcd_complete(hdev);
-+
-+		break;
-+	}
-+
-+	if (err < 0) {
-+		data->cd_info.state = BTMTK_COREDUMP_DISABLED;
-+		kfree_skb(skb);
-+	}
-+
-+	return err;
-+}
-+EXPORT_SYMBOL_GPL(btmtk_process_coredump);
-+
- MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
- MODULE_AUTHOR("Mark Chen <mark-yw.chen@mediatek.com>");
- MODULE_DESCRIPTION("Bluetooth support for MediaTek devices ver " VERSION);
-diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
-index 6245662f6ccb..7eb162f0e7aa 100644
---- a/drivers/bluetooth/btmtk.h
-+++ b/drivers/bluetooth/btmtk.h
-@@ -21,6 +21,10 @@
- #define MT7921_DLSTATUS 0x7c053c10
- #define BT_DL_STATE BIT(1)
- 
-+#define MTK_DRIVER_NAME_LEN		16
-+#define MTK_COREDUMP_SIZE		(1024 * 1000)
-+#define MTK_COREDUMP_END		"coredump end"
-+
- enum {
- 	BTMTK_WMT_PATCH_DWNLD = 0x1,
- 	BTMTK_WMT_TEST = 0x2,
-@@ -119,12 +123,20 @@ struct btmtk_hci_wmt_params {
- 	u32 *status;
- };
- 
-+struct btmtk_coredump_info {
-+	char driver_name[MTK_DRIVER_NAME_LEN];
-+	u32 dev_id;
-+	u32 fw_version;
-+	int state;
-+};
-+
- typedef int (*wmt_cmd_sync_func_t)(struct hci_dev *,
- 				   struct btmtk_hci_wmt_params *);
- 
- typedef int (*btmtk_reset_sync_func_t)(struct hci_dev *, void *);
- 
- struct btmtk_data {
-+	struct btmtk_coredump_info cd_info;
- 	btmtk_reset_sync_func_t reset_sync;
- };
- 
-@@ -139,6 +151,11 @@ int btmtk_setup_firmware(struct hci_dev *hdev, const char *fwname,
- 			 wmt_cmd_sync_func_t wmt_cmd_sync);
- 
- void btmtk_reset_sync(struct hci_dev *hdev);
-+
-+int btmtk_register_coredump(struct hci_dev *hdev, u32 dev_id, const char *name,
-+			     u32 fw_version);
-+
-+int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb);
- #else
- 
- static inline int btmtk_set_bdaddr(struct hci_dev *hdev,
-@@ -162,4 +179,15 @@ static int btmtk_setup_firmware(struct hci_dev *hdev, const char *fwname,
- static void btmtk_reset_sync(struct hci_dev *hdev)
- {
- }
-+
-+static int btmtk_register_coredump(struct hci_dev *hdev, u32 dev_id, const char *name,
-+			     u32 fw_version)
-+{
-+	return -EOPNOTSUPP;
-+}
-+
-+static int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb)
-+{
-+	return -EOPNOTSUPP;
-+}
- #endif
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 034edd8ad777..1c2a0cbcf62e 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -3035,6 +3035,10 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
- 	}
- 
- 	btmtk_data->reset_sync = btusb_mtk_reset_work;
-+	err = btmtk_register_coredump(hdev, dev_id, btusb_driver.name,
-+				fw_version);
-+	if (err < 0)
-+		bt_dev_err(hdev, "Failed to register coredump (%d)", err);
- 
- 	switch (dev_id) {
- 	case 0x7663:
-@@ -3189,6 +3193,7 @@ static int btusb_recv_acl_mtk(struct hci_dev *hdev, struct sk_buff *skb)
- {
- 	struct btusb_data *data = hci_get_drvdata(hdev);
- 	u16 handle = le16_to_cpu(hci_acl_hdr(skb)->handle);
-+	struct sk_buff *skb_cd;
- 
- 	switch (handle) {
- 	case 0xfc6f:		/* Firmware dump from device */
-@@ -3196,6 +3201,15 @@ static int btusb_recv_acl_mtk(struct hci_dev *hdev, struct sk_buff *skb)
- 		 * suspend and thus disable auto-suspend.
- 		 */
- 		usb_disable_autosuspend(data->udev);
-+
-+		/* We need to forward the diagnostic packet to userspace daemon
-+		 * for backward compatibility, so we have to clone the packet
-+		 * extraly for the in-kernel coredump support.
-+		 */
-+		skb_cd = skb_clone(skb, GFP_ATOMIC);
-+		if (skb_cd)
-+			btmtk_process_coredump(hdev, skb_cd);
-+
- 		fallthrough;
- 	case 0x05ff:		/* Firmware debug logging 1 */
- 	case 0x05fe:		/* Firmware debug logging 2 */
--- 
-2.25.1
-
+Rob
 
