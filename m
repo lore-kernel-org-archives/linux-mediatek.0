@@ -4,76 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4F59C77B78
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 May 2023 15:08:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC93DC77B78
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 May 2023 15:08:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=0gC7Ybw7MaxjF6097llexPcJrfXIfdXWbQkrGypoI9c=; b=ulmooVeYCjm5EulZXlQRzBllXg
-	UppWZqj6hgmqwsmTE7kO8kZv2Ozz+gZi9DelnYU3gG96rJUzHuooGz8coDkxFHn60VbTekNMILE7s
-	j4V9JNt3Rn+IHlBVqt8AmDiUGEgKwP6X9LXxKvexR+QD+N70HAb2naHYTBNQFslgBBRs08pj8fRMB
-	SxF0DV8sr4tji75xrG2FwF78ICUquZ8IM5KOjO4U1q8ylegfqiPSXiaDCCHSBtz0qj0q6aUDO9HCO
-	bmexESoCjIGxLhNNro1qrizagrRfXuCIUqMkEg78yGy8CTi2aqzRuZ9QK998DOYsb0GWxrntkQu9d
-	AQStSkvg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Sv2+/K5XC2b0HdPgDdX2IKatg7rHcYkRnUy7gDiaJ7M=; b=ZPCooQ9//FkCidxGkZtVxcRaOd
+	/by6GR3Cwn4/eXlcAPh4BQZ2t6yi/p9daRLuwJ4hwWnZ/WjjlPEw+yPQGVr4UrARiCwiaFguBn7Hr
+	Sc2VhbPgfZe/SL4RhgAX5sxOkKJe2D40PAh1molc4zOxk5OigLh+9sfjoW2LC5aEnnHl6UE8nf4gJ
+	OG9ki9/GRDf96or36XRkfeuAswd+R4lgliN/ji5hzLKtKggoF4eYnxp48jJekyQZnrKqPc+6GYBTM
+	OVIsHCk9oj7mDcYKJYpTX9yBs3ERY8QEhDqPdo5ty5fWLw4nGlsYRREx+ROOzybXB2cQC/hoa4gVm
+	OwqHqWnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1puE5y-004ueA-29;
-	Wed, 03 May 2023 15:08:42 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1puE63-004ufv-1A;
+	Wed, 03 May 2023 15:08:47 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1puE5w-004udL-0D
-	for linux-mediatek@lists.infradead.org;
-	Wed, 03 May 2023 15:08:41 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-2f58125b957so5281260f8f.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 03 May 2023 08:08:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1683126516; x=1685718516;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=0gC7Ybw7MaxjF6097llexPcJrfXIfdXWbQkrGypoI9c=;
-        b=gcTHlpPkM5h1IFaR17waMkGzJkbnPTx+VH3iL/lSm8FpIqoeAorqI2NM8aInDOPm7B
-         I3+5ewe2asdSbSZ0TzQZwJHIcu4B6pkhjtY0BYADz2JRQiHpkRpubzebY2io86NDM2Vv
-         Vi4flC/O/UKSoqwf8VO8Pzx4H6XC3vq9RBqFL1fUSxYFgI31YUgeanHIi3zE3U4TIvIb
-         B4LegAjEYLs4nmI/xHSv2IuYc2gBBDK148M6YY5aXjeUt2PHlHRLpSks0so1+Een0VSJ
-         OaLMNNfAF4sfFskTM1lDyMyTeMX1lkMlX9lPLumqhu6MFslVScgRefKywbXVxsTkvUff
-         0d8w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683126516; x=1685718516;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=0gC7Ybw7MaxjF6097llexPcJrfXIfdXWbQkrGypoI9c=;
-        b=IKC2ahpkd9Hu1PzUL1eEH12I5yEhfX7zGT89Wrb2oI3Dou5zhO3KPEi3ytYuxgKu+W
-         aC8fz14/szwFtv9Aq86tJKxYPdlH+bqTLxb8wY98GOwaP+0uroK7cfH0avjoNdbv7zos
-         f6nNmPiP0RXkkcjnJSe5zBQ7kRJe15GGa+YimMFR3Y5/SFH0ytb5Ln8vLr6e001fKi2b
-         1dHp1om+oLHDyqbVEtPvonWMcJ/f1iu6DqFQK9EbdVb13BdQ7Uc/pv/WXG5ssEgF6iFQ
-         Tr08wPJBMjdTrQfz7wIoUxpAEzMLjB+yfawht8jh+JmpzPg+APBpDET4MI+bG+RckFOQ
-         zKAA==
-X-Gm-Message-State: AC+VfDysh0nH0gBz8REXqbLcYo4+RbG/9zKu6RIfUvEw4p7gyD2tDuA2
-	vYbJ8WQf/EARztrlzHcP/fMYFg==
-X-Google-Smtp-Source: ACHHUZ6lmmFf/0ibwe+WKbI0ifv4OuMglfG9u0X3AiYAWAX4tIOowPkYVHoifUkz419xEj0RG2qB4g==
-X-Received: by 2002:a5d:4b90:0:b0:306:3b12:d6aa with SMTP id b16-20020a5d4b90000000b003063b12d6aamr290306wrt.38.1683126516104;
-        Wed, 03 May 2023 08:08:36 -0700 (PDT)
-Received: from localhost ([102.36.222.112])
-        by smtp.gmail.com with ESMTPSA id m7-20020adfe0c7000000b003048477729asm24061876wri.81.2023.05.03.08.08.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 May 2023 08:08:34 -0700 (PDT)
-Date: Wed, 3 May 2023 18:08:28 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: ryder.lee@mediatek.com
-Cc: linux-mediatek@lists.infradead.org
-Subject: [bug report] wifi: mt76: mt7996: enable BSS_CHANGED_BASIC_RATES
- support
-Message-ID: <9b37d4c2-f6bf-442e-950c-5dbbf8f2a01e@kili.mountain>
+	id 1puE5z-004udb-0P;
+	Wed, 03 May 2023 15:08:44 +0000
+Received: from [IPV6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2] (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 86AEC660309E;
+	Wed,  3 May 2023 16:08:38 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1683126519;
+	bh=RwTGWOhkT7pHlQLK7lBAvP67WOlpNIgQtMBeQOTu5GQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=TsfBtP/r5DB06esjjVFlv1laNtIZfYOWcaJSjKiK/vBGHoYjiFdeIa33f0Frtk+4L
+	 FUOXQETj1YxZhTvk8Uz2iLdvcFRnG/bmQbl2rWVB1DE3dYAG3r3bMjv7dLtUm8LoPX
+	 YY+R0XBOaaFdkKUU3aAx58sz4tmpSTnWKlmYLhWkYl+MXlIWNY9Y+QZBPq9+4BJFJu
+	 0PpCVJbt46yoxg7GdS2G7OPKqFPh5A+udbnNKP2yoZq7lgIBU4n1quPJ4bzwVnM7+c
+	 L03/4EmwU0SXjcwgPA5LwzTrWdQEs0M6tiGvbIMikeeonyPlx8/hEPVl/L+IlFrSCl
+	 V8LxOwUKef5nw==
+Message-ID: <449d21bf-c91c-f8dc-38c4-1206a5463fdd@collabora.com>
+Date: Wed, 3 May 2023 17:08:35 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.1
+Subject: Re: [PATCH 1/3] thermal/drivers/mediatek/lvts_thermal: Handle IRQ on
+ all controllers
+Content-Language: en-US
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: Alexandre Bailon <abailon@baylibre.com>, kernel@collabora.com,
+ Chen-Yu Tsai <wenst@chromium.org>, Balsam CHIHI <bchihi@baylibre.com>,
+ Alexandre Mergnat <amergnat@baylibre.com>, Amit Kucheria <amitk@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
+References: <20230428195347.3832687-1-nfraprado@collabora.com>
+ <20230428195347.3832687-2-nfraprado@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230428195347.3832687-2-nfraprado@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230503_080840_104480_1F9852B4 
-X-CRM114-Status: UNSURE (   5.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230503_080843_341738_AFD53092 
+X-CRM114-Status: GOOD (  10.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,40 +83,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Ryder Lee,
+Il 28/04/23 21:53, Nícolas F. R. A. Prado ha scritto:
+> There is a single IRQ handler for each LVTS thermal domain, and it is
+> supposed to check each of its underlying controllers for the origin of
+> the interrupt and clear its status. However due to a typo, only the
+> first controller was ever being handled, which resulted in the interrupt
+> never being cleared when it happened on the other controllers. Add the
+> missing index so interrupts are handled for all controllers.
+> 
+> Fixes: f5f633b18234 ("thermal/drivers/mediatek: Add the Low Voltage Thermal Sensor driver")
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-This is a semi-automatic email about new static checker warnings.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-The patch 15ee62e73705: "wifi: mt76: mt7996: enable 
-BSS_CHANGED_BASIC_RATES support" from Apr 14, 2023, leads to the 
-following Smatch complaint:
 
-    drivers/net/wireless/mediatek/mt76/mt7996/mac.c:1018 mt7996_mac_write_txwi()
-    warn: variable dereferenced before check 'vif' (see line 1007)
-
-drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-  1006		struct ieee80211_vif *vif = info->control.vif;
-  1007		struct mt7996_vif *mvif = (struct mt7996_vif *)vif->drv_priv;
-                                                               ^^^^^^^^^^^^^
-New dereference.
-
-  1008		u8 band_idx = (info->hw_queue & MT_TX_HW_QUEUE_PHY) >> 2;
-  1009		u8 p_fmt, q_idx, omac_idx = 0, wmm_idx = 0;
-  1010		bool is_8023 = info->flags & IEEE80211_TX_CTL_HW_80211_ENCAP;
-  1011		u16 tx_count = 15;
-  1012		u32 val;
-  1013		bool beacon = !!(changed & (BSS_CHANGED_BEACON |
-  1014					    BSS_CHANGED_BEACON_ENABLED));
-  1015		bool inband_disc = !!(changed & (BSS_CHANGED_UNSOL_BCAST_PROBE_RESP |
-  1016						 BSS_CHANGED_FILS_DISCOVERY));
-  1017	
-  1018		if (vif) {
-                    ^^^
-Too late.
-
-  1019			omac_idx = mvif->mt76.omac_idx;
-  1020			wmm_idx = mvif->mt76.wmm_idx;
-
-regards,
-dan carpenter
 
