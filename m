@@ -4,88 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57F73C7EE24
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 May 2023 01:19:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 302BDC77B7F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 May 2023 03:30:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=N7SiEGBWMW4xBXpr3D8/ddDSchS+RmQTRdaPmlrmN1s=; b=c6Q12gnEOn/ArdmMj04P4BLFyC
-	N34X9xv1CUcX59aaRxxnS1gXeKkd5Hj+3rmVgRlCkzobRRctwSO0H9Z3TB7JjWXHDsgOV5WAhIvE+
-	oXkCwYb8H3SQP5uTtsj34Y2lMi024EX6AHiCEy9j3/jvWTn+W35UUsQypONGnAASMSFuqwJL7BQda
-	L59WvIg0D0a3PwqU73B6NMNaSZKr3rN+w5WbFKPAVp2LQMjk39mcmYYhovKrjf8ivRhkQ/3iKqkqD
-	iqbEZ2B99R9iWZh8BdNTEeyt8O1jYkPCUc2Es+XkV2p39VrZ3kax+HR580/qSL+alylkAmdoJk6Tn
-	ck447sRg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:
+	References:Date:Message-Id:From:Subject:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=e7k3UvXcOvTWD8QXMn9yzrNQrUVLsUztShNUrwH+zPg=; b=o876nztJrPfQdFvgs2aFu6GW2v
+	Q7a2KHPBtwAH0BquZf6gskSQRbXQ9spT43uWCJlYt6Pt2dQYRC1QuaQmuQjx0r3iJaWK63Bj+SZHb
+	LoIYmfQoUWdd9t0+sFJeUFzy5sPG8/xi/vpd+OYm02XyMyOyZoUGJ0l7V4XDG1ZY29pXoZwv4b5Ox
+	uBJJ6X3YG1rVWAnoMJhQfV/8t5fgsUuPHMgYAvdwU0d+7pPYFy2YkMQBMhU/1U12v1xrQckstTzpx
+	KlGN17Sp2LFijGDeVxFmqGlCfdIKOw4EiFmbTc+eFEJuyCv6h22I+E+w7lwXHaoIkXGYokKTg/8Im
+	fvh43qwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pu19l-0032Rk-2o;
-	Wed, 03 May 2023 01:19:45 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pu3CF-003E4U-2G;
+	Wed, 03 May 2023 03:30:27 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pu19h-0032QD-06;
-	Wed, 03 May 2023 01:19:42 +0000
+	id 1pu3C9-003E3J-2y;
+	Wed, 03 May 2023 03:30:23 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 54A66629F4;
-	Wed,  3 May 2023 01:19:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3A491C433D2;
-	Wed,  3 May 2023 01:19:27 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 6BA3360B78;
+	Wed,  3 May 2023 03:30:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id B3392C433EF;
+	Wed,  3 May 2023 03:30:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1683076779;
-	bh=/ClN072w7D0BeanxCvNBxwRHREUHQZYiL77EUxvntHk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=JVZeDMEmw3ok5p7/Jokl5bNCXoQM891Tszn/Thv4zoccfzdzf7iHFIpWlAS0tyFpX
-	 AA7SIMVFkbkYY5BWamH6TXc+Z4lBpRRw/BuCp0bg7BjTsUVZrM3wqhddMLNOBEqtCs
-	 iokjjjqiG3GqW0VqYJKaWIQpd6Q+V0thg4cB4zRnaTSa9V24b7++ydOgA3W/HzZ8PC
-	 UWZO6ttjeoJqXl+BqEV6mBqbjoqkHY/IX5QVwWKf09zlT/tidsYX0jfpN0ED1RsGYc
-	 11tcJfs9v4CYDwdvCCUAUixITcxX98mDPAOJAgRNKRIxD9/FJHjnGP5J0TfstHwO9a
-	 Jao70lg62pHUg==
-Date: Wed, 3 May 2023 09:19:20 +0800
-From: Shawn Guo <shawnguo@kernel.org>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
-	Geert Uytterhoeven <geert@linux-m68k.org>,
-	Olof Johansson <olof@lixom.net>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-actions@lists.infradead.org,
-	linux-sunxi@lists.linux.dev,
-	Linux-OMAP <linux-omap@vger.kernel.org>,
-	linux-amlogic@lists.infradead.org, linux-arm-kernel@axis.com,
-	linux-aspeed@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org,
-	chrome-platform@lists.linux.dev,
-	Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
-	linux-samsung-soc@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com, kernel@dh-electronics.com,
-	linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org,
-	linux-tegra@vger.kernel.org,
-	"linux-oxnas@groups.io" <linux-oxnas@groups.io>,
-	linux-arm-msm@vger.kernel.org, linux-unisoc@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-realtek-soc@lists.infradead.org
-Subject: Re: [RFC PATCH 0/1] Categorize ARM dts directory
-Message-ID: <20230503011920.GB31464@dragon>
-References: <20220328000915.15041-1-ansuelsmth@gmail.com>
- <85eb14ec-f465-7447-ad77-a3dabc666f47@kernel.org>
- <YkKRYnN84D9VZhGj@Ansuel-xps.localdomain>
- <CAL_Jsq+RQQ-ADMxLPUFwk6S6kGmb6oNDy4k52fnU0EtbUvqmSA@mail.gmail.com>
- <CAMuHMdWNTE48MFy6fqxAsfMWz9b6E7dVNXtXtESP95sxk2PGwA@mail.gmail.com>
- <CAL_JsqJthKTm8bhRF2B=ae1tvtPeYYXx_Tm76qQtSwLtH5C6VA@mail.gmail.com>
- <720a2829-b6b5-411c-ac69-9a53e881f48d@app.fastmail.com>
- <CAL_JsqKCtmkwzKa01gyG65fH8ye6R3KhR41PJbJhOJ4X9j=znA@mail.gmail.com>
- <2783a3ba-8fcb-7e5f-3147-91d02e573ba4@kernel.org>
+	s=k20201202; t=1683084619;
+	bh=WLePMFTzjehr9UevzId0j2OA0wYMyFASCHTHGYPPt2w=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=M32UpwLrF0haRxJJu4+N6DyK2waPH0u80DX/t6PsuBzKMfQdHl5U1+guDJAaWr+pJ
+	 P40yjI8fyWwShSe28I1r5pqFwtVnSk14s722dNoho9UE/iKltSn8ytt89ZTFO79OZZ
+	 HQtcjEOzDtBVaZxnXiPlEp7MtOHtQIlTUWBwNAnf3YyyEWnP8PYYU/Qjb6xiGtzxJm
+	 k0yYwbacdxQwvUuXfYD4ZqRKqOOk2LCTWpy1kT1QDB/hVCngOQ1XSx9HKFhscVbjWI
+	 MaWoFnDUAETaE3yfec2NR2xAGfqFqze1Eher+sSLPDwORJJjvg/IFwOjm0GFMb8mkU
+	 XjGC+rEVRZ6BA==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 8E1BEC3959E;
+	Wed,  3 May 2023 03:30:19 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <2783a3ba-8fcb-7e5f-3147-91d02e573ba4@kernel.org>
+Subject: Re: [net v2] net: ethernet: mtk_eth_soc: drop generic vlan rx offload,
+ only use DSA untagging
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id:  <168308461957.6433.6971778251909204791.git-patchwork-notify@kernel.org>
+Date: Wed, 03 May 2023 03:30:19 +0000
+References: <20230426172153.8352-1-linux@fw-web.de>
+In-Reply-To: <20230426172153.8352-1-linux@fw-web.de>
+To: Frank Wunderlich <linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230502_181941_151122_123745CA 
-X-CRM114-Status: GOOD (  33.15  )
+X-CRM114-CacheID: sfid-20230502_203022_028894_04DE4FED 
+X-CRM114-Status: GOOD (  10.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,183 +71,33 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: angelogioacchino.delregno@collabora.com, netdev@vger.kernel.org, sean.wang@mediatek.com, linux@armlinux.org.uk, stable@vger.kernel.org, davem@davemloft.net, edumazet@google.com, arinc.unal@arinc9.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, john@phrozen.org, matthias.bgg@gmail.com, kuba@kernel.org, pabeni@redhat.com, lorenzo@kernel.org, Mark-MC.Lee@mediatek.com, linux-kernel@vger.kernel.org, nbd@nbd.name
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 02, 2023 at 10:02:03PM +0200, Krzysztof Kozlowski wrote:
-> On 02/05/2023 21:40, Rob Herring wrote:
-> > On Tue, May 2, 2023 at 3:15 AM Arnd Bergmann <arnd@arndb.de> wrote:
-> >>
-> >> On Tue, Apr 25, 2023, at 17:57, Rob Herring wrote:
-> >>> On Tue, Apr 25, 2023 at 2:28 AM Geert Uytterhoeven <geert@linux-m68k.org> wrote:
-> >>>
-> >>>> Does your script also cater for .dts files not matching any pattern,
-> >>>> but including a .dtsi file that does match a pattern?
-> >>>
-> >>> I assume I built everything after moving, but maybe not...
-> >>>
-> >>> That's all just "details". First, we need agreement on a) moving
-> >>> things to subdirs and b) doing it 1-by-1 or all at once. So far we've
-> >>> been stuck on a) for being 'too much churn'.
-> >>
-> >> Sorry for missing most of the discussion last week. The script sounds
-> >> fine to me, the only reason I didn't want to do this in the past is that
-> >> we had the plan to move platforms out of the kernel tree to an external
-> >> repository and I wanted to do this platform at a time and also only move
-> >> each one once. I don't think that is going to happen anytime soon now,
-> >> so let's just do your script.
-> >>
-> >> Can you send me the script and/or a pull request of the resulting
-> >> tree based on my soc/dt branch? Everything is merged upstream,
-> >> and I think git-merge would handle the remaining merges with any
-> >> other changes in mainline.
-> > 
-> > I've dusted off my script and made a branch[1] with the result.
-> > There's just a couple of fixes needed after the script is run (see the
-> > top commit). The cross arch includes are all fixed up by the script.
-> > dtbs_install maintains a flat install. I compared the number of .dtbs
-> > before and after to check the script.
-> > 
-> > I think the only issue remaining is finalizing the mapping of
-> > platforms to subdirs. What I have currently is a mixture of SoC
-> > families and vendors. The most notable are all the Freescale/NXP
-> > platforms, pxa, socfpga, and stm32. It's not consistent with arm64
-> > either. Once that's finalized, I still need to go update MAINTAINERS.
-> > 
-> > Here's the current mapping:
-> > 
-> > vendor_map = {
-> >     'alphascale' : 'alphascale',
-> >     'alpine' : 'alpine',
-> >     'artpec' : 'axis',
-> >     'axm' : 'lsi',
-> >     'cx9' : 'cnxt',
-> >     'ecx' : 'calxeda',
-> >     'highbank' : 'calxeda',
-> >     'ep7' : 'cirrus',
-> >     'mxs': 'mxs',
-> >     'imx23': 'mxs',
-> >     'imx28': 'mxs',
-> >     'sun' : 'allwinner',
-> >     'imx': 'imx',
-> >     'e6' : 'imx',
-> >     'e7' : 'imx',
-> >     'mba6' : 'imx',
-> >     'ls': 'fsl',
-> >     'vf': 'fsl',
-> 
-> If I remember correctly, Vybrid are a bit closer to iMX than to LS
-> (Layerscape), but it should be Shawn's call (+Cc).
+Hello:
 
-I would suggest to have all Freescale/NXP platforms in a single
-directory, which includes all mxs, imx, fsl ones.
+This patch was applied to netdev/net.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-Shawn
+On Wed, 26 Apr 2023 19:21:53 +0200 you wrote:
+> From: Felix Fietkau <nbd@nbd.name>
+> 
+> Through testing I found out that hardware vlan rx offload support seems to
+> have some hardware issues. At least when using multiple MACs and when
+> receiving tagged packets on the secondary MAC, the hardware can sometimes
+> start to emit wrong tags on the first MAC as well.
+> 
+> [...]
 
-> 
-> >     'qcom': 'qcom',
-> >     'am3' : 'ti',
-> >     'am4' : 'ti',
-> >     'am5' : 'ti',
-> >     'dra' : 'ti',
-> >     'keystone' : 'ti',
-> >     'omap' : 'ti',
-> >     'compulab' : 'ti',
-> >     'logicpd' : 'ti',
-> >     'elpida' : 'ti',
-> >     'motorola' : 'ti',
-> >     'twl' : 'ti',
-> >     'da' : 'ti',
-> >     'dm' : 'ti',
-> >     'nspire' : 'nspire',
-> >     'armada' : 'marvell',
-> >     'dove' : 'marvell',
-> >     'kirkwood' : 'marvell',
-> >     'orion' : 'marvell',
-> >     'mvebu' : 'marvell',
-> >     'mmp' : 'marvell',
-> >     'berlin' : 'berlin',
-> >     'pxa2' : 'pxa',
-> >     'pxa3' : 'pxa',
-> >     'pxa' : 'marvell',
-> >     'arm-' : 'arm',
-> >     'integ' : 'arm',
-> >     'mps' : 'arm',
-> >     've' : 'arm',
-> >     'aspeed' : 'aspeed',
-> >     'ast2' : 'aspeed',
-> >     'facebook' : 'aspeed',
-> >     'ibm' : 'aspeed',
-> >     'openbmc' : 'aspeed',
-> >     'en7' : 'airoha',
-> >     'at91' : 'microchip',
-> >     'sama' : 'microchip',
-> >     'sam9' : 'microchip',
-> >     'usb_' : 'microchip',
-> >     'tny_' : 'microchip',
-> >     'mpa1600' : 'microchip',
-> >     'animeo_ip' : 'microchip',
-> >     'aks-cdu' : 'microchip',
-> >     'ethernut5' : 'microchip',
-> >     'evk-pro3' : 'microchip',
-> >     'pm9g45' : 'microchip',
-> >     'ge86' : 'microchip',
-> >     'bcm' : 'brcm',
-> >     'exynos' : 'samsung',
-> >     's3c' : 'samsung',
-> >     's5p' : 'samsung',
-> 
-> For samsung looks good.
-> 
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> 
-> >     'gemini' : 'gemini',
-> >     'hi3' : 'hisilicon',
-> >     'hip' : 'hisilicon',
-> >     'hisi' : 'hisilicon',
-> >     'sd5' : 'hisilicon',
-> >     'hpe' : 'hpe',
-> >     'intel': 'intel',
-> >     'mt' : 'mediatek',
-> >     'meson' : 'meson',
-> >     'moxa' : 'moxa',
-> >     'mstar' : 'mstar',
-> >     'nuvo' : 'nuvoton',
-> >     'lpc' : 'lpc',
-> >     'lan96' : 'microchip',
-> >     'owl' : 'actions',
-> >     'ox8' : 'oxsemi',
-> >     'rda' : 'rda',
-> >     'rtd' : 'realtek',
-> >     'r7' : 'renesas',
-> >     'r8' : 'renesas',
-> >     'r9' : 'renesas',
-> >     'emev2' : 'renesas',
-> >     'sh73a' : 'renesas',
-> >     'gr-' : 'renesas',
-> >     'iwg' : 'renesas',
-> >     'rk' : 'rockchip',
-> >     'rv11' : 'rockchip',
-> >     'rockchip' : 'rockchip',
-> >     'socfpga' : 'socfpga',
-> >     'stm' : 'stm32',
-> >     'sti' : 'sti',
-> >     'st-pin' : 'sti',
-> >     'ste' : 'st-ericsson',
-> >     'spear' : 'spear',
-> >     'axp' : 'allwinner',
-> >     'tegra' : 'nvidia',
-> >     'milbeaut' : 'socionext',
-> >     'uniph' : 'socionext',
-> >     'vt8500' : 'vt8500',
-> >     'wm8' : 'vt8500',
-> >     'xen' : 'xen',
-> >     'zx' : 'zte',
-> >     'zynq' : 'xilinx',
-> 
-> The rest looks good to me, but I don't know half of these :)
-> 
-> Best regards,
-> Krzysztof
-> 
+Here is the summary with links:
+  - [net,v2] net: ethernet: mtk_eth_soc: drop generic vlan rx offload, only use DSA untagging
+    https://git.kernel.org/netdev/net/c/c6d96df9fa2c
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
