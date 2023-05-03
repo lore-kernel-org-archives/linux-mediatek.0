@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8982C7EE23
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 May 2023 11:34:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1737C77B75
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 May 2023 11:34:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=oIx7VuqX2K6wDAtw6rgNEigmBfR+TczNCFzj17fnjdE=; b=koG9aiG7LjeRXt+wsPBSvizKMW
-	XfbXqweSDUZCWfa50/n3W5+erfIQh3Q3l32f1PTE69U8fMe9tEynwfAPEnw3fYWvjD9XpKwxYKsvY
-	iL7yFKYNJPrQQWpQhY+/SdonGbAaGTOlnzTBTvBjB2NyJv9aAM/Dug5lwVYs8AEKj68IFlNIqAi9i
-	8Fq8WdylBaTyH63Iw726hdtVeizA/l0i9S6fOHh/PFVXlQQXCLrVY6NIBXnGc8Er3TKX9BFz6Jcv7
-	Y5UhX6mW+IbRf6eG8sHKeeHR9826eDoXsakMIvypeGvfVDKgy0gbuBWLEA/fRXCmOZFxCrinUKYbG
-	c3OLt0ug==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DHPLzKmBsUm9HQgDoTgBtcEUS4EMTLqMPq94LXx/M/c=; b=skGzFu3quC7CeiUm/9MLjPNHW4
+	IcN/wU6Rg48yJJ1LXROLZoeOUQnOQytB0dQhCglgoIZxm12Jgtcf1qbz1UgzJKCDCXrngbB1qz913
+	EzTBETRFul/6Pej81nid0JWsw4zU6xG1yUrPbi7ildn00QN4OkzymI069acUBfWkCygPiUUZhakcW
+	7KOPxaVcVCFvY3zIAhnYti0yTfABT11Ynvc4kXOkXuyyCtBFsfp33C9aLedzREJlotMyXQ+GAQIkL
+	tmu5o4HftWrH6Bj54EYq1/yIkr04IJCVyY/vqqVSrQvrv5QNhcOt/FYMsiZAabQAsfH4BmEg4F3tb
+	T/U69WEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1puAkf-004OBK-2b;
-	Wed, 03 May 2023 11:34:29 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1puAkj-004ODX-2p;
+	Wed, 03 May 2023 11:34:33 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1puAkb-004O8F-0c;
-	Wed, 03 May 2023 11:34:26 +0000
+	id 1puAkc-004O8f-0R;
+	Wed, 03 May 2023 11:34:27 +0000
 Received: from IcarusMOD.eternityproject.eu (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2135C660309E;
-	Wed,  3 May 2023 12:34:19 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 797F266056CE;
+	Wed,  3 May 2023 12:34:22 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1683113660;
-	bh=D4GxHwRdyAouEXBmGeD9y+SB4oSmGvmMfyzdYBUTGVw=;
-	h=From:To:Cc:Subject:Date:From;
-	b=FO9btotfEblnP/1DE5WqXhomqoU+yNbZ7N8+Nsy8eenwAs4MZzxIWUrXh0Y3w2RPu
-	 Vm0llArH4IEy3kOoR5TnPuBeZ2tbWl0qgeN8V2lNfK+Wl4DfkGmR17HAsTYGcrOfzQ
-	 8ALiaC5v8FzihTBzNFFK4YvsMoOf78DVujTY/nVRnxwprAUzlRA4nm+uuq2DMPttFu
-	 KPsHdcA0fWQkHdMWRFoxlI7eOdz5a0Vcv6cSBRO7oki1cZSscyoo2hDR78s8Pr2BPZ
-	 NKs72uI/0J2qEDl22rB4o39wM1rGZxWbj5Xq/fBRCVDOLLw74yO647543yvwaaEpNv
-	 KPPMyudnJeUMg==
+	s=mail; t=1683113663;
+	bh=L39f0aIGeOnQPRMtTubkebioIWUYydMxDfJeYgCV4k0=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=LJB0T/0iHKJUrGdMcxKrOMKcwBeIRmFsrMfUR+fGgA+VlJT4FAhaa8QDVQSsfZzH1
+	 HmD6uIVi4pUAE9Crl0yTwgVPK7eFAqnf4f4RZcZ9tGQp6Ol3CprXYGZxOjSydK1amL
+	 unew7PpOHyq082BVucjyF89Ukx5JEiCDyQelNqF9GHhrLO/CXbbNOm28rWQvC924JM
+	 VvBBK2VAXHlek50LaoirqagFS+McddJfCHVgZH1/NBGiF979ZdIQv3rxRNfsjWAcl1
+	 46/w1s0Kx7odsvmZr8dlWqdCrBQHNnhOL8k0DhoWryOIRoH4kQHk4Ct4GZAZrH4iip
+	 pKOjoz3LpptjA==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: lgirdwood@gmail.com
 Cc: broonie@kernel.org,
@@ -70,16 +70,17 @@ Cc: broonie@kernel.org,
 	linux-mediatek@lists.infradead.org,
 	sound-open-firmware@alsa-project.org,
 	kernel@collabora.com
-Subject: [PATCH 0/5] ASoC: MediaTek MT8195/86 Cleanups
-Date: Wed,  3 May 2023 13:34:08 +0200
-Message-Id: <20230503113413.149235-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 2/5] ASoC: SOF: mediatek: mt8186: Use snd_sof_ipc_process_reply() helper
+Date: Wed,  3 May 2023 13:34:10 +0200
+Message-Id: <20230503113413.149235-3-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20230503113413.149235-1-angelogioacchino.delregno@collabora.com>
+References: <20230503113413.149235-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230503_043425_439561_EF4C8E4F 
-X-CRM114-Status: UNSURE (   6.48  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230503_043426_302741_6949E53B 
+X-CRM114-Status: GOOD (  13.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,22 +95,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series performs some cleanups for mainly MT8195 and switches
-both MT8195 and MT8186's SOF driver to the snd_sof_ipc_process_reply()
-helper.
+Function mt8186_get_reply() performs practically the same operation
+as the common snd_sof_ipc_get_reply() helper: removing the custom
+function allows us to simply perform a call to the sof-priv helper
+snd_sof_ipc_process_reply(), simplifying and shortening this driver
+and getting all the benefits of using a common API.
 
-AngeloGioacchino Del Regno (5):
-  ASoC: SOF: mediatek: mt8195: Use snd_sof_ipc_process_reply() helper
-  ASoC: SOF: mediatek: mt8186: Use snd_sof_ipc_process_reply() helper
-  ASoC: mediatek: mt8195-afe-pcm: Simplify runtime PM during probe
-  ASoC: mediatek: mt8195-afe-pcm: Simplify with dev_err_probe()
-  ASoC: mediatek: mt8195-afe-pcm: Clean up unnecessary functions
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ sound/soc/sof/mediatek/mt8186/mt8186.c | 36 +-------------------------
+ 1 file changed, 1 insertion(+), 35 deletions(-)
 
- sound/soc/mediatek/mt8195/mt8195-afe-pcm.c | 99 ++++++++--------------
- sound/soc/sof/mediatek/mt8186/mt8186.c     | 36 +-------
- sound/soc/sof/mediatek/mt8195/mt8195.c     | 36 +-------
- 3 files changed, 36 insertions(+), 135 deletions(-)
-
+diff --git a/sound/soc/sof/mediatek/mt8186/mt8186.c b/sound/soc/sof/mediatek/mt8186/mt8186.c
+index 597cb4476acb..419913c8474d 100644
+--- a/sound/soc/sof/mediatek/mt8186/mt8186.c
++++ b/sound/soc/sof/mediatek/mt8186/mt8186.c
+@@ -48,47 +48,13 @@ static int mt8186_send_msg(struct snd_sof_dev *sdev,
+ 	return mtk_adsp_ipc_send(priv->dsp_ipc, MTK_ADSP_IPC_REQ, MTK_ADSP_IPC_OP_REQ);
+ }
+ 
+-static void mt8186_get_reply(struct snd_sof_dev *sdev)
+-{
+-	struct snd_sof_ipc_msg *msg = sdev->msg;
+-	struct sof_ipc_reply reply;
+-	int ret = 0;
+-
+-	if (!msg) {
+-		dev_warn(sdev->dev, "unexpected ipc interrupt\n");
+-		return;
+-	}
+-
+-	/* get reply */
+-	sof_mailbox_read(sdev, sdev->host_box.offset, &reply, sizeof(reply));
+-	if (reply.error < 0) {
+-		memcpy(msg->reply_data, &reply, sizeof(reply));
+-		ret = reply.error;
+-	} else {
+-		/* reply has correct size? */
+-		if (reply.hdr.size != msg->reply_size) {
+-			dev_err(sdev->dev, "error: reply expected %zu got %u bytes\n",
+-				msg->reply_size, reply.hdr.size);
+-			ret = -EINVAL;
+-		}
+-
+-		/* read the message */
+-		if (msg->reply_size > 0)
+-			sof_mailbox_read(sdev, sdev->host_box.offset,
+-					 msg->reply_data, msg->reply_size);
+-	}
+-
+-	msg->reply_error = ret;
+-}
+-
+ static void mt8186_dsp_handle_reply(struct mtk_adsp_ipc *ipc)
+ {
+ 	struct adsp_priv *priv = mtk_adsp_ipc_get_data(ipc);
+ 	unsigned long flags;
+ 
+ 	spin_lock_irqsave(&priv->sdev->ipc_lock, flags);
+-	mt8186_get_reply(priv->sdev);
+-	snd_sof_ipc_reply(priv->sdev, 0);
++	snd_sof_ipc_process_reply(priv->sdev, 0);
+ 	spin_unlock_irqrestore(&priv->sdev->ipc_lock, flags);
+ }
+ 
 -- 
 2.40.1
 
