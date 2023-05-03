@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5267C77B75
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 May 2023 15:32:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDCA6C77B75
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 May 2023 15:54:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6a695ohgjzZEDs/cnw3dnN77xrck3U8gz3zWhjqFYlY=; b=O6LfEkyR9RYkMdmcb7XqYhElxx
-	6GJszYw3ikC1wm9+38ubpXddhnMoi6Qb2YqQvTWFySYhsenEl3Y/vhOwdUTLaH1u/AWeLEAH81ze+
-	jTwW0DL7dOvN7E2TrB/qNPqRUL2N7HfrkDLREhGIk/4kQOwSkuMWiDMEYNr/eZEhG1x0bnxCNnZBu
-	HWkl8XU+gxjzn4po0XVk6TA+FpPMf/V/aXzGJonj0swSNIiqY/gi3o+o74JjwYb8UfaGRl/+mMLy7
-	oqH7WDc7syNY8S15twgX3Kug/UVQeSoTww+kD4VdxSduC8XnE/YiYXMlJ6gnP7npyHPiTi4W5/Txs
-	/qe1QWVg==;
+	bh=+YqU76Q0fKbo2N+KRZXgDvvAQt3qhpGn467NOgj4GYc=; b=IvQ6Ea28UFe3/6riafS6IcTDDd
+	6nSCCkgD77ogJ+iBzVhKmYiWCY/aWUVZiSRy9IPuxcsuDkHh0RlsDSAL+bHajRmG+sH22oKF6Z6p8
+	QkQLXOoEGVxRDZoYA4PeeJxfCBGMFErGinWSmcO0LV4Hn4G6BSdrY9/pELQpKDxS+LXEUUSB+crOs
+	NEB11T6HkHgs27ZjUSYeGQ1zNYQ6nTExKQb6DgWKmTqJw1oVjBpCO7rOhNhoIOmw5rmC7A6f/UHdE
+	sP+lBilg+Cw/fCozwUG0fz+WkzYaWsMs7xZ0GalYjA7RRnprZ/CSg+UP3tZuF1XAtEXZUPmOe4tDH
+	mLfW1Mcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1puESZ-004yjB-0n;
-	Wed, 03 May 2023 15:32:03 +0000
+	id 1puEoY-0051hD-0o;
+	Wed, 03 May 2023 15:54:46 +0000
 Received: from foss.arm.com ([217.140.110.172])
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1puESU-004yhJ-2O;
-	Wed, 03 May 2023 15:32:00 +0000
+	id 1puEoU-0051gI-0D;
+	Wed, 03 May 2023 15:54:43 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 287FE2F4;
-	Wed,  3 May 2023 08:32:33 -0700 (PDT)
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 0212E2F4;
+	Wed,  3 May 2023 08:55:24 -0700 (PDT)
 Received: from [10.57.82.232] (unknown [10.57.82.232])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 4E3243F5A1;
-	Wed,  3 May 2023 08:31:43 -0700 (PDT)
-Message-ID: <aaddd64b-6935-f84a-5fda-28011c717051@arm.com>
-Date: Wed, 3 May 2023 16:31:39 +0100
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id A7AC53F67D;
+	Wed,  3 May 2023 08:54:33 -0700 (PDT)
+Message-ID: <e73c6192-8fd5-042d-ce03-095b336270ee@arm.com>
+Date: Wed, 3 May 2023 16:54:28 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
  Thunderbird/102.10.1
-Subject: Re: [PATCH 06/20] iommu/exynos: Implement an IDENTITY domain
+Subject: Re: [PATCH 16/20] iommu/sun50i: Add an IOMMU_IDENTITIY_DOMAIN
 Content-Language: en-GB
 To: Jason Gunthorpe <jgg@nvidia.com>, Andy Gross <agross@kernel.org>,
  Alim Akhtar <alim.akhtar@samsung.com>, Bjorn Andersson
@@ -65,14 +65,14 @@ To: Jason Gunthorpe <jgg@nvidia.com>, Andy Gross <agross@kernel.org>,
  Chunyan Zhang <zhang.lyra@gmail.com>
 Cc: Lu Baolu <baolu.lu@linux.intel.com>, Kevin Tian <kevin.tian@intel.com>,
  Nicolin Chen <nicolinc@nvidia.com>, Steven Price <steven.price@arm.com>
-References: <6-v1-21cc72fcfb22+a7a-iommu_all_defdom_jgg@nvidia.com>
+References: <16-v1-21cc72fcfb22+a7a-iommu_all_defdom_jgg@nvidia.com>
 From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <6-v1-21cc72fcfb22+a7a-iommu_all_defdom_jgg@nvidia.com>
+In-Reply-To: <16-v1-21cc72fcfb22+a7a-iommu_all_defdom_jgg@nvidia.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230503_083158_874318_4722FC82 
-X-CRM114-Status: GOOD (  24.82  )
+X-CRM114-CacheID: sfid-20230503_085442_222784_E2F930B4 
+X-CRM114-Status: GOOD (  17.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,194 +87,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2023-05-01 19:02, Jason Gunthorpe wrote:
-> What exynos calls exynos_iommu_detach_device is actually putting the iommu
-> into identity mode.
-> 
-> Move to the new core support for ARM_DMA_USE_IOMMU by defining
-> ops->identity_domain.
+
+On 2023-05-01 19:03, Jason Gunthorpe wrote:
+> This brings back the ops->detach_dev() code that commit
+> 1b932ceddd19 ("iommu: Remove detach_dev callbacks") deleted and turns it
+> into an IDENTITY domain.
 > 
 > Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
 > ---
->   drivers/iommu/exynos-iommu.c | 64 ++++++++++++++++++------------------
->   1 file changed, 32 insertions(+), 32 deletions(-)
+>   drivers/iommu/sun50i-iommu.c | 21 +++++++++++++++++++++
+>   1 file changed, 21 insertions(+)
 > 
-> diff --git a/drivers/iommu/exynos-iommu.c b/drivers/iommu/exynos-iommu.c
-> index c275fe71c4db32..6ff7901103948a 100644
-> --- a/drivers/iommu/exynos-iommu.c
-> +++ b/drivers/iommu/exynos-iommu.c
-> @@ -24,6 +24,7 @@
->   
->   typedef u32 sysmmu_iova_t;
->   typedef u32 sysmmu_pte_t;
-> +static struct iommu_domain exynos_identity_domain;
->   
->   /* We do not consider super section mapping (16MB) */
->   #define SECT_ORDER 20
-> @@ -829,7 +830,7 @@ static int __maybe_unused exynos_sysmmu_suspend(struct device *dev)
->   		struct exynos_iommu_owner *owner = dev_iommu_priv_get(master);
->   
->   		mutex_lock(&owner->rpm_lock);
-> -		if (data->domain) {
-> +		if (&data->domain->domain != &exynos_identity_domain) {
->   			dev_dbg(data->sysmmu, "saving state\n");
->   			__sysmmu_disable(data);
->   		}
-> @@ -847,7 +848,7 @@ static int __maybe_unused exynos_sysmmu_resume(struct device *dev)
->   		struct exynos_iommu_owner *owner = dev_iommu_priv_get(master);
->   
->   		mutex_lock(&owner->rpm_lock);
-> -		if (data->domain) {
-> +		if (&data->domain->domain != &exynos_identity_domain) {
->   			dev_dbg(data->sysmmu, "restoring state\n");
->   			__sysmmu_enable(data);
->   		}
-> @@ -980,17 +981,22 @@ static void exynos_iommu_domain_free(struct iommu_domain *iommu_domain)
->   	kfree(domain);
+> diff --git a/drivers/iommu/sun50i-iommu.c b/drivers/iommu/sun50i-iommu.c
+> index 74c5cb93e90027..15fd62d360778f 100644
+> --- a/drivers/iommu/sun50i-iommu.c
+> +++ b/drivers/iommu/sun50i-iommu.c
+> @@ -772,6 +772,26 @@ static void sun50i_iommu_detach_device(struct iommu_domain *domain,
+>   		sun50i_iommu_detach_domain(iommu, sun50i_domain);
 >   }
 >   
-> -static void exynos_iommu_detach_device(struct iommu_domain *iommu_domain,
-> -				    struct device *dev)
-> +static int exynos_iommu_identity_attach(struct iommu_domain *identity_domain,
+> +static int sun50i_iommu_identity_attach(struct iommu_domain *identity_domain,
 > +					struct device *dev)
->   {
-> -	struct exynos_iommu_domain *domain = to_exynos_domain(iommu_domain);
->   	struct exynos_iommu_owner *owner = dev_iommu_priv_get(dev);
-> -	phys_addr_t pagetable = virt_to_phys(domain->pgtable);
-> +	struct exynos_iommu_domain *domain;
-> +	phys_addr_t pagetable;
->   	struct sysmmu_drvdata *data, *next;
->   	unsigned long flags;
->   
-> -	if (!has_sysmmu(dev) || owner->domain != iommu_domain)
-> -		return;
-> +	if (!owner)
-> +		return -ENODEV;
-
-That can't be true - devices can't be attached without having already 
-dereferenced their group, which means they've been through probe_device 
-successfully.
-
-> +	if (owner->domain == identity_domain)
-> +		return 0;
+> +{
+> +	struct sun50i_iommu *iommu = dev_iommu_priv_get(dev);
 > +
-> +	domain = to_exynos_domain(owner->domain);
-> +	pagetable = virt_to_phys(domain->pgtable);
+> +	if (iommu->domain == identity_domain || !iommu->domain)
 
-Identity domains by definition shouldn't have a pagetable? I don't think 
-virt_to_phys(NULL) can be assumed to be valid or safe in general.
-
->   
->   	mutex_lock(&owner->rpm_lock);
->   
-> @@ -1009,15 +1015,25 @@ static void exynos_iommu_detach_device(struct iommu_domain *iommu_domain,
->   		list_del_init(&data->domain_node);
->   		spin_unlock(&data->lock);
->   	}
-
-This iterates the whole domain->clients list, which may include other 
-devices from other groups belonging to other IOMMU instances. I think 
-that's technically an issue already given that we support cross-instance 
-domain attach here, which the DRM drivers rely on. I can't quite work 
-out off-hand if this is liable to make it any worse or not :/
-
-> -	owner->domain = NULL;
-> +	owner->domain = identity_domain;
->   	spin_unlock_irqrestore(&domain->lock, flags);
->   
->   	mutex_unlock(&owner->rpm_lock);
->   
->   	dev_dbg(dev, "%s: Detached IOMMU with pgtable %pa\n", __func__,
-
-This no longer makes much sense.
-
->   		&pagetable);
-> +	return 0;
->   }
->   
-> +static struct iommu_domain_ops exynos_identity_ops = {
-> +	.attach_dev = exynos_iommu_identity_attach,
-> +};
-> +
-> +static struct iommu_domain exynos_identity_domain = {
-> +	.type = IOMMU_DOMAIN_IDENTITY,
-> +	.ops = &exynos_identity_ops,
-> +};
-> +
->   static int exynos_iommu_attach_device(struct iommu_domain *iommu_domain,
->   				   struct device *dev)
->   {
-> @@ -1026,12 +1042,11 @@ static int exynos_iommu_attach_device(struct iommu_domain *iommu_domain,
->   	struct sysmmu_drvdata *data;
->   	phys_addr_t pagetable = virt_to_phys(domain->pgtable);
->   	unsigned long flags;
-> +	int err;
->   
-> -	if (!has_sysmmu(dev))
-> -		return -ENODEV;
-> -
-> -	if (owner->domain)
-> -		exynos_iommu_detach_device(owner->domain, dev);
-> +	err = exynos_iommu_identity_attach(&exynos_identity_domain, dev);
-> +	if (err)
-> +		return err;
->   
->   	mutex_lock(&owner->rpm_lock);
->   
-> @@ -1407,26 +1422,12 @@ static struct iommu_device *exynos_iommu_probe_device(struct device *dev)
->   	return &data->iommu;
->   }
->   
-> -static void exynos_iommu_set_platform_dma(struct device *dev)
-> -{
-> -	struct exynos_iommu_owner *owner = dev_iommu_priv_get(dev);
-> -
-> -	if (owner->domain) {
-> -		struct iommu_group *group = iommu_group_get(dev);
-> -
-> -		if (group) {
-> -			exynos_iommu_detach_device(owner->domain, dev);
-> -			iommu_group_put(group);
-> -		}
-> -	}
-> -}
-> -
->   static void exynos_iommu_release_device(struct device *dev)
->   {
->   	struct exynos_iommu_owner *owner = dev_iommu_priv_get(dev);
->   	struct sysmmu_drvdata *data;
->   
-> -	exynos_iommu_set_platform_dma(dev);
-> +	WARN_ON(exynos_iommu_identity_attach(&exynos_identity_domain, dev));
->   
->   	list_for_each_entry(data, &owner->controllers, owner_node)
->   		device_link_del(data->link);
-> @@ -1457,6 +1458,7 @@ static int exynos_iommu_of_xlate(struct device *dev,
->   
->   		INIT_LIST_HEAD(&owner->controllers);
->   		mutex_init(&owner->rpm_lock);
-> +		owner->domain = &exynos_identity_domain;
-
-I think strictly this would be more of a probe_device thing than an 
-of_xlate thing, but it's not super-important.
+I don't think that first condition could ever be true.
 
 Thanks,
 Robin.
 
->   		dev_iommu_priv_set(dev, owner);
->   	}
->   
-> @@ -1471,11 +1473,9 @@ static int exynos_iommu_of_xlate(struct device *dev,
+> +		return 0;
+> +	sun50i_iommu_detach_device(iommu->domain, dev);
+> +	return 0;
+> +}
+> +
+> +static struct iommu_domain_ops sun50i_iommu_identity_ops = {
+> +	.attach_dev = sun50i_iommu_identity_attach,
+> +};
+> +
+> +static struct iommu_domain sun50i_iommu_identity_domain = {
+> +	.type = IOMMU_DOMAIN_IDENTITY,
+> +	.ops = &sun50i_iommu_identity_ops,
+> +};
+> +
+>   static int sun50i_iommu_attach_device(struct iommu_domain *domain,
+>   				      struct device *dev)
+>   {
+> @@ -827,6 +847,7 @@ static int sun50i_iommu_of_xlate(struct device *dev,
 >   }
 >   
->   static const struct iommu_ops exynos_iommu_ops = {
-> +	.identity_domain = &exynos_identity_domain,
->   	.domain_alloc = exynos_iommu_domain_alloc,
->   	.device_group = generic_device_group,
-> -#ifdef CONFIG_ARM
-> -	.set_platform_dma_ops = exynos_iommu_set_platform_dma,
-> -#endif
->   	.probe_device = exynos_iommu_probe_device,
->   	.release_device = exynos_iommu_release_device,
->   	.pgsize_bitmap = SECT_SIZE | LPAGE_SIZE | SPAGE_SIZE,
+>   static const struct iommu_ops sun50i_iommu_ops = {
+> +	.identity_domain = &sun50i_iommu_identity_domain,
+>   	.pgsize_bitmap	= SZ_4K,
+>   	.device_group	= sun50i_iommu_device_group,
+>   	.domain_alloc	= sun50i_iommu_domain_alloc,
 
