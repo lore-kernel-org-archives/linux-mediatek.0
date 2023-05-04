@@ -4,74 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59727C7EE22
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 May 2023 00:49:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C74EC77B75
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 May 2023 00:49:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=o5Y7cZBrq2eKNjGH9XtBuSapGz5eTcNiWUbtGDnAJYc=; b=AIgBj3a2CLbUG6qiZ06SQgeF/S
-	N9LoLB4VulPMlAnvJZD1Ga8ya8bSW72w3yBsoAwv3zmFRDEM/ROkp5gRglNxnmMiDfPZTQC7dxO7v
-	Ah7dCBmzzeNSiBKWWXhSPVqffiLGD12Q9waTotyap0zQS+XJVtIWZS/LfbKKYdeX6PYPFQ6yOOsbu
-	WAYy2vyVTj9sTOt6r+dnrh+HJ1ci2tO305nWdeFQdn1ctlXjEHGqTq457Wkm0IYGKQ2uc0OeuCGt+
-	ZOwMO3Tu0wyS6d7YJF3t3tH7or3pj07pw+awNUQe2DX1kARZ9EbL58AFMSEuPWJZVzhtKiXiJrQ2S
-	+b9XKbIg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NlDQwb1848SGdOzTiNLqtOw9+TMgK9xjhblj/EQDZTA=; b=ba1gqJClY9ioD32RcGCsrDRRId
+	4UZYGgTlu7XY/yNh2VtPH2scyKAAUTNQ6FhWqUlWoiZ9F/ceBAWB6ScOtADHIs9jPuhOFD57MXqfQ
+	vSZir5kBQF0MzkqdBjB71jWGyhsxbzJZJNZ86GlCm2Lrsn0Ixv7nb93mU9Em+bp2A+he8Q+ZcB2i7
+	GPZwUK5IJ37BiUEdjh8vI6oBRBgB+URGPYjnpQauNURMTxpRYh2OfVzoumav1rpc+dKXTI65dMfih
+	wuWMDoIC5Zs3PpA5gc3vwEpduwjAYyjqPNLOwQ7t9FTsp2IDNwwOEgv74bTfBCtYVNEBOIfHzk9yX
+	PqohCnRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1puN9u-006Cpk-0b;
-	Thu, 04 May 2023 00:49:22 +0000
+	id 1puNA1-006Cv1-3B;
+	Thu, 04 May 2023 00:49:29 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1puN9l-006CiJ-0k;
-	Thu, 04 May 2023 00:49:14 +0000
-Received: from notapiano.myfiosgateway.com (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
+	id 1puN9x-006Crq-3C;
+	Thu, 04 May 2023 00:49:27 +0000
+Received: from notapiano (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6BC54660484E;
-	Thu,  4 May 2023 01:49:10 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8D22F66032D5;
+	Thu,  4 May 2023 01:49:22 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1683161352;
-	bh=2CNvs29pjnQlFafHd+eKJGLMpmDNgELfBO2opQWPvJE=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=CobGbuMmOI7OdDVvyKrh8Mq0kLTKVgdoaq83aiHNawwKnjY0xFpnznMuA+oikFP5m
-	 nLkiFR1rTfq864O8TYNgdInWxvERdpC+qFxfzKCQJgQJoqbcKonhvRTonTMoMdJ9XX
-	 5zgfh2ucSrk3RIjF4wgfEcSWZxi3uCYqXZMHpF5C0cn9Ve65poUdBDRdeIbaU6pWWS
-	 tZcy170OCEFMy3IJ/CDeC815HBXW4wcERDwdh/+C5U/9K6jyZSu1YXqGPZ95sAz4+9
-	 +gm5xz+MzOdtpjwwaapJvmHsnL4IMAxLLS2SqUFJxf8HztVJi5DXmOq07PlXJaTQ++
-	 ohutEymD00fyw==
-From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: kernel@collabora.com,
-	Alexandre Mergnat <amergnat@baylibre.com>,
-	Balsam CHIHI <bchihi@baylibre.com>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Alexandre Bailon <abailon@baylibre.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
-	Amit Kucheria <amitk@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Zhang Rui <rui.zhang@intel.com>,
+	s=mail; t=1683161364;
+	bh=4swttQsDPznqEELhw91uW6KmscZSLj6XothN9d4f7l8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=hoSMsAe4WsgkM9g6C/53VENqhWK/84a5GdxZgwPj7xOC2jAkXzZtIKfpJ+dzUYQme
+	 kX+7U8hgIS73wmtr1JxAguxGhOAbgicvLGnH2raFBckLBgwL3Vcdxni753iIE6VEwd
+	 0d/umnA0gPY745qPTNJp9Dv+4q3J1X+RKaBFb6Gkwy4TTCAUMFjLmODUXiRUKtNMqq
+	 Cva3F7JEBvM9k2DSPjbuPU297ga+ju3rAypBoy0I5Br6aEkjGvjzu6MqKqCws+Swe1
+	 fMt6ls4vGlqM6C4je5sxHpRa/EAY8xz7uHB4m4zWY7ETOQ4e34sRlfLWdN2tHLNCUX
+	 dixUE7h6CYpQQ==
+Date: Wed, 3 May 2023 20:49:19 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: bchihi@baylibre.com
+Cc: daniel.lezcano@linaro.org, angelogioacchino.delregno@collabora.com,
+	rafael@kernel.org, amitk@kernel.org, rui.zhang@intel.com,
+	matthias.bgg@gmail.com, robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, rdunlap@infradead.org,
+	ye.xingchen@zte.com.cn, p.zabel@pengutronix.de,
+	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-pm@vger.kernel.org
-Subject: [PATCH v2 6/6] thermal/drivers/mediatek/lvts_thermal: Manage threshold between sensors
-Date: Wed,  3 May 2023 20:48:52 -0400
-Message-Id: <20230504004852.627049-7-nfraprado@collabora.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230504004852.627049-1-nfraprado@collabora.com>
-References: <20230504004852.627049-1-nfraprado@collabora.com>
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	wenst@chromium.org, james.lo@mediatek.com, rex-bc.chen@mediatek.com,
+	abailon@baylibre.com, amergnat@baylibre.com, khilman@baylibre.com
+Subject: Re: [PATCH v2 2/5] dt-bindings: thermal: mediatek: Add LVTS thermal
+ controller definition for mt8192
+Message-ID: <f3626333-3a8a-4557-9743-c6e65874bf6a@notapiano>
+References: <20230425133052.199767-1-bchihi@baylibre.com>
+ <20230425133052.199767-3-bchihi@baylibre.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230425133052.199767-3-bchihi@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230503_174913_558088_AFDA8CBD 
-X-CRM114-Status: GOOD (  18.65  )
+X-CRM114-CacheID: sfid-20230503_174926_161708_976724F4 
+X-CRM114-Status: UNSURE (   6.85  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,156 +84,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Each LVTS thermal controller can have up to four sensors, each capable
-of triggering its own interrupt when its measured temperature crosses
-the configured threshold. The threshold for each sensor is handled
-separately by the thermal framework, since each one is registered with
-its own thermal zone and trips. However, the temperature thresholds are
-configured on the controller, and therefore are shared between all
-sensors on that controller.
+On Tue, Apr 25, 2023 at 03:30:49PM +0200, bchihi@baylibre.com wrote:
+> From: Balsam CHIHI <bchihi@baylibre.com>
+> 
+> Add LVTS thermal controller definition for MT8192.
+> 
+> Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-When the temperature measured by the sensors is different enough to
-cause the thermal framework to configure different thresholds for each
-one, interrupts start triggering on sensors outside the last threshold
-configured.
-
-To address the issue, track the thresholds required by each sensor and
-only actually set the highest one in the hardware, and disable
-interrupts for all sensors outside the current configured range.
-
-Fixes: f5f633b18234 ("thermal/drivers/mediatek: Add the Low Voltage Thermal Sensor driver")
-Signed-off-by: NÃ­colas F. R. A. Prado <nfraprado@collabora.com>
-
----
-
-Changes in v2:
-- Added this commit
-
- drivers/thermal/mediatek/lvts_thermal.c | 69 +++++++++++++++++++++++++
- 1 file changed, 69 insertions(+)
-
-diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-index 951a4cb75ef6..2f37a175b1c6 100644
---- a/drivers/thermal/mediatek/lvts_thermal.c
-+++ b/drivers/thermal/mediatek/lvts_thermal.c
-@@ -65,6 +65,11 @@
- #define LVTS_CALSCALE_CONF			0x300
- #define LVTS_MONINT_CONF			0x8300318C
- 
-+#define LVTS_MONINT_OFFSET_SENSOR0		0xC
-+#define LVTS_MONINT_OFFSET_SENSOR1		0x180
-+#define LVTS_MONINT_OFFSET_SENSOR2		0x3000
-+#define LVTS_MONINT_OFFSET_SENSOR3		0x3000000
-+
- #define LVTS_INT_SENSOR0			0x0009001F
- #define LVTS_INT_SENSOR1			0x001203E0
- #define LVTS_INT_SENSOR2			0x00247C00
-@@ -111,6 +116,8 @@ struct lvts_sensor {
- 	void __iomem *base;
- 	int id;
- 	int dt_id;
-+	int low_thresh;
-+	int high_thresh;
- };
- 
- struct lvts_ctrl {
-@@ -120,6 +127,8 @@ struct lvts_ctrl {
- 	int num_lvts_sensor;
- 	int mode;
- 	void __iomem *base;
-+	int low_thresh;
-+	int high_thresh;
- };
- 
- struct lvts_domain {
-@@ -291,12 +300,66 @@ static int lvts_get_temp(struct thermal_zone_device *tz, int *temp)
- 	return 0;
- }
- 
-+static void lvts_update_irq_mask(struct lvts_ctrl *lvts_ctrl)
-+{
-+	u32 masks[] = {
-+		LVTS_MONINT_OFFSET_SENSOR0,
-+		LVTS_MONINT_OFFSET_SENSOR1,
-+		LVTS_MONINT_OFFSET_SENSOR2,
-+		LVTS_MONINT_OFFSET_SENSOR3,
-+	};
-+	u32 value = 0;
-+	int i;
-+
-+	value = readl(LVTS_MONINT(lvts_ctrl->base));
-+
-+	for (i = 0; i < ARRAY_SIZE(masks); i++) {
-+		if (lvts_ctrl->sensors[i].high_thresh == lvts_ctrl->high_thresh
-+		    && lvts_ctrl->sensors[i].low_thresh == lvts_ctrl->low_thresh)
-+			value |= masks[i];
-+		else
-+			value &= ~masks[i];
-+	}
-+
-+	writel(value, LVTS_MONINT(lvts_ctrl->base));
-+}
-+
-+static bool lvts_should_update_thresh(struct lvts_ctrl *lvts_ctrl, int high)
-+{
-+	int i;
-+
-+	if (high > lvts_ctrl->high_thresh)
-+		return true;
-+
-+	for (i = 0; i < lvts_ctrl->num_lvts_sensor; i++)
-+		if (lvts_ctrl->sensors[i].high_thresh == lvts_ctrl->high_thresh
-+		    && lvts_ctrl->sensors[i].low_thresh == lvts_ctrl->low_thresh)
-+			return false;
-+
-+	return true;
-+}
-+
- static int lvts_set_trips(struct thermal_zone_device *tz, int low, int high)
- {
- 	struct lvts_sensor *lvts_sensor = thermal_zone_device_priv(tz);
-+	struct lvts_ctrl *lvts_ctrl = container_of(lvts_sensor, struct lvts_ctrl, sensors[lvts_sensor->id]);
- 	void __iomem *base = lvts_sensor->base;
- 	u32 raw_low = lvts_temp_to_raw(low);
- 	u32 raw_high = lvts_temp_to_raw(high);
-+	bool should_update_thresh;
-+
-+	lvts_sensor->low_thresh = low;
-+	lvts_sensor->high_thresh = high;
-+
-+	should_update_thresh = lvts_should_update_thresh(lvts_ctrl, high);
-+	if (should_update_thresh) {
-+		lvts_ctrl->high_thresh = high;
-+		lvts_ctrl->low_thresh = low;
-+	}
-+	lvts_update_irq_mask(lvts_ctrl);
-+
-+	if (!should_update_thresh)
-+		return 0;
- 
- 	/*
- 	 * Low offset temperature threshold
-@@ -527,6 +590,9 @@ static int lvts_sensor_init(struct device *dev, struct lvts_ctrl *lvts_ctrl,
- 		 */
- 		lvts_sensor[i].msr = lvts_ctrl_data->mode == LVTS_MSR_IMMEDIATE_MODE ?
- 			imm_regs[i] : msr_regs[i];
-+
-+		lvts_sensor[i].low_thresh = INT_MIN;
-+		lvts_sensor[i].high_thresh = INT_MIN;
- 	};
- 
- 	lvts_ctrl->num_lvts_sensor = lvts_ctrl_data->num_lvts_sensor;
-@@ -721,6 +787,9 @@ static int lvts_ctrl_init(struct device *dev, struct lvts_domain *lvts_td,
- 		 */
- 		lvts_ctrl[i].hw_tshut_raw_temp =
- 			lvts_temp_to_raw(lvts_data->lvts_ctrl[i].hw_tshut_temp);
-+
-+		lvts_ctrl[i].low_thresh = INT_MIN;
-+		lvts_ctrl[i].high_thresh = INT_MIN;
- 	}
- 
- 	/*
--- 
-2.40.1
-
+Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
