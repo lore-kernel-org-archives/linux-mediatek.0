@@ -4,76 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32014C77B7C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 May 2023 22:23:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8409FC77B73
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 May 2023 22:30:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CzswV8h6Pv5RbnDUfs5XaziOPH7Dg5YP+9HIzH76G84=; b=D22o7nXp6aus6goqxNd3mpIie8
-	vNgQOr6RI3Eo868amZ15SfM14DWIMhL1B+4llEa3U96R/kZLMnVhZFDHkHTJqUm1weVtK1UidbWBe
-	NWRYCBzH2gKKzJx4JllJQQ4ePfv6MvnuSwmUNrjmA/fSpiPD3T7dp1oBbsZ4StJNXKhdEnpM/X4Za
-	5gaYt2ruUXpjCts9QCYryHj67epMiJf/AQQg1fjupKuiwrfh8haHF93xny+aR0jr35CMwV3v1rm2W
-	vZC891r536ojhTpBkLxkT9yauUZ8LU87UV0sUFtoJPMx8KVQCvfWbkqIHXiYgME0Fvn82u8Z5UiOg
-	DAQk3gjg==;
+	bh=Z4uBgz0yZBTHWQuliVmtKoGkSIHeFOTfO6AJGNbOg9A=; b=PfotS0iTvJO+o2jks+gmjk8DeW
+	wiDIX/u190qPerbdJWhtj+3qdCsE0PBI6e81w8/+/g0ALoGqwyGtfydbd5ip5gsx4aTZrMaHje61c
+	vLuVegis9UUpFyXqISaij4vGtz/GQ1X3dOrTrrlWYa76ysJA0aRQQBINcyryd3wJf1uiqORpKMWy2
+	oUvBAXLtacp36uIHrP8PGD4rnq7MxAT8eaZIH8bDLx5JiwempZW8lPZLZervlLqdLzUphHbh18xhs
+	4+vPrO8tSIZ9SziaWBmloWB7dn3W+f1jRQFSOtvZHPtUq1z1AlmT7IzJq5/kU5Tbr54VJ2AiVdyEr
+	hbgiOh7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1puhLn-009CRc-0N;
-	Thu, 04 May 2023 22:22:59 +0000
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+	id 1puhSZ-009DN5-10;
+	Thu, 04 May 2023 22:29:59 +0000
+Received: from mail-qt1-x832.google.com ([2607:f8b0:4864:20::832])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1puhLk-009CR0-1A
+	id 1puhSW-009DLS-1l
 	for linux-mediatek@lists.infradead.org;
-	Thu, 04 May 2023 22:22:57 +0000
-Received: by mail-pf1-x433.google.com with SMTP id d2e1a72fcca58-6434440970fso1217528b3a.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 04 May 2023 15:22:56 -0700 (PDT)
+	Thu, 04 May 2023 22:29:57 +0000
+Received: by mail-qt1-x832.google.com with SMTP id d75a77b69052e-3ef33f12995so5161301cf.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 04 May 2023 15:29:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1683238975; x=1685830975;
+        d=chromium.org; s=google; t=1683239392; x=1685831392;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=CzswV8h6Pv5RbnDUfs5XaziOPH7Dg5YP+9HIzH76G84=;
-        b=LKKWaJRNVVCunzbaPjeF2w9g/dNVNyM8xUMu/jaVngE0m9ml64RT2QdPJB+7zfePD9
-         gfU1rfdyE2KBU0lo9wb7lpZ2iDfyUbsfmnR3njaJu1rtLblkBG29vgkj7Gpb3tn3kOtl
-         8uZdjL0OsmQBe8gVy+UJJJBV1weqbgpzSjPuE=
+        bh=Z4uBgz0yZBTHWQuliVmtKoGkSIHeFOTfO6AJGNbOg9A=;
+        b=brmWvifc4vUjDlUYpOIJEa3hZAXArDfIWwAUAH9aKbp/ycmT192F6ss608WxBUwFRs
+         iJP+zzhQmiXtzk+1feOO8N/qEinyPpPvouyQ+Sop5fvG9x+T5Sp6VMxGEC8/ZXHHq6UG
+         nfBvGv4npF5tjh+nYJHcAc7tB/TZi30ozurtA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683238975; x=1685830975;
+        d=1e100.net; s=20221208; t=1683239392; x=1685831392;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=CzswV8h6Pv5RbnDUfs5XaziOPH7Dg5YP+9HIzH76G84=;
-        b=Rx0elheTjuo2Ps4DE5VTsVDdgPLMuEakkL07bPghhj2Ch6zJAZtrp4pUDMfAgcoxqV
-         AxburbslSTSGynaL6bVGy0YF5DvQmIYrRF1Os+RbW9cRlViIoOMK4jHBktlh/xuTbfkN
-         SbDD08io3+gciLzdJYoFMaTF3A+EGmA+uQONdOZEH+sXxJjtG39PMZsUg57YCjhZJkfW
-         SL9Zj1PSNOROXro7yQf+udChhkrEi9FhEy+rOdROSdaSzrRxcyjTeRHs66bejijWtB6G
-         OI7F/rb2LQJ1OqVPcLpjCLZIi4wXOYy6rd4Mp2KBdSIMRZb4gr+Z9H+Gv+BmMOD9Ro7p
-         fB8w==
-X-Gm-Message-State: AC+VfDwR4mNjClT1J/EUsaKm51DyQvmB6Tfvzt0L9zIiBBU7kM3hLcWS
-	1C6X1r+BK9yRfBuUr+EvsY20W9hrR+sIvDDeq5M=
-X-Google-Smtp-Source: ACHHUZ7nAB8d3ukmAXG4UUuqrmG/wKswtq2Hg1l/xCBTtphhtWF0GAHXQP3eQB6votEl5bUASz7akA==
-X-Received: by 2002:a05:6a00:23d0:b0:639:9089:798e with SMTP id g16-20020a056a0023d000b006399089798emr4398079pfc.19.1683238975273;
-        Thu, 04 May 2023 15:22:55 -0700 (PDT)
-Received: from mail-pl1-f169.google.com (mail-pl1-f169.google.com. [209.85.214.169])
-        by smtp.gmail.com with ESMTPSA id s26-20020a62e71a000000b0064358d032a4sm149949pfh.145.2023.05.04.15.22.54
+        bh=Z4uBgz0yZBTHWQuliVmtKoGkSIHeFOTfO6AJGNbOg9A=;
+        b=G2ERdZBp72y99GDsR0IsIsPJVxRdIcZQf+ux7kP9aRsO88TxXiGnBB8tkTHLGN/ZOE
+         oedy1ZgoItwQM67uHfJOIjbDLtZOCyk62GkNjrLrlCcyyBQ/UVQqH6Ft5IEqy8NhhbMn
+         8ausUR0o2jNpR1VHg906NBIFfXwExKVA8+rm26x29nagFHyYkbtmoj7vwFQ/T2v4XQ7U
+         OPiDfldsO+Dd6F/WZQWQwIvm20GJ3S5KKa89pFTs1IF4/HdIa7ovayol6XtMEjrJd1Wd
+         hQCDDEjoc4amggs2ifs3DFfGT1lCBWL9uGMS4dIV37utOSdb+Pk7q/imLo0fjzLgmGB3
+         aMdg==
+X-Gm-Message-State: AC+VfDx3S/H4BS1nG+PquYUwD9NlacygjdG+YEZMPgYKIiDbwXwTK2ok
+	7aiqRd6TgVhgZtxPsQbS2HNud84snIfPqbu5nw0=
+X-Google-Smtp-Source: ACHHUZ4zpDqvJCTWDUkqfUvNQW/XJ8RPio1Kw64x1iLpiyy738v7YbHOHhe+r+r7Ic6W+Q/hroEbYw==
+X-Received: by 2002:a05:622a:492:b0:3ef:3541:4362 with SMTP id p18-20020a05622a049200b003ef35414362mr8683967qtx.4.1683239392668;
+        Thu, 04 May 2023 15:29:52 -0700 (PDT)
+Received: from mail-qt1-f179.google.com (mail-qt1-f179.google.com. [209.85.160.179])
+        by smtp.gmail.com with ESMTPSA id p26-20020a05620a133a00b0074e1ee30478sm138309qkj.37.2023.05.04.15.29.51
         for <linux-mediatek@lists.infradead.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 04 May 2023 15:22:55 -0700 (PDT)
-Received: by mail-pl1-f169.google.com with SMTP id d9443c01a7336-1a950b982d4so491485ad.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 04 May 2023 15:22:54 -0700 (PDT)
-X-Received: by 2002:a05:622a:144d:b0:3de:1aaa:42f5 with SMTP id
- v13-20020a05622a144d00b003de1aaa42f5mr10116qtx.15.1683238596262; Thu, 04 May
- 2023 15:16:36 -0700 (PDT)
+        Thu, 04 May 2023 15:29:52 -0700 (PDT)
+Received: by mail-qt1-f179.google.com with SMTP id d75a77b69052e-3f0a2f8216fso888831cf.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 04 May 2023 15:29:51 -0700 (PDT)
+X-Received: by 2002:a05:622a:1487:b0:3f3:75c2:7466 with SMTP id
+ t7-20020a05622a148700b003f375c27466mr43810qtx.8.1683239371523; Thu, 04 May
+ 2023 15:29:31 -0700 (PDT)
 MIME-Version: 1.0
 References: <20230501082341.v3.1.I6bf789d21d0c3d75d382e7e51a804a7a51315f2c@changeid>
- <ZFEqynvf5nqkzEvQ@alley>
-In-Reply-To: <ZFEqynvf5nqkzEvQ@alley>
+ <ZFErmshcrcikrSU1@alley>
+In-Reply-To: <ZFErmshcrcikrSU1@alley>
 From: Doug Anderson <dianders@chromium.org>
-Date: Thu, 4 May 2023 15:16:23 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=V1nqunM83LzSXnYiODC66tn5hjSWsUvxabf6vSO7reUQ@mail.gmail.com>
-Message-ID: <CAD=FV=V1nqunM83LzSXnYiODC66tn5hjSWsUvxabf6vSO7reUQ@mail.gmail.com>
-Subject: Re: cpu hotplug : was: Re: [PATCH v3] hardlockup: detect hard lockups
+Date: Thu, 4 May 2023 15:29:19 -0700
+X-Gmail-Original-Message-ID: <CAD=FV=UVFR5YvJ8QrZ8YYPpwzYeymuy_JhcmZknbwUXg9njoGA@mail.gmail.com>
+Message-ID: <CAD=FV=UVFR5YvJ8QrZ8YYPpwzYeymuy_JhcmZknbwUXg9njoGA@mail.gmail.com>
+Subject: Re: shared code: was: Re: [PATCH v3] hardlockup: detect hard lockups
  using secondary (buddy) CPUs
 To: Petr Mladek <pmladek@suse.com>
 Cc: Andrew Morton <akpm@linux-foundation.org>, Mark Rutland <mark.rutland@arm.com>, 
@@ -101,8 +101,8 @@ Cc: Andrew Morton <akpm@linux-foundation.org>, Mark Rutland <mark.rutland@arm.co
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230504_152256_399311_3FBEFA5A 
-X-CRM114-Status: GOOD (  29.41  )
+X-CRM114-CacheID: sfid-20230504_152956_598606_44EF105A 
+X-CRM114-Status: GOOD (  21.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,68 +119,42 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi,
 
-On Tue, May 2, 2023 at 8:23=E2=80=AFAM Petr Mladek <pmladek@suse.com> wrote=
+On Tue, May 2, 2023 at 8:26=E2=80=AFAM Petr Mladek <pmladek@suse.com> wrote=
 :
 >
-> On Mon 2023-05-01 08:24:46, Douglas Anderson wrote:
-> > From: Colin Cross <ccross@android.com>
-> >
-> > Implement a hardlockup detector that doesn't doesn't need any extra
-> > arch-specific support code to detect lockups. Instead of using
-> > something arch-specific we will use the buddy system, where each CPU
-> > watches out for another one. Specifically, each CPU will use its
-> > softlockup hrtimer to check that the next CPU is processing hrtimer
-> > interrupts by verifying that a counter is increasing.
-> >
-> > --- /dev/null
-> > +++ b/kernel/watchdog_buddy_cpu.c
-> > +int watchdog_nmi_enable(unsigned int cpu)
-> > +{
-> > +     /*
-> > +      * The new CPU will be marked online before the first hrtimer int=
-errupt
-> > +      * runs on it.
+> > +int __weak watchdog_nmi_enable(unsigned int cpu) { return 0; }
+> > +void __weak watchdog_nmi_disable(unsigned int cpu) { return; }
 >
-> It does not need to be the first hrtimer interrupt. The CPU might have
-> been offlined/onlined repeatedly. The counter might have any value.
+> Honestly, the mix of softlockup and hardlockup code was a hard to
+> follow even before this patch. And it is going to be worse.
 >
-> > +      * If another CPU tests for a hardlockup on the new CPU
-> > +      * before it has run its first hrtimer, it will get a false posit=
-ive.
-> > +      * Touch the watchdog on the new CPU to delay the first check for=
- at
-> > +      * least 3 sampling periods to guarantee one hrtimer has run on t=
-he new
-> > +      * CPU.
-> > +      */
+> Anyway, the buddy watchdog is not using NMI at all. It should not
+> get enable using a function called *_nmi_enabled().
 
-OK, I've updated the above comment to:
+Thanks for your review! I'm not going to individually reply to all
+your comments below, but I've sent out a v4 [1] where I think I've
+done a semi-decent job of making this a little cleaner (not perfect,
+but hopefully a step in the right direction). Please take a look.
 
-/*
- * The new CPU will be marked online before the hrtimer interrupt
- * gets a chance to run on it. If another CPU tests for a
- * hardlockup on the new CPU before it has run its the hrtimer
- * interrupt, it will get a false positive. Touch the watchdog on
- * the new CPU to delay the check for at least 3 sampling periods
- * to guarantee one hrtimer has run on the new CPU.
- */
+[1] https://lore.kernel.org/r/20230504221349.1535669-1-dianders@chromium.or=
+g
 
-> > +     per_cpu(watchdog_touch, cpu) =3D true;
->
-> We should touch also the next_cpu:
->
->         /*
->          * We are going to check the next CPU. Our watchdog_hrtimer
->          * need not be zero if the CPU has already been online earlier.
->          * Touch the watchdog on the next CPU to avoid false positive
->          * if we try to check it in less then 3 interrupts.
->          */
->         next_cpu =3D watchdog_next_cpu(cpu);
->         if (next_cpu < nr_cpu_ids)
->                 per_cpu(watchdog_touch, next_cpu) =3D true;
->
-> Alternative would be to clear watchdog_hrtimer. But it would kind-of
-> affect also the softlockup detector.
 
-Looks reasonable. I've incorporated it.
+> Also some comments are not longer valid, for example:
+>
+> static void watchdog_enable(unsigned int cpu)
+> {
+> [...]
+>         /* Enable the perf event */
+>         if (watchdog_enabled & NMI_WATCHDOG_ENABLED)
+>                 watchdog_nmi_enable(cpu);
+
+Ugh, after I sent the new version I just realized that I missed
+updating the above comment. :( If I need to send a v5 I can update it
+then, or if v4 lands I can send a follow-on patch to update that
+comment. My eyes are glazed over enough from trying to organize a
+17-patch series, so I somewhat imagine it's not the only comment I
+missed...
+
+-Doug
 
