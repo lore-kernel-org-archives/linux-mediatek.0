@@ -4,71 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12353C77B7F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 May 2023 01:02:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F906C77B7F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 May 2023 02:08:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=s7NrV4G8na4Xxto46bFuiPDfi4MWEN0iwsnSjgvxz40=; b=QWYzP3fIhha2LflmZuI9zrhRo2
-	zuK8TbCG0uSJatgGpcMAUfWayHSRq2PU+AEgq+QeZ2KI3a676ZzvNUo7rxhGRIJ7qJt/rb2F2pJUK
-	b5A3dt85Dd+ASHJjIi/uM+U8tqPR/qtOtUMZqbeioiIWV6Ef2Q0mq2xwbr1J8ry2n2yBDymCckMYk
-	J1yJZOlC61G+nCb7tl2J3H/WWZJZGzhGI3J/zwbfb9uKgoeXftEX5qHIxOTUg1vOIDN1mZgovLZrz
-	JTc+Xq8cq+6HWzfUSxkBGhtbD6cXe9JkWTeDtCZhOC/eNLrARPPkRQOtRbkFupeJxxqHU6l+1W2Xy
-	bn9ZCsDw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=i+B96FBu40qQ/wJroO1Jd8yiYGwnNCdYUGo74XrjNr0=; b=UJvhTDRLTwtCS2Eq5RZSopN2Ur
+	h6jsdNDvZ9dnDs371XzbgbpWSk+QWLLufsL0SonbxOZQsBIA4oAOwIKFz5cybafdj5XbAZnbxBNCH
+	ZqpJ1pahJt4s1QxLQS7CWcFt90m3tzX47ytidsIO6VpM18g7wM12uDKptBcPc9V2SBObPGpiEfRKh
+	s8JYXKv0hwtqY1YgxTyZJqyluiyXLgLBGCz6QO3YAMWrgTwKcs76lB7YVSVuzELEsJ4um2GMeZdmT
+	LQdB5qUtfMDe1PzM2m1QCLDbFPIbye5eNSCVbMi8W18aW10MeaBBKEB259xeeEhVBuU7ZE31A2lDM
+	UhbCxi6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1puNM9-006FdT-2k;
-	Thu, 04 May 2023 01:02:01 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1puOOR-006LkK-2s;
+	Thu, 04 May 2023 02:08:27 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1puNM6-006Fcc-2W;
-	Thu, 04 May 2023 01:02:00 +0000
-Received: from notapiano (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id F093E6603050;
-	Thu,  4 May 2023 02:01:54 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1683162117;
-	bh=QIc5SJMWqFHScIbXxCJ80FSyeGnnxhBPq9Nglpv16dY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=GoF7tKks+0r9w3slMFA52UCUjtZji0S1Ro4Z+f0NOCspw0LEGjEyhfuXwdqEPPBpf
-	 SobHoYAenMMDr2lVWHc79h7Uf2s2Y9HldVbYu5Aaq2bamlRXs6Uh/3MFwABByfekwj
-	 WdOuqPQS27hMEc8e9LxER0LliWjfJqcBfs3OafA0RYS7WeRuiD3bPwHE9a2+JM7Ozq
-	 G+kKuTi09O1TfRRAg51BcdpAFUD4iIJ0T+BL2s+X9pnpRGM8JabIsTIBurfXQMlojG
-	 jb/rCJ5LASS2Wnxqnrw81mZycTqW4tNO5FuvREGs1fRkx+2ABLIYgdirnRcu+g7gIq
-	 3EETfeDuWI7KA==
-Date: Wed, 3 May 2023 21:01:51 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: bchihi@baylibre.com
-Cc: daniel.lezcano@linaro.org, angelogioacchino.delregno@collabora.com,
-	rafael@kernel.org, amitk@kernel.org, rui.zhang@intel.com,
-	matthias.bgg@gmail.com, robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org, rdunlap@infradead.org,
-	ye.xingchen@zte.com.cn, p.zabel@pengutronix.de,
-	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	wenst@chromium.org, james.lo@mediatek.com, rex-bc.chen@mediatek.com,
-	abailon@baylibre.com, amergnat@baylibre.com, khilman@baylibre.com
-Subject: Re: [PATCH v2 5/5] thermal/drivers/mediatek/lvts_thermal: Update
- calibration data documentation
-Message-ID: <b120f52a-38c4-4f06-86d5-503a67bb1dab@notapiano>
-References: <20230425133052.199767-1-bchihi@baylibre.com>
- <20230425133052.199767-6-bchihi@baylibre.com>
+	id 1puOOM-006LjB-0j
+	for linux-mediatek@lists.infradead.org;
+	Thu, 04 May 2023 02:08:26 +0000
+X-UUID: 8473c4eeea2011ed912e1518a6540028-20230503
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=i+B96FBu40qQ/wJroO1Jd8yiYGwnNCdYUGo74XrjNr0=;
+	b=tnRYZ0XUacxhw+2Wuv1lkhlorBvd1/23rAcbtdfDxtcA3za+SGvsX/UiSntgDEA9l53uDIdJrDOiVCtFb8Hf9uI3ZoBCPeLJZ51OoQxRz6wuf893C7zy6F6gcYAh8QYshskuhyrE0KSxiHySHFnUYq3oTX3FzjhkqbhPO78jWis=;
+X-CID-UNFAMILIAR: 1
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.23,REQID:91f64c8a-a77d-446a-98b3-bdbfe90b9caa,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:100
+X-CID-INFO: VERSION:1.1.23,REQID:91f64c8a-a77d-446a-98b3-bdbfe90b9caa,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
+	N:quarantine,TS:100
+X-CID-META: VersionHash:697ab71,CLOUDID:32bbab30-6935-4eab-a959-f84f8da15543,B
+	ulkID:2305041008117CTMFIG5,BulkQuantity:0,Recheck:0,SF:19|48|38|29|28|16,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,CO
+	L:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: 8473c4eeea2011ed912e1518a6540028-20230503
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <chris.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 210595843; Wed, 03 May 2023 19:08:10 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Thu, 4 May 2023 10:08:07 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Thu, 4 May 2023 10:08:07 +0800
+From: <chris.lu@mediatek.com>
+To: <luiz.dentz@gmail.com>, <marcel@holtmann.org>, <johan.hedberg@gmail.com>
+CC: <sean.wang@mediatek.com>, <deren.Wu@mediatek.com>,
+	<aaron.hou@mediatek.com>, <km.lin@mediatek.com>, <robin.chiu@mediatek.com>,
+	<steve.lee@mediatek.com>, <abhishekpandit@google.com>,
+	<michaelsplaw@google.com>, <yinghsu@google.com>,
+	<linux-bluetooth@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, Chris.Lu <chris.lu@mediatek.com>
+Subject: [PATCH] Add VID 04ca & PID 3804 for MediaTek MT7922 USB Bluetooth chip.
+Date: Thu, 4 May 2023 10:07:56 +0800
+Message-ID: <20230504020756.16308-1-chris.lu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230425133052.199767-6-bchihi@baylibre.com>
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230503_180158_949901_0E42B523 
-X-CRM114-Status: GOOD (  16.05  )
+X-CRM114-CacheID: sfid-20230503_190822_432528_7CD5DF7E 
+X-CRM114-Status: UNSURE (   9.30  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,60 +89,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 25, 2023 at 03:30:52PM +0200, bchihi@baylibre.com wrote:
-> From: Balsam CHIHI <bchihi@baylibre.com>
-> 
-> Update LVTS calibration data documentation for mt8192 and mt8195.
-> 
-> Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
-> ---
->  drivers/thermal/mediatek/lvts_thermal.c | 59 ++++++++++++++++++-------
->  1 file changed, 43 insertions(+), 16 deletions(-)
-> 
-> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-> index 8df7b4c72a658..3df4989f9902b 100644
-> --- a/drivers/thermal/mediatek/lvts_thermal.c
-> +++ b/drivers/thermal/mediatek/lvts_thermal.c
-> @@ -531,30 +531,57 @@ static int lvts_sensor_init(struct device *dev, struct lvts_ctrl *lvts_ctrl,
->   * The efuse blob values follows the sensor enumeration per thermal
->   * controller. The decoding of the stream is as follow:
->   *
-> - * stream index map for MCU Domain :
-> + * MT8195 :
-> + * Stream index map for MCU Domain mt8195 :
->   *
-> - * <-----mcu-tc#0-----> <-----sensor#0-----> <-----sensor#1----->
-> - *  0x01 | 0x02 | 0x03 | 0x04 | 0x05 | 0x06 | 0x07 | 0x08 | 0x09
-> + * <-----sensor#0-----> <-----sensor#1----->
-> + *  0x04 | 0x05 | 0x06 | 0x07 | 0x08 | 0x09
+From: "Chris.Lu" <chris.lu@mediatek.com>
 
-I don't think you need to remove the controller calibration data from this
-comment, even though you don't use it in the code. Could come in handy in the
-future.
+The information in /sys/kernel/debug/usb/devices about the Bluetooth
+device is listed as the below.
 
->   *
-[..]
-> + * MT8192 :
-> + * Stream index map for MCU Domain mt8192 :
-> + *
-> + * <--------sensor#0---------> <--------sensor#1--------->
-> + *  0x04 | 0x05 | 0x06 | 0x07 | 0x08 | 0x09 | 0x0A | 0x0B
+T:  Bus=05 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
+D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
+P:  Vendor=04ca ProdID=3804 Rev= 1.00
+S:  Manufacturer=MediaTek Inc.
+S:  Product=Wireless_Device
+S:  SerialNumber=000000000
+C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
+A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
+I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
+E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
+E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
+E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
+I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
+E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
+E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
 
-Each sensor data is 3 bytes long, just like for MT8195. The fourth byte contains
-the controller calibration data, but it is spread across these fourth bytes. I'd
-just leave these bytes undocumented for now since they're not currently used.
+Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+---
+ drivers/bluetooth/btusb.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-So,
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 7382b021f3df..c5fed5e73690 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -621,6 +621,9 @@ static const struct usb_device_id blacklist_table[] = {
+ 	{ USB_DEVICE(0x0489, 0xe0f2), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH |
+ 						     BTUSB_VALID_LE_STATES },
++	{ USB_DEVICE(0x04ca, 0x3804), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH |
++						     BTUSB_VALID_LE_STATES },
+ 
+ 	/* Additional Realtek 8723AE Bluetooth devices */
+ 	{ USB_DEVICE(0x0930, 0x021d), .driver_info = BTUSB_REALTEK },
+-- 
+2.18.0
 
-  + * <-----sensor#0----->        <-----sensor#1----->       
-  + *  0x04 | 0x05 | 0x06 | 0x07 | 0x08 | 0x09 | 0x0A | 0x0B
-
-etc.
-
-With that fixed,
-
-Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-
-Thanks,
-Nícolas
 
