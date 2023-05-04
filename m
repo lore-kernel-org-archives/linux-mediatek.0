@@ -4,65 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D24EEC77B7C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 May 2023 06:52:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D5ADC7EE21
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 May 2023 07:10:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4A4G4qwEPKMlunWXWecKMmAoXT1IA0fweLSiZ+GVAJM=; b=W2ezeeCn8cWs+mTJUMSVVSmPYO
-	Aq/csh+THMXmK2y5bkLKtmVm82NyWE3n4dW1J4Xt1FZgvOgljABalNCZ+Ioutr1S6WLoGD+vv2N6j
-	BAcIIhRRnXAF53OXks6y/kiHHVLHf1nLIxkIWnU8FNjBreUxlQ58viFmjrD/zMlgxFBu4FNAfk13+
-	NA8igQJXJQdNgFW/fB3BJYVouozeaSm4AIWxKI7+2XmIG3R5z64Runx8uDsqqLSEvHMSFHCnNhMX+
-	CmGksoiKLM5midwOcbtEz8arP4gE6LjuEO7xBU87jc3M2PiWymMjvMk+Zbw1ckRlWGPX4Pp9AQv/7
-	2686QUfg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BdevYqMi76NwKC3zRXAgy5PN3WHuWUsGRFi5mAmNrPU=; b=HXeSmE2Kejb8U2M6MQn+VNGUCk
+	tdEffxqwWFuRmKb/Q9MLRlvP7Dqho8BHpIN/CpqhqiIWl8RMYgamMJTxCx+RIIxBQ7Sk2TozAhRKy
+	KU2WCxETJBo5nJIMiDSSPAnuD6oE8ucEy21uvbhTMP2hZqv/zQUtLVUCCCWwdPAMbWk5PpP+SFsd7
+	oFRkM41O0SzR19MBbGGLROjfvs6Zkt5Z2/WTtOh5eR7Sfn9FqmrNfDNh2UIHkWNX25SBVLcy6T3NV
+	zqBkOKhHEilyxydAS2ksprm1PjLT3tc1oBLPhuDYfLcY0tBK/sZfDchKLVklhxWzfL6OJOjRQv5Eq
+	Ss+QxeDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1puSpX-006ofn-1J;
-	Thu, 04 May 2023 06:52:43 +0000
-Received: from s3.sipsolutions.net ([2a01:4f8:191:4433::2] helo=sipsolutions.net)
+	id 1puT6B-006qqT-0v;
+	Thu, 04 May 2023 07:09:55 +0000
+Received: from mx08-00178001.pphosted.com ([91.207.212.93] helo=mx07-00178001.pphosted.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1puSpT-006oeb-2X
-	for linux-mediatek@lists.infradead.org;
-	Thu, 04 May 2023 06:52:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
-	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
-	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
-	Resent-Cc:Resent-Message-ID; bh=4A4G4qwEPKMlunWXWecKMmAoXT1IA0fweLSiZ+GVAJM=;
-	t=1683183156; x=1684392756; b=FKiabDFbuHvhs7iAfR6hTWXkqsVGIROfLk8bLCwV0WLV8MN
-	c0oPshVdaFeq+/zTXkxp0lU/CBp1WEiCo5pgb+9A5GeQJGEDmNocuYn/M15gVtOghFixqHtnwGgql
-	YvviZszojNEYg5OpaE9Rur6QqyhJIultGtiEH17SZ/Ah+osAnw4vptABRDg9JUwn272Emj3nFGoLF
-	CXTZ9u8j8P8fwGiOU52MKcrghi7hmQhVRZlDl/LW+s+UeqbepgIUg8SIGuZNLfr6GgpweH/WTBd8I
-	LAfmopWYcN/z4EhyU1o2eEpDp8fAfYvK5Ah9vMxyGb8Gw+KmOdbqLPjYCetga+Hw==;
-Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
-	(Exim 4.96)
-	(envelope-from <johannes@sipsolutions.net>)
-	id 1puSp7-00GpXU-2g;
-	Thu, 04 May 2023 08:52:17 +0200
-Message-ID: <d2e0469440d366c2323424ebfc1b634d669e1ed9.camel@sipsolutions.net>
-Subject: Re: [PATCH] wifi: mac80211: Abort running CCA when stopping AP
-From: Johannes Berg <johannes@sipsolutions.net>
-To: Michael-CY Lee <michael-cy.lee@mediatek.com>, linux-wireless
-	 <linux-wireless@vger.kernel.org>
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, 
- Evelyn Tsai <evelyn.tsai@mediatek.com>, Money Wang
- <money.wang@mediatek.com>, linux-mediatek
- <linux-mediatek@lists.infradead.org>
-Date: Thu, 04 May 2023 08:52:16 +0200
-In-Reply-To: <20230504061049.21082-1-michael-cy.lee@mediatek.com>
-References: <20230504061049.21082-1-michael-cy.lee@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.46.4 (3.46.4-1.fc37) 
+	id 1puT66-006qoq-2P;
+	Thu, 04 May 2023 07:09:52 +0000
+Received: from pps.filterd (m0046661.ppops.net [127.0.0.1])
+	by mx07-00178001.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3445knZ4015912;
+	Thu, 4 May 2023 09:09:19 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=selector1;
+ bh=BdevYqMi76NwKC3zRXAgy5PN3WHuWUsGRFi5mAmNrPU=;
+ b=diBkdS5cAS1F6aGRwKb+ZnpjXcLvvpzZASwgoOP/4T8WkojTtCRd77G8y0wSpK265DFf
+ 5SRXoIc/CY5v7rG7eBolJXEjxs5ZNy928g9ffgPPkIG0/TUSRBSkZ69nPsngOZ/qKR6R
+ Dc+Duyu4G38L9DAJuDKUVJ6ZFi6zwRDwUa2XBGJ9YcUUsZ7jKuPAExnDi3F2gWKNlaiV
+ lGX9W7eGu6apovH/vVztA94SREXjCBuLXZ1Ef+IcSl/mQmGRz5U83sXo5yh+4sPvoItI
+ nXSuhuHXKRPRxWD3ghAGp+VdxBVGEfJFlyDZ2TPVqtOzUXuqFoZcaBR526anQtwoamsn 5g== 
+Received: from beta.dmz-eu.st.com (beta.dmz-eu.st.com [164.129.1.35])
+	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 3qc6uw8hjs-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 04 May 2023 09:09:19 +0200
+Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
+	by beta.dmz-eu.st.com (STMicroelectronics) with ESMTP id DCD5210002A;
+	Thu,  4 May 2023 09:09:16 +0200 (CEST)
+Received: from Webmail-eu.st.com (shfdag1node1.st.com [10.75.129.69])
+	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id F0066210F61;
+	Thu,  4 May 2023 09:09:15 +0200 (CEST)
+Received: from [10.201.21.93] (10.201.21.93) by SHFDAG1NODE1.st.com
+ (10.75.129.69) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.21; Thu, 4 May
+ 2023 09:09:15 +0200
+Message-ID: <95076d3b-5667-8cb3-c09a-e0b7dc2b03c3@foss.st.com>
+Date: Thu, 4 May 2023 09:09:14 +0200
 MIME-Version: 1.0
-X-malware-bazaar: not-scanned
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [Linux-stm32] [RFC PATCH 0/1] Categorize ARM dts directory
+Content-Language: en-US
+To: Arnd Bergmann <arnd@arndb.de>, Rob Herring <robh+dt@kernel.org>
+CC: <linux-aspeed@lists.ozlabs.org>, <linux-realtek-soc@lists.infradead.org>,
+        <linux-arm-kernel@axis.com>,
+        <linux-stm32@st-md-mailman.stormreply.com>,
+        <chrome-platform@lists.linux.dev>, <linux-samsung-soc@vger.kernel.org>,
+        <openbmc@lists.ozlabs.org>, Krzysztof Kozlowski <krzk@kernel.org>,
+        <linux-rockchip@lists.infradead.org>,
+        Geert Uytterhoeven
+	<geert@linux-m68k.org>,
+        <linux-sunxi@lists.linux.dev>, <devicetree@vger.kernel.org>,
+        <linux-arm-msm@vger.kernel.org>, <linux-actions@lists.infradead.org>,
+        <linux-unisoc@lists.infradead.org>,
+        <linux-mediatek@lists.infradead.org>,
+        <linux-rpi-kernel@lists.infradead.org>, <linux-tegra@vger.kernel.org>,
+        <linux-amlogic@lists.infradead.org>,
+        Linux-OMAP <linux-omap@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+        Christian Marangi <ansuelsmth@gmail.com>,
+        Linux-Renesas
+	<linux-renesas-soc@vger.kernel.org>,
+        <kernel@dh-electronics.com>, Olof
+ Johansson <olof@lixom.net>,
+        Krzysztof Kozlowski <krzk+dt@kernel.org>,
+        "linux-oxnas@groups.io" <linux-oxnas@groups.io>
+References: <20220328000915.15041-1-ansuelsmth@gmail.com>
+ <85eb14ec-f465-7447-ad77-a3dabc666f47@kernel.org>
+ <YkKRYnN84D9VZhGj@Ansuel-xps.localdomain>
+ <CAL_Jsq+RQQ-ADMxLPUFwk6S6kGmb6oNDy4k52fnU0EtbUvqmSA@mail.gmail.com>
+ <CAMuHMdWNTE48MFy6fqxAsfMWz9b6E7dVNXtXtESP95sxk2PGwA@mail.gmail.com>
+ <CAL_JsqJthKTm8bhRF2B=ae1tvtPeYYXx_Tm76qQtSwLtH5C6VA@mail.gmail.com>
+ <720a2829-b6b5-411c-ac69-9a53e881f48d@app.fastmail.com>
+ <CAL_JsqKCtmkwzKa01gyG65fH8ye6R3KhR41PJbJhOJ4X9j=znA@mail.gmail.com>
+ <99b49e6b-e963-415a-a2c9-72505087833c@app.fastmail.com>
+From: Alexandre TORGUE <alexandre.torgue@foss.st.com>
+In-Reply-To: <99b49e6b-e963-415a-a2c9-72505087833c@app.fastmail.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.201.21.93]
+X-ClientProxiedBy: SHFCAS1NODE1.st.com (10.75.129.72) To SHFDAG1NODE1.st.com
+ (10.75.129.69)
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.942,Hydra:6.0.573,FMLib:17.11.170.22
+ definitions=2023-05-04_04,2023-05-03_01,2023-02-09_01
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230503_235240_035416_5A7BC759 
-X-CRM114-Status: UNSURE (   4.55  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230504_000951_290058_06B80A6D 
+X-CRM114-Status: GOOD (  12.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,17 +119,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2023-05-04 at 14:10 +0800, Michael-CY Lee wrote:
-> From: Michael Lee <michael-cy.lee@mediatek.com>
->=20
-> Signed-off-by: Michael Lee <michael-cy.lee@mediatek.com>
+On 5/3/23 13:02, Arnd Bergmann wrote:
+> On Tue, May 2, 2023, at 21:40, Rob Herring wrote:
+>> On Tue, May 2, 2023 at 3:15 AM Arnd Bergmann <arnd@arndb.de> wrote:
+> 
 
-A commit message would be nice. And maybe a fixes tag?
+...
 
-Also "CCA" is something else, not related to color change, not even sure
-where the "A" came from?
+> 
+>>      'stm' : 'stm32',
+>>      'sti' : 'sti',
+>>      'st-pin' : 'sti',
+>>      'ste' : 'st-ericsson',
+>>      'spear' : 'spear',
+> 
+> I would put all five of these into 'st'. The ux500 was developed
+> in st-ericsson, but last sold by st, and the other ones are all
+> original st products.
 
-johannes
+Acked-by: Alexandre TORGUE <alexandre.torgue@st.com>
 
+thanks
+Alex
+
+> 
+>        Arnd
+> _______________________________________________
+> Linux-stm32 mailing list
+> Linux-stm32@st-md-mailman.stormreply.com
+> https://st-md-mailman.stormreply.com/mailman/listinfo/linux-stm32
 
 
