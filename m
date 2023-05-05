@@ -4,71 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBA51C77B7F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 May 2023 14:16:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C591BC77B7F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 May 2023 15:37:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=KhlDRAeeJnqkQ1VfZCBZx7biLs8pcsS1txRadTISsq4=; b=wtFtRXFgZw5+rjXL6xvOQ/f4d7
-	9GkO9oV6dExemMWP1h1d1FW11UjO3nEjrCA32QuJU7aMnj/wg5/H7Zokw5NnDS4VKrGWntIbmKrqz
-	AeC6Zlwl9tD+8xul0Xyehxzoug6uc0h8XKCm6XTNMjgVZb5Df9RXuV+u+RO89v0sC917jkbli6riA
-	LNCXaZqZq5ZUiHEGMeidifC8u35mVx5ShYxdmu/4jifQVR3qpn/Hg2cNzZaQ5CthFz/mTEsNqHoIa
-	6HgohoM9PdgpyEaJIr0U469N2TOx+87B1yDNacTAv8kOms4euk2ovMjvIvBxToxj0oW6N0qVSVtzF
-	Cr5TTSxw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MMQANphqIg54PwzmueerEA1nz6ede73K9wjbTi5bw3k=; b=u+Nm1Zg9bY/48MWY+m6jZ5ocZj
+	RCe7MN5mrL/L9mfvW7HnKZT7RD2uh0L98nQY2ZJjVhFUUqhnh1BNVusML4c1gooZHxd9YeP8K9CE6
+	qE80TkSwtg5omcnJP8CIl6in0SJLO+djfWlR6tlFeGPBO81Pit4cWj49mPVtx/M0xzqM1IY/oQkMB
+	Nj+WFt6tiJlQmOhB4JBn2cFDVrJnaC3Q1FdTiSEo30FeKFXEe+7eI8R31bIzhh3HQloiRNm/b4+tO
+	s5nwJezXXaqcjZvRsr8XZoTsTcLvaCv881490HVogSC42Y4jgGYm5HEB+Dmds/YPtnihOY11XZNQy
+	sEYTVfBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1puwE1-00B4RC-0t;
-	Fri, 05 May 2023 14:15:57 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1puxV9-00BD3i-2d;
+	Fri, 05 May 2023 15:37:43 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1puvFQ-00Axd4-0Z;
-	Fri, 05 May 2023 13:13:21 +0000
-X-UUID: 9759a160eb4611ed83ed1395ce914268-20230505
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=KhlDRAeeJnqkQ1VfZCBZx7biLs8pcsS1txRadTISsq4=;
-	b=jDixcrQ7lPlvYO2G0wFpiQmKirIOG86JVoZGLWdOwc4c/tsYI4dr8nyJP5ZdqeVNY6WGg8acjFknn2DKLVBZ7XwKhTLpf2spfcEAbKIrkfr4mwekl00+8BQtHEotZS4Z925pqMPU1LPSnti8aB+5nDj1qV/DZ0i0PMivLp3fqo8=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.23,REQID:ed2bd2be-6c93-462d-9779-3587e68e7e91,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:697ab71,CLOUDID:1cc5de30-6935-4eab-a959-f84f8da15543,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: 9759a160eb4611ed83ed1395ce914268-20230505
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <runyang.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1373179845; Fri, 05 May 2023 06:13:13 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 5 May 2023 21:13:11 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 5 May 2023 21:13:10 +0800
-From: Runyang Chen <runyang.chen@mediatek.com>
-To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
-	<sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"Philipp Zabel" <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
-	"Krzysztof Kozlowski" <krzysztof.kozlowski+dt@linaro.org>
-CC: <linux-clk@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, Runyang Chen <runyang.chen@mediatek.com>
-Subject: [PATCH v2 0/2] Add infra_ao reset support for MT8188 Soc
-Date: Fri, 5 May 2023 21:13:06 +0800
-Message-ID: <20230505131308.27190-1-runyang.chen@mediatek.com>
-X-Mailer: git-send-email 2.9.2
+	id 1puxV6-00BD1c-2v;
+	Fri, 05 May 2023 15:37:42 +0000
+Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-3f199696149so13768015e9.0;
+        Fri, 05 May 2023 08:37:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1683301056; x=1685893056;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=MMQANphqIg54PwzmueerEA1nz6ede73K9wjbTi5bw3k=;
+        b=a3xV0hgeH2+HOW7KQ0n46spF34Mt6cZU8UE6reMTk2Op3pdqgwaIFTbRbmk+e/aQE5
+         RYAMOUEy+fGor1eIm/k7tig6rEzQMOVfL+NVK1QXrIVSfsQt571I3B/Zi3VXe1weaVC/
+         4eomzoHkj+3Vi/NW1q3m/SEAtqWO3jFWjEISvcnd6qBERWdECqpy2CgdFDUJ+tyIH+2S
+         TPs5UtZBwBc/Fnz+SGWOVXs6AsnX8fEaUzPGEI3GH/eyteKctZoFKyigjIjqhB+FSMKh
+         k/g9upF9q7vnODKBoVtt7O8XVD8aYy+d5l91r51H/v49ETPGi28RYnTNUroqmb/D0HmJ
+         jaUg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1683301056; x=1685893056;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=MMQANphqIg54PwzmueerEA1nz6ede73K9wjbTi5bw3k=;
+        b=ADh5dpvETmUK3aapYyi9YHsax71r46bG9ldBOicj14RpgCxQQ8ev365jllZzQjDRJM
+         nHc+B0AAZQHmnR986hbS87uGgwbS+lTF6M3vqtwUN4FvLgBWDsXIJClezG2BdfZipcG/
+         GctasBmeIfLxh05e9nc5obHSf5nk5PzKgoCM95gMpQ8KxWMt7zimL2O6RE+kbgU1xbGI
+         x5HWbeWPEhabI7TSlvoOD6GAVVrJ20yhVDUYf2tJ8pZDc6X8b920vQWdCsmyqddBAgfV
+         4nPm3ZXpDdp7QEFYWDovPTszx8skXRyRaN0Hx/ueQt45Uom8b0F1zpsy71jv8MN8kStt
+         D9Iw==
+X-Gm-Message-State: AC+VfDz6ToqngYeQJzS/GMRaS2xNiKoPjmOr8fSvKDrihJEGvymtU/VG
+	swyXv/PvodgeR0coiq74zNQ=
+X-Google-Smtp-Source: ACHHUZ6YF0JN2q50Mb4Rc5IWpAQlQaY8t82WbF1TW53ociZHjEHxERnMkxklnJoCQ9mt5l5ZwvQpug==
+X-Received: by 2002:adf:f2c2:0:b0:306:3be9:6ab with SMTP id d2-20020adff2c2000000b003063be906abmr1905923wrp.54.1683301055966;
+        Fri, 05 May 2023 08:37:35 -0700 (PDT)
+Received: from [192.168.2.177] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id l8-20020a5d4bc8000000b0030631f199f9sm2696499wrt.34.2023.05.05.08.37.34
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 05 May 2023 08:37:34 -0700 (PDT)
+Message-ID: <db9c3190-28d8-199f-f4f0-a12524d0451e@gmail.com>
+Date: Fri, 5 May 2023 17:37:33 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH] phy: mediatek: fix returning garbage
+Content-Language: en-US, ca-ES, es-ES
+To: Vinod Koul <vkoul@kernel.org>, Tom Rix <trix@redhat.com>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de,
+ chunfeng.yun@mediatek.com, kishon@kernel.org,
+ angelogioacchino.delregno@collabora.com, nathan@kernel.org,
+ ndesaulniers@google.com, granquet@baylibre.com,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
+ linux-kernel@vger.kernel.org, llvm@lists.linux.dev
+References: <20230414122253.3171524-1-trix@redhat.com>
+ <ZFTMPWp8LhwA9uHz@matsya>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <ZFTMPWp8LhwA9uHz@matsya>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230505_061320_383645_74B2F61B 
-X-CRM114-Status: UNSURE (   7.73  )
+X-CRM114-CacheID: sfid-20230505_083740_941010_B25BD7CC 
+X-CRM114-Status: UNSURE (   9.05  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,27 +100,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Based on tag: next-20230504, linux-next/master
-
-v2:
-1. Modify SoB to match author name.
-
-v1:
-1. Add thermal reset bit for MT8188.
-2. Add infra_ao reset support for MT8188.
 
 
-Runyang Chen (2):
-  dt-bindings: reset: mt8188: add thermal reset control bit
-  clk: mediatek: reset: add infra_ao reset support for MT8188
+On 05/05/2023 11:28, Vinod Koul wrote:
+> On 14-04-23, 08:22, Tom Rix wrote:
+>> clang reports
+>> drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:298:6: error: variable
+>>    'ret' is uninitialized when used here [-Werror,-Wuninitialized]
+>>          if (ret)
+>>              ^~~
+>> ret should have been set by the preceding call to mtk_hdmi_pll_set_hw.
+> 
+> I have applied "phy: mediatek: hdmi: mt8195: fix uninitialized variable
+> usage in pll_calc"
 
- drivers/clk/mediatek/clk-mt8188-infra_ao.c | 24 ++++++++++++++++++++++
- include/dt-bindings/reset/mt8188-resets.h  |  5 +++++
- 2 files changed, 29 insertions(+)
+Thanks Vinod, that was on my list for today as well. I was a bit puzzled because 
+you took the patch that added it, but I wasn't sure if you would take the fix. 
+How do you want to handle things like this in the future?
 
-
-base-commit: 145e5cddfe8b4bf607510b2dcf630d95f4db420f
--- 
-2.18.0
-
+Regards,
+Matthias
 
