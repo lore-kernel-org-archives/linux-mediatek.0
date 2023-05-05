@@ -4,88 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C591BC77B7F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 May 2023 15:37:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9563AC77B7F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 May 2023 17:14:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MMQANphqIg54PwzmueerEA1nz6ede73K9wjbTi5bw3k=; b=u+Nm1Zg9bY/48MWY+m6jZ5ocZj
-	RCe7MN5mrL/L9mfvW7HnKZT7RD2uh0L98nQY2ZJjVhFUUqhnh1BNVusML4c1gooZHxd9YeP8K9CE6
-	qE80TkSwtg5omcnJP8CIl6in0SJLO+djfWlR6tlFeGPBO81Pit4cWj49mPVtx/M0xzqM1IY/oQkMB
-	Nj+WFt6tiJlQmOhB4JBn2cFDVrJnaC3Q1FdTiSEo30FeKFXEe+7eI8R31bIzhh3HQloiRNm/b4+tO
-	s5nwJezXXaqcjZvRsr8XZoTsTcLvaCv881490HVogSC42Y4jgGYm5HEB+Dmds/YPtnihOY11XZNQy
-	sEYTVfBg==;
+	bh=dMfl0C8EMOIowWqbI/Rqq/+20qm/1u6RPCMDDJIfSHE=; b=jXlsmCiYZ+BdZ4viecQr/vvvSw
+	wMQlZkQTjDMHoi++XVIRf8tXrcNikFvixxt7EejtCiTLXBd1Gctzx7v8QJTjFhOXAXiwkzSIjZ0W/
+	zwsTFUbcEifmmvqbIgfxGBLOepODE1KoDACDNlk3tlBT21H2ejEUpKZDVmZfobiUbes98cNynGq62
+	JAN+TJ1w5H5CN0KxzyFMl7T20DJ9c4nLqRJBn8hGSiAmnACP6ErQd6qtiuVFgNLKgsd8BgpYYsuFS
+	M6VSLg/yNRU25cv5LkvJuLzZV1EIOZwIui+CakSjcPaxX3NT1hF71F3PnZ0wR6TX6hpNrkipVgHad
+	IV2PoUhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1puxV9-00BD3i-2d;
-	Fri, 05 May 2023 15:37:43 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1puz0O-00BO1m-25;
+	Fri, 05 May 2023 17:14:04 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1puxV6-00BD1c-2v;
-	Fri, 05 May 2023 15:37:42 +0000
-Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-3f199696149so13768015e9.0;
-        Fri, 05 May 2023 08:37:37 -0700 (PDT)
+	id 1puz0J-00BO0L-1Y;
+	Fri, 05 May 2023 17:14:02 +0000
+Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-3077d134028so681075f8f.3;
+        Fri, 05 May 2023 10:13:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1683301056; x=1685893056;
+        d=gmail.com; s=20221208; t=1683306837; x=1685898837;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=MMQANphqIg54PwzmueerEA1nz6ede73K9wjbTi5bw3k=;
-        b=a3xV0hgeH2+HOW7KQ0n46spF34Mt6cZU8UE6reMTk2Op3pdqgwaIFTbRbmk+e/aQE5
-         RYAMOUEy+fGor1eIm/k7tig6rEzQMOVfL+NVK1QXrIVSfsQt571I3B/Zi3VXe1weaVC/
-         4eomzoHkj+3Vi/NW1q3m/SEAtqWO3jFWjEISvcnd6qBERWdECqpy2CgdFDUJ+tyIH+2S
-         TPs5UtZBwBc/Fnz+SGWOVXs6AsnX8fEaUzPGEI3GH/eyteKctZoFKyigjIjqhB+FSMKh
-         k/g9upF9q7vnODKBoVtt7O8XVD8aYy+d5l91r51H/v49ETPGi28RYnTNUroqmb/D0HmJ
-         jaUg==
+        bh=dMfl0C8EMOIowWqbI/Rqq/+20qm/1u6RPCMDDJIfSHE=;
+        b=U4q6GwkvxBZ02dcyk99ozrFVmaFKd9pXRVdIq/QMfjQfSM0DuYV11qSq3LjQ/eh2hn
+         SWoMjUcqXlUtdBEDydU5uR/ThsuXpidINhAN5u5FVfNXQe4U+xXWPT/5GacMC0hOAhUm
+         N+9fx7EdGhIgSMeJ/fXhj+tbWfL3jApEH0buSB+7BSDggwjJaF5BC+yOyuqonEktV/BB
+         gcj/LQdGZ2QC+glfRh38xbPaj3m6h/eW+L4zktEq3vtrVTipyuZ4jiwGq6ROfK3afeb8
+         WFDpXjQvo3HeGWHRzWy/jV1w79bCWpBHYHcwBnGEfOj9izvG0ZDkXscyUbGf7Hrhah5v
+         044A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683301056; x=1685893056;
+        d=1e100.net; s=20221208; t=1683306837; x=1685898837;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=MMQANphqIg54PwzmueerEA1nz6ede73K9wjbTi5bw3k=;
-        b=ADh5dpvETmUK3aapYyi9YHsax71r46bG9ldBOicj14RpgCxQQ8ev365jllZzQjDRJM
-         nHc+B0AAZQHmnR986hbS87uGgwbS+lTF6M3vqtwUN4FvLgBWDsXIJClezG2BdfZipcG/
-         GctasBmeIfLxh05e9nc5obHSf5nk5PzKgoCM95gMpQ8KxWMt7zimL2O6RE+kbgU1xbGI
-         x5HWbeWPEhabI7TSlvoOD6GAVVrJ20yhVDUYf2tJ8pZDc6X8b920vQWdCsmyqddBAgfV
-         4nPm3ZXpDdp7QEFYWDovPTszx8skXRyRaN0Hx/ueQt45Uom8b0F1zpsy71jv8MN8kStt
-         D9Iw==
-X-Gm-Message-State: AC+VfDz6ToqngYeQJzS/GMRaS2xNiKoPjmOr8fSvKDrihJEGvymtU/VG
-	swyXv/PvodgeR0coiq74zNQ=
-X-Google-Smtp-Source: ACHHUZ6YF0JN2q50Mb4Rc5IWpAQlQaY8t82WbF1TW53ociZHjEHxERnMkxklnJoCQ9mt5l5ZwvQpug==
-X-Received: by 2002:adf:f2c2:0:b0:306:3be9:6ab with SMTP id d2-20020adff2c2000000b003063be906abmr1905923wrp.54.1683301055966;
-        Fri, 05 May 2023 08:37:35 -0700 (PDT)
+        bh=dMfl0C8EMOIowWqbI/Rqq/+20qm/1u6RPCMDDJIfSHE=;
+        b=AFmUwA6mlIEfK9KVzlfZLu2pFSQeNM8PltlXMoCVZOoRadjO3w7hKQmSGesb+XPIGO
+         hrbjMm0LuzdmXFxKr6LOgJdmznNWA3pjCcDlgl6kJ/a8LkjECRZ4RcJi3jEh1a9lzHpC
+         fQYkDoRfIzYymeRrHELrGG3Tst7aW8tz8vis2FCk+TlXxioPte/tqt8QfsW4QryqQGC/
+         Gb5MLw9k4RxCPq/jbK7xv/cCt2M3mABHSTP/FVRdTj6ZDTV3ZJSPH58nGZOc3SIdjX4/
+         fwMxS+KDZxWnczTOE+j5pdlBJOQ28kbIr/UO0IXgQNOOd8yGebioqAxaSlrnNg7tBAKX
+         bNoA==
+X-Gm-Message-State: AC+VfDzqOBJzpjk1LqHvEgrUHDA6yLp5k+p6tIvMLFCLDdjaWfHeA5zy
+	Mv633vZagJFyZnStKvh9b7M=
+X-Google-Smtp-Source: ACHHUZ6hqgTsps9ibKVkPPhU/c2tsc26KuGSdINz19lQutH4+j4O3f6l2AMBZzNuHLaVkM6/FpGKVA==
+X-Received: by 2002:a5d:4745:0:b0:306:3ad3:94f2 with SMTP id o5-20020a5d4745000000b003063ad394f2mr1805903wrs.42.1683306837105;
+        Fri, 05 May 2023 10:13:57 -0700 (PDT)
 Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id l8-20020a5d4bc8000000b0030631f199f9sm2696499wrt.34.2023.05.05.08.37.34
+        by smtp.gmail.com with ESMTPSA id z13-20020adfd0cd000000b0030631a599a0sm2947687wrh.24.2023.05.05.10.13.53
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 05 May 2023 08:37:34 -0700 (PDT)
-Message-ID: <db9c3190-28d8-199f-f4f0-a12524d0451e@gmail.com>
-Date: Fri, 5 May 2023 17:37:33 +0200
+        Fri, 05 May 2023 10:13:56 -0700 (PDT)
+Message-ID: <65f4c370-e9fa-c715-19a4-54347c077e53@gmail.com>
+Date: Fri, 5 May 2023 19:13:52 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.0
-Subject: Re: [PATCH] phy: mediatek: fix returning garbage
+Subject: Re: [PATCH 06/18] remoteproc: mtk_scp: Convert to platform remove
+ callback returning void
 Content-Language: en-US, ca-ES, es-ES
-To: Vinod Koul <vkoul@kernel.org>, Tom Rix <trix@redhat.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de,
- chunfeng.yun@mediatek.com, kishon@kernel.org,
- angelogioacchino.delregno@collabora.com, nathan@kernel.org,
- ndesaulniers@google.com, granquet@baylibre.com,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
- linux-kernel@vger.kernel.org, llvm@lists.linux.dev
-References: <20230414122253.3171524-1-trix@redhat.com>
- <ZFTMPWp8LhwA9uHz@matsya>
+To: =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Mathieu Poirier <mathieu.poirier@linaro.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-remoteproc@vger.kernel.org, kernel@pengutronix.de,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230504194453.1150368-1-u.kleine-koenig@pengutronix.de>
+ <20230504194453.1150368-7-u.kleine-koenig@pengutronix.de>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <ZFTMPWp8LhwA9uHz@matsya>
+In-Reply-To: <20230504194453.1150368-7-u.kleine-koenig@pengutronix.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230505_083740_941010_B25BD7CC 
-X-CRM114-Status: UNSURE (   9.05  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230505_101359_523128_5F7F4C44 
+X-CRM114-Status: GOOD (  24.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,22 +100,55 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 05/05/2023 11:28, Vinod Koul wrote:
-> On 14-04-23, 08:22, Tom Rix wrote:
->> clang reports
->> drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:298:6: error: variable
->>    'ret' is uninitialized when used here [-Werror,-Wuninitialized]
->>          if (ret)
->>              ^~~
->> ret should have been set by the preceding call to mtk_hdmi_pll_set_hw.
+On 04/05/2023 21:44, Uwe Kleine-König wrote:
+> The .remove() callback for a platform driver returns an int which makes
+> many driver authors wrongly assume it's possible to do error handling by
+> returning an error code. However the value returned is (mostly) ignored
+> and this typically results in resource leaks. To improve here there is a
+> quest to make the remove callback return void. In the first step of this
+> quest all drivers are converted to .remove_new() which already returns
+> void.
 > 
-> I have applied "phy: mediatek: hdmi: mt8195: fix uninitialized variable
-> usage in pll_calc"
+> Trivially convert this driver from always returning zero in the remove
+> callback to the void returning variant.
+> 
+> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
 
-Thanks Vinod, that was on my list for today as well. I was a bit puzzled because 
-you took the patch that added it, but I wasn't sure if you would take the fix. 
-How do you want to handle things like this in the future?
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-Regards,
-Matthias
+> ---
+>   drivers/remoteproc/mtk_scp.c | 6 ++----
+>   1 file changed, 2 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+> index e1d93e63d7df..dcc94ee2458d 100644
+> --- a/drivers/remoteproc/mtk_scp.c
+> +++ b/drivers/remoteproc/mtk_scp.c
+> @@ -913,7 +913,7 @@ static int scp_probe(struct platform_device *pdev)
+>   	return ret;
+>   }
+>   
+> -static int scp_remove(struct platform_device *pdev)
+> +static void scp_remove(struct platform_device *pdev)
+>   {
+>   	struct mtk_scp *scp = platform_get_drvdata(pdev);
+>   	int i;
+> @@ -925,8 +925,6 @@ static int scp_remove(struct platform_device *pdev)
+>   	for (i = 0; i < SCP_IPI_MAX; i++)
+>   		mutex_destroy(&scp->ipi_desc[i].lock);
+>   	mutex_destroy(&scp->send_lock);
+> -
+> -	return 0;
+>   }
+>   
+>   static const struct mtk_scp_of_data mt8183_of_data = {
+> @@ -1003,7 +1001,7 @@ MODULE_DEVICE_TABLE(of, mtk_scp_of_match);
+>   
+>   static struct platform_driver mtk_scp_driver = {
+>   	.probe = scp_probe,
+> -	.remove = scp_remove,
+> +	.remove_new = scp_remove,
+>   	.driver = {
+>   		.name = "mtk-scp",
+>   		.of_match_table = mtk_scp_of_match,
 
