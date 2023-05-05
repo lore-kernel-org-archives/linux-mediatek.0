@@ -4,77 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0040C77B75
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 May 2023 09:37:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A117C77B7F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 May 2023 11:13:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ib/uxIkyw10Jt/jLqmRzoGLx+8tR0jLvpbEVmDPfJYo=; b=i+djSxh7kxb2SEEd/zNQqj3HqF
-	LI2KCOh0Vy/s6dBjWIFSS1Rvn13JwEN65Trk3k3BmWqfhBXp9xgjP/V55FEzy3bnri/0wz37iSfFm
-	3WFcOEj3RApDu0RPMGV2q7n4GYDKryphiCGBMSZ6Q1Sm8fRNtOpLe1X2V68gvlN17Bo630guZE9kV
-	8Yf5oNs5rcTjGwd1HcZ4YGjfwlpLfG79wUuvefRBvbTZgyFYi+C78QLCl0o7u4OHggeSdNgFVxtxx
-	XdBfPTN2cTCRYVa/hbykcSQVqtjrw/PMcOHXDh3ptmx8mAYm63ZsOKWoY9/9xWog8qNf4qzefjyuS
-	FIMuCjHg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1ijXnLFs/E46BZ9vNzrvv52u6Szz+pPucPk3iNgQDX0=; b=KCv4CLXZAhycoIFTl2lkE/L5iY
+	A7q4/xwtgicLRmFjyVyJB43pPwarbvlD7uqanfX49B7n9aBHdm8ddR2lcWmql2fRf/hOidIppEzPR
+	jQtvamxzZeQ0CN3LFtgrn4MBwq2LpCvXzkAr3uHMx6lamHhWhjUjDWOk1yMvzifNnYFGEZ5yrI6O6
+	6Gttlpe06w0FaWVpl6+5x7+zbzP5BjiWSFZXfxOd7D0KasFB7oQQ+x5GDw7J9jVDaYTZMOyP/U2e9
+	XKYst+DCdp714oZ9HIptLZg6Zs5AWXdzOE3p1kdQW5EQE8Su/RQPyTI3Dz7F7UTVs0YAlhP5BTVX4
+	p5Kuw75w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pursp-00AASy-27;
-	Fri, 05 May 2023 09:37:47 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1putNQ-00AdAH-1w;
+	Fri, 05 May 2023 11:13:28 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pursk-00AAR4-2F;
-	Fri, 05 May 2023 09:37:45 +0000
-Received: from IcarusMOD.eternityproject.eu (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 75A766605709;
-	Fri,  5 May 2023 10:37:40 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1683279461;
-	bh=5/9WroyIBUi9E29he9XG+5WOW57u+xl9BEKI+4ueqDs=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=IF4K+zWu+UaxHjfmhNqtGGsdRPI5Jpbs5O946jjbUjMM3r5xgQwWgr1wgruTHGcBc
-	 0eMW9Cleozs6FjBBmafQWWv8BEgjtwMVwOr6Q61eM8lZmdW6hCQ7BJhFPKR9Ipdm/Q
-	 1UNIoL6W0X5a1VuQYdxchfDicaxg/eo97C5zhtLl0Vx9u/LMl9MRq1J48rKOc+gTgJ
-	 OaYfHKDOz5we/MkPFcksl+LmG1ufJIGNr9+M1GGMmwDSga747r6tk/Dpcm5E782gW2
-	 krS8J38UArpKzmotbyZtPjSWbPii6dF76AXIxSwN4Zq+u9VeOqrYoBx8kokeBlrMhm
-	 k0ALQteu6WtKg==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: mturquette@baylibre.com
-Cc: sboyd@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	wenst@chromium.org,
-	chun-jie.chen@mediatek.com,
-	mandyjh.liu@mediatek.com,
-	miles.chen@mediatek.com,
-	zhaojh329@gmail.com,
-	daniel@makrotopia.org,
-	nfraprado@collabora.com,
-	rex-bc.chen@mediatek.com,
-	Garmin.Chang@mediatek.com,
-	msp@baylibre.com,
-	yangyingliang@huawei.com,
-	linux-clk@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	id 1putNM-00Ad6k-28;
+	Fri, 05 May 2023 11:13:26 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-3062db220a3so1112688f8f.0;
+        Fri, 05 May 2023 04:12:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1683285175; x=1685877175;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=1ijXnLFs/E46BZ9vNzrvv52u6Szz+pPucPk3iNgQDX0=;
+        b=ktYmbTRAlaZPDQsuTHy/0W24MvI1iC67ZUpDtDkZ9YSlqzbJBWP+0kFoH8q3O4qUut
+         VM98hi2uHsFbz/a0TfWfO7KvfyYzl17T7JQzv6CKZmpSJ0F1+rUE3+8BcLPCasHpRYBh
+         w3+xRL+jvzEaqldrTuZFIITUxQJF8VKhNY10/FJ3qtw7usjlZkbrZUAEo1vviX7GohaY
+         5KKPw12O6XNmC6HTyUrMnlnnG+8ZbqEy6bBgQvW67d6vp4NcGNVms7IDdScdHK7wbMIz
+         1yO76Y4+hDmJbQFYJkb/AMHKBQEFiuadthz9Nyn15POXLgi9VcW19GgSdXDTnt49g9KG
+         6fcw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1683285175; x=1685877175;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=1ijXnLFs/E46BZ9vNzrvv52u6Szz+pPucPk3iNgQDX0=;
+        b=g0hW6tPJWF4WOkeCsTlUYhXaYu1wY/15Y5v5XjIwCx0syNxCH4/cOFVUVQzHE2tKGF
+         JGWjsOXeHp2HLv0yEMptr+TP9ULDdxZoAy/87Us/soBy/lSTVGnsDozupt92qIbrKbfZ
+         YPhh5/dPA9o44KmEcDSjSiNVmBDVt1KW1Ls2DiKu2ix8rph2mNzcUJGRBBSb93RZntYY
+         HHRuTYti6ZPV366xuZB2Nis5jVzZKgNirfxFJ0sK4kEPVDt3biTjS7qqrdMm4siTcOcL
+         sEiRxMrRGvFriU1Huhyyenq4DCMgH4MlPnH9yDL5n4egjQBuUOXFOsEZ4R35FCJYggRQ
+         er3A==
+X-Gm-Message-State: AC+VfDzJLgxone+H2NEzCbfybxQSMyNFJhl9cu/gULaZY6SkRRPXAZ9a
+	xQkQpU+InlPl4GqiRISL3sk=
+X-Google-Smtp-Source: ACHHUZ7VBqUiJxZux5Zvw1CbWJkUScVvhwDiZ8l56Xhc08qtgy5n+5w+8QOylGPS6kQyJv2SQvxZfw==
+X-Received: by 2002:adf:f188:0:b0:306:37ac:ef8e with SMTP id h8-20020adff188000000b0030637acef8emr1077455wro.56.1683285174620;
+        Fri, 05 May 2023 04:12:54 -0700 (PDT)
+Received: from localhost (host86-156-84-164.range86-156.btcentralplus.com. [86.156.84.164])
+        by smtp.gmail.com with ESMTPSA id g11-20020adff40b000000b002c8476dde7asm2054187wro.114.2023.05.05.04.12.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 05 May 2023 04:12:53 -0700 (PDT)
+Date: Fri, 5 May 2023 12:12:52 +0100
+From: Lorenzo Stoakes <lstoakes@gmail.com>
+To: kernel test robot <lkp@intel.com>
+Cc: Andrew Morton <akpm@linux-foundation.org>,
+	Linux Memory Management List <linux-mm@kvack.org>,
+	amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+	intel-gfx@lists.freedesktop.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	kernel@collabora.com
-Subject: [PATCH 2/2] clk: mediatek: Remove CLK_SET_PARENT from all MSDC core clocks
-Date: Fri,  5 May 2023 11:37:33 +0200
-Message-Id: <20230505093733.221922-3-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230505093733.221922-1-angelogioacchino.delregno@collabora.com>
-References: <20230505093733.221922-1-angelogioacchino.delregno@collabora.com>
+	linux-bluetooth@vger.kernel.org, linux-ext4@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
+	linux-tegra@vger.kernel.org, linux-um@lists.infradead.org,
+	Mark Brown <broonie@kernel.org>
+Subject: Re: [linux-next:master] BUILD REGRESSION
+ 145e5cddfe8b4bf607510b2dcf630d95f4db420f
+Message-ID: <1c8aade0-5859-40f3-b6af-5211d1f6a941@lucifer.local>
+References: <20230505024758.umVTa%lkp@intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230505024758.umVTa%lkp@intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230505_023742_996416_AABB221E 
-X-CRM114-Status: GOOD (  11.77  )
+X-CRM114-CacheID: sfid-20230505_041324_721515_E4AC6A01 
+X-CRM114-Status: GOOD (  11.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,310 +97,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Various MSDC core clocks, used for multiple MSDC controller instances,
-share the same parent(s): in order to add parents selection in the
-mtk-sd driver to achieve an accurate clock rate for all modes, remove
-the CLK_SET_RATE_PARENT flag from all MSDC clocks for all SoCs: this
-will make sure that a clk_set_rate() call performed for a clock on
-a secondary controller will not change the rate of a common parent,
-which would result in an overclock or underclock of one of the
-controllers.
+On Fri, May 05, 2023 at 10:47:58AM +0800, kernel test robot wrote:
+> tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
+> branch HEAD: 145e5cddfe8b4bf607510b2dcf630d95f4db420f  Add linux-next specific files for 20230504
+>
+> Error/Warning reports:
+>
+> https://lore.kernel.org/oe-kbuild-all/202304102354.Q4VOXGTE-lkp@intel.com
+> https://lore.kernel.org/oe-kbuild-all/202304220119.94Pw6YsD-lkp@intel.com
+> https://lore.kernel.org/oe-kbuild-all/202304230014.YbScpx20-lkp@intel.com
+> https://lore.kernel.org/oe-kbuild-all/202304250419.YtCLtUhG-lkp@intel.com
+> https://lore.kernel.org/oe-kbuild-all/202305042329.Gyk53keD-lkp@intel.com
+> https://lore.kernel.org/oe-kbuild-all/202305050237.1cQ4fBKs-lkp@intel.com
+>
+> Error/Warning: (recently discovered and may have been fixed)
+>
+> arch/um/drivers/harddog_user.c:6:10: fatal error: stdio.h: No such file or directory
+> drivers/accel/habanalabs/gaudi/gaudi.c:117:19: warning: unused variable 'gaudi_irq_name' [-Wunused-const-variable]
+> drivers/base/regmap/regcache-maple.c:113:23: warning: 'lower_index' is used uninitialized [-Wuninitialized]
+> drivers/base/regmap/regcache-maple.c:113:36: warning: 'lower_last' is used uninitialized [-Wuninitialized]
+> drivers/bluetooth/btnxpuart.c:1332:34: warning: unused variable 'nxpuart_of_match_table' [-Wunused-const-variable]
+> drivers/gpu/drm/amd/amdgpu/../display/amdgpu_dm/amdgpu_dm.c:6339:6: warning: no previous prototype for 'amdgpu_dm_connector_funcs_force' [-Wmissing-prototypes]
+> drivers/gpu/drm/amd/amdgpu/../display/amdgpu_dm/amdgpu_dm.c:6395:21: warning: variable 'count' set but not used [-Wunused-but-set-variable]
+> drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c:494:13: warning: variable 'j' set but not used [-Wunused-but-set-variable]
+> drivers/gpu/drm/amd/amdgpu/gfx_v9_4_3.c:48:38: warning: unused variable 'golden_settings_gc_9_4_3' [-Wunused-const-variable]
+> drivers/gpu/drm/i915/gt/uc/guc_capture_fwif.h:62: warning: wrong kernel-doc identifier on line:
+> drivers/gpu/drm/i915/i915_pmu.h:41: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
+> drivers/gpu/drm/i915/i915_request.h:176: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
+> drivers/gpu/drm/i915/i915_vma.h:145: warning: expecting prototype for i915_vma_offset(). Prototype was for i915_vma_size() instead
+> drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:298:6: warning: variable 'ret' is uninitialized when used here [-Wuninitialized]
+> mm/gup.c:2813:14: error: implicit declaration of function 'folio_fast_pin_allowed'; did you mean 'folio_test_pinned'? [-Werror=implicit-function-declaration]
+> mm/gup.c:2813:7: error: call to undeclared function 'folio_fast_pin_allowed'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/clk/mediatek/clk-mt6765.c          | 12 +++++------
- drivers/clk/mediatek/clk-mt6779.c          | 18 ++++++++--------
- drivers/clk/mediatek/clk-mt7981-topckgen.c | 12 +++++------
- drivers/clk/mediatek/clk-mt7986-topckgen.c | 12 +++++------
- drivers/clk/mediatek/clk-mt8173-topckgen.c | 24 +++++++++++-----------
- drivers/clk/mediatek/clk-mt8183.c          | 16 +++++++--------
- drivers/clk/mediatek/clk-mt8186-topckgen.c | 12 +++++------
- drivers/clk/mediatek/clk-mt8188-topckgen.c | 16 +++++++--------
- drivers/clk/mediatek/clk-mt8192.c          | 17 +++++++--------
- drivers/clk/mediatek/clk-mt8195-topckgen.c | 16 +++++++--------
- 10 files changed, 78 insertions(+), 77 deletions(-)
+The folio_fast_pin_allowed() declaration should be fixed in v9 of the series that introduced it [1].
 
-diff --git a/drivers/clk/mediatek/clk-mt6765.c b/drivers/clk/mediatek/clk-mt6765.c
-index 4f028df6c0a9..0377e6dd3206 100644
---- a/drivers/clk/mediatek/clk-mt6765.c
-+++ b/drivers/clk/mediatek/clk-mt6765.c
-@@ -406,15 +406,15 @@ static const struct mtk_mux top_muxes[] = {
- 			CLK_CFG_2_SET, CLK_CFG_2_CLR, 24, 2, 31,
- 			CLK_CFG_UPDATE, 11),
- 	/* CLK_CFG_3 */
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_MSDC50_0_HCLK_SEL, "msdc5hclk",
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_MSDC50_0_HCLK_SEL, "msdc5hclk",
- 			msdc5hclk_parents, CLK_CFG_3, CLK_CFG_3_SET,
--			CLK_CFG_3_CLR, 0, 2, 7, CLK_CFG_UPDATE, 12),
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_MSDC50_0_SEL, "msdc50_0_sel",
-+			CLK_CFG_3_CLR, 0, 2, 7, CLK_CFG_UPDATE, 12, 0),
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_MSDC50_0_SEL, "msdc50_0_sel",
- 			msdc50_0_parents, CLK_CFG_3, CLK_CFG_3_SET,
--			CLK_CFG_3_CLR, 8, 3, 15, CLK_CFG_UPDATE, 13),
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_MSDC30_1_SEL, "msdc30_1_sel",
-+			CLK_CFG_3_CLR, 8, 3, 15, CLK_CFG_UPDATE, 13, 0),
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_MSDC30_1_SEL, "msdc30_1_sel",
- 			msdc30_1_parents, CLK_CFG_3, CLK_CFG_3_SET,
--			CLK_CFG_3_CLR, 16, 3, 23, CLK_CFG_UPDATE, 14),
-+			CLK_CFG_3_CLR, 16, 3, 23, CLK_CFG_UPDATE, 14, 0),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_AUDIO_SEL, "audio_sel", audio_parents,
- 			CLK_CFG_3, CLK_CFG_3_SET, CLK_CFG_3_CLR,
- 			24, 2, 31, CLK_CFG_UPDATE, 15),
-diff --git a/drivers/clk/mediatek/clk-mt6779.c b/drivers/clk/mediatek/clk-mt6779.c
-index ada927a61309..555e937e9430 100644
---- a/drivers/clk/mediatek/clk-mt6779.c
-+++ b/drivers/clk/mediatek/clk-mt6779.c
-@@ -687,16 +687,16 @@ static const struct mtk_mux top_muxes[] = {
- 			     0x70, 0x74, 0x78, 0, 1, 7, 0x004, 20),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_SPI, "spi_sel", spi_parents,
- 			     0x70, 0x74, 0x78, 8, 2, 15, 0x004, 21),
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_MSDC50_0_HCLK, "msdc50_hclk_sel",
--			     msdc50_hclk_parents, 0x70, 0x74, 0x78,
--			     16, 2, 23, 0x004, 22),
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_MSDC50_0, "msdc50_0_sel",
--			     msdc50_0_parents, 0x70, 0x74, 0x78,
--			     24, 3, 31, 0x004, 23),
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_MSDC50_0_HCLK, "msdc50_hclk_sel",
-+				   msdc50_hclk_parents, 0x70, 0x74, 0x78,
-+				   16, 2, 23, 0x004, 22, 0),
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_MSDC50_0, "msdc50_0_sel",
-+				   msdc50_0_parents, 0x70, 0x74, 0x78,
-+				   24, 3, 31, 0x004, 23, 0),
- 	/* CLK_CFG_6 */
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_MSDC30_1, "msdc30_1_sel",
--			     msdc30_1_parents, 0x80, 0x84, 0x88,
--			     0, 3, 7, 0x004, 24),
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_MSDC30_1, "msdc30_1_sel",
-+				   msdc30_1_parents, 0x80, 0x84, 0x88,
-+				   0, 3, 7, 0x004, 24, 0),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_AUD, "audio_sel", audio_parents,
- 			     0x80, 0x84, 0x88, 8, 2, 15, 0x004, 25),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_AUD_INTBUS, "aud_intbus_sel",
-diff --git a/drivers/clk/mediatek/clk-mt7981-topckgen.c b/drivers/clk/mediatek/clk-mt7981-topckgen.c
-index 3aba1a9b9a36..ac015a68674c 100644
---- a/drivers/clk/mediatek/clk-mt7981-topckgen.c
-+++ b/drivers/clk/mediatek/clk-mt7981-topckgen.c
-@@ -310,12 +310,12 @@ static const struct mtk_mux top_muxes[] = {
- 			     pextp_tl_ck_parents, 0x010, 0x014, 0x018, 24, 2, 31,
- 			     0x1C0, 7),
- 	/* CLK_CFG_2 */
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_EMMC_208M_SEL, "emmc_208m_sel",
--			     emmc_208m_parents, 0x020, 0x024, 0x028, 0, 3, 7,
--			     0x1C0, 8),
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_EMMC_400M_SEL, "emmc_400m_sel",
--			     emmc_400m_parents, 0x020, 0x024, 0x028, 8, 2, 15,
--			     0x1C0, 9),
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_EMMC_208M_SEL, "emmc_208m_sel",
-+				   emmc_208m_parents, 0x020, 0x024, 0x028, 0, 3, 7,
-+				   0x1C0, 8, 0),
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_EMMC_400M_SEL, "emmc_400m_sel",
-+				   emmc_400m_parents, 0x020, 0x024, 0x028, 8, 2, 15,
-+				   0x1C0, 9, 0),
- 	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_F26M_SEL, "csw_f26m_sel",
- 				   csw_f26m_parents, 0x020, 0x024, 0x028, 16, 1, 23,
- 				   0x1C0, 10,
-diff --git a/drivers/clk/mediatek/clk-mt7986-topckgen.c b/drivers/clk/mediatek/clk-mt7986-topckgen.c
-index fbca3feded8f..536655bede26 100644
---- a/drivers/clk/mediatek/clk-mt7986-topckgen.c
-+++ b/drivers/clk/mediatek/clk-mt7986-topckgen.c
-@@ -193,12 +193,12 @@ static const struct mtk_mux top_muxes[] = {
- 			     pextp_tl_ck_parents, 0x010, 0x014, 0x018, 24, 2,
- 			     31, 0x1C0, 7),
- 	/* CLK_CFG_2 */
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_EMMC_250M_SEL, "emmc_250m_sel",
--			     emmc_250m_parents, 0x020, 0x024, 0x028, 0, 1, 7,
--			     0x1C0, 8),
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_EMMC_416M_SEL, "emmc_416m_sel",
--			     emmc_416m_parents, 0x020, 0x024, 0x028, 8, 1, 15,
--			     0x1C0, 9),
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_EMMC_250M_SEL, "emmc_250m_sel",
-+				   emmc_250m_parents, 0x020, 0x024, 0x028, 0, 1, 7,
-+				   0x1C0, 8, 0),
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_EMMC_416M_SEL, "emmc_416m_sel",
-+				   emmc_416m_parents, 0x020, 0x024, 0x028, 8, 1, 15,
-+				   0x1C0, 9, 0),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_F_26M_ADC_SEL, "f_26m_adc_sel",
- 			     f_26m_adc_parents, 0x020, 0x024, 0x028, 16, 1, 23,
- 			     0x1C0, 10),
-diff --git a/drivers/clk/mediatek/clk-mt8173-topckgen.c b/drivers/clk/mediatek/clk-mt8173-topckgen.c
-index baa8fd6cb312..42c37541cebb 100644
---- a/drivers/clk/mediatek/clk-mt8173-topckgen.c
-+++ b/drivers/clk/mediatek/clk-mt8173-topckgen.c
-@@ -547,17 +547,17 @@ static const struct mtk_composite top_muxes[] = {
- 	MUX_GATE(CLK_TOP_USB20_SEL, "usb20_sel", usb20_parents, 0x0060, 24, 2, 31),
- 	/* CLK_CFG_3 */
- 	MUX_GATE(CLK_TOP_USB30_SEL, "usb30_sel", usb30_parents, 0x0070, 0, 2, 7),
--	MUX_GATE(CLK_TOP_MSDC50_0_H_SEL, "msdc50_0_h_sel", msdc50_0_h_parents,
--		 0x0070, 8, 3, 15),
--	MUX_GATE(CLK_TOP_MSDC50_0_SEL, "msdc50_0_sel", msdc50_0_parents,
--		 0x0070, 16, 4, 23),
--	MUX_GATE(CLK_TOP_MSDC30_1_SEL, "msdc30_1_sel", msdc30_1_parents,
--		 0x0070, 24, 3, 31),
-+	MUX_GATE_FLAGS(CLK_TOP_MSDC50_0_H_SEL, "msdc50_0_h_sel", msdc50_0_h_parents,
-+		 0x0070, 8, 3, 15, 0),
-+	MUX_GATE_FLAGS(CLK_TOP_MSDC50_0_SEL, "msdc50_0_sel", msdc50_0_parents,
-+		 0x0070, 16, 4, 23, 0),
-+	MUX_GATE_FLAGS(CLK_TOP_MSDC30_1_SEL, "msdc30_1_sel", msdc30_1_parents,
-+		 0x0070, 24, 3, 31, 0),
- 	/* CLK_CFG_4 */
--	MUX_GATE(CLK_TOP_MSDC30_2_SEL, "msdc30_2_sel", msdc30_2_parents,
--		 0x0080, 0, 3, 7),
--	MUX_GATE(CLK_TOP_MSDC30_3_SEL, "msdc30_3_sel", msdc30_3_parents,
--		 0x0080, 8, 4, 15),
-+	MUX_GATE_FLAGS(CLK_TOP_MSDC30_2_SEL, "msdc30_2_sel", msdc30_2_parents,
-+		 0x0080, 0, 3, 7, 0),
-+	MUX_GATE_FLAGS(CLK_TOP_MSDC30_3_SEL, "msdc30_3_sel", msdc30_3_parents,
-+		 0x0080, 8, 4, 15, 0),
- 	MUX_GATE(CLK_TOP_AUDIO_SEL, "audio_sel", audio_parents,
- 		 0x0080, 16, 2, 23),
- 	MUX_GATE(CLK_TOP_AUD_INTBUS_SEL, "aud_intbus_sel", aud_intbus_parents,
-@@ -595,8 +595,8 @@ static const struct mtk_composite top_muxes[] = {
- 	MUX_GATE(CLK_TOP_DPILVDS_SEL, "dpilvds_sel", dpilvds_parents,
- 		 0x00c0, 24, 3, 31),
- 	/* CLK_CFG_13 */
--	MUX_GATE(CLK_TOP_MSDC50_2_H_SEL, "msdc50_2_h_sel", msdc50_2_h_parents,
--		 0x00d0, 0, 3, 7),
-+	MUX_GATE_FLAGS(CLK_TOP_MSDC50_2_H_SEL, "msdc50_2_h_sel", msdc50_2_h_parents,
-+		 0x00d0, 0, 3, 7, 0),
- 	MUX_GATE(CLK_TOP_HDCP_SEL, "hdcp_sel", hdcp_parents, 0x00d0, 8, 2, 15),
- 	MUX_GATE(CLK_TOP_HDCP_24M_SEL, "hdcp_24m_sel", hdcp_24m_parents,
- 		 0x00d0, 16, 2, 23),
-diff --git a/drivers/clk/mediatek/clk-mt8183.c b/drivers/clk/mediatek/clk-mt8183.c
-index 95786b0c2d5f..dc1a24f0046f 100644
---- a/drivers/clk/mediatek/clk-mt8183.c
-+++ b/drivers/clk/mediatek/clk-mt8183.c
-@@ -487,14 +487,14 @@ static const struct mtk_mux top_muxes[] = {
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_MUX_SPI, "spi_sel",
- 		spi_parents, 0x70, 0x74, 0x78, 24, 2, 31, 0x004, 15),
- 	/* CLK_CFG_4 */
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_MUX_MSDC50_0_HCLK, "msdc50_hclk_sel",
--		msdc50_hclk_parents, 0x80, 0x84, 0x88, 0, 2, 7, 0x004, 16),
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_MUX_MSDC50_0, "msdc50_0_sel",
--		msdc50_0_parents, 0x80, 0x84, 0x88, 8, 3, 15, 0x004, 17),
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_MUX_MSDC30_1, "msdc30_1_sel",
--		msdc30_1_parents, 0x80, 0x84, 0x88, 16, 3, 23, 0x004, 18),
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_MUX_MSDC30_2, "msdc30_2_sel",
--		msdc30_2_parents, 0x80, 0x84, 0x88, 24, 3, 31, 0x004, 19),
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_MUX_MSDC50_0_HCLK, "msdc50_hclk_sel",
-+		msdc50_hclk_parents, 0x80, 0x84, 0x88, 0, 2, 7, 0x004, 16, 0),
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_MUX_MSDC50_0, "msdc50_0_sel",
-+		msdc50_0_parents, 0x80, 0x84, 0x88, 8, 3, 15, 0x004, 17, 0),
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_MUX_MSDC30_1, "msdc30_1_sel",
-+		msdc30_1_parents, 0x80, 0x84, 0x88, 16, 3, 23, 0x004, 18, 0),
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_MUX_MSDC30_2, "msdc30_2_sel",
-+		msdc30_2_parents, 0x80, 0x84, 0x88, 24, 3, 31, 0x004, 19, 0),
- 	/* CLK_CFG_5 */
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_MUX_AUDIO, "audio_sel",
- 		audio_parents, 0x90, 0x94, 0x98, 0, 2, 7, 0x004, 20),
-diff --git a/drivers/clk/mediatek/clk-mt8186-topckgen.c b/drivers/clk/mediatek/clk-mt8186-topckgen.c
-index 669806212073..b8a619e98da0 100644
---- a/drivers/clk/mediatek/clk-mt8186-topckgen.c
-+++ b/drivers/clk/mediatek/clk-mt8186-topckgen.c
-@@ -531,12 +531,12 @@ static const struct mtk_mux top_mtk_muxes[] = {
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_SPI, "top_spi",
- 		spi_parents, 0x0060, 0x0064, 0x0068, 24, 3, 31, 0x0004, 11),
- 	/* CLK_CFG_3 */
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_MSDC50_0_HCLK, "top_msdc5hclk",
--		msdc5hclk_parents, 0x0070, 0x0074, 0x0078, 0, 2, 7, 0x0004, 12),
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_MSDC50_0, "top_msdc50_0",
--		msdc50_0_parents, 0x0070, 0x0074, 0x0078, 8, 3, 15, 0x0004, 13),
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_MSDC30_1, "top_msdc30_1",
--		msdc30_1_parents, 0x0070, 0x0074, 0x0078, 16, 3, 23, 0x0004, 14),
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_MSDC50_0_HCLK, "top_msdc5hclk",
-+		msdc5hclk_parents, 0x0070, 0x0074, 0x0078, 0, 2, 7, 0x0004, 12, 0),
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_MSDC50_0, "top_msdc50_0",
-+		msdc50_0_parents, 0x0070, 0x0074, 0x0078, 8, 3, 15, 0x0004, 13, 0),
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_MSDC30_1, "top_msdc30_1",
-+		msdc30_1_parents, 0x0070, 0x0074, 0x0078, 16, 3, 23, 0x0004, 14, 0),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_AUDIO, "top_audio",
- 		audio_parents, 0x0070, 0x0074, 0x0078, 24, 2, 31, 0x0004, 15),
- 	/* CLK_CFG_4 */
-diff --git a/drivers/clk/mediatek/clk-mt8188-topckgen.c b/drivers/clk/mediatek/clk-mt8188-topckgen.c
-index 7c99244d997e..8699b87b130d 100644
---- a/drivers/clk/mediatek/clk-mt8188-topckgen.c
-+++ b/drivers/clk/mediatek/clk-mt8188-topckgen.c
-@@ -1015,15 +1015,15 @@ static const struct mtk_mux top_mtk_muxes[] = {
- 			     uart_parents, 0x068, 0x06C, 0x070, 0, 4, 7, 0x04, 24),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_SPI, "top_spi",
- 			     spi_parents, 0x068, 0x06C, 0x070, 8, 4, 15, 0x04, 25),
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_MSDC50_0_HCLK, "top_msdc5hclk",
--			     msdc5hclk_parents, 0x068, 0x06C, 0x070, 16, 4, 23, 0x04, 26),
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_MSDC50_0, "top_msdc50_0",
--			     msdc50_0_parents, 0x068, 0x06C, 0x070, 24, 4, 31, 0x04, 27),
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_MSDC50_0_HCLK, "top_msdc5hclk",
-+				   msdc5hclk_parents, 0x068, 0x06C, 0x070, 16, 4, 23, 0x04, 26, 0),
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_MSDC50_0, "top_msdc50_0",
-+				   msdc50_0_parents, 0x068, 0x06C, 0x070, 24, 4, 31, 0x04, 27, 0),
- 	/* CLK_CFG_7 */
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_MSDC30_1, "top_msdc30_1",
--			     msdc30_1_parents, 0x074, 0x078, 0x07C, 0, 4, 7, 0x04, 28),
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_MSDC30_2, "top_msdc30_2",
--			     msdc30_2_parents, 0x074, 0x078, 0x07C, 8, 4, 15, 0x04, 29),
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_MSDC30_1, "top_msdc30_1",
-+				   msdc30_1_parents, 0x074, 0x078, 0x07C, 0, 4, 7, 0x04, 28, 0),
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_MSDC30_2, "top_msdc30_2",
-+				   msdc30_2_parents, 0x074, 0x078, 0x07C, 8, 4, 15, 0x04, 29, 0),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_INTDIR, "top_intdir",
- 			     intdir_parents, 0x074, 0x078, 0x07C, 16, 4, 23, 0x04, 30),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_AUD_INTBUS, "top_aud_intbus",
-diff --git a/drivers/clk/mediatek/clk-mt8192.c b/drivers/clk/mediatek/clk-mt8192.c
-index 8a9e6d5f85b4..55fc6fc3c467 100644
---- a/drivers/clk/mediatek/clk-mt8192.c
-+++ b/drivers/clk/mediatek/clk-mt8192.c
-@@ -601,15 +601,16 @@ static const struct mtk_mux top_mtk_muxes[] = {
- 			     uart_parents, 0x070, 0x074, 0x078, 8, 1, 15, 0x004, 25),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_SPI_SEL, "spi_sel",
- 			     spi_parents, 0x070, 0x074, 0x078, 16, 2, 23, 0x004, 26),
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_MSDC50_0_H_SEL, "msdc50_0_h_sel",
--			     msdc50_0_h_parents, 0x070, 0x074, 0x078, 24, 2, 31, 0x004, 27),
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_MSDC50_0_H_SEL, "msdc50_0_h_sel",
-+				   msdc50_0_h_parents, 0x070, 0x074, 0x078, 24, 2,
-+				   31, 0x004, 27, 0),
- 	/* CLK_CFG_7 */
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_MSDC50_0_SEL, "msdc50_0_sel",
--			     msdc50_0_parents, 0x080, 0x084, 0x088, 0, 3, 7, 0x004, 28),
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_MSDC30_1_SEL, "msdc30_1_sel",
--			     msdc30_parents, 0x080, 0x084, 0x088, 8, 3, 15, 0x004, 29),
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_MSDC30_2_SEL, "msdc30_2_sel",
--			     msdc30_parents, 0x080, 0x084, 0x088, 16, 3, 23, 0x004, 30),
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_MSDC50_0_SEL, "msdc50_0_sel",
-+				   msdc50_0_parents, 0x080, 0x084, 0x088, 0, 3, 7, 0x004, 28, 0),
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_MSDC30_1_SEL, "msdc30_1_sel",
-+				   msdc30_parents, 0x080, 0x084, 0x088, 8, 3, 15, 0x004, 29, 0),
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_MSDC30_2_SEL, "msdc30_2_sel",
-+				   msdc30_parents, 0x080, 0x084, 0x088, 16, 3, 23, 0x004, 30, 0),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_AUDIO_SEL, "audio_sel",
- 			     audio_parents, 0x080, 0x084, 0x088, 24, 2, 31, 0x008, 0),
- 	/* CLK_CFG_8 */
-diff --git a/drivers/clk/mediatek/clk-mt8195-topckgen.c b/drivers/clk/mediatek/clk-mt8195-topckgen.c
-index 3acbd1c907ab..f4b3d8ba9ff4 100644
---- a/drivers/clk/mediatek/clk-mt8195-topckgen.c
-+++ b/drivers/clk/mediatek/clk-mt8195-topckgen.c
-@@ -930,15 +930,15 @@ static const struct mtk_mux top_mtk_muxes[] = {
- 	/* CLK_CFG_7 */
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_SPIS, "top_spis",
- 		spis_parents, 0x074, 0x078, 0x07C, 0, 3, 7, 0x04, 28),
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_MSDC50_0_HCLK, "top_msdc50_0_hclk",
--		msdc50_0_h_parents, 0x074, 0x078, 0x07C, 8, 2, 15, 0x04, 29),
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_MSDC50_0, "top_msdc50_0",
--		msdc50_0_parents, 0x074, 0x078, 0x07C, 16, 3, 23, 0x04, 30),
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_MSDC30_1, "top_msdc30_1",
--		msdc30_parents, 0x074, 0x078, 0x07C, 24, 3, 31, 0x04, 31),
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_MSDC50_0_HCLK, "top_msdc50_0_hclk",
-+		msdc50_0_h_parents, 0x074, 0x078, 0x07C, 8, 2, 15, 0x04, 29, 0),
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_MSDC50_0, "top_msdc50_0",
-+		msdc50_0_parents, 0x074, 0x078, 0x07C, 16, 3, 23, 0x04, 30, 0),
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_MSDC30_1, "top_msdc30_1",
-+		msdc30_parents, 0x074, 0x078, 0x07C, 24, 3, 31, 0x04, 31, 0),
- 	/* CLK_CFG_8 */
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_MSDC30_2, "top_msdc30_2",
--		msdc30_parents, 0x080, 0x084, 0x088, 0, 3, 7, 0x08, 0),
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_MSDC30_2, "top_msdc30_2",
-+		msdc30_parents, 0x080, 0x084, 0x088, 0, 3, 7, 0x08, 0, 0),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_INTDIR, "top_intdir",
- 		intdir_parents, 0x080, 0x084, 0x088, 8, 2, 15, 0x08, 1),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_AUD_INTBUS, "top_aud_intbus",
--- 
-2.40.1
+[1]:https://lore.kernel.org/all/cover.1683235180.git.lstoakes@gmail.com/
 
+> phy-mtk-hdmi-mt8195.c:(.text+0x186): undefined reference to `__floatundidf'
+> riscv64-linux-ld: phy-mtk-hdmi-mt8195.c:(.text+0x198): undefined reference to `__ltdf2'
+> riscv64-linux-ld: phy-mtk-hdmi-mt8195.c:(.text+0x1b8): undefined reference to `__gedf2'
+
+[snip]
 
