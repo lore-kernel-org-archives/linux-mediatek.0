@@ -4,153 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A85DC77B7F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 May 2023 11:25:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2F16C7EE23
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 May 2023 11:27:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=l5ioAqLUIgJULjqwKYtOjHFnbY6yI6/LI8d0PR6VtyM=; b=MmfCV+dTXm+q4B
-	+u9QD67BSz55yCCtahCcZbS7wGYpoqtCEAyWRv0/XK7vipA8oIerLZkaMnH9Ejc5/CWyS4Z/UvUho
-	6sCA6coFJDGN3z1GskiquzH8AMpbLW0tFjCb/I27S8uGRMI4IS/e0xIxFvxOqsphnZ1l/zVIYCsgp
-	tJs0kyAAIV9qXjg0K28P77ycpZ4ikslfq+Cb2AdekZU9iubeaBLMSVXjOrKOdDWJEPhOTGOkcPJde
-	UR4rIOZlsB6vulEY4gnZ928bwAf8C1gSbKSOMWHbED2lK7NNjGUmf6Jm5+yHalyGA4dHPBLcA5QhL
-	axr33WcWSq4JHvRgLWEw==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4qwIMtgamexsfx/NRydXMQ2IFWJca+VyOdSWVhefn6w=; b=THMAeXCFHl7wcK/UvYZq1D/Th9
+	p4qdX8Pyfe8pi7GcnAYxN/CUHoeS5PDDPuFYOSF/VduyquvY9fPpL91Da/c12WK3SVc1g07LAHSNk
+	QmV4rYjtDMH+OVniNs8n7QwaTYTe7MZ9yW2tIYKSWZN/SX+LK6jqWi+GzpqFe10Fb01BRuZZrjhPE
+	nQRIB1qyq3yFD8XZbUiQZXEebK3nZJUMFtT+I6m+kCfFdxfKK6m/FJeHNFP+Xm4y92ILRlnHuN0k7
+	O5y6cOi7uxzZQE6ZZNtK1AT1Dm2NoP9wmCaQ7dIFL1iqrE0lT9gycLXAl/e6d+ZbC+JuC1+Rf57SE
+	ZyhUMzcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1putZM-00Af2x-1g;
-	Fri, 05 May 2023 11:25:48 +0000
-Received: from wnew2-smtp.messagingengine.com ([64.147.123.27])
+	id 1putam-00AfWE-2o;
+	Fri, 05 May 2023 11:27:16 +0000
+Received: from wout1-smtp.messagingengine.com ([64.147.123.24])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1putZH-00Af1R-0M;
-	Fri, 05 May 2023 11:25:45 +0000
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailnew.west.internal (Postfix) with ESMTP id EFE7D2B06795;
-	Fri,  5 May 2023 07:25:30 -0400 (EDT)
+	id 1putai-00AfTZ-0z;
+	Fri, 05 May 2023 11:27:13 +0000
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+	by mailout.west.internal (Postfix) with ESMTP id 3EE353200A6A;
+	Fri,  5 May 2023 07:27:11 -0400 (EDT)
 Received: from mailfrontend1 ([10.202.2.162])
-  by compute4.internal (MEProxy); Fri, 05 May 2023 07:25:36 -0400
+  by compute5.internal (MEProxy); Fri, 05 May 2023 07:27:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
 	:cc:content-transfer-encoding:content-type:content-type:date
-	:date:from:from:in-reply-to:message-id:mime-version:reply-to
-	:sender:subject:subject:to:to; s=fm2; t=1683285930; x=
-	1683293130; bh=l5ioAqLUIgJULjqwKYtOjHFnbY6yI6/LI8d0PR6VtyM=; b=K
-	daFzuUu6XO2LaYjDTphcLLz/GlUPhIOw1rRn6yVXs3eyQLNaa181x0dHDbt9UdLo
-	zyAvbbqqbqt6xguEWLq+Y7XvKxH8h67iwigmG6lIm0397Bk5HScfh1TsqFN0EDMr
-	3LonuK2S0VmFCWYQyaihe+VAnSIiWWLNXU0vMykWBYLbu6ZIqboackHNE0IXfxIR
-	as2IC7+5LWKRCXWB34eIBIQ7u+PTN6mMZnFqmo5giXRuFqZO+hVljeKHPIM7iSCJ
-	w0/C/PvtZnSL78SBaiAHhHXczCOrVc7JURiYnvm0UtZtyN08Y927yIuZ51nxGJWJ
-	3ecp+WM1vrDHFY4zIvbOA==
+	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:sender:subject:subject:to:to; s=fm2; t=
+	1683286030; x=1683372430; bh=4qwIMtgamexsfx/NRydXMQ2IFWJca+VyOdS
+	WVhefn6w=; b=EtrTh+QLiZ5wFLP8AC+mxlCvqlezDyO7rKK2sFL8YKemQcxJ4ep
+	DjO30IJ3uU6e6piRDvhUqTY/5oyLw85meySYRtqkdCJMeo0m/wGBqmGY0wvrWeR8
+	6NV87FMFG4t5O/4bmhrS7IOHZAcYt5r4ErjgcQesgTjkKuGTII6fdiTPiOrWSPnl
+	QeIC7P1avkW1COTWSC/Xu7Akiews25XZRjkAiFiw26PHvtzUSER4eEil1TQkPMtL
+	LpWKR9Nv9B5bNli82GhbpOEW9nLK5yy4C4i5Twzz6ilBS+B5N2lQvp4eQHespYZu
+	ZwkL20alBSjlFOlFUtcgjpNHq2LEQp1Xjsw==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:cc:content-transfer-encoding
 	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:message-id:mime-version:reply-to:sender
-	:subject:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm3; t=1683285930; x=1683293130; bh=l
-	5ioAqLUIgJULjqwKYtOjHFnbY6yI6/LI8d0PR6VtyM=; b=DaRi2HpzSjUslNUfV
-	+Wxt7duSO5/hYNA2h5A0t8XGQfdp9yTBEQp0yK08w8TSdvKz5sBGFEU2WxcXDYpT
-	3cV8qLYkYFXwVAqSQn5mP0rQxnIN5rLXKyv6FoQpSeQftvNw+Pt0H8KyQbRBA+3V
-	IQGGPQvZv/4gTkVAs5uVT8xAQFzSd1BxMmvHV0Sr/oJgrN2OTr53ytLWNCaT4ReU
-	NGN4AezZPVD8DfXd3DwUFL/96oVoikCr64FddmnTRsceoj0N4vJIAsBSHvFmhCSS
-	Bn/XfJIdxzHcBE7TecPZAQ9KKMBG4dR94DVecCEuaTQVrf4Dg/u7t7NWBo5iw5q5
-	1FxcQ==
-X-ME-Sender: <xms:qOdUZNJT030Zgt0JbyFQ_RKM-cy46jwZsLTVl33BJCq45Pe101WL5g>
-    <xme:qOdUZJJ41xlcocWzLm0jnNS7jBIN8KkghbR3IkcuCflIGMbz56nitKYeNXrfi5TeN
-    gViNhbdGkbU6GCTVhU>
-X-ME-Received: <xmr:qOdUZFvaCVHP_XNid9KfZrJC6EXQ0C-AAcDY8d4bpB7xTzWbi3MxAk88SYyXrBGv0YYlu-vTD2zoc2M2Bibqqrtpo-lEpZk>
+	:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:sender:subject:subject:to:to:x-me-proxy
+	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=
+	1683286030; x=1683372430; bh=4qwIMtgamexsfx/NRydXMQ2IFWJca+VyOdS
+	WVhefn6w=; b=KIwJZPFtA6wi8YTS26i2gaXDGshYuknJ3gDRrSl1Xi8OkKKIs9V
+	VfJgyCldltWjv5pfMtKC8lPDH4f46Uh84byUGIJiEvvU6uCZxdxswElrjweS6sxq
+	THLWXGz3vNb2xsEN1uXeaDC/OxW8ciQhu5Uj6cnhrZsauzKzmtF/QeRDqiMeiADV
+	/+8ef2C20IfLinCL88jbyeyeZd5BMk311m9g4keOzwZdFtW7bREoiW/ofWwY78BB
+	/mF90NGUj5rSboH7FLFL82MxYSjZEOF+ZnrrgpuhoSdy9rRM3SJOO04/Yh4oZRUy
+	nAi+5iCG0vFgkIQoHSgevDVTyPvUDjteQRQ==
+X-ME-Sender: <xms:DuhUZGSNgPnK_2b8Xe5qYa4_JHf8JVwOD1vT54ojk81LdIBsJnq3Gw>
+    <xme:DuhUZLwn6hIpTMKFEe5dahmpxIkAEIsDWHSi-PxjCFLJEEXkhDa070JwYgyDfvhkk
+    xRRo5owk7CznE5kSNg>
+X-ME-Received: <xmr:DuhUZD0rFg4aut8bk2o3_3Jaz_M0ZcbmHt0CZDB1DDIKFrb3gBSlfYZ_s5d11UIl4zKf6oiEXnB5gYTx4CYF9sO0c1Q0CEc>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrfeefvddggedtucetufdoteggodetrfdotf
     fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
     uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhephffufffkgggtgffvvefosehtjeertdertdejnecuhfhrohhmpeforgigihhm
-    vgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrfgrth
-    htvghrnhepgfeutdejvdeiheffveetieejtdfhleekleffheejtdfhkeehfeekgedvgeei
-    tddtnecuffhomhgrihhnpehkvghrnhgvlhdrohhrghenucevlhhushhtvghrufhiiigvpe
-    dtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehmrgigihhmvgestggvrhhnohdrthgvtghh
-X-ME-Proxy: <xmx:qOdUZOYmJ9ZsaodLa9eaX9Q8q4HKIKwuTBwJAtYSDKF8GpNgXk42fg>
-    <xmx:qOdUZEb46ec3DVsk5A-VwtFLn5NwE5E1PepLOVibVXBwwU6BkntCMA>
-    <xmx:qOdUZCA2HAk2HAzU0PLbBu4ihiyeyzAMLisKixjpCdEI11Zrvkz5Jg>
-    <xmx:qudUZOXd4C3fyX9ywwFJ0Y0vPI9HQrT33VOj41wJMoXxHKeJ6EWEk-kmzE8>
+    cujfgurhephfffufggtgfgkfhfjgfvvefosehtjeertdertdejnecuhfhrohhmpeforgig
+    ihhmvgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrf
+    grthhtvghrnhepvedvleeijeegvdekffehkeehieelhfeggfffheetkeeuledvtdeuffeh
+    teeltdffnecuvehluhhsthgvrhfuihiivgepieenucfrrghrrghmpehmrghilhhfrhhomh
+    epmhgrgihimhgvsegtvghrnhhordhtvggthh
+X-ME-Proxy: <xmx:DuhUZCCjaPFNYskWJ-FqPR5H2sOOPAU98CDd05rJc80E0m16xiksGg>
+    <xmx:DuhUZPj43ynk9oUzdikdhMqwNiaJNja2YemQsz_Da8fkVd9QWaaxKA>
+    <xmx:DuhUZOptkiOSEb-o8_uEXM8ohjcSpIPVk__emkWIQKXnY4E53rStyg>
+    <xmx:DuhUZKUTfJc1pNcxWS7UK4u-hWvgefRblC1Wcouz0e4nN0QRF0mnJQ>
 Feedback-ID: i8771445c:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
- 5 May 2023 07:25:27 -0400 (EDT)
+ 5 May 2023 07:27:10 -0400 (EDT)
 From: Maxime Ripard <maxime@cerno.tech>
-Subject: [PATCH v4 00/68] clk: Make determine_rate mandatory for muxes
-Date: Fri, 05 May 2023 13:25:02 +0200
-Message-Id: <20221018-clk-range-checks-fixes-v4-0-971d5077e7d2@cerno.tech>
+Date: Fri, 05 May 2023 13:25:31 +0200
+Subject: [PATCH v4 29/68] clk: mediatek: cpumux: Add a determine_rate hook
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAI7nVGQC/43NzQ6CMAwH8FchOzuztQymJ9/DeIBRZIFAsuGiI
- by7lZvxIKfm349fFxEpeIrinC0iUPLRTyOH/JAJ11XjnaRvOAtQAFppK93Qy7ANXEeuj7L1T4o
- SFJ5aNICQK8HHdRVJ1rzoOj4fH8PAzc7HeQqv7VnSXK5/3aSlki1Sa5XRVufq4iiM03Emhm9sJ
- tjnwMcpSiwachot/Ti4z0F2TpVGY/MSGgNfzrqubzQ7VSJSAQAA
+Message-Id: <20221018-clk-range-checks-fixes-v4-29-971d5077e7d2@cerno.tech>
+References: <20221018-clk-range-checks-fixes-v4-0-971d5077e7d2@cerno.tech>
+In-Reply-To: <20221018-clk-range-checks-fixes-v4-0-971d5077e7d2@cerno.tech>
 To: Michael Turquette <mturquette@baylibre.com>, 
  Stephen Boyd <sboyd@kernel.org>
-Cc: linux-clk@vger.kernel.org, Maxime Ripard <maxime@cerno.tech>,
-  Abel Vesa <abelvesa@kernel.org>,
- Alessandro Zummo <a.zummo@towertech.it>,
-  Alexandre Belloni <alexandre.belloni@bootlin.com>,
-  Alexandre Torgue <alexandre.torgue@foss.st.com>,
-  =?utf-8?q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
-  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-  Baolin Wang <baolin.wang@linux.alibaba.com>,
-  Charles Keepax <ckeepax@opensource.cirrus.com>,
-  Chen-Yu Tsai <wens@csie.org>, Chen-Yu Tsai <wenst@chromium.org>,
-  Chunyan Zhang <zhang.lyra@gmail.com>,
-  Claudiu Beznea <claudiu.beznea@microchip.com>,
-  Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@gmail.com>,
-  David Lechner <david@lechnology.com>, Dinh Nguyen <dinguyen@kernel.org>,
-  Fabio Estevam <festevam@gmail.com>,
-  Geert Uytterhoeven <geert+renesas@glider.be>,
-  Jaroslav Kysela <perex@perex.cz>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
-  Jonathan Hunter <jonathanh@nvidia.com>,
-  Kishon Vijay Abraham I <kishon@kernel.org>,
-  Liam Girdwood <lgirdwood@gmail.com>,
-  Linus Walleij <linus.walleij@linaro.org>,
-  Luca Ceresoli <luca.ceresoli@bootlin.com>,
-  Manivannan Sadhasivam <mani@kernel.org>,
- Mark Brown <broonie@kernel.org>,
-  Markus Schneider-Pargmann <msp@baylibre.com>,
-  Max Filippov <jcmvbkbc@gmail.com>,
-  Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-  Mikko Perttunen <mperttunen@nvidia.com>,
-  Miles Chen <miles.chen@mediatek.com>,
-  Nicolas Ferre <nicolas.ferre@microchip.com>,
-  Orson Zhai <orsonzhai@gmail.com>, Paul Cercueil <paul@crapouillou.net>,
-  Peng Fan <peng.fan@nxp.com>,
- Peter De Schrijver <pdeschrijver@nvidia.com>,
-  Prashant Gaikwad <pgaikwad@nvidia.com>,
-  Richard Fitzgerald <rf@opensource.cirrus.com>,
-  Samuel Holland <samuel@sholland.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,  Sekhar Nori <nsekhar@ti.com>,
- Shawn Guo <shawnguo@kernel.org>,  Takashi Iwai <tiwai@suse.com>,
- Thierry Reding <thierry.reding@gmail.com>,
-  Ulf Hansson <ulf.hansson@linaro.org>, Vinod Koul <vkoul@kernel.org>,
-  dri-devel@lists.freedesktop.org, linux-actions@lists.infradead.org,
-  linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
-  linux-phy@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
-  linux-rtc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
-  linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
-  NXP Linux Team <linux-imx@nxp.com>, patches@opensource.cirrus.com,
-  Pengutronix Kernel Team <kernel@pengutronix.de>,
-  Liam Beguin <liambeguin@gmail.com>,
-  Matthias Brugger <matthias.bgg@gmail.com>,
-  linux-mediatek@lists.infradead.org,
-  Miquel Raynal <miquel.raynal@bootlin.com>,
- Pawel Moll <pawel.moll@arm.com>,  alsa-devel@alsa-project.org
+Cc: linux-clk@vger.kernel.org, Maxime Ripard <maxime@cerno.tech>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=8811; i=maxime@cerno.tech;
- h=from:subject:message-id; bh=DTutEgCIMF28vydDZ/bIJ7FNCahxgFT27xgwey0IUAI=;
- b=owGbwMvMwCX2+D1vfrpE4FHG02pJDCkhzxe9Xxi/3cvxVqX7ota1NvX8JiY10syKs/hVXlh2s5Wr
- xyh3lLIwiHExyIopssQImy+JOzXrdScb3zyYOaxMIEMYuDgFYCIG0Qz/3R5ZNfhd/XJhS3zivh2awt
- u3XDHevLprI+OV15f2zRd/0czIcHfvjUN8sh+uf+NwWChWIG+Rz7NssnmgDruxem/tXuG77AA=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2301; i=maxime@cerno.tech;
+ h=from:subject:message-id; bh=7Gisy3436NyUV/3JhbE86qKa2YC1f2BvDT4KEfeGF9g=;
+ b=owGbwMvMwCX2+D1vfrpE4FHG02pJDCkhzxf/25KafbAnySb//eRG+33zucx2XdP79jCocXOfv4C/
+ lfmVjlIWBjEuBlkxRZYYYfMlcadmve5k45sHM4eVCWQIAxenAEzk8S5Ghj2TezqcVY2efd/yu6Zl/s
+ spEldi3ro6rGX9FvMg4k/x+k0M/2w8vxk1PF3M/qLM1SOm91P1Zc4JG+O2bZi9av3fTY8LirkB
 X-Developer-Key: i=maxime@cerno.tech; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230505_042543_556569_34080F07 
-X-CRM114-Status: GOOD (  20.50  )
+X-CRM114-CacheID: sfid-20230505_042712_375772_6ABC4354 
+X-CRM114-Status: GOOD (  16.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -165,216 +114,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+The Mediatek cpumux clock implements a mux with a set_parent hook, but
+doesn't provide a determine_rate implementation.
 
-This is a follow-up to a previous series that was printing a warning
-when a mux has a set_parent implementation but is missing
-determine_rate().
+This is a bit odd, since set_parent() is there to, as its name implies,
+change the parent of a clock. However, the most likely candidates to
+trigger that parent change are either the assigned-clock-parents device
+tree property or a call to clk_set_rate(), with determine_rate()
+figuring out which parent is the best suited for a given rate.
 
-The rationale is that set_parent() is very likely to be useful when
-changing the rate, but it's determine_rate() that takes the parenting
-decision. If we're missing it, then the current parent is always going
-to be used, and thus set_parent() will not be used. The only exception
-being a direct call to clk_set_parent(), but those are fairly rare
-compared to clk_set_rate().
+The other trigger would be a call to clk_set_parent(), but it's far less
+used, and it doesn't look like there's any obvious user for that clock.
 
-Stephen then asked to promote the warning to an error, and to fix up all
-the muxes that are in that situation first. So here it is :)
+Similarly, it doesn't look like the device tree using that clock driver
+uses any of the assigned-clock properties on that clock.
 
-It was build-tested on x86, arm and arm64.
+So, the set_parent hook is effectively unused, possibly because of an
+oversight. However, it could also be an explicit decision by the
+original author to avoid any reparenting but through an explicit call to
+clk_set_parent().
 
-Affected drivers have been tracked down by the following coccinelle
-script:
+The latter case would be equivalent to setting the determine_rate
+implementation to clk_hw_determine_rate_no_reparent(). Indeed, if no
+determine_rate implementation is provided, clk_round_rate() (through
+clk_core_round_rate_nolock()) will call itself on the parent if
+CLK_SET_RATE_PARENT is set, and will not change the clock rate
+otherwise.
 
-virtual report 
+And if it was an oversight, then we are at least explicit about our
+behavior now and it can be further refined down the line.
 
-@ clk_ops @
-identifier ops;
-position p;
-@@
-
- struct clk_ops ops@p = {
-   ...
- };
-
-@ has_set_parent @
-identifier clk_ops.ops;
-identifier set_parent_f;
-@@
-
-  struct clk_ops ops = {
-	.set_parent = set_parent_f,
-  };
-
-@ has_determine_rate @
-identifier clk_ops.ops;
-identifier determine_rate_f;
-@@
-
-  struct clk_ops ops = {
-	.determine_rate = determine_rate_f,
-  };
-
-@ script:python depends on report && has_set_parent && !has_determine_rate @
-ops << clk_ops.ops;
-set_parent_f << has_set_parent.set_parent_f;
-p << clk_ops.p;
-@@
-
-coccilib.report.print_report(p[0], "ERROR: %s has set_parent (%s)" % (ops, set_parent_f))
-
-Berlin is the only user still matching after this series has been
-applied, but it's because it uses a composite clock which throws the
-script off. The driver has been converted and shouldn't be a problem. 
-
-Let me know what you think,
-Maxime
-
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
 Signed-off-by: Maxime Ripard <maxime@cerno.tech>
 ---
-Changes in v4:
-- Switch from __clk_mux_determine_rate to a new helper
-- Introduced unit tests for that new helper
-- Fix kunit regression
-- Reworded most of the commit logs
-- Link to v3: https://lore.kernel.org/r/20221018-clk-range-checks-fixes-v3-0-9a1358472d52@cerno.tech
+ drivers/clk/mediatek/clk-cpumux.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-Changes in v3:
-- Rebased on top of next-20230404
-- Link to v2: https://lore.kernel.org/r/20221018-clk-range-checks-fixes-v2-0-f6736dec138e@cerno.tech
+diff --git a/drivers/clk/mediatek/clk-cpumux.c b/drivers/clk/mediatek/clk-cpumux.c
+index da05f06192c0..a03826db4dcb 100644
+--- a/drivers/clk/mediatek/clk-cpumux.c
++++ b/drivers/clk/mediatek/clk-cpumux.c
+@@ -53,6 +53,7 @@ static int clk_cpumux_set_parent(struct clk_hw *hw, u8 index)
+ }
+ 
+ static const struct clk_ops clk_cpumux_ops = {
++	.determine_rate = clk_hw_determine_rate_no_reparent,
+ 	.get_parent = clk_cpumux_get_parent,
+ 	.set_parent = clk_cpumux_set_parent,
+ };
 
-Changes in v2:
-- Drop all the patches already applied
-- Promote the clk registration warning to an error
-- Make all muxes use determine_rate
-- Link to v1: https://lore.kernel.org/r/20221018-clk-range-checks-fixes-v1-0-f3ef80518140@cerno.tech
-
----
-Maxime Ripard (66):
-      clk: Export clk_hw_forward_rate_request()
-      clk: test: Fix type sign of rounded rate variables
-      clk: lan966x: Remove unused round_rate hook
-      clk: nodrv: Add a determine_rate hook
-      clk: test: Add a determine_rate hook
-      clk: actions: composite: Add a determine_rate hook for pass clk
-      clk: at91: main: Add a determine_rate hook
-      clk: at91: sckc: Add a determine_rate hook
-      clk: berlin: div: Add a determine_rate hook
-      clk: cdce706: Add a determine_rate hook
-      clk: k210: pll: Add a determine_rate hook
-      clk: k210: aclk: Add a determine_rate hook
-      clk: k210: mux: Add a determine_rate hook
-      clk: lmk04832: clkout: Add a determine_rate hook
-      clk: lochnagar: Add a determine_rate hook
-      clk: qoriq: Add a determine_rate hook
-      clk: si5341: Add a determine_rate hook
-      clk: stm32f4: mux: Add a determine_rate hook
-      clk: vc5: mux: Add a determine_rate hook
-      clk: vc5: clkout: Add a determine_rate hook
-      clk: wm831x: clkout: Add a determine_rate hook
-      clk: davinci: da8xx-cfgchip: Add a determine_rate hook
-      clk: davinci: da8xx-cfgchip: Add a determine_rate hook
-      clk: imx: busy: Add a determine_rate hook
-      clk: imx: fixup-mux: Add a determine_rate hook
-      clk: imx: scu: Add a determine_rate hook
-      clk: mediatek: cpumux: Add a determine_rate hook
-      clk: pxa: Add a determine_rate hook
-      clk: renesas: r9a06g032: Add a determine_rate hook
-      clk: socfpga: gate: Add a determine_rate hook
-      clk: stm32: core: Add a determine_rate hook
-      clk: tegra: bpmp: Add a determine_rate hook
-      clk: tegra: super: Add a determine_rate hook
-      clk: tegra: periph: Add a determine_rate hook
-      clk: ux500: prcmu: Add a determine_rate hook
-      clk: ux500: sysctrl: Add a determine_rate hook
-      clk: versatile: sp810: Add a determine_rate hook
-      drm/tegra: sor: Add a determine_rate hook
-      phy: cadence: sierra: Add a determine_rate hook
-      phy: cadence: torrent: Add a determine_rate hook
-      phy: ti: am654-serdes: Add a determine_rate hook
-      phy: ti: j721e-wiz: Add a determine_rate hook
-      rtc: sun6i: Add a determine_rate hook
-      ASoC: tlv320aic32x4: Add a determine_rate hook
-      clk: actions: composite: div: Switch to determine_rate
-      clk: actions: composite: fact: Switch to determine_rate
-      clk: at91: smd: Switch to determine_rate
-      clk: axi-clkgen: Switch to determine_rate
-      clk: cdce706: divider: Switch to determine_rate
-      clk: cdce706: clkout: Switch to determine_rate
-      clk: si5341: Switch to determine_rate
-      clk: si5351: pll: Switch to determine_rate
-      clk: si5351: msynth: Switch to determine_rate
-      clk: si5351: clkout: Switch to determine_rate
-      clk: da8xx: clk48: Switch to determine_rate
-      clk: imx: scu: Switch to determine_rate
-      clk: ingenic: cgu: Switch to determine_rate
-      clk: ingenic: tcu: Switch to determine_rate
-      clk: sprd: composite: Switch to determine_rate
-      clk: st: flexgen: Switch to determine_rate
-      clk: stm32: composite: Switch to determine_rate
-      clk: tegra: periph: Switch to determine_rate
-      clk: tegra: super: Switch to determine_rate
-      ASoC: tlv320aic32x4: pll: Switch to determine_rate
-      ASoC: tlv320aic32x4: div: Switch to determine_rate
-      clk: Forbid to register a mux without determine_rate
-
-Stephen Boyd (2):
-      clk: Move no reparent case into a separate function
-      clk: Introduce clk_hw_determine_rate_no_reparent()
-
- drivers/clk/actions/owl-composite.c       |  35 ++++--
- drivers/clk/at91/clk-main.c               |   1 +
- drivers/clk/at91/clk-smd.c                |  29 +++--
- drivers/clk/at91/sckc.c                   |   1 +
- drivers/clk/berlin/berlin2-div.c          |   1 +
- drivers/clk/clk-axi-clkgen.c              |  14 ++-
- drivers/clk/clk-cdce706.c                 |  30 ++---
- drivers/clk/clk-k210.c                    |   3 +
- drivers/clk/clk-lan966x.c                 |  17 ---
- drivers/clk/clk-lmk04832.c                |   1 +
- drivers/clk/clk-lochnagar.c               |   1 +
- drivers/clk/clk-qoriq.c                   |   1 +
- drivers/clk/clk-si5341.c                  |  19 ++--
- drivers/clk/clk-si5351.c                  |  67 ++++++-----
- drivers/clk/clk-stm32f4.c                 |   1 +
- drivers/clk/clk-versaclock5.c             |   2 +
- drivers/clk/clk-wm831x.c                  |   1 +
- drivers/clk/clk.c                         | 108 ++++++++++++------
- drivers/clk/clk_test.c                    | 180 +++++++++++++++++++++++++++++-
- drivers/clk/davinci/da8xx-cfgchip.c       |  12 +-
- drivers/clk/imx/clk-busy.c                |   1 +
- drivers/clk/imx/clk-fixup-mux.c           |   1 +
- drivers/clk/imx/clk-scu.c                 |  20 +++-
- drivers/clk/ingenic/cgu.c                 |  15 +--
- drivers/clk/ingenic/tcu.c                 |  19 ++--
- drivers/clk/mediatek/clk-cpumux.c         |   1 +
- drivers/clk/pxa/clk-pxa.c                 |   1 +
- drivers/clk/renesas/r9a06g032-clocks.c    |   1 +
- drivers/clk/socfpga/clk-gate.c            |   1 +
- drivers/clk/sprd/composite.c              |  16 ++-
- drivers/clk/st/clk-flexgen.c              |  15 +--
- drivers/clk/stm32/clk-stm32-core.c        |  33 ++++--
- drivers/clk/tegra/clk-bpmp.c              |   1 +
- drivers/clk/tegra/clk-periph.c            |  17 ++-
- drivers/clk/tegra/clk-super.c             |  16 ++-
- drivers/clk/ux500/clk-prcmu.c             |   1 +
- drivers/clk/ux500/clk-sysctrl.c           |   1 +
- drivers/clk/versatile/clk-sp810.c         |   1 +
- drivers/gpu/drm/tegra/sor.c               |   1 +
- drivers/phy/cadence/phy-cadence-sierra.c  |   1 +
- drivers/phy/cadence/phy-cadence-torrent.c |   1 +
- drivers/phy/ti/phy-am654-serdes.c         |   1 +
- drivers/phy/ti/phy-j721e-wiz.c            |   1 +
- drivers/rtc/rtc-sun6i.c                   |   1 +
- include/linux/clk-provider.h              |   2 +
- sound/soc/codecs/tlv320aic32x4-clk.c      |  33 +++---
- 46 files changed, 527 insertions(+), 199 deletions(-)
----
-base-commit: 145e5cddfe8b4bf607510b2dcf630d95f4db420f
-change-id: 20221018-clk-range-checks-fixes-2039f3523240
-
-Best regards,
 -- 
-Maxime Ripard <maxime@cerno.tech>
+2.40.0
 
 
