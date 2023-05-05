@@ -4,79 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D759EC77B73
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 May 2023 00:21:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7ED8AC77B7C
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 May 2023 02:35:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:To:From:Cc:
-	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:Reply-To:
-	Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=8TmpvJbU96K5mWAE+i9LXk7p3PZGa9UIfo8DUIyUZ0c=; b=C2zgVozD9Byts4
-	hMzx3oeiA9Fkz0977Nu07t1qwyPHeryUy1iwrsFcWRYtllaizs2EcpG0c0BNY0stbsDJM4oPxUTXm
-	yaEfXfaa4aMl3HOW/pJmix6LpAgafnlTFrbLr4wbYGk9pbvz039Lgx5FMfHUWn9Ft+4SR87MVqxT5
-	S2rmGNpzVHX+uwmn446V2zPMzzcuckiwq2HM/9AGgDwNT8zhS96kknLx7YyMrrXMG42nKEGx4i2iq
-	x0aOtptucVHLMWZrvoIz8iq0t2rjG6An10EpXU9tMHMN9vBY7UdhiJqNtnqeI2limzLPXwcUlfcpm
-	nOoQUeDMgIR1rVCF5UJw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BvH+eHnwwHPlF9AE7MZRrQpAo6ey10Th6FmdCXrmjdY=; b=XJe+KAi9fLuddR9aRe8D6rwIOv
+	XbabG8YMHOF7EE8RTgk2AqDk5HU3XT9eaAvxO9FZIm88AI7StR/ex+NEoDdLJ7UbL66XsftUeOEYj
+	gvH+hpQHe1xmv04nb3FY3uXmYhHeQbK6YFRanGMnrz5ZYOxm+Kj40v19nDp5sf4JOtHSk50g0H5eB
+	PRi+6qJuvzXPNCDSppGKQL/wmykGaIEipE9iMfbeIAa1zBFhX1ZFgm6oacBUA5/ukae5aWqMXr2kP
+	YpXLf3VNPEeEeuZPxJamwGa74BzayFAWyEXquj2xCxV1d9mave1GGQz2N4QxwZgRWl5z2Kd0dVSd1
+	8FcXVing==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pujBw-009Nqs-1p;
-	Fri, 05 May 2023 00:20:56 +0000
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+	id 1pulHz-009XIZ-13;
+	Fri, 05 May 2023 02:35:19 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pujBs-009NoS-12
-	for linux-mediatek@lists.infradead.org;
-	Fri, 05 May 2023 00:20:55 +0000
-Received: by mail-pj1-x1034.google.com with SMTP id 98e67ed59e1d1-24e015fcf3dso910560a91.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 04 May 2023 17:20:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=rivosinc-com.20221208.gappssmtp.com; s=20221208; t=1683246048; x=1685838048;
-        h=to:from:cc:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:to:cc:subject:date:message-id:reply-to;
-        bh=8TmpvJbU96K5mWAE+i9LXk7p3PZGa9UIfo8DUIyUZ0c=;
-        b=LSbtL8+iwnX5GqWaGBkCj5rkG6Gk0y6hZi+1w189U0O1tCpGD2Jutew6l7t00+dHHM
-         pmmTo2/kAT2zb4bZQ0AjNDI6QlsMybGTy8m+4VKZQG3FPpbhOR4GwsQYHTo1JSrYTtSq
-         j1toePpqa6F4s3B12xkrFCc+UiRr62QzyiMy9O0juqjTlObi9W6dP4l8w6PcYjf+DcMI
-         DDloLYjO69NWdgdFxg9r4fWhltlDq3NNHeRGUSiHau4SwNxHUXaUbQ/RXnd8RenvO0e4
-         Hh5VRijo3++skLzX7LkAV7l2JC2q4j27oeaQzVzEl4iSKl9g7maZbyXCp/JzF7u1gxmZ
-         9RwA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683246048; x=1685838048;
-        h=to:from:cc:content-transfer-encoding:mime-version:message-id:date
-         :subject:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=8TmpvJbU96K5mWAE+i9LXk7p3PZGa9UIfo8DUIyUZ0c=;
-        b=XxqBuN3o5XG57bLVp03gPdczIoPuXD4up5t6bNuCk3MoSf21pZb6L9DI4V6shyX6dC
-         1dj/mo8vSKv033YtkrvlV4Tm31Z+BgAZWpDyAY+4X9v3epgU7cpq1GPUf5VcZg7IAQM4
-         iPWw7FjMuT1VJWHnNZoLP207dCKnTAc6Hp9tR3yLp0JTNM3qfcCyKeFTRyt0Q1ODuusL
-         DpKRG9zRJCQJ6/LfH7GiqbN627R3ip+8nSvkqFwMCfy8MrWL4dARGnDBNF9iHWQlxCf8
-         h9cboYAieUoluZrLlKUmrft7C2ATOxslJIVOatabGflbn6e6MDC8lS2tfP+hlPdMGVTa
-         KPiA==
-X-Gm-Message-State: AC+VfDy+ip+bYFfz4UWxC1wU+wkRMMxgOkzLHHfFtlSCLOfpXhtXRtQk
-	ZfTEufoFGKG9Z2mCCuObMTI45Q==
-X-Google-Smtp-Source: ACHHUZ43/6VUqC/4H/Fyb8yXxZtcJhQwJ+Pf66SFGn86RioprdSlGVfrxR7XKatPpG2zpuh26E5OqA==
-X-Received: by 2002:a17:90b:3e83:b0:24d:dc79:5901 with SMTP id rj3-20020a17090b3e8300b0024ddc795901mr3994645pjb.26.1683246047965;
-        Thu, 04 May 2023 17:20:47 -0700 (PDT)
-Received: from localhost ([135.180.227.0])
-        by smtp.gmail.com with ESMTPSA id cq2-20020a17090af98200b002470b9503desm3659179pjb.55.2023.05.04.17.20.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 04 May 2023 17:20:47 -0700 (PDT)
-Subject: [PATCH] phy: mediatek: Remove unusued ret and check
-Date: Thu,  4 May 2023 17:19:46 -0700
-Message-Id: <20230505001945.10179-1-palmer@rivosinc.com>
-X-Mailer: git-send-email 2.40.0
+	id 1pulHv-009XHf-2K;
+	Fri, 05 May 2023 02:35:17 +0000
+X-UUID: 74094df4eaed11ed83ed1395ce914268-20230504
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=BvH+eHnwwHPlF9AE7MZRrQpAo6ey10Th6FmdCXrmjdY=;
+	b=lIbHQGBtkA3ryX3TJgZ4YwFFpQtYcvr7Dh7/uwmKPEl7WYbwZrab2sOzUryRjXXDvL0DcBNQSeeOoVwT2p7OAy+1UmOwttzKGPH+i72crVPP7lb7akE79xYnLYv5F9dH+1x51mh52SeXOWmcwvdCi2hFgupDPAvSXvmQYSCZHNs=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.23,REQID:53b0c3e8-f691-459c-98c6-590cb4579339,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:697ab71,CLOUDID:da1fd26a-2f20-4998-991c-3b78627e4938,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: 74094df4eaed11ed83ed1395ce914268-20230504
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1083425621; Thu, 04 May 2023 19:35:09 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 5 May 2023 10:34:35 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Fri, 5 May 2023 10:34:34 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Chen-Yu Tsai <wenst@chromium.org>, Nicolas Dufresne
+	<nicolas.dufresne@collabora.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
+	<nfraprado@collabora.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Yunfei Dong
+	<yunfei.dong@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
+	<frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, Steve Cho
+	<stevecho@chromium.org>, <linux-media@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v4,1/2] media: uapi: HEVC: Add num_delta_pocs_of_ref_rps_idx field
+Date: Fri, 5 May 2023 10:34:31 +0800
+Message-ID: <20230505023432.22559-2-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230505023432.22559-1-yunfei.dong@mediatek.com>
+References: <20230505023432.22559-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, chunfeng.yun@mediatek.com,
-  kishon@kernel.org, matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-  dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
-  linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, linux@rivosinc.com,
-  Palmer Dabbelt <palmer@rivosinc.com>
-From: Palmer Dabbelt <palmer@rivosinc.com>
-To: vkoul@kernel.org
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230504_172052_356997_7B5E754D 
-X-CRM114-Status: GOOD (  12.36  )
+X-CRM114-CacheID: sfid-20230504_193515_772075_9C9803B2 
+X-CRM114-Status: GOOD (  13.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,43 +92,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Palmer Dabbelt <palmer@rivosinc.com>
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 
-This trips up a maybe-uninitialized warning, but it's actually just not
-used.
+Some drivers firmwares parse by themselves slice header and need
+num_delta_pocs_of_ref_rps_idx value to parse slice header
+short_term_ref_pic_set().
+Use one of the 4 reserved bytes to store this value without
+changing the v4l2_ctrl_hevc_decode_params structure size and padding.
 
-Signed-off-by: Palmer Dabbelt <palmer@rivosinc.com>
+This value also exist in DXVA API.
+
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 ---
-I just stumbled into this one when trying to test Linus' master.  I'm
-not sure it's a sane fix, but I'm not using the driver.  No rush no my
-end, I'll just keep the fix around in my local tree for now.
----
- drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ .../userspace-api/media/v4l/ext-ctrls-codec-stateless.rst  | 7 +++++++
+ include/uapi/linux/v4l2-controls.h                         | 6 +++++-
+ 2 files changed, 12 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
-index abfc077fb0a8..3fc0913ec73b 100644
---- a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
-+++ b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
-@@ -213,7 +213,7 @@ static int mtk_hdmi_pll_calc(struct mtk_hdmi_phy *hdmi_phy, struct clk_hw *hw,
- 	u64 tmds_clk, pixel_clk, da_hdmitx21_ref_ck, ns_hdmipll_ck, pcw;
- 	u8 txpredivs[4] = { 2, 4, 6, 12 };
- 	u32 fbkdiv_low;
--	int i, ret;
-+	int i;
- 
- 	pixel_clk = rate;
- 	tmds_clk = pixel_clk;
-@@ -295,8 +295,6 @@ static int mtk_hdmi_pll_calc(struct mtk_hdmi_phy *hdmi_phy, struct clk_hw *hw,
- 	mtk_hdmi_pll_set_hw(hw, PLL_PREDIV, fbkdiv_high, fbkdiv_low,
- 			    PLL_FBKDIV_HS3, posdiv1, posdiv2, txprediv,
- 			    txposdiv, digital_div);
--	if (ret)
--		return -EINVAL;
- 
- 	return 0;
- }
+diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst
+index 3d8411acd5b8..92ce3e126929 100644
+--- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst
++++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst
+@@ -2923,6 +2923,13 @@ This structure contains all loop filter related parameters. See sections
+       - ``poc_lt_curr[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
+       - PocLtCurr as described in section 8.3.2 "Decoding process for reference
+         picture set": provides the index of the long term references in DPB array.
++    * - __u8
++      - ``num_delta_pocs_of_ref_rps_idx``
++      - When the short_term_ref_pic_set_sps_flag in the slice header is equal to 0,
++        it is the same than derived value NumDeltaPocs[RefRpsIdx]. It can be used to parse
++        the RPS data in slice headers instead of skipping it with @short_term_ref_pic_set_size.
++        When the value of short_term_ref_pic_set_sps_flag in the slice header is
++        equal to 1, num_delta_pocs_of_ref_rps_idx shall be set to 0.
+     * - struct :c:type:`v4l2_hevc_dpb_entry`
+       - ``dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
+       - The decoded picture buffer, for meta-data about reference frames.
+diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
+index 5e80daa4ffe0..7bf59a87a1bf 100644
+--- a/include/uapi/linux/v4l2-controls.h
++++ b/include/uapi/linux/v4l2-controls.h
+@@ -2385,6 +2385,9 @@ struct v4l2_ctrl_hevc_slice_params {
+  * @poc_st_curr_after: provides the index of the short term after references
+  *		       in DPB array
+  * @poc_lt_curr: provides the index of the long term references in DPB array
++ * @num_delta_pocs_of_ref_rps_idx: same as the derived value NumDeltaPocs[RefRpsIdx],
++ *				   can be used to parse the RPS data in slice headers
++ *				   instead of skipping it with @short_term_ref_pic_set_size.
+  * @reserved: padding field. Should be zeroed by applications.
+  * @dpb: the decoded picture buffer, for meta-data about reference frames
+  * @flags: see V4L2_HEVC_DECODE_PARAM_FLAG_{}
+@@ -2400,7 +2403,8 @@ struct v4l2_ctrl_hevc_decode_params {
+ 	__u8	poc_st_curr_before[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+ 	__u8	poc_st_curr_after[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+ 	__u8	poc_lt_curr[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+-	__u8	reserved[4];
++	__u8	num_delta_pocs_of_ref_rps_idx;
++	__u8	reserved[3];
+ 	struct	v4l2_hevc_dpb_entry dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+ 	__u64	flags;
+ };
 -- 
-2.40.0
+2.18.0
 
 
