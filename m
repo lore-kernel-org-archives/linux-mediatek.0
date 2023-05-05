@@ -4,104 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D53E0C7EE21
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 May 2023 22:39:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D759EC77B73
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 May 2023 00:21:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/rN99MG5d6M+UabPVww+w9dMJG2WFhR6z4xfKsLbvtE=; b=ESIOsoYtmSVDgXs4TZzzhG6sCb
-	UrNRJHdiAAlomukujr50UQiC7wWvJx9y39My1kVKRGWsBYYWxnmSN+G/PqzFoCsDpEAuEQz+qcODx
-	6FDUaxXswi+IJq7fp57O4KquwdBPTSA7cWeR+fOJXSc0fsDRxe41RQk63lT8qi26d/ZvnwTqGueEG
-	1RY+3fsKjltuatgCIgJN4KBhSMc85zoRH042bfxXUHAiorcTwkhd6P3C/8FY4Ptryu5PZ2xYjjNYo
-	g/Oou1DHFSVYgWTrUlb4X57MUqBj1ONDLPV4kiEdsOw9cgCGct0yLl2HnnKDdc0dkj+HM4OZmoRn0
-	VKevdH8g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:To:From:Cc:
+	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:Reply-To:
+	Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8TmpvJbU96K5mWAE+i9LXk7p3PZGa9UIfo8DUIyUZ0c=; b=C2zgVozD9Byts4
+	hMzx3oeiA9Fkz0977Nu07t1qwyPHeryUy1iwrsFcWRYtllaizs2EcpG0c0BNY0stbsDJM4oPxUTXm
+	yaEfXfaa4aMl3HOW/pJmix6LpAgafnlTFrbLr4wbYGk9pbvz039Lgx5FMfHUWn9Ft+4SR87MVqxT5
+	S2rmGNpzVHX+uwmn446V2zPMzzcuckiwq2HM/9AGgDwNT8zhS96kknLx7YyMrrXMG42nKEGx4i2iq
+	x0aOtptucVHLMWZrvoIz8iq0t2rjG6An10EpXU9tMHMN9vBY7UdhiJqNtnqeI2limzLPXwcUlfcpm
+	nOoQUeDMgIR1rVCF5UJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1puhbd-009E6J-2j;
-	Thu, 04 May 2023 22:39:21 +0000
-Received: from mail-il1-x131.google.com ([2607:f8b0:4864:20::131])
+	id 1pujBw-009Nqs-1p;
+	Fri, 05 May 2023 00:20:56 +0000
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1puhba-009E5Z-1t
+	id 1pujBs-009NoS-12
 	for linux-mediatek@lists.infradead.org;
-	Thu, 04 May 2023 22:39:20 +0000
-Received: by mail-il1-x131.google.com with SMTP id e9e14a558f8ab-3313a2200a4so2799205ab.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 04 May 2023 15:39:16 -0700 (PDT)
+	Fri, 05 May 2023 00:20:55 +0000
+Received: by mail-pj1-x1034.google.com with SMTP id 98e67ed59e1d1-24e015fcf3dso910560a91.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 04 May 2023 17:20:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1683239954; x=1685831954;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=/rN99MG5d6M+UabPVww+w9dMJG2WFhR6z4xfKsLbvtE=;
-        b=EAQKg0FUlW9wPpfjU8O3uui3IwkjYQFq6i9hnZzIoSvhcZ3ZNmR/eEawx3Ys5WdrNz
-         EAPgi8Lc1tSGn3PRCDYyn/PqRVLCBVLuTqVs9I1ZqmBpzArC7ZmoO9PFd3SeH8GTvJp2
-         Bk/+T17zdAvO1SqzH9pS5MpJv9MFESO2wHzVI=
+        d=rivosinc-com.20221208.gappssmtp.com; s=20221208; t=1683246048; x=1685838048;
+        h=to:from:cc:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:to:cc:subject:date:message-id:reply-to;
+        bh=8TmpvJbU96K5mWAE+i9LXk7p3PZGa9UIfo8DUIyUZ0c=;
+        b=LSbtL8+iwnX5GqWaGBkCj5rkG6Gk0y6hZi+1w189U0O1tCpGD2Jutew6l7t00+dHHM
+         pmmTo2/kAT2zb4bZQ0AjNDI6QlsMybGTy8m+4VKZQG3FPpbhOR4GwsQYHTo1JSrYTtSq
+         j1toePpqa6F4s3B12xkrFCc+UiRr62QzyiMy9O0juqjTlObi9W6dP4l8w6PcYjf+DcMI
+         DDloLYjO69NWdgdFxg9r4fWhltlDq3NNHeRGUSiHau4SwNxHUXaUbQ/RXnd8RenvO0e4
+         Hh5VRijo3++skLzX7LkAV7l2JC2q4j27oeaQzVzEl4iSKl9g7maZbyXCp/JzF7u1gxmZ
+         9RwA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683239954; x=1685831954;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=/rN99MG5d6M+UabPVww+w9dMJG2WFhR6z4xfKsLbvtE=;
-        b=UGjcviR6B7WT16p/tcavyX/bYQd/esWLbY6ga8DKD9OMMwWJeAO1k0Rg+N6wY53y33
-         DM/XqI+k+2sT13kIjtc4hAF4Pzm0CiRZDaMLY1GFTo9+dVx9T0kXQrWJFtOdI7kxP35m
-         aoBPVF/bKb4hDwJVKYsEqO1qfSOCM9u5MYchfhxbhASc/kspL++qJ7ebWdwAYEZtKQ9N
-         fHGtADxP4MJaQFMnmniq6AUnz6bOyK+SGm9wuSwY62GlPqScJgleaho9jLTAHP08UVVN
-         0QS8E7yHddilrw8frYxR66kaV1nv+tzNDrHxC+1Kk00ATVhFp5sAPnwphMHRACDq+gYv
-         kK/A==
-X-Gm-Message-State: AC+VfDw33HONcQClUukwsF4f0J3mOw+q+ZN2Eo719kRszgMeL/WbFKv5
-	pqqnR2ppdF2IC0+sFOx8it7iXvIw7hLLe4tCQoc=
-X-Google-Smtp-Source: ACHHUZ68AtrAuFhm7Wfo9fOB1Ufq7fnupxrYymNEO9Z9XzMPBh8VS76mbkE6gDZJg9f3Ct781kS9wA==
-X-Received: by 2002:a92:6c06:0:b0:32b:26aa:ce3a with SMTP id h6-20020a926c06000000b0032b26aace3amr221965ilc.27.1683239954596;
-        Thu, 04 May 2023 15:39:14 -0700 (PDT)
-Received: from mail-il1-f179.google.com (mail-il1-f179.google.com. [209.85.166.179])
-        by smtp.gmail.com with ESMTPSA id z3-20020a92bf03000000b0032b72b5c1c3sm74057ilh.9.2023.05.04.15.39.13
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 04 May 2023 15:39:14 -0700 (PDT)
-Received: by mail-il1-f179.google.com with SMTP id e9e14a558f8ab-32f4e0f42a7so628285ab.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 04 May 2023 15:39:13 -0700 (PDT)
-X-Received: by 2002:ac8:5805:0:b0:3ef:3510:7c3a with SMTP id
- g5-20020ac85805000000b003ef35107c3amr17232qtg.3.1683239933101; Thu, 04 May
- 2023 15:38:53 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1683246048; x=1685838048;
+        h=to:from:cc:content-transfer-encoding:mime-version:message-id:date
+         :subject:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=8TmpvJbU96K5mWAE+i9LXk7p3PZGa9UIfo8DUIyUZ0c=;
+        b=XxqBuN3o5XG57bLVp03gPdczIoPuXD4up5t6bNuCk3MoSf21pZb6L9DI4V6shyX6dC
+         1dj/mo8vSKv033YtkrvlV4Tm31Z+BgAZWpDyAY+4X9v3epgU7cpq1GPUf5VcZg7IAQM4
+         iPWw7FjMuT1VJWHnNZoLP207dCKnTAc6Hp9tR3yLp0JTNM3qfcCyKeFTRyt0Q1ODuusL
+         DpKRG9zRJCQJ6/LfH7GiqbN627R3ip+8nSvkqFwMCfy8MrWL4dARGnDBNF9iHWQlxCf8
+         h9cboYAieUoluZrLlKUmrft7C2ATOxslJIVOatabGflbn6e6MDC8lS2tfP+hlPdMGVTa
+         KPiA==
+X-Gm-Message-State: AC+VfDy+ip+bYFfz4UWxC1wU+wkRMMxgOkzLHHfFtlSCLOfpXhtXRtQk
+	ZfTEufoFGKG9Z2mCCuObMTI45Q==
+X-Google-Smtp-Source: ACHHUZ43/6VUqC/4H/Fyb8yXxZtcJhQwJ+Pf66SFGn86RioprdSlGVfrxR7XKatPpG2zpuh26E5OqA==
+X-Received: by 2002:a17:90b:3e83:b0:24d:dc79:5901 with SMTP id rj3-20020a17090b3e8300b0024ddc795901mr3994645pjb.26.1683246047965;
+        Thu, 04 May 2023 17:20:47 -0700 (PDT)
+Received: from localhost ([135.180.227.0])
+        by smtp.gmail.com with ESMTPSA id cq2-20020a17090af98200b002470b9503desm3659179pjb.55.2023.05.04.17.20.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 04 May 2023 17:20:47 -0700 (PDT)
+Subject: [PATCH] phy: mediatek: Remove unusued ret and check
+Date: Thu,  4 May 2023 17:19:46 -0700
+Message-Id: <20230505001945.10179-1-palmer@rivosinc.com>
+X-Mailer: git-send-email 2.40.0
 MIME-Version: 1.0
-References: <20230501082341.v3.1.I6bf789d21d0c3d75d382e7e51a804a7a51315f2c@changeid>
-In-Reply-To: <20230501082341.v3.1.I6bf789d21d0c3d75d382e7e51a804a7a51315f2c@changeid>
-From: Doug Anderson <dianders@chromium.org>
-Date: Thu, 4 May 2023 15:38:40 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=Wz8u0+WHqiLwcE-3BhbtdVVCnSQjs7bxp=-tisyYQwWw@mail.gmail.com>
-Message-ID: <CAD=FV=Wz8u0+WHqiLwcE-3BhbtdVVCnSQjs7bxp=-tisyYQwWw@mail.gmail.com>
-Subject: Re: [PATCH v3] hardlockup: detect hard lockups using secondary
- (buddy) CPUs
-To: Petr Mladek <pmladek@suse.com>, Andrew Morton <akpm@linux-foundation.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Randy Dunlap <rdunlap@infradead.org>, 
-	Will Deacon <will@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, 
-	Sumit Garg <sumit.garg@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, 
-	Ian Rogers <irogers@google.com>, ravi.v.shankar@intel.com, 
-	Marc Zyngier <maz@kernel.org>, linux-perf-users@vger.kernel.org, 
-	Stephane Eranian <eranian@google.com>, kgdb-bugreport@lists.sourceforge.net, 
-	ito-yuichi@fujitsu.com, linux-arm-kernel@lists.infradead.org, 
-	Stephen Boyd <swboyd@chromium.org>, Masayoshi Mizuma <msys.mizuma@gmail.com>, ricardo.neri@intel.com, 
-	Lecopzer Chen <lecopzer.chen@mediatek.com>, Chen-Yu Tsai <wens@csie.org>, 
-	Andi Kleen <ak@linux.intel.com>, Colin Cross <ccross@android.com>, 
-	Matthias Kaehlcke <mka@chromium.org>, Guenter Roeck <groeck@chromium.org>, 
-	Tzung-Bi Shih <tzungbi@chromium.org>, Alexander Potapenko <glider@google.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Borislav Petkov <bp@suse.de>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Juergen Gross <jgross@suse.com>, 
-	Kees Cook <keescook@chromium.org>, Laurent Dufour <ldufour@linux.ibm.com>, 
-	Liam Howlett <liam.howlett@oracle.com>, Masahiro Yamada <masahiroy@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Michael Ellerman <mpe@ellerman.id.au>, 
-	Miguel Ojeda <ojeda@kernel.org>, Nathan Chancellor <nathan@kernel.org>, 
-	Nick Desaulniers <ndesaulniers@google.com>, "Paul E. McKenney" <paulmck@kernel.org>, 
-	Sami Tolvanen <samitolvanen@google.com>, Vlastimil Babka <vbabka@suse.cz>, 
-	Zhaoyang Huang <zhaoyang.huang@unisoc.com>, Zhen Lei <thunder.leizhen@huawei.com>, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, chunfeng.yun@mediatek.com,
+  kishon@kernel.org, matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+  dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+  linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, linux@rivosinc.com,
+  Palmer Dabbelt <palmer@rivosinc.com>
+From: Palmer Dabbelt <palmer@rivosinc.com>
+To: vkoul@kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230504_153918_625245_A052C092 
-X-CRM114-Status: GOOD (  48.22  )
+X-CRM114-CacheID: sfid-20230504_172052_356997_7B5E754D 
+X-CRM114-Status: GOOD (  12.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,120 +91,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+From: Palmer Dabbelt <palmer@rivosinc.com>
 
-On Mon, May 1, 2023 at 8:25=E2=80=AFAM Douglas Anderson <dianders@chromium.=
-org> wrote:
->
-> From: Colin Cross <ccross@android.com>
->
-> Implement a hardlockup detector that doesn't doesn't need any extra
-> arch-specific support code to detect lockups. Instead of using
-> something arch-specific we will use the buddy system, where each CPU
-> watches out for another one. Specifically, each CPU will use its
-> softlockup hrtimer to check that the next CPU is processing hrtimer
-> interrupts by verifying that a counter is increasing.
->
-> NOTE: unlike the other hard lockup detectors, the buddy one can't
-> easily show what's happening on the CPU that locked up just by doing a
-> simple backtrace. It relies on some other mechanism in the system to
-> get information about the locked up CPUs. This could be support for
-> NMI backtraces like [1], it could be a mechanism for printing the PC
-> of locked CPUs at panic time like [2] / [3], or it could be something
-> else. Even though that means we still rely on arch-specific code, this
-> arch-specific code seems to often be implemented even on architectures
-> that don't have a hardlockup detector.
->
-> This style of hardlockup detector originated in some downstream
-> Android trees and has been rebased on / carried in ChromeOS trees for
-> quite a long time for use on arm and arm64 boards. Historically on
-> these boards we've leveraged mechanism [2] / [3] to get information
-> about hung CPUs, but we could move to [1].
->
-> Although the original motivation for the buddy system was for use on
-> systems without an arch-specific hardlockup detector, it can still be
-> useful to use even on systems that _do_ have an arch-specific
-> hardlockup detector. On x86, for instance, there is a 24-part patch
-> series [4] in progress switching the arch-specific hard lockup
-> detector from a scarce perf counter to a less-scarce hardware
-> resource. Potentially the buddy system could be a simpler alternative
-> to free up the perf counter but still get hard lockup detection.
->
-> Overall, pros (+) and cons (-) of the buddy system compared to an
-> arch-specific hardlockup detector:
-> + The buddy system is usable on systems that don't have an
->   arch-specific hardlockup detector, like arm32 and arm64 (though it's
->   being worked on for arm64 [5]).
-> + The buddy system may free up scarce hardware resources.
-> + If a CPU totally goes out to lunch (can't process NMIs) the buddy
->   system could still detect the problem (though it would be unlikely
->   to be able to get a stack trace).
-> + The buddy system uses the same timer function to pet the hardlockup
->   detector on the running CPU as it uses to detect hardlockups on
->   other CPUs. Compared to other hardlockup detectors, this means it
->   generates fewer interrupts and thus is likely better able to let
->   CPUs stay idle longer.
-> - If all CPUs are hard locked up at the same time the buddy system
->   can't detect it.
-> - If we don't have SMP we can't use the buddy system.
-> - The buddy system needs an arch-specific mechanism (possibly NMI
->   backtrace) to get info about the locked up CPU.
->
-> [1] https://lore.kernel.org/r/20230419225604.21204-1-dianders@chromium.or=
-g
-> [2] https://issuetracker.google.com/172213129
-> [3] https://docs.kernel.org/trace/coresight/coresight-cpu-debug.html
-> [4] https://lore.kernel.org/lkml/20230301234753.28582-1-ricardo.neri-cald=
-eron@linux.intel.com/
-> [5] https://lore.kernel.org/linux-arm-kernel/20220903093415.15850-1-lecop=
-zer.chen@mediatek.com/
->
-> Signed-off-by: Colin Cross <ccross@android.com>
-> Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
-> Signed-off-by: Guenter Roeck <groeck@chromium.org>
-> Signed-off-by: Tzung-Bi Shih <tzungbi@chromium.org>
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> ---
-> This patch has been rebased in ChromeOS kernel trees many times, and
-> each time someone had to do work on it they added their
-> Signed-off-by. I've included those here. I've also left the author as
-> Colin Cross since the core code is still his.
->
-> I'll also note that the CC list is pretty giant, but that's what
-> get_maintainers came up with (plus a few other folks I thought would
-> be interested). As far as I can tell, there's no true MAINTAINER
-> listed for the existing watchdog code. Assuming people don't hate
-> this, maybe it would go through Andrew Morton's tree?
->
-> Changes in v3:
-> - More cpu =3D> CPU (in Kconfig and comments).
-> - Added a note in commit message about the effect on idle.
-> - Cleaned up commit message pros/cons to be complete sentences.
-> - No code changes other than comments.
->
-> Changes in v2:
-> - cpu =3D> CPU (in commit message).
-> - Reworked description and Kconfig based on v1 discussion.
-> - No code changes.
->
->  include/linux/nmi.h         |  18 ++++-
->  kernel/Makefile             |   1 +
->  kernel/watchdog.c           |  24 ++++--
->  kernel/watchdog_buddy_cpu.c | 141 ++++++++++++++++++++++++++++++++++++
->  lib/Kconfig.debug           |  23 +++++-
->  5 files changed, 196 insertions(+), 11 deletions(-)
+This trips up a maybe-uninitialized warning, but it's actually just not
+used.
 
-To leave breadcrumbs: I've posted v4 which is now a big series
+Signed-off-by: Palmer Dabbelt <palmer@rivosinc.com>
+---
+I just stumbled into this one when trying to test Linus' master.  I'm
+not sure it's a sane fix, but I'm not using the driver.  No rush no my
+end, I'll just keep the fix around in my local tree for now.
+---
+ drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-https://lore.kernel.org/r/20230504221349.1535669-1-dianders@chromium.org
+diff --git a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
+index abfc077fb0a8..3fc0913ec73b 100644
+--- a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
++++ b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
+@@ -213,7 +213,7 @@ static int mtk_hdmi_pll_calc(struct mtk_hdmi_phy *hdmi_phy, struct clk_hw *hw,
+ 	u64 tmds_clk, pixel_clk, da_hdmitx21_ref_ck, ns_hdmipll_ck, pcw;
+ 	u8 txpredivs[4] = { 2, 4, 6, 12 };
+ 	u32 fbkdiv_low;
+-	int i, ret;
++	int i;
+ 
+ 	pixel_clk = rate;
+ 	tmds_clk = pixel_clk;
+@@ -295,8 +295,6 @@ static int mtk_hdmi_pll_calc(struct mtk_hdmi_phy *hdmi_phy, struct clk_hw *hw,
+ 	mtk_hdmi_pll_set_hw(hw, PLL_PREDIV, fbkdiv_high, fbkdiv_low,
+ 			    PLL_FBKDIV_HS3, posdiv1, posdiv2, txprediv,
+ 			    txposdiv, digital_div);
+-	if (ret)
+-		return -EINVAL;
+ 
+ 	return 0;
+ }
+-- 
+2.40.0
 
-I took some people off the CC list that get_maintainers had added on
-v3, mostly because it was getting unbearable. I tried to copy all
-relevant mailing lists, so hopefully anyone who needs v4 can find it
-somewhere where it's easy for them to reply to. If you got dropped off
-the CC list and want back on for future versions, please yell and I'll
-add you. Unless I messed up, I've CCed anyone who replied to previous
-versions.
-
--Doug
 
