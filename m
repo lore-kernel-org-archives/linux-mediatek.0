@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AECAC7EE24
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 May 2023 03:45:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC03FC77B7F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 May 2023 03:56:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
 	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UUM0hiX5g0o6a/S1BFDD/Za/mVhlXte0/BGjeyoc/IY=; b=aoSctmBtKcHQ5TWxaW25RFBUSc
-	UtGtu3u3PM4BwQ4F8I5a4x+2TgF5g4akPLYBdtRX0qSOx5bBlOmHFoMaA/IEOJgxsJ+apu2YrzLs5
-	LnMd9YeLQo3ilUYdEQ7a4FqLOBGaB++IFbYmbsChrFp0zSsg0l9pDdDGvL40GgfAScyu7k1pwpst+
-	OqvrYNPZmerSEZRRFxRr+9DYyAFZZz2aX3DlOUctCGirsfLZjwnMPnNYj+N7nvpj6NJcVLCyaeeHG
-	KiUGMVp59Z5p3PG6k+sQRolrxLH4NesrzukUUXcnkItghLiKMZlePQ+mYzvm8JOJ3fqH1DR8o8uLW
-	E2ZYh9pw==;
+	bh=ToNJHd6aVG+BG3HRdwEs8Sl5WTgsB5NmPeXaNpsdBOw=; b=4HND56qmFbK0R3jGwIQWBbWzzt
+	Gv8hHXLM4he4pDRNqZWFbdsFfOAkjpLRhI/hmRGwwCFYLY7oAFbYhsHZaNYmxOyFm0j88bWaCloi4
+	vEiHqHJvkfX7JUvnmv5YGl6JEShjBzt9DhGfH5+/oZFSY3fRWUGE7J7qbHt4O+lYEATxsj/ehxfkW
+	4QIihtnQ2ZCybWHhLSV2TL2m7urfvrUxpEJjzq+PuOTzka79SVO2j1CJ4MoCBuFAUuc1aH1REXry4
+	qpsx1Bq8xSD4CpKC6taAMt9GvRK+7FpYGgVJLW1Z7A24gzwWN0NA5au1A/SD/MfypwQyp0PGUFFy/
+	P+fWt5Jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pvroP-00H8sJ-0S;
-	Mon, 08 May 2023 03:45:21 +0000
+	id 1pvryo-00H9se-2d;
+	Mon, 08 May 2023 03:56:06 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pvroL-00H8qP-0e;
-	Mon, 08 May 2023 03:45:18 +0000
+	id 1pvryl-00H9rw-0s;
+	Mon, 08 May 2023 03:56:04 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 18DA361509;
-	Mon,  8 May 2023 03:45:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 5D52DC4339B;
-	Mon,  8 May 2023 03:45:14 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 797AC61113;
+	Mon,  8 May 2023 03:56:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id C0525C4339B;
+	Mon,  8 May 2023 03:56:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1683517514;
-	bh=V4OaoyYAS7xhFvpJhr4hI+GeBny+xjgc2/oaHMDC0JI=;
+	s=k20201202; t=1683518161;
+	bh=NrJr0EBtNIgpAarh3hsg9dldeOGUlRjf/3/JXcqh+nU=;
 	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=G/EwPAno7Zgs9szrsNpzjupe/h0bi/RZ5rZEC6T8AuzSUlH/7WUy/K9Y1Ut000k7q
-	 WeYo1PokpcMmOaXBTL2L9zuzL3qrK5x5iUtJ9bqDkpUARCgrEk8V6Up4JQRQ8pDMLr
-	 6WT+qCsz1tWzVRPOXwMs5zg/id4fcCZxHMvMVcjTLy2NmeZ4It38uuCVuMr14031j2
-	 a5z/PzyIY5v7/OgtWPZ7btudIj3lXIAYsjIBPWj7+XsWQaicOiRZien+gQoa9TOYko
-	 dDqaMBtst2eaeGbhm9FA0CKbBCQvnv/5PI4kaZ3ozIkk6py5BUeFovecfpNBBrCcHh
-	 LRxRJu1TEtdDQ==
+	b=X7Dj3d2UdyEHAXKLIl/zP/EagxnlIOOO361aTHP/9S37uGTBFAUZ/A3T8XxjRO/ct
+	 ka4fIGeNufAEUZUGWQTXPqBVf5Fi6T1S6jXxMShex5cm+Kg7oyrHDO6NIX7LamSMMN
+	 j9sSBMYy1gqcPjf2QxtJLqSR7zDU4gh0HJVC3r4YHPMzkGFGX7rVKW9gotzYsZnooV
+	 TeEY5jCwIP4dvklJeYpU/TrxoysK/QCgVfLMXmZl8UDSbvturAi6WsSbx1c9Qq0HHK
+	 DPppWwftxiCGJvYFfzZ/2xL7AEJ/de3i3fO0hXboi7ZQtcmnsWG8cTmRODuePCWOAe
+	 lTHDKmzU22p5w==
 Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 3ADA2E26D20;
-	Mon,  8 May 2023 03:45:14 +0000 (UTC)
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id A0975C395C8;
+	Mon,  8 May 2023 03:56:01 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Subject: Re: [PATCH 00/41] rtc: Convert to platform remove callback returning void
 From: patchwork-bot+chrome-platform@kernel.org
-Message-Id:  <168351751423.5651.18106995341642882418.git-patchwork-notify@kernel.org>
-Date: Mon, 08 May 2023 03:45:14 +0000
+Message-Id:  <168351816165.5651.12752189615466403387.git-patchwork-notify@kernel.org>
+Date: Mon, 08 May 2023 03:56:01 +0000
 References: <20230304133028.2135435-1-u.kleine-koenig@pengutronix.de>
 In-Reply-To: <20230304133028.2135435-1-u.kleine-koenig@pengutronix.de>
 To: =?utf-8?q?Uwe_Kleine-K=C3=B6nig_=3Cu=2Ekleine-koenig=40pengutronix=2Ede=3E?=@ci.codeaurora.org
@@ -74,7 +74,7 @@ Cc: a.zummo@towertech.it, alexandre.belloni@bootlin.com,
  linux-tegra@vger.kernel.org, patches@opensource.cirrus.com,
  kernel@pengutronix.de
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230507_204517_315901_D2C13AC7 
+X-CRM114-CacheID: sfid-20230507_205603_355660_F9A36172 
 X-CRM114-Status: GOOD (  12.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,7 +92,7 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hello:
 
-This patch was applied to chrome-platform/linux.git (for-kernelci)
+This patch was applied to chrome-platform/linux.git (for-next)
 by Alexandre Belloni <alexandre.belloni@bootlin.com>:
 
 On Sat,  4 Mar 2023 14:29:47 +0100 you wrote:
