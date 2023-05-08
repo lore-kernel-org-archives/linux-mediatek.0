@@ -4,96 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74C59C7EE22
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 May 2023 19:41:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CA8FC7EE22
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 May 2023 19:54:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=u6BHb4xVvMEfgN+9lRCelTqOTmzUYyfbAtctnb7HRBw=; b=J0rgoJicLeRA+ujB74ZuR79EmD
-	/qnRWkfECVmjA1YvZBDNNsdIgSjHYsg1te6ox/RfVKsdIfuPZljPUAGHIJXE2ZbKT6M/p231CuXHi
-	Ji6yHTLxYiFTl5SyycPjj0j4Mf7eD8ohVPa+gqVnDEV2n/9YtT8y+fpgQwhXOfAnNip4H8HcIbrLD
-	WDbVNHUJhj8XQ1sqE78WxwAlHLATlM3Mho4vAoI2DBdw7BNNfQQg2JNLG363ePv9PZbYuz/wg/zjO
-	C1Agf3qNAftgcAdQ7lgUQgBTi4Svvcu/u2x9tXNnSECEOGvQkHOc+gV+RngUQflJD/rbwHhxK0ncR
-	BfljPYiA==;
+	bh=aond+PBh56G+BZA3H7+tIB9ZL9ml8G3VONmOz3SWSsI=; b=OgrZo1ZxY/hEemArrJCHyP4pB4
+	vAJqoXqwj/WmS5oDqK/7QzZtwR8XoOIK9vN1II/PEnyyyyj6D70n672FI0yxxun6GimbzvHXQN2Ri
+	de+FMxM6RgWOoOK+X1qfqAkzp5vtmAou3Yt+/DZBVdv6GANKNk09NZi7XONjvgvV6qm/iqYlxAEt0
+	4gHHm8rvjZlRl07iKXgPooFPxWDkkTfSJGPglBeFukLMYqcCG4B7fvp2TuqlmvpJfkhaK6k/RICdD
+	n5RIS6dVhFkMj3o1TEge9gdzC0i7KorLFw7JOu7bEFrTcJOzyLceALuGp87kpqUZd7ddIRVZxfJww
+	5mqGnyCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pw6jX-001Dd4-0q;
-	Mon, 08 May 2023 19:41:19 +0000
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+	id 1pw6wO-001HnY-0a;
+	Mon, 08 May 2023 19:54:36 +0000
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pw6jQ-001DbD-0W
+	id 1pw6wJ-001Hlm-2C
 	for linux-mediatek@lists.infradead.org;
-	Mon, 08 May 2023 19:41:17 +0000
-Received: by mail-ed1-x535.google.com with SMTP id 4fb4d7f45d1cf-50bc25f0c7dso9371927a12.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 08 May 2023 12:41:09 -0700 (PDT)
+	Mon, 08 May 2023 19:54:34 +0000
+Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-4f14f266b72so3299489e87.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 08 May 2023 12:54:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1683574868; x=1686166868;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=u6BHb4xVvMEfgN+9lRCelTqOTmzUYyfbAtctnb7HRBw=;
-        b=CfsYd66/CQThuWNpAvqHi/MJfVOwNKqnCWFXJeAFfvAiraDwp4Jt5CBun22SMkPabl
-         9dRNgNtAykAZuiW4gwbmcz0e/3iJjD34SxhtPshsDAwcYo2rxXe+GO9jALW/IXMeZz+B
-         V1AfCxlclLF2SoyC3fQhoHmw9Ec5a0eya/S4PsSIVCb/RT7/e3U7hmpT4F8TvcsHqO40
-         AsN+FQg9ezOn1IuuyjmcIx4QvNomc33QMqJ4D/Ucu6d8vRpfLfeulS8ZhB/sbhAwuQLT
-         ik2Pzqjuxk7wSTwjyd9TMfq2D/iIPV/kFTKBU0uixzx6PGM6trE/eWWYfdHTjnsqnfhl
-         hEfg==
+        d=gmail.com; s=20221208; t=1683575668; x=1686167668;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=aond+PBh56G+BZA3H7+tIB9ZL9ml8G3VONmOz3SWSsI=;
+        b=CF9eCwKhsjEdE6QtfUE1lz3kJpia2NFTqxrJB8eyf6nE0slKUMDW+LB4S7hZf4Zefs
+         FDrDSu12mRBTQorkOV1EbSPA86H3zsoW5zxwB1kRysL08aNQCrandfvgSPVMbeSjZGyE
+         EDBCeyUjk5UkYIQrCY9re9OIRmf/77snJEb1LlUD0vrComgtgIHmrIHcBGjUMdRjjs4T
+         4MDXrpOCRXNKUab9lF3D/pbRGIcca8wNZlxEAQlGyMaMkiU53OUpRaHRh9sTqiQPgrO7
+         OSAvM4lY0Gq0NSYrfb8upL4g3P8oifqbui8Eph8tBnjMkrtP84EhGfajyxBmTCFjgQ4L
+         dVJw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683574868; x=1686166868;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=u6BHb4xVvMEfgN+9lRCelTqOTmzUYyfbAtctnb7HRBw=;
-        b=aFpPTyVx/BSjGmyn6qkwvqLubHjMAcJQCuHCf0HDgJYLmW9EWbz+wGpgkVKTH594JD
-         A9DSYvLNqerfnxcsIlzweggN9cghJC2K+xQ2eZJ+xI9Q/QRahy0NCcAqOVl9ilOAunrc
-         xPBCjL36KKGtXT6gtpYelyD6AW+Nyc1HBnQydZfGeIfb3km7F3bpTHXEsT0LFe5e1FqT
-         jD8LstF6oXin2z/u4cL5AZM5AjULUoQ3MCI8bbOcLYAPOHsofXXJVB2uoI1vYWBzppOv
-         0r4XvvNJMNUv2sAe49e0b1sGcNIWhuoJ2bhQVFEnwwwv+V5QiX9C50zZdV9zyoI75kUg
-         wP2Q==
-X-Gm-Message-State: AC+VfDxiANPVLq5Ct1lM8XaMLn4ngBWhghFrvpNKsyp0kVFZo1pYbLZn
-	EhRXCPyOoxdqyVUvwIhhEDckRA==
-X-Google-Smtp-Source: ACHHUZ4UJvRAHo3YeIqDhqkX6D0qV+reh/JVVWha2vJ3gODEWTvlXChgbwidS5lcWcdtIEGMboCujA==
-X-Received: by 2002:a17:907:7b91:b0:969:bac4:8e22 with SMTP id ne17-20020a1709077b9100b00969bac48e22mr785771ejc.26.1683574868376;
-        Mon, 08 May 2023 12:41:08 -0700 (PDT)
-Received: from ?IPV6:2a02:810d:15c0:828:d19b:4e0f:cfe4:a1ac? ([2a02:810d:15c0:828:d19b:4e0f:cfe4:a1ac])
-        by smtp.gmail.com with ESMTPSA id la26-20020a170906ad9a00b00967a18df1easm352509ejb.117.2023.05.08.12.41.06
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 08 May 2023 12:41:07 -0700 (PDT)
-Message-ID: <5cf04ce7-c60a-51c8-c835-58f24e7c8759@linaro.org>
-Date: Mon, 8 May 2023 21:41:06 +0200
+        d=1e100.net; s=20221208; t=1683575668; x=1686167668;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=aond+PBh56G+BZA3H7+tIB9ZL9ml8G3VONmOz3SWSsI=;
+        b=OmU4K8BLyNY9Tyg7yzJbQ/ymTXrJK8Dlxi4qw/qzcQ7Gn1Yg3BUo/LR9NL5mjj9NnZ
+         gsQhsE/q7JBD/BjyPMegAAYrvVAM02Jy5aDrTYsf9sjeOSnZ3CxLiIjP8Zxb47OImbuW
+         nMtFSAAATsrGFbfHQFzPhddThxhFCZ7NidEnFfTOTHmgnSQV+x7yTp1nG42DddzJ+w4F
+         6WYvQ3BrD+6WUeecqSbP5RTvcNEXI7VMmtkGTwdbZaHgIZovbnS1J8ZPBD1Lar678Mzl
+         mdg3euJzBjdoENE0toIWv11VL/Sq0W3+Pq5KSnF0FXlYt/CnwT0j4IIrRCwhiFhDPfoT
+         RZfg==
+X-Gm-Message-State: AC+VfDxF2TiyFQj3nXKQwHv9w3mosmX28G4Ecw2F79ZOZ9UtM4PDxVmL
+	hWBK0ebLm6mtNKSSNcwKfyQ84c9QMhN1ecZwlHM=
+X-Google-Smtp-Source: ACHHUZ7H4PDX2u0w6WQ6LT5sjOWRLUvhtxu9dXeWV5/9JodHVsFloTya/PWTJ71zN3zfU48x6Cmb/Z/kMU+s/bETORE=
+X-Received: by 2002:a2e:7004:0:b0:2ac:8e5a:1054 with SMTP id
+ l4-20020a2e7004000000b002ac8e5a1054mr96891ljc.0.1683575667931; Mon, 08 May
+ 2023 12:54:27 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH] dt-bindings: mt76: support pointing to EEPROM using NVMEM
- cell
-To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
- Felix Fietkau <nbd@nbd.name>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee
- <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
- "David S . Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>,
- Christian Marangi <ansuelsmth@gmail.com>
-References: <20230508155820.9963-1-zajec5@gmail.com>
-Content-Language: en-US
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230508155820.9963-1-zajec5@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+References: <c90f4606c85f5862e2e3e1dc330af4ac95f2bc9f.1683065391.git.objelf@gmail.com>
+ <ddcbc509b5024882583d5c143ec5f4520bef860a.1683065391.git.objelf@gmail.com>
+In-Reply-To: <ddcbc509b5024882583d5c143ec5f4520bef860a.1683065391.git.objelf@gmail.com>
+From: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
+Date: Mon, 8 May 2023 12:54:15 -0700
+Message-ID: <CABBYNZJQjoTzqmivUbLnDnn826pStW+kTuicYN1qVuHDoQjfmw@mail.gmail.com>
+Subject: Re: [PATCH v5 3/3] Bluetooth: btusb: mediatek: add MediaTek
+ devcoredump support
+To: sean.wang@mediatek.com, Manish Mandlik <mmandlik@google.com>
+Cc: marcel@holtmann.org, johan.hedberg@gmail.com, chris.lu@mediatek.com, 
+	Soul.Huang@mediatek.com, Leon.Yen@mediatek.com, Deren.Wu@mediatek.com, 
+	km.lin@mediatek.com, robin.chiu@mediatek.com, Eddie.Chen@mediatek.com, 
+	ch.yeh@mediatek.com, jenhao.yang@mediatek.com, Stella.Chang@mediatek.com, 
+	Tom.Chou@mediatek.com, steve.lee@mediatek.com, jsiuda@google.com, 
+	frankgor@google.com, abhishekpandit@google.com, michaelfsun@google.com, 
+	abhishekpandit@chromium.org, mcchou@chromium.org, shawnku@google.com, 
+	linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Jing Cai <jing.cai@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230508_124112_232859_039B94A0 
-X-CRM114-Status: UNSURE (   8.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230508_125431_740173_519DC71F 
+X-CRM114-Status: GOOD (  33.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,23 +97,314 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 08/05/2023 17:58, Rafał Miłecki wrote:
-> From: Rafał Miłecki <rafal@milecki.pl>
-> 
-> All kind of calibration data should be described as NVMEM cells of NVMEM
-> devices. That is more generic solution than "mediatek,mtd-eeprom" which
-> is MTD specific.
-> 
-> Add support for EEPROM NVMEM cells and deprecate existing MTD-based
-> property.
-> 
-> Cc: Christian Marangi <ansuelsmth@gmail.com>
-> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+Hi Sean,
+
+On Tue, May 2, 2023 at 4:02=E2=80=AFPM <sean.wang@mediatek.com> wrote:
+>
+> From: Jing Cai <jing.cai@mediatek.com>
+>
+> This patch implement function .coredump() and dmp_hdr() in btusb
+> driver for MediaTek controller.  FW core dump was triggered by FW
+> specific event to show something unexpected happened in the controller.
+>
+> The driver would be responsible for collecting and uploading the device
+> core dump pieces in hci driver using core dump API. Once we finished
+> the whole process, the driver would reset the controller to recover the
+> kind of fatal error.
+>
+> Co-developed-by: Chris Lu <chris.lu@mediatek.com>
+> Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+> Co-developed-by: Sean Wang <sean.wang@mediatek.com>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> Signed-off-by: Jing Cai <jing.cai@mediatek.com>
+> ---
+> v2, v3: rebase onto the latest codebase
+> v4: update the newest API usage for the coredump which was already
+>     into the upstream
+> v5: support devcoredump on hdev basis
+> ---
+>  drivers/bluetooth/btmtk.c | 117 ++++++++++++++++++++++++++++++++++++++
+>  drivers/bluetooth/btmtk.h |  28 +++++++++
+>  drivers/bluetooth/btusb.c |  14 +++++
+>  3 files changed, 159 insertions(+)
+>
+> diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+> index ac2fac7e3c5f..657792f9dcab 100644
+> --- a/drivers/bluetooth/btmtk.c
+> +++ b/drivers/bluetooth/btmtk.c
+> @@ -19,6 +19,12 @@
+>  #define MTK_SEC_MAP_COMMON_SIZE        12
+>  #define MTK_SEC_MAP_NEED_SEND_SIZE     52
+>
+> +enum {
+> +       BTMTK_COREDUMP_INIT,
+> +       BTMTK_COREDUMP_DISABLED,
+> +       BTMTK_COREDUMP_ACTIVE,
+> +};
+> +
+>  struct btmtk_patch_header {
+>         u8 datetime[16];
+>         u8 platform[4];
+> @@ -53,6 +59,56 @@ struct btmtk_section_map {
+>         };
+>  } __packed;
+>
+> +static void btmtk_coredump(struct hci_dev *hdev)
+> +{
+> +       int err;
+> +
+> +       err =3D __hci_cmd_send(hdev, 0xfd5b, 0, NULL);
+> +       if (err < 0)
+> +               bt_dev_err(hdev, "Coredump failed (%d)", err);
+> +}
+> +
+> +static void btmtk_coredump_hdr(struct hci_dev *hdev, struct sk_buff *skb=
+)
+> +{
+> +       struct btmtk_data *data =3D hci_get_priv(hdev);
+> +       char buf[80];
+> +
+> +       snprintf(buf, sizeof(buf), "Controller Name: 0x%X\n",
+> +                data->cd_info.dev_id);
+> +       skb_put_data(skb, buf, strlen(buf));
+> +
+> +       snprintf(buf, sizeof(buf), "Firmware Version: 0x%X\n",
+> +                data->cd_info.fw_version);
+> +       skb_put_data(skb, buf, strlen(buf));
+> +
+> +       snprintf(buf, sizeof(buf), "Driver: %s\n",
+> +                data->cd_info.driver_name);
+> +       skb_put_data(skb, buf, strlen(buf));
+> +
+> +       snprintf(buf, sizeof(buf), "Vendor: MediaTek\n");
+> +       skb_put_data(skb, buf, strlen(buf));
+> +}
+> +
+> +static void btmtk_coredump_notify(struct hci_dev *hdev, int state)
+> +{
+> +       struct btmtk_data *data =3D hci_get_priv(hdev);
+> +
+> +       switch (state) {
+> +       case HCI_DEVCOREDUMP_IDLE:
+> +               data->cd_info.state =3D BTMTK_COREDUMP_INIT;
+> +               break;
+> +       case HCI_DEVCOREDUMP_ACTIVE:
+> +               data->cd_info.state =3D BTMTK_COREDUMP_ACTIVE;
+> +               break;
+> +       case HCI_DEVCOREDUMP_TIMEOUT:
+> +       case HCI_DEVCOREDUMP_ABORT:
+> +       case HCI_DEVCOREDUMP_DONE:
+> +               data->cd_info.state =3D BTMTK_COREDUMP_INIT;
+> +               btmtk_reset_sync(hdev);
+> +               break;
+> +       }
+> +}
+
+Don't really like where this is going, why can't you just use the
+state from devcd?
+
+> +
+>  int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
+>                               wmt_cmd_sync_func_t wmt_cmd_sync)
+>  {
+> @@ -295,6 +351,67 @@ void btmtk_reset_sync(struct hci_dev *hdev)
+>  }
+>  EXPORT_SYMBOL_GPL(btmtk_reset_sync);
+>
+> +int btmtk_register_coredump(struct hci_dev *hdev, u32 dev_id,
+> +                            const char *name, u32 fw_version)
+> +{
+> +       struct btmtk_data *data =3D hci_get_priv(hdev);
+> +
+> +       if (!IS_ENABLED(CONFIG_DEV_COREDUMP))
+> +               return -EOPNOTSUPP;
+> +
+> +       data->cd_info.dev_id =3D dev_id;
+> +       data->cd_info.fw_version =3D fw_version;
+> +       data->cd_info.state =3D BTMTK_COREDUMP_INIT;
+> +       strncpy(data->cd_info.driver_name, name, MTK_DRIVER_NAME_LEN - 1)=
+;
+
+Im not really sure why every devcd is having to store the driver name
+as a copy, the driver name is already accessible via
+hdev->dev->driver->name.
+
+@Manish Mandlik we might want to fix any code that still is doing
+copies of driver name like above.
+
+> +
+> +       return hci_devcd_register(hdev, btmtk_coredump, btmtk_coredump_hd=
+r,
+> +                                 btmtk_coredump_notify);
+> +}
+> +EXPORT_SYMBOL_GPL(btmtk_register_coredump);
+> +
+> +int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb)
+> +{
+> +       struct btmtk_data *data =3D hci_get_priv(hdev);
+> +       int err;
+> +
+> +       if (!IS_ENABLED(CONFIG_DEV_COREDUMP))
+> +               return 0;
+> +
+> +       switch (data->cd_info.state) {
+> +       case BTMTK_COREDUMP_DISABLED:
+> +               err =3D -EINVAL;
+> +               break;
+> +       case BTMTK_COREDUMP_INIT:
+> +               err =3D hci_devcd_init(hdev, MTK_COREDUMP_SIZE);
+> +               if (err < 0)
+> +                       break;
+> +               /* It is supposed coredump can be done within 5 seconds *=
+/
+> +               schedule_delayed_work(&hdev->dump.dump_timeout,
+> +                                     msecs_to_jiffies(5000));
+> +               fallthrough;
+> +       case BTMTK_COREDUMP_ACTIVE:
+> +       default:
+> +               err =3D hci_devcd_append(hdev, skb);
+> +               if (err < 0)
+> +                       break;
+> +
+> +               if (skb->len > 12 &&
+> +                   !strncmp((char *)&skb->data[skb->len - 13],
+> +                            MTK_COREDUMP_END, 12))
+> +                       hci_devcd_complete(hdev);
+> +
+> +               break;
+> +       }
+> +
+> +       if (err < 0) {
+> +               data->cd_info.state =3D BTMTK_COREDUMP_DISABLED;
+> +               kfree_skb(skb);
+> +       }
+> +
+> +       return err;
+> +}
+> +EXPORT_SYMBOL_GPL(btmtk_process_coredump);
+> +
+>  MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
+>  MODULE_AUTHOR("Mark Chen <mark-yw.chen@mediatek.com>");
+>  MODULE_DESCRIPTION("Bluetooth support for MediaTek devices ver " VERSION=
+);
+> diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
+> index 6245662f6ccb..7eb162f0e7aa 100644
+> --- a/drivers/bluetooth/btmtk.h
+> +++ b/drivers/bluetooth/btmtk.h
+> @@ -21,6 +21,10 @@
+>  #define MT7921_DLSTATUS 0x7c053c10
+>  #define BT_DL_STATE BIT(1)
+>
+> +#define MTK_DRIVER_NAME_LEN            16
+> +#define MTK_COREDUMP_SIZE              (1024 * 1000)
+> +#define MTK_COREDUMP_END               "coredump end"
+> +
+>  enum {
+>         BTMTK_WMT_PATCH_DWNLD =3D 0x1,
+>         BTMTK_WMT_TEST =3D 0x2,
+> @@ -119,12 +123,20 @@ struct btmtk_hci_wmt_params {
+>         u32 *status;
+>  };
+>
+> +struct btmtk_coredump_info {
+> +       char driver_name[MTK_DRIVER_NAME_LEN];
+> +       u32 dev_id;
+> +       u32 fw_version;
+> +       int state;
+> +};
+> +
+>  typedef int (*wmt_cmd_sync_func_t)(struct hci_dev *,
+>                                    struct btmtk_hci_wmt_params *);
+>
+>  typedef int (*btmtk_reset_sync_func_t)(struct hci_dev *, void *);
+>
+>  struct btmtk_data {
+> +       struct btmtk_coredump_info cd_info;
+>         btmtk_reset_sync_func_t reset_sync;
+>  };
+>
+> @@ -139,6 +151,11 @@ int btmtk_setup_firmware(struct hci_dev *hdev, const=
+ char *fwname,
+>                          wmt_cmd_sync_func_t wmt_cmd_sync);
+>
+>  void btmtk_reset_sync(struct hci_dev *hdev);
+> +
+> +int btmtk_register_coredump(struct hci_dev *hdev, u32 dev_id, const char=
+ *name,
+> +                            u32 fw_version);
+> +
+> +int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb);
+>  #else
+>
+>  static inline int btmtk_set_bdaddr(struct hci_dev *hdev,
+> @@ -162,4 +179,15 @@ static int btmtk_setup_firmware(struct hci_dev *hdev=
+, const char *fwname,
+>  static void btmtk_reset_sync(struct hci_dev *hdev)
+>  {
+>  }
+> +
+> +static int btmtk_register_coredump(struct hci_dev *hdev, u32 dev_id, con=
+st char *name,
+> +                            u32 fw_version)
+> +{
+> +       return -EOPNOTSUPP;
+> +}
+> +
+> +static int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *=
+skb)
+> +{
+> +       return -EOPNOTSUPP;
+> +}
+>  #endif
+> diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+> index 034edd8ad777..1c2a0cbcf62e 100644
+> --- a/drivers/bluetooth/btusb.c
+> +++ b/drivers/bluetooth/btusb.c
+> @@ -3035,6 +3035,10 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
+>         }
+>
+>         btmtk_data->reset_sync =3D btusb_mtk_reset_work;
+> +       err =3D btmtk_register_coredump(hdev, dev_id, btusb_driver.name,
+> +                               fw_version);
+> +       if (err < 0)
+> +               bt_dev_err(hdev, "Failed to register coredump (%d)", err)=
+;
+>
+>         switch (dev_id) {
+>         case 0x7663:
+> @@ -3189,6 +3193,7 @@ static int btusb_recv_acl_mtk(struct hci_dev *hdev,=
+ struct sk_buff *skb)
+>  {
+>         struct btusb_data *data =3D hci_get_drvdata(hdev);
+>         u16 handle =3D le16_to_cpu(hci_acl_hdr(skb)->handle);
+> +       struct sk_buff *skb_cd;
+>
+>         switch (handle) {
+>         case 0xfc6f:            /* Firmware dump from device */
+> @@ -3196,6 +3201,15 @@ static int btusb_recv_acl_mtk(struct hci_dev *hdev=
+, struct sk_buff *skb)
+>                  * suspend and thus disable auto-suspend.
+>                  */
+>                 usb_disable_autosuspend(data->udev);
+> +
+> +               /* We need to forward the diagnostic packet to userspace =
+daemon
+> +                * for backward compatibility, so we have to clone the pa=
+cket
+> +                * extraly for the in-kernel coredump support.
+> +                */
+> +               skb_cd =3D skb_clone(skb, GFP_ATOMIC);
+> +               if (skb_cd)
+> +                       btmtk_process_coredump(hdev, skb_cd);
+> +
+>                 fallthrough;
+>         case 0x05ff:            /* Firmware debug logging 1 */
+>         case 0x05fe:            /* Firmware debug logging 2 */
+> --
+> 2.25.1
+>
 
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
-Best regards,
-Krzysztof
-
+--=20
+Luiz Augusto von Dentz
 
