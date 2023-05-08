@@ -4,88 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63712C77B7F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 May 2023 08:24:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A0DAC77B7F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 May 2023 08:26:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=m5LglcJTmAOL674iFSW91v8iQ+c+VWN66eezYdcY/eo=; b=t9rORNKT17WsehGY4O8Q9F52E7
-	q6Og9bDg0fJS7GWu9PgwDxvHk0utp3LoZMe/o0GIzKna43B7svQafXI+JNqUULwbMs9Sxl/41ZbUS
-	fbkOYplvq6pZeLnTOrWB9B3MqMYScWaQ5PH3Qodkrc1vSj+aaSK956gGZTvqnYh+uCtTkHGW5hUYC
-	dJ6j5PBw5e/t3xflF8iZrgvv8rZ+GUFWXj57TNuF4d9/BPBvn6C2T+hhNNbphK9QIQC/dYSg1F1ES
-	JyoQlB2ZeGXk+uh03WFNdYerW6o3xrIRki8OX7QrIrkPRA/jh2kyyX1+w4Q9w94wKyFlZVpCM/cLV
-	HfdSQ0Wg==;
+	bh=xXa0uGPhE0KctSUw4+SndKWGHKFHHzQ2XqiJ9KtCp7I=; b=Btf4++gjIF5EnrOZ+pJf04RqTc
+	/jUQ5Tbu1IQSX+mFzwoRmp0+bqoNf8MmUv+zoMrbmZplGJ1kLQMCmCDqaq5eiW9qEvMsFDqD5kSFS
+	PsCRf14tbCVed6bcR05WBbk2K9LNhw6BUyBzko8VQNbCQsoK/uGMt3A6q+cVx6lCjcr/x53eMh3rd
+	1VOMKdqbmtXbesR9/2HpWPvIHX3rfAtugTLvUv/t/uNnf/H/lsv1syir0j8mOETlANqfKeYI8flj0
+	BZ/J/xX/+gW162VsJuFFxSXbV2UAb59jvZLVSUy2DkwZ0CSB7sbj2qIwlqtZy5nc1J57iELsQaogC
+	9x/C00ig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pvwAV-00HZaU-17;
-	Mon, 08 May 2023 08:24:27 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1pvwCA-00HZvE-0g;
+	Mon, 08 May 2023 08:26:10 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pvwAT-00HZZK-08;
-	Mon, 08 May 2023 08:24:26 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-3f415a9015bso22278295e9.2;
-        Mon, 08 May 2023 01:24:24 -0700 (PDT)
+	id 1pvwC7-00HZts-06;
+	Mon, 08 May 2023 08:26:08 +0000
+Received: by mail-wr1-x432.google.com with SMTP id ffacd0b85a97d-3062db220a3so2659639f8f.0;
+        Mon, 08 May 2023 01:26:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1683534263; x=1686126263;
+        d=gmail.com; s=20221208; t=1683534363; x=1686126363;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=m5LglcJTmAOL674iFSW91v8iQ+c+VWN66eezYdcY/eo=;
-        b=FkoBtct+K+FHjRPlHL9ykOQXt4jjYt99V2O+8Vje8XlvSQzc6v+6j4rXJJruHwHd5I
-         wj2Hp+C2JBQLstF/iJcFcUWQRCc1HgKdzlVL4cXoWSeXlt0Z5chr0kXEnr/CttPDrlbY
-         x2QIlOimiAyMBchumS0veYf//2RtScWx9T2KoBIqrvzBuKroy1jh6B5sGhEZg3rpDDwW
-         4JtorSK0X+Dzb8JNk9ZJ4KEx3ovHxrpZF3/S01fHY/WUoBD8Iy3Xff68c6hi21Ii+H/1
-         51Bt4xy/tufm5jMIKbRql0n/WodjbVuz0M9OOYXrUP1Y5dTSFRLbwg5KNCSV0fIg2hbg
-         ERbg==
+        bh=xXa0uGPhE0KctSUw4+SndKWGHKFHHzQ2XqiJ9KtCp7I=;
+        b=FTiru0tnSJy7FuH7UZujStcI8OERjVTJl8+UTIU112kpB19VMbW2UBampbjIvqDz0i
+         hktclbT9kWu14p4GzOCb+g6MTseYCRYvLKP/HZWtljr/sDjfeAjKrU7aCiqZPs6Jw24m
+         3XpEPVHYNjjbtOskVlfjRlQp9/rM60o/wD+Nx/JOtGf0ZsgvecI8GZb7brPPqo9Ad/+v
+         qFO6OVEUIMRPX4phcUFsR3EdnULfLMX9aeziaJJdm7MV2K8TPdfBOy1Dwtcu5k+NNlrB
+         o1YwDt8mtGMomAiDQB/2VghFhae4UA5KFGkhUKpRcCTS3EERpmSmBkPJfHvTmDCADnv6
+         WrKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683534263; x=1686126263;
+        d=1e100.net; s=20221208; t=1683534363; x=1686126363;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=m5LglcJTmAOL674iFSW91v8iQ+c+VWN66eezYdcY/eo=;
-        b=CK5O8w9/BkFaBCLLgPPSoN5ZRfWm91bzKnHkOUogHrn1BFZY67U8U++RyON3Fgt1tO
-         eCLo+SiBMlpdujSbmTJJ6U3G5Cy4UwAEvZm8u8gHaEVnSiwistkxHrB/OCYN4r9sAO2A
-         OJlWv+avG8hO1Oksi+RnSj2RD39nBJBCvdrvfqubTwX6DlA3lQO4oXdYIENhW9WBMOLA
-         ieENOPgd/xgsNhOpSTwh/rwBHBEA7BRm/nShzamjI62HjoPE8pqDoUR0EfCIdirOqA6N
-         Qddjbvf1rOXMf0qma9SyTQ0B0PDApb+7qihBvrb7FGCzK4q1S+NSdw1aEwICTAcI8hRv
-         6yGw==
-X-Gm-Message-State: AC+VfDz8/ILxF/5ZOVH0pAwy0gYTBlAqnZBYMRD/Hw+dvQv/8uDdCqHi
-	AzNN5guxeXDWEDps3HGAFpc=
-X-Google-Smtp-Source: ACHHUZ7qgZXuInT52CBe2fdIODHvN3TsFZFGNC53yWfuzxRIbJsq0WD/6yJNKLgPzMeJ/5eb9LSI8A==
-X-Received: by 2002:a05:600c:2191:b0:3f4:1a97:ab1d with SMTP id e17-20020a05600c219100b003f41a97ab1dmr4138816wme.1.1683534262558;
-        Mon, 08 May 2023 01:24:22 -0700 (PDT)
+        bh=xXa0uGPhE0KctSUw4+SndKWGHKFHHzQ2XqiJ9KtCp7I=;
+        b=MWhsDcECf+ZCPqawZ2fLMwnDCVPnaVGhsJgdHZfFh9FjpbRc+J9UQGOECbYaz7YO+W
+         +qZHwIl3rr7wTxlXTBmLF8rBCJ3bo/iBFN2ouOVtCilWxcKaglPkM9tYkogcFKI3cG52
+         59t0kkQUmvZ1cxkd0rdWTahkltqFXX2hnA9kBxZ7+DugNQSj5BOf9Yqrq6L/SsQdjMtZ
+         WHnZ8niSUvAr+LDCjMF1L5FCtg3+gwoX0dKRPCYBNlE2BIKt7E+zyJ61hwAEl/T4rLto
+         vdUdBmxVxRdPtmN24ZA5XHb52/3OkPCraUbi0dy0lh3pvJV/DEp5+/EG513xsYsBI4rf
+         V2SA==
+X-Gm-Message-State: AC+VfDwXpoLFE1UpkswkN7LSs5xDmVbtejicvKe7brNK5DJN1ye/tH4j
+	HiKuuXFVxWc4AI5kuzPPNLI=
+X-Google-Smtp-Source: ACHHUZ4vgqYc95MP1tLQbZAD7zAu1WzZp8GKxK+1hLCjTeIxzu3i0reKJSeaDWKZs0XindiyzHVglw==
+X-Received: by 2002:a5d:46cc:0:b0:307:1bba:ea61 with SMTP id g12-20020a5d46cc000000b003071bbaea61mr6867402wrs.44.1683534363097;
+        Mon, 08 May 2023 01:26:03 -0700 (PDT)
 Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id s13-20020a05600c45cd00b003f1738d0d13sm19383989wmo.1.2023.05.08.01.24.20
+        by smtp.gmail.com with ESMTPSA id k11-20020a7bc40b000000b003f4247fbb5fsm2888892wmi.10.2023.05.08.01.25.52
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 08 May 2023 01:24:21 -0700 (PDT)
-Message-ID: <f5cf30b2-c29c-03ac-e7fc-4c7da2cd0c5b@gmail.com>
-Date: Mon, 8 May 2023 10:24:19 +0200
+        Mon, 08 May 2023 01:26:02 -0700 (PDT)
+Message-ID: <7aa7aca9-aa50-209a-fefd-a0792540aceb@gmail.com>
+Date: Mon, 8 May 2023 10:25:46 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.0
-Subject: Re: [PATCH] phy: mediatek: fix returning garbage
+Subject: Re: [PATCH 28/53] drm/mediatek: Convert to platform remove callback
+ returning void
 Content-Language: en-US, ca-ES, es-ES
-To: Vinod Koul <vkoul@kernel.org>
-Cc: Tom Rix <trix@redhat.com>, chunkuang.hu@kernel.org,
- p.zabel@pengutronix.de, chunfeng.yun@mediatek.com, kishon@kernel.org,
- angelogioacchino.delregno@collabora.com, nathan@kernel.org,
- ndesaulniers@google.com, granquet@baylibre.com,
+To: =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
- linux-kernel@vger.kernel.org, llvm@lists.linux.dev
-References: <20230414122253.3171524-1-trix@redhat.com>
- <ZFTMPWp8LhwA9uHz@matsya> <db9c3190-28d8-199f-f4f0-a12524d0451e@gmail.com>
- <ZFipVfhLVyye/eud@matsya>
+ kernel@pengutronix.de, linux-arm-kernel@lists.infradead.org
+References: <20230507162616.1368908-1-u.kleine-koenig@pengutronix.de>
+ <20230507162616.1368908-29-u.kleine-koenig@pengutronix.de>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <ZFipVfhLVyye/eud@matsya>
+In-Reply-To: <20230507162616.1368908-29-u.kleine-koenig@pengutronix.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230508_012425_076563_240449D1 
-X-CRM114-Status: GOOD (  13.64  )
+X-CRM114-CacheID: sfid-20230508_012607_075379_F132468A 
+X-CRM114-Status: GOOD (  24.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,35 +101,52 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 08/05/2023 09:48, Vinod Koul wrote:
-> On 05-05-23, 17:37, Matthias Brugger wrote:
->>
->>
->> On 05/05/2023 11:28, Vinod Koul wrote:
->>> On 14-04-23, 08:22, Tom Rix wrote:
->>>> clang reports
->>>> drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:298:6: error: variable
->>>>     'ret' is uninitialized when used here [-Werror,-Wuninitialized]
->>>>           if (ret)
->>>>               ^~~
->>>> ret should have been set by the preceding call to mtk_hdmi_pll_set_hw.
->>>
->>> I have applied "phy: mediatek: hdmi: mt8195: fix uninitialized variable
->>> usage in pll_calc"
->>
->> Thanks Vinod, that was on my list for today as well. I was a bit puzzled
->> because you took the patch that added it, but I wasn't sure if you would
->> take the fix. How do you want to handle things like this in the future?
+On 07/05/2023 18:25, Uwe Kleine-König wrote:
+> The .remove() callback for a platform driver returns an int which makes
+> many driver authors wrongly assume it's possible to do error handling by
+> returning an error code. However the value returned is (mostly) ignored
+> and this typically results in resource leaks. To improve here there is a
+> quest to make the remove callback return void. In the first step of this
+> quest all drivers are converted to .remove_new() which already returns
+> void.
 > 
-> Fixes should be sent as Fixes patch
+> Trivially convert this driver from always returning zero in the remove
+> callback to the void returning variant.
 > 
+> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
 
-I'm not sure what do you mean. Patch subject includes the word fix and the patch 
-has a fixes tag. What was missing here?
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-Does this mean you will take fixes for this driver in the future or do you want 
-me to take care of them?
-
-Regards,
-Matthias
+> ---
+>   drivers/gpu/drm/mediatek/mtk_cec.c | 5 ++---
+>   1 file changed, 2 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_cec.c b/drivers/gpu/drm/mediatek/mtk_cec.c
+> index b640bc0559e7..f47f417d8ba6 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_cec.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_cec.c
+> @@ -235,13 +235,12 @@ static int mtk_cec_probe(struct platform_device *pdev)
+>   	return 0;
+>   }
+>   
+> -static int mtk_cec_remove(struct platform_device *pdev)
+> +static void mtk_cec_remove(struct platform_device *pdev)
+>   {
+>   	struct mtk_cec *cec = platform_get_drvdata(pdev);
+>   
+>   	mtk_cec_htplg_irq_disable(cec);
+>   	clk_disable_unprepare(cec->clk);
+> -	return 0;
+>   }
+>   
+>   static const struct of_device_id mtk_cec_of_ids[] = {
+> @@ -252,7 +251,7 @@ MODULE_DEVICE_TABLE(of, mtk_cec_of_ids);
+>   
+>   struct platform_driver mtk_cec_driver = {
+>   	.probe = mtk_cec_probe,
+> -	.remove = mtk_cec_remove,
+> +	.remove_new = mtk_cec_remove,
+>   	.driver = {
+>   		.name = "mediatek-cec",
+>   		.of_match_table = mtk_cec_of_ids,
 
