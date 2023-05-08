@@ -4,86 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25DB6C77B73
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 May 2023 09:19:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B043C7EE23
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 May 2023 10:42:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uWWILWKzQK6TMLDhFStYmh9cgs1Ee4AfC8VZ2A5psHc=; b=xCQvjA0SHMLTVtZhxwxW4J+TmD
-	hF443VpVPM1wnnQDjm1KJtDWp9Nvvbi5rEeCuTycpnxedlGi/nXP7+nGOE4eb4guyC9SFQeClCgG4
-	NCDp1jJ7G9BzaCMCUbCnonH0ponRgxPqigfIf1HLjtgGIdaWvQnTyAskPQqZ/sf3U8XVblj2c/FoZ
-	qGQoW9TquJBPmsFSEhXBPDPwoVTm9JtxWG5o8T93Q6oieHKODo/XV2zzFvqKW+/rJf3KDsh/Ve4Rt
-	02uxYonjmYfpeR7jVzTND0tj0sB8K2RpiRn4Mlng1/uBNtVV7J2Ou/ULao+chY8HGFLEsQi3JK2CD
-	FJ+kdOpA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tohrB2Y7al5F8tn8nVTt7scOOUIHQ0QXSm233n2s7j8=; b=rx5VjfFeJuDhKIrPNMAyWj60UH
+	n7yA3Qek7CHxDWsQ/3ntV/NXxCH2ZbMnttifHxmAmCpjZY4S8rlhbcgr/MmZWZuJ+lgiuTOPz6yfs
+	tRmh0ORO9tIO+eHwOEOBE9A4jn3c3I5bOGJOh1MahKUKQw3mNpTV0xGt/WtztsHB6R7w+tP1l/XO1
+	kvuQrmI5hFyp8ubXGCh6rpQsodu1TidpqsvkWqDR89GfNuWj8f2Bsxgbh1fb2lF3dLabpGK/yTDCZ
+	Uv0N+d+vDrTdfd8G0A8dYagE+BOePbPA1W55DdV+LcjE7IYNfhC0L6xNJ5wygoaTJ4++t00UUQ4xt
+	Ku8GUDRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pvx1u-0004LP-3A;
-	Mon, 08 May 2023 09:19:38 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1pvyJv-000KMN-1h;
+	Mon, 08 May 2023 10:42:19 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pvx1s-0004Jr-0i
-	for linux-mediatek@lists.infradead.org;
-	Mon, 08 May 2023 09:19:37 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-3f4000ec74aso28141885e9.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 08 May 2023 02:19:34 -0700 (PDT)
+	id 1pvyJs-000KK4-37;
+	Mon, 08 May 2023 10:42:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=tohrB2Y7al5F8tn8nVTt7scOOUIHQ0QXSm233n2s7j8=; b=gnFK0/fh8sMRNdVNxexyPIs+T7
+	ud473nRxcEgx7OYiJO8JSGnh1SsV0ZNN/J8OkfAlcIQsSD4T1t2ZYU/wM0OvCcy/wWsMaaK51zY/R
+	QxIn1H2GiLreyqQJdm+yurts0Tnn/yLv9muSXQHFZsTrOZB0Oxu6vRslNc0UAgGe82wCJmp2DPpXG
+	+v7Ftj8RgumDSDfR6c9PW3y5YxOlbk0iiIkp0SMyPSqYM6ZxVH4AigCJtysEd1JgNOUkiXMCIzZQI
+	Qwlv5x/0PQsp5pHv8TkJTw52UeQ9m2nLAvsvpwBvYJsp0VuzYoJXRGteXGDfozUpxiL/8RtwDrDKm
+	4AHq2p+w==;
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pvwCl-005640-2Q;
+	Mon, 08 May 2023 08:26:50 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-3f19ab994ccso42436895e9.2;
+        Mon, 08 May 2023 01:26:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1683537573; x=1686129573;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=uWWILWKzQK6TMLDhFStYmh9cgs1Ee4AfC8VZ2A5psHc=;
-        b=zepka+QR+g/2xC9xN6lho0mYqW/9c/L93qnP3uJb2MyRmy9d+Cix6FiXrtP7oMPort
-         jZM47KGJjHKNycjsX95yz0C6HWzXC1YswWDe90EjWVIR7MrXaCf0acLM2EN+P8SNKwWn
-         u10IVWwREvgDIHQ8n2HELQiim3Ao/auzrxoWzJVmVBrpIwCE17MpSksetf+8/vpZm+z3
-         O9MgFINHFH96Wg87vpjYCLChliuB/obYki61cb5Df1zeqTbRx5CYkBo8avtu0J4Uwl1/
-         pFIrQhxPmpVJLtU0sfJrlSzNy/FlBJ5H17WS2D3pWdWN4HO6AUhl2dM+QLKRXziskJcG
-         sRfg==
+        d=gmail.com; s=20221208; t=1683534391; x=1686126391;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=tohrB2Y7al5F8tn8nVTt7scOOUIHQ0QXSm233n2s7j8=;
+        b=Bfmg+cqyUuvKMuizIfJkhnr5tCHjpn1bziD8E58PNKm+Vkfywnp2PIPTLbS+s5hS4t
+         Dy2m74YW72Wy29k0EVaIIlI3UWUneVZC2OUQInpUCDy3SW3RDJP6bwV2zvEci11ZuP9O
+         XLMTGBfYdsNwhXa3ufoxSHK/p/Qjsht3pnPfV5Z1I2otizMS5f4vhPR3oe4X9No5Eml2
+         Tp2VJpEto8AYlC3SNTablVdYdMv1EzIducnnq500dMrxgzcldEu4gUlRn/rwNsQOVd8T
+         FFKhGVo+heggb/5QbfVZOPLwsWl6O8iUTz2Ht/mFIg5HBZm9FO9J+iqfVZUKIMzzbMHb
+         BpJw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683537573; x=1686129573;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=uWWILWKzQK6TMLDhFStYmh9cgs1Ee4AfC8VZ2A5psHc=;
-        b=kNx2V8D0Slq4zEQB4QrK8QTgpVGRwgRvXF1fsmDC0qZyxSTnVlcnPnrPn1C+xbLphW
-         cidQckR8tx2LORN2eb1NIX+sX6Nt/M19qYwQAuQGijp1B0wWF4UCCCMMG3QoQD3BN9XK
-         DdnUdCv3gDHRSzCdLm6sTAiODFg5gk0One0UuQvrSCDmU4BZodLkayFixWxzQeTQT1Rv
-         kAwPvt2o9unYSc5elxOMsC91A0SdYM/jUh3UZAWVhDxxg+KSA27ePruJoUkSxQqrlHfO
-         JwY6ISMDcDsmpbhYuptR/atQrrRkk68XMfJSq0oDPe0Ua7sTr4RF28sE3Rxz4Iz8rr6E
-         OdxQ==
-X-Gm-Message-State: AC+VfDxGnMbgow6IPqhK2G2o09JfATubMreeP81eqUGVRXDaOwaAShkT
-	qxrN7sNa+9F78quysqYHfnEisQ==
-X-Google-Smtp-Source: ACHHUZ6FNnM/7T0TwX1UpEkyd2q2m5u8rebE8CJQsnenV2MO71Oov6aqiwILhEKTK5XhBe09hMae+g==
-X-Received: by 2002:a1c:4c04:0:b0:3f4:2148:e8c5 with SMTP id z4-20020a1c4c04000000b003f42148e8c5mr3393758wmf.1.1683537573557;
-        Mon, 08 May 2023 02:19:33 -0700 (PDT)
-Received: from blmsp ([2001:4090:a246:80f3:ef71:25ff:df82:9cc9])
-        by smtp.gmail.com with ESMTPSA id o23-20020a05600c511700b003f07ef4e3e0sm19806283wms.0.2023.05.08.02.19.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 08 May 2023 02:19:33 -0700 (PDT)
-Date: Mon, 8 May 2023 11:19:31 +0200
-From: Markus Schneider-Pargmann <msp@baylibre.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
-	wenst@chromium.org, chun-jie.chen@mediatek.com,
-	mandyjh.liu@mediatek.com, miles.chen@mediatek.com,
-	zhaojh329@gmail.com, daniel@makrotopia.org, nfraprado@collabora.com,
-	rex-bc.chen@mediatek.com, Garmin.Chang@mediatek.com,
-	yangyingliang@huawei.com, linux-clk@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH 2/2] clk: mediatek: Remove CLK_SET_PARENT from all MSDC
- core clocks
-Message-ID: <20230508091931.yznppzp2ohham5ek@blmsp>
-References: <20230505093733.221922-1-angelogioacchino.delregno@collabora.com>
- <20230505093733.221922-3-angelogioacchino.delregno@collabora.com>
+        d=1e100.net; s=20221208; t=1683534391; x=1686126391;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=tohrB2Y7al5F8tn8nVTt7scOOUIHQ0QXSm233n2s7j8=;
+        b=POrqB5CBK+H3ZMOvzCCxnqG0fgOxuDq3vNh7Nc4YmFtZTaiu/LJ8RluefGcXlffJjL
+         sqouePaVpMztyNyfs0kZADK4F2KAiBx5fPPMrtmkLhB9iYx6aWilqpPVdtN9YUG58nNd
+         FUeSBFpxH0fPdWavxN4UY1JSDBYbNwTH8JaPUidvo7CaEv+NsbWAgY0DInJ7zBgSjUD5
+         57xjQMbDqAF8wPOIT0atC9AEFkH3weQwyQlnCt7oWdsK000dFe4sfqd0nwIIQKfoOEGV
+         SXeDHgcXn11SaclC9NzqE/qNQupGjQvU/vIDTvOhC97wyEfVP0bcVZFmVBeDU1DbT6eq
+         WzZw==
+X-Gm-Message-State: AC+VfDydQ855+WYxDsrff7e/vxYOanGFtEWNblxkkEe9JblDkqq8I1bh
+	9i9O8+HocRWv0bgPK5I70KE=
+X-Google-Smtp-Source: ACHHUZ78m7U66nWTsi+LZgCFMAcFkosmhFra1f0yMEd6UMwthKG/lpDHGyzDIvdEm9lGMxMNh/QdHQ==
+X-Received: by 2002:a1c:ed03:0:b0:3f1:9526:22da with SMTP id l3-20020a1ced03000000b003f1952622damr6578891wmh.22.1683534390843;
+        Mon, 08 May 2023 01:26:30 -0700 (PDT)
+Received: from [192.168.2.177] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id k1-20020a05600c1c8100b003f4283f5c1bsm922144wms.2.2023.05.08.01.26.17
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 08 May 2023 01:26:29 -0700 (PDT)
+Message-ID: <b43f965b-006a-fc16-c2e9-367be8993ee0@gmail.com>
+Date: Mon, 8 May 2023 10:26:08 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20230505093733.221922-3-angelogioacchino.delregno@collabora.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH 29/53] drm/mediatek: Convert to platform remove callback
+ returning void
+Content-Language: en-US, ca-ES, es-ES
+To: =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ kernel@pengutronix.de, linux-arm-kernel@lists.infradead.org
+References: <20230507162616.1368908-1-u.kleine-koenig@pengutronix.de>
+ <20230507162616.1368908-30-u.kleine-koenig@pengutronix.de>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20230507162616.1368908-30-u.kleine-koenig@pengutronix.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230508_021936_254224_2C388B99 
-X-CRM114-Status: GOOD (  12.41  )
+X-CRM114-CacheID: sfid-20230508_092647_932591_71A9980E 
+X-CRM114-Status: GOOD (  25.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,35 +113,427 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo,
 
-On Fri, May 05, 2023 at 11:37:33AM +0200, AngeloGioacchino Del Regno wrote:
-> Various MSDC core clocks, used for multiple MSDC controller instances,
-> share the same parent(s): in order to add parents selection in the
-> mtk-sd driver to achieve an accurate clock rate for all modes, remove
-> the CLK_SET_RATE_PARENT flag from all MSDC clocks for all SoCs: this
-> will make sure that a clk_set_rate() call performed for a clock on
-> a secondary controller will not change the rate of a common parent,
-> which would result in an overclock or underclock of one of the
-> controllers.
+
+On 07/05/2023 18:25, Uwe Kleine-König wrote:
+> The .remove() callback for a platform driver returns an int which makes
+> many driver authors wrongly assume it's possible to do error handling by
+> returning an error code. However the value returned is (mostly) ignored
+> and this typically results in resource leaks. To improve here there is a
+> quest to make the remove callback return void. In the first step of this
+> quest all drivers are converted to .remove_new() which already returns
+> void.
 > 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Trivially convert the mediatek drm drivers from always returning zero in
+> the remove callback to the void returning variant.
+> 
+> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
 > ---
->  drivers/clk/mediatek/clk-mt6765.c          | 12 +++++------
->  drivers/clk/mediatek/clk-mt6779.c          | 18 ++++++++--------
->  drivers/clk/mediatek/clk-mt7981-topckgen.c | 12 +++++------
->  drivers/clk/mediatek/clk-mt7986-topckgen.c | 12 +++++------
->  drivers/clk/mediatek/clk-mt8173-topckgen.c | 24 +++++++++++-----------
->  drivers/clk/mediatek/clk-mt8183.c          | 16 +++++++--------
->  drivers/clk/mediatek/clk-mt8186-topckgen.c | 12 +++++------
->  drivers/clk/mediatek/clk-mt8188-topckgen.c | 16 +++++++--------
->  drivers/clk/mediatek/clk-mt8192.c          | 17 +++++++--------
->  drivers/clk/mediatek/clk-mt8195-topckgen.c | 16 +++++++--------
-
-This is missing clk-mt8365.c as well. Otherwise looks good to me:
-
-Reviewed-by: Markus Schneider-Pargmann <msp@baylibre.com>
-
-Best,
-Markus
+>   drivers/gpu/drm/mediatek/mtk_disp_aal.c   | 6 ++----
+>   drivers/gpu/drm/mediatek/mtk_disp_ccorr.c | 6 ++----
+>   drivers/gpu/drm/mediatek/mtk_disp_color.c | 6 ++----
+>   drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 6 ++----
+>   drivers/gpu/drm/mediatek/mtk_disp_merge.c | 6 ++----
+>   drivers/gpu/drm/mediatek/mtk_disp_ovl.c   | 6 ++----
+>   drivers/gpu/drm/mediatek/mtk_disp_rdma.c  | 6 ++----
+>   drivers/gpu/drm/mediatek/mtk_dp.c         | 6 ++----
+>   drivers/gpu/drm/mediatek/mtk_dpi.c        | 6 ++----
+>   drivers/gpu/drm/mediatek/mtk_drm_drv.c    | 6 ++----
+>   drivers/gpu/drm/mediatek/mtk_dsi.c        | 6 ++----
+>   drivers/gpu/drm/mediatek/mtk_hdmi.c       | 5 ++---
+>   drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c   | 6 ++----
+>   drivers/gpu/drm/mediatek/mtk_mdp_rdma.c   | 5 ++---
+>   14 files changed, 28 insertions(+), 54 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_aal.c b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+> index 434e8a9ce8ab..cbd9b4becc43 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+> @@ -140,11 +140,9 @@ static int mtk_disp_aal_probe(struct platform_device *pdev)
+>   	return ret;
+>   }
+>   
+> -static int mtk_disp_aal_remove(struct platform_device *pdev)
+> +static void mtk_disp_aal_remove(struct platform_device *pdev)
+>   {
+>   	component_del(&pdev->dev, &mtk_disp_aal_component_ops);
+> -
+> -	return 0;
+>   }
+>   
+>   static const struct mtk_disp_aal_data mt8173_aal_driver_data = {
+> @@ -161,7 +159,7 @@ MODULE_DEVICE_TABLE(of, mtk_disp_aal_driver_dt_match);
+>   
+>   struct platform_driver mtk_disp_aal_driver = {
+>   	.probe		= mtk_disp_aal_probe,
+> -	.remove		= mtk_disp_aal_remove,
+> +	.remove_new	= mtk_disp_aal_remove,
+>   	.driver		= {
+>   		.name	= "mediatek-disp-aal",
+>   		.owner	= THIS_MODULE,
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
+> index 1773379b2439..fa6dbc4e9c35 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
+> @@ -195,11 +195,9 @@ static int mtk_disp_ccorr_probe(struct platform_device *pdev)
+>   	return ret;
+>   }
+>   
+> -static int mtk_disp_ccorr_remove(struct platform_device *pdev)
+> +static void mtk_disp_ccorr_remove(struct platform_device *pdev)
+>   {
+>   	component_del(&pdev->dev, &mtk_disp_ccorr_component_ops);
+> -
+> -	return 0;
+>   }
+>   
+>   static const struct mtk_disp_ccorr_data mt8183_ccorr_driver_data = {
+> @@ -221,7 +219,7 @@ MODULE_DEVICE_TABLE(of, mtk_disp_ccorr_driver_dt_match);
+>   
+>   struct platform_driver mtk_disp_ccorr_driver = {
+>   	.probe		= mtk_disp_ccorr_probe,
+> -	.remove		= mtk_disp_ccorr_remove,
+> +	.remove_new	= mtk_disp_ccorr_remove,
+>   	.driver		= {
+>   		.name	= "mediatek-disp-ccorr",
+>   		.owner	= THIS_MODULE,
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_color.c b/drivers/gpu/drm/mediatek/mtk_disp_color.c
+> index cac9206079e7..78e44e6befd6 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_color.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_color.c
+> @@ -132,11 +132,9 @@ static int mtk_disp_color_probe(struct platform_device *pdev)
+>   	return ret;
+>   }
+>   
+> -static int mtk_disp_color_remove(struct platform_device *pdev)
+> +static void mtk_disp_color_remove(struct platform_device *pdev)
+>   {
+>   	component_del(&pdev->dev, &mtk_disp_color_component_ops);
+> -
+> -	return 0;
+>   }
+>   
+>   static const struct mtk_disp_color_data mt2701_color_driver_data = {
+> @@ -164,7 +162,7 @@ MODULE_DEVICE_TABLE(of, mtk_disp_color_driver_dt_match);
+>   
+>   struct platform_driver mtk_disp_color_driver = {
+>   	.probe		= mtk_disp_color_probe,
+> -	.remove		= mtk_disp_color_remove,
+> +	.remove_new	= mtk_disp_color_remove,
+>   	.driver		= {
+>   		.name	= "mediatek-disp-color",
+>   		.owner	= THIS_MODULE,
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> index c844942603f7..c5237f4eb7fe 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> @@ -183,11 +183,9 @@ static int mtk_disp_gamma_probe(struct platform_device *pdev)
+>   	return ret;
+>   }
+>   
+> -static int mtk_disp_gamma_remove(struct platform_device *pdev)
+> +static void mtk_disp_gamma_remove(struct platform_device *pdev)
+>   {
+>   	component_del(&pdev->dev, &mtk_disp_gamma_component_ops);
+> -
+> -	return 0;
+>   }
+>   
+>   static const struct mtk_disp_gamma_data mt8173_gamma_driver_data = {
+> @@ -209,7 +207,7 @@ MODULE_DEVICE_TABLE(of, mtk_disp_gamma_driver_dt_match);
+>   
+>   struct platform_driver mtk_disp_gamma_driver = {
+>   	.probe		= mtk_disp_gamma_probe,
+> -	.remove		= mtk_disp_gamma_remove,
+> +	.remove_new	= mtk_disp_gamma_remove,
+>   	.driver		= {
+>   		.name	= "mediatek-disp-gamma",
+>   		.owner	= THIS_MODULE,
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_merge.c b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
+> index 6428b6203ffe..fd14a59bc951 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_merge.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
+> @@ -295,11 +295,9 @@ static int mtk_disp_merge_probe(struct platform_device *pdev)
+>   	return ret;
+>   }
+>   
+> -static int mtk_disp_merge_remove(struct platform_device *pdev)
+> +static void mtk_disp_merge_remove(struct platform_device *pdev)
+>   {
+>   	component_del(&pdev->dev, &mtk_disp_merge_component_ops);
+> -
+> -	return 0;
+>   }
+>   
+>   static const struct of_device_id mtk_disp_merge_driver_dt_match[] = {
+> @@ -311,7 +309,7 @@ MODULE_DEVICE_TABLE(of, mtk_disp_merge_driver_dt_match);
+>   
+>   struct platform_driver mtk_disp_merge_driver = {
+>   	.probe = mtk_disp_merge_probe,
+> -	.remove = mtk_disp_merge_remove,
+> +	.remove_new = mtk_disp_merge_remove,
+>   	.driver = {
+>   		.name = "mediatek-disp-merge",
+>   		.owner = THIS_MODULE,
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> index 9d8c986700ee..f90ad9bce028 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> @@ -483,12 +483,10 @@ static int mtk_disp_ovl_probe(struct platform_device *pdev)
+>   	return ret;
+>   }
+>   
+> -static int mtk_disp_ovl_remove(struct platform_device *pdev)
+> +static void mtk_disp_ovl_remove(struct platform_device *pdev)
+>   {
+>   	component_del(&pdev->dev, &mtk_disp_ovl_component_ops);
+>   	pm_runtime_disable(&pdev->dev);
+> -
+> -	return 0;
+>   }
+>   
+>   static const struct mtk_disp_ovl_data mt2701_ovl_driver_data = {
+> @@ -565,7 +563,7 @@ MODULE_DEVICE_TABLE(of, mtk_disp_ovl_driver_dt_match);
+>   
+>   struct platform_driver mtk_disp_ovl_driver = {
+>   	.probe		= mtk_disp_ovl_probe,
+> -	.remove		= mtk_disp_ovl_remove,
+> +	.remove_new	= mtk_disp_ovl_remove,
+>   	.driver		= {
+>   		.name	= "mediatek-disp-ovl",
+>   		.owner	= THIS_MODULE,
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+> index a5a0c3bac35d..49149d67bb0e 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+> @@ -350,13 +350,11 @@ static int mtk_disp_rdma_probe(struct platform_device *pdev)
+>   	return ret;
+>   }
+>   
+> -static int mtk_disp_rdma_remove(struct platform_device *pdev)
+> +static void mtk_disp_rdma_remove(struct platform_device *pdev)
+>   {
+>   	component_del(&pdev->dev, &mtk_disp_rdma_component_ops);
+>   
+>   	pm_runtime_disable(&pdev->dev);
+> -
+> -	return 0;
+>   }
+>   
+>   static const struct mtk_disp_rdma_data mt2701_rdma_driver_data = {
+> @@ -390,7 +388,7 @@ MODULE_DEVICE_TABLE(of, mtk_disp_rdma_driver_dt_match);
+>   
+>   struct platform_driver mtk_disp_rdma_driver = {
+>   	.probe		= mtk_disp_rdma_probe,
+> -	.remove		= mtk_disp_rdma_remove,
+> +	.remove_new	= mtk_disp_rdma_remove,
+>   	.driver		= {
+>   		.name	= "mediatek-disp-rdma",
+>   		.owner	= THIS_MODULE,
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
+> index 1f94fcc144d3..6352ee412045 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dp.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+> @@ -2575,7 +2575,7 @@ static int mtk_dp_probe(struct platform_device *pdev)
+>   	return 0;
+>   }
+>   
+> -static int mtk_dp_remove(struct platform_device *pdev)
+> +static void mtk_dp_remove(struct platform_device *pdev)
+>   {
+>   	struct mtk_dp *mtk_dp = platform_get_drvdata(pdev);
+>   
+> @@ -2586,8 +2586,6 @@ static int mtk_dp_remove(struct platform_device *pdev)
+>   	platform_device_unregister(mtk_dp->phy_dev);
+>   	if (mtk_dp->audio_pdev)
+>   		platform_device_unregister(mtk_dp->audio_pdev);
+> -
+> -	return 0;
+>   }
+>   
+>   #ifdef CONFIG_PM_SLEEP
+> @@ -2646,7 +2644,7 @@ MODULE_DEVICE_TABLE(of, mtk_dp_of_match);
+>   
+>   static struct platform_driver mtk_dp_driver = {
+>   	.probe = mtk_dp_probe,
+> -	.remove = mtk_dp_remove,
+> +	.remove_new = mtk_dp_remove,
+>   	.driver = {
+>   		.name = "mediatek-drm-dp",
+>   		.of_match_table = mtk_dp_of_match,
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> index 948a53f1f4b3..ed3cbb202b7a 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> @@ -1102,14 +1102,12 @@ static int mtk_dpi_probe(struct platform_device *pdev)
+>   	return 0;
+>   }
+>   
+> -static int mtk_dpi_remove(struct platform_device *pdev)
+> +static void mtk_dpi_remove(struct platform_device *pdev)
+>   {
+>   	struct mtk_dpi *dpi = platform_get_drvdata(pdev);
+>   
+>   	component_del(&pdev->dev, &mtk_dpi_component_ops);
+>   	drm_bridge_remove(&dpi->bridge);
+> -
+> -	return 0;
+>   }
+>   
+>   static const struct of_device_id mtk_dpi_of_ids[] = {
+> @@ -1140,7 +1138,7 @@ MODULE_DEVICE_TABLE(of, mtk_dpi_of_ids);
+>   
+>   struct platform_driver mtk_dpi_driver = {
+>   	.probe = mtk_dpi_probe,
+> -	.remove = mtk_dpi_remove,
+> +	.remove_new = mtk_dpi_remove,
+>   	.driver = {
+>   		.name = "mediatek-dpi",
+>   		.of_match_table = mtk_dpi_of_ids,
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> index a13b36ac03a1..b951ad494f7d 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> @@ -826,7 +826,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
+>   	return ret;
+>   }
+>   
+> -static int mtk_drm_remove(struct platform_device *pdev)
+> +static void mtk_drm_remove(struct platform_device *pdev)
+>   {
+>   	struct mtk_drm_private *private = platform_get_drvdata(pdev);
+>   	int i;
+> @@ -836,8 +836,6 @@ static int mtk_drm_remove(struct platform_device *pdev)
+>   	of_node_put(private->mutex_node);
+>   	for (i = 0; i < DDP_COMPONENT_ID_MAX; i++)
+>   		of_node_put(private->comp_node[i]);
+> -
+> -	return 0;
+>   }
+>   
+>   static int mtk_drm_sys_prepare(struct device *dev)
+> @@ -866,7 +864,7 @@ static const struct dev_pm_ops mtk_drm_pm_ops = {
+>   
+>   static struct platform_driver mtk_drm_platform_driver = {
+>   	.probe	= mtk_drm_probe,
+> -	.remove	= mtk_drm_remove,
+> +	.remove_new = mtk_drm_remove,
+>   	.driver	= {
+>   		.name	= "mediatek-drm",
+>   		.pm     = &mtk_drm_pm_ops,
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> index 7d5250351193..d8bfc2cce54d 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -1178,14 +1178,12 @@ static int mtk_dsi_probe(struct platform_device *pdev)
+>   	return ret;
+>   }
+>   
+> -static int mtk_dsi_remove(struct platform_device *pdev)
+> +static void mtk_dsi_remove(struct platform_device *pdev)
+>   {
+>   	struct mtk_dsi *dsi = platform_get_drvdata(pdev);
+>   
+>   	mtk_output_dsi_disable(dsi);
+>   	mipi_dsi_host_unregister(&dsi->host);
+> -
+> -	return 0;
+>   }
+>   
+>   static const struct mtk_dsi_driver_data mt8173_dsi_driver_data = {
+> @@ -1223,7 +1221,7 @@ MODULE_DEVICE_TABLE(of, mtk_dsi_of_match);
+>   
+>   struct platform_driver mtk_dsi_driver = {
+>   	.probe = mtk_dsi_probe,
+> -	.remove = mtk_dsi_remove,
+> +	.remove_new = mtk_dsi_remove,
+>   	.driver = {
+>   		.name = "mtk-dsi",
+>   		.of_match_table = mtk_dsi_of_match,
+> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+> index 0a8e0a13f516..86133bf16326 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+> @@ -1746,13 +1746,12 @@ static int mtk_drm_hdmi_probe(struct platform_device *pdev)
+>   	return ret;
+>   }
+>   
+> -static int mtk_drm_hdmi_remove(struct platform_device *pdev)
+> +static void mtk_drm_hdmi_remove(struct platform_device *pdev)
+>   {
+>   	struct mtk_hdmi *hdmi = platform_get_drvdata(pdev);
+>   
+>   	drm_bridge_remove(&hdmi->bridge);
+>   	mtk_hdmi_clk_disable_audio(hdmi);
+> -	return 0;
+>   }
+>   
+>   #ifdef CONFIG_PM_SLEEP
+> @@ -1806,7 +1805,7 @@ MODULE_DEVICE_TABLE(of, mtk_drm_hdmi_of_ids);
+>   
+>   static struct platform_driver mtk_hdmi_driver = {
+>   	.probe = mtk_drm_hdmi_probe,
+> -	.remove = mtk_drm_hdmi_remove,
+> +	.remove_new = mtk_drm_hdmi_remove,
+>   	.driver = {
+>   		.name = "mediatek-drm-hdmi",
+>   		.of_match_table = mtk_drm_hdmi_of_ids,
+> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c b/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c
+> index 2fc9214ffa82..63d3d5ba31f1 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c
+> @@ -324,14 +324,12 @@ static int mtk_hdmi_ddc_probe(struct platform_device *pdev)
+>   	return ret;
+>   }
+>   
+> -static int mtk_hdmi_ddc_remove(struct platform_device *pdev)
+> +static void mtk_hdmi_ddc_remove(struct platform_device *pdev)
+>   {
+>   	struct mtk_hdmi_ddc *ddc = platform_get_drvdata(pdev);
+>   
+>   	i2c_del_adapter(&ddc->adap);
+>   	clk_disable_unprepare(ddc->clk);
+> -
+> -	return 0;
+>   }
+>   
+>   static const struct of_device_id mtk_hdmi_ddc_match[] = {
+> @@ -342,7 +340,7 @@ MODULE_DEVICE_TABLE(of, mtk_hdmi_ddc_match);
+>   
+>   struct platform_driver mtk_hdmi_ddc_driver = {
+>   	.probe = mtk_hdmi_ddc_probe,
+> -	.remove = mtk_hdmi_ddc_remove,
+> +	.remove_new = mtk_hdmi_ddc_remove,
+>   	.driver = {
+>   		.name = "mediatek-hdmi-ddc",
+>   		.of_match_table = mtk_hdmi_ddc_match,
+> diff --git a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
+> index eecfa98ff52e..11bb6ca8cc8f 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
+> @@ -291,11 +291,10 @@ static int mtk_mdp_rdma_probe(struct platform_device *pdev)
+>   	return ret;
+>   }
+>   
+> -static int mtk_mdp_rdma_remove(struct platform_device *pdev)
+> +static void mtk_mdp_rdma_remove(struct platform_device *pdev)
+>   {
+>   	component_del(&pdev->dev, &mtk_mdp_rdma_component_ops);
+>   	pm_runtime_disable(&pdev->dev);
+> -	return 0;
+>   }
+>   
+>   static const struct of_device_id mtk_mdp_rdma_driver_dt_match[] = {
+> @@ -306,7 +305,7 @@ MODULE_DEVICE_TABLE(of, mtk_mdp_rdma_driver_dt_match);
+>   
+>   struct platform_driver mtk_mdp_rdma_driver = {
+>   	.probe = mtk_mdp_rdma_probe,
+> -	.remove = mtk_mdp_rdma_remove,
+> +	.remove_new = mtk_mdp_rdma_remove,
+>   	.driver = {
+>   		.name = "mediatek-mdp-rdma",
+>   		.owner = THIS_MODULE,
 
