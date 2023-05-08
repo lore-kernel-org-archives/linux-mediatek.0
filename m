@@ -4,62 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D95CC77B75
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 May 2023 12:15:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AA14C7EE22
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 May 2023 14:27:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:Message-ID:In-Reply-To:Subject:cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZwIMXRuES2XSnRGW5u6aMt/UwVSYJump/WpCRzaAaMo=; b=pxddAp88KSt1jw/CigTkETd1tn
-	bQLrmNy90foV4ffbD/5suILkFEcI1MaPwT3Rrbks16QJcvMb2+CSv24+a46OXrguH2Fhhaovz3fsv
-	jwXplMvJ6bljsdnrSipM+0QGVWlK+B17q5XprBeTIvbU/rI64XvO2JRhZ6QiOyRrjifgC019U70Rw
-	xSFxRqSbrBDa6bcCvzUcU5nLB1dvOsv0td6X1ohPd/VbjS8FFGQqsZh6BSq/erKDQAQyu4RQQCre7
-	Ym4kYy2oe7o8itywtBmbLcMTmAgVywgRGagewEOqAni3+IAnNgF4iZ9pDHxEsUqfXp2yaTqwW4XS6
-	bkedwbZw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=xrW0pebbkbug7qyOiB/iuGQzjIkQyhdxPiksFCtXNIY=; b=mha+AzmO6KiXDFFGXEw5gYOmdf
+	rDVU3/NkziwZ+r2fO2v2wk3/AhVZUbvfctgXG+wDh+1f/jwtITfXGZ6bdrOhiDYBQoEypRqqfaCMo
+	2DktC8NFfi9AVbKnbWyBZAasKxdu/ll4CPLVPDCB5Dk1wC4c8KISE+ChI9QdGeIVPY2I3VWTfPKBl
+	aTSc7BLyKrFajYPYH7RSyDmTsYPfGfvgEJ+JpjxUjyk0natjlp22Dg9BkvE2Jo+H8C/HYuaIas3zi
+	Ek1qUrtUlxxUmEkTOXaTVI9b8YCmAO8qIiq42hv0WA1oJwuDKkYVPhC2pY0w7lcSQQu0p1c5hDFGj
+	8eL9/nQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pvzlY-000Uaw-2x;
-	Mon, 08 May 2023 12:14:56 +0000
-Received: from albert.telenet-ops.be ([2a02:1800:110:4::f00:1a])
+	id 1pw1pp-000jwK-0h;
+	Mon, 08 May 2023 14:27:29 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pvzlU-000UXv-2m
+	id 1pw1pm-000jtn-2d
 	for linux-mediatek@lists.infradead.org;
-	Mon, 08 May 2023 12:14:54 +0000
-Received: from ramsan.of.borg ([IPv6:2a02:1810:ac12:ed30:6a18:41e7:fcfe:24c0])
-	by albert.telenet-ops.be with bizsmtp
-	id uCEY2900F2WBekD06CEYzh; Mon, 08 May 2023 14:14:43 +0200
-Received: from geert (helo=localhost)
-	by ramsan.of.borg with local-esmtp (Exim 4.95)
-	(envelope-from <geert@linux-m68k.org>)
-	id 1pvzlA-001VjV-5u;
-	Mon, 08 May 2023 14:14:32 +0200
-Date: Mon, 8 May 2023 14:14:32 +0200 (CEST)
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-To: linux-kernel@vger.kernel.org
-cc: Mauro Carvalho Chehab <mchehab@kernel.org>, 
-    Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
-    Tudor Ambarus <tudor.ambarus@linaro.org>, 
-    Pratyush Yadav <pratyush@kernel.org>, Richard Weinberger <richard@nod.at>, 
-    Anton Ivanov <anton.ivanov@cambridgegreys.com>, 
-    Johannes Berg <johannes@sipsolutions.net>, 
-    "Darrick J. Wong" <djwong@kernel.org>, 
-    Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-    Philipp Zabel <p.zabel@pengutronix.de>, 
-    "David S. Miller" <davem@davemloft.net>, linux-um@lists.infradead.org, 
-    linux-media@vger.kernel.org, linux-mtd@lists.infradead.org, 
-    linux-xfs@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-    linux-phy@lists.infradead.org, sparclinux@vger.kernel.org
-Subject: Re: Build regressions/improvements in v6.4-rc1
-In-Reply-To: <20230508115727.2597864-1-geert@linux-m68k.org>
-Message-ID: <749c2fc2-93dc-585-3826-dea581602d6e@linux-m68k.org>
-References: <CAHk-=wiUxm-NZ1si8dXWVTTJ9n3c+1SRTC0V+Lk7hOE4bDVwJQ@mail.gmail.com> <20230508115727.2597864-1-geert@linux-m68k.org>
+	Mon, 08 May 2023 14:27:28 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1pw1pB-0008Nm-Te; Mon, 08 May 2023 16:26:49 +0200
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1pw1p2-0021Gd-S8; Mon, 08 May 2023 16:26:40 +0200
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1pw1p2-002Sk4-6B; Mon, 08 May 2023 16:26:40 +0200
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Jose Abreu <joabreu@synopsys.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Vladimir Zapolskiy <vz@mleia.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Emil Renner Berthing <kernel@esmil.dk>,
+	Samin Guo <samin.guo@starfivetech.com>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>
+Cc: Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Bhupesh Sharma <bhupesh.sharma@linaro.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-arm-kernel@lists.infradead.org,
+	kernel@pengutronix.de,
+	linux-amlogic@lists.infradead.org,
+	linux-oxnas@groups.io,
+	linux-sunxi@lists.linux.dev,
+	linux-mediatek@lists.infradead.org,
+	linux-tegra@vger.kernel.org
+Subject: [PATCH net-next v2 00/11] net: stmmac: Convert to platform remove callback returning void
+Date: Mon,  8 May 2023 16:26:26 +0200
+Message-Id: <20230508142637.1449363-1-u.kleine-koenig@pengutronix.de>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII; format=flowed
+Content-Type: text/plain; charset=UTF-8
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2991; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=e18Kj38bK3tEm/hSzc46Mes9xzQDcw64Vnd25cb8omc=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBkWQaMhtXiVZEIsYdTMyD+fsTSBXFA2k+fVfb7W Z4wnuQlykSJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZFkGjAAKCRCPgPtYfRL+ TqeRCACo0+Gsv6LM1FIlu9KxZ+EkcpVDZXwiB+Le4QCe34u4Z/sJjN/PGWVm1DJGX3TZAiXg1R6 lE6OXvG4Kp8Ek78HiENVfQtqBMLAsxWlabhUC1S8i9iHY50JOkyM3AxazQOY8jKgllX+YCjNIsd 1ElRgtMImqflj1afHSmN5c0aXV8XRTvC05pHb0G7JHDup/b6z1YLYx4wChYq+u/GJJg/BzO24lo Am9+8bevKXSdcTpE48zAsNXTXHweMxlnojnuXv49mB6LJDhh+SrwSDLeFW4y4Q7RFgljVJ4JHt5 lYzHPUfU7TFnx4J9dEc6QUhnC8E6LC7crHmAiKw2JMXhPWtQ
+X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
+Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230508_051453_037954_C56FDD05 
-X-CRM114-Status: GOOD (  17.15  )
+X-CRM114-CacheID: sfid-20230508_072726_855025_F9C0066E 
+X-CRM114-Status: UNSURE (   9.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,67 +109,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 8 May 2023, Geert Uytterhoeven wrote:
-> Below is the list of build error/warning regressions/improvements in
-> v6.4-rc1[1] compared to v6.3[2].
->
-> Summarized:
->  - build errors: +9/-16
->  - build warnings: +1/-1439
->
-> Happy fixing! ;-)
->
-> Thanks to the linux-next team for providing the build service.
->
-> [1] http://kisskb.ellerman.id.au/kisskb/branch/linus/head/ac9a78681b921877518763ba0e89202254349d1b/ (all 152 configs)
-> [2] http://kisskb.ellerman.id.au/kisskb/branch/linus/head/457391b0380335d5e9a5babdec90ac53928b23b4/ (all 152 configs)
->
->
-> *** ERRORS ***
->
-> 9 error regressions:
->  + /kisskb/src/drivers/media/platform/nxp/imx8-isi/imx8-isi-core.c: error: 'mxc_isi_pm_resume' defined but not used [-Werror=unused-function]:  => 328:12
->  + /kisskb/src/drivers/media/platform/nxp/imx8-isi/imx8-isi-core.c: error: 'mxc_isi_pm_suspend' defined but not used [-Werror=unused-function]:  => 314:12
+Hello,
 
-sparc64-gcc{5,11}/sparc-allmodconfig
-(fix was available before the merge window)
+(implicit) v1 of this series is available at
+https://lore.kernel.org/netdev/20230402143025.2524443-1-u.kleine-koenig@pengutronix.de
+.
 
->  + /kisskb/src/drivers/media/platform/nxp/imx8-isi/imx8-isi-hw.c: error: "CONFIG_ARCH_DMA_ADDR_T_64BIT" is not defined [-Werror=undef]:  => 66:5, 33:5, 51:5
->  + /kisskb/src/drivers/media/platform/nxp/imx8-isi/imx8-isi-hw.c: error: "CONFIG_ARCH_DMA_ADDR_T_64BIT" is not defined, evaluates to 0 [-Werror=undef]:  => 51:5, 66:5, 33:5
+Changes since then:
 
-mips-gcc{8,11}/mips-allmodconfig
-xtensa-gcc11/xtensa-allmodconfig
-powerpc-gcc5/ppc32_allmodconfig
-(fix was available before the merge window)
+ - Added various Reviewed-by: and Acked-by: tags received for v1
+ - Removed a variable in an earlier patch to make all intermediate steps
+   compilable, spotted by Simon Horman
+ - Rebased to v6.4-rc1 (which needed a slight adaption to cope for
+   4bd3bb7b4526 ("net: stmmac: Add glue layer for StarFive JH7110 SoC"))
 
->  + /kisskb/src/drivers/mtd/spi-nor/spansion.c: error: 'op' is used uninitialized [-Werror=uninitialized]:  => 495:27, 364:27
+Best regards
+Uwe
 
-um-x86_64-gcc12/um-allyesconfig
+Uwe Kleine-König (11):
+  net: stmmac: Make stmmac_pltfr_remove() return void
+  net: stmmac: dwmac-visconti: Make visconti_eth_clock_remove() return
+    void
+  net: stmmac: dwmac-qcom-ethqos: Drop an if with an always false
+    condition
+  net: stmmac: dwmac-visconti: Convert to platform remove callback
+    returning void
+  net: stmmac: dwmac-dwc-qos-eth: Convert to platform remove callback
+    returning void
+  net: stmmac: dwmac-qcom-ethqos: Convert to platform remove callback
+    returning void
+  net: stmmac: dwmac-rk: Convert to platform remove callback returning
+    void
+  net: stmmac: dwmac-sti: Convert to platform remove callback returning
+    void
+  net: stmmac: dwmac-stm32: Convert to platform remove callback
+    returning void
+  net: stmmac: dwmac-sun8i: Convert to platform remove callback
+    returning void
+  net: stmmac: dwmac-tegra: Convert to platform remove callback
+    returning void
 
->  + /kisskb/src/fs/xfs/scrub/scrub.h: error: initializer element is not constant:  => 112:28
+ .../ethernet/stmicro/stmmac/dwmac-anarion.c   |  2 +-
+ .../stmicro/stmmac/dwmac-dwc-qos-eth.c        |  6 ++----
+ .../ethernet/stmicro/stmmac/dwmac-generic.c   |  2 +-
+ .../net/ethernet/stmicro/stmmac/dwmac-imx.c   |  2 +-
+ .../ethernet/stmicro/stmmac/dwmac-ingenic.c   |  2 +-
+ .../stmicro/stmmac/dwmac-intel-plat.c         |  9 +++------
+ .../ethernet/stmicro/stmmac/dwmac-ipq806x.c   |  2 +-
+ .../ethernet/stmicro/stmmac/dwmac-lpc18xx.c   |  2 +-
+ .../ethernet/stmicro/stmmac/dwmac-mediatek.c  |  9 +++------
+ .../net/ethernet/stmicro/stmmac/dwmac-meson.c |  2 +-
+ .../ethernet/stmicro/stmmac/dwmac-meson8b.c   |  2 +-
+ .../net/ethernet/stmicro/stmmac/dwmac-oxnas.c |  2 +-
+ .../stmicro/stmmac/dwmac-qcom-ethqos.c        | 15 ++++-----------
+ .../net/ethernet/stmicro/stmmac/dwmac-rk.c    |  6 ++----
+ .../ethernet/stmicro/stmmac/dwmac-socfpga.c   |  2 +-
+ .../ethernet/stmicro/stmmac/dwmac-starfive.c  |  2 +-
+ .../net/ethernet/stmicro/stmmac/dwmac-sti.c   |  6 ++----
+ .../net/ethernet/stmicro/stmmac/dwmac-stm32.c |  6 ++----
+ .../net/ethernet/stmicro/stmmac/dwmac-sun8i.c |  6 ++----
+ .../net/ethernet/stmicro/stmmac/dwmac-sunxi.c |  2 +-
+ .../net/ethernet/stmicro/stmmac/dwmac-tegra.c |  6 ++----
+ .../ethernet/stmicro/stmmac/dwmac-visconti.c  | 19 +++++--------------
+ .../ethernet/stmicro/stmmac/stmmac_platform.c |  4 +---
+ .../ethernet/stmicro/stmmac/stmmac_platform.h |  2 +-
+ 24 files changed, 41 insertions(+), 77 deletions(-)
 
-powerpc-gcc5/ppc64_book3e_allmodconfig
-powerpc-gcc5/powerpc-allmodconfig
-powerpc-gcc5/ppc32_allmodconfig
-powerpc-gcc5/powerpc-allyesconfig
-powerpc-gcc5/ppc64le_allmodconfig
-arm64-gcc5/arm64-allmodconfig
-(fix sent)
+base-commit: ac9a78681b921877518763ba0e89202254349d1b
+-- 
+2.39.2
 
->  + error: modpost: "__floatunsidf" [drivers/phy/mediatek/phy-mtk-hdmi-drv.ko] undefined!:  => N/A
->  + error: modpost: "__gedf2" [drivers/phy/mediatek/phy-mtk-hdmi-drv.ko] undefined!:  => N/A
->  + error: modpost: "__ltdf2" [drivers/phy/mediatek/phy-mtk-hdmi-drv.ko] undefined!:  => N/A
-
-sparc64-gcc5/sparc64-allmodconfig
-
-Gr{oetje,eeting}s,
-
- 						Geert
-
---
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
- 							    -- Linus Torvalds
 
