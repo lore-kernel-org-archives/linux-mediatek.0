@@ -4,78 +4,137 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24569C7EE2D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 May 2023 07:16:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15D58C7EE24
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 May 2023 07:44:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EUCXX3qywTmH1/iTn+Vhans2ufli5Vw7rjPGGMD4pM0=; b=mk3NfMVcjWFclnYPioH3bVZ4fO
-	eAFWEn5Y+0gGApWfXg/g8ROPZvbvuHa3W2WpFfvtnRmpeqEV1AF0thEHseKiwzEN6hSftSr8yGZs1
-	/2OuSH5/qoE+WX7y2kBywnLZQYeEHmKYlNlQIGP548tySzIiF9nQH6rf3B8XBaC1oT5cHTSUxMkpC
-	Kt9WBHCCqPg+Eqp9pz+BdPy/CTzFpkBLHJH2kOqFx7iwss2K40KfvTJeomIP/p/3S+WAbcvM69nNR
-	6MTcSQfvrTNZ5pKBmdzlMFmi0Tbh7T0EqE1+SUVG2c4lxgkM6qfgrmzuShVJpzUoLh6N14swIeq40
-	8n+MsSdw==;
+	bh=xTyz5nV97xIneqlBlI53GwPouhgm51IcTjcORd2Q1zA=; b=SXXuTJqr5YdDKNiWvyVbkdT4yu
+	ZQ3h2CBso6ItGNTl3XI59x6Zn0j1456zx0IuzGjkVe8CzEwJX4eoWoqBd5j41+j6Dgi7du10nt8wb
+	SOYSuqu2mjWDvBoc/Tlto5lVk19/hbVfJQoTRhPjZad5b9LptLeAgM+AaVw2scY920TraQm1azWVq
+	65LONrnGrKdQ/1Bgd0noI+SNsPijLBjZwYpTeKCbJ2RD7CzOiYBtuVfS6arSSuTLR+dbk1bmi5BDS
+	39E4MGGuqXocUA/o182y2KtRQ9hEPx8MRHiXIu+zGDPyqnsTYv74MMwnbEwv2aZ5KegTNXKHE3O8N
+	hRjQZ1eA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pvv65-00HT9l-0j;
-	Mon, 08 May 2023 07:15:49 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pvvXn-00HVcS-36;
+	Mon, 08 May 2023 07:44:27 +0000
+Received: from mail-dbaeur03on20610.outbound.protection.outlook.com ([2a01:111:f400:fe1a::610] helo=EUR03-DBA-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pvv5z-00HT68-33;
-	Mon, 08 May 2023 07:15:45 +0000
-X-UUID: 213e9bbced7011ed912e1518a6540028-20230508
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=EUCXX3qywTmH1/iTn+Vhans2ufli5Vw7rjPGGMD4pM0=;
-	b=Vm8BMLmCyLlWtMy8f/EydN0jina2txEgJxgF8CKZElq0xTaFCQEnZzwZzBD/rNCR93e7EwD45g9kuGEcGZ4bsj26qGVULDnxXNE7IDwB06E8hhsAS/4kCqdIGcrREsCIdcJXXCA7pInGdpwrEiZMZyH7c8bYZcC5FthprtNgN30=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.23,REQID:817b81a4-b0d6-490b-ac91-c104399b2972,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:95
-X-CID-INFO: VERSION:1.1.23,REQID:817b81a4-b0d6-490b-ac91-c104399b2972,IP:0,URL
-	:0,TC:0,Content:-5,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
-	ON:quarantine,TS:95
-X-CID-META: VersionHash:697ab71,CLOUDID:4b55176b-2f20-4998-991c-3b78627e4938,B
-	ulkID:230508151537I2X1F1CE,BulkQuantity:0,Recheck:0,SF:19|48|38|29|28|17,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-	,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: 213e9bbced7011ed912e1518a6540028-20230508
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <trevor.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 677872203; Mon, 08 May 2023 00:15:36 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 8 May 2023 15:15:34 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 8 May 2023 15:15:34 +0800
-From: Trevor Wu <trevor.wu@mediatek.com>
-To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
-	<perex@perex.cz>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>
-CC: <trevor.wu@mediatek.com>, <bicycle.tsai@mediatek.com>,
-	<ting-fang.hou@mediatek.com>, <alsa-devel@alsa-project.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>
-Subject: [PATCH 3/4] ASoC: mediatek: mt6359: add mtkaif gpio setting
-Date: Mon, 8 May 2023 15:15:31 +0800
-Message-ID: <20230508071532.21665-4-trevor.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230508071532.21665-1-trevor.wu@mediatek.com>
-References: <20230508071532.21665-1-trevor.wu@mediatek.com>
+	id 1pvvXl-00HVb5-39;
+	Mon, 08 May 2023 07:44:27 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=LsfwBGQQ/sY/rV6oCJ5xKZxfA9lHBDQL4cro+8dE/F1EtY4ZCSkJbeDwlAE46eCFPGuQh1gsYTd1JHs5lvjliG2jB++KA/3KGM19HekP8aLEvKZz1cRoZ5EtFfeL2qwgyPBe39aG89TN961PUvsdU98oNhLGDbzizCwydpr7PID/k3JYlDOmEZKp4GRs+dUIwL+D545ZjTTbVRTg7to+241sQjYwzBkSuspLB2imGxnczOfLq09YSDJvb4shCpqVj0JYeB9qLzSl63M+AkA0SkHMDoXXd+IbFaOR2aC31Adz+u5OO+ANnu7wobnciJNC5KHgSA8ygj1Lrj4giTPUbQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=xTyz5nV97xIneqlBlI53GwPouhgm51IcTjcORd2Q1zA=;
+ b=T2t9ZcYHrEjrCiDIe7QDnPNy9B+ocP6vLxvcuueY+W1r+dfOJD+RjVUbSkuLJxjo+g4juXDvTN2KenD1K6UpDKq5gmWUeXnitpnx8QMdxnux73UoplBqcGaLZMAHBgR4F11yHC25hO/fRGOIgPYPChwADY1CSgnFhhwc39q885pgoyTAxwK3q4Xs7F322GOz/gN3lxjS5DzlTG8IQ6CKcRIHVRZp0udnAtVKb3oBVsbvwemyfhfzzK/t6M9djMLlnt+KL8mTMA2+pZIIIC7eKrN0DkYxeUQOsTuL9H3Sp9buI6DcGBDSfVnysuwk0xS3U4UPBj0YhuHlUWiTCnSppg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=suse.com; dmarc=pass action=none header.from=suse.com;
+ dkim=pass header.d=suse.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=xTyz5nV97xIneqlBlI53GwPouhgm51IcTjcORd2Q1zA=;
+ b=OPTySp0L7eVzpkLTT/vyJX3NIx9tOl8ESR7bGLXkz5aT3Eku3SudE9lTmab/p82tSWNfTzcB6eC+nJ7y+Uy5nBKVhpC9TChxcKRuvjcZdQYm9XmQUdOt+ReJU2VecIZ3tSqtOh4D/WPIb+4+9wA8NQUi1i6o9iU8SkzQrOZqKptHCUWklLdb92DxpUnsCke5hvF7941e6g65AcPBMLweJ/JMUPzue0pKR4TLiuGWPjwWfs2mJtw9eD5kEfu4z8Y6+2Lx0V2cbHMgOsxKReAKh+R0zZa0MNembgyvIfFqOQsQAuWxmyMFPJuUMDWfWnnuYXGw8ZnDxTREnoEtVIHYXA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=suse.com;
+Received: from VI1PR04MB7104.eurprd04.prod.outlook.com (2603:10a6:800:126::9)
+ by VI1PR04MB6816.eurprd04.prod.outlook.com (2603:10a6:803:12d::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6363.32; Mon, 8 May
+ 2023 07:44:17 +0000
+Received: from VI1PR04MB7104.eurprd04.prod.outlook.com
+ ([fe80::6c14:307b:6fd3:3bfc]) by VI1PR04MB7104.eurprd04.prod.outlook.com
+ ([fe80::6c14:307b:6fd3:3bfc%7]) with mapi id 15.20.6363.032; Mon, 8 May 2023
+ 07:44:17 +0000
+Message-ID: <479acc85-2349-d0ac-851c-f57b1bf6aa9e@suse.com>
+Date: Mon, 8 May 2023 09:44:13 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.1
+Subject: Re: [PATCH 1/2] PCI: mediatek-gen3: Stop acquiring spinlocks in
+ {suspend,resume}_noirq
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ ryder.lee@mediatek.com
+Cc: jianjun.wang@mediatek.com, lpieralisi@kernel.org, kw@linux.com,
+ robh@kernel.org, bhelgaas@google.com, p.zabel@pengutronix.de,
+ matthias.bgg@gmail.com, linux-pci@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20230504113509.184633-1-angelogioacchino.delregno@collabora.com>
+ <20230504113509.184633-2-angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+From: Oliver Neukum <oneukum@suse.com>
+In-Reply-To: <20230504113509.184633-2-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: FR0P281CA0164.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:b3::6) To VI1PR04MB7104.eurprd04.prod.outlook.com
+ (2603:10a6:800:126::9)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: VI1PR04MB7104:EE_|VI1PR04MB6816:EE_
+X-MS-Office365-Filtering-Correlation-Id: 8b5f57e7-5c23-4ac1-e3da-08db4f9806d0
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	8V2luW16lh1u89auLDT79x+/oWkKtZu6kFeIFKW40HOvUfbF5HmZjD7Sf+ljjLZwyBQqibFt8Tqh0SrwMj7JHmKyd+MHBti+p+nGIWMhREtK2krxCOLj+tgiJS9IOddDuZF5NvnSJsnISTIlW5DOXbKFgfmFgToAfyGA2SL/mGiB6PJD79LDAt3H/4s0HWyEKQuvzX8MsDiawy1uvI8vnpr1UrVz9FNfHQ4+WIxzIE8jlZONK4ojO00AX6c4BA9/ov6Kdv6JXlu5pezRC5FztFymg0Ew7zc5OUi2W4e1QpJTfDuVl0rMAak4Jx2rqnMFCX9tzJ2veW8fycZhaJGRWkUe3EsTSO8sjGF6ZrP1/oEG/cqk+nG9VvVHjBpxf0gIMEhg+XW1GYHfvf0A56HdQYhu3923663ODDWr1QmX1tAx/xFeTLr0g4Pucx1Dov9/oF+O1V2b6q5dQwmnTHEeTmVKG4/Lyi+LkJGynexCrXxclhA6L0v8e8q3omTmdrXlVnJJuHbh7O5JQQsf0E7kPcv0s7j8sjcp0nYZvepw4lWNiLXpy7C92qbXO25KtwMnSB9ofv1BqRZC53FehOhalVz/kwvFTJUdXKIfFq/E41oPoj81jgqYlIEqqS1IHPaWG8gfwAjM/tUJQeh0HoeeGQ==
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:VI1PR04MB7104.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(376002)(39850400004)(396003)(136003)(366004)(346002)(451199021)(31686004)(66946007)(66556008)(66476007)(4326008)(478600001)(6486002)(316002)(31696002)(86362001)(36756003)(83380400001)(2616005)(53546011)(6512007)(6506007)(6666004)(8676002)(8936002)(5660300002)(41300700001)(7416002)(2906002)(15650500001)(186003)(38100700002)(45980500001)(43740500002);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?WGttRXBkYXpCUWhKb3FDQnB6MEd5YlFtSnkveGszaEFpN0ExY1JPY0VtcEkv?=
+ =?utf-8?B?bDhhVHZCOTArQXlHQ0w3Tmc5WXFBMUdRdXdlVUxiUmRKUzBxTGdYSGhqTWhv?=
+ =?utf-8?B?Q2ZiSmxaQ09IVmF4SCs1SWhjWlU0YWFSbTFwdWd5VUppZDhWb1RRSTFWNHhn?=
+ =?utf-8?B?QkhPTGpSTm1PTFJURWd1b2ljbzhXNFNja2V2ZDZrMkVad09ES2ZScGpuUzJU?=
+ =?utf-8?B?cVpKZmMwSzM2aXhzNU9XWm1LbmFKNUVyN2pyYXcrTzJlWWpxS21IL1V6N1JL?=
+ =?utf-8?B?cUR4L1dFRmJqK3hjbDZKcGdVQUR5ZGJYRDBQVENoWjdscUdzaVFsRWFrWnc2?=
+ =?utf-8?B?ZnVxRDhuVnkxL0NJRnpENFp2a3ZnODRFdzRRSFMvOWpkaks4SXJRcHBUQndx?=
+ =?utf-8?B?dzU1R0U0ZlIreWxkRW9PMEt4dzJQMHNXZzFrclBKbzljK3NWcTFsbm91c1kw?=
+ =?utf-8?B?U25GODJOVFJwS1FCd1Rlc0ZDSzNCNk95aWNNa2U1YmFqSnRHS0EyT0ZuTVU1?=
+ =?utf-8?B?NTJoSVlCT1l5UDhKK0w2QjV3NkFlcnZQWENJTHorMWRwbXVLRDFQSVh5bTIx?=
+ =?utf-8?B?UVdwRWpaWDF5Nm5nTkxrWFc0dEtmdjVsUjh3Y1ZuZDcwMjhNN09IM2lQayt0?=
+ =?utf-8?B?UVpBVEFTTHRPY1R5MjRSeVQwaTVaR29tdUU2NS9NcVhNb0trcXY3czVZenQ3?=
+ =?utf-8?B?RlRGTmhxZWgrd0VrcEZjTjEwZk80dnJDdEMrNzdNcURic09PTHNBSUEwZHpy?=
+ =?utf-8?B?V3R1TUUzT1R1S1F2QW9ERDJIcXZKOGNESnJoU2MxeGpCdGpDOFg4QU9Bbmdj?=
+ =?utf-8?B?VXV1SSsrdUllLzdodHVzSXovc21VVWpCZkdSV0c5Ri91QlNNZnpXRW91MUxN?=
+ =?utf-8?B?TXVHMUFtZU41RjJvZ0xxSzhvNzBmdTFqWmtmZlYvVnl6T1pxM1RqcGZ4RFpz?=
+ =?utf-8?B?UVFjbzJKT1l3N0c1L0N5eHp0Q29QWFNNQldVaHdxcGN6aWt3dU5MUmFEMExv?=
+ =?utf-8?B?L0tsOVV6Mjd6dE4yWlIzaEcxenk1NHhZOUtZbFZUOGN6S1I0VmZpbTdEelds?=
+ =?utf-8?B?Q2ZkcmF2cit1RVB0UlJINmEyaVBYcG1MazErZnZaTm9zazVzRVhsVGwzYXMz?=
+ =?utf-8?B?MklhU3ZMUjRUNlZPcEpnV3h0Wk5sc1VFbmtXdGRuUXFaamtPZnVLenltRnVM?=
+ =?utf-8?B?UmpnUTU2ODlBU2NCUEMzNjJGb2dNNXQwVG5FNmh4N0czUVY3a1IyMTJQbXFJ?=
+ =?utf-8?B?S29JUkJ2aVRFNEF3SmNWS2gwUEcxU0gra2R4dnhESm9ZbGdBOXRXNlIzVG9w?=
+ =?utf-8?B?czRkTHRPc2tIdFFkYjdtRG42azhYR2lsSzdOaGh6b3ZyRGVYeVlPMk04MFdH?=
+ =?utf-8?B?bDB6WGl2UjFUeUFYT2V0Q25nS1Yvc0F6Q1c2R0w0Qk5oSDgwY3BEVzZUazJl?=
+ =?utf-8?B?UGpreUN5MzRJbDBqd3pGOFJ3WTJ1YUs3L2ptUG5iMW96YWpYR2V1alRWZHdr?=
+ =?utf-8?B?ZGczMjlneEw4bXdkUlljNEtScjlhUW1RSS9DWWU5azhnSWRCaWE0SGRxV3Mx?=
+ =?utf-8?B?UzgwQXcrOGJWY1VhK0p5RWx2MW9Va200WE1BQ09NTy9XOFBhYnRqTXdCTU9R?=
+ =?utf-8?B?dHpBQ3RINmdmeGU3TXpjTDBtVjY5RjdLQndoMEY5TnVodTRJbkk3VzVJclRU?=
+ =?utf-8?B?dVFWaXBTMDI5U3RhWXVoMk5CV0ZYSldzSyt3M0RXQUZBVnp5YVFPNm5JYkJX?=
+ =?utf-8?B?cFgwbmJDS1VZS21UZWFKT1BJaXRJaWdTZFl0RDFpZm01U2FSMkJWejZyVUg2?=
+ =?utf-8?B?ekJ5b3RNN21Tc1EycnUrMmloYUt2M08zSnp2b1lEeTk5dFRmSGxHdXdpZTVj?=
+ =?utf-8?B?KzBSWVhLTEZKT2FFczhldXBsNmtjTzVLRnVEUE9WcWFSM2ovWGtMTXlSeXN1?=
+ =?utf-8?B?b05jK1lHMSttcDZSVDN3VnFMVTQrM00vL213REJremZPWjFaYXBZbXM0cmZV?=
+ =?utf-8?B?VGtzc0hMWTVHQ3BqUnNNWmRvSVEwc2pFM0pSZlF6eUNmdExzWUk2d3lONEM5?=
+ =?utf-8?B?ck5xbEUyMWVzcVpSU0U0WFVCdDNCQ1puOFFrZ3dkamZjdCs5UVM1dVF1TktO?=
+ =?utf-8?B?a00xYUxTVzFCV09Wamt6Vk1SKzR4UWRXTW9xam5zV1B4cVdSdTBHQlI4NktX?=
+ =?utf-8?Q?avcAuC2n6cX7ZTrI/lblcRulox6dKeCc1KHx6Nu7PwOh?=
+X-OriginatorOrg: suse.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8b5f57e7-5c23-4ac1-e3da-08db4f9806d0
+X-MS-Exchange-CrossTenant-AuthSource: VI1PR04MB7104.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 May 2023 07:44:17.4418
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: f7a17af6-1c5c-4a36-aa8b-f5be247aa4ba
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: BJmfDuH8+sHJPzcl4u/4gIP+u/w2PXJroQfRmUrGxskrGK7iZRNu4xzb9ri+48pMRo5AOcEuqUCWJ641hehTmg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR04MB6816
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230508_001544_050584_99ECE67B 
-X-CRM114-Status: UNSURE (   9.20  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230508_004426_073250_E7E0027B 
+X-CRM114-Status: GOOD (  11.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,49 +149,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mtkaif gpio driving to increase signal strength and smt setting to
-prevent from overshooting.
+On 04.05.23 13:35, AngeloGioacchino Del Regno wrote:
 
-Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
----
- sound/soc/codecs/mt6359.c | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+Hi,
 
-diff --git a/sound/soc/codecs/mt6359.c b/sound/soc/codecs/mt6359.c
-index 65e6d4d08b6a..a37ad61a8253 100644
---- a/sound/soc/codecs/mt6359.c
-+++ b/sound/soc/codecs/mt6359.c
-@@ -18,6 +18,20 @@
- 
- #include "mt6359.h"
- 
-+static void mt6359_set_gpio_smt(struct mt6359_priv *priv)
-+{
-+	/* set gpio SMT mode */
-+	regmap_update_bits(priv->regmap, MT6359_SMT_CON1, 0x3ff0, 0x3ff0);
-+}
-+
-+static void mt6359_set_gpio_driving(struct mt6359_priv *priv)
-+{
-+	/* 8:4mA(default), a:8mA, c:12mA, e:16mA */
-+	regmap_update_bits(priv->regmap, MT6359_DRV_CON2, 0xffff, 0x8888);
-+	regmap_update_bits(priv->regmap, MT6359_DRV_CON3, 0xffff, 0x8888);
-+	regmap_update_bits(priv->regmap, MT6359_DRV_CON4, 0x00ff, 0x88);
-+}
-+
- static void mt6359_set_playback_gpio(struct mt6359_priv *priv)
- {
- 	/* set gpio mosi mode, clk / data mosi */
-@@ -2745,6 +2759,8 @@ static int mt6359_codec_init_reg(struct snd_soc_component *cmpnt)
- 			   0x1 << RG_AUDLOLSCDISABLE_VAUDP32_SFT);
- 
- 	/* set gpio */
-+	mt6359_set_gpio_smt(priv);
-+	mt6359_set_gpio_driving(priv);
- 	mt6359_reset_playback_gpio(priv);
- 	mt6359_reset_capture_gpio(priv);
- 
--- 
-2.18.0
+looking at your patch I am afraid there is an issue.
 
+> In mtk_pcie_suspend_noirq() and mtk_pcie_resume_noirq() we are,
+> respectively, disabling and enabling generation of interrupts and
+> then saving and restoring the enabled interrupts register: since
+> we're using noirq PM callbacks, that can be safely done without
+> holding any spin lock.
+
+Why? You can still race with another CPU in task context.
+That is if you say that you do not need locking to touch
+PCIE_INT_ENABLE_REG that is fine, but then why do you remove
+it from one place only?
+It is also touched in mtk_pcie_probe() at a minimum.
+
+  
+> That was noticed because of, and solves, the following issue:
+> 
+> <4>[   74.185982] ========================================================
+> <4>[   74.192629] WARNING: possible irq lock inversion dependency detected
+> <4>[   74.199276] 6.3.0-next-20230428+ #51 Tainted: G        W
+> <4>[   74.205664] --------------------------------------------------------
+> <4>[   74.212309] systemd-sleep/809 just changed the state of lock:
+> <4>[   74.218347] ffff65a5c34c65a0 (&pcie->irq_lock){+...}-{2:2}, at: mtk_pcie_resume+0x50/0xa8
+> <4>[   74.226870] but this lock was taken by another, HARDIRQ-safe lock in the past:
+> <4>[   74.234389]  (&irq_desc_lock_class){-.-.}-{2:2}
+> <4>[   74.234409]
+> <4>[   74.234409]
+> <4>[   74.234409] and interrupts could create inverse lock ordering between them.
+> <4>[   74.234409]
+> <4>[   74.251704]
+> <4>[   74.251704] other info that might help us debug this:
+> <4>[   74.258785]  Possible interrupt unsafe locking scenario:
+> <4>[   74.258785]
+> <4>[   74.266126]        CPU0                    CPU1
+> <4>[   74.270942]        ----                    ----
+> <4>[   74.275758]   lock(&pcie->irq_lock);
+
+Lock A
+
+> <4>[   74.279627]                                local_irq_disable();
+
+strictly speaking irrelevant
+
+> <4>[   74.285836]                                lock(&irq_desc_lock_class);
+
+lock B
+
+> <4>[   74.292667]                                lock(&pcie->irq_lock);
+
+lock A
+
+> <4>[   74.299061]   <Interrupt>
+
+You do not need that interrupt.
+
+> <4>[   74.301960]     lock(&irq_desc_lock_class);
+
+lock B
+
+> <4>[   74.306438]
+> <4>[   74.306438]  *** DEADLOCK ***
 
