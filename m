@@ -4,95 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 730BEC77B75
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 May 2023 15:58:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B119EC77B75
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 May 2023 16:03:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=qoKeBGVLOBu4DrLK/qM8cN/bO+eEqfiWPQ9nbUj9vHo=; b=0jFefclUpjgRpcsysS+l6PNixv
-	eXTGksKEV793goQnYWbagBcOuuurhNr4GDCpd1R7YWTNmfpoOxsEWO2JY8ngbo49YxcT0rjD2BnGo
-	moS3lr7L2avjK1uo6CU9bmcQHtd7iFSO2Uw0TRqofaUlxyKG0LRDU61m/fnjeCOrG/qq8MPlNE0iu
-	sT4XoOnZcBMUz4BvBcZfyJMkk2vOdNNVCOrpEL2lF2g9Xm5daW186xCpTLPSzWZETTea/Vbop+4Ew
-	oap+ZriprAKiwp7JOrNxZcKD1Mj9VBrW3QTArhpTpKUAtd2jhv+GSB62e1rw9xXfmOSpiXVhpikh3
-	s26hzVpg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Subject:Cc:To:
+	From:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8QMhc552UlUsj7kYvZWtMUMNf+gVyj2eysVQyi2xaKM=; b=ua8eo9x8C4dp6yzkwaM5UPZUg/
+	lCs4qV19Kz+ISvsIEe6Xw5S5XL1jQsbvAFJYHATHGBjMJ/Wo0S/4p/gYc422esCP7KgOZmVJWDFF/
+	MpFlL4ftg9sMdiWe4ttMZnbxL6sFE+ftBX7nNv509GHq/fOTDzyZ6BjBVRpgShtOdu4bCONCDAmBp
+	ROW/XfvHRNBd/a4i0pPll2BZtMwN6dKDpgoMjyT8v7QodwR9pxTLYYCW05uOpIuDrUdtByWLrxS3i
+	apvcMUgalLh9B1mierTAAmpqHLPF5jCdslp+EWrhBJ3l2loRDMXbD9tzfIgIpsJjg1ozqPRNFRAGq
+	NKJdC0qw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pw3G8-000unq-34;
-	Mon, 08 May 2023 15:58:44 +0000
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+	id 1pw3KC-000v9j-0j;
+	Mon, 08 May 2023 16:02:56 +0000
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pw3G5-000ulh-2q;
-	Mon, 08 May 2023 15:58:43 +0000
-Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-4f00d41df22so29644819e87.1;
-        Mon, 08 May 2023 08:58:38 -0700 (PDT)
+	id 1pw3K8-000v8W-3B;
+	Mon, 08 May 2023 16:02:54 +0000
+Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-3f315712406so176414535e9.0;
+        Mon, 08 May 2023 09:02:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1683561517; x=1686153517;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=qoKeBGVLOBu4DrLK/qM8cN/bO+eEqfiWPQ9nbUj9vHo=;
-        b=njc2uBhQTwCCXVHXm/oE2IOFTW4zhdBqaTkEe+Jkvty3fbq0HmDNIHQ+Dtnov5JE5B
-         DlCRgIXF4wRZsVTIxt/In6dIIJjr93rvVkJbdIsGM0WJCVM2PkZZP6nK3YzraVbSFXZ/
-         y1axOGjBwCE6LLrV2/3hb3EdM9u2ked3GmCe5fNpfHcYDPSYlh20egY3TJDc/69WfH/S
-         JxsccU+FleZQKxQ98hjZKKI9ARdJDrE+RaZG1h0IycyLct/DXTCWhglMwDQ/8TryxT10
-         x6tdLtYXTIzB2e7w21vFDYkqfD65okleWow13EfeXpkPHi+Q2wdW6Wp9I8giWU6MD12i
-         BE7g==
+        d=gmail.com; s=20221208; t=1683561769; x=1686153769;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:subject:cc:to:from:date:message-id:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=8QMhc552UlUsj7kYvZWtMUMNf+gVyj2eysVQyi2xaKM=;
+        b=HlBZP9zPGcvY5f1n0Z0Uf8lOdCdbUV5xpjGQS4G389s8eIBv01rai4p4cryDNgB+j9
+         3qaIMo3beQUAjsH2QS1gNZi94/Wr6yV7ZVuQzW3MkWKKAk9VlWyniZqTKB317aIq93Ls
+         AgM/iO383zjxC9eLglL1a2xJxlTqJRutlnCml/ApPRnUSAws2ctrbcsfhlCtXHLJIDIv
+         kGbcTrMA5bE/zjCBzx+EXLS+UZrH+N2j5biSigIzNcZIXTeG12ZGAWDpolwh7tZTKdnt
+         ozBrgxQW7UkkCukatEzjJnex8KgE7hdnIOor2cB5r4NXhryw6JI5QCx7gBi54WImVVB8
+         7v6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683561517; x=1686153517;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=qoKeBGVLOBu4DrLK/qM8cN/bO+eEqfiWPQ9nbUj9vHo=;
-        b=eOtCsgDMu7CasgWF/MyFKO9qf1d9IgN53ktriCLJMUOhWs94TJAlMw51gcsHTW0Q/8
-         39aYuT8fZBjH0YMw13qJxee2398lyRxtgafItnOLlP/Op1rc4vzyEWbjSTlmDZtdx2S+
-         nbadqUKZ4snsqEXsDOz5/3QzPIhac8VgdLvfrEjnjgdvd2oVALThJps7/9CEm/HAFcug
-         rq1S46WvMICpQyGngdRXDfcDSAmxrzm53dKyP6y3pj31GgiwXODE64AHwNYx9lbZFPn2
-         MxSgj3gbQntlg7LxH2OAkhKzc2wbTuQQ0YJHEbK4I7A6q2qkl4LdB11DnUfzOJzmHfCx
-         rn4A==
-X-Gm-Message-State: AC+VfDxDuo4Y1ieCG4ZlItiTEdXm7/T1pRch0xPrp+Mbhk18RK1YRDNC
-	PNsE0TBJCKYVpmOFj5RQXQM=
-X-Google-Smtp-Source: ACHHUZ6pT3RD+p8XzST+vQ2EfJpmtSMjPL9zzBcCqUFO+eXzEx90tVk4CD3LshCQFBxntLgVrASleA==
-X-Received: by 2002:a05:6512:3b14:b0:4f1:b38d:bfb8 with SMTP id f20-20020a0565123b1400b004f1b38dbfb8mr1765747lfv.24.1683561517097;
-        Mon, 08 May 2023 08:58:37 -0700 (PDT)
-Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.gmail.com with ESMTPSA id b29-20020ac25e9d000000b004edce1d338csm30878lfq.89.2023.05.08.08.58.34
+        d=1e100.net; s=20221208; t=1683561769; x=1686153769;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:subject:cc:to:from:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=8QMhc552UlUsj7kYvZWtMUMNf+gVyj2eysVQyi2xaKM=;
+        b=M15/4xpw07tWmLvU5ivn+m7I1cZl+S/EV7FWoMzKccOF/4NKNVNiCPqiQHbM+Dwmf5
+         ftPLAmc/r85mg+uWSzyGMtLsifuKaMExu7sR7NOQo8OWbK+6/I2oQ4X555DkohVWw7yj
+         9O/9gwblGphBzZr5WFyI13oClT/2NJWohugxHnS+z/QwdrFrX9GRwbu6ptizsVHvnGNz
+         TIsbNXwlTVqv5WJ5JDhuF5Cx//FEGGzIRNwq7oFylI2gxIIXWWOFn7NCglcmWahWUXEQ
+         8F1ZeXYEhKx6gLMfgLsaY7FHs1sATHgV3nTGpovg9pLxtM77QW9RPPt2r0ja3TS7cg5e
+         USNw==
+X-Gm-Message-State: AC+VfDx2bs40VuBp6jfpphTMDeKffSgH/3wDAAngzYO3QkL8woRhvFKs
+	Hm2T5FgRauFNsQe18olM/tM=
+X-Google-Smtp-Source: ACHHUZ5gut9Av3LAVbmrxULeIcOJYi74sqsnH/+A0yslUft1sWoiypVuYj5H2hMqmRzhO5GwVeo11Q==
+X-Received: by 2002:adf:f785:0:b0:2f2:79aa:c8b9 with SMTP id q5-20020adff785000000b002f279aac8b9mr6830879wrp.35.1683561767917;
+        Mon, 08 May 2023 09:02:47 -0700 (PDT)
+Received: from Ansuel-xps. (93-34-93-173.ip49.fastwebnet.it. [93.34.93.173])
+        by smtp.gmail.com with ESMTPSA id g14-20020adff3ce000000b00300aee6c9cesm11744439wrp.20.2023.05.08.09.02.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 08 May 2023 08:58:36 -0700 (PDT)
-From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
-To: Felix Fietkau <nbd@nbd.name>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>,
+        Mon, 08 May 2023 09:02:47 -0700 (PDT)
+Message-ID: <64591d27.df0a0220.d1f7b.ca4a@mx.google.com>
+X-Google-Original-Message-ID: <ZFkdJNHT2ARUKFic@Ansuel-xps.>
+Date: Mon, 8 May 2023 18:02:44 +0200
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
+Cc: Felix Fietkau <nbd@nbd.name>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
 	Ryder Lee <ryder.lee@mediatek.com>,
 	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Kalle Valo <kvalo@kernel.org>,
+	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
 	"David S . Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-wireless@vger.kernel.org,
-	netdev@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>,
-	Christian Marangi <ansuelsmth@gmail.com>
-Subject: [PATCH] dt-bindings: mt76: support pointing to EEPROM using NVMEM cell
-Date: Mon,  8 May 2023 17:58:20 +0200
-Message-Id: <20230508155820.9963-1-zajec5@gmail.com>
-X-Mailer: git-send-email 2.35.3
+	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
+Subject: Re: [PATCH] dt-bindings: mt76: support pointing to EEPROM using
+ NVMEM cell
+References: <20230508155820.9963-1-zajec5@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230508155820.9963-1-zajec5@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230508_085841_926767_1A52FA8F 
-X-CRM114-Status: GOOD (  13.84  )
+X-CRM114-CacheID: sfid-20230508_090253_049502_98D72840 
+X-CRM114-Status: GOOD (  16.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,68 +107,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Rafał Miłecki <rafal@milecki.pl>
+On Mon, May 08, 2023 at 05:58:20PM +0200, Rafał Miłecki wrote:
+> From: Rafał Miłecki <rafal@milecki.pl>
+> 
+> All kind of calibration data should be described as NVMEM cells of NVMEM
+> devices. That is more generic solution than "mediatek,mtd-eeprom" which
+> is MTD specific.
+> 
+> Add support for EEPROM NVMEM cells and deprecate existing MTD-based
+> property.
+> 
+> Cc: Christian Marangi <ansuelsmth@gmail.com>
+> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+> ---
+> Ansuel is working on mt76 driver support for NVMEM based EEPROM access:
+> https://github.com/openwrt/mt76/pull/765
+> 
+> I took the liberty to propose this binding patch.
+> 
+> One important difference: my binding uses "eeprom" while Ansuel went
+> with "precal". I found a lot of "eeprom" references and only one
+> "precal". If you think however "precal" fits better please comment.
 
-All kind of calibration data should be described as NVMEM cells of NVMEM
-devices. That is more generic solution than "mediatek,mtd-eeprom" which
-is MTD specific.
+The name is totally "to decide". I feel eeprom might be also way too
+much generic...
+I was thinking to something like cal or precal following ath10k or
+ath11k pattern.
 
-Add support for EEPROM NVMEM cells and deprecate existing MTD-based
-property.
+Also in the code itself I notice there can be different calibration
+hence the idea of precal and cal... (currently we define the entire mtd
+partition and call it eeprom but on some card different data are
+referenced with an offset... that will be dropped since nvmem cell will
+reference directly the data without using offset, which seems an hack to
+me)
 
-Cc: Christian Marangi <ansuelsmth@gmail.com>
-Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
----
-Ansuel is working on mt76 driver support for NVMEM based EEPROM access:
-https://github.com/openwrt/mt76/pull/765
-
-I took the liberty to propose this binding patch.
-
-One important difference: my binding uses "eeprom" while Ansuel went
-with "precal". I found a lot of "eeprom" references and only one
-"precal". If you think however "precal" fits better please comment.
----
- .../bindings/net/wireless/mediatek,mt76.yaml         | 12 +++++++++++-
- 1 file changed, 11 insertions(+), 1 deletion(-)
-
-diff --git a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-index 67b63f119f64..0500caa4107c 100644
---- a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-+++ b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-@@ -71,6 +71,14 @@ properties:
- 
-   ieee80211-freq-limit: true
- 
-+  nvmem-cells:
-+    items:
-+      - description: NVMEM cell with EEPROM
-+
-+  nvmem-cell-names:
-+    items:
-+      - const: eeprom
-+
-   mediatek,eeprom-data:
-     $ref: /schemas/types.yaml#/definitions/uint32-array
-     description:
-@@ -84,6 +92,7 @@ properties:
-           - description: offset containing EEPROM data
-     description:
-       Phandle to a MTD partition + offset containing EEPROM data
-+    deprecated: true
- 
-   big-endian:
-     $ref: /schemas/types.yaml#/definitions/flag
-@@ -258,7 +267,8 @@ examples:
-       interrupt-parent = <&cpuintc>;
-       interrupts = <6>;
- 
--      mediatek,mtd-eeprom = <&factory 0x0>;
-+      nvmem-cells = <&eeprom>;
-+      nvmem-cell-names = "eeprom";
-     };
- 
-   - |
 -- 
-2.35.3
-
+	Ansuel
 
