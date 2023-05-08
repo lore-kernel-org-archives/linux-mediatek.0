@@ -4,193 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CB8DC77B75
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 May 2023 07:50:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63712C77B7F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 May 2023 08:24:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HsVRHNVHHnbQL27B8VMRbJgPDme4FQx+rExi005o22s=; b=JuJCua1S64KVWEJBAiZAY+76QJ
-	wqden6pZen2t74XWrn/Yb2EehyOBc24azS0hPTFkFlOK25cDUVk+9QNgPn0RR61GzzO38jsDZhR+S
-	kfZrKUO8F94g0uGY/JsSmrmLzWqewLTGiXC54blLySEIX/df3lb2F1ufpUKoKo2jFVwLWyVz3sB/k
-	rfINCM3Kp/ZwOfesaqAqbQVSnLJAFp8ooyaXXcHgOSAkOUnnyJQT08cgQ1cYj2oXAT+KXkn+Xmy+i
-	COe1ywPHdYtjndjpGa+gC7XYaUgLKlvi/TT+2WOyWCJko/OXpj/qyZPul6ZyX1FpOdqMLVWFP5qxG
-	CbHpb3nw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=m5LglcJTmAOL674iFSW91v8iQ+c+VWN66eezYdcY/eo=; b=t9rORNKT17WsehGY4O8Q9F52E7
+	q6Og9bDg0fJS7GWu9PgwDxvHk0utp3LoZMe/o0GIzKna43B7svQafXI+JNqUULwbMs9Sxl/41ZbUS
+	fbkOYplvq6pZeLnTOrWB9B3MqMYScWaQ5PH3Qodkrc1vSj+aaSK956gGZTvqnYh+uCtTkHGW5hUYC
+	dJ6j5PBw5e/t3xflF8iZrgvv8rZ+GUFWXj57TNuF4d9/BPBvn6C2T+hhNNbphK9QIQC/dYSg1F1ES
+	JyoQlB2ZeGXk+uh03WFNdYerW6o3xrIRki8OX7QrIrkPRA/jh2kyyX1+w4Q9w94wKyFlZVpCM/cLV
+	HfdSQ0Wg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pvvdk-00HWne-13;
-	Mon, 08 May 2023 07:50:36 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1pvwAV-00HZaU-17;
+	Mon, 08 May 2023 08:24:27 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pvvdi-00HWnG-2w
-	for linux-mediatek@bombadil.infradead.org;
-	Mon, 08 May 2023 07:50:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=HsVRHNVHHnbQL27B8VMRbJgPDme4FQx+rExi005o22s=; b=HUtJrykminvMOxb4xsQXopnxPH
-	r2i+ZUlaIHXxd7SyeZ6ft1hYXoejezB7cSiQrFc99Khm4V1BEkyl4bYj7LCF1lduYv/l9yctOoSZl
-	5tCZjG71H/dH/erdk7GfZyq81uJwZBSWBTcL+YLaZKxZD1kxN7zGMMQmQUmR7x7JhZeKjTpYJtMXO
-	W0fl3Ajzx4p55zxuk8u9uTlcpz9ATCVNoe2GIf3/9MTnCX6MOjZgNqkviiiqoKR1MMWEsJ3ufjrWY
-	oiLJZYIkr3FRgYrR7FtXFPHRZ+22C6A3H4ANDwAwwKnrBRN3Z1YQ8H9iDRpY2PqY8aAaKkCG/bjL3
-	3PUNVzzA==;
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
-	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pvvde-00Dwny-4S
-	for linux-mediatek@lists.infradead.org; Mon, 08 May 2023 07:50:32 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pvvdN-000352-R3; Mon, 08 May 2023 09:50:13 +0200
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pvvdK-001wDu-Ru; Mon, 08 May 2023 09:50:10 +0200
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pvvdJ-002Kte-5G; Mon, 08 May 2023 09:50:09 +0200
-Date: Mon, 8 May 2023 09:50:09 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Thomas Zimmermann <tzimmermann@suse.de>
-Cc: "James (Qian) Wang" <james.qian.wang@arm.com>,
-	Liviu Dudau <liviu.dudau@arm.com>,
-	Mihail Atanassov <mihail.atanassov@arm.com>,
-	Brian Starkey <brian.starkey@arm.com>,
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
-	Russell King <linux@armlinux.org.uk>, Joel Stanley <joel@jms.id.au>,
-	Sam Ravnborg <sam@ravnborg.org>,
-	Boris Brezillon <bbrezillon@kernel.org>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
-	Rahul T R <r-ravikumar@ti.com>, Jayshri Pawar <jpawar@cadence.com>,
-	Liu Ying <victor.liu@nxp.com>, Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Minghao Chi <chi.minghao@zte.com.cn>,
-	Mark Brown <broonie@kernel.org>,
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
-	Lucas Stach <l.stach@pengutronix.de>,
-	Inki Dae <inki.dae@samsung.com>,
-	Seung-Woo Kim <sw0312.kim@samsung.com>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Jingoo Han <jingoohan1@gmail.com>, Stefan Agner <stefan@agner.ch>,
-	Alison Wang <alison.wang@nxp.com>,
-	Xinliang Liu <xinliang.liu@linaro.org>,
-	Tian Tao <tiantao6@hisilicon.com>,
-	Ville =?utf-8?B?U3lyasOkbMOk?= <ville.syrjala@linux.intel.com>,
-	Jani Nikula <jani.nikula@intel.com>,
-	Danilo Krummrich <dakr@redhat.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Javier Martinez Canillas <javierm@redhat.com>,
-	Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Anitha Chrisanthus <anitha.chrisanthus@intel.com>,
-	Qiang Yu <yuq825@gmail.com>,
-	Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Rob Clark <robdclark@gmail.com>,
-	Abhinav Kumar <quic_abhinavk@quicinc.com>,
-	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
-	Akhil P Oommen <quic_akhilpo@quicinc.com>,
-	Ricardo Ribalda <ribalda@chromium.org>,
-	Konrad Dybcio <konrad.dybcio@somainline.org>,
-	Johan Hovold <johan+linaro@kernel.org>,
-	Joel Fernandes <joel@joelfernandes.org>,
-	Stephen Boyd <swboyd@chromium.org>,
-	Marijn Suijten <marijn.suijten@somainline.org>,
-	Liu Shixin <liushixin2@huawei.com>,
-	Douglas Anderson <dianders@chromium.org>,
-	Miaoqian Lin <linmq006@gmail.com>,
-	Kuogee Hsieh <quic_khsieh@quicinc.com>,
-	Bjorn Andersson <andersson@kernel.org>, Marek Vasut <marex@denx.de>,
-	Ben Skeggs <bskeggs@redhat.com>, Karol Herbst <kherbst@redhat.com>,
-	Lyude Paul <lyude@redhat.com>, Tomi Valkeinen <tomba@kernel.org>,
-	Guo Zhengkui <guozhengkui@vivo.com>, Yuan Can <yuancan@huawei.com>,
-	Arnd Bergmann <arnd@arndb.de>, Liang He <windhl@126.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Rob Herring <robh@kernel.org>,
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Deepak R Varma <drv@mailo.com>,
-	Alex Deucher <alexander.deucher@amd.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Yannick Fertre <yannick.fertre@foss.st.com>,
-	Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>,
-	Philippe Cornu <philippe.cornu@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Maxime Ripard <mripard@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Maxime Ripard <maxime@cerno.tech>,
-	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>,
-	Noralf =?utf-8?Q?Tr=C3=B8nnes?= <noralf@tronnes.org>,
-	Jyri Sarha <jyri.sarha@iki.fi>,
-	Alexey Brodkin <abrodkin@synopsys.com>,
-	Emma Anholt <emma@anholt.net>, Melissa Wen <mwen@igalia.com>,
-	Hyun Kwon <hyun.kwon@xilinx.com>,
-	Michal Simek <michal.simek@xilinx.com>,
-	linux-aspeed@lists.ozlabs.org, nouveau@lists.freedesktop.org,
-	dri-devel@lists.freedesktop.org, John Stultz <jstultz@google.com>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Fabio Estevam <festevam@gmail.com>,
-	Sumit Semwal <sumit.semwal@linaro.org>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	linux-samsung-soc@vger.kernel.org, lima@lists.freedesktop.org,
-	Steven Price <steven.price@arm.com>,
-	linux-rockchip@lists.infradead.org,
-	Xinwei Kong <kong.kongxinwei@hisilicon.com>,
-	Mali DP Maintainers <malidp@foss.arm.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Russell King <linux+etnaviv@armlinux.org.uk>,
-	linux-sunxi@lists.linux.dev, Jonas Karlman <jonas@kwiboo.se>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	linux-arm-msm@vger.kernel.org, etnaviv@lists.freedesktop.org,
-	Christian Gmeiner <christian.gmeiner@gmail.com>,
-	linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org,
-	linux-amlogic@lists.infradead.org, Sean Paul <sean@poorly.run>,
-	linux-arm-kernel@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andrew Jeffery <andrew@aj.id.au>,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-mips@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
-	kernel@pengutronix.de, Yongqin Liu <yongqin.liu@linaro.org>,
-	freedreno@lists.freedesktop.org
-Subject: Re: [PATCH 00/53] drm: Convert to platform remove callback returning
- void
-Message-ID: <20230508075009.4l4ghdrwopfhmcao@pengutronix.de>
-References: <20230507162616.1368908-1-u.kleine-koenig@pengutronix.de>
- <935faac5-280b-b2e0-3fdb-d0424990e43a@suse.de>
+	id 1pvwAT-00HZZK-08;
+	Mon, 08 May 2023 08:24:26 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-3f415a9015bso22278295e9.2;
+        Mon, 08 May 2023 01:24:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1683534263; x=1686126263;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=m5LglcJTmAOL674iFSW91v8iQ+c+VWN66eezYdcY/eo=;
+        b=FkoBtct+K+FHjRPlHL9ykOQXt4jjYt99V2O+8Vje8XlvSQzc6v+6j4rXJJruHwHd5I
+         wj2Hp+C2JBQLstF/iJcFcUWQRCc1HgKdzlVL4cXoWSeXlt0Z5chr0kXEnr/CttPDrlbY
+         x2QIlOimiAyMBchumS0veYf//2RtScWx9T2KoBIqrvzBuKroy1jh6B5sGhEZg3rpDDwW
+         4JtorSK0X+Dzb8JNk9ZJ4KEx3ovHxrpZF3/S01fHY/WUoBD8Iy3Xff68c6hi21Ii+H/1
+         51Bt4xy/tufm5jMIKbRql0n/WodjbVuz0M9OOYXrUP1Y5dTSFRLbwg5KNCSV0fIg2hbg
+         ERbg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1683534263; x=1686126263;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=m5LglcJTmAOL674iFSW91v8iQ+c+VWN66eezYdcY/eo=;
+        b=CK5O8w9/BkFaBCLLgPPSoN5ZRfWm91bzKnHkOUogHrn1BFZY67U8U++RyON3Fgt1tO
+         eCLo+SiBMlpdujSbmTJJ6U3G5Cy4UwAEvZm8u8gHaEVnSiwistkxHrB/OCYN4r9sAO2A
+         OJlWv+avG8hO1Oksi+RnSj2RD39nBJBCvdrvfqubTwX6DlA3lQO4oXdYIENhW9WBMOLA
+         ieENOPgd/xgsNhOpSTwh/rwBHBEA7BRm/nShzamjI62HjoPE8pqDoUR0EfCIdirOqA6N
+         Qddjbvf1rOXMf0qma9SyTQ0B0PDApb+7qihBvrb7FGCzK4q1S+NSdw1aEwICTAcI8hRv
+         6yGw==
+X-Gm-Message-State: AC+VfDz8/ILxF/5ZOVH0pAwy0gYTBlAqnZBYMRD/Hw+dvQv/8uDdCqHi
+	AzNN5guxeXDWEDps3HGAFpc=
+X-Google-Smtp-Source: ACHHUZ7qgZXuInT52CBe2fdIODHvN3TsFZFGNC53yWfuzxRIbJsq0WD/6yJNKLgPzMeJ/5eb9LSI8A==
+X-Received: by 2002:a05:600c:2191:b0:3f4:1a97:ab1d with SMTP id e17-20020a05600c219100b003f41a97ab1dmr4138816wme.1.1683534262558;
+        Mon, 08 May 2023 01:24:22 -0700 (PDT)
+Received: from [192.168.2.177] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id s13-20020a05600c45cd00b003f1738d0d13sm19383989wmo.1.2023.05.08.01.24.20
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 08 May 2023 01:24:21 -0700 (PDT)
+Message-ID: <f5cf30b2-c29c-03ac-e7fc-4c7da2cd0c5b@gmail.com>
+Date: Mon, 8 May 2023 10:24:19 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="3pf3cmic5n6cdkye"
-Content-Disposition: inline
-In-Reply-To: <935faac5-280b-b2e0-3fdb-d0424990e43a@suse.de>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH] phy: mediatek: fix returning garbage
+Content-Language: en-US, ca-ES, es-ES
+To: Vinod Koul <vkoul@kernel.org>
+Cc: Tom Rix <trix@redhat.com>, chunkuang.hu@kernel.org,
+ p.zabel@pengutronix.de, chunfeng.yun@mediatek.com, kishon@kernel.org,
+ angelogioacchino.delregno@collabora.com, nathan@kernel.org,
+ ndesaulniers@google.com, granquet@baylibre.com,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
+ linux-kernel@vger.kernel.org, llvm@lists.linux.dev
+References: <20230414122253.3171524-1-trix@redhat.com>
+ <ZFTMPWp8LhwA9uHz@matsya> <db9c3190-28d8-199f-f4f0-a12524d0451e@gmail.com>
+ <ZFipVfhLVyye/eud@matsya>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <ZFipVfhLVyye/eud@matsya>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230508_085030_393740_AC93894C 
-X-CRM114-Status: GOOD (  15.86  )
+X-CRM114-CacheID: sfid-20230508_012425_076563_240449D1 
+X-CRM114-Status: GOOD (  13.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -206,48 +101,36 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---3pf3cmic5n6cdkye
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-[A few addressed bounced and my script to find the recipents for a patch
-series broke and invented some addresses. I fixed all the problem I'm
-aware of in this mail.]
+On 08/05/2023 09:48, Vinod Koul wrote:
+> On 05-05-23, 17:37, Matthias Brugger wrote:
+>>
+>>
+>> On 05/05/2023 11:28, Vinod Koul wrote:
+>>> On 14-04-23, 08:22, Tom Rix wrote:
+>>>> clang reports
+>>>> drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:298:6: error: variable
+>>>>     'ret' is uninitialized when used here [-Werror,-Wuninitialized]
+>>>>           if (ret)
+>>>>               ^~~
+>>>> ret should have been set by the preceding call to mtk_hdmi_pll_set_hw.
+>>>
+>>> I have applied "phy: mediatek: hdmi: mt8195: fix uninitialized variable
+>>> usage in pll_calc"
+>>
+>> Thanks Vinod, that was on my list for today as well. I was a bit puzzled
+>> because you took the patch that added it, but I wasn't sure if you would
+>> take the fix. How do you want to handle things like this in the future?
+> 
+> Fixes should be sent as Fixes patch
+> 
 
-On Mon, May 08, 2023 at 09:06:27AM +0200, Thomas Zimmermann wrote:
-> for the whole series:
->=20
-> Reviewed-by: Thomas Zimmermann <tzimmermann@suse.de>
->=20
-> Please see my comment on the patches to tiny/.
->=20
-> Let me know if you want me to merge this patchset into drm-misc-next.
+I'm not sure what do you mean. Patch subject includes the word fix and the patch 
+has a fixes tag. What was missing here?
 
-Thanks, I'd wait a bit for more acks/reviews to come in and then plan to
-resend later, also addressing the feedback you sent.
+Does this mean you will take fixes for this driver in the future or do you want 
+me to take care of them?
 
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---3pf3cmic5n6cdkye
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmRYqbAACgkQj4D7WH0S
-/k4JeggAnBHUxma4vQ+/T0T9qJC+5c7iGOJ+hg1VKQdu3RFYOsfEdBVHywMuX8Fb
-bkfMbL4jsyN80KX3Sc7XeT0GkuA6n1bkIfJsTz16Dl8pPUTDBLPKYKNT82+brNvg
-XIif/963gu+RJ+x6ME2cdKET84LGmQwhonW2LUxGiRX5JD3FroDO8qaiLtFzkxEg
-zhCTMEQJUy1J6coFLDsxnhLFu4R/6ngT6tZOJfRAB4OiIEFmKVVH0/Y2Ko/ggJ/d
-50TcQO/0MoAzPrToLpaLaT3VtMocbAxQf7XRwpqF4MDvhu7dVfsJIhcWtBYjocz+
-WfD1B59vo0hWYb/QXlkA6OY3tzlBQQ==
-=Fhn+
------END PGP SIGNATURE-----
-
---3pf3cmic5n6cdkye--
+Regards,
+Matthias
 
