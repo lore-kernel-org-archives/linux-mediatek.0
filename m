@@ -4,94 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6144C7EE24
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 May 2023 15:47:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9618EC77B75
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 May 2023 15:53:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ThTMpPXBEPh4HdHzswHAKDf5fokfeMb5MpOdHcvdqgE=; b=tZ5kiDsV4PmxOwjZfkyWjvvBxM
-	id6vt86QlNy+ZvVfNAD7YXI6egCN7ZzYIB2tqA7aMYc0GV0lZk5DzKvB/3bQ/sxnpXeXmUyiE55Z4
-	lrbO23G85ibHtRjN3bwCa9nDI8lvHt7I3V7OHjBhQN4QANROZBluZRLCaaTbA5gzI+lKXEfo0m/7r
-	L/1TZ8QUwjgxgfAmZl7LoDcJjEMbGouHcpyoZzOKyxyMX4tKsVWLJd0ElN50bhp0BZNZpgLeFrbut
-	9jheRIFFxRfViTx+hWT6LyWIpxuhu8M4FUDLQ9oLedDSFu5o6qb5v0aIfzCuWLEzsUOduJq40AGON
-	bjkDb2jA==;
+	bh=nHCl5dtsulUABlIOlFVS4HJGJdIlpB/YonUGQZBSBSU=; b=DdBWPS8RGCez4duX94+OB+hsWH
+	fqlEmWd1//npmehZLT2C5HCvLArhKYz9DWLRIPrhetRBtaDxoS2mKmSbJhyH/TNXmohp2XYCTNUC6
+	3nvenhFFoZOQDnE9DLi4c0TVJg5ko8fBmyRep0duvUKknIM0aigg4+itgDuQWNNasTqrLr2xvfxza
+	iN+PCDgQxj+D6aFb0Qc5aXlh2cUCWSROv1uBAGqrIkDZ7igmGFOCQN60ZzaUieD76OeoVYg/CzV1M
+	iKTTaPwdFPNE+Wil8HoacHiuOh8j0xJFZnWXtRhfO3+N/240GrHSPk0IX+lv/7cfWz/JcQwXcNiPA
+	2An5t6gQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pw35C-000tLk-0P;
-	Mon, 08 May 2023 15:47:26 +0000
-Received: from lelv0143.ext.ti.com ([198.47.23.248])
+	id 1pw3B2-000u58-13;
+	Mon, 08 May 2023 15:53:28 +0000
+Received: from mout.gmx.net ([212.227.15.18])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pw358-000tKW-0B;
-	Mon, 08 May 2023 15:47:23 +0000
-Received: from lelv0266.itg.ti.com ([10.180.67.225])
-	by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 348Fl3jg054523;
-	Mon, 8 May 2023 10:47:03 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
-	s=ti-com-17Q1; t=1683560823;
-	bh=ThTMpPXBEPh4HdHzswHAKDf5fokfeMb5MpOdHcvdqgE=;
-	h=Date:Subject:To:CC:References:From:In-Reply-To;
-	b=cAwMBQtt+9p61ybgcF82DbpMQgD20dsGzxfdQiMdlKtBtnVK2UXR045dEAVRh0lw2
-	 sTOwAqMYxGlLQJ385l3l0Bl8nRyL358LToNs2y2d5uPVKZa1Lk3e+hQ4572pQfyh7L
-	 0GnxlXQCzr1YRXEg2m0XQFvatQYp7I0Uu4DaPNUU=
-Received: from DFLE100.ent.ti.com (dfle100.ent.ti.com [10.64.6.21])
-	by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 348Fl3t3121784
-	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Mon, 8 May 2023 10:47:03 -0500
-Received: from DFLE109.ent.ti.com (10.64.6.30) by DFLE100.ent.ti.com
- (10.64.6.21) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23; Mon, 8
- May 2023 10:47:03 -0500
-Received: from fllv0039.itg.ti.com (10.64.41.19) by DFLE109.ent.ti.com
- (10.64.6.30) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23 via
- Frontend Transport; Mon, 8 May 2023 10:47:03 -0500
-Received: from [10.250.149.252] (ileaxei01-snat2.itg.ti.com [10.180.69.6])
-	by fllv0039.itg.ti.com (8.15.2/8.15.2) with ESMTP id 348FkvEU003096;
-	Mon, 8 May 2023 10:46:58 -0500
-Message-ID: <a80f540a-492a-0585-9ed1-de3397535e07@ti.com>
-Date: Mon, 8 May 2023 21:16:56 +0530
+	id 1pw3Az-000u40-0Z;
+	Mon, 08 May 2023 15:53:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
+	s=s31663417; t=1683561181; i=frank-w@public-files.de;
+	bh=CiPg0zLB8L+Fhy9p4yBq3k46Y/eQla9+LhxYyup3Mwg=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=dQLwQptEuq97eHWwN/oBtXDkVAI+bQ66Ki0RfVPQW99ohn9/RcrtATS83Vaz00zGq
+	 NVAPCrNYDqk435LJxgQcRKj4wBrDSveAvDQypZ1MGaZZ/iVuRPX1DPSKdvQL5fykNm
+	 D+3NbR85WbwNOPy78YGHAinY9Cs5vuLRpdCd6rzzQEaS45TaJDOOPWSgxYMCE2bkJo
+	 pgEWRuYyW0UR7UU4zIib/9drdPUYD4OOplit4dXWf9fzjvzkR2QGkB5SNJHf2YF/rX
+	 ZSC+Wa5iIK0CQCdORFUQunGMgK3sksUqNUTC982AfLsDVfCed2zHvA7bH3LhegycEF
+	 wdGp8M0p7lDbw==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [217.61.152.116] ([217.61.152.116]) by web-mail.gmx.net
+ (3c-app-gmx-bs01.server.lan [172.19.170.50]) (via HTTP); Mon, 8 May 2023
+ 17:53:01 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: Build regressions/improvements in v6.4-rc1
-Content-Language: en-US
-To: Pratyush Yadav <pratyush@kernel.org>,
-        Geert Uytterhoeven
-	<geert@linux-m68k.org>
-CC: <linux-kernel@vger.kernel.org>,
-        Mauro Carvalho Chehab
-	<mchehab@kernel.org>,
-        Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-        Tudor Ambarus <tudor.ambarus@linaro.org>,
-        Richard Weinberger
-	<richard@nod.at>,
-        Anton Ivanov <anton.ivanov@cambridgegreys.com>,
-        Johannes
- Berg <johannes@sipsolutions.net>,
-        "Darrick J. Wong" <djwong@kernel.org>,
-        Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-        Philipp Zabel
-	<p.zabel@pengutronix.de>,
-        "David S. Miller" <davem@davemloft.net>,
-        <linux-um@lists.infradead.org>, <linux-media@vger.kernel.org>,
-        <linux-mtd@lists.infradead.org>, <linux-xfs@vger.kernel.org>,
-        <linux-mediatek@lists.infradead.org>, <linux-phy@lists.infradead.org>,
-        <sparclinux@vger.kernel.org>
-References: <CAHk-=wiUxm-NZ1si8dXWVTTJ9n3c+1SRTC0V+Lk7hOE4bDVwJQ@mail.gmail.com>
- <20230508115727.2597864-1-geert@linux-m68k.org>
- <749c2fc2-93dc-585-3826-dea581602d6e@linux-m68k.org>
- <mafs035466ebk.fsf@amazon.de>
-From: "Raghavendra, Vignesh" <vigneshr@ti.com>
-In-Reply-To: <mafs035466ebk.fsf@amazon.de>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+Message-ID: <trinity-e35759d3-7de4-450c-b4a8-053c9617ac27-1683561181475@3c-app-gmx-bs01>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Jonathan Cameron <jic23@kernel.org>
+Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
+ Lars-Peter Clausen <lars@metafoo.de>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Srinivas Kandagatla
+ <srinivas.kandagatla@linaro.org>, "Hui.Liu" <hui.liu@mediatek.com>, Zhiyong
+ Tao <zhiyong.tao@mediatek.com>, Andrew-CT Chen
+ <andrew-ct.chen@mediatek.com>, Lala Lin <lala.lin@mediatek.com>,
+ linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Daniel
+ Golle <daniel@makrotopia.org>
+Subject: Aw: Re: [PATCH v1 2/7] dt-bindings: iio: adc: Add support for
+ MT7986
+Content-Type: text/plain; charset=UTF-8
+Date: Mon, 8 May 2023 17:53:01 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <20230423140252.7b018c46@jic23-huawei>
+References: <20230421132047.42166-1-linux@fw-web.de>
+ <20230421132047.42166-3-linux@fw-web.de>
+ <20230423140252.7b018c46@jic23-huawei>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:pdqX18kf14TXCeRRcIeZ0HL8CFTV1pCMhlfqHMq0UjxaXL88w8IY5Xau00mREZLySLpCX
+ oXYfD1PHfjW7qxZRxZ/4z4TN4hYGRrH8duheEOGvCrvoB88QpXAY5+FBfk/gQsHcD6nNdIQuOyUz
+ SUCALgWOrXm/Yudb4pYLg3QwVHJZCVVoemN4QhtwCovaXHFhVoUSnc1qCqBKr6bwrFItXpjAmwV3
+ EQ3Yu1SzzDFDWfeiwbJKH0v4beuIQVaQhFx2VhBYOx0qQQ1VjqcRurtLQS4347etbaonmmMXVfRO
+ 8E=
+UI-OutboundReport: notjunk:1;M01:P0:cksV9XsuSDk=;+YbD/ZkGsCaOhtlDn+Fv6zFt4a8
+ 57ipgbeNe6ZqZivTNZdpPWdpJNZgXRHtT9ayhxyHGCuxqAd6l4eOmcQ6WrjBFjpaOtCUpMa/x
+ qvZ88Cdsu2if/m06Vb7JArRW72aGG3wtJlLt2kD1p4chRDIliHg//3pkqbdKl2lGI6/Q/ey+3
+ X8XncX+CBpJOJ4+bI50qem1I8ajFP/U3eKy7btxXnul/MsRV7lki8xjsq/qxXDlGxR0PI+RQ8
+ sgborse2e/lbBsDhHbCFbxT4wXlQCOHYB1Yj776YUVQlzUP8gYVXOsDxKLyw1rx1Xonlta1em
+ UyTmYX3C5AOi08otOpIIQqg8uIttbPDHYsmxiPbkDIvohu6tcWyzTUl8ZAKIfld07CNjU1oPY
+ D7UDM3QCdupYOIW5maXirITC5oThN0uwXlIuDQ5+6yDu57aFrA4dm5TZ/ZOeKWnQ/psGWpmid
+ pYj3vupwpHQPxnXBXxdCKaZvj527Ytv5Z5SnJNk9PL3aB4RZWiQlDHSE7P4sS3ifRBM5nU3LO
+ fcMLumgv/QVNJ1tSxB+pTwDaDcSzuPFEJe6LG95Qv+b8QiEzighDmFS8b4eNa2NkfbhWw92ve
+ /CyjaxZ7Kfjya6iqAymLD/Du5azEtWX5qFGdiLGM+fIMbWRVydRZ/jtuqmqHz03pBIU6JddjG
+ skqV0f1AhWvLPYrc170BBBHCrKq9+QGBpidcEv8jtVDVS915CDA1SOURvroqyYHWWyszVnpCu
+ wLBpApKvvgNmGiASnnhk+pePSjqxwcpU5T6mXUz33Vz8sTbf9SJRWfPpDYjX88LfoM0fT3vv9
+ UHsRYEFlRRM8OZDCydSJPMmQ==
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230508_084722_193721_D5859E81 
-X-CRM114-Status: GOOD (  15.42  )
+X-CRM114-CacheID: sfid-20230508_085325_600117_674E0747 
+X-CRM114-Status: GOOD (  16.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,61 +105,78 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 5/8/2023 8:49 PM, Pratyush Yadav wrote:
-> On Mon, May 08 2023, Geert Uytterhoeven wrote:
-> 
->> On Mon, 8 May 2023, Geert Uytterhoeven wrote:
->>> Below is the list of build error/warning regressions/improvements in
->>> v6.4-rc1[1] compared to v6.3[2].
->>>
->>> Summarized:
->>>  - build errors: +9/-16
->>>  - build warnings: +1/-1439
->>>
->>> Happy fixing! ;-)
->>>
->>> Thanks to the linux-next team for providing the build service.
->>>
->>> [1] http://kisskb.ellerman.id.au/kisskb/branch/linus/head/ac9a78681b921877518763ba0e89202254349d1b/ (all 152 configs)
->>> [2] http://kisskb.ellerman.id.au/kisskb/branch/linus/head/457391b0380335d5e9a5babdec90ac53928b23b4/ (all 152 configs)
->>>
->>>
-> [...]
->>
->>>  + /kisskb/src/drivers/mtd/spi-nor/spansion.c: error: 'op' is used uninitialized [-Werror=uninitialized]:  => 495:27, 364:27
-> 
-> Hmm, I don't get why we get this warning. Line 495 is in
-> s25fs256t_post_bfpt_fixup(). It declares 'op' and then it does
-> 
->     op = (struct spi_mem_op)
->         CYPRESS_NOR_RD_ANY_REG_OP(nor->params->addr_mode_nbytes,
->                       SPINOR_REG_CYPRESS_ARCFN, 1,
->                       nor->bouncebuf);
->     ret = spi_nor_read_any_reg(nor, &op, nor->reg_proto);
-> 
+regards Frank
 
-Not all the fields of struct get initialized if you assign later on in
-the function vs at the time of declaration... For example cmd.dtr isn't
-explicitly set to any value here and may have garbage?
-> 
-> which initializes 'op' before using it. Same with line 364 which is in
-> the function cypress_nor_set_addr_mode_nbytes().
-> 
-> Even the compiler warnings [0] don't seem to make much sense to me:
-> 
->     /kisskb/src/drivers/mtd/spi-nor/spansion.c: In function 's25fs256t_post_bfpt_fixup':
->     /kisskb/src/drivers/mtd/spi-nor/spansion.c:495:27: error: 'op' is used uninitialized [-Werror=uninitialized]
->     495 |         struct spi_mem_op op;
->         |                           ^~
->     /kisskb/src/drivers/mtd/spi-nor/spansion.c:495:27: note: 'op' declared here
->     495 |         struct spi_mem_op op;
->         |                           ^~
-> 
-> [0] http://kisskb.ellerman.id.au/kisskb/buildresult/14922057/
-> 
->>
->> um-x86_64-gcc12/um-allyesconfig
->>
-> [...]
-> 
+
+> Gesendet: Sonntag, 23. April 2023 um 15:02 Uhr
+> Von: "Jonathan Cameron" <jic23@kernel.org>
+> An: "Frank Wunderlich" <linux@fw-web.de>
+> Cc: linux-mediatek@lists.infradead.org, "Frank Wunderlich" <frank-w@publ=
+ic-files.de>, "Lars-Peter Clausen" <lars@metafoo.de>, "Rob Herring" <robh+=
+dt@kernel.org>, "Krzysztof Kozlowski" <krzysztof.kozlowski+dt@linaro.org>,=
+ "Matthias Brugger" <matthias.bgg@gmail.com>, "AngeloGioacchino Del Regno"=
+ <angelogioacchino.delregno@collabora.com>, "Srinivas Kandagatla" <sriniva=
+s.kandagatla@linaro.org>, "Hui.Liu" <hui.liu@mediatek.com>, "Zhiyong Tao" =
+<zhiyong.tao@mediatek.com>, "Andrew-CT Chen" <andrew-ct.chen@mediatek.com>=
+, "Lala Lin" <lala.lin@mediatek.com>, linux-iio@vger.kernel.org, devicetre=
+e@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.in=
+fradead.org, "Daniel Golle" <daniel@makrotopia.org>
+> Betreff: Re: [PATCH v1 2/7] dt-bindings: iio: adc: Add support for MT798=
+6
+>
+> On Fri, 21 Apr 2023 15:20:42 +0200
+> Frank Wunderlich <linux@fw-web.de> wrote:
+>
+> > From: Frank Wunderlich <frank-w@public-files.de>
+> >
+> > Add compatible string and specific clock property for mt7986.
+> >
+> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+>
+> Given how trivial this is, I'll apply it without waiting for the DT main=
+tainers
+> to get to it.
+>
+> Applied to the togreg branch of iio.git and pushed out as testing for 0-=
+day
+> to take a look at it.
+
+Hi,
+
+i cannot find it in next and here:
+
+https://git.kernel.org/pub/scm/linux/kernel/git/jic23/iio.git/tree/Documen=
+tation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml?h=3Dtogreg
+
+was it dropped?
+
+regards Frank
+
+> Thanks,
+>
+> Jonathan
+>
+> > ---
+> >  .../devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml      | 1 =
++
+> >  1 file changed, 1 insertion(+)
+> >
+> > diff --git a/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701=
+-auxadc.yaml b/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-a=
+uxadc.yaml
+> > index 7f79a06e76f5..6168b44ea72c 100644
+> > --- a/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc=
+.yaml
+> > +++ b/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc=
+.yaml
+> > @@ -26,6 +26,7 @@ properties:
+> >            - mediatek,mt2712-auxadc
+> >            - mediatek,mt6765-auxadc
+> >            - mediatek,mt7622-auxadc
+> > +          - mediatek,mt7986-auxadc
+> >            - mediatek,mt8173-auxadc
+> >        - items:
+> >            - enum:
+>
+>
 
