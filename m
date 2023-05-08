@@ -4,68 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5813EC77B75
-	for <linux-mediatek@archiver.kernel.org>; Sun,  7 May 2023 21:41:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFFF0C77B7D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 May 2023 02:36:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=xuCzk6DqyZ2fCjPccft51jSbkGYvG1zx5q2m3ZeEIiA=; b=FpNC2LtNGu2FusMjn2zkCMqgR/
-	r+Z5mY2Lj4Q5ALMgp6j+9Yt/AlydGEG3767k5yJaUG+jD7gHnEy67jQqUC2rfzUI7ik+vW6is+1as
-	pqD1WaV0AKbFuflT5aO/iim2JgLIiJ3aoFBDqPFux5KQxhWArijROc1rBG1rOPVcJoSkauj00M/Aj
-	eVtL4E09yQ7EdDIH5E+98B6DDIv9k17fxolLfaejwq7sthsHTjjvfiXlkmXLZgoxTAtfgYH8Podqb
-	56q6b46ofq2Z4PFiV3asgyYIDAesiGmcvn7l9t8jLqes+F1wLHE0zGKtx01T850iYXR9VW6tam1AP
-	BWEgPm9w==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Dptqg8r0UsWrR3n0HKBRHqVrggh1ivQ7IQr3yU5eDRA=; b=yUZ26hd+MDSokWOLzKy1eUmR/+
+	O0iviBuoCYLbSRkksA6ytWX18nAoQp5Ek9XE0a9tC0fR/6HViGlXaJZpAprab9lpsbWf5rGMfWHdX
+	GJ2J56/JcATsobbEifcRP1j+KfJHzmwPHn5t7Qoa2bnP2YdPgshSMAIcSCVpVewcjrlvoV8dR7FCH
+	knnVqvXNCp6kLvwkcd2TVA7SzKjOyi0Q+89aHse0v7UvXNIGsKl8zuajFXeIbPyeL80Jzdv4QpS9u
+	6/kHDxWFAgy20vlCwFV+1ScI/LsI6KBZqJI9TRhrvoTN8Qo7huoFLhzL3tBQwv4ryCOralypw6XTh
+	Z8Emxj+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pvm7x-00GitB-1u;
-	Sun, 07 May 2023 21:41:09 +0000
-Received: from s2.dolansoft.org ([212.51.146.245] helo=mx.dolansoft.org)
+	id 1pvqjt-00H2Kp-01;
+	Mon, 08 May 2023 02:36:37 +0000
+Received: from mail-vs1-xe2f.google.com ([2607:f8b0:4864:20::e2f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pvm7u-00Girc-1W;
-	Sun, 07 May 2023 21:41:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=brun.one;
-	s=s1; h=MIME-Version:Message-Id:Date:Subject:Cc:To:From:In-Reply-To:
-	References:From:To:Subject:Date:Message-ID:Reply-To;
-	bh=xuCzk6DqyZ2fCjPccft51jSbkGYvG1zx5q2m3ZeEIiA=; b=EMpeMXaoM3PTi/AWcqlqN4Vo+1
-	GtwN/vl+G7Xo45snqlEQUsMovgZKPeNAJtrXwgKZqnya3SNbtvq61PkWDCJEthVoC6h0xJWXpvh/Z
-	UyCWAS/GxSDxaBNLoKZ2ZU/xh5jvwbJJQqMzPNznAqucDdLNvlQglAFK1rekGp93vKS+8808PUoxw
-	POvUq0936evFcMk+JzCQJurx7o8XHEt9PqKjQo6p0ks7S8bg1XKw5Nashdxq1Kn4+zPcxtp4eJgoH
-	gj9kllXFbxcEiRqmD30K6kXtYYlrSx+inhW42RWx0wo4raAyvR8WkWXVliN5fgmnD7YXUF/B27b9o
-	mZldzv0Q==;
-Received: from [212.51.153.89] (helo=blacklava.cluster.local)
-	by mx.dolansoft.org with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <lorenz@dolansoft.org>)
-	id 1pvm7U-000fES-32;
-	Sun, 07 May 2023 21:40:40 +0000
-From: Lorenz Brun <lorenz@brun.one>
-To: Felix Fietkau <nbd@nbd.name>,
-	John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] net: ethernet: mtk_eth_soc: log clock enable errors
-Date: Sun,  7 May 2023 23:40:35 +0200
-Message-Id: <20230507214035.3266438-1-lorenz@brun.one>
+	id 1pvqjp-00H2Jy-2s
+	for linux-mediatek@lists.infradead.org;
+	Mon, 08 May 2023 02:36:35 +0000
+Received: by mail-vs1-xe2f.google.com with SMTP id ada2fe7eead31-43278f6d551so1300971137.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 07 May 2023 19:36:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1683513392; x=1686105392;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Dptqg8r0UsWrR3n0HKBRHqVrggh1ivQ7IQr3yU5eDRA=;
+        b=ABTrz6Kj/Gn2qx7IKb+RJD9gjgl2klGp6PIajxFslkI7N+K3PdelDUbcnk+mL+cywm
+         878ElpMOODX9eaTWjRh6k7XadkTUhqbpSexVNnjzRNotq9TZVozK8oczY60o0a4Tyb4Q
+         fyUqIO+KGn9QKm49zoSyVRHOfuQMjOG6sw9XM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1683513392; x=1686105392;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Dptqg8r0UsWrR3n0HKBRHqVrggh1ivQ7IQr3yU5eDRA=;
+        b=gMPrYJ28hzYwgbfRLIP+2q7Nfn37IjO0PYU6MQ+4MZx6tydh1jKVeCzUxO3kjQ2uqk
+         6spVRvPBvfQmByOAFa1m/MbskApIXmN6+chVMokbSRMhyapF5DIkZUcWoXB8Jazv7hrB
+         0DsCBafLvY0ffQzwwmf3HEz+oK6YPbTh60kfwvvEEPNDcehhJJBuAS4GmOUmT/3t/xMr
+         tjrAlCcXsdx/7fEwIPCEFMq1U0XqzEm+D/DYKRcH6+0SZvmMe07QaSnfmRabkNm2XYJM
+         DFjy1drvYAMs3Q0scMl+2DgQLjuzPxwwVJ1+seH2JtjQN7TjIHB830RCsVZvq2cgRB+h
+         GrUg==
+X-Gm-Message-State: AC+VfDyMDN6K6qh2bmDSFxd/ILJTwLGBpc3mM092dALLSsVozRb6ZAQy
+	8O1jUh4/Nz2xX0TxI3ZnaRQLUYQjYICQYiB2wbCaEg==
+X-Google-Smtp-Source: ACHHUZ50gsiXHy03kBM5uO2R7gxdLyM9XFldG88yruZf0Axm2n6Ko9rRM3MEf/5h29DiqpiBoLZjjoiG7pZ94fUBcuw=
+X-Received: by 2002:a67:f353:0:b0:434:8479:1812 with SMTP id
+ p19-20020a67f353000000b0043484791812mr2281063vsm.18.1683513392157; Sun, 07
+ May 2023 19:36:32 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20221018-clk-range-checks-fixes-v4-0-971d5077e7d2@cerno.tech> <20221018-clk-range-checks-fixes-v4-29-971d5077e7d2@cerno.tech>
+In-Reply-To: <20221018-clk-range-checks-fixes-v4-29-971d5077e7d2@cerno.tech>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Mon, 8 May 2023 10:36:21 +0800
+Message-ID: <CAGXv+5E7pi5_R1u=dpTSVdBPhG6_GFnJpatbExhB2W2dhue9cQ@mail.gmail.com>
+Subject: Re: [PATCH v4 29/68] clk: mediatek: cpumux: Add a determine_rate hook
+To: Maxime Ripard <maxime@cerno.tech>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, linux-clk@vger.kernel.org, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230507_144106_509009_4CCFFED9 
-X-CRM114-Status: UNSURE (   9.56  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230507_193633_961982_930C739E 
+X-CRM114-Status: GOOD (  23.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,32 +87,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Currently errors in clk_prepare_enable are silently swallowed.
-Add a log stating which clock failed to be enabled and what the error
-code was.
+On Fri, May 5, 2023 at 7:27=E2=80=AFPM Maxime Ripard <maxime@cerno.tech> wr=
+ote:
+>
+> The Mediatek cpumux clock implements a mux with a set_parent hook, but
+> doesn't provide a determine_rate implementation.
+>
+> This is a bit odd, since set_parent() is there to, as its name implies,
+> change the parent of a clock. However, the most likely candidates to
+> trigger that parent change are either the assigned-clock-parents device
+> tree property or a call to clk_set_rate(), with determine_rate()
+> figuring out which parent is the best suited for a given rate.
+>
+> The other trigger would be a call to clk_set_parent(), but it's far less
+> used, and it doesn't look like there's any obvious user for that clock.
+>
+> Similarly, it doesn't look like the device tree using that clock driver
+> uses any of the assigned-clock properties on that clock.
+>
+> So, the set_parent hook is effectively unused, possibly because of an
+> oversight. However, it could also be an explicit decision by the
+> original author to avoid any reparenting but through an explicit call to
+> clk_set_parent().
 
-Signed-off-by: Lorenz Brun <lorenz@brun.one>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+The consumer, the cpufreq driver, assumes the original parent to be
+the dedicated PLL that drives it. It gets a reference to the original
+parent with clk_get_parent(). It also gets an intermediate (stable) clock
+via DT. It does explicit clk_set_parent() calls to switch to/from the
+stable clock, and does clk_set_rate() on the dedicated PLL in between.
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index e14050e17862..ca66a573cfcb 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -3445,8 +3445,10 @@ static int mtk_clk_enable(struct mtk_eth *eth)
- 
- 	for (clk = 0; clk < MTK_CLK_MAX ; clk++) {
- 		ret = clk_prepare_enable(eth->clks[clk]);
--		if (ret)
-+		if (ret) {
-+			dev_err(eth->dev, "enabling clock %s failed with error %d\n", mtk_clks_source_name[clk], ret);
- 			goto err_disable_clks;
-+		}
- 	}
- 
- 	return 0;
--- 
-2.39.2
+So yeah, they only use set_parent hook.
 
+> The latter case would be equivalent to setting the determine_rate
+> implementation to clk_hw_determine_rate_no_reparent(). Indeed, if no
+> determine_rate implementation is provided, clk_round_rate() (through
+> clk_core_round_rate_nolock()) will call itself on the parent if
+> CLK_SET_RATE_PARENT is set, and will not change the clock rate
+> otherwise.
+>
+> And if it was an oversight, then we are at least explicit about our
+> behavior now and it can be further refined down the line.
+>
+> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-mediatek@lists.infradead.org
+> Signed-off-by: Maxime Ripard <maxime@cerno.tech>
+
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
