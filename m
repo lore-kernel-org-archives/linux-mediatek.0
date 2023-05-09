@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4090C77B7F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 May 2023 02:12:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECDA7C77B7C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 May 2023 03:12:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=QJn6CcatIgKelv2sN/+MfAU7roUJAp0T6mjj6hrbnEU=; b=vO2IRo2E186/aoHu868IAR5QSU
-	Ujih5OV8r7xQAM8RqRTipLfdiGfC8LZo6Wfyc18pPoZ/PSbVBQ3mlcGwPafeDvE1duMVKOby/f46a
-	qlG5AYJcR6aRkXRDhJ7hvgEHaLY1TPgufKu8igIyRtEDWtXQlr0NOsVapnfLqQOvQ8BtEPLNsrDoj
-	lZWQ+rfzN//Iy/0VyAjVVJC29lSjAy94ARJXpQBC7Kv3Ez5vaDj9FcX6ewPnkN1r0eg9kvgnwRMRn
-	0Y9On2YXSxqtea2tlu/S/2YaB+rq1WLmuPecfKX1A2ekFvs9smimCu6HszAfNjQRh7Vwj3g9nrHFz
-	ckjuq4pQ==;
+	bh=KGzNdZj5bBIgcavZMAN1mE0iGEII7p8CqoCQyefWETw=; b=e/H3Pc+8l4uSH8LVHYVGK36/IC
+	L15ZwfPqhvAatt8ByvVVFWbT79DVVX72ZC7nfRlTTG2La3X+j+Sz0z1dBV/gSJgYLP7l2jAVFLDOc
+	0qtOo13XoE/T3jiJ3YGO6F/cf9hLGQKDdso/OYQAcXI8Ci7NeO3TeXY9nUNB0Sr/DwRrmp7lwLX/r
+	W0IUfkc+3YW4bhZsUeQAEBw8+jFaBirOSPIeyVyHWXLfzkOzrHmXTnN1jQV7reeSDlqD2NBTyKVl6
+	Jz0xuCVJ/Z9U+K9fMwG1W/SbaURVv9rEpk9+8XtbXAHYZmXOfAEmjWUOq6i7IYLbQrRX0ACEgQafd
+	RzQXcqWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwCqO-00253N-0C;
-	Tue, 09 May 2023 02:12:48 +0000
-Received: from mailgw.kylinos.cn ([124.126.103.232])
+	id 1pwDlv-002Abb-0t;
+	Tue, 09 May 2023 03:12:15 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwCqL-00250d-1V;
-	Tue, 09 May 2023 02:12:47 +0000
-X-UUID: 664dc89cd2b247b58cbe342628b969e4-20230509
+	id 1pwDls-002Aam-0i
+	for linux-mediatek@lists.infradead.org;
+	Tue, 09 May 2023 03:12:13 +0000
+X-UUID: 44d3415cee1711ed912e1518a6540028-20230508
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=KGzNdZj5bBIgcavZMAN1mE0iGEII7p8CqoCQyefWETw=;
+	b=hrbsO0vrU6OQZnpvUkbc1nODgIZ01IVEefuOmoihwfCyj6zdcI/V437uUVqBC4mhcA12vzHhb+YEKSKf4MffZXT3g03bEDwsOThTgNjeCxJPBzKcNTjoeElU1k4kPgKYCb2H+9Sdk9y6TKVryjNRC3aSNep7QO81feryiZkpy4E=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.22,REQID:e00b98a3-2ddc-4ba9-90f4-e29fc37af68b,IP:5,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:-15,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:-15
-X-CID-INFO: VERSION:1.1.22,REQID:e00b98a3-2ddc-4ba9-90f4-e29fc37af68b,IP:5,URL
-	:0,TC:0,Content:-5,EDM:0,RT:0,SF:-15,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-15
-X-CID-META: VersionHash:120426c,CLOUDID:6ace2c6b-2f20-4998-991c-3b78627e4938,B
-	ulkID:2305091012243TVTBB2R,BulkQuantity:0,Recheck:0,SF:38|24|17|19|44|102,
-	TC:nil,Content:0,EDM:-3,IP:-2,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-	,OSI:0,OSA:0,AV:0
+X-CID-O-INFO: VERSION:1.1.23,REQID:1ad2efc5-8d67-4d8c-bf8d-26008381ad59,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:697ab71,CLOUDID:9a312f6b-2f20-4998-991c-3b78627e4938,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
-X-UUID: 664dc89cd2b247b58cbe342628b969e4-20230509
-X-User: gehao@kylinos.cn
-Received: from localhost.localdomain [(116.128.244.169)] by mailgw
-	(envelope-from <gehao@kylinos.cn>)
-	(Generic MTA)
-	with ESMTP id 1014334548; Tue, 09 May 2023 10:12:21 +0800
-From: Hao Ge <gehao@kylinos.cn>
-To: mturquette@baylibre.com,
-	sboyd@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	wenst@chromium.org
-Cc: gehao618@163.com,
-	linux-clk@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Hao Ge <gehao@kylinos.cn>
-Subject: [PATCH] mediatek/clk-mt8173-apmixedsys: use devm_of_iomap to avoid resource leak in clk_mt8173_apmixed_probe
-Date: Tue,  9 May 2023 10:12:14 +0800
-Message-Id: <20230509021214.17105-1-gehao@kylinos.cn>
-X-Mailer: git-send-email 2.25.1
+X-UUID: 44d3415cee1711ed912e1518a6540028-20230508
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <ryder.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 455151935; Mon, 08 May 2023 20:12:02 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 9 May 2023 11:12:00 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 9 May 2023 11:12:00 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, StanleyYP Wang
+	<StanleyYP.Wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt7915: fix background radar event being blocked
+Date: Tue, 9 May 2023 11:11:57 +0800
+Message-ID: <5cc3ad59270940a3c4229a4c780e106b1b0fe53c.1683587774.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230508_191245_836391_B6A444FA 
-X-CRM114-Status: GOOD (  10.67  )
+X-CRM114-CacheID: sfid-20230508_201212_301380_E0A0BB1D 
+X-CRM114-Status: GOOD (  10.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,35 +82,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use devm_platform_ioremap_resource to take the place of of_iomap for
-avoid that we don't called iounmap when return some error or remove
-device.
+From: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
 
-Fixes: 4c02c9af3cb9 ("clk: mediatek: mt8173: Break down clock drivers and allow module build")
-Signed-off-by: Hao Ge <gehao@kylinos.cn>
+The background radar uses MT_RX_SEL2 as its band indication, so fix it.
+
+Fixes: 7a53eecd5c87 (wifi: mt76: mt7915: check the correctness of event data)
+Signed-off-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- drivers/clk/mediatek/clk-mt8173-apmixedsys.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/clk/mediatek/clk-mt8173-apmixedsys.c b/drivers/clk/mediatek/clk-mt8173-apmixedsys.c
-index 8c2aa8b0f39e..8a2a88c63d15 100644
---- a/drivers/clk/mediatek/clk-mt8173-apmixedsys.c
-+++ b/drivers/clk/mediatek/clk-mt8173-apmixedsys.c
-@@ -146,8 +146,8 @@ static int clk_mt8173_apmixed_probe(struct platform_device *pdev)
- 	struct clk_hw *hw;
- 	int r;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index 9fcb22fa1f97..088a065e37d5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -274,7 +274,7 @@ mt7915_mcu_rx_radar_detected(struct mt7915_dev *dev, struct sk_buff *skb)
  
--	base = of_iomap(node, 0);
--	if (!base)
-+	base = devm_of_iomap(&pdev->dev, node, 0, NULL);
-+	if (IS_ERR(base))
- 		return PTR_ERR(base);
+ 	r = (struct mt7915_mcu_rdd_report *)skb->data;
  
- 	clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
+-	if (r->band_idx > MT_BAND1)
++	if (r->band_idx > MT_RX_SEL2)
+ 		return;
+ 
+ 	if ((r->band_idx && !dev->phy.mt76->band_idx) &&
 -- 
-2.25.1
+2.18.0
 
-
-No virus found
-		Checked by Hillstone Network AntiVirus
 
