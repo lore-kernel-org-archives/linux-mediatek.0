@@ -4,108 +4,165 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9D60C77B75
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 May 2023 17:38:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D2C9C77B75
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 May 2023 18:11:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZhvRBvl3FYCX8XpkRDm1DPR77OX0DZiPb+0zBJV1pWQ=; b=COBBS9IZwb68up26jfRKwOHqpD
-	W9X7j3lX5Xf96WIbcEl/H/GeN5E9B0zQaZ2E9x+6goybLobSm4aEH+fxYxgQ1eUl+51AoEj8Yn8Fg
-	+gd0JOX/PChK0x8zt8/zRVFYeucMsjTxJGMFFRmQQKEz4WMUkyBfVdka/V3twHAidYWh+hVVmF0ZW
-	1AhMcgLHA1QXzzjw4gyRxZiiFNdPVTgMLpXPTLdIDJqyiKjAGTVkgEpCAUDgJ34irLWUM6gB5GkTm
-	iYIKAwcXEEYx2UX7vUj1Rlm6IwEKRLuxZudPxohBQRYD0i3f3sS3aOsOvcAuh4BEtmHzZdK5gMwGn
-	o4KLJEiw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gQVOIbmiByfApi5JUzM9If9IJ6vpNPByZbMs3mnJ4AQ=; b=GFLDekGm2mM4pHFW62j3DocFKz
+	Jt6aNQnA+z/0InEbUlJphVIplsTkRCZW3x8zIzES5FoRoGl9t1BC2TZpOg45IxEDdlP2Stq8X5CoE
+	ZOu2p62x8rjs1K9JKcUACqoRrbW5qUAlxoaZNNYXC7ctwObm0ZDfPDv1enEZoEi3g09ShS9HBTZQZ
+	MwsVhq6F5IyLn9W/UAl+0PueZow5cYVypKNL+edkBUOTPbjTQyDcORBvQp2fp/oCIw7jjRVRNuU74
+	ymeHbR78LPt/9RvbZTIYASsi/RgFYcDsPpeZwQCPxKYctMH/cMIRCYUdZyGVn476zcPADKqx2+7JW
+	tWThq1iQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwRIE-003v52-1O;
-	Tue, 09 May 2023 17:38:30 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pwRnc-003ysl-0q;
+	Tue, 09 May 2023 18:10:56 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwRI8-003v3w-36;
-	Tue, 09 May 2023 17:38:26 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id F22FD635E1;
-	Tue,  9 May 2023 17:38:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 505E9C433D2;
-	Tue,  9 May 2023 17:37:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1683653903;
-	bh=MGShGh6VlR3Hv1wloISBcqQ3c580bpsFZyJYjZpPIOc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=SZZkL4vQkF3AJdtwH9gbqGDk+xHHq8tV5XNIdopJaR4FlgR4t0ooio/8DGBpkkDI1
-	 9XvZh/u8VrwtVLR6+bWUtuZfy3ka3/YOGDr13I6xXvr+C2HbOIlR3sg+oRq+s6WkaX
-	 Rkqh5xGd0kOzk1YjGukRVB1zds+TGaaDX2jB0kRdTsqYsrkO3Ft7JAKYCh7PMGBLpW
-	 alJPaiC0i7aYN/8emkDIP9Xwx4f44X6MEjZhGFJkaNCeUuWlR3XsB9wLz22IZkVMf/
-	 NN+1vwZ7hdXXNsKoUMdjVg4qk+znXu6AnK8f8h7pRveIc4z909KgFaPptU75ZM77M2
-	 VmsQjc6DYnN7Q==
-Message-ID: <1b766164-b5e8-61ac-bf73-6d2c49c72409@kernel.org>
-Date: Tue, 9 May 2023 12:37:39 -0500
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH v3 29/65] clk: socfpga: gate: Add a determine_rate hook
+	id 1pwRnZ-003yrT-14
+	for linux-mediatek@lists.infradead.org;
+	Tue, 09 May 2023 18:10:54 +0000
+X-UUID: d2a2a7caee9411ed83ed1395ce914268-20230509
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=gQVOIbmiByfApi5JUzM9If9IJ6vpNPByZbMs3mnJ4AQ=;
+	b=T3vow54hxi4o6muGpQw2pNfgxnAZ5P/K2FS7QgzC7KYgwvOXrsnv/59C/XPWej5NQ7nU3aa6SQI1NzR5Nt3yad6Wsscs+09yvM2Kc5bNEJ1EOMTidD2N6fecXJnm+aIyN8eOgTJruvTm2Uk3GSawlJMFTmTYNih5dTOT6qGXgw4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.24,REQID:0fe368b2-63f2-4595-9f22-7db8c0c3bfc3,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:178d4d4,CLOUDID:bf20a03a-de1e-4348-bc35-c96f92f1dcbb,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: d2a2a7caee9411ed83ed1395ce914268-20230509
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <ryder.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1944983156; Tue, 09 May 2023 11:10:47 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 10 May 2023 02:10:45 +0800
+Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 10 May 2023 02:10:45 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=ScRWSqnMEEz6wehMRlhUJjt+a40OBpwXzlRjDE3oWCU/KJHalbKTV8+ZCwsil6dJPJGhQpN4PyINnPaC8CNS8UtfnVfaL4rorz5r9FwRhybFEkLsNWv9Wfqn2uIjcnAQgeEKL08xH+Fs/wa32g2Lq+4D72O9mg9nAjJoDBzyy4TbntU0xYp4grzAv3sgaUsuoSjysO30iZG7/OWx035qfcIc5T0FpjZigtSqyOteAg3wD6YE+oMW9W+Oz/IQBmIR0QFPS+HUtWpLnuaEWE56nnAi+V5LzwdGVjNdqUpasP/a4bQ/jyXi7FO3XhPFdhMuVb2Y/cr/7xO4SADXmx3QRA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=gQVOIbmiByfApi5JUzM9If9IJ6vpNPByZbMs3mnJ4AQ=;
+ b=SRNqQxuFMF/82ntu8ARn4MEnTNOewxLLA9r3oYXlcPXVjnS5CkSni1fDYHjs0Y8q7m7/PA9O0zr2z4eJPCcs/8MpMjUJ4d3h5nh0nSXP2VWPEXSORhWXEqMfCILcckeVryFBNTyIT6kjA0mMWmydXP9OtvAQXClEpXG78F3focwyx/C79MyGFnyQc837BDs/Hv3VKI87K67A7WmXLyY+H/HrF070pjGvoFlU8lgi00atR5aORexpqkHi+q5nFvWO3+Xhg6iPOiW1RX8EEAOmvXxp4w0CjIP20DYyQ9RVvUuljWvwpklNm/C3H6G4xxZfKpxwNJbyIY/tlIFa+bka0A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=gQVOIbmiByfApi5JUzM9If9IJ6vpNPByZbMs3mnJ4AQ=;
+ b=AQVV+ZPKPwR/R3NmbQL74CpJ8zKiw7id58BgiwhZZQF+uPsajRyUDKZHrbBn0MQXRJFuaUcADZcAD9X5rtiNDTXT8uZrcJgUEP/V0VEQD0fIOzv/ab7m6Oz9z+c4f3v9s3iCsS46f8H0ZvtiEjhNs4fxBDL1tHfavKo+IVjxCoU=
+Received: from TY0PR03MB6354.apcprd03.prod.outlook.com (2603:1096:400:14a::9)
+ by SEYPR03MB7586.apcprd03.prod.outlook.com (2603:1096:101:144::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6363.33; Tue, 9 May
+ 2023 18:10:40 +0000
+Received: from TY0PR03MB6354.apcprd03.prod.outlook.com
+ ([fe80::d6f0:880d:41c4:8086]) by TY0PR03MB6354.apcprd03.prod.outlook.com
+ ([fe80::d6f0:880d:41c4:8086%3]) with mapi id 15.20.6363.033; Tue, 9 May 2023
+ 18:10:40 +0000
+From: Ryder Lee <Ryder.Lee@mediatek.com>
+To: "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
+	"nbd@nbd.name" <nbd@nbd.name>, =?utf-8?B?RGVyZW4gV3UgKOatpuW+t+S7gSk=?=
+	<Deren.Wu@mediatek.com>
+CC: "lorenzo.bianconi@redhat.com" <lorenzo.bianconi@redhat.com>,
+	=?utf-8?B?U2hheW5lIENoZW4gKOmZs+i7kuS4nik=?= <Shayne.Chen@mediatek.com>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	=?utf-8?B?RXZlbHluIFRzYWkgKOiUoeePiumIuik=?= <Evelyn.Tsai@mediatek.com>,
+	=?utf-8?B?Q2h1aS1oYW8gQ2hpdSAo6YKx5Z6C5rWpKQ==?= <Chui-hao.Chiu@mediatek.com>
+Subject: Re: [PATCH v5] wifi: mt76: mt7915: report tx retries/failed counts
+ for non-WED path
+Thread-Topic: [PATCH v5] wifi: mt76: mt7915: report tx retries/failed counts
+ for non-WED path
+Thread-Index: AQHZgiYdqqHas/p3rEWBZNfz0nlAma9SPtKA
+Date: Tue, 9 May 2023 18:10:40 +0000
+Message-ID: <46117c51d736be7ab8e5cf280d779f45751b73ae.camel@mediatek.com>
+References: <13d9169b5709efad969d7d167a1ff19828395fed.1683602740.git.ryder.lee@mediatek.com>
+In-Reply-To: <13d9169b5709efad969d7d167a1ff19828395fed.1683602740.git.ryder.lee@mediatek.com>
+Accept-Language: en-US
 Content-Language: en-US
-To: Maxime Ripard <maxime@cerno.tech>
-Cc: Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, =?UTF-8?Q?Andreas_F=c3=a4rber?=
- <afaerber@suse.de>, Manivannan Sadhasivam <mani@kernel.org>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Claudiu Beznea <claudiu.beznea@microchip.com>,
- Max Filippov <jcmvbkbc@gmail.com>,
- Charles Keepax <ckeepax@opensource.cirrus.com>,
- Richard Fitzgerald <rf@opensource.cirrus.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- David Lechner <david@lechnology.com>, Sekhar Nori <nsekhar@ti.com>,
- Abel Vesa <abelvesa@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Peter De Schrijver <pdeschrijver@nvidia.com>,
- Prashant Gaikwad <pgaikwad@nvidia.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, Ulf Hansson
- <ulf.hansson@linaro.org>, Linus Walleij <linus.walleij@linaro.org>,
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
- Alessandro Zummo <a.zummo@towertech.it>, Chen-Yu Tsai <wens@csie.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>, Liam Girdwood <lgirdwood@gmail.com>,
- Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>, Paul Cercueil <paul@crapouillou.net>,
- Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
- <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
- linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-arm-kernel@lists.infradead.org, linux-actions@lists.infradead.org,
- patches@opensource.cirrus.com, linux-stm32@st-md-mailman.stormreply.com,
- linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
- linux-tegra@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-phy@lists.infradead.org, linux-rtc@vger.kernel.org,
- linux-sunxi@lists.linux.dev, alsa-devel@alsa-project.org,
- linux-mips@vger.kernel.org
-References: <20221018-clk-range-checks-fixes-v3-0-9a1358472d52@cerno.tech>
- <20221018-clk-range-checks-fixes-v3-29-9a1358472d52@cerno.tech>
- <679921ee-98d4-d6ef-5934-e009fd4b31fc@kernel.org>
- <sjlp5ubnpvulgwhhymmfkmmobkgxacyqwagqozodkee3di2qik@3igj6k3zgbk6>
- <57dd81d0-510e-0fab-670d-1109eb8dd974@kernel.org>
- <tgtfisqxubin4cjj6q26fboirbcnjzcazt5y3m322lw5lskz6l@d3tgz4hdfnk2>
-From: Dinh Nguyen <dinguyen@kernel.org>
-In-Reply-To: <tgtfisqxubin4cjj6q26fboirbcnjzcazt5y3m322lw5lskz6l@d3tgz4hdfnk2>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TY0PR03MB6354:EE_|SEYPR03MB7586:EE_
+x-ms-office365-filtering-correlation-id: abf26686-3e77-4643-ac15-08db50b8b29f
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 9SP+j79oKv+oRW+uD3qYpg2DTTyNE0UGDOoejdN1v1cWep2YZ/MpXjbhSGRdqzXCyFJcU/XvHZc1VJ1DwvTBGz1WavxtfoX9A3l+e4QsoJa4CmxCc9GcveDk7d2sOx0bm+a4XhjgLQzgE5mejmTsMgoo8UVxTANTZCxUNSLPLbEOQ8RvmKDOJnyzD2FZl6uGkFT1kCPhp1zLV86XVVzeZD+R+S3M54OScGSVcA9bbCZKGtP2w7CLmOlNIjgZQ8zCWnsV4sD730weDOIC4IOJK3nCTFLEoRXRZ1OKpN86KHgBBH77wKrprqh09Zdc4FAbXD4xkJksbsalAxr6ZEHY5lBYw3B8Pcw1a1OmzOGqpMxhmt8mNEqG2BFtw39N95Sd9zP3sZywHrO1M63+SV+IsDXfDZ8HcbIDIm0hAEFumV/jvSQIVyZqXYR5tnonrSyfB4zOeV8AHn7lXVK38t5R2HeWBUYM9dmu0DjmOPFT+9RofkW1tk4MTn0+uZblxmxOy7aUu7KsRBrvQN89/osoNQ1BwG5OlxO6sbOxxmeG4C76KhISNAF2/DTAKb+iHFhpn0zMuezG++3w0eK0jqRAVxBfNkbkNQEw7DGUYXm+wOcZMTS8TGwyvzQAo6RcAs5q5Zmj3dha2eNSJgCZMdzToAitzcxnkyFIyfUYokajzH8=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TY0PR03MB6354.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(396003)(366004)(346002)(39860400002)(376002)(136003)(84040400005)(451199021)(83380400001)(76116006)(6636002)(6486002)(4326008)(71200400001)(2616005)(478600001)(110136005)(6512007)(6506007)(186003)(26005)(54906003)(107886003)(2906002)(5660300002)(36756003)(66556008)(64756008)(66946007)(122000001)(8676002)(66476007)(8936002)(41300700001)(66446008)(316002)(38070700005)(86362001)(38100700002);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?UkhPKzJneWJYV1BvUVQrL3lIcW1mb2d6ZHZNS0M5MnljYVpkU2dPUUZGWUpM?=
+ =?utf-8?B?QUFybE9aUERERkVpS3NrZURRWjJYTlE3YU1wSENxU1EycS9iNDdMQjdnZnpQ?=
+ =?utf-8?B?dmlyak96eGQ4eTJZakpHcUZxUC9yaTVuVjJERCtEVHhqaG92TjdacnNCS1Er?=
+ =?utf-8?B?c3pKVjVyV21jMXJZL0U4SThSdzBsMmh1dkM3ai9LeDFEcFFlVTliZjFjNEpL?=
+ =?utf-8?B?dVFSWDZnOWxrSWxCZEhRYksrZXUxZittNTRwdnNqdjBsT2JTVkJoN1dkTlEw?=
+ =?utf-8?B?QjJNVnJldFlwTUdEOEpPY1Ryd0JCckc3eDFSc0FwejFZZTFXTHo2bzVmYzY5?=
+ =?utf-8?B?SUlIY3YybjBRWHgxeWdZT1JRMWJTcCtqYWt2Vk0zdVlJK0tweDlWN3V0Tlc2?=
+ =?utf-8?B?azdBd3djd3hFcDJ5dngvRHZ6OHpnTSs1YkI0WGV3ZWFzTzEraDJQODJURGtT?=
+ =?utf-8?B?U2ZXak95eGQweTdXOThWS2FETlRoSVpYS3JTNGZ5WDE3Nm9Cc25HeEV4cG5T?=
+ =?utf-8?B?V1d4UFU4RWhqWnR1Ykl2eExJTWhjYUovOGc0Uk43RkZ0Y1lLdTQxL3BsZTh2?=
+ =?utf-8?B?NVV3NnpWelBDVVk0WnJBMmlrbGY5bVpNWkZjSjZ3a1lGM2o5bUx0ak5oR1lE?=
+ =?utf-8?B?VXloc3ZZQjRWQXpSWUxBa1dTRXBlaGdyVU9ENUF3OWFTc1gvMzVJaFUzdG1D?=
+ =?utf-8?B?MktjM3hwZDBGcmN3RkRuVmRjbEtrS1dtekdweVB6Zmp0N0lVK1ZZdEhURGhJ?=
+ =?utf-8?B?QUUzNTlVR1FSWEFmcStiak16QjVPRGxTOWtoY2hZbDlHTS9qclpXRTFMWnRQ?=
+ =?utf-8?B?MXU2Ky9DYzh5dHE4WkNydW9IeG8zWUR0VlRaRkk4b3ZFMDRFa1ZsVUx4YU1N?=
+ =?utf-8?B?TmZGL1VQOXovRmMwcDFlejhwWTFTQUlZK1ROTGc2bmJnZjR1YzVHUGdoOTRN?=
+ =?utf-8?B?Rm1INDVBdEoyckZoak1sTnZKU1JFUFZ0akpGZHljWFk2dnlaREFOcUYwTDJ4?=
+ =?utf-8?B?bU9YY21MQ1VWd01Sa2JVdTJyZ2o3R05saXJ6OVBCVmptWnh6bXd0N0l0WEQ1?=
+ =?utf-8?B?bHcwZ0t3SnI5TWxwSFd2WEcvZjBGb200WEVzTWwybjdINkVsbktLRnd2elB1?=
+ =?utf-8?B?WVZIZVI3dEk1NVdrN1NmUy9sR2VhZHhLRmIwdUtnVFdDOTRsbFcyY0FyNStO?=
+ =?utf-8?B?K2xBMFEwMG1qems1SVZ1VWNzNkFrdHdrTlRNRzR0eFRxWGtINStmQnljdHhD?=
+ =?utf-8?B?MDZKb3lRTWU2UVJHR1k0MFBYVlNGSGFxcVg4NTByM1c5eERoRVRveWpMWUs4?=
+ =?utf-8?B?QmpyTXRTVloxbGNYQjVVeGpNM09iaEtKU3poc05TUHByK1UrZmdGVkc4aE5r?=
+ =?utf-8?B?K1diODdhbVU3ZDkrZitFY3VjQXlHNUU5ZFpWaHptSHVKYWxlWFZabFBzMkVx?=
+ =?utf-8?B?ekk3c2FpOURocHBUbDZlN0lnRzZNMnk4MDh4WFo4NTkyc0hzY0syME95Y2Zt?=
+ =?utf-8?B?VDZCTVpYQ3ZEbDEzdzY5cGt6cFhtZVQxUTdyZGtROXhPUU5ncDNsQ28xYS85?=
+ =?utf-8?B?NE1JNnFPWHQrS2tHc1dTZ0FJTDNtZ0x4VERXbENldXNpOGlqSTZqT1JPTjhw?=
+ =?utf-8?B?TDdGcHpyVXEwdXdOVDhISDlncVY5V2Q2WjFKN3RpTGFzRmxZMDNETEhRY3Bo?=
+ =?utf-8?B?aXlnRTdEM21QVVp5aGUvaFhVbDVCTDRYQTJ1cnBBSzRRTzZndjh5dExFMlNN?=
+ =?utf-8?B?TVl3emVKRkVLVWh4dXRTQXNzTGNGdVJpTlRKVC9PRUZMUk55SytrNVkxN0pv?=
+ =?utf-8?B?eGJMVHpuUXVuTXZwMXBmTk5xVGlCTE8yM0p0ODg4RnhvcnFzdE4rM1BNOXgy?=
+ =?utf-8?B?NmpXSkc3dDJEcmRvUFE3WXMwVW81RmlRWmx1UGlEYWRWK0wzLzlObE12a1Ft?=
+ =?utf-8?B?WXFuMmZjUjVwWGJuRXhLdDJUU3VwdFpZNFEweDZ1YjRWclA2dklHSDQwZUtq?=
+ =?utf-8?B?eWFnUXVOclg0NnpWSkIyeUlsNGQwaHRhMitjM1dmakcxVjNyb3Y2VStUSFBJ?=
+ =?utf-8?B?ODl5UnZXZkdDTDVkZVQyem5JY25PWGxKYkd2dkxPUzArZmpQN2ovMVNrMElx?=
+ =?utf-8?B?Nk1LaGcrMjM5ZDBIOVNhdFVmMWhKZnZFOXVNRDcra1FmN1NBcGhIcGxKNm96?=
+ =?utf-8?B?QXc9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <269F575615D9CF4A9DD64CC52C9DF82C@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TY0PR03MB6354.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: abf26686-3e77-4643-ac15-08db50b8b29f
+X-MS-Exchange-CrossTenant-originalarrivaltime: 09 May 2023 18:10:40.3832
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: I71u/XgFtqI4TkDtrqUwNJc0NEPvBOiuQAXIz3frJwvO8H69uUfuHLkWUcCQTh+10P6+8KRa5CYavQrd/I9mlA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR03MB7586
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230509_103825_112690_47B920F7 
-X-CRM114-Status: GOOD (  35.42  )
+X-CRM114-CacheID: sfid-20230509_111053_434378_B2EAD65D 
+X-CRM114-Status: GOOD (  17.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,222 +177,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Maxime,
-
-On 5/4/23 12:04, Maxime Ripard wrote:
-> Hi Dinh,
-> 
-> On Thu, Apr 27, 2023 at 02:09:48PM -0500, Dinh Nguyen wrote:
->> Hi Maxime,
->>
->> On 4/25/23 09:48, Maxime Ripard wrote:
->>> Hi Dinh,
->>>
->>> On Mon, Apr 24, 2023 at 01:32:28PM -0500, Dinh Nguyen wrote:
->>>> On 4/4/23 05:11, Maxime Ripard wrote:
->>>>> The SoCFGPA gate clock implements a mux with a set_parent hook, but
->>>>> doesn't provide a determine_rate implementation.
->>>>>
->>>>> This is a bit odd, since set_parent() is there to, as its name implies,
->>>>> change the parent of a clock. However, the most likely candidate to
->>>>> trigger that parent change is a call to clk_set_rate(), with
->>>>> determine_rate() figuring out which parent is the best suited for a
->>>>> given rate.
->>>>>
->>>>> The other trigger would be a call to clk_set_parent(), but it's far less
->>>>> used, and it doesn't look like there's any obvious user for that clock.
->>>>>
->>>>> So, the set_parent hook is effectively unused, possibly because of an
->>>>> oversight. However, it could also be an explicit decision by the
->>>>> original author to avoid any reparenting but through an explicit call to
->>>>> clk_set_parent().
->>>>>
->>>>> The latter case would be equivalent to setting the flag
->>>>> CLK_SET_RATE_NO_REPARENT, together with setting our determine_rate hook
->>>>> to __clk_mux_determine_rate(). Indeed, if no determine_rate
->>>>> implementation is provided, clk_round_rate() (through
->>>>> clk_core_round_rate_nolock()) will call itself on the parent if
->>>>> CLK_SET_RATE_PARENT is set, and will not change the clock rate
->>>>> otherwise. __clk_mux_determine_rate() has the exact same behavior when
->>>>> CLK_SET_RATE_NO_REPARENT is set.
->>>>>
->>>>> And if it was an oversight, then we are at least explicit about our
->>>>> behavior now and it can be further refined down the line.
->>>>>
->>>>> Signed-off-by: Maxime Ripard <maxime@cerno.tech>
->>>>> ---
->>>>>     drivers/clk/socfpga/clk-gate.c | 3 ++-
->>>>>     1 file changed, 2 insertions(+), 1 deletion(-)
->>>>>
->>>>> diff --git a/drivers/clk/socfpga/clk-gate.c b/drivers/clk/socfpga/clk-gate.c
->>>>> index 32ccda960f28..cbba8462a09e 100644
->>>>> --- a/drivers/clk/socfpga/clk-gate.c
->>>>> +++ b/drivers/clk/socfpga/clk-gate.c
->>>>> @@ -110,6 +110,7 @@ static unsigned long socfpga_clk_recalc_rate(struct clk_hw *hwclk,
->>>>>     static struct clk_ops gateclk_ops = {
->>>>>     	.recalc_rate = socfpga_clk_recalc_rate,
->>>>> +	.determine_rate = __clk_mux_determine_rate,
->>>>>     	.get_parent = socfpga_clk_get_parent,
->>>>>     	.set_parent = socfpga_clk_set_parent,
->>>>>     };
->>>>> @@ -166,7 +167,7 @@ void __init socfpga_gate_init(struct device_node *node)
->>>>>     	init.name = clk_name;
->>>>>     	init.ops = ops;
->>>>> -	init.flags = 0;
->>>>> +	init.flags = CLK_SET_RATE_NO_REPARENT;
->>>>>     	init.num_parents = of_clk_parent_fill(node, parent_name, SOCFPGA_MAX_PARENTS);
->>>>>     	if (init.num_parents < 2) {
->>>>>
->>>>
->>>> This patch broke SoCFPGA boot serial port. The characters are mangled.
->>>
->>> Do you have any other access to that board? If so, could you dump
->>> clk_summary in debugfs with and without that patch?
->>>
->>
->> That dump from the clk_summary are identical for both cases.
-> 
-> Thanks for testing
-> 
-> I'm a bit confused, there should be no difference in behaviour, and if
-> there was any difference I would expect the clock tree to be somewhat
-> different.
-> 
-> Could you still paste the clk_summary (and dmesg) output? Which UART
-> driver is being used?
-> 
-> Also, is there a way for me to test it somehow?
-> 
-
-Apologies, but there is a diff with/without this patch:
-
-With patch:
-<           l4_sp_clk                   3        3        0   100000000 
-         0     0  50000         ?
----
-Without patch:
- >           l4_sp_clk                   4        4        0   100000000 
-          0     0  50000         ?
-
-The enable/prepare count is 4 instead of 3 in the case of a working 
-UART. The debug uart is using the lp_sp_clk.
-
-
-The Cyclone5 devkits are pretty cheap if you want to get one.
-
-Here is the full out of clk_summary:
-
-# cat /sys/kernel/debug/clk/clk_summary
-                                  enable  prepare protect 
-                 duty  hardware
-    clock                          count    count    count rate 
-accuracy phase  cycle    enable
--------------------------------------------------------------------------------------------------------
-  osc1                                 5        5        0 25000000 
-     0     0  50000         Y
-     sdram_pll                         0        0        0 800000000 
-      0     0  50000         Y
-        h2f_usr2_clk                   0        0        0 133333333 
-      0     0  50000         Y
-           h2f_user2_clk               0        0        0 133333333 
-      0     0  50000         ?
-        ddr_dq_clk                     0        0        0 400000000 
-      0     0  50000         Y
-           ddr_dq_clk_gate             0        0        0 400000000 
-      0     0  50000         ?
-        ddr_2x_dqs_clk                 0        0        0 800000000 
-      0     0  50000         Y
-           ddr_2x_dqs_clk_gate         0        0        0 800000000 
-      0     0  50000         ?
-        ddr_dqs_clk                    0        0        0 400000000 
-      0     0  50000         Y
-           ddr_dqs_clk_gate            0        0        0 400000000 
-      0     0  50000         ?
-     periph_pll                        3        3        0 1000000000 
-       0     0  50000         Y
-        h2f_usr1_clk                   0        0        0 1953125 
-    0     0  50000         Y
-           h2f_user1_clk               0        0        0 1953125 
-    0     0  50000         ?
-        per_base_clk                   4        4        0 200000000 
-      0     0  50000         Y
-           gpio_db_clk                 0        0        0 32000 
-  0     0  50000         ?
-           can1_clk                    0        0        0 40000000 
-     0     0  50000         ?
-           can0_clk                    0        0        0 100000000 
-      0     0  50000         ?
-           spi_m_clk                   1        1        0 200000000 
-      0     0  50000         ?
-           usb_mp_clk                  1        1        0 200000000 
-      0     0  50000         ?
-           l4_sp_clk                   4        4        0 100000000 
-      0     0  50000         ?
-           l4_mp_clk                   1        1        0 100000000 
-      0     0  50000         ?
-        per_nand_mmc_clk               1        1        0 200000000 
-      0     0  50000         Y
-           nand_x_clk                  0        0        0 200000000 
-      0     0  50000         ?
-              nand_clk                 0        0        0 50000000 
-     0     0  50000         ?
-              nand_ecc_clk             0        0        0 200000000 
-      0     0  50000         ?
-           sdmmc_clk                   1        1        0 200000000 
-      0     0  50000         ?
-              sdmmc_clk_divided        1        1        0 50000000 
-     0     0  50000         ?
-        per_qsi_clk                    0        0        0 1953125 
-    0     0  50000         Y
-        emac1_clk                      1        1        0 250000000 
-      0     0  50000         Y
-           emac_1_clk                  1        1        0 250000000 
-      0     0  50000         ?
-        emac0_clk                      0        0        0 1953125 
-    0     0  50000         Y
-           emac_0_clk                  0        0        0 1953125 
-    0     0  50000         ?
-     dbg_base_clk                      0        0        0 6250000 
-    0     0  50000         Y
-        dbg_timer_clk                  0        0        0 6250000 
-    0     0  50000         ?
-        dbg_trace_clk                  0        0        0 6250000 
-    0     0  50000         ?
-        dbg_at_clk                     0        0        0 6250000 
-    0     0  50000         ?
-           dbg_clk                     0        0        0 3125000 
-    0     0  50000         ?
-     main_pll                          2        3        0 1850000000 
-       0     0  50000         Y
-        cfg_h2f_usr0_clk               0        0        0 123333333 
-      0     0  50000         Y
-           h2f_user0_clk               0        0        0 123333333 
-      0     0  50000         ?
-           cfg_clk                     0        0        0 123333333 
-      0     0  50000         ?
-        main_nand_sdmmc_clk            0        0        0 3613281 
-    0     0  50000         Y
-        main_qspi_clk                  1        1        0 370000000 
-      0     0  50000         Y
-           qspi_clk                    1        1        0 370000000 
-      0     0  50000         ?
-        mainclk                        0        1        0 370000000 
-      0     0  50000         Y
-           l3_mp_clk                   0        0        0 185000000 
-      0     0  50000         ?
-              l3_sp_clk                0        0        0 92500000 
-     0     0  50000         Y
-           l3_main_clk                 0        0        0 370000000 
-      0     0  50000         Y
-           l4_main_clk                 0        1        0 370000000 
-      0     0  50000         ?
-        mpuclk                         1        1        0 925000000 
-      0     0  50000         Y
-           mpu_l2_ram_clk              0        0        0 462500000 
-      0     0  50000         Y
-           mpu_periph_clk              1        1        0 231250000 
-      0     0  50000         Y
-
-
-Dinh
+T24gVHVlLCAyMDIzLTA1LTA5IGF0IDExOjI2ICswODAwLCBSeWRlciBMZWUgd3JvdGU6DQo+IEdl
+dCBtaXNzaW5nIHR4IHJldHJpZXMvZmFpbGVkIGNvdW50cyBmcm9tIHR4ZnJlZSBkb25lIGV2ZW50
+cyBhbmQNCj4gcmVwb3J0DQo+IHRoZW0gdmlhIG10NzkxNV9zdGFfc3RhdGlzdGljcygpLg0KPiAN
+Cj4gQ28tZGV2ZWxvcGVkLWJ5OiBQZXRlciBDaGl1IDxjaHVpLWhhby5jaGl1QG1lZGlhdGVrLmNv
+bT4NCj4gU2lnbmVkLW9mZi1ieTogUGV0ZXIgQ2hpdSA8Y2h1aS1oYW8uY2hpdUBtZWRpYXRlay5j
+b20+DQo+IFNpZ25lZC1vZmYtYnk6IFJ5ZGVyIExlZSA8cnlkZXIubGVlQG1lZGlhdGVrLmNvbT4N
+Cj4gLS0tDQo+IHY1IC0gZml4IG5vYWNrZWQNCj4gdjQgLSBzd2l0Y2ggZnJvbSBUeCBsYXRlbmN5
+IHJlcG9ydCB0byBlbmFibGUgVHggY291bnQgaW4gdHhmcmVlIHBhdGgNCj4gZm9yIG5vbi12MyBm
+b3JtYXQNCj4gdjMgLSBhZGQgYSBtaXNzaW5nIGNoZWNrIGZvciBtdDc5MjENCj4gdjIgLSBhZGQg
+YSBtaXNzaW5nIGNoZWNrIGZvciBub24tdjMgZm9ybWF0DQo+IC0tLQ0KPiAgLi4uL3dpcmVsZXNz
+L21lZGlhdGVrL210NzYvbXQ3Nl9jb25uYWNfbWFjLmMgIHwgIDcgKysrKy0tDQo+ICAuLi4vbmV0
+L3dpcmVsZXNzL21lZGlhdGVrL210NzYvbXQ3OTE1L2luaXQuYyAgfCAgMiArKw0KPiAgLi4uL25l
+dC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzkxNS9tYWMuYyAgIHwgMjINCj4gKysrKysrKysr
+KysrKysrKystLQ0KPiAgLi4uL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzkxNS9tYWMu
+aCAgIHwgIDcgKysrKystDQo+ICAuLi4vbmV0L3dpcmVsZXNzL21lZGlhdGVrL210NzYvbXQ3OTE1
+L21haW4uYyAgfCAxMiArKysrKy0tLS0tDQo+ICAuLi4vbmV0L3dpcmVsZXNzL21lZGlhdGVrL210
+NzYvbXQ3OTE1L3JlZ3MuaCAgfCAgMyArKysNCj4gIDYgZmlsZXMgY2hhbmdlZCwgNDIgaW5zZXJ0
+aW9ucygrKSwgMTEgZGVsZXRpb25zKC0pDQo+IA0KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQv
+d2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc2X2Nvbm5hY19tYWMuYw0KPiBiL2RyaXZlcnMvbmV0
+L3dpcmVsZXNzL21lZGlhdGVrL210NzYvbXQ3Nl9jb25uYWNfbWFjLmMNCj4gaW5kZXggZWUwZmJm
+Y2QwN2Q2Li42YjUxNWYzMzA5NzYgMTAwNjQ0DQo+IC0tLSBhL2RyaXZlcnMvbmV0L3dpcmVsZXNz
+L21lZGlhdGVrL210NzYvbXQ3Nl9jb25uYWNfbWFjLmMNCj4gKysrIGIvZHJpdmVycy9uZXQvd2ly
+ZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc2X2Nvbm5hY19tYWMuYw0KPiBAQCAtNzI4LDE2ICs3Mjgs
+MTkgQEAgYm9vbCBtdDc2X2Nvbm5hYzJfbWFjX2FkZF90eHNfc2tiKHN0cnVjdA0KPiBtdDc2X2Rl
+diAqZGV2LCBzdHJ1Y3QgbXQ3Nl93Y2lkICp3Y2lkLA0KPiAgCXNrYiA9IG10NzZfdHhfc3RhdHVz
+X3NrYl9nZXQoZGV2LCB3Y2lkLCBwaWQsICZsaXN0KTsNCj4gIAlpZiAoc2tiKSB7DQo+ICAJCXN0
+cnVjdCBpZWVlODAyMTFfdHhfaW5mbyAqaW5mbyA9IElFRUU4MDIxMV9TS0JfQ0Ioc2tiKTsNCj4g
+LQkJYm9vbCBub2Fja2VkID0gIShpbmZvLT5mbGFncyAmIElFRUU4MDIxMV9UWF9TVEFUX0FDSyk7
+DQo+ICsJCWJvb2wgbm9hY2tlZDsNCj4gIA0KPiAgCQlpZiAoIShsZTMyX3RvX2NwdSh0eHNfZGF0
+YVswXSkgJg0KPiBNVF9UWFMwX0FDS19FUlJPUl9NQVNLKSkNCj4gIAkJCWluZm8tPmZsYWdzIHw9
+IElFRUU4MDIxMV9UWF9TVEFUX0FDSzsNCj4gIA0KPiArCQlub2Fja2VkID0gIShpbmZvLT5mbGFn
+cyAmIElFRUU4MDIxMV9UWF9TVEFUX0FDSyk7DQo+ICAJCWluZm8tPnN0YXR1cy5hbXBkdV9sZW4g
+PSAxOw0KPiAgCQlpbmZvLT5zdGF0dXMuYW1wZHVfYWNrX2xlbiA9ICFub2Fja2VkOw0KPiAgCQlp
+bmZvLT5zdGF0dXMucmF0ZXNbMF0uaWR4ID0gLTE7DQo+ICANCj4gLQkJd2NpZC0+c3RhdHMudHhf
+ZmFpbGVkICs9IG5vYWNrZWQ7DQo+ICsJCS8qIGF2b2lkIGRvdWJsZSBjb3VudGluZyBpZiBkZXYg
+c3VwcG9ydHMgdHhmcmVlIGV2ZW50DQo+ICovDQo+ICsJCWlmIChpc19tdDc5MjEoZGV2KSkNCj4g
+KwkJCXdjaWQtPnN0YXRzLnR4X2ZhaWxlZCArPSBub2Fja2VkOw0KQERlcmVuLCBjYW4geW91IGhl
+bHAgdG8gY2hlY2sgaWYgbXQ3OTIxIGNhbiBkcm9wIHRoaXMgIGFuZCBjYWxjdWxhdGUNCnR4X2Zh
+aWxlZCBmcm9tIHR4ZnJlZSBkaXJlY3RseT8NCg0KUnlkZXINCg==
 
