@@ -4,78 +4,168 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAA90C77B75
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 May 2023 14:16:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9E7AC7EE26
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 May 2023 14:41:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zBdVrrerhzocclh/EisRXxvD1O+iNkS0Xjzaf6Nm7N8=; b=Wix4n6D4TWFNCPw821MdkY3H9D
-	mIITMJZOk1IHDDtikgkL7PJxnPE5rBqfbmc1Wswp51E3wXmHQVaDKZajjJbYb+5lwNGq90NHiUKFf
-	ebxS/yMIQiuCmXugrgzW4cxEEostaI1O4uyO0RKMjz2mBoYCwRYRgRNkS4YCdpyPxq4WizkA+HNoC
-	zenzH+a6Me+yLMIUvirWkp2AYo/tso2vRT7v7Chp0lxWE/gUuMtIz2ZpN+C54cHmAlFhzjA5bDkn7
-	+GSuppYMI+JQmGtEY1kxHzUfFlHdFMVK2dGlncrcT2JA/c8cxOi9+dKBrBRVd6paYXe+87iRyf/f0
-	oVLVXZZw==;
+	bh=yB4LFzkYojqVIh/WG1vUoXh8jz4XXClWigOtDvxb2Tw=; b=369BCElR2xwop0MFkzj4rSDwFY
+	DPv5A+CcqPJs96hCtBbJGWDEYSJ4poAk9xqH/4Okxl4OIvoZb9jfdZAFiYT/PDizu9Z858caV/Lqz
+	jO19cAnym+kPoiliXxb+9baIMijKcMzCJ4/oyYg7+SBoVyMfhJaL/f4uIuEWYvJYvJdm8SkW6KwPK
+	iq0F3CoMdjA064zUr9g10Yy7CjAaLKjWmzAIlrS0ccW0jKh+8PmqcvXJ0yUAc6epeVvwaUF2AmwsZ
+	MKwlTabKL5RCeRb+j433xnJHB+f4X93xbp0KDYxV1PVmdqc/JJEigc3yJpJ17O8U45vuI93KYzDx5
+	I4jJftNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwO8k-003Vke-1X;
-	Tue, 09 May 2023 14:16:30 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pwOWa-003aZ1-2X;
+	Tue, 09 May 2023 14:41:08 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwO8g-003ViE-18;
-	Tue, 09 May 2023 14:16:28 +0000
-X-UUID: f881fea0ee7111ed912e1518a6540028-20230509
+	id 1pwOWX-003aUx-12;
+	Tue, 09 May 2023 14:41:06 +0000
+X-UUID: 81cb73f8ee7711ed83ed1395ce914268-20230509
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=zBdVrrerhzocclh/EisRXxvD1O+iNkS0Xjzaf6Nm7N8=;
-	b=GqDKlT/O9ObKp9UzePJu4Y12xKsaO/PJbesA1BuAhfYVKT3oluYpKzXrgyweAfZO1Yc+a9J6yBAK54PEF9rFLGOXi3MDJQNiRyvMFZnhcUMmpt5UbeLUTZ7UsdwhO2mXfGi4hqNxHNPLQCSYjvzUQIVbtDo2ciso8bMheDC/GrI=;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=yB4LFzkYojqVIh/WG1vUoXh8jz4XXClWigOtDvxb2Tw=;
+	b=cawQKzm0qhM67kPgGf/JXfzVjg4CT/ZTFZysI+BRsJGlPO1aA5IVSRUZSU+CBCzL2FSkbs78Gsj2sDJTPWnQvBMBycPI9jP8BfSCJwIc45NkOMKGd7vBeQ2evz46auVTbJ53eyEPdxdZfKSQN9zPKbL5U8cEJknLFWFg/9F5CDk=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.24,REQID:f76181bb-6bc4-47b7-8360-4b779e761e72,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:178d4d4,CLOUDID:8c6748c0-e32c-4c97-918d-fbb3fc224d4e,B
+X-CID-O-INFO: VERSION:1.1.24,REQID:6012de44-5974-4efe-8a23-812b3f4fbe5d,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:178d4d4,CLOUDID:31de9c3a-de1e-4348-bc35-c96f92f1dcbb,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: f881fea0ee7111ed912e1518a6540028-20230509
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: 81cb73f8ee7711ed83ed1395ce914268-20230509
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
 	(envelope-from <jason-jh.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 221735073; Tue, 09 May 2023 07:01:18 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+	with ESMTP id 778727435; Tue, 09 May 2023 07:40:56 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 9 May 2023 22:01:16 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 9 May 2023 22:01:16 +0800
-From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Alexandre Mergnat
-	<amergnat@baylibre.com>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, Rex-BC Chen
-	<rex-bc.chen@mediatek.com>, Jason-ch Chen <jason-ch.chen@mediatek.com>,
-	Johnson Wang <johnson.wang@mediatek.com>, "Jason-JH . Lin"
-	<jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Nancy
- Lin <nancy.lin@mediatek.com>, Shawn Sung <shawn.sung@mediatek.com>,
-	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Nathan Lu
-	<nathan.lu@mediatek.com>
-Subject: [PATCH 1/2] drm/mediatek: Add ability to support dynamic connector selection
-Date: Tue, 9 May 2023 22:01:13 +0800
-Message-ID: <20230509140114.6956-2-jason-jh.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230509140114.6956-1-jason-jh.lin@mediatek.com>
-References: <20230509140114.6956-1-jason-jh.lin@mediatek.com>
+ 15.2.1118.26; Tue, 9 May 2023 22:40:54 +0800
+Received: from APC01-TYZ-obe.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 9 May 2023 22:40:53 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=ixH/DWoICYV+WGRURwwE4y6J9/LTgMwS3sJ+Xs5Q4dYnyUZb09II7feF+dzQutathZU1ABjtLwmFf0fay21vw0CxUlHWfttAzxgWq4C6gHoBVNShP/4W3BFTVLlr3uLb36nqpt1ej5oaJrI7u+F9TRX48lfLuJUKtfwt33k2ZSwkWLAkb8EYEAlxQblnoSsGXkkX6E3UXYQNO3wZoSn6ER6zL4BJyDYh+KHfpNXZY0HGxb7d/BTK09Ykg8a7pGNQDV0+EnfJV+bJ5dFC/Z4tg+yzveOFRspsCDaE2GGS0wnFnvDR/lAwhfLGRtOkLZuRyqMy2ULbvRycBVORqtJlwA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=yB4LFzkYojqVIh/WG1vUoXh8jz4XXClWigOtDvxb2Tw=;
+ b=JreewoVTO37ZEWVc+sJCxHYr+NIagRuof3WtGj+5rjjoh5jMEXiH4QPpphyOHVwlCq7nac8Cd5uR41t+nzABq8OzY8R78y3n2LOq7mRp/wCbWB93luYaj+JSB5CpqFBkPGGNn92y+58obr/Llu+tm89u4Ji66kAm9O1wkAB+Msue5H59I5qCJcCKeSi18fCnUp3n7VKCuiE0eayW3zS7k7pE3eTLNkhJgGBdAPl5D037L8JcT2SI2Dh5s2R3hrx5YxDK+CoQmcQ9MdDPXd8DUCjKVcwVzhsR8WDbEQ54IFW1pcZbft/OECoan+roZ9ddX6HMYQ2fVfbuPAQUjoR6IQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=yB4LFzkYojqVIh/WG1vUoXh8jz4XXClWigOtDvxb2Tw=;
+ b=p0ZiQU0Mvqc12dsgCeUMfPvti6ZUTD3P9D2Wba8x476wEP5mXuMuaoqbcbnYtVS2oNsDydLPjktPkkkQa8SFb0Q8N83vy1MHOxEVJaivhSIez2yrjRixqELyKQjh2oHhwVudkD3/xHx3p8t7AfprEKNSjaLm3AI0toP4W9vLizY=
+Received: from PU1PR03MB3062.apcprd03.prod.outlook.com (2603:1096:803:3b::21)
+ by TYZPR03MB5995.apcprd03.prod.outlook.com (2603:1096:400:12a::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6363.33; Tue, 9 May
+ 2023 14:40:52 +0000
+Received: from PU1PR03MB3062.apcprd03.prod.outlook.com
+ ([fe80::66d9:2bd0:26ba:d9bb]) by PU1PR03MB3062.apcprd03.prod.outlook.com
+ ([fe80::66d9:2bd0:26ba:d9bb%7]) with mapi id 15.20.6363.033; Tue, 9 May 2023
+ 14:40:52 +0000
+From: =?utf-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>
+To: "angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>, "chunkuang.hu@kernel.org"
+	<chunkuang.hu@kernel.org>
+CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"wenst@chromium.org" <wenst@chromium.org>, "kernel@collabora.com"
+	<kernel@collabora.com>, "daniel@ffwll.ch" <daniel@ffwll.ch>,
+	"p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	"airlied@gmail.com" <airlied@gmail.com>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>
+Subject: Re: [PATCH v3 06/11] drm/mediatek: gamma: Use bitfield macros
+Thread-Topic: [PATCH v3 06/11] drm/mediatek: gamma: Use bitfield macros
+Thread-Index: AQHZgBdycBha5qWq9kGZQo4+7tMpFa9SCFGA
+Date: Tue, 9 May 2023 14:40:52 +0000
+Message-ID: <624a9c767af6fa079ba8d600815d4cba5dbae767.camel@mediatek.com>
+References: <20230506123549.101727-1-angelogioacchino.delregno@collabora.com>
+	 <20230506123549.101727-7-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230506123549.101727-7-angelogioacchino.delregno@collabora.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: PU1PR03MB3062:EE_|TYZPR03MB5995:EE_
+x-ms-office365-filtering-correlation-id: 9e0bfc60-c4dd-4814-a932-08db509b6399
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: grG6CQ2VWFf6j11RrPET9akExR9No9d0/l064YALmDHVd31lZgh40KbzwU1YfVdtKlF4vU/WMXMFWMiqhXTrVGF6k5WBYvAISm+s4fStdV2yNVjOJzDH0fYjcSAGkWMX+v5rf9FwTSQIgJTETYFnBO13dLzOuLMDjdEYLjg+DApnCSOzxWtKzqyRQe0cho0K89oq8PPdP6jpr1eF5ob+1SyFCiFdinNuKFQ4GcN38ho/djRMZMvBcYS06IIPaeWO08kne5LIUndUXrCTrVJbVZoE34r8RwwyLAcmaaWcuJBKOjmQQumg84kjb2LbjJE0KhjXQj9QlgGV2fgeoRT6e/Tn/Ku9lp9zCQyqHVZkf40qKOITlcux4//GjHJK81eGokKhjCcMbnef+h0rEcQ2mO2rfUaAMXrynhPEaHC1LWtwwl15aYP3xp94gUVf3pYPFpa/JlyfIFDP68fHV0xz1ZLcBgx+pQCDUCPR8Lb+JroKKNkES3zBWHaMzHQ3fke1NdcSOxMYICbzYzPCogj+PgCfrH0xGioF5LRwwacoW25T5sARRCZzP5fTHSKf1vtpXVr3AMepaURwfJPk8A6axagd6BfTKoNmU5GEdblod9XwO4WyRKNkWyw60qKi6fVq
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PU1PR03MB3062.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(376002)(136003)(396003)(39860400002)(366004)(346002)(451199021)(66476007)(4744005)(7416002)(8676002)(8936002)(5660300002)(41300700001)(4326008)(316002)(64756008)(76116006)(91956017)(66556008)(66946007)(83380400001)(85182001)(71200400001)(26005)(186003)(6506007)(6512007)(478600001)(6486002)(2906002)(66446008)(38070700005)(86362001)(38100700002)(36756003)(2616005)(54906003)(110136005)(122000001);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?V3B3L3FUN242NlV3RW5BamZNbWdXQy96bDhMNmVzVGlkb3NzOHhsWWNDNURj?=
+ =?utf-8?B?ZGV2eE4vVlVidUc3b0VMRjBJR1NRQjlQek9yV0dtY3RYNE4yQ3Z1S2ZJZVZZ?=
+ =?utf-8?B?SmUxNWFidy8xUUhQS1FMT0o0bU1Yc2Yxd0FpQlhheVlhZ3Y1aVFIcVdwbmkw?=
+ =?utf-8?B?Sks2cTZZUzZsZkppSDRZSW9ENi8xb0g4Kzl0c0ZkSzhESE1hQlZJWCtvOEx1?=
+ =?utf-8?B?WFJnd1RVeXpNT1RiQUJxSlp3clVSZlpzZkdpZXp3SCsvYzlNVjhvU2tQUUla?=
+ =?utf-8?B?YWtJU0p2YXpkcUpwdHhoS0p1QkhEMDJObG5xekQ0bzMxaldjeE5zZ0xxYXM4?=
+ =?utf-8?B?NjQ1MlVWNUZPM043YVhTTWs3TUZ4K2Y1YWRUY3JWMStKV1oxU0NJRjFBcTBL?=
+ =?utf-8?B?OStOYkdZTDdlV3B3U0R5VHJ6aDJxTm5obU8zeS8xWDkvSzllcWVSM3lXVVpE?=
+ =?utf-8?B?NUxPL2dGekFCMTdpeVcvaG11T0UwZjhmWkRCMWt2WDVNWkU1UDBITy9haXVm?=
+ =?utf-8?B?V2FFTjZyY2l4a2NtTklTbFZ4RUozMjNuMzUyd0tnNzBMOGRHdVZzcGhHWmJC?=
+ =?utf-8?B?aWNSZWU5a1BRamlQZ0Znam5TL3lLTG8vMW1haFdxM28vYllZeVpjSFczbk1J?=
+ =?utf-8?B?L0lVUlVYUm1oWEJXbU15cS9mNXVoZkEzb0dMYVo0VmsvaUszUU00ZFlUeFpX?=
+ =?utf-8?B?Y0FaRko3eDhpYXBpREF0UWVNQis1NXZTV3VTYWpJdEV5WWduN2xNenc3b3hX?=
+ =?utf-8?B?TlJMWGp1bVE5emNFQmorM2c0T3ZVenVBYjBXbGhMOGY0SHEvKzBRSXYrRHBo?=
+ =?utf-8?B?cGFrNHRiVzByVk4xazR2M05JNVh5OGNWR3lGR0Q1Yk83YUw5MWg3Uzc5bFFv?=
+ =?utf-8?B?cDZDb1ZYVitIVUlVVEZlYVRJUTB2cDRQT3JUMHRycy9hSHoxQnFOanNWeEE5?=
+ =?utf-8?B?Rlg5UUFEM1dUY0MzcEttNUZ1eUI5M1lzckxqOEpwZExHQ3pTVzJIQVhTelhU?=
+ =?utf-8?B?UDNVYWxRZTJVZTdiYzF3bDZNUUtuOXdqd2g3VjUrWndhWVNraVpzOU5vclNo?=
+ =?utf-8?B?aXE0Y3lVZHNnRlJjUXlYSzhZSCtDclBJbGhjQ2M2Q1VSV3BYQlZndG1yN3Ba?=
+ =?utf-8?B?cklsYWR1LzQ3dU1FbGFXOFUyeDVJZVR2cy91UnFVbmhKQ1BDa0tEa3hRLzlF?=
+ =?utf-8?B?NjhEcXRJS0VLdy9SWmx6NWxGM0lNUWgwek0zb2xyM3JvVEZjNkR2QVpLYkMy?=
+ =?utf-8?B?eVJzTHYzdURBOGFiRTcwTFFiYWhNS0ZRVWlBVEFwZ2xDZUd1by82RDlpOW9p?=
+ =?utf-8?B?b3IxMDFjTmhtV1FoejBwVmhJZmU2ZS9qWk5lVUtOTm1jd0VGanJnRWg4dkc3?=
+ =?utf-8?B?UEd0bU5XaHdhOXgxY093aGc1allmeG5LaTBhSmwxU1RaMHl5L2IvVnAxd1Nx?=
+ =?utf-8?B?SzJDcC9uNWEwak1VNmwwaHM3cXBTemlvV29MQXAvTHkxVGUrM2tKcVNYLzhv?=
+ =?utf-8?B?Ri9BZEVseDlBaGxnaCtqSGhTTXA0eVJpeXJidm1LZHpyNkRNNHNBZy9oVm5O?=
+ =?utf-8?B?TC8xNG56cjBTYWFYRVZmVmJUT1BhcVdvZHpwWGlWTXRIS1N6NWtWV1dWdWJh?=
+ =?utf-8?B?elM4bnRnOE1lbkUxZ1lNY28zY25UZ25rWmtNbmdQcXhYMDVnaUdZTjJBQ25n?=
+ =?utf-8?B?TGF2NEZSNnBXblNRUzNGN3RNa3NnZ1NaeWh1WEdmQVgyNnByWWtLQjFMN0gr?=
+ =?utf-8?B?WVJFZmEvTzg5blZ1MVI3Rkk4YmtnTHo1SjE2cFBkYXkxSDlRaVg0QW1MLzVu?=
+ =?utf-8?B?RGpZRjJQaytpNjZPcWxhbHFpVnZ0MVpxVnFuUzNVSlhBWXlsa1RtelJSZGtV?=
+ =?utf-8?B?K2FGTTJWbUxlY0R3RHJ6eThtMVRVQXI0QTdvSU5mTmlxa2pwWkRnbUVWYUlv?=
+ =?utf-8?B?Z3hpQWR3bXNoWjVSNVE0dWFmR0c5S2tsTm1mck0wZ09URWQxOTJrMzVZVDBo?=
+ =?utf-8?B?NGJnc3J6YkxKZng3NSs0SGgrcmxVWHo1bVZ1WndQbVNlNTRuMXlBa1d1SnI3?=
+ =?utf-8?B?V01lZjN0b2EvaUtYVGJhZHBMcVRlTGRKcCt0MTZzVHVlY2pRbVFtd244YkRt?=
+ =?utf-8?B?MVdOeTh5L29vdVdKUUdka1pwTnpHSTZEemN5b0kxWHJhNFVyR0NlNkx1QzNn?=
+ =?utf-8?B?SWc9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <F68C461E5C38814C9C6F87C730F3FA57@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: PU1PR03MB3062.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9e0bfc60-c4dd-4814-a932-08db509b6399
+X-MS-Exchange-CrossTenant-originalarrivaltime: 09 May 2023 14:40:52.4114
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: GuaTniJuFL3JoHqNPScP/PoDPiNTO5DMx692eUbrYTCaceUiCRyjIAeJZwYl2XKNWNHKjSByCaJyBg8f/m4a2u94EYp9cyboNFmUwAB9ZxA=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR03MB5995
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230509_071626_397430_C8E7B8B1 
-X-CRM114-Status: GOOD (  24.38  )
+X-CRM114-CacheID: sfid-20230509_074105_367925_A42BC08F 
+X-CRM114-Status: GOOD (  10.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,458 +180,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-1. Move output drm connector from each ddp_path array to connector array.
-2. Add dynamic select available connector flow in crtc create and enable.
-
-Signed-off-by: Nancy Lin <nancy.lin@mediatek.com>
-Signed-off-by: Nathan Lu <nathan.lu@mediatek.com>
-Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_disp_drv.h     |   1 +
- drivers/gpu/drm/mediatek/mtk_dpi.c          |   9 ++
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 111 +++++++++++++++++++-
- drivers/gpu/drm/mediatek/mtk_drm_crtc.h     |   5 +-
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  27 +++++
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |   8 ++
- drivers/gpu/drm/mediatek/mtk_drm_drv.c      |  44 ++++++--
- drivers/gpu/drm/mediatek/mtk_drm_drv.h      |   8 ++
- 8 files changed, 202 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-index 2254038519e1..72c57442f965 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-@@ -44,6 +44,7 @@ void mtk_dither_set_common(void __iomem *regs, struct cmdq_client_reg *cmdq_reg,
- 
- void mtk_dpi_start(struct device *dev);
- void mtk_dpi_stop(struct device *dev);
-+int mtk_dpi_encoder_index(struct device *dev);
- 
- void mtk_dsi_ddp_start(struct device *dev);
- void mtk_dsi_ddp_stop(struct device *dev);
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index 948a53f1f4b3..765fc976e41f 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -782,6 +782,15 @@ void mtk_dpi_stop(struct device *dev)
- 	mtk_dpi_power_off(dpi);
- }
- 
-+int mtk_dpi_encoder_index(struct device *dev)
-+{
-+	struct mtk_dpi *dpi = dev_get_drvdata(dev);
-+	int encoder_index = drm_encoder_index(&dpi->encoder);
-+
-+	dev_dbg(dev, "encoder index:%d", encoder_index);
-+	return encoder_index;
-+}
-+
- static int mtk_dpi_bind(struct device *dev, struct device *master, void *data)
- {
- 	struct mtk_dpi *dpi = dev_get_drvdata(dev);
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-index d40142842f85..54d48932b833 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-@@ -60,8 +60,12 @@ struct mtk_drm_crtc {
- 	struct device			*mmsys_dev;
- 	struct device			*dma_dev;
- 	struct mtk_mutex		*mutex;
-+	unsigned int			ddp_comp_nr_ori;
-+	unsigned int			max_ddp_comp_nr;
- 	unsigned int			ddp_comp_nr;
- 	struct mtk_ddp_comp		**ddp_comp;
-+	unsigned int			conn_route_nr;
-+	const struct mtk_drm_route	*conn_routes;
- 
- 	/* lock for display hardware access */
- 	struct mutex			hw_lock;
-@@ -649,6 +653,84 @@ static void mtk_drm_crtc_disable_vblank(struct drm_crtc *crtc)
- 	mtk_ddp_comp_disable_vblank(comp);
- }
- 
-+static unsigned int mtk_drm_crtc_max_num_route_comp(struct mtk_drm_crtc *mtk_crtc)
-+{
-+	unsigned int max_num = 0;
-+	unsigned int i;
-+
-+	if (!mtk_crtc->conn_route_nr)
-+		return 0;
-+
-+	for (i = 0; i < mtk_crtc->conn_route_nr; i++)
-+		max_num = max(mtk_crtc->conn_routes[i].route_len, max_num);
-+
-+	return max_num;
-+}
-+
-+static int mtk_drm_crtc_update_output(struct drm_crtc *crtc,
-+				      struct drm_atomic_state *state)
-+{
-+	const struct mtk_drm_route *conn_routes;
-+	int crtc_index = drm_crtc_index(crtc);
-+	int i;
-+	struct device *dev;
-+	struct drm_crtc_state *crtc_state = state->crtcs[crtc_index].new_state;
-+	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
-+	struct mtk_drm_private *priv = crtc->dev->dev_private;
-+	unsigned int comp_id;
-+	unsigned int encoder_mask = crtc_state->encoder_mask;
-+	unsigned int route_len = 0, route_index = 0;
-+
-+	if (!mtk_crtc->conn_route_nr)
-+		return 0;
-+
-+	priv = priv->all_drm_private[crtc_index];
-+	dev = priv->dev;
-+
-+	dev_dbg(dev, "connector change:%d, encoder mask0x%x for crtc%d",
-+		crtc_state->connectors_changed, encoder_mask, crtc_index);
-+
-+	if (!crtc_state->connectors_changed)
-+		return 0;
-+
-+	conn_routes = mtk_crtc->conn_routes;
-+
-+	for (i = 0; i < mtk_crtc->conn_route_nr; i++) {
-+		route_len = conn_routes[i].route_len;
-+		if (route_len > 0) {
-+			comp_id = conn_routes[i].route_ddp[route_len - 1];
-+			if (priv->comp_node[comp_id]) {
-+				if ((1 << priv->ddp_comp[comp_id].encoder_index) == encoder_mask) {
-+					route_index = i;
-+					break;
-+				}
-+			}
-+		}
-+	}
-+
-+	for (i = 0; i < route_len; i++) {
-+		struct mtk_ddp_comp *comp;
-+		struct device_node *node;
-+
-+		comp_id = conn_routes[route_index].route_ddp[i];
-+		node = priv->comp_node[comp_id];
-+		comp = &priv->ddp_comp[comp_id];
-+		if (!comp) {
-+			dev_err(dev, "Component %pOF not initialized\n", node);
-+			return -ENODEV;
-+		}
-+
-+		mtk_crtc->ddp_comp[mtk_crtc->ddp_comp_nr_ori + i] = comp;
-+		dev_dbg(dev, "Add comp_id: %d at path index %d\n",
-+			comp->id, mtk_crtc->ddp_comp_nr_ori + i);
-+	}
-+
-+	mtk_crtc->ddp_comp_nr = mtk_crtc->ddp_comp_nr_ori + route_len;
-+	dev_dbg(dev, "Update total comp num:%d", mtk_crtc->ddp_comp_nr);
-+
-+	return 0;
-+}
-+
- int mtk_drm_crtc_plane_check(struct drm_crtc *crtc, struct drm_plane *plane,
- 			     struct mtk_plane_state *state)
- {
-@@ -681,6 +763,12 @@ static void mtk_drm_crtc_atomic_enable(struct drm_crtc *crtc,
- 
- 	DRM_DEBUG_DRIVER("%s %d\n", __func__, crtc->base.id);
- 
-+	ret = mtk_drm_crtc_update_output(crtc, state);
-+	if (ret < 0) {
-+		DRM_DEV_ERROR(comp->dev, "Failed to update crtc output: %d\n", ret);
-+		return;
-+	}
-+
- 	ret = pm_runtime_resume_and_get(comp->dev);
- 	if (ret < 0) {
- 		DRM_DEV_ERROR(comp->dev, "Failed to enable power domain: %d\n", ret);
-@@ -886,7 +974,8 @@ struct device *mtk_drm_crtc_dma_dev_get(struct drm_crtc *crtc)
- 
- int mtk_drm_crtc_create(struct drm_device *drm_dev,
- 			const unsigned int *path, unsigned int path_len,
--			int priv_data_index)
-+			int priv_data_index, const struct mtk_drm_route *conn_routes,
-+			unsigned int conn_routes_num)
- {
- 	struct mtk_drm_private *priv = drm_dev->dev_private;
- 	struct device *dev = drm_dev->dev;
-@@ -898,6 +987,7 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
- 	uint gamma_lut_size = 0;
- 	struct drm_crtc *tmp;
- 	int crtc_i = 0;
-+	unsigned int route_len = 0, max_route_comp_num = 0;
- 
- 	if (!path)
- 		return 0;
-@@ -937,7 +1027,24 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
- 
- 	mtk_crtc->mmsys_dev = priv->mmsys_dev;
- 	mtk_crtc->ddp_comp_nr = path_len;
--	mtk_crtc->ddp_comp = devm_kmalloc_array(dev, mtk_crtc->ddp_comp_nr,
-+	mtk_crtc->ddp_comp_nr_ori = path_len;
-+	if (conn_routes) {
-+		unsigned int comp_id;
-+
-+		for (i = 0; i < conn_routes_num; i++) {
-+			route_len = conn_routes[i].route_len;
-+			if (route_len > 0) {
-+				comp_id = conn_routes[i].route_ddp[route_len - 1];
-+				mtk_ddp_comp_encoder_index_set(&priv->ddp_comp[comp_id]);
-+			}
-+		}
-+
-+		mtk_crtc->conn_route_nr = conn_routes_num;
-+		mtk_crtc->conn_routes = conn_routes;
-+	}
-+	max_route_comp_num = mtk_drm_crtc_max_num_route_comp(mtk_crtc);
-+	mtk_crtc->max_ddp_comp_nr  = mtk_crtc->ddp_comp_nr + max_route_comp_num;
-+	mtk_crtc->ddp_comp = devm_kmalloc_array(dev, mtk_crtc->max_ddp_comp_nr,
- 						sizeof(*mtk_crtc->ddp_comp),
- 						GFP_KERNEL);
- 	if (!mtk_crtc->ddp_comp)
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
-index 3e9046993d09..672b9c7afee6 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
-@@ -8,6 +8,7 @@
- 
- #include <drm/drm_crtc.h>
- #include "mtk_drm_ddp_comp.h"
-+#include "mtk_drm_drv.h"
- #include "mtk_drm_plane.h"
- 
- #define MTK_LUT_SIZE	512
-@@ -18,7 +19,9 @@ void mtk_drm_crtc_commit(struct drm_crtc *crtc);
- int mtk_drm_crtc_create(struct drm_device *drm_dev,
- 			const unsigned int *path,
- 			unsigned int path_len,
--			int priv_data_index);
-+			int priv_data_index,
-+			const struct mtk_drm_route *conn_routes,
-+			unsigned int conn_routes_num);
- int mtk_drm_crtc_plane_check(struct drm_crtc *crtc, struct drm_plane *plane,
- 			     struct mtk_plane_state *state);
- void mtk_drm_crtc_async_update(struct drm_crtc *crtc, struct drm_plane *plane,
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index f114da4d36a9..fe20ce26b19f 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -304,6 +304,7 @@ static const struct mtk_ddp_comp_funcs ddp_dither = {
- static const struct mtk_ddp_comp_funcs ddp_dpi = {
- 	.start = mtk_dpi_start,
- 	.stop = mtk_dpi_stop,
-+	.encoder_index = mtk_dpi_encoder_index,
- };
- 
- static const struct mtk_ddp_comp_funcs ddp_dsc = {
-@@ -507,6 +508,26 @@ static bool mtk_drm_find_comp_in_ddp(struct device *dev,
- 	return false;
- }
- 
-+static int mtk_drm_find_comp_in_ddp_conn_path(struct device *dev,
-+					      const struct mtk_drm_route *routes,
-+					      unsigned int routes_num,
-+					      struct mtk_ddp_comp *ddp_comp)
-+{
-+	unsigned int i;
-+
-+	if (!routes)
-+		return 0;
-+
-+	for (i = 0; i < routes_num; i++)
-+		if (mtk_drm_find_comp_in_ddp(dev, routes[i].route_ddp,
-+					     routes[i].route_len, ddp_comp))
-+			return BIT(routes[i].crtc_id);
-+
-+	DRM_INFO("Failed to find comp in ddp connector table\n");
-+
-+	return 0;
-+}
-+
- int mtk_ddp_comp_get_id(struct device_node *node,
- 			enum mtk_ddp_comp_type comp_type)
- {
-@@ -538,6 +559,12 @@ unsigned int mtk_drm_find_possible_crtc_by_comp(struct drm_device *drm,
- 					  private->data->third_len, private->ddp_comp))
- 		ret = BIT(2);
- 	else
-+		ret = mtk_drm_find_comp_in_ddp_conn_path(dev,
-+							 private->data->conn_routes,
-+							 private->data->conn_routes_num,
-+							 private->ddp_comp);
-+
-+	if (ret == 0)
- 		DRM_INFO("Failed to find comp in ddp table\n");
- 
- 	return ret;
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-index febcaeef16a1..1c1d670cfe41 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-@@ -80,6 +80,7 @@ struct mtk_ddp_comp_funcs {
- 	void (*disconnect)(struct device *dev, struct device *mmsys_dev, unsigned int next);
- 	void (*add)(struct device *dev, struct mtk_mutex *mutex);
- 	void (*remove)(struct device *dev, struct mtk_mutex *mutex);
-+	int (*encoder_index)(struct device *dev);
- };
- 
- struct mtk_ddp_comp {
-@@ -87,6 +88,7 @@ struct mtk_ddp_comp {
- 	int irq;
- 	unsigned int id;
- 	const struct mtk_ddp_comp_funcs *funcs;
-+	int encoder_index;
- };
- 
- static inline int mtk_ddp_comp_clk_enable(struct mtk_ddp_comp *comp)
-@@ -275,6 +277,12 @@ static inline bool mtk_ddp_comp_disconnect(struct mtk_ddp_comp *comp, struct dev
- 	return false;
- }
- 
-+static inline void mtk_ddp_comp_encoder_index_set(struct mtk_ddp_comp *comp)
-+{
-+	if (comp->funcs && comp->funcs->encoder_index)
-+		comp->encoder_index = comp->funcs->encoder_index(comp->dev);
-+}
-+
- int mtk_ddp_comp_get_id(struct device_node *node,
- 			enum mtk_ddp_comp_type comp_type);
- unsigned int mtk_drm_find_possible_crtc_by_comp(struct drm_device *drm,
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 6dcb4ba2466c..d8c49614a107 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -185,7 +185,14 @@ static const unsigned int mt8188_mtk_ddp_main[] = {
- 	DDP_COMPONENT_GAMMA,
- 	DDP_COMPONENT_POSTMASK0,
- 	DDP_COMPONENT_DITHER0,
--	DDP_COMPONENT_DP_INTF0,
-+};
-+
-+static const unsigned int mt8188_mtk_ddp_main_routes_0[] = {
-+	DDP_COMPONENT_DP_INTF0
-+};
-+
-+static const struct mtk_drm_route mt8188_mtk_ddp_main_routes[] = {
-+	{0, ARRAY_SIZE(mt8188_mtk_ddp_main_routes_0), mt8188_mtk_ddp_main_routes_0},
- };
- 
- static const unsigned int mt8192_mtk_ddp_main[] = {
-@@ -287,6 +294,9 @@ static const struct mtk_mmsys_driver_data mt8186_mmsys_driver_data = {
- static const struct mtk_mmsys_driver_data mt8188_vdosys0_driver_data = {
- 	.main_path = mt8188_mtk_ddp_main,
- 	.main_len = ARRAY_SIZE(mt8188_mtk_ddp_main),
-+	.conn_routes = mt8188_mtk_ddp_main_routes,
-+	.conn_routes_num = ARRAY_SIZE(mt8188_mtk_ddp_main_routes),
-+	.mmsys_dev_num = 1,
- };
- 
- static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
-@@ -350,6 +360,7 @@ static bool mtk_drm_get_all_drm_priv(struct device *dev)
- {
- 	struct mtk_drm_private *drm_priv = dev_get_drvdata(dev);
- 	struct mtk_drm_private *all_drm_priv[MAX_CRTC];
-+	struct mtk_drm_private *temp_drm_priv;
- 	struct device_node *phandle = dev->parent->of_node;
- 	const struct of_device_id *of_id;
- 	struct device_node *node;
-@@ -372,9 +383,18 @@ static bool mtk_drm_get_all_drm_priv(struct device *dev)
- 		if (!drm_dev || !dev_get_drvdata(drm_dev))
- 			continue;
- 
--		all_drm_priv[cnt] = dev_get_drvdata(drm_dev);
--		if (all_drm_priv[cnt] && all_drm_priv[cnt]->mtk_drm_bound)
--			cnt++;
-+		temp_drm_priv = dev_get_drvdata(drm_dev);
-+		if (temp_drm_priv) {
-+			if (temp_drm_priv->mtk_drm_bound)
-+				cnt++;
-+
-+			if (temp_drm_priv->data->main_len)
-+				all_drm_priv[0] = temp_drm_priv;
-+			else if (temp_drm_priv->data->ext_len)
-+				all_drm_priv[1] = temp_drm_priv;
-+			else if (temp_drm_priv->data->third_len)
-+				all_drm_priv[2] = temp_drm_priv;
-+		}
- 	}
- 
- 	if (drm_priv->data->mmsys_dev_num == cnt) {
-@@ -391,7 +411,7 @@ static bool mtk_drm_get_all_drm_priv(struct device *dev)
- static bool mtk_drm_find_mmsys_comp(struct mtk_drm_private *private, int comp_id)
- {
- 	const struct mtk_mmsys_driver_data *drv_data = private->data;
--	int i;
-+	int i, j;
- 
- 	if (drv_data->main_path)
- 		for (i = 0; i < drv_data->main_len; i++)
-@@ -408,6 +428,12 @@ static bool mtk_drm_find_mmsys_comp(struct mtk_drm_private *private, int comp_id
- 			if (drv_data->third_path[i] == comp_id)
- 				return true;
- 
-+	if (drv_data->conn_routes_num)
-+		for (i = 0; i < drv_data->conn_routes_num; i++)
-+			for (j = 0; j < drv_data->conn_routes[i].route_len; j++)
-+				if (drv_data->conn_routes[i].route_ddp[j] == comp_id)
-+					return true;
-+
- 	return false;
- }
- 
-@@ -466,21 +492,23 @@ static int mtk_drm_kms_init(struct drm_device *drm)
- 
- 			if (i == 0 && priv_n->data->main_len) {
- 				ret = mtk_drm_crtc_create(drm, priv_n->data->main_path,
--							  priv_n->data->main_len, j);
-+							  priv_n->data->main_len, j,
-+							  priv_n->data->conn_routes,
-+							  priv_n->data->conn_routes_num);
- 				if (ret)
- 					goto err_component_unbind;
- 
- 				continue;
- 			} else if (i == 1 && priv_n->data->ext_len) {
- 				ret = mtk_drm_crtc_create(drm, priv_n->data->ext_path,
--							  priv_n->data->ext_len, j);
-+							  priv_n->data->ext_len, j, NULL, 0);
- 				if (ret)
- 					goto err_component_unbind;
- 
- 				continue;
- 			} else if (i == 2 && priv_n->data->third_len) {
- 				ret = mtk_drm_crtc_create(drm, priv_n->data->third_path,
--							  priv_n->data->third_len, j);
-+							  priv_n->data->third_len, j, NULL, 0);
- 				if (ret)
- 					goto err_component_unbind;
- 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-index eb2fd45941f0..8dca68ea1b94 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-@@ -22,6 +22,12 @@ struct drm_fb_helper;
- struct drm_property;
- struct regmap;
- 
-+struct mtk_drm_route {
-+	const unsigned int crtc_id;
-+	const unsigned int route_len;
-+	const unsigned int *route_ddp;
-+};
-+
- struct mtk_mmsys_driver_data {
- 	const unsigned int *main_path;
- 	unsigned int main_len;
-@@ -29,6 +35,8 @@ struct mtk_mmsys_driver_data {
- 	unsigned int ext_len;
- 	const unsigned int *third_path;
- 	unsigned int third_len;
-+	const struct mtk_drm_route *conn_routes;
-+	unsigned int conn_routes_num;
- 
- 	bool shadow_register;
- 	unsigned int mmsys_id;
--- 
-2.18.0
-
+SGkgQW5nZWxvLA0KDQpPbiBTYXQsIDIwMjMtMDUtMDYgYXQgMTQ6MzUgKzAyMDAsIEFuZ2Vsb0dp
+b2FjY2hpbm8gRGVsIFJlZ25vIHdyb3RlOg0KPiBFeHRlcm5hbCBlbWFpbCA6IFBsZWFzZSBkbyBu
+b3QgY2xpY2sgbGlua3Mgb3Igb3BlbiBhdHRhY2htZW50cyB1bnRpbA0KPiB5b3UgaGF2ZSB2ZXJp
+ZmllZCB0aGUgc2VuZGVyIG9yIHRoZSBjb250ZW50Lg0KPiANCj4gDQo+IE1ha2UgdGhlIGNvZGUg
+bW9yZSByb2J1c3QgYW5kIGltcHJvdmUgcmVhZGFiaWxpdHkgYnkgdXNpbmcgYml0ZmllbGQNCj4g
+bWFjcm9zIGluc3RlYWQgb2Ygb3BlbiBjb2RpbmcgYml0IG9wZXJhdGlvbnMuDQo+IFdoaWxlIGF0
+IGl0LCBhbHNvIGFkZCBhIGRlZmluaXRpb24gZm9yIExVVF9CSVRTX0RFRkFVTFQuDQo+IA0KPiBT
+aWduZWQtb2ZmLWJ5OiBBbmdlbG9HaW9hY2NoaW5vIERlbCBSZWdubyA8DQo+IGFuZ2Vsb2dpb2Fj
+Y2hpbm8uZGVscmVnbm9AY29sbGFib3JhLmNvbT4NCg0KUmV2aWV3ZWQtYnk6IEphc29uLUpILkxp
+biA8amFzb24tamgubGluQG1lZGlhdGVrLmNvbT4NCg0KUmVnYXJkcywNCkphc29uLUpILkxpbg0K
 
