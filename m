@@ -4,68 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C043C7EE26
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 May 2023 20:54:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB4BDC77B7F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 May 2023 01:22:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DR9D12eglRrhBZFZY3ivRNdFG+XKakl3ajdHRjX+3+c=; b=f3WmFyIn3Ba9VmGgwslgh81Vt1
-	P8G38RofB8sj0292rJ/PAkMPH1NpWgXFaqWm5tSAjK9nSk2wQNwBivtk+nLWQwHdFIqfkd7UFauIL
-	Y2p1YGTWqkIgW5sRoFlZhdv1B/t2OKIt4gWT+w0iGOUi6Wyp3qUL34zzp2o8oGHvCRjpSq7ppOSed
-	qL/NY6JlxiGNKbZCZbNQQN/H5C6TauUWw3RHKcdDY6RCJWuKzmxyvygsb8qO2pA59QyzG9ys6Tchl
-	YOLwdFD2/NWqYdZZ11xPaP01UwziJCFSWnCQ+Iu8zjmdqEr9lmfu8ARtasUGkahFph19mZPt/Hz+P
-	zFJyyXeA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=zeqDFAMBKmoT/g81hl2hQIeucwKvcq8VOvv07+thxgU=; b=yCqxQSau6IbPiRwE7cfsEZTxnh
+	bDutX1AFVKJ9tvW9tq553r/Erkvjkg0I4dU7S3VQdmm8TTW/w8anvFzFCj4L0sPCaxSFbzprMY1eb
+	NeMTpRZrkTq9gMMElj3EKPBEJ5r+haYniRcN0ePybwGQBEcKJCmHvBMtsGCM31p6ipE6KL1PbHtTP
+	6PMhLOUv7ccH/GG1qGtgdtxAu/sg4Qu1ZekQxqQk9m8MMuDPS4U41ecSDjJmDlRGGwI11oRqvJfr2
+	0iNrpwaozI5hd+rvp8o/KTGUT/RvlaCrijRG3K/pHgkd+QgV0Of/kRu9bHxsXGhV2kiNuherwFS9K
+	5eeFv7CQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pw7s3-001OXh-0U;
-	Mon, 08 May 2023 20:54:11 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1pwC3R-001yMX-0Y;
+	Tue, 09 May 2023 01:22:13 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pw7rT-001Nx0-0h
-	for linux-mediatek@lists.infradead.org;
-	Mon, 08 May 2023 20:53:36 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pw7rI-0003aW-7g; Mon, 08 May 2023 22:53:24 +0200
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pw7rG-0024sK-QE; Mon, 08 May 2023 22:53:22 +0200
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pw7rF-002YXT-TJ; Mon, 08 May 2023 22:53:21 +0200
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Stefan Roese <sr@denx.de>,
+	id 1pwC3O-001yKL-35;
+	Tue, 09 May 2023 01:22:12 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1pwC3G-00022c-03;
+	Tue, 09 May 2023 01:22:02 +0000
+Date: Tue, 9 May 2023 03:20:06 +0200
+From: Daniel Golle <daniel@makrotopia.org>
+To: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	Wolfram Sang <wsa@kernel.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-i2c@vger.kernel.org,
-	kernel@pengutronix.de,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH 42/89] i2c: mt7621: Convert to platform remove callback returning void
-Date: Mon,  8 May 2023 22:52:19 +0200
-Message-Id: <20230508205306.1474415-43-u.kleine-koenig@pengutronix.de>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230508205306.1474415-1-u.kleine-koenig@pengutronix.de>
-References: <20230508205306.1474415-1-u.kleine-koenig@pengutronix.de>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH net] net: ethernet: mtk_eth_soc: fix NULL pointer dereference
+Message-ID: <ZFmfxpsd8Fiqc7K_@pidgin.makrotopia.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1535; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=gvYy2p6OUjMymR++g3HVoaQyQU8hbOhhzCgPl70p1U8=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBkWWDfl6zi/7ksMMTwFf5VHBH2HmaJwvsi++ZiO SFbI+Ce/XGJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZFlg3wAKCRCPgPtYfRL+ Tiy4B/4kZMCqIsT3THa7yRQttfJD2wSfKOi/0Ycs0zrKvEKH3R7ZUAMjCYF2p+G19F3aZvC7Odo KZyBhfpEirpKbClhQ3HtD5y5qD9u7U58Qb7LYfxHNkss5BEDHRVMwBeHiSZsDA78ezs8v3NnOdZ TgpPrGoVJSSYKPxSNsMABiYkSN8uRxY8zML4TaqZLEyBtQ30HHSFIsZ2cBQf91/zQISsjEGhqJn Kkai/+SfgH5ZjlDsBYHA08472CbiO9v6kHFQk5lELYpJrn1+DET1fW4DlJPmJSMYXUu+GNnCnLO zt6EnyYjN89qY4BYuG07RlxsMvKhy5Ko7m8z/kMub2m7UqtQ
-X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230508_135335_286237_0915E3DC 
-X-CRM114-Status: GOOD (  15.97  )
+X-CRM114-CacheID: sfid-20230508_182211_011122_68C78504 
+X-CRM114-Status: GOOD (  11.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,49 +67,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The .remove() callback for a platform driver returns an int which makes
-many driver authors wrongly assume it's possible to do error handling by
-returning an error code. However the value returned is (mostly) ignored
-and this typically results in resource leaks. To improve here there is a
-quest to make the remove callback return void. In the first step of this
-quest all drivers are converted to .remove_new() which already returns
-void.
+Check for NULL pointer to avoid kernel crashing in case of missing WO
+firmware in case only a single WEDv2 device has been initialized, e.g. on
+MT7981 which can connect just one wireless frontend.
 
-Trivially convert this driver from always returning zero in the remove
-callback to the void returning variant.
-
-Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+Fixes: 86ce0d09e424 ("net: ethernet: mtk_eth_soc: use WO firmware for MT7981")
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
- drivers/i2c/busses/i2c-mt7621.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_wed.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/i2c/busses/i2c-mt7621.c b/drivers/i2c/busses/i2c-mt7621.c
-index 20eda5738ac4..f9c294e2bd3c 100644
---- a/drivers/i2c/busses/i2c-mt7621.c
-+++ b/drivers/i2c/busses/i2c-mt7621.c
-@@ -332,19 +332,17 @@ static int mtk_i2c_probe(struct platform_device *pdev)
- 	return ret;
- }
+diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
+index 4c205afbd230..985cff910f30 100644
+--- a/drivers/net/ethernet/mediatek/mtk_wed.c
++++ b/drivers/net/ethernet/mediatek/mtk_wed.c
+@@ -654,7 +654,7 @@ __mtk_wed_detach(struct mtk_wed_device *dev)
+ 					   BIT(hw->index), BIT(hw->index));
+ 	}
  
--static int mtk_i2c_remove(struct platform_device *pdev)
-+static void mtk_i2c_remove(struct platform_device *pdev)
- {
- 	struct mtk_i2c *i2c = platform_get_drvdata(pdev);
+-	if (!hw_list[!hw->index]->wed_dev &&
++	if ((!hw_list[!hw->index] || !hw_list[!hw->index]->wed_dev) &&
+ 	    hw->eth->dma_dev != hw->eth->dev)
+ 		mtk_eth_set_dma_device(hw->eth, hw->eth->dev);
  
- 	clk_disable_unprepare(i2c->clk);
- 	i2c_del_adapter(&i2c->adap);
--
--	return 0;
- }
- 
- static struct platform_driver mtk_i2c_driver = {
- 	.probe		= mtk_i2c_probe,
--	.remove		= mtk_i2c_remove,
-+	.remove_new	= mtk_i2c_remove,
- 	.driver		= {
- 		.name	= "i2c-mt7621",
- 		.of_match_table = i2c_mtk_dt_ids,
 -- 
-2.39.2
+2.40.0
 
 
