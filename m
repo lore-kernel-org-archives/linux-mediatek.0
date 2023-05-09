@@ -4,76 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54DF2C77B7C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 May 2023 15:28:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9D60C77B75
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 May 2023 17:38:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=nbtw0jA5Y+CB2RrQm4TXp8hYl0pAdmvqxpCUQo/y+BA=; b=eUxgO+x9U70wyDQWtQiVYRgVl/
-	j5aJGE9tWaHCIbDA2+XBeOaBw712GpGRhVbDZyqgvC6aXujdzMEM4sKu5ESK6XM5TwHyRlmLXKzRA
-	UIvp/dnHLGiIhuXKpS2D7jm83RHholbRlB3j4T0ZTi6y31cEHd/Jt7msM4mzu7JgrgbXjcXKYsqjF
-	QF5fdRLEe64ZJjBjwCsA3P12/f5NzQTJ5E/IH+8WSO2e8+sFmtwZl51R75pBcWnmpgY2eJAcSXqMw
-	Y46S3xwCZu90DhuQi6G2/PqfAGTtjTqwAr9L6R9rjxnYvqL0sG3q1D0WnJZXpjUKgoufVUuq6L19t
-	GXDxFnQA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZhvRBvl3FYCX8XpkRDm1DPR77OX0DZiPb+0zBJV1pWQ=; b=COBBS9IZwb68up26jfRKwOHqpD
+	W9X7j3lX5Xf96WIbcEl/H/GeN5E9B0zQaZ2E9x+6goybLobSm4aEH+fxYxgQ1eUl+51AoEj8Yn8Fg
+	+gd0JOX/PChK0x8zt8/zRVFYeucMsjTxJGMFFRmQQKEz4WMUkyBfVdka/V3twHAidYWh+hVVmF0ZW
+	1AhMcgLHA1QXzzjw4gyRxZiiFNdPVTgMLpXPTLdIDJqyiKjAGTVkgEpCAUDgJ34irLWUM6gB5GkTm
+	iYIKAwcXEEYx2UX7vUj1Rlm6IwEKRLuxZudPxohBQRYD0i3f3sS3aOsOvcAuh4BEtmHzZdK5gMwGn
+	o4KLJEiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwPGI-003hoA-02;
-	Tue, 09 May 2023 15:28:22 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pwRIE-003v52-1O;
+	Tue, 09 May 2023 17:38:30 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwPGE-003hnF-2Y;
-	Tue, 09 May 2023 15:28:20 +0000
-X-UUID: 1e3f684cee7e11ed83ed1395ce914268-20230509
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=nbtw0jA5Y+CB2RrQm4TXp8hYl0pAdmvqxpCUQo/y+BA=;
-	b=Mpw//zWWiD3HOZ9dDdBHXAuWz7I7xatGxPmOKVojycvS6F/v0LF/XNchmHjNdyhD8vhW6L+rVzYsg7g3fJDDFuoywTkvOtRm6w/PLPv5k1lHcTf1OtkH6LOUQe8HJRB2HfQR3fyZgPMuG8ZCa7OsCPQvcfexsgb1X3mfaJrZJeY=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.24,REQID:d93d7b8c-f105-4868-9396-ec4918359b55,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:178d4d4,CLOUDID:eb929d3a-de1e-4348-bc35-c96f92f1dcbb,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: 1e3f684cee7e11ed83ed1395ce914268-20230509
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <jason-jh.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1695193193; Tue, 09 May 2023 08:28:15 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 9 May 2023 23:07:37 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 9 May 2023 23:07:37 +0800
-From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Alexandre Mergnat
-	<amergnat@baylibre.com>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, Rex-BC Chen
-	<rex-bc.chen@mediatek.com>, Jason-ch Chen <jason-ch.chen@mediatek.com>,
-	Johnson Wang <johnson.wang@mediatek.com>, "Jason-JH . Lin"
-	<jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Nancy
- Lin <nancy.lin@mediatek.com>, Shawn Sung <shawn.sung@mediatek.com>,
-	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v3 0/2] Add dynamic connector selection mechanism
-Date: Tue, 9 May 2023 23:07:35 +0800
-Message-ID: <20230509150737.8075-1-jason-jh.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1pwRI8-003v3w-36;
+	Tue, 09 May 2023 17:38:26 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id F22FD635E1;
+	Tue,  9 May 2023 17:38:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 505E9C433D2;
+	Tue,  9 May 2023 17:37:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1683653903;
+	bh=MGShGh6VlR3Hv1wloISBcqQ3c580bpsFZyJYjZpPIOc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=SZZkL4vQkF3AJdtwH9gbqGDk+xHHq8tV5XNIdopJaR4FlgR4t0ooio/8DGBpkkDI1
+	 9XvZh/u8VrwtVLR6+bWUtuZfy3ka3/YOGDr13I6xXvr+C2HbOIlR3sg+oRq+s6WkaX
+	 Rkqh5xGd0kOzk1YjGukRVB1zds+TGaaDX2jB0kRdTsqYsrkO3Ft7JAKYCh7PMGBLpW
+	 alJPaiC0i7aYN/8emkDIP9Xwx4f44X6MEjZhGFJkaNCeUuWlR3XsB9wLz22IZkVMf/
+	 NN+1vwZ7hdXXNsKoUMdjVg4qk+znXu6AnK8f8h7pRveIc4z909KgFaPptU75ZM77M2
+	 VmsQjc6DYnN7Q==
+Message-ID: <1b766164-b5e8-61ac-bf73-6d2c49c72409@kernel.org>
+Date: Tue, 9 May 2023 12:37:39 -0500
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH v3 29/65] clk: socfpga: gate: Add a determine_rate hook
+Content-Language: en-US
+To: Maxime Ripard <maxime@cerno.tech>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, =?UTF-8?Q?Andreas_F=c3=a4rber?=
+ <afaerber@suse.de>, Manivannan Sadhasivam <mani@kernel.org>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Claudiu Beznea <claudiu.beznea@microchip.com>,
+ Max Filippov <jcmvbkbc@gmail.com>,
+ Charles Keepax <ckeepax@opensource.cirrus.com>,
+ Richard Fitzgerald <rf@opensource.cirrus.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ David Lechner <david@lechnology.com>, Sekhar Nori <nsekhar@ti.com>,
+ Abel Vesa <abelvesa@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Peter De Schrijver <pdeschrijver@nvidia.com>,
+ Prashant Gaikwad <pgaikwad@nvidia.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Ulf Hansson
+ <ulf.hansson@linaro.org>, Linus Walleij <linus.walleij@linaro.org>,
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
+ Alessandro Zummo <a.zummo@towertech.it>, Chen-Yu Tsai <wens@csie.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>, Liam Girdwood <lgirdwood@gmail.com>,
+ Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
+ Takashi Iwai <tiwai@suse.com>, Paul Cercueil <paul@crapouillou.net>,
+ Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
+ <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
+ linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-arm-kernel@lists.infradead.org, linux-actions@lists.infradead.org,
+ patches@opensource.cirrus.com, linux-stm32@st-md-mailman.stormreply.com,
+ linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
+ linux-tegra@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-phy@lists.infradead.org, linux-rtc@vger.kernel.org,
+ linux-sunxi@lists.linux.dev, alsa-devel@alsa-project.org,
+ linux-mips@vger.kernel.org
+References: <20221018-clk-range-checks-fixes-v3-0-9a1358472d52@cerno.tech>
+ <20221018-clk-range-checks-fixes-v3-29-9a1358472d52@cerno.tech>
+ <679921ee-98d4-d6ef-5934-e009fd4b31fc@kernel.org>
+ <sjlp5ubnpvulgwhhymmfkmmobkgxacyqwagqozodkee3di2qik@3igj6k3zgbk6>
+ <57dd81d0-510e-0fab-670d-1109eb8dd974@kernel.org>
+ <tgtfisqxubin4cjj6q26fboirbcnjzcazt5y3m322lw5lskz6l@d3tgz4hdfnk2>
+From: Dinh Nguyen <dinguyen@kernel.org>
+In-Reply-To: <tgtfisqxubin4cjj6q26fboirbcnjzcazt5y3m322lw5lskz6l@d3tgz4hdfnk2>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230509_082818_831910_4BD5B6D8 
-X-CRM114-Status: UNSURE (   9.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230509_103825_112690_47B920F7 
+X-CRM114-Status: GOOD (  35.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,36 +120,222 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-To support DSI and eDP as main display connector without modifying
-mtk-drm driver, we add the dynamic connector selection mechanism.
+Hi Maxime,
 
-Change in v3:
-1. Change max_num comparison statement to max().
+On 5/4/23 12:04, Maxime Ripard wrote:
+> Hi Dinh,
+> 
+> On Thu, Apr 27, 2023 at 02:09:48PM -0500, Dinh Nguyen wrote:
+>> Hi Maxime,
+>>
+>> On 4/25/23 09:48, Maxime Ripard wrote:
+>>> Hi Dinh,
+>>>
+>>> On Mon, Apr 24, 2023 at 01:32:28PM -0500, Dinh Nguyen wrote:
+>>>> On 4/4/23 05:11, Maxime Ripard wrote:
+>>>>> The SoCFGPA gate clock implements a mux with a set_parent hook, but
+>>>>> doesn't provide a determine_rate implementation.
+>>>>>
+>>>>> This is a bit odd, since set_parent() is there to, as its name implies,
+>>>>> change the parent of a clock. However, the most likely candidate to
+>>>>> trigger that parent change is a call to clk_set_rate(), with
+>>>>> determine_rate() figuring out which parent is the best suited for a
+>>>>> given rate.
+>>>>>
+>>>>> The other trigger would be a call to clk_set_parent(), but it's far less
+>>>>> used, and it doesn't look like there's any obvious user for that clock.
+>>>>>
+>>>>> So, the set_parent hook is effectively unused, possibly because of an
+>>>>> oversight. However, it could also be an explicit decision by the
+>>>>> original author to avoid any reparenting but through an explicit call to
+>>>>> clk_set_parent().
+>>>>>
+>>>>> The latter case would be equivalent to setting the flag
+>>>>> CLK_SET_RATE_NO_REPARENT, together with setting our determine_rate hook
+>>>>> to __clk_mux_determine_rate(). Indeed, if no determine_rate
+>>>>> implementation is provided, clk_round_rate() (through
+>>>>> clk_core_round_rate_nolock()) will call itself on the parent if
+>>>>> CLK_SET_RATE_PARENT is set, and will not change the clock rate
+>>>>> otherwise. __clk_mux_determine_rate() has the exact same behavior when
+>>>>> CLK_SET_RATE_NO_REPARENT is set.
+>>>>>
+>>>>> And if it was an oversight, then we are at least explicit about our
+>>>>> behavior now and it can be further refined down the line.
+>>>>>
+>>>>> Signed-off-by: Maxime Ripard <maxime@cerno.tech>
+>>>>> ---
+>>>>>     drivers/clk/socfpga/clk-gate.c | 3 ++-
+>>>>>     1 file changed, 2 insertions(+), 1 deletion(-)
+>>>>>
+>>>>> diff --git a/drivers/clk/socfpga/clk-gate.c b/drivers/clk/socfpga/clk-gate.c
+>>>>> index 32ccda960f28..cbba8462a09e 100644
+>>>>> --- a/drivers/clk/socfpga/clk-gate.c
+>>>>> +++ b/drivers/clk/socfpga/clk-gate.c
+>>>>> @@ -110,6 +110,7 @@ static unsigned long socfpga_clk_recalc_rate(struct clk_hw *hwclk,
+>>>>>     static struct clk_ops gateclk_ops = {
+>>>>>     	.recalc_rate = socfpga_clk_recalc_rate,
+>>>>> +	.determine_rate = __clk_mux_determine_rate,
+>>>>>     	.get_parent = socfpga_clk_get_parent,
+>>>>>     	.set_parent = socfpga_clk_set_parent,
+>>>>>     };
+>>>>> @@ -166,7 +167,7 @@ void __init socfpga_gate_init(struct device_node *node)
+>>>>>     	init.name = clk_name;
+>>>>>     	init.ops = ops;
+>>>>> -	init.flags = 0;
+>>>>> +	init.flags = CLK_SET_RATE_NO_REPARENT;
+>>>>>     	init.num_parents = of_clk_parent_fill(node, parent_name, SOCFPGA_MAX_PARENTS);
+>>>>>     	if (init.num_parents < 2) {
+>>>>>
+>>>>
+>>>> This patch broke SoCFPGA boot serial port. The characters are mangled.
+>>>
+>>> Do you have any other access to that board? If so, could you dump
+>>> clk_summary in debugfs with and without that patch?
+>>>
+>>
+>> That dump from the clk_summary are identical for both cases.
+> 
+> Thanks for testing
+> 
+> I'm a bit confused, there should be no difference in behaviour, and if
+> there was any difference I would expect the clock tree to be somewhat
+> different.
+> 
+> Could you still paste the clk_summary (and dmesg) output? Which UART
+> driver is being used?
+> 
+> Also, is there a way for me to test it somehow?
+> 
 
-Change in v2:
-1. rebase on linux-next: next-20230426
-2. Fix alphabetical order and max_num condition check problem.
+Apologies, but there is a diff with/without this patch:
 
-Change in v1:
-1. based on mediatek-drm maintainer's tree / mediatek-drm-next branch:
-https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/log/?h=mediatek-drm-next
+With patch:
+<           l4_sp_clk                   3        3        0   100000000 
+         0     0  50000         ?
+---
+Without patch:
+ >           l4_sp_clk                   4        4        0   100000000 
+          0     0  50000         ?
 
-Jason-JH.Lin (2):
-  drm/mediatek: Add ability to support dynamic connector selection
-  drm/mediatek: Add DSI support for mt8188 vdosys0
+The enable/prepare count is 4 instead of 3 in the case of a working 
+UART. The debug uart is using the lp_sp_clk.
 
- drivers/gpu/drm/mediatek/mtk_disp_drv.h     |   2 +
- drivers/gpu/drm/mediatek/mtk_dpi.c          |   9 ++
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 111 +++++++++++++++++++-
- drivers/gpu/drm/mediatek/mtk_drm_crtc.h     |   5 +-
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  28 +++++
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |   8 ++
- drivers/gpu/drm/mediatek/mtk_drm_drv.c      |  49 +++++++--
- drivers/gpu/drm/mediatek/mtk_drm_drv.h      |   8 ++
- drivers/gpu/drm/mediatek/mtk_dsi.c          |   9 ++
- 9 files changed, 218 insertions(+), 11 deletions(-)
 
--- 
-2.18.0
+The Cyclone5 devkits are pretty cheap if you want to get one.
 
+Here is the full out of clk_summary:
+
+# cat /sys/kernel/debug/clk/clk_summary
+                                  enable  prepare protect 
+                 duty  hardware
+    clock                          count    count    count rate 
+accuracy phase  cycle    enable
+-------------------------------------------------------------------------------------------------------
+  osc1                                 5        5        0 25000000 
+     0     0  50000         Y
+     sdram_pll                         0        0        0 800000000 
+      0     0  50000         Y
+        h2f_usr2_clk                   0        0        0 133333333 
+      0     0  50000         Y
+           h2f_user2_clk               0        0        0 133333333 
+      0     0  50000         ?
+        ddr_dq_clk                     0        0        0 400000000 
+      0     0  50000         Y
+           ddr_dq_clk_gate             0        0        0 400000000 
+      0     0  50000         ?
+        ddr_2x_dqs_clk                 0        0        0 800000000 
+      0     0  50000         Y
+           ddr_2x_dqs_clk_gate         0        0        0 800000000 
+      0     0  50000         ?
+        ddr_dqs_clk                    0        0        0 400000000 
+      0     0  50000         Y
+           ddr_dqs_clk_gate            0        0        0 400000000 
+      0     0  50000         ?
+     periph_pll                        3        3        0 1000000000 
+       0     0  50000         Y
+        h2f_usr1_clk                   0        0        0 1953125 
+    0     0  50000         Y
+           h2f_user1_clk               0        0        0 1953125 
+    0     0  50000         ?
+        per_base_clk                   4        4        0 200000000 
+      0     0  50000         Y
+           gpio_db_clk                 0        0        0 32000 
+  0     0  50000         ?
+           can1_clk                    0        0        0 40000000 
+     0     0  50000         ?
+           can0_clk                    0        0        0 100000000 
+      0     0  50000         ?
+           spi_m_clk                   1        1        0 200000000 
+      0     0  50000         ?
+           usb_mp_clk                  1        1        0 200000000 
+      0     0  50000         ?
+           l4_sp_clk                   4        4        0 100000000 
+      0     0  50000         ?
+           l4_mp_clk                   1        1        0 100000000 
+      0     0  50000         ?
+        per_nand_mmc_clk               1        1        0 200000000 
+      0     0  50000         Y
+           nand_x_clk                  0        0        0 200000000 
+      0     0  50000         ?
+              nand_clk                 0        0        0 50000000 
+     0     0  50000         ?
+              nand_ecc_clk             0        0        0 200000000 
+      0     0  50000         ?
+           sdmmc_clk                   1        1        0 200000000 
+      0     0  50000         ?
+              sdmmc_clk_divided        1        1        0 50000000 
+     0     0  50000         ?
+        per_qsi_clk                    0        0        0 1953125 
+    0     0  50000         Y
+        emac1_clk                      1        1        0 250000000 
+      0     0  50000         Y
+           emac_1_clk                  1        1        0 250000000 
+      0     0  50000         ?
+        emac0_clk                      0        0        0 1953125 
+    0     0  50000         Y
+           emac_0_clk                  0        0        0 1953125 
+    0     0  50000         ?
+     dbg_base_clk                      0        0        0 6250000 
+    0     0  50000         Y
+        dbg_timer_clk                  0        0        0 6250000 
+    0     0  50000         ?
+        dbg_trace_clk                  0        0        0 6250000 
+    0     0  50000         ?
+        dbg_at_clk                     0        0        0 6250000 
+    0     0  50000         ?
+           dbg_clk                     0        0        0 3125000 
+    0     0  50000         ?
+     main_pll                          2        3        0 1850000000 
+       0     0  50000         Y
+        cfg_h2f_usr0_clk               0        0        0 123333333 
+      0     0  50000         Y
+           h2f_user0_clk               0        0        0 123333333 
+      0     0  50000         ?
+           cfg_clk                     0        0        0 123333333 
+      0     0  50000         ?
+        main_nand_sdmmc_clk            0        0        0 3613281 
+    0     0  50000         Y
+        main_qspi_clk                  1        1        0 370000000 
+      0     0  50000         Y
+           qspi_clk                    1        1        0 370000000 
+      0     0  50000         ?
+        mainclk                        0        1        0 370000000 
+      0     0  50000         Y
+           l3_mp_clk                   0        0        0 185000000 
+      0     0  50000         ?
+              l3_sp_clk                0        0        0 92500000 
+     0     0  50000         Y
+           l3_main_clk                 0        0        0 370000000 
+      0     0  50000         Y
+           l4_main_clk                 0        1        0 370000000 
+      0     0  50000         ?
+        mpuclk                         1        1        0 925000000 
+      0     0  50000         Y
+           mpu_l2_ram_clk              0        0        0 462500000 
+      0     0  50000         Y
+           mpu_periph_clk              1        1        0 231250000 
+      0     0  50000         Y
+
+
+Dinh
 
