@@ -4,60 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD90CC77B7C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 May 2023 21:16:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAA9DC7EE22
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 May 2023 21:18:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
 	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=L3nRoWUVzN0fKUzdg5O+f8QWLbxPBkVlKc/rBCupCKE=; b=2oskw5swvRQ/2VAM2iiBsJaMed
-	Lh898iZmhveHbzXm2OJhYnavUURZhaA6SHbw5dcJDNqAoo99Z5haEoEtlbBteZnELQvDYHoC3T9He
-	cDgN1M7PCpMgF+r49qO9uHM1KTa7y50kNkLKQzTs6D/iSfQdVaBmE6pR9qj+rTc/h4pvU8ZX1xj3V
-	E7U3PEfkpvLV7nIPR/xl8sHG52OTYH35Uj9wD8VyNLd4wZtlmQco1Av3mdPkZV12KZaqROHW0e7Wn
-	eXKQKF5iB6LnW+G90hJyaYJgeu31tNfeUUine4D1qTZsnB8kKYvH39b5ixbHaUdUSlPYjn1s/XY9w
-	pn9/XY0g==;
+	bh=6wnXuR0Uc2BahIDEvzqhRJQCaY9gzOEcQOGZoDtF2ww=; b=GqgWt7L7QXonsKZUqW3k0JzwKi
+	9K4n8mp7xE+AMZfn5sAWGf+THLg/xDYiSQGeWJO8GzYnpPsMIIu4go0v5/KwpuDgA1ZaLlyF72ZW9
+	Sf3MZqXLR+qxPdvvnPv6vPWPRz/3WPjR7c97xgTvxnaM9MuAbdodkTVLbiGrOTuSPhnQD3CUrQMNf
+	lp1OH+5KEvzsILhTiXG4Ed2+noWL7214EPKCdesB9LJy0pR+1sIjh454R22xvvcaQ/DsuhS3oYqIN
+	ps+1AA1IM5VWNGmqOc8qsgr5t1Th5lEAjfKxWI5n/SO5wsnqSYMzidjR9aUxrUYt111eeZMt1cAjS
+	JgKo41kA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwrAZ-0072JT-2h;
-	Wed, 10 May 2023 21:16:19 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pwrCS-0072Xl-0v;
+	Wed, 10 May 2023 21:18:16 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwrAW-0072Ij-2d;
-	Wed, 10 May 2023 21:16:17 +0000
+	id 1pwrCP-0072Wu-1h;
+	Wed, 10 May 2023 21:18:14 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 3289A61363;
-	Wed, 10 May 2023 21:16:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8A17DC433EF;
-	Wed, 10 May 2023 21:16:15 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id D8FCA6140D;
+	Wed, 10 May 2023 21:18:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3B841C4339B;
+	Wed, 10 May 2023 21:18:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1683753375;
-	bh=L3nRoWUVzN0fKUzdg5O+f8QWLbxPBkVlKc/rBCupCKE=;
+	s=k20201202; t=1683753492;
+	bh=6wnXuR0Uc2BahIDEvzqhRJQCaY9gzOEcQOGZoDtF2ww=;
 	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=AeBdk7h4G1J77K+qyLd4jfrjhvrtpD0LZVipsVWZ2/Muf6SsizKRgY+VQeED0HZ1+
-	 16yWMdCEuRxn7hvGiFPxK6TvZv5ONBKRmaH3j5fySv3MszQb29k9M6xSFEKjw+yV8j
-	 LdC5uG3MfewYzosxY740uYQPDatYdFabJpqkYtUnpi2AUsnxiaZq4+bcJMVxnEwpzO
-	 pX49XU26A/iqdAnmWnDB83Hfv3YpjNpjiLBZ4oL71p1vmnnpEoNGxt184AfOXjcZ+o
-	 zNwLKKxZSJb6FNgwJC8tFHf4kfp9vZJuPqHhaYZV+HQIavXBWQpDLTEI9EeqL1oaAS
-	 bG6qf8g1R4mOg==
-Message-ID: <d529c118cf8f3db47d2111837ad3a3e1.sboyd@kernel.org>
+	b=OzMXZsLU2BSip09Tnai3Lsa4m/Vf/2TWC4pDIQm6uci92fKbsp7dPM+IRDO4emqKO
+	 xjAm2DdtUv/nSl/q+cXWS26Syv5ZD5415u1rjvX88fVDVtWtmRPIc5Dt2Hi6lG7PC0
+	 7m16qX2e9QMLNVsRJRjdtqy/xpqmifr+TU1B7AgLXgYXz1RmBhB8Klx8YoS/hwWJBv
+	 Ln1knJdZ4hpPgujCm62SO/DsOkzpMn8ODkauHm95KlobPb3ifdyDiPg00lHIYgqMmP
+	 J21xGvcW1vr24/0lcfKX8ZdBBw+iOB4jKTlz8MmaOPyQps8e4467/vq+ab/0k0BvLd
+	 FQfo0AWIdllsA==
+Message-ID: <b35458250af972d95c708792633c9a58.sboyd@kernel.org>
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20230421111125.2397368-1-wenst@chromium.org>
-References: <20230421111125.2397368-1-wenst@chromium.org>
-Subject: Re: [PATCH] clk: mediatek: Enable all MT8192 clocks by default
+In-Reply-To: <20230509021214.17105-1-gehao@kylinos.cn>
+References: <20230509021214.17105-1-gehao@kylinos.cn>
+Subject: Re: [PATCH] mediatek/clk-mt8173-apmixedsys: use devm_of_iomap to avoid resource leak in clk_mt8173_apmixed_probe
 From: Stephen Boyd <sboyd@kernel.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?q?N=C3=ADcolas?= F . R . A . Prado <nfraprado@collabora.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org
-To: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 10 May 2023 14:16:13 -0700
+Cc: gehao618@163.com, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Hao Ge <gehao@kylinos.cn>
+To: Hao Ge <gehao@kylinos.cn>, angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com, mturquette@baylibre.com, wenst@chromium.org
+Date: Wed, 10 May 2023 14:18:08 -0700
 User-Agent: alot/0.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230510_141616_891441_9D570CAC 
-X-CRM114-Status: GOOD (  10.92  )
+X-CRM114-CacheID: sfid-20230510_141813_609103_62A9A2E6 
+X-CRM114-Status: UNSURE (   9.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,17 +73,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Chen-Yu Tsai (2023-04-21 04:11:25)
-> Currently the base MT8192 clock drivers are enabled by default, but all
-> the other clock drivers need to be enabled by hand. This is extremely
-> confusing and inconvenient for end users. For the MT8192 platform to be
-> useful, most if not all the clock drivers driving the hardware blocks
-> need to be enabled.
+Quoting Hao Ge (2023-05-08 19:12:14)
+> Use devm_platform_ioremap_resource to take the place of of_iomap for
+> avoid that we don't called iounmap when return some error or remove
+> device.
 >=20
-> Enable them by default whenever MT8192 base clock driver is enabled.
->=20
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> Fixes: 4c02c9af3cb9 ("clk: mediatek: mt8173: Break down clock drivers and=
+ allow module build")
+> Signed-off-by: Hao Ge <gehao@kylinos.cn>
 > ---
 
-Applied to clk-next
+Is this v3?
 
