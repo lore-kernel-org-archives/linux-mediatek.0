@@ -4,36 +4,36 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34C3EC7EE22
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 May 2023 22:56:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E903C7EE22
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 May 2023 22:57:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hCWlB98ZjrrVV4FLrz+myH0C2AtSbTflHoFyq21uLP8=; b=jTOUv7YGtpYHLEzqnD3EicdctD
-	iMuGFkXvHjb9nY4SPUJemn+nomzApCo+JeXExZpCQO2xxovZYNiWNTapweGj+4A1D7FZo93moDBl1
-	gEMjWHJqewe7k6sH/d2rEDsA4JD5jhGCgDyQhBXyp/O+sTQASJrHHeAySettc+UAYmLHRHF08bDYD
-	+W3wDS7YFXY8Xc3hH76Uh9cpjiHWgF4vFTvSXMxWXD8XdYe+ZI5jLr3YW2/OCnCCH9jgd5KzuSEt5
-	1/9Fu+M20g8FR/gSESzNH9gBRMML8GIX5D/fU2yc8GYfz+1jOPyNnzI6S/Jt9nFPUA2YbWY+6RgBO
-	PD+bitMQ==;
+	bh=6qCndzjD/Ojhsa1S9OAfiPDCl5hixonzrj77+/sbsLo=; b=3Db+H851z+r0yHjbpQEeJcnH5Z
+	H9s9nqLP15tIXGz8QaGlVX6AJ8eGefWSsUQslegHx7MBZIk5qZJaQFsJnFiibw9b+0XxzBpsnUHgJ
+	F0krUT26ENPsTBLKEavyWrkQAQleKTi0lf1P5AgeUqE8g7z7DLqhS5iJ4JYayh0PBzNxCkBrYdgpw
+	dozLRlk75nvJvrybBZIilGBaMapg3WRcSb4EHRmaLGHdAVbW/4iz+3iVLucBYzj2uJbrjzCUr3h9v
+	7uqpb6qoJ44jxWnc1dQdMCqlTBJnGXNwtuq1cOWT3WSY8KfIibyo//2vh47U/XXEnfFVjvTNXQ1/2
+	xxDJQ3kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwsjd-007Bmj-1Z;
-	Wed, 10 May 2023 22:56:37 +0000
+	id 1pwskJ-007BuQ-1O;
+	Wed, 10 May 2023 22:57:19 +0000
 Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwsjZ-007Blf-38;
-	Wed, 10 May 2023 22:56:35 +0000
+	id 1pwskH-007Btl-0G;
+	Wed, 10 May 2023 22:57:18 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1pwsjY-0004QI-1d;
-	Wed, 10 May 2023 22:56:32 +0000
-Date: Thu, 11 May 2023 00:54:36 +0200
-From: Chukun Pan <amadeus@jmu.edu.cn>
+	id 1pwskF-0004Qx-2b;
+	Wed, 10 May 2023 22:57:16 +0000
+Date: Thu, 11 May 2023 00:55:11 +0200
+From: Daniel Golle <daniel@makrotopia.org>
 To: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
 	Andrew Lunn <andrew@lunn.ch>,
@@ -43,17 +43,18 @@ To: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH net-next 2/8] net: phy: realtek: switch interface mode for
- RTL822x series
-Message-ID: <537a12131132614ce9600ca9370dab823a262347.1683756691.git.daniel@makrotopia.org>
+Subject: [PATCH net-next 3/8] net: phy: realtek: use genphy_soft_reset for
+ 2.5G PHYs
+Message-ID: <0c1e578a5b02fe49e1114ea75e3c6282eb230ad3.1683756691.git.daniel@makrotopia.org>
 References: <cover.1683756691.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1683756691.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230510_155634_007883_8A83FD14 
-X-CRM114-Status: GOOD (  12.60  )
+X-CRM114-CacheID: sfid-20230510_155717_122425_2B9CBADE 
+X-CRM114-Status: UNSURE (   9.54  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,63 +69,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The RTL822x phy can work in Cisco SGMII and 2500BASE-X modes respectively.
-Add interface automatic switching MAC-side interface mode for RTL822x
-phy to match various wire speeds when using Clause-45 MDIO.
+Some vendor bootloaders do weird things with those PHYs which result in
+link modes being reported wrongly. Start from a clean sheet by resetting
+the PHY.
 
-Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
+Reported-by: Yevhen Kolomeiko <jarvis2709@gmail.com>
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
- drivers/net/phy/realtek.c | 26 ++++++++++++++++++++++++--
- 1 file changed, 24 insertions(+), 2 deletions(-)
+ drivers/net/phy/realtek.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
 diff --git a/drivers/net/phy/realtek.c b/drivers/net/phy/realtek.c
-index a7dd5a075135..4a2c1ad02d48 100644
+index 4a2c1ad02d48..0cf7846c9812 100644
 --- a/drivers/net/phy/realtek.c
 +++ b/drivers/net/phy/realtek.c
-@@ -684,6 +684,25 @@ static int rtl822x_config_aneg(struct phy_device *phydev)
- 	return __genphy_config_aneg(phydev, ret);
- }
- 
-+static void rtl822x_update_interface(struct phy_device *phydev)
-+{
-+	/* Automatically switch SERDES interface between
-+	 * SGMII and 2500-BaseX according to speed.
-+	 */
-+	switch (phydev->speed) {
-+	case SPEED_2500:
-+		phydev->interface = PHY_INTERFACE_MODE_2500BASEX;
-+		break;
-+	case SPEED_1000:
-+	case SPEED_100:
-+	case SPEED_10:
-+		phydev->interface = PHY_INTERFACE_MODE_SGMII;
-+		break;
-+	default:
-+		break;
-+	}
-+}
-+
- static int rtl822x_read_status(struct phy_device *phydev)
- {
- 	int ret;
-@@ -702,11 +721,14 @@ static int rtl822x_read_status(struct phy_device *phydev)
- 			phydev->lp_advertising, lpadv & RTL_LPADV_2500FULL);
- 	}
- 
--	ret = genphy_read_status(phydev);
-+	ret = rtlgen_read_status(phydev);
- 	if (ret < 0)
- 		return ret;
- 
--	return rtlgen_get_speed(phydev);
-+	if (phydev->is_c45 && phydev->link)
-+		rtl822x_update_interface(phydev);
-+
-+	return 0;
- }
- 
- static bool rtlgen_supports_2_5gbps(struct phy_device *phydev)
+@@ -1038,6 +1038,7 @@ static struct phy_driver realtek_drvs[] = {
+ 		.write_page	= rtl821x_write_page,
+ 		.read_mmd	= rtl822x_read_mmd,
+ 		.write_mmd	= rtl822x_write_mmd,
++		.soft_reset     = genphy_soft_reset,
+ 	}, {
+ 		PHY_ID_MATCH_EXACT(0x001cc840),
+ 		.name		= "RTL8226B_RTL8221B 2.5Gbps PHY",
+@@ -1051,6 +1052,7 @@ static struct phy_driver realtek_drvs[] = {
+ 		.write_page	= rtl821x_write_page,
+ 		.read_mmd	= rtl822x_read_mmd,
+ 		.write_mmd	= rtl822x_write_mmd,
++		.soft_reset     = genphy_soft_reset,
+ 	}, {
+ 		PHY_ID_MATCH_EXACT(0x001cc838),
+ 		.name           = "RTL8226-CG 2.5Gbps PHY",
+@@ -1061,6 +1063,7 @@ static struct phy_driver realtek_drvs[] = {
+ 		.resume         = rtlgen_resume,
+ 		.read_page      = rtl821x_read_page,
+ 		.write_page     = rtl821x_write_page,
++		.soft_reset     = genphy_soft_reset,
+ 	}, {
+ 		PHY_ID_MATCH_EXACT(0x001cc848),
+ 		.name           = "RTL8226B-CG_RTL8221B-CG 2.5Gbps PHY",
+@@ -1072,6 +1075,7 @@ static struct phy_driver realtek_drvs[] = {
+ 		.resume         = rtlgen_resume,
+ 		.read_page      = rtl821x_read_page,
+ 		.write_page     = rtl821x_write_page,
++		.soft_reset     = genphy_soft_reset,
+ 	}, {
+ 		PHY_ID_MATCH_EXACT(0x001cc849),
+ 		.name           = "RTL8221B-VB-CG 2.5Gbps PHY",
+@@ -1083,6 +1087,7 @@ static struct phy_driver realtek_drvs[] = {
+ 		.resume         = rtlgen_resume,
+ 		.read_page      = rtl821x_read_page,
+ 		.write_page     = rtl821x_write_page,
++		.soft_reset     = genphy_soft_reset,
+ 	}, {
+ 		PHY_ID_MATCH_EXACT(0x001cc84a),
+ 		.name           = "RTL8221B-VM-CG 2.5Gbps PHY",
+@@ -1094,6 +1099,7 @@ static struct phy_driver realtek_drvs[] = {
+ 		.resume         = rtlgen_resume,
+ 		.read_page      = rtl821x_read_page,
+ 		.write_page     = rtl821x_write_page,
++		.soft_reset     = genphy_soft_reset,
+ 	}, {
+ 		PHY_ID_MATCH_EXACT(0x001cc961),
+ 		.name		= "RTL8366RB Gigabit Ethernet",
 -- 
 2.40.0
 
