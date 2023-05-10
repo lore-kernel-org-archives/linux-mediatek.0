@@ -4,76 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D53B6C7EE22
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 May 2023 07:14:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E606C77B7C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 May 2023 07:52:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Tx9CfWRYSGHMpHne4BeMeiM05WCsy/k7BT7zMI9zAyc=; b=4EU4OiIFyZAIMltP5+hlcDrK7t
-	FcKHeFde5yRAXX4DpAAahpde2W4S2dSJLwn4yfZlsuGQTF67xFO5bnnvkPk1oo6ECzRI2DsP8oN7N
-	yZyPnnNnSecLf8JN2ZxTH67kGP6QG1Z5U5e49NT3ah2PK45AuWp0zwmB+G0kS8qOj/LjR29ZcOo89
-	CMbTWVFmy+N04E4n98Z8B4UBYfhCOaCUinGjkwXO0QSOHWAkZHwOYTbKouKaWn/Rv7pVz+IUHzSNQ
-	2ZgLlGxSg48DBeXXodV7nOATBRCAJujhG8oCYkVKIPxY5jI5I3WSzw1z4fZroAaAa9lppyhPERyon
-	WMiS2Y+A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=buV1oS+q5zSYMCb+Vk5Sei3x9AdpdZjHmxNoX6GDBRE=; b=XkLSq5M9Zr3IVrc8YcLFM0XqdK
+	6kZlXtgrYszR8gAt0gYLVsF2pEDRIsSfUYiQyYUKjxb7kHb1wEY5mGuuRwYzKTr6QCm32/zqadyC/
+	R9izrTXbvwWPLCVjQTAfZ9UTxNmjT5C4NJfAUxp4tlTt0QRgsTRuluVrJ4kqheV16R18zFQAF1wH9
+	n2ZqpuRaa6zOzok5pJK0VrSAJrGPw3WdO0E06zXoD5gAJvCLqMq1xLISGWx8aNbxonrD4sMwg7vYO
+	0kk+kZE2vh3JHY8DII5HrTlDpfICY7h1lZ3YAEHNIrT3JajCcMi1zvdb0xjYwh8/1bDNzr5SFnVyt
+	selCMMOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwe1H-005MPr-1D;
-	Wed, 10 May 2023 07:13:51 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pweci-005R8c-1L;
+	Wed, 10 May 2023 07:52:32 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwe1F-005MPU-18
+	id 1pwecf-005R6z-1N
 	for linux-mediatek@lists.infradead.org;
-	Wed, 10 May 2023 07:13:50 +0000
-X-UUID: 32eef350ef0211ed83ed1395ce914268-20230510
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Tx9CfWRYSGHMpHne4BeMeiM05WCsy/k7BT7zMI9zAyc=;
-	b=UgF+6FYJZevkbaFLaWeS/cL9frDY2tSXxlZtuvebQOJlFTRx/IHBxW37tHlPdZXfpj6S7WYM50m8x2X4nDzt4edqxc4azKDu8apwCVBj+209yoF4NIaervNzqwsDMBk1VmXZr/zj7azoepgUEzVQlKUGLF6rGaIvPwPLFtJln04=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.24,REQID:f55b1c69-a0f7-418b-9cb1-d09fe98753ce,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:178d4d4,CLOUDID:e113576b-2f20-4998-991c-3b78627e4938,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: 32eef350ef0211ed83ed1395ce914268-20230510
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <deren.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1778979597; Wed, 10 May 2023 00:13:44 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.194) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 10 May 2023 14:53:09 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 10 May 2023 14:53:09 +0800
-From: Deren Wu <deren.wu@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
-CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
-	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, Leon Yen
-	<Leon.Yen@mediatek.com>, Eric-SY Chang <Eric-SY.Chang@mediatek.com>, KM Lin
-	<km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
-	<ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Stella Chang
-	<Stella.Chang@mediatek.com>, Quan Zhou <quan.zhou@mediatek.com>, Ryder Lee
-	<ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
-	linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>,
-	<stable@vger.kernel.org>
-Subject: [PATCH] wifi: mt76: mt7921: do not support one stream on secondary antenna only
-Date: Wed, 10 May 2023 14:51:13 +0800
-Message-ID: <cc94dbd5a53537e82d0beaa2d986f0b18e06eee4.1683700651.git.deren.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	Wed, 10 May 2023 07:52:30 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-50bc3088b7aso13169051a12.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 10 May 2023 00:52:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1683705146; x=1686297146;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=buV1oS+q5zSYMCb+Vk5Sei3x9AdpdZjHmxNoX6GDBRE=;
+        b=Q4XRlsa/ttO62lIK4GlvTimIidf2aZ8yWta4S1EEsfZMxipw4+4vFyoxAMvBO3WFtg
+         SLnrwwacDR91Ltcs6KRK2lB9oz5WNqvkCQ2r6BV2RpFVUuC+bxpxblT5dd1LJ0HuGM1c
+         TZyR+ILO+ItOWB7mfM/2AI9FVgrklZOFMsO7BVyxebCvru0hF4K69Fsh3eWXZrE/vsZD
+         y0IxnpRhuCHlpspg1zMQXxJhTmu+Qy7RveEvP23D77fHuQv/9vJA/T3WaPr1ZxkGLMQv
+         sSPrTIdo2yJeKQnWlS76VfEDyHdcHtENmMxvaKlxhk5Kz2kkyib3R7XGcdbfKOvEZUDW
+         6NhA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1683705146; x=1686297146;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=buV1oS+q5zSYMCb+Vk5Sei3x9AdpdZjHmxNoX6GDBRE=;
+        b=kwW6nCXTcpirocECI+V8i9Edf8vv+82AjZHnUhdeFnOdic3rWC5yECJcp/ddNh7cLf
+         lz1uXYgVwhGL3WkYCU/8bgTu06+Q+MjaWA0V8PW6YaRgzSVNo10noMJ9Yi6SZgTNyLSc
+         9cbh7TeRgJkS3jB/KiMNe4KBzyIhm2toWPDx6ZmAHsUGuKNNir0FXDOGGvEQRyp8MpwE
+         Nb3eT5aP1zjR8hOG4+q7wjKeGcMiwGaGVvUC6iahyqytsecIAwGTe9fZXuoNbHRWKVti
+         hkZZNwbcTZg6M2l8dWgppSdF4cU4XlVVfA7+YBpYtQVszjwpIBxXdrepcrzqrosqreKj
+         n4NA==
+X-Gm-Message-State: AC+VfDx1NqQo/UEgTjTP7cFtOOh+3R63x3KsK9otmmzCHTo2Gxz3OAKJ
+	zt9O5k8B5ae80cK1jjnHxxKDoA==
+X-Google-Smtp-Source: ACHHUZ4PkilMztZzdtCbud0lGz7T8NDnLixfG28NHHOUaUz/5BDZAb+4ZEG6FXuOIsei4a4hftLJhQ==
+X-Received: by 2002:a17:906:fe07:b0:953:8249:1834 with SMTP id wy7-20020a170906fe0700b0095382491834mr13901254ejb.16.1683705145939;
+        Wed, 10 May 2023 00:52:25 -0700 (PDT)
+Received: from ?IPV6:2a02:810d:15c0:828:c175:a0f9:6928:8c9d? ([2a02:810d:15c0:828:c175:a0f9:6928:8c9d])
+        by smtp.gmail.com with ESMTPSA id v20-20020a170906b01400b0096165b2703asm2338115ejy.110.2023.05.10.00.52.24
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 10 May 2023 00:52:24 -0700 (PDT)
+Message-ID: <a575e8df-4882-79bc-ea1b-005961afb77f@linaro.org>
+Date: Wed, 10 May 2023 09:52:23 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH v4 8/9] ASoC: dt-bindings: mediatek,mt8188-afe: correct
+ clock name
+Content-Language: en-US
+To: Trevor Wu <trevor.wu@mediatek.com>, broonie@kernel.org,
+ lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com
+Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org
+References: <20230510035526.18137-1-trevor.wu@mediatek.com>
+ <20230510035526.18137-9-trevor.wu@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230510035526.18137-9-trevor.wu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230510_001349_403028_6DCFF8E8 
-X-CRM114-Status: GOOD (  11.02  )
+X-CRM114-CacheID: sfid-20230510_005229_463700_3DFCFA79 
+X-CRM114-Status: UNSURE (   9.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,40 +101,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mt7921 support following antenna combiantions only.
-* primary + secondary (2x2)
-* primary only        (1x1)
+On 10/05/2023 05:55, Trevor Wu wrote:
+> The original clock names are different from the list in driver code.
+> Correct the mismatched binding names in the patch.
+> 
+> Because no mt8188 upstream dts exists, it doesn't affect the existing
+> dts file.
+> 
+> Fixes: 692d25b67e10 ("ASoC: dt-bindings: mediatek,mt8188-afe: add audio afe document")
+> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+> ---
+>  .../bindings/sound/mediatek,mt8188-afe.yaml   | 36 +++++++++----------
 
-Since we cannot work on secondary antenna only, return error if the
-antenna bitmap is 0x2 in .set_antenna().
 
-For example:
-iw phy0 set antenna 3 3 /* valid */
-iw phy0 set antenna 1 1 /* valid */
-iw phy0 set antenna 2 2 /* invalid */
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Cc: stable@vger.kernel.org
-Fixes: e0f9fdda81bd ("mt76: mt7921: add ieee80211_ops")
-Suggested-by: Knox Chiou <knoxchiou@google.com>
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7921/main.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index 0c9a472bc81a..6c971c30d6a1 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -1364,7 +1364,7 @@ mt7921_set_antenna(struct ieee80211_hw *hw, u32 tx_ant, u32 rx_ant)
- 		return -EINVAL;
- 
- 	if ((BIT(hweight8(tx_ant)) - 1) != tx_ant)
--		tx_ant = BIT(ffs(tx_ant) - 1) - 1;
-+		return -EINVAL;
- 
- 	mt7921_mutex_acquire(dev);
- 
--- 
-2.18.0
+Best regards,
+Krzysztof
 
 
