@@ -4,72 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0CA5C7EE22
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 May 2023 16:43:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A5C7C77B7D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 May 2023 16:56:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hqFHy1xe5YqFmgQ/GgNRtOR0JMnEzFxt/51kgPUMKZ0=; b=EbIwhcvMlkeIlkouVizaR03i5e
-	gG2SgtpnXImghoBrsqt9ZyLZSTbZAEJKPvc9OjMYOhvNzDStBdAk+buIJbUcwxyhg5PW/4HK57EtS
-	BuCIXvKSvHwbyXUm+gy4jwtNwe26zjMXtSZ29hKHLdHIzDV882+B1hOn5VgUIi7ougmD0mEO9XiDf
-	UdpA+5XS0uAOVwgdS9ALOZsfTzMgeMJ83xDZP1klaNHNxEoCExxrw+ocmNaEqlEHidfxGKMseGG6r
-	N9zHJ/Osq43Zk2pYNrmledDUl1dt2rURjFz1ayCqGD6W9Nh2w0Bqv3tHV3U0HEL7hv8Vm4HfJIAfm
-	iRQ1K19A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=i9y7cGD3DdhxiTnvOkhxIVt549Y/e7kFTE/+uk3TXWg=; b=pcAl6jeDFGAXSY4PP+okks0DTw
+	NQSEKYBaBrpojtsuTm/nOIjCbdUCDJdBieXWKCuUq1UoYgmo51nDceLsWSaKU7s8JvLcTxhU3Hh88
+	k53bB9NEeRfyfxMrGOKbZsbLKicuzwIvZr1OytqWoWW+xbX7OMvv/jYsElpJJJISslqLnXIij5ts2
+	YVClrHpgfvING42RQn5Ea+Uo35wSR9bdC6lh2QqlS8jQEKEsXNFu7mfyT8Io7MtLJPpZMbRfty7Rf
+	WznjEq4cJwSRxdLpEhKyYDLjYuuEKbVGIkYtN08Omnr5n32xurbuLFS3Th4/oPuvHZc9JYlxS5dhe
+	ppslcncQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwmuu-006b46-2t;
-	Wed, 10 May 2023 16:43:52 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1pwn6h-006c72-1P;
+	Wed, 10 May 2023 16:56:03 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwmuq-006b2F-34
-	for linux-mediatek@lists.infradead.org;
-	Wed, 10 May 2023 16:43:51 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pwmuc-0006yl-CH; Wed, 10 May 2023 18:43:34 +0200
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pwmuY-002XCA-O2; Wed, 10 May 2023 18:43:30 +0200
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pwmuY-003ALi-5f; Wed, 10 May 2023 18:43:30 +0200
-Date: Wed, 10 May 2023 18:43:30 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Fei Shao <fshao@chromium.org>
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Tiffany Lin <tiffany.lin@mediatek.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Pavel Machek <pavel@ucw.cz>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH] media: mediatek: vcodec: Convert mtk_vcodec_dec_hw
- platform remove callback
-Message-ID: <20230510164330.z2ygkl7vws6fci75@pengutronix.de>
-References: <20230510233117.1.I7047714f92ef7569bd21f118ae6aee20b3175a92@changeid>
+	id 1pwn6d-006c5M-0D;
+	Wed, 10 May 2023 16:56:01 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-3f315735514so254831955e9.1;
+        Wed, 10 May 2023 09:55:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1683737750; x=1686329750;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=i9y7cGD3DdhxiTnvOkhxIVt549Y/e7kFTE/+uk3TXWg=;
+        b=ldXAkfpTo6z8AMiwx38DDlh15ZKGU4BpuVeFTScNNtgMhWVBikjfiQ9n1LZOup0LuO
+         3Oop3vDms+w/1o5p6d+s1ifEQo/OMIkmPPYe40yOY3oaxAh4HBxw5avcF2q9QfvXr0zS
+         hH/Q/VbxN9finYJmHwuJLGwIoEFF1Tk2TojfdiZuWX3r3nXiAf8hNw6dGoYun6qHqJwu
+         TXkdG4c+QMfzHLIXlhuJDrrbZwSRBh49ye5cICAfbwGmecDnoy6gReyu249FaO4vfaAa
+         Tx7FWWRVTiWqtEyG1dlnMUYZfzG3JeXxjiQbP0qLIm5ZMsYinSjv5+q0PWXM8+UPx63e
+         ca2A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1683737750; x=1686329750;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=i9y7cGD3DdhxiTnvOkhxIVt549Y/e7kFTE/+uk3TXWg=;
+        b=kozDW9JxcZJNfhXpjox7tIqTFl3hz29+MpKK0g8dV5+FjjfUTgSVr2gW87+o5hvW0x
+         8ytX9DDISlECdlefVT+OYT7T3ukAeG5BUdyxnpK9eNvcLZlYNRwbdHfCe9/UDUfsp7ni
+         kpM8pQhbJbQqu/PZFKyAcf3c61F38YAEawQQA99Qg+E9KhjklUX/XWo8vepND3OAxMFt
+         fDfiCwfwl6j03UXs3JsoF38ohbW7gfzQFywiTwLarBzSHyKTiNVzwRk71QPhnpvZOFCT
+         D1Dvx41PCtDFzTOhGoOQE0+8m30xb5phVuAyFtg7vKhAQrKOGi4b6eJnsuwjk/KWz5UX
+         CTDw==
+X-Gm-Message-State: AC+VfDxXDJLJaocwO8o0VMp9B04/XPZN7jIG66v/mbK11v52M7LTyh5o
+	qJ2sqMW13X7T6amyraIVZYo=
+X-Google-Smtp-Source: ACHHUZ4JOPmHj45Ix++KLw55iJfyL9l77zzzY6bH3JYTV32D7R7TFxqwc7S4vI3oaBhXTU4NXdKB/Q==
+X-Received: by 2002:a05:600c:5129:b0:3f1:7371:86bb with SMTP id o41-20020a05600c512900b003f1737186bbmr11018982wms.20.1683737749992;
+        Wed, 10 May 2023 09:55:49 -0700 (PDT)
+Received: from [192.168.2.177] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id 10-20020a05600c024a00b003f423dfc686sm10585430wmj.45.2023.05.10.09.55.48
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 10 May 2023 09:55:48 -0700 (PDT)
+Message-ID: <a477f921-909e-ae83-f8af-0d794f8859fb@gmail.com>
+Date: Wed, 10 May 2023 18:55:47 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="q7mthi6fgfcgjjj5"
-Content-Disposition: inline
-In-Reply-To: <20230510233117.1.I7047714f92ef7569bd21f118ae6aee20b3175a92@changeid>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH 41/89] i2c: mt65xx: Convert to platform remove callback
+ returning void
+Content-Language: en-US, ca-ES, es-ES
+To: =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
+ Qii Wang <qii.wang@mediatek.com>, Wolfram Sang <wsa@kernel.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-i2c@vger.kernel.org, kernel@pengutronix.de,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230508205306.1474415-1-u.kleine-koenig@pengutronix.de>
+ <20230508205306.1474415-42-u.kleine-koenig@pengutronix.de>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20230508205306.1474415-42-u.kleine-koenig@pengutronix.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230510_094348_991040_6A0D29AB 
-X-CRM114-Status: GOOD (  23.36  )
+X-CRM114-CacheID: sfid-20230510_095559_123363_273CF12B 
+X-CRM114-Status: GOOD (  23.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,83 +98,55 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---q7mthi6fgfcgjjj5
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-[expanding the audience a bit for more expertise]
+On 08/05/2023 22:52, Uwe Kleine-König wrote:
+> The .remove() callback for a platform driver returns an int which makes
+> many driver authors wrongly assume it's possible to do error handling by
+> returning an error code. However the value returned is (mostly) ignored
+> and this typically results in resource leaks. To improve here there is a
+> quest to make the remove callback return void. In the first step of this
+> quest all drivers are converted to .remove_new() which already returns
+> void.
+> 
+> Trivially convert this driver from always returning zero in the remove
+> callback to the void returning variant.
+> 
+> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
 
-Hello,
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-On Wed, May 10, 2023 at 11:31:35PM +0800, Fei Shao wrote:
-> This aligns with [1] and converts the platform remove callback to
-> .remove_new(), which returns void.
->=20
-> [1]: commit a3afc5b10661 ("media: mtk_vcodec_dec_drv: Convert to
->      platform remove callback returning void")
->=20
-> Signed-off-by: Fei Shao <fshao@chromium.org>
->=20
 > ---
->=20
->  drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c | 6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
->=20
-> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c b=
-/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
-> index b753bf54ebd9..bd5743723da6 100644
-> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
-> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
-> @@ -193,16 +193,14 @@ static int mtk_vdec_hw_probe(struct platform_device=
- *pdev)
->  	return ret;
->  }
-> =20
-> -static int mtk_vdec_hw_remove(struct platform_device *pdev)
-> +static void mtk_vdec_hw_remove(struct platform_device *pdev)
->  {
->  	pm_runtime_disable(&pdev->dev);
+>   drivers/i2c/busses/i2c-mt65xx.c | 6 ++----
+>   1 file changed, 2 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+> index a43c4d77739a..7ca3f2221ba6 100644
+> --- a/drivers/i2c/busses/i2c-mt65xx.c
+> +++ b/drivers/i2c/busses/i2c-mt65xx.c
+> @@ -1505,15 +1505,13 @@ static int mtk_i2c_probe(struct platform_device *pdev)
+>   	return ret;
+>   }
+>   
+> -static int mtk_i2c_remove(struct platform_device *pdev)
+> +static void mtk_i2c_remove(struct platform_device *pdev)
+>   {
+>   	struct mtk_i2c *i2c = platform_get_drvdata(pdev);
+>   
+>   	i2c_del_adapter(&i2c->adap);
+>   
+>   	clk_bulk_unprepare(I2C_MT65XX_CLK_MAX, i2c->clocks);
 > -
 > -	return 0;
->  }
-> =20
->  static struct platform_driver mtk_vdec_driver =3D {
->  	.probe	=3D mtk_vdec_hw_probe,
-> -	.remove =3D mtk_vdec_hw_remove,
-> +	.remove_new =3D mtk_vdec_hw_remove,
->  	.driver	=3D {
->  		.name	=3D "mtk-vdec-comp",
->  		.of_match_table =3D mtk_vdec_hw_match,
-
-While the patch looks fine, I wonder if having a remove callback just to
-do pm_runtime_disable() is worth keeping it. Doesn't the core care for
-things like that? I grepped a bit around, device_unbind_cleanup() is
-called after device_remove() which calls pm_runtime_reinit(). Does that
-mean calling pm_runtime_disable in .remove() is useless? In that case,
-you could just drop the .remove() callback.
-
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---q7mthi6fgfcgjjj5
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmRbybEACgkQj4D7WH0S
-/k7BlggAtOk4RsuBv4L9tAsMlhTGVIueKXhZIiBT1IZ0G0tp9SBTwlWNxwIay133
-Q1RFJRhgq7GTusiGx3dw62EeiF9Wxaqa7W+uB9GrAfPs5k8qRyiU/LC27sAfjg9x
-eS4MkSR3dw7iN7wB1DSEiitHVOYXdq+zZ5aqhNNzQZE3DymxwR91cxuK+gG1k/ax
-c4Izpg74XIDk8Q1CrUo1A1N5CQ0qKS1NRRlfZy/7/DjIYzG+tjrhSoUO/h4AQOtR
-lxTcA9knL0vx0NPs7o18g9ZngmMUTtQWgADLgJfFlPcyWs5CABUAnF3Nkafa9nNS
-nLsTffuOpkHKy4mmgrnT0qEGFaGqRA==
-=gg+q
------END PGP SIGNATURE-----
-
---q7mthi6fgfcgjjj5--
+>   }
+>   
+>   #ifdef CONFIG_PM_SLEEP
+> @@ -1555,7 +1553,7 @@ static const struct dev_pm_ops mtk_i2c_pm = {
+>   
+>   static struct platform_driver mtk_i2c_driver = {
+>   	.probe = mtk_i2c_probe,
+> -	.remove = mtk_i2c_remove,
+> +	.remove_new = mtk_i2c_remove,
+>   	.driver = {
+>   		.name = I2C_DRV_NAME,
+>   		.pm = &mtk_i2c_pm,
 
