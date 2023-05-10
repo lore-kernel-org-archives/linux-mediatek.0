@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAB28C7EE22
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 May 2023 03:56:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0177C7EE22
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 May 2023 03:56:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RI8vc5HHHEzczfqD16t7nOkGfbMNwVJXLerS6sexQ5w=; b=cBge/t7f415bmruUiCuLJQvpoz
-	VqjeOqsbwIZrZZVVPkPQTIa60/6NvJeoGX+oibInTkA4IEG66oCquOkxx/J7Op9T1WvspPvFmU8yd
-	u9rpZA16LPAQzBBUtJdJ1FN5if6jPMFrqwt12BLBpcdO8eeGdSSS2FzgIEQDNKA7pbgkAszFDC9KC
-	Twv3lb9/pSd8aSbXBdal3vzaQSzpeesWH73zzGIx8L5zJ6epT/xgr7p0jHIQsFmLxQngWFJaiwdSW
-	tFwIaLCe6ee4LYsBNbYlwkTURSpL71XMZUTe8EKQdjgTjgPzso8MZyaAe40khRNSDH1G93QH9kKfq
-	HaxapVpQ==;
+	bh=RVqtcIPzTn3ljgLNBGF6OLNjNa9bEk34VJBl1FNNCT0=; b=SMXGLrEGyxeEWHDDINWqB/+iAJ
+	hWufq5rC7rl4B30bzeJDjua552qMnlTXFeLtW8pYZFTClUV/XPMNdjfoxIvicOdzvYUe2OLmgTyKO
+	I+K7BPlAV/RRnWM81sxe9TJEfBrHvQo9IWTj/bqABQ9E4tp/D3ZvUOPbSBT3ns01Eat4Wt/oAqRxo
+	a4bxjzsmUcafERMZcb8YiySJ0Gt8S8xvYG17n1b9rEInSLys1T9Ehrba7iF/KlRBC5FNRaD0GcdmE
+	px35VfrsywdoMar1VbEPN8z6Lpoa+wNa4Jl1WuzTl1F5XKzmxlNH4/ICZY5yjKCRjA6cPwrAIcdgw
+	nvXM4RdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwavz-004xcm-2O;
-	Wed, 10 May 2023 03:56:12 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pwaw3-004xfF-2l;
+	Wed, 10 May 2023 03:56:15 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwavw-004xZx-0Y;
-	Wed, 10 May 2023 03:56:09 +0000
-X-UUID: 95a204cceee611ed83ed1395ce914268-20230509
+	id 1pwavw-004xaL-21;
+	Wed, 10 May 2023 03:56:10 +0000
+X-UUID: 9580c1f4eee611ed912e1518a6540028-20230509
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=RI8vc5HHHEzczfqD16t7nOkGfbMNwVJXLerS6sexQ5w=;
-	b=WP8p5lVHB2iRhsw3yWoULaQS3ZXl6lJItGTnJN+iS0kfpyDmHfWuDscRoqJs/+ZmfVB/El81tk2tvRs0ie3e02mQVwLioxF0QVUFDX10Iud6mqq5VtrqQgk17YW7fyqrBK5SUqoOFb593RlNbtwpkb0e0bv7HfeMXoKoU11h/DA=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=RVqtcIPzTn3ljgLNBGF6OLNjNa9bEk34VJBl1FNNCT0=;
+	b=b9eW2EXphONo1Uoy14RVJKM4NcF9d6BaZcfjr50MT8yn/xQA0D3quuf0OvYVfNxdrp+p3jaHOjRRe7Nl0ORqU8QEufVjLWFZjKSuR3ztcM8fboskxfwULf7rKup8tqRD4p0F0YMtnoyULXT3XwoEbxyCCPbJihpWgSRyfyExwKY=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.24,REQID:e177fe6f-5afb-4429-9f08-ba4807a01686,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:178d4d4,CLOUDID:9622516b-2f20-4998-991c-3b78627e4938,B
+X-CID-O-INFO: VERSION:1.1.24,REQID:6df2ca76-2ace-4e03-b78f-8717aaff6e70,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:178d4d4,CLOUDID:2f27ac3a-de1e-4348-bc35-c96f92f1dcbb,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
-X-UUID: 95a204cceee611ed83ed1395ce914268-20230509
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: 9580c1f4eee611ed912e1518a6540028-20230509
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
 	(envelope-from <trevor.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1174870040; Tue, 09 May 2023 20:56:03 -0700
+	with ESMTP id 443630390; Tue, 09 May 2023 20:56:03 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 10 May 2023 11:55:29 +0800
+ 15.2.1118.26; Wed, 10 May 2023 11:55:28 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 10 May 2023 11:55:29 +0800
+ 15.2.1118.26 via Frontend Transport; Wed, 10 May 2023 11:55:28 +0800
 From: Trevor Wu <trevor.wu@mediatek.com>
 To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
 	<perex@perex.cz>, <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
@@ -58,9 +58,9 @@ To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
 CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
 	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>
-Subject: [PATCH v4 7/9] ASoC: mediatek: mt8188: add required clocks
-Date: Wed, 10 May 2023 11:55:24 +0800
-Message-ID: <20230510035526.18137-8-trevor.wu@mediatek.com>
+Subject: [PATCH v4 6/9] ASoC: mediatek: mt8188: add bus protection
+Date: Wed, 10 May 2023 11:55:23 +0800
+Message-ID: <20230510035526.18137-7-trevor.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230510035526.18137-1-trevor.wu@mediatek.com>
 References: <20230510035526.18137-1-trevor.wu@mediatek.com>
@@ -68,8 +68,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230509_205608_213808_84C8E8DB 
-X-CRM114-Status: GOOD (  11.83  )
+X-CRM114-CacheID: sfid-20230509_205608_666453_AA2A46A0 
+X-CRM114-Status: GOOD (  14.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,61 +84,132 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-apll2_d4, apll12_div4, top_a2sys and top_aud_iec are possibly used in
-the future. To prevent from breaking binding ABI after any mt8188 dts
-upstream, add these clocks to clock list in advance.
+Add bus protection for reset controller.
 
 Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
 ---
- sound/soc/mediatek/mt8188/mt8188-afe-clk.c | 4 ++++
- sound/soc/mediatek/mt8188/mt8188-afe-clk.h | 4 ++++
- 2 files changed, 8 insertions(+)
+ sound/soc/mediatek/mt8188/mt8188-afe-pcm.c | 76 ++++++++++++++++++++++
+ 1 file changed, 76 insertions(+)
 
-diff --git a/sound/soc/mediatek/mt8188/mt8188-afe-clk.c b/sound/soc/mediatek/mt8188/mt8188-afe-clk.c
-index 02411be93900..4c24d0b9e90d 100644
---- a/sound/soc/mediatek/mt8188/mt8188-afe-clk.c
-+++ b/sound/soc/mediatek/mt8188/mt8188-afe-clk.c
-@@ -25,14 +25,18 @@ static const char *aud_clks[MT8188_CLK_NUM] = {
+diff --git a/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c b/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
+index fecc891f892d..c3fd32764da0 100644
+--- a/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
++++ b/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
+@@ -17,6 +17,7 @@
+ #include <linux/of_address.h>
+ #include <linux/of_platform.h>
+ #include <linux/pm_runtime.h>
++#include <linux/soc/mediatek/infracfg.h>
+ #include <linux/reset.h>
+ #include <sound/pcm_params.h>
+ #include "mt8188-afe-common.h"
+@@ -3133,12 +3134,68 @@ static int mt8188_afe_parse_of(struct mtk_base_afe *afe,
+ 	return 0;
+ }
  
- 	/* divider */
- 	[MT8188_CLK_TOP_APLL1_D4] = "apll1_d4",
-+	[MT8188_CLK_TOP_APLL2_D4] = "apll2_d4",
- 	[MT8188_CLK_TOP_APLL12_DIV0] = "apll12_div0",
- 	[MT8188_CLK_TOP_APLL12_DIV1] = "apll12_div1",
- 	[MT8188_CLK_TOP_APLL12_DIV2] = "apll12_div2",
- 	[MT8188_CLK_TOP_APLL12_DIV3] = "apll12_div3",
-+	[MT8188_CLK_TOP_APLL12_DIV4] = "apll12_div4",
- 	[MT8188_CLK_TOP_APLL12_DIV9] = "apll12_div9",
++#define MT8188_DELAY_US 10
++#define MT8188_TIMEOUT_US USEC_PER_SEC
++
++static int bus_protect_enable(struct regmap *regmap)
++{
++	int ret;
++	u32 val;
++	u32 mask;
++
++	val = 0;
++	mask = MT8188_TOP_AXI_PROT_EN_2_AUDIO_STEP1;
++	regmap_write(regmap, MT8188_TOP_AXI_PROT_EN_2_SET, mask);
++
++	ret = regmap_read_poll_timeout(regmap, MT8188_TOP_AXI_PROT_EN_2_STA,
++				       val, (val & mask) == mask,
++				       MT8188_DELAY_US, MT8188_TIMEOUT_US);
++	if (ret)
++		return ret;
++
++	val = 0;
++	mask = MT8188_TOP_AXI_PROT_EN_2_AUDIO_STEP2;
++	regmap_write(regmap, MT8188_TOP_AXI_PROT_EN_2_SET, mask);
++
++	ret = regmap_read_poll_timeout(regmap, MT8188_TOP_AXI_PROT_EN_2_STA,
++				       val, (val & mask) == mask,
++				       MT8188_DELAY_US, MT8188_TIMEOUT_US);
++	return ret;
++}
++
++static int bus_protect_disable(struct regmap *regmap)
++{
++	int ret;
++	u32 val;
++	u32 mask;
++
++	val = 0;
++	mask = MT8188_TOP_AXI_PROT_EN_2_AUDIO_STEP2;
++	regmap_write(regmap, MT8188_TOP_AXI_PROT_EN_2_CLR, mask);
++
++	ret = regmap_read_poll_timeout(regmap, MT8188_TOP_AXI_PROT_EN_2_STA,
++				       val, !(val & mask),
++				       MT8188_DELAY_US, MT8188_TIMEOUT_US);
++	if (ret)
++		return ret;
++
++	val = 0;
++	mask = MT8188_TOP_AXI_PROT_EN_2_AUDIO_STEP1;
++	regmap_write(regmap, MT8188_TOP_AXI_PROT_EN_2_CLR, mask);
++
++	ret = regmap_read_poll_timeout(regmap, MT8188_TOP_AXI_PROT_EN_2_STA,
++				       val, !(val & mask),
++				       MT8188_DELAY_US, MT8188_TIMEOUT_US);
++	return ret;
++}
++
+ static int mt8188_afe_pcm_dev_probe(struct platform_device *pdev)
+ {
+ 	struct mtk_base_afe *afe;
+ 	struct mt8188_afe_private *afe_priv;
+ 	struct device *dev;
+ 	struct reset_control *rstc;
++	struct regmap *infra_ao;
+ 	int i, irq_id, ret;
  
- 	/* mux */
- 	[MT8188_CLK_TOP_A1SYS_HP_SEL] = "top_a1sys_hp",
-+	[MT8188_CLK_TOP_A2SYS_SEL] = "top_a2sys",
-+	[MT8188_CLK_TOP_AUD_IEC_SEL] = "top_aud_iec",
- 	[MT8188_CLK_TOP_AUD_INTBUS_SEL] = "top_aud_intbus",
- 	[MT8188_CLK_TOP_AUDIO_H_SEL] = "top_audio_h",
- 	[MT8188_CLK_TOP_AUDIO_LOCAL_BUS_SEL] = "top_audio_local_bus",
-diff --git a/sound/soc/mediatek/mt8188/mt8188-afe-clk.h b/sound/soc/mediatek/mt8188/mt8188-afe-clk.h
-index 04cb476f0bcb..904505d10841 100644
---- a/sound/soc/mediatek/mt8188/mt8188-afe-clk.h
-+++ b/sound/soc/mediatek/mt8188/mt8188-afe-clk.h
-@@ -23,13 +23,17 @@ enum {
- 	MT8188_CLK_APMIXED_APLL2,
- 	/* divider */
- 	MT8188_CLK_TOP_APLL1_D4,
-+	MT8188_CLK_TOP_APLL2_D4,
- 	MT8188_CLK_TOP_APLL12_DIV0,
- 	MT8188_CLK_TOP_APLL12_DIV1,
- 	MT8188_CLK_TOP_APLL12_DIV2,
- 	MT8188_CLK_TOP_APLL12_DIV3,
-+	MT8188_CLK_TOP_APLL12_DIV4,
- 	MT8188_CLK_TOP_APLL12_DIV9,
- 	/* mux */
- 	MT8188_CLK_TOP_A1SYS_HP_SEL,
-+	MT8188_CLK_TOP_A2SYS_SEL,
-+	MT8188_CLK_TOP_AUD_IEC_SEL,
- 	MT8188_CLK_TOP_AUD_INTBUS_SEL,
- 	MT8188_CLK_TOP_AUDIO_H_SEL,
- 	MT8188_CLK_TOP_AUDIO_LOCAL_BUS_SEL,
+ 	ret = dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(33));
+@@ -3163,18 +3220,37 @@ static int mt8188_afe_pcm_dev_probe(struct platform_device *pdev)
+ 		return dev_err_probe(dev, PTR_ERR(afe->base_addr),
+ 				     "AFE base_addr not found\n");
+ 
++	infra_ao = syscon_regmap_lookup_by_phandle(dev->of_node,
++						   "mediatek,infracfg");
++	if (IS_ERR(infra_ao))
++		return dev_err_probe(dev, PTR_ERR(infra_ao),
++				     "%s() Cannot find infra_ao controller\n",
++				     __func__);
++
+ 	/* reset controller to reset audio regs before regmap cache */
+ 	rstc = devm_reset_control_get_exclusive(dev, "audiosys");
+ 	if (IS_ERR(rstc))
+ 		return dev_err_probe(dev, PTR_ERR(rstc),
+ 				     "could not get audiosys reset\n");
+ 
++	ret = bus_protect_enable(infra_ao);
++	if (ret) {
++		dev_err(dev, "bus_protect_enable failed\n");
++		return ret;
++	}
++
+ 	ret = reset_control_reset(rstc);
+ 	if (ret) {
+ 		dev_err(dev, "failed to trigger audio reset:%d\n", ret);
+ 		return ret;
+ 	}
+ 
++	ret = bus_protect_disable(infra_ao);
++	if (ret) {
++		dev_err(dev, "bus_protect_disable failed\n");
++		return ret;
++	}
++
+ 	/* initial audio related clock */
+ 	ret = mt8188_afe_init_clock(afe);
+ 	if (ret)
 -- 
 2.18.0
 
