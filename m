@@ -4,70 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8D1AC77B7D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 May 2023 05:13:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28F1BC7EE24
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 May 2023 06:38:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=O23tSllMJbyCIPGK2izQyLX1UlDnLZWVXJnvYyfH3Ec=; b=yVl3WnGLMCvJZO6ZOBa1sP6dRr
-	PyV1bdMOIlGCNrGNB2Aa8El2FQJb7RgfVPvPcL9hgCY5zRGvP5nsOmO1EWI3FcxVORqIufxh4/gpX
-	gFfy6/cwUkdr/HS6zFA+rhq95WADLr/TSo5sWgN82klIFd1oyecmU8sCZRPP/2VHRCBw74JZ8bsX8
-	TRyMHuMi/lO7ddJfE7CDDY+tKEnjKyKoOILWLBSWkju5DhxTSsTYfLDmlwCyI1lH6Z9ssH+CZezb7
-	wgFFY+nWqWXRqjMJdZ/XGIgqWS/1FjjKZ9vbWYZU93c7RCI8I9Vt/NcA9HHues8hzhbk9+jXpRIwX
-	xjAsQyZQ==;
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/2HwQXP5gcxmFdmc9DZ5hDZ3MeFnNJZxYWYbN2vHeWc=; b=Ik6XK8samd7Z/IZoQpWQGMGEOi
+	6UyJc+cWHJlpxU1FeX9EbthTchw84L6TUhBeXlIdaKDCakgH8spmQQKo++q9N74P6aDg22+uW/c1e
+	TO5z6jVtdq3I2Fj4f+kp3HQomTB41HBUOAtuYYAxwKKYeB7VVoopSSkw0z4EGDOdoBoevyzvYU493
+	1RvPet5N+tbhwk6ukF3qui8eIDZDWQPecEB1IweEMSvoPujdoUpa4r37Wwg+NesQWNoAJgjFYYFcs
+	X449EOAXC0KG3UCPTE0iLNDLqiAbiNbKD8irvXOT7UTUHXPznPAvvGNqzgHeWOqVnfRb4eHq4n1N5
+	83jy66sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwc8s-0057oY-1L;
-	Wed, 10 May 2023 05:13:34 +0000
+	id 1pwdTK-005Gdx-1M;
+	Wed, 10 May 2023 06:38:46 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwc8o-0057ny-1E
-	for linux-mediatek@lists.infradead.org;
-	Wed, 10 May 2023 05:13:32 +0000
-X-UUID: 6428b430eef111ed912e1518a6540028-20230509
+	id 1pwdTF-005GYl-0T;
+	Wed, 10 May 2023 06:38:43 +0000
+X-UUID: 4894a74aeefd11ed912e1518a6540028-20230509
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=O23tSllMJbyCIPGK2izQyLX1UlDnLZWVXJnvYyfH3Ec=;
-	b=Q+IIhplMOXzg7fN9QV4pWSxRuDM5kYHnMVSEcZ0cW0GardyucjPrDzm72sjOA2Ck8cX24wY/6ezkSnN4BdNYlZWRhu65eAW3BpBFM606AbubHRUcQ3LpgLW9MiD5yuUK4DSBycmfeIRihjC5EVpscUMkkQPoM6zNfTQFc2SZYEY=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=/2HwQXP5gcxmFdmc9DZ5hDZ3MeFnNJZxYWYbN2vHeWc=;
+	b=TXNAWZoNmGE8M0hRlYhqIVWg/6Mp59EuzX/6fmLzn6t3h6IR0dEQujS2q55n/XrQ4CD7+wzyhEsXH6tygcSDpPek9nHLxcQiaWkRKY330f/RqwlsVHwv6R7zdJfqEsIDloh1iqYW0OTWB48mTlMhGtY7jUDD83aZ3WsR1Ta+XSc=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.24,REQID:b57a5eb9-9cbb-49a3-92c5-5c746db87c43,IP:0,U
+X-CID-O-INFO: VERSION:1.1.24,REQID:83f89b0e-8d3b-4c76-ac92-b999c15c3b46,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:178d4d4,CLOUDID:b26c5ac0-e32c-4c97-918d-fbb3fc224d4e,B
+X-CID-META: VersionHash:178d4d4,CLOUDID:c7215dc0-e32c-4c97-918d-fbb3fc224d4e,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-UUID: 6428b430eef111ed912e1518a6540028-20230509
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <ryder.lee@mediatek.com>)
+X-UUID: 4894a74aeefd11ed912e1518a6540028-20230509
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <tinghan.shen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1248727358; Tue, 09 May 2023 22:13:25 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+	with ESMTP id 1698982518; Tue, 09 May 2023 23:38:33 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.194) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 10 May 2023 12:53:22 +0800
+ 15.2.1118.26; Wed, 10 May 2023 14:37:58 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 10 May 2023 12:53:22 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
-	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
-	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>,
-	Peter Chiu <chui-hao.chiu@mediatek.com>
-Subject: [PATCH v3 1/6] wifi: mt76: mt7915: report tx retries/failed counts for non-WED path
-Date: Wed, 10 May 2023 12:53:16 +0800
-Message-ID: <e3cddf1cff5f060478c2de9e4e4021541549e750.1683670255.git.ryder.lee@mediatek.com>
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 10 May 2023 14:37:58 +0800
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
+	<mathieu.poirier@linaro.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof
+ Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
+	<conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Tinghan
+ Shen <tinghan.shen@mediatek.com>
+CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v11 07/11] remoteproc: mediatek: Control SCP core 1 by rproc subdevice
+Date: Wed, 10 May 2023 14:37:45 +0800
+Message-ID: <20230510063749.5127-8-tinghan.shen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230510063749.5127-1-tinghan.shen@mediatek.com>
+References: <20230510063749.5127-1-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230509_221330_434884_F8C8F74D 
-X-CRM114-Status: GOOD (  15.97  )
+X-CRM114-CacheID: sfid-20230509_233841_186542_CE4D6896 
+X-CRM114-Status: GOOD (  17.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,172 +88,154 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Get missing tx retries/failed counts from txfree done events and report
-them via mt7915_sta_statistics().
+Register SCP core 1 as a subdevice of core 0 for the boot sequence
+and watchdog timeout handling. The core 1 has to boot after core 0
+because the SCP clock and SRAM power is controlled by SCP core 0.
+As for watchdog timeout handling, the remoteproc framework helps to
+stop/start subdevices automatically when SCP driver receives watchdog
+timeout event.
 
-Co-developed-by: Peter Chiu <chui-hao.chiu@mediatek.com>
-Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
-v3:
-- drop wcid->stats.tx_failed += noacked for all used drivers since we should get count from txfree
-- rebase & merge "[v5] wifi: mt76: mt7915: report tx retries/failed counts for non-WED path" to this series.
-https://patchwork.kernel.org/project/linux-wireless/patch/13d9169b5709efad969d7d167a1ff19828395fed.1683602740.git.ryder.lee@mediatek.com/
----
- .../wireless/mediatek/mt76/mt76_connac_mac.c  |  6 ++---
- .../net/wireless/mediatek/mt76/mt7915/init.c  |  2 ++
- .../net/wireless/mediatek/mt76/mt7915/mac.c   | 22 +++++++++++++++++--
- .../net/wireless/mediatek/mt76/mt7915/mac.h   |  7 +++++-
- .../net/wireless/mediatek/mt76/mt7915/main.c  | 12 +++++-----
- .../net/wireless/mediatek/mt76/mt7915/regs.h  |  3 +++
- 6 files changed, 39 insertions(+), 13 deletions(-)
+ drivers/remoteproc/mtk_common.h |  9 +++++
+ drivers/remoteproc/mtk_scp.c    | 68 +++++++++++++++++++++++++++++++++
+ 2 files changed, 77 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-index d39a3cc5e381..368668448542 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-@@ -729,17 +729,15 @@ bool mt76_connac2_mac_add_txs_skb(struct mt76_dev *dev, struct mt76_wcid *wcid,
- 	skb = mt76_tx_status_skb_get(dev, wcid, pid, &list);
- 	if (skb) {
- 		struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
--		bool noacked = !(info->flags & IEEE80211_TX_STAT_ACK);
+diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
+index 56395e8664cb..85afed2e6928 100644
+--- a/drivers/remoteproc/mtk_common.h
++++ b/drivers/remoteproc/mtk_common.h
+@@ -100,6 +100,13 @@ struct mtk_scp_of_data {
+ 	size_t ipi_buf_offset;
+ };
  
- 		if (!(le32_to_cpu(txs_data[0]) & MT_TXS0_ACK_ERROR_MASK))
- 			info->flags |= IEEE80211_TX_STAT_ACK;
- 
- 		info->status.ampdu_len = 1;
--		info->status.ampdu_ack_len = !noacked;
-+		info->status.ampdu_ack_len =
-+			!!(info->flags & IEEE80211_TX_STAT_ACK);
- 		info->status.rates[0].idx = -1;
- 
--		wcid->stats.tx_failed += noacked;
--
- 		mt76_connac2_mac_fill_txs(dev, wcid, txs_data);
- 		mt76_tx_status_skb_done(dev, skb, &list);
- 	}
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-index ac2049f49bb3..8d6e09605dc4 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-@@ -581,6 +581,8 @@ void mt7915_mac_init(struct mt7915_dev *dev)
- 
- 	if (!is_mt7915(&dev->mt76))
- 		mt76_clear(dev, MT_MDP_DCR2, MT_MDP_DCR2_RX_TRANS_SHORT);
-+	else
-+		mt76_clear(dev, MT_PLE_HOST_RPT0, MT_PLE_HOST_RPT0_TX_LATENCY);
- 
- 	/* enable hardware de-agg */
- 	mt76_set(dev, MT_MDP_DCR0, MT_MDP_DCR0_DAMSDU_EN);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-index 7df8d95fc3fb..9b2ccd99854e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-@@ -951,6 +951,7 @@ mt7915_mac_tx_free(struct mt7915_dev *dev, void *data, int len)
- 	struct mt76_dev *mdev = &dev->mt76;
- 	struct mt76_txwi_cache *txwi;
- 	struct ieee80211_sta *sta = NULL;
-+	struct mt76_wcid *wcid = NULL;
- 	LIST_HEAD(free_list);
- 	void *end = data + len;
- 	bool v3, wake = false;
-@@ -977,7 +978,6 @@ mt7915_mac_tx_free(struct mt7915_dev *dev, void *data, int len)
- 		info = le32_to_cpu(*cur_info);
- 		if (info & MT_TX_FREE_PAIR) {
- 			struct mt7915_sta *msta;
--			struct mt76_wcid *wcid;
- 			u16 idx;
- 
- 			idx = FIELD_GET(MT_TX_FREE_WLAN_ID, info);
-@@ -994,7 +994,25 @@ mt7915_mac_tx_free(struct mt7915_dev *dev, void *data, int len)
- 			continue;
- 		}
- 
--		if (v3 && (info & MT_TX_FREE_MPDU_HEADER))
-+		if (!mtk_wed_device_active(&mdev->mmio.wed) && wcid) {
-+			u32 tx_retries = 0, tx_failed = 0;
++struct mtk_scp_core_subdev {
++	struct rproc_subdev subdev;
++	struct mtk_scp *scp;
++};
 +
-+			if (v3 && (info & MT_TX_FREE_MPDU_HEADER_V3)) {
-+				tx_retries =
-+					FIELD_GET(MT_TX_FREE_COUNT_V3, info) - 1;
-+				tx_failed = tx_retries +
-+					!!FIELD_GET(MT_TX_FREE_STAT_V3, info);
-+			} else if (!v3 && (info & MT_TX_FREE_MPDU_HEADER)) {
-+				tx_retries =
-+					FIELD_GET(MT_TX_FREE_COUNT, info) - 1;
-+				tx_failed = tx_retries +
-+					!!FIELD_GET(MT_TX_FREE_STAT, info);
++#define to_core_subdev(d) container_of(d, struct mtk_scp_core_subdev, subdev)
++
+ struct mtk_scp {
+ 	struct device *dev;
+ 	struct rproc *rproc;
+@@ -130,6 +137,8 @@ struct mtk_scp {
+ 	struct rproc_subdev *rpmsg_subdev;
+ 
+ 	struct list_head elem;
++	struct list_head *cluster;
++	struct mtk_scp_core_subdev *core_subdev;
+ };
+ 
+ /**
+diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+index 87215a0e145e..a88fdd46f614 100644
+--- a/drivers/remoteproc/mtk_scp.c
++++ b/drivers/remoteproc/mtk_scp.c
+@@ -863,6 +863,60 @@ static void scp_remove_rpmsg_subdev(struct mtk_scp *scp)
+ 	}
+ }
+ 
++static int scp_core_subdev_start(struct rproc_subdev *subdev)
++{
++	struct mtk_scp_core_subdev *core_subdev = to_core_subdev(subdev);
++	struct mtk_scp *scp = core_subdev->scp;
++
++	rproc_boot(scp->rproc);
++
++	return 0;
++}
++
++static void scp_core_subdev_stop(struct rproc_subdev *subdev, bool crashed)
++{
++	struct mtk_scp_core_subdev *core_subdev = to_core_subdev(subdev);
++	struct mtk_scp *scp = core_subdev->scp;
++
++	rproc_shutdown(scp->rproc);
++}
++
++static int scp_core_subdev_register(struct mtk_scp *scp)
++{
++	struct device *dev = scp->dev;
++	struct mtk_scp_core_subdev *core_subdev;
++	struct mtk_scp *scp_c0;
++
++	scp_c0 = list_first_entry(scp->cluster, struct mtk_scp, elem);
++	if (!scp_c0)
++		return -ENODATA;
++
++	core_subdev = devm_kzalloc(dev, sizeof(*core_subdev), GFP_KERNEL);
++	if (!core_subdev)
++		return -ENOMEM;
++
++	core_subdev->scp = scp;
++	core_subdev->subdev.start = scp_core_subdev_start;
++	core_subdev->subdev.stop = scp_core_subdev_stop;
++
++	scp->core_subdev = core_subdev;
++	rproc_add_subdev(scp_c0->rproc, &scp->core_subdev->subdev);
++
++	return 0;
++}
++
++static void scp_core_subdev_unregister(struct mtk_scp *scp)
++{
++	struct mtk_scp *scp_c0;
++
++	if (scp->core_subdev) {
++		scp_c0 = list_first_entry(scp->cluster, struct mtk_scp, elem);
++		rproc_remove_subdev(scp_c0->rproc, &scp->core_subdev->subdev);
++		devm_kfree(scp->dev, scp->core_subdev);
++		scp->core_subdev = NULL;
++	}
++}
++
+ static struct mtk_scp *scp_rproc_init(struct platform_device *pdev,
+ 				      struct mtk_scp_of_cluster *scp_cluster,
+ 				      const struct mtk_scp_of_data *of_data)
+@@ -957,6 +1011,7 @@ static void scp_rproc_free(struct mtk_scp *scp)
+ {
+ 	int i;
+ 
++	scp_core_subdev_unregister(scp);
+ 	scp_remove_rpmsg_subdev(scp);
+ 	scp_ipi_unregister(scp, SCP_IPI_INIT);
+ 	scp_unmap_memory_region(scp);
+@@ -1009,6 +1064,7 @@ static int scp_cluster_init(struct platform_device *pdev)
+ 			return PTR_ERR(scp);
+ 
+ 		list_add_tail(&scp->elem, cluster);
++		scp->cluster = cluster;
+ 	} else {
+ 		dev_dbg(dev, "multi-core scp\n");
+ 
+@@ -1038,6 +1094,7 @@ static int scp_cluster_init(struct platform_device *pdev)
+ 				goto init_fail;
+ 			}
+ 			list_add_tail(&scp->elem, cluster);
++			scp->cluster = cluster;
+ 			put_device(&cpdev->dev);
+ 
+ 			core_id++;
+@@ -1045,6 +1102,17 @@ static int scp_cluster_init(struct platform_device *pdev)
+ 	}
+ 
+ 	list_for_each_entry_safe_reverse(scp, temp, cluster, elem) {
++		if (!list_is_first(&scp->elem, cluster)) {
++			ret = scp_core_subdev_register(scp);
++			if (ret) {
++				dev_err_probe(scp->dev, ret, "Failed to register as subdev\n");
++				goto add_fail;
 +			}
-+			wcid->stats.tx_retries += tx_retries;
-+			wcid->stats.tx_failed += tx_failed;
++
++			/* sub cores are booted as subdevices of core 0 */
++			scp->rproc->auto_boot = false;
 +		}
 +
-+		if (v3 && (info & MT_TX_FREE_MPDU_HEADER_V3))
- 			continue;
- 
- 		for (i = 0; i < 1 + v3; i++) {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.h b/drivers/net/wireless/mediatek/mt76/mt7915/mac.h
-index ce94f87e2042..448b1b380190 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.h
-@@ -9,7 +9,12 @@
- #define MT_TX_FREE_VER			GENMASK(18, 16)
- #define MT_TX_FREE_MSDU_CNT_V0		GENMASK(6, 0)
- /* 0: success, others: dropped */
--#define MT_TX_FREE_MPDU_HEADER		BIT(30)
-+#define MT_TX_FREE_COUNT		GENMASK(12, 0)
-+#define MT_TX_FREE_COUNT_V3		GENMASK(27, 24)
-+#define MT_TX_FREE_STAT			GENMASK(14, 13)
-+#define MT_TX_FREE_STAT_V3		GENMASK(29, 28)
-+#define MT_TX_FREE_MPDU_HEADER		BIT(15)
-+#define MT_TX_FREE_MPDU_HEADER_V3	BIT(30)
- #define MT_TX_FREE_MSDU_ID_V3		GENMASK(14, 0)
- 
- #define MT_TXS5_F0_FINAL_MPDU		BIT(31)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-index 2ada2806de66..61157248d742 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-@@ -1046,12 +1046,6 @@ static void mt7915_sta_statistics(struct ieee80211_hw *hw,
- 		sinfo->tx_packets = msta->wcid.stats.tx_packets;
- 		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_PACKETS);
- 
--		sinfo->tx_failed = msta->wcid.stats.tx_failed;
--		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_FAILED);
--
--		sinfo->tx_retries = msta->wcid.stats.tx_retries;
--		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_RETRIES);
--
- 		if (mtk_wed_get_rx_capa(&phy->dev->mt76.mmio.wed)) {
- 			sinfo->rx_bytes = msta->wcid.stats.rx_bytes;
- 			sinfo->filled |= BIT_ULL(NL80211_STA_INFO_RX_BYTES64);
-@@ -1061,6 +1055,12 @@ static void mt7915_sta_statistics(struct ieee80211_hw *hw,
- 		}
- 	}
- 
-+	sinfo->tx_failed = msta->wcid.stats.tx_failed;
-+	sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_FAILED);
-+
-+	sinfo->tx_retries = msta->wcid.stats.tx_retries;
-+	sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_RETRIES);
-+
- 	sinfo->ack_signal = (s8)msta->ack_signal;
- 	sinfo->filled |= BIT_ULL(NL80211_STA_INFO_ACK_SIGNAL);
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-index c8e478a55081..71fa9576ad0e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-@@ -145,6 +145,9 @@ enum offs_rev {
- #define MT_PLE_BASE			0x820c0000
- #define MT_PLE(ofs)			(MT_PLE_BASE + (ofs))
- 
-+#define MT_PLE_HOST_RPT0		MT_PLE(0x030)
-+#define MT_PLE_HOST_RPT0_TX_LATENCY	BIT(3)
-+
- #define MT_FL_Q_EMPTY			MT_PLE(__OFFS(PLE_FL_Q_EMPTY))
- #define MT_FL_Q0_CTRL			MT_PLE(__OFFS(PLE_FL_Q_CTRL))
- #define MT_FL_Q2_CTRL			MT_PLE(__OFFS(PLE_FL_Q_CTRL) + 0x8)
+ 		ret = rproc_add(scp->rproc);
+ 		if (ret)
+ 			goto add_fail;
 -- 
 2.18.0
 
