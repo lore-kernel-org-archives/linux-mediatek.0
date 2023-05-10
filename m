@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 551D0C77B7D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 May 2023 06:48:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38E50C77B7D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 May 2023 06:58:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mvwHWznV1CbjQr3A3SteeGWxU/09D9mqE8X8ZN62xhE=; b=CfxDg9drVCW7E6Toz2ayjduO4s
-	lLmWwe7Bm0jNBfxaUEz2S0DgtTATRHswyT1gq8XKahEoXz6T16eMJT/T0dErOHzn8rflqd3rB8B+2
-	EUxvY2KDFWGqY5MF65mvlD914CSOMWEz/La15xQnhIcvtzhn3o4qtNhWHJDR431q5+zB68s/+Eu1F
-	sHvAGh6+ulunePDf7i4cxynUJzjNYmE7dC/6et5xleiipAdBIeU4F3e8UvvyfLyIPJoWQTIuGKaDU
-	UrCADkqxYIiupFQStCSSEM81WOG7yGDFJ0cuqMt7s3LRtT1XXzoX6trDxzB/ynvvWDTECqCwpWbSG
-	Sy3KOkBw==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=TtDmYan93l7lTSLnfIrWMEofnCJ1AFEHHfuJq1PcxZQ=; b=zfAHCBtm+mViZ0kvJmEcGx5Q33
+	s6KTM8W1C6YTkt/eaRD7LWN+X40jRJCf0v+MuiDRceyetDsV7lgb+Rjtb4527rsmIKAjyCH+k9Xy+
+	CftDGeUBQa5zzM+muDW1eDNTQNPqm4qaZBPo8UKtnitqUlnxVy0SBnCgUyrN4nRBBWM9UdMgc/Jlq
+	4Q5waa7OvXt11JIDLy419/n9HEq4+RPlqeIaRzOj4rI6bsHTqAKpvPzF9hl1MmkQ9KgkEqHBVS0Tm
+	8q5s1wnTFj6XZaU9spC8TqpRFiaku6qukV86dK3bXTyhSjkxrIFZ+6fMeQKTocqm8iTpSHxfL1o6F
+	mTivBY5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwdcx-005IQy-2d;
-	Wed, 10 May 2023 06:48:43 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pwdm4-005K8h-0C;
+	Wed, 10 May 2023 06:58:08 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwdcv-005IQ6-1t;
-	Wed, 10 May 2023 06:48:42 +0000
-X-UUID: aec9431ceefe11ed912e1518a6540028-20230509
+	id 1pwdm1-005K7t-1w;
+	Wed, 10 May 2023 06:58:07 +0000
+X-UUID: 00729ab4ef0011ed83ed1395ce914268-20230509
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=mvwHWznV1CbjQr3A3SteeGWxU/09D9mqE8X8ZN62xhE=;
-	b=EYnrqEY8zgAUWNUsYt2RVJWBuwk+IHY3g1mn2SXcxrsZJkB2DAOk64Jl5XHj7q42kDmchYB3/lPYSHTofMrEGC9Ik4p5m0jRmCOd6mTozfsDRSA/sIGu8T48IHjJgyKeeBzbDdgokixTenSeV800u+0pxZiiW78UZEpzg5Ub1kc=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=TtDmYan93l7lTSLnfIrWMEofnCJ1AFEHHfuJq1PcxZQ=;
+	b=puILrc4Tfo02YNYm7AqHMrI41ocX/wR54Kbj5En8gx999hbhnONbx/Hvh3BluWBJNEeQqd7LP+SbVIaHQfub38jdFQoNM5BoyHbQYh4fEcDpDI1A2Eg7PsQGGezx7wHqgbQLS26thfYgPCaSJkE0t2vhD5Jvq/nz9reKO3U85qI=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.24,REQID:f06b9eca-69f9-46e2-962d-37d5eb8dda45,IP:0,U
+X-CID-O-INFO: VERSION:1.1.24,REQID:6832958c-e688-4988-8aed-d6d84d0911ba,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:178d4d4,CLOUDID:3d7a5dc0-e32c-4c97-918d-fbb3fc224d4e,B
+X-CID-META: VersionHash:178d4d4,CLOUDID:2679566b-2f20-4998-991c-3b78627e4938,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-UUID: aec9431ceefe11ed912e1518a6540028-20230509
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: 00729ab4ef0011ed83ed1395ce914268-20230509
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <tinghan.shen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 578431671; Tue, 09 May 2023 23:48:33 -0700
+	with ESMTP id 2090915991; Tue, 09 May 2023 23:58:00 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.194) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Wed, 10 May 2023 14:37:57 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -62,18 +62,16 @@ CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v11 02/11] arm64: dts: mediatek: Update the node name of SCP rpmsg subnode
-Date: Wed, 10 May 2023 14:37:40 +0800
-Message-ID: <20230510063749.5127-3-tinghan.shen@mediatek.com>
+Subject: [PATCH v11 00/11] Add support for MT8195 SCP 2nd core
+Date: Wed, 10 May 2023 14:37:38 +0800
+Message-ID: <20230510063749.5127-1-tinghan.shen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230510063749.5127-1-tinghan.shen@mediatek.com>
-References: <20230510063749.5127-1-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230509_234841_638731_CEA35DDD 
-X-CRM114-Status: GOOD (  12.26  )
+X-CRM114-CacheID: sfid-20230509_235805_651081_96A3B2ED 
+X-CRM114-Status: GOOD (  15.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,42 +86,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Align the node name with the definition in SCP bindings.
+The mediatek remoteproc driver currently only allows bringing up a 
+single core SCP, e.g. MT8183. It also only bringing up the 1st 
+core in SoCs with a dual-core SCP, e.g. MT8195. This series support 
+to bring-up the 2nd core of the dual-core SCP.
 
-Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
----
- arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi   | 2 +-
- arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+v10 -> v11:
+1. rewrite patchset 5 to probe single-core SCP with the cluster list
+2. Also in patchset 5, move the pointer of mtk_scp object from the
+   platform data property to the driver data property 
+3. move the appearance of mtk_scp cluster property to patcheset 7
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-index 63952c1251df..ac4aeeded37c 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-@@ -825,7 +825,7 @@
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&scp_pins>;
- 
--	cros_ec {
-+	cros-ec-rpmsg {
- 		compatible = "google,cros-ec-rpmsg";
- 		mediatek,rpmsg-name = "cros-ec-rpmsg";
- 	};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-index 5a440504d4f9..cd4d68f1d93b 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-@@ -1280,7 +1280,7 @@
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&scp_pins>;
- 
--	cros-ec {
-+	cros-ec-rpmsg {
- 		compatible = "google,cros-ec-rpmsg";
- 		mediatek,rpmsg-name = "cros-ec-rpmsg";
- 	};
+v9 -> v10:
+1. move the global mtk_scp list into the platform device driver data structure
+2. remove an unnecessary if() condition
+
+v8 -> v9:
+1. initialize l1tcm_size/l1tcm_phys at patchset 05/11 
+2. rewrite patchset 06/11 to unify the flow and remove hacks
+
+v7 -> v8:
+1. update the node name of mt8192 asurada SCP rpmsg subnode
+2. squash register definitions into driver patches
+3. initialize local variables on the declaration at patch v8 06/11 
+
+v6 -> v7:
+1. merge the mtk_scp_cluster struct into the mtk_scp structure
+   at the "Probe multi-core SCP" patch
+
+v5 -> v6:
+1. move the mtk_scp_of_regs structure from mtk_common.h to mtk_scp.c
+2. rename the SCP core 0 label from 'scp' to 'scp_c0'
+
+v4 -> v5:
+1. move resource release actions to the platform driver remove operation 
+2. fix dual-core watchdog handling
+
+v3 -> v4:
+1. change the representation of dual-core SCP in dts file and update SCP yaml
+2. rewrite SCP driver to reflect the change of dts node
+3. drop 'remove redundant call of rproc_boot for SCP' in v3 for further investigation
+
+v2 -> v3:
+1. change the representation of dual-core SCP in dts file and update SCP yaml
+2. rewrite SCP driver to reflect the change of dts node
+3. add SCP core 1 node to mt8195.dtsi
+4. remove redundant call of rproc_boot for SCP
+5. refine IPI error message
+
+v1 -> v2:
+1. update dt-binding property description
+2. remove kconfig for scp dual driver
+3. merge mtk_scp_dual.c and mtk_scp_subdev.c to mtk_scp.c
+
+
+Tinghan Shen (11):
+  dt-bindings: remoteproc: mediatek: Improve the rpmsg subnode
+    definition
+  arm64: dts: mediatek: Update the node name of SCP rpmsg subnode
+  dt-bindings: remoteproc: mediatek: Support MT8195 dual-core SCP
+  remoteproc: mediatek: Add MT8195 SCP core 1 operations
+  remoteproc: mediatek: Introduce cluster on single-core SCP
+  remoteproc: mediatek: Probe multi-core SCP
+  remoteproc: mediatek: Control SCP core 1 by rproc subdevice
+  remoteproc: mediatek: Setup MT8195 SCP core 1 SRAM offset
+  remoteproc: mediatek: Handle MT8195 SCP core 1 watchdog timeout
+  remoteproc: mediatek: Refine ipi handler error message
+  arm64: dts: mediatek: mt8195: Add SCP 2nd core
+
+ .../bindings/remoteproc/mtk,scp.yaml          | 176 +++++++-
+ .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi |   2 +-
+ .../boot/dts/mediatek/mt8192-asurada.dtsi     |   2 +-
+ .../boot/dts/mediatek/mt8195-cherry.dtsi      |   6 +-
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi      |  32 +-
+ drivers/remoteproc/mtk_common.h               |  32 ++
+ drivers/remoteproc/mtk_scp.c                  | 420 ++++++++++++++++--
+ 7 files changed, 595 insertions(+), 75 deletions(-)
+
 -- 
 2.18.0
 
