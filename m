@@ -4,85 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6245CC7EE22
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 May 2023 16:56:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60633C77B7D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 May 2023 18:14:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=76FXAH8QjI+FOKBGsSy8WrQUk/FqdfktfF/bZ9G6p1o=; b=bRcavw87wPLg4ZgPPmDM/qmj4q
-	f9jkmaa3BSIk2sNdzBs4fisetSesDo5lJiemTHuDYHCUwhgokstgYXwJHZ/ulv04qNsGf3Wo/yYR7
-	nwqseKB78dwHdHfXWO+jCnp6NB8VwaX0NnKiUnqUjG3xLFnR3PIfLC9WYaSUhVTPIxkZuXvt1yYO5
-	/hJ2r7ybO1ad/bJtpWz2XISScjhwFoQ4RCshj7PjVrt/gLEDBRgrj9b+MVIAnp+xM/Jq4MtVpo/Jo
-	Sd6tyZgXynJTl9qscl6n9AaJhOCTJCVAR8G420H974vY/93h4hoH70EJvdemLD3MoosBZBBhpZI+X
-	YZSLNLbw==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=/LAmKF4DLtcx5felrrpNMnAfkFOO/8RdGO8zQwg8+es=; b=XYyZLTNLRty3P42V8ewER7FgUx
+	0e2CoXerSHobOEzIZ5hZYBqs2egIg65h5xyCXn8otax/UAKGhgoNbcncdCvCjERymHFVlFGRpxwpe
+	5BKej8IiBSCINIYBN9WamQiFZdLjw+aC5npIONYoutxqJJlU4BJPhs7k2zLbvfxPexiKv0rgWWZjJ
+	mbeRQUgW/9KQAyg3BKTXvwgtTMMbGvWGsdCmwvRLcWqqH0Bwe9z+TFaicOfuxC/UcYneU0mWek1fy
+	LI0xQNEfj4RkFlZ2thVn1yJrz4PFvkiJGPBYWJUjPuNVUgJJU72L4xaTA0oQz59R93lr7XE9Tj2T0
+	1LZttiyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwn6s-006c9c-0d;
-	Wed, 10 May 2023 16:56:14 +0000
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+	id 1pwoKR-006jIp-1b;
+	Wed, 10 May 2023 18:14:19 +0000
+Received: from s2.dolansoft.org ([212.51.146.245] helo=mx.dolansoft.org)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwn6o-006c84-2k;
-	Wed, 10 May 2023 16:56:12 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-3064099f9b6so4856907f8f.1;
-        Wed, 10 May 2023 09:56:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1683737768; x=1686329768;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=76FXAH8QjI+FOKBGsSy8WrQUk/FqdfktfF/bZ9G6p1o=;
-        b=gNKuLRopV1WQ4kTxS/5wQ4m7hl4+BBPI5aKmYXMfQzCkG/dQTYM6HjsPXyuP9p8gC7
-         DYoA6qAoWh6KkfZn5ttIKFY0ArHdhQ9C5jYWkQAVD1p5tYLPQ0619I0wlXfMh0NMLH7R
-         cmVUVONh/MADkTDLSeKaa2PSwNA6CZlB+7L+Sos2GSwWyi8Xl3bj23T3XSF6GEw+RrcZ
-         JKKiDf1B2Xgk6JHIRfcPUy2yOim6DRFEF1qG3FMof9GLw7utN4ueUescSZGpAd6gmVrD
-         oFoKFWR5bCPsbfITWgjNhsB9FKmJ1nS70yD1AFocheVXy9bUxHBe0ZM+Zojj4yyP0cYo
-         27KA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683737768; x=1686329768;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=76FXAH8QjI+FOKBGsSy8WrQUk/FqdfktfF/bZ9G6p1o=;
-        b=BoQ98sZdHahMhSmppHMC0BFKkxrLiJo6uO3UNao83EsWVf/W2wn9yQTO+bzmQAiLTY
-         dNrSf9iMH2klMEv72DS4BE3b4hr79UZE9cnfUGBYwpgzQ6Yti53X1jWE3erLYyUJu31t
-         SxGVy6266WeztBGTOSa00aGEAvpsl6cYJ4hMsFqzthgDq1QlP11JmLNZl7lCmGz/iNE9
-         lWBSiYvCAUF8XinuMv4StH/ApXST5S8TyV2PF2G3FyHezqlbIJMtle85pY2rqCalBKVA
-         vA8j2/kxJaADm9d11XTYwCqDEtmbe9eWpesZdRSNfF3oKcQ9y6VpHandendISNlcBgCQ
-         qTEA==
-X-Gm-Message-State: AC+VfDzrLv+c9+VxUOvoKz5ALEMlH4ZIp8Q6n7bbH/6rnyyoBjyH4h6j
-	JwCHZxu6aikIg+uGPkyX+OI=
-X-Google-Smtp-Source: ACHHUZ62RGTf3iIJSn5ZpPrGv/U9gxaQ0dWwbzOVZAIuYaRat6he6PFt5S7VdYEzDyP1bpENowcR9g==
-X-Received: by 2002:adf:de8d:0:b0:2f5:3fa1:6226 with SMTP id w13-20020adfde8d000000b002f53fa16226mr13285768wrl.14.1683737767570;
-        Wed, 10 May 2023 09:56:07 -0700 (PDT)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id d18-20020adfe852000000b002fe13ec49fasm17764802wrn.98.2023.05.10.09.56.05
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 10 May 2023 09:56:05 -0700 (PDT)
-Message-ID: <450c7dae-9935-1189-4853-001f5f1d1be6@gmail.com>
-Date: Wed, 10 May 2023 18:56:04 +0200
+	id 1pwoKM-006jHK-22;
+	Wed, 10 May 2023 18:14:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=brun.one;
+	s=s1; h=MIME-Version:Message-Id:Date:Subject:Cc:To:From:In-Reply-To:
+	References:From:To:Subject:Date:Message-ID:Reply-To;
+	bh=/LAmKF4DLtcx5felrrpNMnAfkFOO/8RdGO8zQwg8+es=; b=T1Yq4crw8JW3+geXEFxaOBybrw
+	eo0UatDttiInVbKyCe0sPqB4kg6n5jZ6N5MVpywpG8roXOqRcuoDtc82gYa1beSxoaKgRz9V+egRm
+	4o6VF33Zf9wtC3o/q5/laqNEvMtyErKiC0HxMoo4Tp2wobdwGY8qUmNJNzBarKUhrngcQ+zRDeqTc
+	IuKMhCtLp0hSaGDzcldSXVgyBE1QtK6SrAVpbKo14VhOBo147Vfra+RlENffr+k3Ki/QN7H1+lZqs
+	qAW01qg0rxLuEPAUZgWfh55dfQHPrMWQ3706c+Y4T5rcCu4OyACjSUxqgxtr9ESG9M96yAujEQVXK
+	9q12+9TA==;
+Received: from [212.51.153.89] (helo=blacklava.cluster.local)
+	by mx.dolansoft.org with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <lorenz@dolansoft.org>)
+	id 1pwoK2-000oTu-1n;
+	Wed, 10 May 2023 18:13:54 +0000
+From: Lorenz Brun <lorenz@brun.one>
+To: Felix Fietkau <nbd@nbd.name>,
+	John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v2 net-next] net: ethernet: mtk_eth_soc: log clock enable errors
+Date: Wed, 10 May 2023 20:13:50 +0200
+Message-Id: <20230510181350.3743141-1-lorenz@brun.one>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH 42/89] i2c: mt7621: Convert to platform remove callback
- returning void
-Content-Language: en-US, ca-ES, es-ES
-To: =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
- Stefan Roese <sr@denx.de>, Wolfram Sang <wsa@kernel.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-i2c@vger.kernel.org, kernel@pengutronix.de,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230508205306.1474415-1-u.kleine-koenig@pengutronix.de>
- <20230508205306.1474415-43-u.kleine-koenig@pengutronix.de>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20230508205306.1474415-43-u.kleine-koenig@pengutronix.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230510_095610_908325_DADA53B1 
-X-CRM114-Status: GOOD (  23.73  )
+X-CRM114-CacheID: sfid-20230510_111414_677256_52D1F5CE 
+X-CRM114-Status: GOOD (  10.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,52 +79,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Currently errors in clk_prepare_enable are silently swallowed.
+Add a log stating which clock failed to be enabled and what the error
+code was.
 
+Signed-off-by: Lorenz Brun <lorenz@brun.one>
+---
+v2: reflowed long line
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-On 08/05/2023 22:52, Uwe Kleine-König wrote:
-> The .remove() callback for a platform driver returns an int which makes
-> many driver authors wrongly assume it's possible to do error handling by
-> returning an error code. However the value returned is (mostly) ignored
-> and this typically results in resource leaks. To improve here there is a
-> quest to make the remove callback return void. In the first step of this
-> quest all drivers are converted to .remove_new() which already returns
-> void.
-> 
-> Trivially convert this driver from always returning zero in the remove
-> callback to the void returning variant.
-> 
-> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index e14050e17862..ced12e5b7b32 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -3445,8 +3445,11 @@ static int mtk_clk_enable(struct mtk_eth *eth)
+ 
+ 	for (clk = 0; clk < MTK_CLK_MAX ; clk++) {
+ 		ret = clk_prepare_enable(eth->clks[clk]);
+-		if (ret)
++		if (ret) {
++			dev_err(eth->dev, "enabling clock %s failed with error %d\n",
++				mtk_clks_source_name[clk], ret);
+ 			goto err_disable_clks;
++		}
+ 	}
+ 
+ 	return 0;
+-- 
+2.39.2
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-
-> ---
->   drivers/i2c/busses/i2c-mt7621.c | 6 ++----
->   1 file changed, 2 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/i2c/busses/i2c-mt7621.c b/drivers/i2c/busses/i2c-mt7621.c
-> index 20eda5738ac4..f9c294e2bd3c 100644
-> --- a/drivers/i2c/busses/i2c-mt7621.c
-> +++ b/drivers/i2c/busses/i2c-mt7621.c
-> @@ -332,19 +332,17 @@ static int mtk_i2c_probe(struct platform_device *pdev)
->   	return ret;
->   }
->   
-> -static int mtk_i2c_remove(struct platform_device *pdev)
-> +static void mtk_i2c_remove(struct platform_device *pdev)
->   {
->   	struct mtk_i2c *i2c = platform_get_drvdata(pdev);
->   
->   	clk_disable_unprepare(i2c->clk);
->   	i2c_del_adapter(&i2c->adap);
-> -
-> -	return 0;
->   }
->   
->   static struct platform_driver mtk_i2c_driver = {
->   	.probe		= mtk_i2c_probe,
-> -	.remove		= mtk_i2c_remove,
-> +	.remove_new	= mtk_i2c_remove,
->   	.driver		= {
->   		.name	= "i2c-mt7621",
->   		.of_match_table = i2c_mtk_dt_ids,
 
