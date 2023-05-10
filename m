@@ -4,86 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94AFFC77B7D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 May 2023 14:19:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AFD6C77B7C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 May 2023 15:32:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=weRq9/Oz7hsyRYpzT9X4irjExY0OdiEXcbsBvXDXnv0=; b=lzLzbwhK3Wj1nQdLQdoV7GaCey
-	T6cBE2QkmDepYSR87kQbQ55p85LT0qfFdz1pmHs7VaWZ60lPks4pWWWf8bApFL6eoLZ4/fIcSJfM3
-	MsROWDrth5P7hhg1YICCE8u3GkOsJRTPty1LTJA0xUshr60As2C5D1vsCC4fhTO7fStAxwYtTFdv6
-	cc+ggnnBjm03daQfCSMUMlWnFrfxV0zlf1sufARvlonSBnVfptRjpYkLH7FaqI4oI7iIOMTtL6FUn
-	/1F4yggOzbeofHIQYU9eE/BG8CBaOR3gdHvUEl05uEllfrerbLsCCN6LdxW5XPa1G4PNZQ3/ivDF0
-	bIt8rgXw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=juWcyeSBe03nI7TSodOkq9zFpeZ4gErVFi+Ebwz3Ux8=; b=uGOGQEEIipXj8W
+	TG1ybXyM9xkYlh3agB0JLqjDNBebpUhWMLHDm1VmjlF+Nz57lt2Mj8tNm7kUI3fyMtwxx9iwwJzKE
+	B/yeMVgCBSFPT/aXzI6lKS3VkTHXt5JQyELCZCzGMjVA99hj3Dew9P0GAw1JGPo0x79n/3xQtdOEq
+	GQSf4eAhBfg7b/duwinicwavVhN/X8JOZq6cxSwpmMZb5yRSKZIgxQxKICjeGsRLBcjppSF58uSOk
+	tL1NjaEY/OWM6oUmU6ce0mF8DakF1VAw647apnAvDptmMZVXlqmOx4UsRksuBoG8Zc8fnR79oIDUa
+	XDtcIzX/bWFc936ABB+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwkfG-006Kv8-2k;
-	Wed, 10 May 2023 14:19:34 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1pwlnc-006TT1-1Q;
+	Wed, 10 May 2023 15:32:16 +0000
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwkfD-006KtS-1Q;
-	Wed, 10 May 2023 14:19:32 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-3f4449fa085so8670345e9.0;
-        Wed, 10 May 2023 07:19:24 -0700 (PDT)
+	id 1pwlnZ-006TQq-0c
+	for linux-mediatek@lists.infradead.org;
+	Wed, 10 May 2023 15:32:14 +0000
+Received: by mail-pf1-x432.google.com with SMTP id d2e1a72fcca58-6439d505274so4318095b3a.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 10 May 2023 08:32:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1683728362; x=1686320362;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=weRq9/Oz7hsyRYpzT9X4irjExY0OdiEXcbsBvXDXnv0=;
-        b=oi+tsWEn2QGAjWjNTJkbhMpYS5G/sRYnlKkP3oaNgOO2ahOe6j2zjb1zzzDbKHMw4U
-         11bVu7SyMPLxoyeIe0Z02y5ILi9PZ7X3l4cLSG4NgbizHVYav9Id8DifaMppfzv8L1KZ
-         C/w5vorYkLjEsOjm8s4zbw5d9ao0iKyjmLQ8WmDkI3yqbao0Z7/TH4/0Pykr/yGGQ2n+
-         zNACHjzkTtC63wr+EoeCuJzJZeBt64WLVYkGESgjctfXKeAkEB0fmlU6fVVJUhawBqiI
-         HjhHXEd54blsmIa9cfV5bGvZuTEtCsni5nvvxRFdvvmKLq4SVRqio5BBvzvNh5JqmZgs
-         zf+A==
+        d=chromium.org; s=google; t=1683732724; x=1686324724;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=juWcyeSBe03nI7TSodOkq9zFpeZ4gErVFi+Ebwz3Ux8=;
+        b=bH/rifR2+9qrvGxj7TGq/T7hSFeNNm8MW8DaYbysKrlNYXI5LR0Q61vXSzKVOX3W5B
+         SHCCJhYLlyXR9pxGi++ZILCd2enTcwsaL8oDkHLgOgamlJgrF9mxYAKBxJk8Gv4L5BTs
+         G0tGHCfpEqXhjee9B+2Qe71/0+qn3cDmiOBLc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683728362; x=1686320362;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=weRq9/Oz7hsyRYpzT9X4irjExY0OdiEXcbsBvXDXnv0=;
-        b=NgJy4SNcxkxYFctQ5PJpEzJ1TJbeioG300GLLtaiHEh2tr9PwOkxxzaWFPWB5nuy7p
-         zot+bUDo65im4RcmABxI9We/1L5ocvdyajL8cJ8xR6Ya9ynppPlRclrFUatEiG2uh8uZ
-         EWiz7pIitEDTB9fUUtTDxxs2RdGu8AbwyGmUlwdyLE+1kvgFfHvcfa0mbdnlek2zD5o/
-         lJCus/pkd3jQcuCemF4DBpp4zqCgoIpsT5OWvgMenmMy0R+3kuzIwZRHh6KTX8vK+7XR
-         RskcRlSge5v2cCAQEYTOIANUShPTKQYel4eIt85khJ/4z7FlZnSFBu0x2qKTm2Abihnt
-         iy7g==
-X-Gm-Message-State: AC+VfDzXGVoHExz5ldTotvSu1nj5V+VwxsZViGy5FiO2mPYU++fPNJLv
-	c9ANOvi2e5fq935YJ+BxtWA=
-X-Google-Smtp-Source: ACHHUZ690jlp38DMo0H91xICFaqGrysfxpaSisKMzpYRNVlnL9cLWYGNX5hehfwVFwuVkujpUbNS1g==
-X-Received: by 2002:a05:600c:2103:b0:3f4:2cc3:2623 with SMTP id u3-20020a05600c210300b003f42cc32623mr3991733wml.22.1683728361975;
-        Wed, 10 May 2023 07:19:21 -0700 (PDT)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id h1-20020a5d5481000000b0030647d1f34bsm17697603wrv.1.2023.05.10.07.19.20
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 10 May 2023 07:19:20 -0700 (PDT)
-Message-ID: <423c7e0b-95d7-8389-02fc-6dd5ef215e93@gmail.com>
-Date: Wed, 10 May 2023 16:19:19 +0200
+        d=1e100.net; s=20221208; t=1683732724; x=1686324724;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=juWcyeSBe03nI7TSodOkq9zFpeZ4gErVFi+Ebwz3Ux8=;
+        b=VZ4D2spvhqvwZd7k5Eye6wPtEE6HJ7htl+XOfbVEaNTwvqMoqJMFW8G3T2mtuaHT27
+         5Udq2B+uy/ufv2x6N1+qt3bUjssFR1ULLARFjm2etTzPIVX1XHGVgJM8y8UtnpRMYwSq
+         Ro5OKXTIFCi94YI43Uu5WfklTngERCA6z9M6pVip2B5W1vWNjJAyqsMdMMYDeKrFK94K
+         /qA6tyfTtOhGYxu2GjXIuPqWoZz1rcIIOHQEurQx6HfBX6bWQDvBsrAAU6ogYW/ZFLq4
+         nPFOg9CbMs4EY/wO08gs1IpsZ3aknG/Z7ovtTqtBRrUOt6Dgj8eezCZlkI539vDiDjb7
+         0PdQ==
+X-Gm-Message-State: AC+VfDyLtDZ4hCnbhtificJpoJY5gtz0neze98q5SyMnshzXvbhNb7G5
+	+/71j8+Z7yx4v950V1JcgcnEbA==
+X-Google-Smtp-Source: ACHHUZ4covKpZINnEbCbA63hw2wkSQsa8YuVFl+q+NfVOLrvs4TpM1hHNJVz6obDsAcae18eoOtPEA==
+X-Received: by 2002:a05:6a20:9187:b0:dd:e6f5:a798 with SMTP id v7-20020a056a20918700b000dde6f5a798mr23115371pzd.6.1683732724336;
+        Wed, 10 May 2023 08:32:04 -0700 (PDT)
+Received: from fshao-glinux.tpe.corp.google.com ([2401:fa00:1:10:d50a:c03e:3f7a:7e5f])
+        by smtp.gmail.com with ESMTPSA id y10-20020a62b50a000000b00643b04b515fsm3643210pfe.160.2023.05.10.08.32.01
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 10 May 2023 08:32:03 -0700 (PDT)
+From: Fei Shao <fshao@chromium.org>
+To: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Subject: [PATCH] media: mediatek: vcodec: Convert mtk_vcodec_dec_hw platform remove callback
+Date: Wed, 10 May 2023 23:31:35 +0800
+Message-ID: <20230510233117.1.I7047714f92ef7569bd21f118ae6aee20b3175a92@changeid>
+X-Mailer: git-send-email 2.40.1.521.gf1e218fcd8-goog
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH] mmc: mediatek: Avoid ugly error message when SDIO wakeup
- IRQ isn't used
-To: Douglas Anderson <dianders@chromium.org>,
- Chaotian Jing <chaotian.jing@mediatek.com>,
- Ulf Hansson <ulf.hansson@linaro.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Linus Walleij <linus.walleij@linaro.org>, Yong Mao <yong.mao@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-mmc@vger.kernel.org
-References: <20230510064434.1.I935404c5396e6bf952e99bb7ffb744c6f7fd430b@changeid>
-Content-Language: en-US, ca-ES, es-ES
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20230510064434.1.I935404c5396e6bf952e99bb7ffb744c6f7fd430b@changeid>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230510_071931_497171_4E022875 
-X-CRM114-Status: GOOD (  20.42  )
+X-CRM114-CacheID: sfid-20230510_083213_230648_393DE1AD 
+X-CRM114-Status: GOOD (  11.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,41 +82,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Tiffany Lin <tiffany.lin@mediatek.com>, linux-media@vger.kernel.org, Yunfei Dong <yunfei.dong@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+This aligns with [1] and converts the platform remove callback to
+.remove_new(), which returns void.
 
+[1]: commit a3afc5b10661 ("media: mtk_vcodec_dec_drv: Convert to
+     platform remove callback returning void")
 
-On 10/05/2023 15:44, Douglas Anderson wrote:
-> When I boot a kukui-kodama board, I see an ugly warning in my kernel
-> log:
->    mtk-msdc 11240000.mmc: error -ENXIO: IRQ sdio_wakeup not found
-> 
-> It's pretty normal not to have an "sdio_wakeup" IRQ defined. In fact,
-> no device trees in mainline seem to have it. Let's use the
-> platform_get_irq_byname_optional() to avoid the error message.
-> 
-> Fixes: 527f36f5efa4 ("mmc: mediatek: add support for SDIO eint wakup IRQ")
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+Signed-off-by: Fei Shao <fshao@chromium.org>
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+---
 
-> ---
-> 
->   drivers/mmc/host/mtk-sd.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index edade0e54a0c..8ce864169986 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -2707,7 +2707,7 @@ static int msdc_drv_probe(struct platform_device *pdev)
->   
->   	/* Support for SDIO eint irq ? */
->   	if ((mmc->pm_caps & MMC_PM_WAKE_SDIO_IRQ) && (mmc->pm_caps & MMC_PM_KEEP_POWER)) {
-> -		host->eint_irq = platform_get_irq_byname(pdev, "sdio_wakeup");
-> +		host->eint_irq = platform_get_irq_byname_optional(pdev, "sdio_wakeup");
->   		if (host->eint_irq > 0) {
->   			host->pins_eint = pinctrl_lookup_state(host->pinctrl, "state_eint");
->   			if (IS_ERR(host->pins_eint)) {
+ drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
+index b753bf54ebd9..bd5743723da6 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
+@@ -193,16 +193,14 @@ static int mtk_vdec_hw_probe(struct platform_device *pdev)
+ 	return ret;
+ }
+ 
+-static int mtk_vdec_hw_remove(struct platform_device *pdev)
++static void mtk_vdec_hw_remove(struct platform_device *pdev)
+ {
+ 	pm_runtime_disable(&pdev->dev);
+-
+-	return 0;
+ }
+ 
+ static struct platform_driver mtk_vdec_driver = {
+ 	.probe	= mtk_vdec_hw_probe,
+-	.remove = mtk_vdec_hw_remove,
++	.remove_new = mtk_vdec_hw_remove,
+ 	.driver	= {
+ 		.name	= "mtk-vdec-comp",
+ 		.of_match_table = mtk_vdec_hw_match,
+-- 
+2.40.1.521.gf1e218fcd8-goog
+
 
