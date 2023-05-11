@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CCFEC7EE22
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 May 2023 23:08:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E1F7C7EE22
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 May 2023 00:28:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZiW05wKPLD7YCuYetjd69zZZPcMJTzbLVXYOQGMznZs=; b=Ri2/CyjLOzwsj+oEbCGvdLpUBm
-	eMPJZ3fzTQgQSOC5zbS9LaJxakYl9njfPryVEkA647XD3Oy/M50N5P/uYNOCIU3AINfRqZZL1WWPF
-	xzOlofKXxOLZKwUym1vaVnoQOaijBee7GTlN2IvXM4BKUVjUzYYrdhRBssrsPtEReM7I9i0t+0zha
-	0ia96yoCBUzyLUKqei93/2cvHucPteQtCsHNWI14YVH9MFHHZ6L2aYDoXxS10gT37UCoAbnYIlMR0
-	a6mVFKkUPNj9ujmojN/TXN7ndTJ9FpMdcCi9avxDwk4i4XqESOZPCEkj1lOWl4tytTlCQ764sd/T0
-	SPIv82lg==;
+	bh=tcLipFI9l2dcvpk4UR/OvX7URY66r8z0RDWBBZZI3BE=; b=1OKXC1GZkpIYmbbvTYpA6WU8tU
+	oK7kQAG4qHR8IxviJC+m0lCGVO3hFNZTVt+opvSxB4976UrtctvLoqYFxp5t6ub+whWH6SrFZmI8d
+	r5ioDu5tLW8IYQ758hbNsf1Gy+qZLh/njU8+bZiyRtuxzrAsRg4FVx1QLBApWdyZZd2FUlInxcynX
+	XR34Fkhpmg+cdnuakFVkal/W167bkWqUPiKuIHK0WyC2SdrVXDjh1glk4ht7dEEp4G0UawcGXp9Ce
+	JyVtUmedvSHexqjuQWZbktYReFS0+oJO9y0aA1GLNG43id0r5f1qG5341g7ZQJyRbC7y336S6xUTY
+	+LKtDiiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwsuq-007Das-1x;
-	Wed, 10 May 2023 23:08:12 +0000
+	id 1pwuAS-007KmV-1S;
+	Thu, 11 May 2023 00:28:24 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwsun-007DZq-2p;
-	Wed, 10 May 2023 23:08:10 +0000
+	id 1pwuAP-007Kle-2Q;
+	Thu, 11 May 2023 00:28:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=ZiW05wKPLD7YCuYetjd69zZZPcMJTzbLVXYOQGMznZs=; b=pqftOVm0RQw6AHZbB4QudUbxlg
-	8PgU+yebmovbsSnp8RZBjrUQFJhVdeMBQQwMcCduSxr7WDEHL5YCc5RlH8vc6bgkYamcRIt5ZXpjp
-	1HP6XP9yECMPv8vBm73DFd9t1kboP4PHvRdJ23mq4OjW4njtl4GM/3+WsxO1hu1wAzjA=;
+	bh=tcLipFI9l2dcvpk4UR/OvX7URY66r8z0RDWBBZZI3BE=; b=0N0j6XxO3sdBOByU603/1de0hj
+	/3hAgqsZZ3F3RPMO2svK5cPiOmcQq6mrUZFp5d+0oCVrYwV4e67vqCE1jGYcreFAwDDXxQzjpUdt5
+	OMv0rgJ8WMDZLY335P/kWuyBEKmtL9xTba9nuR4dP4wYYgp2DQiqXxi8VQbXS/cw8vvk=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1pwsue-00CUfW-GC; Thu, 11 May 2023 01:08:00 +0200
-Date: Thu, 11 May 2023 01:08:00 +0200
+	id 1pwuAJ-00CUqP-8i; Thu, 11 May 2023 02:28:15 +0200
+Date: Thu, 11 May 2023 02:28:15 +0200
 From: Andrew Lunn <andrew@lunn.ch>
 To: Daniel Golle <daniel@makrotopia.org>
 Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
@@ -47,21 +47,17 @@ Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Qingfang Deng <dqfext@gmail.com>,
-	SkyLake Huang <SkyLake.Huang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH net-next v3] net: phy: add driver for MediaTek SoC
- built-in GE PHYs
-Message-ID: <e7671e05-3a42-4c73-b1f5-05ed83a60c18@lunn.ch>
-References: <ZFwVwlN0eHjo_xB4@pidgin.makrotopia.org>
+Subject: Re: [PATCH net-next 0/8] Improvements for RealTek 2.5G Ethernet PHYs
+Message-ID: <55c11fd9-54cf-4460-a10c-52ff62b46a4c@lunn.ch>
+References: <cover.1683756691.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ZFwVwlN0eHjo_xB4@pidgin.makrotopia.org>
+In-Reply-To: <cover.1683756691.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230510_160809_916009_6B80E36D 
-X-CRM114-Status: GOOD (  10.40  )
+X-CRM114-CacheID: sfid-20230510_172821_815050_F0943088 
+X-CRM114-Status: GOOD (  10.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,23 +72,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> +static int mt7988_phy_probe_shared(struct phy_device *phydev)
-> +{
-> +	struct mtk_socphy_shared_priv *priv = phydev->shared->priv;
-> +	void __iomem *boottrap;
-> +	struct device_node *np;
-> +	u32 reg;
-> +
-> +	np = of_find_compatible_node(NULL, NULL, "mediatek,boottrap");
-> +	if (!np)
-> +		return -ENOENT;
+On Thu, May 11, 2023 at 12:53:22AM +0200, Daniel Golle wrote:
+> Improve support for RealTek 2.5G Ethernet PHYs (RTL822x series).
+> The PHYs can operate with Clause-22 and Clause-45 MDIO.
+> 
+> When using Clause-45 it is desireable to avoid rate-adapter mode and
+> rather have the MAC interface mode follow the PHY speed. The PHYs
+> support 2500Base-X for 2500M, and Cisco SGMII for 1000M/100M/10M.
 
-Is this documented somewhere in the DT binding document?
-
-The rest of the driver just seems to be undocumented magic which
-nobody except the vendor would understand.
-
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+I don't see what clause-45 has to do with this. The driver knows that
+both C22 and C45 addresses spaces exists in the hardware. It can do
+reads/writes on both. If the bus master does not support C45, C45 over
+C22 will be performed by the core.
 
     Andrew
 
