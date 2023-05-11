@@ -4,75 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5DE3C7EE22
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 May 2023 17:31:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98593C7EE26
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 May 2023 17:31:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=tOXlr6SRXoJsbJvp/TMrj0DD75/K1iQobJvY87EAMHs=; b=R9P9doCN6pAxp9
-	CbjnQVc866y6xbUFjcK/m0Q3EtWqLeXg86/KnzUO6WTToSAKZZ56fVIsf2H0moJhLx22BT2nOo3an
-	5weMGHafOea8jSCwJ4zjQKaOmjH+WNlsx3xsi/LWbaefXGK4qyjACPUT1OQ+jsWKPa57jxizq17wd
-	nhPenBZ5kNUYWjMooRUXMnNtspbf4mBtAvLBEXWqXEzwXbETgj2mixUhUYmtvT4fSt6RUfvUP6RVJ
-	5qJ1znSrheYFeTqDMVPHaONunYOnty9tDzP5zR2ngKrMuwunU2uyoVoomNVmbz3Ivfuh3r5zRwZRO
-	WDIgYgYwfqUuLf5pvz2g==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=C7/CYIBH/pHsTfzDssN9nwq/nPPFsyiz7BrFyXp1Ut8=; b=V9+Jos0z7VrWKuWSSx+BSi/tWt
+	Y63naFSJ0KLewTSCizn5Lzj7e9FwT+UJ/VrMfj2Kqgvtdbp97f2ydVyNkHRintDoyWrOP0ofM7lV1
+	xQjKCrQalfDgkYQFhUCAoh9PsS1dX6l8kbR49fNN7pDlktCuaWIyzgdYhQJOosHd5R95xHpUPudL4
+	5fwysuKNWTNemiWzgkx8j29t+Eig7wmTjKmnzbYunkO3+Bi1kMpuoh+rzyddS8psPQ16LiuvS4wHK
+	L3nqqCGJc0zbkXWYSWUH71uLNZEOA/wJm3QjTK9a+Mtbf0UyhtQn71sHXuV7+7xX5CvWv/u5DgsLI
+	QjAs6RYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxA8F-009YYT-0J;
-	Thu, 11 May 2023 17:31:11 +0000
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+	id 1pxA8I-009Yay-0X;
+	Thu, 11 May 2023 17:31:14 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1px9B5-009Mgd-0Z
+	id 1px9BC-009Mk9-18
 	for linux-mediatek@lists.infradead.org;
-	Thu, 11 May 2023 16:30:05 +0000
-Received: by mail-ej1-x631.google.com with SMTP id a640c23a62f3a-956ff2399c9so1699450966b.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 11 May 2023 09:29:59 -0700 (PDT)
+	Thu, 11 May 2023 16:30:11 +0000
+Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-50bc4bc2880so13753700a12.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 11 May 2023 09:30:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1683822599; x=1686414599;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=tOXlr6SRXoJsbJvp/TMrj0DD75/K1iQobJvY87EAMHs=;
-        b=Xz/RQq5wclbup0G36yLQE1t+FWgGMwi+IVZV0t1Zs5ts4xbiRGyHcFuX+XfRbn22tr
-         ZmZ/lQt2Z0gm9d3V0DRHip86YCZkpwg9Y6kh5UC+nlfIfIj/XfP4IVHw71tqZSCDP2jz
-         oAHkEsnKNVuzo8WidaW8/NG0kFo5FS/WSYaYxlUEo1Gl8pNPrEAsQu+pL6/h2Y2E5Ws7
-         6zNEDraErYdVpyUb/03ljHWhXL4GN2v+iaL0i6JdnT4u+ZoI2L9lX5Q+k4+wllHRYzD+
-         pGxDKYxidmWM+vTEDvoIhmFuBH4ATFEbq2EPPbv9kQikb5B6mw5v571lXYM22fwhpVS/
-         FORw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683822599; x=1686414599;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1683822607; x=1686414607;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=tOXlr6SRXoJsbJvp/TMrj0DD75/K1iQobJvY87EAMHs=;
-        b=VL4PctdnbMDei2EMaNSMW3LzQEp8ZzSD9y4pZ6RZYOqj/ixj5dAeo3HxoXjPLv/zk9
-         NUHmYZCJG7CH/xtVLT0MVNIVc0Bqh1jIjZZVvCRM33gRZ5nspDZnimFeQS276Pn1OH0B
-         EhxILir1fpVjvGB1tnAFNuVSc0hfrbJ2Kz4kJIc+Xt8u9i1XSbupdGvLfLDbrAAJMPpS
-         4iRa0JOhImgEY5F4hSQNVJW+4soZLz05PzIg+fUVBA7H3IWSZrgeRe9ndD0ExHqK9Q0v
-         iHcuSak7X257i26dnIpPgUPVf/fTuZAM2Zbchr2/3MocCoO/3bGYSPqoQsdLR1b7740a
-         8U0A==
-X-Gm-Message-State: AC+VfDxvaLJh6SN9o+j+NM7C3GFAy/FmNeHnknHfEVMXNPjLZX2fCLXu
-	CDP3Wo4lDWKxZVY/a1pbpYW0PI5DNO3xFHvGM8s=
-X-Google-Smtp-Source: ACHHUZ6WIzYhFgAFcsIsAcPM0vdI5AbfvQ1LOlAMpgYv5xZxQi7Bl3oSz3I3YSBq65xkCaJ7+GK74Q==
-X-Received: by 2002:a17:907:d16:b0:966:391b:5b3e with SMTP id gn22-20020a1709070d1600b00966391b5b3emr17294069ejc.55.1683822598626;
-        Thu, 11 May 2023 09:29:58 -0700 (PDT)
+        bh=C7/CYIBH/pHsTfzDssN9nwq/nPPFsyiz7BrFyXp1Ut8=;
+        b=GhJKDtTHvxfZLhn8dTuoKKjYYnoggNINpc4vG7TVWfidbQ67nB8eWT99wBAxKkwcfz
+         VS2OvoFRypOCuKQz1x9o4+t2p1BxZV9RqL0we5aVvSzjkdtCiQmfO/NwiP5vyKUAY9rV
+         67dzyTNT6eBAqB0+LAaK7uVmuLTDSdYpZPUWmZ3g/SPwuhWDNxir6dLtiQzAxxmDJnDC
+         d/AGLwdOhJejRpgtTvevv0yQ4HdVefB5jcen7RNlgUPtnLIcOPJ0IiJt8pKHtFoj1EVI
+         Y06TBx46Dv7zwLBnJbSBYvZiwTRiYTgbIEOuOKhU9KgFfa7+amT6uqHshOnOADsUUzAZ
+         uw9w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1683822607; x=1686414607;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=C7/CYIBH/pHsTfzDssN9nwq/nPPFsyiz7BrFyXp1Ut8=;
+        b=YIhRgP0yiRtGHX9QuBpSuhkm9EueWmOd7MBC+iC7pC4aCGHOAf2iJJ1fREGrM5UfW5
+         PZjCiZBBGcyISXkg4/dWOaiECX40Ph2Xo2TgamT14CvQ4aooACaM+bj8dEgADZJzBffE
+         hLTmC9M+LzkIuO+G/eGTAiqsLae67fMP9l0l52OHXDun/gEjR4p1/dmKMjKv5awJFI/p
+         QNRiTgyfVMXm90CafDdWXgbAwZSNA5eLPkJ+AhEI/RgHNzWYWXMqnnkIoU744Uv577wM
+         jfBMm+3LHB2Tq/Bw3hJf3bcWDNYUi+PUqXFW1yqXAn8lbbkGzMqGUQA0O8CzBSB3ggwA
+         9oTA==
+X-Gm-Message-State: AC+VfDwQtQJoQB7OvUtO5F+Io4xOfyZHWtKfpNSr0F1ubmNKqgFMFXKK
+	yTCJOoIDChtPwF9zeUEm9YvIhA==
+X-Google-Smtp-Source: ACHHUZ48kDKdegEZk8cV/FApfJ0AGakPGUCGESAhYk6jGxd451PT3jIuODPVv9AXlPcva/FrRKXs/Q==
+X-Received: by 2002:a17:906:da88:b0:93a:353d:e38b with SMTP id xh8-20020a170906da8800b0093a353de38bmr20433926ejb.37.1683822607591;
+        Thu, 11 May 2023 09:30:07 -0700 (PDT)
 Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id v9-20020a170906338900b0094ee99eeb01sm4209935eja.150.2023.05.11.09.29.57
+        by smtp.googlemail.com with ESMTPSA id v9-20020a170906338900b0094ee99eeb01sm4209935eja.150.2023.05.11.09.30.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 11 May 2023 09:29:58 -0700 (PDT)
+        Thu, 11 May 2023 09:30:07 -0700 (PDT)
 From: Alexandre Mergnat <amergnat@baylibre.com>
-Subject: [PATCH v7 00/11] Improve the MT8365 SoC and EVK board support
-Date: Thu, 11 May 2023 18:29:20 +0200
-Message-Id: <20230203-evk-board-support-v7-0-98cbdfac656e@baylibre.com>
+Date: Thu, 11 May 2023 18:29:28 +0200
+Subject: [PATCH v7 08/11] arm64: dts: mediatek: add ethernet support for
+ mt8365-evk
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAOAXXWQC/4XOz2rDMAwG8FcpPs9DtuM/2WnvMXawZWUxy5Jit
- 4FS8u5VdxxhOYlP8P2ku2hUCzXxdrqLSmtpZZk5+JeTwDHOXyRL5iw0aAMajKT1W6Yl1izb9Xx
- e6kVmm3wMpqfsk+Beio1kqnHGkZvzdZp4OZZ2Wert986qeHz8R65KggQHRnuwncr2PcXbVFKlV
- 1x+xCeDqz5ENCOO0GNOChCHHcQcIub5CYChAATQ733SHSIdIxaHgZyLJiDsIPYQsYyoEAyq1IG
- NeQdxh4hjJGSXFA7kB93/QbZtewBb2rYjEwIAAA==
+Message-Id: <20230203-evk-board-support-v7-8-98cbdfac656e@baylibre.com>
+References: <20230203-evk-board-support-v7-0-98cbdfac656e@baylibre.com>
+In-Reply-To: <20230203-evk-board-support-v7-0-98cbdfac656e@baylibre.com>
 To: Catalin Marinas <catalin.marinas@arm.com>, 
  Will Deacon <will@kernel.org>, Wim Van Sebroeck <wim@linux-watchdog.org>, 
  Guenter Roeck <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>, 
@@ -84,27 +83,26 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org, 
  linux-mediatek@lists.infradead.org, 
  Alexandre Mergnat <amergnat@baylibre.com>, 
- Kevin Hilman <khilman@baylibre.com>, Fabien Parent <fparent@baylibre.com>, 
- Amjad Ouled-Ameur <aouledameur@baylibre.com>
+ Kevin Hilman <khilman@baylibre.com>
 X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3465; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=imRxbapmEJ9qqaKKfWX9LcSFQADLjeGPq13gZioNQ48=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkXRgEmkZ1Wmx5aUfovH7JTgKGB3ghz97Nbp55wI3y
- 6SqT4tKJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZF0YBAAKCRArRkmdfjHURRDAD/
- 4sIVRNJSV4mAKj9UxAok2bIneeEGeKLSxt8crFpOBUlc0Dbt3R8w52Ipgeeu3Xq1/VqHNb/P5zbcB6
- o6AJf/sLjY/lnJxt0izgc4nf/kQDPf2mhxgrKdQf+mlTylU8WEsRHSyWJJNf9xOs56MFdSk5n4sGdA
- Jvrj5X4UPFKVRZejL/zO2OuoH1aTaxz+AbnccTPLVVFNmMosBzUgEQ+iT0oo/XX0hWoBpl/AOBsNY1
- 2GhbURO2unJivEGpG0kFbigpQsxDw/nxJCs9NRkkUkzJMNrrPm6DT/C7ckGEK+RrEcMSLe6FdHCaKs
- x63F8XH1xsVyKq1hMsvQLO6dClL2jdBTErLE9Kmb13IJUhhazE5eTmgk+FCDw73ILM3+vSmOo7o6uX
- P5YGgPnZVCUF76T1z6JkWkpzOtxEmpDJ5pWe3TfYRbLoL179cGFYr/IxFShJW6gBlfYohrZPejk0PA
- 64UHyRwHB+EgWuXlrjWGkdKiZtsLkBShppniZdKsbYvw1ZPkZHnoOLKe6DZqmsqctIfrwxue6u6F7z
- kORg3oa2UTu13Ozdk1XRxCujUxpK4ntnb3z4fZRWlMUmBJ6/W1EyDNg6v9ATZbJC3JbJlc4xhav6JT
- SAjTPAdS0W3u2xxVPkWcC1t9xEYnLwhu3Cv+QjQIdp2aBUyzvX8wmTu/Gn2g==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2481; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=DjSelAdOZMPlRnOCXsPOw3j7Znol7iZuqfSQhuv0e3s=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkXRgEuL8tv3XPLNCTsvVZGVz70gDf4DdWTusQ0f+3
+ BOJz1S2JAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZF0YBAAKCRArRkmdfjHUReCTEA
+ CVmdX4q5lT6YXJzs7Qovo3u+IuaMF0ggKWFjpMDAFkBMXStBzEHV/8fBa3nnqVa7pgBHUiBC/3QbVi
+ VV293B6g1r7bwPzN8mWb8R1YoBGz07J/rqY11LN4ERJ3UOBixaluzeMm7m6Y16uQowwl6/zCo3Uwrj
+ kXomWO6tBUhZf20vFizrvtCfyhwZV26FANwI4P24Euk7AVFMHnjEosrwuOonrnZbbwx7O2oeKJJ+w1
+ XGH9HMvNXZRbIdhGQvNHuCDTlvd3pmS/uteI+dSKLki7K4wO5Gj2oOCHKN0vSRn4TCNzMQEckuHaZE
+ jknzCGG2D98waFluNfPRw2EY+yMFLgFXmp7UCWKzjOdrVOWAcqEm0XM8SZqBgQZ7RI0T8PHwTjf+iu
+ 8LTrJlLYmN+SShm70bGm21ElMzRete1jFfu33/JGE3S9yWzO8MedI5GMdB0bfVilPoQ40sk8NwlILs
+ Q41DeTb2YIm0ocLdj3+eiIj2RJRFJlfuS9kOdn8jBbT7UQQYF5nSZwqWFbc6XVZz5Y1l3WsxEI3ycm
+ zsbiABuo/3Fc2v+nuSiDJNYV+E886U9tvBLYdGHFXWisVkLPKSZMzmXrNHhbZd7bblD/AkXNwPPtFH
+ 9D3/i8xpOWb5GLcaqs53ryDDye4bIwk2Hf9/uNANKshVaNDy5O5jjTdpvM9Q==
 X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
  fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230511_093003_215527_F410CA18 
-X-CRM114-Status: GOOD (  13.80  )
+X-CRM114-CacheID: sfid-20230511_093010_388662_5BBE72A9 
+X-CRM114-Status: GOOD (  11.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,94 +117,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This commits are based on the Fabien Parent <fparent@baylibre.com> work.
+- Enable "vibr" and "vsim2" regulators to power the ethernet chip.
 
-The purpose of this series is to add the following HWs / IPs support for
-the mt8365-evk board:
-- Watchdog
-- Power Management Integrated Circuit "PMIC" wrapper
-- MT6357 PMIC
-- MultiMediaCard "MMC" & Secure Digital "SD" controller
-- USB controller
-- Ethernet MAC controller
-
-Add CPU Freq & IDLE support for this board.
-
-All previous dependancies are merged and released into the v6.4-rc1.
-
-=== Build:
-
-To test this serie, cherry-pick this serie, and build it using the arm64
-defconfig.
-
-Regards,
-Alex
-
+Tested-by: Kevin Hilman <khilman@baylibre.com>
 Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
-Changes in v7:
-- Rebase to the kernel v6.4-rc1.
-- Remove "dt-bindings: watchdog: mediatek,mtk-wdt: add mt8365" because
-  it was applied.
-- Link to v6: https://lore.kernel.org/r/20230203-evk-board-support-v6-0-8d6b1cfe7f29@baylibre.com
+ arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 57 +++++++++++++++++++++++++++++
+ 1 file changed, 57 insertions(+)
 
-Changes in v6:
-- Add commit message for the arm64 defconfig changes
-- Fix the mail list
-- Link to v5: https://lore.kernel.org/r/20230203-evk-board-support-v5-0-1883c1b405ad@baylibre.com
+diff --git a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+index 3a472f620ac0..cf81dace466a 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+@@ -88,6 +88,28 @@ optee_reserved: optee@43200000 {
+ 	};
+ };
+ 
++&ethernet {
++	pinctrl-0 = <&ethernet_pins>;
++	pinctrl-names = "default";
++	phy-handle = <&eth_phy>;
++	phy-mode = "rmii";
++	/*
++	 * Ethernet and HDMI (DSI0) are sharing pins.
++	 * Only one can be enabled at a time and require the physical switch
++	 * SW2101 to be set on LAN position
++	 */
++	status = "disabled";
++
++	mdio {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		eth_phy: ethernet-phy@0 {
++			reg = <0>;
++		};
++	};
++};
++
+ &i2c0 {
+ 	clock-frequency = <100000>;
+ 	pinctrl-0 = <&i2c0_pins>;
+@@ -137,12 +159,47 @@ &mt6357_pmic {
+ 	#interrupt-cells = <2>;
+ };
+ 
++/* Needed by analog switch (multiplexer), HDMI and ethernet */
++&mt6357_vibr_reg {
++	regulator-always-on;
++};
++
+ /* Needed by MSDC IP */
+ &mt6357_vmc_reg {
+ 	regulator-always-on;
+ };
+ 
++/* Needed by ethernet */
++&mt6357_vsim2_reg {
++	regulator-always-on;
++};
++
+ &pio {
++	ethernet_pins: ethernet-pins {
++		phy_reset_pins {
++			pinmux = <MT8365_PIN_133_TDM_TX_DATA1__FUNC_GPIO133>;
++		};
++
++		rmii_pins {
++			pinmux = <MT8365_PIN_0_GPIO0__FUNC_EXT_TXD0>,
++				 <MT8365_PIN_1_GPIO1__FUNC_EXT_TXD1>,
++				 <MT8365_PIN_2_GPIO2__FUNC_EXT_TXD2>,
++				 <MT8365_PIN_3_GPIO3__FUNC_EXT_TXD3>,
++				 <MT8365_PIN_4_GPIO4__FUNC_EXT_TXC>,
++				 <MT8365_PIN_5_GPIO5__FUNC_EXT_RXER>,
++				 <MT8365_PIN_6_GPIO6__FUNC_EXT_RXC>,
++				 <MT8365_PIN_7_GPIO7__FUNC_EXT_RXDV>,
++				 <MT8365_PIN_8_GPIO8__FUNC_EXT_RXD0>,
++				 <MT8365_PIN_9_GPIO9__FUNC_EXT_RXD1>,
++				 <MT8365_PIN_10_GPIO10__FUNC_EXT_RXD2>,
++				 <MT8365_PIN_11_GPIO11__FUNC_EXT_RXD3>,
++				 <MT8365_PIN_12_GPIO12__FUNC_EXT_TXEN>,
++				 <MT8365_PIN_13_GPIO13__FUNC_EXT_COL>,
++				 <MT8365_PIN_14_GPIO14__FUNC_EXT_MDIO>,
++				 <MT8365_PIN_15_GPIO15__FUNC_EXT_MDC>;
++		};
++	};
++
+ 	gpio_keys: gpio-keys-pins {
+ 		pins {
+ 			pinmux = <MT8365_PIN_24_KPCOL0__FUNC_KPCOL0>;
 
-Changes in v5:
-- Add patches to build the MT6357 regulator driver and MTK PMIC keys by default
-- Remove "dt-bindings: pinctrl: mediatek,mt8365-pinctrl: add drive strength property"
-  patch from this serie and add it to the pinctrl serie [3]
-- Link to v4: https://lore.kernel.org/r/20230203-evk-board-support-v4-0-5cffe66a38c0@baylibre.com
-
-Changes in v4:
-- Remove v3 applied patch from the serie:
-  - arm64: dts: mediatek: add ethernet support for mt8365 SoC
-  - arm64: dts: mediatek: add mmc support for mt8365 SoC
-  - arm64: dts: mediatek: add mt6357 device-tree
-  - arm64: dts: mediatek: add pwrap support to mt8365 SoC
-  - arm64: dts: mediatek: Increase the size BL31 reserved memory
-- Drop "arm64: dts: mediatek: fix systimer properties" which is done [1]
-- Fix style, typo and re-order properties.
-- Use interrupts-extended for the PMIC node.
-- Link to v3: https://lore.kernel.org/r/20230203-evk-board-support-v3-0-0003e80e0095@baylibre.com
-
-Changes in v3:
-- Remove v2 applied patch from the serie:
-  - dt-bindings: mmc: mediatek,mtk-sd: add mt8365
-- Add trailers and simply resend.
-- Link to v2: https://lore.kernel.org/r/20230203-evk-board-support-v2-0-6ec7cdb10ccf@baylibre.com
-
----
-Alexandre Mergnat (9):
-      arm64: defconfig: enable MT6357 regulator
-      arm64: defconfig: enable Mediatek PMIC key
-      arm64: dts: mediatek: add watchdog support for mt8365 SoC
-      arm64: dts: mediatek: add mt6357 PMIC support for mt8365-evk
-      arm64: dts: mediatek: add mmc support for mt8365-evk
-      arm64: dts: mediatek: add usb controller support for mt8365-evk
-      arm64: dts: mediatek: add ethernet support for mt8365-evk
-      arm64: dts: mediatek: add OPP support for mt8365 SoC
-      arm64: dts: mediatek: add cpufreq support for mt8365-evk
-
-Amjad Ouled-Ameur (1):
-      arm64: dts: mediatek: Add CPU Idle support
-
-Fabien Parent (1):
-      arm64: dts: mediatek: set vmc regulator as always on
-
- arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 249 ++++++++++++++++++++++++++++
- arch/arm64/boot/dts/mediatek/mt8365.dtsi    | 142 ++++++++++++++++
- arch/arm64/configs/defconfig                |   2 +
- 3 files changed, 393 insertions(+)
----
-base-commit: d2b7e0f7ff8e0b21e4c8d0ae6dfa38786fe44b35
-change-id: 20230203-evk-board-support-d5b7a839ed7b
-
-Best regards,
 -- 
-Alexandre Mergnat <amergnat@baylibre.com>
+2.25.1
 
 
