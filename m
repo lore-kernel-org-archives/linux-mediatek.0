@@ -4,88 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D084CC77B7C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 May 2023 17:58:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A766C77B7F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 May 2023 18:09:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IE3MRanS9uBZk5iyRYVZ75isIkjN+eRZmeuR+lcRDrE=; b=x71NFnORpGUmTW8coWb/O5IcPI
-	9AWHk/wUiqbzvtN5g93y32jPHSKFq3MERij4mx4OiAIoAnzAs5yWPyoGrAno/AagAU2xKaWQ80r0v
-	EuaFbJNKxCWH0cYNybcMXmQ17qI2dajpmT2kUVfn32pwZ0uHCUrcVAbFjlOm71MZXNvlpjMXiL2fm
-	qf/JPQ9qjcaedf4kRKTyuHzEO8wXM8H/73WjTG98plkD+eZLVP63iLC5sw173c+wS+mq73MwV//MF
-	WUg+tihNLIBaEBe8Uj945963v8yQ91ypfbxL+etILkQG/2PUYUHNFudCgGQlx1T3X9kELlcywSOSa
-	6GHoXHNg==;
+	bh=3Pfh1zcvxcBTMC1uxi72MV10YZm42bS2IcEmQKZMb+4=; b=3logIian+8ojdDOPyuGQ9MzVzr
+	LFQhEumrtqm42MOfnNeR24M6oyb8ZNVrzo5qtCf1DxjfHLCdzgWuTnouA2W/TRZVXbqphx8RIQLk5
+	/JBAu6cLC47AwCzgIUl758ZPEREaQgphvAFLzkymPZfg5F3zC1YbLigRw5xYqZfEeMLGRAaA2DXmX
+	DmgrIHIR6rlOHF1oiAjBsDqncYVAkeluMVsze/W995ezvrIJj91bnnyB4/f1ulZztmKjodmZfR03x
+	uflQ1oMMNpNwfYPJi3+YLKpRAhKzMBTu6fNZe1Qq0RJSvTlXKkZaCW8Ffea3glBvd2RV7A7cOetCa
+	XRMpn2fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxAYB-009dda-1O;
-	Thu, 11 May 2023 17:57:59 +0000
-Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
+	id 1pxAjX-009fKY-33;
+	Thu, 11 May 2023 18:09:43 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxAY8-009dbX-1j
-	for linux-mediatek@lists.infradead.org;
-	Thu, 11 May 2023 17:57:58 +0000
-Received: by mail-pg1-x52d.google.com with SMTP id 41be03b00d2f7-530638a60e1so1802835a12.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 11 May 2023 10:57:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1683827873; x=1686419873;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=IE3MRanS9uBZk5iyRYVZ75isIkjN+eRZmeuR+lcRDrE=;
-        b=ZV3QeS/kmnBEFoomfujqKJMQXqTB23DPZHQ+9mNPiDpOiepMc/AAEtbOwvZR10tNme
-         6AJh8fgVjNCdQsxxV1bplKA/zVjMXr6lxy0c+eNFglzPF2MT1x/fzS7CmPvLHZF/qucF
-         /hdf22S8N8Z/fwA7h4OfKgK+BW0+QHJpctXYzLzsY0Oz7a5lRsIeJfpyhD3OESuIhGRh
-         hZRBejnENRSbj7TbeANtpYSqtEWwLObLBzaZaVDCZ7YeGxS9Z3zOlHqgvJJL0HcaB8Ek
-         rBNr9Rw2yOdkWdEtkWmwSj7EnF8IFhTvkfSanoVJ9wXLWao9AmR9xmu5UQSPLZli4Eba
-         zBDw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683827873; x=1686419873;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=IE3MRanS9uBZk5iyRYVZ75isIkjN+eRZmeuR+lcRDrE=;
-        b=eHfm8A3NU5yEm6Fa6nJiJdgswTl8EtQjEixI9o9cunVMWd936ZQMMy656mkdI/r0Hm
-         X8k/JBBCUxs5xWzx/tyVRdEQaikKP3UmIhV4WTTPi/5xKiu9d8e8F2vGUxdN53VHzceA
-         +OUknd06Hn2TRkv/PYz+XQPYZZ/fTv6qHGMwThjtTxQigLQFuZzG9C461b5xlcAo+jhT
-         ZGNBgHDkWs2VdU5LaKWwW9aMsPN8RxWjjGGOjiL7Z92LeTi3Bpo0nqm4fbiPFQ3apgVe
-         sdhSMHIRK9Gw0lIEqILeOBZNsLm9XLFsCel7MRVQ88vBmYqW9HLH2LaKJ4XQS7hhgOJ2
-         zgwg==
-X-Gm-Message-State: AC+VfDwlxcwcNWpRwJaeAxjdbtIM2y8irb3BuZ9SM9ak9+2jp+eC6TLQ
-	x4lX2LvXpcpLBcIOjBMbtBlqzQ==
-X-Google-Smtp-Source: ACHHUZ4BC0yUHVwBv3jXzLEPAI6waOCTU8xCnnu3MTIrJFDcdbHI3gYdpy5HFOA0xhcQ+FiCF+rF4Q==
-X-Received: by 2002:a17:902:d487:b0:1a9:9a18:346a with SMTP id c7-20020a170902d48700b001a99a18346amr29636766plg.5.1683827873229;
-        Thu, 11 May 2023 10:57:53 -0700 (PDT)
-Received: from p14s ([2604:3d09:148c:c800:5715:c2a3:1400:98ae])
-        by smtp.gmail.com with ESMTPSA id 17-20020a170902ee5100b001a63ba28052sm6217123plo.69.2023.05.11.10.57.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 11 May 2023 10:57:52 -0700 (PDT)
-Date: Thu, 11 May 2023 11:57:50 -0600
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: Tinghan Shen <tinghan.shen@mediatek.com>
-Cc: Bjorn Andersson <andersson@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	id 1pxAjU-009fIe-1m;
+	Thu, 11 May 2023 18:09:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=3Pfh1zcvxcBTMC1uxi72MV10YZm42bS2IcEmQKZMb+4=; b=Xy6+Keou++GVj/codBoqrJy9gL
+	itBLJ1xjf1mlUPlIVxNfKjXcLTAAQxQgVvkDSW28XTylZidk6QtE2PQYmJQUJnQZWcxB5NeAld/vd
+	IYEOh2qbH0ToIRlW0gSw+S2gAJ1WGJ/1frb5LCaG8CQK1aq2Dnd7ahSmo492iNkilNBU6UOddVnaB
+	2G/DZ3A2kPXp+dk+BzsO26n/CDYET8gnNW/nnTphCuVOxiZeHj4Thy5ZL9FaiwRq+YC5K2OSx6ypl
+	/nzyY9khDwqIpRs6uKQTRNjfVzRCJDKCffYlnSGLHy612I3r9wY0uvnDsFnZ4KyWkAr1um0cluB6w
+	mZp1PVtw==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:35560)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1pxAjO-00075o-2n; Thu, 11 May 2023 19:09:34 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1pxAjM-0004F7-Bd; Thu, 11 May 2023 19:09:32 +0100
+Date: Thu, 11 May 2023 19:09:32 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Andrew Lunn <andrew@lunn.ch>, netdev@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v11 05/11] remoteproc: mediatek: Introduce cluster on
- single-core SCP
-Message-ID: <ZF0snh07gRNfEoMQ@p14s>
-References: <20230510063749.5127-1-tinghan.shen@mediatek.com>
- <20230510063749.5127-6-tinghan.shen@mediatek.com>
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH net-next 0/8] Improvements for RealTek 2.5G Ethernet PHYs
+Message-ID: <ZF0vXAzWg44GT+fA@shell.armlinux.org.uk>
+References: <cover.1683756691.git.daniel@makrotopia.org>
+ <55c11fd9-54cf-4460-a10c-52ff62b46a4c@lunn.ch>
+ <ZF0iiDIZQzR8vMvm@pidgin.makrotopia.org>
+ <ZF0mUeKjdvZNG44q@shell.armlinux.org.uk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230510063749.5127-6-tinghan.shen@mediatek.com>
+In-Reply-To: <ZF0mUeKjdvZNG44q@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230511_105756_579162_8C9FC57A 
-X-CRM114-Status: GOOD (  32.75  )
+X-CRM114-CacheID: sfid-20230511_110940_732554_99529AA9 
+X-CRM114-Status: GOOD (  43.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,293 +84,159 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Good day,
-
-On Wed, May 10, 2023 at 02:37:43PM +0800, Tinghan Shen wrote:
-> This is the preliminary step for probing multi-core SCP.
-> The initialization procedure for remoteproc is similar for both
-> single-core and multi-core architectures and is reusing to avoid
-> redundant code.
+On Thu, May 11, 2023 at 06:30:57PM +0100, Russell King (Oracle) wrote:
+> On Thu, May 11, 2023 at 07:14:48PM +0200, Daniel Golle wrote:
+> > On Thu, May 11, 2023 at 02:28:15AM +0200, Andrew Lunn wrote:
+> > > On Thu, May 11, 2023 at 12:53:22AM +0200, Daniel Golle wrote:
+> > > > Improve support for RealTek 2.5G Ethernet PHYs (RTL822x series).
+> > > > The PHYs can operate with Clause-22 and Clause-45 MDIO.
+> > > > 
+> > > > When using Clause-45 it is desireable to avoid rate-adapter mode and
+> > > > rather have the MAC interface mode follow the PHY speed. The PHYs
+> > > > support 2500Base-X for 2500M, and Cisco SGMII for 1000M/100M/10M.
+> > > 
+> > > I don't see what clause-45 has to do with this. The driver knows that
+> > > both C22 and C45 addresses spaces exists in the hardware. It can do
+> > > reads/writes on both. If the bus master does not support C45, C45 over
+> > > C22 will be performed by the core.
+> > 
+> > My understanding is/was that switching the SerDes interface mode is only
+> > intended with Clause-45 PHYs, derived from this comment and code:
+> > 
+> > https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/net/phy/phylink.c#n1661
 > 
-> Adapt the probing flow of single-core SCP to incorporate the 'cluster'
-> concept required for probing multi-core SCP.The main differences are,
+> It's only because:
 > 
->   - the SCP core object is maintained in the cluster list,
->     instead of in the driver data property.
->   - the cluster information is saved in the driver data property.
->   - To maintain compatibility with exported SCP APIs that get
->     the SCP core object by SCP node phandle, the SCP core object pointers
->     are moved to the platform data property.
+> 1) Clause 22 PHYs haven't done this.
+> 2) There is currently no way to know what set of interfaces a PHY would
+>    make use of - and that affects what ethtool linkmodes are possible.
 > 
-> The registers of config and l1tcm are shared for multi-core
-> SCP. Reuse the mapped addresses for all cores.
+> What you point to is nothing more than a hack to make Clause 45 PHYs
+> work with the code that we currently have.
 > 
-> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> ---
->  drivers/remoteproc/mtk_common.h |   2 +
->  drivers/remoteproc/mtk_scp.c    | 143 ++++++++++++++++++++++----------
->  2 files changed, 103 insertions(+), 42 deletions(-)
+> To sort this properly, we need PHY drivers to tell phylink what
+> interfaces they are going to switch between once they have been
+> attached to the network interface. This is what these patches in my
+> net-queue branch are doing:
 > 
-> diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
-> index c0905aec3b4b..56395e8664cb 100644
-> --- a/drivers/remoteproc/mtk_common.h
-> +++ b/drivers/remoteproc/mtk_common.h
-> @@ -128,6 +128,8 @@ struct mtk_scp {
->  	size_t dram_size;
->  
->  	struct rproc_subdev *rpmsg_subdev;
-> +
-> +	struct list_head elem;
->  };
->  
->  /**
-> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> index d66822dad943..6c4da7332896 100644
-> --- a/drivers/remoteproc/mtk_scp.c
-> +++ b/drivers/remoteproc/mtk_scp.c
-> @@ -23,6 +23,14 @@
->  #define MAX_CODE_SIZE 0x500000
->  #define SECTION_NAME_IPI_BUFFER ".ipi_buffer"
->  
-> +struct mtk_scp_of_cluster {
-> +	void __iomem *reg_base;
-> +	void __iomem *l1tcm_base;
-> +	size_t l1tcm_size;
-> +	phys_addr_t l1tcm_phys;
-> +	struct list_head mtk_scp_cluster;
-
-struct list_head mtk_scp_list;
-
-> +};
-> +
->  /**
->   * scp_get() - get a reference to SCP.
->   *
-> @@ -51,7 +59,7 @@ struct mtk_scp *scp_get(struct platform_device *pdev)
->  		return NULL;
->  	}
->  
-> -	return platform_get_drvdata(scp_pdev);
-> +	return *(struct mtk_scp **)dev_get_platdata(&scp_pdev->dev);
->  }
->  EXPORT_SYMBOL_GPL(scp_get);
->  
-> @@ -810,14 +818,14 @@ static void scp_unmap_memory_region(struct mtk_scp *scp)
->  static int scp_register_ipi(struct platform_device *pdev, u32 id,
->  			    ipi_handler_t handler, void *priv)
->  {
-> -	struct mtk_scp *scp = platform_get_drvdata(pdev);
-> +	struct mtk_scp *scp = *(struct mtk_scp **)dev_get_platdata(&pdev->dev);
->  
->  	return scp_ipi_register(scp, id, handler, priv);
->  }
->  
->  static void scp_unregister_ipi(struct platform_device *pdev, u32 id)
->  {
-> -	struct mtk_scp *scp = platform_get_drvdata(pdev);
-> +	struct mtk_scp *scp = *(struct mtk_scp **)dev_get_platdata(&pdev->dev);
->  
->  	scp_ipi_unregister(scp, id);
->  }
-> @@ -825,7 +833,7 @@ static void scp_unregister_ipi(struct platform_device *pdev, u32 id)
->  static int scp_send_ipi(struct platform_device *pdev, u32 id, void *buf,
->  			unsigned int len, unsigned int wait)
->  {
-> -	struct mtk_scp *scp = platform_get_drvdata(pdev);
-> +	struct mtk_scp *scp = *(struct mtk_scp **)dev_get_platdata(&pdev->dev);
->  
->  	return scp_ipi_send(scp, id, buf, len, wait);
->  }
-> @@ -855,7 +863,8 @@ static void scp_remove_rpmsg_subdev(struct mtk_scp *scp)
->  	}
->  }
->  
-> -static int scp_probe(struct platform_device *pdev)
-> +static struct mtk_scp *scp_rproc_init(struct platform_device *pdev,
-> +				      struct mtk_scp_of_cluster *scp_cluster)
->  {
->  	struct device *dev = &pdev->dev;
->  	struct device_node *np = dev->of_node;
-> @@ -867,52 +876,42 @@ static int scp_probe(struct platform_device *pdev)
->  
->  	ret = rproc_of_parse_firmware(dev, 0, &fw_name);
->  	if (ret < 0 && ret != -EINVAL)
-> -		return ret;
-> +		return ERR_PTR(ret);
->  
->  	rproc = devm_rproc_alloc(dev, np->name, &scp_ops, fw_name, sizeof(*scp));
-> -	if (!rproc)
-> -		return dev_err_probe(dev, -ENOMEM, "unable to allocate remoteproc\n");
-> +	if (!rproc) {
-> +		dev_err(dev, "unable to allocate remoteproc\n");
-> +		return ERR_PTR(-ENOMEM);
-> +	}
->  
->  	scp = rproc->priv;
->  	scp->rproc = rproc;
->  	scp->dev = dev;
->  	scp->data = of_device_get_match_data(dev);
-> -	platform_set_drvdata(pdev, scp);
-> +	platform_device_add_data(pdev, &scp, sizeof(scp));
-> +
-> +	scp->reg_base = scp_cluster->reg_base;
-> +	scp->l1tcm_base = scp_cluster->l1tcm_base;
-> +	scp->l1tcm_size = scp_cluster->l1tcm_size;
-> +	scp->l1tcm_phys = scp_cluster->l1tcm_phys;
->  
->  	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "sram");
->  	scp->sram_base = devm_ioremap_resource(dev, res);
-> -	if (IS_ERR(scp->sram_base))
-> -		return dev_err_probe(dev, PTR_ERR(scp->sram_base),
-> -				     "Failed to parse and map sram memory\n");
-> +	if (IS_ERR(scp->sram_base)) {
-> +		dev_err(dev, "Failed to parse and map sram memory\n");
-> +		return ERR_PTR(PTR_ERR(scp->sram_base));
-> +	}
->  
->  	scp->sram_size = resource_size(res);
->  	scp->sram_phys = res->start;
->  
-> -	/* l1tcm is an optional memory region */
-> -	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "l1tcm");
-> -	scp->l1tcm_base = devm_ioremap_resource(dev, res);
-> -	if (IS_ERR(scp->l1tcm_base)) {
-> -		ret = PTR_ERR(scp->l1tcm_base);
-> -		if (ret != -EINVAL) {
-> -			return dev_err_probe(dev, ret, "Failed to map l1tcm memory\n");
-> -		}
-> -	} else {
-> -		scp->l1tcm_size = resource_size(res);
-> -		scp->l1tcm_phys = res->start;
-> -	}
-> -
-> -	scp->reg_base = devm_platform_ioremap_resource_byname(pdev, "cfg");
-> -	if (IS_ERR(scp->reg_base))
-> -		return dev_err_probe(dev, PTR_ERR(scp->reg_base),
-> -				     "Failed to parse and map cfg memory\n");
-> -
->  	ret = scp->data->scp_clk_get(scp);
->  	if (ret)
-> -		return ret;
-> +		return ERR_PTR(ret);
->  
->  	ret = scp_map_memory_region(scp);
->  	if (ret)
-> -		return ret;
-> +		return ERR_PTR(ret);
->  
->  	mutex_init(&scp->send_lock);
->  	for (i = 0; i < SCP_IPI_MAX; i++)
-> @@ -943,7 +942,7 @@ static int scp_probe(struct platform_device *pdev)
->  	if (ret)
->  		goto remove_subdev;
->  
-> -	return 0;
-> +	return scp;
->  
->  remove_subdev:
->  	scp_remove_rpmsg_subdev(scp);
-> @@ -954,21 +953,81 @@ static int scp_probe(struct platform_device *pdev)
->  		mutex_destroy(&scp->ipi_desc[i].lock);
->  	mutex_destroy(&scp->send_lock);
->  
-> -	return ret;
-> +	return ERR_PTR(ret);
-> +}
-> +
-> +static int scp_cluster_init(struct platform_device *pdev)
-> +{
-> +	struct mtk_scp *scp;
-> +	struct mtk_scp_of_cluster *scp_cluster = platform_get_drvdata(pdev);
-> +	struct list_head *cluster = &scp_cluster->mtk_scp_cluster;
-> +
-> +	scp = scp_rproc_init(pdev, scp_cluster);
-> +	if (IS_ERR(scp))
-> +		return PTR_ERR(scp);
-> +
-> +	list_add_tail(&scp->elem, cluster);
-> +
-> +	return 0;
-> +}
-> +
-> +static int scp_probe(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct mtk_scp_of_cluster *scp_cluster;
-> +	struct resource *res;
-> +	int ret;
-> +
-> +	scp_cluster = devm_kzalloc(&pdev->dev, sizeof(*scp_cluster), GFP_KERNEL);
-
-Please use @dev the same way it was done for dev_err_probe() and
-devm_ioremap_resource() below.
-
-More comments to come tomorrow.
-
-Thanks,
-Mathieu
-
-> +	if (!scp_cluster)
-> +		return -ENOMEM;
-> +
-> +	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "cfg");
-> +	scp_cluster->reg_base = devm_ioremap_resource(dev, res);
-> +	if (IS_ERR(scp_cluster->reg_base))
-> +		return dev_err_probe(dev, PTR_ERR(scp_cluster->reg_base),
-> +				     "Failed to parse and map cfg memory\n");
-> +
-> +	/* l1tcm is an optional memory region */
-> +	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "l1tcm");
-> +	scp_cluster->l1tcm_base = devm_ioremap_resource(dev, res);
-> +	if (IS_ERR(scp_cluster->l1tcm_base)) {
-> +		ret = PTR_ERR(scp_cluster->l1tcm_base);
-> +		if (ret != -EINVAL)
-> +			return dev_err_probe(dev, ret, "Failed to map l1tcm memory\n");
-> +
-> +		scp_cluster->l1tcm_base = NULL;
-> +	} else {
-> +		scp_cluster->l1tcm_size = resource_size(res);
-> +		scp_cluster->l1tcm_phys = res->start;
-> +	}
-> +
-> +	INIT_LIST_HEAD(&scp_cluster->mtk_scp_cluster);
-> +	platform_set_drvdata(pdev, scp_cluster);
-> +
-> +	ret = scp_cluster_init(pdev);
-> +	if (ret)
-> +		return ret;
-> +
-> +	return 0;
->  }
->  
->  static void scp_remove(struct platform_device *pdev)
->  {
-> -	struct mtk_scp *scp = platform_get_drvdata(pdev);
-> +	struct mtk_scp_of_cluster *scp_cluster = platform_get_drvdata(pdev);
-> +	struct mtk_scp *scp, *temp;
->  	int i;
->  
-> -	rproc_del(scp->rproc);
-> -	scp_remove_rpmsg_subdev(scp);
-> -	scp_ipi_unregister(scp, SCP_IPI_INIT);
-> -	scp_unmap_memory_region(scp);
-> -	for (i = 0; i < SCP_IPI_MAX; i++)
-> -		mutex_destroy(&scp->ipi_desc[i].lock);
-> -	mutex_destroy(&scp->send_lock);
-> +	list_for_each_entry_safe_reverse(scp, temp, &scp_cluster->mtk_scp_cluster, elem) {
-> +		list_del(&scp->elem);
-> +		rproc_del(scp->rproc);
-> +		scp_remove_rpmsg_subdev(scp);
-> +		scp_ipi_unregister(scp, SCP_IPI_INIT);
-> +		scp_unmap_memory_region(scp);
-> +		for (i = 0; i < SCP_IPI_MAX; i++)
-> +			mutex_destroy(&scp->ipi_desc[i].lock);
-> +		mutex_destroy(&scp->send_lock);
-> +	}
->  }
->  
->  static const struct mtk_scp_of_data mt8183_of_data = {
-> -- 
-> 2.18.0
+> net: phy: add possible interfaces
+> net: phy: marvell10g: fill in possible_interfaces
+> net: phy: bcm84881: fill in possible_interfaces
+> net: phylink: split out PHY validation from phylink_bringup_phy()
+> net: phylink: validate only used interfaces for c45 PHYs
 > 
+> Why only C45 PHYs again? Because the two PHY drivers that I've added
+> support for "possible_interfaces" to are both C45. There's no reason
+> we can't make that work for C22 PHYs as well.
+> 
+> We could probably make it work for C22 PHYs out of the box by setting
+> the appropriate bit for the supplied interface in "possible_interfaces"
+> inside phy_attach_direct() after the call to phy_init_hw() if
+> "possible_interfaces" is still empty, which means that if a PHY driver
+> isn't updated to setup "possible_interfaces" then we get basically
+> whatever interface mode we're attaching with there.
+> 
+> There may be a problem if phy_attach_direct() gets called with
+> PHY_INTERFACE_MODE_NA (which I believe is possible with DSA.)
+
+Maybe something like the below on top of those patches I've pointed
+to above? Note that this requires all MAC users of phylink to fill
+in the supported_interfaces bitmap. One of the other patches in my
+net-queue is:
+
+net: phylink: require supported_interfaces to be filled
+
+which comes before the above patches. I think that's a reasonable
+expectation today but needs testing and review of all users (esp.
+the DSA drivers.)
+
+diff --git a/drivers/net/phy/phylink.c b/drivers/net/phy/phylink.c
+index af070be717ec..1cfa101960b9 100644
+--- a/drivers/net/phy/phylink.c
++++ b/drivers/net/phy/phylink.c
+@@ -1787,8 +1787,26 @@ static int phylink_validate_phy(struct phylink *pl, struct phy_device *phy,
+ 	 */
+ 	state->rate_matching = phy_get_rate_matching(phy, state->interface);
+ 
+-	/* If this is a clause 22 PHY or is using rate matching, it only
+-	 * operates in a single mode.
++	/* If the PHY provides a bitmap of the interfaces it will be using,
++	 * use this to validate the PHY. This can be used for both clause 22
++	 * and clause 45 PHYs.
++	 */
++	if (!phy_interface_empty(phy->possible_interfaces)) {
++		/* Calculate the union of the interfaces the PHY supports in
++		 * its configured state, and the host's supported interfaces.
++		 * We never want an interface that isn't supported by the host.
++		 */
++		phy_interface_and(interfaces, phy->possible_interfaces,
++				  pl->config->supported_interfaces);
++
++		return phylink_validate_mask(pl, mode, supported, state,
++					     interfaces);
++	}
++
++	/* If the PHY doesn't provide it a bitmap of the interfaces it will
++	 * be using, or is a traditional clause 22 PHY driver that doesn't
++	 * set ->possible_interfaces, or if we're using rate matching, then
++	 * we're operating in a single mode.
+ 	 */
+ 	if (!phy->is_c45 || state->rate_matching != RATE_MATCH_NONE)
+ 		return phylink_validate(pl, mode, supported, state);
+@@ -1797,28 +1815,18 @@ static int phylink_validate_phy(struct phylink *pl, struct phy_device *phy,
+ 	 * modes according to the negotiated media speed. For example, the
+ 	 * interface may switch between 10GBASE-R, 5GBASE-R, 2500BASE-X and
+ 	 * SGMII.
++	 *
++	 * If we're operating in such a mode, but haven't been provided a
++	 * possible_interfaces bitmap, then we need to validate all possible
++	 * interfaces.
+ 	 */
+-
+-	/* Backwards compatibility for those MAC drivers that don't set
+-	 * their supported_interfaces, or PHY drivers that don't set
+-	 * their possible_interfaces.
+-	 */
+-	if (phy_interface_empty(phy->possible_interfaces) &&
++	if (phy->is_c45 &&
+ 	    state->interface != PHY_INTERFACE_MODE_RXAUI &&
+ 	    state->interface != PHY_INTERFACE_MODE_XAUI &&
+-	    state->interface != PHY_INTERFACE_MODE_USXGMII) {
++	    state->interface != PHY_INTERFACE_MODE_USXGMII)
+ 		state->interface = PHY_INTERFACE_MODE_NA;
+-		return phylink_validate(pl, mode, supported, state);
+-	}
+-
+-	/* Calculate the union of the interfaces the PHY supports in
+-	 * its configured state, and the host's supported interfaces.
+-	 * We never want an interface that isn't supported by the host.
+-	 */
+-	phy_interface_and(interfaces, phy->possible_interfaces,
+-			  pl->config->supported_interfaces);
+ 
+-	return phylink_validate_mask(pl, mode, supported, state, interfaces);
++	return phylink_validate(pl, mode, supported, state);
+ }
+ 
+ static int phylink_bringup_phy(struct phylink *pl, struct phy_device *phy,
+diff --git a/include/linux/phy.h b/include/linux/phy.h
+index 4e0db4a14f30..b54aa9e8c122 100644
+--- a/include/linux/phy.h
++++ b/include/linux/phy.h
+@@ -178,6 +178,11 @@ static inline bool phy_interface_empty(const unsigned long *intf)
+ 	return bitmap_empty(intf, PHY_INTERFACE_MODE_MAX);
+ }
+ 
++static inline unsigned int phy_interface_weight(const unsigned long *intf)
++{
++	return bitmap_weight(intf, PHY_INTERFACE_MODE_MAX);
++}
++
+ static inline void phy_interface_and(unsigned long *dst, const unsigned long *a,
+ 				     const unsigned long *b)
+ {
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
