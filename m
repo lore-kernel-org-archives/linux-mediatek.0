@@ -4,141 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF9D7C7EE22
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 May 2023 09:46:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34E68C77B7C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 May 2023 11:47:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+ny1Afea5R0LOsb4Ol/qv4DwWMag5LYnjc/55L4/zj0=; b=c4YdtWM6vfImNpmpV017bMLTjB
-	ZQaIdi3dASb5w9UMMZ5yHYECb1Dr7++jV99OuWrzHIVE1szlu1mSboLyjFOCrSgnX+ZwQP5rCCJdT
-	IhhMC6wVQ6a8qZZCBZUWIjybgPXS+tf90GyKmp9lSPqfknIg0+3IX/L8ACy3EGtKiggFZdv2KWGy/
-	iXUeQdk1AJzZUcKWr5gtSM9qep3I0bJXauEGwvIbx6+dwUyJvkV6NbIZx/s7CzfLd27ZjYJ88UqTu
-	oG99JZKb6AL7KGSPEcXhE5TpnNJPJdjxHiGqsWw21vZCdNqVvUMJba08wmpHlKKxZ3UnXnBHbO4Kj
-	7CmfYyTg==;
+	bh=QiI3YyVCMFXftJf0W5Ev9nEaPYQlV/GKDtAL3CGxoZc=; b=JSdl8ImvSTZWOHMLGBN2rC28iB
+	gU26b2IkhM1bMnW7kIF7RBpLHZz07qIU6JOBBssYSBdn+5+deZpZFf5y5/uJjA5DFGf7dnevspwX/
+	U95c3tJHaH+/4ew/4ye0YpwFj/SAnRKli+c8cq0ZxncK0PJytiQQSc6a53MBsPVslETNWz75MUfGG
+	lwZIQGlWvDnw7wgprUoQ4IsTnAH+tgPmAov4WnnldS8BZfgI1CpWCA+QMqTMqVY5g79wdqkJbF4f7
+	Awf0LncsFA2j4GvOpqF/clIDZPNhlSgeq++G2Wd++mP1qqpVu8UdXqqtl8+04q3KX18KUFzfRlxe+
+	teHVIpRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1px2sD-008NT5-1z;
-	Thu, 11 May 2023 09:46:09 +0000
-Received: from new4-smtp.messagingengine.com ([66.111.4.230])
+	id 1px4l2-008g0F-01;
+	Thu, 11 May 2023 11:46:52 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1px2s6-008NRM-0T;
-	Thu, 11 May 2023 09:46:07 +0000
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
-	by mailnew.nyi.internal (Postfix) with ESMTP id 1DB1658046F;
-	Thu, 11 May 2023 05:45:58 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
-  by compute2.internal (MEProxy); Thu, 11 May 2023 05:45:58 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
-	:cc:content-type:content-type:date:date:from:from:in-reply-to
-	:in-reply-to:message-id:mime-version:references:reply-to:sender
-	:subject:subject:to:to; s=fm2; t=1683798358; x=1683805558; bh=+n
-	y1Afea5R0LOsb4Ol/qv4DwWMag5LYnjc/55L4/zj0=; b=a0a1Rny1fJ4G40ROVP
-	p6PM59GR8lWf+QDz80KYNEFeugiu06rC7qXIkbxBgIPj+fnHgADOQ64y/5uCwHCp
-	ND9TQdCBKeHcr01DP6q2O1PoMPgeXBLAh0RjsUVJlH+ligR1m5ygaiHk1JYfr5/b
-	6A5rA9smFHn3zR+T7W1pjsKYaXutCZ8DcO5zlGPSNYCmACecxhzMW6Io20Sek8ia
-	5Hzy2ES3fW2PM/dVnjCcvBUBaB9XXPBFRdGU8oaYDIXugWL2u/m5RD1IGjAZgeDL
-	Ys6++ImgdON8U42Ak5RKwWzJ4l0j2C1g9pCsxZFAjQ4DGx6IcJuqHXLDNYHSyCh+
-	e5nA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:content-type:date:date
-	:feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
-	:x-sasl-enc; s=fm3; t=1683798358; x=1683805558; bh=+ny1Afea5R0LO
-	sb4Ol/qv4DwWMag5LYnjc/55L4/zj0=; b=LFY23qSKl94UZOFuJkhpGEQyasRby
-	gbLbyefMBRT4PHfaH6XkZ/rsSJL1fhXl5Re1rHJJnufX1e8Ff5yaTAa+0ed6d4uW
-	95KjZizvZWx73mJmN9B6v1Mpzz+DiGGQTF0ThlwvQKQdmYJeHGroCpTvaBoNOBnR
-	UFhpVmU7gsIXKI6OasqGZ7w6ABmjxxXCBndQbVZzgQYZZKfDFcW1tFpwP7AhA/+s
-	a0Rl4SZ8A0+rEwO3Vh54J0hTXP8yZSv9SrOrHu5bF687MQB2r6sYOMdpdiA1kwBS
-	KduLItK8Us0sRRMcA8oSZjbsBqo0MsVpsgbUdIlRPRygOcN7p0/FqdJxA==
-X-ME-Sender: <xms:VLlcZGJVw0ZFHGVEz1kscSfJdJJXnN-TSM-V95Ff4Ctlc9pjeMDCMg>
-    <xme:VLlcZOKCL5q-tMt6tcn0vAscmNATB7rYoM-EtfoSqE8SGtH_zNIhZ3jFqsl_K60In
-    yFrILW2iTk3ZVOiDEg>
-X-ME-Received: <xmr:VLlcZGseivHmMWqVb1OuVX_cXeveSNbIlR_VP_5mkZsAJgAWttluVtJrrjzLJIymBC740bbDgW8KvsJ-w-7GBg>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrfeegkedgvddtucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhepfffhvfevuffkfhggtggujgesghdtsfertddtvdenucfhrhhomhepofgrgihi
-    mhgvucftihhprghrugcuoehmrgigihhmvgestggvrhhnohdrthgvtghhqeenucggtffrrg
-    htthgvrhhnpeeuveduheeutdekvefgudevjeeufedvvdevhfejgfelgfdtkeevueegteek
-    gfelfeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
-    hmrgigihhmvgestggvrhhnohdrthgvtghh
-X-ME-Proxy: <xmx:VLlcZLaBqggMF920o1RrZkXQR5WlFDgcp9oqhhV5oKPXDaeCOHXlbg>
-    <xmx:VLlcZNaCLoXRnpwnUS4klYEv95-jdtjx1TnWjWgpXPJZ0nY-i1d61g>
-    <xmx:VLlcZHCViDDrk4Pz_ZQ6l_qK2lbm3BNWgwwXCSplVHHAxYXZRmYXgA>
-    <xmx:VrlcZIjbcbR6-ocUtg6G1yyfYRrVst63f1irq8-6dnFMlLckdA-lWg>
-Feedback-ID: i8771445c:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 11 May 2023 05:45:55 -0400 (EDT)
-Date: Thu, 11 May 2023 11:45:53 +0200
-From: Maxime Ripard <maxime@cerno.tech>
-To: Dinh Nguyen <dinguyen@kernel.org>
-Cc: Michael Turquette <mturquette@baylibre.com>,
- 	Stephen Boyd <sboyd@kernel.org>,
- Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>,
- 	Manivannan Sadhasivam <mani@kernel.org>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- 	Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Claudiu Beznea <claudiu.beznea@microchip.com>,
- 	Max Filippov <jcmvbkbc@gmail.com>,
- Charles Keepax <ckeepax@opensource.cirrus.com>,
- 	Richard Fitzgerald <rf@opensource.cirrus.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- 	Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- 	David Lechner <david@lechnology.com>, Sekhar Nori <nsekhar@ti.com>,
- Abel Vesa <abelvesa@kernel.org>, 	Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- 	Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, 	NXP Linux Team <linux-imx@nxp.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- 	Geert Uytterhoeven <geert+renesas@glider.be>,
- Peter De Schrijver <pdeschrijver@nvidia.com>,
- 	Prashant Gaikwad <pgaikwad@nvidia.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- 	Jonathan Hunter <jonathanh@nvidia.com>,
- Ulf Hansson <ulf.hansson@linaro.org>,
- 	Linus Walleij <linus.walleij@linaro.org>,
- David Airlie <airlied@gmail.com>, 	Daniel Vetter <daniel@ffwll.ch>,
- Vinod Koul <vkoul@kernel.org>,
- 	Kishon Vijay Abraham I <kishon@kernel.org>,
- Alessandro Zummo <a.zummo@towertech.it>, 	Chen-Yu Tsai <wens@csie.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- 	Samuel Holland <samuel@sholland.org>,
- Liam Girdwood <lgirdwood@gmail.com>, 	Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- 	Paul Cercueil <paul@crapouillou.net>, Orson Zhai <orsonzhai@gmail.com>,
- 	Baolin Wang <baolin.wang@linux.alibaba.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>, linux-clk@vger.kernel.org,
- 	linux-kernel@vger.kernel.org,
- 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-arm-kernel@lists.infradead.org, 	linux-actions@lists.infradead.org,
- patches@opensource.cirrus.com, 	linux-stm32@st-md-mailman.stormreply.com,
- linux-mediatek@lists.infradead.org, 	linux-renesas-soc@vger.kernel.org,
- linux-tegra@vger.kernel.org, dri-devel@lists.freedesktop.org,
- 	linux-phy@lists.infradead.org, linux-rtc@vger.kernel.org,
- linux-sunxi@lists.linux.dev, 	alsa-devel@alsa-project.org,
- linux-mips@vger.kernel.org
-Subject: Re: [PATCH v3 29/65] clk: socfpga: gate: Add a determine_rate hook
-Message-ID: <x4xc7kjkphbejmjj35ohlk6u33vshysr4jii4fmu7ogbzrk6zg@2dry3apxjhad>
-References: <20221018-clk-range-checks-fixes-v3-0-9a1358472d52@cerno.tech>
- <20221018-clk-range-checks-fixes-v3-29-9a1358472d52@cerno.tech>
- <679921ee-98d4-d6ef-5934-e009fd4b31fc@kernel.org>
- <sjlp5ubnpvulgwhhymmfkmmobkgxacyqwagqozodkee3di2qik@3igj6k3zgbk6>
- <57dd81d0-510e-0fab-670d-1109eb8dd974@kernel.org>
- <tgtfisqxubin4cjj6q26fboirbcnjzcazt5y3m322lw5lskz6l@d3tgz4hdfnk2>
- <1b766164-b5e8-61ac-bf73-6d2c49c72409@kernel.org>
+	id 1px4ky-008fzM-0G;
+	Thu, 11 May 2023 11:46:49 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1px4ks-0008OX-25;
+	Thu, 11 May 2023 11:46:42 +0000
+Date: Thu, 11 May 2023 13:44:48 +0200
+From: Daniel Golle <daniel@makrotopia.org>
+To: Heiner Kallweit <hkallweit1@gmail.com>
+Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Andrew Lunn <andrew@lunn.ch>, Russell King <linux@armlinux.org.uk>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH net-next 0/8] Improvements for RealTek 2.5G Ethernet PHYs
+Message-ID: <ZFzVMHCTMeiTB4T1@pidgin.makrotopia.org>
+References: <cover.1683756691.git.daniel@makrotopia.org>
+ <018df89a-c3d2-1bda-9966-7f06b24f87f2@gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="jwj5rc6xyemnxcyt"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1b766164-b5e8-61ac-bf73-6d2c49c72409@kernel.org>
+In-Reply-To: <018df89a-c3d2-1bda-9966-7f06b24f87f2@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230511_024602_643433_5E2C6D39 
-X-CRM114-Status: GOOD (  48.94  )
+X-CRM114-CacheID: sfid-20230511_044648_114755_08089E4E 
+X-CRM114-Status: GOOD (  14.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -153,155 +67,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, May 11, 2023 at 07:29:21AM +0200, Heiner Kallweit wrote:
+> On 11.05.2023 00:53, Daniel Golle wrote:
+> > Improve support for RealTek 2.5G Ethernet PHYs (RTL822x series).
+> > The PHYs can operate with Clause-22 and Clause-45 MDIO.
+> > [...]
+> 
+> Has this series been tested with RTL8125A/B to ensure that the internal
+> PHY use case still works?
 
---jwj5rc6xyemnxcyt
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+The series has been present in OpenWrt for a while now and initially
+contained a bug which broke the RTL8221 PCIe RealTek NICs. It has since been
+resolved and re-tested, and it seems all fine:
 
-Hi Dinh,
+https://github.com/openwrt/openwrt/commit/998b9731577dedc7747dcfa412e4543dabaaa131#r110201620
 
-On Tue, May 09, 2023 at 12:37:39PM -0500, Dinh Nguyen wrote:
-> Hi Maxime,
->=20
-> On 5/4/23 12:04, Maxime Ripard wrote:
-> > Hi Dinh,
-> >=20
-> > On Thu, Apr 27, 2023 at 02:09:48PM -0500, Dinh Nguyen wrote:
-> > > Hi Maxime,
-> > >=20
-> > > On 4/25/23 09:48, Maxime Ripard wrote:
-> > > > Hi Dinh,
-> > > >=20
-> > > > On Mon, Apr 24, 2023 at 01:32:28PM -0500, Dinh Nguyen wrote:
-> > > > > On 4/4/23 05:11, Maxime Ripard wrote:
-> > > > > > The SoCFGPA gate clock implements a mux with a set_parent hook,=
- but
-> > > > > > doesn't provide a determine_rate implementation.
-> > > > > >=20
-> > > > > > This is a bit odd, since set_parent() is there to, as its name =
-implies,
-> > > > > > change the parent of a clock. However, the most likely candidat=
-e to
-> > > > > > trigger that parent change is a call to clk_set_rate(), with
-> > > > > > determine_rate() figuring out which parent is the best suited f=
-or a
-> > > > > > given rate.
-> > > > > >=20
-> > > > > > The other trigger would be a call to clk_set_parent(), but it's=
- far less
-> > > > > > used, and it doesn't look like there's any obvious user for tha=
-t clock.
-> > > > > >=20
-> > > > > > So, the set_parent hook is effectively unused, possibly because=
- of an
-> > > > > > oversight. However, it could also be an explicit decision by the
-> > > > > > original author to avoid any reparenting but through an explici=
-t call to
-> > > > > > clk_set_parent().
-> > > > > >=20
-> > > > > > The latter case would be equivalent to setting the flag
-> > > > > > CLK_SET_RATE_NO_REPARENT, together with setting our determine_r=
-ate hook
-> > > > > > to __clk_mux_determine_rate(). Indeed, if no determine_rate
-> > > > > > implementation is provided, clk_round_rate() (through
-> > > > > > clk_core_round_rate_nolock()) will call itself on the parent if
-> > > > > > CLK_SET_RATE_PARENT is set, and will not change the clock rate
-> > > > > > otherwise. __clk_mux_determine_rate() has the exact same behavi=
-or when
-> > > > > > CLK_SET_RATE_NO_REPARENT is set.
-> > > > > >=20
-> > > > > > And if it was an oversight, then we are at least explicit about=
- our
-> > > > > > behavior now and it can be further refined down the line.
-> > > > > >=20
-> > > > > > Signed-off-by: Maxime Ripard <maxime@cerno.tech>
-> > > > > > ---
-> > > > > >     drivers/clk/socfpga/clk-gate.c | 3 ++-
-> > > > > >     1 file changed, 2 insertions(+), 1 deletion(-)
-> > > > > >=20
-> > > > > > diff --git a/drivers/clk/socfpga/clk-gate.c b/drivers/clk/socfp=
-ga/clk-gate.c
-> > > > > > index 32ccda960f28..cbba8462a09e 100644
-> > > > > > --- a/drivers/clk/socfpga/clk-gate.c
-> > > > > > +++ b/drivers/clk/socfpga/clk-gate.c
-> > > > > > @@ -110,6 +110,7 @@ static unsigned long socfpga_clk_recalc_rat=
-e(struct clk_hw *hwclk,
-> > > > > >     static struct clk_ops gateclk_ops =3D {
-> > > > > >     	.recalc_rate =3D socfpga_clk_recalc_rate,
-> > > > > > +	.determine_rate =3D __clk_mux_determine_rate,
-> > > > > >     	.get_parent =3D socfpga_clk_get_parent,
-> > > > > >     	.set_parent =3D socfpga_clk_set_parent,
-> > > > > >     };
-> > > > > > @@ -166,7 +167,7 @@ void __init socfpga_gate_init(struct device=
-_node *node)
-> > > > > >     	init.name =3D clk_name;
-> > > > > >     	init.ops =3D ops;
-> > > > > > -	init.flags =3D 0;
-> > > > > > +	init.flags =3D CLK_SET_RATE_NO_REPARENT;
-> > > > > >     	init.num_parents =3D of_clk_parent_fill(node, parent_name,=
- SOCFPGA_MAX_PARENTS);
-> > > > > >     	if (init.num_parents < 2) {
-> > > > > >=20
-> > > > >=20
-> > > > > This patch broke SoCFPGA boot serial port. The characters are man=
-gled.
-> > > >=20
-> > > > Do you have any other access to that board? If so, could you dump
-> > > > clk_summary in debugfs with and without that patch?
-> > > >=20
-> > >=20
-> > > That dump from the clk_summary are identical for both cases.
-> >=20
-> > Thanks for testing
-> >=20
-> > I'm a bit confused, there should be no difference in behaviour, and if
-> > there was any difference I would expect the clock tree to be somewhat
-> > different.
-> >=20
-> > Could you still paste the clk_summary (and dmesg) output? Which UART
-> > driver is being used?
-> >=20
-> > Also, is there a way for me to test it somehow?
-> >=20
->=20
-> Apologies, but there is a diff with/without this patch:
->=20
-> With patch:
-> <           l4_sp_clk                   3        3        0   100000000
-> 0     0  50000         ?
-> ---
-> Without patch:
-> >           l4_sp_clk                   4        4        0   100000000
-> 0     0  50000         ?
->=20
-> The enable/prepare count is 4 instead of 3 in the case of a working UART.
-> The debug uart is using the lp_sp_clk.
+I assume that quite some OpenWrt users may use RTL8125B PCIe NICs, but I
+have asked in the OpenWrt forum for testing results including this series:
 
-This is pretty weird, the enable count shouldn't change, really, we're
-only changing something in the rate rounding path... Is it using the
-snps,dw-apb-uart driver?
+https://forum.openwrt.org/t/nanopi-r6s-kernel-6-1-intergration/154677/3?u=daniel
 
-Nothing shows up in dmesg?
+As the r8169 driver is not using phylink and uses C22 to connect to the
+PHY the main difference which will affect these devices is that
+genphy_soft_reset will be called as a result of
+r8169_hw_phy_config->phy_init_hw->(phydrv).soft_reset
 
-> The Cyclone5 devkits are pretty cheap if you want to get one.
+Also note the r8169 driver always sets the interface mode to either
+PHY_INTERFACE_MODE_GMII or PHY_INTERFACE_MODE_MII in
+r8169_phy_connect() before calling phy_connect_direct(). While this is
+certainly not technically correct for the 2.5G NICs in the strict sense,
+it does have the desired effect that the newly introduced function
+rtl8221b_config_init() just returns without making any changes.
 
-Are you talking about the DE10-Nano? It seems out of stock everywhere in
-Europe :/
-
-Thanks!
-Maxime
-
---jwj5rc6xyemnxcyt
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZFy5UQAKCRDj7w1vZxhR
-xQIDAP4vmB3HyvWG6uvwLSOB1WMHUejwVKumXbB/B6a/fLmtBQEApiEQi3pLDYQt
-OaahdgfV4a9cmtvor4QvkqvX+jEBuwE=
-=ETpg
------END PGP SIGNATURE-----
-
---jwj5rc6xyemnxcyt--
 
