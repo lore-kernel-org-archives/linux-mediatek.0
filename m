@@ -4,63 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A45D8C7EE22
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 May 2023 00:41:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 556B0C77B7D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 May 2023 01:27:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+BN583I8JA4xBDBDJJI1YSRZLOSYl2nhQFCQHGlsJAI=; b=avv5beIn8M7b0FufwyX2WkTsJk
-	w35mWZnc9fMWCqQiKnk/mY6N9ZvDjaQf7Joe9N04GgqD83/lQC9ODxLQgNtj+VipVJ1M3rFuuEVCJ
-	XZv1LW72kuBs3lwDT421wHSzrn8EWZoA80EY3H+pH6ZZTudyU9hLwLrRUIGuouMxnrZ9Mtlvqm9hy
-	R4h29tA6/zfE2giVOQCOZa8i0ygJtTwfv99xmqZaaS8fFtnb6+gZblpwn3EpUnaXB6eMT56VSBe/v
-	ZuW6LNskoqmm9MuEsHnJefEhUrspc48kxabbPWl3bvFsu+uie4b7KpT/l2VR1digW/O1LTiU8ka/U
-	n9b+mFBA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nRiWGp52ftlfW8uMdyTbOyMwGQ0nyy4tXUjVPjkaNKI=; b=IcvjcE0Y9GZKWl8ZKtYlEI00+T
+	3SUbluviFZ1Tuv9I74SYCKHgAsrFYM/aAjJJndOuKTJdS2k98RhmiuIoXgAj7xikGv/e7XC/ZYYic
+	gLuJSY8yBp9rYD69CVLucuWqtPkDgP2816QXRwz4KfMOA2JqX75INTNw2Pq3Bpb010J0NrwOdi94o
+	agivM/ltF+dmHQVZSVTKoLdkU3jqkwE2qNTF8X7LyrYXJ8w9tJYnh/7ZNcIMkCGqNwKvULMBTDVKx
+	hjdptT+IiQhhuDakTJIMpBImL3t1VJmQdrMuE+Y/5PfAslj5kmrzr6FpJbpHtUvH3ZBRQA3mOLwqm
+	cZc1PYUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwuMp-007Lx6-1m;
-	Thu, 11 May 2023 00:41:11 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwuMm-007LwP-2o;
-	Thu, 11 May 2023 00:41:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=+BN583I8JA4xBDBDJJI1YSRZLOSYl2nhQFCQHGlsJAI=; b=JZxiQgB1wWSDGgPLYsTFeGKp7M
-	VJUbiRuk9Y0L8mqpqggvAjEvMLn60zg+dr0DcvbXivxzjVz6Uz+FhbqLwyvGH0Ko0yyC+nj+W7xCV
-	H9Kw4K7dDw8kpaB70FIQ/8sKWCgOa6OSByL6mFuM0ZcGc7em+7ceYprAZjRZ+EaWehPk=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1pwuMl-00CUvb-3c; Thu, 11 May 2023 02:41:07 +0200
-Date: Thu, 11 May 2023 02:41:07 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH 1/8] net: phy: realtek: rtl8221: allow to configure
- SERDES mode
-Message-ID: <81c3f04d-ec48-4ac0-ac16-b69dc6ae72e0@lunn.ch>
-References: <cover.1683756691.git.daniel@makrotopia.org>
- <302d982c5550f10d589735fc2e46cf27386c39f4.1683756691.git.daniel@makrotopia.org>
+	id 1pwv5f-007RC8-0e;
+	Thu, 11 May 2023 01:27:31 +0000
+Received: from m12.mail.163.com ([220.181.12.215])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1pwv5c-007RAc-0k;
+	Thu, 11 May 2023 01:27:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Date:From:Subject:Message-ID:MIME-Version:
+	Content-Type; bh=nRiWGp52ftlfW8uMdyTbOyMwGQ0nyy4tXUjVPjkaNKI=;
+	b=hxGfT+r8XUR/NfkrPRyXguLG2DBK40+RZFu3yZo2C9G6gU+DvfQgm39lFz1e9q
+	SHbXTwgdRFKik8Idjh4KrpqAlyBOCTNxcgSOLDUlC1SzGxhkyYOQpuQ8i1fowEhN
+	4hLEF5UtDYiKGUkLdQgSrQHNOu0HhezXC6Y7sLuHocEGQ=
+Received: from haoge-QiTianM428-A376 (unknown [116.128.244.169])
+	by zwqz-smtp-mta-g3-2 (Coremail) with SMTP id _____wCnVuNfRFxk2VIuBg--.37991S2;
+	Thu, 11 May 2023 09:26:55 +0800 (CST)
+Date: Thu, 11 May 2023 09:26:54 +0800
+From: Hao Ge <gehao618@163.com>
+To: Stephen Boyd <sboyd@kernel.org>
+Cc: Hao Ge <gehao@kylinos.cn>, angelogioacchino.delregno@collabora.com,
+ matthias.bgg@gmail.com, mturquette@baylibre.com, wenst@chromium.org,
+ linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] mediatek/clk-mt8173-apmixedsys: use devm_of_iomap to
+ avoid resource leak in clk_mt8173_apmixed_probe
+Message-ID: <20230511092654.6d8fab41@haoge-QiTianM428-A376>
+In-Reply-To: <b35458250af972d95c708792633c9a58.sboyd@kernel.org>
+References: <20230509021214.17105-1-gehao@kylinos.cn>
+	<b35458250af972d95c708792633c9a58.sboyd@kernel.org>
+Organization: 123
+X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <302d982c5550f10d589735fc2e46cf27386c39f4.1683756691.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-CM-TRANSID: _____wCnVuNfRFxk2VIuBg--.37991S2
+X-Coremail-Antispam: 1Uf129KBjvdXoW7JrWxAF4kWF17tr4ruw1UAwb_yoW3Grc_ua
+	1ku3Z7uw4UZFs7GwsIkr9Fk342y3s8Wr98tF95Za4fta9IgryavFW8C3y3ArZ8Wa48Kr98
+	Ga9Yga1kZF1SkjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IUU3xhJUUUUU==
+X-Originating-IP: [116.128.244.169]
+X-CM-SenderInfo: 5jhkt0qwryqiywtou0bp/xtbBaQRsFlXlz21ORwAAsM
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230510_174108_912863_70E8E36F 
-X-CRM114-Status: UNSURE (   8.24  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230510_182728_641618_65978FD3 
+X-CRM114-Status: GOOD (  11.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,29 +77,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> +#define RTL8221B_MMD_SERDES_CTRL		MDIO_MMD_VEND1
-> +#define RTL8221B_MMD_PHY_CTRL			MDIO_MMD_VEND2
+On Wed, 10 May 2023 14:18:08 -0700
+Stephen Boyd <sboyd@kernel.org> wrote:
 
-I suggest you don't do this. Use MDIO_MMD_VEND[1|2] to make it clear
-these are vendor registers.
+> Quoting Hao Ge (2023-05-08 19:12:14)
+> > Use devm_platform_ioremap_resource to take the place of of_iomap for
+> > avoid that we don't called iounmap when return some error or remove
+> > device.
+> > 
+> > Fixes: 4c02c9af3cb9 ("clk: mediatek: mt8173: Break down clock
+> > drivers and allow module build") Signed-off-by: Hao Ge
+> > <gehao@kylinos.cn> ---  
+> 
+> Is this v3?
+Hi Stephen
 
-> +	case RTL8221B_SERDES_OPTION_MODE_2500BASEX_SGMII:
-> +	case RTL8221B_SERDES_OPTION_MODE_2500BASEX:
-> +		phy_write_mmd(phydev, RTL8221B_MMD_SERDES_CTRL, 0x6a04, 0x0503);
-> +		phy_write_mmd(phydev, RTL8221B_MMD_SERDES_CTRL, 0x6f10, 0xd455);
-> +		phy_write_mmd(phydev, RTL8221B_MMD_SERDES_CTRL, 0x6f11, 0x8020);
-> +		break;
-> +	case RTL8221B_SERDES_OPTION_MODE_HISGMII_SGMII:
-> +	case RTL8221B_SERDES_OPTION_MODE_HISGMII:
-> +		phy_write_mmd(phydev, RTL8221B_MMD_SERDES_CTRL, 0x6a04, 0x0503);
-> +		phy_write_mmd(phydev, RTL8221B_MMD_SERDES_CTRL, 0x6f10, 0xd433);
-> +		phy_write_mmd(phydev, RTL8221B_MMD_SERDES_CTRL, 0x6f11, 0x8020);
-> +		break;
-> +	}
+yes,Perhaps you are too busy,I have not received a response
+in the future, so you are unsure about the status of V2.
+So I adjusted the code and title make changes smaller and
+sent V3 for it.It is precisely because of these that I did 
+not continue the original mail thread.
 
-Is there anything in the datasheet to indicate register names and what
-the values mean? It would be good to replace these magic values with
-#defines.
+Best regards
+Hao
 
-	Andrew
+
 
