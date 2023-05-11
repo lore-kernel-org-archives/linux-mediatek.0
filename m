@@ -4,65 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 556B0C77B7D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 May 2023 01:27:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD7E1C7EE22
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 May 2023 05:29:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nRiWGp52ftlfW8uMdyTbOyMwGQ0nyy4tXUjVPjkaNKI=; b=IcvjcE0Y9GZKWl8ZKtYlEI00+T
-	3SUbluviFZ1Tuv9I74SYCKHgAsrFYM/aAjJJndOuKTJdS2k98RhmiuIoXgAj7xikGv/e7XC/ZYYic
-	gLuJSY8yBp9rYD69CVLucuWqtPkDgP2816QXRwz4KfMOA2JqX75INTNw2Pq3Bpb010J0NrwOdi94o
-	agivM/ltF+dmHQVZSVTKoLdkU3jqkwE2qNTF8X7LyrYXJ8w9tJYnh/7ZNcIMkCGqNwKvULMBTDVKx
-	hjdptT+IiQhhuDakTJIMpBImL3t1VJmQdrMuE+Y/5PfAslj5kmrzr6FpJbpHtUvH3ZBRQA3mOLwqm
-	cZc1PYUw==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=y4x62um4Cta2MQq5bfpbv18O8tiAYzIjxL+XVu9krq4=; b=2IcldVRqyUAM2+YGIA2oXmguJm
+	ET1Zs+orSot5wf0sFIl6YstyD9Rfhzwla+iquGj5wfneQXCtX58yyQ37HojECmWUP9ACsdjnqR8Mq
+	+UlOPtXwkSGY/D34D9rVf5VjehHG103lyxBjrrYJ7A5oRJ5og9Zmzu4ArcNSP0JtZ/nCUWYBY6AYv
+	YJsG0N5Ggp1FZ1elr1VrpLl4AWGrCr39Rsq9+XZX4UhOxmGzQZz0GJw6S5/QyPVq6d8lfouW5pGgK
+	O0B3gXLKtzRvE9DbLr1xoAz4fU6qdbzV7IOJkJCDkG5Bi2Hlkc5bBQ3g5WqXf8D/RyofugQS1YfNV
+	7ufOUdlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwv5f-007RC8-0e;
-	Thu, 11 May 2023 01:27:31 +0000
-Received: from m12.mail.163.com ([220.181.12.215])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwv5c-007RAc-0k;
-	Thu, 11 May 2023 01:27:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Message-ID:MIME-Version:
-	Content-Type; bh=nRiWGp52ftlfW8uMdyTbOyMwGQ0nyy4tXUjVPjkaNKI=;
-	b=hxGfT+r8XUR/NfkrPRyXguLG2DBK40+RZFu3yZo2C9G6gU+DvfQgm39lFz1e9q
-	SHbXTwgdRFKik8Idjh4KrpqAlyBOCTNxcgSOLDUlC1SzGxhkyYOQpuQ8i1fowEhN
-	4hLEF5UtDYiKGUkLdQgSrQHNOu0HhezXC6Y7sLuHocEGQ=
-Received: from haoge-QiTianM428-A376 (unknown [116.128.244.169])
-	by zwqz-smtp-mta-g3-2 (Coremail) with SMTP id _____wCnVuNfRFxk2VIuBg--.37991S2;
-	Thu, 11 May 2023 09:26:55 +0800 (CST)
-Date: Thu, 11 May 2023 09:26:54 +0800
-From: Hao Ge <gehao618@163.com>
-To: Stephen Boyd <sboyd@kernel.org>
-Cc: Hao Ge <gehao@kylinos.cn>, angelogioacchino.delregno@collabora.com,
- matthias.bgg@gmail.com, mturquette@baylibre.com, wenst@chromium.org,
- linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] mediatek/clk-mt8173-apmixedsys: use devm_of_iomap to
- avoid resource leak in clk_mt8173_apmixed_probe
-Message-ID: <20230511092654.6d8fab41@haoge-QiTianM428-A376>
-In-Reply-To: <b35458250af972d95c708792633c9a58.sboyd@kernel.org>
-References: <20230509021214.17105-1-gehao@kylinos.cn>
-	<b35458250af972d95c708792633c9a58.sboyd@kernel.org>
-Organization: 123
-X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
+	id 1pwyrq-007t7j-0x;
+	Thu, 11 May 2023 05:29:30 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pwyrn-007t76-1H;
+	Thu, 11 May 2023 05:29:28 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-965ddb2093bso1138340766b.2;
+        Wed, 10 May 2023 22:29:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1683782965; x=1686374965;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:to:subject:user-agent:mime-version:date:message-id:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=y4x62um4Cta2MQq5bfpbv18O8tiAYzIjxL+XVu9krq4=;
+        b=BqiVoaul5DML2AqPp+E7WU7ceWXoBHlpyTtNNIMKY0tZejHwgMHdmHVlp18lYeBX51
+         KBZe5HxHrPy9UKGdt4UWv+n2tne9YlLrDJ5C6p95YeUtbLvugYgkp40MY+0s+JDC3wE/
+         OvdwXJXCdPW9gwlBDIZ3TVVT8uCjLFaNLCzTtloaMWliMO9hACDK++fZU3+5zpVlfjwm
+         QjZJtM3YPmpfMooM/Vu0VGelf9K6FaGDUvH/FFLodarhpj2TnnapceAplCOv0F2SpmE5
+         GPz2i+zVGpP1mX4JJkZCQb2cFA0G22BhmFrbYijzyxVy9IOnoR7kQxHYrmJBo1z6pLEq
+         QYqg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1683782965; x=1686374965;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=y4x62um4Cta2MQq5bfpbv18O8tiAYzIjxL+XVu9krq4=;
+        b=HQsGoTtliMjkeZMtOPyMWvZZsphmWrNInhNI/fdKvaV8PEK/nZQNDVtnZJ3G03joRe
+         d6UlNCK1z1UcP7ZpVMXNpHpgPCHrony4EK4nhXkbAFz6xMjspGZDX3UFkJeZpnvrbQ1y
+         HXZFP2fqGawGVwSrE37/0ocYq1vIGaQYhvzzfMjVOQ9Q7tm9Ppfa9eNmhRICbCM64rlz
+         HyAUH5pFbetn142vitXnFe+YrJniK3oGGqIwU9RquLt8hNtD3W5BQVl1dNPWkaljfh4P
+         baACoiby0vDhwLtVBYyThSR9HXXmrtV7NcyvO0pa8m9oyqpxuVnf+bY8ggiZEaUXGXv1
+         Rmqw==
+X-Gm-Message-State: AC+VfDxwp3W+oH9EOL3kpdAMnMpoEHK66Sd7hkHs5ZZLRiCufAaQsdCI
+	XZXus3fhhr28GrpUlDm643I=
+X-Google-Smtp-Source: ACHHUZ7vvF+qW3TK0cuJqLdLw9Uk4jrATGpY2Ush2Z+Cvi9O0kUzQSGq/YHYtzqKPLGW6ubNDQbOlA==
+X-Received: by 2002:a17:907:2684:b0:94e:75f8:668 with SMTP id bn4-20020a170907268400b0094e75f80668mr16593122ejc.56.1683782964468;
+        Wed, 10 May 2023 22:29:24 -0700 (PDT)
+Received: from ?IPV6:2a01:c23:c58e:b900:6079:61ec:4537:dead? (dynamic-2a01-0c23-c58e-b900-6079-61ec-4537-dead.c23.pool.telefonica.de. [2a01:c23:c58e:b900:6079:61ec:4537:dead])
+        by smtp.googlemail.com with ESMTPSA id 13-20020a170906328d00b00969f44bbef1sm2875122ejw.89.2023.05.10.22.29.23
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 10 May 2023 22:29:24 -0700 (PDT)
+Message-ID: <018df89a-c3d2-1bda-9966-7f06b24f87f2@gmail.com>
+Date: Thu, 11 May 2023 07:29:21 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH net-next 0/8] Improvements for RealTek 2.5G Ethernet PHYs
+To: Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Andrew Lunn <andrew@lunn.ch>,
+ Russell King <linux@armlinux.org.uk>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+References: <cover.1683756691.git.daniel@makrotopia.org>
+Content-Language: en-US
+From: Heiner Kallweit <hkallweit1@gmail.com>
+In-Reply-To: <cover.1683756691.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-CM-TRANSID: _____wCnVuNfRFxk2VIuBg--.37991S2
-X-Coremail-Antispam: 1Uf129KBjvdXoW7JrWxAF4kWF17tr4ruw1UAwb_yoW3Grc_ua
-	1ku3Z7uw4UZFs7GwsIkr9Fk342y3s8Wr98tF95Za4fta9IgryavFW8C3y3ArZ8Wa48Kr98
-	Ga9Yga1kZF1SkjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IUU3xhJUUUUU==
-X-Originating-IP: [116.128.244.169]
-X-CM-SenderInfo: 5jhkt0qwryqiywtou0bp/xtbBaQRsFlXlz21ORwAAsM
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230510_182728_641618_65978FD3 
-X-CRM114-Status: GOOD (  11.68  )
+X-CRM114-CacheID: sfid-20230510_222927_440610_CE96671D 
+X-CRM114-Status: GOOD (  19.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,29 +97,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 10 May 2023 14:18:08 -0700
-Stephen Boyd <sboyd@kernel.org> wrote:
-
-> Quoting Hao Ge (2023-05-08 19:12:14)
-> > Use devm_platform_ioremap_resource to take the place of of_iomap for
-> > avoid that we don't called iounmap when return some error or remove
-> > device.
-> > 
-> > Fixes: 4c02c9af3cb9 ("clk: mediatek: mt8173: Break down clock
-> > drivers and allow module build") Signed-off-by: Hao Ge
-> > <gehao@kylinos.cn> ---  
+On 11.05.2023 00:53, Daniel Golle wrote:
+> Improve support for RealTek 2.5G Ethernet PHYs (RTL822x series).
+> The PHYs can operate with Clause-22 and Clause-45 MDIO.
 > 
-> Is this v3?
-Hi Stephen
+> When using Clause-45 it is desireable to avoid rate-adapter mode and
+> rather have the MAC interface mode follow the PHY speed. The PHYs
+> support 2500Base-X for 2500M, and Cisco SGMII for 1000M/100M/10M.
+> 
+> Also prepare support for proprietary RealTek HiSGMII mode which will
+> be needed for situations when used with RealTek switch or router SoCs
+> such as RTL839x or RTL93xx.
+> 
+> Add support for Link Down Power Saving Mode (ALDPS) which is already
+> supported for older RTL821x series 1GbE PHYs.
+> 
+> Make sure that link-partner advertised modes are only used if the
+> advertisement can be considered valid. Otherwise we are seeing
+> false-positives warning about downscaling eventhough higher speeds
+> are not actually advertised by the link partner.
+> 
+> While at it, use helper function for paged operation and make sure
+> to use use locking for that as well.
+> 
+> Changes since RFC:
+>  * Turns out paged read used to identify the PHY needs to be hardcoded
+>    for the simple reason that the function pointers for paged operations
+>    have not yet been populated at this point. Hence keep open-coding it,
+>    but use helper function and make sure it happening while the MDIO bus
+>    mutex is locked.
+> 
+> Alexander Couzens (1):
+>   net: phy: realtek: rtl8221: allow to configure SERDES mode
+> 
+> Chukun Pan (1):
+>   net: phy: realtek: switch interface mode for RTL822x series
+> 
+> Daniel Golle (6):
+>   net: phy: realtek: use genphy_soft_reset for 2.5G PHYs
+>   net: phy: realtek: disable SGMII in-band AN for 2.5G PHYs
+>   net: phy: realtek: make sure paged read is protected by mutex
+>   net: phy: realtek: use inline functions for 10GbE advertisement
+>   net: phy: realtek: check validity of 10GbE link-partner advertisement
+>   net: phy: realtek: setup ALDPS on RTL8221B
+> 
+>  drivers/net/phy/realtek.c | 161 ++++++++++++++++++++++++++++++++------
+>  1 file changed, 138 insertions(+), 23 deletions(-)
+> 
 
-yes,Perhaps you are too busy,I have not received a response
-in the future, so you are unsure about the status of V2.
-So I adjusted the code and title make changes smaller and
-sent V3 for it.It is precisely because of these that I did 
-not continue the original mail thread.
-
-Best regards
-Hao
-
+Has this series been tested with RTL8125A/B to ensure that the internal
+PHY use case still works?
 
 
