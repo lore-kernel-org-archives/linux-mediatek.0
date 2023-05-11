@@ -4,60 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90B6AC77B7F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 May 2023 22:37:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5393C77B7F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 May 2023 22:38:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
-	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+D78NZFIyG9cTjRHg49tXEf4K+BxuWLjB0MhRWS4xmE=; b=v/f9J2H52W/LvPWgo5IjT6xh+M
-	/5p713nUh2/estiRm1XCmLbkycHsc0h91ObZTN4XWeTaeAUCPGiDZzu+YfqQn9KVjtRoq09TWexVx
-	bRrKaGeDn3IORZ2zUiFgEJWoNc8VJagRz9aYWfqXe+HV1KOr4OYyKGrekF9ebpEz0SiVHzDSCAYsX
-	f5efCdBf5oBxW4WqK1nb/zROc2261c2DVpA3d6LWpikscTySXd6jJv+Y1YYVHxd7nF0fYcbGzlatV
-	ybsXBnsYAz/EPyWByOuXuFQuodwk7g3zb53gVjHNLukmB4b1gueRrtAlJ2UgmXVkbROADkjkjgjxe
-	rECYxiIA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eb3sWwf5IKoZQzOvkPaaI1IVQ2HjKkCnRKRFnGOH6+c=; b=BPBPsQ17Zf8GFhrPPFPnZpV+rT
+	PMTwyMRgtw9zZz5lHSf62ADShi1oMtiS10v4ABWhvcycr7kqulycatbsYhXq05jxDVq19mbCEYESt
+	P8LID3tweQe58UHcbrYNs/IxCvBETdj9Pk2KVdkmc1TklDrepHMJVwrcThERvDfutzWfDTnKtFkV5
+	JN6N5yqrKNkjFZLlvw5gGhz1MhfxqLJGMHEOdsgdDgl0T1f5ekUlmKthR1jEZN67VGzwaMMVsaIKv
+	GrKWuBYY1zIba8STnGLu+GomLu8eLZsT245fTIxhaY0L2fvVZoONUiAWbah8IPobNdlEd06f4Ke09
+	b5H0zRrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxEv1-00ACsV-2t;
-	Thu, 11 May 2023 22:37:51 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pxEvH-00ACyr-19;
+	Thu, 11 May 2023 22:38:07 +0000
+Received: from mail-il1-x134.google.com ([2607:f8b0:4864:20::134])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxEuz-00ACrQ-0m;
-	Thu, 11 May 2023 22:37:50 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 619E565228;
-	Thu, 11 May 2023 22:37:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BADDCC433D2;
-	Thu, 11 May 2023 22:37:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1683844667;
-	bh=+D78NZFIyG9cTjRHg49tXEf4K+BxuWLjB0MhRWS4xmE=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=LNceuXEs3YJ/BM9/ZeKGTCnwt2V1n/VFVwM1GOOT+pRx8Jf9wscrAqwTj/yh81exC
-	 CVFH98y0ClXaApMBqZbmjlRBCp2+5t/v2WkkmpzCWUyz41EMcg4UwyrGN/uXf4H+Tf
-	 3+1eKv65w6Fc4cSVaR+DMFgduf3ELmaNoULr49Svan9i2eUIsMVZgj3WygJnpEjNfp
-	 PCia0Bv0Qpej5ElOPrj0wAcf2OM+Dtu7CMf+3ZPLv7kgVlNWE9qkCIZUZyHkljWprr
-	 fsJN6fecyaRUyKevsnMySmDkh3zyfTUxDrJbCGt5ZwvIizy0bk3IFCk7DY/uBKkntu
-	 E7rb0olHklYXQ==
-Message-ID: <ead66129a75a558badf81b07955b7cec.sboyd@kernel.org>
-Content-Type: text/plain; charset="utf-8"
+	id 1pxEvE-00ACwx-34
+	for linux-mediatek@lists.infradead.org;
+	Thu, 11 May 2023 22:38:06 +0000
+Received: by mail-il1-x134.google.com with SMTP id e9e14a558f8ab-33164ec77ccso615615ab.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 11 May 2023 15:38:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1683844682; x=1686436682;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=eb3sWwf5IKoZQzOvkPaaI1IVQ2HjKkCnRKRFnGOH6+c=;
+        b=YB4CXa+7IiugZFWW89TQYuVh4HnN1R5IuqF1PWtOFnF45ocw8Zs5UZ19l2DrlhDrL+
+         T91s7cNeQp8tLalUmv3BhabCypP9bH6PNCWWysJtJxUfK51iS+unG76XmPRzg+WR9sQw
+         +tTzIYC62rYbOgdKq1mzzYyCN9NntV0GOt2BU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1683844682; x=1686436682;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=eb3sWwf5IKoZQzOvkPaaI1IVQ2HjKkCnRKRFnGOH6+c=;
+        b=kYOS/VbgQTDSxjBCqbN94w8jF+0ujNQxtVAvKQ1GFYQiWpJvti91uBJgRLyq0p5kEk
+         WyEwlIjUpPpv2zoyHNwpOeVmdAsZ9YMcpqw6UDo4bn/ZISrAvouwDpLkjTuug+M9kU86
+         4Ea3BPPRvjT5TGKnPEek7cDREKgCdcU//RnjGCmkQ88Ar7Ea/agsIbF4y0ikYb7kdXxe
+         Lpqn+1ef0Zh7B7bhEt7mScRAb/BLHllhuZrbwT4d5E3KKSLWUcvJdxZYfRfhkW+VcsZk
+         w+eLylF3UdTgyQWOOwcVccIrx7iFxk9ss+Xabrn/ERSZKfe9SCpInYEZz22/J/6g9cQp
+         sHSQ==
+X-Gm-Message-State: AC+VfDw0AIEr+qLHqEBMBlNmno/JFojoog01saFCEGP1TdXzk0wS3aqV
+	Ium/XYOWU3ccA1wSMSt+IaDcksjQJ2I9fE/C/i7kzQ==
+X-Google-Smtp-Source: ACHHUZ5aB1JvuSw560zhv65bAiwvIZNHMbaJ3VG5IwoL/nVaGBX1hJ51wet8Wz05aOV+TMIKI+1jpET5bN3nE0PPhMc=
+X-Received: by 2002:a05:6e02:1ba6:b0:331:4d3c:db55 with SMTP id
+ n6-20020a056e021ba600b003314d3cdb55mr122778ili.4.1683844682395; Thu, 11 May
+ 2023 15:38:02 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20230511092654.6d8fab41@haoge-QiTianM428-A376>
-References: <20230509021214.17105-1-gehao@kylinos.cn> <b35458250af972d95c708792633c9a58.sboyd@kernel.org> <20230511092654.6d8fab41@haoge-QiTianM428-A376>
-Subject: Re: [PATCH] mediatek/clk-mt8173-apmixedsys: use devm_of_iomap to avoid resource leak in clk_mt8173_apmixed_probe
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: Hao Ge <gehao@kylinos.cn>, angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com, mturquette@baylibre.com, wenst@chromium.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-To: Hao Ge <gehao618@163.com>
-Date: Thu, 11 May 2023 15:37:45 -0700
-User-Agent: alot/0.10
+References: <20230511150539.6.Ia0b6ebbaa351e3cd67e201355b9ae67783c7d718@changeid>
+ <20230511150539.1.Iabe67a827e206496efec6beb5616d5a3b99c1e65@changeid>
+In-Reply-To: <20230511150539.1.Iabe67a827e206496efec6beb5616d5a3b99c1e65@changeid>
+From: Julius Werner <jwerner@chromium.org>
+Date: Thu, 11 May 2023 15:37:50 -0700
+Message-ID: <CAODwPW8TqhArafCK3RvBdxyiav3WL=0MU6x=QyBOFP-h8bQrWw@mail.gmail.com>
+Subject: Re: [PATCH 1/6] dt-bindings: interrupt-controller: arm,gic-v3: Add
+ quirk for Mediatek SoCs w/ broken FW
+To: Douglas Anderson <dianders@chromium.org>
+Cc: Marc Zyngier <maz@kernel.org>, Thomas Gleixner <tglx@linutronix.de>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, wenst@chromium.org, 
+	Eddie Huang <eddie.huang@mediatek.com>, Allen-KH Cheng <allen-kh.cheng@mediatek.com>, 
+	Ben Ho <Ben.Ho@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	linux-arm-kernel@lists.infradead.org, 
+	Tinghan Shen <tinghan.shen@mediatek.com>, jwerner@chromium.org, 
+	Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, yidilin@chromium.org, 
+	Seiya Wang <seiya.wang@mediatek.com>, Conor Dooley <conor+dt@kernel.org>, 
+	linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230511_153749_344878_5C695FEC 
-X-CRM114-Status: GOOD (  17.00  )
+X-CRM114-CacheID: sfid-20230511_153805_017669_15B0A854 
+X-CRM114-Status: UNSURE (   4.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,28 +96,5 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Hao Ge (2023-05-10 18:26:54)
-> On Wed, 10 May 2023 14:18:08 -0700
-> Stephen Boyd <sboyd@kernel.org> wrote:
->=20
-> > Quoting Hao Ge (2023-05-08 19:12:14)
-> > > Use devm_platform_ioremap_resource to take the place of of_iomap for
-> > > avoid that we don't called iounmap when return some error or remove
-> > > device.
-> > >=20
-> > > Fixes: 4c02c9af3cb9 ("clk: mediatek: mt8173: Break down clock
-> > > drivers and allow module build") Signed-off-by: Hao Ge
-> > > <gehao@kylinos.cn> --- =20
-> >=20
-> > Is this v3?
-> Hi Stephen
->=20
-> yes,Perhaps you are too busy,I have not received a response
-> in the future, so you are unsure about the status of V2.
-> So I adjusted the code and title make changes smaller and
-> sent V3 for it.It is precisely because of these that I did=20
-> not continue the original mail thread.
->=20
-
-I'm waiting for the usual mediatek clk driver folks to review the patch.
+Reviewed-by: Julius Werner <jwerner@chromium.org>
 
