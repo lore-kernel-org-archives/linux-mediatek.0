@@ -4,106 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BBBBC7EE2D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 May 2023 17:31:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3ADD2C77B7F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 May 2023 17:33:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SLhdu44KB7JCNcriYN3C59veyYS4YEcrtDZyawBPTZ8=; b=LaHk3O+4fazE1e/o8HitFfBT7n
-	EFOee0YDji8GxUB2Yx/Vcfsx30L/fEwtjhTf9QJymzI8K/hYS8Q19QcecDWZn0ymxMzf5f6w6Uzs7
-	8Z9Z7ajdmdVpLvU/OXnrG+NkVqUGf/NCWQoKFNpWlLzTYzzXNWoA7j6SET0SlC56iwCBMYhy5iql4
-	XxYQ92Z1vumEamljljQ+TQdKZcG8BQIWR6k8N1zCI1NtWU6RWc207oth0bF+OlXXs+M60UxQwftQt
-	AwYGWqwUOtGaHXrbWIMiiirODOpxtmiMISgyb/7RcQtd4212I/i9Wwh+pz6SVxJgJSRyRGqY5ISbf
-	WKnIqZbA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+3MeGD4e+zpTZm4qDwhrhx/AMIAONPMrTTkRjCrQwwA=; b=s5UVYU0xbItq6E61vtQEyER7UH
+	43puaztVY0D3z3gfFxI/iQANtlwmT3KpiAoUDajaMeWHTF/mZ5tqJzYPtCOtzjvSYl3GyMf0T+Av/
+	YFrlJ0F/sEw4ssNFM2Ts/IG/3SrBhpWf7LJgpWybMrm465JgCf4h4UQK/9JOCYit0boBqzd4iRO1l
+	twsT8EjvSiILBLyUBxnW1t7u/FK+IyYh/6CC0Bn5/qGabczzlJNfDslKo44zVSHo1P0qgT5JM3oly
+	xwHXOkOb3gOod+sYjrQcYKHRXjVskqDsDzsFqI0mC0VSxsXAqiJFOuXTITECrmGZx0iYZnL504U6O
+	spWNhg9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxA8H-009Yab-2R;
-	Thu, 11 May 2023 17:31:13 +0000
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+	id 1pxAAA-009ZBA-2C;
+	Thu, 11 May 2023 17:33:10 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1px9B9-009Mid-2Z
-	for linux-mediatek@lists.infradead.org;
-	Thu, 11 May 2023 16:30:09 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-9659c5b14d8so1457431466b.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 11 May 2023 09:30:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1683822604; x=1686414604;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=SLhdu44KB7JCNcriYN3C59veyYS4YEcrtDZyawBPTZ8=;
-        b=eGG0vt6GsZ4vtjI6n5O6zVPpz2GhaCeMURTTuToDRCnmgDnEkDwc6DJqthMllL32CK
-         HAXHAbFi02N7c7Y0yhmdUKpf0x0t5KXdaEFcyO+r8w0jyLYNxz4Gppyd8CAMWUldlbTE
-         /PZkGNC4BqRjcVWyXyNUxe6mU5I1S2B89KfIZBt22QkqmHfDpzWT56VfDYdmdmLluHv3
-         RiQPtHioAasxuAufCTg5HZejysm7enNE8oEx6hTs6zQ9hHMLL8+IsJFgGk5ntgVcpNEX
-         Xw5PFcEU9O9B20puA2BOgKUmxUHwgPntf1veH6oycOBcsGTuffWl2rg2FnavoNGgXaxF
-         yBMQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683822604; x=1686414604;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=SLhdu44KB7JCNcriYN3C59veyYS4YEcrtDZyawBPTZ8=;
-        b=WR19MyjO37U541HlWMFCDxyZY+EJ4btl8gog6SY/6zcPqW3GmfTKnHnFD5Cg8d4KOB
-         JSs6d3LBmaNQNMF2bzd7xYLDNvDabXTmKzL9PgYh+XCzNvzPDhggGeb+4SI21Nt1QqIv
-         eb6LZrE0Hh5wIvQLsqYoChyJ03dzI5oL7p4bJtHx5bwBLGYV6Dsufz/viWKBgVPuuR23
-         5/rIvZ9pI9226WGf2qUAc5GnoKnVmeK+1ys6rFBo9MIOf1Vk1Rn7PTbR2o/PbRtLVBbU
-         H/tHF/kg6CeRpH+livAw5bDjuWxNOyUGF5Vb66SIeUAnLs5Xf73YwX/6S6+sBln7Fl9/
-         pMyw==
-X-Gm-Message-State: AC+VfDzvvm9NZh9dxIj07SpOQedZKobDC2Dvs5dhY86oENCLzauBj5DP
-	F3AAxtiml/ZmQ3QGsx3X/ghvSQ==
-X-Google-Smtp-Source: ACHHUZ43VJv/2VIPBaH+DCXDPd2a0utbJAtPDFo9fdmxqjSBaNOOL/GS0jVWlXvhO5vuPEsHmR3/8Q==
-X-Received: by 2002:a17:907:60c9:b0:967:2abb:2cec with SMTP id hv9-20020a17090760c900b009672abb2cecmr14076991ejc.64.1683822604080;
-        Thu, 11 May 2023 09:30:04 -0700 (PDT)
-Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id v9-20020a170906338900b0094ee99eeb01sm4209935eja.150.2023.05.11.09.30.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 11 May 2023 09:30:03 -0700 (PDT)
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Thu, 11 May 2023 18:29:25 +0200
-Subject: [PATCH v7 05/11] arm64: dts: mediatek: add mmc support for
- mt8365-evk
+	id 1pxAA7-009YXX-2H;
+	Thu, 11 May 2023 17:33:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=+3MeGD4e+zpTZm4qDwhrhx/AMIAONPMrTTkRjCrQwwA=; b=wPhJHkv6R+rjiJGI0cDi92rsxN
+	0dmmlqZzFR6KpV7LrZ724rqU/7TSYLzUrbSR8Badw5GPQNsXFFkFzEP7VcolyRHqYKkDNmcmRLBVr
+	YzSnXHnd9i7SNPdqyZYUJndYEZlDxSY6Xiy7LzEWXKldMnz0dP8wXQEhkkUjrZOu1Aa01w6Wj6mm6
+	o5kwGXXSPO08myLrgcYRn3Xdcyfn51Kc16YYytB/0VNAiFJrH+iLwdqP6To46vjLffLJIRyhS4vz6
+	YnRNb9/TL3yII7sVhIYiYyzfMoUaei4KV9FAWqComQ+xCUDfTg999BX9xE/3kepIMcChV6H/63xBb
+	JEWcXePQ==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:37684)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1pxA83-00072F-LC; Thu, 11 May 2023 18:30:59 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1pxA81-0004CA-K6; Thu, 11 May 2023 18:30:57 +0100
+Date: Thu, 11 May 2023 18:30:57 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Andrew Lunn <andrew@lunn.ch>, netdev@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH net-next 0/8] Improvements for RealTek 2.5G Ethernet PHYs
+Message-ID: <ZF0mUeKjdvZNG44q@shell.armlinux.org.uk>
+References: <cover.1683756691.git.daniel@makrotopia.org>
+ <55c11fd9-54cf-4460-a10c-52ff62b46a4c@lunn.ch>
+ <ZF0iiDIZQzR8vMvm@pidgin.makrotopia.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20230203-evk-board-support-v7-5-98cbdfac656e@baylibre.com>
-References: <20230203-evk-board-support-v7-0-98cbdfac656e@baylibre.com>
-In-Reply-To: <20230203-evk-board-support-v7-0-98cbdfac656e@baylibre.com>
-To: Catalin Marinas <catalin.marinas@arm.com>, 
- Will Deacon <will@kernel.org>, Wim Van Sebroeck <wim@linux-watchdog.org>, 
- Guenter Roeck <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Conor Dooley <conor+dt@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, 
- Alexandre Mergnat <amergnat@baylibre.com>, 
- Kevin Hilman <khilman@baylibre.com>
-X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5035; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=m1/hU6NtitNkihlVEYyJFtqHag17DqDCQsAPTBN98k4=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkXRgEkwrMJq+DnU/LcbgxMhUZOc4MYm6nfjC7auPJ
- /T6bj7qJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZF0YBAAKCRArRkmdfjHURaDKEA
- CIsLUO65/3xLjoayoYcHQ4VqQxANrN+3DBihOP7CA/6RLp112D1z1P89bKt7A1jav1rAuiSJsRzNL3
- PZUiOafqUbangiJxXh1PqFU2XEY14yigYekQEy6pi8eMGV9rfa1yeu7PjeMs552Ms7OWC1hKyCiK9x
- cmy3NtIG1d6tpCMpdZZ8Wh70JTAU4Ezv68Zl743kKss5zNbELCbfq1VqPNkDLYgqGFw8P7rciZWdlt
- K4h3G9zFwQIwRf85ns94cdJjwbGo08lkGPlTcgXfqfIuOmOA5ib7VlW6BN9nPiHlGTyQ4QJ2ybJbgs
- NTuqdYfBmC1FuIlBK7MkKfzUuIDIdlpIQPLjptCcPhfLOnJZADyrVHCSiWdoL8WsP6MsmuVaLowbR0
- raNHdqYbn20TI5U+dMIKsjnPUyLfp+fSlOrCBqZ6+5j/xwyl80YvECkfBS+LBUn0lKfdpY4OPM6afd
- sXOH/tjCd0Q4+rVe5ksneJbr18VywsoJdoChTjp7lIXSNTVV+4mti5xy+BL3fxeVXeYLjMvmLj/cFC
- FXBWKJjQOJ/KHhvT5EafFCCGqyu/0XbfjhtnjvC5q7jfqpi8/+tu28+Tyx6WPPn5BntHr0f1c9LWjy
- DbFsGoeHymoFxrsoNG3BQoTvWe36p3+NdIcniTl6gR78wnRipm8miLeZCZlw==
-X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
- fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ZF0iiDIZQzR8vMvm@pidgin.makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230511_093007_836939_938EA0EA 
-X-CRM114-Status: UNSURE (   9.47  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230511_103307_747184_7F822742 
+X-CRM114-Status: GOOD (  23.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,174 +83,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-- Add EMMC support on mmc0 (internal memory)
-- Add SD-UHS support on mmc1 (external memory)
+On Thu, May 11, 2023 at 07:14:48PM +0200, Daniel Golle wrote:
+> On Thu, May 11, 2023 at 02:28:15AM +0200, Andrew Lunn wrote:
+> > On Thu, May 11, 2023 at 12:53:22AM +0200, Daniel Golle wrote:
+> > > Improve support for RealTek 2.5G Ethernet PHYs (RTL822x series).
+> > > The PHYs can operate with Clause-22 and Clause-45 MDIO.
+> > > 
+> > > When using Clause-45 it is desireable to avoid rate-adapter mode and
+> > > rather have the MAC interface mode follow the PHY speed. The PHYs
+> > > support 2500Base-X for 2500M, and Cisco SGMII for 1000M/100M/10M.
+> > 
+> > I don't see what clause-45 has to do with this. The driver knows that
+> > both C22 and C45 addresses spaces exists in the hardware. It can do
+> > reads/writes on both. If the bus master does not support C45, C45 over
+> > C22 will be performed by the core.
+> 
+> My understanding is/was that switching the SerDes interface mode is only
+> intended with Clause-45 PHYs, derived from this comment and code:
+> 
+> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/net/phy/phylink.c#n1661
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Tested-by: Kevin Hilman <khilman@baylibre.com>
-Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
----
- arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 138 ++++++++++++++++++++++++++++
- 1 file changed, 138 insertions(+)
+It's only because:
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-index 6074aa9c1c3e..752007d0598e 100644
---- a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-@@ -95,6 +95,42 @@ &i2c0 {
- 	status = "okay";
- };
- 
-+&mmc0 {
-+	assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL>;
-+	assigned-clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>;
-+	bus-width = <8>;
-+	cap-mmc-highspeed;
-+	cap-mmc-hw-reset;
-+	hs400-ds-delay = <0x12012>;
-+	max-frequency = <200000000>;
-+	mmc-hs200-1_8v;
-+	mmc-hs400-1_8v;
-+	no-sd;
-+	no-sdio;
-+	non-removable;
-+	pinctrl-0 = <&mmc0_default_pins>;
-+	pinctrl-1 = <&mmc0_uhs_pins>;
-+	pinctrl-names = "default", "state_uhs";
-+	vmmc-supply = <&mt6357_vemc_reg>;
-+	vqmmc-supply = <&mt6357_vio18_reg>;
-+	status = "okay";
-+};
-+
-+&mmc1 {
-+	bus-width = <4>;
-+	cap-sd-highspeed;
-+	cd-gpios = <&pio 76 GPIO_ACTIVE_LOW>;
-+	max-frequency = <200000000>;
-+	pinctrl-0 = <&mmc1_default_pins>;
-+	pinctrl-1 = <&mmc1_uhs_pins>;
-+	pinctrl-names = "default", "state_uhs";
-+	sd-uhs-sdr104;
-+	sd-uhs-sdr50;
-+	vmmc-supply = <&mt6357_vmch_reg>;
-+	vqmmc-supply = <&mt6357_vio18_reg>;
-+	status = "okay";
-+};
-+
- &mt6357_pmic {
- 	interrupts-extended = <&pio 145 IRQ_TYPE_LEVEL_HIGH>;
- 	interrupt-controller;
-@@ -118,6 +154,108 @@ pins {
- 		};
- 	};
- 
-+	mmc0_default_pins: mmc0-default-pins {
-+		clk-pins {
-+			pinmux = <MT8365_PIN_99_MSDC0_CLK__FUNC_MSDC0_CLK>;
-+			bias-pull-down;
-+		};
-+
-+		cmd-dat-pins {
-+			pinmux = <MT8365_PIN_103_MSDC0_DAT0__FUNC_MSDC0_DAT0>,
-+				 <MT8365_PIN_102_MSDC0_DAT1__FUNC_MSDC0_DAT1>,
-+				 <MT8365_PIN_101_MSDC0_DAT2__FUNC_MSDC0_DAT2>,
-+				 <MT8365_PIN_100_MSDC0_DAT3__FUNC_MSDC0_DAT3>,
-+				 <MT8365_PIN_96_MSDC0_DAT4__FUNC_MSDC0_DAT4>,
-+				 <MT8365_PIN_95_MSDC0_DAT5__FUNC_MSDC0_DAT5>,
-+				 <MT8365_PIN_94_MSDC0_DAT6__FUNC_MSDC0_DAT6>,
-+				 <MT8365_PIN_93_MSDC0_DAT7__FUNC_MSDC0_DAT7>,
-+				 <MT8365_PIN_98_MSDC0_CMD__FUNC_MSDC0_CMD>;
-+			input-enable;
-+			bias-pull-up;
-+		};
-+
-+		rst-pins {
-+			pinmux = <MT8365_PIN_97_MSDC0_RSTB__FUNC_MSDC0_RSTB>;
-+			bias-pull-up;
-+		};
-+	};
-+
-+	mmc0_uhs_pins: mmc0-uhs-pins {
-+		clk-pins {
-+			pinmux = <MT8365_PIN_99_MSDC0_CLK__FUNC_MSDC0_CLK>;
-+			drive-strength = <MTK_DRIVE_10mA>;
-+			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-+		};
-+
-+		cmd-dat-pins {
-+			pinmux = <MT8365_PIN_103_MSDC0_DAT0__FUNC_MSDC0_DAT0>,
-+				 <MT8365_PIN_102_MSDC0_DAT1__FUNC_MSDC0_DAT1>,
-+				 <MT8365_PIN_101_MSDC0_DAT2__FUNC_MSDC0_DAT2>,
-+				 <MT8365_PIN_100_MSDC0_DAT3__FUNC_MSDC0_DAT3>,
-+				 <MT8365_PIN_96_MSDC0_DAT4__FUNC_MSDC0_DAT4>,
-+				 <MT8365_PIN_95_MSDC0_DAT5__FUNC_MSDC0_DAT5>,
-+				 <MT8365_PIN_94_MSDC0_DAT6__FUNC_MSDC0_DAT6>,
-+				 <MT8365_PIN_93_MSDC0_DAT7__FUNC_MSDC0_DAT7>,
-+				 <MT8365_PIN_98_MSDC0_CMD__FUNC_MSDC0_CMD>;
-+			input-enable;
-+			drive-strength = <MTK_DRIVE_10mA>;
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-+		};
-+
-+		ds-pins {
-+			pinmux = <MT8365_PIN_104_MSDC0_DSL__FUNC_MSDC0_DSL>;
-+			drive-strength = <MTK_DRIVE_10mA>;
-+			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-+		};
-+
-+		rst-pins {
-+			pinmux = <MT8365_PIN_97_MSDC0_RSTB__FUNC_MSDC0_RSTB>;
-+			drive-strength = <MTK_DRIVE_10mA>;
-+			bias-pull-up;
-+		};
-+	};
-+
-+	mmc1_default_pins: mmc1-default-pins {
-+		cd-pins {
-+			pinmux = <MT8365_PIN_76_CMDAT8__FUNC_GPIO76>;
-+			bias-pull-up;
-+		};
-+
-+		clk-pins {
-+			pinmux = <MT8365_PIN_88_MSDC1_CLK__FUNC_MSDC1_CLK>;
-+			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-+		};
-+
-+		cmd-dat-pins {
-+			pinmux = <MT8365_PIN_89_MSDC1_DAT0__FUNC_MSDC1_DAT0>,
-+				 <MT8365_PIN_90_MSDC1_DAT1__FUNC_MSDC1_DAT1>,
-+				 <MT8365_PIN_91_MSDC1_DAT2__FUNC_MSDC1_DAT2>,
-+				 <MT8365_PIN_92_MSDC1_DAT3__FUNC_MSDC1_DAT3>,
-+				 <MT8365_PIN_87_MSDC1_CMD__FUNC_MSDC1_CMD>;
-+			input-enable;
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-+		};
-+	};
-+
-+	mmc1_uhs_pins: mmc1-uhs-pins {
-+		clk-pins {
-+			pinmux = <MT8365_PIN_88_MSDC1_CLK__FUNC_MSDC1_CLK>;
-+			drive-strength = <MTK_DRIVE_8mA>;
-+			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-+		};
-+
-+		cmd-dat-pins {
-+			pinmux = <MT8365_PIN_89_MSDC1_DAT0__FUNC_MSDC1_DAT0>,
-+				 <MT8365_PIN_90_MSDC1_DAT1__FUNC_MSDC1_DAT1>,
-+				 <MT8365_PIN_91_MSDC1_DAT2__FUNC_MSDC1_DAT2>,
-+				 <MT8365_PIN_92_MSDC1_DAT3__FUNC_MSDC1_DAT3>,
-+				 <MT8365_PIN_87_MSDC1_CMD__FUNC_MSDC1_CMD>;
-+			input-enable;
-+			drive-strength = <MTK_DRIVE_6mA>;
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-+		};
-+	};
-+
- 	uart0_pins: uart0-pins {
- 		pins {
- 			pinmux = <MT8365_PIN_35_URXD0__FUNC_URXD0>,
+1) Clause 22 PHYs haven't done this.
+2) There is currently no way to know what set of interfaces a PHY would
+   make use of - and that affects what ethtool linkmodes are possible.
+
+What you point to is nothing more than a hack to make Clause 45 PHYs
+work with the code that we currently have.
+
+To sort this properly, we need PHY drivers to tell phylink what
+interfaces they are going to switch between once they have been
+attached to the network interface. This is what these patches in my
+net-queue branch are doing:
+
+net: phy: add possible interfaces
+net: phy: marvell10g: fill in possible_interfaces
+net: phy: bcm84881: fill in possible_interfaces
+net: phylink: split out PHY validation from phylink_bringup_phy()
+net: phylink: validate only used interfaces for c45 PHYs
+
+Why only C45 PHYs again? Because the two PHY drivers that I've added
+support for "possible_interfaces" to are both C45. There's no reason
+we can't make that work for C22 PHYs as well.
+
+We could probably make it work for C22 PHYs out of the box by setting
+the appropriate bit for the supplied interface in "possible_interfaces"
+inside phy_attach_direct() after the call to phy_init_hw() if
+"possible_interfaces" is still empty, which means that if a PHY driver
+isn't updated to setup "possible_interfaces" then we get basically
+whatever interface mode we're attaching with there.
+
+There may be a problem if phy_attach_direct() gets called with
+PHY_INTERFACE_MODE_NA (which I believe is possible with DSA.)
 
 -- 
-2.25.1
-
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
