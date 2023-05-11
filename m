@@ -4,92 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20345C77B7F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 May 2023 06:36:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56B60C77B7F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 May 2023 07:53:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pPmMK/vjZZrn+75oLPGLVOkpQXhNBYzPy7ovkiUarXQ=; b=Fjxu2nkGKdmsoiy0+BWq981fjs
-	cyLBS8q6Mudmy18o+BmOtEJnYGjdnR/1kprAb4a1wFyBw/nEsOBPKnl2vgSG15AL7BDTfswGaBzmh
-	GPb0PM4SlUQOFc2JfX2tVKKqlx5Nqvxa/iAYIZ1JJTwClJE5f1uUiM2/7jIrBw/ScWP+VLv039ac7
-	d4FJyyyVL37V5zsYH4lysrxTIbgd69yPa8alMSg+dH/GJXO9gRB9iLZ+U7KyfBr6Zn4EbHQcaYTgY
-	mqQrwLNCCIJ8C5gHhwwvdiazNmP4qXIeWK8sWX9R+lJRmerMCEsUbZKdwGQX5cgyl3NhQVi6F84cl
-	aCuLOeZQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lWsfkByDlyrH+n6i9pgfcooXuTOClNr2MJKLxhSuFMM=; b=oJWdDFJLVo7xHdzFnufP5Dyvf0
+	Vx88DL8FBTgR1Ga/pguwzzUbqnB0a1VMiJT4IOEmqw9vHlXtsxlWG1hJ/zSnUDYeCGXSddXUgjhMw
+	gLCv5zciw0vwkRL7vHDtlBuDN57O++V0vP9tat8vWy2gHDi5rKRr8nLv1/WL7trCtf7UozeL+J4bX
+	zX0TvNsqWRk5TCKCJ1FcX+8Rr+CmTVKxCPvm/DO/Pung20rqzE6z2+uDtOXjQ6rou4rqOzz3g9cqO
+	bpShNLcXRch2gzeyeTdvRll6c4CP0++CMxO9vhDp5rl+JjQS5M+ETrs1a4VcdyIKO3Ttlmk2wQgGq
+	AyJ8SEfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwzuf-0081nV-1t;
-	Thu, 11 May 2023 06:36:29 +0000
-Received: from mail-il1-x12a.google.com ([2607:f8b0:4864:20::12a])
+	id 1px17S-008C0Z-1t;
+	Thu, 11 May 2023 07:53:46 +0000
+Received: from esa.microchip.iphmx.com ([68.232.153.233])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwzuc-0081m0-1Z
-	for linux-mediatek@lists.infradead.org;
-	Thu, 11 May 2023 06:36:28 +0000
-Received: by mail-il1-x12a.google.com with SMTP id e9e14a558f8ab-3315ccc1ce0so57452715ab.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 10 May 2023 23:36:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1683786982; x=1686378982;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=pPmMK/vjZZrn+75oLPGLVOkpQXhNBYzPy7ovkiUarXQ=;
-        b=kjCIFcsdkhcPLKIY42R9P9VLODjVEkWncsZjJ6vsNTQUMmZL89OIcWDQ/vLL9+IOWx
-         9mXW4QHhGkFOQGFsugXpG18MElrtpGTIFm3OhHWNc1roHxGj6jPeQwMEt4VcAaeSRH3i
-         ISKMksmsK1m7SXi/5IWLuokazwRhO2wEXgrlA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683786982; x=1686378982;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=pPmMK/vjZZrn+75oLPGLVOkpQXhNBYzPy7ovkiUarXQ=;
-        b=GU+hERgXKgPsgAYywKE9eidiJwDsmYh/jpcNlQBRCenXSenFrJXLOLWIebiRbZzuYj
-         lY4BrmjWWGYGkbVZXb3l6Woey70B1GtROMNpIlKYez7baHhBSFqMG6VoOtLhzRWXtcqO
-         Apkh2Dx0aKoY5Opq1vTGYfyUHFQrWta7V5up0PFxdt6EtfAKbN8WAeIAFKJKYUE7o8eq
-         PHfvqBtXEPLGExXeEBKI+w7BFVH5DM5m95F48bUP5DI+ApfuV8TSltYTMNmz6R1nZ0k+
-         hfQYF5xv0SmLJ4BqOqfP1Vrqul0x8C+SJYk+tmb6d5N0/5TDgt21N+SwAuCaiTtmbPPB
-         Eb9A==
-X-Gm-Message-State: AC+VfDz0xZMnFXTluRGqEE8WFmTrh+HIP5HdQrDjXAa4A4xPpYqrtNBQ
-	Ar0VhC4iQ8twsJiNnBdyFfynWloXK4o81BEUyDaTLA==
-X-Google-Smtp-Source: ACHHUZ5wNdfOlhFcBhaS5Dr/Te9AZ1DEkR4qT035MXG/6P1UjWu3u9jtQNQv4NKbwu7xyIvunOwoeg==
-X-Received: by 2002:a92:cd47:0:b0:331:7709:3ba with SMTP id v7-20020a92cd47000000b00331770903bamr13171496ilq.3.1683786982325;
-        Wed, 10 May 2023 23:36:22 -0700 (PDT)
-Received: from mail-io1-f42.google.com (mail-io1-f42.google.com. [209.85.166.42])
-        by smtp.gmail.com with ESMTPSA id t8-20020a92cc48000000b0032ca6a1d1bbsm4104683ilq.72.2023.05.10.23.36.20
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 10 May 2023 23:36:21 -0700 (PDT)
-Received: by mail-io1-f42.google.com with SMTP id ca18e2360f4ac-76c73f7443dso88752139f.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 10 May 2023 23:36:20 -0700 (PDT)
-X-Received: by 2002:a5e:8e07:0:b0:760:ea63:3385 with SMTP id
- a7-20020a5e8e07000000b00760ea633385mr13727151ion.19.1683786980560; Wed, 10
- May 2023 23:36:20 -0700 (PDT)
-MIME-Version: 1.0
-References: <20230510233117.1.I7047714f92ef7569bd21f118ae6aee20b3175a92@changeid>
- <20230510164330.z2ygkl7vws6fci75@pengutronix.de> <CAGXv+5HBM+eksJaxL2GqLfqSmK8vsQx5NXHfhe075HkOK3vjHw@mail.gmail.com>
-In-Reply-To: <CAGXv+5HBM+eksJaxL2GqLfqSmK8vsQx5NXHfhe075HkOK3vjHw@mail.gmail.com>
-From: Fei Shao <fshao@chromium.org>
-Date: Thu, 11 May 2023 14:35:43 +0800
-X-Gmail-Original-Message-ID: <CAC=S1niad5qa-rGFSqqRQX=DZN9f4U=WWoP8-A0LQ-UyF31OnA@mail.gmail.com>
-Message-ID: <CAC=S1niad5qa-rGFSqqRQX=DZN9f4U=WWoP8-A0LQ-UyF31OnA@mail.gmail.com>
-Subject: Re: [PATCH] media: mediatek: vcodec: Convert mtk_vcodec_dec_hw
- platform remove callback
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Tiffany Lin <tiffany.lin@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	"Rafael J. Wysocki" <rafael@kernel.org>, Pavel Machek <pavel@ucw.cz>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+	id 1px17O-008Byf-2s;
+	Thu, 11 May 2023 07:53:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
+  t=1683791623; x=1715327623;
+  h=message-id:subject:from:to:date:in-reply-to:references:
+   content-transfer-encoding:mime-version;
+  bh=lWsfkByDlyrH+n6i9pgfcooXuTOClNr2MJKLxhSuFMM=;
+  b=dM7L3FBIEcPbzt73Kn3e6Kyq+Rm2hN9VljXLO8/R48KJDm0Pj3F7vF74
+   Jm5QVU7V8Js18uJD2k5v9bHpg4IqgUA0i+Kk1t/FQH5Of2mCGbrNkYy9/
+   cQhEaZ+/jRDPcpA6YG1lHvq0Of7poHvdWSHnAORFjDafIfm0NVc2shaXS
+   FW4EBAmD1nsmMRDfZuECP30EBtMISLIF00+UJkdhIr1ofX1N2TUwTZNHK
+   O+FW+oZt7+AriJWgYFC7JhooNxm5uE+qroxeM7SVtoJy05MxEfR9YRxNE
+   W8csAzecFte6E0twOKiSvVMvHG48z2xtFwYDeuEsKGlCzaIKiuS+UD/9M
+   w==;
+X-IronPort-AV: E=Sophos;i="5.99,266,1677567600"; 
+   d="scan'208";a="213386863"
+X-Amp-Result: SKIPPED(no attachment in message)
+Received: from unknown (HELO email.microchip.com) ([170.129.1.10])
+  by esa5.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256; 11 May 2023 00:53:41 -0700
+Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
+ chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21; Thu, 11 May 2023 00:53:39 -0700
+Received: from den-dk-m31857.microchip.com (10.10.115.15) by
+ chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server id
+ 15.1.2507.21 via Frontend Transport; Thu, 11 May 2023 00:53:37 -0700
+Message-ID: <60676636bdbeb50e80c02ff24f5b58681689dfba.camel@microchip.com>
+Subject: Re: [PATCH net-next 1/8] net: phy: realtek: rtl8221: allow to
+ configure SERDES mode
+From: Steen Hegelund <steen.hegelund@microchip.com>
+To: Alexander Couzens <lynxis@fe80.eu>, <netdev@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit
+	<hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>, "David S.
+ Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, "Jakub
+ Kicinski" <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Date: Thu, 11 May 2023 09:53:36 +0200
+In-Reply-To: <302d982c5550f10d589735fc2e46cf27386c39f4.1683756691.git.daniel@makrotopia.org>
+References: <cover.1683756691.git.daniel@makrotopia.org>
+	 <302d982c5550f10d589735fc2e46cf27386c39f4.1683756691.git.daniel@makrotopia.org>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: base64
+User-Agent: Evolution 3.46.4 
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230510_233626_588541_1424197A 
-X-CRM114-Status: GOOD (  28.05  )
+X-CRM114-CacheID: sfid-20230511_005343_168180_3B7CDB37 
+X-CRM114-Status: GOOD (  22.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,93 +87,130 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+SGkgQWxleGFuZGVyLAoKT24gVGh1LCAyMDIzLTA1LTExIGF0IDAwOjUzICswMjAwLCBBbGV4YW5k
+ZXIgQ291emVucyB3cm90ZToKPiBbWW91IGRvbid0IG9mdGVuIGdldCBlbWFpbCBmcm9tIGx5bnhp
+c0BmZTgwLmV1LiBMZWFybiB3aHkgdGhpcyBpcyBpbXBvcnRhbnQKPiBhdGh0dHBzOi8vYWthLm1z
+L0xlYXJuQWJvdXRTZW5kZXJJZGVudGlmaWNhdGlvbsKgXQo+IAo+IEVYVEVSTkFMIEVNQUlMOiBE
+byBub3QgY2xpY2sgbGlua3Mgb3Igb3BlbiBhdHRhY2htZW50cyB1bmxlc3MgeW91IGtub3cgdGhl
+Cj4gY29udGVudCBpcyBzYWZlCj4gCj4gVGhlIHJ0bDgyMjEgc3VwcG9ydHMgbXVsdGlwbGUgU0VS
+REVTIG1vZGVzOgo+IC0gU0dNSUkKPiAtIDI1MDBiYXNlLXgKPiAtIEhpU0dNSUkKPiAKPiBGdXJ0
+aGVyIGl0IHN1cHBvcnRzIHJhdGUgYWRhcHRpb24gb24gU0VSREVTIGxpbmtzIHRvIGFsbG93Cj4g
+c2xvdyBldGhlcm5ldCBzcGVlZHMgKDEwLzEwMC8xMDAwbWJpdCkgdG8gd29yayBvbiAyNTAwYmFz
+ZS14L0hpU0dNSUkKPiBsaW5rcyB3aXRob3V0IHJlZHVjaW5nIHRoZSBTRVJERVMgc3BlZWQuCj4g
+Cj4gV2hlbiBvcGVyYXRpbmcgd2l0aG91dCByYXRlIGFkYXB0ZXJzIHRoZSBTRVJERVMgbGluayB3
+aWxsIGZvbGxvdyB0aGUKPiBldGhlcm5ldCBzcGVlZC4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBBbGV4
+YW5kZXIgQ291emVucyA8bHlueGlzQGZlODAuZXU+Cj4gLS0tCj4gwqBkcml2ZXJzL25ldC9waHkv
+cmVhbHRlay5jIHwgNTUgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrCj4g
+wqAxIGZpbGUgY2hhbmdlZCwgNTUgaW5zZXJ0aW9ucygrKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2
+ZXJzL25ldC9waHkvcmVhbHRlay5jIGIvZHJpdmVycy9uZXQvcGh5L3JlYWx0ZWsuYwo+IGluZGV4
+IDNkOTlmZDY2NjRkNy4uYTdkZDVhMDc1MTM1IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbmV0L3Bo
+eS9yZWFsdGVrLmMKPiArKysgYi9kcml2ZXJzL25ldC9waHkvcmVhbHRlay5jCj4gQEAgLTUzLDYg
+KzUzLDE1IEBACj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIFJUTDgy
+MDFGX0lTUl9MSU5LKQo+IMKgI2RlZmluZSBSVEw4MjAxRl9JRVLCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDB4MTMKPiAKPiArI2RlZmluZSBSVEw4
+MjIxQl9NTURfU0VSREVTX0NUUkzCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIE1ESU9fTU1E
+X1ZFTkQxCj4gKyNkZWZpbmUgUlRMODIyMUJfTU1EX1BIWV9DVFJMwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoCBNRElPX01NRF9WRU5EMgo+ICsjZGVmaW5lIFJUTDgyMjFCX1NFUkRF
+U19PUFRJT07CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAweDY5N2EKPiArI2RlZmlu
+ZSBSVEw4MjIxQl9TRVJERVNfT1BUSU9OX01PREVfTUFTS8KgwqDCoMKgwqDCoCBHRU5NQVNLKDUs
+IDApCj4gKyNkZWZpbmUgUlRMODIyMUJfU0VSREVTX09QVElPTl9NT0RFXzI1MDBCQVNFWF9TR01J
+ScKgwqDCoCAwCj4gKyNkZWZpbmUgUlRMODIyMUJfU0VSREVTX09QVElPTl9NT0RFX0hJU0dNSUlf
+U0dNSUnCoMKgwqDCoMKgIDEKPiArI2RlZmluZSBSVEw4MjIxQl9TRVJERVNfT1BUSU9OX01PREVf
+MjUwMEJBU0VYwqDCoMKgwqDCoMKgwqDCoMKgIDIKPiArI2RlZmluZSBSVEw4MjIxQl9TRVJERVNf
+T1BUSU9OX01PREVfSElTR01JScKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgMwo+ICsKPiDCoCNkZWZp
+bmUgUlRMODM2NlJCX1BPV0VSX1NBVkXCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqAgMHgxNQo+IMKgI2RlZmluZSBSVEw4MzY2UkJfUE9XRVJfU0FWRV9PTsKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgQklUKDEyKQo+IAo+IEBAIC04NDksNiAr
+ODU4LDQ4IEBAIHN0YXRpYyBpcnFyZXR1cm5fdCBydGw5MDAwYV9oYW5kbGVfaW50ZXJydXB0KHN0
+cnVjdAo+IHBoeV9kZXZpY2UgKnBoeWRldikKPiDCoMKgwqDCoMKgwqDCoCByZXR1cm4gSVJRX0hB
+TkRMRUQ7Cj4gwqB9Cj4gCj4gK3N0YXRpYyBpbnQgcnRsODIyMWJfY29uZmlnX2luaXQoc3RydWN0
+IHBoeV9kZXZpY2UgKnBoeWRldikKPiArewo+ICvCoMKgwqDCoMKgwqAgdTE2IG9wdGlvbl9tb2Rl
+Owo+ICsKPiArwqDCoMKgwqDCoMKgIHN3aXRjaCAocGh5ZGV2LT5pbnRlcmZhY2UpIHsKPiArwqDC
+oMKgwqDCoMKgIGNhc2UgUEhZX0lOVEVSRkFDRV9NT0RFXzI1MDBCQVNFWDoKPiArwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoCBpZiAoIXBoeWRldi0+aXNfYzQ1KSB7Cj4gK8KgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIG9wdGlvbl9tb2RlID0gUlRMODIyMUJf
+U0VSREVTX09QVElPTl9NT0RFXzI1MDBCQVNFWDsKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqAgYnJlYWs7Cj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqAgfQo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGZhbGx0aHJvdWdoOwo+ICvCoMKg
+wqDCoMKgwqAgY2FzZSBQSFlfSU5URVJGQUNFX01PREVfU0dNSUk6Cj4gK8KgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqAgb3B0aW9uX21vZGUgPSBSVEw4MjIxQl9TRVJERVNfT1BUSU9OX01PREVf
+MjUwMEJBU0VYX1NHTUlJOwo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGJyZWFrOwo+
+ICvCoMKgwqDCoMKgwqAgZGVmYXVsdDoKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBy
+ZXR1cm4gMDsKPiArwqDCoMKgwqDCoMKgIH0KPiArCj4gK8KgwqDCoMKgwqDCoCBwaHlfd3JpdGVf
+bW1kKHBoeWRldiwgUlRMODIyMUJfTU1EX1NFUkRFU19DVFJMLAo+ICvCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDB4NzVmMywgMCk7CgpQbGVhc2UgcHJvdmlkZSBhIHN5
+bWJvbCBmb3IgdGhlIG1hZ2ljIHZhbHVlLgoKPiArCj4gK8KgwqDCoMKgwqDCoCBwaHlfbW9kaWZ5
+X21tZF9jaGFuZ2VkKHBoeWRldiwgUlRMODIyMUJfTU1EX1NFUkRFU19DVFJMLAo+ICvCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIFJUTDgy
+MjFCX1NFUkRFU19PUFRJT04sCj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgUlRMODIyMUJfU0VSREVTX09QVElPTl9NT0RFX01BU0ss
+IG9wdGlvbl9tb2RlKTsKPiArwqDCoMKgwqDCoMKgIHN3aXRjaCAob3B0aW9uX21vZGUpIHsKPiAr
+wqDCoMKgwqDCoMKgIGNhc2UgUlRMODIyMUJfU0VSREVTX09QVElPTl9NT0RFXzI1MDBCQVNFWF9T
+R01JSToKPiArwqDCoMKgwqDCoMKgIGNhc2UgUlRMODIyMUJfU0VSREVTX09QVElPTl9NT0RFXzI1
+MDBCQVNFWDoKClRoaXMgbmV4dCBzZWN0aW9uIGFsc28gdXNlcyBhIG51bWJlciBvZiBtYWdpYyB2
+YWx1ZXMuICBQbGVhc2UgY29udmVydCB0bwpzeW1ib2xzLgoKPiArwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoCBwaHlfd3JpdGVfbW1kKHBoeWRldiwgUlRMODIyMUJfTU1EX1NFUkRFU19DVFJM
+LCAweDZhMDQsCj4gMHgwNTAzKTsKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBwaHlf
+d3JpdGVfbW1kKHBoeWRldiwgUlRMODIyMUJfTU1EX1NFUkRFU19DVFJMLCAweDZmMTAsCj4gMHhk
+NDU1KTsKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBwaHlfd3JpdGVfbW1kKHBoeWRl
+diwgUlRMODIyMUJfTU1EX1NFUkRFU19DVFJMLCAweDZmMTEsCj4gMHg4MDIwKTsKPiArwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBicmVhazsKPiArwqDCoMKgwqDCoMKgIGNhc2UgUlRMODIy
+MUJfU0VSREVTX09QVElPTl9NT0RFX0hJU0dNSUlfU0dNSUk6Cj4gK8KgwqDCoMKgwqDCoCBjYXNl
+IFJUTDgyMjFCX1NFUkRFU19PUFRJT05fTU9ERV9ISVNHTUlJOgo+ICvCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgIHBoeV93cml0ZV9tbWQocGh5ZGV2LCBSVEw4MjIxQl9NTURfU0VSREVTX0NU
+UkwsIDB4NmEwNCwKPiAweDA1MDMpOwo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHBo
+eV93cml0ZV9tbWQocGh5ZGV2LCBSVEw4MjIxQl9NTURfU0VSREVTX0NUUkwsIDB4NmYxMCwKPiAw
+eGQ0MzMpOwo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHBoeV93cml0ZV9tbWQocGh5
+ZGV2LCBSVEw4MjIxQl9NTURfU0VSREVTX0NUUkwsIDB4NmYxMSwKPiAweDgwMjApOwo+ICvCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGJyZWFrOwo+ICvCoMKgwqDCoMKgwqAgfQo+ICsKPiAr
+wqDCoMKgwqDCoMKgIHJldHVybiAwOwo+ICt9Cj4gKwo+IMKgc3RhdGljIHN0cnVjdCBwaHlfZHJp
+dmVyIHJlYWx0ZWtfZHJ2c1tdID0gewo+IMKgwqDCoMKgwqDCoMKgIHsKPiDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqAgUEhZX0lEX01BVENIX0VYQUNUKDB4MDAwMDgyMDEpLAo+IEBAIC05
+NzAsNiArMTAyMSw3IEBAIHN0YXRpYyBzdHJ1Y3QgcGh5X2RyaXZlciByZWFsdGVrX2RydnNbXSA9
+IHsKPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgLm5hbWXCoMKgwqDCoMKgwqDCoMKg
+wqDCoCA9ICJSVEw4MjI2Ql9SVEw4MjIxQiAyLjVHYnBzIFBIWSIsCj4gwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgIC5nZXRfZmVhdHVyZXPCoMKgID0gcnRsODIyeF9nZXRfZmVhdHVyZXMs
+Cj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIC5jb25maWdfYW5lZ8KgwqDCoCA9IHJ0
+bDgyMnhfY29uZmlnX2FuZWcsCj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgLmNvbmZp
+Z19pbml0wqDCoMKgID0gcnRsODIyMWJfY29uZmlnX2luaXQsCj4gwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgIC5yZWFkX3N0YXR1c8KgwqDCoCA9IHJ0bDgyMnhfcmVhZF9zdGF0dXMsCj4g
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIC5zdXNwZW5kwqDCoMKgwqDCoMKgwqAgPSBn
+ZW5waHlfc3VzcGVuZCwKPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgLnJlc3VtZcKg
+wqDCoMKgwqDCoMKgwqAgPSBydGxnZW5fcmVzdW1lLAo+IEBAIC05OTIsNiArMTA0NCw3IEBAIHN0
+YXRpYyBzdHJ1Y3QgcGh5X2RyaXZlciByZWFsdGVrX2RydnNbXSA9IHsKPiDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqAgLm5hbWXCoMKgwqDCoMKgwqDCoMKgwqDCoCA9ICJSVEw4MjI2Qi1D
+R19SVEw4MjIxQi1DRyAyLjVHYnBzIFBIWSIsCj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgIC5nZXRfZmVhdHVyZXPCoMKgID0gcnRsODIyeF9nZXRfZmVhdHVyZXMsCj4gwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgIC5jb25maWdfYW5lZ8KgwqDCoCA9IHJ0bDgyMnhfY29uZmln
+X2FuZWcsCj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgLmNvbmZpZ19pbml0wqDCoMKg
+ID0gcnRsODIyMWJfY29uZmlnX2luaXQsCj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+IC5yZWFkX3N0YXR1c8KgwqDCoCA9IHJ0bDgyMnhfcmVhZF9zdGF0dXMsCj4gwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgIC5zdXNwZW5kwqDCoMKgwqDCoMKgwqAgPSBnZW5waHlfc3VzcGVu
+ZCwKPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgLnJlc3VtZcKgwqDCoMKgwqDCoMKg
+wqAgPSBydGxnZW5fcmVzdW1lLAo+IEBAIC0xMDAyLDYgKzEwNTUsNyBAQCBzdGF0aWMgc3RydWN0
+IHBoeV9kcml2ZXIgcmVhbHRla19kcnZzW10gPSB7Cj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgIC5uYW1lwqDCoMKgwqDCoMKgwqDCoMKgwqAgPSAiUlRMODIyMUItVkItQ0cgMi41R2Jw
+cyBQSFkiLAo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAuZ2V0X2ZlYXR1cmVzwqDC
+oCA9IHJ0bDgyMnhfZ2V0X2ZlYXR1cmVzLAo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oCAuY29uZmlnX2FuZWfCoMKgwqAgPSBydGw4MjJ4X2NvbmZpZ19hbmVnLAo+ICvCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgIC5jb25maWdfaW5pdMKgwqDCoCA9IHJ0bDgyMjFiX2NvbmZpZ19p
+bml0LAo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAucmVhZF9zdGF0dXPCoMKgwqAg
+PSBydGw4MjJ4X3JlYWRfc3RhdHVzLAo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAu
+c3VzcGVuZMKgwqDCoMKgwqDCoMKgID0gZ2VucGh5X3N1c3BlbmQsCj4gwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgIC5yZXN1bWXCoMKgwqDCoMKgwqDCoMKgID0gcnRsZ2VuX3Jlc3VtZSwK
+PiBAQCAtMTAxMiw2ICsxMDY2LDcgQEAgc3RhdGljIHN0cnVjdCBwaHlfZHJpdmVyIHJlYWx0ZWtf
+ZHJ2c1tdID0gewo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAubmFtZcKgwqDCoMKg
+wqDCoMKgwqDCoMKgID0gIlJUTDgyMjFCLVZNLUNHIDIuNUdicHMgUEhZIiwKPiDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqAgLmdldF9mZWF0dXJlc8KgwqAgPSBydGw4MjJ4X2dldF9mZWF0
+dXJlcywKPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgLmNvbmZpZ19hbmVnwqDCoMKg
+ID0gcnRsODIyeF9jb25maWdfYW5lZywKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAu
+Y29uZmlnX2luaXTCoMKgwqAgPSBydGw4MjIxYl9jb25maWdfaW5pdCwKPiDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqAgLnJlYWRfc3RhdHVzwqDCoMKgID0gcnRsODIyeF9yZWFkX3N0YXR1
+cywKPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgLnN1c3BlbmTCoMKgwqDCoMKgwqDC
+oCA9IGdlbnBoeV9zdXNwZW5kLAo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAucmVz
+dW1lwqDCoMKgwqDCoMKgwqDCoCA9IHJ0bGdlbl9yZXN1bWUsCj4gLS0KPiAyLjQwLjAKPiAKPiAK
+Ck90aGVyd2lzZQoKUmV2aWV3ZWQtYnk6IFN0ZWVuIEhlZ2VsdW5kIDxTdGVlbi5IZWdlbHVuZEBt
+aWNyb2NoaXAuY29tPgoKQmVzdCBSZWdhcmRzClN0ZWVuCgo=
 
-On Thu, May 11, 2023 at 1:50=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.org> w=
-rote:
->
-> On Thu, May 11, 2023 at 12:43=E2=80=AFAM Uwe Kleine-K=C3=B6nig
-> <u.kleine-koenig@pengutronix.de> wrote:
-> >
-> > [expanding the audience a bit for more expertise]
-> >
-> > Hello,
-> >
-> > On Wed, May 10, 2023 at 11:31:35PM +0800, Fei Shao wrote:
-> > > This aligns with [1] and converts the platform remove callback to
-> > > .remove_new(), which returns void.
-> > >
-> > > [1]: commit a3afc5b10661 ("media: mtk_vcodec_dec_drv: Convert to
-> > >      platform remove callback returning void")
-> > >
-> > > Signed-off-by: Fei Shao <fshao@chromium.org>
-> > >
-> > > ---
-> > >
-> > >  drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c | 6 ++---=
--
-> > >  1 file changed, 2 insertions(+), 4 deletions(-)
-> > >
-> > > diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw=
-.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
-> > > index b753bf54ebd9..bd5743723da6 100644
-> > > --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
-> > > +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
-> > > @@ -193,16 +193,14 @@ static int mtk_vdec_hw_probe(struct platform_de=
-vice *pdev)
-> > >       return ret;
-> > >  }
-> > >
-> > > -static int mtk_vdec_hw_remove(struct platform_device *pdev)
-> > > +static void mtk_vdec_hw_remove(struct platform_device *pdev)
-> > >  {
-> > >       pm_runtime_disable(&pdev->dev);
-> > > -
-> > > -     return 0;
-> > >  }
-> > >
-> > >  static struct platform_driver mtk_vdec_driver =3D {
-> > >       .probe  =3D mtk_vdec_hw_probe,
-> > > -     .remove =3D mtk_vdec_hw_remove,
-> > > +     .remove_new =3D mtk_vdec_hw_remove,
-> > >       .driver =3D {
-> > >               .name   =3D "mtk-vdec-comp",
-> > >               .of_match_table =3D mtk_vdec_hw_match,
-> >
-> > While the patch looks fine, I wonder if having a remove callback just t=
-o
-> > do pm_runtime_disable() is worth keeping it. Doesn't the core care for
-> > things like that? I grepped a bit around, device_unbind_cleanup() is
-> > called after device_remove() which calls pm_runtime_reinit(). Does that
-> > mean calling pm_runtime_disable in .remove() is useless? In that case,
-> > you could just drop the .remove() callback.
-
-Thanks for the feedback.
-
-I wonder if the core would handle that for drivers... if I understand
-it correctly, pm_runtime_reinit() does not disable runtime PM for a
-device, otherwise pm_runtime_remove() wouldn't need to bother
-calling __pm_runtime_disable() before pm_runtime_reinit().
-
-In fact, from the runtime_pm documentation [1] I read the following:
-"Drivers in ->remove() callback should undo the runtime PM changes
-done in ->probe(). Usually this means calling pm_runtime_disable(),
-pm_runtime_dont_use_autosuspend() etc."
-
-Based on the above I assume it's still necessary given pm_runtime_enable()
-was called in ->probe().
-
-[1]: https://www.kernel.org/doc/Documentation/power/runtime_pm.txt
-
->
-> Maybe just switch to devm_pm_runtime_enable() on the enable side?
-
-That sounds like a good alternative, I'll revise and send a new patch, than=
-ks.
-
-Regards,
-Fei
-
->
-> ChenYu
 
