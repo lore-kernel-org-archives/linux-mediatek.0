@@ -4,91 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46E71C77B7F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 May 2023 17:17:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E486C7EE23
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 May 2023 17:31:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BO10O8iW12DytJ1D0XEr7Txqs1Ww5REXRTxXbIG6fiU=; b=TrbbQ62JgqE9beXQZxkUqiSHfd
-	RjpvsdKn/qzXQj+qKiqTjXzgDd1Hk8GYqJjFmxglHq6mvbF1Fuiti4IVKbKikm/bfZ0zG8NHHiZ7o
-	mPJfpr0KfCDqeeSA8lPz3f6kg6RFBIB4TCpIsqa7YDZ9Msf3k3ZgeqNppTMfDUWFfPgIKldFHcsba
-	6/9LJa4pBuUJw47oNucSA48bv0HpjPsiyjpxeh+skb3kq3dxYmqfvRnBhXUxVGuhFlBe+Cd4wI4wv
-	KkX+ZeCl0g98IohBXZs0z22d0uE0RotshTRt5R226Lt/UHKvik1WfDC4RZAJ8TFGjWDgN3QS6xVGX
-	HkVSf+cQ==;
+	bh=EYOWcd2IcetwoVsS4nntw9yoShUHzHzbCdiQYPACYvQ=; b=VII+V3gV/iEu5CJB1KMSTd8+Z2
+	9jslGMbpfj7z6GHyxiO+BUORjF3s6JTVI4a38cDVWAqg57fDYGNgpjjxjUxSuqXthsAI3eqgn/Xlt
+	LdUKUG67EOX2AnFY+tBpoYVTHEw34kUr3bCCCoPKzo0oL5p4vTpzS2SBo2CauYWS80gHhwlre5jIU
+	6GBS13M+M61l45IK4dvTpwk8+OJTi5c4eildI1IZM24g4CiFe9zeWZEwyviNGjJNH860AMXjfgU5a
+	VThH1t0lB7MFVJ4N6vE1w4BS9U0OK+iIGsZH9Z6iZ54nqf+wr1WfVeOMH570c5cc86/LsrDhSqsKl
+	V+JHoKaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1px9vH-009W99-2k;
-	Thu, 11 May 2023 17:17:47 +0000
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+	id 1pxA8E-009YYN-1d;
+	Thu, 11 May 2023 17:31:10 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1px9vD-009W82-31
+	id 1px9B3-009Mgl-0c
 	for linux-mediatek@lists.infradead.org;
-	Thu, 11 May 2023 17:17:45 +0000
-Received: by mail-ed1-x536.google.com with SMTP id 4fb4d7f45d1cf-50bd875398dso13512164a12.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 11 May 2023 10:17:43 -0700 (PDT)
+	Thu, 11 May 2023 16:30:03 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-966287b0f72so1175431066b.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 11 May 2023 09:30:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1683825462; x=1686417462;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=BO10O8iW12DytJ1D0XEr7Txqs1Ww5REXRTxXbIG6fiU=;
-        b=f0A93yTj+verQgVFIIytrLJioCA/4tVJme8XHNExd+sIzhoyQV84OjWUDsBUUu169M
-         O/S8+4wIjd5SZGyvGAOKRcOMuHOIol2/t+DZRVvi5MC1QxG1oPx8cPo/NdVfhdS6LoCk
-         JZAIYkNje4BWbdiUiZjYWRjg5gbqwGgS1tS03dJT0o4meI6/fbo0aXav4T2C3gt4Ibil
-         jXWcr+2DshwGRMuusvMurUtezTIWdW+OyHPQJaM8IyuEqN67y4EaKlmYbTB1X4tKYg3W
-         8RBNzHBN0g/OlZOpUM0/aJjHSr56v89AcmFXjQUaTaa6dyP4/nBO6BbaoCldjgKizamJ
-         zyOw==
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1683822599; x=1686414599;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=EYOWcd2IcetwoVsS4nntw9yoShUHzHzbCdiQYPACYvQ=;
+        b=ZF9H/wJcUTYOsPZAliicRUc2hsbwwvgP5Qr5cEGUu1insHuerQcBU8SH0FTChxAO2w
+         IhHO4VCitosRKoY8VL4KvNnwE7aCJFd21v0mBLNC9/GVuhHEZraqYLC4RAT/zqbXBPSZ
+         DUouMrdouZ9uKyXEiMjY062MI4XWaY4oaKERBLgRVAxlOMX2rA7pKljmNEOd2Chv5oWu
+         eoH14uw1YfmbfuQdKNjuS7wXpnFQjpaXrL5eRZytVm+PdUbxfkf42yNbxEZq5W9dkz5M
+         /OnLW59L8abxiJsDrpkBJHrJfyh7mJQKsU/gCC6vPUPQuVCKzCM8ggLmIx3Zbi4Hwuua
+         nFnw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683825462; x=1686417462;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=BO10O8iW12DytJ1D0XEr7Txqs1Ww5REXRTxXbIG6fiU=;
-        b=TlvCASAP7WBQAWyToyGrpBbk+7CTg2FZKWFK9y+aetcKE4iz98pQbujvDh+28BddyB
-         EGF7UfDIvTIPSoTukjC1hBvCIWJYES0fZz8BOxxwSDh2/wiWXJuvM2AYNSDMSuCczBdd
-         eBfhF8TDY0uo/vXfzVA23k8TFhYdeUGX2tNXJjYPGd1zqMbU5C6EJtRIof6MBg0AFKB8
-         7yChA0wpgA9p/EMwiFkdEtdFvnDsWpw+FkvOJXXappkepA381HVt6CzgWBdpMz7NpNIn
-         kNNwfmzXPSEA9oYhBL7UwPVA3WOKqUE1db0ZNw58RjH7i30nPcWnyl4Jkn5AwyRhgc9k
-         t4Bw==
-X-Gm-Message-State: AC+VfDyQ5I5wC9/nyBnAQQqZNq+8XlXfytRLgrkgJiYIEprdmKLQDT3V
-	fi9BwlmtCh7iDgQQ6pg83sGmxA==
-X-Google-Smtp-Source: ACHHUZ5cgkWlTUCHRNisr81AR6zb+e6IL4lRvsjDC57u1GW1gp2L8yVihNq3CkPY229nDynudhkCfA==
-X-Received: by 2002:a17:907:9347:b0:933:3814:e0f4 with SMTP id bv7-20020a170907934700b009333814e0f4mr20280180ejc.16.1683825462143;
-        Thu, 11 May 2023 10:17:42 -0700 (PDT)
-Received: from ?IPV6:2a02:810d:15c0:828:d7cd:1be6:f89d:7218? ([2a02:810d:15c0:828:d7cd:1be6:f89d:7218])
-        by smtp.gmail.com with ESMTPSA id gz4-20020a170907a04400b009571293d6acsm4248476ejc.59.2023.05.11.10.17.40
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 11 May 2023 10:17:41 -0700 (PDT)
-Message-ID: <d8544d01-b0a0-f5f6-b0fe-8f6c25bed9bb@linaro.org>
-Date: Thu, 11 May 2023 19:17:39 +0200
+        d=1e100.net; s=20221208; t=1683822599; x=1686414599;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=EYOWcd2IcetwoVsS4nntw9yoShUHzHzbCdiQYPACYvQ=;
+        b=MWvWyKUZwrPf/pAoaSsOP7Gp/5pyTj6w2wyPUCBUp+Ry2+1xJsRFzX6zytJgcegcrq
+         Wd9+MRP6qCmWosbxxvmH1rHotl+s2yiwpzfl+214xwvyG81nMy1KM++ZwYPq+hiwWdR9
+         zRcl0ANIoWYxsOFX0J2odY/n5extLwsWz2ZoX5RS/b58KzCB/OYETN3wMbFu1PbH7Yye
+         dNXLp3VQX9yUIPXWtZu6eOi25iLV4rmJJkNIvDjwetLRc+PWENIeOGCrj8N9Xja6PDq3
+         9uiTcRg6CY5aFReVcJWdH/ec34HO/eT8McMFCAPYEA5eUmYgLHlJt7p36S1VidV5prra
+         /Ufw==
+X-Gm-Message-State: AC+VfDwAcxFBiJQliRTjeHG6tKOn98Kavkwjy/5FNFqXpEpeHwVYni1t
+	4aCJDeIfSCKfCJBw6k3VnuDOsg==
+X-Google-Smtp-Source: ACHHUZ79EAj3WuEGlCvYgbOla4gcw7B6Z/enxW/Cr/EEA8IMPElYOLh8UszbcXKyN6DTr8kBvg/H4Q==
+X-Received: by 2002:a17:906:5d09:b0:968:c3b5:8b92 with SMTP id g9-20020a1709065d0900b00968c3b58b92mr11798509ejt.57.1683822599655;
+        Thu, 11 May 2023 09:29:59 -0700 (PDT)
+Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
+        by smtp.googlemail.com with ESMTPSA id v9-20020a170906338900b0094ee99eeb01sm4209935eja.150.2023.05.11.09.29.58
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 11 May 2023 09:29:59 -0700 (PDT)
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Thu, 11 May 2023 18:29:21 +0200
+Subject: [PATCH v7 01/11] arm64: defconfig: enable MT6357 regulator
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: Need suggestions for smp related properties in cpus.yaml to
- support smpboot for cortex-r52 based platform
-Content-Language: en-US
-To: Ayan Kumar Halder <ayankuma@amd.com>, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, geert+renesas@glider.be,
- magnus.damm@gmail.com, konrad.dybcio@linaro.org, andersson@kernel.org,
- mazziesaccount@gmail.com, conor.dooley@microchip.com, j@jannau.net,
- mailingradian@gmail.com, me@iskren.info, lpieralisi@kernel.org
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-renesas-soc@vger.kernel.org, Julien Grall <julien@xen.org>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Michal Orzel <michal.orzel@amd.com>, Michal Simek <michal.simek@xilinx.com>
-References: <c5ed90c7-7126-0757-a0e3-e3d1fcab2ecc@amd.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <c5ed90c7-7126-0757-a0e3-e3d1fcab2ecc@amd.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20230203-evk-board-support-v7-1-98cbdfac656e@baylibre.com>
+References: <20230203-evk-board-support-v7-0-98cbdfac656e@baylibre.com>
+In-Reply-To: <20230203-evk-board-support-v7-0-98cbdfac656e@baylibre.com>
+To: Catalin Marinas <catalin.marinas@arm.com>, 
+ Will Deacon <will@kernel.org>, Wim Van Sebroeck <wim@linux-watchdog.org>, 
+ Guenter Roeck <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Conor Dooley <conor+dt@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, 
+ Alexandre Mergnat <amergnat@baylibre.com>, 
+ Kevin Hilman <khilman@baylibre.com>
+X-Mailer: b4 0.12.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=793; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=WTUqVHBR4HvQxOd4r/5AfIRd2ez+/KjC4aOa4tZxgIk=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkXRgE5cCRtuzrGfFZ/Qr8kg9BPfvi6jZ8Gy8XTJn5
+ pRDvFXmJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZF0YBAAKCRArRkmdfjHURTJID/
+ 0di662itmNlbKs6Yl//j80WfpsNpJ8cPea0z/HfM6Djf8G199KCC73u7VOs0VJMTHrt1svIoHaiOBp
+ iB5yXTNt9UY3RBsnKJxtR1N/0QKVWGKzzLy2p6LO7PyJqapU9FejGrfOGEz/l++hGKQVUqiFrtjozP
+ Jt/CnDQHQJwfoR5ga9qQMJ1ax64mulMS8ubrByPdbhGCZJVOVlCvTf6Y/48kZmlPfxUkIytfE6Yo8o
+ KjQLsXtuwHtn89zGNyR4QAZLMH7g23K/m8Em2KJD7LOqfG7hJeWF2PmTdNSPg0AMMCqN1HISfAFqn6
+ zJB13cI+XYVlMCoyfu3MRNeBjkPx75Bl3E7K97uhbiigq1Y+Y3HDOMWTDOvOZQxPf65nBZXuZ2/Tqc
+ i0jyjXqAOJPiQpr8unFGIhl8rtBgPfENQ5PV2E3AyIR9LlVzoaNZVfXwagW8fS8mXDqOg+jn7mm003
+ /gDJQkvj+V6nVXz1pymWbwn4p2xEads55yhXiSmvfVR9Zbd+svylywPiemJvxjh7jnXf4+ZUMqsIYs
+ BTLBJTjN9ooSsUmEJ2eDHQLn7l7kuVKfirGm2FtXG5firM4+8KVboLVpqBZD3aTrdz6HuKbehi8wlL
+ F3cqXy6lYJtjaobTsCTqgYF/iIEncaTfxmXAHqmp/txHgS4W4xPKSypTdoRQ==
+X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
+ fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230511_101744_003935_2503E35E 
-X-CRM114-Status: GOOD (  19.84  )
+X-CRM114-CacheID: sfid-20230511_093001_454291_67138BA3 
+X-CRM114-Status: UNSURE (   8.67  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,52 +117,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/05/2023 11:35, Ayan Kumar Halder wrote:
-> Hi Device Tree engineers,
-> 
-> 
-> Recently I have ported Xen on Cortex-R52 (AArch32-V8R processor) for our 
-> AMD platform.
-> 
-> I was discussing with xen-devel community about how we can properly 
-> support smpboot when I was suggested that this might be the correct 
-> forum for discussion.
-> 
-> Please refer 
-> https://lists.xenproject.org/archives/html/xen-devel/2023-05/msg00224.html 
-> and the follow-ups for context.
-> 
-> 
-> The way smpboot works on our platform is as follows:-
-> 
-> 1. core0 writes to register (say regA) the address of the secondary core 
-> initialization routine.
-> 
-> 2. core0 writes to another register (say regB) the value "0x1" to put 
-> the secondary core in reset mode.
-> 
-> 3. core0 writes to regB the value "0x0" to pull the secondary core out 
-> of reset mode.
-> 
-> regA, regB will differ for core1, core2, core3 and so on.
-> 
-> 
-> Currently, I am trying to bringup core1 only.
-> 
-> 
-> I am thinking to use "enable-method=spin-table" in the cpu node for 
-> core1.  So that I can use "cpu-release-address" for regA.
-> 
-> For regB, I am thinking of introducing a new property 
-> "amd-cpu-reset-addr" in the cpu node.
+Enable the power regulator support of MediaTek MT6357 PMIC. This driver
+supports the control of different power rails of device through
+regulator interface.
 
-Propose a patch, that's how we discuss. Anyway as this is arm then you
-have a machine for your platform right? The address is not fixed?
+Tested-by: Kevin Hilman <khilman@baylibre.com>
+Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+---
+ arch/arm64/configs/defconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
-If the the regb is not a pen release-like, so you cannot use
-secondary-boot-reg, then check how other machines are doing it.
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index a24609e14d50..ed3fca298314 100644
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -708,6 +708,7 @@ CONFIG_REGULATOR_MAX77620=y
+ CONFIG_REGULATOR_MAX8973=y
+ CONFIG_REGULATOR_MP8859=y
+ CONFIG_REGULATOR_MT6315=m
++CONFIG_REGULATOR_MT6357=y
+ CONFIG_REGULATOR_MT6358=y
+ CONFIG_REGULATOR_MT6359=y
+ CONFIG_REGULATOR_MT6360=y
 
-Best regards,
-Krzysztof
+-- 
+2.25.1
 
 
