@@ -4,93 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D75F9C7EE22
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 May 2023 17:07:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 519C4C7EE22
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 May 2023 17:16:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ayyCxGH0foji5L7wUxPjLMBEgCkH5OqBptH4GPUcYDk=; b=04hKtl0aKi65Gr3fftf3sWvQIA
-	A9eN4GKMyPpYvPCvtb0M8SyUIKkdwibEwr2w1I8nGTo8hAzTaxCJ4KciCh0abY57+D7oSHkTZA0mV
-	yU5YdltsEE2ELJjxWQm6n52zuOtFRwXu9qYW4Cv/642rDqxqAM2najTHz4xSUL5MO5HfyY44fNKrH
-	RX1tCUO3FD38BTFghHv04UEgMEoaXwEwa4/aitH8sDZsFszq+zxO9vsFHGc1k/RGYnED82Fn/PMBX
-	m0leLUJFN+unDkkuZVs5m+5Flw1mSc9opjoB03TX5Ztfxj032obggl5Yp0Io/UTHdTcfWP47Dnu/g
-	bd0crhkQ==;
+	bh=OnR2NP9xCS0vzQL25YI/cGRXwlhXe4S1V+yp6DE8fS4=; b=YCKuUOLytA85R4CRralyCJ4j8i
+	LSy+BBOSdpS2sxP1f0MqoFX15m/8y68nI6+M/wCA463b5aQDt9nSewD30Qbcuo9FcTuCzjGg5CfNi
+	Jm67EB0XlZXnUYAcqZnGyvP+gmmHcQqPmrEKRA5hp1ZX1ccf3aQxchFZgc0zFXiqGaqXy471Ca0Sd
+	flyrl8rUkluz+9NLdny9FEAg//MidtweqAt1quOMbNm/G4cNqrywGq4H9YPmjPzcrr8KyXvHpruiG
+	iR5aT+g9glwQQSGp5b+tyJwJWbHDYNub4bXNorEhxGi3n6uZh+aZBN6War9W8Uk/47SCyZvxWPMnh
+	hqfMbFqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1px9km-009Tjo-0T;
-	Thu, 11 May 2023 17:06:56 +0000
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+	id 1px9uK-009VtI-0k;
+	Thu, 11 May 2023 17:16:48 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1px9ki-009ThY-2A
-	for linux-mediatek@lists.infradead.org;
-	Thu, 11 May 2023 17:06:54 +0000
-Received: by mail-ed1-x536.google.com with SMTP id 4fb4d7f45d1cf-50bc25f0c7dso16084455a12.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 11 May 2023 10:06:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1683824811; x=1686416811;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=ayyCxGH0foji5L7wUxPjLMBEgCkH5OqBptH4GPUcYDk=;
-        b=yQ5Tj7C1ussm/VcwYYhA4Rs12QyIk3aRNikd5NJbYP25dBwJSb4EYVtQhvG8pWTpBH
-         T4xirmZIQF6GvaHKEl3CnI6q6yxNmmyJArTKL536EiBHClq2oE9DdnPzvaffsw88f9oQ
-         apVjOK+XLIqdMlsPQ8AdpHxkyZxSaQC/q0SOczMoE8nzExFNLJ332OEuk36w9nU25Fis
-         oh0U8+Izz6csTiIism28LBA5UWnvkp18HoOaJxdNL8kEEwUAGENOJfeL5tJh4/YhsP50
-         d5HhjkKL4Sys9jLGxfFXLt3eWF2KgIXzWpKN5Ix/Hw9lC0yvnEOfcW4a0SMfn/YEA+90
-         zksA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683824811; x=1686416811;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ayyCxGH0foji5L7wUxPjLMBEgCkH5OqBptH4GPUcYDk=;
-        b=ACWcxwwvWCCluC8aHv2phK19FZT7Z0y0zRvpxp0cT35ddAqNXaikgB7jmEBgp5MAWt
-         6/19HS2E/EY0OAsokzLOUDw/gJTDIk51YfsY/UJkT3gsb5g5Bj/cbAvd38GA+Ecv3AXz
-         JhHItBlUVMk5DCltjQONUAQgkiAuciNvZLyUG0Z212AI7hz48TLwyXpm0ai13dVU96tM
-         6UWLeG04w288vA3XIQmCDS3OOXiw6xuyA+RibGgIl36eYXvc34/Shdb5D5Fzunzhq0Sk
-         HIVI3+hiSWZTCjEeTzzdkc+p6gqKizggzwVtoebRnjPunXka4lrbtAw49tWFFlmjby2t
-         GucQ==
-X-Gm-Message-State: AC+VfDzSjqdQTJl/kjsmxV/6nAIN9kobBkCxp0ARhdXr7krYjqPmf0U9
-	6cW2qyIK+S2sQABpm4ivr1KmxA==
-X-Google-Smtp-Source: ACHHUZ4kcUwO/YhdtrTa+xFa/aeEXoGMeFo5bs2na974KrFHqO2vD2Z8Q1dUjxA1QOC5UsUxODF7gw==
-X-Received: by 2002:a17:906:6a1b:b0:968:2b4a:aba3 with SMTP id qw27-20020a1709066a1b00b009682b4aaba3mr14233722ejc.5.1683824810998;
-        Thu, 11 May 2023 10:06:50 -0700 (PDT)
-Received: from krzk-bin ([2a02:810d:15c0:828:d7cd:1be6:f89d:7218])
-        by smtp.gmail.com with ESMTPSA id jl21-20020a17090775d500b00965b5540ad7sm4331348ejc.17.2023.05.11.10.06.49
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 11 May 2023 10:06:50 -0700 (PDT)
-Date: Thu, 11 May 2023 19:06:47 +0200
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Eric Dumazet <edumazet@google.com>,
-	SkyLake Huang <SkyLake.Huang@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	Jakub Kicinski <kuba@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Conor Dooley <conor+dt@kernel.org>,
+	id 1px9uH-009VrU-0R;
+	Thu, 11 May 2023 17:16:46 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1px9u9-0001cR-35;
+	Thu, 11 May 2023 17:16:38 +0000
+Date: Thu, 11 May 2023 19:14:48 +0200
+From: Daniel Golle <daniel@makrotopia.org>
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
 	Heiner Kallweit <hkallweit1@gmail.com>,
-	linux-mediatek@lists.infradead.org,
-	Russell King <linux@armlinux.org.uk>, Andrew Lunn <andrew@lunn.ch>,
-	Paolo Abeni <pabeni@redhat.com>, devicetree@vger.kernel.org,
-	Rob Herring <robh+dt@kernel.org>, Qingfang Deng <dqfext@gmail.com>,
-	Simon Horman <simon.horman@corigine.com>
-Subject: Re: [PATCH net-next v4 1/2] dt-bindings: arm: mediatek: add
- mediatek,boottrap binding
-Message-ID: <20230511170647.g6c3ezlyqqislzaf@krzk-bin>
-References: <cover.1683813687.git.daniel@makrotopia.org>
- <f2d447d8b836cf9584762465a784185e8fcf651f.1683813687.git.daniel@makrotopia.org>
+	Russell King <linux@armlinux.org.uk>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH net-next 0/8] Improvements for RealTek 2.5G Ethernet PHYs
+Message-ID: <ZF0iiDIZQzR8vMvm@pidgin.makrotopia.org>
+References: <cover.1683756691.git.daniel@makrotopia.org>
+ <55c11fd9-54cf-4460-a10c-52ff62b46a4c@lunn.ch>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <f2d447d8b836cf9584762465a784185e8fcf651f.1683813687.git.daniel@makrotopia.org>
+In-Reply-To: <55c11fd9-54cf-4460-a10c-52ff62b46a4c@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230511_100652_728032_D45F6249 
-X-CRM114-Status: GOOD (  13.99  )
+X-CRM114-CacheID: sfid-20230511_101645_172243_D2E75667 
+X-CRM114-Status: GOOD (  21.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,40 +68,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 11 May 2023 16:10:20 +0200, Daniel Golle wrote:
-> The boottrap is used to read implementation details from the SoC, such
-> as the polarity of LED pins. Add bindings for it as we are going to use
-> it for the LEDs connected to MediaTek built-in 1GE PHYs.
+On Thu, May 11, 2023 at 02:28:15AM +0200, Andrew Lunn wrote:
+> On Thu, May 11, 2023 at 12:53:22AM +0200, Daniel Golle wrote:
+> > Improve support for RealTek 2.5G Ethernet PHYs (RTL822x series).
+> > The PHYs can operate with Clause-22 and Clause-45 MDIO.
+> > 
+> > When using Clause-45 it is desireable to avoid rate-adapter mode and
+> > rather have the MAC interface mode follow the PHY speed. The PHYs
+> > support 2500Base-X for 2500M, and Cisco SGMII for 1000M/100M/10M.
 > 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> ---
->  .../arm/mediatek/mediatek,boottrap.yaml       | 37 +++++++++++++++++++
->  1 file changed, 37 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,boottrap.yaml
-> 
+> I don't see what clause-45 has to do with this. The driver knows that
+> both C22 and C45 addresses spaces exists in the hardware. It can do
+> reads/writes on both. If the bus master does not support C45, C45 over
+> C22 will be performed by the core.
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
+My understanding is/was that switching the SerDes interface mode is only
+intended with Clause-45 PHYs, derived from this comment and code:
 
-yamllint warnings/errors:
-
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/arm/mediatek/mediatek,boottrap.example.dtb: boottrap@1001f6f0: $nodename:0: 'boottrap' was expected
-	From schema: /builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/arm/mediatek/mediatek,boottrap.yaml
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/arm/mediatek/mediatek,boottrap.example.dtb: boottrap@1001f6f0: reg: [[0, 268564208], [0, 32]] is too long
-	From schema: /builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/arm/mediatek/mediatek,boottrap.yaml
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/net/phy/phylink.c#n1661
 
 
-See https://patchwork.ozlabs.org/patch/1780124
+Hence I concluded that for Clause-22 PHYs we expect the interface mode
+to always remain the same, while many Clause-45 PHYs require switching
+the SerDes interface mode depending on the speed of the external link.
+Trying to use interface mode switching (in the .read_status function)
+with is_c45 == false also just didn't work well:
 
-This check can fail if there are any dependencies. The base for a patch
-series is generally the most recent rc1.
+https://github.com/openwrt/openwrt/pull/11990#issuecomment-1503160296
 
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
 
-pip3 install dtschema --upgrade
+Up to 1000M this has no really been a problem, as the Cisco SGMII SerDes
+supports 10M, 100M and 1000M speeds. Starting with 2500M things have
+became more complicated, and we usually have the choice of either have
+the MAC<->PHY link operate at a contant mode and speed (e.g. 2500Base-X)
+or having to switch the MAC<->PHY interface mode (e.g. between
+2500Base-X and SGMII) depending on whether the link speed on the
+external interface is 2500M or not.
 
-Please check and re-submit.
+Looking at PHYs which support speeds beyond one gigabit/sec due to the
+higher complexity and need for a larger register space most of them are
+managed using Clause-45 MDIO. 2500Base-T PHYs are kind of the exception
+because some of them (esp. RealTek) are still mostly being managed using
+Clause-22 MDIO using proprietary paging mechanisms to enlarge the
+register space.
+
+I also don't like overloading the meaning of is_c45 to decide whether
+rate-adapter mode should be used or not, neither do I like the idea to
+tie the use of phylink to using SGMII in-band-status or not -- but at
+this point both do correlate and there aren't any other feature flags or
+validation methods to do it in a better way. In the end this can also
+just be solved by documenation, ie. makeing sure that those facts are
+well understood: interface mode switching only being supported when
+using Clause-45 MDIO and also the fact that phylink expects operating
+Cisco SGMII without in-band-status when connecting to a managed PHY.
+
 
