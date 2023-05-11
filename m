@@ -4,72 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A766C77B7F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 May 2023 18:09:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56956C7EE24
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 May 2023 22:07:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3Pfh1zcvxcBTMC1uxi72MV10YZm42bS2IcEmQKZMb+4=; b=3logIian+8ojdDOPyuGQ9MzVzr
-	LFQhEumrtqm42MOfnNeR24M6oyb8ZNVrzo5qtCf1DxjfHLCdzgWuTnouA2W/TRZVXbqphx8RIQLk5
-	/JBAu6cLC47AwCzgIUl758ZPEREaQgphvAFLzkymPZfg5F3zC1YbLigRw5xYqZfEeMLGRAaA2DXmX
-	DmgrIHIR6rlOHF1oiAjBsDqncYVAkeluMVsze/W995ezvrIJj91bnnyB4/f1ulZztmKjodmZfR03x
-	uflQ1oMMNpNwfYPJi3+YLKpRAhKzMBTu6fNZe1Qq0RJSvTlXKkZaCW8Ffea3glBvd2RV7A7cOetCa
-	XRMpn2fw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=hpVJsmC3hyyCOV39d1XA4fZrHLIG7rwi+xqTsa1S20U=; b=ffGyjsUCbOufFGbTlBK/XgjGyh
+	YY+DhE5uhzHAB8oLFQS2XZ/h9l1G8EzdX0tI/gnUZwcobel1zTJ53LtJ+oh3wmxUHhTMLDTOxxunM
+	iqOAabre97kHMhkBvqgVxU03rtGDVFD2xG+/h70xKE6S6LPyCLPme3Y5LvGhFy8v+BurUz1OBiuWQ
+	SirPOkn12oftHWb8HTPrliHDOhznxiM+RsAQBEXhsw5SruDQPMgB0jWvLmH4GalbQJrHR2882x6Hn
+	wyfBBvmJFrRJxkZKRVCPQHELoJ30lMKZ49DThsQhDFy3wujIbcpg01XNL5Mo/lFG3QV6jAgrRm1X1
+	snxTK1bA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxAjX-009fKY-33;
-	Thu, 11 May 2023 18:09:43 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1pxERY-00A87D-10;
+	Thu, 11 May 2023 22:07:24 +0000
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxAjU-009fIe-1m;
-	Thu, 11 May 2023 18:09:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=3Pfh1zcvxcBTMC1uxi72MV10YZm42bS2IcEmQKZMb+4=; b=Xy6+Keou++GVj/codBoqrJy9gL
-	itBLJ1xjf1mlUPlIVxNfKjXcLTAAQxQgVvkDSW28XTylZidk6QtE2PQYmJQUJnQZWcxB5NeAld/vd
-	IYEOh2qbH0ToIRlW0gSw+S2gAJ1WGJ/1frb5LCaG8CQK1aq2Dnd7ahSmo492iNkilNBU6UOddVnaB
-	2G/DZ3A2kPXp+dk+BzsO26n/CDYET8gnNW/nnTphCuVOxiZeHj4Thy5ZL9FaiwRq+YC5K2OSx6ypl
-	/nzyY9khDwqIpRs6uKQTRNjfVzRCJDKCffYlnSGLHy612I3r9wY0uvnDsFnZ4KyWkAr1um0cluB6w
-	mZp1PVtw==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:35560)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1pxAjO-00075o-2n; Thu, 11 May 2023 19:09:34 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1pxAjM-0004F7-Bd; Thu, 11 May 2023 19:09:32 +0100
-Date: Thu, 11 May 2023 19:09:32 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Andrew Lunn <andrew@lunn.ch>, netdev@vger.kernel.org,
+	id 1pxERT-00A85N-0O
+	for linux-mediatek@lists.infradead.org;
+	Thu, 11 May 2023 22:07:20 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-1aad55244b7so70839715ad.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 11 May 2023 15:07:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1683842837; x=1686434837;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=hpVJsmC3hyyCOV39d1XA4fZrHLIG7rwi+xqTsa1S20U=;
+        b=apOp6wOIiyc0bM0pbLWmLbNrAH8nPimt13/Fe40g/kkmqv/jTh+cIfvOVS/TOb6lzI
+         5tkY/eBXIzTBk4pnxTf0HCjbbXF0A3BUsNBN8s57G4ArflMx2Tgqmn4NmHKNBtXvfrtM
+         Z2MuMp7hMMkWDAATMFaTy931zIfY4ioVVbcuk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1683842837; x=1686434837;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=hpVJsmC3hyyCOV39d1XA4fZrHLIG7rwi+xqTsa1S20U=;
+        b=f0ef324JMPkOafTpykJYV36SQXOpbHDMyZtTpSnTJam12uqP0MIWgMc9gjDqt3QsPo
+         beDJ4V7qtebtAsW4zIge5KUrMKKuvzebhUtrOZeBRr58ynvb0Ov8X7n1FQGmY1ELs8YF
+         Bu4nemTKwHDB96qslXvC2eChnH7CWyiCEMw/HV3Al5R/Oaq91AcwBaKcNH/jOPk+6xJh
+         luINMleqtd+s6MhFFx4jfRM9/XXTd7svNXV7iQbYRJ7lLw5zY5enbsHKTTythdZYvdCZ
+         yq4a6S8gKyNhbK04jrE3zxBls7cmX3eTCBqvxWqhu+c+MNBSADcCUNLBgo1n07Kf9CGI
+         +cPQ==
+X-Gm-Message-State: AC+VfDwnvjeZUkJUbGpdbOt0NytxoWEiUG53w4u52cA8Ni934joGmsaN
+	kRZCRuiyxNGn7B1hjkUW5h/l3w==
+X-Google-Smtp-Source: ACHHUZ7htthqYNJPkIn8G76ac+QLPwd63qP/ae8YFkTLrs+TGcxXUGw4ufIpDY5W75ZqdaFBfXVS3g==
+X-Received: by 2002:a17:903:191:b0:1ac:aaf6:ee48 with SMTP id z17-20020a170903019100b001acaaf6ee48mr11781934plg.67.1683842837318;
+        Thu, 11 May 2023 15:07:17 -0700 (PDT)
+Received: from tictac2.mtv.corp.google.com ([2620:15c:9d:2:b96a:d776:ee3:e572])
+        by smtp.gmail.com with ESMTPSA id h24-20020a17090a9c1800b00247735d1463sm17589457pjp.39.2023.05.11.15.07.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 11 May 2023 15:07:16 -0700 (PDT)
+From: Douglas Anderson <dianders@chromium.org>
+To: Marc Zyngier <maz@kernel.org>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH net-next 0/8] Improvements for RealTek 2.5G Ethernet PHYs
-Message-ID: <ZF0vXAzWg44GT+fA@shell.armlinux.org.uk>
-References: <cover.1683756691.git.daniel@makrotopia.org>
- <55c11fd9-54cf-4460-a10c-52ff62b46a4c@lunn.ch>
- <ZF0iiDIZQzR8vMvm@pidgin.makrotopia.org>
- <ZF0mUeKjdvZNG44q@shell.armlinux.org.uk>
+	wenst@chromium.org,
+	Eddie Huang <eddie.huang@mediatek.com>,
+	Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+	Ben Ho <Ben.Ho@mediatek.com>,
+	Weiyi Lu <weiyi.lu@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	Tinghan Shen <tinghan.shen@mediatek.com>,
+	jwerner@chromium.org,
+	Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
+	yidilin@chromium.org,
+	Seiya Wang <seiya.wang@mediatek.com>,
+	Douglas Anderson <dianders@chromium.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 0/6] irqchip/gic-v3: Disable pseudo NMIs on Mediatek Chromebooks w/ bad FW
+Date: Thu, 11 May 2023 15:05:34 -0700
+Message-ID: <20230511150539.6.Ia0b6ebbaa351e3cd67e201355b9ae67783c7d718@changeid>
+X-Mailer: git-send-email 2.40.1.606.ga4b1b128d6-goog
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZF0mUeKjdvZNG44q@shell.armlinux.org.uk>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230511_110940_732554_99529AA9 
-X-CRM114-Status: GOOD (  43.73  )
+X-CRM114-CacheID: sfid-20230511_150719_236079_89ABAF89 
+X-CRM114-Status: UNSURE (   9.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,159 +105,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 11, 2023 at 06:30:57PM +0100, Russell King (Oracle) wrote:
-> On Thu, May 11, 2023 at 07:14:48PM +0200, Daniel Golle wrote:
-> > On Thu, May 11, 2023 at 02:28:15AM +0200, Andrew Lunn wrote:
-> > > On Thu, May 11, 2023 at 12:53:22AM +0200, Daniel Golle wrote:
-> > > > Improve support for RealTek 2.5G Ethernet PHYs (RTL822x series).
-> > > > The PHYs can operate with Clause-22 and Clause-45 MDIO.
-> > > > 
-> > > > When using Clause-45 it is desireable to avoid rate-adapter mode and
-> > > > rather have the MAC interface mode follow the PHY speed. The PHYs
-> > > > support 2500Base-X for 2500M, and Cisco SGMII for 1000M/100M/10M.
-> > > 
-> > > I don't see what clause-45 has to do with this. The driver knows that
-> > > both C22 and C45 addresses spaces exists in the hardware. It can do
-> > > reads/writes on both. If the bus master does not support C45, C45 over
-> > > C22 will be performed by the core.
-> > 
-> > My understanding is/was that switching the SerDes interface mode is only
-> > intended with Clause-45 PHYs, derived from this comment and code:
-> > 
-> > https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/net/phy/phylink.c#n1661
-> 
-> It's only because:
-> 
-> 1) Clause 22 PHYs haven't done this.
-> 2) There is currently no way to know what set of interfaces a PHY would
->    make use of - and that affects what ethtool linkmodes are possible.
-> 
-> What you point to is nothing more than a hack to make Clause 45 PHYs
-> work with the code that we currently have.
-> 
-> To sort this properly, we need PHY drivers to tell phylink what
-> interfaces they are going to switch between once they have been
-> attached to the network interface. This is what these patches in my
-> net-queue branch are doing:
-> 
-> net: phy: add possible interfaces
-> net: phy: marvell10g: fill in possible_interfaces
-> net: phy: bcm84881: fill in possible_interfaces
-> net: phylink: split out PHY validation from phylink_bringup_phy()
-> net: phylink: validate only used interfaces for c45 PHYs
-> 
-> Why only C45 PHYs again? Because the two PHY drivers that I've added
-> support for "possible_interfaces" to are both C45. There's no reason
-> we can't make that work for C22 PHYs as well.
-> 
-> We could probably make it work for C22 PHYs out of the box by setting
-> the appropriate bit for the supplied interface in "possible_interfaces"
-> inside phy_attach_direct() after the call to phy_init_hw() if
-> "possible_interfaces" is still empty, which means that if a PHY driver
-> isn't updated to setup "possible_interfaces" then we get basically
-> whatever interface mode we're attaching with there.
-> 
-> There may be a problem if phy_attach_direct() gets called with
-> PHY_INTERFACE_MODE_NA (which I believe is possible with DSA.)
+As talked about in the bindings patch included in this series
+("dt-bindings: interrupt-controller: arm,gic-v3: Add quirk for
+Mediatek SoCs w/ broken FW"), many Mediatek-based Chromebooks shipped
+with firmware that doesn't properly save/restore some GICR
+registers. This causes the system to crash if "pseudo NMIs" are turned
+on.
 
-Maybe something like the below on top of those patches I've pointed
-to above? Note that this requires all MAC users of phylink to fill
-in the supported_interfaces bitmap. One of the other patches in my
-net-queue is:
+This series makes sure that we never allow turning on "pseudo NMIs" if
+we are running with the problematic firmware.
 
-net: phylink: require supported_interfaces to be filled
+The patches in this series can land in any order and can go through
+entirely different trees. None of the patches are harmful on their
+own, but to get things fixed we need all of them.
 
-which comes before the above patches. I think that's a reasonable
-expectation today but needs testing and review of all users (esp.
-the DSA drivers.)
 
-diff --git a/drivers/net/phy/phylink.c b/drivers/net/phy/phylink.c
-index af070be717ec..1cfa101960b9 100644
---- a/drivers/net/phy/phylink.c
-+++ b/drivers/net/phy/phylink.c
-@@ -1787,8 +1787,26 @@ static int phylink_validate_phy(struct phylink *pl, struct phy_device *phy,
- 	 */
- 	state->rate_matching = phy_get_rate_matching(phy, state->interface);
- 
--	/* If this is a clause 22 PHY or is using rate matching, it only
--	 * operates in a single mode.
-+	/* If the PHY provides a bitmap of the interfaces it will be using,
-+	 * use this to validate the PHY. This can be used for both clause 22
-+	 * and clause 45 PHYs.
-+	 */
-+	if (!phy_interface_empty(phy->possible_interfaces)) {
-+		/* Calculate the union of the interfaces the PHY supports in
-+		 * its configured state, and the host's supported interfaces.
-+		 * We never want an interface that isn't supported by the host.
-+		 */
-+		phy_interface_and(interfaces, phy->possible_interfaces,
-+				  pl->config->supported_interfaces);
-+
-+		return phylink_validate_mask(pl, mode, supported, state,
-+					     interfaces);
-+	}
-+
-+	/* If the PHY doesn't provide it a bitmap of the interfaces it will
-+	 * be using, or is a traditional clause 22 PHY driver that doesn't
-+	 * set ->possible_interfaces, or if we're using rate matching, then
-+	 * we're operating in a single mode.
- 	 */
- 	if (!phy->is_c45 || state->rate_matching != RATE_MATCH_NONE)
- 		return phylink_validate(pl, mode, supported, state);
-@@ -1797,28 +1815,18 @@ static int phylink_validate_phy(struct phylink *pl, struct phy_device *phy,
- 	 * modes according to the negotiated media speed. For example, the
- 	 * interface may switch between 10GBASE-R, 5GBASE-R, 2500BASE-X and
- 	 * SGMII.
-+	 *
-+	 * If we're operating in such a mode, but haven't been provided a
-+	 * possible_interfaces bitmap, then we need to validate all possible
-+	 * interfaces.
- 	 */
--
--	/* Backwards compatibility for those MAC drivers that don't set
--	 * their supported_interfaces, or PHY drivers that don't set
--	 * their possible_interfaces.
--	 */
--	if (phy_interface_empty(phy->possible_interfaces) &&
-+	if (phy->is_c45 &&
- 	    state->interface != PHY_INTERFACE_MODE_RXAUI &&
- 	    state->interface != PHY_INTERFACE_MODE_XAUI &&
--	    state->interface != PHY_INTERFACE_MODE_USXGMII) {
-+	    state->interface != PHY_INTERFACE_MODE_USXGMII)
- 		state->interface = PHY_INTERFACE_MODE_NA;
--		return phylink_validate(pl, mode, supported, state);
--	}
--
--	/* Calculate the union of the interfaces the PHY supports in
--	 * its configured state, and the host's supported interfaces.
--	 * We never want an interface that isn't supported by the host.
--	 */
--	phy_interface_and(interfaces, phy->possible_interfaces,
--			  pl->config->supported_interfaces);
- 
--	return phylink_validate_mask(pl, mode, supported, state, interfaces);
-+	return phylink_validate(pl, mode, supported, state);
- }
- 
- static int phylink_bringup_phy(struct phylink *pl, struct phy_device *phy,
-diff --git a/include/linux/phy.h b/include/linux/phy.h
-index 4e0db4a14f30..b54aa9e8c122 100644
---- a/include/linux/phy.h
-+++ b/include/linux/phy.h
-@@ -178,6 +178,11 @@ static inline bool phy_interface_empty(const unsigned long *intf)
- 	return bitmap_empty(intf, PHY_INTERFACE_MODE_MAX);
- }
- 
-+static inline unsigned int phy_interface_weight(const unsigned long *intf)
-+{
-+	return bitmap_weight(intf, PHY_INTERFACE_MODE_MAX);
-+}
-+
- static inline void phy_interface_and(unsigned long *dst, const unsigned long *a,
- 				     const unsigned long *b)
- {
+Douglas Anderson (6):
+  dt-bindings: interrupt-controller: arm,gic-v3: Add quirk for Mediatek
+    SoCs w/ broken FW
+  irqchip/gic-v3: Disable pseudo NMIs on Mediatek devices w/ firmware
+    issues
+  arm64: dts: mediatek: mt8183: Add mediatek,gicr-save-quirk
+  arm64: dts: mediatek: mt8186: Add mediatek,gicr-save-quirk
+  arm64: dts: mediatek: mt8192: Add mediatek,gicr-save-quirk
+  arm64: dts: mediatek: mt8195: Add mediatek,gicr-save-quirk
+
+ .../interrupt-controller/arm,gic-v3.yaml      |  6 ++++++
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi      |  1 +
+ arch/arm64/boot/dts/mediatek/mt8186.dtsi      |  1 +
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi      |  1 +
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi      |  1 +
+ drivers/irqchip/irq-gic-common.c              |  8 ++++++--
+ drivers/irqchip/irq-gic-common.h              |  1 +
+ drivers/irqchip/irq-gic-v3.c                  | 20 +++++++++++++++++++
+ 8 files changed, 37 insertions(+), 2 deletions(-)
 
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+2.40.1.606.ga4b1b128d6-goog
+
 
