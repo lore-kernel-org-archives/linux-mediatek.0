@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5393C77B7F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 May 2023 22:38:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0E98C7EE22
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 May 2023 22:38:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eb3sWwf5IKoZQzOvkPaaI1IVQ2HjKkCnRKRFnGOH6+c=; b=BPBPsQ17Zf8GFhrPPFPnZpV+rT
-	PMTwyMRgtw9zZz5lHSf62ADShi1oMtiS10v4ABWhvcycr7kqulycatbsYhXq05jxDVq19mbCEYESt
-	P8LID3tweQe58UHcbrYNs/IxCvBETdj9Pk2KVdkmc1TklDrepHMJVwrcThERvDfutzWfDTnKtFkV5
-	JN6N5yqrKNkjFZLlvw5gGhz1MhfxqLJGMHEOdsgdDgl0T1f5ekUlmKthR1jEZN67VGzwaMMVsaIKv
-	GrKWuBYY1zIba8STnGLu+GomLu8eLZsT245fTIxhaY0L2fvVZoONUiAWbah8IPobNdlEd06f4Ke09
-	b5H0zRrA==;
+	bh=eb3sWwf5IKoZQzOvkPaaI1IVQ2HjKkCnRKRFnGOH6+c=; b=Jl7HUFLwNJppxdNlAdeUVYKrmN
+	h7PtedcNNAfwitqoi3sURJj4yZJLWHvL4dVLrz/A6Ge+IXaz2UqbgoJcflJkryqwX3/pEuC4GOUX1
+	H8Wi0QGrcPBO5Jkqm2ogSYZkWMO3Jbs2fM4EDUQuLOFb3EIx716e2EoYG+aI2C37ndWubHyB8puDW
+	7KUlaIYbeoXv8lgzRfI0/5W/NQBMJe2Di1/zdzjven/lpwUJc693aT4+Ad3noVeUfHQNKl3Tn0yIP
+	CmTxkkzuP3lkgIPDAaj/oLrZ3dBDUMLACitMMikA8MtDJsyLzjEm5IKANBY3GfoKflPh/5A7jc2qr
+	elwIglTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxEvH-00ACyr-19;
-	Thu, 11 May 2023 22:38:07 +0000
-Received: from mail-il1-x134.google.com ([2607:f8b0:4864:20::134])
+	id 1pxEvS-00AD54-1L;
+	Thu, 11 May 2023 22:38:18 +0000
+Received: from mail-il1-x132.google.com ([2607:f8b0:4864:20::132])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxEvE-00ACwx-34
+	id 1pxEvQ-00AD2V-1E
 	for linux-mediatek@lists.infradead.org;
-	Thu, 11 May 2023 22:38:06 +0000
-Received: by mail-il1-x134.google.com with SMTP id e9e14a558f8ab-33164ec77ccso615615ab.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 11 May 2023 15:38:03 -0700 (PDT)
+	Thu, 11 May 2023 22:38:17 +0000
+Received: by mail-il1-x132.google.com with SMTP id e9e14a558f8ab-335a61eb904so537425ab.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 11 May 2023 15:38:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1683844682; x=1686436682;
+        d=chromium.org; s=google; t=1683844694; x=1686436694;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
         bh=eb3sWwf5IKoZQzOvkPaaI1IVQ2HjKkCnRKRFnGOH6+c=;
-        b=YB4CXa+7IiugZFWW89TQYuVh4HnN1R5IuqF1PWtOFnF45ocw8Zs5UZ19l2DrlhDrL+
-         T91s7cNeQp8tLalUmv3BhabCypP9bH6PNCWWysJtJxUfK51iS+unG76XmPRzg+WR9sQw
-         +tTzIYC62rYbOgdKq1mzzYyCN9NntV0GOt2BU=
+        b=eejqH/9O92EsPm8qWB0tudYgKhmb4VqybKPOzBG+lTDIcmvCNyDudD6MeNPmr7j49k
+         uXR1u6U85Xpd55ege6fODvCYJg0zP0TF96UhDoTd0rDqfQzgJuODfYSUB/t8uuqVVjhy
+         mHFYtthhyiYQbwHWQpCmKHINKf19mzv/Vrp98=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683844682; x=1686436682;
+        d=1e100.net; s=20221208; t=1683844694; x=1686436694;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
         bh=eb3sWwf5IKoZQzOvkPaaI1IVQ2HjKkCnRKRFnGOH6+c=;
-        b=kYOS/VbgQTDSxjBCqbN94w8jF+0ujNQxtVAvKQ1GFYQiWpJvti91uBJgRLyq0p5kEk
-         WyEwlIjUpPpv2zoyHNwpOeVmdAsZ9YMcpqw6UDo4bn/ZISrAvouwDpLkjTuug+M9kU86
-         4Ea3BPPRvjT5TGKnPEek7cDREKgCdcU//RnjGCmkQ88Ar7Ea/agsIbF4y0ikYb7kdXxe
-         Lpqn+1ef0Zh7B7bhEt7mScRAb/BLHllhuZrbwT4d5E3KKSLWUcvJdxZYfRfhkW+VcsZk
-         w+eLylF3UdTgyQWOOwcVccIrx7iFxk9ss+Xabrn/ERSZKfe9SCpInYEZz22/J/6g9cQp
-         sHSQ==
-X-Gm-Message-State: AC+VfDw0AIEr+qLHqEBMBlNmno/JFojoog01saFCEGP1TdXzk0wS3aqV
-	Ium/XYOWU3ccA1wSMSt+IaDcksjQJ2I9fE/C/i7kzQ==
-X-Google-Smtp-Source: ACHHUZ5aB1JvuSw560zhv65bAiwvIZNHMbaJ3VG5IwoL/nVaGBX1hJ51wet8Wz05aOV+TMIKI+1jpET5bN3nE0PPhMc=
-X-Received: by 2002:a05:6e02:1ba6:b0:331:4d3c:db55 with SMTP id
- n6-20020a056e021ba600b003314d3cdb55mr122778ili.4.1683844682395; Thu, 11 May
- 2023 15:38:02 -0700 (PDT)
+        b=dbMuAYkTRf7XJsc3VsEWEyFpyPRJdpkAX3yZb48P0W+ni0Bzd5h5tQeKxrqeM/95CI
+         4bl6cHTDb/TnpRbP4ZILhgO2NLODj6v7tk50Ryq6Qwc63lyeMxfS7syHHhBytK3qzNQd
+         nnT4fEFZxS++6Yv4P89LjzmrTJWaGmmt1YHBNqF1XSkLgI7hni0vxrupJzi6J3rTCaFZ
+         3GUXqWZZt8doJuUo9OskXQDpIe7/XIOx1Ts6JOomgEsGINl0wo3QFCT3brdilQShSBoC
+         iegZE/k95TZdO5jHXk0BhF8Nkqm39r+VlhPzKNThEnn6EHcCVPwf+6lyuvLDHmKoeJnn
+         IiDg==
+X-Gm-Message-State: AC+VfDyvsmAbjFq6G2cwr8IZhUzCkOIOKHDupi0dc0JHkwlLMfEySqeF
+	Pt8IZtSeEli7UwyC01Qg6LmUBBCH+zTrKgujUFv3tw==
+X-Google-Smtp-Source: ACHHUZ5WTdU3AW+XrAoPVq2lUePuxoUdj1Fob3vdUdL637VkgTu6Cc7qeyKA7QvxdOi9A9liBIcfGEf9zAPH4dxzyuI=
+X-Received: by 2002:a05:6e02:1b81:b0:32f:7715:4482 with SMTP id
+ h1-20020a056e021b8100b0032f77154482mr123404ili.4.1683844694484; Thu, 11 May
+ 2023 15:38:14 -0700 (PDT)
 MIME-Version: 1.0
 References: <20230511150539.6.Ia0b6ebbaa351e3cd67e201355b9ae67783c7d718@changeid>
- <20230511150539.1.Iabe67a827e206496efec6beb5616d5a3b99c1e65@changeid>
-In-Reply-To: <20230511150539.1.Iabe67a827e206496efec6beb5616d5a3b99c1e65@changeid>
+ <20230511150539.2.I88dc0a0eb1d9d537de61604cd8994ecc55c0cac1@changeid>
+In-Reply-To: <20230511150539.2.I88dc0a0eb1d9d537de61604cd8994ecc55c0cac1@changeid>
 From: Julius Werner <jwerner@chromium.org>
-Date: Thu, 11 May 2023 15:37:50 -0700
-Message-ID: <CAODwPW8TqhArafCK3RvBdxyiav3WL=0MU6x=QyBOFP-h8bQrWw@mail.gmail.com>
-Subject: Re: [PATCH 1/6] dt-bindings: interrupt-controller: arm,gic-v3: Add
- quirk for Mediatek SoCs w/ broken FW
+Date: Thu, 11 May 2023 15:38:02 -0700
+Message-ID: <CAODwPW_amsFd2a57nv5WqXknp6o1QPvXD5tVmsxZdjMHsTjg0Q@mail.gmail.com>
+Subject: Re: [PATCH 2/6] irqchip/gic-v3: Disable pseudo NMIs on Mediatek
+ devices w/ firmware issues
 To: Douglas Anderson <dianders@chromium.org>
 Cc: Marc Zyngier <maz@kernel.org>, Thomas Gleixner <tglx@linutronix.de>, Rob Herring <robh+dt@kernel.org>, 
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
@@ -75,12 +75,11 @@ Cc: Marc Zyngier <maz@kernel.org>, Thomas Gleixner <tglx@linutronix.de>, Rob Her
 	linux-arm-kernel@lists.infradead.org, 
 	Tinghan Shen <tinghan.shen@mediatek.com>, jwerner@chromium.org, 
 	Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, yidilin@chromium.org, 
-	Seiya Wang <seiya.wang@mediatek.com>, Conor Dooley <conor+dt@kernel.org>, 
-	linux-kernel@vger.kernel.org
+	Seiya Wang <seiya.wang@mediatek.com>, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230511_153805_017669_15B0A854 
-X-CRM114-Status: UNSURE (   4.96  )
+X-CRM114-CacheID: sfid-20230511_153816_424161_572A666F 
+X-CRM114-Status: UNSURE (   4.86  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
