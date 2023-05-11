@@ -4,75 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56B60C77B7F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 May 2023 07:53:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A397C77B7C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 May 2023 09:36:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lWsfkByDlyrH+n6i9pgfcooXuTOClNr2MJKLxhSuFMM=; b=oJWdDFJLVo7xHdzFnufP5Dyvf0
-	Vx88DL8FBTgR1Ga/pguwzzUbqnB0a1VMiJT4IOEmqw9vHlXtsxlWG1hJ/zSnUDYeCGXSddXUgjhMw
-	gLCv5zciw0vwkRL7vHDtlBuDN57O++V0vP9tat8vWy2gHDi5rKRr8nLv1/WL7trCtf7UozeL+J4bX
-	zX0TvNsqWRk5TCKCJ1FcX+8Rr+CmTVKxCPvm/DO/Pung20rqzE6z2+uDtOXjQ6rou4rqOzz3g9cqO
-	bpShNLcXRch2gzeyeTdvRll6c4CP0++CMxO9vhDp5rl+JjQS5M+ETrs1a4VcdyIKO3Ttlmk2wQgGq
-	AyJ8SEfQ==;
+	Content-Transfer-Encoding:Content-Type:Cc:To:Subject:From:Date:Message-ID:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=DWSYvHK7vKIdO64Z0gZ2dZPsjAtDaq3s+yYvNUfc5d0=; b=W/MnW0tGCafdtdRbJfU0qr0GYp
+	TKuG6rv8LXXCQ5z4r4pnATwLcyudSfxMHdsy/SYlTsQMZ3FhcpcyzVmIvtMe38qSPzPowEZyh6bFj
+	ZzRkRkpKUh3TwixNDEjAQPVX4RF4k+pBQzI4XJSWlQUaDAN2B3su7176xfNWHGqcZ5yUY5kE/+IpF
+	31WoxMbqyZkkPAmuEoaZPkoo8ujhyN7wAV1xkZZ+vx0RGMEuZtUZUNIIqmZKprIv+TXQZEyN+t/E8
+	XHFeg1nRvrA0oi6xrsBzvYv+tLdLbqvVhguiGAWQeTxqQZ7ICzFjgDXeiRQ8aLgf1BMUu1QVH4+yi
+	6Jh77b2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1px17S-008C0Z-1t;
-	Thu, 11 May 2023 07:53:46 +0000
-Received: from esa.microchip.iphmx.com ([68.232.153.233])
+	id 1px2j2-008Mrw-0h;
+	Thu, 11 May 2023 09:36:40 +0000
+Received: from mail-mw2nam10on2087.outbound.protection.outlook.com ([40.107.94.87] helo=NAM10-MW2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1px17O-008Byf-2s;
-	Thu, 11 May 2023 07:53:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
-  t=1683791623; x=1715327623;
-  h=message-id:subject:from:to:date:in-reply-to:references:
-   content-transfer-encoding:mime-version;
-  bh=lWsfkByDlyrH+n6i9pgfcooXuTOClNr2MJKLxhSuFMM=;
-  b=dM7L3FBIEcPbzt73Kn3e6Kyq+Rm2hN9VljXLO8/R48KJDm0Pj3F7vF74
-   Jm5QVU7V8Js18uJD2k5v9bHpg4IqgUA0i+Kk1t/FQH5Of2mCGbrNkYy9/
-   cQhEaZ+/jRDPcpA6YG1lHvq0Of7poHvdWSHnAORFjDafIfm0NVc2shaXS
-   FW4EBAmD1nsmMRDfZuECP30EBtMISLIF00+UJkdhIr1ofX1N2TUwTZNHK
-   O+FW+oZt7+AriJWgYFC7JhooNxm5uE+qroxeM7SVtoJy05MxEfR9YRxNE
-   W8csAzecFte6E0twOKiSvVMvHG48z2xtFwYDeuEsKGlCzaIKiuS+UD/9M
-   w==;
-X-IronPort-AV: E=Sophos;i="5.99,266,1677567600"; 
-   d="scan'208";a="213386863"
-X-Amp-Result: SKIPPED(no attachment in message)
-Received: from unknown (HELO email.microchip.com) ([170.129.1.10])
-  by esa5.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256; 11 May 2023 00:53:41 -0700
-Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
- chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21; Thu, 11 May 2023 00:53:39 -0700
-Received: from den-dk-m31857.microchip.com (10.10.115.15) by
- chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server id
- 15.1.2507.21 via Frontend Transport; Thu, 11 May 2023 00:53:37 -0700
-Message-ID: <60676636bdbeb50e80c02ff24f5b58681689dfba.camel@microchip.com>
-Subject: Re: [PATCH net-next 1/8] net: phy: realtek: rtl8221: allow to
- configure SERDES mode
-From: Steen Hegelund <steen.hegelund@microchip.com>
-To: Alexander Couzens <lynxis@fe80.eu>, <netdev@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit
-	<hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>, "David S.
- Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, "Jakub
- Kicinski" <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Date: Thu, 11 May 2023 09:53:36 +0200
-In-Reply-To: <302d982c5550f10d589735fc2e46cf27386c39f4.1683756691.git.daniel@makrotopia.org>
-References: <cover.1683756691.git.daniel@makrotopia.org>
-	 <302d982c5550f10d589735fc2e46cf27386c39f4.1683756691.git.daniel@makrotopia.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: base64
-User-Agent: Evolution 3.46.4 
+	id 1px2iy-008MrB-2C;
+	Thu, 11 May 2023 09:36:38 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=bhaQ1sPZeF0D0Ojlunob+q54Wl7qcYMiS34oQ8IAbAsXZLSn7JNogx0q+w/E+/FClgR1Pj5eROgsa0iOZXW+dbaHiYGgzs1a/kYW90KRIJ6KQoDSNx6T5TpEvQMenrivYeJxAcMuJjqzycw2o1rKNAM9sX5hyGWCMf3tls9mV3XCEbTWATAR0Ta5jDqJTIpdlAT6eBrGGbQBn3rsy8i0SPgS/L+myq2p7uBWhyQWJFx2fl0epOZFNzmMdQIqplDAVSxJGXR81D76xxWtLifleI5nlzlRggZb90VkSzb644xBozDz/o8qzfwuhRwHZPjpdP/a4HaMNHAh0xRBZFm8qA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=DWSYvHK7vKIdO64Z0gZ2dZPsjAtDaq3s+yYvNUfc5d0=;
+ b=LkVBYgiPhFrlEZmlr/5TbHwi3dZaE5wNidEufz6tIwCUzoQLdMEhikoK2Z9Z9Gle5IeaswWwvOD/+IW9Op0M3ArkNrrF5qQB2DzWF65NeJck4I9BiST7Tcz1Kfwap63IE4f435sdFv6aR77F4m2SO+msy04rG+G0mbtf1+SW9d7S3wBOMdRlMbA/8sVjJrFtUPNs8MRN7S4i+jckrGb2V+JGKwMausyLtstBrP19SZbJr0Kk01D4IB2Am2526OMOnlFTZg3BuJWv8YwH4RlyfYMgwlqk7CDUC+ZCn+MHgCFbh1yP44set5Bz4hvRwVCtLdNkEQNNZN6zfSbjRQFc1w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=DWSYvHK7vKIdO64Z0gZ2dZPsjAtDaq3s+yYvNUfc5d0=;
+ b=gTXNxnEhJwy3MdLek5mmkGL2hG4tlf5WHm2uKGIUfIOK6BMcSptfIemQg01kf5XKFtKpXxZUav91huT3oqHt1nWytaJbmEnE+z+ITGMHEWi7q4j0uCFRe1yO+e2Ko93Rf812C/HU3iWHLtIy7FwC6FcOt3UScnEH/35LDutmjQk=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=amd.com;
+Received: from SN6PR12MB2621.namprd12.prod.outlook.com (2603:10b6:805:73::15)
+ by PH0PR12MB5450.namprd12.prod.outlook.com (2603:10b6:510:e8::22) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6363.33; Thu, 11 May
+ 2023 09:35:46 +0000
+Received: from SN6PR12MB2621.namprd12.prod.outlook.com
+ ([fe80::ef8d:bf8a:d296:ec2c]) by SN6PR12MB2621.namprd12.prod.outlook.com
+ ([fe80::ef8d:bf8a:d296:ec2c%7]) with mapi id 15.20.6363.033; Thu, 11 May 2023
+ 09:35:46 +0000
+Message-ID: <c5ed90c7-7126-0757-a0e3-e3d1fcab2ecc@amd.com>
+Date: Thu, 11 May 2023 10:35:37 +0100
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.10.1
+From: Ayan Kumar Halder <ayankuma@amd.com>
+Subject: Need suggestions for smp related properties in cpus.yaml to support
+ smpboot for cortex-r52 based platform
+To: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ geert+renesas@glider.be, magnus.damm@gmail.com, konrad.dybcio@linaro.org,
+ andersson@kernel.org, mazziesaccount@gmail.com, conor.dooley@microchip.com,
+ j@jannau.net, mailingradian@gmail.com, me@iskren.info, lpieralisi@kernel.org
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-renesas-soc@vger.kernel.org, Julien Grall <julien@xen.org>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Michal Orzel <michal.orzel@amd.com>, Michal Simek <michal.simek@xilinx.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: LO4P265CA0015.GBRP265.PROD.OUTLOOK.COM
+ (2603:10a6:600:2ad::18) To SN6PR12MB2621.namprd12.prod.outlook.com
+ (2603:10b6:805:73::15)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SN6PR12MB2621:EE_|PH0PR12MB5450:EE_
+X-MS-Office365-Filtering-Correlation-Id: 4c3e89f5-2b1a-4b77-4bd1-08db52031901
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	HTerL+xn1kvy9U04ktRLCJbDNPYTeRULK9UV9C69xKz+3Lb+MZy3tQHRPIXH/cU0aqLzSganY+uCm6JIxMQWX6pBf05IQTTXoEGl6VTQodT9v2KBIo9EAu/GbCphem9DmlUd0OgjPgAWKQ9Auex88OTtVXtAm95aByoteVLXhJcqYPMO6yzvf0mIsPeb0dbYNWyBKwO8dS7VU7dVaLDUlaRC+GNdjUYfyOnbhWh6sRhhWABJqunT9U7mkgUAeFmF2UIw7zKnTFGOKQ71O+zmp9NZsYFWvf9S9fR1MQ5yWDzYMCgm4xhueOvepxA8qtgE0OvByNKGqGTA3hjoAa2PVKAfEB3wxgT3E942wFJJAX5OClsBaTaHI/v2ENFeeJJGAaKOxH80KbDK59YQJWM6m2dTdRodbgIf++jLJjA38IS6EFBlaJL6gEwS6vEcO1hWPg90c3pTKY1SNL7S657gLosriyYtzWf2xtrMdJHC4He9X9ueOGdjV8wBUHOr/rJq54Ypa1Ac2ASmjFmQa632HzWTeFyeWEPqmr/KteOeGV27PDYL1EbBFPIC1u5QXQ9X/F4V4z1+CgcIWDVWvup+rjtYEaH8DdTPR3hUEyBT3FnP42a21WYg7k1TV3p8S5PjMiZa7pADLHPm96IbnG6XH93B+VzzrjjZtv1iG8nc5a+XEajVZjbhpUGre4RvSsiZ
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SN6PR12MB2621.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(39860400002)(136003)(376002)(346002)(366004)(396003)(451199021)(6486002)(83380400001)(6666004)(41300700001)(6506007)(966005)(26005)(5660300002)(8676002)(6512007)(8936002)(7416002)(2906002)(186003)(36756003)(2616005)(31696002)(921005)(38100700002)(54906003)(478600001)(66946007)(66556008)(66476007)(316002)(4326008)(31686004)(45980500001)(43740500002);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?NFRTNzVjUGpiNnU1aS9QeEtjS1AveUF1aDkwZ1h6UFg1NEpCUjNuaUh3eDFT?=
+ =?utf-8?B?UXRGQzREeVQ5WWdMU3hlamVKakdLKytWVXd6Mzl3MzljTUxYRzVuZWYzZ2h3?=
+ =?utf-8?B?MEJNaGFNTnVZUmIyT1hQdzk5Z0R4bXVuZG9YaFFpTnNTdER6ZzJtQ1QwNSt1?=
+ =?utf-8?B?Y3ZQUzJxRld4cFNxSDJ6czRFZVYxZUhSNFpjRWJZM29rRTB5Y3NUYnNwa3lT?=
+ =?utf-8?B?WUJ4cUVFUDJ2ai9jREdRZGoyM2JHWjZFc28xa0t5T3hPc1lUN0hXVGFycm9K?=
+ =?utf-8?B?ajdaZStuemtqOXAvWW5JWHc1Mlp2L2tBYitTNkFIejdHYUx1TENpOWZ1enRa?=
+ =?utf-8?B?Z21kRkh2NWtDVXRjWjlEbmFDdEVoSGRRNzJId1I5UU9DcmlPVmlVWXkxd3ZU?=
+ =?utf-8?B?MUFJa3k2TStLWFJzbDNtYjFkS0ZWRUErRGxENENPWXZUV2dOdzR2OVp4TTBX?=
+ =?utf-8?B?UlJSbTJ1VlRoV0d2ZmdzMHhvZjdTSUQyU00rNW5WNGJxbTdzbEcydHRBa0F1?=
+ =?utf-8?B?WUxSZVRxbHpiNE9TZXFMZCtERDViZ1J4ckYwM2wybCtNSVZqczlRZ2VHN1N4?=
+ =?utf-8?B?ZVZiN0VXMnMzMEYzVnFXOG5RZWZScDluVks4dWFhajVLRkZSc1FRSW1QUGZD?=
+ =?utf-8?B?UUZRVHV4ME5Ud0U4M0FyclFOMWIvZkJ6cUtmN0orTFNKeFJsZG85Q1dmUmw1?=
+ =?utf-8?B?UTdaSkd3SHU5UFphRjc3RVhydkV1Mk1QcHMvRG5HTmk3NXZLUkNmMW5IYnFq?=
+ =?utf-8?B?VGtXRFI1WmYzaUpiby80UVZGeSt4WFk0RG16U1BtRUxSekhxZG9JZDZRL0c2?=
+ =?utf-8?B?bkFrZThlNk1SVTZHVzNPSk9Xb2NuRi9SekpGODdOdElvcjdzVXJHTUg5cFhz?=
+ =?utf-8?B?aFJyT0IrL2NzT0JhLzVuUlBiOWVOUlNBS1BIWDFxY2QyeVNwUThMbC9RdWQz?=
+ =?utf-8?B?eS80UWM0MnF5aXM0ZnBKTlZNK1BDL2dEVEFLMFZ3RUVUaWNBN01QYWp2eU9R?=
+ =?utf-8?B?SXZJQVNmbzRSVDJTWWtwSWJNN0taSkRVMk5DUHJmbjBZZVA2dHpUd3c2VzFN?=
+ =?utf-8?B?RU5YSUFtT29DVGhrb0VrNU5zaXF2R1R3ZnhzWVlLQ0NNS29lWTZ4ODJ4YlYz?=
+ =?utf-8?B?ZVBMYnNjaUlKUTJTMmMxNDVVZ1dSNm5GdXlRRGUvWWNBWm5kOXVxRTVHVHFZ?=
+ =?utf-8?B?RmVySGp2R09jWVpZRWJKcUNzZ2VPMzU2MTFnckd0SERtb0pEZUNZYUQyM1Rq?=
+ =?utf-8?B?UGJqeUZ6QXVqbjRDUG0vSUJQY0dwMWpSR0QraTdONDJQemljZy8xZU9Pc3l6?=
+ =?utf-8?B?ci83UkRRb1JFY3ZRa3l4TDhGMHdsQkllUjlhcmxFZDA2SHI0aDdDbVZhNkd6?=
+ =?utf-8?B?Y1JINFl4MFc1WjdDV05jbXloTnl4dDBabmZuM253czNRd21WTGFxcm5GRHkx?=
+ =?utf-8?B?dXdnS0daWFEyajFmYkVPd3ZITTJDRHkxTHBKS3VmQUQ2WDlLNlJtc3cwREZS?=
+ =?utf-8?B?UEd0Nyt3ZEpKT0hnUVFqTU5jdkNNNzZrYVN6djJhaTZGOEt4TDNNK2syTm1v?=
+ =?utf-8?B?WnNtOTJMK0NydU9SK1VYaTM1WHp4NS9Pc3ZqTElPVlN4aGMyVW9USkU5WitB?=
+ =?utf-8?B?WTZkVXhlYUNZcTQra3VqSzRLTlRXM0NMZkpyMmYwSUJXdWtVbVMwQnJCU2Zs?=
+ =?utf-8?B?NXlqanJWeUJaRmdybWxJdlhEYkxQeGlRQkRXb3Q5a3F0VXl0NmhlaVp3ZlJv?=
+ =?utf-8?B?cmhsODdDaENoK2RSeUcrR09xYVpBeTE0M2Y5U0lPU1paa2pKMVovbXdFd3Q1?=
+ =?utf-8?B?K2pXK2dXSDRFZ3Z6UVhDcmtjMUV3MU9yekhvd1lOanpacGdnZ2xpdlRoaXAy?=
+ =?utf-8?B?a0lId0JFVkFaNjdlbDNYcGtWOU9tNW9MV29ZQVpDRzh1Q3o3NWZGYXpDWjIr?=
+ =?utf-8?B?TjViTVE3emM1SGhZeEhyeGo0bTVHTndNYlJTZGYxaUVtMDFVMHJzQ1lXZzNj?=
+ =?utf-8?B?c3l5SGRTUlRTb1JTRlNqM1dSdXBPTlpNdTNlWjVtdmYzYlFGQ0xDL1RYR2Zi?=
+ =?utf-8?B?VlZpT25VU2NlWVJUTG83eVhUTkVIUW9rVlY3ZDEzdTM2ZlNSeWI0b0Rtb3dL?=
+ =?utf-8?Q?7PS8EmqohDrMlRXhdNB5qhfEJ?=
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4c3e89f5-2b1a-4b77-4bd1-08db52031901
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR12MB2621.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 May 2023 09:35:46.3895
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 9kfOkxhb/CQ0e3+JTz6Lys3gt3OlnsIAzI1yVPNTxus8jqZdeiZwoa76/q/B+rj/1xJRG6xk9AStywsLgeRZMg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR12MB5450
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230511_005343_168180_3B7CDB37 
-X-CRM114-Status: GOOD (  22.78  )
+X-CRM114-CacheID: sfid-20230511_023636_739331_D0A7EB7A 
+X-CRM114-Status: GOOD (  12.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,130 +147,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgQWxleGFuZGVyLAoKT24gVGh1LCAyMDIzLTA1LTExIGF0IDAwOjUzICswMjAwLCBBbGV4YW5k
-ZXIgQ291emVucyB3cm90ZToKPiBbWW91IGRvbid0IG9mdGVuIGdldCBlbWFpbCBmcm9tIGx5bnhp
-c0BmZTgwLmV1LiBMZWFybiB3aHkgdGhpcyBpcyBpbXBvcnRhbnQKPiBhdGh0dHBzOi8vYWthLm1z
-L0xlYXJuQWJvdXRTZW5kZXJJZGVudGlmaWNhdGlvbsKgXQo+IAo+IEVYVEVSTkFMIEVNQUlMOiBE
-byBub3QgY2xpY2sgbGlua3Mgb3Igb3BlbiBhdHRhY2htZW50cyB1bmxlc3MgeW91IGtub3cgdGhl
-Cj4gY29udGVudCBpcyBzYWZlCj4gCj4gVGhlIHJ0bDgyMjEgc3VwcG9ydHMgbXVsdGlwbGUgU0VS
-REVTIG1vZGVzOgo+IC0gU0dNSUkKPiAtIDI1MDBiYXNlLXgKPiAtIEhpU0dNSUkKPiAKPiBGdXJ0
-aGVyIGl0IHN1cHBvcnRzIHJhdGUgYWRhcHRpb24gb24gU0VSREVTIGxpbmtzIHRvIGFsbG93Cj4g
-c2xvdyBldGhlcm5ldCBzcGVlZHMgKDEwLzEwMC8xMDAwbWJpdCkgdG8gd29yayBvbiAyNTAwYmFz
-ZS14L0hpU0dNSUkKPiBsaW5rcyB3aXRob3V0IHJlZHVjaW5nIHRoZSBTRVJERVMgc3BlZWQuCj4g
-Cj4gV2hlbiBvcGVyYXRpbmcgd2l0aG91dCByYXRlIGFkYXB0ZXJzIHRoZSBTRVJERVMgbGluayB3
-aWxsIGZvbGxvdyB0aGUKPiBldGhlcm5ldCBzcGVlZC4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBBbGV4
-YW5kZXIgQ291emVucyA8bHlueGlzQGZlODAuZXU+Cj4gLS0tCj4gwqBkcml2ZXJzL25ldC9waHkv
-cmVhbHRlay5jIHwgNTUgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrCj4g
-wqAxIGZpbGUgY2hhbmdlZCwgNTUgaW5zZXJ0aW9ucygrKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2
-ZXJzL25ldC9waHkvcmVhbHRlay5jIGIvZHJpdmVycy9uZXQvcGh5L3JlYWx0ZWsuYwo+IGluZGV4
-IDNkOTlmZDY2NjRkNy4uYTdkZDVhMDc1MTM1IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbmV0L3Bo
-eS9yZWFsdGVrLmMKPiArKysgYi9kcml2ZXJzL25ldC9waHkvcmVhbHRlay5jCj4gQEAgLTUzLDYg
-KzUzLDE1IEBACj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIFJUTDgy
-MDFGX0lTUl9MSU5LKQo+IMKgI2RlZmluZSBSVEw4MjAxRl9JRVLCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDB4MTMKPiAKPiArI2RlZmluZSBSVEw4
-MjIxQl9NTURfU0VSREVTX0NUUkzCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIE1ESU9fTU1E
-X1ZFTkQxCj4gKyNkZWZpbmUgUlRMODIyMUJfTU1EX1BIWV9DVFJMwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoCBNRElPX01NRF9WRU5EMgo+ICsjZGVmaW5lIFJUTDgyMjFCX1NFUkRF
-U19PUFRJT07CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAweDY5N2EKPiArI2RlZmlu
-ZSBSVEw4MjIxQl9TRVJERVNfT1BUSU9OX01PREVfTUFTS8KgwqDCoMKgwqDCoCBHRU5NQVNLKDUs
-IDApCj4gKyNkZWZpbmUgUlRMODIyMUJfU0VSREVTX09QVElPTl9NT0RFXzI1MDBCQVNFWF9TR01J
-ScKgwqDCoCAwCj4gKyNkZWZpbmUgUlRMODIyMUJfU0VSREVTX09QVElPTl9NT0RFX0hJU0dNSUlf
-U0dNSUnCoMKgwqDCoMKgIDEKPiArI2RlZmluZSBSVEw4MjIxQl9TRVJERVNfT1BUSU9OX01PREVf
-MjUwMEJBU0VYwqDCoMKgwqDCoMKgwqDCoMKgIDIKPiArI2RlZmluZSBSVEw4MjIxQl9TRVJERVNf
-T1BUSU9OX01PREVfSElTR01JScKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgMwo+ICsKPiDCoCNkZWZp
-bmUgUlRMODM2NlJCX1BPV0VSX1NBVkXCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqAgMHgxNQo+IMKgI2RlZmluZSBSVEw4MzY2UkJfUE9XRVJfU0FWRV9PTsKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgQklUKDEyKQo+IAo+IEBAIC04NDksNiAr
-ODU4LDQ4IEBAIHN0YXRpYyBpcnFyZXR1cm5fdCBydGw5MDAwYV9oYW5kbGVfaW50ZXJydXB0KHN0
-cnVjdAo+IHBoeV9kZXZpY2UgKnBoeWRldikKPiDCoMKgwqDCoMKgwqDCoCByZXR1cm4gSVJRX0hB
-TkRMRUQ7Cj4gwqB9Cj4gCj4gK3N0YXRpYyBpbnQgcnRsODIyMWJfY29uZmlnX2luaXQoc3RydWN0
-IHBoeV9kZXZpY2UgKnBoeWRldikKPiArewo+ICvCoMKgwqDCoMKgwqAgdTE2IG9wdGlvbl9tb2Rl
-Owo+ICsKPiArwqDCoMKgwqDCoMKgIHN3aXRjaCAocGh5ZGV2LT5pbnRlcmZhY2UpIHsKPiArwqDC
-oMKgwqDCoMKgIGNhc2UgUEhZX0lOVEVSRkFDRV9NT0RFXzI1MDBCQVNFWDoKPiArwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoCBpZiAoIXBoeWRldi0+aXNfYzQ1KSB7Cj4gK8KgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIG9wdGlvbl9tb2RlID0gUlRMODIyMUJf
-U0VSREVTX09QVElPTl9NT0RFXzI1MDBCQVNFWDsKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqAgYnJlYWs7Cj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqAgfQo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGZhbGx0aHJvdWdoOwo+ICvCoMKg
-wqDCoMKgwqAgY2FzZSBQSFlfSU5URVJGQUNFX01PREVfU0dNSUk6Cj4gK8KgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqAgb3B0aW9uX21vZGUgPSBSVEw4MjIxQl9TRVJERVNfT1BUSU9OX01PREVf
-MjUwMEJBU0VYX1NHTUlJOwo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGJyZWFrOwo+
-ICvCoMKgwqDCoMKgwqAgZGVmYXVsdDoKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBy
-ZXR1cm4gMDsKPiArwqDCoMKgwqDCoMKgIH0KPiArCj4gK8KgwqDCoMKgwqDCoCBwaHlfd3JpdGVf
-bW1kKHBoeWRldiwgUlRMODIyMUJfTU1EX1NFUkRFU19DVFJMLAo+ICvCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDB4NzVmMywgMCk7CgpQbGVhc2UgcHJvdmlkZSBhIHN5
-bWJvbCBmb3IgdGhlIG1hZ2ljIHZhbHVlLgoKPiArCj4gK8KgwqDCoMKgwqDCoCBwaHlfbW9kaWZ5
-X21tZF9jaGFuZ2VkKHBoeWRldiwgUlRMODIyMUJfTU1EX1NFUkRFU19DVFJMLAo+ICvCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIFJUTDgy
-MjFCX1NFUkRFU19PUFRJT04sCj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgUlRMODIyMUJfU0VSREVTX09QVElPTl9NT0RFX01BU0ss
-IG9wdGlvbl9tb2RlKTsKPiArwqDCoMKgwqDCoMKgIHN3aXRjaCAob3B0aW9uX21vZGUpIHsKPiAr
-wqDCoMKgwqDCoMKgIGNhc2UgUlRMODIyMUJfU0VSREVTX09QVElPTl9NT0RFXzI1MDBCQVNFWF9T
-R01JSToKPiArwqDCoMKgwqDCoMKgIGNhc2UgUlRMODIyMUJfU0VSREVTX09QVElPTl9NT0RFXzI1
-MDBCQVNFWDoKClRoaXMgbmV4dCBzZWN0aW9uIGFsc28gdXNlcyBhIG51bWJlciBvZiBtYWdpYyB2
-YWx1ZXMuICBQbGVhc2UgY29udmVydCB0bwpzeW1ib2xzLgoKPiArwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoCBwaHlfd3JpdGVfbW1kKHBoeWRldiwgUlRMODIyMUJfTU1EX1NFUkRFU19DVFJM
-LCAweDZhMDQsCj4gMHgwNTAzKTsKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBwaHlf
-d3JpdGVfbW1kKHBoeWRldiwgUlRMODIyMUJfTU1EX1NFUkRFU19DVFJMLCAweDZmMTAsCj4gMHhk
-NDU1KTsKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBwaHlfd3JpdGVfbW1kKHBoeWRl
-diwgUlRMODIyMUJfTU1EX1NFUkRFU19DVFJMLCAweDZmMTEsCj4gMHg4MDIwKTsKPiArwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBicmVhazsKPiArwqDCoMKgwqDCoMKgIGNhc2UgUlRMODIy
-MUJfU0VSREVTX09QVElPTl9NT0RFX0hJU0dNSUlfU0dNSUk6Cj4gK8KgwqDCoMKgwqDCoCBjYXNl
-IFJUTDgyMjFCX1NFUkRFU19PUFRJT05fTU9ERV9ISVNHTUlJOgo+ICvCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgIHBoeV93cml0ZV9tbWQocGh5ZGV2LCBSVEw4MjIxQl9NTURfU0VSREVTX0NU
-UkwsIDB4NmEwNCwKPiAweDA1MDMpOwo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHBo
-eV93cml0ZV9tbWQocGh5ZGV2LCBSVEw4MjIxQl9NTURfU0VSREVTX0NUUkwsIDB4NmYxMCwKPiAw
-eGQ0MzMpOwo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHBoeV93cml0ZV9tbWQocGh5
-ZGV2LCBSVEw4MjIxQl9NTURfU0VSREVTX0NUUkwsIDB4NmYxMSwKPiAweDgwMjApOwo+ICvCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGJyZWFrOwo+ICvCoMKgwqDCoMKgwqAgfQo+ICsKPiAr
-wqDCoMKgwqDCoMKgIHJldHVybiAwOwo+ICt9Cj4gKwo+IMKgc3RhdGljIHN0cnVjdCBwaHlfZHJp
-dmVyIHJlYWx0ZWtfZHJ2c1tdID0gewo+IMKgwqDCoMKgwqDCoMKgIHsKPiDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqAgUEhZX0lEX01BVENIX0VYQUNUKDB4MDAwMDgyMDEpLAo+IEBAIC05
-NzAsNiArMTAyMSw3IEBAIHN0YXRpYyBzdHJ1Y3QgcGh5X2RyaXZlciByZWFsdGVrX2RydnNbXSA9
-IHsKPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgLm5hbWXCoMKgwqDCoMKgwqDCoMKg
-wqDCoCA9ICJSVEw4MjI2Ql9SVEw4MjIxQiAyLjVHYnBzIFBIWSIsCj4gwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgIC5nZXRfZmVhdHVyZXPCoMKgID0gcnRsODIyeF9nZXRfZmVhdHVyZXMs
-Cj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIC5jb25maWdfYW5lZ8KgwqDCoCA9IHJ0
-bDgyMnhfY29uZmlnX2FuZWcsCj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgLmNvbmZp
-Z19pbml0wqDCoMKgID0gcnRsODIyMWJfY29uZmlnX2luaXQsCj4gwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgIC5yZWFkX3N0YXR1c8KgwqDCoCA9IHJ0bDgyMnhfcmVhZF9zdGF0dXMsCj4g
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIC5zdXNwZW5kwqDCoMKgwqDCoMKgwqAgPSBn
-ZW5waHlfc3VzcGVuZCwKPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgLnJlc3VtZcKg
-wqDCoMKgwqDCoMKgwqAgPSBydGxnZW5fcmVzdW1lLAo+IEBAIC05OTIsNiArMTA0NCw3IEBAIHN0
-YXRpYyBzdHJ1Y3QgcGh5X2RyaXZlciByZWFsdGVrX2RydnNbXSA9IHsKPiDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqAgLm5hbWXCoMKgwqDCoMKgwqDCoMKgwqDCoCA9ICJSVEw4MjI2Qi1D
-R19SVEw4MjIxQi1DRyAyLjVHYnBzIFBIWSIsCj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgIC5nZXRfZmVhdHVyZXPCoMKgID0gcnRsODIyeF9nZXRfZmVhdHVyZXMsCj4gwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgIC5jb25maWdfYW5lZ8KgwqDCoCA9IHJ0bDgyMnhfY29uZmln
-X2FuZWcsCj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgLmNvbmZpZ19pbml0wqDCoMKg
-ID0gcnRsODIyMWJfY29uZmlnX2luaXQsCj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-IC5yZWFkX3N0YXR1c8KgwqDCoCA9IHJ0bDgyMnhfcmVhZF9zdGF0dXMsCj4gwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgIC5zdXNwZW5kwqDCoMKgwqDCoMKgwqAgPSBnZW5waHlfc3VzcGVu
-ZCwKPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgLnJlc3VtZcKgwqDCoMKgwqDCoMKg
-wqAgPSBydGxnZW5fcmVzdW1lLAo+IEBAIC0xMDAyLDYgKzEwNTUsNyBAQCBzdGF0aWMgc3RydWN0
-IHBoeV9kcml2ZXIgcmVhbHRla19kcnZzW10gPSB7Cj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgIC5uYW1lwqDCoMKgwqDCoMKgwqDCoMKgwqAgPSAiUlRMODIyMUItVkItQ0cgMi41R2Jw
-cyBQSFkiLAo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAuZ2V0X2ZlYXR1cmVzwqDC
-oCA9IHJ0bDgyMnhfZ2V0X2ZlYXR1cmVzLAo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oCAuY29uZmlnX2FuZWfCoMKgwqAgPSBydGw4MjJ4X2NvbmZpZ19hbmVnLAo+ICvCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgIC5jb25maWdfaW5pdMKgwqDCoCA9IHJ0bDgyMjFiX2NvbmZpZ19p
-bml0LAo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAucmVhZF9zdGF0dXPCoMKgwqAg
-PSBydGw4MjJ4X3JlYWRfc3RhdHVzLAo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAu
-c3VzcGVuZMKgwqDCoMKgwqDCoMKgID0gZ2VucGh5X3N1c3BlbmQsCj4gwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgIC5yZXN1bWXCoMKgwqDCoMKgwqDCoMKgID0gcnRsZ2VuX3Jlc3VtZSwK
-PiBAQCAtMTAxMiw2ICsxMDY2LDcgQEAgc3RhdGljIHN0cnVjdCBwaHlfZHJpdmVyIHJlYWx0ZWtf
-ZHJ2c1tdID0gewo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAubmFtZcKgwqDCoMKg
-wqDCoMKgwqDCoMKgID0gIlJUTDgyMjFCLVZNLUNHIDIuNUdicHMgUEhZIiwKPiDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqAgLmdldF9mZWF0dXJlc8KgwqAgPSBydGw4MjJ4X2dldF9mZWF0
-dXJlcywKPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgLmNvbmZpZ19hbmVnwqDCoMKg
-ID0gcnRsODIyeF9jb25maWdfYW5lZywKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAu
-Y29uZmlnX2luaXTCoMKgwqAgPSBydGw4MjIxYl9jb25maWdfaW5pdCwKPiDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqAgLnJlYWRfc3RhdHVzwqDCoMKgID0gcnRsODIyeF9yZWFkX3N0YXR1
-cywKPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgLnN1c3BlbmTCoMKgwqDCoMKgwqDC
-oCA9IGdlbnBoeV9zdXNwZW5kLAo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAucmVz
-dW1lwqDCoMKgwqDCoMKgwqDCoCA9IHJ0bGdlbl9yZXN1bWUsCj4gLS0KPiAyLjQwLjAKPiAKPiAK
-Ck90aGVyd2lzZQoKUmV2aWV3ZWQtYnk6IFN0ZWVuIEhlZ2VsdW5kIDxTdGVlbi5IZWdlbHVuZEBt
-aWNyb2NoaXAuY29tPgoKQmVzdCBSZWdhcmRzClN0ZWVuCgo=
+Hi Device Tree engineers,
+
+
+Recently I have ported Xen on Cortex-R52 (AArch32-V8R processor) for our 
+AMD platform.
+
+I was discussing with xen-devel community about how we can properly 
+support smpboot when I was suggested that this might be the correct 
+forum for discussion.
+
+Please refer 
+https://lists.xenproject.org/archives/html/xen-devel/2023-05/msg00224.html 
+and the follow-ups for context.
+
+
+The way smpboot works on our platform is as follows:-
+
+1. core0 writes to register (say regA) the address of the secondary core 
+initialization routine.
+
+2. core0 writes to another register (say regB) the value "0x1" to put 
+the secondary core in reset mode.
+
+3. core0 writes to regB the value "0x0" to pull the secondary core out 
+of reset mode.
+
+regA, regB will differ for core1, core2, core3 and so on.
+
+
+Currently, I am trying to bringup core1 only.
+
+
+I am thinking to use "enable-method=spin-table" in the cpu node for 
+core1.  So that I can use "cpu-release-address" for regA.
+
+For regB, I am thinking of introducing a new property 
+"amd-cpu-reset-addr" in the cpu node.
+
+Please let me know your thoughts on this approach. I am also open to any 
+alternative suggestions.
+
+
+Also I see that in 
+https://elixir.bootlin.com/linux/v6.4-rc1/source/Documentation/devicetree/bindings/arm/cpus.yaml#L87 
+, "arm,cortex-r52" is missing.
+
+Can I submit a patch (a one line change) to add this ?
+
+
+Kind regards,
+
+Ayan
+
 
 
