@@ -4,91 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFC87C77B75
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 May 2023 08:02:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 914D3C7EE24
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 May 2023 08:04:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Subject:Cc:To:From:Message-ID:Date:Reply-To:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zfrfwB+kh/J8KOg9WNby1ZS0xx3dVe2FxorNYgU0el8=; b=vk88uUSggHpHu+3NFofyG45pAe
-	JA68/++R34ghbz6gaJ5iABIK3menWCgLqbwMTWlV8AIp0ZCYGURHK4jvD7AnBmOJsTSb1De+ve6hi
-	9I6yeBxT76+752Oti1kbcDJu45JVLk8Lq75HJ4/esyvub9jEDuEj3IDQkp9RzsuzY4511wcvXKDqj
-	ezvNZsANTUAva1Ikleegl15w5FUBXvu6J4zQwGfXHyzafs1W+pJK3pjpR+x9LN7qdl9wOGv+XHdm9
-	1zKHiGfCEwKqYgoaROttitKBq1GVWsx7xaT/a2YybHjTfvuk7nm73qNDgvuGepuUg1Q1ZIUB8Z4NM
-	jyry1XNQ==;
+	bh=dHOFHumFnrSrz0KER+FGn5/tfxFAz3JgJ4ek49h80NQ=; b=Jq16qsc73UeOZXMo6OgXNJiuLd
+	8D4R9dJNM+KLS60akJ9UF0gEthOMaeXkXMxHQhp3EGydbILpkxEeve4yUDZn8NjyyTX6TMcnk0kt9
+	LOSv6gNeDQ+agasLfetRB6U5gYnP+vhV9iIBMOINqNafKRrNyXceyYSy3mXXLhY6RW54bU3W0JfpM
+	QtlbxzVGDYOX4zvlBZMclt+PvGqT3trIApJBKx9+4qel7ia/D8Ib+KrBKahZfzN6sykAZ8MoOq/jV
+	dTAEK/ueltlFs+DB4WrHrLpv7fZ8mdLccJ34eeIWH9o2KTl6uWvd/4WvhFM7mCVI/X/rpOQjm0Pfu
+	qV3j9ypw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxNjf-00BGaR-0w;
-	Fri, 12 May 2023 08:02:43 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pxNlC-00BGsw-1j;
+	Fri, 12 May 2023 08:04:18 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxNjb-00BGZa-2e;
-	Fri, 12 May 2023 08:02:41 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 4BC356539A;
-	Fri, 12 May 2023 08:02:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A449FC433EF;
-	Fri, 12 May 2023 08:02:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1683878558;
-	bh=TpLd8uvfhqYZkikF7ov+Xf8tJE9kPo4VVe2Awm40Ty4=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=B6JQGiicfw/ZwQL3DL4gjeCoA8Ar/1S5qecbqddyYqp7tmV3boCpWBZT9a5v/HMpw
-	 hw8bjCTAZhP+idODWaXi54kb6LAxehzVpVfRU/nc3NoNSTZynT1tBNwL8dH8zsz9/8
-	 dgYVrKqeirSCutUR3iCpxw5tK+YipDkOolnZ0rrEyZlOSpNdJ0/i0YEp2b35i0WKzn
-	 63o3bYJ5iyj1EVZFJHRpil8g4Q3tSiMfdl2g6lpJIcLE6S3h4RCoSJ49U0x0nAkunN
-	 rftpu9HXhrtgCSYZlkGGpxGIvvqj/jOJrl2Qb0iUPrMqmJBQJZUrw8ajxVyJoYLeOa
-	 Hmb9GTOCQHN9A==
-Received: from sofa.misterjones.org ([185.219.108.64] helo=goblin-girl.misterjones.org)
-	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.95)
-	(envelope-from <maz@kernel.org>)
-	id 1pxNjY-00EVpi-BC;
-	Fri, 12 May 2023 09:02:36 +0100
-Date: Fri, 12 May 2023 09:02:35 +0100
-Message-ID: <86v8gym0ys.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Thomas Gleixner <tglx@linutronix.de>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	wenst@chromium.org,
-	Eddie Huang <eddie.huang@mediatek.com>,
-	Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
-	Ben Ho <Ben.Ho@mediatek.com>,
-	Weiyi Lu <weiyi.lu@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	Tinghan Shen <tinghan.shen@mediatek.com>,
-	jwerner@chromium.org,
-	Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
-	yidilin@chromium.org,
-	Seiya Wang <seiya.wang@mediatek.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/6] dt-bindings: interrupt-controller: arm,gic-v3: Add quirk for Mediatek SoCs w/ broken FW
-In-Reply-To: <20230511150539.1.Iabe67a827e206496efec6beb5616d5a3b99c1e65@changeid>
-References: <20230511150539.6.Ia0b6ebbaa351e3cd67e201355b9ae67783c7d718@changeid>
-	<20230511150539.1.Iabe67a827e206496efec6beb5616d5a3b99c1e65@changeid>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/28.2
- (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-Content-Type: text/plain; charset=US-ASCII
-X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: dianders@chromium.org, tglx@linutronix.de, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, wenst@chromium.org, eddie.huang@mediatek.com, allen-kh.cheng@mediatek.com, Ben.Ho@mediatek.com, weiyi.lu@mediatek.com, angelogioacchino.delregno@collabora.com, linux-arm-kernel@lists.infradead.org, tinghan.shen@mediatek.com, jwerner@chromium.org, hsin-hsiung.wang@mediatek.com, yidilin@chromium.org, seiya.wang@mediatek.com, conor+dt@kernel.org, linux-kernel@vger.kernel.org
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
+	id 1pxNl9-00BGqx-1w;
+	Fri, 12 May 2023 08:04:17 +0000
+X-UUID: 93946e34f09b11ed912e1518a6540028-20230512
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=dHOFHumFnrSrz0KER+FGn5/tfxFAz3JgJ4ek49h80NQ=;
+	b=vCm2d+riJPluxxioYplaY/BIA7Bm7YEXqRgkZEc8XRDqcAgeCLlex+KPxtSxSDLH6bgqGGr1CMLtHmEeodiuJOAWUvvyHsy1pkxD276+cR2oa8iDmtX2JxbQ9bQ9fPKDTenYV6LlYM6uWmX3FnSoI7ToR0cf7BUjV55RcuOZXHw=;
+X-CID-P-RULE: Spam_GS6885AD
+X-CID-O-INFO: VERSION:1.1.24,REQID:5c97c2c3-9e7a-4fe0-be00-38037a1f7209,IP:0,U
+	RL:25,TC:0,Content:100,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Spam_GS6885AD,AC
+	TION:quarantine,TS:125
+X-CID-META: VersionHash:178d4d4,CLOUDID:3d65f53a-de1e-4348-bc35-c96f92f1dcbb,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:801,TC:nil,Content:3,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: 93946e34f09b11ed912e1518a6540028-20230512
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <yi-de.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1840478343; Fri, 12 May 2023 01:04:10 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 12 May 2023 16:04:07 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 12 May 2023 16:04:07 +0800
+From: Yi-De Wu <yi-de.wu@mediatek.com>
+To: Yingshiuan Pan <yingshiuan.pan@mediatek.com>, Ze-Yu Wang
+	<ze-yu.wang@mediatek.com>, Yi-De Wu <yi-de.wu@mediatek.com>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+	Jonathan Corbet <corbet@lwn.net>, Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>, Arnd Bergmann <arnd@arndb.de>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-doc@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-arch@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Trilok
+ Soni <quic_tsoni@quicinc.com>, David Bradil <dbrazdil@google.com>, Jade Shih
+	<jades.shih@mediatek.com>, Miles Chen <miles.chen@mediatek.com>, Ivan Tseng
+	<ivan.tseng@mediatek.com>, My Chuang <my.chuang@mediatek.com>, Shawn Hsiao
+	<shawn.hsiao@mediatek.com>, PeiLun Suei <peilun.suei@mediatek.com>, Liju Chen
+	<liju-clr.chen@mediatek.com>
+Subject: [PATCH v3 2/7] dt-bindings: hypervisor: Add MediaTek GenieZone hypervisor
+Date: Fri, 12 May 2023 16:04:00 +0800
+Message-ID: <20230512080405.12043-3-yi-de.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230512080405.12043-1-yi-de.wu@mediatek.com>
+References: <20230512080405.12043-1-yi-de.wu@mediatek.com>
+MIME-Version: 1.0
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230512_010239_952496_D40FB34C 
-X-CRM114-Status: GOOD (  39.25  )
+X-CRM114-CacheID: sfid-20230512_010415_647784_42E2AD33 
+X-CRM114-Status: GOOD (  15.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,81 +94,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 11 May 2023 23:05:35 +0100,
-Douglas Anderson <dianders@chromium.org> wrote:
-> 
-> When trying to turn on the "pseudo NMI" kernel feature in Linux, it
-> was discovered that all Mediatek-based Chromebooks that ever shipped
-> (at least ones with GICv3) had a firmware bug where they wouldn't save
-> certain GIC "GICR" registers properly. If a processor ever entered a
-> suspend/idle mode where the GICR registers lost state then they'd be
-> reset to their default state.
-> 
-> As a result of the bug, if you try to enable "pseudo NMIs" on the
-> affected devices then certain interrupts will unexpectedly get
-> promoted to be "pseudo NMIs" and cause crashes / freezes / general
-> mayhem.
-> 
-> ChromeOS is looking to start turning on "pseudo NMIs" in production to
-> make crash reports more actionable. To do so, we will release firmware
-> updates for at least some of the affected Mediatek Chromebooks.
-> However, even when we update the firmware of a Chromebook it's always
-> possible that a user will end up booting with old firmware. We need to
-> be able to detect when we're running with firmware that will crash and
-> burn if pseudo NMIs are enabled.
-> 
-> The current plan is:
-> * Update the device trees of all affected Chromebooks to include the
->   'mediatek,gicr-save-quirk' property. The kernel can use this to know
->   not to enable certain features like "pseudo NMI". NOTE: device trees
->   for Chromebooks are never baked into the firmware but are bundled
->   with the kernel. A kernel will never be configured to use "pseudo
->   NMIs" and be bundled with an old device tree.
-> * When we get a fixed firmware for one of these Chromebooks, it will
->   patch the device tree to remove this property.
+From: "Yingshiuan Pan" <yingshiuan.pan@mediatek.com>
 
-Since you're in control of distributing the FW together with the
-kernel, I assume you're also in control of the command line. Why can't
-that firmware pass the option enabling the pseudo-NMI support,
-dispensing ourselves from all of this?
+Add documentation for GenieZone(gzvm) node. This node informs gzvm
+driver to start probing if geniezone hypervisor is available and
+able to do virtual machine operations.
 
-> 
-> For some details, you can also see the public bug
-> <https://issuetracker.google.com/281831288>
-> 
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> ---
-> 
->  .../bindings/interrupt-controller/arm,gic-v3.yaml           | 6 ++++++
->  1 file changed, 6 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/interrupt-controller/arm,gic-v3.yaml b/Documentation/devicetree/bindings/interrupt-controller/arm,gic-v3.yaml
-> index 92117261e1e1..8c251caae537 100644
-> --- a/Documentation/devicetree/bindings/interrupt-controller/arm,gic-v3.yaml
-> +++ b/Documentation/devicetree/bindings/interrupt-controller/arm,gic-v3.yaml
-> @@ -166,6 +166,12 @@ properties:
->    resets:
->      maxItems: 1
->  
-> +  mediatek,gicr-save-quirk:
+Signed-off-by: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
+Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
+---
+ .../hypervisor/mediatek,geniezone-hyp.yaml    | 31 +++++++++++++++++++
+ MAINTAINERS                                   |  1 +
+ 2 files changed, 32 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/hypervisor/mediatek,geniezone-hyp.yaml
 
-I think this deserves something *much* stronger that outlines what is
-wrong, because this is not just a quirk. This is a failure to even
-remotely grasp the requirements of the architecture (and to use
-standard, public code that would have done it correctly). Something
-like "mediatek,broken-save-restore-fw" would be more adequate.
-
-> +    type: boolean
-> +    description:
-> +      Asserts that the firmware on this device has issues saving and restoring
-> +      GICR registers when CPUs are powered off.
-
-Nit: not the the CPUs, but the GIC redistributors.
-
-Thanks,
-
-	M.
-
+diff --git a/Documentation/devicetree/bindings/hypervisor/mediatek,geniezone-hyp.yaml b/Documentation/devicetree/bindings/hypervisor/mediatek,geniezone-hyp.yaml
+new file mode 100644
+index 000000000000..ab89a4c310cb
+--- /dev/null
++++ b/Documentation/devicetree/bindings/hypervisor/mediatek,geniezone-hyp.yaml
+@@ -0,0 +1,31 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/hypervisor/mediatek,geniezone-hyp.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek GenieZone hypervisor
++
++maintainers:
++  - Yingshiuan Pan <yingshiuan.pan@mediatek.com>
++
++description:
++  This interface is designed for integrating GenieZone hypervisor into Android
++  Virtualization Framework(AVF) along with Crosvm as a VMM.
++  It acts like a wrapper for every hypercall to GenieZone hypervisor in
++  order to control guest VM lifecycles and virtual interrupt injections.
++
++properties:
++  compatible:
++    const: mediatek,geniezone-hyp
++
++required:
++  - compatible
++
++additionalProperties: false
++
++examples:
++  - |
++    hypervisor {
++        compatible = "mediatek,geniezone-hyp";
++    };
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 523246ff3d15..cdc1e1b0bbe7 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -8709,6 +8709,7 @@ GENIEZONE HYPERVISOR DRIVER
+ M:	Yingshiuan Pan <yingshiuan.pan@mediatek.com>
+ M:	Ze-Yu Wang <ze-yu.wang@mediatek.com>
+ M:	Yi-De Wu <yi-de.wu@mediatek.com>
++F:	Documentation/devicetree/bindings/hypervisor/mediatek,geniezone-hyp.yaml
+ F:	Documentation/virt/geniezone/
+ 
+ GENWQE (IBM Generic Workqueue Card)
 -- 
-Without deviation from the norm, progress is not possible.
+2.18.0
+
 
