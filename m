@@ -4,87 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A2F8C77B75
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 May 2023 17:56:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A988C77B7F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 May 2023 18:12:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=R9N7oS6jr5I1eNsTOfVL37WjNOJubQs2HqUtyANMDP0=; b=KejMC5iCENdr5zCCmd3X4iny2l
-	tLmjgLS1Dv9SjnyEnvkjnW1Lc1XrbIOKh9fj9zxLj2JHVWdxqQtjys0NXQ2hT1N8uZTpX5a+DxW1g
-	cCOXsYzWJceu3al4r9XFjGDSiOLetBPOZ5I9ZYD+rUgqTEPsUMe7jOA6CYpYa36xsvHrIpVgO/8T8
-	c/UKP74ctamnOk2IdD5b9RVhDBqiNLEjzOsUrfmU6PRWYPDKX0UuawjSWiRn0mDVNzst4SH8LpI8+
-	Vrm4GD3tuBJbOEGGagHzmP22CqllwRfE92CUj+TiX56Ug16otCvUJ6yeK0V326vQ6OGEebgS8iSQ6
-	tGS2giow==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=U5hrTY4Q0mLl4CPB25hyDadh24S+MwQG3Rj7eAgRsm8=; b=JefvC3XUbKCXBDfxeVeCwCvwfD
+	VKUGksrFDaXyVQYkLswRaJjSzwnkiDjTIlCpdPjdj6Ym2Nz6HNwD+fDVJlG79dgNJVIkSdYxkwwdp
+	Prlh9puEF9RfOvaL9IpHQ6w3YGhpbgI7E8abFxBy/irHT6zabgDcMxrvpIijgkyT4OMmGqkCmAZyo
+	njhZCrQg7PNLQF2ZSw7Jd5eM18SfTXWo1PHjdE/t/st18gFVS1Vy26LpQvUk/HaJxgmWQWC2lCf/U
+	EAw0Arn7623JAme8GuZX/dVB7ZPsLLhyppHPPJ/m+sduVMMUsXI8L9QHgyEsQo3jjYvdQEqBdDP93
+	S/sOlXjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxX0J-00CckE-2F;
-	Fri, 12 May 2023 17:56:31 +0000
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxX0F-00CcjF-2C
-	for linux-mediatek@lists.infradead.org;
-	Fri, 12 May 2023 17:56:29 +0000
-Received: by mail-pf1-x435.google.com with SMTP id d2e1a72fcca58-643ac91c51fso6492879b3a.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 12 May 2023 10:56:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1683914186; x=1686506186;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=R9N7oS6jr5I1eNsTOfVL37WjNOJubQs2HqUtyANMDP0=;
-        b=e8VeAJis7BiGB80fGC9OA2dXjFxJ84RYh+orJsPRquyiCWeb/YOnxgvRH4NQ5DN+Sz
-         K8zIePNL37kmIZi3LujOHN95Q4j9j8pag4WDkr/9Ztd6IeVl/mq+FLwLgzRaF5FuYYOC
-         taL3EkI2ffVatTtsWqvJNfxXEuGQiP4igFIaapo2GOWDQqgdPHe0EON7ABVsRcah/pap
-         NaqDMAxkgs7zK/IuYeqXLx/QNiG+AC+GgRXA/FoGxG+Bk1ZMm/DplIYxXUg7WMEXR0Sj
-         OfTN2cHkaYiHjfM6BSVcJO0hylb4gfOgX8LD8q+mcs63ID5+gvWXFz2/UKg51aSuspwn
-         0LEQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683914186; x=1686506186;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=R9N7oS6jr5I1eNsTOfVL37WjNOJubQs2HqUtyANMDP0=;
-        b=IkbOdjwT2GwYoupJtqiDpU86FeB1V7KgVxHuLZN0ld08mi7sl0C1CEzj+/U8uPm3Dx
-         C7u+xNeObwMsz/nm/xe4p95wlfKzswoCxRN6YyNaDxiS+yuvbc0U8dTa9P6JOgeBbHBN
-         vPV5tz86yGSaeqPSGfnlgjMQbg8zfnoTg3iMpX7eZ1vBele3yfrYzN5XjZQsD+JU3ojj
-         /hvDnDLvbPIG4KbEdQmZgvuEFRg1fY3iMLoEJzycrtSTOF510vUbTzvWE+GFdPSbIsCO
-         0IqDaRWg9sPLGwKKoW9CDEQz889/NSeP47d1VxCQgprzc1qZZfFS2CjWavY/6/IGJBoc
-         ox5g==
-X-Gm-Message-State: AC+VfDyxWP0AgNtLy3UFg25Ap6PXopimG3hV7nsG2+FKRi7EBSFMsxc/
-	75F53RMXG6cFpvrmAvPAl4A8gg==
-X-Google-Smtp-Source: ACHHUZ7PynoPsqxQ9BaRx3LZvfa6R+SwPfo3isHwZ5NUP1XZZEDFDgjXygEj5DaDyxccAYzMaBXPHw==
-X-Received: by 2002:a05:6a20:9153:b0:101:3600:6aa5 with SMTP id x19-20020a056a20915300b0010136006aa5mr16881734pzc.3.1683914185675;
-        Fri, 12 May 2023 10:56:25 -0700 (PDT)
-Received: from p14s ([2604:3d09:148c:c800:3c53:c331:6276:810])
-        by smtp.gmail.com with ESMTPSA id o4-20020a63f144000000b00513973a7014sm6946408pgk.12.2023.05.12.10.56.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 12 May 2023 10:56:25 -0700 (PDT)
-Date: Fri, 12 May 2023 11:56:22 -0600
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: Tinghan Shen <tinghan.shen@mediatek.com>
-Cc: Bjorn Andersson <andersson@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v11 06/11] remoteproc: mediatek: Probe multi-core SCP
-Message-ID: <ZF59xilzufy69RZh@p14s>
-References: <20230510063749.5127-1-tinghan.shen@mediatek.com>
- <20230510063749.5127-7-tinghan.shen@mediatek.com>
+	id 1pxXG0-00CeUI-29;
+	Fri, 12 May 2023 18:12:44 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1pxXFw-00CeRD-1z;
+	Fri, 12 May 2023 18:12:42 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id A03D3D75;
+	Fri, 12 May 2023 11:13:16 -0700 (PDT)
+Received: from [10.57.82.232] (unknown [10.57.82.232])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 672A53F67D;
+	Fri, 12 May 2023 11:12:26 -0700 (PDT)
+Message-ID: <9488a2cc-fbc6-6c1e-58f8-e2e1dc5db579@arm.com>
+Date: Fri, 12 May 2023 19:12:21 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230510063749.5127-7-tinghan.shen@mediatek.com>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.1
+Subject: Re: [PATCH 02/20] iommu/terga-gart: Replace set_platform_dma_ops()
+ with IOMMU_DOMAIN_PLATFORM
+Content-Language: en-GB
+To: Jason Gunthorpe <jgg@nvidia.com>, Dmitry Osipenko <digetx@gmail.com>
+Cc: Thierry Reding <thierry.reding@gmail.com>, Andy Gross
+ <agross@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+ Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>, Orson Zhai <orsonzhai@gmail.com>,
+ Rob Clark <robdclark@gmail.com>, Samuel Holland <samuel@sholland.org>,
+ Niklas Schnelle <schnelle@linux.ibm.com>, Krishna Reddy <vdumpa@nvidia.com>,
+ Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>,
+ Yong Wu <yong.wu@mediatek.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
+ Lu Baolu <baolu.lu@linux.intel.com>, Kevin Tian <kevin.tian@intel.com>,
+ Nicolin Chen <nicolinc@nvidia.com>, Steven Price <steven.price@arm.com>
+References: <2-v1-21cc72fcfb22+a7a-iommu_all_defdom_jgg@nvidia.com>
+ <1db712d2-9e33-4183-2766-34e32f170507@arm.com> <ZFI/D6mnLKYpdIqx@nvidia.com>
+ <1a995f30-31fe-354f-ddfe-e944fa36e7a0@arm.com> <ZFJlZ03lswl9uHD0@nvidia.com>
+ <ZFJzKQcKNFHdIWqy@orome> <ZFKXz/HWFkYOJrgT@nvidia.com>
+ <4a5ebc65-a384-a8df-c692-ca114f1a018d@gmail.com>
+ <ZF5uKPhpBNioJUwL@nvidia.com>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <ZF5uKPhpBNioJUwL@nvidia.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230512_105627_721137_92AA9172 
-X-CRM114-Status: GOOD (  34.17  )
+X-CRM114-CacheID: sfid-20230512_111240_766246_2D26E553 
+X-CRM114-Status: GOOD (  18.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,249 +92,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 10, 2023 at 02:37:44PM +0800, Tinghan Shen wrote:
-> The difference of single-core SCP and multi-core SCP device tree is
-> the presence of child device nodes described SCP cores. The SCP
-> driver populates the platform device and checks the child nodes
-> to identify whether it's a single-core SCP or a multi-core SCP.
+On 2023-05-12 17:49, Jason Gunthorpe wrote:
+> On Fri, May 12, 2023 at 05:55:23AM +0300, Dmitry Osipenko wrote:
 > 
-> Add the remoteproc instances of multi-core SCP to the SCP cluster list.
-> When the SCP driver is removed, it cleanup resources by walking
-> through the cluster list.
+>>>> This has occasionally come up in the past and I seem to remember that it
+>>>> had once been proposed to simply remove tegra-gart and there had been no
+>>>> objections. Adding Dmitry, if he doesn't have objections to remaving it,
+>>>> neither do I.
+>>>
+>>> Dmitry, please say yes and I will remove it instead of trying to carry
+>>> it. The driver is almost 10 years old at this point, I'm skeptical
+>>> anyone will need it on a 6.2 era kernel..
+>>
+>> You probably missed that support for many of 10 years old Tegra2/3
+>> devices was added to kernel during last years.
+>>
+>> This GART isn't used by upstream DRM driver, but it's used by downstream
+>> kernel which uses alternative Tegra DRM driver that works better for
+>> older hardware.
 > 
-> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> ---
->  drivers/remoteproc/mtk_scp.c | 135 ++++++++++++++++++++++++++++++-----
->  1 file changed, 117 insertions(+), 18 deletions(-)
-> 
-> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> index ff73c6dd9637..87215a0e145e 100644
-> --- a/drivers/remoteproc/mtk_scp.c
-> +++ b/drivers/remoteproc/mtk_scp.c
-> @@ -864,7 +864,8 @@ static void scp_remove_rpmsg_subdev(struct mtk_scp *scp)
->  }
->  
->  static struct mtk_scp *scp_rproc_init(struct platform_device *pdev,
-> -				      struct mtk_scp_of_cluster *scp_cluster)
-> +				      struct mtk_scp_of_cluster *scp_cluster,
-> +				      const struct mtk_scp_of_data *of_data)
->  {
->  	struct device *dev = &pdev->dev;
->  	struct device_node *np = dev->of_node;
-> @@ -887,7 +888,7 @@ static struct mtk_scp *scp_rproc_init(struct platform_device *pdev,
->  	scp = rproc->priv;
->  	scp->rproc = rproc;
->  	scp->dev = dev;
-> -	scp->data = of_device_get_match_data(dev);
-> +	scp->data = of_data;
->  	platform_device_add_data(pdev, &scp, sizeof(scp));
->  
->  	scp->reg_base = scp_cluster->reg_base;
-> @@ -938,10 +939,6 @@ static struct mtk_scp *scp_rproc_init(struct platform_device *pdev,
->  		goto remove_subdev;
->  	}
->  
-> -	ret = rproc_add(rproc);
-> -	if (ret)
-> -		goto remove_subdev;
-> -
+> It is kernel policy not to carry code to only support out of tree drivers in
+> mainline, so it should be removed, thanks
 
-This should have been done in the previous patch.
+Aww, I was literally in the middle of writing a Friday-afternoon patch 
+to fix it... still need to build-test, but it's really not looking too 
+bad at all:
 
->  	return scp;
->  
->  remove_subdev:
-> @@ -956,19 +953,116 @@ static struct mtk_scp *scp_rproc_init(struct platform_device *pdev,
->  	return ERR_PTR(ret);
->  }
->  
-> +static void scp_rproc_free(struct mtk_scp *scp)
-> +{
-> +	int i;
-> +
-> +	scp_remove_rpmsg_subdev(scp);
-> +	scp_ipi_unregister(scp, SCP_IPI_INIT);
-> +	scp_unmap_memory_region(scp);
-> +	for (i = 0; i < SCP_IPI_MAX; i++)
-> +		mutex_destroy(&scp->ipi_desc[i].lock);
-> +	mutex_destroy(&scp->send_lock);
-> +}
-> +
-> +static int scp_is_single_core(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct device_node *np = dev_of_node(dev);
-> +	struct device_node *child;
-> +
-> +	child = of_get_next_available_child(np, NULL);
-> +	if (!child)
-> +		return dev_err_probe(dev, -ENODEV, "No child node\n");
-> +
-> +	of_node_put(child);
-> +	return of_node_name_eq(child, "cros-ec-rpmsg");
-> +}
-> +
->  static int scp_cluster_init(struct platform_device *pdev)
->  {
-> -	struct mtk_scp *scp;
-> +	struct mtk_scp *scp, *temp;
->  	struct mtk_scp_of_cluster *scp_cluster = platform_get_drvdata(pdev);
->  	struct list_head *cluster = &scp_cluster->mtk_scp_cluster;
->  
-> -	scp = scp_rproc_init(pdev, scp_cluster);
-> -	if (IS_ERR(scp))
-> -		return PTR_ERR(scp);
-> +	struct device *dev = &pdev->dev;
-> +	struct device_node *np = dev_of_node(dev);
-> +	struct platform_device *cpdev;
-> +	struct device_node *child;
-> +	const struct mtk_scp_of_data **cluster_of_data;
-> +	int core_id = 0;
-> +	int ret;
-> +
-> +	ret = scp_is_single_core(pdev);
-> +	if (ret < 0)
-> +		return ret;
-> +
-> +	if (ret) {
-> +		dev_dbg(dev, "single-core scp\n");
-> +
-> +		/* When using the SCP node phandle on exported SCP APIs, the drvdata
-> +		 * is expected to be the mtk_scp object, and as a result, it is intended
-> +		 * to be overwritten for single-core SCP usage.
-> +		 */
+  drivers/iommu/tegra-gart.c | 53 +++++++++++++++++-----------------
+  1 file changed, 27 insertions(+), 26 deletions(-)
 
-Is this comment still relevant?
+After that I was going to clean up the force_aperture confusion. TBH 
+I've grown to rather like having this driver around as an exception to 
+prove our abstractions and help make sure they make sense - it doesn't 
+take much effort to keep it functional, and it's not like there aren't 
+plenty of in-tree drivers for hardware even more ancient, obscure and 
+less-used than Tegra20. FWIW I have *20*-year-old hardware at home 
+running an up-to-date mainline-based distro for a practical purpose, but 
+I guess that's considered valid if it says Intel on it? :P
 
-> +		scp = scp_rproc_init(pdev, scp_cluster, of_device_get_match_data(dev));
-> +		if (IS_ERR(scp))
-> +			return PTR_ERR(scp);
-> +
-> +		list_add_tail(&scp->elem, cluster);
-
-This is getting messy.  Please add two new functions, i.e scp_add_single_core()
-and scp_add_multi_core().
-
-> +	} else {
-> +		dev_dbg(dev, "multi-core scp\n");
-> +
-> +		cluster_of_data = (const struct mtk_scp_of_data **)of_device_get_match_data(dev);
-> +
-> +		for_each_available_child_of_node(np, child) {
-> +			if (!cluster_of_data[core_id]) {
-> +				ret = -EINVAL;
-> +				dev_err(dev, "Not support core %d\n", core_id);
-> +				of_node_put(child);
-> +				goto init_fail;
-> +			}
-> +
-> +			cpdev = of_find_device_by_node(child);
-> +			if (!cpdev) {
-> +				ret = -ENODEV;
-> +				dev_err(dev, "Not found platform device for core %d\n", core_id);
-> +				of_node_put(child);
-> +				goto init_fail;
-> +			}
-> +
-> +			scp = scp_rproc_init(cpdev, scp_cluster, cluster_of_data[core_id]);
-> +			if (IS_ERR(scp)) {
-> +				dev_err(dev, "Failed to initialize core %d rproc\n", core_id);
-> +				put_device(&cpdev->dev);
-> +				of_node_put(child);
-> +				goto init_fail;
-> +			}
-> +			list_add_tail(&scp->elem, cluster);
-> +			put_device(&cpdev->dev);
-> +
-> +			core_id++;
-> +		}
-> +	}
->  
-> -	list_add_tail(&scp->elem, cluster);
-> +	list_for_each_entry_safe_reverse(scp, temp, cluster, elem) {
-> +		ret = rproc_add(scp->rproc);
-
-Call rproc_add() in the for_each_available_child_of_node() loop above.  That way
-it if fails you can call scp_rproc_free() right away and jump to init_fail to
-deal with the other cores on the list.
-
-> +		if (ret)
-> +			goto add_fail;
-> +	}
->  
->  	return 0;
-> +
-> +add_fail:
-> +	list_for_each_entry_continue(scp, cluster, elem) {
-> +		rproc_del(scp->rproc);
-> +	}
-> +init_fail:
-> +	list_for_each_entry_safe_reverse(scp, temp, cluster, elem) {
-> +		list_del(&scp->elem);
-> +		scp_rproc_free(scp);
-> +	}
-> +
-
-There are a serious problems with the code in both labels above.  I will let you
-think about that and I will stop here for this revision.
-
-Mathieu
-
-> +	return ret;
->  }
->  
->  static int scp_probe(struct platform_device *pdev)
-> @@ -1005,6 +1099,10 @@ static int scp_probe(struct platform_device *pdev)
->  	INIT_LIST_HEAD(&scp_cluster->mtk_scp_cluster);
->  	platform_set_drvdata(pdev, scp_cluster);
->  
-> +	ret = devm_of_platform_populate(dev);
-> +	if (ret)
-> +		return dev_err_probe(dev, ret, "Failed to populate platform devices\n");
-> +
->  	ret = scp_cluster_init(pdev);
->  	if (ret)
->  		return ret;
-> @@ -1016,17 +1114,11 @@ static int scp_remove(struct platform_device *pdev)
->  {
->  	struct mtk_scp_of_cluster *scp_cluster = platform_get_drvdata(pdev);
->  	struct mtk_scp *scp, *temp;
-> -	int i;
->  
->  	list_for_each_entry_safe_reverse(scp, temp, &scp_cluster->mtk_scp_cluster, elem) {
->  		list_del(&scp->elem);
->  		rproc_del(scp->rproc);
-> -		scp_remove_rpmsg_subdev(scp);
-> -		scp_ipi_unregister(scp, SCP_IPI_INIT);
-> -		scp_unmap_memory_region(scp);
-> -		for (i = 0; i < SCP_IPI_MAX; i++)
-> -			mutex_destroy(&scp->ipi_desc[i].lock);
-> -		mutex_destroy(&scp->send_lock);
-> +		scp_rproc_free(scp);
->  	}
->  
->  	return 0;
-> @@ -1106,12 +1198,19 @@ static const struct mtk_scp_of_data mt8195_of_data_c1 = {
->  	.host_to_scp_int_bit = MT8195_CORE1_HOST_IPC_INT_BIT,
->  };
->  
-> +static const struct mtk_scp_of_data *mt8195_of_data_cores[] = {
-> +	&mt8195_of_data,
-> +	&mt8195_of_data_c1,
-> +	NULL
-> +};
-> +
->  static const struct of_device_id mtk_scp_of_match[] = {
->  	{ .compatible = "mediatek,mt8183-scp", .data = &mt8183_of_data },
->  	{ .compatible = "mediatek,mt8186-scp", .data = &mt8186_of_data },
->  	{ .compatible = "mediatek,mt8188-scp", .data = &mt8188_of_data },
->  	{ .compatible = "mediatek,mt8192-scp", .data = &mt8192_of_data },
->  	{ .compatible = "mediatek,mt8195-scp", .data = &mt8195_of_data },
-> +	{ .compatible = "mediatek,mt8195-scp-dual", .data = &mt8195_of_data_cores },
->  	{},
->  };
->  MODULE_DEVICE_TABLE(of, mtk_scp_of_match);
-> -- 
-> 2.18.0
-> 
+Thanks,
+Robin.
 
