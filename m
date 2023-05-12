@@ -4,95 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E5CBC77B7C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 May 2023 13:40:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16E42C77B75
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 May 2023 14:07:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GHh7THGmNUX1NDYtIMVbnhFwwspK0WwD8hBv2/VAAYc=; b=49na41iH45ZtMEMSqayY5amE9L
-	ONf3ilRQwzGP6g+8+WEQFkQo4kUEXUK4M9s2nHJc3VTnI63GugyuiX8BhDr8JYP3RV57ZFzpaqDI6
-	q0+wVuvNA9jjBQVroiJ165YY9eEoVSOF8Ea0cDSoQHkvlAUGI5qvLGNFESCRClBerOiky5xrg2vyM
-	FuXdq7kVbhdu5hJP+x5czAk/PsjwTeozmn9E8zeirWYh41sfLi/l/suI1nB5kxt5d5kqunJp23yc+
-	A8MpSaY5V6w11EL9KI396oYV92OtsTWsXu3p4IJPNOvzSpjNrEHY+KQKjQwLarXj736EyEYdMjuBd
-	FJQeKDKQ==;
+	bh=sBK7MtjywAeGn+dXgdBRN46DBOY/1h28sVdTEkwe97Q=; b=wCo5kELrkj03mu1JIeGBkVpqpF
+	c9h97vCE/XR85H+tB1+JzzEDuTrI/1UUvlnQdYEAoQ0kM8AXx9XJLt2cQXoz7rHbdI41LQtm7zvFn
+	iFT+Qt3Yck8HJa3zFM6tc4etwFdAfKCzkfJ/1f337uHsog/KCGMDFE/SrpC7oEzWE8DqD4oze6rL1
+	x0cfQqHS7jWSkDiq/xdn9gCBgm3Z8ZQYqum2zY652v+AxL1of7I1MAKHxRs9BiYW9dHpRBaRd/7Mb
+	VegPEdKa1AjA1f32iZlu8QMEb6OWTv60TUMxhmYF1glccgsqs6TcysYp1iZaikbk3wyRfb5miru9r
+	D9bt1EUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxT0o-00C36p-0R;
-	Fri, 12 May 2023 13:40:46 +0000
-Received: from mail-qt1-x831.google.com ([2607:f8b0:4864:20::831])
+	id 1pxTQO-00C7I9-1d;
+	Fri, 12 May 2023 14:07:12 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxT0k-00C34m-27
-	for linux-mediatek@lists.infradead.org;
-	Fri, 12 May 2023 13:40:44 +0000
-Received: by mail-qt1-x831.google.com with SMTP id d75a77b69052e-3f3a287ecceso21310571cf.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 12 May 2023 06:40:42 -0700 (PDT)
+	id 1pxTQL-00C7Gj-1Q;
+	Fri, 12 May 2023 14:07:10 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-3f41dceb9d1so72530765e9.1;
+        Fri, 12 May 2023 07:07:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1683898841; x=1686490841;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=GHh7THGmNUX1NDYtIMVbnhFwwspK0WwD8hBv2/VAAYc=;
-        b=LBIavBx65RK+r4uqlBsGVDjBwqBi2VAoWO5u4KU6+bgusanbag9pJmFX2VrEWGruvw
-         d/5c38pyCTlEpfHmF95A7kBY/LvlqMiVhHs1j8tsowLWZICI+FdEGzBbKDVlPpjFYtCC
-         HTUtVbhdXbyOnLJUs6R+KoKjM9BT/9gyzW3fs=
+        d=gmail.com; s=20221208; t=1683900428; x=1686492428;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=sBK7MtjywAeGn+dXgdBRN46DBOY/1h28sVdTEkwe97Q=;
+        b=MXezRAlnkuTV5pIpjNtJgwSMWk2ZtW3qENIEJCAHbuk0aVXOIC8odl/Fnb4T7vZUci
+         xu5Bh9Q3uH3CwzGETOxyeotYE1aC8So6ucFo8znyX0R8a6Tj/o1efJt7rcgpm4mMmvMT
+         aDzBHHyYWeT/RoTLjo1kPjCCqYsYDx6HCj3+yXL6jqbrk3HhukLzcCOL5KIQokSZ3zn7
+         AfkHtj/ZIPOHX/v/h7RdPAfeBTjShXG1H06NsI4d0RDhklGJiV28ctasKVKjOc1yzaVg
+         rLwlChOeVn8LXOrCaW/s0dRV4TdHYxoPy5H0Ix+pjPIuv+PHp9t+/FCbBaumrLCrHcml
+         3NvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683898841; x=1686490841;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=GHh7THGmNUX1NDYtIMVbnhFwwspK0WwD8hBv2/VAAYc=;
-        b=e7pEDaA2+pyldEMFHE2NJae9ESydAmE5o8WW/d9hI6QGNpfIqcOGc3i43cxfIwwObj
-         SApiiZiR1AGdfFmDy9KlcFDI19ZJjt2FhrGjs+UENcjcs4LAa+EnZXuIdEqJ4tz3b5K7
-         XZ65KwQLlyilNPRvMi1/Vr7voM4R5G8wzPdDquAOdhAcjJ8wCYrW9cQijdCKGRqmqJyO
-         CB02NBoBprBf4fUMWEOQjLhxpZtaNwyVFFT2PiJKWsYv+qxHvi3AAe35Q3twqjFznFH/
-         Uz4faR8q/brZb5+WDfUVFbHvPt0b5Din6yJXJ3/dBtffw9oesGtGe+7Li61t18acVgoR
-         1ESg==
-X-Gm-Message-State: AC+VfDyLrcqUVKpIyDuVjAqdIyhr53/V66VJkGDZj5zzFe+s55MsjBrJ
-	yVsN6cegiqEQwL0ID0ZW47yKFytlC/cjmu5LTA0=
-X-Google-Smtp-Source: ACHHUZ6SyuMh7+lV6z0En8obU6RcuR08jxPh1cDZIcmznpPIlrY92f388956yUY+2SfvmHqU12IXeQ==
-X-Received: by 2002:a05:622a:44:b0:3f3:91e9:47bf with SMTP id y4-20020a05622a004400b003f391e947bfmr24336719qtw.38.1683898840734;
-        Fri, 12 May 2023 06:40:40 -0700 (PDT)
-Received: from mail-qt1-f175.google.com (mail-qt1-f175.google.com. [209.85.160.175])
-        by smtp.gmail.com with ESMTPSA id l30-20020ac8459e000000b003e97fe68511sm3113089qtn.3.2023.05.12.06.40.39
-        for <linux-mediatek@lists.infradead.org>
+        d=1e100.net; s=20221208; t=1683900428; x=1686492428;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=sBK7MtjywAeGn+dXgdBRN46DBOY/1h28sVdTEkwe97Q=;
+        b=i9O1IdMMyz4yT3WCwHHqNgaMoW4QWvaqmya3XRNG0W1muo6cM+3jgDTNfl76rNJnXE
+         2RbtdZXRwcDfzNtTQmR9GeELHsgExxDfwdf82gJcQttiPakzZeP4/x0+3CdsBU0CvPQu
+         uAqMms46s5p369OMG+HnjK69U9B2LD2vTA/2WhbzhzmFHKaK8jQ5fdc7vX7VqxFzqOq/
+         1gaMJI4vLoGYPWhaKItrzuSSFSpKDB/hyj9cujEiCgzhS2y1CE5z2Ou4TvRAi3aepsiw
+         De0RaOmtY6Qh59kTb6LlpC+cW3HnhVH3eYm3u3lNcyFFNl0bUT7yo+82Sk4j18v90XTJ
+         0twg==
+X-Gm-Message-State: AC+VfDwK69qxsDHGmeI/lpl81srunrv3lBiHP4wUEv1EFBzp6z6pEY+b
+	h/YWsE76SOZavT8TWG2OpoA=
+X-Google-Smtp-Source: ACHHUZ466uoppPjkd165GZeEqdb991Ed9InTgjqBaF1UTbDVf5K/JhK+r1n2dr8zXlAuq8GT95qpZw==
+X-Received: by 2002:a05:600c:2283:b0:3f4:2254:bd86 with SMTP id 3-20020a05600c228300b003f42254bd86mr14567795wmf.8.1683900427563;
+        Fri, 12 May 2023 07:07:07 -0700 (PDT)
+Received: from [192.168.2.177] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id n22-20020a7bcbd6000000b003f41bb52834sm19323160wmi.38.2023.05.12.07.07.02
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 12 May 2023 06:40:39 -0700 (PDT)
-Received: by mail-qt1-f175.google.com with SMTP id d75a77b69052e-3f38a9918d1so1015531cf.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 12 May 2023 06:40:39 -0700 (PDT)
-X-Received: by 2002:a05:622a:1812:b0:3ef:1c85:5b5e with SMTP id
- t18-20020a05622a181200b003ef1c855b5emr253424qtc.19.1683898839232; Fri, 12 May
- 2023 06:40:39 -0700 (PDT)
+        Fri, 12 May 2023 07:07:06 -0700 (PDT)
+Message-ID: <5d330bb9-0034-72eb-37bf-3c1bd33e0f2e@gmail.com>
+Date: Fri, 12 May 2023 16:07:00 +0200
 MIME-Version: 1.0
-References: <20230511150539.6.Ia0b6ebbaa351e3cd67e201355b9ae67783c7d718@changeid>
- <20230511150539.1.Iabe67a827e206496efec6beb5616d5a3b99c1e65@changeid> <86v8gym0ys.wl-maz@kernel.org>
-In-Reply-To: <86v8gym0ys.wl-maz@kernel.org>
-From: Doug Anderson <dianders@chromium.org>
-Date: Fri, 12 May 2023 06:40:27 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=VnNaRc7D3nZ658KD18fDSQCBODS-16gpERkKcb7v793w@mail.gmail.com>
-Message-ID: <CAD=FV=VnNaRc7D3nZ658KD18fDSQCBODS-16gpERkKcb7v793w@mail.gmail.com>
-Subject: Re: [PATCH 1/6] dt-bindings: interrupt-controller: arm,gic-v3: Add
- quirk for Mediatek SoCs w/ broken FW
-To: Marc Zyngier <maz@kernel.org>
-Cc: Thomas Gleixner <tglx@linutronix.de>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, wenst@chromium.org, 
-	Eddie Huang <eddie.huang@mediatek.com>, Allen-KH Cheng <allen-kh.cheng@mediatek.com>, 
-	Ben Ho <Ben.Ho@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	linux-arm-kernel@lists.infradead.org, 
-	Tinghan Shen <tinghan.shen@mediatek.com>, jwerner@chromium.org, 
-	Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, yidilin@chromium.org, 
-	Seiya Wang <seiya.wang@mediatek.com>, Conor Dooley <conor+dt@kernel.org>, 
-	linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH v11 04/11] remoteproc: mediatek: Add MT8195 SCP core 1
+ operations
+Content-Language: en-US, ca-ES, es-ES
+To: Tinghan Shen <tinghan.shen@mediatek.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Mathieu Poirier <mathieu.poirier@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20230510063749.5127-1-tinghan.shen@mediatek.com>
+ <20230510063749.5127-5-tinghan.shen@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20230510063749.5127-5-tinghan.shen@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230512_064042_695671_B51A5DB4 
-X-CRM114-Status: GOOD (  45.67  )
+X-CRM114-CacheID: sfid-20230512_070709_481553_5ABC529A 
+X-CRM114-Status: GOOD (  22.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,118 +103,143 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Fri, May 12, 2023 at 1:02=E2=80=AFAM Marc Zyngier <maz@kernel.org> wrote=
-:
->
-> On Thu, 11 May 2023 23:05:35 +0100,
-> Douglas Anderson <dianders@chromium.org> wrote:
-> >
-> > When trying to turn on the "pseudo NMI" kernel feature in Linux, it
-> > was discovered that all Mediatek-based Chromebooks that ever shipped
-> > (at least ones with GICv3) had a firmware bug where they wouldn't save
-> > certain GIC "GICR" registers properly. If a processor ever entered a
-> > suspend/idle mode where the GICR registers lost state then they'd be
-> > reset to their default state.
-> >
-> > As a result of the bug, if you try to enable "pseudo NMIs" on the
-> > affected devices then certain interrupts will unexpectedly get
-> > promoted to be "pseudo NMIs" and cause crashes / freezes / general
-> > mayhem.
-> >
-> > ChromeOS is looking to start turning on "pseudo NMIs" in production to
-> > make crash reports more actionable. To do so, we will release firmware
-> > updates for at least some of the affected Mediatek Chromebooks.
-> > However, even when we update the firmware of a Chromebook it's always
-> > possible that a user will end up booting with old firmware. We need to
-> > be able to detect when we're running with firmware that will crash and
-> > burn if pseudo NMIs are enabled.
-> >
-> > The current plan is:
-> > * Update the device trees of all affected Chromebooks to include the
-> >   'mediatek,gicr-save-quirk' property. The kernel can use this to know
-> >   not to enable certain features like "pseudo NMI". NOTE: device trees
-> >   for Chromebooks are never baked into the firmware but are bundled
-> >   with the kernel. A kernel will never be configured to use "pseudo
-> >   NMIs" and be bundled with an old device tree.
-> > * When we get a fixed firmware for one of these Chromebooks, it will
-> >   patch the device tree to remove this property.
->
-> Since you're in control of distributing the FW together with the
-> kernel, I assume you're also in control of the command line. Why can't
-> that firmware pass the option enabling the pseudo-NMI support,
-> dispensing ourselves from all of this?
-
-I considered the option, but it gets really awkward. Specifically:
-
-1. We can't have old firmwares "take away" the kernel command line
-option enabling pseudoNMI, obviously.
-
-2. Having new firmware inject `irqchip.gicv3_pseudo_nmi=3D1` into the
-kernel command line feels really awkward from an abstraction point of
-view. This bakes into the firmware an implementation detail about how
-something is implemented / enabled in the kernel, which feels wrong.
-In general I'm not a fan of needing the kernel command line argument
-to begin with and I'd hope that eventually it could go away.
-
-3. Having the firmware inject `irqchip.gicv3_pseudo_nmi=3D1` into the
-kernel command line also makes it awkward when you consider
-non-affected boards. On Qualcomm boards, Rockchip boards, and x86
-boards we want to enable pseudo NMI without needing to spin the
-firmware to have it add this option. ...so we have to add this option
-to the "default" command line for every board _except_ affected
-Mediatek boards? Is this weird convention something that our build
-system carries as we move to newer Mediatek SoCs that aren't affected?
-What if we want a single build for Mediatek and Qulcomm boards (which
-is something that has been bandied about, even if we haven't done it
-yet).
-
-Considering all the above, I think trying to use the
-`irqchip.gicv3_pseudo_nmi=3D1` like this wouldn't fly.
 
 
-> > For some details, you can also see the public bug
-> > <https://issuetracker.google.com/281831288>
-> >
-> > Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> > ---
-> >
-> >  .../bindings/interrupt-controller/arm,gic-v3.yaml           | 6 ++++++
-> >  1 file changed, 6 insertions(+)
-> >
-> > diff --git a/Documentation/devicetree/bindings/interrupt-controller/arm=
-,gic-v3.yaml b/Documentation/devicetree/bindings/interrupt-controller/arm,g=
-ic-v3.yaml
-> > index 92117261e1e1..8c251caae537 100644
-> > --- a/Documentation/devicetree/bindings/interrupt-controller/arm,gic-v3=
-.yaml
-> > +++ b/Documentation/devicetree/bindings/interrupt-controller/arm,gic-v3=
-.yaml
-> > @@ -166,6 +166,12 @@ properties:
-> >    resets:
-> >      maxItems: 1
-> >
-> > +  mediatek,gicr-save-quirk:
->
-> I think this deserves something *much* stronger that outlines what is
-> wrong, because this is not just a quirk. This is a failure to even
-> remotely grasp the requirements of the architecture (and to use
-> standard, public code that would have done it correctly). Something
-> like "mediatek,broken-save-restore-fw" would be more adequate.
+On 10/05/2023 08:37, Tinghan Shen wrote:
+> The SCP rproc driver has a set of chip dependent callbacks for
+> boot sequence and IRQ handling. Implement these callbacks for MT8195
+> SCP core 1.
+> 
+> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Sure, I'll rename it in the next spin. Unless we get into a big
-discussion somewhere else in this patch, I'll plan that for early next
-week.
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-
-> > +    type: boolean
-> > +    description:
-> > +      Asserts that the firmware on this device has issues saving and r=
-estoring
-> > +      GICR registers when CPUs are powered off.
->
-> Nit: not the the CPUs, but the GIC redistributors.
-
-Ah, good point. I'll update.
+> ---
+>   drivers/remoteproc/mtk_common.h |  9 ++++++
+>   drivers/remoteproc/mtk_scp.c    | 56 +++++++++++++++++++++++++++++++++
+>   2 files changed, 65 insertions(+)
+> 
+> diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
+> index ea6fa1100a00..c0905aec3b4b 100644
+> --- a/drivers/remoteproc/mtk_common.h
+> +++ b/drivers/remoteproc/mtk_common.h
+> @@ -47,6 +47,7 @@
+>   #define MT8192_SCP2SPM_IPC_CLR		0x4094
+>   #define MT8192_GIPC_IN_SET		0x4098
+>   #define MT8192_HOST_IPC_INT_BIT		BIT(0)
+> +#define MT8195_CORE1_HOST_IPC_INT_BIT	BIT(4)
+>   
+>   #define MT8192_CORE0_SW_RSTN_CLR	0x10000
+>   #define MT8192_CORE0_SW_RSTN_SET	0x10004
+> @@ -56,6 +57,14 @@
+>   
+>   #define MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS		GENMASK(7, 4)
+>   
+> +#define MT8195_CPU1_SRAM_PD			0x1084
+> +#define MT8195_SSHUB2APMCU_IPC_SET		0x4088
+> +#define MT8195_SSHUB2APMCU_IPC_CLR		0x408C
+> +#define MT8195_CORE1_SW_RSTN_CLR		0x20000
+> +#define MT8195_CORE1_SW_RSTN_SET		0x20004
+> +#define MT8195_CORE1_MEM_ATT_PREDEF		0x20008
+> +#define MT8195_CORE1_WDT_CFG			0x20034
+> +
+>   #define SCP_FW_VER_LEN			32
+>   #define SCP_SHARE_BUFFER_SIZE		288
+>   
+> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+> index e1d93e63d7df..2bf66b1a8d80 100644
+> --- a/drivers/remoteproc/mtk_scp.c
+> +++ b/drivers/remoteproc/mtk_scp.c
+> @@ -176,6 +176,16 @@ static void mt8192_scp_reset_deassert(struct mtk_scp *scp)
+>   	writel(1, scp->reg_base + MT8192_CORE0_SW_RSTN_CLR);
+>   }
+>   
+> +static void mt8195_scp_c1_reset_assert(struct mtk_scp *scp)
+> +{
+> +	writel(1, scp->reg_base + MT8195_CORE1_SW_RSTN_SET);
+> +}
+> +
+> +static void mt8195_scp_c1_reset_deassert(struct mtk_scp *scp)
+> +{
+> +	writel(1, scp->reg_base + MT8195_CORE1_SW_RSTN_CLR);
+> +}
+> +
+>   static void mt8183_scp_irq_handler(struct mtk_scp *scp)
+>   {
+>   	u32 scp_to_host;
+> @@ -212,6 +222,18 @@ static void mt8192_scp_irq_handler(struct mtk_scp *scp)
+>   	}
+>   }
+>   
+> +static void mt8195_scp_c1_irq_handler(struct mtk_scp *scp)
+> +{
+> +	u32 scp_to_host;
+> +
+> +	scp_to_host = readl(scp->reg_base + MT8195_SSHUB2APMCU_IPC_SET);
+> +
+> +	if (scp_to_host & MT8192_SCP_IPC_INT_BIT)
+> +		scp_ipi_handler(scp);
+> +
+> +	writel(scp_to_host, scp->reg_base + MT8195_SSHUB2APMCU_IPC_CLR);
+> +}
+> +
+>   static irqreturn_t scp_irq_handler(int irq, void *priv)
+>   {
+>   	struct mtk_scp *scp = priv;
+> @@ -453,6 +475,19 @@ static int mt8195_scp_before_load(struct mtk_scp *scp)
+>   	return 0;
+>   }
+>   
+> +static int mt8195_scp_c1_before_load(struct mtk_scp *scp)
+> +{
+> +	scp_sram_power_on(scp->reg_base + MT8195_CPU1_SRAM_PD, 0);
+> +
+> +	/* hold SCP in reset while loading FW. */
+> +	scp->data->scp_reset_assert(scp);
+> +
+> +	/* enable MPU for all memory regions */
+> +	writel(0xff, scp->reg_base + MT8195_CORE1_MEM_ATT_PREDEF);
+> +
+> +	return 0;
+> +}
+> +
+>   static int scp_load(struct rproc *rproc, const struct firmware *fw)
+>   {
+>   	struct mtk_scp *scp = rproc->priv;
+> @@ -625,6 +660,15 @@ static void mt8195_scp_stop(struct mtk_scp *scp)
+>   	writel(0, scp->reg_base + MT8192_CORE0_WDT_CFG);
+>   }
+>   
+> +static void mt8195_scp_c1_stop(struct mtk_scp *scp)
+> +{
+> +	/* Power off CPU SRAM */
+> +	scp_sram_power_off(scp->reg_base + MT8195_CPU1_SRAM_PD, 0);
+> +
+> +	/* Disable SCP watchdog */
+> +	writel(0, scp->reg_base + MT8195_CORE1_WDT_CFG);
+> +}
+> +
+>   static int scp_stop(struct rproc *rproc)
+>   {
+>   	struct mtk_scp *scp = rproc->priv;
+> @@ -991,6 +1035,18 @@ static const struct mtk_scp_of_data mt8195_of_data = {
+>   	.host_to_scp_int_bit = MT8192_HOST_IPC_INT_BIT,
+>   };
+>   
+> +static const struct mtk_scp_of_data mt8195_of_data_c1 = {
+> +	.scp_clk_get = mt8195_scp_clk_get,
+> +	.scp_before_load = mt8195_scp_c1_before_load,
+> +	.scp_irq_handler = mt8195_scp_c1_irq_handler,
+> +	.scp_reset_assert = mt8195_scp_c1_reset_assert,
+> +	.scp_reset_deassert = mt8195_scp_c1_reset_deassert,
+> +	.scp_stop = mt8195_scp_c1_stop,
+> +	.scp_da_to_va = mt8192_scp_da_to_va,
+> +	.host_to_scp_reg = MT8192_GIPC_IN_SET,
+> +	.host_to_scp_int_bit = MT8195_CORE1_HOST_IPC_INT_BIT,
+> +};
+> +
+>   static const struct of_device_id mtk_scp_of_match[] = {
+>   	{ .compatible = "mediatek,mt8183-scp", .data = &mt8183_of_data },
+>   	{ .compatible = "mediatek,mt8186-scp", .data = &mt8186_of_data },
 
