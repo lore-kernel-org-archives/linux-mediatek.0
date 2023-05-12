@@ -4,82 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC599C77B7C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 May 2023 03:13:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD901C77B7F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 May 2023 04:01:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FIKWTzsbM0dwoaRf64Qu10v5SQhI6q6nuz1uBIsxu94=; b=zEKCpZKeOPDQ/lGWsW1RF/2pzL
-	tv86uYxVqxmGbzmyD3QwEEZ3/p+VQ4sQDbvJq7+ASRGmhz2l2gY95Sl2Bp7B3hGM0CSbLtQKlU902
-	xxuqIEth0trN5/pIsaKD5BWbRSlx8yk6G0c+N1kIJV0QCSGTxIFrlytEUZ3iTpiQu7CvbmT7NmApg
-	8hl6u61XSS3PPRxmNdx/UCwArL/R0rhvNttB9+UoWhBVM3KvKsT+mZDVDFn0PYikc7tqfiyW/Vqbx
-	aFWJpJwVbEE7KSLEPXeE0lFRst/S6LcthbcjxBVZXnrsPVlkgFhnczlJChs+FrPy83JJrXsRFLEsD
-	bR9/+D8Q==;
+	bh=dkOUlUNxiR4Gqj0+EmYuULSRki0JxNp8SsnGkEdjwKw=; b=m/xZi4KpXBQcCYvwVOv9Ri8v6J
+	CD9kmt/2PhJ3rpNPHjc2Yog5YaObpjNIW+i9Lbcy3gLD/AcIz8vmMf0x/I71HMvhszDLNWTTOyLJ8
+	g/Yt/ERL9YMXItZKXRO31ah3UPm/aVWha9k08mHfbEbk/300mp4v2ZP1AUhmU1z/jKsojQOKs959A
+	aAzVFuf0LbK+6q0CNT7LwPQO+giQMHLsl+ynznxeqcMXWLlaPETUwMVKJi10AztHW0dz2w/yRlMnj
+	rF6WT9lSXVEYyLfY6HamJdd0F77i9F29kg/Y8s7A+bveJYUZr/IKO6GJ3qVJr3NHhfosMOdJ3FCcj
+	fui0wJFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxJDP-00Angj-37;
-	Fri, 12 May 2023 03:13:07 +0000
-Received: from mail-qt1-x829.google.com ([2607:f8b0:4864:20::829])
+	id 1pxJxz-00Arvf-01;
+	Fri, 12 May 2023 04:01:15 +0000
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxJDN-00Anfr-2h
-	for linux-mediatek@lists.infradead.org;
-	Fri, 12 May 2023 03:13:06 +0000
-Received: by mail-qt1-x829.google.com with SMTP id d75a77b69052e-3f396606ab0so953001cf.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 11 May 2023 20:13:05 -0700 (PDT)
+	id 1pxIwM-00Am0y-1c;
+	Fri, 12 May 2023 02:55:32 +0000
+Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-4efe8b3f3f7so10721234e87.2;
+        Thu, 11 May 2023 19:55:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20221208; t=1683861184; x=1686453184;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=FIKWTzsbM0dwoaRf64Qu10v5SQhI6q6nuz1uBIsxu94=;
-        b=CZiD6dnpXR2oAYhbHpac52YmOtECTL4PrcNlsQXTrgF2GDZzm8ANvYs2rrcpnVd3NV
-         5z155HJ/0J06Rei5Cf24HZgOJQYR6st+Tg1/rMoCN4i2+BZeVq1Y7pEj5VJ9Keb1K+Jb
-         JHqBKu+QYZ+lC2QrR3oXhm1Gs4phbHkQ2uAX/3530rGSvZ2N4WX7jIEO6pzd79AS+GlZ
-         YGeFF/5kyzighKa3ub7MoxKNuec5DobCIwtfDpN/TM0vhhEFvHvFFd1pkkK9WpFpKcD1
-         BrRcFZjc/9CUwz4nDXOMezdK3klAbanNXIlr4FMbmXBwrWnJ9baD20PVsxdzkuaJTlCz
-         MlWA==
+        d=gmail.com; s=20221208; t=1683860128; x=1686452128;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=dkOUlUNxiR4Gqj0+EmYuULSRki0JxNp8SsnGkEdjwKw=;
+        b=PpruK/NzGHjzRovvWCYvW7HqDD68KmOoIjPRjVBwwjOl44YKmS9LJw0bJlpO5wCaTK
+         JYQMRTt8PUIg7Tt3sXx/BumOofEX1UyIXH2rVZ7HQ4xk8w/0TIePej2ODQWIhhjMLGCF
+         ObsKQnai0HwA0gxPpanVkllqPWACWFvsyhk8otvSXkxJ7boKNh6rOvhXhhU7XGpKW3yF
+         bnb3jZjGoJuviMp6XaP/FxIe9hwsqI+C+2qQBWPRGsJkiS6fP0ZvUhHR+JTm3yUIwJpq
+         rSKT9UqKx0zvTFuela8XEHqJdseFq2qZbEhMjlCN21nk45Ltut9jjYaQ7C5U84jN7UFH
+         YUlA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683861184; x=1686453184;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=FIKWTzsbM0dwoaRf64Qu10v5SQhI6q6nuz1uBIsxu94=;
-        b=VawbpMGCiyzR7SgXA0MMTg7W35KjlRHHHP26UGNxZt4WhLqM1ICrbktX9BVLOMAOUu
-         s/Yp6bz7fSLqU7n2UiGDUZOIPS25Ki469LFWimbcrwITcKEFbFKsAm5VzyEARM/CsQkf
-         YMCslG1JlL8cKb7mlBQqzuo0SSIxFrLc8nrGMkikmXCAmjwVL8lOUHGxwDhYMKbZJ2VJ
-         YtZ//3q2qQjLLm1drVIdtqoq9tB6uPFK11RQlgv8rwqgRpFsS9T+4jYgLUuA5dRzoXS2
-         h4I6CUKmLv7uPp4zAKnzgicevya/K4BVTNHxV/NIWuiiAhG/OCLiU7Eu/ohgnRIQihIr
-         7uSQ==
-X-Gm-Message-State: AC+VfDygVuaIWgBBYV3Fk6p5w/9kdQxX0wl/02UtNpsj2pGJzFP7s+xa
-	nVnVzPT02EeDnyjPjjvQtPvKN6Qvx1CeMF0ADgNO
-X-Google-Smtp-Source: ACHHUZ4JnfrZvOycBzMaW0OjiWrBkQofMMdUE1fG68T2dtRqy4yEJncjgOz87BFIaeD5CkHPdJD1YirX5jVhbZddbYY=
-X-Received: by 2002:a05:622a:1812:b0:3ef:1c85:5b5e with SMTP id
- t18-20020a05622a181200b003ef1c855b5emr99445qtc.19.1683861184189; Thu, 11 May
- 2023 20:13:04 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1683860128; x=1686452128;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=dkOUlUNxiR4Gqj0+EmYuULSRki0JxNp8SsnGkEdjwKw=;
+        b=ldMuC4IkO4C6kOKOeelWdDTE1JjfQc92prTBJJIgxZCP5GIWEZanuM7K56w8Ysfibw
+         9TcgxrRv96Px648Lao84bjaNGzzZXB4zwDT/Q8Mb0it0ctTmOWT5OVwiCxwFUayzo04G
+         KcQu14VCgP6lJLj8tRcK0I+67zsAFAcFtLq6LPHJHbO316WVbKSi5VdBq+1OV2DKqALK
+         nCgezuufsmV4CV9LzQCbVqNJktp5yPUsg+jhSPMUUah6zii405u5gsJspfunYqEevhUD
+         5rxwuHqDSD7fWiMiG1/4Kn2mw+qWWlK0K03/5/WDpqpkgeQY1D6wvJ6hFDumfYQ4U4OM
+         2law==
+X-Gm-Message-State: AC+VfDwDpeWKT8IrcQNg10PKtkCDaCrj+D0rxtKnfJRc8pMXJf2SMU+a
+	Fh9hRJdtefX1bCmRLZDrnLw=
+X-Google-Smtp-Source: ACHHUZ4dxW4iqzv/N28X1gKcL88SemTjJ65/wtcy0AZdHSmj4XHMTrDxPz8Icvt/RO3sRR4TuYCJgw==
+X-Received: by 2002:ac2:488c:0:b0:4f1:4086:9384 with SMTP id x12-20020ac2488c000000b004f140869384mr3159987lfc.61.1683860127415;
+        Thu, 11 May 2023 19:55:27 -0700 (PDT)
+Received: from [192.168.2.145] (109-252-144-198.dynamic.spd-mgts.ru. [109.252.144.198])
+        by smtp.googlemail.com with ESMTPSA id c26-20020ac244ba000000b004efae490c51sm1285288lfm.240.2023.05.11.19.55.25
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 11 May 2023 19:55:26 -0700 (PDT)
+Message-ID: <4a5ebc65-a384-a8df-c692-ca114f1a018d@gmail.com>
+Date: Fri, 12 May 2023 05:55:23 +0300
 MIME-Version: 1.0
-References: <20230419074910.10809-1-walter.chang@mediatek.com> <20230419074910.10809-2-walter.chang@mediatek.com>
-In-Reply-To: <20230419074910.10809-2-walter.chang@mediatek.com>
-From: John Stultz <jstultz@google.com>
-Date: Thu, 11 May 2023 20:12:52 -0700
-Message-ID: <CANDhNCoNXO7phZj4zjpMWCA2OsK3EgTUenUuX0z-KAejgqu1Dg@mail.gmail.com>
-Subject: Re: [PATCH linux-next v3 1/4] time/sched_clock: Export sched_clock_register()
-To: walter.chang@mediatek.com
-Cc: Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	"Maciej W . Rozycki" <macro@orcam.me.uk>, wsd_upstream@mediatek.com, stanley.chu@mediatek.com, 
-	Chun-hung.Wu@mediatek.com, Freddy.Hsin@mediatek.com, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.1
+Subject: Re: [PATCH 02/20] iommu/terga-gart: Replace set_platform_dma_ops()
+ with IOMMU_DOMAIN_PLATFORM
+Content-Language: en-US
+To: Jason Gunthorpe <jgg@nvidia.com>,
+ Thierry Reding <thierry.reding@gmail.com>
+Cc: Robin Murphy <robin.murphy@arm.com>, Andy Gross <agross@kernel.org>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Bjorn Andersson
+ <andersson@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+ Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>, Orson Zhai <orsonzhai@gmail.com>,
+ Rob Clark <robdclark@gmail.com>, Samuel Holland <samuel@sholland.org>,
+ Niklas Schnelle <schnelle@linux.ibm.com>, Krishna Reddy <vdumpa@nvidia.com>,
+ Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>,
+ Yong Wu <yong.wu@mediatek.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
+ Lu Baolu <baolu.lu@linux.intel.com>, Kevin Tian <kevin.tian@intel.com>,
+ Nicolin Chen <nicolinc@nvidia.com>, Steven Price <steven.price@arm.com>
+References: <2-v1-21cc72fcfb22+a7a-iommu_all_defdom_jgg@nvidia.com>
+ <1db712d2-9e33-4183-2766-34e32f170507@arm.com> <ZFI/D6mnLKYpdIqx@nvidia.com>
+ <1a995f30-31fe-354f-ddfe-e944fa36e7a0@arm.com> <ZFJlZ03lswl9uHD0@nvidia.com>
+ <ZFJzKQcKNFHdIWqy@orome> <ZFKXz/HWFkYOJrgT@nvidia.com>
+From: Dmitry Osipenko <digetx@gmail.com>
+In-Reply-To: <ZFKXz/HWFkYOJrgT@nvidia.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230511_201305_879621_DDF464EA 
-X-CRM114-Status: UNSURE (   9.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230511_195530_559081_8C739D31 
+X-CRM114-Status: GOOD (  38.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,26 +120,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 19, 2023 at 12:49=E2=80=AFAM <walter.chang@mediatek.com> wrote:
->
-> From: Chun-Hung Wu <chun-hung.wu@mediatek.com>
->
-> clocksource driver may use sched_clock_register()
-> to resigter itself as a sched_clock source.
-> Export it to support building such driver
-> as module, like timer-mediatek.c
->
-> Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+03.05.2023 20:20, Jason Gunthorpe пишет:
+> On Wed, May 03, 2023 at 04:43:53PM +0200, Thierry Reding wrote:
+> 
+>>> The only thing it does is cause dma-iommu.c in ARM64 to use the
+>>> dma-ranges from OF instead of the domain aperture. sprd has no
+>>> dma-ranges in arch/arm64/boot/dts/sprd.
+>>>
+>>> Further, sprd hard fails any map attempt outside the aperture, so it
+>>> looks like a bug if the OF somehow chooses a wider aperture as
+>>> dma-iommu.c will start failing maps.
+>>
+>> That all sounds odd. of_dma_configure_id() already sets up the DMA mask
+>> based on dma-ranges and the DMA API uses that to restrict what IOVA any
+>> buffers can get mapped to for a given device.
+> 
+> Yes, and after it sets up the mask it also passes that range down like this:
+> 
+>  of_dma_configure_id():
+> 	end = dma_start + size - 1;
+> 	mask = DMA_BIT_MASK(ilog2(end) + 1);
+> 	dev->coherent_dma_mask &= mask;
+> 
+> 	arch_setup_dma_ops(dev, dma_start, size, iommu, coherent);
+> 
+> Which eventually goes to:
+> 
+>  iommu_setup_dma_ops()
+>  iommu_dma_init_domain()
+> 
+> Which then does:
+> 
+> 	if (domain->geometry.force_aperture) {
+> 
+> And if not set uses the dma_start/size parameter as the actual
+> aperture. (!?)
+> 
+> Since sprd does this in the iommu driver:
+> 
+> 	dom->domain.geometry.aperture_start = 0;
+> 	dom->domain.geometry.aperture_end = SZ_256M - 1;
+> 
+> And it is serious about enforcing it during map:
+> 
+> 	unsigned long start = domain->geometry.aperture_start;
+> 	unsigned long end = domain->geometry.aperture_end;
+> 
+> 	if (iova < start || (iova + size) > (end + 1)) {
+> 			return -EINVAL;
+> 
+> We must see the dma_start/size parameter be a subset of the aperture
+> or eventually dma-iommu.c will see map failures.
+> 
+> I can't see how this is can happen, so it looks like omitting
+> force_aperture is a mistake not a deliberate choice. I'll make a patch
+> and see if the SPRD folks have any comment. If there is no reason I
+> can go ahead and purge force_aperture and all the dma_start/size
+> passing through arch_setup_dma_ops().
+> 
+>>> Thus, I propose we just remove the whole thing. All drivers must set
+>>> an aperture and the aperture is the pure HW capability to map an
+>>> IOPTE at that address. ie it reflects the design of the page table
+>>> itself and nothing else.
+>>
+>> Yeah, that sounds reasonable. If the aperture represents what the IOMMU
+>> supports. Together with each device's DMA mask we should have everything
+>> we need.
+> 
+> Arguably we should respect the dma-ranges as well, but I think that
+> should come up from the iommu driver via the get_resv_regions() which
+> is the usual place we return FW originated information.
+> 
+>> For Tegra GART I think there's indeed no use-cases at the moment. Dmitry
+>> had at one point tried to make use of it because it can be helpful on
+>> some of the older devices that were very memory-constrained. That
+>> support never made it upstream because it required significant changes
+>> in various places, if I recall correctly. For anything with a decent
+>> enough amount of RAM, CMA is usually a better option.
+> 
+> So the actual use case of this HW is to linearize buffers? ie it is a
+> general scatter/gather engine?
+> 
+>> This has occasionally come up in the past and I seem to remember that it
+>> had once been proposed to simply remove tegra-gart and there had been no
+>> objections. Adding Dmitry, if he doesn't have objections to remaving it,
+>> neither do I.
+> 
+> Dmitry, please say yes and I will remove it instead of trying to carry
+> it. The driver is almost 10 years old at this point, I'm skeptical
+> anyone will need it on a 6.2 era kernel..
 
-Sorry for the late reply, I was traveling when I got your mail.
+You probably missed that support for many of 10 years old Tegra2/3
+devices was added to kernel during last years.
 
-Thanks for your iterations on this series.
-I'm ok with these, assuming the folks who maintain the timer-mediatek
-driver don't have any more objections.
+This GART isn't used by upstream DRM driver, but it's used by downstream
+kernel which uses alternative Tegra DRM driver that works better for
+older hardware.
 
-So for the first three patches:
-Acked-by: John Stultz <jstultz@google.com>
+If it's too much burden to maintain this driver, then feel free to
+remove it and I'll continue maintaining it in downstream myself.
+Otherwise I can test your changes if needed.
 
-thanks
--john
 
