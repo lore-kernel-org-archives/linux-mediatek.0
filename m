@@ -4,96 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3D17C7EE22
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 May 2023 23:16:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30CCFC77B7F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 May 2023 00:40:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=K+dvOm04w8PPu/rImCk8a3YHkXAbeV87AIPZhDPscPw=; b=y4tn8VPb9nh/3J9gLBSKOeAZXp
-	uolDUNiQ+BJtlv5uFr4gSQ8Os0CCs6rre8jpVOf1lvtuch2+/x9/A7Uc+yWLvwQGGXDzyb+p1wUHr
-	eOF4Iya1Bu/ZJeLTiqT4mZ5RRzlFMXRQ9woUO5QR6R934Stwt0gzbXwvtEu3g6+EKBYVyl5lSiDFL
-	rxTar2m/zOK3gRVnlcKU2wNKnOjBNZCAPuqmdLEwgQ2X1aD1JfOyV6Hk+oK0W1B8Dd8RQA6RJhuXT
-	opEF4BlhjHaYC061OqvMDJXbNhvQiJGFhHNiR1uMun6V1Wgg4aJ7SPM2uOiEtm1ITQmk31GYUSz1U
-	kczk4sjg==;
+	bh=CH4ppR/YImqXRCtEui/eyufHAaFxL08S2yugceeQpQw=; b=zJx9aFPiDK3t/zS+CSfamShhXb
+	ayICpVV9DYu61ZY/TZ5tXy6spo2vOv0VJAL3lQcNR9HI2HnOwPzgDK8waSTv8xpm/7jB/v8wYdFO5
+	obYNAYjDuAzxVtYeRbTSygVCZ/2eYxUfsSsPK1Nphjm54z3M3okJXKRFBI48nNXS6yxvvbA5eK94i
+	/CYvLWZmM0adjKrsG5KFAhaj4BjUO5DzFEgnxSh3dtKv+3zJzyTvoNcceFPDDtpXMlX6PGoRebtcP
+	te9ZVxQloSXmGIJ6K8lX1PpKiV7A5JYyBsVNyfGVhA2GbNsE9jdV2RLJToP9lbVPIETtE+91JQWNv
+	qYdTNRxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxFW9-00AJaS-1h;
-	Thu, 11 May 2023 23:16:13 +0000
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+	id 1pxGpQ-00AWUY-1O;
+	Fri, 12 May 2023 00:40:12 +0000
+Received: from mail-vk1-xa32.google.com ([2607:f8b0:4864:20::a32])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxERb-00A8AB-37
+	id 1pxGpO-00AWTK-0y
 	for linux-mediatek@lists.infradead.org;
-	Thu, 11 May 2023 22:07:29 +0000
-Received: by mail-pj1-x1034.google.com with SMTP id 98e67ed59e1d1-24de2954bc5so6380224a91.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 11 May 2023 15:07:27 -0700 (PDT)
+	Fri, 12 May 2023 00:40:11 +0000
+Received: by mail-vk1-xa32.google.com with SMTP id 71dfb90a1353d-4536ec953c1so1198523e0c.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 11 May 2023 17:40:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1683842847; x=1686434847;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+        d=chromium.org; s=google; t=1683852008; x=1686444008;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=K+dvOm04w8PPu/rImCk8a3YHkXAbeV87AIPZhDPscPw=;
-        b=hssIu15bC0KSO0j4n4UiTUSK1g1EmW3565jzwwoTqGY6zacsfwczA5MEV+3WEIgL51
-         FaOLFcYy4qZNQX5hyMTUAZC8ss2jKpC9yFQP3B0jicwEflxxCKpWdWKbuC6pxB1ydPks
-         q1YL08QBU2trw5ls56AwM/YC2p94uMB+870ko=
+        bh=CH4ppR/YImqXRCtEui/eyufHAaFxL08S2yugceeQpQw=;
+        b=aUcCBc3nacUromPCYUcTOUffpMJtnLw224rrn4TS6Bcw/VWfT1LggqJ1FJ16Eefj3R
+         Epw0k+jGFP1KZt2HLS8D204u5xiUqSVKTVq+scEZovCd4mdI0XKHTHnJVtEY6/oONSDH
+         2qiPekrL4qh6monUKwvmU6uhhq7jN9ycdfBRA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683842847; x=1686434847;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20221208; t=1683852008; x=1686444008;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=K+dvOm04w8PPu/rImCk8a3YHkXAbeV87AIPZhDPscPw=;
-        b=B0LGXg9NZZ12dz0tOZwXnzNDEJOnxCgIyBgUFszxNNaalGb7YA4j/pb0FXobKlSuhR
-         tny6DP89DHLqG3l5i1Zi74emqe1nzfsizBCxyY97BE4n/atnFKqFIoy3A/xKluvR/3lo
-         XYLNVxly/47eQHsGxlpB/eaB3uwFwgZGvATRVGQBD/wfO5SOYffOyrApAStqjnjyJQ+S
-         AuryLtiEaDp8dnZGHrQNeuFPEYKGXuD6UsdFxsZIdqFCCfIQf8esZL/VCBFc41P0MX4b
-         /xGjxhsIbWEpIVmaK4AUunhUnfoHEPonEPZH7mIanKCzeRPStVDigIhdxs6W0jyAhmuL
-         Mo2g==
-X-Gm-Message-State: AC+VfDyeYhOdoXyiBa1g3EqKM87SSp0QNulYTvlZPQUgaPDGV/bEIo/5
-	0cqSAuJZ+FeCx5WcV2c2P7xmu9cQOt/vk4vY0j4=
-X-Google-Smtp-Source: ACHHUZ41RE00te4Ijen+NU2VZLSRZZeq3ieV/CReVKY7S7BpZdh+5eIYWsjWa5jYSCS63ssl+OjuTQ==
-X-Received: by 2002:a17:90b:1804:b0:24e:39d2:ab80 with SMTP id lw4-20020a17090b180400b0024e39d2ab80mr22819969pjb.4.1683842846799;
-        Thu, 11 May 2023 15:07:26 -0700 (PDT)
-Received: from tictac2.mtv.corp.google.com ([2620:15c:9d:2:b96a:d776:ee3:e572])
-        by smtp.gmail.com with ESMTPSA id h24-20020a17090a9c1800b00247735d1463sm17589457pjp.39.2023.05.11.15.07.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 11 May 2023 15:07:25 -0700 (PDT)
-From: Douglas Anderson <dianders@chromium.org>
-To: Marc Zyngier <maz@kernel.org>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	wenst@chromium.org,
-	Eddie Huang <eddie.huang@mediatek.com>,
-	Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
-	Ben Ho <Ben.Ho@mediatek.com>,
-	Weiyi Lu <weiyi.lu@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	Tinghan Shen <tinghan.shen@mediatek.com>,
-	jwerner@chromium.org,
-	Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
-	yidilin@chromium.org,
-	Seiya Wang <seiya.wang@mediatek.com>,
-	Douglas Anderson <dianders@chromium.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH 4/6] arm64: dts: mediatek: mt8186: Add mediatek,gicr-save-quirk
-Date: Thu, 11 May 2023 15:05:38 -0700
-Message-ID: <20230511150539.4.Iaa0ee05cf0362540fda50dd6a0d87ee35dccd88b@changeid>
-X-Mailer: git-send-email 2.40.1.606.ga4b1b128d6-goog
-In-Reply-To: <20230511150539.6.Ia0b6ebbaa351e3cd67e201355b9ae67783c7d718@changeid>
-References: <20230511150539.6.Ia0b6ebbaa351e3cd67e201355b9ae67783c7d718@changeid>
+        bh=CH4ppR/YImqXRCtEui/eyufHAaFxL08S2yugceeQpQw=;
+        b=AZ+rzSoy9dt0GM9Q4lst+dLP2nnAZgyZFtnOpIcmF5vjKLNy49yzCt7qU0OYTYnuNe
+         3h7WkzygW/CY0YPNMzz0rYrLQVphvZFmDJpGWGY7Kd/AK6ylrRgTavQO2OOxFldksgwS
+         WloW3SWziFmnaHN4kcqFNuMP9FmTvA2A95cEiQzeIAChR/AMIwvTai55O6m+2H5H+1hs
+         56Tqlw0z3ta8DZhgb5f7LPwJAxtvlmbw7gltkh+c4s0A3G9NZxUCbxeQO5q5m+p9hSvx
+         0jKNld3ChMsjDgIHsRBz8+KfwYIv00MsJVcZKI8hGYOoyuIGXmdwPNrUsd6pHqQrKHTc
+         llbQ==
+X-Gm-Message-State: AC+VfDwtYFyZq7G92NHidN7ry8SkIrKvhbEaKc7a9uchbvtDr7om8fWf
+	Ujx7ueQkb3uVkx8bzKCudM3vKvmKBWJLz+nk9teWPA==
+X-Google-Smtp-Source: ACHHUZ7CJRLkBoOoXB2ebsy/eMzziU9dqHDjIi6dtiQ/z9qVxlIHckT/so67HALGLdwGNm/ISSZScafI9Zz3gusQTLs=
+X-Received: by 2002:a1f:5f46:0:b0:440:8b67:dba6 with SMTP id
+ t67-20020a1f5f46000000b004408b67dba6mr9468363vkb.4.1683852007778; Thu, 11 May
+ 2023 17:40:07 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20230509021214.17105-1-gehao@kylinos.cn>
+In-Reply-To: <20230509021214.17105-1-gehao@kylinos.cn>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Fri, 12 May 2023 09:39:56 +0900
+Message-ID: <CAGXv+5Gvw0QsOa-7E==61WUiJ-q=9qAqN9E0L9hsmk+t12RJ9A@mail.gmail.com>
+Subject: Re: [PATCH] mediatek/clk-mt8173-apmixedsys: use devm_of_iomap to
+ avoid resource leak in clk_mt8173_apmixed_probe
+To: Hao Ge <gehao@kylinos.cn>
+Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, gehao618@163.com, 
+	linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230511_150728_001401_2F5408E2 
-X-CRM114-Status: UNSURE (   9.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230511_174010_335802_6C84B1C8 
+X-CRM114-Status: GOOD (  17.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,31 +88,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Firmware shipped on mt8186 Chromebooks is affected by the GICR
-save/restore issue as described by the patch ("dt-bindings:
-interrupt-controller: arm,gic-v3: Add quirk for Mediatek SoCs w/
-broken FW"). Add the quirk property.
+On Tue, May 9, 2023 at 11:12=E2=80=AFAM Hao Ge <gehao@kylinos.cn> wrote:
+>
+> Use devm_platform_ioremap_resource to take the place of of_iomap for
+> avoid that we don't called iounmap when return some error or remove
+> device.
+>
+> Fixes: 4c02c9af3cb9 ("clk: mediatek: mt8173: Break down clock drivers and=
+ allow module build")
+> Signed-off-by: Hao Ge <gehao@kylinos.cn>
+> ---
+>  drivers/clk/mediatek/clk-mt8173-apmixedsys.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/clk/mediatek/clk-mt8173-apmixedsys.c b/drivers/clk/m=
+ediatek/clk-mt8173-apmixedsys.c
+> index 8c2aa8b0f39e..8a2a88c63d15 100644
+> --- a/drivers/clk/mediatek/clk-mt8173-apmixedsys.c
+> +++ b/drivers/clk/mediatek/clk-mt8173-apmixedsys.c
+> @@ -146,8 +146,8 @@ static int clk_mt8173_apmixed_probe(struct platform_d=
+evice *pdev)
+>         struct clk_hw *hw;
+>         int r;
+>
+> -       base =3D of_iomap(node, 0);
+> -       if (!base)
+> +       base =3D devm_of_iomap(&pdev->dev, node, 0, NULL);
+> +       if (IS_ERR(base))
 
-Fixes: 2e78620b1350 ("arm64: dts: Add MediaTek MT8186 dts and evaluation board and Makefile")
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
----
+From lib/devres.c:
 
- arch/arm64/boot/dts/mediatek/mt8186.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+ * Please Note: This is not a one-to-one replacement for of_iomap() because=
+ the
+ * of_iomap() function does not track whether the region is already mapped.=
+  If
+ * two drivers try to map the same memory, the of_iomap() function will suc=
+ceed
+ * but the devm_of_iomap() function will return -EBUSY.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-index 5e83d4e9efa4..09fbd8f9ea52 100644
---- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-@@ -336,6 +336,7 @@ gic: interrupt-controller@c000000 {
- 			reg = <0 0x0c000000 0 0x40000>,
- 			      <0 0x0c040000 0 0x200000>;
- 			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH 0>;
-+			mediatek,gicr-save-quirk;
- 
- 			ppi-partitions {
- 				ppi_cluster0: interrupt-partition-0 {
--- 
-2.40.1.606.ga4b1b128d6-goog
+The register range for apmixedsys given in mt8173.dtsi overlaps with
+the HDMI phy. I'm concerned that would cause issues.
 
+ChenYu
+
+>                 return PTR_ERR(base);
+>
+>         clk_data =3D mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
+> --
+> 2.25.1
+>
+>
+> No virus found
+>                 Checked by Hillstone Network AntiVirus
 
