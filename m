@@ -4,75 +4,122 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61D52C77B7F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 May 2023 14:29:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36044C77B75
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 May 2023 16:35:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UJ5M4FuUsPXGf9jn2+wgLDeUAy88NE08OYzpAkSXrBo=; b=Rrjon8gqWPdnPY+zWKFJJ6evcz
-	Dvj6VrG8paMkzQfVklKWgMZOURV0cEhOhR3SUoZVSRv2O1uNII2t75KaJnYlTqrO/dkGXTG3hnd97
-	YZgFY8Mao6GhoDr9TbwKFkH2zLg9AIQPgQyc3QXO4T+WyattbAWVnvxoBOjoxcKTW8UeE/ChHcU9H
-	DlOrfhx0QAsIQMoqNjB2fBEm9/uzHMkGfVas7YS8qCRgZFoQl3eDxONLczaoYCHoYrsjVkwAH9fmn
-	IlWCVSI8vBfSpAF6AHtvavPDfIraYB9RCs8usUZBVLiBt1yqj06UxrfKHpvgRDzuwIL5+ox767J7p
-	14EhkuCA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9WU0F0MVcux5FDfZibYYwUshorLv1fpr3rzhFkYzNIc=; b=E22B8Xgnb8vZ7pZQdKQE6+frLr
+	S1xcjnwZC4L4CRAQGfPkeCYS7fuPdXylt7s0YnQYE7P84IqOlwkMJFBgMvIINVAkylAigUW5MWh0v
+	fBJ3kzoK64NiSfrCOdywuOrrYN0IjRbJNN72hrJsCMMTy8vzVg8JNuKcm6zbc+ST9UdoZg64F06ug
+	YM0YZjl+8JWyX0eLE6zGT/RmDTr+2QpNlGHczRv0veKoChXtwsX2FkupSg5Clv09XcCVFmt2Y39x+
+	7c0b2EnEydfluWfMlFWq4H6jD5o0vF+Q2BmzQx8N6OvBsaq5zKEogN0NhbHIVgClGTzjC8inrTC5M
+	+/gvTb0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxTm1-00CB8Y-1S;
-	Fri, 12 May 2023 14:29:33 +0000
-Received: from hch by bombadil.infradead.org with local (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxTlu-00CB7h-0p;
-	Fri, 12 May 2023 14:29:26 +0000
-Date: Fri, 12 May 2023 07:29:26 -0700
-From: Christoph Hellwig <hch@infradead.org>
-To: Niklas Schnelle <schnelle@linux.ibm.com>
-Cc: Joerg Roedel <joro@8bytes.org>, Matthew Rosato <mjrosato@linux.ibm.com>,
-	Will Deacon <will@kernel.org>, Wenjia Zhang <wenjia@linux.ibm.com>,
-	Robin Murphy <robin.murphy@arm.com>, Jason Gunthorpe <jgg@ziepe.ca>,
-	Gerd Bayer <gbayer@linux.ibm.com>,
-	Julian Ruess <julianr@linux.ibm.com>,
-	Pierre Morel <pmorel@linux.ibm.com>,
-	Alexandra Winter <wintera@linux.ibm.com>,
-	Heiko Carstens <hca@linux.ibm.com>,
-	Vasily Gorbik <gor@linux.ibm.com>,
-	Alexander Gordeev <agordeev@linux.ibm.com>,
-	Christian Borntraeger <borntraeger@linux.ibm.com>,
-	Sven Schnelle <svens@linux.ibm.com>,
-	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
-	Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Lu Baolu <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Yong Wu <yong.wu@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Krishna Reddy <vdumpa@nvidia.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Jonathan Corbet <corbet@lwn.net>, linux-s390@vger.kernel.org,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	iommu@lists.linux.dev, asahi@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
-Subject: Re: [PATCH v8 0/6] iommu/dma: s390 DMA API conversion and optimized
- IOTLB flushing
-Message-ID: <ZF5NRls92rhmzV7B@infradead.org>
-References: <20230310-dma_iommu-v8-0-2347dfbed7af@linux.ibm.com>
+	id 1pxVjO-00CUch-2L;
+	Fri, 12 May 2023 16:34:58 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pxVjL-00CUbz-04;
+	Fri, 12 May 2023 16:34:56 +0000
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 34CFq5EG018240;
+	Fri, 12 May 2023 16:34:41 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=9WU0F0MVcux5FDfZibYYwUshorLv1fpr3rzhFkYzNIc=;
+ b=O9B69os5SZA5qhp167TQ5XWT88Oq8SDYSMWCuRs6UGYTBfBoF0z3KDif0pKinr4JBjZV
+ DRt1STuNVlA6L4JQBog1iGdV1mbkKbfQDXXhWcpAX9DAJMZVne60azJiWKYPNaHBL9SJ
+ Vre4xVNDOVQyxI4K303Ihp2UFIooGB9CEmgedys0FOFj4udFdfUzBX1WP3JBucQhrdk6
+ oDsFzL/0wf4QydTbBfMQiEqjjJhWBnb78xt/U5ntlkXMBykuY5f8gxDBWqrEn/Ew1Wlc
+ grwu5MTkrjnPWa771bpwoCWEbm40qqt7W0DBlzcWHdfCthB366HgMgsESY9a7ggrJYps og== 
+Received: from nasanppmta05.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3qhrdsg3hv-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 12 May 2023 16:34:41 +0000
+Received: from nasanex01a.na.qualcomm.com (nasanex01a.na.qualcomm.com [10.52.223.231])
+	by NASANPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 34CGYeRD018537
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 12 May 2023 16:34:40 GMT
+Received: from [10.110.80.184] (10.80.80.8) by nasanex01a.na.qualcomm.com
+ (10.52.223.231) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.42; Fri, 12 May
+ 2023 09:34:39 -0700
+Message-ID: <169ecb01-0ab6-93d7-7350-0c551b69e7ae@quicinc.com>
+Date: Fri, 12 May 2023 09:34:39 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230310-dma_iommu-v8-0-2347dfbed7af@linux.ibm.com>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH v2 2/7] dt-bindings: hypervisor: Add MediaTek GenieZone
+ hypervisor
+To: =?UTF-8?B?WWktRGUgV3UgKOWQs+S4gOW+tyk=?= <Yi-De.Wu@mediatek.com>,
+        "robh@kernel.org" <robh@kernel.org>
+CC: "corbet@lwn.net" <corbet@lwn.net>,
+        "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>,
+        =?UTF-8?B?TVkgQ2h1YW5nICjojormmI7ouo0p?= <MY.Chuang@mediatek.com>,
+        "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+        "arnd@arndb.de" <arnd@arndb.de>,
+        "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>,
+        "robh+dt@kernel.org" <robh+dt@kernel.org>,
+        "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>,
+        "angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>,
+        =?UTF-8?B?UGVpTHVuIFN1ZWkgKOmai+WfueWAqyk=?= <PeiLun.Suei@mediatek.com>,
+        =?UTF-8?B?TGlqdS1jbHIgQ2hlbiAo6Zmz6bqX5aaCKQ==?=
+	<Liju-clr.Chen@mediatek.com>,
+        =?UTF-8?B?SmFkZXMgU2hpaCAo5pa95ZCR546oKQ==?=
+	<jades.shih@mediatek.com>,
+        "catalin.marinas@arm.com"
+	<catalin.marinas@arm.com>,
+        "dbrazdil@google.com" <dbrazdil@google.com>,
+        =?UTF-8?B?U2hhd24gSHNpYW8gKOiVreW/l+elpSk=?= <shawn.hsiao@mediatek.com>,
+        =?UTF-8?B?WWluZ3NoaXVhbiBQYW4gKOa9mOepjui7kik=?=
+	<Yingshiuan.Pan@mediatek.com>,
+        "krzysztof.kozlowski+dt@linaro.org"
+	<krzysztof.kozlowski+dt@linaro.org>,
+        =?UTF-8?B?TWlsZXMgQ2hlbiAo6Zmz5rCR5qi6KQ==?= <Miles.Chen@mediatek.com>,
+        "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+        "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
+        =?UTF-8?B?SXZhbiBUc2VuZyAo5pu+5b+X6LuSKQ==?= <ivan.tseng@mediatek.com>,
+        =?UTF-8?B?WmUteXUgV2FuZyAo546L5r6k5a6HKQ==?= <Ze-yu.Wang@mediatek.com>,
+        "linux-arch@vger.kernel.org" <linux-arch@vger.kernel.org>,
+        "will@kernel.org"
+	<will@kernel.org>
+References: <20230428103622.18291-1-yi-de.wu@mediatek.com>
+ <20230428103622.18291-3-yi-de.wu@mediatek.com>
+ <168269352006.3076.11433928748883862569.robh@kernel.org>
+ <c0b590711516f5bb0e9db688685e09a8e73abd5e.camel@mediatek.com>
+Content-Language: en-US
+From: Trilok Soni <quic_tsoni@quicinc.com>
+In-Reply-To: <c0b590711516f5bb0e9db688685e09a8e73abd5e.camel@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nasanex01a.na.qualcomm.com (10.52.223.231)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: PHlsf2qDKrQvOQgX44F-Xv2J-6oVnwUP
+X-Proofpoint-GUID: PHlsf2qDKrQvOQgX44F-Xv2J-6oVnwUP
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.254,Aquarius:18.0.942,Hydra:6.0.573,FMLib:17.11.170.22
+ definitions=2023-05-12_10,2023-05-05_01,2023-02-09_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowpriorityscore=0
+ phishscore=0 mlxlogscore=999 suspectscore=0 spamscore=0 malwarescore=0
+ adultscore=0 mlxscore=0 priorityscore=1501 clxscore=1011 bulkscore=0
+ impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2304280000 definitions=main-2305120138
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20230512_093455_086082_9E6571F2 
+X-CRM114-Status: GOOD (  24.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,18 +134,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 10, 2023 at 05:07:45PM +0100, Niklas Schnelle wrote:
-> Hi All,
+On 5/11/2023 11:42 PM, Yi-De Wu (吳一德) wrote:
+> On Fri, 2023-04-28 at 09:52 -0500, Rob Herring wrote:
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>> 
+>> 
+>> On Fri, 28 Apr 2023 18:36:17 +0800, Yi-De Wu wrote:
+>> > From: "Yingshiuan Pan" <yingshiuan.pan@mediatek.com>
+>> > 
+>> > Add documentation for GenieZone(gzvm) node. This node informs gzvm
+>> > driver to start probing if geniezone hypervisor is available and
+>> > able to do virtual machine operations.
+>> > 
+>> > Signed-off-by: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
+>> > Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
+>> > ---
+>> >  .../hypervisor/mediatek,geniezone-hyp.yaml    | 31
+>> > +++++++++++++++++++
+>> >  MAINTAINERS                                   |  1 +
+>> >  2 files changed, 32 insertions(+)
+>> >  create mode 100644
+>> > Documentation/devicetree/bindings/hypervisor/mediatek,geniezone-
+>> > hyp.yaml
+>> > 
+>> 
+>> My bot found errors running 'make DT_CHECKER_FLAGS=-m
+>> dt_binding_check'
+>> on your patch (DT_CHECKER_FLAGS is new in v5.13):
+>> 
+>> yamllint warnings/errors:
+>> 
+>> dtschema/dtc warnings/errors:
+>> ./Documentation/devicetree/bindings/hypervisor/mediatek,geniezone-
+>> hyp.yaml: $id: relative path/filename doesn't match actual path or
+>> filename
+>>         expected: 
+>> https://urldefense.com/v3/__http://devicetree.org/schemas/hypervisor/mediatek,geniezone-hyp.yaml*__;Iw!!CTRNKA9wMg0ARbw!joIOXbICM7UGvy3XBEJvfzSKO7s61efB87_NX5cqpUqpu5ot5cuzw50A8-8ledZT9_7ifsB2sKzxSD0$
+>> 
+>> doc reference errors (make refcheckdocs):
+>> 
+>> See 
+>> https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20230428103622.18291-3-yi-de.wu@mediatek.com
+>> 
+>> The base for the series is generally the latest rc1. A different
+>> dependency
+>> should be noted in *this* patch.
+>> 
+>> If you already ran 'make dt_binding_check' and didn't see the above
+>> error(s), then make sure 'yamllint' is installed and dt-schema is up
+>> to
+>> date:
+>> 
+>> pip3 install dtschema --upgrade
+>> 
+>> Please check and re-submit after running the above command yourself.
+>> Note
+>> that DT_SCHEMA_FILES can be set to your schema file to speed up
+>> checking
+>> your schema. However, it must be unset to test all examples with your
+>> schema.
+>> 
 > 
-> This patch series converts s390's PCI support from its platform specific DMA
-> API implementation in arch/s390/pci/pci_dma.c to the common DMA IOMMU layer.
-> The conversion itself is done in patches 3-4 with patch 2 providing the final
-> necessary IOMMU driver improvement to handle s390's special IOTLB flush
-> out-of-resource indication in virtualized environments. Patches 1-2 may be
-> applied independently. The conversion itself only touches the s390 IOMMU driver
-> and s390 arch code moving over remaining functions from the s390 DMA API
-> implementation. No changes to common code are necessary.
+> Noted, we've run the yaml check and we are going to re-submit the
+> latest version in v3.
+> 
+> ************* MEDIATEK Confidentiality Notice ********************
+> The information contained in this e-mail message (including any
+> attachments) may be confidential, proprietary, privileged, or otherwise
+> exempt from disclosure under applicable laws. It is intended to be
+> conveyed only to the designated recipient(s). Any use, dissemination,
+> distribution, printing, retaining or copying of this e-mail (including its
+> attachments) by unintended recipient(s) is strictly prohibited and may
+> be unlawful. If you are not an intended recipient of this e-mail, or believe
+> that you have received this e-mail in error, please notify the sender
+> immediately (by replying to this e-mail), delete any and all copies of
+> this e-mail (including any attachments) from your system, and do not
+> disclose the content of this e-mail to any other person. Thank you!
 
-It looks like this still hasn't made it upstream as of 6.4-rc1.  What's
-holding this series up?
+Do you want us to reply w/ such a big confidentiality notice?
+
 
