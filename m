@@ -4,122 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36044C77B75
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 May 2023 16:35:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 123F8C77B7C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 May 2023 16:35:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9WU0F0MVcux5FDfZibYYwUshorLv1fpr3rzhFkYzNIc=; b=E22B8Xgnb8vZ7pZQdKQE6+frLr
-	S1xcjnwZC4L4CRAQGfPkeCYS7fuPdXylt7s0YnQYE7P84IqOlwkMJFBgMvIINVAkylAigUW5MWh0v
-	fBJ3kzoK64NiSfrCOdywuOrrYN0IjRbJNN72hrJsCMMTy8vzVg8JNuKcm6zbc+ST9UdoZg64F06ug
-	YM0YZjl+8JWyX0eLE6zGT/RmDTr+2QpNlGHczRv0veKoChXtwsX2FkupSg5Clv09XcCVFmt2Y39x+
-	7c0b2EnEydfluWfMlFWq4H6jD5o0vF+Q2BmzQx8N6OvBsaq5zKEogN0NhbHIVgClGTzjC8inrTC5M
-	+/gvTb0A==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Oj3vBLYi0VGg7znZN4GARmcXM9pKwrBpVwIV9KkQbec=; b=0IZ6Zx/1Cp/FFj80FqGA0dnzOc
+	Y3gnlm8lPSQjEOR9kYR3JwrGQlIAwll2U+79FTcEspLQ98nwj4azKxOnMgXbGhri96S8GtDVge+by
+	ZDqI73QIPfyx0ryCND7qsL5rPzft11QQLYGkjrPBYTVehTD51Obs7KFu39oIPwNkhxOpCYe4cgMmR
+	Cd+COmkExEoI1OZAK/HfZh610D2FP0JvoBuFXpcNSd62PAGaG9CAo6y7y3AnQPgyC+fLhVcG+AKLM
+	wwjxtnilVR/seu5UGeikSL5uLjkpKcL69vP++KTOKQQCsPVOxMp/1gUaPhAuXn3OXkyDNEOHRbDYZ
+	TwYOMHVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxVjO-00CUch-2L;
-	Fri, 12 May 2023 16:34:58 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1pxVjl-00CUjW-0U;
+	Fri, 12 May 2023 16:35:21 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxVjL-00CUbz-04;
-	Fri, 12 May 2023 16:34:56 +0000
-Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 34CFq5EG018240;
-	Fri, 12 May 2023 16:34:41 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=qcppdkim1;
- bh=9WU0F0MVcux5FDfZibYYwUshorLv1fpr3rzhFkYzNIc=;
- b=O9B69os5SZA5qhp167TQ5XWT88Oq8SDYSMWCuRs6UGYTBfBoF0z3KDif0pKinr4JBjZV
- DRt1STuNVlA6L4JQBog1iGdV1mbkKbfQDXXhWcpAX9DAJMZVne60azJiWKYPNaHBL9SJ
- Vre4xVNDOVQyxI4K303Ihp2UFIooGB9CEmgedys0FOFj4udFdfUzBX1WP3JBucQhrdk6
- oDsFzL/0wf4QydTbBfMQiEqjjJhWBnb78xt/U5ntlkXMBykuY5f8gxDBWqrEn/Ew1Wlc
- grwu5MTkrjnPWa771bpwoCWEbm40qqt7W0DBlzcWHdfCthB366HgMgsESY9a7ggrJYps og== 
-Received: from nasanppmta05.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3qhrdsg3hv-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 12 May 2023 16:34:41 +0000
-Received: from nasanex01a.na.qualcomm.com (nasanex01a.na.qualcomm.com [10.52.223.231])
-	by NASANPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 34CGYeRD018537
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 12 May 2023 16:34:40 GMT
-Received: from [10.110.80.184] (10.80.80.8) by nasanex01a.na.qualcomm.com
- (10.52.223.231) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.42; Fri, 12 May
- 2023 09:34:39 -0700
-Message-ID: <169ecb01-0ab6-93d7-7350-0c551b69e7ae@quicinc.com>
-Date: Fri, 12 May 2023 09:34:39 -0700
+	id 1pxVji-00CUhK-0r
+	for linux-mediatek@lists.infradead.org;
+	Fri, 12 May 2023 16:35:19 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-50bc4b88998so17935204a12.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 12 May 2023 09:35:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1683909316; x=1686501316;
+        h=content-transfer-encoding:in-reply-to:from:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Oj3vBLYi0VGg7znZN4GARmcXM9pKwrBpVwIV9KkQbec=;
+        b=cX9t50W3qWgc+/ZaeMekhrhK1HUSgn6pR9RA6For+1pKOyNl38tWsLSYOfttWTB89c
+         Vr2S7zudABZH+b7KSDqiMNpgQAWPYU7rpl+r5I9fF147w2jcxg6cRplVOIq4PYhRJSuX
+         1H2dQdesYD3RgRF+wtsb5y2D+cBLKlR/go2UbTI757Xu/FfM2oQTSbndCZzd6iGc2Wvh
+         Wg+KeqlAtEUQbqigYT559PDPA5RPd2OVmYiP4zXf3PP3bsJ6e/ZtLEtAfaGvZO3NIjOc
+         L4BCIFXPgs9MbOyq4n0ZUayjP7HhqQcTqVmuYAtJnYBi9943hkimGEBt6m7DAqjRCsuJ
+         ZEpw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1683909316; x=1686501316;
+        h=content-transfer-encoding:in-reply-to:from:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Oj3vBLYi0VGg7znZN4GARmcXM9pKwrBpVwIV9KkQbec=;
+        b=HdpUxD7dvU1pMI1sVweI9gzdJzpy/Ow30Mk4Hm6GQwEa3eEbmB9Jp7GDrkITBbA/9p
+         zryqRj5B2zcpzP6Y6fOxggZOsb5bNm+uYVvvgrrGiWutpgdUVJoWdGCsKZeneLWth9QS
+         ZAof2WpIdbkKxl3wD7lVdhvw6Ngzxr4CyCGlKvYtu6aEZSVGezK54W/H0XqGM/pOSi5k
+         Ce753JDUSXP0iQNgkegm92QuOTKiQ0yM4tm64nZ2tCI0XzasebCrjY7kPCXlLfiRgl/+
+         y/1YkVtSgV16mOoJ19h7mZw5N3ZBtBy93W1Lmn34bACIfn8tZ7L8tIp8oHsH335GNGFK
+         aUBg==
+X-Gm-Message-State: AC+VfDwkUajwDK+iw31wWRdk58qxDkcBeSi0wmP5TaPHSbMITuWaXhrg
+	1sXch5WDDjHUXNAfEzZQZZYkYQ==
+X-Google-Smtp-Source: ACHHUZ4ot459mbkMzA1b+DbStmTsgAlYaGVvjjMaw+ecLAMB38L9UcblvQxLt2/wAAYALelHBjLbFA==
+X-Received: by 2002:a17:907:3e9e:b0:96a:29c0:8515 with SMTP id hs30-20020a1709073e9e00b0096a29c08515mr8774854ejc.58.1683909315994;
+        Fri, 12 May 2023 09:35:15 -0700 (PDT)
+Received: from ?IPV6:2a02:810d:15c0:828:7ede:fc7b:2328:3883? ([2a02:810d:15c0:828:7ede:fc7b:2328:3883])
+        by smtp.gmail.com with ESMTPSA id lt14-20020a170906fa8e00b0094efdfe60dcsm5490714ejb.206.2023.05.12.09.35.13
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 12 May 2023 09:35:15 -0700 (PDT)
+Message-ID: <98a77653-ec58-56c4-9893-3b424f67c87e@linaro.org>
+Date: Fri, 12 May 2023 18:35:12 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH v2 2/7] dt-bindings: hypervisor: Add MediaTek GenieZone
- hypervisor
-To: =?UTF-8?B?WWktRGUgV3UgKOWQs+S4gOW+tyk=?= <Yi-De.Wu@mediatek.com>,
-        "robh@kernel.org" <robh@kernel.org>
-CC: "corbet@lwn.net" <corbet@lwn.net>,
-        "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>,
-        =?UTF-8?B?TVkgQ2h1YW5nICjojormmI7ouo0p?= <MY.Chuang@mediatek.com>,
-        "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-        "arnd@arndb.de" <arnd@arndb.de>,
-        "devicetree@vger.kernel.org"
-	<devicetree@vger.kernel.org>,
-        "robh+dt@kernel.org" <robh+dt@kernel.org>,
-        "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>,
-        "angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>,
-        =?UTF-8?B?UGVpTHVuIFN1ZWkgKOmai+WfueWAqyk=?= <PeiLun.Suei@mediatek.com>,
-        =?UTF-8?B?TGlqdS1jbHIgQ2hlbiAo6Zmz6bqX5aaCKQ==?=
-	<Liju-clr.Chen@mediatek.com>,
-        =?UTF-8?B?SmFkZXMgU2hpaCAo5pa95ZCR546oKQ==?=
-	<jades.shih@mediatek.com>,
-        "catalin.marinas@arm.com"
-	<catalin.marinas@arm.com>,
-        "dbrazdil@google.com" <dbrazdil@google.com>,
-        =?UTF-8?B?U2hhd24gSHNpYW8gKOiVreW/l+elpSk=?= <shawn.hsiao@mediatek.com>,
-        =?UTF-8?B?WWluZ3NoaXVhbiBQYW4gKOa9mOepjui7kik=?=
-	<Yingshiuan.Pan@mediatek.com>,
-        "krzysztof.kozlowski+dt@linaro.org"
-	<krzysztof.kozlowski+dt@linaro.org>,
-        =?UTF-8?B?TWlsZXMgQ2hlbiAo6Zmz5rCR5qi6KQ==?= <Miles.Chen@mediatek.com>,
-        "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-        "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
-        =?UTF-8?B?SXZhbiBUc2VuZyAo5pu+5b+X6LuSKQ==?= <ivan.tseng@mediatek.com>,
-        =?UTF-8?B?WmUteXUgV2FuZyAo546L5r6k5a6HKQ==?= <Ze-yu.Wang@mediatek.com>,
-        "linux-arch@vger.kernel.org" <linux-arch@vger.kernel.org>,
-        "will@kernel.org"
-	<will@kernel.org>
-References: <20230428103622.18291-1-yi-de.wu@mediatek.com>
- <20230428103622.18291-3-yi-de.wu@mediatek.com>
- <168269352006.3076.11433928748883862569.robh@kernel.org>
- <c0b590711516f5bb0e9db688685e09a8e73abd5e.camel@mediatek.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH 01/28] media: cec: ch7322: drop of_match_ptr for ID table
 Content-Language: en-US
-From: Trilok Soni <quic_tsoni@quicinc.com>
-In-Reply-To: <c0b590711516f5bb0e9db688685e09a8e73abd5e.camel@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+To: Joe Tessler <jrt@google.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Manivannan Sadhasivam <mani@kernel.org>,
+ Michael Tretter <m.tretter@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Jacopo Mondi <jacopo+renesas@jmondi.org>,
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+ =?UTF-8?Q?Niklas_S=c3=b6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
+ Rui Miguel Silva <rmfrfs@gmail.com>, Wenyou Yang
+ <wenyou.yang@microchip.com>, Bin Liu <bin.liu@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+ Houlong Wei <houlong.wei@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
+ Jacek Anaszewski <jacek.anaszewski@gmail.com>,
+ Sylwester Nawrocki <s.nawrocki@samsung.com>,
+ Patrice Chotard <patrice.chotard@foss.st.com>,
+ Yong Deng <yong.deng@magewell.com>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>,
+ "Lad, Prabhakar" <prabhakar.csengg@gmail.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Sean Young <sean@mess.org>,
+ linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org
+References: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nasanex01a.na.qualcomm.com (10.52.223.231)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: PHlsf2qDKrQvOQgX44F-Xv2J-6oVnwUP
-X-Proofpoint-GUID: PHlsf2qDKrQvOQgX44F-Xv2J-6oVnwUP
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.254,Aquarius:18.0.942,Hydra:6.0.573,FMLib:17.11.170.22
- definitions=2023-05-12_10,2023-05-05_01,2023-02-09_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowpriorityscore=0
- phishscore=0 mlxlogscore=999 suspectscore=0 spamscore=0 malwarescore=0
- adultscore=0 mlxscore=0 priorityscore=1501 clxscore=1011 bulkscore=0
- impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2304280000 definitions=main-2305120138
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230512_093455_086082_9E6571F2 
-X-CRM114-Status: GOOD (  24.81  )
+X-CRM114-CacheID: sfid-20230512_093518_306537_87300F8D 
+X-CRM114-Status: GOOD (  10.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,84 +127,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5/11/2023 11:42 PM, Yi-De Wu (吳一德) wrote:
-> On Fri, 2023-04-28 at 09:52 -0500, Rob Herring wrote:
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
->> 
->> 
->> On Fri, 28 Apr 2023 18:36:17 +0800, Yi-De Wu wrote:
->> > From: "Yingshiuan Pan" <yingshiuan.pan@mediatek.com>
->> > 
->> > Add documentation for GenieZone(gzvm) node. This node informs gzvm
->> > driver to start probing if geniezone hypervisor is available and
->> > able to do virtual machine operations.
->> > 
->> > Signed-off-by: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
->> > Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
->> > ---
->> >  .../hypervisor/mediatek,geniezone-hyp.yaml    | 31
->> > +++++++++++++++++++
->> >  MAINTAINERS                                   |  1 +
->> >  2 files changed, 32 insertions(+)
->> >  create mode 100644
->> > Documentation/devicetree/bindings/hypervisor/mediatek,geniezone-
->> > hyp.yaml
->> > 
->> 
->> My bot found errors running 'make DT_CHECKER_FLAGS=-m
->> dt_binding_check'
->> on your patch (DT_CHECKER_FLAGS is new in v5.13):
->> 
->> yamllint warnings/errors:
->> 
->> dtschema/dtc warnings/errors:
->> ./Documentation/devicetree/bindings/hypervisor/mediatek,geniezone-
->> hyp.yaml: $id: relative path/filename doesn't match actual path or
->> filename
->>         expected: 
->> https://urldefense.com/v3/__http://devicetree.org/schemas/hypervisor/mediatek,geniezone-hyp.yaml*__;Iw!!CTRNKA9wMg0ARbw!joIOXbICM7UGvy3XBEJvfzSKO7s61efB87_NX5cqpUqpu5ot5cuzw50A8-8ledZT9_7ifsB2sKzxSD0$
->> 
->> doc reference errors (make refcheckdocs):
->> 
->> See 
->> https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20230428103622.18291-3-yi-de.wu@mediatek.com
->> 
->> The base for the series is generally the latest rc1. A different
->> dependency
->> should be noted in *this* patch.
->> 
->> If you already ran 'make dt_binding_check' and didn't see the above
->> error(s), then make sure 'yamllint' is installed and dt-schema is up
->> to
->> date:
->> 
->> pip3 install dtschema --upgrade
->> 
->> Please check and re-submit after running the above command yourself.
->> Note
->> that DT_SCHEMA_FILES can be set to your schema file to speed up
->> checking
->> your schema. However, it must be unset to test all examples with your
->> schema.
->> 
+On 12/03/2023 14:12, Krzysztof Kozlowski wrote:
+> The driver can match only via the DT table so the table should be always
+> used and the of_match_ptr does not have any sense (this also allows ACPI
+> matching via PRP0001, even though it might not be relevant here).
 > 
-> Noted, we've run the yaml check and we are going to re-submit the
-> latest version in v3.
+>   drivers/media/cec/i2c/ch7322.c:583:34: error: ‘ch7322_of_match’ defined but not used [-Werror=unused-const-variable=]
 > 
-> ************* MEDIATEK Confidentiality Notice ********************
-> The information contained in this e-mail message (including any
-> attachments) may be confidential, proprietary, privileged, or otherwise
-> exempt from disclosure under applicable laws. It is intended to be
-> conveyed only to the designated recipient(s). Any use, dissemination,
-> distribution, printing, retaining or copying of this e-mail (including its
-> attachments) by unintended recipient(s) is strictly prohibited and may
-> be unlawful. If you are not an intended recipient of this e-mail, or believe
-> that you have received this e-mail in error, please notify the sender
-> immediately (by replying to this e-mail), delete any and all copies of
-> this e-mail (including any attachments) from your system, and do not
-> disclose the content of this e-mail to any other person. Thank you!
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> ---
 
-Do you want us to reply w/ such a big confidentiality notice?
+Hans, Sakari,
+
+Can you pick up the patchset? There was positive feedback:
+https://patchwork.linuxtv.org/project/linux-media/patch/20230312131318.351173-1-krzysztof.kozlowski@linaro.org/
+
+but it seems it was not applied.
+
+Best regards,
+Krzysztof
 
 
