@@ -4,76 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B754C77B7C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 May 2023 21:30:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D37EC77B7D
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 May 2023 06:38:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=RyC+sBrNP9jY0U1et1wYi4MO7UH4FsSyLmrleV55OIc=; b=gpEtWgohEFI9whAohWA8NUsJke
-	w8lCHfCB4+w6Z++HpqcSOx5/y8J52rZ4fYxmo7HjMLHpqiUeDhGgWahwSYV/cIvHED0QUudFWSXeI
-	YxUkEbxfLWi8Y6SbPlFclgfH1Ez+gIOx8AmHncOrJvQi/Y95JtZsdAarkXzUhbDlCsPoRQpuM9bLi
-	keS/pm8VG6yOi2LL6V9L1giO1e+v9rQRGHhBfSyGcZeXoOK1JpAwAGwob/DWDQla3QSSZEEQwi2Vi
-	jwmJ9m1kt6CTuhkZZrr0+spJ9YMjU8/f6vpNijSjK/zbpRdPWROpwQNbPVBY+o0pulKkAnbYizHEF
-	wVQb1Edg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pJAHS0Zaj0yVKhfNHhf5jx/XvjbWQe6dR3+gBFASJBU=; b=cWkVNblxPJW/jnG+L7ZtWpkCcu
+	H3uCN8xzuoiQJnrGgv8+r721F6Clndw9OqLt0oE+92pcPdzILByYfF3GBDyqMT6KgKVNk7q69yb9k
+	A7Azv27hseI99qXOeTuWBko+YIjiKgHcEx5PcIPT7DfVjmOEVej7qbupVLWf6aAeyW23ZpwFt8rB+
+	dR1W2P4KWHQkqAX2/lo9bLLoysdJloZ0naAqnBQwLrb2TOYTTVmzTRtoptcb9WGaVh+/wUeCyWY04
+	nCWfDCj6XkxdEAR/IWgHms64GtZG+d+pkAa9j1p3tZQUe9lYLqRoyu6y+B21bOG/SMojhptkKiyMo
+	xDsFeJxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxaLE-00D5Kf-2n;
-	Fri, 12 May 2023 21:30:20 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pxitL-00Dsai-0l;
+	Sat, 13 May 2023 06:38:07 +0000
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxaLC-00D5KG-31
-	for linux-mediatek@lists.infradead.org;
-	Fri, 12 May 2023 21:30:20 +0000
-X-UUID: 2e0f3956f10c11ed83ed1395ce914268-20230512
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=RyC+sBrNP9jY0U1et1wYi4MO7UH4FsSyLmrleV55OIc=;
-	b=ZDYToNoQzdgpthB38Zc9NKw3Z4L93/JDBSixMafnMuvDjQBvNPXG1yry+awPg2JalB3hIo+FWVkW1FZeIuUFWSjm4plZ7zvLtjFzgLZZDc6SNihUHvogs97UpZ8gPeqnIfnduO3fWhOwFr40GeFxBrlJLbAXjbxAmmdvqyibeVI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.24,REQID:bc0bac58-6545-4602-b988-993acd0095a6,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:178d4d4,CLOUDID:0146033b-de1e-4348-bc35-c96f92f1dcbb,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: 2e0f3956f10c11ed83ed1395ce914268-20230512
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <sean.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 289182484; Fri, 12 May 2023 14:30:13 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Sat, 13 May 2023 05:20:10 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Sat, 13 May 2023 05:20:10 +0800
-From: <sean.wang@mediatek.com>
-To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>, <luiz.dentz@gmail.com>
-CC: <sean.wang@mediatek.com>, <chris.lu@mediatek.com>,
-	<Soul.Huang@mediatek.com>, <Leon.Yen@mediatek.com>, <Deren.Wu@mediatek.com>,
-	<km.lin@mediatek.com>, <robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>,
-	<ch.yeh@mediatek.com>, <jenhao.yang@mediatek.com>,
-	<Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
-	<steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
-	<abhishekpandit@google.com>, <michaelfsun@google.com>,
-	<abhishekpandit@chromium.org>, <mcchou@chromium.org>, <shawnku@google.com>,
-	<linux-bluetooth@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>
-Subject: [PATCH v6 1/3] Bluetooth: btusb: mediatek: use readx_poll_timeout instead of open coding
-Date: Sat, 13 May 2023 05:20:07 +0800
-Message-ID: <cc4ae6f7545cdf0615279890521b11774f062add.1683925801.git.objelf@gmail.com>
-X-Mailer: git-send-email 1.7.9.5
+	id 1pxitH-00DsZj-0Q;
+	Sat, 13 May 2023 06:38:04 +0000
+Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-969f90d71d4so893268766b.3;
+        Fri, 12 May 2023 23:38:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1683959880; x=1686551880;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=pJAHS0Zaj0yVKhfNHhf5jx/XvjbWQe6dR3+gBFASJBU=;
+        b=YFD59SfNwI80NXatbYx+VnyB6F8bgTWYF5cM6l+/+0MBybE4ati0s2sJJIOR2Dql7+
+         p1amTvshUKIr2n/XCcTaSELHndPCCWo+owGMRBQcF/Dqmp+vlOOYoDOxZRpsvEpdJTTt
+         uUWxOlqz2ZYWlYXn3eE74ooL2nOXT5Ihsd3l/9W6ncaGvgy3lVfZ82Ck9LaTltNt5dzg
+         lJRmt1J1fdlgtxYrkXdL/DEI7/7ui+2QBZi4T4g0e30hckViwFx3A7ksKyFnKHVWrPK9
+         jVMcj+eSseJrZuT5YwPN3F/Fco1dfu1OckFwiEsVHkkT4aZx7GvkIUR0MCgOw0J9PThd
+         O3QA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1683959880; x=1686551880;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=pJAHS0Zaj0yVKhfNHhf5jx/XvjbWQe6dR3+gBFASJBU=;
+        b=fKUTT+FTh5q+3eK6/FRCZ6KHvSOPqvKGAZtUCfTuVUr2VxMLEYSr+NjBwJWy73Fcpt
+         FrD4ts4F1HuygNf4OuDNX6KXEq7nKOzGbOp0e81VD0rk4nW+F0i0HCT8OELdjEy5Ps6M
+         Qzq6x/vihmbl9hYNSrfU70eW4sQ0Obivq54CZfGwMqZ2tUnIoyYUNs89rtxUScB4vIPs
+         a/Tk4n4OhYfsK8B/qEl/e9nooaMOxmU3YP+LT1zTbGpKqQSiTHm8+dwxEbjK4O9BBcz6
+         0jQJORDUnwUUNI6/rM8H1pKIIcaZdWrc1rbzEVfotUWaUBhqqeAAZkvPBXU15iu4/RDZ
+         fHbg==
+X-Gm-Message-State: AC+VfDyrj4PFY81GSoQvYwpzkPaC0F6qrjNqJrB5VOEXos6SkijH8m4V
+	FBvfbHZHSerDItQ7LHsN230=
+X-Google-Smtp-Source: ACHHUZ6ItNQrDwZ3aO2IHbDnGlrK+eX28iXA7zT5j5NaZuSZ7J3VBuL20juqQ/09jGy+jwM+MI5cag==
+X-Received: by 2002:a17:906:5d0f:b0:96a:ec5c:687b with SMTP id g15-20020a1709065d0f00b0096aec5c687bmr248946ejt.64.1683959880013;
+        Fri, 12 May 2023 23:38:00 -0700 (PDT)
+Received: from jernej-laptop.localnet (89-212-118-115.static.t-2.net. [89.212.118.115])
+        by smtp.gmail.com with ESMTPSA id b16-20020a170906195000b0094e96e46cc0sm6371733eje.69.2023.05.12.23.37.58
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 12 May 2023 23:37:59 -0700 (PDT)
+From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
+To: Damien Le Moal <dlemoal@kernel.org>,
+ Serge Semin <fancer.lancer@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Hans de Goede <hdegoede@redhat.com>, Jens Axboe <axboe@kernel.dk>,
+ Patrice Chotard <patrice.chotard@foss.st.com>, Chen-Yu Tsai <wens@csie.org>,
+ Samuel Holland <samuel@sholland.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Uwe =?ISO-8859-1?Q?Kleine=2DK=F6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Sergey Shtylyov <s.shtylyov@omp.ru>,
+ "open list:LIBATA SUBSYSTEM" <linux-ide@vger.kernel.org>,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ linux-tegra@vger.kernel.org
+Subject: Re: [PATCH] ata: libata: Make ata_platform_remove_one return void
+Date: Sat, 13 May 2023 08:37:58 +0200
+Message-ID: <4827684.31r3eYUQgx@jernej-laptop>
+In-Reply-To: <20230512204646.137746-1-u.kleine-koenig@pengutronix.de>
+References: <20230512204646.137746-1-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="iso-8859-1"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230512_143019_008134_9DC5F1F9 
-X-CRM114-Status: GOOD (  13.56  )
+X-CRM114-CacheID: sfid-20230512_233803_166078_2E083C02 
+X-CRM114-Status: UNSURE (   9.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,85 +106,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+Dne petek, 12. maj 2023 ob 22:46:46 CEST je Uwe Kleine-K=F6nig napisal(a):
+> The function returned zero unconditionally, so the function returning an
+> int is something between useless and irritating. With the goal to make
+> platform drivers' remove function return void, it's helpful to convert
+> the function accordingly. This converts several drivers to the new
+> .remove_new callback that was introduced to smoothen the platform driver
+> conversion.
+>=20
+> Signed-off-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
+> ---
+>  drivers/ata/ahci_brcm.c        | 6 +++---
+>  drivers/ata/ahci_ceva.c        | 2 +-
+>  drivers/ata/ahci_da850.c       | 2 +-
+>  drivers/ata/ahci_dm816.c       | 2 +-
+>  drivers/ata/ahci_dwc.c         | 2 +-
+>  drivers/ata/ahci_imx.c         | 2 +-
+>  drivers/ata/ahci_mtk.c         | 2 +-
+>  drivers/ata/ahci_mvebu.c       | 2 +-
+>  drivers/ata/ahci_platform.c    | 2 +-
+>  drivers/ata/ahci_qoriq.c       | 2 +-
+>  drivers/ata/ahci_seattle.c     | 2 +-
+>  drivers/ata/ahci_st.c          | 2 +-
+>  drivers/ata/ahci_sunxi.c       | 2 +-
 
-Use readx_poll_timeout instead of open coding to poll the hardware reset
-status until it is done.
+=46or sunxi:
+Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
 
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
-v2: use 20ms as the unit to poll according to the requirement of
-    readx_poll_timeout
-v3: refine btusb_mtk_reset_done and drop the necessary error check
-    in btusb_mtk_cmd_timeout
-v4, v5, v6: rebase onto the latest codebase
----
- drivers/bluetooth/btusb.c | 30 +++++++++++++++---------------
- 1 file changed, 15 insertions(+), 15 deletions(-)
+Best regards,
+Jernej
 
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 2a8e2bb038f5..275e0666503d 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -2566,8 +2566,6 @@ static int btusb_setup_realtek(struct hci_dev *hdev)
- #define MTK_EP_RST_OPT		0x74011890
- #define MTK_EP_RST_IN_OUT_OPT	0x00010001
- #define MTK_BT_RST_DONE		0x00000100
--#define MTK_BT_RESET_WAIT_MS	100
--#define MTK_BT_RESET_NUM_TRIES	10
- 
- static void btusb_mtk_wmt_recv(struct urb *urb)
- {
-@@ -2938,6 +2936,16 @@ static int btusb_mtk_id_get(struct btusb_data *data, u32 reg, u32 *id)
- 	return btusb_mtk_reg_read(data, reg, id);
- }
- 
-+static u32 btusb_mtk_reset_done(struct hci_dev *hdev)
-+{
-+	struct btusb_data *data = hci_get_drvdata(hdev);
-+	u32 val = 0;
-+
-+	btusb_mtk_uhw_reg_read(data, MTK_BT_MISC, &val);
-+
-+	return val & MTK_BT_RST_DONE;
-+}
-+
- static int btusb_mtk_setup(struct hci_dev *hdev)
- {
- 	struct btusb_data *data = hci_get_drvdata(hdev);
-@@ -3127,7 +3135,7 @@ static void btusb_mtk_cmd_timeout(struct hci_dev *hdev)
- {
- 	struct btusb_data *data = hci_get_drvdata(hdev);
- 	u32 val;
--	int err, retry = 0;
-+	int err;
- 
- 	/* It's MediaTek specific bluetooth reset mechanism via USB */
- 	if (test_and_set_bit(BTUSB_HW_RESET_ACTIVE, &data->flags)) {
-@@ -3158,18 +3166,10 @@ static void btusb_mtk_cmd_timeout(struct hci_dev *hdev)
- 	btusb_mtk_uhw_reg_write(data, MTK_BT_SUBSYS_RST, 0);
- 	btusb_mtk_uhw_reg_read(data, MTK_BT_SUBSYS_RST, &val);
- 
--	/* Poll the register until reset is completed */
--	do {
--		btusb_mtk_uhw_reg_read(data, MTK_BT_MISC, &val);
--		if (val & MTK_BT_RST_DONE) {
--			bt_dev_dbg(hdev, "Bluetooth Reset Successfully");
--			break;
--		}
--
--		bt_dev_dbg(hdev, "Polling Bluetooth Reset CR");
--		retry++;
--		msleep(MTK_BT_RESET_WAIT_MS);
--	} while (retry < MTK_BT_RESET_NUM_TRIES);
-+	err = readx_poll_timeout(btusb_mtk_reset_done, hdev, val,
-+				 val & MTK_BT_RST_DONE, 20000, 1000000);
-+	if (err < 0)
-+		bt_dev_err(hdev, "Reset timeout");
- 
- 	btusb_mtk_id_get(data, 0x70010200, &val);
- 	if (!val)
--- 
-2.25.1
+>  drivers/ata/ahci_tegra.c       | 2 +-
+>  drivers/ata/ahci_xgene.c       | 2 +-
+>  drivers/ata/libata-core.c      | 4 +---
+>  drivers/ata/pata_ixp4xx_cf.c   | 2 +-
+>  drivers/ata/pata_of_platform.c | 2 +-
+>  drivers/ata/pata_platform.c    | 2 +-
+>  drivers/ata/sata_highbank.c    | 2 +-
+>  include/linux/libata.h         | 2 +-
+
+
 
 
