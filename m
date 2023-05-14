@@ -4,69 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF01DC77B7F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 14 May 2023 16:34:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95C87C7EE22
+	for <linux-mediatek@archiver.kernel.org>; Sun, 14 May 2023 20:07:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sP1s3TyTNR2xaheXB5ulgxT8TwPE9wVNHMHH4x9e/js=; b=os5IAtcowl+x1/G24/kS/5pdIg
-	8eWAyNw6QXcvQZtk+rQMlfScrN60j0kjDJIq+xUvxj9VJXe79eqxFWBT3NMZzR6I9O4FiTJRfMNz7
-	0QSau0y2q1Fa4nqenkjoYiX8zAG3jf5SPXU9rhQgrk58w+1Pgw7p5GKxtGOvjLD4Es3Ke+z50IdhN
-	oYLolcvWGfQIdvn22kh1lqMuBQEPIA7seWzO4syTiP9NUKfB3ZKULi2rektDZkDTrnTAfXzW+cnK5
-	FTQCqNGSYXvuzNZ3fqcoOc7iWndNdYkyfDsuwiQYw0ck3hMXcgXXBLHspje2H6kojjrqx8wpZvJpX
-	MYg2kdoQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:CC:To:
+	Subject:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VwL+kZSViFFm9AZSJ4Yuy+h+SLvhVh6sfohFzbh3eBU=; b=ZronRx61YRbO8OR9ZHOFXx6dsx
+	LnrTpezZ+i1I6jqG9qpVAGnLywg+PTr2hJS8u77nSLc5mm1RMi/qruIqbgHO96Ehrt6sxjgY3Y6t+
+	4I8jBih4um7l16EEp1HcOqiwx8RKTX8ZX94RyPa8Vg/cbLdueVfx+5hldSJZwUruB+hXXhE8AC280
+	xQcf/s+5aFIuJtNm2ODbCCWFV1JzT2R+8Shuu/dYq8aYZuR3eiXlfj7syadH3Tdtlir9utyStu87q
+	M/4FoRsnQwjT9Iq95JMFt+pJsXcR/5JYSXQdqtIqnA2NXtT+zIySEVH5drCP+WhrGH00en7NODtUu
+	8YoM5Zdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyEg7-00HWjU-0W;
-	Sun, 14 May 2023 16:34:35 +0000
-Received: from pidgin.makrotopia.org ([185.142.180.65])
+	id 1pyHzw-0009Gb-0z;
+	Sun, 14 May 2023 20:07:16 +0000
+Received: from mx01.omp.ru ([90.154.21.10])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyEg1-00HWhy-0F;
-	Sun, 14 May 2023 16:34:33 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1pyEfh-00070J-22;
-	Sun, 14 May 2023 16:34:09 +0000
-Date: Sun, 14 May 2023 18:32:15 +0200
-From: Daniel Golle <daniel@makrotopia.org>
-To: Simon Horman <simon.horman@corigine.com>
-Cc: linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Alexander Couzens <lynxis@fe80.eu>,
-	Sujuan Chen <sujuan.chen@mediatek.com>,
-	Bo Jiao <bo.jiao@mediatek.com>,
-	Nicolas Cavallari <nicolas.cavallari@green-communications.fr>,
-	Howard Hsu <howard-yh.hsu@mediatek.com>,
-	MeiChia Chiu <MeiChia.Chiu@mediatek.com>,
-	Peter Chiu <chui-hao.chiu@mediatek.com>,
-	Johannes Berg <johannes.berg@intel.com>,
-	Wang Yufen <wangyufen@huawei.com>, Lorenz Brun <lorenz@brun.one>
-Subject: Re: [PATCH] wifi: mt76: mt7915: add support for MT7981
-Message-ID: <ZGENDwGXkuhrCGFY@pidgin.makrotopia.org>
-References: <ZF-SN-sElZB_g_bA@pidgin.makrotopia.org>
- <ZGD192iDcUqoUwo3@corigine.com>
+	id 1pyHzt-0009Ek-0Q;
+	Sun, 14 May 2023 20:07:14 +0000
+Received: from [192.168.1.103] (178.176.76.26) by msexch01.omp.ru
+ (10.188.4.12) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.986.14; Sun, 14 May
+ 2023 23:06:48 +0300
+Subject: Re: [PATCH] ata: libata: Make ata_platform_remove_one return void
+To: =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>, Damien
+ Le Moal <dlemoal@kernel.org>, Serge Semin <fancer.lancer@gmail.com>, Shawn
+ Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Matthias
+ Brugger <matthias.bgg@gmail.com>, Hans de Goede <hdegoede@redhat.com>, Jens
+ Axboe <axboe@kernel.dk>, Patrice Chotard <patrice.chotard@foss.st.com>,
+	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>, Thierry Reding
+	<thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>
+CC: Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam
+	<festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, AngeloGioacchino
+ Del Regno <angelogioacchino.delregno@collabora.com>, "open list:LIBATA
+ SUBSYSTEM" <linux-ide@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-sunxi@lists.linux.dev>, <linux-tegra@vger.kernel.org>
+References: <20230512204646.137746-1-u.kleine-koenig@pengutronix.de>
+From: Sergey Shtylyov <s.shtylyov@omp.ru>
+Organization: Open Mobile Platform
+Message-ID: <7a29c928-1e76-2b6b-5b8f-d79003f3359c@omp.ru>
+Date: Sun, 14 May 2023 23:06:47 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZGD192iDcUqoUwo3@corigine.com>
+In-Reply-To: <20230512204646.137746-1-u.kleine-koenig@pengutronix.de>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [178.176.76.26]
+X-ClientProxiedBy: msexch01.omp.ru (10.188.4.12) To msexch01.omp.ru
+ (10.188.4.12)
+X-KSE-ServerInfo: msexch01.omp.ru, 9
+X-KSE-AntiSpam-Interceptor-Info: scan successful
+X-KSE-AntiSpam-Version: 5.9.59, Database issued on: 05/14/2023 19:47:15
+X-KSE-AntiSpam-Status: KAS_STATUS_NOT_DETECTED
+X-KSE-AntiSpam-Method: none
+X-KSE-AntiSpam-Rate: 59
+X-KSE-AntiSpam-Info: Lua profiles 177305 [May 12 2023]
+X-KSE-AntiSpam-Info: Version: 5.9.59.0
+X-KSE-AntiSpam-Info: Envelope from: s.shtylyov@omp.ru
+X-KSE-AntiSpam-Info: LuaCore: 510 510 bc345371020d3ce827abc4c710f5f0ecf15eaf2e
+X-KSE-AntiSpam-Info: {rep_avail}
+X-KSE-AntiSpam-Info: {Tracking_from_domain_doesnt_match_to}
+X-KSE-AntiSpam-Info: {relay has no DNS name}
+X-KSE-AntiSpam-Info: {SMTP from is not routable}
+X-KSE-AntiSpam-Info: {Found in DNSBL: 178.176.76.26 in (user)
+ b.barracudacentral.org}
+X-KSE-AntiSpam-Info: 	omp.ru:7.1.1;d41d8cd98f00b204e9800998ecf8427e.com:7.1.1;178.176.76.26:7.7.3;127.0.0.199:7.1.2
+X-KSE-AntiSpam-Info: ApMailHostAddress: 178.176.76.26
+X-KSE-AntiSpam-Info: {DNS response errors}
+X-KSE-AntiSpam-Info: Rate: 59
+X-KSE-AntiSpam-Info: Status: not_detected
+X-KSE-AntiSpam-Info: Method: none
+X-KSE-AntiSpam-Info: Auth:dmarc=temperror header.from=omp.ru;spf=temperror
+ smtp.mailfrom=omp.ru;dkim=none
+X-KSE-Antiphishing-Info: Clean
+X-KSE-Antiphishing-ScanningType: Heuristic
+X-KSE-Antiphishing-Method: None
+X-KSE-Antiphishing-Bases: 05/14/2023 19:56:00
+X-KSE-Antivirus-Interceptor-Info: scan successful
+X-KSE-Antivirus-Info: Clean, bases: 5/14/2023 5:19:00 PM
+X-KSE-Attachment-Filter-Triggered-Rules: Clean
+X-KSE-Attachment-Filter-Triggered-Filters: Clean
+X-KSE-BulkMessagesFiltering-Scan-Result: InTheLimit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230514_093429_134939_B7E7A865 
-X-CRM114-Status: GOOD (  23.06  )
+X-CRM114-CacheID: sfid-20230514_130713_192886_8332C596 
+X-CRM114-Status: UNSURE (   9.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,53 +111,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Simon,
+Hello!
 
-thank you for reviewing!
+On 5/12/23 11:46 PM, Uwe Kleine-König wrote:
 
-On Sun, May 14, 2023 at 04:53:43PM +0200, Simon Horman wrote:
-> On Sat, May 13, 2023 at 03:35:51PM +0200, Daniel Golle wrote:
-> > From: Alexander Couzens <lynxis@fe80.eu>
-> > 
-> > Add support for the MediaTek MT7981 SoC which is similar to the MT7986
-> > but with a newer IP cores and only 2x ARM Cortex-A53 instead of 4x.
-> > Unlike MT7986 the MT7981 can only connect a single wireless frontend,
-> > usually MT7976 is used for DBDC.
-> > 
-> > Signed-off-by: Alexander Couzens <lynxis@fe80.eu>
-> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> The function returned zero unconditionally, so the function returning an
+> int is something between useless and irritating. With the goal to make
+> platform drivers' remove function return void, it's helpful to convert
+> the function accordingly. This converts several drivers to the new
+> .remove_new callback that was introduced to smoothen the platform driver
+> conversion.
 > 
-> ...
-> 
-> > @@ -489,7 +516,10 @@ static int mt7986_wmac_adie_patch_7976(struct mt7915_dev *dev, u8 adie)
-> >  		rg_xo_01 = 0x1d59080f;
-> >  		rg_xo_03 = 0x34c00fe0;
-> >  	} else {
-> > -		rg_xo_01 = 0x1959f80f;
-> > +		if (is_mt7981(&dev->mt76))
-> > +			rg_xo_01 = 0x1959c80f;
-> > +		else if (is_mt7986(&dev->mt76))
-> > +			rg_xo_01 = 0x1959f80f;
-> 
-> Hi Daniel,
-> 
-> 		rg_xo_01 will be used uninitialised below if we get here
-> 		and neither of the conditions above are true.
-> 
-> 		Can this occur?
+> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
 
-No, it cannot occur. Either of is_mt7981() or is_mt7986() will return
-true, as the driver is bound via one of the two compatibles
-'mediatek,mt7986-wmac' or newly added 'mediatek,mt7981-wmac'.
-Based on that the match_data is either 0x7986 or 0x7981, which is then
-used as chip_id, which is used by the is_mt7981() and is_mt7986()
-functions.
+Reviewed-by: Sergey Shtylyov <s.shtylyov@omp.ru>
 
-> 
-> >  		rg_xo_03 = 0x34d00fe0;
-> >  	}
-> >  
-> 
-> ...
-> 
+[...]
+
+MBR, Sergey
 
