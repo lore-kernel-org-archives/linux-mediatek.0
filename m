@@ -4,69 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0CEDC77B75
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 14:18:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29FFAC77B7D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 14:22:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=w8EcgL8XH2DYKYLWbrmI23f+0NvOQxEV1exc96sdfeo=; b=a8J3fu2RFMojLI54cGj7TMUXtP
-	/ib1WaqfnykCuD7+u47hknVZgEgWV+bwtRuNZU0Q1/8BOzxslgBBr+JqrPurWplQaklkFBqlE+lAX
-	kl/fttD6UIJC936Uav/B+04/4MK3SkM0I4BHqyAyUXPU5VrIbXtU4bu94CTVZhe5cQQH3z2JwUXoL
-	z6f4Urc41ogr044Z6FqpVLVVMkmcmSjkOMPyCCscTXT/m+oBjMcFeh0Vi6BrCIAFTQnfm/+s7K81H
-	9TEh9PrEdvfDTDlpNkMgdxtBprFK00YPEb2Tinnp/+GkLo2+ptdsrZzokZQexLtKspkJzJgrXzeRB
-	8a6jGO8w==;
+	bh=Mqm0bhp807wRRiw4Ch43Md25esQZPkEwKqJoBpnlPvE=; b=3tKy5NjZRvcTgLlQ8gX1iQTuq8
+	V7c6e09iR9I49ZzwQcKdZpojwe0fl6M6E5bycXaGiCpwSC0VTNjUPVDmNYaLofgzHZcoxKOvF/DG/
+	mW67k2QKZ6Lbe4RPMQ1JpBZ+64PLoTmawpIMJ5S/1KGWb5Cmerf/+YYNgAysaPK+pc91KLyoiVIxk
+	dfU69V6qadeFwPoCckN4c5svo8yWw1SghB8kFGCIR8c96OIOKCoPgax6IoiftiKQw0AJ1EKGkBGpK
+	eao6YYFCaoqTfb4yvkepOJd+f76fWD5inkxboKkFSPasOje24NfdBKi09agMvUeJcnu3/wSP1Key4
+	PUTrsNCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyZ1W-002NT3-1W;
-	Mon, 15 May 2023 14:18:02 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pyZ67-002OQ2-2s;
+	Mon, 15 May 2023 14:22:47 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyZ1T-002NRK-22;
-	Mon, 15 May 2023 14:18:01 +0000
+	id 1pyZ64-002OOf-2K;
+	Mon, 15 May 2023 14:22:46 +0000
 Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id CFE4966058D2;
-	Mon, 15 May 2023 15:17:55 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8A2D5660309E;
+	Mon, 15 May 2023 15:22:40 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1684160276;
-	bh=isAu6jaVeMeTLU5u3pXCbHYMMByM16GBW5K9iE6wVqM=;
+	s=mail; t=1684160561;
+	bh=ZZrfXP972sfV5Y+tOtvn+DgCDdAWngdy6rYVlJ53Otc=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=E69ssZrHbA8dsU7JD1aA1yNwFgIFGa0oJvFQ/Vpc25IlMQ2Hxz/BxoHaMBvjlPwrO
-	 3SXNMteCZzP+chskAdlAOobejNHmNhFiyLDXOcYKGCzs8GiceWkgQz/tjuv7QBev3p
-	 0vClO/kOP5dMbdxm40B9TSQTx0PxxachJjvpMq4X6h5M+yKzO9eZeMM7Ul+ZdwhuqF
-	 erD4C3GgGVXW5hH7FTRMmBThEAETUHnycQ7AP4aC3jBdEyhJUoHvrFlh5UMAIdC1n1
-	 Yh9LagnpYpJ2qskxEa+I1dsO/S/Q91vHcMdZcDDCDzAH+0zI5l5B1H4bTe9+EYum87
-	 IxG/FN1b2ZGhg==
-Message-ID: <adca53e5-5c26-e087-f142-5a6f9e9961db@collabora.com>
-Date: Mon, 15 May 2023 16:17:52 +0200
+	b=nTvbH8rGNM+fr5Lygp4cWg6duck3YxxkhOvtbsplOKtDQ1HQglqEcjiipdY8PxSEN
+	 QTnf2xgvII0Uvl+j4zAmcAeQgu9uiJ3hye55HrXARYljhnjKukdS1pAryXucUS3nO8
+	 cjcTHIoe82vvSoCik5qMY8z2/WM/Y9PbaGQ1irA39iH+ebeFWB+BdnBVLriCRtCgjt
+	 EH7hiIMi15sTTA4DaLIYci4Kepvjrv2fWQH2u4DaTIDP58MkxEibrgWLhldZ3WIhEP
+	 8/72IETEyXQN3Uxghx1Z1lLDgoZbZNh3CjE+E1b4oy4LnzWuN0Mlj8vdhS2B65tCSg
+	 WUD6EwY7zMkmQ==
+Message-ID: <85500bcc-c5e8-8ce2-edea-233de86c2d35@collabora.com>
+Date: Mon, 15 May 2023 16:22:38 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.1
-Subject: Re: [PATCH] clk: mediatek: mt8365: Fix inverted topclk operations
+Subject: Re: [PATCH v2 2/2] phy: mtk-mipi-csi: add driver for CSI phy
 Content-Language: en-US
-To: Markus Schneider-Pargmann <msp@baylibre.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Alexandre Mergnat <amergnat@baylibre.com>
-References: <20230511133226.913600-1-msp@baylibre.com>
- <8603c2b2-2a5b-48f6-9b08-9b3b518b716b@gmail.com>
- <aa383909-7a03-eb24-3a61-397f2a6adb54@collabora.com>
- <20230515140153.ppjl4zyshscvcbuu@blmsp>
+To: Julien Stephan <jstephan@baylibre.com>
+Cc: krzysztof.kozlowski@linaro.org, robh@kernel.org, chunkuang.hu@kernel.org,
+ linux-mediatek@lists.infradead.org, Phi-bang Nguyen <pnguyen@baylibre.com>,
+ Louis Kuo <louis.kuo@mediatek.com>, Chunfeng Yun
+ <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>,
+ Andy Hsieh <andy.hsieh@mediatek.com>, Philipp Zabel
+ <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>,
+ open list <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek USB3 PHY DRIVER"
+ <linux-arm-kernel@lists.infradead.org>,
+ "open list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>,
+ "open list:DRM DRIVERS FOR MEDIATEK" <dri-devel@lists.freedesktop.org>
+References: <20230515090551.1251389-1-jstephan@baylibre.com>
+ <20230515090551.1251389-3-jstephan@baylibre.com>
+ <cd6067b2-660a-8f2c-697d-26814a9dc131@collabora.com>
+ <ynrvqt24hjgng25r2xa3hxj35cvgotx7sdfrbqfjcvj3foegmr@4lqhen5yu6fh>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230515140153.ppjl4zyshscvcbuu@blmsp>
+In-Reply-To: <ynrvqt24hjgng25r2xa3hxj35cvgotx7sdfrbqfjcvj3foegmr@4lqhen5yu6fh>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230515_071759_870587_C925DC5D 
-X-CRM114-Status: GOOD (  17.47  )
+X-CRM114-CacheID: sfid-20230515_072244_887834_F7F40A53 
+X-CRM114-Status: GOOD (  23.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,72 +88,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 15/05/23 16:01, Markus Schneider-Pargmann ha scritto:
-> On Mon, May 15, 2023 at 01:49:54PM +0200, AngeloGioacchino Del Regno wrote:
->> Il 12/05/23 13:51, Matthias Brugger ha scritto:
->>>
->>>
->>> On 11/05/2023 15:32, Markus Schneider-Pargmann wrote:
->>>> The given operations are inverted for the wrong registers which makes
->>>> multiple of the mt8365 hardware units unusable. In my setup at least usb
->>>> did not work.
->>>>
->>>> Fixed by swapping the operations with the inverted ones.
+Il 15/05/23 15:36, Julien Stephan ha scritto:
+> On Mon, May 15, 2023 at 02:22:52PM +0200, AngeloGioacchino Del Regno wrote:
+>> Il 15/05/23 11:05, Julien Stephan ha scritto:
+>   ..snip..
+>>> +	port->is_cdphy = of_property_read_bool(dev->of_node, "mediatek,is_cdphy");
 >>
->> ...with the not inverted ones, you mean!
+>> This driver doesn't support C-PHY mode, so you either add support for that, or in
+>> my opinion you should simply refuse to probe it, as it is *dysfunctional* for the
+>> unsupported case (and might even introduce unstabilities).
+>>
+>> 	/* At the moment, only D-PHY mode is supported */
+>> 	if (!port->is_cdphy)
+>> 		return -EINVAL;
+>>
+>> Also, please don't use underscores for devicetree properties: "mediatek,is-cdphy"
+>> is fine.
+>>
+> Hi Angelo,
+> You are right this driver does not support C-PHY mode, but some of the
+> PHYs themselves support BOTH C-PHY AND D-PHY. The idea of `is_cdphy` variable
+> is to know if the CSI port supports BOTH C-PHY AND D-PHY or only DPHY.
+> For example mt8365 has 2 PHYs: CSI0 and CSI1. CSI1 support only D-PHY,
+> while CSI0 can be configured in C-PHY or D-PHY. Registers for CD-PHY and
+> D-PHY are almost identical, except that CD-PHY compatible has some extra
+> bitfields to configure properly the mode and the lanes (because supporting
+> trios for CD-PHY).
+> If C-PHY support is eventually added into the driver, I think we will need
+> another variable such as `mode` to know the mode. I was also thinking
+> of adding a phy argument to determine if the mode is C-PHY or D-PHY.
 > 
-> Actually now I am not sure how to express it correctly, maybe I should
-> have just left that sentence out of the commit message.
-> 
-> I meant replacing the no_setclr_inv with no_setclr for TOP0 and no_setclr with
-> no_setclr_inv for TOP1/2.
+> So here, I don't want to stop the probe if `is_cdphy` variable is set to
+> true. Does it make sense ?
 > 
 
-Yeah, the sentence may be a bit confusing, but you're actually inverting the
-inverted ones and the non-inverted ones.
+Comments in the code convinced me that the other PHYs providing only C or D PHY
+support weren't compatible at all with this driver.
 
-It's fine, anyway, this commit can get picked as-is imo :-D
+I got it now - but at this point can you please add a comment in the code actually
+clarifying that this driver supports both PHYs providing *only* D-PHY and ones
+providing selectable C-or-D PHY?
 
-> Best,
-> Markus
-> 
->>
->> Anyway,
->>
->> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>
->>>>
->>>> Reported-by: Alexandre Mergnat <amergnat@baylibre.com>
->>>> Fixes: 905b7430d3cc ("clk: mediatek: mt8365: Convert simple_gate to
->>>> mtk_gate clocks")
->>>> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
->>>
->>> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
->>>
->>>> ---
->>>>    drivers/clk/mediatek/clk-mt8365.c | 6 +++---
->>>>    1 file changed, 3 insertions(+), 3 deletions(-)
->>>>
->>>> diff --git a/drivers/clk/mediatek/clk-mt8365.c b/drivers/clk/mediatek/clk-mt8365.c
->>>> index 6b4e193f648d..6d785ec5754d 100644
->>>> --- a/drivers/clk/mediatek/clk-mt8365.c
->>>> +++ b/drivers/clk/mediatek/clk-mt8365.c
->>>> @@ -583,15 +583,15 @@ static const struct mtk_gate_regs top2_cg_regs = {
->>>>    #define GATE_TOP0(_id, _name, _parent, _shift)            \
->>>>        GATE_MTK(_id, _name, _parent, &top0_cg_regs,        \
->>>> -         _shift, &mtk_clk_gate_ops_no_setclr_inv)
->>>> +         _shift, &mtk_clk_gate_ops_no_setclr)
->>>>    #define GATE_TOP1(_id, _name, _parent, _shift)            \
->>>>        GATE_MTK(_id, _name, _parent, &top1_cg_regs,        \
->>>> -         _shift, &mtk_clk_gate_ops_no_setclr)
->>>> +         _shift, &mtk_clk_gate_ops_no_setclr_inv)
->>>>    #define GATE_TOP2(_id, _name, _parent, _shift)            \
->>>>        GATE_MTK(_id, _name, _parent, &top2_cg_regs,        \
->>>> -         _shift, &mtk_clk_gate_ops_no_setclr)
->>>> +         _shift, &mtk_clk_gate_ops_no_setclr_inv)
->>>>    static const struct mtk_gate top_clk_gates[] = {
->>>>        GATE_TOP0(CLK_TOP_CONN_32K, "conn_32k", "clk32k", 10),
->>
->>
+That clarified, it would not make sense to stop probing if it's not a CDPHY because
+as you said there might be a D-only PHY that would be actually supported here.
+
+Regards,
+Angelo
+
 
 
