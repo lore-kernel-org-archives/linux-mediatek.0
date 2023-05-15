@@ -4,64 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8658C77B75
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 15:31:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0094C77B7D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 15:35:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qWYWdn2w9H6ZJkbqxjrAM4HMx0CV2V4rOOBliZLQNLI=; b=hLcpzgKYFo9sG8y/yLp87IFF9w
-	upqG81ioZa7aH46dZ5fzBS+1KFS1bkAVdW9r6zLAl2KFIXf82cyQsJCXaz3koBpqywhNW/JddJCmC
-	+4fr1yYy/ZPhU2KU4EL2sEYsZ3Nvev/dSwQaednXTP8G44JH0HifCKzw8yYxi9WH009L3c6stP00V
-	T72eggIXL01zJt6EZvo+HZIQmg2zriV0VciukMU4yBhIsHfjhKYL2sbc+2FLqYMULHq+zade5Hyei
-	hTJ1YPqKPCZ/r64R/CjLYiKkPh/teS5cZmxFAzjAJcmIqGM8BHJUUrCTCuVhc6fVEHmIxcWHoPx2B
-	Cw67Xhnw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8a+oLK/EjvW2iWa4CvVnKNi6T68qPXF5eHPAeQXKSvQ=; b=45g2ozt3oK7Vbq4dWe5S/yhJZ4
+	GqLTKnLOKH5PwDmqGBGf5kaVXKLj8WUwWC8VKQ8JTwI7rfr3nMlfPAEpjtk0ojvyq4EjaO+kSkdG+
+	RKFaXI0EECV8g1z1xhVSAL23PUMcMkpU3p08NT+H3rj9RttWFWC3S3FLxtl1UW3PtgZGXfOXOcBsK
+	xEv4pPhlXyqkWmTLN2ZOeem52+drTzbbWfP2psqWnZ8JpF1Sdgu31kRyPjXRRPYhIghwLyaXymM7B
+	ha8yIvsMi2yGHRzvQ9UdULYJe9t5FMWj8CxJ1nUInCUAWh2jfZ3v/T/R9TUkJ1OhB9zmcU6UjatbZ
+	IdjBKHyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyaAK-002ZzP-16;
-	Mon, 15 May 2023 15:31:12 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pyaED-002afm-1G;
+	Mon, 15 May 2023 15:35:13 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyaAG-002Zya-1y;
-	Mon, 15 May 2023 15:31:10 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 28FBF6261F;
-	Mon, 15 May 2023 15:31:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B5874C4339B;
-	Mon, 15 May 2023 15:31:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1684164667;
-	bh=TDEwSTLolQvMt4EHNuIwFIk4wEdg1IERZQM09Ze3bf4=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=udjI6GHbvobyWeQRDig3BYNl3hGfXA0T0gv9JC3DL5xeSh7F1qstjH26S/xR6euR8
-	 1I1UB1fCCSloIr0x6svQWaYIem0Xap9HizBbJqyZSye7xAKcfMWEQOkHBO9pXH7O72
-	 yodzUprJMtzbiDGKsJLF3O3ni8s9zdt9DrzhIV+jgo1uhJL9+nEbd2C7Ym4K5L0r1Z
-	 jH0LU9w7dUdPdNNINo2YeBg6Bpm+HDxkCf5b1KbB6tN9Vkjrj4EstuPn9gVVYflNQD
-	 358K2AJVpS7D9iAjOwKmg22xTYEsDP/swVfhg+5KRKuzdy7quGzOZk1bXd2/tdEyfe
-	 poLGS98x6vH/A==
-From: Mark Brown <broonie@kernel.org>
-To: lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, robh+dt@kernel.org, 
- krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com, 
- angelogioacchino.delregno@collabora.com, Trevor Wu <trevor.wu@mediatek.com>
-Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- devicetree@vger.kernel.org
-In-Reply-To: <20230510035526.18137-1-trevor.wu@mediatek.com>
-References: <20230510035526.18137-1-trevor.wu@mediatek.com>
-Subject: Re: [PATCH v4 0/9] ASoC: mediatek: mt8188: revise AFE driver
-Message-Id: <168416466452.415808.13353377218867876489.b4-ty@kernel.org>
-Date: Tue, 16 May 2023 00:31:04 +0900
+	id 1pyaE9-002aeF-3A;
+	Mon, 15 May 2023 15:35:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=8a+oLK/EjvW2iWa4CvVnKNi6T68qPXF5eHPAeQXKSvQ=; b=HGU6JtmhWszCAfdURqlW/Ut+66
+	84hfuyjtPVc0MwUYbNBETFcAfz5NM3sIeqSEbFmEmGNNvk3dFGzJLjogP8wMWREs0etAtaMdhmewm
+	eVB3ZrcO8d3CLxmquVIK+CrS92ER5HYC6ww+g+uoqGRBYqiImluxiC4kzdz5jaQ4iDt1Di0fqZKBe
+	ru8cAs/vtn2Mr9fpOiEsLtOvHpTZXDV2GgAXjra2y9NOMRR3vTgDvwzfD8V37n6i5xEat0O+glzPX
+	JGSGf6Toh6R6H9RaiXqOH9/EsOCgWMoGpewU/wbqrdHB1aQE0K5gpPeazG68DSGxo3CXk9EPM9nhq
+	Le3hPnQw==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:35164)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1pyaDg-0003ww-8S; Mon, 15 May 2023 16:34:40 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1pyaDZ-0008Ic-Pp; Mon, 15 May 2023 16:34:33 +0100
+Date: Mon, 15 May 2023 16:34:33 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Daniel Machon <daniel.machon@microchip.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>, Felix Fietkau <nbd@nbd.name>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Horatiu Vultur <horatiu.vultur@microchip.com>,
+	Ioana Ciornei <ioana.ciornei@nxp.com>,
+	Jakub Kicinski <kuba@kernel.org>, John Crispin <john@phrozen.org>,
+	Jose Abreu <Jose.Abreu@synopsys.com>,
+	Lars Povlsen <lars.povlsen@microchip.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Marcin Wojtas <mw@semihalf.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
+	Steen Hegelund <Steen.Hegelund@microchip.com>,
+	Taras Chornyi <taras.chornyi@plvision.eu>,
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+	UNGLinuxDriver@microchip.com, Vladimir Oltean <olteanv@gmail.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH RFC] Providing a helper for PCS inband negotiation
+Message-ID: <ZGJRCaR2gQqEt2+L@shell.armlinux.org.uk>
+References: <ZGIkGmyL8yL1q1zp@shell.armlinux.org.uk>
+ <9f7b1d6f-ca62-4c6c-9cd5-37726e7857b7@lunn.ch>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.13-dev-bfdf5
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <9f7b1d6f-ca62-4c6c-9cd5-37726e7857b7@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230515_083108_746791_48F08F40 
-X-CRM114-Status: GOOD (  14.57  )
+X-CRM114-CacheID: sfid-20230515_083510_024242_81C104B2 
+X-CRM114-Status: GOOD (  19.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,59 +97,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 10 May 2023 11:55:17 +0800, Trevor Wu wrote:
-> The series of patches consists of four major changes.
-> First, remove redundant supply for ADDA DAI dirver. Second, revise ETDM
-> control including APLL dynamic switch via DAPM, so APLL can be enabled
-> when it is really required. Third, update AFE probe function. Bus
-> protection change was dropped at the previous patch because the dependent
-> change was not accepted at that time. Finally, correct some binding errors
-> and add required clocks.
+On Mon, May 15, 2023 at 03:58:09PM +0200, Andrew Lunn wrote:
+> > 2. XLGMII.. Looking at the XPCS driver, it's unclear whether Clause 73
+> >    AN gets used for this. A quick scan of IEEE 802.3 suggests that
+> >    XLGMII doesn't have any support for any inband signalling, and it's
+> >    just an intermediary protocol between the MAC (more specifically the
+> >    RS, but for the purposes of this I'll just refer to MAC) and the
+> >    attached PCS, and any autonegotiation happens after the XLGMII link.
 > 
-> [...]
+> So isn't XLGMII then a generic PHY thing, not a phylink thing?
 
-Applied to
+Honestly, I'm really not sure. It feels more like an internal-SoC
+thing. See my last diagram why I think this.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+> Or am i not correctly understanding how
+> drivers/phy/marvell/phy-*-comphy.c and
+> drivers/phy/microchip/*_serdev.c fit into the overall picture?
 
-Thanks!
+In the case of serdes-based protocols with an external PHY, the general
+structure we have is:
 
-[1/9] ASoC: mediatek: mt8188: remove supply AUDIO_HIRES
-      commit: 4db399793c34c72dcad18815d54c0cd23750b8f1
-[2/9] ASoC: mediatek: mt8188: complete set_tdm_slot function
-      commit: 2664c8790cfdcaa81ff8b3b9f649a6635955d636
-[3/9] ASoC: mediatek: mt8188: revise ETDM control flow
-      commit: e5d2bd4103df419fd33131f1aa7a8dea35e3638c
-[4/9] ASoC: mediatek: mt8188: refine APLL control
-      commit: 9be0213a6858d0084a9e800d2b451678f014f337
-[5/9] ASoC: mediatek: mt8188: combine afe component registration
-      commit: e9eab4bed0436a7b7268114ecf55fe4989855d47
-[6/9] ASoC: mediatek: mt8188: add bus protection
-      commit: fb167449cec1d2f34ef4c6d17ff860076ac0fc44
-[7/9] ASoC: mediatek: mt8188: add required clocks
-      commit: 2e5c422a624aa35cefb5a448a2040df6627f505b
-[8/9] ASoC: dt-bindings: mediatek,mt8188-afe: correct clock name
-      commit: 1e4fe75e9746be8e40c57132bb3fba1ce3dd24af
-[9/9] ASoC: dt-bindings: mediatek,mt8188-afe: add audio properties
-      commit: 739ee993c38596d93150f96153f9bb1cfd7733bc
+------------------------------+
+  SoC                         |
++-----+   +-----+  +--------+ |          +--------------+
+| MAC +---+ PCS +--+ SERDES +------------+ Ethernet PHY +---- Media
++-----+   +-----+  +--------+ |    ^     +--------------+
+------------------------------+    |
+                                   |
+PHY_INTERFACE_MODE_xxx has referred to this bit, and this is the bit
+where inband can occur.
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+In the case of multi-rate implementations, there can be one of many
+different PCS that can be placed there, and the SERDES handles
+converting the data stream from the PCS into its appropriate
+electrical form, essentially covering the PMA and PMD functions.
+(That same SERDES block generally can also handle PCIe and SATA.)
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+In the case of non-serdes based protocols, then it's essentially the
+same as the above, but with the PCS and SERDES blocks removed.
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+For Fibre based connections:
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+------------------------------+
+  SoC                         |
++-----+   +-----+  +--------+ |
+| MAC +---+ PCS +--+ SERDES +------------ Media
++-----+   +-----+  +--------+ |    ^
+------------------------------+    |
+                                   |
+PHY_INTERFACE_MODE_xxx has referred to this bit, and 1000BASE-X runs
+negotiation on this. 10GBASE-R also used for fibre has no negotiation,
+but there's still the 10GBASE-R PCS and the 802.3 PMA/PMD are subsumed
+by the SERDES block.
 
-Thanks,
-Mark
+What I think seems to be the case with XPCS is:
 
+------------------------------+
+  SoC                         |
++-----+   +-----+  +--------+ |
+| MAC +---+ PCS +--+ SERDES +----------- Media
++-----+ ^ +-----+  +--------+ |
+--------|---------------------+
+        |
+PHY_INTERFACE_MODE_xxx seems to be referring to this bit. When clause 73
+negotiation is used, that happens where I've stated "media" above, and
+that's involved with negotiating backplane protocols e.g. 40GBASE-KR4,
+40GBASE-CR4, 25GBASE-KR, 10GBASE-KR, 1000BASE-KX etc on the bit I've
+called "Media" above.
+
+However, we can also have this for a fibre link:
+
+------------------------------+
+  SoC                         |
++-----+   +-----+  +--------+ |
+| MAC +---+ PCS +--+ SERDES +----------- Fibre
++-----+ ^ +-----+  +--------+ |    ^
+--------|---------------------+    |
+        |                          |
+     XLGMII                    40GBASE-R
+
+Given that in this case, we'd want PHY_INTERFACE_MODE_xxx to say
+40GBASE-R, using the existing PHY_INTERFACE_MODE_xxx to specify at
+where I've pointed XLGMII just makes things confused... but in the
+case above with clause 73 negotiation, we wouldn't have a standard
+PHY_INTERFACE_MODE_xxx specifier for the external "media" side
+because that's dependent on the result of the negotiation.
+
+So... this seems to be a right can of wriggly things.
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
