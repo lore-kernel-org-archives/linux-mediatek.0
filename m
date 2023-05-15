@@ -4,175 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 036C0C77B75
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 09:26:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A605C77B75
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 09:36:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9h0i/gOMtQ/domKIco6/LZ38H/9cwExCWxzdTzeL8fY=; b=WW5GVbh7zXzS87Q9zt8nHixN1B
-	IY1vhtAHKWtx4FYnf26VDrdWksWg95IJ0uEMgxHxoU6OcXIuG/8UKOUJftv32cyFxQgehzLTz8Km1
-	NA+XQF+JZ8ZyJtdAz0yZsohBx3RRCgJ2JcndHTPwTDtiD7CsRW5DOP0X8aijebVCgw+G3KAC5EZ+/
-	w5FndkPBBITFV92DRvHLIl/V6dBRMwx8HLwNK1nnV0DmVtBl9GvydzCAY8SOtH38XA/OAp+RRnk5H
-	+JccWQWd2NTbNq6Zt9piLpEvopmdxarvlICLlinRrwYAhxubON9LCDQP5DXyIW6ueOOutej8P18Y7
-	NR0pKYfQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=QWC2hVWzxMHKmiP7bFd1/GNl9QWA/6DrOTG6WDSUnGM=; b=3xfpnJFWRfQYA6DGsRh7+3oUHG
+	z2ou40XSbbCIDrG8Wlov67tefK/RNO85gA73IbZEX6zAm8mqzj1KXjAehfxTX3xFhaglyFPODcqau
+	L2B9thzKpk91jcDiZC5KwTmSUkXKbSthpLNArMafk5Bmby9ZgTCbEjyIjIQT/0Iz67nkA+ZICF1A0
+	sMBj4S3FU99poJ1kR4in8haiIKjw8YjzsSAhdsNQIqNV37lGgoD2ZTg6hUzuXBjhdsdfwDmkLmgT5
+	DeXX/lrITAW0mAUkzMx/kMbcdR/LMm+u8ciM+X1SOUQApht3YuSy/QeGVVOsaofCxawyaC8oH/zGF
+	8hpkUIXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyUTG-001Xu7-0B;
-	Mon, 15 May 2023 09:26:22 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1pyUcW-001ZvJ-0R;
+	Mon, 15 May 2023 09:35:56 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyUTB-001Xsl-2e
+	id 1pyUcT-001ZtZ-0t
 	for linux-mediatek@lists.infradead.org;
-	Mon, 15 May 2023 09:26:19 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pyUNq-0004G7-84; Mon, 15 May 2023 11:20:46 +0200
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pyUNQ-000KQl-8J; Mon, 15 May 2023 11:20:20 +0200
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pyUNP-004cYH-B9; Mon, 15 May 2023 11:20:19 +0200
-Date: Mon, 15 May 2023 11:20:19 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Inki Dae <daeinki@gmail.com>
-Cc: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
-	Xinliang Liu <xinliang.liu@linaro.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	dri-devel@lists.freedesktop.org,
-	Russell King <linux@armlinux.org.uk>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Anitha Chrisanthus <anitha.chrisanthus@intel.com>,
-	Marijn Suijten <marijn.suijten@somainline.org>,
-	Steven Price <steven.price@arm.com>,
-	Sumit Semwal <sumit.semwal@linaro.org>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Robert Foss <rfoss@kernel.org>, Karol Herbst <kherbst@redhat.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>,
-	Javier Martinez Canillas <javierm@redhat.com>,
-	Kuogee Hsieh <quic_khsieh@quicinc.com>,
-	Akhil P Oommen <quic_akhilpo@quicinc.com>,
-	Danilo Krummrich <dakr@redhat.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Miaoqian Lin <linmq006@gmail.com>,
-	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	Rahul T R <r-ravikumar@ti.com>,
-	Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>,
-	Jani Nikula <jani.nikula@intel.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	etnaviv@lists.freedesktop.org, Stephen Boyd <swboyd@chromium.org>,
-	Sean Paul <sean@poorly.run>, Johan Hovold <johan+linaro@kernel.org>,
-	Hyun Kwon <hyun.kwon@xilinx.com>, Andrew Jeffery <andrew@aj.id.au>,
-	Jingoo Han <jingoohan1@gmail.com>,
-	Seung-Woo Kim <sw0312.kim@samsung.com>,
-	Noralf =?utf-8?Q?Tr=C3=B8nnes?= <noralf@tronnes.org>,
-	kernel@pengutronix.de, Alex Deucher <alexander.deucher@amd.com>,
-	freedreno@lists.freedesktop.org,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	linux-aspeed@lists.ozlabs.org,
-	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Yongqin Liu <yongqin.liu@linaro.org>,
-	Mihail Atanassov <mihail.atanassov@arm.com>,
-	Liang He <windhl@126.com>,
-	Ville =?utf-8?B?U3lyasOkbMOk?= <ville.syrjala@linux.intel.com>,
-	lima@lists.freedesktop.org, Chunyan Zhang <zhang.lyra@gmail.com>,
-	Alexey Brodkin <abrodkin@synopsys.com>,
-	Minghao Chi <chi.minghao@zte.com.cn>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Ben Skeggs <bskeggs@redhat.com>,
-	Russell King <linux+etnaviv@armlinux.org.uk>,
-	Alain Volmat <alain.volmat@foss.st.com>, linux-mips@vger.kernel.org,
-	Liu Ying <victor.liu@nxp.com>, linux-arm-msm@vger.kernel.org,
-	Maxime Ripard <mripard@kernel.org>,
-	linux-samsung-soc@vger.kernel.org,
-	linux-amlogic@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Boris Brezillon <bbrezillon@kernel.org>,
-	Douglas Anderson <dianders@chromium.org>,
-	John Stultz <jstultz@google.com>,
-	Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Brian Starkey <brian.starkey@arm.com>,
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
-	Yuan Can <yuancan@huawei.com>, Stefan Agner <stefan@agner.ch>,
-	Michal Simek <michal.simek@xilinx.com>, linux-tegra@vger.kernel.org,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Sam Ravnborg <sam@ravnborg.org>, Rob Herring <robh@kernel.org>,
-	Xinwei Kong <kong.kongxinwei@hisilicon.com>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Mali DP Maintainers <malidp@foss.arm.com>,
-	Joel Stanley <joel@jms.id.au>, nouveau@lists.freedesktop.org,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Lyude Paul <lyude@redhat.com>, Arnd Bergmann <arnd@arndb.de>,
-	Guo Zhengkui <guozhengkui@vivo.com>,
-	Konrad Dybcio <konrad.dybcio@somainline.org>,
-	Alison Wang <alison.wang@nxp.com>,
-	Abhinav Kumar <quic_abhinavk@quicinc.com>,
-	Christian Gmeiner <christian.gmeiner@gmail.com>,
-	Mark Brown <broonie@kernel.org>, Maxime Ripard <maxime@cerno.tech>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Daniel Vetter <daniel@ffwll.ch>, Liu Shixin <liushixin2@huawei.com>,
-	Tomi Valkeinen <tomba@kernel.org>, Deepak R Varma <drv@mailo.com>,
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
-	Ricardo Ribalda <ribalda@chromium.org>,
-	Tian Tao <tiantao6@hisilicon.com>, Shawn Guo <shawnguo@kernel.org>,
-	Yannick Fertre <yannick.fertre@foss.st.com>,
-	linux-stm32@st-md-mailman.stormreply.com,
-	Emma Anholt <emma@anholt.net>, Liviu Dudau <liviu.dudau@arm.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Paul Cercueil <paul@crapouillou.net>,
-	David Airlie <airlied@gmail.com>, Marek Vasut <marex@denx.de>,
-	linux-renesas-soc@vger.kernel.org,
-	Jayshri Pawar <jpawar@cadence.com>, Jonas Karlman <jonas@kwiboo.se>,
-	Rob Clark <robdclark@gmail.com>,
-	Philippe Cornu <philippe.cornu@foss.st.com>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Melissa Wen <mwen@igalia.com>, linux-mediatek@lists.infradead.org,
-	Fabio Estevam <festevam@gmail.com>,
-	Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>,
+	Mon, 15 May 2023 09:35:54 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-3f41dceb93bso64359565e9.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 15 May 2023 02:35:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1684143351; x=1686735351;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=QWC2hVWzxMHKmiP7bFd1/GNl9QWA/6DrOTG6WDSUnGM=;
+        b=hZK1cRCcwAWJjnEp08UbvM3yYnHbU6+YYpxypZ/VKSjb+Fm8fnIX1oXzoBWfWxL3L/
+         RzDu8R5AgRibMuAQW6IvIFRbe+xPws7vaBdtMd4ELJ/1nfKw5Ujltx7Bh+nWTBbZBgky
+         k0+F+pLAaVJaq94+6i+IcrRF30zI9opSGja9Dsh773EybaWv9hAakHA//0Fz7OQFth/B
+         AELOd0CVGszxsikSE23TUoca9hX5VRhRpDrwdOsL1wfzxK7FgX7N7tfjmWRMGD3FUdIe
+         Xdp9HfzdhX4c5EJm6XAQ5OuYE2rOIibgU6OV8UnUvi7V6Ai2DhMpi7UEvZj3qM3RnrjP
+         y00g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1684143351; x=1686735351;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=QWC2hVWzxMHKmiP7bFd1/GNl9QWA/6DrOTG6WDSUnGM=;
+        b=LO5eAD+rT2m/7ITQQy6SGEJhxeUStAMFkDvRJNzjfvW0rv4fe3JalBmFwn0ED3a5L0
+         DrmT2h9L2/sqXeSegFl1H8E2rm4gEWS39mxJHIfImtSMgRQax3Df0XHDEJ6TWeolFjdH
+         ZA1K0lYvVaUp90TLm/B5lUmatqYPyQFofed8Nc0es5HgOhgxECOfvmx3lgi6S41EmeTB
+         +NARGT9WMz9f1cb3vhxHRIktE+AffWmySfO/OZ5lZWtFW5qm60Vyi0vKQhKwaGPor106
+         ZE0blIfmj250STCL22it8RXm5fVjeQmUFJc8Ar3Da/vQ3tkooq8JshLggP4rfPOvTW94
+         7MyA==
+X-Gm-Message-State: AC+VfDxAHr+iyvfkXcfWWHuxALAjVoKAZOMVXVN1KX1NOJk+pXy/Et/n
+	FQqWBY9V8LaL9XPeCcbS3yr2pw==
+X-Google-Smtp-Source: ACHHUZ6BE/4NK3YHHcWl6EMaCJsUPOYAbAUFdxrDuJwCuPnwJVcVddpO9nt3uz2QQDMX9l56Iz2HyQ==
+X-Received: by 2002:a7b:c4c3:0:b0:3f0:7ddf:d8d8 with SMTP id g3-20020a7bc4c3000000b003f07ddfd8d8mr23309590wmk.18.1684143351524;
+        Mon, 15 May 2023 02:35:51 -0700 (PDT)
+Received: from localhost.localdomain ([2a01:e0a:55f:21e0:fd3b:9fed:e621:cc8f])
+        by smtp.gmail.com with ESMTPSA id z22-20020a7bc7d6000000b003f42813b315sm21035451wmk.32.2023.05.15.02.35.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 15 May 2023 02:35:51 -0700 (PDT)
+From: Julien Stephan <jstephan@baylibre.com>
+To: 
+Cc: krzysztof.kozlowski@linaro.org,
+	robh@kernel.org,
+	chunkuang.hu@kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Julien Stephan <jstephan@baylibre.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Qiang Yu <yuq825@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>,
-	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
-	Jyri Sarha <jyri.sarha@iki.fi>,
-	Lucas Stach <l.stach@pengutronix.de>
-Subject: Re: [PATCH 00/53] drm: Convert to platform remove callback returning
- void
-Message-ID: <20230515092019.a3uwmofkkujo772g@pengutronix.de>
-References: <20230507162616.1368908-1-u.kleine-koenig@pengutronix.de>
- <CAAQKjZP5jhwFg9sNndpa6_7G6HoV76heQbt=knoOEZZskexrhg@mail.gmail.com>
+	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCH v2 0/2] phy: mtk-mipi-csi: add driver for CSI phy
+Date: Mon, 15 May 2023 11:05:49 +0200
+Message-Id: <20230515090551.1251389-1-jstephan@baylibre.com>
+X-Mailer: git-send-email 2.40.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="suzv37z45wvm64m4"
-Content-Disposition: inline
-In-Reply-To: <CAAQKjZP5jhwFg9sNndpa6_7G6HoV76heQbt=knoOEZZskexrhg@mail.gmail.com>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230515_022618_013313_17CFE313 
-X-CRM114-Status: GOOD (  25.16  )
+X-CRM114-CacheID: sfid-20230515_023553_313451_3BDBAC8A 
+X-CRM114-Status: GOOD (  15.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -187,76 +95,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Adding a new driver for the MIPI CSI CD-PHY module v 0.5 embedded in
+some Mediatek soc, such as the MT8365
 
---suzv37z45wvm64m4
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This driver was adapted from https://patchwork.kernel.org/project/linux-mediatek/cover/20200708104023.3225-1-louis.kuo@mediatek.com/
 
-On Mon, May 15, 2023 at 04:50:57PM +0900, Inki Dae wrote:
-> Hi,
->=20
-> 2023=EB=85=84 5=EC=9B=94 8=EC=9D=BC (=EC=9B=94) =EC=98=A4=EC=A0=84 1:32, =
-Uwe Kleine-K=C3=B6nig <u.kleine-koenig@pengutronix.de>=EB=8B=98=EC=9D=B4 =
-=EC=9E=91=EC=84=B1:
-> >
-> > Hello,
-> >
-> > this patch series adapts the platform drivers below drivers/gpu/drm
-> > to use the .remove_new() callback. Compared to the traditional .remove()
-> > callback .remove_new() returns no value. This is a good thing because
->=20
-> First of all, I apologize for the delay in providing my review comments.
->=20
-> Not related to this patch but seems that the "remove_new" callback
-> naming implicitly implies that there is no need to return anything
-> since its return type is void. To help users understand the intended
-> behavior based on the callback name, how about considering a modified
-> naming convention like "remove_no_return" or something similar?
->=20
-> The relevant patch has already been merged as outlined below,
-> author Uwe Kleine-K=C3=B6nig <u.kleine-koenig@pengutronix.de> 2022-12-09
-> 16:09:14 +0100
-> committer Greg Kroah-Hartman <gregkh@linuxfoundation.org> 2023-01-17
-> 19:04:17 +0100
-> commit 5c5a7680e67ba6fbbb5f4d79fa41485450c1985c (patch)
-> tree 0b6dbc003a6bb4a3f7fb084d31326bbfa3ba3f7c
-> parent 7bbb89b420d9e290cb34864832de8fcdf2c140dc (diff)
-> download linux-5c5a7680e67ba6fbbb5f4d79fa41485450c1985c.tar.gz
-> platform: Provide a remove callback that returns no value
->=20
-> Maybe a trivial thing but how about renaming it? I think the postfix,
-> 'new', is a very generic word. I think you could introduce another
-> patch for it if you think it's reasonable.
+v1 can be found here: https://lore.kernel.org/all/20230403071929.360911-1-jstephan@baylibre.com/
 
-=2Eremove_new is only a temporary name. Once all drivers are converted,
-=2Eremove is changed to return void and then all drivers are converted
-back. While "remove_new" might not be a brilliant name choice, touching
-all already converted drivers again just to improve the temporary
-measures doesn't sound right.
+Changelog
+Changes in v2:
+	- fix all comments on bindings
+	- move the binding chunk from driver to binding commit
+	- fix dt_binding_check error (reported by DT_CHECKER_FLAGS)
+	- use a more generic compatible string
+	- add a new dt properties to simplify the driver
+	  "mediatek,is_cdphy"
+	- rename the driver and the corresponding file to include
+	  version
+	- drop of_match_ptr()
+	- use devm_platform_ioremap_resource
+	- use phy-mtk-io.h api instead of regmap
+	- rework the driver to use dt nodes to declare PHY instead of an
+	  array in the driver
+	- remove useless define for unused registers
+	- remove support for CSI0A/B because it cannot be tested, and it
+	  simplifies the driver for a first review
+	- edit commit message and bindings to be more descriptive about the
+	  hardware
 
-Best regards
-Uwe
 
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=C3=B6nig         =
-   |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+Florian Sylvestre (1):
+  dt-bindings: phy: add  mediatek mipi csi driver v 0.5
 
---suzv37z45wvm64m4
-Content-Type: application/pgp-signature; name="signature.asc"
+Phi-bang Nguyen (1):
+  phy: mtk-mipi-csi: add driver for CSI phy
 
------BEGIN PGP SIGNATURE-----
+ .../phy/mediatek,phy-mipi-csi-0-5.yaml        |  62 +++++
+ MAINTAINERS                                   |   7 +
+ drivers/phy/mediatek/Kconfig                  |   8 +
+ drivers/phy/mediatek/Makefile                 |   2 +
+ .../mediatek/phy-mtk-mipi-csi-0-5-rx-reg.h    |  58 ++++
+ drivers/phy/mediatek/phy-mtk-mipi-csi-0-5.c   | 257 ++++++++++++++++++
+ .../phy/mediatek,phy-mipi-csi-0-5.h           |  15 +
+ 7 files changed, 409 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/mediatek,phy-mipi-csi-0-5.yaml
+ create mode 100644 drivers/phy/mediatek/phy-mtk-mipi-csi-0-5-rx-reg.h
+ create mode 100644 drivers/phy/mediatek/phy-mtk-mipi-csi-0-5.c
+ create mode 100644 include/dt-bindings/phy/mediatek,phy-mipi-csi-0-5.h
 
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmRh+VIACgkQj4D7WH0S
-/k7epggAlsMX1TbSjMAIV+LPNrZU/ErXl1QWJt2/nA/iQmxppFkkR19U334HeeZf
-VXsu0FwIvUZpfndnO3hCw3pvEa4gQiTo7reQsd28ECZaLwTVQYvp6o/LceTtaOJ2
-5+FeefPV0mHxQ6SiXZ7g7aA4gkkw2iJY9s7LaPHHXw0jpyOpcZHlNzJioLe4RHdT
-eFYzR99DVhYH81tw8szT4fpAS3Vw2Eqq5PyQHDRT12PrJdM0Ig+3ei53DU4adRWh
-w/kH6vGx2XBIbqNrXq5AcSjVnMvrKq7iKPRxMCz58JC4oCirfqT+7tGWbOgJLLEx
-BCbOuZXZE9d8Thjrbo3cXVRujnhsLg==
-=GMrP
------END PGP SIGNATURE-----
-
---suzv37z45wvm64m4--
+--
+2.40.0
 
