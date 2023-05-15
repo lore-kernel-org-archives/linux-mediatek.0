@@ -4,77 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87AA5C77B75
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 05:26:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EB5FC7EE22
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 06:17:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0Ksvdp8PTKxSr2UBQg5vm1z3nVvtS8V+ddsrIGxDdTY=; b=KOx6LJyxwIrtYGkbiWqt5dW2Bo
-	CVmJBF7jkfpSFi2PC3scsZ6PsxCypiasV26lPmEmzHxRX6B2pbO9lr8Wq04FjYElWG2FIBqLR6d/z
-	uOWvS9VGrAzcVe6oYPUM3SyydYWbwa/3U5TM4kwsh3p0V2SGIjB/p5x2HpcLR7oKndxcOw+NX8jEK
-	b105xSt9PzAC0+cXzPG371z2q6T+7LoP7mvjrSwT/PIjMHfNSuidK8AlqVIzhe1zJe0KFgqF9ofQC
-	imFGJc9ZBqvWPKSC0/1SMq/Nidl+Bo631fsn4HkOeZygjoR/zPg5v21sj2GcPJArXBfoHZjwYorTo
-	Wk0np20w==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=DY/Tvek46OkRim5dYg2uuI8WkPZBk0b6iwqvYb0rtSM=; b=mbzGiXZhz+uhYO
+	nPT7VNGJcPz9dJSgwzrz/fg3LTHwZV3G3KJxBid1VYD94VngQnDSbjbif8LKpTc1+T3lncNXMjQyd
+	s9htIAHVCOeXHGPbVkaK8iydkuKRmZcYh/qsqeLklK84ObLMnPg1MRFwDTZ47jT6WC3dELwf5b0od
+	Te/dY69X9KreWlny9WfdC2RX5/fAT9u004xZjNfr6UBPb5tS4lSPRvVIOeMDljdYc4cfJtf/VI1ll
+	/a5YUA5xHVNlRylBNU4uG+N5TK/PI5szBpf6ejkHNo14Vnu2jeM+Osi09y8Et+YMSAzOm06frJppY
+	LNNNCBtgC6kleAHxWbPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyQj3-000x0x-2E;
-	Mon, 15 May 2023 05:26:25 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pyRWo-00164f-2G;
+	Mon, 15 May 2023 06:17:50 +0000
+Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyQj0-000x02-0C;
-	Mon, 15 May 2023 05:26:23 +0000
-X-UUID: 0508f1c4f2e111ed83ed1395ce914268-20230514
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=0Ksvdp8PTKxSr2UBQg5vm1z3nVvtS8V+ddsrIGxDdTY=;
-	b=IQSM/pSre75BeSvmRdXPb1PiucCb/9DwfARAC2wb2PcUBUyH/Ln33fH3P+6+hsviFPbn83u/CUh+WdDkFq5tkZ9ZZsT4cLfS+4wXrO5fslXLDT0aaw9dS9HJWGIxtVeJfiU5NgdvTqolwa8NUL1HrSnUSf3x6w/8GCTegLGhAsA=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.24,REQID:7b310417-b520-438b-a26e-298aeffef973,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:178d4d4,CLOUDID:d7c5cf6b-2f20-4998-991c-3b78627e4938,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: 0508f1c4f2e111ed83ed1395ce914268-20230514
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <trevor.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1450497710; Sun, 14 May 2023 22:26:18 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 15 May 2023 13:25:42 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 15 May 2023 13:25:42 +0800
-From: Trevor Wu <trevor.wu@mediatek.com>
-To: <pierre-louis.bossart@linux.intel.com>, <peter.ujfalusi@linux.intel.com>,
-	<yung-chuan.liao@linux.intel.com>, <ranjani.sridharan@linux.intel.com>,
-	<kai.vehmanen@linux.intel.com>, <daniel.baluta@nxp.com>,
-	<broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
-	<perex@perex.cz>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>
-CC: <trevor.wu@mediatek.com>, <yc.hung@mediatek.com>,
-	<tinghan.shen@mediatek.com>, <sound-open-firmware@alsa-project.org>,
-	<alsa-devel@alsa-project.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: [PATCH 2/2] ASoC: SOF: mediatek: add adsp debug dump
-Date: Mon, 15 May 2023 13:25:40 +0800
-Message-ID: <20230515052540.9037-3-trevor.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230515052540.9037-1-trevor.wu@mediatek.com>
-References: <20230515052540.9037-1-trevor.wu@mediatek.com>
+	id 1pyRWj-00162U-15
+	for linux-mediatek@lists.infradead.org;
+	Mon, 15 May 2023 06:17:49 +0000
+Received: by mail-pg1-x52b.google.com with SMTP id 41be03b00d2f7-528dd896165so8795704a12.2
+        for <linux-mediatek@lists.infradead.org>; Sun, 14 May 2023 23:17:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1684131464; x=1686723464;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=DY/Tvek46OkRim5dYg2uuI8WkPZBk0b6iwqvYb0rtSM=;
+        b=SHQD3SCR9W+xMBa5+chJhxwA/WtZwLNXlmU69gJd0tzp7gXBkk5GmihQlO83gvhqu2
+         ILCPJqysWYqlwQC/4a1tMhGE4nX7QMwQoDG1A2s7ZGxk/BPKLuxDWcvMbbPgRwWyiBta
+         82f2sGFYCBKjfzsdc8HdtI1PSDcX/gCsQURSk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1684131464; x=1686723464;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=DY/Tvek46OkRim5dYg2uuI8WkPZBk0b6iwqvYb0rtSM=;
+        b=ZcHDmDsb4t5r7VghlBs93yLnSbRua9EoOVoTKsapLIZ9iEcDuaD7gXU6tvMaAUn2dx
+         +ln6TNA55BUmZALno+l6UyqrGFQ82Hz0hiYviJeSoyVgd1mEhRiG7drIf4f4zhYt99uK
+         ChPEL4+maWtkPZ9cM2xOQBCjSyhxxDEBcqXxFKPXM0m+2ugXVtwFjDVVxy4DC4bsWXIW
+         +YG/bP0FLhs0xoc8VyYunb4ekvPtaTX6/kQ+fO95HU+YjFxN6JILu0l2bW8dzzqL4+Od
+         G5rYwuzZ6RQwfmogCgqU7bE6fDmivITij+qglCowLlbjX07QTTi42tEN4A2H2qbPRd5y
+         +QRA==
+X-Gm-Message-State: AC+VfDw4gVYdq3iZ+aSQ9iqvdOO7SImnT0fRPoxPEAk6ngAIEQecZbSR
+	eSh31t0AwCFc9HMLq0TtsOTsNg==
+X-Google-Smtp-Source: ACHHUZ52DW6enl/aNrixK9TkcAw1Q3rEqPtBBG3wTF5oS74t9pGxSj4R90JS+A4/OvgNSW7wfSaeSg==
+X-Received: by 2002:a05:6a20:144a:b0:105:dafa:feb3 with SMTP id a10-20020a056a20144a00b00105dafafeb3mr4095639pzi.61.1684131464030;
+        Sun, 14 May 2023 23:17:44 -0700 (PDT)
+Received: from fshao-glinux.tpe.corp.google.com ([2401:fa00:1:10:cdf5:d894:a1d:dc15])
+        by smtp.gmail.com with ESMTPSA id 12-20020a63124c000000b00502ecb91940sm10680495pgs.55.2023.05.14.23.17.41
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 14 May 2023 23:17:43 -0700 (PDT)
+From: Fei Shao <fshao@chromium.org>
+To: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+	Chen-Yu Tsai <wenst@chromium.org>
+Subject: [PATCH v2] media: mediatek: vcodec: mtk_vcodec_dec_hw: Use devm_pm_runtime_enable()
+Date: Mon, 15 May 2023 14:16:10 +0800
+Message-ID: <20230515141610.v2.1.I0d1657be3fea5870f797e975a7aa490291e17993@changeid>
+X-Mailer: git-send-email 2.40.1.606.ga4b1b128d6-goog
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230514_222622_105105_E0327DA7 
-X-CRM114-Status: GOOD (  10.61  )
+X-CRM114-CacheID: sfid-20230514_231745_409264_BC775F8F 
+X-CRM114-Status: GOOD (  13.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,85 +82,95 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Tiffany Lin <tiffany.lin@mediatek.com>, linux-media@vger.kernel.org, Yunfei Dong <yunfei.dong@mediatek.com>, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mt8188 and mt8186 .dbg_dump callback to print some information when
-DSP panic occurs.
+Convert pm_runtime_enable() to the managed version, and clean up error
+handling and unnecessary .remove() callback accordingly.
 
-Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
-Reviewed-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
-Reviewed-by: Yaochun Hung <yc.hung@mediatek.com>
-Reviewed-by: Péter Ujfalusi <peter.ujfalusi@linux.intel.com>
+Signed-off-by: Fei Shao <fshao@chromium.org>
+
 ---
- sound/soc/sof/mediatek/mt8186/mt8186.c | 22 ++++++++++++++++++++++
- sound/soc/sof/mediatek/mt8186/mt8186.h |  5 +++++
- 2 files changed, 27 insertions(+)
 
-diff --git a/sound/soc/sof/mediatek/mt8186/mt8186.c b/sound/soc/sof/mediatek/mt8186/mt8186.c
-index 3a9c81418c1f..bb59952885f6 100644
---- a/sound/soc/sof/mediatek/mt8186/mt8186.c
-+++ b/sound/soc/sof/mediatek/mt8186/mt8186.c
-@@ -24,6 +24,7 @@
- #include "../../sof-of-dev.h"
- #include "../../sof-audio.h"
- #include "../adsp_helper.h"
-+#include "../mtk-adsp-common.h"
- #include "mt8186.h"
- #include "mt8186-clk.h"
+Changes in v2:
+Use devm_pm_runtime_enable() per suggestion from the previous thread:
+https://lore.kernel.org/lkml/20230510164330.z2ygkl7vws6fci75@pengutronix.de/T/#m25be91afe3e9554600e859a8a59128ca234fc63d
+
+ .../mediatek/vcodec/mtk_vcodec_dec_hw.c       | 26 ++++++-------------
+ 1 file changed, 8 insertions(+), 18 deletions(-)
+
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
+index b753bf54ebd9..e1cb2f8dca33 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
+@@ -148,20 +148,21 @@ static int mtk_vdec_hw_probe(struct platform_device *pdev)
+ 	ret = mtk_vcodec_init_dec_clk(pdev, &subdev_dev->pm);
+ 	if (ret)
+ 		return ret;
+-	pm_runtime_enable(&pdev->dev);
++
++	ret = devm_pm_runtime_enable(&pdev->dev);
++	if (ret)
++		return ret;
  
-@@ -473,6 +474,26 @@ static snd_pcm_uframes_t mt8186_pcm_pointer(struct snd_sof_dev *sdev,
- 	return pos;
+ 	of_id = of_match_device(mtk_vdec_hw_match, dev);
+ 	if (!of_id) {
+ 		dev_err(dev, "Can't get vdec subdev id.\n");
+-		ret = -EINVAL;
+-		goto err;
++		return -EINVAL;
+ 	}
+ 
+ 	hw_idx = (enum mtk_vdec_hw_id)(uintptr_t)of_id->data;
+ 	if (hw_idx >= MTK_VDEC_HW_MAX) {
+ 		dev_err(dev, "Hardware index %d not correct.\n", hw_idx);
+-		ret = -EINVAL;
+-		goto err;
++		return -EINVAL;
+ 	}
+ 
+ 	main_dev->subdev_dev[hw_idx] = subdev_dev;
+@@ -173,36 +174,25 @@ static int mtk_vdec_hw_probe(struct platform_device *pdev)
+ 	if (IS_SUPPORT_VDEC_HW_IRQ(hw_idx)) {
+ 		ret = mtk_vdec_hw_init_irq(subdev_dev);
+ 		if (ret)
+-			goto err;
++			return ret;
+ 	}
+ 
+ 	subdev_dev->reg_base[VDEC_HW_MISC] =
+ 		devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR((__force void *)subdev_dev->reg_base[VDEC_HW_MISC])) {
+ 		ret = PTR_ERR((__force void *)subdev_dev->reg_base[VDEC_HW_MISC]);
+-		goto err;
++		return ret;
+ 	}
+ 
+ 	if (!main_dev->subdev_prob_done)
+ 		main_dev->subdev_prob_done = mtk_vdec_hw_prob_done;
+ 
+ 	platform_set_drvdata(pdev, subdev_dev);
+-	return 0;
+-err:
+-	pm_runtime_disable(subdev_dev->pm.dev);
+-	return ret;
+-}
+-
+-static int mtk_vdec_hw_remove(struct platform_device *pdev)
+-{
+-	pm_runtime_disable(&pdev->dev);
+-
+ 	return 0;
  }
  
-+static void mt8186_adsp_dump(struct snd_sof_dev *sdev, u32 flags)
-+{
-+	u32 dbg_pc, dbg_data, dbg_inst, dbg_ls0stat, dbg_status, faultinfo;
-+
-+	/* dump debug registers */
-+	dbg_pc = snd_sof_dsp_read(sdev, DSP_REG_BAR, DSP_PDEBUGPC);
-+	dbg_data = snd_sof_dsp_read(sdev, DSP_REG_BAR, DSP_PDEBUGDATA);
-+	dbg_inst = snd_sof_dsp_read(sdev, DSP_REG_BAR, DSP_PDEBUGINST);
-+	dbg_ls0stat = snd_sof_dsp_read(sdev, DSP_REG_BAR, DSP_PDEBUGLS0STAT);
-+	dbg_status = snd_sof_dsp_read(sdev, DSP_REG_BAR, DSP_PDEBUGSTATUS);
-+	faultinfo = snd_sof_dsp_read(sdev, DSP_REG_BAR, DSP_PFAULTINFO);
-+
-+	dev_info(sdev->dev, "adsp dump : pc %#x, data %#x, dbg_inst %#x,",
-+		 dbg_pc, dbg_data, dbg_inst);
-+	dev_info(sdev->dev, "ls0stat %#x, status %#x, faultinfo %#x",
-+		 dbg_ls0stat, dbg_status, faultinfo);
-+
-+	mtk_adsp_dump(sdev, flags);
-+}
-+
- static struct snd_soc_dai_driver mt8186_dai[] = {
- {
- 	.name = "SOF_DL1",
-@@ -555,6 +576,7 @@ static struct snd_sof_dsp_ops sof_mt8186_ops = {
- 	.num_drv	= ARRAY_SIZE(mt8186_dai),
- 
- 	/* Debug information */
-+	.dbg_dump = mt8186_adsp_dump,
- 	.debugfs_add_region_item = snd_sof_debugfs_add_region_item_iomem,
- 
- 	/* PM */
-diff --git a/sound/soc/sof/mediatek/mt8186/mt8186.h b/sound/soc/sof/mediatek/mt8186/mt8186.h
-index 5b521c60b4e3..91323f492a1e 100644
---- a/sound/soc/sof/mediatek/mt8186/mt8186.h
-+++ b/sound/soc/sof/mediatek/mt8186/mt8186.h
-@@ -38,6 +38,11 @@ struct snd_sof_dev;
- #define DSP_MBOX3_IRQ_EN		BIT(3)
- #define DSP_MBOX4_IRQ_EN		BIT(4)
- #define DSP_PDEBUGPC			0x013C
-+#define DSP_PDEBUGDATA			0x0140
-+#define DSP_PDEBUGINST			0x0144
-+#define DSP_PDEBUGLS0STAT		0x0148
-+#define DSP_PDEBUGSTATUS		0x014C
-+#define DSP_PFAULTINFO			0x0150
- #define ADSP_CK_EN			0x1000
- #define CORE_CLK_EN			BIT(0)
- #define COREDBG_EN			BIT(1)
+ static struct platform_driver mtk_vdec_driver = {
+ 	.probe	= mtk_vdec_hw_probe,
+-	.remove = mtk_vdec_hw_remove,
+ 	.driver	= {
+ 		.name	= "mtk-vdec-comp",
+ 		.of_match_table = mtk_vdec_hw_match,
 -- 
-2.18.0
+2.40.1.606.ga4b1b128d6-goog
 
 
