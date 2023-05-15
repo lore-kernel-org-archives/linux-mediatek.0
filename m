@@ -4,76 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFF12C77B7D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 14:33:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33FB1C7EE26
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 14:39:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FEN96dmV0QOn0Xv30DSUNmzscaAgRSM74ruFY3Omo5Y=; b=wufapbek3dcfl7QSmLzUoXM/wA
-	8zVF0VWyxI6FSzW6h8JGEqj6xDjZPdcVTtxGM0Y+NUCmaPlxgCLy8rD2SRIYVzD1B+6YC9mXUB874
-	08JQ0zEA8EuXc7s04CM4u4DnzADr5ro8ujZMvJCToDO+5tOTvxOYv0ddNRVHY5gUPefBz0c9C4x6k
-	PPPsArWySTBOfptPJ77GeZeWxn59Hbem8amOymVwpQISsn7b8TUWgmrlvxO0IxTIwB20QT6U+UNAZ
-	C6Rwzz6Rl9gRYoNmGgV6jSYoobP6hK4Feq0gKOyyLjD7vsGrzls+emVEsbGy45mwDz6Kf11iH+JLw
-	kLWSDssA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XHbphISfQNtSSlq7P8DqKwCY9A5JQeSAhRg7qseCH0g=; b=0S0OcqPndYagSgBUO4C/dGAARI
+	m4xFPqx2jCYUjmO5kK9y3wye0JXIbm+/3yfA1hjYtmsn6qHfURMy86vkS4V8c13O8HVtD3UpYqdAJ
+	sHI1/snul7HMVXbNi7NItNX3q3rjrwjYtvLf1TZzGxx85g/ui8MO4l6VLgJNGfpYu3vAlUPEP2Ghd
+	ZjQGzdax/wo7KjbJWOiibnRIQivibL+5aLPfOmFkWN8rBu3Esm3x0LSorVYuj8P2ROMusr2P4bvcB
+	z6d9LXKY1Stia5sdSMD12Wz1SC2f8cUiRJitBMw08oJHwEdV+2nIW2XXgzjnFtdDJ+AGdPKq4yzyL
+	O7b+RF8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyZFt-002Py1-1R;
-	Mon, 15 May 2023 14:32:53 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pyZMB-002QtB-33;
+	Mon, 15 May 2023 14:39:23 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyZFo-002PwS-1A;
-	Mon, 15 May 2023 14:32:51 +0000
-Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C3CEB66029DE;
-	Mon, 15 May 2023 15:32:45 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1684161166;
-	bh=bWZThDJSU0iT2g+zjqNeZ3/ILxoEj05Ce5sSgcKUe/o=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=U+eR1vgoJXvDzgRfU2ak0AcHjYq5CcRxGoLBcC++VJhYWXDmJ4sZ746fZ7zXTBnbw
-	 TBPemcV8v/KRvCQOroPb9vkpvNaWbXC0IJ0wztLD6RYdRJdGNcwuBX2QG5FBHa5cqe
-	 VX0TJJvEXBIqAqA5NpXh1yHIXyMQpYSREE9i7K8Ik66ybXu7ivAk/y5Rz7pse5naP+
-	 CUWiQQgXNZ6u0AAcyRsDSHEimkhbunfZOOvtKI1m4N3zaWGxw7vdT5DGLy+M/C5B81
-	 sHWNVY4Q9Y50BPgQx7y1D+/M+sByFaC5GTQxv8Dx3wnatXCeG+jSDv4vVsHp2Q/a3K
-	 kSL6TUU/EeGtg==
-Message-ID: <54e6923c-729a-49de-8395-fbd0b8443aa8@collabora.com>
-Date: Mon, 15 May 2023 16:32:42 +0200
+	id 1pyZM8-002Qry-0F
+	for linux-mediatek@lists.infradead.org;
+	Mon, 15 May 2023 14:39:22 +0000
+X-UUID: 41e974a4f32e11ed912e1518a6540028-20230515
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=XHbphISfQNtSSlq7P8DqKwCY9A5JQeSAhRg7qseCH0g=;
+	b=JTeGSr5Rj5ifYCwQ7uu6hUxNmLaOwrX52TkKOgsyq1hlZpIJTV9Fh2RH6RZ+owKSiT7UyH2mLAzE107uaE3e6oVHwlwxskJkZ03CtXIkVQNo7uWhWXt4JeIKJWc4ORJ2CNfA3kHHA7hfCmZMRoMdGjofQr2C+M5EJ8cHSPU6HDc=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.24,REQID:5857e14e-f09e-42e6-a842-0377a4d9e85b,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:178d4d4,CLOUDID:06cadf6b-2f20-4998-991c-3b78627e4938,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: 41e974a4f32e11ed912e1518a6540028-20230515
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <deren.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 677127196; Mon, 15 May 2023 07:39:11 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.194) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 15 May 2023 22:19:08 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 15 May 2023 22:19:08 +0800
+From: Deren Wu <deren.wu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
+CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
+	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, Leon Yen
+	<Leon.Yen@mediatek.com>, Eric-SY Chang <Eric-SY.Chang@mediatek.com>, KM Lin
+	<km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
+	<ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Stella Chang
+	<Stella.Chang@mediatek.com>, Quan Zhou <quan.zhou@mediatek.com>, Ryder Lee
+	<ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+	linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>,
+	<stable@vger.kernel.org>
+Subject: [PATCH] wifi: mt76: mt7921: fix skb leak by txs missing in AMSDU
+Date: Mon, 15 May 2023 22:18:05 +0800
+Message-ID: <b45ef06de62ce4f02d35ecef26ba78c7a7e75b51.1684153148.git.deren.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.1
-Subject: Re: [PATCH v2 2/2] phy: mtk-mipi-csi: add driver for CSI phy
-Content-Language: en-US
-To: Julien Stephan <jstephan@baylibre.com>
-Cc: krzysztof.kozlowski@linaro.org, robh@kernel.org, chunkuang.hu@kernel.org,
- linux-mediatek@lists.infradead.org, Phi-bang Nguyen <pnguyen@baylibre.com>,
- Louis Kuo <louis.kuo@mediatek.com>, Chunfeng Yun
- <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>,
- Andy Hsieh <andy.hsieh@mediatek.com>, Philipp Zabel
- <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>,
- open list <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek USB3 PHY DRIVER"
- <linux-arm-kernel@lists.infradead.org>,
- "open list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>,
- "open list:DRM DRIVERS FOR MEDIATEK" <dri-devel@lists.freedesktop.org>
-References: <20230515090551.1251389-1-jstephan@baylibre.com>
- <20230515090551.1251389-3-jstephan@baylibre.com>
- <cd6067b2-660a-8f2c-697d-26814a9dc131@collabora.com>
- <b2nk4jw2hpy4ndoq4cojazkn6h3tra2zjffhiswb7aqryabf7q@mkbtzhzcbivv>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <b2nk4jw2hpy4ndoq4cojazkn6h3tra2zjffhiswb7aqryabf7q@mkbtzhzcbivv>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230515_073248_534846_97B524AF 
-X-CRM114-Status: GOOD (  21.28  )
+X-CRM114-CacheID: sfid-20230515_073920_257403_02233730 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,65 +88,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 15/05/23 16:07, Julien Stephan ha scritto:
-> On Mon, May 15, 2023 at 02:22:52PM +0200, AngeloGioacchino Del Regno wrote:
->>> +#define CSIxB_OFFSET		0x1000
->>
->> What if we grab two (or three?) iospaces from devicetree?
->>
->> - base (global)
->> - csi_a
->> - csi_b
->>
->> That would make it possible to maybe eventually extend this driver to more
->> versions (older or newer) of the CSI PHY IP without putting fixes offsets
->> inside of platform data structures and such.
->>
-> Hi Angelo,
-> The register bank of the CSI port is divided into 2:
-> * from base address to base + 0x1000 (port A)
-> * from base + 0x1000 to base +0x2000 (port B)
-> Some CSI port can be configured in 4D1C mode (4 data + 1 clock) using
-> the whole register bank from base to base + 0x2000 or in 2D1C mode (2 data +
-> 1 clock) and use either port A or port B.
-> 
-> For example  mt8365 has CSI0 that can be used either in 4D1C mode or in
-> 2 * 2D1C and CSI1 which can use only 4D1C mode
-> 
-> 2D1C mode can not be tested and is not implemented in the driver so
-> I guess adding csi_a and csi_b reg value may be confusing?
-> 
-> What do you think?
+txs may be dropped if the frame is aggregated in AMSDU. When the problem
+shows up, some SKBs would be hold in driver to cause network stopped
+temporarily. Even if the problem can be recovered by txs timeout handling,
+mt7921 still need to disable txs in AMSDU to avoid this issue.
 
-Ok so we're talking about two data lanes per CSI port... it may still be
-beneficial to split the two register regions as
+Cc: stable@vger.kernel.org
+Fixes: 182071cdd594 ("mt76: connac: move connac2_mac_write_txwi in mt76_connac module")
+Reviewed-by: Shayne Chen <shayne.chen@mediatek.com>
+Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-reg-names = "csi-a", "csi-b"; (whoops, I actually used underscores before,
-                                and that was a mistake, sorry!)
-
-....but that would be actually good only if we are expecting to get a CSI
-PHY in the future with four data lanes per port.
-
-If you do *not* expect at all such a CSI PHY, or you do *not* expect such
-a PHY to ever be compatible with this driver (read as: if you expect such
-a PHY to be literally completely different from this one), then it would
-not change much to have the registers split in two.
-
-Another case in which it would make sense is if we were to get a PHY that
-provides more than two CSI ports: in that case, we'd avoid platform data
-machinery to check the number of actual ports in the IP, as we would be
-just checking how many register regions we were given from the devicetree,
-meaning that if we got "csi-a", "csi-b", "csi-c", "csi-d", we have four
-ports.
-
-Besides, another thing to think about is... yes you cannot test nor implement
-2D1C mode in your submission, but this doesn't mean that others won't ever be
-interested in this and that other people won't be actually implementing that;
-Providing them with the right initial driver structure will surely make things
-easier, encouraging other people from the community to spend their precious
-time on the topic.
-
-Regards,
-Angelo
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
+index ee0fbfcd07d6..56c42ee1178c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
+@@ -495,6 +495,7 @@ void mt76_connac2_mac_write_txwi(struct mt76_dev *dev, __le32 *txwi,
+ 				    BSS_CHANGED_BEACON_ENABLED));
+ 	bool inband_disc = !!(changed & (BSS_CHANGED_UNSOL_BCAST_PROBE_RESP |
+ 					 BSS_CHANGED_FILS_DISCOVERY));
++	bool amsdu_en = wcid->amsdu;
+ 
+ 	if (vif) {
+ 		struct mt76_vif *mvif = (struct mt76_vif *)vif->drv_priv;
+@@ -554,12 +555,14 @@ void mt76_connac2_mac_write_txwi(struct mt76_dev *dev, __le32 *txwi,
+ 	txwi[4] = 0;
+ 
+ 	val = FIELD_PREP(MT_TXD5_PID, pid);
+-	if (pid >= MT_PACKET_ID_FIRST)
++	if (pid >= MT_PACKET_ID_FIRST) {
+ 		val |= MT_TXD5_TX_STATUS_HOST;
++		amsdu_en &= !is_mt7921(dev);
++	}
+ 
+ 	txwi[5] = cpu_to_le32(val);
+ 	txwi[6] = 0;
+-	txwi[7] = wcid->amsdu ? cpu_to_le32(MT_TXD7_HW_AMSDU) : 0;
++	txwi[7] = amsdu_en ? cpu_to_le32(MT_TXD7_HW_AMSDU) : 0;
+ 
+ 	if (is_8023)
+ 		mt76_connac2_mac_write_txwi_8023(txwi, skb, wcid);
+-- 
+2.18.0
 
 
