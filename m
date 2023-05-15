@@ -4,84 +4,119 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BA94C77B75
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 12:53:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE6B8C77B75
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 13:07:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t0kKvU8VcjZDCawm1uzpgifPJsmcOM7ycSUxGftpKlg=; b=SJfKOjOUD0jFmr7bsaUu73gIwj
-	35JN38sSAxhId/72Lr/xtQQ1O3D7Ac6Wiyx6SxFwdeEka5tyDxA2y08FEubIlXdB2JcTyEbBn0E3J
-	kWf7NA7t0VDRFmiDR0vlFrEqDk1TCxDHOy0C/xnpCD2Up7t57qx7bwAhGKH/cLDY9KL1KI9+w1ukH
-	h+5zVfZNqIAPPUOkimuKSvVXjLMKeT1foJMdtrnXG7cvNmkZHOp0Akjdg64qicpTNYHwkcrUL7Tok
-	IpLJA0n3ZjSMuC4ApS+MjkKIMSDIe8zGmhxUddC2qR0iTwV83RznsCvZ7oY+4qMIiz6SmOZ/Bji4L
-	ThJjtYww==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=r52VsGt7pCD5MqwU7Iz5hhf7etBKNWqtKNN+QQL4Wbs=; b=VUmtkwIkHL0TyG+bJUK+kyCHZa
+	QQKhJxtXvpY8NVGt0haHTiAPTWUYMoD1bIZhb/rJAYC4/3cxMSwzX5t+JcwMN2ynlWBhlyCzO1w6N
+	6GEaBwVhL5q5Cv0Vft9hhRQ8lOtWq4jODzeTzn1uRBAOtGVySUJ3ObH5aCgeXMgdGDsM5r2cuPdMv
+	CsuIYuVuO/lFvztjf7j2Ca4tOG9Kvu0FAHZzBmwAmValhS5xEXFtTrBu3+zS0Fi7+hULqgZVRa5Cu
+	PtFolQ5BCV8efAJGDbdmC1xXwLATudejZAuuWUMf9bmkRS3+E0yBZx8AzQE7Is3vLOZN6ThlRZGsc
+	SaxsZRrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyXhL-002AiO-0R;
-	Mon, 15 May 2023 12:53:07 +0000
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+	id 1pyXvM-002DBq-0Z;
+	Mon, 15 May 2023 13:07:36 +0000
+Received: from mail-qk1-x72c.google.com ([2607:f8b0:4864:20::72c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyXhH-002Ago-0p
+	id 1pyXvI-002D82-1E
 	for linux-mediatek@lists.infradead.org;
-	Mon, 15 May 2023 12:53:04 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-307a8386946so4925928f8f.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 15 May 2023 05:53:00 -0700 (PDT)
+	Mon, 15 May 2023 13:07:35 +0000
+Received: by mail-qk1-x72c.google.com with SMTP id af79cd13be357-759200f12baso366319985a.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 15 May 2023 06:07:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1684155179; x=1686747179;
-        h=content-transfer-encoding:mime-version:date:message-id:subject
-         :references:in-reply-to:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=t0kKvU8VcjZDCawm1uzpgifPJsmcOM7ycSUxGftpKlg=;
-        b=kQQkiCuyGeHXbQ20FCvkY01rdbA3aktukV5cOjcESX8wfW/rZ9oJjouqt5mIKEhqsI
-         PJV3ds2mEk2TUyI7S7xOG+4APL9bxRIQGGDfOGHCLXx/wbQf0HbDlF4S51t0R8rChBKH
-         d9m6yO0N+aWBZYSJAaCBUHqxbji+yORNy6AVsQtBcQpb+YkgtPu2jfzEWkUOw2bUgvcH
-         tc+1OBd1m8fNLUxTv9Hddv/qCLeu3pccjYlVoWzSnTAexzFijNJoVYW7XikJU+pQFyvj
-         GAkyslBQvJrnQrtJNWwZOusXwsr4qvsZjC3TYxdXi/XFnD4nCcxvchRnqQeamGQFp3Oz
-         HO0Q==
+        d=ziepe.ca; s=google; t=1684156049; x=1686748049;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=r52VsGt7pCD5MqwU7Iz5hhf7etBKNWqtKNN+QQL4Wbs=;
+        b=c+5jOYw/nbV0ulxcZUPP/BwmGfGabE0GudFc4Pxot2MDSxnZOMjQBHanidAXv8AN4s
+         wCtL4vKPT/NQuQtyRosfY1v+Cc4PX94PKhH/K4vGQkh8BXrOSCykMzDtIWTaHdinMTlL
+         GTd1vPbd7jdhMb9Xp18vHEaSJ5oykF8Q18Co+JrFWfrSsGa06ytgp5MPhg2lAuMcBHY9
+         +cXuTSEKaaD6FCDHfVc+wlq2TFUxcMNkM8xdx//DfRqBb1wXlbXwUaZ0w2XcKKmJCXYm
+         rNhNdyMFvde5Wj2WqbjDnUEci9/JLzGroYUlyOEdGT2Q14DOTFUq69HjSZo3vkt1aQ7q
+         pxiA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684155179; x=1686747179;
-        h=content-transfer-encoding:mime-version:date:message-id:subject
-         :references:in-reply-to:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=t0kKvU8VcjZDCawm1uzpgifPJsmcOM7ycSUxGftpKlg=;
-        b=L/d1Ah1hT4B617zqMoOyMdmRGi+YthlVS+G0/jKL5v719cIcF/8Z92oFyRP1CkXHru
-         UwAyauLitFu91Xar8HDlBEwMBklTCiIY7nqyCenxG0NFTeO5cQ6jjoZG61IuPAVzetpw
-         AgTqIeam6MBGKQt++qInVIvJFkC+jTiVSq9UiktHBQU3bxinWr97gimZ8WLRkcxhKybs
-         c2LnqDEzMwxdkg50LcYHiomb+k2uIXLafrFJkWlQihuCneieaBhsUnbDVPxg9gZipBa3
-         gfbzzomIzFbvSsb2pdxpkqfBNxy4AmQ6asYJU+iSU+F/oAXTr64VpOQamDwqn2NCgp5L
-         9luw==
-X-Gm-Message-State: AC+VfDyQU+YkfYN4p4B9UH4roci4BwFslzcavVAp/W+BCccY16Ahdd12
-	nUG/y1vbN+B7QpVaDG7c68ixVA==
-X-Google-Smtp-Source: ACHHUZ4pr0OZs/JDMmps+IUMP9qKK49qZJW95shiWiZOKkfFhc5PHKAymSNXqXTfWXrzamNqen0KYQ==
-X-Received: by 2002:a05:6000:1b8f:b0:306:2b31:5935 with SMTP id r15-20020a0560001b8f00b003062b315935mr19376409wru.55.1684155179018;
-        Mon, 15 May 2023 05:52:59 -0700 (PDT)
-Received: from arrakeen.starnux.net ([2a01:e0a:982:cbb0:52eb:f6ff:feb3:451a])
-        by smtp.gmail.com with ESMTPSA id f16-20020a5d6650000000b003062c0ef959sm32197342wrw.69.2023.05.15.05.52.58
+        d=1e100.net; s=20221208; t=1684156049; x=1686748049;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=r52VsGt7pCD5MqwU7Iz5hhf7etBKNWqtKNN+QQL4Wbs=;
+        b=UXiAhEdUH6GqhU3PNEsvRcPaffdRCmPRw+KmrjIWVgm1PL/hRA4+sWwFQAIn7b7eYd
+         SCZdS5nY+vwNTu5rOLlvDNy6BkQIWTuVYzWbfP/g4LinaCi2uK3hpT60ExSIleul/j/F
+         gTYl3haEoZeZQ/VByuSvli/0SeB2opit7NXCmCUP71rgVBz3kg6LmToHdIwZu1iOff3D
+         oJcsV3uh8FdQacOdiprEfzsofeOWShZwFa2BsOD7BX1dPqRjCvxVa9NkwyljxcPQ+tGy
+         ODpnnyptwqrQ8mCqRlxASrXXtWpkg2PzrHySS6cYvqJGQgPgf5RWNh919XVl22rZogk0
+         DPbw==
+X-Gm-Message-State: AC+VfDy7kePYaTppAuXjgm3GiICKhsISEB/RQjRz5Bsd24XoFEAyTw7+
+	YBwSA2YJGYWuh+ko8JEyUqr2ug==
+X-Google-Smtp-Source: ACHHUZ6oq1rgsxAhha/L8rTgUYSyK7wV0xG3BSAlCLbWHRWP4j4vcs+gZ2cT74Vr/sFz2mlpsmeCpA==
+X-Received: by 2002:ac8:7f44:0:b0:3f3:928a:eae2 with SMTP id g4-20020ac87f44000000b003f3928aeae2mr42158943qtk.4.1684156049337;
+        Mon, 15 May 2023 06:07:29 -0700 (PDT)
+Received: from ziepe.ca (hlfxns017vw-142-68-25-194.dhcp-dynamic.fibreop.ns.bellaliant.net. [142.68.25.194])
+        by smtp.gmail.com with ESMTPSA id n27-20020ac81e1b000000b003e388264753sm5328251qtl.65.2023.05.15.06.07.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 May 2023 05:52:58 -0700 (PDT)
-From: Neil Armstrong <neil.armstrong@linaro.org>
-To: sam@ravnborg.org, airlied@gmail.com, daniel@ffwll.ch, 
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
- dri-devel@lists.freedesktop.org, Shuijing Li <shuijing.li@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- Project_Global_Chrome_Upstream_Group@mediatek.com, jitao.shi@mediatek.com
-In-Reply-To: <20230515094955.15982-1-shuijing.li@mediatek.com>
-References: <20230515094955.15982-1-shuijing.li@mediatek.com>
-Subject: Re: [PATCH v4 0/2] Reduce lcm_reset to DSI LP11 send cmd time
-Message-Id: <168415517821.3264861.11690266641021902230.b4-ty@linaro.org>
-Date: Mon, 15 May 2023 14:52:58 +0200
+        Mon, 15 May 2023 06:07:28 -0700 (PDT)
+Received: from jgg by wakko with local (Exim 4.95)
+	(envelope-from <jgg@ziepe.ca>)
+	id 1pyXvD-000xlt-MR;
+	Mon, 15 May 2023 10:07:27 -0300
+Date: Mon, 15 May 2023 10:07:27 -0300
+From: Jason Gunthorpe <jgg@ziepe.ca>
+To: Niklas Schnelle <schnelle@linux.ibm.com>,
+	Robin Murphy <robin.murphy@arm.com>
+Cc: Joerg Roedel <joro@8bytes.org>, Matthew Rosato <mjrosato@linux.ibm.com>,
+	Will Deacon <will@kernel.org>, Wenjia Zhang <wenjia@linux.ibm.com>,
+	Gerd Bayer <gbayer@linux.ibm.com>,
+	Julian Ruess <julianr@linux.ibm.com>,
+	Pierre Morel <pmorel@linux.ibm.com>,
+	Alexandra Winter <wintera@linux.ibm.com>,
+	Heiko Carstens <hca@linux.ibm.com>,
+	Vasily Gorbik <gor@linux.ibm.com>,
+	Alexander Gordeev <agordeev@linux.ibm.com>,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	Sven Schnelle <svens@linux.ibm.com>,
+	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+	Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	David Woodhouse <dwmw2@infradead.org>,
+	Lu Baolu <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Yong Wu <yong.wu@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Krishna Reddy <vdumpa@nvidia.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Jonathan Corbet <corbet@lwn.net>, linux-s390@vger.kernel.org,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	iommu@lists.linux.dev, asahi@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
+Subject: Re: [PATCH v9 5/6] iommu/dma: Allow a single FQ in addition to
+ per-CPU FQs
+Message-ID: <ZGIuj2pRjOPffqZZ@ziepe.ca>
+References: <20230310-dma_iommu-v9-0-65bb8edd2beb@linux.ibm.com>
+ <20230310-dma_iommu-v9-5-65bb8edd2beb@linux.ibm.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.12.2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230310-dma_iommu-v9-5-65bb8edd2beb@linux.ibm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230515_055303_433992_738FA831 
-X-CRM114-Status: UNSURE (   7.44  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230515_060732_473561_60EE516A 
+X-CRM114-Status: GOOD (  12.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,28 +131,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Mon, May 15, 2023 at 11:15:55AM +0200, Niklas Schnelle wrote:
 
-On Mon, 15 May 2023 17:49:53 +0800, Shuijing Li wrote:
-> The panel spec stipulates that after lcm_reset is pulled high, cmd
-> should be sent to initialize the panel. Within the allowable range of
-> the DSI spec, this time needs to be reduced to avoid panel exceptions.
-> 
-> Base on the branch of linus/master v6.3.
-> 
-> Change since v3:
-> 1. Rebase.
-> 
-> [...]
+> +/**
+> + * struct dma_iommu_options - Options for dma-iommu
+> + *
+> + * @flags: Flag bits for enabling/disabling dma-iommu settings
+> + *
+> + * This structure is intended to provide IOMMU drivers a way to influence the
+> + * behavior of the dma-iommu DMA API implementation. This allows optimizing for
+> + * example for a virtualized environment with slow IOTLB flushes.
+> + */
+> +struct dma_iommu_options {
+> +#define IOMMU_DMA_OPTS_PER_CPU_QUEUE	(0L << 0)
+> +#define IOMMU_DMA_OPTS_SINGLE_QUEUE	(1L << 0)
+> +	u64	flags;
+> +};
 
-Thanks, Applied to https://anongit.freedesktop.org/git/drm/drm-misc.git (drm-misc-next)
+You need to hash it out with robin if we do something like this or use
+more untyped caps as he put in this series:
 
-[1/2] drm/panel: boe-tv101wum-nl6: Remove extra delay
-      https://cgit.freedesktop.org/drm/drm-misc/commit/?id=fe7f4e8d496552f880d7368b482d2ccac33780b7
-[2/2] drm/panel: boe-tv101wum-nl6: Fine tune the panel power sequence
-      https://cgit.freedesktop.org/drm/drm-misc/commit/?id=812562b8d881ce6d33fed8052b3a10b718430fb5
+https://lore.kernel.org/linux-iommu/cover.1683233867.git.robin.murphy@arm.com/
 
--- 
-Neil
-
+Jason
 
