@@ -4,95 +4,150 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB167C77B75
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 09:36:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAF7BC7EE22
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 09:56:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=i1U5d4MLxOVRGxYrIG94ORc3atBG6AwDIhORaNjU7E8=; b=ng3yYJzLyHlAWMhQGBFWfNArOm
-	974sUSmbimH2YYcFq2O4CrvnUnAsPLZZTFTPXDplpKY51eItjy3XzbAnwffX7hW9H4KaKbPukgM4A
-	28YZFELOGx/sFLsMqACHtS/9cCXv4qDnV3aW6nZ92MsDVfeIWm1Qdv8QLQXeirbJ/XbLfq+J7ZUji
-	AA//2P02aOHk+Arb9jWR5qp93SGzWFTTP7skcuc6bt19BaL8+YyXXMzJAFtw8xVEOILkISyRPh8M+
-	s+YABDeXwD0rBP7odyJkrsENO/Y3LIiAnB1HyANWLomXvi2w2ZXf8a67q2ZBwZe8zOAR/1ivBwSRL
-	RnBJ25gQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=c69QNR7lfIqB6FKiUIhsojT+MsFH8qH65PiA7hty3/w=; b=IGiTqk2De+3S5pXtYd593SDxrP
+	8RNIo50mG2i/MSzUksBzbn5OE/AirQP5UydY0HZ01wr8Vi3vqdBtBLB3XpU3MO4yZnzHLxGnyWNo+
+	wjQ4Wy3AeCzzpFLnr/xYUkdhDK/npm4giCqmh2pFqFIlF3zNTyGKF5j2x55ZANMT0AT5+JoVm5Flk
+	wNOaCEAa3BSxvUoyrIHCdNpDw52Rd4eroxtbYqKU6QfndDeuu31+LumOfAJWANu5gfEIGwh7934xs
+	cHrTWlB9aFOV8HulkNn4/2Xp7IJXeS0oDM0z2d1rJ4ILDt2HwWKbhHgF7XdL8eF4nYo+Wl9nTpsZy
+	Fp8yUqRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyUcZ-001Zxk-1U;
-	Mon, 15 May 2023 09:35:59 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1pyUwB-001ejJ-2M;
+	Mon, 15 May 2023 09:56:15 +0000
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyUcW-001ZvA-0X
-	for linux-mediatek@lists.infradead.org;
-	Mon, 15 May 2023 09:35:57 +0000
-Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-3f427118644so80923675e9.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 15 May 2023 02:35:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1684143355; x=1686735355;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=i1U5d4MLxOVRGxYrIG94ORc3atBG6AwDIhORaNjU7E8=;
-        b=0I7No2h2vVPxZmELHElkO+DCMmo/7h06fCuFCt9VWkpo8/xiz0U4nvQr+oP9mcYZtf
-         FX4pXi+9qn6fWaFgnuy9ee8GlUrAvc8uOIPfMUmMy7ACNpBV4nfERAdFfCntOoJ20RN9
-         zoQsNqlbnxRL3Gg+Kxjq+LQr44RsWRr1z+XR6KwIl47cS1kUp2xFQg0lQLdiHdPsWGRR
-         eAA0GQQjkW/1ExWten9k75ga4J8zLaqeB3zjT9+EgCjfS4qgaI50Zsg4keJHUZPEA3V1
-         XL1tbgpzyYuCd+brFvK8S14n9y8WsypZnjmYhBHTwpgto1VIDsbN7OmbxQm3QCNaUEas
-         mfAw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684143355; x=1686735355;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=i1U5d4MLxOVRGxYrIG94ORc3atBG6AwDIhORaNjU7E8=;
-        b=TKPMNwEeNJCvrQWs2diovqapDDG+ZZ1smH0nBx51qu29C18OlQ8de7abmuSGP8215c
-         caH++Su1ZotiMKlJCJ0EUi4m+UPLp+FnmELByIC5yStFEnrxAUzMGfQnRduMBkHzsaIC
-         vJyk/6Hb4IEWHNwKFPBFf6DyD3pPWYvWEoFEPm7MA773WEOUi63rGlSLgLTci3e36GS1
-         dg9yQ2RKJLNwwKxo134D2b09k1Ox9cRGgF3OUYUpo5uCqiqHsFhUV8Gt045s4qlUkf41
-         WF3hQc2aup/mP4bwDBrIbG5VgtiDGxEMfbegFkHSbiSPVRmAVBYdoxJ3JfYWi7+z4KPF
-         sEkw==
-X-Gm-Message-State: AC+VfDxnAPwFHgfaYTRP4PYBsKvemntJiwZNaXnrPALvd+h1AIx0f7fA
-	IIKQ6Se4SxAEBqpQwQW2XjFsqlBxIlN/8YKimZO3P2UZ
-X-Google-Smtp-Source: ACHHUZ7+Cb+vH+WpGUTIuorFy/U4TAkpqUMxuly4awYN+dmnigKVjCrRjrsxKfKFu1bnpDBzyacmPA==
-X-Received: by 2002:a1c:cc0e:0:b0:3ef:622c:26d3 with SMTP id h14-20020a1ccc0e000000b003ef622c26d3mr26682092wmb.35.1684143354910;
-        Mon, 15 May 2023 02:35:54 -0700 (PDT)
-Received: from localhost.localdomain ([2a01:e0a:55f:21e0:fd3b:9fed:e621:cc8f])
-        by smtp.gmail.com with ESMTPSA id z22-20020a7bc7d6000000b003f42813b315sm21035451wmk.32.2023.05.15.02.35.53
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 May 2023 02:35:54 -0700 (PDT)
-From: Julien Stephan <jstephan@baylibre.com>
-To: 
-Cc: krzysztof.kozlowski@linaro.org,
-	robh@kernel.org,
-	chunkuang.hu@kernel.org,
-	linux-mediatek@lists.infradead.org,
-	Florian Sylvestre <fsylvestre@baylibre.com>,
-	Julien Stephan <jstephan@baylibre.com>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Andy Hsieh <andy.hsieh@mediatek.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek USB3 PHY DRIVER),
-	linux-phy@lists.infradead.org (open list:GENERIC PHY FRAMEWORK),
-	devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS),
-	linux-kernel@vger.kernel.org (open list)
-Subject: [PATCH v2 1/2] dt-bindings: phy: add  mediatek mipi csi driver v 0.5
-Date: Mon, 15 May 2023 11:05:50 +0200
-Message-Id: <20230515090551.1251389-2-jstephan@baylibre.com>
-X-Mailer: git-send-email 2.40.0
-In-Reply-To: <20230515090551.1251389-1-jstephan@baylibre.com>
-References: <20230515090551.1251389-1-jstephan@baylibre.com>
+	id 1pyUw8-001eiU-20;
+	Mon, 15 May 2023 09:56:13 +0000
+Received: from pps.filterd (m0353727.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 34F9kL9E004814;
+	Mon, 15 May 2023 09:55:53 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=message-id : subject :
+ from : to : cc : date : in-reply-to : references : content-type :
+ content-transfer-encoding : mime-version; s=pp1;
+ bh=c69QNR7lfIqB6FKiUIhsojT+MsFH8qH65PiA7hty3/w=;
+ b=XedJ+r9zfgtSzDIB4eSrPCYm0wWx4qeblaLActQ5QVrHh2HEZP56wPCN6nRfdD4hHuiP
+ EhfoiT0R911OpM43d3K1kk0me4DLgXWV8s+zqgbHPChfQ3FYX4z+56AT5PA4aVx+B9K3
+ S2qnW7+htzYKc4tFSAOQn6w6QayRbwJWQ5RN51Dqjzw/xNYJQr+c0ErxHoNskgUl8DFd
+ yHHBmnlnMxV8YENBqZIFU66wF7Pf9Kv8sUifi612DboAhSZ7gyThFuv1UtnbRg8omvaJ
+ FcXo0FBL1z6F1hLhK8K2P8bnpEOnHfIw7A8h7ehhYGnNcX/9/f9uXq9zPPOPPG4PGrtc 6g== 
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3qkd3mswqh-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 15 May 2023 09:55:53 +0000
+Received: from m0353727.ppops.net (m0353727.ppops.net [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 34F9bqmA009076;
+	Mon, 15 May 2023 09:55:51 GMT
+Received: from ppma05fra.de.ibm.com (6c.4a.5195.ip4.static.sl-reverse.com [149.81.74.108])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3qkd3mswp5-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 15 May 2023 09:55:51 +0000
+Received: from pps.filterd (ppma05fra.de.ibm.com [127.0.0.1])
+	by ppma05fra.de.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 34F8Tiqw000411;
+	Mon, 15 May 2023 09:33:32 GMT
+Received: from smtprelay02.fra02v.mail.ibm.com ([9.218.2.226])
+	by ppma05fra.de.ibm.com (PPS) with ESMTPS id 3qj264rtm2-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 15 May 2023 09:33:32 +0000
+Received: from smtpav01.fra02v.mail.ibm.com (smtpav01.fra02v.mail.ibm.com [10.20.54.100])
+	by smtprelay02.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 34F9XTPL45744626
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Mon, 15 May 2023 09:33:29 GMT
+Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id E664720040;
+	Mon, 15 May 2023 09:33:28 +0000 (GMT)
+Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 413B62004B;
+	Mon, 15 May 2023 09:33:26 +0000 (GMT)
+Received: from [9.171.65.23] (unknown [9.171.65.23])
+	by smtpav01.fra02v.mail.ibm.com (Postfix) with ESMTP;
+	Mon, 15 May 2023 09:33:26 +0000 (GMT)
+Message-ID: <670b01819f6f875364abaafa4accad9fa92e6177.camel@linux.ibm.com>
+Subject: Re: [PATCH v8 0/6] iommu/dma: s390 DMA API conversion and optimized
+ IOTLB flushing
+From: Niklas Schnelle <schnelle@linux.ibm.com>
+To: Christoph Hellwig <hch@infradead.org>
+Cc: Joerg Roedel <joro@8bytes.org>, Matthew Rosato <mjrosato@linux.ibm.com>,
+        Will Deacon <will@kernel.org>, Wenjia Zhang <wenjia@linux.ibm.com>,
+        Robin
+ Murphy <robin.murphy@arm.com>, Jason Gunthorpe <jgg@ziepe.ca>,
+        Gerd Bayer
+ <gbayer@linux.ibm.com>,
+        Julian Ruess <julianr@linux.ibm.com>,
+        Pierre Morel
+ <pmorel@linux.ibm.com>,
+        Alexandra Winter <wintera@linux.ibm.com>,
+        Heiko
+ Carstens <hca@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
+        Alexander
+ Gordeev <agordeev@linux.ibm.com>,
+        Christian Borntraeger
+ <borntraeger@linux.ibm.com>,
+        Sven Schnelle <svens@linux.ibm.com>,
+        Suravee
+ Suthikulpanit <suravee.suthikulpanit@amd.com>,
+        Hector Martin
+ <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
+        Alyssa Rosenzweig
+ <alyssa@rosenzweig.io>,
+        David Woodhouse <dwmw2@infradead.org>,
+        Lu Baolu
+ <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>,
+        Bjorn Andersson
+ <andersson@kernel.org>,
+        Konrad Dybcio <konrad.dybcio@linaro.org>,
+        Yong Wu
+ <yong.wu@mediatek.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+        Orson Zhai
+ <orsonzhai@gmail.com>,
+        Baolin Wang <baolin.wang@linux.alibaba.com>,
+        Chunyan
+ Zhang <zhang.lyra@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+        Jernej Skrabec
+ <jernej.skrabec@gmail.com>,
+        Samuel Holland <samuel@sholland.org>,
+        Thierry
+ Reding <thierry.reding@gmail.com>,
+        Krishna Reddy <vdumpa@nvidia.com>,
+        Jonathan Hunter <jonathanh@nvidia.com>,
+        Jonathan Corbet <corbet@lwn.net>, linux-s390@vger.kernel.org,
+        netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+        iommu@lists.linux.dev, asahi@lists.linux.dev,
+        linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+        linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
+        linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
+Date: Mon, 15 May 2023 11:33:25 +0200
+In-Reply-To: <ZF5NRls92rhmzV7B@infradead.org>
+References: <20230310-dma_iommu-v8-0-2347dfbed7af@linux.ibm.com>
+	 <ZF5NRls92rhmzV7B@infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.48.1 (3.48.1-1.fc38) 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: bs2KpFYuwoCp6-aBJBUXDadSE7HNCIPx
+X-Proofpoint-ORIG-GUID: d9-xVIyzWKoF0UTrrDTDDfGL5QDVi9C0
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.254,Aquarius:18.0.942,Hydra:6.0.573,FMLib:17.11.170.22
+ definitions=2023-05-15_06,2023-05-05_01,2023-02-09_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 impostorscore=0
+ priorityscore=1501 lowpriorityscore=0 phishscore=0 suspectscore=0
+ adultscore=0 mlxlogscore=999 bulkscore=0 malwarescore=0 clxscore=1011
+ mlxscore=0 spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2304280000 definitions=main-2305150082
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230515_023556_208102_EEE99B12 
-X-CRM114-Status: GOOD (  16.88  )
+X-CRM114-CacheID: sfid-20230515_025612_667306_AF8BAE89 
+X-CRM114-Status: GOOD (  24.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,105 +162,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Florian Sylvestre <fsylvestre@baylibre.com>
+On Fri, 2023-05-12 at 07:29 -0700, Christoph Hellwig wrote:
+> On Fri, Mar 10, 2023 at 05:07:45PM +0100, Niklas Schnelle wrote:
+> > Hi All,
+> >=20
+> > This patch series converts s390's PCI support from its platform specifi=
+c DMA
+> > API implementation in arch/s390/pci/pci_dma.c to the common DMA IOMMU l=
+ayer.
+> > The conversion itself is done in patches 3-4 with patch 2 providing the=
+ final
+> > necessary IOMMU driver improvement to handle s390's special IOTLB flush
+> > out-of-resource indication in virtualized environments. Patches 1-2 may=
+ be
+> > applied independently. The conversion itself only touches the s390 IOMM=
+U driver
+> > and s390 arch code moving over remaining functions from the s390 DMA AP=
+I
+> > implementation. No changes to common code are necessary.
+>=20
+> It looks like this still hasn't made it upstream as of 6.4-rc1.  What's
+> holding this series up?
+>=20
 
-This adds the bindings, for the MIPI CD-PHY module v 0.5 embedded in
-some Mediatek soc, such as the mt8365
+I think with all the IOMMUFD work going on this got starved out of
+reviewer resources. I didn't have any open todos but I guess there is
+still some review needed around how the IOMMU driver tells the dma-
+iommu that it expects IOTLB flushes to be slow requiring a larger
+single flush queue. There was also a small conflict with commit
+49a22aae7d9c ("iommu: Replace device_lock() with group->mutex") that
+prevented this from applying to current upstream so I've just now sent
+out a v9 rebased on v6.4-rc2.
 
-Signed-off-by: Florian Sylvestre <fsylvestre@baylibre.com>
-Signed-off-by: Julien Stephan <jstephan@baylibre.com>
----
- .../phy/mediatek,phy-mipi-csi-0-5.yaml        | 62 +++++++++++++++++++
- MAINTAINERS                                   |  6 ++
- 2 files changed, 68 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/phy/mediatek,phy-mipi-csi-0-5.yaml
-
-diff --git a/Documentation/devicetree/bindings/phy/mediatek,phy-mipi-csi-0-5.yaml b/Documentation/devicetree/bindings/phy/mediatek,phy-mipi-csi-0-5.yaml
-new file mode 100644
-index 000000000000..5aa8c0b41cdf
---- /dev/null
-+++ b/Documentation/devicetree/bindings/phy/mediatek,phy-mipi-csi-0-5.yaml
-@@ -0,0 +1,62 @@
-+# SPDX-License-Identifier: (GPL-2.0-Only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/phy/mediatek,phy-mipi-csi-0-5.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek Sensor Interface MIPI CSI CD-PHY
-+
-+maintainers:
-+  - Julien Stephan <jstephan@baylibre.com>
-+  - Andy Hsieh <andy.hsieh@mediatek.com>
-+
-+description:
-+  The SENINF CD-PHY is a set of CD-PHY connected to the SENINF CSI-2
-+  receivers. The number of PHYs depends on the SoC model.
-+  Depending on the soc model, each PHYs can support CDPHY or DPHY only
-+
-+properties:
-+  compatible:
-+    enum:
-+      - mediatek,phy-mipi-csi-0-5
-+
-+  reg:
-+    maxItems: 1
-+
-+  '#phy-cells':
-+    const: 0
-+
-+  mediatek,is_cdphy:
-+    description:
-+      Specify if the current phy support CDPHY configuration
-+    type: boolean
-+
-+required:
-+  - compatible
-+  - reg
-+  - '#phy-cells'
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    soc {
-+      #address-cells = <2>;
-+      #size-cells = <2>;
-+
-+      mipi_rx_csi0: mipi_rx_csi0@11c10000 {
-+        compatible = "mediatek,phy-mipi-csi-0-5";
-+        reg = <0 0x11C10000 0 0x2000>;
-+        status = "okay";
-+        mediatek,is_cdphy;
-+        #phy-cells = <0>;
-+      };
-+
-+      mipi_rx_csi1: mipi-rx-csi1@11c12000 {
-+        compatible = "mediatek,phy-mipi-csi-0-5";
-+        reg = <0 0x11C12000 0 0x2000>;
-+        status = "disabled";
-+        #phy-cells = <0>;
-+      };
-+    };
-+...
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 6d54f3193075..44f0ff11e984 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -13098,6 +13098,12 @@ F:	Documentation/devicetree/bindings/media/mediatek-vpu.txt
- F:	drivers/media/platform/mediatek/vcodec/
- F:	drivers/media/platform/mediatek/vpu/
- 
-+MEDIATEK MIPI-CSI CDPHY DRIVER
-+M:	Julien Stephan <jstephan@baylibre.com>
-+M:	Andy Hsieh <andy.hsieh@mediatek.com>
-+S:	Supported
-+F:	Documentation/devicetree/bindings/phy/mediatek,phy-mipi-csi-0-5.yaml
-+
- MEDIATEK MMC/SD/SDIO DRIVER
- M:	Chaotian Jing <chaotian.jing@mediatek.com>
- S:	Maintained
--- 
-2.40.0
-
+Thanks,
+Niklas
 
