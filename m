@@ -4,67 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5384AC77B75
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 11:09:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 804F2C77B75
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 11:26:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9agHu0fY5lqi9eOcL0ZwZO6ExlJumYrStfpnyOLFzVc=; b=BxraKK5e3tvyRijjwqjfw3JNrv
-	bXCD9Flgf14cydYpQHsm+1HV73bWm9kU/kTXce/+rnKw9e0NQhl7JxR+a2DEaiwTP80KsYncicWJU
-	Vy0vRAyBNjcd68vsH4lSPBWX65dR7gMJ4dCqH3hkYTkDaWwm6rcnfZ814KmUGN7T+o9vL63eB90va
-	ORkDQEH/5gW1+b9TrWExfTX80EwDrnwH3wfvP7cbw6G62WQv0ufNo3kIiM/UU4G6dJOxMzFu6A1GO
-	X6u74WqBa2C9xRc6+mRgPql1NFO/pioL+kSeqSEGkW+DODlAT9A0BmgZQcAkHdXX5SQTdxBiEMqqn
-	vw5t8Lzg==;
+	bh=d4GW8H0BgnAfNN9w95JIsiknt8uIue8yyyRMsRdxtTk=; b=3HvTMbASUnqGOBHzjY+6RgVIlY
+	tJbW8dW7h3viTJUgcXiusyvGVedhlc9gq1YBlwQ8BoaU3hWThwCDv7x+irb/3KO/RDQS//HmhciWM
+	ip2tIPRKykMndbYLCvqjr4GRV017ZpjBT12WrfHYXz2mvCaTlueveUMRMoMGZPwt+DbV1Ui3CvkV5
+	3nIkSzAHpplIkCtM1ti1NHROQqVD+inLrSs/qlgxildYVCMAgF/o453gztUchKDcVJy6vxEXg8TtE
+	FNXP+pMz9dywOncW6LO1JdUgZfuPgWBZyaEUbc1i0kAfpJnwaHVSOAEe7j4vUzecjZ0XvCDMmUCoi
+	kGro42KA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyW5P-001vvl-0o;
-	Mon, 15 May 2023 11:09:51 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pyWKy-001yIZ-0w;
+	Mon, 15 May 2023 11:25:56 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyW5L-001vv0-30;
-	Mon, 15 May 2023 11:09:49 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1pyWKu-001yHZ-2K;
+	Mon, 15 May 2023 11:25:54 +0000
+Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id A5FB6615FE;
-	Mon, 15 May 2023 11:09:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3A94DC4339B;
-	Mon, 15 May 2023 11:09:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1684148985;
-	bh=KEaOEqbRtYhzunYdC2/oNS4bINLreQCjokum/W9ombs=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=I8kWKmCNSXJxEyQqVg5SyQHpH0m6kt/oPeTkr5WHFdQibKL4IrlR3tVsoEkyccdS9
-	 8nrWB5hkWxU88g7ywkEs0FmweXvOOmYIrxmKx0nFNmwOmrGWISiXh4EWzwz/faVwZN
-	 8Bcu2ODWp6SpfNfFz9zecTt9GpgH4UsaeCfnPELleQ6vxk6U1USEF2iyPONES74/H4
-	 wGyixTNp+Qw561VRilHClaTznFAI7OnuwH6kKJpgsy0pNkR7ooAUHK3knKZuizycvL
-	 m2JM3R6KYK7mbf49YcYkNa1pgwjp7HKnNMin0wMojjXsIUxDcgv+q8clEc5dCZ4k9F
-	 ddeTkSqy3XADA==
-From: Mark Brown <broonie@kernel.org>
-To: Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Douglas Anderson <dianders@chromium.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Chunxu Li <chunxu.li@mediatek.com>, Jiaxin Yu <jiaxin.yu@mediatek.com>, 
- Liam Girdwood <lgirdwood@gmail.com>, alsa-devel@alsa-project.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-mediatek@lists.infradead.org
-In-Reply-To: <20230511092437.1.I31cceffc8c45bb1af16eb613e197b3df92cdc19e@changeid>
-References: <20230511092437.1.I31cceffc8c45bb1af16eb613e197b3df92cdc19e@changeid>
-Subject: Re: [PATCH] ASoC: mediatek: mt8186: Fix use-after-free in driver
- remove path
-Message-Id: <168414898289.394037.12962945078412931473.b4-ty@kernel.org>
-Date: Mon, 15 May 2023 20:09:42 +0900
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 66CEA66031D7;
+	Mon, 15 May 2023 12:25:47 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1684149948;
+	bh=43lCd7DbxPZwcO9IH4LOmzSa65a75ebXHssNM18hOQI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=k4DEO22w8ZvsvFzka7v6ra0zcazgo/zVZe4iMYMmSdXueGxDOFJsIj7B+1++9dAPK
+	 xXx1eUQ5zC1IlS6nE6SahE/HhAAlyCeB/1yA09chWxLvX3EYg70bbJwsEUqKh/pjT1
+	 1pHpOF9qwKAJjcF4MMdH1XBOilOHa2Yyh7fJBJlbJYFcUAmb+X06Uhscao17hGeUUq
+	 kXQcLrNhw1BBuX0FCCl77lUBdn7gs2CRZIw6BuuNN7xwWUR06SRxmgfhMAozsdWvX9
+	 sh8F5QTR+WqxbejUievIY8xgySJuRKT2KklLhrk7a7/NMpe3H3byJWetIzWRGnWg8Q
+	 RFm3RiC6E1LWQ==
+Message-ID: <7c784932-951a-65c0-c48f-bfa4c098b2e1@collabora.com>
+Date: Mon, 15 May 2023 13:25:44 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.13-dev-bfdf5
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.1
+Subject: Re: [PATCH 1/2] ASoC: SOF: mediatek: add mt8188 audio support
+To: Trevor Wu <trevor.wu@mediatek.com>, pierre-louis.bossart@linux.intel.com,
+ peter.ujfalusi@linux.intel.com, yung-chuan.liao@linux.intel.com,
+ ranjani.sridharan@linux.intel.com, kai.vehmanen@linux.intel.com,
+ daniel.baluta@nxp.com, broonie@kernel.org, lgirdwood@gmail.com,
+ tiwai@suse.com, perex@perex.cz, matthias.bgg@gmail.com
+Cc: yc.hung@mediatek.com, tinghan.shen@mediatek.com,
+ sound-open-firmware@alsa-project.org, alsa-devel@alsa-project.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20230515052540.9037-1-trevor.wu@mediatek.com>
+ <20230515052540.9037-2-trevor.wu@mediatek.com>
+Content-Language: en-US
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230515052540.9037-2-trevor.wu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230515_040948_007547_CC843C17 
-X-CRM114-Status: GOOD (  17.56  )
+X-CRM114-CacheID: sfid-20230515_042552_938677_9135D4CF 
+X-CRM114-Status: GOOD (  22.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,47 +82,116 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 11 May 2023 09:25:12 -0700, Douglas Anderson wrote:
-> When devm runs function in the "remove" path for a device it runs them
-> in the reverse order. That means that if you have parts of your driver
-> that aren't using devm or are using "roll your own" devm w/
-> devm_add_action_or_reset() you need to keep that in mind.
+Il 15/05/23 07:25, Trevor Wu ha scritto:
+> Add mt8188 dai driver and specify of_machine to support mt8188 audio.
 > 
-> The mt8186 audio driver didn't quite get this right. Specifically, in
-> mt8186_init_clock() it called mt8186_audsys_clk_register() and then
-> went on to call a bunch of other devm function. The caller of
-> mt8186_init_clock() used devm_add_action_or_reset() to call
-> mt8186_deinit_clock() but, because of the intervening devm functions,
-> the order was wrong.
+> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+> Reviewed-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+> Reviewed-by: Yaochun Hung <yc.hung@mediatek.com>
+> Reviewed-by: Péter Ujfalusi <peter.ujfalusi@linux.intel.com>
+> ---
+>   sound/soc/sof/mediatek/mt8186/mt8186.c | 61 +++++++++++++++++++++++++-
+>   1 file changed, 60 insertions(+), 1 deletion(-)
 > 
-> [...]
+> diff --git a/sound/soc/sof/mediatek/mt8186/mt8186.c b/sound/soc/sof/mediatek/mt8186/mt8186.c
+> index 419913c8474d..3a9c81418c1f 100644
+> --- a/sound/soc/sof/mediatek/mt8186/mt8186.c
+> +++ b/sound/soc/sof/mediatek/mt8186/mt8186.c
+> @@ -594,7 +594,65 @@ static const struct sof_dev_desc sof_of_mt8186_desc = {
+>   	.ops = &sof_mt8186_ops,
+>   };
+>   
+> +/*
+> + * DL2, DL3, UL4, UL5 are registered as SOF FE, so creating the corresponding
+> + * SOF BE to complete the pipeline.
+> + */
+> +static struct snd_soc_dai_driver mt8188_dai[] = {
+> +{
+> +	.name = "SOF_DL2",
+> +	.playback = {
+> +		.channels_min = 1,
+> +		.channels_max = 2,
+> +	},
+> +},
+> +{
+> +	.name = "SOF_DL3",
+> +	.playback = {
+> +		.channels_min = 1,
+> +		.channels_max = 2,
+> +	},
+> +},
+> +{
+> +	.name = "SOF_UL4",
+> +	.capture = {
+> +		.channels_min = 1,
+> +		.channels_max = 2,
+> +	},
+> +},
+> +{
+> +	.name = "SOF_UL5",
+> +	.capture = {
+> +		.channels_min = 1,
+> +		.channels_max = 2,
+> +	},
+> +},
+> +};
+> +
+> +/* mt8188 ops */
+> +static struct snd_sof_dsp_ops sof_mt8188_ops;
+> +
+> +static int sof_mt8188_ops_init(struct snd_sof_dev *sdev)
+> +{
+> +	/* common defaults */
+> +	memcpy(&sof_mt8188_ops, &sof_mt8186_ops, sizeof(struct snd_sof_dsp_ops));
 
-Applied to
+Never use sizeof(type), always use destination var size! Anyway, there's more.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+I don't think we need to perform this memcpy: we'll never see an instance of
+both mt8186 and mt8188 drivers on the same machine, so you can safely just use
+sof_mt8186_ops for mt8188...
 
-Thanks!
+> +
+> +	sof_mt8188_ops.drv = mt8188_dai;
 
-[1/1] ASoC: mediatek: mt8186: Fix use-after-free in driver remove path
-      commit: a93d2afd3f77a7331271a0f25c6a11003db69b3c
+...which obviously means that this becomes
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+	sof_mt8186_ops.drv = mt8188_dai;
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+and....
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+> +	sof_mt8186_ops.num_drv = ARRAY_SIZE(mt8188_dai);
+> +
+> +	return 0;
+> +}
+> +
+> +static struct snd_sof_of_mach sof_mt8188_machs[] = {
+> +	{
+> +		.compatible = "mediatek,mt8188",
+> +		.sof_tplg_filename = "sof-mt8188.tplg",
+> +	},
+> +	{}
+> +};
+> +
+>   static const struct sof_dev_desc sof_of_mt8188_desc = {
+> +	.of_machines = sof_mt8188_machs,
+>   	.ipc_supported_mask	= BIT(SOF_IPC),
+>   	.ipc_default		= SOF_IPC,
+>   	.default_fw_path = {
+> @@ -607,7 +665,8 @@ static const struct sof_dev_desc sof_of_mt8188_desc = {
+>   		[SOF_IPC] = "sof-mt8188.ri",
+>   	},
+>   	.nocodec_tplg_filename = "sof-mt8188-nocodec.tplg",
+> -	.ops = &sof_mt8186_ops,
+> +	.ops = &sof_mt8188_ops,
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+...this keeps being sof_mt8186_ops as well.
 
-Thanks,
-Mark
+> +	.ops_init = sof_mt8188_ops_init,
+>   };
+>   
+>   static const struct of_device_id sof_of_mt8186_ids[] = {
+
+Regards,
+Angelo
 
 
