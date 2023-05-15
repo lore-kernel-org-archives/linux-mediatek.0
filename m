@@ -4,73 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EB5FC7EE22
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 06:17:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21181C77B7D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 06:19:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=DY/Tvek46OkRim5dYg2uuI8WkPZBk0b6iwqvYb0rtSM=; b=mbzGiXZhz+uhYO
-	nPT7VNGJcPz9dJSgwzrz/fg3LTHwZV3G3KJxBid1VYD94VngQnDSbjbif8LKpTc1+T3lncNXMjQyd
-	s9htIAHVCOeXHGPbVkaK8iydkuKRmZcYh/qsqeLklK84ObLMnPg1MRFwDTZ47jT6WC3dELwf5b0od
-	Te/dY69X9KreWlny9WfdC2RX5/fAT9u004xZjNfr6UBPb5tS4lSPRvVIOeMDljdYc4cfJtf/VI1ll
-	/a5YUA5xHVNlRylBNU4uG+N5TK/PI5szBpf6ejkHNo14Vnu2jeM+Osi09y8Et+YMSAzOm06frJppY
-	LNNNCBtgC6kleAHxWbPA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=1DzBxETsAAtn/WkXHPbWWEDwRESy0yoELlXkiZv6Fr8=; b=gPCvPvabErbbmggX+F7WzgAlJx
+	XEt5rzCDkcwq0SZiH4p/4ZnsdSaU98t1iEWL3NMEFaH6aJuguvnobHfZ48Pc2VthOwxKWelnlqcFh
+	3EhT2/9vMbauIyKWXkc8Ibgp5MOXWxv7N7nZc9sgJy0FoUN9LFK+J1Gdcd/WV9Lsb+p+K6RmTMBS8
+	rd2/77/HJmIf3T1JnYcCWsq0ARwJjHnLZZjKWexAa7PoG22Ekxn9WbvcJuL3xIhaGClPFUWPU7ovh
+	pK2Xokf8DfuOoVT+3yasVQWYrmzompchbjISpb47tqcKBEWaIVd2ymqwTj+JcE5FXAhdGe+m1C9v8
+	NrFI19XQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyRWo-00164f-2G;
-	Mon, 15 May 2023 06:17:50 +0000
-Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
+	id 1pyRY2-0016RC-1o;
+	Mon, 15 May 2023 06:19:06 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyRWj-00162U-15
-	for linux-mediatek@lists.infradead.org;
-	Mon, 15 May 2023 06:17:49 +0000
-Received: by mail-pg1-x52b.google.com with SMTP id 41be03b00d2f7-528dd896165so8795704a12.2
-        for <linux-mediatek@lists.infradead.org>; Sun, 14 May 2023 23:17:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1684131464; x=1686723464;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=DY/Tvek46OkRim5dYg2uuI8WkPZBk0b6iwqvYb0rtSM=;
-        b=SHQD3SCR9W+xMBa5+chJhxwA/WtZwLNXlmU69gJd0tzp7gXBkk5GmihQlO83gvhqu2
-         ILCPJqysWYqlwQC/4a1tMhGE4nX7QMwQoDG1A2s7ZGxk/BPKLuxDWcvMbbPgRwWyiBta
-         82f2sGFYCBKjfzsdc8HdtI1PSDcX/gCsQURSk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684131464; x=1686723464;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=DY/Tvek46OkRim5dYg2uuI8WkPZBk0b6iwqvYb0rtSM=;
-        b=ZcHDmDsb4t5r7VghlBs93yLnSbRua9EoOVoTKsapLIZ9iEcDuaD7gXU6tvMaAUn2dx
-         +ln6TNA55BUmZALno+l6UyqrGFQ82Hz0hiYviJeSoyVgd1mEhRiG7drIf4f4zhYt99uK
-         ChPEL4+maWtkPZ9cM2xOQBCjSyhxxDEBcqXxFKPXM0m+2ugXVtwFjDVVxy4DC4bsWXIW
-         +YG/bP0FLhs0xoc8VyYunb4ekvPtaTX6/kQ+fO95HU+YjFxN6JILu0l2bW8dzzqL4+Od
-         G5rYwuzZ6RQwfmogCgqU7bE6fDmivITij+qglCowLlbjX07QTTi42tEN4A2H2qbPRd5y
-         +QRA==
-X-Gm-Message-State: AC+VfDw4gVYdq3iZ+aSQ9iqvdOO7SImnT0fRPoxPEAk6ngAIEQecZbSR
-	eSh31t0AwCFc9HMLq0TtsOTsNg==
-X-Google-Smtp-Source: ACHHUZ52DW6enl/aNrixK9TkcAw1Q3rEqPtBBG3wTF5oS74t9pGxSj4R90JS+A4/OvgNSW7wfSaeSg==
-X-Received: by 2002:a05:6a20:144a:b0:105:dafa:feb3 with SMTP id a10-20020a056a20144a00b00105dafafeb3mr4095639pzi.61.1684131464030;
-        Sun, 14 May 2023 23:17:44 -0700 (PDT)
-Received: from fshao-glinux.tpe.corp.google.com ([2401:fa00:1:10:cdf5:d894:a1d:dc15])
-        by smtp.gmail.com with ESMTPSA id 12-20020a63124c000000b00502ecb91940sm10680495pgs.55.2023.05.14.23.17.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 14 May 2023 23:17:43 -0700 (PDT)
-From: Fei Shao <fshao@chromium.org>
-To: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
-	Chen-Yu Tsai <wenst@chromium.org>
-Subject: [PATCH v2] media: mediatek: vcodec: mtk_vcodec_dec_hw: Use devm_pm_runtime_enable()
-Date: Mon, 15 May 2023 14:16:10 +0800
-Message-ID: <20230515141610.v2.1.I0d1657be3fea5870f797e975a7aa490291e17993@changeid>
-X-Mailer: git-send-email 2.40.1.606.ga4b1b128d6-goog
+	id 1pyRXz-0016Q1-29;
+	Mon, 15 May 2023 06:19:04 +0000
+X-UUID: 601f8fd0f2e811ed912e1518a6540028-20230514
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=1DzBxETsAAtn/WkXHPbWWEDwRESy0yoELlXkiZv6Fr8=;
+	b=PjwgAdJ39n1Tj1JRb7ywvJgjWrMWQoGgmXxfa8IxkPc/fhGVs2oFN2YoEAfK94SMD1bJJw74tx6my3Vvdzr4SOjcZzN2eQiDvfLiOOIBY28r/M5O6cEDYwCSXQyTjF4g5vLrp4kxxWG4duyK0h2rpUwdJ5QLKDZfIYe01EDc0To=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.24,REQID:b562a725-3176-4584-b8e1-b42d37ea6756,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:178d4d4,CLOUDID:77a62c3b-de1e-4348-bc35-c96f92f1dcbb,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: 601f8fd0f2e811ed912e1518a6540028-20230514
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <shuijing.li@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1990825369; Sun, 14 May 2023 23:18:57 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 15 May 2023 14:18:22 +0800
+Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 15 May 2023 14:18:22 +0800
+From: Shuijing Li <shuijing.li@mediatek.com>
+To: <thierry.reding@gmail.com>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>
+CC: <devicetree@vger.kernel.org>, <linux-pwm@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<jitao.shi@mediatek.com>, Shuijing Li <shuijing.li@mediatek.com>
+Subject: [PATCH] pwm: mtk_disp: Fix the disable flow of disp_pwm
+Date: Mon, 15 May 2023 14:18:45 +0800
+Message-ID: <20230515061845.10241-1-shuijing.li@mediatek.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230514_231745_409264_BC775F8F 
-X-CRM114-Status: GOOD (  13.92  )
+X-CRM114-CacheID: sfid-20230514_231903_707378_4158F357 
+X-CRM114-Status: GOOD (  10.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,95 +81,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Tiffany Lin <tiffany.lin@mediatek.com>, linux-media@vger.kernel.org, Yunfei Dong <yunfei.dong@mediatek.com>, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert pm_runtime_enable() to the managed version, and clean up error
-handling and unnecessary .remove() callback accordingly.
+There is a flow error in the original mtk_disp_pwm_apply() function.
+If this function is called when the clock is disabled, there will be a
+chance to operate the disp_pwm register, resulting in disp_pwm exception.
+Fix this accordingly.
 
-Signed-off-by: Fei Shao <fshao@chromium.org>
-
+Signed-off-by: Shuijing Li <shuijing.li@mediatek.com>
 ---
+ drivers/pwm/pwm-mtk-disp.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-Changes in v2:
-Use devm_pm_runtime_enable() per suggestion from the previous thread:
-https://lore.kernel.org/lkml/20230510164330.z2ygkl7vws6fci75@pengutronix.de/T/#m25be91afe3e9554600e859a8a59128ca234fc63d
-
- .../mediatek/vcodec/mtk_vcodec_dec_hw.c       | 26 ++++++-------------
- 1 file changed, 8 insertions(+), 18 deletions(-)
-
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
-index b753bf54ebd9..e1cb2f8dca33 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
-@@ -148,20 +148,21 @@ static int mtk_vdec_hw_probe(struct platform_device *pdev)
- 	ret = mtk_vcodec_init_dec_clk(pdev, &subdev_dev->pm);
- 	if (ret)
- 		return ret;
--	pm_runtime_enable(&pdev->dev);
-+
-+	ret = devm_pm_runtime_enable(&pdev->dev);
-+	if (ret)
-+		return ret;
+diff --git a/drivers/pwm/pwm-mtk-disp.c b/drivers/pwm/pwm-mtk-disp.c
+index 79e321e96f56..cb699fa9a5ae 100644
+--- a/drivers/pwm/pwm-mtk-disp.c
++++ b/drivers/pwm/pwm-mtk-disp.c
+@@ -80,10 +80,9 @@ static int mtk_disp_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
+ 		return -EINVAL;
  
- 	of_id = of_match_device(mtk_vdec_hw_match, dev);
- 	if (!of_id) {
- 		dev_err(dev, "Can't get vdec subdev id.\n");
--		ret = -EINVAL;
--		goto err;
-+		return -EINVAL;
- 	}
- 
- 	hw_idx = (enum mtk_vdec_hw_id)(uintptr_t)of_id->data;
- 	if (hw_idx >= MTK_VDEC_HW_MAX) {
- 		dev_err(dev, "Hardware index %d not correct.\n", hw_idx);
--		ret = -EINVAL;
--		goto err;
-+		return -EINVAL;
- 	}
- 
- 	main_dev->subdev_dev[hw_idx] = subdev_dev;
-@@ -173,36 +174,25 @@ static int mtk_vdec_hw_probe(struct platform_device *pdev)
- 	if (IS_SUPPORT_VDEC_HW_IRQ(hw_idx)) {
- 		ret = mtk_vdec_hw_init_irq(subdev_dev);
- 		if (ret)
--			goto err;
-+			return ret;
- 	}
- 
- 	subdev_dev->reg_base[VDEC_HW_MISC] =
- 		devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR((__force void *)subdev_dev->reg_base[VDEC_HW_MISC])) {
- 		ret = PTR_ERR((__force void *)subdev_dev->reg_base[VDEC_HW_MISC]);
--		goto err;
-+		return ret;
- 	}
- 
- 	if (!main_dev->subdev_prob_done)
- 		main_dev->subdev_prob_done = mtk_vdec_hw_prob_done;
- 
- 	platform_set_drvdata(pdev, subdev_dev);
--	return 0;
--err:
--	pm_runtime_disable(subdev_dev->pm.dev);
--	return ret;
--}
+ 	if (!state->enabled) {
+-		mtk_disp_pwm_update_bits(mdp, DISP_PWM_EN, mdp->data->enable_mask,
+-					 0x0);
 -
--static int mtk_vdec_hw_remove(struct platform_device *pdev)
--{
--	pm_runtime_disable(&pdev->dev);
--
- 	return 0;
- }
- 
- static struct platform_driver mtk_vdec_driver = {
- 	.probe	= mtk_vdec_hw_probe,
--	.remove = mtk_vdec_hw_remove,
- 	.driver	= {
- 		.name	= "mtk-vdec-comp",
- 		.of_match_table = mtk_vdec_hw_match,
+ 		if (mdp->enabled) {
++			mtk_disp_pwm_update_bits(mdp, DISP_PWM_EN,
++						 mdp->data->enable_mask, 0x0);
+ 			clk_disable_unprepare(mdp->clk_mm);
+ 			clk_disable_unprepare(mdp->clk_main);
+ 		}
 -- 
-2.40.1.606.ga4b1b128d6-goog
+2.40.1
 
 
