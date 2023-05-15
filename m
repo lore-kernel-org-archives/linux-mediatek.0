@@ -4,79 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F6FDC7EE23
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 11:08:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5384AC77B75
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 11:09:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E0LN/VMhxIO+mkMq1hZOXfEntsjEgt6pesvvS8/5P4Y=; b=Rjx6DUNOX3oTq4PZzqs4rCWPOS
-	Fa8cd+kUxOOjHo5xbW/bNlCxl3yaSxsgRIp84hENoF40dSTmU16LR6pUDJfrzyexoMqaguItaQ1vW
-	8S+qgKIDOUzmOY/HtCfo91Tc9KzEssv+XR7ShPp9RPF9E/YdHgbDRrJAzT/8X0ZP/Ss9MzbiXC5TJ
-	OvjmxIifFNe/DhejYOuD3ROwxmVnQOQEJxwArIMtvEfpJSpdX9bgwZaaMpUUUgKKsl995+P1r//Et
-	2hTCqhwJQUB67U+wPMwPxLWRyxkRJX44yQSzM/UKWyfUxdz6PQMvthb+gHJNpOUGVsO13r/S558XG
-	phL8f6ZA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9agHu0fY5lqi9eOcL0ZwZO6ExlJumYrStfpnyOLFzVc=; b=BxraKK5e3tvyRijjwqjfw3JNrv
+	bXCD9Flgf14cydYpQHsm+1HV73bWm9kU/kTXce/+rnKw9e0NQhl7JxR+a2DEaiwTP80KsYncicWJU
+	Vy0vRAyBNjcd68vsH4lSPBWX65dR7gMJ4dCqH3hkYTkDaWwm6rcnfZ814KmUGN7T+o9vL63eB90va
+	ORkDQEH/5gW1+b9TrWExfTX80EwDrnwH3wfvP7cbw6G62WQv0ufNo3kIiM/UU4G6dJOxMzFu6A1GO
+	X6u74WqBa2C9xRc6+mRgPql1NFO/pioL+kSeqSEGkW+DODlAT9A0BmgZQcAkHdXX5SQTdxBiEMqqn
+	vw5t8Lzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyW4C-001vlf-34;
-	Mon, 15 May 2023 11:08:36 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pyW5P-001vvl-0o;
+	Mon, 15 May 2023 11:09:51 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyW49-001vkf-0B;
-	Mon, 15 May 2023 11:08:34 +0000
+	id 1pyW5L-001vv0-30;
+	Mon, 15 May 2023 11:09:49 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id B6E2A62294;
-	Mon, 15 May 2023 11:08:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7EBB3C433EF;
-	Mon, 15 May 2023 11:08:25 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id A5FB6615FE;
+	Mon, 15 May 2023 11:09:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3A94DC4339B;
+	Mon, 15 May 2023 11:09:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1684148911;
-	bh=olj9SocFR66EhLbf+VVLOl+zHXsxnZV4TDEkh6zL2MY=;
-	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
-	b=q5ffqkbJfJH6tWfcBgdyCtzwgvmkFwV053vTKMs3YyZmiU5Y8p2btlgz4tGp8KF/R
-	 eQjK47v3+X3i222Euu8FijpFyP6Nux6pb+v4mqUszuRsT+9b8ebRl7RlQJguigbMDL
-	 BKqGQfmG0k1BT9oDUs2PSRk14FWIylwQf6mg3sDBQrMWhJePOaNOtmwK0T8pgA0GQE
-	 XczazgE+oqu70oDAJoBURTzKrgIdZVgPlKyQvEiypT1a8gZJtVLijr4AfSfRUqtWaa
-	 gu1sKTtNlutfPiEOJxu6ksFTDSE2WHfb1Eh2c20oLv+uQ/ujIemijRp4G9IL2eufEn
-	 THunG5weEt55A==
-From: Kalle Valo <kvalo@kernel.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Simon Horman <simon.horman@corigine.com>,
-  linux-wireless@vger.kernel.org,  netdev@vger.kernel.org,
-  linux-mediatek@lists.infradead.org,
-  linux-arm-kernel@lists.infradead.org,  linux-kernel@vger.kernel.org,
-  Felix Fietkau <nbd@nbd.name>,  Lorenzo Bianconi <lorenzo@kernel.org>,
-  Ryder Lee <ryder.lee@mediatek.com>,  Shayne Chen
- <shayne.chen@mediatek.com>,  Sean Wang <sean.wang@mediatek.com>,  "David
- S. Miller" <davem@davemloft.net>,  Eric Dumazet <edumazet@google.com>,
-  Jakub Kicinski <kuba@kernel.org>,  Paolo Abeni <pabeni@redhat.com>,
-  Matthias Brugger <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>,  Alexander Couzens
- <lynxis@fe80.eu>,  Sujuan Chen <sujuan.chen@mediatek.com>,  Bo Jiao
- <bo.jiao@mediatek.com>,  Nicolas Cavallari
- <nicolas.cavallari@green-communications.fr>,  Howard Hsu
- <howard-yh.hsu@mediatek.com>,  MeiChia Chiu <MeiChia.Chiu@mediatek.com>,
-  Peter Chiu <chui-hao.chiu@mediatek.com>,  Johannes Berg
- <johannes.berg@intel.com>,  Wang Yufen <wangyufen@huawei.com>,  Lorenz
- Brun <lorenz@brun.one>
-Subject: Re: [PATCH] wifi: mt76: mt7915: add support for MT7981
-References: <ZF-SN-sElZB_g_bA@pidgin.makrotopia.org>
-	<ZGD192iDcUqoUwo3@corigine.com>
-	<ZGENDwGXkuhrCGFY@pidgin.makrotopia.org>
-Date: Mon, 15 May 2023 14:08:22 +0300
-In-Reply-To: <ZGENDwGXkuhrCGFY@pidgin.makrotopia.org> (Daniel Golle's message
-	of "Sun, 14 May 2023 18:32:15 +0200")
-Message-ID: <87ednhn97d.fsf@kernel.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+	s=k20201202; t=1684148985;
+	bh=KEaOEqbRtYhzunYdC2/oNS4bINLreQCjokum/W9ombs=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=I8kWKmCNSXJxEyQqVg5SyQHpH0m6kt/oPeTkr5WHFdQibKL4IrlR3tVsoEkyccdS9
+	 8nrWB5hkWxU88g7ywkEs0FmweXvOOmYIrxmKx0nFNmwOmrGWISiXh4EWzwz/faVwZN
+	 8Bcu2ODWp6SpfNfFz9zecTt9GpgH4UsaeCfnPELleQ6vxk6U1USEF2iyPONES74/H4
+	 wGyixTNp+Qw561VRilHClaTznFAI7OnuwH6kKJpgsy0pNkR7ooAUHK3knKZuizycvL
+	 m2JM3R6KYK7mbf49YcYkNa1pgwjp7HKnNMin0wMojjXsIUxDcgv+q8clEc5dCZ4k9F
+	 ddeTkSqy3XADA==
+From: Mark Brown <broonie@kernel.org>
+To: Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Douglas Anderson <dianders@chromium.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Chunxu Li <chunxu.li@mediatek.com>, Jiaxin Yu <jiaxin.yu@mediatek.com>, 
+ Liam Girdwood <lgirdwood@gmail.com>, alsa-devel@alsa-project.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <20230511092437.1.I31cceffc8c45bb1af16eb613e197b3df92cdc19e@changeid>
+References: <20230511092437.1.I31cceffc8c45bb1af16eb613e197b3df92cdc19e@changeid>
+Subject: Re: [PATCH] ASoC: mediatek: mt8186: Fix use-after-free in driver
+ remove path
+Message-Id: <168414898289.394037.12962945078412931473.b4-ty@kernel.org>
+Date: Mon, 15 May 2023 20:09:42 +0900
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.13-dev-bfdf5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230515_040833_203735_337B36FC 
-X-CRM114-Status: GOOD (  26.80  )
+X-CRM114-CacheID: sfid-20230515_040948_007547_CC843C17 
+X-CRM114-Status: GOOD (  17.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,55 +79,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Daniel Golle <daniel@makrotopia.org> writes:
+On Thu, 11 May 2023 09:25:12 -0700, Douglas Anderson wrote:
+> When devm runs function in the "remove" path for a device it runs them
+> in the reverse order. That means that if you have parts of your driver
+> that aren't using devm or are using "roll your own" devm w/
+> devm_add_action_or_reset() you need to keep that in mind.
+> 
+> The mt8186 audio driver didn't quite get this right. Specifically, in
+> mt8186_init_clock() it called mt8186_audsys_clk_register() and then
+> went on to call a bunch of other devm function. The caller of
+> mt8186_init_clock() used devm_add_action_or_reset() to call
+> mt8186_deinit_clock() but, because of the intervening devm functions,
+> the order was wrong.
+> 
+> [...]
 
-> On Sun, May 14, 2023 at 04:53:43PM +0200, Simon Horman wrote:
->> On Sat, May 13, 2023 at 03:35:51PM +0200, Daniel Golle wrote:
->> > From: Alexander Couzens <lynxis@fe80.eu>
->> > 
->> > Add support for the MediaTek MT7981 SoC which is similar to the MT7986
->> > but with a newer IP cores and only 2x ARM Cortex-A53 instead of 4x.
->> > Unlike MT7986 the MT7981 can only connect a single wireless frontend,
->> > usually MT7976 is used for DBDC.
->> > 
->> > Signed-off-by: Alexander Couzens <lynxis@fe80.eu>
->> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
->> 
->> ...
->> 
->> > @@ -489,7 +516,10 @@ static int mt7986_wmac_adie_patch_7976(struct mt7915_dev *dev, u8 adie)
->> >  		rg_xo_01 = 0x1d59080f;
->> >  		rg_xo_03 = 0x34c00fe0;
->> >  	} else {
->> > -		rg_xo_01 = 0x1959f80f;
->> > +		if (is_mt7981(&dev->mt76))
->> > +			rg_xo_01 = 0x1959c80f;
->> > +		else if (is_mt7986(&dev->mt76))
->> > +			rg_xo_01 = 0x1959f80f;
->> 
->> Hi Daniel,
->> 
->> 		rg_xo_01 will be used uninitialised below if we get here
->> 		and neither of the conditions above are true.
->> 
->> 		Can this occur?
->
-> No, it cannot occur. Either of is_mt7981() or is_mt7986() will return
-> true, as the driver is bound via one of the two compatibles
-> 'mediatek,mt7986-wmac' or newly added 'mediatek,mt7981-wmac'.
-> Based on that the match_data is either 0x7986 or 0x7981, which is then
-> used as chip_id, which is used by the is_mt7981() and is_mt7986()
-> functions.
+Applied to
 
-But what if later more changes are made, for example a third compatible
-is added? It would be good to add a warning or something else to protect
-that.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-And I would not be a surpised if a compiler or static analyser would
-even warn about the uninitialised variable.
+Thanks!
 
--- 
-https://patchwork.kernel.org/project/linux-wireless/list/
+[1/1] ASoC: mediatek: mt8186: Fix use-after-free in driver remove path
+      commit: a93d2afd3f77a7331271a0f25c6a11003db69b3c
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
