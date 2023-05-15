@@ -4,96 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B634C7EE2D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 20:16:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E180C7EE24
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 21:46:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bSFZLbNpPgEje16hneDjcdrQcGQsPzQHluB44E8FHjY=; b=uzLt/y+gJ8gdaH3vcSkkU8aNGI
-	zt1dA4GDLkc5PHVHHkmFK36AZUH6nXunv+LOebqujxSJsitpoECS8b7Zch86xhUnS5PLW6Q8HCuD5
-	9+CR/mHzP8987QjPOgG5Qgx5XCAZLdTluZYPxGG3RVJ8eP6S3RuYs9OpYBYyyC3tiDIGhPX/Cgcvn
-	dMX0SuImLv0eBVnMGPGUhzbdBrjuEfsvUOBdM69BhWHM26vrrTvEUqQT+xHQdEHpZV/JO9jUZcEo3
-	8mL+n2QYQ2RTHqSOpNB3iow9GiG/VKBri7Mbg4vmITUtHzEhLF/y0SDt86Q2aHyL2oYDlWn6G4zg+
-	njhKqSkQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=W3TE4ccIZBaLyijVR8GPmMnmsWRf/mMHqj2NaoV8t1E=; b=pMiM2FmrSV9qhn+7PTrrflfZnj
+	jnN8vBnl0JY9QhGJfZ5AC0WoIDybIwXbJ02hr0VWGy+NFRvHZrTZPO1QWZ6DAitUENDGlefEFwdoS
+	Tv8+dFSoCUsKrHDteEhUZoirQ3Sg2QBSIv3vMBNlROMFBCsHH0zFBIr6hELwmFe7KpdA5EO/kSeGO
+	Th4cwAu9V5ZVRNAPiK9rBPvOwImrYxjaOdwn4MoASKCLGsV+u9snKHgq/IETN3GG+5LwiUJoacwSA
+	6C5b8Eo6XpHg5uGQWiz7uOb9j447K2kEID63s/ukzFgT1QiVLVXmU2V0KeBzeA/7VoQUzcHwxjy0w
+	5OJ3L2dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyecK-003P72-1Q;
-	Mon, 15 May 2023 20:16:24 +0000
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+	id 1pyg16-003acN-16;
+	Mon, 15 May 2023 21:46:04 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyecB-003Ozh-16
-	for linux-mediatek@lists.infradead.org;
-	Mon, 15 May 2023 20:16:18 +0000
-Received: by mail-pf1-x42f.google.com with SMTP id d2e1a72fcca58-643846c006fso14050985b3a.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 15 May 2023 13:16:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1684181774; x=1686773774;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=bSFZLbNpPgEje16hneDjcdrQcGQsPzQHluB44E8FHjY=;
-        b=NzeeeyMk/hpNF9RAIv4WS+B4v3mYCs9HKMq562nfambK4GSGTB0CGnrcK2r+VFo780
-         HOrS4BGRvf+d3B4kDMaLMX4m2Mw73l4go1EcX5Ax9aT0LcH8ZWquW7hE67EC5SC5ZbyG
-         BFfEo7608Jp0pE+46I0xG19lunTRA96KvfVhk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684181774; x=1686773774;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=bSFZLbNpPgEje16hneDjcdrQcGQsPzQHluB44E8FHjY=;
-        b=XtjKmQ/vaFAIWt8NdDWHAuc7vOtXFS1o6JK7YnuWgptM8YPhqmhYyNj1x88uz+RrhX
-         TB1fCNNik26sb29DbsjPHNIEKf3zwlbB55diiE58wL3s+aajbE/4OMi4ht5wX5eIHnB5
-         OY2iu1l5sJiHBscfk7vP3+kco2LEmG/6VFDqVzEyOL7ZbGxkb3fIvfByE3nFWbKisq73
-         1iZYXknrotLcSl+LEu5XzDUxV7zxCuzR/qsp9FHzBwTUAan682+Z8dmVAewDPpVurjs8
-         NMnDPlKoSBwxMMD5c7/PZFEBrjh03naRqXJ54vFCpphim6A+xW2P8suxQLGYcmItJIuR
-         neTQ==
-X-Gm-Message-State: AC+VfDyBoo2sWOXLfxCh4iSbyfP7CO0eoTPirGV09g1bbMxZycgO/hwR
-	6r/pbhKArDZFj5XsVubBv+1h4w==
-X-Google-Smtp-Source: ACHHUZ6AiGghtlJlsLLlfd1VuDZv1nQaPFrstBdAfKOZ49IsIsdqeqYgi0pnJ00tpX1ojW99Y/UVeg==
-X-Received: by 2002:a05:6a00:188f:b0:63b:8eeb:77b8 with SMTP id x15-20020a056a00188f00b0063b8eeb77b8mr50708074pfh.13.1684181774645;
-        Mon, 15 May 2023 13:16:14 -0700 (PDT)
-Received: from tictac2.mtv.corp.google.com ([2620:15c:9d:2:9f33:9d98:277a:d4cd])
-        by smtp.gmail.com with ESMTPSA id a19-20020a62bd13000000b0063f0c9eadc7sm7981411pff.200.2023.05.15.13.16.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 May 2023 13:16:14 -0700 (PDT)
-From: Douglas Anderson <dianders@chromium.org>
-To: Marc Zyngier <maz@kernel.org>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
-	linux-mediatek@lists.infradead.org,
-	Eddie Huang <eddie.huang@mediatek.com>,
-	Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
+	id 1pyg0z-003aao-39;
+	Mon, 15 May 2023 21:46:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=W3TE4ccIZBaLyijVR8GPmMnmsWRf/mMHqj2NaoV8t1E=; b=Bz9orKkAmQvhzEvjgWOhLpC5+8
+	XDVRWXUdjF5ad9I4IzOv+EAQMokwJuzytLihdJnn0dLiIPCeF2sOa6bffUb+m5KMC1Z8UAmLIVx2j
+	zOvjxTAFiHBOpl9l5MXu8l1KhP8AJlO0SBSqQxhCYi2lbMpkVaTurrarCs36pO8DmVukTdItiYS11
+	T5EZadEFot1wShkwkNMKjweQd6kFRZncw4yRJKBAzz1ETShaIuuuvzOrgBPMR6QNb4xJZscVHZSMo
+	xBVwxPuFQyuhLhCzzeo4f4/cN8POmCJv7YuK/OQNYW6P9HhITDAzKVN9Eo73zeqyuBsQcr25lTDFw
+	DscYXzYQ==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:51262)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1pyg0W-0004fD-QR; Mon, 15 May 2023 22:45:28 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1pyg0P-00006m-6q; Mon, 15 May 2023 22:45:21 +0100
+Date: Mon, 15 May 2023 22:45:21 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	wenst@chromium.org,
-	yidilin@chromium.org,
-	Tinghan Shen <tinghan.shen@mediatek.com>,
-	jwerner@chromium.org,
-	Weiyi Lu <weiyi.lu@mediatek.com>,
-	Ben Ho <Ben.Ho@mediatek.com>,
-	Seiya Wang <seiya.wang@mediatek.com>,
-	Douglas Anderson <dianders@chromium.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 4/5] arm64: dts: mediatek: mt8192: Add mediatek,broken-save-restore-fw to asurada
-Date: Mon, 15 May 2023 13:13:53 -0700
-Message-ID: <20230515131353.v2.4.Ie7e600278ffbed55a1e5a58178203787b1449b35@changeid>
-X-Mailer: git-send-email 2.40.1.606.ga4b1b128d6-goog
-In-Reply-To: <20230515131353.v2.cover@dianders>
-References: <20230515131353.v2.cover@dianders>
+	Daniel Machon <daniel.machon@microchip.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>, Felix Fietkau <nbd@nbd.name>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Horatiu Vultur <horatiu.vultur@microchip.com>,
+	Ioana Ciornei <ioana.ciornei@nxp.com>,
+	Jakub Kicinski <kuba@kernel.org>, John Crispin <john@phrozen.org>,
+	Jose Abreu <Jose.Abreu@synopsys.com>,
+	Lars Povlsen <lars.povlsen@microchip.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Marcin Wojtas <mw@semihalf.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
+	Steen Hegelund <Steen.Hegelund@microchip.com>,
+	Taras Chornyi <taras.chornyi@plvision.eu>,
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+	UNGLinuxDriver@microchip.com, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH RFC] Providing a helper for PCS inband negotiation
+Message-ID: <ZGKn8c2W1SI2CPq4@shell.armlinux.org.uk>
+References: <ZGIkGmyL8yL1q1zp@shell.armlinux.org.uk>
+ <20230515195616.uwg62f7hw47mktfu@skbuf>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230515195616.uwg62f7hw47mktfu@skbuf>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230515_131615_411381_00030692 
-X-CRM114-Status: GOOD (  10.70  )
+X-CRM114-CacheID: sfid-20230515_144558_020493_5D3EBF4A 
+X-CRM114-Status: GOOD (  18.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,40 +97,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Firmware shipped on mt8192 Chromebooks is affected by the GICR
-save/restore issue as described by the patch ("dt-bindings:
-interrupt-controller: arm,gic-v3: Add quirk for Mediatek SoCs w/
-broken FW"). Add the quirk property.
+On Mon, May 15, 2023 at 10:56:16PM +0300, Vladimir Oltean wrote:
+> Hello,
+> 
+> On Mon, May 15, 2023 at 01:22:50PM +0100, Russell King (Oracle) wrote:
+> > 1. Should 10GBASE-KR be included in the SGMII et.al. case in the code?
+> >    Any other interface modes that should be there? Obviously,
+> >    PHYLINK_PCS_NEG_NONE is not correct for 10GBASE-KR since it does use
+> >    inband AN. Does it make sense for the user to disable inband AN for
+> >    10GBASE-KR? If so, maybe it should be under the 1000base-X case.
+> 
+> What physical process (reference to IEEE 802.3 clause is fine) would be
+> controlled by the phylink_pcs_neg_mode() function for the so-called
+> 10GBASE-KR phy-mode?
 
-Fixes: 331fae2fc922 ("arm64: dts: mediatek: Introduce MT8192-based Asurada board family")
-Reviewed-by: Julius Werner <jwerner@chromium.org>
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
----
+Clause 73.1:
 
-Changes in v2:
-- Changed "Fixes" tag.
-- Moved from mt8192.dtsi to mt8192-asurada.dtsi
-- mediatek,gicr-save-quirk => mediatek,broken-save-restore-fw
+"While implementation of Auto-Negotiation is mandatory for Backplane
+Ethernet PHY s, the use of Auto-Negotiation is optional."
 
- arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 4 ++++
- 1 file changed, 4 insertions(+)
+"The Auto-Negotiation function allows the devices to switch between
+the various operational modes in an orderly fashion, permits
+management to disable or enable the Auto-Negotiation function, and
+allows management to select a specific operational mode."
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-index 5a440504d4f9..0e8b34117090 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-@@ -275,6 +275,10 @@ &dsi_out {
- 	remote-endpoint = <&anx7625_in>;
- };
- 
-+&gic {
-+	mediatek,broken-save-restore-fw;
-+};
-+
- &gpu {
- 	mali-supply = <&mt6315_7_vbuck1>;
- 	status = "okay";
+"The Auto-Negotiation function also provides a parallel detection
+function to allow Backplane Ethernet devices to connect to other
+Backplane Ethernet devices that have Auto-Negotiation disabled and
+interoperate with legacy devices that do not support Clause 73
+Auto-Negotiation."
+
+So, my reading of these statements is that the _user_ should be
+able to control via ethtool whether Clause 73 negotiation is
+performed on a 10GBASE-KR (or any other backplane link that
+uses clause 73 negotiation.) Having extracted that from 802.3,
+I now believe it should be treated the same as 1000BASE-X, and
+the Autoneg bit in ethtool should determine whether Clause 73
+negotiation is used for 10GBASE-KR (and any other Clause 73
+using protocol.)
+
 -- 
-2.40.1.606.ga4b1b128d6-goog
-
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
