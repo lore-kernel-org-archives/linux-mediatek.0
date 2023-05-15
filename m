@@ -4,74 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01E7AC77B7D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 12:23:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0FFEC7EE22
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 12:23:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vTsZHl+2m6GwihsRyei1hOkZxJAsw9Z7K2JK/KSs81Q=; b=hQ8YQFrv6qKQQCYKtiez8NORLW
-	Id8tvBHwTcSlxYDnesguGZev5ZgOUlvx6NR7e3CeicDp5YFZ7UMzkUJZZVFBARy9UD43wJFaC+xQD
-	Rf2ImLrtaLPWVPC/s02IBcdRu+BtAujV0JacjptFB1H3dDqocLVUWWhr+TUpa/brPViVU+Pc8/t5c
-	RlKI0FNDpa1Pvt702UrcDk2lmuuVZT+MWZzUQXyvsbDFkp6jsciiGYRlURd3fpuqjJLcJdp2XuRl8
-	nWDOaCQBXJomiFVVKyP9KYi8O9aOIuRnVd3yuYJnay072NZkXsdB5KgInlaCEHrgDEVLddfPnxxOh
-	FRKftIAw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=LNOMCtonqR66xu5GSvqIV03s4e626a6yMu2jvYZUqVs=; b=0Qmw+dkoKJs14E7+fy3BR3+Duw
+	wBfnfBOB/kgl87nZcx8bcX2MaWnJ5NPgPa0DKJyb7+PXNi1dIoDmL3JMeyRYjUDWYGcG7ON0fECLV
+	n1mmQ84IILlXCRmmPN4JqgELJZwlUOkmaZDkQIX7KqdWRxLf/JBeq+VdYwXJYixQ3efVoYPB+q68d
+	lTu/PUJDgB1p2JJwoQLUEJr/DQVyQA9cq91x9JXNjGmKp5rk478jkUv08vuZgfCLJ8JQ0BM8xxd6T
+	9EkASZ5zcUTPXHZ9M9JuG1A5rAljjb2mQ5L/j47x3zumAnPpIKGG+vn3rhpydjeH3gaTdnAtC/KlO
+	kp7Dh8RQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyXED-0026cB-35;
-	Mon, 15 May 2023 12:23:01 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pyXEv-0026oV-20;
+	Mon, 15 May 2023 12:23:45 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyXE9-0026Zy-18;
-	Mon, 15 May 2023 12:22:59 +0000
-Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E183866031DA;
-	Mon, 15 May 2023 13:22:54 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1684153375;
-	bh=98B5mJTAUSmVKru8czA0oh+6LAGepM46W0mrjhZI4Oo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=PV3ty7dex/OyBcCnmX4b3QfFuoxppPLa+W6rlkQWbI9M9eB3rqPSiobVwSizmSln8
-	 w23OlQA1JyeOMH5P8tubC4GPfgeXpTl3L8TLqeBV//iFPSmpvQodJ58AuW8hzuFLYC
-	 Dptl97l32kis0bZI3CXCsTcnK7rbYv226L03/Q3seWNz4wOGtMcaeqMk0zoPVJQ/MG
-	 lqtwjesOW813Jy3YEGSDlQwASoHJJo4r+FSpcmvQtv1XNtmHj326bfsEokYyAWidNX
-	 yUFJy73AGMHAlu/gmWIu6oMp7naCB3W+1d+OkKGe+8grQV7ANylJ1gCGwJa/qpBq8b
-	 COILUkevTd5bA==
-Message-ID: <cd6067b2-660a-8f2c-697d-26814a9dc131@collabora.com>
-Date: Mon, 15 May 2023 14:22:52 +0200
+	id 1pyXEp-0026mb-1A;
+	Mon, 15 May 2023 12:23:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=LNOMCtonqR66xu5GSvqIV03s4e626a6yMu2jvYZUqVs=; b=oaakdRBLCYSulpQflSL51Xygk/
+	pJs9wqAPzKjuEWQdGfMc09H6vM9NaiOyOnv3dD+lJ7DaZ17XoMKW6YJxESJXsJlgGQmRZadiyJXlr
+	yqGU/vVASC4Mn2V9nk8A1fwZvfGxXB1ZH5JAxdCQpI4xoUgN4CMVpH/X2722cHc5efQxiPNOPv9df
+	qEfWIHRDxeRW9eHeqeadfSB4QSU7DVhTgmw5ID8Hr9OpoPLWBpVmoZAkKMoTl3spp8Ki+zMKfXtkx
+	pzzcghAICExfmJQgAhm+JIgvvnc9OjeOVuqEDKTb01e3w2dxNt3AWQRMyS9VeHpzJ9phO9gEKhrhX
+	TT728CKg==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:58140)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1pyXED-0003iY-7g; Mon, 15 May 2023 13:23:01 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1pyXE2-0008Bi-54; Mon, 15 May 2023 13:22:50 +0100
+Date: Mon, 15 May 2023 13:22:50 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Andrew Lunn <andrew@lunn.ch>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Daniel Machon <daniel.machon@microchip.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>, Felix Fietkau <nbd@nbd.name>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Horatiu Vultur <horatiu.vultur@microchip.com>,
+	Ioana Ciornei <ioana.ciornei@nxp.com>,
+	Jakub Kicinski <kuba@kernel.org>, John Crispin <john@phrozen.org>,
+	Jose Abreu <Jose.Abreu@synopsys.com>,
+	Lars Povlsen <lars.povlsen@microchip.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Marcin Wojtas <mw@semihalf.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
+	Steen Hegelund <Steen.Hegelund@microchip.com>,
+	Taras Chornyi <taras.chornyi@plvision.eu>,
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+	UNGLinuxDriver@microchip.com, Vladimir Oltean <olteanv@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: [PATCH RFC] Providing a helper for PCS inband negotiation
+Message-ID: <ZGIkGmyL8yL1q1zp@shell.armlinux.org.uk>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.1
-Subject: Re: [PATCH v2 2/2] phy: mtk-mipi-csi: add driver for CSI phy
-Content-Language: en-US
-To: Julien Stephan <jstephan@baylibre.com>
-Cc: krzysztof.kozlowski@linaro.org, robh@kernel.org, chunkuang.hu@kernel.org,
- linux-mediatek@lists.infradead.org, Phi-bang Nguyen <pnguyen@baylibre.com>,
- Louis Kuo <louis.kuo@mediatek.com>, Chunfeng Yun
- <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>,
- Andy Hsieh <andy.hsieh@mediatek.com>, Philipp Zabel
- <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>,
- open list <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek USB3 PHY DRIVER"
- <linux-arm-kernel@lists.infradead.org>,
- "open list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>,
- "open list:DRM DRIVERS FOR MEDIATEK" <dri-devel@lists.freedesktop.org>
-References: <20230515090551.1251389-1-jstephan@baylibre.com>
- <20230515090551.1251389-3-jstephan@baylibre.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230515090551.1251389-3-jstephan@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230515_052257_698635_86FD0EF3 
-X-CRM114-Status: GOOD (  32.75  )
+X-CRM114-CacheID: sfid-20230515_052339_826550_AFB23D97 
+X-CRM114-Status: GOOD (  43.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,430 +94,230 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 15/05/23 11:05, Julien Stephan ha scritto:
-> From: Phi-bang Nguyen <pnguyen@baylibre.com>
-> 
-> This is a new driver that supports the MIPI CSI CD-PHY version 0.5
-> 
-> The number of PHYs depend on the soc.
-> 
-> Signed-off-by: Louis Kuo <louis.kuo@mediatek.com>
-> Signed-off-by: Phi-bang Nguyen <pnguyen@baylibre.com>
-> [Julien Stephan: use GENMASK]
-> [Julien Stephan: refactor code]
-> [Julien Stephan: update device tree support and probe function]
-> Co-developed-by: Julien Stephan <jstephan@baylibre.com>
-> Signed-off-by: Julien Stephan <jstephan@baylibre.com>
-> ---
->   MAINTAINERS                                   |   1 +
->   drivers/phy/mediatek/Kconfig                  |   8 +
->   drivers/phy/mediatek/Makefile                 |   2 +
->   .../mediatek/phy-mtk-mipi-csi-0-5-rx-reg.h    |  58 ++++
->   drivers/phy/mediatek/phy-mtk-mipi-csi-0-5.c   | 257 ++++++++++++++++++
->   5 files changed, 326 insertions(+)
->   create mode 100644 drivers/phy/mediatek/phy-mtk-mipi-csi-0-5-rx-reg.h
->   create mode 100644 drivers/phy/mediatek/phy-mtk-mipi-csi-0-5.c
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 44f0ff11e984..fc2766cb50d3 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -13103,6 +13103,7 @@ M:	Julien Stephan <jstephan@baylibre.com>
->   M:	Andy Hsieh <andy.hsieh@mediatek.com>
->   S:	Supported
->   F:	Documentation/devicetree/bindings/phy/mediatek,phy-mipi-csi-0-5.yaml
-> +F:	drivers/phy/mediatek/phy-mtk-mipi-csi-0-5*
->   
->   MEDIATEK MMC/SD/SDIO DRIVER
->   M:	Chaotian Jing <chaotian.jing@mediatek.com>
-> diff --git a/drivers/phy/mediatek/Kconfig b/drivers/phy/mediatek/Kconfig
-> index 3125ecb5d119..452bc7ac5ce5 100644
-> --- a/drivers/phy/mediatek/Kconfig
-> +++ b/drivers/phy/mediatek/Kconfig
-> @@ -74,3 +74,11 @@ config PHY_MTK_DP
->   	select GENERIC_PHY
->   	help
->   	  Support DisplayPort PHY for MediaTek SoCs.
-> +
-> +config PHY_MTK_MIPI_CSI_0_5
-> +	tristate "MediaTek CSI CD-PHY v 0.5 Driver"
+All,
 
-"MediaTek CSI CD-PHY v0.5 Driver"
+One issue that seems to come up with PCS drivers is when should inband
+negotiation be enabled. Some SFP modules have specific requirements when
+it comes to whether inband AN should be enabled.
 
-> +	depends on ARCH_MEDIATEK && OF
-> +	select GENERIC_PHY
-> +	help
-> +	  Enable this to support the MIPI CSI CD-PHY receiver version 0.5.
-> +	  The driver supports multiple CSI cdphy ports simultaneously.
-> diff --git a/drivers/phy/mediatek/Makefile b/drivers/phy/mediatek/Makefile
-> index fb1f8edaffa7..8eb7b8747c67 100644
-> --- a/drivers/phy/mediatek/Makefile
-> +++ b/drivers/phy/mediatek/Makefile
-> @@ -18,3 +18,5 @@ phy-mtk-mipi-dsi-drv-y			:= phy-mtk-mipi-dsi.o
->   phy-mtk-mipi-dsi-drv-y			+= phy-mtk-mipi-dsi-mt8173.o
->   phy-mtk-mipi-dsi-drv-y			+= phy-mtk-mipi-dsi-mt8183.o
->   obj-$(CONFIG_PHY_MTK_MIPI_DSI)		+= phy-mtk-mipi-dsi-drv.o
-> +
-> +obj-$(CONFIG_PHY_MTK_MIPI_CSI_0_5)	+= phy-mtk-mipi-csi-0-5.o
-> diff --git a/drivers/phy/mediatek/phy-mtk-mipi-csi-0-5-rx-reg.h b/drivers/phy/mediatek/phy-mtk-mipi-csi-0-5-rx-reg.h
-> new file mode 100644
-> index 000000000000..e9a7f1ab3e2f
-> --- /dev/null
-> +++ b/drivers/phy/mediatek/phy-mtk-mipi-csi-0-5-rx-reg.h
-> @@ -0,0 +1,58 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +
-> +#ifndef __PHY_MTK__MIPI_CSI__C_0_5_RX_REG_H__
-> +#define __PHY_MTK__MIPI_CSI__C_0_5_RX_REG_H__
+Having each network driver implement their own decision making is rather
+sub-optimal as this doesn't lead to maximum inter-operability and a
+consistent experience with SFP modules when used with different network
+drivers.
 
-What about....
+This has been bugging me for a while, and I've had in my net-queue some
+patches that introduced a simple helper that took the code in
+phylink_mii_c22_pcs_config() and pulled that into an inline function:
 
-__PHY_MTK_MIPI_CSI_V_0_5_RX_REG_H ?
+        if (mode == MLO_AN_INBAND &&
+            (interface == PHY_INTERFACE_MODE_SGMII ||
+             interface == PHY_INTERFACE_MODE_QSGMII ||
+             linkmode_test_bit(ETHTOOL_LINK_MODE_Autoneg_BIT, advertising)))
 
-> +
-> +/*
-> + * CSI1 and CSI2 are identical, and similar to CSI0. All CSIx macros are
-> + * applicable to the three PHYs. Where differences exist, they are denoted by
-> + * macro names using CSI0 and CSI1, the latter being applicable to CSI1 and
-> + * CSI2 alike.
-> + */
-> +
-> +#define MIPI_RX_ANA00_CSIxA			0x0000
+but I haven't been happy with this approach. I did this when working on
+the mv88e6xxx conversion to phylink-PCS, because I didn't want to
+duplicate that decision making in that driver.
 
-I would rename all those from "CSIx" to "CSIX" (so, just toupper('x')).
+Having been through all PCS drivers thus far, the majority of them are
+concerned with "should some form of in-band signalling be enabled or
+not?" and a simple boolean would suffice for that.
 
-> +#define RG_CSI0A_CPHY_EN			BIT(0)
+However, there are two (sparx5 and lan966x) which appear to want
+slightly more information than that. These have a port configuration
+structure that wants to know if we are using inband mode (in other
+words, phylink is in MLO_AN_INBAND mode) and whether autoneg is
+enabled (the Autoneg bit in the advertising bitmap.) See
+lan966x_pcs_config().
 
-..snip..
+This is further decoded in lan966x_port_pcs_set() such that if we're in
+MLO_AN_INBAND mode, and:
+ if we're using SGMII, or
+ if the number of ports is four (QSGMII, QUSGMII), or
+ if we're in 1000base-X mode and Autoneg is set,
+then inband mode is enabled. However, if we aren't in MLO_AN_INBAND
+mode, then an "outband" mode is used (driver's terminology, but the
+comments about it seem to talk about "inband" here.)
 
-> +
-> +#endif
-> diff --git a/drivers/phy/mediatek/phy-mtk-mipi-csi-0-5.c b/drivers/phy/mediatek/phy-mtk-mipi-csi-0-5.c
-> new file mode 100644
-> index 000000000000..ae2d3dc9631d
-> --- /dev/null
-> +++ b/drivers/phy/mediatek/phy-mtk-mipi-csi-0-5.c
-> @@ -0,0 +1,257 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +
-> +#include <linux/bitfield.h>
-> +#include <linux/delay.h>
-> +#include <linux/io.h>
-> +#include <linux/module.h>
-> +#include <linux/mutex.h>
-> +#include <linux/phy/phy.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/slab.h>
-> +
-> +#include "phy-mtk-io.h"
-> +#include "phy-mtk-mipi-csi-0-5-rx-reg.h"
-> +
-> +#define CSIxB_OFFSET		0x1000
+It looks like Sparx5 is pretty similar to lan966x.
 
-What if we grab two (or three?) iospaces from devicetree?
+So, it seems that a boolean won't do, and we at least need a tristate
+outband/inband-an-disabled/inband-an-enabled indication.
 
-- base (global)
-- csi_a
-- csi_b
+However, we also have to remember that there are protocols such as
+10GBASE-R which do not have any inband capability. This suggests we
+actually need a quad-state - none/outband/inband-an-disabled/
+inband-an-enabled. That said, we have hardly any PCS that this would
+end up returning "NONE" - but there are some (e.g. mvneta and mvpp2
+which always provide a PCS, even for e.g. RGMII.)
 
-That would make it possible to maybe eventually extend this driver to more
-versions (older or newer) of the CSI PHY IP without putting fixes offsets
-inside of platform data structures and such.
+So, to cover this, I'm proposing a series of steps:
 
-> +
-> +struct mtk_mipi_dphy;
-> +
-> +struct mtk_mipi_dphy_port {
-> +	struct device *dev;
-> +	void __iomem *base;
-> +	struct phy *phy;
-> +	bool is_cdphy;
-> +};
-> +
-> +static int mtk_mipi_phy_power_on(struct phy *phy)
-> +{
-> +	struct mtk_mipi_dphy_port *port = phy_get_drvdata(phy);
-> +	void __iomem *base = port->base;
-> +
-> +	/*
-> +	 * Only DPHY is supported for now,
-> +	 * so set analog phy mode to DPHY in CDPHY compatible PHYs
-> +	 */
-> +	if (port->is_cdphy) {
-> +		mtk_phy_update_field(base + MIPI_RX_ANA00_CSIxA,
-> +				     RG_CSI0A_CPHY_EN, 0);
-> +		mtk_phy_update_field(base + CSIxB_OFFSET + MIPI_RX_ANA00_CSIxA,
-> +				     RG_CSI0A_CPHY_EN, 0);
-> +	}
-> +
-> +	/*
-> +	 * Lane configuration:
-> +	 *
-> +	 * Only 4 data + 1 clock is supported for now with the following mapping:
-> +	 *
-> +	 * CSIxA_LNR0 --> D2
-> +	 * CSIxA_LNR1 --> D0
-> +	 * CSIxA_LNR2 --> C
-> +	 * CSIxB_LNR0 --> D1
-> +	 * CSIxB_LNR1 --> D3
-> +	 */
-> +	mtk_phy_update_field(base + MIPI_RX_ANA00_CSIxA,
-> +			     RG_CSIxA_DPHY_L0_CKMODE_EN, 0);
-> +	mtk_phy_update_field(base + MIPI_RX_ANA00_CSIxA,
-> +			     RG_CSIxA_DPHY_L0_CKSEL, 1);
-> +	mtk_phy_update_field(base + MIPI_RX_ANA00_CSIxA,
-> +			     RG_CSIxA_DPHY_L1_CKMODE_EN, 0);
-> +	mtk_phy_update_field(base + MIPI_RX_ANA00_CSIxA,
-> +			     RG_CSIxA_DPHY_L1_CKSEL, 1);
-> +	mtk_phy_update_field(base + MIPI_RX_ANA00_CSIxA,
-> +			     RG_CSIxA_DPHY_L2_CKMODE_EN, 1);
-> +	mtk_phy_update_field(base + MIPI_RX_ANA00_CSIxA,
-> +			     RG_CSIxA_DPHY_L2_CKSEL, 1);
-> +
-> +	mtk_phy_update_field(base + CSIxB_OFFSET + MIPI_RX_ANA00_CSIxA,
-> +			     RG_CSIxA_DPHY_L0_CKMODE_EN, 0);
-> +	mtk_phy_update_field(base + CSIxB_OFFSET + MIPI_RX_ANA00_CSIxA,
-> +			     RG_CSIxA_DPHY_L0_CKSEL, 1);
-> +	mtk_phy_update_field(base + CSIxB_OFFSET + MIPI_RX_ANA00_CSIxA,
-> +			     RG_CSIxA_DPHY_L1_CKMODE_EN, 0);
-> +	mtk_phy_update_field(base + CSIxB_OFFSET + MIPI_RX_ANA00_CSIxA,
-> +			     RG_CSIxA_DPHY_L1_CKSEL, 1);
-> +	mtk_phy_update_field(base + CSIxB_OFFSET + MIPI_RX_ANA00_CSIxA,
-> +			     RG_CSIxA_DPHY_L2_CKMODE_EN, 0);
-> +	mtk_phy_update_field(base + CSIxB_OFFSET + MIPI_RX_ANA00_CSIxA,
-> +			     RG_CSIxA_DPHY_L2_CKSEL, 1);
-> +
-> +	/* Byte clock invert */
-> +	mtk_phy_update_field(base + MIPI_RX_ANAA8_CSIxA,
-> +			     RG_CSIxA_CDPHY_L0_T0_BYTECK_INVERT, 1);
-> +	mtk_phy_update_field(base + MIPI_RX_ANAA8_CSIxA,
-> +			     RG_CSIxA_DPHY_L1_BYTECK_INVERT, 1);
-> +	mtk_phy_update_field(base + MIPI_RX_ANAA8_CSIxA,
-> +			     RG_CSIxA_CDPHY_L2_T1_BYTECK_INVERT, 1);
-> +
-> +	mtk_phy_update_field(base + CSIxB_OFFSET + MIPI_RX_ANAA8_CSIxA,
-> +			     RG_CSIxA_CDPHY_L0_T0_BYTECK_INVERT, 1);
-> +	mtk_phy_update_field(base + CSIxB_OFFSET + MIPI_RX_ANAA8_CSIxA,
-> +			     RG_CSIxA_DPHY_L1_BYTECK_INVERT, 1);
-> +	mtk_phy_update_field(base + CSIxB_OFFSET + MIPI_RX_ANAA8_CSIxA,
-> +			     RG_CSIxA_CDPHY_L2_T1_BYTECK_INVERT, 1);
-> +
-> +	/* Start ANA EQ tuning */
-> +	if (port->is_cdphy) {
+1. introduce a new helper function - phylink_pcs_neg_mode() - as per
+   the patch below
+2. switch phylink_mii_c22_pcs_config() to use it
+3. pull that helper into phylink_mii_c22_pcs_config() callers
+4. convert all pcs_config() implementations that fiddle with inband AN
+   configuration to use this helper
+5. finally pull the helper up into phylink and change the pcs_config()
+   method prototype:
 
-statid void mtk_phy_csi_analog_eq_tune(struct mtk_mipi_dphy_port *port)
-{
-	if (port->is_cdphy)
-		mtk_phy_csi_dphy_ana_eq_tune(...)
-	else
-		mtk_phy_csi_cphy_ana_eq_tune(...)
+-       int (*pcs_config)(struct phylink_pcs *pcs, unsigned int mode,
+-                         phy_interface_t interface,
++       int (*pcs_config)(struct phylink_pcs *pcs, phy_interface_t interface,
+                          const unsigned long *advertising,
++                         unsigned int neg_mode,
+                          bool permit_pause_to_mac);
 
-	/* CPHY/DPHY common "end of tuning" sequence below */
-	mtk_phy_update_field( ... stuff ...);
-}
+There are two questions that came up while creating the patches for the
+above five steps:
 
-...then all those calls will also fit in one line due to the reduced
-indentation, improving readability and reducing line count.
+1. Should 10GBASE-KR be included in the SGMII et.al. case in the code?
+   Any other interface modes that should be there? Obviously,
+   PHYLINK_PCS_NEG_NONE is not correct for 10GBASE-KR since it does use
+   inband AN. Does it make sense for the user to disable inband AN for
+   10GBASE-KR? If so, maybe it should be under the 1000base-X case.
 
-> +		mtk_phy_update_field(base + MIPI_RX_ANA18_CSIxA,
-> +				     RG_CSI0A_L0_T0AB_EQ_IS, 1);
-> +		mtk_phy_update_field(base + MIPI_RX_ANA18_CSIxA,
-> +				     RG_CSI0A_L0_T0AB_EQ_BW, 1);
-> +		mtk_phy_update_field(base + MIPI_RX_ANA1C_CSIxA,
-> +				     RG_CSI0A_L1_T1AB_EQ_IS, 1);
-> +		mtk_phy_update_field(base + MIPI_RX_ANA1C_CSIxA,
-> +				     RG_CSI0A_L1_T1AB_EQ_BW, 1);
-> +		mtk_phy_update_field(base + MIPI_RX_ANA20_CSI0A,
-> +				     RG_CSI0A_L2_T1BC_EQ_IS, 1);
-> +		mtk_phy_update_field(base + MIPI_RX_ANA20_CSI0A,
-> +				     RG_CSI0A_L2_T1BC_EQ_BW, 1);
-> +
-> +		mtk_phy_update_field(base + CSIxB_OFFSET + MIPI_RX_ANA18_CSIxA,
-> +				     RG_CSI0A_L0_T0AB_EQ_IS, 1);
-> +		mtk_phy_update_field(base + CSIxB_OFFSET + MIPI_RX_ANA18_CSIxA,
-> +				     RG_CSI0A_L0_T0AB_EQ_BW, 1);
-> +		mtk_phy_update_field(base + CSIxB_OFFSET + MIPI_RX_ANA1C_CSIxA,
-> +				     RG_CSI0A_L1_T1AB_EQ_IS, 1);
-> +		mtk_phy_update_field(base + CSIxB_OFFSET + MIPI_RX_ANA1C_CSIxA,
-> +				     RG_CSI0A_L1_T1AB_EQ_BW, 1);
-> +		mtk_phy_update_field(base + CSIxB_OFFSET + MIPI_RX_ANA20_CSI0A,
-> +				     RG_CSI0A_L2_T1BC_EQ_IS, 1);
-> +		mtk_phy_update_field(base + CSIxB_OFFSET + MIPI_RX_ANA20_CSI0A,
-> +				     RG_CSI0A_L2_T1BC_EQ_BW, 1);
-> +	} else {
-> +		mtk_phy_update_field(base + MIPI_RX_ANA18_CSIxA,
-> +				     RG_CSI1A_L0_EQ_IS, 1);
-> +		mtk_phy_update_field(base + MIPI_RX_ANA18_CSIxA,
-> +				     RG_CSI1A_L0_EQ_BW, 1);
-> +		mtk_phy_update_field(base + MIPI_RX_ANA18_CSIxA,
-> +				     RG_CSI1A_L1_EQ_IS, 1);
-> +		mtk_phy_update_field(base + MIPI_RX_ANA18_CSIxA,
-> +				     RG_CSI1A_L1_EQ_BW, 1);
-> +		mtk_phy_update_field(base + MIPI_RX_ANA1C_CSIxA,
-> +				     RG_CSI1A_L2_EQ_IS, 1);
-> +		mtk_phy_update_field(base + MIPI_RX_ANA1C_CSIxA,
-> +				     RG_CSI1A_L2_EQ_BW, 1);
-> +
-> +		mtk_phy_update_field(base + CSIxB_OFFSET + MIPI_RX_ANA18_CSIxA,
-> +				     RG_CSI1A_L0_EQ_IS, 1);
-> +		mtk_phy_update_field(base + CSIxB_OFFSET + MIPI_RX_ANA18_CSIxA,
-> +				     RG_CSI1A_L0_EQ_BW, 1);
-> +		mtk_phy_update_field(base + CSIxB_OFFSET + MIPI_RX_ANA18_CSIxA,
-> +				     RG_CSI1A_L1_EQ_IS, 1);
-> +		mtk_phy_update_field(base + CSIxB_OFFSET + MIPI_RX_ANA18_CSIxA,
-> +				     RG_CSI1A_L1_EQ_BW, 1);
-> +		mtk_phy_update_field(base + CSIxB_OFFSET + MIPI_RX_ANA1C_CSIxA,
-> +				     RG_CSI1A_L2_EQ_IS, 1);
-> +		mtk_phy_update_field(base + CSIxB_OFFSET + MIPI_RX_ANA1C_CSIxA,
-> +				     RG_CSI1A_L2_EQ_BW, 1);
-> +	}
-> +
-> +	/* End ANA EQ tuning */
-> +	mtk_phy_set_bits(base + MIPI_RX_ANA40_CSIxA, 0x90);
-> +
-> +	mtk_phy_update_field(base + MIPI_RX_ANA24_CSIxA,
-> +			     RG_CSIxA_RESERVE, 0x40);
-> +	mtk_phy_update_field(base + CSIxB_OFFSET + MIPI_RX_ANA24_CSIxA,
-> +			     RG_CSIxA_RESERVE, 0x40);
-> +	mtk_phy_update_field(base + MIPI_RX_WRAPPER80_CSIxA,
-> +			     CSR_CSI_RST_MODE, 0);
-> +	mtk_phy_update_field(base + CSIxB_OFFSET + MIPI_RX_WRAPPER80_CSIxA,
-> +			     CSR_CSI_RST_MODE, 0);
-> +	/* ANA power on */
-> +	mtk_phy_update_field(base + MIPI_RX_ANA00_CSIxA,
-> +			     RG_CSIxA_BG_CORE_EN, 1);
-> +	mtk_phy_update_field(base + CSIxB_OFFSET + MIPI_RX_ANA00_CSIxA,
-> +			     RG_CSIxA_BG_CORE_EN, 1);
-> +	usleep_range(20, 40);
-> +	mtk_phy_update_field(base + MIPI_RX_ANA00_CSIxA,
-> +			     RG_CSIxA_BG_LPF_EN, 1);
-> +	mtk_phy_update_field(base + CSIxB_OFFSET + MIPI_RX_ANA00_CSIxA,
-> +			     RG_CSIxA_BG_LPF_EN, 1);
-> +
-> +	return 0;
-> +}
-> +
-> +static int mtk_mipi_phy_power_off(struct phy *phy)
-> +{
-> +	struct mtk_mipi_dphy_port *port = phy_get_drvdata(phy);
-> +	void __iomem *base = port->base;
-> +
-> +	/* Disable MIPI BG. */
-> +	mtk_phy_update_field(base + MIPI_RX_ANA00_CSIxA,
-> +			     RG_CSIxA_BG_CORE_EN, 0);
-> +	mtk_phy_update_field(base + MIPI_RX_ANA00_CSIxA,
-> +			     RG_CSIxA_BG_LPF_EN, 0);
-> +
-> +	mtk_phy_update_field(base + CSIxB_OFFSET + MIPI_RX_ANA00_CSIxA,
-> +			     RG_CSIxA_BG_CORE_EN, 0);
-> +	mtk_phy_update_field(base + CSIxB_OFFSET + MIPI_RX_ANA00_CSIxA,
-> +			     RG_CSIxA_BG_LPF_EN, 0);
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct phy_ops mtk_dphy_ops = {
-> +	.power_on	= mtk_mipi_phy_power_on,
-> +	.power_off	= mtk_mipi_phy_power_off,
-> +	.owner		= THIS_MODULE,
-> +};
-> +
-> +static int mtk_mipi_dphy_probe(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct phy_provider *phy_provider;
-> +	struct mtk_mipi_dphy_port *port;
-> +	struct phy *phy;
-> +
-> +	port = devm_kzalloc(dev, sizeof(*port), GFP_KERNEL);
-> +	if (!port)
-> +		return -ENOMEM;
-> +
-> +	dev_set_drvdata(dev, port);
-> +
-> +	port->dev = dev;
-> +
-> +	port->base = devm_platform_ioremap_resource(pdev, 0);
-> +	if (IS_ERR(port->base))
-> +		return PTR_ERR(port->base);
-> +
-> +	port->is_cdphy = of_property_read_bool(dev->of_node, "mediatek,is_cdphy");
+2. XLGMII.. Looking at the XPCS driver, it's unclear whether Clause 73
+   AN gets used for this. A quick scan of IEEE 802.3 suggests that
+   XLGMII doesn't have any support for any inband signalling, and it's
+   just an intermediary protocol between the MAC (more specifically the
+   RS, but for the purposes of this I'll just refer to MAC) and the
+   attached PCS, and any autonegotiation happens after the XLGMII link.
 
-This driver doesn't support C-PHY mode, so you either add support for that, or in
-my opinion you should simply refuse to probe it, as it is *dysfunctional* for the
-unsupported case (and might even introduce unstabilities).
+   In terms of PCS, until PHY_INTERFACE_MODE_XLGMII was introduced, the
+   PHY interface mode for serdes based protocols described the protocol
+   used on the media side of the PCS and the next part of the system
+   towards the media, but XLGMII describes the MAC-to-PCS protocol
+   (which could equally be GMII, XGMII etc). For example, in 802.3, the
+   stack for 1000BASE-X describes the MAC-to-PCS link as GMII, but we
+   have omitted that detail, and we just call it
+   PHY_INTERFACE_MODE_1000BASEX.
 
-	/* At the moment, only D-PHY mode is supported */
-	if (!port->is_cdphy)
-		return -EINVAL;
+   PHY_INTERFACE_MODE_XLGMII has as much meaning whether the PCS uses
+   media-facing inband AN as PHY_INTERFACE_MODE_GMII would do if it
+   were to be used with a PCS operating in SGMII or 1000BASE-X mode.
 
-Also, please don't use underscores for devicetree properties: "mediatek,is-cdphy"
-is fine.
+   If XLGMII is used with a PCS that supports clause 73 AN, then there
+   is obviously AN involved. However, XLGMII can also be used with a
+   PCS/PMA/PMD that ends up producing 40GBASE-R which has no inband AN.
 
-> +
-> +	phy = devm_phy_create(dev, NULL, &mtk_dphy_ops);
-> +	if (IS_ERR(phy)) {
-> +		dev_err(dev, "Failed to create PHY: %ld\n", PTR_ERR(phy));
-> +		return PTR_ERR(phy);
-> +	}
-> +
-> +	port->phy = phy;
-> +	phy_set_drvdata(phy, port);
-> +
-> +	phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
-> +	if (IS_ERR(phy_provider)) {
-> +		dev_err(dev, "Failed to register PHY provider: %ld\n",
-> +			PTR_ERR(phy_provider));
-> +		return PTR_ERR(phy_provider);
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct of_device_id mtk_mipi_dphy_of_match[] = {
-> +	{.compatible = "mediatek,phy-mipi-csi-0-5"},
+   So, I'm not sure what the behaviour of phylink_pcs_neg_mode() should
+   be when faced with PHY_INTERFACE_MODE_XLGMII - does this need yet
+   another state?
 
-leave spaces.
+3. Should the pcs_link_up() method also be passed this "neg_mode" state
+   and should the existing "mode" argument be dropped?
 
-	{ .comp... " },
+Finally, there's the obvious question whether this approach is even a
+good idea.
 
-...and always end with
+Please let me have some thoughts.
 
-	{ /* sentinel */ }
+8<===
+From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
+Subject: [PATCH] net: phylink: add phylink_pcs_neg_mode()
+
+Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+---
+ include/linux/phylink.h | 72 +++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 72 insertions(+)
+
+diff --git a/include/linux/phylink.h b/include/linux/phylink.h
+index 8968094503d6..465248818276 100644
+--- a/include/linux/phylink.h
++++ b/include/linux/phylink.h
+@@ -21,6 +21,18 @@ enum {
+ 	MLO_AN_FIXED,	/* Fixed-link mode */
+ 	MLO_AN_INBAND,	/* In-band protocol */
+ 
++	/* PCS "negotiation" mode.
++	 *  PHYLINK_PCS_NEG_NONE - protocol has no inband capability
++	 *  PHYLINK_PCS_NEG_OUTBAND - some out of band or fixed link setting
++	 *  PHYLINK_PCS_NEG_INBAND_DISABLED - inband mode disabled, e.g.
++	 *				      1000base-X with autoneg off
++	 *  PHYLINK_PCS_NEG_INBAND_ENABLED - inband mode enabled
++	 */
++	PHYLINK_PCS_NEG_NONE = 0,
++	PHYLINK_PCS_NEG_OUTBAND,
++	PHYLINK_PCS_NEG_INBAND_DISABLED,
++	PHYLINK_PCS_NEG_INBAND_ENABLED,
++
+ 	/* MAC_SYM_PAUSE and MAC_ASYM_PAUSE are used when configuring our
+ 	 * autonegotiation advertisement. They correspond to the PAUSE and
+ 	 * ASM_DIR bits defined by 802.3, respectively.
+@@ -79,6 +91,67 @@ static inline bool phylink_autoneg_inband(unsigned int mode)
+ 	return mode == MLO_AN_INBAND;
+ }
+ 
++/**
++ * phylink_pcs_neg_mode() - helper to determine PCS inband mode
++ * @mode: one of %MLO_AN_FIXED, %MLO_AN_PHY, %MLO_AN_INBAND.
++ * @interface: interface mode to be used
++ * @advertising: adertisement ethtool link mode mask
++ *
++ * Determines the negotiation mode to be used by the PCS, and returns
++ * one of:
++ * %PHYLINK_PCS_NEG_NONE: interface mode does not support inband
++ * %PHYLINK_PCS_NEG_OUTBAND: an out of band mode (e.g. reading the PHY,
++ *   or fixed link) will be used.
++ * %PHYLINK_PCS_NEG_INBAND_DISABLED: inband mode selected but autoneg disabled
++ * %PHYLINK_PCS_NEG_INBAND_ENABLED: inband mode selected and autoneg enabled
++ */
++static inline unsigned int phylink_pcs_neg_mode(unsigned int mode,
++						phy_interface_t interface,
++						const unsigned long *advertising)
++{
++	unsigned int neg_mode;
++
++	switch (interface) {
++	case PHY_INTERFACE_MODE_SGMII:
++	case PHY_INTERFACE_MODE_QSGMII:
++	case PHY_INTERFACE_MODE_QUSGMII:
++	case PHY_INTERFACE_MODE_USXGMII:
++		/* These protocols are designed for use with a PHY which
++		 * communicates its negotiation result back to the MAC via
++		 * inband communication. Note: there exist PHYs that run
++		 * with SGMII but do not send the inband data.
++		 */
++		if (!phylink_autoneg_inband(mode))
++			neg_mode = PHYLINK_PCS_NEG_OUTBAND;
++		else
++			neg_mode = PHYLINK_PCS_NEG_INBAND_ENABLED;
++		break;
++
++	case PHY_INTERFACE_MODE_1000BASEX:
++	case PHY_INTERFACE_MODE_2500BASEX:
++		/* 1000base-X is designed for use media-side for Fibre
++		 * connections, and thus the Autoneg bit needs to be
++		 * taken into account. We also do this for 2500base-X
++		 * as well, but drivers may not support this, so may
++		 * need to override this.
++		 */
++		if (!phylink_autoneg_inband(mode))
++			neg_mode = PHYLINK_PCS_NEG_OUTBAND;
++		else if (linkmode_test_bit(ETHTOOL_LINK_MODE_Autoneg_BIT,
++					   advertising))
++			neg_mode = PHYLINK_PCS_NEG_INBAND_ENABLED;
++		else
++			neg_mode = PHYLINK_PCS_NEG_INBAND_DISABLED;
++		break;
++
++	default:
++		neg_mode = PHYLINK_PCS_NEG_NONE;
++		break;
++	}
++
++	return neg_mode;
++}
++
+ /**
+  * struct phylink_link_state - link state structure
+  * @advertising: ethtool bitmask containing advertised link modes
+-- 
+2.30.2
 
 
-Also, please follow what the other PHY drivers do and use a SoC model,
-example:
-
-"mediatek,mt7777-csi-phy", or "mediatek,mt8888-csi-rx"
-
-where the latter would make more sense imo.
-
-> +	{},
-> +};
-> +MODULE_DEVICE_TABLE(of, mtk_mipi_dphy_of_match);
-> +
-> +static struct platform_driver mipi_dphy_pdrv = {
-> +	.probe = mtk_mipi_dphy_probe,
-> +	.driver	= {
-> +		.name	= "mtk-mipi-csi-0-5",
-> +		.of_match_table = mtk_mipi_dphy_of_match,
-> +	},
-> +};
-> +
-
-remove extra blank line here.
-
-> +module_platform_driver(mipi_dphy_pdrv);
-> +
-> +MODULE_DESCRIPTION("MTK mipi csi cdphy driver");
-
-"MediaTek MIPI CSI CDPHY Driver"
-
-> +MODULE_AUTHOR("Louis Kuo <louis.kuo@mediatek.com>");
-> +MODULE_LICENSE("GPL");
-
-Regards,
-Angelo
-
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
