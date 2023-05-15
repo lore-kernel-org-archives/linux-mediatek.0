@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0094C77B7D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 15:35:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16B53C77B75
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 15:45:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8a+oLK/EjvW2iWa4CvVnKNi6T68qPXF5eHPAeQXKSvQ=; b=45g2ozt3oK7Vbq4dWe5S/yhJZ4
-	GqLTKnLOKH5PwDmqGBGf5kaVXKLj8WUwWC8VKQ8JTwI7rfr3nMlfPAEpjtk0ojvyq4EjaO+kSkdG+
-	RKFaXI0EECV8g1z1xhVSAL23PUMcMkpU3p08NT+H3rj9RttWFWC3S3FLxtl1UW3PtgZGXfOXOcBsK
-	xEv4pPhlXyqkWmTLN2ZOeem52+drTzbbWfP2psqWnZ8JpF1Sdgu31kRyPjXRRPYhIghwLyaXymM7B
-	ha8yIvsMi2yGHRzvQ9UdULYJe9t5FMWj8CxJ1nUInCUAWh2jfZ3v/T/R9TUkJ1OhB9zmcU6UjatbZ
-	IdjBKHyg==;
+	bh=/EspT2AUJFko/8/ba0poLH0i/8Vd/uo7qhUHuiqQdfc=; b=mdZjez2BjSD8knzN/J6d04yklR
+	qG88b60Lq7MYpuVC6hyOhuRHg5mSLWCZ8h6SSzFWAGkEgC9qPwVT++KGTbBrVhJHlux2S+Slh0muI
+	x42SBndghsW3I2pN4wapS/k7eceGkzUwC+Q3T0O9XbMIbGR/p2bHRxNhGN4QrQ5AtA9uEChShmMxW
+	MB83TDI4seg1TMpz68/AFV4SsyS2YOmBNAzds9RDK+hFgltaEeRx2jSRNVCqKrpq0TAb5uAMZ8018
+	QtfJgBZ1WNA4+haWerXzNIhvD+BPzXao+0uVc6XBf5NY1tF4VaXqqT6ZS9NBTS08Q9YhiSFvBXY4q
+	wejHEQrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyaED-002afm-1G;
-	Mon, 15 May 2023 15:35:13 +0000
+	id 1pyaO2-002cQ1-02;
+	Mon, 15 May 2023 15:45:22 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyaE9-002aeF-3A;
-	Mon, 15 May 2023 15:35:11 +0000
+	id 1pyaNy-002cOG-31;
+	Mon, 15 May 2023 15:45:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
 	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=8a+oLK/EjvW2iWa4CvVnKNi6T68qPXF5eHPAeQXKSvQ=; b=HGU6JtmhWszCAfdURqlW/Ut+66
-	84hfuyjtPVc0MwUYbNBETFcAfz5NM3sIeqSEbFmEmGNNvk3dFGzJLjogP8wMWREs0etAtaMdhmewm
-	eVB3ZrcO8d3CLxmquVIK+CrS92ER5HYC6ww+g+uoqGRBYqiImluxiC4kzdz5jaQ4iDt1Di0fqZKBe
-	ru8cAs/vtn2Mr9fpOiEsLtOvHpTZXDV2GgAXjra2y9NOMRR3vTgDvwzfD8V37n6i5xEat0O+glzPX
-	JGSGf6Toh6R6H9RaiXqOH9/EsOCgWMoGpewU/wbqrdHB1aQE0K5gpPeazG68DSGxo3CXk9EPM9nhq
-	Le3hPnQw==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:35164)
+	bh=/EspT2AUJFko/8/ba0poLH0i/8Vd/uo7qhUHuiqQdfc=; b=eitEme3C5+pPKemuF8mpk3Y97H
+	3zpNju3YaQCZ2FXNcnY3js+6t6TmjY3cMlPyAFxp4yNPU4EY2JtsQRTevWtjPlaxkvsR+Z0gTbJDE
+	xtPGCZ7seJV9IzHVw3UQ0EDlyt5Pnkvs8k+yMrRFfx+JBvEAWjyHkJe3smUh4ABWxk96MKQccNSQ4
+	SbsIeCpCISZzfajaXTFhmU5EaSoKqzFPBN0kW7stC0mHN1hh3zIKIXLNm/iuWH+0xrV2VDVlcChbr
+	3iRzCZWnqhaEO33DvF4Mcxkx4SoVvN/TB7T5sGy2Id4Qph/K1QzmQtKdxAaBWEVm8HctTzklZgGOv
+	YTGZGG8g==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:59924)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <linux@armlinux.org.uk>)
-	id 1pyaDg-0003ww-8S; Mon, 15 May 2023 16:34:40 +0100
+	id 1pyaNd-0003yV-PN; Mon, 15 May 2023 16:44:57 +0100
 Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
 	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1pyaDZ-0008Ic-Pp; Mon, 15 May 2023 16:34:33 +0100
-Date: Mon, 15 May 2023 16:34:33 +0100
+	id 1pyaNZ-0008Jg-Md; Mon, 15 May 2023 16:44:53 +0100
+Date: Mon, 15 May 2023 16:44:53 +0100
 From: "Russell King (Oracle)" <linux@armlinux.org.uk>
 To: Andrew Lunn <andrew@lunn.ch>
 Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -73,16 +73,17 @@ Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
 Subject: Re: [PATCH RFC] Providing a helper for PCS inband negotiation
-Message-ID: <ZGJRCaR2gQqEt2+L@shell.armlinux.org.uk>
+Message-ID: <ZGJTdZL7u+eEYqX3@shell.armlinux.org.uk>
 References: <ZGIkGmyL8yL1q1zp@shell.armlinux.org.uk>
  <9f7b1d6f-ca62-4c6c-9cd5-37726e7857b7@lunn.ch>
+ <ZGJRCaR2gQqEt2+L@shell.armlinux.org.uk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <9f7b1d6f-ca62-4c6c-9cd5-37726e7857b7@lunn.ch>
+In-Reply-To: <ZGJRCaR2gQqEt2+L@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230515_083510_024242_81C104B2 
-X-CRM114-Status: GOOD (  19.52  )
+X-CRM114-CacheID: sfid-20230515_084519_112076_A7B0671C 
+X-CRM114-Status: GOOD (  31.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,93 +98,119 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 15, 2023 at 03:58:09PM +0200, Andrew Lunn wrote:
-> > 2. XLGMII.. Looking at the XPCS driver, it's unclear whether Clause 73
-> >    AN gets used for this. A quick scan of IEEE 802.3 suggests that
-> >    XLGMII doesn't have any support for any inband signalling, and it's
-> >    just an intermediary protocol between the MAC (more specifically the
-> >    RS, but for the purposes of this I'll just refer to MAC) and the
-> >    attached PCS, and any autonegotiation happens after the XLGMII link.
+On Mon, May 15, 2023 at 04:34:33PM +0100, Russell King (Oracle) wrote:
+> On Mon, May 15, 2023 at 03:58:09PM +0200, Andrew Lunn wrote:
+> > > 2. XLGMII.. Looking at the XPCS driver, it's unclear whether Clause 73
+> > >    AN gets used for this. A quick scan of IEEE 802.3 suggests that
+> > >    XLGMII doesn't have any support for any inband signalling, and it's
+> > >    just an intermediary protocol between the MAC (more specifically the
+> > >    RS, but for the purposes of this I'll just refer to MAC) and the
+> > >    attached PCS, and any autonegotiation happens after the XLGMII link.
+> > 
+> > So isn't XLGMII then a generic PHY thing, not a phylink thing?
 > 
-> So isn't XLGMII then a generic PHY thing, not a phylink thing?
+> Honestly, I'm really not sure. It feels more like an internal-SoC
+> thing. See my last diagram why I think this.
+> 
+> > Or am i not correctly understanding how
+> > drivers/phy/marvell/phy-*-comphy.c and
+> > drivers/phy/microchip/*_serdev.c fit into the overall picture?
+> 
+> In the case of serdes-based protocols with an external PHY, the general
+> structure we have is:
+> 
+> ------------------------------+
+>   SoC                         |
+> +-----+   +-----+  +--------+ |          +--------------+
+> | MAC +---+ PCS +--+ SERDES +------------+ Ethernet PHY +---- Media
+> +-----+   +-----+  +--------+ |    ^     +--------------+
+> ------------------------------+    |
+>                                    |
+> PHY_INTERFACE_MODE_xxx has referred to this bit, and this is the bit
+> where inband can occur.
+> 
+> In the case of multi-rate implementations, there can be one of many
+> different PCS that can be placed there, and the SERDES handles
+> converting the data stream from the PCS into its appropriate
+> electrical form, essentially covering the PMA and PMD functions.
+> (That same SERDES block generally can also handle PCIe and SATA.)
+> 
+> In the case of non-serdes based protocols, then it's essentially the
+> same as the above, but with the PCS and SERDES blocks removed.
+> 
+> For Fibre based connections:
+> 
+> ------------------------------+
+>   SoC                         |
+> +-----+   +-----+  +--------+ |
+> | MAC +---+ PCS +--+ SERDES +------------ Media
+> +-----+   +-----+  +--------+ |    ^
+> ------------------------------+    |
+>                                    |
+> PHY_INTERFACE_MODE_xxx has referred to this bit, and 1000BASE-X runs
+> negotiation on this. 10GBASE-R also used for fibre has no negotiation,
+> but there's still the 10GBASE-R PCS and the 802.3 PMA/PMD are subsumed
+> by the SERDES block.
+> 
+> What I think seems to be the case with XPCS is:
+> 
+> ------------------------------+
+>   SoC                         |
+> +-----+   +-----+  +--------+ |
+> | MAC +---+ PCS +--+ SERDES +----------- Media
+> +-----+ ^ +-----+  +--------+ |
+> --------|---------------------+
+>         |
+> PHY_INTERFACE_MODE_xxx seems to be referring to this bit. When clause 73
+> negotiation is used, that happens where I've stated "media" above, and
+> that's involved with negotiating backplane protocols e.g. 40GBASE-KR4,
+> 40GBASE-CR4, 25GBASE-KR, 10GBASE-KR, 1000BASE-KX etc on the bit I've
+> called "Media" above.
+> 
+> However, we can also have this for a fibre link:
+> 
+> ------------------------------+
+>   SoC                         |
+> +-----+   +-----+  +--------+ |
+> | MAC +---+ PCS +--+ SERDES +----------- Fibre
+> +-----+ ^ +-----+  +--------+ |    ^
+> --------|---------------------+    |
+>         |                          |
+>      XLGMII                    40GBASE-R
+> 
+> Given that in this case, we'd want PHY_INTERFACE_MODE_xxx to say
+> 40GBASE-R, using the existing PHY_INTERFACE_MODE_xxx to specify at
+> where I've pointed XLGMII just makes things confused... but in the
+> case above with clause 73 negotiation, we wouldn't have a standard
+> PHY_INTERFACE_MODE_xxx specifier for the external "media" side
+> because that's dependent on the result of the negotiation.
+> 
+> So... this seems to be a right can of wriggly things.
 
-Honestly, I'm really not sure. It feels more like an internal-SoC
-thing. See my last diagram why I think this.
+I should point out that in many of these cases, this may also be true:
 
-> Or am i not correctly understanding how
-> drivers/phy/marvell/phy-*-comphy.c and
-> drivers/phy/microchip/*_serdev.c fit into the overall picture?
+--------+   +---------------------+
+  SoC   |   |        PHY          |
++-----+ |   | +-----+  +--------+ |
+| MAC +-------+ PCS +--+ SERDES +------------ Media
++-----+ | ^ | +-----+  +--------+ |    ^
+--------+ | +---------------------+    |
+          |                            |
+        GMII                       1000BASE-X
+        XGMII                       10GBASE-R
+       XLGMII                       40GBASE-R
 
-In the case of serdes-based protocols with an external PHY, the general
-structure we have is:
+One would expect PHY_INTERFACE_MODE_xxx to refer to the first in this
+case. If we decide that is the right model, then we shouldn't have
+added PHY_INTERFACE_MODE_1000BASEX!
 
-------------------------------+
-  SoC                         |
-+-----+   +-----+  +--------+ |          +--------------+
-| MAC +---+ PCS +--+ SERDES +------------+ Ethernet PHY +---- Media
-+-----+   +-----+  +--------+ |    ^     +--------------+
-------------------------------+    |
-                                   |
-PHY_INTERFACE_MODE_xxx has referred to this bit, and this is the bit
-where inband can occur.
+Then we get to the fun that is SGMII, which if we think the above is
+the right model, we get GMII, a PHY that converts GMII to SGMII, and
+then another PHY that converts SGMII to whatever the media wants.
 
-In the case of multi-rate implementations, there can be one of many
-different PCS that can be placed there, and the SERDES handles
-converting the data stream from the PCS into its appropriate
-electrical form, essentially covering the PMA and PMD functions.
-(That same SERDES block generally can also handle PCIe and SATA.)
-
-In the case of non-serdes based protocols, then it's essentially the
-same as the above, but with the PCS and SERDES blocks removed.
-
-For Fibre based connections:
-
-------------------------------+
-  SoC                         |
-+-----+   +-----+  +--------+ |
-| MAC +---+ PCS +--+ SERDES +------------ Media
-+-----+   +-----+  +--------+ |    ^
-------------------------------+    |
-                                   |
-PHY_INTERFACE_MODE_xxx has referred to this bit, and 1000BASE-X runs
-negotiation on this. 10GBASE-R also used for fibre has no negotiation,
-but there's still the 10GBASE-R PCS and the 802.3 PMA/PMD are subsumed
-by the SERDES block.
-
-What I think seems to be the case with XPCS is:
-
-------------------------------+
-  SoC                         |
-+-----+   +-----+  +--------+ |
-| MAC +---+ PCS +--+ SERDES +----------- Media
-+-----+ ^ +-----+  +--------+ |
---------|---------------------+
-        |
-PHY_INTERFACE_MODE_xxx seems to be referring to this bit. When clause 73
-negotiation is used, that happens where I've stated "media" above, and
-that's involved with negotiating backplane protocols e.g. 40GBASE-KR4,
-40GBASE-CR4, 25GBASE-KR, 10GBASE-KR, 1000BASE-KX etc on the bit I've
-called "Media" above.
-
-However, we can also have this for a fibre link:
-
-------------------------------+
-  SoC                         |
-+-----+   +-----+  +--------+ |
-| MAC +---+ PCS +--+ SERDES +----------- Fibre
-+-----+ ^ +-----+  +--------+ |    ^
---------|---------------------+    |
-        |                          |
-     XLGMII                    40GBASE-R
-
-Given that in this case, we'd want PHY_INTERFACE_MODE_xxx to say
-40GBASE-R, using the existing PHY_INTERFACE_MODE_xxx to specify at
-where I've pointed XLGMII just makes things confused... but in the
-case above with clause 73 negotiation, we wouldn't have a standard
-PHY_INTERFACE_MODE_xxx specifier for the external "media" side
-because that's dependent on the result of the negotiation.
-
-So... this seems to be a right can of wriggly things.
+In all of these cases, the interface mode on the left has no bearing
+on whether the PHY block in the above (whether its separate or part
+of the SoC) performs any kind of negotiation.
 
 -- 
 RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
