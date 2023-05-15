@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD032C77B7D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 11:44:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 137A5C77B7D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 11:48:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HOYzLn0FmHhCymQPR+KcH773k8tHs+tTQCSsmbRToqY=; b=ISW2BVaKCz6e9aGAZkEVdsKX3i
-	tdldpR6S31qbhYCiBT9tnIL1y44/xtoHiTQDKKy+C1I+7RN/elR87wFuy65NBXI93jUa96JAm55eR
-	Ja/0m9NsmqmNEA7FtwNGeqDtWEIgVETJbJ0LXy0Kw0iC6an21ccsfRCfqchM2/+G5rsjl+eVHCrYZ
-	URbMlvaE9Wiy6NbrBmxQ1GdedHtoKQeVNKVKlkDwCXBfZww72lDTnHJYSRtXD17Fih/IpdigeBIFu
-	QnzLR1+UKhi8awfV7qfCitNPDuY1+PX7lQseCBrEF6k0Qm24i8b9jtavBbn7pEMss2aRkoIYWgUvy
-	++1M1Xyw==;
+	bh=kK1+QCxc37vV8MkPCkPjAx2Av7w3x38/zN9XcCBE2FI=; b=refdgDz31rcvH3TB3Ssqbc17t7
+	cPpGUTh77XxauL+376ioNPfUNfKwAdveNBg81YUonj6coml4/79UTwLm4rQzQEuXDoNlVX7kALKEi
+	IvY7BA2BOry7dvYf9GwPWkb9OoG5rmwQqJT4RAlKIHnRFKwEbC1cQ1UNN9Pyhaoa5lc/je9BitVUG
+	hYGRvbzO1QJJLhfQXm+9Soa4RNE1UNNfLyDuiI/20mSR8RGO3HDpp0QLQjy0Z+NSujKt1QdyCFyvD
+	5P1MLOtSGtlDIO408+60jNs82u8VYRdyCBt/+opridXpnvwTfRE/HiV9KNkO3PtZd3dLswkZ6jWL6
+	VBYlKRbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyWcy-00217Y-30;
-	Mon, 15 May 2023 11:44:32 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pyWgG-0021hL-2D;
+	Mon, 15 May 2023 11:47:56 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyWcv-00216L-0z;
-	Mon, 15 May 2023 11:44:30 +0000
+	id 1pyWgD-0021gY-31;
+	Mon, 15 May 2023 11:47:55 +0000
 Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E0C8D66031D7;
-	Mon, 15 May 2023 12:44:26 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A6C2066031D7;
+	Mon, 15 May 2023 12:47:51 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1684151067;
-	bh=rDyvSJh2ELejvMz6JJ1HfRpjB8o4ib0qqoQwRrpvqj4=;
+	s=mail; t=1684151272;
+	bh=gC9khueYFVlcT6fg7HFJBZZwpElbVhh1z3v4MU1CT/M=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=WTYBOhcjSLYsGnY9G9lV204YnWZ8jpu0eh800cs4me6vSP5bLI5SHZt+66bdNDhOa
-	 /affCIm0aFqN1v5KeAUt9br+lVC0fHsVVK4AS1KZOJ1wsEdjS3xVlBa+cyPQF1Fus4
-	 atY6l+7mqaa0blZL/RCDQWN971SUaym5vYyITXCIbxU/QdwfoFeGNEIcrJSv0mJGKG
-	 hUL18PnvqnezQRcOxHJhjJCuUf8W+r3uEhZoyJdgeSemWqtU4uGn77S7jHEWUQbk0+
-	 4cbyOB9fP3OawQyvm3KKDRxz7ynNvmkqeN27ouDTE90RU5VxOKy4fquXFdu9qf58YZ
-	 I50NfCyBgRTDg==
-Message-ID: <ff7292f0-9055-1787-2543-e219fe30dddf@collabora.com>
-Date: Mon, 15 May 2023 13:44:24 +0200
+	b=NKbuU6L7Uz+jyOotfNx5+vzlXJriCbWSdbDVU+1C0lAtivWSdCUF4JqhsYruos4Jx
+	 YkJLbqJeQUpv3sVftOzVv7KQgVYTlxw4EksOioiVW+ECdU5okiXXnJPQkKRDjbyqiv
+	 OtMF7l86XnSFFNGtV5oR9iHr4OeBrYh67crJU6MmPIbsPADEk92MxzGHSVfQQ4wjXp
+	 nOoaam388J03D/qMC01QClwDppFHvjKJTFVPvB0NoIZCPPy69HCRVs9JMxNDB0ZkWt
+	 py1thIMwkC2PDGaOPPw4f/ST3a5eMmOQXQ5+uEmJppLSYtq6kM2Un/JJHGPh0uC11s
+	 xVFlulKkVJHDA==
+Message-ID: <c6ea1360-9ca7-783e-0d0f-f5100fd8d024@collabora.com>
+Date: Mon, 15 May 2023 13:47:49 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.1
-Subject: Re: [PATCH v7 06/11] arm64: dts: mediatek: set vmc regulator as
- always on
+Subject: Re: [PATCH v7 08/11] arm64: dts: mediatek: add ethernet support for
+ mt8365-evk
 Content-Language: en-US
-To: amergnat@baylibre.com, Catalin Marinas <catalin.marinas@arm.com>,
- Will Deacon <will@kernel.org>, Wim Van Sebroeck <wim@linux-watchdog.org>,
- Guenter Roeck <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>,
+To: Alexandre Mergnat <amergnat@baylibre.com>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
+ Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
+ <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Matthias Brugger <matthias.bgg@gmail.com>, Conor Dooley <conor+dt@kernel.org>
 Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Fabien Parent <fparent@baylibre.com>,
- Kevin Hilman <khilman@baylibre.com>
+ linux-mediatek@lists.infradead.org, Kevin Hilman <khilman@baylibre.com>
 References: <20230203-evk-board-support-v7-0-98cbdfac656e@baylibre.com>
- <20230203-evk-board-support-v7-6-98cbdfac656e@baylibre.com>
+ <20230203-evk-board-support-v7-8-98cbdfac656e@baylibre.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230203-evk-board-support-v7-6-98cbdfac656e@baylibre.com>
+In-Reply-To: <20230203-evk-board-support-v7-8-98cbdfac656e@baylibre.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230515_044429_470381_4F6CC77B 
-X-CRM114-Status: GOOD (  18.91  )
+X-CRM114-CacheID: sfid-20230515_044754_099985_2EA6DBB2 
+X-CRM114-Status: GOOD (  18.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,51 +83,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/05/23 18:29, amergnat@baylibre.com ha scritto:
-> From: Fabien Parent <fparent@baylibre.com>
+Il 11/05/23 18:29, Alexandre Mergnat ha scritto:
+> - Enable "vibr" and "vsim2" regulators to power the ethernet chip.
 > 
-> On downstream, we observe that the MSDC IP (used by the emmc, the micro
-> SD card and the WiFi) isn't working properly if the VMC regulator is
-> shutdown.
-> 
-> Make sure it is always on.
-
-I don't understand the power tree of this board: if your VQMMC is VIO18 and
-*not* VMC, why is that required?
-
-The real question is if we're facing one more supply as requirement for newer
-MediaTek SoCs and whether it would be a better idea to add that to the actual
-driver (and/or as a power domain supply!!!) to both better represent the power
-tree and to eventually allow deep power saving states.
-
-Regards,
-Angelo
-
-> 
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
 > Tested-by: Kevin Hilman <khilman@baylibre.com>
 > Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 > ---
->   arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 5 +++++
->   1 file changed, 5 insertions(+)
+>   arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 57 +++++++++++++++++++++++++++++
+>   1 file changed, 57 insertions(+)
 > 
 > diff --git a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-> index 752007d0598e..5d69b39c8746 100644
+> index 3a472f620ac0..cf81dace466a 100644
 > --- a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
 > +++ b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-> @@ -137,6 +137,11 @@ &mt6357_pmic {
+> @@ -88,6 +88,28 @@ optee_reserved: optee@43200000 {
+>   	};
+>   };
+>   
+> +&ethernet {
+> +	pinctrl-0 = <&ethernet_pins>;
+> +	pinctrl-names = "default";
+> +	phy-handle = <&eth_phy>;
+> +	phy-mode = "rmii";
+> +	/*
+> +	 * Ethernet and HDMI (DSI0) are sharing pins.
+> +	 * Only one can be enabled at a time and require the physical switch
+> +	 * SW2101 to be set on LAN position
+> +	 */
+> +	status = "disabled";
+> +
+> +	mdio {
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +
+> +		eth_phy: ethernet-phy@0 {
+> +			reg = <0>;
+> +		};
+> +	};
+> +};
+> +
+>   &i2c0 {
+>   	clock-frequency = <100000>;
+>   	pinctrl-0 = <&i2c0_pins>;
+> @@ -137,12 +159,47 @@ &mt6357_pmic {
 >   	#interrupt-cells = <2>;
 >   };
 >   
-> +/* Needed by MSDC IP */
-> +&mt6357_vmc_reg {
+> +/* Needed by analog switch (multiplexer), HDMI and ethernet */
+
+What part of the ethernet HW needs this regulator?
+
+> +&mt6357_vibr_reg {
 > +	regulator-always-on;
 > +};
 > +
->   &pio {
->   	gpio_keys: gpio-keys-pins {
->   		pins {
-> 
+>   /* Needed by MSDC IP */
+>   &mt6357_vmc_reg {
+>   	regulator-always-on;
+>   };
+>   
+> +/* Needed by ethernet */
 
+Same question for this one. If a device needs us to turn on a regulator in
+order for it to be powered (read: if the supply is not fixed-on), setting
+that supply as always-on is not beneficial for anyone, as eventually in a
+power-off sleep/idle/whatever-pm state, this device (whole chip or IP) *will*
+leak some amount of power.
+
+If hardware engineers decided to connect a device to a supply that *can be*
+shut down entirely there must be a reason, right? :-)
+
+Regards,
+Angelo
 
 
