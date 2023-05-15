@@ -4,88 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B48AC77B7D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 14:07:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0CEDC77B75
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 14:18:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n75gxWwijMMTI9GiXx1bdZzw1eSKDQ/JY3MbdqyyfJ8=; b=XFZ7dSr/BAvNp5ToTB4pn5Ovdm
-	2zWkqXMqHlLLxmobbNrtnO88wnHxigkucJPpGIFw35Ib9dp99VbIdenfQbtQpypFlElFINImkNcGY
-	h1iO0wetZbnQiCAAkY1aa7NH6njwsgV3iMWBLXBNZ39ZZLuuBL6epIId3ZhufOjwQpRxNAJ1M8PZb
-	tDliRqcoULZHAubTWQV3AdcbJDDs2wa43pdfEb9VcLFM/Xaywt7OJ/qbA+BN5ZNq8lLTcJ8h0rXnq
-	QCx1J4doJ1N8u/XNMk2MraFxwZIVE8teRW5fGO31nVQg+H3kncQ5D6vTH3qv7PT/Ou/hjZZYGGJhe
-	Sx/WBGIQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=w8EcgL8XH2DYKYLWbrmI23f+0NvOQxEV1exc96sdfeo=; b=a8J3fu2RFMojLI54cGj7TMUXtP
+	/ib1WaqfnykCuD7+u47hknVZgEgWV+bwtRuNZU0Q1/8BOzxslgBBr+JqrPurWplQaklkFBqlE+lAX
+	kl/fttD6UIJC936Uav/B+04/4MK3SkM0I4BHqyAyUXPU5VrIbXtU4bu94CTVZhe5cQQH3z2JwUXoL
+	z6f4Urc41ogr044Z6FqpVLVVMkmcmSjkOMPyCCscTXT/m+oBjMcFeh0Vi6BrCIAFTQnfm/+s7K81H
+	9TEh9PrEdvfDTDlpNkMgdxtBprFK00YPEb2Tinnp/+GkLo2+ptdsrZzokZQexLtKspkJzJgrXzeRB
+	8a6jGO8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyYr3-002LyF-2g;
-	Mon, 15 May 2023 14:07:13 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1pyZ1W-002NT3-1W;
+	Mon, 15 May 2023 14:18:02 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyYr0-002Lx9-21
-	for linux-mediatek@lists.infradead.org;
-	Mon, 15 May 2023 14:07:11 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-3063afa2372so11988260f8f.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 15 May 2023 07:07:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1684159629; x=1686751629;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=n75gxWwijMMTI9GiXx1bdZzw1eSKDQ/JY3MbdqyyfJ8=;
-        b=MybEwHb7tKFR+czM65dq6Won8HWSGsgYs9IN4ez2NUgHvZhPq/Fjq3SQvBRDwj2apk
-         TQlRnqRGsmPdmCCiuAQcNV5mzBWUfS345LKMeMaqnYmHN1XGmlqe+rc1IsW5hQGIN2hY
-         Sk7HLb6fGLLzfm46sD0+z8iN/0C24ndOXGjNqF6egg+usyu0Bf3KHWzTofwatANRJWl4
-         NM6U67P7oQUYPeY4ghnVyPngLeXR/uhODxoz4qrOAMKkje2MBG2F+8kinM7BX0ZLPHGd
-         S/9F6uqsD+yaKQT/H6KccQdorGqjBBxvsrr+IBeIoiXO2e2PeafrSkbg/OX5wBedzpfb
-         rR2w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684159629; x=1686751629;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=n75gxWwijMMTI9GiXx1bdZzw1eSKDQ/JY3MbdqyyfJ8=;
-        b=KiGyL5/uqXUj26Q+98htJOAIoWlp5uNu0HDO+2MseTag5pMCyx3xg8+88Jud3NayLk
-         a0QcPeJkiedXCrtFL2Jt4yPNoDCc9qiVfY0N4T4n4vKmn2810Xiv2ZSVdVINEvB9b2l+
-         8LD4VAXvVRhFxs8lQ+P6ZIL634kXzMFoOfBclsGqtr3QfEKF+V1j2dZ4ThYQZaX2pF0T
-         ib07Zc0UH7ySCwVSUoquktYJvcLsZ1TIDloiFxCe2ciwwFR/kDCPbZRqAiz009Kjkm1L
-         AvaiJlx/lnjC0zCxrwVy8EzmKls//nS7wCiwRrHZ2G6aybTsQcN3mpSBAv00hi/xHRvy
-         3ZBQ==
-X-Gm-Message-State: AC+VfDzr8yCv+J30GnCrVHbf07o8QsF0VK3/OhlLwjfyQnr6xY5acXq0
-	OB4gQf5niacTgwPJ3Eb9rSpi8Q==
-X-Google-Smtp-Source: ACHHUZ79hANfbDvpP6oNPyXKE1ftm/gHtkEaa9Icb1GGlaeSnOsVu4I4PEo/Jz9DCazNFmJCLmAmFg==
-X-Received: by 2002:adf:e492:0:b0:306:2dd6:95d3 with SMTP id i18-20020adfe492000000b003062dd695d3mr30832770wrm.22.1684159629085;
-        Mon, 15 May 2023 07:07:09 -0700 (PDT)
-Received: from localhost ([2a01:e0a:55f:21e0:fd3b:9fed:e621:cc8f])
-        by smtp.gmail.com with ESMTPSA id a2-20020a05600c224200b003f4253ddb7dsm23548392wmm.43.2023.05.15.07.07.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 May 2023 07:07:08 -0700 (PDT)
-Date: Mon, 15 May 2023 16:07:07 +0200
-From: Julien Stephan <jstephan@baylibre.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: krzysztof.kozlowski@linaro.org, robh@kernel.org, 
-	chunkuang.hu@kernel.org, linux-mediatek@lists.infradead.org, 
-	Phi-bang Nguyen <pnguyen@baylibre.com>, Louis Kuo <louis.kuo@mediatek.com>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
-	Kishon Vijay Abraham I <kishon@kernel.org>, Andy Hsieh <andy.hsieh@mediatek.com>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	open list <linux-kernel@vger.kernel.org>, 
-	"moderated list:ARM/Mediatek USB3 PHY DRIVER" <linux-arm-kernel@lists.infradead.org>, 
-	"open list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>, 
-	"open list:DRM DRIVERS FOR MEDIATEK" <dri-devel@lists.freedesktop.org>
-Subject: Re: [PATCH v2 2/2] phy: mtk-mipi-csi: add driver for CSI phy
-Message-ID: <b2nk4jw2hpy4ndoq4cojazkn6h3tra2zjffhiswb7aqryabf7q@mkbtzhzcbivv>
-References: <20230515090551.1251389-1-jstephan@baylibre.com>
- <20230515090551.1251389-3-jstephan@baylibre.com>
- <cd6067b2-660a-8f2c-697d-26814a9dc131@collabora.com>
+	id 1pyZ1T-002NRK-22;
+	Mon, 15 May 2023 14:18:01 +0000
+Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id CFE4966058D2;
+	Mon, 15 May 2023 15:17:55 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1684160276;
+	bh=isAu6jaVeMeTLU5u3pXCbHYMMByM16GBW5K9iE6wVqM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=E69ssZrHbA8dsU7JD1aA1yNwFgIFGa0oJvFQ/Vpc25IlMQ2Hxz/BxoHaMBvjlPwrO
+	 3SXNMteCZzP+chskAdlAOobejNHmNhFiyLDXOcYKGCzs8GiceWkgQz/tjuv7QBev3p
+	 0vClO/kOP5dMbdxm40B9TSQTx0PxxachJjvpMq4X6h5M+yKzO9eZeMM7Ul+ZdwhuqF
+	 erD4C3GgGVXW5hH7FTRMmBThEAETUHnycQ7AP4aC3jBdEyhJUoHvrFlh5UMAIdC1n1
+	 Yh9LagnpYpJ2qskxEa+I1dsO/S/Q91vHcMdZcDDCDzAH+0zI5l5B1H4bTe9+EYum87
+	 IxG/FN1b2ZGhg==
+Message-ID: <adca53e5-5c26-e087-f142-5a6f9e9961db@collabora.com>
+Date: Mon, 15 May 2023 16:17:52 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cd6067b2-660a-8f2c-697d-26814a9dc131@collabora.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.1
+Subject: Re: [PATCH] clk: mediatek: mt8365: Fix inverted topclk operations
+Content-Language: en-US
+To: Markus Schneider-Pargmann <msp@baylibre.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Alexandre Mergnat <amergnat@baylibre.com>
+References: <20230511133226.913600-1-msp@baylibre.com>
+ <8603c2b2-2a5b-48f6-9b08-9b3b518b716b@gmail.com>
+ <aa383909-7a03-eb24-3a61-397f2a6adb54@collabora.com>
+ <20230515140153.ppjl4zyshscvcbuu@blmsp>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230515140153.ppjl4zyshscvcbuu@blmsp>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230515_070710_688228_FBBC32F6 
-X-CRM114-Status: GOOD (  13.57  )
+X-CRM114-CacheID: sfid-20230515_071759_870587_C925DC5D 
+X-CRM114-Status: GOOD (  17.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,35 +81,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 15, 2023 at 02:22:52PM +0200, AngeloGioacchino Del Regno wrote:
-> > +#define CSIxB_OFFSET		0x1000
->
-> What if we grab two (or three?) iospaces from devicetree?
->
-> - base (global)
-> - csi_a
-> - csi_b
->
-> That would make it possible to maybe eventually extend this driver to more
-> versions (older or newer) of the CSI PHY IP without putting fixes offsets
-> inside of platform data structures and such.
->
-Hi Angelo,
-The register bank of the CSI port is divided into 2:
-* from base address to base + 0x1000 (port A)
-* from base + 0x1000 to base +0x2000 (port B)
-Some CSI port can be configured in 4D1C mode (4 data + 1 clock) using
-the whole register bank from base to base + 0x2000 or in 2D1C mode (2 data +
-1 clock) and use either port A or port B.
+Il 15/05/23 16:01, Markus Schneider-Pargmann ha scritto:
+> On Mon, May 15, 2023 at 01:49:54PM +0200, AngeloGioacchino Del Regno wrote:
+>> Il 12/05/23 13:51, Matthias Brugger ha scritto:
+>>>
+>>>
+>>> On 11/05/2023 15:32, Markus Schneider-Pargmann wrote:
+>>>> The given operations are inverted for the wrong registers which makes
+>>>> multiple of the mt8365 hardware units unusable. In my setup at least usb
+>>>> did not work.
+>>>>
+>>>> Fixed by swapping the operations with the inverted ones.
+>>
+>> ...with the not inverted ones, you mean!
+> 
+> Actually now I am not sure how to express it correctly, maybe I should
+> have just left that sentence out of the commit message.
+> 
+> I meant replacing the no_setclr_inv with no_setclr for TOP0 and no_setclr with
+> no_setclr_inv for TOP1/2.
+> 
 
-For example  mt8365 has CSI0 that can be used either in 4D1C mode or in
-2 * 2D1C and CSI1 which can use only 4D1C mode
+Yeah, the sentence may be a bit confusing, but you're actually inverting the
+inverted ones and the non-inverted ones.
 
-2D1C mode can not be tested and is not implemented in the driver so
-I guess adding csi_a and csi_b reg value may be confusing?
+It's fine, anyway, this commit can get picked as-is imo :-D
 
-What do you think?
+> Best,
+> Markus
+> 
+>>
+>> Anyway,
+>>
+>> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>
+>>>>
+>>>> Reported-by: Alexandre Mergnat <amergnat@baylibre.com>
+>>>> Fixes: 905b7430d3cc ("clk: mediatek: mt8365: Convert simple_gate to
+>>>> mtk_gate clocks")
+>>>> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+>>>
+>>> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+>>>
+>>>> ---
+>>>>    drivers/clk/mediatek/clk-mt8365.c | 6 +++---
+>>>>    1 file changed, 3 insertions(+), 3 deletions(-)
+>>>>
+>>>> diff --git a/drivers/clk/mediatek/clk-mt8365.c b/drivers/clk/mediatek/clk-mt8365.c
+>>>> index 6b4e193f648d..6d785ec5754d 100644
+>>>> --- a/drivers/clk/mediatek/clk-mt8365.c
+>>>> +++ b/drivers/clk/mediatek/clk-mt8365.c
+>>>> @@ -583,15 +583,15 @@ static const struct mtk_gate_regs top2_cg_regs = {
+>>>>    #define GATE_TOP0(_id, _name, _parent, _shift)            \
+>>>>        GATE_MTK(_id, _name, _parent, &top0_cg_regs,        \
+>>>> -         _shift, &mtk_clk_gate_ops_no_setclr_inv)
+>>>> +         _shift, &mtk_clk_gate_ops_no_setclr)
+>>>>    #define GATE_TOP1(_id, _name, _parent, _shift)            \
+>>>>        GATE_MTK(_id, _name, _parent, &top1_cg_regs,        \
+>>>> -         _shift, &mtk_clk_gate_ops_no_setclr)
+>>>> +         _shift, &mtk_clk_gate_ops_no_setclr_inv)
+>>>>    #define GATE_TOP2(_id, _name, _parent, _shift)            \
+>>>>        GATE_MTK(_id, _name, _parent, &top2_cg_regs,        \
+>>>> -         _shift, &mtk_clk_gate_ops_no_setclr)
+>>>> +         _shift, &mtk_clk_gate_ops_no_setclr_inv)
+>>>>    static const struct mtk_gate top_clk_gates[] = {
+>>>>        GATE_TOP0(CLK_TOP_CONN_32K, "conn_32k", "clk32k", 10),
+>>
+>>
 
-Regards,
-Julien
 
