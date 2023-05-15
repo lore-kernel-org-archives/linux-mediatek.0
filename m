@@ -4,150 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAF7BC7EE22
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 09:56:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68438C7EE26
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 10:08:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c69QNR7lfIqB6FKiUIhsojT+MsFH8qH65PiA7hty3/w=; b=IGiTqk2De+3S5pXtYd593SDxrP
-	8RNIo50mG2i/MSzUksBzbn5OE/AirQP5UydY0HZ01wr8Vi3vqdBtBLB3XpU3MO4yZnzHLxGnyWNo+
-	wjQ4Wy3AeCzzpFLnr/xYUkdhDK/npm4giCqmh2pFqFIlF3zNTyGKF5j2x55ZANMT0AT5+JoVm5Flk
-	wNOaCEAa3BSxvUoyrIHCdNpDw52Rd4eroxtbYqKU6QfndDeuu31+LumOfAJWANu5gfEIGwh7934xs
-	cHrTWlB9aFOV8HulkNn4/2Xp7IJXeS0oDM0z2d1rJ4ILDt2HwWKbhHgF7XdL8eF4nYo+Wl9nTpsZy
-	Fp8yUqRw==;
+	bh=vquRR2xg2mUWwJhSCSqfcs1YyVV7iN6bUPd5yrCcyxU=; b=bpKTqLVJd0o2oKfO+HBGk23muI
+	YmpLlSwmCEOIehEGpwdpP9yACL/H9uvQlfo4qknyL97HLX2x1GELS44UylJVi3I9MOGpGGvwfW4o2
+	ulhXXvNczdYKMno8ceBGXgXLXiVi2Wz2PccoB4massmUtgMrpZn1bZWapF/v7aDvJMzfEkwJEb9Ja
+	ic0gO96AX7syomsg+c/rp/KtnkpNhr1B+BvHR2eAt/XUOSc1NAwskOYTJYzbvixBVOI21TTYUglp2
+	Q9s8LGmfmjdSQ3HlVNtrDY0nbEFs1WEk8Qe2M8qI5siKyCRdw2SjO6zKkZ9YtLVfVud4gL7LgNPLm
+	PfRTHgjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyUwB-001ejJ-2M;
-	Mon, 15 May 2023 09:56:15 +0000
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyUw8-001eiU-20;
-	Mon, 15 May 2023 09:56:13 +0000
-Received: from pps.filterd (m0353727.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 34F9kL9E004814;
-	Mon, 15 May 2023 09:55:53 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=message-id : subject :
- from : to : cc : date : in-reply-to : references : content-type :
- content-transfer-encoding : mime-version; s=pp1;
- bh=c69QNR7lfIqB6FKiUIhsojT+MsFH8qH65PiA7hty3/w=;
- b=XedJ+r9zfgtSzDIB4eSrPCYm0wWx4qeblaLActQ5QVrHh2HEZP56wPCN6nRfdD4hHuiP
- EhfoiT0R911OpM43d3K1kk0me4DLgXWV8s+zqgbHPChfQ3FYX4z+56AT5PA4aVx+B9K3
- S2qnW7+htzYKc4tFSAOQn6w6QayRbwJWQ5RN51Dqjzw/xNYJQr+c0ErxHoNskgUl8DFd
- yHHBmnlnMxV8YENBqZIFU66wF7Pf9Kv8sUifi612DboAhSZ7gyThFuv1UtnbRg8omvaJ
- FcXo0FBL1z6F1hLhK8K2P8bnpEOnHfIw7A8h7ehhYGnNcX/9/f9uXq9zPPOPPG4PGrtc 6g== 
-Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3qkd3mswqh-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 15 May 2023 09:55:53 +0000
-Received: from m0353727.ppops.net (m0353727.ppops.net [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 34F9bqmA009076;
-	Mon, 15 May 2023 09:55:51 GMT
-Received: from ppma05fra.de.ibm.com (6c.4a.5195.ip4.static.sl-reverse.com [149.81.74.108])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3qkd3mswp5-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 15 May 2023 09:55:51 +0000
-Received: from pps.filterd (ppma05fra.de.ibm.com [127.0.0.1])
-	by ppma05fra.de.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 34F8Tiqw000411;
-	Mon, 15 May 2023 09:33:32 GMT
-Received: from smtprelay02.fra02v.mail.ibm.com ([9.218.2.226])
-	by ppma05fra.de.ibm.com (PPS) with ESMTPS id 3qj264rtm2-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 15 May 2023 09:33:32 +0000
-Received: from smtpav01.fra02v.mail.ibm.com (smtpav01.fra02v.mail.ibm.com [10.20.54.100])
-	by smtprelay02.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 34F9XTPL45744626
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Mon, 15 May 2023 09:33:29 GMT
-Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id E664720040;
-	Mon, 15 May 2023 09:33:28 +0000 (GMT)
-Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 413B62004B;
-	Mon, 15 May 2023 09:33:26 +0000 (GMT)
-Received: from [9.171.65.23] (unknown [9.171.65.23])
-	by smtpav01.fra02v.mail.ibm.com (Postfix) with ESMTP;
-	Mon, 15 May 2023 09:33:26 +0000 (GMT)
-Message-ID: <670b01819f6f875364abaafa4accad9fa92e6177.camel@linux.ibm.com>
-Subject: Re: [PATCH v8 0/6] iommu/dma: s390 DMA API conversion and optimized
- IOTLB flushing
-From: Niklas Schnelle <schnelle@linux.ibm.com>
-To: Christoph Hellwig <hch@infradead.org>
-Cc: Joerg Roedel <joro@8bytes.org>, Matthew Rosato <mjrosato@linux.ibm.com>,
-        Will Deacon <will@kernel.org>, Wenjia Zhang <wenjia@linux.ibm.com>,
-        Robin
- Murphy <robin.murphy@arm.com>, Jason Gunthorpe <jgg@ziepe.ca>,
-        Gerd Bayer
- <gbayer@linux.ibm.com>,
-        Julian Ruess <julianr@linux.ibm.com>,
-        Pierre Morel
- <pmorel@linux.ibm.com>,
-        Alexandra Winter <wintera@linux.ibm.com>,
-        Heiko
- Carstens <hca@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
-        Alexander
- Gordeev <agordeev@linux.ibm.com>,
-        Christian Borntraeger
- <borntraeger@linux.ibm.com>,
-        Sven Schnelle <svens@linux.ibm.com>,
-        Suravee
- Suthikulpanit <suravee.suthikulpanit@amd.com>,
-        Hector Martin
- <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
-        Alyssa Rosenzweig
- <alyssa@rosenzweig.io>,
-        David Woodhouse <dwmw2@infradead.org>,
-        Lu Baolu
- <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>,
-        Bjorn Andersson
- <andersson@kernel.org>,
-        Konrad Dybcio <konrad.dybcio@linaro.org>,
-        Yong Wu
- <yong.wu@mediatek.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
-        Orson Zhai
- <orsonzhai@gmail.com>,
-        Baolin Wang <baolin.wang@linux.alibaba.com>,
-        Chunyan
- Zhang <zhang.lyra@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
-        Jernej Skrabec
- <jernej.skrabec@gmail.com>,
-        Samuel Holland <samuel@sholland.org>,
-        Thierry
- Reding <thierry.reding@gmail.com>,
-        Krishna Reddy <vdumpa@nvidia.com>,
-        Jonathan Hunter <jonathanh@nvidia.com>,
-        Jonathan Corbet <corbet@lwn.net>, linux-s390@vger.kernel.org,
-        netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-        iommu@lists.linux.dev, asahi@lists.linux.dev,
-        linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-        linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
-        linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
-Date: Mon, 15 May 2023 11:33:25 +0200
-In-Reply-To: <ZF5NRls92rhmzV7B@infradead.org>
-References: <20230310-dma_iommu-v8-0-2347dfbed7af@linux.ibm.com>
-	 <ZF5NRls92rhmzV7B@infradead.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.48.1 (3.48.1-1.fc38) 
+	id 1pyV7t-001gxQ-33;
+	Mon, 15 May 2023 10:08:21 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1pyV7q-001gwO-21;
+	Mon, 15 May 2023 10:08:20 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 765DB2F4;
+	Mon, 15 May 2023 03:09:00 -0700 (PDT)
+Received: from bogus (e103737-lin.cambridge.arm.com [10.1.197.49])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id CFD0E3F67D;
+	Mon, 15 May 2023 03:08:12 -0700 (PDT)
+Date: Mon, 15 May 2023 11:08:10 +0100
+From: Sudeep Holla <sudeep.holla@arm.com>
+To: Ayan Kumar Halder <ayankuma@amd.com>
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	geert+renesas@glider.be, magnus.damm@gmail.com,
+	konrad.dybcio@linaro.org, andersson@kernel.org,
+	mazziesaccount@gmail.com, conor.dooley@microchip.com, j@jannau.net,
+	mailingradian@gmail.com, me@iskren.info, lpieralisi@kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org, Julien Grall <julien@xen.org>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Michal Orzel <michal.orzel@amd.com>,
+	Sudeep Holla <sudeep.holla@arm.com>,
+	Michal Simek <michal.simek@xilinx.com>
+Subject: Re: Need suggestions for smp related properties in cpus.yaml to
+ support smpboot for cortex-r52 based platform
+Message-ID: <20230515100810.ctebdbqlienbcf7t@bogus>
+References: <c5ed90c7-7126-0757-a0e3-e3d1fcab2ecc@amd.com>
 MIME-Version: 1.0
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: bs2KpFYuwoCp6-aBJBUXDadSE7HNCIPx
-X-Proofpoint-ORIG-GUID: d9-xVIyzWKoF0UTrrDTDDfGL5QDVi9C0
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.254,Aquarius:18.0.942,Hydra:6.0.573,FMLib:17.11.170.22
- definitions=2023-05-15_06,2023-05-05_01,2023-02-09_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 impostorscore=0
- priorityscore=1501 lowpriorityscore=0 phishscore=0 suspectscore=0
- adultscore=0 mlxlogscore=999 bulkscore=0 malwarescore=0 clxscore=1011
- mlxscore=0 spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2304280000 definitions=main-2305150082
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <c5ed90c7-7126-0757-a0e3-e3d1fcab2ecc@amd.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230515_025612_667306_AF8BAE89 
-X-CRM114-Status: GOOD (  24.47  )
+X-CRM114-CacheID: sfid-20230515_030818_711994_2985CD54 
+X-CRM114-Status: GOOD (  24.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -162,38 +75,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2023-05-12 at 07:29 -0700, Christoph Hellwig wrote:
-> On Fri, Mar 10, 2023 at 05:07:45PM +0100, Niklas Schnelle wrote:
-> > Hi All,
-> >=20
-> > This patch series converts s390's PCI support from its platform specifi=
-c DMA
-> > API implementation in arch/s390/pci/pci_dma.c to the common DMA IOMMU l=
-ayer.
-> > The conversion itself is done in patches 3-4 with patch 2 providing the=
- final
-> > necessary IOMMU driver improvement to handle s390's special IOTLB flush
-> > out-of-resource indication in virtualized environments. Patches 1-2 may=
- be
-> > applied independently. The conversion itself only touches the s390 IOMM=
-U driver
-> > and s390 arch code moving over remaining functions from the s390 DMA AP=
-I
-> > implementation. No changes to common code are necessary.
->=20
-> It looks like this still hasn't made it upstream as of 6.4-rc1.  What's
-> holding this series up?
->=20
+On Thu, May 11, 2023 at 10:35:37AM +0100, Ayan Kumar Halder wrote:
+> Hi Device Tree engineers,
+>
+> Recently I have ported Xen on Cortex-R52 (AArch32-V8R processor) for our AMD
+> platform.
+>
 
-I think with all the IOMMUFD work going on this got starved out of
-reviewer resources. I didn't have any open todos but I guess there is
-still some review needed around how the IOMMU driver tells the dma-
-iommu that it expects IOTLB flushes to be slow requiring a larger
-single flush queue. There was also a small conflict with commit
-49a22aae7d9c ("iommu: Replace device_lock() with group->mutex") that
-prevented this from applying to current upstream so I've just now sent
-out a v9 rebased on v6.4-rc2.
+I remember that there was some exploration on feasibility of using PSCI
+here. What happened to that ? Any summary why that was dropped ?
 
-Thanks,
-Niklas
+> I was discussing with xen-devel community about how we can properly support
+> smpboot when I was suggested that this might be the correct forum for
+> discussion.
+>
+> Please refer
+> https://lists.xenproject.org/archives/html/xen-devel/2023-05/msg00224.html
+> and the follow-ups for context.
+>
+>
+> The way smpboot works on our platform is as follows:-
+>
+> 1. core0 writes to register (say regA) the address of the secondary core
+> initialization routine.
+>
+> 2. core0 writes to another register (say regB) the value "0x1" to put the
+> secondary core in reset mode.
+>
+> 3. core0 writes to regB the value "0x0" to pull the secondary core out of
+> reset mode.
+>
+> regA, regB will differ for core1, core2, core3 and so on.
+>
+
+Sounds OK but will you ever need to support power management on these cores ?
+If so, just start with PSCI or provide reasons as why it doesn't fit well
+before exploring and extending the existing spin table bindings.
+
+>
+> Currently, I am trying to bringup core1 only.
+>
+>
+> I am thinking to use "enable-method=spin-table" in the cpu node for core1. 
+> So that I can use "cpu-release-address" for regA.
+>
+> For regB, I am thinking of introducing a new property "amd-cpu-reset-addr"
+> in the cpu node.
+>
+> Please let me know your thoughts on this approach. I am also open to any
+> alternative suggestions.
+>
+>
+> Also I see that in https://elixir.bootlin.com/linux/v6.4-rc1/source/Documentation/devicetree/bindings/arm/cpus.yaml#L87
+> , "arm,cortex-r52" is missing.
+>
+
+Yes that should be fine IMO.
+
+> Can I submit a patch (a one line change) to add this ?
+>
+
+Of course, it makes it easy to accept or reject rather than this question
+hidden as part of other discussion.
+
+--
+Regards,
+Sudeep
 
