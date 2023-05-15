@@ -4,66 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62899C7EE22
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 22:50:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFBCCC77B75
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 22:59:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oNyR7OLsMII+GjkdN8H5Iwoswm+bYvk7L6cIbHeev4w=; b=VpyJ1c/H856DL6Qx94SdqqxtHU
-	3Mr/L4ZOGqXtGs5lYwBO5MsJfjs2gFkFBXjgcsdv6AhxSDuR4/ijpKAhbFERroBGp3hGeGfmEXpaJ
-	kEHhXQ087qRrL2NR3p1QxKz1CUU6ZMdiQNfjgW0yMJK5H+C7WuPb4yHLxaCCqH7rXVoyoRmgUS4z/
-	YfcrWmhVI0gKG++F8OYFagQYqiBu4ZOZ3Hllf4lf9cTVmksp3BFIzKhJV9LG+FxC8uOlheOhdKUNL
-	yQGd6X0tEiIvlOJkEKQLJf2QTOskPs+nuoDx/M7NLsjRQwzOeBoGwptb074F5YwlXXXU6mrVR89ks
-	9dE6I84w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=OO++u/SVASUhji5dHgyXtQF4xbBpwscMJSU6SotHbLw=; b=xsYqrYEheoIg2DNNYkPXpvz2ms
+	ttKAOfruWvebnqWAiV9WkrSO9EHzKXqfijNZBUSnE7yfxzT6uikQ/2JpuuAXfu0Ee9DhrJhcMuKv9
+	5gAWmgq99240QjP6CQHHv1roKOUPBrP3VQNXtDYMllS2w3wDEMA4yycccE/ssd7gdx4of8WPgkeIB
+	O2vF1cZRT6qsfnntIY7cWub90Nd/ebodHiJTLmR9D4OYGvVe5IR/T6qj74E5ThnMLHyU3X7vfOXcb
+	LSU8wmGDX5IYDznwP8bfTIjw+TzOTT1GpQbwPd/MHb16frL/zLcafLSZ52+DDavp6cAeuwtnJHxC6
+	eJNkGQWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyh0q-003h1w-0C;
-	Mon, 15 May 2023 22:49:52 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pyh9u-003iJn-0p;
+	Mon, 15 May 2023 22:59:14 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyh0l-003h0K-1u;
-	Mon, 15 May 2023 22:49:50 +0000
-Received: from mercury (unknown [185.209.196.239])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0B75E66031CE;
-	Mon, 15 May 2023 23:49:39 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1684190979;
-	bh=cUOBGtMqBnVICL8/rpjyNFDo++WGvSZAvBD6cIIiFlo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=RjiCURQP1mfWIQDOB/fRLYu4w7+Ua4kBADtbxrD8tIByakm+d+7t+2s6DKZwtgt6z
-	 tVUlIK63NOU0iBt7hidcy91ZlbotjS4zw/DouMOlX9fvH0/ZTpnSE4H4hF3hYFKln/
-	 iyrvNJSol6ZogyZwG7tFQZVfpIfyJ23fawEuj9djT+Bh91/sf0XivBXGL5eNeEVzfl
-	 InEjaNSkZkT1L5zJjiDRXlZN1Dr5igPvNdipiLnQwAaOq8x81iSaGoigZyUGkCbU8Z
-	 zQU1q2f4VlNwzDabf5njUPDGtDcDOIXqfS+zYDyGwOSFCWdam5d+vVU4hhca/aJooU
-	 UZJUqQbP/dltg==
-Received: by mercury (Postfix, from userid 1000)
-	id A09FF1060F7F; Tue, 16 May 2023 00:49:36 +0200 (CEST)
-Date: Tue, 16 May 2023 00:49:36 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: void0red <void0red@gmail.com>
-Cc: angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com,
-	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1pyh9r-003iH6-0r;
+	Mon, 15 May 2023 22:59:12 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1pyh9V-0001yf-3C;
+	Mon, 15 May 2023 22:58:50 +0000
+Date: Tue, 16 May 2023 00:56:53 +0200
+From: Daniel Golle <daniel@makrotopia.org>
+To: Jakub Kicinski <kuba@kernel.org>, Kalle Valo <kvalo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] power: supply: mt6360: add a check of
- devm_work_autocancel in mt6360_charger_probe
-Message-ID: <20230515224936.kbb275kre6ulasmm@mercury.elektranox.org>
-References: <20230227031410.893593-1-void0red@gmail.com>
+Subject: [PATCH] wifi: mt7601u: update firmware path
+Message-ID: <fefcbf36f13873ae0d97438a0156b87e7e1ae64e.1684191377.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="e5qewv2dhagmv6xn"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230227031410.893593-1-void0red@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230515_154947_783863_26F618FC 
-X-CRM114-Status: GOOD (  17.74  )
+X-CRM114-CacheID: sfid-20230515_155911_301675_3C64D26E 
+X-CRM114-Status: UNSURE (   9.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,71 +65,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+mt7601u.bin was moved to mediatek/ folder in linux-wireless via commit
+8451c2b1 ("mt76xx: Move the old Mediatek WiFi firmware to mediatek")
+and linux-firmware release 20230515.
 
---e5qewv2dhagmv6xn
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Update the firmware path requested by the mt7601u driver to follow up
+with the move of the file.
 
-Hi,
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ drivers/net/wireless/mediatek/mt7601u/usb.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On Mon, Feb 27, 2023 at 11:14:10AM +0800, void0red wrote:
-> From: Kang Chen <void0red@gmail.com>
->=20
-> devm_work_autocancel may fails, add a check and return early.
->=20
-> Signed-off-by: Kang Chen <void0red@gmail.com>
-> ---
+diff --git a/drivers/net/wireless/mediatek/mt7601u/usb.h b/drivers/net/wireless/mediatek/mt7601u/usb.h
+index 9fdf35970339..66481b7e3252 100644
+--- a/drivers/net/wireless/mediatek/mt7601u/usb.h
++++ b/drivers/net/wireless/mediatek/mt7601u/usb.h
+@@ -8,7 +8,7 @@
+ 
+ #include "mt7601u.h"
+ 
+-#define MT7601U_FIRMWARE	"mt7601u.bin"
++#define MT7601U_FIRMWARE	"mediatek/mt7601u.bin"
+ 
+ #define MT_VEND_REQ_MAX_RETRY	10
+ #define MT_VEND_REQ_TOUT_MS	300
 
-Thanks, queued to my fixes branch with Fixes tag added.
+base-commit: 0d9b41daa5907756a31772d8af8ac5ff25cf17c1
+-- 
+2.40.1
 
--- Sebastian
-
->  drivers/power/supply/mt6360_charger.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
->=20
-> diff --git a/drivers/power/supply/mt6360_charger.c b/drivers/power/supply=
-/mt6360_charger.c
-> index 92e48e3a4..1305cba61 100644
-> --- a/drivers/power/supply/mt6360_charger.c
-> +++ b/drivers/power/supply/mt6360_charger.c
-> @@ -796,7 +796,9 @@ static int mt6360_charger_probe(struct platform_devic=
-e *pdev)
->  	mci->vinovp =3D 6500000;
->  	mutex_init(&mci->chgdet_lock);
->  	platform_set_drvdata(pdev, mci);
-> -	devm_work_autocancel(&pdev->dev, &mci->chrdet_work, mt6360_chrdet_work);
-> +	ret =3D devm_work_autocancel(&pdev->dev, &mci->chrdet_work, mt6360_chrd=
-et_work);
-> +	if (ret)
-> +		return dev_err_probe(&pdev->dev, ret, "Failed to set delayed work\n");
-> =20
->  	ret =3D device_property_read_u32(&pdev->dev, "richtek,vinovp-microvolt"=
-, &mci->vinovp);
->  	if (ret)
-> --=20
-> 2.34.1
->=20
-
---e5qewv2dhagmv6xn
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmRitwAACgkQ2O7X88g7
-+pr/GQ//R5PP1j4DGfjnPOhBcBq5rCmy5rRw4mYwN8f7ldkAFNm327FtA1IBvGQk
-q4doC1b1DPb2INU0HfNmd2f5bw69hJQBLdYaZLnALELcvKhg1Rx+R/s+9Vx/wDP1
-+8I5EO61l9kzzw5CR8iPo3pIYC8VS5qoW8O8D2KF75L5pKYYgsvtAL1EbrpARR7X
-xS2BATKDf8o+cnyX6+/uNyhm7Kwv2HJfmVH1/SqOxMxcW/VQPkf8dcJDwSCfodga
-CQgS9Ex4Mnj5Tf0STRYBseHgH/bxdzueS3G0zlXsuBPo02ADfi/5b2WnNmzNgke3
-Q5eRnCFIwaKTjI8x7TBYD1jcNc1x799/c26fUSb8qS1vQpDvw+g3P26yf+JjR5+R
-GMwrp7pTsWjeoq8B2T0vnp9HEmk7q1Axwn2fZYQg+CCROnn692JiUGvTjgSWZPay
-euw+yZXVje5JdCtOBQABHYb53xCUwMudzHyO4GbT3B5Iy0bkhJNhHAMp2mkozXFi
-vMRwwAbTplG9mRYT7GLXQxrhxMN6yjWTfQq1sBQ19SqDowA6tShuTd8/kwP54xG1
-DIC7bafpGgxU7acFPftdnZb8ifVIm6opZHdEXecqK9FQH49k/XDmc6LTOPaKhoDU
-vLLCTvT3o55DDxYzL8t0psZxZR0psAtMQXyIMoMpcs0zDMbTLj8=
-=uuij
------END PGP SIGNATURE-----
-
---e5qewv2dhagmv6xn--
 
