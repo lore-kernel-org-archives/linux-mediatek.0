@@ -2,34 +2,36 @@ Return-Path: <linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.in
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28ED4C77B7D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 08:05:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C95DC7EE22
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 08:19:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=DTyCIqcW18nKVmktLpvXPcDTzslyue/p4gNiJLShqTc=; b=R7CrK1c6Uw9ZzYtLQzlbP7kYJX
-	PrkEuyFCeyxhYvadmO+/IXMIXVnTFtoQC2StEPy5LynMs3syaTjc9U1Ogw6U5f1YiqjAcNj2a5bS2
-	y5hBKYQh9Ys9N6A1aS/9w74XPbQ43FI9UdYY0mTqkSqR8IKiwr1Q4952mqNLOTGhOczCL7kVy6gke
-	kEny5Af/IF0/Kh85vGfi9EDvTzlVEfjldaGyMpWyDDR0PSnVRcsWesmpUwyozafB0JFyab6i40fGZ
-	AhI/5bNPYkY+FX3Mnd7Qhu/kclnDuQfhdSTcJ6EYovnVkDn0S9WYb7UB2L/wITK1vh3eEBgsgbA2W
-	YLCyeayw==;
+	bh=DTyCIqcW18nKVmktLpvXPcDTzslyue/p4gNiJLShqTc=; b=HaCkZKWcxKsHEev88YmfYLpTiG
+	r7rLX5+Ys44kCRIblU2m9lLbSmXQSC7YidzreNUp8dGcfxA78ruHtqW6PzAwvT67KIAZ8sQNJG8AT
+	OXj4CMtHuxfQT043nOktYvP0Lsvu5fNEDLzmOdod5Q+o9ksMETuvgUzPGL7JRvY5gpjm/ahwnzgqP
+	HFkLQ4z5f7VuYIE6g1w+zTeByyGFwdhER5Ja10WYhvOItCvPFgMrHmMFOPHNnkGBZKmn/G6wNAGru
+	uZf+PgbqsX5FQWBIrOINqf3gyin3HTJyvmu2q/0s0nzzvZCWNT6ZuesZ9hVbIwK9cjs72FyPKNn85
+	GplKTjig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyTCK-001LXP-1c;
-	Mon, 15 May 2023 08:04:48 +0000
+	id 1pyTQ8-001NuZ-0Y;
+	Mon, 15 May 2023 08:19:04 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyTCG-001LWe-2W;
-	Mon, 15 May 2023 08:04:44 +0000
-X-UUID: 1e7732d6f2f711ed912e1518a6540028-20230515
+	id 1pyTQ7-001NuL-19
+	for linux-mediatek@lists.infradead.org;
+	Mon, 15 May 2023 08:19:03 +0000
+X-UUID: 224ae374f2f911ed912e1518a6540028-20230515
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
 	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=DTyCIqcW18nKVmktLpvXPcDTzslyue/p4gNiJLShqTc=;
-	b=mPvCddIsgzK3hJXznHZBD8/bgB4eSEXSg7de/CifSlijsKh8zv64MJGwQ8xxnlNa+FnDbCJjK9LnQo1oza5FUZ0ZlBRdwjNilpEo6rMcFXGUMFcKAUx1aLKkoJJYgxvSJwSXN4mkb09dudTQQbhQSSkz7iCGwi74svQ5DYaZxuY=;
+	b=jLuTIAkrT1FWSrp0YuOi/YMafcZIEPbWAgY5w8PMiRIZKKXH0NcRJQXdo9jqdL7SzpC5bA92OUa071HCzS596S2KbLmZ6bbJY8YJl/hxktzt8shMnoll5cZ8qUu4BuZUCxhrBqVKqOBlcG2swG+97KHG7Vca1FiDGdTLhDEF/Yo=;
+X-CID-CACHE: Type:Local,Time:202305150104-07,HitQuantity:1
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.24,REQID:874208d8-cbfd-4682-890e-2ef062d83f8f,IP:0,U
+X-CID-O-INFO: VERSION:1.1.24,REQID:d56e7265-8586-4880-949c-b58196518088,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
 X-CID-META: VersionHash:178d4d4,CLOUDID:bbb6303b-de1e-4348-bc35-c96f92f1dcbb,B
@@ -37,35 +39,34 @@ X-CID-META: VersionHash:178d4d4,CLOUDID:bbb6303b-de1e-4348-bc35-c96f92f1dcbb,B
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:1,OSI:0,OSA:0,AV:0
 X-CID-BVR: 2,OSH|NGT
 X-CID-BAS: 2,OSH|NGT,0,_
-X-UUID: 1e7732d6f2f711ed912e1518a6540028-20230515
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: 224ae374f2f911ed912e1518a6540028-20230515
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
 	(envelope-from <chris.lu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1214104452; Mon, 15 May 2023 01:04:30 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+	with ESMTP id 1041530462; Mon, 15 May 2023 01:18:55 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 15 May 2023 15:53:51 +0800
+ 15.2.1118.26; Mon, 15 May 2023 16:18:50 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 15 May 2023 15:53:51 +0800
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 15 May 2023 16:18:50 +0800
 From: <chris.lu@mediatek.com>
 To: <jwboyer@kernel.org>, <dwmw2@infradead.org>, <ben@decadent.org.uk>,
 	<marcel@holtmann.org>, <johan.hedberg@gmail.com>
 CC: <sean.wang@mediatek.com>, <deren.Wu@mediatek.com>,
 	<aaron.hou@mediatek.com>, <km.lin@mediatek.com>, <robin.chiu@mediatek.com>,
 	<steve.lee@mediatek.com>, <linux-bluetooth@vger.kernel.org>,
-	<linux-firmware@kernel.org>, <linux-kernel@vger.kernel>,
-	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
-	Chris.Lu <chris.lu@mediatek.com>
-Subject: [PATCH] linux-firmware: update firmware for mediatek bluetooth chip(MT7922)
-Date: Mon, 15 May 2023 15:53:32 +0800
-Message-ID: <20230515075332.16790-1-chris.lu@mediatek.com>
+	<linux-firmware@kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, Chris.Lu <chris.lu@mediatek.com>
+Subject: [PATCH v2] linux-firmware: update firmware for mediatek bluetooth chip (MT7922)
+Date: Mon, 15 May 2023 16:18:39 +0800
+Message-ID: <20230515081839.17300-1-chris.lu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 Content-Type: text/plain
-X-Spam-Note: CRM114 run bypassed due to message size (1317706 bytes)
-X-Spam-Note: SpamAssassin run bypassed due to message size (1317706 bytes)
+X-Spam-Note: CRM114 run bypassed due to message size (1317733 bytes)
+X-Spam-Note: SpamAssassin run bypassed due to message size (1317733 bytes)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
