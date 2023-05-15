@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C990C77B7D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 13:27:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 908E5C77B75
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 13:29:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=0AAVFnUhWh2styzdCIE1FEsSg40WAYGfK3WJ+kEBMnc=; b=KIykFNdvJ7N8KkeJOwbK9aY/mS
-	YGDeqmaguNTUXhua/dVfEoI5mP8SXsZLiWky8SdoWXviHJQ4+adu4yRF3w1+69mIkchRhZSv+9BSb
-	LfsBNn5wJW4URLk2IaUUCMfJRRrs1QISJFL1zR6krmJZ2kG7K8QyoWjqDHKw3bME6zPZp1DgPRIVf
-	eHH6136mHAUDKKgfNe93UUGYC+Q+w5rMoOFZf6xSaQKKTsIC9+7QbA8haLNw+GHCShjAIajctMcqM
-	gAsDLwY/Y5Y++W6OoFDnKeGBlY2GIDWOwtP0vAPq/+6mF+kekAo15m52+5bBgO3c46rQ61qk3c1E4
-	GP/Ckaiw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oc3dWJ9BeHmIOGl7K20BCJihT++yUchNCQOpzUbNuqY=; b=oaCMZf9V8UYI/sf9WbQgP2ALo2
+	z7ZRDIQOy2IyyNjulLk9p03dqsycLEKciz2QXKmd6D+jAlxCfKwFY0hi8twen6/Mrnn1v18LrSLyl
+	7wYIFYN6VLQEsulyhaOHrP6ZzkHwUPfgUoCpCZHs9ojnyqTYCp/jpNzG9Db5Fr5oj234U9gw9mYoy
+	XaJRBJdGn6/Pg+K0dtxMLratuAkYNdWynWQ7bgyM1ElWblBWlCEBsgAuxu6LNMNpd/uxnWCxg3qhr
+	NY5dkprQJNL3XpZTx+JVrTzSeXQ9tOQOxAejK0ipEa2+mw4AcRkHuTMoY8bNquSLwJ8qOtbKAiH0u
+	8r2sSqMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyYEH-002G4G-2g;
-	Mon, 15 May 2023 13:27:09 +0000
+	id 1pyYGC-002GJl-2i;
+	Mon, 15 May 2023 13:29:08 +0000
 Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyYEE-002G28-1S;
-	Mon, 15 May 2023 13:27:07 +0000
+	id 1pyYG9-002GHS-2N;
+	Mon, 15 May 2023 13:29:06 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1pyYDQ-0003Bx-34;
-	Mon, 15 May 2023 13:26:18 +0000
-Date: Mon, 15 May 2023 15:23:27 +0200
+	id 1pyYFg-0003D3-2D;
+	Mon, 15 May 2023 13:28:38 +0000
+Date: Mon, 15 May 2023 15:25:59 +0200
 From: Daniel Golle <daniel@makrotopia.org>
 To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
 	Ryder Lee <ryder.lee@mediatek.com>,
@@ -63,14 +63,17 @@ To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 0/2] wifi: mt76: mt7915: add support for MT7981
-Message-ID: <cover.1684155848.git.daniel@makrotopia.org>
+Subject: [PATCH v2 1/2] dt-bindings: net: wireless: mt76: add bindings for
+ MT7981
+Message-ID: <0f04fcc9f81cd15a8ee2a9194cf95f2b924ef299.1684155848.git.daniel@makrotopia.org>
+References: <cover.1684155848.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <cover.1684155848.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230515_062706_581848_CB480E11 
-X-CRM114-Status: UNSURE (   9.80  )
+X-CRM114-CacheID: sfid-20230515_062905_780069_B2D70CA1 
+X-CRM114-Status: UNSURE (   8.75  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,42 +89,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for the MediaTek MT7981 SoC which is similar to the MT7986
-but with a newer IP cores and only 2x ARM Cortex-A53 instead of 4x.
-Unlike MT7986 the MT7981 can only connect a single wireless frontend,
-usually MT7976 is used for DBDC.
-To distinguish the MT7981 Wi-Fi MAC, add new device tree compatible
-'mediatek,mt7981-wmac'.
+Add mediatek,mt7981-wmac compatible string entry.
 
-Changes since v1:
- * rename mt7986_* to mt798x_* where appropriate
- * WARN_ON(1) if neither is_mt7981() nor is_mt7986() returns true
- * add device tree bindings for mediatek,mt7981-wmac
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ .../devicetree/bindings/net/wireless/mediatek,mt76.yaml          | 1 +
+ 1 file changed, 1 insertion(+)
 
-Alexander Couzens (1):
-  wifi: mt76: mt7915: add support for MT7981
-
-Daniel Golle (1):
-  dt-bindings: net: wireless: mt76: add bindings for MT7981
-
- .../bindings/net/wireless/mediatek,mt76.yaml  |   1 +
- .../net/wireless/mediatek/mt76/mt76_connac.h  |  10 ++
- .../net/wireless/mediatek/mt76/mt7915/Kconfig |   6 +-
- .../wireless/mediatek/mt76/mt7915/Makefile    |   2 +-
- .../wireless/mediatek/mt76/mt7915/coredump.c  |   7 +-
- .../net/wireless/mediatek/mt76/mt7915/dma.c   |   6 +-
- .../wireless/mediatek/mt76/mt7915/eeprom.c    |   7 +-
- .../net/wireless/mediatek/mt76/mt7915/init.c  |   6 +-
- .../net/wireless/mediatek/mt76/mt7915/mac.c   |   2 +-
- .../net/wireless/mediatek/mt76/mt7915/mcu.c   |   3 +
- .../net/wireless/mediatek/mt76/mt7915/mmio.c  |  17 +-
- .../wireless/mediatek/mt76/mt7915/mt7915.h    |  14 +-
- .../net/wireless/mediatek/mt76/mt7915/regs.h  |  13 +-
- .../net/wireless/mediatek/mt76/mt7915/soc.c   | 162 ++++++++++++------
- 14 files changed, 180 insertions(+), 76 deletions(-)
-
-
-base-commit: 0d9b41daa5907756a31772d8af8ac5ff25cf17c1
+diff --git a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
+index 67b63f119f64..9081731611ef 100644
+--- a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
++++ b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
+@@ -28,6 +28,7 @@ properties:
+       - mediatek,mt76
+       - mediatek,mt7628-wmac
+       - mediatek,mt7622-wmac
++      - mediatek,mt7981-wmac
+       - mediatek,mt7986-wmac
+ 
+   reg:
 -- 
 2.40.1
 
