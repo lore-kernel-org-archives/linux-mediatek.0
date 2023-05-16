@@ -4,91 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2ECDBC77B7A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 May 2023 14:58:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 990BFC77B7A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 May 2023 16:32:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Subject:Cc:To:From:Message-ID:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FjvR70t5lyaH1e9tj41LLQquNKMyWCnDqCJwFXVcI4o=; b=hUosZn2+y7y/7RbKxPwQpduwXa
-	6unQY3Do6cNgJN3yU07t0CSP/V40mxUlxa+knewEe1+b6CXAqoYx+hm0BBpseYaOF+x7U13lfYVUY
-	vfAtBUL3AqTel0lE8zgNxa04F383MbXmeGGPTUkTxbgx6IvkVvRzztqx/jNpc22DlPF//EjIXYqdd
-	R1i7US2lkfrzSthd+Z694c/YzzlV7aC8+DRTji7jlnd03ntCwZTYrku6/110olUazmBDB1uqnCUvt
-	TiG66+5PcWjEKuuzUIs1ADsZ2N9sjW9JTGChGyu9EOItfrcLN4JuXa6Q7ZDHPHaFW6p0Ax4SYaKMr
-	PShK2MNA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ymmKCWyi4BuUhQeC0+Pd2BCRko+BuLsOvz6+yinnp+0=; b=XR2bgC5jr3Y1mZ4AyUbRm6Bgty
+	DRV4NPkN3iTyTaDrr5FMGfTcZircicGPnk5Ufv02gDEOgvNCxN5QwW+yLB+Qj/nSdWwvQNnKZFEgV
+	Bpy0XHIp+L09ENQRgt+BcUqYe9DFtVmQbKf9E/Xeagw06f98HXhV1/F/VSH1vN/QmgUC4Gc1voTz+
+	IE1Y78I3+VlNmBsMmQ3k3AuqnCEO5RHxuBCl8QTvw6TZJln06zZa75jI7LfqrypZqdVXZdivpOUGd
+	jmwpN9azc/qIGSWTvIA1bLgy+EzmiFSlurM/PuXlYqPmt3uK8aIT/sppyhsDI3S9tbHAEHer8lEuX
+	ul8r3HMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyw7f-006ATG-2M;
-	Tue, 16 May 2023 14:57:55 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pyxbF-006TdU-0Q;
+	Tue, 16 May 2023 16:32:33 +0000
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyw7c-006ARs-1b;
-	Tue, 16 May 2023 14:57:53 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 77DA262B2E;
-	Tue, 16 May 2023 14:57:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D4065C433EF;
-	Tue, 16 May 2023 14:57:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1684249070;
-	bh=i6M5/UI5gYYrcQo2Y00Z1kbdlK8gGZF19QqQZFugTaY=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=YEhtFhZUuBANto1gfEjvX685M5ITtH5A8Hkf8vV39QSsHuzhU8vKYjUbZ8lCkLiN4
-	 ud3NZe8HIg1njVTzWb1OlWZlpO+hM8Bgw3HpdOx0HrRYpM8c1WVipVSBh3gBBWCweQ
-	 Ta+DgY/lKHPhxpAb+EbuPuOf7/NqnPO5bT2pwWx9g4IYDSDwHm/SUFO8P94SkM34el
-	 izYq72jex2oZi+2qTV83qA1F6J1NTAZ1reh1Nj4JjVkqu5MoKziBRbyqXrbhfCJMN7
-	 TNfZr7w+RhBN2SoCsaawo2yXgAND8CoWWhORmmqZ5NqMYDn0PziOEAi/+SUSTBBqSa
-	 ufyG6pXKGgH9A==
-Received: from sofa.misterjones.org ([185.219.108.64] helo=goblin-girl.misterjones.org)
-	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.95)
-	(envelope-from <maz@kernel.org>)
-	id 1pyw7Y-00FZt0-H1;
-	Tue, 16 May 2023 15:57:48 +0100
-Date: Tue, 16 May 2023 15:57:48 +0100
-Message-ID: <865y8smihf.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Douglas Anderson <dianders@chromium.org>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
-	linux-mediatek@lists.infradead.org,
-	Eddie Huang <eddie.huang@mediatek.com>,
-	Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
-	wenst@chromium.org,
-	yidilin@chromium.org,
-	Tinghan Shen <tinghan.shen@mediatek.com>,
-	jwerner@chromium.org,
-	Weiyi Lu <weiyi.lu@mediatek.com>,
-	Ben Ho <Ben.Ho@mediatek.com>,
-	Seiya Wang <seiya.wang@mediatek.com>,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 2/5] irqchip/gic-v3: Disable pseudo NMIs on Mediatek devices w/ firmware issues
-In-Reply-To: <3cc683e7-28aa-7b6e-1499-3aca953294cc@collabora.com>
-References: <20230515131353.v2.cover@dianders>
-	<20230515131353.v2.2.I88dc0a0eb1d9d537de61604cd8994ecc55c0cac1@changeid>
-	<3cc683e7-28aa-7b6e-1499-3aca953294cc@collabora.com>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/28.2
- (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-Content-Type: text/plain; charset=US-ASCII
-X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: angelogioacchino.delregno@collabora.com, dianders@chromium.org, tglx@linutronix.de, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, allen-kh.cheng@mediatek.com, linux-mediatek@lists.infradead.org, eddie.huang@mediatek.com, hsin-hsiung.wang@mediatek.com, wenst@chromium.org, yidilin@chromium.org, tinghan.shen@mediatek.com, jwerner@chromium.org, weiyi.lu@mediatek.com, Ben.Ho@mediatek.com, seiya.wang@mediatek.com, linux-kernel@vger.kernel.org
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
+	id 1pyxb5-006TaT-2V
+	for linux-mediatek@lists.infradead.org;
+	Tue, 16 May 2023 16:32:24 +0000
+Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-9661047f8b8so2253962266b.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 16 May 2023 09:32:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1684254740; x=1686846740;
+        h=content-transfer-encoding:in-reply-to:from:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=ymmKCWyi4BuUhQeC0+Pd2BCRko+BuLsOvz6+yinnp+0=;
+        b=TNH6T1E3C/BE0kajA/rxS9mxqz9/Np/ON/NQmMlQq8J5tGVFPKvz5lZWDXBc4csd16
+         DnsEc+NHc4S3y9ZJwqGGFRLRJPeHA2yR0elocYlsQrGAL+1aqB47VLR/aovARXtgge2M
+         rHl+9C8Wp6tCZlD/qE4KT8qPnAcaezMIxk8zBpr+8N0crlex0fme2+L8GVNcM+nnEG/9
+         NyObCSOi/9H4X95Dzb1FNGWU47GNhj+O3erYEFwD+Qo7DyFaVmBQthPR9XWRN7xRyQr2
+         rO39QCjL2UbJJLaOR+bxVd9XwGlj2X5BIISl9kIp/BHmPOjNt/OBnbQne3iIbyX0XGhn
+         B+OA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1684254740; x=1686846740;
+        h=content-transfer-encoding:in-reply-to:from:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ymmKCWyi4BuUhQeC0+Pd2BCRko+BuLsOvz6+yinnp+0=;
+        b=bYU7v78btiyCzCBlcp9O4SLLor+Wf6C+jQmtjb2Wx5LHOjXBwt91T9WcvUowBF1rwE
+         YeyL8NeLgvVI6pgxSygrkHZi8v5iuHEP32Ae9JlLdO9MphzOW3tiVqjNWE8ZzmGC0qbx
+         gHU6eFT9YZierQthj7XEtcR4/kDxJ3cqaN4ofn7HhBMm6KQ1nj4OLT9fwBvISoe8QmJz
+         ShONmQeVbHBEFsa8A3teZe2IdhbAZEINLOfp2CN1RMDjua7sQOCEI6A0ATPTvtejtCYh
+         DB+GiztA+tPSV+CW8hdAD0j/MKDGb03WT4UhG2FmtetykuUPjp7n6q+2h1P45zrOBtmX
+         radA==
+X-Gm-Message-State: AC+VfDz236pzuNfgHYzApCy0fKOVbDI4M+neHLDGhoA/s3wPwAOu/6Zy
+	79fGAs50UpZH1+nTnDju81rLVg==
+X-Google-Smtp-Source: ACHHUZ7OjQMs+ye3zleeYS5ifjOgQA3g+9sxbKgWz6PmgW476anHiMRBNPSEhk91J88fAafiJ3Z5ZQ==
+X-Received: by 2002:a17:907:1c14:b0:95e:d74d:c4e6 with SMTP id nc20-20020a1709071c1400b0095ed74dc4e6mr46064634ejc.25.1684254740121;
+        Tue, 16 May 2023 09:32:20 -0700 (PDT)
+Received: from ?IPV6:2a02:810d:15c0:828:77d1:16a1:abe1:84fc? ([2a02:810d:15c0:828:77d1:16a1:abe1:84fc])
+        by smtp.gmail.com with ESMTPSA id jx6-20020a170907760600b00958434d4ecesm11419565ejc.13.2023.05.16.09.32.19
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 16 May 2023 09:32:19 -0700 (PDT)
+Message-ID: <5590f51a-16b6-93ae-d8a0-ab6b4e2e1016@linaro.org>
+Date: Tue, 16 May 2023 18:32:18 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH] arm64: dts: mediatek: add missing cache properties
+Content-Language: en-US
+To: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230421223157.115367-1-krzysztof.kozlowski@linaro.org>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230421223157.115367-1-krzysztof.kozlowski@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230516_075752_640467_E130C632 
-X-CRM114-Status: GOOD (  34.71  )
+X-CRM114-CacheID: sfid-20230516_093223_813127_BF55279C 
+X-CRM114-Status: UNSURE (   9.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,52 +98,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 16 May 2023 14:23:52 +0100,
-AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> wrote:
+On 22/04/2023 00:31, Krzysztof Kozlowski wrote:
+> As all level 2 and level 3 caches are unified, add required
+> cache-unified properties to fix warnings like:
 > 
-> Il 15/05/23 22:13, Douglas Anderson ha scritto:
-> > Some Chromebooks with Mediatek SoCs have a problem where the firmware
-> > doesn't properly save/restore certain GICR registers. Newer
-> > Chromebooks should fix this issue and we may be able to do firmware
-> > updates for old Chromebooks. At the moment, the only known issue with
-> > these Chromebooks is that we can't enable "pseudo NMIs" since the
-> > priority register can be lost. Enabling "pseudo NMIs" on Chromebooks
-> > with the problematic firmware causes crashes and freezes.
-> > 
-> > Let's detect devices with this problem and then disable "pseudo NMIs"
-> > on them. We'll detect the problem by looking for the presence of the
-> > "mediatek,broken-save-restore-fw" property in the GIC device tree
-> > node. Any devices with fixed firmware will not have this property.
-> > 
-> > Our detection plan works because we never bake a Chromebook's device
-> > tree into firmware. Instead, device trees are always bundled with the
-> > kernel. We'll update the device trees of all affected Chromebooks and
-> > then we'll never enable "pseudo NMI" on a kernel that is bundled with
-> > old device trees. When a firmware update is shipped that fixes this
-> > issue it will know to patch the device tree to remove the property.
-> > 
-> > In order to make this work, the quick detection mechanism of the GICv3
-> > code is extended to be able to look for properties in addition to
-> > looking at "compatible".
-> > 
-> > Reviewed-by: Julius Werner <jwerner@chromium.org>
-> > Signed-off-by: Douglas Anderson <dianders@chromium.org>
+>   mt7622-rfb1.dtb: l2-cache: 'cache-unified' is a required property
 > 
-> I don't like firmware removing properties from my devicetrees and I'd like this
-> issue to get addressed in another way (use a scratch register? and check it in
-> Linux drivers to determine if the issue is not present: if scratch contains BIT(x),
-> do not parse the quirk) but that's a different discussion which is a bit out of
-> context for this patch, so:
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> 
+> ---
 
-So what you're advocating for is that we have another flag somewhere
-that says the same thing. Stored where? Accessible how? On top of
-having to check for DT, ACPI, and SOC_ID interfaces, you want YAFM
-(Yet Another Fixing Method)?
+Hi Matthias,
 
-Thanks, but no, thanks.
+Could you grab this one?
 
-	M.
+Best regards,
+Krzysztof
 
--- 
-Without deviation from the norm, progress is not possible.
 
