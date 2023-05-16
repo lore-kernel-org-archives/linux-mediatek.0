@@ -4,104 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 297A3C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 May 2023 09:00:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AA05C77B7F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 May 2023 09:30:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fsHEp9W20r9XdmKlIDDyodAYlSBIH8ji8/Tkxn0QNCM=; b=gv22MKOX1EMMv9veVDElV0W8N+
-	xj+B8tUe9Z94raPObd4Rejx+kUPDb2umkTZTIF/AbWrzQR0hHov9ytR72sKDcpYtuEUU70NROHVV8
-	saWQk9kZRBZBs2RO40DsI9HtzCGJ8Ff6HG3o9X82JTW8DYaM+5wJS5FPnvIVZXiBSzvtbLINJPHhY
-	VK3c3+g8ej/8p/xpHLf+PQqfnWgce7TKiMbm6hOKX9kYqlE4wZpQ4Xa9zfEpQSzv3gfAlNGebB9+P
-	5TRupczeAkfz7bJ8TaDCkR/Qqjf/M54wK6gLVOt1M1Oex3vyEPPpOkkZq0z5EmjxG5ImUiZ9Xhptk
-	EkkjfIuA==;
+	bh=bo1b/bEqOS6KDD6qflz0mFStzeeE7aur/bUdV5C/8NA=; b=vx1FjDwVmz3p7kOJHRd7AXUINp
+	9aBhH+0BuzIQDkrnsjEbOizAj5CJF0Hv5MJo6gkS7/VgWMGBpUDeKqFnVpwUW70HP75OYLkjKZx02
+	Y8sLFoRhuJfzCeMA9C6QBkMBftNIbM9uK1XZkj5kyuY4cD+cp7FtKeTAfbk+Yhzcdfx9GuRH1SJfg
+	i2cIqXkty8pBPtRgySzjL9Ev5+VHyGAb5wgrjOuLizdipmqbmBvOEvpTGlKxS7JSy6ySvWn4m38bx
+	ct3MrCKW78X+5eV6wY5jcxDHnqysMrA2mCCDTXrF3gHEuwy9X+GHuHqoVjsNYTrpP/hyItwepGiUb
+	PF9rPL2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyqXg-004xsY-1E;
-	Tue, 16 May 2023 09:00:24 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1pyr0k-0054Vn-1N;
+	Tue, 16 May 2023 09:30:26 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyqXY-004xnA-1J;
-	Tue, 16 May 2023 09:00:18 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-3078fa679a7so10273562f8f.3;
-        Tue, 16 May 2023 02:00:14 -0700 (PDT)
+	id 1pyr0h-0054Tn-25
+	for linux-mediatek@lists.infradead.org;
+	Tue, 16 May 2023 09:30:25 +0000
+Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-30786c87cdaso10988230f8f.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 16 May 2023 02:30:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1684227613; x=1686819613;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=fsHEp9W20r9XdmKlIDDyodAYlSBIH8ji8/Tkxn0QNCM=;
-        b=EI3yy1gMDzOa3sRNIs4cGVaUpuybteTmQjUSmi39/6T5sWzyPQW8BCk1U7VWtIIlqN
-         X7siL8aqFCh2WyjzTrVq2K+Pmg9FBT3hNlRldbFLJLRZm1KNQcWvxX410ZGf/gI5p6mr
-         SQYB9A8VAaaQ8UlUuHKkUyuIX0UqxBly3i9Nui6T4qS+xbMawfouhaIbPn+bC0amOPNY
-         Gu6vvjzNWfr1swI+Y0oE30/OPEXiX0EdtLdfwzIhUjfkxypBjFianjmeGRLvMcHXRERF
-         io/rk42GKZuU85ACKtf49Ri7yvfsUXzwhzAnVNgsbhvDDTFv1Sz1lwRu3GjgGS0hzAfz
-         J4iA==
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1684229419; x=1686821419;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=bo1b/bEqOS6KDD6qflz0mFStzeeE7aur/bUdV5C/8NA=;
+        b=vRap7UvFpv5ghKGfHsGU8Sx21psojIcztLgVIfwXWJknaFex0YDfYeBt8QdLUe6Gkb
+         EG8UOIkceBXE/IjJcromhmhBBpTrow4u9OeNW6CAeY3KRZ0bFKuLVdpeY8nmc+myHUdO
+         QhWgL+NzdeSPH23J+bAgDCGqdpH9wbSG5pqBuhWPpuqDrIYLKuRV8gn3+IdCXRGtPLeQ
+         AjSm8pJWYkjp47srU3RKptYEqRNguW1H8a3RokeO9ozq+kjRsQBor8Gk7+nk3ni92ger
+         /HYUENYA8FPWMde5Tv1gEz0Zud3qfusXGXJv1yXRj322ED7prIUFViaYje9qN9wwEY2a
+         XwGA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684227613; x=1686819613;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=fsHEp9W20r9XdmKlIDDyodAYlSBIH8ji8/Tkxn0QNCM=;
-        b=LZQz3iwU2bW1qWxgNa6gbvMGV9+wVYAUmsv6B5ccs6NXTbKyu0wJIGdBQi4PGVhQlS
-         UgdM/u1qW9crPYLum/2WnhN2tVB5iXSsND9iH+tyu6HyxvaImJj+PYg/4Dk0XeVgIWmY
-         35DnYU83I4fDcQVBqNqaOL7Vz1vEXyVMFP5JcBwNsyFOP3SHGFPBEnYd9cFGs3WkH7HS
-         YIpafj8Y00O7RJzv4uS5ujd0eJ2aRtI/zfCToBf+UjrSXtguqV5zNcNrx7yyCa9vpZE5
-         XcZgnpyEdJlazeB13VrJbxmtOmNjGNxhHHwdJPANKaDViAZdNKSdPXIqsDyfqsKaopbX
-         ARRw==
-X-Gm-Message-State: AC+VfDw6RK2aRrtVyf9/+6KpOGMY0tlMkii1ixgIG8nWCDYc2Sehplfa
-	ltBajD5NR3k299JJ9mMYPUA=
-X-Google-Smtp-Source: ACHHUZ5K2045tsZAxqNWSGpdXx/aeLKhFn5YwgVE1hM6EJ531hsulbZdDNavi1x1JUWjqgDnzlEItw==
-X-Received: by 2002:adf:e909:0:b0:306:2db9:cc2c with SMTP id f9-20020adfe909000000b003062db9cc2cmr28921146wrm.32.1684227612710;
-        Tue, 16 May 2023 02:00:12 -0700 (PDT)
-Received: from skbuf ([188.27.184.189])
-        by smtp.gmail.com with ESMTPSA id j6-20020adfff86000000b003078cd719ffsm1810033wrr.95.2023.05.16.02.00.10
+        d=1e100.net; s=20221208; t=1684229419; x=1686821419;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=bo1b/bEqOS6KDD6qflz0mFStzeeE7aur/bUdV5C/8NA=;
+        b=bTkFVU3WRxwUXsSy9WdWjva65hI8tCSmEa5WFCZ4SiV89eAtb0OwBlP5t6sDWzaWdy
+         nZdD+79RWmhII10ApmMKeZatttWKhz95qCImlTEutT5AKcpqZwXAuimAafD4CEVYgrA/
+         KTA5cHn2ETWtDWfMa4FlKrsqlyn7m+rWGB3j98hAGO984H7a5+LFKCQg9vXfAXi1bB2O
+         MHZIL9U+20l1WIDo335fv5O6FfRjQe2rVWkSvbg3NVygqOx0nYFL3vcRpZBuT3TKbUSP
+         l6xv22e3I5G1JPoUv28iOW/Cb39J3wpDPKElG3t9liIb2q6bVmjzSMK9u56ZWA9Q8PO5
+         ElYg==
+X-Gm-Message-State: AC+VfDzZSnQX6/sU5P17FUYBfapMTfvJ5Iar2iZAthgKVfA7RRQEOO5J
+	WtpNdfA+cJAFjLrj0h9vPDMRIg==
+X-Google-Smtp-Source: ACHHUZ7VHIunoibF7bQd4takm4fdk7SjKWAPNooKGJ2N2GmNNWqcstqBa8aSFOHr6/KgX4SlBiDTqQ==
+X-Received: by 2002:adf:f2c3:0:b0:305:fbfb:c7d7 with SMTP id d3-20020adff2c3000000b00305fbfbc7d7mr29019988wrp.44.1684229419563;
+        Tue, 16 May 2023 02:30:19 -0700 (PDT)
+Received: from localhost ([2a01:e0a:55f:21e0:fd3b:9fed:e621:cc8f])
+        by smtp.gmail.com with ESMTPSA id o4-20020a5d6704000000b002e5ff05765esm1928076wru.73.2023.05.16.02.30.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 May 2023 02:00:12 -0700 (PDT)
-Date: Tue, 16 May 2023 12:00:09 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: Andrew Lunn <andrew@lunn.ch>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Daniel Machon <daniel.machon@microchip.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>, Felix Fietkau <nbd@nbd.name>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Horatiu Vultur <horatiu.vultur@microchip.com>,
-	Ioana Ciornei <ioana.ciornei@nxp.com>,
-	Jakub Kicinski <kuba@kernel.org>, John Crispin <john@phrozen.org>,
-	Jose Abreu <Jose.Abreu@synopsys.com>,
-	Lars Povlsen <lars.povlsen@microchip.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Marcin Wojtas <mw@semihalf.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
-	Steen Hegelund <Steen.Hegelund@microchip.com>,
-	Taras Chornyi <taras.chornyi@plvision.eu>,
-	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
-	UNGLinuxDriver@microchip.com, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH RFC] Providing a helper for PCS inband negotiation
-Message-ID: <20230516090009.ssq3uedjl53kzsjr@skbuf>
-References: <ZGIkGmyL8yL1q1zp@shell.armlinux.org.uk>
- <20230515195616.uwg62f7hw47mktfu@skbuf>
- <ZGKn8c2W1SI2CPq4@shell.armlinux.org.uk>
- <20230515220833.up43pd76zne2suy2@skbuf>
- <ZGLCAfbUjexCJ2+v@shell.armlinux.org.uk>
+        Tue, 16 May 2023 02:30:18 -0700 (PDT)
+Date: Tue, 16 May 2023 11:30:17 +0200
+From: Julien Stephan <jstephan@baylibre.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: krzysztof.kozlowski@linaro.org, robh@kernel.org, 
+	chunkuang.hu@kernel.org, linux-mediatek@lists.infradead.org, 
+	Phi-bang Nguyen <pnguyen@baylibre.com>, Louis Kuo <louis.kuo@mediatek.com>, 
+	Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
+	Kishon Vijay Abraham I <kishon@kernel.org>, Andy Hsieh <andy.hsieh@mediatek.com>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	open list <linux-kernel@vger.kernel.org>, 
+	"moderated list:ARM/Mediatek USB3 PHY DRIVER" <linux-arm-kernel@lists.infradead.org>, 
+	"open list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>, 
+	"open list:DRM DRIVERS FOR MEDIATEK" <dri-devel@lists.freedesktop.org>
+Subject: Re: [PATCH v2 2/2] phy: mtk-mipi-csi: add driver for CSI phy
+Message-ID: <shthzc3zekvm2mrcch6vexsq5djpoxwupvdmmovhrz2ack3wxx@s4ptfhq7iwvi>
+References: <20230515090551.1251389-1-jstephan@baylibre.com>
+ <20230515090551.1251389-3-jstephan@baylibre.com>
+ <cd6067b2-660a-8f2c-697d-26814a9dc131@collabora.com>
+ <b2nk4jw2hpy4ndoq4cojazkn6h3tra2zjffhiswb7aqryabf7q@mkbtzhzcbivv>
+ <54e6923c-729a-49de-8395-fbd0b8443aa8@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <ZGLCAfbUjexCJ2+v@shell.armlinux.org.uk>
+In-Reply-To: <54e6923c-729a-49de-8395-fbd0b8443aa8@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230516_020016_443010_0C1529C1 
-X-CRM114-Status: GOOD (  59.69  )
+X-CRM114-CacheID: sfid-20230516_023023_685835_E4663F78 
+X-CRM114-Status: GOOD (  37.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,201 +102,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 16, 2023 at 12:36:33AM +0100, Russell King (Oracle) wrote:
-> > Clause 73 negotiates the actual use of 10GBase-KR as a SERDES protocol
-> > through the copper backplane in favor of other "Base-K*" alternative
-> > link modes, so it's not quite proper to say that 10GBase-KR is a clause
-> > 73 using protocol.
-> 
-> I believe it is correct to state it as such, because:
-> 
-> 72.1: Table 72–1—Physical Layer clauses associated with the 10GBASE-KR PMD
-> 
-> 	73—Auto-Negotiation for Backplane Ethernet              Required
-> 
-> Essentially, 802.3 doesn't permit 10GBASE-KR without hardware support
-> for Clause 73 AN (but that AN doesn't have to be enabled by management
-> software.)
+On Mon, May 15, 2023 at 04:32:42PM +0200, AngeloGioacchino Del Regno wrote:
+> Il 15/05/23 16:07, Julien Stephan ha scritto:
+> > On Mon, May 15, 2023 at 02:22:52PM +0200, AngeloGioacchino Del Regno wrote:
+> > > > +#define CSIxB_OFFSET		0x1000
+> > >
+> > > What if we grab two (or three?) iospaces from devicetree?
+> > >
+> > > - base (global)
+> > > - csi_a
+> > > - csi_b
+> > >
+> > > That would make it possible to maybe eventually extend this driver to more
+> > > versions (older or newer) of the CSI PHY IP without putting fixes offsets
+> > > inside of platform data structures and such.
+> > >
+> > Hi Angelo,
+> > The register bank of the CSI port is divided into 2:
+> > * from base address to base + 0x1000 (port A)
+> > * from base + 0x1000 to base +0x2000 (port B)
+> > Some CSI port can be configured in 4D1C mode (4 data + 1 clock) using
+> > the whole register bank from base to base + 0x2000 or in 2D1C mode (2 data +
+> > 1 clock) and use either port A or port B.
+> >
+> > For example  mt8365 has CSI0 that can be used either in 4D1C mode or in
+> > 2 * 2D1C and CSI1 which can use only 4D1C mode
+> >
+> > 2D1C mode can not be tested and is not implemented in the driver so
+> > I guess adding csi_a and csi_b reg value may be confusing?
+> >
+> > What do you think?
+>
+> Ok so we're talking about two data lanes per CSI port... it may still be
+> beneficial to split the two register regions as
+>
+> reg-names = "csi-a", "csi-b"; (whoops, I actually used underscores before,
+>                                and that was a mistake, sorry!)
+>
+> ....but that would be actually good only if we are expecting to get a CSI
+> PHY in the future with four data lanes per port.
+>
+> If you do *not* expect at all such a CSI PHY, or you do *not* expect such
+> a PHY to ever be compatible with this driver (read as: if you expect such
+> a PHY to be literally completely different from this one), then it would
+> not change much to have the registers split in two.
+>
+> Another case in which it would make sense is if we were to get a PHY that
+> provides more than two CSI ports: in that case, we'd avoid platform data
+> machinery to check the number of actual ports in the IP, as we would be
+> just checking how many register regions we were given from the devicetree,
+> meaning that if we got "csi-a", "csi-b", "csi-c", "csi-d", we have four
+> ports.
+>
+> Besides, another thing to think about is... yes you cannot test nor implement
+> 2D1C mode in your submission, but this doesn't mean that others won't ever be
+> interested in this and that other people won't be actually implementing that;
+> Providing them with the right initial driver structure will surely make things
+> easier, encouraging other people from the community to spend their precious
+> time on the topic.
+>
+Hi Angelo,
+Ok, I see your point, but for future potential upgrade to support A/B
+ports I was thinking of something else: adding independent nodes for csixA
+and csixB such as:
 
-Just like clause 40 (PCS and PMA for 1000BASE-T) requires clause 28 AN
-to be supported. But, when the autoneg process begins, the use of
-10GBase-KR as a protocol over the backplane link hasn't even been yet
-established, so I find it unnatural to speak of clause 73 autoneg as
-something that 10GBase-KR has.
+csi0_rx: phy@11c10000 {
+  reg = <0 0x11C10000 0 0x2000>;
+  mediatek,mode = <4D1c>;
+  ...
+};
 
-The reason why I'm insisting on this is because to me, to treat clause
-73 as an in-band autoneg process of 10GBase-KR sounds like a reversal of
-causality. The clause 73 link codeword has a Technology Ability field
-through which 10GBase-KR, 1GBase-KX etc are advertised as supported
-protocols. If C73 is an inband protocol of 10GBase-KR, what should the
-local PCS advertise for its Technology Ability? Only 10GBase-KR, because
-this is what is implied by treating it as an attribute of 10GBase-KR, no?
-But that would be a denatured way of negotiating - advertise a single
-link mode, take it or leave it. And what other inband autoneg protocols
-permit, say, starting from SGMII and ending in 1000Base-X? Clause 73
-can't be directly compared to what we currently mean by managed =
-"in-band-status".
+csi0a_rx: phy@11c10000 {
+  reg = <0 0x11C10000 0 0x1000>;
+  mediatek,mode = <2D1c>;
+  ...
+};
+csi0b_rx: phy@11c11000 {
+  reg = <0 0x11C11000 0 0x1000>;
+  mediatek,mode = <2D1c>;
+  ...
+};
 
-Not only is C37 autoneg not directly comparable to C73, but they are not
-mutually exclusive, either. I would say they are more or less orthogonal.
-More below.
+giving the correct register range. One thing I did not mention is that if
+csi0_rx is used csi0a_rx and csi0b_rx cannot be used (they share same
+physical lanes as csio_rx), but csi0a_rx and csi0b_rx can be used simultaneously.
+So platform device will enable only the node(s) it needs and enabling
+csi0_rx and csioa/b_rx will fail because they share the same register
+region and map will fail and it does not have any sense because you
+either have a camera using the whole port or sub port but you cannot have
+both plugged in. What do you think about it?
 
-I don't believe that toggling clause 73 autoneg based on phylink_pcs_neg_mode()
-makes much sense.
+> > > > +#define CSIxB_OFFSET		0x1000
+Maybe moving this declaration in phy-mtk-mipi-csi-0-5-rx-reg.h would be
+better?
 
-> > To me, the goals of clause 73 autoneg are much more similar to those of
-> > the twisted pair autoneg process - clause 28, which similarly selects
-> > between different media side protocols in the PHY, using a priority
-> > resolution function. For those, we use phylib and the phy_device
-> > structure. What are the merits of using phylink_pcs for copper backplanes
-> > and not phylib?
-> 
-> I agree with you on that, because not only does that fit better with
-> our ethernet PHY model, but it also means PHY_INTERFACE_MODE_XLGMII
-> makes sense.
-> 
-> However, by that same token, 1000BASE-X should never have been a
-> PHY_INTERFACE_MODE_xxx, and this should also have been treated purely
-> as a PHY.
-> 
-> Taking that still further, this means SGMII, which is 1000BASE-X but
-> modified for Cisco's purposes, would effectively be a media converting
-> PHY sat between the MAC/RS and the "real" ethernet PHY. In this case,
-> PHY_INTERFACE_MODE_SGMII might make sense because the "real" ethernet
-> PHY needs to know that.
-> 
-> Then there's 1000BASE-X used to connect a "real" ethernet PHY to the
-> MAC/RS, which means 1000BASE-X can't really be any different from
-> SGMII.
-> 
-> This all makes the whole thing extremely muddy, but this deviates away
-> from the original topic, because we're now into a "what should we call
-> a PCS" vs "what should we call a PHY" discussion. Then we'll get into
-> a discussion about phylib, difficulties with net_device only being
-> able to have one phylib device, stacked PHYs, and phylib not being
-> able to cope with non-MDIO based devices that we find on embedded
-> platforms (some which don't even offer anything that approximates the
-> 802.3 register set, so could never be a phylib driver.)
-> 
-> It even impacts on the DT description, since what does "managed =
-> "in-band-status";" mean if we start considering 1000base-X the same
-> way as 1000base-T and the "PHY" protocol for 1000base-X becomes GMII.
-> A GMII link has no inband AN, so "managed = "in-band-status";" at
-> that point makes no sense.
-> 
-> That is definitely a can of worms I do *not* want to open with this
-> discussion - and much of the above has a long history and considerably
-> pre-dates phylink.
-
-I don't have much of a problem accepting that not everything we have
-in-tree is consistent/correct. But if you think it's too big of a can of
-worms to open, okay.
-
-> 
-> My original question was more around: how do we decide what we
-> currently have as a PCS should use inband negotiation.
-> 
-> For SGMII and close relatives, and 1000BASE-X it's been obvious. For
-> 2500BASE-X less so (due to vendors coming up with it before its been
-> standardised.)
-> 
-> We have implementations using this for other protocols, so it's
-> a question that needs answering for these other protocols.
-> 
-> 
-> However, if we did want to extend this topic, then there are a number
-> of questions that really need to be asked is about the XPCS driver.
-> Such as - what does 1000BASE-KX, 10000BASE-KX4, 10000BASE-KR and
-> 2500BASE-X have to do with USXGMII, and why are there no copper
-> ethtool modes listed when a USXGMII link can definitely support
-> being connected to a copper PHY? (See xpcs_usxgmii_features[]).
-> 
-> Why does XPCS think that USXGMII uses Clause 73 AN? (see the first
-> entry in synopsys_xpcs_compat[].)
-
-First, in principle USXGMII and clause 73 are not mutually exclusive.
-
-It is possible to use clause 73 to advertise 10GBase-KR as a link mode,
-and that will give you link training for proper 3-tap electrical
-equalization over the copper backplane.
-
-Then, once C73 AN/LT ended and 10GBase-KR has been established, is
-possible to configure the 10GBase-R PCS to enable C37 USXGMII to select
-the actual data rate via symbol replication, while the SERDES lane
-remains at 10GBaud. At least, the XPCS seems to permit enabling symbol
-replication in conjunction with 10GBase-KR.
-
-Cross-checking what the XPCS driver does with the XPCS databook, I think
-it's this:
-
-It doesn't use C37 autoneg, but it still uses the USXGMII replicator.
-It uses C73 (standard or perhaps a vendor-specific form) to advertise
-the 1000baseKX_Full, 2500baseX_Full, 10000baseKX4_Full, 10000baseKR_Full
-link modes. Each of these corresponds to a bit in the SR_AN_ADV3
-register.
-
-Note that 2500baseX_Full doesn't have a "K", and for good reason -
-because 802.3 Table 73–4—"Technology Ability Field encoding" doesn't
-specify 2500Base-KX as a copper backplane mode that exists. But XPCS
-does! To quote the databook:
-
-| When DATA[32] is set to 1, it indicates that the local device
-| supports 2.5GBASE-KX speed mode.
-
-And since it advertises this through a code word visible to the link
-partner, I would suggest this means that its C73 hardware implementation
-is non-standard.
-
-Then, there's the entire issue of what the software does.
-
-When 1GBase-KX is established through C73 autoneg, the XPCS driver
-will leave the lane in 10GBase-R mode, and enable 1:10 symbol replication
-in the USXGMII block. Sure, this is a 1Gbit data rate, but it uses the
-64b/66b encoding (BASE-R), and not the advertised 8b/10b encoding
-(BASE-X)! So it will likely only work between 2 XPCS devices!!!
-
-Then, there's the entire issue that the code, as it was originally
-introduced, is not the same as it is now. For example, this bit in
-xpcs_do_config():
-
-	switch (compat->an_mode) {
-	case DW_AN_C73:
-		if (phylink_autoneg_inband(mode)) {
-			ret = xpcs_config_aneg_c73(xpcs, compat);
-			if (ret)
-				return ret;
-		}
-		break;
-
-used to look at state->an_enabled rather than phylink_autoneg_inband().
-Through my idiocy, I inadvertently converted that in commit 11059740e616
-("net: pcs: xpcs: convert to phylink_pcs_ops").
-
-> 
-> xpcs_sgmii_features[] only mentions copper linkmodes, but as we know,
-> it's common for copper PHYs to also support fibre with an auto-
-> selection mechanism. So, 1000BASE-X is definitely possible if SGMII
-> is supported, so why isn't it listed.
-
-Most likely explanation is that XPCS has never been paired up until now
-to such a PHY.
-
-> As previously said, 1000BASE-X can be connected to a PHY that does
-> 1000BASE-T, so why does xpcs_1000basex_features[] not mention
-> 1000baseT_Full... there's probably more here as well.
-> 
-> Interestingly, xpcs_2500basex_features[] _does_ mention both
-> 2500BASE-X and 2500BASE-T, but I think that only does because I
-> happened to comment on it during a review.
-> 
-> I think xpcs is another can of worms, but is an easier can of worms
-> to solve than trying to sort out that "what's an ethernet PHY"
-> question we seem to be heading towards (which I think would be a
-> mammoth task, even back when phylink didn't exist, to sort out.)
-
-I wasn't necessarily going to go all the way into "what's a PHY?".
-I just want to clarify some terms such that we can agree what is correct
-and what is not. I believe that much of what's currently in XPCS w.r.t.
-C73 is not correct, partly through initial intention and partly through
-blind conversions such as mine.
+Regards,
+Julien
+> Regards,
+> Angelo
+>
 
