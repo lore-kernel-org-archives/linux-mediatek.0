@@ -4,88 +4,162 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05F29C7EE22
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 May 2023 23:37:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81E62C7EE2E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 May 2023 00:01:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mmXYnPSRa86rlv1QxFxPjmsy9HOr11Bs6CnTJMRFWNk=; b=31rsEACOucnXqiX64svpzkjvdG
-	vDfwSTFAVATTZcLv1CK43k85u8SVwTnKjuz6ERFJF2A79+6mPkjiofc9Lg1aLCUT+0za3hNLR+8AM
-	Yeyzx+vurOM8Fo+2EIKS1Q6MUZqorKBkHjRcECkm3DkBmkZI1POLWBDCDfzo+dqRPuclprHEKSq34
-	ZCxDgNnugkR5CmQi4L7yr7z4D417110aKqpESBhnS23Zy6RgNthi41eG1cBpdOS1XkGkXWv75kvWo
-	7tpqMqw717LabCVMfCUwrP+3Br4Eyw5nkILowpHF3yiIHPgmkkcQz4az6Vu80iQ2PtoJ41H2W76uz
-	ytGafHWg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fv07ZTI6TWqMM56BZclxgR+qWcyKeH1gSmVtTipkoJE=; b=lJcsq+wl1KXeS96cMkKv3WIpHp
+	IAWz50AeafK2Z/SY3lEyOrigu+PQwo5OnmsvcyXbDk1I0cIRpdwo1jnZcjSnpmP5R7jEZJRkD5Qaq
+	XLVg3Epo3k+esi6TdwrI7hHuKdoWoH0pdN2yvBMC69qYRHtChoc3bcZvp8NCli6t0Rw3UiuTZMlXd
+	+aUxsXNEImDgqOSOdZemLc9OI6gHQm5HG8SeVeicBbLCu0QAb72pqSlX4BNE7BOHTte7PTHANx0Gg
+	+HXnbRQrGTIs/MV/qDcgSLobnyO/OKwNqTLI5SmBWm8u9UlZOHGM4A9mvgR9oJSo+VzUZDW7Zt34U
+	t0B4vKyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyhkg-003nA9-2Z;
-	Mon, 15 May 2023 23:37:14 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1pyi7x-003q9L-2y;
+	Tue, 16 May 2023 00:01:17 +0000
+Received: from mail-bn8nam11on20600.outbound.protection.outlook.com ([2a01:111:f400:7eae::600] helo=NAM11-BN8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyhkc-003n8q-2M;
-	Mon, 15 May 2023 23:37:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=mmXYnPSRa86rlv1QxFxPjmsy9HOr11Bs6CnTJMRFWNk=; b=hktow+Y247a/xvs/ail8+nnKgk
-	yxpFViJpD7cwUK5lQNz8CgppIrk5XTbSMp2KLGMfWlko8qFm96q+SvLY6MCwAoPzjc/6WjKy6+Pih
-	NPahI4/73sh0qtBISFgoMrAGw29tjL/mPX2+MYc4Vlo6HTEKTaexHnWC3W+8Gcz5Wr4S0jPpGQAL+
-	J0CNuOOCoiF3lfJ0zUGE4rR6acaW+shAgl6e0f+hXhkKTG57LPwsOt+HeXsUqAT/e6kpL5dsTWmHz
-	kC5mIUkGcs0n4SvjVXggGSoiHPiGQyEAJg3E9KkCn8yPiBHseLm+HrYcbcfZHdrkSuslT0UfMZU7C
-	c8ucYaUA==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:53826)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1pyhk7-0004l1-NG; Tue, 16 May 2023 00:36:39 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1pyhk1-0000Bg-Ks; Tue, 16 May 2023 00:36:33 +0100
-Date: Tue, 16 May 2023 00:36:33 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: Andrew Lunn <andrew@lunn.ch>,
+	id 1pyi7t-003q3k-1F;
+	Tue, 16 May 2023 00:01:14 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=V8ENuULuwAFqnSXK8tqqpOWhr2PVJg3drSSusTewstpmLUuTsCAqywftMxqveT32ctD8WLWflNycOtILF8L6MgU0+V65O/bIKsAZdpbRyp1QdWahiFWv2X36jfc47N3DLbHpV4aeb1RZr6K+awD/xZeiQAs6t5iMn6UCHlKyu3IkaQdBsdM2nITuj3XHad2nn8hlTX/YGnFQMS+yn4J5xEraTgp4trxicF95DIMYRBzlzsa27J1srcheFojrlBHWDbNY4ZDOSuRzvvcG8E5+byrLmTB09wfJOuGIRh3kj9U34Mc5PA3RXo09hohjUYIfYzZdi8e/SPkQMsAJrtZfZw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=fv07ZTI6TWqMM56BZclxgR+qWcyKeH1gSmVtTipkoJE=;
+ b=NoRk2W3OJbpZwM+sxlpFvO/kvbe3hEN2t6DTfEHEzQMaxujLR1wNpHAeRGvSvwVb6bMG9iFQGb213LwC87qfUqDgezu/N0r90uatWSrch9VinyjZwLMGkfq3DVhsYcggiNFqWx+eX07eD1O09YNhGeWv7u0NLn2Hznaf24Ms2a+cPGVlkOBn4DHXnzCqQGe093jk3bTEczwJwLbLIoUcLjAoFeS4NIcYJZrRPiHEJ86Fz5klYPR1ORH20BHkz2ujT6lBUoje8sQl2O/2tNoXKNQ2x30Sk3dqvlWT/7Y99XHsBacxsPHfsps6HJv+AuisSy0SRZba16leX/JlO/pb5w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=fv07ZTI6TWqMM56BZclxgR+qWcyKeH1gSmVtTipkoJE=;
+ b=GilGkfv2e98bP/r30P27lvROOXaXK5ZC3ZjOpksjCBCu1n7c/rlDLRnX1ZWQVsyDT252PaFu2kbNgoSbi/vs8u4OpgIRbcuAkNQK0GuT+kqfFJhf3akYsBxOtlnlNC1byzhQPAbhhdGu3Mem3iN8M6x5tCEQZ4GiqTwtC5+0K8qwRAnSvQlKdnPZgPXSiPXO96KrxXSQV1IU30SirWf2mb3pD1wsxLjFix9TWZwK1S0atvIWetyMsAubhqFK/MgTRs7bIpd8FxeeQcrXhfnoDvpxXUEk19Oz0Usc6WdEmNskSY0gnLRZhEe28S8R38oYD2Ny719IiFn/in25Q8negQ==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by PH7PR12MB6786.namprd12.prod.outlook.com (2603:10b6:510:1ac::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6387.30; Tue, 16 May
+ 2023 00:01:00 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::f7a7:a561:87e9:5fab]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::f7a7:a561:87e9:5fab%6]) with mapi id 15.20.6387.030; Tue, 16 May 2023
+ 00:01:00 +0000
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Andy Gross <agross@kernel.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Bjorn Andersson <andersson@kernel.org>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Daniel Machon <daniel.machon@microchip.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>, Felix Fietkau <nbd@nbd.name>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Horatiu Vultur <horatiu.vultur@microchip.com>,
-	Ioana Ciornei <ioana.ciornei@nxp.com>,
-	Jakub Kicinski <kuba@kernel.org>, John Crispin <john@phrozen.org>,
-	Jose Abreu <Jose.Abreu@synopsys.com>,
-	Lars Povlsen <lars.povlsen@microchip.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Marcin Wojtas <mw@semihalf.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Christophe Leroy <christophe.leroy@csgroup.eu>,
+	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	iommu@lists.linux.dev,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Joerg Roedel <joro@8bytes.org>,
+	Kevin Tian <kevin.tian@intel.com>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-s390@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	Russell King <linux@armlinux.org.uk>,
+	linuxppc-dev@lists.ozlabs.org,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
-	Steen Hegelund <Steen.Hegelund@microchip.com>,
-	Taras Chornyi <taras.chornyi@plvision.eu>,
-	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
-	UNGLinuxDriver@microchip.com, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH RFC] Providing a helper for PCS inband negotiation
-Message-ID: <ZGLCAfbUjexCJ2+v@shell.armlinux.org.uk>
-References: <ZGIkGmyL8yL1q1zp@shell.armlinux.org.uk>
- <20230515195616.uwg62f7hw47mktfu@skbuf>
- <ZGKn8c2W1SI2CPq4@shell.armlinux.org.uk>
- <20230515220833.up43pd76zne2suy2@skbuf>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+	Matthew Rosato <mjrosato@linux.ibm.com>,
+	Michael Ellerman <mpe@ellerman.id.au>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Rob Clark <robdclark@gmail.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Krishna Reddy <vdumpa@nvidia.com>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Will Deacon <will@kernel.org>,
+	Yong Wu <yong.wu@mediatek.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>
+Cc: Lu Baolu <baolu.lu@linux.intel.com>,
+	Dmitry Osipenko <digetx@gmail.com>,
+	Nicolin Chen <nicolinc@nvidia.com>,
+	Niklas Schnelle <schnelle@linux.ibm.com>,
+	Steven Price <steven.price@arm.com>,
+	Thierry Reding <treding@nvidia.com>
+Subject: [PATCH v2 11/25] iommu/tegra-smmu: Implement an IDENTITY domain
+Date: Mon, 15 May 2023 21:00:44 -0300
+Message-Id: <11-v2-8d1dc464eac9+10f-iommu_all_defdom_jgg@nvidia.com>
+In-Reply-To: <0-v2-8d1dc464eac9+10f-iommu_all_defdom_jgg@nvidia.com>
+References: 
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230515220833.up43pd76zne2suy2@skbuf>
+Content-Type: text/plain
+X-ClientProxiedBy: BL0PR1501CA0033.namprd15.prod.outlook.com
+ (2603:10b6:207:17::46) To LV2PR12MB5869.namprd12.prod.outlook.com
+ (2603:10b6:408:176::16)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|PH7PR12MB6786:EE_
+X-MS-Office365-Filtering-Correlation-Id: 280b1fb8-21c7-4dfe-10f1-08db55a0a1f4
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	Aks1VUuYTYc7AbsvVvn5E491j3YaOt2IsTKlA7P9BkUSdCDj6ZNcyqSixFswVjd2vyA8YE6lvgLgNqvBjSgv65RPQ+XK3pdiMwk/2ajPxGR7JMqRAUCYMwXhcKkBhAg0IqZ+USnxh+ALchlMCntn6Rwpe9rOOmGV4sm7WZlJ2/j38hJvmFzNPKklQ1ngFlY0g5lrIMSv6rXzNICTvUYBGoS9O4lKSla7fIxrXRjN31EZ9bX6LS4kC/DlemuWSJ+97Utcz8C8/E9bR1qQQylOAqNazjCtO2GAnn8MZYtfjxs0Q0aR17kO5+CD5Rfxy6gIxlqDMaApeDeJbs5ZRe9utwU2hTUTG4RT9Mu5C1XgSod4SrsCZSAWntLlikW0KGF8N5NWtw7kxLWJhNmlkbh83VpuqXFX1y1D/SDr1CVwLc9oGTGlkvPv1WYAZYihc5zf82G52MSUIqMS+fXyhVQdm8VV7W2I3Yf1g9HH9xKscblNHwOAjS+E0IiNhanoPdVAw/xEshnZlazSImkf+qi4nZAIW4ph/UTHQPfx2f6/bfbp548fqWYAE6CJ9PF5dAzUMXUAUamAb9+UElhgNZ/xlXQfo39fxbVwRj82lbFLlFk=
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV2PR12MB5869.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(346002)(39860400002)(136003)(396003)(376002)(366004)(451199021)(83380400001)(4326008)(41300700001)(316002)(2906002)(921005)(36756003)(38100700002)(6512007)(6506007)(26005)(6486002)(478600001)(107886003)(66556008)(66946007)(66476007)(2616005)(86362001)(5660300002)(8936002)(8676002)(110136005)(54906003)(7416002)(7406005)(186003)(6666004);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?feFb3zIKR3NUbX5KkNESRYkh7TBFeZ9skPbUFpwYK0Ak4UQO/YD3eJV9Q+Ah?=
+ =?us-ascii?Q?/vI+7+vTYrvIQcfdiYXkF8Gf05vmRPrwsS6mU+qtn+ohATeHtJTO0k1xCbAp?=
+ =?us-ascii?Q?0hi5brwKmRuCUZdp+Xd8SWHIYh424bsQF5uTjK9oTHNxBUTdZLgNceqQku7v?=
+ =?us-ascii?Q?49mwBrcHS3PdwefVU1pbrT8NZt0PMDra6N6WVHUw88zscEEe1XcO7508XzD5?=
+ =?us-ascii?Q?BDI06VQxE+sMCu+jbtk0mJu3sy+s5I02reEq8M4G2SfpYJUcGSsAyK0MiBRZ?=
+ =?us-ascii?Q?BGNR7APpUDovZRXur34UOCJsWi59eqXWnQyz4d6SvRRubygN4GmypsNKLA/h?=
+ =?us-ascii?Q?ECqjpQi6AF2iC2fxHEfwgwzDojRq2ksSItH3G6f0E/bC5QZBY+EPrISBBU7K?=
+ =?us-ascii?Q?b4ca87Z3w0vNV+P1bzSqyCy7B06HSHWOD6qPddLcGwNsB+a/vtQ0XVa4tM1j?=
+ =?us-ascii?Q?t47cLiimyi/rLtLnCoEtzvfR0UqIvqLYHBbi5+qDyt+7RyIj9/qpSOlFDG9K?=
+ =?us-ascii?Q?4v4WWITDebObEtQmS06xHOCD0YlI8+VHrDU0WJ3VwIx+A/uK1eLPsiMGZoAu?=
+ =?us-ascii?Q?Ew+vECbtg2WGPE5cAIwn6OKJ1pnGQBuz3iVis9F7l9bpWqwiWiiBK/bRCe9f?=
+ =?us-ascii?Q?JMImQNDTy9ek6gZmv3378C/s/aQDHq9ULVfTOWuCVTMO4SAXFWYBG2RUZg/j?=
+ =?us-ascii?Q?iigpr8ZJuIQrcwuPNc2kRHsXtLbC9Q2PDNCHEc6LOzJetI2FtiLxGsvhdPW4?=
+ =?us-ascii?Q?9nfCL+YWI0c7VrGGmAyPMIbPsttU1VSjTOXrFuzpvpc++q/o4KgT+fvE/dVy?=
+ =?us-ascii?Q?/6E4SdnoKaid4YoWuuzGLadfc3TGHZWXq6nHDcjpFVmeQNzCD1Jd+fn+ivGW?=
+ =?us-ascii?Q?+L0S6OW5W5qhA55yq1e0nZrHYbF1UAVDiNpftVYSo+es82T7bkKvk8pCF7pK?=
+ =?us-ascii?Q?27kl33gKIiwEfzPHFJt/HOYRoFx2bKXeziZ9iPoTVbJjaRJT8KgxnIHOHGK5?=
+ =?us-ascii?Q?1am1gsnpxHCLqPLTCDOJhhDvKWB06f+YdII/MyHdr0pEM2i2PBLuz5nPMElX?=
+ =?us-ascii?Q?3ygz6UmmDuXce7SkWrhVvcBZt1hTVkPe7gChLZ6HFGumCfNu2Iu7JM3gG+qc?=
+ =?us-ascii?Q?YRyC+Bzwb8IgLIIBYclGX6lW+MLhmaoA61CLpRW/2aoUT1I84vmC6tVkV31T?=
+ =?us-ascii?Q?BvlEBmnpl5MEqWLkk+MlbHQyTH+N/xy+zb9IM1I/+/YPIMpYYd2EcCtntTcy?=
+ =?us-ascii?Q?w4PbCn9Lr30ZQxr8JDC1+1Ys9AmhinNREszUUjR1yTW5YVyvHlUHQJlBNR8G?=
+ =?us-ascii?Q?GroWIt6/7mOssL+AZbK77VcX1FWLk8ldkU9kxyNfitgj5ueAWT8S5BktBkX3?=
+ =?us-ascii?Q?aKh5w1QUne3qROkxuR5/O7uGH1GNHY3BD97Uq8inso970ApwOMUucGcm9QVc?=
+ =?us-ascii?Q?RI84AprSAPzWBV9oeCp1HjbFt4ouKkhkn2qn7LdvhALjhoU6l7eWlHTw9R5w?=
+ =?us-ascii?Q?Ye3sRCzvsWOorYixvQejyJSYU6ZoJWyz16mW7j3uSZloKdBmme+COg1CawzZ?=
+ =?us-ascii?Q?2vRrBnjkb7GocZfHylpguKZWivzEaVXsfx9jJEI/?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 280b1fb8-21c7-4dfe-10f1-08db55a0a1f4
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 May 2023 00:01:00.6151
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: vgnoWp6T63K+3QoRbcEl7R8RKO1QkTi/2VNUdZWRSvKhKEOPm+Wx+W35h9NWzqa4
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR12MB6786
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230515_163710_929688_0070FC73 
-X-CRM114-Status: GOOD (  36.54  )
+X-CRM114-CacheID: sfid-20230515_170113_541207_6F7C9AA9 
+X-CRM114-Status: GOOD (  15.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,123 +174,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 16, 2023 at 01:08:33AM +0300, Vladimir Oltean wrote:
-> On Mon, May 15, 2023 at 10:45:21PM +0100, Russell King (Oracle) wrote:
-> > Clause 73.1:
-> > 
-> > So, my reading of these statements is that the _user_ should be
-> > able to control via ethtool whether Clause 73 negotiation is
-> > performed on a 10GBASE-KR (or any other backplane link that
-> > uses clause 73 negotiation.) Having extracted that from 802.3,
-> > I now believe it should be treated the same as 1000BASE-X, and
-> > the Autoneg bit in ethtool should determine whether Clause 73
-> > negotiation is used for 10GBASE-KR (and any other Clause 73
-> > using protocol.)
-> 
-> Having said that copper backplane link modes should be treated "the
-> same" as fiber link modes w.r.t. ethtool -s autoneg, it should also be
-> said that there are significant differences between clause 37 and 73
-> autoneg too.
-> 
-> Clause 73 negotiates the actual use of 10GBase-KR as a SERDES protocol
-> through the copper backplane in favor of other "Base-K*" alternative
-> link modes, so it's not quite proper to say that 10GBase-KR is a clause
-> 73 using protocol.
+What tegra-smmu does during tegra_smmu_set_platform_dma() is actually
+putting the iommu into identity mode.
 
-I believe it is correct to state it as such, because:
+Move to the new core support for ARM_DMA_USE_IOMMU by defining
+ops->identity_domain.
 
-72.1: Table 72–1—Physical Layer clauses associated with the 10GBASE-KR PMD
+Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+---
+ drivers/iommu/tegra-smmu.c | 37 ++++++++++++++++++++++++++++++++-----
+ 1 file changed, 32 insertions(+), 5 deletions(-)
 
-	73—Auto-Negotiation for Backplane Ethernet              Required
-
-Essentially, 802.3 doesn't permit 10GBASE-KR without hardware support
-for Clause 73 AN (but that AN doesn't have to be enabled by management
-software.)
-
-> To me, the goals of clause 73 autoneg are much more similar to those of
-> the twisted pair autoneg process - clause 28, which similarly selects
-> between different media side protocols in the PHY, using a priority
-> resolution function. For those, we use phylib and the phy_device
-> structure. What are the merits of using phylink_pcs for copper backplanes
-> and not phylib?
-
-I agree with you on that, because not only does that fit better with
-our ethernet PHY model, but it also means PHY_INTERFACE_MODE_XLGMII
-makes sense.
-
-However, by that same token, 1000BASE-X should never have been a
-PHY_INTERFACE_MODE_xxx, and this should also have been treated purely
-as a PHY.
-
-Taking that still further, this means SGMII, which is 1000BASE-X but
-modified for Cisco's purposes, would effectively be a media converting
-PHY sat between the MAC/RS and the "real" ethernet PHY. In this case,
-PHY_INTERFACE_MODE_SGMII might make sense because the "real" ethernet
-PHY needs to know that.
-
-Then there's 1000BASE-X used to connect a "real" ethernet PHY to the
-MAC/RS, which means 1000BASE-X can't really be any different from
-SGMII.
-
-This all makes the whole thing extremely muddy, but this deviates away
-from the original topic, because we're now into a "what should we call
-a PCS" vs "what should we call a PHY" discussion. Then we'll get into
-a discussion about phylib, difficulties with net_device only being
-able to have one phylib device, stacked PHYs, and phylib not being
-able to cope with non-MDIO based devices that we find on embedded
-platforms (some which don't even offer anything that approximates the
-802.3 register set, so could never be a phylib driver.)
-
-It even impacts on the DT description, since what does "managed =
-"in-band-status";" mean if we start considering 1000base-X the same
-way as 1000base-T and the "PHY" protocol for 1000base-X becomes GMII.
-A GMII link has no inband AN, so "managed = "in-band-status";" at
-that point makes no sense.
-
-That is definitely a can of worms I do *not* want to open with this
-discussion - and much of the above has a long history and considerably
-pre-dates phylink.
-
-My original question was more around: how do we decide what we
-currently have as a PCS should use inband negotiation.
-
-For SGMII and close relatives, and 1000BASE-X it's been obvious. For
-2500BASE-X less so (due to vendors coming up with it before its been
-standardised.)
-
-We have implementations using this for other protocols, so it's
-a question that needs answering for these other protocols.
-
-
-However, if we did want to extend this topic, then there are a number
-of questions that really need to be asked is about the XPCS driver.
-Such as - what does 1000BASE-KX, 10000BASE-KX4, 10000BASE-KR and
-2500BASE-X have to do with USXGMII, and why are there no copper
-ethtool modes listed when a USXGMII link can definitely support
-being connected to a copper PHY? (See xpcs_usxgmii_features[]).
-
-Why does XPCS think that USXGMII uses Clause 73 AN? (see the first
-entry in synopsys_xpcs_compat[].)
-
-xpcs_sgmii_features[] only mentions copper linkmodes, but as we know,
-it's common for copper PHYs to also support fibre with an auto-
-selection mechanism. So, 1000BASE-X is definitely possible if SGMII
-is supported, so why isn't it listed.
-
-As previously said, 1000BASE-X can be connected to a PHY that does
-1000BASE-T, so why does xpcs_1000basex_features[] not mention
-1000baseT_Full... there's probably more here as well.
-
-Interestingly, xpcs_2500basex_features[] _does_ mention both
-2500BASE-X and 2500BASE-T, but I think that only does because I
-happened to comment on it during a review.
-
-I think xpcs is another can of worms, but is an easier can of worms
-to solve than trying to sort out that "what's an ethernet PHY"
-question we seem to be heading towards (which I think would be a
-mammoth task, even back when phylink didn't exist, to sort out.)
-
+diff --git a/drivers/iommu/tegra-smmu.c b/drivers/iommu/tegra-smmu.c
+index 1cbf063ccf147a..f63f1d4f0bd10f 100644
+--- a/drivers/iommu/tegra-smmu.c
++++ b/drivers/iommu/tegra-smmu.c
+@@ -511,23 +511,39 @@ static int tegra_smmu_attach_dev(struct iommu_domain *domain,
+ 	return err;
+ }
+ 
+-static void tegra_smmu_set_platform_dma(struct device *dev)
++static int tegra_smmu_identity_attach(struct iommu_domain *identity_domain,
++				      struct device *dev)
+ {
+ 	struct iommu_domain *domain = iommu_get_domain_for_dev(dev);
+ 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+-	struct tegra_smmu_as *as = to_smmu_as(domain);
+-	struct tegra_smmu *smmu = as->smmu;
++	struct tegra_smmu_as *as;
++	struct tegra_smmu *smmu;
+ 	unsigned int index;
+ 
+ 	if (!fwspec)
+-		return;
++		return -ENODEV;
+ 
++	if (domain == identity_domain || !domain)
++		return 0;
++
++	as = to_smmu_as(domain);
++	smmu = as->smmu;
+ 	for (index = 0; index < fwspec->num_ids; index++) {
+ 		tegra_smmu_disable(smmu, fwspec->ids[index], as->id);
+ 		tegra_smmu_as_unprepare(smmu, as);
+ 	}
++	return 0;
+ }
+ 
++static struct iommu_domain_ops tegra_smmu_identity_ops = {
++	.attach_dev = tegra_smmu_identity_attach,
++};
++
++static struct iommu_domain tegra_smmu_identity_domain = {
++	.type = IOMMU_DOMAIN_IDENTITY,
++	.ops = &tegra_smmu_identity_ops,
++};
++
+ static void tegra_smmu_set_pde(struct tegra_smmu_as *as, unsigned long iova,
+ 			       u32 value)
+ {
+@@ -962,11 +978,22 @@ static int tegra_smmu_of_xlate(struct device *dev,
+ 	return iommu_fwspec_add_ids(dev, &id, 1);
+ }
+ 
++static int tegra_smmu_def_domain_type(struct device *dev)
++{
++	/*
++	 * FIXME: For now we want to run all translation in IDENTITY mode, due
++	 * to some device quirks. Better would be to just quirk the troubled
++	 * devices.
++	 */
++	return IOMMU_DOMAIN_IDENTITY;
++}
++
+ static const struct iommu_ops tegra_smmu_ops = {
++	.identity_domain = &tegra_smmu_identity_domain,
++	.def_domain_type = &tegra_smmu_def_domain_type,
+ 	.domain_alloc = tegra_smmu_domain_alloc,
+ 	.probe_device = tegra_smmu_probe_device,
+ 	.device_group = tegra_smmu_device_group,
+-	.set_platform_dma_ops = tegra_smmu_set_platform_dma,
+ 	.of_xlate = tegra_smmu_of_xlate,
+ 	.pgsize_bitmap = SZ_4K,
+ 	.default_domain_ops = &(const struct iommu_domain_ops) {
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+2.40.1
+
 
