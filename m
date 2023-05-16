@@ -4,99 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 840F5C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 May 2023 12:57:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DC68C77B7F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 May 2023 13:18:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OQUP3t1jhv5FR7sMFGoLjqrDUypem+tZjlihV1PEPdA=; b=bPWK9jCrdeRwAH86gHLYXDFUpn
-	yOTohpQz2nPH8xebRA1wDVh44i4XT6XCyfFqmPFyvHDXVwb3q0y0Wdcq88RrpJqkDkFTMxeTM9hyv
-	BX+WwfVoezaKizbg74vA6UFmJ6MfQRzuIaZhfHbTfA/qR3EurH3dH8Q8WfTXibqnXkhAkubSYmumo
-	5vbkvsMBKzqKz8YJtj8HN+M1wEHuQReeAY5WUYQxgnS9fRMgH7oB152q5sHcn4KxaZul3iqxvICut
-	lL7oNDeUtokUR9aPw8pO6zEJul4GMV/PBBk3BwZXCv3GjEjIqAqSlXOE53vkZ56EwXsgIeye8xK31
-	lkdhGIgw==;
+	bh=KvgHDkbdrwHJTK1jgZYgeD2BgB0VnryxKOYAL2DTR0Y=; b=ofiWQxekiWx9aUCvgjd241kXq3
+	2V0L73INxIKU3lJWQ6T5E+79VkH9mm3kFLHEn/Uf3bD6x9N5SxZoLthJ1vux+6zABSggCM01g+2+s
+	b0ven8GoFvwzm9cA+TaVBlGZ2kA5r4aKycUbzjTl/Eu9jxzTLkDYVCJa/Tm/ZQ13NtWCuSzVt7HZV
+	4bKSjtxbXLwn0aeXv2yyY6NRS2fG3usHui6TiCnMYfRqO/mKmrVcQO75oOLGdvKW4SOZlVIMu50KW
+	LviGxwR8SvdWmpT5u/ultxFZXvUo3tJHKgKY+n8NvaHLXEEwoRTvtRhBceihHMIW6tEScaWNSVhDs
+	MvUd793g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyuEY-005oSf-2L;
-	Tue, 16 May 2023 12:56:54 +0000
-Received: from mail-ej1-f41.google.com ([209.85.218.41])
+	id 1pyuZd-005t1M-2x;
+	Tue, 16 May 2023 13:18:41 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyuEV-005oQJ-1L
-	for linux-mediatek@lists.infradead.org;
-	Tue, 16 May 2023 12:56:53 +0000
-Received: by mail-ej1-f41.google.com with SMTP id a640c23a62f3a-969f90d71d4so1438781866b.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 16 May 2023 05:56:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1684241809; x=1686833809;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=OQUP3t1jhv5FR7sMFGoLjqrDUypem+tZjlihV1PEPdA=;
-        b=rElzHPfQT/0ky66F7WOrYDbG7pvQcSJJp8+61HTe1THh4uByQT+CdhHbcYUoZWwzkE
-         GZOqhJ4gaaQTPUYQqJd4Q3OR7nB02LcCasxlcr2beWFnIQcZdCZZeg97yGbWdgqDzhcM
-         9pjxENGSrAEER0JlgcFuZgQnTtXyF/I0YOK7S/FOLAnUbznRQ9yKv2j3XyuoRHbzgoqi
-         VcL1l2TS87YpOHbLPB0MONuWgRLFjFFMSFL3xh4cpIgyVjTUxUE+RG5o7YVhrXtX2czL
-         sKIv2BoR+Be2AvZ0RFT/lqCnJGsRX7UHXUBl5Vu90lzUWeonp4S8t4rXFBtKqvFd2YEz
-         Ah0w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684241809; x=1686833809;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=OQUP3t1jhv5FR7sMFGoLjqrDUypem+tZjlihV1PEPdA=;
-        b=GUyEp/RfkfODtIc4jV09rpE7wx5DoaDrRHRhibkGzkzpxHDtdny56A5ldVRfyQJE75
-         lzIKvl0XwdllBr9FgrDPJGx4NsLtiizrk8T0FaA8Ip3HUA350Yim1GhHeBCqXBFW8EK1
-         HjhP7gwiaj1QQK7HKzpmvCqA+rN4BhJSUuJ9noYeQVnKa+JHzyJLNYsbJy+7DTcODg7V
-         /yzKGeakrXffERCFH9U4yDp1xkS9Y1E1p86wLPmb0jt5z3N3IkBb+B/uKI3y3J5TxMbI
-         taDBULh1k8o/rVha7pkGvrhopYKXonsK0qdU0HjHxMz2nW9UDD0bTLY3F58aPe38gj52
-         qCEA==
-X-Gm-Message-State: AC+VfDyawuSvx3e2QALfNlKpuEdISBwfFgmxga/n5Am2iZS8I8jdMiM6
-	HQg8N34JOCzGbSEFTW1oYmxLmA==
-X-Google-Smtp-Source: ACHHUZ6oNVjTv0Nm20mqSIq4KfzxntkBT+hq6L9ST6wpYu+KvPTiRFW4lblE200qZgGgVd23W98xHA==
-X-Received: by 2002:a17:906:eec9:b0:94f:73db:b390 with SMTP id wu9-20020a170906eec900b0094f73dbb390mr29959608ejb.65.1684241809277;
-        Tue, 16 May 2023 05:56:49 -0700 (PDT)
-Received: from ?IPV6:2a02:810d:15c0:828:77d1:16a1:abe1:84fc? ([2a02:810d:15c0:828:77d1:16a1:abe1:84fc])
-        by smtp.gmail.com with ESMTPSA id u18-20020a170906069200b00967004187b8sm10843538ejb.36.2023.05.16.05.56.47
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 16 May 2023 05:56:48 -0700 (PDT)
-Message-ID: <1853f049-4f00-b7f0-973a-2c4e7b0b2634@linaro.org>
-Date: Tue, 16 May 2023 14:56:46 +0200
+	id 1pyuZY-005suk-0Y;
+	Tue, 16 May 2023 13:18:38 +0000
+Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E9C0766058B4;
+	Tue, 16 May 2023 14:18:29 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1684243111;
+	bh=t9Kdd+ftrVf+98JRQ5scJajdzMyG4EsoKDWUzsOSgkk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=aV4WHRkBVAax9gXKnxurhQbdZsJaCgGIKpXiomK1PTiEQcDAXUov7urX3I/d5UEi+
+	 UH79OhgDZKTd7GPWCRDvU+E1YvGTAEKX7egE8BxXhd32zhZLMESmjdB+FJjgpwXfHS
+	 ZZ+zuPtPF9n3T4QFYK1BdPaBvGm3R3mUwO5ViGgM9JpxjqDMKrtMWbngEj5+Pky6gm
+	 nv0/Fdp8rrMyTJ7CEjUpMUsHWH70+OYsdSJ6ft+QjDROFTNDG1ibaeWrIrYRzkkUEx
+	 d3ed0jOlbuBvjpnJ/dqxkJ2Oxkkgpl1dkB+ZX8Z6HbjlT8l4LUBqRsLCq37jW0QiVD
+	 CzirzyXEFG1wA==
+Message-ID: <eba30975-16b5-f30f-d4a2-253f41688000@collabora.com>
+Date: Tue, 16 May 2023 15:18:27 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH v2 1/2] dt-bindings: phy: add mediatek mipi csi driver v
- 0.5
-To: Julien Stephan <jstephan@baylibre.com>
-Cc: robh@kernel.org, chunkuang.hu@kernel.org,
- linux-mediatek@lists.infradead.org,
- Florian Sylvestre <fsylvestre@baylibre.com>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Andy Hsieh <andy.hsieh@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "moderated list:ARM/Mediatek USB3 PHY DRIVER"
- <linux-arm-kernel@lists.infradead.org>,
- "open list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>
-References: <20230515090551.1251389-1-jstephan@baylibre.com>
- <20230515090551.1251389-2-jstephan@baylibre.com>
- <ab9aa30f-82d7-1d14-5561-e19ff10af0b0@linaro.org>
- <4yppinkucchwnwtnnpbqdn4bejmntjq3q6mx6es55f2pwyce3c@qdhdks47lpyt>
+ Thunderbird/102.10.1
+Subject: Re: [PATCH v2 4/5] arm64: dts: mediatek: mt8192: Add
+ mediatek,broken-save-restore-fw to asurada
 Content-Language: en-US
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <4yppinkucchwnwtnnpbqdn4bejmntjq3q6mx6es55f2pwyce3c@qdhdks47lpyt>
-Content-Type: text/plain; charset=UTF-8
+To: Douglas Anderson <dianders@chromium.org>, Marc Zyngier <maz@kernel.org>,
+ Thomas Gleixner <tglx@linutronix.de>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ linux-mediatek@lists.infradead.org, Eddie Huang <eddie.huang@mediatek.com>,
+ Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, wenst@chromium.org,
+ yidilin@chromium.org, Tinghan Shen <tinghan.shen@mediatek.com>,
+ jwerner@chromium.org, Weiyi Lu <weiyi.lu@mediatek.com>,
+ Ben Ho <Ben.Ho@mediatek.com>, Seiya Wang <seiya.wang@mediatek.com>,
+ Conor Dooley <conor+dt@kernel.org>,
+ =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ linux-kernel@vger.kernel.org
+References: <20230515131353.v2.cover@dianders>
+ <20230515131353.v2.4.Ie7e600278ffbed55a1e5a58178203787b1449b35@changeid>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230515131353.v2.4.Ie7e600278ffbed55a1e5a58178203787b1449b35@changeid>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230516_055651_457568_51DBDCF3 
-X-CRM114-Status: GOOD (  21.40  )
+X-CRM114-CacheID: sfid-20230516_061836_349303_DD28DEE8 
+X-CRM114-Status: UNSURE (   9.16  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,95 +89,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 16/05/2023 11:41, Julien Stephan wrote:
-> On Tue, May 16, 2023 at 10:07:47AM +0200, Krzysztof Kozlowski wrote:
->> On 15/05/2023 11:05, Julien Stephan wrote:
->>> From: Florian Sylvestre <fsylvestre@baylibre.com>
->>>
->>> This adds the bindings, for the MIPI CD-PHY module v 0.5 embedded in
->>> some Mediatek soc, such as the mt8365
->>>
->>> Signed-off-by: Florian Sylvestre <fsylvestre@baylibre.com>
->>> Signed-off-by: Julien Stephan <jstephan@baylibre.com>
->>
->> What are the changes? IOW: changelog here or in cover letter.
->>
-> Hi Krzysztof,
-> I added a changelog in the cover letter, but I will try to be more
-> descritpive next time. Changes from v1 are mainly style issues fixed
-> (mostly from your first review)
-
-What do you mean by "in cover letter"? There is no cover letter.
-
+Il 15/05/23 22:13, Douglas Anderson ha scritto:
+> Firmware shipped on mt8192 Chromebooks is affected by the GICR
+> save/restore issue as described by the patch ("dt-bindings:
+> interrupt-controller: arm,gic-v3: Add quirk for Mediatek SoCs w/
+> broken FW"). Add the quirk property.
 > 
->> Subject: you have some multiple spaces.
->>
->> Subject: drop driver. Bindings are not for drivers.
->>
->>> ---
->>>  .../phy/mediatek,phy-mipi-csi-0-5.yaml        | 62 +++++++++++++++++++
->>>  MAINTAINERS                                   |  6 ++
->>>  2 files changed, 68 insertions(+)
->>>  create mode 100644 Documentation/devicetree/bindings/phy/mediatek,phy-mipi-csi-0-5.yaml
->>>
->>> diff --git a/Documentation/devicetree/bindings/phy/mediatek,phy-mipi-csi-0-5.yaml b/Documentation/devicetree/bindings/phy/mediatek,phy-mipi-csi-0-5.yaml
->>> new file mode 100644
->>> index 000000000000..5aa8c0b41cdf
->>> --- /dev/null
->>> +++ b/Documentation/devicetree/bindings/phy/mediatek,phy-mipi-csi-0-5.yaml
->>> @@ -0,0 +1,62 @@
->>> +# SPDX-License-Identifier: (GPL-2.0-Only OR BSD-2-Clause)
->>> +%YAML 1.2
->>> +---
->>> +$id: http://devicetree.org/schemas/phy/mediatek,phy-mipi-csi-0-5.yaml#
->>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->>> +
->>> +title: Mediatek Sensor Interface MIPI CSI CD-PHY
->>> +
->>> +maintainers:
->>> +  - Julien Stephan <jstephan@baylibre.com>
->>> +  - Andy Hsieh <andy.hsieh@mediatek.com>
->>> +
->>> +description:
->>> +  The SENINF CD-PHY is a set of CD-PHY connected to the SENINF CSI-2
->>> +  receivers. The number of PHYs depends on the SoC model.
->>> +  Depending on the soc model, each PHYs can support CDPHY or DPHY only
->>> +
->>> +properties:
->>> +  compatible:
->>> +    enum:
->>> +      - mediatek,phy-mipi-csi-0-5
->>
->> SoC based compatibles. 0-5 is odd.
->>
->>> +
->>> +  reg:
->>> +    maxItems: 1
->>> +
->>> +  '#phy-cells':
->>> +    const: 0
->>> +
->>> +  mediatek,is_cdphy:
->>
->> No underscores in node names.
->>
->>> +    description:
->>> +      Specify if the current phy support CDPHY configuration
->>
->> Why this cannot be implied from compatible? Add specific compatibles.
->>
->>
-> This cannot be implied by compatible because the number of phys depends
-> on the soc and each phy can be either D-PHY only or CD-PHY capable.
-> For example mt8365 has 2 phy: CSI0 and CSI1. CSI1 is DPHY only and CSI0 is CD-PHY
+> Fixes: 331fae2fc922 ("arm64: dts: mediatek: Introduce MT8192-based Asurada board family")
+> Reviewed-by: Julius Werner <jwerner@chromium.org>
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
 
-So it is SoC specific so why it cannot be implied by compatible? I don't
-understand. You will have SoC specific compatibles, right? or you just
-ignored my comments here?
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
->>
-
-Best regards,
-Krzysztof
 
 
