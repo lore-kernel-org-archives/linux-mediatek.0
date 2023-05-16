@@ -4,85 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 990BFC77B7A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 May 2023 16:32:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1605AC77B75
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 May 2023 16:40:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ymmKCWyi4BuUhQeC0+Pd2BCRko+BuLsOvz6+yinnp+0=; b=XR2bgC5jr3Y1mZ4AyUbRm6Bgty
-	DRV4NPkN3iTyTaDrr5FMGfTcZircicGPnk5Ufv02gDEOgvNCxN5QwW+yLB+Qj/nSdWwvQNnKZFEgV
-	Bpy0XHIp+L09ENQRgt+BcUqYe9DFtVmQbKf9E/Xeagw06f98HXhV1/F/VSH1vN/QmgUC4Gc1voTz+
-	IE1Y78I3+VlNmBsMmQ3k3AuqnCEO5RHxuBCl8QTvw6TZJln06zZa75jI7LfqrypZqdVXZdivpOUGd
-	jmwpN9azc/qIGSWTvIA1bLgy+EzmiFSlurM/PuXlYqPmt3uK8aIT/sppyhsDI3S9tbHAEHer8lEuX
-	ul8r3HMw==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:To:
+	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TYH27XjeByMK147O7l5iWiBLALAwyIk0Kk8rARgu2BU=; b=j9PDVdj5oeIjk9TbzZPJC4wqHD
+	zVNceGEe1B+Q55cUCA52qAYSpvmaSnaie7fLQdxWWErmmfnShZhU7rOyjyGnEwwSxZirY8kykjG7R
+	Ce4C/3/reCLTJHgTGNR+z924R1202f2uWSHSC+cCnWd7O4MbTK3sJHuRXGiKkl5GErVUxcNGfeb80
+	rpM980uYS3ZWmxVqaRF1yCuYErQKLbgGSMHs8vwe5GRlm73mb2Qp2CdcXX9jns7kNlwtgn+o+LpuL
+	YOruYR/XJlpkMULY7J8EHFK3hY+yR9AxObYvh4ze6FEVfcL8Q9yU0U41GOzVPVx7dngtH47ADt/yQ
+	sEJFnppA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyxbF-006TdU-0Q;
-	Tue, 16 May 2023 16:32:33 +0000
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+	id 1pyxiP-006VOl-0F;
+	Tue, 16 May 2023 16:39:57 +0000
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyxb5-006TaT-2V
+	id 1pyxi7-006VGH-0H
 	for linux-mediatek@lists.infradead.org;
-	Tue, 16 May 2023 16:32:24 +0000
-Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-9661047f8b8so2253962266b.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 16 May 2023 09:32:21 -0700 (PDT)
+	Tue, 16 May 2023 16:39:40 +0000
+Received: by mail-ed1-x536.google.com with SMTP id 4fb4d7f45d1cf-510b4e488e4so461706a12.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 16 May 2023 09:39:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1684254740; x=1686846740;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=ymmKCWyi4BuUhQeC0+Pd2BCRko+BuLsOvz6+yinnp+0=;
-        b=TNH6T1E3C/BE0kajA/rxS9mxqz9/Np/ON/NQmMlQq8J5tGVFPKvz5lZWDXBc4csd16
-         DnsEc+NHc4S3y9ZJwqGGFRLRJPeHA2yR0elocYlsQrGAL+1aqB47VLR/aovARXtgge2M
-         rHl+9C8Wp6tCZlD/qE4KT8qPnAcaezMIxk8zBpr+8N0crlex0fme2+L8GVNcM+nnEG/9
-         NyObCSOi/9H4X95Dzb1FNGWU47GNhj+O3erYEFwD+Qo7DyFaVmBQthPR9XWRN7xRyQr2
-         rO39QCjL2UbJJLaOR+bxVd9XwGlj2X5BIISl9kIp/BHmPOjNt/OBnbQne3iIbyX0XGhn
-         B+OA==
+        d=linaro.org; s=google; t=1684255177; x=1686847177;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=TYH27XjeByMK147O7l5iWiBLALAwyIk0Kk8rARgu2BU=;
+        b=MtTMNLgm2QTYIu7HCda+89OLhNeGmL5ToN09y1hcPblTMYTB3Y9wHefXmJONXlV4He
+         BeuB+V4hBZcS9EIl/iyFn4OgXCB2r/qUWQN5a3uKMVQfjvsecooPesl9/nvJhOmNAP0J
+         UmzzqbPoAc/9Ar1Ri6oyy16k5sV/si7wEqeMoZ3+GTxrhhKG0QGH8tkxa8K/oh/0+7l0
+         reFHQsMDA0veVe4Q2DCXyJmQK+qaWndYfmrMSy15HfPS01A3cg1yCP6nqqwHK0Qytfml
+         iFNnwGsjb4gthyZXbIiRPToB3nhPe6mNFGAYCXrFHLcCSZTYuzOtnomJxw81yp9TB3eo
+         vkgQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684254740; x=1686846740;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ymmKCWyi4BuUhQeC0+Pd2BCRko+BuLsOvz6+yinnp+0=;
-        b=bYU7v78btiyCzCBlcp9O4SLLor+Wf6C+jQmtjb2Wx5LHOjXBwt91T9WcvUowBF1rwE
-         YeyL8NeLgvVI6pgxSygrkHZi8v5iuHEP32Ae9JlLdO9MphzOW3tiVqjNWE8ZzmGC0qbx
-         gHU6eFT9YZierQthj7XEtcR4/kDxJ3cqaN4ofn7HhBMm6KQ1nj4OLT9fwBvISoe8QmJz
-         ShONmQeVbHBEFsa8A3teZe2IdhbAZEINLOfp2CN1RMDjua7sQOCEI6A0ATPTvtejtCYh
-         DB+GiztA+tPSV+CW8hdAD0j/MKDGb03WT4UhG2FmtetykuUPjp7n6q+2h1P45zrOBtmX
-         radA==
-X-Gm-Message-State: AC+VfDz236pzuNfgHYzApCy0fKOVbDI4M+neHLDGhoA/s3wPwAOu/6Zy
-	79fGAs50UpZH1+nTnDju81rLVg==
-X-Google-Smtp-Source: ACHHUZ7OjQMs+ye3zleeYS5ifjOgQA3g+9sxbKgWz6PmgW476anHiMRBNPSEhk91J88fAafiJ3Z5ZQ==
-X-Received: by 2002:a17:907:1c14:b0:95e:d74d:c4e6 with SMTP id nc20-20020a1709071c1400b0095ed74dc4e6mr46064634ejc.25.1684254740121;
-        Tue, 16 May 2023 09:32:20 -0700 (PDT)
-Received: from ?IPV6:2a02:810d:15c0:828:77d1:16a1:abe1:84fc? ([2a02:810d:15c0:828:77d1:16a1:abe1:84fc])
-        by smtp.gmail.com with ESMTPSA id jx6-20020a170907760600b00958434d4ecesm11419565ejc.13.2023.05.16.09.32.19
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 16 May 2023 09:32:19 -0700 (PDT)
-Message-ID: <5590f51a-16b6-93ae-d8a0-ab6b4e2e1016@linaro.org>
-Date: Tue, 16 May 2023 18:32:18 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH] arm64: dts: mediatek: add missing cache properties
-Content-Language: en-US
-To: Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230421223157.115367-1-krzysztof.kozlowski@linaro.org>
+        d=1e100.net; s=20221208; t=1684255177; x=1686847177;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=TYH27XjeByMK147O7l5iWiBLALAwyIk0Kk8rARgu2BU=;
+        b=f5OIZJeh95oT/ueIJqq24Ml62aySY3CjPpbeExUQWJEyqS7vVw63StGFMssqk4h8Go
+         C4pnFu4KB/ILZ5Qf/hBkttoak6Kkij/DnqiggVIaDZ2seYE2wPWDtws2VADUwZ3JpZoN
+         T6hSBo5ybiI90OqG7IugcbEGALeXTBv7jYlOqYiLDtQfkSTS+rydMITcWUxcwemp4R8o
+         bKj8miC46B12rNLA25X2IrgWbKTz4srO+IqHllU+uGv1YEt+V9Gbo52lJTjK5poauMUV
+         JXbKGM2Pr3/4+imdzEbF79icOJdhASymjRUmcJgWeZVefzYOIfGl+vVZihteYrMSId/B
+         mqKA==
+X-Gm-Message-State: AC+VfDxWOJ6M6UYaTijyVdDpPX/cOejYajI8p4JAnvDYoZaozBm0HbQe
+	E4P3huvW3kbBTfRLDZpC7jcDzQAF8uRTpw0XlWM=
+X-Google-Smtp-Source: ACHHUZ4g5SxFQ9h3D+IzT6shAa8NQEGXekqqXEMXi7KjElkQ2E6HrXamAtp8Axzj9JIoh6WZPzJKog==
+X-Received: by 2002:a05:6402:1b0c:b0:510:885a:b4da with SMTP id by12-20020a0564021b0c00b00510885ab4damr1846682edb.19.1684255177697;
+        Tue, 16 May 2023 09:39:37 -0700 (PDT)
+Received: from krzk-bin.. ([2a02:810d:15c0:828:77d1:16a1:abe1:84fc])
+        by smtp.gmail.com with ESMTPSA id d4-20020aa7c1c4000000b00504a356b149sm8278191edp.25.2023.05.16.09.39.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 16 May 2023 09:39:37 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230421223157.115367-1-krzysztof.kozlowski@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH] ARM: dts: en7523: add missing cache properties
+Date: Tue, 16 May 2023 18:39:27 +0200
+Message-Id: <168425511041.243008.18082332917063303146.b4-ty@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230423150824.118430-1-krzysztof.kozlowski@linaro.org>
+References: <20230423150824.118430-1-krzysztof.kozlowski@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230516_093223_813127_BF55279C 
-X-CRM114-Status: UNSURE (   9.35  )
+X-CRM114-CacheID: sfid-20230516_093939_120545_89AE3F12 
+X-CRM114-Status: UNSURE (   8.15  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -98,21 +99,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 22/04/2023 00:31, Krzysztof Kozlowski wrote:
+
+On Sun, 23 Apr 2023 17:08:24 +0200, Krzysztof Kozlowski wrote:
 > As all level 2 and level 3 caches are unified, add required
-> cache-unified properties to fix warnings like:
+> cache-unified and cache-level properties to fix warnings like:
 > 
->   mt7622-rfb1.dtb: l2-cache: 'cache-unified' is a required property
+>   en7523-evb.dtb: l2-cache0: 'cache-level' is a required property
+>   en7523-evb.dtb: l2-cache0: 'cache-unified' is a required property
 > 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 > 
-> ---
+> [...]
 
-Hi Matthias,
+Applied, thanks!
 
-Could you grab this one?
+Please let me know if this should go through any other tree.
+
+[1/1] ARM: dts: en7523: add missing cache properties
+      https://git.kernel.org/krzk/linux-dt/c/21f475946d89911e31bccd02f8a7ce40b8f52a70
 
 Best regards,
-Krzysztof
-
+-- 
+Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
