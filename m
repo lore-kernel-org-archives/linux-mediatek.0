@@ -4,127 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9943AC77B7F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 May 2023 10:26:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7F25C77B7F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 May 2023 11:50:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WuBn4G+NgZa0+wd7P6CL5pqi9NLgle/eZm7JtNbhA0A=; b=pPNer/kcn78VB5QILjXK74kkX6
-	3ib7B8jxxpL2Lrk7fnKtaALz9oDp16v3tfdIgMb1jZH2hhQ5lFdRk9+QD3TUoxNkUU0LaSBuo/N9d
-	Uv2IKA/va+vm0JKT9kY37H5Nlo7mcPIg3lG5w6QPHMogCCXp2xfc2v4C2KwY3SJ1qmcApniM+aaR/
-	URNNGT66AY1nZ2hdKun0l9Q5nCZzkuKrHfEibsbtJOW3NzPZxRYBZYDmlvBhrIxPYhfPeZ9JEsLf/
-	0OW4WIW1Hg5DZ/uAQtrjGmw/XQBHjdb2qDL6GnY3YOaR2KggJKeQZAZ6h6i06nEcQbRnhleLCfbY7
-	Zkvtk2yg==;
+	bh=12oCxnsjDGRIi94hOFSo73JpXQEuM8yD/ulEikbT2L4=; b=sVSC8bUcPdlHKbuNTn/+NNIpbn
+	JAYxbb8raxypuGbJNSXjKKwOhWWdqTAgf2ZVG4keiy5+0GC4XJc4Avpa3pFHDacwo+No6LY8TpyMs
+	/Ti9kJD5fqHtQVooSXwCpajerY0Fmk3PF3symcSSkZdfCJKXI6xmI6T2Wbwvlnu5SHbYQJ589NJ6K
+	/8FElVYWqUOSQhvlAG3PDb2/zDEQyVyUxlqRwV1xzVjQkox4WK6YruKtB2LXnPJh99vIBTw7KWC1S
+	iEZAbK8yaNE0U7n7G/ZUDsgIV032cnmIDrENJnOdd0+DPJJYBc9QpCMqW5/NyhGkCVefLdeNQG6oN
+	dk9VbHYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyrsU-005G2M-0G;
-	Tue, 16 May 2023 10:25:58 +0000
-Received: from mail-dm6nam04on20712.outbound.protection.outlook.com ([2a01:111:f400:7e8b::712] helo=NAM04-DM6-obe.outbound.protection.outlook.com)
+	id 1pytCF-005dph-2W;
+	Tue, 16 May 2023 11:50:27 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyrsQ-005G1E-2M;
-	Tue, 16 May 2023 10:25:55 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=RHvuu6lqkvT9UJi9vmiN56+nqFZ4AAjWbs+9mCdfIWRyx6Gy8EGHfHx37nlghjHw2kpdBhYfuQ80FI35SbAFgKYx2CnVQ19nNw0pVztEMCdegkOIL5FhBQrvhNDmvd1TXX+pwn+Eb+/+lx16NuzpfEfxh7bJ4BbuLZLVWxiaoEqLY8ArLfcDI7XNbaWAOiYaiaoNKHmptnpIKbjC9kMVJK/1pUQ4PQiIMamDIvkLa/uRVncC5rZw/cNLcOaoGJv/c2MUVAzYW/IPWrDzwpDuvzabXJcsFTtwyhtgog1uUblAEkaZJojdbzWTIOoOBN8kCqs4Yli90rAQkPH6FCzryw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=WuBn4G+NgZa0+wd7P6CL5pqi9NLgle/eZm7JtNbhA0A=;
- b=jEn6vGnj2NcpZpkUX7jFSeVpMzq45cCH3JoWMg92rxKMgWe3fvEe1vwL5Y+zMCJroNq8plK8URnSwm+CJjD4ZoVGkxEtWExIIqxw3uihYQTMBwvZD9n7iy20JDfli8jJh3L1MaUI1LuAQ9QLmBLE4/Z0hAHokpsn5SqUqqH9nPMIhme96cOXyVggADY1YDcx0dHkZa3WsPSNz2V4KRsaMELwyaoePwVnXqeRvtU3fNqyN32bVi9YL0fXASxmP2ISIlgwwCj5BtsH0JfbVc0hBXXo6gcIZxiPDNThfNAQV3Gcy/AzYK/A3OS+PassTJ/4PbTGRMT8/7hG3xthgLX1aQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=corigine.com; dmarc=pass action=none header.from=corigine.com;
- dkim=pass header.d=corigine.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=corigine.onmicrosoft.com; s=selector2-corigine-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=WuBn4G+NgZa0+wd7P6CL5pqi9NLgle/eZm7JtNbhA0A=;
- b=jppnzApeMpnxupG/2RcXtrWLlSF3eiyg2/SV/gZ9AwwTr4jrla4lO0v460Io6lEHiAEV2onV0MUnIsWZLBYxcxpqN09XfZJI+pETWv4WXZexTzUs5QOWD2lKTxdKFDUS5bSI4u/PMrWN9Ymp7VKx36LHyWqacbWBtkA8NbthCxY=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=corigine.com;
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com (2603:10b6:510:78::6)
- by SJ0PR13MB6073.namprd13.prod.outlook.com (2603:10b6:a03:4ee::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6387.33; Tue, 16 May
- 2023 10:25:49 +0000
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::f416:544d:18b7:bb34]) by PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::f416:544d:18b7:bb34%5]) with mapi id 15.20.6387.033; Tue, 16 May 2023
- 10:25:49 +0000
-Date: Tue, 16 May 2023 12:25:43 +0200
-From: Simon Horman <simon.horman@corigine.com>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Jakub Kicinski <kuba@kernel.org>, Kalle Valo <kvalo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1pytCB-005doa-2L;
+	Tue, 16 May 2023 11:50:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=12oCxnsjDGRIi94hOFSo73JpXQEuM8yD/ulEikbT2L4=; b=tuwTkh+5w5+Qt2MPL0jAfyNZxg
+	DWX0hQcDynjGyxGAzHbREit1U7MiRp8je4AjojwvfK7s9TJZa9Xg2DUAlpGMp7NaXJpSvN/46IQuS
+	Yp7YOpdIouupc8LfTIbSxG2pvxGVwVqRZsNKDVsmvS/YQFn8jrDZqvzjc4rPl2sljF4u5sAR9L7jx
+	dMQrhzkdiGF8W5w1z3UZ3qsv+YmJKrNr55c7y3DNyCTg9y67ip6RHyxOssInIQ440xlvY5pppOm0X
+	qZ8K8RliQdmLz9UKNIahBBG58/PAAZERMFtrsFVksLl/J1feC/Ku/KQGmoumQ7XZngXU485rQ8YRG
+	BYtONZZQ==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:56526)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1pytBf-0005fL-QL; Tue, 16 May 2023 12:49:51 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1pytBY-0000me-Em; Tue, 16 May 2023 12:49:44 +0100
+Date: Tue, 16 May 2023 12:49:44 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] wifi: mt7601u: update firmware path
-Message-ID: <ZGNaJ63mM58DCas7@corigine.com>
-References: <fefcbf36f13873ae0d97438a0156b87e7e1ae64e.1684191377.git.daniel@makrotopia.org>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <fefcbf36f13873ae0d97438a0156b87e7e1ae64e.1684191377.git.daniel@makrotopia.org>
-X-ClientProxiedBy: AM0PR03CA0096.eurprd03.prod.outlook.com
- (2603:10a6:208:69::37) To PH0PR13MB4842.namprd13.prod.outlook.com
- (2603:10b6:510:78::6)
+	Daniel Machon <daniel.machon@microchip.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>, Felix Fietkau <nbd@nbd.name>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Horatiu Vultur <horatiu.vultur@microchip.com>,
+	Ioana Ciornei <ioana.ciornei@nxp.com>,
+	Jakub Kicinski <kuba@kernel.org>, John Crispin <john@phrozen.org>,
+	Jose Abreu <Jose.Abreu@synopsys.com>,
+	Lars Povlsen <lars.povlsen@microchip.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Marcin Wojtas <mw@semihalf.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
+	Steen Hegelund <Steen.Hegelund@microchip.com>,
+	Taras Chornyi <taras.chornyi@plvision.eu>,
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+	UNGLinuxDriver@microchip.com, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH RFC] Providing a helper for PCS inband negotiation
+Message-ID: <ZGNt2MFeRolKGFck@shell.armlinux.org.uk>
+References: <ZGIkGmyL8yL1q1zp@shell.armlinux.org.uk>
+ <20230515195616.uwg62f7hw47mktfu@skbuf>
+ <ZGKn8c2W1SI2CPq4@shell.armlinux.org.uk>
+ <20230515220833.up43pd76zne2suy2@skbuf>
+ <ZGLCAfbUjexCJ2+v@shell.armlinux.org.uk>
+ <20230516090009.ssq3uedjl53kzsjr@skbuf>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR13MB4842:EE_|SJ0PR13MB6073:EE_
-X-MS-Office365-Filtering-Correlation-Id: 89c1eb90-8915-4ef3-4b7b-08db55f7eb45
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	ma2hKwPQXENHt7VpYgKpbh99/4wzz17HPGrqJiRLFaQaMGOEC/RI6mK0UUgmyyi2Mg2/v497Go5gniO8nFX+Ec8CSRd+OPm+6n9NWLLzR9FE+c7IbQui9K+rMG/XNpX61zkQdd/ExMcZW27pp+8c21MQy0A/6RIXQYhdDrJww7F5K1gH9N8F5tCu0Lw8q3PyiMhBFknllmYDuZNbdQJmNfQPn1Ofp4Fkse6UTd7Ye+euoMr4TeeIHjcdmMGASeloA0kqpWdElRixuRDgoC9Rg3A+aKxyEfSs7yjbmWjvqmA7oDmhhTMWeQcaPGTrXI17lPZKhDuZszJERAqE7zn4uDRDrp996hl2hrfYuPSC+IneZ4rYpOeg+77WyHRJXaQs4CGRtsUg4SwpeCl5MBVfhswxqP2BU4GS3LUBON7KiC9A2m67wAEIMkEH+T2J9LjSo6vu+U49nRF6xzKPXJFmJZnO6/T8b62PK//27PMMomz71paorWOmPX1Hi/+Yex2ZbFubqIJkWg6mxio/VJxmWGfijvoN6ZCQz2mclh7Y+Nwhb/GSbJCiqbrEIa4sT1bNLJRo5Roo3OcvZMDHPHOy7o5lGYu7VDdqUl16UA311Bk=
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR13MB4842.namprd13.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(396003)(39840400004)(376002)(366004)(346002)(136003)(451199021)(6512007)(478600001)(6666004)(6486002)(54906003)(186003)(4744005)(2906002)(15650500001)(6916009)(316002)(4326008)(66946007)(66556008)(66476007)(41300700001)(8936002)(8676002)(7416002)(5660300002)(44832011)(38100700002)(83380400001)(36756003)(86362001)(2616005)(6506007);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?Km2PuGbAqfP51KY8VMAlKttVfojkcSLMcnEnFOdAxqQZ7YN2n20sjiDiDoeI?=
- =?us-ascii?Q?nyGlbnWrU7e0Tmm7Kqo68Si0HOaiYVmIeDAWcGYUSQpPQMxvlCPjhPy83O3/?=
- =?us-ascii?Q?14qpav5MmPzFcooyEWHNISdgJ96o+76d4zJNPfz363w/FTG5Evc9goIMOF3W?=
- =?us-ascii?Q?6OaWo5U8RVUbEeMDWZE8O3AfIInbBIDnWFiQvGgGh35ghof9mRAkDSfZe+aB?=
- =?us-ascii?Q?aidUaNunJ/hQWURV3iY02eeG23o08r7LcrOPI3/AvSE2YRGD68kW78tqSEQJ?=
- =?us-ascii?Q?xnJwapUdU0AyLflnNd8Vv3SsFwJ5D1jZ0QiGlv4EGV4YgQaAyVvGbS+HqdbX?=
- =?us-ascii?Q?Tzg8aX6BY/rcqKolb2znGiT/bheFrSfTMRa4Yf1xtXaOpqPfHN7mGvdwwHch?=
- =?us-ascii?Q?7QWClTv9t0qo4ld3mznvhEPjZAY6xBhTdMCP1f8IPaU7nF8BWIjmj+FQhKQo?=
- =?us-ascii?Q?5fbVAbyl7w5J2ncAA759BUHkvR4inbiGI9zGpRn5zcHaNVwGGuWyRXfCMVAY?=
- =?us-ascii?Q?GXDTIfuyHMsjcTcjn/LNub652dgN7+E5ZpT+a5tyNF7jwPqLYrO0GTM0Dn/S?=
- =?us-ascii?Q?FzcKKIauLJlzw2+0r2zYBK1TVm5kmB2DFr4WtVk6PxQuhof+apaC2YRB2qyI?=
- =?us-ascii?Q?Pbuf8YB7xLjJzNJBsVPHtyj+woAfeDhiaLzCexYdvzzgJ73XTVtzFEpisoSs?=
- =?us-ascii?Q?WoENUkOfYM71iLORDDCNrOR42HUdJctt8+NbCvJIEwozmkwOHxlCT9Yz52Z7?=
- =?us-ascii?Q?p0YnJ7Xq9856vJiNBEiADcR0BPTaErMXx91ISq+l17zPPtIiCPLP5jdZPcQL?=
- =?us-ascii?Q?GJXLPpVV4Dn78AebxLtnQBu/AfS+AVKqx87ZeRePz8OBPlp19bBlIT/XxF14?=
- =?us-ascii?Q?P/x9w3DJgo61InUS+IX9/mcJwq+n1Y72KDxLcRjv41AVl4OEUECyM3MD8UJx?=
- =?us-ascii?Q?rj9/43/Oe3hXIbYdKdIySyZy0NWTsaSJU2jMdpU+JJxaH0tYXZYpWGAr9nSA?=
- =?us-ascii?Q?sYilIDBZ2SYy906WfyGtYqXlUeQdSvJjuegxdvqX6OBIyiwnN8MbXrCwVgB+?=
- =?us-ascii?Q?CCqHPPEtBzwYKKG4lXoqsWUGAvOY1lXangirbUpKizkAZtL7FJMsKbiiu3wo?=
- =?us-ascii?Q?RN1+s/J3J0Oyz6Crj40O8wyEXmwUcr8mRk2lFGqvkelNjV0P9UxcEvCQ0Teo?=
- =?us-ascii?Q?RP8pqmHtPgSSLEB3ENEzbSdECHN6G8phfntsEmqLsCVs8h1UEo/km/V4oEul?=
- =?us-ascii?Q?JgNzdZ9xkF7UZbXx/Kd4wVCyfufLaAiqS12yzj82biMVdzR4tX5HzhicQcRl?=
- =?us-ascii?Q?adjRhoQI/kdSHZUU+uSVMtqBqhGGWIJslvvGWxmB3jfcNiVN5YYfhtRRqMeb?=
- =?us-ascii?Q?UFYv8olqYN60qY1HUwrlZVZQgZwHj5CCgtN/+7qa2HINibZfb7QUQaAqqfQ5?=
- =?us-ascii?Q?jvwNjexU/zoX7vMeHz09Z1U1PDO/WpTXpJjT5Yl+DCoNv7qEyv7JQKrQihk4?=
- =?us-ascii?Q?Y3WvJ76QqKWbaZgEWQUoG/Ub8LWB7hYtAVZ8xlp6Uz9xuIasm+ak3Ewn70T1?=
- =?us-ascii?Q?q5yXMIPyRDrtU9OhzgZwnuJdpOGfnky6NYYylDk0aLcOtSlBj4WjdoNafnEy?=
- =?us-ascii?Q?/TfkBrtSiQKaH8Phtxz06UaNr9FxfGl+/q8cqeeQF6JXR022lMNe/Al6fKzS?=
- =?us-ascii?Q?zINcXw=3D=3D?=
-X-OriginatorOrg: corigine.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 89c1eb90-8915-4ef3-4b7b-08db55f7eb45
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR13MB4842.namprd13.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 May 2023 10:25:49.7050
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: fe128f2c-073b-4c20-818e-7246a585940c
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: TAMUFVMCWqqPkD0P4jNRlZjfO5/XTCRlgNoMs59u7Liv+cXtkq8QH/pIbBvDtcDBLiNPGHY0qMNJOguv47WpyirBMyPEC0F8VLNYREO/9Pc=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR13MB6073
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230516090009.ssq3uedjl53kzsjr@skbuf>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230516_032554_774970_6E3E333A 
-X-CRM114-Status: GOOD (  10.47  )
+X-CRM114-CacheID: sfid-20230516_045023_910062_A793E036 
+X-CRM114-Status: GOOD (  58.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -139,16 +102,171 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 16, 2023 at 12:56:53AM +0200, Daniel Golle wrote:
-> mt7601u.bin was moved to mediatek/ folder in linux-wireless via commit
-> 8451c2b1 ("mt76xx: Move the old Mediatek WiFi firmware to mediatek")
-> and linux-firmware release 20230515.
+On Tue, May 16, 2023 at 12:00:09PM +0300, Vladimir Oltean wrote:
+> On Tue, May 16, 2023 at 12:36:33AM +0100, Russell King (Oracle) wrote:
+> > > Clause 73 negotiates the actual use of 10GBase-KR as a SERDES protocol
+> > > through the copper backplane in favor of other "Base-K*" alternative
+> > > link modes, so it's not quite proper to say that 10GBase-KR is a clause
+> > > 73 using protocol.
+> > 
+> > I believe it is correct to state it as such, because:
+> > 
+> > 72.1: Table 72–1—Physical Layer clauses associated with the 10GBASE-KR PMD
+> > 
+> > 	73—Auto-Negotiation for Backplane Ethernet              Required
+> > 
+> > Essentially, 802.3 doesn't permit 10GBASE-KR without hardware support
+> > for Clause 73 AN (but that AN doesn't have to be enabled by management
+> > software.)
 > 
-> Update the firmware path requested by the mt7601u driver to follow up
-> with the move of the file.
+> Just like clause 40 (PCS and PMA for 1000BASE-T) requires clause 28 AN
+> to be supported. But, when the autoneg process begins, the use of
+> 10GBase-KR as a protocol over the backplane link hasn't even been yet
+> established, so I find it unnatural to speak of clause 73 autoneg as
+> something that 10GBase-KR has.
 > 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> The reason why I'm insisting on this is because to me, to treat clause
+> 73 as an in-band autoneg process of 10GBase-KR sounds like a reversal of
+> causality. The clause 73 link codeword has a Technology Ability field
+> through which 10GBase-KR, 1GBase-KX etc are advertised as supported
+> protocols. If C73 is an inband protocol of 10GBase-KR, what should the
+> local PCS advertise for its Technology Ability? Only 10GBase-KR, because
+> this is what is implied by treating it as an attribute of 10GBase-KR, no?
 
-Reviewed-by: Simon Horman <simon.horman@corigine.com>
+I'm not going to get hung up on this, because I don't regard the point
+as being particularly important to this discussion. You are right that
+Clause 73 AN selects whether e.g. 10GBASE-KR gets used, and I don't
+disagree with that. We're just entering into what seems like a pointless
+debate that eats up email bandwidth.
 
+> But that would be a denatured way of negotiating - advertise a single
+> link mode, take it or leave it. And what other inband autoneg protocols
+> permit, say, starting from SGMII and ending in 1000Base-X? Clause 73
+> can't be directly compared to what we currently mean by managed =
+> "in-band-status".
+> 
+> Not only is C37 autoneg not directly comparable to C73, but they are not
+> mutually exclusive, either. I would say they are more or less orthogonal.
+> More below.
+> 
+> I don't believe that toggling clause 73 autoneg based on phylink_pcs_neg_mode()
+> makes much sense.
+
+I agree, which means phylink_pcs_neg_mode() needs to document this so
+that people don't think it does - and that solves both of the issues
+I was bringing up in my original email.
+
+> > However, if we did want to extend this topic, then there are a number
+> > of questions that really need to be asked is about the XPCS driver.
+> > Such as - what does 1000BASE-KX, 10000BASE-KX4, 10000BASE-KR and
+> > 2500BASE-X have to do with USXGMII, and why are there no copper
+> > ethtool modes listed when a USXGMII link can definitely support
+> > being connected to a copper PHY? (See xpcs_usxgmii_features[]).
+> > 
+> > Why does XPCS think that USXGMII uses Clause 73 AN? (see the first
+> > entry in synopsys_xpcs_compat[].)
+> 
+> First, in principle USXGMII and clause 73 are not mutually exclusive.
+> 
+> It is possible to use clause 73 to advertise 10GBase-KR as a link mode,
+> and that will give you link training for proper 3-tap electrical
+> equalization over the copper backplane.
+> 
+> Then, once C73 AN/LT ended and 10GBase-KR has been established, is
+> possible to configure the 10GBase-R PCS to enable C37 USXGMII to select
+> the actual data rate via symbol replication, while the SERDES lane
+> remains at 10GBaud. At least, the XPCS seems to permit enabling symbol
+> replication in conjunction with 10GBase-KR.
+
+My comments are against the driver as it stands today, not some
+theoretical case that the hardware may support.
+
+What I'm getting at is if the interface mode is
+PHY_INTERFACE_MODE_USXGMII, then... okay... we _may_ wish to do
+clause 73 negotiation advertising 10GBASE-KR and then do clause 73
+for the USXGMII control word - but the driver doesn't do this as far
+as I can see. If C73 AN is being used, it merely reads the C73
+state and returns the resolution from that. Any speed information that
+a USXGMII PHY passes back over the C37 inband signalling would be
+ignored because there seems to be no provision for the USXGMII
+inband signalling.
+
+So I'm confused what the xpcs driver _actually_ does when USXGMII
+mode is selected by PHY_INTERFACE_MODE_USXGMII, because looking at
+the driver, it doesn't look like it's USXGMII at all.
+
+> Then, there's the entire issue that the code, as it was originally
+> introduced, is not the same as it is now. For example, this bit in
+> xpcs_do_config():
+> 
+> 	switch (compat->an_mode) {
+> 	case DW_AN_C73:
+> 		if (phylink_autoneg_inband(mode)) {
+> 			ret = xpcs_config_aneg_c73(xpcs, compat);
+> 			if (ret)
+> 				return ret;
+> 		}
+> 		break;
+> 
+> used to look at state->an_enabled rather than phylink_autoneg_inband().
+> Through my idiocy, I inadvertently converted that in commit 11059740e616
+> ("net: pcs: xpcs: convert to phylink_pcs_ops").
+
+If we want to change that back to the old behaviour, that needs to
+be:
+		if (test_bit(ETHTOOL_LINK_MODE_Autoneg_BIT, advertising)) {
+			...
+		}
+		break;
+
+but that wouldn't ever have been sufficient, even when the code was
+using an_enabled, because both of these reflect the user configuration.
+(an_enabled was just a proxy for this Autoneg bit). I'm going to call
+both of these an "AN indicator" in the question below.
+
+Isn't it rather perverse that the driver configures AN if this AN
+indicator is set, but then does nothing if it isn't?
+
+> > xpcs_sgmii_features[] only mentions copper linkmodes, but as we know,
+> > it's common for copper PHYs to also support fibre with an auto-
+> > selection mechanism. So, 1000BASE-X is definitely possible if SGMII
+> > is supported, so why isn't it listed.
+> 
+> Most likely explanation is that XPCS has never been paired up until now
+> to such a PHY.
+
+So it's probably safe to add ETHTOOL_LINK_MODE_1000baseX_Full_BIT
+there - thanks.
+
+> > As previously said, 1000BASE-X can be connected to a PHY that does
+> > 1000BASE-T, so why does xpcs_1000basex_features[] not mention
+> > 1000baseT_Full... there's probably more here as well.
+> > 
+> > Interestingly, xpcs_2500basex_features[] _does_ mention both
+> > 2500BASE-X and 2500BASE-T, but I think that only does because I
+> > happened to comment on it during a review.
+> > 
+> > I think xpcs is another can of worms, but is an easier can of worms
+> > to solve than trying to sort out that "what's an ethernet PHY"
+> > question we seem to be heading towards (which I think would be a
+> > mammoth task, even back when phylink didn't exist, to sort out.)
+> 
+> I wasn't necessarily going to go all the way into "what's a PHY?".
+> I just want to clarify some terms such that we can agree what is correct
+> and what is not. I believe that much of what's currently in XPCS w.r.t.
+> C73 is not correct, partly through initial intention and partly through
+> blind conversions such as mine.
+
+Right, that's probably why I'm having a hard time interpreting what
+this driver is doing when it comes to these modes that makes use
+clause 73.
+
+As this is the only phylink-using implementation that involves clause
+73 at present, I would like to ensure that there's a clear resolution
+of the expected behaviour before we get further implementations, and
+preferably document what's expected.
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
