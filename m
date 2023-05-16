@@ -4,85 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88E8CC77B75
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 May 2023 07:58:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE3D7C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 May 2023 08:07:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pQ0/GDeAvYDN8Nmfs+Ixf3KnACZQuioMz4BUCvWBOPY=; b=dTPnJBDoqPBDGRDeWHdY8PlUHz
-	P7ZUBrQGknVCH0OhTAMKG1JqAANHSWbRtj2j2I3dWJAlY1/+gzSCsRIS8WT5KTnoPzKX6J6QYfmcu
-	HWfNp0aYvzH8/Y26/PKJn41MFILMPBySAcTuxD5m2aum5TOEXxuFbq3U7MM6CRcz70U5/SN6IgtMl
-	3wRQEFoTcWbfbZecvMwPOb6p7tK1IfP20tQWnS9Ele5NQ/14UG8e/PcbG23jgvQHw4lUbfaA3JDQU
-	WJn7cVkmRQL8BajHMEKPqb6ucoLpVOYdJzVKwlyWOHTLtWWUSi5TyAgdl9p6qssHkrnZSpUYRTii1
-	Bzq3qbAw==;
+	bh=BGVHVtrJ1UKArOxL4QLZMf28fxPQFEoR2CUGleXHsCE=; b=vn/xeC4uBYv/rRNskJHa69Alv3
+	KY66iXVCTYh1eA3AcNI4CV8Cy5uMEkoSNPA6dBSfFw51ApYWQUSgbCCv7VRscU5CPS6+9qwLyFuI2
+	yjKDV9LruxVX/HR7wx1rAYjzPeaX+GDth11rsWnDHrx4McuoOSpbtkF/Wy8oXk5Ke9a+z7JYOJ2h0
+	aIQCd82Tb223eLh9fc2vN3KC7R+RM58EkmvDQIdXQyHxM+kOMTtkShfXpSTVxKdJdilVug4QVrz/c
+	EYHUiPJ+vcL3qDifwMO3MxzpeOwC8qcWPz5fYQlJnFnmCU3aUyv7LxSxTNKap5BKHMl/ugXyeMyKG
+	Ha52vaIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pypZj-004kau-1G;
-	Tue, 16 May 2023 07:58:27 +0000
-Received: from bee.tesarici.cz ([77.93.223.253])
+	id 1pypis-004mX5-2K;
+	Tue, 16 May 2023 08:07:54 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pypZf-004kZ0-1y;
-	Tue, 16 May 2023 07:58:25 +0000
-Received: from meshulam.tesarici.cz (dynamic-2a00-1028-83b8-1e7a-4427-cc85-6706-c595.ipv6.o2.cz [IPv6:2a00:1028:83b8:1e7a:4427:cc85:6706:c595])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by bee.tesarici.cz (Postfix) with ESMTPSA id 022691617A9;
-	Tue, 16 May 2023 09:58:20 +0200 (CEST)
-Authentication-Results: mail.tesarici.cz; dmarc=fail (p=none dis=none) header.from=tesarici.cz
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tesarici.cz; s=mail;
-	t=1684223901; bh=vgp/F7g/spz90YI9EAe5zEYmTaqdHJkzRNoRv0QNyqo=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=PiKtJUDXeLIXLILtSnIYL0BWgkz+1wtz3Skq/knjoFpezpja2UdK19+qCjZ7PudN3
-	 Y30ABlU9VOPl9n8xKjK5pH/3a8JiDL195rF6HNNpdMHP6wArDy70+Zi6x/LxqQIQlu
-	 ibT19G77KLEtOH9rfxVy+qRNl4Bzq6+qxaP4382xqIziuSKvlMU3p8RupyFg5U5W/o
-	 tFWS2oTyGYyMLRjdnCK2qeWtiHho1mdvnndZuLvLV1+H80+qAAYo8Pq83ef4A8xA4R
-	 +bQXyF5Kf4JJ/L0goFRsCBPLCj0g5AtWa0385zU9r4oMTsoeg4N3n8jhCgkY5fSenZ
-	 tDBAOVxUZcDdg==
-Date: Tue, 16 May 2023 09:58:19 +0200
-From: Petr =?UTF-8?B?VGVzYcWZw61r?= <petr@tesarici.cz>
-To: Niklas Schnelle <schnelle@linux.ibm.com>
-Cc: Joerg Roedel <joro@8bytes.org>, Matthew Rosato <mjrosato@linux.ibm.com>,
- Will Deacon <will@kernel.org>, Wenjia Zhang <wenjia@linux.ibm.com>, Robin
- Murphy <robin.murphy@arm.com>, Jason Gunthorpe <jgg@ziepe.ca>, Gerd Bayer
- <gbayer@linux.ibm.com>, Julian Ruess <julianr@linux.ibm.com>, Pierre Morel
- <pmorel@linux.ibm.com>, Alexandra Winter <wintera@linux.ibm.com>, Heiko
- Carstens <hca@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>, Alexander
- Gordeev <agordeev@linux.ibm.com>, Christian Borntraeger
- <borntraeger@linux.ibm.com>, Sven Schnelle <svens@linux.ibm.com>, Suravee
- Suthikulpanit <suravee.suthikulpanit@amd.com>, Hector Martin
- <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, Alyssa Rosenzweig
- <alyssa@rosenzweig.io>, David Woodhouse <dwmw2@infradead.org>, Lu Baolu
- <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>, Bjorn Andersson
- <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, Yong Wu
- <yong.wu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Gerald Schaefer <gerald.schaefer@linux.ibm.com>, Orson Zhai
- <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan
- Zhang <zhang.lyra@gmail.com>, Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec
- <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, Thierry
- Reding <thierry.reding@gmail.com>, Krishna Reddy <vdumpa@nvidia.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, Jonathan Corbet <corbet@lwn.net>,
- linux-s390@vger.kernel.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, iommu@lists.linux.dev, asahi@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
- linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
-Subject: Re: [PATCH v9 1/6] s390/ism: Set DMA coherent mask
-Message-ID: <20230516095819.78442f09@meshulam.tesarici.cz>
-In-Reply-To: <20230310-dma_iommu-v9-1-65bb8edd2beb@linux.ibm.com>
-References: <20230310-dma_iommu-v9-0-65bb8edd2beb@linux.ibm.com>
-	<20230310-dma_iommu-v9-1-65bb8edd2beb@linux.ibm.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; x86_64-suse-linux-gnu)
+	id 1pypip-004mUj-2J
+	for linux-mediatek@lists.infradead.org;
+	Tue, 16 May 2023 08:07:53 +0000
+Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-965e93f915aso2469363266b.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 16 May 2023 01:07:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1684224469; x=1686816469;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=BGVHVtrJ1UKArOxL4QLZMf28fxPQFEoR2CUGleXHsCE=;
+        b=JYKeiv25q8zcMTfIUxyjYba4uvXfSoqkHDtJ77yG0ETwlKFEKJjqoelz9b636iC43q
+         NwEMGuL3OUF3SzHNkliudf9CiKYc6qoMpeWTKyembWNoR5IqXIwHlNiQI/Awpc3OhoJO
+         zCZW6yrcE+nJ9fRDAxpuiEHuKdTaSIFd2AV//rWLqyTKlckm1sCblj2Z1pSieKU3zPOD
+         iGT+3eB1+IgAlVjDXoSKiSeBb4xpMSUtOX/nWUY6QNb6u/8/0/UHnmQKMnon8fKW2sRl
+         f04iL/5jEudZbK48jxYkajqRY1IfgMD+bUg21v3KlV2XH4+TsSACN7BmBDahKz8ZRdW/
+         hKwg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1684224469; x=1686816469;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=BGVHVtrJ1UKArOxL4QLZMf28fxPQFEoR2CUGleXHsCE=;
+        b=htD4OydgZqLaw6XqgtnXtb2ZtJXNZHst8VLfFt6IwF4Ru65pWBvN5MOw6XZYe0eVYN
+         WwZr3ApycIB+hTnwk/iIVGhSVg4x2fpARUM9WQUk1DMPyb6v3I6ywzTvLdyFRUASkLaY
+         VZDUU9ov9Lm4vWUUlkX4jQvfIPd4NgdUdoBGL08B8fA7XG6O0TK/FjOFmJNP9TuMg7os
+         SAUXAty1scdclFLHB9/HMOYbAn/x8WhqtFyr3cRTJzjMQJHkeRSBsps8LZBT4WEds9+0
+         SSRNeYCzvW6xf0L0TDW2VIN5TMOHZOBnlUmrOHBFHMPKePIwBi9JtUlEgx0HeSwCDJ8Z
+         LMLg==
+X-Gm-Message-State: AC+VfDyGBVyEYb2K9P7essO/Q4rCfBIxyCkMb3KJyJjomSElTfImVYqW
+	B0di1PsVDYPYrf5Z7Vi4TYRG/SG4m6cMo/m74jM=
+X-Google-Smtp-Source: ACHHUZ4yMXV4Sz3Qo41nq8QUnvqctZ1ziGdHs/WBNjiVR1F3sVaDjIntrsJJsddU6GfMFbs1vxI0IQ==
+X-Received: by 2002:a17:907:360d:b0:94a:7979:41f5 with SMTP id bk13-20020a170907360d00b0094a797941f5mr30753341ejc.71.1684224469553;
+        Tue, 16 May 2023 01:07:49 -0700 (PDT)
+Received: from ?IPV6:2a02:810d:15c0:828:4d4a:9b97:62e:1439? ([2a02:810d:15c0:828:4d4a:9b97:62e:1439])
+        by smtp.gmail.com with ESMTPSA id i8-20020a056402054800b0050bd59fd0efsm7767851edx.49.2023.05.16.01.07.48
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 16 May 2023 01:07:49 -0700 (PDT)
+Message-ID: <ab9aa30f-82d7-1d14-5561-e19ff10af0b0@linaro.org>
+Date: Tue, 16 May 2023 10:07:47 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH v2 1/2] dt-bindings: phy: add mediatek mipi csi driver v
+ 0.5
+Content-Language: en-US
+To: Julien Stephan <jstephan@baylibre.com>
+Cc: robh@kernel.org, chunkuang.hu@kernel.org,
+ linux-mediatek@lists.infradead.org,
+ Florian Sylvestre <fsylvestre@baylibre.com>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Andy Hsieh <andy.hsieh@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "moderated list:ARM/Mediatek USB3 PHY DRIVER"
+ <linux-arm-kernel@lists.infradead.org>,
+ "open list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>
+References: <20230515090551.1251389-1-jstephan@baylibre.com>
+ <20230515090551.1251389-2-jstephan@baylibre.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230515090551.1251389-2-jstephan@baylibre.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230516_005823_828112_E03D2EF8 
-X-CRM114-Status: GOOD (  21.40  )
+X-CRM114-CacheID: sfid-20230516_010751_758162_2A7C9CB1 
+X-CRM114-Status: GOOD (  21.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,42 +109,112 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 15 May 2023 11:15:51 +0200
-Niklas Schnelle <schnelle@linux.ibm.com> wrote:
-
-> A future change will convert the DMA API implementation from the
-> architecture specific arch/s390/pci/pci_dma.c to using the common code
-> drivers/iommu/dma-iommu.c which the utilizes the same IOMMU hardware
-> through the s390-iommu driver. Unlike the s390 specific DMA API this
-> requires devices to correctly call set the coherent mask to be allowed
-> to use IOVAs >2^32 in dma_alloc_coherent(). This was however not done
-> for ISM devices. ISM requires such addresses since currently the DMA
-> aperture for PCI devices starts at 2^32 and all calls to
-> dma_alloc_coherent() would thus fail.
+On 15/05/2023 11:05, Julien Stephan wrote:
+> From: Florian Sylvestre <fsylvestre@baylibre.com>
 > 
-> Reviewed-by: Alexandra Winter <wintera@linux.ibm.com>
-> Reviewed-by: Matthew Rosato <mjrosato@linux.ibm.com>
-> Signed-off-by: Niklas Schnelle <schnelle@linux.ibm.com>
+> This adds the bindings, for the MIPI CD-PHY module v 0.5 embedded in
+> some Mediatek soc, such as the mt8365
+> 
+> Signed-off-by: Florian Sylvestre <fsylvestre@baylibre.com>
+> Signed-off-by: Julien Stephan <jstephan@baylibre.com>
+
+What are the changes? IOW: changelog here or in cover letter.
+
+Subject: you have some multiple spaces.
+
+Subject: drop driver. Bindings are not for drivers.
+
 > ---
->  drivers/s390/net/ism_drv.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  .../phy/mediatek,phy-mipi-csi-0-5.yaml        | 62 +++++++++++++++++++
+>  MAINTAINERS                                   |  6 ++
+>  2 files changed, 68 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/phy/mediatek,phy-mipi-csi-0-5.yaml
 > 
-> diff --git a/drivers/s390/net/ism_drv.c b/drivers/s390/net/ism_drv.c
-> index 8acb9eba691b..1399b5dc646c 100644
-> --- a/drivers/s390/net/ism_drv.c
-> +++ b/drivers/s390/net/ism_drv.c
-> @@ -660,7 +660,7 @@ static int ism_probe(struct pci_dev *pdev, const struct pci_device_id *id)
->  	if (ret)
->  		goto err_disable;
->  
-> -	ret = dma_set_mask(&pdev->dev, DMA_BIT_MASK(64));
-> +	ret = dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(64));
+> diff --git a/Documentation/devicetree/bindings/phy/mediatek,phy-mipi-csi-0-5.yaml b/Documentation/devicetree/bindings/phy/mediatek,phy-mipi-csi-0-5.yaml
+> new file mode 100644
+> index 000000000000..5aa8c0b41cdf
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/phy/mediatek,phy-mipi-csi-0-5.yaml
+> @@ -0,0 +1,62 @@
+> +# SPDX-License-Identifier: (GPL-2.0-Only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/phy/mediatek,phy-mipi-csi-0-5.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Mediatek Sensor Interface MIPI CSI CD-PHY
+> +
+> +maintainers:
+> +  - Julien Stephan <jstephan@baylibre.com>
+> +  - Andy Hsieh <andy.hsieh@mediatek.com>
+> +
+> +description:
+> +  The SENINF CD-PHY is a set of CD-PHY connected to the SENINF CSI-2
+> +  receivers. The number of PHYs depends on the SoC model.
+> +  Depending on the soc model, each PHYs can support CDPHY or DPHY only
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - mediatek,phy-mipi-csi-0-5
 
-Ah. I love this change. I have already wondered a few times if the
-coherent DMA mask for this device may actually be different from
-dma_mask. Now I know. ;-)
+SoC based compatibles. 0-5 is odd.
 
-Thanks!
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  '#phy-cells':
+> +    const: 0
+> +
+> +  mediatek,is_cdphy:
 
-Petr T
+No underscores in node names.
+
+> +    description:
+> +      Specify if the current phy support CDPHY configuration
+
+Why this cannot be implied from compatible? Add specific compatibles.
+
+
+> +    type: boolean
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - '#phy-cells'
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    soc {
+> +      #address-cells = <2>;
+> +      #size-cells = <2>;
+> +
+> +      mipi_rx_csi0: mipi_rx_csi0@11c10000 {
+
+No underscores in node names. How this is v2?
+
+> +        compatible = "mediatek,phy-mipi-csi-0-5";
+> +        reg = <0 0x11C10000 0 0x2000>;
+> +        status = "okay";
+
+Drop
+
+> +        mediatek,is_cdphy;
+> +        #phy-cells = <0>;
+> +      };
+> +
+> +      mipi_rx_csi1: mipi-rx-csi1@11c12000 {
+> +        compatible = "mediatek,phy-mipi-csi-0-5";
+> +        reg = <0 0x11C12000 0 0x2000>;
+> +        status = "disabled";
+
+???
+
+
+Best regards,
+Krzysztof
+
 
