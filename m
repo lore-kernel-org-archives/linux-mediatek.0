@@ -4,93 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B769C7EE25
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 May 2023 14:20:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B3C9C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 May 2023 14:33:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Um1tUxrJi7GYgRkSCDyfBikS3Jewh3k7uhzREmBIwwY=; b=WSBKBhdydPG0Ky++/LS+SrQ0bI
-	EFPHjZF/vzW7IeNj4LfNa4j43CnsbqnLgRlATfS1FGOOQ4v1Xkel82e9VUsPm4kjdHZgXu9DXUTO1
-	K0d/TL2KwR6yZexVntb0B5Olz0qSriiZfQI7CkwgeI+OoO1ouhltdJukgSo3fcneom/3NdbYr046F
-	iogH99b2jlmuIKY4w4izwT9QyhdLG2g5RRBfRhv7ELVQVKDZZAY04GSscbdcWHZinYC2jHy4DyESN
-	rQjleEtF0/VYksq15eiotKiYyjAmNUCVRCCAR26NuMBXYffyp0F3t8IKjr2Jrqu5AcjpGBygJUOAa
-	YCHq/Rrg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hhMm3St/RYCSo+E+uVNGcI1arHajf5p9rdBVHxKvYbk=; b=CckCZpgWe2ezk89VhLjGFMwb3s
+	qGfcFCFjvVvMUxeFIJ8P4UYUgl6dRKRghbJCU3G2Km6AH4gWlqEx0OFwnYL2LgkDXXHJrh1g2SMCV
+	F30ZIXsjYL/qDuMm12wvY0xK8wJcte0Yi1drzMOdjPH3dqwiu8ri3QmC33W9eFB7SI9cey3m3oULH
+	rGlecWsHu44Qu64AZ1Plgz7kYsftDcJXQJMYEQaA/hr1l38qBJxThZi5YIO5K0Mt6giNXXtYv1/qQ
+	Jq3+ORcEZsR5Strh7np84+QubrD6oQVnxHDjA3ckxAyh3iIxo+zw8/dbviAGqTYgoGVE7d1HSdKdE
+	GJCsQGHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyvX0-0063t6-27;
-	Tue, 16 May 2023 14:20:02 +0000
-Received: from mail-qv1-xf2c.google.com ([2607:f8b0:4864:20::f2c])
+	id 1pyvjz-0066Sy-31;
+	Tue, 16 May 2023 14:33:27 +0000
+Received: from mail-bn8nam12on2071b.outbound.protection.outlook.com ([2a01:111:f400:fe5b::71b] helo=NAM12-BN8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyvWy-0063rE-0V
+	id 1pyvjt-0066RW-38
 	for linux-mediatek@lists.infradead.org;
-	Tue, 16 May 2023 14:20:01 +0000
-Received: by mail-qv1-xf2c.google.com with SMTP id 6a1803df08f44-61cd6191a62so64293336d6.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 16 May 2023 07:19:57 -0700 (PDT)
+	Tue, 16 May 2023 14:33:26 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=lSa1Jyh3A9GTGWxtq4CWei0UI1cSg0gNbjqdHHncMieqzTGnSzkBAYpHwr1TMa/H52GSyrSyrtrd05nwoiuhW990B+LYiEWP58FW2d0yaQ9nVhDmHQBPIwnrG51QUZ89Iu7w3q0nb7LtjOxAP8zC/Q6RbByaR/t4t3xDu79AurfaifU47jzRuEETjnukEgTO4iAl6Z301GwtHpi7OWCniDG7V3PEyLBlcrERVpCE4v8VWKztJxHYOeA+nuzQ3RTZ1yOqyDHsHp3gF1lyMZxxUHQqnB01f/d4BYzl3t6y9fwwBKYLRl9VzpW+T1jax3MmyMJ9gpdDkey7E2TSkVvVvA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=hhMm3St/RYCSo+E+uVNGcI1arHajf5p9rdBVHxKvYbk=;
+ b=GwlzZ1k3Ye3fJzxD2rP2Xx9I7Bfku/vi1POBGv5GwxF0Mg9rvh+BUVlt0TVVxxknUCEWFHRaCGOI4jodQfd8Bz2+/+SvxIKQInlAZZeB9Xb7izIfPI7GxqVlEVQMamKw9fWDJoepG5ItyFpGwk8qSus/OWJi8fPFaGlcsRFBULvH0+ifHrYIym0eTEsaiMkKWEcXKJc5TY4aHNKojFctUMFFvkF+JVd+OaHDbjAscFYzy7I88S4oHg6a9kTJLzs7Lya+V6/0t/SxB6uxe7r0oh15AWz4Ckvz7UaUXVuIjRcCTpH6oGk4PuyPJVFNuXE3rBtDvKBQ5HRO2rZNAQEAiA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=corigine.com; dmarc=pass action=none header.from=corigine.com;
+ dkim=pass header.d=corigine.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1684246794; x=1686838794;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Um1tUxrJi7GYgRkSCDyfBikS3Jewh3k7uhzREmBIwwY=;
-        b=bKYcUS69LccZewQIm285XsFxqcHxjPnMAyTe6+PZxkVHZfh8oUU+Y/nvV4Sq+hC0Vr
-         3We6vz1y71/VcUu8GF8/xcAsAK85EWAjXjYKVRTodpNKCgauHVQHFn7iMU6XwafImdgr
-         ZVmMmyPV2muxmpUmQCzW02uDiCRrx1fx05+ZU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684246794; x=1686838794;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Um1tUxrJi7GYgRkSCDyfBikS3Jewh3k7uhzREmBIwwY=;
-        b=joQlgcaKAvVsxDIbrFTtXK8s5O8Uip1xUIj51VXPvktt5sinARBZeJkhdKmZt7dkeu
-         en4aCYgxAJjp4Fahw4bWRHfzwtTRwjefXHCxV6c0fx/sH8kkOBtL8RzYC/8QTJUNtXvn
-         yYTgbsYCoU+v4OJ8SkA7nf4x1P9z5RYqx8mrdtetJ3MdoHCOIMGxyxu98rBJm/H/UCa5
-         qnQQkScKwH3hkizBbYWPmpMhFJjO9WCogYjqZDXxpRm8JcLtXI1ij/2xUurEj1tSG0g3
-         SKjUf5BsJ/qwnEOEJvU9AXla4jWV5Az9wvcWKms92nta0xX0QB/oKoH1eunHxnMWxDXW
-         y9Uw==
-X-Gm-Message-State: AC+VfDwUqWWxZmwhUAsWFKIVA7YpLRv92jiQWWsii0db0+tbY1Vw4mRS
-	LqAtc8tFd9IWDiwAyh0LzYsQoj6FYQ9YE8EVfjU=
-X-Google-Smtp-Source: ACHHUZ6Ob/spi7eIlQ+D1mgOLExmjkLox0ABEyKzUTcIMtnwzHMb5q67HbzhZCEwPQki/saX0liweQ==
-X-Received: by 2002:a05:6214:5299:b0:61b:6fcd:34ab with SMTP id kj25-20020a056214529900b0061b6fcd34abmr56781195qvb.0.1684246794117;
-        Tue, 16 May 2023 07:19:54 -0700 (PDT)
-Received: from mail-qt1-f181.google.com (mail-qt1-f181.google.com. [209.85.160.181])
-        by smtp.gmail.com with ESMTPSA id d11-20020a0cb2cb000000b006215cdc1966sm4177230qvf.2.2023.05.16.07.19.52
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 16 May 2023 07:19:52 -0700 (PDT)
-Received: by mail-qt1-f181.google.com with SMTP id d75a77b69052e-3f38824a025so1817201cf.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 16 May 2023 07:19:52 -0700 (PDT)
-X-Received: by 2002:ac8:4e86:0:b0:3f5:4eb4:414f with SMTP id
- 6-20020ac84e86000000b003f54eb4414fmr3310qtp.13.1684246791898; Tue, 16 May
- 2023 07:19:51 -0700 (PDT)
+ d=corigine.onmicrosoft.com; s=selector2-corigine-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=hhMm3St/RYCSo+E+uVNGcI1arHajf5p9rdBVHxKvYbk=;
+ b=J5lIj/i/DmkBzsywzlfeXUMbwc9bDjKg+P/HYqhpTRkowAe8rv5CxorkUoHNaUoCbsp9eP63Y1RJXfjQIaRx7AyEEdvH43Etkxu89jQzIANC70n5JAfqiJA8xkCs2L85+gaIiCGktq+ytTGqB4XieiPgVn47J4opirJ0AuAoj78=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=corigine.com;
+Received: from PH0PR13MB4842.namprd13.prod.outlook.com (2603:10b6:510:78::6)
+ by BN0PR13MB4632.namprd13.prod.outlook.com (2603:10b6:408:116::24) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6387.33; Tue, 16 May
+ 2023 14:33:16 +0000
+Received: from PH0PR13MB4842.namprd13.prod.outlook.com
+ ([fe80::f416:544d:18b7:bb34]) by PH0PR13MB4842.namprd13.prod.outlook.com
+ ([fe80::f416:544d:18b7:bb34%5]) with mapi id 15.20.6387.033; Tue, 16 May 2023
+ 14:33:16 +0000
+Date: Tue, 16 May 2023 16:33:08 +0200
+From: Simon Horman <simon.horman@corigine.com>
+To: Deren Wu <deren.wu@mediatek.com>
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Soul Huang <Soul.Huang@mediatek.com>,
+	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>,
+	Leon Yen <Leon.Yen@mediatek.com>,
+	Eric-SY Chang <Eric-SY.Chang@mediatek.com>,
+	KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>,
+	CH Yeh <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>,
+	Stella Chang <Stella.Chang@mediatek.com>,
+	Quan Zhou <quan.zhou@mediatek.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	linux-wireless <linux-wireless@vger.kernel.org>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>,
+	stable@vger.kernel.org
+Subject: Re: [PATCH] wifi: mt76: mt7921: fix skb leak by txs missing in AMSDU
+Message-ID: <ZGOUJJgXiZLvJ03N@corigine.com>
+References: <b45ef06de62ce4f02d35ecef26ba78c7a7e75b51.1684153148.git.deren.wu@mediatek.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <b45ef06de62ce4f02d35ecef26ba78c7a7e75b51.1684153148.git.deren.wu@mediatek.com>
+X-ClientProxiedBy: AS4P251CA0009.EURP251.PROD.OUTLOOK.COM
+ (2603:10a6:20b:5d2::20) To PH0PR13MB4842.namprd13.prod.outlook.com
+ (2603:10b6:510:78::6)
 MIME-Version: 1.0
-References: <20230515131353.v2.cover@dianders> <20230515131353.v2.2.I88dc0a0eb1d9d537de61604cd8994ecc55c0cac1@changeid>
- <3cc683e7-28aa-7b6e-1499-3aca953294cc@collabora.com>
-In-Reply-To: <3cc683e7-28aa-7b6e-1499-3aca953294cc@collabora.com>
-From: Doug Anderson <dianders@chromium.org>
-Date: Tue, 16 May 2023 07:19:39 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=UKC9mDab4nYu7OFSOEpsm-CJ=dvcXzHOG-a74JeELQkw@mail.gmail.com>
-Message-ID: <CAD=FV=UKC9mDab4nYu7OFSOEpsm-CJ=dvcXzHOG-a74JeELQkw@mail.gmail.com>
-Subject: Re: [PATCH v2 2/5] irqchip/gic-v3: Disable pseudo NMIs on Mediatek
- devices w/ firmware issues
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Marc Zyngier <maz@kernel.org>, Thomas Gleixner <tglx@linutronix.de>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, 
-	Allen-KH Cheng <allen-kh.cheng@mediatek.com>, linux-mediatek@lists.infradead.org, 
-	Eddie Huang <eddie.huang@mediatek.com>, Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, 
-	wenst@chromium.org, yidilin@chromium.org, 
-	Tinghan Shen <tinghan.shen@mediatek.com>, jwerner@chromium.org, 
-	Weiyi Lu <weiyi.lu@mediatek.com>, Ben Ho <Ben.Ho@mediatek.com>, 
-	Seiya Wang <seiya.wang@mediatek.com>, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH0PR13MB4842:EE_|BN0PR13MB4632:EE_
+X-MS-Office365-Filtering-Correlation-Id: 5866a266-cc88-4236-58bb-08db561a7c9a
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	qgPu7IFEJTjTkEyv11thsDLTWLPrbHeuwmvW6TRYFL0wjPNczzYjzSLK7M/j03s6XPiQiwod7FOAwp5+2ehSAjPtNyx/fe0JHkg78w3bbSh+rLwj3ySxHoFqF9X6frvfxE9749/GB0LCbZSvmwJILZaa8M8mlSUi/ZQqksHD2AZ3ooU2sjVKvU+eaD6SyctEXtKzfHRj2I+PufpZmEo44WfN2VY/COEmT9NpwPBLy/JWz5g1Zx5YaMmYcpUs6fK2iA9uk+L4nVlQ2tyVEa2kFvRW2qvHaWo5kGwWjorAak/TQtAkmDs7PRbM+gWd10GildpPgXyrsqm1pDgjThLkd92/GU4TNW5tV9KRUWjanNjgRv+jHY5ucE0lD9++GRav4uVbFOgOGmFR6lgVdNiCki7uTr30D2YLZp9fsCXOGvsSItKj6S5BwercrB++GDP1+tSgBADr3ZZiQwJpbx/tx+b+9vmr52kIQ2kP0tuNeHObpetQNckmaeDAumLKoGxDLAoDn5ob16aMJCU2Xj5vx9JLklP8wMzdKscoD9e4A5I1TfpdhBRpi5B3eF+QQaaas+cE2o2bjf51qqwrJ+7o/ily999JCzjpua2REAyvbMI=
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR13MB4842.namprd13.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(346002)(366004)(39840400004)(136003)(396003)(376002)(451199021)(36756003)(86362001)(54906003)(316002)(66556008)(66476007)(6916009)(4326008)(66946007)(478600001)(6666004)(5660300002)(8676002)(7416002)(8936002)(2906002)(44832011)(41300700001)(38100700002)(186003)(2616005)(6512007)(6506007)(83380400001)(6486002);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?Y0g+bIKU47Fu04atQIKduw18hJ5l2K0BLlpswQKAE5CVQZU3G7s2y2KineOR?=
+ =?us-ascii?Q?ZtDQDaQB2pgqbGWjKIILQZiR0UHr7SzfzBQCtqXlzuGApr/MflcRiBliGxHT?=
+ =?us-ascii?Q?fYmiHgy4ss9aHT/rcRGk6lANVm0ptwasA31QvBraVD3R37DiH33dPe0b0bxf?=
+ =?us-ascii?Q?SE1VkAe6RYbZ2AG/roKFMU3e+8OtK803ng/w6icNYA9Z0FbAO9p/whN3GYxi?=
+ =?us-ascii?Q?StkgokxmfGt1+c9ZxpEHpPtlILDzvaxzGaLR1BiouupBrhbyV+GsrxKOQ2zP?=
+ =?us-ascii?Q?WTl3QhF5bWR7oZjOE4ARLyOrWwLPkRW95s7UXWttYxFCoM1GPmLApMsex80x?=
+ =?us-ascii?Q?Q8W+v23ozGpdAsIBxj2ETP0FYC7D73DhQ+fHKBbINFswRHX7oOhzMQLbfKWb?=
+ =?us-ascii?Q?I5WRiJLD15h9nGUe6PLmnhOiWVeZ+p/wXl7EdWD9OCeznh6dr9M2vzE+B2t4?=
+ =?us-ascii?Q?s+6RnkZg8WBUt2Cq6BjP6WXWADM8f24MSWBLBPdUxCzhgI0VARQOQra/I3HR?=
+ =?us-ascii?Q?ZAimh0ZBIndgLcllJp93QAdRnBwTd/u0sjAF0pzv11HRChkIlnZ8SEdSTLEO?=
+ =?us-ascii?Q?s6pz2GpgWNlFk4UW6U4N4Z3hc2GPTLHh0JSzNhQtggS34yig433Z1SPbSrDG?=
+ =?us-ascii?Q?ERdhajUL5QHuvMULyKhNW7Ij8vDrjRe6/94aKge080lOZx9K0tla3WLTVz23?=
+ =?us-ascii?Q?zmMzJujfZGHgvPa2/OodCZfwzGm3avPfPR7pgAtQaLKlUvlT53FF07B9MtAN?=
+ =?us-ascii?Q?9kxFg2qEHWp4Wv3xXkJHsmt4Bh4BaFVkNZz2NdIWRaePJAgsEaZuUQHqByPL?=
+ =?us-ascii?Q?lCJtP/rp1UyqFddy0cBOYPAVHZOMQIHH8VUQ8rexWNNIUArGoqUbSBCLjSWV?=
+ =?us-ascii?Q?RWPAdYB+RBL8EuDK5bKvtwxCG3AM32jYm6DjTgmm2U2BocX8XT5dNGsMPo3W?=
+ =?us-ascii?Q?jFkvVw6GzkfQzL8NToAMk/LCwM6ahA56y05GHzTaNQyIVBDC7db7f4/gh8xv?=
+ =?us-ascii?Q?pLM7T5ZRoUjtBpt9It6l0BXGIRsmrROQ7GHbpEw9z7/K814c2rMpw+QkWe16?=
+ =?us-ascii?Q?LMKLYjOCm6YuTFFN4HKdjWtr+iPRIfg3G4a376GK79Axr3Kaas+UW/c6QdPw?=
+ =?us-ascii?Q?DFQ09ZTQ2lv0JZN9PwMnkmR46dn1FMf7mxdCI++q7ZHGzWIit+pqzVH1UNQC?=
+ =?us-ascii?Q?2Ma6GuL/QPbUIR9MQ0S1qJL4wagpDnuovfGUGtu+TDccprSf9tMIRxHD6QK9?=
+ =?us-ascii?Q?++lMwGMSz+1DKxjdk/XhRSGz2SPlUiCfkCZWX+U0u5If9qCaajaUoXrXue4z?=
+ =?us-ascii?Q?qbFYC/DuhPgQfWlcV+Rfhdix63p9TZBn+R6J1VgygkI93W+9m8Q+zmFC6Plw?=
+ =?us-ascii?Q?QCBYYCbp/UIGhTg6xsJ5E/G+IGLzXBJxsTysDHIKN9QeETFZABnifCIYOPcT?=
+ =?us-ascii?Q?jJLT+QIti5UJLW+BCOXaAOHxUkaLvwXrQYJGa2el7tyALbWb8RF9yJZ/99i1?=
+ =?us-ascii?Q?mZ7jC6Ji88PWW2eAQ3SOcGlOvZvRhbRMDAkBU15sD+KRamQTfn+vGnIT1Jue?=
+ =?us-ascii?Q?Bty6YyoikoUL6RU5wJBbcWTlTGprrPRr/mYGasTMow/HKXjqg7gjuAai/SbE?=
+ =?us-ascii?Q?xWA8HiJ85T7b1VXvHtAmVqepBPjv/0MtKMMhFeBIhWnZkWx30IiwslWssqPN?=
+ =?us-ascii?Q?JRvTZA=3D=3D?=
+X-OriginatorOrg: corigine.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5866a266-cc88-4236-58bb-08db561a7c9a
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR13MB4842.namprd13.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 May 2023 14:33:16.7097
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: fe128f2c-073b-4c20-818e-7246a585940c
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: D41peU9yKRMFYSDm7uIBWx8ZfOQrfKtEE3koveYW3dbJ6gqb2R7IN6zUfHR6qpS/vglbvKAMhX5G0saQTAbUWrObSGPwa9QR1cP4yrkj1R8=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN0PR13MB4632
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230516_072000_192504_C3B829E8 
-X-CRM114-Status: GOOD (  33.40  )
+X-CRM114-CacheID: sfid-20230516_073322_008913_3C7BD0AD 
+X-CRM114-Status: GOOD (  18.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,70 +147,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Mon, May 15, 2023 at 10:18:05PM +0800, Deren Wu wrote:
+> txs may be dropped if the frame is aggregated in AMSDU. When the problem
+> shows up, some SKBs would be hold in driver to cause network stopped
+> temporarily. Even if the problem can be recovered by txs timeout handling,
+> mt7921 still need to disable txs in AMSDU to avoid this issue.
+> 
+> Cc: stable@vger.kernel.org
+> Fixes: 182071cdd594 ("mt76: connac: move connac2_mac_write_txwi in mt76_connac module")
+> Reviewed-by: Shayne Chen <shayne.chen@mediatek.com>
+> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c | 7 +++++--
+>  1 file changed, 5 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
+> index ee0fbfcd07d6..56c42ee1178c 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
+> @@ -495,6 +495,7 @@ void mt76_connac2_mac_write_txwi(struct mt76_dev *dev, __le32 *txwi,
+>  				    BSS_CHANGED_BEACON_ENABLED));
+>  	bool inband_disc = !!(changed & (BSS_CHANGED_UNSOL_BCAST_PROBE_RESP |
+>  					 BSS_CHANGED_FILS_DISCOVERY));
+> +	bool amsdu_en = wcid->amsdu;
+>  
+>  	if (vif) {
+>  		struct mt76_vif *mvif = (struct mt76_vif *)vif->drv_priv;
+> @@ -554,12 +555,14 @@ void mt76_connac2_mac_write_txwi(struct mt76_dev *dev, __le32 *txwi,
+>  	txwi[4] = 0;
+>  
+>  	val = FIELD_PREP(MT_TXD5_PID, pid);
+> -	if (pid >= MT_PACKET_ID_FIRST)
+> +	if (pid >= MT_PACKET_ID_FIRST) {
+>  		val |= MT_TXD5_TX_STATUS_HOST;
+> +		amsdu_en &= !is_mt7921(dev);
 
-On Tue, May 16, 2023 at 6:23=E2=80=AFAM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 15/05/23 22:13, Douglas Anderson ha scritto:
-> > Some Chromebooks with Mediatek SoCs have a problem where the firmware
-> > doesn't properly save/restore certain GICR registers. Newer
-> > Chromebooks should fix this issue and we may be able to do firmware
-> > updates for old Chromebooks. At the moment, the only known issue with
-> > these Chromebooks is that we can't enable "pseudo NMIs" since the
-> > priority register can be lost. Enabling "pseudo NMIs" on Chromebooks
-> > with the problematic firmware causes crashes and freezes.
-> >
-> > Let's detect devices with this problem and then disable "pseudo NMIs"
-> > on them. We'll detect the problem by looking for the presence of the
-> > "mediatek,broken-save-restore-fw" property in the GIC device tree
-> > node. Any devices with fixed firmware will not have this property.
-> >
-> > Our detection plan works because we never bake a Chromebook's device
-> > tree into firmware. Instead, device trees are always bundled with the
-> > kernel. We'll update the device trees of all affected Chromebooks and
-> > then we'll never enable "pseudo NMI" on a kernel that is bundled with
-> > old device trees. When a firmware update is shipped that fixes this
-> > issue it will know to patch the device tree to remove the property.
-> >
-> > In order to make this work, the quick detection mechanism of the GICv3
-> > code is extended to be able to look for properties in addition to
-> > looking at "compatible".
-> >
-> > Reviewed-by: Julius Werner <jwerner@chromium.org>
-> > Signed-off-by: Douglas Anderson <dianders@chromium.org>
->
-> I don't like firmware removing properties from my devicetrees and I'd lik=
-e this
-> issue to get addressed in another way (use a scratch register? and check =
-it in
-> Linux drivers to determine if the issue is not present: if scratch contai=
-ns BIT(x),
-> do not parse the quirk) but that's a different discussion which is a bit =
-out of
-> context for this patch, so:
+These are booleans not bitfields,
+so perhaps something like this is more appropriate?
 
-Any particular reason why? IMO it's actually a fair bit cleaner to
-have firmware remove a property that's specifically documented for the
-firmware to remove compared to having firmware adding properties to or
-otherwise messing with the device tree. For the removal case, it's
-easy from the device tree git history to find out about the property,
-when it was added, and that it is expected that some versions of
-firmware will remove it. IMO having firmware add properties can be a
-little more mysterious, though that has its place too. In general,
-though, firmware is expected to be able to be able to touch up the
-device tree. It puts things in "chosen", adds bits describing the
-firmware, can add things to the device tree to describe components it
-is uniquely able to probe (like SDRAM), could enable/disable a
-component if it has info about their presence, etc.
+		amsdu_en = amsdu_en && !is_mt7921(dev);
 
-I'm happy to hear other opinions on it, but in my mind having a
-sideband bit telling us to ignore the quirk is more confusing instead
-of less confusing.
-
-
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
-
-Thanks!
+> +	}
+>  
+>  	txwi[5] = cpu_to_le32(val);
+>  	txwi[6] = 0;
+> -	txwi[7] = wcid->amsdu ? cpu_to_le32(MT_TXD7_HW_AMSDU) : 0;
+> +	txwi[7] = amsdu_en ? cpu_to_le32(MT_TXD7_HW_AMSDU) : 0;
+>  
+>  	if (is_8023)
+>  		mt76_connac2_mac_write_txwi_8023(txwi, skb, wcid);
+> -- 
+> 2.18.0
+> 
 
