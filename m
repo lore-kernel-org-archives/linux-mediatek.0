@@ -4,93 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD19DC77B75
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 11:00:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63D7FC77B75
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 11:16:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=o0UJprFe8SfcD9ht4MYliq9M7kxDvSUlI5EYK4zEHg8=; b=Y+t+K/fhrGmYlg3qRBO+5F1B33
-	Oj2qLkJ86/D66gQdtVPsqb6X8eMVkhhDpOJuh8P0eJ3U+oIjmCUI1X0cqt+J361L74MSDlCJFSUy6
-	yPOIkmWgTldmfTs0buhCm3Q+lkkHJL59/VXSRymjzOgWK4pcjQ7L8lI0fab4x4WpHN7QE2ZSZEc+O
-	1d+SQBZDP9uzUZDynkpxX2ToSX67oBn9IjguQKP/eekoV93U1yO5wH0jv0tomBnrjFOboJL/bQY8l
-	KncOsfOfB78JWORZriSwlh4nv2zTd5HI9MqcX6cv8p1CE9d75f5nwN9V1qWRlYBT4824SoacRiGe/
-	RWQn/ixw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OXa4ipj5zRw2bVBNxgQx3ZtVKWlGRcCu0Y2bi/aJ5mI=; b=K4nGRYN5or1jBWDOibyz10XOIr
+	r1rnQO8jho/5rOG7D8S8ez1TYg+vtyVZCggjBTwidKuPaMdcJ7MTqxIvCA+QOPD6/JNMWJvoVp8V/
+	kErFN++NKm4wT9MrYoWI3B2aQDy8USAi518Z5D1FBI0RVZiPcQAamdgtaUiyhM609EBxmeA3n69rc
+	XreizerYUsntAJXoPS2vGLHHfGwQuHl0q0zWAYUXF2xdKkJfIk9JrZv/O+7IdM55xdwO0ZroynIGo
+	9VucxeHVLyKdrGWqYUNvZiqqKTT0rcw64NkpSy+o4ZhPkxtPAe0vX/tPnDW+6qAukV9TIg+2dqhjq
+	2vSWmabQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzEtV-009WCC-1B;
-	Wed, 17 May 2023 11:00:33 +0000
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+	id 1pzF8H-009ZNd-2G;
+	Wed, 17 May 2023 11:15:49 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzDt7-009BKA-0g
-	for linux-mediatek@lists.infradead.org;
-	Wed, 17 May 2023 09:56:06 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-9659c5b14d8so76778566b.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 17 May 2023 02:56:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1684317359; x=1686909359;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=o0UJprFe8SfcD9ht4MYliq9M7kxDvSUlI5EYK4zEHg8=;
-        b=rLUYiIn9+nCG6E01rvMUfmUdR+Vn1c8lfcxt7iFAbr4py7VH64jAl9KkEHn6CSUeW+
-         EVgCo/cM0zj5w2+rg5pcRVBfD1A65r/iI6YivabhDXDr61YB28+mg0NglgHqWbP2paNq
-         wCy8KJHjLwb0T9XIFRrHRQGRGajCbOkS6rLJyDIqqkFgU4tQQ7StA7Bi0w/k3a6/Isu1
-         DmJbFFCn05q/SLFvuzht0nldNEBCGS8swDg9fW65J3UBJYaeLViEZnXp5snkP0+UYccA
-         M4Eiu1ZDL4+k8su1RdR8UNVMceTmiA4mdG7NFdAIqg99K61lu4NRT2xgBwSiqCo4BfhV
-         TuWw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684317359; x=1686909359;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=o0UJprFe8SfcD9ht4MYliq9M7kxDvSUlI5EYK4zEHg8=;
-        b=Tru4RohhPvNH5jORLTjvjIFGcDsWpYxpGoNxhpGRaF52H6rxfPMohyawZ52nS8FrNF
-         7Kt9C9bizM8AWtDZNIq/LytXKtj99TsoEO3KMVCHYIbsrTKbuZa+7xG3QutAQ9OG1TjQ
-         CYh679qoZz9YgDRgsx+u4vAqdEu+ZvXBYxoZjoekFR+M3mhSB267juOP5djoXjcIkO7S
-         LS9JAeWvRYZtDW4QCkbBJPlsdnpIL7W1eqo+qAIeVXmrVPnTAIMwg42d8KRGUhDw6mCY
-         1QI3JYybENhidNw21di77UZ+3fGI/HpseCU0lXldWOTRY8yqqYntf4VkDZad4uGgbzEU
-         NggA==
-X-Gm-Message-State: AC+VfDz6ngOSp2DTclcOTYLcZeIpzpeqZyPFmWM9lzFgB3Fe5oRZIaZZ
-	p6j+UhHKabaeLDXeVAIgp8FBfA==
-X-Google-Smtp-Source: ACHHUZ70rZeXSoFG1abrTOHAq6446HdZswHzwiRauRzt/gQKgjuxNZiurz7JSmnX9087WBAzToo2bg==
-X-Received: by 2002:a17:907:97c8:b0:966:17b2:5b0b with SMTP id js8-20020a17090797c800b0096617b25b0bmr38530077ejc.49.1684317359586;
-        Wed, 17 May 2023 02:55:59 -0700 (PDT)
-Received: from ?IPV6:2a02:810d:15c0:828:c9ff:4c84:dd21:568d? ([2a02:810d:15c0:828:c9ff:4c84:dd21:568d])
-        by smtp.gmail.com with ESMTPSA id z11-20020a1709067e4b00b00965f6ad266bsm11942656ejr.119.2023.05.17.02.55.58
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 17 May 2023 02:55:59 -0700 (PDT)
-Message-ID: <14694246-f09f-cebb-fadf-2d97719cc81b@linaro.org>
-Date: Wed, 17 May 2023 11:55:57 +0200
+	id 1pzF8D-009ZLm-2K;
+	Wed, 17 May 2023 11:15:47 +0000
+X-UUID: 26fca356f4a411ed83ed1395ce914268-20230517
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=OXa4ipj5zRw2bVBNxgQx3ZtVKWlGRcCu0Y2bi/aJ5mI=;
+	b=oLYkwVK+LKgONlLVW6qm6ywX7/ZPMGf8uMboANpKA4GMl/luoQTSGA9pn+FiisDM/QWTRgPiF2zEQtOQE/gmS7R0dYdCY9pKS40QUgGhiS1TzXzg8kPS3ROnteqAtj8VESOdIOe4mnvi9Kfeiaok8vdiFbgWnKvbAXgb5M/kSSI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.25,REQID:94bc3186-493c-4948-91ec-e1288028e20f,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:d5b0ae3,CLOUDID:887825c1-e32c-4c97-918d-fbb3fc224d4e,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: 26fca356f4a411ed83ed1395ce914268-20230517
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <trevor.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 894884119; Wed, 17 May 2023 04:15:38 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 17 May 2023 19:15:35 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 17 May 2023 19:15:35 +0800
+From: Trevor Wu <trevor.wu@mediatek.com>
+To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
+	<perex@perex.cz>, <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+	<conor+dt@kernel.org>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>
+CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>
+Subject: [PATCH 1/5] ASoC: mediatek: mt8188: separate ADDA playback dai from capture dai
+Date: Wed, 17 May 2023 19:15:30 +0800
+Message-ID: <20230517111534.32630-2-trevor.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230517111534.32630-1-trevor.wu@mediatek.com>
+References: <20230517111534.32630-1-trevor.wu@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH 1/2] clk: mediatek: mt8365: fix the clock indexes
-Content-Language: en-US
-To: Alexandre Mergnat <amergnat@baylibre.com>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Chen-Yu Tsai <wenst@chromium.org>
-Cc: Markus Schneider-Pargmann <msp@baylibre.com>, linux-clk@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230517-fix-clk-index-v1-0-142077a1732b@baylibre.com>
- <20230517-fix-clk-index-v1-1-142077a1732b@baylibre.com>
- <9c7ff0f1-3d2c-b83a-a47d-544c76f29663@linaro.org>
- <62c51f2c-a620-a879-5659-faf3c4b77268@baylibre.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <62c51f2c-a620-a879-5659-faf3c4b77268@baylibre.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230517_025605_278880_44A82909 
-X-CRM114-Status: GOOD (  18.52  )
+X-CRM114-CacheID: sfid-20230517_041545_775289_6C350670 
+X-CRM114-Status: GOOD (  23.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,49 +85,294 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17/05/2023 11:34, Alexandre Mergnat wrote:
-> On 17/05/2023 10:40, Krzysztof Kozlowski wrote:
->> On 17/05/2023 10:28, Alexandre Mergnat wrote:
->>> Before the patch [1], the clock probe was done directly in the
->>> clk-mt8365 driver. In this probe function, the array which stores the
->>> data clocks is sized using the higher defined numbers (*_NR_CLOCK) in
->>> the clock lists [2]. Currently, with the patch [1], the specific
->>> clk-mt8365 probe function is replaced by the mtk generic one [3], which
->>> size the clock data array by adding all the clock descriptor array size
->>> provided by the clk-mt8365 driver.
->>>
->>> Actually, all clock indexes come from the header file [2], that mean, if
->>> there are more clock (then more index) in the header file [2] than the
->>> number of clock declared in the clock descriptor arrays (which is the
->>> case currently), the clock data array will be undersized and then the
->>> generic probe function will overflow when it will try to write in
->>> "clk_data[CLK_INDEX]". Actually, instead of crashing at boot, the probe
->>> function returns an error in the log which looks like:
->>> "of_clk_hw_onecell_get: invalid index 135", then this clock isn't
->>> enabled.
->>
->> Please use subject prefixes matching the subsystem. You can get them for
->> example with `git log --oneline -- DIRECTORY_OR_FILE` on the directory
->> your patch is touching.
-> 
-> I will.
-> 
->>
->> This is huge ABI break and I don't understand why it is needed. Entire
->> description above did not explain me that.
-> 
-> Briefly, clocks with the higher index than the data clock array can't be 
-> used. I've this issue:
-> [    0.427054] of_clk_hw_onecell_get: invalid index 135
-> [    0.429525] of_clk_hw_onecell_get: invalid index 69
-> [    0.442998] of_clk_hw_onecell_get: invalid index 70
-> 
-> That means CLK_TOP_SSUSB_PHY_CK_EN, CLK_IFR_SSUSB_REF and 
-> CLK_IFR_SSUSB_XHCI aren't working when I need them. So my USB doesn't work.
+MT8188 will support SOF. In SOF, be_hw_params_fixup callback are used to
+configure BE hardware parameters. However, playback and capture stream
+share the same callback function in which it can't know the stream type.
 
-That sounds like a driver, not bindings problem.
+It's possible to require different paremters for playback and capture
+stream, so separate them into two dais for SOF usage.
 
-Best regards,
-Krzysztof
+Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+---
+ sound/soc/mediatek/mt8188/mt8188-afe-common.h |  3 +-
+ sound/soc/mediatek/mt8188/mt8188-dai-adda.c   | 76 ++++++++++---------
+ sound/soc/mediatek/mt8188/mt8188-mt6359.c     | 34 +++++++--
+ 3 files changed, 68 insertions(+), 45 deletions(-)
+
+diff --git a/sound/soc/mediatek/mt8188/mt8188-afe-common.h b/sound/soc/mediatek/mt8188/mt8188-afe-common.h
+index eb7e57c239bd..1304d685a306 100644
+--- a/sound/soc/mediatek/mt8188/mt8188-afe-common.h
++++ b/sound/soc/mediatek/mt8188/mt8188-afe-common.h
+@@ -39,7 +39,7 @@ enum {
+ 	MT8188_AFE_MEMIF_END,
+ 	MT8188_AFE_MEMIF_NUM = (MT8188_AFE_MEMIF_END - MT8188_AFE_MEMIF_START),
+ 	MT8188_AFE_IO_START = MT8188_AFE_MEMIF_END,
+-	MT8188_AFE_IO_ADDA = MT8188_AFE_IO_START,
++	MT8188_AFE_IO_DL_SRC = MT8188_AFE_IO_START,
+ 	MT8188_AFE_IO_DMIC_IN,
+ 	MT8188_AFE_IO_DPTX,
+ 	MT8188_AFE_IO_ETDM_START,
+@@ -52,6 +52,7 @@ enum {
+ 	MT8188_AFE_IO_ETDM_NUM =
+ 		(MT8188_AFE_IO_ETDM_END - MT8188_AFE_IO_ETDM_START),
+ 	MT8188_AFE_IO_PCM = MT8188_AFE_IO_ETDM_END,
++	MT8188_AFE_IO_UL_SRC,
+ 	MT8188_AFE_IO_END,
+ 	MT8188_AFE_IO_NUM = (MT8188_AFE_IO_END - MT8188_AFE_IO_START),
+ 	MT8188_DAI_END = MT8188_AFE_IO_END,
+diff --git a/sound/soc/mediatek/mt8188/mt8188-dai-adda.c b/sound/soc/mediatek/mt8188/mt8188-dai-adda.c
+index fed9f927e623..9a6673a6f28a 100644
+--- a/sound/soc/mediatek/mt8188/mt8188-dai-adda.c
++++ b/sound/soc/mediatek/mt8188/mt8188-dai-adda.c
+@@ -53,8 +53,7 @@ enum {
+ };
+ 
+ struct mtk_dai_adda_priv {
+-	unsigned int dl_rate;
+-	unsigned int ul_rate;
++	bool hires_required;
+ };
+ 
+ static unsigned int afe_adda_dl_rate_transform(struct mtk_base_afe *afe,
+@@ -241,42 +240,35 @@ static int mtk_adda_ul_event(struct snd_soc_dapm_widget *w,
+ 	return 0;
+ }
+ 
+-static int mtk_afe_adc_hires_connect(struct snd_soc_dapm_widget *source,
+-				     struct snd_soc_dapm_widget *sink)
++static struct mtk_dai_adda_priv *get_adda_priv_by_name(struct mtk_base_afe *afe,
++						       const char *name)
+ {
+-	struct snd_soc_dapm_widget *w = source;
+-	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
+-	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
+ 	struct mt8188_afe_private *afe_priv = afe->platform_priv;
+-	struct mtk_dai_adda_priv *adda_priv;
+-
+-	adda_priv = afe_priv->dai_priv[MT8188_AFE_IO_ADDA];
+ 
+-	if (!adda_priv) {
+-		dev_err(afe->dev, "%s adda_priv == NULL", __func__);
+-		return 0;
+-	}
+-
+-	return !!(adda_priv->ul_rate > ADDA_HIRES_THRES);
++	if (strstr(name, "aud_adc_hires"))
++		return afe_priv->dai_priv[MT8188_AFE_IO_UL_SRC];
++	else if (strstr(name, "aud_dac_hires"))
++		return afe_priv->dai_priv[MT8188_AFE_IO_DL_SRC];
++	else
++		return NULL;
+ }
+ 
+-static int mtk_afe_dac_hires_connect(struct snd_soc_dapm_widget *source,
+-				     struct snd_soc_dapm_widget *sink)
++static int mtk_afe_adda_hires_connect(struct snd_soc_dapm_widget *source,
++				      struct snd_soc_dapm_widget *sink)
+ {
+ 	struct snd_soc_dapm_widget *w = source;
+ 	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
+ 	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
+-	struct mt8188_afe_private *afe_priv = afe->platform_priv;
+ 	struct mtk_dai_adda_priv *adda_priv;
+ 
+-	adda_priv = afe_priv->dai_priv[MT8188_AFE_IO_ADDA];
++	adda_priv = get_adda_priv_by_name(afe, w->name);
+ 
+ 	if (!adda_priv) {
+-		dev_err(afe->dev, "%s adda_priv == NULL", __func__);
++		dev_dbg(afe->dev, "adda_priv == NULL");
+ 		return 0;
+ 	}
+ 
+-	return !!(adda_priv->dl_rate > ADDA_HIRES_THRES);
++	return (adda_priv->hires_required) ? 1 : 0;
+ }
+ 
+ static const struct snd_kcontrol_new mtk_dai_adda_o176_mix[] = {
+@@ -361,7 +353,7 @@ static const struct snd_soc_dapm_route mtk_dai_adda_routes[] = {
+ 	{"ADDA Capture", NULL, "ADDA Capture Enable"},
+ 	{"ADDA Capture", NULL, "ADDA_MTKAIF_CFG"},
+ 	{"ADDA Capture", NULL, "aud_adc"},
+-	{"ADDA Capture", NULL, "aud_adc_hires", mtk_afe_adc_hires_connect},
++	{"ADDA Capture", NULL, "aud_adc_hires", mtk_afe_adda_hires_connect},
+ 
+ 	{"I168", NULL, "ADDA Capture"},
+ 	{"I169", NULL, "ADDA Capture"},
+@@ -369,7 +361,7 @@ static const struct snd_soc_dapm_route mtk_dai_adda_routes[] = {
+ 	{"ADDA Playback", NULL, "ADDA Enable"},
+ 	{"ADDA Playback", NULL, "ADDA Playback Enable"},
+ 	{"ADDA Playback", NULL, "aud_dac"},
+-	{"ADDA Playback", NULL, "aud_dac_hires", mtk_afe_dac_hires_connect},
++	{"ADDA Playback", NULL, "aud_dac_hires", mtk_afe_adda_hires_connect},
+ 
+ 	{"DL_GAIN", NULL, "O176"},
+ 	{"DL_GAIN", NULL, "O177"},
+@@ -503,13 +495,15 @@ static int mtk_dai_adda_hw_params(struct snd_pcm_substream *substream,
+ 	dev_dbg(afe->dev, "%s(), id %d, stream %d, rate %u\n",
+ 		__func__, id, substream->stream, rate);
+ 
+-	if (substream->stream == SNDRV_PCM_STREAM_PLAYBACK) {
+-		adda_priv->dl_rate = rate;
++	if (rate > ADDA_HIRES_THRES)
++		adda_priv->hires_required = 1;
++	else
++		adda_priv->hires_required = 0;
++
++	if (substream->stream == SNDRV_PCM_STREAM_PLAYBACK)
+ 		ret = mtk_dai_da_configure(afe, rate, id);
+-	} else {
+-		adda_priv->ul_rate = rate;
++	else
+ 		ret = mtk_dai_ad_configure(afe, rate, id);
+-	}
+ 
+ 	return ret;
+ }
+@@ -536,8 +530,8 @@ static const struct snd_soc_dai_ops mtk_dai_adda_ops = {
+ 
+ static struct snd_soc_dai_driver mtk_dai_adda_driver[] = {
+ 	{
+-		.name = "ADDA",
+-		.id = MT8188_AFE_IO_ADDA,
++		.name = "DL_SRC",
++		.id = MT8188_AFE_IO_DL_SRC,
+ 		.playback = {
+ 			.stream_name = "ADDA Playback",
+ 			.channels_min = 1,
+@@ -545,6 +539,11 @@ static struct snd_soc_dai_driver mtk_dai_adda_driver[] = {
+ 			.rates = MTK_ADDA_PLAYBACK_RATES,
+ 			.formats = MTK_ADDA_FORMATS,
+ 		},
++		.ops = &mtk_dai_adda_ops,
++	},
++	{
++		.name = "UL_SRC",
++		.id = MT8188_AFE_IO_UL_SRC,
+ 		.capture = {
+ 			.stream_name = "ADDA Capture",
+ 			.channels_min = 1,
+@@ -560,13 +559,18 @@ static int init_adda_priv_data(struct mtk_base_afe *afe)
+ {
+ 	struct mt8188_afe_private *afe_priv = afe->platform_priv;
+ 	struct mtk_dai_adda_priv *adda_priv;
++	int adda_dai_list[] = {MT8188_AFE_IO_DL_SRC, MT8188_AFE_IO_UL_SRC};
++	int i;
+ 
+-	adda_priv = devm_kzalloc(afe->dev, sizeof(struct mtk_dai_adda_priv),
+-				 GFP_KERNEL);
+-	if (!adda_priv)
+-		return -ENOMEM;
++	for (i = 0; i < ARRAY_SIZE(adda_dai_list); i++) {
++		adda_priv = devm_kzalloc(afe->dev,
++					 sizeof(struct mtk_dai_adda_priv),
++					 GFP_KERNEL);
++		if (!adda_priv)
++			return -ENOMEM;
+ 
+-	afe_priv->dai_priv[MT8188_AFE_IO_ADDA] = adda_priv;
++		afe_priv->dai_priv[adda_dai_list[i]] = adda_priv;
++	}
+ 
+ 	return 0;
+ }
+diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+index 919d74ea1934..833bc362dad2 100644
+--- a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
++++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+@@ -99,8 +99,8 @@ SND_SOC_DAILINK_DEFS(capture10,
+ 		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
+ 
+ /* BE */
+-SND_SOC_DAILINK_DEFS(adda,
+-		     DAILINK_COMP_ARRAY(COMP_CPU("ADDA")),
++SND_SOC_DAILINK_DEFS(dl_src,
++		     DAILINK_COMP_ARRAY(COMP_CPU("DL_SRC")),
+ 		     DAILINK_COMP_ARRAY(COMP_CODEC("mt6359-sound",
+ 						   "mt6359-snd-codec-aif1")),
+ 		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
+@@ -140,6 +140,12 @@ SND_SOC_DAILINK_DEFS(pcm1,
+ 		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
+ 		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
+ 
++SND_SOC_DAILINK_DEFS(ul_src,
++		     DAILINK_COMP_ARRAY(COMP_CPU("UL_SRC")),
++		     DAILINK_COMP_ARRAY(COMP_CODEC("mt6359-sound",
++						   "mt6359-snd-codec-aif1")),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++
+ struct mt8188_mt6359_priv {
+ 	struct snd_soc_jack dp_jack;
+ 	struct snd_soc_jack hdmi_jack;
+@@ -345,7 +351,7 @@ enum {
+ 	DAI_LINK_UL8_FE,
+ 	DAI_LINK_UL9_FE,
+ 	DAI_LINK_UL10_FE,
+-	DAI_LINK_ADDA_BE,
++	DAI_LINK_DL_SRC_BE,
+ 	DAI_LINK_DPTX_BE,
+ 	DAI_LINK_ETDM1_IN_BE,
+ 	DAI_LINK_ETDM2_IN_BE,
+@@ -353,6 +359,7 @@ enum {
+ 	DAI_LINK_ETDM2_OUT_BE,
+ 	DAI_LINK_ETDM3_OUT_BE,
+ 	DAI_LINK_PCM1_BE,
++	DAI_LINK_UL_SRC_BE,
+ };
+ 
+ static int mt8188_dptx_hw_params(struct snd_pcm_substream *substream,
+@@ -604,13 +611,11 @@ static struct snd_soc_dai_link mt8188_mt6359_dai_links[] = {
+ 		SND_SOC_DAILINK_REG(capture10),
+ 	},
+ 	/* BE */
+-	[DAI_LINK_ADDA_BE] = {
+-		.name = "ADDA_BE",
++	[DAI_LINK_DL_SRC_BE] = {
++		.name = "DL_SRC_BE",
+ 		.no_pcm = 1,
+ 		.dpcm_playback = 1,
+-		.dpcm_capture = 1,
+-		.init = mt8188_mt6359_init,
+-		SND_SOC_DAILINK_REG(adda),
++		SND_SOC_DAILINK_REG(dl_src),
+ 	},
+ 	[DAI_LINK_DPTX_BE] = {
+ 		.name = "DPTX_BE",
+@@ -676,6 +681,12 @@ static struct snd_soc_dai_link mt8188_mt6359_dai_links[] = {
+ 		.dpcm_capture = 1,
+ 		SND_SOC_DAILINK_REG(pcm1),
+ 	},
++	[DAI_LINK_UL_SRC_BE] = {
++		.name = "UL_SRC_BE",
++		.no_pcm = 1,
++		.dpcm_capture = 1,
++		SND_SOC_DAILINK_REG(ul_src),
++	},
+ };
+ 
+ static struct snd_soc_card mt8188_mt6359_soc_card = {
+@@ -695,6 +706,7 @@ static int mt8188_mt6359_dev_probe(struct platform_device *pdev)
+ 	struct mt8188_mt6359_priv *priv;
+ 	struct mt8188_card_data *card_data;
+ 	struct snd_soc_dai_link *dai_link;
++	bool init_mt6359 = false;
+ 	int ret, i;
+ 
+ 	card_data = (struct mt8188_card_data *)of_device_get_match_data(&pdev->dev);
+@@ -739,6 +751,12 @@ static int mt8188_mt6359_dev_probe(struct platform_device *pdev)
+ 		} else if (strcmp(dai_link->name, "ETDM3_OUT_BE") == 0) {
+ 			if (strcmp(dai_link->codecs->dai_name, "snd-soc-dummy-dai"))
+ 				dai_link->init = mt8188_hdmi_codec_init;
++		} else if (strcmp(dai_link->name, "DL_SRC_BE") == 0 ||
++			   strcmp(dai_link->name, "UL_SRC_BE") == 0) {
++			if (!init_mt6359) {
++				dai_link->init = mt8188_mt6359_init;
++				init_mt6359 = true;
++			}
+ 		}
+ 	}
+ 
+-- 
+2.18.0
 
 
