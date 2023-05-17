@@ -4,90 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49A38C7EE24
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 02:13:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D58C9C7EE24
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 02:26:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ppDk0NtdoPwnA/hqpFAWgsULT+yOKmYHv0B85aNUoEY=; b=eXU4ayuKComx8tjqR3RaHOoybn
-	uMkvixsP6V5FflsYFAqatt0/AMIHXo4HFvj7ss0fjIMmAsDozslwO23E78u2v3ynD68XUaO57YVIT
-	ezZ47w0Wik0xwcX/QFtfjoYEi0L1ILrLYNIjIKQKIeeYjOk96xkhGuGCMI5dI3AbnDOnjOLKWlOCC
-	HyYpcc5c7RFKQpdiRrmtF0YR4xSQjsSwSi1lzFethYyhPwuD3LgMEQGt2py3/SJxY7IKTuN1b+heM
-	RAF7jhuRKP9Xe6EzA8r06tgchws/6Z67N8+yyAw90KdV4viHZwHmx1O1uPh4375wG4kxrSllOB9iB
-	bJ2Ph62Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nYcNa1U2hxMXAsaheDvMwQHpaoPx+7Gfb4BUUDZeS7c=; b=K4QO81FAodKuIt9o05hUY7jFA4
+	mOLgg10rxbVWndT/833H99JLCxhLiqxwsDp40Sox/Dk0E8MiLZ76XtZZIqZ+MlQHC7vHemIIdU8Aa
+	SqCm2RLovremEslbM414zsstiZG172vmp9sqIHhRY+TchNaKYayUEcuKGwDYSbFSYAg41fAEfnW7d
+	8OMNuma4ckguhcoh2GRDSLNOzkiAU1rslxhFjWDymBANKPvuwNs6zhYDarMvS67wFOsMFpjNee2HF
+	Qh8TCkJVvHETfWR6p3Pak7uDK+OHcOuXpytQ/pEMWWVhmbCh0wwlj4HJ773U6s+1pwFpBdlI7l1eC
+	iEFYLC6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pz6fm-007n65-1u;
-	Wed, 17 May 2023 02:13:50 +0000
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	id 1pz6sI-007q8r-13;
+	Wed, 17 May 2023 02:26:46 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pz6fk-007n5D-0z;
-	Wed, 17 May 2023 02:13:49 +0000
-Received: from pps.filterd (m0333520.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 34GJwqMX019718;
-	Wed, 17 May 2023 02:13:43 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=from : to : cc :
- subject : date : message-id : in-reply-to : references : mime-version :
- content-type : content-transfer-encoding; s=corp-2023-03-30;
- bh=ppDk0NtdoPwnA/hqpFAWgsULT+yOKmYHv0B85aNUoEY=;
- b=gnbhIS9UxNMkxyYwFEkwDeEkNXZGrjqDIL3/3kUbYrSzkUSxi6Jk4ugmWirQgJc4KeQv
- IpBQulNVjBD4MXLFtwLF58rrMPViDeRfgzoKs2TIvT8qD4KnuLZJckny9rz3omBuZn5v
- /cGFmIOEyoerURQB7ZZrbofkoxhn7yE5gzTGrDq1JERO+qDj+dp87KM0isRgtcp86PpN
- GY44/cAFCZx4nKBN425qd3NKRZ1ZCZ1ALtZsmuoBEBZ/KqmnxJYZeKI/58u5SZ0kmjZE
- jXS3QQDrMN5OioHATSHm/bhEcFf1aHHAVv51icYLX2pa177OUiL3M4VeA+S48KP9Lyly fg== 
-Received: from phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta01.appoci.oracle.com [138.1.114.2])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3qj2kdmtpb-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 17 May 2023 02:13:43 +0000
-Received: from pps.filterd (phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (8.17.1.19/8.17.1.19) with ESMTP id 34GN8fcQ040031;
-	Wed, 17 May 2023 02:13:38 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
-	by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 3qj104k9w4-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 17 May 2023 02:13:38 +0000
-Received: from phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 34H29qF5039460;
-	Wed, 17 May 2023 02:13:37 GMT
-Received: from ca-mkp2.ca.oracle.com.com (mpeterse-ol9.allregionaliads.osdevelopmeniad.oraclevcn.com [100.100.251.135])
-	by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id 3qj104k9sf-3;
-	Wed, 17 May 2023 02:13:37 +0000
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-To: linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org,
-        linux-arm-kernel@lists.infradead.org,
-        linux-mediatek@lists.infradead.org,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Po-Wen Kao <powen.kao@mediatek.com>
-Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
-        wsd_upstream@mediatek.com, peter.wang@mediatek.com,
-        stanley.chu@mediatek.com, alice.chao@mediatek.com,
-        naomi.chu@mediatek.com, chun-hung.wu@mediatek.com,
-        cc.chou@mediatek.com, eddie.huang@mediatek.com
-Subject: Re: [PATCH v6 0/3] Several UFS MCQ Code Changes
-Date: Tue, 16 May 2023 22:13:27 -0400
-Message-Id: <168428957876.722389.3023312263286378543.b4-ty@oracle.com>
-X-Mailer: git-send-email 2.40.0
-In-Reply-To: <20230504154454.26654-1-powen.kao@mediatek.com>
-References: <20230504154454.26654-1-powen.kao@mediatek.com>
+	id 1pz6sF-007q77-1q;
+	Wed, 17 May 2023 02:26:44 +0000
+X-UUID: 4115f962f45a11ed912e1518a6540028-20230516
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=nYcNa1U2hxMXAsaheDvMwQHpaoPx+7Gfb4BUUDZeS7c=;
+	b=buUUs8YAV65neXQs4VTk7q1d5RjgDEE/q9cykVv4Wbj08iJuiHL2FpEG4DvWmTRqiZxS00mzjYMvZKJd3jXVNtGFRRLjQVvMCT6A1xmkX7Jsatj25tGh3GqXj0TohSeUMcqwPFnNTpO7R6pkBEZZ49I9FtDbP1LNCiREk6Fd1Is=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.25,REQID:a113e4f7-dd21-4bfa-bacf-405af6158835,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:d5b0ae3,CLOUDID:b7bd673b-de1e-4348-bc35-c96f92f1dcbb,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: 4115f962f45a11ed912e1518a6540028-20230516
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <walter.chang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1596944085; Tue, 16 May 2023 19:26:39 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.194) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 17 May 2023 10:26:36 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 17 May 2023 10:26:36 +0800
+From: <walter.chang@mediatek.com>
+To: Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner
+	<tglx@linutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Maciej
+ W . Rozycki" <macro@orcam.me.uk>, John Stultz <jstultz@google.com>
+CC: <wsd_upstream@mediatek.com>, <stanley.chu@mediatek.com>,
+	<Chun-hung.Wu@mediatek.com>, <Freddy.Hsin@mediatek.com>,
+	<walter.chang@mediatek.com>, Chun-Hung Wu <chun-hung.wu@mediatek.com>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+Subject: [PATCH v5 4/4] clocksource/drivers/timer-mediatek: Make timer-mediatek become loadable module
+Date: Wed, 17 May 2023 10:25:48 +0800
+Message-ID: <20230517022557.24388-5-walter.chang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230517022557.24388-1-walter.chang@mediatek.com>
+References: <20230517022557.24388-1-walter.chang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.573,FMLib:17.11.170.22
- definitions=2023-05-16_14,2023-05-16_01,2023-02-09_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0 adultscore=0 bulkscore=0
- mlxscore=0 phishscore=0 malwarescore=0 spamscore=0 mlxlogscore=999
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2304280000
- definitions=main-2305170017
-X-Proofpoint-GUID: FCjHcAqvovQ7ILZX5jjVT4jM7tPtyK8K
-X-Proofpoint-ORIG-GUID: FCjHcAqvovQ7ILZX5jjVT4jM7tPtyK8K
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230516_191348_459094_A362B707 
-X-CRM114-Status: GOOD (  14.07  )
+X-CRM114-CacheID: sfid-20230516_192643_611260_76C908E8 
+X-CRM114-Status: GOOD (  15.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,28 +86,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 04 May 2023 23:44:48 +0800, Po-Wen Kao wrote:
+From: Chun-Hung Wu <chun-hung.wu@mediatek.com>
 
-> v5 -> v6
-> - Also fix call to sizeof_utp_transfer_cmd_desc() in
-> `ufshcd_release_sdb_queue()` as suggested by Stanley Chu
-> 
-> v4 -> v5
-> - Send MTK driver MCQ support as independent patch and address Bart's
-> comment there
->     "[PATCH v1 0/2] Add MCQ support for MTK platform"
-> 
-> [...]
+Make the timer-mediatek driver which can register
+an always-on timer as tick_broadcast_device on
+MediaTek SoCs become loadable module in GKI.
 
-Applied to 6.4/scsi-fixes, thanks!
+Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+Signed-off-by: Walter Chang <walter.chang@mediatek.com>
+Tested-by: Walter Chang <walter.chang@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/clocksource/Kconfig          |  2 +-
+ drivers/clocksource/timer-mediatek.c | 33 ++++++++++++++++++++++++++++
+ 2 files changed, 34 insertions(+), 1 deletion(-)
 
-[1/3] scsi: ufs: core: Fix mcq tag calcualtion
-      https://git.kernel.org/mkp/scsi/c/5149452ca662
-[2/3] scsi: ufs: core: Rename symbol sizeof_utp_transfer_cmd_desc()
-      https://git.kernel.org/mkp/scsi/c/06caeb536b2b
-[3/3] scsi: ufs: core: Fix mcq nr_hw_queues
-      https://git.kernel.org/mkp/scsi/c/72a81bb0b6fc
-
+diff --git a/drivers/clocksource/Kconfig b/drivers/clocksource/Kconfig
+index 526382dc7482..62103c0807f7 100644
+--- a/drivers/clocksource/Kconfig
++++ b/drivers/clocksource/Kconfig
+@@ -472,7 +472,7 @@ config SYS_SUPPORTS_SH_CMT
+ 	bool
+ 
+ config MTK_TIMER
+-	bool "Mediatek timer driver" if COMPILE_TEST
++	tristate "MediaTek timer driver"
+ 	depends on HAS_IOMEM
+ 	select TIMER_OF
+ 	select CLKSRC_MMIO
+diff --git a/drivers/clocksource/timer-mediatek.c b/drivers/clocksource/timer-mediatek.c
+index 7bcb4a3f26fb..afeacb509481 100644
+--- a/drivers/clocksource/timer-mediatek.c
++++ b/drivers/clocksource/timer-mediatek.c
+@@ -13,6 +13,9 @@
+ #include <linux/clocksource.h>
+ #include <linux/interrupt.h>
+ #include <linux/irqreturn.h>
++#include <linux/module.h>
++#include <linux/of_device.h>
++#include <linux/platform_device.h>
+ #include <linux/sched_clock.h>
+ #include <linux/slab.h>
+ #include "timer-of.h"
+@@ -337,5 +340,35 @@ static int __init mtk_gpt_init(struct device_node *node)
+ 
+ 	return 0;
+ }
++
++#ifndef MODULE
+ TIMER_OF_DECLARE(mtk_mt6577, "mediatek,mt6577-timer", mtk_gpt_init);
+ TIMER_OF_DECLARE(mtk_mt6765, "mediatek,mt6765-timer", mtk_syst_init);
++#else
++static int mtk_timer_probe(struct platform_device *pdev)
++{
++	int (*timer_init)(struct device_node *node);
++	struct device_node *np = pdev->dev.of_node;
++
++	timer_init = of_device_get_match_data(&pdev->dev);
++	return timer_init(np);
++}
++
++static const struct of_device_id mtk_timer_match_table[] = {
++	{ .compatible = "mediatek,mt6577-timer", .data = mtk_gpt_init },
++	{ .compatible = "mediatek,mt6765-timer", .data = mtk_syst_init },
++	{ /* sentinel */ }
++};
++
++static struct platform_driver mtk_timer_driver = {
++	.probe = mtk_timer_probe,
++	.driver = {
++		.name = "mediatek-timer",
++		.of_match_table = mtk_timer_match_table,
++	},
++};
++module_platform_driver(mtk_timer_driver);
++
++MODULE_DESCRIPTION("MediaTek Timer driver");
++MODULE_LICENSE("GPL v2");
++#endif
 -- 
-Martin K. Petersen	Oracle Linux Engineering
+2.18.0
+
 
