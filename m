@@ -4,139 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9017FC7EE23
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 11:59:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87C77C77B75
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 12:02:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ODX/1aP5POvoG35q/x3xJEYoIFM7vMhUxRimHKms/34=; b=HRbYLS75pQWUWIFvBWhXvrW5Ru
-	1MROUndgracpk2fgnSPB5VqJKDncxrVYQcfmxos95uoZKoQ90J9ZUNYoW6/oRuFMcVK5pJGn+T68k
-	hkF8oSw3GgGg1s/vvyJVydndYdrxkLS1Sb9WxkkTEPrcW2szYGuaEGXLl7SBJ56qaEYDbweUkD71v
-	5BjZ8cQXW0RTbPKBslAOxYH1Oqf/FTQkP0beS3JW9aPSOWkdiJvKYIK5Pzru8ib0sAh2mcGNoPVc3
-	PK5gmt8TQ/HbiufvTbmufwbSNYzZdUwf6w5vNnmwHZYCtXYYAIBUJBZxxqpjth5SFbYb5ocNm3PPa
-	RzCHaewA==;
+	bh=EUCXX3qywTmH1/iTn+Vhans2ufli5Vw7rjPGGMD4pM0=; b=wnjPqnK3RzKh2tZXzOv+md+mVh
+	7P13gGvS2zQ/8SnLEusJWuzT0KVVfix/FpuOUQC87JhkFbkRw/5RgGqzGA5WZy2r8y5ZP62ZA2mZ6
+	wRMLkbaikiAn4v1N27vr/UAgGN6lkEFXS8fxggi1soHZ8Ey1KCJVh1rVNyFomhhvUFteJKhFfWTYk
+	xZpMIwS4hfz82N3nSCY7/fRGwVW9tGcIgBigJyrN0yD9PlF36nva60TTNDbu9ACpNq30folAAeA5V
+	GQ7dZYniPCG74Jk34Kze3DPYGy6uM27rgrvXT49JnUs9HPYputv/g79FWzbter8uhQkPh7kOCirmA
+	nUDY1hRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzFok-009iHZ-1u;
-	Wed, 17 May 2023 11:59:42 +0000
-Received: from mail-sn1nam02on20612.outbound.protection.outlook.com ([2a01:111:f400:7ea9::612] helo=NAM02-SN1-obe.outbound.protection.outlook.com)
+	id 1pzFrU-009jFm-0y;
+	Wed, 17 May 2023 12:02:32 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzFoh-009iGS-1g;
-	Wed, 17 May 2023 11:59:40 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=OquoSZMGYCASpojv9F8xiUOSTUpxDpa6Y8ir1yEgNelB/ZYz8vzJqZIzG4OiHDVSuunJndZy5th74O7iCdS16QUKlChuZ5hCCBeidEHexBfC2+zzPOKsO4P42B8ZSNk1h9Aees8jxglKAwc1M3iJ5Q9oWDiHvyFiqKrxd1L9gvu8E7INnCQM8dXcAJAgW6FalK1fFczql0dqk/U4GFPIVXJdpElfGrCrwwUzFgHhCWTBzsRyuNVxnZ5VWGfvNy6mEREUjirD+1zpjkPqm97D4obfHQ/bgzCc8JT9jXFK283Z4NyvTYZtiDTna9kBn016vM2vPLFQYCOy/G1j//ryeg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ODX/1aP5POvoG35q/x3xJEYoIFM7vMhUxRimHKms/34=;
- b=df9esC7yT7X05xqXUwDODKpI0mLFiLvBWUjwa+fP0UJnxTtMxeJcTIjvNju1FVX2Kj8rdBWkdTC2WuuWOVeac11w2SDRENOqnibMXKG4pk2Is8UhxqTOpZB74h9SHjcAwdzVQek4DIlomIy228Z2aUAzXkbq4JPFwTckuuKv/73e/0D4HK+xG/6955SGtJedCCs3SzPCyykBJJZiYVeZeklEsCABC0If5lDMty2HZPCkFolAzPNQK/wnbMnQrz7lT6MPOPCcAWzPDKFH/JiMz1fb7HH9UAD0UwReZZmmkLvaNTmRoOuCZCRRca7Z95ZuxxDvqEhFzOuBlEGXTwboIQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ODX/1aP5POvoG35q/x3xJEYoIFM7vMhUxRimHKms/34=;
- b=RiWeimhswFLGV8UeH5e9vWP9ch8E4cfKOGFxowIG+Ruv/ECJ9lAdVvQCuQA4nKEv5RU/Dht8uD2cAs+IHT5LH4N1/l+/Drj6OSsa9SWmgdUMi8kX/Tous1RD4DBaQ/yH5jBlz3OC3XVYfPxdecyrOv0SwLhGbfsnO2DVYDYMtTVborj/8cyPN7b+EXlVv7mxUpKQtC7HbSOh5+af9EcwbfF7eMtwwG+Qu7oZj1kr+yFYtFen4syo5+EqfIMP6fXME6FIs6kkiropzqFq+oSGdwJLvJM6iFumrKylwYvYX620eug9iopX40GFcJ9Rzt/rw8gNaqShako2nvY914pCbQ==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from CO6PR12MB5444.namprd12.prod.outlook.com (2603:10b6:5:35e::8) by
- MW3PR12MB4380.namprd12.prod.outlook.com (2603:10b6:303:5a::19) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6387.33; Wed, 17 May 2023 11:59:34 +0000
-Received: from CO6PR12MB5444.namprd12.prod.outlook.com
- ([fe80::21ef:9d59:5b2d:f1e8]) by CO6PR12MB5444.namprd12.prod.outlook.com
- ([fe80::21ef:9d59:5b2d:f1e8%4]) with mapi id 15.20.6387.033; Wed, 17 May 2023
- 11:59:34 +0000
-Message-ID: <89583b89-ea8c-8096-b083-6ab773e6c281@nvidia.com>
-Date: Wed, 17 May 2023 12:59:26 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH] phy: mediatek: Avoid floating point constants
-Content-Language: en-US
-To: Thierry Reding <thierry.reding@gmail.com>, Vinod Koul <vkoul@kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Guillaume Ranquet <granquet@baylibre.com>,
- linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org,
- "linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>
-References: <20230419122131.2167122-1-thierry.reding@gmail.com>
-From: Jon Hunter <jonathanh@nvidia.com>
-In-Reply-To: <20230419122131.2167122-1-thierry.reding@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: LO2P265CA0046.GBRP265.PROD.OUTLOOK.COM
- (2603:10a6:600:61::34) To CO6PR12MB5444.namprd12.prod.outlook.com
- (2603:10b6:5:35e::8)
+	id 1pzFrR-009jEt-0V;
+	Wed, 17 May 2023 12:02:30 +0000
+X-UUID: af3af8acf4aa11ed912e1518a6540028-20230517
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=EUCXX3qywTmH1/iTn+Vhans2ufli5Vw7rjPGGMD4pM0=;
+	b=iiIwG5y1fQM/wo/UR4SD81cMILUd+ZDD6rhc9+pA52HrPUXIErd6zhrs7+mJTRqA1FcRMeQnTMwy8GIZJtK3AFsDdH2PC4eOsgSnT7YCz+zgqm1zlGotjuYV0443fyAaoHC9pQRwaxmZ/l4H2abj5lHf4u1JQEo3zDmMF5cvkAo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.25,REQID:3dc67d1e-87fa-46cb-8368-93e6c2bbaa56,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:d5b0ae3,CLOUDID:fdfa1e6c-2f20-4998-991c-3b78627e4938,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: af3af8acf4aa11ed912e1518a6540028-20230517
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <trevor.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 740905599; Wed, 17 May 2023 05:02:23 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 17 May 2023 19:52:20 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 17 May 2023 19:52:20 +0800
+From: Trevor Wu <trevor.wu@mediatek.com>
+To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
+	<perex@perex.cz>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>
+CC: <trevor.wu@mediatek.com>, <bicycle.tsai@mediatek.com>,
+	<ting-fang.hou@mediatek.com>, <alsa-devel@alsa-project.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>
+Subject: [RESEND 3/4] ASoC: mediatek: mt6359: add mtkaif gpio setting
+Date: Wed, 17 May 2023 19:52:18 +0800
+Message-ID: <20230517115219.532-4-trevor.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230517115219.532-1-trevor.wu@mediatek.com>
+References: <20230517115219.532-1-trevor.wu@mediatek.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CO6PR12MB5444:EE_|MW3PR12MB4380:EE_
-X-MS-Office365-Filtering-Correlation-Id: 12c32696-a268-483c-3e3b-08db56ce2e54
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	rf4t9yBD6xHDvQ4yCw4pipf4G2CsVOo4fc12huD3rqQM0Jlc5aDOpZo0axXDsR8rex4AyjXFnY8rIstcgQm/JqNrS0wmRjVI79MIugmZ+o8L3MbnrJXztWLLCXzAbd8/wcykSE3S2QTUCcpTjSh/lB5O1IYt6wr9P/0GTFES0d+VoTVQ3Grh03b0TE3rXOywyfYwzHF3XiAEwuvdcxUOOaGWHz5ykswMiYznYNJmKfUwluOj2NCuJsjcYTOCHXE84WnirDc2bbrexZ7kjbKATrFJOkFZirAl4QqMqgi7TR4QeDt9uh2OvRjcBoIEIxvDw/94BHRo0I3l3ZIDDe85OoUM35G1WgdWNrYSq+LK1pgI3IClVFaeu9bKFhDIAMjKAZXMcnzmvHudK78agetaUTEV/GS1llE0UL4QC8MTws7QPRN3e63iem7oW9tDu6U4q8TBe/LisUcxaP98PMxjZ2oL6254HhC/Fhq+j9+qR4W/9tMEQTRp1x/B4W83+jAYKGKI3CDBmmRowBOrldaa+fofheuiZrsGsx05JEb/hNUbKTtsAOyz1WCaiagcj1kqVVOCJTQRkSD0UWgIP3wJ7Eo5tIYSV1i/OA4n4uKAY5KPFIuzOB0Pl0Ri0wJy2w07wPsQyyq0k8q3WUkoL2LFZg==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CO6PR12MB5444.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(396003)(376002)(346002)(366004)(136003)(39860400002)(451199021)(5660300002)(8676002)(8936002)(7416002)(54906003)(83380400001)(53546011)(31696002)(6506007)(6512007)(38100700002)(2616005)(186003)(41300700001)(478600001)(6486002)(110136005)(6666004)(66476007)(86362001)(66556008)(66946007)(4326008)(36756003)(316002)(31686004)(2906002)(43740500002)(45980500001);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?THBGb2hUaER4T3EweVFHY0k2c3EzZFZTcHNUNWJvSkxIbml4Rll4cXh0VllL?=
- =?utf-8?B?WTFkWVh1NGgyVk10OTlXcWpIQWtJOUQ4dytQaDdDNjFiTHZIUXJVZlNpZDl2?=
- =?utf-8?B?dnU5aVAwOFZhUDZ2OGpaSk42SkhjZ2U4aDlGeWpXMWFCOEJjVVB0NFdZcU1V?=
- =?utf-8?B?bGJjdjJFTDlKTTNYQmNqbEFRYjZXL3RlZEp4MjNZb2QvN2g3NStPSWF0SXNR?=
- =?utf-8?B?WlozdUNiUDhrUlN3bUJRUGtLYXBiblZiWS8yTTY5ODNYT080OU9OSkhvUU1z?=
- =?utf-8?B?a1lSakxVWnpDZ1VpLzR0SU5QaVdIRHBjN042U0Vrc3hkY245R3dWcjdTZmJ2?=
- =?utf-8?B?Um9wcUpNTnNYclZtczRWTm1UUGJQWXJkWWNNMjRISjhTS0gyeitobUsyalFJ?=
- =?utf-8?B?QVM3Zjl2MVZRcHhjZFN3WjU1NGdMcEZOT0FZK0l1Vys4TWl6ZisrTmJ6ZXpZ?=
- =?utf-8?B?Vk4vOEdlb2ZZMGFDeHA4WkxWb0FKTHdpQTNhUGtQZVNOMThUQTU5WXpKYUtn?=
- =?utf-8?B?Rk9YaFhVcTVKVVExaTQ5MnlJeXlkVHlJZlFaODcwa3k1ZzhwVzBoUTEzWGdZ?=
- =?utf-8?B?M2FWMTNnbjVvQTNUVWI4clBFbHpiekhQZUVtRGtDbVVBTSt2dnV5SEhldm5O?=
- =?utf-8?B?RDdYYitEYnRZRnZ3MFp0RDhsK3RNb1N2dWRBRTdhdlBFTGNmSnpBV1U3NzN4?=
- =?utf-8?B?UnNHaHV5eGJzM0pMdCsvd3lCalh6SzBkaUEvK0lwa2JldDNLSDh4S2xXdE16?=
- =?utf-8?B?Ynk5L1BudTVsK003Z00xZVFIMjFPUnIvQkovelFtMDZuZzlUVXp0K0tBV3Zu?=
- =?utf-8?B?R2Q4V29UNXdkdFgvQUtNa0RzRFY4V1NZc0dLUEZjN2RQVUlZYno1OTJnMlBr?=
- =?utf-8?B?WlZ2SVpmRTMwTTlxQXowN0lXTzJMbmlvOWV3VUhwTXU2WEVzUlpqcWhwRi9N?=
- =?utf-8?B?dXFBbDJnZmw1OTY5M251T0s1MUZaMUlFY3dVcTJENlpQclJPUFp0ZXA0dHdj?=
- =?utf-8?B?OUNkM20vZ2gxVnVpVjIyNkJselEvWnprTlhRdzNiWHJBL3A3TlgzdXNzS2Va?=
- =?utf-8?B?RnVBVy80Zk5vTXcwRFI2OUlpVmh0UlJHckpsMFpDRDdMVFU2aWtZVEVTOEMr?=
- =?utf-8?B?ZWI3bUkrNlMyV1psVVFiMHE2dVdpSUtha2xaUWZsd09lbWtjYzZsZ3JoTXdp?=
- =?utf-8?B?Nng3WDdOdk9pSEU2ckF2TUJqSExwZGhiUGh1bUZ0ekpHV3o4R2NpYjNFRXdC?=
- =?utf-8?B?VkF6VlovSWNkbHJReE94d1pwQkV3bGVySXRGUG5sM1NWeDhNayt6dVoxMDhs?=
- =?utf-8?B?cHdLYTg5czUvY1ZZZ053cXlWMU5RaUFucFdkcHZZTG9lKzdESi9laDZHVmRH?=
- =?utf-8?B?cW5DYXRnT3N6eXBzQVN0UHh4OE1ZNWtNQnZPTjhvdEU0RTVHNmllc0pBak9D?=
- =?utf-8?B?b01GWnRvSWpESkVnZTYrd29nN0h0a281dFJHZ2YveStSN1RHZkFaT3lsYzVK?=
- =?utf-8?B?ZUNZcWtFOFFzMWNQcmtqTDRmMGFMSkRWb3JNTnNyeE9PeFBLUmFUbjUvb1ZE?=
- =?utf-8?B?TWVja1BKUWYybFFPYndIcDBidTlueWRQbDIwNkNiRXYxb2ZoMTdWaWNhV2Y5?=
- =?utf-8?B?cHF0VU1IY3FjNWsxaHYwVjJjeFNSamdyS2h1clBHMHp1SElBUlpMUnltWGlt?=
- =?utf-8?B?dkRBNndQdHdsK1h4bnVXcFlDdE1aZ1FCS0tKWVYzZ083RmJiYWNtclJUQVpH?=
- =?utf-8?B?RXhaRzJFRUFDeG9Md2UvNnlaNTFOUVFvYk1FWE5EM3l5OWQwZ1Y0UmtjVFpo?=
- =?utf-8?B?Sm5iRVJFOUdQZEY5ZVFyUFVVN2V3UFlVbzRaOVJwamRYOWJQQkRkT1dwQ2FZ?=
- =?utf-8?B?eWlVZDM3cFBxVkV2Q3YySHc5emdKM2F4c3lQSytrcVoxTUFjNDVldkdhOWUw?=
- =?utf-8?B?bTBCMjY5NFphdEgxcm4zR29RUHpMSU9Jb05VajcyMjJIUzF4ZmNLbFRQUkVQ?=
- =?utf-8?B?M0F1bGJrSjBUWi8yTkk3VjN2a1NuMFI4REpxZWluR2hZckM0V2pWOVdKNHh3?=
- =?utf-8?B?Z0JJdFpoOWJqV1IxK2RJR0Qrb1BUMHMwME42UjlUUmxaRitDODdNMUxjN29n?=
- =?utf-8?B?MlZqOGJmWUpUS0oxSXFaTjhQY0dmSjU2N1B3Y1pmQU01SmZaRDk0TUk5UE5K?=
- =?utf-8?B?c0pQTkp6NFhjWE43NkY3Z1h1WU1BRWhURk0xTkJMMW93V2dqellnc2lDaVUz?=
- =?utf-8?B?TEhWbDFNNVVGTDVmMHQ1WDBqUVJ3PT0=?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 12c32696-a268-483c-3e3b-08db56ce2e54
-X-MS-Exchange-CrossTenant-AuthSource: CO6PR12MB5444.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 May 2023 11:59:34.6485
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: AbpXjV2icruE/RLyaHS8OsdbgfIyzfBpSo8zHsGTLIBNy9Z4esjahaoVudtAtUCdNs7kMa8KYew8usBnLzH3hQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW3PR12MB4380
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230517_045939_637198_4AAEFDCF 
-X-CRM114-Status: GOOD (  21.84  )
+X-CRM114-CacheID: sfid-20230517_050229_202855_8C34657D 
+X-CRM114-Status: UNSURE (   9.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -151,79 +86,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Vinod,
+Add mtkaif gpio driving to increase signal strength and smt setting to
+prevent from overshooting.
 
-On 19/04/2023 13:21, Thierry Reding wrote:
-> From: Thierry Reding <treding@nvidia.com>
-> 
-> When building with old versions of GCC (6.3 in this case), the compiler
-> stumbles over the floating point constants in this driver:
-> 
-> 	: In function ‘mtk_hdmi_pll_prepare’:
-> 	drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:331:23: error: ‘-mgeneral-regs-only’ is incompatible with floating-point code
-> 	  } else if (pixel_clk >= 74.175 * MEGA && pixel_clk <= 300 * MEGA) {
-> 
-> 	drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:361:12: error: ‘-mgeneral-regs-only’ is incompatible with floating-point code
-> 	 static int mtk_hdmi_pll_prepare(struct clk_hw *hw)
-> 		    ^~~~~~~~~~~~~~~~~~~~
-> 	drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:361:12: error: ‘-mgeneral-regs-only’ is incompatible with floating-point code
-> 
-> Fix this by switching to the KILO macro instead and multiplying the
-> constants by 1000 to get rid of the floating point.
-> 
-> Fixes: 45810d486bb4 ("phy: mediatek: add support for phy-mtk-hdmi-mt8195")
-> Reported-by: Jonathan Hunter <jonathanh@nvidia.com>
-> Signed-off-by: Thierry Reding <treding@nvidia.com>
-> ---
->   drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c | 8 ++++----
->   1 file changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
-> index abfc077fb0a8..b10af26cad2f 100644
-> --- a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
-> +++ b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
-> @@ -239,9 +239,9 @@ static int mtk_hdmi_pll_calc(struct mtk_hdmi_phy *hdmi_phy, struct clk_hw *hw,
->   		txposdiv = 8;
->   	else if (tmds_clk >= 54 * MEGA && tmds_clk < 148.35 * MEGA)
->   		txposdiv = 4;
-> -	else if (tmds_clk >= 148.35 * MEGA && tmds_clk < 296.7 * MEGA)
-> +	else if (tmds_clk >= 148350 * KILO && tmds_clk < 296700 * KILO)
->   		txposdiv = 2;
-> -	else if (tmds_clk >= 296.7 * MEGA && tmds_clk <= 594 * MEGA)
-> +	else if (tmds_clk >= 296700 * KILO && tmds_clk <= 594 * MEGA)
->   		txposdiv = 1;
->   	else
->   		return -EINVAL;
-> @@ -328,12 +328,12 @@ static int mtk_hdmi_pll_drv_setting(struct clk_hw *hw)
->   		clk_channel_bias = 0x34; /* 20mA */
->   		impedance_en = 0xf;
->   		impedance = 0x36; /* 100ohm */
-> -	} else if (pixel_clk >= 74.175 * MEGA && pixel_clk <= 300 * MEGA) {
-> +	} else if (pixel_clk >= 74175 * KILO && pixel_clk <= 300 * MEGA) {
->   		data_channel_bias = 0x34; /* 20mA */
->   		clk_channel_bias = 0x2c; /* 16mA */
->   		impedance_en = 0xf;
->   		impedance = 0x36; /* 100ohm */
-> -	} else if (pixel_clk >= 27 * MEGA && pixel_clk < 74.175 * MEGA) {
-> +	} else if (pixel_clk >= 27 * MEGA && pixel_clk < 74175 * KILO) {
->   		data_channel_bias = 0x14; /* 10mA */
->   		clk_channel_bias = 0x14; /* 10mA */
->   		impedance_en = 0x0;
+Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+---
+ sound/soc/codecs/mt6359.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
-
-This is breaking kernel compilation with older compilers such as GCC7. 
-This is now in the mainline and older compilers cannot build the kernel 
-with this driver enabled. The kernel docs say the min version supported 
-is GCC 5.1 currently.
-
-Can we get this merged as a fix for v6.4?
-
-Reviewed-by: Jon Hunter <jonathanh@nvidia.com>
-Tested-by: Jon Hunter <jonathanh@nvidia.com>
-
-Thanks
-Jon
-
+diff --git a/sound/soc/codecs/mt6359.c b/sound/soc/codecs/mt6359.c
+index 65e6d4d08b6a..a37ad61a8253 100644
+--- a/sound/soc/codecs/mt6359.c
++++ b/sound/soc/codecs/mt6359.c
+@@ -18,6 +18,20 @@
+ 
+ #include "mt6359.h"
+ 
++static void mt6359_set_gpio_smt(struct mt6359_priv *priv)
++{
++	/* set gpio SMT mode */
++	regmap_update_bits(priv->regmap, MT6359_SMT_CON1, 0x3ff0, 0x3ff0);
++}
++
++static void mt6359_set_gpio_driving(struct mt6359_priv *priv)
++{
++	/* 8:4mA(default), a:8mA, c:12mA, e:16mA */
++	regmap_update_bits(priv->regmap, MT6359_DRV_CON2, 0xffff, 0x8888);
++	regmap_update_bits(priv->regmap, MT6359_DRV_CON3, 0xffff, 0x8888);
++	regmap_update_bits(priv->regmap, MT6359_DRV_CON4, 0x00ff, 0x88);
++}
++
+ static void mt6359_set_playback_gpio(struct mt6359_priv *priv)
+ {
+ 	/* set gpio mosi mode, clk / data mosi */
+@@ -2745,6 +2759,8 @@ static int mt6359_codec_init_reg(struct snd_soc_component *cmpnt)
+ 			   0x1 << RG_AUDLOLSCDISABLE_VAUDP32_SFT);
+ 
+ 	/* set gpio */
++	mt6359_set_gpio_smt(priv);
++	mt6359_set_gpio_driving(priv);
+ 	mt6359_reset_playback_gpio(priv);
+ 	mt6359_reset_capture_gpio(priv);
+ 
 -- 
-nvpublic
+2.18.0
+
 
