@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 752C4C77B7F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 11:52:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82D95C77B75
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 11:53:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vnSdSNF6ArbJMg7lhVEfSNwHS80weL+zMJ+b2yfJtQY=; b=pyXbJjGh2giWLulpxmdHAzBHjV
-	0nnQtOi/ZGd3PxGl+r92fOWsIeqGPuLzVMKXb80o5Lc57EJNM5mjVHmYMMOV2C+yph/p4BUHiDfj3
-	42T1T/PA5uCwW5eUtUtIK9r5aNqgH+uv9bDrcLglB6fEi6DcgFNE4SJbGO2DDVQRQgtPobpqL9KJ4
-	0moFyPCnVq664tTPTt91Y82DeL0CSfbBssDC5s0OTScoCY/FtP/+ltwsAFPnp9hZbLmKNCHm/9pbH
-	bB+fFscKeJL1gB4MfN7hFHG/2gnFpiWN+J4wlQnWUFy+EwVJBeVGzJ0uJTy+UvbpNUvcw3XkvUCFy
-	EcB+8CSg==;
+	bh=lEcK41cF/2ml3/KbufJ41Q6kgd0u5/fZkFnkmWvxe/c=; b=AdQ4opSVOYTevUQelxLJHiUE1a
+	BMDD8X5OdU8CJS2SwwvqO3SSxYRlcIEPxOmFNuD3+B4XUim4t5DafgmGdU1TXd3cbURCocK2XXMaS
+	6tgi5av2JPmKSKiMOi+Z9Rmshz7YZZJWX5WZ8SAyjmb+hecNF/SGhy9NjN5dYdDH2hdHmKe5E0BoA
+	1daKEdOmGG0gJXTOdWVpA2SXSHJ+ioS1yy3d6vuFIfbbZyk0rz53a8ICKs/M8GOQh882ojXE6x/XG
+	WQ4KzjMKuyz4CV7pFgQ9aDvGE7iJs0ZvGV7kXKcWZ4j1nTs9+PoawiCtJvIg6i3p+u5hqvDScMHLs
+	99AxntGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzFhy-009gMz-1b;
-	Wed, 17 May 2023 11:52:42 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pzFiK-009gXE-05;
+	Wed, 17 May 2023 11:53:04 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzFhm-009gGq-2V;
-	Wed, 17 May 2023 11:52:32 +0000
-X-UUID: 491f6c5cf4a911ed83ed1395ce914268-20230517
+	id 1pzFiG-009gVi-1m;
+	Wed, 17 May 2023 11:53:01 +0000
+X-UUID: 5d89b54ef4a911ed912e1518a6540028-20230517
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=vnSdSNF6ArbJMg7lhVEfSNwHS80weL+zMJ+b2yfJtQY=;
-	b=cG/uV2aYsQGtAXUOO0yKol+XyD4EvGSiEgNQya6vMA1byd2clpudTCI0mDrbssVHedPv+2RrsaKz8k6tSMI98tZO3DMUFmlkk76gD8ubZfJarfInQ9ZuYJwU7IKJAjlVGhYpz3jZihyDnSy0kABpPvxdVH+LGPEgT7hVLoF96Ks=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=lEcK41cF/2ml3/KbufJ41Q6kgd0u5/fZkFnkmWvxe/c=;
+	b=BUhnGqxXmfJyc6OrXUX1LjNiLjBF4Wwe3n1f/iTGmQY18ctfGdAlIl39nEfy4QU/NwYXkPTqDzznhuAiSHIFTk7+aFIvEl06BImmS2XH77IJdyJKRCcVObiLMxbcrkVBv6PbtWNp5mbME/8mLJ1QnFbRQpjJYNNxZM65ykz/eHM=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.25,REQID:2989509b-fb05-4f6b-91e5-18440107c411,IP:0,U
+X-CID-O-INFO: VERSION:1.1.25,REQID:066aa4c8-5314-40d7-9005-993091aadcfe,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:d5b0ae3,CLOUDID:af1c26c1-e32c-4c97-918d-fbb3fc224d4e,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:1,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-META: VersionHash:d5b0ae3,CLOUDID:d9bf793b-de1e-4348-bc35-c96f92f1dcbb,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
-X-UUID: 491f6c5cf4a911ed83ed1395ce914268-20230517
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: 5d89b54ef4a911ed912e1518a6540028-20230517
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <trevor.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1638732191; Wed, 17 May 2023 04:52:23 -0700
+	with ESMTP id 765567979; Wed, 17 May 2023 04:52:57 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Wed, 17 May 2023 19:52:20 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -59,9 +59,9 @@ CC: <trevor.wu@mediatek.com>, <bicycle.tsai@mediatek.com>,
 	<ting-fang.hou@mediatek.com>, <alsa-devel@alsa-project.org>,
 	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-kernel@vger.kernel.org>
-Subject: [RESEND 2/4] ASoC: mediatek: mt6359: fix kselftest error of playback gain
-Date: Wed, 17 May 2023 19:52:17 +0800
-Message-ID: <20230517115219.532-3-trevor.wu@mediatek.com>
+Subject: [RESEND 4/4] ASoC: mediatek: mt6359: update route for lineout mux
+Date: Wed, 17 May 2023 19:52:19 +0800
+Message-ID: <20230517115219.532-5-trevor.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230517115219.532-1-trevor.wu@mediatek.com>
 References: <20230517115219.532-1-trevor.wu@mediatek.com>
@@ -69,8 +69,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230517_045230_831595_9A7A68A5 
-X-CRM114-Status: GOOD (  20.38  )
+X-CRM114-CacheID: sfid-20230517_045300_598674_A6ED69B6 
+X-CRM114-Status: GOOD (  16.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,182 +85,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-kselftest tries to read/write the default value. The default register
-value of playback gain is 0x1F(mute), but max gain we specified is 0x12.
-The range of the control is 0x0~0x12 and mute(0x1F) is only used in the
-driver internally. To solve the problem, implement a new callback
-mt6359_get_playback_volsw to report user configured volume instead of
-the register value.
+Originally, lineout playback source can only be DAC_3RD. Some SoC
+masters only support stereo MTKAIF outputs, so lineout path can't be
+used in such case.
 
-In addition, update max of "Headset Volume" to 0x12, so it can match the
-maximum seen on latest data sheet.
+MTKAIF connections are as follows.
+MOSI0 -> DAC_L
+MOSI1 -> DAC_R
+MOSI2 -> DAC_3rd
+
+In the patch, lineout playback source can be chosen between DAC_L and
+DAC_3rd, so sound can be outputted via lineout even though SoC only
+supports stereo MTKAIF outputs.
 
 Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
 ---
- sound/soc/codecs/mt6359.c | 88 ++++++++++++++++++++++++++++++++++++---
- 1 file changed, 82 insertions(+), 6 deletions(-)
+ sound/soc/codecs/mt6359.c | 44 +++++++++++++++++++++++++++++++--------
+ 1 file changed, 35 insertions(+), 9 deletions(-)
 
 diff --git a/sound/soc/codecs/mt6359.c b/sound/soc/codecs/mt6359.c
-index d6a93da2644e..65e6d4d08b6a 100644
+index a37ad61a8253..30690479ec17 100644
 --- a/sound/soc/codecs/mt6359.c
 +++ b/sound/soc/codecs/mt6359.c
-@@ -360,8 +360,34 @@ static int mt6359_put_volsw(struct snd_kcontrol *kcontrol,
- 			(struct soc_mixer_control *)kcontrol->private_value;
- 	unsigned int reg = 0;
- 	int index = ucontrol->value.integer.value[0];
-+	int orig_gain[2], new_gain[2];
- 	int ret;
+@@ -1159,9 +1159,10 @@ static int mt_lo_event(struct snd_soc_dapm_widget *w,
+ {
+ 	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
+ 	struct mt6359_priv *priv = snd_soc_component_get_drvdata(cmpnt);
++	unsigned int mux = dapm_kcontrol_get_value(w->kcontrols[0]);
  
-+	switch (mc->reg) {
-+	case MT6359_ZCD_CON2:
-+		orig_gain[0] = priv->ana_gain[AUDIO_ANALOG_VOLUME_HPOUTL];
-+		orig_gain[1] = priv->ana_gain[AUDIO_ANALOG_VOLUME_HPOUTR];
-+		break;
-+	case MT6359_ZCD_CON1:
-+		orig_gain[0] = priv->ana_gain[AUDIO_ANALOG_VOLUME_LINEOUTL];
-+		orig_gain[1] = priv->ana_gain[AUDIO_ANALOG_VOLUME_LINEOUTR];
-+		break;
-+	case MT6359_ZCD_CON3:
-+		orig_gain[0] = priv->ana_gain[AUDIO_ANALOG_VOLUME_HSOUTL];
-+		break;
-+	case MT6359_AUDENC_ANA_CON0:
-+		orig_gain[0] = priv->ana_gain[AUDIO_ANALOG_VOLUME_MICAMP1];
-+		break;
-+	case MT6359_AUDENC_ANA_CON1:
-+		orig_gain[0] = priv->ana_gain[AUDIO_ANALOG_VOLUME_MICAMP2];
-+		break;
-+	case MT6359_AUDENC_ANA_CON2:
-+		orig_gain[0] = priv->ana_gain[AUDIO_ANALOG_VOLUME_MICAMP3];
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
+ 	dev_dbg(priv->dev, "%s(), event 0x%x, mux %u\n",
+-		__func__, event, dapm_kcontrol_get_value(w->kcontrols[0]));
++		__func__, event, mux);
+ 
+ 	switch (event) {
+ 	case SND_SOC_DAPM_PRE_PMU:
+@@ -1199,14 +1200,29 @@ static int mt_lo_event(struct snd_soc_dapm_widget *w,
+ 		/* Enable AUD_CLK */
+ 		mt6359_set_decoder_clk(priv, true);
+ 
+-		/* Enable Audio DAC (3rd DAC) */
+-		regmap_write(priv->regmap, MT6359_AUDDEC_ANA_CON7, 0x3113);
+-		/* Enable low-noise mode of DAC */
+-		if (priv->dev_counter[DEVICE_HP] == 0)
+-			regmap_write(priv->regmap,
+-				     MT6359_AUDDEC_ANA_CON9, 0x0001);
+-		/* Switch LOL MUX to audio 3rd DAC */
+-		regmap_write(priv->regmap, MT6359_AUDDEC_ANA_CON7, 0x311b);
++		/* Switch LOL MUX to audio DAC */
++		if (mux == LO_MUX_L_DAC) {
++			if (priv->dev_counter[DEVICE_HP] > 0) {
++				dev_info(priv->dev, "%s(), can not enable DAC, hp count %d\n",
++					 __func__, priv->dev_counter[DEVICE_HP]);
++				break;
++			}
++			/* Enable DACL and switch HP MUX to open*/
++			regmap_write(priv->regmap, MT6359_AUDDEC_ANA_CON0, 0x3009);
++			/* Disable low-noise mode of DAC */
++			regmap_write(priv->regmap, MT6359_AUDDEC_ANA_CON9, 0xf200);
++			usleep_range(100, 120);
++			/* Switch LOL MUX to DACL */
++			regmap_write(priv->regmap, MT6359_AUDDEC_ANA_CON7, 0x0117);
++		} else if (mux == LO_MUX_3RD_DAC) {
++			/* Enable Audio DAC (3rd DAC) */
++			regmap_write(priv->regmap, MT6359_AUDDEC_ANA_CON7, 0x3113);
++			/* Enable low-noise mode of DAC */
++			if (priv->dev_counter[DEVICE_HP] == 0)
++				regmap_write(priv->regmap, MT6359_AUDDEC_ANA_CON9, 0x0001);
++			/* Switch LOL MUX to audio 3rd DAC */
++			regmap_write(priv->regmap, MT6359_AUDDEC_ANA_CON7, 0x311b);
++		}
+ 		break;
+ 	case SND_SOC_DAPM_PRE_PMD:
+ 		/* Switch LOL MUX to open */
+@@ -1218,6 +1234,15 @@ static int mt_lo_event(struct snd_soc_dapm_widget *w,
+ 		regmap_update_bits(priv->regmap, MT6359_AUDDEC_ANA_CON0,
+ 				   0x000f, 0x0000);
+ 
++		if (mux == LO_MUX_L_DAC) {
++			/* Disable HP driver core circuits */
++			regmap_update_bits(priv->regmap, MT6359_AUDDEC_ANA_CON0,
++					   0x3 << 4, 0x0);
++			/* Disable HP driver bias circuits */
++			regmap_update_bits(priv->regmap, MT6359_AUDDEC_ANA_CON0,
++					   0x3 << 6, 0x0);
++		}
 +
- 	ret = snd_soc_put_volsw(kcontrol, ucontrol);
- 	if (ret < 0)
- 		return ret;
-@@ -373,6 +399,8 @@ static int mt6359_put_volsw(struct snd_kcontrol *kcontrol,
- 			(reg >> RG_AUDHPLGAIN_SFT) & RG_AUDHPLGAIN_MASK;
- 		priv->ana_gain[AUDIO_ANALOG_VOLUME_HPOUTR] =
- 			(reg >> RG_AUDHPRGAIN_SFT) & RG_AUDHPRGAIN_MASK;
-+		new_gain[0] = priv->ana_gain[AUDIO_ANALOG_VOLUME_HPOUTL];
-+		new_gain[1] = priv->ana_gain[AUDIO_ANALOG_VOLUME_HPOUTR];
- 		break;
- 	case MT6359_ZCD_CON1:
- 		regmap_read(priv->regmap, MT6359_ZCD_CON1, &reg);
-@@ -380,35 +408,82 @@ static int mt6359_put_volsw(struct snd_kcontrol *kcontrol,
- 			(reg >> RG_AUDLOLGAIN_SFT) & RG_AUDLOLGAIN_MASK;
- 		priv->ana_gain[AUDIO_ANALOG_VOLUME_LINEOUTR] =
- 			(reg >> RG_AUDLORGAIN_SFT) & RG_AUDLORGAIN_MASK;
-+		new_gain[0] = priv->ana_gain[AUDIO_ANALOG_VOLUME_LINEOUTL];
-+		new_gain[1] = priv->ana_gain[AUDIO_ANALOG_VOLUME_LINEOUTR];
- 		break;
- 	case MT6359_ZCD_CON3:
- 		regmap_read(priv->regmap, MT6359_ZCD_CON3, &reg);
- 		priv->ana_gain[AUDIO_ANALOG_VOLUME_HSOUTL] =
- 			(reg >> RG_AUDHSGAIN_SFT) & RG_AUDHSGAIN_MASK;
-+		new_gain[0] = priv->ana_gain[AUDIO_ANALOG_VOLUME_HSOUTL];
- 		break;
- 	case MT6359_AUDENC_ANA_CON0:
- 		regmap_read(priv->regmap, MT6359_AUDENC_ANA_CON0, &reg);
- 		priv->ana_gain[AUDIO_ANALOG_VOLUME_MICAMP1] =
- 			(reg >> RG_AUDPREAMPLGAIN_SFT) & RG_AUDPREAMPLGAIN_MASK;
-+		new_gain[0] = priv->ana_gain[AUDIO_ANALOG_VOLUME_MICAMP1];
- 		break;
- 	case MT6359_AUDENC_ANA_CON1:
- 		regmap_read(priv->regmap, MT6359_AUDENC_ANA_CON1, &reg);
- 		priv->ana_gain[AUDIO_ANALOG_VOLUME_MICAMP2] =
- 			(reg >> RG_AUDPREAMPRGAIN_SFT) & RG_AUDPREAMPRGAIN_MASK;
-+		new_gain[0] = priv->ana_gain[AUDIO_ANALOG_VOLUME_MICAMP2];
- 		break;
- 	case MT6359_AUDENC_ANA_CON2:
- 		regmap_read(priv->regmap, MT6359_AUDENC_ANA_CON2, &reg);
- 		priv->ana_gain[AUDIO_ANALOG_VOLUME_MICAMP3] =
- 			(reg >> RG_AUDPREAMP3GAIN_SFT) & RG_AUDPREAMP3GAIN_MASK;
-+		new_gain[0] = priv->ana_gain[AUDIO_ANALOG_VOLUME_MICAMP3];
- 		break;
- 	}
+ 		/* Disable AUD_CLK */
+ 		mt6359_set_decoder_clk(priv, false);
  
-+	ret = 0;
-+	if (orig_gain[0] != new_gain[0]) {
-+		ret = 1;
-+	} else if (snd_soc_volsw_is_stereo(mc)) {
-+		if (orig_gain[1] != new_gain[1])
-+			ret = 1;
-+	}
-+
- 	dev_dbg(priv->dev, "%s(), name %s, reg(0x%x) = 0x%x, set index = %x\n",
- 		__func__, kcontrol->id.name, mc->reg, reg, index);
+@@ -2590,6 +2615,7 @@ static const struct snd_soc_dapm_route mt6359_dapm_routes[] = {
  
- 	return ret;
- }
+ 	/* Lineout Path */
+ 	{"LOL Mux", "Playback", "DAC_3RD"},
++	{"LOL Mux", "Playback_L_DAC", "DACL"},
+ 	{"LINEOUT L", NULL, "LOL Mux"},
  
-+static int mt6359_get_playback_volsw(struct snd_kcontrol *kcontrol,
-+				     struct snd_ctl_elem_value *ucontrol)
-+{
-+	struct snd_soc_component *component =
-+			snd_soc_kcontrol_component(kcontrol);
-+	struct mt6359_priv *priv = snd_soc_component_get_drvdata(component);
-+	struct soc_mixer_control *mc =
-+			(struct soc_mixer_control *)kcontrol->private_value;
-+
-+	switch (mc->reg) {
-+	case MT6359_ZCD_CON2:
-+		ucontrol->value.integer.value[0] =
-+			priv->ana_gain[AUDIO_ANALOG_VOLUME_HPOUTL];
-+		ucontrol->value.integer.value[1] =
-+			priv->ana_gain[AUDIO_ANALOG_VOLUME_HPOUTR];
-+		break;
-+	case MT6359_ZCD_CON1:
-+		ucontrol->value.integer.value[0] =
-+			priv->ana_gain[AUDIO_ANALOG_VOLUME_LINEOUTL];
-+		ucontrol->value.integer.value[1] =
-+			priv->ana_gain[AUDIO_ANALOG_VOLUME_LINEOUTR];
-+		break;
-+	case MT6359_ZCD_CON3:
-+		ucontrol->value.integer.value[0] =
-+			priv->ana_gain[AUDIO_ANALOG_VOLUME_HSOUTL];
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	return 0;
-+}
-+
- /* MUX */
- 
- /* LOL MUX */
-@@ -2701,22 +2776,23 @@ static void mt6359_codec_remove(struct snd_soc_component *cmpnt)
- 	cmpnt->regmap = NULL;
- }
- 
--static const DECLARE_TLV_DB_SCALE(hp_playback_tlv, -2200, 100, 0);
- static const DECLARE_TLV_DB_SCALE(playback_tlv, -1000, 100, 0);
- static const DECLARE_TLV_DB_SCALE(capture_tlv, 0, 600, 0);
- 
- static const struct snd_kcontrol_new mt6359_snd_controls[] = {
- 	/* dl pga gain */
- 	SOC_DOUBLE_EXT_TLV("Headset Volume",
--			   MT6359_ZCD_CON2, 0, 7, 0x1E, 0,
--			   snd_soc_get_volsw, mt6359_put_volsw,
--			   hp_playback_tlv),
-+			   MT6359_ZCD_CON2, 0, 7, 0x12, 0,
-+			   mt6359_get_playback_volsw, mt6359_put_volsw,
-+			   playback_tlv),
- 	SOC_DOUBLE_EXT_TLV("Lineout Volume",
- 			   MT6359_ZCD_CON1, 0, 7, 0x12, 0,
--			   snd_soc_get_volsw, mt6359_put_volsw, playback_tlv),
-+			   mt6359_get_playback_volsw, mt6359_put_volsw,
-+			   playback_tlv),
- 	SOC_SINGLE_EXT_TLV("Handset Volume",
- 			   MT6359_ZCD_CON3, 0, 0x12, 0,
--			   snd_soc_get_volsw, mt6359_put_volsw, playback_tlv),
-+			   mt6359_get_playback_volsw, mt6359_put_volsw,
-+			   playback_tlv),
- 
- 	/* ul pga gain */
- 	SOC_SINGLE_EXT_TLV("PGA1 Volume",
+ 	/* Headphone Path */
 -- 
 2.18.0
 
