@@ -4,73 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82D95C77B75
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 11:53:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0432CC7EE23
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 11:54:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lEcK41cF/2ml3/KbufJ41Q6kgd0u5/fZkFnkmWvxe/c=; b=AdQ4opSVOYTevUQelxLJHiUE1a
-	BMDD8X5OdU8CJS2SwwvqO3SSxYRlcIEPxOmFNuD3+B4XUim4t5DafgmGdU1TXd3cbURCocK2XXMaS
-	6tgi5av2JPmKSKiMOi+Z9Rmshz7YZZJWX5WZ8SAyjmb+hecNF/SGhy9NjN5dYdDH2hdHmKe5E0BoA
-	1daKEdOmGG0gJXTOdWVpA2SXSHJ+ioS1yy3d6vuFIfbbZyk0rz53a8ICKs/M8GOQh882ojXE6x/XG
-	WQ4KzjMKuyz4CV7pFgQ9aDvGE7iJs0ZvGV7kXKcWZ4j1nTs9+PoawiCtJvIg6i3p+u5hqvDScMHLs
-	99AxntGg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bXqGGH4gJWuiMJtK2wX2jpVK7SWDWM7eRLwPeNX1gF4=; b=wrQK1SwGzkUbRFhygJJGCX2iA4
+	LoTbJaWuMDt4qonY4jIUOjNd8e1wotjDUrzpQ1t3kC0K0VWf+tsCZ+2U3UKuCfiOcN6vSWkg55hB/
+	lLSzhvm8aOkzvXnUsyDub2xjJNLmP9pkyRIlFt9cmVMW5KQBvYOaSkmzCy1ZFOA8hdhSBD9/9XCEg
+	k5irbBD7kzCrOc516PTEhouFkKjzhrZQ3xgZX38i2ILEKrcIcnEyDWTFRdyLTxXCDt/3/thAALEDt
+	qGPXOBx1VD10PTpjo+cGpBPzy/VTiGJd8HBXnbax6u/t6IzNsXeMiaua3nbcLFzSvwqsuR/DxLoVR
+	qHyroeqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzFiK-009gXE-05;
-	Wed, 17 May 2023 11:53:04 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pzFjd-009h0V-0P;
+	Wed, 17 May 2023 11:54:25 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzFiG-009gVi-1m;
-	Wed, 17 May 2023 11:53:01 +0000
-X-UUID: 5d89b54ef4a911ed912e1518a6540028-20230517
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=lEcK41cF/2ml3/KbufJ41Q6kgd0u5/fZkFnkmWvxe/c=;
-	b=BUhnGqxXmfJyc6OrXUX1LjNiLjBF4Wwe3n1f/iTGmQY18ctfGdAlIl39nEfy4QU/NwYXkPTqDzznhuAiSHIFTk7+aFIvEl06BImmS2XH77IJdyJKRCcVObiLMxbcrkVBv6PbtWNp5mbME/8mLJ1QnFbRQpjJYNNxZM65ykz/eHM=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.25,REQID:066aa4c8-5314-40d7-9005-993091aadcfe,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:d5b0ae3,CLOUDID:d9bf793b-de1e-4348-bc35-c96f92f1dcbb,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: 5d89b54ef4a911ed912e1518a6540028-20230517
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <trevor.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 765567979; Wed, 17 May 2023 04:52:57 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 17 May 2023 19:52:20 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 17 May 2023 19:52:20 +0800
-From: Trevor Wu <trevor.wu@mediatek.com>
-To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
-	<perex@perex.cz>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>
-CC: <trevor.wu@mediatek.com>, <bicycle.tsai@mediatek.com>,
-	<ting-fang.hou@mediatek.com>, <alsa-devel@alsa-project.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>
-Subject: [RESEND 4/4] ASoC: mediatek: mt6359: update route for lineout mux
-Date: Wed, 17 May 2023 19:52:19 +0800
-Message-ID: <20230517115219.532-5-trevor.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230517115219.532-1-trevor.wu@mediatek.com>
-References: <20230517115219.532-1-trevor.wu@mediatek.com>
+	id 1pzFjV-009gwR-16;
+	Wed, 17 May 2023 11:54:18 +0000
+Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id EE2116605909;
+	Wed, 17 May 2023 12:54:14 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1684324455;
+	bh=Oz1+XIA+Tu5g8JfG9yTKx716ef2j09dwG3Nq0+Ip6z8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=It8Oq9iYKr5mHR65+J23asb3mBtgRcnKPLI7zeLsUMF/OrIN7zdffv1ut+1rFlvLL
+	 6MIHkEUgStlOENPDAlIHfzeRxLbO6mOUPeHk8dDwAezY7x0/J4aJyZ8G0ueqz/UVkv
+	 JUHSVt6c6Yo1G+Z12LeBnglbaQvRS3qQzpcMSEkTT3k4wQvq76b4G2HJ1dm8bFJsjp
+	 Mx3iPiZfjDm7VJQPYkIMREhNeBMUPzhDWSsAvM9oi6F/sXHqkhc7IgNuBQTvjR/wsT
+	 HN7Xsh361x4RL9dTKxViQSFNHNp6B/aWTS3tBBmQvp/uNf7PI3s+gMHsLmwBG5l6BB
+	 dqLf06n+bxgnQ==
+Message-ID: <8b76c893-e7bc-7a99-b86d-74e3378f9b4e@collabora.com>
+Date: Wed, 17 May 2023 13:54:12 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.1
+Subject: Re: [PATCH 4/5] ASoC: mediatek: mt8188-mt6359: support new board with
+ nau88255
+Content-Language: en-US
+To: Trevor Wu <trevor.wu@mediatek.com>, broonie@kernel.org,
+ lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com
+Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org
+References: <20230517111534.32630-1-trevor.wu@mediatek.com>
+ <20230517111534.32630-5-trevor.wu@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230517111534.32630-5-trevor.wu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230517_045300_598674_A6ED69B6 
-X-CRM114-Status: GOOD (  16.07  )
+X-CRM114-CacheID: sfid-20230517_045417_515367_27EA14B9 
+X-CRM114-Status: GOOD (  22.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,103 +81,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Originally, lineout playback source can only be DAC_3RD. Some SoC
-masters only support stereo MTKAIF outputs, so lineout path can't be
-used in such case.
+Il 17/05/23 13:15, Trevor Wu ha scritto:
+> This patch adds multiple i2s codecs support including NAU88L25,
+> MAX98390, and the dumb amp like NAU8318 usage. In addition, dmic-codec
+> is also added to skip the beginning pop noise.
+> 
+> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+> ---
+>   sound/soc/mediatek/Kconfig                |   4 +
+>   sound/soc/mediatek/mt8188/mt8188-mt6359.c | 267 +++++++++++++++++++++-
+>   2 files changed, 270 insertions(+), 1 deletion(-)
+> 
+> diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
+> index 4baac72677d9..4ea012342b52 100644
+> --- a/sound/soc/mediatek/Kconfig
+> +++ b/sound/soc/mediatek/Kconfig
+> @@ -225,6 +225,10 @@ config SND_SOC_MT8188_MT6359
+>   	depends on SND_SOC_MT8188 && MTK_PMIC_WRAP
+>   	select SND_SOC_MT6359
+>   	select SND_SOC_HDMI_CODEC
+> +	select SND_SOC_DMIC
+> +	select SND_SOC_MAX98390
+> +	select SND_SOC_NAU8315
+> +	select SND_SOC_NAU8825
+>   	help
+>   	  This adds support for ASoC machine driver for MediaTek MT8188
+>   	  boards with the MT6359 and other I2S audio codecs.
+> diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+> index 6c3f36e2fffd..15fce2741f01 100644
+> --- a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+> +++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+> @@ -6,6 +6,7 @@
+>    * Author: Trevor Wu <trevor.wu@mediatek.com>
+>    */
+>   
+> +#include <linux/input.h>
+>   #include <linux/module.h>
+>   #include <linux/of_device.h>
+>   #include <linux/pm_runtime.h>
+> @@ -13,10 +14,25 @@
+>   #include <sound/pcm_params.h>
+>   #include <sound/soc.h>
+>   #include "mt8188-afe-common.h"
+> +#include "../../codecs/nau8825.h"
+>   #include "../../codecs/mt6359.h"
+>   #include "../common/mtk-afe-platform-driver.h"
+>   #include "../common/mtk-soundcard-driver.h"
+>   
+> +/*
+> + * Maxim MAX98390
+> + */
+> +#define MAX98390_CODEC_DAI     "max98390-aif1"
+> +#define MAX98390_DEV0_NAME     "max98390.0-0038" /* rear right */
+> +#define MAX98390_DEV1_NAME     "max98390.0-0039" /* rear left */
+> +#define MAX98390_DEV2_NAME     "max98390.0-003a" /* front right */
+> +#define MAX98390_DEV3_NAME     "max98390.0-003b" /* front left */
+> +
+> +/*
+> + * Nau88l25
+> + */
+> +#define NAU8825_CODEC_DAI  "nau8825-hifi"
+> +
+>   /* FE */
+>   SND_SOC_DAILINK_DEFS(playback2,
+>   		     DAILINK_COMP_ARRAY(COMP_CPU("DL2")),
+> @@ -143,12 +159,15 @@ SND_SOC_DAILINK_DEFS(pcm1,
+>   SND_SOC_DAILINK_DEFS(ul_src,
+>   		     DAILINK_COMP_ARRAY(COMP_CPU("UL_SRC")),
+>   		     DAILINK_COMP_ARRAY(COMP_CODEC("mt6359-sound",
+> -						   "mt6359-snd-codec-aif1")),
+> +						   "mt6359-snd-codec-aif1"),
+> +					COMP_CODEC("dmic-codec",
+> +						   "dmic-hifi")),
+>   		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
+>   
+>   struct mt8188_mt6359_priv {
+>   	struct snd_soc_jack dp_jack;
+>   	struct snd_soc_jack hdmi_jack;
+> +	struct snd_soc_jack headset_jack;
+>   };
+>   
+>   static struct snd_soc_jack_pin mt8188_hdmi_jack_pins[] = {
+> @@ -165,11 +184,50 @@ static struct snd_soc_jack_pin mt8188_dp_jack_pins[] = {
+>   	},
+>   };
+>   
+> +static struct snd_soc_jack_pin nau8825_jack_pins[] = {
+> +	{
+> +		.pin    = "Headphone",
 
-MTKAIF connections are as follows.
-MOSI0 -> DAC_L
-MOSI1 -> DAC_R
-MOSI2 -> DAC_3rd
+One Intel driver using NAU8825 declares this as
 
-In the patch, lineout playback source can be chosen between DAC_L and
-DAC_3rd, so sound can be outputted via lineout even though SoC only
-supports stereo MTKAIF outputs.
+		.pin	= "Headphone Jack",
 
-Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
----
- sound/soc/codecs/mt6359.c | 44 +++++++++++++++++++++++++++++++--------
- 1 file changed, 35 insertions(+), 9 deletions(-)
+can we please use the same name, so that we're able to eventually share the
+same configuration in the userspace?
 
-diff --git a/sound/soc/codecs/mt6359.c b/sound/soc/codecs/mt6359.c
-index a37ad61a8253..30690479ec17 100644
---- a/sound/soc/codecs/mt6359.c
-+++ b/sound/soc/codecs/mt6359.c
-@@ -1159,9 +1159,10 @@ static int mt_lo_event(struct snd_soc_dapm_widget *w,
- {
- 	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
- 	struct mt6359_priv *priv = snd_soc_component_get_drvdata(cmpnt);
-+	unsigned int mux = dapm_kcontrol_get_value(w->kcontrols[0]);
- 
- 	dev_dbg(priv->dev, "%s(), event 0x%x, mux %u\n",
--		__func__, event, dapm_kcontrol_get_value(w->kcontrols[0]));
-+		__func__, event, mux);
- 
- 	switch (event) {
- 	case SND_SOC_DAPM_PRE_PMU:
-@@ -1199,14 +1200,29 @@ static int mt_lo_event(struct snd_soc_dapm_widget *w,
- 		/* Enable AUD_CLK */
- 		mt6359_set_decoder_clk(priv, true);
- 
--		/* Enable Audio DAC (3rd DAC) */
--		regmap_write(priv->regmap, MT6359_AUDDEC_ANA_CON7, 0x3113);
--		/* Enable low-noise mode of DAC */
--		if (priv->dev_counter[DEVICE_HP] == 0)
--			regmap_write(priv->regmap,
--				     MT6359_AUDDEC_ANA_CON9, 0x0001);
--		/* Switch LOL MUX to audio 3rd DAC */
--		regmap_write(priv->regmap, MT6359_AUDDEC_ANA_CON7, 0x311b);
-+		/* Switch LOL MUX to audio DAC */
-+		if (mux == LO_MUX_L_DAC) {
-+			if (priv->dev_counter[DEVICE_HP] > 0) {
-+				dev_info(priv->dev, "%s(), can not enable DAC, hp count %d\n",
-+					 __func__, priv->dev_counter[DEVICE_HP]);
-+				break;
-+			}
-+			/* Enable DACL and switch HP MUX to open*/
-+			regmap_write(priv->regmap, MT6359_AUDDEC_ANA_CON0, 0x3009);
-+			/* Disable low-noise mode of DAC */
-+			regmap_write(priv->regmap, MT6359_AUDDEC_ANA_CON9, 0xf200);
-+			usleep_range(100, 120);
-+			/* Switch LOL MUX to DACL */
-+			regmap_write(priv->regmap, MT6359_AUDDEC_ANA_CON7, 0x0117);
-+		} else if (mux == LO_MUX_3RD_DAC) {
-+			/* Enable Audio DAC (3rd DAC) */
-+			regmap_write(priv->regmap, MT6359_AUDDEC_ANA_CON7, 0x3113);
-+			/* Enable low-noise mode of DAC */
-+			if (priv->dev_counter[DEVICE_HP] == 0)
-+				regmap_write(priv->regmap, MT6359_AUDDEC_ANA_CON9, 0x0001);
-+			/* Switch LOL MUX to audio 3rd DAC */
-+			regmap_write(priv->regmap, MT6359_AUDDEC_ANA_CON7, 0x311b);
-+		}
- 		break;
- 	case SND_SOC_DAPM_PRE_PMD:
- 		/* Switch LOL MUX to open */
-@@ -1218,6 +1234,15 @@ static int mt_lo_event(struct snd_soc_dapm_widget *w,
- 		regmap_update_bits(priv->regmap, MT6359_AUDDEC_ANA_CON0,
- 				   0x000f, 0x0000);
- 
-+		if (mux == LO_MUX_L_DAC) {
-+			/* Disable HP driver core circuits */
-+			regmap_update_bits(priv->regmap, MT6359_AUDDEC_ANA_CON0,
-+					   0x3 << 4, 0x0);
-+			/* Disable HP driver bias circuits */
-+			regmap_update_bits(priv->regmap, MT6359_AUDDEC_ANA_CON0,
-+					   0x3 << 6, 0x0);
-+		}
-+
- 		/* Disable AUD_CLK */
- 		mt6359_set_decoder_clk(priv, false);
- 
-@@ -2590,6 +2615,7 @@ static const struct snd_soc_dapm_route mt6359_dapm_routes[] = {
- 
- 	/* Lineout Path */
- 	{"LOL Mux", "Playback", "DAC_3RD"},
-+	{"LOL Mux", "Playback_L_DAC", "DACL"},
- 	{"LINEOUT L", NULL, "LOL Mux"},
- 
- 	/* Headphone Path */
--- 
-2.18.0
+For reference, please check intel/avs/boards/nau8825.c
+
+Thanks,
+Angelo
 
 
