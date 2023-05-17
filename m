@@ -4,80 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62F2BC77B75
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 09:26:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14FCAC77B75
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 09:34:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=463+jZc1SwwU5dLnkJuI6XEsKfsLcH9JXONEkR0chgc=; b=5B3e56XcPgN29Mp6VrqkyqZqV3
-	AAGEKZKIWJ9Qvg+3+JuzRvHfp6u2NgghazsBP7t2N9d+HrHFpqATrPpZlZuYCTlIUZXSHmAs0WmQs
-	VZ/WoQ37K+k6HyN+BeUhOzunTR2g5hl9SS8J8lfIcSNPY56xVHky5FV6vZgdZFHGmtIT30OCkItkn
-	bzdneTioKm5BHatPP1YcMIQHpeTmQUMJXHeb54j8/nXfMf14lOX6gO3oMa3dnAav2g0XewLd/AbP4
-	eO6yD7Avvh2Wc8vN3pYNV8wGRvcTDHSvTw0qTJb48sL5KN3Em1yks1eQ+sn3QfV2ojfFUcQCPS/32
-	R4u+1Prw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OUDDylEUMPQFAPrSz8VZ1I2suyRsN1Zbbv13ypc2rzA=; b=jkYYt2WxhGW6XJs+Dku06qCApd
+	8VyWmNX1Ex/zhl6oyLMd7xM5ndaW3R5RZyTreSQczZFNANXxeg3JCLJhCEGWdu0VK01Ghc9pO8iBt
+	KZBZ7no15m4jy53Tfu/moB8ROtNlzJefHN5FsdJ55gx0PFVA7PJtJ7xUoVLXfIoDaeJOesMHmtdK0
+	pQVtf2kC6YTNbgn+ENtoWoOVz2ZJJdNVacM8k3kBbNwXlTyGxQydpmeyUU6R9nBoZlzSCGjfNwSXY
+	GZDIZIX9dVo2AqcdbEHGFegF5HiwBzuvJMza9YRmgzwq9cRH19734Q7fthDqA6LEvKgdp86xwYoGG
+	fHF7t/Ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzDQh-0093NC-1q;
-	Wed, 17 May 2023 09:26:43 +0000
-Received: from mail-vs1-xe36.google.com ([2607:f8b0:4864:20::e36])
+	id 1pzDYT-0094mj-0t;
+	Wed, 17 May 2023 09:34:45 +0000
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzDQe-0093Hr-1v
+	id 1pzDYO-0094jq-1t
 	for linux-mediatek@lists.infradead.org;
-	Wed, 17 May 2023 09:26:41 +0000
-Received: by mail-vs1-xe36.google.com with SMTP id ada2fe7eead31-4360e117b7cso139353137.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 17 May 2023 02:26:24 -0700 (PDT)
+	Wed, 17 May 2023 09:34:43 +0000
+Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-3f4c6c4b425so3595345e9.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 17 May 2023 02:34:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1684315584; x=1686907584;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=463+jZc1SwwU5dLnkJuI6XEsKfsLcH9JXONEkR0chgc=;
-        b=RTGq+QqJxYy7xeDFAit4vzaKELbLA36E0UzlE08wsYK6eLKFfbF2GkFnwLhz1m8eSQ
-         VH8Ub22Ag9n5Z4MAdl2pmlAYpKCeZ2Y87GWNObQmYeAWwsZo/Ww2yljN54aRFCZR3jzh
-         ManuXTZEbtdQH5i4shA/+zZZ6Fobi7suRF6XqWLFHnotR4ClCMIoD1CcybnDia3xqgKI
-         ug4xMNdIYYKwR5CvQtLdK7QFw+HmMV+L3zh56RgjtfdbbEFsrddyx9aGaVfC8v9EdI1G
-         6XdlCJOBA3YOXBngguDulzJ1HcRzO92hi7lU9+wXuSz5FGfFnxPidV40yb34KQO6Xa/r
-         CyUA==
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1684316076; x=1686908076;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=OUDDylEUMPQFAPrSz8VZ1I2suyRsN1Zbbv13ypc2rzA=;
+        b=XJSg314JjT5M+98dJS+VCddMEi8iYMXpPyn9zkjIGFyADWNkyxp7ryBtkVfS4Cd847
+         Lf48mYtXHWxAdR37oqQ0G6DJ2ismYf50up5N7NAFWfNKEyfAdokSiVpsnQLhPGW83h47
+         21D6C4OqYuNMollfIfXcv38/Z/u1EvEFleuDbYG2qLucJtxks4ngMKvuJtN8TPhlMxE4
+         mhskNVHTzvyf9d7zTcKLksGRRkEsGZC86Qn8Xv+7pDe78i5HKplZFQ62HbZTOry7HJ8i
+         nYDa3O6hEeyDtrwmAJO0FQzrGBnlICC2D7pwBW8C0Tb65VoXjz/1/H/502o/UslnVCAv
+         p6qQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684315584; x=1686907584;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=463+jZc1SwwU5dLnkJuI6XEsKfsLcH9JXONEkR0chgc=;
-        b=dAigaDon0dK2Ih4VQl1VsbaY4HI7e1uQ2iFNXDukybf1uuYRBNtHN9ODOhuExjRgSP
-         Mgb/6LYZHtixlFTdkde3VU9Wm0ACMHCoa9K+gxDLAIgnXYTTBmsIB2AYZMuLAFD1+8n0
-         vUvReSYFNnFRGHlcXD0wOBOH2Q4gZizfBM51IzAmX4f3+RaoA1M0e6g/3lzLzeVeC95C
-         OT1w+sbT0Q55OnEz8yGWnntEe3Bbxuo2EPOAyB3rMbqfyMldnxm16qiC0mtE7xrqxnV/
-         MDIvME3xqPl3ghnkh5vnC3uaqI0dEwmsAJnqtTLLM1PJ6xJEn6p0WcM4papms+y1ycfH
-         czjw==
-X-Gm-Message-State: AC+VfDw5gkr6iur26BwHPGJSwFs9c4qtAzq6e1Svc5PYgBFkL0AQZpEi
-	Ao9bP4579W2Y3DivzmwHrisSL3UjERv+F4+mRtp8Lg==
-X-Google-Smtp-Source: ACHHUZ7PlEf9sZpsVL8yIFKgry46KtQDWkG5cMNReUJNl/yajmdY8zfYgicaCu9oahkhryydSeLIJRfBwHvVgdFTVqg=
-X-Received: by 2002:a67:e3c3:0:b0:436:367:4ac0 with SMTP id
- k3-20020a67e3c3000000b0043603674ac0mr13539923vsm.19.1684315584095; Wed, 17
- May 2023 02:26:24 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1684316076; x=1686908076;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=OUDDylEUMPQFAPrSz8VZ1I2suyRsN1Zbbv13ypc2rzA=;
+        b=lI3Gqhm0j9Foqnn1tudDvJjzZhoktruzJuDgCB1Wm2RiAQopGHMJLupEWDrziEku1R
+         F4tzzGKw/6vZyBceTmWwE+EQFfY9ATHcQuxto1gZywEGLLsiONfs81AN4iUNMMOpEoVU
+         VP7Ex7UaqYdHgryEeHKlWsB0phaxYu+OhvNgcxYEl7fyROUIitb6KZC9BfZ1xaK5c0WG
+         sm+wfso1QOfJhioUgGHUpeE67qE6vrRCLGmIh8h3+d/UBsrdOA+0LipMv6dV4D7XbVW4
+         0mfwj6P2+abn7DFTN6zfiZMW+DECZpWA9RbCQXvUtFV+4k/dnz/XatbVjikeoE27thr/
+         kECQ==
+X-Gm-Message-State: AC+VfDx3SMA4baaKvQWmycYnr9o/+eR+T9LcE5WXF8ihBUqzE8KVNdFs
+	HzmQDp4x0nhdPmk1KAu/ph7gLQ==
+X-Google-Smtp-Source: ACHHUZ4jNgQpFPdP+tvVxA3NtSIP3jJELzRJPLwuGEnKMoW8YHWa+nsihhXkJ5xOCHJj8CLdfns4gg==
+X-Received: by 2002:a05:600c:c6:b0:3f4:28db:f5ff with SMTP id u6-20020a05600c00c600b003f428dbf5ffmr21701922wmm.35.1684316076025;
+        Wed, 17 May 2023 02:34:36 -0700 (PDT)
+Received: from [10.1.3.59] (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
+        by smtp.gmail.com with ESMTPSA id n7-20020a05600c294700b003f4266965fbsm1655325wmd.5.2023.05.17.02.34.34
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 17 May 2023 02:34:35 -0700 (PDT)
+Message-ID: <62c51f2c-a620-a879-5659-faf3c4b77268@baylibre.com>
+Date: Wed, 17 May 2023 11:34:32 +0200
 MIME-Version: 1.0
-References: <20230517031856.19660-1-xiaoming.ding@mediatek.com>
- <ZGSDoVKKVqCkbaCB@infradead.org> <CAFA6WYO+AvnbuAdWyBAQ8HkLaOno7PXdsPb9SubxrGNvAm4UnQ@mail.gmail.com>
- <ZGSLiiK/JzD5KMd7@infradead.org>
-In-Reply-To: <ZGSLiiK/JzD5KMd7@infradead.org>
-From: Sumit Garg <sumit.garg@linaro.org>
-Date: Wed, 17 May 2023 14:56:13 +0530
-Message-ID: <CAFA6WYPOMwmrA3J84AHzoD2eAtNkpMxr754qHpc-j6XRkgFFvQ@mail.gmail.com>
-Subject: Re: [PATCH] tee: add FOLL_LONGTERM for CMA case when alloc shm
-To: Christoph Hellwig <hch@infradead.org>
-Cc: Xiaoming Ding <xiaoming.ding@mediatek.com>, Jens Wiklander <jens.wiklander@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, op-tee@lists.trustedfirmware.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, fei.xu@mediatek.com, 
-	srv_heupstream@mediatek.com, linux-mm@kvack.org
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH 1/2] clk: mediatek: mt8365: fix the clock indexes
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chen-Yu Tsai <wenst@chromium.org>
+Cc: Markus Schneider-Pargmann <msp@baylibre.com>, linux-clk@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230517-fix-clk-index-v1-0-142077a1732b@baylibre.com>
+ <20230517-fix-clk-index-v1-1-142077a1732b@baylibre.com>
+ <9c7ff0f1-3d2c-b83a-a47d-544c76f29663@linaro.org>
+Content-Language: en-US
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <9c7ff0f1-3d2c-b83a-a47d-544c76f29663@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230517_022640_635753_5A021281 
-X-CRM114-Status: GOOD (  17.10  )
+X-CRM114-CacheID: sfid-20230517_023440_812921_CD18E2B1 
+X-CRM114-Status: GOOD (  27.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,36 +104,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 17 May 2023 at 13:38, Christoph Hellwig <hch@infradead.org> wrote:
->
-> On Wed, May 17, 2023 at 01:22:51PM +0530, Sumit Garg wrote:
-> > > > +#if IS_ENABLED(CONFIG_CMA)
-> > > > +     page_flag |= FOLL_LONGTERM;
-> > > > +#endif
-> > > >       if (flags & TEE_SHM_USER_MAPPED)
-> > >
-> > > If this mapping is long live it should always use FOLL_LONGTERM.
-> >
-> > It depends on the userspace application needs. However, I think it
-> > should be safe to use FOLL_LONGTERM by default to serve cases like
-> > secure media playback.
->
-> long term is defined as won't automatically go away during the same
-> syscall.
+On 17/05/2023 10:40, Krzysztof Kozlowski wrote:
+> On 17/05/2023 10:28, Alexandre Mergnat wrote:
+>> Before the patch [1], the clock probe was done directly in the
+>> clk-mt8365 driver. In this probe function, the array which stores the
+>> data clocks is sized using the higher defined numbers (*_NR_CLOCK) in
+>> the clock lists [2]. Currently, with the patch [1], the specific
+>> clk-mt8365 probe function is replaced by the mtk generic one [3], which
+>> size the clock data array by adding all the clock descriptor array size
+>> provided by the clk-mt8365 driver.
+>>
+>> Actually, all clock indexes come from the header file [2], that mean, if
+>> there are more clock (then more index) in the header file [2] than the
+>> number of clock declared in the clock descriptor arrays (which is the
+>> case currently), the clock data array will be undersized and then the
+>> generic probe function will overflow when it will try to write in
+>> "clk_data[CLK_INDEX]". Actually, instead of crashing at boot, the probe
+>> function returns an error in the log which looks like:
+>> "of_clk_hw_onecell_get: invalid index 135", then this clock isn't
+>> enabled.
+> 
+> Please use subject prefixes matching the subsystem. You can get them for
+> example with `git log --oneline -- DIRECTORY_OR_FILE` on the directory
+> your patch is touching.
 
-Do you mean a pinned user-space page can be paged out automatically?
-The documentation [1] isn't very helpful here either since it talks
-about "short term" vs "long term" in abstract terms.
+I will.
 
-Just FYI, the underlying use-case for TEE registered shared memory is
-that the references to pinned pages are provided to TEE implementation
-to operate upon. This can happen over multiple syscalls and we want
-the pinned pages to be always in RAM as otherwise the physical
-addresses may change if they are paged out in between. If this is only
-supported reliably with a long term flag then this patch should be
-tagged as a fix and requires stable backports.
+> 
+> This is huge ABI break and I don't understand why it is needed. Entire
+> description above did not explain me that.
 
-[1] Documentation/core-api/pin_user_pages.rst
+Briefly, clocks with the higher index than the data clock array can't be 
+used. I've this issue:
+[    0.427054] of_clk_hw_onecell_get: invalid index 135
+[    0.429525] of_clk_hw_onecell_get: invalid index 69
+[    0.442998] of_clk_hw_onecell_get: invalid index 70
 
--Sumit
+That means CLK_TOP_SSUSB_PHY_CK_EN, CLK_IFR_SSUSB_REF and 
+CLK_IFR_SSUSB_XHCI aren't working when I need them. So my USB doesn't work.
+
+> 
+>>
+>> The simplest way to fix the regression is to remove from the header file
+>> [2] the unused clocks.
+> 
+> ??? The simples is to revert the patch, so you won't break the ABI.
+> 
+>>
+>> [1]: Commit ffe91cb28f6a ("clk: mediatek: mt8365: Convert to
+>>       mtk_clk_simple_{probe,remove}()")
+>> [2]: include/dt-bindings/clock/mediatek,mt8365-clk.h
+>> [3]: drivers/clk/mediatek/clk-mtk.c
+>>
+>> Fixes: ffe91cb28f6a ("clk: mediatek: mt8365: Convert to mtk_clk_simple_{probe,remove}()")
+>>
+>> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+>> ---
+>>   include/dt-bindings/clock/mediatek,mt8365-clk.h | 361 ++++++++++++------------
+>>   1 file changed, 177 insertions(+), 184 deletions(-)
+>>
+>> diff --git a/include/dt-bindings/clock/mediatek,mt8365-clk.h b/include/dt-bindings/clock/mediatek,mt8365-clk.h
+>> index f9aff1775810..fd59c8bdeb24 100644
+>> --- a/include/dt-bindings/clock/mediatek,mt8365-clk.h
+>> +++ b/include/dt-bindings/clock/mediatek,mt8365-clk.h
+>> @@ -7,147 +7,142 @@
+>>   #define _DT_BINDINGS_CLK_MT8365_H
+>>   
+>>   /* TOPCKGEN */
+>> -#define CLK_TOP_CLK_NULL		0> -#define CLK_TOP_I2S0_BCK		1
+> 
+> ...
+> 
+>> +#define CLK_TOP_I2S0_BCK		0
+> 
+> Why? This is really broken. You can remove the defines, but re-shuffling
+> everything?!?
+
+I've under-estimated the impact of modifying the defines, I will try to 
+find another way to fix the regression in the drivers directly.
+
+Thanks for your review.
+
+> 
+> Best regards,
+> Krzysztof
+> 
+> 
+
+-- 
+Regards,
+Alexandre
+
 
