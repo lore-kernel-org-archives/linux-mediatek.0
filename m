@@ -4,53 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FDB9C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 11:16:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BB87C77B75
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 11:16:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CVyzVA40tuzeVe+KRUH+YweZtdLrOsOuB+50+LXGXEU=; b=QVW7wlXaQK69c4ZAnwuLbTaO81
-	uk16BzKTqr3KPxofxTYqnJkl4/cSXhAQwrjHcXEEpS1mjbIrlsdxiHZrJLT1dJp5NOGF5J7bpSWQz
-	6BxiyYQ4jUFcjxaxU8Cijd0qEMilkXZ/iJoo1iEqjot6cfwXb0Ld3XanywkmPDVwoZsufSH1szx9T
-	uZ7IjuZe1TUBHGnH1i/1nWQnasIeLjH1bZ9sEvf3NDMNKVh8RZ72r07dQqbLRPBkPChHe0E5mJaxI
-	L4s4cUIFqcKExzPvPF8Cp3gXuKCMkjo1+DaNI61TIsPWwDCvDGcFrZYjxDtRmQ3NrikDJCzJ8UNG+
-	R2tY0Yuw==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=jF5GZyRGb/IcLuhzuqGakVFZy8gHEbuq61zX8J4vkh4=; b=A2Q+zMFabEPNDU1PwjS409zJh4
+	kLNO5zQCobmmadAkE9B7ham8GWIb2MWKbr+TtEm6w2QTYh402Y2eFQ70cy0g0ft/YEyeZ3uC6vLyW
+	9D4WCRhmnEMeY14dTgDgxIwHWHD2QJpEPsAbSRu7psX2Ekuze0cNrP5P6AKoawZ2fN71hJiByCuFA
+	EgWpmnPRnpBTPXxHRBw2lNrcTG+KxkTlyW3Ac14s4wSVxl2QhWJaUoKs3IedAcpk0SCa30xWaRmzZ
+	dFk3Zr7n4Q5L0/wnW2w/JQgxKO2Sy4kQn0ttI3dMxgGn5VqFw0RsU+kzEQLwHLDPFihOa8F8DnQ7n
+	SgIIR/OQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzF8T-009ZRv-0W;
-	Wed, 17 May 2023 11:16:01 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pzF8k-009ZY1-0O;
+	Wed, 17 May 2023 11:16:18 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzF8H-009ZMD-0j;
-	Wed, 17 May 2023 11:15:52 +0000
-X-UUID: 279b8fdef4a411ed912e1518a6540028-20230517
+	id 1pzF8h-009ZWd-2P;
+	Wed, 17 May 2023 11:16:16 +0000
+X-UUID: 3a567508f4a411ed83ed1395ce914268-20230517
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=CVyzVA40tuzeVe+KRUH+YweZtdLrOsOuB+50+LXGXEU=;
-	b=Bi0bqUvSZo2OJGm7yrCbdgeKG8Vq6CpUlob/1B4BCMtKpUveoLxOfLRw2WdBeDK22sAWmDCL5nNHmO+Mm/c+kSZnK/uC9O51VmFZjLpzRSmHxHFIDOVP2HY8O3MOg/DVMWAmb+VeKczDssKn5MMuyeMxDTW0M8KrkROIeLgh1/U=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=jF5GZyRGb/IcLuhzuqGakVFZy8gHEbuq61zX8J4vkh4=;
+	b=eW2hEbUjarZg20ZE9XYymgsHfi/Rv4/bwBcqG0LtyezuJZQtqClJSSB0xIdl8vJwy3yUvMm//vr3YBpKaN/RhdUEI/9u1JY6WUHkogixkcdpcwYhQapzlS42MLjlfAmtP2WQ4oWRn+jV9quH/0imHYc9jABACIe2wIeJG8TNgek=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.25,REQID:b0074547-6477-4157-b3ac-7302e3ee88e0,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:d5b0ae3,CLOUDID:51261e6c-2f20-4998-991c-3b78627e4938,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-UUID: 279b8fdef4a411ed912e1518a6540028-20230517
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+X-CID-O-INFO: VERSION:1.1.25,REQID:74da0695-0b78-46b1-89c3-0930d27d37e5,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:95
+X-CID-INFO: VERSION:1.1.25,REQID:74da0695-0b78-46b1-89c3-0930d27d37e5,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTION
+	:quarantine,TS:95
+X-CID-META: VersionHash:d5b0ae3,CLOUDID:4e7b25c1-e32c-4c97-918d-fbb3fc224d4e,B
+	ulkID:230517191537PTNBPR4Q,BulkQuantity:1,Recheck:0,SF:19|48|38|29|28|17,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
+	OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: 3a567508f4a411ed83ed1395ce914268-20230517
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
 	(envelope-from <trevor.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1890351839; Wed, 17 May 2023 04:15:39 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+	with ESMTP id 997162354; Wed, 17 May 2023 04:16:10 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 17 May 2023 19:15:36 +0800
+ 15.2.1118.26; Wed, 17 May 2023 19:15:35 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 17 May 2023 19:15:36 +0800
+ 15.2.1118.26 via Frontend Transport; Wed, 17 May 2023 19:15:35 +0800
 From: Trevor Wu <trevor.wu@mediatek.com>
 To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
 	<perex@perex.cz>, <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
@@ -59,18 +63,17 @@ To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
 CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
 	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>
-Subject: [PATCH 4/5] ASoC: mediatek: mt8188-mt6359: support new board with nau88255
-Date: Wed, 17 May 2023 19:15:33 +0800
-Message-ID: <20230517111534.32630-5-trevor.wu@mediatek.com>
+Subject: [PATCH 0/5] ASoC: mt8188: add new board support
+Date: Wed, 17 May 2023 19:15:29 +0800
+Message-ID: <20230517111534.32630-1-trevor.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230517111534.32630-1-trevor.wu@mediatek.com>
-References: <20230517111534.32630-1-trevor.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230517_041549_283144_4DF87AB9 
-X-CRM114-Status: GOOD (  24.82  )
+X-CRM114-CacheID: sfid-20230517_041615_783409_E1E54BB1 
+X-CRM114-Status: UNSURE (   9.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,377 +88,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds multiple i2s codecs support including NAU88L25,
-MAX98390, and the dumb amp like NAU8318 usage. In addition, dmic-codec
-is also added to skip the beginning pop noise.
+In the series, we extend the capability of mt8188-mt6359 driver.
 
-Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
----
- sound/soc/mediatek/Kconfig                |   4 +
- sound/soc/mediatek/mt8188/mt8188-mt6359.c | 267 +++++++++++++++++++++-
- 2 files changed, 270 insertions(+), 1 deletion(-)
+The following changes are included.
+1. Divide ADDA BE dai into two dais for SOF.
+2. Register hdmi/dp jack pins.
+3. dai_fmt can be configured from device tree.
+4. Add some I2S codecs support.
 
-diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
-index 4baac72677d9..4ea012342b52 100644
---- a/sound/soc/mediatek/Kconfig
-+++ b/sound/soc/mediatek/Kconfig
-@@ -225,6 +225,10 @@ config SND_SOC_MT8188_MT6359
- 	depends on SND_SOC_MT8188 && MTK_PMIC_WRAP
- 	select SND_SOC_MT6359
- 	select SND_SOC_HDMI_CODEC
-+	select SND_SOC_DMIC
-+	select SND_SOC_MAX98390
-+	select SND_SOC_NAU8315
-+	select SND_SOC_NAU8825
- 	help
- 	  This adds support for ASoC machine driver for MediaTek MT8188
- 	  boards with the MT6359 and other I2S audio codecs.
-diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-index 6c3f36e2fffd..15fce2741f01 100644
---- a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-+++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-@@ -6,6 +6,7 @@
-  * Author: Trevor Wu <trevor.wu@mediatek.com>
-  */
- 
-+#include <linux/input.h>
- #include <linux/module.h>
- #include <linux/of_device.h>
- #include <linux/pm_runtime.h>
-@@ -13,10 +14,25 @@
- #include <sound/pcm_params.h>
- #include <sound/soc.h>
- #include "mt8188-afe-common.h"
-+#include "../../codecs/nau8825.h"
- #include "../../codecs/mt6359.h"
- #include "../common/mtk-afe-platform-driver.h"
- #include "../common/mtk-soundcard-driver.h"
- 
-+/*
-+ * Maxim MAX98390
-+ */
-+#define MAX98390_CODEC_DAI     "max98390-aif1"
-+#define MAX98390_DEV0_NAME     "max98390.0-0038" /* rear right */
-+#define MAX98390_DEV1_NAME     "max98390.0-0039" /* rear left */
-+#define MAX98390_DEV2_NAME     "max98390.0-003a" /* front right */
-+#define MAX98390_DEV3_NAME     "max98390.0-003b" /* front left */
-+
-+/*
-+ * Nau88l25
-+ */
-+#define NAU8825_CODEC_DAI  "nau8825-hifi"
-+
- /* FE */
- SND_SOC_DAILINK_DEFS(playback2,
- 		     DAILINK_COMP_ARRAY(COMP_CPU("DL2")),
-@@ -143,12 +159,15 @@ SND_SOC_DAILINK_DEFS(pcm1,
- SND_SOC_DAILINK_DEFS(ul_src,
- 		     DAILINK_COMP_ARRAY(COMP_CPU("UL_SRC")),
- 		     DAILINK_COMP_ARRAY(COMP_CODEC("mt6359-sound",
--						   "mt6359-snd-codec-aif1")),
-+						   "mt6359-snd-codec-aif1"),
-+					COMP_CODEC("dmic-codec",
-+						   "dmic-hifi")),
- 		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
- 
- struct mt8188_mt6359_priv {
- 	struct snd_soc_jack dp_jack;
- 	struct snd_soc_jack hdmi_jack;
-+	struct snd_soc_jack headset_jack;
- };
- 
- static struct snd_soc_jack_pin mt8188_hdmi_jack_pins[] = {
-@@ -165,11 +184,50 @@ static struct snd_soc_jack_pin mt8188_dp_jack_pins[] = {
- 	},
- };
- 
-+static struct snd_soc_jack_pin nau8825_jack_pins[] = {
-+	{
-+		.pin    = "Headphone",
-+		.mask   = SND_JACK_HEADPHONE,
-+	},
-+	{
-+		.pin    = "Headset Mic",
-+		.mask   = SND_JACK_MICROPHONE,
-+	},
-+};
-+
- struct mt8188_card_data {
- 	const char *name;
- 	unsigned long quirk;
- };
- 
-+static const struct snd_kcontrol_new mt8188_dumb_spk_kcontrols[] = {
-+	SOC_DAPM_PIN_SWITCH("Ext Spk"),
-+};
-+
-+static const struct snd_soc_dapm_widget mt8188_dumb_spk_widgets[] = {
-+	SND_SOC_DAPM_SPK("Ext Spk", NULL),
-+};
-+
-+static const struct snd_kcontrol_new mt8188_dual_spk_kcontrols[] = {
-+	SOC_DAPM_PIN_SWITCH("Left Spk"),
-+	SOC_DAPM_PIN_SWITCH("Right Spk"),
-+};
-+
-+static const struct snd_soc_dapm_widget mt8188_dual_spk_widgets[] = {
-+	SND_SOC_DAPM_SPK("Left Spk", NULL),
-+	SND_SOC_DAPM_SPK("Right Spk", NULL),
-+};
-+
-+static const struct snd_kcontrol_new mt8188_rear_spk_kcontrols[] = {
-+	SOC_DAPM_PIN_SWITCH("Rear Left Spk"),
-+	SOC_DAPM_PIN_SWITCH("Rear Right Spk"),
-+};
-+
-+static const struct snd_soc_dapm_widget mt8188_rear_spk_widgets[] = {
-+	SND_SOC_DAPM_SPK("Rear Left Spk", NULL),
-+	SND_SOC_DAPM_SPK("Rear Right Spk", NULL),
-+};
-+
- static const struct snd_soc_dapm_widget mt8188_mt6359_widgets[] = {
- 	SND_SOC_DAPM_HP("Headphone", NULL),
- 	SND_SOC_DAPM_MIC("Headset Mic", NULL),
-@@ -451,6 +509,174 @@ static int mt8188_dptx_codec_init(struct snd_soc_pcm_runtime *rtd)
- 	return ret;
- }
- 
-+static int mt8188_dumb_amp_init(struct snd_soc_pcm_runtime *rtd)
-+{
-+	struct snd_soc_card *card = rtd->card;
-+	int ret = 0;
-+
-+	ret = snd_soc_dapm_new_controls(&card->dapm, mt8188_dumb_spk_widgets,
-+					ARRAY_SIZE(mt8188_dumb_spk_widgets));
-+	if (ret) {
-+		dev_err(rtd->dev, "unable to add Dumb Speaker dapm, ret %d\n", ret);
-+		return ret;
-+	}
-+
-+	ret = snd_soc_add_card_controls(card, mt8188_dumb_spk_kcontrols,
-+					ARRAY_SIZE(mt8188_dumb_spk_kcontrols));
-+	if (ret) {
-+		dev_err(rtd->dev, "unable to add Dumb card controls, ret %d\n", ret);
-+		return ret;
-+	}
-+
-+	return ret;
-+}
-+
-+static int mt8188_max98390_hw_params(struct snd_pcm_substream *substream,
-+				     struct snd_pcm_hw_params *params)
-+{
-+	struct snd_soc_pcm_runtime *rtd = substream->private_data;
-+	unsigned int bit_width = params_width(params);
-+	struct snd_soc_dai *cpu_dai = asoc_rtd_to_cpu(rtd, 0);
-+	struct snd_soc_dai *codec_dai;
-+	int i;
-+
-+	snd_soc_dai_set_tdm_slot(cpu_dai, 0xf, 0xf, 4, bit_width);
-+
-+	for_each_rtd_codec_dais(rtd, i, codec_dai) {
-+		if (!strcmp(codec_dai->component->name, MAX98390_DEV0_NAME))
-+			snd_soc_dai_set_tdm_slot(codec_dai, 0x8, 0x3, 4, bit_width);
-+
-+		if (!strcmp(codec_dai->component->name, MAX98390_DEV1_NAME))
-+			snd_soc_dai_set_tdm_slot(codec_dai, 0x4, 0x3, 4, bit_width);
-+
-+		if (!strcmp(codec_dai->component->name, MAX98390_DEV2_NAME))
-+			snd_soc_dai_set_tdm_slot(codec_dai, 0x2, 0x3, 4, bit_width);
-+
-+		if (!strcmp(codec_dai->component->name, MAX98390_DEV3_NAME))
-+			snd_soc_dai_set_tdm_slot(codec_dai, 0x1, 0x3, 4, bit_width);
-+	}
-+	return 0;
-+}
-+
-+static const struct snd_soc_ops mt8188_max98390_ops = {
-+	.hw_params = mt8188_max98390_hw_params,
-+};
-+
-+static int mt8188_max98390_codec_init(struct snd_soc_pcm_runtime *rtd)
-+{
-+	struct snd_soc_card *card = rtd->card;
-+	int ret;
-+
-+	/* add regular speakers dapm route */
-+	ret = snd_soc_dapm_new_controls(&card->dapm, mt8188_dual_spk_widgets,
-+					ARRAY_SIZE(mt8188_dual_spk_widgets));
-+	if (ret) {
-+		dev_err(rtd->dev, "unable to add Left/Right Speaker widget, ret %d\n", ret);
-+		return ret;
-+	}
-+
-+	ret = snd_soc_add_card_controls(card, mt8188_dual_spk_kcontrols,
-+					ARRAY_SIZE(mt8188_dual_spk_kcontrols));
-+	if (ret) {
-+		dev_err(rtd->dev, "unable to add Left/Right card controls, ret %d\n", ret);
-+		return ret;
-+	}
-+
-+	if (rtd->dai_link->num_codecs <= 2)
-+		return ret;
-+
-+	/* add widgets/controls/dapm for rear speakers */
-+	ret = snd_soc_dapm_new_controls(&card->dapm, mt8188_rear_spk_widgets,
-+					ARRAY_SIZE(mt8188_rear_spk_widgets));
-+	if (ret) {
-+		dev_err(rtd->dev, "unable to add Rear Speaker widget, ret %d\n", ret);
-+		/* Don't need to add routes if widget addition failed */
-+		return ret;
-+	}
-+
-+	ret = snd_soc_add_card_controls(card, mt8188_rear_spk_kcontrols,
-+					ARRAY_SIZE(mt8188_rear_spk_kcontrols));
-+	if (ret) {
-+		dev_err(rtd->dev, "unable to add Rear card controls, ret %d\n", ret);
-+		return ret;
-+	}
-+
-+	return ret;
-+}
-+
-+static int mt8188_nau8825_codec_init(struct snd_soc_pcm_runtime *rtd)
-+{
-+	struct mt8188_mt6359_priv *priv = snd_soc_card_get_drvdata(rtd->card);
-+	struct snd_soc_component *component = asoc_rtd_to_codec(rtd, 0)->component;
-+	struct snd_soc_jack *jack = &priv->headset_jack;
-+	int ret;
-+
-+	ret = snd_soc_card_jack_new_pins(rtd->card, "Headset Jack",
-+					 SND_JACK_HEADSET | SND_JACK_BTN_0 |
-+					 SND_JACK_BTN_1 | SND_JACK_BTN_2 |
-+					 SND_JACK_BTN_3,
-+					 jack,
-+					 nau8825_jack_pins,
-+					 ARRAY_SIZE(nau8825_jack_pins));
-+	if (ret) {
-+		dev_err(rtd->dev, "Headset Jack creation failed: %d\n", ret);
-+		return ret;
-+	}
-+
-+	snd_jack_set_key(jack->jack, SND_JACK_BTN_0, KEY_PLAYPAUSE);
-+	snd_jack_set_key(jack->jack, SND_JACK_BTN_1, KEY_VOICECOMMAND);
-+	snd_jack_set_key(jack->jack, SND_JACK_BTN_2, KEY_VOLUMEUP);
-+	snd_jack_set_key(jack->jack, SND_JACK_BTN_3, KEY_VOLUMEDOWN);
-+	ret = snd_soc_component_set_jack(component, jack, NULL);
-+
-+	if (ret) {
-+		dev_err(rtd->dev, "Headset Jack call-back failed: %d\n", ret);
-+		return ret;
-+	}
-+
-+	return ret;
-+};
-+
-+static void mt8188_nau8825_codec_exit(struct snd_soc_pcm_runtime *rtd)
-+{
-+	struct snd_soc_component *component = asoc_rtd_to_codec(rtd, 0)->component;
-+
-+	snd_soc_component_set_jack(component, NULL, NULL);
-+}
-+
-+static int mt8188_nau8825_hw_params(struct snd_pcm_substream *substream,
-+				    struct snd_pcm_hw_params *params)
-+{
-+	struct snd_soc_pcm_runtime *rtd = asoc_substream_to_rtd(substream);
-+	struct snd_soc_dai *codec_dai = asoc_rtd_to_codec(rtd, 0);
-+	unsigned int rate = params_rate(params);
-+	unsigned int bit_width = params_width(params);
-+	int clk_freq, ret;
-+
-+	clk_freq = rate * 2 * bit_width;
-+
-+	/* Configure clock for codec */
-+	ret = snd_soc_dai_set_sysclk(codec_dai, NAU8825_CLK_FLL_BLK, 0,
-+				     SND_SOC_CLOCK_IN);
-+	if (ret < 0) {
-+		dev_err(codec_dai->dev, "can't set BCLK clock %d\n", ret);
-+		return ret;
-+	}
-+
-+	/* Configure pll for codec */
-+	ret = snd_soc_dai_set_pll(codec_dai, 0, 0, clk_freq,
-+				  params_rate(params) * 256);
-+	if (ret < 0) {
-+		dev_err(codec_dai->dev, "can't set BCLK: %d\n", ret);
-+		return ret;
-+	}
-+
-+	return ret;
-+}
-+
-+static const struct snd_soc_ops mt8188_nau8825_ops = {
-+	.hw_params = mt8188_nau8825_hw_params,
-+};
- static struct snd_soc_dai_link mt8188_mt6359_dai_links[] = {
- 	/* FE */
- 	[DAI_LINK_DL2_FE] = {
-@@ -726,6 +952,9 @@ static int mt8188_mt6359_dev_probe(struct platform_device *pdev)
- 	struct mt8188_card_data *card_data;
- 	struct snd_soc_dai_link *dai_link;
- 	bool init_mt6359 = false;
-+	bool init_nau8825 = false;
-+	bool init_max98390 = false;
-+	bool init_dumb = false;
- 	int ret, i;
- 
- 	card_data = (struct mt8188_card_data *)of_device_get_match_data(&pdev->dev);
-@@ -776,6 +1005,34 @@ static int mt8188_mt6359_dev_probe(struct platform_device *pdev)
- 				dai_link->init = mt8188_mt6359_init;
- 				init_mt6359 = true;
- 			}
-+		} else if (strcmp(dai_link->name, "ETDM1_OUT_BE") == 0 ||
-+			   strcmp(dai_link->name, "ETDM2_OUT_BE") == 0 ||
-+			   strcmp(dai_link->name, "ETDM1_IN_BE") == 0 ||
-+			   strcmp(dai_link->name, "ETDM2_IN_BE") == 0) {
-+			if (!strcmp(dai_link->codecs->dai_name, MAX98390_CODEC_DAI)) {
-+				dai_link->ops = &mt8188_max98390_ops;
-+				if (init_max98390)
-+					continue;
-+
-+				dai_link->init = mt8188_max98390_codec_init;
-+				init_max98390 = true;
-+			} else if (!strcmp(dai_link->codecs->dai_name, NAU8825_CODEC_DAI)) {
-+				dai_link->ops = &mt8188_nau8825_ops;
-+				if (init_nau8825)
-+					continue;
-+
-+				dai_link->init = mt8188_nau8825_codec_init;
-+				dai_link->exit = mt8188_nau8825_codec_exit;
-+				init_nau8825 = true;
-+			} else {
-+				if (strcmp(dai_link->codecs->dai_name, "snd-soc-dummy-dai")) {
-+					if (init_dumb)
-+						continue;
-+
-+					dai_link->init = mt8188_dumb_amp_init;
-+					init_dumb = true;
-+				}
-+			}
- 		}
- 	}
- 
-@@ -795,11 +1052,19 @@ static struct mt8188_card_data mt8188_evb_card = {
- 	.name = "mt8188_mt6359",
- };
- 
-+static struct mt8188_card_data mt8188_nau8825_card = {
-+	.name = "mt8188_nau8825",
-+};
-+
- static const struct of_device_id mt8188_mt6359_dt_match[] = {
- 	{
- 		.compatible = "mediatek,mt8188-mt6359-evb",
- 		.data = &mt8188_evb_card,
- 	},
-+	{
-+		.compatible = "mediatek,mt8188-nau8825",
-+		.data = &mt8188_nau8825_card,
-+	},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mt8188_mt6359_dt_match);
+In addition, new compatible string "mediatek,mt8188-nau8825" is
+included for a new board support.
+
+Trevor Wu (5):
+  ASoC: mediatek: mt8188: separate ADDA playback dai from capture dai
+  ASoC: mediatek: mt8188-mt6359: register hdmi/dp jack pins
+  ASoC: mediatek: common: soundcard driver add dai_fmt support
+  ASoC: mediatek: mt8188-mt6359: support new board with nau88255
+  ASoC: dt-bindings: mediatek,mt8188-mt6359: update properties
+
+ .../sound/mediatek,mt8188-mt6359.yaml         |  27 +-
+ sound/soc/mediatek/Kconfig                    |   4 +
+ .../mediatek/common/mtk-soundcard-driver.c    |  49 ++-
+ sound/soc/mediatek/mt8188/mt8188-afe-common.h |   3 +-
+ sound/soc/mediatek/mt8188/mt8188-dai-adda.c   |  76 ++--
+ sound/soc/mediatek/mt8188/mt8188-mt6359.c     | 326 +++++++++++++++++-
+ 6 files changed, 431 insertions(+), 54 deletions(-)
+
 -- 
 2.18.0
 
