@@ -4,88 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B21BBC77B75
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 17:58:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FCFBC77B7A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 18:23:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PRGNMLfUfmstzWu7T2z9+f63mnhBNH1tSnmTg/DwAEQ=; b=gAF14OVUjV3Vf5XMNihCeexDgq
-	YdmKqu1IOYa+aSchzpV2Gj9Uc4ouM53aiTQBrFEzTXDFGXW8cNmS0YoQXBMF6Kxa+i/3QL8cB0qi+
-	j4GQFIQY8Rujbhfna2APtI86vhNlJQZrel/7o783zWTM+yfYPnu4P9o2Kdzqb0jPGoug9nUZ7A3/j
-	4df6ApyPXiCS7f5RTvEpy2UOSt8UBJHXJTFhVuUO9pfqkhaejsKCWZ6gQlI9ohG1FdFBNI93nBGsP
-	dPk/3T4KxwE2J42yhWNBVgZMLZIwaAexK0fxNsGO+FrJ0tvFBewsthwKOlCNoe5cYEpoxOcgKEg5j
-	7eEeJRjQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZqvbTDaQlB5Q2U1EnVBHO24QPkqAoM+X9DFpf2XubEo=; b=BaDJUp5Y2zyBixlwAAfPYWSIx8
+	mES8DqC8TaKvKPV9YuxnFxRpwaLrDK5f6tZNWBI1DxnCmlelDSAYEsH160ecR5T+udqFwFbPKI84A
+	iTshXc5XEFJuUwXMQHwQZuSwOgTVC2Np+o7q5G6BUFiMZFarFQKMcA6fV0qTdTQ+sxTfsDD18Xh6s
+	Gk101mxEwUOb1TxVmfS4zCMSAeSSHKt0wD4OZZrxCYaS9zeh3Se78Gc/O80Lo729ClkpOmHhzdgjZ
+	yZhOduLTM71H+KrJxXvUPuxQL2wXC45mnk4A9E9Qa2o+7pL/A5pp+6X+UMA8GuOO4kBLCI8TqkD1+
+	+yeWjX8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzLQ5-00AfzI-1C;
-	Wed, 17 May 2023 17:58:37 +0000
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+	id 1pzLoM-00AjA3-0u;
+	Wed, 17 May 2023 18:23:42 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzLQ1-00Afxz-0c
+	id 1pzLoJ-00Aj8v-2o
 	for linux-mediatek@lists.infradead.org;
-	Wed, 17 May 2023 17:58:34 +0000
-Received: by mail-pl1-x633.google.com with SMTP id d9443c01a7336-1ae3ed1b08eso12272255ad.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 17 May 2023 10:58:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1684346310; x=1686938310;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=PRGNMLfUfmstzWu7T2z9+f63mnhBNH1tSnmTg/DwAEQ=;
-        b=Jm35xW1cRZ/F90wt0h3bGOPCTen8c2gmnjncdgF7e6KT31+WA4SPRSQyhim1XvnVLE
-         QKtw0N3QiJoYq245Fn8iEDOje5JMajAUKJzEvXg/XZdy5c2MJNZDvfBf6WY6A+5bBmMb
-         aLVuWby9tuvdq7cnnCX9aZ1luqZccYwz9WuLTE3f1ezVy/t4hOCUexz/VbmWXVin3zhn
-         kZCn41MWOIvMjVM/tirechE8eoAPoKpBGBYKADjnAcmkVw5d9qzR9vx1FE/s1FvNiFPR
-         U+47siOH7AKayqHhSZpPNQkXWJxiBro6iWDzR30Ug2oZidtNvtgR/plTAlyJ0xObY9MI
-         CZIg==
+	Wed, 17 May 2023 18:23:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1684347818;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ZqvbTDaQlB5Q2U1EnVBHO24QPkqAoM+X9DFpf2XubEo=;
+	b=YqBQpP86UzQLZBT1KyIk8VzNcjKRVjKffUYg6r4mNFts6Y2lX+i2gDHll/KUsDExUWQP61
+	IBj33yqt3dCRg9x7N6P0kZ+e1FAZh/Rol6yoH+adlzzz4BnaQQ3ZrRBSj20I1er19NMHB5
+	snyK4T/8W8H9LPH2ztv9r50ZmB7uFCg=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-384-fXEXKLazN36aLP9eHfbL2g-1; Wed, 17 May 2023 14:23:36 -0400
+X-MC-Unique: fXEXKLazN36aLP9eHfbL2g-1
+Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-3f4fa463282so7955535e9.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 17 May 2023 11:23:36 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684346310; x=1686938310;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=PRGNMLfUfmstzWu7T2z9+f63mnhBNH1tSnmTg/DwAEQ=;
-        b=B//sCaPgnzpQuF7lNrIxKnopul9yTNTs2MVZgllfnF8euDr4xuWGttDSuIhxgvG7rB
-         78t62dnzLl+j4OyE3IzFXI/0tPJE6uARgMYH+WiUMG0LtvrGDWDmzT4OnhaiJovflbeu
-         V3X2yVRS3QimafjhwAHjqv5kxV5gQzndFNr1jYjk3JD4apiJyrd09Yl+/E4Nb/Sx9Lir
-         7qzHX5QjuEwcabOgID5ONzkrD3n89+vFIzdYW+DbbJnzp6DwxQxrJ7yZaYwSkdUOI8zP
-         mgC+L0nr83H4JcgWyUJPg+zEigEpePejVRmpAKyGHcFtHzuHNpy/WN5dT9ASTpB3WIII
-         VvWg==
-X-Gm-Message-State: AC+VfDxEFS1cH2Uj3uIXQkF4IQYM5FiEPJ+zZnMdQ4bd7X3zUkCsQsLf
-	xaJ6PLBnBCrtgiMYJQnAezONzg==
-X-Google-Smtp-Source: ACHHUZ7fbLj71H3Bwby0ODNkhv4RQWQwdhA80KwYsAbIM+bAk2Oy0dY4Cocm5quS5tQgZjjK5i/igQ==
-X-Received: by 2002:a17:903:234c:b0:1ab:289f:65cf with SMTP id c12-20020a170903234c00b001ab289f65cfmr56070844plh.54.1684346310357;
-        Wed, 17 May 2023 10:58:30 -0700 (PDT)
-Received: from p14s ([2604:3d09:148c:c800:fd0b:2592:d377:e4e3])
-        by smtp.gmail.com with ESMTPSA id b15-20020a170902b60f00b001aafe232bcfsm17853795pls.44.2023.05.17.10.58.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 17 May 2023 10:58:29 -0700 (PDT)
-Date: Wed, 17 May 2023 11:58:27 -0600
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: Tinghan Shen <tinghan.shen@mediatek.com>
-Cc: Bjorn Andersson <andersson@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v12 07/11] remoteproc: mediatek: Control SCP core 1 by
- rproc subdevice
-Message-ID: <ZGUVw1VIq8LAm8mj@p14s>
-References: <20230517043449.26352-1-tinghan.shen@mediatek.com>
- <20230517043449.26352-8-tinghan.shen@mediatek.com>
+        d=1e100.net; s=20221208; t=1684347816; x=1686939816;
+        h=content-transfer-encoding:in-reply-to:organization:from:references
+         :cc:to:content-language:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ZqvbTDaQlB5Q2U1EnVBHO24QPkqAoM+X9DFpf2XubEo=;
+        b=amdEQO2PIhQPhC/lqb2rYmJSMjyLWl7hQRt//wWBJI7hAd4uTewviT6afj4waOuy5E
+         YsoDfbvw5niuBIy0rXBDESxYdbn07Suhvycj0CfXdTi6GtluP8f7C7ze9CGRV1yEnvtM
+         0vv+jjwRCGc4A8KswI1x3Bp4aILqJ5UlDws1kYmNl0qPQyLDX1JjJwYsQSOo5rc5dCwd
+         noPlEtGdu4mKrXrCR22CVt2rbZM6UuQV12KruWQZ7dgIiq91ANP3ydILDUlC1W0WkDnY
+         sPJdGsB3Eox+Rpe+sezizh3TCbibD9EhSB7Ae032qneIILW5CidAbEJctCuq8Z783Lop
+         ltvg==
+X-Gm-Message-State: AC+VfDxFBtVuw2rlMG+MejthZPA6sRABOC+PEZsDm6gmGUKVQdaLNfd/
+	7U4XnUQ5cQHsPTN3o2lHTNFUGUPMQMlvSpxrcEIG/fxVCYQK60NuE/A/3GZSi9wK1ar4sW10WpA
+	8ozOpsfqNrxFv6+H9Lc2G2m2yz8gvq+00
+X-Received: by 2002:a7b:c047:0:b0:3f5:f04:4607 with SMTP id u7-20020a7bc047000000b003f50f044607mr7312217wmc.22.1684347815733;
+        Wed, 17 May 2023 11:23:35 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5aghbMPeDps3xUcJWgRTN4G72ejk+Q9UkoksMRs7xKUZqCHs8zsQJ6GCxmBST8kSnxNSrUtw==
+X-Received: by 2002:a7b:c047:0:b0:3f5:f04:4607 with SMTP id u7-20020a7bc047000000b003f50f044607mr7312200wmc.22.1684347815381;
+        Wed, 17 May 2023 11:23:35 -0700 (PDT)
+Received: from ?IPV6:2003:cb:c707:3900:757e:83f8:a99d:41ae? (p200300cbc7073900757e83f8a99d41ae.dip0.t-ipconnect.de. [2003:cb:c707:3900:757e:83f8:a99d:41ae])
+        by smtp.gmail.com with ESMTPSA id q17-20020adfea11000000b0030639a86f9dsm3578463wrm.51.2023.05.17.11.23.34
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 17 May 2023 11:23:34 -0700 (PDT)
+Message-ID: <d4773626-6cf0-c929-c775-a84ac41fd719@redhat.com>
+Date: Wed, 17 May 2023 20:23:33 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230517043449.26352-8-tinghan.shen@mediatek.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH] tee: add FOLL_LONGTERM for CMA case when alloc shm
+To: Sumit Garg <sumit.garg@linaro.org>, Christoph Hellwig
+ <hch@infradead.org>, Xiaoming Ding <xiaoming.ding@mediatek.com>
+Cc: Jens Wiklander <jens.wiklander@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ op-tee@lists.trustedfirmware.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ fei.xu@mediatek.com, srv_heupstream@mediatek.com, linux-mm@kvack.org
+References: <20230517031856.19660-1-xiaoming.ding@mediatek.com>
+ <ZGSDoVKKVqCkbaCB@infradead.org>
+ <CAFA6WYO+AvnbuAdWyBAQ8HkLaOno7PXdsPb9SubxrGNvAm4UnQ@mail.gmail.com>
+ <ZGSLiiK/JzD5KMd7@infradead.org>
+ <CAFA6WYPOMwmrA3J84AHzoD2eAtNkpMxr754qHpc-j6XRkgFFvQ@mail.gmail.com>
+ <ZGSgCZrg+RjAbGO1@infradead.org>
+ <CAFA6WYO+EpiECFxdVgmd-Ey9jq1Ybt78WupK_bW5+oDcW-soVQ@mail.gmail.com>
+From: David Hildenbrand <david@redhat.com>
+Organization: Red Hat
+In-Reply-To: <CAFA6WYO+EpiECFxdVgmd-Ey9jq1Ybt78WupK_bW5+oDcW-soVQ@mail.gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230517_105833_252925_81072351 
-X-CRM114-Status: GOOD (  27.78  )
+X-CRM114-CacheID: sfid-20230517_112339_984476_2E3059CB 
+X-CRM114-Status: GOOD (  12.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,189 +115,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 17, 2023 at 12:34:45PM +0800, Tinghan Shen wrote:
-> Register SCP core 1 as a subdevice of core 0 for the boot sequence
-> and watchdog timeout handling. The core 1 has to boot after core 0
-> because the SCP clock and SRAM power is controlled by SCP core 0.
-> As for watchdog timeout handling, the remoteproc framework helps to
-> stop/start subdevices automatically when SCP driver receives watchdog
-> timeout event.
->
+On 17.05.23 12:19, Sumit Garg wrote:
+> On Wed, 17 May 2023 at 15:06, Christoph Hellwig <hch@infradead.org> wrote:
+>>
+>> On Wed, May 17, 2023 at 02:56:13PM +0530, Sumit Garg wrote:
+>>> Do you mean a pinned user-space page can be paged out automatically?
+>>
+>> No, pinned pages can't be paged out.
+>>
+>> But a short term pin implies it will be release after a short delay,
+>> and it is feasible for wait for the pin to go away.
+> 
+> Okay, I see. I would be interested to know the ranges for that short
+> delay. I guess it may depend on how much memory pressure there is...
+> 
 
-Subdevices should be reserved for virtio devices and not used for remote
-processors.  Mixing both will get us into trouble at some point in the future.
-The way to address power and clock dependencies is to use a different rproc_ops
-for SCP1.  That rproc_ops would implemented the prepare() and unprepare()
-functions to power up SCP1's power domain and deal with its clock.  
+In general: if user space controls it -> possibly forever -> long-term. 
+Even if in most cases it's a short delay: there is no trusting on user 
+space.
 
-I will stop here for this revision.
+For example, iouring fixed buffers keep pages pinned until user space 
+decides to unregistered the buffers -> long-term.
 
+Short-term is, for example, something like O_DIRECT where we pin -> DMA 
+-> unpin in essentially one operation.
+
+-- 
 Thanks,
-Mathieu
 
+David / dhildenb
 
-> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  drivers/remoteproc/mtk_common.h |  9 ++++
->  drivers/remoteproc/mtk_scp.c    | 88 +++++++++++++++++++++++++++++++++
->  2 files changed, 97 insertions(+)
-> 
-> diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
-> index 56395e8664cb..85afed2e6928 100644
-> --- a/drivers/remoteproc/mtk_common.h
-> +++ b/drivers/remoteproc/mtk_common.h
-> @@ -100,6 +100,13 @@ struct mtk_scp_of_data {
->  	size_t ipi_buf_offset;
->  };
->  
-> +struct mtk_scp_core_subdev {
-> +	struct rproc_subdev subdev;
-> +	struct mtk_scp *scp;
-> +};
-> +
-> +#define to_core_subdev(d) container_of(d, struct mtk_scp_core_subdev, subdev)
-> +
->  struct mtk_scp {
->  	struct device *dev;
->  	struct rproc *rproc;
-> @@ -130,6 +137,8 @@ struct mtk_scp {
->  	struct rproc_subdev *rpmsg_subdev;
->  
->  	struct list_head elem;
-> +	struct list_head *cluster;
-> +	struct mtk_scp_core_subdev *core_subdev;
->  };
->  
->  /**
-> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> index d644e232dfec..18534b1179b5 100644
-> --- a/drivers/remoteproc/mtk_scp.c
-> +++ b/drivers/remoteproc/mtk_scp.c
-> @@ -863,6 +863,60 @@ static void scp_remove_rpmsg_subdev(struct mtk_scp *scp)
->  	}
->  }
->  
-> +static int scp_core_subdev_start(struct rproc_subdev *subdev)
-> +{
-> +	struct mtk_scp_core_subdev *core_subdev = to_core_subdev(subdev);
-> +	struct mtk_scp *scp = core_subdev->scp;
-> +
-> +	rproc_boot(scp->rproc);
-> +
-> +	return 0;
-> +}
-> +
-> +static void scp_core_subdev_stop(struct rproc_subdev *subdev, bool crashed)
-> +{
-> +	struct mtk_scp_core_subdev *core_subdev = to_core_subdev(subdev);
-> +	struct mtk_scp *scp = core_subdev->scp;
-> +
-> +	rproc_shutdown(scp->rproc);
-> +}
-> +
-> +static int scp_core_subdev_register(struct mtk_scp *scp)
-> +{
-> +	struct device *dev = scp->dev;
-> +	struct mtk_scp_core_subdev *core_subdev;
-> +	struct mtk_scp *scp_c0;
-> +
-> +	scp_c0 = list_first_entry(scp->cluster, struct mtk_scp, elem);
-> +	if (!scp_c0)
-> +		return -ENODATA;
-> +
-> +	core_subdev = devm_kzalloc(dev, sizeof(*core_subdev), GFP_KERNEL);
-> +	if (!core_subdev)
-> +		return -ENOMEM;
-> +
-> +	core_subdev->scp = scp;
-> +	core_subdev->subdev.start = scp_core_subdev_start;
-> +	core_subdev->subdev.stop = scp_core_subdev_stop;
-> +
-> +	scp->core_subdev = core_subdev;
-> +	rproc_add_subdev(scp_c0->rproc, &scp->core_subdev->subdev);
-> +
-> +	return 0;
-> +}
-> +
-> +static void scp_core_subdev_unregister(struct mtk_scp *scp)
-> +{
-> +	struct mtk_scp *scp_c0;
-> +
-> +	if (scp->core_subdev) {
-> +		scp_c0 = list_first_entry(scp->cluster, struct mtk_scp, elem);
-> +		rproc_remove_subdev(scp_c0->rproc, &scp->core_subdev->subdev);
-> +		devm_kfree(scp->dev, scp->core_subdev);
-> +		scp->core_subdev = NULL;
-> +	}
-> +}
-> +
->  static struct mtk_scp *scp_rproc_init(struct platform_device *pdev,
->  				      struct mtk_scp_of_cluster *scp_cluster,
->  				      const struct mtk_scp_of_data *of_data)
-> @@ -957,6 +1011,7 @@ static void scp_free(struct mtk_scp *scp)
->  {
->  	int i;
->  
-> +	scp_core_subdev_unregister(scp);
->  	scp_remove_rpmsg_subdev(scp);
->  	scp_ipi_unregister(scp, SCP_IPI_INIT);
->  	scp_unmap_memory_region(scp);
-> @@ -989,6 +1044,15 @@ static int scp_add_single_core(struct platform_device *pdev)
->  	return 0;
->  }
->  
-> +static void scp_rproc_boot_callback(const struct firmware *fw, void *context)
-> +{
-> +	struct rproc *rproc = context;
-> +
-> +	rproc_boot(rproc);
-> +
-> +	release_firmware(fw);
-> +}
-> +
->  static int scp_add_multi_core(struct platform_device *pdev)
->  {
->  	struct device *dev = &pdev->dev;
-> @@ -1029,6 +1093,20 @@ static int scp_add_multi_core(struct platform_device *pdev)
->  			goto init_fail;
->  		}
->  
-> +		scp->cluster = cluster;
-> +		if (!list_empty(cluster)) {
-> +			ret = scp_core_subdev_register(scp);
-> +			if (ret) {
-> +				dev_err(dev, "Failed to register core %d as subdev\n", core_id);
-> +				of_node_put(child);
-> +				scp_free(scp);
-> +				goto init_fail;
-> +			}
-> +		}
-> +
-> +		/* boot after all cores finished rproc_add() */
-> +		scp->rproc->auto_boot = false;
-> +
->  		ret = rproc_add(scp->rproc);
->  		if (ret) {
->  			dev_err(dev, "Failed to add rproc of core %d\n", core_id);
-> @@ -1041,6 +1119,16 @@ static int scp_add_multi_core(struct platform_device *pdev)
->  		core_id++;
->  	}
->  
-> +	/* boot core 0, and other cores are booted following core 0 as subdevices */
-> +	scp = list_first_entry(cluster, struct mtk_scp, elem);
-> +	ret = request_firmware_nowait(THIS_MODULE, FW_ACTION_UEVENT,
-> +				      scp->rproc->firmware, &scp->rproc->dev, GFP_KERNEL,
-> +				      scp->rproc, scp_rproc_boot_callback);
-> +	if (ret < 0) {
-> +		dev_err(dev, "request_firmware_nowait err: %d\n", ret);
-> +		goto init_fail;
-> +	}
-> +
->  	return 0;
->  
->  init_fail:
-> -- 
-> 2.18.0
-> 
 
