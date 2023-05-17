@@ -4,89 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06A9FC77B7A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 16:53:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3AB7C77B7F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 16:54:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8dOJVIGMX/56gfv9vT65ZzraMpImyEbSMTyJtUPlCLo=; b=ndfrKw+BaO4bXDY4YTBV9m5kUa
-	LXmD3TaCMWND8kJ+lHcT2nnT5sh4li4SfoKnrgy7VQIxX7nQCBRDNDrFiMUDleUsIfnVpa7SkA2br
-	H8vhMUpNoXbkwmozctnN7nASjPhCkJCcoUH1LPq3SWqdWh72WNjNtC8e8p5SwpIUoNGE/xCcZ8jhZ
-	8wSyzXgcFBz3Z9423GRK9OZL28zDZrY7gt19w9fMDgjY7ixEcBDsjYspxkvpaTlJXe+6qsye28ILb
-	gOwrXoIkOY9PlvAR66fVP3SiFacBWg9CBBrHDVQPjfl6nE3sqVnZwtrSpbg5LXmQPfUu0q6uxcN0j
-	DWNXtSig==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3hIDvPEdjftlVYbqhIG0JXGHdNlYOdLmSjve7aY9Eo0=; b=OCEGeX36iFdgfwAQ9uPeiZrbxN
+	7xOtItkYcinzr6+yF1gu/kFnv5QtEUWrx/JqqJOL0N63LVZfPN0TmuXlqBqZ2t9erob4SYYw6f2sv
+	zGfCa1vgh4Dcl3NuXRHbBdchMakh39XLdeFB4NOQaucYG4t9wuhYxp9hnYtpuYBzIbk8Cexj8joAX
+	kRO3DehakTqFwynt7O807XHhhcoXKcq3fcgPVjQAzV87qqhYa1I9xgKF5Rqz5F5QXHV4nRVsZ8wlb
+	3i+3m46iIncPx9QEh5Mf8xr+ULTmev574DtmJMNsVC6i8ZqlkU1BO7zX4cfnNS0XPvyzzjzbRrtDq
+	itoRrteQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzKOj-00AWLs-2H;
-	Wed, 17 May 2023 16:53:09 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1pzKPU-00AWdt-0Y;
+	Wed, 17 May 2023 16:53:56 +0000
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzKOc-00AWJ7-32
+	id 1pzKPQ-00AWZf-09
 	for linux-mediatek@lists.infradead.org;
-	Wed, 17 May 2023 16:53:05 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-3f41dceb9caso1980355e9.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 17 May 2023 09:53:00 -0700 (PDT)
+	Wed, 17 May 2023 16:53:53 +0000
+Received: by mail-ed1-x533.google.com with SMTP id 4fb4d7f45d1cf-510d8b0169fso1004693a12.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 17 May 2023 09:53:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1684342379; x=1686934379;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=8dOJVIGMX/56gfv9vT65ZzraMpImyEbSMTyJtUPlCLo=;
-        b=2BVmhZvz4oCFmI5/DV5GvMVrMDeSuoxTJrL4iNd3Jxd8RMgHHaG2zBP3QGXd4XOrKH
-         hnCaxYsoji/6w9ykNXsu7Fi6zdPHszF1Q4gQwaYtYi+alCroMmK3dTCvf76H24m0hBNH
-         uPYMxYIcvwsv9oLoqcnRqkuJqG160ovtznAlXlPoISd+6G5FUe39gNEpXnHhlVhKSgAr
-         j7cJBOpVpVr6bIWkD/AWH7j1IIm/DQGL+hgxy/nADAKFAC150PQwk4fwE0f01qyGHD+P
-         Cp76uAflMqRUWC6k9pvk/7rn+QHXpv19LDYyCPOIgLeWLoQ8+IfQ09AyPHmlKEGKrCXG
-         SwVA==
+        d=linaro.org; s=google; t=1684342428; x=1686934428;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=3hIDvPEdjftlVYbqhIG0JXGHdNlYOdLmSjve7aY9Eo0=;
+        b=LuAGyfOolGY2lv4bXLQZDUlCkYAFbMjVgJBhtQ35ZvoRANe0rP+NbkFwtPlSSeIKq/
+         Z1ELa4OdH1BhZPPVuEcS54mWAsAWMdI99jGP8mvKnKSUwftMqm5xSRaOfxTPxFqtkLxY
+         qdUkIgvZbQvT+RLeoqerdDueR+U+biU/Yr3n0d7E/Y5DiwxKMmqsHwOlN18at7sz3xX0
+         hix+tDpT085M0KrBRn5JxxVnqtP8l3xr6wG5PX+qP30zi+WThJQQGkTX+BzXAmY+WljI
+         684VChIFfk5qFuVy1ZK+D6QjxLctgUm4HmqkW+vvQDOPqCPVkbasYZ1D9Mdfy/5Rs9bJ
+         aCjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684342379; x=1686934379;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=8dOJVIGMX/56gfv9vT65ZzraMpImyEbSMTyJtUPlCLo=;
-        b=Tq8Wqy8HLieZRQ5RgN+xEEki28AOczg1pWQkHKa7KmZtueCqffvsuhqh+zNFGIPdCG
-         uK8HVxXgKS0Oh8unsb6SsplZlM2GUvR8e9lmaYgoblfoYDg6hCfIjzzdVs+uZKCyi1Rp
-         70XegglcCRRel9Kei+EeVmE9RcCVaT1Lv5alxr6d9B/rII42CJ3Zm4qPO9LeU2Fu6Ueq
-         gR86o6Y2BWiGLYOz/ejp+/QdwrOMi3EeBlSJxSy7f8C1qsDWwhJFJD35j1YuG3+ZqdQ8
-         UK9bqKWcYTywI201Q9oxa0NvPCp8Li9p2JpjJ5YRQCAyssYy7Drlc16kT+5HTKMMY50Q
-         BVqA==
-X-Gm-Message-State: AC+VfDxMEjkQW6olomgYjYK//qTQ0Kg5VRn8XXNzBIoRzANr5KC+Q3qZ
-	D7eDTPI5ORvZ1aV13l0Som1LvA==
-X-Google-Smtp-Source: ACHHUZ5oWXHIEKdFAwIxANhWR9lMlqKmEiYA0FORJIMDBWG4zKRbrOzb0ppHIUnnzPT2YmO1WjO6DQ==
-X-Received: by 2002:a7b:cd01:0:b0:3f4:fe7f:3d18 with SMTP id f1-20020a7bcd01000000b003f4fe7f3d18mr2318552wmj.2.1684342378813;
-        Wed, 17 May 2023 09:52:58 -0700 (PDT)
-Received: from [192.168.1.172] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id u15-20020adfed4f000000b00307c46f4f08sm3267555wro.79.2023.05.17.09.52.57
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 17 May 2023 09:52:58 -0700 (PDT)
-Message-ID: <94f8af4a-2555-052d-d04a-a0e54e0e2d13@baylibre.com>
-Date: Wed, 17 May 2023 18:52:56 +0200
+        d=1e100.net; s=20221208; t=1684342428; x=1686934428;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=3hIDvPEdjftlVYbqhIG0JXGHdNlYOdLmSjve7aY9Eo0=;
+        b=LHfnizm8p8trFd1APk+cbHvmungWdFiXA93JZu68ppRs4cyqtb6fCtJhDO9hOCbwk+
+         CySuT4zsXXdfrB5T0QjgCx87A2USI1a9f2/sF0cQWXeYCKJQXGhS3l0U3/M1/otRdwXQ
+         542K9Hj62j8TBPI9xO3s7AdvqNZqXDODOAEQAuaFsKlx1koSmWiz8UNiFuBHEL/zVxYE
+         oCpDaUv3uOgeMCT+tP3jICjgU5UkjphX7qKWFMJhR+eodl2c1bJkIELXIVZ39chmras6
+         JcR2pO3nPt+8TuZedwLtM/n0/R4zwGcAwqa5CW4/WPzyWbfPHssRxq9IuBQS6woSOMO8
+         nLXw==
+X-Gm-Message-State: AC+VfDyC0cjPZP6jPd7WzFLvputvnPrFt5fuDTBJ2kmk9FYUjXD1giCQ
+	+nFjOh64R3mEhS/gmqoJn6lTOQ==
+X-Google-Smtp-Source: ACHHUZ41XuiV/6uHDBhzp+l1Rm28KeZOiUPPrRFoy46T5x5hqEOTvHbPfGD88VINkhOzOmp9caPxnQ==
+X-Received: by 2002:a17:906:9b86:b0:96a:5a59:92cb with SMTP id dd6-20020a1709069b8600b0096a5a5992cbmr24102081ejc.47.1684342428067;
+        Wed, 17 May 2023 09:53:48 -0700 (PDT)
+Received: from krzk-bin ([2a02:810d:15c0:828:c9ff:4c84:dd21:568d])
+        by smtp.gmail.com with ESMTPSA id mc27-20020a170906eb5b00b00966330021e9sm12332628ejb.47.2023.05.17.09.53.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 17 May 2023 09:53:47 -0700 (PDT)
+Date: Wed, 17 May 2023 18:53:44 +0200
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Alexandre Bailon <abailon@baylibre.com>
+Cc: conor+dt@kernel.org, angelogioacchino.delregno@collabora.com,
+	linux-media@vger.kernel.org, matthias.bgg@gmail.com,
+	sumit.semwal@linaro.org, daniel@ffwll.ch, tzimmermann@suse.de,
+	christian.koenig@amd.com, linux-kernel@vger.kernel.org,
+	maarten.lankhorst@linux.intel.com,
+	linux-mediatek@lists.infradead.org,
+	krzysztof.kozlowski+dt@linaro.org, linaro-mm-sig@lists.linaro.org,
+	airlied@gmail.com, dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org, bero@baylibre.com, mripard@kernel.org,
+	nbelin@baylibre.com, linux-arm-kernel@lists.infradead.org,
+	robh+dt@kernel.org, khilman@baylibre.com, jstephan@baylibre.com
+Subject: Re: [PATCH 7/7] dt-bindings: Add bidings for mtk,apu-drm
+Message-ID: <20230517165344.6gzwzkwzu44noyqm@krzk-bin>
+References: <20230517145237.295461-1-abailon@baylibre.com>
+ <20230517145237.295461-8-abailon@baylibre.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH v2 0/2] clk/mediatek: Adjustments for MSDC rate accuracy
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- mturquette@baylibre.com
-Cc: sboyd@kernel.org, matthias.bgg@gmail.com, wenst@chromium.org,
- chun-jie.chen@mediatek.com, mandyjh.liu@mediatek.com,
- miles.chen@mediatek.com, zhaojh329@gmail.com, daniel@makrotopia.org,
- nfraprado@collabora.com, rex-bc.chen@mediatek.com,
- Garmin.Chang@mediatek.com, msp@baylibre.com, yangyingliang@huawei.com,
- linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com
-References: <20230516135205.372951-1-angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20230516135205.372951-1-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20230517145237.295461-8-abailon@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230517_095302_981606_A7321B7C 
-X-CRM114-Status: GOOD (  15.22  )
+X-CRM114-CacheID: sfid-20230517_095352_090932_D956A01F 
+X-CRM114-Status: GOOD (  12.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,43 +100,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 16/05/2023 15:52, AngeloGioacchino Del Regno wrote:
-> Changes in v2:
->    - Extended the changes in this series to MT8365 clocks
+On Wed, 17 May 2023 16:52:37 +0200, Alexandre Bailon wrote:
+> This adds the device tree bindings for the APU DRM driver.
 > 
-> This series stops unconditionally forcing CLK_SET_RATE_PARENT on
-> MediaTek muxes, as that should be set in the clock driver for each
-> clock requiring it, and removes CLK_SET_PARENT from all MSDC core
-> clocks to allow mtk-sd to select the right clock parent when doing
-> mclk setting, improving the rate accuracy and avoiding both under
-> and overclocks of the eMMC/SD/SDIO card, both improving performance
-> and stability of the attached storage.
-> 
-> This series was successfully tested on MT8173, MT8192, MT8195.
-> 
-> AngeloGioacchino Del Regno (2):
->    clk: mediatek: mux: Stop forcing CLK_SET_RATE_PARENT flag
->    clk: mediatek: Remove CLK_SET_PARENT from all MSDC core clocks
-> 
->   drivers/clk/mediatek/clk-mt6765.c          | 20 +++++-----
->   drivers/clk/mediatek/clk-mt6779.c          | 24 +++++------
->   drivers/clk/mediatek/clk-mt7981-topckgen.c | 12 +++---
->   drivers/clk/mediatek/clk-mt7986-topckgen.c | 12 +++---
->   drivers/clk/mediatek/clk-mt8173-topckgen.c | 24 +++++------
->   drivers/clk/mediatek/clk-mt8183.c          | 22 ++++++-----
->   drivers/clk/mediatek/clk-mt8186-topckgen.c | 24 +++++------
->   drivers/clk/mediatek/clk-mt8188-topckgen.c | 40 +++++++++++--------
->   drivers/clk/mediatek/clk-mt8192.c          | 23 +++++------
->   drivers/clk/mediatek/clk-mt8195-topckgen.c | 46 +++++++++++++---------
->   drivers/clk/mediatek/clk-mt8365.c          | 38 +++++++++---------
->   drivers/clk/mediatek/clk-mux.c             |  2 +-
->   12 files changed, 155 insertions(+), 132 deletions(-)
+> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
+> Reviewed-by: Julien Stephan <jstephan@baylibre.com>
+> ---
+>  .../devicetree/bindings/gpu/mtk,apu-drm.yaml  | 38 +++++++++++++++++++
+>  1 file changed, 38 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/gpu/mtk,apu-drm.yaml
 > 
 
-I will try to test it next week on MT8365 SoC.
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
--- 
-Regards,
-Alexandre
+yamllint warnings/errors:
 
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/gpu/mtk,apu-drm.yaml: 'maintainers' is a required property
+	hint: Metaschema for devicetree binding documentation
+	from schema $id: http://devicetree.org/meta-schemas/base.yaml#
+./Documentation/devicetree/bindings/gpu/mtk,apu-drm.yaml: $id: relative path/filename doesn't match actual path or filename
+	expected: http://devicetree.org/schemas/gpu/mtk,apu-drm.yaml#
+Documentation/devicetree/bindings/gpu/mtk,apu-drm.example.dts:18.15-22.11: Warning (unit_address_vs_reg): /example-0/apu@0: node has a unit name, but no reg or ranges property
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/gpu/mtk,apu-drm.example.dtb: apu@0: remoteproc: [[4294967295, 4294967295]] is too short
+	From schema: /builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/gpu/mtk,apu-drm.yaml
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/patch/1782720
+
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
 
