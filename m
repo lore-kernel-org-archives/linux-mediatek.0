@@ -4,88 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6597CC77B75
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 14:43:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88006C77B7F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 15:04:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sZDD8upL/r+70rB2Afo4JoGPTnaEzVx0dEl4DiVOMWg=; b=jl/GBuVVu1A09FYoGEsDGE74WM
-	eIXhcij5ZMNXDVyjN4d7y1kePQ5JohHxjrNuOUm3VI1XxHfHobaiqZt1uuDKw2+DKvQPA19rqvk2P
-	ecTuCIZrIUnAWOzZQWBHNcYX4dpaNSvZhQmQAWFYEu52XF43Fme85QBTztNO1EoRa13qAgu5j6eVt
-	8jI30qLJzYcFsEPEXnh0RfQ8CkCzA0TUrpzLdqVAJwFfGsWkLDZRyv77uwMHWfI9OgMddieyCTtj9
-	kU0R3zy2Xs67IukPuqYIMMTLg+UJ13zdM7bvt8tefj+Hu8ep/L+74a2FcEJZaJ0zTLsSwudcuLLEG
-	y4MChLKA==;
+	bh=kl2OgaIvaMxdrcJqhu62rlqKAlXi5ddqGCyOsuG/hns=; b=2n+P/yAfaP8+6sKRub70rUmGTk
+	e4LOhNmFKMVLy7sm/jdiQh+tsGYBqdrSGhDDHvewF5o8ncbinC2ZIZhzDnSK3QbxZ0GwHkasym74C
+	KxJ08dagptvMrB4rYowdqxt/8RJdr1lBPy/6alSa4YWyLdmT5/7xnTXl1R9WRE38ZipO1PLrsdacG
+	fYGGs+v49bt88s+S/J2pdvrpvZ/9JfrfRxiB+9aOu6b6XJn4KgP16tpee6p+1XMuZl6ywAiWrpSlT
+	ioLzv3MDqC5cfo3eMWP5WM+VBbLDYApZmZVUEs5zCTVq5hFCwyQcFsIF3TOznOgTJUOWFTYorGKg8
+	chua4IXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzINB-00AAQd-1r;
-	Wed, 17 May 2023 14:43:25 +0000
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+	id 1pzIhJ-00AEyE-2i;
+	Wed, 17 May 2023 15:04:13 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzIN7-00AAOn-2B
-	for linux-mediatek@lists.infradead.org;
-	Wed, 17 May 2023 14:43:23 +0000
-Received: by mail-ed1-x530.google.com with SMTP id 4fb4d7f45d1cf-510c734fa2dso163696a12.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 17 May 2023 07:43:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1684334598; x=1686926598;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=sZDD8upL/r+70rB2Afo4JoGPTnaEzVx0dEl4DiVOMWg=;
-        b=iNuaz3gEZr/wsvXC1ba0asKS7gklttvKStIfxh8Qs0kkWE3Xjo04RWBvjg6nqKnxum
-         6EJGM+jO4EYfehiDb2qqtu28a44G8ZeBvpm4tUWfcRSn3jz0LBbMbDfHfVT5H8fCEdgF
-         0D1HaKoNJH++dItJPrhVhXCFjDpK0KmoqYMseXiRJb87xTuvAkJJDLN79nts5Lv+0lmd
-         zCKooCbbXsLWVUal+iKWTLGxM170+hF6tYOTeDDSKR1M9Tz9IyYTHXkFaBuRp/3fSVfR
-         ex/6uvzXapEoaRnwSrtqW2tiL/rK04iFNHTDR5zQ7F+XkdawN39mbfDrYDG1IG29PtSy
-         jMTg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684334598; x=1686926598;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=sZDD8upL/r+70rB2Afo4JoGPTnaEzVx0dEl4DiVOMWg=;
-        b=PtM78IIRqOig2rvXyJNPtSgsk9uhbR224V3wu++eL2JCLwW/XG49+a2+jNV4153HJi
-         3VFvmm6MK2AAPGiKaRsp5jZTV4tvU2ECszMz0ZGBI5J9c/I5p302Qe/5MUEhs0M0fZUd
-         DCBTQfnjbciAe0mvgy77PF2wcTNogne+Nxi3WwPSQJqoNykOCAPF7kB30Y4Qoij2Fp+i
-         HvJsyhY8zkzRGJY8UxExMSrhyvMgh7YUlxnKhsO0Pj1QjZYw2IGMvBWC8FR+7FAjjcaF
-         R1iF1LrzMJC+CC0UoixxIvdVE//CJYAkZivNAhC67sX2aUYo0FnWkGQ3WjpW4z5kXxmx
-         W/Hw==
-X-Gm-Message-State: AC+VfDx8MvPXq6I2zAO67RJdUy9oQCXq5DrqKH7hcTF7/+/ZU9h3pUJ+
-	PQPftHkWyoQjJGwFQGIDCzxmSg==
-X-Google-Smtp-Source: ACHHUZ4pYGjUVHIDzMVTFst1m4oKVnYh+z4Oa96EfEfP7Ed4lZHoKUEAgAScE6sd3/3n9e6WGRNDjg==
-X-Received: by 2002:a05:6402:1e90:b0:506:72f8:eb10 with SMTP id f16-20020a0564021e9000b0050672f8eb10mr2673049edf.0.1684334597785;
-        Wed, 17 May 2023 07:43:17 -0700 (PDT)
-Received: from ?IPV6:2a02:810d:15c0:828:c9ff:4c84:dd21:568d? ([2a02:810d:15c0:828:c9ff:4c84:dd21:568d])
-        by smtp.gmail.com with ESMTPSA id x14-20020aa7d38e000000b0050c0d651fb1sm9423734edq.75.2023.05.17.07.43.16
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 17 May 2023 07:43:17 -0700 (PDT)
-Message-ID: <9359c081-cd36-3e5b-a113-7600b4ba435e@linaro.org>
-Date: Wed, 17 May 2023 16:43:15 +0200
+	id 1pzIhG-00AEvW-0D;
+	Wed, 17 May 2023 15:04:11 +0000
+Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 670CD660588A;
+	Wed, 17 May 2023 16:04:03 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1684335844;
+	bh=15/GPkh3GbUYvzSc+PhVVCS+jBcNyePbbCQd7vQAmVA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=oKXUwZG9/NNSqz2qObRQWaH8It+qDv2WRxyA1jEfwjltkbIPLkPXAWMzt9rlK4n6U
+	 508s0+CEm0QAUFmbpUaJfba/+2WjZQkSIaSI0q+ZKhwDjxTbM3bnjpwTCnY970gNTW
+	 M2x+b67vXcnj1n3FTh+1b5JyPjsKMfoK2uaFs3vALadtC/Np4dMXRMkADa8zE7+vK0
+	 +KqbNVfPLFHwHOH3jWtaxDB8SrcrU27c11pSCx+eCyzl/ZTEl0c+ZU6YOYz56j4rad
+	 hit+TkEHkn3KPk1c9uTpq+nllv/yuAXEmqVhI6CynmLCmcJAOYz8azGU3rkbosmCgQ
+	 hMvQnoCCX+2tA==
+Message-ID: <c32f0c3f-b43a-7045-38cc-2c11c7bb571e@collabora.com>
+Date: Wed, 17 May 2023 17:04:00 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH 5/5] ASoC: dt-bindings: mediatek,mt8188-mt6359: update
- properties
+ Thunderbird/102.10.1
+Subject: Re: [PATCH 7/7] dt-bindings: Add bidings for mtk,apu-drm
 Content-Language: en-US
-To: Trevor Wu <trevor.wu@mediatek.com>, broonie@kernel.org,
- lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com
-Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org
-References: <20230517111534.32630-1-trevor.wu@mediatek.com>
- <20230517111534.32630-6-trevor.wu@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230517111534.32630-6-trevor.wu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
+To: Alexandre Bailon <abailon@baylibre.com>, airlied@gmail.com,
+ daniel@ffwll.ch, maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+ tzimmermann@suse.de
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ conor+dt@kernel.org, matthias.bgg@gmail.com, sumit.semwal@linaro.org,
+ christian.koenig@amd.com, jstephan@baylibre.com,
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
+ linaro-mm-sig@lists.linaro.org, khilman@baylibre.com, nbelin@baylibre.com,
+ bero@baylibre.com
+References: <20230517145237.295461-1-abailon@baylibre.com>
+ <20230517145237.295461-8-abailon@baylibre.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230517145237.295461-8-abailon@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230517_074321_722989_1D05CFE5 
-X-CRM114-Status: GOOD (  20.51  )
+X-CRM114-CacheID: sfid-20230517_080410_275177_ED11430C 
+X-CRM114-Status: GOOD (  14.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,59 +84,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17/05/2023 13:15, Trevor Wu wrote:
-> Add compatible string "mediatek,mt8188-nau8825" to support new board
-> with nau8825 codec.
-
-Subject: everything can be update of properties. Rephrase to focus on
-actual change, e.g. on adding NAU8825.
-
+Il 17/05/23 16:52, Alexandre Bailon ha scritto:
+> This adds the device tree bindings for the APU DRM driver.
 > 
-> ADDA_BE is used to connect to mt6359. For the machine, it must be
-> fixed to the same codec and configured on the machine driver. Remove
-> ADDA_BE from items of link-name.
-
-I don't understand the justification for this. If this is not a correct
-link name for MT6359 setup, then it should be removed in its own patch.
-If this is removed because of adding NAU8825, then why does it affect
-MT6359?
-
-> 
-> Introduce two properties "dai-format" and "mediatek,clk-provider" under
-> dai-link subnode to configure dai-link parameters via dts.
-> 
-> "codec" property is removed from required property of dai-link subnode.
-> For co-clock case, it's possible two dai-links should be configured to
-> the same format, but only one dai-link builds link with codec.
-> 
-> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
+> Reviewed-by: Julien Stephan <jstephan@baylibre.com>
 > ---
->  .../sound/mediatek,mt8188-mt6359.yaml         | 27 ++++++++++++++++---
->  1 file changed, 23 insertions(+), 4 deletions(-)
+>   .../devicetree/bindings/gpu/mtk,apu-drm.yaml  | 38 +++++++++++++++++++
+
+mediatek,mt(model)-apu.yaml
+
+>   1 file changed, 38 insertions(+)
+>   create mode 100644 Documentation/devicetree/bindings/gpu/mtk,apu-drm.yaml
 > 
-> diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
-> index 6640272b3f4f..05e532b5d50a 100644
-> --- a/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
-> +++ b/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
-> @@ -11,7 +11,9 @@ maintainers:
->  
->  properties:
->    compatible:
-> -    const: mediatek,mt8188-mt6359-evb
-> +    enum:
-> +      - mediatek,mt8188-mt6359-evb
-> +      - mediatek,mt8188-nau8825
->  
->    model:
->      $ref: /schemas/types.yaml#/definitions/string
-> @@ -42,7 +44,6 @@ patternProperties:
->            we are going to update parameters in this node.
->          items:
->            enum:
-> -            - ADDA_BE
+> diff --git a/Documentation/devicetree/bindings/gpu/mtk,apu-drm.yaml b/Documentation/devicetree/bindings/gpu/mtk,apu-drm.yaml
+> new file mode 100644
+> index 000000000000..6f432d3ea478
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/gpu/mtk,apu-drm.yaml
+> @@ -0,0 +1,38 @@
+> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/gpu/mediatek,apu-drm.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: AI Processor Unit DRM
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,apu-drm
 
+const: mediatek,mt8195-apu (or whatever else).
 
-Best regards,
-Krzysztof
+...besides, I don't think that this patch even belongs to this series? :-)
+Spoiler alert! :-)
+
+Cheers,
+Angelo
+
 
 
