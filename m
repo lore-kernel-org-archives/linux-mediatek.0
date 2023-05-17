@@ -4,103 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FCFBC77B7A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 18:23:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E955AC7EE22
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 19:38:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZqvbTDaQlB5Q2U1EnVBHO24QPkqAoM+X9DFpf2XubEo=; b=BaDJUp5Y2zyBixlwAAfPYWSIx8
-	mES8DqC8TaKvKPV9YuxnFxRpwaLrDK5f6tZNWBI1DxnCmlelDSAYEsH160ecR5T+udqFwFbPKI84A
-	iTshXc5XEFJuUwXMQHwQZuSwOgTVC2Np+o7q5G6BUFiMZFarFQKMcA6fV0qTdTQ+sxTfsDD18Xh6s
-	Gk101mxEwUOb1TxVmfS4zCMSAeSSHKt0wD4OZZrxCYaS9zeh3Se78Gc/O80Lo729ClkpOmHhzdgjZ
-	yZhOduLTM71H+KrJxXvUPuxQL2wXC45mnk4A9E9Qa2o+7pL/A5pp+6X+UMA8GuOO4kBLCI8TqkD1+
-	+yeWjX8g==;
+	bh=rYmCHe0UBx3C/dX8F6gPo606NtkPLb/fdOD1RWdJzkg=; b=y2k1A9wHwu+PKGVgo05pgy6qiZ
+	IS44fV45kAiiO7jUnSAcSN0CQs1JOXYLJFptbWqkN7cQyOWkdrj01HVbByLyzb9SPg8ZMXnGwL+Kz
+	QhJJSDhW6BWs9Izv/mZuqTqalnziWu8kC89D27nijveJzn5D81WvhPX8ANaSSQjOFoW0MVXlz+GUB
+	jFz7DuVMDkNQ0hUx+4qjLQ1JlnLHTQ17ruXRXaFAAqyFLH1u0YVgqcCbyCR+2RnzpboDEYvQbB0zG
+	dPXy/VwbnXSY6zIQoH9c4wbAeVVbvPKa8NoWrJcc923JwsWiKwpDkSkJmEIO1Z9K9iTmOEH4hxFLR
+	zxOc/cJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzLoM-00AjA3-0u;
-	Wed, 17 May 2023 18:23:42 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1pzMyd-00At1f-1L;
+	Wed, 17 May 2023 19:38:23 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzLoJ-00Aj8v-2o
+	id 1pzMya-00At0D-2p
 	for linux-mediatek@lists.infradead.org;
-	Wed, 17 May 2023 18:23:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1684347818;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ZqvbTDaQlB5Q2U1EnVBHO24QPkqAoM+X9DFpf2XubEo=;
-	b=YqBQpP86UzQLZBT1KyIk8VzNcjKRVjKffUYg6r4mNFts6Y2lX+i2gDHll/KUsDExUWQP61
-	IBj33yqt3dCRg9x7N6P0kZ+e1FAZh/Rol6yoH+adlzzz4BnaQQ3ZrRBSj20I1er19NMHB5
-	snyK4T/8W8H9LPH2ztv9r50ZmB7uFCg=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-384-fXEXKLazN36aLP9eHfbL2g-1; Wed, 17 May 2023 14:23:36 -0400
-X-MC-Unique: fXEXKLazN36aLP9eHfbL2g-1
-Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-3f4fa463282so7955535e9.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 17 May 2023 11:23:36 -0700 (PDT)
+	Wed, 17 May 2023 19:38:22 +0000
+Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-9661047f8b8so207526766b.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 17 May 2023 12:38:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1684352298; x=1686944298;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=rYmCHe0UBx3C/dX8F6gPo606NtkPLb/fdOD1RWdJzkg=;
+        b=bbeQg4UD9JQf6erRpGuPGkJefSXLT4EZPw4GEbdgBk0mXwtrOrR9bcUXhDi2lPmrN2
+         SY7yGEyaW4rOcHsYnmhfbfOIS6WJ1P72cT7qjNOpW9e9rc3FGcQFKOsbTXyqHZrtQ899
+         lqRpczEhCKHYqw4X4HXrLygrQOA/mDNmvSVqGhyLDEWHWAB/zQr8JeHGMe+cc++jTX3+
+         eSn13zJdh+MYPqS1jaJc+8KRvKuuUOk4u1xn97NQgP9w5RgbAMncMp8edZUiMeKMhSn8
+         2tX7xLkDwu4v49tQ/OTjPCt9qR94Xz6440yAu01sLictaBqTjYddsFD9G6rN0sIRFkMS
+         RaSw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684347816; x=1686939816;
-        h=content-transfer-encoding:in-reply-to:organization:from:references
-         :cc:to:content-language:subject:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ZqvbTDaQlB5Q2U1EnVBHO24QPkqAoM+X9DFpf2XubEo=;
-        b=amdEQO2PIhQPhC/lqb2rYmJSMjyLWl7hQRt//wWBJI7hAd4uTewviT6afj4waOuy5E
-         YsoDfbvw5niuBIy0rXBDESxYdbn07Suhvycj0CfXdTi6GtluP8f7C7ze9CGRV1yEnvtM
-         0vv+jjwRCGc4A8KswI1x3Bp4aILqJ5UlDws1kYmNl0qPQyLDX1JjJwYsQSOo5rc5dCwd
-         noPlEtGdu4mKrXrCR22CVt2rbZM6UuQV12KruWQZ7dgIiq91ANP3ydILDUlC1W0WkDnY
-         sPJdGsB3Eox+Rpe+sezizh3TCbibD9EhSB7Ae032qneIILW5CidAbEJctCuq8Z783Lop
-         ltvg==
-X-Gm-Message-State: AC+VfDxFBtVuw2rlMG+MejthZPA6sRABOC+PEZsDm6gmGUKVQdaLNfd/
-	7U4XnUQ5cQHsPTN3o2lHTNFUGUPMQMlvSpxrcEIG/fxVCYQK60NuE/A/3GZSi9wK1ar4sW10WpA
-	8ozOpsfqNrxFv6+H9Lc2G2m2yz8gvq+00
-X-Received: by 2002:a7b:c047:0:b0:3f5:f04:4607 with SMTP id u7-20020a7bc047000000b003f50f044607mr7312217wmc.22.1684347815733;
-        Wed, 17 May 2023 11:23:35 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5aghbMPeDps3xUcJWgRTN4G72ejk+Q9UkoksMRs7xKUZqCHs8zsQJ6GCxmBST8kSnxNSrUtw==
-X-Received: by 2002:a7b:c047:0:b0:3f5:f04:4607 with SMTP id u7-20020a7bc047000000b003f50f044607mr7312200wmc.22.1684347815381;
-        Wed, 17 May 2023 11:23:35 -0700 (PDT)
-Received: from ?IPV6:2003:cb:c707:3900:757e:83f8:a99d:41ae? (p200300cbc7073900757e83f8a99d41ae.dip0.t-ipconnect.de. [2003:cb:c707:3900:757e:83f8:a99d:41ae])
-        by smtp.gmail.com with ESMTPSA id q17-20020adfea11000000b0030639a86f9dsm3578463wrm.51.2023.05.17.11.23.34
+        d=1e100.net; s=20221208; t=1684352298; x=1686944298;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=rYmCHe0UBx3C/dX8F6gPo606NtkPLb/fdOD1RWdJzkg=;
+        b=Z1ugIdT4UeeWrrsyjblWmU7g4rri5Isiqnc8R0jqMDbxHKDmDocHxlBUH1j/9z6PGZ
+         KOA/sHeZ8vtbYLVcD79Ca+EpN/My5Do97t2UPlUhPhfPZxj/+zMNbcTF8XiAgyv+ZrPp
+         dwmrlAhR0QW+xPC0CDaYWwR/yNd6/7T3sVtsR2567LI2tn+0iPZWsaRNLfud/ylivZc+
+         NyO/8fEtrvlsKVYbZSvV4xAtV9xO/ZQ8WJhk+S4gnkIkiYgTZqVbM69O69Aa8GscuGu5
+         3qT06jSAEaka8lx8235nwG4adtjGVXBLQaElYZhvmoZgVAr4wDov61ROfNQCOooCHbP1
+         yhJA==
+X-Gm-Message-State: AC+VfDyg6c+v+7LA1FZmx7Zhrg6CYxYC+sVaC7zdTAi4IqUhlgHM9ox4
+	GqTFpd1YYmHtqb6oirl49ZbtBg==
+X-Google-Smtp-Source: ACHHUZ6obEbka8NNsbD0h9cxmp9F7B27iNr6Z+hy4ts3KoIhfXd8UU80M7LYR8OdkLm5EMLFayAcTw==
+X-Received: by 2002:a17:907:97d0:b0:96a:2210:add8 with SMTP id js16-20020a17090797d000b0096a2210add8mr25616124ejc.8.1684352297680;
+        Wed, 17 May 2023 12:38:17 -0700 (PDT)
+Received: from ?IPV6:2a02:810d:15c0:828:d7a:e7cc:21b3:c435? ([2a02:810d:15c0:828:d7a:e7cc:21b3:c435])
+        by smtp.gmail.com with ESMTPSA id h15-20020a1709067ccf00b0094f23480619sm12833636ejp.172.2023.05.17.12.38.16
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 17 May 2023 11:23:34 -0700 (PDT)
-Message-ID: <d4773626-6cf0-c929-c775-a84ac41fd719@redhat.com>
-Date: Wed, 17 May 2023 20:23:33 +0200
+        Wed, 17 May 2023 12:38:17 -0700 (PDT)
+Message-ID: <f0469fcb-a1ef-77a2-a8ab-40ab8d91bff7@linaro.org>
+Date: Wed, 17 May 2023 21:38:15 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.11.0
-Subject: Re: [PATCH] tee: add FOLL_LONGTERM for CMA case when alloc shm
-To: Sumit Garg <sumit.garg@linaro.org>, Christoph Hellwig
- <hch@infradead.org>, Xiaoming Ding <xiaoming.ding@mediatek.com>
-Cc: Jens Wiklander <jens.wiklander@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- op-tee@lists.trustedfirmware.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- fei.xu@mediatek.com, srv_heupstream@mediatek.com, linux-mm@kvack.org
-References: <20230517031856.19660-1-xiaoming.ding@mediatek.com>
- <ZGSDoVKKVqCkbaCB@infradead.org>
- <CAFA6WYO+AvnbuAdWyBAQ8HkLaOno7PXdsPb9SubxrGNvAm4UnQ@mail.gmail.com>
- <ZGSLiiK/JzD5KMd7@infradead.org>
- <CAFA6WYPOMwmrA3J84AHzoD2eAtNkpMxr754qHpc-j6XRkgFFvQ@mail.gmail.com>
- <ZGSgCZrg+RjAbGO1@infradead.org>
- <CAFA6WYO+EpiECFxdVgmd-Ey9jq1Ybt78WupK_bW5+oDcW-soVQ@mail.gmail.com>
-From: David Hildenbrand <david@redhat.com>
-Organization: Red Hat
-In-Reply-To: <CAFA6WYO+EpiECFxdVgmd-Ey9jq1Ybt78WupK_bW5+oDcW-soVQ@mail.gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH 7/7] dt-bindings: Add bidings for mtk,apu-drm
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: Alexandre Bailon <abailon@baylibre.com>, airlied@gmail.com,
+ daniel@ffwll.ch, maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+ tzimmermann@suse.de
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ conor+dt@kernel.org, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, sumit.semwal@linaro.org,
+ christian.koenig@amd.com, jstephan@baylibre.com,
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
+ linaro-mm-sig@lists.linaro.org, khilman@baylibre.com, nbelin@baylibre.com,
+ bero@baylibre.com
+References: <20230517145237.295461-1-abailon@baylibre.com>
+ <20230517145237.295461-8-abailon@baylibre.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230517145237.295461-8-abailon@baylibre.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230517_112339_984476_2E3059CB 
-X-CRM114-Status: GOOD (  12.66  )
+X-CRM114-CacheID: sfid-20230517_123820_914513_0E863698 
+X-CRM114-Status: GOOD (  19.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,34 +104,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17.05.23 12:19, Sumit Garg wrote:
-> On Wed, 17 May 2023 at 15:06, Christoph Hellwig <hch@infradead.org> wrote:
->>
->> On Wed, May 17, 2023 at 02:56:13PM +0530, Sumit Garg wrote:
->>> Do you mean a pinned user-space page can be paged out automatically?
->>
->> No, pinned pages can't be paged out.
->>
->> But a short term pin implies it will be release after a short delay,
->> and it is feasible for wait for the pin to go away.
+On 17/05/2023 16:52, Alexandre Bailon wrote:
+> This adds the device tree bindings for the APU DRM driver.
 > 
-> Okay, I see. I would be interested to know the ranges for that short
-> delay. I guess it may depend on how much memory pressure there is...
+> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
+> Reviewed-by: Julien Stephan <jstephan@baylibre.com>
+
+There are so many errors in this patch... that for sure it was not
+tested. Reduced review, except what was already said:
+
+> ---
+>  .../devicetree/bindings/gpu/mtk,apu-drm.yaml  | 38 +++++++++++++++++++
+>  1 file changed, 38 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/gpu/mtk,apu-drm.yaml
 > 
+> diff --git a/Documentation/devicetree/bindings/gpu/mtk,apu-drm.yaml b/Documentation/devicetree/bindings/gpu/mtk,apu-drm.yaml
+> new file mode 100644
+> index 000000000000..6f432d3ea478
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/gpu/mtk,apu-drm.yaml
+> @@ -0,0 +1,38 @@
+> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/gpu/mediatek,apu-drm.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: AI Processor Unit DRM
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,apu-drm
 
-In general: if user space controls it -> possibly forever -> long-term. 
-Even if in most cases it's a short delay: there is no trusting on user 
-space.
+drm is not hardware. Drop everywhere or explain the acronym. If you
+explain it like Linux explains, then: drm is not hardware.
 
-For example, iouring fixed buffers keep pages pinned until user space 
-decides to unregistered the buffers -> long-term.
+> +
+> +  remoteproc:
+> +    maxItems: 2
+> +    description:
+> +      Handle to remoteproc devices controlling the APU
 
-Short-term is, for example, something like O_DIRECT where we pin -> DMA 
--> unpin in essentially one operation.
+Missing type/ref. Does not look like generic property, so missing vendor
+prefix.
 
--- 
-Thanks,
+> +
+> +  iova:
+> +    maxItems: 1
+> +    description:
+> +      Address and size of virtual memory that could used by the APU
 
-David / dhildenb
+So it is a reg?
+
+> +
+> +required:
+> +  - compatible
+> +  - remoteproc
+> +  - iova
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    apu@0 {
+
+Where is reg? @0 says you have it...
+
+> +      compatible = "mediatek,apu-drm";
+> +      remoteproc = <&vpu0>, <&vpu1>;
+> +      iova = <0 0x60000000 0 0x10000000>;
+
+Why would you store virtual address, not real, in DT? Let's say you have
+some randomization like KASLR. How is it going to work? Drop, it is not
+hardware property.
+
+Best regards,
+Krzysztof
 
 
