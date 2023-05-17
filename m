@@ -4,94 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A75D5C77B7D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 15:12:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BF70C77B7D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 15:15:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Eh6DM2BXuzdEiz/5380GZOi/7cYP/Y43A1Uy0AUkQRU=; b=1P3LDOjIvDVZFFgE+cW75VVA5E
-	vIvoloiUQ88XdUnNzdHaX1OhOG7GVazmzFn33jbNtUcHLjXLs/eporUloieLiXGtWWX0JnYvTC8HE
-	Y/ptcgemGGAGgDDX33KY+xn4NGvUDGE+qOX9ZZocYIJLqBv6HOXcXNzjQFg/xjKVA700gEgJ6W75/
-	+6NuCHmx8BeDae3VszHOU3a4rxW8zICBoF+LdLLWmn0yNVqyJN5N7CQbwIyTE9WmRFGxv5hHlAJtV
-	PoHM8mUl0QjWovz9nZoDslsX5OdPqZqmBPdXK7++P+leYR+XkSGAyvf1sVmnE515coDpRacF5zK5U
-	x3P/lOrg==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=kUrset8IRus9e1o4gtegJyZ/BgSNNlIYLwp2NoZD30g=; b=sDbf0qFlwi7mwX/nW1FmF1cPVY
+	mA9VI7No+AZWEWkeHHeT60tqsq0voIYmPDwUzwzviK61byTEEn37w8wZUeTRi6/7NxzYeeFRgaFQX
+	0mEMOIHUz7ltlMaqIjHuEhjJifogL2PUSKl9fm2OZLSe+sqapLz5hcBiD476NsRrTSjc+no8eK6SD
+	o1M/kzJafY0LzWuBJ0b7gvW8j4QEFQ9HSKRWQNp2LBlggio98+DEJeA0L0u6IKzRcTXSUB4bpC2cP
+	TdGb0BB1Xm3Y4ANtElyIUEvwGPUUcZZYEQQJY4E0TPSweMFfKN8bnsAPtnMXS0BmMhWq7njtuVE6d
+	Te65qctw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzIpR-00AGTB-2R;
-	Wed, 17 May 2023 15:12:37 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1pzIsA-00AGu2-33;
+	Wed, 17 May 2023 15:15:26 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzIpO-00AGPY-2v;
-	Wed, 17 May 2023 15:12:36 +0000
-Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 34HEnFSu004022;
-	Wed, 17 May 2023 15:12:13 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=qcppdkim1;
- bh=Eh6DM2BXuzdEiz/5380GZOi/7cYP/Y43A1Uy0AUkQRU=;
- b=BaPb7vlsCcXw2eRy2akSBCY6au8GLkYB0VwPboCBvwNineXYnXL9vQZ4aurnEjJ6X3Wf
- Ag60Teum3xMOjRxMGnSwRrKNu1ifwUfbd3/qzVtreIhdUZU3nUrSleZPbqXNQa66nBVh
- eJmL+N7vTpJBybTVCwdK/kftHtD6O34qrmp6Rc6g5DtuHV61fpMFQjOvYY4s11mb7PhJ
- D/Se+zPk7OXfGz5LdNhENqjuk91yMGjR7+hdGs4YwZeP7GzushmQUmTOuC73jkQzkHWi
- dl/XHmw2XIr9jOrli1GH/5+vOy1ZhIADhszjFKNJ+TzlvQPZRnTMJ/8ZwIVsWHmL+3D1 Ig== 
-Received: from nalasppmta03.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3qmwnr8m00-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 17 May 2023 15:12:12 +0000
-Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
-	by NALASPPMTA03.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 34HFCBsO010993
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 17 May 2023 15:12:12 GMT
-Received: from [10.226.59.182] (10.80.80.8) by nalasex01a.na.qualcomm.com
- (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.42; Wed, 17 May
- 2023 08:12:10 -0700
-Message-ID: <d0807fe4-dba2-8244-f655-d04e80973572@quicinc.com>
-Date: Wed, 17 May 2023 09:12:09 -0600
+	id 1pzIs6-00AGt5-2w;
+	Wed, 17 May 2023 15:15:24 +0000
+Received: from IcarusMOD.eternityproject.eu (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 999F4660574E;
+	Wed, 17 May 2023 16:15:20 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1684336521;
+	bh=JXHlQGqLZnwEd+1ywgBD3qSPq+lFVpm0deC33quGJxg=;
+	h=From:To:Cc:Subject:Date:From;
+	b=hU6gxKKpauEvIDnRRvhNe5X+xvq1mbElAP7P78bkk/hHN4XTRExPEbV+YZ3Pzhtid
+	 kKq19X8KSghlsJ399B8CEZafU6kvVxFno7r6UGH+R2DBgq8QUdvrC6qDrCyhdhl0CW
+	 Q/Jy9PIGGy4HAtAzB/Pzto/dUnSC2l4QAe9h/LsXsJ/Yz8XirEyQfAtP8CzMgjG8T0
+	 j6bPn2QLepvjETscRoG1aV4+9GcnZTs3VzscIdM88AxfkjKOPTHeImTgIBFTHTx6zq
+	 tWvrb/HDXVO7OY2eRSXaPzukoqLGZp4l27t/Yl50Ec2cXqRak34CuP/WjdzTV3iKzT
+	 oMYE3MMzvdNew==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: lgirdwood@gmail.com
+Cc: broonie@kernel.org,
+	perex@perex.cz,
+	tiwai@suse.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	nfraprado@collabora.com,
+	wenst@chromium.org,
+	alsa-devel@alsa-project.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	kernel@collabora.com
+Subject: [PATCH] ASoC: mediatek: mt8192-mt6359: Remove " Jack" from Headphone pin name
+Date: Wed, 17 May 2023 17:15:16 +0200
+Message-Id: <20230517151516.343037-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.6.0
-Subject: Re: [PATCH 0/7] Add a DRM driver to support AI Processing Unit (APU)
-Content-Language: en-US
-To: Alexandre Bailon <abailon@baylibre.com>, <airlied@gmail.com>,
-        <daniel@ffwll.ch>, <maarten.lankhorst@linux.intel.com>,
-        <mripard@kernel.org>, <tzimmermann@suse.de>
-CC: <devicetree@vger.kernel.org>, <conor+dt@kernel.org>, <bero@baylibre.com>,
-        <khilman@baylibre.com>, <jstephan@baylibre.com>,
-        <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
-        <christian.koenig@amd.com>, <linaro-mm-sig@lists.linaro.org>,
-        <robh+dt@kernel.org>, <linux-mediatek@lists.infradead.org>,
-        <nbelin@baylibre.com>, <krzysztof.kozlowski+dt@linaro.org>,
-        <matthias.bgg@gmail.com>, <linux-media@vger.kernel.org>,
-        <sumit.semwal@linaro.org>, <linux-arm-kernel@lists.infradead.org>,
-        <angelogioacchino.delregno@collabora.com>
-References: <20230517145237.295461-1-abailon@baylibre.com>
-From: Jeffrey Hugo <quic_jhugo@quicinc.com>
-In-Reply-To: <20230517145237.295461-1-abailon@baylibre.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nalasex01a.na.qualcomm.com (10.47.209.196)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: xdufAva3TRcFfqBsoaM5Jab-1ErNBgGj
-X-Proofpoint-ORIG-GUID: xdufAva3TRcFfqBsoaM5Jab-1ErNBgGj
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.573,FMLib:17.11.170.22
- definitions=2023-05-17_02,2023-05-17_02,2023-02-09_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxscore=0 mlxlogscore=999
- clxscore=1011 malwarescore=0 priorityscore=1501 spamscore=0 phishscore=0
- adultscore=0 suspectscore=0 impostorscore=0 lowpriorityscore=0 bulkscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2304280000
- definitions=main-2305170122
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230517_081234_993443_BF46DB94 
-X-CRM114-Status: GOOD (  23.26  )
+X-CRM114-CacheID: sfid-20230517_081523_106483_03F91ED9 
+X-CRM114-Status: GOOD (  11.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,71 +80,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5/17/2023 8:52 AM, Alexandre Bailon wrote:
-> This adds a DRM driver that implements communication between the CPU and an
-> APU. The driver target embedded device that usually run inference using some
-> prebuilt models. The goal is to provide common infrastructure that could be
-> re-used to support many accelerators. Both kernel, userspace and firmware tries
-> to use standard and existing to leverage the development and maintenance effort.
-> The series implements two platform drivers, one for simulation and another one for
-> the mt8183 (compatible with mt8365).
+Function jack_kctl_name_gen() will remove the redundant " Jack" from
+the name, if present, and then it will add it back, so that all of
+the controls are named "(pin-name) Jack".
 
-This looks like the 3 existing Accel drivers.  Why is this in DRM?
+Remove " Jack" from the Headphone pin name to spare some CPU cycles.
 
-> For the people interested by the firmware or userspace library,
-> the sources are available here:
-> https://gitlab.baylibre.com/baylibre/libapu/libapu
+This commit brings no functional changes.
 
-I don't see a compiler.  What am I missing?
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> The support of APU has to be upstreamed to libdrm.
-> Until this is done, you could find the source here:
-> https://gitlab.baylibre.com/baylibre/libapu/libdrm/-/tree/abailon/main
-> 
-> The driver for mt8183 depends on this series (which is currently blocked):
-> https://patchwork.kernel.org/project/linux-arm-kernel/list/?series=620429
-> 
-> Alexandre Bailon (5):
->    drm: Add support of AI Processor Unit (APU)
->    drm/apu: Add memory allocator
->    drm/apu: Add support of requests
->    drm/apu: Add support of IOMMU
->    dt-bindings: Add bidings for mtk,apu-drm
-> 
-> Julien Stephan (2):
->    drm/apu: allow platform driver to implement their own mmap function
->    drm/apu: Add support for a simulated APU
-> 
->   .../devicetree/bindings/gpu/mtk,apu-drm.yaml  |  38 ++
->   drivers/gpu/drm/Kconfig                       |   2 +
->   drivers/gpu/drm/Makefile                      |   1 +
->   drivers/gpu/drm/apu/Kconfig                   |  22 +
->   drivers/gpu/drm/apu/Makefile                  |  10 +
->   drivers/gpu/drm/apu/apu_drv.c                 | 282 +++++++++
->   drivers/gpu/drm/apu/apu_gem.c                 | 230 +++++++
->   drivers/gpu/drm/apu/apu_internal.h            | 205 ++++++
->   drivers/gpu/drm/apu/apu_sched.c               | 592 ++++++++++++++++++
->   drivers/gpu/drm/apu/simu_apu.c                | 313 +++++++++
->   include/uapi/drm/apu_drm.h                    |  81 +++
-
-"apu" seems too generic.  We already have 3 "AI processing units" over 
-in drivers/accel already...
-
->   11 files changed, 1776 insertions(+)
->   create mode 100644 Documentation/devicetree/bindings/gpu/mtk,apu-drm.yaml
->   create mode 100644 drivers/gpu/drm/apu/Kconfig
->   create mode 100644 drivers/gpu/drm/apu/Makefile
->   create mode 100644 drivers/gpu/drm/apu/apu_drv.c
->   create mode 100644 drivers/gpu/drm/apu/apu_gem.c
->   create mode 100644 drivers/gpu/drm/apu/apu_internal.h
->   create mode 100644 drivers/gpu/drm/apu/apu_sched.c
->   create mode 100644 drivers/gpu/drm/apu/simu_apu.c
->   create mode 100644 include/uapi/drm/apu_drm.h
-> 
-
-I feel like device/driver based documentation in Documentation/ would 
-really help in reviews.
-
--Jeff
+diff --git a/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c b/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c
+index 5e163e23a207..4e0d5bf12b47 100644
+--- a/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c
++++ b/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c
+@@ -46,7 +46,7 @@ struct mt8192_mt6359_priv {
+ /* Headset jack detection DAPM pins */
+ static struct snd_soc_jack_pin mt8192_jack_pins[] = {
+ 	{
+-		.pin = "Headphone Jack",
++		.pin = "Headphone",
+ 		.mask = SND_JACK_HEADPHONE,
+ 	},
+ 	{
+-- 
+2.40.1
 
 
