@@ -4,53 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BB14C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 02:26:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29BE8C7EE25
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 02:26:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=XT0aWLrHFibG11Unqwd1/RdVtuvwg1ngn+cr6gZ0zko=; b=xbWV/EW1XKI3iW7IFf++1ZyjLf
-	HuKYfoTHEp3iLJfcRjfZdPV63Tj/E97x5wlpUYYxJtdPfLToTm9otnrmUiASFwsQxYDk0t1bvHmOD
-	Pyd8m1FlsQ71r7eJwDrPohs4IwVBv72GoBx2HRGf+4KXuykm+wbXTU0EEkiQ00KqEeqeQmGkz4eE/
-	xr8XVv7TQ0QOSTdkbHYGFuRAPXDb5Yq8qPrl8r8mkwwrpfEY7AaHUcQjOCIiiGykJ3AcOfQAH2cUe
-	Tp88MyZOLdI8gdexPyeC4n5SwJwoyGmK4oSaHIFivPJJNQc5psZdAaN7nNV1QHsTKDmwjndYCzvMn
-	JaHh+tDA==;
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BiHDgbOEI7ul8fVenUBc4fXvk4qUwYuxHNdXt7Wyg8A=; b=HZJBqmT242hgbE6TPuKhmilZ86
+	kksosYlC7jTJg2En56LVQUAIthGCy7hlPAlzRvlz3kwf3VIrp6MIWvKCHGGLq3UaMwSQGiqQK7huz
+	BGBXH5v6ylMynvR7mgIjTFFLU6tHYowsx7o9s4PaWsmZn1EVqkfgvFX5ukvYJoX20/ifZI4o1Ymkj
+	Xcp0vc2mb8p/z8HplXCFA8m+kNi1TseWoAd4QH7Owg/WPnC/tZdHpqvso3SeirAAFOBcWyhrWiRdV
+	O+2nhnb9Hq890WC4PtZu4tGHKNnoQADFr4dVfSpMgtimzX0jUo9kW2guoigIK7zefJsmCkShc1bXY
+	j+CPhwng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pz6sF-007q7N-2z;
-	Wed, 17 May 2023 02:26:43 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pz6sN-007qB0-1g;
+	Wed, 17 May 2023 02:26:51 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pz6sD-007q5x-1T;
-	Wed, 17 May 2023 02:26:42 +0000
-X-UUID: 3c2de36af45a11ed912e1518a6540028-20230516
+	id 1pz6sG-007q68-2y;
+	Wed, 17 May 2023 02:26:46 +0000
+X-UUID: 3e715daaf45a11ed83ed1395ce914268-20230516
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=XT0aWLrHFibG11Unqwd1/RdVtuvwg1ngn+cr6gZ0zko=;
-	b=LnTYq/QK+Mnx4P9JaLjilrHtv1j3T6N3ULhkDlQwREQskdmi7a+2viNAF6RUnUURF9P7DtroO1JkqffhrLTeqTAmvzyf6E82ffhykxYsXXhccPxdS9rc/U47WJg4te2y/CVeTryQGzg6x282bubNMHBnBM9H6QSQOjoVg3CQAX0=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=BiHDgbOEI7ul8fVenUBc4fXvk4qUwYuxHNdXt7Wyg8A=;
+	b=mZdzG1Y4i+CLdsUu3xRgBLLB9QbdIcom+BEGwos6rfHrQXuZIUi851cNTJQqOVkS81KfrUWxyzKVDGTgyW0PLbQq9EGKfhEqq9FC/BgWa0r04IfAbXsCu9HWho+58qGqJm4xoWxaw91XY/XvG3/NTqa73BFaDU1PJ7KLrB1LIdc=;
+X-CID-UNFAMILIAR: 1
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.25,REQID:0f31ef13-48a4-4d4c-9b70-3ed82b4d535e,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:d5b0ae3,CLOUDID:7c1714c1-e32c-4c97-918d-fbb3fc224d4e,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-UUID: 3c2de36af45a11ed912e1518a6540028-20230516
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-CID-O-INFO: VERSION:1.1.25,REQID:7f28f8af-bca0-4b73-aee1-df52594099fc,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:100
+X-CID-INFO: VERSION:1.1.25,REQID:7f28f8af-bca0-4b73-aee1-df52594099fc,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
+	N:quarantine,TS:100
+X-CID-META: VersionHash:d5b0ae3,CLOUDID:f21714c1-e32c-4c97-918d-fbb3fc224d4e,B
+	ulkID:23051710263742FEVJGN,BulkQuantity:0,Recheck:0,SF:48|38|29|28|16|19,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+	,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: 3e715daaf45a11ed83ed1395ce914268-20230516
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
 	(envelope-from <walter.chang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 302705899; Tue, 16 May 2023 19:26:31 -0700
+	with ESMTP id 1126026220; Tue, 16 May 2023 19:26:35 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.194) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 17 May 2023 10:26:28 +0800
+ 15.2.1118.26; Wed, 17 May 2023 10:26:32 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 17 May 2023 10:26:28 +0800
+ 15.2.1118.26 via Frontend Transport; Wed, 17 May 2023 10:26:32 +0800
 From: <walter.chang@mediatek.com>
 To: Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner
 	<tglx@linutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>,
@@ -58,17 +63,20 @@ To: Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner
  W . Rozycki" <macro@orcam.me.uk>, John Stultz <jstultz@google.com>
 CC: <wsd_upstream@mediatek.com>, <stanley.chu@mediatek.com>,
 	<Chun-hung.Wu@mediatek.com>, <Freddy.Hsin@mediatek.com>,
-	<walter.chang@mediatek.com>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v5 0/4] Support timer drivers as loadable modules
-Date: Wed, 17 May 2023 10:25:44 +0800
-Message-ID: <20230517022557.24388-1-walter.chang@mediatek.com>
+	<walter.chang@mediatek.com>, Chun-Hung Wu <chun-hung.wu@mediatek.com>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+Subject: [PATCH v5 2/4] clocksource/drivers/mmio: Export clocksource_mmio_init()
+Date: Wed, 17 May 2023 10:25:46 +0800
+Message-ID: <20230517022557.24388-3-walter.chang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230517022557.24388-1-walter.chang@mediatek.com>
+References: <20230517022557.24388-1-walter.chang@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230516_192641_528915_A6CBB59B 
-X-CRM114-Status: GOOD (  11.41  )
+X-CRM114-CacheID: sfid-20230516_192645_033575_13EA8E98 
+X-CRM114-Status: GOOD (  10.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,54 +91,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Walter Chang <walter.chang@mediatek.com>
+From: Chun-Hung Wu <chun-hung.wu@mediatek.com>
 
-This set of patches aims to make SoC related timer drivers, such as 
-timer-mediatek.c become loadable modules for the Generic Kernel Image
-(GKI).
+Export clocksource_mmio_init() and clocksource_mmio_readl_up()
+to support building clocksource driver as module,
+such as timer-mediatek.c.
 
-This driver registers an always-on timer as tick_broadcast_device on 
-MediaTek SoCs. If the system does not load this module at startup, 
-system will also boot normally by using built-in `bc_hrtimer` instead.
-Besides, the previous experiment [1] indicates that the SYST/GPT, in 
-combination with a loadable module, is fully operational.
+Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+Signed-off-by: Walter Chang <walter.chang@mediatek.com>
+Acked-by: John Stultz <jstultz@google.com>
+---
+ drivers/clocksource/mmio.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-The first three patches export functions and remove __init markings to 
-support loadable timer modules.
-
-The fourth patch makes timer-mediatek.c become loadable module for GKI.
-
-[1]
-https://lore.kernel.org/all/32777456f8e0f98e4cd5b950f421d21f71b149cf.camel@mediatek.com/#t
-
-[v5]
-- Add Signed-off-by tags in all patches
-- Add Acked-by tags and Reviewed-by tags
-
-[v4]
-- Fix review comments pointed by Angelo
-
-[v3]
-- Rebase on linux-next
-
-[v2]
-- Convert timer-mediatek.c driver to loadable module
-
-Chun-Hung Wu (4):
-  time/sched_clock: Export sched_clock_register()
-  clocksource/drivers/mmio: Export clocksource_mmio_init()
-  clocksource/drivers/timer-of: Remove __init markings
-  clocksource/drivers/timer-mediatek: Make timer-mediatek become
-    loadable module
-
- drivers/clocksource/Kconfig          |  2 +-
- drivers/clocksource/mmio.c           |  8 ++++---
- drivers/clocksource/timer-mediatek.c | 33 ++++++++++++++++++++++++++++
- drivers/clocksource/timer-of.c       | 23 +++++++++----------
- drivers/clocksource/timer-of.h       |  6 ++---
- kernel/time/sched_clock.c            |  4 ++--
- 6 files changed, 56 insertions(+), 20 deletions(-)
-
+diff --git a/drivers/clocksource/mmio.c b/drivers/clocksource/mmio.c
+index 9de751531831..b08b2f9d7a8b 100644
+--- a/drivers/clocksource/mmio.c
++++ b/drivers/clocksource/mmio.c
+@@ -21,6 +21,7 @@ u64 clocksource_mmio_readl_up(struct clocksource *c)
+ {
+ 	return (u64)readl_relaxed(to_mmio_clksrc(c)->reg);
+ }
++EXPORT_SYMBOL_GPL(clocksource_mmio_readl_up);
+ 
+ u64 clocksource_mmio_readl_down(struct clocksource *c)
+ {
+@@ -46,9 +47,9 @@ u64 clocksource_mmio_readw_down(struct clocksource *c)
+  * @bits:	Number of valid bits
+  * @read:	One of clocksource_mmio_read*() above
+  */
+-int __init clocksource_mmio_init(void __iomem *base, const char *name,
+-	unsigned long hz, int rating, unsigned bits,
+-	u64 (*read)(struct clocksource *))
++int clocksource_mmio_init(void __iomem *base, const char *name,
++			  unsigned long hz, int rating, unsigned bits,
++			  u64 (*read)(struct clocksource *))
+ {
+ 	struct clocksource_mmio *cs;
+ 
+@@ -68,3 +69,4 @@ int __init clocksource_mmio_init(void __iomem *base, const char *name,
+ 
+ 	return clocksource_register_hz(&cs->clksrc, hz);
+ }
++EXPORT_SYMBOL_GPL(clocksource_mmio_init);
 -- 
 2.18.0
 
