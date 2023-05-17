@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6722FC77B7A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 19:42:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5CC7C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 19:45:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AE8+B3pWQ4l7QxfBqXUnPyiVc+aZlt+BtRcwXsFR3Kg=; b=2zEMJTVrzCfXzKZs/BMPm7epbw
-	DwlhtPYzl3lFF2Csc4fNoiX2fRj9XeslFUiG5wzjKmixm7N0kzDLe0glQdTqYiP4NqRAjiCJ/2pUi
-	euAkZ6XSbh6H946bFqAvHAxWhbAMKGURrMFkBFR1lgqym62jITGYEgqQMdahPd5uOzt47WZVrgmKf
-	3wuE+DBcmudRKOfcyUdYmNZb4IW8nYaXIzM2mzQMrSxTrVPUHWSinEVcNoYyzBhPXuFMP6qnCB0ce
-	jORzjETbpfNzDWB51h5jJi6HN/AT8V7ZBrtzQUkA8AORsVbQEboEMk9bLLJ1WSvLiz/eHYxhq4qRz
-	DpAmH3tA==;
+	bh=DE2bkq/ui14lTBLwtUifajE1EvCpc5Pz1BLS66HrLtI=; b=D44WG0CYF/Mt4qP0Ig6SvXb7TQ
+	QItuiIJizAkUGC8SbA5CVTFp8OFGnzhJ2lATS1kXir5QLyaVvR/ROquwMfRcOmro0Aj0coJyFfAqd
+	W+LIWCAIqJ6AczIBUGgrMsHXfK70/Iymj9RtapbUOMxMPFl4wqg1ros1iHTePEDpCnDt7pgtJdnPX
+	cYd4DyLgUOIcgHZSXtmxSPwDOGOcKRC57Z2NCjzoqqbkprB1ezYWOA7sAe2ZO0P54dCKSNGd0wEeL
+	9goQj/Co49DfUkW9rhxyUQ/yXfMaN66+MYTfxDGKBI1fYO+N0KmK+FCGIvauS/+NNYaXhQRhmQKk1
+	XLvG/B+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzN23-00AtVk-2D;
-	Wed, 17 May 2023 19:41:55 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1pzN5V-00Au4S-0w;
+	Wed, 17 May 2023 19:45:29 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzN20-00AtUS-2o
+	id 1pzN5S-00Au2r-1k
 	for linux-mediatek@lists.infradead.org;
-	Wed, 17 May 2023 19:41:54 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-96b0235c10bso209931166b.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 17 May 2023 12:41:48 -0700 (PDT)
+	Wed, 17 May 2023 19:45:27 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-965cc5170bdso184248966b.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 17 May 2023 12:45:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1684352507; x=1686944507;
-        h=content-transfer-encoding:in-reply-to:references:cc:to:from
+        d=linaro.org; s=google; t=1684352722; x=1686944722;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=AE8+B3pWQ4l7QxfBqXUnPyiVc+aZlt+BtRcwXsFR3Kg=;
-        b=JeDzLUDQ2pq/eW+97XnNWJdM/lObXBgEGxcH7lBWg6seb0FFwdy+Skry85v27s6EvM
-         QkKH/tarHJPDjjQLK1puuvgut2LSyAGVlXvtgQk85PVSFy2ZrpUXtZCoQdoEG4NYgMJq
-         ecYIECc3PBpmL8RasuQeCZ8hXX7hhxfC2bTTNXwk7kQw9Yp3FrTvUxxIvUe9j2IPmmj8
-         XYAnodyLH69Fi5r5Z0kVGXZz57/Xitgrslunok7K0u2BrSApjH7yzTPKUGDHH4SwwMj1
-         bnIg4tChp1M9aS3koD+8rutqnoTrCa3Cc+09L8PFzVd5FnecZA/i+KSehJoymjAUhr21
-         QwXQ==
+        bh=DE2bkq/ui14lTBLwtUifajE1EvCpc5Pz1BLS66HrLtI=;
+        b=pv0XlTzQm0AHDjnYWXA2DFOwY89iONL+pcihwOPnY2/55ELz63O65AuRo8sYRyVtfY
+         j4tyirV1rIXbj4sCHOWqTTlOuOSMW2jmK6+rtIOpV7Ka2tulKz/6eWhdbUWijx9Bu6Gb
+         ByIIf6pn51KS6teavMyaKat3eWK8I4nOHiWfDQvcdP/Uw0gfXBXnQIrIc/pz6cz6nVR5
+         Iy4x6JykOjawxDUZa1NyETS4srgGmwuaVLOaP/oJC0+uKgaPHr9cFO+fpRAAlIcMNtcy
+         nhs72woQacj+sq+ZLnu7DXHUJfQ74vtfFxKgtJUnmVCafSnNEWvepe5r3nD9pz3VWUP9
+         vy6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684352507; x=1686944507;
-        h=content-transfer-encoding:in-reply-to:references:cc:to:from
+        d=1e100.net; s=20221208; t=1684352722; x=1686944722;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=AE8+B3pWQ4l7QxfBqXUnPyiVc+aZlt+BtRcwXsFR3Kg=;
-        b=ASI82StH21F68K6GPXNbPCU6h8qcUn1iUnEAnsqEqqVs3wDMep2Pd2TPhvSQ2tNhXD
-         20ZtxhEujYIt95fbg8Ou2Xnxo13CSNh5/hL7lWEau0R9uWtvQvAKvXEpin4HlZLRBL5r
-         raOcMtpP/hkhD+6r7gqOZq2QCXHNNIejACgyZ4adO2fzGV9J74CjQtkBfuD/FoF7jHap
-         gYQguwZxmq+1rsR344fzNCSQQDn6X3UAJ+QH8YykvlQCZRX5wsepSUhPRgwlNMp4jzzV
-         7InUVASaRfpdiHBPQRnOvomJppncU2Fq/cL4aFpZYVTKmZdK+2VomGQ6xRj6Tn2Y9vjx
-         f/MQ==
-X-Gm-Message-State: AC+VfDzgM4xBkWA8gNxr/qf22UM7eozE7wIkqowQt9ING2cQt9QtVCPD
-	41KD5hpD+7tr5zoGClegMQOfww==
-X-Google-Smtp-Source: ACHHUZ4Qg3tRhWiRB2mnHGaX2Qu65CxTKUwvjCQnfKZkAA1h5PCV5S9tuiMPT1sXlI8/YMjQYOhZ5A==
-X-Received: by 2002:a17:907:8a04:b0:95f:de3c:6c98 with SMTP id sc4-20020a1709078a0400b0095fde3c6c98mr39648716ejc.58.1684352507571;
-        Wed, 17 May 2023 12:41:47 -0700 (PDT)
+        bh=DE2bkq/ui14lTBLwtUifajE1EvCpc5Pz1BLS66HrLtI=;
+        b=NS8kC03CEsGgr+dZTDjeUPh3w9vkGa7TzUTatSnDhrYBBbcVY/bTS1uWlqjuVCEV1q
+         8ilFr3Hd3gUgMgF0QthSXNIwESUbVAjvo4EW6QAbIkqRiERr2kJGCRIwJzJQ1ovMOCpF
+         S4Dwi7pkfSs5T2RlcpDB4jD9/45pPLP656oH/MP3bUt3+YApaJrB+LO+OMLD5mCb4j8S
+         BiOGKIwXTp0subkv3ouWGmn9S1LHwY5id/XvldNNeQ+sFyP8fyfDeXiwcin7Ch9Z2yEC
+         ddY8cO53nWcG8qmTVO40DoAaLVDDZNm9wWoFn2zSuLCjmZr+RFt/MocmBc/4q2Kj7/NG
+         l3pw==
+X-Gm-Message-State: AC+VfDzq2BFBN++YLml01jxhYoxx56C9kp8GE/MUcNFjrL/7i+Lg2JXA
+	SU2g9fjBBXevqQWFjjPOcKAiIA==
+X-Google-Smtp-Source: ACHHUZ6Tj8zelM2VZpR/AEzeGAQ8zj37niuO6NRBJvg0WI4NbhdxMvKTFTAAd3TJm0rHrq+VS/nWuA==
+X-Received: by 2002:a17:906:eec9:b0:94f:73db:b390 with SMTP id wu9-20020a170906eec900b0094f73dbb390mr34695874ejb.65.1684352722678;
+        Wed, 17 May 2023 12:45:22 -0700 (PDT)
 Received: from ?IPV6:2a02:810d:15c0:828:d7a:e7cc:21b3:c435? ([2a02:810d:15c0:828:d7a:e7cc:21b3:c435])
-        by smtp.gmail.com with ESMTPSA id og16-20020a1709071dd000b0096637a19dcasm12671085ejc.4.2023.05.17.12.41.46
+        by smtp.gmail.com with ESMTPSA id tf8-20020a1709078d8800b0096a2b6de3a4sm10504747ejc.122.2023.05.17.12.45.21
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 17 May 2023 12:41:47 -0700 (PDT)
-Message-ID: <ffd620e7-66ae-2921-85c0-c81070c09e01@linaro.org>
-Date: Wed, 17 May 2023 21:41:45 +0200
+        Wed, 17 May 2023 12:45:22 -0700 (PDT)
+Message-ID: <032699a0-9a43-953a-60e9-59a515a26cef@linaro.org>
+Date: Wed, 17 May 2023 21:45:20 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.11.0
-Subject: Re: [PATCH 7/7] dt-bindings: Add bidings for mtk,apu-drm
+Subject: Re: [PATCH 5/7] drm/apu: allow platform driver to implement their own
+ mmap function
 Content-Language: en-US
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Alexandre Bailon <abailon@baylibre.com>, airlied@gmail.com,
  daniel@ffwll.ch, maarten.lankhorst@linux.intel.com, mripard@kernel.org,
  tzimmermann@suse.de
@@ -83,14 +83,15 @@ Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
  linaro-mm-sig@lists.linaro.org, khilman@baylibre.com, nbelin@baylibre.com,
  bero@baylibre.com
 References: <20230517145237.295461-1-abailon@baylibre.com>
- <20230517145237.295461-8-abailon@baylibre.com>
- <f0469fcb-a1ef-77a2-a8ab-40ab8d91bff7@linaro.org>
-In-Reply-To: <f0469fcb-a1ef-77a2-a8ab-40ab8d91bff7@linaro.org>
+ <20230517145237.295461-6-abailon@baylibre.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230517145237.295461-6-abailon@baylibre.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230517_124152_911213_FD852E55 
-X-CRM114-Status: GOOD (  20.33  )
+X-CRM114-CacheID: sfid-20230517_124526_586783_061C83D6 
+X-CRM114-Status: UNSURE (   7.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,82 +106,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17/05/2023 21:38, Krzysztof Kozlowski wrote:
-> On 17/05/2023 16:52, Alexandre Bailon wrote:
->> This adds the device tree bindings for the APU DRM driver.
->>
->> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
->> Reviewed-by: Julien Stephan <jstephan@baylibre.com>
+On 17/05/2023 16:52, Alexandre Bailon wrote:
+> From: Julien Stephan <jstephan@baylibre.com>
 > 
-> There are so many errors in this patch... that for sure it was not
-> tested. Reduced review, except what was already said:
+> By default we will call drm_gem_mmap() unless the apu driver has
+> declared it's own mmap handler.
 > 
->> ---
->>  .../devicetree/bindings/gpu/mtk,apu-drm.yaml  | 38 +++++++++++++++++++
->>  1 file changed, 38 insertions(+)
->>  create mode 100644 Documentation/devicetree/bindings/gpu/mtk,apu-drm.yaml
->>
->> diff --git a/Documentation/devicetree/bindings/gpu/mtk,apu-drm.yaml b/Documentation/devicetree/bindings/gpu/mtk,apu-drm.yaml
->> new file mode 100644
->> index 000000000000..6f432d3ea478
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/gpu/mtk,apu-drm.yaml
->> @@ -0,0 +1,38 @@
->> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
->> +%YAML 1.2
->> +---
->> +$id: http://devicetree.org/schemas/gpu/mediatek,apu-drm.yaml#
->> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->> +
->> +title: AI Processor Unit DRM
->> +
->> +properties:
->> +  compatible:
->> +    const: mediatek,apu-drm
-> 
-> drm is not hardware. Drop everywhere or explain the acronym. If you
-> explain it like Linux explains, then: drm is not hardware.
-> 
->> +
->> +  remoteproc:
->> +    maxItems: 2
->> +    description:
->> +      Handle to remoteproc devices controlling the APU
-> 
-> Missing type/ref. Does not look like generic property, so missing vendor
-> prefix.
-> 
->> +
->> +  iova:
->> +    maxItems: 1
->> +    description:
->> +      Address and size of virtual memory that could used by the APU
-> 
-> So it is a reg?
-> 
->> +
->> +required:
->> +  - compatible
->> +  - remoteproc
->> +  - iova
->> +
->> +additionalProperties: false
->> +
->> +examples:
->> +  - |
->> +    apu@0 {
-> 
-> Where is reg? @0 says you have it...
-> 
->> +      compatible = "mediatek,apu-drm";
->> +      remoteproc = <&vpu0>, <&vpu1>;
->> +      iova = <0 0x60000000 0 0x10000000>;
-> 
-> Why would you store virtual address, not real, in DT? Let's say you have
-> some randomization like KASLR. How is it going to work? Drop, it is not
-> hardware property.
+> Signed-off-by: Julien Stephan <jstephan@baylibre.com>
+> Reviewed-by: Julien Stephan <jstephan@baylibre.com>
 
-Actually RANDOMIZE_BASE. KASLR randomizes the physical.
+One does not have to review own code. We all assume that we send good
+code which we do not have to review by ourselves (by the author). We
+also assume we make mistakes, which we cannot find, thus other person's
+review is important.
+
+Adding own review tag suggests you added them mechanically, so I doubt
+that they really happened.
+
+Anyway, your SoB is missing.
 
 Best regards,
 Krzysztof
