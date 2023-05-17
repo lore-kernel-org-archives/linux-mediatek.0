@@ -4,76 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2591FC77B7F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 09:40:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABD49C77B75
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 09:50:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=SOxNF8DkABpSug1TUOX7PPorK4LtqbS61IkWbqEbNGA=; b=UIoiRI2imZbUH4xG9Z7wBSXcKz
-	IHNjFUpSQohwZjmrLJiJBtzFew0DaB9l7XVIwH7f/edAd9Q8bKVCQ0Gbq3TZakRWhdI36PZ1z4Aj1
-	c27PxZVbzij1ilq7G6GeSZosnu1mTn+n3bnLSRWvkrFPxNNIW+IMymvYP4KAgYi44tBw75lRbR7Bs
-	UzAt2Bmd/YahXzTMz1mH+e9i+AT2t3sBdUSGWyZDmhwXBWBZuPRFSON7JKrkTfBPQJprMBTj91EAq
-	B+pJGMKtqLp1887W/XJM7HcofbvtDV251k7ic9g7xuD/kpgCuk17q3e70BiRdqoMCMl36RrajjMjX
-	IlNvc1Ow==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ijsm3hN4vZPBvSXa6DGRcbES0Cgm7N64jnHNuBjl6fs=; b=mktDiykYa6gN9f9F26ICLIP1d3
+	tHXwxoGXtvYEfjHVaJ4zCEJnGlB3ZrOdC7yGaJ0VODKKBZltKkr/S3AW5hYdhtgbK1fRcz4NTBS1v
+	dbzHo57Xv3q03gXA6asvXVaEG1+0IwMftMGku5S31cmX7PbXk3GSEogWeMAHA7/sOtFyHwmBUYeKQ
+	3nJp3mK8MV8zlq/ZD//8+RCov4ve7KhUz1c4Yw7L0zC7w1RfY1ndAOe5W4xMOrhW5/47DeNFr4Rkw
+	4CC1a/WGRA10uZOTA9qjJ2xAecDobWw2c1XUyCi1A6naoTxsSp6t9xBL4xfEqdL8wLg97Gn4vT1zk
+	UG2Zax8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzDdZ-0096AD-1T;
-	Wed, 17 May 2023 09:40:01 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pzDnk-0099zo-1h;
+	Wed, 17 May 2023 09:50:32 +0000
+Received: from esa.microchip.iphmx.com ([68.232.154.123])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzDdW-00967R-2T
-	for linux-mediatek@lists.infradead.org;
-	Wed, 17 May 2023 09:40:00 +0000
-X-UUID: c2f730e0f49611ed83ed1395ce914268-20230517
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=SOxNF8DkABpSug1TUOX7PPorK4LtqbS61IkWbqEbNGA=;
-	b=q4dkIRpemZZUYoDRvqCebdvMyyNm5LHdGlbx3GqnCT68zbdX9oskgHYXpFg86Yw9ecPrkT65LcqiE37bX2p0vTlGZEGNN5eoROXrSFReVa1ap5vka/GdjH75G+5pzXKSZJ7+xiJIKxKiP7tnRKGUEyv0gQGyAAqUfLcuEF872qU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.25,REQID:7dfa5fb2-65ec-4e1c-9a80-7879afb7c71e,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:d5b0ae3,CLOUDID:77661b6c-2f20-4998-991c-3b78627e4938,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-UUID: c2f730e0f49611ed83ed1395ce914268-20230517
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <deren.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 448338013; Wed, 17 May 2023 02:39:47 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.194) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 17 May 2023 17:19:11 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 17 May 2023 17:19:11 +0800
-From: Deren Wu <deren.wu@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
-CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
-	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, Leon Yen
-	<Leon.Yen@mediatek.com>, Eric-SY Chang <Eric-SY.Chang@mediatek.com>, KM Lin
-	<km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
-	<ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Stella Chang
-	<Stella.Chang@mediatek.com>, Quan Zhou <quan.zhou@mediatek.com>, Ryder Lee
-	<ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
-	linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>,
-	<stable@vger.kernel.org>
-Subject: [PATCH v2] wifi: mt76: mt7921: fix skb leak by txs missing in AMSDU
-Date: Wed, 17 May 2023 17:18:24 +0800
-Message-ID: <3c9926f5492523e0128bbc4897815d75b83e324a.1684312995.git.deren.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1pzDnh-0099yC-0e;
+	Wed, 17 May 2023 09:50:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
+  t=1684317029; x=1715853029;
+  h=from:to:cc:subject:date:message-id:mime-version:
+   content-transfer-encoding;
+  bh=Mtw2/tREMJ9jAsgNoVakn6fr09xbBwzqX6/cCqtFuL4=;
+  b=NKMBLWNMeZozgDmKxqnhQt237v6APKhhFXReN5psxSEdULDfa7Ipf2Es
+   GneM68eDaHVPfcDWpF2O0vkPx422vhTsrAfnMuPe5dKZgXWSKAjxvBDpR
+   VWP+j5ZoxODPfVcxRYLULhVJ6OzbgDseALnRqnxaGMUqnFOGWOFogn/Se
+   0OVL3lwm8dZ+7CFuYTJp39bgsZdrRVZKojvjKRQG/Drgp4am3Y1VaNhRJ
+   D8fy+mV1oxTEUyQ3huWRupEx9cXoiWxyrbCeJPcT4Z+KHAYqgZqc3kKZQ
+   /BcngRpHCQUErewFTkSkq+5KE1zJbsuKu9EZk1791w595YP44viG86pXb
+   A==;
+X-IronPort-AV: E=Sophos;i="5.99,281,1677567600"; 
+   d="scan'208";a="215854634"
+X-Amp-Result: SKIPPED(no attachment in message)
+Received: from unknown (HELO email.microchip.com) ([170.129.1.10])
+  by esa2.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256; 17 May 2023 02:50:22 -0700
+Received: from chn-vm-ex01.mchp-main.com (10.10.85.143) by
+ chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21; Wed, 17 May 2023 02:50:19 -0700
+Received: from m18063-ThinkPad-T460p.mchp-main.com (10.10.115.15) by
+ chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server id
+ 15.1.2507.21 via Frontend Transport; Wed, 17 May 2023 02:50:09 -0700
+From: Claudiu Beznea <claudiu.beznea@microchip.com>
+To: <perex@perex.cz>, <tiwai@suse.com>, <lgirdwood@gmail.com>,
+	<broonie@kernel.org>, <oder_chiou@realtek.com>, <shengjiu.wang@gmail.com>,
+	<Xiubo.Lee@gmail.com>, <festevam@gmail.com>, <nicoleotsuka@gmail.com>,
+	<shawnguo@kernel.org>, <s.hauer@pengutronix.de>, <kernel@pengutronix.de>,
+	<linux-imx@nxp.com>, <cezary.rojewski@intel.com>,
+	<pierre-louis.bossart@linux.intel.com>, <peter.ujfalusi@linux.intel.com>,
+	<yung-chuan.liao@linux.intel.com>, <ranjani.sridharan@linux.intel.com>,
+	<kai.vehmanen@linux.intel.com>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <srinivas.kandagatla@linaro.org>,
+	<bgoswami@quicinc.com>, <vkoul@kernel.org>, <daniel.baluta@nxp.com>,
+	<thierry.reding@gmail.com>, <jonathanh@nvidia.com>,
+	<jarkko.nikula@bitmer.com>
+CC: <alsa-devel@alsa-project.org>, <linux-kernel@vger.kernel.org>,
+	<patches@opensource.cirrus.com>, <linuxppc-dev@lists.ozlabs.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<sound-open-firmware@alsa-project.org>, <linux-tegra@vger.kernel.org>,
+	<linux-omap@vger.kernel.org>, Claudiu Beznea <claudiu.beznea@microchip.com>
+Subject: [PATCH v2 0/2] ASoC: do not include runtime_pm.h if not needed
+Date: Wed, 17 May 2023 12:49:01 +0300
+Message-ID: <20230517094903.2895238-1-claudiu.beznea@microchip.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230517_023958_814975_CD5F36E1 
-X-CRM114-Status: GOOD (  12.34  )
+X-CRM114-CacheID: sfid-20230517_025029_328782_E38C2AFF 
+X-CRM114-Status: UNSURE (   9.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,52 +94,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-txs may be dropped if the frame is aggregated in AMSDU. When the problem
-shows up, some SKBs would be hold in driver to cause network stopped
-temporarily. Even if the problem can be recovered by txs timeout handling,
-mt7921 still need to disable txs in AMSDU to avoid this issue.
+Hi,
 
-Cc: stable@vger.kernel.org
-Fixes: 163f4d22c118 ("mt76: mt7921: add MAC support")
-Reviewed-by: Shayne Chen <shayne.chen@mediatek.com>
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
----
-v2: * update operation for booleans, not bitfields (suggested by Simon Horman)
-    * rectify fixes tag for downstream backport
----
- drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+Series removes the pm_runtime.h inclusion in files where
+APIs exported though pm_runtime.h are not used. In case
+of files that make use of pm.h which comes form pm_runtime.h
+added patch 2/2.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-index ee0fbfcd07d6..a548b8debf5f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-@@ -495,6 +495,7 @@ void mt76_connac2_mac_write_txwi(struct mt76_dev *dev, __le32 *txwi,
- 				    BSS_CHANGED_BEACON_ENABLED));
- 	bool inband_disc = !!(changed & (BSS_CHANGED_UNSOL_BCAST_PROBE_RESP |
- 					 BSS_CHANGED_FILS_DISCOVERY));
-+	bool amsdu_en = wcid->amsdu;
- 
- 	if (vif) {
- 		struct mt76_vif *mvif = (struct mt76_vif *)vif->drv_priv;
-@@ -554,12 +555,14 @@ void mt76_connac2_mac_write_txwi(struct mt76_dev *dev, __le32 *txwi,
- 	txwi[4] = 0;
- 
- 	val = FIELD_PREP(MT_TXD5_PID, pid);
--	if (pid >= MT_PACKET_ID_FIRST)
-+	if (pid >= MT_PACKET_ID_FIRST) {
- 		val |= MT_TXD5_TX_STATUS_HOST;
-+		amsdu_en = amsdu_en && !is_mt7921(dev);
-+	}
- 
- 	txwi[5] = cpu_to_le32(val);
- 	txwi[6] = 0;
--	txwi[7] = wcid->amsdu ? cpu_to_le32(MT_TXD7_HW_AMSDU) : 0;
-+	txwi[7] = amsdu_en ? cpu_to_le32(MT_TXD7_HW_AMSDU) : 0;
- 
- 	if (is_8023)
- 		mt76_connac2_mac_write_txwi_8023(txwi, skb, wcid);
+Changes were built with allmodconfig on ARM and x86_64 and checked
+all the changed files were built at least once.
+
+Thank you,
+Claudiu Beznea
+
+Changes in v2:
+- removed cs35l45 handling
+- changed a bit commit description
+- added patch 2/2
+- collected Jarkko Nikula's tag
+
+Claudiu Beznea (2):
+  ASoC: do not include pm_runtime.h if not used
+  ASoC: use pm.h instead of runtime_pm.h
+
+ sound/hda/hdac_regmap.c                                   | 1 -
+ sound/pci/hda/hda_bind.c                                  | 1 -
+ sound/soc/amd/acp/acp-pci.c                               | 1 -
+ sound/soc/amd/acp/acp-platform.c                          | 1 -
+ sound/soc/codecs/max98090.c                               | 1 -
+ sound/soc/codecs/max98373-i2c.c                           | 2 +-
+ sound/soc/codecs/pcm186x.c                                | 1 -
+ sound/soc/codecs/rk3328_codec.c                           | 1 -
+ sound/soc/codecs/rt5682-i2c.c                             | 1 -
+ sound/soc/codecs/rt5682s.c                                | 1 -
+ sound/soc/codecs/tas2562.c                                | 1 -
+ sound/soc/codecs/tas5720.c                                | 1 -
+ sound/soc/codecs/tas6424.c                                | 1 -
+ sound/soc/codecs/wm_adsp.c                                | 1 -
+ sound/soc/fsl/imx-audmix.c                                | 1 -
+ sound/soc/intel/atom/sst/sst_acpi.c                       | 1 -
+ sound/soc/intel/atom/sst/sst_ipc.c                        | 1 -
+ sound/soc/intel/atom/sst/sst_loader.c                     | 1 -
+ sound/soc/intel/atom/sst/sst_pci.c                        | 1 -
+ sound/soc/intel/atom/sst/sst_stream.c                     | 1 -
+ sound/soc/mediatek/mt8186/mt8186-afe-control.c            | 1 -
+ sound/soc/mediatek/mt8186/mt8186-mt6366-da7219-max98357.c | 1 -
+ sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c  | 1 -
+ sound/soc/mediatek/mt8192/mt8192-afe-control.c            | 2 --
+ sound/soc/qcom/lpass-sc7180.c                             | 2 +-
+ sound/soc/qcom/lpass-sc7280.c                             | 2 +-
+ sound/soc/soc-compress.c                                  | 1 -
+ sound/soc/soc-pcm.c                                       | 1 -
+ sound/soc/sof/intel/hda-loader-skl.c                      | 1 -
+ sound/soc/sof/intel/hda-stream.c                          | 1 -
+ sound/soc/sof/intel/skl.c                                 | 1 -
+ sound/soc/sof/mediatek/mt8186/mt8186-clk.c                | 1 -
+ sound/soc/sof/mediatek/mt8195/mt8195-clk.c                | 1 -
+ sound/soc/tegra/tegra20_ac97.c                            | 1 -
+ sound/soc/ti/omap-mcbsp-st.c                              | 1 -
+ 35 files changed, 3 insertions(+), 36 deletions(-)
+
 -- 
-2.18.0
+2.34.1
 
 
