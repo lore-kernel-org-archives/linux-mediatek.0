@@ -4,136 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81ADAC77B7D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 15:24:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2165C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 15:28:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OhMr9sZi4rABGR79KHcDrNxiczite7LhBujapFvUJ4M=; b=Qw2FijK1EDFBn0VmUkWaPoRFjR
-	fxlu2xTfxC+vgDyGMvsd5ba1ROL4y+uS9ucXRMaLca9yLc9Mn5lAJkTHD/PlqB4Bm5t/RHcAPxvI7
-	BbLthXu2X3/7Tncnfr2PW6mkC+ZJevwYimtpie/zpGN5E5A/k4emBX1N2IARXdruaHiq2YWgXZJSb
-	oJCgbdUD07g50MRpjlS2XX6lMFldmigdl/zz8angFS94jUTedN85IL17IPAlzKfARHct5F1VvPoJa
-	q2m3sbPZ9N3EddBcrQCRIZHFXU63sDc8iwKC4z+3ygmPsnw/CYWJ/r176H7aH+NGVDu4s5oVHDhMy
-	CHwLPXDw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Subject:Message-Id:
+	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RASfi4C6iFM4Ndi70/5KgD6n2tXBLGdQMzw0G7ZIRkw=; b=O1Rk3VZyXJOdN0ZvXqcLKGG73w
+	SP7sJ83mcFKJJpmh2+8KYfstoZmMQa20smLvvV8CR7IbhIhwsinHh6LyD2ffIdAyRfMneXvdzjijn
+	vYuElKIpHK9g7j3+qtMl9t6yjEJaBqgj1hL37XDIwSVpc74tKdgpTaAtq0zoF+iy1Cpxv5Dq/MU44
+	5i+ZhATRgb3Jj2VmzjiK8bVN2xIb3cQEhF1v4jlaogsJybjakIk/X3BJUpaZRCkwRLkg7H/ZpjcRA
+	KTNJwZKoQCUk3mTc5oVPJYGkmD3OnzlLmmCO+MXXCzGlVce6ZD8m2aGqsebF0DP54rEzTMd2SRJho
+	xirtwnqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzJ0u-00AI4e-0B;
-	Wed, 17 May 2023 15:24:28 +0000
-Received: from mail-dm3nam02on20719.outbound.protection.outlook.com ([2a01:111:f400:7e83::719] helo=NAM02-DM3-obe.outbound.protection.outlook.com)
+	id 1pzJ4j-00AIwu-06;
+	Wed, 17 May 2023 15:28:25 +0000
+Received: from mail-ot1-f51.google.com ([209.85.210.51])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzJ0r-00AI3t-0R
-	for linux-mediatek@lists.infradead.org;
-	Wed, 17 May 2023 15:24:26 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Uvy7eDycdY/Rl8k5ccTYrLQWRQl0r9JyceQ8TmRJIGKQNGfFOBHEOyNkzNoigUo0pnS6N2FjzS3WFP6mg/5dlUylwsAWpk2fKOY21N3P+fiEIPm9fwPJnfhmmZqqP5x1p99a7juOZDz5K6tj8BVUJP+DItAqA0KpkMKuXk4/YPClfVTOJ40/CdbTXP2A5crnHx5CzCeHPSsPNQGtcMOEcZCD/SrhttWvt+Y4qE1afYTJzjRemZ5lC8/URbiCqkmh7haX3z0UpLuSEovNodifzM2eUSvFzyzfcmEL2JyvHCADbTVyyWzWLKc3MfkzGtvAn0RIyBxjqcZ60OpmHwStpA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=OhMr9sZi4rABGR79KHcDrNxiczite7LhBujapFvUJ4M=;
- b=BGjUNelvluY/b/tQb49X4yVIzIfsz6B7e1LLflBsA7j09u4bMIzSgVMWI2KGNSw4DOun8bWYA06AHHKknc5D6xQDuib244lTV+OhLuSTvieBfMu3JHtz5WRPKe57QVSv9LL2I2kmYFoNWRsAVdOq2Tz+xbiAVSKKUTI5BNrMPE/iJ+IDNPGFToLclYS+aYH79oQObc/IsVorg7vp1S2HMmetjBQ9unh6FnQl9VVU7+DCAIB/B0spt6tqIhgqQoPcr5ZSR4bKnGTpQYvVgXuvUyCtLJUELlL5I4Q+UBcItQLXNHt6ktAsH2qYlCdN9WdWySFGkJ2RekyRAEmET3a+zA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=corigine.com; dmarc=pass action=none header.from=corigine.com;
- dkim=pass header.d=corigine.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=corigine.onmicrosoft.com; s=selector2-corigine-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=OhMr9sZi4rABGR79KHcDrNxiczite7LhBujapFvUJ4M=;
- b=qDhmt2Upn362MCV/yNOGZFfuCSGBMBi+6/6kuBZm6dhr4RtfR3GBH5to+Ee4XmgZmL8aMJ+TFKNIBCyAAc7l9lkwlVfrVYQLbghdJ3r6Xpobop+xDjdHno3RhkCrZrD10rJkgX0GQ4KgmKEmcH+H6G7JDthbE/ypn3ATiuTLVck=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=corigine.com;
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com (2603:10b6:510:78::6)
- by LV3PR13MB6406.namprd13.prod.outlook.com (2603:10b6:408:19c::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6411.17; Wed, 17 May
- 2023 15:24:20 +0000
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::f416:544d:18b7:bb34]) by PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::f416:544d:18b7:bb34%5]) with mapi id 15.20.6387.033; Wed, 17 May 2023
- 15:24:20 +0000
-Date: Wed, 17 May 2023 17:24:11 +0200
-From: Simon Horman <simon.horman@corigine.com>
-To: Deren Wu <deren.wu@mediatek.com>
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Soul Huang <Soul.Huang@mediatek.com>,
-	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>,
-	Leon Yen <Leon.Yen@mediatek.com>,
-	Eric-SY Chang <Eric-SY.Chang@mediatek.com>,
-	KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>,
-	CH Yeh <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>,
-	Stella Chang <Stella.Chang@mediatek.com>,
-	Quan Zhou <quan.zhou@mediatek.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	linux-wireless <linux-wireless@vger.kernel.org>,
-	linux-mediatek <linux-mediatek@lists.infradead.org>,
-	stable@vger.kernel.org
-Subject: Re: [PATCH v2] wifi: mt76: mt7921: fix skb leak by txs missing in
- AMSDU
-Message-ID: <ZGTxm5o9w8c+mSmQ@corigine.com>
-References: <3c9926f5492523e0128bbc4897815d75b83e324a.1684312995.git.deren.wu@mediatek.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <3c9926f5492523e0128bbc4897815d75b83e324a.1684312995.git.deren.wu@mediatek.com>
-X-ClientProxiedBy: AM0PR08CA0020.eurprd08.prod.outlook.com
- (2603:10a6:208:d2::33) To PH0PR13MB4842.namprd13.prod.outlook.com
- (2603:10b6:510:78::6)
+	id 1pzJ4f-00AIwF-3D;
+	Wed, 17 May 2023 15:28:23 +0000
+Received: by mail-ot1-f51.google.com with SMTP id 46e09a7af769-6acc9273e3eso680373a34.2;
+        Wed, 17 May 2023 08:28:20 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1684337300; x=1686929300;
+        h=date:subject:message-id:references:in-reply-to:cc:to:from
+         :mime-version:content-transfer-encoding:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=RASfi4C6iFM4Ndi70/5KgD6n2tXBLGdQMzw0G7ZIRkw=;
+        b=hupnzEpT6GCWUTslRjIgxiNG8UpoTnZtfBdyqm2AkBZJy0515mlC0U0kya0ie8QYB4
+         nd0VqMUMyyyJk5poFKtIdQC8W9V6DMT/IKm2sw/jnfmbQqzyk7akRVy6BxvMJdDySXIO
+         rmSQztYAa+9AQKpj9XZrJ+VKCq43X55b34LZghJ6wM9XpKhLzOKygu7SXT+qRypsBW6n
+         5kBSbFWxYdvJYIujTMapXwxOjo56rw3EKxc6pFxlYMLBzfoSwpfX9mxiNGVHm5oW6QuF
+         bXB/6hb9qTZtzTy/4042NEfzMn1inrZN3Wz+UAkz//VL2wQDL3O1qu+S5131C8FvGTJ0
+         YhIQ==
+X-Gm-Message-State: AC+VfDxJU1W22cJT1Gp5zhyRteiHX6qYnRtfvBgxv88XEBdPjFokS78F
+	CktXsB1kSPAiisiCC+H+3g==
+X-Google-Smtp-Source: ACHHUZ6ijD9N5SseCCQ1cWe5HZUVSbftXF5bMVUuAmhW+DgCGKOm3XkKpKsWZ5OlaP5anPyYkVoUGA==
+X-Received: by 2002:a05:6830:14c9:b0:6ab:840:c498 with SMTP id t9-20020a05683014c900b006ab0840c498mr15482515otq.33.1684337300240;
+        Wed, 17 May 2023 08:28:20 -0700 (PDT)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id di10-20020a0568303a0a00b006a5db4474c8sm13400347otb.33.2023.05.17.08.28.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 17 May 2023 08:28:19 -0700 (PDT)
+Received: (nullmailer pid 894363 invoked by uid 1000);
+	Wed, 17 May 2023 15:28:17 -0000
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR13MB4842:EE_|LV3PR13MB6406:EE_
-X-MS-Office365-Filtering-Correlation-Id: 919974f7-6e2d-4b25-2856-08db56eac903
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	D3a6jiuzs17Vvn8dhm12g+Aea81SkBbqaSd2feyFEJSMgwBTNkAzdfTxHVagAv7TmBVzvF6khwoyjOmgETeO1rF73pEMIdn9QbtRj8YXONpQDIAn0l1/TRjQina6foUDu/x4POIXrQBHc++rEPmKPLgJEccnPF+6HhPHFZH3bQBsmKCPCqk1XCVUo+1Fo4zO9LtXPdrLVngt1b/VwRrMpda4R/Z1QfrW+s4Zse16SEikwyapmmgaObmeSQBrHnAKMoeMKA1Q17+9Dge0CsIaKe5rknrj5zp8vmp+DgFI4/1f8X3V0oN/bmdfwGKw3gFawlv8aL7JIov6SHrq8cPPWX8WJGGyO9/u6dKikcXAx3RxSUdp1V5em5Ip5v5t4uqjyKkb8zPPCKHhGCZZda6llfUAeOIK02pCv81y9xH2cAjNZ5ZTxpXWV3CpV0SDu8xItbXfsPsCziv5ICADMOorwWAYun77wGAdu1VW9kfuXgRM3T+1LdZlDvBXkZ9Zp2eh1+E219XtjBveI5xmKUPuB8tg0Cx0phz5851N93WwjW//3iiX3yp3oXdGGGEWRhaUyBTIvgFBJBPu2CV55tSy5V0dDUdcQqXdRR8kEGTbcXdn6avs6vsVopnds7yVQFKCqCDSTE1MxQvvZc18RAnXx2++ZPZvdcsDJp2UqwGtQMI=
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR13MB4842.namprd13.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(346002)(39840400004)(376002)(136003)(366004)(396003)(451199021)(36756003)(86362001)(54906003)(66946007)(66556008)(4326008)(66476007)(316002)(6916009)(478600001)(6666004)(8676002)(8936002)(6486002)(5660300002)(41300700001)(4744005)(2906002)(44832011)(7416002)(38100700002)(2616005)(6506007)(6512007)(186003)(83380400001)(67856001);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?tGd/oMdHJQwPu8LXBmC4bIimx/t3/nfo3tL0FCF+ybeeJwRF6Znk6NEMPVfa?=
- =?us-ascii?Q?0kJNd5vGlsAi2aKlClkaiqRrMKOxHLVTKO/0QlPm6eWymzCncFyGtKRSZfNa?=
- =?us-ascii?Q?1eZQfEv2TGe5LB7n5SrnrXo8/RCj1HYondDeGzDiRvlH6vpOscXPxrHKFoHh?=
- =?us-ascii?Q?biYeIkD/iwxxnyTdHF60uey9abGcy9QDX65Yg1il/VpTG/+IG/owrvw+XYbe?=
- =?us-ascii?Q?WOt6ZkfcAU4jUorAeZRn42Ucsre6al3nBdxktIB+56AKIlrG0GWt8am+RuX/?=
- =?us-ascii?Q?e6Lc3QGlvy+Ca+0vYWHN1qVJJxMeA30b6JYKbAfmePKkZzXzejw5LtiFqBBl?=
- =?us-ascii?Q?czcUka1Ga/PwKvPOTnpnnX2jve8nXyqA+Vvpr32Icj0OISolXiob/8FqlC1p?=
- =?us-ascii?Q?UYOkSKQ8CsJHZ2dxwoRPQxdPn58kHUBi7G3wUNBXw8AGl+XGGqvjp6QS/02M?=
- =?us-ascii?Q?JX1KpDzHb7RRKSZGQg7kDNA1NbeabZjc9kl79aJ4u9gd1Urh8KmxjdxV5MU5?=
- =?us-ascii?Q?M48LWmXE7qLJZAAIGEW0BnmVp5GVzxOTQYPI1/SfhrNoYXy+h6CIc3hpoN55?=
- =?us-ascii?Q?Hs2viBeFHvIQWjKySBYC9yyy4LBaOcHd1JogY6QCAE4yjDWR0CSN50IRgIbT?=
- =?us-ascii?Q?WDuAb5nkYkQhuHZhgrYqWG+dm8Qw0DtSrGGKRRkMqV8dsddSfMDd8tbLMu8Y?=
- =?us-ascii?Q?pfVWoG9qfiRMzf2hx9pptBBBMlBUOi2IC8EvpoSB0g9H231QwG93vuvIka2L?=
- =?us-ascii?Q?rlejEtaBfQlPZPCnAzawarr6whOlyO9Oe4Cc9SKTAk3rbPTyDOCe8rgbrWvA?=
- =?us-ascii?Q?INCt6TzcWz0vu6KqtfP36BJDdqN84hfmaC3fACeEFGkgy+kmdWNCg0Vmen9+?=
- =?us-ascii?Q?mgGGQwkz1cv/Lqw3go4UZNzH667gNGjjr3hrACjhMGple8bmVUJLnn8rMsp5?=
- =?us-ascii?Q?cETKei2s4YCkjzymqgOuGznBWeaxsZLhpa0K4Tp/9st/5EkNQ4TVo8te8hD2?=
- =?us-ascii?Q?qfSRdMKVmghGisI9eahEziBWQuc5/5wk1yhq3LrgadO/xsQwYowsi4CZmlDH?=
- =?us-ascii?Q?OAGCevQ/7ADOT2GJT7xwpqPSMbvJMrB0hevS6yPNRCaKtlGfX7KbF8Zzz7P4?=
- =?us-ascii?Q?tGdqsSVDlCUX8UuOtTGRv+gvY/YwLu/SXIMM195vWoaVFB9qlcHJhGFVy6wv?=
- =?us-ascii?Q?wj4F8qFcFTHcWiumjN+/o8IWktpS/AoCmjEhFyF+BXLdjOX8Hdy2sQdzcxHS?=
- =?us-ascii?Q?uk+yDCqbIJKyR7YyKBps48faCL7Ino1cndHk8rY6XJxMyGvMU3YO/TxD1xTe?=
- =?us-ascii?Q?6wVqRzPKHERxZe4hFrICM2zQaZpQE0xb2arFDM0H2hMR2nZX5anuZUMWYHq1?=
- =?us-ascii?Q?w3+WunD+Lj0yp8nmBQOOipnJ8ux6dlerHbNLwptppR2qVqVPtP9KaM0V1Lfr?=
- =?us-ascii?Q?qTgov+A6vLzpyvFR+WNI3jOSOaWp1z2MuKgrt2XKpoBTO1XcOjyv1k8SE4d4?=
- =?us-ascii?Q?+bvnY3xnaGJITcLStSg933QMNOREHRpG1HAZJnIlvvIH2g4VVQfgL7bgRj8c?=
- =?us-ascii?Q?HirDKUWIYTxa87UUx4Fu3+XVUiqAMgQ017VuhuAmRsg9AlrtmpPj4gI/i9qa?=
- =?us-ascii?Q?PcOzWN+8DRUrUOTiGuXIChgyXIw4QT+ykcQ9nHq1rFKVH2R+maLt7gR61bbe?=
- =?us-ascii?Q?5Mm2xQ=3D=3D?=
-X-OriginatorOrg: corigine.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 919974f7-6e2d-4b25-2856-08db56eac903
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR13MB4842.namprd13.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 May 2023 15:24:19.9610
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: fe128f2c-073b-4c20-818e-7246a585940c
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: E4s8gHD452RgBtK+uG0h3ov0SgwzNTlv/Jl4HCdgaqHR2dUpxCbotG6cztrnHPFHyVF7vS12icMNnFGjvMTdCgAaR5AFgbN8NVT0vBBqSv8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV3PR13MB6406
+From: Rob Herring <robh@kernel.org>
+To: Alexandre Bailon <abailon@baylibre.com>
+Cc: khilman@baylibre.com, linux-mediatek@lists.infradead.org, tzimmermann@suse.de, devicetree@vger.kernel.org, linux-media@vger.kernel.org, matthias.bgg@gmail.com, nbelin@baylibre.com, linux-arm-kernel@lists.infradead.org, airlied@gmail.com, maarten.lankhorst@linux.intel.com, linaro-mm-sig@lists.linaro.org, krzysztof.kozlowski+dt@linaro.org, daniel@ffwll.ch, conor+dt@kernel.org, christian.koenig@amd.com, mripard@kernel.org, robh+dt@kernel.org, linux-kernel@vger.kernel.org, bero@baylibre.com, dri-devel@lists.freedesktop.org, jstephan@baylibre.com, sumit.semwal@linaro.org, angelogioacchino.delregno@collabora.com
+In-Reply-To: <20230517145237.295461-8-abailon@baylibre.com>
+References: <20230517145237.295461-1-abailon@baylibre.com>
+ <20230517145237.295461-8-abailon@baylibre.com>
+Message-Id: <168433729744.894347.3314650002007733913.robh@kernel.org>
+Subject: Re: [PATCH 7/7] dt-bindings: Add bidings for mtk,apu-drm
+Date: Wed, 17 May 2023 10:28:17 -0500
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230517_082425_198331_7F260F77 
-X-CRM114-Status: GOOD (  10.19  )
+X-CRM114-CacheID: sfid-20230517_082822_038724_D7B0172D 
+X-CRM114-Status: GOOD (  12.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,21 +80,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 17, 2023 at 05:18:24PM +0800, Deren Wu wrote:
-> txs may be dropped if the frame is aggregated in AMSDU. When the problem
-> shows up, some SKBs would be hold in driver to cause network stopped
-> temporarily. Even if the problem can be recovered by txs timeout handling,
-> mt7921 still need to disable txs in AMSDU to avoid this issue.
+
+On Wed, 17 May 2023 16:52:37 +0200, Alexandre Bailon wrote:
+> This adds the device tree bindings for the APU DRM driver.
 > 
-> Cc: stable@vger.kernel.org
-> Fixes: 163f4d22c118 ("mt76: mt7921: add MAC support")
-> Reviewed-by: Shayne Chen <shayne.chen@mediatek.com>
-> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
+> Reviewed-by: Julien Stephan <jstephan@baylibre.com>
 > ---
-> v2: * update operation for booleans, not bitfields (suggested by Simon Horman)
->     * rectify fixes tag for downstream backport
+>  .../devicetree/bindings/gpu/mtk,apu-drm.yaml  | 38 +++++++++++++++++++
+>  1 file changed, 38 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/gpu/mtk,apu-drm.yaml
+> 
 
-Thanks, LGTM.
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
-Reviewed-by: Simon Horman <simon.horman@corigine.com>
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/gpu/mtk,apu-drm.yaml: 'maintainers' is a required property
+	hint: Metaschema for devicetree binding documentation
+	from schema $id: http://devicetree.org/meta-schemas/base.yaml#
+./Documentation/devicetree/bindings/gpu/mtk,apu-drm.yaml: $id: relative path/filename doesn't match actual path or filename
+	expected: http://devicetree.org/schemas/gpu/mtk,apu-drm.yaml#
+Documentation/devicetree/bindings/gpu/mtk,apu-drm.example.dts:18.15-22.11: Warning (unit_address_vs_reg): /example-0/apu@0: node has a unit name, but no reg or ranges property
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/gpu/mtk,apu-drm.example.dtb: apu@0: remoteproc: [[4294967295, 4294967295]] is too short
+	From schema: /builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/gpu/mtk,apu-drm.yaml
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20230517145237.295461-8-abailon@baylibre.com
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
+
 
