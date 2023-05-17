@@ -4,69 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4B04C77B75
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 11:48:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CAD0C7EE23
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 11:52:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ra9xJEZTA2MbhrUan6uLduuw9K7IyS0UN+mO9K+Ojt0=; b=SdiTARuWpiKfAqoYTAzmX/CI18
-	ThvoOFKyEBuDmbnT5fD8TGrEJsGzK/vaEl29omgPIJbanyspVCaQxfS5FV96Lw72OF/TufxGvZyGW
-	FCl/GKhuY1wfKmBDKZduWdm7sFy7f8PRQ+ezl4RZeqUPtpa+NKaM50ZxjY0+w53uB9XFlxlRg7SG8
-	UXB87h6RUiMMW4U4ImmWk2CfSSwSgnwyaKHgq7Ay/ui3s2nQv8LMclaQZ0x2r2AfFb028log2qn2U
-	olQy+4T8vP1OZFwQf6EFv507P48RQmRmtXCLVYapGPG6DSdfJnTXJxdAdoZWrfLA2GjOLG0vVq1xG
-	MWeT4fjA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Y1HnJqsO/WkMHXAXN/S1iWJu5d9vaTn7O2ZE737u36k=; b=nJ6w3ct0ST8jKGeYa7fFVAlhiv
+	E0woDaWQuk6RmeylNH4zrc5Oh4X8C+xakpsZ/3Qx1Y+CY0DQwbMPYGgKh8Iik8efadx3NwIMUIpNY
+	tN8+U+OQ54DmO1uOGthWCzB2ni5MfaNoWqZTxTCzBOFzHsyCbk72lapHNlvu614BrNnN642mFwqMs
+	c9XDYFGy76GOhQl4CdLHVuO2Z/Mezr13nYLfdedVRf79AyoDrrPjzMQQFxyDvEEWjH7VwNHyVS3qU
+	UmfDWQygSc1MqtxeMK0+OWop/1ynhPIFYVeueVee1w3YKurt9i10KZ0QrCcCH5Rgw7/FuvP04COUj
+	bvrFrMww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzFdZ-009fXd-0r;
-	Wed, 17 May 2023 11:48:09 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pzFhn-009gIG-0N;
+	Wed, 17 May 2023 11:52:31 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzFdW-009fVq-1K;
-	Wed, 17 May 2023 11:48:07 +0000
-Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 36796660574E;
-	Wed, 17 May 2023 12:48:02 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1684324083;
-	bh=pdURUQBQCGZwUYqLO8wHO9znW+z0Fce579FBz8y/290=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=n5EEQbPvjfAzCHlxP0Yv0FWn8la8yKekCCiB7eUFzyS5QfzfhMeV8qiQsdFMJ9ORU
-	 R94ccrA5DvKOsA5U1vkVnwc62L7Rjy2TkRKo8KKqiGqNNe/XeV19/VBM8oPhqk/EZJ
-	 6FdOSm8P4sQbofdXZ+NFIpnHlWJehch51ubTROSluORGI8pOIWI8SGgm+ENd4JnzMo
-	 AfzfmNhk5rPs5Tf6tRUvUEC+hMTmND+BTH/G+cAL9iujQ+ap+w+M4EW2xNC7xpoIvT
-	 7UWj4ZBGLHJp7Gbke8YgVnRg2TzSK8up/K4rXu0J7DH7lOD04z6zZEWFhVIXjPwrpT
-	 6Og2dQOJgMVOA==
-Message-ID: <daac5c71-e6d3-04b0-f628-c53a4e12640d@collabora.com>
-Date: Wed, 17 May 2023 13:48:00 +0200
+	id 1pzFhj-009gGp-38;
+	Wed, 17 May 2023 11:52:29 +0000
+X-UUID: 48ea1e6cf4a911ed912e1518a6540028-20230517
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Y1HnJqsO/WkMHXAXN/S1iWJu5d9vaTn7O2ZE737u36k=;
+	b=BzM1EjTJ2H5qet2sxuV2LbU6KnAkVA9vbFkAstrQRDT0y3+pl/RVm8ls2/pavwX2aAMofoWTq6yhSx3LaC5GEfk8mftkJ5Cg6yOmDcYQkN9vGVK4puwd/adbFs/k8p9Frgv9hxWozJOm+zp2HJ6is19LzfWwgMLd1ctcI27kA5o=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.25,REQID:3263a8e8-44ca-4a03-a6d8-0822914f92d2,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:d5b0ae3,CLOUDID:ba1c26c1-e32c-4c97-918d-fbb3fc224d4e,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: 48ea1e6cf4a911ed912e1518a6540028-20230517
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <trevor.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 436762288; Wed, 17 May 2023 04:52:22 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 17 May 2023 19:52:20 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 17 May 2023 19:52:20 +0800
+From: Trevor Wu <trevor.wu@mediatek.com>
+To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
+	<perex@perex.cz>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>
+CC: <trevor.wu@mediatek.com>, <bicycle.tsai@mediatek.com>,
+	<ting-fang.hou@mediatek.com>, <alsa-devel@alsa-project.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>
+Subject: [RESEND 0/4] ASoC: mt6359: kselftest fix and driver extension
+Date: Wed, 17 May 2023 19:52:15 +0800
+Message-ID: <20230517115219.532-1-trevor.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.1
-Subject: Re: [PATCH 3/5] ASoC: mediatek: common: soundcard driver add dai_fmt
- support
-Content-Language: en-US
-To: Trevor Wu <trevor.wu@mediatek.com>, broonie@kernel.org,
- lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com
-Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org
-References: <20230517111534.32630-1-trevor.wu@mediatek.com>
- <20230517111534.32630-4-trevor.wu@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230517111534.32630-4-trevor.wu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230517_044806_580537_230BAD5E 
-X-CRM114-Status: GOOD (  29.44  )
+X-CRM114-CacheID: sfid-20230517_045228_019714_9E482E7D 
+X-CRM114-Status: UNSURE (   7.39  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,113 +84,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/05/23 13:15, Trevor Wu ha scritto:
-> There are two changes included in the patch.
-> 
-> First, add set_dailink_daifmt() function, so dai_fmt can be updated by
-> the configuration in dai-link sub node.
-> 
-> Second, remove codec phandle from required property in dai-link sub node.
-> For example, user possibly needs to update dai-format for all etdm
-> co-clock dai-links, but codec doesn't need to be specified in capture
-> dai-link for a speaker amp.
-> 
-> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
-> ---
->   .../mediatek/common/mtk-soundcard-driver.c    | 49 ++++++++++++++++++-
->   1 file changed, 48 insertions(+), 1 deletion(-)
-> 
-> diff --git a/sound/soc/mediatek/common/mtk-soundcard-driver.c b/sound/soc/mediatek/common/mtk-soundcard-driver.c
-> index 738093451ccb..5e291092046b 100644
-> --- a/sound/soc/mediatek/common/mtk-soundcard-driver.c
-> +++ b/sound/soc/mediatek/common/mtk-soundcard-driver.c
-> @@ -22,7 +22,7 @@ static int set_card_codec_info(struct snd_soc_card *card,
->   
->   	codec_node = of_get_child_by_name(sub_node, "codec");
->   	if (!codec_node)
-> -		return -EINVAL;
-> +		return 0;
->   
->   	/* set card codec info */
->   	ret = snd_soc_of_get_dai_link_codecs(dev, codec_node, dai_link);
-> @@ -36,6 +36,47 @@ static int set_card_codec_info(struct snd_soc_card *card,
->   	return 0;
->   }
->   
-> +static int set_dailink_daifmt(struct snd_soc_card *card,
-> +			      struct device_node *sub_node,
-> +			      struct snd_soc_dai_link *dai_link)
-> +{
-> +	unsigned int daifmt;
-> +	const char *str;
-> +	int ret;
-> +	struct {
-> +		char *name;
-> +		unsigned int val;
-> +	} of_clk_table[] = {
-> +		{ "cpu",	SND_SOC_DAIFMT_CBC_CFC },
-> +		{ "codec",	SND_SOC_DAIFMT_CBP_CFP },
-> +	};
-> +
+The patch series includes a kselftest fix and changes for extending
+driver capability to support more use cases.
 
-This is an optional property and this function should not do anything if that
-property is not found, so....
+Trevor Wu (4):
+  ASoC: mediatek: mt6359: add supply for MTKAIF
+  ASoC: mediatek: mt6359: fix kselftest error of playback gain
+  ASoC: mediatek: mt6359: add mtkaif gpio setting
+  ASoC: mediatek: mt6359: update route for lineout mux
 
-	/*
-	 * Check "mediatek,clk-provider" to select the clock provider
-	 * in SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK area, if specified.
-	 */
-	if (!of_property_read_string(sub_node, "mediatek,clk-provider", &str))
-		return 0;
+ sound/soc/codecs/mt6359.c | 152 ++++++++++++++++++++++++++++++++++----
+ 1 file changed, 137 insertions(+), 15 deletions(-)
 
-...this allows you to reduce indentation as well.
-
-> +	daifmt = snd_soc_daifmt_parse_format(sub_node, NULL);
-> +	if (daifmt) {
-> +		dai_link->dai_fmt &= SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK;
-> +		dai_link->dai_fmt |= daifmt;
-> +	}
-> +
-> +	/*
-> +	 * check "mediatek,clk-provider = xxx"
-> +	 * SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK area
-> +	 */
-> +	ret = of_property_read_string(sub_node, "mediatek,clk-provider", &str);
-> +	if (ret == 0) {
-> +		int i;
-> +
-> +		for (i = 0; i < ARRAY_SIZE(of_clk_table); i++) {
-> +			if (strcmp(str, of_clk_table[i].name) == 0) {
-> +				dai_link->dai_fmt &= ~SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK;
-> +				dai_link->dai_fmt |= of_clk_table[i].val;
-> +				break;
-> +			}
-> +		}
-> +	}
-> +
-> +	return 0;
-> +}
-> +
->   int parse_dai_link_info(struct snd_soc_card *card)
->   {
->   	struct device *dev = card->dev;
-> @@ -67,6 +108,12 @@ int parse_dai_link_info(struct snd_soc_card *card)
->   			of_node_put(sub_node);
->   			return ret;
->   		}
-> +
-> +		ret = set_dailink_daifmt(card, sub_node, dai_link);
-> +		if (ret < 0) {
-
-if (ret) {
-  ...
-}
-
-> +			of_node_put(sub_node);
-> +			return ret;
-> +		}
-
-Regards,
-Angelo
+-- 
+2.18.0
 
 
