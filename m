@@ -4,70 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBF69C77B75
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 12:51:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DEBCC77B7F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 13:35:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:
+	Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mjienxD+S7+oWNo3+nJFIPGjNyMflLcf+h1Ao7e4eNg=; b=WmM8bS5UwHuLuvocadYN4X8PmH
-	IjTYc56mH+FyH8D8NSurUiW4jvTEDJEeDN/L9nZ5IqPLb3VWXXs+F7apFuvmV2NEahKWJnjfAX2VN
-	n1UwgSnjWsulkP6vI562zmZsnezChruZ2H9MCRgy9t3waJgSAPd1nIi7NWaOkJDq3sKFcuMd+fKXA
-	ien6wtB0JmI2NbWlEGAfasRHvwyxvohDJ7jmArBUu9Uwm9omBS+a2haBefFUyieDD//hciC6i06BS
-	A9KKEVj7gmz9kc8dM4Jt0r3U1t89r5TqQ2qudd0xkNMJJdJ4Qi4zIqZtYhnL+QsQdhN+/IJW6pqy3
-	rXfxIJgg==;
+	bh=H2eszAyur7OFqZ2pzsk7HhbR0lXfV8LZ3reUmipy0B4=; b=0ELdbTzbJkjmxlyPR8dpWnX30x
+	E6sTfHBi2h6J0MJAVl7zDYTQb1y4Fq+5QQLu6Fdv2J4aOgFX12MTUZhCR/i4oZcrV8oquVOqnxqLA
+	FlbGULbcerKgPuwRSitNuewNYVu2e47IrgRxNBM7DZKi6YEbLhw6bajq43YFc8KaQjM8lEOigjHII
+	bs+qrSxERyrGSmoxS/DtdALQAd1MzSSHONGE8pso+PfApO/tXYxEFs4muNlqlxtNCCRsh1WoFN/5o
+	1MR+4tt8eIz0nGy7ko/2BWt75brdQuGpln93VfCG/hGpJ7ldS+MIwXT/g6hWSX1hNVWXrsalGWLJR
+	PoYDQ/jg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzGd5-009rRJ-0t;
-	Wed, 17 May 2023 12:51:43 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pzHIw-00A0Bs-0A;
+	Wed, 17 May 2023 13:34:58 +0000
+Received: from mout.gmx.net ([212.227.15.19])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzGd2-009rQk-1C;
-	Wed, 17 May 2023 12:51:41 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 7DDB063DD8;
-	Wed, 17 May 2023 12:51:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 734CAC433D2;
-	Wed, 17 May 2023 12:51:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1684327898;
-	bh=2JoCzAya4ozHUzDjJra+EnUuUPNieFhbiHSZyLF00PA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=psTl8xOZaaVdlSpsfzROkdJ3SFvhphHBtGtz60jb/YMXr4VTHVXNht91DgJqAKtwM
-	 H8sgLo39VR+p56amkVM+nizUQfoThZu3vREL8JG9oFCQqTcQvl5XAltpW5aIjg+VyD
-	 SXMVUJckERKd+j3EukP8dpqLSfgIEoR3G9omf+hXqvZqa4axZsItV3gonpk6A8s/pN
-	 aRgAqwHumvaCfTdfM+T1i/wkM1+WA1WCZDXLbBAa4slFyzUdR07YpZ1fzVfvgAKnkF
-	 hRjaRUQDDdRbbO8HXsql899236rOEs5v2FskSLs7JyqngQT+3AHoxSsRmt0EUEYCTP
-	 OSzvA1yy38gsw==
-Date: Wed, 17 May 2023 18:21:34 +0530
-From: Vinod Koul <vkoul@kernel.org>
-To: Jon Hunter <jonathanh@nvidia.com>
-Cc: Thierry Reding <thierry.reding@gmail.com>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Guillaume Ranquet <granquet@baylibre.com>,
-	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	"linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>
-Subject: Re: [PATCH] phy: mediatek: Avoid floating point constants
-Message-ID: <ZGTN1vWnxmaR/XKM@matsya>
-References: <20230419122131.2167122-1-thierry.reding@gmail.com>
- <89583b89-ea8c-8096-b083-6ab773e6c281@nvidia.com>
+	id 1pzHIs-00A08L-01;
+	Wed, 17 May 2023 13:34:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
+	s=s31663417; t=1684330472; i=frank-w@public-files.de;
+	bh=H2eszAyur7OFqZ2pzsk7HhbR0lXfV8LZ3reUmipy0B4=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=VH0KENZht12vdsiyi3H/WBCPDDbvdNwgaQnr9jclo18R+LrKqoHEwDhfYi8OtywgJ
+	 s4GAM9d5D/gx7bV7t0WEKgk9J1wMgGV7kcYb+NMf6HYl208qBWVb4LtemEa/JNwimd
+	 5lZhqAFg3OPniht7zmyjq8ljuIs1ikegfrxIltLOJ2vk80l6alRSsTULeZlN2Pq8iH
+	 x0jtJG3/vnn89625G1EE4Ba5TXdFF5ISf24Xt7rflJu2qZl6CvOeO+JCGKgRPp9k/b
+	 nUSur1tB5dXQFhWHJ+78GhfFCjG28GvxGavXpLD7OE3b3bBvKV6Mp1xCyaAx/rRvkN
+	 XH0TlqbCw1D3Q==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [80.245.72.243] ([80.245.72.243]) by web-mail.gmx.net
+ (3c-app-gmx-bs48.server.lan [172.19.170.101]) (via HTTP); Wed, 17 May 2023
+ 15:34:32 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <89583b89-ea8c-8096-b083-6ab773e6c281@nvidia.com>
+Message-ID: <trinity-cf0185d3-81d6-4dfe-a1a3-2b091350d724-1684330472806@3c-app-gmx-bs48>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Frank Wunderlich <linux@fw-web.de>
+Cc: linux-mediatek@lists.infradead.org, Jonathan Cameron <jic23@kernel.org>,
+ Lars-Peter Clausen <lars@metafoo.de>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Srinivas Kandagatla
+ <srinivas.kandagatla@linaro.org>, "Hui.Liu" <hui.liu@mediatek.com>, Zhiyong
+ Tao <zhiyong.tao@mediatek.com>, Andrew-CT Chen
+ <andrew-ct.chen@mediatek.com>, Lala Lin <lala.lin@mediatek.com>,
+ linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Daniel
+ Golle <daniel@makrotopia.org>
+Subject: Aw: [PATCH v1 1/7] dt-bindings: nvmem: mediatek: efuse: add support
+ for mt7986
+Content-Type: text/plain; charset=UTF-8
+Date: Wed, 17 May 2023 15:34:32 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <20230421132047.42166-2-linux@fw-web.de>
+References: <20230421132047.42166-1-linux@fw-web.de>
+ <20230421132047.42166-2-linux@fw-web.de>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:+PriwoFuQ9abIMZuLjXiUflCoFiizPjfCrYouiPIvkfEKwb8FeC3a3oGc0qOF0DGHXWXO
+ PUsxuPO4DpTtMuUBWYXoPqjzUPNfjWcm3auHPZGfODybilSjmBZULSX3YfnEKD/hsG/HElg5m4g9
+ ukCFtztoUlVk7uSplewtpy4CzSVq0kAgPxzJNNkmHRb+J0X35KLEascX7qFpp6u8K4mhYN1vwqUr
+ 78AbCQf7ib1a3sAa+7zeXH0QMDQ+uDA3ecfFeMirKlqWQ8ku1UhjBmm/weaOxAUJ08UNcAgJc47N
+ so=
+UI-OutboundReport: notjunk:1;M01:P0:dEZsTW6b7+Y=;5hLcd+GMclPrdW8q7trNgwhEwVY
+ tpf7IGTVHcy6+k98XiI+ZUS7ST4eds6sI6ZgppahC4le+74rtOAGZCNL0g1HO4ZG+4NIr7OnR
+ 5CLWXgCx6NCitDGKOkH+2tHqtcJh3BtC6c7EWrlCNRJXAMQmqtCNFOGNixtDGlvlotPTVpNX/
+ v6gB8ZIjOH8MCmtfaozGR5pGevmC9CBvarDNVpy7+gN4QlJIJa+MngQyoop14rtBm8woOPHlb
+ Ud6/LPbFerg6fwOmfuzhYb01w+fuRy008SV1BhLPmeW7KpW5lj4uRw4Ke/VIY11rQcRy2iZLk
+ Hc+DFrQFDvWPXsMve+zZzzu+z7XtOKzDoWDCZKLTfH9hR1bONqkR9jwbSXTSAU1tLxHyRDqca
+ h9+F3Y+yx/Sgty+NwooK/VnB9SF+PQkvx3tmey8bsVootCePGajTJub0KRuQTxGNkNlrVPdQ9
+ xG2UlBoxOZTn3QKSQumb0LLUePU7EcHbNWJXRgXFJNdPWgySx2wGdfXv5mvXQ7imI0I21eb6F
+ wlcKeYcSceNGYWeiRvuvuRwmrYwg8/BXEOB+y+DTwND7cKHQ3Dtkqiid4tNCpDOKNvnMwYsKK
+ J6Zr1wIbSgbccYvCzw4/2zgdtKeV2zecNZo7766T4A6RBP9l20sauep3Zo7sCU6ldNW846yrD
+ CtegCevAAaXIOPzmi4br6XjxvdvJ0qjdD6U2HZdk+5/8EkNl0/se0PyYBlqnfvZMshS9wBGsn
+ 4yQIyNyHEXMDPvm7bOaix+N0lQVvtuN9e+oPWBg098soC4GcNJ6g2E/rznBmuJkYilDMqvErr
+ s7hidyOM4d+J7NmfpnG7Nrjw==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230517_055140_497346_27B95FCB 
-X-CRM114-Status: GOOD (  26.69  )
+X-CRM114-CacheID: sfid-20230517_063454_447511_23F19D32 
+X-CRM114-Status: UNSURE (   6.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,79 +102,9 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17-05-23, 12:59, Jon Hunter wrote:
-> Hi Vinod,
-> 
-> On 19/04/2023 13:21, Thierry Reding wrote:
-> > From: Thierry Reding <treding@nvidia.com>
-> > 
-> > When building with old versions of GCC (6.3 in this case), the compiler
-> > stumbles over the floating point constants in this driver:
-> > 
-> > 	: In function ‘mtk_hdmi_pll_prepare’:
-> > 	drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:331:23: error: ‘-mgeneral-regs-only’ is incompatible with floating-point code
-> > 	  } else if (pixel_clk >= 74.175 * MEGA && pixel_clk <= 300 * MEGA) {
-> > 
-> > 	drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:361:12: error: ‘-mgeneral-regs-only’ is incompatible with floating-point code
-> > 	 static int mtk_hdmi_pll_prepare(struct clk_hw *hw)
-> > 		    ^~~~~~~~~~~~~~~~~~~~
-> > 	drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c:361:12: error: ‘-mgeneral-regs-only’ is incompatible with floating-point code
-> > 
-> > Fix this by switching to the KILO macro instead and multiplying the
-> > constants by 1000 to get rid of the floating point.
-> > 
-> > Fixes: 45810d486bb4 ("phy: mediatek: add support for phy-mtk-hdmi-mt8195")
-> > Reported-by: Jonathan Hunter <jonathanh@nvidia.com>
-> > Signed-off-by: Thierry Reding <treding@nvidia.com>
-> > ---
-> >   drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c | 8 ++++----
-> >   1 file changed, 4 insertions(+), 4 deletions(-)
-> > 
-> > diff --git a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
-> > index abfc077fb0a8..b10af26cad2f 100644
-> > --- a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
-> > +++ b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
-> > @@ -239,9 +239,9 @@ static int mtk_hdmi_pll_calc(struct mtk_hdmi_phy *hdmi_phy, struct clk_hw *hw,
-> >   		txposdiv = 8;
-> >   	else if (tmds_clk >= 54 * MEGA && tmds_clk < 148.35 * MEGA)
-> >   		txposdiv = 4;
-> > -	else if (tmds_clk >= 148.35 * MEGA && tmds_clk < 296.7 * MEGA)
-> > +	else if (tmds_clk >= 148350 * KILO && tmds_clk < 296700 * KILO)
-> >   		txposdiv = 2;
-> > -	else if (tmds_clk >= 296.7 * MEGA && tmds_clk <= 594 * MEGA)
-> > +	else if (tmds_clk >= 296700 * KILO && tmds_clk <= 594 * MEGA)
-> >   		txposdiv = 1;
-> >   	else
-> >   		return -EINVAL;
-> > @@ -328,12 +328,12 @@ static int mtk_hdmi_pll_drv_setting(struct clk_hw *hw)
-> >   		clk_channel_bias = 0x34; /* 20mA */
-> >   		impedance_en = 0xf;
-> >   		impedance = 0x36; /* 100ohm */
-> > -	} else if (pixel_clk >= 74.175 * MEGA && pixel_clk <= 300 * MEGA) {
-> > +	} else if (pixel_clk >= 74175 * KILO && pixel_clk <= 300 * MEGA) {
-> >   		data_channel_bias = 0x34; /* 20mA */
-> >   		clk_channel_bias = 0x2c; /* 16mA */
-> >   		impedance_en = 0xf;
-> >   		impedance = 0x36; /* 100ohm */
-> > -	} else if (pixel_clk >= 27 * MEGA && pixel_clk < 74.175 * MEGA) {
-> > +	} else if (pixel_clk >= 27 * MEGA && pixel_clk < 74175 * KILO) {
-> >   		data_channel_bias = 0x14; /* 10mA */
-> >   		clk_channel_bias = 0x14; /* 10mA */
-> >   		impedance_en = 0x0;
-> 
-> 
-> This is breaking kernel compilation with older compilers such as GCC7. This
-> is now in the mainline and older compilers cannot build the kernel with this
-> driver enabled. The kernel docs say the min version supported is GCC 5.1
-> currently.
-> 
-> Can we get this merged as a fix for v6.4?
+Hi,
 
-Sorry I missed this one but I have already applied 03262a3f5b5b ("phy:
-mediatek: rework the floating point comparisons to fixed point") and
-this is in linux-next and should be hopefully in Linus's tree in next rc
+just a ping, can this be picked up?
 
-Thanks
--- 
-~Vinod
+regards Frank
 
