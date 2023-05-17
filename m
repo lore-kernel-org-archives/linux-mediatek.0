@@ -4,76 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48936C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 03:23:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C807C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 May 2023 03:33:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Our77EvHjNgB+PJKbjT1bS4HI9+h74UYwQqUwFlMvWM=; b=IPLEhmbdmJSIt0Of0ODiaQAWMD
-	mKPKaG6zCTY/RevhpmRrNw6hL5NONY454a7jgmVj4hRdlc9MxysgUmed7vyr2KUVbVlS5Dy945sqX
-	ThBM0SnReeFDs7PEGQb+mxgUr/3jA5iIvCcJ5A2LdAVEDWTxAM/w22Eo4FzOqqaLv8UDm3qIMJr6U
-	rPjrsjloe59O5cGVpT71DJSekhMTOJifsYaMwI0aqA4y77ZHp2dFoobWXWpxKXVInvp4Y+YTp6kCR
-	q6hBpKbgoPNko115N1+2+7TsbVxgWREISCxbhUqtqtvDHYiI11BH6RQsktiYCYjuhwY1SOsvpyQnz
-	jpnpmPXw==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=mTVM1Iv6lrP+o0UbclLwEhF8i+LhIcip7dA/UGfzKpI=; b=npfCKT3FL4t1zkJ6WM+QgGj95E
+	MMjCUzF8CsyIDCZPH4PPO11H7oO/h1RJHjsy8QMzHogWDk0h9gPnHmCdYTZYa/T1wtJcdshfbZP6q
+	8uoDWZYQIoVKyI4Bxi+xpYGG/4AC7/56d0/9BWFNzNfxccHIkyPV7bODjgVFPbpDXXZlscCT/s59S
+	YMo7+tiFmvQ3l0ZJP0sl+TaPGsO3Ej9JbKuivBqF5tG9N99AsmATpWaeYH0Bj/EJFGdrsFy6WSC8H
+	jO4HLtNeF6bPagd8VEc7Ox7mQwpO0/MNbGvdmWt2ofq5rYP86Z87Uxbu9MxF4pmpl875+GcyTmPvp
+	UeG87KEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pz7kx-007xq0-20;
-	Wed, 17 May 2023 03:23:15 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pz7ua-007z3Y-13;
+	Wed, 17 May 2023 03:33:12 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pz7ku-007xpB-0Z
+	id 1pz7uX-007z2W-09
 	for linux-mediatek@lists.infradead.org;
-	Wed, 17 May 2023 03:23:14 +0000
-X-UUID: 22df4766f46211ed912e1518a6540028-20230516
+	Wed, 17 May 2023 03:33:10 +0000
+X-UUID: 87c77030f46311ed83ed1395ce914268-20230516
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Our77EvHjNgB+PJKbjT1bS4HI9+h74UYwQqUwFlMvWM=;
-	b=P4im/x0mAwrz0fpKoW+ppisP0HOCaWK8M/uC7qhbMoOnCVrC8ydYrGjlaKxKSbwPxDofnzTgDygUx7gVKBHPTC6bG1E3VILILsfYZrrKuQjgp2VnoIVTWiFFY6rhR2QXa6RKoGlgADyQY8SwG4fjikap3xM0cZpr2GkTQgUtMoQ=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=mTVM1Iv6lrP+o0UbclLwEhF8i+LhIcip7dA/UGfzKpI=;
+	b=SIimIB2BQGI01gHdJcKUWQ694MPnGHuo8eFaYr8WP7w1wWNUhopP5XLqKYJ9IdcVaHzLoEgkcWM7H+Xba1UdcnJSr7Y7o+ZFsyJrfA8YJQfkYZQGyMwZeC1lj5OAuLXhybeHyueZD6tgzDGUpxUEsaijH7/vFCFJEqVSi/PM2Zo=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.25,REQID:574ae2b5-72d0-496d-9dbd-8640c4e82fbb,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:95
-X-CID-INFO: VERSION:1.1.25,REQID:574ae2b5-72d0-496d-9dbd-8640c4e82fbb,IP:0,URL
-	:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTION
-	:quarantine,TS:95
-X-CID-META: VersionHash:d5b0ae3,CLOUDID:00e40e6c-2f20-4998-991c-3b78627e4938,B
-	ulkID:230517112305F1UNCLWP,BulkQuantity:0,Recheck:0,SF:38|29|28|17|19|48,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-	,OSI:0,OSA:0,AV:0
+X-CID-O-INFO: VERSION:1.1.25,REQID:c40abb8b-1e91-4335-8b0d-cfb4c8f27d3d,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:d5b0ae3,CLOUDID:fa4f0f6c-2f20-4998-991c-3b78627e4938,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-UUID: 22df4766f46211ed912e1518a6540028-20230516
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+X-UUID: 87c77030f46311ed83ed1395ce914268-20230516
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <ryder.lee@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 35405289; Tue, 16 May 2023 20:23:04 -0700
+	with ESMTP id 660470716; Tue, 16 May 2023 20:33:03 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 17 May 2023 11:23:02 +0800
+ 15.2.1118.26; Wed, 17 May 2023 11:23:01 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 17 May 2023 11:23:02 +0800
+ 15.2.1118.26 via Frontend Transport; Wed, 17 May 2023 11:23:01 +0800
 From: Ryder Lee <ryder.lee@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
 CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
 	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
 	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>, Ben
  Greear <greearb@candelatech.com>
-Subject: [PATCH 2/2] wifi: mt76: mt7915: accumulate mu-mimo ofdma muru stats
-Date: Wed, 17 May 2023 11:22:59 +0800
-Message-ID: <52ff6b0b789578c7873c1c349234063a8a2a9665.1684280458.git.ryder.lee@mediatek.com>
+Subject: [PATCH 1/2] wifi: mt76: add tx_nss histogram to ethtool stats
+Date: Wed, 17 May 2023 11:22:58 +0800
+Message-ID: <78ae2336a119f416eb970ee403f85db35af2ef09.1684280458.git.ryder.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <78ae2336a119f416eb970ee403f85db35af2ef09.1684280458.git.ryder.lee@mediatek.com>
-References: <78ae2336a119f416eb970ee403f85db35af2ef09.1684280458.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230516_202312_240172_98C3F5E8 
-X-CRM114-Status: GOOD (  15.61  )
+X-CRM114-CacheID: sfid-20230516_203309_111322_2103508D 
+X-CRM114-Status: GOOD (  10.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,270 +82,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The stats are clear-on-read, which makes it very difficult for tools
-to adequately deal with wrapped stats and with keeping good totals.
-
-So, accumulate these values when they are read from the firmware/radio
-and present totals to user-space.
+mt76_connac2_mac_fill_txs() counts tx_nss but ethtool doesn't show
+stats. Add missing histogram accordingly.
 
 Signed-off-by: Ben Greear <greearb@candelatech.com>
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- .../wireless/mediatek/mt76/mt7915/debugfs.c   |  7 +--
- .../net/wireless/mediatek/mt76/mt7915/mac.c   |  3 +
- .../net/wireless/mediatek/mt76/mt7915/main.c  | 63 +++++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 41 ++++++++++--
- .../wireless/mediatek/mt76/mt7915/mt7915.h    | 34 +++++++++-
- 5 files changed, 139 insertions(+), 9 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mac80211.c    | 3 +++
+ drivers/net/wireless/mediatek/mt76/mt7915/main.c | 4 ++++
+ drivers/net/wireless/mediatek/mt76/mt7921/main.c | 4 ++++
+ drivers/net/wireless/mediatek/mt76/mt7996/main.c | 4 ++++
+ 4 files changed, 15 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-index 879884ead660..971213393da9 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-@@ -251,7 +251,6 @@ static int mt7915_muru_stats_show(struct seq_file *file, void *data)
- {
- 	struct mt7915_phy *phy = file->private;
- 	struct mt7915_dev *dev = phy->dev;
--	struct mt7915_mcu_muru_stats mu_stats = {};
- 	static const char * const dl_non_he_type[] = {
- 		"CCK", "OFDM", "HT MIX", "HT GF",
- 		"VHT SU", "VHT 2MU", "VHT 3MU", "VHT 4MU"
-@@ -275,7 +274,7 @@ static int mt7915_muru_stats_show(struct seq_file *file, void *data)
+diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
+index 467afef98ba2..9d3b38c2af7e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mac80211.c
++++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
+@@ -1743,6 +1743,9 @@ void mt76_ethtool_worker(struct mt76_ethtool_worker_info *wi,
+ 	for (i = 0; i < (eht ? 14 : 12); i++)
+ 		data[ei++] += stats->tx_mcs[i];
  
- 	mutex_lock(&dev->mt76.mutex);
- 
--	ret = mt7915_mcu_muru_debug_get(phy, &mu_stats);
-+	ret = mt7915_mcu_muru_debug_get(phy);
- 	if (ret)
- 		goto exit;
- 
-@@ -285,7 +284,7 @@ static int mt7915_muru_stats_show(struct seq_file *file, void *data)
- 	for (i = 0; i < 5; i++)
- 		seq_printf(file, "%8s | ", dl_non_he_type[i]);
- 
--#define __dl_u32(s)     le32_to_cpu(mu_stats.dl.s)
-+#define __dl_u32(s)     phy->mib.dl_##s
- 	seq_puts(file, "\nTotal Count:");
- 	seq_printf(file, "%8u | %8u | %8u | %8u | %8u | ",
- 		   __dl_u32(cck_cnt),
-@@ -389,7 +388,7 @@ static int mt7915_muru_stats_show(struct seq_file *file, void *data)
- 	for (i = 0; i < 3; i++)
- 		seq_printf(file, "%8s | ", ul_he_type[i]);
- 
--#define __ul_u32(s)     le32_to_cpu(mu_stats.ul.s)
-+#define __ul_u32(s)     phy->mib.ul_##s
- 	seq_puts(file, "\nTotal Count:");
- 	seq_printf(file, "%8u | %8u | %8u | ",
- 		   __ul_u32(hetrig_2mu_cnt),
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-index dfe42af6dc97..e06bfa4288b7 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-@@ -2075,6 +2075,9 @@ void mt7915_mac_work(struct work_struct *work)
- 
- 		mt7915_mac_update_stats(phy);
- 		mt7915_mac_severe_check(phy);
++	for (i = 0; i < 4; i++)
++		data[ei++] += stats->tx_nss[i];
 +
-+		if (phy->dev->muru_debug)
-+			mt7915_mcu_muru_debug_get(phy);
- 	}
- 
- 	mutex_unlock(&mphy->dev->mutex);
+ 	wi->worker_stat_count = ei - wi->initial_stat_idx;
+ }
+ EXPORT_SYMBOL_GPL(mt76_ethtool_worker);
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-index bf87aa4cc630..226ec3755efd 100644
+index d899bc2d0a84..bf87aa4cc630 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-@@ -1255,6 +1255,38 @@ static const char mt7915_gstrings_stats[][ETH_GSTRING_LEN] = {
- 	"rx_vec_queue_overflow_drop_cnt",
- 	"rx_ba_cnt",
- 
-+	/* muru mu-mimo and ofdma related stats */
-+	"dl_cck_cnt",
-+	"dl_ofdm_cnt",
-+	"dl_htmix_cnt",
-+	"dl_htgf_cnt",
-+	"dl_vht_su_cnt",
-+	"dl_vht_2mu_cnt",
-+	"dl_vht_3mu_cnt",
-+	"dl_vht_4mu_cnt",
-+	"dl_he_su_cnt",
-+	"dl_he_ext_su_cnt",
-+	"dl_he_2ru_cnt",
-+	"dl_he_2mu_cnt",
-+	"dl_he_3ru_cnt",
-+	"dl_he_3mu_cnt",
-+	"dl_he_4ru_cnt",
-+	"dl_he_4mu_cnt",
-+	"dl_he_5to8ru_cnt",
-+	"dl_he_9to16ru_cnt",
-+	"dl_he_gtr16ru_cnt",
-+
-+	"ul_hetrig_su_cnt",
-+	"ul_hetrig_2ru_cnt",
-+	"ul_hetrig_3ru_cnt",
-+	"ul_hetrig_4ru_cnt",
-+	"ul_hetrig_5to8ru_cnt",
-+	"ul_hetrig_9to16ru_cnt",
-+	"ul_hetrig_gtr16ru_cnt",
-+	"ul_hetrig_2mu_cnt",
-+	"ul_hetrig_3mu_cnt",
-+	"ul_hetrig_4mu_cnt",
-+
- 	/* per vif counters */
- 	"v_tx_mode_cck",
- 	"v_tx_mode_ofdm",
-@@ -1409,6 +1441,37 @@ void mt7915_get_et_stats(struct ieee80211_hw *hw,
- 	data[ei++] = mib->rx_vec_queue_overflow_drop_cnt;
- 	data[ei++] = mib->rx_ba_cnt;
- 
-+	data[ei++] = mib->dl_cck_cnt;
-+	data[ei++] = mib->dl_ofdm_cnt;
-+	data[ei++] = mib->dl_htmix_cnt;
-+	data[ei++] = mib->dl_htgf_cnt;
-+	data[ei++] = mib->dl_vht_su_cnt;
-+	data[ei++] = mib->dl_vht_2mu_cnt;
-+	data[ei++] = mib->dl_vht_3mu_cnt;
-+	data[ei++] = mib->dl_vht_4mu_cnt;
-+	data[ei++] = mib->dl_he_su_cnt;
-+	data[ei++] = mib->dl_he_ext_su_cnt;
-+	data[ei++] = mib->dl_he_2ru_cnt;
-+	data[ei++] = mib->dl_he_2mu_cnt;
-+	data[ei++] = mib->dl_he_3ru_cnt;
-+	data[ei++] = mib->dl_he_3mu_cnt;
-+	data[ei++] = mib->dl_he_4ru_cnt;
-+	data[ei++] = mib->dl_he_4mu_cnt;
-+	data[ei++] = mib->dl_he_5to8ru_cnt;
-+	data[ei++] = mib->dl_he_9to16ru_cnt;
-+	data[ei++] = mib->dl_he_gtr16ru_cnt;
-+
-+	data[ei++] = mib->ul_hetrig_su_cnt;
-+	data[ei++] = mib->ul_hetrig_2ru_cnt;
-+	data[ei++] = mib->ul_hetrig_3ru_cnt;
-+	data[ei++] = mib->ul_hetrig_4ru_cnt;
-+	data[ei++] = mib->ul_hetrig_5to8ru_cnt;
-+	data[ei++] = mib->ul_hetrig_9to16ru_cnt;
-+	data[ei++] = mib->ul_hetrig_gtr16ru_cnt;
-+	data[ei++] = mib->ul_hetrig_2mu_cnt;
-+	data[ei++] = mib->ul_hetrig_3mu_cnt;
-+	data[ei++] = mib->ul_hetrig_4mu_cnt;
-+
- 	/* Add values for all stations owned by this vif */
- 	wi.initial_stat_idx = ei;
- 	ieee80211_iterate_stations_atomic(hw, mt7915_ethtool_worker, &wi);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 5916dcaa8c7e..1a48f2b35b03 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -2116,12 +2116,11 @@ int mt7915_mcu_muru_debug_set(struct mt7915_dev *dev, bool enabled)
- 				sizeof(data), false);
- }
- 
--int mt7915_mcu_muru_debug_get(struct mt7915_phy *phy, void *ms)
-+int mt7915_mcu_muru_debug_get(struct mt7915_phy *phy)
- {
- 	struct mt7915_dev *dev = phy->dev;
- 	struct sk_buff *skb;
--	struct mt7915_mcu_muru_stats *mu_stats =
--				(struct mt7915_mcu_muru_stats *)ms;
-+	struct mt7915_mcu_muru_stats *mu_stats;
- 	int ret;
- 
- 	struct {
-@@ -2137,7 +2136,41 @@ int mt7915_mcu_muru_debug_get(struct mt7915_phy *phy, void *ms)
- 	if (ret)
- 		return ret;
- 
--	memcpy(mu_stats, skb->data, sizeof(struct mt7915_mcu_muru_stats));
-+	mu_stats = (struct mt7915_mcu_muru_stats *)(skb->data);
-+
-+	/* accumulate stats, these are clear-on-read */
-+	phy->mib.dl_cck_cnt += le32_to_cpu(mu_stats->dl.cck_cnt);
-+	phy->mib.dl_ofdm_cnt += le32_to_cpu(mu_stats->dl.ofdm_cnt);
-+	phy->mib.dl_htmix_cnt += le32_to_cpu(mu_stats->dl.htmix_cnt);
-+	phy->mib.dl_htgf_cnt += le32_to_cpu(mu_stats->dl.htgf_cnt);
-+	phy->mib.dl_vht_su_cnt += le32_to_cpu(mu_stats->dl.vht_su_cnt);
-+	phy->mib.dl_vht_2mu_cnt += le32_to_cpu(mu_stats->dl.vht_2mu_cnt);
-+	phy->mib.dl_vht_3mu_cnt += le32_to_cpu(mu_stats->dl.vht_3mu_cnt);
-+	phy->mib.dl_vht_4mu_cnt += le32_to_cpu(mu_stats->dl.vht_4mu_cnt);
-+	phy->mib.dl_he_su_cnt += le32_to_cpu(mu_stats->dl.he_su_cnt);
-+	phy->mib.dl_he_2ru_cnt += le32_to_cpu(mu_stats->dl.he_2ru_cnt);
-+	phy->mib.dl_he_2mu_cnt += le32_to_cpu(mu_stats->dl.he_2mu_cnt);
-+	phy->mib.dl_he_3ru_cnt += le32_to_cpu(mu_stats->dl.he_3ru_cnt);
-+	phy->mib.dl_he_3mu_cnt += le32_to_cpu(mu_stats->dl.he_3mu_cnt);
-+	phy->mib.dl_he_4ru_cnt += le32_to_cpu(mu_stats->dl.he_4ru_cnt);
-+	phy->mib.dl_he_4mu_cnt += le32_to_cpu(mu_stats->dl.he_4mu_cnt);
-+	phy->mib.dl_he_5to8ru_cnt += le32_to_cpu(mu_stats->dl.he_5to8ru_cnt);
-+	phy->mib.dl_he_9to16ru_cnt += le32_to_cpu(mu_stats->dl.he_9to16ru_cnt);
-+	phy->mib.dl_he_gtr16ru_cnt += le32_to_cpu(mu_stats->dl.he_gtr16ru_cnt);
-+
-+	phy->mib.ul_hetrig_su_cnt += le32_to_cpu(mu_stats->ul.hetrig_su_cnt);
-+	phy->mib.ul_hetrig_2ru_cnt += le32_to_cpu(mu_stats->ul.hetrig_2ru_cnt);
-+	phy->mib.ul_hetrig_3ru_cnt += le32_to_cpu(mu_stats->ul.hetrig_3ru_cnt);
-+	phy->mib.ul_hetrig_4ru_cnt += le32_to_cpu(mu_stats->ul.hetrig_4ru_cnt);
-+	phy->mib.ul_hetrig_5to8ru_cnt +=
-+		le32_to_cpu(mu_stats->ul.hetrig_5to8ru_cnt);
-+	phy->mib.ul_hetrig_9to16ru_cnt +=
-+		le32_to_cpu(mu_stats->ul.hetrig_9to16ru_cnt);
-+	phy->mib.ul_hetrig_gtr16ru_cnt +=
-+		le32_to_cpu(mu_stats->ul.hetrig_gtr16ru_cnt);
-+	phy->mib.ul_hetrig_2mu_cnt += le32_to_cpu(mu_stats->ul.hetrig_2mu_cnt);
-+	phy->mib.ul_hetrig_3mu_cnt += le32_to_cpu(mu_stats->ul.hetrig_3mu_cnt);
-+	phy->mib.ul_hetrig_4mu_cnt += le32_to_cpu(mu_stats->ul.hetrig_4mu_cnt);
- 	dev_kfree_skb(skb);
- 
- 	return 0;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index 145f89a19443..929d49792a01 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -216,6 +216,38 @@ struct mib_stats {
- 
- 	u32 tx_amsdu[8];
- 	u32 tx_amsdu_cnt;
-+
-+	/* mcu_muru_stats */
-+	u32 dl_cck_cnt;
-+	u32 dl_ofdm_cnt;
-+	u32 dl_htmix_cnt;
-+	u32 dl_htgf_cnt;
-+	u32 dl_vht_su_cnt;
-+	u32 dl_vht_2mu_cnt;
-+	u32 dl_vht_3mu_cnt;
-+	u32 dl_vht_4mu_cnt;
-+	u32 dl_he_su_cnt;
-+	u32 dl_he_ext_su_cnt;
-+	u32 dl_he_2ru_cnt;
-+	u32 dl_he_2mu_cnt;
-+	u32 dl_he_3ru_cnt;
-+	u32 dl_he_3mu_cnt;
-+	u32 dl_he_4ru_cnt;
-+	u32 dl_he_4mu_cnt;
-+	u32 dl_he_5to8ru_cnt;
-+	u32 dl_he_9to16ru_cnt;
-+	u32 dl_he_gtr16ru_cnt;
-+
-+	u32 ul_hetrig_su_cnt;
-+	u32 ul_hetrig_2ru_cnt;
-+	u32 ul_hetrig_3ru_cnt;
-+	u32 ul_hetrig_4ru_cnt;
-+	u32 ul_hetrig_5to8ru_cnt;
-+	u32 ul_hetrig_9to16ru_cnt;
-+	u32 ul_hetrig_gtr16ru_cnt;
-+	u32 ul_hetrig_2mu_cnt;
-+	u32 ul_hetrig_3mu_cnt;
-+	u32 ul_hetrig_4mu_cnt;
+@@ -1281,6 +1281,10 @@ static const char mt7915_gstrings_stats[][ETH_GSTRING_LEN] = {
+ 	"v_tx_mcs_9",
+ 	"v_tx_mcs_10",
+ 	"v_tx_mcs_11",
++	"v_tx_nss_1",
++	"v_tx_nss_2",
++	"v_tx_nss_3",
++	"v_tx_nss_4",
  };
  
- /* crash-dump */
-@@ -625,7 +657,7 @@ void mt7915_set_stream_he_caps(struct mt7915_phy *phy);
- void mt7915_set_stream_vht_txbf_caps(struct mt7915_phy *phy);
- void mt7915_update_channel(struct mt76_phy *mphy);
- int mt7915_mcu_muru_debug_set(struct mt7915_dev *dev, bool enable);
--int mt7915_mcu_muru_debug_get(struct mt7915_phy *phy, void *ms);
-+int mt7915_mcu_muru_debug_get(struct mt7915_phy *phy);
- int mt7915_mcu_wed_enable_rx_stats(struct mt7915_dev *dev);
- int mt7915_init_debugfs(struct mt7915_phy *phy);
- void mt7915_debugfs_rx_fw_monitor(struct mt7915_dev *dev, const void *data, int len);
+ #define MT7915_SSTATS_LEN ARRAY_SIZE(mt7915_gstrings_stats)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+index 0c9a472bc81a..ad267afb493c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+@@ -1078,6 +1078,10 @@ static const char mt7921_gstrings_stats[][ETH_GSTRING_LEN] = {
+ 	"v_tx_mcs_9",
+ 	"v_tx_mcs_10",
+ 	"v_tx_mcs_11",
++	"v_tx_nss_1",
++	"v_tx_nss_2",
++	"v_tx_nss_3",
++	"v_tx_nss_4",
+ };
+ 
+ static void
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+index 8e1b7cc48146..56818c7ac08e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+@@ -1155,6 +1155,10 @@ static const char mt7996_gstrings_stats[][ETH_GSTRING_LEN] = {
+ 	"v_tx_mcs_11",
+ 	"v_tx_mcs_12",
+ 	"v_tx_mcs_13",
++	"v_tx_nss_1",
++	"v_tx_nss_2",
++	"v_tx_nss_3",
++	"v_tx_nss_4",
+ };
+ 
+ #define MT7996_SSTATS_LEN ARRAY_SIZE(mt7996_gstrings_stats)
 -- 
 2.18.0
 
