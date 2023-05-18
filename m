@@ -4,65 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C84CC77B7D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 May 2023 09:32:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9409BC77B7D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 May 2023 09:35:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZM/ziyY/bEOUp34W06pVqKOvjlg8zMvD18pKLMHentk=; b=vs2A2DWiiQVhc4gym2be/pO8gz
-	bphTimnDe/7kSDzTSsevoOBY7pI/uq1huMLTdLbkhJrlchpKRWl2J6+6wFzH6qcC3RGBYv0SDOUvQ
-	1U7pMsg5l6nRhJh0pGp/8nkbWoJmeU5yV2QTrCB5TR8kPQKHlDegdTrx9Gyz9Gjy8H1g9eBISWowI
-	e4TeRIpCAT3SoGbiQ4meecHR/H+MmgB+LMo/j99K7fqYyU/R+mvhSZuRPVj5hhEoXeclFqcHfgBYR
-	CenFJFGOB9H7lADOSBbUrlcoQMvQ+Kdm7p3Icz5+AuaBLoHREEOfNyBnaHO2RH2tAw6oI3PaoMjjT
-	5L1YnKig==;
+	bh=S2egC4hNrYWFpg2ICwD9ww37EKKh6y9kObt9oqk6dg4=; b=XmQPya30+cbwVSN6Ely291As29
+	hekeDUA3rM8wVEiQAMsXmyYIDpOZtaPSx+rfO7NT/dL+wQ00h7HOVNOMei2oLx1pMO/wOYxZaEthS
+	2cj0Pr+T75/DZXkSjYOj06KnqapiMSnym/DX5f2OutLPdoBvXml/5bq8FLxv7ND878Y6ajTz+flkK
+	hThS+GXBAUdJCKrRJoilGw/KPSezLEtYRfhPVaFYc/75Tx0a/DZ5uONRW0+oj88SqsRWO0RQMrV3y
+	C4d1bCtn4dPyycN6ZfRXnsEqtwODV7ycm4wWebDlqnNLHiBKqAg7mM7c4cdASrx6+Tr56uUwQGEC6
+	iCnhZYFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pza0E-00CT1L-0R;
-	Thu, 18 May 2023 09:32:54 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pza2f-00CTSu-2c;
+	Thu, 18 May 2023 09:35:25 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pza0B-00CSz0-0D;
-	Thu, 18 May 2023 09:32:52 +0000
+	id 1pza2c-00CTRh-1i;
+	Thu, 18 May 2023 09:35:23 +0000
 Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7F84E6605944;
-	Thu, 18 May 2023 10:32:49 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 690476605861;
+	Thu, 18 May 2023 10:35:20 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1684402369;
-	bh=8CEs8jg1IBDKZGJzbEMInnqFtur20E0UOFQ/JDCj71c=;
+	s=mail; t=1684402520;
+	bh=oL2En3yRR8knnoB60ZscJ7BTUbvS7K370Aaxx3iso24=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=A+0O3uUdkdzVVDXjDbLdPzKOXPoRj+YP+NsGJcElW54MqQ6451xj/ruGpYOZ8q+28
-	 VWaIAiSVAksZjPxGEqNIIXc5sWfkTyQqubo+K2WmU/A7CkUIS4JrWzcvCbgr7+ufqv
-	 uR1Nd8YB5pQP0DKv2QnICNCPGRAY0IjYXx7Pyqj9X6on0k3KWntxDniIqc1m2P/vSo
-	 U7iQuY5pjeW3c7OJYgwNd0zJ5e9SlFksTfsfzBPXhhs4B4cy8E027tlGvtAr3Hyh1m
-	 40ilNyp/qVUE8YE/t1eMSS9Dxo6gQ1JYVwrzJV1cxhveJn+1K8QkHcwXiIkqojcczm
-	 jV4ARWX1y9Nkw==
-Message-ID: <795845ce-e32e-f503-198d-69e0a21c6f19@collabora.com>
-Date: Thu, 18 May 2023 11:32:46 +0200
+	b=ksNchRgLVqMAcIOhWKBeezRW23u/UNXgmNQw2eBUkqq5toVMDhMv+C80ZCRREvjRf
+	 oVivXiycpuPkOKCqrX1gpv8+WNcrdPOuRl8DkT3svemg7hy4fKX6OkYtAR+6jMXjE1
+	 ghVHKzAu84DQn+ngf06g7scRETxfHnc2tlKRhX2oSuYci6Hb1N1YjEU3QyPDMILe65
+	 nbVmKTGCbj1sEUjRao0WGLFLpcyGBqHpg24kKlGSnZngMmrXYsJNua+vOpTcoCai7G
+	 UyLPam8dydoejmig0fWtCdBsjmVU4OK1PXc3w8pTcUvYwMJxhdP0wMmbK0Ve74toVW
+	 csDLSjQ9nPwSQ==
+Message-ID: <f0628691-e76d-8c31-5c70-5c188d9b96a3@collabora.com>
+Date: Thu, 18 May 2023 11:35:17 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.1
-Subject: Re: [PATCH v2] spmi: mediatek: add device id check
+Subject: Re: [PATCH 82/97] usb: xhci-mtk: Convert to platform remove callback
+ returning void
 Content-Language: en-US
-To: Sen Chu <sen.chu@mediatek.com>, Stephen Boyd <sboyd@kernel.org>,
+To: =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Mathias Nyman <mathias.nyman@intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20230518040729.8789-1-sen.chu@mediatek.com>
+Cc: linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, kernel@pengutronix.de
+References: <20230517230239.187727-1-u.kleine-koenig@pengutronix.de>
+ <20230517230239.187727-83-u.kleine-koenig@pengutronix.de>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230518040729.8789-1-sen.chu@mediatek.com>
+In-Reply-To: <20230517230239.187727-83-u.kleine-koenig@pengutronix.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230518_023251_233103_02A57392 
-X-CRM114-Status: UNSURE (   6.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230518_023522_698086_EBEDF166 
+X-CRM114-Status: GOOD (  12.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,10 +81,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 18/05/23 06:07, Sen Chu ha scritto:
-> Add device id check for spmi write API.
+Il 18/05/23 01:02, Uwe Kleine-König ha scritto:
+> The .remove() callback for a platform driver returns an int which makes
+> many driver authors wrongly assume it's possible to do error handling by
+> returning an error code. However the value returned is ignored (apart from
+> emitting a warning) and this typically results in resource leaks. To improve
+> here there is a quest to make the remove callback return void. In the first
+> step of this quest all drivers are converted to .remove_new() which already
+> returns void. Eventually after all drivers are converted, .remove_new() is
+> renamed to .remove().
 > 
-> Signed-off-by: Sen Chu <sen.chu@mediatek.com>
+> Trivially convert this driver from always returning zero in the remove
+> callback to the void returning variant.
+> 
+> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
