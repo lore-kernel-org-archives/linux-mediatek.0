@@ -4,98 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78449C7EE23
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 May 2023 08:28:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E030EC7EE22
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 May 2023 08:40:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Subject:Cc:To:From:Message-ID:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=A/ZR82991Fhnx0TfQ1PmXNfSyDqw5MiAyrYDIhoxuYo=; b=s69RBPClR+wnHptwV8xpsL/ilc
-	sev+fP55c7vkkI3rtm12ZnySYYUF/97nOnKR5Qqv0nTFHLYdI54G/wjrMEMsnqMMtg4TuMlH40N9I
-	8uu5A/N3tzqYQ8+Po/g4MxenBZ5OgPmnC0Fo3oJu1jatuNGHVmoOYjisit/h0kUYmbwmliy4HJdbR
-	3lbXDBxzyFYIg0Fcdc6Vr91FeJaLz2jTehZvqJuT2qCkQlECgLSMYOBpVCLdY8zp8nSGYEQeFTbh3
-	GSY/EEySBpLmQCkP6hzjqHcmZZZEJyr8NWfZvpTgOrrQQnv9DLb5jX148uAY8NEg6qkkr5K8FXYTG
-	b19eJ8Dw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=vw6xt/y7AkFMPkBEKOtYpyNZ0+8RMoG8PhpY+gjYbQY=; b=zknUiXZggopRkJX4Bnp4G8kRoK
+	o3iM8BA0exBYaaaRyaYqL5zz843gyylBr+uy4CFeTHjcAH6/+2wWUT2uNTWhf2/MBRN2Ike7HBiVH
+	C1Ty8ByaU/Chh5dJ8fX/TLGq2a+KHwI3kgW+FZEnSaswCuQBppuUzPyyccNqD2ikwKOcl6e7lKlRn
+	jDYMez8Hf0OJPbOrzSokn7u2bZfKb2l6y6SFiEudgLuPYKwcoJ9OwvI24SWvdL9Jz/q7o6naXONEv
+	dHjpJehoYTYE4mgfRI1aEd/6jblJl2NNXnPk1jD5bW9arHuMX6osUJ50qACBgjoKAaxNHKly2VXhX
+	nBqW+GPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzYzX-00CLER-2A;
-	Thu, 18 May 2023 08:28:07 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pzZBr-00CMpl-0c;
+	Thu, 18 May 2023 08:40:51 +0000
+Received: from mail-pj1-f49.google.com ([209.85.216.49])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzYzT-00CLDs-2y;
-	Thu, 18 May 2023 08:28:05 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 37D7E648FD;
-	Thu, 18 May 2023 08:28:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 95FF8C433D2;
-	Thu, 18 May 2023 08:28:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1684398482;
-	bh=onUdWwy/Zov/7JnIPbVsr3nMDNBR4bEgLPYL3et5tOs=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=BbzWlF/Z7EepK+tkbIKX/var8RUWYppCL1zsoBgGC/M8R9Vtvt5aVB4gjT6k/ScTp
-	 E8J2+cTwhq1UkxrvAGHr3/TPln+6V+rCSFp14yTEaa3/z0w2SoHJc5P/N/A9QITwpD
-	 bh/CHNn2n442xFkSy3PwnnyAa1wJElwJup2q2Onr95Pvk85qw+Q8CIcIdhPcXRoJEi
-	 jIVk5wpXIpQgk/eaFhSKKyhDMhLi3vEtYtOPK4zHBc7x0ke+WIFdR6h1gN3YVk+mpg
-	 3ySN5R3ExTDkZlGyPiRLh9ztHTsZv5qHBPLU2O2tgYBqm/+UmnkPBY2lxQgwT711OX
-	 X68a0U9uQnnug==
-Received: from sofa.misterjones.org ([185.219.108.64] helo=goblin-girl.misterjones.org)
-	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.95)
-	(envelope-from <maz@kernel.org>)
-	id 1pzYzQ-00G5Jx-CB;
-	Thu, 18 May 2023 09:28:00 +0100
-Date: Thu, 18 May 2023 09:27:59 +0100
-Message-ID: <86h6sakprk.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Yi-De Wu <yi-de.wu@mediatek.com>
-Cc: Yingshiuan Pan <yingshiuan.pan@mediatek.com>,
-	Ze-Yu Wang <ze-yu.wang@mediatek.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Jonathan Corbet <corbet@lwn.net>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>,
-	Arnd Bergmann <arnd@arndb.de>,
-	"Matthias Brugger" <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno 
-        <angelogioacchino.delregno@collabora.com>,
-	<devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>,
-	<linux-doc@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<linux-arch@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>,
-	"Trilok Soni" <quic_tsoni@quicinc.com>,
-	David Bradil <dbrazdil@google.com>,
-	Jade Shih <jades.shih@mediatek.com>,
-	Miles Chen <miles.chen@mediatek.com>,
-	Ivan Tseng <ivan.tseng@mediatek.com>,
-	My Chuang <my.chuang@mediatek.com>,
-	Shawn Hsiao <shawn.hsiao@mediatek.com>,
-	PeiLun Suei <peilun.suei@mediatek.com>,
-	Liju Chen <liju-clr.chen@mediatek.com>
-Subject: Re: [PATCH v3 3/7] virt: geniezone: Introduce GenieZone hypervisor support
-In-Reply-To: <20230512080405.12043-4-yi-de.wu@mediatek.com>
-References: <20230512080405.12043-1-yi-de.wu@mediatek.com>
-	<20230512080405.12043-4-yi-de.wu@mediatek.com>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/28.2
- (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-Content-Type: text/plain; charset=US-ASCII
-X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: yi-de.wu@mediatek.com, yingshiuan.pan@mediatek.com, ze-yu.wang@mediatek.com, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, corbet@lwn.net, catalin.marinas@arm.com, will@kernel.org, arnd@arndb.de, matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-arch@vger.kernel.org, linux-mediatek@lists.infradead.org, quic_tsoni@quicinc.com, dbrazdil@google.com, jades.shih@mediatek.com, miles.chen@mediatek.com, ivan.tseng@mediatek.com, my.chuang@mediatek.com, shawn.hsiao@mediatek.com, peilun.suei@mediatek.com, liju-clr.chen@mediatek.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
+	id 1pzZBo-00CMon-1l;
+	Thu, 18 May 2023 08:40:49 +0000
+Received: by mail-pj1-f49.google.com with SMTP id 98e67ed59e1d1-253504c84aeso952652a91.3;
+        Thu, 18 May 2023 01:40:47 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1684399247; x=1686991247;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=vw6xt/y7AkFMPkBEKOtYpyNZ0+8RMoG8PhpY+gjYbQY=;
+        b=jxIhyjcTgFC/VC5QfnrU2CZRz1CFwbJwKr9bc9hX5G/aH60TfFdTNZMHaGjcCQqOuR
+         Ww8zmQAIDHhdyvJ7LXycuh5emqe+NX+L82D5VI8wUic3MVwouBh563vccnNLDE46lOh2
+         9sGCZF43vLrKbxNB75qpPPH8yIBwYfT1mjSXYewGRqmZHGjw7sUSHeVFudZ9UUvApTnr
+         yklzPnVZpeuveGTb25FHzFcOZ6yxkT9SHX4gBZ88vfky8Niovcbji113d0IuTeD30bMH
+         gBnHFwFUbYGqXuJdYQjiqewLKfNNTStSnoXUFtms6WLEl2gRMznUlN1AdwTiVBPXlOLH
+         ivWA==
+X-Gm-Message-State: AC+VfDxn3QuS7NIuyhLhmktbs1boiD0b7kaXP5QxKN8N4aa6AFTAJHIa
+	X85WqcZTQ6dGXFcfPCXaxLA=
+X-Google-Smtp-Source: ACHHUZ6vsmiXjXFwyKM5gSEb2mIhlorpplmKrEeHCicuDLzKL9PpRqXmtu4/cLEmy8KkytUqs1myJw==
+X-Received: by 2002:a17:90a:1481:b0:24e:102e:edbf with SMTP id k1-20020a17090a148100b0024e102eedbfmr1660044pja.13.1684399246734;
+        Thu, 18 May 2023 01:40:46 -0700 (PDT)
+Received: from dev-linux.lan (cpe-70-95-21-110.san.res.rr.com. [70.95.21.110])
+        by smtp.gmail.com with ESMTPSA id t6-20020a17090ad50600b0024dee5cbe29sm889946pju.27.2023.05.18.01.40.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 18 May 2023 01:40:46 -0700 (PDT)
+From: Sukrut Bellary <sukrut.bellary@linux.com>
+To: MyungJoo Ham <myungjoo.ham@samsung.com>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	Chanwoo Choi <cw00.choi@samsung.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>
+Cc: Sukrut Bellary <sukrut.bellary@linux.com>,
+	linux-pm@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	kernel-janitors@vger.kernel.org
+Subject: [PATCH5b51a54ae2fa1cc8459b68a28b3c8ca7b7203994] PM / devfreq: mtk-cci: Fix variable deferencing before NULL check
+Date: Thu, 18 May 2023 01:40:33 -0700
+Message-Id: <20230518084033.508711-1-sukrut.bellary@linux.com>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230518_012804_046503_17BF3662 
-X-CRM114-Status: GOOD (  22.47  )
+X-CRM114-CacheID: sfid-20230518_014048_590066_67C09484 
+X-CRM114-Status: GOOD (  11.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,71 +86,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 12 May 2023 09:04:01 +0100,
-Yi-De Wu <yi-de.wu@mediatek.com> wrote:
-> 
-> From: "Yingshiuan Pan" <yingshiuan.pan@mediatek.com>
-> 
-> GenieZone is MediaTek hypervisor solution, and it is running in EL2
-> stand alone as a type-I hypervisor. This patch exports a set of ioctl
-> interfaces for userspace VMM (e.g., crosvm) to operate guest VMs
-> lifecycle (creation and destroy) on GenieZone.
-> 
-> Signed-off-by: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
-> Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
+smatch warning:
+drivers/devfreq/mtk-cci-devfreq.c:135 mtk_ccifreq_target()
+warn: variable dereferenced before check 'drv' (see line 130)
 
-[...]
+This is based on static analysis only. Compilation tested.
 
-> +/**
-> + * gzvm_gfn_to_pfn_memslot() - Translate gfn (guest ipa) to pfn (host pa),
-> + *			       result is in @pfn
-> + *
-> + * Leverage KVM's gfn_to_pfn_memslot(). Because gfn_to_pfn_memslot() needs
-> + * kvm_memory_slot as parameter, this function populates necessary fileds
-> + * for calling gfn_to_pfn_memslot().
-> + *
-> + * Return:
-> + * * 0			- Succeed
-> + * * -EFAULT		- Failed to convert
-> + */
-> +static int gzvm_gfn_to_pfn_memslot(struct gzvm_memslot *memslot, u64 gfn, u64 *pfn)
-> +{
-> +	hfn_t __pfn;
-> +	struct kvm_memory_slot kvm_slot = {0};
-> +
-> +	kvm_slot.base_gfn = memslot->base_gfn;
-> +	kvm_slot.npages = memslot->npages;
-> +	kvm_slot.dirty_bitmap = NULL;
-> +	kvm_slot.userspace_addr = memslot->userspace_addr;
-> +	kvm_slot.flags = memslot->flags;
-> +	kvm_slot.id = memslot->slot_id;
-> +	kvm_slot.as_id = 0;
-> +
-> +	__pfn = gfn_to_pfn_memslot(&kvm_slot, gfn);
-> +	if (is_error_noslot_pfn(__pfn)) {
-> +		*pfn = 0;
-> +		return -EFAULT;
-> +	}
+Signed-off-by: Sukrut Bellary <sukrut.bellary@linux.com>
+---
+ drivers/devfreq/mtk-cci-devfreq.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-I have commented on this before: there is absolutely *no way* that you
-can use KVM as the unwilling helper for your stuff. You are passing
-uninitialised data to the core KVM, completely ignoring the semantics
-of all the other fields.
-
-More importantly, you are now holding us responsible for any breakage
-that would be caused to your code if we change the internals of this
-*PRIVATE FUNCTION*.
-
-Do you see Xen or Hyper-V using KVM's internals as some sort of
-backend to make their life easier? No, because they understand that
-this is off-limits, and creates an unhealthy dependency for both
-hypervisors.
-
-So this is a strong NAK. And you can trust me to keep voicing my
-opposition to this sort of horror, wherever I will see these patches.
-
-	M.
-
+diff --git a/drivers/devfreq/mtk-cci-devfreq.c b/drivers/devfreq/mtk-cci-devfreq.c
+index e5458ada5197..6354622eda65 100644
+--- a/drivers/devfreq/mtk-cci-devfreq.c
++++ b/drivers/devfreq/mtk-cci-devfreq.c
+@@ -127,7 +127,7 @@ static int mtk_ccifreq_target(struct device *dev, unsigned long *freq,
+ 			      u32 flags)
+ {
+ 	struct mtk_ccifreq_drv *drv = dev_get_drvdata(dev);
+-	struct clk *cci_pll = clk_get_parent(drv->cci_clk);
++	struct clk *cci_pll;
+ 	struct dev_pm_opp *opp;
+ 	unsigned long opp_rate;
+ 	int voltage, pre_voltage, inter_voltage, target_voltage, ret;
+@@ -139,6 +139,7 @@ static int mtk_ccifreq_target(struct device *dev, unsigned long *freq,
+ 		return 0;
+ 
+ 	inter_voltage = drv->inter_voltage;
++	cci_pll = clk_get_parent(drv->cci_clk);
+ 
+ 	opp_rate = *freq;
+ 	opp = devfreq_recommended_opp(dev, &opp_rate, 1);
 -- 
-Without deviation from the norm, progress is not possible.
+2.34.1
+
 
