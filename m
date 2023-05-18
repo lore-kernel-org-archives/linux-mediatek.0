@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BAFFC7EE23
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 May 2023 17:20:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA1E7C7EE23
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 May 2023 17:33:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lv5QNHuju3URLbLLjdxLxfQClLwp/hPTcikAQxhhgTA=; b=X4NxACMaMjVZCfQUP8zqhcpfAQ
-	9e6C3LM6HCXF5MkECjGylTw40Y5ygrlAqwBmcr/5N9e6ljU0iG/BY1Km3NmWKM+TKPD8Z0rbYa8Ig
-	dxz2hHiBz/Y99N2FO4fjM/2tsiuc3mTG5NnnJdVZ+0nwsAJ0giy+NiliWfRmoD66PnyiAdFp7XDwk
-	vGPjiI6Clt16NHrDi7dVWIYtDBXBixpUU70CkDWZNOlCSk/vPG8ptA91K2s8nsGZoFuAygUquzMgT
-	bJeq0XC0MIaRXAtXHJTXN1xGW9YR4+yu7AyGotNd3fB97pjY4OL9FEtgADHE9zNdRQyZljWVaJ2xZ
-	2KoEM+Bg==;
+	bh=JZ5Jh8xjt0gMs+34FAdXCgFopZFo6TG5X7jzIH97TX4=; b=HLlLv/u8yy9Nh1eT26B/zHIAFz
+	veogehjRPIw4CBxQ6ud5WykCjnEgyZEYN7lF7BHYZZO8PM9oRgxKSVJxdGU6y3pNOcJmHNtKCOvcs
+	lNqNHVT8kbbn0Y6evMuPFTpbb5O7uieJgYha8iOZbvtwPykSB8N7WNXrz5+OVXY0nawwzJs04ZHeF
+	XRgltC3sxG4BER7Efz3qC2wBEa6+s0JO+xcaWqzu8urHLzKFuGhTm0+7Cu3hq2/5QzCtjVouIrvUG
+	BnVKig8SqXb0rfp/sU0+5nmC0dk/n1bj6NVTp3nMs38ly5y3S9hbT4hg3SB14vbeVmLxtjWf2ay6R
+	j6eUMxyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzhIj-00DcaI-2V;
-	Thu, 18 May 2023 17:20:29 +0000
+	id 1pzhVL-00Df0W-2z;
+	Thu, 18 May 2023 17:33:31 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzhId-00DcZ7-3D;
-	Thu, 18 May 2023 17:20:25 +0000
+	id 1pzhVH-00DeyW-2N;
+	Thu, 18 May 2023 17:33:29 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id C8CC665119;
-	Thu, 18 May 2023 17:20:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AC832C433EF;
-	Thu, 18 May 2023 17:20:15 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 2678B65151;
+	Thu, 18 May 2023 17:33:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EE560C433A1;
+	Thu, 18 May 2023 17:33:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1684430420;
-	bh=piOq5yMlSJS5vyyMJbxfeW2jBDmCAz3nZ9BEF7MQFns=;
+	s=k20201202; t=1684431206;
+	bh=8g604RQtGDYqVxRbodA1GNAzcaFUInIXvN/XS2wjnMQ=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=l2dQIRYABelwZpNXnjfqP2r6MmhIcv4jS3+TCeML5UpseyRQk91f1zUpvu4CHzOtp
-	 Du1cAZP4IG6qlTLUOkWgbEhCLi88RKyAl2pzn68l3oXV27ChA16srcBEWS37JQK6OJ
-	 9fDrz0KL6kb89bhq5SDIMAS9+yyFNmGaFA+8SWJbjNvwuVbw6eRsuD1ZrQtBlyu6VF
-	 Nay2Qwk285GUkFGngih/Y4UfP/MVn4JsYzpDiiAYlZa61AviwjnrgCyQ6eQBCu48dK
-	 igDrXLLP77ewA/vSuPz6/9mRD+7K3TdflZ5jplI8spMX2j+foB+OAXyT+iopP69oOW
-	 hA37MOEQWqptw==
+	b=IbQt+C8i2MSKRx23a6Y5VDsVm/DahgJApeFIijPhY0TIs9nIt4MnDfyEQ4gfXVHNC
+	 V3tIw0HKx6WN8oeKORJHszstQHcsYej9unu9tcSmbpQsdr3MZoE7dwEDqdnFrjvVtZ
+	 sVzN7tqmiAyv0HCbNwas8uTQa6R+0KNjL+2x6waEGifw776DT8BonXMsNdvSAY/N65
+	 y70BIPcHMihq5kMVDOgqbhuaM+9kWt7/gcRJFMgp2NI9NTNoYqrk1OkVlIHj3zv6fs
+	 AUddRshKbXEf7wyBbOzl4coUOOEahDUh/Pxm7o4DxLZNqDOWwtarY3yEklEfNr9jYY
+	 pPxsfezlPBdnA==
 From: Mark Brown <broonie@kernel.org>
-To: lgirdwood@gmail.com, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: perex@perex.cz, tiwai@suse.com, matthias.bgg@gmail.com, 
- nfraprado@collabora.com, wenst@chromium.org, alsa-devel@alsa-project.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, kernel@collabora.com
-In-Reply-To: <20230517151516.343037-1-angelogioacchino.delregno@collabora.com>
-References: <20230517151516.343037-1-angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH] ASoC: mediatek: mt8192-mt6359: Remove " Jack" from
- Headphone pin name
-Message-Id: <168443041576.472592.13647493326207546899.b4-ty@kernel.org>
-Date: Fri, 19 May 2023 02:20:15 +0900
+To: Liam Girdwood <lgirdwood@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Sen Chu <sen.chu@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <20230518040646.8730-1-sen.chu@mediatek.com>
+References: <20230518040646.8730-1-sen.chu@mediatek.com>
+Subject: Re: [PATCH v2] regulator: mt6359: add read check for PMIC MT6359
+Message-Id: <168443120482.483131.18246545493507680908.b4-ty@kernel.org>
+Date: Fri, 19 May 2023 02:33:24 +0900
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.13-dev-bfdf5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230518_102024_098140_46C9AE0C 
-X-CRM114-Status: GOOD (  13.33  )
+X-CRM114-CacheID: sfid-20230518_103327_807576_43228F02 
+X-CRM114-Status: GOOD (  11.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,25 +76,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 17 May 2023 17:15:16 +0200, AngeloGioacchino Del Regno wrote:
-> Function jack_kctl_name_gen() will remove the redundant " Jack" from
-> the name, if present, and then it will add it back, so that all of
-> the controls are named "(pin-name) Jack".
+On Thu, 18 May 2023 12:06:46 +0800, Sen Chu wrote:
+> Add hardware version read check for PMIC MT6359
 > 
-> Remove " Jack" from the Headphone pin name to spare some CPU cycles.
 > 
-> This commit brings no functional changes.
-> 
-> [...]
 
 Applied to
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
 
 Thanks!
 
-[1/1] ASoC: mediatek: mt8192-mt6359: Remove " Jack" from Headphone pin name
-      commit: cbbc0ec6dea09c815f1d1ef0abaf3f2ec89ff11f
+[1/1] regulator: mt6359: add read check for PMIC MT6359
+      commit: a511637502b1caa135046d0f8fdabd55a31af8ef
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
