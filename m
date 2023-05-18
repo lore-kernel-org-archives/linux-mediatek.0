@@ -4,66 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 151A6C7EE23
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 May 2023 13:53:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 962C6C7EE23
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 May 2023 13:56:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eOj9DkEAsffGRvIc8YyAR4RG7FpCib/7HWlSzpx9EZ0=; b=x2uwxF+2yvQPWKrInjiYHKWzd+
-	XIX9MjYx7YixiH3xmwhpHfAFibaRO4t4gweN6dGjmrl9ayqqUPhOrTCiyMD2vAl7yRCsMk30hBdpd
-	ffS+1GXuH3chu5VJMR2aCW35U3AYV6tOeXuzknixGW18Od8Sdp4NRNCHTgDYNuU6gb6nQKJiEd8di
-	y60S8J2PGLzAyfS3bljWe9QuDz61m2C4C9QQjuRgtH8S/ewzilIaoXLFxydiImbl63A+G9ngT99n3
-	fGmxIOwiGbCMjNpT4frvhQOP9JR/b6/9R1eR4oja8LQvcxhYsj945ksQiCPjQPVgw7/dMSwqdUYoH
-	KfwMhl4Q==;
+	bh=9G+1XrAaU0cSPGAU040yGSGutqJCVEvC7RcTLOgdsIw=; b=YYbGM1P0Qc97oec2K3IAHVJIH2
+	DvO9lrJM7G/VXqxxkojQSX8EOK30ZUQle2A4QFCUK1dyNhzfanuLHgQJdfNG50kvQrTQ/UbnfDsqs
+	G2Yerl/NYCtta9nu0Zre0emzvkrNjTTl9a96eHv+DNPB+F3xMYJ5E91EaFyqF5MH1xN/vp3yDG/fc
+	XyNIR7rxKj0z/4ekf1ztF6CECbeoczw5gFHHirJErZFWv+UcgNiP+EDxWEvyPtKXP1Q9ldCTAYMSJ
+	mP9WmCP7zSmISykrBUDHDPS5fH7+CMrO+BbL0562yZ9wuTC8h8YZSYUyS01L5Crrn8wIDyfZiDp+7
+	HqzlgetQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pze4c-00D7nc-1Z;
-	Thu, 18 May 2023 13:53:42 +0000
-Received: from ip-89-177-23-149.bb.vodafone.cz ([89.177.23.149] helo=ixit.cz)
+	id 1pze79-00D8DE-1Q;
+	Thu, 18 May 2023 13:56:19 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pze4X-00D7mP-14;
-	Thu, 18 May 2023 13:53:39 +0000
-Received: from [10.0.0.182] (unknown [10.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by ixit.cz (Postfix) with ESMTPSA id 757FB1606D6;
-	Thu, 18 May 2023 15:53:26 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ixit.cz; s=dkim;
-	t=1684418006;
+	id 1pze77-00D8CW-2A
+	for linux-mediatek@lists.infradead.org;
+	Thu, 18 May 2023 13:56:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1684418175;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=eOj9DkEAsffGRvIc8YyAR4RG7FpCib/7HWlSzpx9EZ0=;
-	b=YFjVINfxoE+aBlp4VV2kbChSgiAOoB9PyHhWF4UAUAIP+rTmMSIcyV37JXpc1mbRMBd6iS
-	Plj0O1o2aM+3+O8m2K/S9QUzccpMUxkQU44Cy95o6K1Akw+HsQnFuVLPMdMXzP7vqclMTm
-	zh7U2tA0JCiTyYNQOTOo9u/H/zPuqXE=
-Message-ID: <2ae4d22c-b278-e21f-bccc-f8a1757dcf3b@ixit.cz>
-Date: Thu, 18 May 2023 15:53:26 +0200
+	bh=9G+1XrAaU0cSPGAU040yGSGutqJCVEvC7RcTLOgdsIw=;
+	b=IRBP7pdCeUfMKJ/LRqllgoxn8x/LIhYHIaX7MyrJhG+uGQWO6lNxfyVmYUBMkU+bTSOoP1
+	jUPxEIVA8XsQUX4rIA4zxHgAOUOJIbIACQIPFnsGlb9wvQr0KBT3OzYSuF72C1117Hkmh5
+	zi4E2kEBy5vkO5R2OmH/5zGs8FeNbrc=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-121-iHfLjw_YNsOnd2wGEy6KEg-1; Thu, 18 May 2023 09:56:14 -0400
+X-MC-Unique: iHfLjw_YNsOnd2wGEy6KEg-1
+Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-3f426ffdbc6so12057605e9.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 18 May 2023 06:56:12 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1684418171; x=1687010171;
+        h=content-transfer-encoding:in-reply-to:organization:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=9G+1XrAaU0cSPGAU040yGSGutqJCVEvC7RcTLOgdsIw=;
+        b=HRg9WKmXXk98QNSXGZNDlspRWIR6IUCkJCuwALmCRkLGUsfYqM3ureiqfeatJ42yQU
+         vT3UIZE6Az3glm5lRYTqXpQPsLIb9OyVEk99/ncgYLKUCvCTSijXUAdRPt97RgpqTkCJ
+         1nWRBtVDVDTmHdubmncXowQ2Fw6bCnU2ObaFu1aDBkqxE1YuKZMesmvVdECeUb+ZQx5y
+         Mg+xJJZDrWtIcoJdMwSeujQ6n9+qgiQ2T2nonJf9OfFMbNVHiFRCjgKRO++xat1yBKZh
+         CG8YF0UDgH8jjXRWJIASX0hONEIVE0YNQbgOUBpPOR+T1nKTj/HsH1JSCV3wlAtr9GJq
+         +X1w==
+X-Gm-Message-State: AC+VfDy5tUHcZ2jY5N59U1xUM+6siwX2Uxniy/sIcgr5Zs5pWiXhBpEr
+	mDDorUVg5MMxztj6BMIV6EnuyNyr5uhLa2j3kjtJ+GmB0yIqsbrnZeK/omcsZXUnlsl4qhp5nhM
+	m82TJo0kMjLT/a4XryQiDNPHtYBn4cn7v
+X-Received: by 2002:a1c:7709:0:b0:3f0:7e15:f8fc with SMTP id t9-20020a1c7709000000b003f07e15f8fcmr1815033wmi.14.1684418171629;
+        Thu, 18 May 2023 06:56:11 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4zTN1jfqC6YSkeSA1dlL4CIMd/zs+KIjkUkDS2ygUv3B0QCgzy/yPlAS20AqPmbILcgoLC7w==
+X-Received: by 2002:a1c:7709:0:b0:3f0:7e15:f8fc with SMTP id t9-20020a1c7709000000b003f07e15f8fcmr1815015wmi.14.1684418171265;
+        Thu, 18 May 2023 06:56:11 -0700 (PDT)
+Received: from ?IPV6:2003:cb:c715:2a00:ac0a:9a14:a490:dc02? (p200300cbc7152a00ac0a9a14a490dc02.dip0.t-ipconnect.de. [2003:cb:c715:2a00:ac0a:9a14:a490:dc02])
+        by smtp.gmail.com with ESMTPSA id d2-20020a5d6442000000b002c70ce264bfsm2289924wrw.76.2023.05.18.06.56.10
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 18 May 2023 06:56:10 -0700 (PDT)
+Message-ID: <8b898768-a3c0-198d-a70c-9aa96b7f4a29@redhat.com>
+Date: Thu, 18 May 2023 15:56:09 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] ASoC: mediatek: mt8192-mt6359: Remove " Jack" from
- Headphone pin name
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- lgirdwood@gmail.com
-Cc: broonie@kernel.org, perex@perex.cz, tiwai@suse.com,
- matthias.bgg@gmail.com, nfraprado@collabora.com, wenst@chromium.org,
- alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: FOLL_LONGTERM vs FOLL_EPHEMERAL Re: [PATCH] tee: add
+ FOLL_LONGTERM for CMA case when alloc shm
+To: Sumit Garg <sumit.garg@linaro.org>, Christoph Hellwig <hch@infradead.org>
+Cc: Xiaoming Ding <xiaoming.ding@mediatek.com>,
+ Jens Wiklander <jens.wiklander@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ op-tee@lists.trustedfirmware.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com
-References: <20230517151516.343037-1-angelogioacchino.delregno@collabora.com>
-From: David <david@ixit.cz>
-In-Reply-To: <20230517151516.343037-1-angelogioacchino.delregno@collabora.com>
+ fei.xu@mediatek.com, srv_heupstream@mediatek.com, linux-mm@kvack.org
+References: <20230517031856.19660-1-xiaoming.ding@mediatek.com>
+ <ZGSDoVKKVqCkbaCB@infradead.org>
+ <CAFA6WYO+AvnbuAdWyBAQ8HkLaOno7PXdsPb9SubxrGNvAm4UnQ@mail.gmail.com>
+ <ZGSLiiK/JzD5KMd7@infradead.org>
+ <CAFA6WYPOMwmrA3J84AHzoD2eAtNkpMxr754qHpc-j6XRkgFFvQ@mail.gmail.com>
+ <ZGSgCZrg+RjAbGO1@infradead.org>
+ <CAFA6WYO+EpiECFxdVgmd-Ey9jq1Ybt78WupK_bW5+oDcW-soVQ@mail.gmail.com>
+ <d4773626-6cf0-c929-c775-a84ac41fd719@redhat.com>
+ <ZGWnq/dAYELyKpTy@infradead.org>
+ <CAFA6WYPgvifYcj_MT7BBcC0BtQDWXV0u+HY8qv0M9nNyiCgkow@mail.gmail.com>
+From: David Hildenbrand <david@redhat.com>
+Organization: Red Hat
+In-Reply-To: <CAFA6WYPgvifYcj_MT7BBcC0BtQDWXV0u+HY8qv0M9nNyiCgkow@mail.gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230518_065337_725114_DAB642C7 
-X-CRM114-Status: GOOD (  15.24  )
+X-CRM114-CacheID: sfid-20230518_065617_807579_731CF5D5 
+X-CRM114-Status: GOOD (  15.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,33 +119,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Reviewed-by: David Heidelberg <david@ixit.cz>
+On 18.05.23 08:08, Sumit Garg wrote:
+> On Thu, 18 May 2023 at 09:51, Christoph Hellwig <hch@infradead.org> wrote:
+>>
+>> On Wed, May 17, 2023 at 08:23:33PM +0200, David Hildenbrand wrote:
+>>> In general: if user space controls it -> possibly forever -> long-term. Even
+>>> if in most cases it's a short delay: there is no trusting on user space.
+>>>
+>>> For example, iouring fixed buffers keep pages pinned until user space
+>>> decides to unregistered the buffers -> long-term.
+>>>
+>>> Short-term is, for example, something like O_DIRECT where we pin -> DMA ->
+>>> unpin in essentially one operation.
+>>
+>> Btw, one thing that's been on my mind is that I think we got the
+>> polarity on FOLL_LONGTERM wrong.  Instead of opting into the long term
+>> behavior it really should be the default, with a FOLL_EPHEMERAL flag
+>> to opt out of it.  And every users of this flag is required to have
+>> a comment explaining the life time rules for the pin..
+> 
+> It does look like a better approach to me given the very nature of
+> user space pages.
 
-On 17/05/2023 17:15, AngeloGioacchino Del Regno wrote:
-> Function jack_kctl_name_gen() will remove the redundant " Jack" from
-> the name, if present, and then it will add it back, so that all of
-> the controls are named "(pin-name) Jack".
->
-> Remove " Jack" from the Headphone pin name to spare some CPU cycles.
->
-> This commit brings no functional changes.
->
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->   sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c b/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c
-> index 5e163e23a207..4e0d5bf12b47 100644
-> --- a/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c
-> +++ b/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c
-> @@ -46,7 +46,7 @@ struct mt8192_mt6359_priv {
->   /* Headset jack detection DAPM pins */
->   static struct snd_soc_jack_pin mt8192_jack_pins[] = {
->   	{
-> -		.pin = "Headphone Jack",
-> +		.pin = "Headphone",
->   		.mask = SND_JACK_HEADPHONE,
->   	},
->   	{
+Yeah, there is a lot of historical baggage. For example, FOLL_GET should 
+be inaccessible to kernel modules completely at one point, to be only 
+used by selected core-mm pieces.
+
+Maybe we should even disallow passing in FOLL_LONGTERM as a flag and 
+only provide functions like pin_user_pages() vs. 
+pin_user_pages_longterm(). Then, discussions about conditional 
+flag-setting are no more :)
+
+... or even use pin_user_pages_shortterm() vs. pin_user_pages() ... to 
+make the default be longterm.
+
+-- 
+Thanks,
+
+David / dhildenb
+
 
