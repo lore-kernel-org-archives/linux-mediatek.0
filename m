@@ -4,72 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CC9DC77B7A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 May 2023 12:03:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B270C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 May 2023 12:29:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=AswqjqlgL9AGh9p9nkxsoOkIsJN0FnFVHRTAlCMqEfI=; b=yJVTmQLjl/FKuAGcR72XZR4liC
-	0d0TuO9n5SlFHFaRG15sygCLlDnMqw+fWTtyzCSS9FyVNi0fsscTOG8WwQkFV1e+Et9+Zpu9jfJcB
-	RJ27F/12ucHi03qUjvErYUdGHQbfkBHUcUuikbRhI+wGpR4dQZ8CapJgSkH9Fg/4stLn0S1mQnYy0
-	2CW9mq3ZZS5WMNJGlOZqjTCbP/jYhbIq0C9lY5Aknj4pPzoaWyvw+dssVV4hgFZHTNR4QvG2zngPt
-	202/V3V6RmGnbZBgPPmbN+fs6AGnCWj7p0tD/4NnuKJHTV4Z3NXeLnFZPK3uawCBj5vN0Tqvcgl5j
-	CK8UXLoQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OvkXA2mPqSaFnAQuHS4A0rmOCQvSNCrXQRwg+sSPOMU=; b=K6M4mZN1i+yJ0O93UfzTzs1rhN
+	XRrA8tEjRYZwP98dRTZcoJyXVZyx3MHQBIR4tsCw5P07hoTYZj7kervYShN/AAPuyrqgdwFnwe7v+
+	BsO4F8Z/vJmqy+VbrCANC8gsK1dTf9WC1kd0ViZDoDYEiz47WM6vDZc02do2VgbiEBfW8TdjS+J+b
+	uQb3rWfkYuatzh2k1mhvpVEZ6l47sOuUjxzTBLX90JfYvdhTRqnMmPqWmnq/8rKGtg868esktgfut
+	hBS0btJEe9WnwkBglSvOz5Djwcvqng/tMeSd8V3Jijx8wn4Q9Py4FFCMkDB32qIwq3HwzbAsHW67j
+	d8Ca8NhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzcLU-00CunQ-2x;
-	Thu, 18 May 2023 12:03:00 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pzckg-00CxQC-0F;
+	Thu, 18 May 2023 12:29:02 +0000
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzcLS-00Cumx-0x;
-	Thu, 18 May 2023 12:02:59 +0000
-X-UUID: e80e49c6f57311ed912e1518a6540028-20230518
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=AswqjqlgL9AGh9p9nkxsoOkIsJN0FnFVHRTAlCMqEfI=;
-	b=nxxy1D0eQMPaaOL6Ke3UNqTSmKbMdVUv7Fx9d7oxdZMzKjorb6RCbf+lFIJbv44fx03yqFfY9Yfz26+UiiKLJvCHPdpPSRYRQJBTsAbLbtQFc90SqfkDLzLF0RZn3BzJzbpLkkga8TkEbulqr9VF9apOqilfeJjy3ZDutxit/C0=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.25,REQID:32300b5f-7ade-4e22-aad2-012bf3539b36,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:d5b0ae3,CLOUDID:a5f045c1-e32c-4c97-918d-fbb3fc224d4e,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-UUID: e80e49c6f57311ed912e1518a6540028-20230518
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <shuijing.li@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 273900750; Thu, 18 May 2023 05:02:48 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.194) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 18 May 2023 19:52:36 +0800
-Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 18 May 2023 19:52:35 +0800
-From: Shuijing Li <shuijing.li@mediatek.com>
-To: <thierry.reding@gmail.com>, <u.kleine-koenig@pengutronix.de>,
-	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>
-CC: <devicetree@vger.kernel.org>, <linux-pwm@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<jitao.shi@mediatek.com>, Shuijing Li <shuijing.li@mediatek.com>
-Subject: [PATCH v2] pwm: mtk_disp: Fix the disable flow of disp_pwm
-Date: Thu, 18 May 2023 19:52:58 +0800
-Message-ID: <20230518115258.14320-1-shuijing.li@mediatek.com>
-X-Mailer: git-send-email 2.40.1
+	id 1pzckb-00CxOI-0S;
+	Thu, 18 May 2023 12:28:58 +0000
+Received: by mail-pf1-x434.google.com with SMTP id d2e1a72fcca58-64354231003so851763b3a.0;
+        Thu, 18 May 2023 05:28:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1684412934; x=1687004934;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:sender
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=OvkXA2mPqSaFnAQuHS4A0rmOCQvSNCrXQRwg+sSPOMU=;
+        b=SurrS0NPOHoNg01wUHihvUXqjL3E+Y0johRZz2xt3EfXVjQTsoJxVDDrrTXmIUKaA+
+         mfr9VvpKcJnsEWPPkJGu3HlVp/BqZi43UwMNB/zTm4iWE5uSk+HObEM9nRJT6C3s0J9i
+         ETGgbEqViAdCXFQ1XpYCY+wSdtvo67g/mO4iWkbWbXaGCEOcT/dBx1y6h+voMOK2t7nM
+         oIBXJADj3PD30ITaY8HWSdAZ//kPlIO4i2WDlAEDmFtjCeFYJ0Ti0DrqEAOG6wl0xLmp
+         6nhSJl39BxBxVlEANi8rdql/+KNumyx3oXB8SK0WaTL/FpJF30p6SppKbUd0D0LHQKZS
+         HeQw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1684412934; x=1687004934;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:sender
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=OvkXA2mPqSaFnAQuHS4A0rmOCQvSNCrXQRwg+sSPOMU=;
+        b=UXl8/tW87UPE3T6e7hz5BDklhqI6FUg7yGxZStbEE/XZueaFcKtZlN6GgejOFACQN+
+         CECG3Tg9QkSMw3U35zY2bJ/mQ22srBUFm4cql53e3M/IBy0e6P20E88pr2JXx40R4eZJ
+         Q2dAb4Kj5QX0vJ/puD954rAasN2qTLocnraK8/78v34tTpDeY9B96v8eVyRqdX7OZERW
+         TaEkIUg6F9Gjn8ALkiMcurjKT1bkpCaDfUXHt/GQTS78IHh5C7SF6uC241ueELpCTVWk
+         tyKw117Dw2SbXbd/fFs7AjU4BRq4Z4/P/HI6I5QdywONqzn1zabrBDf95mi2+oiVtOck
+         dzPg==
+X-Gm-Message-State: AC+VfDzpz5hrXoJLayDJ5jYUpXhuxOInK4P72Y9Gwcikoq4yIzu38ZIx
+	kD2Bupi/fHEfGliS2SUhpFY1i3ewjsI=
+X-Google-Smtp-Source: ACHHUZ6O+/H/cPs9HhB9sgWTZ158Wb2S5pgCVPuODTCiXEy3yT2GAzOqNBn2+X2UwvY8r1XsSBywSA==
+X-Received: by 2002:a05:6a00:10d4:b0:63b:6279:1039 with SMTP id d20-20020a056a0010d400b0063b62791039mr2913187pfu.0.1684412934342;
+        Thu, 18 May 2023 05:28:54 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+        by smtp.gmail.com with ESMTPSA id s21-20020aa78295000000b0063f0068cf6csm1228153pfm.198.2023.05.18.05.28.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 18 May 2023 05:28:53 -0700 (PDT)
+Date: Thu, 18 May 2023 05:28:52 -0700
+From: Guenter Roeck <linux@roeck-us.net>
+To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-usb@vger.kernel.org, kernel@pengutronix.de,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 93/97] usb: typec: tcpci_mt6360: Convert to platform
+ remove callback returning void
+Message-ID: <9d467c12-90d5-43ae-b5da-2a6516ab6767@roeck-us.net>
+References: <20230517230239.187727-1-u.kleine-koenig@pengutronix.de>
+ <20230517230239.187727-94-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+In-Reply-To: <20230517230239.187727-94-u.kleine-koenig@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230518_050258_346283_AD89F7DB 
-X-CRM114-Status: GOOD (  12.87  )
+X-CRM114-CacheID: sfid-20230518_052857_178552_CD23D466 
+X-CRM114-Status: GOOD (  25.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,55 +98,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There is a flow error in the original mtk_disp_pwm_apply() function.
-If this function is called when the clock is disabled, there will be a
-chance to operate the disp_pwm register, resulting in disp_pwm exception.
-Fix this accordingly.
+On Thu, May 18, 2023 at 01:02:35AM +0200, Uwe Kleine-König wrote:
+> The .remove() callback for a platform driver returns an int which makes
+> many driver authors wrongly assume it's possible to do error handling by
+> returning an error code. However the value returned is ignored (apart from
+> emitting a warning) and this typically results in resource leaks. To improve
+> here there is a quest to make the remove callback return void. In the first
+> step of this quest all drivers are converted to .remove_new() which already
+> returns void. Eventually after all drivers are converted, .remove_new() is
+> renamed to .remove().
+> 
+> Trivially convert this driver from always returning zero in the remove
+> callback to the void returning variant.
+> 
+> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
 
-Signed-off-by: Shuijing Li <shuijing.li@mediatek.com>
----
-Changes in v2:
-Use
-if (A && B) {
-	something();
-}
-instead of
-if (A) {
-	if (B) {
-		something();
-	}
-}
-per suggestion from the previous thread:
-https://lore.kernel.org/lkml/20230515140346.bxeu6xewi6a446nd@pengutronix.de/
----
- drivers/pwm/pwm-mtk-disp.c | 13 +++++--------
- 1 file changed, 5 insertions(+), 8 deletions(-)
+Acked-by: Guenter Roeck <linux@roeck-us.net>
 
-diff --git a/drivers/pwm/pwm-mtk-disp.c b/drivers/pwm/pwm-mtk-disp.c
-index 79e321e96f56..2401b6733241 100644
---- a/drivers/pwm/pwm-mtk-disp.c
-+++ b/drivers/pwm/pwm-mtk-disp.c
-@@ -79,14 +79,11 @@ static int mtk_disp_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
- 	if (state->polarity != PWM_POLARITY_NORMAL)
- 		return -EINVAL;
- 
--	if (!state->enabled) {
--		mtk_disp_pwm_update_bits(mdp, DISP_PWM_EN, mdp->data->enable_mask,
--					 0x0);
--
--		if (mdp->enabled) {
--			clk_disable_unprepare(mdp->clk_mm);
--			clk_disable_unprepare(mdp->clk_main);
--		}
-+	if (!state->enabled && mdp->enabled) {
-+		mtk_disp_pwm_update_bits(mdp, DISP_PWM_EN,
-+					 mdp->data->enable_mask, 0x0);
-+		clk_disable_unprepare(mdp->clk_mm);
-+		clk_disable_unprepare(mdp->clk_main);
- 
- 		mdp->enabled = false;
- 		return 0;
--- 
-2.40.1
-
+> ---
+>  drivers/usb/typec/tcpm/tcpci_mt6360.c | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/usb/typec/tcpm/tcpci_mt6360.c b/drivers/usb/typec/tcpm/tcpci_mt6360.c
+> index 6fa8fd5c8041..02b7fd302265 100644
+> --- a/drivers/usb/typec/tcpm/tcpci_mt6360.c
+> +++ b/drivers/usb/typec/tcpm/tcpci_mt6360.c
+> @@ -178,13 +178,12 @@ static int mt6360_tcpc_probe(struct platform_device *pdev)
+>  	return 0;
+>  }
+>  
+> -static int mt6360_tcpc_remove(struct platform_device *pdev)
+> +static void mt6360_tcpc_remove(struct platform_device *pdev)
+>  {
+>  	struct mt6360_tcpc_info *mti = platform_get_drvdata(pdev);
+>  
+>  	disable_irq(mti->irq);
+>  	tcpci_unregister_port(mti->tcpci);
+> -	return 0;
+>  }
+>  
+>  static int __maybe_unused mt6360_tcpc_suspend(struct device *dev)
+> @@ -222,7 +221,7 @@ static struct platform_driver mt6360_tcpc_driver = {
+>  		.of_match_table = mt6360_tcpc_of_id,
+>  	},
+>  	.probe = mt6360_tcpc_probe,
+> -	.remove = mt6360_tcpc_remove,
+> +	.remove_new = mt6360_tcpc_remove,
+>  };
+>  module_platform_driver(mt6360_tcpc_driver);
+>  
+> -- 
+> 2.39.2
+> 
 
