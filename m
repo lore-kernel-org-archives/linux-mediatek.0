@@ -4,96 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CFECC77B7A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 May 2023 11:00:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EBCFC77B75
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 May 2023 12:15:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bxFT/eH6fI01yzQTav7apbXJs4Zkvkdbiyhdl2n33zI=; b=X98RgyKz91Nx8KgQ7Y/cdhaCbc
-	n7t+XlYHOKdjIHTPFVLnHfOQCWW2LYgC8TNjDQHUWxvEYq+pzSft3etEGQUpM9xv+VByURdMFEfgf
-	FNf12uIrDFW6yg3DGCfu0GMm6hUcRbuICekyBN6HtCOs76maEcHJ2yn2dDpN66jF+Ow69VPyUGSR/
-	mtUGpD+8UoqEVjIQ+YgFIPsSs6IIbGizGlZLeZRgP2liB0sMkG2NhM2teBewXh+Ks1yIbu5zhGsq/
-	7GRX/a233IGsKIR1yltfruemMZ/WERIhg/6eDiz8w+BKJOwSZNG2ktGnNdjf6eijZfUmTxe8Hj4nw
-	p+WMp6EQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5jNtnl0ixWjSP8DQh9+bE2W7QXjs5PjGYkgY8RBy91o=; b=vwixeCYsiucI9+z7nAq77CQlIM
+	sUUMZVGyx7gKyr+5yjwwIHjf5Bu0lxBB8st+vE7WnpLYlsd03oT2H3o0Ng7kHY5uJ11k1idxpRHQa
+	onEETfdphI9xZw/Q58n5Vk1MfZVAbWwW2W1uJnNYsuk7lcOQNiPCvHAAeshCQhvOIBcMJ+Yf2jMFb
+	UmBz9D0YbnU5DQHhWxKCcegDvgYLZF9N231DbgqjnKTXaBm8aOXmowh/PEDrzbzcIAm/xY0xpAmaK
+	q3KeZxNsEx07tARS5z4ZQ8Rl7iUCsIQQIO1LzmEw7aDaAMgjaWT8bM/qkzcbFnyGwgM8P5F01X5am
+	LSIfb8WA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzxqt-00G2CU-0O;
-	Fri, 19 May 2023 11:00:51 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1pzz1T-00GCjr-3D;
+	Fri, 19 May 2023 12:15:52 +0000
+Received: from mail-vs1-xe30.google.com ([2607:f8b0:4864:20::e30])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzwuY-00FopX-0y
+	id 1pzxtF-00G2jh-1k
 	for linux-mediatek@lists.infradead.org;
-	Fri, 19 May 2023 10:00:35 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-1ae79528d4dso10274075ad.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 19 May 2023 03:00:32 -0700 (PDT)
+	Fri, 19 May 2023 11:03:19 +0000
+Received: by mail-vs1-xe30.google.com with SMTP id ada2fe7eead31-4360e117b7cso1010043137.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 19 May 2023 04:03:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1684490432; x=1687082432;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=bxFT/eH6fI01yzQTav7apbXJs4Zkvkdbiyhdl2n33zI=;
-        b=cvDpCNTPA3iJ2kdFkRCSMFHRtdReYV2KXQhy8iT3L9ZJ57nbIqLq8LmQb7Z118jA9Z
-         SeD9I7cI3Y8OG8enSiToTsSgDB8PDXjPB4UZO1pcKN7MMHybvVarhYsNfDvDhCTgFGvb
-         ZFPdyRXJ9FO6OyoWmqeWJD7xnpT4bdCerCbZ8=
+        d=linaro.org; s=google; t=1684494195; x=1687086195;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=5jNtnl0ixWjSP8DQh9+bE2W7QXjs5PjGYkgY8RBy91o=;
+        b=lU582uaFvhsPxMB8wieIzAYVgQG0KGIWH5cpY+cPNeH8AcChj+NQrDExmvzlD85f1V
+         ho3n07Z0lPb/nZAhAj8HaO/7OuryGP6bmiZoBTVPtTr0Md3umRYMurtmeMt56QPXDhAU
+         ZYK7YKR1jeL/P6YgBayTNbuskzqzqz/E6ELcQ60RAv3adDsA9IW2KwJczxSo/XxSC2D+
+         zJMPvHCrG7oz1+RYdMeTvBMYWe7ZwljIqsHQDpPeIMGyh3/SIr5eH8fopc3zsGu+Ftwk
+         Md7xrkI0AiGAaimELV0QiMeUNcxVLBtFiXts7gsrBXsbiLfRBc8RSTgBzQGn45eprW+B
+         41tw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684490432; x=1687082432;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=bxFT/eH6fI01yzQTav7apbXJs4Zkvkdbiyhdl2n33zI=;
-        b=ZNeGKp7JgBx7cYCxRrQSImBnwWwwibrlWb6hMFoMgT909RScfnnQG4ayGBSOqMMb12
-         p9HWRGpgZe1jgKsoSwFPITvg/iu6a7jCjTput2mJp7FiwWC8nUPiIL4QKwKhhu+qbv2x
-         z2aS2BJWHpnj28Zb9tmf3srggBKXd7g4QygXfqRHXU1XL3AsbVDgOimSE9FWPbkZ6s9X
-         yMsnZb7aNcrTgZcrNMjDXM3WlTTQn+rAZJR7/8XGmaIKWl1wCCoAIYqn8/uZXHMr+5bJ
-         EPd7eUczAKjcPi+XC/N/WydR0/JE0oEQhFXB48C4wzmgj6ELAAAHyfGogD3DYJp7s4h3
-         5XQw==
-X-Gm-Message-State: AC+VfDwnD7LirNjEECIYz9D8ZqsT1aIkWdouKqTCXfHoEt/LNFQ8dK19
-	v3ByBhW7cGMk/fVNOudTlgomxQ==
-X-Google-Smtp-Source: ACHHUZ65Vmg+CYxf6B2/ULrLmerlLS1jMd3W4m8M1xENFlfJroRC/2WxG/uzsCpP0fQnBk7vlkPoRQ==
-X-Received: by 2002:a17:902:ef84:b0:1ad:bb42:7672 with SMTP id iz4-20020a170902ef8400b001adbb427672mr2227133plb.29.1684490430693;
-        Fri, 19 May 2023 03:00:30 -0700 (PDT)
-Received: from chromium.org (0.223.81.34.bc.googleusercontent.com. [34.81.223.0])
-        by smtp.gmail.com with ESMTPSA id a4-20020a1709027d8400b001ab12545508sm3043029plm.67.2023.05.19.03.00.25
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 19 May 2023 03:00:30 -0700 (PDT)
-Date: Fri, 19 May 2023 10:00:24 +0000
-From: Tomasz Figa <tfiga@chromium.org>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Dan Carpenter <error27@gmail.com>, oe-kbuild@lists.linux.dev,
-	m.szyprowski@samsung.com, mchehab@kernel.org, ming.qian@nxp.com,
-	shijie.qin@nxp.com, eagle.zhou@nxp.com, bin.liu@mediatek.com,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com,
-	yunfei.dong@mediatek.com, stanimir.k.varbanov@gmail.com,
-	quic_vgarodia@quicinc.com, agross@kernel.org, andersson@kernel.org,
-	konrad.dybcio@linaro.org, ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de, daniel.almeida@collabora.com, lkp@intel.com,
-	oe-kbuild-all@lists.linux.dev, linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v2 2/8] media: videobuf2: Make bufs array dynamic
- allocated
-Message-ID: <20230519100024.en7immda3jdj2wwq@chromium.org>
-References: <4e2cb832-de83-4ba6-bd8a-119a19038cfe@kili.mountain>
- <a88b93cc-a81f-6186-09fc-02223867e677@collabora.com>
- <b0018f7b-0556-0ac1-d2fa-89787a27fba1@xs4all.nl>
- <20230324084830.GA18895@pendragon.ideasonboard.com>
- <d4b6ad10-1889-0a63-5a14-cb1320e2dc09@xs4all.nl>
- <7ad524a1-c54f-a01c-3453-2cf1f0f82a13@collabora.com>
+        d=1e100.net; s=20221208; t=1684494195; x=1687086195;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=5jNtnl0ixWjSP8DQh9+bE2W7QXjs5PjGYkgY8RBy91o=;
+        b=OL3bAGSHhg54HXaAPrXt2BJLmcCgBxim+hNV70qdBkqm7hPtX2wEE3CEKkUBJUr9f3
+         adOXtXQfiHbLlbS9BUfxFaBIHN1hki82/1RV6F7BEDy3w0rJX2niv3z/5Os/8rS6fvqh
+         TVu6JG1L3NT+IiRlG2Wo8TYsbjWEznEGC2MNKb4WMOyeGs5TQ9tO3LvqIqSOPKX0VBOH
+         M8OLUpd+U7MXOFYeLFi2UBNY0pyCyX51xWB0aanZ4q3k3RV/L4A0XEItf/7ZOBYVpgO7
+         Ry7WmbDn/llU+pg++LgNqY1gxTJjx5xvdKqn4Q9mLxgC0Lfns/2gR4IHsxXddYYQEE4Q
+         mhdA==
+X-Gm-Message-State: AC+VfDxGz+FM1OM1F8TUgQwhbFw20tVYJcdYVsspKGTJrmXBeeBxGXDK
+	jY1vToyyxHgbqm3DvTBzhjf4GFwcZ/5NNsnueGOpRQ==
+X-Google-Smtp-Source: ACHHUZ4IoNjXX/D7uJQbUhx4UKBwK7sl5gNbLX0mtILlCTVmUCh4lNnPA6iI5tSHHiw6QYjcc4RCsC5Pgf5JNANsywo=
+X-Received: by 2002:a67:cd99:0:b0:438:d4bd:f1f2 with SMTP id
+ r25-20020a67cd99000000b00438d4bdf1f2mr318974vsl.22.1684494195773; Fri, 19 May
+ 2023 04:03:15 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <7ad524a1-c54f-a01c-3453-2cf1f0f82a13@collabora.com>
+References: <20230517031856.19660-1-xiaoming.ding@mediatek.com>
+ <ZGSDoVKKVqCkbaCB@infradead.org> <CAFA6WYO+AvnbuAdWyBAQ8HkLaOno7PXdsPb9SubxrGNvAm4UnQ@mail.gmail.com>
+ <ZGSLiiK/JzD5KMd7@infradead.org> <CAFA6WYPOMwmrA3J84AHzoD2eAtNkpMxr754qHpc-j6XRkgFFvQ@mail.gmail.com>
+ <ZGSgCZrg+RjAbGO1@infradead.org> <CAFA6WYO+EpiECFxdVgmd-Ey9jq1Ybt78WupK_bW5+oDcW-soVQ@mail.gmail.com>
+ <781d993204fbbdf30a6ca495b59b3b0aa7a2e496.camel@mediatek.com> <83a846a9-8f88-3f66-b840-e84d072bb0fb@redhat.com>
+In-Reply-To: <83a846a9-8f88-3f66-b840-e84d072bb0fb@redhat.com>
+From: Sumit Garg <sumit.garg@linaro.org>
+Date: Fri, 19 May 2023 16:33:04 +0530
+Message-ID: <CAFA6WYOfku70PXso9LeO0G=443NVFKsmxgsZUnMwKwnSZ6bg5A@mail.gmail.com>
+Subject: Re: [PATCH] tee: add FOLL_LONGTERM for CMA case when alloc shm
+To: David Hildenbrand <david@redhat.com>
+Cc: =?UTF-8?B?WGlhb21pbmcgRGluZyAo5LiB5pmT5piOKQ==?= <Xiaoming.Ding@mediatek.com>, 
+	"hch@infradead.org" <hch@infradead.org>, =?UTF-8?B?RmVpIFh1ICjlvpDpo54p?= <Fei.Xu@mediatek.com>, 
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+	"linux-mm@kvack.org" <linux-mm@kvack.org>, 
+	"srv_heupstream@mediatek.com" <srv_heupstream@mediatek.com>, 
+	"jens.wiklander@linaro.org" <jens.wiklander@linaro.org>, 
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+	"op-tee@lists.trustedfirmware.org" <op-tee@lists.trustedfirmware.org>, 
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230519_030034_369649_4232B1C6 
-X-CRM114-Status: GOOD (  23.86  )
+X-CRM114-CacheID: sfid-20230519_040317_611385_BED74B8A 
+X-CRM114-Status: GOOD (  28.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,78 +101,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 24, 2023 at 09:56:34AM +0100, Benjamin Gaignard wrote:
-> 
-> Le 24/03/2023 à 09:52, Hans Verkuil a écrit :
-> > On 24/03/2023 09:48, Laurent Pinchart wrote:
-> > > On Fri, Mar 24, 2023 at 09:31:35AM +0100, Hans Verkuil wrote:
-> > > > On 24/03/2023 09:11, Benjamin Gaignard wrote:
-> > > > > Le 24/03/2023 à 06:01, Dan Carpenter a écrit :
-> > > > > > Hi Benjamin,
-> > > > > > 
-> > > > > > https://git-scm.com/docs/git-format-patch#_base_tree_information]
-> > > > > > 
-> > > > > > url:    https://github.com/intel-lab-lkp/linux/commits/Benjamin-Gaignard/media-videobuf2-Access-vb2_queue-bufs-array-through-helper-functions/20230321-183154
-> > > > > > base:   git://linuxtv.org/media_tree.git master
-> > > > > > patch link:    https://lore.kernel.org/r/20230321102855.346732-3-benjamin.gaignard%40collabora.com
-> > > > > > patch subject: [PATCH v2 2/8] media: videobuf2: Make bufs array dynamic allocated
-> > > > > > config: arm64-randconfig-m041-20230319 (https://download.01.org/0day-ci/archive/20230324/202303240148.lKRnUqW9-lkp@intel.com/config)
-> > > > > > compiler: aarch64-linux-gcc (GCC) 12.1.0
-> > > > > > 
-> > > > > > If you fix the issue, kindly add following tag where applicable
-> > > > > > | Reported-by: kernel test robot <lkp@intel.com>
-> > > > > > | Reported-by: Dan Carpenter <error27@gmail.com>
-> > > > > > | Link: https://lore.kernel.org/r/202303240148.lKRnUqW9-lkp@intel.com/
-> > > > > > 
-> > > > > > smatch warnings:
-> > > > > > include/media/videobuf2-core.h:1272 vb2_queue_add_buffer() warn: sleeping in atomic context
-> > > > > > drivers/media/common/videobuf2/videobuf2-core.c:2456 vb2_core_queue_init() warn: Please consider using kcalloc instead of kmalloc_array
-> > > > > > 
-> > > > > > vim +1272 include/media/videobuf2-core.h
-> > > > > > 
-> > > > > > 625d46c1c1fe8e Benjamin Gaignard 2023-03-21  1263  static inline bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb)
-> > > > > > 625d46c1c1fe8e Benjamin Gaignard 2023-03-21  1264  {
-> > > > > > 487d3f14d12ecf Benjamin Gaignard 2023-03-21  1265      bool ret = false;
-> > > > > > 487d3f14d12ecf Benjamin Gaignard 2023-03-21  1266
-> > > > > > 487d3f14d12ecf Benjamin Gaignard 2023-03-21  1267      spin_lock(&q->bufs_lock);
-> > > > > >                                                           ^^^^^^^^^^^^^^^^^^^^^^^
-> > > > > > Holding a spin lock.
-> > > > > > 
-> > > > > > 487d3f14d12ecf Benjamin Gaignard 2023-03-21  1268
-> > > > > > 487d3f14d12ecf Benjamin Gaignard 2023-03-21  1269      if (vb->index >= q->max_num_bufs) {
-> > > > > > 487d3f14d12ecf Benjamin Gaignard 2023-03-21  1270          struct vb2_buffer **tmp;
-> > > > > > 487d3f14d12ecf Benjamin Gaignard 2023-03-21  1271
-> > > > > > 487d3f14d12ecf Benjamin Gaignard 2023-03-21 @1272          tmp = krealloc_array(q->bufs, q->max_num_bufs * 2, sizeof(*q->bufs), GFP_KERNEL);
-> > > > > >                                                                                                                                        ^^^^^^^^^^
-> > > > > > Sleeping allocation.  GFP_ATOMIC?  Or is there a way to move the
-> > > > > > allocation outside the lock?
-> > > > > I will add GFP_ATOMIC flag in next version.
-> > > > No need. Instead, don't use realloc here, just allocate a new array, copy over all
-> > > > the data from the old, and then switch q->bufs with the spinlock held. Then you
-> > > > can free the old one.
-> > > > 
-> > > > It's only when you update q->bufs that you need the lock.
-> > > The copy also needs to be protected by the lock.
-> > I suspect that that is not needed, since you shouldn't be able to add buffers here
-> > since a mutex should be held at this time.
-> > 
-> > That said, it's something that Benjamin needs to analyze.
+On Fri, 19 May 2023 at 15:31, David Hildenbrand <david@redhat.com> wrote:
+>
+> On 18.05.23 08:40, Xiaoming Ding (=E4=B8=81=E6=99=93=E6=98=8E) wrote:
+> >  From 35fd062d5cbc4d182eee0183843cd6350d126788 Mon Sep 17 00:00:00 2001
+> > From: Xiaoming Ding <xiaoming.ding@mediatek.com>
+> > Date: Wed, 10 May 2023 10:15:23 +0800
+> > Subject: [PATCH v2] tee: add FOLL_LONGTERM for CMA case when alloc shm
+> >
+> > CMA is widely used on insufficient memory platform for
+> > secure media playback case, and FOLL_LONGTERM will
+> > avoid tee_shm alloc pages from CMA region.
+> > without FOLL_LONGTERM, CMA region may alloc failed since
+> > tee_shm has a chance to use it in advance.
+> >
+> > modify is verified on OPTEE XTEST and kinds of secure + clear playback
+> >
+> >
+> > Fixes: 033ddf12bcf5 ("tee: add register user memory")
+> > Signed-off-by: Xiaoming Ding <xiaoming.ding@mediatek.com>
+> > ---
+> > v1 -> v2: take off the ifdef and apply FOLL_LONGTERM by default
+> >
+> >   drivers/tee/tee_shm.c | 2 +-
+> >   1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/tee/tee_shm.c b/drivers/tee/tee_shm.c
+> > index 673cf0359494..38878e549ca4 100644
+> > --- a/drivers/tee/tee_shm.c
+> > +++ b/drivers/tee/tee_shm.c
+> > @@ -257,7 +257,7 @@ register_shm_helper(struct tee_context *ctx,
+> > unsigned long addr,
+> >       }
+> >
+> >       if (flags & TEE_SHM_USER_MAPPED)
+> > -             rc =3D pin_user_pages_fast(start, num_pages, FOLL_WRITE,
+> > +             rc =3D pin_user_pages_fast(start, num_pages, FOLL_WRITE |
+> > FOLL_LONGTERM,
+> >                                        shm->pages);
+> >       else
+> >               rc =3D shm_get_kernel_pages(start, num_pages, shm-
+> >> pages);
+>
+> I didn't dive deeply into that code, but I can spot that we can end up
+> long-term pinning multiple pages -- possibly unbound or is there any
+> sane limit on the number of pages?
 
-I spent some time looking through the call sites of vb2_get_buffer() and
-how those can be called and it turned out to be a massive list of code
-paths, including a lot of calls originating from codec drivers calling
-vb2_find_buffer() in random contexts (possibly even interrupt). So a
-spinlock protecting the array pointer makes sense indeed.
+I am not aware of any limit that we put on pinning user-space pages.
 
-> 
-> Does using GFP_ATOMIC is problematic ?
-> 
+>
+> Take a look at io_uring/rsrc.c and how we account long-term pinned pages
+> against user->locked_vm/ctx->mm_account->pinned_vm in io_account_mem().
+>
+> If user space could only end up pinning one or two pages via that
+> interface, ok. But it looks like this interface could be abused to
+> create real real trouble by unprivileged users that should be able to
+> long-term pin that many pages.
+>
+> Am I missing something important (i.e., interface is only accessible by
+> privileged users) or should there be proper accounting and
+> RLIMIT_MEMLOCK checks?
 
-Yes, because the ability to reclaim memory is drastically limited and
-the allocation is more likely to fail (as in: it's actually possible).
-(And generally the time with interrupts disabled should be minimized to
-keep system latency reasonable.)
+So your observation is correct. With long term pinning we have to
+implement similar RLIMIT_MEMLOCK checks. Thanks for your insights
+here.
 
-Best regards,
-Tomasz
+-Sumit
+
+>
+> --
+> Thanks,
+>
+> David / dhildenb
+>
 
