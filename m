@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29BC6C77B7F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 May 2023 18:24:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 922C8C77B7D
+	for <linux-mediatek@archiver.kernel.org>; Sat, 20 May 2023 18:24:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=bg1mSWVICb6RmOGm/PXS8QYKK5BDFvquz0EEO5hcMZE=; b=T6HU3nfcgsHASwJvuqSApvq1P4
-	Xf39lAJ/SWYfZQ+n0jDe1T5OvbpNHqA3SEo1Bh9AeOWT1M8kqz8mI3sMQaOm1DyFoiT46YXNq/UFb
-	t0T7MspBhU6kneEKinPQ9SgovUCPLQw47lN+x4BaLE5hEWIT3f7ab9dQzej0OQRVCiOgGiikJRtRA
-	M6ohQQCsjDaeYk1NwU/wBTkA5wh7WwicfuKdvg33qbavSwi5fQ+8VRvTHf+3qG42Zjk0RcB8k8Iyf
-	PALduuEN+N/60B8jOfX0AONvqYRtDlUirHVVwS8bU3S8lVYArBVa91aO+03pHefHN4+WortdvGUXe
-	vllIjhMA==;
+	bh=TZRR07+vctVM8WdxwVywanvArQDn3S9Ioav5/tEFdfU=; b=r2p0IIsCkPHBUPuARgeHADbxpd
+	eqvqhyfcu6C0Y9X+MmzK6f/t7Wh845MnvbYrnec0H9jqSBPcoxnwL1j+JbGyeBUQZCx3DLBNf/Sjx
+	7LIV5sj473R/68T2JvIUQmkQSz5oB0zR7YX4dlG6a3hNEJLEnZkyRNTHb4jvZAIOJW5O6Qxir9n7A
+	6/g0T6WaOPlczLHSRkLhiMU7Ew6NNz73TCffocOjKYuZfFPE+6H2zAqtvhFBrB90FiEehoOloaZRr
+	Ocq5LAEEj6l4b72co0CUX23t/7lDIksLa6z+zAnlQwdMg4vRUPECqxKvlv0236u2+u50wO66x7/yw
+	+Fmofryw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q0RFI-0022Jy-1h;
-	Sat, 20 May 2023 18:24:00 +0000
+	id 1q0RFd-0022Q3-0n;
+	Sat, 20 May 2023 18:24:21 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q0RFE-0022Ir-2L;
-	Sat, 20 May 2023 18:23:58 +0000
+	id 1q0RFY-0022Of-2w;
+	Sat, 20 May 2023 18:24:18 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 1CE0360A73;
-	Sat, 20 May 2023 18:23:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5095DC433D2;
-	Sat, 20 May 2023 18:23:54 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 68DEC60F88;
+	Sat, 20 May 2023 18:24:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 82660C4339B;
+	Sat, 20 May 2023 18:24:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1684607035;
-	bh=PrAnEKQM8ba/kaH3fVF6IzMwaMifVuJ1DuyslPXnVho=;
+	s=k20201202; t=1684607055;
+	bh=PsdLhYUW2/2yOHPd/tsa7m1zstJtfVAA7v3QvF6juMM=;
 	h=From:To:Cc:Subject:Date:From;
-	b=KnEP1p4LUskKk24nn0usqipva9lbzdeQTocs1FWDTDqr/PDy6MRKXCng1WIuf6Fg7
-	 8zlmCxBGA8PUznB5GU3iefnyojMeQR76N3OaUuw2bqJBvpLQao1bj2cdxhXLcYu5yP
-	 MANsCGqRTHHwWDCFWoJa/zj7iZGcNhr5dVfhwp+/Cy05mtaVz/sAUSIvc751n1UqBY
-	 kfW/NCm8XAMPgLerkfY/NMBzqhETQACAd6fXp58+5ZrVCl4lpEdHyFJQbeBT8vi/5R
-	 uwPJ+EY47N+XLzypLp4RmrTKWSe+9s8nGYjvZrt5VezMR+kENiIl/ZDK2U+qxyuAYv
-	 b5Lby6EVeNtuA==
+	b=YY+WaiNCbCo4oJ7hA7HVmHQOgxerSLjBy8WrJ4o90IQAnljZl31tR/LGB0B2u1rG3
+	 MS9oBhAidLQuOEyhd9HVYNlfP1txj7ZoTqUeguwV3LcHZwO/ZOCs/n6XFh8i9zzFPi
+	 HttYZMxDmvjiC3y+5mCuMxIjSDbik5YYrikmjtYMiU2eBtQfkcHv5WCu8IB2rWVHYs
+	 W6yYAEChDs6DOebUEms2v8JTGTnekAm9xmseobZguwpo5JKDLFqqRSRC2bVeefv1vs
+	 sq4byOYrUIDn2uN5n5hz/Dmi+IU1jAKn882+vu2q7tXNSiIz/iJzcd14oLAkGIVyA5
+	 X7x4Qtfec7SyQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -57,17 +57,17 @@ Cc: Haibo Li <haibo.li@mediatek.com>,
 	alexander.sverdlin@nokia.com,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.4 1/5] ARM: 9295/1: unwind:fix unwind abort for uleb128 case
-Date: Sat, 20 May 2023 14:23:43 -0400
-Message-Id: <20230520182352.856378-1-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.19 1/5] ARM: 9295/1: unwind:fix unwind abort for uleb128 case
+Date: Sat, 20 May 2023 14:24:05 -0400
+Message-Id: <20230520182412.860973-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230520_112356_840103_65A4E78D 
-X-CRM114-Status: GOOD (  17.26  )
+X-CRM114-CacheID: sfid-20230520_112417_023540_4FF8EF46 
+X-CRM114-Status: GOOD (  17.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,10 +125,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 24 insertions(+), 1 deletion(-)
 
 diff --git a/arch/arm/kernel/unwind.c b/arch/arm/kernel/unwind.c
-index 4574e6aea0a52..f321c2aa94e1c 100644
+index 314cfb232a635..f2bb090373c67 100644
 --- a/arch/arm/kernel/unwind.c
 +++ b/arch/arm/kernel/unwind.c
-@@ -300,6 +300,29 @@ static int unwind_exec_pop_subset_r0_to_r3(struct unwind_ctrl_block *ctrl,
+@@ -313,6 +313,29 @@ static int unwind_exec_pop_subset_r0_to_r3(struct unwind_ctrl_block *ctrl,
  	return URC_OK;
  }
  
@@ -158,7 +158,7 @@ index 4574e6aea0a52..f321c2aa94e1c 100644
  /*
   * Execute the current unwind instruction.
   */
-@@ -353,7 +376,7 @@ static int unwind_exec_insn(struct unwind_ctrl_block *ctrl)
+@@ -366,7 +389,7 @@ static int unwind_exec_insn(struct unwind_ctrl_block *ctrl)
  		if (ret)
  			goto error;
  	} else if (insn == 0xb2) {
