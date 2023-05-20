@@ -4,67 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 820F2C77B7D
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 May 2023 12:58:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC529C77B7D
+	for <linux-mediatek@archiver.kernel.org>; Sat, 20 May 2023 18:18:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WzLOnS8kzGIbprSfZlyNNfBG8QnbzdeZRhoxDyMoyrI=; b=Z2ylrdGVVI9Z8HrOS0shzr4rn5
-	bxod6DfQL/CeL2JLtKyCqXl1Uer5aiMKHxgp1Zu849EbPC/iqFKBQ9d/qUc8JL+yVd+eH5wC5Y5/p
-	JQMJJvpem+WqgAqsfvK00bZX7ucNNa53M6vccr1L5/GcMcb2aL7PFTku5eqJUftaH2jA3vsouU8kr
-	4MruOwdCFaA6EmbgN0iSLBu7byiJxBOFgcqj1D5oSykqADLXesuF7T3+ZRqMVztmLzejJECBhphxN
-	i2N7UCjDLpn+bvL0GYH690kXeloPqxCPtYRfbvILFJa5N8hc2KncKyFOARZz8LD3k8zJOIDHHZI/X
-	dPdCuy9g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iRLj6JrrG0F7wh1oobUI/CYan208pLr3DPqRJEdo8cU=; b=aM0NOK9TQks6QQQAULs2AGAUCN
+	AtlBLLJHT4fappiBuNO8VIfP4D2UrQe35bPLAoDuXDZIWHIl++YGF4cVNoroouCcWheeCqNajIHLf
+	tkectrvdJ6kc9Sie13C4ELW2+HIdParVZTFejVz1e7/FYhpayI+YPKgFr5viPEUkWP0mmhFoKinFS
+	5/8amM2PKo0buMFMZ2WzLF5k4KlSiQcjIQaGmq5yIPHjXUhoPcHSAnTLJcLBmidgmX73MyBHm7WX1
+	XO45qQpnp+Nl2nm275UOOS+iQdCjlhxGhzCRomtQMPTZHeJuNqt91Y0MpNWcgE2A8vC7SNw+Y3ypM
+	LcQAnwqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q0MA9-001XFs-0Y;
-	Sat, 20 May 2023 12:58:21 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1q0R9f-0021CX-2E;
+	Sat, 20 May 2023 18:18:11 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q0MA6-001XEz-0Y;
-	Sat, 20 May 2023 12:58:19 +0000
+	id 1q0R9a-0021Aj-14;
+	Sat, 20 May 2023 18:18:07 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 8E2376090A;
-	Sat, 20 May 2023 12:58:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AB432C433EF;
-	Sat, 20 May 2023 12:58:12 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 58A4860AE9;
+	Sat, 20 May 2023 18:18:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 69784C433EF;
+	Sat, 20 May 2023 18:18:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1684587496;
-	bh=WzLOnS8kzGIbprSfZlyNNfBG8QnbzdeZRhoxDyMoyrI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=mf2dfG3VsMC1BsJB1sEqHWWCtB10GCwOHoOSVHXJ292fbuU5Kyca+wdtI/bOfoiON
-	 cp+Po2AmQ4XYhaSjtLDDQIQg1Xw9aWhden/JXJ0GC74U5UP6UXPxyfpelNNgsC9jau
-	 uVPMXhhnA7pObFVj9S0g1K4q+EZnM3qElYuHPlkBFWypl0qLYDLn5+Sa9l0rs8oiMa
-	 QBHCs0VqEJmsjwMxrCIz94XlG2IOfnhefks9jVjeVFqcecKtPKchPyYaZY+zU+EuCv
-	 JpM0xdCUa1h09imlYDaXrh1LpVYcPH+HPnMYVJza9/5i7VOEmoDolPhJKiejTMqPQb
-	 1itPcuuC9EjFw==
-Date: Sat, 20 May 2023 13:58:10 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Ayan Kumar Halder <ayan.kumar.halder@amd.com>
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	geert+renesas@glider.be, mazziesaccount@gmail.com,
-	conor.dooley@microchip.com, j@jannau.net, mailingradian@gmail.com,
-	me@iskren.info, lpieralisi@kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org
-Subject: Re: [PATCH] dt-bindings: arm: Add Cortex-R52 to the list of enum
-Message-ID: <20230520-apple-hamstring-2118e172cd71@spud>
-References: <20230518152730.82954-1-ayan.kumar.halder@amd.com>
+	s=k20201202; t=1684606683;
+	bh=GQOn1z5B2tWVGm7hd2wOZFOGt9QxuRpOpQ7jPqXPV94=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=dOaZy4yhtpmcmLnmDZuAFOkJVtQgJBGlc8p2XcK8UyzSkl3qvy0Cbngm1jM8HW1I+
+	 EL8hGriy29uZB9yowo8wi0Y0fBqr16CD9pB+TnO1p/8ugfnE76b10iluwzL1qfTbg9
+	 JvchCm8K1LmOwXPfFhZ5Vqsn2w0uxGOhR0Rf9WbjpR6JSl3nYsAiKDjgFxw2DQqTEL
+	 gFPEeUCxiwyntQHqXM3DsZoeR5aamoaFkU5HH+yMBKbauLJ8TUNvlbkFpsFvVEQTC4
+	 rtlvuAA0EFY7rLl12iPDYJDGm8JOWX1jMaycnXqKJrtyYJwZGOg3q8RzVE9kr4RC3q
+	 pgLHr7Quo+mkA==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Haibo Li <haibo.li@mediatek.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Alexandre Mergnat <amergnat@baylibre.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Russell King <rmk+kernel@armlinux.org.uk>,
+	Sasha Levin <sashal@kernel.org>,
+	linux@armlinux.org.uk,
+	matthias.bgg@gmail.com,
+	alexander.sverdlin@nokia.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.3 03/18] ARM: 9295/1: unwind:fix unwind abort for uleb128 case
+Date: Sat, 20 May 2023 14:17:35 -0400
+Message-Id: <20230520181750.823365-3-sashal@kernel.org>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230520181750.823365-1-sashal@kernel.org>
+References: <20230520181750.823365-1-sashal@kernel.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="CdlCP2MJ8bAkn4CQ"
-Content-Disposition: inline
-In-Reply-To: <20230518152730.82954-1-ayan.kumar.halder@amd.com>
+X-stable: review
+X-Patchwork-Hint: Ignore
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230520_055818_274226_22A8D2B2 
-X-CRM114-Status: GOOD (  11.24  )
+X-CRM114-CacheID: sfid-20230520_111806_484838_292AFBD2 
+X-CRM114-Status: GOOD (  17.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,34 +84,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Haibo Li <haibo.li@mediatek.com>
 
---CdlCP2MJ8bAkn4CQ
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+[ Upstream commit fa3eeb638de0c1a9d2d860e5b48259facdd65176 ]
 
-On Thu, May 18, 2023 at 04:27:30PM +0100, Ayan Kumar Halder wrote:
-> As a pre-requisite for porting Xen on a Cortex-R52 based System-on-chip, =
-we
-> need to add "cortex-r52" to the list of enum.
->=20
-> Signed-off-by: Ayan Kumar Halder <ayan.kumar.halder@amd.com>
+When unwind instruction is 0xb2,the subsequent instructions
+are uleb128 bytes.
+For now,it uses only the first uleb128 byte in code.
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+For vsp increments of 0x204~0x400,use one uleb128 byte like below:
+0xc06a00e4 <unwind_test_work>: 0x80b27fac
+  Compact model index: 0
+  0xb2 0x7f vsp = vsp + 1024
+  0xac      pop {r4, r5, r6, r7, r8, r14}
 
-Thanks,
-Conor.
+For vsp increments larger than 0x400,use two uleb128 bytes like below:
+0xc06a00e4 <unwind_test_work>: @0xc0cc9e0c
+  Compact model index: 1
+  0xb2 0x81 0x01 vsp = vsp + 1032
+  0xac      pop {r4, r5, r6, r7, r8, r14}
+The unwind works well since the decoded uleb128 byte is also 0x81.
 
---CdlCP2MJ8bAkn4CQ
-Content-Type: application/pgp-signature; name="signature.asc"
+For vsp increments larger than 0x600,use two uleb128 bytes like below:
+0xc06a00e4 <unwind_test_work>: @0xc0cc9e0c
+  Compact model index: 1
+  0xb2 0x81 0x02 vsp = vsp + 1544
+  0xac      pop {r4, r5, r6, r7, r8, r14}
+In this case,the decoded uleb128 result is 0x101(vsp=0x204+(0x101<<2)).
+While the uleb128 used in code is 0x81(vsp=0x204+(0x81<<2)).
+The unwind aborts at this frame since it gets incorrect vsp.
 
------BEGIN PGP SIGNATURE-----
+To fix this,add uleb128 decode to cover all the above case.
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZGjD3gAKCRB4tDGHoIJi
-0rjPAQCXFLPt8nqDKNxhLc4OHCKpGilLHIsGf9pazW0V6WETfAEAn5HPPzB8bsOn
-KnyAv7J5eKStm1VkRXJQIFGwpDAvAQQ=
-=n1vn
------END PGP SIGNATURE-----
+Signed-off-by: Haibo Li <haibo.li@mediatek.com>
+Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ arch/arm/kernel/unwind.c | 25 ++++++++++++++++++++++++-
+ 1 file changed, 24 insertions(+), 1 deletion(-)
 
---CdlCP2MJ8bAkn4CQ--
+diff --git a/arch/arm/kernel/unwind.c b/arch/arm/kernel/unwind.c
+index 53be7ea6181b3..9d2192156087b 100644
+--- a/arch/arm/kernel/unwind.c
++++ b/arch/arm/kernel/unwind.c
+@@ -308,6 +308,29 @@ static int unwind_exec_pop_subset_r0_to_r3(struct unwind_ctrl_block *ctrl,
+ 	return URC_OK;
+ }
+ 
++static unsigned long unwind_decode_uleb128(struct unwind_ctrl_block *ctrl)
++{
++	unsigned long bytes = 0;
++	unsigned long insn;
++	unsigned long result = 0;
++
++	/*
++	 * unwind_get_byte() will advance `ctrl` one instruction at a time, so
++	 * loop until we get an instruction byte where bit 7 is not set.
++	 *
++	 * Note: This decodes a maximum of 4 bytes to output 28 bits data where
++	 * max is 0xfffffff: that will cover a vsp increment of 1073742336, hence
++	 * it is sufficient for unwinding the stack.
++	 */
++	do {
++		insn = unwind_get_byte(ctrl);
++		result |= (insn & 0x7f) << (bytes * 7);
++		bytes++;
++	} while (!!(insn & 0x80) && (bytes != sizeof(result)));
++
++	return result;
++}
++
+ /*
+  * Execute the current unwind instruction.
+  */
+@@ -361,7 +384,7 @@ static int unwind_exec_insn(struct unwind_ctrl_block *ctrl)
+ 		if (ret)
+ 			goto error;
+ 	} else if (insn == 0xb2) {
+-		unsigned long uleb128 = unwind_get_byte(ctrl);
++		unsigned long uleb128 = unwind_decode_uleb128(ctrl);
+ 
+ 		ctrl->vrs[SP] += 0x204 + (uleb128 << 2);
+ 	} else {
+-- 
+2.39.2
+
 
