@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6250CC77B7F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 May 2023 18:23:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29BC6C77B7F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 20 May 2023 18:24:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Kv2TDwdew4se+pn/HBcm7ISv7/p4sqzejWU7JVx/OyI=; b=PoNJjIpYWJtmsnqOErW2EaeQi8
-	UfhSf9jeAUOxYdAC/09FY+MjpuGdZGXQhqtLIrvTC6En+6bat9ALmIWUy+faThqPwKjbBKrZ3U3r0
-	HF6TcwkOtkQE38JHD0RJ6MKvmaA+/cmBV6yagdWYwxecCY8ij1IcWVefv4LKgTEP1E7O9+5Xx9kVT
-	4r67nirs9DbxNzsMxC9botjUpLRfcKmC1ZQqNtDsTyNtU00FBE+llTwBDt8BO7UYeKI2aQjGMTxkb
-	9TgCT19qNzlbt5Tgp5vBH+b6K0usrjHqc4jR66oG6J1bmncMv6F1wNJnSp4c6gulSLlQZV7u8KZ4o
-	EeOhqy1g==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=bg1mSWVICb6RmOGm/PXS8QYKK5BDFvquz0EEO5hcMZE=; b=T6HU3nfcgsHASwJvuqSApvq1P4
+	Xf39lAJ/SWYfZQ+n0jDe1T5OvbpNHqA3SEo1Bh9AeOWT1M8kqz8mI3sMQaOm1DyFoiT46YXNq/UFb
+	t0T7MspBhU6kneEKinPQ9SgovUCPLQw47lN+x4BaLE5hEWIT3f7ab9dQzej0OQRVCiOgGiikJRtRA
+	M6ohQQCsjDaeYk1NwU/wBTkA5wh7WwicfuKdvg33qbavSwi5fQ+8VRvTHf+3qG42Zjk0RcB8k8Iyf
+	PALduuEN+N/60B8jOfX0AONvqYRtDlUirHVVwS8bU3S8lVYArBVa91aO+03pHefHN4+WortdvGUXe
+	vllIjhMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q0REn-0022Bf-2v;
-	Sat, 20 May 2023 18:23:29 +0000
+	id 1q0RFI-0022Jy-1h;
+	Sat, 20 May 2023 18:24:00 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q0REk-0022Ah-0u;
-	Sat, 20 May 2023 18:23:27 +0000
+	id 1q0RFE-0022Ir-2L;
+	Sat, 20 May 2023 18:23:58 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 66CA560A57;
-	Sat, 20 May 2023 18:23:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8DBB6C433EF;
-	Sat, 20 May 2023 18:23:23 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 1CE0360A73;
+	Sat, 20 May 2023 18:23:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5095DC433D2;
+	Sat, 20 May 2023 18:23:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1684607004;
-	bh=auaGeaBwz8L26rrzrRzAYcmZpDsNlUnPVMLvemv5yfA=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=d+PP5eaT7DJV6gHfcsMuRFeyFc+ixPNYx0FCJ+TmMNoOCvtWUS0m3VYWTLn2HgUzj
-	 dOgLgub7o63fwWmEuj424Hr6JuHH3cpe6j4ykEog9ZgDFsgWiYczYDbiFSQ78rqjtR
-	 S8DEb/H+Bt5E5UHO4mteAKmbFQyw0+D65XGvWu1ehzdAN6BV7z4LCvMJ4TsUPWNIol
-	 +aA5g+GpLu0syjfmk+NEW9P5P+oDazHp03tWptS7J1du9YQ8vVS1ui/U9lI+M1E+TH
-	 v87Ex2mEHF0jWHINo0xOMnjZKXpWQX5OvXyNDhOgn4tI3SGlQNJw5B9AZ9zadCSPB1
-	 cCraEMLLYz7ow==
+	s=k20201202; t=1684607035;
+	bh=PrAnEKQM8ba/kaH3fVF6IzMwaMifVuJ1DuyslPXnVho=;
+	h=From:To:Cc:Subject:Date:From;
+	b=KnEP1p4LUskKk24nn0usqipva9lbzdeQTocs1FWDTDqr/PDy6MRKXCng1WIuf6Fg7
+	 8zlmCxBGA8PUznB5GU3iefnyojMeQR76N3OaUuw2bqJBvpLQao1bj2cdxhXLcYu5yP
+	 MANsCGqRTHHwWDCFWoJa/zj7iZGcNhr5dVfhwp+/Cy05mtaVz/sAUSIvc751n1UqBY
+	 kfW/NCm8XAMPgLerkfY/NMBzqhETQACAd6fXp58+5ZrVCl4lpEdHyFJQbeBT8vi/5R
+	 uwPJ+EY47N+XLzypLp4RmrTKWSe+9s8nGYjvZrt5VezMR+kENiIl/ZDK2U+qxyuAYv
+	 b5Lby6EVeNtuA==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -57,19 +57,17 @@ Cc: Haibo Li <haibo.li@mediatek.com>,
 	alexander.sverdlin@nokia.com,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.10 2/8] ARM: 9295/1: unwind:fix unwind abort for uleb128 case
-Date: Sat, 20 May 2023 14:23:06 -0400
-Message-Id: <20230520182312.851751-2-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.4 1/5] ARM: 9295/1: unwind:fix unwind abort for uleb128 case
+Date: Sat, 20 May 2023 14:23:43 -0400
+Message-Id: <20230520182352.856378-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230520182312.851751-1-sashal@kernel.org>
-References: <20230520182312.851751-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230520_112326_396073_6F28C354 
-X-CRM114-Status: GOOD (  17.65  )
+X-CRM114-CacheID: sfid-20230520_112356_840103_65A4E78D 
+X-CRM114-Status: GOOD (  17.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,7 +125,7 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 24 insertions(+), 1 deletion(-)
 
 diff --git a/arch/arm/kernel/unwind.c b/arch/arm/kernel/unwind.c
-index d2bd0df2318d6..7e90f17a0676c 100644
+index 4574e6aea0a52..f321c2aa94e1c 100644
 --- a/arch/arm/kernel/unwind.c
 +++ b/arch/arm/kernel/unwind.c
 @@ -300,6 +300,29 @@ static int unwind_exec_pop_subset_r0_to_r3(struct unwind_ctrl_block *ctrl,
