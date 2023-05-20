@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5173C77B7F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 May 2023 18:22:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6250CC77B7F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 20 May 2023 18:23:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UCwRMNXd3eAZOJ6QuygLkAXr813I90GWii5f/7Lv0p8=; b=sSWNiSOlsSdml3BqwxjPfBNKzl
-	fnZS9oaHu800Z3mRwe5HMX4px/WdknMSuzrecATl2Iza228MnO99sGzCQQTKGpm08le9brkbkVwn7
-	p4Kay8y4u/G9vwUn6hz0pnxqMi2bou190RFU6PBlp+yiCZMOM9OEnT9kCAUipJAVYJiJSHI6VwEVY
-	pwUQkhW+i82MbXka+Mvmevi/cXDfHyGVNM6OHyBdgpRitF83nfgk+HEbKnVwsebIEt+gXgsrPt2yC
-	UaW3ABr6sFxRJEcGAZX8eQV07Bt9jxG7XlxNZuMGkZjYukbrIfRMUpRtGgJqS7tQ3aJcZpweQUzlU
-	mUedwM0g==;
+	bh=Kv2TDwdew4se+pn/HBcm7ISv7/p4sqzejWU7JVx/OyI=; b=PoNJjIpYWJtmsnqOErW2EaeQi8
+	UfhSf9jeAUOxYdAC/09FY+MjpuGdZGXQhqtLIrvTC6En+6bat9ALmIWUy+faThqPwKjbBKrZ3U3r0
+	HF6TcwkOtkQE38JHD0RJ6MKvmaA+/cmBV6yagdWYwxecCY8ij1IcWVefv4LKgTEP1E7O9+5Xx9kVT
+	4r67nirs9DbxNzsMxC9botjUpLRfcKmC1ZQqNtDsTyNtU00FBE+llTwBDt8BO7UYeKI2aQjGMTxkb
+	9TgCT19qNzlbt5Tgp5vBH+b6K0usrjHqc4jR66oG6J1bmncMv6F1wNJnSp4c6gulSLlQZV7u8KZ4o
+	EeOhqy1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q0RDw-002202-0y;
-	Sat, 20 May 2023 18:22:36 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1q0REn-0022Bf-2v;
+	Sat, 20 May 2023 18:23:29 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q0RDs-0021z0-1K;
-	Sat, 20 May 2023 18:22:33 +0000
+	id 1q0REk-0022Ah-0u;
+	Sat, 20 May 2023 18:23:27 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id EB9F560AFD;
-	Sat, 20 May 2023 18:22:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1519EC433D2;
-	Sat, 20 May 2023 18:22:29 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 66CA560A57;
+	Sat, 20 May 2023 18:23:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8DBB6C433EF;
+	Sat, 20 May 2023 18:23:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1684606951;
-	bh=bRDni/zWdUzDGj/JVwPACBzWrhUBgqmYDHZ5B7T2lHw=;
+	s=k20201202; t=1684607004;
+	bh=auaGeaBwz8L26rrzrRzAYcmZpDsNlUnPVMLvemv5yfA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=iqc1QBz5wwzS+GklRUihxvPuF4bvCedsZKiem225u+59mVMpSInHJ7XMYfaFQ7/y+
-	 hSUBdjagQmMTxX0hEFz0C50kWlWlQQDq5nWtT/IOAHyLLOf7sBSphGhST4Kx2/Juk0
-	 9oHWEg5wxwjxsLeeV/DetdlfGwtHW6ZxewRKYXTRctsQPHxxNP14ZxXHS1MI3RMDFd
-	 7hzaqWKTzqjlZuV0BrENXkXFayaU7wdCIGy4Rob3eHrKMu4b0h9OekipICghQ1mp/V
-	 aphkOF3WKjkUhH0ImcUnkgyQkmqjK2OrgKm3DPx2SpRBjeOqM8AUKq7rX7bB4ce+Id
-	 DUlVzFlWCmUVw==
+	b=d+PP5eaT7DJV6gHfcsMuRFeyFc+ixPNYx0FCJ+TmMNoOCvtWUS0m3VYWTLn2HgUzj
+	 dOgLgub7o63fwWmEuj424Hr6JuHH3cpe6j4ykEog9ZgDFsgWiYczYDbiFSQ78rqjtR
+	 S8DEb/H+Bt5E5UHO4mteAKmbFQyw0+D65XGvWu1ehzdAN6BV7z4LCvMJ4TsUPWNIol
+	 +aA5g+GpLu0syjfmk+NEW9P5P+oDazHp03tWptS7J1du9YQ8vVS1ui/U9lI+M1E+TH
+	 v87Ex2mEHF0jWHINo0xOMnjZKXpWQX5OvXyNDhOgn4tI3SGlQNJw5B9AZ9zadCSPB1
+	 cCraEMLLYz7ow==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -57,18 +57,18 @@ Cc: Haibo Li <haibo.li@mediatek.com>,
 	alexander.sverdlin@nokia.com,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.15 03/11] ARM: 9295/1: unwind:fix unwind abort for uleb128 case
-Date: Sat, 20 May 2023 14:22:06 -0400
-Message-Id: <20230520182215.845131-3-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.10 2/8] ARM: 9295/1: unwind:fix unwind abort for uleb128 case
+Date: Sat, 20 May 2023 14:23:06 -0400
+Message-Id: <20230520182312.851751-2-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230520182215.845131-1-sashal@kernel.org>
-References: <20230520182215.845131-1-sashal@kernel.org>
+In-Reply-To: <20230520182312.851751-1-sashal@kernel.org>
+References: <20230520182312.851751-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230520_112232_531793_F4703DF0 
+X-CRM114-CacheID: sfid-20230520_112326_396073_6F28C354 
 X-CRM114-Status: GOOD (  17.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -127,10 +127,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 24 insertions(+), 1 deletion(-)
 
 diff --git a/arch/arm/kernel/unwind.c b/arch/arm/kernel/unwind.c
-index 59fdf257bf8be..d91ed8e4310c2 100644
+index d2bd0df2318d6..7e90f17a0676c 100644
 --- a/arch/arm/kernel/unwind.c
 +++ b/arch/arm/kernel/unwind.c
-@@ -301,6 +301,29 @@ static int unwind_exec_pop_subset_r0_to_r3(struct unwind_ctrl_block *ctrl,
+@@ -300,6 +300,29 @@ static int unwind_exec_pop_subset_r0_to_r3(struct unwind_ctrl_block *ctrl,
  	return URC_OK;
  }
  
@@ -160,7 +160,7 @@ index 59fdf257bf8be..d91ed8e4310c2 100644
  /*
   * Execute the current unwind instruction.
   */
-@@ -354,7 +377,7 @@ static int unwind_exec_insn(struct unwind_ctrl_block *ctrl)
+@@ -353,7 +376,7 @@ static int unwind_exec_insn(struct unwind_ctrl_block *ctrl)
  		if (ret)
  			goto error;
  	} else if (insn == 0xb2) {
