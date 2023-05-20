@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77E1AC77B7F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 May 2023 18:21:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5173C77B7F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 20 May 2023 18:22:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BVQKS9TJEoCa6XKEGePNmrS2VkM+9J9x6tKc40M3ecg=; b=aOxDVirjGEUcziJcLLqvS46ocX
-	RJju14RJcMZ/r3rR7XacsOEhjbw9mOzXLmm+ExQOtFZkqBKGYi0ZsQE6H5/lkKWtmEDAPYz5LMl58
-	nGbefPhB20syGLJ7/59K9b1z50cxaSb1/+MHbTx8CS+LNgr/2GeQFRDVaQ5aiOIE3HSnN+G71cW8w
-	1CgcPUXYR0w2q5H+aCppGEvt2M06XKMQxf0pEFQFt5xxgb1qEX7alW2w/xYvYzPoSpEcyhx1VHIdn
-	HuY/5dpYGDmKW8Z0NUmvXWC5WTnmh9idVHJDuUFzLcJ9G/5xqOajs1wjL/BwZDOwbLQsF+h6Ajjy8
-	8NKMjZ0Q==;
+	bh=UCwRMNXd3eAZOJ6QuygLkAXr813I90GWii5f/7Lv0p8=; b=sSWNiSOlsSdml3BqwxjPfBNKzl
+	fnZS9oaHu800Z3mRwe5HMX4px/WdknMSuzrecATl2Iza228MnO99sGzCQQTKGpm08le9brkbkVwn7
+	p4Kay8y4u/G9vwUn6hz0pnxqMi2bou190RFU6PBlp+yiCZMOM9OEnT9kCAUipJAVYJiJSHI6VwEVY
+	pwUQkhW+i82MbXka+Mvmevi/cXDfHyGVNM6OHyBdgpRitF83nfgk+HEbKnVwsebIEt+gXgsrPt2yC
+	UaW3ABr6sFxRJEcGAZX8eQV07Bt9jxG7XlxNZuMGkZjYukbrIfRMUpRtGgJqS7tQ3aJcZpweQUzlU
+	mUedwM0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q0RCb-0021eW-08;
-	Sat, 20 May 2023 18:21:13 +0000
+	id 1q0RDw-002202-0y;
+	Sat, 20 May 2023 18:22:36 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q0RCX-0021dj-20;
-	Sat, 20 May 2023 18:21:11 +0000
+	id 1q0RDs-0021z0-1K;
+	Sat, 20 May 2023 18:22:33 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 0C58B60B51;
-	Sat, 20 May 2023 18:21:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 183B9C433D2;
-	Sat, 20 May 2023 18:21:07 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id EB9F560AFD;
+	Sat, 20 May 2023 18:22:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1519EC433D2;
+	Sat, 20 May 2023 18:22:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1684606868;
-	bh=+wj/oMrcHpzqd2DfJKmgymGErx0RFUsGqUTYuA7aRK8=;
+	s=k20201202; t=1684606951;
+	bh=bRDni/zWdUzDGj/JVwPACBzWrhUBgqmYDHZ5B7T2lHw=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=E9tRUdzte4aXZFV8GZcNYXFhAf4XlZl4QQOi7aE284eSQwaBQxw3pR3Sa3QJbLJeK
-	 WMvr3xK6Z/DSsKCQGLd1BoELl0kPAocJkk931x7ZQfOjG83mK4ngar4zKJLHNWrFTJ
-	 IY3wo9lP8zFAkWwQG08wpWNcOe6kX+yjsiwyEah1buboGUECpZcFYWS8CxCBSKES8U
-	 gRyde0Q4EnopvpHS2TRAK2Nb2xAoRocUOtSKCSYFE77Ucfccipaf9lhTsd3xgNOkPP
-	 BxAWsrarYVWMOGjQhlIQ3K4U5MHhZfqUrniPlIr3CoCX/wAoRrORJ7wS9am+6BqLIH
-	 Tr+tAKv9t6Bbg==
+	b=iqc1QBz5wwzS+GklRUihxvPuF4bvCedsZKiem225u+59mVMpSInHJ7XMYfaFQ7/y+
+	 hSUBdjagQmMTxX0hEFz0C50kWlWlQQDq5nWtT/IOAHyLLOf7sBSphGhST4Kx2/Juk0
+	 9oHWEg5wxwjxsLeeV/DetdlfGwtHW6ZxewRKYXTRctsQPHxxNP14ZxXHS1MI3RMDFd
+	 7hzaqWKTzqjlZuV0BrENXkXFayaU7wdCIGy4Rob3eHrKMu4b0h9OekipICghQ1mp/V
+	 aphkOF3WKjkUhH0ImcUnkgyQkmqjK2OrgKm3DPx2SpRBjeOqM8AUKq7rX7bB4ce+Id
+	 DUlVzFlWCmUVw==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -57,18 +57,18 @@ Cc: Haibo Li <haibo.li@mediatek.com>,
 	alexander.sverdlin@nokia.com,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.1 03/14] ARM: 9295/1: unwind:fix unwind abort for uleb128 case
-Date: Sat, 20 May 2023 14:20:31 -0400
-Message-Id: <20230520182044.836702-3-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.15 03/11] ARM: 9295/1: unwind:fix unwind abort for uleb128 case
+Date: Sat, 20 May 2023 14:22:06 -0400
+Message-Id: <20230520182215.845131-3-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230520182044.836702-1-sashal@kernel.org>
-References: <20230520182044.836702-1-sashal@kernel.org>
+In-Reply-To: <20230520182215.845131-1-sashal@kernel.org>
+References: <20230520182215.845131-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230520_112109_743615_D85091C7 
+X-CRM114-CacheID: sfid-20230520_112232_531793_F4703DF0 
 X-CRM114-Status: GOOD (  17.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -127,10 +127,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 24 insertions(+), 1 deletion(-)
 
 diff --git a/arch/arm/kernel/unwind.c b/arch/arm/kernel/unwind.c
-index a37ea6c772cd5..2e6aa5dc15bf3 100644
+index 59fdf257bf8be..d91ed8e4310c2 100644
 --- a/arch/arm/kernel/unwind.c
 +++ b/arch/arm/kernel/unwind.c
-@@ -307,6 +307,29 @@ static int unwind_exec_pop_subset_r0_to_r3(struct unwind_ctrl_block *ctrl,
+@@ -301,6 +301,29 @@ static int unwind_exec_pop_subset_r0_to_r3(struct unwind_ctrl_block *ctrl,
  	return URC_OK;
  }
  
@@ -160,7 +160,7 @@ index a37ea6c772cd5..2e6aa5dc15bf3 100644
  /*
   * Execute the current unwind instruction.
   */
-@@ -360,7 +383,7 @@ static int unwind_exec_insn(struct unwind_ctrl_block *ctrl)
+@@ -354,7 +377,7 @@ static int unwind_exec_insn(struct unwind_ctrl_block *ctrl)
  		if (ret)
  			goto error;
  	} else if (insn == 0xb2) {
