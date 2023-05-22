@@ -4,92 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A762C77B73
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 May 2023 08:53:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DBBAC77B75
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 May 2023 09:30:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=r4JxhaVexhQpy8daiRNDw+XTd4Z91THI1tcDfW2c6HE=; b=VpzcBrTd6JvrT4MOq97I/Ti//o
-	cm8NMOVD8fZDcCsX5VxKEgXwTsiwvD8uwdh6vz2KjL4x3fiHB3JMYVg7woSKPzO+mRcSCDwlVGnCG
-	KwtQ7C5L2K+hUW98YHF5luIzyZnhl8lWemiVbcvfnMMHmPt3NK/30JVeWp+chXru2Q3w3S//5p6Pg
-	RRbX65GUn+D3Y62xL46RlP45BPlwXdKvS5W8MuM27uJ8ztfqxg9LyPTWA6TDkJ2GKVXZJDINPaCPw
-	uB81fIjfiLimYzXKHOWxPZ4fnJ1QJbmJWHNrH6fPB5rUwJdw3A2Cp8tIDnUPXgX66trcMU8yMfIu+
-	QxUIUMDA==;
+	bh=3WQ6namd9ygJsFDnS056ahq44Mqr30BQNiwvwn0IYyg=; b=MIjdZs5HtuouHxqsQBDswlBwoU
+	XqeXZaYx6osY0LNapB2ZR26GT8P4U+N5MfgA5rn3yDy9z7Fh8GmkV9uQXM9lWTUeQis4h30bTaPV4
+	UYrBY6Q53/GDqSfg5zw76pVktSjOZdZjmjjfvSOrSOFZKJnIgBio//ZTvNwh+e6KwbmGlMEsrewu+
+	2Yu+e2/ODYZGt2tk81rf7mbGFRURXj6UA2pchEIvXPD2q/6K4BUQ6MpeqiX7V3qjXl5p8JY0yqcZ7
+	ozjXUuSPq+feZ5/kd7aZV7lNiYug8KBQGukDEKJn+cCW6XaN5FoqKM/IR+n1jvHWMA0ATZD/jQWf6
+	UR6pOcrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q11I4-005nsu-2X;
-	Mon, 22 May 2023 08:53:16 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1q11rt-005sXR-1Y;
+	Mon, 22 May 2023 09:30:17 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q11Hz-005nqq-2q
-	for linux-mediatek@lists.infradead.org;
-	Mon, 22 May 2023 08:53:14 +0000
-Received: by mail-wm1-x342.google.com with SMTP id 5b1f17b1804b1-3f41dceb9d1so56942145e9.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 22 May 2023 01:53:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1684745588; x=1687337588;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=r4JxhaVexhQpy8daiRNDw+XTd4Z91THI1tcDfW2c6HE=;
-        b=hGYIQsrsHnFEjQuK41XgS3jgFHGmSkmDmGtZqfqKbMqaw1+roK7luzJGgf6MkEI2zf
-         LqSzON1Zmed3SV4ToTWAPBXTyvtUhV9/8BCRoPKLguRVN5e4YBErEdR6/iXkgr3w9zE5
-         W4aKjz3F4KTe2c3j6kFwE4TdtneueV0LY7ZEt0yjmGJmTeBgneLZHGLd9Y5ags2ZDhae
-         Q0TT+80cDnDkrcVtC6mKi1S3g1p/XIxKWym0HyRrbbgeMEikjwyJ03sHhQcufI7aiV4Q
-         NEDGLQcwWgPgAjXuMgjJUDQE1/rby2Z3aJWEmCe4axLQbKwyT3jCR2BgkZU+gClV7wO/
-         ACMg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684745588; x=1687337588;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=r4JxhaVexhQpy8daiRNDw+XTd4Z91THI1tcDfW2c6HE=;
-        b=kAwvExHCKYKUvo06w3KXbeRsIRUONTsoqqvXzMbJpGs+EFraabjf2AzrFrpwD3xbyt
-         Cge9fyAXRWhIaRY57woIZBoBJ7twHIMlX2adFM5ny7XkRLLYl6l+np4IStnQ2FDsfDIk
-         vEqK96vR2CRD9cnATwQ1TdRDJ8ijTZOswj7L33MSsG7PbYsnkrsNMQRVyjgEjXCBtkqo
-         WrEfqn/xNqSA/f57cNiDPQQscpyDXTdAAbvxxPkKgxveW3K4yxNOdbq/naUPJj27ulu0
-         8nAya+hsvzkE3/UJNsHmRa5Bx+qm23JATyWNkXoJTpKES91lMq5UUK8jjQybdFkDF2BF
-         tUfw==
-X-Gm-Message-State: AC+VfDzuOouUQUE1yu96ahtTvMDThmCSei382VKabpV1dQolgAg6aRK5
-	2Wx4tiAy18+UE8S3c1lk6Uo3vg==
-X-Google-Smtp-Source: ACHHUZ6UBR3+LBI+m8V1SPTaOnzgCK0atCcXfHxkCN2098SLTc/lFSwqy+8q2uw7iLTos5PH9rKVCw==
-X-Received: by 2002:a7b:c414:0:b0:3f4:2610:5cc7 with SMTP id k20-20020a7bc414000000b003f426105cc7mr6538472wmi.9.1684745588453;
-        Mon, 22 May 2023 01:53:08 -0700 (PDT)
-Received: from [10.1.4.6] (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
-        by smtp.gmail.com with ESMTPSA id p4-20020a05600c358400b003f1738d0d13sm24745899wmq.1.2023.05.22.01.53.07
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 22 May 2023 01:53:08 -0700 (PDT)
-Message-ID: <116712ae-f18b-3288-ac6d-80073aebd458@baylibre.com>
-Date: Mon, 22 May 2023 10:53:06 +0200
+	id 1q11rp-005sUp-1M;
+	Mon, 22 May 2023 09:30:14 +0000
+Received: from IcarusMOD.eternityproject.eu (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id F32196606D84;
+	Mon, 22 May 2023 10:30:09 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1684747810;
+	bh=b/HUQkVvh1ObQj0af7V3E7UOobAnX8Hp2s1B+6cZnCs=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=mWPLKhLnT8ZRtNCYMsRSGKpXXd4FG9CWuKO5XD4ito0twnfgpufEcC+bmlyIjuTvJ
+	 i2PDB4j54Y9YxKu6ksvKq8jd4Oa1MzgbEWIlcQV7g1rPBCWOeVmAev36Do3g6VAidb
+	 h0dX0d7sI2kN2i1vetcw0nvQ7+0WoJJKGc63RgRIZn7iKhImONyj4rdH0TIItekmYp
+	 nW4B4fvTST8l6tIrtP+ypCG7ba0BpEQIWry4NC8EhSh5ojUKgu8eGAN6jSkCXVjvDL
+	 g450f4/s7Tdsust1LrkuEvI0fz/qe2pL3/G4zG7EzCMdxixRtm0RarMn3UWk3GCbd6
+	 zQkYa2JvytBQw==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: matthias.bgg@gmail.com
+Cc: robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org,
+	weiyi.lu@mediatek.com,
+	ikjn@chromium.org,
+	chun-jie.chen@mediatek.com,
+	tinghan.shen@mediatek.com,
+	seiya.wang@mediatek.com,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	kernel@collabora.com,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 2/2] arm64: dts: mediatek: mt8195: Make sure MSDCPLL's rate is 400MHz
+Date: Mon, 22 May 2023 11:30:02 +0200
+Message-Id: <20230522093002.75137-3-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20230522093002.75137-1-angelogioacchino.delregno@collabora.com>
+References: <20230522093002.75137-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH 7/7] dt-bindings: Add bidings for mtk,apu-drm
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- airlied@gmail.com, daniel@ffwll.ch, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, tzimmermann@suse.de
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- conor+dt@kernel.org, matthias.bgg@gmail.com, sumit.semwal@linaro.org,
- christian.koenig@amd.com, jstephan@baylibre.com,
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
- linaro-mm-sig@lists.linaro.org, khilman@baylibre.com, nbelin@baylibre.com,
- bero@baylibre.com
-References: <20230517145237.295461-1-abailon@baylibre.com>
- <20230517145237.295461-8-abailon@baylibre.com>
- <c32f0c3f-b43a-7045-38cc-2c11c7bb571e@collabora.com>
-Content-Language: en-US
-From: Alexandre Bailon <abailon@baylibre.com>
-In-Reply-To: <c32f0c3f-b43a-7045-38cc-2c11c7bb571e@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230522_015311_918853_015741B4 
-X-CRM114-Status: GOOD (  14.50  )
+X-CRM114-CacheID: sfid-20230522_023013_611343_3865D4E2 
+X-CRM114-Status: GOOD (  10.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,54 +84,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Some bootloaders will set MSDCPLL's rate lower than 400MHz: what I have
+seen is this clock being set at around 384MHz.
+This is a performance concern (and possibly a stability one, for picky
+eMMC/SD cards) as the MSDC controller's internal divier will choose a
+frequency that is lower than expected, in the end causing a difference
+in the expected mmc/sd device's timings.
 
+Make sure that the MSDCPLL frequency is always set to 400MHz to both
+improve performance and reliability of the sd/mmc storage.
 
-On 5/17/23 17:04, AngeloGioacchino Del Regno wrote:
-> Il 17/05/23 16:52, Alexandre Bailon ha scritto:
->> This adds the device tree bindings for the APU DRM driver.
->>
->> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
->> Reviewed-by: Julien Stephan <jstephan@baylibre.com>
->> ---
->>   .../devicetree/bindings/gpu/mtk,apu-drm.yaml  | 38 +++++++++++++++++++
-> 
-> mediatek,mt(model)-apu.yaml
-> 
->>   1 file changed, 38 insertions(+)
->>   create mode 100644 
->> Documentation/devicetree/bindings/gpu/mtk,apu-drm.yaml
->>
->> diff --git a/Documentation/devicetree/bindings/gpu/mtk,apu-drm.yaml 
->> b/Documentation/devicetree/bindings/gpu/mtk,apu-drm.yaml
->> new file mode 100644
->> index 000000000000..6f432d3ea478
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/gpu/mtk,apu-drm.yaml
->> @@ -0,0 +1,38 @@
->> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
->> +%YAML 1.2
->> +---
->> +$id: http://devicetree.org/schemas/gpu/mediatek,apu-drm.yaml#
->> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->> +
->> +title: AI Processor Unit DRM
->> +
->> +properties:
->> +  compatible:
->> +    const: mediatek,apu-drm
-> 
-> const: mediatek,mt8195-apu (or whatever else).
-> 
-> ...besides, I don't think that this patch even belongs to this series? :-)
-> Spoiler alert! :-)
-Actually, it does!
-I forgot to send the patch that adds the platform driver ^^'
+Fixes: 37f2582883be ("arm64: dts: Add mediatek SoC mt8195 and evaluation board")
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Thanks,
-Alexandre
-> 
-> Cheers,
-> Angelo
-> 
-> 
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index a44aae4ab953..daac8e050ce7 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -852,6 +852,8 @@ apmixedsys: syscon@1000c000 {
+ 			compatible = "mediatek,mt8195-apmixedsys", "syscon";
+ 			reg = <0 0x1000c000 0 0x1000>;
+ 			#clock-cells = <1>;
++			assigned-clocks = <&apmixedsys CLK_APMIXED_MSDCPLL>;
++			assigned-clock-rates = <400000000>;
+ 		};
+ 
+ 		systimer: timer@10017000 {
+-- 
+2.40.1
+
 
