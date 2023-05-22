@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88471C77B75
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 May 2023 12:17:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 037DFC77B73
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 May 2023 12:17:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NC6YZzrcByzpZ4gpaBCW+or5QHPTH2iNbvDVQvL05bo=; b=MCVAfucfibT22L
-	1A/eTS2AsfondAHroMUAbXFIIeHt4UXxSpIzRaENDt5bTA3pfTzi5IM3R0AQHh73RedcdK/KWBM0h
-	3tm7qwRLqx3P1HdeAq+tFfv0WvrLL1tDQjoBI3or0uWAijgkb55F+nufu9184eHgOx+GbcC9RS2g+
-	0YO8sNZ/bhQD/FZPCMaX8uAjxALmqPTwuqINZjX8vknMW0gW0xIqHNkw72mQeaLfsaO0Dc/wYqVoV
-	v1sVldkI7Qa3na/gCwcYm4OTLwDOFlrHj4U1Cxx/u5JtFe613grTJBgfcsBUN5hVkcWunAWCGY6FE
-	NR1A3/P0jmXHl7wUCXbg==;
+	List-Owner; bh=BlebeOxwlkH4BlrTKG+sqIzxXmw3yFvwUw1o/jS7CVE=; b=Vr4L+NxomKDScD
+	nPfHC0hORWnfbifcWx6MBJtm+5DxSF7iLY2YaapdmW/bKPYuBSLbMN5+INanCWdzDqqHMZdOkUVWM
+	33hynpSnKiWnzNA5T56zbzzAZUoQmTHn/uPDMtMVIg0pgyaUDkBjiQUAO2Pg9wDM5O9Ic/UPsty6b
+	z14ikJm+pY6CrGpF/AzKRu+xcE+DgFnQByDwDZzNZbHXIZPX7WT9Cgt6gIU6UAk4Ks6t+/UHSAblJ
+	K6kDsdq4hS3Qen22+rQkdt78rTlt9q8pofGSDkDI55uIdjhF2yLhVRbXDL+nWe4kyblNB27Oe45mG
+	xRynUb4budCh3LvWMA3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q14TF-006PgC-1P;
-	Mon, 22 May 2023 12:17:01 +0000
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+	id 1q14TI-006PjO-03;
+	Mon, 22 May 2023 12:17:04 +0000
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q14Sa-006PCG-1P;
-	Mon, 22 May 2023 12:16:22 +0000
-Received: by mail-ej1-x631.google.com with SMTP id a640c23a62f3a-96f8d485ef3so368752166b.0;
-        Mon, 22 May 2023 05:16:20 -0700 (PDT)
+	id 1q14Ss-006POM-1E;
+	Mon, 22 May 2023 12:16:39 +0000
+Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-94a342f7c4cso1138218966b.0;
+        Mon, 22 May 2023 05:16:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1684757779; x=1687349779;
+        d=gmail.com; s=20221208; t=1684757797; x=1687349797;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=NC6YZzrcByzpZ4gpaBCW+or5QHPTH2iNbvDVQvL05bo=;
-        b=BW308YhYirBYDaC16QvJwMVBaZVb/Eh3rg9CYru+1WEZNs4BIiJSzw8PCSJWjfkg2A
-         RzY5h0RMsWNZpHnhyw7yoapWpoMm4yjeeF6csc2geWmOvm5pb3Wym6FE920iKPgna8vk
-         RYgN64SDBgEgAjvvwDeFBkSB/SEh9WV6tQjmZ8UVufeYwtXBny6icdn1v/oxHfMx1by0
-         l8t+Ldq8MPTu6X6uXC6kGJElv6FKXQxKdIXrdd88IeIsaLko/gaLQOpuY5DJGkhKf3K0
-         DPt98XD5Dg7rmwlhy/2wvR4ZK2prgN5g2gRu9A/m/jW2muibrOmLrO3fGa61BHPdS1Py
-         Q9rw==
+        bh=BlebeOxwlkH4BlrTKG+sqIzxXmw3yFvwUw1o/jS7CVE=;
+        b=CCUVOMg5NOmJkyahPTiVIE7b2Qz5Vgq/LKhxpQjav2u0Up8mDWWHYHm+0NgSpreCKY
+         oioifpMAJWedSMwhbyN8jDY9pwgCJGnH7bd4Ygk8b7B9sVPqQtgkc2FCCPFUCBU57ary
+         +4BzYdNeuugT1YdEpqBzFbrDvneFS0r+8lPnrweiTEtRITKC7oaLW6cyJ/kwD4d0HzgC
+         bNmunD2PsgSccaF0Cl/J7t2B/8ePdkcZBMlRny2V4h2pjYpcAcI8C1aS3NKrJyG5TC9q
+         oHAY46EJDa1qCxinrv+tmOSQv/ZrDGNbbRiVZERTjnAeTwNIDVNjrh2Adwcn4nkeV6Lw
+         DZyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684757779; x=1687349779;
+        d=1e100.net; s=20221208; t=1684757797; x=1687349797;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=NC6YZzrcByzpZ4gpaBCW+or5QHPTH2iNbvDVQvL05bo=;
-        b=ZQc82IyLmwWmG8wy4ZF8qSoFxvPK+tRirahne7fjyuOgddM+y/xX26fvm4RdrM36cZ
-         jxPQ3ltcy950AqYVGndCJpb+6ahdnPC19v5JeoSeAfAgOp37R8Kn+aDw0wvkNSFXvIPn
-         0hnQlr8l2gLRY60jB2uLV3MgIx9fZTN/n0najKrfOsH5YxZPI+fbJWzxPiIgBQjS/9Oh
-         JRMCK+SEe0BxjY0gPozbgARsjZUDyFe3IDY1FxzsR/X1+AqEmYT77k9vav3dsqPZ2l+J
-         FWRwOwbN+L0kzwGGrl+PQPiDX59VIxJOOJnLPtwJVnGPzoeVI2jP8B/ZxO+jzNlJX7MD
-         iDMQ==
-X-Gm-Message-State: AC+VfDwekgFnaelRanu1pUyQGLrN14+uVBoKIDIecmbm9b29sYKTk2ER
-	Kgpn/fo8JfmgI+OR81rCkBY=
-X-Google-Smtp-Source: ACHHUZ5k3AfrQJAGbfRfJccF74zmMk6YsAOSCi93F4q7/JnywGs055W/an73T9NM4PVrrElWAPfrbg==
-X-Received: by 2002:a17:907:9490:b0:94f:61f5:9ef7 with SMTP id dm16-20020a170907949000b0094f61f59ef7mr9594223ejc.44.1684757779023;
-        Mon, 22 May 2023 05:16:19 -0700 (PDT)
+        bh=BlebeOxwlkH4BlrTKG+sqIzxXmw3yFvwUw1o/jS7CVE=;
+        b=USJoHPC6oDc4AQkBwOwNsoDOTh+VsM3yhxWweucR/xlF4PrfA3zSJb7fpSVrJh/Typ
+         HQ6tWoFfIzHeoTOKWSSw9MXzhy7ThSKOf1GEENfIvD3Bnliy95df18YaqRfTu5a17sgt
+         5YT6JKP3jEpQ2ux9XJeLV0Q0Mp8Fa6vNhwVtTBM74sSWNE95UD1x26Gw1r223ccg+7ne
+         uQ4I3cjjBosK8mAU0GigrhgjdhOxNrOQSsHOc9IusdZ+0ThSRhG/t3HHO9kGwKa+/vfZ
+         r+9gZCHERROdwEyWid5L8Q1IZAoJkE8EdwY69xQTUxpTV7GcnMoQJHpQXJON6x2Yr33P
+         VFWg==
+X-Gm-Message-State: AC+VfDzexbx9/hfIqvewbldcJlDtppqycfLX2onXAf2MN5CsNLmbEP2X
+	VOjxHpqBAMWPVgCiLuIB2t8=
+X-Google-Smtp-Source: ACHHUZ5tp5FjFfcmtJpb7cAxVY5NVD2PSNFXgo6ZrgwEF5wMZEr1HL6G4oZxYD/wtw9KZaLVPfXp5g==
+X-Received: by 2002:a17:907:7da7:b0:94e:fa56:a74f with SMTP id oz39-20020a1709077da700b0094efa56a74fmr10398638ejc.14.1684757796855;
+        Mon, 22 May 2023 05:16:36 -0700 (PDT)
 Received: from arinc9-PC.. ([149.91.1.15])
-        by smtp.gmail.com with ESMTPSA id y26-20020a17090614da00b009659fed3612sm2999950ejc.24.2023.05.22.05.16.16
+        by smtp.gmail.com with ESMTPSA id y26-20020a17090614da00b009659fed3612sm2999950ejc.24.2023.05.22.05.16.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 22 May 2023 05:16:18 -0700 (PDT)
+        Mon, 22 May 2023 05:16:36 -0700 (PDT)
 From: arinc9.unal@gmail.com
 X-Google-Original-From: arinc.unal@arinc9.com
 To: Sean Wang <sean.wang@mediatek.com>,
@@ -77,9 +77,9 @@ To: Sean Wang <sean.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Russell King <linux@armlinux.org.uk>
-Subject: [PATCH net-next 11/30] net: dsa: mt7530: remove pad_setup function pointer
-Date: Mon, 22 May 2023 15:15:13 +0300
-Message-Id: <20230522121532.86610-12-arinc.unal@arinc9.com>
+Subject: [PATCH net-next 17/30] net: dsa: mt7530: fix port capabilities for MT7988
+Date: Mon, 22 May 2023 15:15:19 +0300
+Message-Id: <20230522121532.86610-18-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230522121532.86610-1-arinc.unal@arinc9.com>
 References: <20230522121532.86610-1-arinc.unal@arinc9.com>
@@ -87,8 +87,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230522_051620_478588_29908B3A 
-X-CRM114-Status: GOOD (  17.14  )
+X-CRM114-CacheID: sfid-20230522_051638_422765_20C13CB0 
+X-CRM114-Status: GOOD (  12.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,147 +106,37 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-The pad_setup function pointer was introduced with 88bdef8be9f6 ("net: dsa:
-mt7530: Extend device data ready for adding a new hardware"). It was being
-used to set up the core clock and port 6 of the MT7530 switch, and pll of
-the MT7531 switch.
+On the switch on the MT7988 SoC, there are only 4 PHYs. That's port 0 to 3.
+Set the internal phy cases to '0 ... 3'.
 
-All of these were moved to more appropriate locations, and it was never
-used for the switch on the MT7988 SoC. Therefore, this function pointer
-hasn't got a use anymore. Remove it.
+There's no need to clear the config->supported_interfaces bitmap before
+reporting the supported interfaces as all bits in the bitmap will already
+be initialized to zero when the phylink_config structure is allocated.
+There's no code that would change the bitmap beforehand. Remove it.
 
-Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Fixes: 110c18bfed41 ("net: dsa: mt7530: introduce driver for MT7988 built-in switch")
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 Acked-by: Daniel Golle <daniel@makrotopia.org>
 ---
- drivers/net/dsa/mt7530.c | 36 ++----------------------------------
- drivers/net/dsa/mt7530.h |  3 ---
- 2 files changed, 2 insertions(+), 37 deletions(-)
+ drivers/net/dsa/mt7530.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 0b0ed1bd2afa..049f7be0d790 100644
+index 514e82299537..f017cc028183 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -473,18 +473,6 @@ mt7530_setup_port6(struct dsa_switch *ds, phy_interface_t interface)
- 	return 0;
- }
- 
--static int
--mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
--{
--	return 0;
--}
--
--static int
--mt7531_pad_setup(struct dsa_switch *ds, phy_interface_t interface)
--{
--	return 0;
--}
--
- static void
- mt7531_pll_setup(struct mt7530_priv *priv)
+@@ -2533,10 +2533,8 @@ static void mt7531_mac_port_get_caps(struct dsa_switch *ds, int port,
+ static void mt7988_mac_port_get_caps(struct dsa_switch *ds, int port,
+ 				     struct phylink_config *config)
  {
-@@ -2564,14 +2552,6 @@ static void mt7988_mac_port_get_caps(struct dsa_switch *ds, int port,
- 	}
- }
- 
--static int
--mt753x_pad_setup(struct dsa_switch *ds, const struct phylink_link_state *state)
--{
--	struct mt7530_priv *priv = ds->priv;
+-	phy_interface_zero(config->supported_interfaces);
 -
--	return priv->info->pad_setup(ds, state->interface);
--}
--
- static int
- mt7530_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
- 		  phy_interface_t interface)
-@@ -2738,8 +2718,6 @@ mt753x_phylink_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
- 		if (priv->p6_configured)
- 			break;
- 
--		mt753x_pad_setup(ds, state);
--
- 		if (mt753x_mac_config(ds, port, mode, state) < 0)
- 			goto unsupported;
+ 	switch (port) {
+-	case 0 ... 4: /* Internal phy */
++	case 0 ... 3: /* Internal phy */
+ 		__set_bit(PHY_INTERFACE_MODE_INTERNAL,
+ 			  config->supported_interfaces);
  		break;
-@@ -3041,11 +3019,6 @@ static int mt753x_set_mac_eee(struct dsa_switch *ds, int port,
- 	return 0;
- }
- 
--static int mt7988_pad_setup(struct dsa_switch *ds, phy_interface_t interface)
--{
--	return 0;
--}
--
- static int mt7988_setup(struct dsa_switch *ds)
- {
- 	struct mt7530_priv *priv = ds->priv;
-@@ -3107,7 +3080,6 @@ const struct mt753x_info mt753x_table[] = {
- 		.phy_write_c22 = mt7530_phy_write_c22,
- 		.phy_read_c45 = mt7530_phy_read_c45,
- 		.phy_write_c45 = mt7530_phy_write_c45,
--		.pad_setup = mt7530_pad_clk_setup,
- 		.mac_port_get_caps = mt7530_mac_port_get_caps,
- 		.mac_port_config = mt7530_mac_config,
- 	},
-@@ -3119,7 +3091,6 @@ const struct mt753x_info mt753x_table[] = {
- 		.phy_write_c22 = mt7530_phy_write_c22,
- 		.phy_read_c45 = mt7530_phy_read_c45,
- 		.phy_write_c45 = mt7530_phy_write_c45,
--		.pad_setup = mt7530_pad_clk_setup,
- 		.mac_port_get_caps = mt7530_mac_port_get_caps,
- 		.mac_port_config = mt7530_mac_config,
- 	},
-@@ -3131,7 +3102,6 @@ const struct mt753x_info mt753x_table[] = {
- 		.phy_write_c22 = mt7531_ind_c22_phy_write,
- 		.phy_read_c45 = mt7531_ind_c45_phy_read,
- 		.phy_write_c45 = mt7531_ind_c45_phy_write,
--		.pad_setup = mt7531_pad_setup,
- 		.cpu_port_config = mt7531_cpu_port_config,
- 		.mac_port_get_caps = mt7531_mac_port_get_caps,
- 		.mac_port_config = mt7531_mac_config,
-@@ -3144,7 +3114,6 @@ const struct mt753x_info mt753x_table[] = {
- 		.phy_write_c22 = mt7531_ind_c22_phy_write,
- 		.phy_read_c45 = mt7531_ind_c45_phy_read,
- 		.phy_write_c45 = mt7531_ind_c45_phy_write,
--		.pad_setup = mt7988_pad_setup,
- 		.cpu_port_config = mt7988_cpu_port_config,
- 		.mac_port_get_caps = mt7988_mac_port_get_caps,
- 		.mac_port_config = mt7988_mac_config,
-@@ -3174,9 +3143,8 @@ mt7530_probe_common(struct mt7530_priv *priv)
- 	/* Sanity check if these required device operations are filled
- 	 * properly.
- 	 */
--	if (!priv->info->sw_setup || !priv->info->pad_setup ||
--	    !priv->info->phy_read_c22 || !priv->info->phy_write_c22 ||
--	    !priv->info->mac_port_get_caps ||
-+	if (!priv->info->sw_setup || !priv->info->phy_read_c22 ||
-+	    !priv->info->phy_write_c22 || !priv->info->mac_port_get_caps ||
- 	    !priv->info->mac_port_config)
- 		return -EINVAL;
- 
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index 06037be5882c..f7a504e4c17b 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -696,8 +696,6 @@ struct mt753x_pcs {
-  * @phy_write_c22:	Holding the way writing PHY port using C22
-  * @phy_read_c45:	Holding the way reading PHY port using C45
-  * @phy_write_c45:	Holding the way writing PHY port using C45
-- * @pad_setup:		Holding the way setting up the bus pad for a certain
-- *			MAC port
-  * @phy_mode_supported:	Check if the PHY type is being supported on a certain
-  *			port
-  * @mac_port_validate:	Holding the way to set addition validate type for a
-@@ -718,7 +716,6 @@ struct mt753x_info {
- 			    int regnum);
- 	int (*phy_write_c45)(struct mt7530_priv *priv, int port, int devad,
- 			     int regnum, u16 val);
--	int (*pad_setup)(struct dsa_switch *ds, phy_interface_t interface);
- 	int (*cpu_port_config)(struct dsa_switch *ds, int port);
- 	void (*mac_port_get_caps)(struct dsa_switch *ds, int port,
- 				  struct phylink_config *config);
 -- 
 2.39.2
 
