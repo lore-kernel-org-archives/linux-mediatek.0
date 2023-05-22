@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59EB1C77B73
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 May 2023 12:17:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FADFC7EE2D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 May 2023 12:17:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7tJgSrsfJjBPduQ55oOsMul7hMtXzANzGQOA9D+BS4Q=; b=F647mTC4N3W8Yd
-	wzTfje+GbdvodapV+R4vdntOB9DOYcG8Hxv3tsov8AIL8q3Z5KjfbzR0+pYy3JinW+rLjyv4Xyxuh
-	BR7PeNh+tFbCUjhLJaGlhhBI1UXM2aqkLiH60bJQZM5xBydh2+na9DrmlUKvnuGsHOy+7xUNpJSyw
-	iaaDsTvZ0caY9w9mXD9sOyXhRO7AazpHOiuGLJ5+be41vbG7FMf+MDJbgHws6xS/UnNOr2PodRnam
-	2/wThdfoHnYJZVeaA/br5ee5si4RskG/T77b+u6GRnKYnBb6GhU4K0gV8BmwEJKAx/oz/DcOS+u2R
-	/9J8qeHSqJS8hniId77g==;
+	List-Owner; bh=50+e+zsfVv5J1BqpAiWf9C7KcKligVVxQwX0YPFvKBI=; b=5DljusV4DumGXT
+	VisT44eLL+pR1CNOSx43V2754Uy1Msg9hnLLjqIXZchxwKFYsgmnG9SAOpxCKvPd8SDo2NyGrIjjO
+	WRzaihYUwfEnJT8IUq6mNn/soSwXfjfrCaYAcGFDG4JdkPBT25NXY47S+rTAK2BCyuEHixWoR4Omo
+	WEeHxZtKPR5g3yhNprSb9Fv2ijOfU/SmzG6G+pK43K4Uy2udcSs3Xg9urMiFV6nvBoZu2ZB5ribjd
+	ycSwbrRq86YZO7vhqqKVk7WJdP2nYoBm+VnNDoALmLB1v3WgokXuWL5dUxozEom4KQKyxMPNSm2cm
+	KFHd23SyQuNDj6CxZj1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q14TM-006Pob-38;
-	Mon, 22 May 2023 12:17:08 +0000
+	id 1q14TO-006PqE-1L;
+	Mon, 22 May 2023 12:17:10 +0000
 Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q14Sx-006PQv-2m;
-	Mon, 22 May 2023 12:16:45 +0000
-Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-96fa4a6a79bso309317866b.3;
-        Mon, 22 May 2023 05:16:41 -0700 (PDT)
+	id 1q14T1-006PUu-1Y;
+	Mon, 22 May 2023 12:16:48 +0000
+Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-96fd3a658eeso186902366b.1;
+        Mon, 22 May 2023 05:16:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1684757800; x=1687349800;
+        d=gmail.com; s=20221208; t=1684757806; x=1687349806;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=7tJgSrsfJjBPduQ55oOsMul7hMtXzANzGQOA9D+BS4Q=;
-        b=ZIVjXqZm2HxwrcjR1rFQj37pSDw/EAe2pmr8IgX7/oRVAdO9D5Mbtu3SPqksLMkREh
-         T9xTkPJ2DH2L0Bm2ImuoBgnY8/k0+e8W9VyG5EHAm1KPXNqJyHAHBcCbCjcRC279kXWE
-         Hwv1G68hkvXY2wx0dvWAg9806gcUAxWQFqrn0WKD4bJ14M8AwDRSaNdVCfY7B+psbCDh
-         T775ROUERYrZTumv4F3HNyvUOp58lEMr0ZMUb2d7H9XQlGDCKoszmThhYdkotT184POj
-         UV8UG5Y/cD/bzTDgSRiUpaY3kc8tSagfqHUSERWDR9NYGfNkbJPw4aDw7Pxr1ncazO4A
-         95vg==
+        bh=50+e+zsfVv5J1BqpAiWf9C7KcKligVVxQwX0YPFvKBI=;
+        b=sjnpuNcMC4vPuNPM5W8qAKHq8laEr0IiAs8Yv8iF7D6XCl2l39DG4sCvemNN4DXMs3
+         ygsXI11bEbL4/sQHwESDh5EijbGBg0RFP7Bgk80DGY4cAwRo2iK+FiCX/ApZ+Pp5xjIH
+         PoXGQ/fNfKgDR0sfgxwy/1E++kxv7CmxHSTppQ/sSAD/si0gUa4LHUf/78iNajzyzreo
+         aRCWFhGX1GF6TLN/e+8vq6PeNM81ysMzgguyezsQRJ1g6kPblL8ZxH8mzUeRSvOUlbWP
+         et0xQ/W7NAx3eCpXY2a52dWtedYRdKGxpOrP4dt1+TzYuTNxIoDpLv5/aKY8yyldcukJ
+         ZHsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684757800; x=1687349800;
+        d=1e100.net; s=20221208; t=1684757806; x=1687349806;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=7tJgSrsfJjBPduQ55oOsMul7hMtXzANzGQOA9D+BS4Q=;
-        b=bhDq/NDGY63//PczF91PbRnJRYNtP94z4suvB/P0WsQ6ptsXvTaA69MwEkrMhGyKV4
-         J0SBDdkYLBKbsefeXjjzaTG5/PYQACS/Cc80Uf5hBHzFAeUi3GuRMqsaFOPOaIYVOJ7g
-         s046XCCgIxToo0G5Aju3VpA9SxjkuHOqVikH+i0OUzQAK/XKZ0JFC87WLtpp4XhDnz3I
-         pO9ZbzjAdIKC72pSunQCIWdGhigbOadWRAaT8IH9bGN7YMTNwTJ8QNKfD84pEFO8pFvx
-         WA8xjlgkQg2gjWqYknZ5cnHbRzrWBu7QJEYURljeXQNxtdB4tDJglelSall80uUttnCs
-         fuKw==
-X-Gm-Message-State: AC+VfDxHb/msUlD9w2kPFvQC9fSma7PdX+fJttqjtWvP8EetUNJ/Mqmp
-	/RmirPDdTC3AlaYG6Vo65ZI=
-X-Google-Smtp-Source: ACHHUZ72VmGhmmYTe0AopjokPSVMzaGVY/fJu0fyOgd/aAvX2GqtNUrGr+ViNueHkprxGWrI+408+w==
-X-Received: by 2002:a17:907:7f8c:b0:96a:5e38:ba49 with SMTP id qk12-20020a1709077f8c00b0096a5e38ba49mr10976896ejc.2.1684757799838;
-        Mon, 22 May 2023 05:16:39 -0700 (PDT)
+        bh=50+e+zsfVv5J1BqpAiWf9C7KcKligVVxQwX0YPFvKBI=;
+        b=YO6a39AaluDaEkk8dll/zUnIOK++21+IGZQKBe39ovbE9NAYj49KkOFmStVMxSsbp+
+         U5yYMf9Zhbwn9+26R0oZgEnUdelKPv3k6mS1zGwtsr34uFodO2U0WLpurUo8k5hBYql2
+         lmVR2zNZLSQMIMQkS3PY9SoJV1oZCzPXHBzR9mDmV1K9BMMwuRm0vAzcM5CW/I1q6j2q
+         Uutd7X1FtZ22ouux0JBWBRJtS0kZKSFWnpSunzEJvjAmm13wK/mHmzfncH0/zHED6Cr2
+         7ceVSl9WU0kHradQkNqVILBRYusRixp+SdX4ySgiDSl5CPKpxJnEoxuJsfCL6jqpuvc0
+         pCIg==
+X-Gm-Message-State: AC+VfDwdXs6XpJ8yIPtX+k7dPrPQNDtKTOGuYptcrT5W7hTThbsw7V2V
+	CJrSRALvLCzapflE0zm1K+s=
+X-Google-Smtp-Source: ACHHUZ4M8Me0lXeuQHSHRWp3YouOQ/LLClhxE/remDAZsXN4DblDXCqROAKiLf/beTuFQ7E/eEU2Qw==
+X-Received: by 2002:a17:907:60ce:b0:96a:f21f:ab64 with SMTP id hv14-20020a17090760ce00b0096af21fab64mr8346390ejc.49.1684757806185;
+        Mon, 22 May 2023 05:16:46 -0700 (PDT)
 Received: from arinc9-PC.. ([149.91.1.15])
-        by smtp.gmail.com with ESMTPSA id y26-20020a17090614da00b009659fed3612sm2999950ejc.24.2023.05.22.05.16.37
+        by smtp.gmail.com with ESMTPSA id y26-20020a17090614da00b009659fed3612sm2999950ejc.24.2023.05.22.05.16.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 22 May 2023 05:16:39 -0700 (PDT)
+        Mon, 22 May 2023 05:16:45 -0700 (PDT)
 From: arinc9.unal@gmail.com
 X-Google-Original-From: arinc.unal@arinc9.com
 To: Sean Wang <sean.wang@mediatek.com>,
@@ -77,9 +77,9 @@ To: Sean Wang <sean.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Russell King <linux@armlinux.org.uk>
-Subject: [PATCH net-next 18/30] net: dsa: mt7530: remove .mac_port_config for MT7988 and make it optional
-Date: Mon, 22 May 2023 15:15:20 +0300
-Message-Id: <20230522121532.86610-19-arinc.unal@arinc9.com>
+Subject: [PATCH net-next 20/30] net: dsa: mt7530: properly reset MT7531 switch
+Date: Mon, 22 May 2023 15:15:22 +0300
+Message-Id: <20230522121532.86610-21-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230522121532.86610-1-arinc.unal@arinc9.com>
 References: <20230522121532.86610-1-arinc.unal@arinc9.com>
@@ -87,8 +87,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230522_051643_918587_35EA9AB2 
-X-CRM114-Status: GOOD (  14.81  )
+X-CRM114-CacheID: sfid-20230522_051647_525696_A50F5EA2 
+X-CRM114-Status: GOOD (  12.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,75 +106,40 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-For the switch on the MT7988 SoC, the code in mac_port_config for MT7988 is
-not needed as the interface of the CPU port is already handled on
-mt7988_mac_port_get_caps().
+According to the document MT7531 Reference Manual for Development Board
+v1.0, the SW_PHY_RST bit on the SYS_CTRL register doesn't exist for
+MT7531. This is likely why forcing link-down on the MACs is necessary for
+MT7531.
 
-Make .mac_port_config optional. Before calling
-priv->info->mac_port_config(), if there's no mac_port_config member in the
-priv->info table, exit mt753x_mac_config() successfully.
+Therefore, do not set SW_PHY_RST on mt7531_setup().
 
-Remove mac_port_config from the sanity check as the sanity check requires a
-pointer to a mac_port_config function to be non-NULL. This will fail for
-MT7988 as mac_port_config won't be a member of its info table.
-
-Co-developed-by: Daniel Golle <daniel@makrotopia.org>
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- drivers/net/dsa/mt7530.c | 18 ++++--------------
- 1 file changed, 4 insertions(+), 14 deletions(-)
+ drivers/net/dsa/mt7530.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index f017cc028183..99f5da8b27be 100644
+index 0c261ef87bee..aafb7415e2ce 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -2614,17 +2614,6 @@ static bool mt753x_is_mac_port(u32 port)
- 	return (port == 5 || port == 6);
- }
+@@ -2416,14 +2416,12 @@ mt7531_setup(struct dsa_switch *ds)
+ 	val = mt7530_read(priv, MT7531_TOP_SIG_SR);
+ 	priv->p5_sgmii = !!(val & PAD_DUAL_SGMII_EN);
  
--static int
--mt7988_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
--		  phy_interface_t interface)
--{
--	if (dsa_is_cpu_port(ds, port) &&
--	    interface == PHY_INTERFACE_MODE_INTERNAL)
--		return 0;
--
--	return -EINVAL;
--}
--
- static int
- mt7531_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
- 		  phy_interface_t interface)
-@@ -2665,6 +2654,9 @@ mt753x_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
- {
- 	struct mt7530_priv *priv = ds->priv;
+-	/* all MACs must be forced link-down before sw reset */
++	/* Force link-down on all MACs before internal reset */
+ 	for (i = 0; i < MT7530_NUM_PORTS; i++)
+ 		mt7530_write(priv, MT7530_PMCR_P(i), MT7531_FORCE_LNK);
  
-+	if (!priv->info->mac_port_config)
-+		return 0;
-+
- 	return priv->info->mac_port_config(ds, port, mode, state->interface);
- }
+ 	/* Reset the switch through internal reset */
+-	mt7530_write(priv, MT7530_SYS_CTRL,
+-		     SYS_CTRL_PHY_RST | SYS_CTRL_SW_RST |
+-		     SYS_CTRL_REG_RST);
++	mt7530_write(priv, MT7530_SYS_CTRL, SYS_CTRL_SW_RST | SYS_CTRL_REG_RST);
  
-@@ -3108,7 +3100,6 @@ const struct mt753x_info mt753x_table[] = {
- 		.phy_write_c45 = mt7531_ind_c45_phy_write,
- 		.cpu_port_config = mt7988_cpu_port_config,
- 		.mac_port_get_caps = mt7988_mac_port_get_caps,
--		.mac_port_config = mt7988_mac_config,
- 	},
- };
- EXPORT_SYMBOL_GPL(mt753x_table);
-@@ -3136,8 +3127,7 @@ mt7530_probe_common(struct mt7530_priv *priv)
- 	 * properly.
- 	 */
- 	if (!priv->info->sw_setup || !priv->info->phy_read_c22 ||
--	    !priv->info->phy_write_c22 || !priv->info->mac_port_get_caps ||
--	    !priv->info->mac_port_config)
-+	    !priv->info->phy_write_c22 || !priv->info->mac_port_get_caps)
- 		return -EINVAL;
- 
- 	priv->id = priv->info->id;
+ 	if (!priv->p5_sgmii) {
+ 		mt7531_pll_setup(priv);
 -- 
 2.39.2
 
