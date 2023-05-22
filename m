@@ -4,70 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEC6EC7EE2D
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 May 2023 18:24:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59855C77B73
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 May 2023 02:31:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=TZRR07+vctVM8WdxwVywanvArQDn3S9Ioav5/tEFdfU=; b=SKmtlD5MZ4yeKSHc0TzkCCHk77
-	79LUpuKrhWWt5J5e5QT6yhGkgTyLT3N7VdjFcYXGlbUCTf+ZQs1Diw1ltRa06/q7fg0WNyEQM/v26
-	3WRUo1dhZ1Ehc+kDZifGvk+jLeczhK/YG3QQX6ddFLI6aR+SOxmnMHOYYiP4P4Ln0aoErIb5EjjdA
-	BK1E6ejIgNG7yp/BTae09clOm31WutSYE6HgkS3Xru+IaB/bt5yuWc7itEo66+antL12ZVNRNAipI
-	CAyFc9z6yGNsTf/A6UaZaiikVln2ItmvhM1blVBZLI8UsSs5aawK8N4P/OXsTiwYOUJSd0H9e6+8H
-	OijOFI1A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=FvLKVHjka7cRO5KYMLXa5+eHvbBfffFIZp5h7B2yAEk=; b=WBprDLFdNHP5jJ7a11bAm8EIW0
+	DRDJj4gq8MAJr6DcVAVRXcKiRhKPt9znI8oBZf42LcxO1cKAMzQiGE0yuFRdJtS6HSZuCej0b2bGu
+	HjqHFRpat6fmszrwYDv0f84RudY/DbmhUIvLzEzVRFo8LlSxfY169Pbs5ZaZDMHve4v2ZbstGN9Ni
+	P4tD81DrNWc7doYwl2BQQ/bTeGQ0lDB6P1zbwkEAENa3BjcAO066tCo+4/8ePnFDTACFmJOUbu/0R
+	/gxcPOMmJxHA6GVZoDyQ3P45SEdQgn8nxvngn4fTZUhhVph+U8r0pefPscgMRAw6mOCoS2pvGUwcO
+	IaUohtLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q0RFw-0022Yi-12;
-	Sat, 20 May 2023 18:24:40 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1q0vKW-0056kk-1J;
+	Mon, 22 May 2023 02:31:24 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q0RFs-0022Ww-2g;
-	Sat, 20 May 2023 18:24:38 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 67DAA60F38;
-	Sat, 20 May 2023 18:24:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8DEA5C433A8;
-	Sat, 20 May 2023 18:24:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1684607075;
-	bh=PsdLhYUW2/2yOHPd/tsa7m1zstJtfVAA7v3QvF6juMM=;
-	h=From:To:Cc:Subject:Date:From;
-	b=gaX70WFj3qSo53kBkcs9wVrxESrOO6qPQay5z917wwLGcfqFsx/p5PsC3fFJTx6Bz
-	 eHG28YpCZ2koaSHF1YCQ7dOV4am/6u2j/g5wRb3nX/21MgveTU2tgDaXcryslvFnke
-	 F/9tnwaug3R2Z3FaH7lc8x9lgpFvNGt5EU9dlohWcc4hV6sJfeAtcdnstrbZRxuiL/
-	 W69wZwDZ4CiZL1Kh52pHKFr7jU6bczW4/cS4lPQx50ccN10u+pI2ypNIwOGRhbqhGw
-	 00PdnSixHNwG3TqgcQcfUZ6k5zhgu6ob6SNzhUxeJzwL/lYw6CER2WnKYXwXxCpEDz
-	 VY/XI/7KmcTnA==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Haibo Li <haibo.li@mediatek.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Alexandre Mergnat <amergnat@baylibre.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Russell King <rmk+kernel@armlinux.org.uk>,
-	Sasha Levin <sashal@kernel.org>,
-	linux@armlinux.org.uk,
-	matthias.bgg@gmail.com,
-	alexander.sverdlin@nokia.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 4.14 1/4] ARM: 9295/1: unwind:fix unwind abort for uleb128 case
-Date: Sat, 20 May 2023 14:24:26 -0400
-Message-Id: <20230520182432.866012-1-sashal@kernel.org>
-X-Mailer: git-send-email 2.39.2
+	id 1q0vKO-0056iz-2W;
+	Mon, 22 May 2023 02:31:21 +0000
+X-UUID: b4084a3cf84811ed83ed1395ce914268-20230521
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=FvLKVHjka7cRO5KYMLXa5+eHvbBfffFIZp5h7B2yAEk=;
+	b=TcV/Ri9xxnUaUP83Qn7Y1ZzndluR/EixtIH47azDWEN+1ygWO1vYjFGd8jyP2+VN8bw10JzOsFnW2WNoVy3KMJ0YJc70m2ShCyNZFOyRLrppV9Gxf+d1iD/njURPDtq8rMbmOkvtbyYwviKk/oFzlcijgw/QanefQp4EdeDdnew=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.25,REQID:18326083-b4f7-417c-ad59-c069dcaa8b76,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:d5b0ae3,CLOUDID:e60d8b6c-2f20-4998-991c-3b78627e4938,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: b4084a3cf84811ed83ed1395ce914268-20230521
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <chunfeng.yun@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1343298697; Sun, 21 May 2023 19:31:06 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 22 May 2023 10:21:03 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 22 May 2023 10:21:02 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Alan Stern
+	<stern@rowland.harvard.edu>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Prashanth K <quic_prashk@quicinc.com>, Xiu Jianfeng <xiujianfeng@huawei.com>,
+	Christophe JAILLET <christophe.jaillet@wanadoo.fr>, Fabrice Gasnier
+	<fabrice.gasnier@st.com>, Felipe Balbi <balbi@kernel.org>,
+	<linux-usb@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Kewu Chen <Kewu.Chen@mediatek.com>, stable <stable@kernel.org>
+Subject: [PATCH] usb: gadget: u_serial: Add null pointer check in gserial_suspend
+Date: Mon, 22 May 2023 10:21:01 +0800
+Message-ID: <20230522022101.32163-1-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230520_112436_951341_23D1051E 
-X-CRM114-Status: GOOD (  17.37  )
+X-CRM114-CacheID: sfid-20230521_193117_245032_2F2800F6 
+X-CRM114-Status: GOOD (  10.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,92 +87,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Haibo Li <haibo.li@mediatek.com>
+When gserial_disconnect has already cleared gser->ioport, and the
+suspend triggers afterwards, gserial_suspend gets called, which will
+lead to accessing of gser->ioport and thus causing null pointer
+dereference. Add a null pointer check to prevent it as the bellow
+patch does:
+5ec63fdbca60 ("usb: gadget: u_serial: Add null pointer check in gserial_resume")
 
-[ Upstream commit fa3eeb638de0c1a9d2d860e5b48259facdd65176 ]
-
-When unwind instruction is 0xb2,the subsequent instructions
-are uleb128 bytes.
-For now,it uses only the first uleb128 byte in code.
-
-For vsp increments of 0x204~0x400,use one uleb128 byte like below:
-0xc06a00e4 <unwind_test_work>: 0x80b27fac
-  Compact model index: 0
-  0xb2 0x7f vsp = vsp + 1024
-  0xac      pop {r4, r5, r6, r7, r8, r14}
-
-For vsp increments larger than 0x400,use two uleb128 bytes like below:
-0xc06a00e4 <unwind_test_work>: @0xc0cc9e0c
-  Compact model index: 1
-  0xb2 0x81 0x01 vsp = vsp + 1032
-  0xac      pop {r4, r5, r6, r7, r8, r14}
-The unwind works well since the decoded uleb128 byte is also 0x81.
-
-For vsp increments larger than 0x600,use two uleb128 bytes like below:
-0xc06a00e4 <unwind_test_work>: @0xc0cc9e0c
-  Compact model index: 1
-  0xb2 0x81 0x02 vsp = vsp + 1544
-  0xac      pop {r4, r5, r6, r7, r8, r14}
-In this case,the decoded uleb128 result is 0x101(vsp=0x204+(0x101<<2)).
-While the uleb128 used in code is 0x81(vsp=0x204+(0x81<<2)).
-The unwind aborts at this frame since it gets incorrect vsp.
-
-To fix this,add uleb128 decode to cover all the above case.
-
-Signed-off-by: Haibo Li <haibo.li@mediatek.com>
-Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
-Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
+Fixes: aba3a8d01d62 ("usb: gadget: u_serial: add suspend resume callbacks")
+Cc: stable <stable@kernel.org>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- arch/arm/kernel/unwind.c | 25 ++++++++++++++++++++++++-
- 1 file changed, 24 insertions(+), 1 deletion(-)
+ drivers/usb/gadget/function/u_serial.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm/kernel/unwind.c b/arch/arm/kernel/unwind.c
-index 314cfb232a635..f2bb090373c67 100644
---- a/arch/arm/kernel/unwind.c
-+++ b/arch/arm/kernel/unwind.c
-@@ -313,6 +313,29 @@ static int unwind_exec_pop_subset_r0_to_r3(struct unwind_ctrl_block *ctrl,
- 	return URC_OK;
+diff --git a/drivers/usb/gadget/function/u_serial.c b/drivers/usb/gadget/function/u_serial.c
+index a0ca47fbff0f..40ba220cf6d2 100644
+--- a/drivers/usb/gadget/function/u_serial.c
++++ b/drivers/usb/gadget/function/u_serial.c
+@@ -1420,10 +1420,18 @@ EXPORT_SYMBOL_GPL(gserial_disconnect);
+ 
+ void gserial_suspend(struct gserial *gser)
+ {
+-	struct gs_port	*port = gser->ioport;
++	struct gs_port	*port;
+ 	unsigned long	flags;
+ 
+-	spin_lock_irqsave(&port->port_lock, flags);
++	spin_lock_irqsave(&serial_port_lock, flags);
++	port = gser->ioport;
++	if (!port) {
++		spin_unlock_irqrestore(&serial_port_lock, flags);
++		return;
++	}
++
++	spin_lock(&port->port_lock);
++	spin_unlock(&serial_port_lock);
+ 	port->suspended = true;
+ 	spin_unlock_irqrestore(&port->port_lock, flags);
  }
- 
-+static unsigned long unwind_decode_uleb128(struct unwind_ctrl_block *ctrl)
-+{
-+	unsigned long bytes = 0;
-+	unsigned long insn;
-+	unsigned long result = 0;
-+
-+	/*
-+	 * unwind_get_byte() will advance `ctrl` one instruction at a time, so
-+	 * loop until we get an instruction byte where bit 7 is not set.
-+	 *
-+	 * Note: This decodes a maximum of 4 bytes to output 28 bits data where
-+	 * max is 0xfffffff: that will cover a vsp increment of 1073742336, hence
-+	 * it is sufficient for unwinding the stack.
-+	 */
-+	do {
-+		insn = unwind_get_byte(ctrl);
-+		result |= (insn & 0x7f) << (bytes * 7);
-+		bytes++;
-+	} while (!!(insn & 0x80) && (bytes != sizeof(result)));
-+
-+	return result;
-+}
-+
- /*
-  * Execute the current unwind instruction.
-  */
-@@ -366,7 +389,7 @@ static int unwind_exec_insn(struct unwind_ctrl_block *ctrl)
- 		if (ret)
- 			goto error;
- 	} else if (insn == 0xb2) {
--		unsigned long uleb128 = unwind_get_byte(ctrl);
-+		unsigned long uleb128 = unwind_decode_uleb128(ctrl);
- 
- 		ctrl->vrs[SP] += 0x204 + (uleb128 << 2);
- 	} else {
 -- 
-2.39.2
+2.18.0
 
 
