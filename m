@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 608D8C77B75
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 May 2023 12:15:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80F01C77B75
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 May 2023 12:16:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Pq2o/rMDZcveu6CBIBMiqQbVdifVenwYFNXXMqMRjP0=; b=iiBxTCri6F2sjj
-	1FQp0FA8DVeuxogIl7Lh1vxrtVOFTT9vLGktYqdQlZyTz4F5UBTaCZ5zNHTiujIcKXY21DGJvr4M1
-	z7z6qvS3OAvEd2GkP50zqq5EmXpH5CJBn84a6/K1idIKuZJdKViVGT8K1xiULiK/IfLNL8fUw0aft
-	K7/2BF7UQq+DKjyA5YsGKegwLI3dNw99IL9WVzo5hVzaWqM+KDWkCnYr3ISWffHd8hfWfYDLlfA+Y
-	FxyBIZscUkm+DD+kSEZSTO23hfX8Fp1V3Ei6bzc7VMemZ+K1U3sqFkWXasVutjlmxnzK8oMwAFZ62
-	SLwKlV9n1JRrBW85vWYw==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=W605wLVAjZcYJ+UbvgGvWkHLkMFaiTir5YrRz0YtXmg=; b=sm4D18NSsWk/rj
+	Zzch7oedKTCnvjVkzVm/GDt6alersBDp2UHnm9UTs0XO1jy29YiKdWiupBXQ78997iJa8JQMUOSNg
+	fcY8dNUGhQj0eGnSzQ2E7OSD//E1yq1MI0euRqJmZJOqxUab/GVCEc80zvO7huO+VWAH4eeZqzEUT
+	HvcMq7iq9uaax7L0BdxAGwxqtAJGXQVI+Ak7KcnLZ7IWCIysUXGckwqhbCBGH9J5wUPXTIcb25g4z
+	jZRE+qPrdaUyYdnKw3oWu6g4moo+vwz3mq9FVG8BiWP7m0QCtD6eHmzGaxH08PKZsMtcz7tCK6lpK
+	JMoH7OzFpNmR0Vc3W4Fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q14S7-006Ovc-1z;
-	Mon, 22 May 2023 12:15:51 +0000
+	id 1q14SE-006Oyh-2d;
+	Mon, 22 May 2023 12:15:58 +0000
 Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q14S4-006Oto-0r;
-	Mon, 22 May 2023 12:15:49 +0000
-Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-96f7bf3cf9eso613319466b.0;
-        Mon, 22 May 2023 05:15:46 -0700 (PDT)
+	id 1q14S6-006Oue-16;
+	Mon, 22 May 2023 12:15:51 +0000
+Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-96f588bc322so587437966b.1;
+        Mon, 22 May 2023 05:15:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1684757746; x=1687349746;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=Pq2o/rMDZcveu6CBIBMiqQbVdifVenwYFNXXMqMRjP0=;
-        b=aQV+uq9SLVhx0nJCHct8trarx9Dq54SBVdoWRvsuUTTaAnagYq1jKKdRWhzRdICwCT
-         7aRHHO0ugQDaIMQ9HZm05aSqhn8hRhtdSuxbozAOw/qQfVSmg+5Du+Wk9hkJ+Bz5coSv
-         EkaGK8iVyauuODWx5MPHbpum5+hrbUQ/KdVkrtW4CGQeHB20BeRYtqIf7IBLi1Qj3YhD
-         Yzj5y9XTDHwRvRLjC1rSC3vTyDLZd5KbkjU860F0eu9Dn4SyGMXoR8b8T1vsUrsKeLTG
-         1lZwICVLVobeoQR5RMcskfakhJDj7w9BfGhGJxPUpVYN9R7U9aBtPibNPRYzl/LcERGK
-         M6lA==
+        d=gmail.com; s=20221208; t=1684757749; x=1687349749;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=W605wLVAjZcYJ+UbvgGvWkHLkMFaiTir5YrRz0YtXmg=;
+        b=qcQP4Hsv2zkuBD1rc5sn1VmOnLPTnpkC36ZpIoFX5g5+/8j6+xMkWXmdl783YhkydI
+         ouC3vQqGioYtYax5t3LtbhBLe89V6Vvcmvy6iY6tJGf3cATIWqmoIzc8TEzKggVb2nNf
+         GtFBJF02BH88duMq9StIDqPSSWlOF3alAjJwZ+mHLGBnoavDEgukeXWGeSSZ8lWKS7oW
+         R8Xux7ZtyV7n5PbQzbK+ftm9MkcnStykJc9U/2OKQ5iEnYgLYFG3y7QQBOVhTSmk9ktu
+         MN9iT30TXuPt820WSkRz5zuN1Y7nkwixR8RfmWTuHdSKTECqM5eYkVaMiQywohNStgNc
+         qaxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684757746; x=1687349746;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Pq2o/rMDZcveu6CBIBMiqQbVdifVenwYFNXXMqMRjP0=;
-        b=ayOPK3/2XiGG23qSveyFpq8y4naLqOrp5RcOdWo+Ys4wTGpFJtq9+q2i1hWmo9OF70
-         Ohra/+lou8aJS8Xp9b5GKaTKa/2k3wnBTSRXPN81gZlZn3ZXE0K9XMiAARscUon4MG06
-         OdYMLvTLNbtYDDEz6eFg9KNBtN+vGyt1rPVt30HnN5kpAoOutHn8AgZN+fsJcEvacTEK
-         BTFBlplQDYlusfjZFJ0jQibzl2uXVvb3UXQ5Q/TbPPsPPofT8ZqRdM3tKHFkk3x96ng5
-         KERXwDkbkHf75qPZm+G1WPsVqkFxjyK66l+PjETftbIs9xo+FD14V2A1kV7jfIp19aDN
-         yHNw==
-X-Gm-Message-State: AC+VfDz3Y4CmOA+B4M82QvUyS3YulCHglj07Su8FgkwQFNVmimLWlDYT
-	3R6tL7RARPjc00gTzHWaud8=
-X-Google-Smtp-Source: ACHHUZ44vhIRy0pCs3PauqSUYry3wOlKBzkbAJKp64q8ULc9bXdwGlhNnnOC2BplkNluNqyP2qH/Bw==
-X-Received: by 2002:a17:907:97c4:b0:956:fbd7:bc5e with SMTP id js4-20020a17090797c400b00956fbd7bc5emr9630657ejc.64.1684757745526;
-        Mon, 22 May 2023 05:15:45 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1684757749; x=1687349749;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=W605wLVAjZcYJ+UbvgGvWkHLkMFaiTir5YrRz0YtXmg=;
+        b=NVE5TOQnkfNR/XJ6ueEGPK4bXXtMJ6AUiQOl8NzeC79iG+3K5JzX1nUkJJOJPNYJkn
+         YAW48WTTN8n5o99X//x803USn0IfsoV9DMZmT9cLMF/uBGzqL9+6kGtJICt/NKYYboSB
+         y/KqOInEIDZl7muuXspIcx4dygMs0LELT/o8n6e9YZUPbSdzrJX58GIzCpWzH8X/a+IM
+         TELpyq7k8gN2Lmwm4Y9s3e2/sXnyKO7jYWJozxV86sMTESoeuX82h8BZzeC1EfyvJdCr
+         O/BCJKHlPYVqh6CcsTkA+tOCC6ofnpV/pfKQWkXqMBXNoGB901/oLaS/M2Hr49cZha38
+         GrqA==
+X-Gm-Message-State: AC+VfDzBzkjhq2fhlyZC4Z1636xjFBU+IIgA4+Clhkwinr+DP1ScZ01C
+	j4RByiS4aAuqYUz0l3fl5fI=
+X-Google-Smtp-Source: ACHHUZ5udgAI9lXoymHWuGkdojdDxgLRZXFK1CAl38y/EIjRGn7RvR87DFYBmjpyu6txHt2HTifOGQ==
+X-Received: by 2002:a17:907:da8:b0:96f:8666:5fc4 with SMTP id go40-20020a1709070da800b0096f86665fc4mr9492508ejc.50.1684757748618;
+        Mon, 22 May 2023 05:15:48 -0700 (PDT)
 Received: from arinc9-PC.. ([149.91.1.15])
-        by smtp.gmail.com with ESMTPSA id y26-20020a17090614da00b009659fed3612sm2999950ejc.24.2023.05.22.05.15.42
+        by smtp.gmail.com with ESMTPSA id y26-20020a17090614da00b009659fed3612sm2999950ejc.24.2023.05.22.05.15.45
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 22 May 2023 05:15:45 -0700 (PDT)
+        Mon, 22 May 2023 05:15:48 -0700 (PDT)
 From: arinc9.unal@gmail.com
 X-Google-Original-From: arinc.unal@arinc9.com
 To: Sean Wang <sean.wang@mediatek.com>,
@@ -76,16 +77,18 @@ To: Sean Wang <sean.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Russell King <linux@armlinux.org.uk>
-Subject: [PATCH net-next 00/30] net: dsa: mt7530: improve, trap BPDU & LLDP, and prefer CPU port
-Date: Mon, 22 May 2023 15:15:02 +0300
-Message-Id: <20230522121532.86610-1-arinc.unal@arinc9.com>
+Subject: [PATCH net-next 01/30] net: dsa: mt7530: add missing @p5_interface to mt7530_priv description
+Date: Mon, 22 May 2023 15:15:03 +0300
+Message-Id: <20230522121532.86610-2-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230522121532.86610-1-arinc.unal@arinc9.com>
+References: <20230522121532.86610-1-arinc.unal@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230522_051548_301988_33ACAF5B 
-X-CRM114-Status: GOOD (  12.07  )
+X-CRM114-CacheID: sfid-20230522_051550_379443_1EC4C852 
+X-CRM114-Status: GOOD (  10.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,98 +100,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: erkin.bozoglu@xeront.com, Richard van Schagen <vschagen@cs.com>, linux-kernel@vger.kernel.org, Richard van Schagen <richard@routerhints.com>, =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, netdev@vger.kernel.org, mithat.guner@xeront.com, linux-arm-kernel@lists.infradead.org
+Cc: mithat.guner@xeront.com, Richard van Schagen <vschagen@cs.com>, linux-kernel@vger.kernel.org, Richard van Schagen <richard@routerhints.com>, =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, netdev@vger.kernel.org, erkin.bozoglu@xeront.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello!
+From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-This patch series simplifies the code, improves the logic of the switch
-hardware support, traps LLDP frames and BPDUs for MT7530, MT7531, and
-MT7988 SoC switches, and introduces the preferring local CPU port
-operation.
+Add the missing p5_interface field to the mt7530_priv description. Sort out
+the description in the process.
 
-There's also a patch for fixing the port capabilities of the switch on the
-MT7988 SoC.
+Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Acked-by: Daniel Golle <daniel@makrotopia.org>
+---
+ drivers/net/dsa/mt7530.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-I have done a bidirectional speed test using iperf3 on all ports of the
-MT7530 and MT7531 switches with this patch series applied. I have tested
-every possible configuration on the MCM and standalone MT7530 and MT7531
-switch. I'll let the name of the dtb files speak for themselves.
-
-MT7621 Unielec:
-
-only-gmac0-mt7621-unielec-u7621-06-16m.dtb
-rgmii-only-gmac0-mt7621-unielec-u7621-06-16m.dtb
-only-gmac1-mt7621-unielec-u7621-06-16m.dtb
-gmac0-and-gmac1-mt7621-unielec-u7621-06-16m.dtb
-phy0-muxing-mt7621-unielec-u7621-06-16m.dtb
-phy4-muxing-mt7621-unielec-u7621-06-16m.dtb
-port5-as-user-mt7621-unielec-u7621-06-16m.dtb
-
-tftpboot 0x80008000 mips-uzImage-next-20230519.bin; tftpboot 0x83000000 mips-rootfs.cpio.uboot; tftpboot 0x83f00000 $dtb; bootm 0x80008000 0x83000000 0x83f00000
-
-MT7622 Bananapi:
-
-only-gmac0-mt7622-bananapi-bpi-r64.dtb
-gmac0-and-gmac1-mt7622-bananapi-bpi-r64.dtb
-port5-as-user-mt7622-bananapi-bpi-r64.dtb
-
-tftpboot 0x40000000 arm64-Image-next-20230519; tftpboot 0x45000000 arm64-rootfs.cpio.uboot; tftpboot 0x4a000000 $dtb; booti 0x40000000 0x45000000 0x4a000000
-
-MT7623 Bananapi:
-
-only-gmac0-mt7623n-bananapi-bpi-r2.dtb
-rgmii-only-gmac0-mt7623n-bananapi-bpi-r2.dtb
-only-gmac1-mt7623n-bananapi-bpi-r2.dtb
-gmac0-and-gmac1-mt7623n-bananapi-bpi-r2.dtb
-phy0-muxing-mt7623n-bananapi-bpi-r2.dtb
-phy4-muxing-mt7623n-bananapi-bpi-r2.dtb
-port5-as-user-mt7623n-bananapi-bpi-r2.dtb
-
-tftpboot 0x80008000 arm-zImage-next-20230519; tftpboot 0x83000000 arm-rootfs.cpio.uboot; tftpboot 0x83f00000 $dtb; bootz 0x80008000 0x83000000 0x83f00000
-
-Arınç
-
-Arınç ÜNAL (30):
-  net: dsa: mt7530: add missing @p5_interface to mt7530_priv description
-  net: dsa: mt7530: use p5_interface_select as data type for p5_intf_sel
-  net: dsa: mt7530: properly support MT7531AE and MT7531BE
-  net: dsa: mt7530: improve comments regarding port 5 and 6
-  net: dsa: mt7530: read XTAL value from correct register
-  net: dsa: mt7530: improve code path for setting up port 5
-  net: dsa: mt7530: do not run mt7530_setup_port5() if port 5 is disabled
-  net: dsa: mt7530: change p{5,6}_interface to p{5,6}_configured
-  net: dsa: mt7530: empty default case on mt7530_setup_port5()
-  net: dsa: mt7530: call port 6 setup from mt7530_mac_config()
-  net: dsa: mt7530: remove pad_setup function pointer
-  net: dsa: mt7530: move XTAL check to mt7530_setup()
-  net: dsa: mt7530: move enabling port 6 to mt7530_setup_port6()
-  net: dsa: mt7530: switch to if/else statements on mt7530_setup_port6()
-  net: dsa: mt7530: set TRGMII RD TAP if trgmii is being used
-  net: dsa: mt7530: move lowering port 5 RGMII driving to mt7530_setup()
-  net: dsa: mt7530: fix port capabilities for MT7988
-  net: dsa: mt7530: remove .mac_port_config for MT7988 and make it optional
-  net: dsa: mt7530: set interrupt register only for MT7530
-  net: dsa: mt7530: properly reset MT7531 switch
-  net: dsa: mt7530: get rid of useless error returns on phylink code path
-  net: dsa: mt7530: rename p5_intf_sel and use only for MT7530 switch
-  net: dsa: mt7530: run mt7530_pll_setup() only with 40 MHz XTAL
-  net: dsa: mt7530: rename MT7530_MFC to MT753X_MFC
-  net: dsa: mt7530: properly set MT7531_CPU_PMAP
-  net: dsa: mt7530: properly set MT7530_CPU_PORT
-  net: dsa: mt7530: introduce BPDU trapping for MT7530 switch
-  net: dsa: mt7530: introduce LLDP frame trapping
-  net: dsa: introduce preferred_default_local_cpu_port and use on MT7530
-  MAINTAINERS: add me as maintainer of MEDIATEK SWITCH DRIVER
-
- MAINTAINERS                   |   5 +-
- drivers/net/dsa/mt7530-mdio.c |   7 +-
- drivers/net/dsa/mt7530.c      | 470 ++++++++++++++++---------------------
- drivers/net/dsa/mt7530.h      | 107 +++++----
- include/net/dsa.h             |   8 +
- net/dsa/dsa.c                 |  24 +-
- 6 files changed, 289 insertions(+), 332 deletions(-)
-
+diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+index 5084f48a8869..845f5dd16d83 100644
+--- a/drivers/net/dsa/mt7530.h
++++ b/drivers/net/dsa/mt7530.h
+@@ -746,7 +746,8 @@ struct mt753x_info {
+  * @ports:		Holding the state among ports
+  * @reg_mutex:		The lock for protecting among process accessing
+  *			registers
+- * @p6_interface	Holding the current port 6 interface
++ * @p6_interface:	Holding the current port 6 interface
++ * @p5_interface:	Holding the current port 5 interface
+  * @p5_intf_sel:	Holding the current port 5 interface select
+  * @irq:		IRQ number of the switch
+  * @irq_domain:		IRQ domain of the switch irq_chip
+-- 
+2.39.2
 
 
