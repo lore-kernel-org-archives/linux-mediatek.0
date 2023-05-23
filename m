@@ -4,82 +4,149 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6B66C7EE23
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 May 2023 13:32:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 261C4C7EE26
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 May 2023 13:37:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qO7uVfTZIwTK5eWidHNY3IE4aDCiaYIaf7Mtd0r6B0Y=; b=o5xlHDvlB+LDiv
-	3AdITQ03cOKwNDE3oDTWqNQZdEp98uS7670i+tmvGdJ9ARsI4pVWkrDfq8o17x638CEn3/i+I5Tfz
-	hF4+Yuw4x5ZMAL3fcQzrrWBtCkA6shYRyhTGSQRcAlTq9TKIS8NTOcsOUddhVDhyOLihE1cXZPbiy
-	nuYVRPtdbNRNAzh0kg13i0FbVkjVyz4HjKPFf/XNBcrybW0YDI9xUhlM3UGcgJ+Tsc0D1YlkSgG1l
-	Om+thuw8zjCSHCjljf4wdexmN74O+I9qXP3G8sCvEalZTFZYX/UpJfg71rCKohA7IYXscCDeTBizW
-	iK1OGd2MqNnJEPXFIjZA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=z7spHrtrmZ67UDugotEBvSpqHnqw9d1kgSzqBqUyyH8=; b=1tBa6NWrDO1C5SsSiawYKlx7WC
+	gsEUpWAfJs/Sg3JP9/VGLDWjN1fE8ED9AfrxcH2+Sxin0egx6XiLleL0OylvwF1QJ3t0jshSxAEd4
+	fH34AIl09ow3S/U4MqIVTSdT1vqR/0pYfr2mjXFQnC9lQ2jyn2PwzPAT3cYXkl+PblJ5O5Y1XR18M
+	4k/Of6Zbe/LJI225LJrBaCbxM5VUHl8F52+JaPqbNNl0LgQtgfH0d10tWMHJCkslHj5INb1hgHLhp
+	W5gEQ+jw+6QdzMiJ+ZdCjS5sGkOpFRiyVjgCDG1hNBpQNv4efwlHJjZMhO7yBd5KftRi33EoU4wgf
+	wIsrvDig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1S8B-00ANgw-2Z;
-	Tue, 23 May 2023 13:32:51 +0000
-Received: from mail-io1-xd2d.google.com ([2607:f8b0:4864:20::d2d])
+	id 1q1SCV-00AOBQ-36;
+	Tue, 23 May 2023 13:37:19 +0000
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1S88-00ANfU-0o
-	for linux-mediatek@lists.infradead.org;
-	Tue, 23 May 2023 13:32:49 +0000
-Received: by mail-io1-xd2d.google.com with SMTP id ca18e2360f4ac-76c626eb5d1so102768939f.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 23 May 2023 06:32:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1684848765; x=1687440765;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=qO7uVfTZIwTK5eWidHNY3IE4aDCiaYIaf7Mtd0r6B0Y=;
-        b=AdDSWc374YkjBgXBqZkOGXJEqTjlWF/NQfuCT+T28Ac81kbhUmpZNweNpMxV5xnoOb
-         bVR7GnLyOlo0z4N9Su4a9ocYTfuk4QBPGpagurg0c+sX/TXSYfq9b95KucsA5e79VhN0
-         sajjM1Ghdbsyk3hosRLD/UMMvJC9ObydFf3IM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684848765; x=1687440765;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=qO7uVfTZIwTK5eWidHNY3IE4aDCiaYIaf7Mtd0r6B0Y=;
-        b=fWMBXLwlz/B8vuVPtf24KzEqj7GBbjJyHKaAVWSuQCiyxXpYSH5LGkmcRO7MhKA4cY
-         IVdipTFznRDETD1ogjNGH4IHXSSRp+70hACT4HnRcbCemaH82p7hDZ+15Ib6EQmJkFGi
-         9W8kXCv7mmISYNDhnjoFNJY+K2h7u/arauGHEskSn72mtKdI/CiYQEJYn4WVKTY1WNVt
-         Io6O0/HgTdtPKKSTYRVXindLsLdk9oC+n7uygPcRhqwObqvDvDPdjifYdsGwCmavV41u
-         POjYzOxz7EhFuTRbtfu2qQxVIlVysxpAhdgdfo3LfFhX4Vc0ixay8xo5zCYm1Te75KC8
-         VZvA==
-X-Gm-Message-State: AC+VfDwORWCJAB/S7XaKc67be1VjYi1GZzE8WNndg33LU5P9iNR1PALi
-	Uz326e33GxwjBhhCkZWx7cLbeQXldtkhDbl+uGg=
-X-Google-Smtp-Source: ACHHUZ7gGTURyP+BX9kbI6MVojug7A0CKzIOFfh+plY/UxLcWKSaQuNK7kxF9t9Osy7Tltw8eGG43Q==
-X-Received: by 2002:a92:cb84:0:b0:335:56cb:a3a with SMTP id z4-20020a92cb84000000b0033556cb0a3amr9139577ilo.16.1684848764883;
-        Tue, 23 May 2023 06:32:44 -0700 (PDT)
-Received: from mail-il1-f182.google.com (mail-il1-f182.google.com. [209.85.166.182])
-        by smtp.gmail.com with ESMTPSA id o22-20020a02a1d6000000b0041650ca49casm2506620jah.83.2023.05.23.06.32.42
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 23 May 2023 06:32:42 -0700 (PDT)
-Received: by mail-il1-f182.google.com with SMTP id e9e14a558f8ab-33828a86ee2so168345ab.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 23 May 2023 06:32:42 -0700 (PDT)
-X-Received: by 2002:a05:6e02:1d0f:b0:329:333e:4e79 with SMTP id
- i15-20020a056e021d0f00b00329333e4e79mr252495ila.1.1684848762023; Tue, 23 May
- 2023 06:32:42 -0700 (PDT)
-MIME-Version: 1.0
-References: <20230427035656.1962698-1-fshao@chromium.org> <CAD=FV=XVubT-ozs7JssBPz+9UcsZb+q0My8Aq6HNs-nFiJnogg@mail.gmail.com>
- <nycvar.YFH.7.76.2305231510270.29760@cbobk.fhfr.pm>
-In-Reply-To: <nycvar.YFH.7.76.2305231510270.29760@cbobk.fhfr.pm>
-From: Doug Anderson <dianders@chromium.org>
-Date: Tue, 23 May 2023 06:32:30 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=UyEw5xViGreQb6+cLNLrMcT27ts5P87aR=FEYWNOBM_w@mail.gmail.com>
-Message-ID: <CAD=FV=UyEw5xViGreQb6+cLNLrMcT27ts5P87aR=FEYWNOBM_w@mail.gmail.com>
-Subject: Re: [PATCH v4 0/2] Fix Goodix touchscreen power leakage for MT8186 boards
-To: Jiri Kosina <jikos@kernel.org>
+	id 1q1SCS-00AOAC-1J;
+	Tue, 23 May 2023 13:37:18 +0000
+Received: from pps.filterd (m0353727.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 34NDSIMF005983;
+	Tue, 23 May 2023 13:36:44 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=message-id : subject :
+ from : to : cc : date : in-reply-to : references : content-type :
+ content-transfer-encoding : mime-version; s=pp1;
+ bh=z7spHrtrmZ67UDugotEBvSpqHnqw9d1kgSzqBqUyyH8=;
+ b=l5uV2H3ANZt7cmqCfqUK5iS9kT0j0cD2CAjfqHTCGgJkRbP3QBIsXTwqRZt2wQX0lI/K
+ uMnNa3cTxU6YXpQlj233RxDVbXdBt6Zte8kNBs8NkH75pYYPLPK24T+jobk4K/3eu+fx
+ 630m5oGuTHAlOtHNoCpIsVOlatZQ1lDpZGDYSZQ21dB0kv2OGYBzIZDznKF3kSlNDvl/
+ AVKMM8aBKX4IVHOwnhXMaY0Eoya6Gtmu+rqNQXi/NZOzk4gTc7Myn/AUWGR2EDDelmaJ
+ y9+s0c6p3YmEAfNC7agEkSinBX8RLB52Tsd+zw/bGkU+klE60Ex065xFYNSLtemrnMkX MA== 
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3qrws21ke0-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 23 May 2023 13:36:43 +0000
+Received: from m0353727.ppops.net (m0353727.ppops.net [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 34NDSYQS009096;
+	Tue, 23 May 2023 13:36:41 GMT
+Received: from ppma03fra.de.ibm.com (6b.4a.5195.ip4.static.sl-reverse.com [149.81.74.107])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3qrws21j46-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 23 May 2023 13:36:41 +0000
+Received: from pps.filterd (ppma03fra.de.ibm.com [127.0.0.1])
+	by ppma03fra.de.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 34N8atFS000463;
+	Tue, 23 May 2023 13:36:03 GMT
+Received: from smtprelay03.fra02v.mail.ibm.com ([9.218.2.224])
+	by ppma03fra.de.ibm.com (PPS) with ESMTPS id 3qppe097k8-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 23 May 2023 13:36:03 +0000
+Received: from smtpav01.fra02v.mail.ibm.com (smtpav01.fra02v.mail.ibm.com [10.20.54.100])
+	by smtprelay03.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 34NDZxfm14418472
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Tue, 23 May 2023 13:35:59 GMT
+Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id AE48220043;
+	Tue, 23 May 2023 13:35:59 +0000 (GMT)
+Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 7F73E2004B;
+	Tue, 23 May 2023 13:35:57 +0000 (GMT)
+Received: from [9.171.22.235] (unknown [9.171.22.235])
+	by smtpav01.fra02v.mail.ibm.com (Postfix) with ESMTP;
+	Tue, 23 May 2023 13:35:57 +0000 (GMT)
+Message-ID: <5935f5ffdead164cfaedd067cd948d7c551a99ac.camel@linux.ibm.com>
+Subject: Re: [PATCH v9 5/6] iommu/dma: Allow a single FQ in addition to
+ per-CPU FQs
+From: Niklas Schnelle <schnelle@linux.ibm.com>
+To: Robin Murphy <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>,
+        Matthew Rosato <mjrosato@linux.ibm.com>, Will Deacon <will@kernel.org>,
+        Wenjia Zhang <wenjia@linux.ibm.com>, Jason Gunthorpe <jgg@ziepe.ca>
+Cc: Gerd Bayer <gbayer@linux.ibm.com>, Julian Ruess <julianr@linux.ibm.com>,
+        Pierre Morel <pmorel@linux.ibm.com>,
+        Alexandra Winter
+ <wintera@linux.ibm.com>,
+        Heiko Carstens <hca@linux.ibm.com>, Vasily Gorbik
+ <gor@linux.ibm.com>,
+        Alexander Gordeev <agordeev@linux.ibm.com>,
+        Christian
+ Borntraeger <borntraeger@linux.ibm.com>,
+        Sven Schnelle
+ <svens@linux.ibm.com>,
+        Suravee Suthikulpanit
+ <suravee.suthikulpanit@amd.com>,
+        Hector Martin <marcan@marcan.st>, Sven
+ Peter <sven@svenpeter.dev>,
+        Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+        David
+ Woodhouse <dwmw2@infradead.org>,
+        Lu Baolu <baolu.lu@linux.intel.com>, Andy
+ Gross <agross@kernel.org>,
+        Bjorn Andersson <andersson@kernel.org>,
+        Konrad
+ Dybcio <konrad.dybcio@linaro.org>,
+        Yong Wu <yong.wu@mediatek.com>,
+        Matthias
+ Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,
+        Gerald Schaefer
+ <gerald.schaefer@linux.ibm.com>,
+        Orson Zhai <orsonzhai@gmail.com>,
+        Baolin
+ Wang <baolin.wang@linux.alibaba.com>,
+        Chunyan Zhang <zhang.lyra@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+        Jernej Skrabec <jernej.skrabec@gmail.com>,
+        Samuel Holland <samuel@sholland.org>,
+        Thierry Reding
+ <thierry.reding@gmail.com>,
+        Krishna Reddy <vdumpa@nvidia.com>,
+        Jonathan
+ Hunter <jonathanh@nvidia.com>,
+        Jonathan Corbet <corbet@lwn.net>, linux-s390@vger.kernel.org,
+        netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+        iommu@lists.linux.dev, asahi@lists.linux.dev,
+        linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+        linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
+        linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
+Date: Tue, 23 May 2023 15:35:57 +0200
+In-Reply-To: <b1e53f39-5e0b-a09d-2954-cdc9e8592b67@arm.com>
+References: <20230310-dma_iommu-v9-0-65bb8edd2beb@linux.ibm.com>
+	 <20230310-dma_iommu-v9-5-65bb8edd2beb@linux.ibm.com>
+	 <b1e53f39-5e0b-a09d-2954-cdc9e8592b67@arm.com>
 Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.48.1 (3.48.1-1.fc38) 
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: 8LV3zvez_FivvhCrjxTltho7FnbQWNLm
+X-Proofpoint-ORIG-GUID: kjDiC2gMyraUPuAC5gMZ4Q10X1c7HWl8
 Content-Transfer-Encoding: quoted-printable
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+MIME-Version: 1.0
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.573,FMLib:17.11.176.26
+ definitions=2023-05-23_09,2023-05-23_02,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 clxscore=1015 adultscore=0
+ mlxscore=0 suspectscore=0 lowpriorityscore=0 mlxlogscore=999 spamscore=0
+ malwarescore=0 impostorscore=0 priorityscore=1501 bulkscore=0 phishscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2304280000
+ definitions=main-2305230106
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230523_063248_314903_9479733F 
-X-CRM114-Status: GOOD (  30.59  )
+X-CRM114-CacheID: sfid-20230523_063716_451651_89246F75 
+X-CRM114-Status: GOOD (  39.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,85 +158,92 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Stephen Kitt <steve@sk2.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Benjamin Tissoires <benjamin.tissoires@redhat.com>, linux-mediatek <linux-mediatek@lists.infradead.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-input@vger.kernel.org, Jeff LaBundy <jeff@labundy.com>, Matthias Kaehlcke <mka@chromium.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Mon, 2023-05-22 at 17:26 +0100, Robin Murphy wrote:
+> On 2023-05-15 10:15, Niklas Schnelle wrote:
+> > In some virtualized environments, including s390 paged memory guests,
+> > IOTLB flushes are used to update IOMMU shadow tables. Due to this, they
+> > are much more expensive than in typical bare metal environments or
+> > non-paged s390 guests. In addition they may parallelize more poorly in
+> > virtualized environments. This changes the trade off for flushing IOVAs
+> > such that minimizing the number of IOTLB flushes trumps any benefit of
+> > cheaper queuing operations or increased paralellism.
+> >=20
+> > In this scenario per-CPU flush queues pose several problems. Firstly
+> > per-CPU memory is often quite limited prohibiting larger queues.
+> > Secondly collecting IOVAs per-CPU but flushing via a global timeout
+> > reduces the number of IOVAs flushed for each timeout especially on s390
+> > where PCI interrupts may not be bound to a specific CPU.
+> >=20
+> > Let's introduce a single flush queue mode that reuses the same queue
+> > logic but only allocates a single global queue. This mode can be
+> > selected as a flag bit in a new dma_iommu_options struct which can be
+> > modified from its defaults by IOMMU drivers implementing a new
+> > ops.tune_dma_iommu() callback. As a first user the s390 IOMMU driver
+> > selects the single queue mode if IOTLB flushes are needed on map which
+> > indicates shadow table use. With the unchanged small FQ size and
+> > timeouts this setting is worse than per-CPU queues but a follow up patch
+> > will make the FQ size and timeout variable. Together this allows the
+> > common IOVA flushing code to more closely resemble the global flush
+> > behavior used on s390's previous internal DMA API implementation.
+> >=20
+> > Link: https://lore.kernel.org/linux-iommu/3e402947-61f9-b7e8-1414-fde00=
+6257b6f@arm.com/
+> > Reviewed-by: Matthew Rosato <mjrosato@linux.ibm.com> #s390
+> > Signed-off-by: Niklas Schnelle <schnelle@linux.ibm.com>
+> > ---
+> >   drivers/iommu/dma-iommu.c  | 163 ++++++++++++++++++++++++++++++++++--=
+---------
+> >   drivers/iommu/dma-iommu.h  |   4 +-
+> >   drivers/iommu/iommu.c      |  18 +++--
+> >   drivers/iommu/s390-iommu.c |  10 +++
+> >   include/linux/iommu.h      |  21 ++++++
+> >   5 files changed, 169 insertions(+), 47 deletions(-)
+> >=20
+---8<---
+> >=20=20=20
+> > +/**
+> > + * struct dma_iommu_options - Options for dma-iommu
+> > + *
+> > + * @flags: Flag bits for enabling/disabling dma-iommu settings
+> > + *
+> > + * This structure is intended to provide IOMMU drivers a way to influe=
+nce the
+> > + * behavior of the dma-iommu DMA API implementation. This allows optim=
+izing for
+> > + * example for a virtualized environment with slow IOTLB flushes.
+> > + */
+> > +struct dma_iommu_options {
+> > +#define IOMMU_DMA_OPTS_PER_CPU_QUEUE	(0L << 0)
+> > +#define IOMMU_DMA_OPTS_SINGLE_QUEUE	(1L << 0)
+> > +	u64	flags;
+> > +};
+>=20
+> I think for now this can just use a bit in dev_iommu to indicate that=20
+> the device will prefer a global flush queue; s390 can set that in=20
+> .probe_device, then iommu_dma_init_domain() can propagate it to an=20
+> equivalent flag in the cookie (possibly even a new cookie type?) that=20
+> iommu_dma_init_fq() can then consume. Then just make the s390 parameters=
+=20
+> from patch #6 the standard parameters for a global queue.
+>=20
+> Thanks,
+> Robin.
 
-On Tue, May 23, 2023 at 6:11=E2=80=AFAM Jiri Kosina <jikos@kernel.org> wrot=
-e:
->
-> On Fri, 19 May 2023, Doug Anderson wrote:
->
-> > > These changes are based on the series in [1], which modified the
-> > > i2c-hid-of-goodix driver and removed the workaround for a power leaka=
-ge
-> > > issue, so the issue revisits on Mediatek MT8186 boards (Steelix).
-> > >
-> > > The root cause is that the touchscreen can be powered in different wa=
-ys
-> > > depending on the hardware designs, and it's not as easy to come up wi=
-th
-> > > a solution that is both simple and elegant for all the known designs.
-> > >
-> > > To address the issue, I ended up adding a new boolean property for th=
-e
-> > > driver so that we can control the power up/down sequence depending on
-> > > that.
-> > >
-> > > Adding a new property might not be the cleanest approach for this, bu=
-t
-> > > at least the intention would be easy enough to understand, and it
-> > > introduces relatively small change to the code and fully preserves th=
-e
-> > > original control flow.
-> > > I hope this is something acceptable, and I'm open to any better
-> > > approaches.
-> > >
-> > > [1] https://lore.kernel.org/all/20230207024816.525938-1-dianders@chro=
-mium.org/
-> > >
-> > > Changes in v4:
-> > > - Minor coding style improvement
-> > >
-> > > Changes in v3:
-> > > - In power-down, only skip the GPIO but not the regulator calls if th=
-e
-> > >   flag is set
-> > >
-> > > Changes in v2:
-> > > - Use a more accurate property name and with "goodix," prefix.
-> > > - Do not change the regulator_enable logic during power-up.
-> > >
-> > > Fei Shao (2):
-> > >   dt-bindings: input: goodix: Add "goodix,no-reset-during-suspend"
-> > >     property
-> > >   HID: i2c-hid: goodix: Add support for "goodix,no-reset-during-suspe=
-nd"
-> > >     property
-> > >
-> > >  .../bindings/input/goodix,gt7375p.yaml           |  9 +++++++++
-> > >  drivers/hid/i2c-hid/i2c-hid-of-goodix.c          | 16 ++++++++++++++=
-+-
-> > >  2 files changed, 24 insertions(+), 1 deletion(-)
-> >
-> > Just double-checking if there is any work needed on this series. I
-> > think it's ready to land but I wanted to double-check.
->
-> I don't think I've been CCed on the dt-binding part (patch 1/2 I guess).
-> Has it been Acked? If so, I will happily take it through hid.git, but
-> please send it my way.
+Working on this now. How about I move the struct dma_iommu_options
+definition into dma-iommu.c keeping it as part of struct
+iommu_dma_cookie. That way we can still have the flags, timeout and
+queue size organized the same but internal to dma-iommu.c. We then set
+them in iommu_dma_init_domain() triggered by a "shadow_on_flush" flag
+in struct dev_iommu. That way we can keep most of the same code but
+only add a single flag as external interface. The flag would also be an
+explicit fact about a distinctly IOMMU device thing just stating that
+the IOTLB flushes do extra shadowing work. This leaves the decision to
+then use a longer timeout and queue size within the responsibility of
+dma-iommu.c. I think that's overall a better match of responsibilities.
 
-Yeah, Rob Acked it:
-
-https://lore.kernel.org/r/168261692866.3205353.5077242811275926416.robh@ker=
-nel.org/
-
-Fei: can you repost the series with collected tags and make sure to CC Jiri=
-?
-
-Thanks!
-
--Doug
+Thanks,
+Niklas
 
