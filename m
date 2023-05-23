@@ -4,52 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3052CC7EE2D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 May 2023 02:59:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75E09C7EE26
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 May 2023 02:59:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=EYHLzjnloppL/snrvVTR+FnWYr8UbSrI+Iea2UuIhIo=; b=qCrH2+i8p2FteVhvL2FFhIw7Y1
-	IzeK6Di59OzU4ez3prY4tKXG4U54bPPRWNfQKHAmCEL+Q1PYevy+aIVM++wJM5s99uMz8tjI2ig5n
-	CK9804LC1FSqaOI1ibYab7URfOl2WEUKRmkkMxO4W9ATozHOkveunqkFbEKK+2Yq2b+rhcbXnZy3k
-	aSrikgEORURd3fdqU9m96eeUc86RJn2tytDTA8R1IoI2hIpDdvAPkjNeYPqAf0/Yvc63Mj8ZK4cIY
-	XADrJGiHnFPoc8Is9h2UC6n/e0PpANnbpy68PCF8Oo/J4CtpxouP3MAXPQ6nkw7g2c0Y0wFiKShDx
-	HFtCL/SA==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xAqn1KruCdx2EZzBuCbck+aI8EqCLgKQVJzvJgdn2lw=; b=IzuX54wQmPrNT9lRq8K7SwUHXq
+	YBfpSvw5/qE2uhe1RWeSVRPNZh4UlboW+dyH2IXqSnCKa6SN1wgjMb2tIanxGrTOL/v1fhIVym1OR
+	m4udAJKdl70ymPFVHZ8xaz/u8S1aHPxfP8Fea7wP/RtWmtNmqHoyiHcd2wvZenloCDcBooGmg3fPp
+	HCQv2pexNLUjVE1tST8hhSqADex0H7UPB6sf8lOsih5NccpqF55c26IXDV/pe9UQo7J5DQgR/0cT5
+	QlfBsMX/O6LWoT9izUqCyQK2eXqccnDF99rtg0ppxoBHzdX2iCZVLqvjFd1UuhMPpgyXrApuGX41U
+	oFLQKWcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1IFW-008knR-33;
-	Tue, 23 May 2023 02:59:46 +0000
+	id 1q1IFe-008kr8-07;
+	Tue, 23 May 2023 02:59:54 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1IFT-008klX-0f;
-	Tue, 23 May 2023 02:59:44 +0000
-X-UUID: da8620f8f91511ed83ed1395ce914268-20230522
+	id 1q1IFU-008klX-1R;
+	Tue, 23 May 2023 02:59:45 +0000
+X-UUID: daa0921cf91511ed83ed1395ce914268-20230522
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=EYHLzjnloppL/snrvVTR+FnWYr8UbSrI+Iea2UuIhIo=;
-	b=ucqPg5HgTGvKiYzk/BKhGQKklo9zf3qZPMp1YqwrOVkpeUqQnuZvJZ//hbGnXD3IAKyHFl1xbIFqzKTT5pLa3IH3d84oqYHT5Qzio6CKFyBIZtjbAWonTAXMu38jG5hB7UX7ur2Ya7O9PJOC8JpMcJ1DC5OAcATOrZUh0K92aoE=;
+	h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=xAqn1KruCdx2EZzBuCbck+aI8EqCLgKQVJzvJgdn2lw=;
+	b=d/WY78kkA65AiI4Iy0CDQp/B5VA0riMBjeY7xtxboQMVEbL6CgsgXRlyRUWgoe+4ZkU4W3bwUQy2s0owUHcL4+T6jXXP/QDWAOmL4EIihaNclTj7V7vWHcUa85fkennCXMC4+zxrJqultj2WccoMA/0sAtc3B57G63prjXzG9oo=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.25,REQID:5f497833-527e-4951-8f4c-745f3f95c433,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:95
-X-CID-INFO: VERSION:1.1.25,REQID:5f497833-527e-4951-8f4c-745f3f95c433,IP:0,URL
-	:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTION
-	:quarantine,TS:95
-X-CID-META: VersionHash:d5b0ae3,CLOUDID:ad51ad6c-2f20-4998-991c-3b78627e4938,B
-	ulkID:230523105937NXVLJJ9E,BulkQuantity:3,Recheck:0,SF:38|29|28|17|19|48,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
-	OSI:0,OSA:0,AV:0
+X-CID-O-INFO: VERSION:1.1.25,REQID:8f439433-6f74-4801-af68-dfe180df76c5,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:d5b0ae3,CLOUDID:9f4b083c-de1e-4348-bc35-c96f92f1dcbb,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-UUID: da8620f8f91511ed83ed1395ce914268-20230522
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+X-UUID: daa0921cf91511ed83ed1395ce914268-20230522
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <trevor.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1891154751; Mon, 22 May 2023 19:59:37 -0700
+	with ESMTP id 2017299492; Mon, 22 May 2023 19:59:37 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Tue, 23 May 2023 10:59:34 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -66,18 +62,19 @@ CC: <trevor.wu@mediatek.com>, <yc.hung@mediatek.com>,
 	<tinghan.shen@mediatek.com>, <sound-open-firmware@alsa-project.org>,
 	<alsa-devel@alsa-project.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: [PATCH v2 0/2] ASoC: SOF: add mt8188 audio support
-Date: Tue, 23 May 2023 10:59:31 +0800
-Message-ID: <20230523025933.30494-1-trevor.wu@mediatek.com>
+Subject: [PATCH v2 1/2] ASoC: SOF: mediatek: add mt8188 audio support
+Date: Tue, 23 May 2023 10:59:32 +0800
+Message-ID: <20230523025933.30494-2-trevor.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230523025933.30494-1-trevor.wu@mediatek.com>
+References: <20230523025933.30494-1-trevor.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230522_195943_256049_C36124DB 
-X-CRM114-Status: UNSURE (   7.12  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230522_195944_494692_BA842A45 
+X-CRM114-Status: GOOD (  13.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,20 +89,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series adds mt8188 audio support and dbg_dump callback for
-mt8186 and mt8188.
+Add mt8188 dai driver and specify of_machine to support mt8188 audio.
 
-Changes since v1:
-  - fix typo
-  - adopt reviewer's suggestion
+Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+Reviewed-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+Reviewed-by: Yaochun Hung <yc.hung@mediatek.com>
+Reviewed-by: Péter Ujfalusi <peter.ujfalusi@linux.intel.com>
+---
+ sound/soc/sof/mediatek/mt8186/mt8186.c | 61 +++++++++++++++++++++++++-
+ 1 file changed, 60 insertions(+), 1 deletion(-)
 
-Trevor Wu (2):
-  ASoC: SOF: mediatek: add mt8188 audio support
-  ASoC: SOF: mediatek: add adsp debug dump
-
- sound/soc/sof/mediatek/mt8186/mt8186.c | 83 +++++++++++++++++++++++++-
- 1 file changed, 82 insertions(+), 1 deletion(-)
-
+diff --git a/sound/soc/sof/mediatek/mt8186/mt8186.c b/sound/soc/sof/mediatek/mt8186/mt8186.c
+index 419913c8474d..cc91c2928fb6 100644
+--- a/sound/soc/sof/mediatek/mt8186/mt8186.c
++++ b/sound/soc/sof/mediatek/mt8186/mt8186.c
+@@ -594,7 +594,65 @@ static const struct sof_dev_desc sof_of_mt8186_desc = {
+ 	.ops = &sof_mt8186_ops,
+ };
+ 
++/*
++ * DL2, DL3, UL4, UL5 are registered as SOF FE, so creating the corresponding
++ * SOF BE to complete the pipeline.
++ */
++static struct snd_soc_dai_driver mt8188_dai[] = {
++{
++	.name = "SOF_DL2",
++	.playback = {
++		.channels_min = 1,
++		.channels_max = 2,
++	},
++},
++{
++	.name = "SOF_DL3",
++	.playback = {
++		.channels_min = 1,
++		.channels_max = 2,
++	},
++},
++{
++	.name = "SOF_UL4",
++	.capture = {
++		.channels_min = 1,
++		.channels_max = 2,
++	},
++},
++{
++	.name = "SOF_UL5",
++	.capture = {
++		.channels_min = 1,
++		.channels_max = 2,
++	},
++},
++};
++
++/* mt8188 ops */
++static struct snd_sof_dsp_ops sof_mt8188_ops;
++
++static int sof_mt8188_ops_init(struct snd_sof_dev *sdev)
++{
++	/* common defaults */
++	memcpy(&sof_mt8188_ops, &sof_mt8186_ops, sizeof(sof_mt8188_ops));
++
++	sof_mt8188_ops.drv = mt8188_dai;
++	sof_mt8188_ops.num_drv = ARRAY_SIZE(mt8188_dai);
++
++	return 0;
++}
++
++static struct snd_sof_of_mach sof_mt8188_machs[] = {
++	{
++		.compatible = "mediatek,mt8188",
++		.sof_tplg_filename = "sof-mt8188.tplg",
++	},
++	{}
++};
++
+ static const struct sof_dev_desc sof_of_mt8188_desc = {
++	.of_machines = sof_mt8188_machs,
+ 	.ipc_supported_mask	= BIT(SOF_IPC),
+ 	.ipc_default		= SOF_IPC,
+ 	.default_fw_path = {
+@@ -607,7 +665,8 @@ static const struct sof_dev_desc sof_of_mt8188_desc = {
+ 		[SOF_IPC] = "sof-mt8188.ri",
+ 	},
+ 	.nocodec_tplg_filename = "sof-mt8188-nocodec.tplg",
+-	.ops = &sof_mt8186_ops,
++	.ops = &sof_mt8188_ops,
++	.ops_init = sof_mt8188_ops_init,
+ };
+ 
+ static const struct of_device_id sof_of_mt8186_ids[] = {
 -- 
 2.18.0
 
