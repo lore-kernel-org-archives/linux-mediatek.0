@@ -4,76 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 390FFC7EE26
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 May 2023 11:26:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0F5DC7EE26
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 May 2023 11:28:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Lvk3JaTrwPLSWWOaMLoAICxAPDtCTseef/dYBEf8duA=; b=ayZBXnNJXOpY5cVg/w+cJjnRUs
-	ebBEuzEwTfXa3edrVKmTg5Dp5/rHslcFZIhcbHGMdcGIxE6AG/4YXnRbHYTkATli3Dy8qftwGJlHN
-	KG/VuETkxgdz12wNZZtttCN/jy5jCmgc4E8lvcxlaFF4rPTFUkw9XIpRShvpgOlf3x43xhCGtLt8S
-	vfOvwWvs2YkgTfsDN9NJ3sq13w0zOtFuZ2umsXaQUX+Y+YWeH96bKigv4mybifKKwbQx5UXA4437q
-	o1lHZKZpCWqZoU4b0gMK/D/dmkV05lhMDqy3gtf3993R8O/f19WCz7SYfpjJ87AVGW59tU2vOQ5MG
-	7rdCjo+A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=de919cKCe4wT4S260hv+KZxN0tV8ssN9pP3EBr3fXco=; b=kxZh2wQDjz0GaQL4Sv+AuBzIKH
+	RykyAaBw2MOOdJs751UnpFqBa1gpPC7Cf/Lh8B6iZY/LclFbPXg5viqcbOb6pwnI+nrYs7y1ZNgUM
+	b1SfZ7sf/PlaIsr5M0GL37nzB34eA52wlEvTlbbfgHZEkB62gVKH5EMUdwt5Ujc/hVRLehp1G5S6a
+	1JYOsc4lG/3ciGk9YO/qiSrhcwDmOTEQ/5LMchCwMjPR1rujmT77Ch3H73cTBJ/wBrdc+p/Ws/PfU
+	YfkH7VCt3CuykZRcbrYPoR/aMK6HqvKfr6bATF8d4FjJ+XeHvUPjcbfRaC436eVJtceC/YUzDgf6L
+	30VzlR9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1QA0-00A4Ug-1g;
-	Tue, 23 May 2023 11:26:36 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1q1QBt-00A4sh-02;
+	Tue, 23 May 2023 11:28:33 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1Q9y-00A4SO-0D;
-	Tue, 23 May 2023 11:26:35 +0000
-X-UUID: a3ff8866f95c11ed83ed1395ce914268-20230523
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Lvk3JaTrwPLSWWOaMLoAICxAPDtCTseef/dYBEf8duA=;
-	b=FXAaU5RGXzQ2kOenbv8WN45X6C1EVfjzi2hGrA6cTe8njHl1SKRbSJRI/4Nu42Vk4Fm4vSmaGY47sLqI4Uu+rX5kWIydghPvRWVnUBlLY6LbqPku/yeJOqnQnKPmUlu+pgZm/Ucj+3nG5P1JCAdr37zmL8iwAez33WWJdaEscBc=;
-X-CID-UNFAMILIAR: 1
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.25,REQID:3d2c14b8-c227-492b-a202-35953c26f440,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:95
-X-CID-INFO: VERSION:1.1.25,REQID:3d2c14b8-c227-492b-a202-35953c26f440,IP:0,URL
-	:0,TC:0,Content:-5,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
-	ON:quarantine,TS:95
-X-CID-META: VersionHash:d5b0ae3,CLOUDID:ebca183c-de1e-4348-bc35-c96f92f1dcbb,B
-	ulkID:230523192622HC64XX48,BulkQuantity:0,Recheck:0,SF:29|28|16|19|48,TC:n
-	il,Content:0,EDM:-3,IP:nil,URL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-	,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-UUID: a3ff8866f95c11ed83ed1395ce914268-20230523
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <qii.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 465120374; Tue, 23 May 2023 04:26:20 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.194) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 23 May 2023 19:26:17 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 23 May 2023 19:26:17 +0800
-From: <qii.wang@mediatek.com>
-To: <broonie@kernel.org>
-CC: <matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
-	<linux-spi@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<srv_heupstream@mediatek.com>, <leilk.liu@mediatek.com>,
-	<qii.wang@mediatek.com>, "Tim . Kuo" <Tim.kuo@mediatek.com>
-Subject: [PATCH] spi: mediatek: advertise the availability of Dual and Quad mode
-Date: Tue, 23 May 2023 19:26:08 +0800
-Message-ID: <20230523112608.10298-1-qii.wang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1q1QBn-00A4qq-2b
+	for linux-mediatek@lists.infradead.org;
+	Tue, 23 May 2023 11:28:31 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-3f608074b50so15481575e9.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 23 May 2023 04:28:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1684841305; x=1687433305;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=de919cKCe4wT4S260hv+KZxN0tV8ssN9pP3EBr3fXco=;
+        b=P8jxl9ew7AY7pYFsvzp2552hspigR6Z9lTpMrx/E/rm0e9IVC3n86B9YEwEivObDJL
+         pnKZVxH6JW3C7k0XuIoSYxW7ST2AQFmiyT8AK+Cdf4KW1E6Nxh2aOrbPP8VXJjL0icbQ
+         tjFstIeHLlMxleXsg5vBL3c/Do6TW7Xi6cH9nTNfKt4Qy8vP3p5bNa3F1lBR0jdICuoY
+         jkfK40NRUmzqYK1DBInaQADMSh/vP4OpRURdNPpkdhT0N+vlN5db0iVSZ1qKfw6aOmoM
+         Ss8eeVP1m1v0Ax1plx4Yij+URN26nen6sEwae7yzxtDWpFCjmb2uT5EL4pspmsja6FER
+         aaFg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1684841305; x=1687433305;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=de919cKCe4wT4S260hv+KZxN0tV8ssN9pP3EBr3fXco=;
+        b=Gd53A/FKutHV8lrkb0r6zzZOCfaXkNiuffWE/OuIKoqDVtsZpZ8IR+oOT82LpXkk1T
+         OA6KHgQsgmAJ5Z9j1t7xKl2Ili0Ihz5Y5zEmvqZgMcLpU/T3JZiVjetSM8x2EOIV8IlF
+         sQcWlwSV0UxcEbW9mFGm/jmsmhnjdp2yJRscL2sW+fIyiLlvfiHDZeawBlOv/D3NIPHq
+         5oU0kcrwZ7EbDiYIXk2tdqHJKZZwYkxqnI5/ixTgMly+807JQWRBB7CU8rZ9qsVzOUQA
+         FtiJRNV+roeMzsQm/QJrrMDGGW9ttrvYbgK0fRmKPITAzmNyrugOPlo08d3SOfZcmhtq
+         nsgA==
+X-Gm-Message-State: AC+VfDzargtZiIdCHXuDxo52kDjftXsdf013ILY+arPt/1KnKQTjq3LJ
+	53x8K/m3A/T2lYlEkxPB1vmqqw==
+X-Google-Smtp-Source: ACHHUZ6ZUa+nR/kj5kFbDcpE0lUe0Vuodny5XRTkBlniwziBN4L/FCtuVVfY4htvApP+nKiAfJ0p4Q==
+X-Received: by 2002:a05:600c:ac5:b0:3f6:44e:9d8 with SMTP id c5-20020a05600c0ac500b003f6044e09d8mr4801602wmr.22.1684841305153;
+        Tue, 23 May 2023 04:28:25 -0700 (PDT)
+Received: from [192.168.1.172] (158.22.5.93.rev.sfr.net. [93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id p19-20020a05600c205300b003f60101074dsm9380658wmg.33.2023.05.23.04.28.24
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 23 May 2023 04:28:24 -0700 (PDT)
+Message-ID: <b0a1d728-6ef5-9cca-4cb9-18e35df61748@baylibre.com>
+Date: Tue, 23 May 2023 13:28:23 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH v5 4/4] clocksource/drivers/timer-mediatek: Make
+ timer-mediatek become loadable module
+Content-Language: en-US
+To: walter.chang@mediatek.com, Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "Maciej W . Rozycki" <macro@orcam.me.uk>, John Stultz <jstultz@google.com>
+Cc: wsd_upstream@mediatek.com, stanley.chu@mediatek.com,
+ Chun-hung.Wu@mediatek.com, Freddy.Hsin@mediatek.com,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20230517022557.24388-1-walter.chang@mediatek.com>
+ <20230517022557.24388-5-walter.chang@mediatek.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <20230517022557.24388-5-walter.chang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230523_042634_133092_E56FF749 
-X-CRM114-Status: GOOD (  11.35  )
+X-CRM114-CacheID: sfid-20230523_042829_240331_5F940AAB 
+X-CRM114-Status: UNSURE (   7.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,32 +103,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Qii Wang <qii.wang@mediatek.com>
+On 17/05/2023 04:25, walter.chang@mediatek.com wrote:
+> Make the timer-mediatek driver which can register
+> an always-on timer as tick_broadcast_device on
+> MediaTek SoCs become loadable module in GKI.
 
-this patch advertise the availability of Dual and Quad SPI mode
-for ipm design.
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
-Signed-off-by: Qii Wang <qii.wang@mediatek.com>
-Signed-off-by: Tim.Kuo <Tim.kuo@mediatek.com>
----
- drivers/spi/spi-mt65xx.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
-index 21c321f43766..1501ee8459ff 100644
---- a/drivers/spi/spi-mt65xx.c
-+++ b/drivers/spi/spi-mt65xx.c
-@@ -1144,7 +1144,8 @@ static int mtk_spi_probe(struct platform_device *pdev)
- 	if (mdata->dev_comp->must_tx)
- 		master->flags = SPI_MASTER_MUST_TX;
- 	if (mdata->dev_comp->ipm_design)
--		master->mode_bits |= SPI_LOOP;
-+		master->mode_bits |= SPI_LOOP | SPI_RX_DUAL | SPI_TX_DUAL |
-+				     SPI_RX_QUAD | SPI_TX_QUAD;
- 
- 	if (mdata->dev_comp->ipm_design) {
- 		mdata->dev = dev;
--- 
-2.25.1
 
 
