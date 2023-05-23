@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33919C7EE26
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 May 2023 02:21:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24351C77B75
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 May 2023 02:39:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Sfj8k51ecj9c8HcMdn1rWW9Isz6l/fhmsTFfGJOkg14=; b=tq3z9JX0DmDvJzrX88iQKbtEy0
-	vFBZ9fC/XB3fnVy0GqsAlsvlpHP6Loca2clMOpCxLULp5ZdMLspUvsbaF3/PtqCWVrwuF1VrL0ypn
-	37fRcOLJD1daq4RcDYlphgKOZZE8cUdQ0/rownR5SrK7EPIJPUN2wCPXSZHT7DRRxvO/VurPXUmYB
-	6hOXcUzyNrM16UDbGpks9C/1C3Ri3nfnHQzkLz2oUKYyb8KYH0iZOFzdGUW+DY6BtHfol/DrSu61B
-	iM4wJNPKOn5JN5TRIX+K8VGYTTnvbmnWgPJm3zYkN2cnq6mpDCGD5GjG7XmQMTGj03IhBngOb1EQw
-	iHsF49Bw==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=4SVZPGbhJ5N66g97GSvBiW6bzWBET5n9wyQ0lreUVes=; b=vpKzl7y53NU+L84ETYl5ihf8OA
+	F6X2UZXW9ipeSdwzlEIZULZz9sh2HgaDmuEDpxfZEi7Yl+L6M0MrTfKdbKLefh7cvyJ3rXE0kqRje
+	7/zdsllChhz5K1NrBFOp1V9Lb/UVhuEL3iRq0O9AAQUZAMwkIZYw7NkM4rXuw9W7Z/wv+2jq5p6/7
+	dxuyTMI1dX905S8RXmkpb5IazzlmcfauGj4AE8wghGiVtJTgpEnXJonsJSd3dQYffQR3XmfY3S1Uw
+	hXGQ0quC0XIrO2M5D99gHoby96q/ufjW6rY4+oM8RL2lt0NzEIZPcaH/p5JGTdnp/TBJzpPpskV8/
+	67ESb3hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1HeD-008fs7-27;
-	Tue, 23 May 2023 02:21:13 +0000
+	id 1q1HwD-008hmc-0D;
+	Tue, 23 May 2023 02:39:49 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1HeA-008fqg-1q;
-	Tue, 23 May 2023 02:21:11 +0000
-X-UUID: 797bd410f91011ed83ed1395ce914268-20230522
+	id 1q1Hw8-008hlZ-2t;
+	Tue, 23 May 2023 02:39:46 +0000
+X-UUID: 0f21c644f91311ed83ed1395ce914268-20230522
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Sfj8k51ecj9c8HcMdn1rWW9Isz6l/fhmsTFfGJOkg14=;
-	b=Yd+i+f4Hgxz/fdLK0sqAjM9lX+BOi3pAyFMqxZb3w289ZW9fhd0sCATu7/qSO/ZHrw5tQklz5u+fyrD21fZZSz1oeWMxOPbLtL40g2gP9yD2InpwKa0aRnFRvlI877+ncj6nrPaNryWN+2vyLgU6qtBk/h46yIG/7/4Oi5qgihk=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=4SVZPGbhJ5N66g97GSvBiW6bzWBET5n9wyQ0lreUVes=;
+	b=lQb5KlcKkNTw1HA2ZswPkVQN1DhwNRAjiYNo8CEdX8M+Uw0sWeCPCVQoPleSp0T47LUEfCj0Q4kP3ENmR6W0dQHG3+MDqtnpV7q1l+INT/E8kvZqPTzhOCE+OaWetVn45Mcc60f6J85WoenuIl6xR3oIFyN+87p6GUWKoTlH/gI=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.25,REQID:e915612e-0612-40bc-ada6-ba8f0578dc97,IP:0,U
+X-CID-O-INFO: VERSION:1.1.25,REQID:a5ac2490-560b-4044-ac96-f5cd1b2f1dd8,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:d5b0ae3,CLOUDID:9e31b3c1-e32c-4c97-918d-fbb3fc224d4e,B
+X-CID-META: VersionHash:d5b0ae3,CLOUDID:6192073c-de1e-4348-bc35-c96f92f1dcbb,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
-X-UUID: 797bd410f91011ed83ed1395ce914268-20230522
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+X-UUID: 0f21c644f91311ed83ed1395ce914268-20230522
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <trevor.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1613127512; Mon, 22 May 2023 19:21:07 -0700
+	with ESMTP id 144628610; Mon, 22 May 2023 19:39:37 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 23 May 2023 10:19:35 +0800
+ 15.2.1118.26; Tue, 23 May 2023 10:19:34 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 23 May 2023 10:19:35 +0800
+ 15.2.1118.26 via Frontend Transport; Tue, 23 May 2023 10:19:34 +0800
 From: Trevor Wu <trevor.wu@mediatek.com>
 To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
 	<perex@perex.cz>, <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
@@ -59,18 +59,16 @@ To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
 CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
 	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>
-Subject: [PATCH v2 7/7] ASoC: dt-bindings: mediatek,mt8188-mt6359: add NAU8825 support
-Date: Tue, 23 May 2023 10:19:32 +0800
-Message-ID: <20230523021933.3422-8-trevor.wu@mediatek.com>
+Subject: [PATCH v2 0/7] ASoC: mt8188: add new board support
+Date: Tue, 23 May 2023 10:19:25 +0800
+Message-ID: <20230523021933.3422-1-trevor.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230523021933.3422-1-trevor.wu@mediatek.com>
-References: <20230523021933.3422-1-trevor.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230522_192110_613140_00798E57 
-X-CRM114-Status: GOOD (  11.22  )
+X-CRM114-CacheID: sfid-20230522_193944_944347_1EC5788D 
+X-CRM114-Status: GOOD (  11.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,76 +83,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add compatible string "mediatek,mt8188-nau8825" to support new board
-with nau8825 codec.
+In the series, we extend the capability of mt8188-mt6359 driver.
 
-Introduce two properties "dai-format" and "mediatek,clk-provider" under
-dai-link subnode to configure dai-link parameters via dts.
+The following changes are included.
+1. Divide ADDA BE dai into two dais for SOF.
+2. Register hdmi/dp jack pins.
+3. dai_fmt can be configured from device tree.
+4. Add some I2S codecs support.
 
-"codec" property is removed from required property of dai-link subnode.
-For co-clock case, it's possible two dai-links should be configured to
-the same dai format, but only one cpu dai is bound with codec.
+In addition, new compatible string "mediatek,mt8188-nau8825" is
+included for a new board support.
 
-Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
----
- .../sound/mediatek,mt8188-mt6359.yaml         | 26 ++++++++++++++++---
- 1 file changed, 23 insertions(+), 3 deletions(-)
+Changes since v1:
+  - add "Headphone Jack" for Nau8825
+  - separate binding patch 2 from patch 6, and rename the subject
+  - clean up debugfs for freed widget
 
-diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
-index 3d2c01b693be..05e532b5d50a 100644
---- a/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
-+++ b/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
-@@ -11,7 +11,9 @@ maintainers:
- 
- properties:
-   compatible:
--    const: mediatek,mt8188-mt6359-evb
-+    enum:
-+      - mediatek,mt8188-mt6359-evb
-+      - mediatek,mt8188-nau8825
- 
-   model:
-     $ref: /schemas/types.yaml#/definitions/string
-@@ -61,11 +63,28 @@ patternProperties:
-         required:
-           - sound-dai
- 
-+      dai-format:
-+        description: audio format.
-+        items:
-+          enum:
-+            - i2s
-+            - right_j
-+            - left_j
-+            - dsp_a
-+            - dsp_b
-+
-+      mediatek,clk-provider:
-+        $ref: /schemas/types.yaml#/definitions/string
-+        description: Indicates dai-link clock master.
-+        items:
-+          enum:
-+            - cpu
-+            - codec
-+
-     additionalProperties: false
- 
-     required:
-       - link-name
--      - codec
- 
- additionalProperties: false
- 
-@@ -86,7 +105,8 @@ examples:
-             "AIN1", "Headset Mic";
-         dai-link-0 {
-             link-name = "ETDM3_OUT_BE";
--
-+            dai-format = "i2s";
-+            mediatek,clk-provider = "cpu";
-             codec {
-                 sound-dai = <&hdmi0>;
-             };
+Trevor Wu (7):
+  ASoC: mediatek: mt8188: separate ADDA playback dai from capture dai
+  ASoC: dt-bindings: mediatek,mt8188-mt6359: remove ADDA_BE from
+    link-name
+  ASoC: mediatek: mt8188-mt6359: register hdmi/dp jack pins
+  ASoC: mediatek: common: soundcard driver add dai_fmt support
+  ASoC: soc-dapm.c: clean up debugfs for freed widget
+  ASoC: mediatek: mt8188-mt6359: support new board with nau88255
+  ASoC: dt-bindings: mediatek,mt8188-mt6359: add NAU8825 support
+
+ .../sound/mediatek,mt8188-mt6359.yaml         |  27 +-
+ sound/soc/mediatek/Kconfig                    |   4 +
+ .../mediatek/common/mtk-soundcard-driver.c    |  49 ++-
+ sound/soc/mediatek/mt8188/mt8188-afe-common.h |   3 +-
+ sound/soc/mediatek/mt8188/mt8188-dai-adda.c   |  73 ++--
+ sound/soc/mediatek/mt8188/mt8188-mt6359.c     | 389 +++++++++++++++++-
+ sound/soc/soc-dapm.c                          |  16 +
+ 7 files changed, 507 insertions(+), 54 deletions(-)
+
 -- 
 2.18.0
 
