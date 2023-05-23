@@ -4,74 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B120EC7EE2E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 May 2023 19:50:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3833BC7EE23
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 May 2023 21:44:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iAjqXKhIdWZfpO2eUFkAed4Af5kE1UIVwAKUMfVHlEA=; b=bUxKbM5aQ8kIxec/ypxfvcZ7Df
-	Qeqq/0Pxsr7pcFjm+QhNzFtaHpkJ3KXkBQkHdkxbHRzKz4I/Qfg79Y0gbOTSu0Fc4W1Q+4hCXBkZJ
-	XjJKw9heRckTig5Uw1ygdVwQGxxHFZbKFbeNNXmOQ3bWQLCcb9wa6aXcQxfIiaKtG/8/dSenQvDNr
-	17J8Cwg/oeX7wGCNpfwr2PZVqMdD0ZBQxOgievPnlY31HPnGehbd06/hoLqgukdjrinH/4dR0ITJX
-	6t9nV0iPgFuOygDvjVDL4ENZUL7C49UgPqADquuMBvVRTLPK8n1p0VvGhotP7lJY9GNBr/eGBdgON
-	fSl9CHWQ==;
+	bh=Qfr8BVoS5TAgp4fCwBPfbPOjbXBAs4tfZrHfmN3CuBw=; b=D710w0TIiLnH2OJBNZa/XKiJ3d
+	PG4v/4LxlSQJSDlFfjz3FuF/gbksQ86G8+ueVIRC6HgRSYbfVKNhApNIxTKnIbR7An0IQcqOY4G4U
+	B80+4vP0bjJl4nwv4r7ROok2lTo5bQ5UY2os0e2cU/HuEaYA1WJ+alXVE9wiGqdQm/BONdaJynjF9
+	Vw3sLEPsRKIkCoLCH4K5d0YNUeLlSIEyvSdkNl1KcLfKjxBtdz3GnI3r43LuGBYzEb7cCHN9bGBbF
+	73xUJRgKDp197yoI4ER9D6UT8MHlCgMgXCG9j+w4J1UU+P7RwFLDziHvZ6woG8qamrPw3nAjugOwq
+	CFtqG1zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1Y1b-00BI3J-2V;
-	Tue, 23 May 2023 19:50:27 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1q1Zne-00BWIh-0K;
+	Tue, 23 May 2023 21:44:10 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1Y1X-00BI1k-02;
-	Tue, 23 May 2023 19:50:24 +0000
+	id 1q1Zna-00BWIC-1B;
+	Tue, 23 May 2023 21:44:07 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 89B10629C7;
-	Tue, 23 May 2023 19:50:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D24A4C433D2;
-	Tue, 23 May 2023 19:50:14 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id DCB99625BD;
+	Tue, 23 May 2023 21:44:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D798FC433D2;
+	Tue, 23 May 2023 21:44:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1684871422;
-	bh=UWa2AeMFPzYhFvGJKx4IJB8Xp9f2d2gLz7s4ekBTywI=;
+	s=k20201202; t=1684878245;
+	bh=aMl8XSo6MAGNcouj2r0VodRBmRxEH/7FWMSr7kUooIk=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=Od6/0EzqGQz2cgrAkFnoJfDZhlpLvRvrJXUJirKGy8xvBVAKj2KEqQcuNafYW3kFb
-	 m8TrWyjlqKWDkdRogJXBpIHnKB3vmhkyCDEfAYpwUkNrvpZmTrACyZKIMqY/eMP4Ci
-	 +KdZ41TiIHjbperNgsTXNCzen8sKMMFSmZJ1deK9TIgwE69Z7w1vjHgC7ef4peeUCz
-	 UIin1KghHbDjSqjnZ4CTcY7uEZKspGmvRstEWvq2E5IlPkAemPog9AjbqRN+MMS/sp
-	 mjqxHLhHbLPe2ICjJYnzuF4gJ2QX+eo1O5IgW1IYYZq/SL42GtXYF6hYFnGisc3VhP
-	 ElFhSqCzyntGw==
+	b=tjSA5U+NoSiz6ZoJmbQJK45dwGsdDMEhNmzvUZaejH8oRc2vJlqaDRTZUflFch0rd
+	 DnWr9fz+bio2zkQHI3MY1gpw+qbTpkQ2rgcPF5c5F5AfaBBbQiaU0jny6DtFW7Z/KO
+	 nQQvwBCemNOgUPPwpBu6VLMnCTjllEH/TKAhxGbkDSrWfJTFpeu8zuKVEMJg1tcrAo
+	 U9JqoAbRAITAfxrmx7AhMdVY1ocNyav7ZhgVyaSDg8VgIJDQCSWFokDkvahFvNgWdu
+	 U/xYu/ULg5ZsaJQN0i+MuiKcIr9kgucz0bPYjNNxUqzZxs7gpu5eehmGBlrikH/AjJ
+	 q/AfUqIMRvTsw==
 From: Mark Brown <broonie@kernel.org>
-To: perex@perex.cz, tiwai@suse.com, lgirdwood@gmail.com, 
- oder_chiou@realtek.com, shengjiu.wang@gmail.com, Xiubo.Lee@gmail.com, 
- festevam@gmail.com, nicoleotsuka@gmail.com, shawnguo@kernel.org, 
- s.hauer@pengutronix.de, kernel@pengutronix.de, linux-imx@nxp.com, 
- cezary.rojewski@intel.com, pierre-louis.bossart@linux.intel.com, 
- peter.ujfalusi@linux.intel.com, yung-chuan.liao@linux.intel.com, 
- ranjani.sridharan@linux.intel.com, kai.vehmanen@linux.intel.com, 
+To: lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, 
  matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
- srinivas.kandagatla@linaro.org, bgoswami@quicinc.com, vkoul@kernel.org, 
- daniel.baluta@nxp.com, thierry.reding@gmail.com, jonathanh@nvidia.com, 
- jarkko.nikula@bitmer.com, Claudiu Beznea <claudiu.beznea@microchip.com>
-Cc: alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, 
- patches@opensource.cirrus.com, linuxppc-dev@lists.ozlabs.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- sound-open-firmware@alsa-project.org, linux-tegra@vger.kernel.org, 
- linux-omap@vger.kernel.org
-In-Reply-To: <20230517094903.2895238-1-claudiu.beznea@microchip.com>
-References: <20230517094903.2895238-1-claudiu.beznea@microchip.com>
-Subject: Re: [PATCH v2 0/2] ASoC: do not include runtime_pm.h if not needed
-Message-Id: <168487141457.278276.14403684308927400047.b4-ty@kernel.org>
-Date: Tue, 23 May 2023 20:50:14 +0100
+ Trevor Wu <trevor.wu@mediatek.com>
+Cc: bicycle.tsai@mediatek.com, ting-fang.hou@mediatek.com, 
+ alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+In-Reply-To: <20230508071532.21665-1-trevor.wu@mediatek.com>
+References: <20230508071532.21665-1-trevor.wu@mediatek.com>
+Subject: Re: [PATCH 0/4] ASoC: mt6359: kselftest fix and driver extension
+Message-Id: <168487824257.297010.16948141699377522681.b4-ty@kernel.org>
+Date: Tue, 23 May 2023 22:44:02 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.13-dev-bfdf5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230523_125023_093082_0493BE9C 
-X-CRM114-Status: GOOD (  15.16  )
+X-CRM114-CacheID: sfid-20230523_144406_462052_679272BC 
+X-CRM114-Status: GOOD (  13.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,14 +76,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 17 May 2023 12:49:01 +0300, Claudiu Beznea wrote:
-> Series removes the pm_runtime.h inclusion in files where
-> APIs exported though pm_runtime.h are not used. In case
-> of files that make use of pm.h which comes form pm_runtime.h
-> added patch 2/2.
+On Mon, 08 May 2023 15:15:28 +0800, Trevor Wu wrote:
+> The patch series includes a kselftest fix and changes for extending
+> driver capability to support more use cases.
 > 
-> Changes were built with allmodconfig on ARM and x86_64 and checked
-> all the changed files were built at least once.
+> Trevor Wu (4):
+>   ASoC: mediatek: mt6359: add supply for MTKAIF
+>   ASoC: mediatek: mt6359: fix kselftest error of playback gain
+>   ASoC: mediatek: mt6359: add mtkaif gpio setting
+>   ASoC: mediatek: mt6359: update route for lineout mux
 > 
 > [...]
 
@@ -103,10 +94,14 @@ Applied to
 
 Thanks!
 
-[1/2] ASoC: do not include pm_runtime.h if not used
-      commit: 2f3092e77f98fcfc0d653846591401bfe2a5232e
-[2/2] ASoC: use pm.h instead of runtime_pm.h
-      commit: a9392efae9f5de42673cfc1b81ac6fb88bdb26b2
+[1/4] ASoC: mediatek: mt6359: add supply for MTKAIF
+      commit: 1a3eb4bb9826fd317358113ca048ed60184c6442
+[2/4] ASoC: mediatek: mt6359: fix kselftest error of playback gain
+      commit: acd4d219798769a6c1080bcfa7953e165dd8d681
+[3/4] ASoC: mediatek: mt6359: add mtkaif gpio setting
+      commit: 24f398e74ba0a53bc95421f7eb139f4dc0207bb2
+[4/4] ASoC: mediatek: mt6359: update route for lineout mux
+      commit: 104ce27bcbfb204001a300498aa192235bd0836f
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
