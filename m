@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 443D6C7EE26
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 May 2023 23:37:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54566C7EE26
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 May 2023 23:41:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WX5csrk7AmfC1OJwG3UD0ZOtLhxUh9JVb1PSnJ6cOJU=; b=fNml3wn/EvZ7JvvKFQHpbfaDOz
-	8BRrfG6YVNfVVJ5wJBN/+e9FoeEdmksKPEgciWcIcc4toOPFncdkYeSrudPjDb4j+bbe1q2sAhZD+
-	0CkApolE9Tk5sUAdcQdC0lc+3b6+vhpW4PACx8yyQqRGhnjrWtxpmOBb/hWG8r7JQbNt793d9l1lV
-	YJt73gXukw1MkLtRuyJdCvwk3Y4gXQG+xyOd+pGyv8o8o/9YYoVO6C9HUQlO+JNOU3+AEkspaq/XU
-	kT+GOUsEl+y727YqnPg1G4C+FljfnjJnIiN1d3Mdpwni7EZu6OgOeZjzDhfrWypfbY+oVDBQKVNwY
-	FVPLhypw==;
+	bh=x4bKN3ZI9dbZNCt524aR0Dd/liOmfjaxlLXLdzdDj4M=; b=eBOBGDXdofJXZ8IVJCn9StX0xQ
+	ry3VR3QvH5qZmv/2Bd/QmLqXwsWUQaT4oRZvmP/7qt63aWVcUmp7QcC7Q0eNzeQq3pdW02mmkjPrh
+	xFjC5RA7hBwgCAIQUXqaJ9n6K0qgEpSCpML/Jx2k2ALy/IGgOGHit4c4rIknXlWq8bzododwWw9WN
+	nC/XIWGVo5sXttm3UU4gMFeMCC9pxR6Tb5PNw6J2/BH3ply5kXG0FNGB8Hy7yclPeyAgs7sjCEVNz
+	MiHYu3ne092mui4LmgxVbLrLQEY9guFz1aDwbFlutoQpZxw/IIRBO4IihZ2r7YlAPgO+zb/lVltQr
+	/htQCqnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1bZV-00BoCk-1x;
-	Tue, 23 May 2023 23:37:41 +0000
+	id 1q1bd3-00Boie-1N;
+	Tue, 23 May 2023 23:41:21 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1bZU-00BoC1-0P;
-	Tue, 23 May 2023 23:37:40 +0000
+	id 1q1bd0-00Bohq-2v;
+	Tue, 23 May 2023 23:41:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Sender:Reply-To:Content-ID:Content-Description;
-	bh=WX5csrk7AmfC1OJwG3UD0ZOtLhxUh9JVb1PSnJ6cOJU=; b=jSmqeIPVJt4xwEX58woSUeJhak
-	ixmgeL1nPmlRFL1KHgprvWBeLYZr1EYf4QhTmsp+/vc9HrlRzbBvNYLM5WKHHXXs5l/GF6NPaBd+L
-	lVZ6rc5Q9w/SMGVqru3eCFfp6HVe/Wcgy+nlZ1ZX+iK7qcBpOoDaLpIFFxsghjuP8V6jMr8O3VV2X
-	6yTlwDwYTbI5LOa3qzQ/+FjzqN9xvyxyk+/YRvAtd5FF2zrE8jMFQWhXa8evjNH+BdjjoSjWA6IKw
-	/bPde1NglyIWaqIIYAALXLxAlvF4W0v2DYCITGBTarAAVKMriVvuskFcyorCku4L2LW+kCq7TYd4h
-	8qwec0xA==;
+	bh=x4bKN3ZI9dbZNCt524aR0Dd/liOmfjaxlLXLdzdDj4M=; b=PeokA/NKfESiJXGgvI5wjdeEmP
+	/8s7DUL32x6HuqGIr5AU5C/xJ26DTmGsmn6CfQBX45Vp3XKVTXG9zFVthAX6uw/rX3XXYbAwVhnkF
+	mcMZfAmL9JTlW9+CGoEvRfXGALLowVHWEppaCpXaWMbLsFy2kTNJXlEBEPh8AmBO13ggZBy4hTb8Y
+	NDwZusBAIfEtzE3kNkshu9LGuyjSn6aJan4ZkNHgKyyIt6PI5yIPH/xCRdMZOCQ+x2YT2E9HFXU0j
+	UGUyx9EdFMkHMDJuZ6tr7Be0Oes4BUfBYwVs49gfrYvKL/HnqZFoHWdJgR+Qytc28LZNIvsq7P+BQ
+	stfvYD+g==;
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1bZP-003eNz-2U;
-	Tue, 23 May 2023 23:37:38 +0000
+	id 1q1bcx-003eS7-1o;
+	Tue, 23 May 2023 23:41:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Transfer-Encoding:Content-Disposition:
 	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:From:
 	Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Content-Disposition:
-	In-Reply-To:References; bh=WX5csrk7AmfC1OJwG3UD0ZOtLhxUh9JVb1PSnJ6cOJU=; b=cT
-	v2yn5MWHm7WnxfZNMDlrSPfdiY7hNyz+pSewTb2MRxfXzkqKRW4U0X96moi6cHDK7LBwhsPyhJy5B
-	O4lELn8Z4EKGc7c1AXQAWGH148CtHN5uOhGLdIaf0uA02WtbNTh/ySf5W82wnlHKruYIXiAsyvc60
-	dQZ4MoIs3x0Qyz0=;
+	In-Reply-To:References; bh=x4bKN3ZI9dbZNCt524aR0Dd/liOmfjaxlLXLdzdDj4M=; b=BS
+	YSvEV8gWjnWZKg3eIJTRcAxoNROwJstbj41MGY3yGMP7rccqeeieBH3Kx8lhYlcNQKCuCqSldgNsU
+	09kGW21QtU3XED0xjqruUIkE2SLySM97pMTrAhkoNFCtfqyeNNe1AK9RIGfTHB1dnSjGsYzifaX+J
+	Gkq49Cj15j+WWm8=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1q1bZ7-00Djfb-25; Wed, 24 May 2023 01:37:17 +0200
-Date: Wed, 24 May 2023 01:37:17 +0200
+	id 1q1bcd-00Djho-TS; Wed, 24 May 2023 01:40:55 +0200
+Date: Wed, 24 May 2023 01:40:55 +0200
 From: Andrew Lunn <andrew@lunn.ch>
 To: arinc9.unal@gmail.com
-Subject: Re: [PATCH net-next 05/30] net: dsa: mt7530: read XTAL value from
- correct register
-Message-ID: <4f782e73-6ab3-46d2-bf14-4970332adbbe@lunn.ch>
+Subject: Re: [PATCH net-next 12/30] net: dsa: mt7530: move XTAL check to
+ mt7530_setup()
+Message-ID: <dcac517e-60e1-4a39-8c7a-0a00ac682553@lunn.ch>
 References: <20230522121532.86610-1-arinc.unal@arinc9.com>
- <20230522121532.86610-6-arinc.unal@arinc9.com>
+ <20230522121532.86610-13-arinc.unal@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230522121532.86610-6-arinc.unal@arinc9.com>
+In-Reply-To: <20230522121532.86610-13-arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230524_003735_966290_11193544 
-X-CRM114-Status: GOOD (  10.25  )
+X-CRM114-CacheID: sfid-20230524_004115_969400_ADFD06C0 
+X-CRM114-Status: GOOD (  10.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,17 +83,14 @@ Cc: linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, mithat.gun
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 22, 2023 at 03:15:07PM +0300, arinc9.unal@gmail.com wrote:
+On Mon, May 22, 2023 at 03:15:14PM +0300, arinc9.unal@gmail.com wrote:
 > From: Arınç ÜNAL <arinc.unal@arinc9.com>
 > 
-> On commit 7ef6f6f8d237 ("net: dsa: mt7530: Add MT7621 TRGMII mode support")
-> macros for reading the crystal frequency were added under the MT7530_HWTRAP
-> register. However, the value given to the xtal variable on
-> mt7530_pad_clk_setup() is read from the MT7530_MHWTRAP register instead.
+> The crystal frequency concerns the switch core. The frequency should be
+> checked when the switch is being set up so the driver can reject the
+> unsupported hardware earlier and without requiring port 6 to be used.
 > 
-> Although the document MT7621 Giga Switch Programming Guide v0.3 states that
-> the value can be read from both registers, use the register where the
-> macros were defined under.
+> Move it to mt7530_setup().
 > 
 > Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 > Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
