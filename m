@@ -4,98 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B113C77B75
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 May 2023 07:25:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A375DC77B75
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 May 2023 08:23:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hh1M/PyhqnPF3gHXcsPzIKqPXVy0TQ5XWDVGt8r34Cw=; b=HO62LiJQbv6an+tAhPrTnE5EFy
-	sAfVVTgi3EYyEOYouXSTmNkfihq5Wl37gUkpXFma9bHMg84L0P7oBXKOvKW2Z4Qs6z8JZFW5/i3JL
-	hYNTWiuhB7R4I+6wAXBP4dzglOUaPCo5WcdKITA/rz3K/Q7B1bnVqAAGDXte0y1Va7ZNMGwT7oeyb
-	xmojo5+AhNxSsBQA5OnJQ8KSeXQTK4gwe1K2BCONMqj6prlOFnB9tzL3JtIPFoBEs4fetTJq4PzUL
-	dd0/GsK3MIRN3ZEPY/r39Hl8rHMgeTstGJ3eH+1RnnqCA5WYRXpV4+gCPQ9UNxPi3lb8TVS7gqMjc
-	u87abvCA==;
+	bh=uL1K7Jn4HAic+IgVkKP1XlX31FYJK1MaHHXhjAWowJ0=; b=OR/qQSB5uL6fjsgj3bv8OEcIeF
+	188bAxHC46mjEjRXQxnuucjsi3oyy+TbIVVJcDDvJOwH+JllQZnsYgcg0wad5NiT6vKrLkt/nKMRj
+	gkpJY8qk24olzJRGrr+88svUgLBpBEmoMnNYqnul/aSqDrkEGvIueQjx23IReIhZnqhudbSv9DJ3K
+	8tZMTHKso9M1+p1Vb1F8NDXJjdNpWHOhxZIcX2Sk5yNpoyIJbqg46ZSshkRyY09JoY3sAyjLbxvMZ
+	YN08rRGJoFs6EykdKdORdHrQkpr83l6xC6AjKqYjUFwpzZ+AEunExKI+VUExI/8l8A0GQ5VHBPHTV
+	O6/dd8mA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1MOm-009DJ6-2t;
-	Tue, 23 May 2023 07:25:36 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1q1NIt-009QVb-2F;
+	Tue, 23 May 2023 08:23:35 +0000
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1MOg-009DHc-10;
-	Tue, 23 May 2023 07:25:35 +0000
-Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-3f417ea5252so47645945e9.0;
-        Tue, 23 May 2023 00:25:29 -0700 (PDT)
+	id 1q1NIo-009QSd-3B
+	for linux-mediatek@lists.infradead.org;
+	Tue, 23 May 2023 08:23:32 +0000
+Received: by mail-pf1-x42f.google.com with SMTP id d2e1a72fcca58-64d41d8bc63so2946297b3a.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 23 May 2023 01:23:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1684826728; x=1687418728;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=hh1M/PyhqnPF3gHXcsPzIKqPXVy0TQ5XWDVGt8r34Cw=;
-        b=MbWTUJK0onitNaT4PQy7LWYs3/eCrjGWOztlNDkwLuKrPc2NB3ITFEKXZNPSCQBVkm
-         IsDCDKehWZ8npbFaRSGkKIfRvHD8P75fyk5si+zzsFeFE8w/tJz3S7O1mOUp7Mt7HTdT
-         r6LF5FjChUepkHIWCN4SCllJcZNcSGNLmnC3zqHu1xZ7+jWeJ7IYlfbR7gxLtDkH4JKX
-         mxay8Vb1CJPUnjMgALNdyy5NHyJTWR0JvVa/hBUlmukAz3edKWeYRZ8sytnO6b0QbvCw
-         JlsLc6mnPtF81xYjLlCDrGVNDeM1Zij5DB32GhWHgEDPh620Z76Sx5nLWt4mZOCnoR8i
-         ZMOA==
+        d=chromium.org; s=google; t=1684830206; x=1687422206;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=uL1K7Jn4HAic+IgVkKP1XlX31FYJK1MaHHXhjAWowJ0=;
+        b=K8t6nEGPIf7y3OejF9cTpMxnD9f+IW2kWI9UIlGC20nPW30gOWHERdjr6twKYnrIQb
+         QkNF4wUUq8oTWG92/932f0pd2DK0OK+b7dhpcbaHPj/r9W9lHWUg6/WvFBf1Sl28+o7N
+         kC2FdVg2RL14xlZe11fCBnzKut3m/jcfchZH8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684826728; x=1687418728;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=hh1M/PyhqnPF3gHXcsPzIKqPXVy0TQ5XWDVGt8r34Cw=;
-        b=Gr01qjRY8lrAc7JUv5h/g6q5eL45rwbAG1zbGhKswIenp+rTfuUWCwRg8Qs1HlapT2
-         wN9jIwjU8R7L76yBZTiNoqtfusvKJ+XYzgodi/5h1ckD7kuBuD0CoYX8i/X+ksugxvlI
-         7S+LpiVCzcmH/zBxNhelMtpmKeyhcA4H6WAiwjsQpXAiHGsekUGR1ajan3BN3CzE273R
-         J4abXxaHsNpnwC98nZ0ds3x4P4oe71nyS8qSJgyaoV+KIoQZM3DAFi71X8yNfdtYNPTJ
-         JJmuy9QvZWA+MTosSCmuLOHRG6Th9zSQ1p6JOjeHwdrJa4A6Q3RpBRcaO9dX1phn1K05
-         6CKA==
-X-Gm-Message-State: AC+VfDyfmjiaoRZcYDucMYRVSQhG0/zQG/pbte48IZ0BtlXPZoXlV5XK
-	MFH//213qvic5VscsaSBBIc=
-X-Google-Smtp-Source: ACHHUZ6TvcH4VxLvgQZWHCNak2I8mUxXM2ty6AS9EVucuJhjX5yJLuwW0XNYUI3IR6a9XcTU9oOJTg==
-X-Received: by 2002:a1c:4c10:0:b0:3f4:5058:a033 with SMTP id z16-20020a1c4c10000000b003f45058a033mr9372191wmf.24.1684826728204;
-        Tue, 23 May 2023 00:25:28 -0700 (PDT)
-Received: from localhost (host81-154-179-160.range81-154.btcentralplus.com. [81.154.179.160])
-        by smtp.gmail.com with ESMTPSA id h1-20020a1ccc01000000b003eddc6aa5fasm13988260wmb.39.2023.05.23.00.25.26
+        d=1e100.net; s=20221208; t=1684830206; x=1687422206;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=uL1K7Jn4HAic+IgVkKP1XlX31FYJK1MaHHXhjAWowJ0=;
+        b=WoTXmLaMsIuqwpG/toXNs18ybxOkLpPhU/iWbEyfRtzBa4iufhlSoYhZ9+RYric4uR
+         KyDwQLPMzWcu2i0gpnGOdR/p21pogj87Co0r0tLvcb03nzXrQKjZYk9Uhyt1LtT0ivCk
+         PlrmuD1a6ruWP+SMb8qKAhnMvWiaaHEDYw3+t/8lYMV3YE+5UPIfz35yVHwKQBnYCZmm
+         OcnTOB2iZb+vUmBiJxsJqvBVy9lmoBz9xKLpRR8LFo7E6tnVrBfE/LRJyD8N8yRoUuYk
+         DFQYBmQcS+JysztpL5k+E10t+yCvz2kCXLgddkj99CEqEMUvomNaDfBhFsp2UQg9OJzv
+         fn+A==
+X-Gm-Message-State: AC+VfDwEUHqy4ENi83MsgELncC31JhwdUX0os0yRCogy6ViGxmobU51e
+	eqDI5UwoWuDLkNBBs09CZLv9+w==
+X-Google-Smtp-Source: ACHHUZ7C/3gK4tglhoWtOSFtZQTN5c+zYptt2miKmcxSqwrtjSbJ8p63MmXN4dsy/YUXayz5Xy+O5A==
+X-Received: by 2002:a17:903:2796:b0:1ac:65ab:cf7b with SMTP id jw22-20020a170903279600b001ac65abcf7bmr13865631plb.9.1684830206026;
+        Tue, 23 May 2023 01:23:26 -0700 (PDT)
+Received: from chromium.org (0.223.81.34.bc.googleusercontent.com. [34.81.223.0])
+        by smtp.gmail.com with ESMTPSA id g23-20020a170902869700b001aafa2e4716sm6134855plo.264.2023.05.23.01.23.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 23 May 2023 00:25:27 -0700 (PDT)
-Date: Tue, 23 May 2023 08:25:26 +0100
-From: Lorenzo Stoakes <lstoakes@gmail.com>
-To: John Hubbard <jhubbard@nvidia.com>
-Cc: David Hildenbrand <david@redhat.com>,
-	Sumit Garg <sumit.garg@linaro.org>,
-	Christoph Hellwig <hch@infradead.org>,
-	Xiaoming Ding <xiaoming.ding@mediatek.com>,
-	Jens Wiklander <jens.wiklander@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	op-tee@lists.trustedfirmware.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, fei.xu@mediatek.com,
-	srv_heupstream@mediatek.com, linux-mm@kvack.org
-Subject: Re: FOLL_LONGTERM vs FOLL_EPHEMERAL Re: [PATCH] tee: add
- FOLL_LONGTERM for CMA case when alloc shm
-Message-ID: <106e7886-ef02-4979-b96d-66d33cfa119c@lucifer.local>
-References: <CAFA6WYO+AvnbuAdWyBAQ8HkLaOno7PXdsPb9SubxrGNvAm4UnQ@mail.gmail.com>
- <ZGSLiiK/JzD5KMd7@infradead.org>
- <CAFA6WYPOMwmrA3J84AHzoD2eAtNkpMxr754qHpc-j6XRkgFFvQ@mail.gmail.com>
- <ZGSgCZrg+RjAbGO1@infradead.org>
- <CAFA6WYO+EpiECFxdVgmd-Ey9jq1Ybt78WupK_bW5+oDcW-soVQ@mail.gmail.com>
- <d4773626-6cf0-c929-c775-a84ac41fd719@redhat.com>
- <ZGWnq/dAYELyKpTy@infradead.org>
- <CAFA6WYPgvifYcj_MT7BBcC0BtQDWXV0u+HY8qv0M9nNyiCgkow@mail.gmail.com>
- <8b898768-a3c0-198d-a70c-9aa96b7f4a29@redhat.com>
- <1ced7f32-553e-2a5b-eec9-f794d7983d56@nvidia.com>
+        Tue, 23 May 2023 01:23:25 -0700 (PDT)
+Date: Tue, 23 May 2023 08:23:20 +0000
+From: Tomasz Figa <tfiga@chromium.org>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: m.szyprowski@samsung.com, mchehab@kernel.org, ming.qian@nxp.com,
+	shijie.qin@nxp.com, eagle.zhou@nxp.com, bin.liu@mediatek.com,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com,
+	yunfei.dong@mediatek.com, stanimir.k.varbanov@gmail.com,
+	quic_vgarodia@quicinc.com, agross@kernel.org, andersson@kernel.org,
+	konrad.dybcio@linaro.org, ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de, daniel.almeida@collabora.com,
+	hverkuil-cisco@xs4all.nl, laurent.pinchart@ideasonboard.com,
+	jernel@kernel.org, linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v2 5/8] media: v4l2: Add DELETE_BUF ioctl
+Message-ID: <20230523082320.akofzwevkhwswosm@chromium.org>
+References: <20230321102855.346732-1-benjamin.gaignard@collabora.com>
+ <20230321102855.346732-6-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <1ced7f32-553e-2a5b-eec9-f794d7983d56@nvidia.com>
+In-Reply-To: <20230321102855.346732-6-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230523_002530_354613_5F960799 
-X-CRM114-Status: GOOD (  41.32  )
+X-CRM114-CacheID: sfid-20230523_012331_024243_8FA2F4C2 
+X-CRM114-Status: GOOD (  34.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,117 +99,200 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 22, 2023 at 06:54:29PM -0700, John Hubbard wrote:
-> On 5/18/23 06:56, David Hildenbrand wrote:
-> > On 18.05.23 08:08, Sumit Garg wrote:
-> > > On Thu, 18 May 2023 at 09:51, Christoph Hellwig <hch@infradead.org> wrote:
-> > > >
-> > > > On Wed, May 17, 2023 at 08:23:33PM +0200, David Hildenbrand wrote:
-> > > > > In general: if user space controls it -> possibly forever -> long-term. Even
-> > > > > if in most cases it's a short delay: there is no trusting on user space.
-> > > > >
-> > > > > For example, iouring fixed buffers keep pages pinned until user space
-> > > > > decides to unregistered the buffers -> long-term.
-> > > > >
-> > > > > Short-term is, for example, something like O_DIRECT where we pin -> DMA ->
-> > > > > unpin in essentially one operation.
-> > > >
-> > > > Btw, one thing that's been on my mind is that I think we got the
-> > > > polarity on FOLL_LONGTERM wrong.  Instead of opting into the long term
-> > > > behavior it really should be the default, with a FOLL_EPHEMERAL flag
-> > > > to opt out of it.  And every users of this flag is required to have
-> > > > a comment explaining the life time rules for the pin..
+On Tue, Mar 21, 2023 at 11:28:52AM +0100, Benjamin Gaignard wrote:
+> VIDIOC_DELETE_BUF ioctl allows to delete a buffer from a queue.
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> ---
+>  .../userspace-api/media/v4l/user-func.rst     |  1 +
+>  .../media/v4l/vidioc-delete-buf.rst           | 51 ++++++++++++++++
+>  .../media/common/videobuf2/videobuf2-core.c   | 59 ++++++++++++++++++-
+>  .../media/common/videobuf2/videobuf2-v4l2.c   |  6 ++
+>  drivers/media/v4l2-core/v4l2-dev.c            |  1 +
+>  drivers/media/v4l2-core/v4l2-ioctl.c          | 10 ++++
+>  include/media/v4l2-ioctl.h                    |  4 ++
+>  include/media/videobuf2-core.h                |  9 +++
+>  include/media/videobuf2-v4l2.h                | 11 ++++
+>  include/uapi/linux/videodev2.h                |  1 +
+>  10 files changed, 152 insertions(+), 1 deletion(-)
+>  create mode 100644 Documentation/userspace-api/media/v4l/vidioc-delete-buf.rst
+> 
+> diff --git a/Documentation/userspace-api/media/v4l/user-func.rst b/Documentation/userspace-api/media/v4l/user-func.rst
+> index 228c1521f190..93e0a6a117fc 100644
+> --- a/Documentation/userspace-api/media/v4l/user-func.rst
+> +++ b/Documentation/userspace-api/media/v4l/user-func.rst
+> @@ -17,6 +17,7 @@ Function Reference
+>      vidioc-dbg-g-chip-info
+>      vidioc-dbg-g-register
+>      vidioc-decoder-cmd
+> +    vidioc-delete-buf
+>      vidioc-dqevent
+>      vidioc-dv-timings-cap
+>      vidioc-encoder-cmd
+> diff --git a/Documentation/userspace-api/media/v4l/vidioc-delete-buf.rst b/Documentation/userspace-api/media/v4l/vidioc-delete-buf.rst
+> new file mode 100644
+> index 000000000000..0e7ce58f91bc
+> --- /dev/null
+> +++ b/Documentation/userspace-api/media/v4l/vidioc-delete-buf.rst
+> @@ -0,0 +1,51 @@
+> +.. SPDX-License-Identifier: GFDL-1.1-no-invariants-or-later
+> +.. c:namespace:: V4L
+> +
+> +.. _VIDIOC_DELETE_BUF:
+> +
+> +************************
+> +ioctl VIDIOC_DELETE_BUF
+> +************************
+> +
+> +Name
+> +====
+> +
+> +VIDIOC_DELETE_BUF - Delete a buffer from a queue
+> +
+> +Synopsis
+> +========
+> +
+> +.. c:macro:: VIDIOC_DELETE_BUF
+> +
+> +``int ioctl(int fd, VIDIOC_DELETE_BUF, struct v4l2_buffer *argp)``
+> +
+> +Arguments
+> +=========
+> +
+> +``fd``
+> +    File descriptor returned by :c:func:`open()`.
+> +
+> +``argp``
+> +    Pointer to struct :c:type:`v4l2_buffer`.
 
-I couldn't agree more, based on my recent forays into GUP the interface
-continues to strike me as odd:-
+Would struct v4l2_create_buffers make more sense here? With it, we could
+actually make this ioctl VIDIOC_DELETE_BUF*S*, consistently with
+VIDIOC_CREATE_BUF*S* and allow the user space to remove a block of buffers
+the same way it created a block of buffers in the first place.
 
-- FOLL_GET is a wing and a prayer that nothing that
-  [folio|page]_maybe_dma_pinned() prevents happens in the brief period the
-  page is pinned/manipulated. So agree completely with David's concept of
-  unexporting that and perhaps carefully considering our use of
-  it. Obviously the comments around functions like gup_remote() make clear
-  that 'this page not be what you think it is' but I wonder whether many
-  callers of GUP _truly_ take that on board.
+> +
+> +Description
+> +===========
+> +
+> +Applications can optionally call the :ref:`VIDIOC_DELETE_BUF` ioctl to
+> +delete a buffer from a queue.
+> +
+> +The struct :c:type:`v4l2_buffer` structure is specified in
+> +:ref:`buffer`.
+> +
+> +Return Value
+> +============
+> +
+> +On success 0 is returned, on error -1 and the ``errno`` variable is set
+> +appropriately. The generic error codes are described at the
+> +:ref:`Generic Error Codes <gen-errors>` chapter.
+> +
+> +EBUSY
+> +    File I/O is in progress.
+> +
+> +EINVAL
+> +    The buffer ``index`` doesn't exist in the queue.
+> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+> index 3c6ced360770..ec241d726fe6 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-core.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
+> @@ -401,6 +401,24 @@ static void init_buffer_cache_hints(struct vb2_queue *q, struct vb2_buffer *vb)
+>  		vb->skip_cache_sync_on_finish = 1;
+>  }
+>  
+> +/*
+> + * __vb2_queue_get_free_index() - find a free index in the queue for vb2 buffer.
+> + *
+> + * Returns an index for vb2 buffer.
+> + */
+> +static int __vb2_queue_get_free_index(struct vb2_queue *q)
+> +{
+> +	int i;
+> +
+> +	spin_lock(&q->bufs_lock);
+> +	for (i = 0; i < q->max_num_bufs; i++)
+> +		if (!q->bufs[i])
+> +			break;
+> +	spin_unlock(&q->bufs_lock);
+> +
+> +	return i;
+> +}
 
-- FOLL_LONGTERM is entirely optional for PUP and you can just go ahead and
-  fragment page blocks to your heart's content. Of course this would be an
-  abuse, but abuses happen.
+Another reason to go with XArray, so that we don't have to open code
+index reclaim.
 
-- With the recent change to PUP/FOLL_LONGTERM disallowing dirty tracked
-  file-backed mappings we're now really relying on this flag indicating a
-  _long term_ pin semantically. By defaulting to this being switched on, we
-  avoid cases of callers who might end up treating the won't
-  reclaim/etc. aspect of PUP as all they care about while ignoring the
-  MIGRATE_MOVABLE aspect.
+> +
+>  /*
+>   * __vb2_queue_alloc() - allocate vb2 buffer structures and (for MMAP type)
+>   * video buffer memory for all buffers/planes on the queue and initializes the
+> @@ -427,7 +445,7 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
+>  		vb->state = VB2_BUF_STATE_DEQUEUED;
+>  		vb->vb2_queue = q;
+>  		vb->num_planes = num_planes;
+> -		vb->index = q->num_buffers + buffer;
+> +		vb->index = __vb2_queue_get_free_index(q);
+>  		vb->type = q->type;
+>  		vb->memory = memory;
+>  		init_buffer_cache_hints(q, vb);
+> @@ -1570,6 +1588,45 @@ int vb2_core_prepare_buf(struct vb2_queue *q, unsigned int index, void *pb)
+>  }
+>  EXPORT_SYMBOL_GPL(vb2_core_prepare_buf);
+>  
+> +int vb2_core_delete_buf(struct vb2_queue *q, unsigned int index)
+> +{
+> +	struct vb2_buffer *vb;
+> +
+> +	vb = vb2_get_buffer(q, index);
+> +	if (!vb) {
+> +		dprintk(q, 1, "invalid buffer index %d\n", index);
+> +		return -EINVAL;
+> +	}
+> +
+> +	if (vb->state == VB2_BUF_STATE_QUEUED) {
 
->
-> I see maybe 10 or 20 call sites today. So it is definitely feasible to add
-> documentation at each, explaining the why it wants a long term pin.
->
+How about other states? I'd probably only allow this when the state is
+DEQUEUED for simplicity. Is there a need to allow deleting buffers in
+other states?
 
-Yeah, my efforts at e.g. dropping vmas has been eye-opening in actually
-quite how often a refactoring like this often ends up being more
-straightforward than you might imagine.
+Also, do we need to synchronize this with other contexts which could change
+the buffer state?
 
-> > >
-> > > It does look like a better approach to me given the very nature of
-> > > user space pages.
-> >
-> > Yeah, there is a lot of historical baggage. For example, FOLL_GET should be inaccessible to kernel modules completely at one point, to be only used by selected core-mm pieces.
->
-> Yes. When I first mass-converted call sites from gup to pup, I just
-> preserved FOLL_GET behavior in order to keep from changing too much at
-> once. But I agree that that it would be nice to make FOLL_GET an
-> mm internal-only flag like FOLL_PIN.
+> +		dprintk(q, 1, "can't delete queued buffer index %d\n", index);
+> +		return -EINVAL;
+> +	}
+> +
 
-Very glad you did that work! And totally understandable as to you being
-conservative with that, but I think we're at a point where there's more
-acceptance of incremental improvements to GUP as a whole.
+Don't we also need to hold q->mmap_lock to prevent racing with an attempt
+to mmap the buffer?
 
-I have another patch series saved up for _yet more_ changes on this. But
-mindful of churn I am trying to space them out... until Jason nudges me of
-course :)
+> +	if (vb && vb->planes[0].mem_priv)
 
->
-> >
-> > Maybe we should even disallow passing in FOLL_LONGTERM as a flag and only provide functions like pin_user_pages() vs. pin_user_pages_longterm(). Then, discussions about conditional flag-setting are no more :)
-> >
-> > ... or even use pin_user_pages_shortterm() vs. pin_user_pages() ... to make the default be longterm.
-> >
->
-> Yes, it is true that having most gup flags be internal to mm does tend
-> to avoid some bugs. But it's also a lot of churn. I'm still on the fence
-> as to whether it's really a good move to do this for FOLL_LONGTERM or
-> not. But it's really easy to push me off of fences. :)
+nit: At this point it's not possible for vb to be NULL, since we already
+ruled that out a few lines above.
 
-*nudge* ;)
+> +		call_void_vb_qop(vb, buf_cleanup, vb);
+> +
+> +	/* Free MMAP buffers or release USERPTR buffers */
+> +	if (q->memory == VB2_MEMORY_MMAP)
+> +		__vb2_buf_mem_free(vb);
+> +	else if (q->memory == VB2_MEMORY_DMABUF)
+> +		__vb2_buf_dmabuf_put(vb);
+> +	else
+> +		__vb2_buf_userptr_put(vb);
+> +
+> +	vb2_queue_remove_buffer(q, vb);
+> +	kfree(vb);
+> +
+> +	q->num_buffers--;
+> +	if (!q->num_buffers) {
+> +		q->memory = VB2_MEMORY_UNKNOWN;
+> +		INIT_LIST_HEAD(&q->queued_list);
+> +	}
 
->
-> thanks,
-> --
-> John Hubbard
-> NVIDIA
->
+Would it make sense to refactor __vb2_queue_free() instead to take a
+range of buffer indexes rather than duplicating the code here?
 
-Looking at non-fast, non-FOLL_LONGTERM PUP callers (forgive me if I missed any):-
+Best regards,
+Tomasz
 
-- pin_user_pages_remote() in process_vm_rw_single_vec() for the
-  process_vm_access functionality.
-
-- pin_user_pages_remote() in user_event_enabler_write() in
-  kernel/trace/trace_events_user.c.
-
-- pin_user_pages_unlocked() in ivtv_udma_setup() in
-  drivers/media/pci/ivtv/ivtv-udma.c and ivtv_yuv_prep_user_dma() in ivtv-yuv.c.
-
-And none that actually directly invoke PUP without FOLL_LOGNTERM... That
-suggests that we could simply disallow non-FOLL_LONGTERM non-fast PUP calls
-altogether and move to pin_user_pages_longterm() [I'm happy to write a
-patch series doing this].
-
-The ivtv callers look like they really actually want FOLL_LONGTERM unless
-I'm missing something so we should probably change that too?
-
-I haven't surveyed the fast versions, but I think defaulting to
-FOLL_LONGTERM on them also makes sense.
 
