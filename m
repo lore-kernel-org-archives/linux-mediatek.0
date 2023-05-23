@@ -4,52 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E8E3C77B75
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 May 2023 07:00:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01E00C77B75
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 May 2023 07:15:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=WxBts+izImma4dqhNXYtF5Lmlti9eOhyq6o1cmpGCW4=; b=1BOwCVIeT1mL8kdQqX6Y2uT+xJ
-	jKW0q3Dy8yjM2Kia7Q0DKLcALPaj8QB6qdAb6XwZ7TgV1Z1mI95munEdTL5L11jBx3o1ig12A/+U2
-	NOhadOgJMet9JxlaY85TVo8cpVXVEx78Q38T3O6tMqNAFtLiV8hdSQVv4GLy2PmSn23GRY5F+P+8v
-	FMnY9u0Tj7BthE/WSEbgFHgV6UqgoMv0CgbrCILiVoBYo06O5sCXlt8t7/CtjDbgGenxMclUbIvVM
-	GCRWCAjUBmNDMk6NsUXIjULqTi+oJW95aWfSv13XVmQT87wJfyS2bSBXqo7Of7BsxW8QemCBv3TkZ
-	oGfn3JbA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YSv4qK17upGZVUg1/lq65wOHu9RBsXTrYATpqU4QzkQ=; b=zcoBASKECK9mrm4Qxh609OeSyD
+	uOmFIyisqPfvACupavaBzumPp3iXx2hELPaXeVljaGS0ergTdW+vkyyVgnpkVW99oKRfLu40fVTOS
+	LKGcpbYhANfzagWrZm0T6l3pmxz/gLeQ5wJwUL7NOolz/9Ep1Jn5fX3MXnLirlvAzQ4NMF/4Smj5Y
+	Bejj84Q6DxDA9cMq1ICjyd9b6zmgLhV6WiQDcZ/U+D5SOQT7h03YKdBkUNuuC5S9s3bD5crclUXE9
+	ixSdtY0k79+1Z8lB00diqHdpqiI2EQKsMPBc+96W4KzPZXoQWrc2P1EKL9IoxkeP5ERVsefjfw7jh
+	CKsAAXyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1M0E-00999m-1Y;
-	Tue, 23 May 2023 07:00:14 +0000
-Received: from muru.com ([72.249.23.125])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1M0A-009985-10;
-	Tue, 23 May 2023 07:00:11 +0000
-Received: from hillo.muru.com (localhost [127.0.0.1])
-	by muru.com (Postfix) with ESMTP id 0CC4980B5;
-	Tue, 23 May 2023 07:00:07 +0000 (UTC)
-From: Tony Lindgren <tony@atomide.com>
-To: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org,
-	linux-mips@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] mips: dts: ralink: mt7628a: Unify pinctrl-single pin group nodes
-Date: Tue, 23 May 2023 09:59:58 +0300
-Message-Id: <20230523065959.15831-1-tony@atomide.com>
-X-Mailer: git-send-email 2.40.1
+	id 1q1MEg-009BFa-2N;
+	Tue, 23 May 2023 07:15:10 +0000
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1q1MEW-009BAt-0F
+	for linux-mediatek@lists.infradead.org;
+	Tue, 23 May 2023 07:15:08 +0000
+Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-1ae4c5e1388so67249545ad.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 23 May 2023 00:14:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1684826098; x=1687418098;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=YSv4qK17upGZVUg1/lq65wOHu9RBsXTrYATpqU4QzkQ=;
+        b=myKSEI+jZuiqf4A2Qqpcoi6jThXBCM7zOXtvBHZm/Orph/5U5tvbkwjUjzZKMacpb0
+         zH1sUe1wjiQS7n4emYwGTo4c2FV8oYFLP4XPeBsKL/gHg99YaZZrg3flTOedeoHpglUs
+         bjIODmdn5LiCFrH/AY5ib4QeliiJIhBnQdNgM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1684826098; x=1687418098;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=YSv4qK17upGZVUg1/lq65wOHu9RBsXTrYATpqU4QzkQ=;
+        b=BjHxgVPsaEuYqehvAtnjGS0dgCEy9bmA+73/pjR54oS7ChnlrEU1pWEn0NwGErmJc6
+         KeyDL/IlM+sznInwn3cE/0i9KWVnW6XCc5J0z/c+cn9f9rOaFe9RF9ijSGV/240PXbLl
+         foQRhx6asnP4kFE7xGPerDaeWQbnrFDiCuskg48KuBXHLX8mW9gM9ELe75pDFb9VS7pz
+         LfqaO+fgX8z42JBgXrsAgnB+nbchSgDzo6kwOQ2thGvdJHZtP6CrmGbY56w27gEmqTOh
+         GlvCrFvH8FMruFDGyjsDWeZs/uorJQaiSrFUrLPSbgFA6QPvnoI5SQaPNt5eKh2DLhgK
+         8dkQ==
+X-Gm-Message-State: AC+VfDzVfZm2+sQOe3FMjimpD9qaOpoYqJhLo7dLzE7XEvmIbK2zoxAi
+	lJr/iuKeaqrWTmcS3YcPCdIk6w==
+X-Google-Smtp-Source: ACHHUZ7Q5fYjrnS4KpE9SjvZZHOsPFXdX+PzyZrRhtHHw7hCo0awVxDS79J6i6X3G1Y1kblQa39rZw==
+X-Received: by 2002:a17:902:ab59:b0:1ac:83d1:9246 with SMTP id ij25-20020a170902ab5900b001ac83d19246mr10985091plb.61.1684826098202;
+        Tue, 23 May 2023 00:14:58 -0700 (PDT)
+Received: from chromium.org (0.223.81.34.bc.googleusercontent.com. [34.81.223.0])
+        by smtp.gmail.com with ESMTPSA id b14-20020a170902650e00b001ac381f1ce9sm6109823plk.185.2023.05.23.00.14.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 23 May 2023 00:14:57 -0700 (PDT)
+Date: Tue, 23 May 2023 07:14:52 +0000
+From: Tomasz Figa <tfiga@chromium.org>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: m.szyprowski@samsung.com, mchehab@kernel.org, ming.qian@nxp.com,
+	shijie.qin@nxp.com, eagle.zhou@nxp.com, bin.liu@mediatek.com,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com,
+	yunfei.dong@mediatek.com, stanimir.k.varbanov@gmail.com,
+	quic_vgarodia@quicinc.com, agross@kernel.org, andersson@kernel.org,
+	konrad.dybcio@linaro.org, ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de, daniel.almeida@collabora.com,
+	hverkuil-cisco@xs4all.nl, laurent.pinchart@ideasonboard.com,
+	jernel@kernel.org, linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v2 4/8] media: videobuf2: Stop define VB2_MAX_FRAME as
+ global
+Message-ID: <20230523071452.2h2tilwrwejtmmrc@chromium.org>
+References: <20230321102855.346732-1-benjamin.gaignard@collabora.com>
+ <20230321102855.346732-5-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230321102855.346732-5-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230523_000010_386304_B9A29530 
-X-CRM114-Status: UNSURE (   7.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230523_001500_115919_5123F594 
+X-CRM114-Status: GOOD (  20.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,127 +100,139 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-We want to unify the pinctrl-single pin group nodes to use naming "pins".
-Otherwise non-standad pin group names will add make dtbs checks errors
-when the pinctrl-single yaml binding gets merged.
+On Tue, Mar 21, 2023 at 11:28:51AM +0100, Benjamin Gaignard wrote:
+> After changing bufs arrays to a dynamic allocated array
+> VB2_MAX_FRAME doesn't mean anything for videobuf2 core.
+> Remove it from the core definitions but keep it for drivers internal
+> needs.
 
-Cc: Conor Dooley <conor+dt@kernel.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: Rob Herring <robh+dt@kernel.org>
-Signed-off-by: Tony Lindgren <tony@atomide.com>
----
- arch/mips/boot/dts/ralink/mt7628a.dtsi | 40 +++++++++++++-------------
- 1 file changed, 20 insertions(+), 20 deletions(-)
+This made me think that some drivers could behave really badly if they
+get more than VB2_MAX_FRAME (or VIDEO_MAX_FRAME) buffers. I certainly
+see some having fixed-size arrays of exactly that size. Should we have a
+queue flag that enables more buffers, so it is only available for
+drivers which can handle them?
 
-diff --git a/arch/mips/boot/dts/ralink/mt7628a.dtsi b/arch/mips/boot/dts/ralink/mt7628a.dtsi
---- a/arch/mips/boot/dts/ralink/mt7628a.dtsi
-+++ b/arch/mips/boot/dts/ralink/mt7628a.dtsi
-@@ -51,85 +51,85 @@ pinmux: pinmux@60 {
- 			pinctrl-single,register-width = <32>;
- 			pinctrl-single,function-mask = <0x1>;
- 
--			pinmux_gpio_gpio: pinmux_gpio_gpio {
-+			pinmux_gpio_gpio: gpio-gpio-pins {
- 				pinctrl-single,bits = <0x0 0x0 0x3>;
- 			};
- 
--			pinmux_spi_cs1_cs: pinmux_spi_cs1_cs {
-+			pinmux_spi_cs1_cs: spi-cs1-cs-pins {
- 				pinctrl-single,bits = <0x0 0x0 0x30>;
- 			};
- 
--			pinmux_i2s_gpio: pinmux_i2s_gpio {
-+			pinmux_i2s_gpio: i2s-gpio-pins {
- 				pinctrl-single,bits = <0x0 0x40 0xc0>;
- 			};
- 
--			pinmux_uart0_uart: pinmux_uart0_uart0 {
-+			pinmux_uart0_uart: uart0-uart0-pins {
- 				pinctrl-single,bits = <0x0 0x0 0x300>;
- 			};
- 
--			pinmux_sdmode_sdxc: pinmux_sdmode_sdxc {
-+			pinmux_sdmode_sdxc: sdmode-sdxc-pins {
- 				pinctrl-single,bits = <0x0 0x0 0xc00>;
- 			};
- 
--			pinmux_sdmode_gpio: pinmux_sdmode_gpio {
-+			pinmux_sdmode_gpio: sdmode-gpio-pins {
- 				pinctrl-single,bits = <0x0 0x400 0xc00>;
- 			};
- 
--			pinmux_spi_spi: pinmux_spi_spi {
-+			pinmux_spi_spi: spi-spi-pins {
- 				pinctrl-single,bits = <0x0 0x0 0x1000>;
- 			};
- 
--			pinmux_refclk_gpio: pinmux_refclk_gpio {
-+			pinmux_refclk_gpio: refclk-gpio-pins {
- 				pinctrl-single,bits = <0x0 0x40000 0x40000>;
- 			};
- 
--			pinmux_i2c_i2c: pinmux_i2c_i2c {
-+			pinmux_i2c_i2c: i2c-i2c-pins {
- 				pinctrl-single,bits = <0x0 0x0 0x300000>;
- 			};
- 
--			pinmux_uart1_uart: pinmux_uart1_uart1 {
-+			pinmux_uart1_uart: uart1-uart1-pins {
- 				pinctrl-single,bits = <0x0 0x0 0x3000000>;
- 			};
- 
--			pinmux_uart2_uart: pinmux_uart2_uart {
-+			pinmux_uart2_uart: uart2-uart-pins {
- 				pinctrl-single,bits = <0x0 0x0 0xc000000>;
- 			};
- 
--			pinmux_pwm0_pwm: pinmux_pwm0_pwm {
-+			pinmux_pwm0_pwm: pwm0-pwm-pins {
- 				pinctrl-single,bits = <0x0 0x0 0x30000000>;
- 			};
- 
--			pinmux_pwm0_gpio: pinmux_pwm0_gpio {
-+			pinmux_pwm0_gpio: pwm0-gpio-pins {
- 				pinctrl-single,bits = <0x0 0x10000000
- 						       0x30000000>;
- 			};
- 
--			pinmux_pwm1_pwm: pinmux_pwm1_pwm {
-+			pinmux_pwm1_pwm: pwm1-pwm-pins {
- 				pinctrl-single,bits = <0x0 0x0 0xc0000000>;
- 			};
- 
--			pinmux_pwm1_gpio: pinmux_pwm1_gpio {
-+			pinmux_pwm1_gpio: pwm1-gpio-pins {
- 				pinctrl-single,bits = <0x0 0x40000000
- 						       0xc0000000>;
- 			};
- 
--			pinmux_p0led_an_gpio: pinmux_p0led_an_gpio {
-+			pinmux_p0led_an_gpio: p0led-an-gpio-pins {
- 				pinctrl-single,bits = <0x4 0x4 0xc>;
- 			};
- 
--			pinmux_p1led_an_gpio: pinmux_p1led_an_gpio {
-+			pinmux_p1led_an_gpio: p1led-an-gpio-pins {
- 				pinctrl-single,bits = <0x4 0x10 0x30>;
- 			};
- 
--			pinmux_p2led_an_gpio: pinmux_p2led_an_gpio {
-+			pinmux_p2led_an_gpio: p2led-an-gpio-pins {
- 				pinctrl-single,bits = <0x4 0x40 0xc0>;
- 			};
- 
--			pinmux_p3led_an_gpio: pinmux_p3led_an_gpio {
-+			pinmux_p3led_an_gpio: p3led-an-gpio-pins {
- 				pinctrl-single,bits = <0x4 0x100 0x300>;
- 			};
- 
--			pinmux_p4led_an_gpio: pinmux_p4led_an_gpio {
-+			pinmux_p4led_an_gpio: p4led-an-gpio-pins {
- 				pinctrl-single,bits = <0x4 0x400 0xc00>;
- 			};
- 		};
--- 
-2.40.1
+Best regards,
+Tomasz
+
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> ---
+>  drivers/media/common/videobuf2/videobuf2-core.c               | 2 ++
+>  drivers/media/platform/amphion/vdec.c                         | 1 +
+>  .../media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c | 2 ++
+>  drivers/media/platform/qcom/venus/hfi.h                       | 2 ++
+>  drivers/media/platform/verisilicon/hantro_hw.h                | 2 ++
+>  drivers/staging/media/ipu3/ipu3-v4l2.c                        | 2 ++
+>  include/media/videobuf2-core.h                                | 1 -
+>  include/media/videobuf2-v4l2.h                                | 4 ----
+>  8 files changed, 11 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+> index f4da917ccf3f..3c6ced360770 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-core.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
+> @@ -31,6 +31,8 @@
+>  
+>  #include <trace/events/vb2.h>
+>  
+> +#define VB2_MAX_FRAME	32
+> +
+>  static int debug;
+>  module_param(debug, int, 0644);
+>  
+> diff --git a/drivers/media/platform/amphion/vdec.c b/drivers/media/platform/amphion/vdec.c
+> index 87f9f8e90ab1..bef0c1b869be 100644
+> --- a/drivers/media/platform/amphion/vdec.c
+> +++ b/drivers/media/platform/amphion/vdec.c
+> @@ -28,6 +28,7 @@
+>  
+>  #define VDEC_MIN_BUFFER_CAP		8
+>  #define VDEC_MIN_BUFFER_OUT		8
+> +#define VB2_MAX_FRAME			32
+>  
+>  struct vdec_fs_info {
+>  	char name[8];
+> diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+> index f5958b6d834a..ba208caf3043 100644
+> --- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+> +++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+> @@ -16,6 +16,8 @@
+>  #include "../vdec_drv_if.h"
+>  #include "../vdec_vpu_if.h"
+>  
+> +#define VB2_MAX_FRAME	32
+> +
+>  /* reset_frame_context defined in VP9 spec */
+>  #define VP9_RESET_FRAME_CONTEXT_NONE0 0
+>  #define VP9_RESET_FRAME_CONTEXT_NONE1 1
+> diff --git a/drivers/media/platform/qcom/venus/hfi.h b/drivers/media/platform/qcom/venus/hfi.h
+> index f25d412d6553..bd5ca5a8b945 100644
+> --- a/drivers/media/platform/qcom/venus/hfi.h
+> +++ b/drivers/media/platform/qcom/venus/hfi.h
+> @@ -10,6 +10,8 @@
+>  
+>  #include "hfi_helper.h"
+>  
+> +#define VB2_MAX_FRAME				32
+> +
+>  #define VIDC_SESSION_TYPE_VPE			0
+>  #define VIDC_SESSION_TYPE_ENC			1
+>  #define VIDC_SESSION_TYPE_DEC			2
+> diff --git a/drivers/media/platform/verisilicon/hantro_hw.h b/drivers/media/platform/verisilicon/hantro_hw.h
+> index e83f0c523a30..9e8faf7ba6fb 100644
+> --- a/drivers/media/platform/verisilicon/hantro_hw.h
+> +++ b/drivers/media/platform/verisilicon/hantro_hw.h
+> @@ -15,6 +15,8 @@
+>  #include <media/v4l2-vp9.h>
+>  #include <media/videobuf2-core.h>
+>  
+> +#define VB2_MAX_FRAME	32
+> +
+>  #define DEC_8190_ALIGN_MASK	0x07U
+>  
+>  #define MB_DIM			16
+> diff --git a/drivers/staging/media/ipu3/ipu3-v4l2.c b/drivers/staging/media/ipu3/ipu3-v4l2.c
+> index e530767e80a5..6627b5c2d4d6 100644
+> --- a/drivers/staging/media/ipu3/ipu3-v4l2.c
+> +++ b/drivers/staging/media/ipu3/ipu3-v4l2.c
+> @@ -10,6 +10,8 @@
+>  #include "ipu3.h"
+>  #include "ipu3-dmamap.h"
+>  
+> +#define VB2_MAX_FRAME	32
+> +
+>  /******************** v4l2_subdev_ops ********************/
+>  
+>  #define IPU3_RUNNING_MODE_VIDEO		0
+> diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
+> index b8b34a993e04..4aa43c5c7c58 100644
+> --- a/include/media/videobuf2-core.h
+> +++ b/include/media/videobuf2-core.h
+> @@ -21,7 +21,6 @@
+>  #include <media/media-request.h>
+>  #include <media/frame_vector.h>
+>  
+> -#define VB2_MAX_FRAME	(32)
+>  #define VB2_MAX_PLANES	(8)
+>  
+>  /**
+> diff --git a/include/media/videobuf2-v4l2.h b/include/media/videobuf2-v4l2.h
+> index 5a845887850b..88a7a565170e 100644
+> --- a/include/media/videobuf2-v4l2.h
+> +++ b/include/media/videobuf2-v4l2.h
+> @@ -15,10 +15,6 @@
+>  #include <linux/videodev2.h>
+>  #include <media/videobuf2-core.h>
+>  
+> -#if VB2_MAX_FRAME != VIDEO_MAX_FRAME
+> -#error VB2_MAX_FRAME != VIDEO_MAX_FRAME
+> -#endif
+> -
+>  #if VB2_MAX_PLANES != VIDEO_MAX_PLANES
+>  #error VB2_MAX_PLANES != VIDEO_MAX_PLANES
+>  #endif
+> -- 
+> 2.34.1
+> 
 
