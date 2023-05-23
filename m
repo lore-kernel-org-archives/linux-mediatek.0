@@ -4,87 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A375DC77B75
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 May 2023 08:23:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AAD5C7EE23
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 May 2023 10:42:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uL1K7Jn4HAic+IgVkKP1XlX31FYJK1MaHHXhjAWowJ0=; b=OR/qQSB5uL6fjsgj3bv8OEcIeF
-	188bAxHC46mjEjRXQxnuucjsi3oyy+TbIVVJcDDvJOwH+JllQZnsYgcg0wad5NiT6vKrLkt/nKMRj
-	gkpJY8qk24olzJRGrr+88svUgLBpBEmoMnNYqnul/aSqDrkEGvIueQjx23IReIhZnqhudbSv9DJ3K
-	8tZMTHKso9M1+p1Vb1F8NDXJjdNpWHOhxZIcX2Sk5yNpoyIJbqg46ZSshkRyY09JoY3sAyjLbxvMZ
-	YN08rRGJoFs6EykdKdORdHrQkpr83l6xC6AjKqYjUFwpzZ+AEunExKI+VUExI/8l8A0GQ5VHBPHTV
-	O6/dd8mA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=2Bg95vTG7i5qmcG2L2s281WoQBxWPUoLiqODwtHlxWM=; b=mf8bGX7mp3BA3A
+	ZGhqrIhULCop6v6kYHE3cn5898Lk2EYhAYHrwEDIKxeclMIJozjl3QdcAzltt8BpiGQcuxBHMIa/w
+	69UVK5BeSwhq4q1s2+pjj96jV1nkAJfHU9CmbTZixohAWrEccYx+mGbI3AAR5yE4r+5dnHiK6f0J9
+	F+8rhP+5QYt3xuvDH7CyDwCaG6fUkPn6oVEC+kk4UKz7BIQYRbQA4Z5fSY4+FbP9TPl26GoTuryQm
+	y+Ff5so3jKcl16yOBsh7OkacoXvXbxqsyV8f2u6bsVGSgfRef+GsGjeQlfIY78pgiS9gKT0lpxrGR
+	iEHmtv0SbUUBMxqKp9jA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1NIt-009QVb-2F;
-	Tue, 23 May 2023 08:23:35 +0000
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+	id 1q1PTf-009xtD-2N;
+	Tue, 23 May 2023 10:42:51 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1NIo-009QSd-3B
-	for linux-mediatek@lists.infradead.org;
-	Tue, 23 May 2023 08:23:32 +0000
-Received: by mail-pf1-x42f.google.com with SMTP id d2e1a72fcca58-64d41d8bc63so2946297b3a.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 23 May 2023 01:23:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1684830206; x=1687422206;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=uL1K7Jn4HAic+IgVkKP1XlX31FYJK1MaHHXhjAWowJ0=;
-        b=K8t6nEGPIf7y3OejF9cTpMxnD9f+IW2kWI9UIlGC20nPW30gOWHERdjr6twKYnrIQb
-         QkNF4wUUq8oTWG92/932f0pd2DK0OK+b7dhpcbaHPj/r9W9lHWUg6/WvFBf1Sl28+o7N
-         kC2FdVg2RL14xlZe11fCBnzKut3m/jcfchZH8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684830206; x=1687422206;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=uL1K7Jn4HAic+IgVkKP1XlX31FYJK1MaHHXhjAWowJ0=;
-        b=WoTXmLaMsIuqwpG/toXNs18ybxOkLpPhU/iWbEyfRtzBa4iufhlSoYhZ9+RYric4uR
-         KyDwQLPMzWcu2i0gpnGOdR/p21pogj87Co0r0tLvcb03nzXrQKjZYk9Uhyt1LtT0ivCk
-         PlrmuD1a6ruWP+SMb8qKAhnMvWiaaHEDYw3+t/8lYMV3YE+5UPIfz35yVHwKQBnYCZmm
-         OcnTOB2iZb+vUmBiJxsJqvBVy9lmoBz9xKLpRR8LFo7E6tnVrBfE/LRJyD8N8yRoUuYk
-         DFQYBmQcS+JysztpL5k+E10t+yCvz2kCXLgddkj99CEqEMUvomNaDfBhFsp2UQg9OJzv
-         fn+A==
-X-Gm-Message-State: AC+VfDwEUHqy4ENi83MsgELncC31JhwdUX0os0yRCogy6ViGxmobU51e
-	eqDI5UwoWuDLkNBBs09CZLv9+w==
-X-Google-Smtp-Source: ACHHUZ7C/3gK4tglhoWtOSFtZQTN5c+zYptt2miKmcxSqwrtjSbJ8p63MmXN4dsy/YUXayz5Xy+O5A==
-X-Received: by 2002:a17:903:2796:b0:1ac:65ab:cf7b with SMTP id jw22-20020a170903279600b001ac65abcf7bmr13865631plb.9.1684830206026;
-        Tue, 23 May 2023 01:23:26 -0700 (PDT)
-Received: from chromium.org (0.223.81.34.bc.googleusercontent.com. [34.81.223.0])
-        by smtp.gmail.com with ESMTPSA id g23-20020a170902869700b001aafa2e4716sm6134855plo.264.2023.05.23.01.23.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 23 May 2023 01:23:25 -0700 (PDT)
-Date: Tue, 23 May 2023 08:23:20 +0000
-From: Tomasz Figa <tfiga@chromium.org>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: m.szyprowski@samsung.com, mchehab@kernel.org, ming.qian@nxp.com,
-	shijie.qin@nxp.com, eagle.zhou@nxp.com, bin.liu@mediatek.com,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com,
-	yunfei.dong@mediatek.com, stanimir.k.varbanov@gmail.com,
-	quic_vgarodia@quicinc.com, agross@kernel.org, andersson@kernel.org,
-	konrad.dybcio@linaro.org, ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de, daniel.almeida@collabora.com,
-	hverkuil-cisco@xs4all.nl, laurent.pinchart@ideasonboard.com,
-	jernel@kernel.org, linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v2 5/8] media: v4l2: Add DELETE_BUF ioctl
-Message-ID: <20230523082320.akofzwevkhwswosm@chromium.org>
-References: <20230321102855.346732-1-benjamin.gaignard@collabora.com>
- <20230321102855.346732-6-benjamin.gaignard@collabora.com>
+	id 1q1PTc-009xq9-0t;
+	Tue, 23 May 2023 10:42:49 +0000
+Received: from IcarusMOD.eternityproject.eu (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 55C266606E75;
+	Tue, 23 May 2023 11:42:38 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1684838559;
+	bh=k5mp+NPuC3+C8fsMCLAcwWhJ5WFcu3o02Q0hZe0dwhM=;
+	h=From:To:Cc:Subject:Date:From;
+	b=kh9Nd6T/8k3VroYVDmlTaX9A4m+npPH+O9zAx3WHJpRFbk+pgK0L0UUpGM3/Fs4Kn
+	 OTjzxp0TjpGa0DEVfUchWsh+VDDnBlpQoTHdufvsnfQLl8MaRs/cSywPTY067VrSwe
+	 GeFKVBhciJSweTohL+O2FGr8iZYTziU0eqXZPZoPl0DqH2+vTTKEf9/EyTCbQ8SA1X
+	 6NPgp4cGiXEiivriAE7wy6TuQTLRzw1hFpf55St20SMQvlFwbfB6aR2BUu1bqEpMkp
+	 /FNhW68+w8IHtHpiYTEI37DjUfqtpA8k4smcp820azJ9sKU/YSNIr52QYtwiTTBvE+
+	 ZWpAw39yMbftQ==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: chunkuang.hu@kernel.org
+Subject: [PATCH] drm: mediatek: mtk_dsi: Fix NO_EOT_PACKET settings/handling
+Date: Tue, 23 May 2023 12:42:34 +0200
+Message-Id: <20230523104234.7849-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230321102855.346732-6-benjamin.gaignard@collabora.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230523_012331_024243_8FA2F4C2 
-X-CRM114-Status: GOOD (  34.56  )
+X-CRM114-CacheID: sfid-20230523_034248_472014_13466464 
+X-CRM114-Status: GOOD (  12.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,203 +65,61 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: jitao.shi@mediatek.com, p.zabel@pengutronix.de, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, ck.hu@mediatek.com, linux-mediatek@lists.infradead.org, daniel@ffwll.ch, matthias.bgg@gmail.com, shaoming.chen@mediatek.com, airlied@gmail.com, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 21, 2023 at 11:28:52AM +0100, Benjamin Gaignard wrote:
-> VIDIOC_DELETE_BUF ioctl allows to delete a buffer from a queue.
-> 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
->  .../userspace-api/media/v4l/user-func.rst     |  1 +
->  .../media/v4l/vidioc-delete-buf.rst           | 51 ++++++++++++++++
->  .../media/common/videobuf2/videobuf2-core.c   | 59 ++++++++++++++++++-
->  .../media/common/videobuf2/videobuf2-v4l2.c   |  6 ++
->  drivers/media/v4l2-core/v4l2-dev.c            |  1 +
->  drivers/media/v4l2-core/v4l2-ioctl.c          | 10 ++++
->  include/media/v4l2-ioctl.h                    |  4 ++
->  include/media/videobuf2-core.h                |  9 +++
->  include/media/videobuf2-v4l2.h                | 11 ++++
->  include/uapi/linux/videodev2.h                |  1 +
->  10 files changed, 152 insertions(+), 1 deletion(-)
->  create mode 100644 Documentation/userspace-api/media/v4l/vidioc-delete-buf.rst
-> 
-> diff --git a/Documentation/userspace-api/media/v4l/user-func.rst b/Documentation/userspace-api/media/v4l/user-func.rst
-> index 228c1521f190..93e0a6a117fc 100644
-> --- a/Documentation/userspace-api/media/v4l/user-func.rst
-> +++ b/Documentation/userspace-api/media/v4l/user-func.rst
-> @@ -17,6 +17,7 @@ Function Reference
->      vidioc-dbg-g-chip-info
->      vidioc-dbg-g-register
->      vidioc-decoder-cmd
-> +    vidioc-delete-buf
->      vidioc-dqevent
->      vidioc-dv-timings-cap
->      vidioc-encoder-cmd
-> diff --git a/Documentation/userspace-api/media/v4l/vidioc-delete-buf.rst b/Documentation/userspace-api/media/v4l/vidioc-delete-buf.rst
-> new file mode 100644
-> index 000000000000..0e7ce58f91bc
-> --- /dev/null
-> +++ b/Documentation/userspace-api/media/v4l/vidioc-delete-buf.rst
-> @@ -0,0 +1,51 @@
-> +.. SPDX-License-Identifier: GFDL-1.1-no-invariants-or-later
-> +.. c:namespace:: V4L
-> +
-> +.. _VIDIOC_DELETE_BUF:
-> +
-> +************************
-> +ioctl VIDIOC_DELETE_BUF
-> +************************
-> +
-> +Name
-> +====
-> +
-> +VIDIOC_DELETE_BUF - Delete a buffer from a queue
-> +
-> +Synopsis
-> +========
-> +
-> +.. c:macro:: VIDIOC_DELETE_BUF
-> +
-> +``int ioctl(int fd, VIDIOC_DELETE_BUF, struct v4l2_buffer *argp)``
-> +
-> +Arguments
-> +=========
-> +
-> +``fd``
-> +    File descriptor returned by :c:func:`open()`.
-> +
-> +``argp``
-> +    Pointer to struct :c:type:`v4l2_buffer`.
+Due to the initial confusion about MIPI_DSI_MODE_EOT_PACKET, properly
+renamed to MIPI_DSI_MODE_NO_EOT_PACKET, reflecting its actual meaning,
+both the DSI_TXRX_CON register setting for bit (HSTX_)DIS_EOT and the
+later calculation for horizontal sync-active (HSA), back (HBP) and
+front (HFP) porches got incorrect due to the logic being inverted.
 
-Would struct v4l2_create_buffers make more sense here? With it, we could
-actually make this ioctl VIDIOC_DELETE_BUF*S*, consistently with
-VIDIOC_CREATE_BUF*S* and allow the user space to remove a block of buffers
-the same way it created a block of buffers in the first place.
+This means that a number of settings were wrong because....:
+ - DSI_TXRX_CON register setting: bit (HSTX_)DIS_EOT should be
+   set in order to disable the End of Transmission packet;
+ - Horizontal Sync and Back/Front porches: The delta used to
+   calculate all of HSA, HBP and HFP should account for the
+   additional EOT packet.
 
-> +
-> +Description
-> +===========
-> +
-> +Applications can optionally call the :ref:`VIDIOC_DELETE_BUF` ioctl to
-> +delete a buffer from a queue.
-> +
-> +The struct :c:type:`v4l2_buffer` structure is specified in
-> +:ref:`buffer`.
-> +
-> +Return Value
-> +============
-> +
-> +On success 0 is returned, on error -1 and the ``errno`` variable is set
-> +appropriately. The generic error codes are described at the
-> +:ref:`Generic Error Codes <gen-errors>` chapter.
-> +
-> +EBUSY
-> +    File I/O is in progress.
-> +
-> +EINVAL
-> +    The buffer ``index`` doesn't exist in the queue.
-> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-> index 3c6ced360770..ec241d726fe6 100644
-> --- a/drivers/media/common/videobuf2/videobuf2-core.c
-> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
-> @@ -401,6 +401,24 @@ static void init_buffer_cache_hints(struct vb2_queue *q, struct vb2_buffer *vb)
->  		vb->skip_cache_sync_on_finish = 1;
->  }
->  
-> +/*
-> + * __vb2_queue_get_free_index() - find a free index in the queue for vb2 buffer.
-> + *
-> + * Returns an index for vb2 buffer.
-> + */
-> +static int __vb2_queue_get_free_index(struct vb2_queue *q)
-> +{
-> +	int i;
-> +
-> +	spin_lock(&q->bufs_lock);
-> +	for (i = 0; i < q->max_num_bufs; i++)
-> +		if (!q->bufs[i])
-> +			break;
-> +	spin_unlock(&q->bufs_lock);
-> +
-> +	return i;
-> +}
+Before this change...
+ - Bit (HSTX_)DIS_EOT was being set when EOT packet was enabled;
+ - For HSA/HBP/HFP delta... all three were wrong, as words were
+   added when EOT disabled, instead of when EOT packet enabled!
 
-Another reason to go with XArray, so that we don't have to open code
-index reclaim.
+Invert the logic around flag MIPI_DSI_MODE_NO_EOT_PACKET in the
+MediaTek DSI driver to fix the aforementioned issues.
 
-> +
->  /*
->   * __vb2_queue_alloc() - allocate vb2 buffer structures and (for MMAP type)
->   * video buffer memory for all buffers/planes on the queue and initializes the
-> @@ -427,7 +445,7 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
->  		vb->state = VB2_BUF_STATE_DEQUEUED;
->  		vb->vb2_queue = q;
->  		vb->num_planes = num_planes;
-> -		vb->index = q->num_buffers + buffer;
-> +		vb->index = __vb2_queue_get_free_index(q);
->  		vb->type = q->type;
->  		vb->memory = memory;
->  		init_buffer_cache_hints(q, vb);
-> @@ -1570,6 +1588,45 @@ int vb2_core_prepare_buf(struct vb2_queue *q, unsigned int index, void *pb)
->  }
->  EXPORT_SYMBOL_GPL(vb2_core_prepare_buf);
->  
-> +int vb2_core_delete_buf(struct vb2_queue *q, unsigned int index)
-> +{
-> +	struct vb2_buffer *vb;
-> +
-> +	vb = vb2_get_buffer(q, index);
-> +	if (!vb) {
-> +		dprintk(q, 1, "invalid buffer index %d\n", index);
-> +		return -EINVAL;
-> +	}
-> +
-> +	if (vb->state == VB2_BUF_STATE_QUEUED) {
+Fixes: 8b2b99fd7931 ("drm/mediatek: dsi: Fine tune the line time caused by EOTp")
+Fixes: 2d52bfba09d1 ("drm/mediatek: add non-continuous clock mode and EOT packet control")
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-How about other states? I'd probably only allow this when the state is
-DEQUEUED for simplicity. Is there a need to allow deleting buffers in
-other states?
-
-Also, do we need to synchronize this with other contexts which could change
-the buffer state?
-
-> +		dprintk(q, 1, "can't delete queued buffer index %d\n", index);
-> +		return -EINVAL;
-> +	}
-> +
-
-Don't we also need to hold q->mmap_lock to prevent racing with an attempt
-to mmap the buffer?
-
-> +	if (vb && vb->planes[0].mem_priv)
-
-nit: At this point it's not possible for vb to be NULL, since we already
-ruled that out a few lines above.
-
-> +		call_void_vb_qop(vb, buf_cleanup, vb);
-> +
-> +	/* Free MMAP buffers or release USERPTR buffers */
-> +	if (q->memory == VB2_MEMORY_MMAP)
-> +		__vb2_buf_mem_free(vb);
-> +	else if (q->memory == VB2_MEMORY_DMABUF)
-> +		__vb2_buf_dmabuf_put(vb);
-> +	else
-> +		__vb2_buf_userptr_put(vb);
-> +
-> +	vb2_queue_remove_buffer(q, vb);
-> +	kfree(vb);
-> +
-> +	q->num_buffers--;
-> +	if (!q->num_buffers) {
-> +		q->memory = VB2_MEMORY_UNKNOWN;
-> +		INIT_LIST_HEAD(&q->queued_list);
-> +	}
-
-Would it make sense to refactor __vb2_queue_free() instead to take a
-range of buffer indexes rather than duplicating the code here?
-
-Best regards,
-Tomasz
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index 7d5250351193..b0ab38e59db9 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -407,7 +407,7 @@ static void mtk_dsi_rxtx_control(struct mtk_dsi *dsi)
+ 	if (dsi->mode_flags & MIPI_DSI_CLOCK_NON_CONTINUOUS)
+ 		tmp_reg |= HSTX_CKLP_EN;
+ 
+-	if (!(dsi->mode_flags & MIPI_DSI_MODE_NO_EOT_PACKET))
++	if (dsi->mode_flags & MIPI_DSI_MODE_NO_EOT_PACKET)
+ 		tmp_reg |= DIS_EOT;
+ 
+ 	writel(tmp_reg, dsi->regs + DSI_TXRX_CTRL);
+@@ -484,7 +484,7 @@ static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
+ 			  timing->da_hs_zero + timing->da_hs_exit + 3;
+ 
+ 	delta = dsi->mode_flags & MIPI_DSI_MODE_VIDEO_BURST ? 18 : 12;
+-	delta += dsi->mode_flags & MIPI_DSI_MODE_NO_EOT_PACKET ? 2 : 0;
++	delta += dsi->mode_flags & MIPI_DSI_MODE_NO_EOT_PACKET ? 0 : 2;
+ 
+ 	horizontal_frontporch_byte = vm->hfront_porch * dsi_tmp_buf_bpp;
+ 	horizontal_front_back_byte = horizontal_frontporch_byte + horizontal_backporch_byte;
+-- 
+2.40.1
 
 
