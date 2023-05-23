@@ -4,86 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E56B0C7EE26
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 May 2023 23:34:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5F41C7EE26
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 May 2023 23:36:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MNA57LFsEAjv0YnO7XAE11SZw6Ds4IrSm19nvlVJk98=; b=DXbb0Es8QhiNHFF/djYWuDC6l7
-	B0eHwq2oPmBP3NWpVuakcM3FXYblszRFEsVrRlcqQgo/DngKIpxqmJ6kKwgoSCGvn3XE4VORN/RYA
-	ReErFIdgaf5bp0fO311zKrsowwvfXo9XyB2wOeWtSKrlaTI/UqrNhghmvgOj4Q9E+TLQ/Czsz71NS
-	VHCH8GafzzSRygYr+K43A3znsXx8T3AcG2MsdIVYs2duHxVG+tagYZW3ujiOMTcCPndZBzo7i0OlE
-	q4SsvRq/Rnjlx5poJi4y3wQMTZrBGnLDV0zHG86lbRRtORuNS6QtwrYkFxD3s62S48WNkbuigGqiO
-	DI5GPeBg==;
+	bh=ynpVCF2yMB3/ugZP3Euzf3VvwYMaTJbrhhYWxcWzKj8=; b=z9HESxHgmxwIZQYEmMvlrYtkwY
+	rVVxftdkXRG5FjGkLXjedJoaQSaVSa/y7m5oB4/c/OvSWFgoDHkuNojEWLZomoGevEcuu999pig9s
+	uek3R4q/VdCRItega3XmbTrj/p4moXVKSyx/3YrNAMl0SWXgjSKiWDa+blamfbwzFTKiIc2j8dc2k
+	1sJo3+Yz05j8fFfhvNmfPEeRONJrE7YMh28ZMKg6nfci5NOKm1OS0neNgv7gIA54kitWULOrJloRz
+	l88+f2g881NOI1iITZ2BIC1VHHg+oEBz+S02ndBO2BOiQTWJSALWfcit+8WIZtFdOQU7rcmRsRrd5
+	ubYfON2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1bWD-00Bnbd-0V;
-	Tue, 23 May 2023 23:34:17 +0000
-Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
+	id 1q1bXr-00BnqE-0v;
+	Tue, 23 May 2023 23:35:59 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1bW9-00BnZw-0w
-	for linux-mediatek@lists.infradead.org;
-	Tue, 23 May 2023 23:34:15 +0000
-Received: by mail-pj1-x1032.google.com with SMTP id 98e67ed59e1d1-2537a79b9acso227343a91.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 23 May 2023 16:34:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1684884850; x=1687476850;
-        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :from:from:to:cc:subject:date:message-id:reply-to;
-        bh=MNA57LFsEAjv0YnO7XAE11SZw6Ds4IrSm19nvlVJk98=;
-        b=wF+aug1ydohk/cr8Rfez98IIlwqb13f0RxZ6y479XbKidTrvL03zg77sxMin+zGFGx
-         l5eXByrl4nPZWQWmqQncYvX9EBJ2jhKSQOmxQvgaHwbuXn34nx47cTnpfrrrJzj+8zQw
-         4pNfP+xtaTEDb3tmNzMbZ9lq1FvB1h3Y/9o0b9L7TTlVcKFXDAGLKRDd9xXEgp7O259E
-         JEOObHH4XNk6aUQOdhlo/FfoEEjn3MqFmkmu5jjMJ2GV+T7Gsu/kuTOHMZ3neHBb56qU
-         VtYRMrOu288bwsGXUhDF1P0SpaYg4k2ai2BHS88fM94NGHU7+411tXSKeuvtY4mY+E9V
-         VdhQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684884850; x=1687476850;
-        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=MNA57LFsEAjv0YnO7XAE11SZw6Ds4IrSm19nvlVJk98=;
-        b=Xn94Jq3gwxodPVLQ6bEZkq4/0RPb0lHkNIZfPh3Lxa+6y2xwLtM4QfYtugPkw63Nne
-         a3ZNLUfOksjlZ8yvEr7ueDD4nzMA01slTdhwU/QbkjWbc6YIHwVRAwxCG1Qbm0tbifTQ
-         cz6XgFUdLVXYidcHRfpNCdENxSjiGrQn1nQhJO38f7Oc8sFnj7gzgmRW/j9MbJ97ByO7
-         N/vrDqz5mnBPwHm8hzghlbIPHnnEUV1rj1bg1SuLFDwl5woWPTlTQNj52QhdB0cW3Oh+
-         0o8wTuIWUBJKOJC3gmXU5fi4WaTEjfK2AOWfjATjckMgyHDMeTfhX4Z5+XZKrb2MINvV
-         oH+Q==
-X-Gm-Message-State: AC+VfDzfbQuD1UzRa/iJTr1+enXkiDfGzSXu8WpKewD46eS+AGUt+hhj
-	S6bdWILGq6kZSPKH4RSVn2HGfg==
-X-Google-Smtp-Source: ACHHUZ4/S/KRgTtfzWmFTkvHxw3NShbPiyY6ElSBnhSbSlY2KYV0gjG/Ka+9HzWGVYgXMdo2hQhd0g==
-X-Received: by 2002:a17:90b:a45:b0:253:947f:af51 with SMTP id gw5-20020a17090b0a4500b00253947faf51mr13745197pjb.5.1684884849781;
-        Tue, 23 May 2023 16:34:09 -0700 (PDT)
-Received: from localhost ([75.172.135.98])
-        by smtp.gmail.com with ESMTPSA id gl21-20020a17090b121500b00253305f36c4sm100944pjb.18.2023.05.23.16.34.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 23 May 2023 16:34:09 -0700 (PDT)
-From: Kevin Hilman <khilman@baylibre.com>
-To: Jeffrey Hugo <quic_jhugo@quicinc.com>, Alexandre Bailon
- <abailon@baylibre.com>, airlied@gmail.com, daniel@ffwll.ch,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de
-Cc: devicetree@vger.kernel.org, conor+dt@kernel.org, bero@baylibre.com,
- jstephan@baylibre.com, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, christian.koenig@amd.com,
- linaro-mm-sig@lists.linaro.org, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, nbelin@baylibre.com,
- krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
- linux-media@vger.kernel.org, sumit.semwal@linaro.org,
- linux-arm-kernel@lists.infradead.org,
- angelogioacchino.delregno@collabora.com
-Subject: Re: [PATCH 0/7] Add a DRM driver to support AI Processing Unit (APU)
-In-Reply-To: <d0807fe4-dba2-8244-f655-d04e80973572@quicinc.com>
-References: <20230517145237.295461-1-abailon@baylibre.com>
- <d0807fe4-dba2-8244-f655-d04e80973572@quicinc.com>
-Date: Tue, 23 May 2023 16:34:08 -0700
-Message-ID: <7ha5xud3m7.fsf@baylibre.com>
+	id 1q1bXn-00BnoX-10;
+	Tue, 23 May 2023 23:35:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Transfer-Encoding:Content-Disposition:
+	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:From:
+	Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Content-Disposition:
+	In-Reply-To:References; bh=ynpVCF2yMB3/ugZP3Euzf3VvwYMaTJbrhhYWxcWzKj8=; b=Un
+	EIg4HAmqVDADXc4LriFbbRUJSRMbZkrxXOQ+nFUc3e+l077WinUQowdLjQaME+OwRYcw6NoDJfbQa
+	6mgQqjcmBnNYFDE6BnrRzenxmB7jTjDhPeOM2UGBY+4L6FtmZR68Hf/tlVxOzhKwZxp7AVJ7ptaXx
+	HBee7gza0U+Dqg0=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1q1bXS-00Djea-RC; Wed, 24 May 2023 01:35:34 +0200
+Date: Wed, 24 May 2023 01:35:34 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: arinc9.unal@gmail.com
+Subject: Re: [PATCH net-next 04/30] net: dsa: mt7530: improve comments
+ regarding port 5 and 6
+Message-ID: <a1c420db-1881-4622-8d6a-380cdf81ee6e@lunn.ch>
+References: <20230522121532.86610-1-arinc.unal@arinc9.com>
+ <20230522121532.86610-5-arinc.unal@arinc9.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230522121532.86610-5-arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230523_163413_539405_AD099F53 
-X-CRM114-Status: GOOD (  17.88  )
+X-CRM114-CacheID: sfid-20230523_163555_373019_7F3F4F0C 
+X-CRM114-Status: GOOD (  12.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,72 +65,34 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, mithat.guner@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Jeffrey Hugo <quic_jhugo@quicinc.com> writes:
+On Mon, May 22, 2023 at 03:15:06PM +0300, arinc9.unal@gmail.com wrote:
+> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+> 
+> There's no logic to numerically order the CPU ports. State the port number
+> and its capability of being used as a CPU port instead.
+> 
+> Remove the irrelevant PHY muxing information from
+> mt7530_mac_port_get_caps(). Explain the supported MII modes instead.
+> 
+> Remove the out of place PHY muxing information from
+> mt753x_phylink_mac_config(). The function is for both the MT7530 and MT7531
+> switches but there's no PHY muxing on MT7531.
+> 
+> These comments were gradually introduced with the commits below.
+> ca366d6c889b ("net: dsa: mt7530: Convert to PHYLINK API")
+> 38f790a80560 ("net: dsa: mt7530: Add support for port 5")
+> 88bdef8be9f6 ("net: dsa: mt7530: Extend device data ready for adding a new
+> hardware")
+> c288575f7810 ("net: dsa: mt7530: Add the support of MT7531 switch")
+> 
+> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> Acked-by: Daniel Golle <daniel@makrotopia.org>
 
-> On 5/17/2023 8:52 AM, Alexandre Bailon wrote:
->> This adds a DRM driver that implements communication between the CPU and an
->> APU. The driver target embedded device that usually run inference using some
->> prebuilt models. The goal is to provide common infrastructure that could be
->> re-used to support many accelerators. Both kernel, userspace and firmware tries
->> to use standard and existing to leverage the development and maintenance effort.
->> The series implements two platform drivers, one for simulation and another one for
->> the mt8183 (compatible with mt8365).
->
-> This looks like the 3 existing Accel drivers.  Why is this in DRM?
+Reviewed-by: Andrew Lunn <andrew@lunn.ch>
 
-Yes, this belongs in accel.  I think Alex had some issues around the
-infra in accel with device nodes not appearing/opening properly, but
-I'll let him comment there.  But either way, the right approach should
-be to fix any issues in accel and move it there.
-
-[...]
-
->>   .../devicetree/bindings/gpu/mtk,apu-drm.yaml  |  38 ++
->>   drivers/gpu/drm/Kconfig                       |   2 +
->>   drivers/gpu/drm/Makefile                      |   1 +
->>   drivers/gpu/drm/apu/Kconfig                   |  22 +
->>   drivers/gpu/drm/apu/Makefile                  |  10 +
->>   drivers/gpu/drm/apu/apu_drv.c                 | 282 +++++++++
->>   drivers/gpu/drm/apu/apu_gem.c                 | 230 +++++++
->>   drivers/gpu/drm/apu/apu_internal.h            | 205 ++++++
->>   drivers/gpu/drm/apu/apu_sched.c               | 592 ++++++++++++++++++
->>   drivers/gpu/drm/apu/simu_apu.c                | 313 +++++++++
->>   include/uapi/drm/apu_drm.h                    |  81 +++
->
-> "apu" seems too generic.  We already have 3 "AI processing units" over 
-> in drivers/accel already...
-
-Indeed, it is generic, but that's kind of the point for this driver
-since it's targetted at generalizing the interface with "AI processing
-units" on a growing number of embedded SoCs (ARM, RISC-V, etc.)  In
-addition, the generic naming is intentional because the goal is bigger
-than the kernel and is working towards a generic, shared "libAPU"
-userspace[1], but also common firmware for DSP-style inference engines
-(e.g. analgous Sound Open Firmware for audio DSPs.)
-
-As usual, the various SoC vendors use different names (APU, NPU, NN
-unit, etc.)  but we'd like a generic name for the class of devices
-targetted by this driver.  And unfortunately, it looks like the equally
-generic "Versatile processing unit" is already taken Intel's
-drivers/accel/ivpu. :)
-
-Maybe since this is more about generalizing the interface between the
-CPU running linux and the APU, what about the name apu_if?  But I guess
-that applies to the other 3 drivers in drivers/accell also.  Hmmm...
-
-Naming things is hard[2], so we're definitly open to other ideas.  Any
-suggestions?
-
-Kevin
-
-[1] https://gitlab.baylibre.com/baylibre/libapu/libapu
-
-[2]
-"There are 2 hard problems in computer science: cache invalidation,
- naming things and off-by-1 errors."
- -- https://twitter.com/secretGeek/status/7269997868
-
+    Andrew
 
