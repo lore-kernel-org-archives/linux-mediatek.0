@@ -4,149 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C565C7EE26
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 May 2023 12:21:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B2C0C7EE23
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 May 2023 12:28:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b/N97QNJLbmr+RhSzhUpL7rxH3poMQwYGelaxe/kHjw=; b=RZrnPKtvlXVEOWFjvshBW8vrNt
-	B0/uz7xS2jHbiTN31F9uq181xg2cT/va5eCPff7XjaL1Zo+0HvX7LbLIKL/OllEPYnwery7yxkkzM
-	IPVmMJIcJut0iyCbSdBcLRM43LmQJtr0LzOggHer6IWYuN70jUZwUGYQGJnhhWZn0Jit2UXIL5xQ6
-	qIS77qCo6zxndpW+rlPCMFwVOmEimjQF5/KqghnUiuGx4o5e8X68Pqk5IpIDvzED2r9AjpBFRAO7J
-	Zj12p37J9/nbViTwIjsgHg4Xx0MggdtLTmmo2KOKGxqDvYsRZf+kRIX5lak/VxBoiQ7vo677e4q30
-	pvW56vRg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GaMCyBHE2i/5Okk7BbF6VsFNl1PIr2h5Mddxlu//RX8=; b=EA7/xWwrOMDjDjc606Ck8M/coU
+	HVUIqCvERvTRG34cnFAZvjM/qWeuRlVfIevO1n2EKFhJz63jq4UtJou4OwLwXBqVQPO/lVxj3FhVw
+	a4lGNYyiQIqa0/o5Jx+55YWaJs96LODuWSh4oXHKX67R6P3HyWvcCQURxWe7WY2y6CHK++uIOg1b0
+	TWja5p0qspPs1hkZKtDUr1Lc9K8WIhidXjZ0DLAU4VFFgX1Dj7a/Dbrd/zqGr1ZvHwJDIPKULN2/o
+	MdeGwsY2+dg30enI0y45Lz2CV5piq/eZ04g31c6AG5YSps3WfTUnfbtKeKbcgU1jEV90AAvViGPT1
+	O0sXPXTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1R0r-00ADd8-2C;
-	Tue, 23 May 2023 12:21:13 +0000
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+	id 1q1R80-00AF8J-27;
+	Tue, 23 May 2023 12:28:36 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1R0n-00ADbl-32;
-	Tue, 23 May 2023 12:21:11 +0000
-Received: from pps.filterd (m0356516.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 34NC85Cd010591;
-	Tue, 23 May 2023 12:20:35 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=message-id : subject :
- from : to : cc : date : in-reply-to : references : content-type :
- content-transfer-encoding : mime-version; s=pp1;
- bh=b/N97QNJLbmr+RhSzhUpL7rxH3poMQwYGelaxe/kHjw=;
- b=ikq5fqhiSpAAT0nJmLp0aCj978Av/rRSS20Vc4ULriCHaM0B7e6jTtTZJvoiEszfEp9B
- l7miWEJ49bMuuMf1IpkL0lHjV9aYJAP4k4tugihoSJ+ulamMiXffid3ZMqXCYrOhemca
- b697LrcX3VA2GTXABwyFzt0QEAzH0LWC47K1qa9a190SlVw00sYxpmR3QWCWyn+lMG0w
- O7Vdf1FG9BiZhYoT+2OE9qZxkgvgdDI6gDcQOXIhpLK6HvUP32YP2uq12Ef/ajaAlWoJ
- s1A8hVsg7S/r9zE0ldTpDCJaPMjUrWa79b/rzIwRHbSCz33LjwGjs4zykqMBYji7DN/U 3g== 
-Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3qrw2n8kac-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 23 May 2023 12:20:34 +0000
-Received: from m0356516.ppops.net (m0356516.ppops.net [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 34NC85YP010666;
-	Tue, 23 May 2023 12:20:33 GMT
-Received: from ppma03ams.nl.ibm.com (62.31.33a9.ip4.static.sl-reverse.com [169.51.49.98])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3qrw2n8k8b-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 23 May 2023 12:20:33 +0000
-Received: from pps.filterd (ppma03ams.nl.ibm.com [127.0.0.1])
-	by ppma03ams.nl.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 34N2FIwg013811;
-	Tue, 23 May 2023 12:20:30 GMT
-Received: from smtprelay01.fra02v.mail.ibm.com ([9.218.2.227])
-	by ppma03ams.nl.ibm.com (PPS) with ESMTPS id 3qppcu9f06-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 23 May 2023 12:20:30 +0000
-Received: from smtpav07.fra02v.mail.ibm.com (smtpav07.fra02v.mail.ibm.com [10.20.54.106])
-	by smtprelay01.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 34NCKRRA11338474
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 23 May 2023 12:20:27 GMT
-Received: from smtpav07.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id E82A02004D;
-	Tue, 23 May 2023 12:20:26 +0000 (GMT)
-Received: from smtpav07.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 4EA4820040;
-	Tue, 23 May 2023 12:20:24 +0000 (GMT)
-Received: from [9.171.22.235] (unknown [9.171.22.235])
-	by smtpav07.fra02v.mail.ibm.com (Postfix) with ESMTP;
-	Tue, 23 May 2023 12:20:24 +0000 (GMT)
-Message-ID: <b06a47fecf5eab9440c1c35d9c7b83fe87f918a0.camel@linux.ibm.com>
-Subject: Re: [PATCH v9 6/6] iommu/dma: Make flush queue sizes and timeout
- driver configurable
-From: Niklas Schnelle <schnelle@linux.ibm.com>
-To: Joerg Roedel <joro@8bytes.org>
-Cc: Matthew Rosato <mjrosato@linux.ibm.com>, Will Deacon <will@kernel.org>,
-        Wenjia Zhang <wenjia@linux.ibm.com>,
-        Robin Murphy <robin.murphy@arm.com>, Jason Gunthorpe <jgg@ziepe.ca>,
-        Gerd Bayer <gbayer@linux.ibm.com>,
-        Julian
- Ruess <julianr@linux.ibm.com>,
-        Pierre Morel <pmorel@linux.ibm.com>,
-        Alexandra Winter <wintera@linux.ibm.com>,
-        Heiko Carstens
- <hca@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
-        Alexander Gordeev
- <agordeev@linux.ibm.com>,
-        Christian Borntraeger
- <borntraeger@linux.ibm.com>,
-        Sven Schnelle <svens@linux.ibm.com>,
-        Suravee
- Suthikulpanit <suravee.suthikulpanit@amd.com>,
-        Hector Martin
- <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
-        Alyssa Rosenzweig
- <alyssa@rosenzweig.io>,
-        David Woodhouse <dwmw2@infradead.org>,
-        Lu Baolu
- <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>,
-        Bjorn Andersson
- <andersson@kernel.org>,
-        Konrad Dybcio <konrad.dybcio@linaro.org>,
-        Yong Wu
- <yong.wu@mediatek.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
-        Orson Zhai
- <orsonzhai@gmail.com>,
-        Baolin Wang <baolin.wang@linux.alibaba.com>,
-        Chunyan
- Zhang <zhang.lyra@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
-        Jernej Skrabec
- <jernej.skrabec@gmail.com>,
-        Samuel Holland <samuel@sholland.org>,
-        Thierry
- Reding <thierry.reding@gmail.com>,
-        Krishna Reddy <vdumpa@nvidia.com>,
-        Jonathan Hunter <jonathanh@nvidia.com>,
-        Jonathan Corbet <corbet@lwn.net>, linux-s390@vger.kernel.org,
-        netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-        iommu@lists.linux.dev, asahi@lists.linux.dev,
-        linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-        linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
-        linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
-Date: Tue, 23 May 2023 14:20:24 +0200
-In-Reply-To: <ZGuT2R42SWFHmklu@8bytes.org>
-References: <20230310-dma_iommu-v9-0-65bb8edd2beb@linux.ibm.com>
-	 <20230310-dma_iommu-v9-6-65bb8edd2beb@linux.ibm.com>
-	 <ZGuT2R42SWFHmklu@8bytes.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.48.1 (3.48.1-1.fc38) 
+	id 1q1R7x-00AF7C-11;
+	Tue, 23 May 2023 12:28:34 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 79E3663129;
+	Tue, 23 May 2023 12:28:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AFABCC433EF;
+	Tue, 23 May 2023 12:28:29 +0000 (UTC)
+Message-ID: <2f1bf798-49c3-13d7-96e5-b29e7df73bd1@xs4all.nl>
+Date: Tue, 23 May 2023 14:28:28 +0200
 MIME-Version: 1.0
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: SCHk9GNBzwPXZyeAocq9ZCr1U8UNYoFE
-X-Proofpoint-ORIG-GUID: YIMPkAl4-Wv-r6WPNnYiGonT3FNgmVP_
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.573,FMLib:17.11.176.26
- definitions=2023-05-23_08,2023-05-23_02,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 malwarescore=0 suspectscore=0
- bulkscore=0 mlxscore=0 priorityscore=1501 adultscore=0 spamscore=0
- mlxlogscore=686 impostorscore=0 clxscore=1015 lowpriorityscore=0
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2304280000 definitions=main-2305230095
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH v2] media: mediatek: vcodec: mtk_vcodec_dec_hw: Use
+ devm_pm_runtime_enable()
+Content-Language: en-US
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+To: Fei Shao <fshao@chromium.org>,
+ =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
+ Chen-Yu Tsai <wenst@chromium.org>
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20230515141610.v2.1.I0d1657be3fea5870f797e975a7aa490291e17993@changeid>
+ <b5799dfe-f17b-a838-0916-645ba83307d2@xs4all.nl>
+In-Reply-To: <b5799dfe-f17b-a838-0916-645ba83307d2@xs4all.nl>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230523_052110_122732_C00B9CAF 
-X-CRM114-Status: GOOD (  21.70  )
+X-CRM114-CacheID: sfid-20230523_052833_433688_FE6EF1B2 
+X-CRM114-Status: GOOD (  20.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -161,30 +75,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2023-05-22 at 18:10 +0200, Joerg Roedel wrote:
-> On Mon, May 15, 2023 at 11:15:56AM +0200, Niklas Schnelle wrote:
-> > In the s390 IOMMU driver a large fixed queue size and timeout is then
-> > set together with single queue mode bringing its performance on s390
-> > paged memory guests on par with the previous s390 specific DMA API
-> > implementation.
->=20
-> Hmm, the right flush-queue size and timeout settings are more a function
-> of the endpoint device and device driver than of the iommu driver, no? I
-> think something like this could also help solving the recently reported
-> scalability problems in the fq-code, if done right.
->=20
+On 23/05/2023 13:42, Hans Verkuil wrote:
+> On 15/05/2023 08:16, Fei Shao wrote:
+>> Convert pm_runtime_enable() to the managed version, and clean up error
+>> handling and unnecessary .remove() callback accordingly.
+> 
+> This patch no longer applies. Can you make a v3?
+
+Sorry, you can ignore this. I now realize that this was a v2 of
+
+https://patchwork.linuxtv.org/project/linux-media/patch/20230510233117.1.I7047714f92ef7569bd21f118ae6aee20b3175a92@changeid/
+
+I had that v1 applied, so obviously this v2 would fail to apply. After dropping
+that v1 patch it now applies cleanly.
+
+Regards,
+
+	Hans
+
+> 
 > Regards,
->=20
-> 	Joerg
->=20
+> 
+> 	Hans
+> 
+>>
+>> Signed-off-by: Fei Shao <fshao@chromium.org>
+>>
+>> ---
+>>
+>> Changes in v2:
+>> Use devm_pm_runtime_enable() per suggestion from the previous thread:
+>> https://lore.kernel.org/lkml/20230510164330.z2ygkl7vws6fci75@pengutronix.de/T/#m25be91afe3e9554600e859a8a59128ca234fc63d
+>>
+>>  .../mediatek/vcodec/mtk_vcodec_dec_hw.c       | 26 ++++++-------------
+>>  1 file changed, 8 insertions(+), 18 deletions(-)
+>>
+>> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
+>> index b753bf54ebd9..e1cb2f8dca33 100644
+>> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
+>> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
+>> @@ -148,20 +148,21 @@ static int mtk_vdec_hw_probe(struct platform_device *pdev)
+>>  	ret = mtk_vcodec_init_dec_clk(pdev, &subdev_dev->pm);
+>>  	if (ret)
+>>  		return ret;
+>> -	pm_runtime_enable(&pdev->dev);
+>> +
+>> +	ret = devm_pm_runtime_enable(&pdev->dev);
+>> +	if (ret)
+>> +		return ret;
+>>  
+>>  	of_id = of_match_device(mtk_vdec_hw_match, dev);
+>>  	if (!of_id) {
+>>  		dev_err(dev, "Can't get vdec subdev id.\n");
+>> -		ret = -EINVAL;
+>> -		goto err;
+>> +		return -EINVAL;
+>>  	}
+>>  
+>>  	hw_idx = (enum mtk_vdec_hw_id)(uintptr_t)of_id->data;
+>>  	if (hw_idx >= MTK_VDEC_HW_MAX) {
+>>  		dev_err(dev, "Hardware index %d not correct.\n", hw_idx);
+>> -		ret = -EINVAL;
+>> -		goto err;
+>> +		return -EINVAL;
+>>  	}
+>>  
+>>  	main_dev->subdev_dev[hw_idx] = subdev_dev;
+>> @@ -173,36 +174,25 @@ static int mtk_vdec_hw_probe(struct platform_device *pdev)
+>>  	if (IS_SUPPORT_VDEC_HW_IRQ(hw_idx)) {
+>>  		ret = mtk_vdec_hw_init_irq(subdev_dev);
+>>  		if (ret)
+>> -			goto err;
+>> +			return ret;
+>>  	}
+>>  
+>>  	subdev_dev->reg_base[VDEC_HW_MISC] =
+>>  		devm_platform_ioremap_resource(pdev, 0);
+>>  	if (IS_ERR((__force void *)subdev_dev->reg_base[VDEC_HW_MISC])) {
+>>  		ret = PTR_ERR((__force void *)subdev_dev->reg_base[VDEC_HW_MISC]);
+>> -		goto err;
+>> +		return ret;
+>>  	}
+>>  
+>>  	if (!main_dev->subdev_prob_done)
+>>  		main_dev->subdev_prob_done = mtk_vdec_hw_prob_done;
+>>  
+>>  	platform_set_drvdata(pdev, subdev_dev);
+>> -	return 0;
+>> -err:
+>> -	pm_runtime_disable(subdev_dev->pm.dev);
+>> -	return ret;
+>> -}
+>> -
+>> -static int mtk_vdec_hw_remove(struct platform_device *pdev)
+>> -{
+>> -	pm_runtime_disable(&pdev->dev);
+>> -
+>>  	return 0;
+>>  }
+>>  
+>>  static struct platform_driver mtk_vdec_driver = {
+>>  	.probe	= mtk_vdec_hw_probe,
+>> -	.remove = mtk_vdec_hw_remove,
+>>  	.driver	= {
+>>  		.name	= "mtk-vdec-comp",
+>>  		.of_match_table = mtk_vdec_hw_match,
+> 
 
-In our case the large flush queue and timeout is needed because the
-IOTLB flushes of the virtualized s390 IOMMU are used by KVM and z/VM to
-synchronize their IOMMU shadow tables thus making them more expensive.
-This then applies to all pass-through PCI devices without their drivers
-knowing about the IOMMU being virtualized like that. But yes of course
-there could be cases where the device driver knows better.
-
-Thanks,
-Niklas
 
