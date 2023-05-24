@@ -4,74 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4CD0C77B73
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 May 2023 07:36:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3B7DC77B7A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 May 2023 07:42:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MQ5Ll723gxJOQriEEst7t1/UHqzXhr3nL1YtxUNySoU=; b=Ge16QQDDH0Yc0BKhHwf182NTVF
-	ZZKmXLfenV5toNR0W/DYFZa5o7SK+21WfskZgUKv3eeWbGe9i21LmNlSsxG8vNdX2IVvMa5V7Ek7o
-	YKjsLgoXU8P2wyGY4ylpH3kzHPwRhGDHbVorf+1beIulzvsmuxBKsx4plNzh4VTc/8pvJY7jXg9vW
-	j2soGuHu9mw6sSV7/FZyUU+PV3sjSwHm8FiVmesm3GHpIGatvXgOyTQhSVHlUUQC/4BfDM+hJJjrP
-	WQb6N+0Gi6tkanaaV5iuuQzWREQRIwebnyRSeaxxrVQFr8OO+u0CNM0TncCuFLJlV9pz50pU/ITK0
-	HPCXfTIQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=MR0O682RfrFBNse1p8Ql+KZ1F8A1Rs1HR/Xijg/qsHo=; b=sDTcT/1jlT322q
+	SX8jlAGoAJSXILy31AqsVyj/Qi2H6D0D5k7LNaR4N0yPEtWcllzARaqYzS3kf2YQct0hL+WV7Zrag
+	pECeyo89oXrYLXDxKsCdOQ7tXBLIesv6IOyXyE+NE4R9ltRK5pPzDTDxnSoQzvW1Obyemv8as1HEG
+	wdbvKYC4E23D0QiaapqjlzKJ9JRDlHWN/zkJX3Sifjz0W2po9kSuaRs1wduIiuP9EPSL2h8V8587F
+	fSn0nIiP/QE05lXTjbaqwdYKeZ1yqMWpXbnvoo3KiRMK3Wi/dghngbNLB8f1w3zw8Xvl1ZnZ1v/v7
+	ZsTbH6NW00s9u7NNnZ9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1j2S-00Cd2e-00;
-	Wed, 24 May 2023 07:36:04 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1q1j8R-00Cdzq-1F;
+	Wed, 24 May 2023 07:42:15 +0000
+Received: from sender4-op-o10.zoho.com ([136.143.188.10])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1j2N-00Cd1g-21;
-	Wed, 24 May 2023 07:36:01 +0000
-Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 24E3766032B2;
-	Wed, 24 May 2023 08:35:57 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1684913758;
-	bh=2P4uUVGWSU1yuuIGABANv5MaXiV9HCTbYclu2/IM3PI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=BFGNHizBzrDirVgLuoG5p0bLgQGskneur9IIARgRKquZxXDqU5cbeqxLvmAelQpx2
-	 wIQOL1vD2uI6BZk5VzvitQonsIXe53UegCK/lnLH2qGKgOzMcfTFEeRlWvmrEyPkdF
-	 a3H2jcrI2lXF1T0ZdY/5IToW7eTbki7UDR2xDHulp3N3pcynSh/2H8g37ZfY8/7zFO
-	 ZS8ofYgPXodKinoxhur7XfqRDjxgHWP0WFwe6u+PJg8o6VVyuP2vXfoflUoFJ+BRde
-	 sSCzluBsADd0iaAaoVU3hgTDdQmE6fURduxAk9NQFRjKF+RoEYixtpgk/YK3YI/rqZ
-	 Np5iExasUbyoA==
-Message-ID: <2dde9a06-1ed3-f95e-f11e-91b65c039c92@collabora.com>
-Date: Wed, 24 May 2023 09:35:54 +0200
+	id 1q1j8K-00Cdtx-2O;
+	Wed, 24 May 2023 07:42:10 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1684914092; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=aKxvFDvhB4Kb4q7WHYCzmGiJUnx499T9hNTbQT49YsO5DtSfhxxDXFrIcz1JD4vRCr8TKos78852opVSGsGND3eIg42TZjO8tn8J1FpM7O03UK4dQ+3f1UF1t6mQ9OoVqmhPShUSAsoXQALsUv2y1w9VKZKb7K0Kes3Rp6zxecc=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1684914092; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=MR0O682RfrFBNse1p8Ql+KZ1F8A1Rs1HR/Xijg/qsHo=; 
+	b=KPARimPIC8bQ0XGSJKJodyslgvqqwIbSgjURvmHDqIvxxz/7EGT7v3FUZhGtJqhkbMi20R7aCqwLSujGVW0r9QRHuNm/mDd24zGH7fgQZNUJIcxJVVU/C2rDH9xjC5CyrcgxfB8htLQO6wKw1wFZm631v1LuJZiuVttPiiV5IdE=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1684914092;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=MR0O682RfrFBNse1p8Ql+KZ1F8A1Rs1HR/Xijg/qsHo=;
+	b=SdPuQP3V8HGpH/WOY38f44060GfQW1hFNzUyzqQnbk3V8q3oEWQS1aBWVS3jISpG
+	ztEzUpa3KEcr7aUgp1t7PDKQHvRELaJQFwgzzhHithXUhHqIEP0+ulaf1ZmwKcNAx6h
+	dhKdTXctBbWqqYz7cXsYRfBwrKo5kNysEMZ/RDUA=
+Received: from [10.10.10.217] (149.91.1.15 [149.91.1.15]) by mx.zohomail.com
+	with SMTPS id 1684914089227639.5522627095868; Wed, 24 May 2023 00:41:29 -0700 (PDT)
+Message-ID: <a01fb61e-790d-9fae-6537-5556a11b56d8@arinc9.com>
+Date: Wed, 24 May 2023 10:41:06 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.1
-Subject: Re: [PATCH v5,2/2] media: mediatek: vcodec: support stateless hevc
- decoder
+ Thunderbird/102.11.0
+Subject: Re: [PATCH net-next 02/30] net: dsa: mt7530: use p5_interface_select
+ as data type for p5_intf_sel
+To: Andrew Lunn <andrew@lunn.ch>
+References: <20230522121532.86610-1-arinc.unal@arinc9.com>
+ <20230522121532.86610-3-arinc.unal@arinc9.com>
+ <8f73b826-5a1e-462d-91e4-5c518751c1ee@lunn.ch>
 Content-Language: en-US
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai
- <wenst@chromium.org>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?= <nfraprado@collabora.com>,
- Nathan Hebert <nhebert@chromium.org>
-Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
- Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20230524021625.13708-1-yunfei.dong@mediatek.com>
- <20230524021625.13708-3-yunfei.dong@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230524021625.13708-3-yunfei.dong@mediatek.com>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <8f73b826-5a1e-462d-91e4-5c518751c1ee@lunn.ch>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230524_003559_925228_4EBCFDA0 
-X-CRM114-Status: GOOD (  23.02  )
+X-CRM114-CacheID: sfid-20230524_004208_829058_D2CE4F98 
+X-CRM114-Status: GOOD (  17.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,134 +77,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, mithat.guner@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 24/05/23 04:16, Yunfei Dong ha scritto:
-> Add mediatek hevc decoder linux driver which use the stateless API in MT8195.
+On 24.05.2023 02:31, Andrew Lunn wrote:
+> On Mon, May 22, 2023 at 03:15:04PM +0300, arinc9.unal@gmail.com wrote:
+>> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+>>
+>> Use the p5_interface_select enumeration as the data type for the
+>> p5_intf_sel field. This ensures p5_intf_sel can only take the values
+>> defined in the p5_interface_select enumeration.
+>>
+>> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+>> Acked-by: Daniel Golle <daniel@makrotopia.org>
+>> ---
+>>   drivers/net/dsa/mt7530.h | 4 ++--
+>>   1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+>> index 845f5dd16d83..415d8ea07472 100644
+>> --- a/drivers/net/dsa/mt7530.h
+>> +++ b/drivers/net/dsa/mt7530.h
+>> @@ -675,7 +675,7 @@ struct mt7530_port {
+>>   
+>>   /* Port 5 interface select definitions */
+>>   enum p5_interface_select {
+>> -	P5_DISABLED = 0,
+>> +	P5_DISABLED,
 > 
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> Tested-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-> Tested-by: Nathan Hebert <nhebert@chromium.org>
-> ---
->   .../media/platform/mediatek/vcodec/Makefile   |    1 +
->   .../vcodec/mtk_vcodec_dec_stateless.c         |   59 +-
->   .../platform/mediatek/vcodec/mtk_vcodec_drv.h |    1 +
->   .../vcodec/vdec/vdec_hevc_req_multi_if.c      | 1101 +++++++++++++++++
->   .../platform/mediatek/vcodec/vdec_drv_if.c    |    4 +
->   .../platform/mediatek/vcodec/vdec_drv_if.h    |    1 +
->   6 files changed, 1166 insertions(+), 1 deletion(-)
->   create mode 100644 drivers/media/platform/mediatek/vcodec/vdec/vdec_hevc_req_multi_if.c
-> 
+> Is this change important in this context? Maybe add something to the
+> commit message about it?
 
-..snip..
+Not important, the first element in the enum is given value 0 so this is
+merely a style change. I will mention it on the patch log, thanks.
 
-> diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_hevc_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_hevc_req_multi_if.c
-> new file mode 100644
-> index 000000000000..9a96547af33c
-> --- /dev/null
-> +++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_hevc_req_multi_if.c
-> @@ -0,0 +1,1101 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (c) 2023 MediaTek Inc.
-> + * Author: Yunfei Dong <yunfei.dong@mediatek.com>
-> + */
-> +
-
-..snip..
-
-> +
-> +/**
-> + * struct vdec_hevc_slice_share_info - shared information used to exchange
-> + *                                     message between lat and core
-> + *
-> + * @sps:               sequence header information from user space
-> + * @dec_params:        decoder params from user space
-> + * @hevc_slice_params: decoder params used for hardware
-> + * @trans_start:       trans start dma address
-> + * @trans_end:         trans end dma address
-
-Wrong documentation, there's no trans_start, trans_end, but just `trans`.
-
-> + */
-> +struct vdec_hevc_slice_share_info {
-> +	struct v4l2_ctrl_hevc_sps sps;
-> +	struct v4l2_ctrl_hevc_decode_params dec_params;
-> +	struct vdec_hevc_slice_lat_dec_param hevc_slice_params;
-> +	struct vdec_hevc_slice_mem trans;
-> +};
-> +
-> +/**
-> + * struct vdec_hevc_slice_inst - hevc decoder instance
-> + *
-> + * @slice_dec_num:      how many picture be decoded
-> + * @ctx:                point to mtk_vcodec_ctx
-> + * @pred_buf:           HW working predication buffer
-
-pred_buf is not present in this structure; either add it and make use
-of it, or remove the documentation for it.
-
-> + * @mv_buf:             HW working motion vector buffer
-> + * @vpu:                VPU instance
-> + * @vsi:                vsi used for lat
-> + * @vsi_core:           vsi used for core
-> + * @wrap_addr:          wrap address used for hevc
-> + *
-> + * @hevc_slice_param:   the parameters that hardware use to decode
-> + *
-> + * @resolution_changed: resolution changed
-> + * @realloc_mv_buf:     reallocate mv buffer
-> + * @cap_num_planes:     number of capture queue plane
-> + */
-> +struct vdec_hevc_slice_inst {
-> +	unsigned int slice_dec_num;
-> +	struct mtk_vcodec_ctx *ctx;
-> +	struct mtk_vcodec_mem mv_buf[HEVC_MAX_MV_NUM];
-> +	struct vdec_vpu_inst vpu;
-> +	struct vdec_hevc_slice_vsi *vsi;
-> +	struct vdec_hevc_slice_vsi *vsi_core;
-> +	struct mtk_vcodec_mem wrap_addr;
-> +
-> +	struct vdec_hevc_slice_lat_dec_param hevc_slice_param;
-> +
-> +	unsigned int resolution_changed;
-> +	unsigned int realloc_mv_buf;
-> +	unsigned int cap_num_planes;
-> +};
-> +
-> +static unsigned int vdec_hevc_get_mv_buf_size(unsigned int width, unsigned int height)
-> +{
-> +	const int unit_size = (width / 16) * (height / 16) + 8;
-
-This is supposed to be `const unsigned int`, otherwise you may overflow here (even
-if it's unlikely to, but still....!)
-
-> +
-> +	return 64 * unit_size;
-> +}
-> +
-
-..snip..
-
-> +static int vdec_hevc_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
-> +				      struct vdec_fb *fb, bool *res_chg)
-> +{
-> +	struct vdec_hevc_slice_inst *inst = h_vdec;
-> +	struct vdec_vpu_inst *vpu = &inst->vpu;
-> +
-
-Please remove this extra empty line.
-
-> +	int err, timeout = 0;
-> +	unsigned int data[2];
-> +	struct vdec_lat_buf *lat_buf;
-> +	struct vdec_hevc_slice_share_info *share_info;
-> +
-
-...after which:
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-
+Arınç
 
