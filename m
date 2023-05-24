@@ -4,88 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91EF9C77B7C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 May 2023 15:52:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4631C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 May 2023 16:04:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=h8geeXEOb1JFpSL51yP1LqtEfxAQbaVotjCJur5zhD4=; b=XetYUsJeopYQSAj62lqQCD4Euq
-	OsaSeBDsFe2C7BYvFTh9KFi48LS7VmfBIH1wgcfyIBaPqSXz8lKUSb0B8967cMAORncUrKQj5v8QT
-	EhhZKqGE5seSTzciHiz+kMtQTAI5JqJgkzs22uhCGaSEm6oCZkBQ/4mGb26FxbWbkfaHE4ewJ70Zj
-	Tt4FodC3B8JVIqoGA+W4UIKnRAcnNTzasJvD0OcRL6jvwVPHhkVUxXVihxLoGjx4pFquweAYWKBpk
-	osPsDOShMavp7+5yCGHrYQXKuKbID5C/51YyGXmJ7fRe7NnvjR9thAwVUlYfBoLpfxlJ0J8kyX7Ow
-	eH+hQpFw==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=4kbf7t2pjWoddD/1MgzGcuAxsDnlYNa6SWc1ur855+0=; b=vCAuAvs5MYDfwVUV42eUojAySQ
+	pk0/sGL5w17uflP/OmjT/urALg63B73PxTGBDxAOZeqCz73GtmNWVIlefCSBk7ipNSqjbt2hfELJa
+	RG7/Uutg9f7p3y3QWyXf+oX1LS8MQaiY8CrKBCycX+yvSu6Vl0kvUUUnMaTsV/PmLYUDoi7UeavlG
+	XP7W/0TyM1aRevjj+bFYP+8dNUyKTJr2Tu3JRU91aZenFsx5SfeSGkayJPWVekVb7/KTixav5/cg9
+	KrVdVPlO9Tz6+gJZq/XvVuUsK6H7Wg/fS//3kyt4WW6z3Okf6P9Rsou+bnz84N4biXE5Rei1ZxwrM
+	jSS93F8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1qmK-00Du8G-04;
-	Wed, 24 May 2023 15:51:56 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1q1qyN-00DwyB-1L;
+	Wed, 24 May 2023 16:04:23 +0000
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1qmF-00Du7F-3D
+	id 1q1qyL-00Dwwa-02
 	for linux-mediatek@lists.infradead.org;
-	Wed, 24 May 2023 15:51:54 +0000
-Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-3f61530506aso7702565e9.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 24 May 2023 08:51:50 -0700 (PDT)
+	Wed, 24 May 2023 16:04:22 +0000
+Received: by mail-ed1-x535.google.com with SMTP id 4fb4d7f45d1cf-510dabb39aeso2152687a12.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 24 May 2023 09:04:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1684943509; x=1687535509;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=h8geeXEOb1JFpSL51yP1LqtEfxAQbaVotjCJur5zhD4=;
-        b=r9Xqu5ND0Bk5xdzrVcEKYQlFpEEChNge6LbIG0g17WQIR6Y6FlFTjj1VLIptKxk12Q
-         yq45EGDPQw9rNHr+jipV1YSj4asgJuaRjeVL0NZhwSDk/F7WDrzxEpDXrSSJyrZb0/M3
-         zBXKIn/cV0bBTAFnJDnUkCCcwvue3vKTmsqLCYu0uVu4CEJS93Dy/yQ+lZNpqtjw/llJ
-         /i6QJwMZfnhn0BXjS9g7SEYSgcIwM6tYnNKca4sWH8rz2seGcHobfGaMYO1qrYroAdGx
-         05BznJ1hGxFw4jfQNNWBm56IewOjSboZXbEWkM4NBUXJGppz8/FOt58lkiEa84eE4ux7
-         4f7w==
+        d=gmail.com; s=20221208; t=1684944257; x=1687536257;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=4kbf7t2pjWoddD/1MgzGcuAxsDnlYNa6SWc1ur855+0=;
+        b=XhD7ZTwRg5hQpPojq8rOyf59MuJ/qo/orICMJ3Gdy+ebzPL5HfD/EeN1LUufBJvXqx
+         F3NqMSNuN0EwBtInPwkaUoRzafUTIdptWNJBahQd4rmuhMcAKtiO5iyxhyFcfC/lt0tT
+         XXVq3PCg7Buu2pp4JU3L70aThvmQgYfQALjY5hw+Qg2NClu2m/eb5OrmFKMJNyCW1WQw
+         8qNacPvJPV7juEugKy4L94KIil10lr5Wv1tEu4PPOFZdG89NO0F9kOD2V7ZM/lcoHfR5
+         bp6pJXf20ZKBe7tk7whf2Dwq8FOmr6LHDfFECTrHuzg5uHxDyrXQla5c1cEBcxvTw4AJ
+         IHwQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684943509; x=1687535509;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=h8geeXEOb1JFpSL51yP1LqtEfxAQbaVotjCJur5zhD4=;
-        b=X+I3ytiPCkeRMf/dyeaolnUI0i8FgIPF76880srx3Mu7rnbUZksbFKHSE0dReFAsDX
-         QtGqsbNkSnnM+L3HcaPfU/sgC1HKB4tl9wHmNuKL7XVP2tzWfQba/z2SYDjR3TkIfmuo
-         vUWlaQbI59Yp5rXtcXPF+EwcCLgbsVNdAxBYvvVKOEBsDBsXeFq+Xcyp27H6TxaK098l
-         45wd5/981XgutGK/IXl9LnpBC9cBoVIVpcgHWqwNRnkjocsMTIdJX3XZxppo95dft+JB
-         rWTEMYMw/wSO5yn6ve9j1k0WT/lIwTy7soAXZcvlEA3nGxYg+/cKeSLPYO9azdYEDLYd
-         VKHg==
-X-Gm-Message-State: AC+VfDymKc/UiL7HHYo4pQEmn0loR2kiK6BQWEWtORVOdmhTiNK85vFW
-	Q2fxLo7SdqWTzuLWTWpBeoBNOw==
-X-Google-Smtp-Source: ACHHUZ5sgxsCI/lVRvjZNq+J7kPDx+SvOmaq/8wjAiMQ785YfC+h5iFAEtyNc1gq4Kqqj6aQ7yTjgQ==
-X-Received: by 2002:a7b:cb91:0:b0:3f6:45d:28a1 with SMTP id m17-20020a7bcb91000000b003f6045d28a1mr219488wmi.14.1684943508981;
-        Wed, 24 May 2023 08:51:48 -0700 (PDT)
-Received: from [192.168.1.172] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id z26-20020a05600c221a00b003f60101074dsm2721773wml.33.2023.05.24.08.51.47
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 24 May 2023 08:51:48 -0700 (PDT)
-Message-ID: <dcd5050b-8459-e7cc-b5ad-eb435aba6e84@baylibre.com>
-Date: Wed, 24 May 2023 17:51:46 +0200
+        d=1e100.net; s=20221208; t=1684944257; x=1687536257;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=4kbf7t2pjWoddD/1MgzGcuAxsDnlYNa6SWc1ur855+0=;
+        b=caYoC44RGKfdzXMNOuNDjI2VeWtYMN6gSrEn7bvi44gsqlWxs9eNA8AMZAYFA7qWjL
+         IHgj9uq+IH/ER0sHhB5WPWJK1NFAjVAeH2YoRc3XK4jtq46JLCTSCP4xuTLsgNNfSj67
+         wrJHyE4fKlh9bx0kdww5U9xtOs//6LNMfrUy1G46/AqnU9W7FOTce95Ze19hVIOOxku3
+         whZ1I1AMt6kZs+N9A31ZUVicLuk4QELh/DMYQDwmUqGscciMzDK+u4oxukG/nNDmbhjA
+         JmCyULY7IeXjuhlsMlB2XJyDwP2hLzKlw8S9axmmvyheFEqHDRw7DCr3YrZgzrx2oVab
+         zTvw==
+X-Gm-Message-State: AC+VfDy2IHTKXWZzKKFgBnawgstvXwpiwc/WJiNzQMugajbF8VjgMq+Y
+	XFekJW8/13Wd6YCoc8VLHOovZb9e+xQQSw==
+X-Google-Smtp-Source: ACHHUZ6C8yNw/UxyHTDYSjn75RxO0AsCVtDKdsK2VfVhCxqyB/r7LKc43zomLnbMqbzBCGTWywoXqA==
+X-Received: by 2002:a17:906:eecd:b0:94a:74c9:3611 with SMTP id wu13-20020a170906eecd00b0094a74c93611mr18129346ejb.35.1684944256346;
+        Wed, 24 May 2023 09:04:16 -0700 (PDT)
+Received: from Osmten.. ([103.84.150.66])
+        by smtp.gmail.com with ESMTPSA id gw17-20020a170906f15100b0096f78953b77sm6025576ejb.147.2023.05.24.09.04.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 24 May 2023 09:04:16 -0700 (PDT)
+From: Osama Muhammad <osmtendev@gmail.com>
+To: nbd@nbd.name,
+	ryder.lee@mediatek.com,
+	lorenzo@kernel.org,
+	shayne.chen@mediatek.com,
+	davem@davemloft.net
+Cc: linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Osama Muhammad <osmtendev@gmail.com>
+Subject: [PATCH] debugfs.c: Fix error checking for debugfs_create_dir
+Date: Wed, 24 May 2023 21:03:52 +0500
+Message-Id: <20230524160352.19704-1-osmtendev@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH v2 6/7] ASoC: mediatek: mt8188-mt6359: support new board
- with nau88255
-Content-Language: en-US
-To: Trevor Wu <trevor.wu@mediatek.com>, broonie@kernel.org,
- lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com
-Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org
-References: <20230523021933.3422-1-trevor.wu@mediatek.com>
- <20230523021933.3422-7-trevor.wu@mediatek.com>
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20230523021933.3422-7-trevor.wu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230524_085152_241548_5CB2576D 
-X-CRM114-Status: GOOD (  15.32  )
+X-CRM114-CacheID: sfid-20230524_090421_045948_8A1A122F 
+X-CRM114-Status: UNSURE (   9.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,91 +95,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 23/05/2023 04:19, Trevor Wu wrote:
->   	card_data = (struct mt8188_card_data *)of_device_get_match_data(&pdev->dev);
-> @@ -776,9 +1066,38 @@ static int mt8188_mt6359_dev_probe(struct platform_device *pdev)
->   				dai_link->init = mt8188_mt6359_init;
->   				init_mt6359 = true;
->   			}
-> +		} else if (strcmp(dai_link->name, "ETDM1_OUT_BE") == 0 ||
-> +			   strcmp(dai_link->name, "ETDM2_OUT_BE") == 0 ||
-> +			   strcmp(dai_link->name, "ETDM1_IN_BE") == 0 ||
-> +			   strcmp(dai_link->name, "ETDM2_IN_BE") == 0) {
-> +			if (!strcmp(dai_link->codecs->dai_name, MAX98390_CODEC_DAI)) {
-> +				dai_link->ops = &mt8188_max98390_ops;
-> +				if (init_max98390)
-> +					continue;
+This patch fixes the error checking in debugfs.c in
+debugfs_create_dir. The correct way to check if an error occurred
+is using 'IS_ERR' inline function.
 
-I prefer that you do like your patch [PATCH v2 1/7] to be consistent
-and easy to read.
+Signed-off-by: Osama Muhammad <osmtendev@gmail.com>
+---
+ drivers/net/wireless/mediatek/mt76/debugfs.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-+			if (!init_mt6359) {
-+				dai_link->init = mt8188_mt6359_init;
-+				init_mt6359 = true;
-+			}
-
-> +
-> +				dai_link->init = mt8188_max98390_codec_init;
-> +				init_max98390 = true;
-> +			} else if (!strcmp(dai_link->codecs->dai_name, NAU8825_CODEC_DAI)) {
-> +				dai_link->ops = &mt8188_nau8825_ops;
-> +				if (init_nau8825)
-> +					continue;
-
-ditto
-
-> +
-> +				dai_link->init = mt8188_nau8825_codec_init;
-> +				dai_link->exit = mt8188_nau8825_codec_exit;
-> +				init_nau8825 = true;
-> +			} else {
-> +				if (strcmp(dai_link->codecs->dai_name, "snd-soc-dummy-dai")) {
-
-Shouldn't be with a NOT operator ("!") ?
-+ if (!strcmp(dai_link->codecs->dai_name, "snd-soc-dummy-dai")) {
-
-
-> +					if (init_dumb)
-> +						continue;
-
-ditto
-
-> +
-> +					dai_link->init = mt8188_dumb_amp_init;
-> +					init_dumb = true;
-> +				}
-> +			}
->   		}
->   	}
->   
-> +	priv->private_data = card_data;
->   	snd_soc_card_set_drvdata(card, priv);
->   
->   	ret = devm_snd_soc_register_card(&pdev->dev, card);
-> @@ -795,11 +1114,20 @@ static struct mt8188_card_data mt8188_evb_card = {
->   	.name = "mt8188_mt6359",
->   };
->   
-> +static struct mt8188_card_data mt8188_nau8825_card = {
-> +	.name = "mt8188_nau8825",
-> +	.quirk = NAU8825_HS_PRESENT,
-> +};
-> +
->   static const struct of_device_id mt8188_mt6359_dt_match[] = {
->   	{
->   		.compatible = "mediatek,mt8188-mt6359-evb",
->   		.data = &mt8188_evb_card,
->   	},
-> +	{
-> +		.compatible = "mediatek,mt8188-nau8825",
-> +		.data = &mt8188_nau8825_card,
-> +	},
->   	{},
->   };
->   MODULE_DEVICE_TABLE(of, mt8188_mt6359_dt_match);
-
+diff --git a/drivers/net/wireless/mediatek/mt76/debugfs.c b/drivers/net/wireless/mediatek/mt76/debugfs.c
+index 57fbcc83e074..d9ba700131fd 100644
+--- a/drivers/net/wireless/mediatek/mt76/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt76/debugfs.c
+@@ -109,7 +109,7 @@ mt76_register_debugfs_fops(struct mt76_phy *phy,
+ 	struct dentry *dir;
+ 
+ 	dir = debugfs_create_dir("mt76", phy->hw->wiphy->debugfsdir);
+-	if (!dir)
++	if (IS_ERR(dir))
+ 		return NULL;
+ 
+ 	debugfs_create_u8("led_pin", 0600, dir, &phy->leds.pin);
 -- 
-Regards,
-Alexandre
+2.34.1
 
 
