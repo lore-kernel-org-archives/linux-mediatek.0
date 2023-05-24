@@ -4,79 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA339C77B73
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 May 2023 18:15:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B94C6C77B73
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 May 2023 19:20:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=87ZCxQxTbVlKyzkUBnd4j43LV2JM7FHJHvdF0cKFlQQ=; b=tIN5ebdxn6vLqW7kF6Se4CmP0w
-	QTk2lDbzDDIoRSGXuc4oK7fi0RnbFwIPHP7p3Qw7G3Ec1YlsNtC0ejMH6/RJi0wAb20xuE/TlPIGz
-	Q8YYGb+LyhsMiMt4UEvid4/3SM826AxrrpbAMKAVwd1JZw6Y9FqpoOEqBLDLmrD46BBU+p40VKegH
-	1HgsQBdU5T8ynwE7czsFGwjHFf1KITL8Pi725fA5RY2H7yD/I0XwwRfPVwCR7ByTASs5iHfGyW5Ni
-	7ySkPPlZEjD1BI5Qc4/2tPxL8gqnnlcO/vPxZ7jvW+jtghOYqpz+wXeZuZhHbjidFGj9LwOoJD4Pp
-	Tf9VATKw==;
+	bh=J6hQKtSgQEWi9rODQsWaqyzCQpbBtWGNPmRG6g+0ml8=; b=HiTIamBmbZBNWys+ts9t7Yjjxd
+	sa8WdJDTTgIGl+1s+iQo2IMSZFD83J31IhQW0K7tJILpu9XFzIRVyJ67NA68+Lx4rcc4EhzmTjiiI
+	Lfo9zgzGrmOmVBrFwpgh09EDfe/Bttx2LyNxzg0x0g2+AtS+ICd18+e/emlATTIZ3dmWFE90AyToV
+	5ymL//9enl5yqjiQYVQEgPBR5Urcc0aqiDoIIipmjpQDzccQztEUy6Q4YL6YW9H9qBIgOoa7fyGRY
+	NbDT1unNcO06YRuOBq9BsoCb1zn+vnwiNueij8bMvjlvGTt1XfWHwfvnhPX+d5AhRi9rhvp6Mbrym
+	EmPMyxnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1t1A-00ELXo-2J;
-	Wed, 24 May 2023 18:15:24 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1q1u1w-00ET50-0P;
+	Wed, 24 May 2023 19:20:16 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1t17-00ELW6-2D;
-	Wed, 24 May 2023 18:15:23 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-3f6042d60b5so14206255e9.2;
-        Wed, 24 May 2023 11:15:16 -0700 (PDT)
+	id 1q1svn-00EKaa-2Z;
+	Wed, 24 May 2023 18:09:52 +0000
+Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-3f68fc6b402so3318955e9.2;
+        Wed, 24 May 2023 11:09:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1684952115; x=1687544115;
+        d=gmail.com; s=20221208; t=1684951786; x=1687543786;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=87ZCxQxTbVlKyzkUBnd4j43LV2JM7FHJHvdF0cKFlQQ=;
-        b=VbBXmu69uh2gs0RMb+R7/foz1uQKVq/j6oHNX547qBl9t+AzBFUP1CF0w/YXiQHoJJ
-         29rLQkeoO83pZRz0t4dESuYe2Thpebmo7IM4DjpLzyB5HPMz5AIxtPghdpemrkKWB2UL
-         yX2Mm5a0sZUVvSba4Dw103/TcQ3LEAY4bDD948jAt22q/QcJGp6zMhwg4OzqINO2y8t7
-         j8xydeHTuE8QCj8guqMq1hLPS0O0bJctnoyHum4EGVY9l2eakOh4l3j489OdjdklKa27
-         XFWba9CqLUvxG/qwUyK74Vu5ETED/2EQRQXR6hnS8nDctCZ99sX5JXIRfbjrj9xrzfwo
-         4QyQ==
+        bh=J6hQKtSgQEWi9rODQsWaqyzCQpbBtWGNPmRG6g+0ml8=;
+        b=lJmaJjwzNATJXlTs4cbN5TwMpgB2XYhqF7kgxMI4BhGPK4IikPyo2VhVkvzRIuPTAL
+         1Ih5Ph68b/w6yXNkdw339e9iZ/7tfZ6mfkktqV9WlNueekaxrunwZ6NIYkL54UojcCGf
+         xM9M7eY295tsyFW+MjG3Q0XfUh/JHH/ZafxzBNdVqhSilxeSjLd6lMhCLauyGT0xA9Rt
+         hXaJ4wmejq2/Z6Cb8SgjvUVO86z3A4mFVv8o9EG8As9XdtIqPCluFrsHVulzPz7GdWm4
+         egMR/6FNpF1ewy2josOqyA8cXF4WpKnLdHa83fxy/D68OCg0hFfY4NClrTd1Z5/zXF13
+         WDyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684952115; x=1687544115;
+        d=1e100.net; s=20221208; t=1684951786; x=1687543786;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=87ZCxQxTbVlKyzkUBnd4j43LV2JM7FHJHvdF0cKFlQQ=;
-        b=KInzTa8eILPb3ZgtpyaQvf5gvHKLsVRq/hqc9hL7d2BdWxeDaCsHPtX0GQfoR96t7B
-         jKhqqVAjSiRAYzdZ67E55ecFQg81h4fKlhhjqrY+VrkCzE3xIhqEQ32qQdB3Xrcw+D8C
-         0if6Sk5RHuCxqhkUtLpBk03Z7BhhB5kMFhpdXPebXUcjbzNv9B7FoNI1X5nxa8oNR6LK
-         th5Nju80BRHtS5yF46ZV05pz/zyZHOgbNYcucs2hiit0n7IQzXDh+21fqKyXO9nnVNdG
-         9oug/OJRrz2vXXlgkV5THpjcV2KG+X9lXnGWnoQyVNojN7CZP+iH7aPnMTUGWqIlV/s4
-         XVzg==
-X-Gm-Message-State: AC+VfDx/ydEcVTiqu1ZvcGI35jYsAO1YCx2bkLuqelFsNfsWJFxn2kUU
-	JtKrAEf3HYdiTJYOF9hBHcU=
-X-Google-Smtp-Source: ACHHUZ7FS9+AodX+nKeevqNznXZks1d6+Nsqsfu7Ns9jz1kUkH/m3dvKLOkzaIyMguQB4V8lerzsWA==
-X-Received: by 2002:a7b:cd14:0:b0:3f5:fff8:d4f3 with SMTP id f20-20020a7bcd14000000b003f5fff8d4f3mr541358wmj.7.1684952115423;
-        Wed, 24 May 2023 11:15:15 -0700 (PDT)
+        bh=J6hQKtSgQEWi9rODQsWaqyzCQpbBtWGNPmRG6g+0ml8=;
+        b=R842UL0sKq22nSxGzhK6D4gTtJ3U3tkOLTWRZLGHf/KD2ZKyj9Wk6IIPT5rOdoN3Zy
+         LZ15FDHWcscT0RM/OT/XwHP/b06WbVyk3qwSvuvlb0cyC7Od9LurW0VPDXevea0pvG1P
+         dkUH5kfz3CLPtpMiwYdYCLmxxuqD6WOQlL2f4vh2ZTkPByUFzqPvFz9vf3vv7ZObbcWM
+         4O4dYFFkkBG6qeskJqbvpH/dMMRWkeDb0UQe8oohL+CyaD5SxyNrNXTlkyMTv7nN4mHV
+         GdJkCWHOdbQRBgt4BlMYK5i4HMAIWhr+j2AE6teGLgYas6mf0tKfHqaYJ9T53rM5bTff
+         25LQ==
+X-Gm-Message-State: AC+VfDxcyEdTkU1lqi/Xz/FSW8gNf3Bijf6K1PAO5swkW7ZXqAKgJbl0
+	ZNsqPRlvVsvMQa/a99PBzaI=
+X-Google-Smtp-Source: ACHHUZ6onREVy6Pl2TF0gq10+tc+q2AOGed5crJlE6SNJcWnR/VrrQS8bGbnXupCPJ53qAZzLgsyTA==
+X-Received: by 2002:a05:6000:104e:b0:306:368d:8a1c with SMTP id c14-20020a056000104e00b00306368d8a1cmr446044wrx.45.1684951786193;
+        Wed, 24 May 2023 11:09:46 -0700 (PDT)
 Received: from skbuf ([188.27.184.189])
-        by smtp.gmail.com with ESMTPSA id 10-20020a05600c228a00b003f42461ac75sm3107977wmf.12.2023.05.24.11.15.13
+        by smtp.gmail.com with ESMTPSA id l1-20020a05600012c100b0030630de6fbdsm15134104wrx.13.2023.05.24.11.09.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 24 May 2023 11:15:15 -0700 (PDT)
-Date: Wed, 24 May 2023 21:15:12 +0300
+        Wed, 24 May 2023 11:09:45 -0700 (PDT)
+Date: Wed, 24 May 2023 21:09:43 +0300
 From: Vladimir Oltean <olteanv@gmail.com>
 To: arinc9.unal@gmail.com
-Subject: Re: [PATCH net-next 12/30] net: dsa: mt7530: move XTAL check to
- mt7530_setup()
-Message-ID: <20230524181512.tmll4ijpijmc5fea@skbuf>
+Subject: Re: [PATCH net-next 11/30] net: dsa: mt7530: remove pad_setup
+ function pointer
+Message-ID: <20230524180943.y24syoustr65o2qk@skbuf>
 References: <20230522121532.86610-1-arinc.unal@arinc9.com>
- <20230522121532.86610-13-arinc.unal@arinc9.com>
+ <20230522121532.86610-1-arinc.unal@arinc9.com>
+ <20230522121532.86610-12-arinc.unal@arinc9.com>
+ <20230522121532.86610-12-arinc.unal@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230522121532.86610-13-arinc.unal@arinc9.com>
+In-Reply-To: <20230522121532.86610-12-arinc.unal@arinc9.com>
+ <20230522121532.86610-12-arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230524_111521_729787_43D67F5D 
-X-CRM114-Status: GOOD (  24.90  )
+X-CRM114-CacheID: sfid-20230524_110951_836839_F2528768 
+X-CRM114-Status: GOOD (  12.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,80 +95,22 @@ Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <ed
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 22, 2023 at 03:15:14PM +0300, arinc9.unal@gmail.com wrote:
+On Mon, May 22, 2023 at 03:15:13PM +0300, arinc9.unal@gmail.com wrote:
 > From: Arınç ÜNAL <arinc.unal@arinc9.com>
 > 
-> The crystal frequency concerns the switch core. The frequency should be
-> checked when the switch is being set up so the driver can reject the
-> unsupported hardware earlier and without requiring port 6 to be used.
+> The pad_setup function pointer was introduced with 88bdef8be9f6 ("net: dsa:
+> mt7530: Extend device data ready for adding a new hardware"). It was being
+> used to set up the core clock and port 6 of the MT7530 switch, and pll of
+> the MT7531 switch.
 > 
-> Move it to mt7530_setup().
+> All of these were moved to more appropriate locations, and it was never
+> used for the switch on the MT7988 SoC. Therefore, this function pointer
+> hasn't got a use anymore. Remove it.
 > 
 > Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 > Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> Acked-by: Daniel Golle <daniel@makrotopia.org>
 > ---
 
-Do you know why a crystal frequency of 20 MHz is not supported?
-
->  drivers/net/dsa/mt7530.c | 18 ++++++++++--------
->  1 file changed, 10 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index 049f7be0d790..fa48273269c4 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -408,13 +408,6 @@ mt7530_setup_port6(struct dsa_switch *ds, phy_interface_t interface)
->  
->  	xtal = mt7530_read(priv, MT7530_HWTRAP) & HWTRAP_XTAL_MASK;
->  
-> -	if (xtal == HWTRAP_XTAL_20MHZ) {
-> -		dev_err(priv->dev,
-> -			"%s: MT7530 with a 20MHz XTAL is not supported!\n",
-> -			__func__);
-> -		return -EINVAL;
-> -	}
-> -
->  	switch (interface) {
->  	case PHY_INTERFACE_MODE_RGMII:
->  		trgint = 0;
-> @@ -2133,7 +2126,7 @@ mt7530_setup(struct dsa_switch *ds)
->  	struct mt7530_dummy_poll p;
->  	phy_interface_t interface;
->  	struct dsa_port *cpu_dp;
-> -	u32 id, val;
-> +	u32 id, val, xtal;
->  	int ret, i;
->  
->  	/* The parent node of master netdev which holds the common system
-> @@ -2203,6 +2196,15 @@ mt7530_setup(struct dsa_switch *ds)
->  		return -ENODEV;
->  	}
->  
-> +	xtal = mt7530_read(priv, MT7530_HWTRAP) & HWTRAP_XTAL_MASK;
-> +
-> +	if (xtal == HWTRAP_XTAL_20MHZ) {
-> +		dev_err(priv->dev,
-> +			"%s: MT7530 with a 20MHz XTAL is not supported!\n",
-> +			__func__);
-
-I don't think __func__ brings much value here, it could be dropped in
-the process of moving the code.
-
-Also, the HWTRAP register is already read once, here (stored in "val"):
-
-	INIT_MT7530_DUMMY_POLL(&p, priv, MT7530_HWTRAP);
-	ret = readx_poll_timeout(_mt7530_read, &p, val, val != 0,
-				 20, 1000000);
-
-I wonder if we really need to read it twice.
-
-> +		return -EINVAL;
-> +	}
-> +
->  	/* Reset the switch through internal reset */
->  	mt7530_write(priv, MT7530_SYS_CTRL,
->  		     SYS_CTRL_PHY_RST | SYS_CTRL_SW_RST |
-> -- 
-> 2.39.2
-> 
+Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
 
