@@ -4,77 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01CDFC7EE2C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 May 2023 14:50:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 053F6C7EE23
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 May 2023 14:51:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FyedHscGEFlAyTcL2YX1NQlnWA/wiw8R69Wx/wJ/hdc=; b=UuKmjE4fYvcQASJAyIepjVMVyD
-	oRO7NnIhJVm76fLq5r7oRzIIBs7pq/bI2tYNpLcAVBQ57MNuzq5Ud2//Y8DZnBkoR+4dh5RBevtK3
-	ItPzqJsURTqhfIkSp0jxOqDeM/KNLmWtjfnjBYxP97NsgJbrn5O9vF0YmJfnVVkc7pcUGYnPbjBM4
-	S5/kle7nceD5V7DdM7kmovcc7WonESyGF/mTETn1SIvC/wcf8aV2Y8mRQMX/FX9JleTrfhX5hGdaP
-	44SCIKjJw+jVRe8E0iIsje+Yjm7L7r5kc9MuUxd2x9kMrjNtrs6bwqnUFyjrPKiclzVAX5B8b1q34
-	yGDTa3gw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=d2DZMvMkI+V5RMAcXCANfBiGO0oQRS/4+8XHUn3qgoQ=; b=AilURrzUQWMvSwzysuNtVYAplC
+	jOsfrRm8KpJmRIxTwLOtyE9GgsUCovPXyWsknOK4aofPHtTaPlgKPSpOhcCYt99R5Kd1+Cikrw1Xo
+	masdUua1hi8Y1acqnavBrLdz/KMLRbk5fDOg3KrJfORpKsfrC6GpWuZaORcNkQfinLnKk/pplAHaq
+	G5Kh/4Wil8r2/pTMNquasxEKoD0nWcbXxXq9FfeB6BalRJg313W0PMAcF+IqnxYwKzPxyYe2t1Kae
+	XztuDLomoj4jBSBJ1hWwW4D3qItWaS5i6j7ts7r/A1/DZy6PstkkwB5KLI6jDjk7m7zQjxscrDuFv
+	brNxW5ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1poI-00Djjg-1w;
-	Wed, 24 May 2023 14:49:54 +0000
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+	id 1q1ppa-00Dk77-2H;
+	Wed, 24 May 2023 14:51:14 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1poF-00DjiY-3A;
-	Wed, 24 May 2023 14:49:53 +0000
-Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-96f53c06babso188036466b.3;
-        Wed, 24 May 2023 07:49:51 -0700 (PDT)
+	id 1q1ppX-00Dk5n-2a
+	for linux-mediatek@lists.infradead.org;
+	Wed, 24 May 2023 14:51:12 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-3f605d8a8a9so12569755e9.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 24 May 2023 07:51:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1684939790; x=1687531790;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=FyedHscGEFlAyTcL2YX1NQlnWA/wiw8R69Wx/wJ/hdc=;
-        b=RV82gdRnlL16Wu65qUhDbXspGrdeIIJWl7xoa/6zOSti527MJevjRimiCUzTPziFZO
-         LXQF1ZDTV/3/zcamdtRZz8ZjTaCRwsRV9S4pFZ5uklNReyQaGjFVv3TJgM4bAWXjYWza
-         5scM0fGoMJ8KHYC5sOXZKcIu/O7oNwIojF7xr6ksdH8Y/wsUh0ZyAQ63d0autUHNZ+2u
-         twl1rjWsIe9uU1TwygoWEQUSMnIkZxXuGB36/3ZQrCHItcfEfFNz/Ks7G+2HWFII+w15
-         iVvlxK9KgFPbc/ltVEXrdiH94N3tysE4hkZxe5PjKCfJbv7tdp0ZDa1jmwaj+2d0e82d
-         h0Cw==
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1684939869; x=1687531869;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=d2DZMvMkI+V5RMAcXCANfBiGO0oQRS/4+8XHUn3qgoQ=;
+        b=YT+4PyG2PpzfKSBHI8via/8/85UUkYBO2UQIpGyWv6Za+qBrjWJtqy48/7FF0kjuXS
+         RMowXnKeB9ZUFdWVc02eXhlevD7TG5KMShelI1AdHdYOdM2/focKmgSgHkJTQVl1hH1E
+         583D9fVRRW7QNbiEQsBi1u+lVIRB+0IiP8nSx5Q3NGOOjOE1p4Fv3Gdxj9zcGgldrsN0
+         v+Owz0hzn7fVsVQl/QfZp38PHyTcyN9qsiWdkr2Z04AyMtXOSKDIvDODXJyyQKKt5bJ7
+         Q8rffHMfEiZe4LyTr8tGRM0t/YtOcfIAT3wI0MsdXaO+QrL6w6KCtyeSFa3/ARp0/w+i
+         fPMg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684939790; x=1687531790;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=FyedHscGEFlAyTcL2YX1NQlnWA/wiw8R69Wx/wJ/hdc=;
-        b=j1CZTV5e/mXWXyJJW7VKxcoeXP0LWIjGUsl2wpelK1NopSA9ZEIMehtQbU5CEX349p
-         8wXz3+ajEV2ZnmvEkVMo/W+Xjcfe8qvhLEfRvcnmZcxhvOtNfuYs913ApZMitQv7JWM3
-         VLmv/+mVshaPviBjOLcA+jCYujgLApp+HWZfoRk5qUOfSyLdr4mI1HLFoxVFYbKorg0O
-         mdXY5oCfuLC6dVLf8hMsX7A1UyPiE4g63twRXyYIfF1NIZ5ed+6Gb6oPjZQtzPaCnflq
-         /tmOm65WzhYvxaBUnPfWJRlS8DvODYLm+JCeNwAbTtj/w4YFNnaM8wENQ8aVI3vv+muo
-         GmiA==
-X-Gm-Message-State: AC+VfDzk6d/iF0OSsOCWWbMKk7AQp0aFB/e3o81gFZD/ggCqewNNfUNH
-	5NWsmCFXg8g7YzqQMO/v1H0=
-X-Google-Smtp-Source: ACHHUZ5f5jpmlXfXl69c8NP7gio6BtFCBwM5CIosxzVdgEMVR+GMD/bINdQsFaYe/W+T8c0ISQL5aw==
-X-Received: by 2002:a17:907:9308:b0:969:fc68:fa9a with SMTP id bu8-20020a170907930800b00969fc68fa9amr16755972ejc.40.1684939790273;
-        Wed, 24 May 2023 07:49:50 -0700 (PDT)
-Received: from skbuf ([188.27.184.189])
-        by smtp.gmail.com with ESMTPSA id z27-20020a17090674db00b0096efa536229sm6055956ejl.149.2023.05.24.07.49.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 24 May 2023 07:49:50 -0700 (PDT)
-Date: Wed, 24 May 2023 17:49:47 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: arinc9.unal@gmail.com
-Subject: Re: [PATCH net-next 04/30] net: dsa: mt7530: improve comments
- regarding port 5 and 6
-Message-ID: <20230524144947.tdpwdvcssjkr7efu@skbuf>
-References: <20230522121532.86610-1-arinc.unal@arinc9.com>
- <20230522121532.86610-5-arinc.unal@arinc9.com>
+        d=1e100.net; s=20221208; t=1684939869; x=1687531869;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=d2DZMvMkI+V5RMAcXCANfBiGO0oQRS/4+8XHUn3qgoQ=;
+        b=KIGn/vPU47KQ4TuG8pnZhePgsescrCjsIr8u21z0rgojLnbGcSUtMHavZvp4itHPIb
+         xELjNsURCmZRy35RW6PGJ3vX7QtszSugrb9yRhDlfHljBZpJ/EbuDt2oF4yyvDWCiP7w
+         hpDpxdrVAiNl5Jax9yIrj10xAUU/XJu12dYk9IPvyLgYPXu5GoWTNJmIHJm3AxgK4hn/
+         Rfa/om+My7D2Uns8Z1dEJNZmuIG1yc55POgoLS0bqOdTeW4AHbSDyHs7xOnfjFX3fBGx
+         FU1iy+zACuxUU5li75TOj9suZ38o7lDVTLMAp7VTb7YDPPA3fOjQmjIttomgN1HjcNCk
+         BojQ==
+X-Gm-Message-State: AC+VfDzzwnPg9UZ17QlhCa5agt+7meU1ZT3KK9StHeYd0TRy1nilx24m
+	3BEqn08FCvL10UExbUI7jt0cXw==
+X-Google-Smtp-Source: ACHHUZ5wWAGNXmRoeycTsyYGzAOS1ytBUa6At8n0AYB/K3UfJLVFRhbZwiqycV6JUKARY/EvMGybsA==
+X-Received: by 2002:a7b:c40a:0:b0:3f1:72fb:461a with SMTP id k10-20020a7bc40a000000b003f172fb461amr86103wmi.2.1684939869319;
+        Wed, 24 May 2023 07:51:09 -0700 (PDT)
+Received: from [192.168.1.172] (158.22.5.93.rev.sfr.net. [93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id x26-20020a05600c21da00b003f423f5b659sm2675744wmj.10.2023.05.24.07.51.08
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 24 May 2023 07:51:08 -0700 (PDT)
+Message-ID: <e13c2670-4877-7e75-aaa2-623f4ed927c0@baylibre.com>
+Date: Wed, 24 May 2023 16:51:07 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230522121532.86610-5-arinc.unal@arinc9.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH v2 5/7] ASoC: soc-dapm.c: clean up debugfs for freed
+ widget
+Content-Language: en-US
+To: Trevor Wu <trevor.wu@mediatek.com>, broonie@kernel.org,
+ lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com
+Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org
+References: <20230523021933.3422-1-trevor.wu@mediatek.com>
+ <20230523021933.3422-6-trevor.wu@mediatek.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <20230523021933.3422-6-trevor.wu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230524_074952_015591_B8AB4CC8 
-X-CRM114-Status: GOOD (  13.20  )
+X-CRM114-CacheID: sfid-20230524_075111_837674_EC598EB3 
+X-CRM114-Status: GOOD (  12.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,26 +97,26 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, mithat.guner@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 22, 2023 at 03:15:06PM +0300, arinc9.unal@gmail.com wrote:
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index 024b853f9558..b28d66a7c0b2 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -2499,7 +2499,9 @@ static void mt7530_mac_port_get_caps(struct dsa_switch *ds, int port,
->  			  config->supported_interfaces);
->  		break;
->  
-> -	case 5: /* 2nd cpu port with phy of port 0 or 4 / external phy */
-> +	case 5: /* Port 5 which can be used as a CPU port supports rgmii with
-> +		 * delays, mii, and gmii.
-> +		 */
+On 23/05/2023 04:19, Trevor Wu wrote:
+> When a widget is added to dapm via snd_soc_dapm_new_widgets,
+> dapm_debugfs_add_widget is also called to create a corresponding debugfs
+> file. However, when a widget is freed by snd_soc_dapm_free_widget, the
+> corresponding debugfs is not cleared. As a result, the freed widget is
+> still seen in the dapm directory.
+> 
+> This patch adds dapm_debugfs_free_widget to free the debugfs of a
+> specified widget, and it's called at snd_soc_dapm_free_widget to clean
+> up the debugfs for freed widget.
+> 
+> Signed-off-by: Trevor Wu<trevor.wu@mediatek.com>
 
-Please put the comments on dedicated lines:
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
-	/* Port X can be used as ... */
-	case X:
+-- 
+Regards,
+Alexandre
+
 
