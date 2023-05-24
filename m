@@ -4,57 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0856C77B7C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 May 2023 08:08:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54F87C77B7C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 May 2023 08:28:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=zcBxf2JopgBE0/qefhNOXKZs3dhHmLYOk2K3RwkLF5k=; b=1SayvAWlRm2tkH1SpZ68wO3L7Y
-	LMfV1GIUUkUfDQPKcdtgSBF6MA+7VjLtTRQRgVRcjanxZvMJtuH4nuZZ21OArO5ds0T1CuNIYePGW
-	chXIBrOuNQ7woOdXaLjRgNF1SlPidCJKMQmE0ggOMc5QvW1H7RJdCpT7NnmBSBca6mwX9QZZCvmIj
-	D1x9uFyYTdMqCAKKXuOWzYuXHkY524ZLSP+e2pJ/A+cpdem6huPPpf1FpDJ6BudeVswILR+oPZ//r
-	LUDAeq79ZisvyV/VV8qMGL38PEBbxtdSANCJHNs08n7UNl1E17I/NLCEmxtQfclTjNnKJ9Y3T24sD
-	nNHULd2g==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Bv6nOcmtrOP3vAtD6WhjV7wPXUYmC++OmTTD669OyTs=; b=K39IwtGORbExQ+64JQdj3bQLaT
+	FDX26Wc7s+zVyNODj6z6eXP3TnNt0bHY07M88RarY5S3C9t7VQo6LokPZy6q5/XRnbO5VnqJk6JaK
+	hwQV/1A4PEbCF2aH6XsO5A9wuSrvM8EsDH68scecC0TrsUPfCjUQy/NQ+3p5RpmzmxRiNeVDXVZBH
+	EtNspvwhRYiO3xQhYw2y3b9snMcVdktUkWfEu+a3rtfVS4gqCoFwaCdoZwecfbVU3y6qyhgND/f9D
+	xnqtP7wlpvE//Us/TjTaSL8s0ObMFhu5TzlXK1Jb+dhls6l4jePiWUn5wFsryhoRO2y1lz+rvqxs/
+	b8hclVMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1jXH-00CiZk-0f;
-	Wed, 24 May 2023 08:07:55 +0000
+	id 1q1jrB-00Cln7-2H;
+	Wed, 24 May 2023 08:28:29 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1jXE-00CiZ0-32;
-	Wed, 24 May 2023 08:07:54 +0000
-X-UUID: 0fb402f0fa0a11ed912e1518a6540028-20230524
+	id 1q1jr9-00CllE-00;
+	Wed, 24 May 2023 08:28:28 +0000
+X-UUID: f09a6d48fa0c11ed912e1518a6540028-20230524
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=zcBxf2JopgBE0/qefhNOXKZs3dhHmLYOk2K3RwkLF5k=;
-	b=uerNzmrFlA4034mRp3mKfUr7D9bQ3UxtQmBe8+oFYEpiZ+qTWBINipS+da1GTlwHJyiQ27zcLSHjYqGbYL9T94krlb5o8eTsCMk7/VFCv6QUyZTb/SbFTR9+e76JocyI+JdhnQBwfnD7LzQ638xrba3dXSUqUg3kFNWSNOR7ewU=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Bv6nOcmtrOP3vAtD6WhjV7wPXUYmC++OmTTD669OyTs=;
+	b=XzYGzLeusU9Vzxa6vXCVKCOjKV6pSRMwhwhJd7rS+qrkletOv3kPJUURgC/qUBX4jlPUFACNRXis/wtbaRbTiwM0QWjsmt5Q3R0YSqcVV59N9ypM173cbTIOywTNNsPsQUbX+PGmR2nBUQI3AVLNEabjvm/uHxl2AMywaorYcL4=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.25,REQID:b812af1a-73a0-43a5-b2e9-60192f261b20,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACT
-	ION:release,TS:75
-X-CID-INFO: VERSION:1.1.25,REQID:b812af1a-73a0-43a5-b2e9-60192f261b20,IP:0,URL
-	:0,TC:0,Content:-25,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACT
-	ION:quarantine,TS:75
-X-CID-META: VersionHash:d5b0ae3,CLOUDID:20a9323c-de1e-4348-bc35-c96f92f1dcbb,B
-	ulkID:230524160746FIY47FUE,BulkQuantity:0,Recheck:0,SF:38|29|28|17|19|48,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-	,OSI:0,OSA:0,AV:0
+X-CID-O-INFO: VERSION:1.1.25,REQID:2942b67e-918f-486e-913c-ad69d55bb135,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:d5b0ae3,CLOUDID:ea54333c-de1e-4348-bc35-c96f92f1dcbb,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-UUID: 0fb402f0fa0a11ed912e1518a6540028-20230524
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+X-UUID: f09a6d48fa0c11ed912e1518a6540028-20230524
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 838781349; Wed, 24 May 2023 01:07:43 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+	with ESMTP id 1743114205; Wed, 24 May 2023 01:28:20 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 24 May 2023 16:07:41 +0800
+ 15.2.1118.26; Wed, 24 May 2023 16:07:42 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 24 May 2023 16:07:40 +0800
+ 15.2.1118.26 via Frontend Transport; Wed, 24 May 2023 16:07:41 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Chen-Yu Tsai <wenst@chromium.org>, Nicolas Dufresne
 	<nicolas.dufresne@collabora.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
@@ -69,17 +65,19 @@ CC: Yunfei Dong <yunfei.dong@mediatek.com>, Hsin-Yi Wang
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v7,0/2] media: mediatek: vcodec: add hevc stateless decoder driver in MT8195
-Date: Wed, 24 May 2023 16:07:37 +0800
-Message-ID: <20230524080739.17264-1-yunfei.dong@mediatek.com>
+Subject: [PATCH v7,1/2] media: uapi: HEVC: Add num_delta_pocs_of_ref_rps_idx field
+Date: Wed, 24 May 2023 16:07:38 +0800
+Message-ID: <20230524080739.17264-2-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230524080739.17264-1-yunfei.dong@mediatek.com>
+References: <20230524080739.17264-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230524_010752_991354_25A4319A 
-X-CRM114-Status: GOOD (  12.12  )
+X-CRM114-CacheID: sfid-20230524_012827_044779_E97B32E3 
+X-CRM114-Status: GOOD (  14.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,51 +92,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add hevc stateless decoder driver to support hardware decode in MT8195, and the driver
-need num_delta_pocs_of_ref_rps_idx value to parse slice header short_term_ref_pic_set().
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 
-patch 1 add num_delta_pocs_of_ref_rps_idx field.
-patch 2 add hevc stateless decoder driver.
+Some drivers firmwares parse by themselves slice header and need
+num_delta_pocs_of_ref_rps_idx value to parse slice header
+short_term_ref_pic_set().
+Use one of the 4 reserved bytes to store this value without
+changing the v4l2_ctrl_hevc_decode_params structure size and padding.
+
+This value also exist in DXVA API.
+
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 ---
-Changed from v6:
-- fix AngeloGioacchino's suggestion.
+ .../userspace-api/media/v4l/ext-ctrls-codec-stateless.rst  | 7 +++++++
+ include/uapi/linux/v4l2-controls.h                         | 6 +++++-
+ 2 files changed, 12 insertions(+), 1 deletion(-)
 
-Changed from v5:
-- checkpatch/kernel-doc pass/build pass.
-- fix warning: struct vdec_av1_slice_fb -> struct vdec_hevc_slice_fb.
-- fix warning: remove unused comment for param "trans_start" and "trans_end"
-
-Changed from v4:
-- fix some comments according to Nathan's suggestion.
-
-Changed from v3:
-- add the dependency patch to this patch series for patch 1.
-
-Changed from v2:
-- fix one build warning.
-- add the dependency patch link.
-
-Changed from v1:
-- fix build error when build 32bit system.
-- hevc fluster test result: 132/147 (not support: 10bit => 11 and resolution => 4).
----
-Benjamin Gaignard (1):
-  media: uapi: HEVC: Add num_delta_pocs_of_ref_rps_idx field
-
-Yunfei Dong (1):
-  media: mediatek: vcodec: support stateless hevc decoder
-
- .../media/v4l/ext-ctrls-codec-stateless.rst   |    7 +
- .../media/platform/mediatek/vcodec/Makefile   |    1 +
- .../vcodec/mtk_vcodec_dec_stateless.c         |   59 +-
- .../platform/mediatek/vcodec/mtk_vcodec_drv.h |    1 +
- .../vcodec/vdec/vdec_hevc_req_multi_if.c      | 1097 +++++++++++++++++
- .../platform/mediatek/vcodec/vdec_drv_if.c    |    4 +
- .../platform/mediatek/vcodec/vdec_drv_if.h    |    1 +
- include/uapi/linux/v4l2-controls.h            |    6 +-
- 8 files changed, 1174 insertions(+), 2 deletions(-)
- create mode 100644 drivers/media/platform/mediatek/vcodec/vdec/vdec_hevc_req_multi_if.c
-
+diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst
+index 3d8411acd5b8..92ce3e126929 100644
+--- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst
++++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst
+@@ -2923,6 +2923,13 @@ This structure contains all loop filter related parameters. See sections
+       - ``poc_lt_curr[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
+       - PocLtCurr as described in section 8.3.2 "Decoding process for reference
+         picture set": provides the index of the long term references in DPB array.
++    * - __u8
++      - ``num_delta_pocs_of_ref_rps_idx``
++      - When the short_term_ref_pic_set_sps_flag in the slice header is equal to 0,
++        it is the same than derived value NumDeltaPocs[RefRpsIdx]. It can be used to parse
++        the RPS data in slice headers instead of skipping it with @short_term_ref_pic_set_size.
++        When the value of short_term_ref_pic_set_sps_flag in the slice header is
++        equal to 1, num_delta_pocs_of_ref_rps_idx shall be set to 0.
+     * - struct :c:type:`v4l2_hevc_dpb_entry`
+       - ``dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
+       - The decoded picture buffer, for meta-data about reference frames.
+diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
+index 5e80daa4ffe0..7bf59a87a1bf 100644
+--- a/include/uapi/linux/v4l2-controls.h
++++ b/include/uapi/linux/v4l2-controls.h
+@@ -2385,6 +2385,9 @@ struct v4l2_ctrl_hevc_slice_params {
+  * @poc_st_curr_after: provides the index of the short term after references
+  *		       in DPB array
+  * @poc_lt_curr: provides the index of the long term references in DPB array
++ * @num_delta_pocs_of_ref_rps_idx: same as the derived value NumDeltaPocs[RefRpsIdx],
++ *				   can be used to parse the RPS data in slice headers
++ *				   instead of skipping it with @short_term_ref_pic_set_size.
+  * @reserved: padding field. Should be zeroed by applications.
+  * @dpb: the decoded picture buffer, for meta-data about reference frames
+  * @flags: see V4L2_HEVC_DECODE_PARAM_FLAG_{}
+@@ -2400,7 +2403,8 @@ struct v4l2_ctrl_hevc_decode_params {
+ 	__u8	poc_st_curr_before[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+ 	__u8	poc_st_curr_after[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+ 	__u8	poc_lt_curr[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+-	__u8	reserved[4];
++	__u8	num_delta_pocs_of_ref_rps_idx;
++	__u8	reserved[3];
+ 	struct	v4l2_hevc_dpb_entry dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+ 	__u64	flags;
+ };
 -- 
 2.25.1
 
