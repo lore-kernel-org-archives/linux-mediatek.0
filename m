@@ -4,99 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CB15C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 May 2023 13:28:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07061C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 May 2023 13:35:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dpaEDaEMiz0twNyfrOrBugRFe4goGloP1Qpqk47QwlA=; b=o9Tl2W7QsRXKJamSx8Vn6J0D+r
-	xtDDT2rG9Kag6vyzX7XvkuKIVeWwSOPYF5REQfP/IGO7ZNU2kumY4r9snOuj4WQtit5RLARDAhD69
-	V65Cm/W6Q8kzqwkxmzgnZS7XuWXLdj6rinQi3kwFvhQNW1Rz9lQDiSOXV4Mt2Oouea4nqm7oVllwe
-	O21TULk4vqdMiNSzkbtrHYnk6c4HhiptszDQktDVCWcJf3HNf8JJo8/4QrAHJ2yBB4GFzVYn/fN8d
-	fi37uDTd7D7xaMYylm+7N3JoM6nDk86nXO75i3huOaZSJyRqCFnbtTf2JlqZ4ks8dm4wFgdenLJrp
-	+2dmIF0A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=LqTI48huwfcqldzoKX+aLh/oOyBqBTof810vT25RpjY=; b=eGYMOTgBSwG+zsHNLbnEKkEb5r
+	ReFO5a3s5+3Pmjs29VeCmB6FcnHdOeC56yh1/WS8M5wm/fzXBvymMVBgmQ2Ux64gjJHDhyWpS4/0n
+	gNjWxmj9hmStToByYJ6NQ7pVkhGPJMejFvXUQ6TISOpgmr7Po18qgTQX95eLMo7OZL+bDRQbH3xYc
+	Z2jpS0l4iEDFNW7bl6xMUJjUVSrP3ET/3yc/dnxVVqv9cfjpMZLdMJWQDJEUeKrK1/Xpg40WK2HqZ
+	JxWISBuk9ceY2KVzBqhTlybH2w3275eyMkacuOTNCyjUVtukAdz7TIApzkNdvKeExor53aWzB7ePe
+	Z2BG82Jg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1oXo-00DZLt-2u;
-	Wed, 24 May 2023 13:28:48 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1q1odh-00DZxy-1u;
+	Wed, 24 May 2023 13:34:53 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1oXk-00DZKF-20
-	for linux-mediatek@lists.infradead.org;
-	Wed, 24 May 2023 13:28:47 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-3f606912ebaso11218755e9.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 24 May 2023 06:28:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1684934921; x=1687526921;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=dpaEDaEMiz0twNyfrOrBugRFe4goGloP1Qpqk47QwlA=;
-        b=RRpnCjpjHBTwE/i8foXECp1howHpUJB08S3RDHVRKvOK+eeAwsKC3x39tLqwNhysca
-         cI/sZp9eC0H8WA5MnMR3Wck3kwLEVf86vv/q5HMBHGSWy4KCGj8fcAyYih8bFlYz+sdD
-         pxEo14qjxYnXZIROoJUVb/epU2pySWQZPM/UhVVhdK+inP5pxhiZDg0rcJ8490MDOf2D
-         lFZHi9cri7PBUqx0937e80otPcYbB6cxD6Aov9gHkFGDb0QFamRLyqrj2Ycmk3UH1NrR
-         hoc4lFkin632699KFRBucYZo/CD34eAaRYyFXiPx/o7vUmZC9N/i30ORAGH8AuOAj9jx
-         oGnA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684934921; x=1687526921;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=dpaEDaEMiz0twNyfrOrBugRFe4goGloP1Qpqk47QwlA=;
-        b=AZEnPCVL8tCzbBq1pThr4cxc1VTByXOG5GnOzOWrzmEvggV+oI/yyPENfabYx8OFTV
-         sy/YV89BfvhFTCrSZXFRUqSD3pO8JPjLKdS8rek0j6EQcMpPR99VWZ7CgSTkhNAiEahy
-         mKao9Zc2SYIidl7dWGIZm3j3B9k70osTh/O70r0BYpFuT6yM/qp8ZVFtsiqQJhxv6sJp
-         meNiGlGOEqgUg+s7QxMKYgGORpy6087rZWXj76PjtGi2u4+mXFYmVzc2k8IrTSlGjRm7
-         4Lpb3vfUgCWef7dgI9WJquNHgybcRwwCHhsuA2awu4Iu4cRbIc5aTVquL21nWboc+SAK
-         E+DQ==
-X-Gm-Message-State: AC+VfDzzP2Xc3qRHDlpL2wa2BJuO3bsILLnBJOnrCElWQ6AahtnIyGrY
-	fBGepDmE72lmAYMAZ4YYMBp0xg==
-X-Google-Smtp-Source: ACHHUZ5UxTF7Ty4Ha1qHIPwkF1euAKvGxSLopaZQrr7mrvaQchq5F7/btnqI5+pGB6je42At5/7vFA==
-X-Received: by 2002:adf:ff90:0:b0:309:ccad:b2fb with SMTP id j16-20020adfff90000000b00309ccadb2fbmr10813993wrr.5.1684934920688;
-        Wed, 24 May 2023 06:28:40 -0700 (PDT)
-Received: from [192.168.1.172] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id j3-20020a5d4483000000b003062b57ffd1sm14483595wrq.50.2023.05.24.06.28.39
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 24 May 2023 06:28:39 -0700 (PDT)
-Message-ID: <56b892cd-977e-5b24-55f0-df25e187308b@baylibre.com>
-Date: Wed, 24 May 2023 15:28:38 +0200
+	id 1q1odf-00DZxU-0s;
+	Wed, 24 May 2023 13:34:52 +0000
+X-UUID: bf254ffafa3711ed912e1518a6540028-20230524
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=LqTI48huwfcqldzoKX+aLh/oOyBqBTof810vT25RpjY=;
+	b=D2iQ8BXAbne8i14/EDFqAkkgbgw4EPERiCWVIMPknjADIJGrM8yhXLb4PbPkhCqANtJx3918bGqcXhslC5LpkLXXXk/Myk/AK6vXLwzQkYvyIbiYwJbHSu8dP/VO1T70afjE6/EEccoVqv8n6Glu/Mo9lJPbbq2K0S5GLYCthME=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.25,REQID:dafea441-2b39-4bc4-98db-168609b8c3a3,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:d5b0ae3,CLOUDID:ad1ce7c1-e32c-4c97-918d-fbb3fc224d4e,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: bf254ffafa3711ed912e1518a6540028-20230524
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <runyang.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1722583772; Wed, 24 May 2023 06:34:45 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 24 May 2023 21:34:42 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 24 May 2023 21:34:42 +0800
+From: Runyang Chen <runyang.chen@mediatek.com>
+To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+	<sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"Philipp Zabel" <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
+	"Krzysztof Kozlowski" <krzysztof.kozlowski+dt@linaro.org>
+CC: <linux-clk@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, Runyang Chen <runyang.chen@mediatek.com>
+Subject: [PATCH v3 0/2] Add infra_ao reset support for MT8188 Soc
+Date: Wed, 24 May 2023 21:34:37 +0800
+Message-ID: <20230524133439.20659-1-runyang.chen@mediatek.com>
+X-Mailer: git-send-email 2.9.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH v2 2/7] ASoC: dt-bindings: mediatek,mt8188-mt6359: remove
- ADDA_BE from link-name
-Content-Language: en-US
-To: =?UTF-8?B?VHJldm9yIFd1ICjlkLPmlofoia8p?= <Trevor.Wu@mediatek.com>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "broonie@kernel.org" <broonie@kernel.org>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>, "tiwai@suse.com"
- <tiwai@suse.com>, "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "perex@perex.cz" <perex@perex.cz>,
- "angelogioacchino.delregno@collabora.com"
- <angelogioacchino.delregno@collabora.com>
-Cc: "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>
-References: <20230523021933.3422-1-trevor.wu@mediatek.com>
- <20230523021933.3422-3-trevor.wu@mediatek.com>
- <cb69dbab-0966-8ecb-d9b9-017f430fd7ea@baylibre.com>
- <b9eecdf886b6496131e51e1e2f49536c782c3b67.camel@mediatek.com>
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <b9eecdf886b6496131e51e1e2f49536c782c3b67.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230524_062844_893408_48182D50 
-X-CRM114-Status: GOOD (  20.76  )
+X-CRM114-CacheID: sfid-20230524_063451_318219_49B2C490 
+X-CRM114-Status: UNSURE (   9.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,64 +84,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 24/05/2023 04:25, Trevor Wu (吳文良) wrote:
-> On Tue, 2023-05-23 at 18:26 +0200, Alexandre Mergnat wrote:
->> On 23/05/2023 04:19, Trevor Wu wrote:
->>> ADDA_BE is used to connect to mt6359. For machine mt8188-mt6359,
->>> codec
->>> for ADDA_BE must be mt6359 which are configured on the machine
->>> driver.
->>> Besides, ADDA_BE is divided into two dais, UL_SRC_BE and DL_SRC_BE.
->>> As a result, remove ADDA_BE from items of link-name.
->>>
->>> Signed-off-by: Trevor Wu<trevor.wu@mediatek.com>
->>
->> I don't understand how "DL_SRC_BE" and "UL_SRC_BE" links are done.
->> Why these dais don't replace "ADDA_BE" in this binding ?
->>
->> Regards,
->> Alexandre
->>
-> 
-> Hi Alexandre,
-> 
-> Because the sound card is mt8188-mt6359, the codec for these two links
-> must be mt6359. Thus, I specifiy the codec in machine driver directly.
-> If the codec is changed, there will be a new sound card and binding
-> file. In conclusion, the codec won't be updated via dts, and that's why
-> I don't just replace ADDA_BE in this binding.
-> 
-> Do you suggest me add some information in the commit message?
+Based on tag: next-20230524, linux-next/master
 
-No it's fine, I'm just trying to understand.
+v3:
+1. The infra_ao_rst_ofs, infra_ao_idx_map and infra_ao_rst_desc are not
+modified by the driver, so constify them.
 
-When you say "I specifiy the codec in machine driver directly", you
-are talking about this change ?
+v2:
+1. Modify SoB to match author name.
 
-+		} else if (strcmp(dai_link->name, "DL_SRC_BE") == 0 ||
-+			   strcmp(dai_link->name, "UL_SRC_BE") == 0) {
-+			if (!init_mt6359) {
-+				dai_link->init = mt8188_mt6359_init;
+v1:
+1. Add thermal reset bit for MT8188.
+2. Add infra_ao reset support for MT8188.
 
-I'm asking because the equivalent was done here:
+Runyang Chen (2):
+  dt-bindings: reset: mt8188: add thermal reset control bit
+  clk: mediatek: reset: add infra_ao reset support for MT8188
 
--	[DAI_LINK_ADDA_BE] = {
--		.name = "ADDA_BE",
-+	[DAI_LINK_DL_SRC_BE] = {
-+		.name = "DL_SRC_BE",
-  		.no_pcm = 1,
-  		.dpcm_playback = 1,
--		.dpcm_capture = 1,
--		.init = mt8188_mt6359_init,
--		SND_SOC_DAILINK_REG(adda),
-+		SND_SOC_DAILINK_REG(dl_src),
+ drivers/clk/mediatek/clk-mt8188-infra_ao.c | 24 ++++++++++++++++++++++
+ include/dt-bindings/reset/mt8188-resets.h  |  5 +++++
+ 2 files changed, 29 insertions(+)
 
-So I'm wondering why "ADDA_BE" & "DPTX_BE" & "ETDM3_OUT_BE" are in the 
-enum list of the binding since the codec is already specified in
-machine driver too. I probably miss something but I don't know what.
-
--- 
-Regards,
-Alexandre
+--
+2.18.0
 
 
