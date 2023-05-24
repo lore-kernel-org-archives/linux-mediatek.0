@@ -4,75 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 942FAC77B7A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 May 2023 07:28:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4CD0C77B73
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 May 2023 07:36:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Y37nC7nqk3XUs+AxxBITEIyH4D42fjcbipHjL9yZVAg=; b=4K/yMqo/zC4Y3LtGR//KsMT/2e
-	t56BVk7tRohu7hO37CrL/HU2D+peGs277EfSoKM8CHGcTZ76dhjfyzMzfyrhw57nmHFFvCoaHpxhf
-	hFiP2hGlKfLPr1rkZUbKkrIjscdwgy++maUdODZfbnFQX/cts1adaPKGOgIN9YD0cxMuLsWk9g5Cw
-	0hRs4P53R8kBDJLhg1DMSiYFzhYlHATCvUIXOhhP+wx4MlQ+jRtwWHpHucFk0UdsQ3TfwtkcRwrfT
-	34a/j6FXU8s7A2T1hjzYuT/E/FMAGLY+3l9RsM9Uq4T9EgaK+4LmIXDCreNpa12/S1eYl3G9t0S3/
-	uw4a7g8Q==;
+	bh=MQ5Ll723gxJOQriEEst7t1/UHqzXhr3nL1YtxUNySoU=; b=Ge16QQDDH0Yc0BKhHwf182NTVF
+	ZZKmXLfenV5toNR0W/DYFZa5o7SK+21WfskZgUKv3eeWbGe9i21LmNlSsxG8vNdX2IVvMa5V7Ek7o
+	YKjsLgoXU8P2wyGY4ylpH3kzHPwRhGDHbVorf+1beIulzvsmuxBKsx4plNzh4VTc/8pvJY7jXg9vW
+	j2soGuHu9mw6sSV7/FZyUU+PV3sjSwHm8FiVmesm3GHpIGatvXgOyTQhSVHlUUQC/4BfDM+hJJjrP
+	WQb6N+0Gi6tkanaaV5iuuQzWREQRIwebnyRSeaxxrVQFr8OO+u0CNM0TncCuFLJlV9pz50pU/ITK0
+	HPCXfTIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1ivQ-00Cbjf-0s;
-	Wed, 24 May 2023 07:28:48 +0000
+	id 1q1j2S-00Cd2e-00;
+	Wed, 24 May 2023 07:36:04 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1ivN-00CbiK-0C;
-	Wed, 24 May 2023 07:28:46 +0000
+	id 1q1j2N-00Cd1g-21;
+	Wed, 24 May 2023 07:36:01 +0000
 Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 143BF66059A4;
-	Wed, 24 May 2023 08:28:42 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 24E3766032B2;
+	Wed, 24 May 2023 08:35:57 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1684913322;
-	bh=9BT+2ox8lyE+3eygrVV6BCvvfNRvu0iFi7N6O1s0dl0=;
+	s=mail; t=1684913758;
+	bh=2P4uUVGWSU1yuuIGABANv5MaXiV9HCTbYclu2/IM3PI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=bkoOHWIJynic78V17OZNRO2VtC+dhpA6uoEKMuZEZDjIReLieTk3zNI50eOpHcEfq
-	 XbaDZdolTIOoQiq/toSyRtbmVa0sRFKkWlWHjxNQ4SM4YmwMps1uYhNCopq1aGPoRs
-	 0Tp1CFasSnOwH26sl849/IiH95+qIZxj7LXZRR4JJB6NRCcSP+78HKuVAvKWo/Oo32
-	 M2RFhP5Z6yU4V5YpOSLuoSU6qqg0tvtg+TubxLeP4qLrtaMP2E0eC2huQx6O4xdA3x
-	 Jou9rzVNIxqJ3YHk0WuQ/8nnF0zE+s9/D7UReKMiw8dk1nbmkLbu6gZaNwev/SePac
-	 kG2YKMxnXRC0A==
-Message-ID: <3054e2d9-7f77-a22a-293d-382f19494079@collabora.com>
-Date: Wed, 24 May 2023 09:28:39 +0200
+	b=BFGNHizBzrDirVgLuoG5p0bLgQGskneur9IIARgRKquZxXDqU5cbeqxLvmAelQpx2
+	 wIQOL1vD2uI6BZk5VzvitQonsIXe53UegCK/lnLH2qGKgOzMcfTFEeRlWvmrEyPkdF
+	 a3H2jcrI2lXF1T0ZdY/5IToW7eTbki7UDR2xDHulp3N3pcynSh/2H8g37ZfY8/7zFO
+	 ZS8ofYgPXodKinoxhur7XfqRDjxgHWP0WFwe6u+PJg8o6VVyuP2vXfoflUoFJ+BRde
+	 sSCzluBsADd0iaAaoVU3hgTDdQmE6fURduxAk9NQFRjKF+RoEYixtpgk/YK3YI/rqZ
+	 Np5iExasUbyoA==
+Message-ID: <2dde9a06-1ed3-f95e-f11e-91b65c039c92@collabora.com>
+Date: Wed, 24 May 2023 09:35:54 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.1
-Subject: Re: [PATCH v2 4/4] cpufreq: mediatek: Raise proc and sram max voltage
- for MT7622/7623
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: "jia-wei.chang" <jia-wei.chang@mediatek.com>,
- "Rafael J . Wysocki" <rafael@kernel.org>,
- Viresh Kumar <viresh.kumar@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Kevin Hilman <khilman@baylibre.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com, hsinyi@google.com,
- Nick Hainke <vincent@systemli.org>, Dan Carpenter <error27@gmail.com>
-References: <20230324101130.14053-1-jia-wei.chang@mediatek.com>
- <20230324101130.14053-5-jia-wei.chang@mediatek.com>
- <ZGuuVPCqgpUO6p0Q@makrotopia.org>
- <a1793745-eae3-cae5-49fc-2e75fe0847f0@collabora.com>
- <ZGz55oEEAhlWZajK@makrotopia.org>
+Subject: Re: [PATCH v5,2/2] media: mediatek: vcodec: support stateless hevc
+ decoder
 Content-Language: en-US
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai
+ <wenst@chromium.org>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?= <nfraprado@collabora.com>,
+ Nathan Hebert <nhebert@chromium.org>
+Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20230524021625.13708-1-yunfei.dong@mediatek.com>
+ <20230524021625.13708-3-yunfei.dong@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <ZGz55oEEAhlWZajK@makrotopia.org>
+In-Reply-To: <20230524021625.13708-3-yunfei.dong@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230524_002845_423446_392EE97B 
-X-CRM114-Status: GOOD (  26.59  )
+X-CRM114-CacheID: sfid-20230524_003559_925228_4EBCFDA0 
+X-CRM114-Status: GOOD (  23.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,122 +86,131 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 23/05/23 19:37, Daniel Golle ha scritto:
-> On Tue, May 23, 2023 at 04:56:47PM +0200, AngeloGioacchino Del Regno wrote:
->> Il 22/05/23 20:03, Daniel Golle ha scritto:
->>> Hi Jia-Wei,
->>> Hi AngeloGioacchino,
->>>
->>> On Fri, Mar 24, 2023 at 06:11:30PM +0800, jia-wei.chang wrote:
->>>> From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>>>
->>>> During the addition of SRAM voltage tracking for CCI scaling, this
->>>> driver got some voltage limits set for the vtrack algorithm: these
->>>> were moved to platform data first, then enforced in a later commit
->>>> 6a17b3876bc8 ("cpufreq: mediatek: Refine mtk_cpufreq_voltage_tracking()")
->>>> using these as max values for the regulator_set_voltage() calls.
->>>>
->>>> In this case, the vsram/vproc constraints for MT7622 and MT7623
->>>> were supposed to be the same as MT2701 (and a number of other SoCs),
->>>> but that turned out to be a mistake because the aforementioned two
->>>> SoCs' maximum voltage for both VPROC and VPROC_SRAM is 1.36V.
->>>>
->>>> Fix that by adding new platform data for MT7622/7623 declaring the
->>>> right {proc,sram}_max_volt parameter.
->>>>
->>>> Fixes: ead858bd128d ("cpufreq: mediatek: Move voltage limits to platform data")
->>>> Fixes: 6a17b3876bc8 ("cpufreq: mediatek: Refine mtk_cpufreq_voltage_tracking()")
->>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>>> Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
->>>> ---
->>>>    drivers/cpufreq/mediatek-cpufreq.c | 13 +++++++++++--
->>>>    1 file changed, 11 insertions(+), 2 deletions(-)
->>>>
->>>> diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
->>>> index 764e4fbdd536..9a39a7ccfae9 100644
->>>> --- a/drivers/cpufreq/mediatek-cpufreq.c
->>>> +++ b/drivers/cpufreq/mediatek-cpufreq.c
->>>> @@ -693,6 +693,15 @@ static const struct mtk_cpufreq_platform_data mt2701_platform_data = {
->>>>    	.ccifreq_supported = false,
->>>>    };
->>>> +static const struct mtk_cpufreq_platform_data mt7622_platform_data = {
->>>> +	.min_volt_shift = 100000,
->>>> +	.max_volt_shift = 200000,
->>>> +	.proc_max_volt = 1360000,
->>>> +	.sram_min_volt = 0,
->>>> +	.sram_max_volt = 1360000,
->>>
->>> This change breaks cpufreq (with ondemand scheduler) on my BPi R64
->>> board (having MT7622AV SoC with MT6380N PMIC).
->>> ...
->>> [    2.540091] cpufreq: __target_index: Failed to change cpu frequency: -22
->>> [    2.556985] cpu cpu0: cpu0: failed to scale up voltage!
->>> ...
->>> (repeating a lot, every time the highest operating point is selected
->>> by the cpufreq governor)
->>>
->>> The reason is that the MT6380N doesn't support 1360000uV on the supply
->>> outputs used for SRAM and processor.
->>>
->>> As for some reason cpufreq-mediatek tries to rise the SRAM supply
->>> voltage to the maximum for a short moment (probably a side-effect of
->>> the voltage tracking algorithm), this fails because the PMIC only
->>> supports up to 1350000uV. As the highest operating point is anyway
->>> using only 1310000uV the simple fix is setting 1350000uV as the maximum
->>> instead for both proc_max_volt and sram_max_volt.
->>>
->>> A similar situation applies also for BPi R2 (MT7623NI with MT6323L
->>> PMIC), here the maximum supported voltage of the PMIC which also only
->>> supports up to 1350000uV, and the SoC having its highest operating
->>> voltage defined at 1300000uV.
->>>
->>> If all agree with the simple fix I will post a patch for that.
->>>
->>> However, to me it feels fishy to begin with that the tracking algorithm
->>> tries to rise the voltage above the highest operating point defined in
->>> device tree, see here:
->>>
->>> 6a17b3876bc830 drivers/cpufreq/mediatek-cpufreq.c (Jia-Wei Chang              2022-05-05 19:52:20 +0800 100)    new_vsram = clamp(new_vproc + soc_data->min_volt_shift,
->>> 6a17b3876bc830 drivers/cpufreq/mediatek-cpufreq.c (Jia-Wei Chang              2022-05-05 19:52:20 +0800 101)                      soc_data->sram_min_volt, soc_data->sram_max_volt);
->>>
->>> However, I did not investigate in depth the purpose of this
->>> initial rise and can impossibly test my modifications to the
->>> tracking algorithm on all supported SoCs.
->>>
->>
->> Thanks for actually reporting that, I don't think that there's any
->> valid reason why the algorithm should set a voltage higher than the
->> maximum votage specified in the fastest OPP.
->>
->> Anyway - the logic for the platform data of this driver is to declare
->> the maximum voltage that SoC model X supports, regardless of the actual
->> board-specific OPPs, so that part is right; to solve this issue, I guess
->> that the only way is for this driver to parse the OPPs during .probe()
->> and then always use in the algorithm
->>
->> 	vproc_max = max(proc_max_volt, opp_vproc_max);
->> 	vsram_max = max(sram_max_volt, vsram_vreg_max);
+Il 24/05/23 04:16, Yunfei Dong ha scritto:
+> Add mediatek hevc decoder linux driver which use the stateless API in MT8195.
 > 
-> You probably meant to write
-> vproc_max = min(proc_max_volt, opp_vproc_max);
-> vsram_max = min(sram_max_volt, vsram_vreg_max);
-> 
-> right?
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> Tested-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+> Tested-by: Nathan Hebert <nhebert@chromium.org>
+> ---
+>   .../media/platform/mediatek/vcodec/Makefile   |    1 +
+>   .../vcodec/mtk_vcodec_dec_stateless.c         |   59 +-
+>   .../platform/mediatek/vcodec/mtk_vcodec_drv.h |    1 +
+>   .../vcodec/vdec/vdec_hevc_req_multi_if.c      | 1101 +++++++++++++++++
+>   .../platform/mediatek/vcodec/vdec_drv_if.c    |    4 +
+>   .../platform/mediatek/vcodec/vdec_drv_if.h    |    1 +
+>   6 files changed, 1166 insertions(+), 1 deletion(-)
+>   create mode 100644 drivers/media/platform/mediatek/vcodec/vdec/vdec_hevc_req_multi_if.c
 > 
 
-Apparently, some of my braincells was apparently taking a break. :-)
+..snip..
 
-Yes, I was meaning min(), not max() :-)
+> diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_hevc_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_hevc_req_multi_if.c
+> new file mode 100644
+> index 000000000000..9a96547af33c
+> --- /dev/null
+> +++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_hevc_req_multi_if.c
+> @@ -0,0 +1,1101 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (c) 2023 MediaTek Inc.
+> + * Author: Yunfei Dong <yunfei.dong@mediatek.com>
+> + */
+> +
 
-Cheers!
+..snip..
 
->>
->> Jia-Wei, can you please handle this?
->>
->> Thanks,
->> Angelo
->>
+> +
+> +/**
+> + * struct vdec_hevc_slice_share_info - shared information used to exchange
+> + *                                     message between lat and core
+> + *
+> + * @sps:               sequence header information from user space
+> + * @dec_params:        decoder params from user space
+> + * @hevc_slice_params: decoder params used for hardware
+> + * @trans_start:       trans start dma address
+> + * @trans_end:         trans end dma address
 
+Wrong documentation, there's no trans_start, trans_end, but just `trans`.
+
+> + */
+> +struct vdec_hevc_slice_share_info {
+> +	struct v4l2_ctrl_hevc_sps sps;
+> +	struct v4l2_ctrl_hevc_decode_params dec_params;
+> +	struct vdec_hevc_slice_lat_dec_param hevc_slice_params;
+> +	struct vdec_hevc_slice_mem trans;
+> +};
+> +
+> +/**
+> + * struct vdec_hevc_slice_inst - hevc decoder instance
+> + *
+> + * @slice_dec_num:      how many picture be decoded
+> + * @ctx:                point to mtk_vcodec_ctx
+> + * @pred_buf:           HW working predication buffer
+
+pred_buf is not present in this structure; either add it and make use
+of it, or remove the documentation for it.
+
+> + * @mv_buf:             HW working motion vector buffer
+> + * @vpu:                VPU instance
+> + * @vsi:                vsi used for lat
+> + * @vsi_core:           vsi used for core
+> + * @wrap_addr:          wrap address used for hevc
+> + *
+> + * @hevc_slice_param:   the parameters that hardware use to decode
+> + *
+> + * @resolution_changed: resolution changed
+> + * @realloc_mv_buf:     reallocate mv buffer
+> + * @cap_num_planes:     number of capture queue plane
+> + */
+> +struct vdec_hevc_slice_inst {
+> +	unsigned int slice_dec_num;
+> +	struct mtk_vcodec_ctx *ctx;
+> +	struct mtk_vcodec_mem mv_buf[HEVC_MAX_MV_NUM];
+> +	struct vdec_vpu_inst vpu;
+> +	struct vdec_hevc_slice_vsi *vsi;
+> +	struct vdec_hevc_slice_vsi *vsi_core;
+> +	struct mtk_vcodec_mem wrap_addr;
+> +
+> +	struct vdec_hevc_slice_lat_dec_param hevc_slice_param;
+> +
+> +	unsigned int resolution_changed;
+> +	unsigned int realloc_mv_buf;
+> +	unsigned int cap_num_planes;
+> +};
+> +
+> +static unsigned int vdec_hevc_get_mv_buf_size(unsigned int width, unsigned int height)
+> +{
+> +	const int unit_size = (width / 16) * (height / 16) + 8;
+
+This is supposed to be `const unsigned int`, otherwise you may overflow here (even
+if it's unlikely to, but still....!)
+
+> +
+> +	return 64 * unit_size;
+> +}
+> +
+
+..snip..
+
+> +static int vdec_hevc_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
+> +				      struct vdec_fb *fb, bool *res_chg)
+> +{
+> +	struct vdec_hevc_slice_inst *inst = h_vdec;
+> +	struct vdec_vpu_inst *vpu = &inst->vpu;
+> +
+
+Please remove this extra empty line.
+
+> +	int err, timeout = 0;
+> +	unsigned int data[2];
+> +	struct vdec_lat_buf *lat_buf;
+> +	struct vdec_hevc_slice_share_info *share_info;
+> +
+
+...after which:
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
 
