@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 806CAC77B7A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 May 2023 15:33:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F344C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 May 2023 15:33:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5Xt/kb1I9tBW/zHVjBQrREyGjijOb+tpZUMT6BFY+/c=; b=TxmkHEyv2RjgLFVho1ir0qcAnX
-	caAocyf/T0/dMqVNhkzaPNpAR1eafcxnLRCaf6GBG/f/CDFc98RHM7CcB7F1/jqa7CChBmse6f67h
-	3gNyHtIzb1dzT55g7TkYkACDkNitcorOvTuplNWlcVgWkgsdgsfLOo+g8Ea1OtIAi1xfATqVztJvV
-	vErOeu0H1li9f88QfQEVrJAxlVBcOa8sNgMwf0N/Qf1TJMS4RyqrY1o8+VtL8cjAKaDvo57Rhgkcj
-	yn9sQxu2e38qqpWa5jFEk1mKUL6dsQw6xbFnO2mRwrlEAVBwAEH4TVnx4KGbCQsxTNLdQ9J1yDQtp
-	8Mb2651Q==;
+	bh=E/mkzJ+c6qr7yPOsPF9NXbENxWjJthPNWT3mBurv3yc=; b=vZHw7LfiJQANTmuLyfNBVZyx6T
+	TrnjhsdOGRLlezh5/opztQw23XPv7ML9JgTisl9StufPR3rWDOIQuQKAeB2JzgGF5Yl+1w8SJPmZo
+	9lCbot1NsDf5kCkWuiqcPwLPOws37GGEJv4jvtARix3m2K3YzkV6LKkSeGmJuc2E1pto7JzO4b9o1
+	T1Jc2vlQd7J4dtTovELNXzeXVybPv64/jhJvKB76CaOsN76+r52f81stFZbdWftu3L6zKQ7B9Yczm
+	pNGPmwiS3AuvgattrFkL/lUjiHj7gWJKS0Os/YyaMUoSS2fqbX2YXT1e2ONFldOZe3p9u2Q229uS4
+	fyqRfhhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1qUV-00DqcM-33;
-	Wed, 24 May 2023 15:33:31 +0000
+	id 1q1qUf-00Dqin-1x;
+	Wed, 24 May 2023 15:33:41 +0000
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1qUT-00DqbI-23
+	id 1q1qUb-00DqfX-2E
 	for linux-mediatek@lists.infradead.org;
-	Wed, 24 May 2023 15:33:31 +0000
+	Wed, 24 May 2023 15:33:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1684942408;
+	s=mimecast20190719; t=1684942416;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=5Xt/kb1I9tBW/zHVjBQrREyGjijOb+tpZUMT6BFY+/c=;
-	b=HZ8Of0rK1hyiWfcfsq/n1TQ4H44jwzSuyskoP3Xryi302meqeGzHEvoVATpV9YiR2GNG+6
-	CIcHInZD4ckVVi5gM2ajw2g4GvRoZ0siIranHiFJmQZWD6ZyvnrkqcJJZP0HV41w3hoQFK
-	ni9sDY+5Z2+vodB0va9kc1KrZ5khZQM=
+	bh=E/mkzJ+c6qr7yPOsPF9NXbENxWjJthPNWT3mBurv3yc=;
+	b=ad4CnB4dMF57kwsg/xU7UcpF5Jr3YIO6MFWbAJFIHsMsLrY+dvXUEJu9368HSfKt7l63e/
+	mYZddq5p0LpSTsxBtsjCIkKSol+gXKTW+JwUMw6hcBhhGSlJXsHKMUMOv82RK5qm/u4zq2
+	cr5W1Q8QkTKnUe79DBM6Cnua5gKrLgg=
 Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
  [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-147-h5Ilq50YMBixAqm1S8Ipag-1; Wed, 24 May 2023 11:33:24 -0400
-X-MC-Unique: h5Ilq50YMBixAqm1S8Ipag-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com [10.11.54.4])
+ us-mta-617-ozOdLk_aN02TMJY6p7EiVg-1; Wed, 24 May 2023 11:33:33 -0400
+X-MC-Unique: ozOdLk_aN02TMJY6p7EiVg-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com [10.11.54.1])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 52D53280BC8A;
-	Wed, 24 May 2023 15:33:22 +0000 (UTC)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B040C280BC80;
+	Wed, 24 May 2023 15:33:31 +0000 (UTC)
 Received: from warthog.procyon.org.uk (unknown [10.39.192.68])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 24FB920296C8;
-	Wed, 24 May 2023 15:33:18 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id C783840CFD45;
+	Wed, 24 May 2023 15:33:27 +0000 (UTC)
 From: David Howells <dhowells@redhat.com>
 To: netdev@vger.kernel.org
 Cc: David Howells <dhowells@redhat.com>,
@@ -82,17 +82,17 @@ Cc: David Howells <dhowells@redhat.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-nvme@lists.infradead.org
-Subject: [PATCH net-next 02/12] mm: Provide a page_frag_cache allocator cleanup function
-Date: Wed, 24 May 2023 16:33:01 +0100
-Message-Id: <20230524153311.3625329-3-dhowells@redhat.com>
+Subject: [PATCH net-next 04/12] mm: Make the page_frag_cache allocator use multipage folios
+Date: Wed, 24 May 2023 16:33:03 +0100
+Message-Id: <20230524153311.3625329-5-dhowells@redhat.com>
 In-Reply-To: <20230524153311.3625329-1-dhowells@redhat.com>
 References: <20230524153311.3625329-1-dhowells@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230524_083329_745317_ABF8D7B4 
-X-CRM114-Status: GOOD (  20.55  )
+X-CRM114-CacheID: sfid-20230524_083337_805747_CB04BA1F 
+X-CRM114-Status: GOOD (  28.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,8 +107,9 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Provide a function to clean up a page_frag_cache allocator rather than
-doing it manually each time.
+Change the page_frag_cache allocator to use multipage folios rather than
+groups of pages.  This reduces page_frag_free to just a folio_put() or
+put_page().
 
 Signed-off-by: David Howells <dhowells@redhat.com>
 cc: "David S. Miller" <davem@davemloft.net>
@@ -139,174 +140,216 @@ cc: linux-mediatek@lists.infradead.org
 cc: linux-nvme@lists.infradead.org
 cc: linux-mm@kvack.org
 ---
- drivers/net/ethernet/google/gve/gve_main.c | 11 ++---------
- drivers/net/ethernet/mediatek/mtk_wed_wo.c | 17 ++---------------
- drivers/nvme/host/tcp.c                    |  8 +-------
- drivers/nvme/target/tcp.c                  |  5 +----
- include/linux/gfp.h                        |  2 ++
- mm/page_frag_alloc.c                       | 17 +++++++++++++++++
- 6 files changed, 25 insertions(+), 35 deletions(-)
+ include/linux/mm_types.h | 13 ++----
+ mm/page_frag_alloc.c     | 99 +++++++++++++++++++---------------------
+ 2 files changed, 52 insertions(+), 60 deletions(-)
 
-diff --git a/drivers/net/ethernet/google/gve/gve_main.c b/drivers/net/ethernet/google/gve/gve_main.c
-index 8fb70db63b8b..55feab29bed9 100644
---- a/drivers/net/ethernet/google/gve/gve_main.c
-+++ b/drivers/net/ethernet/google/gve/gve_main.c
-@@ -1251,17 +1251,10 @@ static void gve_unreg_xdp_info(struct gve_priv *priv)
- 
- static void gve_drain_page_cache(struct gve_priv *priv)
- {
--	struct page_frag_cache *nc;
- 	int i;
- 
--	for (i = 0; i < priv->rx_cfg.num_queues; i++) {
--		nc = &priv->rx[i].page_cache;
--		if (nc->va) {
--			__page_frag_cache_drain(virt_to_page(nc->va),
--						nc->pagecnt_bias);
--			nc->va = NULL;
--		}
--	}
-+	for (i = 0; i < priv->rx_cfg.num_queues; i++)
-+		page_frag_cache_clear(&priv->rx[i].page_cache);
+diff --git a/include/linux/mm_types.h b/include/linux/mm_types.h
+index 306a3d1a0fa6..d7c52a5979cc 100644
+--- a/include/linux/mm_types.h
++++ b/include/linux/mm_types.h
+@@ -420,18 +420,13 @@ static inline void *folio_get_private(struct folio *folio)
  }
  
- static int gve_open(struct net_device *dev)
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.c b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-index 69fba29055e9..d90fea2c7d04 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-@@ -286,7 +286,6 @@ mtk_wed_wo_queue_free(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
- static void
- mtk_wed_wo_queue_tx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
- {
--	struct page *page;
- 	int i;
+ struct page_frag_cache {
+-	void * va;
+-#if (PAGE_SIZE < PAGE_FRAG_CACHE_MAX_SIZE)
+-	__u16 offset;
+-	__u16 size;
+-#else
+-	__u32 offset;
+-#endif
++	struct folio	*folio;
++	unsigned int	offset;
+ 	/* we maintain a pagecount bias, so that we dont dirty cache line
+ 	 * containing page->_refcount every time we allocate a fragment.
+ 	 */
+-	unsigned int		pagecnt_bias;
+-	bool pfmemalloc;
++	unsigned int	pagecnt_bias;
++	bool		pfmemalloc;
+ };
  
- 	for (i = 0; i < q->n_desc; i++) {
-@@ -298,19 +297,12 @@ mtk_wed_wo_queue_tx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
- 		entry->buf = NULL;
- 	}
- 
--	if (!q->cache.va)
--		return;
--
--	page = virt_to_page(q->cache.va);
--	__page_frag_cache_drain(page, q->cache.pagecnt_bias);
--	memset(&q->cache, 0, sizeof(q->cache));
-+	page_frag_cache_clear(&q->cache);
- }
- 
- static void
- mtk_wed_wo_queue_rx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
- {
--	struct page *page;
--
- 	for (;;) {
- 		void *buf = mtk_wed_wo_dequeue(wo, q, NULL, true);
- 
-@@ -320,12 +312,7 @@ mtk_wed_wo_queue_rx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
- 		skb_free_frag(buf);
- 	}
- 
--	if (!q->cache.va)
--		return;
--
--	page = virt_to_page(q->cache.va);
--	__page_frag_cache_drain(page, q->cache.pagecnt_bias);
--	memset(&q->cache, 0, sizeof(q->cache));
-+	page_frag_cache_clear(&q->cache);
- }
- 
- static void
-diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
-index bf0230442d57..dcc35f6bff8c 100644
---- a/drivers/nvme/host/tcp.c
-+++ b/drivers/nvme/host/tcp.c
-@@ -1315,7 +1315,6 @@ static int nvme_tcp_alloc_async_req(struct nvme_tcp_ctrl *ctrl)
- 
- static void nvme_tcp_free_queue(struct nvme_ctrl *nctrl, int qid)
- {
--	struct page *page;
- 	struct nvme_tcp_ctrl *ctrl = to_tcp_ctrl(nctrl);
- 	struct nvme_tcp_queue *queue = &ctrl->queues[qid];
- 	unsigned int noreclaim_flag;
-@@ -1326,12 +1325,7 @@ static void nvme_tcp_free_queue(struct nvme_ctrl *nctrl, int qid)
- 	if (queue->hdr_digest || queue->data_digest)
- 		nvme_tcp_free_crypto(queue);
- 
--	if (queue->pf_cache.va) {
--		page = virt_to_head_page(queue->pf_cache.va);
--		__page_frag_cache_drain(page, queue->pf_cache.pagecnt_bias);
--		queue->pf_cache.va = NULL;
--	}
--
-+	page_frag_cache_clear(&queue->pf_cache);
- 	noreclaim_flag = memalloc_noreclaim_save();
- 	sock_release(queue->sock);
- 	memalloc_noreclaim_restore(noreclaim_flag);
-diff --git a/drivers/nvme/target/tcp.c b/drivers/nvme/target/tcp.c
-index ed98df72c76b..984e6ce85dcd 100644
---- a/drivers/nvme/target/tcp.c
-+++ b/drivers/nvme/target/tcp.c
-@@ -1464,7 +1464,6 @@ static void nvmet_tcp_free_cmd_data_in_buffers(struct nvmet_tcp_queue *queue)
- 
- static void nvmet_tcp_release_queue_work(struct work_struct *w)
- {
--	struct page *page;
- 	struct nvmet_tcp_queue *queue =
- 		container_of(w, struct nvmet_tcp_queue, release_work);
- 
-@@ -1486,9 +1485,7 @@ static void nvmet_tcp_release_queue_work(struct work_struct *w)
- 	if (queue->hdr_digest || queue->data_digest)
- 		nvmet_tcp_free_crypto(queue);
- 	ida_free(&nvmet_tcp_queue_ida, queue->idx);
--
--	page = virt_to_head_page(queue->pf_cache.va);
--	__page_frag_cache_drain(page, queue->pf_cache.pagecnt_bias);
-+	page_frag_cache_clear(&queue->pf_cache);
- 	kfree(queue);
- }
- 
-diff --git a/include/linux/gfp.h b/include/linux/gfp.h
-index ed8cb537c6a7..03504beb51e4 100644
---- a/include/linux/gfp.h
-+++ b/include/linux/gfp.h
-@@ -314,6 +314,8 @@ static inline void *page_frag_alloc(struct page_frag_cache *nc,
- 	return page_frag_alloc_align(nc, fragsz, gfp_mask, ~0u);
- }
- 
-+void page_frag_cache_clear(struct page_frag_cache *nc);
-+
- extern void page_frag_free(void *addr);
- 
- #define __free_page(page) __free_pages((page), 0)
+ typedef unsigned long vm_flags_t;
 diff --git a/mm/page_frag_alloc.c b/mm/page_frag_alloc.c
-index bee95824ef8f..e02b81d68dc4 100644
+index 9d3f6fbd9a07..ffd68bfb677d 100644
 --- a/mm/page_frag_alloc.c
 +++ b/mm/page_frag_alloc.c
-@@ -46,6 +46,23 @@ void __page_frag_cache_drain(struct page *page, unsigned int count)
+@@ -16,33 +16,34 @@
+ #include <linux/init.h>
+ #include <linux/mm.h>
+ 
+-static struct page *__page_frag_cache_refill(struct page_frag_cache *nc,
+-					     gfp_t gfp_mask)
++/*
++ * Allocate a new folio for the frag cache.
++ */
++static struct folio *page_frag_cache_refill(struct page_frag_cache *nc,
++					    gfp_t gfp_mask)
+ {
+-	struct page *page = NULL;
++	struct folio *folio = NULL;
+ 	gfp_t gfp = gfp_mask;
+ 
+ #if (PAGE_SIZE < PAGE_FRAG_CACHE_MAX_SIZE)
+-	gfp_mask |= __GFP_COMP | __GFP_NOWARN | __GFP_NORETRY |
+-		    __GFP_NOMEMALLOC;
+-	page = alloc_pages_node(NUMA_NO_NODE, gfp_mask,
+-				PAGE_FRAG_CACHE_MAX_ORDER);
+-	nc->size = page ? PAGE_FRAG_CACHE_MAX_SIZE : PAGE_SIZE;
++	gfp_mask |= __GFP_NOWARN | __GFP_NORETRY | __GFP_NOMEMALLOC;
++	folio = folio_alloc(gfp_mask, PAGE_FRAG_CACHE_MAX_ORDER);
+ #endif
+-	if (unlikely(!page))
+-		page = alloc_pages_node(NUMA_NO_NODE, gfp, 0);
++	if (unlikely(!folio))
++		folio = folio_alloc(gfp, 0);
+ 
+-	nc->va = page ? page_address(page) : NULL;
+-
+-	return page;
++	if (folio)
++		nc->folio = folio;
++	return folio;
+ }
+ 
+ void __page_frag_cache_drain(struct page *page, unsigned int count)
+ {
+-	VM_BUG_ON_PAGE(page_ref_count(page) == 0, page);
++	struct folio *folio = page_folio(page);
++
++	VM_BUG_ON_FOLIO(folio_ref_count(folio) == 0, folio);
+ 
+-	if (page_ref_sub_and_test(page, count - 1))
+-		__free_pages(page, compound_order(page));
++	folio_put_refs(folio, count);
  }
  EXPORT_SYMBOL(__page_frag_cache_drain);
  
-+/**
-+ * page_frag_cache_clear - Clear out a page fragment cache
-+ * @nc: The cache to clear
-+ *
-+ * Discard any pages still cached in a page fragment cache.
-+ */
-+void page_frag_cache_clear(struct page_frag_cache *nc)
-+{
-+	if (nc->va) {
-+		struct page *page = virt_to_head_page(nc->va);
+@@ -54,11 +55,12 @@ EXPORT_SYMBOL(__page_frag_cache_drain);
+  */
+ void page_frag_cache_clear(struct page_frag_cache *nc)
+ {
+-	if (nc->va) {
+-		struct page *page = virt_to_head_page(nc->va);
++	struct folio *folio = nc->folio;
+ 
+-		__page_frag_cache_drain(page, nc->pagecnt_bias);
+-		nc->va = NULL;
++	if (folio) {
++		VM_BUG_ON_FOLIO(folio_ref_count(folio) == 0, folio);
++		folio_put_refs(folio, nc->pagecnt_bias);
++		nc->folio = NULL;
+ 	}
+ }
+ EXPORT_SYMBOL(page_frag_cache_clear);
+@@ -67,56 +69,51 @@ void *page_frag_alloc_align(struct page_frag_cache *nc,
+ 			    unsigned int fragsz, gfp_t gfp_mask,
+ 			    unsigned int align)
+ {
+-	unsigned int size = PAGE_SIZE;
+-	struct page *page;
+-	int offset;
++	struct folio *folio = nc->folio;
++	size_t offset;
+ 
+ 	WARN_ON_ONCE(!is_power_of_2(align));
+ 
+-	if (unlikely(!nc->va)) {
++	if (unlikely(!folio)) {
+ refill:
+-		page = __page_frag_cache_refill(nc, gfp_mask);
+-		if (!page)
++		folio = page_frag_cache_refill(nc, gfp_mask);
++		if (!folio)
+ 			return NULL;
+ 
+-#if (PAGE_SIZE < PAGE_FRAG_CACHE_MAX_SIZE)
+-		/* if size can vary use size else just use PAGE_SIZE */
+-		size = nc->size;
+-#endif
+ 		/* Even if we own the page, we do not use atomic_set().
+ 		 * This would break get_page_unless_zero() users.
+ 		 */
+-		page_ref_add(page, PAGE_FRAG_CACHE_MAX_SIZE);
++		folio_ref_add(folio, PAGE_FRAG_CACHE_MAX_SIZE);
+ 
+ 		/* reset page count bias and offset to start of new frag */
+-		nc->pfmemalloc = page_is_pfmemalloc(page);
++		nc->pfmemalloc = folio_is_pfmemalloc(folio);
+ 		nc->pagecnt_bias = PAGE_FRAG_CACHE_MAX_SIZE + 1;
+-		nc->offset = size;
++		nc->offset = folio_size(folio);
+ 	}
+ 
+-	offset = nc->offset - fragsz;
+-	if (unlikely(offset < 0)) {
+-		page = virt_to_page(nc->va);
+-
+-		if (page_ref_count(page) != nc->pagecnt_bias)
++	offset = nc->offset;
++	if (unlikely(fragsz > offset)) {
++		/* Reuse the folio if everyone we gave it to has finished with
++		 * it.
++		 */
++		if (!folio_ref_sub_and_test(folio, nc->pagecnt_bias)) {
++			nc->folio = NULL;
+ 			goto refill;
++		}
 +
-+		__page_frag_cache_drain(page, nc->pagecnt_bias);
-+		nc->va = NULL;
-+	}
-+}
-+EXPORT_SYMBOL(page_frag_cache_clear);
-+
- void *page_frag_alloc_align(struct page_frag_cache *nc,
- 		      unsigned int fragsz, gfp_t gfp_mask,
- 		      unsigned int align_mask)
+ 		if (unlikely(nc->pfmemalloc)) {
+-			page_ref_sub(page, nc->pagecnt_bias - 1);
+-			__free_pages(page, compound_order(page));
++			__folio_put(folio);
++			nc->folio = NULL;
+ 			goto refill;
+ 		}
+ 
+-#if (PAGE_SIZE < PAGE_FRAG_CACHE_MAX_SIZE)
+-		/* if size can vary use size else just use PAGE_SIZE */
+-		size = nc->size;
+-#endif
+ 		/* OK, page count is 0, we can safely set it */
+-		set_page_count(page, PAGE_FRAG_CACHE_MAX_SIZE + 1);
++		folio_set_count(folio, PAGE_FRAG_CACHE_MAX_SIZE + 1);
+ 
+ 		/* reset page count bias and offset to start of new frag */
+ 		nc->pagecnt_bias = PAGE_FRAG_CACHE_MAX_SIZE + 1;
+-		offset = size - fragsz;
+-		if (unlikely(offset < 0)) {
++		offset = folio_size(folio);
++		if (unlikely(fragsz > offset)) {
+ 			/*
+ 			 * The caller is trying to allocate a fragment
+ 			 * with fragsz > PAGE_SIZE but the cache isn't big
+@@ -126,15 +123,17 @@ void *page_frag_alloc_align(struct page_frag_cache *nc,
+ 			 * it could make memory pressure worse
+ 			 * so we simply return NULL here.
+ 			 */
++			nc->offset = offset;
+ 			return NULL;
+ 		}
+ 	}
+ 
+ 	nc->pagecnt_bias--;
++	offset -= fragsz;
+ 	offset &= ~(align - 1);
+ 	nc->offset = offset;
+ 
+-	return nc->va + offset;
++	return folio_address(folio) + offset;
+ }
+ EXPORT_SYMBOL(page_frag_alloc_align);
+ 
+@@ -143,8 +142,6 @@ EXPORT_SYMBOL(page_frag_alloc_align);
+  */
+ void page_frag_free(void *addr)
+ {
+-	struct page *page = virt_to_head_page(addr);
+-
+-	__free_pages(page, compound_order(page));
++	folio_put(virt_to_folio(addr));
+ }
+ EXPORT_SYMBOL(page_frag_free);
 
 
