@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB761C7EE2D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 May 2023 15:33:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D367C77B73
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 May 2023 15:34:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uN3mSK+PjIP6JAbZhfDAmtnx0lnfpAA82MAUedDHiDA=; b=uAR0d6QZsOkzY/8+bY+0RAvv+W
-	cHcN/qnZCPVCsdBFnyU5qPZUC+PTrEvFQ8k4jPcT6tIUXu2N9GjscuPFzPZ/6ZuqZteCSBIxRG/VJ
-	00LHFIJu4gfXidvM6svmkmkZL70OXsZ5ncI22L4n72rFwud+nP0WxztkRlztl9gaMho4eF93n7O4p
-	k8eGET1yEnGatQLxwdhPEK3yv1gfBot5hlSuZOghXhxyjl7qpquRGo6vYP5tfZ2AdsuHNQRjvMpCM
-	+O0RigUgniZx6+HSWM+A167U/e+SmABNYfuum/w/1u2NsCc94k1NNsr/VCUEG5ZSJ87UXXFrj911u
-	9AqMiG3Q==;
+	bh=uekJL1E5Uz+9JLqowhoPzZVYALfVqMM/z7Y13jfCLzU=; b=JzOPp4IbedNZk3RDzKlD4wXkE5
+	KECowyHSE7GWNwSn+Ar+VNAZ477C49ndw6Sf940L300bZUM0B1FmOkdi0uIqnkR97DNd7rUsuvboY
+	Bfkwo6mqQm2QKRZzCUcUwpyslPVIXkv1f0F85zkZTcupkKtWqHgpvCRwqrkHTNCFX4JLGuSh5aFRZ
+	qROWpP/1ifN0t5SUzpJdfr7I/6eC3Dt04N2/IgYd0n07ms16KJUYDpRVSnfgFmO4d0h3exJ0kKT+w
+	WzLTq+Fc25X+w2M2Hel8os6GXFPMXz0mFXVNoBxAZRQBdCYScE/cr0MxpG9oztuKsr0RAmM4ubrfo
+	rCSLjjPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1qUf-00DqiU-0J;
-	Wed, 24 May 2023 15:33:41 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1q1qUp-00Dqr4-2v;
+	Wed, 24 May 2023 15:33:51 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1qUa-00Dqek-08
+	id 1q1qUi-00Dqkq-3A
 	for linux-mediatek@lists.infradead.org;
-	Wed, 24 May 2023 15:33:38 +0000
+	Wed, 24 May 2023 15:33:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1684942415;
+	s=mimecast20190719; t=1684942424;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=uN3mSK+PjIP6JAbZhfDAmtnx0lnfpAA82MAUedDHiDA=;
-	b=dKYKJEMFkf6vpndmRZur3rlmzP7bFSzCmNO1j89ov2uzpwft6OR3oJ2iSDHtCnyU9Alcly
-	u6wR5s3uQctcp8iZRnqagYydZpmAOqOp7m64U1/03BCIsRa7/SIRoOXo/u+ULGRDZYz3N8
-	setnRf1UANI5SAprSw671danLW7HJ/c=
+	bh=uekJL1E5Uz+9JLqowhoPzZVYALfVqMM/z7Y13jfCLzU=;
+	b=X1XwJX09jPb/cmsYbgeMIkOo46IIOZjNA9zVVyKVlz8zc5jO2nGJivyOek/hbxhR2hH++G
+	h8/u5I2yWcfU5OuNf3sJtZ0UrRCm+j22cGl9yoIKZ+ShDzzpqilUAZcJDMFy0rbo0ioYGh
+	QXIgXDuQZPD7+Yt7ELmc0+FfQ5r36+E=
 Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
  [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-649-Arb27wHhPVquoWD2zvAqmw-1; Wed, 24 May 2023 11:33:28 -0400
-X-MC-Unique: Arb27wHhPVquoWD2zvAqmw-1
+ us-mta-168-UtOOYHJNMQqeOwkvKYu_rw-1; Wed, 24 May 2023 11:33:38 -0400
+X-MC-Unique: UtOOYHJNMQqeOwkvKYu_rw-1
 Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com [10.11.54.10])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id EB53C3C0D185;
-	Wed, 24 May 2023 15:33:26 +0000 (UTC)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 4F027280BCA2;
+	Wed, 24 May 2023 15:33:36 +0000 (UTC)
 Received: from warthog.procyon.org.uk (unknown [10.39.192.68])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 12905492B0B;
-	Wed, 24 May 2023 15:33:22 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 6A068492B0A;
+	Wed, 24 May 2023 15:33:32 +0000 (UTC)
 From: David Howells <dhowells@redhat.com>
 To: netdev@vger.kernel.org
 Cc: David Howells <dhowells@redhat.com>,
@@ -82,17 +82,17 @@ Cc: David Howells <dhowells@redhat.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-nvme@lists.infradead.org
-Subject: [PATCH net-next 03/12] mm: Make the page_frag_cache allocator alignment param a pow-of-2
-Date: Wed, 24 May 2023 16:33:02 +0100
-Message-Id: <20230524153311.3625329-4-dhowells@redhat.com>
+Subject: [PATCH net-next 05/12] mm: Make the page_frag_cache allocator handle __GFP_ZERO itself
+Date: Wed, 24 May 2023 16:33:04 +0100
+Message-Id: <20230524153311.3625329-6-dhowells@redhat.com>
 In-Reply-To: <20230524153311.3625329-1-dhowells@redhat.com>
 References: <20230524153311.3625329-1-dhowells@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230524_083336_482467_15558FA8 
-X-CRM114-Status: GOOD (  18.80  )
+X-CRM114-CacheID: sfid-20230524_083345_098268_9EE83FDF 
+X-CRM114-Status: GOOD (  17.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,11 +107,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Make the page_frag_cache allocator's alignment parameter a power of 2
-rather than a mask and give a warning if it isn't.
+Make the page_frag_cache allocator handle __GFP_ZERO itself rather than
+passing it off to the page allocator.  There may be a mix of callers, some
+specifying __GFP_ZERO and some not - and even if all specify __GFP_ZERO, we
+might refurbish the page, in which case the returned memory doesn't get
+cleared.
 
-This means that it's consistent with {napi,netdec}_alloc_frag_align() and
-allows __{napi,netdev}_alloc_frag_align() to be removed.
+This is a potential bug in the nvme over TCP driver.
 
 Signed-off-by: David Howells <dhowells@redhat.com>
 cc: "David S. Miller" <davem@davemloft.net>
@@ -142,159 +144,44 @@ cc: linux-mediatek@lists.infradead.org
 cc: linux-nvme@lists.infradead.org
 cc: linux-mm@kvack.org
 ---
- include/linux/gfp.h    |  4 ++--
- include/linux/skbuff.h | 22 ++++------------------
- mm/page_frag_alloc.c   |  8 +++++---
- net/core/skbuff.c      | 14 +++++++-------
- 4 files changed, 18 insertions(+), 30 deletions(-)
+ mm/page_frag_alloc.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
 
-diff --git a/include/linux/gfp.h b/include/linux/gfp.h
-index 03504beb51e4..fa30100f46ad 100644
---- a/include/linux/gfp.h
-+++ b/include/linux/gfp.h
-@@ -306,12 +306,12 @@ struct page_frag_cache;
- extern void __page_frag_cache_drain(struct page *page, unsigned int count);
- extern void *page_frag_alloc_align(struct page_frag_cache *nc,
- 				   unsigned int fragsz, gfp_t gfp_mask,
--				   unsigned int align_mask);
-+				   unsigned int align);
- 
- static inline void *page_frag_alloc(struct page_frag_cache *nc,
- 			     unsigned int fragsz, gfp_t gfp_mask)
- {
--	return page_frag_alloc_align(nc, fragsz, gfp_mask, ~0u);
-+	return page_frag_alloc_align(nc, fragsz, gfp_mask, 1);
- }
- 
- void page_frag_cache_clear(struct page_frag_cache *nc);
-diff --git a/include/linux/skbuff.h b/include/linux/skbuff.h
-index 1b2ebf6113e0..41b63e72c6c3 100644
---- a/include/linux/skbuff.h
-+++ b/include/linux/skbuff.h
-@@ -3158,7 +3158,7 @@ void skb_queue_purge(struct sk_buff_head *list);
- 
- unsigned int skb_rbtree_purge(struct rb_root *root);
- 
--void *__netdev_alloc_frag_align(unsigned int fragsz, unsigned int align_mask);
-+void *netdev_alloc_frag_align(unsigned int fragsz, unsigned int align);
- 
- /**
-  * netdev_alloc_frag - allocate a page fragment
-@@ -3169,14 +3169,7 @@ void *__netdev_alloc_frag_align(unsigned int fragsz, unsigned int align_mask);
-  */
- static inline void *netdev_alloc_frag(unsigned int fragsz)
- {
--	return __netdev_alloc_frag_align(fragsz, ~0u);
--}
--
--static inline void *netdev_alloc_frag_align(unsigned int fragsz,
--					    unsigned int align)
--{
--	WARN_ON_ONCE(!is_power_of_2(align));
--	return __netdev_alloc_frag_align(fragsz, -align);
-+	return netdev_alloc_frag_align(fragsz, 1);
- }
- 
- struct sk_buff *__netdev_alloc_skb(struct net_device *dev, unsigned int length,
-@@ -3236,18 +3229,11 @@ static inline void skb_free_frag(void *addr)
- 	page_frag_free(addr);
- }
- 
--void *__napi_alloc_frag_align(unsigned int fragsz, unsigned int align_mask);
-+void *napi_alloc_frag_align(unsigned int fragsz, unsigned int align);
- 
- static inline void *napi_alloc_frag(unsigned int fragsz)
- {
--	return __napi_alloc_frag_align(fragsz, ~0u);
--}
--
--static inline void *napi_alloc_frag_align(unsigned int fragsz,
--					  unsigned int align)
--{
--	WARN_ON_ONCE(!is_power_of_2(align));
--	return __napi_alloc_frag_align(fragsz, -align);
-+	return napi_alloc_frag_align(fragsz, 1);
- }
- 
- struct sk_buff *__napi_alloc_skb(struct napi_struct *napi,
 diff --git a/mm/page_frag_alloc.c b/mm/page_frag_alloc.c
-index e02b81d68dc4..9d3f6fbd9a07 100644
+index ffd68bfb677d..2b73c7f5d9a9 100644
 --- a/mm/page_frag_alloc.c
 +++ b/mm/page_frag_alloc.c
-@@ -64,13 +64,15 @@ void page_frag_cache_clear(struct page_frag_cache *nc)
- EXPORT_SYMBOL(page_frag_cache_clear);
- 
- void *page_frag_alloc_align(struct page_frag_cache *nc,
--		      unsigned int fragsz, gfp_t gfp_mask,
--		      unsigned int align_mask)
-+			    unsigned int fragsz, gfp_t gfp_mask,
-+			    unsigned int align)
+@@ -23,7 +23,10 @@ static struct folio *page_frag_cache_refill(struct page_frag_cache *nc,
+ 					    gfp_t gfp_mask)
  {
- 	unsigned int size = PAGE_SIZE;
- 	struct page *page;
- 	int offset;
- 
-+	WARN_ON_ONCE(!is_power_of_2(align));
+ 	struct folio *folio = NULL;
+-	gfp_t gfp = gfp_mask;
++	gfp_t gfp;
 +
- 	if (unlikely(!nc->va)) {
- refill:
- 		page = __page_frag_cache_refill(nc, gfp_mask);
-@@ -129,7 +131,7 @@ void *page_frag_alloc_align(struct page_frag_cache *nc,
- 	}
++	gfp_mask &= ~__GFP_ZERO;
++	gfp = gfp_mask;
  
- 	nc->pagecnt_bias--;
--	offset &= align_mask;
-+	offset &= ~(align - 1);
+ #if (PAGE_SIZE < PAGE_FRAG_CACHE_MAX_SIZE)
+ 	gfp_mask |= __GFP_NOWARN | __GFP_NORETRY | __GFP_NOMEMALLOC;
+@@ -71,6 +74,7 @@ void *page_frag_alloc_align(struct page_frag_cache *nc,
+ {
+ 	struct folio *folio = nc->folio;
+ 	size_t offset;
++	void *p;
+ 
+ 	WARN_ON_ONCE(!is_power_of_2(align));
+ 
+@@ -133,7 +137,10 @@ void *page_frag_alloc_align(struct page_frag_cache *nc,
+ 	offset &= ~(align - 1);
  	nc->offset = offset;
  
- 	return nc->va + offset;
-diff --git a/net/core/skbuff.c b/net/core/skbuff.c
-index f4a5b51aed22..cc507433b357 100644
---- a/net/core/skbuff.c
-+++ b/net/core/skbuff.c
-@@ -289,17 +289,17 @@ void napi_get_frags_check(struct napi_struct *napi)
- 	local_bh_enable();
+-	return folio_address(folio) + offset;
++	p = folio_address(folio) + offset;
++	if (gfp_mask & __GFP_ZERO)
++		return memset(p, 0, fragsz);
++	return p;
  }
+ EXPORT_SYMBOL(page_frag_alloc_align);
  
--void *__napi_alloc_frag_align(unsigned int fragsz, unsigned int align_mask)
-+void *napi_alloc_frag_align(unsigned int fragsz, unsigned int align)
- {
- 	struct napi_alloc_cache *nc = this_cpu_ptr(&napi_alloc_cache);
- 
- 	fragsz = SKB_DATA_ALIGN(fragsz);
- 
--	return page_frag_alloc_align(&nc->page, fragsz, GFP_ATOMIC, align_mask);
-+	return page_frag_alloc_align(&nc->page, fragsz, GFP_ATOMIC, align);
- }
--EXPORT_SYMBOL(__napi_alloc_frag_align);
-+EXPORT_SYMBOL(napi_alloc_frag_align);
- 
--void *__netdev_alloc_frag_align(unsigned int fragsz, unsigned int align_mask)
-+void *netdev_alloc_frag_align(unsigned int fragsz, unsigned int align)
- {
- 	void *data;
- 
-@@ -307,18 +307,18 @@ void *__netdev_alloc_frag_align(unsigned int fragsz, unsigned int align_mask)
- 	if (in_hardirq() || irqs_disabled()) {
- 		struct page_frag_cache *nc = this_cpu_ptr(&netdev_alloc_cache);
- 
--		data = page_frag_alloc_align(nc, fragsz, GFP_ATOMIC, align_mask);
-+		data = page_frag_alloc_align(nc, fragsz, GFP_ATOMIC, align);
- 	} else {
- 		struct napi_alloc_cache *nc;
- 
- 		local_bh_disable();
- 		nc = this_cpu_ptr(&napi_alloc_cache);
--		data = page_frag_alloc_align(&nc->page, fragsz, GFP_ATOMIC, align_mask);
-+		data = page_frag_alloc_align(&nc->page, fragsz, GFP_ATOMIC, align);
- 		local_bh_enable();
- 	}
- 	return data;
- }
--EXPORT_SYMBOL(__netdev_alloc_frag_align);
-+EXPORT_SYMBOL(netdev_alloc_frag_align);
- 
- static struct sk_buff *napi_skb_cache_get(void)
- {
 
 
