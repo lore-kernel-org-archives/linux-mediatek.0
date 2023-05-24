@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78ED0C7EE23
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 May 2023 11:04:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B560C7EE23
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 May 2023 11:04:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:To:
+	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lcukuWfsP8PnO5DBuNYIU3FfKjy4GTfzc+CzeXgA7Uc=; b=I8kfvRNI+TgR73L8FpIJl1bbnR
-	MQcgzjJr2B6TFzxWEMOaR5PnYCOR/k0H0vTFJFoqj8XeQ/BzPUxGE3i1EybelpagvjjHYqcZ4MTMy
-	njeHbkGletkhr84nKSQvpNQDKiHeJnJ76iUg+COPTqqhFeGV0ewxjFOe1WPHdEh9agZBvAfVCiDAf
-	Vuip5vJh6DqaxMjKGAsIVjDnvo9Ps1QAeFKLJUs5knVPe0KxCGS+FWv/dtFkQ6JAJBcIu6aYpBCUo
-	KJuyCulzTAc7g7LydeqRKRxbKlr530okpyXNstGgjT+YJuLJh83q5msSO+EWmYOA0DlU/Z+pnyej9
-	Tu7uO9dg==;
+	bh=/don9PJmsQn75n1zk58+oklOtK4vxhFmo5vJHcbmOT0=; b=fLOuWqknjTXW14UL96NVRUh4jz
+	RLx8XPSPlAeUragxDvSbRWkHOFtOA1kysw7Xmo1HZ6Hnf/LaKgEOqf/wQLRz+dic2KYXd4sCHorcg
+	difqU5tSENQIyaZ9wGKszS8dW3xviV0cUmboMva7XGp/mYOlpTZY+iCNFf802LyiqZIkhssXPTAE2
+	I+9SN6ABvLztMbk46+46nMYINFLiWy2zcNdESRRANZXSlDwRbPm0pGcE3j9GRJQjUDq1eApa5gX42
+	RFjnqyGvIxNYZQHEtGpGzz3xRz6BC9jqMm/yTc1di8rFTLo80wJZHkH8IkFC3O7ZEOI/vn0eJ+hc9
+	Dk2wWEoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1mI3-00DGjV-14;
-	Wed, 24 May 2023 11:04:23 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1q1mIQ-00DGqx-1i;
+	Wed, 24 May 2023 11:04:46 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1mHy-00DGiB-2B;
-	Wed, 24 May 2023 11:04:20 +0000
+	id 1q1mIN-00DGpE-1A;
+	Wed, 24 May 2023 11:04:44 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 31EB4631C7;
-	Wed, 24 May 2023 11:04:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BA684C4339B;
-	Wed, 24 May 2023 11:04:14 +0000 (UTC)
-Message-ID: <6bbb7f81-76ed-6794-fc51-7ff09f921e1d@xs4all.nl>
-Date: Wed, 24 May 2023 13:04:13 +0200
+	by dfw.source.kernel.org (Postfix) with ESMTPS id AD4C363510;
+	Wed, 24 May 2023 11:04:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8685CC4331D;
+	Wed, 24 May 2023 11:04:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1684926282;
+	bh=gSfPnPjxQ+g5yc36jkezG18RMtNAGuoMZoOVm/qXtTk=;
+	h=From:To:In-Reply-To:References:Subject:Date:From;
+	b=hJXyXP5mJz8gnTLp5D5Ov89xtBbXvOV38zbwsu3TQLvFbwHzZVTdHm7/WhqYKnr2C
+	 5//c4/C/ZcPI4HyNLZC3afU4VDVwsB8q31BfWCv3h6ELyZpX/8h/FTZNhfzZLaqrua
+	 PGh5fei8RPfjdCAeUO1m4gzdZ60mbJ4Qu3YD3JTthQBQ/TAvw9dihxG5ItWjajLD08
+	 Ckqheu+mhzZMQs7NZi6TA1yZO4iOqVC9MCOojHKZlXwjPaA90DJKo+9XLPstDHDlNh
+	 Jp5JSWdQ1d9iTJPJsJthVicAvEqNiruU6LaGI9shj4H0RVh6q6TZFmtItwrZ2Z/RAD
+	 V/QGnLfyU0pJg==
+From: Mark Brown <broonie@kernel.org>
+To: linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Leilk Liu <leilk.liu@mediatek.com>, Daniel Golle <daniel@makrotopia.org>
+In-Reply-To: <ZFAF6pJxMu1z6k4w@makrotopia.org>
+References: <ZFAF6pJxMu1z6k4w@makrotopia.org>
+Subject: Re: [PATCH] spi: mt65xx: make sure operations completed before
+ unloading
+Message-Id: <168492628027.37394.11329859234589803044.b4-ty@kernel.org>
+Date: Wed, 24 May 2023 12:04:40 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH v3,3/4] media: mediatek: vcodec: move core context from
- device to each instance
-Content-Language: en-US
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai
- <wenst@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?= <nfraprado@collabora.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
- Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20230424060130.18395-1-yunfei.dong@mediatek.com>
- <20230424060130.18395-4-yunfei.dong@mediatek.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20230424060130.18395-4-yunfei.dong@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.13-dev-bfdf5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230524_040418_809966_EA9E6702 
-X-CRM114-Status: GOOD (  29.31  )
+X-CRM114-CacheID: sfid-20230524_040443_480964_4889BCAE 
+X-CRM114-Status: GOOD (  14.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,235 +76,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 24/04/2023 08:01, Yunfei Dong wrote:
-> There are so many lat buffer in core context list, some instances
-> maybe be scheduled for a very long time. Moving the core context to
-> each instance, it only be used to control lat buffer of each instance.
-> And the core work queue of each instance is scheduled by system.
-
-Building with patches 1-3 (but not patch 4/4!) breaks compilation. That can
-be a problem if someone does a git bisect.
-
-So I decided to drop this series for now, waiting for a v4.
-
-Patch 3 should compile fine without patch 4, so please fix that.
-
-Note that v4 should be on top of your hevc v7 series since that will be
-merged to our staging tree by Friday.
-
-Regards,
-
-	Hans
-
+On Mon, 01 May 2023 19:33:14 +0100, Daniel Golle wrote:
+> When unloading the spi-mt65xx kernel module during an ongoing spi-mem
+> operation the kernel will Oops shortly after unloading the module.
+> This is because wait_for_completion_timeout was still running and
+> returning into the no longer loaded module:
 > 
-> Fixes: 2cfca6c1bf80 ("media: mediatek: vcodec: move lat_buf to the top of core list")
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> ---
->  .../mediatek/vcodec/mtk_vcodec_dec_drv.c      |  1 -
->  .../platform/mediatek/vcodec/mtk_vcodec_drv.h |  2 -
->  .../vcodec/vdec/vdec_h264_req_multi_if.c      |  4 +-
->  .../vcodec/vdec/vdec_vp9_req_lat_if.c         |  2 +-
->  .../platform/mediatek/vcodec/vdec_msg_queue.c | 53 +++++++------------
->  .../platform/mediatek/vcodec/vdec_msg_queue.h |  4 +-
->  6 files changed, 23 insertions(+), 43 deletions(-)
+> Internal error: Oops: 0000000096000005 [#1] SMP
+> Modules linked in: [many, but spi-mt65xx is no longer there]
+> CPU: 0 PID: 2578 Comm: block Tainted: G        W  O       6.3.0-next-20230428+ #0
+> Hardware name: Bananapi BPI-R3 (DT)
+> pstate: 804000c5 (Nzcv daIF +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+> pc : __lock_acquire+0x18c/0x20e8
+> lr : __lock_acquire+0x9b8/0x20e8
+> sp : ffffffc009ec3400
+> x29: ffffffc009ec3400 x28: 0000000000000001 x27: 0000000000000004
+> x26: ffffff80082888c8 x25: 0000000000000000 x24: 0000000000000000
+> x23: ffffffc009609da8 x22: ffffff8008288000 x21: ffffff8008288968
+> x20: 00000000000003c2 x19: ffffff8008be7990 x18: 00000000000002af
+> x17: 0000000000000000 x16: 0000000000000000 x15: ffffffc008d78970
+> x14: 000000000000080d x13: 00000000000002af x12: 00000000ffffffea
+> x11: 00000000ffffefff x10: ffffffc008dd0970 x9 : ffffffc008d78918
+> x8 : 0000000000017fe8 x7 : 0000000000000001 x6 : 0000000000000000
+> x5 : ffffff807fb53910 x4 : 0000000000000000 x3 : 0000000000000027
+> x2 : 0000000000000027 x1 : 0000000000000000 x0 : 00000000000c03c2
+> Call trace:
+>  __lock_acquire+0x18c/0x20e8
+>  lock_acquire+0x100/0x2a4
+>  _raw_spin_lock_irq+0x58/0x74
+>  __wait_for_common+0xe0/0x1b4
+>  wait_for_completion_timeout+0x1c/0x24
+>  0xffffffc000acc8a4 <--- used to be mtk_spi_transfer_wait
+>  spi_mem_exec_op+0x390/0x3ec
+>  spi_mem_no_dirmap_read+0x6c/0x88
+>  spi_mem_dirmap_read+0xcc/0x12c
+>  spinand_read_page+0xf8/0x1dc
+>  spinand_mtd_read+0x1b4/0x2fc
+>  mtd_read_oob_std+0x58/0x7c
+>  mtd_read_oob+0x8c/0x148
+>  mtd_read+0x50/0x6c
+>  ...
 > 
-> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
-> index 3755acc61d7d..d2543fb27ba7 100644
-> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
-> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
-> @@ -310,7 +310,6 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
->  	}
->  
->  	if (IS_VDEC_LAT_ARCH(dev->vdec_pdata->hw_arch)) {
-> -		vdec_msg_queue_init_ctx(&dev->msg_queue_core_ctx, MTK_VDEC_CORE);
->  		dev->core_workqueue =
->  			alloc_ordered_workqueue("core-decoder",
->  						WQ_MEM_RECLAIM | WQ_FREEZABLE);
-> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-> index 9acab54fd650..15d2cb171b89 100644
-> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-> @@ -461,7 +461,6 @@ struct mtk_vcodec_enc_pdata {
->   * @enc_capability: used to identify encode capability
->   *
->   * @core_workqueue: queue used for core hardware decode
-> - * @msg_queue_core_ctx: msg queue context used for core workqueue
->   *
->   * @subdev_dev: subdev hardware device
->   * @subdev_prob_done: check whether all used hw device is prob done
-> @@ -510,7 +509,6 @@ struct mtk_vcodec_dev {
->  	unsigned int enc_capability;
->  
->  	struct workqueue_struct *core_workqueue;
-> -	struct vdec_msg_queue_ctx msg_queue_core_ctx;
->  
->  	void *subdev_dev[MTK_VDEC_HW_MAX];
->  	int (*subdev_prob_done)(struct mtk_vcodec_dev *vdec_dev);
-> diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c
-> index 181cc52e0847..a7e8e3257b7f 100644
-> --- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c
-> +++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c
-> @@ -672,7 +672,7 @@ static int vdec_h264_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
->  	if (IS_VDEC_INNER_RACING(inst->ctx->dev->dec_capability)) {
->  		memcpy(&share_info->h264_slice_params, &inst->vsi->h264_slice_params,
->  		       sizeof(share_info->h264_slice_params));
-> -		vdec_msg_queue_qbuf(&inst->ctx->dev->msg_queue_core_ctx, lat_buf);
-> +		vdec_msg_queue_qbuf(&inst->ctx->msg_queue.core_ctx, lat_buf);
->  	}
->  
->  	/* wait decoder done interrupt */
-> @@ -698,7 +698,7 @@ static int vdec_h264_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
->  	if (!IS_VDEC_INNER_RACING(inst->ctx->dev->dec_capability)) {
->  		memcpy(&share_info->h264_slice_params, &inst->vsi->h264_slice_params,
->  		       sizeof(share_info->h264_slice_params));
-> -		vdec_msg_queue_qbuf(&inst->ctx->dev->msg_queue_core_ctx, lat_buf);
-> +		vdec_msg_queue_qbuf(&inst->ctx->msg_queue.core_ctx, lat_buf);
->  	}
->  	mtk_vcodec_debug(inst, "dec num: %d lat crc: 0x%x 0x%x 0x%x", inst->slice_dec_num,
->  			 inst->vsi->dec.crc[0], inst->vsi->dec.crc[1], inst->vsi->dec.crc[2]);
-> diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> index 6d981d7341d2..c2f90848f498 100644
-> --- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> +++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> @@ -2119,7 +2119,7 @@ static int vdec_vp9_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
->  	vdec_msg_queue_update_ube_wptr(&ctx->msg_queue,
->  				       vsi->trans.dma_addr_end +
->  				       ctx->msg_queue.wdma_addr.dma_addr);
-> -	vdec_msg_queue_qbuf(&ctx->dev->msg_queue_core_ctx, lat_buf);
-> +	vdec_msg_queue_qbuf(&ctx->msg_queue.core_ctx, lat_buf);
->  
->  	return 0;
->  err_free_fb_out:
-> diff --git a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
-> index 03f8d7cd8edd..08c720c9760e 100644
-> --- a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
-> +++ b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
-> @@ -177,26 +177,17 @@ void vdec_msg_queue_update_ube_wptr(struct vdec_msg_queue *msg_queue, uint64_t u
->  
->  bool vdec_msg_queue_wait_lat_buf_full(struct vdec_msg_queue *msg_queue)
->  {
-> -	struct vdec_lat_buf *buf, *tmp;
-> -	struct list_head *list_core[3];
-> -	struct vdec_msg_queue_ctx *core_ctx;
-> -	int ret, i, in_core_count = 0, count = 0;
-> +	int ret;
->  	long timeout_jiff;
->  
-> -	core_ctx = &msg_queue->ctx->dev->msg_queue_core_ctx;
-> -	spin_lock(&core_ctx->ready_lock);
-> -	list_for_each_entry_safe(buf, tmp, &core_ctx->ready_queue, core_list) {
-> -		if (buf && buf->ctx == msg_queue->ctx) {
-> -			list_core[in_core_count++] = &buf->core_list;
-> -			list_del(&buf->core_list);
-> -		}
-> -	}
-> -
-> -	for (i = 0; i < in_core_count; i++) {
-> -		list_add(list_core[in_core_count - (1 + i)], &core_ctx->ready_queue);
-> -		queue_work(msg_queue->ctx->dev->core_workqueue, &msg_queue->core_work);
-> +	if (atomic_read(&msg_queue->lat_list_cnt) == NUM_BUFFER_COUNT) {
-> +		mtk_v4l2_debug(3, "wait buf full: list(%d %d) ready_num:%d status:%d",
-> +			       atomic_read(&msg_queue->lat_list_cnt),
-> +			       atomic_read(&msg_queue->core_list_cnt),
-> +			       msg_queue->lat_ctx.ready_num,
-> +			       msg_queue->status);
-> +		return true;
->  	}
-> -	spin_unlock(&core_ctx->ready_lock);
->  
->  	timeout_jiff = msecs_to_jiffies(1000 * (NUM_BUFFER_COUNT + 2));
->  	ret = wait_event_timeout(msg_queue->ctx->msg_queue.core_dec_done,
-> @@ -208,18 +199,9 @@ bool vdec_msg_queue_wait_lat_buf_full(struct vdec_msg_queue *msg_queue)
->  		return true;
->  	}
->  
-> -	spin_lock(&core_ctx->ready_lock);
-> -	list_for_each_entry_safe(buf, tmp, &core_ctx->ready_queue, core_list) {
-> -		if (buf && buf->ctx == msg_queue->ctx) {
-> -			count++;
-> -			list_del(&buf->core_list);
-> -		}
-> -	}
-> -	spin_unlock(&core_ctx->ready_lock);
-> -
-> -	mtk_v4l2_err("failed with lat buf isn't full: list(%d %d) count:%d",
-> +	mtk_v4l2_err("failed with lat buf isn't full: list(%d %d)",
->  		     atomic_read(&msg_queue->lat_list_cnt),
-> -		     atomic_read(&msg_queue->core_list_cnt), count);
-> +		     atomic_read(&msg_queue->core_list_cnt));
->  
->  	return false;
->  }
-> @@ -247,6 +229,8 @@ void vdec_msg_queue_deinit(struct vdec_msg_queue *msg_queue,
->  
->  		kfree(lat_buf->private_data);
->  	}
-> +
-> +	cancel_work_sync(&msg_queue->core_work);
->  }
->  
->  static void vdec_msg_queue_core_work(struct work_struct *work)
-> @@ -258,11 +242,11 @@ static void vdec_msg_queue_core_work(struct work_struct *work)
->  	struct mtk_vcodec_dev *dev = ctx->dev;
->  	struct vdec_lat_buf *lat_buf;
->  
-> -	spin_lock(&ctx->dev->msg_queue_core_ctx.ready_lock);
-> +	spin_lock(&msg_queue->core_ctx.ready_lock);
->  	ctx->msg_queue.status &= ~CONTEXT_LIST_QUEUED;
-> -	spin_unlock(&ctx->dev->msg_queue_core_ctx.ready_lock);
-> +	spin_unlock(&msg_queue->core_ctx.ready_lock);
->  
-> -	lat_buf = vdec_msg_queue_dqbuf(&dev->msg_queue_core_ctx);
-> +	lat_buf = vdec_msg_queue_dqbuf(&msg_queue->core_ctx);
->  	if (!lat_buf)
->  		return;
->  
-> @@ -276,12 +260,11 @@ static void vdec_msg_queue_core_work(struct work_struct *work)
->  	mtk_vcodec_dec_disable_hardware(ctx, MTK_VDEC_CORE);
->  	vdec_msg_queue_qbuf(&ctx->msg_queue.lat_ctx, lat_buf);
->  
-> -	wake_up_all(&ctx->msg_queue.core_dec_done);
->  	if (!(ctx->msg_queue.status & CONTEXT_LIST_QUEUED) &&
->  	    atomic_read(&msg_queue->core_list_cnt)) {
-> -		spin_lock(&ctx->dev->msg_queue_core_ctx.ready_lock);
-> +		spin_lock(&msg_queue->core_ctx.ready_lock);
->  		ctx->msg_queue.status |= CONTEXT_LIST_QUEUED;
-> -		spin_unlock(&ctx->dev->msg_queue_core_ctx.ready_lock);
-> +		spin_unlock(&msg_queue->core_ctx.ready_lock);
->  		queue_work(ctx->dev->core_workqueue, &msg_queue->core_work);
->  	}
->  }
-> @@ -297,8 +280,8 @@ int vdec_msg_queue_init(struct vdec_msg_queue *msg_queue,
->  	if (msg_queue->wdma_addr.size)
->  		return 0;
->  
-> -	msg_queue->ctx = ctx;
->  	vdec_msg_queue_init_ctx(&msg_queue->lat_ctx, MTK_VDEC_LAT0);
-> +	vdec_msg_queue_init_ctx(&msg_queue->core_ctx, MTK_VDEC_CORE);
->  	INIT_WORK(&msg_queue->core_work, vdec_msg_queue_core_work);
->  
->  	atomic_set(&msg_queue->lat_list_cnt, 0);
-> diff --git a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.h b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.h
-> index 8f82d1484772..efc94165e016 100644
-> --- a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.h
-> +++ b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.h
-> @@ -84,7 +84,7 @@ struct vdec_lat_buf {
->   * @wdma_wptr_addr: ube write point
->   * @core_work: core hardware work
->   * @lat_ctx: used to store lat buffer list
-> - * @ctx: point to mtk_vcodec_ctx
-> + * @core_ctx: used to store core buffer list
->   *
->   * @lat_list_cnt: used to record each instance lat list count
->   * @core_list_cnt: used to record each instance core list count
-> @@ -100,7 +100,7 @@ struct vdec_msg_queue {
->  
->  	struct work_struct core_work;
->  	struct vdec_msg_queue_ctx lat_ctx;
-> -	struct mtk_vcodec_ctx *ctx;
-> +	struct vdec_msg_queue_ctx core_ctx;
->  
->  	atomic_t lat_list_cnt;
->  	atomic_t core_list_cnt;
+> [...]
+
+Applied to
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+
+Thanks!
+
+[1/1] spi: mt65xx: make sure operations completed before unloading
+      commit: 4be47a5d59cbc9396a6ffd327913eb4c8d67a32f
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
