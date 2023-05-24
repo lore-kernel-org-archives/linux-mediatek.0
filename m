@@ -4,80 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54F87C77B7C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 May 2023 08:28:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E63BC77B7A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 May 2023 08:33:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Bv6nOcmtrOP3vAtD6WhjV7wPXUYmC++OmTTD669OyTs=; b=K39IwtGORbExQ+64JQdj3bQLaT
-	FDX26Wc7s+zVyNODj6z6eXP3TnNt0bHY07M88RarY5S3C9t7VQo6LokPZy6q5/XRnbO5VnqJk6JaK
-	hwQV/1A4PEbCF2aH6XsO5A9wuSrvM8EsDH68scecC0TrsUPfCjUQy/NQ+3p5RpmzmxRiNeVDXVZBH
-	EtNspvwhRYiO3xQhYw2y3b9snMcVdktUkWfEu+a3rtfVS4gqCoFwaCdoZwecfbVU3y6qyhgND/f9D
-	xnqtP7wlpvE//Us/TjTaSL8s0ObMFhu5TzlXK1Jb+dhls6l4jePiWUn5wFsryhoRO2y1lz+rvqxs/
-	b8hclVMQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1bgK81zYJJlKzJwC/YpUVSKkmte5LSImvMG9blyHL8w=; b=CchekWC16wBhxJx4H4qRGvUync
+	9t1xBYcdzmHm0zgIX9DnKeEl0VrsJRfWrf1jAmMT6gGRzMXLBFGg528Q3JsH0f+peA/wRDCtEKQI6
+	gMin7XJJy01RzDvYjuCm6I1iHkVxC0Z2UP99KGSYp+TDHhC1r/u4U44vGvXMPXMMaihNqV4bvPj4H
+	Iio8Y5xKnYl1245+UhZ5ZPB5l2FUOZ9jc8pmo0YN3OkkjuvQB1nAF2BIn7cYvekUfWZFK2MFYKz/5
+	NHbjeE9CkNM/s2yG93lJg2WktHhZG12wM1y6gbKBir/QoRnYjWU5B2KjnUsOvuPzZVbQ+M4AClCXG
+	FLoZQmcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1jrB-00Cln7-2H;
-	Wed, 24 May 2023 08:28:29 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1q1jvf-00CnNM-1E;
+	Wed, 24 May 2023 08:33:07 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1jr9-00CllE-00;
-	Wed, 24 May 2023 08:28:28 +0000
-X-UUID: f09a6d48fa0c11ed912e1518a6540028-20230524
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Bv6nOcmtrOP3vAtD6WhjV7wPXUYmC++OmTTD669OyTs=;
-	b=XzYGzLeusU9Vzxa6vXCVKCOjKV6pSRMwhwhJd7rS+qrkletOv3kPJUURgC/qUBX4jlPUFACNRXis/wtbaRbTiwM0QWjsmt5Q3R0YSqcVV59N9ypM173cbTIOywTNNsPsQUbX+PGmR2nBUQI3AVLNEabjvm/uHxl2AMywaorYcL4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.25,REQID:2942b67e-918f-486e-913c-ad69d55bb135,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:d5b0ae3,CLOUDID:ea54333c-de1e-4348-bc35-c96f92f1dcbb,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-UUID: f09a6d48fa0c11ed912e1518a6540028-20230524
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1743114205; Wed, 24 May 2023 01:28:20 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 24 May 2023 16:07:42 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 24 May 2023 16:07:41 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Chen-Yu Tsai <wenst@chromium.org>, Nicolas Dufresne
-	<nicolas.dufresne@collabora.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	id 1q1jvd-00CnLO-0n
+	for linux-mediatek@bombadil.infradead.org;
+	Wed, 24 May 2023 08:33:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=1bgK81zYJJlKzJwC/YpUVSKkmte5LSImvMG9blyHL8w=; b=oLka9Q2uEVDYgTJNz+1IZ3xdxR
+	FaOXTm5dY8lO6hHM3+4zr8DcXdDKt/kzd++BpFbnbAey/iA2IyH8rs2z9XU8O60apVUvvR1VKNyLL
+	AmptQ95/Ozdn4sTUCBFdzNDB2T63VFEQpGI7AKB20gV9wqcHPFa0nfu+pp2MS+15VPCpQhgdWlyKI
+	BFLRsVdKUXSutfhRRdZHeP2E3z/sPugbSGDSZHwnl0cch5zIWis97YCmUGSnDKwIp996b5IwnYfrW
+	xk1XqMJICPV4A2TRooaGZQwTJiSjyMElapQqFlrTOdZYxA1fJhqfFUR5RtBLs/CnBXmWRrA2LREAm
+	D2ylBflQ==;
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1q1jtW-004wSu-2Y
+	for linux-mediatek@lists.infradead.org;
+	Wed, 24 May 2023 08:33:03 +0000
+Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-3078a3f3b5fso481836f8f.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 24 May 2023 01:30:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1684917051; x=1687509051;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=1bgK81zYJJlKzJwC/YpUVSKkmte5LSImvMG9blyHL8w=;
+        b=q3rlhiN1dqBA2GKz3Baz0KFqAEsTk9Qe+RSwPRNOe/jjZ3ukXTwBxzpVyKlxqS3oJk
+         BikGg2jYUATGzhaIdGoeT/DrFEkG8IDjhW5p65ywpyai0QXsEH/hv9LzF2PVM4/bcUpG
+         TTPCH9s57Yp/5jPz1TCf1SW3gnCEo7w06js9iutJCPnpdnSOnHnlFs+313+Apq9cJgtu
+         7x8RzeXcP/ArERx4Vg6UdoEjNUjJRmhy7qgCR6GzK4SfoMuE23SG8pbo594k6H1c6JXs
+         DCsfmjLYVxHZO73M52cFGNZJDtdjFM3Dh+RRbIpvlR4UfYU5xv0YmViBPjducNXwgp0U
+         j8oQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1684917051; x=1687509051;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=1bgK81zYJJlKzJwC/YpUVSKkmte5LSImvMG9blyHL8w=;
+        b=OH0J64SOkKg4aHseYy4DUXuLgRVreKeKIgz6SXbWPKqspZDcewjSM75l/7xEhDd/+5
+         JJWng9q6S6qt85p5dWMLm1ga0kKnSF/pmisPluA93HmLhjN2LMylt2Gw8bhU2AU0fgjl
+         r5sJ4OnmLn8wkDvRQGR4KZTIKtfjA5+J47CRnXCwcALnBJU7JWd3xglRrDlyZL3Yq+Fu
+         5afuVNmj1qCWTWL3Nivc/X/p/ZVgxgj3g2UtukF9R67cFJy0/bGAMUZxOfo7YdPOt6cC
+         EsP3B20c8Rvz8BdaurSM4diPiUGSy17UEyCKWO1c2pW5/JYS8U8eeQ/Pr8EMKsUdwGBF
+         K1qw==
+X-Gm-Message-State: AC+VfDxx7OUU1uj6AJRD/p9bsrOAf1jB6ttHmRtkzdpho7xdgY4Y9t1s
+	wiQLWxc+Xj0oI9q7oQD+DDTc2A==
+X-Google-Smtp-Source: ACHHUZ4rg9xDTlc33OxE5pi3GZwUh53PWH0eMhBen5R9zYe/bMYwZfbseDecOPk9Jj73PjeMwBppWg==
+X-Received: by 2002:adf:ef42:0:b0:301:8551:446a with SMTP id c2-20020adfef42000000b003018551446amr12446568wrp.2.1684917050983;
+        Wed, 24 May 2023 01:30:50 -0700 (PDT)
+Received: from localhost.localdomain ([2a01:e0a:55f:21e0:9e19:4376:dea6:dbfa])
+        by smtp.gmail.com with ESMTPSA id n11-20020a5d484b000000b00307c0afc030sm13871832wrs.4.2023.05.24.01.30.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 24 May 2023 01:30:50 -0700 (PDT)
+From: Julien Stephan <jstephan@baylibre.com>
+To: 
+Cc: mkorpershoek@baylibre.com,
+	khilman@baylibre.com,
+	Florian Sylvestre <fsylvestre@baylibre.com>,
+	Julien Stephan <jstephan@baylibre.com>,
+	Andy Hsieh <andy.hsieh@mediatek.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>, Nathan Hebert <nhebert@chromium.org>
-CC: Yunfei Dong <yunfei.dong@mediatek.com>, Hsin-Yi Wang
-	<hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter
-	<daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v7,1/2] media: uapi: HEVC: Add num_delta_pocs_of_ref_rps_idx field
-Date: Wed, 24 May 2023 16:07:38 +0800
-Message-ID: <20230524080739.17264-2-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230524080739.17264-1-yunfei.dong@mediatek.com>
-References: <20230524080739.17264-1-yunfei.dong@mediatek.com>
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-phy@lists.infradead.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Rob Herring <robh+dt@kernel.org>,
+	Vinod Koul <vkoul@kernel.org>
+Subject: [PATCH v3 2/3] dt-bindings: phy: add mediatek MIPI CD-PHY module v0.5
+Date: Wed, 24 May 2023 10:30:31 +0200
+Message-Id: <20230524083033.486490-3-jstephan@baylibre.com>
+X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20230524083033.486490-1-jstephan@baylibre.com>
+References: <20230524083033.486490-1-jstephan@baylibre.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230524_012827_044779_E97B32E3 
-X-CRM114-Status: GOOD (  14.51  )
+X-CRM114-CacheID: sfid-20230524_093256_456708_6A152628 
+X-CRM114-Status: GOOD (  16.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,67 +125,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+From: Florian Sylvestre <fsylvestre@baylibre.com>
 
-Some drivers firmwares parse by themselves slice header and need
-num_delta_pocs_of_ref_rps_idx value to parse slice header
-short_term_ref_pic_set().
-Use one of the 4 reserved bytes to store this value without
-changing the v4l2_ctrl_hevc_decode_params structure size and padding.
+This adds the bindings, for the MIPI CD-PHY module v0.5 embedded in
+some Mediatek soc, such as the mt8365
 
-This value also exist in DXVA API.
-
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Signed-off-by: Florian Sylvestre <fsylvestre@baylibre.com>
+Signed-off-by: Julien Stephan <jstephan@baylibre.com>
 ---
- .../userspace-api/media/v4l/ext-ctrls-codec-stateless.rst  | 7 +++++++
- include/uapi/linux/v4l2-controls.h                         | 6 +++++-
- 2 files changed, 12 insertions(+), 1 deletion(-)
+ .../bindings/phy/mediatek,mt8365-csi-rx.yaml  | 67 +++++++++++++++++++
+ MAINTAINERS                                   |  6 ++
+ 2 files changed, 73 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/mediatek,mt8365-csi-rx.yaml
 
-diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst
-index 3d8411acd5b8..92ce3e126929 100644
---- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst
-+++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst
-@@ -2923,6 +2923,13 @@ This structure contains all loop filter related parameters. See sections
-       - ``poc_lt_curr[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
-       - PocLtCurr as described in section 8.3.2 "Decoding process for reference
-         picture set": provides the index of the long term references in DPB array.
-+    * - __u8
-+      - ``num_delta_pocs_of_ref_rps_idx``
-+      - When the short_term_ref_pic_set_sps_flag in the slice header is equal to 0,
-+        it is the same than derived value NumDeltaPocs[RefRpsIdx]. It can be used to parse
-+        the RPS data in slice headers instead of skipping it with @short_term_ref_pic_set_size.
-+        When the value of short_term_ref_pic_set_sps_flag in the slice header is
-+        equal to 1, num_delta_pocs_of_ref_rps_idx shall be set to 0.
-     * - struct :c:type:`v4l2_hevc_dpb_entry`
-       - ``dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
-       - The decoded picture buffer, for meta-data about reference frames.
-diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
-index 5e80daa4ffe0..7bf59a87a1bf 100644
---- a/include/uapi/linux/v4l2-controls.h
-+++ b/include/uapi/linux/v4l2-controls.h
-@@ -2385,6 +2385,9 @@ struct v4l2_ctrl_hevc_slice_params {
-  * @poc_st_curr_after: provides the index of the short term after references
-  *		       in DPB array
-  * @poc_lt_curr: provides the index of the long term references in DPB array
-+ * @num_delta_pocs_of_ref_rps_idx: same as the derived value NumDeltaPocs[RefRpsIdx],
-+ *				   can be used to parse the RPS data in slice headers
-+ *				   instead of skipping it with @short_term_ref_pic_set_size.
-  * @reserved: padding field. Should be zeroed by applications.
-  * @dpb: the decoded picture buffer, for meta-data about reference frames
-  * @flags: see V4L2_HEVC_DECODE_PARAM_FLAG_{}
-@@ -2400,7 +2403,8 @@ struct v4l2_ctrl_hevc_decode_params {
- 	__u8	poc_st_curr_before[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
- 	__u8	poc_st_curr_after[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
- 	__u8	poc_lt_curr[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
--	__u8	reserved[4];
-+	__u8	num_delta_pocs_of_ref_rps_idx;
-+	__u8	reserved[3];
- 	struct	v4l2_hevc_dpb_entry dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
- 	__u64	flags;
- };
+diff --git a/Documentation/devicetree/bindings/phy/mediatek,mt8365-csi-rx.yaml b/Documentation/devicetree/bindings/phy/mediatek,mt8365-csi-rx.yaml
+new file mode 100644
+index 000000000000..a1bd96a98051
+--- /dev/null
++++ b/Documentation/devicetree/bindings/phy/mediatek,mt8365-csi-rx.yaml
+@@ -0,0 +1,67 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++# Copyright (c) 2023 MediaTek, BayLibre
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/phy/mediatek,mt8365-csi-rx.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek Sensor Interface MIPI CSI CD-PHY
++
++maintainers:
++  - Julien Stephan <jstephan@baylibre.com>
++  - Andy Hsieh <andy.hsieh@mediatek.com>
++
++description:
++  The SENINF CD-PHY is a set of CD-PHY connected to the SENINF CSI-2
++  receivers. The number of PHYs depends on the SoC model.
++  Depending on the SoC model, each PHYs can be either CD-PHY or D-PHY only
++  capable.
++
++properties:
++  compatible:
++    enum:
++      - mediatek,mt8365-csi-rx
++
++  reg:
++    maxItems: 1
++
++  '#phy-cells':
++    const: 0
++
++  mediatek,phy-type:
++    description:
++      Specify the phy type. Supported phy are D-PHY only or CD-PHY capable phys.
++      See include/dt-bindings/phy/phy.h for constants.
++    enum: [10, 13]
++    $ref: /schemas/types.yaml#/definitions/uint32
++
++required:
++  - compatible
++  - reg
++  - mediatek,phy-type
++  - '#phy-cells'
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/phy/phy.h>
++    soc {
++      #address-cells = <2>;
++      #size-cells = <2>;
++
++      csi0_rx: phy@11c10000 {
++        compatible = "mediatek,mt8365-csi-rx";
++        reg = <0 0x11c10000 0 0x2000>;
++        mediatek,phy-type = <PHY_TYPE_CDPHY>;
++        #phy-cells = <0>;
++      };
++
++      csi1_rx: phy@11c12000 {
++        compatible = "mediatek,mt8365-csi-rx";
++        reg = <0 0x11c12000 0 0x2000>;
++        mediatek,phy-type = <PHY_TYPE_DPHY>;
++        #phy-cells = <0>;
++      };
++    };
++...
+diff --git a/MAINTAINERS b/MAINTAINERS
+index b81e9fcc66cb..5da594fbb761 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -13184,6 +13184,12 @@ F:	Documentation/devicetree/bindings/media/mediatek-vpu.txt
+ F:	drivers/media/platform/mediatek/vcodec/
+ F:	drivers/media/platform/mediatek/vpu/
+ 
++MEDIATEK MIPI-CSI CDPHY DRIVER
++M:	Julien Stephan <jstephan@baylibre.com>
++M:	Andy Hsieh <andy.hsieh@mediatek.com>
++S:	Supported
++F:	Documentation/devicetree/bindings/phy/mediatek,mt8365-csi-rx.yaml
++
+ MEDIATEK MMC/SD/SDIO DRIVER
+ M:	Chaotian Jing <chaotian.jing@mediatek.com>
+ S:	Maintained
 -- 
-2.25.1
+2.40.1
 
 
