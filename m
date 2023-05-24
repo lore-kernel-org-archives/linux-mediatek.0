@@ -4,62 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CC11C7EE23
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 May 2023 07:10:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 942FAC77B7A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 May 2023 07:28:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:
-	References:Date:Message-Id:From:Subject:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=emx/RJjaR1hs1UYy32zmxSP+ECdHy0/KF1r71g8WDsM=; b=rk/6LFAoE3Oo5KF5ss/IDyFjQ1
-	WOCtNCkEpiIRammuNS5MIFU2iDa6Gd5clmH6NX33xi/d461miFNsotY/o4b+KYuVARfXQquUAMMn5
-	78k10EwbedqT1jZCvaxur+7WXFg0jOcWwiCxe5TK6XD5X3rcB7yANpqQVWhetClVhrRa+QiGtfPuJ
-	71tw3YfT+14e/wzRZFUDt1NJpC4ZEFsgnqnTkmCKXMTaTagpAHWd9Skaf7zVj0mtIR1Ck+cSG5t5X
-	M/v/jEyxR+Jz6BQTtSFWI6tSa85WQvegQBty+Py9UmNhWGSHGhx6Dx5qtUJna7BjQx0oLjTZL2RHc
-	Xi0knmVg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Y37nC7nqk3XUs+AxxBITEIyH4D42fjcbipHjL9yZVAg=; b=4K/yMqo/zC4Y3LtGR//KsMT/2e
+	t56BVk7tRohu7hO37CrL/HU2D+peGs277EfSoKM8CHGcTZ76dhjfyzMzfyrhw57nmHFFvCoaHpxhf
+	hFiP2hGlKfLPr1rkZUbKkrIjscdwgy++maUdODZfbnFQX/cts1adaPKGOgIN9YD0cxMuLsWk9g5Cw
+	0hRs4P53R8kBDJLhg1DMSiYFzhYlHATCvUIXOhhP+wx4MlQ+jRtwWHpHucFk0UdsQ3TfwtkcRwrfT
+	34a/j6FXU8s7A2T1hjzYuT/E/FMAGLY+3l9RsM9Uq4T9EgaK+4LmIXDCreNpa12/S1eYl3G9t0S3/
+	uw4a7g8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1idd-00CZVY-1w;
-	Wed, 24 May 2023 07:10:25 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1q1ivQ-00Cbjf-0s;
+	Wed, 24 May 2023 07:28:48 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1ida-00CZUb-0S;
-	Wed, 24 May 2023 07:10:23 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1q1ivN-00CbiK-0C;
+	Wed, 24 May 2023 07:28:46 +0000
+Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 4249463972;
-	Wed, 24 May 2023 07:10:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id A4EB8C4339B;
-	Wed, 24 May 2023 07:10:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1684912220;
-	bh=5Edlffa6wzk6Sb6/TX+84tNyag5aI6qgOyHYRihIjTg=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=LOd3xsjDHca39yjO67fAnLUs6lBSMz3Nc/tEtRv1nNonCS5gRg+zwcnx2La/qoNHN
-	 xe32v+vhrbt+pCWZsfC8tl7zOfZ49zL4SuONWWzQr/b/M/OOgZKXQUlpSwJbTLCTvW
-	 6HZmFSpdWho40KZs99wgkyw+I8brQMprT95WFsdMF6Jpnb097EA3h0L3juwMLkkBqw
-	 bJWJi4mhj/enWt3qGX03yosqMNa7k/dplBdlW8aKytqySMkZEjjbmmCbVzAin5XhAQ
-	 fegmZLYJVvrLmhDFl7G7rHkiHm/DBeKrdblTK0tyOdsDXZbOGbUZUA3pUfpHs5yqIH
-	 0nARRU7qrozsg==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 887A2E21ECD;
-	Wed, 24 May 2023 07:10:20 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 143BF66059A4;
+	Wed, 24 May 2023 08:28:42 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1684913322;
+	bh=9BT+2ox8lyE+3eygrVV6BCvvfNRvu0iFi7N6O1s0dl0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=bkoOHWIJynic78V17OZNRO2VtC+dhpA6uoEKMuZEZDjIReLieTk3zNI50eOpHcEfq
+	 XbaDZdolTIOoQiq/toSyRtbmVa0sRFKkWlWHjxNQ4SM4YmwMps1uYhNCopq1aGPoRs
+	 0Tp1CFasSnOwH26sl849/IiH95+qIZxj7LXZRR4JJB6NRCcSP+78HKuVAvKWo/Oo32
+	 M2RFhP5Z6yU4V5YpOSLuoSU6qqg0tvtg+TubxLeP4qLrtaMP2E0eC2huQx6O4xdA3x
+	 Jou9rzVNIxqJ3YHk0WuQ/8nnF0zE+s9/D7UReKMiw8dk1nbmkLbu6gZaNwev/SePac
+	 kG2YKMxnXRC0A==
+Message-ID: <3054e2d9-7f77-a22a-293d-382f19494079@collabora.com>
+Date: Wed, 24 May 2023 09:28:39 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net] net: ethernet: mtk_eth_soc: fix QoS on DSA MAC on non
- MTK_NETSYS_V2 SoCs
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <168491222055.16342.9541453168146805082.git-patchwork-notify@kernel.org>
-Date: Wed, 24 May 2023 07:10:20 +0000
-References: <20230522105744.37227-1-arinc.unal@arinc9.com>
-In-Reply-To: <20230522105744.37227-1-arinc.unal@arinc9.com>
-To: =?utf-8?b?QXLEsW7DpyDDnE5BTCA8YXJpbmM5LnVuYWxAZ21haWwuY29tPg==?=@ci.codeaurora.org
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.1
+Subject: Re: [PATCH v2 4/4] cpufreq: mediatek: Raise proc and sram max voltage
+ for MT7622/7623
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: "jia-wei.chang" <jia-wei.chang@mediatek.com>,
+ "Rafael J . Wysocki" <rafael@kernel.org>,
+ Viresh Kumar <viresh.kumar@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Kevin Hilman <khilman@baylibre.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, hsinyi@google.com,
+ Nick Hainke <vincent@systemli.org>, Dan Carpenter <error27@gmail.com>
+References: <20230324101130.14053-1-jia-wei.chang@mediatek.com>
+ <20230324101130.14053-5-jia-wei.chang@mediatek.com>
+ <ZGuuVPCqgpUO6p0Q@makrotopia.org>
+ <a1793745-eae3-cae5-49fc-2e75fe0847f0@collabora.com>
+ <ZGz55oEEAhlWZajK@makrotopia.org>
+Content-Language: en-US
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <ZGz55oEEAhlWZajK@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230524_001022_220482_F7E0DBD7 
-X-CRM114-Status: GOOD (  12.44  )
+X-CRM114-CacheID: sfid-20230524_002845_423446_392EE97B 
+X-CRM114-Status: GOOD (  26.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,39 +84,125 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: erkin.bozoglu@xeront.com, angelogioacchino.delregno@collabora.com, arinc.unal@arinc9.com, mithat.guner@xeront.com, sean.wang@mediatek.com, linux-kernel@vger.kernel.org, Mark-MC.Lee@mediatek.com, edumazet@google.com, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, bartel.eerdekens@constell8.be, john@phrozen.org, matthias.bgg@gmail.com, kuba@kernel.org, pabeni@redhat.com, lorenzo@kernel.org, davem@davemloft.net, linux-arm-kernel@lists.infradead.org, nbd@nbd.name
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This patch was applied to netdev/net.git (main)
-by David S. Miller <davem@davemloft.net>:
-
-On Mon, 22 May 2023 13:57:43 +0300 you wrote:
-> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+Il 23/05/23 19:37, Daniel Golle ha scritto:
+> On Tue, May 23, 2023 at 04:56:47PM +0200, AngeloGioacchino Del Regno wrote:
+>> Il 22/05/23 20:03, Daniel Golle ha scritto:
+>>> Hi Jia-Wei,
+>>> Hi AngeloGioacchino,
+>>>
+>>> On Fri, Mar 24, 2023 at 06:11:30PM +0800, jia-wei.chang wrote:
+>>>> From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>>>
+>>>> During the addition of SRAM voltage tracking for CCI scaling, this
+>>>> driver got some voltage limits set for the vtrack algorithm: these
+>>>> were moved to platform data first, then enforced in a later commit
+>>>> 6a17b3876bc8 ("cpufreq: mediatek: Refine mtk_cpufreq_voltage_tracking()")
+>>>> using these as max values for the regulator_set_voltage() calls.
+>>>>
+>>>> In this case, the vsram/vproc constraints for MT7622 and MT7623
+>>>> were supposed to be the same as MT2701 (and a number of other SoCs),
+>>>> but that turned out to be a mistake because the aforementioned two
+>>>> SoCs' maximum voltage for both VPROC and VPROC_SRAM is 1.36V.
+>>>>
+>>>> Fix that by adding new platform data for MT7622/7623 declaring the
+>>>> right {proc,sram}_max_volt parameter.
+>>>>
+>>>> Fixes: ead858bd128d ("cpufreq: mediatek: Move voltage limits to platform data")
+>>>> Fixes: 6a17b3876bc8 ("cpufreq: mediatek: Refine mtk_cpufreq_voltage_tracking()")
+>>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>>> Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+>>>> ---
+>>>>    drivers/cpufreq/mediatek-cpufreq.c | 13 +++++++++++--
+>>>>    1 file changed, 11 insertions(+), 2 deletions(-)
+>>>>
+>>>> diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
+>>>> index 764e4fbdd536..9a39a7ccfae9 100644
+>>>> --- a/drivers/cpufreq/mediatek-cpufreq.c
+>>>> +++ b/drivers/cpufreq/mediatek-cpufreq.c
+>>>> @@ -693,6 +693,15 @@ static const struct mtk_cpufreq_platform_data mt2701_platform_data = {
+>>>>    	.ccifreq_supported = false,
+>>>>    };
+>>>> +static const struct mtk_cpufreq_platform_data mt7622_platform_data = {
+>>>> +	.min_volt_shift = 100000,
+>>>> +	.max_volt_shift = 200000,
+>>>> +	.proc_max_volt = 1360000,
+>>>> +	.sram_min_volt = 0,
+>>>> +	.sram_max_volt = 1360000,
+>>>
+>>> This change breaks cpufreq (with ondemand scheduler) on my BPi R64
+>>> board (having MT7622AV SoC with MT6380N PMIC).
+>>> ...
+>>> [    2.540091] cpufreq: __target_index: Failed to change cpu frequency: -22
+>>> [    2.556985] cpu cpu0: cpu0: failed to scale up voltage!
+>>> ...
+>>> (repeating a lot, every time the highest operating point is selected
+>>> by the cpufreq governor)
+>>>
+>>> The reason is that the MT6380N doesn't support 1360000uV on the supply
+>>> outputs used for SRAM and processor.
+>>>
+>>> As for some reason cpufreq-mediatek tries to rise the SRAM supply
+>>> voltage to the maximum for a short moment (probably a side-effect of
+>>> the voltage tracking algorithm), this fails because the PMIC only
+>>> supports up to 1350000uV. As the highest operating point is anyway
+>>> using only 1310000uV the simple fix is setting 1350000uV as the maximum
+>>> instead for both proc_max_volt and sram_max_volt.
+>>>
+>>> A similar situation applies also for BPi R2 (MT7623NI with MT6323L
+>>> PMIC), here the maximum supported voltage of the PMIC which also only
+>>> supports up to 1350000uV, and the SoC having its highest operating
+>>> voltage defined at 1300000uV.
+>>>
+>>> If all agree with the simple fix I will post a patch for that.
+>>>
+>>> However, to me it feels fishy to begin with that the tracking algorithm
+>>> tries to rise the voltage above the highest operating point defined in
+>>> device tree, see here:
+>>>
+>>> 6a17b3876bc830 drivers/cpufreq/mediatek-cpufreq.c (Jia-Wei Chang              2022-05-05 19:52:20 +0800 100)    new_vsram = clamp(new_vproc + soc_data->min_volt_shift,
+>>> 6a17b3876bc830 drivers/cpufreq/mediatek-cpufreq.c (Jia-Wei Chang              2022-05-05 19:52:20 +0800 101)                      soc_data->sram_min_volt, soc_data->sram_max_volt);
+>>>
+>>> However, I did not investigate in depth the purpose of this
+>>> initial rise and can impossibly test my modifications to the
+>>> tracking algorithm on all supported SoCs.
+>>>
+>>
+>> Thanks for actually reporting that, I don't think that there's any
+>> valid reason why the algorithm should set a voltage higher than the
+>> maximum votage specified in the fastest OPP.
+>>
+>> Anyway - the logic for the platform data of this driver is to declare
+>> the maximum voltage that SoC model X supports, regardless of the actual
+>> board-specific OPPs, so that part is right; to solve this issue, I guess
+>> that the only way is for this driver to parse the OPPs during .probe()
+>> and then always use in the algorithm
+>>
+>> 	vproc_max = max(proc_max_volt, opp_vproc_max);
+>> 	vsram_max = max(sram_max_volt, vsram_vreg_max);
 > 
-> The commit c6d96df9fa2c ("net: ethernet: mtk_eth_soc: drop generic vlan rx
-> offload, only use DSA untagging") makes VLAN RX offloading to be only used
-> on the SoCs without the MTK_NETSYS_V2 ability (which are not just MT7621
-> and MT7622). The commit disables the proper handling of special tagged
-> (DSA) frames, added with commit 87e3df4961f4 ("net-next: ethernet:
-> mediatek: add CDM able to recognize the tag for DSA"), for non
-> MTK_NETSYS_V2 SoCs when it finds a MAC that does not use DSA. So if the
-> other MAC uses DSA, the CDMQ component transmits DSA tagged frames to the
-> CPU improperly. This issue can be observed on frames with TCP, for example,
-> a TCP speed test using iperf3 won't work.
+> You probably meant to write
+> vproc_max = min(proc_max_volt, opp_vproc_max);
+> vsram_max = min(sram_max_volt, vsram_vreg_max);
 > 
-> [...]
+> right?
+> 
 
-Here is the summary with links:
-  - [net] net: ethernet: mtk_eth_soc: fix QoS on DSA MAC on non MTK_NETSYS_V2 SoCs
-    https://git.kernel.org/netdev/net/c/04910d8cbfed
+Apparently, some of my braincells was apparently taking a break. :-)
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+Yes, I was meaning min(), not max() :-)
+
+Cheers!
+
+>>
+>> Jia-Wei, can you please handle this?
+>>
+>> Thanks,
+>> Angelo
+>>
+
 
 
 
