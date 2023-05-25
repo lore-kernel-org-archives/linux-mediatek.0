@@ -4,124 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61857C77B7E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 May 2023 08:12:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6556DC7EE2E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 May 2023 08:12:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=C0fAlMIZAxgukyNINM+zUAWlgyHggETYvrKLHpoDlig=; b=NYpdk0cRInSUxk
-	xiNaBE0JvHGSaz9eoF6USHbDNINr9NIsI3QBGJbzv6Myf4HTMG+cqaVEXGL44RQvUCxKLx0gR/EaZ
-	hRk/CdrWYFDHiMsuPEau38emrZ+7P5EZas+f8If64D1JMeuxnzH9ivWZLA9YQs82jkmcleLLfVE9s
-	SCpC8QWLvaewY0KrU2OAzn9+OXqcTG2A8dB+BDN3CoyQjBjdW3yD0AM7kr/rGNOBQWfo9JRVqk3Oh
-	lzl2rXlvV3NL5j/kWsroYeLkSTcbW2W+b8NOkbVwwfiyPoZDrswx8Uo08dw7+abQNn1wL4dYsBTA+
-	+E1FnjBGktUgPyR6hacA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=N/ifTiJpCJUUIHeZ0UgMO46fNp22gqLE0Eoes8csjpw=; b=rZL22Ll+sCfnSlSnhZS7VB0QRv
+	qbQoszMiaurxLnyySgVMMv6QajNU59/DjBLRnyqmDmT8qHJvUD/zsuXzN0EL6s6Fzx+WZYFSncOFR
+	NEYKPtvUsPIpI6pidYpOEDoPlL3LOFvCONa/45xLB+2tOauOC+fbYjdNyUCBmH0DAPm4hX5LyngB0
+	CY5Y3WF2mWRtykrH7eNbD6gnmXtcBPSSB1IZj7sS+V9pbSlogacOUPgS1zLLhH98UqF8UdSvmHQrG
+	bJwwy66or+jlSjqOKsIVz3g0FBkwub4LWmn19y+4kU1WU6ZpOtzUSjCBH+5dnYrT8Yp0UF0PxMOE0
+	R2fKxXJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q265N-00FvxB-2D;
-	Thu, 25 May 2023 08:12:37 +0000
-Received: from mail-dm6nam12on20704.outbound.protection.outlook.com ([2a01:111:f400:fe59::704] helo=NAM12-DM6-obe.outbound.protection.outlook.com)
+	id 1q265a-00Fw2x-2r;
+	Thu, 25 May 2023 08:12:50 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q265L-00Fvv6-0e
-	for linux-mediatek@lists.infradead.org;
-	Thu, 25 May 2023 08:12:36 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=CwLRWsUU4VhIfZj8dexxfw++QAJa3b+C9vYRp9RdQEVVXFijYcsOpneEz36i2diCJbjeOu3n4A7tYNtvZo2J6h+W1Eqn45zItF2uhFoukvjSeaauynV1A68H4ZTPCFIFXuSRIxYGu1rI3s+KMWPmmQ+p/pIbJUwbrvr/Kn2E08QlDQMT8csiRwTY46f21IQBlHAIIKFVKmOS2R2bagLdUPJNilztlFrJw529VHSUkVfdahLNPon73Il5z9f4+Rox+Y6xj7E4c1pKZMONtxdoQj62p3P0CJDJxXtqjL84qcDk2E7fSp1ATQO5GFXuMjx7GNshHr4vKPsdAbwo3R5Qqg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=C0fAlMIZAxgukyNINM+zUAWlgyHggETYvrKLHpoDlig=;
- b=S0nna07uNQtVVkF/scqFEsbTuYP3CYyvkN9E4QtC51uCX/S9d6Oi1Toxx3iiDGbnSoYOg+oJrNySE95/ZzzIZO83BgfTV9A3/jSjdDDGsGcFFW5UyCpECUoCmmUQMWycBzdh+dvmyXvxVpupX3P9pzIwF6+YX//n0LKsU7JDUn01tROnz9br0wdGPf5FWIzcLoNH1OsLulsc/rjbZyGB1Ta8hjmTRTt6ssc3AbSsDa6N+K9dWNLkh2B4Mjk8KNdWsGid80YZiU7p7cwes7Z3nlmC1wUviIaubJxXFClrPitmMHIUXzxwhnx+gliXMmMSgzAZGjNmZr77o9aqfVwrlg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=corigine.com; dmarc=pass action=none header.from=corigine.com;
- dkim=pass header.d=corigine.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=corigine.onmicrosoft.com; s=selector2-corigine-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=C0fAlMIZAxgukyNINM+zUAWlgyHggETYvrKLHpoDlig=;
- b=gu/1LVjJB4AS8JvhNvO2ad70nUQ2n5N575+jb9TQe1UA41FlXhx5TxthoU1Okx8pXBrPN3Oo8swigthKMkXivkAqYeBd/k16Xno/Y7Y0bKhdgVELO2WJXZoNHAUpt7y7kkwW2ssSNsz0uTYLs7ISgy/f5+cxqOl7ysO0ce3sg4A=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=corigine.com;
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com (2603:10b6:510:78::6)
- by LV3PR13MB6528.namprd13.prod.outlook.com (2603:10b6:408:1a5::21) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6433.15; Thu, 25 May
- 2023 08:12:27 +0000
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::f416:544d:18b7:bb34]) by PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::f416:544d:18b7:bb34%5]) with mapi id 15.20.6411.029; Thu, 25 May 2023
- 08:12:26 +0000
-Date: Thu, 25 May 2023 10:12:19 +0200
-From: Simon Horman <simon.horman@corigine.com>
-To: Osama Muhammad <osmtendev@gmail.com>
-Cc: krzysztof.kozlowski@linaro.org, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, nbd@nbd.name, ryder.lee@mediatek.com,
-	lorenzo@kernel.org, shayne.chen@mediatek.com, davem@davemloft.net,
-	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] nfcsim.c: Fix error checking for debugfs_create_dir
-Message-ID: <ZG8YY/r8BLCzw93q@corigine.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230524160352.19704-1-osmtendev@gmail.com>
- <20230524155506.19353-1-osmtendev@gmail.com>
-X-ClientProxiedBy: AS4P191CA0043.EURP191.PROD.OUTLOOK.COM
- (2603:10a6:20b:657::10) To PH0PR13MB4842.namprd13.prod.outlook.com
- (2603:10b6:510:78::6)
+	id 1q265X-00Fw0o-0H;
+	Thu, 25 May 2023 08:12:48 +0000
+Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 067D76605835;
+	Thu, 25 May 2023 09:12:44 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1685002365;
+	bh=TcK2/fChHQbciGa6WppN3XkreiKbw8YDT890PFyTALo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=JuHzM1OYaoL5FfWPmjozV9vKwhGTr28mcWL1gkElk87Lylsc453P261U7dxp8tLlI
+	 xLw3kNh2XUi6TyCRUEpHsehymwuDvRqls2vlwori0e/rjQqAH0PwNEatdjH6NGn+PA
+	 6v2Q3zgs09y+UyYz6r5UPc3sp3ZPFaZHLPi6yTgZA6l9NXK2PP1o83fIz5q2R7sF+U
+	 e35mHYNYhU7nyQ7jFxido5NNacLqOUr18QJt+gpS0sJwQ85WtWdDTlghCzguxxtCeP
+	 O8eogRNJNNefde99VSKnaYpo9FDgKdTDLoLBv8Cvo7GDGWYwK48abo549b1GC09Vb2
+	 jjopLKEHD0XMg==
+Message-ID: <d370cc1a-9593-bf27-bafb-4deb8a91d308@collabora.com>
+Date: Thu, 25 May 2023 10:12:42 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR13MB4842:EE_|LV3PR13MB6528:EE_
-X-MS-Office365-Filtering-Correlation-Id: 93edf731-1e9f-4ef3-9db4-08db5cf7c699
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: Cr9ILz4Km0JXZJ4dvWwvRAPKRHhIyj+GHaYeiyEri1i7+/l37ZVTcoSjKKz2CibKcgLV1GWMRtmo5OjKR3oNhUoPXfxbMsUS5YiGo6Xdq/S0OtjVO7X9lkUkUZE4REMut83PO+Hxr1LBwekBBroByPrUCJId5s072nPL5UFWvkNQZL2f5mh2OP85BAXXUpL8XjigVC5m5XSlHrd0BjJnY4eZGhf0P6wciCSJ96KV6iVlRuRpnSSp6sJJPOuA5bXXn8Q/VEc1zu45ozL7EVK0lsYDS4LhIzeksXKLqYaDG7Q9pFb60QzbzuSK5HlsrRfQIQqRxsjB3gob7YAyTEoY7T1wV57iLzIBt211ra0zGzqlF0+dqNNKgGxdSi0qg/InDpFwaigZPVye8uq954UVC/jJs7eYwzSVqil6LRaLwG9j+84HsM8mlxOrOdxkzVgU85W82gm8k5u+O5pX7w0/LAQHFDLq02reI/IuqVYCEGCv++K34llMvp6G7PgbgxE+gnCnFJB2/LXE3bz3EuDN76NNufERlIymsWOUK7C0TNI1kZaSLuynjqPTIROBqGBu6kXqhWntjpACW4tyHTDgSFrc8qUX2ofqMkHjsMH/IIs=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR13MB4842.namprd13.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(346002)(39840400004)(366004)(136003)(376002)(396003)(451199021)(66946007)(66556008)(66476007)(36756003)(83380400001)(2906002)(8936002)(8676002)(7416002)(6666004)(6486002)(41300700001)(4326008)(316002)(6916009)(2616005)(44832011)(5660300002)(478600001)(6506007)(6512007)(186003)(38100700002)(86362001);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?mwXNdBD5HPS2eCdpuNJ6KcmRoXNHNqTihZzaTfH72R/pCNbOuJ/efnhENG9G?=
- =?us-ascii?Q?vZk3NiWw+htk38vELLXHwFfwz3KyB167svr+vLfb2nHNpKHfnhPpJm0zL+a9?=
- =?us-ascii?Q?YjPlQp9kmK0jf+IzjcFo2qxLXP/9AWBHMzIR0UPlGfhCRfDNWnvkPstphZ/2?=
- =?us-ascii?Q?WzKLWJedfLWxuzwN4yUayRCSR29QkDWmeqctMTru92fhL0IiTfZZH5xJvOFa?=
- =?us-ascii?Q?T3zxf1wksfaQLNSuFnZhFGIKJ/ab8swM7buU0rqRCVBh8Wc2CEuNODsLTXyH?=
- =?us-ascii?Q?vL3g1X8DljNxiOZ9uIpqs2gCTnbvfnKJaKT/qjLdLiH+7Tc1dlYvoaBUr610?=
- =?us-ascii?Q?Yp5/7SmWufVe8ZQLSKt7x4qVOjLgFj8h9ZpUYysuWCoIm5+duaH7EB9eWqZ8?=
- =?us-ascii?Q?J9Wbj6z2OfmSUN++EbGPf7yK1PX0KaoPQ4sIrPfFQDneFtaB8x5oYIHaF5kq?=
- =?us-ascii?Q?sXwQi9tFMf0YTS5ALoRH6sU4TT1x9SEM+Zv3ZBxczNVjr3WWmC31jKe+c+LI?=
- =?us-ascii?Q?MXVCkzKC1KRS4aUvORhnbA3SOyLzaqxI0ZAUFMecVX+uCg4eNfXCPaQfSODV?=
- =?us-ascii?Q?W/tgQFLYbpBhU6XRqJeION+CsM8slq2k8BAs/KkddFJmCAJi82xMUJGpyNQh?=
- =?us-ascii?Q?uwaZB/YWytDjsVORalbG1Q3SjjkcFoEzBQzcDTlD4aru10f7HiXBSOi23HD0?=
- =?us-ascii?Q?vkQ8rGwfVOyQxk4/CsLwnTf4pBVkNZXTxxqndkuFqts+7Xu7MQjjEbMguvO9?=
- =?us-ascii?Q?35DFPGRxbFi5QIGvQHCI0mq5SXGkSFlSItUNYKiI/UWnIC9fFOYoHnZ1z2aM?=
- =?us-ascii?Q?RLDPzW3fb0sgqNnHHbgK0vpbn/MdkS7UD1OFR4+Y0G25SXpXilscL/XMwc60?=
- =?us-ascii?Q?M1K+alljQoj3sC1NhJRRCkaOxINqraeR/Wz1L13HZ3wTtY4So5Ceri75I35C?=
- =?us-ascii?Q?0kV4t23Ua/uC0Ei2xyPCZhvKyn+Ia9ZDpz13yCmOq4pL1z9Ngz5QTQLiiE3L?=
- =?us-ascii?Q?IdAN2Lw9WBGf5XoTEjcLAnt4DfxECScGbc8Hppa7DRnww8PdYWg3BhxFj4x6?=
- =?us-ascii?Q?il7KQdOTFCqnXchf0P0aNp1DlO25tivbfhsy16U86RBJMAlQXpPTR5CZLQtx?=
- =?us-ascii?Q?LYvtQd0jiPu8/bJpuid9mftV4gQwGAytEel7DDnhjaWIn5Yx4uQHZNs41yh2?=
- =?us-ascii?Q?wyjtpING1k6oG2hzVy8cFqDX/AFhwprD0Fbsi1elW9iUnShzAxyjaP/eWTli?=
- =?us-ascii?Q?t6V99/Ktodjnw8Lb8sjXfPF7DwjCSRBgiX+6GA7gwZcH2oMiL0xsS1K0uSYP?=
- =?us-ascii?Q?JXS+xWxPy3ojV2DJXgAJC1tDWvlXPeCkz9z+gZ4CiumM0WO7my90JB5LeLDt?=
- =?us-ascii?Q?KqGW4qbgXHW0ykgME9bBbOONw395wRFL7xeEF5D4LstGPILR0yFVDD8dmLsY?=
- =?us-ascii?Q?srZ3YvhOGHmVU+krVP3r4Y6/Zl4nGPMnCqqzhJgHetE3aKrYKJHhTSfGH0Qd?=
- =?us-ascii?Q?WZy/s2dvTvF7HW9QHULEuEOTKSZ//fSPSw50LNkn5CDEUPbCUNDPwQJ5RRN2?=
- =?us-ascii?Q?up9qgNHHcq+agEJRUPL5TvntImuIbUk8P+C4iMuj8BSIzu3AqlxdlmLW+f2q?=
- =?us-ascii?Q?FSYqozWq564Wy85EHlMzheZVEnLIHke08Zbn4yX3c5bi8PpLqJlNFn6PBm2R?=
- =?us-ascii?Q?Sdu5Xg=3D=3D?=
-X-OriginatorOrg: corigine.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 93edf731-1e9f-4ef3-9db4-08db5cf7c699
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR13MB4842.namprd13.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 May 2023 08:12:26.4396
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: fe128f2c-073b-4c20-818e-7246a585940c
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 6tyFjxUxmCw2ch/kbbQ+KVNQPhm6Na0JGUFxp9CdaAkgw/KSLoLgMmwNWoqIhoGdvYPj7E4Iw8xT1fjDigIkgWSH1/HkbnIB3MNCsRNOez0=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV3PR13MB6528
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.1
+Subject: Re: [PATCH v4,4/4] media: mediatek: vcodec: using empty lat buffer as
+ the last one
+Content-Language: en-US
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai
+ <wenst@chromium.org>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?= <nfraprado@collabora.com>,
+ Nathan Hebert <nhebert@chromium.org>
+Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20230525014009.23345-1-yunfei.dong@mediatek.com>
+ <20230525014009.23345-5-yunfei.dong@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230525014009.23345-5-yunfei.dong@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230525_011235_247370_477C8A34 
-X-CRM114-Status: GOOD (  11.94  )
+X-CRM114-CacheID: sfid-20230525_011247_252995_BC2AD4EF 
+X-CRM114-Status: UNSURE (   8.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -136,40 +87,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 24, 2023 at 08:55:06PM +0500, Osama Muhammad wrote:
-> This patch fixes the error checking in nfcsim.c in
-> debugfs_create_dir. The correct way to check if an error occurred
-> is using 'IS_ERR' inline function.
+Il 25/05/23 03:40, Yunfei Dong ha scritto:
+> Adding one empty lat buffer with parameter 'is_empty_flag = true'
+> used to flush core work queue decode.
 > 
-> Signed-off-by: Osama Muhammad <osmtendev@gmail.com>
-
-...
-
-On Wed, May 24, 2023 at 09:03:52PM +0500, Osama Muhammad wrote:
-> This patch fixes the error checking in debugfs.c in
-> debugfs_create_dir. The correct way to check if an error occurred
-> is using 'IS_ERR' inline function.
+> Queue the empty lat buffer to core list when driver need to flush decode.
+> It's mean core already decode all existed lat buffer when get empty lat
+> buffer, then wake up core decode done event, the driver will exit when getting
+> core dec done event.
 > 
-> Signed-off-by: Osama Muhammad <osmtendev@gmail.com>
+> Fixes: d227af847ac2 ("media: mediatek: vcodec: add core decode done event")
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 
-...
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-The comment above debugfs_create_dir includes the following text.
-
- * NOTE: it's expected that most callers should _ignore_ the errors returned
- * by this function. Other debugfs functions handle the fact that the "dentry"
- * passed to them could be an error and they don't crash in that case.
- * Drivers should generally work fine even if debugfs fails to init anyway.
-
-And I notice that in this same file there are calls to debugfs_create_dir()
-where that advice is followed: the return value is ignored.
-
-So I think the correct approaches here are to either:
-
-1. Do nothing, the code isn't really broken
-2. Remove the error checking
-
--- 
-pw-bot: cr
 
 
