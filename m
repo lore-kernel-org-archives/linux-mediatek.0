@@ -4,106 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A9D6C7EE33
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 May 2023 09:35:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3269C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 May 2023 09:53:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P8BG56Q0+m7b3FaG//0Q095XeVZlwC5hERE//1oBbUU=; b=u/wJIvQNuNK9YuVLdSmnRk1yG6
-	Zt9KHobLuTEyztkhXjeOVnnSG3+9Hu/ze/lP0wlrmpqQK083iZLKzItDj5kwoKQz31UdJCOxuL6+3
-	k5L/ASfuGbFpdcHMT9ftFsn+0O0Aj+NcaCUgjB7pmWBf5sAGO7IYv2IXXUWcBVgN7sTQnGQvDSAw9
-	G/yhvrQ1ObeRbq2puolNRaVON8EC6bn/BDMWVK7w6g+AW+u5ZcU1To53C+qrbDFEqkBC4ohhju7gd
-	VHmrW3cuGP+1xFbxq2Jo8PlGT1fRNVbqBe8yT2VtY7Wl716Yf1tVmSbN9U6d5N5gLPzaZdz7Wzq7T
-	o9I8RJSA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tLf3d/gKdJeLlsMHMqGEB2pJUyxiRqlEFrB77+u+ub0=; b=HHiAMgG9VbCajsQceAGZNRQDDh
+	+lGTP/ethHjo13as0R/vM1PdCVbOqy3ydmLdBuCX0WW1Bwplz8tUVBZehXiTAp3RFQIwbL0Mg0kSQ
+	3LRcuyeL0brzPGTD3djspI3Md1eg7XvQDzAL2ka9Yjykk0OwD2AX0dlJc/YWcEEUuZoi4q5Q9qZYI
+	GxOYWd69RjvLz/AAZaxQTPI/ZQVddrR9t9IwCOiy9oZc0DKkAvimPibRMtbc+3hPkCqBm0+OBo7/a
+	hnAinr1gmTsYnlcEhNTrqelE6seFgFVd5FFbXEPTtLl+HDq6AUAiOCD/BixrYIibiRCMN+aktM92z
+	yHZGCu5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q27Nb-00G9p0-0g;
-	Thu, 25 May 2023 09:35:31 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1q27fM-00GCX6-1B;
+	Thu, 25 May 2023 09:53:52 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q26QA-00G0SN-0F
-	for linux-mediatek@lists.infradead.org;
-	Thu, 25 May 2023 08:34:07 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-3f6cbdf16d2so2205375e9.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 25 May 2023 01:34:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1685003643; x=1687595643;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=P8BG56Q0+m7b3FaG//0Q095XeVZlwC5hERE//1oBbUU=;
-        b=Nr+YXCF7gu5WMZQLSJZUKtPly5voQB+ObgNwMi9S8SZ4EJkXC6A1M0u/DkbPZnBWCA
-         g0NR/SJ6AfAPGooSaT5CWoPsZbh7dclweppZh+QwTZ30qk7gup3rKUG4FMLJiylplSXJ
-         xVzDRPjl2lmImokoMX335ywHmMVvI8TBHohnLoKx8yS1AfArPWWgYuMjtRoKaVeds4YE
-         +56oDophciUsFNqMDnQbIAVKKF1ogFCuj56pqOCQp1X/fJbdSUx58iRrsN/1P9Spm4lC
-         dI8J+MWpx0y3h+Ia+EUwEXCAaYBkiGymyQjKfqe8GY1HZHtfH++d+aMxsvaA5N6wPw3m
-         YxwA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685003643; x=1687595643;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=P8BG56Q0+m7b3FaG//0Q095XeVZlwC5hERE//1oBbUU=;
-        b=QAW8b29/OUtT+dO6aVQvnjJ8CZuUt06i/h9eBJuHj2YW0PNMP75gkv+olbZ5r00wIA
-         6duT3AWA4E+6nDeh0Cw+3mkpnl/vVUWBnMxXilRNJ1dkLT2C3fQVTxa/3pFCYIdCzejQ
-         OHjJXZ+xLqfaFnuiOaoPlx0IX0XIDDJkFrYnHSLNH6Pfu5tU0uQLADAKFu6mSRWNgii1
-         DjnF5EHoPWDjRCUZCTrJuvJr3lF8tRYjFXdqvm3z8+qAMOrE/IYRvRuWNCwfNYOpFkgb
-         yjFeFCwDDZk83Q6ERqFcFzllP1zZa7R6Im2aSSuTRKHqbBeHXGaYeNSW6K0//+mNS8eP
-         alnQ==
-X-Gm-Message-State: AC+VfDwYAG+RxQJvc5Qa4ObEpNMugKgvmi16JMtE1yM8JKZL/CQCf9hF
-	Ch6KYryL9ojuh2jR3gZKSjmfKg==
-X-Google-Smtp-Source: ACHHUZ62g7dNi0kd8H9zW9Mq7w2ssLpoOL7/MTyGfyUrFwN+8H1uGHBGDCi7HQeybb4skFAP4IkzmA==
-X-Received: by 2002:adf:f68e:0:b0:307:8fa5:6e36 with SMTP id v14-20020adff68e000000b003078fa56e36mr1666829wrp.54.1685003642890;
-        Thu, 25 May 2023 01:34:02 -0700 (PDT)
-Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id o3-20020a5d6843000000b003095a329e90sm945809wrw.97.2023.05.25.01.34.01
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 25 May 2023 01:34:02 -0700 (PDT)
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Thu, 25 May 2023 10:33:17 +0200
-Subject: [PATCH v8 08/10] arm64: dts: mediatek: add OPP support for mt8365
- SoC
+	id 1q27fJ-00GCWK-1l;
+	Thu, 25 May 2023 09:53:50 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 8C4B061B66;
+	Thu, 25 May 2023 09:53:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A50CCC433EF;
+	Thu, 25 May 2023 09:53:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1685008426;
+	bh=tLf3d/gKdJeLlsMHMqGEB2pJUyxiRqlEFrB77+u+ub0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=nHZvWC4W8EmZIK3OdntUi3kT9ru0BfJJhHh6tP01F9qRF5FtXJMxp/6GYe7ayxt9e
+	 Qy1nQ3ImSYarIQKI58JvdxLsZnxqPNkpVuZwMWvTEy422tg46oSZQuV6fXGZNz4kqW
+	 6tRHFG3RDhzd3or195z0Sau7VQC8Go6YHzSkYWQI4TCOtHytM3i1cTJQ6kN5F+s5zT
+	 klaopGVfUV6P3Ro6aMlnHidFMwj4zMa00eaL3V2B2os8xT3nvjIhZWgHnbJle+C6JF
+	 r77d08PW7VCneRsYMTlJDUsGQaYgF+8f+53ELWphWz9fPX2pRst9cvHiPhgLCXsnkl
+	 S+BoPymZOR+xA==
+Date: Thu, 25 May 2023 10:53:41 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Qii Wang =?utf-8?B?KOeOi+eQqik=?= <Qii.Wang@mediatek.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	Leilk Liu =?utf-8?B?KOWImOejiik=?= <Leilk.Liu@mediatek.com>,
+	Tim Kuo =?utf-8?B?KOmDreW7t+esmSk=?= <Tim.Kuo@mediatek.com>,
+	"srv_heupstream@mediatek.com" <srv_heupstream@mediatek.com>,
+	"linux-spi@vger.kernel.org" <linux-spi@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH] spi: mediatek: advertise the availability of Dual and
+ Quad mode
+Message-ID: <e21758df-7f70-4a76-9759-5621bfa5b0db@sirena.org.uk>
+References: <20230523112608.10298-1-qii.wang@mediatek.com>
+ <97af2a29-8aef-499d-9f07-bb262ec398cb@sirena.org.uk>
+ <7a99a7da9edc93f4e231500b1b781188f894d775.camel@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20230203-evk-board-support-v8-8-7019f3fd0adf@baylibre.com>
-References: <20230203-evk-board-support-v8-0-7019f3fd0adf@baylibre.com>
-In-Reply-To: <20230203-evk-board-support-v8-0-7019f3fd0adf@baylibre.com>
-To: Catalin Marinas <catalin.marinas@arm.com>, 
- Will Deacon <will@kernel.org>, Wim Van Sebroeck <wim@linux-watchdog.org>, 
- Guenter Roeck <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Conor Dooley <conor+dt@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, 
- Alexandre Mergnat <amergnat@baylibre.com>, 
- Kevin Hilman <khilman@baylibre.com>
-X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3792; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=iQCxmnK+eQfy1aBNVxZAL4gcwl2Oh2buOTNBmT3l0E0=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkbx1v2Yzq2DRngEYVG4rSFQTE2FWufu/fkoiCUkWJ
- krZYeTaJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZG8dbwAKCRArRkmdfjHURdZ/EA
- CQPVys/VGqd7jIPh9AInyGVijaFiERtOfBmuvuqA8Bt20lYHwME4a53+FyYWyITy933qJlFMhhXA3J
- ce+yaRpo5/+JZdzXepXvleBH8sL7bxzJsHaEzPGp32LAdanMl02n78+VeR5w7qG6Hp1d/uDS7syquc
- EMyT833oMq1IHuWjMm6UldcieFk3DA3lpmd+PXlq7vsvzZ0EIfWPwdVGuvnQnA9z+UBIdP9+Fg8pOA
- UMJ8UimvEKyGOGuwL6mMl9P+FO1NP4yiOLq82EpoEF1B+0qNYuEF6bDXAJg50UyetuNJIt8D6qVNnq
- mnxXUs+hz8UPWxy472I4q8TDcA6EIpy+MtbFY+fAUOOzLJ3svEzTnk/IO6ypfcEGI1yqD5GWoIRc9b
- jwA8aSplVDx5xKjQy/nWrIt7PBKoxQT+9PW9sBnapr6nJXFQJdv+WcRMNUZNIEc2SX/rDBB5antRWO
- rk613AApeQk5lf7SRlxP8X5LM7b5q5x6+GcfwJCjuL+aY9KS2iMjzzThYbyhbV3C7H3c+hkosyuL8+
- v9HPQy2Z1B9UzbYqgFciBYDg3W202OnV5DpZpgXOh6M0wxEUHWOnZGsHTGkVjurxVRX2WEhXdeTKiH
- MtJgcvvM4KVXTlH/OquXvLTnXi1cphlxXHtYK6Hj0YqQnHmRVAVKTjD6K1Tg==
-X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
- fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="E5yAS6xqncTy2UwS"
+Content-Disposition: inline
+In-Reply-To: <7a99a7da9edc93f4e231500b1b781188f894d775.camel@mediatek.com>
+X-Cookie: I demand IMPUNITY!
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230525_013406_121745_F90F4C02 
-X-CRM114-Status: UNSURE (   9.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230525_025349_626401_F7EAF546 
+X-CRM114-Status: GOOD (  13.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,158 +84,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In order to have cpufreq support, this patch adds generic Operating
-Performance Points support.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Tested-by: Kevin Hilman <khilman@baylibre.com>
-Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
----
- arch/arm64/boot/dts/mediatek/mt8365.dtsi | 101 +++++++++++++++++++++++++++++++
- 1 file changed, 101 insertions(+)
+--E5yAS6xqncTy2UwS
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-index bb45aab2e6a9..cfe0c67ad61f 100644
---- a/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-@@ -20,6 +20,91 @@ cpus {
- 		#address-cells = <1>;
- 		#size-cells = <0>;
- 
-+	cluster0_opp: opp-table-0 {
-+		compatible = "operating-points-v2";
-+		opp-shared;
-+
-+		opp-850000000 {
-+			opp-hz = /bits/ 64 <850000000>;
-+			opp-microvolt = <650000>;
-+		};
-+
-+		opp-918000000 {
-+			opp-hz = /bits/ 64 <918000000>;
-+			opp-microvolt = <668750>;
-+		};
-+
-+		opp-987000000 {
-+			opp-hz = /bits/ 64 <987000000>;
-+			opp-microvolt = <687500>;
-+		};
-+
-+		opp-1056000000 {
-+			opp-hz = /bits/ 64 <1056000000>;
-+			opp-microvolt = <706250>;
-+		};
-+
-+		opp-1125000000 {
-+			opp-hz = /bits/ 64 <1125000000>;
-+			opp-microvolt = <725000>;
-+		};
-+
-+		opp-1216000000 {
-+			opp-hz = /bits/ 64 <1216000000>;
-+			opp-microvolt = <750000>;
-+		};
-+
-+		opp-1308000000 {
-+			opp-hz = /bits/ 64 <1308000000>;
-+			opp-microvolt = <775000>;
-+		};
-+
-+		opp-1400000000 {
-+			opp-hz = /bits/ 64 <1400000000>;
-+			opp-microvolt = <800000>;
-+		};
-+
-+		opp-1466000000 {
-+			opp-hz = /bits/ 64 <1466000000>;
-+			opp-microvolt = <825000>;
-+		};
-+
-+		opp-1533000000 {
-+			opp-hz = /bits/ 64 <1533000000>;
-+			opp-microvolt = <850000>;
-+		};
-+
-+		opp-1633000000 {
-+			opp-hz = /bits/ 64 <1633000000>;
-+			opp-microvolt = <887500>;
-+		};
-+
-+		opp-1700000000 {
-+			opp-hz = /bits/ 64 <1700000000>;
-+			opp-microvolt = <912500>;
-+		};
-+
-+		opp-1767000000 {
-+			opp-hz = /bits/ 64 <1767000000>;
-+			opp-microvolt = <937500>;
-+		};
-+
-+		opp-1834000000 {
-+			opp-hz = /bits/ 64 <1834000000>;
-+			opp-microvolt = <962500>;
-+		};
-+
-+		opp-1917000000 {
-+			opp-hz = /bits/ 64 <1917000000>;
-+			opp-microvolt = <993750>;
-+		};
-+
-+		opp-2001000000 {
-+			opp-hz = /bits/ 64 <2001000000>;
-+			opp-microvolt = <1025000>;
-+		};
-+	};
-+
- 		cpu-map {
- 			cluster0 {
- 				core0 {
-@@ -50,6 +135,10 @@ cpu0: cpu@0 {
- 			d-cache-line-size = <64>;
- 			d-cache-sets = <256>;
- 			next-level-cache = <&l2>;
-+			clocks = <&mcucfg CLK_MCU_BUS_SEL>,
-+				 <&apmixedsys CLK_APMIXED_MAINPLL>;
-+			clock-names = "cpu", "intermediate";
-+			operating-points-v2 = <&cluster0_opp>;
- 		};
- 
- 		cpu1: cpu@1 {
-@@ -65,6 +154,10 @@ cpu1: cpu@1 {
- 			d-cache-line-size = <64>;
- 			d-cache-sets = <256>;
- 			next-level-cache = <&l2>;
-+			clocks = <&mcucfg CLK_MCU_BUS_SEL>,
-+				 <&apmixedsys CLK_APMIXED_MAINPLL>;
-+			clock-names = "cpu", "intermediate", "armpll";
-+			operating-points-v2 = <&cluster0_opp>;
- 		};
- 
- 		cpu2: cpu@2 {
-@@ -80,6 +173,10 @@ cpu2: cpu@2 {
- 			d-cache-line-size = <64>;
- 			d-cache-sets = <256>;
- 			next-level-cache = <&l2>;
-+			clocks = <&mcucfg CLK_MCU_BUS_SEL>,
-+				 <&apmixedsys CLK_APMIXED_MAINPLL>;
-+			clock-names = "cpu", "intermediate", "armpll";
-+			operating-points-v2 = <&cluster0_opp>;
- 		};
- 
- 		cpu3: cpu@3 {
-@@ -95,6 +192,10 @@ cpu3: cpu@3 {
- 			d-cache-line-size = <64>;
- 			d-cache-sets = <256>;
- 			next-level-cache = <&l2>;
-+			clocks = <&mcucfg CLK_MCU_BUS_SEL>,
-+				 <&apmixedsys CLK_APMIXED_MAINPLL>;
-+			clock-names = "cpu", "intermediate", "armpll";
-+			operating-points-v2 = <&cluster0_opp>;
- 		};
- 
- 		l2: l2-cache {
+On Thu, May 25, 2023 at 06:21:26AM +0000, Qii Wang (=E7=8E=8B=E7=90=AA) wro=
+te:
 
--- 
-2.25.1
+> The previous patch was this one:=20
+> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit=
+/drivers/spi/spi-mt65xx.c?h=3Dv6.4-rc3&id=3D9f763fd20da7d892ffaedac0c58d821=
+922f8a674
 
+Please include human readable descriptions of things like commits and
+issues being discussed in e-mail in your mails, this makes them much
+easier for humans to read especially when they have no internet access.
+I do frequently catch up on my mail on flights or while otherwise
+travelling so this is even more pressing for me than just being about
+making things a bit easier to read.
+
+--E5yAS6xqncTy2UwS
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmRvMCQACgkQJNaLcl1U
+h9CDDwf+O0uRW+IX4K9wPhydgsnobcj/fhSfVLefIiiSvrPRl27vNm1oKmwe6LIm
+p0VGIY258AobfS73u0PWEZF8XQsZxzi1kgoi7X/gji1LiqtU/iOBgYLQx4jyv7Or
+GWFcmirYNnyzwsaUd5bwIpwsN6N5E95rC1Zo8AZS4eO1Lc/UVr7RtC6H5htyMen6
+rmt6d42OpF4gF83ERIL74vGIm/VuqteA55l+yfHGCjYpygH39RaYI6pGUBIasRAo
+QjL+s7Jr/+FEj9zt3K0DdCTrBzIwVefejtOixSCLFTgTiDr+/JNLTqwcbk7uYHBD
+zXArYY5qi8/pY1oshy9ZhrJnnn7nAQ==
+=XjGO
+-----END PGP SIGNATURE-----
+
+--E5yAS6xqncTy2UwS--
 
