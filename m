@@ -4,82 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28020C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 May 2023 01:25:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30AB0C77B73
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 May 2023 01:40:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tD5P2XcT+ltjAGUVJSG5rGEuX0unaqFFQjkO1n4Di08=; b=J/mv5s4+DSYQMx0c9I4lyR4VXH
-	RBHfp+BkJNEuUgqNQ8qNHCwwArfT3w1ru+094sGlsEgSBGbgxt4mSIigQRx14O4Hq5vOO5SLA8Ekb
-	4GU68tx/VQtF/Vq8FqtvI0R3hUnFFnDgOkAvYf4tzNkAntrqPxFY1t9OJCJB/19npLC9GX5gwh6i0
-	EfHj5fXRwyn8dhoy+Pd1e77j7zGQx2fMRXzDe3Ps9nZFyNIRlAse7xpCk8eIExWFmW4O08EdF+qKu
-	f/VY/djOxxPLpaF1rKlfqGczJZNOQ82Ryb1ttlT+VZoE6iHuU9HNVCykEie/YuOGQb5F01MblG12c
-	T2hp34Ig==;
+	bh=/AfKK7NqAn+9gPaT219tJWBpfwQIuYiB+SbN33piwzw=; b=oj8Nc8y9qXsU3WLfia9K0ixX5I
+	CBqreePybDc4QUj40cvfZMD1ByvE75gaAnYE+sBs2uugLfr7tEdRHI0F4hvR0QP9WlB3t2aW4Bgm3
+	oiIBKo2ErQBpfDvI0QJGSEB4osTXmwhV3BPxssHGvbN6g4Z/r/5X/zTiJUwxA+E4rpQ1g7r+V3s4+
+	RJAvw1DAqg0qH/uR0vkVSEeGyjkOipoOa7WTUC4OzRRP2dpercfwCCiuA/YYtdYPVOBZxmihxx8Bx
+	LlOowtd+tyJmw6ivQfiKhT29SixXVEC5NneyLj+ye1vZ9XKHRT23E2W9IXXLhEkAcAYLlSyXLfm02
+	q4PvTemw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1zik-00F9bz-3A;
-	Thu, 25 May 2023 01:24:50 +0000
-Received: from mga02.intel.com ([134.134.136.20])
+	id 1q1zxn-00FAnc-0i;
+	Thu, 25 May 2023 01:40:23 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1zig-00F9ax-3A;
-	Thu, 25 May 2023 01:24:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1684977886; x=1716513886;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=hFml+IFBGpyck4Ofg1pKOuGV669kPAVkwNRi7Imskrg=;
-  b=GERwE8jZ7j5AyVbLO+k6Wna+LUChj0EU8+aHmDDUXggk7U3ScDiEfyxw
-   GcuJ7sM+CuH60YZnDUT1mgXxI22iyp9+8PGAoIP5ChH3k67u60VuA16DK
-   QU+iAB6ogWG73TDMr2V6nN0VH7/JlQ0f4IsX0nzpmzcehaVK9VW1ga8HK
-   CLyIvzenG/OuddI8pmlcqK3ccts5e/zTjghLc8//AodW3sC5yDWvjER99
-   Dp2SoeUVxMZ511azEPialJGJVzA/dGs+PxGfbIBCmZrY9/E8tUuUJ3NAu
-   jvymS0U57F7wJS5SAt88Enlx+ddZ/9g6W7yJLI0hkUOmcfyLcFT4Zh0Wf
-   A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10720"; a="343208098"
-X-IronPort-AV: E=Sophos;i="6.00,190,1681196400"; 
-   d="scan'208";a="343208098"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
-  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 May 2023 18:24:32 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10720"; a="769672043"
-X-IronPort-AV: E=Sophos;i="6.00,190,1681196400"; 
-   d="scan'208";a="769672043"
-Received: from lkp-server01.sh.intel.com (HELO dea6d5a4f140) ([10.239.97.150])
-  by fmsmga008.fm.intel.com with ESMTP; 24 May 2023 18:24:29 -0700
-Received: from kbuild by dea6d5a4f140 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1q1ziO-000FLD-0t;
-	Thu, 25 May 2023 01:24:28 +0000
-Date: Thu, 25 May 2023 09:23:38 +0800
-From: kernel test robot <lkp@intel.com>
-To: Runyang Chen <runyang.chen@mediatek.com>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1q1zxk-00FAms-0m;
+	Thu, 25 May 2023 01:40:21 +0000
+X-UUID: 193681acfa9d11ed83ed1395ce914268-20230524
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=/AfKK7NqAn+9gPaT219tJWBpfwQIuYiB+SbN33piwzw=;
+	b=Tw63SgtORquHKh5YZU6yp3r8NJr2xrtWl74gKn6WiEpslYzyuAVs1UR0EFBOeTkjUTOK2EKXHZRNTfG2SKEKXrAg7AksJJMj37YzXjUVjeAj18VQwf/jSSAz9EE3rr/Uqe8cydboJl003iUPD4Ny0KArwLggLvJO+pV+UQjhTjg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.25,REQID:7a2a7bc3-e83c-4dfb-a8f3-2d3db039c378,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:d5b0ae3,CLOUDID:5147f2c1-e32c-4c97-918d-fbb3fc224d4e,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: 193681acfa9d11ed83ed1395ce914268-20230524
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1567406721; Wed, 24 May 2023 18:40:15 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 25 May 2023 09:40:13 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 25 May 2023 09:40:11 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Chen-Yu Tsai <wenst@chromium.org>, Nicolas Dufresne
+	<nicolas.dufresne@collabora.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	Runyang Chen <runyang.chen@mediatek.com>
-Subject: Re: [PATCH v3 2/2] clk: mediatek: reset: add infra_ao reset support
- for MT8188
-Message-ID: <202305250908.Uvas9u4E-lkp@intel.com>
-References: <20230524133439.20659-3-runyang.chen@mediatek.com>
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
+	<nfraprado@collabora.com>, Nathan Hebert <nhebert@chromium.org>
+CC: Yunfei Dong <yunfei.dong@mediatek.com>, Hsin-Yi Wang
+	<hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter
+	<daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v4,1/4] media: mediatek: vcodec: Avoid unneeded error logging
+Date: Thu, 25 May 2023 09:40:06 +0800
+Message-ID: <20230525014009.23345-2-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230525014009.23345-1-yunfei.dong@mediatek.com>
+References: <20230525014009.23345-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230524133439.20659-3-runyang.chen@mediatek.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230524_182447_085510_7A523595 
-X-CRM114-Status: GOOD (  14.97  )
+X-CRM114-CacheID: sfid-20230524_184020_431327_BD8866FC 
+X-CRM114-Status: GOOD (  13.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,66 +92,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Runyang,
+Since the LAT decoder works faster than its CORE, getting the trans
+buffer may be done only after CORE finishes processing: avoid printing
+an error if the decode function returns -EAGAIN, as this means that
+the buffer from CORE is not yet available, but will be at a later time.
 
-kernel test robot noticed the following build errors:
+Also change the log level for calls to vdec_msg_queue_dqbuf() in H264
+and VP9 LAT decoder drivers to avoid excessive logging.
 
-[auto build test ERROR on clk/clk-next]
-[also build test ERROR on pza/reset/next]
-[cannot apply to pza/imx-drm/next mbgg-mediatek/for-next]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+---
+ .../media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c   | 2 +-
+ .../platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c      | 2 +-
+ .../media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c   | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Runyang-Chen/dt-bindings-reset-mt8188-add-thermal-reset-control-bit/20230524-213538
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/clk/linux.git clk-next
-patch link:    https://lore.kernel.org/r/20230524133439.20659-3-runyang.chen%40mediatek.com
-patch subject: [PATCH v3 2/2] clk: mediatek: reset: add infra_ao reset support for MT8188
-config: riscv-randconfig-r042-20230524 (https://download.01.org/0day-ci/archive/20230525/202305250908.Uvas9u4E-lkp@intel.com/config)
-compiler: clang version 17.0.0 (https://github.com/llvm/llvm-project 4faf3aaf28226a4e950c103a14f6fc1d1fdabb1b)
-reproduce (this is a W=1 build):
-        mkdir -p ~/bin
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # install riscv cross compiling tool for clang build
-        # apt-get install binutils-riscv64-linux-gnu
-        # https://github.com/intel-lab-lkp/linux/commit/7d969d160489d561f9b1fb6388adaa1ba8fe06a1
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Runyang-Chen/dt-bindings-reset-mt8188-add-thermal-reset-control-bit/20230524-213538
-        git checkout 7d969d160489d561f9b1fb6388adaa1ba8fe06a1
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang ~/bin/make.cross W=1 O=build_dir ARCH=riscv olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang ~/bin/make.cross W=1 O=build_dir ARCH=riscv SHELL=/bin/bash drivers/clk/mediatek/
-
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202305250908.Uvas9u4E-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
->> drivers/clk/mediatek/clk-mt8188-infra_ao.c:196:18: error: initializing 'u16 *' (aka 'unsigned short *') with an expression of type 'const u16[5]' (aka 'const unsigned short[5]') discards qualifiers [-Werror,-Wincompatible-pointer-types-discards-qualifiers]
-           .rst_bank_ofs = infra_ao_rst_ofs,
-                           ^~~~~~~~~~~~~~~~
-   drivers/clk/mediatek/clk-mt8188-infra_ao.c:198:17: error: initializing 'u16 *' (aka 'unsigned short *') with an expression of type 'const u16[3]' (aka 'const unsigned short[3]') discards qualifiers [-Werror,-Wincompatible-pointer-types-discards-qualifiers]
-           .rst_idx_map = infra_ao_idx_map,
-                          ^~~~~~~~~~~~~~~~
-   2 errors generated.
-
-
-vim +196 drivers/clk/mediatek/clk-mt8188-infra_ao.c
-
-   193	
-   194	static const struct mtk_clk_rst_desc infra_ao_rst_desc = {
-   195		.version = MTK_RST_SET_CLR,
- > 196		.rst_bank_ofs = infra_ao_rst_ofs,
-   197		.rst_bank_nr = ARRAY_SIZE(infra_ao_rst_ofs),
-   198		.rst_idx_map = infra_ao_idx_map,
-   199		.rst_idx_map_nr = ARRAY_SIZE(infra_ao_idx_map),
-   200	};
-   201	
-
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
+index 995997f702a0..7b3eb0ccb522 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
+@@ -292,7 +292,7 @@ static void mtk_vdec_worker(struct work_struct *work)
+ 		mtk_v4l2_err("vb2 buffer media request is NULL");
+ 
+ 	ret = vdec_if_decode(ctx, bs_src, NULL, &res_chg);
+-	if (ret) {
++	if (ret && ret != -EAGAIN) {
+ 		mtk_v4l2_err(" <===[%d], src_buf[%d] sz=0x%zx pts=%llu vdec_if_decode() ret=%d res_chg=%d===>",
+ 			     ctx->id, vb2_src->index, bs_src->size,
+ 			     vb2_src->timestamp, ret, res_chg);
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c
+index 999ce7ee5fdc..181cc52e0847 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c
+@@ -596,7 +596,7 @@ static int vdec_h264_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
+ 
+ 	lat_buf = vdec_msg_queue_dqbuf(&inst->ctx->msg_queue.lat_ctx);
+ 	if (!lat_buf) {
+-		mtk_vcodec_err(inst, "failed to get lat buffer");
++		mtk_vcodec_debug(inst, "failed to get lat buffer");
+ 		return -EAGAIN;
+ 	}
+ 	share_info = lat_buf->private_data;
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+index cf16cf2807f0..6d981d7341d2 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+@@ -2069,7 +2069,7 @@ static int vdec_vp9_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
+ 
+ 	lat_buf = vdec_msg_queue_dqbuf(&instance->ctx->msg_queue.lat_ctx);
+ 	if (!lat_buf) {
+-		mtk_vcodec_err(instance, "Failed to get VP9 lat buf\n");
++		mtk_vcodec_debug(instance, "Failed to get VP9 lat buf\n");
+ 		return -EAGAIN;
+ 	}
+ 	pfc = (struct vdec_vp9_slice_pfc *)lat_buf->private_data;
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.18.0
+
 
