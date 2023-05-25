@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F5BDC7EE2F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 May 2023 18:35:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A0A3C7EE29
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 May 2023 18:35:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iaYa03wMlPBqlHEmSGtHvlB/80JS4Qq8wE2rWXUWS/c=; b=TsrU5A7SRhoG+8QlfiPe6Zkbt3
-	6MmaEwRwICa22OqbJQCANZWl76JIpPuGLT3WmWncTCl3pXQZf/BEZzh3NBhly1G8fGUnmJ9HXJnP0
-	aYhgZ9SJp+OYt81cU1J7Ij/WJMjxwsU24/1swSrV2YZ84WQzRqqvp/KV+HExxTzkdtDlZeESFl9Cl
-	/0s+0Ee6Vx7tPuskhpCbTIwu/Su4xyWiOvCG+QMUbhYTvGhQztE9joirN7kVoo8kLA2I4mwaIztmg
-	y2uK9IFTxzLrztdItkvmXFF6DfJ/ta7H6E9zpPlR0y06nnrbGQIa2SsF+p8SIS6bb6x71xMGwNS//
-	qr8Xau8A==;
+	bh=LBhOt1xQzAv0xySklskz1/fp2SDGo2X2cU1zXP9G1nY=; b=MkxJx6H1utpCd75E0G76c8zB9+
+	mJsBlq29BZe3c0IowGeSDmLEsV/DoNMBQgp4E36lxmOjd2eP/Bn+5fr3PYtpySDxYpuwPPi01cGCR
+	BMOWk9I+OFegNMgq6YHcVjwSs6HOK3JUS3zWkDuJi1vKVwPrV7+J9Grn3fAd+tF8BgJt1J5DEikNY
+	ubmRAmguRhTmZXvyGlq3vF0wDF7vEJMunu/q58PM+roYdfq24gaKpq1IT7HrmPu52BQpUdbOQF+Pu
+	xhsAnqlM3exYsYqSMUrA4n3JD8E2yGqM9Taz2zECF+6nTf/2sV4XEZspWMj4LeuFE4XjMYnI0k/gU
+	VpVvKR6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2Fnj-00HPsG-0N;
-	Thu, 25 May 2023 18:35:03 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1q2Fnz-00HPzi-23;
+	Thu, 25 May 2023 18:35:19 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2Fnf-00HPpt-2M;
-	Thu, 25 May 2023 18:35:01 +0000
+	id 1q2Fnv-00HPxO-2G;
+	Thu, 25 May 2023 18:35:17 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 4675E648D7;
-	Thu, 25 May 2023 18:34:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 955DDC4339C;
-	Thu, 25 May 2023 18:34:56 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 46086648D3;
+	Thu, 25 May 2023 18:35:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2DB06C4339C;
+	Thu, 25 May 2023 18:35:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1685039698;
-	bh=6YmevBviBkehl6EAczyX6mPWGWg8NS8LrHggZS65toA=;
+	s=k20201202; t=1685039714;
+	bh=nv4pu/DVjuArKp1IDphcIeJJlJ9bGuaD2HPi5eSGOho=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=irRF1K2v7rNYx2Br5YnmBEEjmNClA2Mip6h7pExako0DICVezP0nE8zTVqt9aGhWk
-	 06A3LGSR9FKldMw8MhONYTSivptQYoimcj3onO0nA2rqCw8Zy+w6Yq+uo/za8VNQjC
-	 li09omwVH45HqRUUWjd32JyPL2qifY9CtQIkdYvGKJasFhkxcWP8l4+AN9t1eKICv9
-	 ZAGfX2kuGuirONySx4iz8IByo1JEYL+Zz+dKpTvMHWlBZcHiDumH9DG4xfmYLSsXdJ
-	 YdP0CISqri83htM9wjZLTEz875fAglcN0OzLndaIbqVA5dGEsf+ZUVvHIQVwZ7IuuG
-	 49wFPOQiqhgpg==
+	b=LwOAMOjtpDl68aakBVXvtjSZvZXGO15uyY3/tJ9zvNXei2usM6iYiJH8VN/6QssTq
+	 3HRqRakJhmVqGoYiQ11lPgS2XYK23tXqwnSBnVQhvJaawnDhNP+qXW0TprHJTWe/WP
+	 2HbnKJBPqLcSWe036hJMPrqnN+FrrijHLELlmI/SuaKSMuNssYZ/VXfQZ2OndKdLsC
+	 U1nBOpME6HyiPaKFslwfh3sH/OmRDbsh3fjc11DABdw5kPmOz/IKDZRVrPuTUs/PVV
+	 lChmJVmfJWqr+iVCNydnJzwlLmWHHRST0+1xzjEOrCJP2Cl0Bqd/F6MjmIJwLRWmJQ
+	 6yzQ3robuC1dQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
 Cc: Po-Wen Kao <powen.kao@mediatek.com>,
-	Bart Van Assche <bvanassche@acm.org>,
 	Manivannan Sadhasivam <mani@kernel.org>,
 	Stanley Chu <stanley.chu@mediatek.com>,
 	Ziqi Chen <quic_ziqichen@quicinc.com>,
+	Bart Van Assche <bvanassche@acm.org>,
 	"Martin K . Petersen" <martin.petersen@oracle.com>,
 	Sasha Levin <sashal@kernel.org>,
 	jejb@linux.ibm.com,
@@ -63,12 +63,16 @@ Cc: Po-Wen Kao <powen.kao@mediatek.com>,
 	j-young.choi@samsung.com,
 	Arthur.Simchaev@wdc.com,
 	athierry@redhat.com,
+	ebiggers@google.com,
+	yoshihiro.shimoda.uh@renesas.com,
+	keosung.park@samsung.com,
+	dlunev@chromium.org,
 	linux-scsi@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.3 49/67] scsi: ufs: core: Fix MCQ tag calculation
-Date: Thu, 25 May 2023 14:31:26 -0400
-Message-Id: <20230525183144.1717540-49-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.3 50/67] scsi: ufs: core: Rename symbol sizeof_utp_transfer_cmd_desc()
+Date: Thu, 25 May 2023 14:31:27 -0400
+Message-Id: <20230525183144.1717540-50-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230525183144.1717540-1-sashal@kernel.org>
 References: <20230525183144.1717540-1-sashal@kernel.org>
@@ -77,8 +81,8 @@ X-stable: review
 X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230525_113459_853274_934FD185 
-X-CRM114-Status: GOOD (  12.83  )
+X-CRM114-CacheID: sfid-20230525_113515_815965_9DCD9D7A 
+X-CRM114-Status: GOOD (  14.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,55 +99,95 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Po-Wen Kao <powen.kao@mediatek.com>
 
-[ Upstream commit 5149452ca66289ef33d13897ee845a2f6f5b680f ]
+[ Upstream commit 06caeb536b2b21668efd2d6fa97c09461957b3a7 ]
 
-The transfer command descriptor is allocated in ufshcd_memory_alloc() and
-referenced by the transfer request descriptor with stride size
-sizeof_utp_transfer_cmd_desc() instead of sizeof(struct
-utp_transfer_cmd_desc).
-
-Consequently, computing tag by address offset should also refer to the
-same stride.
+Naming the functions after standard operators like sizeof() may cause
+confusion. Rename it to ufshcd_get_ucd_size().
 
 Signed-off-by: Po-Wen Kao <powen.kao@mediatek.com>
-Link: https://lore.kernel.org/r/20230504154454.26654-2-powen.kao@mediatek.com
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
-Reviewed-by: Manivannan Sadhasivam <mani@kernel.org>
+Link: https://lore.kernel.org/r/20230504154454.26654-3-powen.kao@mediatek.com
+Suggested-by: Manivannan Sadhasivam <mani@kernel.org>
 Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
 Reviewed-by: Ziqi Chen <quic_ziqichen@quicinc.com>
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
 Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/ufs/core/ufs-mcq.c | 2 +-
- drivers/ufs/core/ufshcd.c  | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ drivers/ufs/core/ufs-mcq.c |  2 +-
+ drivers/ufs/core/ufshcd.c  | 10 +++++-----
+ include/ufs/ufshcd.h       |  2 +-
+ 3 files changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
-index 202ff71e1b582..b7c5f39b50e6d 100644
+index b7c5f39b50e6d..937933d3f77c2 100644
 --- a/drivers/ufs/core/ufs-mcq.c
 +++ b/drivers/ufs/core/ufs-mcq.c
 @@ -265,7 +265,7 @@ static int ufshcd_mcq_get_tag(struct ufs_hba *hba,
  	addr = (le64_to_cpu(cqe->command_desc_base_addr) & CQE_UCD_BA) -
  		hba->ucdl_dma_addr;
  
--	return div_u64(addr, sizeof(struct utp_transfer_cmd_desc));
-+	return div_u64(addr, sizeof_utp_transfer_cmd_desc(hba));
+-	return div_u64(addr, sizeof_utp_transfer_cmd_desc(hba));
++	return div_u64(addr, ufshcd_get_ucd_size(hba));
  }
  
  static void ufshcd_mcq_process_cqe(struct ufs_hba *hba,
 diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index 70b112038792a..c7a9a1cedf920 100644
+index c7a9a1cedf920..b95b5afd7eaeb 100644
 --- a/drivers/ufs/core/ufshcd.c
 +++ b/drivers/ufs/core/ufshcd.c
+@@ -2821,10 +2821,10 @@ static void ufshcd_map_queues(struct Scsi_Host *shost)
+ static void ufshcd_init_lrb(struct ufs_hba *hba, struct ufshcd_lrb *lrb, int i)
+ {
+ 	struct utp_transfer_cmd_desc *cmd_descp = (void *)hba->ucdl_base_addr +
+-		i * sizeof_utp_transfer_cmd_desc(hba);
++		i * ufshcd_get_ucd_size(hba);
+ 	struct utp_transfer_req_desc *utrdlp = hba->utrdl_base_addr;
+ 	dma_addr_t cmd_desc_element_addr = hba->ucdl_dma_addr +
+-		i * sizeof_utp_transfer_cmd_desc(hba);
++		i * ufshcd_get_ucd_size(hba);
+ 	u16 response_offset = offsetof(struct utp_transfer_cmd_desc,
+ 				       response_upiu);
+ 	u16 prdt_offset = offsetof(struct utp_transfer_cmd_desc, prd_table);
+@@ -3733,7 +3733,7 @@ static int ufshcd_memory_alloc(struct ufs_hba *hba)
+ 	size_t utmrdl_size, utrdl_size, ucdl_size;
+ 
+ 	/* Allocate memory for UTP command descriptors */
+-	ucdl_size = sizeof_utp_transfer_cmd_desc(hba) * hba->nutrs;
++	ucdl_size = ufshcd_get_ucd_size(hba) * hba->nutrs;
+ 	hba->ucdl_base_addr = dmam_alloc_coherent(hba->dev,
+ 						  ucdl_size,
+ 						  &hba->ucdl_dma_addr,
+@@ -3833,7 +3833,7 @@ static void ufshcd_host_memory_configure(struct ufs_hba *hba)
+ 	prdt_offset =
+ 		offsetof(struct utp_transfer_cmd_desc, prd_table);
+ 
+-	cmd_desc_size = sizeof_utp_transfer_cmd_desc(hba);
++	cmd_desc_size = ufshcd_get_ucd_size(hba);
+ 	cmd_desc_dma_addr = hba->ucdl_dma_addr;
+ 
+ 	for (i = 0; i < hba->nutrs; i++) {
 @@ -8422,7 +8422,7 @@ static void ufshcd_release_sdb_queue(struct ufs_hba *hba, int nutrs)
  {
  	size_t ucdl_size, utrdl_size;
  
--	ucdl_size = sizeof(struct utp_transfer_cmd_desc) * nutrs;
-+	ucdl_size = sizeof_utp_transfer_cmd_desc(hba) * nutrs;
+-	ucdl_size = sizeof_utp_transfer_cmd_desc(hba) * nutrs;
++	ucdl_size = ufshcd_get_ucd_size(hba) * nutrs;
  	dmam_free_coherent(hba->dev, ucdl_size, hba->ucdl_base_addr,
  			   hba->ucdl_dma_addr);
  
+diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
+index 431c3afb2ce0f..db70944c681aa 100644
+--- a/include/ufs/ufshcd.h
++++ b/include/ufs/ufshcd.h
+@@ -1138,7 +1138,7 @@ static inline size_t ufshcd_sg_entry_size(const struct ufs_hba *hba)
+ 	({ (void)(hba); BUILD_BUG_ON(sg_entry_size != sizeof(struct ufshcd_sg_entry)); })
+ #endif
+ 
+-static inline size_t sizeof_utp_transfer_cmd_desc(const struct ufs_hba *hba)
++static inline size_t ufshcd_get_ucd_size(const struct ufs_hba *hba)
+ {
+ 	return sizeof(struct utp_transfer_cmd_desc) + SG_ALL * ufshcd_sg_entry_size(hba);
+ }
 -- 
 2.39.2
 
