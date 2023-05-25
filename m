@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBBC1C7EE31
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 May 2023 09:35:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4327C7EE32
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 May 2023 09:35:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tDMAZYC6PlfAvsYSrf+M4iyNDJFAF/AM883C7PrISNc=; b=p8vwzRGNKWULhRXtv+rooIwVVr
-	Af2W3Hw3lcKTTMSR6IlxStFcyxFvbRTDw7Vpfg7NULJpD4CFgKnsbcXb2d01o38og6s3TSfF9OawW
-	4dPH94h7bGq/y47dm/nhtMnnQLjLQ29WO6lJZMRuIYuq1hPyDaSPxiOa2SMaGHQ2nlRU8HIRKzEDb
-	0xhoqd+90srVbsF/S3N86GH4B78tlOyo9Wv4zAWIMTG2Wz8RAHyl9OhQ1LVV3vL1gDG2Hwb+BWlZo
-	Mmlmt8mCa4Zmv/atBwC9ymAh1kTWEaivL80DCCJwCV9qbRUZg5UO1EMkbvgNMOGhFgYa9aHFAVCBW
-	rvG50Zuw==;
+	bh=k66rQPOoFRNzRR5aSWWYeBLcZa0SzQjoYuJlxSEKAck=; b=Y4mFw06AUwFQalrCfzi5CRa4dh
+	uhE2yFdMbl5YTALR1x/7Lxh143kIWU2G4vpTkgG888CZ/lnD381ukZpZ3DVHFq90v3sOheHvwaj8U
+	+JUZuNIxGG27D2bHYDk+bhfV11thkXBym9QprcMbicU/iEtTnnHL6myc/NCJqRZUZzmQOLomAUycc
+	39NlBhOM8/S1yJ8wp4/gyIN4e4O5BC1gsveATz4JiqMVHeO+gWZRcypjn05P8exRLoKBqwq3LsSre
+	X7WplpDhZ4bFTrIcw5vCmgEeXeKAJuat1NZ+I5yhIsrZC7gaWpwEOZ3WeLZD9igySBEl3nB+VvDs2
+	9ckfgr/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q27NV-00G9hA-0O;
-	Thu, 25 May 2023 09:35:25 +0000
+	id 1q27NW-00G9i6-0F;
+	Thu, 25 May 2023 09:35:26 +0000
 Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q26Q4-00G0Nw-1o
+	id 1q26Q4-00G0Pc-1n
 	for linux-mediatek@lists.infradead.org;
 	Thu, 25 May 2023 08:34:02 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-30a95ec7744so1767836f8f.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 25 May 2023 01:33:58 -0700 (PDT)
+Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-30a4ebbda56so1786476f8f.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 25 May 2023 01:34:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1685003637; x=1687595637;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1685003639; x=1687595639;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=tDMAZYC6PlfAvsYSrf+M4iyNDJFAF/AM883C7PrISNc=;
-        b=ZCGAbdgXCXYDsCVFtmnECOBT5WP2ADILUz9yT/5vEyRqykdrS5zfQQLcLie703Q2vw
-         sxlmQh+trkLZBjESDlmT6/A77gjMjNP3+XAYCr1xrSa90A1Cut4KeNY+R+0/nHQ2BxIH
-         gmvtnKBwS1nwSS8kPyvoK/V6a9PzwwmMT5EURpa9a12lbxp9jKqDeuWfmC6E7zjA61TB
-         ukKYVsf/xZI60BZ57xAANm37s2jgmCUV/0ZPst+LBVtnyPeYCoY0FReF8bp/bgwqvU5g
-         ouh6ccna/givG4NbwIhXaw4xjab98Fx+/IKMinEazT8WDFr6fR5hT9foXlzUem/Ppzyy
-         sXTQ==
+        bh=k66rQPOoFRNzRR5aSWWYeBLcZa0SzQjoYuJlxSEKAck=;
+        b=PucTazVrtWuLa08CIJ0EJLTZEvjzSWL/jb8Wnzyf0WybcJhpEN/4EkFN8blDRe9eji
+         XIi9f7VJhMEE3QhOWBV/lrCNaPx8tr5vq2F5nrpu9P4T4JjlfDJyeg4b1W1xTh5rWwrT
+         juZy4AZcw2kO/J82Rk2ZU62rloyIO3m7FT03I90yX1G4yoBszg6pupiV9AT2IcnuX0yY
+         v4CuHrtb5rWGVLc1+oqlvN+KN7IGkmn05FF38eRYuiwgTWK4eF3PtQ0BVpAqavMpjuHg
+         9FDOPzGEVUiJLtvCYvbIfbzJFGNAcgiNG6dm1CiIBUFoT63l9mxrJfyOv0GgJDnzur/K
+         VhxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685003637; x=1687595637;
+        d=1e100.net; s=20221208; t=1685003639; x=1687595639;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=tDMAZYC6PlfAvsYSrf+M4iyNDJFAF/AM883C7PrISNc=;
-        b=hHD6ggcE8Yg+IKT89NJWDaMZHIe6ThaH3GA3rhf+nKOliDgo5eZ6V0Z6VROS5Pwmxf
-         UZCVS+ohDoocJKho47y8GJLRCIM3XhrpRhzOLIkVgxzkQPTh5zq1TAy6EAvdXT4cRjOQ
-         dZE4vZTpgwJ/OGehdg3e3zUEsP//KiMgIKtLB1gidEZOdKz2PHjzNCalUkwLhP58Bt1L
-         23dSyiu9+Ois+LAEqNa7onvIfYgFeRxtVbbrLn5/lyubQeemaMgcKW7C5Szcgc6cGqoi
-         KOOwFEbawWgC85vmbS9mYb9Y1B4DdJy3HbpknsPtQdjEarUpFutDOqcVtuI+LNWcPM9h
-         RydA==
-X-Gm-Message-State: AC+VfDwnytc21KMJjz2PmHzi5hibw9Y4SAJMDo5YXUvC9kuDbiTKAQSN
-	NmoL5S/Ew5vbfrHfZYWHOHjoyg==
-X-Google-Smtp-Source: ACHHUZ6NcwZ+FPVEwSPwGU4TT6xlYG7ghCbQwCjTXicvKcWpYEiHaPck+e+02FRlIex3qeCUIJsmCA==
-X-Received: by 2002:adf:ec4d:0:b0:306:2db9:cc2c with SMTP id w13-20020adfec4d000000b003062db9cc2cmr1885209wrn.32.1685003636901;
-        Thu, 25 May 2023 01:33:56 -0700 (PDT)
+        bh=k66rQPOoFRNzRR5aSWWYeBLcZa0SzQjoYuJlxSEKAck=;
+        b=SbBisSnwxgR94PhdRCPTQbOlEyKbPJglcl5r/Q1ZXF7RAfWgG3wuwRC+EaMNHMsyJg
+         OneYo6h5qr+GiyJb3Iqc6TAYf39/rTYxCD6OKQM0gHPSwwBJK84TOVg/u7vYAdXVuXVK
+         OB9I1Q8ErumuFb/xhmlX6kx38f9eXvlUGf/ErRcLl+aGrCr4cQmX5hzdHOs+qHXAynbO
+         NAKZJir4XsT1v86sJzVdyuOh8zlKfUGpFYHjxXsu094unJKqyxJLgwgy7VrlpfsZ5QTJ
+         cPjrJ01CB77W1J1C7Ecj1BSYqYP+IN/iFhJpjwG5nGhMfIUIRuRIg9NyINq+38Uz0trk
+         398A==
+X-Gm-Message-State: AC+VfDw7ENuP6h5Dcvj2dfsQFxPoCgU8IcX5Pg78DvQrytdrfOTqQ6zn
+	orBkRhssqGSIjUZThr6IbTflWQ==
+X-Google-Smtp-Source: ACHHUZ5b6FWJvWuLmcFmG0FqA7r6gG5bur7xed3wtKMNGvpB5D5h4OyU7akFNruCv5esO16xgPnDMQ==
+X-Received: by 2002:adf:f310:0:b0:2f9:a798:602f with SMTP id i16-20020adff310000000b002f9a798602fmr1651121wro.48.1685003639300;
+        Thu, 25 May 2023 01:33:59 -0700 (PDT)
 Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id o3-20020a5d6843000000b003095a329e90sm945809wrw.97.2023.05.25.01.33.55
+        by smtp.googlemail.com with ESMTPSA id o3-20020a5d6843000000b003095a329e90sm945809wrw.97.2023.05.25.01.33.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 25 May 2023 01:33:56 -0700 (PDT)
+        Thu, 25 May 2023 01:33:58 -0700 (PDT)
 From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Thu, 25 May 2023 10:33:12 +0200
-Subject: [PATCH v8 03/10] arm64: dts: mediatek: add watchdog support for
- mt8365 SoC
+Date: Thu, 25 May 2023 10:33:14 +0200
+Subject: [PATCH v8 05/10] arm64: dts: mediatek: add mmc support for
+ mt8365-evk
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20230203-evk-board-support-v8-3-7019f3fd0adf@baylibre.com>
+Message-Id: <20230203-evk-board-support-v8-5-7019f3fd0adf@baylibre.com>
 References: <20230203-evk-board-support-v8-0-7019f3fd0adf@baylibre.com>
 In-Reply-To: <20230203-evk-board-support-v8-0-7019f3fd0adf@baylibre.com>
 To: Catalin Marinas <catalin.marinas@arm.com>, 
@@ -85,25 +85,24 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  Alexandre Mergnat <amergnat@baylibre.com>, 
  Kevin Hilman <khilman@baylibre.com>
 X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=940; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=9yZG6Lt2sYetnfjl+HHfU8vcDGstMCEZ7QfVbikE4Lw=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkbx1vNSdMsmnHxJfKXxkhkVDFUZdZstbXniZEAhSF
- PqyPPteJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZG8dbwAKCRArRkmdfjHURSHoD/
- 4gN0l5X5LvAdG3O8LVaxW4hbi6wkoRPqNGSZNxWA2LNDNhvLypC84tflW1dqzYi6cHZE9e1QQGNYyp
- S81tq0Ya/Lz/+UEwmabof0XIRJqjp2XLGJC3keI7Lj+OycSXr/jz04/fB38VuxxNagstaArMzgOZUK
- Eq7n5Q4TVJsuL6Kmd4MvEC+8hrJP8T8p3nwMQa4cjtgYKlm84GdPto7kbE/2hrw1KQPtiuFLDyEDv8
- VGaTENuxs+foz8mAgrQ6KPpbrmke0GcwdALY5OTISsEM0xngrDB6aiZRcDuN1Q/EdAslMzQnZlwB0X
- ZNfoP/P0RzNU2hPiQNwcBgD/JH2+sbXd19/Acgqp2n0zJ+3uqtHO0lmpnkOsfuygMV0QER3cZDV8B4
- tdTOK6Chkuq1msbkdFQ+QF/hx2W+YduaCAEIjJ12Pt8XSlKyHl1/y6JBfnDFOZXiwm91Nie3mRGjhr
- Jcme7xRHxCDVO3Syhy6x7thJKZALDyqsxjggnNz+GtAsEvRSkpcXRSOwyOjZ5MYG7WT0HWu6S41PAG
- /TdD/ua3MvaZv0QkDp2yo1tA0ZxLIc6pfMOYFMZUeu4P01e4NTmHhdHEV/S+M1oM9FYVGh+93pA394
- v3muDrQ6mAXOfV3iHGsfql4i+ddMZja91BEwAYbyS8hqwQJ5I6gHaFf26E0g==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5033; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=zRgcMI3OkRmlctIxdpBDkf1niL6uEIqNHnmecLTeVcs=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkbx1v0C1JzXuYHBINqiREs25z5avZLyFnqbvkIyfF
+ P1P6vriJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZG8dbwAKCRArRkmdfjHURaVzD/
+ 48V9TVKVorF3jjzO3fhNZt0OoREi/w4Ar6RLUFway9187nmD3w7cWd912rUMa49pTNLAmNdHJ6L6QP
+ AmPaci6hXjhFXcd6vOMSQOiiBk4PRYnNjFTFpR4yFearUXJihawtDmIqnnVcOIW7Ow+hTLmokEi+Dx
+ K9Rx+AUxObDjweU6qc3FGIVDZOCGtgesY3Sh1Vo88qJxbEsekFReHEfDKZwYxL3LNucdHdmrx1AMNc
+ fRDVPrXuUAMvQgqRDWlYmG2Pmj+oKoUSbOA0OpsoZ2NWUcJ7psosNgMRU7AdNcLFY8PyvydNM3TyZf
+ 5BaKExGUVVhYVuTyFNEg9QNPb2nFTLnoXnjdnDYNw/SKPVkL4FqOhH+ppfK8S+rxcJq7dTlUXdrHbg
+ wbI2H9P3LSzlhUUS3YKEw8bgHPQ2x0KHull70h6uCaCWyi7efh9Tl2nn2wqvfNiEv4CPssw0msxAAJ
+ zFE2W59N++DaWRNxkYNytsvCizMrOxtIYZ8qXdFIrzMkA37hzZHCp01b0Z7We/Ivi5sYeHlsSmU33Z
+ FIjKIiLpYuP4XMQIa/YH8ygpHK1TKQ2YX6L5Or/TofAs0EHDs360J4Y07Vhz4rHBrBG9oHNBXdkRBl
+ qThV8PLma1BsxhGyhl4pqKovKgN1L1+oA5AUDLnPgsHEDrLKtfSyggfgXDuw==
 X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
  fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230525_013400_634150_D5C74704 
-X-CRM114-Status: UNSURE (   9.29  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230525_013400_601259_1E2AE853 
+X-CRM114-Status: GOOD (  10.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,32 +117,172 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add watchdog support.
+- Add EMMC support on mmc0 (internal memory)
+- Add SD-UHS support on mmc1 (external memory)
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Tested-by: Kevin Hilman <khilman@baylibre.com>
 Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8365.dtsi | 6 ++++++
- 1 file changed, 6 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 138 ++++++++++++++++++++++++++++
+ 1 file changed, 138 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-index 1f6b48359115..bb45aab2e6a9 100644
---- a/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-@@ -162,6 +162,12 @@ syscfg_pctl: syscfg-pctl@10005000 {
- 			reg = <0 0x10005000 0 0x1000>;
- 		};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+index 6074aa9c1c3e..6e2f3601509e 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+@@ -95,6 +95,42 @@ &i2c0 {
+ 	status = "okay";
+ };
  
-+		watchdog: watchdog@10007000 {
-+			compatible = "mediatek,mt8365-wdt", "mediatek,mt6589-wdt";
-+			reg = <0 0x10007000 0 0x100>;
-+			#reset-cells = <1>;
++&mmc0 {
++	assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL>;
++	assigned-clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>;
++	bus-width = <8>;
++	cap-mmc-highspeed;
++	cap-mmc-hw-reset;
++	hs400-ds-delay = <0x12012>;
++	max-frequency = <200000000>;
++	mmc-hs200-1_8v;
++	mmc-hs400-1_8v;
++	no-sd;
++	no-sdio;
++	non-removable;
++	pinctrl-0 = <&mmc0_default_pins>;
++	pinctrl-1 = <&mmc0_uhs_pins>;
++	pinctrl-names = "default", "state_uhs";
++	vmmc-supply = <&mt6357_vemc_reg>;
++	vqmmc-supply = <&mt6357_vio18_reg>;
++	status = "okay";
++};
++
++&mmc1 {
++	bus-width = <4>;
++	cap-sd-highspeed;
++	cd-gpios = <&pio 76 GPIO_ACTIVE_LOW>;
++	max-frequency = <200000000>;
++	pinctrl-0 = <&mmc1_default_pins>;
++	pinctrl-1 = <&mmc1_uhs_pins>;
++	pinctrl-names = "default", "state_uhs";
++	sd-uhs-sdr104;
++	sd-uhs-sdr50;
++	vmmc-supply = <&mt6357_vmch_reg>;
++	vqmmc-supply = <&mt6357_vmc_reg>;
++	status = "okay";
++};
++
+ &mt6357_pmic {
+ 	interrupts-extended = <&pio 145 IRQ_TYPE_LEVEL_HIGH>;
+ 	interrupt-controller;
+@@ -118,6 +154,108 @@ pins {
+ 		};
+ 	};
+ 
++	mmc0_default_pins: mmc0-default-pins {
++		clk-pins {
++			pinmux = <MT8365_PIN_99_MSDC0_CLK__FUNC_MSDC0_CLK>;
++			bias-pull-down;
 +		};
 +
- 		pio: pinctrl@1000b000 {
- 			compatible = "mediatek,mt8365-pinctrl";
- 			reg = <0 0x1000b000 0 0x1000>;
++		cmd-dat-pins {
++			pinmux = <MT8365_PIN_103_MSDC0_DAT0__FUNC_MSDC0_DAT0>,
++				 <MT8365_PIN_102_MSDC0_DAT1__FUNC_MSDC0_DAT1>,
++				 <MT8365_PIN_101_MSDC0_DAT2__FUNC_MSDC0_DAT2>,
++				 <MT8365_PIN_100_MSDC0_DAT3__FUNC_MSDC0_DAT3>,
++				 <MT8365_PIN_96_MSDC0_DAT4__FUNC_MSDC0_DAT4>,
++				 <MT8365_PIN_95_MSDC0_DAT5__FUNC_MSDC0_DAT5>,
++				 <MT8365_PIN_94_MSDC0_DAT6__FUNC_MSDC0_DAT6>,
++				 <MT8365_PIN_93_MSDC0_DAT7__FUNC_MSDC0_DAT7>,
++				 <MT8365_PIN_98_MSDC0_CMD__FUNC_MSDC0_CMD>;
++			input-enable;
++			bias-pull-up;
++		};
++
++		rst-pins {
++			pinmux = <MT8365_PIN_97_MSDC0_RSTB__FUNC_MSDC0_RSTB>;
++			bias-pull-up;
++		};
++	};
++
++	mmc0_uhs_pins: mmc0-uhs-pins {
++		clk-pins {
++			pinmux = <MT8365_PIN_99_MSDC0_CLK__FUNC_MSDC0_CLK>;
++			drive-strength = <MTK_DRIVE_10mA>;
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++		};
++
++		cmd-dat-pins {
++			pinmux = <MT8365_PIN_103_MSDC0_DAT0__FUNC_MSDC0_DAT0>,
++				 <MT8365_PIN_102_MSDC0_DAT1__FUNC_MSDC0_DAT1>,
++				 <MT8365_PIN_101_MSDC0_DAT2__FUNC_MSDC0_DAT2>,
++				 <MT8365_PIN_100_MSDC0_DAT3__FUNC_MSDC0_DAT3>,
++				 <MT8365_PIN_96_MSDC0_DAT4__FUNC_MSDC0_DAT4>,
++				 <MT8365_PIN_95_MSDC0_DAT5__FUNC_MSDC0_DAT5>,
++				 <MT8365_PIN_94_MSDC0_DAT6__FUNC_MSDC0_DAT6>,
++				 <MT8365_PIN_93_MSDC0_DAT7__FUNC_MSDC0_DAT7>,
++				 <MT8365_PIN_98_MSDC0_CMD__FUNC_MSDC0_CMD>;
++			input-enable;
++			drive-strength = <MTK_DRIVE_10mA>;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++		};
++
++		ds-pins {
++			pinmux = <MT8365_PIN_104_MSDC0_DSL__FUNC_MSDC0_DSL>;
++			drive-strength = <MTK_DRIVE_10mA>;
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++		};
++
++		rst-pins {
++			pinmux = <MT8365_PIN_97_MSDC0_RSTB__FUNC_MSDC0_RSTB>;
++			drive-strength = <MTK_DRIVE_10mA>;
++			bias-pull-up;
++		};
++	};
++
++	mmc1_default_pins: mmc1-default-pins {
++		cd-pins {
++			pinmux = <MT8365_PIN_76_CMDAT8__FUNC_GPIO76>;
++			bias-pull-up;
++		};
++
++		clk-pins {
++			pinmux = <MT8365_PIN_88_MSDC1_CLK__FUNC_MSDC1_CLK>;
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++		};
++
++		cmd-dat-pins {
++			pinmux = <MT8365_PIN_89_MSDC1_DAT0__FUNC_MSDC1_DAT0>,
++				 <MT8365_PIN_90_MSDC1_DAT1__FUNC_MSDC1_DAT1>,
++				 <MT8365_PIN_91_MSDC1_DAT2__FUNC_MSDC1_DAT2>,
++				 <MT8365_PIN_92_MSDC1_DAT3__FUNC_MSDC1_DAT3>,
++				 <MT8365_PIN_87_MSDC1_CMD__FUNC_MSDC1_CMD>;
++			input-enable;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++		};
++	};
++
++	mmc1_uhs_pins: mmc1-uhs-pins {
++		clk-pins {
++			pinmux = <MT8365_PIN_88_MSDC1_CLK__FUNC_MSDC1_CLK>;
++			drive-strength = <MTK_DRIVE_8mA>;
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++		};
++
++		cmd-dat-pins {
++			pinmux = <MT8365_PIN_89_MSDC1_DAT0__FUNC_MSDC1_DAT0>,
++				 <MT8365_PIN_90_MSDC1_DAT1__FUNC_MSDC1_DAT1>,
++				 <MT8365_PIN_91_MSDC1_DAT2__FUNC_MSDC1_DAT2>,
++				 <MT8365_PIN_92_MSDC1_DAT3__FUNC_MSDC1_DAT3>,
++				 <MT8365_PIN_87_MSDC1_CMD__FUNC_MSDC1_CMD>;
++			input-enable;
++			drive-strength = <MTK_DRIVE_6mA>;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++		};
++	};
++
+ 	uart0_pins: uart0-pins {
+ 		pins {
+ 			pinmux = <MT8365_PIN_35_URXD0__FUNC_URXD0>,
 
 -- 
 2.25.1
