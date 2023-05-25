@@ -4,65 +4,132 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0ADB2C7EE2D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 May 2023 12:19:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D575FC77B7E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 May 2023 12:40:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Pqjey6h8hg3b0a/bFQbHPpZ22NcTQA12XsbDc3sxGhg=; b=1Pq5pjMUWZR0gMUStr1WtJzzMB
-	ru2h8BsGrmNf/3Pe04W8opTBP66om9n0BQBdCO/WDKW2AHyGTyVyE+rNG4hKSgU7RIq82/mIjj8zc
-	LKQ/lf2kQ1867JRimEI4HPJ/3KDQ9Zd132BiGKa69tfhKWQ49Obs1FU5ilb07aa21o21csntzn7zS
-	alN9ckPvITgDsUAS5WkoSaWkEK3tiuVyYRzTFRMJ7vwYLXqDS75S+EvP3rEb/tUctEfpwSSc8xeXF
-	pdJcIMegK0IYZLGevAe6hbahpmkkKxPQKQEgdaRVnnPzDAuMccfX7KKd5ywtbY7SY3wMH7bx4epTL
-	5r//0p/A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ofi9rDKaOj5yyLfZwTQCQwt32Q4sEcICZNEgWEPwvYo=; b=X4xJ59QjhtUZU4KMCb8sXER5gR
+	5fE4Bk6qeFeYjpzEgZbRKaN6arnL71JDP5YkS2LzQZIcWd/iYuAwQ0iX46Vo/1MbflpTtj9pWxSif
+	Wnsm3TG4e2DDKg/YiIJIB3ECZQfErP//4k0dMbYBNAMSHAE/3oFMY7KnA7JEF1jKIluDFXG4OnU1u
+	nyQJD68vgT9jnBZ05TbgbnzBaCrTJrdTF25AIefhuK8LLrlDuABBL0hpKUiLY32LZzViN8vwpSTNC
+	GkPtNXAxr8lXi2z6zEs4jz5QPN9/KPIh+J/QWSiVZL+KZODw1xn7TdyBcJcGOZKgKWy2irmwA5Sg2
+	qBsIrkjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q29w8-00GbMz-0k;
-	Thu, 25 May 2023 12:19:20 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1q2AGX-00GdNy-0z;
+	Thu, 25 May 2023 12:40:25 +0000
+Received: from lahtoruutu.iki.fi ([2a0b:5c81:1c1::37])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q29w4-00GbM6-0I;
-	Thu, 25 May 2023 12:19:17 +0000
-Received: from localhost.localdomain (unknown [IPv6:2a0c:5a83:9203:ad00:d93f:618:db35:8dd6])
+	id 1q2AGT-00GdMA-1C;
+	Thu, 25 May 2023 12:40:22 +0000
+Received: from hillosipuli.retiisi.eu (dkzdf0gkyyyyyyyyyyyyt-3.rev.dnainternet.fi [IPv6:2001:14ba:4506:4f15::1])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: rcn)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8A2B86605840;
-	Thu, 25 May 2023 13:19:11 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1685017152;
-	bh=9Kjptvnd7/EwDs1L9wlJNdhS6Kf2YOrwxsH7p8jxz7E=;
-	h=From:To:Cc:Subject:Date:From;
-	b=lUCPW+k4/y6CecJGmRpMLtSBQxgWG3fXrzOI7KVQYkLfYxpLK/wMZYjjf9aagr0vc
-	 2WjodDU1UATEEMCkKMbQEa71HlfSVhdTEYeJbyNNM83ecgJdR0USIVY8YA+MNvq7l7
-	 FUc1Jq2L2q7Si3Ah/NZvMSrRh2ubKGhGatp15TwwiTMVAPL8eBEgsZ50AcsF8exa7J
-	 BWqxHy4i5n3bW+rAizn4h4Fpa9wR20gORcOP6Ih9AZWyK98bRCgsYhm48rP2av+/h5
-	 iZPUYFudExYFCfMYVBdPnPbxT7U99aPj+uikR6DD2/Pz/57pfHR+QquU4xoVVIAHG+
-	 +6BM5n5wnq/Lg==
-From: =?UTF-8?q?Ricardo=20Ca=C3=B1uelo?= <ricardo.canuelo@collabora.com>
-To: matthias.bgg@gmail.com
-Cc: void0red@hust.edu.cn,
-	angelogioacchino.delregno@collabora.com,
-	daniel.lezcano@linaro.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-pm@vger.kernel.org,
-	kernel@collabora.com
-Subject: [PATCH v2] Revert "thermal/drivers/mediatek: Use devm_of_iomap to avoid resource leak in mtk_thermal_probe"
-Date: Thu, 25 May 2023 14:18:11 +0200
-Message-Id: <20230525121811.3360268-1-ricardo.canuelo@collabora.com>
-X-Mailer: git-send-email 2.25.1
+	(Authenticated sender: sailus)
+	by lahtoruutu.iki.fi (Postfix) with ESMTPSA id 4QRnh50mylz49Q1p;
+	Thu, 25 May 2023 15:40:04 +0300 (EEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi; s=lahtoruutu;
+	t=1685018410;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Ofi9rDKaOj5yyLfZwTQCQwt32Q4sEcICZNEgWEPwvYo=;
+	b=DKPXrx/FbnfaMLqgt/vzuwj7wLQ8AXTIVFKzL4YpEKJWfA0kJUKCttjkxWzzwsNd+9klEm
+	l/6ItAVlA2uD72MDBos9PRgOUMsxom8qH5LE5/U6YBrnqupwx7ZV8vnd+MiG//eeMrehbp
+	csZNtNYSH0/Loy/4M4YM0JIQhX1dz4Q2S5Y/xZQcHnYn1aothuv/tMstqLButi5FQq4AOl
+	oeV6l9/Ly1Ip9h42qJP5+BquyPkZZ7iuE0RyVRCKWCC3AXVCsyWxSUrEC0WKx0rLqlDejx
+	zbyGccAw9MLbvsS2RmzUansBRfUzc9AoOJ4t45Pf87+4+8zfQg3L68IRhGyJ6Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi;
+	s=lahtoruutu; t=1685018410;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Ofi9rDKaOj5yyLfZwTQCQwt32Q4sEcICZNEgWEPwvYo=;
+	b=pgVmOaEtw4vdoOZ8eaPmA7QgR+wrMMywJgDD60w0UAC7RxyzllFL534IMqFDtenK3XAljS
+	m+vzDBMPa4uN11gUQVxXlmFoSIuc5cNzpwdIeRkcDwxfkOBmatYPGzOqQfC47v3uEYhwye
+	mriwF2jEfs62hAYYdpqyuh/cZvO07x9niovAMH7lbln2DZRqvbca+ouVSryZHvumuyKzJ1
+	b73+02DxuCtEpcT4KN53ZdZoYb4eF4s1N68JDvWQwCkEhSoH4O61Ix2pIgCw5baNCMnyqV
+	N+uZ2bNbmJY65VddBTUKx7/mGXqYu4tzyC3fY8AbER5oRBa4YCbIVxAwqTYWLQ==
+ARC-Authentication-Results: i=1;
+	ORIGINATING;
+	auth=pass smtp.auth=sailus smtp.mailfrom=sakari.ailus@iki.fi
+ARC-Seal: i=1; s=lahtoruutu; d=iki.fi; t=1685018410; a=rsa-sha256;
+	cv=none;
+	b=EQXr1FrsCQ8foHNMEHA9eY6b/C+Vv6N83O8oWbK948jenc4D+4e7/9RX4f3Dg9YE7JzWBe
+	q9WEwFd9OheyWJNGkeIcGlZopb92MLZ2LRM09ycO/d64iCAR916Jst1hA9e6jUZeAcoMjj
+	cgobMxqIZ02lc1wO08QVCfrUFb3irmbtvOCTuz/6fH1sWQff0nqktBLnBwp5nLkLmXhaDh
+	E5FVqu/1dV//U4IGAsf17xs01k1YUL0VONCZoG2If4cFciNnNUEj0SEVkA6uv02jsGh4x1
+	7uLYzOJ5xGWxPQBmzG6nwiCHtmInsVvEIb4y+GNv+D0RsC892mwiMfJ/Yhg30A==
+Received: from valkosipuli.retiisi.eu (valkosipuli.localdomain [192.168.4.2])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by hillosipuli.retiisi.eu (Postfix) with ESMTPS id 6AAE6634C91;
+	Thu, 25 May 2023 15:40:04 +0300 (EEST)
+Date: Thu, 25 May 2023 15:40:04 +0300
+From: Sakari Ailus <sakari.ailus@iki.fi>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Joe Tessler <jrt@google.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Michael Tretter <m.tretter@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Jacopo Mondi <jacopo+renesas@jmondi.org>,
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+	Niklas =?iso-8859-1?Q?S=F6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
+	Rui Miguel Silva <rmfrfs@gmail.com>,
+	Wenyou Yang <wenyou.yang@microchip.com>,
+	Bin Liu <bin.liu@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+	Houlong Wei <houlong.wei@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
+	Jacek Anaszewski <jacek.anaszewski@gmail.com>,
+	Sylwester Nawrocki <s.nawrocki@samsung.com>,
+	Patrice Chotard <patrice.chotard@foss.st.com>,
+	Yong Deng <yong.deng@magewell.com>,
+	Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	"Lad, Prabhakar" <prabhakar.csengg@gmail.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Philipp Zabel <p.zabel@pengutronix.de>, Sean Young <sean@mess.org>,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-amlogic@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-tegra@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 01/28] media: cec: ch7322: drop of_match_ptr for ID table
+Message-ID: <ZG9XJCD98VWjGjTN@valkosipuli.retiisi.eu>
+References: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
+ <98a77653-ec58-56c4-9893-3b424f67c87e@linaro.org>
+ <5afcec8b-b8f6-35b0-278a-5de185e4a7a2@xs4all.nl>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <5afcec8b-b8f6-35b0-278a-5de185e4a7a2@xs4all.nl>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230525_051916_267830_DF9C971D 
-X-CRM114-Status: UNSURE (   9.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230525_054021_597960_E9305535 
+X-CRM114-Status: GOOD (  19.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,59 +144,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This reverts commit f05c7b7d9ea9477fcc388476c6f4ade8c66d2d26.
+Hi Hans,
 
-That change was causing a regression in the generic-adc-thermal-probed
-bootrr test as reported in the kernelci-results list [1].
-A proper rework will take longer, so revert it for now.
+On Sat, May 13, 2023 at 11:57:33AM +0200, Hans Verkuil wrote:
+> On 12/05/2023 18:35, Krzysztof Kozlowski wrote:
+> > On 12/03/2023 14:12, Krzysztof Kozlowski wrote:
+> >> The driver can match only via the DT table so the table should be always
+> >> used and the of_match_ptr does not have any sense (this also allows ACPI
+> >> matching via PRP0001, even though it might not be relevant here).
+> >>
+> >>   drivers/media/cec/i2c/ch7322.c:583:34: error: ‘ch7322_of_match’ defined but not used [-Werror=unused-const-variable=]
+> >>
+> >> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> >> ---
+> > 
+> > Hans, Sakari,
+> > 
+> > Can you pick up the patchset? There was positive feedback:
+> > https://patchwork.linuxtv.org/project/linux-media/patch/20230312131318.351173-1-krzysztof.kozlowski@linaro.org/
+> > 
+> > but it seems it was not applied.
+> 
+> I see it is delegated to Sakari in patchwork and marked Under Review, but I don't
+> see a corresponding pull request for this series.
+> 
+> Sakari, did something go wrong?
 
-[1] https://groups.io/g/kernelci-results/message/42660
+I spotted this as Hans notified me in IRC, I wasn't cc'd. Apologies for
+this --- I intended to take these but I think I must have missed something
+important in the process. I'll take them now.
 
-Fixes: f05c7b7d9ea9 ("thermal/drivers/mediatek: Use devm_of_iomap to avoid resource leak in mtk_thermal_probe")
-Signed-off-by: Ricardo Cañuelo <ricardo.canuelo@collabora.com>
-Suggested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
+Thanks.
 
-Changes in v2:
-  - "Fixes" and "Reviewed-by" tags added
-
- drivers/thermal/mediatek/auxadc_thermal.c | 14 ++------------
- 1 file changed, 2 insertions(+), 12 deletions(-)
-
-diff --git a/drivers/thermal/mediatek/auxadc_thermal.c b/drivers/thermal/mediatek/auxadc_thermal.c
-index 0b5528804bbd..f59d36de20a0 100644
---- a/drivers/thermal/mediatek/auxadc_thermal.c
-+++ b/drivers/thermal/mediatek/auxadc_thermal.c
-@@ -1222,12 +1222,7 @@ static int mtk_thermal_probe(struct platform_device *pdev)
- 		return -ENODEV;
- 	}
- 
--	auxadc_base = devm_of_iomap(&pdev->dev, auxadc, 0, NULL);
--	if (IS_ERR(auxadc_base)) {
--		of_node_put(auxadc);
--		return PTR_ERR(auxadc_base);
--	}
--
-+	auxadc_base = of_iomap(auxadc, 0);
- 	auxadc_phys_base = of_get_phys_base(auxadc);
- 
- 	of_node_put(auxadc);
-@@ -1243,12 +1238,7 @@ static int mtk_thermal_probe(struct platform_device *pdev)
- 		return -ENODEV;
- 	}
- 
--	apmixed_base = devm_of_iomap(&pdev->dev, apmixedsys, 0, NULL);
--	if (IS_ERR(apmixed_base)) {
--		of_node_put(apmixedsys);
--		return PTR_ERR(apmixed_base);
--	}
--
-+	apmixed_base = of_iomap(apmixedsys, 0);
- 	apmixed_phys_base = of_get_phys_base(apmixedsys);
- 
- 	of_node_put(apmixedsys);
 -- 
-2.25.1
+Kind regards,
 
+Sakari Ailus
 
