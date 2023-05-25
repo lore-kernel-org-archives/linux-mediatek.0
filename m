@@ -4,133 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF720C77B7E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 May 2023 13:20:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AA05C7EE29
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 May 2023 13:32:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0qetPBPgd9hVIq6M58pwalvrkrjuv/rSJBgHk7CnDNA=; b=vcdo41MdEQ9EhYDj0VkMT5hRk0
-	sc6motezuawuTH0mkqpuU7EM8ogUt5vt4ohjsPPjfpZQccUlkzsc9lVW1LY9DfMp5LyTFm7AUGvsl
-	297P4E6Jqtn+XC1RCDQrXRMpD9rj8SWXGlnEYaswnlits+3cd6nhm+mhahMPdZtGOtsh9Ws3cNWal
-	aP3UQs9cMTNOryAV//OrUA74Ps8BWEhUnCWM+92fXA6lnYLPlYELwP3eOkmNsWWvm/9arJzGJLRDY
-	5pJ+8hb7FUHQ/9Ughllo6PGSh1tpLjvbCrLOudid9d52ZxUyftzoRyWUk1OAGSBnD3nxuEs0ttJwI
-	UjYLebmg==;
+	bh=gT/KiN/GVyh9un3dWdPg6LQ82j/4nY+K0qSJUuMUUpI=; b=esU6XIwGw2F+pOOYmQEX5pY+aC
+	VsOgD9KijqHYSpfcqBttJeM/a0hZUyc9PzeCEkQv4M7U8msoSH5P2HP2MC0w/nvicbhsCX26cNr/u
+	NB4nCE8T9CWjIvHq5QbpwNOKMPPHoQJLWvR+qqoCP8tQTDR7Hz4vf60lIKIM0kU67UMHSSVt2afNL
+	4GVn1FQZ2eHwyLSUJwhFJCBoDWaQpIhkgotQqknbGdYmzhCvs001Q1UvAfdu/CeLDQgEgl+jyLTX2
+	rvbg/Ks6LULg3eJGOpkXlOFHA3mulmTBoiHPpxpV3FtpQINybUvbGvnUDDXAq6SSzhWI7EbcVuke9
+	Y9Csv2Ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2Ast-00GiYx-2e;
-	Thu, 25 May 2023 13:20:03 +0000
-Received: from lahtoruutu.iki.fi ([2a0b:5c81:1c1::37])
+	id 1q2B4M-00Gjjv-1c;
+	Thu, 25 May 2023 13:31:54 +0000
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2Aso-00GiXE-0d;
-	Thu, 25 May 2023 13:20:00 +0000
-Received: from hillosipuli.retiisi.eu (82-181-192-243.bb.dnainternet.fi [82.181.192.243])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sailus)
-	by lahtoruutu.iki.fi (Postfix) with ESMTPSA id 4QRpZ35Pkxz49Q76;
-	Thu, 25 May 2023 16:19:55 +0300 (EEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi; s=lahtoruutu;
-	t=1685020795;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=0qetPBPgd9hVIq6M58pwalvrkrjuv/rSJBgHk7CnDNA=;
-	b=NQbDvhVxiaRGXJjuc+Jd2Ockby8SWIOEsMstnWOA5IhXCMoIrFElwCykOp3L+zm7yjC3cY
-	Zc/ZxrremUTWFoMLrTKD7ZtVZgYvUbqLwoWggnTZkRc9RgnD4stzgPLitp3bo4IrSytg5g
-	a6K1P/vufidWxIRLT29wj5/Gx/ixNpL1vO22RaXuvKEqSmOoda2hFwKK7DqnIqugOUvewa
-	KGh7/EDBCyK2Jumr6W/kxjajCjRj8PDbpdGKhUpEeWGw7PmDKcJys0ykJx2yRzTjROgJrv
-	pYmJMjlYdzQBker9uQbW2shaIQHjR+9a+POQ/RAu86zhGgIN1VNPFiGUTEaCHA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi;
-	s=lahtoruutu; t=1685020795;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=0qetPBPgd9hVIq6M58pwalvrkrjuv/rSJBgHk7CnDNA=;
-	b=aoVtERg41iMgL2DTOyJXSGRwV7K+2GDB2coIVsnzxBxCJM1T5qJPdgHEM8VXokKQP6AVac
-	FZHWPY703xIl5IgXgMhnltcE8WI+GvRc0PCmsu8cpGRlyFUTp8WAocpJ0rqLzlLSVLl8k+
-	/8N7oh0TZxl/PmajclTT8a6qEmyCdHobC0H0+TS8RAwLa78V2SxWqaoWGpvp2GyERE0owk
-	k11fbNm8pJaFsnfb7NkxIjgm8fR9g1UpNM/hvrMHTrL+rNazB+d3kBOtRQhiO2C/Q4BxcY
-	JXh2bG79SNOUuxfaX1Neb9TawjBjyDo1tH6RJJOunXGpLZZfvzgsBpTElMVsew==
-ARC-Authentication-Results: i=1;
-	ORIGINATING;
-	auth=pass smtp.auth=sailus smtp.mailfrom=sakari.ailus@iki.fi
-ARC-Seal: i=1; s=lahtoruutu; d=iki.fi; t=1685020795; a=rsa-sha256;
-	cv=none;
-	b=efqD3vaGzuMwKAX5crbjHumwetM35Wf3CIlqu3vc9agehICnsodaIH9kn2um0WhroiJYQ5
-	usexy3uEPSzkIUoCyvfeed17Un/uE+WRdWg22XaC4z4N0iPZrLMQAaZrpr1qJ+ZF7c++cd
-	L5FKqTtMjiccuc8QZGghS0NBCxaoKB19NBpLs+IHCLr2tvwgy4ScjsvWI/9hcD3IkRgv38
-	zn+cGrxUXQu+uturY8ca20qAU1sc31M09LEnX8wZA3z+73efIXBYefQ1lwI/0kAviH4+YO
-	ZJFzLS+RxWaL4379SLh+isKa94hmQVjcNCslU4h/E4uUu8gOTrTLJkiXU+kCEg==
-Received: from valkosipuli.retiisi.eu (valkosipuli.localdomain [192.168.4.2])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by hillosipuli.retiisi.eu (Postfix) with ESMTPS id 16BBE634C91;
-	Thu, 25 May 2023 16:19:55 +0300 (EEST)
-Date: Thu, 25 May 2023 16:19:54 +0300
-From: Sakari Ailus <sakari.ailus@iki.fi>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Joe Tessler <jrt@google.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Michael Tretter <m.tretter@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Jacopo Mondi <jacopo+renesas@jmondi.org>,
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
-	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
-	Niklas =?iso-8859-1?Q?S=F6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
-	Rui Miguel Silva <rmfrfs@gmail.com>,
-	Wenyou Yang <wenyou.yang@microchip.com>,
-	Bin Liu <bin.liu@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
-	Houlong Wei <houlong.wei@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
-	Jacek Anaszewski <jacek.anaszewski@gmail.com>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	Yong Deng <yong.deng@magewell.com>,
-	Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	"Lad, Prabhakar" <prabhakar.csengg@gmail.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Philipp Zabel <p.zabel@pengutronix.de>, Sean Young <sean@mess.org>,
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-amlogic@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-tegra@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 01/28] media: cec: ch7322: drop of_match_ptr for ID table
-Message-ID: <ZG9ger4WE2VWoVEF@valkosipuli.retiisi.eu>
-References: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
- <98a77653-ec58-56c4-9893-3b424f67c87e@linaro.org>
- <5afcec8b-b8f6-35b0-278a-5de185e4a7a2@xs4all.nl>
- <ZG9XJCD98VWjGjTN@valkosipuli.retiisi.eu>
+	id 1q2B4J-00Gjhx-0V;
+	Thu, 25 May 2023 13:31:52 +0000
+Received: by mail-ed1-x533.google.com with SMTP id 4fb4d7f45d1cf-510ede0f20aso3813982a12.3;
+        Thu, 25 May 2023 06:31:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1685021507; x=1687613507;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=gT/KiN/GVyh9un3dWdPg6LQ82j/4nY+K0qSJUuMUUpI=;
+        b=DAXSVG8SP+PMkUmaPR9OniX53jxwwXdb/BjZYjLC7skxBg3hQIIQaaiqIs8n2P/xDN
+         GJvgkHnDCGcmOGhm4hp7gdrbPrhn4iX1WcJLn0fyAWXLH6G50D3PVGHsJx1Gi3KVGGGN
+         4itEM9tUXxIW5KbUxDrUK/4Sq/kesrylVJ/OMA6IVGSZc6dmmyC1VxPu/xYEAx00AiYX
+         rB33rgHAhoN4cDfBJv6hElYqLV3RQ2vB2+Z7jFaw25+18hUOUyP1e336IVLI5450L1RX
+         MvXSC65Z8MdJKWX6ZnqPhXUuaEj4BlsA2KGWywHa2FRFOA1cVtUS6SiWAaCWz6X0xut6
+         kXEw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1685021507; x=1687613507;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=gT/KiN/GVyh9un3dWdPg6LQ82j/4nY+K0qSJUuMUUpI=;
+        b=Q075eSrizybEkeJ60xdcW1U9NT23X9xF5Juxrac9XWMDrqcxocxnwFkZXfrljwsQUY
+         V2lkcKiG83SqtBwohkg98Atz/ln1fRdEus62t7Q+/AZa+K1BJkA7hchKpXqo43dM1SR9
+         Fl8jDGbS2v2hxSOLWq5c7hB5r0n7aHTI6PjWKijyudn3u4e1nmdq/IKqH0KZQIdneltq
+         WRV4+5TnxtnmchpCu0/xi7ljcOi6iqmod5Dz3FJ/hhTdFPoD0PPyHK524SgwSilcbRAb
+         AOA8GgRo0/vizNF+BXzhA4Q7NYcCz8NhMrE2Sfg3X5sfL7zppXE3HYZfB9VeN41tO+Kb
+         Ygzw==
+X-Gm-Message-State: AC+VfDxG7QJgqnBCmRlodW7lx0Wne1pwurRrNURFew5FQHIbEdn5I4v2
+	Xp43NljoHB+UBlkaZXj0Qf0=
+X-Google-Smtp-Source: ACHHUZ7C1fLtYhn8fZGe3ehLd1Xq/uazQq9TEEOCoBMvdYjTG9644jyrZ3G60lSa+jZQQSKib5XpTw==
+X-Received: by 2002:a05:6402:204d:b0:510:ec67:22d2 with SMTP id bc13-20020a056402204d00b00510ec6722d2mr4482475edb.10.1685021504024;
+        Thu, 25 May 2023 06:31:44 -0700 (PDT)
+Received: from skbuf ([188.27.184.189])
+        by smtp.gmail.com with ESMTPSA id r3-20020a056402034300b0050bce352dc5sm543380edw.85.2023.05.25.06.31.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 25 May 2023 06:31:43 -0700 (PDT)
+Date: Thu, 25 May 2023 16:31:40 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Subject: Re: [PATCH net-next 05/30] net: dsa: mt7530: read XTAL value from
+ correct register
+Message-ID: <20230525133140.xewm6g5rl7sm57d2@skbuf>
+References: <20230522121532.86610-1-arinc.unal@arinc9.com>
+ <20230522121532.86610-6-arinc.unal@arinc9.com>
+ <20230524165701.pbrcs4e74juzb4r3@skbuf>
+ <7c915d5b-56c9-430d-05ac-544f76966eb1@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <ZG9XJCD98VWjGjTN@valkosipuli.retiisi.eu>
+In-Reply-To: <7c915d5b-56c9-430d-05ac-544f76966eb1@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230525_061958_566512_F19D2779 
-X-CRM114-Status: GOOD (  23.93  )
+X-CRM114-CacheID: sfid-20230525_063151_212308_7BC067EB 
+X-CRM114-Status: GOOD (  34.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,59 +90,79 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, mithat.guner@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi folks,
-
-On Thu, May 25, 2023 at 03:40:04PM +0300, Sakari Ailus wrote:
-> Hi Hans,
-> 
-> On Sat, May 13, 2023 at 11:57:33AM +0200, Hans Verkuil wrote:
-> > On 12/05/2023 18:35, Krzysztof Kozlowski wrote:
-> > > On 12/03/2023 14:12, Krzysztof Kozlowski wrote:
-> > >> The driver can match only via the DT table so the table should be always
-> > >> used and the of_match_ptr does not have any sense (this also allows ACPI
-> > >> matching via PRP0001, even though it might not be relevant here).
-> > >>
-> > >>   drivers/media/cec/i2c/ch7322.c:583:34: error: ‘ch7322_of_match’ defined but not used [-Werror=unused-const-variable=]
-> > >>
-> > >> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> > >> ---
+On Thu, May 25, 2023 at 09:20:08AM +0300, Arınç ÜNAL wrote:
+> On 24.05.2023 19:57, Vladimir Oltean wrote:
+> > On Mon, May 22, 2023 at 03:15:07PM +0300, arinc9.unal@gmail.com wrote:
+> > > From: Arınç ÜNAL <arinc.unal@arinc9.com>
 > > > 
-> > > Hans, Sakari,
+> > > On commit 7ef6f6f8d237 ("net: dsa: mt7530: Add MT7621 TRGMII mode support")
+> > > macros for reading the crystal frequency were added under the MT7530_HWTRAP
+> > > register. However, the value given to the xtal variable on
+> > > mt7530_pad_clk_setup() is read from the MT7530_MHWTRAP register instead.
 > > > 
-> > > Can you pick up the patchset? There was positive feedback:
-> > > https://patchwork.linuxtv.org/project/linux-media/patch/20230312131318.351173-1-krzysztof.kozlowski@linaro.org/
+> > > Although the document MT7621 Giga Switch Programming Guide v0.3 states that
+> > > the value can be read from both registers, use the register where the
+> > > macros were defined under.
 > > > 
-> > > but it seems it was not applied.
+> > > Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> > > Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> > > ---
 > > 
-> > I see it is delegated to Sakari in patchwork and marked Under Review, but I don't
-> > see a corresponding pull request for this series.
+> > I'm sorry, but I refuse this patch, mainly as a matter of principle -
+> > because that's just not how we do things, and you need to understand why.
 > > 
-> > Sakari, did something go wrong?
+> > The commit title ("read XTAL value from correct register") claims that
+> > the process of reading a field which cannot be changed by software is
+> > any more correct when it is read from HWTRAP rather than MHWTRAP
+> > (modified HWTRAP).
+> > 
+> > Your justification is that it's confusing to you if two registers have
+> > the same layout, and the driver has a single set of macros to decode the
+> > fields from both. You seem to think it's somehow not correct to decode
+> > fields from the MHWTRAP register using macros which have just HWTRAP in
+> > the name.
 > 
-> I spotted this as Hans notified me in IRC, I wasn't cc'd. Apologies for
-> this --- I intended to take these but I think I must have missed something
-> important in the process. I'll take them now.
+> No, it doesn't confuse me that two registers share the same layout. My
+> understanding was that the MHWTRAP register should be used for modifying the
+> hardware trap, and the HWTRAP register should be used for reading from the
+> hardware trap.
+
+My understanding is that reading from the read-only HWTRAP always gives
+you the power-on settings, while reading from the r/w MHWTRAP always
+gives you the current settings. If those settings coincide, as happens
+here, there's no practical difference.
+
+> I see that the XTAL constants were defined under the HWTRAP
+> register so I thought it would make sense to change the code to read the
+> XTAL values from the HWTRAP register instead. Let me know if you disagree
+> with this.
+
+I disagree as a matter of principle with the reasoning. The fact that
+XTAL constants are defined under HWTRAP is not a reason to change the
+code to read the XTAL values from the HWTRAP register. The fact that
+XTAL_FSEL is read-only in MHWTRAP is indeed a reason why you *could*
+read it from HWTRAP, but also not one why you *should* make a change.
+
+> > Seriously, please first share these small rewrites with someone more
+> > senior than you, and ask for a preliminary second opinion.
 > 
-> Thanks.
+> Would submitting this as an RFC had been a similar action to your describing
+> here? Because I already did that:
+> 
+> https://lore.kernel.org/netdev/20230421143648.87889-6-arinc.unal@arinc9.com/
 
-This no longer applied cleanly. Mostly there was fuzz near .of_match_table
-changes as probe_new (and remove_new?) changes have been recently merged.
-There were other issues as well, I marked a few patches in the set "not
-applicable" as other patches had already done equivalent changes earlier.
+In practice, volume is also an issue. The higher the volume, the lower
+the chances that people will be able to crop a chunk of time large enough
+to review.
 
-There were substance-changing changes in the 20th patch, replied to the
-disuccsion there.
+> I should've given more effort to explain my reasons for this patch. I
+> disagree that the series is a large volume of worthless and misguided
+> refactoring and am happy to discuss it patch by patch.
 
-I've pushed the result here and intend to send PR to Mauro soon if there
-are no issues:
-
-<URL:https://git.linuxtv.org/sailus/media_tree.git/log/?h=of-match-ptr>
-
--- 
-Kind regards,
-
-Sakari Ailus
+I agree that the follow-up patches, as far as I could reach into this
+series, are not as gratuitous as this one.
 
