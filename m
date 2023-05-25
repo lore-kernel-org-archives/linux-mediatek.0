@@ -4,71 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54AACC7EE2C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 May 2023 08:49:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FB7AC77B7A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 May 2023 09:34:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UxXFrKElRzHD3AhZ1Izn24LgyXIERCFwVs1IlBDcXRs=; b=4VgAQdh0mhs/xh8UdKCSX5t57i
-	7iQtJiYNIY94gDVSbOg7CHQxRiYC67EJ3GixvGtQ+SzKy676wb+tUggmJqkdBkpL/Vm7uH0fRL21B
-	Yxdz6kBTKbHXTnm+jWA3ngRd1Gy7eYkvrPDMVI7fvW4yMuTOKJj2yygrf24bEzLcwVE1D6ke3smbr
-	RPZJcVLYD/uJ3Vxs/bNQvLM+pcHEwPsud2VFr+Lmnrlh0pWJAMbKF1Y/OJIQft4K9oVLA6iAvgGH1
-	T4sstOulD6I0ja+E1YzoC2BHkQrrg7291gmW1Kzy3a0gga+tco02/rzWc6JPIX7T/e5zG/053Jsn3
-	IasftQWg==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=tqKiheoiS4yq5jJKO080DEclkNiRCw8ceYhBPpYSW10=; b=jvKpuXAwZTrzfDF2xFyEosLhTQ
+	T4nQy54gk59dn0ZMMzZ+e2nz7/qqsP4XVb9QpfukBwBEmO9eWnbjqU5cKiDlgTd3DASNyqVAO7Qeu
+	DDb+AMCdfASLgqylJfCUL1FDdymsCIwfKDRSy6b7TWKPy8IjCWWt86a61JHn89bWcvpaDPIvBYczY
+	PH2IEyEy4jNsnvDvUNziBSUcjVKzFxamNJoz0o9JtG3IFOEAzxY/Lc4Xlc99dQx/HFn3BdwxeG0nr
+	rOtd2QAmX3K1I43Kzh6CDfcjUbk1xspA92Up+j1pG8FiYtCQvJq2OnBoRI9YlXj7dSxIM93DVvDSI
+	B7Jc66KA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q26f7-00G2w6-39;
-	Thu, 25 May 2023 08:49:34 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1q27Mh-00G9RP-0t;
+	Thu, 25 May 2023 09:34:35 +0000
+Received: from galois.linutronix.de ([193.142.43.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q26f4-00G2uo-2P;
-	Thu, 25 May 2023 08:49:32 +0000
-Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7313C6601F25;
-	Thu, 25 May 2023 09:49:28 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1685004569;
-	bh=EtbcIEsusRHFZTgu8Dex+fRPFWvkGsCdZCUXAljl5dA=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=R3Kqq201hrVo9BPurnMzA4ezjYaxoOObvi2g1URGN83ygYowisAzheTdUdqoN8r5n
-	 TSPVNXvf2IqTDg6Ua32jPMj5mo3fBXv6Jzp00dpCYtRkUZIBFKRI6Z95fFDvcq9zyB
-	 Qmf4i6a4nRyF4Lo8EjOvSFAi7xS9fItyrAASqEHumC9d+L+2iMqekjSs9WuiEvzVgr
-	 kqPO/q7IWRwlb7SHqcUp/Q775FHR3XSGYEdGLrJGcoMiI0kG0mYN6GtVrQxhaJszeY
-	 PEVm7f/e/4fGzFf7IIwz7zGZD1F44ZMszNcIUEl1DVmOHxBiPP4hdPjndP8BOQ7DIl
-	 oElYLmw5vShYA==
-Message-ID: <b80ceed1-0c5a-0875-dab0-309e2318d88e@collabora.com>
-Date: Thu, 25 May 2023 10:49:26 +0200
+	id 1q27Md-00G9Q2-35;
+	Thu, 25 May 2023 09:34:33 +0000
+From: John Ogness <john.ogness@linutronix.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020; t=1685007268;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=tqKiheoiS4yq5jJKO080DEclkNiRCw8ceYhBPpYSW10=;
+	b=re+Hu0Q6naTRkLuq5eU7bi7VBahJ3jr8aBUqXzdjEscO6fFefxJ4TqV6CgzTNijC2fRXEj
+	nu/Rl1HplALQsfWCrafjfKln2JD4fEY/y4CGiBpm+F/utJGJna0zH65rWpmFIigo1OXnQ2
+	JQOwRBFtYZ/Cr/UstwBmiZI5kldN8MsDZ+z2CLqSj4/zsFpK1nFj+ND1YuHsq6f0BVYhVJ
+	0n0mY+Ob923slWcssK+rAXjXd+jb9VnRVIF4La9H/mq8kfbp++g2EkNcoBOP2b3btKuEIc
+	0b6z9UrYO9ES6eAX8JQytY6NFHakxcLgBMMlOVqeDuclJyZOtbsuL46JyufeoA==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020e; t=1685007268;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=tqKiheoiS4yq5jJKO080DEclkNiRCw8ceYhBPpYSW10=;
+	b=r4IBGzHnpEiWatgryztcx7z8+JEUnFfYdoY3NU/fQz+ApYAmVt2J4BJIgkGCYHlUDFC5l5
+	NYrEmYigRZtQ8iBA==
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Petr Mladek <pmladek@suse.com>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	linux-kernel@vger.kernel.org,
+	Al Cooper <alcooperx@gmail.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Jiri Slaby <jirislaby@kernel.org>,
+	=?UTF-8?q?Ilpo=20J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>,
+	Lino Sanfilippo <l.sanfilippo@kunbus.com>,
+	Matthew Howell <matthew.howell@sealevel.com>,
+	Tony Lindgren <tony@atomide.com>,
+	Lukas Wunner <lukas@wunner.de>,
+	Matthias Schiffer <matthias.schiffer@ew.tq-group.com>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+	linux-serial@vger.kernel.org,
+	Vijaya Krishna Nivarthi <quic_vnivarth@quicinc.com>,
+	Douglas Anderson <dianders@chromium.org>,
+	Joel Stanley <joel@jms.id.au>,
+	Andrew Jeffery <andrew@aj.id.au>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-aspeed@lists.ozlabs.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH tty v1 0/8] synchronize UART_IER access against console write
+Date: Thu, 25 May 2023 11:37:51 +0206
+Message-Id: <20230525093159.223817-1-john.ogness@linutronix.de>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.1
-Subject: Re: [PATCH v8 07/10] arm64: dts: mediatek: add ethernet support for
- mt8365-evk
-Content-Language: en-US
-To: Alexandre Mergnat <amergnat@baylibre.com>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
- Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
- <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Conor Dooley <conor+dt@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Kevin Hilman <khilman@baylibre.com>
-References: <20230203-evk-board-support-v8-0-7019f3fd0adf@baylibre.com>
- <20230203-evk-board-support-v8-7-7019f3fd0adf@baylibre.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230203-evk-board-support-v8-7-7019f3fd0adf@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230525_014930_918287_1697E950 
-X-CRM114-Status: GOOD (  15.67  )
+X-CRM114-CacheID: sfid-20230525_023432_154528_29451EF4 
+X-CRM114-Status: GOOD (  15.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,92 +93,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/05/23 10:33, Alexandre Mergnat ha scritto:
-> - Enable "vibr" and "vsim2" regulators to power the ethernet chip.
-> 
-> Tested-by: Kevin Hilman <khilman@baylibre.com>
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-> ---
->   arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 48 +++++++++++++++++++++++++++++
->   1 file changed, 48 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-> index 1a5769c397c2..86524cbf4354 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-> @@ -88,6 +88,29 @@ optee_reserved: optee@43200000 {
->   	};
->   };
->   
-> +&ethernet {
-> +	pinctrl-0 = <&ethernet_pins>;
-> +	pinctrl-names = "default";
-> +	phy-handle = <&eth_phy>;
-> +	phy-mode = "rmii";
-> +	/*
-> +	 * Ethernet and HDMI (DSI0) are sharing pins.
-> +	 * Only one can be enabled at a time and require the physical switch
-> +	 * SW2101 to be set on LAN position
-> +	 * mt6357_vibr_reg and mt6357_vsim2_reg are needed to supply ethernet
-> +	 */
-> +	status = "disabled";
+Hi,
 
-Ouh, that's sad :-(
+In preparation for making the 8250 serial driver the first driver to
+support the upcoming atomic consoles [0], its console write()
+callback (serial8250_console_write) was evaluated. For this callback
+of the 8250 driver there are two critical writes to the UART_IER
+register: once to disable all interrupts before transmitting a line
+of text, and again after transmit to re-enable the previously enabled
+interrupts. These two writes are performed under a single
+synchronized section protected by the port lock.
 
-...but you're left with no other choice, so I agree with providing at least
-the full node in case anyone wants to actually enable it by flipping the
-switch on the board, so you get my
+I then checked all other access to UART_IER in the 8250 driver to see
+if they always occurred under the port lock. If not, it would be
+possible that the console write() callback could overwrite or restore
+incorrect values to UART_IER. This is illustrated in the commit
+message of the first patch.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Indeed several call sites were discovered where UART_IER is accessed
+without the port lock. This series adds the missing locking in order
+to ensure UART_IER access is always synchronized against the console
+write() callback.
 
-Cheers!
+For call sites where UART_IER access was already performed under the
+port lock, this series adds code comments and (when appropriate)
+lockdep notation to help catch any future issues that may creep in.
 
-> +
-> +	mdio {
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +
-> +		eth_phy: ethernet-phy@0 {
-> +			reg = <0>;
-> +		};
-> +	};
-> +};
-> +
->   &i2c0 {
->   	clock-frequency = <100000>;
->   	pinctrl-0 = <&i2c0_pins>;
-> @@ -138,6 +161,31 @@ &mt6357_pmic {
->   };
->   
->   &pio {
-> +	ethernet_pins: ethernet-pins {
-> +		phy_reset_pins {
-> +			pinmux = <MT8365_PIN_133_TDM_TX_DATA1__FUNC_GPIO133>;
-> +		};
-> +
-> +		rmii_pins {
-> +			pinmux = <MT8365_PIN_0_GPIO0__FUNC_EXT_TXD0>,
-> +				 <MT8365_PIN_1_GPIO1__FUNC_EXT_TXD1>,
-> +				 <MT8365_PIN_2_GPIO2__FUNC_EXT_TXD2>,
-> +				 <MT8365_PIN_3_GPIO3__FUNC_EXT_TXD3>,
-> +				 <MT8365_PIN_4_GPIO4__FUNC_EXT_TXC>,
-> +				 <MT8365_PIN_5_GPIO5__FUNC_EXT_RXER>,
-> +				 <MT8365_PIN_6_GPIO6__FUNC_EXT_RXC>,
-> +				 <MT8365_PIN_7_GPIO7__FUNC_EXT_RXDV>,
-> +				 <MT8365_PIN_8_GPIO8__FUNC_EXT_RXD0>,
-> +				 <MT8365_PIN_9_GPIO9__FUNC_EXT_RXD1>,
-> +				 <MT8365_PIN_10_GPIO10__FUNC_EXT_RXD2>,
-> +				 <MT8365_PIN_11_GPIO11__FUNC_EXT_RXD3>,
-> +				 <MT8365_PIN_12_GPIO12__FUNC_EXT_TXEN>,
-> +				 <MT8365_PIN_13_GPIO13__FUNC_EXT_COL>,
-> +				 <MT8365_PIN_14_GPIO14__FUNC_EXT_MDIO>,
-> +				 <MT8365_PIN_15_GPIO15__FUNC_EXT_MDC>;
-> +		};
-> +	};
-> +
->   	gpio_keys: gpio-keys-pins {
->   		pins {
->   			pinmux = <MT8365_PIN_24_KPCOL0__FUNC_KPCOL0>;
-> 
+Note that some of the new usage of port lock is not strictly
+necessary, because (for example) the console is disabled before it
+is suspended. However, these are not hot paths and by taking the port
+lock it simplifies the synchronization semantics for UART_IER to
+allow general lockdep usage.
+
+Also note that none of these patches have been tagged for stable. The
+possible stable candidates do include Fixes tags. But since the fixes
+are not based on real-world reports, it probably is not necessary to
+backport them.
+
+John Ogness
+
+[0] https://lore.kernel.org/lkml/20230302195618.156940-1-john.ogness@linutronix.de
+
+John Ogness (8):
+  serial: 8250: lock port in startup() callbacks
+  serial: core: lock port for stop_rx() in uart_suspend_port()
+  serial: 8250: lock port for stop_rx() in omap8250_irq()
+  serial: core: lock port for start_rx() in uart_resume_port()
+  serial: 8250: lock port for rx_dma() callback
+  serial: 8250: lock port for omap8250_restore_regs()
+  serial: 8250: lock port for UART_IER access in omap8250_irq()
+  serial: 8250: synchronize and annotate UART_IER access
+
+ drivers/tty/serial/8250/8250.h              |  6 ++
+ drivers/tty/serial/8250/8250_aspeed_vuart.c |  3 +
+ drivers/tty/serial/8250/8250_bcm7271.c      |  4 ++
+ drivers/tty/serial/8250/8250_exar.c         |  4 ++
+ drivers/tty/serial/8250/8250_mtk.c          |  9 +++
+ drivers/tty/serial/8250/8250_omap.c         | 41 +++++++++++-
+ drivers/tty/serial/8250/8250_port.c         | 71 ++++++++++++++++++++-
+ drivers/tty/serial/serial_core.c            | 10 ++-
+ 8 files changed, 141 insertions(+), 7 deletions(-)
+
+
+base-commit: d5b3d02d0b107345f2a6ecb5b06f98356f5c97ab
+-- 
+2.30.2
 
 
