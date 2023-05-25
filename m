@@ -4,70 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F63FC77B7A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 May 2023 06:50:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE3E7C7EE2C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 May 2023 06:52:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QmWADVtt1bAIDiV+lGyZGiUZ+bZgxA+uS3KFDsIT1TI=; b=rkIt9Q4Y7fRqji
-	XhVf5V1mBpqlnqIskr08MzFD3Ah/CdAbPQziCrLUOmhjn8Mmdl5rpd4S8NuKuZL1Gc4Xhmnjj3Ng9
-	dOw+k0UbwhrqVzbYzE6LChO+1PLyczfo2gHSb+JQjGdUukF5P+CtAU6tcYW9QdsQQOlDMd6be5ufa
-	Vacr19RBlsyP+Zft8Hxb9nDlov+Qr4YJE8HTYaYiTeGbKSg8k9O/jajsuK6EFpkZczywxEAUkvVZY
-	0+IN52jWfHyrvqu31yV+fuoPE/HOefiAL54v/J4PEiETfrc7jwZyRrOw4R8Xnd05WWiLmGikUbdMX
-	QBbzCP79fogByWh0uqhg==;
+	List-Owner; bh=MwhSXtCM+amK18ZJFZTkmGQCxpMOw/Tgzf9+hmAj/30=; b=H/tGqW6QMoOcHH
+	otJ/I+7u3qN/DwsZRLu5nZrilAd8BfTl7ATGmM3z1PjZdF+bSLGh9OE4KjSqqBGnKDdGmU158MBMu
+	38rt5IJelkS9cWBA6nknRrI7crT8dzikxPQ6sADnZEhw6P5J+I/WXXVqpendjHAS83VKUSRk0xRC4
+	0ZTki8ig97gKmjZbx6YXXhYYMpIM7Q9xBZSiec3q9Bc9bOqN3wPE+OIvhBqnCJoj3lQTnTL7RtYKf
+	bD0oDRI39O61JNltqF+TK/jXhg0MWReLTqHiI6x4HJWkgQLTv4kBj9qU9V6AixAlOElWyaRICA6/E
+	4VZZNjq6HJ/tC4V3aSmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q24oE-00FiaU-0x;
-	Thu, 25 May 2023 06:50:50 +0000
-Received: from sender4-op-o10.zoho.com ([136.143.188.10])
+	id 1q24pG-00FinO-30;
+	Thu, 25 May 2023 06:51:54 +0000
+Received: from sender3-op-o18.zoho.com ([136.143.184.18])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q24oA-00FiZi-2o;
-	Thu, 25 May 2023 06:50:48 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1684997412; cv=none; 
+	id 1q24pE-00Fimu-1D;
+	Thu, 25 May 2023 06:51:53 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1684997485; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=Q6tJGyb1DqPzT7MCeAIMcBQWCjs4JwfGu7nbsd7137sieZy6Sp3fGl8ZRV6oMVOpban4TFv4Q+ZdNY59bzgsWjNQwQQm/uua1bSKu28CEqCwQ/YmfcI6zyY3i3KAP2dqj7gvtPMNbhNoLFAXYGImrEIafrCSh283DyRMYHSm4W0=
+	b=afXrsYFLi41jwH+s0sSNtF7dOOG2lVdLUQ3kHMkoesgovweqDtIoPk/C0X29+I4yJTos543ocNwD32phJqChF1rv7yyDdWV2jCe6bIGMj+X8I1V5htoWpeGvBcDPlvpMQ+QR/FLr/kV4wF9iczHez+2neAokZlDMhfSKH1dUZms=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1684997412; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=QmWADVtt1bAIDiV+lGyZGiUZ+bZgxA+uS3KFDsIT1TI=; 
-	b=Dlqo2DyiJIMcTX9m9haJCPBk99OoXEetg/OGfW8D6B6toxUpp3NPJde9NzwB/xX89yMBetlFYckMTO0CE4OMCOfGarlu8KRaaeqCCdnIt4j0+0vBkKudgK6QQGPpWJ0nWwWGnt2BaNhOMjf2YEFKCgknXY4tI888OH9ChDTgqWA=
+	t=1684997485; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=MwhSXtCM+amK18ZJFZTkmGQCxpMOw/Tgzf9+hmAj/30=; 
+	b=QxA7JTqOzrVF4E/qxiRKNJ+oobC01mwj8p9jLJcdVC5fX8AOfbZ7EJpok3+NTUCfR4Hd00RGeaMANRDdp82EmdaOZV14Y2w7krjkl45MMoAOA7SIOQPGlkGNnc8QMeiTzeyXYF3+xSXJOZiA1u5h4NlskuadK2Qh15Lv2FxG3Go=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=arinc9.com;
 	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
 	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1684997412;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1684997485;
 	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
 	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=QmWADVtt1bAIDiV+lGyZGiUZ+bZgxA+uS3KFDsIT1TI=;
-	b=HBL2Hxc6VzTLaYZitkUWm1IU23e+z20GO7Q2tKeV+gTuVo2gcIzH1VmlOYhWPDxK
-	7mO4sCjV6mavxS+wCFAn609L/ufFozIefkjLuDsUVMZEWJFgcL4mqjzb2yyV74WqOOL
-	BmBvNgEl6k2svXU4FNUFOZQwquL/lGQbUSd0N1qA=
+	bh=MwhSXtCM+amK18ZJFZTkmGQCxpMOw/Tgzf9+hmAj/30=;
+	b=SGz24cTwAJTIyieCXy3a7XPVAxp7Cywv4ErQW6cqg2mcv3UulKBRJTBU5ke9V//I
+	wVJxXTSiUODqhBGMT8IdnzyZJAbHFW7LcyvqqQoU/vSjIIMB57GUeZDTOb17jN4wAdg
+	zLamxWzs07PapbPkEIw6eURALUYXCyJOelzNR3h8=
 Received: from [10.10.10.217] (149.91.1.15 [149.91.1.15]) by mx.zohomail.com
-	with SMTPS id 168499741040714.054183633237926; Wed, 24 May 2023 23:50:10 -0700 (PDT)
-Message-ID: <576f92b0-1900-f6ff-e92d-4b82e3436ea1@arinc9.com>
-Date: Thu, 25 May 2023 09:49:58 +0300
+	with SMTPS id 1684997484418555.9448204414057; Wed, 24 May 2023 23:51:24 -0700 (PDT)
+Message-ID: <0777fa04-7dd7-7f67-2a8b-f855f5aeba82@arinc9.com>
+Date: Thu, 25 May 2023 09:51:12 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.11.0
-Subject: Re: [PATCH net-next 08/30] net: dsa: mt7530: change p{5,6}_interface
- to p{5,6}_configured
+Subject: Re: [PATCH net-next 09/30] net: dsa: mt7530: empty default case on
+ mt7530_setup_port5()
 Content-Language: en-US
 To: Vladimir Oltean <olteanv@gmail.com>
 References: <20230522121532.86610-1-arinc.unal@arinc9.com>
- <20230522121532.86610-1-arinc.unal@arinc9.com>
- <20230522121532.86610-9-arinc.unal@arinc9.com>
- <20230522121532.86610-9-arinc.unal@arinc9.com>
- <20230524175107.hwzygo7p4l4rvawj@skbuf>
+ <20230522121532.86610-10-arinc.unal@arinc9.com>
+ <20230524180529.y7vl5mb4rn4vwdhh@skbuf>
 From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20230524175107.hwzygo7p4l4rvawj@skbuf>
+In-Reply-To: <20230524180529.y7vl5mb4rn4vwdhh@skbuf>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230524_235046_969223_96DDB702 
-X-CRM114-Status: GOOD (  11.44  )
+X-CRM114-CacheID: sfid-20230524_235152_463166_32D1C312 
+X-CRM114-Status: GOOD (  11.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,31 +81,20 @@ Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <ed
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 24.05.2023 20:51, Vladimir Oltean wrote:
-> On Mon, May 22, 2023 at 03:15:10PM +0300, arinc9.unal@gmail.com wrote:
->> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
->> index 710c6622d648..d837aa20968c 100644
->> --- a/drivers/net/dsa/mt7530.c
->> +++ b/drivers/net/dsa/mt7530.c
->> @@ -2728,25 +2722,20 @@ mt753x_phylink_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
->>   			goto unsupported;
->>   		break;
->>   	case 5: /* Port 5, can be used as a CPU port. */
->> -		if (priv->p5_interface == state->interface)
->> +		if (priv->p5_configured)
->>   			break;
->>   
->>   		if (mt753x_mac_config(ds, port, mode, state) < 0)
->>   			goto unsupported;
->> -
->> -		if (priv->p5_intf_sel != P5_DISABLED)
->> -			priv->p5_interface = state->interface;
+On 24.05.2023 21:05, Vladimir Oltean wrote:
+> On Mon, May 22, 2023 at 03:15:11PM +0300, arinc9.unal@gmail.com wrote:
+>>   	default:
+>> -		dev_err(ds->dev, "Unsupported p5_intf_sel %d\n",
+>> -			priv->p5_intf_sel);
+>> -		goto unlock_exit;
 > 
-> If you don't replace this bit with anything, who will set priv->p5_configured
-> for mt7530?
+> You could have probably left a comment though (that doesn't cost in
+> terms of compiled code):
+> 
+> 		/* We never call mt7530_setup_port5() with P5_DISABLED */
 
-I intend priv->p5_configured and priv->p6_configured to be only used for 
-MT7531 as I have stated on the mt7530_priv description.
+I remove P5_DISABLED with later patches so I don't see a reason to add 
+this then remove it on the same patch series.
 
 Arınç
 
