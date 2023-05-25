@@ -4,103 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38DBBC7EE29
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 May 2023 14:51:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 915FFC77B7E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 May 2023 15:46:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dk7QJei9PeWUkzrOfgGS8Gy9rm2de0CYH4aZNTGkzf4=; b=ZTPnEgwfSLfVc7Cndab9TjZ10Q
-	MEvls3B0dtTOLgNidp0ZBz4Fn5uFqnjFElkzW/ZxjRyOEzrIqcpk8706SJYSF2g3+WMLnz/0PXACn
-	g6G2mD0qWN9dne+Zk1aBXcTPTU3wAYwm82t60i9Zehw+cmKT0tQvBNFeuNSvYRDs6O+Y9uTg94FGy
-	NtU4qV3T3oInqxNRbko5ZBp4QJ6kPZVIioEWWUMn2BfjD98/gF0v+xC2B9/m7vn6rUdtLzGOTal4p
-	pdJ2BQUpoMwNEPql4/kcrdLn0Qyjfw5xrRStbK1fzG1wWcMQhDpYOU6yIk9RC20IYktbrB2KhtcMB
-	KB+TCPWw==;
+	bh=O8qIJ0ij1C4Q3TxzXpM/XXaP/yFC83JB8WzGzsTCF7o=; b=Wy3EKIfutCwnPRkD06XC5bujxM
+	+f/N7eByWt+tOy0YeoooOl24n4Kzzikt/UkJccagc53hHSsW94ohvBj2t65nUtvFz4IglMFC1EcJ9
+	8Gss/7rB1SornTpsKeg+Xk7sQ3XBOA/c1n9TpUt8SkyseQJdw02IN5aY6oMWainvs9/VRqnQtcuLq
+	0jDhkK2PnkNw1lEI4QCad7pjY1Y5RdAkRWIDYUl80VuexnkGE1UYCKKZLGvhAHk0NBw+fnqQ4JrS2
+	/Qf1Q51NWJzaa7y/+MEXWW09JNElCQR/lwy09N7cNkCRhERYH945pkios9maQk1eFfuwuCQJl9Mbn
+	UkkAJBOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2CIy-00GsOh-0S;
-	Thu, 25 May 2023 14:51:04 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1q2DAR-00H0Es-1P;
+	Thu, 25 May 2023 15:46:19 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2CId-00GsG6-0e
-	for linux-mediatek@lists.infradead.org;
-	Thu, 25 May 2023 14:50:46 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-3f6cbdf16d2so5406055e9.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 25 May 2023 07:50:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1685026242; x=1687618242;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=dk7QJei9PeWUkzrOfgGS8Gy9rm2de0CYH4aZNTGkzf4=;
-        b=RDYOuDjHqN5yM2HylJX8fjxPxXwdjjEn/cAh57zUpQtn/q7ZiSpr8HfxMpZikuGWLw
-         LBI+UFMOmLFEng2EAKP/xE7wAkgi72eyq8IYXbpr5S93FLllIiLH+s2+/UIXa7o1vSRd
-         566RoUvd4hldZhYjPqYFDKbV1hw0/aXy2DsO90pmaLe6Rv+x+ntlEF0hsY0NSkZakWZO
-         KdlUpt99qkaKBW6XvnwRfFCv3iRAS1YwE8E52p16IbT8fjtnO/nqUdl3Tb/1pdAdi2Cz
-         RcaWhPhFDyIz+ruY+yiMq8ZPFqn+or6GzBVdnkxmUS+hUxPmeTvTDHRzttvazhWhR0hx
-         1FvQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685026242; x=1687618242;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=dk7QJei9PeWUkzrOfgGS8Gy9rm2de0CYH4aZNTGkzf4=;
-        b=lecyYKDzHQ/ozzxEpPCuj4uetYFx68UCbt7o+NKCp159ESqDNUQQO+pZXq1cTlM4+f
-         QsCYNF6KD43hsIJVzsLpk9XZkwyvflomk7ElX/Ba1bOzJACKt3h7NSN8IlzNNUMDP7FU
-         oFxj8LszThMJFL8J5z+d+gvOD7O4mQkU9efJh4pag20OFebi6bakQVivpDlNTPW0MCFj
-         KED7k9sm0Nh7D5mS5D7DLhebSZ6iyqtFZou8qV9/zxe1Uwz7m0DudlIHudjrniSfqL+f
-         NKzlkTNBGWKyH10Zn7Yi7ccPQGl2FJ8maEQOIiwLA6kOMfpLq1ybjLDJG1CCF0oFnSJC
-         KAKg==
-X-Gm-Message-State: AC+VfDzHAHe0hjLwjdzgm+KytOf4uAsKZC1df9lJzVw/hwaYn05QXnEL
-	OoX643m9XYuBU/8HtNm1gf1grw==
-X-Google-Smtp-Source: ACHHUZ42xNQWVL0brQ8SGM/70DXdaDwrPk90wl3j0E8Dzivt8ZR+BsmepjCzfa79r/1DdgjYrkkDJQ==
-X-Received: by 2002:a05:600c:2152:b0:3f6:426:eae with SMTP id v18-20020a05600c215200b003f604260eaemr2466110wml.15.1685026242015;
-        Thu, 25 May 2023 07:50:42 -0700 (PDT)
-Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id n4-20020a05600c294400b003f3157988f8sm2349559wmd.26.2023.05.25.07.50.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 25 May 2023 07:50:41 -0700 (PDT)
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Thu, 25 May 2023 16:50:28 +0200
-Subject: [PATCH v2 2/2] clk: mediatek: mt8365: Fix index issue
+	id 1q2DAN-00H0E4-2y;
+	Thu, 25 May 2023 15:46:17 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 01403645C2;
+	Thu, 25 May 2023 15:46:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 80648C433D2;
+	Thu, 25 May 2023 15:46:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1685029574;
+	bh=HAMXQ7eYyMpNN5eFdaxJ+MXRIlrr5kTcFjDxNo3yGV0=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=Fi/gsGTWmhOeHLKZcwFtc50qZBywJ6IeWY8ltkbnKWY8SjiwIdXXMiwnj6fZfncW3
+	 upLfFvmPmrepSo3SfUMEa7pYQ/ZAePqldIIWi4UZoOk4SMCBtDJe6atGLvCwpclcO9
+	 lbWgE7/EImZVKWKpkWVFKq5vz0LLZLW2iFu8lvTkVlgWcHNkAL6t4kkHFS0OLtLmAe
+	 NgEzGpw+XbubiIDiXetRVGe2/Bw4VSVQwIyfvSUdLk6qvRytHKm5a126+oD+H/ymxR
+	 bHwlgTmEAIo78b3mwg1QM8PhlfwQt+lJAGtzyeId90jgU8EouXDxeHvpmWC2I9UJtR
+	 pKUTI63bJTGTg==
+From: Mark Brown <broonie@kernel.org>
+To: qii.wang@mediatek.com
+Cc: matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+ linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ srv_heupstream@mediatek.com, leilk.liu@mediatek.com, 
+ "Tim . Kuo" <Tim.kuo@mediatek.com>
+In-Reply-To: <20230523112608.10298-1-qii.wang@mediatek.com>
+References: <20230523112608.10298-1-qii.wang@mediatek.com>
+Subject: Re: [PATCH] spi: mediatek: advertise the availability of Dual and
+ Quad mode
+Message-Id: <168502957225.307668.278901745390078945.b4-ty@kernel.org>
+Date: Thu, 25 May 2023 16:46:12 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20230517-fix-clk-index-v2-2-1b686cefcb7e@baylibre.com>
-References: <20230517-fix-clk-index-v2-0-1b686cefcb7e@baylibre.com>
-In-Reply-To: <20230517-fix-clk-index-v2-0-1b686cefcb7e@baylibre.com>
-To: Michael Turquette <mturquette@baylibre.com>, 
- Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Chen-Yu Tsai <wenst@chromium.org>
-Cc: Markus Schneider-Pargmann <msp@baylibre.com>, linux-clk@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Alexandre Mergnat <amergnat@baylibre.com>
-X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3945; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=h4CYMTHY+i6lrYnmhgx8aF98Btv8+w8cHJz9HWafPts=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkb3W+OhDmteG4nw7zZfgxSFRSGHsPONsu2EhaYln8
- LTOxFnSJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZG91vgAKCRArRkmdfjHURb3sEA
- C+HameIOZ/zOTzknXCgncCzzXdKLAwF+YxxjNIV3lMeucqs/dQiRtk/jnJ32zowP0KN/NAgCyh+9+g
- yHLAlMtgrWQFiGupWkJREZ8J2zCTxipX8yhulBaPZQUJH4D+X5D/ksC+BuBC++HJ2afXyflFhMlaqS
- n99Ma/qF49neqoe+SFske6IyASQgcCwZsSEsISTL0KG0cOrSIiou34bQ9ohNOFNH03HK9JAJxx9Zv+
- HY/UxHua/E7RnBzFc6jfcbfQPgS/zBqF1TiBx1UQECMKaSpFep5k6pnBSw8akBhzb9Qo+w6IXW850P
- vNsdHwBW4jVl6aY+E6Gxcx7o9MrbcM0M9Ti1AnusX6nT3H31iRBO7BgnbKlB2STTz953gFS8MXKOSi
- Etds32yoO1XR3dYA4MaX8eEvT+DS2b+zSAZw1IUyXthT/11jXuAilVQl57JBPWB82oncSl5brRplN+
- r30QIkY4PJ1fzuw444gXoXoRJqqK42rttmPpRUzmLzJcV7Owyt/DGTSndWPgkJP1ZUXZDQk3WwlfJv
- 0giWg90hzlA/youxIzY8KuHnnwHwYHhG3uCXgppyg17V/Ucg4ul+Q5DlQ6LBKT7u+BTalOS0RDnzaw
- bqD6eUdamA2i6N1D/A20sLv54OQ98+2LmM/Y1TTOj19zVjkZDCXYwi83sEtA==
-X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
- fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
+X-Mailer: b4 0.13-dev-bfdf5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230525_075043_253467_6B30572A 
-X-CRM114-Status: GOOD (  16.39  )
+X-CRM114-CacheID: sfid-20230525_084616_023478_5C857883 
+X-CRM114-Status: GOOD (  12.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,84 +77,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Before the patch [1], the clock probe was done directly in the
-clk-mt8365 driver. In this probe function, the array which stores the
-data clocks is sized using the higher defined numbers (*_NR_CLOCK) in
-the clock lists [2]. Currently, with the patch [1], the specific
-clk-mt8365 probe function is replaced by the mtk generic one [3], which
-size the clock data array by adding all the clock descriptor array size
-provided by the clk-mt8365 driver.
+On Tue, 23 May 2023 19:26:08 +0800, qii.wang@mediatek.com wrote:
+> this patch advertise the availability of Dual and Quad SPI mode
+> for ipm design.
+> 
+> 
 
-Actually, all clock indexes come from the header file [2], that mean, if
-there are more clock (then more index) in the header file [2] than the
-number of clock declared in the clock descriptor arrays (which is the
-case currently), the clock data array will be undersized and then the
-generic probe function will overflow when it will try to write in
-"clk_data[CLK_INDEX]". Actually, instead of crashing at boot, the probe
-function returns an error in the log which looks like:
-"of_clk_hw_onecell_get: invalid index 135", then this clock isn't
-enabled.
+Applied to
 
-Solve this issue by adding in the driver the missing clocks declared in
-the header clock file [2].
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
 
-[1]: Commit ffe91cb28f6a ("clk: mediatek: mt8365: Convert to
-     mtk_clk_simple_{probe,remove}()")
-[2]: include/dt-bindings/clock/mediatek,mt8365-clk.h
-[3]: drivers/clk/mediatek/clk-mtk.c
+Thanks!
 
-Fixes: ffe91cb28f6a ("clk: mediatek: mt8365: Convert to mtk_clk_simple_{probe,remove}()")
+[1/1] spi: mediatek: advertise the availability of Dual and Quad mode
+      commit: dcb2d27444baeba91701bcab38d60c219cb47463
 
-Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
----
- drivers/clk/mediatek/clk-mt8365.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-diff --git a/drivers/clk/mediatek/clk-mt8365.c b/drivers/clk/mediatek/clk-mt8365.c
-index 6b4e193f648d..35aafeefbf31 100644
---- a/drivers/clk/mediatek/clk-mt8365.c
-+++ b/drivers/clk/mediatek/clk-mt8365.c
-@@ -23,6 +23,7 @@
- static DEFINE_SPINLOCK(mt8365_clk_lock);
- 
- static const struct mtk_fixed_clk top_fixed_clks[] = {
-+	FIXED_CLK(CLK_TOP_CLK_NULL, "clk_null", NULL, 0),
- 	FIXED_CLK(CLK_TOP_I2S0_BCK, "i2s0_bck", NULL, 26000000),
- 	FIXED_CLK(CLK_TOP_DSI0_LNTC_DSICK, "dsi0_lntc_dsick", "clk26m",
- 		  75000000),
-@@ -559,6 +560,14 @@ static const struct mtk_clk_divider top_adj_divs[] = {
- 		  0x324, 16, 8, CLK_DIVIDER_ROUND_CLOSEST),
- 	DIV_ADJ_F(CLK_TOP_APLL12_CK_DIV3, "apll12_ck_div3", "apll_i2s3_sel",
- 		  0x324, 24, 8, CLK_DIVIDER_ROUND_CLOSEST),
-+	DIV_ADJ_F(CLK_TOP_APLL12_CK_DIV4, "apll12_ck_div4", "apll_tdmout_sel",
-+		  0x328, 0, 8, CLK_DIVIDER_ROUND_CLOSEST),
-+	DIV_ADJ_F(CLK_TOP_APLL12_CK_DIV4B, "apll12_ck_div4b", "apll_tdmout_sel",
-+		  0x328, 8, 8, CLK_DIVIDER_ROUND_CLOSEST),
-+	DIV_ADJ_F(CLK_TOP_APLL12_CK_DIV5, "apll12_ck_div5", "apll_tdmin_sel",
-+		  0x328, 16, 8, CLK_DIVIDER_ROUND_CLOSEST),
-+	DIV_ADJ_F(CLK_TOP_APLL12_CK_DIV5B, "apll12_ck_div5b", "apll_tdmin_sel",
-+		  0x328, 24, 8, CLK_DIVIDER_ROUND_CLOSEST),
- 	DIV_ADJ_F(CLK_TOP_APLL12_CK_DIV6, "apll12_ck_div6", "apll_spdif_sel",
- 		  0x32c, 0, 8, CLK_DIVIDER_ROUND_CLOSEST),
- };
-@@ -696,6 +705,7 @@ static const struct mtk_gate ifr_clks[] = {
- 	GATE_IFR3(CLK_IFR_GCPU, "ifr_gcpu", "axi_sel", 8),
- 	GATE_IFR3(CLK_IFR_TRNG, "ifr_trng", "axi_sel", 9),
- 	GATE_IFR3(CLK_IFR_AUXADC, "ifr_auxadc", "clk26m", 10),
-+	GATE_IFR3(CLK_IFR_CPUM, "ifr_cpum", "clk26m", 11),
- 	GATE_IFR3(CLK_IFR_AUXADC_MD, "ifr_auxadc_md", "clk26m", 14),
- 	GATE_IFR3(CLK_IFR_AP_DMA, "ifr_ap_dma", "axi_sel", 18),
- 	GATE_IFR3(CLK_IFR_DEBUGSYS, "ifr_debugsys", "axi_sel", 24),
-@@ -717,6 +727,7 @@ static const struct mtk_gate ifr_clks[] = {
- 	GATE_IFR5(CLK_IFR_PWRAP_TMR, "ifr_pwrap_tmr", "clk26m", 12),
- 	GATE_IFR5(CLK_IFR_PWRAP_SPI, "ifr_pwrap_spi", "clk26m", 13),
- 	GATE_IFR5(CLK_IFR_PWRAP_SYS, "ifr_pwrap_sys", "clk26m", 14),
-+	GATE_IFR5(CLK_IFR_AES_TOP0_BK, "ifr_aes_top0_bk", "clk26m", 16),
- 	GATE_IFR5(CLK_IFR_IRRX_26M, "ifr_irrx_26m", "clk26m", 22),
- 	GATE_IFR5(CLK_IFR_IRRX_32K, "ifr_irrx_32k", "clk32k", 23),
- 	GATE_IFR5(CLK_IFR_I2C0_AXI, "ifr_i2c0_axi", "i2c_sel", 24),
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
--- 
-2.25.1
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
