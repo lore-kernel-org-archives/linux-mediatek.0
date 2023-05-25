@@ -4,70 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4CB8C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 May 2023 11:53:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0ADB2C7EE2D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 May 2023 12:19:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yKG38xF1lrSRsztBtgckRg1My5/PsZzH6804zj43Yg0=; b=rgjSydcb55EEhd1fFdSmkkckqU
-	Vk0dmraSoLIDoEQw4rPQXP/QxlTFGK0wsiqYIiIHEa5SheHOfcY7aGX05egj1kUm8eij1Ceaa836N
-	0pQPeVcHCuV/feynaKpwG1gOr9Jwz3thobwKZVj0wDYPIJp3X0NMUaiaNVAadu1r8YNoV7eXcD2Ph
-	yIzwYKHGuvHTiv6QYUcmfJKia2R6Rajb5FVVkOdJxwI0l34RY/t0vhBknfyVBiC8IOPz9ydPnJPlt
-	kIk/J44qCHU6ET2aWbO8zoaYL8cEtSmOTDEAC/h82COgK/246b2uqq6hkZ+s9Q4fnAs65bbiAYoff
-	gJ4WhpQw==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Pqjey6h8hg3b0a/bFQbHPpZ22NcTQA12XsbDc3sxGhg=; b=1Pq5pjMUWZR0gMUStr1WtJzzMB
+	ru2h8BsGrmNf/3Pe04W8opTBP66om9n0BQBdCO/WDKW2AHyGTyVyE+rNG4hKSgU7RIq82/mIjj8zc
+	LKQ/lf2kQ1867JRimEI4HPJ/3KDQ9Zd132BiGKa69tfhKWQ49Obs1FU5ilb07aa21o21csntzn7zS
+	alN9ckPvITgDsUAS5WkoSaWkEK3tiuVyYRzTFRMJ7vwYLXqDS75S+EvP3rEb/tUctEfpwSSc8xeXF
+	pdJcIMegK0IYZLGevAe6hbahpmkkKxPQKQEgdaRVnnPzDAuMccfX7KKd5ywtbY7SY3wMH7bx4epTL
+	5r//0p/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q29X5-00GYc5-1a;
-	Thu, 25 May 2023 11:53:27 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1q29w8-00GbMz-0k;
+	Thu, 25 May 2023 12:19:20 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q29Wl-00GYPe-3A;
-	Thu, 25 May 2023 11:53:09 +0000
-Received: from IcarusMOD.eternityproject.eu (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
+	id 1q29w4-00GbM6-0I;
+	Thu, 25 May 2023 12:19:17 +0000
+Received: from localhost.localdomain (unknown [IPv6:2a0c:5a83:9203:ad00:d93f:618:db35:8dd6])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E43E966059A5;
-	Thu, 25 May 2023 12:53:04 +0100 (BST)
+	(Authenticated sender: rcn)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8A2B86605840;
+	Thu, 25 May 2023 13:19:11 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1685015585;
-	bh=WbEXo3O6eq8DNbznstqMaJK9I2AdQzGF7reesP/HlpQ=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ObeEAKew/EV4k/4CVn0x6SQOFrwwbDVAZ+FzbB0+wvCKGDBeg/9srQrx0mOXI+ckk
-	 5POE11Zgw03CbyOWK3pRg5RpWyU0uLBALigsVQ1Dr63r8pCbG24+5HACVAyjRiKwWa
-	 +6XxDcIxkgnIEvkLe3u4APBEPIjTaaF8CPTnFkEAyTOt1dbh0AWwOfFjGuWDwpDlNi
-	 8aKtkrokLq701yCDGSKAV79QoO9IlZcGaFEBUFZP1hqLz8ETJvLP7vV+NyJtVRryUX
-	 4J6axsXdvNOStwOzSEONcc3M9M6ulB/qPzNREHy4RS5DMc9BRehDp5DE674Q6skiHT
-	 UWM7nCvMnHhuQ==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: chunkuang.hu@kernel.org
-Cc: p.zabel@pengutronix.de,
-	chunfeng.yun@mediatek.com,
-	vkoul@kernel.org,
-	kishon@kernel.org,
-	matthias.bgg@gmail.com,
+	s=mail; t=1685017152;
+	bh=9Kjptvnd7/EwDs1L9wlJNdhS6Kf2YOrwxsH7p8jxz7E=;
+	h=From:To:Cc:Subject:Date:From;
+	b=lUCPW+k4/y6CecJGmRpMLtSBQxgWG3fXrzOI7KVQYkLfYxpLK/wMZYjjf9aagr0vc
+	 2WjodDU1UATEEMCkKMbQEa71HlfSVhdTEYeJbyNNM83ecgJdR0USIVY8YA+MNvq7l7
+	 FUc1Jq2L2q7Si3Ah/NZvMSrRh2ubKGhGatp15TwwiTMVAPL8eBEgsZ50AcsF8exa7J
+	 BWqxHy4i5n3bW+rAizn4h4Fpa9wR20gORcOP6Ih9AZWyK98bRCgsYhm48rP2av+/h5
+	 iZPUYFudExYFCfMYVBdPnPbxT7U99aPj+uikR6DD2/Pz/57pfHR+QquU4xoVVIAHG+
+	 +6BM5n5wnq/Lg==
+From: =?UTF-8?q?Ricardo=20Ca=C3=B1uelo?= <ricardo.canuelo@collabora.com>
+To: matthias.bgg@gmail.com
+Cc: void0red@hust.edu.cn,
 	angelogioacchino.delregno@collabora.com,
-	dri-devel@lists.freedesktop.org,
+	daniel.lezcano@linaro.org,
 	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-phy@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org,
 	kernel@collabora.com
-Subject: [PATCH 2/3] phy: mediatek: mipi-dsi: Use devm variant for of_clk_add_hw_provider()
-Date: Thu, 25 May 2023 13:52:57 +0200
-Message-Id: <20230525115258.90091-3-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230525115258.90091-1-angelogioacchino.delregno@collabora.com>
-References: <20230525115258.90091-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2] Revert "thermal/drivers/mediatek: Use devm_of_iomap to avoid resource leak in mtk_thermal_probe"
+Date: Thu, 25 May 2023 14:18:11 +0200
+Message-Id: <20230525121811.3360268-1-ricardo.canuelo@collabora.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230525_045308_157489_C4C1ACDD 
-X-CRM114-Status: GOOD (  11.08  )
+X-CRM114-CacheID: sfid-20230525_051916_267830_DF9C971D 
+X-CRM114-Status: UNSURE (   9.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,42 +77,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Switch to devm_of_clk_add_hw_provider() in the probe function: this
-also allows to entirely remove the .remove_new() callback, as its
-only task was to unregister the clock provider.
+This reverts commit f05c7b7d9ea9477fcc388476c6f4ade8c66d2d26.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+That change was causing a regression in the generic-adc-thermal-probed
+bootrr test as reported in the kernelci-results list [1].
+A proper rework will take longer, so revert it for now.
+
+[1] https://groups.io/g/kernelci-results/message/42660
+
+Fixes: f05c7b7d9ea9 ("thermal/drivers/mediatek: Use devm_of_iomap to avoid resource leak in mtk_thermal_probe")
+Signed-off-by: Ricardo Cañuelo <ricardo.canuelo@collabora.com>
+Suggested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/phy/mediatek/phy-mtk-mipi-dsi.c | 8 +-------
- 1 file changed, 1 insertion(+), 7 deletions(-)
 
-diff --git a/drivers/phy/mediatek/phy-mtk-mipi-dsi.c b/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
-index 362145198ff5..4e75c34c819b 100644
---- a/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
-+++ b/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
-@@ -176,12 +176,7 @@ static int mtk_mipi_tx_probe(struct platform_device *pdev)
+Changes in v2:
+  - "Fixes" and "Reviewed-by" tags added
+
+ drivers/thermal/mediatek/auxadc_thermal.c | 14 ++------------
+ 1 file changed, 2 insertions(+), 12 deletions(-)
+
+diff --git a/drivers/thermal/mediatek/auxadc_thermal.c b/drivers/thermal/mediatek/auxadc_thermal.c
+index 0b5528804bbd..f59d36de20a0 100644
+--- a/drivers/thermal/mediatek/auxadc_thermal.c
++++ b/drivers/thermal/mediatek/auxadc_thermal.c
+@@ -1222,12 +1222,7 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+ 		return -ENODEV;
+ 	}
  
- 	mtk_mipi_tx_get_calibration_datal(mipi_tx);
- 
--	return of_clk_add_hw_provider(dev->of_node, of_clk_hw_simple_get, &mipi_tx->pll_hw);
--}
+-	auxadc_base = devm_of_iomap(&pdev->dev, auxadc, 0, NULL);
+-	if (IS_ERR(auxadc_base)) {
+-		of_node_put(auxadc);
+-		return PTR_ERR(auxadc_base);
+-	}
 -
--static void mtk_mipi_tx_remove(struct platform_device *pdev)
--{
--	of_clk_del_provider(pdev->dev.of_node);
-+	return devm_of_clk_add_hw_provider(dev, of_clk_hw_simple_get, &mipi_tx->pll_hw);
- }
++	auxadc_base = of_iomap(auxadc, 0);
+ 	auxadc_phys_base = of_get_phys_base(auxadc);
  
- static const struct of_device_id mtk_mipi_tx_match[] = {
-@@ -197,7 +192,6 @@ MODULE_DEVICE_TABLE(of, mtk_mipi_tx_match);
+ 	of_node_put(auxadc);
+@@ -1243,12 +1238,7 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+ 		return -ENODEV;
+ 	}
  
- static struct platform_driver mtk_mipi_tx_driver = {
- 	.probe = mtk_mipi_tx_probe,
--	.remove_new = mtk_mipi_tx_remove,
- 	.driver = {
- 		.name = "mediatek-mipi-tx",
- 		.of_match_table = mtk_mipi_tx_match,
+-	apmixed_base = devm_of_iomap(&pdev->dev, apmixedsys, 0, NULL);
+-	if (IS_ERR(apmixed_base)) {
+-		of_node_put(apmixedsys);
+-		return PTR_ERR(apmixed_base);
+-	}
+-
++	apmixed_base = of_iomap(apmixedsys, 0);
+ 	apmixed_phys_base = of_get_phys_base(apmixedsys);
+ 
+ 	of_node_put(apmixedsys);
 -- 
-2.40.1
+2.25.1
 
 
