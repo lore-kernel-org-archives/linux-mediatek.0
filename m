@@ -4,72 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3269C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 May 2023 09:53:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55592C77B7E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 May 2023 11:14:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tLf3d/gKdJeLlsMHMqGEB2pJUyxiRqlEFrB77+u+ub0=; b=HHiAMgG9VbCajsQceAGZNRQDDh
-	+lGTP/ethHjo13as0R/vM1PdCVbOqy3ydmLdBuCX0WW1Bwplz8tUVBZehXiTAp3RFQIwbL0Mg0kSQ
-	3LRcuyeL0brzPGTD3djspI3Md1eg7XvQDzAL2ka9Yjykk0OwD2AX0dlJc/YWcEEUuZoi4q5Q9qZYI
-	GxOYWd69RjvLz/AAZaxQTPI/ZQVddrR9t9IwCOiy9oZc0DKkAvimPibRMtbc+3hPkCqBm0+OBo7/a
-	hnAinr1gmTsYnlcEhNTrqelE6seFgFVd5FFbXEPTtLl+HDq6AUAiOCD/BixrYIibiRCMN+aktM92z
-	yHZGCu5g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=9v4pXEzRnbDf+x2arRNt01QmgC+/H2ifakmNEcASOxs=; b=weRKGWasljEQIHBEQaxGdeJG+r
+	bFtlSDM3kx9SoK7QgCkQe9HDhBtpLRnZM3RvqInL7VQFUyNlsXdjz0HCVnCF1S2MPDA6v+i+Q7OA6
+	ho9wIwZIPLDNkcFx35Y+BFCQbNm5NOugrRrhHWMczUfDeZ17I1YbvZsCCa7W2pZRm5rhjcvHYp2xa
+	WJvdlKtzX0Gqq+w3kAIUyVNbicVUinZT8Lh0W6ANKcZU6+PXROCauL1YpBHa3aLGCCOUhUlMxQtOE
+	dcU5dvtdq7w5LKgCWBjRT3HK1/CYiHiPswokzzirjQxHo2Dk7ScFPsNt3kOAQ2PnDPM+SgB9tSAUL
+	uSUrJNjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q27fM-00GCX6-1B;
-	Thu, 25 May 2023 09:53:52 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1q28vd-00GU0A-0q;
+	Thu, 25 May 2023 11:14:45 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q27fJ-00GCWK-1l;
-	Thu, 25 May 2023 09:53:50 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1q28vZ-00GTyQ-0v;
+	Thu, 25 May 2023 11:14:43 +0000
+Received: from localhost.localdomain (unknown [IPv6:2a0c:5a83:9203:ad00:d93f:618:db35:8dd6])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 8C4B061B66;
-	Thu, 25 May 2023 09:53:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A50CCC433EF;
-	Thu, 25 May 2023 09:53:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1685008426;
-	bh=tLf3d/gKdJeLlsMHMqGEB2pJUyxiRqlEFrB77+u+ub0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=nHZvWC4W8EmZIK3OdntUi3kT9ru0BfJJhHh6tP01F9qRF5FtXJMxp/6GYe7ayxt9e
-	 Qy1nQ3ImSYarIQKI58JvdxLsZnxqPNkpVuZwMWvTEy422tg46oSZQuV6fXGZNz4kqW
-	 6tRHFG3RDhzd3or195z0Sau7VQC8Go6YHzSkYWQI4TCOtHytM3i1cTJQ6kN5F+s5zT
-	 klaopGVfUV6P3Ro6aMlnHidFMwj4zMa00eaL3V2B2os8xT3nvjIhZWgHnbJle+C6JF
-	 r77d08PW7VCneRsYMTlJDUsGQaYgF+8f+53ELWphWz9fPX2pRst9cvHiPhgLCXsnkl
-	 S+BoPymZOR+xA==
-Date: Thu, 25 May 2023 10:53:41 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Qii Wang =?utf-8?B?KOeOi+eQqik=?= <Qii.Wang@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	Leilk Liu =?utf-8?B?KOWImOejiik=?= <Leilk.Liu@mediatek.com>,
-	Tim Kuo =?utf-8?B?KOmDreW7t+esmSk=?= <Tim.Kuo@mediatek.com>,
-	"srv_heupstream@mediatek.com" <srv_heupstream@mediatek.com>,
-	"linux-spi@vger.kernel.org" <linux-spi@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH] spi: mediatek: advertise the availability of Dual and
- Quad mode
-Message-ID: <e21758df-7f70-4a76-9759-5621bfa5b0db@sirena.org.uk>
-References: <20230523112608.10298-1-qii.wang@mediatek.com>
- <97af2a29-8aef-499d-9f07-bb262ec398cb@sirena.org.uk>
- <7a99a7da9edc93f4e231500b1b781188f894d775.camel@mediatek.com>
+	(Authenticated sender: rcn)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 139116605840;
+	Thu, 25 May 2023 12:14:37 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1685013277;
+	bh=UiKAWaz+TVBbHcco3PIJzUCzRR4p4Qx9+60xRrdVKYo=;
+	h=From:To:Cc:Subject:Date:From;
+	b=VSFSPWGOJgn7KTkuUQ73VmY8lj0zR403O84m867RYHL/Vxr9zVFozrNXn3LPvGt7+
+	 dmG6iLasz6hn2mNTT6Cvus9+2MhrTksJJHM0/mGNXoBU7tjSwuuETY0FqjRLAoGRpo
+	 Qj40pFp3SVnYBfuSCcA1aZIeWJ57p21xQXbiLAn2wajWiGA7AH0nQv6GbmB+Y/vpTL
+	 wKZ4EVllIK4L581/gv+4Fg247Wvye1xEjmcblEvrmOIc1VCI+qVucn/hhFhj5AgXTB
+	 8JgXrmcJL7P+SURMeAnTKKLr37gcEIQCmzte6Uq9bXF1UfYpQvThlw0BuTW6DoUgB+
+	 XE5U5+oO9mLvg==
+From: =?UTF-8?q?Ricardo=20Ca=C3=B1uelo?= <ricardo.canuelo@collabora.com>
+To: matthias.bgg@gmail.com
+Cc: void0red@hust.edu.cn,
+	angelogioacchino.delregno@collabora.com,
+	daniel.lezcano@linaro.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-pm@vger.kernel.org,
+	kernel@collabora.com
+Subject: [PATCH] Revert "thermal/drivers/mediatek: Use devm_of_iomap to avoid resource leak in mtk_thermal_probe"
+Date: Thu, 25 May 2023 13:14:17 +0200
+Message-Id: <20230525111417.3350271-1-ricardo.canuelo@collabora.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="E5yAS6xqncTy2UwS"
-Content-Disposition: inline
-In-Reply-To: <7a99a7da9edc93f4e231500b1b781188f894d775.camel@mediatek.com>
-X-Cookie: I demand IMPUNITY!
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230525_025349_626401_F7EAF546 
-X-CRM114-Status: GOOD (  13.01  )
+X-CRM114-CacheID: sfid-20230525_041441_505041_5E1CC385 
+X-CRM114-Status: UNSURE (   9.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,41 +77,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+This reverts commit f05c7b7d9ea9477fcc388476c6f4ade8c66d2d26.
 
---E5yAS6xqncTy2UwS
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+That change was causing a regression in the generic-adc-thermal-probed
+bootrr test as reported in the kernelci-results list [1].
+A proper rework will take longer, so revert it for now.
 
-On Thu, May 25, 2023 at 06:21:26AM +0000, Qii Wang (=E7=8E=8B=E7=90=AA) wro=
-te:
+[1] https://groups.io/g/kernelci-results/message/42660
 
-> The previous patch was this one:=20
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit=
-/drivers/spi/spi-mt65xx.c?h=3Dv6.4-rc3&id=3D9f763fd20da7d892ffaedac0c58d821=
-922f8a674
+Signed-off-by: Ricardo Cañuelo <ricardo.canuelo@collabora.com>
+Suggested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/thermal/mediatek/auxadc_thermal.c | 14 ++------------
+ 1 file changed, 2 insertions(+), 12 deletions(-)
 
-Please include human readable descriptions of things like commits and
-issues being discussed in e-mail in your mails, this makes them much
-easier for humans to read especially when they have no internet access.
-I do frequently catch up on my mail on flights or while otherwise
-travelling so this is even more pressing for me than just being about
-making things a bit easier to read.
+diff --git a/drivers/thermal/mediatek/auxadc_thermal.c b/drivers/thermal/mediatek/auxadc_thermal.c
+index 0b5528804bbd..f59d36de20a0 100644
+--- a/drivers/thermal/mediatek/auxadc_thermal.c
++++ b/drivers/thermal/mediatek/auxadc_thermal.c
+@@ -1222,12 +1222,7 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+ 		return -ENODEV;
+ 	}
+ 
+-	auxadc_base = devm_of_iomap(&pdev->dev, auxadc, 0, NULL);
+-	if (IS_ERR(auxadc_base)) {
+-		of_node_put(auxadc);
+-		return PTR_ERR(auxadc_base);
+-	}
+-
++	auxadc_base = of_iomap(auxadc, 0);
+ 	auxadc_phys_base = of_get_phys_base(auxadc);
+ 
+ 	of_node_put(auxadc);
+@@ -1243,12 +1238,7 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+ 		return -ENODEV;
+ 	}
+ 
+-	apmixed_base = devm_of_iomap(&pdev->dev, apmixedsys, 0, NULL);
+-	if (IS_ERR(apmixed_base)) {
+-		of_node_put(apmixedsys);
+-		return PTR_ERR(apmixed_base);
+-	}
+-
++	apmixed_base = of_iomap(apmixedsys, 0);
+ 	apmixed_phys_base = of_get_phys_base(apmixedsys);
+ 
+ 	of_node_put(apmixedsys);
+-- 
+2.25.1
 
---E5yAS6xqncTy2UwS
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmRvMCQACgkQJNaLcl1U
-h9CDDwf+O0uRW+IX4K9wPhydgsnobcj/fhSfVLefIiiSvrPRl27vNm1oKmwe6LIm
-p0VGIY258AobfS73u0PWEZF8XQsZxzi1kgoi7X/gji1LiqtU/iOBgYLQx4jyv7Or
-GWFcmirYNnyzwsaUd5bwIpwsN6N5E95rC1Zo8AZS4eO1Lc/UVr7RtC6H5htyMen6
-rmt6d42OpF4gF83ERIL74vGIm/VuqteA55l+yfHGCjYpygH39RaYI6pGUBIasRAo
-QjL+s7Jr/+FEj9zt3K0DdCTrBzIwVefejtOixSCLFTgTiDr+/JNLTqwcbk7uYHBD
-zXArYY5qi8/pY1oshy9ZhrJnnn7nAQ==
-=XjGO
------END PGP SIGNATURE-----
-
---E5yAS6xqncTy2UwS--
 
