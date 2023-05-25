@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6319EC77B7E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 May 2023 08:11:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BCA1C7EE2E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 May 2023 08:12:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EtH0oPFOTlpMEOqoowpzCejl93Q4NEC3KA91Kez9bMY=; b=NwoZQJfYTbDANz5RclHwbi0D+b
-	g4SvoI4HGdrcIWD20GtjTkWX8l9VaB0Y0uHDbqqXDRXam0ZszqF9SXgZQ2d+UghzmXHPC5/LA5VnM
-	C5z3wcX25FPpYcICMbCtb7v+bgZGai11I151kgicO7vFhR9Z5WyWVIYvogBPJEqy1oguTndJjvKWZ
-	LpS6syznu8U0FhVU5O5A9fvy3Fib3l3aHyLG9OFUeLtsoHPT+wb4B9V5ZlWzInfEkHaTFpqbcApR6
-	f11xvyO6Jcx2/CccrNnsj5uU7LAfvMFS4nF77E85eUHXZrNiTteMU62X5Psgs0mTHHZM63BZHOK9k
-	dX0S0I8g==;
+	bh=2q4WA1PZkZY39oLMXws9ZFwNK7MAPPEe6w1IC+ooOa8=; b=QhE+VF5EbAw6ONgBlTRVWR0DTu
+	2JNQqDgzV0huBArJhusA8bKyv/6CpMnDD0CL6zJt+p9hBRLCXEOD/x8h1Eu/czsGTNAlafcj3febO
+	KO2HSE2YekhowBa0L2+qOogbK3hLVZVEJ3jpWhSrBeS5wujBdTwvHzTtdLuMzh09RqrBqOc2+9/2Z
+	WrSKwXaYPTLMExEw0GURVOGsU/tTqnGXkAXw+4eB+wrvx1MTd9aiU/nEd1aZGuuk08+vRhyvwxCww
+	lJ+9DauPUN9tGtbL6k+Dj8LdaG5hMCEPCi/nWas1LnEQH15XA/jYgJqAR1j67bj/iSH9Z/RNpyZkU
+	fVHCc+JQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q264b-00FvaS-1y;
-	Thu, 25 May 2023 08:11:49 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1q264y-00Fvie-1X;
+	Thu, 25 May 2023 08:12:12 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q264Y-00FvXK-0C;
-	Thu, 25 May 2023 08:11:47 +0000
+	id 1q264v-00FvfN-0y;
+	Thu, 25 May 2023 08:12:10 +0000
 Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 34B9D6605835;
-	Thu, 25 May 2023 09:11:39 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7EABD6605835;
+	Thu, 25 May 2023 09:12:04 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1685002300;
-	bh=RzmohAWeYHmoyTTalWjBITiii+M1cMw9WZu+K+wLm4U=;
+	s=mail; t=1685002325;
+	bh=MN9eqSpRVglS1WDgssyRKlrNQodr0dvGosGQ0rVhxN4=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=WA5MPZM5vJ5JD3sfXwcpUYNhmOm7pqgdbOsEbx/i8tkeDhk+Ux06w4RTMhV6LNK6m
-	 5fHVxHIWOuU9o4Gj9fzlsoMnQQU/4fh+vKSkJQOVmfF1FR1VY9x68EDWjRtQzpvkPx
-	 j+/zNP7F2vLgiRANraTMrk/FnSWEVKJOpJ4WOqhu8aaixx9GBTItfWLkTS5ZJ/cS/u
-	 ZhvfZALya4QvnWzIVfvIqdfR5vnLNlUj3/zwAPoWM0AcmwwiZCtx8LUTeNBYsO4klq
-	 MRPPbsnzY/QBlVuDwH/Rn0CE+XO8NbXjJn+z2dLhBryGXVMFa3l5zJFuFxUaAxHN3G
-	 UC97F/cyGFzhQ==
-Message-ID: <b32b82f5-8555-39cf-9311-017a42b24e66@collabora.com>
-Date: Thu, 25 May 2023 10:11:36 +0200
+	b=MnFq75WRF5WGpp6NYskGgRv9yi+/pV5UI95oKZlq3HUN3LVugVxNwFKSxjqu0ygSs
+	 +NELlkT1vukd/OKbkzXaMs0lJFJMpcdXQR1vkd3P+SgYlLfbA6oqvZYj8RveHtuPkv
+	 VH7t+mCZeVoK2tle7uZLGtBo/XUpe5ZBQfsHlcPhQHk40WMefJG/YeFmVCF6qnIsAZ
+	 tKd9w2mTUekoqQmC/1Tb74AcKbywsTCsXCYCNrJFq3UpKs3ouD0NwhBtrF+byDRkv3
+	 Dqhr5IaM3o+1bclqdyyQzI5379HMsCNb+kAjGt0qfdqiOB9LKRPQZDkV8oIdg2tZgY
+	 eSAksMQ52PfSw==
+Message-ID: <816a4aa4-cf6d-8f2b-8c86-5ea33e14a48c@collabora.com>
+Date: Thu, 25 May 2023 10:12:02 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.1
-Subject: Re: [PATCH v4,1/4] media: mediatek: vcodec: Avoid unneeded error
- logging
+Subject: Re: [PATCH v4,2/4] media: mediatek: vcodec: using decoder status
+ instead of core work count
 Content-Language: en-US
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai
  <wenst@chromium.org>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
@@ -64,14 +64,15 @@ Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
  linux-mediatek@lists.infradead.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20230525014009.23345-1-yunfei.dong@mediatek.com>
- <20230525014009.23345-2-yunfei.dong@mediatek.com>
+ <20230525014009.23345-3-yunfei.dong@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230525014009.23345-2-yunfei.dong@mediatek.com>
+In-Reply-To: <20230525014009.23345-3-yunfei.dong@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230525_011146_253332_1306A1DA 
-X-CRM114-Status: GOOD (  10.15  )
+X-CRM114-CacheID: sfid-20230525_011209_470569_8FBB6155 
+X-CRM114-Status: UNSURE (   8.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,14 +88,15 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 25/05/23 03:40, Yunfei Dong ha scritto:
-> Since the LAT decoder works faster than its CORE, getting the trans
-> buffer may be done only after CORE finishes processing: avoid printing
-> an error if the decode function returns -EAGAIN, as this means that
-> the buffer from CORE is not yet available, but will be at a later time.
+> Adding the definition of decoder status to separate different decoder
+> period for core hardware.
 > 
-> Also change the log level for calls to vdec_msg_queue_dqbuf() in H264
-> and VP9 LAT decoder drivers to avoid excessive logging.
+> core_work_cnt is the number of core work queued to work queue, the control
+> is very complex, leading to some unreasonable test result.
 > 
+> Using parameter status to indicate whether queue core work to work queue.
+> 
+> Fixes: 2e0ef56d81cb ("media: mediatek: vcodec: making sure queue_work successfully")
 > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
