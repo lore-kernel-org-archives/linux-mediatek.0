@@ -4,79 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 732E3C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 May 2023 09:34:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2EC9C7EE2E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 May 2023 09:35:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vZVepLjGQmA8Sd7Dsoz91hGyNnRRVtsxo9tL/VycGyM=; b=39fq+UjWxt8NbQ8axkh4+6NG3G
-	SMHkdOGFdB9dk98L0YLJFTQUbH0Hn1jGtCEYEeWVYfKSb8xu7pOA/7z0D24RJOfMGG/9GLdi6hWM/
-	io1OlTGKCpStV3g+ouoWBTd1K2n/flQeEX0uL0Zkzuof8EXTeHWoGDw7lat5obmq2DicI7KYee1Et
-	4jfrousAqKDvTRGDDJ0a0hjO3GYzzDQCLUt3IDvysSxaDIgOYGCn+zFrJvrwtpzWTRB24vVDlMTPA
-	EBSQEL8ruV85ZokMAAwYNhB7fMPpLYONC4xUfGRe/7T0DOMHsgrJLSl5Oc2g8aE/jl9a95yolrWxd
-	k/PbSndw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=rzLBA0ulSqogErFIVu+8bfox6+q1wNs8YMgbb2gj9O8=; b=39t/IQMUa8GNX+
+	zOKK5QAQ8r6PkqeRjykusuy4iLiAFClwJyI3kHAgQQQy6GHlS2qIEMGI8s8Pvl5mIihjM+WnwYCUW
+	r/mXDwNyOFllbGhpNDchGh5JzkYhnuuD4fB6YipT1OmpBfO1UB8ayao5Zw4UyZ0wGYjKYRojsJ4f5
+	pf+DEMWEyhUMnYFwtl3hm6WwGF5H01mZPIu1C+p3z/xh1cxagrMg5T+C6G2sXrXhwnFxvjrGyMLY7
+	b9QOkuF9mCX8ECijudfZTw97ipLuoagdBR2yBRMIh1kMe5fk1cxMA7huOLW6ddfbFD1v8yMtUPbtC
+	nVRsGcQBbvO9sx0ME99g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q27Mp-00G9UP-1v;
-	Thu, 25 May 2023 09:34:43 +0000
-Received: from galois.linutronix.de ([2a0a:51c0:0:12e:550::1])
+	id 1q27NS-00G9fJ-2t;
+	Thu, 25 May 2023 09:35:22 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q27Mf-00G9Qk-11;
-	Thu, 25 May 2023 09:34:35 +0000
-From: John Ogness <john.ogness@linutronix.de>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020; t=1685007271;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=vZVepLjGQmA8Sd7Dsoz91hGyNnRRVtsxo9tL/VycGyM=;
-	b=uZ3fJDvn3TkdggxynrSMSfRfldyWS4BjQknTKnFLPsovz8j7ATjj9wKY0YrNVgjmstnPDp
-	RpaZS25BsNwZGpaoJ/p7EJJ0uIbBlS2FUZb7JOxDaj01/dymaraJMQq3HMBNo8AdoDtjj9
-	zicPN9Y+n59Eio5tvFDuMNg3FqCmngFYk44jhQfhJmmgYQqabA/sWVdNy5FxqS89PuRfOd
-	aIlGwXIVvB3HqG5QjnSzYqSFoy17PnFrpG0S42MoYhVVriluyO/v7qDu49txvu1bQtu0UR
-	T/hMyr5UmoePZahxw43d/YnRICYxjiOuqkO5KdkecSSs27EigiIE7kgVE4e+xA==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020e; t=1685007271;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=vZVepLjGQmA8Sd7Dsoz91hGyNnRRVtsxo9tL/VycGyM=;
-	b=sSWawuGzshyC+A1UZwduoT3u0VBy5TcXDOddQy8qoXvVAcuzGJyKZcT9rD6R+qnYz6FWGe
-	gQLD6b6k+lHbNkAw==
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Petr Mladek <pmladek@suse.com>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	linux-kernel@vger.kernel.org,
-	Jiri Slaby <jirislaby@kernel.org>,
-	Joel Stanley <joel@jms.id.au>,
-	Andrew Jeffery <andrew@aj.id.au>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	=?UTF-8?q?Ilpo=20J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Tony Lindgren <tony@atomide.com>,
-	Lukas Wunner <lukas@wunner.de>,
-	Matthias Schiffer <matthias.schiffer@ew.tq-group.com>,
-	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
-	linux-serial@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-aspeed@lists.ozlabs.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH tty v1 8/8] serial: 8250: synchronize and annotate UART_IER access
-Date: Thu, 25 May 2023 11:37:59 +0206
-Message-Id: <20230525093159.223817-9-john.ogness@linutronix.de>
-In-Reply-To: <20230525093159.223817-1-john.ogness@linutronix.de>
-References: <20230525093159.223817-1-john.ogness@linutronix.de>
+	id 1q26Q1-00G0NO-2e
+	for linux-mediatek@lists.infradead.org;
+	Thu, 25 May 2023 08:33:59 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-3093a7b71fbso1754489f8f.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 25 May 2023 01:33:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1685003633; x=1687595633;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=rzLBA0ulSqogErFIVu+8bfox6+q1wNs8YMgbb2gj9O8=;
+        b=euIoeFVX5DZLsdnUDVfa0q+ZMfRpA1gsEdhmNyg2lE1Vbl6gvtHaP2d3siI2idJYqt
+         OQ7gehXukara5AqefXCbhvvEYpTo7QjwT+Yx2XoRwE7ZvfexW4SBalgLdTMc/KlpBWda
+         7qM/7rVcRKh1S8yNKxy9ggaLPUw0ok3k1NJPCEp3OeAWDs/Z2+nqeVslwZFX7Vd6VFWI
+         OkeSi3/kiyp0DYUw/84t+4pKEIhb5m4IYFJ0dS5Yv5zP0EEPnBX9iVnQcPM1BU9+8smB
+         fXW3+HU9VWS2nFDG6CROMOnUSRS14iGQ/5PmItbTvnaphmO2ivg2rqRmAIHs6xKsTGqR
+         IBiA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1685003633; x=1687595633;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=rzLBA0ulSqogErFIVu+8bfox6+q1wNs8YMgbb2gj9O8=;
+        b=J3WYC/L61CPOK4CaG0YmTwKmVdpZqqwsThxt2GZbCaQJ/GCon++R+V/nqBxaMbcpjt
+         y4pxEQ1Thkl/rojQVlO7MlG9V1R8mq22yLUtpN4TBblvGcZNSGjfLHJWxHFk0eaTi2UU
+         nE+xxdYJXd+jWK3oRXBrXorC/Sf0Y2lXfvKNMRNwRfZlP+k2zNYmd03rL3R+nNNCn8F+
+         x+ZB1O12azIBcNG9SvhPicP2Pzq8MYwoxrSAADI8QIjlN5QNp8lvDPYn7jdzD2SK29e2
+         5Vd1sU5/jfpJq2UFozENiTWYEwGqiCiclDSAOvYUFcJz+LLXgdjgvvZcuKF0o6JW5oz0
+         uJ/g==
+X-Gm-Message-State: AC+VfDym2OgZsecREnxG2JgMYekbeAd8nP1FxxVk47StUAj6fjuQHSSb
+	DZ+JYuc/lgAiUdW9cp9YLXmM9w==
+X-Google-Smtp-Source: ACHHUZ6Xhx++SlPUZnWwmSO9AC8dvDTg1MvWXGRjxNLtDYYDcMIJA28lqZFQ8FJa7issgyM1OFA/lA==
+X-Received: by 2002:adf:e511:0:b0:306:3899:ccbf with SMTP id j17-20020adfe511000000b003063899ccbfmr1962415wrm.14.1685003632957;
+        Thu, 25 May 2023 01:33:52 -0700 (PDT)
+Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
+        by smtp.googlemail.com with ESMTPSA id o3-20020a5d6843000000b003095a329e90sm945809wrw.97.2023.05.25.01.33.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 25 May 2023 01:33:52 -0700 (PDT)
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Subject: [PATCH v8 00/10] Improve the MT8365 SoC and EVK board support
+Date: Thu, 25 May 2023 10:33:09 +0200
+Message-Id: <20230203-evk-board-support-v8-0-7019f3fd0adf@baylibre.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAEUdb2QC/4XOTWrEMAwF4KsMXtdFtuOfdNV7lC5sWW5Mp8lgz
+ wSGIXev2mUJzUo8wfukh+jUKnXxcnqIRmvtdZk5hKeTwCnOHyRr5iw0aAMajKT1U6Yltiz77XJ
+ Z2lVmm3wMZqTsk+Beip1kanHGiZvz7Xzm5VT7dWn33zur4vH2H7kqCRIcGO3BDirb1xTv55oaP
+ ePyJd4ZXPUhohlxhB5zUoBYdhBziJifTwAMBSCAce+T4RAZGLFYCjkXTUDYQewhYhlRIRhUaQA
+ b8w7iDhHHSMguKSzkix53EH+IeEbGgCmXiM46+oNs2/YNGR4juVgCAAA=
+To: Catalin Marinas <catalin.marinas@arm.com>, 
+ Will Deacon <will@kernel.org>, Wim Van Sebroeck <wim@linux-watchdog.org>, 
+ Guenter Roeck <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Conor Dooley <conor+dt@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, 
+ Alexandre Mergnat <amergnat@baylibre.com>, 
+ Kevin Hilman <khilman@baylibre.com>, 
+ Amjad Ouled-Ameur <aouledameur@baylibre.com>
+X-Mailer: b4 0.12.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3600; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=oXFkwv30PQiHsvUw3Gm2oqLRkH85H2byPieMXIgeFvk=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkbx1vv7eqXrKOVpAFj/UFbNNFu/nubQWEv7U+NGns
+ uwmwNvWJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZG8dbwAKCRArRkmdfjHURTsKEA
+ CbqPknaqksOYG6ClJshktGlpf9J1qcgkGD5llfrDqziweMOEnFodz+wXwa4QUuJiASHuiqs2zEFNmd
+ la62LhBvIeZNMhV+ukmcHdA123FoYitY8PvC3rddBNsXYJIusDYSpazahXWWDslFQoaDzmuBjOpAKZ
+ M/uPpkY4qrY9oLC4/Ob195jkwuIKrUUFIO2TndPMzZnROgDu+ryV7S3TN+nNo/viW5twNJTurDsleQ
+ jGeUL3PotyEKIvj0Wm++e1/QSezCR8VQSDq+4trvIzW0c7MQV4HfsFAnziCJYA6N05x5YENWtCZHdG
+ 4pGSBz7cyZkhVJzUeUn9IwBOPVfk1A2SA55JgzQpQlenqKEg0GkMW1O32lVouevHjsF6q3ZfqL4dDW
+ mdDTTTtcNlne3xzcJx7DpZTmoPc6UHUXXb8Df80cytbmpiFjOdIWHfctrr5vYG3eCSJXlWr0q4rA8y
+ VL4VeVrC4JYyCe6kww8sy0F09tcdC5zTHtPO8QxgbyZNoQt7eAFhN9yjLNqrmbTCk8bNjfv9UQBtAE
+ 2QrB6xnDj1NSPLLcysgq9Smf99qgMxNHU9e08ahs2W6IyKWV/wD1hP5BEHGiFhRarpW77ATHV1n+Hk
+ 6inCWaIQ0OuuuACrUlhj4DnqQFUNn/bIGz5GhTyVEQX4ElgDUy/0NOJcdUiw==
+X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
+ fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230525_023433_646446_E480B0A9 
-X-CRM114-Status: GOOD (  19.11  )
+X-CRM114-CacheID: sfid-20230525_013357_859039_8ABAA7EE 
+X-CRM114-Status: GOOD (  15.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,346 +119,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The UART_IER register is modified twice by each console write
-(serial8250_console_write()) under the port lock. Any driver code that
-accesses UART_IER must do so with the port locked in order to ensure
-consistent values, even when for read accesses.
+This commits are based on the Fabien Parent <fparent@baylibre.com> work.
 
-Add locking, lockdep notation, and/or comments everywhere UART_IER is
-accessed. The added locking is not fixing a real problem because it
-occurs where the console is not active. However, adding the locking
-to these non-critical paths greatly simplifies UART_IER access
-tracking by establishing a general policy that all UART_IER access
-is performed with the port locked.
+The purpose of this series is to add the following HWs / IPs support for
+the mt8365-evk board:
+- Watchdog
+- Power Management Integrated Circuit "PMIC" wrapper
+- MT6357 PMIC
+- MultiMediaCard "MMC" & Secure Digital "SD" controller
+- USB controller
+- Ethernet MAC controller
 
-Signed-off-by: John Ogness <john.ogness@linutronix.de>
+Add CPU Freq & IDLE support for this board.
+
+All previous dependancies are merged and released into the v6.4-rc1.
+
+=== Build:
+
+To test this serie, cherry-pick this serie, and build it using the arm64
+defconfig.
+
+Regards,
+Alex
+
+Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- drivers/tty/serial/8250/8250.h              |  6 +++
- drivers/tty/serial/8250/8250_aspeed_vuart.c |  3 ++
- drivers/tty/serial/8250/8250_mtk.c          |  9 ++++
- drivers/tty/serial/8250/8250_omap.c         | 14 ++++++
- drivers/tty/serial/8250/8250_port.c         | 53 +++++++++++++++++++++
- 5 files changed, 85 insertions(+)
+Changes in v8:
+- Change vqmmc-supply of mmc1 node.
+- Remove all always-on regulators from the board devicetree.
+- Link to v7: https://lore.kernel.org/r/20230203-evk-board-support-v7-0-98cbdfac656e@baylibre.com
 
-diff --git a/drivers/tty/serial/8250/8250.h b/drivers/tty/serial/8250/8250.h
-index 5418708f4631..471c6bc5f78f 100644
---- a/drivers/tty/serial/8250/8250.h
-+++ b/drivers/tty/serial/8250/8250.h
-@@ -179,6 +179,9 @@ static inline void serial_dl_write(struct uart_8250_port *up, u32 value)
- 
- static inline bool serial8250_set_THRI(struct uart_8250_port *up)
- {
-+	/* Port locked to synchronize UART_IER access against the console. */
-+	lockdep_assert_held_once(&up->port.lock);
-+
- 	if (up->ier & UART_IER_THRI)
- 		return false;
- 	up->ier |= UART_IER_THRI;
-@@ -188,6 +191,9 @@ static inline bool serial8250_set_THRI(struct uart_8250_port *up)
- 
- static inline bool serial8250_clear_THRI(struct uart_8250_port *up)
- {
-+	/* Port locked to synchronize UART_IER access against the console. */
-+	lockdep_assert_held_once(&up->port.lock);
-+
- 	if (!(up->ier & UART_IER_THRI))
- 		return false;
- 	up->ier &= ~UART_IER_THRI;
-diff --git a/drivers/tty/serial/8250/8250_aspeed_vuart.c b/drivers/tty/serial/8250/8250_aspeed_vuart.c
-index 9d2a7856784f..4a9e71b2dbbc 100644
---- a/drivers/tty/serial/8250/8250_aspeed_vuart.c
-+++ b/drivers/tty/serial/8250/8250_aspeed_vuart.c
-@@ -275,6 +275,9 @@ static void __aspeed_vuart_set_throttle(struct uart_8250_port *up,
- {
- 	unsigned char irqs = UART_IER_RLSI | UART_IER_RDI;
- 
-+	/* Port locked to synchronize UART_IER access against the console. */
-+	lockdep_assert_held_once(&up->port.lock);
-+
- 	up->ier &= ~irqs;
- 	if (!throttle)
- 		up->ier |= irqs;
-diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
-index fb1d5ec0940e..aa8e98164d68 100644
---- a/drivers/tty/serial/8250/8250_mtk.c
-+++ b/drivers/tty/serial/8250/8250_mtk.c
-@@ -222,11 +222,17 @@ static void mtk8250_shutdown(struct uart_port *port)
- 
- static void mtk8250_disable_intrs(struct uart_8250_port *up, int mask)
- {
-+	/* Port locked to synchronize UART_IER access against the console. */
-+	lockdep_assert_held_once(&up->port.lock);
-+
- 	serial_out(up, UART_IER, serial_in(up, UART_IER) & (~mask));
- }
- 
- static void mtk8250_enable_intrs(struct uart_8250_port *up, int mask)
- {
-+	/* Port locked to synchronize UART_IER access against the console. */
-+	lockdep_assert_held_once(&up->port.lock);
-+
- 	serial_out(up, UART_IER, serial_in(up, UART_IER) | mask);
- }
- 
-@@ -235,6 +241,9 @@ static void mtk8250_set_flow_ctrl(struct uart_8250_port *up, int mode)
- 	struct uart_port *port = &up->port;
- 	int lcr = serial_in(up, UART_LCR);
- 
-+	/* Port locked to synchronize UART_IER access against the console. */
-+	lockdep_assert_held_once(&port->lock);
-+
- 	serial_out(up, UART_LCR, UART_LCR_CONF_MODE_B);
- 	serial_out(up, MTK_UART_EFR, UART_EFR_ECB);
- 	serial_out(up, UART_LCR, lcr);
-diff --git a/drivers/tty/serial/8250/8250_omap.c b/drivers/tty/serial/8250/8250_omap.c
-index 3225c95fde1d..0498b9b0e4e9 100644
---- a/drivers/tty/serial/8250/8250_omap.c
-+++ b/drivers/tty/serial/8250/8250_omap.c
-@@ -533,6 +533,10 @@ static void omap_8250_pm(struct uart_port *port, unsigned int state,
- 	u8 efr;
- 
- 	pm_runtime_get_sync(port->dev);
-+
-+	/* Synchronize UART_IER access against the console. */
-+	spin_lock_irq(&port->lock);
-+
- 	serial_out(up, UART_LCR, UART_LCR_CONF_MODE_B);
- 	efr = serial_in(up, UART_EFR);
- 	serial_out(up, UART_EFR, efr | UART_EFR_ECB);
-@@ -543,6 +547,8 @@ static void omap_8250_pm(struct uart_port *port, unsigned int state,
- 	serial_out(up, UART_EFR, efr);
- 	serial_out(up, UART_LCR, 0);
- 
-+	spin_unlock_irq(&port->lock);
-+
- 	pm_runtime_mark_last_busy(port->dev);
- 	pm_runtime_put_autosuspend(port->dev);
- }
-@@ -760,8 +766,11 @@ static void omap_8250_shutdown(struct uart_port *port)
- 	if (priv->habit & UART_HAS_EFR2)
- 		serial_out(up, UART_OMAP_EFR2, 0x0);
- 
-+	/* Synchronize UART_IER access against the console. */
-+	spin_lock_irq(&port->lock);
- 	up->ier = 0;
- 	serial_out(up, UART_IER, 0);
-+	spin_unlock_irq(&port->lock);
- 	disable_irq_nosync(up->port.irq);
- 	dev_pm_clear_wake_irq(port->dev);
- 
-@@ -803,6 +812,7 @@ static void omap_8250_unthrottle(struct uart_port *port)
- 
- 	pm_runtime_get_sync(port->dev);
- 
-+	/* Synchronize UART_IER access against the console. */
- 	spin_lock_irqsave(&port->lock, flags);
- 	priv->throttled = false;
- 	if (up->dma)
-@@ -953,6 +963,7 @@ static void __dma_rx_complete(void *param)
- 	struct dma_tx_state     state;
- 	unsigned long flags;
- 
-+	/* Synchronize UART_IER access against the console. */
- 	spin_lock_irqsave(&p->port.lock, flags);
- 
- 	/*
-@@ -1227,6 +1238,9 @@ static u16 omap_8250_handle_rx_dma(struct uart_8250_port *up, u8 iir, u16 status
- static void am654_8250_handle_rx_dma(struct uart_8250_port *up, u8 iir,
- 				     u16 status)
- {
-+	/* Port locked to synchronize UART_IER access against the console. */
-+	lockdep_assert_held_once(&up->port.lock);
-+
- 	/*
- 	 * Queue a new transfer if FIFO has data.
- 	 */
-diff --git a/drivers/tty/serial/8250/8250_port.c b/drivers/tty/serial/8250/8250_port.c
-index b3971302d8e5..4b7bbd8b3305 100644
---- a/drivers/tty/serial/8250/8250_port.c
-+++ b/drivers/tty/serial/8250/8250_port.c
-@@ -539,6 +539,9 @@ EXPORT_SYMBOL_GPL(serial8250_rpm_put);
-  */
- static int serial8250_em485_init(struct uart_8250_port *p)
- {
-+	/* Port locked to synchronize UART_IER access against the console. */
-+	lockdep_assert_held_once(&p->port.lock);
-+
- 	if (p->em485)
- 		goto deassert_rts;
- 
-@@ -676,6 +679,8 @@ static void serial8250_set_sleep(struct uart_8250_port *p, int sleep)
- 	serial8250_rpm_get(p);
- 
- 	if (p->capabilities & UART_CAP_SLEEP) {
-+		/* Synchronize UART_IER access against the console. */
-+		spin_lock_irq(&p->port.lock);
- 		if (p->capabilities & UART_CAP_EFR) {
- 			lcr = serial_in(p, UART_LCR);
- 			efr = serial_in(p, UART_EFR);
-@@ -689,6 +694,7 @@ static void serial8250_set_sleep(struct uart_8250_port *p, int sleep)
- 			serial_out(p, UART_EFR, efr);
- 			serial_out(p, UART_LCR, lcr);
- 		}
-+		spin_unlock_irq(&p->port.lock);
- 	}
- 
- 	serial8250_rpm_put(p);
-@@ -696,6 +702,9 @@ static void serial8250_set_sleep(struct uart_8250_port *p, int sleep)
- 
- static void serial8250_clear_IER(struct uart_8250_port *up)
- {
-+	/* Port locked to synchronize UART_IER access against the console. */
-+	lockdep_assert_held_once(&up->port.lock);
-+
- 	if (up->capabilities & UART_CAP_UUE)
- 		serial_out(up, UART_IER, UART_IER_UUE);
- 	else
-@@ -968,6 +977,9 @@ static void autoconfig_16550a(struct uart_8250_port *up)
- 	unsigned char status1, status2;
- 	unsigned int iersave;
- 
-+	/* Port locked to synchronize UART_IER access against the console. */
-+	lockdep_assert_held_once(&up->port.lock);
-+
- 	up->port.type = PORT_16550A;
- 	up->capabilities |= UART_CAP_FIFO;
- 
-@@ -1151,6 +1163,8 @@ static void autoconfig(struct uart_8250_port *up)
- 	/*
- 	 * We really do need global IRQs disabled here - we're going to
- 	 * be frobbing the chips IRQ enable register to see if it exists.
-+	 *
-+	 * Synchronize UART_IER access against the console.
- 	 */
- 	spin_lock_irqsave(&port->lock, flags);
- 
-@@ -1323,7 +1337,10 @@ static void autoconfig_irq(struct uart_8250_port *up)
- 	/* forget possible initially masked and pending IRQ */
- 	probe_irq_off(probe_irq_on());
- 	save_mcr = serial8250_in_MCR(up);
-+	/* Synchronize UART_IER access against the console. */
-+	spin_lock_irq(&port->lock);
- 	save_ier = serial_in(up, UART_IER);
-+	spin_unlock_irq(&port->lock);
- 	serial8250_out_MCR(up, UART_MCR_OUT1 | UART_MCR_OUT2);
- 
- 	irqs = probe_irq_on();
-@@ -1335,7 +1352,10 @@ static void autoconfig_irq(struct uart_8250_port *up)
- 		serial8250_out_MCR(up,
- 			UART_MCR_DTR | UART_MCR_RTS | UART_MCR_OUT2);
- 	}
-+	/* Synchronize UART_IER access against the console. */
-+	spin_lock_irq(&port->lock);
- 	serial_out(up, UART_IER, UART_IER_ALL_INTR);
-+	spin_unlock_irq(&port->lock);
- 	serial_in(up, UART_LSR);
- 	serial_in(up, UART_RX);
- 	serial_in(up, UART_IIR);
-@@ -1345,7 +1365,10 @@ static void autoconfig_irq(struct uart_8250_port *up)
- 	irq = probe_irq_off(irqs);
- 
- 	serial8250_out_MCR(up, save_mcr);
-+	/* Synchronize UART_IER access against the console. */
-+	spin_lock_irq(&port->lock);
- 	serial_out(up, UART_IER, save_ier);
-+	spin_unlock_irq(&port->lock);
- 
- 	if (port->flags & UPF_FOURPORT)
- 		outb_p(save_ICP, ICP);
-@@ -1360,6 +1383,9 @@ static void serial8250_stop_rx(struct uart_port *port)
- {
- 	struct uart_8250_port *up = up_to_u8250p(port);
- 
-+	/* Port locked to synchronize UART_IER access against the console. */
-+	lockdep_assert_held_once(&port->lock);
-+
- 	serial8250_rpm_get(up);
- 
- 	up->ier &= ~(UART_IER_RLSI | UART_IER_RDI);
-@@ -1379,6 +1405,9 @@ void serial8250_em485_stop_tx(struct uart_8250_port *p)
- {
- 	unsigned char mcr = serial8250_in_MCR(p);
- 
-+	/* Port locked to synchronize UART_IER access against the console. */
-+	lockdep_assert_held_once(&p->port.lock);
-+
- 	if (p->port.rs485.flags & SER_RS485_RTS_AFTER_SEND)
- 		mcr |= UART_MCR_RTS;
- 	else
-@@ -1428,6 +1457,9 @@ static void __stop_tx_rs485(struct uart_8250_port *p, u64 stop_delay)
- {
- 	struct uart_8250_em485 *em485 = p->em485;
- 
-+	/* Port locked to synchronize UART_IER access against the console. */
-+	lockdep_assert_held_once(&p->port.lock);
-+
- 	stop_delay += (u64)p->port.rs485.delay_rts_after_send * NSEC_PER_MSEC;
- 
- 	/*
-@@ -1607,6 +1639,9 @@ static void serial8250_start_tx(struct uart_port *port)
- 	struct uart_8250_port *up = up_to_u8250p(port);
- 	struct uart_8250_em485 *em485 = up->em485;
- 
-+	/* Port locked to synchronize UART_IER access against the console. */
-+	lockdep_assert_held_once(&port->lock);
-+
- 	if (!port->x_char && uart_circ_empty(&port->state->xmit))
- 		return;
- 
-@@ -1634,6 +1669,9 @@ static void serial8250_disable_ms(struct uart_port *port)
- {
- 	struct uart_8250_port *up = up_to_u8250p(port);
- 
-+	/* Port locked to synchronize UART_IER access against the console. */
-+	lockdep_assert_held_once(&port->lock);
-+
- 	/* no MSR capabilities */
- 	if (up->bugs & UART_BUG_NOMSR)
- 		return;
-@@ -1648,6 +1686,9 @@ static void serial8250_enable_ms(struct uart_port *port)
- {
- 	struct uart_8250_port *up = up_to_u8250p(port);
- 
-+	/* Port locked to synchronize UART_IER access against the console. */
-+	lockdep_assert_held_once(&port->lock);
-+
- 	/* no MSR capabilities */
- 	if (up->bugs & UART_BUG_NOMSR)
- 		return;
-@@ -2104,6 +2145,14 @@ static void serial8250_put_poll_char(struct uart_port *port,
- 	unsigned int ier;
- 	struct uart_8250_port *up = up_to_u8250p(port);
- 
-+	/*
-+	 * Normally the port is locked to synchronize UART_IER access
-+	 * against the console. However, this function is only used by
-+	 * KDB/KGDB, where it may not be possible to acquire the port
-+	 * lock because all other CPUs are quiesced. The quiescence
-+	 * should allow safe lockless usage here.
-+	 */
-+
- 	serial8250_rpm_get(up);
- 	/*
- 	 *	First save the IER then disable the interrupts
-@@ -2439,6 +2488,8 @@ void serial8250_do_shutdown(struct uart_port *port)
- 	serial8250_rpm_get(up);
- 	/*
- 	 * Disable interrupts from this port
-+	 *
-+	 * Synchronize UART_IER access against the console.
- 	 */
- 	spin_lock_irqsave(&port->lock, flags);
- 	up->ier = 0;
-@@ -2738,6 +2789,8 @@ serial8250_do_set_termios(struct uart_port *port, struct ktermios *termios,
- 	/*
- 	 * Ok, we're now changing the port state.  Do it with
- 	 * interrupts disabled.
-+	 *
-+	 * Synchronize UART_IER access against the console.
- 	 */
- 	serial8250_rpm_get(up);
- 	spin_lock_irqsave(&port->lock, flags);
+Changes in v7:
+- Rebase to the kernel v6.4-rc1.
+- Remove "dt-bindings: watchdog: mediatek,mtk-wdt: add mt8365" because
+  it was applied.
+- Link to v6: https://lore.kernel.org/r/20230203-evk-board-support-v6-0-8d6b1cfe7f29@baylibre.com
+
+Changes in v6:
+- Add commit message for the arm64 defconfig changes
+- Fix the mail list
+- Link to v5: https://lore.kernel.org/r/20230203-evk-board-support-v5-0-1883c1b405ad@baylibre.com
+
+Changes in v5:
+- Add patches to build the MT6357 regulator driver and MTK PMIC keys by default
+- Remove "dt-bindings: pinctrl: mediatek,mt8365-pinctrl: add drive strength property"
+  patch from this serie and add it to the pinctrl serie [3]
+- Link to v4: https://lore.kernel.org/r/20230203-evk-board-support-v4-0-5cffe66a38c0@baylibre.com
+
+Changes in v4:
+- Remove v3 applied patch from the serie:
+  - arm64: dts: mediatek: add ethernet support for mt8365 SoC
+  - arm64: dts: mediatek: add mmc support for mt8365 SoC
+  - arm64: dts: mediatek: add mt6357 device-tree
+  - arm64: dts: mediatek: add pwrap support to mt8365 SoC
+  - arm64: dts: mediatek: Increase the size BL31 reserved memory
+- Drop "arm64: dts: mediatek: fix systimer properties" which is done [1]
+- Fix style, typo and re-order properties.
+- Use interrupts-extended for the PMIC node.
+- Link to v3: https://lore.kernel.org/r/20230203-evk-board-support-v3-0-0003e80e0095@baylibre.com
+
+Changes in v3:
+- Remove v2 applied patch from the serie:
+  - dt-bindings: mmc: mediatek,mtk-sd: add mt8365
+- Add trailers and simply resend.
+- Link to v2: https://lore.kernel.org/r/20230203-evk-board-support-v2-0-6ec7cdb10ccf@baylibre.com
+
+---
+Alexandre Mergnat (9):
+      arm64: defconfig: enable MT6357 regulator
+      arm64: defconfig: enable Mediatek PMIC key
+      arm64: dts: mediatek: add watchdog support for mt8365 SoC
+      arm64: dts: mediatek: add mt6357 PMIC support for mt8365-evk
+      arm64: dts: mediatek: add mmc support for mt8365-evk
+      arm64: dts: mediatek: add usb controller support for mt8365-evk
+      arm64: dts: mediatek: add ethernet support for mt8365-evk
+      arm64: dts: mediatek: add OPP support for mt8365 SoC
+      arm64: dts: mediatek: add cpufreq support for mt8365-evk
+
+Amjad Ouled-Ameur (1):
+      arm64: dts: mediatek: Add CPU Idle support
+
+ arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 235 ++++++++++++++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt8365.dtsi    | 142 +++++++++++++++++
+ arch/arm64/configs/defconfig                |   2 +
+ 3 files changed, 379 insertions(+)
+---
+base-commit: d2b7e0f7ff8e0b21e4c8d0ae6dfa38786fe44b35
+change-id: 20230203-evk-board-support-d5b7a839ed7b
+
+Best regards,
 -- 
-2.30.2
+Alexandre Mergnat <amergnat@baylibre.com>
 
 
