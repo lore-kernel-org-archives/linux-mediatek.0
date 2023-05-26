@@ -4,73 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04C08C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 May 2023 11:56:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C14D6C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 May 2023 12:05:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:CC:To:
-	Subject:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EnoITA2vyclEeBazfSggjPhtOGEDLsTXi0beytycRp4=; b=zOoO8mmBbJJc0UB0ZWzKxZuK9u
-	AYvR1SfEU6/lDouBXkoQq3HHnV3YIY7XuXyN7z1ZvvjSzEmeml5KHna3pms373O0Nxoy5EwNX5Vgs
-	0+j3nHV8mLnfGbqVIkj3oBrepLuKs9So33ACCfgvvGVB3y03jtrjTGQhH93ENUUG6OjiFI8nq9aci
-	KKe5ri92kvVVfe4KLp2W/0AzkG9ZjK5jU1xkWQrhwioLbUFCcJQSwwoZ8lUtWwT1gj5SbPCsZC4LQ
-	ANtRKGcNispdxKs+pDwM4VNurKEUFIK/HoZeaUHCd10fRObdm/EFNkLqktMKvn7oHPFdmQJOfQN0Q
-	Khosy58w==;
+	bh=VRFuPfXJs9GjxtyX3vAwSVfOy9RduuiXndDd9XBbKiw=; b=oSwh4snPSITGI0pngxBCxGWkVh
+	U0+RYvE1BuGEM3NVlxmImo68+8zE/z0WpHNFj5NTuvdbloE0DxCB3SL9b8WiSbtsdCL9FC0mwJT8v
+	9Ch/S+Pdxt3cAKGPX3ilNReCB3OQ0FGDn092NSCR+3Yew4aGe0gfjPAatEHkZoNgASjK5remiOrtD
+	QLTqbf0f/r+5I9uK8qAjryTAtsQyZTHifX+LuKZFNypXRoNKuF75bFC3M4z3sr5AHWFmQ4q6rzin2
+	eVzvPDDyFX0RjinlhbznBYcJXqINMsOL90YavvHPewK8RpHa3RbjixLsq4+F/EwMYuouh2lo5Jq7W
+	Dr32//kw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2W3X-002OSX-2p;
-	Fri, 26 May 2023 11:56:27 +0000
-Received: from szxga08-in.huawei.com ([45.249.212.255])
+	id 1q2WBu-002Q4Q-18;
+	Fri, 26 May 2023 12:05:06 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2W3T-002OOS-11;
-	Fri, 26 May 2023 11:56:25 +0000
-Received: from dggpemm500005.china.huawei.com (unknown [172.30.72.53])
-	by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4QSNYk2f5Tz18LY9;
-	Fri, 26 May 2023 19:51:38 +0800 (CST)
-Received: from [10.69.30.204] (10.69.30.204) by dggpemm500005.china.huawei.com
- (7.185.36.74) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.23; Fri, 26 May
- 2023 19:56:10 +0800
-Subject: Re: [PATCH net-next 04/12] mm: Make the page_frag_cache allocator use
- multipage folios
-To: David Howells <dhowells@redhat.com>, <netdev@vger.kernel.org>
-CC: "David S. Miller" <davem@davemloft.net>, Eric Dumazet
-	<edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
-	<pabeni@redhat.com>, Willem de Bruijn <willemdebruijn.kernel@gmail.com>,
-	David Ahern <dsahern@kernel.org>, Matthew Wilcox <willy@infradead.org>, Jens
- Axboe <axboe@kernel.dk>, <linux-mm@kvack.org>,
-	<linux-kernel@vger.kernel.org>, Jeroen de Borst <jeroendb@google.com>,
-	Catherine Sullivan <csully@google.com>, Shailend Chand <shailend@google.com>,
-	Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>, Sean Wang
-	<sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo
- Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Keith
- Busch <kbusch@kernel.org>, Jens Axboe <axboe@fb.com>, Christoph Hellwig
-	<hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>, Chaitanya Kulkarni
-	<kch@nvidia.com>, Andrew Morton <akpm@linux-foundation.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-nvme@lists.infradead.org>
-References: <20230524153311.3625329-1-dhowells@redhat.com>
- <20230524153311.3625329-5-dhowells@redhat.com>
-From: Yunsheng Lin <linyunsheng@huawei.com>
-Message-ID: <a819dd80-54cc-695f-f142-e3d42ce815a7@huawei.com>
-Date: Fri, 26 May 2023 19:56:09 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.2.0
+	id 1q2WBq-002Q2Y-0P;
+	Fri, 26 May 2023 12:05:03 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 28735614EF;
+	Fri, 26 May 2023 12:05:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1F23CC433D2;
+	Fri, 26 May 2023 12:04:55 +0000 (UTC)
+Message-ID: <bdee7988-3551-4011-f93e-c4dd1e4ee76b@xs4all.nl>
+Date: Fri, 26 May 2023 14:04:53 +0200
 MIME-Version: 1.0
-In-Reply-To: <20230524153311.3625329-5-dhowells@redhat.com>
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [v10] media: mediatek: vcodec: support stateless AV1 decoder
+To: Xiaoyong Lu <xiaoyong.lu@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ Alexandre Courbot <acourbot@chromium.org>,
+ Nicolas Dufresne <nicolas@ndufresne.ca>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Tomasz Figa <tfiga@google.com>
+Cc: George Sun <george.sun@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Irui Wang <irui.wang@mediatek.com>, Steve Cho <stevecho@chromium.org>,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20230414083020.22219-1-xiaoyong.lu@mediatek.com>
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.69.30.204]
-X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
- dggpemm500005.china.huawei.com (7.185.36.74)
-X-CFilter-Loop: Reflected
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <20230414083020.22219-1-xiaoyong.lu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230526_045623_762565_E8721E19 
-X-CRM114-Status: GOOD (  22.16  )
+X-CRM114-CacheID: sfid-20230526_050502_198975_46BC2CB7 
+X-CRM114-Status: GOOD (  11.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,55 +81,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2023/5/24 23:33, David Howells wrote:
-> Change the page_frag_cache allocator to use multipage folios rather than
-> groups of pages.  This reduces page_frag_free to just a folio_put() or
-> put_page().
-
-Hi, David
-
-put_page() is not used in this patch, perhaps remove it to avoid
-the confusion?
-Also, Is there any significant difference between __free_pages()
-and folio_put()? IOW, what does the 'reduces' part means here?
-
-I followed some disscusion about folio before, but have not really
-understood about real difference between 'multipage folios' and
-'groups of pages' yet. Is folio mostly used to avoid the confusion
-about whether a page is 'headpage of compound page', 'base page' or
-'tailpage of compound page'? Or is there any abvious benefit about
-folio that I missed?
-
+On 14/04/2023 10:30, Xiaoyong Lu wrote:
+> Add mediatek av1 decoder linux driver which use the stateless API in
+> MT8195.
 > 
-> diff --git a/include/linux/mm_types.h b/include/linux/mm_types.h
-> index 306a3d1a0fa6..d7c52a5979cc 100644
-> --- a/include/linux/mm_types.h
-> +++ b/include/linux/mm_types.h
-> @@ -420,18 +420,13 @@ static inline void *folio_get_private(struct folio *folio)
->  }
->  
->  struct page_frag_cache {
-> -	void * va;
-> -#if (PAGE_SIZE < PAGE_FRAG_CACHE_MAX_SIZE)
-> -	__u16 offset;
-> -	__u16 size;
-> -#else
-> -	__u32 offset;
-> -#endif
-> +	struct folio	*folio;
-> +	unsigned int	offset;
->  	/* we maintain a pagecount bias, so that we dont dirty cache line
->  	 * containing page->_refcount every time we allocate a fragment.
->  	 */
-> -	unsigned int		pagecnt_bias;
-> -	bool pfmemalloc;
-> +	unsigned int	pagecnt_bias;
-> +	bool		pfmemalloc;
->  };
+> Signed-off-by: Xiaoyong Lu<xiaoyong.lu@mediatek.com>
+> Tested-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+> Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+> Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-It seems 'va' and 'size' field is used to avoid touching 'stuct page' to
-avoid possible cache bouncing when there is more frag can be allocated
-from the page while other frags is freed at the same time before this patch?
-It might be worth calling that out in the commit log or split it into another
-patch to make it clearer and easier to review?
+After rebasing on top of our media staging tree I get these compile errors:
+
+  CC [M]  drivers/media/platform/mediatek/vcodec/vdec/vdec_av1_req_lat_if.o
+drivers/media/platform/mediatek/vcodec/vdec/vdec_av1_req_lat_if.c: In function ‘vdec_av1_slice_lat_decode’:
+drivers/media/platform/mediatek/vcodec/vdec/vdec_av1_req_lat_if.c:2075:46: error: ‘struct mtk_vcodec_dev’ has no member named ‘msg_queue_core_ctx’
+ 2075 |                 vdec_msg_queue_qbuf(&ctx->dev->msg_queue_core_ctx, lat_buf);
+      |                                              ^~
+drivers/media/platform/mediatek/vcodec/vdec/vdec_av1_req_lat_if.c:2114:46: error: ‘struct mtk_vcodec_dev’ has no member named ‘msg_queue_core_ctx’
+ 2114 |                 vdec_msg_queue_qbuf(&ctx->dev->msg_queue_core_ctx, lat_buf);
+      |                                              ^~
+
+That's due to the patch "media: mediatek: vcodec: move core context from device
+to each instance" that has now been merged and that drops that queue.
+
+Can you rebase v10? This is now the only remaining blocked for the av1 series
+to be merged.
+
+Regards,
+
+	Hans
 
