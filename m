@@ -4,91 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EADCC7EE23
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 May 2023 09:47:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A71DEC7EE23
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 May 2023 10:08:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nat2dXg+UOzIavY+WSMDfeXKleU0IIvcUkgX31+SwQ0=; b=LEsldE36w8dvOu5u8DAILmclvZ
-	9PNmadicvmUl+rPQGpRjChg13GDWmf+Q1bizEgmAF7O49flbEhiC58TjuJbBE8MGWsl0hSFtaoz5z
-	G6uEQh/fhp6Iiz6hGj5488gsLhNj3xAo7ZcQqeRXpQ/DFqe7JU2+6mdn/n2YOINt4Cl7wa4zlReX6
-	YJP8MA178FZr3Hpqwo0xKnSLsZYgFp/K2oXrGeS+k4MpnNlL/VKx5pWNuKFlRM6vDHd34Y/xtV75j
-	j4yEwfAuv4FhocYQnZYhlQDvv+puHdgt3kUpGik9cl7loXwX+3yiaBFt+xwyriZTy05iNuRLkCNEx
-	4c9a3LgA==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=/36U8f2hjbE2m0TYdKuQASmkYLFLFD+eCwO3lexS9zY=; b=GrFy3CMhlmYRLwkhjWi1sXqgyL
+	HgCOy1nS/tN35nth/F4BopcmqaZRu3zsO+asuLf0bxr/2/LHVoQjGcfhng56YIfJ3+mbfjauEjUzY
+	D9LAVLg6J0Egwtc7ePF6lQeERGZ7QLmjQTmAaKbfEcq4DwQwfSe5fbAbZYXs/iCbYFqvZQKJpzw4L
+	MnKTRCgX7UjscmxY23JGhfrN3VjWEqyOshnpvTaQubQimn/qSLkjrXgYgf6/BCH072A+B5L8Tzl2I
+	C2uCVD1w6d5MhtDUSEI2puukIVxfztLM2UItup1Mk68hEwNKWJGm30iSpbca8LYmxf4AaUpoYxvZq
+	pdVnwtuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2U2C-001sJf-2O;
-	Fri, 26 May 2023 09:46:56 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1q2UNS-001x7c-00;
+	Fri, 26 May 2023 10:08:54 +0000
+Received: from sender4-op-o15.zoho.com ([136.143.188.15])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2U28-001sIi-2U
-	for linux-mediatek@lists.infradead.org;
-	Fri, 26 May 2023 09:46:54 +0000
-Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-3f60e536250so11103035e9.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 26 May 2023 02:46:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1685094411; x=1687686411;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=nat2dXg+UOzIavY+WSMDfeXKleU0IIvcUkgX31+SwQ0=;
-        b=QClPu3uwppIpWhb4E3uBUouUHuGMdCDCap+TS3E6hGmLnA4VjA4bKSBHIHelGx0ccW
-         FEr0tengi50fv5JkQcvgU1KTRffYujLtgVjvOOvZFIGz7/sclzkeUoKurDBYRU7U4O+E
-         SqZapO1awa/OnzqqYNJX4m6EBvNJHwiV0MmIk2Fg6KECJgzQiaRlFOAckqdKWBEhO/rr
-         Zw2s3DnpcD0f9Xqt48cK4kdPbfgP6+ls3uZmqN3D0SfZahD/EwRw0v+HDDU6oOj8wjYV
-         Acdo8a+1fB2+ZoPrSuE8Lf6gCE7iWPqS8QXsj3t50cBRwpqKw4Lme7PRmLQwPNJLszhT
-         KLfw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685094411; x=1687686411;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=nat2dXg+UOzIavY+WSMDfeXKleU0IIvcUkgX31+SwQ0=;
-        b=ZxotmlntKfEcF6CXgJ1aeILyBUx0bS8aoEr1A65Z6DfoEOhc59SF1gTyXNdXARHqIU
-         cz7oAGPYcTZZYO4y2lJGBl6RJh5qtDdt8wdP/Xedqslo0/zNrIGTZKVmiPoYNOcRMq73
-         EVNUpsv4YbPVIWXbtvgoWL23VnprJIDT0p6xTJExYL5TXi0ZxPF7Kz/dTYbJjlbBDl4z
-         D6F3GFTlWeJ8mF0UcdllvA+o5I3jTMsyHXQUi025KmVPQiA6DyBQVSTonHvxNw6fX0ad
-         hpthRKixy6wmlYZlYYeNRrECBehQmPZftWNy+k0WveJWoafbM+JYeeKI9ABaMl5WdPU1
-         VCUA==
-X-Gm-Message-State: AC+VfDyMUvZ6SbCpwy4gphRvqD6cICdQJyOgS1IIjoxvOjN3X+fqI21Z
-	wrFKx4XOKrm4LrLlRQj7rWYH9g==
-X-Google-Smtp-Source: ACHHUZ7zzzPEEncZvQtOFznUC+/7QoK+Qxxmiu8AfkXUIs6gj8Ym6jXeyUI0v0C9XmNiOfMiKm+5OQ==
-X-Received: by 2002:a5d:5506:0:b0:309:491b:39ca with SMTP id b6-20020a5d5506000000b00309491b39camr1037698wrv.33.1685094410926;
-        Fri, 26 May 2023 02:46:50 -0700 (PDT)
-Received: from [192.168.1.172] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id u10-20020a5d514a000000b00307b5376b2csm4463662wrt.90.2023.05.26.02.46.49
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 26 May 2023 02:46:50 -0700 (PDT)
-Message-ID: <160d8ea5-81bd-ece6-a4a6-b93a62b4d749@baylibre.com>
-Date: Fri, 26 May 2023 11:46:49 +0200
+	id 1q2UNO-001x60-24;
+	Fri, 26 May 2023 10:08:51 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1685095692; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=n9HFZ29iB0D4ZHN7ZdUVSCswnEcN/UNexS3aoI1Yz2+1cHwPKZiHQROMYP1q64ti1nrAYFL4FtWF9RJ0z0vd3CbrE5EgmsBaz8INGnuV6SjUn2Sz9k1aqq7+i/7iF/lWk5e3wC60Mt1T0MUTsvS0xnpLLzOogj1prOgpylNACas=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1685095692; h=Content-Transfer-Encoding:Cc:Date:From:MIME-Version:Message-ID:Subject:To; 
+	bh=/36U8f2hjbE2m0TYdKuQASmkYLFLFD+eCwO3lexS9zY=; 
+	b=RPXX4Yg2itYXA6bLdwJl9tRcJtGYTkTd0UYmHmycMYJ/Kz5vFxKOwGcqQq/GvMzC7iA6glX8LDWtPUM5EmoGUn65Jt6IenV1Ksiu1M6MJDE/tUEMjYBUOL2CnkVRaNH04sq3iKTsIoOj1SI3OpLfanQERKkl01L1pxN+HII/bNg=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=icenowy.me;
+	spf=pass  smtp.mailfrom=uwu@icenowy.me;
+	dmarc=pass header.from=<uwu@icenowy.me>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1685095692;
+	s=zmail; d=icenowy.me; i=uwu@icenowy.me;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Transfer-Encoding:Reply-To;
+	bh=/36U8f2hjbE2m0TYdKuQASmkYLFLFD+eCwO3lexS9zY=;
+	b=BwM+5zUvstNWV/orBTuDw3hsvQtHGsh7+SViYivwuEx8j+JHLknxVHiEBSjz4QpJ
+	rDKYfcRb9jipvQQHQBLvtwLvwu0pJDde9swvzN6YIOHqbARApUafOVuwOdga5jg0/6g
+	6oMDtzIq/jkzUFCogHHhBAUR630ATbETKfk7w9KA=
+Received: from edelgard.fodlan.icenowy.me (120.85.97.71 [120.85.97.71]) by mx.zohomail.com
+	with SMTPS id 1685095691240276.4832447024337; Fri, 26 May 2023 03:08:11 -0700 (PDT)
+From: Icenowy Zheng <uwu@icenowy.me>
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Douglas Anderson <dianders@chromium.org>
+Cc: devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	dri-devel@lists.freedesktop.org,
+	Icenowy Zheng <uwu@icenowy.me>
+Subject: [PATCH] arm64: dts: mediatek: mt8173-elm: remove panel model number in DT
+Date: Fri, 26 May 2023 18:08:01 +0800
+Message-Id: <20230526100801.16310-1-uwu@icenowy.me>
+X-Mailer: git-send-email 2.39.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH v2 1/2] dt-bindings: clock: mediatek: replace unusable
- clock
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>
-Cc: Markus Schneider-Pargmann <msp@baylibre.com>, linux-clk@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230517-fix-clk-index-v2-0-1b686cefcb7e@baylibre.com>
- <20230517-fix-clk-index-v2-1-1b686cefcb7e@baylibre.com>
- <f3f7df94-74f1-dd41-00d7-0ab4fa2e4d61@collabora.com>
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <f3f7df94-74f1-dd41-00d7-0ab4fa2e4d61@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230526_024652_808163_83FFE773 
-X-CRM114-Status: GOOD (  12.70  )
+X-CRM114-CacheID: sfid-20230526_030850_760458_7E7A528C 
+X-CRM114-Status: GOOD (  12.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,23 +82,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 26/05/2023 10:30, AngeloGioacchino Del Regno wrote:
-> Il 25/05/23 16:50, Alexandre Mergnat ha scritto:
->> The “mcu_pm_bclk_ck_cg” clock is used by co-processors and should not be
->> added to the kernel driver, otherwise the CPU just halt and the board is
->> rebooted by the wathdog.
->>
->> Instead, add the "aes_top0_bclk_ck_cg" missing clock to prevent
->> re-shuffling index and then preserve the ABI.
-> 
-> It's still a breakage. Besides, have you tried to add it as 
-> CLK_IS_CRITICAL? :-)
+Currently a specific panel number is used in the Elm DTSI, which is
+corresponded to a 12" panel. However, according to the official Chrome
+OS devices document, Elm refers to Acer Chromebook R13, which, as the
+name specifies, uses a 13.3" panel, which comes with EDID information.
 
-As I said to Conor, I can fix the driver index issue (patch 2/2) without 
-fixing the binding (using CLK_IGNORE_UNUSED but CLK_IS_CRITICAL works too).
+As the kernel currently prioritizes the hardcoded timing parameters
+matched with the panel number compatible, a wrong timing will be applied
+to the 13.3" panel on Acer Chromebook R13, which leads to blank display.
 
+Because the Elm DTSI is shared with Hana board, and Hana corresponds to
+multiple devices from 11" to 14", a certain panel model number shouldn't
+be present, and driving the panel according to its EDID information is
+necessary.
+
+Signed-off-by: Icenowy Zheng <uwu@icenowy.me>
+---
+ arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+index d452cab28c67..737737528eed 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+@@ -285,7 +285,7 @@ ps8640_out: endpoint {
+ 
+ 		aux-bus {
+ 			panel: panel {
+-				compatible = "lg,lp120up1";
++				compatible = "edp-panel";
+ 				power-supply = <&panel_fixed_3v3>;
+ 				backlight = <&backlight>;
+ 
 -- 
-Regards,
-Alexandre
+2.39.1
 
 
