@@ -4,101 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 649D1C7EE23
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 May 2023 13:11:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2656BC7EE23
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 May 2023 13:17:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=qUgyOJE/fY9rPq1bfWp/7kanNPXwLMVS2yyeFGQX14Q=; b=gqhEUNAb76KPZjpTCx1UTYWTy2
-	K7tsGrfKkFVCdPItrahGrb4/GW6sc6FMQdp/qb2AAV9mq8kRKc7aI4ngK3ujqJMmjdVeJsPkquMjd
-	F0JIzOGXbKliEWDgKCZfghQmOIhs5Fo5jt8H4w0Fg51WiPeO78oQRGaAHJ08giro81Zv9m5wC/O+t
-	Ch3ZmtJETTF7phlORx/8nVTygbnGID5ywfspEf3kk/k2hSekxnH0+1ua1pHaylS4cpTjzj1WGba8y
-	Liv9WEDCVX2zC3tiXIsbYPy9E8rTvmVtsFgsc5gtw58rHDQ1nxPpFVCJzqTLkw+IxCg+JzF5Cb98n
-	P8cY1Q1A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sGqkPEwwAUavSeei9EN10EkpOiDwc0KPU98JvOkeGrg=; b=Z3fCwvn95IN7H802nr77FHAaZd
+	b8xMTTeeRTH+RGdXg5SeHqeIn1dODL+04bYCMw1CD3iR7yQOW/BYrZLn1qu1UYk6gOFdrW++XWh/C
+	TQc4xMoWsR8ae5ycAwjWW4iHra3aN/OBnum9yD1w7exyDJeoN4paV62JBuz0LcYaWoZml2I/6AkAD
+	8rqQokOCyRTpptsudWXST4P/2mRbG0TWRo4x39VLQdh+fFp0e6Ufsmk5h0fMVev44Bf8Cb0GGlrYQ
+	nohuLk8nzFTR+Ynzg+fiBMB/W+FkRe4rZoSuiRw5BPFMo9h6WF76win+LZuz/nZmq6t3xqCiFymy/
+	s8CdVNXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2XDf-002anZ-33;
-	Fri, 26 May 2023 13:10:59 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1q2XKH-002c3S-2U;
+	Fri, 26 May 2023 13:17:49 +0000
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2XDd-002amC-0u
-	for linux-mediatek@lists.infradead.org;
-	Fri, 26 May 2023 13:10:58 +0000
-Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-30a95ec7744so669972f8f.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 26 May 2023 06:10:54 -0700 (PDT)
+	id 1q2XKE-002c1T-1h;
+	Fri, 26 May 2023 13:17:47 +0000
+Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-9707313e32eso136637266b.2;
+        Fri, 26 May 2023 06:17:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1685106653; x=1687698653;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=qUgyOJE/fY9rPq1bfWp/7kanNPXwLMVS2yyeFGQX14Q=;
-        b=eCrzoaMcswIXrpTB8ZOJvW0FMKiuKwGrf6nkttwQ4o0CvaU8RK012buSZdZ1unMmf3
-         AtcN5cYqsvlig1lqNV6BekpEbeL/ZKhZZ1z//ICQAY/EgdtF3yvuxLnQp1Ty5tzvBiNQ
-         EPglEm5CjzpzoYhjCIHcL93/gxLXhpf8ztPcSMj17/xm/FcSKIF2cJOF88Vvie9NfBjy
-         F/CAyoc1GE88HwjHSeXy1y60rrkhUNZxDoda76Yw0gXK9giqihDib9lkJzMGjYxGzXmq
-         mqaTJ71uRVeTnsmZAnGUN4NnMXO8Buq4cA79wzaCLTclc9Dc4MSL9DQL9j0EgbvweuRv
-         2yDA==
+        d=gmail.com; s=20221208; t=1685107063; x=1687699063;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=sGqkPEwwAUavSeei9EN10EkpOiDwc0KPU98JvOkeGrg=;
+        b=oRZs12wPYDV4ZHJF/NGbRuAA3DQsHTN2rPOmwlG1CakdIAm4fFKv1vDezhcIABhLEM
+         ohp/IF6ZT7wftcQIwjZOdByfp84lhpPq+uQi6kEqGeIr1BMmfimLmQr1lFL6PR/YuFRF
+         NuksyP51Yr6YDpLOGPyarUIQvMJhFFY5wJ88JSbLd8C6UnlQQFtLktAncD5vfWllTUXZ
+         +t88BERHCrIa/t7QxHQgUvXT+31b9vG3K4HKKnPtEe00tJlFIe9rlBikFC0t2ysxB7as
+         PTxRbahr9QfrisjHshRtTsooX8IH9+5Qcw37OX4CEgXSqf5KfIIN1a/4jfWxwQo8/V/b
+         356w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685106653; x=1687698653;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=qUgyOJE/fY9rPq1bfWp/7kanNPXwLMVS2yyeFGQX14Q=;
-        b=Gt3JuCL1UnnOMV2iWXVRP6dd8yynrC/T0VddXrg3UVnsdefd9NDqSD6q+ntG6lCEXg
-         dTNd8zW09EXx63/g26NRv2caSIri7ED8C5BhLJAINSOISghZ0O7pu5XesdM/qrBC1ecY
-         vxk415TYujqJxsOgExAKDJqlqIY2Jy0gpZ++hteK7FzV3DYXP6YVsHbiowdOazcLwyxd
-         hlomUPrKyQnVI6TjZil0nkZRjNYMIEC2l9Bcdew+elaoR41Ds6SPBx/bftshWDIW6jvt
-         R3RiwmeNp4wKYkUYlPf2PKF9sCjSsP/Md7KPbI44sw2jqpg0xUUprjJeBwPr42QgCVRp
-         yk9g==
-X-Gm-Message-State: AC+VfDzyglUna7CfkYtlMZv1Fq0zQyj2QQUdQD3SIajJ/DRJiSyyr7N7
-	Vv5tN0ASh4SMnsHlknfzg6amhg==
-X-Google-Smtp-Source: ACHHUZ7bGqw/6PQTuYiTLRKRQpn0q1K0BUEvQeNZpODRlxvVYoNcEP/w+AzfHrQMMMd0VWSrn5Hy7w==
-X-Received: by 2002:a5d:4a8b:0:b0:309:51ff:a77a with SMTP id o11-20020a5d4a8b000000b0030951ffa77amr1388066wrq.10.1685106653450;
-        Fri, 26 May 2023 06:10:53 -0700 (PDT)
-Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id o12-20020adfe80c000000b002fe13ec49fasm5010587wrm.98.2023.05.26.06.10.52
+        d=1e100.net; s=20221208; t=1685107063; x=1687699063;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=sGqkPEwwAUavSeei9EN10EkpOiDwc0KPU98JvOkeGrg=;
+        b=Oi0XZX9EAlBxpJrXUOn6Rd2sLYNeEmH72Wxdfp+5XAcChkNBTlQ/whUlrm6QYt5Ea7
+         OL1XUwOUdWuYZrrVGxqt6yVKX8H2sophiPLyvdyLACqtmVQely4OQ2EqohmBirDW56o8
+         yGBZCw1Zb4zC9HPGs6ap1ntD1kDMXLZFu5YcRyEc7VrYsL7gbmMmMfpL+ePmed/B7qjO
+         6TOs5ooqAc9oifbGSr0pnyUSR/Jp1Myfk1hICJSw7unzyO1/3js5f8df5Q8hfL0UPHIY
+         5mhjFqFAhk6dm/3ecZMSkTHHOKLmI+C9W7wdk6v3HZvvSydK+Ye0p0EtPQPwHKnX6uCf
+         XJGg==
+X-Gm-Message-State: AC+VfDweAN/cv1Vns+hmc7AnFGqqZHTkEKrpPS2Z8V4Jz25Jc7kXkZKX
+	7d20Ii2pdEE2mZm/6mWtL8o=
+X-Google-Smtp-Source: ACHHUZ5L3LKf81sPQ1sp+T5rJCope7U7Ww9lPpw+UoLYYUsQolbeSqhC96HmdLhWRoMRFVYTrfanPA==
+X-Received: by 2002:a17:907:9345:b0:956:fbd7:bc5e with SMTP id bv5-20020a170907934500b00956fbd7bc5emr2084037ejc.64.1685107062608;
+        Fri, 26 May 2023 06:17:42 -0700 (PDT)
+Received: from skbuf ([188.27.184.189])
+        by smtp.gmail.com with ESMTPSA id l13-20020a170906078d00b00968a2286749sm2168353ejc.77.2023.05.26.06.17.41
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 May 2023 06:10:52 -0700 (PDT)
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Fri, 26 May 2023 15:10:43 +0200
-Subject: [PATCH v3] clk: mediatek: mt8365: Fix index issue
+        Fri, 26 May 2023 06:17:42 -0700 (PDT)
+Date: Fri, 26 May 2023 16:17:39 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: arinc9.unal@gmail.com
+Subject: Re: [PATCH net-next 16/30] net: dsa: mt7530: move lowering port 5
+ RGMII driving to mt7530_setup()
+Message-ID: <20230526131739.5mso5y2d3ieelasf@skbuf>
+References: <20230522121532.86610-1-arinc.unal@arinc9.com>
+ <20230522121532.86610-1-arinc.unal@arinc9.com>
+ <20230522121532.86610-17-arinc.unal@arinc9.com>
+ <20230522121532.86610-17-arinc.unal@arinc9.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20230517-fix-clk-index-v3-1-be4df46065c4@baylibre.com>
-X-B4-Tracking: v=1; b=H4sIANKvcGQC/32Oy27CMBBFfwV5zRA/Ept21f9ALDxmQkZAEtmpB
- UL599rsWqksz5XO0X2KRJEpic/NU0TKnHgaC5jtRoTBj2cCPhUWWmojO+Wg5zuE6wV4PNEdPqx
- sDfredkiiOOgTAUY/hqFa33OT7a6FGFSzTDOH5rbsje2aX5UqzpHK9jpyOBYeOC1TfLx+ZVXX/
- y5kBRJUq6VzXjmj8Qv948oYaRemm6ixrN8GdA2g3dtAfUBHfwLruv4AJQLa3ScBAAA=
-To: Michael Turquette <mturquette@baylibre.com>, 
- Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Chen-Yu Tsai <wenst@chromium.org>
-Cc: Conor Dooley <conor.dooley@microchip.com>, linux-clk@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- Alexandre Mergnat <amergnat@baylibre.com>
-X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4771; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=s9ktG6EMZDgpIOSQmeRBQyxInHPyLL6rYL7iN6uRfXE=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkcK/coUhPBZM0NAJVX8FieOT3nCN+slKpZTWjfoPT
- pl/E0R6JAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZHCv3AAKCRArRkmdfjHURZ0NEA
- CQX7CxAKFArV5C9+fkjK//dSNLEXu7FlKTnE+YdqaCObcffYXvZP6Ya2cvZOh2i+6p7gO5YnIBUjmu
- gUbV8GXpj81IuQX8stw6iFE3ZHiYaceE7E8QIs93lEsfOPaHDwZTA/eJQDKXQtMvSOQyS7YVn3UAZ0
- htqQdx2RGy8i0UB05+ScCVD8hRjS2xj5F/C+NaH0X1qVvD8C7D7swzuCBHL0DKExqpTsVbnGJJlgtb
- Ul4nTyCrh1POLS09VxC0hy9bUxSO8yrFncZS3nHhvT80uDxYmb2tbQoKDRJsSsXKVBJWO+IlqW7AM5
- ohPYMDBnZLBXRYcqTZraeRdDpnal0VVXME5KjFyc8b20CEvUzhMK0PxSdbWa8UZD+8inPJjA9Nod9b
- Zsq4beLUVzfeCLtOhzUU/yp61DqWgOcSEaMPpa0miDKV4pEFrAK+Uvuum+Jiolpqtw2ZqbpC9Af+//
- +yOoCKrGbnryoV5TBVrafsmUQ8LNTrH9ve/OU9CYAiHtq4OLID7K/CbTRCe4359KBRRt2zDw9KhOVt
- ED1zQCTOvhX2n2s1dcFTYRZgIPirkfdy9aBknnnG6n/3oXVSE6oB0XEdkg7ggSU0XDsNfmDYCN4cTm
- ZwuSzxTmVdIL7Oi8drYGx3G/AVrYyQ1mSDhQAp+R0D5fWKL+QNwUDkH6ewOQ==
-X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
- fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230522121532.86610-17-arinc.unal@arinc9.com>
+ <20230522121532.86610-17-arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230526_061057_321288_04A58085 
-X-CRM114-Status: GOOD (  16.88  )
+X-CRM114-CacheID: sfid-20230526_061746_585338_5280EB67 
+X-CRM114-Status: GOOD (  18.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,108 +91,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, mithat.guner@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Before the patch [1], the clock probe was done directly in the
-clk-mt8365 driver. In this probe function, the array which stores the
-data clocks is sized using the higher defined numbers (*_NR_CLOCK) in
-the clock lists [2]. Currently, with the patch [1], the specific
-clk-mt8365 probe function is replaced by the mtk generic one [3], which
-size the clock data array by adding all the clock descriptor array size
-provided by the clk-mt8365 driver.
+On Mon, May 22, 2023 at 03:15:18PM +0300, arinc9.unal@gmail.com wrote:
+> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+> 
+> Move lowering Tx driving of rgmii on port 5 to right before lowering of Tx
+> driving of trgmii on port 6 on mt7530_setup().
+> 
+> This way, the switch should consume less power regardless of port 5 being
+> used.
+> 
+> Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> ---
 
-Actually, all clock indexes come from the header file [2], that mean, if
-there are more clock (then more index) in the header file [2] than the
-number of clock declared in the clock descriptor arrays (which is the
-case currently), the clock data array will be undersized and then the
-generic probe function will overflow when it will try to write in
-"clk_data[CLK_INDEX]". Actually, instead of crashing at boot, the probe
-function returns an error in the log which looks like:
-"of_clk_hw_onecell_get: invalid index 135", then this clock isn't
-enabled.
+This patch assumes that the MAC has its TXC ticking even when PMCR_TX_EN
+is unset. Why would it do that?
 
-Solve this issue by adding in the driver the missing clocks declared in
-the header clock file [2].
+>  drivers/net/dsa/mt7530.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> index f2c1aa9cf7f7..514e82299537 100644
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+> @@ -933,10 +933,6 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
+>  		/* P5 RGMII TX Clock Control: delay x */
+>  		mt7530_write(priv, MT7530_P5RGMIITXCR,
+>  			     CSR_RGMII_TXC_CFG(0x10 + tx_delay));
+> -
+> -		/* reduce P5 RGMII Tx driving, 8mA */
+> -		mt7530_write(priv, MT7530_IO_DRV_CR,
+> -			     P5_IO_CLK_DRV(1) | P5_IO_DATA_DRV(1));
+>  	}
+>  
+>  	mt7530_write(priv, MT7530_MHWTRAP, val);
+> @@ -2209,6 +2205,10 @@ mt7530_setup(struct dsa_switch *ds)
+>  
+>  	mt7530_pll_setup(priv);
+>  
+> +	/* Lower P5 RGMII Tx driving, 8mA */
+> +	mt7530_write(priv, MT7530_IO_DRV_CR,
+> +			P5_IO_CLK_DRV(1) | P5_IO_DATA_DRV(1));
 
-[1]: Commit ffe91cb28f6a ("clk: mediatek: mt8365: Convert to
-     mtk_clk_simple_{probe,remove}()")
-[2]: include/dt-bindings/clock/mediatek,mt8365-clk.h
-[3]: drivers/clk/mediatek/clk-mtk.c
+If you move code then preserve its alignment to the open parenthesis.
 
-Fixes: ffe91cb28f6a ("clk: mediatek: mt8365: Convert to mtk_clk_simple_{probe,remove}()")
-
-Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
----
-Fix a regression which prevent the initialization of the
-latest indexed clocks. The regression is introduced with [1].
-
-[1]: Commit ffe91cb28f6a ("clk: mediatek: mt8365: Convert to
-     mtk_clk_simple_{probe,remove}()")
----
-Changes in v3:
-- Remove all binding changes.
-- Link to v2: https://lore.kernel.org/r/20230517-fix-clk-index-v2-0-1b686cefcb7e@baylibre.com
-
-Changes in v2:
-- Add the missing clocks in the mt8365 clock driver.
-- Revert all change in binding file except for one clock.
-- Link to v1: https://lore.kernel.org/r/20230517-fix-clk-index-v1-0-142077a1732b@baylibre.com
----
- drivers/clk/mediatek/clk-mt8365.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
-
-diff --git a/drivers/clk/mediatek/clk-mt8365.c b/drivers/clk/mediatek/clk-mt8365.c
-index 6b4e193f648d..c366ac1611e6 100644
---- a/drivers/clk/mediatek/clk-mt8365.c
-+++ b/drivers/clk/mediatek/clk-mt8365.c
-@@ -23,6 +23,7 @@
- static DEFINE_SPINLOCK(mt8365_clk_lock);
- 
- static const struct mtk_fixed_clk top_fixed_clks[] = {
-+	FIXED_CLK(CLK_TOP_CLK_NULL, "clk_null", NULL, 0),
- 	FIXED_CLK(CLK_TOP_I2S0_BCK, "i2s0_bck", NULL, 26000000),
- 	FIXED_CLK(CLK_TOP_DSI0_LNTC_DSICK, "dsi0_lntc_dsick", "clk26m",
- 		  75000000),
-@@ -559,6 +560,14 @@ static const struct mtk_clk_divider top_adj_divs[] = {
- 		  0x324, 16, 8, CLK_DIVIDER_ROUND_CLOSEST),
- 	DIV_ADJ_F(CLK_TOP_APLL12_CK_DIV3, "apll12_ck_div3", "apll_i2s3_sel",
- 		  0x324, 24, 8, CLK_DIVIDER_ROUND_CLOSEST),
-+	DIV_ADJ_F(CLK_TOP_APLL12_CK_DIV4, "apll12_ck_div4", "apll_tdmout_sel",
-+		  0x328, 0, 8, CLK_DIVIDER_ROUND_CLOSEST),
-+	DIV_ADJ_F(CLK_TOP_APLL12_CK_DIV4B, "apll12_ck_div4b", "apll_tdmout_sel",
-+		  0x328, 8, 8, CLK_DIVIDER_ROUND_CLOSEST),
-+	DIV_ADJ_F(CLK_TOP_APLL12_CK_DIV5, "apll12_ck_div5", "apll_tdmin_sel",
-+		  0x328, 16, 8, CLK_DIVIDER_ROUND_CLOSEST),
-+	DIV_ADJ_F(CLK_TOP_APLL12_CK_DIV5B, "apll12_ck_div5b", "apll_tdmin_sel",
-+		  0x328, 24, 8, CLK_DIVIDER_ROUND_CLOSEST),
- 	DIV_ADJ_F(CLK_TOP_APLL12_CK_DIV6, "apll12_ck_div6", "apll_spdif_sel",
- 		  0x32c, 0, 8, CLK_DIVIDER_ROUND_CLOSEST),
- };
-@@ -696,6 +705,7 @@ static const struct mtk_gate ifr_clks[] = {
- 	GATE_IFR3(CLK_IFR_GCPU, "ifr_gcpu", "axi_sel", 8),
- 	GATE_IFR3(CLK_IFR_TRNG, "ifr_trng", "axi_sel", 9),
- 	GATE_IFR3(CLK_IFR_AUXADC, "ifr_auxadc", "clk26m", 10),
-+	GATE_IFR3(CLK_IFR_CPUM, "ifr_cpum", "clk26m", 11),
- 	GATE_IFR3(CLK_IFR_AUXADC_MD, "ifr_auxadc_md", "clk26m", 14),
- 	GATE_IFR3(CLK_IFR_AP_DMA, "ifr_ap_dma", "axi_sel", 18),
- 	GATE_IFR3(CLK_IFR_DEBUGSYS, "ifr_debugsys", "axi_sel", 24),
-@@ -717,6 +727,8 @@ static const struct mtk_gate ifr_clks[] = {
- 	GATE_IFR5(CLK_IFR_PWRAP_TMR, "ifr_pwrap_tmr", "clk26m", 12),
- 	GATE_IFR5(CLK_IFR_PWRAP_SPI, "ifr_pwrap_spi", "clk26m", 13),
- 	GATE_IFR5(CLK_IFR_PWRAP_SYS, "ifr_pwrap_sys", "clk26m", 14),
-+	GATE_MTK_FLAGS(CLK_IFR_MCU_PM_BK, "ifr_mcu_pm_bk", NULL, &ifr5_cg_regs,
-+			17, &mtk_clk_gate_ops_setclr, CLK_IGNORE_UNUSED),
- 	GATE_IFR5(CLK_IFR_IRRX_26M, "ifr_irrx_26m", "clk26m", 22),
- 	GATE_IFR5(CLK_IFR_IRRX_32K, "ifr_irrx_32k", "clk32k", 23),
- 	GATE_IFR5(CLK_IFR_I2C0_AXI, "ifr_i2c0_axi", "i2c_sel", 24),
-
----
-base-commit: ac9a78681b921877518763ba0e89202254349d1b
-change-id: 20230517-fix-clk-index-96043baf65be
-
-Best regards,
--- 
-Alexandre Mergnat <amergnat@baylibre.com>
+> +
+>  	/* Lower Tx driving for TRGMII path */
+>  	for (i = 0; i < NUM_TRGMII_CTRL; i++)
+>  		mt7530_write(priv, MT7530_TRGMII_TD_ODT(i),
+> -- 
+> 2.39.2
+> 
 
 
