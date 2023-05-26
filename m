@@ -4,79 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDB4CC7EE23
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 May 2023 13:25:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80658C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 May 2023 14:07:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=REExVQcWcE2QjJuxENKUcGpJCKWSMyccL07DCITDofY=; b=StsoqS5wk+m/AyGfrmlU59/Rgk
-	TpObWOI4ly6Q6E5Tgmd2JlWD5QD4Fkc9hSLMOr5e16Ol78diowQd5NqPbQApCwsHndX+8g+lrWTRM
-	cytSoTQUr+lBQPM/PhqtBXgQ1/exerNOtYnoQNx+9N5bdEhgravan65tt7v/YCUHxP/akTGRaWyAb
-	0h8fdkQ91zHfQrOKyw+4yVYo0LDly8G+socVjowv9AmCzS4p60qncKI7yTFcR1T8+6aMQeQEEl1L3
-	jL45TSVRNG6+BVMnqEmI36rU9AkoEFN45cnivO3QObTTJ/JpHuerb0scu7lOMA8Io7Vi5zK6JyEDi
-	vTEAjuQA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LAbN/2lmj85EfJ5ZXB9Lxx6BdfoaVulpG4pANfEifWY=; b=tC4cAMThapSjsucXEhytwruOxY
+	IkL97liJJ5AZFgYq9hJCzuSjPQBfudDFWeXehrPnc9m+xXBxstsD1KGasDbPdYzjWCRLzakba1/0G
+	B23PPxvJOJOH8wa7lOJialZiLCkK4JuH3Mv1eTZn5WDDCkGtRPyd/Gp1pFKAltKm4bUdZua6jIYso
+	dvlTws0nCtJIr9Y1qOWtlOfQDcCjVpZnVWyJXD28yTNp3vrVSjTonA8bXYBlsCcbHF+xNK9h7iyKs
+	oA7QTF7+wfDaKoX/wP7KE+CeOj2JUGBVvt/R1b3YoaEOYjKFplRTzfSpU9JEoyLqXsw6KC6qsmSqj
+	iHe7V6KA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2XRX-002dMO-0I;
-	Fri, 26 May 2023 13:25:19 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1q2Y60-002k8k-2N;
+	Fri, 26 May 2023 14:07:08 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2XRT-002dLH-2C;
-	Fri, 26 May 2023 13:25:16 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-5147f7d045bso306134a12.2;
-        Fri, 26 May 2023 06:25:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1685107512; x=1687699512;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=REExVQcWcE2QjJuxENKUcGpJCKWSMyccL07DCITDofY=;
-        b=qAyvFDmhsukPnn4WvAmi10pKd4n2FqmPW1UufHxkYNGGWR1dx/1llwEa2WCcXAF303
-         iZSKlaO95+NI673tZOCG378LltKAUkLJ43xWBX7PpV6ldciulJYU3G9VtFCQuIY3DzyQ
-         DIYkf63t3HV5ykQ5j3MzC+JC891jSE78LK9v+3J5+RUpfMUPue4tp0FVpG3njoUjYxGw
-         pWj12qVyTRMGMzVjmi0c9p6E0VbZFqWuW+aaLw8IfmRFgKyEt7+D8H9TJvhinsq6O0og
-         rYOf7VV/1stJPN98PqhwrStnYYw0Nha+46hA6GksIdoqlqVNlrQ8/4IDICYuTZV+dNjl
-         OiUg==
+	id 1q2Y5x-002k6p-1h
+	for linux-mediatek@lists.infradead.org;
+	Fri, 26 May 2023 14:07:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1685110023;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=LAbN/2lmj85EfJ5ZXB9Lxx6BdfoaVulpG4pANfEifWY=;
+	b=GOGuIzFgP7RhYIWFiC1ifWirqhrHvY7S/OVaDzqJ7Eb9rhmgG3zXxSn1wbbRnO0iGefq2J
+	LfqfvtQzCJoqNyiXvTrMYR3LqZ7JOHuZjoFI4drZXS6knPndPxsGM3C8Kr+6nsTulZQx8r
+	HTB9pOi3EeWFd8x5EuSUaghPOYWjAZc=
+Received: from mail-lf1-f70.google.com (mail-lf1-f70.google.com
+ [209.85.167.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-671-4rql5ZLuPb-rDJ9B2fCNtg-1; Fri, 26 May 2023 10:06:59 -0400
+X-MC-Unique: 4rql5ZLuPb-rDJ9B2fCNtg-1
+Received: by mail-lf1-f70.google.com with SMTP id 2adb3069b0e04-4f3a7765189so421890e87.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 26 May 2023 07:06:59 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685107512; x=1687699512;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
+        d=1e100.net; s=20221208; t=1685110018; x=1687702018;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=REExVQcWcE2QjJuxENKUcGpJCKWSMyccL07DCITDofY=;
-        b=ZcguAUpTbp5Bzhogf+Y6cX00X3qUT4Ea6xOZoQFlYgA0swYxbJQl/AHlJVDKmv0QF1
-         1BGvdfZeUUXkMjEKLMBWY84AgQIcOAZmWAqdP8stUIandevuLboY0egK+Y5cWZMkut9N
-         PUAViDCUeRYWujEwevh+ptysNByVYt0dWAby3vS6WQmYcITWxhH44rY9m8QE6+9Tv3aP
-         K0soA5cV0icer3YRIf/6Qpd5fTWBVC1W5hndtutJbvinSRNONvb48lkRpiGH0UGVYfij
-         cPht7KBVwl+vRaz+Dd4JQGZt932snT2vk5Cxrw5GFUpWJ3S0rXl7HiCbJoEegENRf6fg
-         KnYg==
-X-Gm-Message-State: AC+VfDwf3CM0mu3aY/GrAeusotDKj+Qq88Cc88z4FwgTH0YMflXv1bBu
-	s/0zZyQqO1f4tBky+HAoMfo=
-X-Google-Smtp-Source: ACHHUZ7q1MafXAsr6kPnoxH9sRKukcbZuU+ag0QnY9abimtOnkEmvW+csQfASzKbX2SjUCLFmdg0kQ==
-X-Received: by 2002:a17:907:9345:b0:973:9857:b98a with SMTP id bv5-20020a170907934500b009739857b98amr2330770ejc.55.1685107511683;
-        Fri, 26 May 2023 06:25:11 -0700 (PDT)
-Received: from skbuf ([188.27.184.189])
-        by smtp.gmail.com with ESMTPSA id z17-20020a170906715100b0094e597f0e4dsm2123613ejj.121.2023.05.26.06.25.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 May 2023 06:25:11 -0700 (PDT)
-Date: Fri, 26 May 2023 16:25:08 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: arinc9.unal@gmail.com
-Subject: Re: [PATCH net-next 19/30] net: dsa: mt7530: set interrupt register
- only for MT7530
-Message-ID: <20230526132508.fxgljrpozuuzelal@skbuf>
-References: <20230522121532.86610-1-arinc.unal@arinc9.com>
- <20230522121532.86610-20-arinc.unal@arinc9.com>
+        bh=LAbN/2lmj85EfJ5ZXB9Lxx6BdfoaVulpG4pANfEifWY=;
+        b=L3g5dZmeK6EEb30n3wlFcQoHcLJuLCqoahVx9HR1+R/0RuzGBGaamRaKgkWgHn6pr+
+         jXnOCsrjuXh8B5hYkdhSE8zynVkTihz5YlwkRg1GSOE5Md1xY08swpcQMIRC9Ru1zewM
+         1nkmpfPxKVbkfbRbEBG+V4tW/QU1L+jGgfYWE5wX5C6HJdhBAB+VPos1jajlHokKIpkI
+         MvsgtVh6dxZ+oShH+6C+Jx3kCbLsZtWxfUgFMaSc3kt1dh19nlCX2q7YWdayBRKMmDhE
+         e8ceoqpryMrtsnD76vs4hiOj4JgFdiJpmPpN0Ku2Y/72im/PdzZBAB5YiYmGkoONwB9g
+         j2tg==
+X-Gm-Message-State: AC+VfDziR/78F1aaztnyyJ6lAe595l9RqjQdMxGImd/QhT/cRJ1l1idF
+	sJbutoadn/DStdy18f0AEO6mvAb9w8EskYPqu/2y64NOb4bAWnm1ryezT4Iw/yDBJbgJgNRMg2C
+	hDWws8rcdlkKOA6DsWUvPpETZxS8+kC0=
+X-Received: by 2002:ac2:59cf:0:b0:4ed:d2cf:857b with SMTP id x15-20020ac259cf000000b004edd2cf857bmr543154lfn.5.1685110017971;
+        Fri, 26 May 2023 07:06:57 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7er+LeGsxnFDYQXWSIbLqlc4+5J32U68qYkTck/GPaTlh3YQQH7LynqG86HW/G1yXwV5CNog==
+X-Received: by 2002:ac2:59cf:0:b0:4ed:d2cf:857b with SMTP id x15-20020ac259cf000000b004edd2cf857bmr543126lfn.5.1685110017600;
+        Fri, 26 May 2023 07:06:57 -0700 (PDT)
+Received: from [192.168.1.121] (85-23-48-202.bb.dnainternet.fi. [85.23.48.202])
+        by smtp.gmail.com with ESMTPSA id j22-20020ac253b6000000b004f3aee3aae2sm639896lfh.140.2023.05.26.07.06.56
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 26 May 2023 07:06:56 -0700 (PDT)
+Message-ID: <5dd62fee-56bf-0b54-2e91-c31068a2b040@redhat.com>
+Date: Fri, 26 May 2023 17:06:55 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230522121532.86610-20-arinc.unal@arinc9.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH net-next 04/12] mm: Make the page_frag_cache allocator use
+ multipage folios
+To: David Howells <dhowells@redhat.com>, Yunsheng Lin
+ <linyunsheng@huawei.com>, Matthew Wilcox <willy@infradead.org>
+Cc: netdev@vger.kernel.org, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>,
+ Willem de Bruijn <willemdebruijn.kernel@gmail.com>,
+ David Ahern <dsahern@kernel.org>, Jens Axboe <axboe@kernel.dk>,
+ linux-mm@kvack.org, linux-kernel@vger.kernel.org,
+ Jeroen de Borst <jeroendb@google.com>, Catherine Sullivan
+ <csully@google.com>, Shailend Chand <shailend@google.com>,
+ Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+ Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Keith Busch <kbusch@kernel.org>, Jens Axboe <axboe@fb.com>,
+ Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>,
+ Chaitanya Kulkarni <kch@nvidia.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-nvme@lists.infradead.org
+References: <a819dd80-54cc-695f-f142-e3d42ce815a7@huawei.com>
+ <20230524153311.3625329-1-dhowells@redhat.com>
+ <20230524153311.3625329-5-dhowells@redhat.com>
+ <739166.1685105220@warthog.procyon.org.uk>
+From: =?UTF-8?Q?Mika_Penttil=c3=a4?= <mpenttil@redhat.com>
+In-Reply-To: <739166.1685105220@warthog.procyon.org.uk>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230526_062515_743455_73B5D7CA 
-X-CRM114-Status: GOOD (  17.99  )
+X-CRM114-CacheID: sfid-20230526_070705_642132_9B76609A 
+X-CRM114-Status: GOOD (  33.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,41 +121,96 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, mithat.guner@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 22, 2023 at 03:15:21PM +0300, arinc9.unal@gmail.com wrote:
-> From: Arınç ÜNAL <arinc.unal@arinc9.com>
-> 
-> Setting this register related to interrupts is only needed for the MT7530
-> switch. Make an exclusive check to ensure this.
-> 
-> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> Acked-by: Daniel Golle <daniel@makrotopia.org>
-> Tested-by: Daniel Golle <daniel@makrotopia.org>
-> ---
+Hi,
 
-Why does it matter? What prompted you to make this change? I guess it's
-not needed for MT7988? Or the register is not present? Or?...
+On 26.5.2023 15.47, David Howells wrote:
+> Yunsheng Lin <linyunsheng@huawei.com> wrote:
+> 
+>>> Change the page_frag_cache allocator to use multipage folios rather than
+>>> groups of pages.  This reduces page_frag_free to just a folio_put() or
+>>> put_page().
+>>
+>> put_page() is not used in this patch, perhaps remove it to avoid
+>> the confusion?
+> 
+> Will do if I need to respin the patches.
+> 
+>> Also, Is there any significant difference between __free_pages()
+>> and folio_put()? IOW, what does the 'reduces' part means here?
+> 
+> I meant that the folio code handles page compounding for us and we don't need
+> to work out how big the page is for ourselves.
+> 
+> If you look at __free_pages(), you can see a PageHead() call.  folio_put()
+> doesn't need that.
+> 
+>> I followed some disscusion about folio before, but have not really
+>> understood about real difference between 'multipage folios' and
+>> 'groups of pages' yet. Is folio mostly used to avoid the confusion
+>> about whether a page is 'headpage of compound page', 'base page' or
+>> 'tailpage of compound page'? Or is there any abvious benefit about
+>> folio that I missed?
+> 
+> There is a benefit: a folio pointer always points to the head page and so we
+> never need to do "is this compound? where's the head?" logic to find it.  When
+> going from a page pointer, we still have to find the head.
+> 
 
->  drivers/net/dsa/mt7530.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+
+But page_frag_free() uses folio_put(virt_to_folio(addr)) and 
+virt_to_folio() depends on the compound infrastructure to get the head 
+page and folio.
+
+
+> Ultimately, the aim is to reduce struct page to a typed pointer to massively
+> reduce the amount of space consumed by mem_map[].  A page struct will then
+> point at a folio or a slab struct or one of a number of different types.  But
+> to get to that point, we have to stop a whole lot of things from using page
+> structs, but rather use some other type, such as folio.
 > 
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index 99f5da8b27be..0c261ef87bee 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -2029,7 +2029,7 @@ mt7530_setup_irq(struct mt7530_priv *priv)
->  	}
->  
->  	/* This register must be set for MT7530 to properly fire interrupts */
-> -	if (priv->id != ID_MT7531)
-> +	if (priv->id == ID_MT7530 || priv->id == ID_MT7621)
->  		mt7530_set(priv, MT7530_TOP_SIG_CTRL, TOP_SIG_CTRL_NORMAL);
->  
->  	ret = request_threaded_irq(priv->irq, NULL, mt7530_irq_thread_fn,
-> -- 
-> 2.39.2
+> Eventually, there won't be a need for head pages and tail pages per se - just
+> memory objects of different sizes.
 > 
+>>> diff --git a/include/linux/mm_types.h b/include/linux/mm_types.h
+>>> index 306a3d1a0fa6..d7c52a5979cc 100644
+>>> --- a/include/linux/mm_types.h
+>>> +++ b/include/linux/mm_types.h
+>>> @@ -420,18 +420,13 @@ static inline void *folio_get_private(struct folio *folio)
+>>>   }
+>>>   
+>>>   struct page_frag_cache {
+>>> -	void * va;
+>>> -#if (PAGE_SIZE < PAGE_FRAG_CACHE_MAX_SIZE)
+>>> -	__u16 offset;
+>>> -	__u16 size;
+>>> -#else
+>>> -	__u32 offset;
+>>> -#endif
+>>> +	struct folio	*folio;
+>>> +	unsigned int	offset;
+>>>   	/* we maintain a pagecount bias, so that we dont dirty cache line
+>>>   	 * containing page->_refcount every time we allocate a fragment.
+>>>   	 */
+>>> -	unsigned int		pagecnt_bias;
+>>> -	bool pfmemalloc;
+>>> +	unsigned int	pagecnt_bias;
+>>> +	bool		pfmemalloc;
+>>>   };
+>>
+>> It seems 'va' and 'size' field is used to avoid touching 'stuct page' to
+>> avoid possible cache bouncing when there is more frag can be allocated
+>> from the page while other frags is freed at the same time before this patch?
+> 
+> Hmmm... fair point, though va is calculated from the page pointer on most
+> arches without the need to dereference struct page (only arc, m68k and sparc
+> define WANT_PAGE_VIRTUAL).
+> 
+> David
+> 
+
+--Mika
+
 
