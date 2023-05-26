@@ -4,93 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D2EAC77B7A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 May 2023 12:47:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 635BDC77B7A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 May 2023 13:02:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:
-	Content-Transfer-Encoding:Content-ID:Content-Type:MIME-Version:Subject:cc:To:
-	References:In-Reply-To:From:Reply-To:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7wL75rzvxRHHweMkIElV/+uTCkQTaYtKC4NiLzMuw0M=; b=KvUMErdDb/J+mpdcB+6hxVQbWn
-	6L4eLaeT+AFq/lbeOt9D3lI4tu4+axje5gxYvtYeloVrQNFZd8mwFU9QkLdhQU2AQpbRwlAPONYDO
-	TcNV4J7SVLogej2uki0E8qU1tD3erI+mcvzvLYWSCJJb+6ggK5osXE6OAd5g/eKUI8vOIy/jnzFHI
-	ZwEcgBbG17KHub6N+Jc5kdEGE++MvHUQAQUR36OsIR2eLfkemQZVFTaZwxGqtJwvLH2Y0iWCAPuF5
-	mPAs9EcyvAzN+1KFSc+kUTLwIeffEoX6FuJjtf3f19kZteYigi4QmPt4Ryu2fL08nf15X68IhRCD8
-	SNmEAKig==;
+	bh=+UkK3Ol11xLBzUOFBbpZXenRGfaW52LIpYuNVdpGopU=; b=Mjmu94b7jkECVXbneaHhhGCv4r
+	/674UqvQfjFSodd8uUjq4zL9E8F/ugo4bOqd7d6vQUTq9vTqvpEJ2fRnDrVh+6z1BoTOcqBKAfIMQ
+	YtMLvuxQk2YR7AEjxlvYEEks/sg6TAqoOvMvy+RQpCUW+gvYknLcZpMk484q7dHc1RkMTysk1iyIz
+	oJlsXJOVWZjj/fGTB/T61ZQhTwuBniatBnMIECYM1e/fEjDfns8HqxdU1KpjuE6qHu8PnJ7h66Zhw
+	5SZtoRrk3goHSP8lZn1wQcAvuyYScHHu5B7kfTTerx69UfrGJc8l3HKCwz2zRIz0xNn6GGI5Mv3Pj
+	APufJhTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2Wqi-002WXR-2h;
-	Fri, 26 May 2023 12:47:16 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1q2X4t-002ZDo-1j;
+	Fri, 26 May 2023 13:01:55 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2Wqg-002WW7-14
-	for linux-mediatek@lists.infradead.org;
-	Fri, 26 May 2023 12:47:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1685105233;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=7wL75rzvxRHHweMkIElV/+uTCkQTaYtKC4NiLzMuw0M=;
-	b=fnpwMrOk8CGiwwUT3m2Iz+eChZuEVyN9SrJC9O7bsaK1LLop2i1rW3Nijwo3WMrlreA/lO
-	VQPDh8Lz4HZu2cpmPthbKRnxfv+O+ipqGHa5kmUI2yrtrQMK07gSNEpyB7ia2KWz4tFiWg
-	BLjscJ7zEqkaM3vKtmXEgrEb+P2w1rc=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-657-xgCvy8lSNa2E1PbJrJo26w-1; Fri, 26 May 2023 08:47:08 -0400
-X-MC-Unique: xgCvy8lSNa2E1PbJrJo26w-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com [10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8F54A811E8E;
-	Fri, 26 May 2023 12:47:06 +0000 (UTC)
-Received: from warthog.procyon.org.uk (unknown [10.39.192.68])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 7742C8162;
-	Fri, 26 May 2023 12:47:01 +0000 (UTC)
-Organization: Red Hat UK Ltd. Registered Address: Red Hat UK Ltd, Amberley
-	Place, 107-111 Peascod Street, Windsor, Berkshire, SI4 1TE, United
-	Kingdom.
-	Registered in England and Wales under Company Registration No. 3798903
-From: David Howells <dhowells@redhat.com>
-In-Reply-To: <a819dd80-54cc-695f-f142-e3d42ce815a7@huawei.com>
-References: <a819dd80-54cc-695f-f142-e3d42ce815a7@huawei.com> <20230524153311.3625329-1-dhowells@redhat.com> <20230524153311.3625329-5-dhowells@redhat.com>
-To: Yunsheng Lin <linyunsheng@huawei.com>,
-    Matthew Wilcox <willy@infradead.org>
-cc: David Howells <dhowells@redhat.com>, netdev@vger.kernel.org,
-    "David S. Miller" <davem@davemloft.net>,
-    Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
-    Paolo Abeni <pabeni@redhat.com>,
-    Willem de Bruijn <willemdebruijn.kernel@gmail.com>,
-    David Ahern <dsahern@kernel.org>, Jens Axboe <axboe@kernel.dk>,
-    linux-mm@kvack.org, linux-kernel@vger.kernel.org,
-    Jeroen de Borst <jeroendb@google.com>,
-    Catherine Sullivan <csully@google.com>,
-    Shailend Chand <shailend@google.com>, Felix Fietkau <nbd@nbd.name>,
-    John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
-    Mark Lee <Mark-MC.Lee@mediatek.com>,
-    Lorenzo Bianconi <lorenzo@kernel.org>,
-    Matthias Brugger <matthias.bgg@gmail.com>,
-    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-    Keith Busch <kbusch@kernel.org>, Jens Axboe <axboe@fb.com>,
-    Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>,
-    Chaitanya Kulkarni <kch@nvidia.com>,
-    Andrew Morton <akpm@linux-foundation.org>,
-    linux-arm-kernel@lists.infradead.org,
-    linux-mediatek@lists.infradead.org, linux-nvme@lists.infradead.org
-Subject: Re: [PATCH net-next 04/12] mm: Make the page_frag_cache allocator use multipage folios
+	id 1q2X4p-002ZCn-21;
+	Fri, 26 May 2023 13:01:52 +0000
+Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-51478f6106cso763496a12.1;
+        Fri, 26 May 2023 06:01:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1685106109; x=1687698109;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=+UkK3Ol11xLBzUOFBbpZXenRGfaW52LIpYuNVdpGopU=;
+        b=YT9VAl+/ZzJNxlLHYnjBgzgNEshcqoBEUpSFRIUDZR5ZcObO2G5ERynF8v/ElWHu9K
+         39ze1h7dpTBqIK/FlhNMxfMi7H2ypRQtuqY0qvPT2aCXKiE9BeUXsGQAoQlmaoEqj1EH
+         jTurxdL0cnVywnDeluazuZmKAG8CCcFgO9UqDheXhX5MZf6Zr7SkE9gcig8jxzkaJHqQ
+         QMpbt50BNsVaUuLyMfRBjZY2tMVAN8B9avpDpzp3D26+fFxh2p2d+j2B6CNStgYz/946
+         BDHXjXYrS0xTro2seuyrM7jn1HZWUh4O+EkDxGGtU8aJbN0LAfr5NgjZHaWQtoCzahRq
+         B3Nw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1685106109; x=1687698109;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=+UkK3Ol11xLBzUOFBbpZXenRGfaW52LIpYuNVdpGopU=;
+        b=XjyaRXZS/VQ/X5Ta6RqSnG8mcqCI3sMA/m6rXIbsCVhTsMx9ufsgGd/rDITdiMkQut
+         2nYDW60+i9v1pZRLpJn+4AVvg0TbXHl8EaMr6O3OkRqAawxjA9hlKLiTvXol4gc0E+CB
+         QvJDkwpaALs0sLnv/1ZAXIMS5UYsM5PQt9udsu7FDk+Ba5EOFsb8cdO4pWi3+qIl3bUn
+         5R8CDCKka2nIvPiXrR7+Vt4v2qd3nqhQDG26MSVqo2nSfNh/HIGwXHzvjjJMwvX5dhwU
+         QD4+UiNAJr3vQ4iH4YSy0Reps+QTl1tWq1ErVEOrFzgjyfuFZvaGhs4D9ey5TME3GPry
+         AvIg==
+X-Gm-Message-State: AC+VfDxhjpYXN4qNWyIi/kiqLmqZONujscJe4Mpw/zXhvuFgU9GluSY6
+	OEkLXTKFQYPKfgzCbHHMovs=
+X-Google-Smtp-Source: ACHHUZ7Q0qTv8CU3FTLJQtAIegaK0bcCQcBAXF1BfM4+j3yzx+O/MuhHTGIN+FlciNjFbwFlY+93eA==
+X-Received: by 2002:aa7:d9cc:0:b0:509:c6e6:c002 with SMTP id v12-20020aa7d9cc000000b00509c6e6c002mr970029eds.39.1685106108296;
+        Fri, 26 May 2023 06:01:48 -0700 (PDT)
+Received: from skbuf ([188.27.184.189])
+        by smtp.gmail.com with ESMTPSA id c7-20020aa7c987000000b0050bc41352d9sm1551632edt.46.2023.05.26.06.01.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 26 May 2023 06:01:47 -0700 (PDT)
+Date: Fri, 26 May 2023 16:01:45 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Subject: Re: [PATCH net-next 08/30] net: dsa: mt7530: change p{5,6}_interface
+ to p{5,6}_configured
+Message-ID: <20230526130145.7wg75yoe6ut4na7g@skbuf>
+References: <20230522121532.86610-1-arinc.unal@arinc9.com>
+ <20230522121532.86610-1-arinc.unal@arinc9.com>
+ <20230522121532.86610-9-arinc.unal@arinc9.com>
+ <20230522121532.86610-9-arinc.unal@arinc9.com>
+ <20230524175107.hwzygo7p4l4rvawj@skbuf>
+ <576f92b0-1900-f6ff-e92d-4b82e3436ea1@arinc9.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-ID: <739165.1685105220.1@warthog.procyon.org.uk>
-Content-Transfer-Encoding: quoted-printable
-Date: Fri, 26 May 2023 13:47:00 +0100
-Message-ID: <739166.1685105220@warthog.procyon.org.uk>
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <576f92b0-1900-f6ff-e92d-4b82e3436ea1@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230526_054714_447236_38AD2A1B 
-X-CRM114-Status: GOOD (  37.34  )
+X-CRM114-CacheID: sfid-20230526_060151_661658_6F8C8081 
+X-CRM114-Status: GOOD (  17.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,97 +92,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, mithat.guner@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Yunsheng Lin <linyunsheng@huawei.com> wrote:
+On Thu, May 25, 2023 at 09:49:58AM +0300, Arınç ÜNAL wrote:
+> On 24.05.2023 20:51, Vladimir Oltean wrote:
+> > On Mon, May 22, 2023 at 03:15:10PM +0300, arinc9.unal@gmail.com wrote:
+> > > diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> > > index 710c6622d648..d837aa20968c 100644
+> > > --- a/drivers/net/dsa/mt7530.c
+> > > +++ b/drivers/net/dsa/mt7530.c
+> > > @@ -2728,25 +2722,20 @@ mt753x_phylink_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
+> > >   			goto unsupported;
+> > >   		break;
+> > >   	case 5: /* Port 5, can be used as a CPU port. */
+> > > -		if (priv->p5_interface == state->interface)
+> > > +		if (priv->p5_configured)
+> > >   			break;
+> > >   		if (mt753x_mac_config(ds, port, mode, state) < 0)
+> > >   			goto unsupported;
+> > > -
+> > > -		if (priv->p5_intf_sel != P5_DISABLED)
+> > > -			priv->p5_interface = state->interface;
+> > 
+> > If you don't replace this bit with anything, who will set priv->p5_configured
+> > for mt7530?
+> 
+> I intend priv->p5_configured and priv->p6_configured to be only used for
+> MT7531 as I have stated on the mt7530_priv description.
 
-> > Change the page_frag_cache allocator to use multipage folios rather th=
-an
-> > groups of pages.  This reduces page_frag_free to just a folio_put() or
-> > put_page().
-> =
-
-> put_page() is not used in this patch, perhaps remove it to avoid
-> the confusion?
-
-Will do if I need to respin the patches.
-
-> Also, Is there any significant difference between __free_pages()
-> and folio_put()? IOW, what does the 'reduces' part means here?
-
-I meant that the folio code handles page compounding for us and we don't n=
-eed
-to work out how big the page is for ourselves.
-
-If you look at __free_pages(), you can see a PageHead() call.  folio_put()
-doesn't need that.
-
-> I followed some disscusion about folio before, but have not really
-> understood about real difference between 'multipage folios' and
-> 'groups of pages' yet. Is folio mostly used to avoid the confusion
-> about whether a page is 'headpage of compound page', 'base page' or
-> 'tailpage of compound page'? Or is there any abvious benefit about
-> folio that I missed?
-
-There is a benefit: a folio pointer always points to the head page and so =
-we
-never need to do "is this compound? where's the head?" logic to find it.  =
-When
-going from a page pointer, we still have to find the head.
-
-Ultimately, the aim is to reduce struct page to a typed pointer to massive=
-ly
-reduce the amount of space consumed by mem_map[].  A page struct will then
-point at a folio or a slab struct or one of a number of different types.  =
-But
-to get to that point, we have to stop a whole lot of things from using pag=
-e
-structs, but rather use some other type, such as folio.
-
-Eventually, there won't be a need for head pages and tail pages per se - j=
-ust
-memory objects of different sizes.
-
-> > diff --git a/include/linux/mm_types.h b/include/linux/mm_types.h
-> > index 306a3d1a0fa6..d7c52a5979cc 100644
-> > --- a/include/linux/mm_types.h
-> > +++ b/include/linux/mm_types.h
-> > @@ -420,18 +420,13 @@ static inline void *folio_get_private(struct fol=
-io *folio)
-> >  }
-> >  =
-
-> >  struct page_frag_cache {
-> > -	void * va;
-> > -#if (PAGE_SIZE < PAGE_FRAG_CACHE_MAX_SIZE)
-> > -	__u16 offset;
-> > -	__u16 size;
-> > -#else
-> > -	__u32 offset;
-> > -#endif
-> > +	struct folio	*folio;
-> > +	unsigned int	offset;
-> >  	/* we maintain a pagecount bias, so that we dont dirty cache line
-> >  	 * containing page->_refcount every time we allocate a fragment.
-> >  	 */
-> > -	unsigned int		pagecnt_bias;
-> > -	bool pfmemalloc;
-> > +	unsigned int	pagecnt_bias;
-> > +	bool		pfmemalloc;
-> >  };
-> =
-
-> It seems 'va' and 'size' field is used to avoid touching 'stuct page' to
-> avoid possible cache bouncing when there is more frag can be allocated
-> from the page while other frags is freed at the same time before this pa=
-tch?
-
-Hmmm... fair point, though va is calculated from the page pointer on most
-arches without the need to dereference struct page (only arc, m68k and spa=
-rc
-define WANT_PAGE_VIRTUAL).
-
-David
-
+Ok, but given the premise of this patch set, that phylink is always available,
+does it make sense for mt7531_cpu_port_config() and mt7988_cpu_port_config()
+to manually call phylink methods?
 
