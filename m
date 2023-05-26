@@ -4,51 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 867B3C77B7C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 May 2023 08:42:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8D52C7EE2F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 May 2023 08:42:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LHm1nPppdaZSj1cUtyZFDUQUhbCN78UlFCNbQLE36jk=; b=cqQRt3HYX3toRS3HDMEhTTRbz0
-	pqILeRfLMH0HgGeitgXe093pu3wgG8cONcFnryaT0cD1eXZlSrpFmN9Pt37ImiwhsH1h1HFxCsvMU
-	TtNfDsLXBuScJFUaFYOD9tKeJ3ljcO22IcEQ8RybSZlNz+HXUKjRon+9YJCvA6zZABvXm8QrWDWt1
-	KYjkTmAXisQItjWsGOhZ2W0KpboQtR3RCCDb+jt9YhCaIcaII+yWqGN16vUmrAeqPyuT2uXGUed6S
-	Onuxd7pR6w+1ZSq9vgQuBPB6ukNWbSsTixZNUxGz6Sob/w7xhzX89zMEJ78Bw9eNxKICCaF0CvtEZ
-	bbO8T+LA==;
+	bh=co1BNfZT93xIcqJFEynl3v0uax4ZhAF3R02wYIPoVE0=; b=kyACmJpbTToOsPG3ceZ9VL7i/7
+	0TGnHZnNpZoFHjrj8K2SiFTesYNHWvr1d43PlbZHLpUPQ5VHJPhPYV86rNeFnydWvV+Qi/Y+HSUiU
+	74ZnDfgSSRxgQJJP60G0bCKp82oD78SQbZP6nK+BRtPKcHb5maDPZ3P3QfxnZkwxqnotSlSaBwHiU
+	ok7sFPuPOJEicNjMr21f/JTaObD/Z0j8cPQcmP2eVb1gNLuQB0kaeV+u5A73Su4hxPWo2f75SoHMA
+	WYDNcLL7F2IocDLFl3ol2i9AGV1fNyWywiGMVRLjcHSub4Fz6yUJSTEA65QlI6ua/zWAJfC1GDW+c
+	wsivlOqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2T2A-001dxG-0a;
-	Fri, 26 May 2023 08:42:50 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1q2T29-001dwH-0Z;
+	Fri, 26 May 2023 08:42:49 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2T25-001dvC-2m;
-	Fri, 26 May 2023 08:42:47 +0000
+	id 1q2T24-001dv9-2b;
+	Fri, 26 May 2023 08:42:46 +0000
 Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id BBF7E6606E87;
-	Fri, 26 May 2023 09:42:43 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id AED846606E83;
+	Fri, 26 May 2023 09:42:42 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1685090564;
-	bh=BNXanvyep5uBi6HyQ6HtMJheZQ49LWV8bcssg3dk5Ok=;
+	s=mail; t=1685090563;
+	bh=i6rzAfODVwC2ZUVbGiudZ2RiX0ONSGFLeLMYfiESWFk=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=monxsZb1jFoOfAva4Maz69K5HYQAK5M2i3PjAjre83bOc3jlL/vQBm/0OgDIZO7aV
-	 uQcpW8/4KFqp06+S2hSO2lJpiAC+T5i06BOBWZTEAqkJt1ddf+a9SHpKwm1C0aePs8
-	 FUEE5r2Z1qiRx/IulDxmqFkiGT5uT270F9euJHJewsnkx3GjZQA4oa1rNrrAjDn4tU
-	 +QXwFSj3adBl7PBJQ7CGxDs+67OTfceKMr5jAb/W/1E6MZYpKjpQKfUOmSh4uLsp5Z
-	 uBkZvzzlwEggr0P2xzyKsQByKDBoJTLdDc0VZBfX+t2aHu/l/7Elhzzy+KV/jIIVJc
-	 oOv/81XHyDxyw==
-Message-ID: <52dc6b40-9676-6e6c-de5c-5fad40e432ab@collabora.com>
-Date: Fri, 26 May 2023 10:42:41 +0200
+	b=LcaxJtN4Dv248ZgNRCWAO050gswDW4ffJhmG2nKdfuoAV8SO3kdulJ6MvmuZIzzgF
+	 ODSubkkIe3fLBnbUzBvbFr8wd9mKxGrSiMMP79WFF8cE2sIiCyOsRwEzKBGhLZ4OsR
+	 mzkKoIrSvhMh+5utSEYpxXZyRr1R0+kOFyPMkte+3+RG281ZjbgboTfnzoJ5AzUTWY
+	 yANJdb4v+/C7Px4kDbFxjwXsXhPII5VzC4ibe2wj7k1wR9TRP8cknwqmvozsKfmpyD
+	 Yh4mYqdyuX9JGuhHWJm9YO4pnElcuw8AXas0CyKKukm3WoH5d4LDTd1bMLk/m0BKJ0
+	 Gcw9eei9hDM1w==
+Message-ID: <0430808a-6180-e9e4-adbd-dd891f86c6ec@collabora.com>
+Date: Fri, 26 May 2023 10:42:40 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.1
-Subject: Re: [PATCH v4 06/11] drm/mediatek: gamma: Use bitfield macros
+Subject: Re: [PATCH v4 03/11] drm/mediatek: gamma: Support SoC specific LUT
+ size
 Content-Language: en-US
 To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
  "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
@@ -62,15 +63,15 @@ Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>,
  "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
 References: <20230518104857.124265-1-angelogioacchino.delregno@collabora.com>
- <20230518104857.124265-7-angelogioacchino.delregno@collabora.com>
- <069cbd4c325949e4662cec2d8547b6fcd111faf6.camel@mediatek.com>
+ <20230518104857.124265-4-angelogioacchino.delregno@collabora.com>
+ <135f8b6829585632f81d9c4da9a3b6211a8e0bfa.camel@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <069cbd4c325949e4662cec2d8547b6fcd111faf6.camel@mediatek.com>
+In-Reply-To: <135f8b6829585632f81d9c4da9a3b6211a8e0bfa.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230526_014246_030535_1FCD3429 
-X-CRM114-Status: GOOD (  16.58  )
+X-CRM114-CacheID: sfid-20230526_014244_997033_13D09384 
+X-CRM114-Status: GOOD (  18.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,7 +86,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/05/23 07:32, CK Hu (胡俊光) ha scritto:
+Il 26/05/23 07:20, CK Hu (胡俊光) ha scritto:
 > Hi, Angelo:
 > 
 > On Thu, 2023-05-18 at 12:48 +0200, AngeloGioacchino Del Regno wrote:
@@ -93,64 +94,65 @@ Il 26/05/23 07:32, CK Hu (胡俊光) ha scritto:
 >> you have verified the sender or the content.
 >>
 >>
->> Make the code more robust and improve readability by using bitfield
->> macros instead of open coding bit operations.
->> While at it, also add a definition for LUT_BITS_DEFAULT.
+>> Newer SoCs support a bigger Gamma LUT table: wire up a callback
+>> to retrieve the correct LUT size for each different Gamma IP.
 >>
+>> Co-developed-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+>> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+>> [Angelo: Rewritten commit message/description + porting]
 >> Signed-off-by: AngeloGioacchino Del Regno <
 >> angelogioacchino.delregno@collabora.com>
 >> Reviewed-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 >> ---
->>   drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 41 ++++++++++++++-------
+>>   drivers/gpu/drm/mediatek/mtk_disp_drv.h     |  1 +
+>>   drivers/gpu/drm/mediatek/mtk_disp_gamma.c   | 25 ++++++++++++++++++-
 >> --
->>   1 file changed, 26 insertions(+), 15 deletions(-)
+>>   drivers/gpu/drm/mediatek/mtk_drm_crtc.c     |  4 ++--
+>>   drivers/gpu/drm/mediatek/mtk_drm_crtc.h     |  1 -
+>>   drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  1 +
+>>   drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  9 ++++++++
+>>   6 files changed, 35 insertions(+), 6 deletions(-)
 >>
+>> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+>> b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+>> index 75045932353e..e554b19f4830 100644
+>> --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+>> +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+>> @@ -53,6 +53,7 @@ void mtk_gamma_clk_disable(struct device *dev);
+>>   void mtk_gamma_config(struct device *dev, unsigned int w,
+>>                        unsigned int h, unsigned int vrefresh,
+>>                        unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
+>> +unsigned int mtk_gamma_get_lut_size(struct device *dev);
+>>   void mtk_gamma_set(struct device *dev, struct drm_crtc_state
+>> *state);
+>>   void mtk_gamma_set_common(struct device *dev, void __iomem *regs,
+>> struct drm_crtc_state *state);
+>>   void mtk_gamma_start(struct device *dev);
 >> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
 >> b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
->> index 1592614b6de7..ed2aa1fb0171 100644
+>> index ce6f2499b891..d194d9bc2e2b 100644
 >> --- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
 >> +++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
->> @@ -3,6 +3,7 @@
->>    * Copyright (c) 2021 MediaTek Inc.
->>    */
->>
->> +#include <linux/bitfield.h>
->>   #include <linux/clk.h>
->>   #include <linux/component.h>
->>   #include <linux/module.h>
->> @@ -22,9 +23,16 @@
->>   #define GAMMA_LUT_EN                                   BIT(1)
->>   #define
->> GAMMA_DITHERING                                        BIT(2)
->>   #define DISP_GAMMA_SIZE                                0x0030
->> +#define DISP_GAMMA_SIZE_HSIZE                          GENMASK(28,
->> 16)
->> +#define DISP_GAMMA_SIZE_VSIZE                          GENMASK(12,
->> 0)
+>> @@ -25,10 +25,12 @@
 >>   #define DISP_GAMMA_LUT                         0x0700
 >>
->> +#define DISP_GAMMA_LUT_10BIT_R                 GENMASK(29, 20)
->> +#define DISP_GAMMA_LUT_10BIT_G                 GENMASK(19, 10)
->> +#define DISP_GAMMA_LUT_10BIT_B                 GENMASK(9, 0)
->> +
 >>   #define LUT_10BIT_MASK                         0x03ff
->> +#define LUT_BITS_DEFAULT                       10
+>> +#define LUT_SIZE_DEFAULT                       512 /* for setting
+>> gamma lut from AAL */
 > 
-> This is used only for AAL after patch "drm/mediatek: gamma: Support
-> specifying number of bits per LUT component", so I would like move AAL
-> definition to AAL driver and pass it to gamma driver.
+> I would like to place AAL definition in AAL driver and pass it to gamma
+> driver.
 > 
 
-Like LUT_SIZE_DEFAULT, this definition is not only for AAL but also for
-the older gamma lut register layout.
+This is not only for AAL, actually; I should remove that comment as it
+may actually be misleading.
 
-In any case, I'll check if there's any clean way to pass AAL's gamma
-size to this driver... it's a different "component", so this may get
-complicated.
+The default LUT size (512) is relevant for both the AAL case and the
+older SoCs, where the LUT size is 512 and no multi-register.
 
-Let's see what I can come up with in v5...
+I'll remove that comment in the next version
 
-Thanks,
+Regards,
 Angelo
 
 
