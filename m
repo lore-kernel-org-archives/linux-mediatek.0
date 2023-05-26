@@ -4,70 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB92EC77B73
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 May 2023 16:46:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C02DC77B73
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 May 2023 16:56:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rZ7xESGkDIP+gv/TyxcTjr26EqMcpWBeDTIWa0uSfo8=; b=D6YrPrH66sFlORnGvfKhrT4Z2Y
-	oOJuFSmPCpiToA5qbYD1iFQZBOra2HNr3ZEMAx8chIEPDI0fgUSX9TxPQX0zLQZ43fHS2uF7cLV3f
-	IGI100ZQBFhR78xkwf75IRgAbt9lwG73Steq6FEDrOOu7/B67pLMxDocnz/BTe1hQiqhpoZT7QuQ9
-	exF6aGqcZrvSyGf1aQQu33mTmEmMBRjorsHy4Buy3+db5H5cwfiOQot56NrJRGGXW2nwkXNxexliD
-	uEArhPufYCp1Xzer0V6/uaJAr1kmv62yWZuK2tB0ge0deiBBgDGuOu/fjvbOwm7XMs8DEqCEvfzhB
-	0Y0xO5nQ==;
+	bh=BVB1oaEqb0nCh7/TkolrkD30I0YxpmZoZt03ZQMqTUU=; b=u9BJ/iV1KeJORgeHVONCGLpQeJ
+	GoJuAV+U6OuxjGEfvUjBTB1k/79MlVtGXXOp0CKKmyEoAeUKFglgCBDjPB197CGm0ZpKctc/+C9Xk
+	tg03mW4JUFcrQyWjvzZh8EX6Q0nsP7wT4S0hE62V5VrHyXroUDmLDiPU/QBO++osbUzTkL6A+n0z1
+	acq3RoByrDr5qMURrO9tepsIwOHl/ZzaC2ItRyp9OE5IMM5YexZBjPCMoHWqKLCZDlp/z3Bhh3yfZ
+	VIlSHrq8dphOJiUGig4p9dMZcjirD140Zn3UOM8K/UBBA55z+nznj+23GZlPfkxZv08yTZFPzhp6D
+	o9mkxcGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2aa2-003A5A-20;
-	Fri, 26 May 2023 16:46:18 +0000
-Received: from mail-pl1-f173.google.com ([209.85.214.173])
+	id 1q2ajP-003Bxo-0A;
+	Fri, 26 May 2023 16:55:59 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2aZy-003A3K-18
-	for linux-mediatek@lists.infradead.org;
-	Fri, 26 May 2023 16:46:16 +0000
-Received: by mail-pl1-f173.google.com with SMTP id d9443c01a7336-1b01bd7093aso3272855ad.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 26 May 2023 09:46:09 -0700 (PDT)
+	id 1q2ajL-003BvN-1X;
+	Fri, 26 May 2023 16:55:56 +0000
+Received: by mail-ed1-x531.google.com with SMTP id 4fb4d7f45d1cf-514859f3ffbso319533a12.1;
+        Fri, 26 May 2023 09:55:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1685120152; x=1687712152;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=BVB1oaEqb0nCh7/TkolrkD30I0YxpmZoZt03ZQMqTUU=;
+        b=HOONLSKAnH/QqPHu9WT2rWuKt7J+3VuaOtzRIn0ktdQRHt+mj3noIyD8rvM4NEKBQl
+         WMe/8Ik+L397mXmmOetDYl3Dk6BdBBRGfQj8TeFbdpfv9m+iui0umv+J07nt1IKaF0YC
+         B2AE8wTu7VvhuGrjCwwO52nHkz2NnGL78TWkuOA/znZ4IS/Ze8GjhmoyAIQm390K7gM3
+         LxpsB7Yzn+4pxiuKskquw40slwV2sRrES7up5wDCg/fh3PhlTBScEDFRlurN2sK+XtDf
+         kK2t4TawNMnAcGtv3LET3DG3PC0gmzxbAYb3el0EQMjjwd8kpJ2JCXTl2YnPlS702HEi
+         XfuQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685119568; x=1687711568;
-        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=rZ7xESGkDIP+gv/TyxcTjr26EqMcpWBeDTIWa0uSfo8=;
-        b=Q74q6Saj1EBoK76IIVWSLFITjXS99onLD7OnggD7NsuTUhOeBiUO21tdTCLzlGV5A/
-         TlnaC7YETSg8A/97bcp8pXnCWj7p7Q75exSB6u7nm1GyUbu0b9+KHWQtlh1/xxvWdmRU
-         3NiO7Lh2ERs8DO8HmJkVKcuAwQlj7cfnYYPc0XcK6Wekq2np/bxjP9PEMa1JasKTKvi5
-         41o2+f4gKZWxiNTS3H7i6EdYkO6zMMhODFCXsq6UloX9Y4MzzPvgpii0h4mygs2+SIzT
-         3wt5gTaP0edRSdt+ejB4yUeblBTskrSvL1Bn5FyNt3Xa7dUCw1U7tQ/BsIxC4brdie6f
-         yRKg==
-X-Gm-Message-State: AC+VfDxEkeccKKrpN/j0zKoB8Qyd8egV6JBcQEyZEzI7XXKYzUo9fqek
-	lH3S1pOXwvlEts/UjnEmNxqyAw==
-X-Google-Smtp-Source: ACHHUZ7Xubhmddh9lHC80YV+z3qVxVDPAYZeGbq4cA+Ll4YhSqJ35CM4QoUFgfB49VTsdGyJNaRudw==
-X-Received: by 2002:a17:903:4282:b0:1b0:fe9:e57e with SMTP id ju2-20020a170903428200b001b00fe9e57emr2665913plb.0.1685119568432;
-        Fri, 26 May 2023 09:46:08 -0700 (PDT)
-Received: from localhost ([75.172.135.98])
-        by smtp.gmail.com with ESMTPSA id jc21-20020a17090325d500b001afba6edc8esm3481642plb.166.2023.05.26.09.45.47
+        d=1e100.net; s=20221208; t=1685120152; x=1687712152;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=BVB1oaEqb0nCh7/TkolrkD30I0YxpmZoZt03ZQMqTUU=;
+        b=QzLLIV8zM/Xc8aLYHKJ8QMmzaJBYKNJE/o+tr2zpuK9st4ttHkQRfaGh7qFje/j2TW
+         q8zTda4adTbqnQS3pzLEB6FkRtWOEjJGvyf0BM/WPoX+ExDNw2YRCUo1Hcwrqk5wZ/+t
+         wBwzewFwD01ww2p+6J32i/DjendD/g6gzOGIOUYPABVWy+Dk5/eQkUiAKUbwphRjNPxc
+         zqbeb9jeUe4b76mXy/KQAjdO2fG/WDTYkXSE5mky35K5rBtJxBjzLU8l5XwLdyOTylQT
+         W99jIGEB8PTNykw+ILGp6wcT4XXSydAvqqFD1vUH6z2TW56w8Oh9lKNGn4QQuMg4cpRZ
+         Bjzg==
+X-Gm-Message-State: AC+VfDy7Rv3xayatJBDn11eJf18P1UZweIXCcGbzBL92xVkCVi0Popqx
+	tLQSmy5lPiopZijC5xG1ERU=
+X-Google-Smtp-Source: ACHHUZ4iTjI8KlCBHfyi32LLUWk745b3RNHS4iOVUUpprzoTVHgO/Ljbxr5EdgBITrwa1iNNyX9WyQ==
+X-Received: by 2002:a50:fb17:0:b0:514:7a67:44dc with SMTP id d23-20020a50fb17000000b005147a6744dcmr1516263edq.19.1685120151838;
+        Fri, 26 May 2023 09:55:51 -0700 (PDT)
+Received: from skbuf ([188.27.184.189])
+        by smtp.gmail.com with ESMTPSA id w17-20020a056402071100b0050c03520f68sm127797edx.71.2023.05.26.09.55.50
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 May 2023 09:45:48 -0700 (PDT)
-From: Kevin Hilman <khilman@kernel.org>
-To: Markus Schneider-Pargmann <msp@baylibre.com>, Michael Turquette
- <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>
-Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Alexandre Mergnat <amergnat@baylibre.com>
-Subject: Re: [PATCH] clk: mediatek: mt8365: Fix inverted topclk operations
-In-Reply-To: <20230523114618.laajn2et5nbcxszv@blmsp>
-References: <20230511133226.913600-1-msp@baylibre.com>
- <20230523114618.laajn2et5nbcxszv@blmsp>
-Date: Fri, 26 May 2023 09:45:47 -0700
-Message-ID: <7hsfbjxcqs.fsf@baylibre.com>
+        Fri, 26 May 2023 09:55:51 -0700 (PDT)
+Date: Fri, 26 May 2023 19:55:48 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: arinc9.unal@gmail.com
+Subject: Re: [PATCH net-next 26/30] net: dsa: mt7530: properly set
+ MT7530_CPU_PORT
+Message-ID: <20230526165548.d6ewov743orxviz3@skbuf>
+References: <20230522121532.86610-1-arinc.unal@arinc9.com>
+ <20230522121532.86610-1-arinc.unal@arinc9.com>
+ <20230522121532.86610-27-arinc.unal@arinc9.com>
+ <20230522121532.86610-27-arinc.unal@arinc9.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230522121532.86610-27-arinc.unal@arinc9.com>
+ <20230522121532.86610-27-arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230526_094614_408604_4F399914 
-X-CRM114-Status: GOOD (  17.15  )
+X-CRM114-CacheID: sfid-20230526_095555_514843_A9E1D434 
+X-CRM114-Status: GOOD (  24.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,61 +91,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, mithat.guner@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Markus Schneider-Pargmann <msp@baylibre.com> writes:
+On Mon, May 22, 2023 at 03:15:28PM +0300, arinc9.unal@gmail.com wrote:
+> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+> 
+> The MT7530_CPU_PORT bits represent the CPU port to trap frames to for the
+> MT7530 switch. There are two issues with the current way of setting these
+> bits. ID_MT7530 which is for the standalone MT7530 switch is not included.
 
-> just wanted to ask if I need to do something specific for it to go into
-> a rc? Sorry if I missed doing something for that, I haven't had to fix
-> something in an rc that often before.
+It's best to say in the commit title what the change does, rather than
+the equivalent of "here, this way is proper!". Commit titles should be
+uniquely identifiable, and "properly set MT7530_CPU_PORT" doesn't say a
+lot about how proper it is. It's enough to imagine a future person
+finding something else that's perfectible and writing another "net: dsa:
+mt7530: properly set MT7530_CPU_PORT" commit. Try to be less definitive
+and at the same time more specific.
 
-I think the  Fixes tag is enough to indicate that.
+If there are 2 issues, there should be 2 changes with individual titles
+which each describes what was wrong and how that was changed.
 
-Steven, is there still time for this fix be queued up for v6.4-rc?
+> When multiple CPU ports are being used, the trapped frames won't be
+> received when the DSA conduit interface, which the frames are supposed to
+> be trapped to, is down because it's not affine to any user port. This
+> requires the DSA conduit interface to be manually set up for the trapped
+> frames to be received.
+> 
+> Address these issues by implementing ds->ops->master_state_change() on this
+> subdriver and setting the MT7530_CPU_PORT bits there. Introduce the
+> active_cpu_ports field to store the information of active CPU ports.
+> Correct the macros, MT7530_CPU_PORT is bits 4 through 6 of the register.
+> 
+> Any frames set for trapping to CPU port will be trapped to the numerically
+> smallest CPU port which is affine to the DSA conduit interface that is set
+> up. To make the understatement obvious, the frames won't necessarily be
+> trapped to the CPU port the user port, which these frames are received
+> from, is affine to. This operation is only there to make sure the trapped
+> frames always reach the CPU.
+> 
+> Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> Co-developed-by: Vladimir Oltean <olteanv@gmail.com>
+> Signed-off-by: Vladimir Oltean <olteanv@gmail.com>
 
-Thanks,
+A single Suggested-by: is fine. As a rule of thumb, I would use Co-developed-by
+when I'm working with a patch formally pre-formatted or committed by somebody else,
+that I've changed in a significant manner. Since all I did was to comment with
+a suggestion of how to handle this, and with a code snippet written in the email
+client to a patch of yours, I don't believe that's necessary here.
 
-Kevin
-
-> On Thu, May 11, 2023 at 03:32:26PM +0200, Markus Schneider-Pargmann wrote:
->> The given operations are inverted for the wrong registers which makes
->> multiple of the mt8365 hardware units unusable. In my setup at least usb
->> did not work.
->> 
->> Fixed by swapping the operations with the inverted ones.
->> 
->> Reported-by: Alexandre Mergnat <amergnat@baylibre.com>
->> Fixes: 905b7430d3cc ("clk: mediatek: mt8365: Convert simple_gate to mtk_gate clocks")
->> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
->> ---
->>  drivers/clk/mediatek/clk-mt8365.c | 6 +++---
->>  1 file changed, 3 insertions(+), 3 deletions(-)
->> 
->> diff --git a/drivers/clk/mediatek/clk-mt8365.c b/drivers/clk/mediatek/clk-mt8365.c
->> index 6b4e193f648d..6d785ec5754d 100644
->> --- a/drivers/clk/mediatek/clk-mt8365.c
->> +++ b/drivers/clk/mediatek/clk-mt8365.c
->> @@ -583,15 +583,15 @@ static const struct mtk_gate_regs top2_cg_regs = {
->>  
->>  #define GATE_TOP0(_id, _name, _parent, _shift)			\
->>  	GATE_MTK(_id, _name, _parent, &top0_cg_regs,		\
->> -		 _shift, &mtk_clk_gate_ops_no_setclr_inv)
->> +		 _shift, &mtk_clk_gate_ops_no_setclr)
->>  
->>  #define GATE_TOP1(_id, _name, _parent, _shift)			\
->>  	GATE_MTK(_id, _name, _parent, &top1_cg_regs,		\
->> -		 _shift, &mtk_clk_gate_ops_no_setclr)
->> +		 _shift, &mtk_clk_gate_ops_no_setclr_inv)
->>  
->>  #define GATE_TOP2(_id, _name, _parent, _shift)			\
->>  	GATE_MTK(_id, _name, _parent, &top2_cg_regs,		\
->> -		 _shift, &mtk_clk_gate_ops_no_setclr)
->> +		 _shift, &mtk_clk_gate_ops_no_setclr_inv)
->>  
->>  static const struct mtk_gate top_clk_gates[] = {
->>  	GATE_TOP0(CLK_TOP_CONN_32K, "conn_32k", "clk32k", 10),
->> -- 
->> 2.40.1
->> 
+> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> ---
 
