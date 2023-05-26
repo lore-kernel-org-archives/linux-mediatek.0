@@ -4,74 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8D52C7EE2F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 May 2023 08:42:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F19BC77B7C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 May 2023 08:45:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=co1BNfZT93xIcqJFEynl3v0uax4ZhAF3R02wYIPoVE0=; b=kyACmJpbTToOsPG3ceZ9VL7i/7
-	0TGnHZnNpZoFHjrj8K2SiFTesYNHWvr1d43PlbZHLpUPQ5VHJPhPYV86rNeFnydWvV+Qi/Y+HSUiU
-	74ZnDfgSSRxgQJJP60G0bCKp82oD78SQbZP6nK+BRtPKcHb5maDPZ3P3QfxnZkwxqnotSlSaBwHiU
-	ok7sFPuPOJEicNjMr21f/JTaObD/Z0j8cPQcmP2eVb1gNLuQB0kaeV+u5A73Su4hxPWo2f75SoHMA
-	WYDNcLL7F2IocDLFl3ol2i9AGV1fNyWywiGMVRLjcHSub4Fz6yUJSTEA65QlI6ua/zWAJfC1GDW+c
-	wsivlOqg==;
+	bh=Pc/Sfa/uvyYzyrCdTxcbvx9K9W/z6iYPxxsGml4BfXQ=; b=AZUmhPlclMUiORPk48WuxRRIIu
+	QQI5z8Sj9thZVfi6Z+YwI8BakmXCTC8dLabFaLH5ucNY9klyNwZ40JaiynwT5lLjdea9Ym4T3BEYc
+	YIPNjZ0wJL8CoIpB1wL0tJBSusgk2ZL0xj+df0h/TvDe7Vm00Xy0yJ8oVCQ/CL7t3yHE4mN1a5R37
+	qZFyueEhKZ7OZFl+s0PIVA232YZEhBA7bQsZ7lh9sU6DnNXez6kSv2XU4qAHFJpGL/GZj0y3hyAVH
+	yA7v8Iab9QrR3XCwp9GgDUqP5J5X9Lki9qETIGmbvtnL5OX27YyZUJphoROLqypbZrU0LUl/inS15
+	ppvJs1hA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2T29-001dwH-0Z;
-	Fri, 26 May 2023 08:42:49 +0000
+	id 1q2T4u-001ekx-1d;
+	Fri, 26 May 2023 08:45:40 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2T24-001dv9-2b;
-	Fri, 26 May 2023 08:42:46 +0000
+	id 1q2T4q-001ejn-38;
+	Fri, 26 May 2023 08:45:38 +0000
 Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id AED846606E83;
-	Fri, 26 May 2023 09:42:42 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D0B496606E83;
+	Fri, 26 May 2023 09:45:34 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1685090563;
-	bh=i6rzAfODVwC2ZUVbGiudZ2RiX0ONSGFLeLMYfiESWFk=;
+	s=mail; t=1685090735;
+	bh=jIYCjGbXEyWJJEvEqZFXDnEttlE1pdHBfo4pRBrBZ44=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=LcaxJtN4Dv248ZgNRCWAO050gswDW4ffJhmG2nKdfuoAV8SO3kdulJ6MvmuZIzzgF
-	 ODSubkkIe3fLBnbUzBvbFr8wd9mKxGrSiMMP79WFF8cE2sIiCyOsRwEzKBGhLZ4OsR
-	 mzkKoIrSvhMh+5utSEYpxXZyRr1R0+kOFyPMkte+3+RG281ZjbgboTfnzoJ5AzUTWY
-	 yANJdb4v+/C7Px4kDbFxjwXsXhPII5VzC4ibe2wj7k1wR9TRP8cknwqmvozsKfmpyD
-	 Yh4mYqdyuX9JGuhHWJm9YO4pnElcuw8AXas0CyKKukm3WoH5d4LDTd1bMLk/m0BKJ0
-	 Gcw9eei9hDM1w==
-Message-ID: <0430808a-6180-e9e4-adbd-dd891f86c6ec@collabora.com>
-Date: Fri, 26 May 2023 10:42:40 +0200
+	b=ddK5/GN9kRklJI2XLwlNE6peqrD4tc8nVY5l2UQ41DrEC44HDa+qWEkoxqNMbJLgF
+	 FxYJM7znsKalwM09C/EjgdvjYdnhB1Lu9mCrvmvIGYAFPv8ePMm7llLDEdaoCXLydp
+	 RjLGCxvZsLX1d0k71oNsBQTyxypn+8p34mTrNs0vYFyKym+1MNGLwMze01bxEUJCBe
+	 DAJhb3Z/vPGM06ZQ+3/Zbh13CswcOPkgdbgv8u+pz1jHAm7/jLzZkBGyku+DKAbXUg
+	 iCnTdzx5QI/RURMXHwOoUJtVsKPA+eVlXBz2RxePNN6DYdYcBENtP49hZXOHAeH+nd
+	 0fwUTB3RJT0sQ==
+Message-ID: <23366389-1be5-92ef-7728-ce639d46a0b0@collabora.com>
+Date: Fri, 26 May 2023 10:45:32 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.1
-Subject: Re: [PATCH v4 03/11] drm/mediatek: gamma: Support SoC specific LUT
- size
+Subject: Re: [PATCH] notifier: Initialize new struct srcu_usage field
 Content-Language: en-US
-To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "wenst@chromium.org" <wenst@chromium.org>,
- =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
- "kernel@collabora.com" <kernel@collabora.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-References: <20230518104857.124265-1-angelogioacchino.delregno@collabora.com>
- <20230518104857.124265-4-angelogioacchino.delregno@collabora.com>
- <135f8b6829585632f81d9c4da9a3b6211a8e0bfa.camel@mediatek.com>
+To: Chen-Yu Tsai <wenst@chromium.org>, Lai Jiangshan
+ <jiangshanlai@gmail.com>, "Paul E. McKenney" <paulmck@kernel.org>,
+ Josh Triplett <josh@joshtriplett.org>, Steven Rostedt <rostedt@goodmis.org>,
+ Mathieu Desnoyers <mathieu.desnoyers@efficios.com>
+Cc: rcu@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?= <nfraprado@collabora.com>,
+ "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>
+References: <20230526073539.339203-1-wenst@chromium.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <135f8b6829585632f81d9c4da9a3b6211a8e0bfa.camel@mediatek.com>
+In-Reply-To: <20230526073539.339203-1-wenst@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230526_014244_997033_13D09384 
-X-CRM114-Status: GOOD (  18.13  )
+X-CRM114-CacheID: sfid-20230526_014537_140987_32CAB1B0 
+X-CRM114-Status: UNSURE (   9.14  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,73 +81,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/05/23 07:20, CK Hu (胡俊光) ha scritto:
-> Hi, Angelo:
+Il 26/05/23 09:35, Chen-Yu Tsai ha scritto:
+> In commit 95433f726301 ("srcu: Begin offloading srcu_struct fields to
+> srcu_update"), a new struct srcu_usage field was added, but was not
+> properly initialized. This led to a "spinlock bad magic" BUG when
+> the SRCU notifier was ever used. This was observed in the MediaTek
+> CCI devfreq driver on next-20230525. Trimmed stack trace as follows:
 > 
-> On Thu, 2023-05-18 at 12:48 +0200, AngeloGioacchino Del Regno wrote:
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
->>
->>
->> Newer SoCs support a bigger Gamma LUT table: wire up a callback
->> to retrieve the correct LUT size for each different Gamma IP.
->>
->> Co-developed-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
->> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
->> [Angelo: Rewritten commit message/description + porting]
->> Signed-off-by: AngeloGioacchino Del Regno <
->> angelogioacchino.delregno@collabora.com>
->> Reviewed-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
->> ---
->>   drivers/gpu/drm/mediatek/mtk_disp_drv.h     |  1 +
->>   drivers/gpu/drm/mediatek/mtk_disp_gamma.c   | 25 ++++++++++++++++++-
->> --
->>   drivers/gpu/drm/mediatek/mtk_drm_crtc.c     |  4 ++--
->>   drivers/gpu/drm/mediatek/mtk_drm_crtc.h     |  1 -
->>   drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  1 +
->>   drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  9 ++++++++
->>   6 files changed, 35 insertions(+), 6 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
->> b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
->> index 75045932353e..e554b19f4830 100644
->> --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
->> +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
->> @@ -53,6 +53,7 @@ void mtk_gamma_clk_disable(struct device *dev);
->>   void mtk_gamma_config(struct device *dev, unsigned int w,
->>                        unsigned int h, unsigned int vrefresh,
->>                        unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
->> +unsigned int mtk_gamma_get_lut_size(struct device *dev);
->>   void mtk_gamma_set(struct device *dev, struct drm_crtc_state
->> *state);
->>   void mtk_gamma_set_common(struct device *dev, void __iomem *regs,
->> struct drm_crtc_state *state);
->>   void mtk_gamma_start(struct device *dev);
->> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
->> b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
->> index ce6f2499b891..d194d9bc2e2b 100644
->> --- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
->> +++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
->> @@ -25,10 +25,12 @@
->>   #define DISP_GAMMA_LUT                         0x0700
->>
->>   #define LUT_10BIT_MASK                         0x03ff
->> +#define LUT_SIZE_DEFAULT                       512 /* for setting
->> gamma lut from AAL */
+>      BUG: spinlock bad magic on CPU#4, swapper/0/1
+>       lock: 0xffffff80ff529ac0, .magic: 00000000, .owner: <none>/-1, .owner_cpu: 0
+>      Call trace:
+>       spin_bug+0xa4/0xe8
+>       do_raw_spin_lock+0xec/0x120
+>       _raw_spin_lock_irqsave+0x78/0xb8
+>       synchronize_srcu+0x3c/0x168
+>       srcu_notifier_chain_unregister+0x5c/0xa0
+>       cpufreq_unregister_notifier+0x94/0xe0
+>       devfreq_passive_event_handler+0x7c/0x3e0
+>       devfreq_remove_device+0x48/0xe8
 > 
-> I would like to place AAL definition in AAL driver and pass it to gamma
-> driver.
+> Add __SRCU_USAGE_INIT() to SRCU_NOTIFIER_INIT() so that srcu_usage gets
+> initialized properly.
 > 
+> Fixes: 95433f726301 ("srcu: Begin offloading srcu_struct fields to srcu_update")
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
-This is not only for AAL, actually; I should remove that comment as it
-may actually be misleading.
-
-The default LUT size (512) is relevant for both the AAL case and the
-older SoCs, where the LUT size is 512 and no multi-register.
-
-I'll remove that comment in the next version
-
-Regards,
-Angelo
+Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
