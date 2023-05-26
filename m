@@ -4,69 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F19BC77B7C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 May 2023 08:45:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EB20C7EE2F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 May 2023 08:54:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Pc/Sfa/uvyYzyrCdTxcbvx9K9W/z6iYPxxsGml4BfXQ=; b=AZUmhPlclMUiORPk48WuxRRIIu
-	QQI5z8Sj9thZVfi6Z+YwI8BakmXCTC8dLabFaLH5ucNY9klyNwZ40JaiynwT5lLjdea9Ym4T3BEYc
-	YIPNjZ0wJL8CoIpB1wL0tJBSusgk2ZL0xj+df0h/TvDe7Vm00Xy0yJ8oVCQ/CL7t3yHE4mN1a5R37
-	qZFyueEhKZ7OZFl+s0PIVA232YZEhBA7bQsZ7lh9sU6DnNXez6kSv2XU4qAHFJpGL/GZj0y3hyAVH
-	yA7v8Iab9QrR3XCwp9GgDUqP5J5X9Lki9qETIGmbvtnL5OX27YyZUJphoROLqypbZrU0LUl/inS15
-	ppvJs1hA==;
+	bh=euKZ+WSAhXyrVn0AyoceS6rsEoXdp7CnlhslJOnii3c=; b=yeLkfAAa+A0/h8pPGTp2NN6rFQ
+	vJfk2go8rC7zKUVF5KXSIXbYKAXdQVC7DWloDzvBUFa7zmEuaL8v814+O86BL5mO19IktNJKd81qq
+	EYmZkgXm2HAyZgUgIK/T8cbDhdlJoxbnHAhplQFL2sMMvSwHsvonqIk0qRMU3qDe6UTW5+WP3oGKN
+	HSFHYWkGrze5/mTGGUuXnKbggalSXTOEzq0xTBpxPkAWZcpsBD3cS7pM7UW1hLdh8of5uJ27OTeA/
+	92X6oAMVx5WMCT7aNBixqVdmYp7amIggE7TdsONxgVOMpQIFkR0wSndNxrUdsQJD8WQqqhHTbdD+3
+	EGce8vXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2T4u-001ekx-1d;
-	Fri, 26 May 2023 08:45:40 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1q2TD8-001gWc-2e;
+	Fri, 26 May 2023 08:54:10 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2T4q-001ejn-38;
-	Fri, 26 May 2023 08:45:38 +0000
-Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D0B496606E83;
-	Fri, 26 May 2023 09:45:34 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1685090735;
-	bh=jIYCjGbXEyWJJEvEqZFXDnEttlE1pdHBfo4pRBrBZ44=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ddK5/GN9kRklJI2XLwlNE6peqrD4tc8nVY5l2UQ41DrEC44HDa+qWEkoxqNMbJLgF
-	 FxYJM7znsKalwM09C/EjgdvjYdnhB1Lu9mCrvmvIGYAFPv8ePMm7llLDEdaoCXLydp
-	 RjLGCxvZsLX1d0k71oNsBQTyxypn+8p34mTrNs0vYFyKym+1MNGLwMze01bxEUJCBe
-	 DAJhb3Z/vPGM06ZQ+3/Zbh13CswcOPkgdbgv8u+pz1jHAm7/jLzZkBGyku+DKAbXUg
-	 iCnTdzx5QI/RURMXHwOoUJtVsKPA+eVlXBz2RxePNN6DYdYcBENtP49hZXOHAeH+nd
-	 0fwUTB3RJT0sQ==
-Message-ID: <23366389-1be5-92ef-7728-ce639d46a0b0@collabora.com>
-Date: Fri, 26 May 2023 10:45:32 +0200
+	id 1q2TD6-001gUl-1G
+	for linux-mediatek@lists.infradead.org;
+	Fri, 26 May 2023 08:54:10 +0000
+Received: by mail-wr1-x434.google.com with SMTP id ffacd0b85a97d-30957dd7640so237270f8f.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 26 May 2023 01:54:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1685091246; x=1687683246;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=euKZ+WSAhXyrVn0AyoceS6rsEoXdp7CnlhslJOnii3c=;
+        b=4Mm7af47pTxR8J3orNP08NtPkDhpbxyDPcERzqr+7U/N9u+uMixl2dJYKKbuHTmR86
+         v+NDc0vAa6NNFOVw9ScYMGioN8DydRKZet4zZpk1nABJI/PzJUJYmzc8VyZ4sk+cdY9k
+         JrI/McdCRlBbQ4IBhRNJTN7gx1AnDEPBuMmc/6F5+TQe2F1k5hHesJ4mwbQ3EzHwulUM
+         9jCKozEpuyi5ofzSyhMQ2skTuXInpgS48bPPKQKdCnYCm/MFtiWZtT467tQkswk5Zm2R
+         LSOgP+ah4r5PtfHCF7IGnCUE5ef/rDost6+fU+ioS34Z1vl8fbABqWdc5Z1zA2y6Kr94
+         IrVA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1685091246; x=1687683246;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=euKZ+WSAhXyrVn0AyoceS6rsEoXdp7CnlhslJOnii3c=;
+        b=ULUAPzRO8LvmWToe+9uexKwco2Z/vqhv0aGFr4hmsxE0CoPCNbdtAiRs+9tNC4jatX
+         maMzi2EEyEh4KhATSqdTPvP8hKZnwqJPSFF36uHJCN22FZzeQUomCmPuqQ0fNwTHF7MO
+         OhFLgOuviezintxupW3Sab5RLJ3bpXYLqxXs0wKtj8D78S0vsHBS8/QJ9VmOTc2IPQoi
+         LfjTtkc6NYdxS8SLh/E1pObtn041Gbkgf6kItjEDDKHxwxOCpHH147Qd+hWqgETftEsd
+         zWOZX2vbXjA9UTxWGvY0JWf1fRI0CkUvJsSc21uASm2nIU3KfGaqRjqCp+gGdCjf88Hv
+         C5tg==
+X-Gm-Message-State: AC+VfDw0NdDggHQDCnsm8F59JyB+bkj/U0P+iN9qsF9JAjElK8a/D7u4
+	UAXeRhatF65L4VSXh7zK+/8DlA==
+X-Google-Smtp-Source: ACHHUZ7d59AY8hMyzp5lhJ8jqZmAoLniSNjqiPcXwIZvvpqz+lxlM0eOFDwJJVHGsHbG8WD1qsPlyQ==
+X-Received: by 2002:a05:6000:9:b0:306:4125:5f61 with SMTP id h9-20020a056000000900b0030641255f61mr971698wrx.44.1685091246156;
+        Fri, 26 May 2023 01:54:06 -0700 (PDT)
+Received: from [192.168.1.172] (158.22.5.93.rev.sfr.net. [93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id l21-20020a1c7915000000b003f603b8eb5asm4564045wme.7.2023.05.26.01.54.04
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 26 May 2023 01:54:05 -0700 (PDT)
+Message-ID: <c1e706f3-9d80-3dd5-eeab-c24830f9ef03@baylibre.com>
+Date: Fri, 26 May 2023 10:54:04 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.1
-Subject: Re: [PATCH] notifier: Initialize new struct srcu_usage field
+ Thunderbird/102.11.0
+Subject: Re: [PATCH v2 1/2] dt-bindings: clock: mediatek: replace unusable
+ clock
 Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>, Lai Jiangshan
- <jiangshanlai@gmail.com>, "Paul E. McKenney" <paulmck@kernel.org>,
- Josh Triplett <josh@joshtriplett.org>, Steven Rostedt <rostedt@goodmis.org>,
- Mathieu Desnoyers <mathieu.desnoyers@efficios.com>
-Cc: rcu@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?= <nfraprado@collabora.com>,
- "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>
-References: <20230526073539.339203-1-wenst@chromium.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230526073539.339203-1-wenst@chromium.org>
+To: Conor Dooley <conor@kernel.org>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chen-Yu Tsai <wenst@chromium.org>,
+ Markus Schneider-Pargmann <msp@baylibre.com>, linux-clk@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230517-fix-clk-index-v2-0-1b686cefcb7e@baylibre.com>
+ <20230517-fix-clk-index-v2-1-1b686cefcb7e@baylibre.com>
+ <20230525-snuggle-twine-ed1bfc2aee51@spud>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <20230525-snuggle-twine-ed1bfc2aee51@spud>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230526_014537_140987_32CAB1B0 
-X-CRM114-Status: UNSURE (   9.14  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230526_015408_428544_E74964A9 
+X-CRM114-Status: GOOD (  20.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,31 +105,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/05/23 09:35, Chen-Yu Tsai ha scritto:
-> In commit 95433f726301 ("srcu: Begin offloading srcu_struct fields to
-> srcu_update"), a new struct srcu_usage field was added, but was not
-> properly initialized. This led to a "spinlock bad magic" BUG when
-> the SRCU notifier was ever used. This was observed in the MediaTek
-> CCI devfreq driver on next-20230525. Trimmed stack trace as follows:
+On 25/05/2023 19:51, Conor Dooley wrote:
+> On Thu, May 25, 2023 at 04:50:27PM +0200, Alexandre Mergnat wrote:
+>> The “mcu_pm_bclk_ck_cg” clock is used by co-processors and should not be
+>> added to the kernel driver, otherwise the CPU just halt and the board is
+>> rebooted by the wathdog.
+>>
+>> Instead, add the "aes_top0_bclk_ck_cg" missing clock to prevent
+>> re-shuffling index and then preserve the ABI.
 > 
->      BUG: spinlock bad magic on CPU#4, swapper/0/1
->       lock: 0xffffff80ff529ac0, .magic: 00000000, .owner: <none>/-1, .owner_cpu: 0
->      Call trace:
->       spin_bug+0xa4/0xe8
->       do_raw_spin_lock+0xec/0x120
->       _raw_spin_lock_irqsave+0x78/0xb8
->       synchronize_srcu+0x3c/0x168
->       srcu_notifier_chain_unregister+0x5c/0xa0
->       cpufreq_unregister_notifier+0x94/0xe0
->       devfreq_passive_event_handler+0x7c/0x3e0
->       devfreq_remove_device+0x48/0xe8
-> 
-> Add __SRCU_USAGE_INIT() to SRCU_NOTIFIER_INIT() so that srcu_usage gets
-> initialized properly.
-> 
-> Fixes: 95433f726301 ("srcu: Begin offloading srcu_struct fields to srcu_update")
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> How does this preserve the ABI exactly? Please describe exactly what you
+> mean by that.
 
-Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+I mean that reduce the impact of the change compared to the v1 where 
+I've changed the index of the following defines to be clean.
+
+> Also, what about any other users of these definitions, outside of Linux?
+
+The clock driver and bindings are only a couple of kernel versions old, 
+I'm pretty sure no one is using it. Also, if someone use 
+CLK_IFR_MCU_PM_BK define, I'm wondering how his CPU is working since 
+Mediatek told me that shouldn't be used, and after some try, I confirm.
+
+I've a question: If something is wrong in the binding, you don't fix it 
+to avoid ABI change ?
+
+TBH, I just try to clean the binding. I can fix the driver index issue 
+(patch 2/2) without fixing the binding if you prefer. But IMHO, keep an 
+unusable define isn't great...
+
+-- 
+Regards,
+Alexandre
 
 
