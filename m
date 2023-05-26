@@ -4,93 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EB20C7EE2F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 May 2023 08:54:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B2C4C7EE23
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 May 2023 08:54:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=euKZ+WSAhXyrVn0AyoceS6rsEoXdp7CnlhslJOnii3c=; b=yeLkfAAa+A0/h8pPGTp2NN6rFQ
-	vJfk2go8rC7zKUVF5KXSIXbYKAXdQVC7DWloDzvBUFa7zmEuaL8v814+O86BL5mO19IktNJKd81qq
-	EYmZkgXm2HAyZgUgIK/T8cbDhdlJoxbnHAhplQFL2sMMvSwHsvonqIk0qRMU3qDe6UTW5+WP3oGKN
-	HSFHYWkGrze5/mTGGUuXnKbggalSXTOEzq0xTBpxPkAWZcpsBD3cS7pM7UW1hLdh8of5uJ27OTeA/
-	92X6oAMVx5WMCT7aNBixqVdmYp7amIggE7TdsONxgVOMpQIFkR0wSndNxrUdsQJD8WQqqhHTbdD+3
-	EGce8vXQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5E1O6F8XFMIurLCllD6JGMVmsuqHQFoAO58kkivfIrk=; b=Al6k6fOgpOLn3rjFuDWOekUSvh
+	dCg9JgOWuYesHuFi8Y8diHxJitMgD9l7WkhA3iw00NeWH3vXCpt+onmE/HdXS2UQYwqoXAWvhwPv9
+	+uAMOJNSuxMHd7/s/TOjFTrF1PcXxZo32Je++WHBXNkB+F8551JFk8/QBPWiU7pTAjxJgsWRwi4FI
+	JDR+sEQR4zILA4znp/986k41JAh0Aw9W35Fea4NTLfhTcQAW8f8P110Ot/Mc51rQ+C1Y8QobcRHfZ
+	ckjZdY89QJZdByhoFtDLhw7f+6JaDUEqQ9NFHt/trsQ7PEOoKoTx03YTcmOGpkXMCECyAWtx2XWYQ
+	cLqyboQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2TD8-001gWc-2e;
-	Fri, 26 May 2023 08:54:10 +0000
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+	id 1q2TDJ-001gdu-1M;
+	Fri, 26 May 2023 08:54:21 +0000
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2TD6-001gUl-1G
+	id 1q2TDD-001gYf-0M
 	for linux-mediatek@lists.infradead.org;
-	Fri, 26 May 2023 08:54:10 +0000
-Received: by mail-wr1-x434.google.com with SMTP id ffacd0b85a97d-30957dd7640so237270f8f.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 26 May 2023 01:54:07 -0700 (PDT)
+	Fri, 26 May 2023 08:54:16 +0000
+Received: by mail-pf1-x430.google.com with SMTP id d2e1a72fcca58-64d41d8bc63so589673b3a.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 26 May 2023 01:54:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1685091246; x=1687683246;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=euKZ+WSAhXyrVn0AyoceS6rsEoXdp7CnlhslJOnii3c=;
-        b=4Mm7af47pTxR8J3orNP08NtPkDhpbxyDPcERzqr+7U/N9u+uMixl2dJYKKbuHTmR86
-         v+NDc0vAa6NNFOVw9ScYMGioN8DydRKZet4zZpk1nABJI/PzJUJYmzc8VyZ4sk+cdY9k
-         JrI/McdCRlBbQ4IBhRNJTN7gx1AnDEPBuMmc/6F5+TQe2F1k5hHesJ4mwbQ3EzHwulUM
-         9jCKozEpuyi5ofzSyhMQ2skTuXInpgS48bPPKQKdCnYCm/MFtiWZtT467tQkswk5Zm2R
-         LSOgP+ah4r5PtfHCF7IGnCUE5ef/rDost6+fU+ioS34Z1vl8fbABqWdc5Z1zA2y6Kr94
-         IrVA==
+        d=chromium.org; s=google; t=1685091253; x=1687683253;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=5E1O6F8XFMIurLCllD6JGMVmsuqHQFoAO58kkivfIrk=;
+        b=UnwWb9DC2h863iCSINm0c8593AEcbSTqSTS0nIydcAQxy4ijGiC1l8g3dq3zHEueQa
+         mvKy8j9rxBeD0sO+ZHFGrNtQ0nKiEHGf8VE+zNkFwoOREZKXTqlYsGRWB11GiqxGbDaR
+         Kw33o3SFcqbx6F4JAKf54w+CVZiNXn9MFDrCQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685091246; x=1687683246;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=euKZ+WSAhXyrVn0AyoceS6rsEoXdp7CnlhslJOnii3c=;
-        b=ULUAPzRO8LvmWToe+9uexKwco2Z/vqhv0aGFr4hmsxE0CoPCNbdtAiRs+9tNC4jatX
-         maMzi2EEyEh4KhATSqdTPvP8hKZnwqJPSFF36uHJCN22FZzeQUomCmPuqQ0fNwTHF7MO
-         OhFLgOuviezintxupW3Sab5RLJ3bpXYLqxXs0wKtj8D78S0vsHBS8/QJ9VmOTc2IPQoi
-         LfjTtkc6NYdxS8SLh/E1pObtn041Gbkgf6kItjEDDKHxwxOCpHH147Qd+hWqgETftEsd
-         zWOZX2vbXjA9UTxWGvY0JWf1fRI0CkUvJsSc21uASm2nIU3KfGaqRjqCp+gGdCjf88Hv
-         C5tg==
-X-Gm-Message-State: AC+VfDw0NdDggHQDCnsm8F59JyB+bkj/U0P+iN9qsF9JAjElK8a/D7u4
-	UAXeRhatF65L4VSXh7zK+/8DlA==
-X-Google-Smtp-Source: ACHHUZ7d59AY8hMyzp5lhJ8jqZmAoLniSNjqiPcXwIZvvpqz+lxlM0eOFDwJJVHGsHbG8WD1qsPlyQ==
-X-Received: by 2002:a05:6000:9:b0:306:4125:5f61 with SMTP id h9-20020a056000000900b0030641255f61mr971698wrx.44.1685091246156;
-        Fri, 26 May 2023 01:54:06 -0700 (PDT)
-Received: from [192.168.1.172] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id l21-20020a1c7915000000b003f603b8eb5asm4564045wme.7.2023.05.26.01.54.04
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 26 May 2023 01:54:05 -0700 (PDT)
-Message-ID: <c1e706f3-9d80-3dd5-eeab-c24830f9ef03@baylibre.com>
-Date: Fri, 26 May 2023 10:54:04 +0200
+        d=1e100.net; s=20221208; t=1685091253; x=1687683253;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=5E1O6F8XFMIurLCllD6JGMVmsuqHQFoAO58kkivfIrk=;
+        b=YV2kMhfLTTIhUrwgci/flpwCwvbpE0S200RRoljJBWc7Kt6YKr3QjAV63SnJxikaAx
+         4Gm+MkJ3V1ayKur9vhLIh0/KYwDmnhfJenuvcAhoE0z3z9fBj9S5QQtJA1CNfI0TB75I
+         UlVlV/F7YeVx/E/AHxZ52so0R5CPJGSw5Hktz7DeIAtWuLvr0WZg2xrlfnumPb5pvsJ4
+         WPJnO5QT87t8YYUC7Z2U9/gAKRic0KyFYC3CSWU5B4vZGlixHDb26yEMLht7hq4U6vmf
+         +drxez8hEgUMMaUE2xXqf2XD/Or8ItOUcxNG2Lx2/h/Os27Vg9WiMiCkZZo/BitmpUkp
+         QsfA==
+X-Gm-Message-State: AC+VfDyoRdCvaO8LVn+dMOlwVwrPSxHlfg0uetRqgMd5DjqAW333cwcH
+	+oHtXSIycGDOpSGtRdrMKPxgRw==
+X-Google-Smtp-Source: ACHHUZ6j1OCMp+SsbHSsvJ+n1AMIMl1mA9tSeKDh1T6ew63dCD88XS43sI5XhoaDF57pLVfUrA6m4Q==
+X-Received: by 2002:a05:6a00:218e:b0:64d:3227:b806 with SMTP id h14-20020a056a00218e00b0064d3227b806mr2748121pfi.33.1685091253571;
+        Fri, 26 May 2023 01:54:13 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:17b9:e0b5:a956:4510])
+        by smtp.gmail.com with ESMTPSA id l14-20020a62be0e000000b006460751222asm2344166pff.38.2023.05.26.01.54.11
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 26 May 2023 01:54:13 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Yong Wu <yong.wu@mediatek.com>,
+	Joerg Roedel <joro@8bytes.org>,
+	Will Deacon <will@kernel.org>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	iommu@lists.linux.dev,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH RFC] iommu/mediatek: Flush IOTLB completely only if domain has been attached
+Date: Fri, 26 May 2023 16:53:59 +0800
+Message-ID: <20230526085402.394239-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.41.0.rc0.172.g3f132b7071-goog
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH v2 1/2] dt-bindings: clock: mediatek: replace unusable
- clock
-Content-Language: en-US
-To: Conor Dooley <conor@kernel.org>
-Cc: Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Chen-Yu Tsai <wenst@chromium.org>,
- Markus Schneider-Pargmann <msp@baylibre.com>, linux-clk@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230517-fix-clk-index-v2-0-1b686cefcb7e@baylibre.com>
- <20230517-fix-clk-index-v2-1-1b686cefcb7e@baylibre.com>
- <20230525-snuggle-twine-ed1bfc2aee51@spud>
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20230525-snuggle-twine-ed1bfc2aee51@spud>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230526_015408_428544_E74964A9 
-X-CRM114-Status: GOOD (  20.19  )
+X-CRM114-CacheID: sfid-20230526_015415_154327_9EF3C01B 
+X-CRM114-Status: GOOD (  15.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,37 +93,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 25/05/2023 19:51, Conor Dooley wrote:
-> On Thu, May 25, 2023 at 04:50:27PM +0200, Alexandre Mergnat wrote:
->> The “mcu_pm_bclk_ck_cg” clock is used by co-processors and should not be
->> added to the kernel driver, otherwise the CPU just halt and the board is
->> rebooted by the wathdog.
->>
->> Instead, add the "aes_top0_bclk_ck_cg" missing clock to prevent
->> re-shuffling index and then preserve the ABI.
-> 
-> How does this preserve the ABI exactly? Please describe exactly what you
-> mean by that.
+If an IOMMU domain was never attached, it lacks any linkage to the
+actual IOMMU hardware. Attempting to do flush_iotlb_all() on it will
+result in a NULL pointer dereference. This seems to happen after the
+recent IOMMU core rework in v6.4-rc1.
 
-I mean that reduce the impact of the change compared to the v1 where 
-I've changed the index of the following defines to be clean.
+    Unable to handle kernel read from unreadable memory at virtual address 0000000000000018
+    Call trace:
+     mtk_iommu_flush_iotlb_all+0x20/0x80
+     iommu_create_device_direct_mappings.part.0+0x13c/0x230
+     iommu_setup_default_domain+0x29c/0x4d0
+     iommu_probe_device+0x12c/0x190
+     of_iommu_configure+0x140/0x208
+     of_dma_configure_id+0x19c/0x3c0
+     platform_dma_configure+0x38/0x88
+     really_probe+0x78/0x2c0
 
-> Also, what about any other users of these definitions, outside of Linux?
+Check if the "bank" field has been filled in before actually attempting
+the IOTLB flush to avoid it. The IOTLB is also flushed when the device
+comes out of runtime suspend, so it should have a clean initial state.
 
-The clock driver and bindings are only a couple of kernel versions old, 
-I'm pretty sure no one is using it. Also, if someone use 
-CLK_IFR_MCU_PM_BK define, I'm wondering how his CPU is working since 
-Mediatek told me that shouldn't be used, and after some try, I confirm.
+Fixes: 08500c43d4f7 ("iommu/mediatek: Adjust the structure")
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
 
-I've a question: If something is wrong in the binding, you don't fix it 
-to avoid ABI change ?
+I think this is a valid fix, but I'm not very familiar with the hardware
+or the design of the driver. The ARM SMMU drivers seem to do this as well.
 
-TBH, I just try to clean the binding. I can fix the driver index issue 
-(patch 2/2) without fixing the binding if you prefer. But IMHO, keep an 
-unusable define isn't great...
+ drivers/iommu/mtk_iommu.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index aecc7d154f28..e93906d6e112 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -781,7 +781,8 @@ static void mtk_iommu_flush_iotlb_all(struct iommu_domain *domain)
+ {
+ 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+ 
+-	mtk_iommu_tlb_flush_all(dom->bank->parent_data);
++	if (dom->bank)
++		mtk_iommu_tlb_flush_all(dom->bank->parent_data);
+ }
+ 
+ static void mtk_iommu_iotlb_sync(struct iommu_domain *domain,
 -- 
-Regards,
-Alexandre
+2.41.0.rc0.172.g3f132b7071-goog
 
 
