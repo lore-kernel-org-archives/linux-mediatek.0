@@ -4,71 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88046C7EE23
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 May 2023 10:27:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC3CAC77B7A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 May 2023 11:40:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZB0YrkSDDsF6FaE23DBSfwIj+KoUBcbcE4F9Incq/pA=; b=Zpo0uh9t0Ps6zkwGCoi8t1yUsu
-	w0l4LRvwtBpoz43O3qsnKZW28yr6PoaFqcOaGKibMll02BheVs61u/UXTMGDp4ivIDG6TloYcPf1r
-	mYxpB6OXPP1BbTG4GM2rdQfAK4l7ufvCmiwvWE/HwFwACPRslYiDteA/2yeSZqLNlHalUawrQ9NNC
-	rdv2+n3Bv2pgKxeQY7giOjrt1vlVBzE1xqp3CdPFoz9+R6OlMUp72zquHADvODU1RxLJGvtQ6one8
-	LTHCG5gF0o6c7UgnGuIyrONjfYxVGQ+oH++gfTwRM4U9XQ7/zdAJgo3rh6PWvKiyLbsrrrD88VBRw
-	y1frM4HQ==;
+	bh=lYuy1LD8bWujUTSaX1+mmd0Ol6dxdh+UWPikKfhDyxQ=; b=2cnKlt/XSgK3kfOG5LM85aY9B+
+	K6FWMyEaWp/RGp9ZCG1U6O7JjpWAKh9zLxDHmqaqMrLdRdLWnuul7KYsbSDgzMtvTUC/EZ9t3ZT/X
+	POGKbBhI95/4R0A1wYnobacNG72jRr3k0aXJryx5s4w0rjrveFu0vaF/aE+6JI7mVaMA8SPbKE3B+
+	qn7faXTqt748Swj5hc4EYuaFwUvnscRiRTbnBHzodLRm0zwmO7ochWMyOoCWvx0x+ECSADMx+tHE5
+	hrezGsVaDafcoG4QRIR1772EX5Fj52yxosl/rqWcT4xRhzrPW2TFR8qqNrmYaZJm6/GP7bm93ScYC
+	xBujmWfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2Ufd-0021T0-0q;
-	Fri, 26 May 2023 10:27:41 +0000
-Received: from pidgin.makrotopia.org ([185.142.180.65])
+	id 1q2Vo0-002Kqd-1f;
+	Fri, 26 May 2023 11:40:24 +0000
+Received: from esa.microchip.iphmx.com ([68.232.153.233])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2UfY-0021PL-2t;
-	Fri, 26 May 2023 10:27:39 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1q2UfM-00062F-0J;
-	Fri, 26 May 2023 10:27:24 +0000
-Date: Fri, 26 May 2023 11:27:15 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Jia-wei Chang =?utf-8?B?KOW8teS9s+WBiSk=?= <Jia-wei.Chang@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"vincent@systemli.org" <vincent@systemli.org>,
-	"hsinyi@google.com" <hsinyi@google.com>,
-	"viresh.kumar@linaro.org" <viresh.kumar@linaro.org>,
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"khilman@baylibre.com" <khilman@baylibre.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"rafael@kernel.org" <rafael@kernel.org>,
-	Rex-BC Chen =?utf-8?B?KOmZs+afj+i+sCk=?= <Rex-BC.Chen@mediatek.com>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>,
-	Chen Zhong =?utf-8?B?KOmSn+i+sCk=?= <Chen.Zhong@mediatek.com>,
-	"error27@gmail.com" <error27@gmail.com>
-Subject: Re: [PATCH v2 4/4] cpufreq: mediatek: Raise proc and sram max
- voltage for MT7622/7623
-Message-ID: <ZHCJg2rTW0UilMa6@makrotopia.org>
-References: <20230324101130.14053-1-jia-wei.chang@mediatek.com>
- <20230324101130.14053-5-jia-wei.chang@mediatek.com>
- <ZGuuVPCqgpUO6p0Q@makrotopia.org>
- <a1793745-eae3-cae5-49fc-2e75fe0847f0@collabora.com>
- <ZGz55oEEAhlWZajK@makrotopia.org>
- <3054e2d9-7f77-a22a-293d-382f19494079@collabora.com>
- <4e5a8202f7446481def19e5926d1bfd6e6568dd7.camel@mediatek.com>
- <ZG4GNpxdbZ4TNq3K@makrotopia.org>
- <5dc13e13143aaffc4477fb9dcf565070cf1a9822.camel@mediatek.com>
+	id 1q2Vnu-002KmR-0d;
+	Fri, 26 May 2023 11:40:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
+  t=1685101219; x=1716637219;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=lYuy1LD8bWujUTSaX1+mmd0Ol6dxdh+UWPikKfhDyxQ=;
+  b=cxO2qc/2D6UcqcwgT0SVsxV1omQWEFOUfN5hMPhwiRjCEBWfHkJSu0aa
+   G/VU/gIgF1+UcBxc0YrVnH6c3VQ/jG8H5bhL6t6syMGBO8hUU8lA6D0vl
+   q17JXghAgQGmc3NFfmOVTP/Av/z52fhNdNPi1CFMqlVYHTAB9Fh8WJf0t
+   H4R045ojD2GigyABLjBr3VODqfmsf0aS+P4Z11pBOqr0h5rjkmBKPau2A
+   V30uMViRSfr/G78xgsJv9cFCfL+GN4xGY5AUEdTnSlg3KltooC2lz1esr
+   JwgbUfeWGUrMDAJOm2aWdbsnSccpeHXeBlBC1/Ev36Ec1Qe7yhOhkZOwe
+   Q==;
+X-IronPort-AV: E=Sophos;i="6.00,194,1681196400"; 
+   d="asc'?scan'208";a="215607885"
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+Received: from unknown (HELO email.microchip.com) ([170.129.1.10])
+  by esa5.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256; 26 May 2023 04:40:04 -0700
+Received: from chn-vm-ex02.mchp-main.com (10.10.85.144) by
+ chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21; Fri, 26 May 2023 04:40:02 -0700
+Received: from wendy (10.10.115.15) by chn-vm-ex02.mchp-main.com
+ (10.10.85.144) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.21 via Frontend
+ Transport; Fri, 26 May 2023 04:40:00 -0700
+Date: Fri, 26 May 2023 12:39:37 +0100
+From: Conor Dooley <conor.dooley@microchip.com>
+To: Alexandre Mergnat <amergnat@baylibre.com>
+CC: Conor Dooley <conor@kernel.org>, Michael Turquette
+	<mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>,
+	Markus Schneider-Pargmann <msp@baylibre.com>, <linux-clk@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH v2 1/2] dt-bindings: clock: mediatek: replace unusable
+ clock
+Message-ID: <20230526-acorn-unwound-34816283b187@wendy>
+References: <20230517-fix-clk-index-v2-0-1b686cefcb7e@baylibre.com>
+ <20230517-fix-clk-index-v2-1-1b686cefcb7e@baylibre.com>
+ <20230525-snuggle-twine-ed1bfc2aee51@spud>
+ <c1e706f3-9d80-3dd5-eeab-c24830f9ef03@baylibre.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="ia81GYyjYwkAUf9K"
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <5dc13e13143aaffc4477fb9dcf565070cf1a9822.camel@mediatek.com>
+In-Reply-To: <c1e706f3-9d80-3dd5-eeab-c24830f9ef03@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230526_032737_098295_130275F6 
-X-CRM114-Status: GOOD (  66.34  )
+X-CRM114-CacheID: sfid-20230526_044018_245515_BE9A56F3 
+X-CRM114-Status: GOOD (  32.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,288 +94,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 26, 2023 at 08:27:25AM +0000, Jia-wei Chang (張佳偉) wrote:
-> On Wed, 2023-05-24 at 13:42 +0100, Daniel Golle wrote:
-> > On Wed, May 24, 2023 at 08:43:31AM +0000, Jia-wei Chang (張佳偉) wrote:
-> > > On Wed, 2023-05-24 at 09:28 +0200, AngeloGioacchino Del Regno wrote:
-> > > > Il 23/05/23 19:37, Daniel Golle ha scritto:
-> > > > > On Tue, May 23, 2023 at 04:56:47PM +0200, AngeloGioacchino Del
-> > > > > Regno wrote:
-> > > > > > Il 22/05/23 20:03, Daniel Golle ha scritto:
-> > > > > > > Hi Jia-Wei,
-> > > > > > > Hi AngeloGioacchino,
-> > > > > > > 
-> > > > > > > On Fri, Mar 24, 2023 at 06:11:30PM +0800, jia-wei.chang
-> > > > > > > wrote:
-> > > > > > > > From: AngeloGioacchino Del Regno <
-> > > > > > > > angelogioacchino.delregno@collabora.com>
-> > > > > > > > 
-> > > > > > > > During the addition of SRAM voltage tracking for CCI
-> > > > > > > > scaling,
-> > > > > > > > this
-> > > > > > > > driver got some voltage limits set for the vtrack
-> > > > > > > > algorithm:
-> > > > > > > > these
-> > > > > > > > were moved to platform data first, then enforced in a
-> > > > > > > > later
-> > > > > > > > commit
-> > > > > > > > 6a17b3876bc8 ("cpufreq: mediatek: Refine
-> > > > > > > > mtk_cpufreq_voltage_tracking()")
-> > > > > > > > using these as max values for the regulator_set_voltage()
-> > > > > > > > calls.
-> > > > > > > > 
-> > > > > > > > In this case, the vsram/vproc constraints for MT7622 and
-> > > > > > > > MT7623
-> > > > > > > > were supposed to be the same as MT2701 (and a number of
-> > > > > > > > other
-> > > > > > > > SoCs),
-> > > > > > > > but that turned out to be a mistake because the
-> > > > > > > > aforementioned two
-> > > > > > > > SoCs' maximum voltage for both VPROC and VPROC_SRAM is
-> > > > > > > > 1.36V.
-> > > > > > > > 
-> > > > > > > > Fix that by adding new platform data for MT7622/7623
-> > > > > > > > declaring the
-> > > > > > > > right {proc,sram}_max_volt parameter.
-> > > > > > > > 
-> > > > > > > > Fixes: ead858bd128d ("cpufreq: mediatek: Move voltage
-> > > > > > > > limits
-> > > > > > > > to platform data")
-> > > > > > > > Fixes: 6a17b3876bc8 ("cpufreq: mediatek: Refine
-> > > > > > > > mtk_cpufreq_voltage_tracking()")
-> > > > > > > > Signed-off-by: AngeloGioacchino Del Regno <
-> > > > > > > > angelogioacchino.delregno@collabora.com>
-> > > > > > > > Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
-> > > > > > > > ---
-> > > > > > > >    drivers/cpufreq/mediatek-cpufreq.c | 13 +++++++++++--
-> > > > > > > >    1 file changed, 11 insertions(+), 2 deletions(-)
-> > > > > > > > 
-> > > > > > > > diff --git a/drivers/cpufreq/mediatek-cpufreq.c
-> > > > > > > > b/drivers/cpufreq/mediatek-cpufreq.c
-> > > > > > > > index 764e4fbdd536..9a39a7ccfae9 100644
-> > > > > > > > --- a/drivers/cpufreq/mediatek-cpufreq.c
-> > > > > > > > +++ b/drivers/cpufreq/mediatek-cpufreq.c
-> > > > > > > > @@ -693,6 +693,15 @@ static const struct
-> > > > > > > > mtk_cpufreq_platform_data mt2701_platform_data = {
-> > > > > > > >            .ccifreq_supported = false,
-> > > > > > > >    };
-> > > > > > > > +static const struct mtk_cpufreq_platform_data
-> > > > > > > > mt7622_platform_data = {
-> > > > > > > > +  .min_volt_shift = 100000,
-> > > > > > > > +  .max_volt_shift = 200000,
-> > > > > > > > +  .proc_max_volt = 1360000,
-> > > > > > > > +  .sram_min_volt = 0,
-> > > > > > > > +  .sram_max_volt = 1360000,
-> > > > > > > 
-> > > > > > > This change breaks cpufreq (with ondemand scheduler) on my
-> > > > > > > BPi
-> > > > > > > R64
-> > > > > > > board (having MT7622AV SoC with MT6380N PMIC).
-> > > > > > > ...
-> > > > > > > [    2.540091] cpufreq: __target_index: Failed to change
-> > > > > > > cpu
-> > > > > > > frequency: -22
-> > > > > > > [    2.556985] cpu cpu0: cpu0: failed to scale up voltage!
-> > > > > > > ...
-> > > > > > > (repeating a lot, every time the highest operating point is
-> > > > > > > selected
-> > > > > > > by the cpufreq governor)
-> > > > > > > 
-> > > > > > > The reason is that the MT6380N doesn't support 1360000uV on
-> > > > > > > the
-> > > > > > > supply
-> > > > > > > outputs used for SRAM and processor.
-> > > > > > > 
-> > > > > > > As for some reason cpufreq-mediatek tries to rise the SRAM
-> > > > > > > supply
-> > > > > > > voltage to the maximum for a short moment (probably a side-
-> > > > > > > effect of
-> > > > > > > the voltage tracking algorithm), this fails because the
-> > > > > > > PMIC
-> > > > > > > only
-> > > > > > > supports up to 1350000uV. As the highest operating point is
-> > > > > > > anyway
-> > > > > > > using only 1310000uV the simple fix is setting 1350000uV as
-> > > > > > > the
-> > > > > > > maximum
-> > > > > > > instead for both proc_max_volt and sram_max_volt.
-> > > > > > > 
-> > > > > > > A similar situation applies also for BPi R2 (MT7623NI with
-> > > > > > > MT6323L
-> > > > > > > PMIC), here the maximum supported voltage of the PMIC which
-> > > > > > > also only
-> > > > > > > supports up to 1350000uV, and the SoC having its highest
-> > > > > > > operating
-> > > > > > > voltage defined at 1300000uV.
-> > > > > > > 
-> > > > > > > If all agree with the simple fix I will post a patch for
-> > > > > > > that.
-> > > > > > > 
-> > > > > > > However, to me it feels fishy to begin with that the
-> > > > > > > tracking
-> > > > > > > algorithm
-> > > > > > > tries to rise the voltage above the highest operating point
-> > > > > > > defined in
-> > > > > > > device tree, see here:
-> > > > > > > 
-> > > > > > > 6a17b3876bc830 drivers/cpufreq/mediatek-cpufreq.c (Jia-Wei
-> > > > > > > Chang              2022-05-05 19:52:20 +0800
-> > > > > > > 100)    new_vsram
-> > > > > > > = clamp(new_vproc + soc_data->min_volt_shift,
-> > > > > > > 6a17b3876bc830 drivers/cpufreq/mediatek-cpufreq.c (Jia-Wei
-> > > > > > > Chang              2022-05-05 19:52:20 +0800
-> > > > > > > 101)                      soc_data->sram_min_volt,
-> > > > > > > soc_data-
-> > > > > > > > sram_max_volt);
-> > > > > > > 
-> > > > > > > However, I did not investigate in depth the purpose of this
-> > > > > > > initial rise and can impossibly test my modifications to
-> > > > > > > the
-> > > > > > > tracking algorithm on all supported SoCs.
-> > > > > > > 
-> > > > > > 
-> > > > > > Thanks for actually reporting that, I don't think that
-> > > > > > there's
-> > > > > > any
-> > > > > > valid reason why the algorithm should set a voltage higher
-> > > > > > than
-> > > > > > the
-> > > > > > maximum votage specified in the fastest OPP.
-> > > > > > 
-> > > > > > Anyway - the logic for the platform data of this driver is to
-> > > > > > declare
-> > > > > > the maximum voltage that SoC model X supports, regardless of
-> > > > > > the
-> > > > > > actual
-> > > > > > board-specific OPPs, so that part is right; to solve this
-> > > > > > issue,
-> > > > > > I guess
-> > > > > > that the only way is for this driver to parse the OPPs during
-> > > > > > .probe()
-> > > > > > and then always use in the algorithm
-> > > > > > 
-> > > > > >      vproc_max = max(proc_max_volt, opp_vproc_max);
-> > > > > >      vsram_max = max(sram_max_volt, vsram_vreg_max);
-> > > 
-> > > Hi Daniel, Angelo Sir,
-> > > 
-> > > Thanks for the issue report and suggestions.
-> > > 
-> > > Is it possible to modify the value of proc_max_volt and
-> > > sram_max_volt
-> > > to 1310000 in mt7622_platform_data as the highest voltage declared
-> > > in
-> > > mt7622.dtsi and then give it a try?
-> > > 
-> > > Sorry, I need someone help to check this on mt7622 since I don't
-> > > have
-> > > mt7622 platform..
-> > 
-> > Unfortunately also setting proc_max_volt and sram_max_volt to 1310000
-> > doesn't work:
-> > [    1.983325] cpu cpu0: cpu0: failed to scale up voltage!
-> > [    1.988621] cpufreq: __target_index: Failed to change cpu
-> > frequency: -22
-> > ::repeating infinitely::
-> > 
-> > This is because in mt6380-regulator.c you can see
-> > static const unsigned int ldo_volt_table1[] = {
-> >         1400000, 1350000, 1300000, 1250000, 1200000, 1150000,
-> > 1100000, 1050000,
-> > };
-> > 
-> > So 1310000 is not among the supported voltages but mediatek-cpufreq.c
-> > will repeatedly call
-> > regulator_set_voltage(sram_reg, 1310000, 1310000);
-> > which will fail for obvious reasons.
-> > 
-> > Using 1350000 for proc_max_volt and sram_max_volt like I have
-> > suggested
-> > as a simple work-around does work because 1350000 is among the
-> > supported
-> > voltages of the MT6380 regulator.
-> > 
-> > On MT7623 the whole problem is anyway non-existent because there is
-> > no
-> > separate sram-supply, hence the tracking algorithm isn't used at all.
-> > 
-> 
-> Exactly.
-> 
-> For MT7622 platform data, I think it is proper to configure as:
-> .proc_max_volt = 1310000,
-> .sram_max_volt = 1350000,  // since mt6380_vm_reg ldo only supporting
-> {..., 1300000, 1350000, 1400000} as you mentioned.
+--ia81GYyjYwkAUf9K
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Unfortunately that also doesn't work. The tracking algorithm then
-apparently still tries to set unsupported voltages, I assume that
-your suggestion will result in SRAM voltage being requested as
-1310000uV (proc_max_volt) + 200000uV (max_step_size) = 1330000uV
-which also isn't supported by the regulator.
+On Fri, May 26, 2023 at 10:54:04AM +0200, Alexandre Mergnat wrote:
+> On 25/05/2023 19:51, Conor Dooley wrote:
+> > On Thu, May 25, 2023 at 04:50:27PM +0200, Alexandre Mergnat wrote:
+> > > The =E2=80=9Cmcu_pm_bclk_ck_cg=E2=80=9D clock is used by co-processor=
+s and should not be
+> > > added to the kernel driver, otherwise the CPU just halt and the board=
+ is
+> > > rebooted by the wathdog.
+> > >=20
+> > > Instead, add the "aes_top0_bclk_ck_cg" missing clock to prevent
+> > > re-shuffling index and then preserve the ABI.
+> >=20
+> > How does this preserve the ABI exactly? Please describe exactly what you
+> > mean by that.
+>=20
+> I mean that reduce the impact of the change compared to the v1 where I've
+> changed the index of the following defines to be clean.
 
-[    1.972654] cpu cpu0: cpu0: failed to scale up voltage!
-[    1.977951] cpufreq: __target_index: Failed to change cpu frequency: -22
-[    1.984776] cpu cpu0: cpu0: failed to scale up voltage!
-[    1.990039] cpufreq: __target_index: Failed to change cpu frequency: -22
-...
+Oh, you can't do that at all as you probably discovered!
 
-With my initial suggestion to set both, proc_max_volt and sram_max_volt
-to 1350000 it does work.
+> > Also, what about any other users of these definitions, outside of Linux?
+>=20
+> The clock driver and bindings are only a couple of kernel versions old, I=
+'m
+> pretty sure no one is using it.
 
-However, I think we are now botching around with work-arounds not
-addressing the underlying problems which are that
- a) the tracking algorithm initially tries to raise the SRAM voltage to
-    be **exactly** the minimum of proc_max_volt + max_step_size or
-    sram_max_volt.
- b) requesting an exact voltage, ie. regulator_set_voltage(reg, X, X),
-    is always problematic in case of regulators only supporting a
-    limited set of supported voltages.
+Pretty sure, or sure?
 
-While adjusting the voltages in the SoC's platform data as a
-work-around may be good enough as a hot-fix for now, imho the best
-would be to re-write the tracking algorithm addressing both of the
-above flaws.
+> Also, if someone use CLK_IFR_MCU_PM_BK
+> define, I'm wondering how his CPU is working since Mediatek told me that
+> shouldn't be used, and after some try, I confirm.
 
-> For MT7623 platform data, it is required to add a new one.
-> .proc_max_volt = 1300000,
-> .sram_max_volt = 0,  // since no sram-supply like you said.
-> 
-> If MT7622 and MT7623 supplied voltage issues can be fixed by above
-> platform data, feel free to send the fix patch or inform me to do that.
+Maybe that person is actually using the index to make sure that the
+clock at that index is left untouched.
 
-I've introduced dedicated platform_data for MT7623 setting
-proc_max_volt to 1300000, and yes, that does work.
-However, on MT7623 there has not been any problem before as well.
+> I've a question: If something is wrong in the binding, you don't fix it to
+> avoid ABI change ?
 
+I don't quite get what you mean by "wrong". These header files just
+define a set of arbitrary meanings, since the clock numbers are really
+just something that developers came up with rather than being lifted
+=66rom a TRM. They don't prescribe behaviour for each of these clocks, or
+that these clocks should actually be used - just a simple "this number
+means this clock".
+It sounds more like a driver or devicetree is _using_ the number
+incorrectly, but that does not make the binding wrong :)
 
-> 
-> Thanks for your help! :)
-> 
-> > > 
-> > > Thanks.
-> > > 
-> > > > > 
-> > > > > You probably meant to write
-> > > > > vproc_max = min(proc_max_volt, opp_vproc_max);
-> > > > > vsram_max = min(sram_max_volt, vsram_vreg_max);
-> > > > > 
-> > > > > right?
-> > > > > 
-> > > > 
-> > > > Apparently, some of my braincells was apparently taking a break.
-> > > > :-)
-> > > > 
-> > > > Yes, I was meaning min(), not max() :-)
-> > > > 
-> > > > Cheers!
-> > > > 
-> > > > > > 
-> > > > > > Jia-Wei, can you please handle this?
-> > > > > > 
-> > > > > > Thanks,
-> > > > > > Angelo
-> > > > > > 
-> > > > 
-> > > > 
-> > > > 
+> TBH, I just try to clean the binding. I can fix the driver index issue
+> (patch 2/2) without fixing the binding if you prefer. But IMHO, keep an
+> unusable define isn't great...
+
+I, at least, would prefer that.
+
+Thanks,
+Conor.
+
+--ia81GYyjYwkAUf9K
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZHCaeQAKCRB4tDGHoIJi
+0ljiAQDW7cAtkJiUVftFCHctuq0rAX7Y8PATQhIkWAgesm/55QEAgD3TxCEUtXrf
+7eREpLfSvnpwJMHbf49qtnOj7Rw29gQ=
+=PFKY
+-----END PGP SIGNATURE-----
+
+--ia81GYyjYwkAUf9K--
 
