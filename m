@@ -4,95 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5337C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 May 2023 19:42:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B320C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 May 2023 19:51:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AQbvDzRrNGGmJC0cFwixRt7YyXto2u7DcheHfHIL6TM=; b=tyropYJYOrRYhcGSkQFEf2VwH8
-	snKaogWrTGBTkHjVd1k+St53ay80I3xrQ71ko/V3qGWjpg72wJ5tCR9I94O0lnIolYKPm+GRGg412
-	MfOfdUVzlTI1422X2SmH25JdBJWjgiOkyzjU4l7PS2bfKLpOAnL06fMcUxm0SVyFfl0CHygg2JAl1
-	p7I6kCkPCAOe7Aza5ZXAAKDwk/jnOXCYfKY3/1x8/50Xp5UFiWisEJzurz2FOuDlXea+5VFE3rI/Y
-	acX7iCnFk1NkhXqSIQx7jxCNimJTat/zh12fsGu4c/y0ImfR79g41aCtf0iUrzf6VycMIxO3ADsDV
-	1IsugeHg==;
+	bh=dtYzXAXeeNKykjIC6M7yJXXgCuPRoWwM64ZY3vwKseo=; b=Nx8BT8eJqLiFMW9YXDZhfBAn0Q
+	wNm3LSsyX9UmvUjAdi0vd5N5aTYJAHZAdgDLbyHqh3q8wuOXVc77JmmJ7BFUuAf1UZ5oD/sKSfHgd
+	hIuhHoyffjiXfU0VUI7P8fAn6GHgk4paaAB8L5Ui9DJ3koL8ADdnGfsR9lzKZi0rAv3Cg6mWzRe5i
+	TRG7PQB3pHfNh4fyxBw8UMQiLzbIc7XKEHglPzFR33hNmxzi0yMEShLloHkY5wZZCPFMMW0SEV0mC
+	4Zg55YxeaH6uI7qzXXml3E0Xq+YQ+EyZSdhj20EY0PlzcTkEE2ku8C10rehnCJP9XyP/ap+1xdSj1
+	vILFCBiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2dKE-003giz-0R;
-	Fri, 26 May 2023 19:42:10 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1q2dTV-003iYH-0E;
+	Fri, 26 May 2023 19:51:45 +0000
+Received: from mail-io1-xd36.google.com ([2607:f8b0:4864:20::d36])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2dKB-003ghs-1y
+	id 1q2dTR-003iVc-1K
 	for linux-mediatek@lists.infradead.org;
-	Fri, 26 May 2023 19:42:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1685130126;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=AQbvDzRrNGGmJC0cFwixRt7YyXto2u7DcheHfHIL6TM=;
-	b=XpZKRZKo1QZ2/KNBfJZDmy84mXhESkBPWTI2Ybzl2Xr92xoiP6OvDR0dIv6t2KOx1JGHd7
-	q7AfwVV+ust9NdMRofuE3o1vP67O7PfvAOz11aYln6l2d2ODo2cmTD2l0aKVsn5oRFw74C
-	2IPR87GEUUK7q3HNesUnAw/cfXzvA1g=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-171-Nos51NjMPSeYfK2KHZdtrg-1; Fri, 26 May 2023 15:42:03 -0400
-X-MC-Unique: Nos51NjMPSeYfK2KHZdtrg-1
-Received: by mail-wm1-f69.google.com with SMTP id 5b1f17b1804b1-3f60fb7b31fso4585195e9.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 26 May 2023 12:42:03 -0700 (PDT)
+	Fri, 26 May 2023 19:51:42 +0000
+Received: by mail-io1-xd36.google.com with SMTP id ca18e2360f4ac-777094e3d7bso18971139f.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 26 May 2023 12:51:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1685130697; x=1687722697;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=dtYzXAXeeNKykjIC6M7yJXXgCuPRoWwM64ZY3vwKseo=;
+        b=krrqjwzG0OD+yq/+F1IXnoT3w/i5wc3gnTF+joEnO72SMkKoReQHp+SZAyx0MVRFf/
+         QBLWlyR8PUAVM5TAEZ0oE7MM/3O3lxX/JgNOnwaBU22kKS+skkUD3ZWkEcly9esiMLTI
+         tCcupEPW+JUN+2aME/0mjDR5QqBxWso9OF/jQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685130122; x=1687722122;
-        h=content-transfer-encoding:in-reply-to:organization:from:references
-         :cc:to:content-language:subject:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=AQbvDzRrNGGmJC0cFwixRt7YyXto2u7DcheHfHIL6TM=;
-        b=h9eY18UFrFoLFBqO7ON0JlWnqyKBmsa6IUfrh/zWf1mykcPB594c847F48+fBVUeL4
-         IHfNLBL996s+YB2BlBjNEvltPkepRt6Vh7KDj603fnpuzkPFGP8zYQ/KqL8P01kq9HJH
-         hHE0PwspyUgRsUeGCEPIEKfgcD3g6Vy1oybox/rVP/KAWaVuQlhFdKiLtkryk46TP1oQ
-         BjSjOBVAGfcN/noLNu7X1jHAWnLdgGb7vlQsgSM/wVBaozYNlvilNvN00dYS+Uz5+jSy
-         FWqG+cDv01kw9zmr+iojvVeh6nLE3nfgWpAWgAlQrLSNlO4IgN/FLvdxh6iazYfX6Knu
-         ZJLQ==
-X-Gm-Message-State: AC+VfDwy06b/EU7eJWWQpDBMPYrXJmKkyqrjLororFtVNql+rqgMt59k
-	WSSX46NHegbL566+8ZW79OxN44HBs4lJmFUzZnGZoO1ymcAMqW5aC+ygNhbBHd1a5uB0+2cZMsJ
-	duPw23AGltRU56+Iw6oAjObXe7XAYE2fI3/kBkOqR
-X-Received: by 2002:a1c:7407:0:b0:3f6:cfc7:8bce with SMTP id p7-20020a1c7407000000b003f6cfc78bcemr2507517wmc.22.1685130122171;
-        Fri, 26 May 2023 12:42:02 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7Fy1XekX9Vh+eeukEwm41budqTXKnvaC+Uc6qWThUB3TK1m5Tn41fjaNow0dI/Ly8Sf8pxmw==
-X-Received: by 2002:a1c:7407:0:b0:3f6:cfc7:8bce with SMTP id p7-20020a1c7407000000b003f6cfc78bcemr2507506wmc.22.1685130121842;
-        Fri, 26 May 2023 12:42:01 -0700 (PDT)
-Received: from ?IPV6:2003:d8:2f2e:ae00:f2e3:50e0:73f7:451? (p200300d82f2eae00f2e350e073f70451.dip0.t-ipconnect.de. [2003:d8:2f2e:ae00:f2e3:50e0:73f7:451])
-        by smtp.gmail.com with ESMTPSA id 8-20020a05600c024800b003f4e8530696sm6035997wmj.46.2023.05.26.12.42.00
+        d=1e100.net; s=20221208; t=1685130697; x=1687722697;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=dtYzXAXeeNKykjIC6M7yJXXgCuPRoWwM64ZY3vwKseo=;
+        b=ZlE+LDSVVHsU2Oc9mMoCK2+YYyuQOXec78xXOvXtds2NHMjCCL0VapaguATJlPFr6U
+         qOVrceEMUq1J/IeF60yrhstjxVavZkJoFXI7n6wk/7kRvC4TmsSoKP/l5riqfbhztDdp
+         0D4eum94HEzckpSBlTkkh/O1vzb+sTt6zvFlsi6CFvdHEa3xMEd7RXjI82RIUYiMBPoq
+         k6bmYNoxDcXJUbmHhbT+Coy8HMAtyDKZ1XXSWxFSZI2pQ86pb8fksZLpYLysgXHQJ2G7
+         QPXGU9SEn0CurJZeDk9+tCr1dPaulsQzyXtL0I9BmWQ3PVYZCg3ZNsDF3Q0RLjBEIi36
+         9DhQ==
+X-Gm-Message-State: AC+VfDxpk87GO2sclFZTXxp9/uystXUOgYMd8gP9n0XkWkG3eECcJCsn
+	KOLzkUsTS+g8EW04b+vvji5OnxAOviaYkLYBBwE=
+X-Google-Smtp-Source: ACHHUZ6H2hNBladg0KTajOXGemhF1l4ZLPWv1o1kUt79t5RJw9YAgMNoH9RIbfdrqWPE6cJKuZKd4w==
+X-Received: by 2002:a6b:650b:0:b0:717:ce6a:188a with SMTP id z11-20020a6b650b000000b00717ce6a188amr1660231iob.18.1685130697048;
+        Fri, 26 May 2023 12:51:37 -0700 (PDT)
+Received: from mail-il1-f180.google.com (mail-il1-f180.google.com. [209.85.166.180])
+        by smtp.gmail.com with ESMTPSA id g20-20020a02cd14000000b0040f8d42c110sm1277925jaq.95.2023.05.26.12.51.35
+        for <linux-mediatek@lists.infradead.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 26 May 2023 12:42:01 -0700 (PDT)
-Message-ID: <f232be95-74aa-8beb-0413-3dcc7e541ba5@redhat.com>
-Date: Fri, 26 May 2023 21:42:00 +0200
+        Fri, 26 May 2023 12:51:36 -0700 (PDT)
+Received: by mail-il1-f180.google.com with SMTP id e9e14a558f8ab-33b0848c04aso4355ab.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 26 May 2023 12:51:35 -0700 (PDT)
+X-Received: by 2002:a92:ca0a:0:b0:331:2623:c5f4 with SMTP id
+ j10-20020a92ca0a000000b003312623c5f4mr30715ils.1.1685130695437; Fri, 26 May
+ 2023 12:51:35 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH] mm/gup_test:fix ioctl fail for compat task
-To: Haibo Li <haibo.li@mediatek.com>, linux-kernel@vger.kernel.org
-Cc: Andrew Morton <akpm@linux-foundation.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, xiaoming.yu@mediatek.com
-References: <20230526022125.175728-1-haibo.li@mediatek.com>
-From: David Hildenbrand <david@redhat.com>
-Organization: Red Hat
-In-Reply-To: <20230526022125.175728-1-haibo.li@mediatek.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20230526100801.16310-1-uwu@icenowy.me> <CAD=FV=UxrFVZXn+dtgamttTVopWMSVbxYsHCGG_tS+3OTXbHiw@mail.gmail.com>
+ <0803e9037a8a2ce96fdad6ec209991dcda2a30ca.camel@icenowy.me>
+In-Reply-To: <0803e9037a8a2ce96fdad6ec209991dcda2a30ca.camel@icenowy.me>
+From: Doug Anderson <dianders@chromium.org>
+Date: Fri, 26 May 2023 12:51:22 -0700
+X-Gmail-Original-Message-ID: <CAD=FV=WS5i4RYknEaOi+4448UASh9kNncU4mwnawqKPr7yGXRg@mail.gmail.com>
+Message-ID: <CAD=FV=WS5i4RYknEaOi+4448UASh9kNncU4mwnawqKPr7yGXRg@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8173-elm: remove panel model
+ number in DT
+To: Icenowy Zheng <uwu@icenowy.me>
+Cc: Pin-yen Lin <treapking@chromium.org>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230526_124207_724287_69DD401B 
-X-CRM114-Status: GOOD (  15.02  )
+X-CRM114-CacheID: sfid-20230526_125141_450142_2A7385BB 
+X-CRM114-Status: GOOD (  44.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,39 +101,108 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 26.05.23 04:21, Haibo Li wrote:
+Hi,
 
-Nit: "mm/gup_test: fix ioctl fail for compat task"
+On Fri, May 26, 2023 at 8:33=E2=80=AFAM Icenowy Zheng <uwu@icenowy.me> wrot=
+e:
+>
+> =E5=9C=A8 2023-05-26=E6=98=9F=E6=9C=9F=E4=BA=94=E7=9A=84 07:24 -0700=EF=
+=BC=8CDoug Anderson=E5=86=99=E9=81=93=EF=BC=9A
+> > Hi,
+> >
+> > On Fri, May 26, 2023 at 3:09=E2=80=AFAM Icenowy Zheng <uwu@icenowy.me> =
+wrote:
+> > >
+> > > Currently a specific panel number is used in the Elm DTSI, which is
+> > > corresponded to a 12" panel. However, according to the official
+> > > Chrome
+> > > OS devices document, Elm refers to Acer Chromebook R13, which, as
+> > > the
+> > > name specifies, uses a 13.3" panel, which comes with EDID
+> > > information.
+> > >
+> > > As the kernel currently prioritizes the hardcoded timing parameters
+> > > matched with the panel number compatible, a wrong timing will be
+> > > applied
+> > > to the 13.3" panel on Acer Chromebook R13, which leads to blank
+> > > display.
+> > >
+> > > Because the Elm DTSI is shared with Hana board, and Hana
+> > > corresponds to
+> > > multiple devices from 11" to 14", a certain panel model number
+> > > shouldn't
+> > > be present, and driving the panel according to its EDID information
+> > > is
+> > > necessary.
+> > >
+> > > Signed-off-by: Icenowy Zheng <uwu@icenowy.me>
+> > > ---
+> > >  arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 2 +-
+> > >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > We went through a bunch of back-and-forth here but in the end in the
+> > ChromeOS tree we have "edp-panel" as the "compatible" here in the
+> > ChromeOS 5.15 tree and this makes sense.
+>
+> I only have Elm, so I am curious that do all Hana's only rely on panel
+> EDID to use different displays?
+>
+> BTW The Chrome OS document say that Elm and Hana are both board based
+> on Oak baseboard, should the DTSI be renamed mt8173-oak.dtsi, and still
+> let mt8173-elm.dts include it and then set model information?
 
-> When tools/testing/selftests/mm/gup_test.c is compiled as 32bit,
-> then run on arm64 kernel,
-> it reports "ioctl: Inappropriate ioctl for device".
-> 
-> Fix it by filling compat_ioctl in gup_test_fops
-> 
-> Signed-off-by: Haibo Li <haibo.li@mediatek.com>
-> ---
->   mm/gup_test.c | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/mm/gup_test.c b/mm/gup_test.c
-> index 8ae7307a1bb6..c0421b786dcd 100644
-> --- a/mm/gup_test.c
-> +++ b/mm/gup_test.c
-> @@ -381,6 +381,7 @@ static int gup_test_release(struct inode *inode, struct file *file)
->   static const struct file_operations gup_test_fops = {
->   	.open = nonseekable_open,
->   	.unlocked_ioctl = gup_test_ioctl,
-> +	.compat_ioctl = compat_ptr_ioctl,
->   	.release = gup_test_release,
->   };
->   
+I wasn't deeply involved in mt8173, so I'll let treapking@ comment. I
+think he's done some research here recently.
 
-Acked-by: David Hildenbrand <david@redhat.com>
 
--- 
-Thanks,
+> > Reviewed-by: Douglas Anderson <dianders@chromium.org>
+> >
+> > ...in theory one would wish for a "Fixes" tag, but I think in
+> > previous
+> > discussions it was decided that it was too complicated. Hardcoding
+> > the
+> > other compatible string has always been technically wrong, but I
+> > guess
+> > it worked at some point in time. The more correct way (as you're
+> > doing
+> > here) needs the DP AUX bus support and the generic eDP panels, both
+> > of
+> > which are significantly newer than the elm dts. So I guess leaving no
+> > "Fixes" tag is OK, or perhaps you could do the somewhat weak:
+>
+> Well I remembered when I was developing the support for Pine64
+> Pinebook, which is also an ARM64 laptop with an eDP panel (via a DPI-
+> eDP bridge, ANX6345). At first I didn't use any panel node in the DT,
+> and the kernel maintainers argued to the bridge that seems to be
+> connected to nothing (because DP is a discoverable port), and
+> fortunately 2 Pinebook SKUs (11.6" and 14") is finally reduced to one,
+> and it's then possible to hardcode a panel model in the Pinebook DT.
+> According to my memory, the need to specify the panel is to properly
+> handle eDP panel power up timing, because it's not a very standard
+> thing. (Well, in my memory, when I was testing that code, on a
+> (engineering sample) 14" Pinebook, the EDID timing overrided the
+> hardcoded 11.6" timing and it properly works, the 14" panel is 1366x768
+> but the 11.6" panel is 1920x1080.)
+>
+> (BTW when I checked the DT of Olimex TERES-I, which uses the same DPI-
+> eDP bridge, it is still in the status of a dangling bridge, and of
+> course it works ;-) )
 
-David / dhildenb
+Before the generic eDP panel support, several devices worked according
+to the "little white lie" theory. They would pick some arbitrary panel
+to put in the DT because they had to, but then that panel would just
+be used for the power up / power down timing and everything else would
+be overridden. This was obviously not a great situation to be in, and
+so we had many discussions on the mailing list about how to do better.
+The end result was the generic edp-panel support.
 
+With eDP panel support, you still need to add the timings for your
+specific panel, but it was realized that in _most_ cases we could
+power up the panel enough to read the "panel ID" and then we could use
+that to lookup the timings. In the few cases where we needed a little
+extra help (if HPD is broken or not connected), the DP folks agreed to
+allow a few properties to specify it. :-) Hopefully today all new code
+uses the general panel-edp.
+
+-Doug
 
