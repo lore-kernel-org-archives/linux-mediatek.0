@@ -4,79 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BB85C77B73
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 May 2023 13:08:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B936C7EE23
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 May 2023 13:09:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ySmRc53vKROoV0PWm3ZQ6WwdfwBbVdA+rwOuG37JzZw=; b=yDWeE6ca6OQGGe4OwwYvFN7xLG
-	t6RVYTxyDa8Cb9H3VmWnc/p85ZYJ8iXHeuQ87jp9cI9MT+oWIKS1feEW8IIsC2B95TCD4TA0JLFzP
-	4YLz8d0rQJ7ipRsTHEd6+cbQUE8hcQ1i0LRUmP6EPVBDMHm/rBVWlC1YfHuxW6uUbaM6AWOQtqHw9
-	11zRmaNXcTYzEQZ4Nebg9SLPBLPpJpr2+u3baQiOpYlD+mTSgJopk3I/nAd/LuVYHQM+yYkKDgQPh
-	EOgdk8wHoPNxuzdW1BsvTf/C1TYU9B342SvVzsPqlVCCLjOxftI/s3oP3qA5q1AUmMJ1Vb3eA/0w5
-	VZ8rZoUw==;
+	bh=zFJ2wzNIGZ0KOStcSuewNy9zLZfz/DVIl8h5862j09g=; b=jh+Gvvgv+lXXHkfDuNWFwnYD29
+	ZiGQd5cptVA5vrceDm91OFbZ18I7iCZLPd3t76ZijYPbeDDDK2XBSSvyYXTWnmbwkd7VQ6c2yFRgQ
+	WuFpaCfuLPQ2nQidqAWahLXaE3fGW/CCJGyKZXrAXLqF0vvg5Jmmo2a8L2dAhZlnAwDtIRvVoAjeh
+	9yDAY/0uy2G3m7e4/A99Mzw54nQkgdl13/Pg8aduXm2wopDGQF2dD8CNTwUdOWq9s863aMTnHgHZq
+	iB4XYsoQJyF71veeBptr/t8mlBoAAFyuLuna87MD8iE+UEyxqsdusQy6qQp9sKVZlABwPNIFCJOkD
+	B4Zwqwpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2XBB-002aBK-0Z;
-	Fri, 26 May 2023 13:08:25 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1q2XCJ-002aVH-28;
+	Fri, 26 May 2023 13:09:35 +0000
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2XB8-002aAJ-05;
-	Fri, 26 May 2023 13:08:23 +0000
-Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-510e419d701so1336433a12.1;
-        Fri, 26 May 2023 06:08:21 -0700 (PDT)
+	id 1q2XCF-002aT9-1O;
+	Fri, 26 May 2023 13:09:33 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-96f8d485ef3so112332466b.0;
+        Fri, 26 May 2023 06:09:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1685106500; x=1687698500;
+        d=gmail.com; s=20221208; t=1685106569; x=1687698569;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=ySmRc53vKROoV0PWm3ZQ6WwdfwBbVdA+rwOuG37JzZw=;
-        b=ZWX0QrcpW5rWQ8p4KBmcTFHIzFOzfgnezwVXPG5rXkBt9/iCaSoF+Tt8pkc3eMSCH2
-         3rVCNwT6b/ksKMFKIXXUlSLc+2YqfbsJ0p17Li8YJ1LZkRrlhUYMFKJT+sD2AiSvBhWY
-         rCC1YfMg0G8oQYiKXKqNvoMNoC4gxR6eyCHD++UqE7bErXC5TGuDnwj9CuPce1gSPR3X
-         4otRb1gYbB5EH+12gj0Sp2Stp5cTsIb6sdL9e0yxO3b3CS72FsJ0lD1dqrgc52yk7AtC
-         6XA354eBLzXZlXX02Z7U/wKis3vmVXlmY+r1CjI3TRlq1euNUOF7MKkabwaQfbTAGsAT
-         Z+xA==
+        bh=zFJ2wzNIGZ0KOStcSuewNy9zLZfz/DVIl8h5862j09g=;
+        b=SZ8Ij6ruFkxE5HmAzgORE4Zkm0chc0YtI3Dj9C86P75v1dVCrd3X+EP+Zhz1kOlJRT
+         V5wpit7vQGPj+Jpm6jO4zNROI/iJ3ukfhNByE8Oc1Qpj5SyevKXEmwCzLlGHR5FQ3R8P
+         a3wuY6rXAtU7RtdzSUpZGwmktFmiIbevWlP5JunqIMuoaGA2dDldcliaVYH6NMCdXHte
+         BnF80tXTSHKKwK6Of5k6kM7pThauCgTn9nkotu6PGjrHemlmR8MysFYpDTh8SrNQwBHL
+         CY2yGWrUzSz20HHqBa3w8dM2Cj7y7Nb8AvPgvRBDb1UAvQJ1NfOuNXHgXPGAgUB0wwnM
+         7Mvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685106500; x=1687698500;
+        d=1e100.net; s=20221208; t=1685106569; x=1687698569;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ySmRc53vKROoV0PWm3ZQ6WwdfwBbVdA+rwOuG37JzZw=;
-        b=c4Vr2gDicEijTn4rzQlApYq4YunLb8n54esU9o7CWczRJI9dOgchBCWKgG8lhZQwUk
-         Ruc95YInHtwu2E8muu9tMUFT54WIRzc+P3dX5nU9GImJ0btvePW9pJRSE+qekJ3erQPE
-         P2HiVlH1f6IYEOGDz/l3Phs7/uKudkyT2T/HWsJcbP8qxR3eCEfYsy0OMvLiog5bv2kn
-         E4zwzUwcANhKL8Qi93APWFxeYtiosxoGG4Be52SrKc2+Fr/dX4SN4HiFa4mO6IYdiiY2
-         3ojFEHNJ+Nq+kF2Kt6m3llPSPtPCHptD+3htuCI+By2OBKWH970DqucMHc5vAnyrGi/f
-         ePuQ==
-X-Gm-Message-State: AC+VfDzzO/J7MSlARxHkB9/6epdSfzvhFYSJsXW82aX372DPbyZRdf81
-	y02xJCas91HYJWuqMIcBdt0=
-X-Google-Smtp-Source: ACHHUZ5IP7XtAUQ7qtAUErDZxK4RiTHj9xBIsKmfmWAwOCCjD4jBlU4hvp4FtroBOvALb7tr+oUMJg==
-X-Received: by 2002:a17:907:3d92:b0:973:8c47:2a02 with SMTP id he18-20020a1709073d9200b009738c472a02mr2178906ejc.38.1685106500249;
-        Fri, 26 May 2023 06:08:20 -0700 (PDT)
+        bh=zFJ2wzNIGZ0KOStcSuewNy9zLZfz/DVIl8h5862j09g=;
+        b=GR+Q3PHawYkRmxWxdrx+QXP5w5oPo/y5xwrQDPcs1t893iAxOdQu8sbXc7OeM0l8l4
+         9Nfe5h78MZBJrvKew2VtfgJVI3AJQpFfmPX+lxUTrUBg0XrrHfFlfiZx6qI+DXZgFCaR
+         SYxGkW1Kdk8gn+GKKFANKyXtXJu8qiDpLyryifyGfgKi9+gbRRpO7r2WboFuYyHQVHsR
+         wHjYeJnuLbmDU/F6ojcTPFWbvQ9s8QwjvkibwrzUgKnQFZMd8WOKzOQbTV5R+rHQQdur
+         2zW6XDQOOsmreAUrXM6Q0o91yMMQjxuQRVYNn3luihYoRwkw5UzV+wuO2muMUyUlnl4R
+         f1SA==
+X-Gm-Message-State: AC+VfDxba1Wv0wJ9Sg48453TqxiJ/Pjy/j1q9tiM/7UsP8sRtzBUDlR7
+	9bjHTDQwSAOxMhPOQ5WLVG8=
+X-Google-Smtp-Source: ACHHUZ5Na1tqMh44XsGjWcNaXiLrMmEVPuZshBdTgVvbPjvRA8qYslkhuP9hKJli3isZlAlI28LZFg==
+X-Received: by 2002:a17:907:1621:b0:96f:b9c9:c8b7 with SMTP id hb33-20020a170907162100b0096fb9c9c8b7mr1999316ejc.46.1685106568533;
+        Fri, 26 May 2023 06:09:28 -0700 (PDT)
 Received: from skbuf ([188.27.184.189])
-        by smtp.gmail.com with ESMTPSA id n12-20020a1709065e0c00b009659ad1072fsm2151667eju.113.2023.05.26.06.08.18
+        by smtp.gmail.com with ESMTPSA id le8-20020a170907170800b0096f803afbe3sm2164022ejc.66.2023.05.26.06.09.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 May 2023 06:08:19 -0700 (PDT)
-Date: Fri, 26 May 2023 16:08:16 +0300
+        Fri, 26 May 2023 06:09:28 -0700 (PDT)
+Date: Fri, 26 May 2023 16:09:25 +0300
 From: Vladimir Oltean <olteanv@gmail.com>
 To: arinc9.unal@gmail.com
-Subject: Re: [PATCH net-next 14/30] net: dsa: mt7530: switch to if/else
- statements on mt7530_setup_port6()
-Message-ID: <20230526130816.wr63736dn5jmaem7@skbuf>
+Subject: Re: [PATCH net-next 15/30] net: dsa: mt7530: set TRGMII RD TAP if
+ trgmii is being used
+Message-ID: <20230526130925.g6w3tbxunoamfmha@skbuf>
 References: <20230522121532.86610-1-arinc.unal@arinc9.com>
- <20230522121532.86610-15-arinc.unal@arinc9.com>
+ <20230522121532.86610-16-arinc.unal@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230522121532.86610-15-arinc.unal@arinc9.com>
+In-Reply-To: <20230522121532.86610-16-arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230526_060822_075008_E3744247 
-X-CRM114-Status: GOOD (  11.78  )
+X-CRM114-CacheID: sfid-20230526_060931_466478_57442823 
+X-CRM114-Status: GOOD (  15.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,18 +92,26 @@ Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <ed
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 22, 2023 at 03:15:16PM +0300, arinc9.unal@gmail.com wrote:
+On Mon, May 22, 2023 at 03:15:17PM +0300, arinc9.unal@gmail.com wrote:
 > From: Arınç ÜNAL <arinc.unal@arinc9.com>
 > 
-> This code is from before this driver was converted to phylink API. Phylink
-> deals with the unsupported interface cases before mt7530_setup_port6() is
-> run. Therefore, the default case would never run. However, it must be
-> defined nonetheless to handle all the remaining enumeration values, the
-> phy-modes.
+> This code sets the Read Data (RD) TAP value to 16 for all TRGMII control
+> registers.
 > 
-> Switch to if/else statements which simplifies the code.
+> The for loop iterates over all the TRGMII control registers, and
+> mt7530_rmw() function is used to perform a read-modify-write operation on
+> each register's RD_TAP field to set its value to 16.
 > 
-> Change mt7530_setup_port6() to void now that there're no error cases left.
+> This operation is used to tune the timing of the read data signal in
+> TRGMII to match the TX signal of the link partner.
+> 
+> Run this if trgmii is being used. Since this code doesn't lower the
+> driving, there's no apparent benefit to run this if trgmii is not being
+> used.
+> 
+> Add a comment to explain the code.
+> 
+> Thanks to 趙皎宏 (Landen Chao) for pointing out what the code does.
 > 
 > Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 > Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
