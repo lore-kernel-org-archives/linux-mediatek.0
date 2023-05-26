@@ -4,83 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EC71C77B7C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 May 2023 07:36:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0363BC77B7A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 May 2023 08:30:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=bKWBdp4Kjo2s7gwqdnwE3qAnKBZlQrDQ7Bhod2F0iec=; b=exbuUev/4hepPqKTrHpMvimJb4
-	W8F31sGIYKfNY0nX/0nOshcyqDa3/LEShNNMDRg2GFpaliGaQ0b+2vpx5HYQBSR8PQc39qPzFiLaU
-	9XC/G6k7J4/+k6vc59NvaxlJXbDgMj0n7ARZwkbEN3tyA0rY3dacNVRnKK1yDubcylwT6nzvRpwxK
-	WC2NqXsTOwG7UCAegdaxhiH6v07Ne2sYZUzG8l2wnKkquw/NFXWFhNMfQO9TjQJAlYNk4TRIhHywI
-	wgaMiHzGjDaA/orWuHiPi38pcEhJp1dlR3AjAhDCD0gaAsvX7dPZN9gusdmE/ETTXDdrVRfe+b9Xq
-	G9wbhTzA==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=u3yO4p0LxmojGe77H32bf7t1Be4ND093QAacxBdv4+A=; b=jwxt7J+6n8xrkXD0BT5zyNu96v
+	qPmEpZ6NHXpZVsQ0Qro4xYIprxLW9bs3+ZsznNlqVSm0u5Z30WiFiqBODr6NS7KNdIMb0hiHCOKll
+	QLcLLWphhbQjhaKsuj8Yd+syplX0YVAfmDBzQESoH7ZgU2Yf517Utcu0b15fPvS36lyBBMwxw2WXj
+	I62ZDfiuZkdoAmLz4OYYlYOMDwrmwTv059MS6mvYQsugWd9t/Ip2X4D+imYCqgOnDopQ6o6JwCpth
+	UgOUgomgYie50Qeod0bMaaQ7n0/KJcG8zTYxxtV5Bx+3K1GLpJdi6ybjGF9T8KjaYAi13yajck1k2
+	pjSpW6mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2RzN-001SDm-0G;
-	Fri, 26 May 2023 07:35:53 +0000
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+	id 1q2SqI-001c5x-2E;
+	Fri, 26 May 2023 08:30:34 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2RzK-001SCP-1T
-	for linux-mediatek@lists.infradead.org;
-	Fri, 26 May 2023 07:35:51 +0000
-Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-1ae40dcdc18so3088885ad.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 26 May 2023 00:35:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1685086548; x=1687678548;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=bKWBdp4Kjo2s7gwqdnwE3qAnKBZlQrDQ7Bhod2F0iec=;
-        b=gq7rzjt3t/xc/7eKsys5HW5xi/ugBh+XpYqENlPCR35jv7yZFm4s7ACeAfsR8ZgZ75
-         cREmmzeZlILrUfAxYs5br/wSOosq5qXbbv3FnLu+3Gl8HlgaO7BYPhDaYuiXQvxosJuq
-         w2UHiHQlSkVqtn9VBIu8kKzw3hhA0oituZDRY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685086548; x=1687678548;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=bKWBdp4Kjo2s7gwqdnwE3qAnKBZlQrDQ7Bhod2F0iec=;
-        b=KAWDfS+ufRVyggjXeFXD0VhfiZm/GezqxDGcAjCCAcGAbKm1uXgYAvM7iWXaVPTooa
-         QBYOCxXAnGkiO1o8k73uyuTZj7BeSJyQ1jJTncJxj2ZDugDBbDctYf4XeHYwxUMDOsoP
-         C9QmLdnf3hiGk519zHbyL8nSMgvdGWUANgOeTAZWUiCgDCOMWkwB9Rifyu6vbPVNnstz
-         avMUFBWYATLHkUo7xd/4Lbn+kzIWPfWotrXslUBL2YPru7d8YDH8Hkpe1hCi8/D5KI/A
-         tMLktJ9kw6W/7ZXOIfjEZofcJdRAKYzCYw/z5LuqP0QBpS4JPeF3Tv/Ndbs0yyxIHwO1
-         L77w==
-X-Gm-Message-State: AC+VfDzZ6knTzezazJmqaXKBbQ8TH7DQ5PR38nBStsVWRu0YjRogV0z6
-	d7ftymtQlwvNT+4Wt5XBjbqfew==
-X-Google-Smtp-Source: ACHHUZ6XkkD79ZkO3r3SorwEcsePA+9D5knmrdE/cFs1f7idnHafQ1XWj/0tGGrGQ1suvVau5lting==
-X-Received: by 2002:a17:903:228a:b0:1a2:3108:5cc9 with SMTP id b10-20020a170903228a00b001a231085cc9mr1674737plh.40.1685086548637;
-        Fri, 26 May 2023 00:35:48 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:17b9:e0b5:a956:4510])
-        by smtp.gmail.com with ESMTPSA id l9-20020a170902eb0900b001ac78ac2cafsm2573408plb.239.2023.05.26.00.35.46
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 May 2023 00:35:48 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Lai Jiangshan <jiangshanlai@gmail.com>,
-	"Paul E. McKenney" <paulmck@kernel.org>,
-	Josh Triplett <josh@joshtriplett.org>,
-	Steven Rostedt <rostedt@goodmis.org>,
-	Mathieu Desnoyers <mathieu.desnoyers@efficios.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	rcu@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>,
-	"Rafael J. Wysocki" <rafael.j.wysocki@intel.com>
-Subject: [PATCH] notifier: Initialize new struct srcu_usage field
-Date: Fri, 26 May 2023 15:35:37 +0800
-Message-ID: <20230526073539.339203-1-wenst@chromium.org>
-X-Mailer: git-send-email 2.41.0.rc0.172.g3f132b7071-goog
+	id 1q2SqF-001c2a-20;
+	Fri, 26 May 2023 08:30:32 +0000
+Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8F4076606E83;
+	Fri, 26 May 2023 09:30:17 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1685089818;
+	bh=gg3PXZMm/8qSIeSloKT4Q2tmhI1GwPnD9NTPJMDIL0Q=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Ul4aYUWqkAaDION+dPRYmOTTBp5YFpvXXgyq8i27Rc6zJGXSjE8nTF3T6QlgArrv5
+	 XAmtQM35alw/+N0CB2yodcSSG0SFqvv2nfFLB1AqaHUvdUJxSzHiM2cgnnxOLgq/Ol
+	 hNa1bz9lMwy7CkGX4pjdaQhbmcUAz3D2vpV9usC2GKWRgR11ZV/cUtttBohJdbpTRM
+	 1uAHsEa9ivaVeBvNnDYLpN9xdeFrDX6+ZinR8aAsXSOSxbmPp3KCWFidy1qdgkj1RY
+	 sCG9BDkziPRXRGbl1RJb+V+a4kyy6xo0ftJoU9UcxiclAXHpGu/gYLozjGKoHBLgAp
+	 iEpcqklNY/k1g==
+Message-ID: <f3f7df94-74f1-dd41-00d7-0ab4fa2e4d61@collabora.com>
+Date: Fri, 26 May 2023 10:30:14 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.1
+Subject: Re: [PATCH v2 1/2] dt-bindings: clock: mediatek: replace unusable
+ clock
+To: Alexandre Mergnat <amergnat@baylibre.com>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>
+Cc: Markus Schneider-Pargmann <msp@baylibre.com>, linux-clk@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230517-fix-clk-index-v2-0-1b686cefcb7e@baylibre.com>
+ <20230517-fix-clk-index-v2-1-1b686cefcb7e@baylibre.com>
+Content-Language: en-US
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230517-fix-clk-index-v2-1-1b686cefcb7e@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230526_003550_492087_CA511329 
-X-CRM114-Status: GOOD (  10.15  )
+X-CRM114-CacheID: sfid-20230526_013031_814124_E32DA92F 
+X-CRM114-Status: GOOD (  18.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,65 +83,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In commit 95433f726301 ("srcu: Begin offloading srcu_struct fields to
-srcu_update"), a new struct srcu_usage field was added, but was not
-properly initialized. This led to a "spinlock bad magic" BUG when
-the SRCU notifier was ever used. This was observed in the MediaTek
-CCI devfreq driver on next-20230525. Trimmed stack trace as follows:
+Il 25/05/23 16:50, Alexandre Mergnat ha scritto:
+> The “mcu_pm_bclk_ck_cg” clock is used by co-processors and should not be
+> added to the kernel driver, otherwise the CPU just halt and the board is
+> rebooted by the wathdog.
+> 
+> Instead, add the "aes_top0_bclk_ck_cg" missing clock to prevent
+> re-shuffling index and then preserve the ABI.
 
-    BUG: spinlock bad magic on CPU#4, swapper/0/1
-     lock: 0xffffff80ff529ac0, .magic: 00000000, .owner: <none>/-1, .owner_cpu: 0
-    Call trace:
-     spin_bug+0xa4/0xe8
-     do_raw_spin_lock+0xec/0x120
-     _raw_spin_lock_irqsave+0x78/0xb8
-     synchronize_srcu+0x3c/0x168
-     srcu_notifier_chain_unregister+0x5c/0xa0
-     cpufreq_unregister_notifier+0x94/0xe0
-     devfreq_passive_event_handler+0x7c/0x3e0
-     devfreq_remove_device+0x48/0xe8
+It's still a breakage. Besides, have you tried to add it as CLK_IS_CRITICAL? :-)
 
-Add __SRCU_USAGE_INIT() to SRCU_NOTIFIER_INIT() so that srcu_usage gets
-initialized properly.
+Cheers,
+Angelo
 
-Fixes: 95433f726301 ("srcu: Begin offloading srcu_struct fields to srcu_update")
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
-
-Also, the original patch subject said "srcu_update", however the data
-structure ended up as "srcu_usage". Maybe that could be updated?
-
- include/linux/notifier.h | 10 ++++++++++
- 1 file changed, 10 insertions(+)
-
-diff --git a/include/linux/notifier.h b/include/linux/notifier.h
-index 2aba75145144..86544707236a 100644
---- a/include/linux/notifier.h
-+++ b/include/linux/notifier.h
-@@ -106,12 +106,22 @@ extern void srcu_init_notifier_head(struct srcu_notifier_head *nh);
- #define RAW_NOTIFIER_INIT(name)	{				\
- 		.head = NULL }
- 
-+#ifdef CONFIG_TREE_SRCU
- #define SRCU_NOTIFIER_INIT(name, pcpu)				\
- 	{							\
- 		.mutex = __MUTEX_INITIALIZER(name.mutex),	\
- 		.head = NULL,					\
-+		.srcuu = __SRCU_USAGE_INIT(name.srcuu),		\
- 		.srcu = __SRCU_STRUCT_INIT(name.srcu, name.srcuu, pcpu), \
- 	}
-+#else
-+#define SRCU_NOTIFIER_INIT(name, pcpu)				\
-+	{							\
-+		.mutex = __MUTEX_INITIALIZER(name.mutex),	\
-+		.head = NULL,					\
-+		.srcu = __SRCU_STRUCT_INIT(name.srcu, name.srcuu, pcpu), \
-+	}
-+#endif
- 
- #define ATOMIC_NOTIFIER_HEAD(name)				\
- 	struct atomic_notifier_head name =			\
--- 
-2.41.0.rc0.172.g3f132b7071-goog
+> 
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> ---
+>   include/dt-bindings/clock/mediatek,mt8365-clk.h | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/include/dt-bindings/clock/mediatek,mt8365-clk.h b/include/dt-bindings/clock/mediatek,mt8365-clk.h
+> index f9aff1775810..0a841e7cc1c3 100644
+> --- a/include/dt-bindings/clock/mediatek,mt8365-clk.h
+> +++ b/include/dt-bindings/clock/mediatek,mt8365-clk.h
+> @@ -199,7 +199,7 @@
+>   #define CLK_IFR_PWRAP_TMR		46
+>   #define CLK_IFR_PWRAP_SPI		47
+>   #define CLK_IFR_PWRAP_SYS		48
+> -#define CLK_IFR_MCU_PM_BK		49
+> +#define CLK_IFR_AES_TOP0_BK		49
+>   #define CLK_IFR_IRRX_26M		50
+>   #define CLK_IFR_IRRX_32K		51
+>   #define CLK_IFR_I2C0_AXI		52
+> 
 
 
