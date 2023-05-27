@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17248C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 May 2023 00:57:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49DFFC77B7A
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 May 2023 01:02:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rUdtr6r3PmoAaW6qIy5abu2LwEp/uvxptQKJhnykm/I=; b=MsOBocHR69dfhip7mfjepd8g03
-	T7T4z8Ust6M4gog33Eyh8Hc+6OvYYHatgAjyu8Dcy/LpfVBA2SrlArnEIbMTcgXnPkyjbTcz3y1qs
-	aEHVbt7uixeAovdW+/0P3VDSD75s09nqbfI1RB0/+yGgQB2mAY2OeK/ZleZd/btDJRKxC54713faY
-	wwPdsTyHKX6oKiC/XQHkJTp1H6TVNRgSw2oQYrvb+EMojezS5sZF6BiiWsDZj8QacrDCVVVkCTlJP
-	i/cMq8n3twh1WzNMLJ3K+EhzbHRfZcs7+k6CiL6aabIV29BVyoNArBo9Qm+XGH2TBqLP296kYeX/J
-	QTajh8+Q==;
+	bh=ZwOFaZCsGo5Z6NIy7+xs42xc8Amx32M/il4XYJjhbD8=; b=zNBQ6cIGgsFyyjXP/ObcEROO69
+	VUfYMXivGC9ERzIv2XH8qW4IKROMoZZXaAsFYKtm3+Y2pAypwXKbNvYuJsjydNFs7ZerBnISY7LtJ
+	DP+6bO5Dgq9+uxUKyf+tX+zpCz88sU863aHsgaKCQwqO89KiKDAUBKF4inkJBIWWsjWzEpgEi/xNi
+	iCp35Qpwa522O4Ip8oTdb+A5aDVzm9CRhOLjzaReicYGHi6C+NB4Rbs+1TNLnw1GLXMtkhfBgmX21
+	mb1our5IQrHhSTHXCaA2dUU0ItMu1bnD51ijnPZUhnFy3KXqt2denj46aH6TFqUAq5Wc7WPCWBp/8
+	UC9Usnng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2iFa-004Uoa-2L;
-	Sat, 27 May 2023 00:57:42 +0000
+	id 1q2iJz-004VOs-1O;
+	Sat, 27 May 2023 01:02:15 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2iFX-004Umz-1w;
-	Sat, 27 May 2023 00:57:40 +0000
+	id 1q2iJw-004VNm-16;
+	Sat, 27 May 2023 01:02:13 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 110F761B07;
-	Sat, 27 May 2023 00:57:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2E64BC433D2;
-	Sat, 27 May 2023 00:57:37 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id BD690654B2;
+	Sat, 27 May 2023 01:02:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F18C2C433D2;
+	Sat, 27 May 2023 01:02:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1685149058;
-	bh=3vBQ3hNzB1htnPz205IbCSBNbcAAWMD/jc/FlGUItp8=;
+	s=k20201202; t=1685149331;
+	bh=ZwOFaZCsGo5Z6NIy7+xs42xc8Amx32M/il4XYJjhbD8=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=aLfMMwQjdwdNcKtVFIzBBfhEKhzY8608s+2D5qjQ0I+cctckwK72Fr7Ero4sCyOay
-	 M/qiFF+9oqlrfB5lFVHgvB/IQFsOfaf9ms4w4pJrRSwroXILirP80J7tw+IvtlmrB6
-	 C+axsiXhIPb8oG6HjqUu7w30SCHCFMI12quWVnGd07HNn5WSmjsVZ80qw6vSUhzlYV
-	 EFiVNxsX5sNgu7rqArJbv4j1C2nsqWjTEvKw/tWgLNDZQKKWCIFaxsDirhg7FmbgbK
-	 bcJ2BPiFi68edlfm+RtL/oOWB1hkdQHSRtYO/JKM041QmrEIOMfmOFV+oB8n4stFXo
-	 EfbKoqmE3Uf6w==
-Date: Fri, 26 May 2023 17:57:36 -0700
+	b=fc1jYAjBz04h3V8l4htX8rqAQJ7PLOdb2JvNQpK0YOjXOKXp1btTR69FHHfS2RMsH
+	 TWLelyvSzOoucga78KhbNqg+T9KMUfMvD14ABNMLfviKBWEQn0op8ewHeXzb1OH8cf
+	 QXEiYWrKiValrxacMzVe+xfy4a0SMfBj6lSrnsGkHPO6BMeQigISxOFjOUjm1xsVU1
+	 yuK6nr6zEi1I71vC3v/GFVMLMmswCpXZ7H4PIdjGnwItwx8jz/IrFaaUbDMdNWwmQ+
+	 wYisGm+TES66BOFTwuuFf95hMqee1x+CabpMF3pk8eH//byAghGAMNWJQaSOwdUmSK
+	 rrmfwWQTNAu8w==
+Date: Fri, 26 May 2023 18:02:08 -0700
 From: Jakub Kicinski <kuba@kernel.org>
 To: David Howells <dhowells@redhat.com>
 Cc: netdev@vger.kernel.org, "David S. Miller" <davem@davemloft.net>, Eric
@@ -60,20 +60,19 @@ Cc: netdev@vger.kernel.org, "David S. Miller" <davem@davemloft.net>, Eric
  Jens Axboe <axboe@fb.com>, Christoph Hellwig <hch@lst.de>, Sagi Grimberg
  <sagi@grimberg.me>, Chaitanya Kulkarni <kch@nvidia.com>, Andrew Morton
  <akpm@linux-foundation.org>, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-nvme@lists.infradead.org,
- Alexander Duyck <alexander.duyck@gmail.com>
-Subject: Re: [PATCH net-next 05/12] mm: Make the page_frag_cache allocator
- handle __GFP_ZERO itself
-Message-ID: <20230526175736.7e75dcf9@kernel.org>
-In-Reply-To: <20230524153311.3625329-6-dhowells@redhat.com>
+ linux-mediatek@lists.infradead.org, linux-nvme@lists.infradead.org
+Subject: Re: [PATCH net-next 06/12] mm: Make the page_frag_cache allocator
+ use per-cpu
+Message-ID: <20230526180208.3e617818@kernel.org>
+In-Reply-To: <20230524153311.3625329-7-dhowells@redhat.com>
 References: <20230524153311.3625329-1-dhowells@redhat.com>
-	<20230524153311.3625329-6-dhowells@redhat.com>
+	<20230524153311.3625329-7-dhowells@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230526_175739_684553_5A2FA524 
-X-CRM114-Status: GOOD (  14.47  )
+X-CRM114-CacheID: sfid-20230526_180212_441271_3ECB48C4 
+X-CRM114-Status: GOOD (  10.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,18 +87,10 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 24 May 2023 16:33:04 +0100 David Howells wrote:
-> Make the page_frag_cache allocator handle __GFP_ZERO itself rather than
-> passing it off to the page allocator.  There may be a mix of callers, some
-> specifying __GFP_ZERO and some not - and even if all specify __GFP_ZERO, we
-> might refurbish the page, in which case the returned memory doesn't get
-> cleared.
+On Wed, 24 May 2023 16:33:05 +0100 David Howells wrote:
+> though if a softirq wants to access it, then softirq disablement will
+> need to be added.
 
-I think it's pretty clear that page frag allocator was never supposed
-to support GFP_ZERO, as we don't need it in networking.. So maybe
-you're better off adding the memset() in nvme?
-
-CCing Alex, who I think would say something along those lines :)
-IDK how much we still care given that most networking drivers are
-migrating to page_poll these days.
+Pretty sure GVE uses their allocator from softirq.
+So this doesn't work, right?
 
