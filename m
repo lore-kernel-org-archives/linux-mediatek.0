@@ -4,48 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 678C8C7EE23
-	for <linux-mediatek@archiver.kernel.org>; Sun, 28 May 2023 11:41:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12B26C7EE29
+	for <linux-mediatek@archiver.kernel.org>; Sun, 28 May 2023 18:04:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oIXW/LydBodQh0NJYxajCZQGo5iKtGBLt/hj3aeT8EM=; b=mw8rgSptFZNn00qxfxf7clbX3d
-	VMtmQdA2utFCBfewdZWOY7800K2w5BxzEFp/Z05jHvoCEOd7R4BC8FQNtRt2x7/qw+b8Y5jhkoS0Q
-	709qHvTqf0y/B1+0x/Rg9p0CuooBgtINPKMBFh68lLb4oNw07Sy1LzxfvF9IWaXi65h5PhKKcLuQt
-	NzGC3YgEF+G98ZrlBmzk9RmyEv5AkgQ9/RXaZnfv/aZvBxMHOFXf1waD3HLUa7gS4NwVGPT/7fJdA
-	T5gN9iVTsuNMl7HwpYpdRLHGR9ohWnoq2C5Jq292kvuP6+5wSiryfCCkNUa64+hoWUripKInhXYCW
-	VM3L4nrg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:From:MIME-Version:Date:Message-ID:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=CN7SpqPpnTLaTS8yv6ryFOhSM4GlgAMCsKR/+z1mcI4=; b=0YoPbpKJAGU061yfh5T3229ACd
+	5HNAaTQ12l8E0mgsHddvwkjbQY9K9aMpymWqdi2gmWPnn4u/dm+wUy2ITgo9je7AK8n/BJ1+B+0Re
+	CG/vOonm7miCnayy49jxAA38WfykrPEYSRGjT8wFETEvwSx7oG6JVE099c71WXFWhqSf1QwQEthq1
+	RV2Wk5PdIQaBo73lT4PU0yylm3lZXTOpiUzBACN4oI804OHtmv2fSL/H1ryZIG3sVA76LXwzhjnWV
+	rMGooUFGnkzD31hrTJTgGQlStnxaO+HDryaQMAs1fkqL4IfMOrJIUoLgzRHTitTKzVNoQPaB6Bv0x
+	mnWLAdxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3Elz-007YWF-34;
-	Sun, 28 May 2023 11:41:19 +0000
-Received: from pidgin.makrotopia.org ([185.142.180.65])
+	id 1q3Kkq-008CIV-0N;
+	Sun, 28 May 2023 18:04:32 +0000
+Received: from mx0.riseup.net ([198.252.153.6])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3Elw-007YVP-34;
-	Sun, 28 May 2023 11:41:18 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1q3Els-0006sD-0g;
-	Sun, 28 May 2023 11:41:12 +0000
-Date: Sun, 28 May 2023 12:41:02 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Frank Wunderlich <linux@fw-web.de>
-Subject: Re: [PATCH] arm64: dts: mt7986: use size of reserved partition for
- bl2
-Message-ID: <ZHM9zq9t2uRuvrK7@makrotopia.org>
-References: <20230528113343.7649-1-linux@fw-web.de>
+	id 1q3Kkn-008CHx-0n
+	for linux-mediatek@lists.infradead.org;
+	Sun, 28 May 2023 18:04:30 +0000
+Received: from fews02-sea.riseup.net (fews02-sea-pn.riseup.net [10.0.1.112])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256
+	 client-signature RSA-PSS (2048 bits) client-digest SHA256)
+	(Client CN "mail.riseup.net", Issuer "R3" (not verified))
+	by mx0.riseup.net (Postfix) with ESMTPS id 4QTmky2dsMz9s88;
+	Sun, 28 May 2023 18:04:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=riseup.net; s=squak;
+	t=1685297066; bh=YanqDXt4gYh4Yg3JqmV9JtAyudOLfmWpefbYo9liq3c=;
+	h=Date:From:Subject:To:Cc:From;
+	b=bb23lso99koRLCKNFf16IDGcxbFpr3mit3zTeQsXBTre+pNWPDOViI03ChiHtQwyy
+	 7J0F4/hkI7Xe/37c7sgZZFoHYm5n1yP/zT6itopoXhWGAvnCx+lUnXVKxZLZxGAV4/
+	 G1r0tb+hJsdMGLxb82mJiunyMkiP7iHsouABMy1s=
+X-Riseup-User-ID: 6A7FC8C9BCBCE7A3C029150DB0000B24648A75844749123286731A8FFEC99756
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+	 by fews02-sea.riseup.net (Postfix) with ESMTPSA id 4QTmkv52D1zFs02;
+	Sun, 28 May 2023 18:04:23 +0000 (UTC)
+Message-ID: <2c9d0354-1fbe-b468-8afd-30689e31e60b@riseup.net>
+Date: Sun, 28 May 2023 21:04:21 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230528113343.7649-1-linux@fw-web.de>
+From: Rany Hany <rany_hany@riseup.net>
+Subject: [PATCH 0/1] MediaTek MT7915 AP Start/Stop Hang Fix
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Deren Wu <deren.wu@mediatek.com>
+Cc: linux-mediatek@lists.infradead.org, linux-wireless@vger.kernel.org
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230528_044116_988068_2764A4DB 
-X-CRM114-Status: GOOD (  21.23  )
+X-CRM114-CacheID: sfid-20230528_110429_344887_E955A7C0 
+X-CRM114-Status: UNSURE (   5.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -57,70 +71,28 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, stable@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, May 28, 2023 at 01:33:42PM +0200, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> To store uncompressed bl2 more space is required than partition is
-> actually defined.
-> 
-> There is currently no known usage of this reserved partition.
-> Openwrt uses same partition layout.
-> 
-> We added same change to u-boot with commit d7bb1099 [1].
-> 
-> [1] https://source.denx.de/u-boot/u-boot/-/commit/d7bb109900c1ca754a0198b9afb50e3161ffc21e
-> 
-> Cc: stable@vger.kernel.org
-> Fixes: 8e01fb15b815 ("arm64: dts: mt7986: add Bananapi R3")
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+Hi,
 
-Reviewed-by: Daniel Golle <daniel@makrotopia.org>
+The below patch for mt7915 fix a scenario encountered by an OpenWRT
+user related to "/etc/init.d/networking restart" occasionally
+causing the driver to hang.
 
-> ---
-> If the bl2 does not fit into the bl2-partition (cut off), board does
-> not boot, thats why i want to increase it now. My current bl2 is 197K
-> for nor and i ran into this problem.
-> 
-> Openwrt uses also the first reserved partition to give bl2 more
-> space:
-> 
-> https://git.openwrt.org/?p=openwrt/openwrt.git;a=blob;f=target/linux/mediatek/dts/mt7986a-bananapi-bpi-r3-nor.dts;h=f597b869abc80d1a73f44ebb85ad4da17376bb52;hb=HEAD#l22
-> 
-> so imho it should be same in mainline to not require complex bl2
-> compression.
-> 
-> have now sent the board-specific dts to uboot too:
-> https://source.denx.de/u-boot/u-boot/-/commit/d7bb109900c1ca754a0198b9afb50e3161ffc21e
-> ---
->  .../boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso     | 7 +------
->  1 file changed, 1 insertion(+), 6 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso
-> index 84aa229e80f3..e48881be4ed6 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso
-> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso
-> @@ -27,15 +27,10 @@ partitions {
->  
->  					partition@0 {
->  						label = "bl2";
-> -						reg = <0x0 0x20000>;
-> +						reg = <0x0 0x40000>;
->  						read-only;
->  					};
->  
-> -					partition@20000 {
-> -						label = "reserved";
-> -						reg = <0x20000 0x20000>;
-> -					};
-> -
->  					partition@40000 {
->  						label = "u-boot-env";
->  						reg = <0x40000 0x40000>;
-> -- 
-> 2.34.1
-> 
+This patch incorporates the fix implemented in mt7921 for mt7915.
+
+Rany Hany (1):
+  wifi: mt76: mt7915: fix command timeout in AP stop period
+
+ .../net/wireless/mediatek/mt76/mt7915/main.c  | 38 ++++++++++++++++---
+ 1 file changed, 33 insertions(+), 5 deletions(-)
+
+-- 
+2.34.1
+
+
+
+
+
 
