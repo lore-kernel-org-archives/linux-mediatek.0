@@ -4,89 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72DE8C77B7E
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 May 2023 15:55:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22C61C77B7C
+	for <linux-mediatek@archiver.kernel.org>; Sun, 28 May 2023 11:34:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qZ/1f+H9JrSTH8ywSfAAbH2Cj7OIgM+7OnWkNZ9G6/M=; b=rqE2N2XGJqPsZ1DP92b7CGuAYB
-	AcFbbvQ9NqgpX/uVPLvjLEP3DO4DjzSHHpXUb885DNWVArJu5vKAwjpYszcdoTF5k+NLHoAXn1zXo
-	0Lzmy6Ua5JWoNSAflnuX9DDx169qpK8SIRgpNdAh04KPUpPHpMEsPuIgFFqIHwvzJbaKIMWvhWPTw
-	LeNExTPE3bQTA8leNLzdNKqJQ7fNqirLe+boFpcf8PjW2I1lUceIj06iCcis/Slri+PWNuGXtnwXT
-	rMqLZUy8i/Rdi9KU3glBCvvCgeZllFQ4Vc9RvGRhsXLtt1jQOWQge0KiOwVwTW6Som5ZH6Ao0iqSJ
-	qopJYjlA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=wKL2OHRpM57lwNDHj3JRgnkVg9YanEJjJkWatc4415E=; b=4cbYulRQYVr+tR
+	33U8nIU35+2A0pmGB4Rsd+xzxAw2E1tDDUHDzkFRjV3OM6HwENKNQxR/8rtw5yEP7yHhqRNcXnkq8
+	EL3ND+coT8MWIwtisGIvJiymnOJwmyHSFBe7yop08wFb3UgXcAbMC78qOtca7siLKHFKpuTsqm8rD
+	V9p+4G0f9qkZOeGk1+5w4waRKwC6UdnBSY0lh2+SZKKu1G0uSqafjBYXfXAinWzW+MiJsmi7n2Vop
+	3HX+0T1gfMFBMjA7TQPm3B36JXiXfak3mR4G3rrbDQVMBZ1tszWne/K0iQJimOeHzpDFakTocQXi4
+	ZRzkrzpkImZFpoirAl0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2wGR-005zX1-1z;
-	Sat, 27 May 2023 15:55:31 +0000
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+	id 1q3Eex-007Xo1-2x;
+	Sun, 28 May 2023 11:34:03 +0000
+Received: from mxout4.routing.net ([2a03:2900:1:a::9])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q2wGO-005zVK-0V;
-	Sat, 27 May 2023 15:55:29 +0000
-Received: by mail-pf1-x434.google.com with SMTP id d2e1a72fcca58-64f47448aeaso1448616b3a.0;
-        Sat, 27 May 2023 08:55:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1685202927; x=1687794927;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=qZ/1f+H9JrSTH8ywSfAAbH2Cj7OIgM+7OnWkNZ9G6/M=;
-        b=p9rMA6qUBSHw1NGegcSUbJlHcKt4DZ3RpCKIsfprL3eaDv1JFy4GEeLFOHplShouqw
-         lei23TwMi2DMyR9zXMoI+gpenhRgHyHhWjQDn2B7s31mLIkocnYJCmQWSnIpxY7iaq1x
-         LyRkiJwXpkALdjSKgHQ4Lobg5+syom0agOKn06E2rgo8Zim8nDCNsD1Xu0nPq1Yi+kVX
-         ngzLNDvj8fkpHrINBrXubUlYKI4kmu3Qm3o30FMA7ACY2VGHEN0PfjvRa/ns1skaGtIk
-         /cEOCNzG3VGnum2VeOEAqRAmN316PARZHCX9ARcyq5+zq/81q2yuUf3TO5OU4fK1Z1Wr
-         i/oQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685202927; x=1687794927;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=qZ/1f+H9JrSTH8ywSfAAbH2Cj7OIgM+7OnWkNZ9G6/M=;
-        b=lWbTFd0re5dWX58AYQYB6Li2WCFn+vjSM1Y/aZ4ldOGFNYvKUNlSjRrGgbIe2HitRl
-         4lcCYQvIRif8CZFXEJLnRqhsuwyxjpYLuLTEjlCgVEcA+KI/c18CAcxtSygqWl9pPCJs
-         voohCxgS8G/CyyOg/UTILqoOVSjaoC85DsXVwlpJkf/1OOLQh3CDhMqO/vlcRJKwDKYb
-         eCkDjQhcivDlvyGa7hpKgd4lbcYhjD4Z8vLDyjS+NzO8XbxTbrRWkvwVekNfWujEVVdn
-         nSDSl1fjEwWauR36t07QyOrBbRzn03KlgusFQ0b1wfTD3mrPdnrJbiVCh8mWDzcEDLzq
-         eMwQ==
-X-Gm-Message-State: AC+VfDyWCqdoHHqgKCr+B/Vtl/1OL0lJUdIle67Qjg4uTlfsPS2XwMi9
-	FIb/JmG+VQQ2xaSySf0jaUVKM9QmEaA+Zv6cgHU=
-X-Google-Smtp-Source: ACHHUZ64JnVWGNRmG/FMmCXkRK9umouxfNu5WSYpfqhZWb1yayLJ0QzFvBLSS7/j3llpZaEueVjiGE/MaMAjTCqEuek=
-X-Received: by 2002:a05:6a20:4428:b0:ff:a820:e060 with SMTP id
- ce40-20020a056a20442800b000ffa820e060mr4237395pzb.20.1685202926525; Sat, 27
- May 2023 08:55:26 -0700 (PDT)
+	id 1q3Ees-007XlL-1g;
+	Sun, 28 May 2023 11:34:00 +0000
+Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
+	by mxout4.routing.net (Postfix) with ESMTP id AAAFC10047A;
+	Sun, 28 May 2023 11:33:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1685273628;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=wKL2OHRpM57lwNDHj3JRgnkVg9YanEJjJkWatc4415E=;
+	b=gGdaQZM0Gk6IFscFNfBqFaJ5YPjd9dy6lokKYou2PrEarVjzFH6XiIStRtC/ghSXzif641
+	kytNmZaV1lrLsORRg4C8z5MJqK+F9m2iwn0hsyo2eP5yCXED+kZiIl9X7o+YY5c4LXpk1w
+	keUjo0HC9S0qQGWy2/Rdoq7jUQSvHGU=
+Received: from frank-G5.. (fttx-pool-217.61.156.30.bambit.de [217.61.156.30])
+	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id C78F91003E5;
+	Sun, 28 May 2023 11:33:47 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: linux-mediatek@lists.infradead.org
+Subject: [PATCH] arm64: dts: mt7986: use size of reserved partition for bl2
+Date: Sun, 28 May 2023 13:33:42 +0200
+Message-Id: <20230528113343.7649-1-linux@fw-web.de>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-References: <20230524153311.3625329-1-dhowells@redhat.com> <20230524153311.3625329-6-dhowells@redhat.com>
- <20230526175736.7e75dcf9@kernel.org>
-In-Reply-To: <20230526175736.7e75dcf9@kernel.org>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Sat, 27 May 2023 08:54:50 -0700
-Message-ID: <CAKgT0Uf2rPRZqQxGDZGkmdUA2j2=2cw0X1k8i0RpKgNxX0tcCw@mail.gmail.com>
-Subject: Re: [PATCH net-next 05/12] mm: Make the page_frag_cache allocator
- handle __GFP_ZERO itself
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: David Howells <dhowells@redhat.com>, netdev@vger.kernel.org, 
-	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
-	Paolo Abeni <pabeni@redhat.com>, Willem de Bruijn <willemdebruijn.kernel@gmail.com>, 
-	David Ahern <dsahern@kernel.org>, Matthew Wilcox <willy@infradead.org>, Jens Axboe <axboe@kernel.dk>, 
-	linux-mm@kvack.org, linux-kernel@vger.kernel.org, 
-	Jeroen de Borst <jeroendb@google.com>, Catherine Sullivan <csully@google.com>, 
-	Shailend Chand <shailend@google.com>, Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>, 
-	Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Keith Busch <kbusch@kernel.org>, 
-	Jens Axboe <axboe@fb.com>, Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>, 
-	Chaitanya Kulkarni <kch@nvidia.com>, Andrew Morton <akpm@linux-foundation.org>, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-nvme@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-Mail-ID: 698df16c-71eb-4971-9a45-3611eae1be82
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230527_085528_193961_92D4C555 
-X-CRM114-Status: GOOD (  19.33  )
+X-CRM114-CacheID: sfid-20230528_043358_738387_7F01C792 
+X-CRM114-Status: GOOD (  10.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,37 +64,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, stable@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 26, 2023 at 5:57=E2=80=AFPM Jakub Kicinski <kuba@kernel.org> wr=
-ote:
->
-> On Wed, 24 May 2023 16:33:04 +0100 David Howells wrote:
-> > Make the page_frag_cache allocator handle __GFP_ZERO itself rather than
-> > passing it off to the page allocator.  There may be a mix of callers, s=
-ome
-> > specifying __GFP_ZERO and some not - and even if all specify __GFP_ZERO=
-, we
-> > might refurbish the page, in which case the returned memory doesn't get
-> > cleared.
->
-> I think it's pretty clear that page frag allocator was never supposed
-> to support GFP_ZERO, as we don't need it in networking.. So maybe
-> you're better off adding the memset() in nvme?
->
-> CCing Alex, who I think would say something along those lines :)
-> IDK how much we still care given that most networking drivers are
-> migrating to page_poll these days.
+From: Frank Wunderlich <frank-w@public-files.de>
 
-Yeah, the page frag allocator wasn't meant to handle things like this.
-Generally the cache was meant to be used within one context so that
-the GFP flags used were consistent between calls. Currently the only
-thing passed appears to be GFP_ATOMIC.
+To store uncompressed bl2 more space is required than partition is
+actually defined.
 
-Also I am not a big fan of pulling this out of page_alloc.c The fact
-is that is where the allocation functions live so it makes sense to
-just leave it there. It isn't as if there is enough code added in my
-point of view to create yet another file and make it harder to track
-git history as a result.
+There is currently no known usage of this reserved partition.
+Openwrt uses same partition layout.
+
+We added same change to u-boot with commit d7bb1099 [1].
+
+[1] https://source.denx.de/u-boot/u-boot/-/commit/d7bb109900c1ca754a0198b9afb50e3161ffc21e
+
+Cc: stable@vger.kernel.org
+Fixes: 8e01fb15b815 ("arm64: dts: mt7986: add Bananapi R3")
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+---
+If the bl2 does not fit into the bl2-partition (cut off), board does
+not boot, thats why i want to increase it now. My current bl2 is 197K
+for nor and i ran into this problem.
+
+Openwrt uses also the first reserved partition to give bl2 more
+space:
+
+https://git.openwrt.org/?p=openwrt/openwrt.git;a=blob;f=target/linux/mediatek/dts/mt7986a-bananapi-bpi-r3-nor.dts;h=f597b869abc80d1a73f44ebb85ad4da17376bb52;hb=HEAD#l22
+
+so imho it should be same in mainline to not require complex bl2
+compression.
+
+have now sent the board-specific dts to uboot too:
+https://source.denx.de/u-boot/u-boot/-/commit/d7bb109900c1ca754a0198b9afb50e3161ffc21e
+---
+ .../boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso     | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso
+index 84aa229e80f3..e48881be4ed6 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso
++++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso
+@@ -27,15 +27,10 @@ partitions {
+ 
+ 					partition@0 {
+ 						label = "bl2";
+-						reg = <0x0 0x20000>;
++						reg = <0x0 0x40000>;
+ 						read-only;
+ 					};
+ 
+-					partition@20000 {
+-						label = "reserved";
+-						reg = <0x20000 0x20000>;
+-					};
+-
+ 					partition@40000 {
+ 						label = "u-boot-env";
+ 						reg = <0x40000 0x40000>;
+-- 
+2.34.1
+
 
