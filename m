@@ -4,85 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F06B8C7EE23
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 May 2023 15:16:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB4A5C7EE23
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 May 2023 15:30:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xEDO+a+YPral4I5ZXkXL8wMMW0VCrN+c97/tzuL0GN8=; b=codq7JVGEXIXKI1JuBeWXqcRl7
-	Y5WM9Wr7bTRpLxXaVUdJYoXMHIZbFPG7cNIooXewo5Z2RXmGOiJZ6Jiq3b/K0mNHGdNU2+8fbcVdB
-	TDqgsv8egPiaATLcNnzOlIug7bvpbW4Ok7TfwkWUhxMi1KSbvDR9Lr5k1NjYgF/YDqrXbQ2vXuam0
-	E/VzkhH59G6KCmsdF+Yaq7xCUOGqU+rqgzeSS8u1U75f8Tvv6iwyfzBZC8eqIZh3VHmV032yslDuC
-	KCEF2GLI48iCWGDj7Ah1kIy1QAVpF+/QXEddGomyE6m0r2611yhPqmE49kmyeNGVdvmYCrsx26NY+
-	WoeNR3/Q==;
+	bh=Jmuun/VWT+neP2DA7RKfwQ89UBcOBnCQ2W3RabGpYlk=; b=Pgi2lwP8ZlEzM/GKAcGYX75lxS
+	7hmbPwTu/sb40wM31y7/e8m7a4asP7sBETRuq9rYBfaOn0HO4WEeWnpU7YB9XyQ3DafXE403TwRgE
+	Sm9xVhy3ggj3fGGJJ892qiDc15pTircFhv/HD2sGF7BGe+IZLFYsL0dsHGf19B14WeJ1j3AojS0qZ
+	aP/gTE9f1dam7PKn4gJog+mi8rLGJ4GkpEDRfVigdPL7/sG+oqB077fM0tiRHCnMb2JltRE0arqy/
+	7BRFD7Oh6H0sQTjvkd12+zd5zORHEvIcWzuUEj8YAvVSwyDDgjSx9TUiZIRpFVq5V6JnY6RB2bkHc
+	XHn3rcTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3ebb-00Au77-28;
-	Mon, 29 May 2023 15:16:19 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1q3ep6-00Aw5m-0P;
+	Mon, 29 May 2023 15:30:16 +0000
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3ebZ-00Au6H-0H;
-	Mon, 29 May 2023 15:16:18 +0000
-Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-3f6cbf02747so22319285e9.1;
-        Mon, 29 May 2023 08:16:16 -0700 (PDT)
+	id 1q3dqp-00AluH-1B;
+	Mon, 29 May 2023 14:28:00 +0000
+Received: by mail-pf1-x42c.google.com with SMTP id d2e1a72fcca58-64d4e4598f0so3830484b3a.2;
+        Mon, 29 May 2023 07:27:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1685373376; x=1687965376;
+        d=gmail.com; s=20221208; t=1685370478; x=1687962478;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=xEDO+a+YPral4I5ZXkXL8wMMW0VCrN+c97/tzuL0GN8=;
-        b=rAQIHkyW6IDpCq9889HHVKoSWyLk0Ibot+4kAvFIdt1TKrOvAdJD8DjDvzEZdTDnv8
-         JmLjiDIqMF8Lh8mJUUPr0kX+vbhjKSKblSBI7mcPRXILPQx++M1ye46m+5KkPYmHnAKK
-         ykNeSq7kGIzrmC50PoWgKB6qKI3Dag+1vhyyLVH4WFlvMFkBjDteW+JvUPZKPkU2szhi
-         N6LnPlam4c6gTVrK9cx6KKFX5CJtUYPz1pICEqYlWcVYer7K1LeF73Pouec2YTQW3940
-         ASPu8M/wOIVRTGuwpmY16aMLgxv8B9TUJqAH8JJisrFas/pFeSh89oQmRDfN3sp46jcH
-         piGg==
+        bh=Jmuun/VWT+neP2DA7RKfwQ89UBcOBnCQ2W3RabGpYlk=;
+        b=sShWWNQl21iKyy6VI0j8on90ULIeyVnlk1w3zQwvz7MOJzRfMW5cp5G4uijrcrxEY0
+         6C8sKU2Qfzpb3GFSngykxKOa8CLHryobEhZ4eZzXiRyC6Mi6eNG+Ax7UhTl/oFRANKgy
+         epWdGu5xe1F27+rkJh6DJVBn/p25g2l+3p2r93rbc1YY4HC3W01v4hxU7WuxvqpT6LG4
+         PUHfudkGsFaeQKBlCUt4NFIzNEyPMCdPcl4l23AZfQDQQxkj9r6jE+NS8HFqE6uxkeMt
+         ZPUXaQTJOTsgiF+Cb4BrdFDtGUGzPcZHQEna70vWf3MG27npVY5Gzq4OaeMWBPR8Es1Y
+         4oQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685373376; x=1687965376;
+        d=1e100.net; s=20221208; t=1685370478; x=1687962478;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=xEDO+a+YPral4I5ZXkXL8wMMW0VCrN+c97/tzuL0GN8=;
-        b=k0/3Fn47YAdjNy3DfP7emTBItPt11HZOmJ0UWWjipkgjTvl6R6eUVpqXQZcvUL6Kwv
-         NV1cx8LYwYvejUl1c+GbQEuWUJ8itXuChSHaRrrO3FV/uLJ3wyGEyVOTnbOIPUxOFT5+
-         uBiCZss61Kdf6Rc3pqpQtQzaC4boU5L4scU8mvPSFKWY16eYgicLBUaRCnT+hR9RDvcc
-         HiAhTBrnP5OzPTJbJkJhE0CNMyVYHTBxs9l8g01UQ2jKtLbRx2loKgXmJeWbpyOP41pl
-         53mpEFuOS5CsU/BmMuJMyOYkA+QVNO+g8ofUGLYThgL1W+Q9xVF3djgMziebSp1+0j6k
-         6FzA==
-X-Gm-Message-State: AC+VfDxCmIc9FcXse54SqbRbOwMal2eW/aP2yBA9wgZhB1yqr5z9hXO6
-	0y3rkPRNBB46I/m7vYutnEw=
-X-Google-Smtp-Source: ACHHUZ50VJaTqxMFcaBPdgiY9mNb8sRIl+m7Dmc+x0Z3oYT5paV5NJfLUU/bUgMoDPmZDl1mpo+2bg==
-X-Received: by 2002:a7b:cd15:0:b0:3f6:5cbf:a3a1 with SMTP id f21-20020a7bcd15000000b003f65cbfa3a1mr9093367wmj.14.1685373375676;
-        Mon, 29 May 2023 08:16:15 -0700 (PDT)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id 2-20020a05600c028200b003f42cc3262asm18127550wmk.34.2023.05.29.08.16.13
+        bh=Jmuun/VWT+neP2DA7RKfwQ89UBcOBnCQ2W3RabGpYlk=;
+        b=JDRgTtcxPPYl6bgckctuOea1fpxtVSBZMExnwG/5mCkQP+t6ZMU7gpZEIBsBq1L2M2
+         XsYaW6iDur3AbXdVf9evtUvadCosav/97jyDNM2vl+DoBI51xxLU49+2mMjmRD35OouI
+         KxtXY0PXCjQsWD+rKqQG70qeSO7JIa65DAla82yy+cxXRt8Wkm2vMXTw+Z8ZZ8ESP5S3
+         2oB9Vs+WSWbF+4W8RJDus7GLAmQj8suFYFNfJAKp7YB8vf/CwkIbTLtZ7ApyFE9AkXBa
+         cm4fX6XCyZNCS0pFE5fYn9bxnp+WYQ0JZRIQbI0VzrB7iK3OuPgyTyZpZucqhclOvX29
+         k78g==
+X-Gm-Message-State: AC+VfDyAxlFTs3pAWXXe+oJJ02AXQPG5kQAOmb7Y0tmweZa226BcHrZq
+	IsQrNeaQ57cOQf+qVOyX0I4=
+X-Google-Smtp-Source: ACHHUZ4m+1SBfexp2uuaKCxUBhxnxFcc8rr2wUBHwXHwRK+R4InktUg565WydQIQVbv++T185v9wPw==
+X-Received: by 2002:a05:6a00:228f:b0:63d:368b:76b4 with SMTP id f15-20020a056a00228f00b0063d368b76b4mr16718661pfe.17.1685370477720;
+        Mon, 29 May 2023 07:27:57 -0700 (PDT)
+Received: from [172.30.1.35] ([14.32.163.5])
+        by smtp.gmail.com with ESMTPSA id g10-20020aa7818a000000b0064f97ff4506sm36358pfi.68.2023.05.29.07.27.53
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 29 May 2023 08:16:14 -0700 (PDT)
-Message-ID: <091dcf39-b186-056d-4bdf-d4ac5d24682e@gmail.com>
-Date: Mon, 29 May 2023 17:16:13 +0200
+        Mon, 29 May 2023 07:27:57 -0700 (PDT)
+Message-ID: <eba06c01-e2bb-f715-8b2e-9c489e7c06d3@gmail.com>
+Date: Mon, 29 May 2023 23:27:51 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.0
-Subject: Re: [PATCH v2 4/4] arm64: dts: mediatek: cherry: Enable PCI-Express
- ports for WiFi
-Content-Language: en-US, ca-ES, es-ES
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com, Chen-Yu Tsai <wenst@chromium.org>
-References: <20230424112523.1436926-1-angelogioacchino.delregno@collabora.com>
- <20230424112523.1436926-5-angelogioacchino.delregno@collabora.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20230424112523.1436926-5-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Subject: Re: [PATCH5b51a54ae2fa1cc8459b68a28b3c8ca7b7203994] PM / devfreq:
+ mtk-cci: Fix variable deferencing before NULL check
+Content-Language: en-US
+To: Sukrut Bellary <sukrut.bellary@linux.com>,
+ MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ Chanwoo Choi <cw00.choi@samsung.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>
+Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ kernel-janitors@vger.kernel.org
+References: <20230518084033.508711-1-sukrut.bellary@linux.com>
+From: Chanwoo Choi <cwchoi00@gmail.com>
+In-Reply-To: <20230518084033.508711-1-sukrut.bellary@linux.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230529_081617_125915_FB0C497B 
-X-CRM114-Status: GOOD (  14.50  )
+X-CRM114-CacheID: sfid-20230529_072759_405420_92C34D63 
+X-CRM114-Status: GOOD (  17.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,63 +101,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 24/04/2023 13:25, AngeloGioacchino Del Regno wrote:
-> On the Cherry platform, a MT7621 WiFi+Bluetooth combo is connected
-> over PCI-Express (for WiFi) and USB (for BT): enable the PCIe ports
-> to enable enumerating this chip.
+On 23. 5. 18. 17:40, Sukrut Bellary wrote:
+> smatch warning:
+> drivers/devfreq/mtk-cci-devfreq.c:135 mtk_ccifreq_target()
+> warn: variable dereferenced before check 'drv' (see line 130)
 > 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Tested-by: Chen-Yu Tsai <wenst@chromium.org>
-
-Applied, thanks
-
+> This is based on static analysis only. Compilation tested.
+> 
+> Signed-off-by: Sukrut Bellary <sukrut.bellary@linux.com>
 > ---
->   .../boot/dts/mediatek/mt8195-cherry.dtsi      | 25 +++++++++++++++++++
->   1 file changed, 25 insertions(+)
+>  drivers/devfreq/mtk-cci-devfreq.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> index adbda4dccdd5..eca5df85fe33 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> @@ -565,6 +565,13 @@ flash@0 {
->   	};
->   };
->   
-> +&pcie1 {
-> +	status = "okay";
-> +
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&pcie1_pins_default>;
-> +};
-> +
->   &pio {
->   	mediatek,rsel-resistance-in-si-unit;
->   	pinctrl-names = "default";
-> @@ -959,6 +966,24 @@ pins-vreg-en {
->   		};
->   	};
->   
-> +	pcie0_pins_default: pcie0-default-pins {
-> +		pins-bus {
-> +			pinmux = <PINMUX_GPIO19__FUNC_WAKEN>,
-> +				 <PINMUX_GPIO20__FUNC_PERSTN>,
-> +				 <PINMUX_GPIO21__FUNC_CLKREQN>;
-> +				 bias-pull-up;
-> +		};
-> +	};
-> +
-> +	pcie1_pins_default: pcie1-default-pins {
-> +		pins-bus {
-> +			pinmux = <PINMUX_GPIO22__FUNC_PERSTN_1>,
-> +				 <PINMUX_GPIO23__FUNC_CLKREQN_1>,
-> +				 <PINMUX_GPIO24__FUNC_WAKEN_1>;
-> +				 bias-pull-up;
-> +		};
-> +	};
-> +
->   	pio_default: pio-default-pins {
->   		pins-wifi-enable {
->   			pinmux = <PINMUX_GPIO58__FUNC_GPIO58>;
+> diff --git a/drivers/devfreq/mtk-cci-devfreq.c b/drivers/devfreq/mtk-cci-devfreq.c
+> index e5458ada5197..6354622eda65 100644
+> --- a/drivers/devfreq/mtk-cci-devfreq.c
+> +++ b/drivers/devfreq/mtk-cci-devfreq.c
+> @@ -127,7 +127,7 @@ static int mtk_ccifreq_target(struct device *dev, unsigned long *freq,
+>  			      u32 flags)
+>  {
+>  	struct mtk_ccifreq_drv *drv = dev_get_drvdata(dev);
+> -	struct clk *cci_pll = clk_get_parent(drv->cci_clk);
+> +	struct clk *cci_pll;
+>  	struct dev_pm_opp *opp;
+>  	unsigned long opp_rate;
+>  	int voltage, pre_voltage, inter_voltage, target_voltage, ret;
+> @@ -139,6 +139,7 @@ static int mtk_ccifreq_target(struct device *dev, unsigned long *freq,
+>  		return 0;
+>  
+>  	inter_voltage = drv->inter_voltage;
+> +	cci_pll = clk_get_parent(drv->cci_clk);
+>  
+>  	opp_rate = *freq;
+>  	opp = devfreq_recommended_opp(dev, &opp_rate, 1);
+
+Applied it. Thanks.
+
+-- 
+Best Regards,
+Samsung Electronics
+Chanwoo Choi
+
 
