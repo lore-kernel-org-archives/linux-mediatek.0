@@ -4,94 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD3AAC77B7A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 May 2023 15:42:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5AE4C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 May 2023 15:42:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zj+VDAqPSb25/DEXl04R56d41dEGPCQtyqOgNMpILjY=; b=o1HdjeAhD+Z7o6YR0IW39y7h+F
-	VOoJw+6me1UbOW/5a19fZpsruL8TQpj1RRG0vtpY1vhSCuaXEH7dDkTEjIjWzlLgk5XLC71KCJxJa
-	UaSUSiI4kFSR1bsu8tkDCXEpvjeWXwj9JGPIOPfiEEplhqib89mKA4aMawgchsILE090QwQjZy2wb
-	AvKBTq8pzGrubsGqhoHBpoM28mN/6gz7H1HuFK1XlqbFo8isw2H1umkYoojNjYOgNj97v69hE/wTW
-	9msxIw8OlDMUBJr4GiE0D9k4NMh01XK2zNdqEI3svmPBKVlFoYer7gXg9cO3PKiOIzZHPLz4Du+XC
-	r0dcNl0A==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Jo5a/JXM5eyW7F1q0/7SeqrmDEnGh/l3ApKPMD9Menw=; b=Vzel7wJWfH8g2FvS6PQH3QYJKh
+	0j5n043J0m7RpKel+VyomNO4XEawG/0B1caLqfUSDdAmyiS9U126XUvSeKDiRJyzmrUCX0c26t9Xv
+	6Ux+GpDCk5jZVqZz8+/RUvyV44KbzgydFg4iGSPphlbIAbNl+/ZoJ/RkVBvpBTOxs6Na4Psh2m23o
+	97YIaMB22Gig8ZKLhrIii82c2hl4rksp9VdkO2OP9Sm/d/vldZ9Q58eT803JTeaG6fk6XRoQPyZL+
+	YlCoA9P7pVKKihudn/1Sq9jJmof+PQv+OFUVDmQRUzydXMPb4R8Rne6F7A9S96yrLweDqmEOy5y0G
+	n5n5LXQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3f0a-00Axq4-2Q;
-	Mon, 29 May 2023 15:42:08 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1q3f1E-00Axxy-2c;
+	Mon, 29 May 2023 15:42:48 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3f0W-00Axnp-2z;
-	Mon, 29 May 2023 15:42:06 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-30ae69ef78aso1053783f8f.1;
-        Mon, 29 May 2023 08:42:00 -0700 (PDT)
+	id 1q3f1C-00Axwt-0X;
+	Mon, 29 May 2023 15:42:47 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-3f60b3f32b4so21905405e9.1;
+        Mon, 29 May 2023 08:42:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1685374919; x=1687966919;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+        d=gmail.com; s=20221208; t=1685374963; x=1687966963;
+        h=content-transfer-encoding:in-reply-to:from:references:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=zj+VDAqPSb25/DEXl04R56d41dEGPCQtyqOgNMpILjY=;
-        b=VsmwXUVg+FoHXj/nL+qq/3/Md3DiD6hWqsH/LJ+FyWokSlgesuJXyr6UkdmVvRjp0z
-         6FmNAZsMS4gTubamr/kPK08H+M7Thdqil9TzAzOO727WyQulsERgEMRUP2mOFCc1f96J
-         59dXBg0NSMeCamgo0kP+F6WLNZwBml1ugAEBSSAZ1JR++9sdGGAQnExwSEDhBWDO1SWg
-         nCZFbo/14kJlKW6UAKAM5FR/GWhqVNPXGaebbLckTiy00xh7Eo7U6x4lu9WputUkvPrZ
-         SwxogrersE/foLyZ/cGYiVF/X62FCpYHdlH/H0RDfBWRhAKYgfKM/3p0bprzQUXNJ4lp
-         4Ixw==
+        bh=Jo5a/JXM5eyW7F1q0/7SeqrmDEnGh/l3ApKPMD9Menw=;
+        b=a9GXuJPJ1WwsWgUNonfxaq2F+J/b1NBIb60iy51Z522x3mLN3q1pu2zTaP5SkAbi85
+         9bmzZF6Y1t0vtmLk4WNkYV8aOG1x3Vcbh6EhvdA7xqPY6gym6Sjho1uepWWseO25KyC0
+         ujYqNu5v6CQ0PaW3wU4Fjw3Y7pAPJNITdWd8OQkFGOSOem3a0cgbm8KS2plJtuP1Elho
+         ZUelxc7ueCj5vfCLuI6GOaVwzB3/bvpb/OGd68KTg/Wo6XHyFc71vJKTacYKZN0Vnsw5
+         FuvJyMNfOl4ZVptsWiCJTdc1XFYGEArY/JSSYlna3ZXaNrDg8vsj2wyV/8Spl25H2HnO
+         xFaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685374919; x=1687966919;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+        d=1e100.net; s=20221208; t=1685374963; x=1687966963;
+        h=content-transfer-encoding:in-reply-to:from:references:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=zj+VDAqPSb25/DEXl04R56d41dEGPCQtyqOgNMpILjY=;
-        b=QAvqZoawjP/2G5+EGuwdOu7+teRVsLAnpEltkQVNgyVr/TTAKFzYLabs2uDSvIHsBc
-         yq+psAcIBY/ZgEEpJP9P/SJHWSfJwPrqtVihnhvrFS6SlTqhqj/En1ttWUndQ2SdHp0z
-         qV8/t6HpJ4gWoYl7BKpmAODJY7JBY+YANVN5VykdL8Evm9uHXSP8KYUo+L73/ht7UUAH
-         w27BR5uw4gB+NQ6uPHmKO33PGVSdRdjgceVk8sjdOvW9ctcHE+AXG+9uGM+Oj0y12rfw
-         KgEUNn+GyxqaaNB+WWkhpUSZSntuL4YLjB5Qbfle7Wu9ZJamoALd30438+MlimepyCLb
-         nvmg==
-X-Gm-Message-State: AC+VfDzoJeZf0pK6t5NbgCp02WhgOWDD6j/XXAIoej9RrQ+2GACz7pfc
-	OjB3usfbG1u36+cjX01jORY=
-X-Google-Smtp-Source: ACHHUZ6PZ31jEVJxxW/BVWIZxBiKX42sooJ61VxYWeoBtBaDqvQviu9rCxfVlTeS23L+cDrKF8HXkA==
-X-Received: by 2002:adf:f08d:0:b0:30a:efcc:f89a with SMTP id n13-20020adff08d000000b0030aefccf89amr1722530wro.2.1685374919021;
-        Mon, 29 May 2023 08:41:59 -0700 (PDT)
+        bh=Jo5a/JXM5eyW7F1q0/7SeqrmDEnGh/l3ApKPMD9Menw=;
+        b=VMv4isqj7FkZPQJXJgZtgepc7FLbcvcERgi9hKVhpJoO+n0WGVVw0RZkaUp9Hw05y5
+         vEk5UHy6QmPNdn3l27D6RIrArt8oNonsUi+pO2frvBxq7hr5coZkGlrIGDfv15qiB4b7
+         iuM8c1MSq/fa9LyIXAgnbLXiLqpCehvw5ekzF69IrLQDaRhzw0IDXU8F+TuigY5Pu3mW
+         Kyi5H9RQGnrJ2nuhoFvJnv2ox1bCLFF5fDpg6go7Xmspm/4ool4YhYN5NwxnWkCRbNJB
+         bteuR23EYuQI2ip4HQLLNX1lT1c9b7ghRBNsqPHFKvL3f+mKWgiCx1vjjYBIrqXwTbA2
+         DliA==
+X-Gm-Message-State: AC+VfDyIZ/YKa4MShGw+3+9KOUHWBqG7I6oDKn71XXpTLSSXh2cFi8XN
+	iObgeU5XvMKdHulyFwW8cxU=
+X-Google-Smtp-Source: ACHHUZ44sfIsfx0Za8jPqM0u7GQcawEC5lcy0s9b1DixpfISlRFlYpxslgFy1XaCY3F/xqRBrpjuTg==
+X-Received: by 2002:a7b:c7d0:0:b0:3f6:f152:1183 with SMTP id z16-20020a7bc7d0000000b003f6f1521183mr10002428wmk.37.1685374963211;
+        Mon, 29 May 2023 08:42:43 -0700 (PDT)
 Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id b17-20020adff251000000b002c71b4d476asm288024wrp.106.2023.05.29.08.41.56
+        by smtp.gmail.com with ESMTPSA id t7-20020a7bc3c7000000b003f6132f95e6sm18176715wmj.35.2023.05.29.08.42.41
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 29 May 2023 08:41:57 -0700 (PDT)
-Message-ID: <cf7afb1f-ad1f-b077-6276-222c5ca918cd@gmail.com>
-Date: Mon, 29 May 2023 17:41:56 +0200
+        Mon, 29 May 2023 08:42:42 -0700 (PDT)
+Message-ID: <89e05581-be6e-409b-c4ba-c35297045af6@gmail.com>
+Date: Mon, 29 May 2023 17:42:41 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.0
-Subject: Re: [PATCH v2 0/5] irqchip/gic-v3: Disable pseudo NMIs on Mediatek
- Chromebooks w/ bad FW
+Subject: Re: [PATCH] arm64: dts: mediatek: add missing cache properties
 Content-Language: en-US, ca-ES, es-ES
-To: Marc Zyngier <maz@kernel.org>, Douglas Anderson <dianders@chromium.org>
-Cc: Thomas Gleixner <tglx@linutronix.de>, Rob Herring <robh+dt@kernel.org>,
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- linux-mediatek@lists.infradead.org, Eddie Huang <eddie.huang@mediatek.com>,
- Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- wenst@chromium.org, yidilin@chromium.org,
- Tinghan Shen <tinghan.shen@mediatek.com>, jwerner@chromium.org,
- Weiyi Lu <weiyi.lu@mediatek.com>, Ben Ho <Ben.Ho@mediatek.com>,
- Seiya Wang <seiya.wang@mediatek.com>, Conor Dooley <conor+dt@kernel.org>,
- Enric Balletbo i Serra <eballetbo@kernel.org>,
- =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- linux-kernel@vger.kernel.org
-References: <20230515131353.v2.cover@dianders> <86edngmwcf.wl-maz@kernel.org>
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230421223157.115367-1-krzysztof.kozlowski@linaro.org>
+ <5590f51a-16b6-93ae-d8a0-ab6b4e2e1016@linaro.org>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <86edngmwcf.wl-maz@kernel.org>
+In-Reply-To: <5590f51a-16b6-93ae-d8a0-ab6b4e2e1016@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230529_084204_965263_D34D79B1 
-X-CRM114-Status: GOOD (  19.42  )
+X-CRM114-CacheID: sfid-20230529_084246_210280_64E1EF81 
+X-CRM114-Status: GOOD (  10.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,63 +99,21 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 16/05/2023 11:58, Marc Zyngier wrote:
-> On Mon, 15 May 2023 21:13:49 +0100,
-> Douglas Anderson <dianders@chromium.org> wrote:
+On 16/05/2023 18:32, Krzysztof Kozlowski wrote:
+> On 22/04/2023 00:31, Krzysztof Kozlowski wrote:
+>> As all level 2 and level 3 caches are unified, add required
+>> cache-unified properties to fix warnings like:
 >>
->> As talked about in the bindings patch included in this series
->> ("dt-bindings: interrupt-controller: arm,gic-v3: Add quirk for
->> Mediatek SoCs w/ broken FW"), many Mediatek-based Chromebooks shipped
->> with firmware that doesn't properly save/restore some GICR
->> registers. This causes the system to crash if "pseudo NMIs" are turned
->> on.
+>>    mt7622-rfb1.dtb: l2-cache: 'cache-unified' is a required property
 >>
->> This series makes sure that we never allow turning on "pseudo NMIs" if
->> we are running with the problematic firmware.
+>> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 >>
->> The patches in this series can land in any order and can go through
->> entirely different trees. None of the patches are harmful on their
->> own, but to get things fixed we need all of them.
->>
->> v2 fixes the quirk name and also moves the quirk out of the SoC.dtsi
->> file and into the Chromebook file. This, unfortunately, means that
->> mt8186-based Chromebooks are no longer handled since they don't appear
->> to be upstream yet. :(
->>
->> Changes in v2:
->> - "when CPUs are powered" => "when the GIC redistributors are..."
->> - Changed "Fixes" tag.
->> - Moved from mt8183.dtsi to mt8183-kukui.dtsi
->> - Moved from mt8192.dtsi to mt8192-asurada.dtsi
->> - Moved from mt8195.dtsi to mt8195-cherry.dtsi
->> - mediatek,gicr-save-quirk => mediatek,broken-save-restore-fw
->>
->> Douglas Anderson (5):
->>    dt-bindings: interrupt-controller: arm,gic-v3: Add quirk for Mediatek
->>      SoCs w/ broken FW
->>    irqchip/gic-v3: Disable pseudo NMIs on Mediatek devices w/ firmware
->>      issues
->>    arm64: dts: mediatek: mt8183: Add mediatek,broken-save-restore-fw to
->>      kukui
->>    arm64: dts: mediatek: mt8192: Add mediatek,broken-save-restore-fw to
->>      asurada
->>    arm64: dts: mediatek: mt8195: Add mediatek,broken-save-restore-fw to
->>      cherry
->>
->>   .../interrupt-controller/arm,gic-v3.yaml      |  6 ++++++
->>   .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi |  4 ++++
->>   .../boot/dts/mediatek/mt8192-asurada.dtsi     |  4 ++++
->>   .../boot/dts/mediatek/mt8195-cherry.dtsi      |  4 ++++
->>   drivers/irqchip/irq-gic-common.c              |  8 ++++++--
->>   drivers/irqchip/irq-gic-common.h              |  1 +
->>   drivers/irqchip/irq-gic-v3.c                  | 20 +++++++++++++++++++
->>   7 files changed, 45 insertions(+), 2 deletions(-)
+>> ---
 > 
-> I'll take the first two patches as fixes. The rest can be merged via
-> the soc tree as required.
+> Hi Matthias,
 > 
-> 	M.
+> Could you grab this one?
 > 
 
-Patches 3-5 applied now. Thanks!
+Applied now, thanks!
 
