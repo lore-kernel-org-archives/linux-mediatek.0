@@ -4,91 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F02B6C77B7E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 May 2023 14:11:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65511C7EE23
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 May 2023 14:23:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=10o9jmZWeP457p2kLERKO+3a4U7ZX8eeTkQQ7+6/jtg=; b=LWuvzJe6iCSjyQJusJ0wgmdRdY
-	0yG987RlMUfjFCzFChNHPcwfqq4ICKUhk7o+D7y4MIb0J9Fp/0xfvL1xeBWRjFf9co0BMsugM7JoD
-	mP2EQ801AQ+enM8nspKyMQ3A1vQjP2Vhvsy+bXKu9r5fmch8IAePtpmvlrwVq2xofE9DuQwfLcDQC
-	Q2mAXJaxXsV81kK/CykylRBzsZknAr7xlPn0nJrUjtU2CGIznMfgpMxjeNp0SxOqJj+82Ky+9trWY
-	G37IRVvgnf/xIPUdW/gW2sth5/OTq2y0gyZN9Ttu9PDt+II4TVXlWKBWJPTjpH2740gFFj+5uvmA3
-	srlw0PnQ==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Bhf+dGpQh+ihyXe3XoXHHkBL1Gb6jd21i/gahvLFjMw=; b=v5VPdqEH3mA+EEnfBIHKdp6Zkh
+	zVAsslhy262oLBwyOLHNBtzMhY3G6YKNQUTxWpKb0DGEHjN44BL/yz6g3nZSpzsET603vfyHmK09Y
+	d92/zaiKV8q6Rk0c61mMXA9i1NfjZm1h4LnWgQx5Y1FUiAvSyIWuz/bimHlTKt2gbvfX5hHE022DX
+	fOkdbq0vd42xd7KIpoTpFZQH18yTw7JLfLU/wfFL1vThn1qn4VU+o7k9mnnundw1bsFxQgR0Slyqo
+	9JXlbs+lmrdO/gWLyPuqAMFjwqp8g2M2hPvqcfFKwYCSa1UURMQH6A7a/J4RX02CuPZCwYxvMy3p8
+	8ZpaiosA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3daJ-00AjKZ-0X;
-	Mon, 29 May 2023 14:10:55 +0000
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+	id 1q3dmL-00Aky1-0L;
+	Mon, 29 May 2023 14:23:21 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3daF-00AjJX-2e;
-	Mon, 29 May 2023 14:10:53 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-30ae5f2ac94so1648326f8f.1;
-        Mon, 29 May 2023 07:10:51 -0700 (PDT)
+	id 1q3dmI-00Akwj-0R;
+	Mon, 29 May 2023 14:23:19 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-3f623adec61so34625355e9.0;
+        Mon, 29 May 2023 07:23:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1685369450; x=1687961450;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+        d=gmail.com; s=20221208; t=1685370196; x=1687962196;
+        h=content-transfer-encoding:in-reply-to:from:references:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=10o9jmZWeP457p2kLERKO+3a4U7ZX8eeTkQQ7+6/jtg=;
-        b=R/rqDkNlnRgXOH1pDR5R2SSc30hzPgW0hPNMtwNUrgpO8HXY3pY3T2BoA4vrSxPgOD
-         uXUIldAd/8jFOYIQyC153wIBVX/AJ3MjygoVgbWscuZo7HwahFejjaBDGl8bRLDFU88U
-         ZinOpb71aOiSoFvt8gODU5oDbNiuDTPsb1lV3BPARvLCJkxDfAnwAj5FWAtSa8311wO1
-         5DMOC4jWMkWct6/V3mTiY1omJIM1cCpeKzovWPXNM3Y4LSm1CCgQg0unu5FRiELGea//
-         voB22/S3nulIGlPNptxRVXWbm5PVMiHqaQYRx4Ch0LJzaNqZvA923HAC8OKOleLQwOaY
-         3/zw==
+        bh=Bhf+dGpQh+ihyXe3XoXHHkBL1Gb6jd21i/gahvLFjMw=;
+        b=F4NVhqLpqy0ymn9TqPQDAV8TTMtXMZWrO0bmMg7bbOwxqlahco0kddrAEqh4PD9Lx1
+         hfieb5Nvcw01NXhOHu3235hE0MDhCaAabAVUtD6yaXYyS26PAh2pl2O5U/rJLFG6y2bl
+         vk8OYgNQLT7sA7zhjWgS3ORF1XoJn5fUDRYjvPVvAUC9hmbrZwb6JTDATzLSbP1UqjRl
+         0xqCV3JZIySH7+PTHwa5kdU45sO+3sKEImTz2TxgGK8YM0L+9DYG9qURJKKygWYXqBtI
+         3t6+E6XR+Wi1AvhwdVtIuFipJEUwaUfRQolh2bFRjC27AFATwycUmwpIp/0O58Eplirp
+         NRRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685369450; x=1687961450;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+        d=1e100.net; s=20221208; t=1685370196; x=1687962196;
+        h=content-transfer-encoding:in-reply-to:from:references:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=10o9jmZWeP457p2kLERKO+3a4U7ZX8eeTkQQ7+6/jtg=;
-        b=HDv1sybq9/pf6res5Y6zrLpIouow8vrpOuOantHxCpsXqyV8K2HiiASnATPbxGtmE2
-         SC/hUS97BdsnUAL+Ov98oh/HlBQEO7Vrg4p8+w7Z4sal9zXuEPa3KtT90G2Yxl4yotbG
-         b2wtPWuEUUmtstF+vhAxCkzYwXR5AnoIjgC66r0sR5g0MI+km6nToDtTzINSk9wqax4N
-         bSQUiwwnbMO/ovTD1IaP+XhIKz9j+KDOSVyU98ZruEPe0/SCaAxwgTe4RdVF/c2hmQs+
-         JPqBNP19Pyq3bK1gRQyIK6M68T/1FbB9XPfeFYK3wxf177+PRq1acwBWd4DGuZojY3t5
-         ZTQg==
-X-Gm-Message-State: AC+VfDwSi9DAb1LYM12ZeWaoOJJkMafHHqZgzmfYe05pLMVoTCaIjGzu
-	A/wrXKBRIfAf7q33XI/Jh5M=
-X-Google-Smtp-Source: ACHHUZ6A74E+BgfNtlIZYglrKBVuUz4y94mfpo3xLAeito8AShd1iQMhnZMhDZbfgGvwCnI7VQYABw==
-X-Received: by 2002:a5d:618d:0:b0:30a:ddb3:93b with SMTP id j13-20020a5d618d000000b0030addb3093bmr8244185wru.63.1685369449882;
-        Mon, 29 May 2023 07:10:49 -0700 (PDT)
+        bh=Bhf+dGpQh+ihyXe3XoXHHkBL1Gb6jd21i/gahvLFjMw=;
+        b=JtjxZWtwSJ/IEVsypAEobEcFpG2qSsjfWIHARzwh/F9b6+v/h6x3XQtonEMBjCphq5
+         umw2ojst7sWASr69hEriuFSLlCqnKkoQfjKS2SKgeEMk+g+My3mLDKsdeqOiIaQCAV7r
+         //9qiAuLdk5M/ybXH59oMXwkJhglnp/8TqAsFxHtO8os0QyPRDLu/G7HLQ6JO727fQ0o
+         p1C/9maIhY64rGAC3TnDup20NQdK8PUFp1pi0UttYItiEJWiF3jNWdV2IQiR8vjPmbYd
+         iI54wKi399Zjk3qmG1EYVMGOT1y1SsiKhbjNqg+BN0xUqCLl7DX35NEViH7QWwVMwMOa
+         p7Rw==
+X-Gm-Message-State: AC+VfDxEAVOnLjEDQnkCu+NCPo1EgoR4vHdMYrhu5ai1b6tl3HE/JBA+
+	fhjk1x72nsS+Pi5ZyvDQmtI=
+X-Google-Smtp-Source: ACHHUZ5nwRk8NJZ4CqJmbHbZwW+mE2Fld12sMvifhdfTJBxdSDT+RaNQcnm4R3EJqXtTfjM30+ty7Q==
+X-Received: by 2002:a05:600c:284a:b0:3f6:3d8:aabb with SMTP id r10-20020a05600c284a00b003f603d8aabbmr9133115wmb.38.1685370196332;
+        Mon, 29 May 2023 07:23:16 -0700 (PDT)
 Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id n7-20020adfe347000000b00309382eb047sm39744wrj.112.2023.05.29.07.10.48
+        by smtp.gmail.com with ESMTPSA id i7-20020a05600c290700b003f42d8dd7ffsm14441605wmd.19.2023.05.29.07.23.14
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 29 May 2023 07:10:48 -0700 (PDT)
-Message-ID: <e744408d-2bc7-886e-2f32-0a05a1dd570a@gmail.com>
-Date: Mon, 29 May 2023 16:10:47 +0200
+        Mon, 29 May 2023 07:23:15 -0700 (PDT)
+Message-ID: <64b7c2ed-ccbe-8313-8a46-1adf57deb0df@gmail.com>
+Date: Mon, 29 May 2023 16:23:14 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.0
-Subject: Re: [PATCH v12 03/11] dt-bindings: remoteproc: mediatek: Support
- MT8195 dual-core SCP
+Subject: Re: [PATCH 1/2] arm64: dts: mt7622: declare SPI-NAND present on
+ BPI-R64
 Content-Language: en-US, ca-ES, es-ES
-To: Tinghan Shen <tinghan.shen@mediatek.com>,
- Bjorn Andersson <andersson@kernel.org>,
- Mathieu Poirier <mathieu.poirier@linaro.org>,
- Rob Herring <robh+dt@kernel.org>,
+To: Daniel Golle <daniel@makrotopia.org>, devicetree@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20230517043449.26352-1-tinghan.shen@mediatek.com>
- <20230517043449.26352-4-tinghan.shen@mediatek.com>
+References: <ZEA96dmaXqTpk8u8@makrotopia.org>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20230517043449.26352-4-tinghan.shen@mediatek.com>
+In-Reply-To: <ZEA96dmaXqTpk8u8@makrotopia.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230529_071051_860928_6F0C4E33 
-X-CRM114-Status: GOOD (  25.54  )
+X-CRM114-CacheID: sfid-20230529_072318_179822_ECAE0566 
+X-CRM114-Status: GOOD (  18.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,203 +98,75 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 17/05/2023 06:34, Tinghan Shen wrote:
-> Extend the SCP binding to describe the MT8195 dual-core SCP.
+On 19/04/2023 21:15, Daniel Golle wrote:
+> The SPI-NOR node in the device tree of the BananaPi R64 has most likely
+> been copied from the reference board's device tree even though the R64
+> comes with an SPI-NAND chip rather than SPI-NOR.
 > 
-> Under different applications, the MT8195 SCP can be used as single-core
-> or dual-core. This change keeps the single-core definitions and
-> adds new definitions for the dual-core use case.
+> Setup the Serial NAND Flash Interface (SNFI) controller, enable
+> hardware BCH error detection and correction engine and add the SPI-NAND
+> chip including basic partitions,
 > 
-> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> Reviewed-by: Rob Herring <robh@kernel.org>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Applied, thanks
 
 > ---
->   .../bindings/remoteproc/mtk,scp.yaml          | 145 +++++++++++++++++-
->   1 file changed, 141 insertions(+), 4 deletions(-)
+>   .../dts/mediatek/mt7622-bananapi-bpi-r64.dts  | 39 ++++++++++++++++---
+>   1 file changed, 34 insertions(+), 5 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> index 271081df0e46..09102dda4942 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> @@ -21,6 +21,7 @@ properties:
->         - mediatek,mt8188-scp
->         - mediatek,mt8192-scp
->         - mediatek,mt8195-scp
-> +      - mediatek,mt8195-scp-dual
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+> index af3fe61e40938..d583e816684cf 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+> @@ -248,14 +248,42 @@ &nandc {
+>   	status = "disabled";
+>   };
 >   
->     reg:
->       description:
-> @@ -31,10 +32,7 @@ properties:
+> -&nor_flash {
+> -	pinctrl-names = "default";
+> -	pinctrl-0 = <&spi_nor_pins>;
+> -	status = "disabled";
+> +&bch {
+> +	status = "okay";
+> +};
 >   
->     reg-names:
->       minItems: 2
-> -    items:
-> -      - const: sram
-> -      - const: cfg
-> -      - const: l1tcm
-> +    maxItems: 3
+> +&snfi {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&serial_nand_pins>;
+> +	status = "okay";
+>   	flash@0 {
+> -		compatible = "jedec,spi-nor";
+> +		compatible = "spi-nand";
+>   		reg = <0>;
+> +		spi-tx-bus-width = <4>;
+> +		spi-rx-bus-width = <4>;
+> +		nand-ecc-engine = <&snfi>;
+> +		partitions {
+> +			compatible = "fixed-partitions";
+> +			#address-cells = <1>;
+> +			#size-cells = <1>;
+> +
+> +			partition@0 {
+> +				label = "bl2";
+> +				reg = <0x0 0x80000>;
+> +				read-only;
+> +			};
+> +
+> +			partition@80000 {
+> +				label = "fip";
+> +				reg = <0x80000 0x200000>;
+> +				read-only;
+> +			};
+> +
+> +			ubi: partition@280000 {
+> +				label = "ubi";
+> +				reg = <0x280000 0x7d80000>;
+> +			};
+> +		};
+>   	};
+>   };
 >   
->     clocks:
->       description:
-> @@ -70,6 +68,81 @@ properties:
->   
->       unevaluatedProperties: false
->   
-> +  '#address-cells':
-> +    const: 1
-> +
-> +  '#size-cells':
-> +    const: 1
-> +
-> +  ranges:
-> +    description:
-> +      Standard ranges definition providing address translations for
-> +      local SCP SRAM address spaces to bus addresses.
-> +
-> +patternProperties:
-> +  "^scp@[a-f0-9]+$":
-> +    type: object
-> +    description:
-> +      The MediaTek SCP integrated to SoC might be a multi-core version.
-> +      The other cores are represented as child nodes of the boot core.
-> +      There are some integration differences for the IP like the usage of
-> +      address translator for translating SoC bus addresses into address space
-> +      for the processor.
-> +
-> +      Each SCP core has own cache memory. The SRAM and L1TCM are shared by
-> +      cores. The power of cache, SRAM and L1TCM power should be enabled
-> +      before booting SCP cores. The size of cache, SRAM, and L1TCM are varied
-> +      on differnt SoCs.
-> +
-> +      The SCP cores do not use an MMU, but has a set of registers to
-> +      control the translations between 32-bit CPU addresses into system bus
-> +      addresses. Cache and memory access settings are provided through a
-> +      Memory Protection Unit (MPU), programmable only from the SCP.
-> +
-> +    properties:
-> +      compatible:
-> +        enum:
-> +          - mediatek,scp-core
-> +
-> +      reg:
-> +        description: The base address and size of SRAM.
-> +        maxItems: 1
-> +
-> +      reg-names:
-> +        const: sram
-> +
-> +      interrupts:
-> +        maxItems: 1
-> +
-> +      firmware-name:
-> +        $ref: /schemas/types.yaml#/definitions/string
-> +        description:
-> +          If present, name (or relative path) of the file within the
-> +          firmware search path containing the firmware image used when
-> +          initializing sub cores of multi-core SCP.
-> +
-> +      memory-region:
-> +        maxItems: 1
-> +
-> +      cros-ec-rpmsg:
-> +        $ref: /schemas/mfd/google,cros-ec.yaml
-> +        description:
-> +          This subnode represents the rpmsg device. The properties
-> +          of this node are defined by the individual bindings for
-> +          the rpmsg devices.
-> +
-> +        required:
-> +          - mediatek,rpmsg-name
-> +
-> +        unevaluatedProperties: false
-> +
-> +    required:
-> +      - compatible
-> +      - reg
-> +      - reg-names
-> +
-> +    additionalProperties: false
-> +
->   required:
->     - compatible
->     - reg
-> @@ -99,7 +172,37 @@ allOf:
->           reg:
->             maxItems: 2
->           reg-names:
-> +          items:
-> +            - const: sram
-> +            - const: cfg
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          enum:
-> +            - mediatek,mt8192-scp
-> +            - mediatek,mt8195-scp
-> +    then:
-> +      properties:
-> +        reg:
-> +          maxItems: 3
-> +        reg-names:
-> +          items:
-> +            - const: sram
-> +            - const: cfg
-> +            - const: l1tcm
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          enum:
-> +            - mediatek,mt8195-scp-dual
-> +    then:
-> +      properties:
-> +        reg:
->             maxItems: 2
-> +        reg-names:
-> +          items:
-> +            - const: cfg
-> +            - const: l1tcm
->   
->   additionalProperties: false
->   
-> @@ -121,3 +224,37 @@ examples:
->               mediatek,rpmsg-name = "cros-ec-rpmsg";
->           };
->       };
-> +
-> +  - |
-> +    scp@10500000 {
-> +        compatible = "mediatek,mt8195-scp-dual";
-> +        reg = <0x10720000 0xe0000>,
-> +              <0x10700000 0x8000>;
-> +        reg-names = "cfg", "l1tcm";
-> +
-> +        #address-cells = <1>;
-> +        #size-cells = <1>;
-> +        ranges = <0 0x10500000 0x100000>;
-> +
-> +        scp@0 {
-> +            compatible = "mediatek,scp-core";
-> +            reg = <0x0 0xa0000>;
-> +            reg-names = "sram";
-> +
-> +            cros-ec-rpmsg {
-> +                compatible = "google,cros-ec-rpmsg";
-> +                mediatek,rpmsg-name = "cros-ec-rpmsg";
-> +            };
-> +        };
-> +
-> +        scp@a0000 {
-> +            compatible = "mediatek,scp-core";
-> +            reg = <0xa0000 0x20000>;
-> +            reg-names = "sram";
-> +
-> +            cros-ec-rpmsg {
-> +                compatible = "google,cros-ec-rpmsg";
-> +                mediatek,rpmsg-name = "cros-ec-rpmsg";
-> +            };
-> +        };
-> +    };
+> 
+> base-commit: 13961ef828cbc254cc272221b7fc54851caa39a7
 
