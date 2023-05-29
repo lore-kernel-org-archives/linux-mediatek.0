@@ -4,80 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 688AFC77B7A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 May 2023 16:18:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42EA9C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 May 2023 16:22:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OS7Cd231F040G33nTg/JdwMNbg9I56weKfa+JuzR9V0=; b=JYzKgFbpEbIRjY
-	OJ+i2KwUlBySry6LU1UHtfApqgKDThhjcBHzztIHeIFlcfhwEOhaPIlLYmO3AiByRT3tbhWzKQKcn
-	+jVrVhFTYAZnUFPyRgeQ0lf1X9z90TFcnpTKtlti5BQEn71TWIDz24/6tBjgEHnYt/zxQlj2ozZuj
-	dihG/22eAmPFwoyib8i1azPvQvRI0Ghj5BiAwokqIUWGkkyZcmIJCf9w386kozyaj7GyXDnKks0bG
-	nKwwVVHRmfxc/PIVIcCxxpW58OM3c5APrONdzg5nHrAN6e9tRxuXpwh1mtN4D56IJ9TOSxGfUoyf+
-	lk9RfZb6t9VUHnDh267Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8j1oeBxiPDxwX4ROesHG+Bp2/ullMBv6CggItOgqvC4=; b=1BSW1TK6gkylF4pyyeBA6fWzdN
+	yz9191oyUbSbnUwA7d1J1kyJLypzSxmtNvt8+nWv/bZ3gGSc67DpdeWtSTLMJ73OaME3oSJ18oMD9
+	193OS64ACQ55pF183mD3P129fN2ECdkjXBuWC+tYrl+wprA5BAlcJ8yT9Y4rdQENF+CiqNPPmGLVR
+	3LTjXgYOpKNUkTlMWKLZid7/389J9Q1V/uyVL/ATLL364a1bkKAE3HBuJoroFc8Wl28AJp+kznVQD
+	HMgrEwub3oEEoEstleXFDaIf6CFPkh+nsFyx09nzl4ozJozbjF193JzFUHIMIqDlsfufjS45CbkON
+	vB5tUMEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3fZs-00B54L-1D;
-	Mon, 29 May 2023 16:18:36 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1q3fd5-00B5nV-0v;
+	Mon, 29 May 2023 16:21:55 +0000
+Received: from sender4-op-o15.zoho.com ([136.143.188.15])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3fZp-00B532-2N;
-	Mon, 29 May 2023 16:18:35 +0000
-Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-3f6a6b9c079so22764575e9.1;
-        Mon, 29 May 2023 09:18:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1685377112; x=1687969112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=OS7Cd231F040G33nTg/JdwMNbg9I56weKfa+JuzR9V0=;
-        b=odFSh468vCEXSATMzrGBnyFPDEPBnu3/GVtTQzp2WbXOltmvSGkGEzlC+K8uKcxOUK
-         BYYZO3kOcY8anhzgBOM6eu2JYSW1pbA8imDeBahG2zyaSZEaB0IcQh5Ze1XwlYq4jIDY
-         KelS15P78jje2Xt/QEEsGMzhwwlpa5oUQBJ1dAWnUgDFDo8WAy3DvrQgmAHMZ+JDff+L
-         C+HUaai8+J2dlLY0DigOEZjxf2blWamfHgxRO/kjSklzV24Si3sLDtOa8183sh/g7NiP
-         OMgXLYoeAhgFdMZIEnib1pOtsX2fU4TsK6pA2bkKNPWSkiM2WC4x7RsOvk4Zoblle2YU
-         fETw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685377112; x=1687969112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=OS7Cd231F040G33nTg/JdwMNbg9I56weKfa+JuzR9V0=;
-        b=dLSpw5lHZrsU1XKYv2zirEThyk9rp54nhE89kFhcrPPaAW3ociaI3rzHnizJtmz4an
-         MGrTDfv+WAYi0Yfj/tslSMnlTFk6CM9dS5rZsuip4e+qGQanx0uVBIIgCleBHHMTBa5I
-         UOEoisDHbCQbT8rUvcfEi1AcGKnhOwJLACIk2RwaYcCobmJ0PCawINalDuaugmRW4wZy
-         sJb86P7xFi6NMWnin8NI8TCpQhQvj3gmsNYPrm9xBQcljMlvA4F5dVBa6DEmmGHzMFpK
-         GmGVBa4ds10kccUyvgd7cTKNdZt4rAkMQ4aQUTZUbX4M2u0qUfmZwO1r7y0B6pUrUcvK
-         M/ow==
-X-Gm-Message-State: AC+VfDyLmbEve9WY2JpyMv6pf6pX1a9kxpMf5QeTW0boSbLxQ8Vtpc38
-	cCvkmKVEoc7ydp/Ui2e40PA=
-X-Google-Smtp-Source: ACHHUZ5yb7656A5Pt8QU+Hxu5DFAGjmIz71TZJhb5cmkFGg3fCgQ27dRj5NsY4DDPtehbz40yOKrMQ==
-X-Received: by 2002:a7b:c84c:0:b0:3f6:cfc7:8bcf with SMTP id c12-20020a7bc84c000000b003f6cfc78bcfmr9832893wml.34.1685377111877;
-        Mon, 29 May 2023 09:18:31 -0700 (PDT)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id x11-20020a1c7c0b000000b003f50876905dsm14723899wmc.6.2023.05.29.09.18.30
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 29 May 2023 09:18:30 -0700 (PDT)
-Message-ID: <eb9d9814-2dd4-ee87-b1ca-4660b59abec4@gmail.com>
-Date: Mon, 29 May 2023 18:18:30 +0200
+	id 1q3fd2-00B5ks-1I;
+	Mon, 29 May 2023 16:21:53 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1685377277; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=G6RrffxUDiN+rZn+9hraKJiGExfBO786rQeE7OvaQhxbItkiMP/2C0UDRHwkK0fW54XKv/G9iQGEz790VLYcY8mAfLuYlylgu2EFCh9zvdT4pvNuLdEZONWI0fbfCg9+JbqeK2KWX1ZFB1sUVsHYKzcrwh5DzVcE6N5pg/jipOw=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1685377277; h=Content-Transfer-Encoding:Cc:Date:From:MIME-Version:Message-ID:Subject:To; 
+	bh=8j1oeBxiPDxwX4ROesHG+Bp2/ullMBv6CggItOgqvC4=; 
+	b=gQUoOGoz59aIRVf8TQB3FHbOKf9YIQXskCaCNqE7gntmgL2LM7y7o+hKKBeQtrIimXv7zNp1/I0yCOx0JOvlreug6G1215YCRmgVcBvjdV37MqV7zIpYgz2n2A6SDHk9ZHtOamQLLTeU/1WHXcIQq40gq3drK//6dwBv/EDWFPc=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=icenowy.me;
+	spf=pass  smtp.mailfrom=uwu@icenowy.me;
+	dmarc=pass header.from=<uwu@icenowy.me>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1685377277;
+	s=zmail2; d=icenowy.me; i=uwu@icenowy.me;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Transfer-Encoding:Reply-To;
+	bh=8j1oeBxiPDxwX4ROesHG+Bp2/ullMBv6CggItOgqvC4=;
+	b=SWIP1fVhQuhfHxUL8jt8wfrhEYINJencl0HjEckbZ9+PIrWMKMVQVj38HNsamiwp
+	aiL0WS01JygLIDF6N4434Ro3o4m/QmnYIw8l/lBf2CaIgmVVOHOb21sFChoKXXTqMqu
+	2RycejX3411nD0kyZf84uSWm+tMPZO/jGrbacoDi9s4BrU2zvRVzRlqp9MXpZDy+aCz
+	kaLe7j/ycJ9StOAQNaOaPKAuQsZJmvRE2yKh5Wgk8ILV9JDlpzQJ9BkMI8HEfDkc2EM
+	9YIgsZA9EwZq8bvXbV4vNU22ZHQ5a1Lxs15wInxACrVdOJfzfwktZUBLf99DfE4A9Lj
+	aQ9TY8OpIA==
+Received: from edelgard.fodlan.icenowy.me (120.85.97.71 [120.85.97.71]) by mx.zohomail.com
+	with SMTPS id 1685377276027350.71344157850797; Mon, 29 May 2023 09:21:16 -0700 (PDT)
+From: Icenowy Zheng <uwu@icenowy.me>
+To: "Rafael J . Wysocki" <rafael@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@linaro.org>,
+	Amit Kucheria <amitk@kernel.org>,
+	Zhang Rui <rui.zhang@intel.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Kang Chen <void0red@hust.edu.cn>,
+	Dongliang Mu <dzm91@hust.edu.cn>
+Cc: linux-pm@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Icenowy Zheng <uwu@icenowy.me>
+Subject: [PATCH 0/2] thermal/drivers/mediatek: fix a regression affecting other subsystems
+Date: Tue, 30 May 2023 00:20:54 +0800
+Message-Id: <20230529162056.3786301-1-uwu@icenowy.me>
+X-Mailer: git-send-email 2.39.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH] arm64: dts: mt7986: use size of reserved partition for
- bl2
-Content-Language: en-US, ca-ES, es-ES
-To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
-References: <20230528113343.7649-1-linux@fw-web.de>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20230528113343.7649-1-linux@fw-web.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230529_091833_772908_BDB1B553 
-X-CRM114-Status: GOOD (  21.59  )
+X-CRM114-CacheID: sfid-20230529_092152_512584_991CDAB8 
+X-CRM114-Status: UNSURE (   9.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,69 +85,31 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, stable@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+In the commit I reverted as the first commit of this patchset, the
+of_iomap function call, which allows multiple mapping of the same
+physical memory space, is replaced to calling devm_of_iomap, which
+registers exclusivity, and on my system (mt8173-elm), preventing display
+from working.
 
+So I reverted it, and to really solve the problem that the original
+commit wants to solve, I read the source of auxadc-thermal and realized
+that the address of these two memory blocks are not saved after probe,
+and they're only used when initializing the thermal sensors. This leads
+to my final fix, which is the second commit here, that adds of_iounmap
+just to the probe function.
 
-On 28/05/2023 13:33, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> To store uncompressed bl2 more space is required than partition is
-> actually defined.
-> 
-> There is currently no known usage of this reserved partition.
-> Openwrt uses same partition layout.
-> 
-> We added same change to u-boot with commit d7bb1099 [1].
-> 
-> [1] https://source.denx.de/u-boot/u-boot/-/commit/d7bb109900c1ca754a0198b9afb50e3161ffc21e
-> 
-> Cc: stable@vger.kernel.org
-> Fixes: 8e01fb15b815 ("arm64: dts: mt7986: add Bananapi R3")
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+Icenowy Zheng (2):
+  Revert "thermal/drivers/mediatek: Use devm_of_iomap to avoid resource
+    leak in mtk_thermal_probe"
+  thermal/drivers/mediatek: unmap foreign MMIO after probing
 
-Applied, thanks!
+ drivers/thermal/mediatek/auxadc_thermal.c | 46 ++++++++++++-----------
+ 1 file changed, 24 insertions(+), 22 deletions(-)
 
-> ---
-> If the bl2 does not fit into the bl2-partition (cut off), board does
-> not boot, thats why i want to increase it now. My current bl2 is 197K
-> for nor and i ran into this problem.
-> 
-> Openwrt uses also the first reserved partition to give bl2 more
-> space:
-> 
-> https://git.openwrt.org/?p=openwrt/openwrt.git;a=blob;f=target/linux/mediatek/dts/mt7986a-bananapi-bpi-r3-nor.dts;h=f597b869abc80d1a73f44ebb85ad4da17376bb52;hb=HEAD#l22
-> 
-> so imho it should be same in mainline to not require complex bl2
-> compression.
-> 
-> have now sent the board-specific dts to uboot too:
-> https://source.denx.de/u-boot/u-boot/-/commit/d7bb109900c1ca754a0198b9afb50e3161ffc21e
-> ---
->   .../boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso     | 7 +------
->   1 file changed, 1 insertion(+), 6 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso
-> index 84aa229e80f3..e48881be4ed6 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso
-> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso
-> @@ -27,15 +27,10 @@ partitions {
->   
->   					partition@0 {
->   						label = "bl2";
-> -						reg = <0x0 0x20000>;
-> +						reg = <0x0 0x40000>;
->   						read-only;
->   					};
->   
-> -					partition@20000 {
-> -						label = "reserved";
-> -						reg = <0x20000 0x20000>;
-> -					};
-> -
->   					partition@40000 {
->   						label = "u-boot-env";
->   						reg = <0x40000 0x40000>;
+-- 
+2.39.1
+
 
