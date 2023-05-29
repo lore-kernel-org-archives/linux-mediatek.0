@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95D74C7EE29
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 May 2023 15:58:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F67CC77B7A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 May 2023 15:58:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kjV+qtzWnYDSApuIZdG6k60da0iyvrETpppNOJS7QhA=; b=Tdxj311uuUetbM
-	1Lit7gFii6LeqA7a7YlHBikYwR/klgIKWpExNGjyoojdgpJIOtblyUAg4JpyaG4HsSV07a6WQPGrv
-	4mfLxTSqT+oCkFOtlahtf5o9s1hnjSrFH6FceCT/Rnw68gvLw9g25LcCOsMF6zwzFO7R67cLbmcIH
-	fzgumtd17azntaDdXkxb1VtmUVM87eBBcy3UWjeaQoXA6KQg58I7e6tXhjZk6X3qD0syxz6y5WtkA
-	pzD+OkbIpemLwCDbjh6utirpBN/okfvTe26HBxLNaSZex9EHfH7aS4qy4I7hiySrMmbwWg/7E/vNf
-	oLbvkGDmlHAgNXAIayTw==;
+	List-Owner; bh=DmbKTWrR5Ist8xbfhfIsTWnGuuP3Tj0QFkiF3QCNa5I=; b=aphOjEV4/xriJC
+	z8+KQOaBjq1p9mQyDnzXEBJsxLL3v9Vut6DR9HnVt7MePYknXU1N+NAaUy6NyvOuKxCtmIi+3RuLe
+	A4rnXDfv6ktjhGM4k2toE03VHZYpeLklrklbkre2mH1j8yWgMe3495tMqXryhcDHF6Xy1VXQK+SIj
+	Qqumoxg1Y4/J6cDBDnekE7g+QuXSohzwrp+hC6fOORQegvMz9USf9Np+/2ZysO+DwnkzA7zzr/gmZ
+	o+46dNVNZ/RNfhQS1g7iHS3NboTJerNyoRGBIJsQldx0F1iLt2yJRz6gENLJPvhwXrDNKzgbXFBUe
+	2WU+KWYIAyrIvRJqp3SQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3fGN-00B1KY-1A;
-	Mon, 29 May 2023 15:58:27 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1q3fGi-00B1St-0l;
+	Mon, 29 May 2023 15:58:48 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3fGK-00B1IP-2V;
-	Mon, 29 May 2023 15:58:26 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-3f6094cb2d2so35464365e9.2;
-        Mon, 29 May 2023 08:58:24 -0700 (PDT)
+	id 1q3fGg-00B1RN-0B;
+	Mon, 29 May 2023 15:58:47 +0000
+Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-30aeee7c8a0so575891f8f.1;
+        Mon, 29 May 2023 08:58:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1685375903; x=1687967903;
+        d=gmail.com; s=20221208; t=1685375924; x=1687967924;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=kjV+qtzWnYDSApuIZdG6k60da0iyvrETpppNOJS7QhA=;
-        b=leIrk3+YeN3O5gT0SiqrdKlm8hRwbjXVUPzrUbTvKtNHpXLi9kF1LnJ2T00hZkDFD9
-         feQolja6wM71xhsg2GIE9+9UkEf50wO/KeNUyMOgsB8+5WOT/AblVKwm5+byas+hrW7R
-         UYDkajejLeYdBxZtJ1Wmrkr+0GwMw4bZ7Fr+YE9YTQmRyXcWzuFMc8spSIVSfPtHBL2Z
-         pDY+ugMtzo1vu8Bxy98yZOeNFAK3mLSOV6l0PkpWjhA0E3kWrcsjEuJLdo7gdfd5LV7y
-         k1AxLpynxLdzftCdiq5ot65HBN1Cf6icKbZZtXVIZkewTIX72bXfIAHUEoptZsYHtG5f
-         TbJQ==
+        bh=DmbKTWrR5Ist8xbfhfIsTWnGuuP3Tj0QFkiF3QCNa5I=;
+        b=eFu0CeBY8gp/40z60b34rH6O04y5Yh8sEMC3WKnYs6lLYSlq5jFOdzdK9a2txRIdlN
+         BHa3YeZFukW1UHyj7/6s2dUUos9lezr8zWrHCyeSnvW3MJh4sgfKk2sx2VxOCPI3JSHf
+         5H1E1ZNs0g5ZII9ycUlvLr7gkTxe4I4ljkWR1qUJByOI/hntrHAqq/opy8a+Of84Gmgy
+         frpEWi04wu7fz8LDKG7aJ7dLxDVaud3g1PogjNHe4VFsPBfxq/kpIOvicfzRP2vv/SRX
+         5ZFyIZN7HVJX/A9oaP1lNlIFZ35D0ALu8EaRTPTk2kSxDh2r9xgJj7M/sk3+fd39yGOA
+         +//g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685375903; x=1687967903;
+        d=1e100.net; s=20221208; t=1685375924; x=1687967924;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=kjV+qtzWnYDSApuIZdG6k60da0iyvrETpppNOJS7QhA=;
-        b=AqaIWVp3ppBic19oT7njFkhFO4IYUsvjam/uX3qye0YZkI8gdu/QJxLYfDSfWGMyPL
-         idJJncnDVPEGZSkexnIM69iDkXcQnhZ7B3QGLF0beVzCYJ2lq0B8y0guOoXEcrNqe0Um
-         UsoUUU4/NMOzat+aka4vwJLbRNzvit/H4Y9s0B6EusLHQPdknvDNSlOpUg/rEbgMQYrk
-         LU6JykvRdP5sSCxT6gLCVQVHfLNm+SZzAwCsze27NWthB2nci0qLA3yack1B9FTufJbT
-         WWdUSfz5vhhPPWStdYPHeukZRdyQ0SjMkRaPr5/h8OzN8IVMPTkRuLDR2SoQUAHc4nci
-         KEcg==
-X-Gm-Message-State: AC+VfDz6yzRhdRlUe39Ji1VZvCl9zK1pulGOpn7KMLrDy8j5mbkdLZ7B
-	SHsyigFNAK4Dn3ZyF/0tHXw=
-X-Google-Smtp-Source: ACHHUZ5WAiz6002gv+g3zk45cDtlIbfdv4jSfPBjDN5+0vxgVtYnOKe1uuzF73n649/FcsDdWL8lMQ==
-X-Received: by 2002:a7b:cc93:0:b0:3f6:9634:c8d6 with SMTP id p19-20020a7bcc93000000b003f69634c8d6mr8977486wma.18.1685375902833;
-        Mon, 29 May 2023 08:58:22 -0700 (PDT)
+        bh=DmbKTWrR5Ist8xbfhfIsTWnGuuP3Tj0QFkiF3QCNa5I=;
+        b=b/GMBzY16YRkcdmMN1PrgB+qZZ5SW0F52zEoymBSZUOe/wZhU6quzX2qJhErohhRza
+         sjZcur1ko8WLO29o2UwnklSxFVCI2seUEyjfQdZHyN0BmrmBXuGQU6EcolSwy0R/OrE9
+         QtlwKeTyZzIk2GzPlctu2XzjQ6QWwqumi+8FdmXPi+5kep/h9BVOw4KPjVSLtEmkC7nX
+         QRGCoRBIDK0M8rAT5j50737rP7BZu1JSwBcMZr9moDPKnAmsEcxc5UVWl2FBto77hR4M
+         qgFwYTRZ9YDUMLMtD9PL3hv1h1C09Gq3RWSSRKWijxHh2HyiRgNy0O25tG0547MpWEGm
+         pB/Q==
+X-Gm-Message-State: AC+VfDwtRv76nq/cmyhNE3lzy09XKV2nAi34LXBfFHRgYjqSKRqCeTM7
+	iP4K0hOPKDhcoyER5blccyI=
+X-Google-Smtp-Source: ACHHUZ6k7FdIrg5GktNfDGImRYatKh5VSOf6eWINqdYV4QBqmmd72yfSLLQ9HTcoaAYIzzukk93u9Q==
+X-Received: by 2002:a5d:6584:0:b0:307:f75:f581 with SMTP id q4-20020a5d6584000000b003070f75f581mr7270131wru.18.1685375924532;
+        Mon, 29 May 2023 08:58:44 -0700 (PDT)
 Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id n5-20020adffe05000000b00307bc4e39e5sm318049wrr.117.2023.05.29.08.58.20
+        by smtp.gmail.com with ESMTPSA id o1-20020a5d4741000000b002f9e04459desm324601wrs.109.2023.05.29.08.58.42
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 29 May 2023 08:58:21 -0700 (PDT)
-Message-ID: <bba52e30-47ef-540b-1683-44e19dc8aa8b@gmail.com>
-Date: Mon, 29 May 2023 17:58:20 +0200
+        Mon, 29 May 2023 08:58:43 -0700 (PDT)
+Message-ID: <3c635ce1-71b0-9079-836c-1a628a19414d@gmail.com>
+Date: Mon, 29 May 2023 17:58:41 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.0
-Subject: Re: [PATCH v1 4/7] arm64: dts: mt7986: add PWM
+Subject: Re: [PATCH v1 5/7] arm64: dts: mt7986: add PWM to BPI-R3
 Content-Language: en-US, ca-ES, es-ES
 To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
 References: <20230421132047.42166-1-linux@fw-web.de>
- <20230421132047.42166-5-linux@fw-web.de>
+ <20230421132047.42166-6-linux@fw-web.de>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20230421132047.42166-5-linux@fw-web.de>
+In-Reply-To: <20230421132047.42166-6-linux@fw-web.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230529_085824_810985_BF97442D 
-X-CRM114-Status: GOOD (  15.15  )
+X-CRM114-CacheID: sfid-20230529_085846_091128_6FD3EDA7 
+X-CRM114-Status: GOOD (  14.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,42 +96,47 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 21/04/2023 15:20, Frank Wunderlich wrote:
-> From: Daniel Golle <daniel@makrotopia.org>
+> From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> This adds pwm node to mt7986.
+> Add pwm node and pinctrl to BananaPi R3 devicetree.
 > 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 
 Applied, thanks
 
 > ---
->   arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 14 ++++++++++++++
->   1 file changed, 14 insertions(+)
+>   .../boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts   | 13 +++++++++++++
+>   1 file changed, 13 insertions(+)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-> index a38965e23825..a409d5e845c2 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-> @@ -240,6 +240,20 @@ crypto: crypto@10320000 {
->   			status = "disabled";
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
+> index 2b028141f1f7..782519429497 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
+> @@ -274,6 +274,13 @@ mux {
 >   		};
+>   	};
 >   
-> +		pwm: pwm@10048000 {
-> +			compatible = "mediatek,mt7986-pwm";
-> +			reg = <0 0x10048000 0 0x1000>;
-> +			#clock-cells = <1>;
-> +			#pwm-cells = <2>;
-> +			interrupts = <GIC_SPI 137 IRQ_TYPE_LEVEL_HIGH>;
-> +			clocks = <&topckgen CLK_TOP_PWM_SEL>,
-> +				 <&infracfg CLK_INFRA_PWM_STA>,
-> +				 <&infracfg CLK_INFRA_PWM1_CK>,
-> +				 <&infracfg CLK_INFRA_PWM2_CK>;
-> +			clock-names = "top", "main", "pwm1", "pwm2";
-> +			status = "disabled";
+> +	pwm_pins: pwm-pins {
+> +		mux {
+> +			function = "pwm";
+> +			groups = "pwm0", "pwm1_0";
 > +		};
+> +	};
 > +
->   		uart0: serial@11002000 {
->   			compatible = "mediatek,mt7986-uart",
->   				     "mediatek,mt6577-uart";
+>   	spi_flash_pins: spi-flash-pins {
+>   		mux {
+>   			function = "spi";
+> @@ -344,6 +351,12 @@ mux {
+>   	};
+>   };
+>   
+> +&pwm {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&pwm_pins>;
+> +	status = "okay";
+> +};
+> +
+>   &spi0 {
+>   	pinctrl-names = "default";
+>   	pinctrl-0 = <&spi_flash_pins>;
 
