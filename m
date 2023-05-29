@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3E33C7EE2C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 May 2023 18:00:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D68BBC77B7E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 May 2023 18:00:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GZ1Pw000YHwunl4UOYUIH6XIIpBvLCqm0y/k6ZseuYk=; b=06ISG7XQCDIl3vd7xs5ZE2MrtH
-	Re3JUloDbI+udSyTz2PkuOjnqvpREwk1oy9D2OBxrfBi7nXru5mTDUt/QDbqPuYJS14D5Fxs0P00e
-	HLTwVtw6CsSpYdPk++M7C3SSqem5tKC7Z4CnAP6lnFXfweu26XATbh8f8vR8sB9k4yG3r9rjx3mHx
-	LJvqgo0ADyA/Gpc4Y34423DPxjYhWndl1fOaVQ16VethPKuqzyGmybjE4njoP33D80U71drb0010Y
-	bl/lW2ZIEiqrR4jiE+k8Vky3CrjDIzQ2W9Bqa6VBMO4WVnF1oBK0y+eDAIvYc8tYs6tYJpyRppZRR
-	uZZdgRNg==;
+	bh=o6KztWxfOQw7uIdLc2nfQ4eiSQgNkopQmfDWyk3B1pA=; b=VfZS3IUsSJ7LOF09ngnwkBnQIX
+	4sIkRanSixdiIpU1MD6HmGP2tkoHvIsQypqDAACTqMzPLn8eepLF9dXNPsW/Zd0zQx0VOvl26VsKZ
+	0bKpyvrMQK0DLlP4wni42A02rruPwxYs83DKCGphgibVc58vm8H+fSnMGVWcKPCHOLsR/rPHd5VE4
+	Oyna8PmG25NauCnkYIGZxkaL0PYwrrANViLQLZBmFy6VCUKjLLc5O1jP7TomvXPeTAm2uo5tRCV//
+	h7AsOo4EGTPPBgXO6uBVhitrv5fRcxuqQPfVZSMk4RikM7Rkg6vp31Wv6NFNzP46E7klTYIYMK34M
+	fFsnSMdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3hAK-00BLrP-01;
-	Mon, 29 May 2023 18:00:20 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1q3hAL-00BLtA-39;
+	Mon, 29 May 2023 18:00:21 +0000
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3g0e-00BAQG-1N
+	id 1q3g0i-00BAT9-1a
 	for linux-mediatek@lists.infradead.org;
-	Mon, 29 May 2023 16:46:17 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-96fffe11714so650217266b.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 29 May 2023 09:46:13 -0700 (PDT)
+	Mon, 29 May 2023 16:46:22 +0000
+Received: by mail-ed1-x535.google.com with SMTP id 4fb4d7f45d1cf-5147f7d045bso4700436a12.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 29 May 2023 09:46:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1685378773; x=1687970773;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1685378777; x=1687970777;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=GZ1Pw000YHwunl4UOYUIH6XIIpBvLCqm0y/k6ZseuYk=;
-        b=deTEIU+pyD3V5mnx/rrEaGu+++V8NuthSZVyNy3qg7qAW7v1bdiAuHp1Ykv4wUMdak
-         sEITqWIa0GT/2rqYOvugqqALSSRd0RVUjiefeGQVIw0wLoa8e+hwbyx+2w1oNF//W7Un
-         BXuQN9qcPNRjHieND/XpY8yaVCXqjH/bMXGpEm8E/v6SQuK2JCOB0KFrRcLdU/v7pTEj
-         EI/mw2e4EWrFO1ixiI2qRQFfaNcig/KQNRdwTN6CbqtiM5EDCUzq8/hCPOICPWOAq9tw
-         8Q6Ityc22xe4ekw1DhjSIKE7tu0Jvyv+2v80prncLc1QuPfo6T8PloejnKRJqziKOLJj
-         KE8g==
+        bh=o6KztWxfOQw7uIdLc2nfQ4eiSQgNkopQmfDWyk3B1pA=;
+        b=Gyt0f4sPQH8c/Yxoq/p6+y5qkwYSWa26y/xs3+N+ciE8FYOVZ7J6zlIPldqKZ9mZCy
+         P8RQBP/nUCMXQSwSviRg4NilNzK3EFKIOu+HRNl9YROsQxVUO2lfQ5FGVe+wAFqbhKqP
+         9taBOpLFmOR21sbKA6xg+kVTEVlhJd2rUoshaXHyy77vT/u7iAA45hq3AKMZ4RO3fkT8
+         Vje55rUydVT+i9gCqmf+uUzMHhLge9Ezch2RLh3IUat5YaeUCrnZWOBGyBwXj0mlRedF
+         LIlGr/MUwOq5qUS4ZA0BUs4CZsI4g/n0D+O1DxtLYFakPRdtH/8ldO2CRwRd7QD3veKu
+         ZW6A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685378773; x=1687970773;
+        d=1e100.net; s=20221208; t=1685378777; x=1687970777;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=GZ1Pw000YHwunl4UOYUIH6XIIpBvLCqm0y/k6ZseuYk=;
-        b=BJlDLV8mHHRZF2XebMACDnHqD74MZ6siGtOft1g4VJYYltlz5qQifCWbO1G3HEemnn
-         Ef4gkc2QxAJpdLcTC4Llc8W/qO3QQarIai92I9hGVdXAxP72+ddqluwl+MFJ8h/BPGyo
-         /cejReUo7EON3UMxT7QdY8XflIlptuwmZXg84xcec03kpGhtQykczIQ+e+hKk6cq9AP3
-         75HlJoENi+i+EBxurN0SKil/u2mNr3ANS8U9BYIYgsBIuyRR+KoZjGeLTmkaG/cfIlYJ
-         VPSQKaDHjNvUbzqIi8bw/o6M8D2X0P0152evsjbKAkIEDF2VhVSVrkUh7jHeUsfuCvcm
-         93QA==
-X-Gm-Message-State: AC+VfDxhOeIJQssDQR++0W+pPJVsuu4WlRSXzzoPXFZSFyF1s2gJ+0Ro
-	oxx5rfYfjhP8nAYclCrjFRZU6EIhxm8m+hn32YCVTg==
-X-Google-Smtp-Source: ACHHUZ57TCu1nzyJyjSvhGgSy6JPiAeD/WueOUQpFY775HM6nWCxEeV9TIa9C/uSHQQiugl0GYTgpw==
-X-Received: by 2002:a17:907:6093:b0:965:6075:d100 with SMTP id ht19-20020a170907609300b009656075d100mr14795453ejc.39.1685378772810;
-        Mon, 29 May 2023 09:46:12 -0700 (PDT)
+        bh=o6KztWxfOQw7uIdLc2nfQ4eiSQgNkopQmfDWyk3B1pA=;
+        b=Z8pEe4zZhCi+sFt34+zucbLtEZAh+ciqQw37REC1oBn2w42OLQOIiPxG0jPAllJ4WC
+         AUR1jO9QrnSZ/7OaQar69Wy9MwZahT3xnjV6FFfFYg5GMA2ghZl14iwPqC7V7BVz+7Mn
+         YG4AApuFk+5EEY8RQog3FxO5ca3JMcOj4BMveFjT/ayBEZtT2qW9Tqd2Bm8T6PXO1RoT
+         MBDaPHBheVF4Set6UcNAFzBHWLaVWff2Qaf86iXRMC9H+N6DiaL4AyI/Ph6PmJjM0206
+         DW4pkEsVVbhj01vt8PDln9SbNYsZUMEn0/P80ZNEwvoGiIqkRxWjXAV+8LAkyMrI3I+x
+         OTKA==
+X-Gm-Message-State: AC+VfDxTVd0s76Y2yQiBh5aGvCsRZu+0wQXRde00yG20/RPYkRcuJj6Z
+	NVaImPOe8TzENC9c1b9mmN7UfA==
+X-Google-Smtp-Source: ACHHUZ4d9Ioo2R78/WrM/mfDBsIfkzraI/JknJg/l/cBMd2pPd3hVpvP1bJ2Sav3NgeP8b8Zr6E32g==
+X-Received: by 2002:aa7:dccc:0:b0:510:ed22:db43 with SMTP id w12-20020aa7dccc000000b00510ed22db43mr228129edu.24.1685378776855;
+        Mon, 29 May 2023 09:46:16 -0700 (PDT)
 Received: from ph18.baylibre (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
-        by smtp.gmail.com with ESMTPSA id f4-20020aa7d844000000b0050d89daaa70sm3248578eds.2.2023.05.29.09.46.11
+        by smtp.gmail.com with ESMTPSA id f4-20020aa7d844000000b0050d89daaa70sm3248578eds.2.2023.05.29.09.46.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 May 2023 09:46:12 -0700 (PDT)
+        Mon, 29 May 2023 09:46:16 -0700 (PDT)
 From: =?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>
 To: daniel.lezcano@linaro.org,
 	angelogioacchino.delregno@collabora.com,
@@ -86,9 +86,9 @@ Cc: linux-pm@vger.kernel.org,
 	abailon@baylibre.com,
 	amergnat@baylibre.com,
 	khilman@baylibre.com
-Subject: [PATCH v3 2/5] thermal/drivers/mediatek/lvts_thermal: Add suspend and resume
-Date: Mon, 29 May 2023 18:46:02 +0200
-Message-ID: <20230529164605.3552619-3-bero@baylibre.com>
+Subject: [PATCH v3 5/5] thermal/drivers/mediatek/lvts_thermal: Update calibration data documentation
+Date: Mon, 29 May 2023 18:46:05 +0200
+Message-ID: <20230529164605.3552619-6-bero@baylibre.com>
 X-Mailer: git-send-email 2.41.0.rc2
 In-Reply-To: <20230529164605.3552619-1-bero@baylibre.com>
 References: <20230529164605.3552619-1-bero@baylibre.com>
@@ -96,8 +96,9 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230529_094616_468526_DEAF75FC 
-X-CRM114-Status: GOOD (  14.54  )
+X-CRM114-CacheID: sfid-20230529_094620_525956_BC666A82 
+X-CRM114-Status: UNSURE (   9.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,66 +115,72 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Balsam CHIHI <bchihi@baylibre.com>
 
-Add suspend and resume support to LVTS driver.
+Update LVTS calibration data documentation for mt8192 and mt8195.
 
 Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
+Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+[bero@baylibre.com: Fix issues pointed out by Nícolas F. R. A. Prado <nfraprado@collabora.com>]
 Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
 ---
- drivers/thermal/mediatek/lvts_thermal.c | 34 +++++++++++++++++++++++++
- 1 file changed, 34 insertions(+)
+ drivers/thermal/mediatek/lvts_thermal.c | 31 +++++++++++++++++++++++--
+ 1 file changed, 29 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-index d0a3f95b7884b..5ea8a9d569ea6 100644
+index d5e5214784ece..9185d02003633 100644
 --- a/drivers/thermal/mediatek/lvts_thermal.c
 +++ b/drivers/thermal/mediatek/lvts_thermal.c
-@@ -1169,6 +1169,38 @@ static int lvts_remove(struct platform_device *pdev)
- 	return 0;
- }
- 
-+static int lvts_suspend(struct platform_device *pdev, pm_message_t state)
-+{
-+	struct lvts_domain *lvts_td;
-+	int i;
-+
-+	lvts_td = platform_get_drvdata(pdev);
-+
-+	for (i = 0; i < lvts_td->num_lvts_ctrl; i++)
-+		lvts_ctrl_set_enable(&lvts_td->lvts_ctrl[i], false);
-+
-+	clk_disable_unprepare(lvts_td->clk);
-+
-+	return 0;
-+}
-+
-+static int lvts_resume(struct platform_device *pdev)
-+{
-+	struct lvts_domain *lvts_td;
-+	int i, ret;
-+
-+	lvts_td = platform_get_drvdata(pdev);
-+
-+	ret = clk_prepare_enable(lvts_td->clk);
-+	if (ret)
-+		return ret;
-+
-+	for (i = 0; i < lvts_td->num_lvts_ctrl; i++)
-+		lvts_ctrl_set_enable(&lvts_td->lvts_ctrl[i], true);
-+
-+	return 0;
-+}
-+
- static const struct lvts_ctrl_data mt8195_lvts_mcu_data_ctrl[] = {
- 	{
- 		.cal_offset = { 0x04, 0x07 },
-@@ -1268,6 +1300,8 @@ MODULE_DEVICE_TABLE(of, lvts_of_match);
- static struct platform_driver lvts_driver = {
- 	.probe = lvts_probe,
- 	.remove = lvts_remove,
-+	.suspend = lvts_suspend,
-+	.resume = lvts_resume,
- 	.driver = {
- 		.name = "mtk-lvts-thermal",
- 		.of_match_table = lvts_of_match,
+@@ -531,7 +531,8 @@ static int lvts_sensor_init(struct device *dev, struct lvts_ctrl *lvts_ctrl,
+  * The efuse blob values follows the sensor enumeration per thermal
+  * controller. The decoding of the stream is as follow:
+  *
+- * stream index map for MCU Domain :
++ * MT8195 :
++ * Stream index map for MCU Domain mt8195 :
+  *
+  * <-----mcu-tc#0-----> <-----sensor#0-----> <-----sensor#1----->
+  *  0x01 | 0x02 | 0x03 | 0x04 | 0x05 | 0x06 | 0x07 | 0x08 | 0x09
+@@ -542,7 +543,7 @@ static int lvts_sensor_init(struct device *dev, struct lvts_ctrl *lvts_ctrl,
+  * <-----mcu-tc#2-----> <-----sensor#4-----> <-----sensor#5-----> <-----sensor#6-----> <-----sensor#7----->
+  *  0x13 | 0x14 | 0x15 | 0x16 | 0x17 | 0x18 | 0x19 | 0x1A | 0x1B | 0x1C | 0x1D | 0x1E | 0x1F | 0x20 | 0x21
+  *
+- * stream index map for AP Domain :
++ * Stream index map for AP Domain mt8195 :
+  *
+  * <-----ap--tc#0-----> <-----sensor#0-----> <-----sensor#1----->
+  *  0x22 | 0x23 | 0x24 | 0x25 | 0x26 | 0x27 | 0x28 | 0x29 | 0x2A
+@@ -556,6 +557,32 @@ static int lvts_sensor_init(struct device *dev, struct lvts_ctrl *lvts_ctrl,
+  * <-----ap--tc#3-----> <-----sensor#7-----> <-----sensor#8----->
+  *  0x40 | 0x41 | 0x42 | 0x43 | 0x44 | 0x45 | 0x46 | 0x47 | 0x48
+  *
++ * MT8192 :
++ * Stream index map for MCU Domain mt8192 :
++ *
++ * <-----mcu-tc#0-----> <-----sensor#0----->        <-----sensor#1----->
++ *  0x01 | 0x02 | 0x03 | 0x04 | 0x05 | 0x06 | 0x07 | 0x08 | 0x09 | 0x0A | 0x0B
++ *
++ * <-----sensor#2----->        <-----sensor#3----->
++ *  0x0C | 0x0D | 0x0E | 0x0F | 0x10 | 0x11 | 0x12 | 0x13
++ *
++ * <-----sensor#4----->        <-----sensor#5----->        <-----sensor#6----->        <-----sensor#7----->
++ *  0x14 | 0x15 | 0x16 | 0x17 | 0x18 | 0x19 | 0x1A | 0x1B | 0x1C | 0x1D | 0x1E | 0x1F | 0x20 | 0x21 | 0x22 | 0x23
++ *
++ * Stream index map for AP Domain mt8192 :
++ *
++ * <-----sensor#0----->        <-----sensor#1----->
++ *  0x24 | 0x25 | 0x26 | 0x27 | 0x28 | 0x29 | 0x2A | 0x2B
++ *
++ * <-----sensor#2----->        <-----sensor#3----->
++ *  0x2C | 0x2D | 0x2E | 0x2F | 0x30 | 0x31 | 0x32 | 0x33
++ *
++ * <-----sensor#4----->        <-----sensor#5----->
++ *  0x34 | 0x35 | 0x36 | 0x37 | 0x38 | 0x39 | 0x3A | 0x3B
++ *
++ * <-----sensor#6----->        <-----sensor#7----->        <-----sensor#8----->
++ *  0x3C | 0x3D | 0x3E | 0x3F | 0x40 | 0x41 | 0x42 | 0x43 | 0x44 | 0x45 | 0x46 | 0x47
++ *
+  * The data description gives the offset of the calibration data in
+  * this bytes stream for each sensor.
+  */
 -- 
 2.41.0.rc2
 
