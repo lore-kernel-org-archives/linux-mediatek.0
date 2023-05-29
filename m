@@ -4,83 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A93DC7EE29
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 May 2023 14:01:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86297C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 May 2023 14:01:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=m0lsLEu8+OX1i7KbaDbSPJtrAmfcuMpjCKFHxHn5ehg=; b=NyPngJpP3osFIlh6xkBxXMyXk3
-	cegEp7eEQGfqCyFnT1SgOYmYfqxiwdxHDYtPvpzmNCIeMGb+q/pjZXI3/JrD4HySDXiSlcZFndGET
-	GYaTg39/DisJpxCdaRRREHpGWpDBJyPvAE+1cfRDerVeC7TynRF6Ld4Thlop1MgDtHW5uRLFOK2WP
-	/squjtitiGSa3XtVbzX89P+c9qeSTUvdayzS0Vag2yXcSMiGiJpIkJKFBy1r+kS7jVncJOh/2XzZ/
-	6omxFV4NmbJCTQErX2H0lbx0GA8GjS0FWZ5YSIPvvGdiXEKqKhhOW0VxT3Gvn8leJbdnnUg36gLO6
-	VnlROMZg==;
+	bh=rkVD5uNKLXho+93j6yXeIdGEkFo+SItch2wdaTfZzF4=; b=P3Mzbv1qbMlFpcWVlh3PCBcxmZ
+	fNFE06n1livxsksPWA/RNqYBVF+8GTvfU665Wu7wIrEtaW/2K/gVdteqrGKZ69nq2Eu8JM7ilAmTy
+	NmrZ+Kb42SjbDxQeB653KXAqkuk7KN5t/Ew36ECtMb0L04+M9VZRTKSaY+iOniI5Upt35bmlTecgM
+	4DND5juwBE93Kn+TjmSPPUI9b8X9EqDOKRkBIqJpN6RLy7QJGAX8toeHH4KcFWP/Z8/eCV+oXez1m
+	XKut2SZosDyMjfmvXQhgJAvxG8crUzxjd/5ia3SkKdbwwnmAFFXHT0w3Jkuax5KPDhYpBOHEm4l86
+	MNgBGeKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3dQf-00AhHm-1d;
-	Mon, 29 May 2023 14:00:57 +0000
-Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34])
+	id 1q3dRC-00AhSS-0S;
+	Mon, 29 May 2023 14:01:30 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3dQb-00AhF9-1j
-	for linux-mediatek@lists.infradead.org;
-	Mon, 29 May 2023 14:00:55 +0000
-Received: by mail-yb1-xb34.google.com with SMTP id 3f1490d57ef6-bad97da58adso2867772276.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 29 May 2023 07:00:50 -0700 (PDT)
+	id 1q3dR8-00AhQd-35;
+	Mon, 29 May 2023 14:01:28 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-30ae69ef78aso980627f8f.1;
+        Mon, 29 May 2023 07:01:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1685368850; x=1687960850;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=m0lsLEu8+OX1i7KbaDbSPJtrAmfcuMpjCKFHxHn5ehg=;
-        b=dUrk+VoNd2QGzgHdhxCBXJVTcLex2IrqFF1iVjAJXnB7DttdI+VhquXTGOAWNFDRbL
-         WUzcJZAXCQpaVy7qGM/wik5QFlD3eWKcxOMTWB2U0jUYUD33xKEq4xbU8Y9ADOi5BwJ3
-         OvTYon9xz6IQVw3qo+8qOA/RAGySkOO/UeCf/9HdghUzlYLc4eo/sZvSwPWs0ncst6RT
-         SWgvJUXIJG0yzhHKpLDtW8HsZjyl2xa67kKULW0qq39SDEYAC1ogmNPDCdjqBzFXRufw
-         RUofaSdRyY5t7CVuS4AnD4HETyVn9Q7udLKIqQxgaSOzLbQUPd1GBJh6kyeOJOAdVPss
-         M6qQ==
+        d=gmail.com; s=20221208; t=1685368884; x=1687960884;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=rkVD5uNKLXho+93j6yXeIdGEkFo+SItch2wdaTfZzF4=;
+        b=C8jexQLFK7fIrq5hMh29fnNYYCZQHc49p8HRIM5JHUgM4KuH+lyrtzwU8rn9/yeadB
+         9JYXQjgZaX99pzBa2fVTzAVeIpk/wElSxYrTMu0+oeNaJfSGwg7nQMDKnLQniSb8VPF0
+         6t/CiNN2IWiqXzQCJa+3H68BSoEJouPRp1dhpEKNspKTwlplGQo1X/klW76s4LqmacVb
+         ncWvJ75VEhzilUyIYh8n8ZqMbIwZspLoKhKA6qyqhEOi46eYZOISn/3/JSkzs25PaiAV
+         gADmrHGgPmE5JnbpiGvfddF7CVbs9fw+d/cON2F3bR3gb7wgYa1sr3ulwtht+Va+VjOs
+         A9HA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685368850; x=1687960850;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=m0lsLEu8+OX1i7KbaDbSPJtrAmfcuMpjCKFHxHn5ehg=;
-        b=FSVMj0n2g0DgrkmygYMiBKkvZaIE3Va7BA+BvZWNultWzvnNCRMZSixKh4cQ9Duc2Z
-         X00qUGGAtpFqj4NSpknRV3EYOUgv180NaD7jjVKc//KSFG/XYeVySqBOx10Oo9QXGkoY
-         ghHAj7rRWRyWCGhi67n2Q4Ht9INbBQYZmpJlhDfqGjYjO4DDusUob9yRpP5TIaFRlgrN
-         h2/viqIoJaO9ndO32Umt7iKLp2uqfXxuaW7yURjH9mCuaZsFar59trM/ffL47VR8bpFF
-         gCG35ywK9AA5iCiT9O3R7WqIw83EALLXn37TCNXBr8hK+HxwnTBkLj6B8BVMjkWOZbUQ
-         2v9w==
-X-Gm-Message-State: AC+VfDwiOPkxn8DrJqeoP2TJneyinEw0G9lJMb3CnearcO2uE8y4CyBI
-	n16m/nKZ5xXTznmXn0ZYaRMAyAFpAFPueeEu89M9pg==
-X-Google-Smtp-Source: ACHHUZ42AT/mF/LxxNdkE53oZiXxWBfZJhlq7TnCakjSMuYCKiH16dgciBk4JBiaVy1ulIc56tiPp6gn6WhGBvDsPF4=
-X-Received: by 2002:a81:52c9:0:b0:55a:12ab:a739 with SMTP id
- g192-20020a8152c9000000b0055a12aba739mr13826747ywb.47.1685368849831; Mon, 29
- May 2023 07:00:49 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1685368884; x=1687960884;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=rkVD5uNKLXho+93j6yXeIdGEkFo+SItch2wdaTfZzF4=;
+        b=XuHWyBBgwX206EHUR0tZ2s2i3oFEzx4WhlL2Q15qvbmQfc42+GC+QUw94xxRz6ohuU
+         jetIgB5fFXovYgrlhJ/bSe9FNALCYBOL3OHHCqktYdGw8v0NaFMidL/hcrh7G4RKsaPp
+         ubfcp4V8jJtYBjSkHqF36KyTh45V14ZZMrsoD+jhwDKTQDP6xYSZyVO6OuzwLpdTUpfe
+         XRRykMnvs3ysJM6iQCK9z++BXlqTQcA/gbaEzHHxlaK+MSUsWSN3eJtBj75lpoUAUQAs
+         ZQ9hpgaU4omWMV5Txb2eDn4teZ3qzDS5rAo5h9XpbJ4qJaryB1BcVtfH6kH0GoCSnJ3x
+         HFqg==
+X-Gm-Message-State: AC+VfDxXxm0Gq5f1/r1a1816dCNpm24+gW5MbqYYY4607Ne2r/qXchYQ
+	wQ/PavfSjzNjvaIGYfeoI7Y=
+X-Google-Smtp-Source: ACHHUZ61i21IzzVJYxeHp9DzEw7W00OUTsqZ1efYzky4ahkIIyaYvbeNiPCUyPUefgpCOGfRZCmSBw==
+X-Received: by 2002:a5d:4592:0:b0:2ef:d0de:e8a4 with SMTP id p18-20020a5d4592000000b002efd0dee8a4mr6317453wrq.25.1685368884120;
+        Mon, 29 May 2023 07:01:24 -0700 (PDT)
+Received: from [192.168.2.177] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id k5-20020adff5c5000000b0030af1d87342sm92246wrp.6.2023.05.29.07.01.21
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 29 May 2023 07:01:23 -0700 (PDT)
+Message-ID: <674cecd6-931a-9949-8a81-aa5dd1960b84@gmail.com>
+Date: Mon, 29 May 2023 16:01:21 +0200
 MIME-Version: 1.0
-References: <20230203-evk-board-support-v8-0-7019f3fd0adf@baylibre.com> <81193660-ee37-2fdf-6668-13f1e2649a1e@gmail.com>
-In-Reply-To: <81193660-ee37-2fdf-6668-13f1e2649a1e@gmail.com>
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Mon, 29 May 2023 16:00:38 +0200
-Message-ID: <CAFGrd9pzg4E-JPGgvo80FnpBDxV_q3jRcV5R-E94=JJgBf855w@mail.gmail.com>
-Subject: Re: [PATCH v8 00/10] Improve the MT8365 SoC and EVK board support
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, 
-	Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, 
-	Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Conor Dooley <conor+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-watchdog@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	Kevin Hilman <khilman@baylibre.com>, Amjad Ouled-Ameur <aouledameur@baylibre.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH 25/27] arm64: dts: mediatek: mt6795-xperia-m5: Add eMMC,
+ MicroSD slot, SDIO
+Content-Language: en-US, ca-ES, es-ES
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ jassisinghbrar@gmail.com, chunfeng.yun@mediatek.com, vkoul@kernel.org,
+ kishon@kernel.org, thierry.reding@gmail.com, u.kleine-koenig@pengutronix.de,
+ chunkuang.hu@kernel.org, ck.hu@mediatek.com, jitao.shi@mediatek.com,
+ xinlei.lee@mediatek.com, houlong.wei@mediatek.com,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
+ linux-pwm@vger.kernel.org, kernel@collabora.com,
+ phone-devel@vger.kernel.org, ~postmarketos/upstreaming@lists.sr.ht
+References: <20230412112739.160376-1-angelogioacchino.delregno@collabora.com>
+ <20230412112739.160376-26-angelogioacchino.delregno@collabora.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20230412112739.160376-26-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230529_070053_571846_BD476942 
-X-CRM114-Status: GOOD (  24.44  )
+X-CRM114-CacheID: sfid-20230529_070126_997298_B56ED75C 
+X-CRM114-Status: GOOD (  14.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,122 +104,128 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Awesome !!!
-
-Thank you Matthias
-
-Regards,
-Alexandre
 
 
-Le lun. 29 mai 2023 =C3=A0 15:22, Matthias Brugger <matthias.bgg@gmail.com>=
- a =C3=A9crit :
->
->
->
-> On 25/05/2023 10:33, Alexandre Mergnat wrote:
-> > This commits are based on the Fabien Parent <fparent@baylibre.com> work=
-.
-> >
-> > The purpose of this series is to add the following HWs / IPs support fo=
-r
-> > the mt8365-evk board:
-> > - Watchdog
-> > - Power Management Integrated Circuit "PMIC" wrapper
-> > - MT6357 PMIC
-> > - MultiMediaCard "MMC" & Secure Digital "SD" controller
-> > - USB controller
-> > - Ethernet MAC controller
-> >
-> > Add CPU Freq & IDLE support for this board.
-> >
-> > All previous dependancies are merged and released into the v6.4-rc1.
-> >
-> > =3D=3D=3D Build:
-> >
-> > To test this serie, cherry-pick this serie, and build it using the arm6=
-4
-> > defconfig.
-> >
-> > Regards,
-> > Alex
-> >
-> > Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-> > ---
-> > Changes in v8:
-> > - Change vqmmc-supply of mmc1 node.
-> > - Remove all always-on regulators from the board devicetree.
-> > - Link to v7: https://lore.kernel.org/r/20230203-evk-board-support-v7-0=
--98cbdfac656e@baylibre.com
-> >
-> > Changes in v7:
-> > - Rebase to the kernel v6.4-rc1.
-> > - Remove "dt-bindings: watchdog: mediatek,mtk-wdt: add mt8365" because
-> >    it was applied.
-> > - Link to v6: https://lore.kernel.org/r/20230203-evk-board-support-v6-0=
--8d6b1cfe7f29@baylibre.com
-> >
-> > Changes in v6:
-> > - Add commit message for the arm64 defconfig changes
-> > - Fix the mail list
-> > - Link to v5: https://lore.kernel.org/r/20230203-evk-board-support-v5-0=
--1883c1b405ad@baylibre.com
-> >
-> > Changes in v5:
-> > - Add patches to build the MT6357 regulator driver and MTK PMIC keys by=
- default
-> > - Remove "dt-bindings: pinctrl: mediatek,mt8365-pinctrl: add drive stre=
-ngth property"
-> >    patch from this serie and add it to the pinctrl serie [3]
-> > - Link to v4: https://lore.kernel.org/r/20230203-evk-board-support-v4-0=
--5cffe66a38c0@baylibre.com
-> >
-> > Changes in v4:
-> > - Remove v3 applied patch from the serie:
-> >    - arm64: dts: mediatek: add ethernet support for mt8365 SoC
-> >    - arm64: dts: mediatek: add mmc support for mt8365 SoC
-> >    - arm64: dts: mediatek: add mt6357 device-tree
-> >    - arm64: dts: mediatek: add pwrap support to mt8365 SoC
-> >    - arm64: dts: mediatek: Increase the size BL31 reserved memory
-> > - Drop "arm64: dts: mediatek: fix systimer properties" which is done [1=
-]
-> > - Fix style, typo and re-order properties.
-> > - Use interrupts-extended for the PMIC node.
-> > - Link to v3: https://lore.kernel.org/r/20230203-evk-board-support-v3-0=
--0003e80e0095@baylibre.com
-> >
-> > Changes in v3:
-> > - Remove v2 applied patch from the serie:
-> >    - dt-bindings: mmc: mediatek,mtk-sd: add mt8365
-> > - Add trailers and simply resend.
-> > - Link to v2: https://lore.kernel.org/r/20230203-evk-board-support-v2-0=
--6ec7cdb10ccf@baylibre.com
-> >
-> > ---
-> > Alexandre Mergnat (9):
-> >        arm64: defconfig: enable MT6357 regulator
-> >        arm64: defconfig: enable Mediatek PMIC key
-> >        arm64: dts: mediatek: add watchdog support for mt8365 SoC
-> >        arm64: dts: mediatek: add mt6357 PMIC support for mt8365-evk
-> >        arm64: dts: mediatek: add mmc support for mt8365-evk
-> >        arm64: dts: mediatek: add usb controller support for mt8365-evk
-> >        arm64: dts: mediatek: add ethernet support for mt8365-evk
-> >        arm64: dts: mediatek: add OPP support for mt8365 SoC
-> >        arm64: dts: mediatek: add cpufreq support for mt8365-evk
-> >
-> > Amjad Ouled-Ameur (1):
-> >        arm64: dts: mediatek: Add CPU Idle support
-> >
-> >   arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 235 +++++++++++++++++++=
-+++++++++
-> >   arch/arm64/boot/dts/mediatek/mt8365.dtsi    | 142 +++++++++++++++++
-> >   arch/arm64/configs/defconfig                |   2 +
-> >   3 files changed, 379 insertions(+)
-> > ---
-> > base-commit: d2b7e0f7ff8e0b21e4c8d0ae6dfa38786fe44b35
-> > change-id: 20230203-evk-board-support-d5b7a839ed7b
-> >
-> > Best regards,
->
-> Whole series applied, thanks!
+On 12/04/2023 13:27, AngeloGioacchino Del Regno wrote:
+> Configure and enable the MMC0/1/2 controllers, used for the eMMC chip,
+> MicroSD card slot and SDIO (WiFi) respectively.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+Applied, thanks
+
+> ---
+>   .../dts/mediatek/mt6795-sony-xperia-m5.dts    | 91 +++++++++++++++++++
+>   1 file changed, 91 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts b/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
+> index debe0f2553d9..155a573eac4c 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
+> @@ -17,6 +17,7 @@ / {
+>   	aliases {
+>   		mmc0 = &mmc0;
+>   		mmc1 = &mmc1;
+> +		mmc2 = &mmc2;
+>   		serial0 = &uart0;
+>   		serial1 = &uart1;
+>   	};
+> @@ -121,7 +122,97 @@ proximity@48 {
+>   	};
+>   };
+>   
+> +&mmc0 {
+> +	/* eMMC controller */
+> +	mediatek,latch-ck = <0x14>; /* hs400 */
+> +	mediatek,hs200-cmd-int-delay = <1>;
+> +	mediatek,hs400-cmd-int-delay = <1>;
+> +	mediatek,hs400-ds-dly3 = <0x1a>;
+> +	non-removable;
+> +	pinctrl-names = "default", "state_uhs";
+> +	pinctrl-0 = <&mmc0_pins_default>;
+> +	pinctrl-1 = <&mmc0_pins_uhs>;
+> +	vmmc-supply = <&mt6331_vemc33_reg>;
+> +	vqmmc-supply = <&mt6331_vio18_reg>;
+> +	status = "okay";
+> +};
+> +
+> +&mmc1 {
+> +	/* MicroSD card slot */
+> +	vmmc-supply = <&mt6331_vmc_reg>;
+> +	vqmmc-supply = <&mt6331_vmch_reg>;
+> +	status = "okay";
+> +};
+> +
+> +&mmc2 {
+> +	/* SDIO WiFi on MMC2 */
+> +	vmmc-supply = <&mt6331_vmc_reg>;
+> +	vqmmc-supply = <&mt6331_vmch_reg>;
+> +	status = "okay";
+> +};
+> +
+>   &pio {
+> +	mmc0_pins_default: emmc-sdr-pins {
+> +		pins-cmd-dat {
+> +			pinmux = <PINMUX_GPIO154__FUNC_MSDC0_DAT0>,
+> +				 <PINMUX_GPIO155__FUNC_MSDC0_DAT1>,
+> +				 <PINMUX_GPIO156__FUNC_MSDC0_DAT2>,
+> +				 <PINMUX_GPIO157__FUNC_MSDC0_DAT3>,
+> +				 <PINMUX_GPIO158__FUNC_MSDC0_DAT4>,
+> +				 <PINMUX_GPIO159__FUNC_MSDC0_DAT5>,
+> +				 <PINMUX_GPIO160__FUNC_MSDC0_DAT6>,
+> +				 <PINMUX_GPIO161__FUNC_MSDC0_DAT7>,
+> +				 <PINMUX_GPIO162__FUNC_MSDC0_CMD>;
+> +			input-enable;
+> +			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
+> +		};
+> +
+> +		pins-clk {
+> +			pinmux = <PINMUX_GPIO163__FUNC_MSDC0_CLK>;
+> +			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
+> +		};
+> +
+> +		pins-rst {
+> +			pinmux = <PINMUX_GPIO165__FUNC_MSDC0_RSTB>;
+> +			bias-pull-up = <MTK_PUPD_SET_R1R0_10>;
+> +		};
+> +	};
+> +
+> +	mmc0_pins_uhs: emmc-uhs-pins {
+> +		pins-cmd-dat {
+> +			pinmux = <PINMUX_GPIO154__FUNC_MSDC0_DAT0>,
+> +				 <PINMUX_GPIO155__FUNC_MSDC0_DAT1>,
+> +				 <PINMUX_GPIO156__FUNC_MSDC0_DAT2>,
+> +				 <PINMUX_GPIO157__FUNC_MSDC0_DAT3>,
+> +				 <PINMUX_GPIO158__FUNC_MSDC0_DAT4>,
+> +				 <PINMUX_GPIO159__FUNC_MSDC0_DAT5>,
+> +				 <PINMUX_GPIO160__FUNC_MSDC0_DAT6>,
+> +				 <PINMUX_GPIO161__FUNC_MSDC0_DAT7>,
+> +				 <PINMUX_GPIO162__FUNC_MSDC0_CMD>;
+> +			input-enable;
+> +			drive-strength = <MTK_DRIVE_6mA>;
+> +			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
+> +		};
+> +
+> +		pins-clk {
+> +			pinmux = <PINMUX_GPIO163__FUNC_MSDC0_CLK>;
+> +			drive-strength = <MTK_DRIVE_6mA>;
+> +			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
+> +		};
+> +
+> +		pins-rst {
+> +			pinmux = <PINMUX_GPIO165__FUNC_MSDC0_RSTB>;
+> +			drive-strength = <MTK_DRIVE_6mA>;
+> +			bias-pull-up = <MTK_PUPD_SET_R1R0_10>;
+> +		};
+> +
+> +		pins-ds {
+> +			pinmux = <PINMUX_GPIO164__FUNC_MSDC0_DSL>;
+> +			drive-strength = <MTK_DRIVE_6mA>;
+> +			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
+> +		};
+> +	};
+> +
+>   	nfc_pins: nfc-pins {
+>   		pins-irq {
+>   			pinmux = <PINMUX_GPIO3__FUNC_GPIO3>;
 
