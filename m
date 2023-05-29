@@ -4,115 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D2F6C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 May 2023 16:40:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FFD4C7EE2C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 May 2023 16:40:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F01uOKxqhKQMuFA3vofgEKjZXNYOHZ981OrH5kX5C+g=; b=sLvrglkuy9uoGHZB9RvZgiXUkU
-	+qW7o0rFarqcQvHFDm8E5Ylv/61vdQY2cmesIE19uvwmA+Q+5Iaw/Td2RsxO34CDcBTjGLqWZxwBg
-	4D4frLwPl84sw4Y6DbqjJro6NOrCb7uSqxqmIZfDiWWguQXw9fA3erC8TGeWFVfvt/hzwPheZWHjl
-	Mu5e+rJ6IoCQgBbVgfgWWM5I4qlb+pSkg7s13iTCuwFsGoXUxWoafAKrJCvc50AP8UQf/ozz0ECRu
-	LA1Ws68A56b1l9bGrYxVYrQ1w5xgZgz5xGrjaRKgz2Ivupfy/7XtHuB5VnPDu/FX+C2aTcjwc10dB
-	vwc3Psog==;
+	bh=c2Sh4+A1b+81wZLAVdTRbrmRS09i1jRPbv5H6IWS80Q=; b=UvjvuX2Co2F8mvsy1V3q6RRNr1
+	51XawFlr+hSogYGR4oDbd3c2mFnxyGDlOFTKdJz/fbiy+yj+BK+3DU5dDFVymgzdnAVU5Hgikrl91
+	PSETzrut5JqhO0nP54PVpZj0okqhCkWTvfM2a9eYfRfRn2tSz5qasY5qR7uX3K2FoDKfm6t4cuDid
+	hAQETdoTkiENfgif8G+UaPGIEJejZpnPPSdO4SYZojrlay4Ntt0JVc5mRqGDS8Xs1nt2otGxLoikV
+	OgBE7wa6p2hT6YLuLxhnahhdz33yZhIEktiZBW/g1Fyj4uX/TqiQ6EUcrf5LMdyrTn5PizSbs0Wzk
+	6JZtaQig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3fut-00B9PG-2v;
-	Mon, 29 May 2023 16:40:19 +0000
+	id 1q3fuw-00B9QF-0l;
+	Mon, 29 May 2023 16:40:22 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3fur-00B9Om-2b
+	id 1q3fut-00B9P7-22
 	for linux-mediatek@bombadil.infradead.org;
-	Mon, 29 May 2023 16:40:17 +0000
+	Mon, 29 May 2023 16:40:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=F01uOKxqhKQMuFA3vofgEKjZXNYOHZ981OrH5kX5C+g=; b=T1odAGwwj6VprVpDT8cP40ZuIM
-	+Jkn38WszDdPgstZSrnCIH0qsfvKqgAPa3pOQ2LrbXujxE6XZb5GYxx5JlTV5Sm/q63So8O5Zn9TE
-	e3ZXZFTg+CTI9X4ZwkG2AvfFx6a+poOs4AwWe0bUUwG99Szv0KxRz8rngjqRThZHiJUZHNJ7tW2J0
-	sKLQrxOta0JcqxNEQC36PY8KAaNdStbhf/ZecUh7BSnZ+nbsONRdRrGnUOlOY4ZseEjoXgnoh7SiM
-	NWgrlPSNcU4l7TZC52zq25mi3ptz7VItsKUvdjKl5K5cIdvf08uS6sgEGZsOH2qe4K/5X4+O7QPfI
-	12GJDsDQ==;
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=c2Sh4+A1b+81wZLAVdTRbrmRS09i1jRPbv5H6IWS80Q=; b=lmRvxo1sxEH+7bVlur1jNlsce9
+	kU5GYhwgttZ2XA4bz9ijvrROdf2mjypmnH0L9egtX1W6QabCIg4oHGPVROVnavs0KzdQRAQ/VhKYL
+	vYVwc8DqrmiSdUFhSzweaLVZfpNuNIVp++0I7YKJzPG/w+dlySadSW0vOxWHTvKEDi79KL/U+4hUW
+	Ovd00/TA0GF3aC28Kt5sIY4hJDHT6pEUBJDheQsf9DN5TJq0YK9Bd3R8d05BMnmiN9ZDq0MmzcZkF
+	957xPOJHrKL0/NLNp1iQRuYZdmBv3oNDCCmE52sBgYY04d4pwCQUqr44DQWucn0W8/itYI8EzDJq1
+	ep3hx/ag==;
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3euM-00BvXs-22
+	id 1q3dzJ-00BudK-2M
 	for linux-mediatek@lists.infradead.org;
-	Mon, 29 May 2023 15:35:44 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-30ae967ef74so795394f8f.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 29 May 2023 08:35:41 -0700 (PDT)
+	Mon, 29 May 2023 14:36:48 +0000
+Received: by mail-ed1-x533.google.com with SMTP id 4fb4d7f45d1cf-510d6b939bfso6080077a12.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 29 May 2023 07:36:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1685374540; x=1687966540;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=F01uOKxqhKQMuFA3vofgEKjZXNYOHZ981OrH5kX5C+g=;
-        b=f/W82YkKX1fKw+p8kiM3CbD89dJQJ7gP8eLohKJBmapnho9tRoVvnWu2ojisy2h7UF
-         cFUgYB4dFmI9bSpPvOibkISLh4J+Xg5EHnN+g2KrMjxHiFLoDg83/CrW5rEvWiTR9ULL
-         iJ36Xu12v3+2AQOe5dloOOrc9ljQ94lb3QyI8kfyMqyAnd34QA33yLPXjNk+06A1kSL6
-         Kl4iKeRucm7yh7BNLp2HzFeQ7f6TrxnmMmvWLIgHka76YosXLaGUqB0eEP9DYUEtnw0D
-         J8Pecvm1bRBNg2QaBGlltb+H2A2BTEyycSnUdYN8bOHoyYtlXbtZbFNAVcu1YE6S3EhN
-         lQQA==
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1685371003; x=1687963003;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=c2Sh4+A1b+81wZLAVdTRbrmRS09i1jRPbv5H6IWS80Q=;
+        b=hiSqot5Z0TVVzkwYkmdjRaFYGpVkqZ/2l7Z8d2ugq5qKwMiONQBL1+GBaWbf/yIP7z
+         CUE1CBJ5ZqXFY9WXRrUezsKC9Wwr8XoT2GKDadeS36vWTMSqxPY4v4SEjYGwJry/LaVq
+         /o/qOzl/CNrpF9Or/4l+K6JF4xQQu/hUD3RvCC9UB/2uJ9LOCiZf6xO7Gn4v1hweuYrb
+         kRI31ThOkvK8k/B7vfN1rk58gZ+tR0XvafgFGcBCa6m61qLXsXYrYOPFkxnxOZ7IiIE8
+         tzUUttynUa0Iqjps+GkZo9CoNZ1Y6KAVVMmAkQ9oB5EyCrBJgYl0n/WOL3A0GatmdRxm
+         zVJg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685374540; x=1687966540;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20221208; t=1685371003; x=1687963003;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=F01uOKxqhKQMuFA3vofgEKjZXNYOHZ981OrH5kX5C+g=;
-        b=ElNAmIsK8jthZjewZKkNwaG2i2C+zX2lpFDRqe3CaK9tt1nvLyq+Lb+cDUjecY/rhZ
-         9gUZYlMhLNtPHTSlh6+LsGoJU1YKYGJJ+EsUGIi+5aLnSciIhTOUPM/roOQ4uxToUXtN
-         bLLQ2iEyZQN77w3+d6DctmE5EX/URw9HsyV/lwrsNN1ojAIdNpidpmLgiKR3V/QWKm53
-         xVByiUzuQosJufgama4ruCXiayC7ir9LudRQklTicNpiqPI8HbnTOQCqaA9AG5berKT4
-         EtMrQvF5B3UerAoKild6fDkE/Kge3uXbNxrQM1ojwK1BgMIbZnFbnDVx05sfc1Zx1d2G
-         5moQ==
-X-Gm-Message-State: AC+VfDw+AdxPKNLmUXXDI9jxqq/UZvZipC6iRN2FU5VJST00z7ODJOf4
-	7qrRMk0dTnz7Bt02lwQIRb1Upg==
-X-Google-Smtp-Source: ACHHUZ6/7nORSR4DNdp4wjUgJkxl9NypefAkAE52oHYgkJGmMxFGhucjsXDcZx9Kz4y+J535tgM8+g==
-X-Received: by 2002:adf:dc89:0:b0:307:bd64:f5a4 with SMTP id r9-20020adfdc89000000b00307bd64f5a4mr10507408wrj.52.1685374540167;
-        Mon, 29 May 2023 08:35:40 -0700 (PDT)
-Received: from ph18.baylibre (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
-        by smtp.gmail.com with ESMTPSA id j27-20020a5d453b000000b003095a329e90sm269781wra.97.2023.05.29.08.35.38
+        bh=c2Sh4+A1b+81wZLAVdTRbrmRS09i1jRPbv5H6IWS80Q=;
+        b=Qjv8CPYh+lIv+AMJ162t8WVjEZqXjORDri93Yx2xxeTzCGbumj0RMrK7sxLNB5OYnE
+         S8c1E58kkWX7emkChBkTx+SIlfdYq/YVdGPYs10Ssfp3kFMfduasM54Dh3PGLg6NRJa1
+         0AyUboWqFSRFSQ3jizBAEqitY1Pkyv+ldrojkANVYo0d6tjocFKBQGKGCJ0TyYsUv4E9
+         bnoSYdwmtgk1mC+/eZ2TBSjURWpm4lev6F++qWZHayX9LGdl2GRkjPEPCd6Yf3GAbrTS
+         31R0/TJuwEHuUzGunChmam/ZyLqlETcRcXyCT3U4GSliw7Bk/KCuUUgit0vvBbYB5Vqn
+         Jadw==
+X-Gm-Message-State: AC+VfDw7YdfngNDG65nSoJ31UmW1nU+p6w9MjzUfDDiGPvk33g6R3zwA
+	rJK09DyI6r/9FRm+ImFQIGtHxA==
+X-Google-Smtp-Source: ACHHUZ5waXscvjoYNWcuy+rA2rbzsNFah4xpic6XPGtTh3EC757yb2ISi5VAAB9m/SKenAeW2NEWag==
+X-Received: by 2002:a17:907:c1a:b0:973:84af:66e5 with SMTP id ga26-20020a1709070c1a00b0097384af66e5mr11058579ejc.40.1685371003383;
+        Mon, 29 May 2023 07:36:43 -0700 (PDT)
+Received: from [127.0.0.1] (abordeaux-655-1-129-86.w90-5.abo.wanadoo.fr. [90.5.10.86])
+        by smtp.gmail.com with ESMTPSA id le8-20020a170907170800b0096f803afbe3sm5993654ejc.66.2023.05.29.07.36.41
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 May 2023 08:35:39 -0700 (PDT)
-From: =?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>
-To: daniel.lezcano@linaro.org,
-	angelogioacchino.delregno@collabora.com,
-	rafael@kernel.org,
-	amitk@kernel.org,
-	rui.zhang@intel.com,
-	matthias.bgg@gmail.com,
-	robh+dt@kernel.org,
-	krzystof.kozlowski+dt@linaro.org,
-	rdunlap@infradead.org,
-	ye.xingchen@zte.com.cn,
-	p.zabel@pangutronix.de
-Cc: linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	wenst@chromium.org,
-	james.lo@mediatek.com,
-	rex-bc.chen@mediatek.com,
-	nfraprado@collabora.com,
-	abailon@baylibre.com,
-	amergnat@baylibre.com,
-	khilman@baylibre.com
-Subject: [PATCH v3 4/5] arm64: dts: mediatek: mt8192: Add thermal nodes and thermal zones
-Date: Mon, 29 May 2023 17:35:31 +0200
-Message-ID: <20230529153532.3541327-5-bero@baylibre.com>
-X-Mailer: git-send-email 2.41.0.rc2
-In-Reply-To: <20230529153532.3541327-1-bero@baylibre.com>
-References: <20230529153532.3541327-1-bero@baylibre.com>
+        Mon, 29 May 2023 07:36:42 -0700 (PDT)
+From: Guillaume Ranquet <granquet@baylibre.com>
+Date: Mon, 29 May 2023 16:31:01 +0200
+Subject: [PATCH v4 4/8] drm/mediatek: hdmi: make the cec dev optional
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20220919-v4-4-687f09a06dd9@baylibre.com>
+References: <20220919-v4-0-687f09a06dd9@baylibre.com>
+In-Reply-To: <20220919-v4-0-687f09a06dd9@baylibre.com>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, 
+ Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, 
+ Rob Herring <robh+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
+ Daniel Vetter <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>, 
+ Jitao shi <jitao.shi@mediatek.com>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ mac.shen@mediatek.com, stuart.lee@mediatek.com, 
+ Guillaume Ranquet <granquet@baylibre.com>
+X-Mailer: b4 0.13-dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230529_163542_820011_D8C81C51 
-X-CRM114-Status: GOOD (  10.41  )
+X-CRM114-CacheID: sfid-20230529_153645_980103_D68780AA 
+X-CRM114-Status: GOOD (  17.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,562 +120,133 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Balsam CHIHI <bchihi@baylibre.com>
+Make cec device optional in order to support newer versions of the
+hdmi IP which doesn't require it
 
-Add thermal nodes and thermal zones for the mt8192.
-The mt8192 SoC has several hotspots around the CPUs.
-Specify the targeted temperature threshold to apply the mitigation
-and define the associated cooling devices.
-
-Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
-Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-[bero@baylibre.com: cosmetic changes]
-Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
+Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8192.dtsi | 454 +++++++++++++++++++++++
- 1 file changed, 454 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_hdmi.c        |  8 +++--
+ drivers/gpu/drm/mediatek/mtk_hdmi_common.c | 52 +++++++++++++++++++-----------
+ 2 files changed, 39 insertions(+), 21 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index 5c30caf740265..330c5bb4ebc85 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -14,6 +14,8 @@
- #include <dt-bindings/phy/phy.h>
- #include <dt-bindings/power/mt8192-power.h>
- #include <dt-bindings/reset/mt8192-resets.h>
-+#include <dt-bindings/thermal/thermal.h>
-+#include <dt-bindings/thermal/mediatek,lvts-thermal.h>
+diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+index 41a7593887fb..4c382aeb94c9 100644
+--- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
++++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+@@ -925,10 +925,11 @@ void mtk_hdmi_clk_disable_audio_mt8183(struct mtk_hdmi *hdmi)
+ static enum drm_connector_status
+ mtk_hdmi_update_plugged_status(struct mtk_hdmi *hdmi)
+ {
+-	bool connected;
++	bool connected = true;
  
- / {
- 	compatible = "mediatek,mt8192";
-@@ -71,6 +73,7 @@ cpu0: cpu@0 {
- 			d-cache-sets = <128>;
- 			next-level-cache = <&l2_0>;
- 			capacity-dmips-mhz = <530>;
-+			#cooling-cells = <2>;
- 		};
+ 	mutex_lock(&hdmi->update_plugged_status_lock);
+-	connected = mtk_cec_hpd_high(hdmi->cec_dev);
++	if (hdmi->cec_dev)
++		connected = mtk_cec_hpd_high(hdmi->cec_dev);
+ 	if (hdmi->plugged_cb && hdmi->codec_dev)
+ 		hdmi->plugged_cb(hdmi->codec_dev, connected);
+ 	mutex_unlock(&hdmi->update_plugged_status_lock);
+@@ -1024,7 +1025,8 @@ static int mtk_hdmi_bridge_attach(struct drm_bridge *bridge,
+ 			return ret;
+ 	}
  
- 		cpu1: cpu@100 {
-@@ -88,6 +91,7 @@ cpu1: cpu@100 {
- 			d-cache-sets = <128>;
- 			next-level-cache = <&l2_0>;
- 			capacity-dmips-mhz = <530>;
-+			#cooling-cells = <2>;
- 		};
+-	mtk_cec_set_hpd_event(hdmi->cec_dev, mtk_hdmi_hpd_event, hdmi->dev);
++	if (hdmi->cec_dev)
++		mtk_cec_set_hpd_event(hdmi->cec_dev, mtk_hdmi_hpd_event, hdmi->dev);
  
- 		cpu2: cpu@200 {
-@@ -105,6 +109,7 @@ cpu2: cpu@200 {
- 			d-cache-sets = <128>;
- 			next-level-cache = <&l2_0>;
- 			capacity-dmips-mhz = <530>;
-+			#cooling-cells = <2>;
- 		};
+ 	return 0;
+ }
+diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_common.c b/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
+index ead0c30f55b7..d7f3d29138d8 100644
+--- a/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
++++ b/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
+@@ -110,28 +110,18 @@ void mtk_hdmi_send_infoframe(struct mtk_hdmi *hdmi, u8 *buffer_spd, size_t bufsz
+ 	mtk_hdmi_setup_spd_infoframe(hdmi, buffer_spd, bufsz_spd, "mediatek", "On-chip HDMI");
+ }
  
- 		cpu3: cpu@300 {
-@@ -122,6 +127,7 @@ cpu3: cpu@300 {
- 			d-cache-sets = <128>;
- 			next-level-cache = <&l2_0>;
- 			capacity-dmips-mhz = <530>;
-+			#cooling-cells = <2>;
- 		};
+-int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi, struct platform_device *pdev,
+-			    const char *const *clk_names, size_t num_clocks)
++static int mtk_hdmi_get_cec_dev(struct mtk_hdmi *hdmi, struct device *dev, struct device_node *np)
+ {
+-	struct device *dev = &pdev->dev;
+-	struct device_node *np = dev->of_node;
+-	struct device_node *cec_np, *remote, *i2c_np;
++	int ret;
++	struct device_node *cec_np;
+ 	struct platform_device *cec_pdev;
+ 	struct regmap *regmap;
+-	struct resource *mem;
+-	int ret;
+-
+-	ret = mtk_hdmi_get_all_clk(hdmi, np, clk_names, num_clocks);
+-	if (ret) {
+-		dev_err(dev, "Failed to get all clks\n");
+-		return ret;
+-	}
  
- 		cpu4: cpu@400 {
-@@ -139,6 +145,7 @@ cpu4: cpu@400 {
- 			d-cache-sets = <256>;
- 			next-level-cache = <&l2_1>;
- 			capacity-dmips-mhz = <1024>;
-+			#cooling-cells = <2>;
- 		};
+ 	/* The CEC module handles HDMI hotplug detection */
+ 	cec_np = of_get_compatible_child(np->parent, "mediatek,mt8173-cec");
+ 	if (!cec_np) {
+ 		dev_err(dev, "Failed to find CEC node\n");
+-		return -EINVAL;
++		return -ENOTSUPP;
+ 	}
  
- 		cpu5: cpu@500 {
-@@ -156,6 +163,7 @@ cpu5: cpu@500 {
- 			d-cache-sets = <256>;
- 			next-level-cache = <&l2_1>;
- 			capacity-dmips-mhz = <1024>;
-+			#cooling-cells = <2>;
- 		};
+ 	cec_pdev = of_find_device_by_node(cec_np);
+@@ -141,7 +131,6 @@ int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi, struct platform_device *pdev,
+ 		return -EPROBE_DEFER;
+ 	}
+ 	of_node_put(cec_np);
+-	hdmi->cec_dev = &cec_pdev->dev;
+ 	/*
+ 	 * The mediatek,syscon-hdmi property contains a phandle link to the
+ 	 * MMSYS_CONFIG device and the register offset of the HDMI_SYS_CFG
+@@ -150,12 +139,39 @@ int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi, struct platform_device *pdev,
+ 	regmap = syscon_regmap_lookup_by_phandle(np, "mediatek,syscon-hdmi");
+ 	ret = of_property_read_u32_index(np, "mediatek,syscon-hdmi", 1, &hdmi->sys_offset);
+ 	if (IS_ERR(regmap))
+-		ret = PTR_ERR(regmap);
++		return PTR_ERR(regmap);
+ 	if (ret) {
+-		dev_err(dev, "Failed to get system configuration registers: %d\n", ret);
+-		goto put_device;
++		dev_err(dev,
++				"Failed to get system configuration registers: %d\n", ret);
++		return ret;
+ 	}
++
+ 	hdmi->sys_regmap = regmap;
++	hdmi->cec_dev = &cec_pdev->dev;
++
++	return 0;
++}
++
++int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi, struct platform_device *pdev,
++			    const char *const *clk_names, size_t num_clocks)
++{
++	struct device *dev = &pdev->dev;
++	struct device_node *np = dev->of_node;
++	struct device_node *remote, *i2c_np;
++	struct resource *mem;
++	int ret;
++
++	ret = mtk_hdmi_get_all_clk(hdmi, np, clk_names, num_clocks);
++	if (ret) {
++		dev_err(dev, "Failed to get all clks\n");
++		return ret;
++	}
++
++	ret = mtk_hdmi_get_cec_dev(hdmi, dev, np);
++	if (ret == -ENOTSUPP)
++		dev_info(dev, "No CEC node found, continuing without");
++	else if(ret)
++		goto put_device;
  
- 		cpu6: cpu@600 {
-@@ -173,6 +181,7 @@ cpu6: cpu@600 {
- 			d-cache-sets = <256>;
- 			next-level-cache = <&l2_1>;
- 			capacity-dmips-mhz = <1024>;
-+			#cooling-cells = <2>;
- 		};
- 
- 		cpu7: cpu@700 {
-@@ -190,6 +199,7 @@ cpu7: cpu@700 {
- 			d-cache-sets = <256>;
- 			next-level-cache = <&l2_1>;
- 			capacity-dmips-mhz = <1024>;
-+			#cooling-cells = <2>;
- 		};
- 
- 		cpu-map {
-@@ -771,6 +781,17 @@ spi0: spi@1100a000 {
- 			status = "disabled";
- 		};
- 
-+		lvts_ap: thermal-sensor@1100b000 {
-+			compatible = "mediatek,mt8192-lvts-ap";
-+			reg = <0 0x1100b000 0 0x1000>;
-+			interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&infracfg CLK_INFRA_THERM>;
-+			resets = <&infracfg MT8192_INFRA_RST0_THERM_CTRL_SWRST>;
-+			nvmem-cells = <&lvts_e_data1>;
-+			nvmem-cell-names = "lvts-calib-data-1";
-+			#thermal-sensor-cells = <1>;
-+		};
-+
- 		pwm0: pwm@1100e000 {
- 			compatible = "mediatek,mt8183-disp-pwm";
- 			reg = <0 0x1100e000 0 0x1000>;
-@@ -1097,6 +1118,17 @@ nor_flash: spi@11234000 {
- 			status = "disabled";
- 		};
- 
-+		lvts_mcu: thermal-sensor@11278000 {
-+			compatible = "mediatek,mt8192-lvts-mcu";
-+			reg = <0 0x11278000 0 0x1000>;
-+			interrupts = <GIC_SPI 170 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&infracfg CLK_INFRA_THERM>;
-+			resets = <&infracfg MT8192_INFRA_RST4_THERM_CTRL_MCU_SWRST>;
-+			nvmem-cells = <&lvts_e_data1>;
-+			nvmem-cell-names = "lvts-calib-data-1";
-+			#thermal-sensor-cells = <1>;
-+		};
-+
- 		efuse: efuse@11c10000 {
- 			compatible = "mediatek,mt8192-efuse", "mediatek,efuse";
- 			reg = <0 0x11c10000 0 0x1000>;
-@@ -1823,4 +1855,426 @@ larb2: larb@1f002000 {
- 			power-domains = <&spm MT8192_POWER_DOMAIN_MDP>;
- 		};
- 	};
-+
-+	thermal_zones: thermal-zones {
-+		cpu0-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <250>;
-+			thermal-sensors = <&lvts_mcu MT8192_MCU_LITTLE_CPU0>;
-+
-+			trips {
-+				cpu0_alert: trip-alert {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				cpu0_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <2000>;
-+					type = "critical";
-+				};
-+			};
-+
-+			cooling-maps {
-+				map0 {
-+					trip = <&cpu0_alert>;
-+					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+				};
-+			};
-+		};
-+
-+		cpu1-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <250>;
-+			thermal-sensors = <&lvts_mcu MT8192_MCU_LITTLE_CPU1>;
-+
-+			trips {
-+				cpu1_alert: trip-alert {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				cpu1_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <2000>;
-+					type = "critical";
-+				};
-+			};
-+
-+			cooling-maps {
-+				map0 {
-+					trip = <&cpu1_alert>;
-+					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+				};
-+			};
-+		};
-+
-+		cpu2-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <250>;
-+			thermal-sensors = <&lvts_mcu MT8192_MCU_LITTLE_CPU2>;
-+
-+			trips {
-+				cpu2_alert: trip-alert {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				cpu2_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <2000>;
-+					type = "critical";
-+				};
-+			};
-+
-+			cooling-maps {
-+				map0 {
-+					trip = <&cpu2_alert>;
-+					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+				};
-+			};
-+		};
-+
-+		cpu3-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <250>;
-+			thermal-sensors = <&lvts_mcu MT8192_MCU_LITTLE_CPU3>;
-+
-+			trips {
-+				cpu3_alert: trip-alert {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				cpu3_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <2000>;
-+					type = "critical";
-+				};
-+			};
-+
-+			cooling-maps {
-+				map0 {
-+					trip = <&cpu3_alert>;
-+					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+				};
-+			};
-+		};
-+
-+		cpu4-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <250>;
-+			thermal-sensors = <&lvts_mcu MT8192_MCU_BIG_CPU0>;
-+
-+			trips {
-+				cpu4_alert: trip-alert {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				cpu4_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <2000>;
-+					type = "critical";
-+				};
-+			};
-+
-+			cooling-maps {
-+				map0 {
-+					trip = <&cpu4_alert>;
-+					cooling-device = <&cpu4 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu5 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu6 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu7 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+				};
-+			};
-+		};
-+
-+		cpu5-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <250>;
-+			thermal-sensors = <&lvts_mcu MT8192_MCU_BIG_CPU1>;
-+
-+			trips {
-+				cpu5_alert: trip-alert {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				cpu5_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <2000>;
-+					type = "critical";
-+				};
-+			};
-+
-+			cooling-maps {
-+				map0 {
-+					trip = <&cpu5_alert>;
-+					cooling-device = <&cpu4 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu5 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu6 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu7 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+				};
-+			};
-+		};
-+
-+		cpu6-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <250>;
-+			thermal-sensors = <&lvts_mcu MT8192_MCU_BIG_CPU2>;
-+
-+			trips {
-+				cpu6_alert: trip-alert {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				cpu6_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <2000>;
-+					type = "critical";
-+				};
-+			};
-+
-+			cooling-maps {
-+				map0 {
-+					trip = <&cpu6_alert>;
-+					cooling-device = <&cpu4 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu5 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu6 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu7 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+				};
-+			};
-+		};
-+
-+		cpu7-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <250>;
-+			thermal-sensors = <&lvts_mcu MT8192_MCU_BIG_CPU3>;
-+
-+			trips {
-+				cpu7_alert: trip-alert {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				cpu7_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <2000>;
-+					type = "critical";
-+				};
-+			};
-+
-+			cooling-maps {
-+				map0 {
-+					trip = <&cpu7_alert>;
-+					cooling-device = <&cpu4 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu5 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu6 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu7 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+				};
-+			};
-+		};
-+
-+		vpu0-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <250>;
-+			thermal-sensors = <&lvts_ap MT8192_AP_VPU0>;
-+
-+			trips {
-+				vpu0_alert: trip-alert {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				vpu0_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <2000>;
-+					type = "critical";
-+				};
-+			};
-+		};
-+
-+		vpu1-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <250>;
-+			thermal-sensors = <&lvts_ap MT8192_AP_VPU1>;
-+
-+			trips {
-+				vpu1_alert: trip-alert {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				vpu1_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <2000>;
-+					type = "critical";
-+				};
-+			};
-+		};
-+
-+		gpu0-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <250>;
-+			thermal-sensors = <&lvts_ap MT8192_AP_GPU0>;
-+
-+			trips {
-+				gpu0_alert: trip-alert {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				gpu0_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <2000>;
-+					type = "critical";
-+				};
-+			};
-+		};
-+
-+		gpu1-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <250>;
-+			thermal-sensors = <&lvts_ap MT8192_AP_GPU1>;
-+
-+			trips {
-+				gpu1_alert: trip-alert {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				gpu1_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <2000>;
-+					type = "critical";
-+				};
-+			};
-+		};
-+
-+		infra-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <250>;
-+			thermal-sensors = <&lvts_ap MT8192_AP_INFRA>;
-+
-+			trips {
-+				infra_alert: trip-alert {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				infra_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <2000>;
-+					type = "critical";
-+				};
-+			};
-+		};
-+
-+		cam-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <250>;
-+			thermal-sensors = <&lvts_ap MT8192_AP_CAM>;
-+
-+			trips {
-+				cam_alert: trip-alert {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				cam_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <2000>;
-+					type = "critical";
-+				};
-+			};
-+		};
-+
-+		md0-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <250>;
-+			thermal-sensors = <&lvts_ap MT8192_AP_MD0>;
-+
-+			trips {
-+				md0_alert: trip-alert {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				md0_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <2000>;
-+					type = "critical";
-+				};
-+			};
-+		};
-+
-+		md1-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <250>;
-+			thermal-sensors = <&lvts_ap MT8192_AP_MD1>;
-+
-+			trips {
-+				md1_alert: trip-alert {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				md1_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <2000>;
-+					type = "critical";
-+				};
-+			};
-+		};
-+
-+		md2-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <250>;
-+			thermal-sensors = <&lvts_ap MT8192_AP_MD2>;
-+
-+			trips {
-+				md2_alert: trip-alert {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				md2_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <2000>;
-+					type = "critical";
-+				};
-+			};
-+		};
-+	};
- };
+ 	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	if (!mem) {
+
 -- 
-2.41.0.rc2
+2.40.0
 
 
