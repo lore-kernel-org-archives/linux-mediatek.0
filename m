@@ -4,79 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74295C77B7E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 May 2023 04:20:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC0B5C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 May 2023 07:55:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=j5EruGneydWrebItl4MLqWHex5pJ5cJmkComuzWUkfk=; b=lSavdB+j5HFpeaiJ8M3f6awRNE
-	IaJ/PEn9gkckuIYvyJM+kPpZIlFuXX9qIPa5khHn7QJftirKj7aCt1UzNyIYC9FBw1sg51Oc7QSNz
-	rDUfH13Kv6AwDjv4dagb2b5c9qEoZd848besFISmPax4/RGnJ5Kkr57tT8OgqprsBnNHgirUu6yzf
-	PCILSLxXW5tyaeC4/MMq3/cWMRZwsyVq05j4d0JEY6P/te3XASWp8IaemcYFcWW547UevlUvasV5U
-	Vl77wp/x/OE0KWvekMFfByYLM2C1OTPxJoNBpNcRR1Cv/YbWSQjnCUrYdsNjgRi3K8bqAND2lO+WT
-	K53VYl0g==;
+	bh=4Ic/ssnB/wZKywFHkYVRmksJQU5+d3Tko8gspZ3Nmi8=; b=nLyIaQm9v4U0IQ5eeMydkrJgZR
+	tGkmQkhN105DDCof5G4TwNpulv53pINRICBs3FOpUCX31736Nk1RRR8OHgQt60vS4ReYlwcitBLo5
+	JGvFTXk7Dr/oBYkJvvaCJ3/CzYdJAZXn+AkXB3uyrAwX8vMrcWySjQe0RSMkfEOHqAewVUDPWZTEp
+	gTKRf6oshy0QXlC6zzd+zY5s5CdNUzBXVEWbjZW0PoQovSwWC+4+DFAzIIZTAxsiSzdue28QjdSub
+	DpS2ouAKPCieJZf/qwLEya9Meg5SMgGRVvOc6qmqZgIcz+PJf2s7OOdDS4B8TSxavdNKW+hKir2gj
+	7Fq8kAjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3UMX-0094JJ-3A;
-	Mon, 29 May 2023 04:20:05 +0000
-Received: from mail-oa1-x2c.google.com ([2001:4860:4864:20::2c])
+	id 1q3XjM-009csj-0P;
+	Mon, 29 May 2023 07:55:52 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3UMU-0094HE-1H
-	for linux-mediatek@lists.infradead.org;
-	Mon, 29 May 2023 04:20:03 +0000
-Received: by mail-oa1-x2c.google.com with SMTP id 586e51a60fabf-19a308a045aso1277534fac.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 28 May 2023 21:19:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1685333996; x=1687925996;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=j5EruGneydWrebItl4MLqWHex5pJ5cJmkComuzWUkfk=;
-        b=mMszb3MlFKUFM3qvQnr0h3j1Lk0OqdLggIRYGJoLXUB2YjcZGuVde7evV6kvVI4KG3
-         AGkMx+HJptcKovROxvCC+Rkh6Wl+aLuIliXb3stWWbwR8jJT/PoLLbj6mX7N5ct4gXMV
-         iH2MkgvxOlwZnZnqlSxQHK2w8o8ONphywonkY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685333996; x=1687925996;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=j5EruGneydWrebItl4MLqWHex5pJ5cJmkComuzWUkfk=;
-        b=TTnZbhts9uo4sISVWF21l4dYfo9Y+bTsWjdpAXURjlLj71yPZEB5Yw9kgxDCzpweDW
-         nQOo9yk4Fz4a4Sra0pG6/dXHNru9yeWoRNVGDclsdez+MKXE5PDCn+XTHsshEQLeYIX5
-         YCvVQcjjf6Hth5060B96eulCzDkN+6xKqWaz0LMmIM4QSVhM/OZlmvYXf6DFQSXqLsnj
-         ji20LeAKOdUTYqYgL9LuVVdhnNkXegodOSbWdRxfq/ds/Y2z1RhrwHvm6EecLlFi8nQ/
-         jRlRDIrxQS6odf+5M9jjYbLil6i4JTJw+4BGX1FiDWvMwVDDwbcpU2lK5fFlsQUoiKuK
-         g7hQ==
-X-Gm-Message-State: AC+VfDwjJPW88fx8CcyHZ7y3TkOEUUzGntvXJZ/T0oJ+183IRgTpPv9Z
-	K+aWd18MCe7Kvjqc64Fc5tFlE+C/i0aKd0iIrxaHxQ==
-X-Google-Smtp-Source: ACHHUZ7ShijQbDXG5LNkOewm1aTPMRKRtRGdrly+ELkwdr+vwO4+T7tCAPpPdOqloRkeGytOrvqv8JCRVQBRNjVnHe4=
-X-Received: by 2002:a05:6871:4c5:b0:199:cae3:f9d6 with SMTP id
- n5-20020a05687104c500b00199cae3f9d6mr4345361oai.56.1685333996420; Sun, 28 May
- 2023 21:19:56 -0700 (PDT)
+	id 1q3XjJ-009cqH-0u;
+	Mon, 29 May 2023 07:55:50 +0000
+Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0E8386605961;
+	Mon, 29 May 2023 08:55:45 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1685346945;
+	bh=oTdocyJ/fdDvVOM9bvypLnMcp07pgkCobWwO3/e/PV4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=kAYZU6QnU8eMMuQkF3n6TdkQrOGmMBu2uqnpRWntRDxezgkByhD/fLa7ahKyLEOGK
+	 GKy8qGnV4BeNJ+mMcSvN8TdjueJNMaOKKkIwpEfCMKHYyEohHQEQDZq95k5EjAigye
+	 kWCctLWRaq6Gd0o7LmjBzDPQ/gCeJ5EonmisQZ16WXKwcuKnkRp1JpKiN2VBCyp/ds
+	 /LGzACi6NDMsoEdhlIkInp4NGNd39vXdyFMzYozA1K0FmlI0n8GGKmlzwJOCfSQFEF
+	 iQCowGSzSsXzDINBB2eN+8/NvBUzty91CEEuM6e/hIUremjnzoIcoi0xo0CbSKWENN
+	 BkeVcrYoOxICg==
+Message-ID: <cc053ab0-1ed3-0d2c-204d-a5ae85b759a5@collabora.com>
+Date: Mon, 29 May 2023 09:55:42 +0200
 MIME-Version: 1.0
-References: <20230526100801.16310-1-uwu@icenowy.me> <CAD=FV=UxrFVZXn+dtgamttTVopWMSVbxYsHCGG_tS+3OTXbHiw@mail.gmail.com>
- <0803e9037a8a2ce96fdad6ec209991dcda2a30ca.camel@icenowy.me>
-In-Reply-To: <0803e9037a8a2ce96fdad6ec209991dcda2a30ca.camel@icenowy.me>
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Date: Mon, 29 May 2023 12:19:30 +0800
-Message-ID: <CAJMQK-gOtqE=TzmQB+VM1KjScUQjLaKv6c8msv4-EKekritWYg@mail.gmail.com>
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8173-elm: remove panel model
- number in DT
-To: Icenowy Zheng <uwu@icenowy.me>
-Cc: Doug Anderson <dianders@chromium.org>, Pin-yen Lin <treapking@chromium.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.1
+Subject: Re: [PATCH RFC] iommu/mediatek: Flush IOTLB completely only if domain
+ has been attached
+To: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>,
+ Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20230526085402.394239-1-wenst@chromium.org>
+Content-Language: en-US
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230526085402.394239-1-wenst@chromium.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230528_212002_432161_3E8AEF5E 
-X-CRM114-Status: GOOD (  42.03  )
+X-CRM114-CacheID: sfid-20230529_005549_507371_9C0A9F3D 
+X-CRM114-Status: GOOD (  24.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,101 +79,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 29, 2023 at 12:14=E2=80=AFPM Icenowy Zheng <uwu@icenowy.me> wro=
-te:
->
-> =E5=9C=A8 2023-05-26=E6=98=9F=E6=9C=9F=E4=BA=94=E7=9A=84 07:24 -0700=EF=
-=BC=8CDoug Anderson=E5=86=99=E9=81=93=EF=BC=9A
-> > Hi,
-> >
-> > On Fri, May 26, 2023 at 3:09=E2=80=AFAM Icenowy Zheng <uwu@icenowy.me> =
-wrote:
-> > >
-> > > Currently a specific panel number is used in the Elm DTSI, which is
-> > > corresponded to a 12" panel. However, according to the official
-> > > Chrome
-> > > OS devices document, Elm refers to Acer Chromebook R13, which, as
-> > > the
-> > > name specifies, uses a 13.3" panel, which comes with EDID
-> > > information.
-> > >
-> > > As the kernel currently prioritizes the hardcoded timing parameters
-> > > matched with the panel number compatible, a wrong timing will be
-> > > applied
-> > > to the 13.3" panel on Acer Chromebook R13, which leads to blank
-> > > display.
-> > >
-> > > Because the Elm DTSI is shared with Hana board, and Hana
-> > > corresponds to
-> > > multiple devices from 11" to 14", a certain panel model number
-> > > shouldn't
-> > > be present, and driving the panel according to its EDID information
-> > > is
-> > > necessary.
-> > >
-> > > Signed-off-by: Icenowy Zheng <uwu@icenowy.me>
-> > > ---
-> > >  arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 2 +-
-> > >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > We went through a bunch of back-and-forth here but in the end in the
-> > ChromeOS tree we have "edp-panel" as the "compatible" here in the
-> > ChromeOS 5.15 tree and this makes sense.
->
-> I only have Elm, so I am curious that do all Hana's only rely on panel
-> EDID to use different displays?
->
-> BTW The Chrome OS document say that Elm and Hana are both board based
-> on Oak baseboard, should the DTSI be renamed mt8173-oak.dtsi, and still
-> let mt8173-elm.dts include it and then set model information?
->
-Oak is a reference design board which is not in the public. Since only
-elm and hana board are in the public and the difference between elm
-and hana are not much, instead of creating oak.dtsi, elm.dtsi (inherit
-from oak.dtsi), hana.dtsi (inherit from oak.dtsi), we decided to make
-elm.dtsi as the main dtsi and let hana inherit it and make its own
-changes.
+Il 26/05/23 10:53, Chen-Yu Tsai ha scritto:
+> If an IOMMU domain was never attached, it lacks any linkage to the
+> actual IOMMU hardware. Attempting to do flush_iotlb_all() on it will
+> result in a NULL pointer dereference. This seems to happen after the
+> recent IOMMU core rework in v6.4-rc1.
+> 
+>      Unable to handle kernel read from unreadable memory at virtual address 0000000000000018
+>      Call trace:
+>       mtk_iommu_flush_iotlb_all+0x20/0x80
+>       iommu_create_device_direct_mappings.part.0+0x13c/0x230
+>       iommu_setup_default_domain+0x29c/0x4d0
+>       iommu_probe_device+0x12c/0x190
+>       of_iommu_configure+0x140/0x208
+>       of_dma_configure_id+0x19c/0x3c0
+>       platform_dma_configure+0x38/0x88
+>       really_probe+0x78/0x2c0
+> 
+> Check if the "bank" field has been filled in before actually attempting
+> the IOTLB flush to avoid it. The IOTLB is also flushed when the device
+> comes out of runtime suspend, so it should have a clean initial state.
+> 
+> Fixes: 08500c43d4f7 ("iommu/mediatek: Adjust the structure")
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
-> >
-> > Reviewed-by: Douglas Anderson <dianders@chromium.org>
-> >
-> > ...in theory one would wish for a "Fixes" tag, but I think in
-> > previous
-> > discussions it was decided that it was too complicated. Hardcoding
-> > the
-> > other compatible string has always been technically wrong, but I
-> > guess
-> > it worked at some point in time. The more correct way (as you're
-> > doing
-> > here) needs the DP AUX bus support and the generic eDP panels, both
-> > of
-> > which are significantly newer than the elm dts. So I guess leaving no
-> > "Fixes" tag is OK, or perhaps you could do the somewhat weak:
->
-> Well I remembered when I was developing the support for Pine64
-> Pinebook, which is also an ARM64 laptop with an eDP panel (via a DPI-
-> eDP bridge, ANX6345). At first I didn't use any panel node in the DT,
-> and the kernel maintainers argued to the bridge that seems to be
-> connected to nothing (because DP is a discoverable port), and
-> fortunately 2 Pinebook SKUs (11.6" and 14") is finally reduced to one,
-> and it's then possible to hardcode a panel model in the Pinebook DT.
-> According to my memory, the need to specify the panel is to properly
-> handle eDP panel power up timing, because it's not a very standard
-> thing. (Well, in my memory, when I was testing that code, on a
-> (engineering sample) 14" Pinebook, the EDID timing overrided the
-> hardcoded 11.6" timing and it properly works, the 14" panel is 1366x768
-> but the 11.6" panel is 1920x1080.)
->
-> (BTW when I checked the DT of Olimex TERES-I, which uses the same DPI-
-> eDP bridge, it is still in the status of a dangling bridge, and of
-> course it works ;-) )
->
-> >
-> > Fixes: c2d94f72140a ("arm64: dts: mediatek: mt8173-elm: Move display
-> > to ps8640 auxiliary bus")
->
-> Well this sound quite reasonable, as the kernel should have proper AUX
-> support at this commit.
->
->
+Not only ARM SMMU does this, others are doing the same, some in a different
+form (walking a list)... So I agree with this being a valid fix.
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+> ---
+> 
+> I think this is a valid fix, but I'm not very familiar with the hardware
+> or the design of the driver. The ARM SMMU drivers seem to do this as well.
+> 
+>   drivers/iommu/mtk_iommu.c | 3 ++-
+>   1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index aecc7d154f28..e93906d6e112 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -781,7 +781,8 @@ static void mtk_iommu_flush_iotlb_all(struct iommu_domain *domain)
+>   {
+>   	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+>   
+> -	mtk_iommu_tlb_flush_all(dom->bank->parent_data);
+> +	if (dom->bank)
+> +		mtk_iommu_tlb_flush_all(dom->bank->parent_data);
+>   }
+>   
+>   static void mtk_iommu_iotlb_sync(struct iommu_domain *domain,
+
+
 
