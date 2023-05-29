@@ -4,85 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73F6AC77B7E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 May 2023 16:09:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38178C77B7E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 May 2023 16:16:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3EWH1RGi3evo5KxNcmukt363dFuq46wqFUtOjsuXhA8=; b=YKo/jEJHlsCTovLvFKsz+5rWcT
-	3aVf6R5HdMOyJfllCvTgC9DHX+Txiiruc/UhTWDKSPLAgZJIJ/BMOEWpXLQifwDmwnpDOQ77xTbZS
-	97+tl6t+TSjj4X6pLJwsKx9J9Wi6R2Cn8sGqLhW3ZOSHe+HjS+zHgqKFXqToEswlzfqNN9KHCmn4p
-	of3MlIgYjN61+IkMeI5EMr47yd1UvnM3gBqk5oFwXqqH5c1Yp3Uv9HMGVLDZSII55d2Lt4qvUasgA
-	b6iIdNor7zYd8M+9CQKhefA5mIWiTHDgOxTP9ogRGJGlr5MA+55H9bWtDPz/a+1Uz5HvDpfMN11BT
-	r677sgtA==;
+	bh=B6oEUPyDe6k6imC6sIUryh04ys93Tehf8o/RTmSion4=; b=E3xXIe5FHru7B5WJe8tSsfAluP
+	Il1JUNRFRuzTh9lkdh75OIrYMMWi3QbYzNLMGPhONbWoE2R05DyJ/T+FwhUnpeK1dV8Hq9pheyOZD
+	JnZkiuxA3KY554u8tPCP86MVkG4C8mdr+W/ex4XGg0/qeSr56XeqvC4+lprZ2XFzT5qVvQFciwi3V
+	Qa/MaRWdB8bDv8RlURxdu+u4ievjQjMKfqjwmLYHiR1DHxQjnDp+C5ScAvGfJttZWefwY+T/1oBvW
+	GOw6KeNUQWKJ80DvAMHF4jZTsCRRPxz3xoFTQeR+SXs91aF8aGzrwQrb7sPmP4boPRDKOa5e9e34p
+	dvx4cGAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3fQc-00B3Vt-2e;
-	Mon, 29 May 2023 16:09:02 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1q3fY9-00B4io-1J;
+	Mon, 29 May 2023 16:16:49 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3fQa-00B3VA-0N;
-	Mon, 29 May 2023 16:09:01 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-3f6e68cc738so22914465e9.1;
-        Mon, 29 May 2023 09:08:59 -0700 (PDT)
+	id 1q3fY6-00B4gq-14;
+	Mon, 29 May 2023 16:16:47 +0000
+Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-3f61530506aso36203335e9.1;
+        Mon, 29 May 2023 09:16:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1685376538; x=1687968538;
+        d=gmail.com; s=20221208; t=1685377002; x=1687969002;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=3EWH1RGi3evo5KxNcmukt363dFuq46wqFUtOjsuXhA8=;
-        b=jQWMhVOJqrhhSLKnkMuB/L/2hC8SDBzu1rHeomtE8ZHb1H8SRPhi8BFlt6zA2V1nzu
-         80MNtbfVt2Jcq1qnzY8v/DYSIeNtkB9B61vaJfc0bAucpcI+StpT/pFFsXXT8vcYAr1t
-         FHwgL0WH4KEyUeJPRYhipiuxOvvRSLpnnNqJ7xWjIG7Q2KfFvBg8v4cVYXR8upiZ9BTB
-         gTtaSfYDiXWLD6BUPqAMRJbhcfW6uO04W3RoW7Bu3SpsYQ74lFVc1ZQG03Sk/OBkTCNs
-         vB8RjvCqHGAc4ncYQY9efNDbVRMm3ssoeDolQJaRuwZdAomcHoSBzBn24YJF3REha6pf
-         NERg==
+        bh=B6oEUPyDe6k6imC6sIUryh04ys93Tehf8o/RTmSion4=;
+        b=ICGdINm3mLMU2/7rwAV/0Uxi8M0SM8JdOb5gppFed94uXWCvdHUrPYCrJ8BWcjHlHe
+         zctcq0JIwa1/vkGO+PDpbS9q4f+v1BK7wP70DJpqDTv4buctUfZPm2jIW3lj4Jplzk9C
+         +oDvhJRoPROvApnrOheaSI7bfAykBSIfG1jg9k/qo5HYWJIkfh0tYEgASKds60omE4rc
+         GvylKXZhLyK/p/9sA+NKIfVvxMn98vDZEkQ4ptNIArNgP3fvudR20uWicFqt6A22EKOg
+         zZvSoT83TWa7GFqfQcbKZeUsP94FZpGH8J01x1ilR94gyGbGLPke/awnY1Rlm+XjMelM
+         TWGg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685376538; x=1687968538;
+        d=1e100.net; s=20221208; t=1685377002; x=1687969002;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=3EWH1RGi3evo5KxNcmukt363dFuq46wqFUtOjsuXhA8=;
-        b=eaJPmVORWH8wm62LmvXU/tRyxxaRajriNK5AMoDfRtvYnN5tp6q2eoxNA67k7VSXU+
-         pthS0NxGiVIcykg5gZ2de8Z432hNwYT1aqUPVCduuWNmoND38ntf1S7w4B/ikDLL/UPf
-         k2LHPaV0P9zYQ8Y9DPuNrx1nVHvSco+EtW5rTt3yO9FKQEcBQFBT4vhFDBG5DyXrXYHU
-         MwsHlKmAhJ+Y7iLY8X0I2k7M/7wIuQbjPDpz9CBNLfOCndqGvnGg0MBHdTAcPczJd0q4
-         wxWa3B6VPFzKo7WQc9VekZIBacQq8vOvoXPzDTac2kMWY22yJhfyqh3u75f4mSDftNLW
-         EFmA==
-X-Gm-Message-State: AC+VfDxXDb5Uga5JAdxR9km2pPlSeEPXpOotvYE/xzES6deaAlZ5KVt6
-	CGb70I3vqud5d5/Ppzp0sQc=
-X-Google-Smtp-Source: ACHHUZ6D5hrPwjDQc5UEg00LPOMeU4uSzujA/kxxLTkMASJjd1jfli8yHkc3tVvDbHl3qIB3XT0Jjg==
-X-Received: by 2002:a05:600c:22d0:b0:3f6:f56:9ad with SMTP id 16-20020a05600c22d000b003f60f5609admr9718894wmg.13.1685376538448;
-        Mon, 29 May 2023 09:08:58 -0700 (PDT)
+        bh=B6oEUPyDe6k6imC6sIUryh04ys93Tehf8o/RTmSion4=;
+        b=eTpiHOU9HtWvnMZpoD00Tmwz1ui2IBizJOeidNLF2Iu2J6EGcWHwcdcdfhbW+WzNn/
+         X1Qo301bhuE8ba/Tuon9HaaF2QLA/JuCcppdUvHIyMnFLNgH7n4s9URMbLDF4ss1lD+j
+         wKoJLNHM6V8UycWdX5cYUlLkqVn+JjJn8IIdUDTaxyhqGaDgpP5+lc+G8A/1rI1E81UQ
+         hF7qPtjeqJLefpNgK1qq7TCefW8WAJzLxilSwpWRXX9TtNsbw/VvlpBPWMChBoeoimiZ
+         RBdcefcqCfSPxzx8gcRHbVmmkQ/ZRIuoteBnQ8PkUvYEin7CezNde2id3a/m+564JmEv
+         kyog==
+X-Gm-Message-State: AC+VfDxN6hFjsmLdy/1jaK3Z3P63LCgtV19z8Rhg/PuEbzGycmabiJC1
+	3Ek40DS7TI0XQUsi0J8sAYw=
+X-Google-Smtp-Source: ACHHUZ75AMsCYyTd9+rBATqxtSpmcQNLV+356SY+CSM0VG6B9tAy5IrbZs0dtJ5u5DjvQseiEntplw==
+X-Received: by 2002:a1c:4b10:0:b0:3f6:e79:3a8e with SMTP id y16-20020a1c4b10000000b003f60e793a8emr10807728wma.12.1685377002522;
+        Mon, 29 May 2023 09:16:42 -0700 (PDT)
 Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id u5-20020a05600c00c500b003f0ad8d1c69sm18229641wmm.25.2023.05.29.09.08.56
+        by smtp.gmail.com with ESMTPSA id m7-20020a056000180700b003062d815fa6sm394876wrh.85.2023.05.29.09.16.41
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 29 May 2023 09:08:57 -0700 (PDT)
-Message-ID: <cabc40f3-d1cb-bdd0-bd96-1a51cb861579@gmail.com>
-Date: Mon, 29 May 2023 18:08:56 +0200
+        Mon, 29 May 2023 09:16:41 -0700 (PDT)
+Message-ID: <abef0fe6-ef80-283f-cfeb-e0a4366691fb@gmail.com>
+Date: Mon, 29 May 2023 18:16:40 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.0
-Subject: Re: [PATCH 0/2] MT8192/95: Set correct MSDCPLL rate
+Subject: Re: [PATCH] arm64: dts: mt8173: Power on panel regulator on boot
 Content-Language: en-US, ca-ES, es-ES
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- conor+dt@kernel.org, weiyi.lu@mediatek.com, ikjn@chromium.org,
- chun-jie.chen@mediatek.com, tinghan.shen@mediatek.com,
- seiya.wang@mediatek.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel@collabora.com
-References: <20230522093002.75137-1-angelogioacchino.delregno@collabora.com>
+To: Pin-yen Lin <treapking@chromium.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Doug Anderson <dianders@chromium.org>
+References: <20230417123956.926266-1-treapking@chromium.org>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20230522093002.75137-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230417123956.926266-1-treapking@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230529_090900_151585_19A95146 
-X-CRM114-Status: GOOD (  11.82  )
+X-CRM114-CacheID: sfid-20230529_091646_368174_6BEF0F2B 
+X-CRM114-Status: GOOD (  16.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,23 +98,32 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 22/05/2023 11:30, AngeloGioacchino Del Regno wrote:
-> This series improves both stability/reliability and performance for
-> eMMC and SD cards on MT8192 and MT8195, where the PLL may be set at
-> a sub-optimal rate from the bootloader.
+On 17/04/2023 14:39, Pin-yen Lin wrote:
+> Add "regulator-boot-on" to "panel_fixed_3v3" to save time on powering
+> the regulator during boot.  Also add "off-on-delay-us" to the node to
+> make sure the regulator never violates the panel timing requirements.
 > 
-> This was tested on MT8192 Asurada Spherion and MT8195 Cherry Tomato
-> Chromebooks.
-> 
-> AngeloGioacchino Del Regno (2):
->    arm64: dts: mediatek: mt8192: Make sure MSDCPLL's rate is 400MHz
->    arm64: dts: mediatek: mt8195: Make sure MSDCPLL's rate is 400MHz
-> 
->   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 2 ++
->   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 2 ++
->   2 files changed, 4 insertions(+)
+> Signed-off-by: Pin-yen Lin <treapking@chromium.org>
 > 
 
-Whole series applied, thanks a lot!
-Matthias
+Applied, thanks!
+
+> ---
+> 
+>   arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 2 ++
+>   1 file changed, 2 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+> index d77f6af19065..03d1ab2ca820 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+> @@ -96,6 +96,8 @@ panel_fixed_3v3: regulator1 {
+>   		regulator-min-microvolt = <3300000>;
+>   		regulator-max-microvolt = <3300000>;
+>   		enable-active-high;
+> +		regulator-boot-on;
+> +		off-on-delay-us = <500000>;
+>   		gpio = <&pio 41 GPIO_ACTIVE_HIGH>;
+>   		pinctrl-names = "default";
+>   		pinctrl-0 = <&panel_fixed_pins>;
 
