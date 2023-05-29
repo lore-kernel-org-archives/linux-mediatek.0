@@ -4,77 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FE51C77B7E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 May 2023 16:22:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABF34C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 May 2023 16:28:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ilrAA1wC/2lR7cmTwLpraXPfwi0Ne6pIsDBp9ANZIxA=; b=5GvNdqMtwZYOC9h5ZQ2tR7EnXJ
-	5ceaNnMSLWFPIP+wAeS8j/cusghN/wWCj5SYsisvTJycF2SG3RYejDfdqiwlMjkGGjOveDy6F0ccb
-	+Ain1HFlyBhgORZLDeVe7uLGXFCWW3Hu1+iqAdMWF/ik+IQItywmdz6/eAstgb0fnTCuTNzU8/xkQ
-	gK99GGsBrhg/ZCaAroYppfjaBVroA38WfwSoNH/WC62JzkgB3+6KMd3P6+0as9U37ICRIjnD6t87v
-	iGE/0XcmmZd3cvfl5F55Bu/PPy/YomZf43xsIoykfbtqX+1dSw9qUYoBWTc8iSgC/oEinhXtXCacS
-	rv2TIn6w==;
+	bh=2iKyeVxpYOPIGYe/Lxm4HI6qu/yiKmBXO8zVnrWLpCU=; b=KWLDSgvXsvdk9BO4ie4+ClZ/qI
+	dGdp/6jzZ4FmjNi4DcaYalP7ahTH5ofHzeI7XRhUmOF7I0dUnMI8WJIlxY92t6c9cSkBksJDFfVwH
+	GpSUaD6uwKAhnaP9AcVutYGHUE+xZcmV+/tTqpQIOgOGEoQGHsj3cTpEeDx21tzvs47PSm3aA32qM
+	15vYTiYS1ZM0PxF8eOIsJLX1DOInd6fu8Dsbt1uipp776yS1FNnfW2QMkHaTfVOmNXCucLvnNI6E/
+	rcOEWFRIlVWYXrOhmFBdR7rZhJBGVL+cBazQy+IAOX6lH+ihZ60Ulz5KUkI/iba6BlzdnieoblKW6
+	puLd8EzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3fdh-00B64e-1d;
-	Mon, 29 May 2023 16:22:33 +0000
-Received: from sender4-op-o15.zoho.com ([136.143.188.15])
+	id 1q3fjU-00B7Dw-0b;
+	Mon, 29 May 2023 16:28:32 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3fdX-00B60O-2d;
-	Mon, 29 May 2023 16:22:25 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1685377291; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=kJo0+4Nh6uTfjtAcHruO7UKi+Y+CK/sWFzpJcJ/UcKhkgCmDDl8jKEkTyHn3WKvtuFFBCESfKbf5pIrpeiewabdKNwmjMG9fFWprA96xkJXrKGw/4iOoR9LCJ9lFompQ0qoRTsflMudT0oqUrv2GmKFktPolAagpNh4G7L5lh4M=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1685377291; h=Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=ilrAA1wC/2lR7cmTwLpraXPfwi0Ne6pIsDBp9ANZIxA=; 
-	b=YWlfiW6dExhNftSoyAwit80Pt6GR85YsCYOxH1q4EBTlD03CERJvxe+9CnZqPDaosGP2lSfB7IB9rdc21+Jo7PTxsXbpDJIlSztH/OtDL48foysIRFkixjKguTm8BamTpEOHbBV0BoswDzc+ghVjLN3YVjDET1DEXMBA857t0sQ=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=icenowy.me;
-	spf=pass  smtp.mailfrom=uwu@icenowy.me;
-	dmarc=pass header.from=<uwu@icenowy.me>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1685377291;
-	s=zmail2; d=icenowy.me; i=uwu@icenowy.me;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-Id:Message-Id:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Reply-To;
-	bh=ilrAA1wC/2lR7cmTwLpraXPfwi0Ne6pIsDBp9ANZIxA=;
-	b=qgv0OzOh3t0eJ4mfgJXlbms56WzoJYNoAyrZ/2maDsOOhBD5fRE6r5PdmClMqiN1
-	xN6jbjcWhCDhTYd8+KZapgKtvhQqD2bhIRm9cQvWoEvXdRYPJA8IT3PHnVIzfzUmhuT
-	l8b0MUQvh5U7BrX36wWLhtkJlwWAjyfxbNlaw3YzSLxfyqc+Aq2L/dS4RkAL2ivEMPU
-	hwZTN71m1p0KOPOdRty8pl9J/kaov48y1a71zSqkD/1nysX5m/iJ3H1JeguajDGBRGp
-	pPoe5MLoBd80nmxSalVmYfRv8jAVnaKGZRe4Ck8rYEqM2oKt7JWBP0eRGztHk0jz+3J
-	RLMxeE9srA==
-Received: from edelgard.fodlan.icenowy.me (120.85.97.71 [120.85.97.71]) by mx.zohomail.com
-	with SMTPS id 1685377291110330.7646889379969; Mon, 29 May 2023 09:21:31 -0700 (PDT)
-From: Icenowy Zheng <uwu@icenowy.me>
-To: "Rafael J . Wysocki" <rafael@kernel.org>,
-	Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Amit Kucheria <amitk@kernel.org>,
-	Zhang Rui <rui.zhang@intel.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Kang Chen <void0red@hust.edu.cn>,
-	Dongliang Mu <dzm91@hust.edu.cn>
-Cc: linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Icenowy Zheng <uwu@icenowy.me>
-Subject: [PATCH 2/2] thermal/drivers/mediatek: unmap foreign MMIO after probing
-Date: Tue, 30 May 2023 00:20:56 +0800
-Message-Id: <20230529162056.3786301-3-uwu@icenowy.me>
-X-Mailer: git-send-email 2.39.1
-In-Reply-To: <20230529162056.3786301-1-uwu@icenowy.me>
-References: <20230529162056.3786301-1-uwu@icenowy.me>
+	id 1q3fjQ-00B7Bn-0o;
+	Mon, 29 May 2023 16:28:29 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-3f6e13940daso36521165e9.0;
+        Mon, 29 May 2023 09:28:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1685377704; x=1687969704;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=2iKyeVxpYOPIGYe/Lxm4HI6qu/yiKmBXO8zVnrWLpCU=;
+        b=EpgmH9C6n5uyhLbAytYKg1lA2SVWmxLhgqXm1xmhHfyRF0cp7zejDIcXKiCOd/EkHc
+         lJIpPh7f+lCohgmAvAACNj6NtHaPhXMHKg9a/1/VIYzTiRhn6x2LWHZJi68XifC3mRJI
+         M3Z4b4rjMXd+jU9mNWH6+Q9me/xHAkVmLSql84N+hYQDlhrXNMp5t/3z6xDJly6Vv+Xb
+         +VVlAxN3nrAj3MkDBuSILGgXIKAVFZ5TnPECDlY3JGBc/ph6RWAStiyGZMvTDLIgVWBO
+         nbOejSBvsD/+OMxkRwRl19Bgf7Rsp3Y7zuinC3hX3Q9e+cVV9V0Np7Q/ycx4MsnnzGgA
+         +Mug==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1685377704; x=1687969704;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=2iKyeVxpYOPIGYe/Lxm4HI6qu/yiKmBXO8zVnrWLpCU=;
+        b=YudVosuJ59Ng9rdlArFUSe1ZJx6unXXptV+M/SDrMitprVZ/J5lv+09nKl9+oApWy5
+         TFMEicwWjfQY3U9sWGG74fzPmmalDPPw1b//fKnCzDCcGNvRyAAsNpaJ4LvMDmXpM0sn
+         jhtG1sfdgzo77i1UzCmQrNq9z4Jgfzpfyw5kvDtmei/eGZkDmJg3Lw5E+4kfECiqQCXL
+         5j0kavfP485IGaZaMYjAFte8+AUjYlaXBTcMM9kEy9QXLJ+Rq20CSBrknBLOrGqpPQ+B
+         zx5KuB6wQ3yTn1fgQgFGTj20nyIxm+k/f5T005R558a+x/lQaragACJ6RNiHi63f6txI
+         DwXQ==
+X-Gm-Message-State: AC+VfDzBjcpYgMIQsaPqbwt2iupNX+HK4Xu4ZRmeCRCbf66mMUjSgTn9
+	jhSaRRbIoXi4lkKyji0wRyo=
+X-Google-Smtp-Source: ACHHUZ4nt4/ZUaLSDt/sbuRs0jUlCrpJSZ4JbtG0UP+yrn/Tqv+Tk0qeFK4rvij2BzsefX+Pdi2pHg==
+X-Received: by 2002:a1c:4c04:0:b0:3f6:962d:405c with SMTP id z4-20020a1c4c04000000b003f6962d405cmr8550475wmf.41.1685377703937;
+        Mon, 29 May 2023 09:28:23 -0700 (PDT)
+Received: from [192.168.2.177] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id k5-20020a7bc405000000b003f31cb7a203sm14715125wmi.14.2023.05.29.09.28.22
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 29 May 2023 09:28:22 -0700 (PDT)
+Message-ID: <3069dcf7-28e0-e7f6-11d5-9bc286d7d6e3@gmail.com>
+Date: Mon, 29 May 2023 18:28:21 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8173-elm: remove panel model
+ number in DT
+Content-Language: en-US, ca-ES, es-ES
+To: Icenowy Zheng <uwu@icenowy.me>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Doug Anderson <dianders@chromium.org>, Pin-yen Lin <treapking@chromium.org>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ dri-devel@lists.freedesktop.org
+References: <20230526100801.16310-1-uwu@icenowy.me>
+ <CAD=FV=UxrFVZXn+dtgamttTVopWMSVbxYsHCGG_tS+3OTXbHiw@mail.gmail.com>
+ <f4a9e090-3712-200e-bd09-70090c9cccbc@collabora.com>
+ <6996788b112f4795d2930a6664b3152cd9a380a8.camel@icenowy.me>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <6996788b112f4795d2930a6664b3152cd9a380a8.camel@icenowy.me>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230529_092223_921858_FC915E96 
-X-CRM114-Status: GOOD (  13.82  )
+X-CRM114-CacheID: sfid-20230529_092828_293427_917FF89F 
+X-CRM114-Status: GOOD (  24.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,101 +102,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MMIO space from auxadc and apmixedsys devices are only needed when
-initializing the thermal sensors, so these memory regions could be
-safely unmapped after the probing process to prevent resource leak.
 
-Unmap them at the end of the probe method, and route the unmap codepath
-to early exits of the probe method for preventing leak when error
-handling.
 
-Signed-off-by: Icenowy Zheng <uwu@icenowy.me>
----
- drivers/thermal/mediatek/auxadc_thermal.c | 32 ++++++++++++++++-------
- 1 file changed, 22 insertions(+), 10 deletions(-)
+On 29/05/2023 10:45, Icenowy Zheng wrote:
+> 在 2023-05-29星期一的 10:02 +0200，AngeloGioacchino Del Regno写道：
+>> Il 26/05/23 16:24, Doug Anderson ha scritto:
+>>> Hi,
+>>>
+>>> On Fri, May 26, 2023 at 3:09 AM Icenowy Zheng <uwu@icenowy.me>
+>>> wrote:
+>>>>
+>>>> Currently a specific panel number is used in the Elm DTSI, which
+>>>> is
+>>>> corresponded to a 12" panel. However, according to the official
+>>>> Chrome
+>>>> OS devices document, Elm refers to Acer Chromebook R13, which, as
+>>>> the
+>>>> name specifies, uses a 13.3" panel, which comes with EDID
+>>>> information.
+>>>>
+>>>> As the kernel currently prioritizes the hardcoded timing
+>>>> parameters
+>>>> matched with the panel number compatible, a wrong timing will be
+>>>> applied
+>>>> to the 13.3" panel on Acer Chromebook R13, which leads to blank
+>>>> display.
+>>>>
+>>>> Because the Elm DTSI is shared with Hana board, and Hana
+>>>> corresponds to
+>>>> multiple devices from 11" to 14", a certain panel model number
+>>>> shouldn't
+>>>> be present, and driving the panel according to its EDID
+>>>> information is
+>>>> necessary.
+>>>>
+>>>> Signed-off-by: Icenowy Zheng <uwu@icenowy.me>
+>>>> ---
+>>>>    arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 2 +-
+>>>>    1 file changed, 1 insertion(+), 1 deletion(-)
+>>>
+>>> We went through a bunch of back-and-forth here but in the end in
+>>> the
+>>> ChromeOS tree we have "edp-panel" as the "compatible" here in the
+>>> ChromeOS 5.15 tree and this makes sense.
+>>>
+>>> Reviewed-by: Douglas Anderson <dianders@chromium.org>
+>>>
+>>> ...in theory one would wish for a "Fixes" tag, but I think in
+>>> previous
+>>> discussions it was decided that it was too complicated. Hardcoding
+>>> the
+>>> other compatible string has always been technically wrong, but I
+>>> guess
+>>> it worked at some point in time. The more correct way (as you're
+>>> doing
+>>> here) needs the DP AUX bus support and the generic eDP panels, both
+>>> of
+>>> which are significantly newer than the elm dts. So I guess leaving
+>>> no
+>>> "Fixes" tag is OK, or perhaps you could do the somewhat weak:
+>>>
+>>> Fixes: c2d94f72140a ("arm64: dts: mediatek: mt8173-elm: Move
+>>> display
+>>> to ps8640 auxiliary bus")
+>>
+>> I remember I didn't change the compatible to panel-edp because it
+>> didn't
+>> work at that time, but it does now... I'm not sure what actually
+>> fixed that
+>> and if the commit(s) was/were backported to that suggested point, so
+>> I
+>> would leave the Fixes tag out, as that may break older kernel.
+> 
+> Well at least I developed this patch on v6.3.
+> 
+> (In fact the same kernel config do not boot to system at all on
+> v6.0/v6.1 when I do make olddefconfig then build)
+> 
 
-diff --git a/drivers/thermal/mediatek/auxadc_thermal.c b/drivers/thermal/mediatek/auxadc_thermal.c
-index f59d36de20a0..c010a96f9aca 100644
---- a/drivers/thermal/mediatek/auxadc_thermal.c
-+++ b/drivers/thermal/mediatek/auxadc_thermal.c
-@@ -1229,13 +1229,15 @@ static int mtk_thermal_probe(struct platform_device *pdev)
- 
- 	if (auxadc_phys_base == OF_BAD_ADDR) {
- 		dev_err(&pdev->dev, "Can't get auxadc phys address\n");
--		return -EINVAL;
-+		ret = -EINVAL;
-+		goto out_unmap_auxadc;
- 	}
- 
- 	apmixedsys = of_parse_phandle(np, "mediatek,apmixedsys", 0);
- 	if (!apmixedsys) {
- 		dev_err(&pdev->dev, "missing apmixedsys node\n");
--		return -ENODEV;
-+		ret = -ENODEV;
-+		goto out_unmap_auxadc;
- 	}
- 
- 	apmixed_base = of_iomap(apmixedsys, 0);
-@@ -1245,25 +1247,26 @@ static int mtk_thermal_probe(struct platform_device *pdev)
- 
- 	if (apmixed_phys_base == OF_BAD_ADDR) {
- 		dev_err(&pdev->dev, "Can't get auxadc phys address\n");
--		return -EINVAL;
-+		ret = -EINVAL;
-+		goto out_unmap_apmixed;
- 	}
- 
- 	ret = device_reset_optional(&pdev->dev);
- 	if (ret)
--		return ret;
-+		goto out_unmap_apmixed;
- 
- 	mt->clk_auxadc = devm_clk_get_enabled(&pdev->dev, "auxadc");
- 	if (IS_ERR(mt->clk_auxadc)) {
- 		ret = PTR_ERR(mt->clk_auxadc);
- 		dev_err(&pdev->dev, "Can't enable auxadc clk: %d\n", ret);
--		return ret;
-+		goto out_unmap_apmixed;
- 	}
- 
- 	mt->clk_peri_therm = devm_clk_get_enabled(&pdev->dev, "therm");
- 	if (IS_ERR(mt->clk_peri_therm)) {
- 		ret = PTR_ERR(mt->clk_peri_therm);
- 		dev_err(&pdev->dev, "Can't enable peri clk: %d\n", ret);
--		return ret;
-+		goto out_unmap_apmixed;
- 	}
- 
- 	mtk_thermal_turn_on_buffer(mt, apmixed_base);
-@@ -1287,14 +1290,23 @@ static int mtk_thermal_probe(struct platform_device *pdev)
- 
- 	tzdev = devm_thermal_of_zone_register(&pdev->dev, 0, mt,
- 					      &mtk_thermal_ops);
--	if (IS_ERR(tzdev))
--		return PTR_ERR(tzdev);
-+	if (IS_ERR(tzdev)) {
-+		ret = PTR_ERR(tzdev);
-+		goto out_unmap_apmixed;
-+	}
- 
- 	ret = devm_thermal_add_hwmon_sysfs(&pdev->dev, tzdev);
--	if (ret)
-+	if (ret) {
- 		dev_warn(&pdev->dev, "error in thermal_add_hwmon_sysfs");
-+		ret = 0;
-+	}
- 
--	return 0;
-+out_unmap_apmixed:
-+	iounmap(apmixed_base);
-+out_unmap_auxadc:
-+	iounmap(auxadc_base);
-+
-+	return ret;
- }
- 
- static struct platform_driver mtk_thermal_driver = {
--- 
-2.39.1
+I applied the patch without the fixes tag. Lets stay on the secure side to not 
+break older kernels.
 
+Regards,
+Matthias
+
+>>
+>> Anyway, for this commit:
+>>
+>> Reviewed-by: AngeloGioacchino Del Regno
+>> <angelogioacchino.delregno@collabora.com>
+> 
 
