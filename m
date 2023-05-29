@@ -4,58 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12EB7C77B7E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 May 2023 20:44:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19D7CC7EE23
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 May 2023 22:14:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NiNTNWADcq8Wf9sTDfcLcaA78qUAbBkS8piCK+YIth4=; b=Yo8Ic7xdf7LbZE
-	8qR0VDAcKqdJ4gGBGxVLTWj8A1UW3bcytYHGTzNSfIxL3vVUmTbJAArshV84t39e1DxkA+lTsShRY
-	k7JwbFvWXKLdB7kSRT0szXhZPglwfW9i+CamnZW3SoMsmGsbkdeQfdwOdfQUKABCN7YoJ2tQbq/zu
-	05qKOBGZGi8ZwVRI+xwIFnkcut74kjZsd+h/53UMTeMJkffikPY/bnT2RwEH5c+mypt6QTkSE7EO4
-	iTz08SKKRXGBHg1KBrJAg9p4NB7SxFZxr3Ykr2w5jKG9lIC7GyLCIXqPRFtS5MqzjFvd2u5/+zAIs
-	eLauwPndO0ia/DzB5viw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=h+9GGXIQGiqHaDNSfG7t8NCmOejqPPcx1D0oM7wA4jU=; b=Wpah9KfhpFqM0AVPpa6UhepFOm
+	HCpGj42bomPaukyUqcyWhr4Ij97aLBxRYmdfbk/jew4oaa+/Z5vOR9NT7FB0nW4blTEDrF0QIn+UQ
+	1KktZM4XfqdrV7rNvqHtjWjlbCX4tlQlW1gDDq3eY3s+DDzIRujKWwWA00kjAK5y27N98V73plssT
+	JNhxqa3nyJTXvclMyZehttuO55Iea/ITYC5TIfvPhFpv1GQStTPq/ArLGt3HIRhIOZ8626p7cORRy
+	QvW9xf1GzRJmAiDiClNouvAtbZCwDx0iABS8g6GLgkmPVOslMuDzGYszgvJW/uTQy+QZzbuqRfifA
+	tibo7j8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3jio-00BfAf-1w;
-	Mon, 29 May 2023 20:44:06 +0000
-Received: from mxout1.routing.net ([2a03:2900:1:a::a])
+	id 1q3l7m-00Bnx7-2H;
+	Mon, 29 May 2023 22:13:58 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3jiR-00Bexe-0U;
-	Mon, 29 May 2023 20:43:46 +0000
-Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
-	by mxout1.routing.net (Postfix) with ESMTP id 695513FC7F;
-	Mon, 29 May 2023 20:43:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1685393015;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=NiNTNWADcq8Wf9sTDfcLcaA78qUAbBkS8piCK+YIth4=;
-	b=X7uCk1A5RWowtoLg5C28QXGgBuPhnlgquA0AlaMFd43ibD+ZUiiExwvswPC2MKv8xwn93/
-	lYdNhnN/6uXhuWKKJ1g57S9tFrJvZcprKeOWolnq3tU34kfnUUp1wV3Es+/nhVbwQv8nsJ
-	lqZPUaqmWk5su9LXSJu66RUD+Zv4PZg=
-Received: from frank-G5.. (fttx-pool-217.61.156.2.bambit.de [217.61.156.2])
-	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id 4483E1006D1;
-	Mon, 29 May 2023 20:43:34 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 4/4] arm64: dts: mt7986: add pwm-fan and cooling-maps to BPI-R3 dts
-Date: Mon, 29 May 2023 22:42:58 +0200
-Message-Id: <20230529204258.65238-5-linux@fw-web.de>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230529204258.65238-1-linux@fw-web.de>
-References: <20230529204258.65238-1-linux@fw-web.de>
+	id 1q3l7i-00Bnve-23;
+	Mon, 29 May 2023 22:13:56 +0000
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 34TMAb3l015307;
+	Mon, 29 May 2023 22:13:43 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=from : to : cc :
+ subject : date : message-id : in-reply-to : references : mime-version :
+ content-type; s=qcppdkim1;
+ bh=h+9GGXIQGiqHaDNSfG7t8NCmOejqPPcx1D0oM7wA4jU=;
+ b=XqzkjDlytEYYpWPQF5Xqj2kMVw2uosw8lhRzHvGUI9jaRJFnczFv6UTCnEi5L78M/sE8
+ AgXyWI3kgl/zTcAzKyBIV2bQbO2yZgPH6t6EfvzX5gLqLkTEXrSga4E3ZXOIqjRm3JXF
+ gpsGRYnf7mOZYPYgrYHY6yI1JSaewHgbHZK1yDJqdQ5hmiKrIzdrGCkvCaJXFuQhVCTE
+ qKV5FjIu1EUkld3nfV4WsqcmKx5ktlLkif+Lq9D9LH40B2IVUBJPPQ4KUr1QCnEcldkE
+ foNX51SJQh/Sr62JnAfZV+lLonq/gp/EeBjXoFnZSAv7MmII47rzd8DdxhU++4n7BRtF ow== 
+Received: from nasanppmta04.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3qvmqrhtvn-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 29 May 2023 22:13:42 +0000
+Received: from nasanex01a.na.qualcomm.com (nasanex01a.na.qualcomm.com [10.52.223.231])
+	by NASANPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 34TMDgLp029708
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 29 May 2023 22:13:42 GMT
+Received: from stor-berry.qualcomm.com (10.80.80.8) by
+ nasanex01a.na.qualcomm.com (10.52.223.231) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.42; Mon, 29 May 2023 15:13:41 -0700
+From: "Bao D. Nguyen" <quic_nguyenb@quicinc.com>
+To: <quic_asutoshd@quicinc.com>, <quic_cang@quicinc.com>, <bvanassche@acm.org>,
+        <mani@kernel.org>, <stanley.chu@mediatek.com>,
+        <adrian.hunter@intel.com>, <beanhuo@micron.com>, <avri.altman@wdc.com>,
+        <martin.petersen@oracle.com>
+CC: <linux-scsi@vger.kernel.org>, "Bao D. Nguyen" <quic_nguyenb@quicinc.com>,
+        Alim Akhtar <alim.akhtar@samsung.com>,
+        "James E.J. Bottomley"
+	<jejb@linux.ibm.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        "Alice
+ Chao" <alice.chao@mediatek.com>,
+        Arthur Simchaev <Arthur.Simchaev@wdc.com>,
+        Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+        open list
+	<linux-kernel@vger.kernel.org>,
+        "moderated list:ARM/Mediatek SoC support"
+	<linux-arm-kernel@lists.infradead.org>,
+        "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v7 7/7] ufs: core: Add error handling for MCQ mode
+Date: Mon, 29 May 2023 15:12:26 -0700
+Message-ID: <f0d923ee1f009f171a55c258d044e814ec0917ab.1685396241.git.quic_nguyenb@quicinc.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <cover.1685396241.git.quic_nguyenb@quicinc.com>
+References: <cover.1685396241.git.quic_nguyenb@quicinc.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mail-ID: b1d02627-873f-44dd-a92e-df7ed1a9bf87
+Content-Type: text/plain
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nasanex01a.na.qualcomm.com (10.52.223.231)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: gey-v_a_2KuUSJYJFloLqYLRQoMGErRL
+X-Proofpoint-ORIG-GUID: gey-v_a_2KuUSJYJFloLqYLRQoMGErRL
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.573,FMLib:17.11.176.26
+ definitions=2023-05-29_12,2023-05-29_02,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxscore=0 priorityscore=1501
+ malwarescore=0 clxscore=1011 adultscore=0 bulkscore=0 spamscore=0
+ impostorscore=0 lowpriorityscore=0 mlxlogscore=999 phishscore=0
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2304280000 definitions=main-2305290187
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230529_134343_357032_2AEEB859 
-X-CRM114-Status: GOOD (  11.31  )
+X-CRM114-CacheID: sfid-20230529_151354_686099_25A0D176 
+X-CRM114-Status: GOOD (  28.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,73 +108,275 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Lars-Peter Clausen <lars@metafoo.de>, Lala Lin <lala.lin@mediatek.com>, linux-iio@vger.kernel.org, Zhiyong Tao <zhiyong.tao@mediatek.com>, "Hui.Liu" <hui.liu@mediatek.com>, linux-kernel@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Jonathan Cameron <jic23@kernel.org>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Daniel Golle <daniel@makrotopia.org>
+Add support for error handling for MCQ mode.
 
-Add pwm-fan and cooling-maps to BananaPi-R3 devicetree.
-
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+Suggested-by: Can Guo <quic_cang@quicinc.com>
+Co-developed-by: Stanley Chu <stanley.chu@mediatek.com>
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+Signed-off-by: Bao D. Nguyen <quic_nguyenb@quicinc.com>
 ---
-this is based on Patch from openwrt. as my PWM-fan seems to need 5v pwm
-signal and r3 only provides 3v3 on 3pin-socket it does not work for me.
----
- .../dts/mediatek/mt7986a-bananapi-bpi-r3.dts  | 31 +++++++++++++++++++
- 1 file changed, 31 insertions(+)
+ drivers/ufs/core/ufs-mcq.c     |  26 ++++++++-
+ drivers/ufs/core/ufshcd-priv.h |   3 +-
+ drivers/ufs/core/ufshcd.c      | 128 ++++++++++++++++++++++++++++++++++++-----
+ 3 files changed, 139 insertions(+), 18 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-index 782519429497..29c018bbf29d 100644
---- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-@@ -37,6 +37,15 @@ dcin: regulator-12vd {
- 		regulator-always-on;
- 	};
+diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
+index 2efa012..66ac02e 100644
+--- a/drivers/ufs/core/ufs-mcq.c
++++ b/drivers/ufs/core/ufs-mcq.c
+@@ -276,12 +276,34 @@ static int ufshcd_mcq_get_tag(struct ufs_hba *hba,
+ }
  
-+	fan: pwm-fan {
-+		compatible = "pwm-fan";
-+		#cooling-cells = <2>;
-+		/* cooling level (0, 1, 2) - pwm inverted */
-+		cooling-levels = <255 96 0>;
-+		pwms = <&pwm 0 10000 0>;
-+		status = "okay";
-+	};
-+
- 	gpio-keys {
- 		compatible = "gpio-keys";
+ static void ufshcd_mcq_process_cqe(struct ufs_hba *hba,
+-					    struct ufs_hw_queue *hwq)
++				   struct ufs_hw_queue *hwq)
+ {
+ 	struct cq_entry *cqe = ufshcd_mcq_cur_cqe(hwq);
+ 	int tag = ufshcd_mcq_get_tag(hba, hwq, cqe);
  
-@@ -132,6 +141,28 @@ sfp2: sfp-2 {
- 	};
- };
+-	ufshcd_compl_one_cqe(hba, tag, cqe);
++	if (cqe->command_desc_base_addr) {
++		ufshcd_compl_one_cqe(hba, tag, cqe);
++		/* After processed the cqe, mark it empty (invalid) entry */
++		cqe->command_desc_base_addr = 0;
++	}
++}
++
++void ufshcd_mcq_compl_all_cqes_lock(struct ufs_hba *hba,
++				    struct ufs_hw_queue *hwq)
++{
++	unsigned long flags;
++	u32 entries = hwq->max_entries;
++
++	spin_lock_irqsave(&hwq->cq_lock, flags);
++	while (entries > 0) {
++		ufshcd_mcq_process_cqe(hba, hwq);
++		ufshcd_mcq_inc_cq_head_slot(hwq);
++		entries--;
++	}
++
++	ufshcd_mcq_update_cq_tail_slot(hwq);
++	hwq->cq_head_slot = hwq->cq_tail_slot;
++	spin_unlock_irqrestore(&hwq->cq_lock, flags);
+ }
  
-+&cpu_thermal {
-+	cooling-maps {
-+		cpu-active-high {
-+			/* active: set fan to cooling level 2 */
-+			cooling-device = <&fan 2 2>;
-+			trip = <&cpu_trip_active_high>;
-+		};
+ static unsigned long ufshcd_mcq_poll_cqe_nolock(struct ufs_hba *hba,
+diff --git a/drivers/ufs/core/ufshcd-priv.h b/drivers/ufs/core/ufshcd-priv.h
+index 339ab51..802cc40 100644
+--- a/drivers/ufs/core/ufshcd-priv.h
++++ b/drivers/ufs/core/ufshcd-priv.h
+@@ -75,7 +75,8 @@ struct ufs_hw_queue *ufshcd_mcq_req_to_hwq(struct ufs_hba *hba,
+ 					   struct request *req);
+ unsigned long ufshcd_mcq_poll_cqe_lock(struct ufs_hba *hba,
+ 				       struct ufs_hw_queue *hwq);
+-
++void ufshcd_mcq_compl_all_cqes_lock(struct ufs_hba *hba,
++				    struct ufs_hw_queue *hwq);
+ bool ufshcd_cmd_inflight(struct scsi_cmnd *cmd);
+ int ufshcd_mcq_sq_cleanup(struct ufs_hba *hba, int task_tag);
+ int ufshcd_mcq_abort(struct scsi_cmnd *cmd);
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index 69562c4..313bead 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -3148,6 +3148,15 @@ static int ufshcd_wait_for_dev_cmd(struct ufs_hba *hba,
+ 		err = -ETIMEDOUT;
+ 		dev_dbg(hba->dev, "%s: dev_cmd request timedout, tag %d\n",
+ 			__func__, lrbp->task_tag);
 +
-+		cpu-active-low {
-+			/* active: set fan to cooling level 1 */
-+			cooling-device = <&fan 1 1>;
-+			trip = <&cpu_trip_active_low>;
-+		};
++		/* MCQ mode */
++		if (is_mcq_enabled(hba)) {
++			err = ufshcd_clear_cmd(hba, lrbp->task_tag);
++			hba->dev_cmd.complete = NULL;
++			return err;
++		}
 +
-+		cpu-passive {
-+			/* passive: set fan to cooling level 0 */
-+			cooling-device = <&fan 0 0>;
-+			trip = <&cpu_trip_passive>;
-+		};
-+	};
-+};
++		/* SDB mode */
+ 		if (ufshcd_clear_cmd(hba, lrbp->task_tag) == 0) {
+ 			/* successfully cleared the command, retry if needed */
+ 			err = -EAGAIN;
+@@ -5572,6 +5581,57 @@ static int ufshcd_poll(struct Scsi_Host *shost, unsigned int queue_num)
+ }
+ 
+ /**
++ * ufshcd_mcq_compl_pending_transfer - MCQ mode function. It is
++ * invoked from the error handler context or ufshcd_host_reset_and_restore()
++ * to complete the pending transfers and free the resources associated with
++ * the scsi command.
++ *
++ * @hba: per adapter instance
++ * @force_compl: This flag is set to true when invoked
++ * from ufshcd_host_reset_and_restore() in which case it requires special
++ * handling because the host controller has been reset by ufshcd_hba_stop().
++ */
++static void ufshcd_mcq_compl_pending_transfer(struct ufs_hba *hba,
++					      bool force_compl)
++{
++	struct ufs_hw_queue *hwq;
++	struct ufshcd_lrb *lrbp;
++	struct scsi_cmnd *cmd;
++	unsigned long flags;
++	u32 hwq_num, utag;
++	int tag;
 +
- &crypto {
- 	status = "okay";
- };
++	for (tag = 0; tag < hba->nutrs; tag++) {
++		lrbp = &hba->lrb[tag];
++		cmd = lrbp->cmd;
++		if (!ufshcd_cmd_inflight(cmd) ||
++		    test_bit(SCMD_STATE_COMPLETE, &cmd->state))
++			continue;
++
++		utag = blk_mq_unique_tag(scsi_cmd_to_rq(cmd));
++		hwq_num = blk_mq_unique_tag_to_hwq(utag);
++		hwq = &hba->uhq[hwq_num + UFSHCD_MCQ_IO_QUEUE_OFFSET];
++
++		if (force_compl) {
++			ufshcd_mcq_compl_all_cqes_lock(hba, hwq);
++			/*
++			 * For those cmds of which the cqes are not present
++			 * in the cq, complete them explicitly.
++			 */
++			if (cmd && !test_bit(SCMD_STATE_COMPLETE, &cmd->state)) {
++				spin_lock_irqsave(&hwq->cq_lock, flags);
++				set_host_byte(cmd, DID_REQUEUE);
++				ufshcd_release_scsi_cmd(hba, lrbp);
++				scsi_done(cmd);
++				spin_unlock_irqrestore(&hwq->cq_lock, flags);
++			}
++		} else {
++			ufshcd_mcq_poll_cqe_lock(hba, hwq);
++		}
++	}
++}
++
++/**
+  * ufshcd_transfer_req_compl - handle SCSI and query command completion
+  * @hba: per adapter instance
+  *
+@@ -6135,9 +6195,13 @@ static void ufshcd_exception_event_handler(struct work_struct *work)
+ }
+ 
+ /* Complete requests that have door-bell cleared */
+-static void ufshcd_complete_requests(struct ufs_hba *hba)
++static void ufshcd_complete_requests(struct ufs_hba *hba, bool force_compl)
+ {
+-	ufshcd_transfer_req_compl(hba);
++	if (is_mcq_enabled(hba))
++		ufshcd_mcq_compl_pending_transfer(hba, force_compl);
++	else
++		ufshcd_transfer_req_compl(hba);
++
+ 	ufshcd_tmc_handler(hba);
+ }
+ 
+@@ -6378,18 +6442,36 @@ static bool ufshcd_abort_all(struct ufs_hba *hba)
+ 	bool needs_reset = false;
+ 	int tag, ret;
+ 
+-	/* Clear pending transfer requests */
+-	for_each_set_bit(tag, &hba->outstanding_reqs, hba->nutrs) {
+-		ret = ufshcd_try_to_abort_task(hba, tag);
+-		dev_err(hba->dev, "Aborting tag %d / CDB %#02x %s\n", tag,
+-			hba->lrb[tag].cmd ? hba->lrb[tag].cmd->cmnd[0] : -1,
+-			ret ? "failed" : "succeeded");
+-		if (ret) {
+-			needs_reset = true;
+-			goto out;
++	if (is_mcq_enabled(hba)) {
++		struct ufshcd_lrb *lrbp;
++		int tag;
++
++		for (tag = 0; tag < hba->nutrs; tag++) {
++			lrbp = &hba->lrb[tag];
++			if (!ufshcd_cmd_inflight(lrbp->cmd))
++				continue;
++			ret = ufshcd_try_to_abort_task(hba, tag);
++			dev_err(hba->dev, "Aborting tag %d / CDB %#02x %s\n", tag,
++				hba->lrb[tag].cmd ? hba->lrb[tag].cmd->cmnd[0] : -1,
++				ret ? "failed" : "succeeded");
++			if (ret) {
++				needs_reset = true;
++				goto out;
++			}
++		}
++	} else {
++		/* Clear pending transfer requests */
++		for_each_set_bit(tag, &hba->outstanding_reqs, hba->nutrs) {
++			ret = ufshcd_try_to_abort_task(hba, tag);
++			dev_err(hba->dev, "Aborting tag %d / CDB %#02x %s\n", tag,
++				hba->lrb[tag].cmd ? hba->lrb[tag].cmd->cmnd[0] : -1,
++				ret ? "failed" : "succeeded");
++			if (ret) {
++				needs_reset = true;
++				goto out;
++			}
+ 		}
+ 	}
+-
+ 	/* Clear pending task management requests */
+ 	for_each_set_bit(tag, &hba->outstanding_tasks, hba->nutmrs) {
+ 		if (ufshcd_clear_tm_cmd(hba, tag)) {
+@@ -6400,7 +6482,7 @@ static bool ufshcd_abort_all(struct ufs_hba *hba)
+ 
+ out:
+ 	/* Complete the requests that are cleared by s/w */
+-	ufshcd_complete_requests(hba);
++	ufshcd_complete_requests(hba, false);
+ 
+ 	return needs_reset;
+ }
+@@ -6440,7 +6522,7 @@ static void ufshcd_err_handler(struct work_struct *work)
+ 	spin_unlock_irqrestore(hba->host->host_lock, flags);
+ 	ufshcd_err_handling_prepare(hba);
+ 	/* Complete requests that have door-bell cleared by h/w */
+-	ufshcd_complete_requests(hba);
++	ufshcd_complete_requests(hba, false);
+ 	spin_lock_irqsave(hba->host->host_lock, flags);
+ again:
+ 	needs_restore = false;
+@@ -7321,6 +7403,8 @@ static int ufshcd_eh_device_reset_handler(struct scsi_cmnd *cmd)
+ 	unsigned long flags, pending_reqs = 0, not_cleared = 0;
+ 	struct Scsi_Host *host;
+ 	struct ufs_hba *hba;
++	struct ufs_hw_queue *hwq;
++	struct ufshcd_lrb *lrbp;
+ 	u32 pos, not_cleared_mask = 0;
+ 	int err;
+ 	u8 resp = 0xF, lun;
+@@ -7336,6 +7420,20 @@ static int ufshcd_eh_device_reset_handler(struct scsi_cmnd *cmd)
+ 		goto out;
+ 	}
+ 
++	if (is_mcq_enabled(hba)) {
++		for (pos = 0; pos < hba->nutrs; pos++) {
++			lrbp = &hba->lrb[pos];
++			if (ufshcd_cmd_inflight(lrbp->cmd) &&
++			    lrbp->lun == lun) {
++				ufshcd_clear_cmd(hba, pos);
++				hwq = ufshcd_mcq_req_to_hwq(hba, scsi_cmd_to_rq(lrbp->cmd));
++				ufshcd_mcq_poll_cqe_lock(hba, hwq);
++			}
++		}
++		err = 0;
++		goto out;
++	}
++
+ 	/* clear the commands that were pending for corresponding LUN */
+ 	spin_lock_irqsave(&hba->outstanding_lock, flags);
+ 	for_each_set_bit(pos, &hba->outstanding_reqs, hba->nutrs)
+@@ -7619,7 +7717,7 @@ static int ufshcd_host_reset_and_restore(struct ufs_hba *hba)
+ 	ufshpb_toggle_state(hba, HPB_PRESENT, HPB_RESET);
+ 	ufshcd_hba_stop(hba);
+ 	hba->silence_err_logs = true;
+-	ufshcd_complete_requests(hba);
++	ufshcd_complete_requests(hba, true);
+ 	hba->silence_err_logs = false;
+ 
+ 	/* scale up clocks to max frequency before full reinitialization */
 -- 
-2.34.1
+2.7.4
 
 
