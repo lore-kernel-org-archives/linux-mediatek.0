@@ -4,67 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB58BC7EE24
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 May 2023 17:40:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 514CDC7EE23
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 May 2023 17:40:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XuneEnNDhSvthWqPSInSzMIkBTeQOIGyzBCW/OBxn1k=; b=KNpT+CHa/+sHkf4v6UE5AgPUlD
-	a1TNl88RQtjzDUt4HsW2fI9Z+1sEWpQhVFhwC99GFInug3FHgWm40GOozi4b1egPvYYujwxQ+aBJ/
-	b38m9OZPFYRd08gzydLkGJnsNK1QeZUYgoVn4Y1TfOB950X2wbgvHVW5jBfAWwb1NmQ6mAcBkCWMi
-	W/iHum9CxmCscXn4+BOaQM0JfblUPgP09j9chOLOu+A18/U84t5+5kVdD/+/KFBIzXWPwzB6iQNB3
-	QDAlcOXqW3ibvVoegCIHMQb4tgVn9yg4BMoUu+8zi3vE5l0R1ZTGDwqeTJuBR0hRZcjFoWnMj+H5n
-	GAVvFugQ==;
+	bh=OxAgbzT5EvKVAx/Dk1ILEhNRmGxKecteWUuv+ybD8uk=; b=H6FP7zU1RX8uDz89bUx9o2xnHx
+	distWs7yBMOFn4Mvw7F48NwMO1hvTN7GT37hoaasNxaVrVpcp4fN+jzFoTet56oa1HE1h3XY2grP0
+	3oy7NNia1sQ+wkCxhJ1/slslD3rcCLDs7t4cMhnqWln04n8FgbUn8dvH2eH0zrmUDEh0cd+yWROgN
+	oszoiyYtsjTKx6UQTnjUATkVqA+ja+BRgjx+7abaVu5xoLxvtOjHchJZEvcN2Kdtl/+kOp30dlAcK
+	J7nFwCHfCF9iI0HASp2w3A/Af5ne+IDyR+ld/UQYRKAJ+PYH7sIjE9jORfd121X1eeBAY0VeXhktv
+	hqFkpNVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q43Kn-00Em6Z-1i;
-	Tue, 30 May 2023 17:40:37 +0000
+	id 1q43L2-00EmBU-0Y;
+	Tue, 30 May 2023 17:40:52 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q43Kk-00Em5S-0U;
-	Tue, 30 May 2023 17:40:35 +0000
+	id 1q43Kw-00Em9N-1M;
+	Tue, 30 May 2023 17:40:47 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 83D7C62BF4;
-	Tue, 30 May 2023 17:40:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C4394C4339C;
-	Tue, 30 May 2023 17:40:28 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id D7DA0627D1;
+	Tue, 30 May 2023 17:40:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C6F2DC4339C;
+	Tue, 30 May 2023 17:40:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1685468432;
-	bh=NWzyPIenxHpyYo1mucKzHij5CxtkM5ZDEfEPep5bjA8=;
+	s=k20201202; t=1685468445;
+	bh=9/VTo/U8Y27wlwxBTkPK9EJhdYwlyyuveYD1A6GQW2E=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=GH655kjgZ20iqGzNX8pQDiizWa1wpnlbzlPCqwtIKP/IyXqpI0iWjBiPe3Atr/A/E
-	 GKYRZO1mS4riDqhFMWHTO4wp4gkHJ+1ZzgzL8u0kyQNc3FB64yA2oyKs6/6fZmEfjl
-	 MwZByPDyJupnZuB71giHi/yt0qIxLlBP+96bZ/gjjVEi26cCzKuUmlfixG24JZcVfH
-	 +Ru3vQOLyQji5bbiibOepQNMhdEqEXPaCAqkJwdfe8ANNlOLMS3WlKdwtpcJukczPv
-	 oFUDTNIHHwCgwM+u7NRhxAdGYkt3YSR8KVKVxwy+CWTZeWwpP8vXU5KvfV8ykYzbgE
-	 SO/xbqp98td5w==
+	b=fzt0l5QzQ9LIhT/UsnD/zi5KyBJo9G9Y55kC3Eirjp4RavaBqN+SXSCkrebQUxBGW
+	 v9w2S8bTL4c3WrSeT6B+rJ8Iyva8dwc12cQtEi2d8TEr4pkJNV8O9PRGjFuPhEWXNS
+	 pb6IspnYyA+l+qeaMBTlBbQ9W48hjb4WxFcQbr/WNkaD3VE1f2oUESTFyhvtRSW7ep
+	 wFGm3SrRwAFWToemu3u8g8ihiFnsP86oYOCyc5pECjs2xn6J4TaX7mKukJ+xX/MkiU
+	 m2eF/7gN2ETxTCPabODcGVnRYQMw3CROoBwhqP2fR5G66uZUP4oaif4mcsRiPpKLMy
+	 IlDEy4FDbPPtw==
 From: Mark Brown <broonie@kernel.org>
-To: pierre-louis.bossart@linux.intel.com, peter.ujfalusi@linux.intel.com, 
- yung-chuan.liao@linux.intel.com, ranjani.sridharan@linux.intel.com, 
- kai.vehmanen@linux.intel.com, daniel.baluta@nxp.com, lgirdwood@gmail.com, 
- tiwai@suse.com, perex@perex.cz, matthias.bgg@gmail.com, 
- angelogioacchino.delregno@collabora.com, Trevor Wu <trevor.wu@mediatek.com>
-Cc: yc.hung@mediatek.com, tinghan.shen@mediatek.com, 
- sound-open-firmware@alsa-project.org, alsa-devel@alsa-project.org, 
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-In-Reply-To: <20230523025933.30494-1-trevor.wu@mediatek.com>
-References: <20230523025933.30494-1-trevor.wu@mediatek.com>
-Subject: Re: [PATCH v2 0/2] ASoC: SOF: add mt8188 audio support
-Message-Id: <168546842851.690777.4334822736947724679.b4-ty@kernel.org>
-Date: Tue, 30 May 2023 18:40:28 +0100
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+ =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ linux-spi@vger.kernel.org, kernel@pengutronix.de, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <20230309094704.2568531-1-u.kleine-koenig@pengutronix.de>
+References: <20230309094704.2568531-1-u.kleine-koenig@pengutronix.de>
+Subject: Re: [PATCH 0/3] spi: mt65xx: Convert to platform remove callback
+ returning void
+Message-Id: <168546844352.691057.11112317404702040826.b4-ty@kernel.org>
+Date: Tue, 30 May 2023 18:40:43 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-Mailer: b4 0.13-dev-bfdf5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230530_104034_291378_59678B4E 
-X-CRM114-Status: GOOD (  13.41  )
+X-CRM114-CacheID: sfid-20230530_104046_499868_00D9A33D 
+X-CRM114-Status: GOOD (  16.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,26 +76,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 23 May 2023 10:59:31 +0800, Trevor Wu wrote:
-> This series adds mt8188 audio support and dbg_dump callback for
-> mt8186 and mt8188.
-> 
-> Changes since v1:
->   - fix typo
->   - adopt reviewer's suggestion
+On Thu, 09 Mar 2023 10:47:01 +0100, Uwe Kleine-König wrote:
+> this series converts the spi-mt65xx driver to .remove_new(). While the
+> preparing patch that gets rid of an early error return is in many cases
+> a bug fix, it's not tragic here, as the early return only skips steps
+> that are not necessary after resume failed. Still rework the code flow
+> to prepare for conversion to .remove_new(). The 2nd patch actually
+> converts the driver. The third is a small nitpick cleanup the I noticed
+> while working on the driver.
 > 
 > [...]
 
 Applied to
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
 
 Thanks!
 
-[1/2] ASoC: SOF: mediatek: add mt8188 audio support
-      commit: 0f3d5585ad20a23bf70d09deae2e0d84e745055e
-[2/2] ASoC: SOF: mediatek: add adsp debug dump
-      (no commit info)
+[1/3] spi: mt65xx: Properly handle failures in .remove()
+      commit: 22f407278ea43df46f90cece6595e5e8a0d5447c
+[2/3] spi: mt65xx: Convert to platform remove callback returning void
+      commit: df7e47196fcef5d5611caa65f91d813578cf3efd
+[3/3] spi: mt65xx: Don't disguise a "return 0" as "return ret"
+      commit: 6f089e986778d3657247fdc2b38bd38de796732b
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
