@@ -4,93 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A986DC7EE32
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 May 2023 14:09:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 962BFC77B73
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 May 2023 14:13:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=svZsrzD3q14kc7A4zK5q0Ku9BBhXCmEOkIZP2JPsFTM=; b=JDw744tXSAjVvCbrHXJ6DkVMss
-	je5usg+S2Pdng4Ls9mLfG74VotF4K+lu5zs0sbt2qytB5y/Qw6Bw5SoeXwCvnS5Kmj57l5qh7xqvv
-	szxiOk3qJb4WKQyTUIpErA8DBbsg3JSCyWK6m3snogcbr4lx5MeGUgGz8MTlF3YObVQ0h6E5OO0Qt
-	PZsGkshzwoclNVB+R3zWuXUu9/WLW1UXV35o8ybEBvvHibOvNgxyRW2mPOL+UTdCEk4lkqIbb4H1l
-	1p/vTMn7M7sBjQobRb+lWxkJx8goROrKJNQq3ZBfl/IjOFipZfnAE9xt7PNas950Snl3hJLBkpqGK
-	rYse0WOA==;
+	bh=yWIj9EC2MS4+L3CPjeZSuSnY4BB34zZhTpkrW7rBusk=; b=NtkJXmAUP7Uc8bFEuya45eEZPr
+	326bCEGLmB8ZOa5ZTyVN4DwhEp72DFpKAhTU40sZENnT3D1KZGI+TfYkI1/2mCEw/7sQzFC3d6Byi
+	eVu7RnCTr2eBOTbXKXEgozVDVPTVBbS1JeiPUvvrttRcUD5Sl5zNZPHIT6KFENQtzH4uC+pC8Nn9N
+	XcSripz6d4vJwChP7ZH+jl5XdUA4yK+/rbTnbgUhzPFUs3dK8BMQ6yBwpmUg2PgYE4On/KPHaTfjK
+	QWQc+e0lm9p227B1qq8r5J+drflTkYszyYmD2jxteC/yj3gTjG9Hq9djwNMJfzD8SQ+jCpOwQTHvD
+	NV268Y/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q401u-00EB0J-2G;
-	Tue, 30 May 2023 14:08:54 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1q4060-00EBrf-1t;
+	Tue, 30 May 2023 14:13:08 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q401r-00EAyR-2R
-	for linux-mediatek@lists.infradead.org;
-	Tue, 30 May 2023 14:08:53 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1q400v-0004ps-Ru; Tue, 30 May 2023 16:07:53 +0200
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1q400o-003tfR-8p; Tue, 30 May 2023 16:07:46 +0200
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1q400n-009WHq-B9; Tue, 30 May 2023 16:07:45 +0200
-Date: Tue, 30 May 2023 16:07:42 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Bjorn Helgaas <bhelgaas@google.com>
-Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
-	Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Joyce Ooi <joyce.ooi@intel.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Jim Quinlan <jim2101024@gmail.com>,
-	Nicolas Saenz Julienne <nsaenz@kernel.org>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Tom Joseph <tjoseph@cadence.com>, Shawn Guo <shawn.guo@linaro.org>,
-	Rahul Tanwar <rtanwar@maxlinear.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Serge Semin <Sergey.Semin@baikalelectronics.ru>,
-	Vidya Sagar <vidyas@nvidia.com>, Jisheng Zhang <jszhang@kernel.org>,
-	Miaoqian Lin <linmq006@gmail.com>, Ray Jui <rjui@broadcom.com>,
-	Scott Branden <sbranden@broadcom.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Toan Le <toan@os.amperecomputing.com>,
-	Rob Herring <robh@kernel.org>, linux-pci@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	linux-rpi-kernel@lists.infradead.org, kernel@pengutronix.de,
-	linux-arm-msm@vger.kernel.org, linux-tegra@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-omap@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH 00/15] PCI: Convert to platform remove callback returning
- void
-Message-ID: <20230530140742.ebbrxmpieuphbmz3@pengutronix.de>
-References: <20230321193208.366561-1-u.kleine-koenig@pengutronix.de>
+	id 1q405x-00EBqN-0v;
+	Tue, 30 May 2023 14:13:06 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 9F2DE630A7;
+	Tue, 30 May 2023 14:13:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9B1BEC4339B;
+	Tue, 30 May 2023 14:13:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1685455984;
+	bh=/UJDrMEFpBwl4/IycRYuBQqR/J8yidIWp4To2yuNJFc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=qjJKbfLjLybK5h4UYXcP+3YhCW5SMzOQphTt7FNwwVcLGn4Uoczg6GbOJz1FL/ePf
+	 UE7kv5sNfKH34FoZsEoHcjSYS9kmsNPxe3xRgVhsF8cSE8b0qNE1PQBagsSJZUXXna
+	 yZoVROZOT/YrSsMN0fiRe2bL8vZGE7k/qgVpcJKeLeIABtvoMLnf1iV5hrqwZL5Hxg
+	 2R90YRjPaYplnUPHQu6rYYyHy0hZKFOZ2HTQtAhKEHOKT0JkNKd09fz7poA5FSrdms
+	 Pgto37pmCZbo01+nVNU9xi/pTi/RUF/Sk2edSMDJTaklr1ZdX7X61p2wFKI1YNK8VL
+	 j9/BMStvw9jSA==
+Date: Tue, 30 May 2023 15:12:57 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Trevor Wu <trevor.wu@mediatek.com>
+Cc: pierre-louis.bossart@linux.intel.com, peter.ujfalusi@linux.intel.com,
+	yung-chuan.liao@linux.intel.com, ranjani.sridharan@linux.intel.com,
+	kai.vehmanen@linux.intel.com, daniel.baluta@nxp.com,
+	lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	yc.hung@mediatek.com, tinghan.shen@mediatek.com,
+	sound-open-firmware@alsa-project.org, alsa-devel@alsa-project.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 2/2] ASoC: SOF: mediatek: add adsp debug dump
+Message-ID: <12f075ba-6886-4916-a62f-8fb004eeb4c9@sirena.org.uk>
+References: <20230523025933.30494-1-trevor.wu@mediatek.com>
+ <20230523025933.30494-3-trevor.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="qk26xz6flafy3g2q"
+	protocol="application/pgp-signature"; boundary="HZx043a6O9IOGZFz"
 Content-Disposition: inline
-In-Reply-To: <20230321193208.366561-1-u.kleine-koenig@pengutronix.de>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+In-Reply-To: <20230523025933.30494-3-trevor.wu@mediatek.com>
+X-Cookie: <Manoj> I *like* the chicken
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230530_070851_795615_AAFD9690 
-X-CRM114-Status: GOOD (  21.18  )
+X-CRM114-CacheID: sfid-20230530_071305_406603_ABC23B3A 
+X-CRM114-Status: GOOD (  14.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,65 +83,74 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---qk26xz6flafy3g2q
-Content-Type: text/plain; charset=iso-8859-1
+--HZx043a6O9IOGZFz
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-Hello Bjorn,
+On Tue, May 23, 2023 at 10:59:33AM +0800, Trevor Wu wrote:
+> Add mt8188 and mt8186 .dbg_dump callback to print some information when
+> DSP panic occurs.
 
-On Tue, Mar 21, 2023 at 08:31:53PM +0100, Uwe Kleine-K=F6nig wrote:
-> this series adapts the platform drivers below drivers/pci to use the
-> .remove_new() callback. Compared to the traditional .remove() callback
-> .remove_new() returns no value. This is a good thing because the driver c=
-ore
-> doesn't (and cannot) cope for errors during remove. The only effect of a
-> non-zero return value in .remove() is that the driver core emits a warnin=
-g. The
-> device is removed anyhow and an early return from .remove() usually yield=
-s a
-> resource leak.
->=20
-> By changing the remove callback to return void driver authors cannot
-> reasonably assume any more that there is some kind of cleanup later.
->=20
-> All drivers were easy to convert as they all returned zero in their
-> remove callback. Only for iproc the conversion wasn't trivial, the other
-> were converted using coccinelle.
->=20
-> There are no interdependencies between these patches. So even if there
-> are some concerns for individual patches, I ask you to apply the
-> remaining set. Then I only have to care for the review feedback of the
-> refused patches. (Having said that I don't expect any serious objection,
-> just things like squashing or separating patches, or maybe I picked a
-> wrong subject prefix.)
+This breaks an x86_64 allmodconfig build:
 
-These patches wait for application for quite some time now. They apply
-just fine to v6.4-rc1 and next/master. Would be great to get them in
-during the next merge window and ideally give them some time in next
-before.
+/build/stage/linux/sound/soc/sof/mediatek/mt8186/mt8186.c: In function =E2=
+=80=98mt8186_adsp_dump=E2=80=99:
+/build/stage/linux/sound/soc/sof/mediatek/mt8186/mt8186.c:483:56: error: =
+=E2=80=98DSP_PDEBUGDATA=E2=80=99 undeclared (first use in this function); d=
+id you mean =E2=80=98DSP_PDEBUGPC=E2=80=99?
+  483 |         dbg_data =3D snd_sof_dsp_read(sdev, DSP_REG_BAR, DSP_PDEBUG=
+DATA);
+      |                                                        ^~~~~~~~~~~~=
+~~
+      |                                                        DSP_PDEBUGPC
+/build/stage/linux/sound/soc/sof/mediatek/mt8186/mt8186.c:483:56: note: eac=
+h undeclared identifier is reported only once for each function it appears =
+in
+/build/stage/linux/sound/soc/sof/mediatek/mt8186/mt8186.c:484:56: error: =
+=E2=80=98DSP_PDEBUGINST=E2=80=99 undeclared (first use in this function); d=
+id you mean =E2=80=98DSP_PDEBUGPC=E2=80=99?
+  484 |         dbg_inst =3D snd_sof_dsp_read(sdev, DSP_REG_BAR, DSP_PDEBUG=
+INST);
+      |                                                        ^~~~~~~~~~~~=
+~~
+      |                                                        DSP_PDEBUGPC
+/build/stage/linux/sound/soc/sof/mediatek/mt8186/mt8186.c:485:59: error: =
+=E2=80=98DSP_PDEBUGLS0STAT=E2=80=99 undeclared (first use in this function)
+  485 |         dbg_ls0stat =3D snd_sof_dsp_read(sdev, DSP_REG_BAR, DSP_PDE=
+BUGLS0STAT);
+      |                                                           ^~~~~~~~~=
+~~~~~~~~
+/build/stage/linux/sound/soc/sof/mediatek/mt8186/mt8186.c:486:58: error: =
+=E2=80=98DSP_PDEBUGSTATUS=E2=80=99 undeclared (first use in this function);=
+ did you mean =E2=80=98DSP_PDEBUGPC=E2=80=99?
+  486 |         dbg_status =3D snd_sof_dsp_read(sdev, DSP_REG_BAR, DSP_PDEB=
+UGSTATUS);
+      |                                                          ^~~~~~~~~~=
+~~~~~~
+      |                                                          DSP_PDEBUG=
+PC
+/build/stage/linux/sound/soc/sof/mediatek/mt8186/mt8186.c:487:57: error: =
+=E2=80=98DSP_PFAULTINFO=E2=80=99 undeclared (first use in this function)
+  487 |         faultinfo =3D snd_sof_dsp_read(sdev, DSP_REG_BAR, DSP_PFAUL=
+TINFO);
+      |                                                         ^~~~~~~~~~~=
+~~~
 
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---qk26xz6flafy3g2q
+--HZx043a6O9IOGZFz
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmR2Ay0ACgkQj4D7WH0S
-/k5qnwgAnpUxpx4rn6WEsDH7Xm3DdX2vIesYJvk7oOO95SBT/vP6MAkPvzaDUJfe
-WVi/Oz1Ka8FPwOop8vkbb8M3nQIjNjB9OfI+6fW+55MvN9guFPI/Utl1TIscmgQz
-YnH2pnHF7uIzKApPtniNZJ6CDy1deepI9SK9Vyx/eMbuppFuUfVz5NR+vdR8e1FA
-o+DEn8E+tjfjwSb0FdxgTv+Subwm4oPwuYrhyv3bJZ17YenL7OoGc8coPdQr13BS
-Mq7t/nM05p/vZtkey55UWA3E+SEsbGz64ikmcv1hfwGVq2aRi8qO+aCUnhe3LX9m
-GZAiwIh4ypdjtDXIIMwGjMatqA4QQA==
-=tfIE
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmR2BGgACgkQJNaLcl1U
+h9Avzwf9FLeppnZUZA1Mmi2j/Dqy5Rxq8OrPGUDqqTTdwOLmJC6luZkDAsRedhwW
+MsBawXkxc2BfO4ytooYHkRL9BcUiQ/ZgZ1wHkH/bpJJdKW+qQjiSUN9jG5qZAPIl
+rte+OUXbWHcXGdnfGqLGT7QGzCwr9mSsmqWCVdQcKsR2rT9Xs/Guh9DjQlTICeb5
+a+cRmthy1DPKwBu/QFT6J53w7mgWpRzby6qxkP2KFCAiY+QgCFjR2onFVnzEurT6
+GzeNZdW2+U8A9nStkaXQbyrqqYaZXMvZS3w0sdinJv3LjUnknGqPVuxMU1h4nEAl
+aLnuYTOkWcXKcWSZ+3/8Yy6wsv3weQ==
+=qgu/
 -----END PGP SIGNATURE-----
 
---qk26xz6flafy3g2q--
+--HZx043a6O9IOGZFz--
 
