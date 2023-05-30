@@ -4,99 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19D7CC7EE23
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 May 2023 22:14:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59412C7EE29
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 May 2023 02:34:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=h+9GGXIQGiqHaDNSfG7t8NCmOejqPPcx1D0oM7wA4jU=; b=Wpah9KfhpFqM0AVPpa6UhepFOm
-	HCpGj42bomPaukyUqcyWhr4Ij97aLBxRYmdfbk/jew4oaa+/Z5vOR9NT7FB0nW4blTEDrF0QIn+UQ
-	1KktZM4XfqdrV7rNvqHtjWjlbCX4tlQlW1gDDq3eY3s+DDzIRujKWwWA00kjAK5y27N98V73plssT
-	JNhxqa3nyJTXvclMyZehttuO55Iea/ITYC5TIfvPhFpv1GQStTPq/ArLGt3HIRhIOZ8626p7cORRy
-	QvW9xf1GzRJmAiDiClNouvAtbZCwDx0iABS8g6GLgkmPVOslMuDzGYszgvJW/uTQy+QZzbuqRfifA
-	tibo7j8A==;
+	bh=PBqFsa/weq3PHtNfIX6O/WeVTFrbyH6+RaXkW1b0lxc=; b=X6gAQlaYToeiwJ4YpDYFxpxNDJ
+	0DrDmjWQzV8WiJMSB4rGG3p4irQhYmbJb2mJttrmrMRjXZFPifJ9VtNWwWXC+SfaO7BD8VG1p1rgB
+	Hi4bDQaQ/oVAMSBHKCjtNcan6PIW97yzn3Z7RdIiSagJYhg+AfFBMLNss0bfrgLwH8jSLTbvnO3Lz
+	3cezJ1beLBFCHImyB/TcGtREssqV8UeLWQEeQQEX3hjDkANkB4+ayAIXGm59Eh68i0aRklu5kJJmw
+	nHbbNK3HKWzgBWqb1q/NNik53XvVUBh64Pau77kPtx6k6iXa+MAG8rcyNKTa5YndRQhXGdABbN84T
+	usbdfl3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3l7m-00Bnx7-2H;
-	Mon, 29 May 2023 22:13:58 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1q3pBI-00CCF8-1E;
+	Tue, 30 May 2023 02:33:52 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3l7i-00Bnve-23;
-	Mon, 29 May 2023 22:13:56 +0000
-Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 34TMAb3l015307;
-	Mon, 29 May 2023 22:13:43 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=from : to : cc :
- subject : date : message-id : in-reply-to : references : mime-version :
- content-type; s=qcppdkim1;
- bh=h+9GGXIQGiqHaDNSfG7t8NCmOejqPPcx1D0oM7wA4jU=;
- b=XqzkjDlytEYYpWPQF5Xqj2kMVw2uosw8lhRzHvGUI9jaRJFnczFv6UTCnEi5L78M/sE8
- AgXyWI3kgl/zTcAzKyBIV2bQbO2yZgPH6t6EfvzX5gLqLkTEXrSga4E3ZXOIqjRm3JXF
- gpsGRYnf7mOZYPYgrYHY6yI1JSaewHgbHZK1yDJqdQ5hmiKrIzdrGCkvCaJXFuQhVCTE
- qKV5FjIu1EUkld3nfV4WsqcmKx5ktlLkif+Lq9D9LH40B2IVUBJPPQ4KUr1QCnEcldkE
- foNX51SJQh/Sr62JnAfZV+lLonq/gp/EeBjXoFnZSAv7MmII47rzd8DdxhU++4n7BRtF ow== 
-Received: from nasanppmta04.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3qvmqrhtvn-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 29 May 2023 22:13:42 +0000
-Received: from nasanex01a.na.qualcomm.com (nasanex01a.na.qualcomm.com [10.52.223.231])
-	by NASANPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 34TMDgLp029708
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 29 May 2023 22:13:42 GMT
-Received: from stor-berry.qualcomm.com (10.80.80.8) by
- nasanex01a.na.qualcomm.com (10.52.223.231) with Microsoft SMTP Server
+	id 1q3pBE-00CCDK-2v;
+	Tue, 30 May 2023 02:33:51 +0000
+X-UUID: 6417c624fe9211ed83ed1395ce914268-20230529
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=PBqFsa/weq3PHtNfIX6O/WeVTFrbyH6+RaXkW1b0lxc=;
+	b=ghg51iciJmRSC3j6TbankfeCmXE7I/ogVlzIGE5WRXldRHappxXldB21iIljT1ZcSPeMcEABqMdP4wQywIJ/wIdaqLTMCzwIjDnOJ7b5lEpVOD0+FcdLarUEa5sLcGX+Xdd/zM0sOGQmTak5BjS+4DYynDudbKrEogPwbdQf+Fo=;
+X-CID-UNFAMILIAR: 1
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.25,REQID:59a6a38b-321e-4bee-b6d6-8d4236953da4,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACT
+	ION:release,TS:75
+X-CID-INFO: VERSION:1.1.25,REQID:59a6a38b-321e-4bee-b6d6-8d4236953da4,IP:0,URL
+	:0,TC:0,Content:-25,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACT
+	ION:quarantine,TS:75
+X-CID-META: VersionHash:d5b0ae3,CLOUDID:528e646d-2f20-4998-991c-3b78627e4938,B
+	ulkID:230530103242OHM7VIXJ,BulkQuantity:3,Recheck:0,SF:38|29|28|16|19|48,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:nil,Bulk:40,QS:nil,BEC:nil,COL
+	:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: 6417c624fe9211ed83ed1395ce914268-20230529
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <powen.kao@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 877149807; Mon, 29 May 2023 19:33:41 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.42; Mon, 29 May 2023 15:13:41 -0700
-From: "Bao D. Nguyen" <quic_nguyenb@quicinc.com>
-To: <quic_asutoshd@quicinc.com>, <quic_cang@quicinc.com>, <bvanassche@acm.org>,
-        <mani@kernel.org>, <stanley.chu@mediatek.com>,
-        <adrian.hunter@intel.com>, <beanhuo@micron.com>, <avri.altman@wdc.com>,
-        <martin.petersen@oracle.com>
-CC: <linux-scsi@vger.kernel.org>, "Bao D. Nguyen" <quic_nguyenb@quicinc.com>,
-        Alim Akhtar <alim.akhtar@samsung.com>,
-        "James E.J. Bottomley"
-	<jejb@linux.ibm.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        "Alice
- Chao" <alice.chao@mediatek.com>,
-        Arthur Simchaev <Arthur.Simchaev@wdc.com>,
-        Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-        open list
-	<linux-kernel@vger.kernel.org>,
-        "moderated list:ARM/Mediatek SoC support"
-	<linux-arm-kernel@lists.infradead.org>,
-        "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v7 7/7] ufs: core: Add error handling for MCQ mode
-Date: Mon, 29 May 2023 15:12:26 -0700
-Message-ID: <f0d923ee1f009f171a55c258d044e814ec0917ab.1685396241.git.quic_nguyenb@quicinc.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <cover.1685396241.git.quic_nguyenb@quicinc.com>
-References: <cover.1685396241.git.quic_nguyenb@quicinc.com>
+ 15.2.1118.26; Tue, 30 May 2023 10:32:40 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 30 May 2023 10:32:39 +0800
+From: Po-Wen Kao <powen.kao@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
+	Bart Van Assche <bvanassche@acm.org>, "James E.J. Bottomley"
+	<jejb@linux.ibm.com>, "Martin K. Petersen" <martin.petersen@oracle.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <wsd_upstream@mediatek.com>, <peter.wang@mediatek.com>,
+	<stanley.chu@mediatek.com>, <powen.kao@mediatek.com>,
+	<alice.chao@mediatek.com>, <naomi.chu@mediatek.com>,
+	<chun-hung.wu@mediatek.com>, <cc.chou@mediatek.com>,
+	<eddie.huang@mediatek.com>
+Subject: [PATCH v2 1/3] scsi: ufs: core: Introduce mcq ops to config cqid
+Date: Tue, 30 May 2023 10:32:25 +0800
+Message-ID: <20230530023227.16653-2-powen.kao@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230530023227.16653-1-powen.kao@mediatek.com>
+References: <20230530023227.16653-1-powen.kao@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nasanex01a.na.qualcomm.com (10.52.223.231)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: gey-v_a_2KuUSJYJFloLqYLRQoMGErRL
-X-Proofpoint-ORIG-GUID: gey-v_a_2KuUSJYJFloLqYLRQoMGErRL
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.573,FMLib:17.11.176.26
- definitions=2023-05-29_12,2023-05-29_02,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxscore=0 priorityscore=1501
- malwarescore=0 clxscore=1011 adultscore=0 bulkscore=0 spamscore=0
- impostorscore=0 lowpriorityscore=0 mlxlogscore=999 phishscore=0
- suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2304280000 definitions=main-2305290187
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230529_151354_686099_25A0D176 
-X-CRM114-Status: GOOD (  28.21  )
+X-CRM114-CacheID: sfid-20230529_193348_955782_304A2693 
+X-CRM114-Status: GOOD (  20.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,272 +95,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for error handling for MCQ mode.
+From: Peter Wang <peter.wang@mediatek.com>
 
-Suggested-by: Can Guo <quic_cang@quicinc.com>
-Co-developed-by: Stanley Chu <stanley.chu@mediatek.com>
-Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-Signed-off-by: Bao D. Nguyen <quic_nguyenb@quicinc.com>
+MCQ sq/cq mapping is not just one for one, could many for one.
+This patch allow host driver to change the mapping, assign cqid
+for each hw queue.
+
+Signed-off-by: Po-Wen Kao <powen.kao@mediatek.com>
+Signed-off-by: Peter Wang <peter.wang@mediatek.com>
 ---
- drivers/ufs/core/ufs-mcq.c     |  26 ++++++++-
- drivers/ufs/core/ufshcd-priv.h |   3 +-
- drivers/ufs/core/ufshcd.c      | 128 ++++++++++++++++++++++++++++++++++++-----
- 3 files changed, 139 insertions(+), 18 deletions(-)
+ drivers/ufs/core/ufs-mcq.c     |  2 +-
+ drivers/ufs/core/ufshcd-priv.h |  8 ++++++++
+ drivers/ufs/core/ufshcd.c      | 11 +++++++++++
+ include/ufs/ufshcd.h           |  3 +++
+ 4 files changed, 23 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
-index 2efa012..66ac02e 100644
+index 51b3c6ae781d..1ba9c395c6b0 100644
 --- a/drivers/ufs/core/ufs-mcq.c
 +++ b/drivers/ufs/core/ufs-mcq.c
-@@ -276,12 +276,34 @@ static int ufshcd_mcq_get_tag(struct ufs_hba *hba,
+@@ -368,7 +368,7 @@ void ufshcd_mcq_make_queues_operational(struct ufs_hba *hba)
+ 		 * Submission Queue Attribute
+ 		 */
+ 		ufsmcq_writel(hba, (1 << QUEUE_EN_OFFSET) | qsize |
+-			      (i << QUEUE_ID_OFFSET),
++			      (hwq->cqid << QUEUE_ID_OFFSET),
+ 			      MCQ_CFG_n(REG_SQATTR, i));
+ 	}
  }
- 
- static void ufshcd_mcq_process_cqe(struct ufs_hba *hba,
--					    struct ufs_hw_queue *hwq)
-+				   struct ufs_hw_queue *hwq)
- {
- 	struct cq_entry *cqe = ufshcd_mcq_cur_cqe(hwq);
- 	int tag = ufshcd_mcq_get_tag(hba, hwq, cqe);
- 
--	ufshcd_compl_one_cqe(hba, tag, cqe);
-+	if (cqe->command_desc_base_addr) {
-+		ufshcd_compl_one_cqe(hba, tag, cqe);
-+		/* After processed the cqe, mark it empty (invalid) entry */
-+		cqe->command_desc_base_addr = 0;
-+	}
-+}
-+
-+void ufshcd_mcq_compl_all_cqes_lock(struct ufs_hba *hba,
-+				    struct ufs_hw_queue *hwq)
-+{
-+	unsigned long flags;
-+	u32 entries = hwq->max_entries;
-+
-+	spin_lock_irqsave(&hwq->cq_lock, flags);
-+	while (entries > 0) {
-+		ufshcd_mcq_process_cqe(hba, hwq);
-+		ufshcd_mcq_inc_cq_head_slot(hwq);
-+		entries--;
-+	}
-+
-+	ufshcd_mcq_update_cq_tail_slot(hwq);
-+	hwq->cq_head_slot = hwq->cq_tail_slot;
-+	spin_unlock_irqrestore(&hwq->cq_lock, flags);
- }
- 
- static unsigned long ufshcd_mcq_poll_cqe_nolock(struct ufs_hba *hba,
 diff --git a/drivers/ufs/core/ufshcd-priv.h b/drivers/ufs/core/ufshcd-priv.h
-index 339ab51..802cc40 100644
+index d53b93c21a0c..2de068b96c71 100644
 --- a/drivers/ufs/core/ufshcd-priv.h
 +++ b/drivers/ufs/core/ufshcd-priv.h
-@@ -75,7 +75,8 @@ struct ufs_hw_queue *ufshcd_mcq_req_to_hwq(struct ufs_hba *hba,
- 					   struct request *req);
- unsigned long ufshcd_mcq_poll_cqe_lock(struct ufs_hba *hba,
- 				       struct ufs_hw_queue *hwq);
--
-+void ufshcd_mcq_compl_all_cqes_lock(struct ufs_hba *hba,
-+				    struct ufs_hw_queue *hwq);
- bool ufshcd_cmd_inflight(struct scsi_cmnd *cmd);
- int ufshcd_mcq_sq_cleanup(struct ufs_hba *hba, int task_tag);
- int ufshcd_mcq_abort(struct scsi_cmnd *cmd);
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index 69562c4..313bead 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -3148,6 +3148,15 @@ static int ufshcd_wait_for_dev_cmd(struct ufs_hba *hba,
- 		err = -ETIMEDOUT;
- 		dev_dbg(hba->dev, "%s: dev_cmd request timedout, tag %d\n",
- 			__func__, lrbp->task_tag);
-+
-+		/* MCQ mode */
-+		if (is_mcq_enabled(hba)) {
-+			err = ufshcd_clear_cmd(hba, lrbp->task_tag);
-+			hba->dev_cmd.complete = NULL;
-+			return err;
-+		}
-+
-+		/* SDB mode */
- 		if (ufshcd_clear_cmd(hba, lrbp->task_tag) == 0) {
- 			/* successfully cleared the command, retry if needed */
- 			err = -EAGAIN;
-@@ -5572,6 +5581,57 @@ static int ufshcd_poll(struct Scsi_Host *shost, unsigned int queue_num)
+@@ -287,6 +287,14 @@ static inline int ufshcd_mcq_vops_config_esi(struct ufs_hba *hba)
+ 	return -EOPNOTSUPP;
  }
  
- /**
-+ * ufshcd_mcq_compl_pending_transfer - MCQ mode function. It is
-+ * invoked from the error handler context or ufshcd_host_reset_and_restore()
-+ * to complete the pending transfers and free the resources associated with
-+ * the scsi command.
-+ *
-+ * @hba: per adapter instance
-+ * @force_compl: This flag is set to true when invoked
-+ * from ufshcd_host_reset_and_restore() in which case it requires special
-+ * handling because the host controller has been reset by ufshcd_hba_stop().
-+ */
-+static void ufshcd_mcq_compl_pending_transfer(struct ufs_hba *hba,
-+					      bool force_compl)
++static inline int ufshcd_mcq_vops_config_cqid(struct ufs_hba *hba)
 +{
-+	struct ufs_hw_queue *hwq;
-+	struct ufshcd_lrb *lrbp;
-+	struct scsi_cmnd *cmd;
-+	unsigned long flags;
-+	u32 hwq_num, utag;
-+	int tag;
++	if (hba->vops && hba->vops->config_cqid)
++		return hba->vops->config_cqid(hba);
 +
-+	for (tag = 0; tag < hba->nutrs; tag++) {
-+		lrbp = &hba->lrb[tag];
-+		cmd = lrbp->cmd;
-+		if (!ufshcd_cmd_inflight(cmd) ||
-+		    test_bit(SCMD_STATE_COMPLETE, &cmd->state))
-+			continue;
-+
-+		utag = blk_mq_unique_tag(scsi_cmd_to_rq(cmd));
-+		hwq_num = blk_mq_unique_tag_to_hwq(utag);
-+		hwq = &hba->uhq[hwq_num + UFSHCD_MCQ_IO_QUEUE_OFFSET];
-+
-+		if (force_compl) {
-+			ufshcd_mcq_compl_all_cqes_lock(hba, hwq);
-+			/*
-+			 * For those cmds of which the cqes are not present
-+			 * in the cq, complete them explicitly.
-+			 */
-+			if (cmd && !test_bit(SCMD_STATE_COMPLETE, &cmd->state)) {
-+				spin_lock_irqsave(&hwq->cq_lock, flags);
-+				set_host_byte(cmd, DID_REQUEUE);
-+				ufshcd_release_scsi_cmd(hba, lrbp);
-+				scsi_done(cmd);
-+				spin_unlock_irqrestore(&hwq->cq_lock, flags);
-+			}
-+		} else {
-+			ufshcd_mcq_poll_cqe_lock(hba, hwq);
-+		}
-+	}
++	return -EOPNOTSUPP;
 +}
 +
-+/**
-  * ufshcd_transfer_req_compl - handle SCSI and query command completion
-  * @hba: per adapter instance
-  *
-@@ -6135,9 +6195,13 @@ static void ufshcd_exception_event_handler(struct work_struct *work)
- }
+ extern const struct ufs_pm_lvl_states ufs_pm_lvl_states[];
  
- /* Complete requests that have door-bell cleared */
--static void ufshcd_complete_requests(struct ufs_hba *hba)
-+static void ufshcd_complete_requests(struct ufs_hba *hba, bool force_compl)
+ /**
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index 4ec8dacb447c..fad9ff4469b0 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -8488,11 +8488,22 @@ static int ufshcd_alloc_mcq(struct ufs_hba *hba)
+ static void ufshcd_config_mcq(struct ufs_hba *hba)
  {
--	ufshcd_transfer_req_compl(hba);
-+	if (is_mcq_enabled(hba))
-+		ufshcd_mcq_compl_pending_transfer(hba, force_compl);
-+	else
-+		ufshcd_transfer_req_compl(hba);
-+
- 	ufshcd_tmc_handler(hba);
- }
- 
-@@ -6378,18 +6442,36 @@ static bool ufshcd_abort_all(struct ufs_hba *hba)
- 	bool needs_reset = false;
- 	int tag, ret;
- 
--	/* Clear pending transfer requests */
--	for_each_set_bit(tag, &hba->outstanding_reqs, hba->nutrs) {
--		ret = ufshcd_try_to_abort_task(hba, tag);
--		dev_err(hba->dev, "Aborting tag %d / CDB %#02x %s\n", tag,
--			hba->lrb[tag].cmd ? hba->lrb[tag].cmd->cmnd[0] : -1,
--			ret ? "failed" : "succeeded");
--		if (ret) {
--			needs_reset = true;
--			goto out;
-+	if (is_mcq_enabled(hba)) {
-+		struct ufshcd_lrb *lrbp;
-+		int tag;
-+
-+		for (tag = 0; tag < hba->nutrs; tag++) {
-+			lrbp = &hba->lrb[tag];
-+			if (!ufshcd_cmd_inflight(lrbp->cmd))
-+				continue;
-+			ret = ufshcd_try_to_abort_task(hba, tag);
-+			dev_err(hba->dev, "Aborting tag %d / CDB %#02x %s\n", tag,
-+				hba->lrb[tag].cmd ? hba->lrb[tag].cmd->cmnd[0] : -1,
-+				ret ? "failed" : "succeeded");
-+			if (ret) {
-+				needs_reset = true;
-+				goto out;
-+			}
-+		}
-+	} else {
-+		/* Clear pending transfer requests */
-+		for_each_set_bit(tag, &hba->outstanding_reqs, hba->nutrs) {
-+			ret = ufshcd_try_to_abort_task(hba, tag);
-+			dev_err(hba->dev, "Aborting tag %d / CDB %#02x %s\n", tag,
-+				hba->lrb[tag].cmd ? hba->lrb[tag].cmd->cmnd[0] : -1,
-+				ret ? "failed" : "succeeded");
-+			if (ret) {
-+				needs_reset = true;
-+				goto out;
-+			}
- 		}
- 	}
--
- 	/* Clear pending task management requests */
- 	for_each_set_bit(tag, &hba->outstanding_tasks, hba->nutmrs) {
- 		if (ufshcd_clear_tm_cmd(hba, tag)) {
-@@ -6400,7 +6482,7 @@ static bool ufshcd_abort_all(struct ufs_hba *hba)
- 
- out:
- 	/* Complete the requests that are cleared by s/w */
--	ufshcd_complete_requests(hba);
-+	ufshcd_complete_requests(hba, false);
- 
- 	return needs_reset;
- }
-@@ -6440,7 +6522,7 @@ static void ufshcd_err_handler(struct work_struct *work)
- 	spin_unlock_irqrestore(hba->host->host_lock, flags);
- 	ufshcd_err_handling_prepare(hba);
- 	/* Complete requests that have door-bell cleared by h/w */
--	ufshcd_complete_requests(hba);
-+	ufshcd_complete_requests(hba, false);
- 	spin_lock_irqsave(hba->host->host_lock, flags);
- again:
- 	needs_restore = false;
-@@ -7321,6 +7403,8 @@ static int ufshcd_eh_device_reset_handler(struct scsi_cmnd *cmd)
- 	unsigned long flags, pending_reqs = 0, not_cleared = 0;
- 	struct Scsi_Host *host;
- 	struct ufs_hba *hba;
+ 	int ret;
 +	struct ufs_hw_queue *hwq;
-+	struct ufshcd_lrb *lrbp;
- 	u32 pos, not_cleared_mask = 0;
- 	int err;
- 	u8 resp = 0xF, lun;
-@@ -7336,6 +7420,20 @@ static int ufshcd_eh_device_reset_handler(struct scsi_cmnd *cmd)
- 		goto out;
- 	}
++	int i;
  
-+	if (is_mcq_enabled(hba)) {
-+		for (pos = 0; pos < hba->nutrs; pos++) {
-+			lrbp = &hba->lrb[pos];
-+			if (ufshcd_cmd_inflight(lrbp->cmd) &&
-+			    lrbp->lun == lun) {
-+				ufshcd_clear_cmd(hba, pos);
-+				hwq = ufshcd_mcq_req_to_hwq(hba, scsi_cmd_to_rq(lrbp->cmd));
-+				ufshcd_mcq_poll_cqe_lock(hba, hwq);
-+			}
+ 	ret = ufshcd_mcq_vops_config_esi(hba);
+ 	dev_info(hba->dev, "ESI %sconfigured\n", ret ? "is not " : "");
+ 
+ 	ufshcd_enable_intr(hba, UFSHCD_ENABLE_MCQ_INTRS);
++
++	ret = ufshcd_mcq_vops_config_cqid(hba);
++	if (ret) {
++		for (i = 0; i < hba->nr_hw_queues; i++) {
++			hwq = &hba->uhq[i];
++			hwq->cqid = i;
 +		}
-+		err = 0;
-+		goto out;
 +	}
 +
- 	/* clear the commands that were pending for corresponding LUN */
- 	spin_lock_irqsave(&hba->outstanding_lock, flags);
- 	for_each_set_bit(pos, &hba->outstanding_reqs, hba->nutrs)
-@@ -7619,7 +7717,7 @@ static int ufshcd_host_reset_and_restore(struct ufs_hba *hba)
- 	ufshpb_toggle_state(hba, HPB_PRESENT, HPB_RESET);
- 	ufshcd_hba_stop(hba);
- 	hba->silence_err_logs = true;
--	ufshcd_complete_requests(hba);
-+	ufshcd_complete_requests(hba, true);
- 	hba->silence_err_logs = false;
+ 	ufshcd_mcq_make_queues_operational(hba);
+ 	ufshcd_mcq_config_mac(hba, hba->nutrs);
  
- 	/* scale up clocks to max frequency before full reinitialization */
+diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
+index df1d04f7a542..d5b16f968d7f 100644
+--- a/include/ufs/ufshcd.h
++++ b/include/ufs/ufshcd.h
+@@ -307,6 +307,7 @@ struct ufs_pwr_mode_info {
+  * @op_runtime_config: called to config Operation and runtime regs Pointers
+  * @get_outstanding_cqs: called to get outstanding completion queues
+  * @config_esi: called to config Event Specific Interrupt
++ * @config_cqid: called to config cqid for each sq
+  */
+ struct ufs_hba_variant_ops {
+ 	const char *name;
+@@ -352,6 +353,7 @@ struct ufs_hba_variant_ops {
+ 	int	(*get_outstanding_cqs)(struct ufs_hba *hba,
+ 				       unsigned long *ocqs);
+ 	int	(*config_esi)(struct ufs_hba *hba);
++	int	(*config_cqid)(struct ufs_hba *hba);
+ };
+ 
+ /* clock gating state  */
+@@ -1100,6 +1102,7 @@ struct ufs_hw_queue {
+ 	dma_addr_t cqe_dma_addr;
+ 	u32 max_entries;
+ 	u32 id;
++	u32 cqid;
+ 	u32 sq_tail_slot;
+ 	spinlock_t sq_lock;
+ 	u32 cq_tail_slot;
 -- 
-2.7.4
+2.18.0
 
 
