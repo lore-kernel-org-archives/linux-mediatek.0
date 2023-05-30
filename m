@@ -4,64 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD2F0C77B73
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 May 2023 06:38:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 866F9C77B73
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 May 2023 06:38:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KSWrw477vvQJzBpNqF6kOPs/CbWta1Ju4OMfxJW7oco=; b=M0CVV9cEoMc0vD
-	5A5Z3TV72RtCFy6KKoSfmmOIcSjYuT7dotjD1+Kom/eml6lVWqkfN4LN8UFp+hqAbO5Q6rTg+Pz7F
-	bPYnu8C6W1ZUtt8TNMfKudjtBPY5pUtMyzY7IVG20YBKuRoVEPGTTrt7S5tHIw+8O8bcwtCl152nu
-	kZ+8rDeXUJdbSPKLzSVv2bkC5PEEiE1LVcifNydFNw5SbigoaiTErqMthRhuRf3l9h3Z2WW/eNRyQ
-	aPHxNlabgjxLI4/+Gfp7793Z319WNoCsqpb5WmQPOJ4cqfn2Pp/XH1q/n0ZNcQ6DSSPx7RDVPZd0w
-	FBIewfC+OEgmwzJRnpbg==;
+	List-Owner; bh=6A1tr+4gW+ulrnTSt4CTp+K4tiDzulS3OiOdCpcCbJI=; b=mAaJGk1OJBjwfo
+	GQ8RKndnjrnJi6mQmQ08lhlL1cfCK8SZT5dsoofAAyjYRSg75eyLmS+7TI1S+APsXFDjLZ49Vkw8J
+	6flguufkNNi4bs42syLQN3CVhMGAZEk6eGwVS+jQ50uCWfcn2CEUDJjj3U6eH8aAXpdVAbHIOwh+3
+	G64VpixxDIR/dI8ERwK7jET5d8OYO9/FAaIgFtWfbimpxieoNMk5HOWChARA8RpGE5ng20xzu5Iov
+	55RUAkn/56ThYrTx6OquJs6bkJGmKJG6OJzqP5/wbbsEyReJfloi7VSFOeEijPuJZynCSq+g98urS
+	4GPeL5lBY22IIXCUaWlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3szu-00CamQ-1Y;
-	Tue, 30 May 2023 06:38:22 +0000
+	id 1q3t0O-00Cawa-0w;
+	Tue, 30 May 2023 06:38:52 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3szp-00CajS-2l;
-	Tue, 30 May 2023 06:38:19 +0000
+	id 1q3t0L-00Caui-1y;
+	Tue, 30 May 2023 06:38:50 +0000
 Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 49E7066058F8;
-	Tue, 30 May 2023 07:38:13 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7856C66058F8;
+	Tue, 30 May 2023 07:38:47 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1685428694;
-	bh=/1u8aJM1ptteAOkw+7Sw6A0WsbsDzfeAnKTZgkOLNPQ=;
+	s=mail; t=1685428728;
+	bh=KtqmldD7s3ro7nqM1YsEAzRtJDAnNiaXuCYtFORMGg8=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=NO9KE67tc2EA7Nbo+P9Q+qsJMtcIEHMMoyQ/DrwCJfdDRxJL3uygLqe/7mxNhjlsX
-	 F0vUWKp1nh4Bt7tx2UM67jH3aIbmStDlyIdDSDpG7UlwLPG4rGEtHjGngXubOhbNU/
-	 o9w6h2Spv9JBE5vDiQWvo7YqPjPYqjr9MRjrBi4GwdZK1Ss8uxMUIt+vGC4zLXfE5L
-	 R3Xs9cr2+pcUpCzlTTCukGHeRnW//Of8wQvZf5CzTLS3J373yy7MpOfM+4O5JxsmtR
-	 OyCB59wTFX6KZNH5mGpVa7Q5Qu9kFnqT6mHjNmUJJD5OuCrQCq66iKWmTvG3cSuXnU
-	 4vlQyfuGayXhA==
-Message-ID: <6a2518b5-86b0-d056-36bb-f1ee573838c9@collabora.com>
-Date: Tue, 30 May 2023 08:38:10 +0200
+	b=kNACF24Vz7zJ2EWyJ0AiOpyRsD3xYzcvJOcSVrqe/Kgikz/7Nv1BhKuuxGp2ICKvy
+	 jX2feCqQCer7AOJWZI+oEPp4J5HCFFyXBaJRqUY88UfHsuwb9Lj3ylRlfK3ErfnTPX
+	 Uw4G8DWG0Tz+W8dRJnmZNDu7rO52w/yZaAPOl4cXwu05onowIrf4y+8gkaRXdETaA/
+	 ks1FeOZTNBA/kOFKUsk/uUPJX9MUPyRkOy6KX0TURY4opfjpOXgpZAsEjc1QCCjXvW
+	 bVAVsTV14GmeedX/+nsvKhc73rFDuQRe6b0kgkoPQFhwAqAmR8+jRHUOVHIP3PP5U6
+	 WayJj+K+CZTog==
+Message-ID: <8d4d21d9-4f2c-8895-36e6-19de498d6e4a@collabora.com>
+Date: Tue, 30 May 2023 08:38:45 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.1
-Subject: Re: [PATCH v2 4/4] arm64: dts: mt7986: add pwm-fan and cooling-maps
- to BPI-R3 dts
+Subject: Re: [PATCH v2 2/4] arm64: dts: mt7986: add thermal and efuse
 Content-Language: en-US
 To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
 References: <20230529204258.65238-1-linux@fw-web.de>
- <20230529204258.65238-5-linux@fw-web.de>
+ <20230529204258.65238-3-linux@fw-web.de>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230529204258.65238-5-linux@fw-web.de>
+In-Reply-To: <20230529204258.65238-3-linux@fw-web.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230529_233818_025518_5305C1D7 
-X-CRM114-Status: UNSURE (   8.67  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230529_233849_781144_1D4A831C 
+X-CRM114-Status: GOOD (  15.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,10 +78,65 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Il 29/05/23 22:42, Frank Wunderlich ha scritto:
 > From: Daniel Golle <daniel@makrotopia.org>
 > 
-> Add pwm-fan and cooling-maps to BananaPi-R3 devicetree.
+> Add thermal related nodes to mt7986 devicetree.
 > 
 > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+>   arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 37 ++++++++++++++++++++++-
+>   1 file changed, 36 insertions(+), 1 deletion(-)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> index aa9e679b78e2..a409d5e845c2 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> @@ -337,6 +337,15 @@ spi1: spi@1100b000 {
+>   			status = "disabled";
+>   		};
+>   
+> +		auxadc: adc@1100d000 {
+> +			compatible = "mediatek,mt7986-auxadc";
+> +			reg = <0 0x1100d000 0 0x1000>;
+> +			clocks = <&infracfg CLK_INFRA_ADC_26M_CK>;
+> +			clock-names = "main";
+> +			#io-channel-cells = <1>;
+> +			status = "disabled";
+> +		};
+> +
+>   		ssusb: usb@11200000 {
+>   			compatible = "mediatek,mt7986-xhci",
+>   				     "mediatek,mtk-xhci";
+> @@ -375,6 +384,21 @@ mmc0: mmc@11230000 {
+>   			status = "disabled";
+>   		};
+>   
+> +		thermal: thermal@1100c800 {
+> +			#thermal-sensor-cells = <1>;
+> +			compatible = "mediatek,mt7986-thermal";
+> +			reg = <0 0x1100c800 0 0x800>;
+> +			interrupts = <GIC_SPI 138 IRQ_TYPE_LEVEL_HIGH>;
+> +			clocks = <&infracfg CLK_INFRA_THERM_CK>,
+> +				 <&infracfg CLK_INFRA_ADC_26M_CK>,
+> +				 <&infracfg CLK_INFRA_ADC_FRC_CK>;
+> +			clock-names = "therm", "auxadc", "adc_32k";
+> +			mediatek,auxadc = <&auxadc>;
+> +			mediatek,apmixedsys = <&apmixedsys>;
+> +			nvmem-cells = <&thermal_calibration>;
+> +			nvmem-cell-names = "calibration-data";
+> +		};
+> +
+>   		pcie: pcie@11280000 {
+>   			compatible = "mediatek,mt7986-pcie",
+>   				     "mediatek,mt8192-pcie";
+> @@ -426,6 +450,18 @@ pcie_port: pcie-phy@11c00000 {
+>   			};
+>   		};
+>   
+> +		efuse: efuse@11d00000 {
+> +			compatible = "mediatek,mt7986-efuse",
+> +				     "mediatek,efuse";
+
+Fits in one single line. After which:
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
