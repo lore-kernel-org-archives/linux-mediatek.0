@@ -4,58 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 608A5C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 May 2023 23:51:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00FC4C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 May 2023 23:54:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=i06h5BK+XtAu5jXCBUd3D2Pr9DE1D8oH6P1s8vIA0QM=; b=hhOKFHtDzU4E74zlseYftb9vD4
-	QfZhsAjlrfVMMIb3Malv2IRSRi50DBB/JHb+htUzoczILcE9rZV6DgCGNDk9uRkkmazVeExkYrRHg
-	8IvRnLtp8Ovom/gLEDuuJ0xMRBED5/fRpiHl/RX+yKTSuXJ1khJEouyhAXDGcUcZW6kCDiOjZ8kgS
-	RYAKwimeA1S+nLtDHY6sk14tiZg/5LrGj4+MCrwWQs+Ok4/WRYYFgshdPAOqMU5r7JxlbeGiS87w4
-	neKbrFdzF0jNUUPBSujcTDjP8ehDonQ7G0YduR5zrmNhOvIkIrvZLHer38Cb+xn/SWn06PrIY+5nK
-	l8kfulRg==;
+	bh=f+iWViYCQVb/xzSsBfREywiRrxXxPKruIfOn3/8DPd0=; b=qYgg8fpH+d/9Ht4evPSrnrpJqn
+	x+V7ySi+pwNt4TBSQEGSx+s6pI3QWWsibXBUPW1N5gXCwkIF9YqqU8G/SFwMBrHcKDhmWs89hW3L+
+	MeRWSCrvLHYuATu5JiWfwPZh1Qps2oO4PcOGbzO0w3I7SWpTULaQTsaOPFmggTkibNtKxacoODFVq
+	kPPdBaIVBierZ1kGR7Z8H0U4SYW5qmlZJlt2jnbo10Meg4Qt8k0VLC0xnmvH0ZUspw7MQWTepnr3Y
+	AapbJgWHHRQYrEzDPftQPm/QoKaIdna44kbr80vJt6jqzxrGsvOlVh9pwpK5cZnl1ia9ffu5C80RI
+	DGx84zGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q497D-00FWBQ-3D;
-	Tue, 30 May 2023 23:51:00 +0000
-Received: from mail-pl1-f181.google.com ([209.85.214.181])
+	id 1q49Aj-00FWvB-2G;
+	Tue, 30 May 2023 23:54:37 +0000
+Received: from mail-pl1-f170.google.com ([209.85.214.170])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q497A-00FWAD-2e;
-	Tue, 30 May 2023 23:50:58 +0000
-Received: by mail-pl1-f181.google.com with SMTP id d9443c01a7336-1b01bd7093aso29467045ad.1;
-        Tue, 30 May 2023 16:50:55 -0700 (PDT)
+	id 1q49Ag-00FWtZ-2k;
+	Tue, 30 May 2023 23:54:35 +0000
+Received: by mail-pl1-f170.google.com with SMTP id d9443c01a7336-1b00ecabdf2so46574295ad.2;
+        Tue, 30 May 2023 16:54:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685490655; x=1688082655;
+        d=1e100.net; s=20221208; t=1685490870; x=1688082870;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=i06h5BK+XtAu5jXCBUd3D2Pr9DE1D8oH6P1s8vIA0QM=;
-        b=NtHrWUZjU/H67c0Yz2yIY0XnbPlj0CvOWblYGxTXttjs+rRdToc2ieuUbuXUSzNfSo
-         WAwIyP5iG7lAUxnczwqYWvQ4jNOEpQKbgoTd/U1nsTXYMHMW+uJKHbqc/OS4BEg5vC2A
-         Y/s5SM5ENsqbxyvAcz2uKk+5lk9eAYrB7DMZb/Wraho080pzT7iD4NASzJFJNlWlJfaf
-         vElVcOxJOAr0krGBc+T3lC9HAxYDGrbVTH7DyTCaJMcZiVOWODMHkanEJUGfoFs0jagv
-         V3tosPFwe5AGExu9cMBziHV20C0tW+S1JXWER11WHZYOBtd1QAt1dTyQArRHVPjXUXlq
-         8J2Q==
-X-Gm-Message-State: AC+VfDzKLqPqr+k+EdMOBUscBYGJUKE+lkZKPFxha+MifwkJYTo3I3sh
-	ld+FK6MW5+F46pWIwQiEt3w=
-X-Google-Smtp-Source: ACHHUZ5q2rHhMeGb6KiH+LiODYM8ZJD5Z/27qCZSHx6XU038OIaBVsCApVD+YW5jC3EWzB+l3X8JCA==
-X-Received: by 2002:a17:902:c40f:b0:1b0:286f:233a with SMTP id k15-20020a170902c40f00b001b0286f233amr3875945plk.61.1685490655006;
-        Tue, 30 May 2023 16:50:55 -0700 (PDT)
+        bh=f+iWViYCQVb/xzSsBfREywiRrxXxPKruIfOn3/8DPd0=;
+        b=OmfyNm9ChOuLhFxUdru3NVmV4vTz1+/xedHaAEiZ3KMnWYym7z0yXVLN2DOfunybTW
+         x5Y49hmaVSkFWqXyBV9qu94kuPp+mCfcxfRV7hI33rgFcDEKK2HzJ1lbT+g+8biXS6dC
+         /76STKFRHp+0nJXRCApoQgXxv/jGQdaz5RjZ2ogxG74YfbE6uY8dvcCbIkn9nvDhu5/A
+         mLXxWjk1qcziwhck3gcYj/ZkVG/B2ZSfVk8df7frlpmf+8D0f8v02sDU0zuDxUqL38uj
+         LlY4VjAMdtSj7BW1YnM2c5N3HQ/NeylGCamoydPWXyRgpEVCL5xvnBpbiZGXJWqQQwXI
+         0VSA==
+X-Gm-Message-State: AC+VfDxxMGQ/63bJVJNXI8npxwWCA22SqEI/GSlc96Xu9nb5cN1N/zNm
+	TCzjxb9C6HnuaRrhJf5CNzI=
+X-Google-Smtp-Source: ACHHUZ6aA6UX+ERfkedHwLCP3QGXLJg26VTfEDrtGYzZXT3pXM/s2icGJNVn/HpUNxbK93SptJYO0g==
+X-Received: by 2002:a17:902:d4cc:b0:1b1:1168:6571 with SMTP id o12-20020a170902d4cc00b001b111686571mr1192834plg.36.1685490870603;
+        Tue, 30 May 2023 16:54:30 -0700 (PDT)
 Received: from [192.168.51.14] ([98.51.102.78])
-        by smtp.gmail.com with ESMTPSA id u14-20020a170902e80e00b001aae909cfbbsm10839276plg.119.2023.05.30.16.50.53
+        by smtp.gmail.com with ESMTPSA id jg3-20020a17090326c300b001b033873744sm6111930plb.249.2023.05.30.16.54.29
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 30 May 2023 16:50:54 -0700 (PDT)
-Message-ID: <ecd8d769-4143-550c-13b5-ae96e6a76ff6@acm.org>
-Date: Tue, 30 May 2023 16:50:53 -0700
+        Tue, 30 May 2023 16:54:30 -0700 (PDT)
+Message-ID: <1c182151-6e8c-5068-b38c-f8e842e6e13b@acm.org>
+Date: Tue, 30 May 2023 16:54:29 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.0
-Subject: Re: [PATCH v2 1/1] scsi: ufs: core: Make UFS_MCQ_NUM_DEV_CMD_QUEUES a
- module parameter
+Subject: Re: [PATCH v2 1/3] scsi: ufs: core: Introduce mcq ops to config cqid
 Content-Language: en-US
 To: Po-Wen Kao <powen.kao@mediatek.com>, linux-scsi@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
@@ -67,14 +66,15 @@ To: Po-Wen Kao <powen.kao@mediatek.com>, linux-scsi@vger.kernel.org,
 Cc: wsd_upstream@mediatek.com, peter.wang@mediatek.com,
  stanley.chu@mediatek.com, alice.chao@mediatek.com, naomi.chu@mediatek.com,
  chun-hung.wu@mediatek.com, cc.chou@mediatek.com, eddie.huang@mediatek.com
-References: <20230530023518.16965-1-powen.kao@mediatek.com>
+References: <20230530023227.16653-1-powen.kao@mediatek.com>
+ <20230530023227.16653-2-powen.kao@mediatek.com>
 From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20230530023518.16965-1-powen.kao@mediatek.com>
+In-Reply-To: <20230530023227.16653-2-powen.kao@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230530_165056_879057_C77E060F 
-X-CRM114-Status: GOOD (  12.15  )
+X-CRM114-CacheID: sfid-20230530_165434_912954_50FA4576 
+X-CRM114-Status: GOOD (  11.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,25 +89,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5/29/23 19:35, Po-Wen Kao wrote:
-> A dedicated queue for dev commands is not mandatory, hence let
-> UFS_MCQ_NUM_DEV_CMD_QUEUES become module parameter `dev_cmd_queues`
-> to allow sharing first hw queue for dev commands.
-> 
-> When `dev_cmd_queues` is set to 0, the hwq 0 will be shared for I/O
-> requests and dev commands. In the same hwq, commands are processed based
-> on submission order hence might take longer to dispatch dev command
-> under heavy traffic. For the host with dedicated hwq for dev commands
-> can benefit in such scenario.
+On 5/29/23 19:32, Po-Wen Kao wrote:
+> MCQ sq/cq mapping is not just one for one, could many for one.
+> This patch allow host driver to change the mapping, assign cqid
+> for each hw queue.
 
-The UFS core has already too many kernel module parameters. I don't 
-think that we need more kernel module parameters. Instead of adding a 
-new kernel module parameter, I propose to never reserve a hardware queue 
-for device commands. Reserving a hardware queue for device commands 
-seems wasteful to me.
+What use case do you have in mind for associating multiple submission 
+queues with a single completion queue?
 
-Thanks,
+No matter what the use case is, I think that which submission queues are 
+associated with a completion queue is independent of the host driver and 
+hence that such logic should exist in the UFS core instead of in a host 
+driver.
 
 Bart.
-
 
