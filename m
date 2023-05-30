@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 514CDC7EE23
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 May 2023 17:40:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01721C7EE24
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 May 2023 17:41:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OxAgbzT5EvKVAx/Dk1ILEhNRmGxKecteWUuv+ybD8uk=; b=H6FP7zU1RX8uDz89bUx9o2xnHx
-	distWs7yBMOFn4Mvw7F48NwMO1hvTN7GT37hoaasNxaVrVpcp4fN+jzFoTet56oa1HE1h3XY2grP0
-	3oy7NNia1sQ+wkCxhJ1/slslD3rcCLDs7t4cMhnqWln04n8FgbUn8dvH2eH0zrmUDEh0cd+yWROgN
-	oszoiyYtsjTKx6UQTnjUATkVqA+ja+BRgjx+7abaVu5xoLxvtOjHchJZEvcN2Kdtl/+kOp30dlAcK
-	J7nFwCHfCF9iI0HASp2w3A/Af5ne+IDyR+ld/UQYRKAJ+PYH7sIjE9jORfd121X1eeBAY0VeXhktv
-	hqFkpNVw==;
+	bh=Bex7Wkx2cvghG5GzpuzZzmFp+NZItELrYSPudwI0tR0=; b=o8J9qad5dqFyh4Wf2YsuodomFl
+	+LHiGC7bey+8LrYsSan0J8r+/sHTlYydjC6QIqusFjbX/wVi2Dv+bfDgNw5LPaAhpvUJlJwa7hh2D
+	HqZ8R1hllp8+ypbzdMZgCuqiAzxBMoGA8bbCbpx+rjQfdD2DNRNO6qUUl4S3wwTRP10HzrGyvUhPb
+	Ge4RE3jH1RPd15N6Lo3Y+7g80wfDT6MP5TI5Hdy3vgM5zCcHO4KHFGxaG9AeoPJ/zUFTUdz3wUhV7
+	+CvdtN79al0NBH61U41trIFcBcxIQyVgxYJCf+yTMYFjfZIRfaInw9CA2cSc5NpUIx5h4St8hduR3
+	vhPodLeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q43L2-00EmBU-0Y;
-	Tue, 30 May 2023 17:40:52 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1q43LA-00EmF8-1x;
+	Tue, 30 May 2023 17:41:00 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q43Kw-00Em9N-1M;
-	Tue, 30 May 2023 17:40:47 +0000
+	id 1q43Ky-00Em9p-1a;
+	Tue, 30 May 2023 17:40:49 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id D7DA0627D1;
+	by dfw.source.kernel.org (Postfix) with ESMTPS id BB01A62BF4;
+	Tue, 30 May 2023 17:40:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BBB5FC433EF;
 	Tue, 30 May 2023 17:40:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C6F2DC4339C;
-	Tue, 30 May 2023 17:40:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1685468445;
-	bh=9/VTo/U8Y27wlwxBTkPK9EJhdYwlyyuveYD1A6GQW2E=;
+	s=k20201202; t=1685468447;
+	bh=2ea8N67c7G2yOchRm+WL0kAMJsqs8Q3ilNqdiR2zHuM=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=fzt0l5QzQ9LIhT/UsnD/zi5KyBJo9G9Y55kC3Eirjp4RavaBqN+SXSCkrebQUxBGW
-	 v9w2S8bTL4c3WrSeT6B+rJ8Iyva8dwc12cQtEi2d8TEr4pkJNV8O9PRGjFuPhEWXNS
-	 pb6IspnYyA+l+qeaMBTlBbQ9W48hjb4WxFcQbr/WNkaD3VE1f2oUESTFyhvtRSW7ep
-	 wFGm3SrRwAFWToemu3u8g8ihiFnsP86oYOCyc5pECjs2xn6J4TaX7mKukJ+xX/MkiU
-	 m2eF/7gN2ETxTCPabODcGVnRYQMw3CROoBwhqP2fR5G66uZUP4oaif4mcsRiPpKLMy
-	 IlDEy4FDbPPtw==
+	b=i/Vl5v+gv/l3piJuaLKSeHoU1/AQhZIpgP8m0jLqxv9GRcTQqg9sSsje/Ea8kpkgU
+	 VMY9tMcf6VMSWiWEGDCb/cbKOiK54tCfoplGMNxOGsWlMIUGjs/JROUuJ4/t4opm7o
+	 vDVewVauKe0nEGBpfMCTxRbAwxL3Md/nlXUypBfmhD2jQUin2cG3dVqyLHvtbnOyTp
+	 ZuRn09LfPfiMwIbIRaLlqOUPMLjfqsssusES5jDtowwUuXJIfE8yO7NJeE95/J6fRe
+	 ahJJTzxf6hq1fcVQYkOktBAcoybQxvmrPJvrP98Z/pLXl3zJUT6n/u0aq8yNF303vm
+	 8v53gipcwNbhg==
 From: Mark Brown <broonie@kernel.org>
 To: Matthias Brugger <matthias.bgg@gmail.com>, 
  =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- linux-spi@vger.kernel.org, kernel@pengutronix.de, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20230309094704.2568531-1-u.kleine-koenig@pengutronix.de>
-References: <20230309094704.2568531-1-u.kleine-koenig@pengutronix.de>
-Subject: Re: [PATCH 0/3] spi: mt65xx: Convert to platform remove callback
- returning void
-Message-Id: <168546844352.691057.11112317404702040826.b4-ty@kernel.org>
-Date: Tue, 30 May 2023 18:40:43 +0100
+Cc: linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, kernel@pengutronix.de, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230530081648.2199419-1-u.kleine-koenig@pengutronix.de>
+References: <20230530081648.2199419-1-u.kleine-koenig@pengutronix.de>
+Subject: Re: [PATCH v2 0/3] spi: mt65xx: Convert to platform remove
+ callback returning void
+Message-Id: <168546844548.691057.7800675401872237520.b4-ty@kernel.org>
+Date: Tue, 30 May 2023 18:40:45 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-Mailer: b4 0.13-dev-bfdf5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230530_104046_499868_00D9A33D 
-X-CRM114-Status: GOOD (  16.64  )
+X-CRM114-CacheID: sfid-20230530_104048_571009_B03F7938 
+X-CRM114-Status: GOOD (  13.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,14 +76,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 09 Mar 2023 10:47:01 +0100, Uwe Kleine-König wrote:
-> this series converts the spi-mt65xx driver to .remove_new(). While the
-> preparing patch that gets rid of an early error return is in many cases
-> a bug fix, it's not tragic here, as the early return only skips steps
-> that are not necessary after resume failed. Still rework the code flow
-> to prepare for conversion to .remove_new(). The 2nd patch actually
-> converts the driver. The third is a small nitpick cleanup the I noticed
-> while working on the driver.
+On Tue, 30 May 2023 10:16:45 +0200, Uwe Kleine-König wrote:
+> compared to (implicit) v1 sent in March with Message-Id:
+> <20230309094704.2568531-1-u.kleine-koenig@pengutronix.de>, I reworked
+> patch 1 on feedback by AngeloGioacchino Del Regno. Patches 2 and 3 got
+> his Reviewed-by.
+> 
+> Best regards
+> Uwe
 > 
 > [...]
 
