@@ -4,69 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD6D5C77B73
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 May 2023 07:13:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E40C3C7EE2E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 May 2023 07:19:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uYhpHMyjgWGLjoRxREB8A86AzLc3p/BKId25Tz9nFlM=; b=1xm0Z6QOdtIH/J5gX0s1bC8WHg
-	bgjb9zFjoQNUk6OvVArwrby1afurGsZ7XwyvfksfmLyyqGtTAhCFqjPUXoaYNBy0MMYs+f6657Gp0
-	L1s3RWfGyac1AbczKBLb0oHG+4CQpvpmJyOPfPHE8Z9D8kes7nUBOPSsxi4jrLBDhUXaXZbWeMcKI
-	+YpG3r6qLb+EhSif/NnaJCchjStxv8QjTlJNP/P0j+DorW1ZTTGfNMf5KXQ1W+LRLsPPj3YbAEM6s
-	lKwm0QN2x/XSyQNsH3Mjvug6mSr+MY+3FgCJPDHXizjquNXTzyCCFheTghrBmxAqyhU9VCJPrIK+T
-	aFZTj0Vg==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=QisaqGLclUvzvIsp33u5ki5RZnH3BjrRDEkWgujAE3Q=; b=g+SWwwQrmJgd5YFSJEtkearrb2
+	iiHgpz1KWZcYeehv5WDYd2uSJEzDEmBNLrXWqsJmWUUYJjxg0dE91aAKC1f205+hUUWAnVxScFIcL
+	RhL8vWnrV2F9Tt5wcmhY44qEZhj8fS33LEvDpqWqVRAA6Lbz93ERgp1zIgUadSe945MdQN+fsTtV4
+	BqadpgLIhgjfsWlVk071iPAyeZ/Ptc4/hDQJ7qi2UsR1/Wjr2vyFjKY6aVPkLeKT4Xc6vrdUMF1i0
+	twaIBGBX7WlpJFC+rTSlOCByqmUbQ1WiqPnP4lkIyW8jMpQpMn2nGL1SiKNGRw0J10I9YVnRzBXio
+	OKSgtnDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3tXa-00CgUB-0l;
-	Tue, 30 May 2023 07:13:10 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1q3tdo-00ChYj-30;
+	Tue, 30 May 2023 07:19:36 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3tXQ-00CgOU-2H;
-	Tue, 30 May 2023 07:13:01 +0000
-Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id AC49A66059A8;
-	Tue, 30 May 2023 08:12:58 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1685430779;
-	bh=FbpwufshqCYmNrpgiCFM4ItKYbmX+m5YBtViqULXOjE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=VOKg+P6tVPHrrKQ0M/uf+I1xV1pegKrpKuwLHG5M0HBi+Pm64B+cGXL8DUXlkHvOR
-	 GhrCP/MhPAZ6YeebuMDGhauYBfsxo3xEBkcBBsqFMcyLcH8hj8hFZu6WAlLiakNB8J
-	 0Nw6SRWMLBe9Uy58PHGmgqpVJcg2XnjwiScXu6pDiXrR1llIWuRj2h7AC0BWXHiCv7
-	 s1YS/pXBUwaTkSfXvpeMpyo88tK8j8yh9pynh2Vx/jZOdjuj0IMdneiWkL+HCSFE7M
-	 GR4OF+rTQSd7qBm0uWgsmI9O13w5/I8EmyRTUUvvqlbJKisQq766z1N653hWyLp4Vo
-	 LEeyBf5s/JnaA==
-Message-ID: <d39b0e77-e013-fe7e-9523-9bdbaacb5853@collabora.com>
-Date: Tue, 30 May 2023 09:12:55 +0200
+	id 1q3tdl-00ChVc-10
+	for linux-mediatek@lists.infradead.org;
+	Tue, 30 May 2023 07:19:35 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1q3tda-0006UN-Vz; Tue, 30 May 2023 09:19:23 +0200
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1q3tdX-003or8-As; Tue, 30 May 2023 09:19:19 +0200
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1q3tdW-009OQh-H3; Tue, 30 May 2023 09:19:18 +0200
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Minas Harutyunyan <hminas@synopsys.com>,
+	linux-usb@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Mathias Nyman <mathias.nyman@intel.com>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	linux-tegra@vger.kernel.org,
+	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+	Guenter Roeck <linux@roeck-us.net>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	linux-arm-msm@vger.kernel.org,
+	kernel@pengutronix.de
+Subject: [PATCH v2 0/6] usb: Convert to platform remove callback returning void (remaining bits)
+Date: Tue, 30 May 2023 09:19:07 +0200
+Message-Id: <20230530071913.2192214-1-u.kleine-koenig@pengutronix.de>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.1
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8183: kukui: Add scp
- firmware-name
-Content-Language: en-US
-To: Hsin-Yi Wang <hsinyi@chromium.org>, Chen-Yu Tsai <wenst@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230220093343.3447381-1-hsinyi@chromium.org>
- <CAGXv+5E4_k1jKTnninYkuT6Tf=skB00AowHpM+hc8j_VFM-RfQ@mail.gmail.com>
- <CAJMQK-hnK69iVJhqW_8UtKHHLQ3608Cb74Jk_b+xHH0BBu4yVw@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAJMQK-hnK69iVJhqW_8UtKHHLQ3608Cb74Jk_b+xHH0BBu4yVw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2124; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=w8VLr5gg9MpKTC9YCycRET36XrXSH3CwM63P78lVMiE=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBkdaNn0SwQSjxYtJxfeHrEoXtLMeSFDUcwcASJz Q5sxk0JeI2JATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZHWjZwAKCRCPgPtYfRL+ TiwYB/902+th/wxDM1fEHoElL6MAPbVZDAHoWnj2tTAcukNFQj2wdNxOzuqXAw8X7XcPvUx+N5T NtZU3QvkNFmLka+QTh0+Ud++cxkvPglHW09q5aFkhqZ7otsgjkglp0pduorbBZmxIqNDX9cZ18h cVn12h3+FiKxsvu4MLWi0JS+HjgNm9+d/QE7Avej5dMFfzbZb8iS0m34n9IV5SgDs7CaTHvhu1m dDzocHYMdhF0FsHxa3v5H1WbxNKEOmCCVTFoyrtPIuAqntA/C89UQKIcALzx9v9DTResYLSy/dT h8Jol0qSLffUwoGpr8jF9D0V4Zh0EcPTdeXpXI/K08ATTuF5
+X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230530_001300_878642_C6DF436A 
-X-CRM114-Status: GOOD (  11.05  )
+X-CRM114-CacheID: sfid-20230530_001933_350265_AC45F500 
+X-CRM114-Status: GOOD (  10.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,25 +91,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 30/05/23 07:12, Hsin-Yi Wang ha scritto:
-> On Tue, Feb 21, 2023 at 11:25 AM Chen-Yu Tsai <wenst@chromium.org> wrote:
->>
->> On Mon, Feb 20, 2023 at 5:34 PM Hsin-Yi Wang <hsinyi@chromium.org> wrote:
->>>
->>> The upstream SCP firmware path is /lib/firmware/mediatek/mt8183/scp.img
->>>
->>> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
->>
->> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-> 
-> hi Matthias,
-> 
-> Kindly ping on the patch, thanks!
+Hello Greg,
 
-Agreed. Matthias, please pick this one.
+Greg applied a big part of the v1 series (which had 97 patches). There
+was some fallout however and so this v2 only contains the remaining bits
+on top of Greg's tree that has most of v1 already.
 
-Hsin-Yi, can you also please send a version of this patch for stable?
+I fscked up the xhci-plat patch. So Greg dropped all xhci patches. The
+xhci-plat patch included now is obviously a bit different, touching more
+files, but in return compiles fine.
 
-Thanks,
-Angelo
+Also there were some conflicts with other pending changes in the usb
+tree:
+
+ - The dwc2 patch conflicted with commit ada050c69108 ("usb: dwc2: Fix
+   some error handling paths"). My v1 submission got an Ack by Minas
+   Harutyunyan, I applied it to this serie's v2, too.
+
+ - The xhci-mtk patch is unchanged but gained a Review by
+   AngeloGioacchino Del Regno.
+
+ - The qcom-pmic-typec patch confliced with commit a4422ff22142 ("usb:
+   typec: qcom: Add Qualcomm PMIC Type-C driver"). I applied the
+   received acks/reviews by Konrad Dybcio, Bryan O'Donoghue, and Heikki
+   Krogerus anyhow.
+
+Thanks for all the feedback on v1.
+
+Best regards
+Uwe
+
+Uwe Kleine-König (6):
+  usb: dwc2/platform: Convert to platform remove callback returning void
+  usb: xhci-histb: Convert to platform remove callback returning void
+  usb: xhci-mtk: Convert to platform remove callback returning void
+  usb: xhci-plat: Convert to platform remove callback returning void
+  usb: xhci-tegra: Convert to platform remove callback returning void
+  usb: typec: qcom-pmic-typec: Convert to platform remove callback
+    returning void
+
+ drivers/usb/dwc2/platform.c                   | 6 ++----
+ drivers/usb/host/xhci-histb.c                 | 6 ++----
+ drivers/usb/host/xhci-mtk.c                   | 6 ++----
+ drivers/usb/host/xhci-plat.c                  | 6 ++----
+ drivers/usb/host/xhci-plat.h                  | 2 +-
+ drivers/usb/host/xhci-rcar.c                  | 6 +++---
+ drivers/usb/host/xhci-tegra.c                 | 6 ++----
+ drivers/usb/typec/tcpm/qcom/qcom_pmic_typec.c | 6 ++----
+ 8 files changed, 16 insertions(+), 28 deletions(-)
+
+base-commit: b4a4be8471846d96b0ac52a0e9e7d48005cc97e2
+-- 
+2.39.2
+
 
