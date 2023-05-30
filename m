@@ -4,73 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53991C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 May 2023 10:06:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90A6FC7EE23
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 May 2023 10:13:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=D6+mS/Ur3zg6wdrhqB2Wvp1DcgSfvySmNpqDGstYYIo=; b=jZIQxk99dWwanOJayRSLDeonD2
-	Rr0bJGe9BuOBYpy1sDJNkfdTOMmD32wb6ta+L3twGxQXYPB2Crk8waX2S5BLExVSThycum8dtv1Cj
-	PkjEbks1AJQ4Ih4++1aCJBtG2C7nS/WefQsyH8ekn+iy07Fm30Wj+C7pdefKGDZc7HpgJ4k5v54A+
-	yOJ0TSVzg515gzI6n/zTe86TAu7pkxfWxH0JWHiLmdQ8wYZT2OSM9yd7iG1kfzP/RO1KYfQPMd2IS
-	Gk8JzOJqNb4lzIttX42oHnvkn5CspN4CKAu5xecerZyMuR21IGpAdAGrI/jRc6zHfA6/z1JrbJJMK
-	Kl0/y/Ag==;
+	bh=hZ0BJZ8SmdZjdj+zn8FxFAZpMTTsRd9o+hpEFn6fp34=; b=ts7fxchMAJ9PqdtXyl5bO02gb1
+	Jx9qm14h7jiEpmyUWqY+sncx/HSowQk27djCP7ocIr0hB8OtWqqFPS0kiHZvm5tTTHoPNl6q4QHVu
+	ZvalJ5lvzCBpOs6e5l0zVK/88+HSnqvml6huzl2C9nUjuwQnH3kCd5yaCaIwZDUOYZ37hwABLKAoS
+	DOIA11Vanfsk2Jm3vu1i7T9f3TLjY/cvGOG5grjVRFoHOHGEACsyMitz+BkfqYnGcAaIaKRk2vVx5
+	E4Vb+G2n1GVt07JKKYp9OeXh3gU5FsnyuBGDCPyFz5K+DdD+GOOU7nhDZ5TS+V6DApRdIWUw+ph5f
+	Ce0UKeIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3wFE-00DIwd-2D;
-	Tue, 30 May 2023 10:06:24 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1q3wMP-00DKRg-2W;
+	Tue, 30 May 2023 10:13:49 +0000
+Received: from mail-vk1-xa2f.google.com ([2607:f8b0:4864:20::a2f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3wEv-00DImS-0x;
-	Tue, 30 May 2023 10:06:06 +0000
-Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4B2EB66059A8;
-	Tue, 30 May 2023 11:06:03 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1685441164;
-	bh=h0G8aacKqdBgS5C1qg9jRMOSlWZ7H/k7T1lOosYm1Mc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=j8cGkxrJY6l2EEhgjzw1vbKYkXTrr+ION8Bu6BWlrU/yaGtexhg0Af7H2oZuoSzDj
-	 P/IwJvxngRCz9TDCE9OE/rVMxbEqudQIhmQx6BrdLDO6yLecvozQkuLjX84d+UXjZD
-	 9tyUYFI7jooiBTv7y0yh44QSly4ehpCwV072VZJfgDxRNJxkoGRfAQOKYb+GNC3SMK
-	 bRkrTD4GEbKOEEVF/fN5brgAoZMnUkLf+jJzWfpEnl+XUAHHh0/tWpXvYdsaELF4WT
-	 lCSUDbGIwJc9XEJQpfbDot+qVr5eEuBR3xV1FPdefWoWbPQxKeYr4jBYiy4CQtNh1s
-	 U0Ok3OPj2Z5ZA==
-Message-ID: <f3322e41-1891-a33b-daaa-731ec548ec4e@collabora.com>
-Date: Tue, 30 May 2023 12:06:00 +0200
+	id 1q3wMN-00DKQT-0V
+	for linux-mediatek@lists.infradead.org;
+	Tue, 30 May 2023 10:13:48 +0000
+Received: by mail-vk1-xa2f.google.com with SMTP id 71dfb90a1353d-457080dc902so1255856e0c.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 30 May 2023 03:13:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1685441626; x=1688033626;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=hZ0BJZ8SmdZjdj+zn8FxFAZpMTTsRd9o+hpEFn6fp34=;
+        b=RBBWzQ8HEW+9Ib3a8FhJhb7FYys7zwdEFNmdgcI7F5skhmV2LX9SyfMfN2P/VqSG4B
+         XHHINCDVjtKyi6EFACg4gOn0kT9la/m1FLdlFjCItqtAC7lLcbtZg0M7ZXJE/s0fPYcE
+         WnkkEu9TcEkazWD+Lx00lIhvQUkPQFzDILi20=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1685441626; x=1688033626;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=hZ0BJZ8SmdZjdj+zn8FxFAZpMTTsRd9o+hpEFn6fp34=;
+        b=L0FkU6iOl+1HLQZz76pNk0Rr6Xy9XL9tZfiEKSMfTF4HA4uNdMGoaJk81GdXQHXefS
+         vO9U9KTPXTQxG/IF25UdqoQUnW09h0HktilZGznwcU+mbCs8lm4E9aNoa40h1kgF0qir
+         zA4EzsgkOi9ZuJ7eAmHgJLM1zsjNXn8kPqR4eH4kDQVBA4u4f6WlsvA8ZEGCZkiuSPIk
+         7RSsa6eI50iCOAIvMeDRreygpUV5a2OaQi41R6S5V4mYMYGB0yrAkhTm71LqlYC2t0EA
+         dpJIaJgDbx1pgc7h40Nrd/EYSaQsNM3Kc9t3GwbtjtWK9ePVRMgpP165XL5GTSabJ2V+
+         Zpcg==
+X-Gm-Message-State: AC+VfDzJQaoy4TcMeV6cxQVj5A6CHS6Cq91cfOO1RsPHTVR/DWfUdEuK
+	WhSH3CKca0BArxjlo5xz8YAxhwgOlFN47NYMbuU5Pw==
+X-Google-Smtp-Source: ACHHUZ7bdeDqEKSO8uuf8TcSdZrCbpL1tSVPRVUVUmGf74rTT2eVhIui40uKYx4bjCTsIWoYlRWwreTsGzdE2XuIez0=
+X-Received: by 2002:a1f:5fd2:0:b0:43f:8928:151c with SMTP id
+ t201-20020a1f5fd2000000b0043f8928151cmr392643vkb.11.1685441625957; Tue, 30
+ May 2023 03:13:45 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.1
-Subject: Re: [PATCH v5,8/8] media: mediatek: vcodec: Add dbgfs help function
-Content-Language: en-US
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai
- <wenst@chromium.org>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?= <nfraprado@collabora.com>,
- Nathan Hebert <nhebert@chromium.org>
-Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
- Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20230525021219.23638-1-yunfei.dong@mediatek.com>
- <20230525021219.23638-9-yunfei.dong@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230525021219.23638-9-yunfei.dong@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+In-Reply-To: <20230525021219.23638-1-yunfei.dong@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 30 May 2023 18:13:34 +0800
+Message-ID: <CAGXv+5HLXiD10UV+Z-CTDrHQC16RFMYi6hsiGs3B0m4kgXkCZA@mail.gmail.com>
+Subject: Re: [PATCH v5,0/8] media: mediatek: vcodec: Add debugfs file for
+ decode and encode
+To: Yunfei Dong <yunfei.dong@mediatek.com>
+Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+	=?UTF-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4gUHJhZG8=?= <nfraprado@collabora.com>, 
+	Nathan Hebert <nhebert@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>, 
+	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, 
+	Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230530_030605_458502_87BDA3EC 
-X-CRM114-Status: GOOD (  19.98  )
+X-CRM114-CacheID: sfid-20230530_031347_224823_E272115A 
+X-CRM114-Status: GOOD (  18.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,64 +94,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/05/23 04:12, Yunfei Dong ha scritto:
-> Getting dbgfs help information with command "echo -help > vdec".
-> 
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+On Thu, May 25, 2023 at 10:12=E2=80=AFAM Yunfei Dong <yunfei.dong@mediatek.=
+com> wrote:
+>
+> Need to change kernel driver to open decode and encode debug log at curre=
+nt period,
+> it's very unreasonable. Adding debugfs common interface to support decode=
+ and encode,
+> using echo command to control debug log level and getting useful informat=
+ion for each
+> instance.
+>
+> patch 1 add dbgfs common interface.
+> patch 2~5 support decode.
+> patch 6~7 support encode
+> patch 8 add help function
+
+I find the interface kind of weird. A lot of debugfs usage in other places
+just dumps out the current state. Here you are writing to it to ask it to
+do a snapshot, and then you read it later. This ends up requiring manual
+management of a buffer, instead of using seq_file, which is commonly used
+for virtual files.
+
+ChenYu
+
 > ---
->   .../mediatek/vcodec/mtk_vcodec_dbgfs.c        | 24 ++++++++++++++++++-
->   1 file changed, 23 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
-> index 237d0dc8a1fc..2372fc449b45 100644
-> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
-> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
-> @@ -52,6 +52,23 @@ static void mtk_vdec_dbgfs_get_format_type(struct mtk_vcodec_ctx *ctx, char *buf
->   	*used += curr_len;
->   }
->   
-> +static void mtk_vdec_dbgfs_get_help(char *buf, int *used, int total)
-> +{
-> +	int curr_len;
-> +
-> +	curr_len = snprintf(buf + *used, total - *used,
-> +			    "help: (1: echo -'info' > vdec 2: cat vdec)\n");
-> +	*used += curr_len;
-> +
-> +	curr_len = snprintf(buf + *used, total - *used,
-> +			    "\t-picinfo: get resolution\n");
-> +	*used += curr_len;
-> +
-> +	curr_len = snprintf(buf + *used, total - *used,
-> +			    "\t-format: get output & capture queue format\n");
-> +	*used += curr_len;
-> +}
-> +
->   static ssize_t mtk_vdec_dbgfs_write(struct file *filp, const char __user *ubuf,
->   				    size_t count, loff_t *ppos)
->   {
-> @@ -84,6 +101,11 @@ static ssize_t mtk_vdec_dbgfs_read(struct file *filp, char __user *ubuf,
->   	if (!buf)
->   		return -ENOMEM;
->   
-> +	if (strstr(dbgfs->dbgfs_buf, "-help")) {
-
-I would print the help strings in two conditions:
-1. -help
-2. (nothing)
-
-...so that if you don't echo anything to vdec (no params), you get the help text.
-Otherwise, you would have to know that "-help" is a parameter that gives you help
-text in the first place.
-
-As for this commit "as is", it works as intended and it is useful to retrieve
-the help text; you can either send a followup commit that extends the help to
-the corner case that I've explained, or send a v6 adding that to this same commit.
-
-I would prefer to see a v6 -- BUT -- since this series was sent a long time ago,
-you will get my R-b and I will leave the final choice to Hans.
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-
+> changed with v4:
+> - rebase to the top of media stage header.
+>
+> changed with v3:
+> - add help function for patch 8
+> - remove append '\0' and enlarge buffer size for patch 4
+>
+> changed with v2:
+> - using pr_debug and dev_dbg instead of pr_info for patch 2.
+> - fix word fail: informatiaoin -> information for patch 3.
+> - used to print each instance format information for patch 5.
+>
+> changed with v1:
+> - add new patch 4 and 5.
+> - using cmd 'cat vdec' to show debug information instead of pr_info direc=
+tly.
+> ---
+> Yunfei Dong (8):
+>   media: mediatek: vcodec: Add debugfs interface to get debug
+>     information
+>   media: mediatek: vcodec: Add debug params to control different log
+>     level
+>   media: mediatek: vcodec: Add a debugfs file to get different useful
+>     information
+>   media: mediatek: vcodec: Get each context resolution information
+>   media: mediatek: vcodec: Get each instance format type
+>   media: mediatek: vcodec: Change dbgfs interface to support encode
+>   media: mediatek: vcodec: Add encode to support dbgfs
+>   media: mediatek: vcodec: Add dbgfs help function
+>
+>  .../media/platform/mediatek/vcodec/Makefile   |   6 +
+>  .../mediatek/vcodec/mtk_vcodec_dbgfs.c        | 216 ++++++++++++++++++
+>  .../mediatek/vcodec/mtk_vcodec_dbgfs.h        |  72 ++++++
+>  .../mediatek/vcodec/mtk_vcodec_dec_drv.c      |   4 +
+>  .../platform/mediatek/vcodec/mtk_vcodec_drv.h |   4 +
+>  .../mediatek/vcodec/mtk_vcodec_enc_drv.c      |   2 +
+>  .../mediatek/vcodec/mtk_vcodec_util.c         |   8 +
+>  .../mediatek/vcodec/mtk_vcodec_util.h         |  26 ++-
+>  8 files changed, 335 insertions(+), 3 deletions(-)
+>  create mode 100644 drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbg=
+fs.c
+>  create mode 100644 drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbg=
+fs.h
+>
+> --
+> 2.25.1
+>
 
