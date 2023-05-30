@@ -4,70 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34018C7EE23
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 May 2023 22:03:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D074AC7EE31
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 May 2023 23:06:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lr3uzPjW/d4gyLS8sXedsJGTzRUpAStKO+3vD4nOdKM=; b=l/VabHmEaP7BgtfBLRU1gGNTRI
-	dHwTMc005s0udP7M+0MKJ/D7EOu7Sv8LEQqpu6VDwtDlN85AUdmsP+oaKZDrPGtLE+KGBzoWZ0D2P
-	DYQndUGLmFFpCC9/Mjhb0BJFk6w6e54O7CAgCUmQESyZ+nhDeIHkgFNQLhgkKCYMvbbClwpxs3Ps9
-	z0wUwITaIz8uy4tFtXt4YmD8FGOAaPkyQ8iLKGxd/SoMTBp1hVAnIvhsxVrhKTsUvzLS0vUTWPXoL
-	SLodyPznIEIO7eZdgwDZzPQdYBpC3ehEvdqiKH5WS+oQdTUw3TX7GEssBiGNvDVJeUUWlVUWTac5j
-	PwbLhiww==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XTDjzev2g/dFwqXAbBNLlrXlZTn+kHPstDE3zCS5cQY=; b=Y7Njy+IubQGLWUKelZvBHgdzFG
+	ibKOr8qhqbmCDUZU+pPfCM24wVUT49IIpGk0+vUZ6eEKJ7LCQq9fJdAnEMdsKDQAXZkixUmO3oB9W
+	XIrMsOU4hmCtes7Jj8qP4yba0n5vTRm0ta3fQUUwrVZKKyrflWXSE+G1dHiMXLuMbZeiZZnYBDjlu
+	/BVm2Cs4Epd8bG1gS/Q61NYsHPA6ECtyndK8ZT891H72+U9U5yxKzxte2nll31FyCejZe6bcX6V01
+	h9BAPv9mRvWgSaqI4HKiEPxi9nCipMwBl2OR3yeiWg4UWaUdZbwVRTPIGAv5DaX1cQkKOgfWQMAdj
+	NWh7Tv8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q47Qq-00FFtR-2I;
-	Tue, 30 May 2023 22:03:08 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1q48QC-00FQGH-2k;
+	Tue, 30 May 2023 23:06:32 +0000
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q47Qn-00FFrw-1a;
-	Tue, 30 May 2023 22:03:06 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 996C7621EC;
-	Tue, 30 May 2023 22:03:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 224FFC433EF;
-	Tue, 30 May 2023 22:02:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1685484182;
-	bh=ZD8nYca2NjWhCTYonNsPmbGUZda8J8W62Zg3gxJ03ns=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=NmFPR0kbo8TPcX5QgSpJzC/M6X6lh3TNqzgv/iTOEC6SUj0Pv/oBqi/tXrdCGQpYj
-	 wnfXzDDZuc0Ib6/PsP2YfCtU7BmOiVbFwTPKOHkzcW30PitHeKDjQYsrJ6tSQwd1/e
-	 A42lRR8/tkfqK+uKP/+73dAQuMFZv2i4XMyUnCnQO24P/FPE2oE04U1AilbpqSE93G
-	 8sh4Dt7gy/92gbsZpludOA+iCrGOweobffp/KANebliiJCxTc3B8xebfuMZYX9G85X
-	 Nw6aZdqwFBDS6TvIIcUBrVCTIQr8VA9gjZx5W+XVQX4qyUzOKrH/LxamhMf9EZo4OK
-	 LNMoLllZc3D2g==
-Date: Tue, 30 May 2023 23:02:56 +0100
-From: Conor Dooley <conor@kernel.org>
-To: matthias.bgg@kernel.org
-Cc: rafael@kernel.org, Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	devicetree@vger.kernel.org, Amit Kucheria <amitk@kernel.org>,
-	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, Zhang Rui <rui.zhang@intel.com>,
+	id 1q48Px-00FQ88-1r
+	for linux-mediatek@lists.infradead.org;
+	Tue, 30 May 2023 23:06:19 +0000
+Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-1b0314f057cso23782895ad.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 30 May 2023 16:06:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1685487975; x=1688079975;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=XTDjzev2g/dFwqXAbBNLlrXlZTn+kHPstDE3zCS5cQY=;
+        b=GUpfbl+sC9QIc+kIV56cwMaviZrBRnvqS3CIUdUd6vOC1zkRyJf4Ad8fOhD5VXs0Lf
+         8eUIAPNzc6PnrKqn7mCyaAW81LriRxS7r48I6U0BXV0AaQIjsEdckuShmd32VTbQXR4J
+         Hh96JXPWeuMwLpRkDOYsuLjQiUxaXAteiTWYI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1685487975; x=1688079975;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=XTDjzev2g/dFwqXAbBNLlrXlZTn+kHPstDE3zCS5cQY=;
+        b=HpVMFOR+0QMNc72CChn/CDdwDt/Sv35svo7EvJ3FaROOCyCH99qfL9yJFTm/rfTgrh
+         UojhxIm01Xgurz0in/4MBz3VYHHzhnQ4a561NehlneDsrXCBueeh4glvYQLekYjL/3se
+         ENtihmXRyWQkGa1hJZUpFpZswNGPH9mn+V/kePEbzT/8ozBGvb7ncTazTT7kLlX4Z/V3
+         33Ix9k6PHct69XCKeGn77SQGDcbUMpOfXoTG2xexZGZ9R2bJx3OPJNYxpQP1crV9XAGA
+         OKDsJKr4LnQJxOg95v3d9EOxNJ4cWbFoO/feet2kliDH1C/d8sV9qlqJOxPccM82MK85
+         y8pg==
+X-Gm-Message-State: AC+VfDzu3hnpaKs2hY0GqPw/1jM84m0k3/UX+DpjWcFaM5Q9aJm6Chd/
+	7dxJ1qNbycDQin6qCtMu34h0MQ==
+X-Google-Smtp-Source: ACHHUZ7lVzzQbfe9FHzoVRjHe+lwb9YnUIYN/bR8MPHORNI3UhJpQCoHt959/WC7Eg62hE/pMm6l7Q==
+X-Received: by 2002:a17:903:2449:b0:1b0:42c0:93b2 with SMTP id l9-20020a170903244900b001b042c093b2mr4463117pls.45.1685487975185;
+        Tue, 30 May 2023 16:06:15 -0700 (PDT)
+Received: from www.outflux.net (198-0-35-241-static.hfc.comcastbusiness.net. [198.0.35.241])
+        by smtp.gmail.com with ESMTPSA id x7-20020a170902ec8700b001ab1cdb41d6sm10800248plg.235.2023.05.30.16.06.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 30 May 2023 16:06:12 -0700 (PDT)
+From: Kees Cook <keescook@chromium.org>
+To: azeemshaikh38@gmail.com,
+	p.zabel@pengutronix.de,
+	chunkuang.hu@kernel.org
+Cc: Kees Cook <keescook@chromium.org>,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	matthias.bgg@gmail.com,
+	linux-hardening@vger.kernel.org,
+	daniel@ffwll.ch,
 	linux-arm-kernel@lists.infradead.org,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 1/2] dt-bindings: thermal: mediatek: Move auxdac binding
- to yaml
-Message-ID: <20230530-thaw-unpaved-a1708d46eb5a@spud>
-References: <20230530150413.12918-1-matthias.bgg@kernel.org>
+	dri-devel@lists.freedesktop.org,
+	angelogioacchino.delregno@collabora.com,
+	airlied@gmail.com
+Subject: Re: [PATCH] drm/mediatek: Replace all non-returning strlcpy with strscpy
+Date: Tue, 30 May 2023 16:06:03 -0700
+Message-Id: <168548796307.1350188.12826442108899002892.b4-ty@chromium.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230522155306.2336889-1-azeemshaikh38@gmail.com>
+References: <20230522155306.2336889-1-azeemshaikh38@gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="ObYA+NJ4eGs7IVg9"
-Content-Disposition: inline
-In-Reply-To: <20230530150413.12918-1-matthias.bgg@kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230530_150305_577022_F488E2E5 
-X-CRM114-Status: GOOD (  15.96  )
+X-CRM114-CacheID: sfid-20230530_160617_665792_3A96EDED 
+X-CRM114-Status: UNSURE (   9.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,46 +100,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, 22 May 2023 15:53:06 +0000, Azeem Shaikh wrote:
+> strlcpy() reads the entire source buffer first.
+> This read may exceed the destination size limit.
+> This is both inefficient and can lead to linear read
+> overflows if a source string is not NUL-terminated [1].
+> In an effort to remove strlcpy() completely [2], replace
+> strlcpy() here with strscpy().
+> No return values were used, so direct replacement is safe.
+> 
+> [...]
 
---ObYA+NJ4eGs7IVg9
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Applied to for-next/hardening, thanks!
 
-Hey Matthias,
+[1/1] drm/mediatek: Replace all non-returning strlcpy with strscpy
+      https://git.kernel.org/kees/c/99ae1670e488
 
-On Tue, May 30, 2023 at 05:04:12PM +0200, matthias.bgg@kernel.org wrote:
+-- 
+Kees Cook
 
-> +  The MediaTek thermal controller measures the on-SoC temperatures.
-> +  This device does not have its own ADC, instead it directly controls
-> +  the AUXADC via AHB bus accesses. For this reason this device needs
-> +  phandles to the AUXADC. Also it controls a mux in the apmixedsys
-> +  register space via AHB bus accesses, so a phandle to the APMIXEDSYS
-> +  is also needed.
-
-That double "also" bothers my OCD greatly, but it is a faithful
-conversion.
-
-> +  "#thermal-sensor-cells":
-> +    const: 1
-
-> -- #thermal-sensor-cells : Should be 0. See Documentation/devicetree/bindings/thermal/thermal-sensor.yaml for a description.
-
-How come this has changed? I didn't see an explanation for it in either
-of the patches.
-
-Cheers,
-Conor.
-
---ObYA+NJ4eGs7IVg9
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZHZykAAKCRB4tDGHoIJi
-0hC4AP4umpuP8KFghCmvHITUZSdVQShZ8HJEKLtQj22QodFfQQD/UUmajqYpMOxp
-TG5jLg2JDrr4wbLO6ArZSJORQtEAVQE=
-=WerN
------END PGP SIGNATURE-----
-
---ObYA+NJ4eGs7IVg9--
 
