@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6449FC77B7A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 May 2023 06:38:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD2F0C77B73
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 May 2023 06:38:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zu0H+clsiX3AVRoWHqNldUtjeaEORn1P8QtQGo9Q9gQ=; b=2B6WaDevzvnW3A
-	h9ELCgIgWLm8LBiEMBjczBcxatii1sMF8/JtUDwvwbc39HH9KTx18BQjfqBpL0ix1VvhOwOi+69NT
-	gcEnfrHEDQVJ7MugQBWi5WN1eSXAwrdZT9nxM8Pz6ClnWui/yXzy/WIkH66VYIHxdNuvGKUkUMcMH
-	Wgh2ij/3eH0uJXN7VkoBChYL5+bBpcEFaPXIT8p495EfrTgxLMLb3THEhqLMS1kCD5Tw9OUe+v4ux
-	MDNpXyghG9bVqzmTmxJ2WtTXw7W3Q+D4NFzziTJSmCa0D/qDOMQXy6oSbBA7vSKrHNijq/BYyC54E
-	4pJfSmbq1Eo/INnNQhgQ==;
+	List-Owner; bh=KSWrw477vvQJzBpNqF6kOPs/CbWta1Ju4OMfxJW7oco=; b=M0CVV9cEoMc0vD
+	5A5Z3TV72RtCFy6KKoSfmmOIcSjYuT7dotjD1+Kom/eml6lVWqkfN4LN8UFp+hqAbO5Q6rTg+Pz7F
+	bPYnu8C6W1ZUtt8TNMfKudjtBPY5pUtMyzY7IVG20YBKuRoVEPGTTrt7S5tHIw+8O8bcwtCl152nu
+	kZ+8rDeXUJdbSPKLzSVv2bkC5PEEiE1LVcifNydFNw5SbigoaiTErqMthRhuRf3l9h3Z2WW/eNRyQ
+	aPHxNlabgjxLI4/+Gfp7793Z319WNoCsqpb5WmQPOJ4cqfn2Pp/XH1q/n0ZNcQ6DSSPx7RDVPZd0w
+	FBIewfC+OEgmwzJRnpbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3szu-00Cam4-05;
+	id 1q3szu-00CamQ-1Y;
 	Tue, 30 May 2023 06:38:22 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3szp-00CajZ-2l;
+	id 1q3szp-00CajS-2l;
 	Tue, 30 May 2023 06:38:19 +0000
 Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7541866059A8;
-	Tue, 30 May 2023 07:38:14 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 49E7066058F8;
+	Tue, 30 May 2023 07:38:13 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1685428695;
-	bh=8o4Psj+iWHmd5PzAtr5IbEWMuq+mLFzTJfPSvIhx3Ec=;
+	s=mail; t=1685428694;
+	bh=/1u8aJM1ptteAOkw+7Sw6A0WsbsDzfeAnKTZgkOLNPQ=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=B8iLBjBQLyjJgL1wG0pBTKld8L1psgnLxwm+Z9Yo0vX3mHfqv0WlvjjJjY6CHHBib
-	 5NcLWj9U67EAgivudDjYdM/8A894ueTFalfWpcR3l4mW1/DPPW3+jWnHW0BRmWRe5K
-	 HkBzMpuwsHdfLs1wDwrBRz7kfDn0gmkUcHFHE0yEsWYUg/3YJNEJn9DoRlqaY1iMGo
-	 NX8RlZ1MaCLzBjeimCPMqZ/CRK1/wmGB4xYw1OkyPZ8ClguLMtKoD26UrVLqVgcQIB
-	 bKa0EQTigwyewAY3CBx2EmgffALcTSx038nAAIP7tFsFofu5I4s0Sr2yDUrStplcV/
-	 gNoak5k67ACtQ==
-Message-ID: <13a0ad77-539a-9c14-7a57-2893dc703a2e@collabora.com>
-Date: Tue, 30 May 2023 08:38:12 +0200
+	b=NO9KE67tc2EA7Nbo+P9Q+qsJMtcIEHMMoyQ/DrwCJfdDRxJL3uygLqe/7mxNhjlsX
+	 F0vUWKp1nh4Bt7tx2UM67jH3aIbmStDlyIdDSDpG7UlwLPG4rGEtHjGngXubOhbNU/
+	 o9w6h2Spv9JBE5vDiQWvo7YqPjPYqjr9MRjrBi4GwdZK1Ss8uxMUIt+vGC4zLXfE5L
+	 R3Xs9cr2+pcUpCzlTTCukGHeRnW//Of8wQvZf5CzTLS3J373yy7MpOfM+4O5JxsmtR
+	 OyCB59wTFX6KZNH5mGpVa7Q5Qu9kFnqT6mHjNmUJJD5OuCrQCq66iKWmTvG3cSuXnU
+	 4vlQyfuGayXhA==
+Message-ID: <6a2518b5-86b0-d056-36bb-f1ee573838c9@collabora.com>
+Date: Tue, 30 May 2023 08:38:10 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.1
-Subject: Re: [PATCH v2 3/4] arm64: dts: mt7986: add thermal-zones
+Subject: Re: [PATCH v2 4/4] arm64: dts: mt7986: add pwm-fan and cooling-maps
+ to BPI-R3 dts
 Content-Language: en-US
 To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
 References: <20230529204258.65238-1-linux@fw-web.de>
- <20230529204258.65238-4-linux@fw-web.de>
+ <20230529204258.65238-5-linux@fw-web.de>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230529204258.65238-4-linux@fw-web.de>
+In-Reply-To: <20230529204258.65238-5-linux@fw-web.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230529_233818_025667_3018E05E 
-X-CRM114-Status: UNSURE (   8.53  )
+X-CRM114-CacheID: sfid-20230529_233818_025518_5305C1D7 
+X-CRM114-Status: UNSURE (   8.67  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,7 +80,7 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Il 29/05/23 22:42, Frank Wunderlich ha scritto:
 > From: Daniel Golle <daniel@makrotopia.org>
 > 
-> Add thermal-zones to mt7986 devicetree.
+> Add pwm-fan and cooling-maps to BananaPi-R3 devicetree.
 > 
 > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
