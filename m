@@ -4,71 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FC54C7EE24
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 May 2023 17:46:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB19DC77B7A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 May 2023 19:47:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UEc1nuA8wwNHcaPezx4OGjHPFwLxX0Z5BwaqLMJ+1Pg=; b=PR5QoW7x9II3IxBza3e2eITtCA
-	D7cqKrHuqKUCjueWiRsKfaYOoFDlbqpc/UlXKs9tFNxylbyxpPIq+b7mDOR4x/8ILBNL6onsAmmUx
-	iqDDPEPqglxFz81ogepugQ5Yc2uOLHzWNSKBhuGbYvUc/qwbA279QErDtb7lzkupVkECzFv8emr/R
-	obXJqqHa0Y/kknWMlmuz34rPoDbUUfYxt8gVVwPikFTPP/z8yCRILmoPlUptNCVp2bCgu/eWRyGYX
-	5xEa3K2YvvrLjp110tO/6RsTs0NQTzeOlQPIJceePby5S/QTnkBIed5Vx5tPgtceEaJQMCM73bdGv
-	V9iWX6Kg==;
+	bh=HLcjVDbnWOF4XpYh96gzZGQK8HzR3g7B1vMO9JY9ezI=; b=QTEOdKWhqPJl16Tq4TqIarQvGj
+	5T4v2ITTIcO9F2z5B5XXRaCq5tfA744FYae3/fzzjZnXHMzy0GkCYQD6Oy3L/I328LBKE+5Nry8NX
+	JdsnbHwDdm7o3SHqtEUlkEHTtCo76VwSA1MQe6Vmjay8FtucsyY+OPILjVJBIW++J3nh+LPmE77qs
+	pG1ulyt7cRPdiUM6ll5ZBeDHpx9dq4mrj6uTRmfyMEQMshGvDEMzlUqYlzpOTzcUJCidS+rnXF4en
+	MZPoxOhcdQbmChYDKtQfoe67wrkp26YIc85ZS0LglFgkCFurpY9ZAfh8lMKJ7mQbBFTsFqdV2nHjF
+	arMkdjXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q43Py-00En14-1r;
-	Tue, 30 May 2023 17:45:58 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1q45J9-00F0on-1E;
+	Tue, 30 May 2023 19:47:03 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q43Pv-00Emza-1n;
-	Tue, 30 May 2023 17:45:56 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1q45J6-00F0nK-0n;
+	Tue, 30 May 2023 19:47:01 +0000
+Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id AFB6060DB4;
-	Tue, 30 May 2023 17:45:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D26DBC433EF;
-	Tue, 30 May 2023 17:45:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1685468753;
-	bh=M2d8QfDnpbBofbpHBedx96eep1G2TGIo1MipTNzs2PE=;
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 459F56606E64;
+	Tue, 30 May 2023 20:46:52 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1685476014;
+	bh=uuTnSILXVf1Z1lF8zz/SUkYOonCje3HPQu+Vt2KjcSM=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Q4PEQyK+Mb3z74hsjrsMPy/Evc1arWxzfqzw5cH2IvfHoHszeY/44cBnBqYAMJ+jP
-	 xBGueyzWYa9U21olM5/VoQEq+1K0LVOMVFqH0/tKhXG5NgpXgY+oqcByD67g7R+1TH
-	 QgZJETtDRtMqOoiIXXRKFQrci4R4JLPsf2mu1DYqVVJYpie6lNbKgynV+XlAgO+IT3
-	 IBJSEfy/xuieAy7mkdMWFgMUDA8WND/LwP35qGMvo5L+/oK8tYqy5Z9KC0Ecn4XOTu
-	 B3C20Rf4ygCQuBpZQUDWtpAzTq6G4LbfO0qERH5irkavwadEw/Ev/J0OQb+Jn1Tmaj
-	 br4bRC0Dg2SGg==
-Date: Tue, 30 May 2023 11:45:49 -0600
-From: Keith Busch <kbusch@kernel.org>
-To: Po-Wen Kao <powen.kao@mediatek.com>
-Cc: linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, Jens Axboe <axboe@kernel.dk>,
-	Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+	b=m+WUKYl5YEGoFVtSrWHrdUVw+b4VDr1eengMK7E4zEmSxWSrqDtrZfeuM5Qhdl1jL
+	 qNXdD3P7KiBha5m8XuRaCsowQgxtz8dpWOVcgsSqFK6c39CjvxEXN6nbZGOuDtf3w0
+	 hLQrsqWy2cMhepVQ6VlXODTrLJCKAxXPv/NyIGDXHLCwNf3HXr8vxT8PyYrQ2l4peB
+	 Rt3wiDxICVu2ZiHl0aRG9zCL9TyKLJUDCWoWVKCXRXwiXODSp/ccpllC3YBh8AOnGd
+	 H4nKIGT3AguTwt5gOX5B4WpucTjHNnZE4UjQBXLibiufCTGw74rDgq9e7ATzwYg+cl
+	 JcD3cuzSBDV5A==
+Date: Tue, 30 May 2023 15:46:48 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	Alexandre Bailon <abailon@baylibre.com>, kernel@collabora.com,
+	Balsam CHIHI <bchihi@baylibre.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	wsd_upstream@mediatek.com, peter.wang@mediatek.com,
-	stanley.chu@mediatek.com, alice.chao@mediatek.com,
-	naomi.chu@mediatek.com, chun-hung.wu@mediatek.com,
-	cc.chou@mediatek.com, eddie.huang@mediatek.com,
-	Ed Tsai <ed.tsai@mediatek.com>, linux-block@vger.kernel.org,
-	linux-nvme@lists.infradead.org
-Subject: Re: [PATCH v1 1/1] nvme: complete directly for hctx with only one
- ctx mapping
-Message-ID: <ZHY2TUrKVBj2xGE2@kbusch-mbp.dhcp.thefacebook.com>
-References: <20230530024120.17196-1-powen.kao@mediatek.com>
+	Alexandre Mergnat <amergnat@baylibre.com>,
+	Amit Kucheria <amitk@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Zhang Rui <rui.zhang@intel.com>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
+Subject: Re: [PATCH 0/3] thermal/drivers/mediatek/lvts_thermal: Fixes to the
+ interrupt handling
+Message-ID: <8a38a0da-3a4f-4e39-9f9e-42682edfd9bf@notapiano>
+References: <20230428195347.3832687-1-nfraprado@collabora.com>
+ <20230502103344.GA3388518@google.com>
+ <87b0f5cd-67a8-fbd5-5ca7-a286b543d796@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <20230530024120.17196-1-powen.kao@mediatek.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <87b0f5cd-67a8-fbd5-5ca7-a286b543d796@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230530_104555_673977_E087828A 
-X-CRM114-Status: GOOD (  22.06  )
+X-CRM114-CacheID: sfid-20230530_124700_468358_7125C99D 
+X-CRM114-Status: GOOD (  19.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,64 +85,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 30, 2023 at 10:41:19AM +0800, Po-Wen Kao wrote:
-> ---
->  block/blk-mq.c           | 8 +++-----
->  drivers/nvme/host/nvme.h | 4 ++++
->  2 files changed, 7 insertions(+), 5 deletions(-)
+On Tue, May 30, 2023 at 02:27:36PM +0200, Daniel Lezcano wrote:
 > 
-> diff --git a/block/blk-mq.c b/block/blk-mq.c
-> index 1749f5890606..b60c78f5ad46 100644
-> --- a/block/blk-mq.c
-> +++ b/block/blk-mq.c
-> @@ -1181,12 +1181,10 @@ bool blk_mq_complete_request_remote(struct request *rq)
->  	WRITE_ONCE(rq->state, MQ_RQ_COMPLETE);
->  
->  	/*
-> -	 * For request which hctx has only one ctx mapping,
-> -	 * or a polled request, always complete locally,
-> -	 * it's pointless to redirect the completion.
-> +	 * For a polled request, always complete locally, it's pointless
-> +	 * to redirect the completion.
->  	 */
-> -	if (rq->mq_hctx->nr_ctx == 1 ||
-> -		rq->cmd_flags & REQ_POLLED)
-> +	if (rq->cmd_flags & REQ_POLLED)
->  		return false;
->  
->  	if (blk_mq_complete_need_ipi(rq)) {
-> diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
-> index 7cf8e44d135e..acc9b1ce071d 100644
-> --- a/drivers/nvme/host/nvme.h
-> +++ b/drivers/nvme/host/nvme.h
-> @@ -702,6 +702,10 @@ static inline bool nvme_try_complete_req(struct request *req, __le16 status,
->  	nvme_should_fail(req);
->  	if (unlikely(blk_should_fake_timeout(req->q)))
->  		return true;
-> +	if (likely(req->mq_hctx->nr_ctx == 1)) {
-> +		WRITE_ONCE(req->state, MQ_RQ_COMPLETE);
-> +		return false;
-> +	}
+> Hi,
+> 
+> On 02/05/2023 12:33, Chen-Yu Tsai wrote:
+> > On Fri, Apr 28, 2023 at 03:53:44PM -0400, Nícolas F. R. A. Prado wrote:
+> > > 
+> > > Fixes in the interrupt handling of the LVTS thermal driver noticed while
+> > > testing it on the Spherion Chromebook (mt8192-asurada-spherion) with the
+> > > MT8192 support series [1].
+> > > 
+> > > These are standalone fixes and don't depend on anything else.
+> > > 
+> > > [1] https://lore.kernel.org/all/20230307163413.143334-1-bchihi@baylibre.com/
+> > > 
+> > > Thanks,
+> > > Nícolas
+> > > 
+> > > 
+> > > Nícolas F. R. A. Prado (3):
+> > >    thermal/drivers/mediatek/lvts_thermal: Handle IRQ on all controllers
+> > >    thermal/drivers/mediatek/lvts_thermal: Honor sensors in immediate mode
+> > >    thermal/drivers/mediatek/lvts_thermal: Disable undesired interrupts
+> > 
+> > This series seems to have solved all interrupt storm issue I ran into, so
+> > 
+> > Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+> 
+> I gave a try on a mt8195 board and I don't see any interrupt firing when
+> crossing the temperature thresholds.
+> 
+> Did I miss something ?
 
-I don't think we want low level drivers directly messing with blk-mq
-request state.
+No, indeed interrupts seem to be completely disabled on mt8195, even after
+setting the controllers to filtered mode (a requirement to get interrupts). I
+haven't investigated that further yet. This series was validated on mt8192,
+which did have working interrupts, but they were being triggered too often.
 
-Is the early nr_ctx check optimisation really worth it? Would the
-following work for your use case?
+Also note that I've sent a v2 with even more fixes:
+https://lore.kernel.org/all/20230504004852.627049-1-nfraprado@collabora.com/
 
----
-diff --git a/block/blk-mq.c b/block/blk-mq.c
-index f6dad0886a2fa..a2d65bb127e29 100644
---- a/block/blk-mq.c
-+++ b/block/blk-mq.c
-@@ -1176,7 +1176,8 @@ bool blk_mq_complete_request_remote(struct request *rq)
-         * or a polled request, always complete locally,
-         * it's pointless to redirect the completion.
-         */
--       if (rq->mq_hctx->nr_ctx == 1 ||
-+       if ((rq->mq_hctx->nr_ctx == 1 &&
-+            rq->mq_ctx->cpu == raw_smp_processor_id()) ||
-                rq->cmd_flags & REQ_POLLED)
-                return false;
---
+Thanks,
+Nícolas
 
