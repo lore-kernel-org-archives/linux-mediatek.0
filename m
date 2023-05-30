@@ -4,76 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42ECEC7EE23
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 May 2023 11:19:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BD08C7EE23
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 May 2023 12:27:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4JcaGk53DfoljsKEc0Vqh4/+1ZEOZS900niaaCgJ++s=; b=YP5aIyp60FcVDbGy00l84Y6F4b
-	IViQivEVT+4SGZfQnlrsu/w+BhxYJOUH0Hf04kJiXJmMo+c/4aHJcvEFLq/THV4RCgdTKGahjmQDR
-	rTnAKw2WSUKxkkz6zB8YR3fOR4jXragmZwuB29Lf5ELjqPU0jpVTKGmRyEMIlJuFef5e1lIEEp9WE
-	INAio73F27h+rNfyRTrpXPwtPFBdNn6n88uueRNPIJWMRW0blvoBi3cKcxsR9gdtbL/Mt/FIgtJBI
-	2rGYpZyEw/aaTEB1GAUdLw3jA7BHMIAIcy5N4NFe8Za9ku8FlyswjsrPUTEvHZiVOHOGAempeBl+m
-	9ZcLBi3w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tlT+2nXHH7figLXYqN6h97DwdAFo3rxIuidTGSYR/P0=; b=TRm59LkJ8/bOqIY3/9uhNWeW6b
+	3Te63hPgf8t1pfUbb14GH8C+vRUNlYNTwPyAK0z/R9+MOjrwvyWNZWGKkfVcVAnTRldMfe25/lKk0
+	tI01FWOPopfJnqOpVphZl0n/MzLlLHDN6w94R9/btu6A7eHL57bkiNMCt9oL3i9UYm3f+s5P4XBt7
+	taBgEHfq7CXvBFMZ9bBbCQ5yzHinrgAJTtHHFawRupUkcBZgjmN9OSJnIw3CK4C78JgDikbo4Er0+
+	HSdnSAtR0WoLusJWZ+C8P1UlYeetG4bWSmbB1jXrTYYH9VUi1BeMEjb8h0/b6C9QjCuGecNpkyJTc
+	/4lO8NqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3xNw-00DcHE-16;
-	Tue, 30 May 2023 11:19:28 +0000
-Received: from mail-qv1-xf2d.google.com ([2607:f8b0:4864:20::f2d])
+	id 1q3yS3-00Dqe5-28;
+	Tue, 30 May 2023 12:27:47 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3xNu-00DcEU-1P
+	id 1q3yS0-00DqbV-0C
 	for linux-mediatek@lists.infradead.org;
-	Tue, 30 May 2023 11:19:27 +0000
-Received: by mail-qv1-xf2d.google.com with SMTP id 6a1803df08f44-6261616efd2so12629076d6.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 30 May 2023 04:19:24 -0700 (PDT)
+	Tue, 30 May 2023 12:27:45 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-30af86a96b4so122699f8f.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 30 May 2023 05:27:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1685445564; x=1688037564;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=4JcaGk53DfoljsKEc0Vqh4/+1ZEOZS900niaaCgJ++s=;
-        b=C2wDD805ebGsBV7b0K81S5Eb8pSn0DdvY2plhQ2gb9qX9Yc7JMgWFs16+iG8k/PL7d
-         Vh/G674aaMIecEd3AsU84A9PZcegaZiYkUvaOPXzGWz86nGsaE2MdYq2fTBWcpfJ6+0c
-         u9ZBexHLihF2fVBIfwb8eYxzRM2sZgPSBcCeNASGxO0CBKjpGu1owbw7G3ZDuxQoYCKh
-         q0Mna3NfUGyNzTuPtoUnsXvzvLH/2PfPj+NfwjTD3vxmin6ybiA43QNaW8kVxJAiE/pa
-         h8TxQs3NRqxvWg+s48i59MqnlRuUnd3GxL8Gw11vw/bMS0gTFI1XQ+6JeJxWyJ1zhcnB
-         wJKQ==
+        d=linaro.org; s=google; t=1685449658; x=1688041658;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=tlT+2nXHH7figLXYqN6h97DwdAFo3rxIuidTGSYR/P0=;
+        b=sI3MnPYHWBdlGJxiLPwGf/TfKcYpod81NSp/jqBI3YWZtng5r/1mPKNwzutsfR10Kg
+         DwHcdqhPcVpeSrLYmXXOWsb3iH3S4Qm80vFDhZLXQVOOayYS9XKAhPo9S76wn9sB1ArQ
+         PwZWzRRrwr8mNnGETh/SBJgw/jjQk+CIKC9kVLnSme8yPNMasFySwRn1D+uo27CWNNHN
+         xzPf4rayDYp4Saq1c+Tzd/ZEw/4Z0umLRNsTZRBKj30NRJ0Ebl2G3gOk6LZKdXEkZMWM
+         eogv660XswWl/hQ2wcPZybEtPHy6xKc8I3mf7sQtGd39dAlRit3RXAbyft/o56g36/lb
+         mlIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685445564; x=1688037564;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=4JcaGk53DfoljsKEc0Vqh4/+1ZEOZS900niaaCgJ++s=;
-        b=f/RrECu1VZB2H8uKG+NEb52SABpvhK/kG6n8SVKstUf4NG5c+K2JfS0FGtSRVJ1yOg
-         xntYGsFfxpnY2Mpezifjaw6qQh9Kx3FqXy7Pz/xwCAsg51jHuOPbOhwU8ehcXbi/GghA
-         89dPdKUef4gzVCx802sEKZkZFmwmGwhFdx9gbEYs9iir4NLHzhuPiwYYL6le3NxBrBdw
-         SQiIDhR/aJNYibFwrT5Yp6umrCNRH3neUyjvyEr1RCIlaPOGK6umbwQ9bX1Oy6ks0pfX
-         FquYcPQ/2Z+mDqVe0Bmcn8F6wZsj5N9PQ2FX4ngUFwtU5GEgUQjgzr1EAIttqGrJuIlY
-         C+Yw==
-X-Gm-Message-State: AC+VfDwKX/kxJWkp7jz0mRTZi+0vLFQzgvfzhaWxg2xl/hbCdbr7RKdL
-	ROSKuTO/xpjlK7z5W/InCJJrmP9Mh6MxA5vGjuY=
-X-Google-Smtp-Source: ACHHUZ5DBOUiWsRXCdlSENWFz5Kmv7KFin+OkFZ+1MD7nnexfUJEN1pyBDQ9HHsusXK2WSP6vMn4DZZaMjG9/b5DC9E=
-X-Received: by 2002:a05:6214:2627:b0:623:c96a:e735 with SMTP id
- gv7-20020a056214262700b00623c96ae735mr1861312qvb.1.1685445563839; Tue, 30 May
- 2023 04:19:23 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1685449658; x=1688041658;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=tlT+2nXHH7figLXYqN6h97DwdAFo3rxIuidTGSYR/P0=;
+        b=It4PiVixHBQ73INxVoKYOui7GSud25nKWhmAvcuF9cLAWIIPyzFwdgNO2+QiU+d4l0
+         Kbxymm6KMFoHczz3X69JM/M87w4nzE00RFveI80wxZBZbFju4v9pjDztEJTenP11JdLG
+         VzPYJF/ahC1hbLuZXk+ShhiHgSCmHX6zBQ/8h70tH0vCi6HVTOac69/o8dprg/toYp/0
+         zBGuyfCbiEf9k8A9lLq7fEIbQC/fKcrE+0Zepmcj9gy8ugg3JahyaYK9wwt87F358G9j
+         JA75m2/qpf+taL0I1Fq9wDBqNa4gD0yMLSBz2FHva5jWdrtokyFXkqo36UzKnkbtQiiy
+         KyLw==
+X-Gm-Message-State: AC+VfDzkys7ZGvTrge8xnL/t+x6zEq/oBWEQjaWYWUeNoAXktHWW8IBw
+	/arJN0tLkEg+vIbtd6LLSLgV0g==
+X-Google-Smtp-Source: ACHHUZ7tZSoWKLv88vvxIwF7juwlLyZPiMNgkF2OQNOSMP/LIQEoMZgC2CZdWs3Pf8uYLb5InErZcg==
+X-Received: by 2002:a5d:4eca:0:b0:30a:a478:f559 with SMTP id s10-20020a5d4eca000000b0030aa478f559mr1456676wrv.2.1685449658181;
+        Tue, 30 May 2023 05:27:38 -0700 (PDT)
+Received: from ?IPV6:2a05:6e02:1041:c10:dd1c:e75b:56ba:6bf? ([2a05:6e02:1041:c10:dd1c:e75b:56ba:6bf])
+        by smtp.googlemail.com with ESMTPSA id c17-20020adffb11000000b0030633152664sm3101590wrr.87.2023.05.30.05.27.37
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 30 May 2023 05:27:37 -0700 (PDT)
+Message-ID: <87b0f5cd-67a8-fbd5-5ca7-a286b543d796@linaro.org>
+Date: Tue, 30 May 2023 14:27:36 +0200
 MIME-Version: 1.0
-References: <20230524160352.19704-1-osmtendev@gmail.com> <87v8gajeni.fsf@kernel.org>
- <CAK6rUAPUKNREyYL-d5Y23SOV__-zPY8KJL+MMzWX8ShOhDGWLA@mail.gmail.com>
-In-Reply-To: <CAK6rUAPUKNREyYL-d5Y23SOV__-zPY8KJL+MMzWX8ShOhDGWLA@mail.gmail.com>
-From: Osama Muhammad <osmtendev@gmail.com>
-Date: Tue, 30 May 2023 16:19:13 +0500
-Message-ID: <CAK6rUANkoGLAMSQjy5Wrav02u10MKxK8ov1Xekq-goMNu0Tcug@mail.gmail.com>
-Subject: Re: [PATCH] debugfs.c: Fix error checking for debugfs_create_dir
-To: Kalle Valo <kvalo@kernel.org>
-Cc: nbd@nbd.name, ryder.lee@mediatek.com, lorenzo@kernel.org, 
-	shayne.chen@mediatek.com, davem@davemloft.net, linux-wireless@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH 0/3] thermal/drivers/mediatek/lvts_thermal: Fixes to the
+ interrupt handling
+Content-Language: en-US
+To: Chen-Yu Tsai <wenst@chromium.org>,
+ =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: Alexandre Bailon <abailon@baylibre.com>, kernel@collabora.com,
+ Balsam CHIHI <bchihi@baylibre.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Alexandre Mergnat <amergnat@baylibre.com>, Amit Kucheria <amitk@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
+References: <20230428195347.3832687-1-nfraprado@collabora.com>
+ <20230502103344.GA3388518@google.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <20230502103344.GA3388518@google.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230530_041926_479544_22992C2B 
-X-CRM114-Status: GOOD (  23.81  )
+X-CRM114-CacheID: sfid-20230530_052744_095513_F5BBFA3C 
+X-CRM114-Status: GOOD (  12.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,59 +103,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+
 Hi,
 
-In the previous email mistakenly I have referenced debugfs_create_file
-but it's the same for debugfs_create_dir also.
+On 02/05/2023 12:33, Chen-Yu Tsai wrote:
+> On Fri, Apr 28, 2023 at 03:53:44PM -0400, Nícolas F. R. A. Prado wrote:
+>>
+>> Fixes in the interrupt handling of the LVTS thermal driver noticed while
+>> testing it on the Spherion Chromebook (mt8192-asurada-spherion) with the
+>> MT8192 support series [1].
+>>
+>> These are standalone fixes and don't depend on anything else.
+>>
+>> [1] https://lore.kernel.org/all/20230307163413.143334-1-bchihi@baylibre.com/
+>>
+>> Thanks,
+>> Nícolas
+>>
+>>
+>> Nícolas F. R. A. Prado (3):
+>>    thermal/drivers/mediatek/lvts_thermal: Handle IRQ on all controllers
+>>    thermal/drivers/mediatek/lvts_thermal: Honor sensors in immediate mode
+>>    thermal/drivers/mediatek/lvts_thermal: Disable undesired interrupts
+> 
+> This series seems to have solved all interrupt storm issue I ran into, so
+> 
+> Tested-by: Chen-Yu Tsai <wenst@chromium.org>
 
-Here is the link to comment above the function debugfs_create_dir
-https://elixir.bootlin.com/linux/latest/source/fs/debugfs/inode.c#L564
+I gave a try on a mt8195 board and I don't see any interrupt firing when 
+crossing the temperature thresholds.
 
-Thanks,
-Osmten
+Did I miss something ?
 
-On Tue, 30 May 2023 at 16:02, Osama Muhammad <osmtendev@gmail.com> wrote:
->
-> Hi,
->
-> I will keep that in mind and send with the right subject while
-> submitting a revision of the patch.
->
-> Regarding the patch after researching more into it I have come to know
-> that the debugfs
-> API will not return null on error but an ERR_PTR. The modern wisdom
-> about it is to ignore the errors returned by the function as stated in
-> the comment  above the function debugfs_create_file.
->
-> > * NOTE: it's expected that most callers should _ignore_ the errors returned
->  >* by this function. Other debugfs functions handle the fact that the "dentry"
->  >* passed to them could be an error and they don't crash in that case.
-> > * Drivers should generally work fine even if debugfs fails to init anyway.
-> Here is the link to comment :-
-> https://elixir.bootlin.com/linux/latest/source/fs/debugfs/inode.c#L451
->
-> Considering this, I will send the revision of the patch by removing
-> error checks. Please correct me if  there are any concerns with this.
->
-> Thanks,
-> Osmten
->
-> On Tue, 30 May 2023 at 15:29, Kalle Valo <kvalo@kernel.org> wrote:
-> >
-> > Osama Muhammad <osmtendev@gmail.com> writes:
-> >
-> > > This patch fixes the error checking in debugfs.c in
-> > > debugfs_create_dir. The correct way to check if an error occurred
-> > > is using 'IS_ERR' inline function.
-> > >
-> > > Signed-off-by: Osama Muhammad <osmtendev@gmail.com>
-> >
-> > The title is wrong, please see the wiki page below how to create titles.
-> >
-> > Also no need to say "This patch fixes..", saying "Fix..." is enough.
-> >
-> > --
-> > https://patchwork.kernel.org/project/linux-wireless/list/
-> >
-> > https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+-- 
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
+
 
