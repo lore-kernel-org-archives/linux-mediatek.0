@@ -4,64 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01721C7EE24
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 May 2023 17:41:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FC54C7EE24
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 May 2023 17:46:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Bex7Wkx2cvghG5GzpuzZzmFp+NZItELrYSPudwI0tR0=; b=o8J9qad5dqFyh4Wf2YsuodomFl
-	+LHiGC7bey+8LrYsSan0J8r+/sHTlYydjC6QIqusFjbX/wVi2Dv+bfDgNw5LPaAhpvUJlJwa7hh2D
-	HqZ8R1hllp8+ypbzdMZgCuqiAzxBMoGA8bbCbpx+rjQfdD2DNRNO6qUUl4S3wwTRP10HzrGyvUhPb
-	Ge4RE3jH1RPd15N6Lo3Y+7g80wfDT6MP5TI5Hdy3vgM5zCcHO4KHFGxaG9AeoPJ/zUFTUdz3wUhV7
-	+CvdtN79al0NBH61U41trIFcBcxIQyVgxYJCf+yTMYFjfZIRfaInw9CA2cSc5NpUIx5h4St8hduR3
-	vhPodLeg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UEc1nuA8wwNHcaPezx4OGjHPFwLxX0Z5BwaqLMJ+1Pg=; b=PR5QoW7x9II3IxBza3e2eITtCA
+	D7cqKrHuqKUCjueWiRsKfaYOoFDlbqpc/UlXKs9tFNxylbyxpPIq+b7mDOR4x/8ILBNL6onsAmmUx
+	iqDDPEPqglxFz81ogepugQ5Yc2uOLHzWNSKBhuGbYvUc/qwbA279QErDtb7lzkupVkECzFv8emr/R
+	obXJqqHa0Y/kknWMlmuz34rPoDbUUfYxt8gVVwPikFTPP/z8yCRILmoPlUptNCVp2bCgu/eWRyGYX
+	5xEa3K2YvvrLjp110tO/6RsTs0NQTzeOlQPIJceePby5S/QTnkBIed5Vx5tPgtceEaJQMCM73bdGv
+	V9iWX6Kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q43LA-00EmF8-1x;
-	Tue, 30 May 2023 17:41:00 +0000
+	id 1q43Py-00En14-1r;
+	Tue, 30 May 2023 17:45:58 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q43Ky-00Em9p-1a;
-	Tue, 30 May 2023 17:40:49 +0000
+	id 1q43Pv-00Emza-1n;
+	Tue, 30 May 2023 17:45:56 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id BB01A62BF4;
-	Tue, 30 May 2023 17:40:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BBB5FC433EF;
-	Tue, 30 May 2023 17:40:45 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id AFB6060DB4;
+	Tue, 30 May 2023 17:45:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D26DBC433EF;
+	Tue, 30 May 2023 17:45:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1685468447;
-	bh=2ea8N67c7G2yOchRm+WL0kAMJsqs8Q3ilNqdiR2zHuM=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=i/Vl5v+gv/l3piJuaLKSeHoU1/AQhZIpgP8m0jLqxv9GRcTQqg9sSsje/Ea8kpkgU
-	 VMY9tMcf6VMSWiWEGDCb/cbKOiK54tCfoplGMNxOGsWlMIUGjs/JROUuJ4/t4opm7o
-	 vDVewVauKe0nEGBpfMCTxRbAwxL3Md/nlXUypBfmhD2jQUin2cG3dVqyLHvtbnOyTp
-	 ZuRn09LfPfiMwIbIRaLlqOUPMLjfqsssusES5jDtowwUuXJIfE8yO7NJeE95/J6fRe
-	 ahJJTzxf6hq1fcVQYkOktBAcoybQxvmrPJvrP98Z/pLXl3zJUT6n/u0aq8yNF303vm
-	 8v53gipcwNbhg==
-From: Mark Brown <broonie@kernel.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>, 
- =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, kernel@pengutronix.de, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230530081648.2199419-1-u.kleine-koenig@pengutronix.de>
-References: <20230530081648.2199419-1-u.kleine-koenig@pengutronix.de>
-Subject: Re: [PATCH v2 0/3] spi: mt65xx: Convert to platform remove
- callback returning void
-Message-Id: <168546844548.691057.7800675401872237520.b4-ty@kernel.org>
-Date: Tue, 30 May 2023 18:40:45 +0100
+	s=k20201202; t=1685468753;
+	bh=M2d8QfDnpbBofbpHBedx96eep1G2TGIo1MipTNzs2PE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Q4PEQyK+Mb3z74hsjrsMPy/Evc1arWxzfqzw5cH2IvfHoHszeY/44cBnBqYAMJ+jP
+	 xBGueyzWYa9U21olM5/VoQEq+1K0LVOMVFqH0/tKhXG5NgpXgY+oqcByD67g7R+1TH
+	 QgZJETtDRtMqOoiIXXRKFQrci4R4JLPsf2mu1DYqVVJYpie6lNbKgynV+XlAgO+IT3
+	 IBJSEfy/xuieAy7mkdMWFgMUDA8WND/LwP35qGMvo5L+/oK8tYqy5Z9KC0Ecn4XOTu
+	 B3C20Rf4ygCQuBpZQUDWtpAzTq6G4LbfO0qERH5irkavwadEw/Ev/J0OQb+Jn1Tmaj
+	 br4bRC0Dg2SGg==
+Date: Tue, 30 May 2023 11:45:49 -0600
+From: Keith Busch <kbusch@kernel.org>
+To: Po-Wen Kao <powen.kao@mediatek.com>
+Cc: linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, Jens Axboe <axboe@kernel.dk>,
+	Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	wsd_upstream@mediatek.com, peter.wang@mediatek.com,
+	stanley.chu@mediatek.com, alice.chao@mediatek.com,
+	naomi.chu@mediatek.com, chun-hung.wu@mediatek.com,
+	cc.chou@mediatek.com, eddie.huang@mediatek.com,
+	Ed Tsai <ed.tsai@mediatek.com>, linux-block@vger.kernel.org,
+	linux-nvme@lists.infradead.org
+Subject: Re: [PATCH v1 1/1] nvme: complete directly for hctx with only one
+ ctx mapping
+Message-ID: <ZHY2TUrKVBj2xGE2@kbusch-mbp.dhcp.thefacebook.com>
+References: <20230530024120.17196-1-powen.kao@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.13-dev-bfdf5
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230530024120.17196-1-powen.kao@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230530_104048_571009_B03F7938 
-X-CRM114-Status: GOOD (  13.49  )
+X-CRM114-CacheID: sfid-20230530_104555_673977_E087828A 
+X-CRM114-Status: GOOD (  22.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,47 +83,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 30 May 2023 10:16:45 +0200, Uwe Kleine-König wrote:
-> compared to (implicit) v1 sent in March with Message-Id:
-> <20230309094704.2568531-1-u.kleine-koenig@pengutronix.de>, I reworked
-> patch 1 on feedback by AngeloGioacchino Del Regno. Patches 2 and 3 got
-> his Reviewed-by.
+On Tue, May 30, 2023 at 10:41:19AM +0800, Po-Wen Kao wrote:
+> ---
+>  block/blk-mq.c           | 8 +++-----
+>  drivers/nvme/host/nvme.h | 4 ++++
+>  2 files changed, 7 insertions(+), 5 deletions(-)
 > 
-> Best regards
-> Uwe
-> 
-> [...]
+> diff --git a/block/blk-mq.c b/block/blk-mq.c
+> index 1749f5890606..b60c78f5ad46 100644
+> --- a/block/blk-mq.c
+> +++ b/block/blk-mq.c
+> @@ -1181,12 +1181,10 @@ bool blk_mq_complete_request_remote(struct request *rq)
+>  	WRITE_ONCE(rq->state, MQ_RQ_COMPLETE);
+>  
+>  	/*
+> -	 * For request which hctx has only one ctx mapping,
+> -	 * or a polled request, always complete locally,
+> -	 * it's pointless to redirect the completion.
+> +	 * For a polled request, always complete locally, it's pointless
+> +	 * to redirect the completion.
+>  	 */
+> -	if (rq->mq_hctx->nr_ctx == 1 ||
+> -		rq->cmd_flags & REQ_POLLED)
+> +	if (rq->cmd_flags & REQ_POLLED)
+>  		return false;
+>  
+>  	if (blk_mq_complete_need_ipi(rq)) {
+> diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
+> index 7cf8e44d135e..acc9b1ce071d 100644
+> --- a/drivers/nvme/host/nvme.h
+> +++ b/drivers/nvme/host/nvme.h
+> @@ -702,6 +702,10 @@ static inline bool nvme_try_complete_req(struct request *req, __le16 status,
+>  	nvme_should_fail(req);
+>  	if (unlikely(blk_should_fake_timeout(req->q)))
+>  		return true;
+> +	if (likely(req->mq_hctx->nr_ctx == 1)) {
+> +		WRITE_ONCE(req->state, MQ_RQ_COMPLETE);
+> +		return false;
+> +	}
 
-Applied to
+I don't think we want low level drivers directly messing with blk-mq
+request state.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+Is the early nr_ctx check optimisation really worth it? Would the
+following work for your use case?
 
-Thanks!
-
-[1/3] spi: mt65xx: Properly handle failures in .remove()
-      commit: 22f407278ea43df46f90cece6595e5e8a0d5447c
-[2/3] spi: mt65xx: Convert to platform remove callback returning void
-      commit: df7e47196fcef5d5611caa65f91d813578cf3efd
-[3/3] spi: mt65xx: Don't disguise a "return 0" as "return ret"
-      commit: 6f089e986778d3657247fdc2b38bd38de796732b
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+---
+diff --git a/block/blk-mq.c b/block/blk-mq.c
+index f6dad0886a2fa..a2d65bb127e29 100644
+--- a/block/blk-mq.c
++++ b/block/blk-mq.c
+@@ -1176,7 +1176,8 @@ bool blk_mq_complete_request_remote(struct request *rq)
+         * or a polled request, always complete locally,
+         * it's pointless to redirect the completion.
+         */
+-       if (rq->mq_hctx->nr_ctx == 1 ||
++       if ((rq->mq_hctx->nr_ctx == 1 &&
++            rq->mq_ctx->cpu == raw_smp_processor_id()) ||
+                rq->cmd_flags & REQ_POLLED)
+                return false;
+--
 
