@@ -4,91 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BD08C7EE23
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 May 2023 12:27:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECD3BC7EE23
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 May 2023 12:29:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tlT+2nXHH7figLXYqN6h97DwdAFo3rxIuidTGSYR/P0=; b=TRm59LkJ8/bOqIY3/9uhNWeW6b
-	3Te63hPgf8t1pfUbb14GH8C+vRUNlYNTwPyAK0z/R9+MOjrwvyWNZWGKkfVcVAnTRldMfe25/lKk0
-	tI01FWOPopfJnqOpVphZl0n/MzLlLHDN6w94R9/btu6A7eHL57bkiNMCt9oL3i9UYm3f+s5P4XBt7
-	taBgEHfq7CXvBFMZ9bBbCQ5yzHinrgAJTtHHFawRupUkcBZgjmN9OSJnIw3CK4C78JgDikbo4Er0+
-	HSdnSAtR0WoLusJWZ+C8P1UlYeetG4bWSmbB1jXrTYYH9VUi1BeMEjb8h0/b6C9QjCuGecNpkyJTc
-	/4lO8NqA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=6MexTFJPIhFcXk+M9FUQIl39BvBF+X1bEAEY6AM+FDM=; b=Y4/cr2hDjeZj4sBpf9Wp8sT6fv
+	lRXj+OMZT+nEbkh7dRHbuceDZZZi09jZNJyAyEWqABIVmkaawTUsMPtJn8uYpkBs8F4OfHI1T4Ias
+	tqiWWHiiJTeMGxLWx4OXhOBox9YzQZS8v8bt7Cya77Mpd0VGg+W0etEF+Alpx+804DXokMQckf8oM
+	Zo//RAymhCJcxB5GbWk486HMfrkpSYZdIbvRfqsd4Etcn0xrVTxQWGu5q7VOlrzRomXUpuWkWpDlM
+	RiVcwp+REyoW7H1ErLcpmxmvqzVSdkPFtSnHd8IY5fJHyZleioao2zTsOJJLN4BskqsadoAPDtrPp
+	j+SUv63g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3yS3-00Dqe5-28;
-	Tue, 30 May 2023 12:27:47 +0000
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+	id 1q3yTY-00Dqzs-17;
+	Tue, 30 May 2023 12:29:20 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3yS0-00DqbV-0C
-	for linux-mediatek@lists.infradead.org;
-	Tue, 30 May 2023 12:27:45 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-30af86a96b4so122699f8f.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 30 May 2023 05:27:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1685449658; x=1688041658;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=tlT+2nXHH7figLXYqN6h97DwdAFo3rxIuidTGSYR/P0=;
-        b=sI3MnPYHWBdlGJxiLPwGf/TfKcYpod81NSp/jqBI3YWZtng5r/1mPKNwzutsfR10Kg
-         DwHcdqhPcVpeSrLYmXXOWsb3iH3S4Qm80vFDhZLXQVOOayYS9XKAhPo9S76wn9sB1ArQ
-         PwZWzRRrwr8mNnGETh/SBJgw/jjQk+CIKC9kVLnSme8yPNMasFySwRn1D+uo27CWNNHN
-         xzPf4rayDYp4Saq1c+Tzd/ZEw/4Z0umLRNsTZRBKj30NRJ0Ebl2G3gOk6LZKdXEkZMWM
-         eogv660XswWl/hQ2wcPZybEtPHy6xKc8I3mf7sQtGd39dAlRit3RXAbyft/o56g36/lb
-         mlIw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685449658; x=1688041658;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=tlT+2nXHH7figLXYqN6h97DwdAFo3rxIuidTGSYR/P0=;
-        b=It4PiVixHBQ73INxVoKYOui7GSud25nKWhmAvcuF9cLAWIIPyzFwdgNO2+QiU+d4l0
-         Kbxymm6KMFoHczz3X69JM/M87w4nzE00RFveI80wxZBZbFju4v9pjDztEJTenP11JdLG
-         VzPYJF/ahC1hbLuZXk+ShhiHgSCmHX6zBQ/8h70tH0vCi6HVTOac69/o8dprg/toYp/0
-         zBGuyfCbiEf9k8A9lLq7fEIbQC/fKcrE+0Zepmcj9gy8ugg3JahyaYK9wwt87F358G9j
-         JA75m2/qpf+taL0I1Fq9wDBqNa4gD0yMLSBz2FHva5jWdrtokyFXkqo36UzKnkbtQiiy
-         KyLw==
-X-Gm-Message-State: AC+VfDzkys7ZGvTrge8xnL/t+x6zEq/oBWEQjaWYWUeNoAXktHWW8IBw
-	/arJN0tLkEg+vIbtd6LLSLgV0g==
-X-Google-Smtp-Source: ACHHUZ7tZSoWKLv88vvxIwF7juwlLyZPiMNgkF2OQNOSMP/LIQEoMZgC2CZdWs3Pf8uYLb5InErZcg==
-X-Received: by 2002:a5d:4eca:0:b0:30a:a478:f559 with SMTP id s10-20020a5d4eca000000b0030aa478f559mr1456676wrv.2.1685449658181;
-        Tue, 30 May 2023 05:27:38 -0700 (PDT)
-Received: from ?IPV6:2a05:6e02:1041:c10:dd1c:e75b:56ba:6bf? ([2a05:6e02:1041:c10:dd1c:e75b:56ba:6bf])
-        by smtp.googlemail.com with ESMTPSA id c17-20020adffb11000000b0030633152664sm3101590wrr.87.2023.05.30.05.27.37
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 30 May 2023 05:27:37 -0700 (PDT)
-Message-ID: <87b0f5cd-67a8-fbd5-5ca7-a286b543d796@linaro.org>
-Date: Tue, 30 May 2023 14:27:36 +0200
+	id 1q3yTV-00Dqyi-2C;
+	Tue, 30 May 2023 12:29:19 +0000
+X-UUID: 958e39e2fee511ed912e1518a6540028-20230530
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=6MexTFJPIhFcXk+M9FUQIl39BvBF+X1bEAEY6AM+FDM=;
+	b=bDBM4Jbkim5+R3mOhjjq6soHvbXK5PKcCQIOl1fQZfJjCx+Plsqf0nSlNH+CsQbAyBEykz2Uu1i6YmAMiEOnHsGWi84ovpSiR9m8fI8ZFhYdOUofifcFntwHIe/i4OfY//DMXn8Z3Pxx2pHE3mdinrE67JSO6YnnZEiybJQDLhk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.25,REQID:2dc5d3c7-63b6-491a-ab69-ba4121ed9bb2,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACT
+	ION:release,TS:75
+X-CID-INFO: VERSION:1.1.25,REQID:2dc5d3c7-63b6-491a-ab69-ba4121ed9bb2,IP:0,URL
+	:0,TC:0,Content:-25,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACT
+	ION:quarantine,TS:75
+X-CID-META: VersionHash:d5b0ae3,CLOUDID:21ae023d-7aa7-41f3-a6bd-0433bee822f3,B
+	ulkID:230530202912XRM6BDJW,BulkQuantity:1,Recheck:0,SF:29|28|17|19|48|38,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
+	OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: 958e39e2fee511ed912e1518a6540028-20230530
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1670668723; Tue, 30 May 2023 05:29:12 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 30 May 2023 20:29:10 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 30 May 2023 20:29:09 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Chen-Yu Tsai <wenst@chromium.org>, Nicolas Dufresne
+	<nicolas.dufresne@collabora.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
+	<nfraprado@collabora.com>, Nathan Hebert <nhebert@chromium.org>
+CC: Yunfei Dong <yunfei.dong@mediatek.com>, Hsin-Yi Wang
+	<hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter
+	<daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v6,0/8] media: mediatek: vcodec: Add debugfs file for decode and encode
+Date: Tue, 30 May 2023 20:29:00 +0800
+Message-ID: <20230530122908.19267-1-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH 0/3] thermal/drivers/mediatek/lvts_thermal: Fixes to the
- interrupt handling
-Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>,
- =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-Cc: Alexandre Bailon <abailon@baylibre.com>, kernel@collabora.com,
- Balsam CHIHI <bchihi@baylibre.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Alexandre Mergnat <amergnat@baylibre.com>, Amit Kucheria <amitk@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
-References: <20230428195347.3832687-1-nfraprado@collabora.com>
- <20230502103344.GA3388518@google.com>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <20230502103344.GA3388518@google.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230530_052744_095513_F5BBFA3C 
-X-CRM114-Status: GOOD (  12.17  )
+X-CRM114-CacheID: sfid-20230530_052917_730394_79921184 
+X-CRM114-Status: GOOD (  11.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,43 +94,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Need to change kernel driver to open decode and encode debug log at current period,
+it's very unreasonable. Adding debugfs common interface to support decode and encode,
+using echo command to control debug log level and getting useful information for each
+instance.
 
-Hi,
+patch 1 add dbgfs common interface.
+patch 2~5 support decode.
+patch 6~7 support encode
+patch 8 add help function
+---
+changed with v5:
+- support "echo > vdec" to get help function.
 
-On 02/05/2023 12:33, Chen-Yu Tsai wrote:
-> On Fri, Apr 28, 2023 at 03:53:44PM -0400, Nícolas F. R. A. Prado wrote:
->>
->> Fixes in the interrupt handling of the LVTS thermal driver noticed while
->> testing it on the Spherion Chromebook (mt8192-asurada-spherion) with the
->> MT8192 support series [1].
->>
->> These are standalone fixes and don't depend on anything else.
->>
->> [1] https://lore.kernel.org/all/20230307163413.143334-1-bchihi@baylibre.com/
->>
->> Thanks,
->> Nícolas
->>
->>
->> Nícolas F. R. A. Prado (3):
->>    thermal/drivers/mediatek/lvts_thermal: Handle IRQ on all controllers
->>    thermal/drivers/mediatek/lvts_thermal: Honor sensors in immediate mode
->>    thermal/drivers/mediatek/lvts_thermal: Disable undesired interrupts
-> 
-> This series seems to have solved all interrupt storm issue I ran into, so
-> 
-> Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+changed with v4:
+- rebase to the top of media stage header.
 
-I gave a try on a mt8195 board and I don't see any interrupt firing when 
-crossing the temperature thresholds.
+changed with v3:
+- add help function for patch 8
+- remove append '\0' and enlarge buffer size for patch 4
 
-Did I miss something ?
+changed with v2:
+- using pr_debug and dev_dbg instead of pr_info for patch 2.
+- fix word fail: informatiaoin -> information for patch 3.
+- used to print each instance format information for patch 5.
+
+changed with v1:
+- add new patch 4 and 5.
+- using cmd 'cat vdec' to show debug information instead of pr_info directly.
+---
+Yunfei Dong (8):
+  media: mediatek: vcodec: Add debugfs interface to get debug
+    information
+  media: mediatek: vcodec: Add debug params to control different log
+    level
+  media: mediatek: vcodec: Add a debugfs file to get different useful
+    information
+  media: mediatek: vcodec: Get each context resolution information
+  media: mediatek: vcodec: Get each instance format type
+  media: mediatek: vcodec: Change dbgfs interface to support encode
+  media: mediatek: vcodec: Add encode to support dbgfs
+  media: mediatek: vcodec: Add dbgfs help function
+
+ .../media/platform/mediatek/vcodec/Makefile   |   6 +
+ .../mediatek/vcodec/mtk_vcodec_dbgfs.c        | 215 ++++++++++++++++++
+ .../mediatek/vcodec/mtk_vcodec_dbgfs.h        |  74 ++++++
+ .../mediatek/vcodec/mtk_vcodec_dec_drv.c      |   4 +
+ .../platform/mediatek/vcodec/mtk_vcodec_drv.h |   4 +
+ .../mediatek/vcodec/mtk_vcodec_enc_drv.c      |   2 +
+ .../mediatek/vcodec/mtk_vcodec_util.c         |   8 +
+ .../mediatek/vcodec/mtk_vcodec_util.h         |  26 ++-
+ 8 files changed, 336 insertions(+), 3 deletions(-)
+ create mode 100644 drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
+ create mode 100644 drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.h
 
 -- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+2.18.0
 
 
