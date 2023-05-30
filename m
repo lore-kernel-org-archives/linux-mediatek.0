@@ -4,74 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F23A0C7EE31
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 May 2023 02:43:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D206C77B7E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 May 2023 02:50:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=wKxiAjJaD2fCBU9jgKHTupnXwycEnNR8OZfzadkS1xQ=; b=4trXPp+ZADtI1Qu9l6QwQYV4ga
-	0aHzual5T+FqPiKs1fV30V6w/a/nZCYJG8UK0XSGCMqjlw2sqbp66eid9rwdtctVIuSQt2wvWEN72
-	MHcay3Gic+1tQF+1UIii96cGI9lL0jF0ea8mlk/d5+4v5sseHKIPFePXCjsp4QWyMg35xlasV5Sbc
-	aDFScxY0Z7lug0TTDWZprp8AfjAowhmeJA8MV+yPae2ZLaJUSA0HW+jstKEjtmGGxuhmYUzzewxSH
-	IYWq/tDN6EgqVQ4+NidOmuIDhtpQdd2GCDTqkM6oTqmkLdt9jivxWWGEJbyyjaokF5v7lmU9k0b7X
-	eKs8zToQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OvM0y6VNRliRPDVUSeg1QBMWNmNUv7Ud9dd+nfoUaE0=; b=BM4jX96Fe0SmppY830/foaeG8y
+	qbCgE6qL4KBwiLEc877bndJ7c8wxcFie0qx7JmFmTtUk40GFsRG9u4TFMJqEGwOQWlpom027pN85j
+	CUYtJjK4xY93haP2yUhtfqBysW0PILKSSrPT2ZX18SAOdYueKSQ9brNPYexKloNfSMLyagEeddcUG
+	N+hxuXnbJ8AiHu63KWL7sEbxcceTKmtnvvpbd31Xxl4m/12WkVn3xau5YFGVGvgCFOTNZInySUnUW
+	1loslDrKuTRdf1v/nxta1JHW3Wq/5frT3CuSCdl4vgQ+Ih+AhzKKIpt38SoUMcnQ88wktldq6antD
+	5xPxuq5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3pKR-00CDPd-1V;
-	Tue, 30 May 2023 02:43:19 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1q3pQq-00CEj2-0G;
+	Tue, 30 May 2023 02:49:56 +0000
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3pKP-00CDP9-0g;
-	Tue, 30 May 2023 02:43:18 +0000
-X-UUID: b83c6ce0fe9311ed912e1518a6540028-20230529
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=wKxiAjJaD2fCBU9jgKHTupnXwycEnNR8OZfzadkS1xQ=;
-	b=haa1p6Yia7kEZQWqt3xUqH8dahF+keedtV1I3+Lrdnc6J2s780+i1ij3qgErFPVdxeit5renIhI4SaZQlXmg2XRBY+vCL54A8PcoEIFqFjI+v6N0jJv5GdCXW78VDRQnnS1qOSg6TXaB8O2wqbx0Jsp4+TgFL9nB5FFdqqAfAMI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.25,REQID:72959283-263d-47c8-9029-f68d439d4d9a,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:d5b0ae3,CLOUDID:2f02c03c-de1e-4348-bc35-c96f92f1dcbb,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: b83c6ce0fe9311ed912e1518a6540028-20230529
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <powen.kao@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 172100679; Mon, 29 May 2023 19:43:12 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 30 May 2023 10:32:38 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 30 May 2023 10:32:38 +0800
-From: Po-Wen Kao <powen.kao@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <wsd_upstream@mediatek.com>, <peter.wang@mediatek.com>,
-	<stanley.chu@mediatek.com>, <powen.kao@mediatek.com>,
-	<alice.chao@mediatek.com>, <naomi.chu@mediatek.com>,
-	<chun-hung.wu@mediatek.com>, <cc.chou@mediatek.com>,
-	<eddie.huang@mediatek.com>
-Subject: [PATCH v2 0/3] Add MCQ support for MTK platform
-Date: Tue, 30 May 2023 10:32:24 +0800
-Message-ID: <20230530023227.16653-1-powen.kao@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1q3pQm-00CEhX-2I;
+	Tue, 30 May 2023 02:49:54 +0000
+Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-4f3a873476bso4200069e87.1;
+        Mon, 29 May 2023 19:49:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1685414987; x=1688006987;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=OvM0y6VNRliRPDVUSeg1QBMWNmNUv7Ud9dd+nfoUaE0=;
+        b=le0n9U0jpxczpwLhNAv68Y5WyqHzPFG3wGDw8gjr4YE57gf+MFqLu3KTSw+f9WtUu8
+         7gCG/Tt7xKBtR+tq7O1qPk/TMukJVB/d+SRBNOvVR8Bi4RWk0gdFn5jhmvXaLdJzJQll
+         mnXAKnVT4CnR080xsmKIhIDnKQ/reksgrLVqW//TvnrKIufM7vEh0d/HFDB1S2q2zGrr
+         CTfGglXERMTtsrmtdbn27K7bFX8zgaLJV5kG0doVdaJt2B7o5ydm0L7K0E5e/mkLZeXQ
+         hoxeA/B26ayOz0ZRyxlK4OrYJdnfbM6ZACj+z10HcJ0HGMWU4rUHpWwUUcKcRIUFL6q/
+         1z/w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1685414987; x=1688006987;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=OvM0y6VNRliRPDVUSeg1QBMWNmNUv7Ud9dd+nfoUaE0=;
+        b=WpDUSOyCk0zALDqy33wDwjBjVe6vwu2+3TJt8aNk/4XpJKSH+uHVS7ZPxbJhUZvNUb
+         1wQAoKPpv7dqA9wIaqvVYox7z9X7PO431MPU+B1rEOesNAupigAw/Z8ZmhGs+hn7CI+X
+         +RQ0oe/DiznDK8Kmx6opA/7LOQEsn/UOJ4MyXIYRzKuEbgfMW/4m+318j0LV0EgUnhsf
+         5xqawxburRPT2ftlJJeNcAKgxNAcs5p6gyWYOFZ7q+Px1aG6QeLHpJ3xDE/ART532JNK
+         3iynSVKkxlQoNvT90IJd8f5XBgDvUEFOGD9FzlQK8+GBMhM2Sr7a/kOnnEqJdJnw0Xrt
+         goXg==
+X-Gm-Message-State: AC+VfDzkHuaYlnAXj20YjrsO17ZikId8tdyTfhMaO0yTatSxBR2ELTpf
+	ETJqxUUTBJ8zFNJjjvs/fkJ4MjLAVpO2mIoKjQ==
+X-Google-Smtp-Source: ACHHUZ739/CeovCvPIhXrs4sB9knbUj4d0Hm3xMKoD6o96twxdpW9VkpLbxZyztTvA5/HFvlFuSiGvEXKZWks+gvsoI=
+X-Received: by 2002:ac2:4c09:0:b0:4f3:a51f:54fb with SMTP id
+ t9-20020ac24c09000000b004f3a51f54fbmr159241lfq.59.1685414987189; Mon, 29 May
+ 2023 19:49:47 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+References: <20230530024120.17196-1-powen.kao@mediatek.com>
+In-Reply-To: <20230530024120.17196-1-powen.kao@mediatek.com>
+From: Stanley Chu <chu.stanley@gmail.com>
+Date: Tue, 30 May 2023 10:49:35 +0800
+Message-ID: <CAGaU9a85dmzuvozHMWj4n93gfwt4Xj1qoYi2oyY_3Tcc+bFg7g@mail.gmail.com>
+Subject: Re: [PATCH v1 1/1] nvme: complete directly for hctx with only one ctx mapping
+To: Po-Wen Kao <powen.kao@mediatek.com>
+Cc: linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Jens Axboe <axboe@kernel.dk>, Keith Busch <kbusch@kernel.org>, Christoph Hellwig <hch@lst.de>, 
+	Sagi Grimberg <sagi@grimberg.me>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, wsd_upstream@mediatek.com, 
+	peter.wang@mediatek.com, stanley.chu@mediatek.com, alice.chao@mediatek.com, 
+	naomi.chu@mediatek.com, chun-hung.wu@mediatek.com, cc.chou@mediatek.com, 
+	eddie.huang@mediatek.com, Ed Tsai <ed.tsai@mediatek.com>, 
+	linux-block@vger.kernel.org, linux-nvme@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230529_194317_257669_97046D95 
-X-CRM114-Status: UNSURE (   9.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230529_194952_752804_6B81F92A 
+X-CRM114-Status: GOOD (  12.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,36 +94,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-v1 -> v2
-- Introduce MCQ SQ to CQ mapping vops and provide MTK implementation.
-- Update export symbol patch
+On Tue, May 30, 2023 at 10:45=E2=80=AFAM Po-Wen Kao <powen.kao@mediatek.com=
+> wrote:
+>
+> From: Ed Tsai <ed.tsai@mediatek.com>
+>
+> Refer to
+> commit f168420c62e7
+> ("blk-mq: don't redirect completion for hctx withs only one ctx mapping")
+> When nvme applies a 1:1 mapping of hctx and ctx, there will be no remote
+> request.
+>
+> But for ufs, the submission and completion queue could be asymmetric.
+> (e.g. Multiple SQs share one CQ) Therefore, 1:1 mapping of hctx and
+> ctx won't complete request on the submission cpu. In this situation,
+> put this condition in block layer could violate the
+> QUEUE_FLAG_SAME_FORCE, as a result, move this back to nvme.
+>
+> Signed-off-by: Ed Tsai <ed.tsai@mediatek.com>
+> Signed-off-by: Po-Wen Kao <powen.kao@mediatek.com>
 
-v1
-- Separated from topic "[PATCH v4 0/5] Several UFS MCQ Code Changes".
-  Here are some changes since last upload
-  - Store irq in per host array
-  - Symbol rename
-  - Use ufshcd_mcq_poll_cqe_lock() instead of ufshcd_mcq_poll_cqe_nolock()
-  - Handle invalid irq dts property
-  - Remove ufshcd_disable_intr(hba, MCQ_CQ_EVENT_STATUS) in MCQ mode.
-    This will become host quirk later.
-
-Peter Wang (1):
-  scsi: ufs: core: Introduce mcq ops to config cqid
-
-Po-Wen Kao (2):
-  scsi: ufs: core: Export symbols for MTK driver module
-  scsi: ufs: ufs-mediatek: Add MCQ support for MTK platform
-
- drivers/ufs/core/ufs-mcq.c      |   6 +-
- drivers/ufs/core/ufshcd-priv.h  |  10 +-
- drivers/ufs/core/ufshcd.c       |  11 ++
- drivers/ufs/host/ufs-mediatek.c | 188 +++++++++++++++++++++++++++++++-
- drivers/ufs/host/ufs-mediatek.h |  33 ++++++
- include/ufs/ufshcd.h            |   8 ++
- 6 files changed, 251 insertions(+), 5 deletions(-)
-
---
-2.18.0
-
+Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
 
