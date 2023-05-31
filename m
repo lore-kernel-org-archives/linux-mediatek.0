@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA68FC77B7A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 May 2023 13:41:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80BD7C7EE2F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 May 2023 13:42:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WkXlFQtTMqhfv2G7KyHw7rofk+QSQQwIZokyYwpWHyA=; b=GeqOuDI/oSR5jmfYEmq0bfXptj
-	hFTdMY5jeQREEVZ3k8onfjX2rtjI3VwcK9Mhx+gvH4Y64dwhGKopJCgYmiIJ5Ny1nAmYIue+vir2+
-	f8xvZzJhpXNC1k2wROCNMddZEEOa8lXVOsG3/5WrjJ81l4ECdC2Z1Ivz8neECsPx4HC7qfX40a4P/
-	G2bJr4LBtxv4CyfmHdgid5Z9KANyNbR/q5Ve9sx7x2FA69eFEc7bo+10HzUYOorGy+RJFKFKRBiWk
-	4aiAizuKTGjxYg2iGNA0PSXLhEeXdijG5gYmDczOYXjZFh9n0GpzBqQHEe3DBJJG120D54cs27eTq
-	sAo4bJKQ==;
+	bh=rukVzUyC2qQnwRgHEtMwgtRUOkqdGlo68U0vFHzdX+8=; b=XeeQyFQ8rSEQasNM7Rg0oLixHP
+	4TLVMZzyLPlOt82JGcODd/PsQlSkUqovnODO1HhSz5yeLQ6l5uqG87dzXDSsNcWclIPGLSVAuCvZL
+	QtitKdiVoWF+vWxi/d0WnPF1q9Ia2rrWYleZY6vTDqUNscc9dH/5pg8/tx+sYqgS34+6sXGZ5JCx5
+	eDdvC9dYAosSBPm1j+JTU52WkR/OE8Lbvda+Kb0pytyGfY4yM1aL2O7ZeguLxQkrfokHUEIxkntgf
+	/ww2v8vskXwNOWxaKoUWyV3LFG+euizT6kl2H2nkI9gTPOeAc5R5hGthNnsaYtUJs/NhpZKMSikuG
+	UGrXT3Jg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4M4L-00HZpH-1V;
-	Wed, 31 May 2023 13:40:53 +0000
+	id 1q4M5t-00HaRz-2e;
+	Wed, 31 May 2023 13:42:29 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4M4A-00HZkz-1S;
-	Wed, 31 May 2023 13:40:44 +0000
+	id 1q4M5n-00HaOM-0F;
+	Wed, 31 May 2023 13:42:24 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id E97F7628FE;
-	Wed, 31 May 2023 13:40:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D08A6C433D2;
-	Wed, 31 May 2023 13:40:39 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 71DC4636C2;
+	Wed, 31 May 2023 13:42:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D2F52C433D2;
+	Wed, 31 May 2023 13:42:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1685540441;
-	bh=SAekZZtW0vLNU6PgGggVIrjhVJAA/7qoizu+TKVPn80=;
+	s=k20201202; t=1685540541;
+	bh=hmCtJpQjdp9jItNQhrqO208ugFMQmvJywnybkkkOh5o=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=VhHwYagHWPODyOo4MIInouQrebmS6/ukTynakjcfjn7tU3Qcb3nF4lXYdYJv7eIHJ
-	 3nErOg6WoZ7V2UrBH2vusm8XxXFk84gYNhLazuNb9wuPQKOSHRJtYZhSjsl/4FQMfh
-	 WFXuyqq19ra+J/l1jgu3LgQnKsrtcNo/czIQNJvgi+U6waCzBO4T16rMMxulJ4tGrm
-	 d3vY/euG2sqRzvV9cNpBWR9Dkl1cw4yyct0ZrsPDOKBukFgNrrtnBc74BEMVh2ZPFX
-	 oniXRze5OHq/JlVFE6/hPjDJ2a5ZQjlu6PsCVvr/NUZnipJ81mv2Y8aou+qYwXKor7
-	 O6SCUgC8qup1A==
+	b=ODf9bkL2Qt9DWIijSkaRUYaNM7rNlAGZ/bzU7H+b2DYhKp15YXrkmvN/aewmiiyTj
+	 q3I9+RZTYIAhq6qsCAweD+/m3yWTfvpk4NVKGrG6eMQk502rH6FvX6HUB6BLl+Zvk/
+	 /itC0SMkrT0JAoTfj8U2XADw0dmZY346ZVo8NylAFlQRLhwT2p6psGSLhtp9Ct5pLa
+	 8oKjhLW6LZ4IfjZSgGQAurFScUso7bGfKxXQ0gzQAUMJtQuftNktVbYAGmuppdPJRD
+	 g2nbJZSNeRuKIA1wr9UDl3GhyjsLlyT2TZwvwMgz82aEAOjSdeVgNS4N6qatga9e0C
+	 XwkOUiUwEalig==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -54,19 +54,19 @@ Cc: Douglas Anderson <dianders@chromium.org>,
 	matthias.bgg@gmail.com,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.3 12/37] irqchip/gic-v3: Disable pseudo NMIs on Mediatek devices w/ firmware issues
-Date: Wed, 31 May 2023 09:39:54 -0400
-Message-Id: <20230531134020.3383253-12-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.1 11/33] irqchip/gic-v3: Disable pseudo NMIs on Mediatek devices w/ firmware issues
+Date: Wed, 31 May 2023 09:41:37 -0400
+Message-Id: <20230531134159.3383703-11-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230531134020.3383253-1-sashal@kernel.org>
-References: <20230531134020.3383253-1-sashal@kernel.org>
+In-Reply-To: <20230531134159.3383703-1-sashal@kernel.org>
+References: <20230531134159.3383703-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230531_064042_580771_80F56AA5 
-X-CRM114-Status: GOOD (  23.80  )
+X-CRM114-CacheID: sfid-20230531_064223_212456_808B6239 
+X-CRM114-Status: GOOD (  23.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -159,10 +159,10 @@ index 27e3d4ed4f328..3db4592cda1c0 100644
  	u32 iidr;
  	u32 mask;
 diff --git a/drivers/irqchip/irq-gic-v3.c b/drivers/irqchip/irq-gic-v3.c
-index 6fcee221f2017..a605aa79435a4 100644
+index 2182f87d2d12e..11f7c53e4b634 100644
 --- a/drivers/irqchip/irq-gic-v3.c
 +++ b/drivers/irqchip/irq-gic-v3.c
-@@ -39,6 +39,7 @@
+@@ -38,6 +38,7 @@
  
  #define FLAGS_WORKAROUND_GICR_WAKER_MSM8996	(1ULL << 0)
  #define FLAGS_WORKAROUND_CAVIUM_ERRATUM_38539	(1ULL << 1)
@@ -170,7 +170,7 @@ index 6fcee221f2017..a605aa79435a4 100644
  
  #define GIC_IRQ_TYPE_PARTITION	(GIC_IRQ_TYPE_LPI + 1)
  
-@@ -1720,6 +1721,15 @@ static bool gic_enable_quirk_msm8996(void *data)
+@@ -1730,6 +1731,15 @@ static bool gic_enable_quirk_msm8996(void *data)
  	return true;
  }
  
@@ -186,7 +186,7 @@ index 6fcee221f2017..a605aa79435a4 100644
  static bool gic_enable_quirk_cavium_38539(void *data)
  {
  	struct gic_chip_data *d = data;
-@@ -1792,6 +1802,11 @@ static const struct gic_quirk gic_quirks[] = {
+@@ -1802,6 +1812,11 @@ static const struct gic_quirk gic_quirks[] = {
  		.compatible = "qcom,msm8996-gic-v3",
  		.init	= gic_enable_quirk_msm8996,
  	},
@@ -198,7 +198,7 @@ index 6fcee221f2017..a605aa79435a4 100644
  	{
  		.desc	= "GICv3: HIP06 erratum 161010803",
  		.iidr	= 0x0204043b,
-@@ -1834,6 +1849,11 @@ static void gic_enable_nmi_support(void)
+@@ -1844,6 +1859,11 @@ static void gic_enable_nmi_support(void)
  	if (!gic_prio_masking_enabled())
  		return;
  
