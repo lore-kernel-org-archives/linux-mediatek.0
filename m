@@ -4,66 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81905C77B7C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 May 2023 06:37:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21069C77B73
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 May 2023 07:25:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QEIDGBiBGtCzU6Iou4miBfGX8BEk9CrUIpfHDxXsIsY=; b=B50MRX39BZlw27I0zHcRDKDl6C
-	dTJZEETacAL3D9vFGkaGN0mrq+66qd+UxAam2qkNydYp+co/D4y9xxWtoWUKoaZAOK8++ICa6y0kS
-	2tl+fNO1Neh1ssYZpuTj283puTj+4K5VxIxdYA9Btg/EXea/f+r/Svd+JipZjDmL3C9TUc8ENPlAQ
-	0xAOAqShGcaAULtshoVfu/8MogrO7Bq5lafj3bY7UX+x+JgqT8DfzWS14ohQQfW/kySA4zdDj9HRF
-	iPMVy3BbovJRr5wRsqsz1ZV4BeMfG8Zr4ikOsXO6i6KcdJZ0KRvbzm/9GOz15dZoiWiaJX6dyze0U
-	UrUdysuw==;
+	bh=BGm8dSFUe8oYl2TNz6+RJ2OzDhK9zNEqrtF6bUETRPg=; b=EKZjcsEaCLumaOTrAEgaia/NKa
+	6dx5ufD0oQUIpPH63LXlTsW+SHAsI0mWjgWIxy/IrpIzkR1Fbdw2cOicAe1fhvXDv06/+IvlM2KEq
+	rAny/vqRaK/LLXzB/yxxEke0engxZD5nU54q2d2muT5GPRbIqdxQRHPhMwgfTEaKnAooIhl14XAdD
+	e82nAKkB1UChq21xx/AJ/NVch6fKbOqfLGSKKBCkIiNUKDOZiOATSJZX1+/dDSe8nrzxNhjGp4d47
+	SyEluGlXMjrluxfeQyDhR1UnscpHvx5gJhiOsriBEq5eAMee9P2Iikf1ekBLGoV+AP661oe2528Jj
+	BSVfO3MA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4FSL-00GJhj-2W;
-	Wed, 31 May 2023 06:37:13 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1q4GCc-00GQWf-1i;
+	Wed, 31 May 2023 07:25:02 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4FSI-00GJgP-1Q;
-	Wed, 31 May 2023 06:37:11 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id D012763709;
-	Wed, 31 May 2023 06:37:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C3B40C4339B;
-	Wed, 31 May 2023 06:37:00 +0000 (UTC)
-Message-ID: <6c4658fd-3a64-b3f8-67cd-17ed2d7d3567@xs4all.nl>
-Date: Wed, 31 May 2023 08:36:59 +0200
+	id 1q4GCa-00GQV4-0S;
+	Wed, 31 May 2023 07:25:01 +0000
+Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-3f61530506aso57157195e9.1;
+        Wed, 31 May 2023 00:24:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1685517896; x=1688109896;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=BGm8dSFUe8oYl2TNz6+RJ2OzDhK9zNEqrtF6bUETRPg=;
+        b=pbS5jnd0KtWx1kVXDxSAjb45cGnnDxpRKZ+eRHPO5z2Gf1O8pmA0hnJnj0896zCXDa
+         9mzThdBCbFgu19k81bCjxUqei1uwzml3BqcXaKgngGOeiN7dxwiNujCVZ00DoPPyBPwM
+         W158p4ui/sGpYve7pXvZMMUwiq4pX3rlCbIsgvDOjHNMJWje/pS9jvZxEMSRTlTh2MKq
+         UrGa7S9T1Ea6mrVYf4+5cfpZ8xvl6eGRuK/RngjKsyFTLQ6K9XmndxbG0yLc0X8o1DUz
+         Rpz6CTQXVjqzAD7FKh9YofXrqtusQg5HtSrP1ZjS7nEC0XUlNesylMeuBoWFum0wiBo+
+         xkHA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1685517896; x=1688109896;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=BGm8dSFUe8oYl2TNz6+RJ2OzDhK9zNEqrtF6bUETRPg=;
+        b=Vzc5m3ykp1eGe2/UsOrm5l4iz8s9DTSrv77ohO/7JZQKouXayYOjKc74fxiBV6eJLl
+         4xF3IvhpXOahgqNje+ERQD8w2p1vDnqHddCLRO0632alsONCPFhTgu3DnUqz1SN59PaS
+         w9sMQvv/Cpw1HvaJ4fBBLsYX3zA7FGAwRxw6bUbpXn4z6lq4tk2aFi2BWeQYvSXuxqfB
+         H8oKZNG9/6wE5lXiG9+szX5O7CBmIXeCVKsM6hO8DGkD4RcGKbcaXaWGsRZPhBFYlOLb
+         rRyhGizr9mLTnEq1xYlL1CIgSY2VUjMBF/JZn5/UQ3jKOYgSJCdvhqKD4Ggq85KYl5UE
+         gD2A==
+X-Gm-Message-State: AC+VfDwf30FYNSVG9rSRvczd8tMdt669fcA1yIYvEaUZZWcXNfPPrJ1Y
+	hTsTfs2VR4Rp5GRjtFnnyq4=
+X-Google-Smtp-Source: ACHHUZ6FAhHU+Za7H9g0Boog+saCu9YGFod3wjMwsWnawn+ag9re32rbUxQSPPglCDOpfLNweXodOg==
+X-Received: by 2002:a7b:c8ce:0:b0:3f4:2267:10c0 with SMTP id f14-20020a7bc8ce000000b003f4226710c0mr3464732wml.28.1685517895689;
+        Wed, 31 May 2023 00:24:55 -0700 (PDT)
+Received: from [192.168.2.177] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id q13-20020a7bce8d000000b003f43f82001asm23321548wmj.31.2023.05.31.00.24.53
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 31 May 2023 00:24:54 -0700 (PDT)
+Message-ID: <bc8f0ee3-1131-3f63-a982-913f8165aa7b@gmail.com>
+Date: Wed, 31 May 2023 09:24:52 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH v2 3/8] media: videobuf2: Add a module param to limit vb2
- queue buffer storage
-Content-Language: en-US
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, tfiga@chromium.org,
- m.szyprowski@samsung.com, mchehab@kernel.org, ming.qian@nxp.com,
- shijie.qin@nxp.com, eagle.zhou@nxp.com, bin.liu@mediatek.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com,
- yunfei.dong@mediatek.com, stanimir.k.varbanov@gmail.com,
- quic_vgarodia@quicinc.com, agross@kernel.org, andersson@kernel.org,
- konrad.dybcio@linaro.org, ezequiel@vanguardiasur.com.ar,
- p.zabel@pengutronix.de, daniel.almeida@collabora.com,
- laurent.pinchart@ideasonboard.com
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- kernel@collabora.com
-References: <20230321102855.346732-1-benjamin.gaignard@collabora.com>
- <20230321102855.346732-4-benjamin.gaignard@collabora.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20230321102855.346732-4-benjamin.gaignard@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+ Thunderbird/102.10.0
+Subject: Re: [PATCH v3] arm64: dts: mediatek: Add cpufreq nodes for MT8192
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ angelogioacchino.delregno@collabora.com, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20230317061944.15434-1-allen-kh.cheng@mediatek.com>
+ <20230317195453.lpymxjk7oqvbxkq5@notapiano>
+ <CAGXv+5GyLeVBAk_DXJoTxoG400mnq4y6pa1JXRD7Svc4rtMQBg@mail.gmail.com>
+Content-Language: en-US, ca-ES, es-ES
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <CAGXv+5GyLeVBAk_DXJoTxoG400mnq4y6pa1JXRD7Svc4rtMQBg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230530_233710_561882_4377C963 
-X-CRM114-Status: GOOD (  24.78  )
+X-CRM114-CacheID: sfid-20230531_002500_180922_994AE757 
+X-CRM114-Status: GOOD (  12.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,118 +101,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 21/03/2023 11:28, Benjamin Gaignard wrote:
-> Add module parameter "max_vb_buffer_per_queue" to be able to limit
-> the number of vb2 buffers store in queue.
-> 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
->  drivers/media/common/videobuf2/videobuf2-core.c | 15 +++------------
->  include/media/videobuf2-core.h                  | 11 +++++++++--
->  2 files changed, 12 insertions(+), 14 deletions(-)
-> 
-> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-> index ae9d72f4d181..f4da917ccf3f 100644
-> --- a/drivers/media/common/videobuf2/videobuf2-core.c
-> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
-> @@ -34,6 +34,8 @@
->  static int debug;
->  module_param(debug, int, 0644);
->  
-> +module_param(max_vb_buffer_per_queue, ulong, 0644);
 
-There is no MODULE_PARM_DESC here? Please add. I see it is not there for
-the debug param either, it should be added for that as well.
+
+On 30/05/2023 09:29, Chen-Yu Tsai wrote:
+> On Sat, Mar 18, 2023 at 3:55 AM Nícolas F. R. A. Prado
+> <nfraprado@collabora.com> wrote:
+>>
+>> On Fri, Mar 17, 2023 at 02:19:44PM +0800, Allen-KH Cheng wrote:
+>>> Add the cpufreq nodes for MT8192 SoC.
+>>>
+>>> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+>>
+>> Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+>> Tested-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+>>
+>> Tested on Asurada Spherion Chromebook as well. In particular, verified that
+>> applying this commit makes suspend/resume work. Before, it would hang during
+>> resume:
+>>
+>>          Enabling non-boot CPUs ...
+>>          Detected VIPT I-cache on CPU1
+>>          GICv3: CPU1: found redistributor 100 region 0:0x000000000c060000
+>>          CPU1: Booted secondary processor 0x0000000100 [0x412fd050]
+>>
+>> But with this commit applied the machine is able to proceed bringing up the
+>> secondary processors and complete resume.
+> 
+> Ping on this patch.
+> 
+> Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+
+Applied now, thanks for the ping.
 
 Regards,
-
-	Hans
-
-> +
->  #define dprintk(q, level, fmt, arg...)					\
->  	do {								\
->  		if (debug >= level)					\
-> @@ -412,10 +414,6 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
->  	struct vb2_buffer *vb;
->  	int ret;
->  
-> -	/* Ensure that q->num_buffers+num_buffers is below VB2_MAX_FRAME */
-> -	num_buffers = min_t(unsigned int, num_buffers,
-> -			    VB2_MAX_FRAME - q->num_buffers);
-> -
->  	for (buffer = 0; buffer < num_buffers; ++buffer) {
->  		/* Allocate vb2 buffer structures */
->  		vb = kzalloc(q->buf_struct_size, GFP_KERNEL);
-> @@ -801,9 +799,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
->  	/*
->  	 * Make sure the requested values and current defaults are sane.
->  	 */
-> -	WARN_ON(q->min_buffers_needed > VB2_MAX_FRAME);
->  	num_buffers = max_t(unsigned int, *count, q->min_buffers_needed);
-> -	num_buffers = min_t(unsigned int, num_buffers, VB2_MAX_FRAME);
->  	memset(q->alloc_devs, 0, sizeof(q->alloc_devs));
->  	/*
->  	 * Set this now to ensure that drivers see the correct q->memory value
-> @@ -919,11 +915,6 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
->  	bool no_previous_buffers = !q->num_buffers;
->  	int ret;
->  
-> -	if (q->num_buffers == VB2_MAX_FRAME) {
-> -		dprintk(q, 1, "maximum number of buffers already allocated\n");
-> -		return -ENOBUFS;
-> -	}
-> -
->  	if (no_previous_buffers) {
->  		if (q->waiting_in_dqbuf && *count) {
->  			dprintk(q, 1, "another dup()ped fd is waiting for a buffer\n");
-> @@ -948,7 +939,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
->  			return -EINVAL;
->  	}
->  
-> -	num_buffers = min(*count, VB2_MAX_FRAME - q->num_buffers);
-> +	num_buffers = *count;
->  
->  	if (requested_planes && requested_sizes) {
->  		num_planes = requested_planes;
-> diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-> index 397dbf6e61e1..b8b34a993e04 100644
-> --- a/include/media/videobuf2-core.h
-> +++ b/include/media/videobuf2-core.h
-> @@ -12,6 +12,7 @@
->  #ifndef _MEDIA_VIDEOBUF2_CORE_H
->  #define _MEDIA_VIDEOBUF2_CORE_H
->  
-> +#include <linux/minmax.h>
->  #include <linux/mm_types.h>
->  #include <linux/mutex.h>
->  #include <linux/poll.h>
-> @@ -48,6 +49,8 @@ struct vb2_fileio_data;
->  struct vb2_threadio_data;
->  struct vb2_buffer;
->  
-> +static size_t max_vb_buffer_per_queue = 1024;
-> +
->  /**
->   * struct vb2_mem_ops - memory handling/memory allocator operations.
->   * @alloc:	allocate video memory and, optionally, allocator private data,
-> @@ -1268,12 +1271,16 @@ static inline bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *
->  
->  	if (vb->index >= q->max_num_bufs) {
->  		struct vb2_buffer **tmp;
-> +		int cnt = min(max_vb_buffer_per_queue, q->max_num_bufs * 2);
-> +
-> +		if (cnt >= q->max_num_bufs)
-> +			goto realloc_failed;
->  
-> -		tmp = krealloc_array(q->bufs, q->max_num_bufs * 2, sizeof(*q->bufs), GFP_KERNEL);
-> +		tmp = krealloc_array(q->bufs, cnt, sizeof(*q->bufs), GFP_KERNEL);
->  		if (!tmp)
->  			goto realloc_failed;
->  
-> -		q->max_num_bufs *= 2;
-> +		q->max_num_bufs = cnt;
->  		q->bufs = tmp;
->  	}
->  
-
+Matthias
 
