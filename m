@@ -4,86 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40CE9C77B73
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 May 2023 09:17:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26D2AC77B7A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 May 2023 09:19:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=C7AepgM+CjOnswGlLxaNY+jm6TytFlnAe++3Sm4Kqp0=; b=3nwtaKsL0rZSVQl7x8bjXmqRYv
-	ISUMDvjivqa3jzubHqx3kqu6NgtlLzuLLC4JcSQOfRZvwV0R7EbZ3yaFnt0QaXowksCir3sKOQCqz
-	7wTKSD5LUtfVpJqm0G19rF4Cz04gmCeUBhf6okIXDH5kjhozVmHTrivrBatC0QSoW21dU2exzr2eF
-	PAkIsQKqI9JaxacCzntifQYLcZiA58lSboSguZk+J2N/yaSSS0o95DzB7SQQRNoaPGfR4E08j3rf7
-	ZxtUy9Nv8u4GUDIpetF4AukiM8Gytpf/T24dJpa+0a0AoKJIx+LDvby69ZGIl7MfFAOtDTNKX/c8Y
-	rlFxgvng==;
+	bh=yrJA1wmEzlkWZ69WKrs6mIsPDzL8DfCHLcTOjGfg6I4=; b=Ev39+mPmZIOXkbJrItGboDo9G3
+	dbgK/r4OY+0XF7qKIDrRIPICZpMdKDRKtNokWkFFJMVfsfB10Tix6hfiIhEprSuz+O/CGOyF460BV
+	sLd+CrsgDCLSMAA7XVOk6QIzE68HnImU/4eDSvjxcx1sFaZ9cK2XnDC3b9c3miEZTLa6sn5r1t+TL
+	zeb98eE+/73C9ISpcrSxCBBvQTV7HQZwUo+0NHvbW3wkWJ4KsZyRA4k1UdzlFXQpok3ujatjB/dta
+	+8Uvi+V7vAuAfyWLrktCS+ZwWccw0msWq6T3wD5f2bmBXeA/6OjZUCQa0OmcCWQQierHfzScAkvHG
+	D3cXut4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4Hxo-00Gq60-1Q;
-	Wed, 31 May 2023 09:17:52 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1q4Hys-00GqHx-0w;
+	Wed, 31 May 2023 09:18:58 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4Hxk-00Gq4d-30
+	id 1q4Hyq-00GqGN-14
 	for linux-mediatek@lists.infradead.org;
-	Wed, 31 May 2023 09:17:51 +0000
-Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-3f6077660c6so40101935e9.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 31 May 2023 02:17:45 -0700 (PDT)
+	Wed, 31 May 2023 09:18:57 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-30789a4c537so3870759f8f.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 31 May 2023 02:18:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1685524664; x=1688116664;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1685524732; x=1688116732;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=C7AepgM+CjOnswGlLxaNY+jm6TytFlnAe++3Sm4Kqp0=;
-        b=MPGBHzPR4C/6l9q3gAZjvYeCTIQ+vM+3e5c9e697to4TKyYpcn9hdK9Nop4Wq1A0aW
-         24ptlOq10d/IGVGWGTiSwEdk8zYLBGYlG0W/iEw57zDAK+ThmwbISHO1aFU49Pu696qI
-         ssJm2Zncrrn1lrT8n7tBpo2uaz37qGWVZPuamfMYLQm1W7pJBZaa6aPkpGxY1PwpvgpU
-         TthuJ8sQvDiTaDYLs5SOJ/Rz10kfJ7Yr+E7N4wKKRDzTLL38aw3DpNgtHNqXgZldWV/j
-         sBdoC+NSmVod3ETLxRovw3v9OhUoH5jC4KdR6RciePveV+ILQixh9SLF7GsXfX0DoLS4
-         nxPw==
+        bh=yrJA1wmEzlkWZ69WKrs6mIsPDzL8DfCHLcTOjGfg6I4=;
+        b=bd9uC8GB+3PDY+D4IIrbCZqNEUVwTIUTV3DdWmWHgvO+aVjzWp3wDu/vlefKMZI+t3
+         o/y9+1sHoqFCkMsh452VKfK/k+EW3T6D9CtczGNhEYjwGXww4OaKqrpXFStM6O9S2huv
+         RUK2/e8QIoGSJhSTpIZOKiGnVU2sVimTfWbtpUDjYn7dkuixFoJ/liRbsUYi3oVS7rHP
+         bQrU4bL/fSWNyeX2qZlkGl9YfrS5qGlGKBB5hxOojwV6/vYJ72op3fDlX0rfG6M74In/
+         ti5u40JdMnOlKTqSnjL+6yPL1KRBuAqETCWlVM74blLv/RqTRVeZMF97dIGg8Sp4C6S1
+         h84g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685524664; x=1688116664;
+        d=1e100.net; s=20221208; t=1685524732; x=1688116732;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=C7AepgM+CjOnswGlLxaNY+jm6TytFlnAe++3Sm4Kqp0=;
-        b=X2wrm2x/p9fdi098lTM1bYWJ230bF8tP0bZV9JEcxxLXTDVIRKwQyH/ezahH0MjCQZ
-         H2l1UThZZ0lZMmpGLEvp6ljm/LhuomVd/MD4mCx68jx55VJqIe8rSFWmjnuEXuRvZ9Yb
-         2vvFoBXotZhB4dzNklKYJI47qZ67CKvLPoUmdkDddU1yTublFm+xUcZA2MBEGW2uC4FR
-         nFgbk2aC3ixVKtjtf2odzzXm6czuVgW51TWIc8coCm9FK55QN0v223PYTvD+X6nQuUMg
-         vj9zjwtTrUJdWgfFFuKSVo+Onf00u6Rso9TA3HV91SykUtkLJqLjMqSjtCsiorbiFXP1
-         pBBA==
-X-Gm-Message-State: AC+VfDzqCTjeGXNY1PPu81rRxe81s1ODFy4u1coFyrqvVgOcxWMyyMf6
-	uS/pEz20/KXexpvhbvpkmhXWsQ==
-X-Google-Smtp-Source: ACHHUZ6NYp/JcTUWk5/h2fZGRs3qgogtaSb/m+zj5/YDtdgc2Asinv1mNGaNQIRU3GHgUOrKUZDBzA==
-X-Received: by 2002:a1c:f615:0:b0:3f6:2ee:6993 with SMTP id w21-20020a1cf615000000b003f602ee6993mr3303330wmc.4.1685524664560;
-        Wed, 31 May 2023 02:17:44 -0700 (PDT)
+        bh=yrJA1wmEzlkWZ69WKrs6mIsPDzL8DfCHLcTOjGfg6I4=;
+        b=AuqEuJbGymCNFjG7dCmcpD+aubVyuUlnBZBSOx6Q8Xp/ETusJnb1s+ubq8m86s5/Lo
+         v/YTFv4TC8L73uUKLIu98ttdLpFvQ5GxbWPOnGFkchI86HnVnfl+oujLLm4CuHkc0MF2
+         TUEcpuz8fs3e0prEMF5Bj/M4MBYvvxpiCTuAOgmP39WiZwGJqnEq8aLPG0aSGxCgtgOB
+         xPNYusJ+sZF6mWspgKWVmzaPZnhOEPi6S1COvWPujcCeAKgtEW4z7fmLUWDoYbbIP9/e
+         T7YZkCQeb4yK8Hv0Y6Tld+y4DJFqK7eUWFy78+LDWggQWXqqrA83CG6F/x4qUqcRjMjt
+         jlFg==
+X-Gm-Message-State: AC+VfDw5R3KhsbDLfFE6FXTPCBQIKNCcN/PLqV1OJtax5ts8XUyFyA+/
+	RjmX8cdvNTuswpRXBpe1Ayuoxw==
+X-Google-Smtp-Source: ACHHUZ7lAAwrKpK9TRhDn+eecpnGOlf2Rzd8NfNRAS064a3cbEl3TUU1UqGLbZuvQvX9QWl2mu2DTA==
+X-Received: by 2002:adf:f088:0:b0:307:a77c:c170 with SMTP id n8-20020adff088000000b00307a77cc170mr3426526wro.2.1685524732559;
+        Wed, 31 May 2023 02:18:52 -0700 (PDT)
 Received: from [10.1.3.59] (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
-        by smtp.gmail.com with ESMTPSA id n4-20020a05600c294400b003f3157988f8sm19683981wmd.26.2023.05.31.02.17.43
+        by smtp.gmail.com with ESMTPSA id d13-20020a5d4f8d000000b0030ae69920c9sm6063518wru.53.2023.05.31.02.18.51
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 31 May 2023 02:17:43 -0700 (PDT)
-Message-ID: <7c1dc6d2-f87d-f577-82c2-92c17105e032@baylibre.com>
-Date: Wed, 31 May 2023 11:17:42 +0200
+        Wed, 31 May 2023 02:18:52 -0700 (PDT)
+Message-ID: <ebeb1d26-f42f-a57a-f6fb-ae764649f3c2@baylibre.com>
+Date: Wed, 31 May 2023 11:18:51 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.11.0
-Subject: Re: [PATCH v3] pwm: mtk_disp: Fix the disable flow of disp_pwm
+Subject: Re: [PATCH] soc: mediatek: SVS: Fix MT8192 GPU node name
 Content-Language: en-US
-To: Shuijing Li <shuijing.li@mediatek.com>, thierry.reding@gmail.com,
- u.kleine-koenig@pengutronix.de, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com
-Cc: devicetree@vger.kernel.org, jitao.shi@mediatek.com,
- linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-References: <20230531031001.7440-1-shuijing.li@mediatek.com>
+To: Chen-Yu Tsai <wenst@chromium.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?=
+ <nfraprado@collabora.com>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20230531063532.2240038-1-wenst@chromium.org>
 From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20230531031001.7440-1-shuijing.li@mediatek.com>
+In-Reply-To: <20230531063532.2240038-1-wenst@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230531_021749_192789_3DE26CDA 
-X-CRM114-Status: UNSURE (   8.74  )
+X-CRM114-CacheID: sfid-20230531_021856_365994_E076731B 
+X-CRM114-Status: UNSURE (   8.06  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -99,11 +98,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 31/05/2023 05:10, Shuijing Li wrote:
-> There is a flow error in the original mtk_disp_pwm_apply() function.
-> If this function is called when the clock is disabled, there will be a
-> chance to operate the disp_pwm register, resulting in disp_pwm exception.
-> Fix this accordingly.
+On 31/05/2023 08:35, Chen-Yu Tsai wrote:
+> Device tree node names should be generic. The planned device node name
+> for the GPU, according to the bindings and posted DT changes, is "gpu",
+> not "mali".
+> 
+> Fix the GPU node name in the SVS driver to follow.
 
 Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
