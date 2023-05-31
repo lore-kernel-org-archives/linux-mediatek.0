@@ -4,140 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24123C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 May 2023 12:42:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3BFFC77B73
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 May 2023 12:48:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ueuxam54SkPyIyXm6rvG6SVCjuZma0eopc5+OBMBUAQ=; b=PcLb45/tac2LPhMJEINkciK91U
-	Sxc57st6/8Jx2NXS5IlyOo/OT6ky1pfiQxGYUurGQ0DJmu9+17e9qyPl+1PQDIVa8MPlFuphqgLQT
-	v0ehjMgZ9AxK6dcecpBSgEZ9hqVR86AAhpcsyw89V3daO9TfJTAkuFkQ7gSdvZNcHgOYkxYWXu3Aq
-	Fib+mobhHs+I7wTAADFn4toOj3f44stqwppH0EPE3/7dqMfDcLvDY5SEyClnfTE6N6PnAvFAnxp0J
-	x81byijJ2d4lHnRBN8sIhTyAmMqRBKQvybMKQztb3GXmjiSiCqzb4ta2k6nvEobJJm5Nl+p3zea5h
-	cI9mBQsQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xqGnCPChL19fXfFgwza4KZGrYtNeSBi3Wbd7oMZ8AFA=; b=zxbR7drPIy7UNRz4/8Bx6rnA/N
+	y0MXXt3bdnBRfZWK1MQJmID/elmkYQoCL4LdbjRKK2y/GES6n65q9lLzkz8d38fEBibB1YEuKOFFi
+	Defh6cneb3FHqTpjvq7NQ0ibocPG2bczSEcwkDzy4cnnTJvOV0HBFdbdwZsWPO8rA1HZPOAWgr3nM
+	CzVZc1lYhKJ06KtvOh88s2ufq+MGypYx4UQyV1ol3D+ZK+aEtxCEsKh5KUpRPQ9HJRGblreq3z91I
+	sk20u2+Raw7hpOxeQBVwZCWcdcMMkQYih5HdS7FOL2PRF/CdXx0aA5ip5F/QxAEISJuELlulQh+c2
+	ruhT6e3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4LA8-00HOO9-1L;
-	Wed, 31 May 2023 12:42:48 +0000
-Received: from mail-am7eur03on2062a.outbound.protection.outlook.com ([2a01:111:f400:7eaf::62a] helo=EUR03-AM7-obe.outbound.protection.outlook.com)
+	id 1q4LFj-00HPOo-2Z;
+	Wed, 31 May 2023 12:48:35 +0000
+Received: from mail-io1-f54.google.com ([209.85.166.54])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4LA5-00HOLp-1E;
-	Wed, 31 May 2023 12:42:47 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ZOXy/kgSa0EBMdOI6fo93ybnNqHyusQGhzSzxNp8e79R5zDxVCYNQm5ZvtW/v3wMzABi4uqpRpac9VVjeMZNkMIHIUXYlBAaaNkKMpjYaBSsapkYeB+7vkOp66IPnEv2AOXQ6C7XxOEjTc8BuBY4+a1F1E6INYK9VbQ0iJ6lc6uHuAdu558bkIseCSZhUv5a5zGKZOfZ7FccVojsRK4qDWpCIFlpKibMo+RPZcz2jJuQcAKa8Knaadr1NjHFJcCJj/VCnjfmsXA9ari/J7K9agoW8FhL9PYZ1jXMLuDYERDv/LbFB+x7rLuOKpKPG+t8hoiQISpZ9ap72lfGEj/a+A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ueuxam54SkPyIyXm6rvG6SVCjuZma0eopc5+OBMBUAQ=;
- b=ZLr3CKDb8y//R2X+tzwqCm0mz849car2uloUgomdsTL6hFCX4UtrXqePe43DJgxcCzPh516x1qB26gkH/YOZFWaZqrxMQR8TI0jRTfVneapLHSnYSJOSs9Mf4G05/F+YQrE/U6X89SD55v9jhV989xc6wvBD2PbQnZwMSfQi8zAmOmCydaxdAp+j2phqnZl7tF3pcLmYtPLV8SVLICqgSf5DOtDeZlRQ0fQEf9Co2bC0y+joZdkuj5Ljm5tFEcQcD9LSOidpLTL+c1i3xM0xx7tcgFlreOV6SVL9IRAaKre0b+bY5UBgJqMSGBzKgdXUSL/T7bbuR1W6MbUmMD4qZw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=suse.com; dmarc=pass action=none header.from=suse.com;
- dkim=pass header.d=suse.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ueuxam54SkPyIyXm6rvG6SVCjuZma0eopc5+OBMBUAQ=;
- b=vyN/IV/FCh9NLS7U+YISqjA/x9AgIR578xdDDUpdEoDfyJXyFwrW3W3lC7H+QozYeT61HQtHU3obqQ+UZOk+EbU5pDbzur27NsMcv1FNGE5xr+F/OHNeH+yS+/q24vB7Q+WQBvVJeCqmw4uKaFdB9AEWh2ZngGQSetfyO7EMKkfV5KJXujnSaoaSqAdGWf/o3ocDAt0wGfL/XiTc0lLwIo/lcFsp8aN+DB4umW4kUfEGJbX1AHiyK2bBgNjZEUw7O6faribqt92ogyaJL21KZrlCe/mUTI9ftwndDcX9A+lr+5USF/ryvtD9oqn7vcu9R4tvFwkFjobuqmO1qxkGYw==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=suse.com;
-Received: from VE1PR04MB6432.eurprd04.prod.outlook.com (2603:10a6:803:122::21)
- by PA4PR04MB7904.eurprd04.prod.outlook.com (2603:10a6:102:c3::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6455.22; Wed, 31 May
- 2023 12:42:34 +0000
-Received: from VE1PR04MB6432.eurprd04.prod.outlook.com
- ([fe80::67c2:e2af:275c:6b89]) by VE1PR04MB6432.eurprd04.prod.outlook.com
- ([fe80::67c2:e2af:275c:6b89%4]) with mapi id 15.20.6455.020; Wed, 31 May 2023
- 12:42:34 +0000
-Message-ID: <31f25021-aaf5-a6ca-049d-bb47f62936b4@suse.com>
-Date: Wed, 31 May 2023 14:42:31 +0200
+	id 1q4LFg-00HPNo-2M;
+	Wed, 31 May 2023 12:48:33 +0000
+Received: by mail-io1-f54.google.com with SMTP id ca18e2360f4ac-773793070a4so149872839f.2;
+        Wed, 31 May 2023 05:48:29 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1685537309; x=1688129309;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=xqGnCPChL19fXfFgwza4KZGrYtNeSBi3Wbd7oMZ8AFA=;
+        b=EjxOYoYkNgSccCqOQZEwPEeFrhUX5ydu2Y5IW2c932gTuRAx6k2ySXVHPk5dHJpZac
+         xEEPsoMMoZSFiqpVvpvFFYV4tXMuoXKLKfNrwdyiHVRmiS1o3bnPALN3fZ4lIbhvQazk
+         tGYoXqEdax8tnjSB4+osjpsoZ/0bbjIZz01LWn/HjW9UxnjdLLjs2py7dKWvLMp72uEP
+         FXwozMbHvV/q4OyVRCpdmsXJAFquTdxEqtyae4GDmFekhK1tEjcFgNxibbXj9qDTxMCf
+         MmxGSe8o6DMgsMCCoR7syRmlnM36yHEXJFbKI9Rs3Dw35SRksDNzezOp6rrwvsTyeZx1
+         7xgg==
+X-Gm-Message-State: AC+VfDzOMYnZaLqVnYPb0W+XBGoIITA5mVmwYH6Y8eUguTL1Z74hd0nm
+	FN+qT3OmWKDOtdZj/akxRGQmqj8vHuk=
+X-Google-Smtp-Source: ACHHUZ4R4uX8mr/AZ2HXFs3fevTI77W0Xf8YIKy1DNJDCRdolpMdohmafLKGMFXSOzxIB2JLuXEyKQ==
+X-Received: by 2002:a6b:d914:0:b0:769:a826:2818 with SMTP id r20-20020a6bd914000000b00769a8262818mr4531978ioc.16.1685537308401;
+        Wed, 31 May 2023 05:48:28 -0700 (PDT)
+Received: from [192.168.51.14] ([98.51.102.78])
+        by smtp.gmail.com with ESMTPSA id c12-20020aa7880c000000b00646ebc77b1fsm3295119pfo.75.2023.05.31.05.48.27
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 31 May 2023 05:48:28 -0700 (PDT)
+Message-ID: <ec9c378c-fedd-5a90-bb12-085395e0d22e@acm.org>
+Date: Wed, 31 May 2023 05:48:27 -0700
+MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.0
-Subject: Re: [PATCH 1/2] dt-bindings: thermal: mediatek: Move auxdac binding
- to yaml
-Content-Language: en-US, ca-ES, es-ES
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- matthias.bgg@kernel.org, rafael@kernel.org,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org, Amit Kucheria <amitk@kernel.org>,
- linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Zhang Rui <rui.zhang@intel.com>,
- linux-arm-kernel@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>
-References: <20230530150413.12918-1-matthias.bgg@kernel.org>
- <80108a00-4416-a419-e45a-e5e4c1f111a8@linaro.org>
-From: Matthias Brugger <mbrugger@suse.com>
-In-Reply-To: <80108a00-4416-a419-e45a-e5e4c1f111a8@linaro.org>
+Subject: Re: [PATCH v2 1/3] scsi: ufs: core: Introduce mcq ops to config cqid
+Content-Language: en-US
+To: Stanley Chu <chu.stanley@gmail.com>
+Cc: Po-Wen Kao <powen.kao@mediatek.com>, linux-scsi@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Alim Akhtar <alim.akhtar@samsung.com>,
+ Avri Altman <avri.altman@wdc.com>, "James E.J. Bottomley"
+ <jejb@linux.ibm.com>, "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ wsd_upstream@mediatek.com, peter.wang@mediatek.com,
+ stanley.chu@mediatek.com, alice.chao@mediatek.com, naomi.chu@mediatek.com,
+ chun-hung.wu@mediatek.com, cc.chou@mediatek.com, eddie.huang@mediatek.com
+References: <20230530023227.16653-1-powen.kao@mediatek.com>
+ <20230530023227.16653-2-powen.kao@mediatek.com>
+ <1c182151-6e8c-5068-b38c-f8e842e6e13b@acm.org>
+ <CAGaU9a9TsoaUtoMX8cNmAhfBnCddRtWYEG8ACdRNJfri+sdasg@mail.gmail.com>
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <CAGaU9a9TsoaUtoMX8cNmAhfBnCddRtWYEG8ACdRNJfri+sdasg@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: MR2P264CA0063.FRAP264.PROD.OUTLOOK.COM
- (2603:10a6:500:31::27) To VE1PR04MB6432.eurprd04.prod.outlook.com
- (2603:10a6:803:122::21)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: VE1PR04MB6432:EE_|PA4PR04MB7904:EE_
-X-MS-Office365-Filtering-Correlation-Id: 4c0a95b5-ec23-4f20-04f4-08db61d481e4
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: Y5jm5SDFwmo/LKOz8KraZ/5AZKCZ0VovDUQSIoqPJqt4U/5q7Ts8MxC2ZeHsMAuxE/SiJwRFLFe8ScRz7AgZNKaJg2VlK5oR037PujJRp65obHJGSz9EBjCBYQmniDJF3EH7gQqAMMOqsBByGYa1zrBBqb6+qUb0MfaQSUldo6JIQhQRMxKTmxF72AcBJMnxfbl6yv80FV18IgbU4tlPo7iX1ycoO6F3TYYH9K1/8g1QU521a3X0BCJV36UhC1WVFag7MDp1FIfi/2OmLC34/SqyV2y7bIbYH02S9PvlU9yqnlL1FeASzd3k5G/ZIG58Uauh4RTfn6E8yswF/AG6AVNF5Nv99tBZFi0J1uj8yqgTnshQzr3B002637I+t+R5WXoSyAter9vkqdf5AQIfCVh0PvYpY+mia/gr0p5XK8TB0fdskjlTKcuqnHLLtfZ1aDmGX18HqCNap9tnw4oJavElDa63xkgLw/GyaKELNLN8zfZZkAUxJ4c9bWcjuUUozFTCqpp5KkSBotjiU9FPguhX/R9gxM5iCobTbGxGn+wnsUTSLcn13T4gkM2ucFk6Uwnn/7MlQYs0VnuWWJl9RedPkHjyo7FqlwI8lM5KkFiCpixt9S3Wp1odpEI/yt0Q
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:VE1PR04MB6432.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(346002)(396003)(366004)(136003)(39860400002)(376002)(451199021)(7416002)(66476007)(66556008)(66946007)(4326008)(31686004)(316002)(41300700001)(2906002)(5660300002)(8676002)(8936002)(110136005)(54906003)(6486002)(966005)(6666004)(478600001)(26005)(6506007)(6512007)(53546011)(186003)(36756003)(83380400001)(2616005)(86362001)(31696002)(38100700002)(45980500001)(43740500002);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?MGVxTzZGeHU3ZXlsSEZONGIwMXo3M1Q2ejNUbElCeEdIS1lZRFVZOVovNVVT?=
- =?utf-8?B?bzBabGRsM0pLTzNEclNXKzFMM212cEcyYUxnME9ORjIzOTdpc1NkVHF3dWcy?=
- =?utf-8?B?aDZQUFF3d0NPZjNvR0hjK0ZDQUg1aERPVHZpOXc0dnlWUU9laEVzK2pheEVV?=
- =?utf-8?B?TlVrekIxV2xIUUZBeTZtNHU5dm5zYWVUZjBQK3lDZGVsc2ZyREg2UFM1U3Vj?=
- =?utf-8?B?TDUwVWgwVnpqREpZcFRwdEg0emhrZCtTODlvZkplelJ2MEtLVnZXQlZWNGJV?=
- =?utf-8?B?UkN0U1dIZXhWdDI0eXlFSGZxNEo4NUgzMWFlRmdEcklIYXFTbG9LRCtVMkE1?=
- =?utf-8?B?MDRMSFA4NGVzRmlXazh3eU1pTjRaR0ZFOWtlaHZMeXE5MzlTYmdRSHdmRUo2?=
- =?utf-8?B?YjZuRm5iWW1uNDZGUnlscUZob0s2QUdXUzVybU1pem1VWlllWk80Uy9LYjJB?=
- =?utf-8?B?WEQ4MGpUYldUTUtPRWVHdHhBNUN5OGJ4M25jeVEwemMwSm9QK0RGckYyTzR4?=
- =?utf-8?B?bC9rbGlZbEJvMlR0Q053ZXdXVHYyNGpvMW1ra2VCWkFZZjB1NXl0TXBMQThU?=
- =?utf-8?B?QnhMYjNGb0dDazZSNVB4bkV1S09PNXlkamdlaG1LMHBxMXRhRkZiZGFtU3Qx?=
- =?utf-8?B?RXNZVDRtVXIxWkVacHlENE9IcDVsd1NCNUlQK3ZYRHRQelk3TTRnU3Ayei9u?=
- =?utf-8?B?eFlHZnhIMU1PWGZ0RXJsaUxhbGYrZUllY1RnVG0xa01Jdyt1ZjhqNHlQL0p6?=
- =?utf-8?B?cHowVEVnTjVGZDluQ0YweFVQcmpOcnhzWmo4Tm8xTnlESlRPaXBicUpGRkZZ?=
- =?utf-8?B?MUR6c2c1T0ZNWEtVV2o0TnNNaEJXNnAydXA5eVZ0UWJQSXhCNmFSeFhhdTJx?=
- =?utf-8?B?N1lzYkR3QTcvamNFK1NnUmJ5OSsxdEJlQWdobUJ5Y2YyZW1mbjhvWkpic0Vn?=
- =?utf-8?B?MnhUQ3FyUk5VbEtQdEhMQU1ldWlLZmV0NUV6UmRVWEN0QmJ5U1ZaanR0bGpK?=
- =?utf-8?B?M0Y1R3Z5SkE5YVBJRGtlUWdNemJmNjV1ZDNFZXg1VFNzWVhtRi9LODNPMDlM?=
- =?utf-8?B?bndaT1NOMTNuelQySFpveFRxVlByQ0ozVTRteW9YQm14R0VFMFB4SG5FQ2Zn?=
- =?utf-8?B?SndmZTc1TVJra1R3VG1JNjZLM0dVSWdZVzNWOE1mQVdCSG1oQzQwUTk5Mk9w?=
- =?utf-8?B?Z0hjb01XMHIyRGk1RklYM3NjUmlkRTZObzlSVEd4S0wxRjQvY21TUmxYNzA1?=
- =?utf-8?B?MFM5TFl1dmJLNytiaUNuc3l3d0ZDbExEcnNnYmJ6RzhBNWZJV1htYjBiRkZu?=
- =?utf-8?B?bVFxdE5aZ1pXNldBc2lQQVZCb2FlMk1HUThIUlB0S01SZXBpVmpEZFYydnMy?=
- =?utf-8?B?aTU3ZXA3K2x6Q2lpOVcrR0p4d3hINjZRWTIyU0EvZUg4STdqcWFFc0FTZGFM?=
- =?utf-8?B?cHFhcmQwK0tJeWRFbDBpR0RXc21OODV0M0Z2b2hZWXpGNlBHbDhCdEd2c2pk?=
- =?utf-8?B?VlhCRkNwVUhPbE5YaSs5NFVjb1ZkdmFQRVN6NzN1SmhlbDNWNGlZeFlKcFdl?=
- =?utf-8?B?ajlCM2gwWi9CUzA5R01jWnRqN1ZWUjc5R0dMWFBsOUNjQktkd0ZrL1FndWF5?=
- =?utf-8?B?SmZzbTYwRkFadFF0VkhmcmM2b2JCL1BCeEtzcnNKbDRJV2loZytES09JeGhK?=
- =?utf-8?B?Q2xkYk1IWFdYV2Q3YTZwV1pqNHdYOTVvQ2tSZFNWN3laQXVZNitQcjB1WFQz?=
- =?utf-8?B?R2txU1o1ZFBTbkhqbURBazBLTWMwakJxQkJQQ3kzU2dXREJFNFpLSXBzL1Bi?=
- =?utf-8?B?RSsxc29XaTRNSFRzM21xVDRsY0Z4cWEzM0JXb1gvam5BcXJ1UERDQmwrSWRv?=
- =?utf-8?B?VkZEVUhOTFVkT3Evc3N3MG9ISDJsV2FzaklnTkdnNEpUY3N4ZytFMklkNkNr?=
- =?utf-8?B?bjlPelg4QlJaYTlCeVlwWGFuUnRxcXNuSGwyNjRnOU9pMFIvMXJFOEZMVmZs?=
- =?utf-8?B?TlM3MWVvQUg3VkFDaHdab29qK01FbjZzNU1tY3NBNmI4cHphNmFVWVA0cjh5?=
- =?utf-8?B?VlJoZ2Nja1NKQU02Tlp5ODdJSFZGODFTenlDbDlGUzRYOFltQWJpK0daQnJh?=
- =?utf-8?Q?T5eIdMfxxWoH48ztAQYpjUjIZ?=
-X-OriginatorOrg: suse.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4c0a95b5-ec23-4f20-04f4-08db61d481e4
-X-MS-Exchange-CrossTenant-AuthSource: VE1PR04MB6432.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 May 2023 12:42:34.5282
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: f7a17af6-1c5c-4a36-aa8b-f5be247aa4ba
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: KdD/ALnCAFE+YDgs/BYdm67xIYKP1DlO0ZfYMv7c/lQIAOTf5vNYzSiMgHHc4eFNT2rqGRecNSCvlL2ZmjYQew==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PA4PR04MB7904
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230531_054245_611928_345CDFD8 
-X-CRM114-Status: GOOD (  23.98  )
+X-CRM114-CacheID: sfid-20230531_054832_767751_FCAF11B3 
+X-CRM114-Status: GOOD (  12.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,216 +92,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 5/30/23 18:54, Stanley Chu wrote:
+> In addition, some benchmark data shows that the performance can be
+> improved by using fewer CQs to aggregate the interrupt handling of
+> completion requests.
 
+What has been measured? IOPS only or both IOPS and latency?
 
-On 31/05/2023 09:57, Krzysztof Kozlowski wrote:
-> On 30/05/2023 17:04, matthias.bgg@kernel.org wrote:
->> From: Matthias Brugger <matthias.bgg@gmail.com>
->>
->> Convert the older binding to yaml syntax.
->>
->> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
->> ---
->>
->>   .../bindings/thermal/mediatek,thermal.yaml    | 168 ++++++++++++++++++
->>   .../bindings/thermal/mediatek-thermal.txt     |  52 ------
->>   2 files changed, 168 insertions(+), 52 deletions(-)
->>   create mode 100644 Documentation/devicetree/bindings/thermal/mediatek,thermal.yaml
->>   delete mode 100644 Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
->>
->> diff --git a/Documentation/devicetree/bindings/thermal/mediatek,thermal.yaml b/Documentation/devicetree/bindings/thermal/mediatek,thermal.yaml
->> new file mode 100644
->> index 000000000000..7aa2bdc43567
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/thermal/mediatek,thermal.yaml
->> @@ -0,0 +1,168 @@
->> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
->> +%YAML 1.2
->> +---
->> +$id: http://devicetree.org/schemas/thermal/mediatek,thermal.yaml#
->> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->> +
->> +title: MediaTek Thermal Sensor
->> +
->> +maintainers:
->> +  - Matthias Brugger <matthias.bgg@gmail.com>
->> +
->> +description: |
->> +  The MediaTek thermal controller measures the on-SoC temperatures.
->> +  This device does not have its own ADC, instead it directly controls
->> +  the AUXADC via AHB bus accesses. For this reason this device needs
->> +  phandles to the AUXADC. Also it controls a mux in the apmixedsys
->> +  register space via AHB bus accesses, so a phandle to the APMIXEDSYS
->> +  is also needed.
->> +
->> +properties:
->> +  compatible:
->> +    oneOf:
->> +      - enum:
->> +          - mediatek,mt2701-thermal
->> +          - mediatek,mt2712-thermal
->> +          - mediatek,mt7622-thermal
->> +          - mediatek,mt7986-thermal
->> +          - mediatek,mt8173-thermal
->> +          - mediatek,mt8183-thermal
->> +          - mediatek,mt8365-thermal
->> +      - items:
->> +          - const: mediatek,mt7981-thermal
->> +          - const: mediatek,mt7986-thermal
->> +      - items:
->> +          - const: mediatek,mt8516-thermal
->> +          - const: mediatek,mt2701-thermal
->> +
->> +  reg:
->> +    maxItems: 1
->> +
->> +  interrupts:
->> +    maxItems: 1
->> +
->> +  clocks:
->> +    minItems: 2
-> 
-> maxItems instead
-> 
->> +
->> +  clock-names:
->> +    items:
->> +      - const: therm
->> +      - const: auxadc
->> +
->> +  resets:
->> +    maxItems: 1
->> +    description: Reference to the reset controller controlling the thermal controller.
-> 
-> You can drop description, it's obvious.
-> 
->> +
->> +  reset-names:
->> +    items:
->> +      - const: therm
->> +
->> +  nvmem-cells:
->> +    items:
->> +      - description: Calibration eFuse data. If unspecified default values are used.
->> +
->> +  nvmem-cell-names:
->> +    items:
->> +      - const: calibration-data
->> +
->> +  mediatek,auxadc:
->> +    $ref: /schemas/types.yaml#/definitions/phandle
->> +    description:
->> +      A phandle to the AUXADC which the thermal controller uses.
->> +
->> +  mediatek,apmixedsys:
->> +    $ref: /schemas/types.yaml#/definitions/phandle
->> +    description:
->> +      A phandle to the APMIXEDSYS controller.
->> +
->> +  "#thermal-sensor-cells":
->> +    const: 1
->> +
->> +  bank0-supply:
->> +    description: Regulator node supplying voltage to the first bank
->> +
->> +  bank1-supply:
->> +    description: Regulator node supplying voltage to the second bank
-> 
-> These were not present before. Mention this in commit msg. Also drop "node".
-> 
->> +
->> +
-> 
-> Just one blank line.
-> 
->> +required:
->> +  - compatible
->> +  - reg
->> +  - interrupts
->> +  - clocks
->> +  - mediatek,auxadc
->> +  - mediatek,apmixedsys
->> +  - "#thermal-sensor-cells"
->> +
->> +additionalProperties: false
->> +
->> +examples:
->> +  - |
->> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
->> +    #include <dt-bindings/clock/mt8173-clk.h>
->> +    #include <dt-bindings/reset/mt8173-resets.h>
->> +
->> +    soc {
->> +      #address-cells = <2>;
->> +      #size-cells = <2>;
->> +
->> +      auxadc: auxadc@11001000 {
->> +        compatible = "mediatek,mt8173-auxadc";
->> +        reg = <0 0x11001000 0 0x1000>;
->> +        clocks = <&pericfg CLK_PERI_AUXADC>;
->> +        clock-names = "main";
->> +        #io-channel-cells = <1>;
->> +      };
->> +
->> +      apmixedsys: clock-controller@10209000 {
->> +        compatible = "mediatek,mt8173-apmixedsys";
->> +        reg = <0 0x10209000 0 0x1000>;
->> +        #clock-cells = <1>;
->> +      };
-> 
-> Drop both examples, not really relevant to thermal. It grows the example
-> with code already documented somewhere else.
-> 
+How big is the difference? A few percent or more?
 
-auxadc and apmixedsys are no examples. They are referenced by the thermal node 
-as described in the binding. Without them the example won't be complete.
+For which number of SQs and which number of CQs has performance data 
+been measured?
 
-Regards,
-Matthias
+Would the following work instead of introducing a new vop?
+- Introduce a new capability flag, e.g. UFSHCD_CAP_SINGLE_CQ.
+- Set that flag from inside ufs_mtk_init().
+- Modify the UFS core driver such that the number of completion queues
+   depends on the UFSHCD_CAP_SINGLE_CQ flag.
 
->> +
->> +      thermal: thermal@1100b000 {
->> +        #thermal-sensor-cells = <1>;
->> +        compatible = "mediatek,mt8173-thermal";
->> +        reg = <0 0x1100b000 0 0x1000>;
->> +        interrupts = <0 70 IRQ_TYPE_LEVEL_LOW>;
->> +        clocks = <&pericfg CLK_PERI_THERM>, <&pericfg CLK_PERI_AUXADC>;
->> +        clock-names = "therm", "auxadc";
->> +        resets = <&pericfg MT8173_PERI_THERM_SW_RST>;
->> +        reset-names = "therm";
->> +        mediatek,auxadc = <&auxadc>;
->> +        mediatek,apmixedsys = <&apmixedsys>;
->> +        nvmem-cells = <&thermal_calibration_data>;
->> +        nvmem-cell-names = "calibration-data";
->> +      };
->> +
->> +      thermal-zones {
->> +        cpu_thermal: cpu-thermal {
->> +          polling-delay-passive = <1000>;
->> +          polling-delay = <1000>;
->> +
->> +          thermal-sensors = <&thermal 0>;
->> +          sustainable-power = <1500>;
->> +
->> +          trips {
->> +            threshold: trip-point0 {
->> +              temperature = <68000>;
->> +              hysteresis = <2000>;
->> +              type = "passive";
->> +            };
->> +
->> +            target: trip-point1 {
->> +              temperature = <85000>;
->> +              hysteresis = <2000>;
->> +              type = "passive";
->> +            };
->> +
->> +            cpu_crit: cpu_crit0 {
-> 
-> No underscores in node names.
-> 
-> 
-> Best regards,
-> Krzysztof
-> 
+> Therefore, we would like to introduce a vop to allow the host to
+> configure it accordingly.
+
+We do not accept new vops upstream without a user. Where is the 
+implementation of the new .config_cqid() callback?
+
+Thanks,
+
+Bart.
+
 
