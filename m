@@ -4,52 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1130BC7EE2D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 May 2023 16:11:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 001C2C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 May 2023 23:48:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zBq3QXD/QVD7c5dWiiPwMUvtu1mioKJKBaDEMsW/U/I=; b=ZLEDG2cFqqRlpZ39ESaccNkDwj
-	n2dP2qaQHbasMrogIedGlmDzJ6ZYnYrCAU0gA2RMAYhwsie9MTLE7ZKQpgUjebCCBdc2/4Jx7ACrA
-	kEGGQ5ozA0mz92Hy5nw8gkbqPnusytR+VgjRlWTzyavPTbKO0mgrSDQIfDwjCgE/9QuQ7c+omyziY
-	CwdldxaiMhTzj+D5winMtaTuZKcwl2WNAHn5vMWppCTqQy0kRkjs6ue5uoCHh/akTQKoRvd0Zze3u
-	XrUNWGJjE965E2HzqxfPi2rp+d3sCffSQ73tb8qT71yqcklUT8wga80xlxF8elPZAJugKwTS2Ms2P
-	ScwNIPOw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ssi9hji3ougqZcnJfZaYXLr+1zSSxDjh3rVcPrdEtNo=; b=rx1XTybAe86IQxdU+Z8da3Bswd
+	pOVjyB9GQ2E839rN6tJkt24DgpwhI8wiKDxhpUSr8Cty9K/E+PZ3yqSKBIcMq0v9EH1/k9wo2zArY
+	ZBQTkYiZ6F/BgYKewIL2enYpSnMCUHsrlCjJ7R9MNYQPjnfMnS9J6XAcAt2+Jm0g3dNzLxMi9KF5z
+	j4+s8ZxS9sNLHmBQe5IxHZiobwe0kkwczEyvIT4mRsT6WK1OqqvfnAv5ABV9cIhxKhLp0il/buBDI
+	QUfWspV5jSg5PDAad4mDoAdxzMKD9OnV8dVSVZGMuodkLfRgyAbXx7ACnGDoQtw2c+V4j1GJkKyqI
+	6safb6pQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4OQB-000QHe-1O;
-	Wed, 31 May 2023 16:11:35 +0000
-Received: from pidgin.makrotopia.org ([185.142.180.65])
+	id 1q4VYA-001Ugd-2X;
+	Wed, 31 May 2023 23:48:18 +0000
+Received: from mail-il1-x12b.google.com ([2607:f8b0:4864:20::12b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4OQ9-000QGt-0k;
-	Wed, 31 May 2023 16:11:34 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1q4OQ8-0001Nc-0H;
-	Wed, 31 May 2023 16:11:32 +0000
-Date: Wed, 31 May 2023 17:11:17 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: linux-i2c@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Qii Wang <qii.wang@mediatek.com>, Sam Shih <sam.shih@mediatek.com>
-Cc: =?utf-8?B?6YOt5bCP5qGl?= <joe@gainstrong.cn>
-Subject: [PATCH 2/2] i2c: mt65xx: add additional clocks
-Message-ID: <6632ce37e260f5f5cbdd0c6a5da8fe9679352aee.1685549360.git.daniel@makrotopia.org>
-References: <5f15212060f82fb94239174c4e4b46c151645fe8.1685549360.git.daniel@makrotopia.org>
+	id 1q4VY7-001UfC-1r
+	for linux-mediatek@lists.infradead.org;
+	Wed, 31 May 2023 23:48:16 +0000
+Received: by mail-il1-x12b.google.com with SMTP id e9e14a558f8ab-33b3cfb9495so802235ab.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 31 May 2023 16:48:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1685576890; x=1688168890;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ssi9hji3ougqZcnJfZaYXLr+1zSSxDjh3rVcPrdEtNo=;
+        b=K9vtiLjauLAheH/706FVQchuFhyZnP5Lrpl3x/r/LZcYoWfDbldHhY6Pg0wiMMk34L
+         FiVrxU1jrZsvA7ha/w7YHVnx6HTokPSvdzsfrMud0L8sX1SK/5Hp03BJU/trjdNGhSop
+         PVg4MEQrq4sWRneZnpmf1yFpKHEHWQg7aCf8g=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1685576890; x=1688168890;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=ssi9hji3ougqZcnJfZaYXLr+1zSSxDjh3rVcPrdEtNo=;
+        b=j18pg5XdaKW08VkRnvWrgm+1SnmByHrZ7afOzCcljviKj3oj3GuLvLbEXQ0pwMHno1
+         Y5/89BoNtjPL+mcd9sOLZLJyAgW5GwBWi+RJxGyrxjRtzTdR7KB4/UQHlyfQVsZ/Ye6l
+         iQnu2qUBAYQsG2gqDNHnuUyC9c+F+OKeFCwU8nmcDpFGqt5DLz/yjo7DQCwBJtBBgi3B
+         mDxFvt8Lm+JHiQoWXDUCIxKaodpxYukEmHk3dfUa5/TNvmrAUiiqOoxVsi9QzFBoWqKq
+         aSNlNhu/mLxzX40hqXXqWYBZLIStKcxpIjaNm+bL6LP9/QHdLrKzwb2oXeebLjfciTdw
+         6DWw==
+X-Gm-Message-State: AC+VfDwUFKD1Hdb4gZtk0Pj7nTFoLYpJmN14kFhXeqA2ATieOMqhgHYp
+	5R2OT0PmJ18JhWerk+ujCMVjCXJQ5X5MEpQrqyU=
+X-Google-Smtp-Source: ACHHUZ7OWzp9QPIzzjprYw0VmDcmQxzdexsnJ9MCdTJY0GCl+WW5c1vUe4xwJlAQ8f6TeCoYaOgCaw==
+X-Received: by 2002:a92:d4c7:0:b0:33c:68aa:7c3b with SMTP id o7-20020a92d4c7000000b0033c68aa7c3bmr2388119ilm.25.1685576890024;
+        Wed, 31 May 2023 16:48:10 -0700 (PDT)
+Received: from mail-il1-f178.google.com (mail-il1-f178.google.com. [209.85.166.178])
+        by smtp.gmail.com with ESMTPSA id p15-20020a056e0206cf00b0033bea7559ffsm753126ils.53.2023.05.31.16.48.08
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 31 May 2023 16:48:09 -0700 (PDT)
+Received: by mail-il1-f178.google.com with SMTP id e9e14a558f8ab-33baee0235cso31685ab.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 31 May 2023 16:48:08 -0700 (PDT)
+X-Received: by 2002:a05:6e02:1786:b0:33b:3bf4:9f42 with SMTP id
+ y6-20020a056e02178600b0033b3bf49f42mr32601ilu.19.1685576888336; Wed, 31 May
+ 2023 16:48:08 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <5f15212060f82fb94239174c4e4b46c151645fe8.1685549360.git.daniel@makrotopia.org>
+References: <20230530072514.22001-1-trevor.wu@mediatek.com> <20230530072514.22001-2-trevor.wu@mediatek.com>
+In-Reply-To: <20230530072514.22001-2-trevor.wu@mediatek.com>
+From: Doug Anderson <dianders@chromium.org>
+Date: Wed, 31 May 2023 16:47:56 -0700
+X-Gmail-Original-Message-ID: <CAD=FV=X1JURLwZHraNwSMT7vwLNRNw7h0MmpbeWnr1yht6-3VA@mail.gmail.com>
+Message-ID: <CAD=FV=X1JURLwZHraNwSMT7vwLNRNw7h0MmpbeWnr1yht6-3VA@mail.gmail.com>
+Subject: Re: [PATCH 1/2] ASoC: mediatek: mt8188: fix use-after-free in driver
+ remove path
+To: Trevor Wu <trevor.wu@mediatek.com>
+Cc: broonie@kernel.org, lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, 
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+	alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230531_091133_270103_367BF2F3 
-X-CRM114-Status: GOOD (  14.28  )
+X-CRM114-CacheID: sfid-20230531_164815_614561_7B244B94 
+X-CRM114-Status: GOOD (  13.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,60 +98,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On MT7981 additional clocks are required when accessing I2C registers.
-Add MCK and PCK optional clocks to i2c-mt65xx driver so we don't have
-to always have them enabled, but really only if I2C is used.
+Hi,
 
-Fixes: f82fd1845d309 ("i2c: mediatek: add support for MT7981 SoC")
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
- drivers/i2c/busses/i2c-mt65xx.c | 14 +++++++++++++-
- 1 file changed, 13 insertions(+), 1 deletion(-)
+On Tue, May 30, 2023 at 12:25=E2=80=AFAM Trevor Wu <trevor.wu@mediatek.com>=
+ wrote:
+>
+> diff --git a/sound/soc/mediatek/mt8188/mt8188-audsys-clk.c b/sound/soc/me=
+diatek/mt8188/mt8188-audsys-clk.c
+> index be1c53bf4729..05d6f9d78e10 100644
+> --- a/sound/soc/mediatek/mt8188/mt8188-audsys-clk.c
+> +++ b/sound/soc/mediatek/mt8188/mt8188-audsys-clk.c
+> @@ -138,6 +138,29 @@ static const struct afe_gate aud_clks[CLK_AUD_NR_CLK=
+] =3D {
+>         GATE_AUD6(CLK_AUD_GASRC11, "aud_gasrc11", "top_asm_h", 11),
+>  };
+>
+> +static void mt8188_audsys_clk_unregister(void *data)
+> +{
+> +       struct mtk_base_afe *afe =3D (struct mtk_base_afe *)data;
 
-diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-index a43c4d77739ab..cd28cbec2b96d 100644
---- a/drivers/i2c/busses/i2c-mt65xx.c
-+++ b/drivers/i2c/busses/i2c-mt65xx.c
-@@ -93,6 +93,8 @@
-  * @I2C_MT65XX_CLK_DMA:  DMA clock for i2c via DMA
-  * @I2C_MT65XX_CLK_PMIC: PMIC clock for i2c from PMIC
-  * @I2C_MT65XX_CLK_ARB:  Arbitrator clock for i2c
-+ * @I2C_MT65XX_CLK_MCK:  MCK clock for i2c
-+ * @I2C_MT65XX_CLK_PCK:  PCK clock for i2c
-  * @I2C_MT65XX_CLK_MAX:  Number of supported clocks
-  */
- enum i2c_mt65xx_clks {
-@@ -100,11 +102,13 @@ enum i2c_mt65xx_clks {
- 	I2C_MT65XX_CLK_DMA,
- 	I2C_MT65XX_CLK_PMIC,
- 	I2C_MT65XX_CLK_ARB,
-+	I2C_MT65XX_CLK_MCK,
-+	I2C_MT65XX_CLK_PCK,
- 	I2C_MT65XX_CLK_MAX
- };
- 
- static const char * const i2c_mt65xx_clk_ids[I2C_MT65XX_CLK_MAX] = {
--	"main", "dma", "pmic", "arb"
-+	"main", "dma", "pmic", "arb", "mck", "pck"
- };
- 
- enum DMA_REGS_OFFSET {
-@@ -1444,6 +1448,14 @@ static int mtk_i2c_probe(struct platform_device *pdev)
- 	if (IS_ERR(i2c->clocks[I2C_MT65XX_CLK_ARB].clk))
- 		return PTR_ERR(i2c->clocks[I2C_MT65XX_CLK_ARB].clk);
- 
-+	i2c->clocks[I2C_MT65XX_CLK_MCK].clk = devm_clk_get_optional(&pdev->dev, "mck");
-+	if (IS_ERR(i2c->clocks[I2C_MT65XX_CLK_MCK].clk))
-+		return PTR_ERR(i2c->clocks[I2C_MT65XX_CLK_MCK].clk);
-+
-+	i2c->clocks[I2C_MT65XX_CLK_PCK].clk = devm_clk_get_optional(&pdev->dev, "pck");
-+	if (IS_ERR(i2c->clocks[I2C_MT65XX_CLK_PCK].clk))
-+		return PTR_ERR(i2c->clocks[I2C_MT65XX_CLK_PCK].clk);
-+
- 	if (i2c->have_pmic) {
- 		i2c->clocks[I2C_MT65XX_CLK_PMIC].clk = devm_clk_get(&pdev->dev, "pmic");
- 		if (IS_ERR(i2c->clocks[I2C_MT65XX_CLK_PMIC].clk)) {
--- 
-2.40.1
+The above cast is unnecessary since the compiler lets you assign from
+a "void *" to another pointer without a cast. Unnecessary casts are
+considered harmful because they suspend the compiler's ability to do
+type checking. Other than that, this looks good. Sorry for not
+noticing that the same problem affected more than just the driver I
+fixed previously.
 
+Reviewed-by: Douglas Anderson <dianders@chromium.org>
 
