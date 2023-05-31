@@ -4,67 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03C76C7EE2F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 May 2023 08:03:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2D3BC77B7A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 May 2023 08:04:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GX29yIMfe58ZkjlkMWB9IVaLZdXhepROXufGzM+1qKg=; b=mDWwfSYBP4ocbI/NmDtbYj4IHu
-	Ov37SnikmB6+zQDiBQW8XPV8Ek3Se8COfMTKBuE6jRnwfBkUSaOjYtoCZIrRZXaLHmdj0bIDb84Bz
-	NKxMwZcVMc0tmggTKU1Dq47u4urXLCjydbcrPNvTYtPMFgDUZ5XIOjF2ibU5lJfUtTuB4uhdD28Je
-	afVBrF3y+J0intKcmexoJCGtvJMYzV1x/I9HT25ZhjmLviwHL004P/xm/7OvxuHDfNnVsmquE62tf
-	kq/UAprKzpJNSvDPhpCVtVeUJfvT+i4HEooelCor9F0aUrN305Be3vzgXqwK1EBNHN/qok73MRDFc
-	Xm8Ivg/Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RTHoWrWmxPEs5LIG7Q9Nk/ItuFIgqWRrOzDexpSWkew=; b=tiVuzhbmv8VCg62Mnx8rmjPldZ
+	rkUA1BvbLUuM973rhrKxVY/U/9n697HUqnpTOpeYw0VCio1Hhuo5AKldezgVYULNA+BlCXUkCSmPT
+	Wqb2iowSDoieeC/+xWD66rDUA6+gCT4mABmu4AybhRtaDqxv6KdYmZ1YtunaKOMPb9bnBt6EIa12+
+	MTcLF55JxX95zABead0HiNkzoOVfyyPd6E1eNtIxhlSNUEYJezLob0Alt/d9/C04lu+3UBN+cPvTo
+	nAm2mNSTyD5nS0So2UA3+BT0T7csJitr/nQT7lFSR5RxM3oEPJ2qQn35xNCchesxyGtMUEerBCq8f
+	Sy6OgkDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4Go3-00GYOZ-0h;
-	Wed, 31 May 2023 08:03:43 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1q4GoK-00GYX7-04;
+	Wed, 31 May 2023 08:04:00 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4Gnz-00GYMH-1f;
-	Wed, 31 May 2023 08:03:41 +0000
-Received: from pendragon.ideasonboard.com (om126205251136.34.openmobile.ne.jp [126.205.251.136])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id D65BC7FC;
-	Wed, 31 May 2023 10:03:10 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1685520191;
-	bh=wt0uiRzdch80CnCJ9txOoIRjRmXX6qZoPWCiyabu1Sg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=mn1x0f1s/9rwZsiTDMjdaKF/ODQaR4TeIB2OzM9B/hKAXy4HY4Cf10xROgcoWmJCF
-	 3chtShGizyZ5Qh5bMXXa59Zo5C4yhOljSKBkIEWANe/vviW4BWGDL5RIiU8PBMXmGy
-	 a8pmkIVdRWePdvRt/3ueJ0RvZX48GbIRz/nbN3EE=
-Date: Wed, 31 May 2023 11:03:31 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>, tfiga@chromium.org,
-	m.szyprowski@samsung.com, mchehab@kernel.org, ming.qian@nxp.com,
-	shijie.qin@nxp.com, eagle.zhou@nxp.com, bin.liu@mediatek.com,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com,
-	yunfei.dong@mediatek.com, stanimir.k.varbanov@gmail.com,
-	quic_vgarodia@quicinc.com, agross@kernel.org, andersson@kernel.org,
-	konrad.dybcio@linaro.org, ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de, daniel.almeida@collabora.com,
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v2 3/8] media: videobuf2: Add a module param to limit vb2
- queue buffer storage
-Message-ID: <20230531080331.GB6496@pendragon.ideasonboard.com>
-References: <20230321102855.346732-1-benjamin.gaignard@collabora.com>
- <20230321102855.346732-4-benjamin.gaignard@collabora.com>
- <6c4658fd-3a64-b3f8-67cd-17ed2d7d3567@xs4all.nl>
+	id 1q4GoG-00GYTd-0h;
+	Wed, 31 May 2023 08:03:57 +0000
+Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3CDDA6606EAD;
+	Wed, 31 May 2023 09:03:51 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1685520232;
+	bh=8YkvE3YTk0eL92xEzGrj7xp7cVyw3DffJoEnRzrXvuA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=hbfWsOmCNRx8U0dVadqzd6jsKQo/XidFS8v5sLez1Zj1J5r1/LqyhY1/Kja4nbiq1
+	 HgvVYpSdqnIdiCzzbGD8VNIPbs7PnQIc5VF+/lPa5L1oy74WJmjOn1Dq9YeG9EpgQJ
+	 jbKq/888/991RZ0hxbxyW3qYaE/ZFGOVzaYH3xF84k/g68VxBKxJ3P9YrqmBemIacC
+	 pgozQx3L+RiHWfGCx0qfR7ZJsnlIq9Ngc94hisEN9jkW4KXJ3QJOWFeWwcBQRp2QFm
+	 6P+oX7PJitj/280iX70mQ6NGFGtv9Q5HP2IivSW5f7t3fvyvINeNXuNgkmdvzPf144
+	 /jmzymWWNCYHA==
+Message-ID: <0f765410-04b7-64a0-e957-0e619919ac83@collabora.com>
+Date: Wed, 31 May 2023 10:03:49 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <6c4658fd-3a64-b3f8-67cd-17ed2d7d3567@xs4all.nl>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.1
+Subject: Re: [PATCH v4 4/5] arm64: dts: mediatek: mt8192: Add thermal nodes
+ and thermal zones
+Content-Language: en-US
+To: =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
+ daniel.lezcano@linaro.org, rafael@kernel.org, amitk@kernel.org,
+ rui.zhang@intel.com, matthias.bgg@gmail.com, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, rdunlap@infradead.org,
+ ye.xingchen@zte.com.cn, p.zabel@pengutronix.de
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, wenst@chromium.org, james.lo@mediatek.com,
+ rex-bc.chen@mediatek.com, nfraprado@collabora.com, abailon@baylibre.com,
+ amergnat@baylibre.com, khilman@baylibre.com
+References: <20230530195132.2286163-1-bero@baylibre.com>
+ <20230530195132.2286163-5-bero@baylibre.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230530195132.2286163-5-bero@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230531_010339_723309_43EED894 
-X-CRM114-Status: GOOD (  25.71  )
+X-CRM114-CacheID: sfid-20230531_010356_405331_5FCA615C 
+X-CRM114-Status: UNSURE (   8.30  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,129 +85,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 31, 2023 at 08:36:59AM +0200, Hans Verkuil wrote:
-> On 21/03/2023 11:28, Benjamin Gaignard wrote:
-> > Add module parameter "max_vb_buffer_per_queue" to be able to limit
-> > the number of vb2 buffers store in queue.
-> > 
-> > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> > ---
-> >  drivers/media/common/videobuf2/videobuf2-core.c | 15 +++------------
-> >  include/media/videobuf2-core.h                  | 11 +++++++++--
-> >  2 files changed, 12 insertions(+), 14 deletions(-)
-> > 
-> > diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-> > index ae9d72f4d181..f4da917ccf3f 100644
-> > --- a/drivers/media/common/videobuf2/videobuf2-core.c
-> > +++ b/drivers/media/common/videobuf2/videobuf2-core.c
-> > @@ -34,6 +34,8 @@
-> >  static int debug;
-> >  module_param(debug, int, 0644);
-> >  
-> > +module_param(max_vb_buffer_per_queue, ulong, 0644);
+Il 30/05/23 21:51, Bernhard Rosenkränzer ha scritto:
+> From: Balsam CHIHI <bchihi@baylibre.com>
 > 
-> There is no MODULE_PARM_DESC here? Please add. I see it is not there for
-> the debug param either, it should be added for that as well.
+> Add thermal nodes and thermal zones for the mt8192.
+> The mt8192 SoC has several hotspots around the CPUs.
+> Specify the targeted temperature threshold to apply the mitigation
+> and define the associated cooling devices.
+> 
+> Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
+> Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> [bero@baylibre.com: cosmetic changes, reduce lvts_ap size]
+> Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
 
-Would this be the right time to consider resource accounting in V4L2 for
-buffers ? Having a module parameter doesn't sound very useful, an
-application could easily allocate more buffers by using buffer orphaning
-(allocating buffers, exporting them as dmabuf objects, and freeing them,
-which leaves the memory allocated). Repeating allocation cycles up to
-max_vb_buffer_per_queue will allow allocating an unbounded number of
-buffers, using all the available system memory. I'd rather not add a
-module argument that only gives the impression of some kind of safety
-without actually providing any value.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-> > +
-> >  #define dprintk(q, level, fmt, arg...)					\
-> >  	do {								\
-> >  		if (debug >= level)					\
-> > @@ -412,10 +414,6 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
-> >  	struct vb2_buffer *vb;
-> >  	int ret;
-> >  
-> > -	/* Ensure that q->num_buffers+num_buffers is below VB2_MAX_FRAME */
-> > -	num_buffers = min_t(unsigned int, num_buffers,
-> > -			    VB2_MAX_FRAME - q->num_buffers);
-> > -
-> >  	for (buffer = 0; buffer < num_buffers; ++buffer) {
-> >  		/* Allocate vb2 buffer structures */
-> >  		vb = kzalloc(q->buf_struct_size, GFP_KERNEL);
-> > @@ -801,9 +799,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
-> >  	/*
-> >  	 * Make sure the requested values and current defaults are sane.
-> >  	 */
-> > -	WARN_ON(q->min_buffers_needed > VB2_MAX_FRAME);
-> >  	num_buffers = max_t(unsigned int, *count, q->min_buffers_needed);
-> > -	num_buffers = min_t(unsigned int, num_buffers, VB2_MAX_FRAME);
-> >  	memset(q->alloc_devs, 0, sizeof(q->alloc_devs));
-> >  	/*
-> >  	 * Set this now to ensure that drivers see the correct q->memory value
-> > @@ -919,11 +915,6 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
-> >  	bool no_previous_buffers = !q->num_buffers;
-> >  	int ret;
-> >  
-> > -	if (q->num_buffers == VB2_MAX_FRAME) {
-> > -		dprintk(q, 1, "maximum number of buffers already allocated\n");
-> > -		return -ENOBUFS;
-> > -	}
-> > -
-> >  	if (no_previous_buffers) {
-> >  		if (q->waiting_in_dqbuf && *count) {
-> >  			dprintk(q, 1, "another dup()ped fd is waiting for a buffer\n");
-> > @@ -948,7 +939,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
-> >  			return -EINVAL;
-> >  	}
-> >  
-> > -	num_buffers = min(*count, VB2_MAX_FRAME - q->num_buffers);
-> > +	num_buffers = *count;
-> >  
-> >  	if (requested_planes && requested_sizes) {
-> >  		num_planes = requested_planes;
-> > diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-> > index 397dbf6e61e1..b8b34a993e04 100644
-> > --- a/include/media/videobuf2-core.h
-> > +++ b/include/media/videobuf2-core.h
-> > @@ -12,6 +12,7 @@
-> >  #ifndef _MEDIA_VIDEOBUF2_CORE_H
-> >  #define _MEDIA_VIDEOBUF2_CORE_H
-> >  
-> > +#include <linux/minmax.h>
-> >  #include <linux/mm_types.h>
-> >  #include <linux/mutex.h>
-> >  #include <linux/poll.h>
-> > @@ -48,6 +49,8 @@ struct vb2_fileio_data;
-> >  struct vb2_threadio_data;
-> >  struct vb2_buffer;
-> >  
-> > +static size_t max_vb_buffer_per_queue = 1024;
-> > +
-> >  /**
-> >   * struct vb2_mem_ops - memory handling/memory allocator operations.
-> >   * @alloc:	allocate video memory and, optionally, allocator private data,
-> > @@ -1268,12 +1271,16 @@ static inline bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *
-> >  
-> >  	if (vb->index >= q->max_num_bufs) {
-> >  		struct vb2_buffer **tmp;
-> > +		int cnt = min(max_vb_buffer_per_queue, q->max_num_bufs * 2);
-> > +
-> > +		if (cnt >= q->max_num_bufs)
-> > +			goto realloc_failed;
-> >  
-> > -		tmp = krealloc_array(q->bufs, q->max_num_bufs * 2, sizeof(*q->bufs), GFP_KERNEL);
-> > +		tmp = krealloc_array(q->bufs, cnt, sizeof(*q->bufs), GFP_KERNEL);
-> >  		if (!tmp)
-> >  			goto realloc_failed;
-> >  
-> > -		q->max_num_bufs *= 2;
-> > +		q->max_num_bufs = cnt;
-> >  		q->bufs = tmp;
-> >  	}
-> >  
 
--- 
-Regards,
-
-Laurent Pinchart
 
