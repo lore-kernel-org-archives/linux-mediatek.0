@@ -4,79 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B64AC77B7A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 May 2023 08:10:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97FD6C77B73
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 May 2023 08:13:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ha8WXDq7F6ehlGZN4Wnm79SzuKrgIbv9GmD5p3/ciq4=; b=vIXK9hy6U9kO8CT2zUbjVZbDJG
-	jNHPUmTF5bVF9N541LyQy0yyCHZyXE77XDW+a8srsgKkntKhne4ur7IN2i6UAGolBF9rIUEqFRsWT
-	c6COU4zJRZGn+YQ4Wv2vCGCtdQKR3VKoj1WP/wuezU8A9/caPPG5DmJOWm3GPUm0xnd4udTQNKMRB
-	pHnTM1RiOog8vDQd8jdTDr00S79gnhHPsaacY3Ybdr8BEY7TQ5T2cjcivsGApKulpGZlkqHoMWrBn
-	/IULg7QWQ/dz9tm7bqw6KU46vbQm0B+WR7IgBpLhruHLdOESCCrPzko1SBJ1p2jY0pdoB9XYiodPL
-	KJpvzM7Q==;
+	bh=Me34yvIstfXDoxEYpqphpwJSCUjiB81sUyT7gEmrSZI=; b=dYIk7pKKUZrcXCDfGZt3RfXlmf
+	WERBya6i30P1qQ2kGRmVpHcYBnOImF+jXIFktjbN30UIreAHlvUsve4ZmN6UUM7eBcjuG+rKtpCaK
+	tqCTdReQSw8rGjl2MPTnVcOPLI1rNl6HuBcuGi/zuHUV4Dx06mQRO5tI3VwS2HGRAWLCvGaBnmz5k
+	DyJpHcvV3fdsaV48YO98vAyLfI2XAbBobpks/gpNCirI0qHRHNEC+9+FfZAwDc1Mo3smqx8+OKeEf
+	aRbt50AeC66O1bbX3qYY+70vr1PWD6DVRCbHq7jfhykkyq0KvAo4emUoso/kl+aP0HKBuDNUvJKSI
+	C3jjxNPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4Gue-00GZef-0z;
-	Wed, 31 May 2023 08:10:32 +0000
-Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335])
+	id 1q4Gx3-00Ga47-0T;
+	Wed, 31 May 2023 08:13:01 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4Guc-00GZe4-14
-	for linux-mediatek@lists.infradead.org;
-	Wed, 31 May 2023 08:10:31 +0000
-Received: by mail-ot1-x335.google.com with SMTP id 46e09a7af769-6af6d8687faso4220513a34.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 31 May 2023 01:10:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1685520628; x=1688112628;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Ha8WXDq7F6ehlGZN4Wnm79SzuKrgIbv9GmD5p3/ciq4=;
-        b=DgBV7q1iFWBDxiVHk9JUFMK901wD1MP+icEW/zcNq51kchIW9/fmxP0NskfzKA04e9
-         kTop/smn/jjdxZnRzBEiyWP2WMy0SSyrLpcoG2hW8cO7XgbPfZ8aSYBZLEQ0Vodxjgvu
-         7bLrHj8W2DAz+pgxbvT9/QzRwEeDcvRgAIb2o=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685520628; x=1688112628;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Ha8WXDq7F6ehlGZN4Wnm79SzuKrgIbv9GmD5p3/ciq4=;
-        b=I2rCVjzl3Iiiuf4XUDKniah4sftwHW+P5rv/1mTC0y5FiF75GMoLIaOuDXwR+brP01
-         hsqN6PQxBZBxm5fcRJTaeSA07IhlG9A9q/nLYbVyp+Ed1Guy80py6j3LAXiQuyn5L7Q6
-         Qn4b0xaJm2/cGax2FCiiQgK2lM22MOVqodsBvH+QQRn2iUdpC9CdHJD2rTX+SVjSS//Q
-         dCd7xWwM10OpZgYchHzz0UghxxMV/JYV0mqRv6QvU9MtsK8X28ijcpL5mJTHeqMgeCra
-         IUW2Pm2a0wKCL4YYLQ7tFOKCYxmNnvdOGKVnIfe0C7yQ42aeBvNUI4UpnMtxeZVpFSOi
-         0gjA==
-X-Gm-Message-State: AC+VfDxHiyM9N4AhHkhKSpX3ZVlT26VS0bp10xFFsr9yVeWwj6Hum4y4
-	6qVODk5g57nIRkc430D+VOajG2JRTOoAEbzCDSilR0YIK1sQazsR
-X-Google-Smtp-Source: ACHHUZ7rqg56DAcPJ9jkQZEWk9382a7L5h4RC6wgNI04P1u6bH0gTq4NfXck/bmoQRGPPXVH2knI7dLMyJlEpKqSWtU=
-X-Received: by 2002:a05:6830:1d6f:b0:6b0:c54c:8247 with SMTP id
- l15-20020a0568301d6f00b006b0c54c8247mr949912oti.24.1685520627954; Wed, 31 May
- 2023 01:10:27 -0700 (PDT)
+	id 1q4Gx0-00Ga2p-02;
+	Wed, 31 May 2023 08:12:59 +0000
+Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4207A6605840;
+	Wed, 31 May 2023 09:12:56 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1685520776;
+	bh=3jHnkXoSBbZgKG/dl29z1pDf2aC+nSfccT04ENZNaf4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=MuQDt+h+ax9A6pcSl/ydOzBb+HXKYiPc/OXQ1KeN2dXObfUeQUlm9nm3ALwdfE3AA
+	 Yt5CdxHwF3NbhFRIo7bHVV6zpc3tGwdzm7GestajpZ2LhYhuda1Jwp+sI+lFzij1GV
+	 v81O0/FeHE+YiNcWIb5/3Qf/82ls2dCvJ8EaDKSzqDxNKWoG5EbTXcVyEPWYXhmT5a
+	 7CIop/PknOrP+9eT1WVVphEYKKdk+ozgXBByitLdteWWVIV43EHI91OzHn5upZpHrZ
+	 VOGXS+Sq/oQ3Zr5oCXmBxbw7L3kVtwM6xCRM3S9CKbfWjk3epXo/gOp4Ba+qy6M18Q
+	 6vnvI/z1b5P2w==
+Message-ID: <8cd77fb6-ed45-8f7a-93f4-e795c898168d@collabora.com>
+Date: Wed, 31 May 2023 10:12:53 +0200
 MIME-Version: 1.0
-References: <20230220093343.3447381-1-hsinyi@chromium.org> <CAGXv+5E4_k1jKTnninYkuT6Tf=skB00AowHpM+hc8j_VFM-RfQ@mail.gmail.com>
- <CAJMQK-hnK69iVJhqW_8UtKHHLQ3608Cb74Jk_b+xHH0BBu4yVw@mail.gmail.com>
- <d39b0e77-e013-fe7e-9523-9bdbaacb5853@collabora.com> <90ad9b86-e03c-8e80-88d6-d514bbe9cacd@gmail.com>
- <CAJMQK-jmT1YDf0y6FYUUFHkQ0b-ZHD9S4X2zpkrmNoz5Dz4ctQ@mail.gmail.com>
-In-Reply-To: <CAJMQK-jmT1YDf0y6FYUUFHkQ0b-ZHD9S4X2zpkrmNoz5Dz4ctQ@mail.gmail.com>
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Date: Wed, 31 May 2023 16:10:01 +0800
-Message-ID: <CAJMQK-gWQUgY7NRhkSuk7KMf8XZEBfJZEEXo0S+8ty7Ms7xZ9w@mail.gmail.com>
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8183: kukui: Add scp firmware-name
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Chen-Yu Tsai <wenst@chromium.org>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.1
+Subject: Re: [PATCH] soc: mediatek: SVS: Fix MT8192 GPU node name
+Content-Language: en-US
+To: Chen-Yu Tsai <wenst@chromium.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?=
+ <nfraprado@collabora.com>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20230531063532.2240038-1-wenst@chromium.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230531063532.2240038-1-wenst@chromium.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230531_011030_391316_E309FFEC 
-X-CRM114-Status: GOOD (  17.00  )
+X-CRM114-CacheID: sfid-20230531_011258_194126_2A8735C4 
+X-CRM114-Status: GOOD (  15.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,48 +77,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 31, 2023 at 3:47=E2=80=AFPM Hsin-Yi Wang <hsinyi@chromium.org> =
-wrote:
->
-> On Wed, May 31, 2023 at 3:30=E2=80=AFPM Matthias Brugger <matthias.bgg@gm=
-ail.com> wrote:
-> >
-> >
-> >
-> > On 30/05/2023 09:12, AngeloGioacchino Del Regno wrote:
-> > > Il 30/05/23 07:12, Hsin-Yi Wang ha scritto:
-> > >> On Tue, Feb 21, 2023 at 11:25=E2=80=AFAM Chen-Yu Tsai <wenst@chromiu=
-m.org> wrote:
-> > >>>
-> > >>> On Mon, Feb 20, 2023 at 5:34 PM Hsin-Yi Wang <hsinyi@chromium.org> =
-wrote:
-> > >>>>
-> > >>>> The upstream SCP firmware path is /lib/firmware/mediatek/mt8183/sc=
-p.img
-> > >>>>
-> > >>>> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> > >>>
-> > >>> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-> > >>
-> > >> hi Matthias,
-> > >>
-> > >> Kindly ping on the patch, thanks!
-> > >
-> > > Agreed. Matthias, please pick this one.
-> > >
-> > > Hsin-Yi, can you also please send a version of this patch for stable?
->
-> I sent a patch based on stable:
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20230531074421.=
-888652-1-hsinyi@chromium.org/
->
+Il 31/05/23 08:35, Chen-Yu Tsai ha scritto:
+> Device tree node names should be generic. The planned device node name
+> for the GPU, according to the bindings and posted DT changes, is "gpu",
+> not "mali".
+> 
+> Fix the GPU node name in the SVS driver to follow.
+> 
+> Fixes: 0bbb09b2af9d ("soc: mediatek: SVS: add mt8192 SVS GPU driver")
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
-Archived the above patch. I'll wait for the original patch landed then
-send it to stable.
+Hahaha, I was about to send the same patch! :D
 
-> > >
-> >
-> > Applied thanks!
->
-> Thanks!
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+> ---
+>   drivers/soc/mediatek/mtk-svs.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
+> index 81585733c8a9..3a2f97cd5272 100644
+> --- a/drivers/soc/mediatek/mtk-svs.c
+> +++ b/drivers/soc/mediatek/mtk-svs.c
+> @@ -2061,9 +2061,9 @@ static int svs_mt8192_platform_probe(struct svs_platform *svsp)
+>   		svsb = &svsp->banks[idx];
+>   
+>   		if (svsb->type == SVSB_HIGH)
+> -			svsb->opp_dev = svs_add_device_link(svsp, "mali");
+> +			svsb->opp_dev = svs_add_device_link(svsp, "gpu");
+>   		else if (svsb->type == SVSB_LOW)
+> -			svsb->opp_dev = svs_get_subsys_device(svsp, "mali");
+> +			svsb->opp_dev = svs_get_subsys_device(svsp, "gpu");
+>   
+>   		if (IS_ERR(svsb->opp_dev))
+>   			return dev_err_probe(svsp->dev, PTR_ERR(svsb->opp_dev),
+
 
