@@ -4,86 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9291AC77B73
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 May 2023 08:30:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DADFCC77B73
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 May 2023 08:40:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bi/zwW1dF0baBHFGLa1Ol2YY+ghL4hKqNhiswnod4IY=; b=dDFE/qsIDURwScsZjTXYd7ZJXX
-	QYPJPnqRjkQqXBfyEm1o7FI50HHctTJr4/K8xpkniTVdG2gw348wdQfQi/r8jCUx+9uGAHhmiUhSc
-	IA35mz5W0JrTZjSzEuZ3vDVecmasUfPNK3+ZZB7IlxUAza8P35ZqkbiMRlJbYOxPbOe4PveC4uc8G
-	u/YzTh57KTNNKStr0KNW1ShPBSMZrWg/hQgB9WgmfmjlK6nSriwUpHCpjH7BreQUsLA1RWeE2IaK7
-	DZtl3yTfVBTp2O43X1nQm4cSQnF4J+C0Lqw/8MwKj2jVJTEzTfaaH8ht1jfrpl8DkqmBx3LLhVa3M
-	wdOBdd2w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sV0HmmZUiWC6Xd0DtqakbNIl0Npt80+JI0PP8g3KMFo=; b=H1wSnN5sNjwqzzVGPGJOEImDaH
+	WfHqSNUGrMdaZ2BHSiur6wjp6MhSjLZJRDW97AhM05oFTeFdpaDXtZB7Yr75o8ul00kTiPgsbKfPS
+	bK9vdMpd0UMxwOU6kAoRpQHCqdwtZ4h/3Hqqo1oHfYV/enC1/hx2e3W/+ZhLYEYUV94jrcCsqWVCd
+	2BsUG+eG+vGopWbndkZKBEBybiRVf+p8/c5ar+MpcxXNP8E0cPhizp+gtwANtAI83Gynqe3xqMtHh
+	D1nonWAUWlY75wxoX1ae3Wephx3pHnvboNy0OuLO/8vGxGNzxhEom1lO7wZhkwJUn6AaN09G+bif5
+	BnLsQWZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4HEG-00GcgG-2a;
-	Wed, 31 May 2023 08:30:48 +0000
-Received: from ewsoutbound.kpnmail.nl ([195.121.94.170])
+	id 1q4HNP-00GeP8-2r;
+	Wed, 31 May 2023 08:40:15 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4HEA-00Gcdt-33
-	for linux-mediatek@lists.infradead.org;
-	Wed, 31 May 2023 08:30:46 +0000
-X-KPN-MessageId: 6b6a2c64-ff8d-11ed-b139-005056ab378f
-Received: from smtp.kpnmail.nl (unknown [10.31.155.38])
-	by ewsoutbound.so.kpn.org (Halon) with ESMTPS
-	id 6b6a2c64-ff8d-11ed-b139-005056ab378f;
-	Wed, 31 May 2023 10:30:37 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=xs4all.nl; s=xs4all01;
-	h=content-type:from:to:subject:mime-version:date:message-id;
-	bh=bi/zwW1dF0baBHFGLa1Ol2YY+ghL4hKqNhiswnod4IY=;
-	b=Cbx2lnBI939OqQlwn2LgA2WtjioUKZjZDqNO54cgoWQaDD9mMT75o3zz4hySA8tRKu/u6KChttcwC
-	 XziBcYpFDtwzd+rVXRRr9KDDX4K2+VtaE7//Mog3QLgp8PG8TW3urucSmi+PQ1+govLxt64R3SYwDb
-	 RTpfsmVGvxNahUXSAhKnnX+5sPH+O/W/1vtVq8y+n+vBPYHV6ekR60QRAFge2gzNNJmajAcBuza0BP
-	 bwcW1ukpQPaOs0Mu1NNJe3rQ5tVnbj+AesMLe8j38mo4oFHHZZ2QOoHx4HYUx3rLAfAQyn3ukFaoV5
-	 oMer0XYvZHUuPxpRQppi/EzjwaEBUkg==
-X-KPN-MID: 33|Fcd5oOhZ044j3uOQbeA2h3AjFJJJbejqxfpkqOfmqYParZA1prin+rv5J38icqA
- 3vHUOx6g9HA1xlyqcjCnfdbicA2a9kyRyk3ej0hpbsbk=
-X-KPN-VerifiedSender: Yes
-X-CMASSUN: 33|3YKdBL7gafLa96P8ALjF+44XrQH3OeXh6KixQi1/qKwG3bLPylcZA9xSJT+Plbx
- sCBzYiEGKS2jF5n8a2fWIBQ==
-X-Originating-IP: 173.38.220.44
-Received: from [10.47.77.214] (unknown [173.38.220.44])
-	by smtp.xs4all.nl (Halon) with ESMTPSA
-	id 6b437bb6-ff8d-11ed-a898-005056abf0db;
-	Wed, 31 May 2023 10:30:38 +0200 (CEST)
-Message-ID: <608ae7d6-3f3b-137d-08d2-d41a240be2c4@xs4all.nl>
-Date: Wed, 31 May 2023 10:30:36 +0200
+	id 1q4HNN-00GeNy-0J;
+	Wed, 31 May 2023 08:40:14 +0000
+X-UUID: bdb54556ff8e11ed912e1518a6540028-20230531
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=sV0HmmZUiWC6Xd0DtqakbNIl0Npt80+JI0PP8g3KMFo=;
+	b=iCaUoCRyUVHWXUhOxlQM4PBnPKoZyUrb21NDECmyzdmBa8mzcTRwn2csd1WCFuM5Qq5rnZMXkjb1Jx+ZeDvWODkmjNdf4rczpdIs0U06nmw2cdDHrDa6e2simJj0c6rfQhLXf5PsEYWGGOPvhNm2dMQePo1FjtbAt/tn8wXYbDw=;
+X-CID-UNFAMILIAR: 1
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.25,REQID:7ed0a56b-e300-4145-b91f-a01434cd52a1,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:100
+X-CID-INFO: VERSION:1.1.25,REQID:7ed0a56b-e300-4145-b91f-a01434cd52a1,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
+	N:quarantine,TS:100
+X-CID-META: VersionHash:d5b0ae3,CLOUDID:1fb2ec3c-de1e-4348-bc35-c96f92f1dcbb,B
+	ulkID:230531163930DY68GEE0,BulkQuantity:1,Recheck:0,SF:29|28|16|19|48,TC:n
+	il,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,OSI
+	:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: bdb54556ff8e11ed912e1518a6540028-20230531
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <ed.tsai@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 621431646; Wed, 31 May 2023 01:40:05 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 31 May 2023 16:39:28 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 31 May 2023 16:39:28 +0800
+From: Ed Tsai <ed.tsai@mediatek.com>
+To: <axboe@kernel.dk>
+CC: <kbusch@kernel.org>, <liusong@linux.alibaba.com>,
+	<linux-block@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<wsd_upstream@mediatek.com>, <peter.wang@mediatek.com>,
+	<stanley.chu@mediatek.com>, <powen.kao@mediatek.com>,
+	<alice.chao@mediatek.com>, <naomi.chu@mediatek.com>, Ed Tsai
+	<ed.tsai@mediatek.com>
+Subject: [PATCH v2] blk-mq: check on cpu id when there is only one ctx mapping
+Date: Wed, 31 May 2023 16:38:29 +0800
+Message-ID: <20230531083828.8009-2-ed.tsai@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230531083828.8009-1-ed.tsai@mediatek.com>
+References: <20230531083828.8009-1-ed.tsai@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH v2 3/8] media: videobuf2: Add a module param to limit vb2
- queue buffer storage
-Content-Language: en-US
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>, tfiga@chromium.org,
- m.szyprowski@samsung.com, mchehab@kernel.org, ming.qian@nxp.com,
- shijie.qin@nxp.com, eagle.zhou@nxp.com, bin.liu@mediatek.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com,
- yunfei.dong@mediatek.com, stanimir.k.varbanov@gmail.com,
- quic_vgarodia@quicinc.com, agross@kernel.org, andersson@kernel.org,
- konrad.dybcio@linaro.org, ezequiel@vanguardiasur.com.ar,
- p.zabel@pengutronix.de, daniel.almeida@collabora.com,
- linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- kernel@collabora.com
-References: <20230321102855.346732-1-benjamin.gaignard@collabora.com>
- <20230321102855.346732-4-benjamin.gaignard@collabora.com>
- <6c4658fd-3a64-b3f8-67cd-17ed2d7d3567@xs4all.nl>
- <20230531080331.GB6496@pendragon.ideasonboard.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20230531080331.GB6496@pendragon.ideasonboard.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230531_013043_415755_9A7AF31A 
-X-CRM114-Status: GOOD (  21.83  )
+X-CRM114-CacheID: sfid-20230531_014013_141504_1FFBE580 
+X-CRM114-Status: GOOD (  12.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,62 +91,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5/31/23 10:03, Laurent Pinchart wrote:
-> On Wed, May 31, 2023 at 08:36:59AM +0200, Hans Verkuil wrote:
->> On 21/03/2023 11:28, Benjamin Gaignard wrote:
->>> Add module parameter "max_vb_buffer_per_queue" to be able to limit
->>> the number of vb2 buffers store in queue.
->>>
->>> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
->>> ---
->>>  drivers/media/common/videobuf2/videobuf2-core.c | 15 +++------------
->>>  include/media/videobuf2-core.h                  | 11 +++++++++--
->>>  2 files changed, 12 insertions(+), 14 deletions(-)
->>>
->>> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
->>> index ae9d72f4d181..f4da917ccf3f 100644
->>> --- a/drivers/media/common/videobuf2/videobuf2-core.c
->>> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
->>> @@ -34,6 +34,8 @@
->>>  static int debug;
->>>  module_param(debug, int, 0644);
->>>  
->>> +module_param(max_vb_buffer_per_queue, ulong, 0644);
->>
->> There is no MODULE_PARM_DESC here? Please add. I see it is not there for
->> the debug param either, it should be added for that as well.
-> 
-> Would this be the right time to consider resource accounting in V4L2 for
-> buffers ? Having a module parameter doesn't sound very useful, an
-> application could easily allocate more buffers by using buffer orphaning
-> (allocating buffers, exporting them as dmabuf objects, and freeing them,
-> which leaves the memory allocated). Repeating allocation cycles up to
-> max_vb_buffer_per_queue will allow allocating an unbounded number of
-> buffers, using all the available system memory. I'd rather not add a
-> module argument that only gives the impression of some kind of safety
-> without actually providing any value.
+commit f168420 ("blk-mq: don't redirect completion for hctx withs only
+one ctx mapping") When nvme applies a 1:1 mapping of hctx and ctx, there
+will be no remote request.
 
-Does dmabuf itself provide some accounting mechanism? Just wondering.
+But for ufs, the submission and completion queues could be asymmetric.
+(e.g. Multiple SQs share one CQ) Therefore, 1:1 mapping of hctx and
+ctx won't complete request on the submission cpu. In this situation,
+this nr_ctx check could violate the QUEUE_FLAG_SAME_FORCE, as a result,
+check on cpu id when there is only one ctx mapping.
 
-More specific to V4L2: I'm not so sure about this module parameter either.
-It makes sense to have a check somewhere against ridiculous values (i.e.
-allocating MAXINT buffers), but that can be a define as well. But otherwise
-I am fine with allowing applications to allocate buffers until the memory
-is full.
+Signed-off-by: Ed Tsai <ed.tsai@mediatek.com>
+Change-Id: I4f95d7538532f72dcb20dacfdd639c97951c2729
+---
+ block/blk-mq.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-The question is really: what is this parameter supposed to do? The only
-thing it does is to sanitize unlikely inputs (e.g. allocating MAXINT buffers).
+diff --git a/block/blk-mq.c b/block/blk-mq.c
+index 41f7e2b500bd..ecc30ebe9483 100644
+--- a/block/blk-mq.c
++++ b/block/blk-mq.c
+@@ -1176,7 +1176,8 @@ bool blk_mq_complete_request_remote(struct request *rq)
+ 	 * or a polled request, always complete locally,
+ 	 * it's pointless to redirect the completion.
+ 	 */
+-	if (rq->mq_hctx->nr_ctx == 1 ||
++	if ((rq->mq_hctx->nr_ctx == 1 &&
++	     rq->mq_ctx->cpu == raw_smp_processor_id()) ||
+ 		rq->cmd_flags & REQ_POLLED)
+ 		return false;
+ 
+-- 
+2.18.0
 
-I prefer that as a define, to be honest.
-
-I think it is perfectly fine for users to try to request more buffers than
-memory allows. It will just fail in that case, not a problem.
-
-And if an application is doing silly things like buffer orphaning, then so
-what? Is that any different than allocating memory and not freeing it?
-Eventually it will run out of memory and crash, which is normal.
-
-Regards,
-
-	Hans
 
