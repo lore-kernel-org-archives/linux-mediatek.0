@@ -4,71 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B95EC77B7A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 May 2023 08:18:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA37CC77B7A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 May 2023 08:23:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KdYwUA4sTSUf1TjyoSKJ7T7hPgkUHYJQ/KLbkVNoS1Q=; b=hO198QsA+HTb/65TVKIcOQxqRu
-	/jn9nOVlRkXtesjmM7PLJFD0gg4V9Ft0X8KOc3O4jOFBiCF2+issBBmJgk5sGXldGSIsnKf/m6lKT
-	kz3b79vFQ1JzwGh4rgS2vZVrrUMHzbo/xeTlmh+j0BCfcJvvs/Zquo1uSy29CXu0YXhwY7v/TW13v
-	TPPVWkFRSG4yiJvPJcXamm6K0PiyRcjI8cQQp9hsoRsyQc0hetKiQkf50RyPbsifn+tjlie/o5oer
-	/t2sZiwXjBOXoIB0yLEHU4Le8bQUrr8aK2gmV2e1dt2/qCpz0+CeG0SmyKHHL+PmVSHccxDEYBT8R
-	wCKwF1RQ==;
+	bh=Fgoqr7zM/LoMqMaxauICeu9TAFzJZ5c43NcttkyCA3o=; b=u9XvNbzNy+GCv1DbDVOSnnfg+S
+	RMkqvdX19fkxObEZRd7dadOsJrq5+HKMd+f7QDbDnsFZQgUlkLtindsiKvdV2Wd87ChmlMrKak3wZ
+	uHGCLTlP5ZOYUvjDGL+m9QnRyMokfDZ6Rje+uT2uBqfcJIFzjm5VFGCZ0th3GM1zLnuPIqyFmPIl2
+	kU0NF7FYgJu5svUqR/xGUG0h8maxhoEOcb5YA1B30SJsGD2vmjYka2EBNjHlZ4G84Z0C1uYDAgjkO
+	18QnMPx5COedWULMC8Ne8gC6vSauUi2MHzS5AEEYdYsg6Z+zBwla1y6Y3ZgSLAI/38xHPaJIY/m9I
+	t5737w0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4H2Y-00GarI-1r;
-	Wed, 31 May 2023 08:18:42 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1q4H7G-00Gbcy-24;
+	Wed, 31 May 2023 08:23:34 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4H2U-00GaqT-2v;
-	Wed, 31 May 2023 08:18:40 +0000
+	id 1q4H7D-00Gbc2-1L;
+	Wed, 31 May 2023 08:23:32 +0000
 Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C7AF26605840;
-	Wed, 31 May 2023 09:18:36 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6EE4A6605840;
+	Wed, 31 May 2023 09:23:29 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1685521117;
-	bh=xesRhTEzgXFVve5z8BOJVMjbS/JIfJWyP7KPJwu/lS4=;
+	s=mail; t=1685521409;
+	bh=QJJfRgbF1c9dgsjXGl4uw2rELU2wPtTiuT9g7crBEQ8=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Eu5t6diMs3FtdnISPq3eDHNRF3xK41xARO+tCUnPdVG1xyolMJi3miUv0uDja9A0n
-	 oE8MWzUUE0zYiQtaBFvh5GjyeX/V6uXAktqjxSe5N20Nj2HEEGbjZJ9B5jWJTKcZV1
-	 ittBET/tnPoYuAyBbxVqMGuMFDNryJhPV5mCWYQA9s5RiPEFqNZIyypaH3BA4gYMWR
-	 2zURIJzUYlmaIlRizYGQW5rrbLRkXUhRKGvWrXdsyBRRTZBjHbc4Ogn0AFcqs3+Gvw
-	 I8zWGrjhiHMlJBiQ0c+gNRTRwMryq9p7utyToHZ0aEXvUwEOJVmVIGDBzSSE/TkeSt
-	 fT37q+oHM/2RQ==
-Message-ID: <7f5e14e5-a814-efd7-6082-c4eff697c536@collabora.com>
-Date: Wed, 31 May 2023 10:18:35 +0200
+	b=KticNSratfrZh1EW/aI6qGYOize5LrGr7VLm10c2Gg7HPksNXOIKrYk99nXtlc8uL
+	 FKISYjA3PdQ/YJAzsfpzJagMzTH/SpeDtERqcEIxdCpm/jYse3TuXuTyv5RjpYS3B9
+	 DGUoUQxPl4OdyrYXcb9dD+ImXeYHYEQjTVyyrs4dTq23P4BeONPne/L8VuTAYds8In
+	 dF34hzB1YeuHaLALzFTUNPYjuJ+a4FnpibxL8wc9sexhjwfmkzeQX4NUhHbjOj2QvU
+	 /R3qy8KOpWUFQPVbrxX7prNipHKYdWtuk8BlKkx6VrUOBRCbt2nxY4gBkNmFV+jau9
+	 qTgn4fgWTXH7Q==
+Message-ID: <3c2e384b-a6a0-25b6-5ea0-78ad24377bd6@collabora.com>
+Date: Wed, 31 May 2023 10:23:27 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.1
-Subject: Re: [PATCH v2] mmc: mtk-sd: reduce CIT for better performance
+Subject: Re: [PATCH stable 6.3] arm64: dts: mediatek: mt8183: kukui: Add scp
+ firmware-name
 Content-Language: en-US
-To: =?UTF-8?B?V2VuYmluIE1laSAo5qKF5paH5b2sKQ==?= <Wenbin.Mei@mediatek.com>,
- "ulf.hansson@linaro.org" <ulf.hansson@linaro.org>
-Cc: "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?= <Chaotian.Jing@mediatek.com>
-References: <20230510015851.11830-1-wenbin.mei@mediatek.com>
- <0df3968e-da34-b36c-4cb4-92d66508a46a@collabora.com>
- <e682b8b66261a71601707a4e74af2829f86800dc.camel@mediatek.com>
+To: Hsin-Yi Wang <hsinyi@chromium.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230531074421.888652-1-hsinyi@chromium.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <e682b8b66261a71601707a4e74af2829f86800dc.camel@mediatek.com>
+In-Reply-To: <20230531074421.888652-1-hsinyi@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230531_011839_213369_9FC7CDD3 
-X-CRM114-Status: GOOD (  27.63  )
+X-CRM114-CacheID: sfid-20230531_012331_587796_DC078322 
+X-CRM114-Status: UNSURE (   8.13  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,145 +80,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 31/05/23 09:32, Wenbin Mei (梅文彬) ha scritto:
-> On Thu, 2023-05-18 at 11:13 +0200, AngeloGioacchino Del Regno wrote:
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
->>
->>
->> Il 10/05/23 03:58, Wenbin Mei ha scritto:
->>> CQHCI_SSC1 indicates to CQE the polling period to use when using
->>> periodic
->>> SEND_QUEUE_STATUS(CMD13) polling.
->>> The default value 0x1000 that corresponds to 150us, let's decrease
->>> it to
->>
->> The default value 0x1000 (4096) corresponds to 4096 * 52.08uS =
->> 231.33uS
->> ...so the default is not 150uS.
->>
->> If I'm wrong, this means that the CQCAP field is not 0, which would
->> mean
->> that the expected 3uS would be wrong.
->>
->> Also, since the calculation can be done dynamically, this is what we
->> should
->> actually do in the driver, as this gives information to the next
->> engineer
->> checking this piece of code.
->>
->> Apart from this, by just writing 0x40 to the CQHCI_SSC1 register, you
->> are
->> assuming that the CQCAP value requirement is fullfilled, but you
->> cannot
->> assume that the bootloader has set the CQCAP's ITCFVAL and ITCFMUL
->> fields
->> as you expect on all platforms: this means that implementing this
->> takes
->> a little more effort.
->>
->> You have two ways to implement this:
->>    *** First ***
->>    1. Read ITCFMUL and ITCFVAL, then:
->>       tclk_mul = itcfmul_to_mhz(ITCFMUL); /* pseudo function
->> interprets reg value*/
->>       tclk = ITCFVAL * tclk_mul;
->>
->>    2. Set SSC1 so that we get 3nS:
->>       #define CQHCI_SSC1_CIT GENMASK(15, 0)
->>       poll_time = cit_time_ns_to_regval(3);
->>       sscit = FIELD_PREP(CQHCI_SSC1_CIT, poll_time)
->>       cqhci_writel( ... )
->>
->>    *** Second **
->>
->>    1. Pre-set ITCFMUL and ITCFVAL to
->>       ITCFVAL = 192 (decimal)
->>       ITCFMUL = 2 (where 2 == 0.1MHz)
->>
->>    2. Set SSC1 so that we get 3nS:
->>       #define CQHCI_SSC1_CIT GENMASK(15, 0)
->>       poll_time = cit_time_ns_to_regval(3);
->>       sscit = FIELD_PREP(CQHCI_SSC1_CIT, poll_time)
->>       cqhci_writel( ... )
->>
->> I would implement the first way, as it paves the way to extend this
->> to different
->> tclk values if needed in the future.
->>
->> Regards,
->> Angelo
-> Hi Angelo,
+Il 31/05/23 09:42, Hsin-Yi Wang ha scritto:
+> The upstream SCP firmware path is /lib/firmware/mediatek/mt8183/scp.img
 > 
-> Sorry for lately reply.
-> 
-> For Mediatek mmc host IP, ITCFMUL is 0x2(0x1MHz), ITVFVAL reports 182,
-> and these fields are the same and are readonly for all IC, but since
-> Mediatek CQE uses msdc_hclk(273MHz), CMD13'interval calculation driver
-> should use 273MHz to get the actual time, so the actual clock is
-> 27.3MHz.
-> 
+> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 
-You're right, I've misread the datasheet, just rechecked and it reports RO.
+Since I have suggested to backport this patch to relevant kernel versions,
+and seen that this patch was already picked for -next:
 
-> If CIT is 0x1000 by default, CMD idle time: 0x1000 * 1 / 27.3MHz =
-> around 150us.
-> 
-> In addition the bootloader will not set the CQCAP's ITCFVAL and ITCFMUL
-> fields, because these fields of CQCAP register is RO(readonly), so we
-> can ignore the change for the CQCAP's ITCFVAL and ITCFMUL fields.
-> 
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Yes, that's right, again - this means that you should go for the first
-proposed implementation, as future MediaTek SoCs may (or may not) change
-that: if you implement as proposed, this is going to be a one-time thing
-and future SoCs won't need specific changes.
+...but you haven't Cc'ed the stable list, please resend with
 
-That implementation also documents the flow about how we're getting to
-the actual value, which is important for community people reading this
-driver in the future for debugging purposes.
+Cc: stable@vger.kernel.org
 
-Regards,
+Thanks,
 Angelo
-
-> Thanks
-> Wenbin
->>
->>> 0x40 that corresponds to 3us, which can improve the performance of
->>> some
->>> eMMC devices.
->>>
->>> Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
->>> ---
->>>    drivers/mmc/host/mtk-sd.c | 4 ++++
->>>    1 file changed, 4 insertions(+)
->>>
->>> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
->>> index edade0e54a0c..ffeccddcd028 100644
->>> --- a/drivers/mmc/host/mtk-sd.c
->>> +++ b/drivers/mmc/host/mtk-sd.c
->>> @@ -2453,6 +2453,7 @@ static void msdc_hs400_enhanced_strobe(struct
->>> mmc_host *mmc,
->>>    static void msdc_cqe_enable(struct mmc_host *mmc)
->>>    {
->>>        struct msdc_host *host = mmc_priv(mmc);
->>> +     struct cqhci_host *cq_host = mmc->cqe_private;
->>>
->>>        /* enable cmdq irq */
->>>        writel(MSDC_INT_CMDQ, host->base + MSDC_INTEN);
->>> @@ -2462,6 +2463,9 @@ static void msdc_cqe_enable(struct mmc_host
->>> *mmc)
->>>        msdc_set_busy_timeout(host, 20 * 1000000000ULL, 0);
->>>        /* default read data timeout 1s */
->>>        msdc_set_timeout(host, 1000000000ULL, 0);
->>> +
->>> +     /* decrease the send status command idle timer to 3us */
->>> +     cqhci_writel(cq_host, 0x40, CQHCI_SSC1);
->>>    }
->>>
->>>    static void msdc_cqe_disable(struct mmc_host *mmc, bool recovery)
->>
->>
-
-
 
