@@ -4,89 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21069C77B73
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 May 2023 07:25:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80BAAC77B7C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 May 2023 07:27:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BGm8dSFUe8oYl2TNz6+RJ2OzDhK9zNEqrtF6bUETRPg=; b=EKZjcsEaCLumaOTrAEgaia/NKa
-	6dx5ufD0oQUIpPH63LXlTsW+SHAsI0mWjgWIxy/IrpIzkR1Fbdw2cOicAe1fhvXDv06/+IvlM2KEq
-	rAny/vqRaK/LLXzB/yxxEke0engxZD5nU54q2d2muT5GPRbIqdxQRHPhMwgfTEaKnAooIhl14XAdD
-	e82nAKkB1UChq21xx/AJ/NVch6fKbOqfLGSKKBCkIiNUKDOZiOATSJZX1+/dDSe8nrzxNhjGp4d47
-	SyEluGlXMjrluxfeQyDhR1UnscpHvx5gJhiOsriBEq5eAMee9P2Iikf1ekBLGoV+AP661oe2528Jj
-	BSVfO3MA==;
+	bh=Y4X5Wohwv6l7HU9svLxZYiAxT8tGzCt99NLg9x4sH48=; b=1eXW4X+PKChsHaWx27KKTrykFJ
+	Q6AwnUKbP+CjCoVkFE9jiX48B7ewoRpUEvBSdvqiLxF/1UZ0xxNx/HQWBq/sXNvBzCPa7HkctY9/I
+	uaGBC+Zygk2r5yYIfFavnZ66NmeC1AAQ9NKhrnup6rblDyPm2gr3E36yzlzOQ9Xys+QTNcd+RIwMg
+	za8ICX3ixIXM473Ud4Ix5lkiw68PreZgm7o2ELB/ho53K5/ArTLqzVwGDBSklkxLYV2aADeIWtwl/
+	UQe0tzgBomwIDtKvqMPyCQuo5UyYYw+XKm/93MKPw3Dwm6iUTPXNOd/2sf0sI/+E2N5uUv8GZIwid
+	hOjMuyNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4GCc-00GQWf-1i;
-	Wed, 31 May 2023 07:25:02 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1q4GF2-00GR2y-1r;
+	Wed, 31 May 2023 07:27:32 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4GCa-00GQV4-0S;
-	Wed, 31 May 2023 07:25:01 +0000
-Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-3f61530506aso57157195e9.1;
-        Wed, 31 May 2023 00:24:57 -0700 (PDT)
+	id 1q4GEz-00GR0W-0O;
+	Wed, 31 May 2023 07:27:30 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-3f6077660c6so39113025e9.0;
+        Wed, 31 May 2023 00:27:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1685517896; x=1688109896;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        d=gmail.com; s=20221208; t=1685518045; x=1688110045;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=BGm8dSFUe8oYl2TNz6+RJ2OzDhK9zNEqrtF6bUETRPg=;
-        b=pbS5jnd0KtWx1kVXDxSAjb45cGnnDxpRKZ+eRHPO5z2Gf1O8pmA0hnJnj0896zCXDa
-         9mzThdBCbFgu19k81bCjxUqei1uwzml3BqcXaKgngGOeiN7dxwiNujCVZ00DoPPyBPwM
-         W158p4ui/sGpYve7pXvZMMUwiq4pX3rlCbIsgvDOjHNMJWje/pS9jvZxEMSRTlTh2MKq
-         UrGa7S9T1Ea6mrVYf4+5cfpZ8xvl6eGRuK/RngjKsyFTLQ6K9XmndxbG0yLc0X8o1DUz
-         Rpz6CTQXVjqzAD7FKh9YofXrqtusQg5HtSrP1ZjS7nEC0XUlNesylMeuBoWFum0wiBo+
-         xkHA==
+        bh=Y4X5Wohwv6l7HU9svLxZYiAxT8tGzCt99NLg9x4sH48=;
+        b=P25pgQT4ztxcFXczUNWGPi84IBW6g/Jd+safyXGsj1qyVbTfUqAwQUh05EY1POVK00
+         USnZasIvT7j38RpnlHdUc6+WdRdVJ7Hn5Be6yGxWeD4upOozgjPRU0hOO6hpzqloDrBW
+         p5U/v4nvimUTATKPslhEh0YfzCyr5nfv0yaMKiY+2Wjk4y2AkWIOxxNlOoc7Cl3XP0/G
+         YgEb8bHNFCtAmdj51k/Xam1zavfP2aVGCNHd+tsLEkEKrCBP63N7RkaMrq99CUwZEznx
+         4SjaxtXjJHLIUUiK96j9wy2r58lOGyTEGf5pQFpf6aH9cm+e7beTlp+gQ5OrVZyi/5+4
+         Kp1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685517896; x=1688109896;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        d=1e100.net; s=20221208; t=1685518045; x=1688110045;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=BGm8dSFUe8oYl2TNz6+RJ2OzDhK9zNEqrtF6bUETRPg=;
-        b=Vzc5m3ykp1eGe2/UsOrm5l4iz8s9DTSrv77ohO/7JZQKouXayYOjKc74fxiBV6eJLl
-         4xF3IvhpXOahgqNje+ERQD8w2p1vDnqHddCLRO0632alsONCPFhTgu3DnUqz1SN59PaS
-         w9sMQvv/Cpw1HvaJ4fBBLsYX3zA7FGAwRxw6bUbpXn4z6lq4tk2aFi2BWeQYvSXuxqfB
-         H8oKZNG9/6wE5lXiG9+szX5O7CBmIXeCVKsM6hO8DGkD4RcGKbcaXaWGsRZPhBFYlOLb
-         rRyhGizr9mLTnEq1xYlL1CIgSY2VUjMBF/JZn5/UQ3jKOYgSJCdvhqKD4Ggq85KYl5UE
-         gD2A==
-X-Gm-Message-State: AC+VfDwf30FYNSVG9rSRvczd8tMdt669fcA1yIYvEaUZZWcXNfPPrJ1Y
-	hTsTfs2VR4Rp5GRjtFnnyq4=
-X-Google-Smtp-Source: ACHHUZ6FAhHU+Za7H9g0Boog+saCu9YGFod3wjMwsWnawn+ag9re32rbUxQSPPglCDOpfLNweXodOg==
-X-Received: by 2002:a7b:c8ce:0:b0:3f4:2267:10c0 with SMTP id f14-20020a7bc8ce000000b003f4226710c0mr3464732wml.28.1685517895689;
-        Wed, 31 May 2023 00:24:55 -0700 (PDT)
+        bh=Y4X5Wohwv6l7HU9svLxZYiAxT8tGzCt99NLg9x4sH48=;
+        b=Ho8znri41zmJ1WDcZ3uKEtxStw1UYXt2MEIPpAsgFE6Rl0HFZtK6qPAQ0CD4JrtcGs
+         F5+OP2OA5XPy6qPCxJGhnnTVbRb5wdJHgX6v+flhWKc29jQGfrjx2JHJhc3RiEIys0uv
+         ne8g7kvrY5LaEoMRYPPnxFGvnISfjP2wIIiKsiZBUoV7HyQ4/g/wegjQABg/LbGqlF2w
+         uGi183grRdh4lqWYQWly5MVutPr2kRGn/lAjLmA2uatLhl0UEhcBrIgqJpq3CpkDmt+m
+         NxU2toRV/GNvi5Yx61WPGtxQm2HJSI5SKMN2LxbYTcB3GbRowgHdphpMjCQ4hUPOeyiu
+         DBpQ==
+X-Gm-Message-State: AC+VfDy6rTXr2F/hOwDla5gkszI34FKWTUbEIQhrkMlZ5jwe/Fp4QuZl
+	H8sFsLtWq0fd/30lpu6NX5g=
+X-Google-Smtp-Source: ACHHUZ4l8Rpu8ekx4hkNFGccONUxbjH37LBEkRGolmNei00ETECpzfuyFqy5GtAbgRijq28rpDHzfA==
+X-Received: by 2002:a1c:c906:0:b0:3f4:2c21:b52c with SMTP id f6-20020a1cc906000000b003f42c21b52cmr3293418wmb.39.1685518045063;
+        Wed, 31 May 2023 00:27:25 -0700 (PDT)
 Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id q13-20020a7bce8d000000b003f43f82001asm23321548wmj.31.2023.05.31.00.24.53
+        by smtp.gmail.com with ESMTPSA id n15-20020a1c720f000000b003f6cf9afc25sm19476238wmc.40.2023.05.31.00.27.23
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 31 May 2023 00:24:54 -0700 (PDT)
-Message-ID: <bc8f0ee3-1131-3f63-a982-913f8165aa7b@gmail.com>
-Date: Wed, 31 May 2023 09:24:52 +0200
+        Wed, 31 May 2023 00:27:23 -0700 (PDT)
+Message-ID: <de7389cb-8b38-49c9-4768-ba0ad49993d1@gmail.com>
+Date: Wed, 31 May 2023 09:27:22 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.0
-Subject: Re: [PATCH v3] arm64: dts: mediatek: Add cpufreq nodes for MT8192
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- angelogioacchino.delregno@collabora.com, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <20230317061944.15434-1-allen-kh.cheng@mediatek.com>
- <20230317195453.lpymxjk7oqvbxkq5@notapiano>
- <CAGXv+5GyLeVBAk_DXJoTxoG400mnq4y6pa1JXRD7Svc4rtMQBg@mail.gmail.com>
+Subject: Re: [RESEND 0/6] media: mediatek: Update video decoder nodes for
+ MT8195 and MT8192
 Content-Language: en-US, ca-ES, es-ES
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org,
+ Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+References: <20230303013842.23259-1-allen-kh.cheng@mediatek.com>
+ <4ebd1c9f-0460-4436-8e17-0e46e88f4828@notapiano>
+ <CAGXv+5Hd-8e9QWGQ2MB++xjNH0sRemmQnVnAk=CfE8DBhkYZQw@mail.gmail.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <CAGXv+5GyLeVBAk_DXJoTxoG400mnq4y6pa1JXRD7Svc4rtMQBg@mail.gmail.com>
+In-Reply-To: <CAGXv+5Hd-8e9QWGQ2MB++xjNH0sRemmQnVnAk=CfE8DBhkYZQw@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230531_002500_180922_994AE757 
-X-CRM114-Status: GOOD (  12.96  )
+X-CRM114-CacheID: sfid-20230531_002729_158825_DCCAF07A 
+X-CRM114-Status: GOOD (  15.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,36 +102,33 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 30/05/2023 09:29, Chen-Yu Tsai wrote:
-> On Sat, Mar 18, 2023 at 3:55 AM Nícolas F. R. A. Prado
+On 30/05/2023 09:28, Chen-Yu Tsai wrote:
+> On Tue, Apr 4, 2023 at 6:19 AM Nícolas F. R. A. Prado
 > <nfraprado@collabora.com> wrote:
 >>
->> On Fri, Mar 17, 2023 at 02:19:44PM +0800, Allen-KH Cheng wrote:
->>> Add the cpufreq nodes for MT8192 SoC.
+>> On Fri, Mar 03, 2023 at 09:38:36AM +0800, Allen-KH Cheng wrote:
+>>> This series is based on matthias github v6.3-tmp. Since there is a
+>>> dependence in the following series, I resend a series for them.
 >>>
->>> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+>>> patchwork.kernel.org/project/linux-mediatek/list/?series=702423
+>>> patchwork.kernel.org/project/linux-mediatek/list/?series=702078
 >>
->> Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
->> Tested-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+>> Hi Matthias,
 >>
->> Tested on Asurada Spherion Chromebook as well. In particular, verified that
->> applying this commit makes suspend/resume work. Before, it would hang during
->> resume:
->>
->>          Enabling non-boot CPUs ...
->>          Detected VIPT I-cache on CPU1
->>          GICv3: CPU1: found redistributor 100 region 0:0x000000000c060000
->>          CPU1: Booted secondary processor 0x0000000100 [0x412fd050]
->>
->> But with this commit applied the machine is able to proceed bringing up the
->> secondary processors and complete resume.
+>> this series has been completely reviewed and tested for a while, and the
+>> bindings patches were already picked up by Hans and are on their way to 6.4 [1].
+>> So could you please pick the devicetree patches?
 > 
-> Ping on this patch.
+> Ping again on this series.
 > 
-> Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+> The device tree patches can be picked up.
+> 
 
-Applied now, thanks for the ping.
+Nicolas, Chen, thanks for the ping. It's unfortunate that there are no email 
+send by the maintainer to the mailinglist to confirm that the patches got 
+accepted. So it's very helpful if you help me on that.
 
+Patches are applied now.
 Regards,
 Matthias
 
