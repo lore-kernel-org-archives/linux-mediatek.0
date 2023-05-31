@@ -4,80 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 878C1C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 May 2023 04:50:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F8BAC77B7C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 May 2023 06:35:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AIhKyHH3M7cbke7yuigX6jBzwG52Hnh4pfVGqCJbh2E=; b=FbgtFlheWgOha4VHelkcMH87Qm
-	ewzi8ZeeiuyQ1ejNlnyUdSqZCAFk9W2gH27FFeRULEaX0dYWxJpCcU8mpZRsyMAkhN68ghZ1lVTEN
-	yJ8nEKWQ+m93nd/yrBzhRadxUy1aZUsBpT4I3u2+cP9BEnqwR2C4oURwWyerfjRb9+VQYgqIcdUCC
-	W4zHpByR15ixestyASbbGxgrnF7kqswQ7HzFq5lvhFN31gDqzMXbZ3gfL9oP2Teo1RyiG52VHj/vh
-	K6gFKlV4AVWW7gqlBjZ6ielfwEcJsw3vyueJKprYs/025RudyEvmliP8qdZf3jTWYyHKXYyd6Rwz8
-	fCNU8w5A==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=PEwCfTaICvYvCwQRPGK1g4zyztT+iiOIX15/8C0y2cc=; b=jotZygnNmbhlS8Ld47kO0anABg
+	BOPm3H1EdtAWVN1f5FaXwVyDZZUEf24sOnlgIUgIFnZ1GhPLy/9o+eNNg39h/nDdpP+MWRDGErloQ
+	TIqohaTgN7C/ywN5/kkF6t3rMtuyJS9H6nNISyiXuACrVU32QxuSv+zyAUJcLakybZbFhFK46qptp
+	cTsjU8LdIObDKs6VbW1JZjCe4qvtMRbxLGEBsC4P/G0ZMlbVKmJLCT8VwIf0kNqde5T/FPLZrxaZL
+	G6BpHdKchP6Z8/JgV7kJlOUAUHkru7nfyuDgR3c6ILMXl2snJ7eH0oHfInTTOFXsxufPRXgEbJhPu
+	2QrKEhmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4Dmc-00G5Bs-0D;
-	Wed, 31 May 2023 04:50:02 +0000
-Received: from mail-qt1-x82f.google.com ([2607:f8b0:4864:20::82f])
+	id 1q4FQw-00GJVG-01;
+	Wed, 31 May 2023 06:35:46 +0000
+Received: from mail-ot1-x32c.google.com ([2607:f8b0:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4DmX-00G59o-1d
+	id 1q4FQt-00GJUE-0A
 	for linux-mediatek@lists.infradead.org;
-	Wed, 31 May 2023 04:50:00 +0000
-Received: by mail-qt1-x82f.google.com with SMTP id d75a77b69052e-3f81396e435so23485311cf.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 30 May 2023 21:49:55 -0700 (PDT)
+	Wed, 31 May 2023 06:35:44 +0000
+Received: by mail-ot1-x32c.google.com with SMTP id 46e09a7af769-6af7e368bb7so2260766a34.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 30 May 2023 23:35:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1685508595; x=1688100595;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=AIhKyHH3M7cbke7yuigX6jBzwG52Hnh4pfVGqCJbh2E=;
-        b=HdOhh3avnmm0A0X2CKBtkWj8n2mTjkJRDj54EC/L41Z3fBgA9z+7gs5CQheZrYp+o/
-         HVmBUDma0iAod0p7zCGEMYvaBp4y0h/cMXXqxw9sYKFjL4/OCDrVIkmAJQ6hNqRynki4
-         i76WOp31bxaF+BNXRXsitsveSOZcPHGqnEs4U=
+        d=chromium.org; s=google; t=1685514940; x=1688106940;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=PEwCfTaICvYvCwQRPGK1g4zyztT+iiOIX15/8C0y2cc=;
+        b=PuIbwlKaUGt9MSo2eWXDmtINbwnWoPk+SXdAsF5fKni3qVC7byx8t036vE/O7cKTOo
+         Rys+j9bafeFY3XdNeAnNbXXOICeOd7OOBoCryHJzpL5RcJSd1i4MJ8aY4e22e3eA2r1v
+         UjJZXafKix/LQs2iuVCFBB5xIjflONwWQorT4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685508595; x=1688100595;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=AIhKyHH3M7cbke7yuigX6jBzwG52Hnh4pfVGqCJbh2E=;
-        b=UYhtHxpyDkM/qjy5RyB8kgYjHngMGmI8EDfiMtPLQaW489zB+rsp2AQUaWvfcXhpPA
-         VUGnLAcQiv8h/FP6TCvi2U6Cwi0aCbrjJViMjuAKuY3ycNSIeIkmuJxVDr10VDMxkPuj
-         o5oJHqDQo35suGmQhjoKg6uCVYmAs1mQ4bi8FyUOXVu9x5gLrvIFztjC9Mazy8m+nuKK
-         2wLvDcliXDUcFIO0jxOuLbmpPlmpI7s+39xaRpyCluOIUZpJ6z9nnBb9fyf+YaXtXdnR
-         JP6SWEwDyApXm/4sKrpjPFN518PmbhhzKJW65caGJr9Rvaz39ekitodCyLp9KLtJlGvu
-         bqZg==
-X-Gm-Message-State: AC+VfDy6R6jNwk6u+6F1lyq8I07JDO+tj23t5im2U9D63bMQ4ldhWXCq
-	F0XH+RYIdwcsj9Gx1wP5QLF5x+NDYlovnmUYpGJrIw==
-X-Google-Smtp-Source: ACHHUZ59KzB24IVnct48XOmbgp0HaBygejoFOdaodm4dgQC79KaZmYJr8htlEBsi9gDXYnmpG1Slgn3o9UH1CCtdjvo=
-X-Received: by 2002:ac8:5c43:0:b0:3f6:a760:2487 with SMTP id
- j3-20020ac85c43000000b003f6a7602487mr119062qtj.59.1685508594852; Tue, 30 May
- 2023 21:49:54 -0700 (PDT)
-MIME-Version: 1.0
-References: <20230530195132.2286163-1-bero@baylibre.com>
-In-Reply-To: <20230530195132.2286163-1-bero@baylibre.com>
+        d=1e100.net; s=20221208; t=1685514940; x=1688106940;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=PEwCfTaICvYvCwQRPGK1g4zyztT+iiOIX15/8C0y2cc=;
+        b=k2uNiNNWdeq/AQmk+HvzfySOMhMOKvUSS5PVF1GU4FRqBDPID2PFZFil73gnGIKF5R
+         0pHE1d8i2MlRS4o7G2R+MVt5ZIHwu1y4YgFiWslrbtZVW9iC3XBp5tTVcPvvPhagIsDC
+         N/fYyh9yZEV1HWwfxEl7pa1YU5Fl9JV+/U4urgM7pjctB+xAJXws09j/fJ7mj8WxsM/B
+         lPa8YyVGY1LERtf5BRHLqxFVIXOEvwdHUW98R+SIpVcD8H+UdAFf+71B1wFTX9jegOzi
+         Of8vDlJ7N929+AbOfDGhaqn602/gK+PKgxdFw3s4qaJ76DsYrOGOE0cAOah4Zf/hV4Gv
+         0Smw==
+X-Gm-Message-State: AC+VfDxlXeVqjTJ5sv13D2TXufjG8gmhkbaBHrDkm71HyLzlSWRJtzMc
+	Xg0ENmSslwtZDLIjWqGaoTb0Mg==
+X-Google-Smtp-Source: ACHHUZ4quZpuYe7FI5h99AuDIMN0SwFckVXd0u92B8fxRkbiGlGOHNgDRF5LdN1wZA7gprk0Iz5naw==
+X-Received: by 2002:a9d:7546:0:b0:6af:9738:3483 with SMTP id b6-20020a9d7546000000b006af97383483mr1195796otl.29.1685514940024;
+        Tue, 30 May 2023 23:35:40 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:3052:fa:c737:8f43])
+        by smtp.gmail.com with ESMTPSA id j12-20020a62b60c000000b0064cb0845c77sm2581010pff.122.2023.05.30.23.35.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 30 May 2023 23:35:39 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 31 May 2023 12:49:43 +0800
-Message-ID: <CAGXv+5EVfgEBDm=7MmQ=OsP322KmE23PwycJ-0LjU+3dEZygUQ@mail.gmail.com>
-Subject: Re: [PATCH v4 0/5] Add LVTS support for mt8192
-To: =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>, 
-	nfraprado@collabora.com
-Cc: daniel.lezcano@linaro.org, angelogioacchino.delregno@collabora.com, 
-	rafael@kernel.org, amitk@kernel.org, rui.zhang@intel.com, 
-	matthias.bgg@gmail.com, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
-	rdunlap@infradead.org, ye.xingchen@zte.com.cn, p.zabel@pengutronix.de, 
-	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	devicetree@vger.kernel.org, james.lo@mediatek.com, rex-bc.chen@mediatek.com, 
-	abailon@baylibre.com, amergnat@baylibre.com, khilman@baylibre.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] soc: mediatek: SVS: Fix MT8192 GPU node name
+Date: Wed, 31 May 2023 14:35:30 +0800
+Message-ID: <20230531063532.2240038-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.41.0.rc0.172.g3f132b7071-goog
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230530_214957_545985_FE004DB7 
-X-CRM114-Status: GOOD (  19.08  )
+X-CRM114-CacheID: sfid-20230530_233543_113409_C35B385E 
+X-CRM114-Status: GOOD (  11.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,82 +89,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 31, 2023 at 3:51=E2=80=AFAM Bernhard Rosenkr=C3=A4nzer <bero@ba=
-ylibre.com> wrote:
->
-> From: Balsam CHIHI <bchihi@baylibre.com>
->
-> Add full LVTS support (MCU thermal domain + AP thermal domain) to MediaTe=
-k MT8192 SoC.
-> Also, add Suspend and Resume support to LVTS Driver (all SoCs),
-> and update the documentation that describes the Calibration Data Offsets.
->
-> Changelog:
->     v4 :
->         - Shrink the lvts_ap thermal sensor I/O range to 0xc00 to make
->           room for SVS support, pointed out by
->           AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora=
-.com>
->
->     v3 :
->         - Rebased :
->             base-commit: 6a3d37b4d885129561e1cef361216f00472f7d2e
->         - Fix issues in v2 pointed out by N=C3=ADcolas F. R. A. Prado <nf=
-raprado@collabora.com>:
->           Use filtered mode to make sure threshold interrupts are trigger=
-ed,
+Device tree node names should be generic. The planned device node name
+for the GPU, according to the bindings and posted DT changes, is "gpu",
+not "mali".
 
-I'm seeing sensor readout (either through sysfs/thermal/<x>/temp or hwmon)
-fail frequently on MT8192. If I run `sensors` (lm-sensors), at least a coup=
-le
-of the LVTS sensors would be N/A. Not sure if this is related to this chang=
-e.
+Fix the GPU node name in the SVS driver to follow.
 
+Fixes: 0bbb09b2af9d ("soc: mediatek: SVS: add mt8192 SVS GPU driver")
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ drivers/soc/mediatek/mtk-svs.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-ChenYu
+diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
+index 81585733c8a9..3a2f97cd5272 100644
+--- a/drivers/soc/mediatek/mtk-svs.c
++++ b/drivers/soc/mediatek/mtk-svs.c
+@@ -2061,9 +2061,9 @@ static int svs_mt8192_platform_probe(struct svs_platform *svsp)
+ 		svsb = &svsp->banks[idx];
+ 
+ 		if (svsb->type == SVSB_HIGH)
+-			svsb->opp_dev = svs_add_device_link(svsp, "mali");
++			svsb->opp_dev = svs_add_device_link(svsp, "gpu");
+ 		else if (svsb->type == SVSB_LOW)
+-			svsb->opp_dev = svs_get_subsys_device(svsp, "mali");
++			svsb->opp_dev = svs_get_subsys_device(svsp, "gpu");
+ 
+ 		if (IS_ERR(svsb->opp_dev))
+ 			return dev_err_probe(svsp->dev, PTR_ERR(svsb->opp_dev),
+-- 
+2.41.0.rc0.172.g3f132b7071-goog
 
->           protocol documentation, cosmetics
->         - I (bero@baylibre.com) will be taking care of this patchset
->           from now on, since Balsam has left BayLibre. Thanks for
->           getting it almost ready, Balsam!
->
->     v2 :
->         - Based on top of thermal/linux-next :
->             base-commit: 7ac82227ee046f8234471de4c12a40b8c2d3ddcc
->         - Squash "add thermal zones and thermal nodes" and
->             "add temperature mitigation threshold" commits together to fo=
-rm
->             "arm64: dts: mediatek: mt8192: Add thermal nodes and thermal =
-zones" commit.
->         - Add Suspend and Resume support to LVTS Driver.
->         - Update Calibration Data documentation.
->         - Fix calibration data offsets for mt8192
->             (Thanks to "Chen-Yu Tsai" and "N=C3=ADcolas F. R. A. Prado").
->         https://lore.kernel.org/all/20230425133052.199767-1-bchihi@baylib=
-re.com/
->         Tested-by: Chen-Yu Tsai <wenst@chromium.org>
->
->     v1 :
->         - The initial series "Add LVTS support for mt8192" :
->             "https://lore.kernel.org/all/20230307163413.143334-1-bchihi@b=
-aylibre.com/".
->
-> Balsam CHIHI (5):
->   dt-bindings: thermal: mediatek: Add LVTS thermal controller definition
->     for mt8192
->   thermal/drivers/mediatek/lvts_thermal: Add suspend and resume
->   thermal/drivers/mediatek/lvts_thermal: Add mt8192 support
->   arm64: dts: mediatek: mt8192: Add thermal nodes and thermal zones
->   thermal/drivers/mediatek/lvts_thermal: Update calibration data
->     documentation
->
->  arch/arm64/boot/dts/mediatek/mt8192.dtsi      | 454 ++++++++++++++++++
->  drivers/thermal/mediatek/lvts_thermal.c       | 160 +++++-
->  .../thermal/mediatek,lvts-thermal.h           |  19 +
->  3 files changed, 631 insertions(+), 2 deletions(-)
->
-> base-commit: 8c33787278ca8db73ad7d23f932c8c39b9f6e543
-> --
-> 2.41.0.rc2
->
 
