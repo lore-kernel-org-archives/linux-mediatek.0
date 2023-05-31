@@ -4,86 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95B50C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 May 2023 13:59:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7662FC7EE23
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 May 2023 16:10:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0vEqY/E4kBl9Nf1zMfIIL6jodud4pGK1JF+jErJgfEs=; b=SOP83bqliHa568RQRDzODioH2T
-	NtIQyj08B7Hr1vvZxiNZCJ82D96IAdf0DJAbR2sG5medTSyoKhKfUlGKQIYZJUHj8NenK9I2OkBgN
-	1P9DjKy+2CPM3mpfiThe0e9lYa23jNlpn3s54iwZ4zgLls8B/MxwWJ5oMQ0fJqHdnPyYSa1mrsA9b
-	41b9w6TmmFWGVlhNuNU0oD0Bb1UCX2fip1V7MEAQanEnlOLNjwAfpmaqQyoVjFJmcJatFyGv95v+J
-	nnNIEUAX9mpxahWIReOLd2u+zdjh2TZCTSrMZ1Tv1/Q7FF1PNmH6QZo4V6wO+SnckxPhfyJ9pNQw9
-	OWc9iT7A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=6GI1BVm/DSqQynzkzsw40Vc0lhIvV9X2nYr+AT8qfRw=; b=xYC58aZvb044jwvWP0Xthsb+zv
+	Q/KVfr6NAggQVEEskDAH+tE5jDJI7HV/PVAZE8m5PHUjnE8BmMdposs4corptjBbMCDfHiPEO/7CY
+	kTfApw2ZPnL5YQVs05oNqSrGGlM1DcC+q88Se8PI4NS5MG3dG7X4dXAgfL51qeL38oOsMqQxCAHhV
+	D5D8hKBQTLUdsJeRp3AVfBwAXOQgNzGPyNhLoEoVLO2OcmUvhlRmsKGznFvfQqP95sQfaSR5ETjrm
+	53mYrnEOoeDQYEqLnh/qR624yDF6wtB+o9jjlGIhDoF39pdpS1Kj9sLqTHTPPZTcFBGh5kqcthzRK
+	jFGJKq/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4MLo-0003mH-2d;
-	Wed, 31 May 2023 13:58:56 +0000
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+	id 1q4OPI-000Q6K-2u;
+	Wed, 31 May 2023 16:10:40 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4MLl-0003jy-0a
-	for linux-mediatek@lists.infradead.org;
-	Wed, 31 May 2023 13:58:54 +0000
-Received: by mail-pj1-x1030.google.com with SMTP id 98e67ed59e1d1-256766a1c43so2159222a91.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 31 May 2023 06:58:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1685541529; x=1688133529;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=0vEqY/E4kBl9Nf1zMfIIL6jodud4pGK1JF+jErJgfEs=;
-        b=neIWSeebU38L+k7ehAS+RBxHNWEupmG722beJumbpZqMWPccr+dJUq/da+lyhS+3d0
-         A7eN6MEyJse/zz2b93tTm7ogYYpilgD7gr09jUGBOCYhgwAeTR6P8flu98t4NQVGFPg9
-         rnMcVgarQAe+HSvd6ojjp89K/RTl0OKUFdDIg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685541529; x=1688133529;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=0vEqY/E4kBl9Nf1zMfIIL6jodud4pGK1JF+jErJgfEs=;
-        b=M7xTTK5yxbdkaqsVUujhmyBPHVZRkVtrcwJX9Wl3i8dgyldnPpGGJs12Nsd1mCTSti
-         PuUeFa4tmMaUlXgStwQD17Gr+YOlx7XlYkS3W5jIDAAl3KTAYfVeSB9muj34oawEy60L
-         Sy7eFFJ8dblJD42cDIEypjMaq/8KNRt0gNMs915Nh1pCtvkr6AC+FrTQiPaja/vtimkb
-         3iqWJvNWy8VUmGgtmYQvcT7g3PwLeYjCZkMemeVSB2NBHNOb8ZwhlZLgMBy7FMkiadLk
-         TumXEPR1K3kMLq7Slc4DGLsfsIdizL/4zJW/ta6BzPb7sbAh19b2Xp6f/zypR+Nb2IHJ
-         I6Wg==
-X-Gm-Message-State: AC+VfDzfhdTBV7Jwhif5ys7mmlLb6Iy/cEfGrZ7CqSh8HKAF715Rnqcy
-	qFKi3VBFTIhBCyeruRwIkDYaErfzp4ojoy+VkLE=
-X-Google-Smtp-Source: ACHHUZ57qxtC02+70aFaDJBdbKoPpdEBRW4KgCVCStpt3wm0VQgFJg7DAuiG0eZn98o17kA0IEOeHw==
-X-Received: by 2002:a17:90b:1d07:b0:256:78d7:9c75 with SMTP id on7-20020a17090b1d0700b0025678d79c75mr4766616pjb.19.1685541529007;
-        Wed, 31 May 2023 06:58:49 -0700 (PDT)
-Received: from mail-pl1-f174.google.com (mail-pl1-f174.google.com. [209.85.214.174])
-        by smtp.gmail.com with ESMTPSA id 18-20020a17090a001200b0025645ce761dsm1329172pja.35.2023.05.31.06.58.48
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 31 May 2023 06:58:48 -0700 (PDT)
-Received: by mail-pl1-f174.google.com with SMTP id d9443c01a7336-1b025aaeddbso126415ad.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 31 May 2023 06:58:48 -0700 (PDT)
-X-Received: by 2002:a17:903:7cb:b0:1ab:2763:e003 with SMTP id
- ko11-20020a17090307cb00b001ab2763e003mr110372plb.17.1685541527389; Wed, 31
- May 2023 06:58:47 -0700 (PDT)
+	id 1q4OPG-000Q4H-1a;
+	Wed, 31 May 2023 16:10:39 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1q4OP4-0001N8-0V;
+	Wed, 31 May 2023 16:10:26 +0000
+Date: Wed, 31 May 2023 17:10:14 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: devicetree@vger.kernel.org, linux-i2c@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Qii Wang <qii.wang@mediatek.com>, Sam Shih <sam.shih@mediatek.com>
+Cc: =?utf-8?B?6YOt5bCP5qGl?= <joe@gainstrong.cn>
+Subject: [PATCH 1/2] dt-bindings: i2c: i2c-mt65xx: add additional clocks
+Message-ID: <5f15212060f82fb94239174c4e4b46c151645fe8.1685549360.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-References: <20230531134020.3383253-1-sashal@kernel.org> <20230531134020.3383253-12-sashal@kernel.org>
-In-Reply-To: <20230531134020.3383253-12-sashal@kernel.org>
-From: Doug Anderson <dianders@chromium.org>
-Date: Wed, 31 May 2023 06:58:35 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=WpsV8hZBkHVbVCSkatnkGN=oMebEGykGDvaOr+2yyikQ@mail.gmail.com>
-Message-ID: <CAD=FV=WpsV8hZBkHVbVCSkatnkGN=oMebEGykGDvaOr+2yyikQ@mail.gmail.com>
-Subject: Re: [PATCH AUTOSEL 6.3 12/37] irqchip/gic-v3: Disable pseudo NMIs on
- Mediatek devices w/ firmware issues
-To: Sasha Levin <sashal@kernel.org>
-Cc: linux-kernel@vger.kernel.org, stable@vger.kernel.org, 
-	Julius Werner <jwerner@chromium.org>, Marc Zyngier <maz@kernel.org>, tglx@linutronix.de, 
-	matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230531_065853_251733_3A5A09BC 
-X-CRM114-Status: GOOD (  23.52  )
+X-CRM114-CacheID: sfid-20230531_091038_528891_76914439 
+X-CRM114-Status: UNSURE (   8.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,56 +67,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Add pck and mck clocks which are needed to access I2C registers on MT7981.
 
-On Wed, May 31, 2023 at 6:40=E2=80=AFAM Sasha Levin <sashal@kernel.org> wro=
-te:
->
-> From: Douglas Anderson <dianders@chromium.org>
->
-> [ Upstream commit 44bd78dd2b8897f59b7e3963f088caadb7e4f047 ]
->
-> Some Chromebooks with Mediatek SoCs have a problem where the firmware
-> doesn't properly save/restore certain GICR registers. Newer
-> Chromebooks should fix this issue and we may be able to do firmware
-> updates for old Chromebooks. At the moment, the only known issue with
-> these Chromebooks is that we can't enable "pseudo NMIs" since the
-> priority register can be lost. Enabling "pseudo NMIs" on Chromebooks
-> with the problematic firmware causes crashes and freezes.
->
-> Let's detect devices with this problem and then disable "pseudo NMIs"
-> on them. We'll detect the problem by looking for the presence of the
-> "mediatek,broken-save-restore-fw" property in the GIC device tree
-> node. Any devices with fixed firmware will not have this property.
->
-> Our detection plan works because we never bake a Chromebook's device
-> tree into firmware. Instead, device trees are always bundled with the
-> kernel. We'll update the device trees of all affected Chromebooks and
-> then we'll never enable "pseudo NMI" on a kernel that is bundled with
-> old device trees. When a firmware update is shipped that fixes this
-> issue it will know to patch the device tree to remove the property.
->
-> In order to make this work, the quick detection mechanism of the GICv3
-> code is extended to be able to look for properties in addition to
-> looking at "compatible".
->
-> Reviewed-by: Julius Werner <jwerner@chromium.org>
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> Signed-off-by: Marc Zyngier <maz@kernel.org>
-> Link: https://lore.kernel.org/r/20230515131353.v2.2.I88dc0a0eb1d9d537de61=
-604cd8994ecc55c0cac1@changeid
-> Signed-off-by: Sasha Levin <sashal@kernel.org>
-> ---
->  drivers/irqchip/irq-gic-common.c |  8 ++++++--
->  drivers/irqchip/irq-gic-common.h |  1 +
->  drivers/irqchip/irq-gic-v3.c     | 20 ++++++++++++++++++++
->  3 files changed, 27 insertions(+), 2 deletions(-)
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Please delay picking this across all stable versions unless until you
-can also get Marc's fix:
+diff --git a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
+index fda0467cdd954..550795f6573c5 100644
+--- a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
++++ b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
+@@ -78,6 +78,8 @@ properties:
+       - const: dma
+       - const: arb
+       - const: pmic
++      - const: mck
++      - const: pck
+ 
+   clock-div:
+     $ref: /schemas/types.yaml#/definitions/uint32
+-- 
+2.40.1
 
-https://lore.kernel.org/r/168544149933.404.717399647227994720.tip-bot2@tip-=
-bot2
-
--Doug
 
