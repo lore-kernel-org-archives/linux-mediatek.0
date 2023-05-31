@@ -4,78 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D242C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 May 2023 07:43:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CED3C77B7C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 May 2023 07:44:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2hCCJrsaz/NjGrHJ94qpM3huv+xsF2o6fZiZu7/z8AY=; b=SFi/CmzYeXlVbl5ShXfFvFlqU6
-	nCNsxCfXsw7pQ2qW+a2DXXiVnH+tfLrKlyCNzkJmsCi3ymwc3K+2KdEYaJyLW6uO+j/+mqXSiECNw
-	4wM+lFN83LlfZ7TVdg73vtJPV1T9pz5SeemQXKdBbiQNlstwh5KxSflDKS8O03xWFJ3eCQS4RSk0X
-	4jeS3l6myJSBZSQDrA/Q0ytvIjDNteDn6yP2dp1b9je8oq6TiJyx0oedZ3WQRrx14aNAST9o3KNS6
-	r31X1CTMQh3rkxFgL+7LzdFcnbKq0TlmweBJYep4RG5evkY+psxA+yJ8sl/93r9v63EJXYgWEvTf+
-	UB8XR/Qw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=j4nc3W4SI7d/HcZGsXX157wdAbHs0EiK5je8w50UqyQ=; b=upJsiaYv0IGBBw6vWwEAe61iWz
+	Y8LkYxwo2LjKcNP4UORzOaGAHerPxWYfclEaQFKLzt9ZAawME9cJpTRoiBaumd95b4kAb+NSKvtms
+	hIVEUf95HZoRCDT8UKSy2SPuyWco4fW7tjLT+Z6vO+5RKbjV0zC1TK4iZ5smzyDwLnnLHzLvfSu8f
+	DhOkgV2ibHahMogPMr9JwI+Tz5p9+Dv2V0WUX5/kFO6fgDPbS8YPTcJSL/c0d6Z/zipHwS+akUUcO
+	4p7rNZn5SFhaLSJvaBDoVn4cnabLUARXqHV13hw7XOfJwAxgJP5HgWdgQDMq/DSQhM1aIihsxf6v9
+	p9IwrpeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4GUT-00GUMz-2D;
-	Wed, 31 May 2023 07:43:29 +0000
-Received: from mail-qv1-xf2c.google.com ([2607:f8b0:4864:20::f2c])
+	id 1q4GVV-00GUZu-0J;
+	Wed, 31 May 2023 07:44:33 +0000
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4GUQ-00GULg-0Q
+	id 1q4GVS-00GUXi-1x
 	for linux-mediatek@lists.infradead.org;
-	Wed, 31 May 2023 07:43:27 +0000
-Received: by mail-qv1-xf2c.google.com with SMTP id 6a1803df08f44-62615694bb9so19949506d6.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 31 May 2023 00:43:24 -0700 (PDT)
+	Wed, 31 May 2023 07:44:31 +0000
+Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-1b011cffef2so47911345ad.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 31 May 2023 00:44:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1685519003; x=1688111003;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=2hCCJrsaz/NjGrHJ94qpM3huv+xsF2o6fZiZu7/z8AY=;
-        b=VgW5pvZ3wqpWZIFiq2dd7Bfobqfflrkuq1mJb47cnl5/aQQxXhGgkRBV+EjtQexHxd
-         lJZWjBXAxCLvKTbwl27X2FfjdySA+Jwm64MC+9lvyp1mBq4kYsmUet2vBoCNCscQBHV0
-         XZoYE0Gq4tiQumSoLTu79fhV4aTBeW4GO+O1E=
+        d=chromium.org; s=google; t=1685519067; x=1688111067;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=j4nc3W4SI7d/HcZGsXX157wdAbHs0EiK5je8w50UqyQ=;
+        b=NTvt2q5xE99luFijzCiaKdgrJpfmjmv65/TgTQck8seI3zdcz2O0+d9d53gBoulgmj
+         Q8azOkszB+GhpKVJetOCb7uT9OpHB9aVghwW3gzcvys8enS9ICkccqD40EXLgB+d38pR
+         jxLv1bnFxJGe4RkAm8TUbfUH1kXV4ms5fTYDo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685519003; x=1688111003;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=2hCCJrsaz/NjGrHJ94qpM3huv+xsF2o6fZiZu7/z8AY=;
-        b=A+5x8ymm6iJ3widoqS1lgQlHOEk6qUadHSgHrawH6oHUnFqPMflJAyRljqxPBkTMTo
-         8+hCLvZRQpmJNYUX+JrGjBOTRvEyNOysW4Vp5ZjS9eGor3nWD17lcUYFLpyuZvMN54GU
-         jR7caBLhbZ4yQyBE61H+hDmaKmguA1J7Ly9go1vgkiV4aaRqtQM1fwdR+HpavuNoZSgy
-         McNnk4hFtEwvOpOOrO7LR11rEbOfrhcvVhtH4TY4cgzJNmzn1P3TK6kiExhs+wnm6B+z
-         xXzkcvfrHUf+6wuB9eT4MhVjFjXkNiJ4a274lS0GXhkQx8RWWUak3hfcIBo8jCpo1IW4
-         lAVA==
-X-Gm-Message-State: AC+VfDx+OneSKuoZQlrP0jR/0yp/jqPY0tSxs06vun6wnwBZQHa4tS0x
-	J0KdoZ8pViJYRUn60K1d+6MfLOHIRVLunug3ffcw8A==
-X-Google-Smtp-Source: ACHHUZ55CaO/7pKYADZLoW2cfgMbio+kJB5f8rUaty9cLHbxEhYWcWalPWE0GNlEOIgz74JZcSTB8c25FAlzJvkwUKw=
-X-Received: by 2002:a05:6214:528d:b0:625:7802:f36d with SMTP id
- kj13-20020a056214528d00b006257802f36dmr4655699qvb.24.1685519003409; Wed, 31
- May 2023 00:43:23 -0700 (PDT)
-MIME-Version: 1.0
-References: <20230306080659.15261-1-jason-jh.lin@mediatek.com> <20230306080659.15261-3-jason-jh.lin@mediatek.com>
-In-Reply-To: <20230306080659.15261-3-jason-jh.lin@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 31 May 2023 15:43:12 +0800
-Message-ID: <CAGXv+5EPktjMABhtWf9dL-25dAe=Mf4=BSMmE+=4m2WisDXXFQ@mail.gmail.com>
-Subject: Re: [PATCH v8 2/2] soc: mediatek: remove DDP_DOMPONENT_DITHER from enum
+        d=1e100.net; s=20221208; t=1685519067; x=1688111067;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=j4nc3W4SI7d/HcZGsXX157wdAbHs0EiK5je8w50UqyQ=;
+        b=MLM7DNNKDqbPyC6q8a3JAyVRMx9sEdZPke3hLhwwGD2Dm/ugrtSCe+h5zl8bzoFU9x
+         lV+6QoE3cw4zfWgIqqreEYbuowP1rB+oMObv0jEuoQmM1ot6lHXTHbiD/0IJShBe2Nrz
+         eRbuunES9BfFRMG2WpD6b8WZZkLhpxXX//r5NR20uus82WKAYSE2EGHL2ljaWPmYBlSe
+         4jlx9//y+8G76L42/6tCMi6E2dfqpyt9EmysFVbkTYzxFCRqEFBbRdy65ozaQUhBp9dn
+         9SSjIy4/6Czv4+WsGjdDiYRCxmURysaz43Z37HfLwf+cvciaU0Xgr2jbNmsHbWvPPcSs
+         aeQw==
+X-Gm-Message-State: AC+VfDyA50tU9zUQguPazFjCW8x2LXImghZiGKCuE2cuNHpSv7EOcJsf
+	kyX4N5y+wFrlQEG6FZoQPUYNGg==
+X-Google-Smtp-Source: ACHHUZ5zzqgCNrh8XTUiFC/pDJbMydQ/sOdQ8Cgd8+eUrRvEpiSm6wVHUrcKlPo0bdwkNGNG4NPCUA==
+X-Received: by 2002:a17:902:ecc2:b0:1a6:a405:f714 with SMTP id a2-20020a170902ecc200b001a6a405f714mr5385355plh.63.1685519067154;
+        Wed, 31 May 2023 00:44:27 -0700 (PDT)
+Received: from hsinyi-z840.tpe.corp.google.com ([2401:fa00:1:10:fbde:7ab0:3462:1188])
+        by smtp.gmail.com with ESMTPSA id c3-20020a170902d48300b001b050db1894sm647616plg.36.2023.05.31.00.44.25
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 31 May 2023 00:44:26 -0700 (PDT)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
 To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Jason-JH.Lin" <jason-jh.lin@mediatek.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Nathan Lu <nathan.lu@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, 
-	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com, 
-	Rex-BC Chen <rex-bc.chen@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH stable 6.3] arm64: dts: mediatek: mt8183: kukui: Add scp firmware-name
+Date: Wed, 31 May 2023 15:42:44 +0800
+Message-ID: <20230531074421.888652-1-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.41.0.rc0.172.g3f132b7071-goog
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230531_004326_241651_39C0F81B 
-X-CRM114-Status: GOOD (  13.75  )
+X-CRM114-CacheID: sfid-20230531_004430_649335_63A1EDCF 
+X-CRM114-Status: UNSURE (   9.54  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,48 +91,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Matthias,
+The upstream SCP firmware path is /lib/firmware/mediatek/mt8183/scp.img
 
-On Mon, Mar 6, 2023 at 4:07=E2=80=AFPM Jason-JH.Lin <jason-jh.lin@mediatek.=
-com> wrote:
->
-> After mmsys and drm change DITHER enum to DDP_COMPONENT_DITHER0,
-> mmsys header can remove the useless DDP_COMPONENT_DITHER enum.
->
-> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
-> Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+---
+ arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 2 ++
+ 1 file changed, 2 insertions(+)
 
-CK didn't pick up this patch. Since the other patch already got picked up
-in v6.4-rc1, could you merge this for v6.5?
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+index 63952c1251dfd..7b2b175370443 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+@@ -822,6 +822,8 @@ &pwm0 {
+ 
+ &scp {
+ 	status = "okay";
++
++	firmware-name = "mediatek/mt8183/scp.img";
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&scp_pins>;
+ 
+-- 
+2.41.0.rc0.172.g3f132b7071-goog
 
-
-Thanks
-ChenYu
-
-
-> ---
->  include/linux/soc/mediatek/mtk-mmsys.h | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
->
-> diff --git a/include/linux/soc/mediatek/mtk-mmsys.h b/include/linux/soc/m=
-ediatek/mtk-mmsys.h
-> index dc2963a0a0f7..8eb5846985b4 100644
-> --- a/include/linux/soc/mediatek/mtk-mmsys.h
-> +++ b/include/linux/soc/mediatek/mtk-mmsys.h
-> @@ -27,8 +27,7 @@ enum mtk_ddp_comp_id {
->         DDP_COMPONENT_CCORR,
->         DDP_COMPONENT_COLOR0,
->         DDP_COMPONENT_COLOR1,
-> -       DDP_COMPONENT_DITHER,
-> -       DDP_COMPONENT_DITHER0 =3D DDP_COMPONENT_DITHER,
-> +       DDP_COMPONENT_DITHER0,
->         DDP_COMPONENT_DITHER1,
->         DDP_COMPONENT_DP_INTF0,
->         DDP_COMPONENT_DP_INTF1,
-> --
-> 2.18.0
->
 
