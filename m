@@ -4,95 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46EA1C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jun 2023 20:54:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01D05C77B7E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jun 2023 21:37:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aPwIIZji4mV+ZRru26BAK0A17cLTb3lSIzhJ0eieN5U=; b=RixddWTXQPIbZ23vu5KMdsCunU
-	2IE1mxyNtjThuExGxFL0ypc6fJJMLNWPrJYoD2jDTc8wx1dt2CZJ1NKsRvODRH/HbdJWNU0LdpxNu
-	9gvXmkQsYeIIjE46Oiv9kNzcFlJ3NW8Ckpx45E8pLFozsx3pq6zKiHKiqygx7mIH0Q8+XtKVKh06v
-	J1VNGlznsJNgW8EM2XXYKyci67LkfwISkSW+bqbY+xQYd/Oql51Qex86HqOJr+zk8wLbZ9wyfUBty
-	zoJjL3Ywv9joGL5YGMoaSMTc6Ph2KywRWf+llQaOni39fuWTmpNH8/0BwQGL1AqelWNrdGQFaWpKq
-	8cMESqXQ==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=cD1oXoh/3Z/KfThXtyauLVjeibOT6BRPQ1K9Q4l7F2I=; b=NkYp6ORqcdcH6VF21WmpuEr9c/
+	Ib1/rlqnmZoDfbQhum925CRtAYnS8TKzI2vuTxVhfxpHNqv4jtdq4D7IzN7ZvAdo5j5Iau+io0bnk
+	gJIg8awHcBgV6Rzapr8SeAQjo8zd1YPFNbn9CYTJk/kdDB4kKGDkqomp407bn8ZiS8oWioQUBFcF/
+	CiX4MhJzrsSOkVrQpssfx9coSlO64U85FQPKUc94G+ea4Ty0GyTr/BfgkyW3G1auJO0MdD088b0hW
+	Q72MjIXP+rPyxDxfaXnqmL+A76t1SIXXUhLZDC/AO7+wRYrk+jmHRFx3ESUDA4mLpUS0OnFKVFHlO
+	MbFCHdGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4pJl-004vBZ-1Z;
-	Thu, 01 Jun 2023 20:54:45 +0000
-Received: from mail-pl1-f176.google.com ([209.85.214.176])
+	id 1q4pzL-00510X-2X;
+	Thu, 01 Jun 2023 21:37:43 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4pJi-004vAw-2i;
-	Thu, 01 Jun 2023 20:54:44 +0000
-Received: by mail-pl1-f176.google.com with SMTP id d9443c01a7336-1b02497f4cfso8090315ad.3;
-        Thu, 01 Jun 2023 13:54:41 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685652880; x=1688244880;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=aPwIIZji4mV+ZRru26BAK0A17cLTb3lSIzhJ0eieN5U=;
-        b=ZsrKck26M/93egYVOzkkcepE6oesk4BRkxl9P3NJYmxRLgYy4eDHUWJsJnNlYjKzvo
-         UkcwuZ/sIVwWbRf7M7pXFVRDIk9kQgBfUSO4NrLrsBClEcGz5SyEchYVGB/5OgLXWnam
-         DZAw7pUX9+2dFulybIqz/vQi0YAjn5kFy1uo5sde6j1GdEtHbwibuswlAD9L7etH6Xrq
-         5KKCyqrOoPXJTgDJ503EPgaTEoHO/SjubeOMeciWhrxVeGHXxR/PQwtaAI/OgWSkcl9/
-         mcLKwCO+iF8LbNRR17TpLLdS4GryWLNAfiLjnxsJyh2Qi0RnQc4bUkYa19HYOs7MJiGL
-         ORVQ==
-X-Gm-Message-State: AC+VfDy4uhYaNibnvZm1f+em55tVJgqBX4OPKhxFjCP6lbIQhdc+p1oq
-	5A86jC/mMKpQ5SfdpVuFejE=
-X-Google-Smtp-Source: ACHHUZ5hUChDXbEmqYIU8V8OQaDiPwT6USDEoTMPSLkgzUsyWLT/1zZYL1PVhpX7Lh14eAmy+9e7hw==
-X-Received: by 2002:a17:902:ab96:b0:1a9:bc13:7e20 with SMTP id f22-20020a170902ab9600b001a9bc137e20mr404142plr.44.1685652880497;
-        Thu, 01 Jun 2023 13:54:40 -0700 (PDT)
-Received: from [192.168.51.14] ([98.51.102.78])
-        by smtp.gmail.com with ESMTPSA id j13-20020a170902758d00b001a52c38350fsm3929463pll.169.2023.06.01.13.54.39
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 01 Jun 2023 13:54:40 -0700 (PDT)
-Message-ID: <f6a79164-944c-a355-40f3-0bddbcb37357@acm.org>
-Date: Thu, 1 Jun 2023 13:54:38 -0700
+	id 1q4pzI-0050xW-29;
+	Thu, 01 Jun 2023 21:37:42 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 30B3264A14;
+	Thu,  1 Jun 2023 21:37:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 75D65C433D2;
+	Thu,  1 Jun 2023 21:37:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1685655459;
+	bh=cRNCWYgITY1Avwy3p/OqeMIYf76GSCIWeVOmp7qHdis=;
+	h=From:To:Cc:Subject:Date:From;
+	b=ExkIxw7gKOEphmOgoz9uN/SxJtg8mfaCbNEEeV3NwHCHLTipif8dod9mhyq567jrs
+	 h42rhezz0SUvFIpt5DbaYVzRRnz1Y7A3JFJwT8tcqfFTSorKTEBopguhPjnK2bV0Fa
+	 A2G6qCJ8QycLujMc/c3UPLbd82Qen9VnEjbDzYrZNIcG0NBK6x4hFXEWK/IQoxCJ5K
+	 NpHTjUtng2RwD524bRqnSh6zL1mZFcRkfo5dzxHYDdULEIUVqxX1Jv6JehPwTor7Av
+	 aHL6pNTAzgFm0YtRrU6WPOzPFIYiDo5kFQF+spcu4q+FMWsjtQ/HelhEOYefHFayJf
+	 Xgow79I4vUvWw==
+From: Arnd Bergmann <arnd@kernel.org>
+To: Bin Liu <bin.liu@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	irui wang <irui.wang@mediatek.com>,
+	kyrie wu <kyrie.wu@mediatek.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	oushixiong <oushixiong@kylinos.cn>,
+	Randy Dunlap <rdunlap@infradead.org>
+Cc: Arnd Bergmann <arnd@arndb.de>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Yang Yingliang <yangyingliang@huawei.com>,
+	linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] [v2] media: mtk_jpeg_core: avoid unused-variable warning
+Date: Thu,  1 Jun 2023 23:37:22 +0200
+Message-Id: <20230601213732.3625642-1-arnd@kernel.org>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH v2 1/3] scsi: ufs: core: Introduce mcq ops to config cqid
-Content-Language: en-US
-To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
- =?UTF-8?B?UG93ZW4gS2FvICjpq5jkvK/mlocp?= <Powen.Kao@mediatek.com>,
- "chu.stanley@gmail.com" <chu.stanley@gmail.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- =?UTF-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
- =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
- =?UTF-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
- "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
- wsd_upstream <wsd_upstream@mediatek.com>,
- "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
- "avri.altman@wdc.com" <avri.altman@wdc.com>,
- =?UTF-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?= <Chun-hung.Wu@mediatek.com>,
- "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
- "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
- =?UTF-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?= <Naomi.Chu@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- =?UTF-8?B?U3RhbmxleSBDaHUgKOacseWOn+mZnik=?= <stanley.chu@mediatek.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "angelogioacchino.delregno@collabora.com"
- <angelogioacchino.delregno@collabora.com>
-References: <20230530023227.16653-1-powen.kao@mediatek.com>
- <20230530023227.16653-2-powen.kao@mediatek.com>
- <1c182151-6e8c-5068-b38c-f8e842e6e13b@acm.org>
- <CAGaU9a9TsoaUtoMX8cNmAhfBnCddRtWYEG8ACdRNJfri+sdasg@mail.gmail.com>
- <ec9c378c-fedd-5a90-bb12-085395e0d22e@acm.org>
- <fd0fceb04efa34e6d86f09c5554746cfcc5c993f.camel@mediatek.com>
- <4ea8427d-8b09-d35f-0e2c-2df486b79692@acm.org>
- <d5f239c6f104d9dd4e5493d5d06709e33f12226b.camel@mediatek.com>
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <d5f239c6f104d9dd4e5493d5d06709e33f12226b.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230601_135442_899702_CE0C9AC4 
-X-CRM114-Status: GOOD (  19.62  )
+X-CRM114-CacheID: sfid-20230601_143740_786328_5F40FD33 
+X-CRM114-Status: GOOD (  20.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,43 +82,140 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 6/1/23 07:41, Peter Wang (王信友) wrote:
-> On Thu, 2023-06-01 at 07:23 -0700, Bart Van Assche wrote:
->> Thanks, I had overlooked this. Do you agree that the above shows that the
->> flag I proposed in my previous email (UFSHCD_CAP_SINGLE_CQ) is sufficient
->> to support the MediaTek use case? I want to keep the SQ-CQ association code
->> in the UFS driver core because the next step will probably to switch from
->> one CQ per SQ to one CQ per CPU core for UFS controllers that support
->> multiple completion interrupts.
->
-> If the UFS device speed is geting higher and higher, one CQ may not sufficient.
-> 
-> So, UFSHCD_CAP_SINGLE_CQ is not flexible for us beacuse we may want to map to two CQs.
+From: Arnd Bergmann <arnd@arndb.de>
 
-Hi Peter,
+The mtk8195_jpegenc_drvdata object was added outside of an #ifdef causing
+a harmless build warning.
 
-Let's take a step back. The MediaTek UFSHCI 4.0 host controller only 
-supports a single completion interrupt. A significant disadvantage of 
-the single completion interrupt approach is that all completion 
-interrupts are processed by the same CPU core. This is known to cause 
-problems on Android. If sufficient time is spent in an interrupt 
-handler, threads that run on the same CPU core as the interrupt handler 
-may get scheduled too late. This can result in e.g. audio glitches 
-noticeable by humans. Hardware designers told me that the area occupied 
-by a single interrupt line is small. So I think it is fair to say that 
-the (nonstandard!) approach of only supporting a single completion 
-interrupt in an UFSHCI 4.0 controller is not a good choice.
+drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c:1879:32: error: 'mtk8195_jpegenc_drvdata' defined but not used [-Werror=unused-variable]
+ 1879 | static struct mtk_jpeg_variant mtk8195_jpegenc_drvdata = {
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~
 
-The UFS driver already supports multiple hardware queue types 
-(HCTX_TYPE_DEFAULT, READ and POLL). An interesting optimization would be 
-to combine the completion queues for at least the DEFAULT and READ queue 
-types. Introducing a vop to configure the completion queue ID would make 
-it almost impossible to implement this optimization in a generic way.
+A follow-up patch moved it inside of an #ifdef, which caused more
+warnings, and a third patch ended up adding even more #ifdefs. These
+were all bogus, since the actual problem here is the incorrect use
+of of_ptr(). Since the driver (like any other modern platform driver)
+only works in combination with CONFIG_OF, there is no point in hiding
+the reference, so just remove that along with all the pointless #ifdef
+checks in the driver.
 
-Asking to add a vop that improves performance by only a few percent for 
-a *nonstandard* controller and at the same time that makes it very hard 
-to optimize the driver for standards compliant controllers is something 
-that I consider unreasonable.
+This improves build coverage and avoids running into the same problem
+again when another part of the driver gets changed that relies on
+the #ifdef blocks to be completely matched.
 
-Bart.
+Fixes: 934e8bccac95 ("mtk-jpegenc: support jpegenc multi-hardware")
+Fixes: 4ae47770d57bf ("media: mtk-jpegenc: Fix a compilation issue")
+Fixes: da4ede4b7fd6a ("media: mtk-jpeg: move data/code inside CONFIG_OF blocks")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+---
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c   | 6 +-----
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c | 4 +---
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c | 4 +---
+ 3 files changed, 3 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index 4768156181c99..40cb3cb87ba17 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -28,7 +28,6 @@
+ #include "mtk_jpeg_core.h"
+ #include "mtk_jpeg_dec_parse.h"
+ 
+-#if defined(CONFIG_OF)
+ static struct mtk_jpeg_fmt mtk_jpeg_enc_formats[] = {
+ 	{
+ 		.fourcc		= V4L2_PIX_FMT_JPEG,
+@@ -102,7 +101,6 @@ static struct mtk_jpeg_fmt mtk_jpeg_dec_formats[] = {
+ 		.flags		= MTK_JPEG_FMT_FLAG_CAPTURE,
+ 	},
+ };
+-#endif
+ 
+ #define MTK_JPEG_ENC_NUM_FORMATS ARRAY_SIZE(mtk_jpeg_enc_formats)
+ #define MTK_JPEG_DEC_NUM_FORMATS ARRAY_SIZE(mtk_jpeg_dec_formats)
+@@ -1455,7 +1453,6 @@ static const struct dev_pm_ops mtk_jpeg_pm_ops = {
+ 	SET_RUNTIME_PM_OPS(mtk_jpeg_pm_suspend, mtk_jpeg_pm_resume, NULL)
+ };
+ 
+-#if defined(CONFIG_OF)
+ static int mtk_jpegenc_get_hw(struct mtk_jpeg_ctx *ctx)
+ {
+ 	struct mtk_jpegenc_comp_dev *comp_jpeg;
+@@ -1951,14 +1948,13 @@ static const struct of_device_id mtk_jpeg_match[] = {
+ };
+ 
+ MODULE_DEVICE_TABLE(of, mtk_jpeg_match);
+-#endif
+ 
+ static struct platform_driver mtk_jpeg_driver = {
+ 	.probe = mtk_jpeg_probe,
+ 	.remove_new = mtk_jpeg_remove,
+ 	.driver = {
+ 		.name           = MTK_JPEG_NAME,
+-		.of_match_table = of_match_ptr(mtk_jpeg_match),
++		.of_match_table = mtk_jpeg_match,
+ 		.pm             = &mtk_jpeg_pm_ops,
+ 	},
+ };
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+index 869068fac5e2f..baa7be58ce691 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+@@ -39,7 +39,6 @@ enum mtk_jpeg_color {
+ 	MTK_JPEG_COLOR_400		= 0x00110000
+ };
+ 
+-#if defined(CONFIG_OF)
+ static const struct of_device_id mtk_jpegdec_hw_ids[] = {
+ 	{
+ 		.compatible = "mediatek,mt8195-jpgdec-hw",
+@@ -47,7 +46,6 @@ static const struct of_device_id mtk_jpegdec_hw_ids[] = {
+ 	{},
+ };
+ MODULE_DEVICE_TABLE(of, mtk_jpegdec_hw_ids);
+-#endif
+ 
+ static inline int mtk_jpeg_verify_align(u32 val, int align, u32 reg)
+ {
+@@ -653,7 +651,7 @@ static struct platform_driver mtk_jpegdec_hw_driver = {
+ 	.probe = mtk_jpegdec_hw_probe,
+ 	.driver = {
+ 		.name = "mtk-jpegdec-hw",
+-		.of_match_table = of_match_ptr(mtk_jpegdec_hw_ids),
++		.of_match_table = mtk_jpegdec_hw_ids,
+ 	},
+ };
+ 
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
+index 71e85b4bbf127..244018365b6f1 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
+@@ -46,7 +46,6 @@ static const struct mtk_jpeg_enc_qlt mtk_jpeg_enc_quality[] = {
+ 	{.quality_param = 97, .hardware_value = JPEG_ENC_QUALITY_Q97},
+ };
+ 
+-#if defined(CONFIG_OF)
+ static const struct of_device_id mtk_jpegenc_drv_ids[] = {
+ 	{
+ 		.compatible = "mediatek,mt8195-jpgenc-hw",
+@@ -54,7 +53,6 @@ static const struct of_device_id mtk_jpegenc_drv_ids[] = {
+ 	{},
+ };
+ MODULE_DEVICE_TABLE(of, mtk_jpegenc_drv_ids);
+-#endif
+ 
+ void mtk_jpeg_enc_reset(void __iomem *base)
+ {
+@@ -377,7 +375,7 @@ static struct platform_driver mtk_jpegenc_hw_driver = {
+ 	.probe = mtk_jpegenc_hw_probe,
+ 	.driver = {
+ 		.name = "mtk-jpegenc-hw",
+-		.of_match_table = of_match_ptr(mtk_jpegenc_drv_ids),
++		.of_match_table = mtk_jpegenc_drv_ids,
+ 	},
+ };
+ 
+-- 
+2.39.2
+
 
