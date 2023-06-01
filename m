@@ -4,65 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6182DC7EE2E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jun 2023 15:44:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90646C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jun 2023 16:51:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e4YNmuyBGATqhYGar7laaTMgNiGK0zXBEB4EVYqcu1k=; b=odpfpWn7conrzHKBAsg9sa0Y0r
-	rClGrnl95Dae0PJmu/PXXdynsCCxJ8vDkkX8v981iOdxDXTojQ6XAfsg1hFUpmtLmlU/zH4uFhUr0
-	r6j1SqWX8TmGiDh4Ol/SfH2b5NOMFRJ93Rw2TrG5uDhmv2m0LhlMHXPYCIJCdHvYv4lLQ1ScKGW1a
-	B07mW9UEqhBBgh8m5W916PnM0+Hc74txEuv51T6qNZK9XPRj6jXUPEGETpDcu5IGfIWFuqiQJswe2
-	jmMu/n+zgMtp0WrZlf/dMA4SOxM8gkb7w+pWl8DuR0UiYnEEHgSinndIuB8ACuzlc8wiaZmJjb9ad
-	6SOCFzKQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=E6aw7YI0APlK+a4Ho7hkA2bZ/IE4Hfe3r+p1hUTo22w=; b=rFh4qB0VFsfG7QxmWAbASg8el5
+	6L2rkyj9b6v9YeDw+ZDoyxaK2gPDto8GZcgbAi18At6ZiRLpx3ps6RQhT/vzxWfKOb8MuE2DunpzR
+	QbVOB4hrNVFQFS/z6sqVKPs9XUi4qjGfxxjCOSBNcKhDMZanVb9n2BkLn0NdZ8+qjAIUpIMVxEIVW
+	f7CRcJ2oj+Spf5+vbhXZJL8vfTLJzD75trpifGmxI2TsMOLWoo7ZWqZAgQTtBmJP82PrUXPG/RTs/
+	3s9HdosmyeLl9+fGyI21AbrjtKFLfLJ+D8fPoxUak721jvPjxQRPGkpq14l774poOxXTfP4pmbcYj
+	T1cPx4Dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4kTY-0045C8-25;
-	Thu, 01 Jun 2023 15:44:32 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1q4lWF-004JS9-28;
+	Thu, 01 Jun 2023 16:51:23 +0000
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4kTV-0045Ae-1U;
-	Thu, 01 Jun 2023 15:44:30 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id C4F2C640E6;
-	Thu,  1 Jun 2023 15:44:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1C6FAC433EF;
-	Thu,  1 Jun 2023 15:44:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1685634268;
-	bh=6wfuvEex59Ok6T5gRrkfMoK/HR47V0aNeFPlA0QEhM8=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=ZqvvUnO/0qfrMMhnw3xdHydTy+Y8BJRfv87V1KJ9TvwRrbOBm1vH4kx+bc/BXg0S4
-	 eR9mepejozTdE7nmqzwznxeTOrt32CR96/BljyQbeZlkZ7aEwBcxmcJ6ZN92DtCBXH
-	 GcVer9bs2bPDkAYjZsn6weI9nRIkxj2kAS0cZU8Mrmi8kNfPZz9mWnjL/0WsZTQBnS
-	 cGNKH0v+cCrodvUzd5XAiMLz4XBDCDta6EmixY2D4MsR8U+jysWux25USD2YV37sN+
-	 E/Pvpq4mNP9RoEVjJJmiT6jVUTETmwrcKGFrfXOX+Jsgum6Juz8ibk3AN/PiftsDtx
-	 H1ZIZuRUAxaQA==
-From: Mark Brown <broonie@kernel.org>
-To: lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, 
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
- Trevor Wu <trevor.wu@mediatek.com>
-Cc: dianders@chromium.org, alsa-devel@alsa-project.org, 
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-In-Reply-To: <20230601033318.10408-1-trevor.wu@mediatek.com>
-References: <20230601033318.10408-1-trevor.wu@mediatek.com>
-Subject: Re: [PATCH v2 0/2] ASoC: mediatek: fix use-after-free in driver
- remove path
-Message-Id: <168563426581.132600.16426299018571667864.b4-ty@kernel.org>
-Date: Thu, 01 Jun 2023 16:44:25 +0100
+	id 1q4lWB-004JPi-14;
+	Thu, 01 Jun 2023 16:51:20 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-96fab30d1e1so252295266b.0;
+        Thu, 01 Jun 2023 09:51:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1685638275; x=1688230275;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=E6aw7YI0APlK+a4Ho7hkA2bZ/IE4Hfe3r+p1hUTo22w=;
+        b=P5K1gIvm5lMpyivClcYlSPpZk74Scq23UC7J49ZKXtd2Ty5NCk14Pzlmiw6G4TAT4e
+         R1SGrpIa7IOeMrrklx7UG2tAsiq9TFD4L8+GH42Zwqhfq/57kAkCKDh9e1B9u0uiq27N
+         Z2+cMvWVhGdpGqS04+8eMH1XROW5TNrSoWp21DvbX4Cljkzg06zAxgkEeZxXqtAHLxHn
+         Ukmg1ow9zsxYl1omDwPfgFBfHdDY/RlrCywsx1cRypvE8ktrFFqeuPghyapZVqcnmPfd
+         pHVao4wq68V+9Udu892pd4CZQNueuUSskC33wv4222J7q5LLmeCFeujIxSJZqtaz7HbM
+         QbBQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1685638275; x=1688230275;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=E6aw7YI0APlK+a4Ho7hkA2bZ/IE4Hfe3r+p1hUTo22w=;
+        b=F83FRO8gobdVdzD7wlxZo7NI+bUBoHnl5CBZTklzdzVBbGbjgfpb+E1h+NPmN704WC
+         1CIWB9GnrJqTFEkP0h5Ion/RqsdYJXVbINcESIX3CKSNnMw2ochRTNIiuyMpE5Z7P6Es
+         5TMyFlKgklskD3pXNwC/6jHR/wQqeFyPpqnYoN7HrDQFp79IeEX05onzBuevOc+7yZT9
+         eJvSm8MmL65Fie/97Xu0j5dLLSKhYP3IpOPE5MzbSiJi/lzH1+xIaylJE3ixHGeLM2cT
+         zUDAzzeIgbl37NGhPnKnRC6ybPgnCR/unYidj6z8jAneDGNowgzhvSf/Mao2tRdxfioE
+         fItg==
+X-Gm-Message-State: AC+VfDxHy7fgUPQf8XKtGjcloIL+xqwY5ngxQhfmZLWWjZRW3Z8mphkC
+	6Ppq3eiYvHs1iNGU2PnRDTs=
+X-Google-Smtp-Source: ACHHUZ6tapSBvaY3YL2Ex5VOuVrYb3aIm5DVnhvBJZ6q0GGzp5g+K/kybtTX/EWGyJOG95QWxE5s1Q==
+X-Received: by 2002:a17:907:7f15:b0:94a:4e86:31bc with SMTP id qf21-20020a1709077f1500b0094a4e8631bcmr2589785ejc.13.1685638274568;
+        Thu, 01 Jun 2023 09:51:14 -0700 (PDT)
+Received: from orome (p200300e41f305300f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f30:5300:f22f:74ff:fe1f:3a53])
+        by smtp.gmail.com with ESMTPSA id s7-20020a170906c30700b0094f410225c7sm10744283ejz.169.2023.06.01.09.51.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 01 Jun 2023 09:51:14 -0700 (PDT)
+Date: Thu, 1 Jun 2023 18:51:11 +0200
+From: Thierry Reding <thierry.reding@gmail.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+Cc: Andy Gross <agross@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Christophe Leroy <christophe.leroy@csgroup.eu>,
+	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Joerg Roedel <joro@8bytes.org>, Kevin Tian <kevin.tian@intel.com>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org, Russell King <linux@armlinux.org.uk>,
+	linuxppc-dev@lists.ozlabs.org,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Matthew Rosato <mjrosato@linux.ibm.com>,
+	Michael Ellerman <mpe@ellerman.id.au>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Orson Zhai <orsonzhai@gmail.com>, Rob Clark <robdclark@gmail.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Krishna Reddy <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
+	Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Lu Baolu <baolu.lu@linux.intel.com>,
+	Dmitry Osipenko <digetx@gmail.com>,
+	Nicolin Chen <nicolinc@nvidia.com>,
+	Niklas Schnelle <schnelle@linux.ibm.com>,
+	Steven Price <steven.price@arm.com>,
+	Thierry Reding <treding@nvidia.com>
+Subject: Re: [PATCH v2 05/25] iommu/tegra-gart: Remove tegra-gart
+Message-ID: <ZHjMf9_uunlvVWtB@orome>
+References: <0-v2-8d1dc464eac9+10f-iommu_all_defdom_jgg@nvidia.com>
+ <5-v2-8d1dc464eac9+10f-iommu_all_defdom_jgg@nvidia.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.13-dev-bfdf5
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="0JJNQg2cyOE2ETg4"
+Content-Disposition: inline
+In-Reply-To: <5-v2-8d1dc464eac9+10f-iommu_all_defdom_jgg@nvidia.com>
+User-Agent: Mutt/2.2.10 (2023-03-25)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230601_084429_544577_88B3A108 
-X-CRM114-Status: GOOD (  14.32  )
+X-CRM114-CacheID: sfid-20230601_095119_393928_630491B9 
+X-CRM114-Status: GOOD (  26.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,44 +126,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 01 Jun 2023 11:33:16 +0800, Trevor Wu wrote:
-> These patches concern modifications made in mt8186[1]. The clock
-> unregistration mechanism used in mt8188 and mt8195 is similar with
-> mt8186, resulting in the same problem existing within the driver.
-> Therefore, the solution has also been applied to these two platforms.
-> 
-> [1] https://lore.kernel.org/all/20230511092437.1.I31cceffc8c45bb1af16eb613e197b3df92cdc19e@changeid/
-> 
-> [...]
 
-Applied to
+--0JJNQg2cyOE2ETg4
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+On Mon, May 15, 2023 at 09:00:38PM -0300, Jason Gunthorpe wrote:
+> Thierry says this is not used anymore, and doesn't think it ever will
+> be. The HW it supports is about 10 years old now and newer HW uses
+> different IOMMU drivers.
+>=20
+> As this is the only driver with a GART approach, and it doesn't really
+> meet the driver expectations from the IOMMU core, let's just remove it
+> so we don't have to think about how to make it fit in.
+>=20
+> It has a number of identified problems:
+>  - The assignment of iommu_groups doesn't match the HW behavior
+>=20
+>  - It claims to have an UNMANAGED domain but it is really an IDENTITY
+>    domain with a translation aperture. This is inconsistent with the core
+>    expectation for security sensitive operations
+>=20
+>  - It doesn't implement a SW page table under struct iommu_domain so
+>    * It can't accept a map until the domain is attached
+>    * It forgets about all maps after the domain is detached
+>    * It doesn't clear the HW of maps once the domain is detached
+>      (made worse by having the wrong groups)
+>=20
+> Cc: Thierry Reding <treding@nvidia.com>
+> Cc: Dmitry Osipenko <digetx@gmail.com>
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> ---
+>  arch/arm/configs/multi_v7_defconfig |   1 -
+>  arch/arm/configs/tegra_defconfig    |   1 -
+>  drivers/iommu/Kconfig               |  11 -
+>  drivers/iommu/Makefile              |   1 -
+>  drivers/iommu/tegra-gart.c          | 371 ----------------------------
+>  drivers/memory/tegra/mc.c           |  34 ---
+>  drivers/memory/tegra/tegra20.c      |  28 ---
+>  include/soc/tegra/mc.h              |  26 --
+>  8 files changed, 473 deletions(-)
+>  delete mode 100644 drivers/iommu/tegra-gart.c
 
-Thanks!
+To clarify, I think this hardware could very well be used again, but I
+don't think it makes sense to use it in the context of the IOMMU
+subsystem. If anybody wants to make use of this on Tegra20, it probably
+makes more sense to move the GART programming into whatever driver ends
+up using it instead of jumping through all these hoops just to make it
+work like something it isn't.
 
-[1/2] ASoC: mediatek: mt8188: fix use-after-free in driver remove path
-      commit: fd67a7a1a22ce47fcbc094c4b6e164c34c652cbe
-[2/2] ASoC: mediatek: mt8195: fix use-after-free in driver remove path
-      commit: dc93f0dcb436dfd24a06c5b3c0f4c5cd9296e8e5
+Acked-by: Thierry Reding <treding@nvidia.com>
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+--0JJNQg2cyOE2ETg4
+Content-Type: application/pgp-signature; name="signature.asc"
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+-----BEGIN PGP SIGNATURE-----
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+iQIyBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmR4zHwACgkQ3SOs138+
+s6EzXg/4sDDYzIY93jnjqgBAzF26DdM9+f9tNLS+tEhgUpn3WoMfZ+2mVBZJ6Qvl
++zK/7cpay72mra2XCdI2nBDl4fc/MivQMZ2uBvnu1mNY4uQypRWZsVlnpKO5nkpf
+55oa0ZvczaCmITixiNpt58qIRcL/+Rwn+kuXCMcfZYr8WXq09eTZJ/E0SndTbgRv
+RNPyDbkY2T939Z3KYEhZH3filqm0ul9asQvbO31FsU+htgOT6XEYwanpd1jZuV+E
+uemlmy/fYzUkBbJoZ1wk9/pbYhZqlvZnOF3XvyJXOfsbrBiP/gkDstxYeMS86AVq
+ITwKKqX80dphMpO6Af5OEpuKjrh6wtzPgdgcKIMIgd6aQADSX5xLsQ/P0kIqI0em
+H679cza6Mm7Nl7NwmAMCiOVL568ME8criReWPK5nEnRg4TLj1AvsKLAubgHxXIP/
+Hzxox5RDNL5ubE2gcko6btoFu+yXxvxGT9nF1YcJxBcWUhHPVqpwg1q403RqF0bE
+Kfcfzs07wR/OM8vsXJxYxZdgE7HdZkh/vZnE0MWmiaGCHDaPZdx8vsMW8g0G1Wn9
+a3GXa18+zdEntyjXiH2QaNuytRlcnTWX6Egc9uLjzjyWgjW8dA2PHN70fli1p+Zf
+wv1qFNssXNER2qzepDmLQj621WybUok9GAhhWu0jfezY8b75zw==
+=Ciid
+-----END PGP SIGNATURE-----
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+--0JJNQg2cyOE2ETg4--
 
