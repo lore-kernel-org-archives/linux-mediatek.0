@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 926F2C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jun 2023 19:18:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20F07C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jun 2023 19:38:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5SeFUqNssCaKHbpw15xZeB2NVYlYgYh+0dSHlqFohxU=; b=VTKSLkYmZxD/KotO9Jb1u7E0pp
-	cyidwJIIPEbVjI9aw8ZZs7+NZtDDzGMMTa9jT9Fz7QHUibIFKzBE/5YyIEciPjfJkvTRzqq4e8Cta
-	6cfE/7/TQPBgMePIcZtRboz7tOCCZGJOhubmxH5eI+LE7hI2rl5hA9W49r7a3dosguGGSuXXWMjld
-	eX9tdbcn01cV7mf864AgkHi9Lu2/zgugKJZ4m3ryXIIi34nKIn+PYiPqQwgBInUvcI1tcfvfxRs2x
-	xs6La7Gnk9ijskNnBagIcfV8YHeO61pFNtpQn5IM05aEkca/r/sjcWDcQl3w1wkzH023s+vtG6lWa
-	B/4jHvFQ==;
+	bh=xhx8IK3j/f7GUR5SYsXuDztE17vF8cmdMTvLaaibW5E=; b=NQWVm80J0YjUS1JGISgPiWCy6l
+	SxpVFiW5WU1Yd5lEyiFX/VDw/6XRD5qV9s1BJ+vUZz+x9gAWsPizobt6JR5u9oOjbwx3iXrEjwwqk
+	fQhCMUsbDtp8jShNTkXBWQc5ZUKySO/ZECVDfGWCvVRHMVCHGzlFlRFL3OeNLR4vQ0fyS56apRd0g
+	A7O/8tgoxQoRUwHrXGnx8hP1EewnMhOjOiTbeRXOOwEdT51HwiJs/PF3sNJqqP2NFaVrz57Pzav39
+	qTpC67YY1SeB5l90XpZ3AniiiFC6bl/7uuBG9dvFRPOVQJbGo0wNA5lwwIYTvy/09MM/T1iEAtFv5
+	zDNw4Y6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4noO-004iCf-2I;
-	Thu, 01 Jun 2023 19:18:16 +0000
+	id 1q4o7Z-004kqU-1w;
+	Thu, 01 Jun 2023 19:38:05 +0000
 Received: from foss.arm.com ([217.140.110.172])
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4noL-004iBZ-0D;
-	Thu, 01 Jun 2023 19:18:14 +0000
+	id 1q4o7V-004koj-0p;
+	Thu, 01 Jun 2023 19:38:03 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id CA9851063;
-	Thu,  1 Jun 2023 12:18:54 -0700 (PDT)
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id B8F4A1063;
+	Thu,  1 Jun 2023 12:38:42 -0700 (PDT)
 Received: from [10.57.84.85] (unknown [10.57.84.85])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 0DDC93F7BD;
-	Thu,  1 Jun 2023 12:18:00 -0700 (PDT)
-Message-ID: <13fb6807-d8b9-9808-c528-6df6ae9ca78a@arm.com>
-Date: Thu, 1 Jun 2023 20:17:56 +0100
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 549F63F7BD;
+	Thu,  1 Jun 2023 12:37:50 -0700 (PDT)
+Message-ID: <84aa0f5e-f13d-40f5-abe6-e8ac231e2d95@arm.com>
+Date: Thu, 1 Jun 2023 20:37:45 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
  Thunderbird/102.11.2
-Subject: Re: [PATCH v2 23/25] iommu: Add ops->domain_alloc_paging()
+Subject: Re: [PATCH v2 09/25] iommu/fsl_pamu: Implement an IDENTITY domain
 Content-Language: en-GB
 To: Jason Gunthorpe <jgg@nvidia.com>, Andy Gross <agross@kernel.org>,
  Alim Akhtar <alim.akhtar@samsung.com>, Bjorn Andersson
@@ -70,14 +70,14 @@ Cc: Lu Baolu <baolu.lu@linux.intel.com>, Dmitry Osipenko <digetx@gmail.com>,
  Nicolin Chen <nicolinc@nvidia.com>, Niklas Schnelle
  <schnelle@linux.ibm.com>, Steven Price <steven.price@arm.com>,
  Thierry Reding <treding@nvidia.com>
-References: <23-v2-8d1dc464eac9+10f-iommu_all_defdom_jgg@nvidia.com>
+References: <9-v2-8d1dc464eac9+10f-iommu_all_defdom_jgg@nvidia.com>
 From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <23-v2-8d1dc464eac9+10f-iommu_all_defdom_jgg@nvidia.com>
+In-Reply-To: <9-v2-8d1dc464eac9+10f-iommu_all_defdom_jgg@nvidia.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230601_121813_194285_865B42AD 
-X-CRM114-Status: GOOD (  33.00  )
+X-CRM114-CacheID: sfid-20230601_123801_395654_EAFB5769 
+X-CRM114-Status: GOOD (  26.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,111 +93,99 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 2023-05-16 01:00, Jason Gunthorpe wrote:
-> This callback requests the driver to create only a __IOMMU_DOMAIN_PAGING
-> domain, so it saves a few lines in a lot of drivers needlessly checking
-> the type.
-> 
-> More critically, this allows us to sweep out all the
-> IOMMU_DOMAIN_UNMANAGED and IOMMU_DOMAIN_DMA checks from a lot of the
-> drivers, simplifying what is going on in the code and ultimately removing
-> the now-unused special cases in drivers where they did not support
-> IOMMU_DOMAIN_DMA.
-> 
-> domain_alloc_paging() should return a struct iommu_domain that is
-> functionally compatible with ARM_DMA_USE_IOMMU, dma-iommu.c and iommufd.
-> 
-> Be forwards looking and pass in a 'struct device *' argument. We can
-> provide this when allocating the default_domain. No drivers will look at
-> this.
+> Robin was able to check the documentation and what fsl_pamu has
+> historically called detach_dev() is really putting the IOMMU into an
+> IDENTITY mode.
 
-As mentioned before, we already know we're going to need additional 
-flags (and possibly data) to cover the existing set_pgtable_quirks 
-use-case plus new stuff like the proposed dirty-tracking enable, so I'd 
-be inclined to either add an extensible structure argument now to avoid 
-future churn, or just not bother adding the device argument either until 
-drivers can actually use it.
-
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> ---
->   drivers/iommu/iommu.c | 18 +++++++++++++++---
->   include/linux/iommu.h |  3 +++
->   2 files changed, 18 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
-> index c4cac1dcf80610..15aa51c356bd74 100644
-> --- a/drivers/iommu/iommu.c
-> +++ b/drivers/iommu/iommu.c
-> @@ -1995,14 +1995,25 @@ void iommu_set_fault_handler(struct iommu_domain *domain,
->   EXPORT_SYMBOL_GPL(iommu_set_fault_handler);
->   
->   static struct iommu_domain *__iommu_domain_alloc(const struct iommu_ops *ops,
-> +						 struct device *dev,
->   						 unsigned int type)
->   {
->   	struct iommu_domain *domain;
->   
->   	if (type == IOMMU_DOMAIN_IDENTITY && ops->identity_domain)
->   		return ops->identity_domain;
-> +	else if ((type == IOMMU_DOMAIN_UNMANAGED || type == IOMMU_DOMAIN_DMA) &&
-> +		 ops->domain_alloc_paging) {
-> +		/*
-> +		 * For now exclude DMA_FQ since it is still a driver policy
-> +		 * decision through domain_alloc() if we can use FQ mode.
-> +		 */
-
-That's sorted now, so the type test can neatly collapse down to "type & 
-__IOMMU_DOMAIN_PAGING".
+Unfortunately it was the other way around - it's the call to 
+fsl_setup_liodns() from fsl_pamu_probe() which leaves everything in 
+bypass by default (the PAACE_ATM_NO_XLATE part, IIRC), whereas the 
+detach_device() call here ends up disabling the given device's LIODN 
+altogether. There doesn't appear to have ever been any code anywhere for 
+putting things *back* into bypass after using a VFIO domain, so as-is 
+these default domains would probably break all DMA :(
 
 Thanks,
 Robin.
 
-> +		domain = ops->domain_alloc_paging(dev);
-> +	} else if (ops->domain_alloc)
-> +		domain = ops->domain_alloc(type);
-> +	else
-> +		return NULL;
->   
-> -	domain = ops->domain_alloc(type);
->   	if (!domain)
->   		return NULL;
->   
-> @@ -2033,14 +2044,15 @@ __iommu_group_domain_alloc(struct iommu_group *group, unsigned int type)
->   
->   	lockdep_assert_held(&group->mutex);
->   
-> -	return __iommu_domain_alloc(dev_iommu_ops(dev), type);
-> +	return __iommu_domain_alloc(dev_iommu_ops(dev), dev, type);
+> Move to the new core support for ARM_DMA_USE_IOMMU by defining
+> ops->identity_domain. This is a ppc driver without any dma_ops, so ensure
+> the identity translation is the default domain.
+> 
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> ---
+>   drivers/iommu/fsl_pamu_domain.c | 32 +++++++++++++++++++++++++++++---
+>   1 file changed, 29 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/iommu/fsl_pamu_domain.c b/drivers/iommu/fsl_pamu_domain.c
+> index bce37229709965..ca4f5ebf028783 100644
+> --- a/drivers/iommu/fsl_pamu_domain.c
+> +++ b/drivers/iommu/fsl_pamu_domain.c
+> @@ -283,15 +283,21 @@ static int fsl_pamu_attach_device(struct iommu_domain *domain,
+>   	return ret;
 >   }
 >   
->   struct iommu_domain *iommu_domain_alloc(const struct bus_type *bus)
+> -static void fsl_pamu_set_platform_dma(struct device *dev)
+> +static int fsl_pamu_identity_attach(struct iommu_domain *platform_domain,
+> +				    struct device *dev)
 >   {
->   	if (bus == NULL || bus->iommu_ops == NULL)
->   		return NULL;
-> -	return __iommu_domain_alloc(bus->iommu_ops, IOMMU_DOMAIN_UNMANAGED);
-> +	return __iommu_domain_alloc(bus->iommu_ops, NULL,
-> +				    IOMMU_DOMAIN_UNMANAGED);
+>   	struct iommu_domain *domain = iommu_get_domain_for_dev(dev);
+> -	struct fsl_dma_domain *dma_domain = to_fsl_dma_domain(domain);
+> +	struct fsl_dma_domain *dma_domain;
+>   	const u32 *prop;
+>   	int len;
+>   	struct pci_dev *pdev = NULL;
+>   	struct pci_controller *pci_ctl;
+>   
+> +	if (domain == platform_domain || !domain)
+> +		return 0;
+> +
+> +	dma_domain = to_fsl_dma_domain(domain);
+> +
+>   	/*
+>   	 * Use LIODN of the PCI controller while detaching a
+>   	 * PCI device.
+> @@ -312,8 +318,18 @@ static void fsl_pamu_set_platform_dma(struct device *dev)
+>   		detach_device(dev, dma_domain);
+>   	else
+>   		pr_debug("missing fsl,liodn property at %pOF\n", dev->of_node);
+> +	return 0;
 >   }
->   EXPORT_SYMBOL_GPL(iommu_domain_alloc);
 >   
-> diff --git a/include/linux/iommu.h b/include/linux/iommu.h
-> index 387746f8273c99..18b0df42cc80d1 100644
-> --- a/include/linux/iommu.h
-> +++ b/include/linux/iommu.h
-> @@ -227,6 +227,8 @@ struct iommu_iotlb_gather {
->    * struct iommu_ops - iommu ops and capabilities
->    * @capable: check capability
->    * @domain_alloc: allocate iommu domain
-> + * @domain_alloc_paging: Allocate an iommu_domain that can be used for
-> + *                       UNMANAGED, DMA, and DMA_FQ domain types.
->    * @probe_device: Add device to iommu driver handling
->    * @release_device: Remove device from iommu driver handling
->    * @probe_finalize: Do final setup work after the device is added to an IOMMU
-> @@ -258,6 +260,7 @@ struct iommu_ops {
+> +static struct iommu_domain_ops fsl_pamu_identity_ops = {
+> +	.attach_dev = fsl_pamu_identity_attach,
+> +};
+> +
+> +static struct iommu_domain fsl_pamu_identity_domain = {
+> +	.type = IOMMU_DOMAIN_IDENTITY,
+> +	.ops = &fsl_pamu_identity_ops,
+> +};
+> +
+>   /* Set the domain stash attribute */
+>   int fsl_pamu_configure_l1_stash(struct iommu_domain *domain, u32 cpu)
+>   {
+> @@ -447,12 +463,22 @@ static struct iommu_device *fsl_pamu_probe_device(struct device *dev)
+>   	return &pamu_iommu;
+>   }
 >   
->   	/* Domain allocation and freeing by the iommu driver */
->   	struct iommu_domain *(*domain_alloc)(unsigned iommu_domain_type);
-> +	struct iommu_domain *(*domain_alloc_paging)(struct device *dev);
->   
->   	struct iommu_device *(*probe_device)(struct device *dev);
->   	void (*release_device)(struct device *dev);
+> +static int fsl_pamu_def_domain_type(struct device *dev)
+> +{
+> +	/*
+> +	 * This platform does not use dma_ops at all so the normally the iommu
+> +	 * must be in identity mode
+> +	 */
+> +	return IOMMU_DOMAIN_IDENTITY;
+> +}
+> +
+>   static const struct iommu_ops fsl_pamu_ops = {
+> +	.identity_domain = &fsl_pamu_identity_domain,
+> +	.def_domain_type = &fsl_pamu_def_domain_type,
+>   	.capable	= fsl_pamu_capable,
+>   	.domain_alloc	= fsl_pamu_domain_alloc,
+>   	.probe_device	= fsl_pamu_probe_device,
+>   	.device_group   = fsl_pamu_device_group,
+> -	.set_platform_dma_ops = fsl_pamu_set_platform_dma,
+>   	.default_domain_ops = &(const struct iommu_domain_ops) {
+>   		.attach_dev	= fsl_pamu_attach_device,
+>   		.iova_to_phys	= fsl_pamu_iova_to_phys,
 
