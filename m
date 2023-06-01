@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46589C77B7E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jun 2023 11:08:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5DBBC77B7A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jun 2023 11:29:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=L/ODWYMhHWb6rauJLGuuOewPoFU/Rkn8VnAI7rqlyU0=; b=amCd87BjMAXpRB+rXszRBZPDvz
-	KjTr+dNQN+tCsGwacOhfdpLeyntfyRW9xqUk/1b+/2YJuLgV7+DDw91MJdXyuX/lGpiKiinNNq2h1
-	B/sfBxx5t39K2EJGoe8PJVvlfb8CgrpWOg1AM96m0bQhcklZcTBTaRPkrLtSxbJnpCgzCbS8fzo7U
-	oyvYy0umg5NSPh3AzlgWMn2dKZM8Ayt1IGipot3ZNlwB25Gr8ctPWMOPJWiQV+sM1uWjiiszo4B9Z
-	JKdSLeBEcNmr2KymbWm60+8iYZdd0qKmz4hOJe6jHS5P0oximDK0ExHyeVglvKPfN038c/mufKfQx
-	x0zFOyug==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ka+o4WvXIkrT5/D7beu+3HOKhHNVFqbY9U0402c8HGI=; b=ih9hKthLCXIU6InAMNriU700Rq
+	Xm7Yfpg/oN5yrj6tdMdyUTk5fjFxepe8A1kH+gAHa6oS/La3Hbal6zr6jY3nwNwyQ4SVcchs6dSew
+	Sl3LI2TuG4KeyDI6QD6go+hst6oV7gpNudAsgY99PUFb4OqAHE8NzGT0kwiGNuT+lmPYr0IFc1juO
+	u9JPNUxh/xVkt3LGx+NQaXirGFONZkJ9uA1OnUmdnCyjGWejTLNKu7MZ8Reu++TNhniJ+nTbQlhyY
+	JlRrPpohCicfb+1N2JXFY/uCYXSidDlDuYLeS6Nf9Fpw9sXTsBSO50n7jjW7PeDg+8wGVg0Pf3qew
+	4DvxGAWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4gAd-003BDI-1F;
-	Thu, 01 Jun 2023 11:08:43 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1q4gUn-003FIy-2E;
+	Thu, 01 Jun 2023 11:29:33 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4gAN-003AuJ-1d;
-	Thu, 01 Jun 2023 11:08:31 +0000
-Received: from IcarusMOD.eternityproject.eu (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1q4gUk-003FHq-1O;
+	Thu, 01 Jun 2023 11:29:31 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 986D16601F25;
-	Thu,  1 Jun 2023 12:08:25 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1685617706;
-	bh=DPBhltzyuRCNEl6YGHUeKrC3g1X5wZMtA70z/OT6qms=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=cnulaFYHEGSZCT8dmjHog+VB8vhpxF6W+y0HyyAgtnEYv3dKHfok+qXzhAvxp7YHq
-	 KxobKxq0yEHFaVmq4rq4p0OPlDhvxn5yZ5KxDZllY5eLSqQmKWqoybzw9OhaoOdxk/
-	 UC0LGdu9olnUj4NxhHSLYUQHhGkXs90g09EtoSKAdEF1priJeyMU+N15Fo/odQ9rKQ
-	 WuissTVUqHezI9VePetKjAtBvw5U4x+GHZb1A4Ad/yW2dmim4Jv8J1ESZe+LgbIMko
-	 DA0kXFbT1KbLJ3j+5Hc09NBH90CmmE1SQmzIdb8HPcbevClgzNMG1naycgaJ4APxTx
-	 Wn0nn/+lhksrA==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: pavel@ucw.cz
-Cc: lee@kernel.org,
-	sean.wang@mediatek.com,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	matthias.bgg@gmail.com,
-	linux-leds@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 485CD643CE;
+	Thu,  1 Jun 2023 11:29:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A217CC433EF;
+	Thu,  1 Jun 2023 11:29:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1685618968;
+	bh=YRpFV9EHccLiEr00ihV1MVHY1R0+dLRW9dyu9NplvMI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=KSWlNENd8xqQprpGuF8Mhh0IbIukZI5MPrw5orokNRPf8E+42PK1wiHIOYFSNEf7w
+	 644oct61rq004fmUbO7GU84F7lBCfbxqX+h+0hi2qsfira7vhjzDXfc0FaIh6Q5l0d
+	 8MuUwpPPSMlP4/bk6jA3hdxGZkxMsjAQ/a3Pbv1tX1BFmNpNkG3LYqlA3dGOT572AV
+	 T0dgJxIx+ACORWzL0Gispcl3WTq52rqE7kAzSZRgNv801uENOqemHGhLdzJm+e3/BW
+	 NBkDychAbx9brsohEl9IFmkZWLcDQgIJIxVBH1iidKntxmZ815jjDVLMyl8wdbtix5
+	 l6VMQctt3QhdQ==
+Date: Thu, 1 Jun 2023 12:29:22 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Trevor Wu <trevor.wu@mediatek.com>
+Cc: lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	amergnat@baylibre.com, alsa-devel@alsa-project.org,
 	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	kernel@collabora.com,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v3 8/8] leds: leds-mt6323: Add support for WLEDs and MT6332
-Date: Thu,  1 Jun 2023 13:08:13 +0200
-Message-Id: <20230601110813.2373764-9-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230601110813.2373764-1-angelogioacchino.delregno@collabora.com>
-References: <20230601110813.2373764-1-angelogioacchino.delregno@collabora.com>
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH v3 7/7] ASoC: dt-bindings: mediatek,mt8188-mt6359: add
+ NAU8825 support
+Message-ID: <df12a113-109a-438c-9a6f-ece021550b69@sirena.org.uk>
+References: <20230526093150.22923-1-trevor.wu@mediatek.com>
+ <20230526093150.22923-8-trevor.wu@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="JmksfPfyy4Bj0Tfi"
+Content-Disposition: inline
+In-Reply-To: <20230526093150.22923-8-trevor.wu@mediatek.com>
+X-Cookie: Positively no smoking.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230601_040827_817533_025370B4 
-X-CRM114-Status: GOOD (  22.43  )
+X-CRM114-CacheID: sfid-20230601_042930_532299_51FF9949 
+X-CRM114-Status: GOOD (  12.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,302 +81,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add basic code to turn on and off WLEDs and wire up MT6332 support
-to take advantage of it.
-This is a simple approach due to the aforementioned PMIC supporting
-only on/off status so, at the time of writing, it is impossible for me
-to validate more advanced functionality due to lack of hardware.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/leds/leds-mt6323.c | 171 +++++++++++++++++++++++++++++++++++--
- 1 file changed, 164 insertions(+), 7 deletions(-)
+--JmksfPfyy4Bj0Tfi
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-diff --git a/drivers/leds/leds-mt6323.c b/drivers/leds/leds-mt6323.c
-index 85b056fcd94e..e8fecfc2e90a 100644
---- a/drivers/leds/leds-mt6323.c
-+++ b/drivers/leds/leds-mt6323.c
-@@ -20,6 +20,11 @@
- #define RG_DRV_32K_CK_PDN		BIT(11)
- #define RG_DRV_32K_CK_PDN_MASK		BIT(11)
- 
-+/* 32K/1M/6M clock common for WLED device */
-+#define RG_VWLED_1M_CK_PDN		BIT(0)
-+#define RG_VWLED_32K_CK_PDN		BIT(12)
-+#define RG_VWLED_6M_CK_PDN		BIT(13)
-+
- /*
-  * Register field for TOP_CKPDN2 to enable
-  * individual clock for LED device.
-@@ -71,7 +76,7 @@ struct mt6323_led {
- 	int			id;
- 	struct mt6323_leds	*parent;
- 	struct led_classdev	cdev;
--	enum led_brightness	current_brightness;
-+	unsigned int		current_brightness;
- };
- 
- /**
-@@ -84,6 +89,7 @@ struct mt6323_led {
-  * @num_isink_con:	Number of ISINKx_CON registers
-  * @isink_max_regs:	Number of ISINK[0..x] registers
-  * @isink_en_ctrl:	Offset to ISINK_EN_CTRL register
-+ * @iwled_en_ctrl:	Offset to IWLED_EN_CTRL register
-  */
- struct mt6323_regs {
- 	const u16 *top_ckpdn;
-@@ -94,18 +100,21 @@ struct mt6323_regs {
- 	u8 num_isink_con;
- 	u8 isink_max_regs;
- 	u16 isink_en_ctrl;
-+	u16 iwled_en_ctrl;
- };
- 
- /**
-  * struct mt6323_hwspec - hardware specific parameters
-  * @max_period:		Maximum period for all LEDs
-  * @max_leds:		Maximum number of supported LEDs
-+ * @max_wleds:		Maximum number of WLEDs
-  * @max_brightness:	Maximum brightness for all LEDs
-  * @unit_duty:		Steps of duty per period
-  */
- struct mt6323_hwspec {
- 	u16 max_period;
- 	u8 max_leds;
-+	u8 max_wleds;
- 	u16 max_brightness;
- 	u16 unit_duty;
- };
-@@ -377,6 +386,117 @@ static int mt6323_led_set_brightness(struct led_classdev *cdev,
- 	return ret;
- }
- 
-+static int mtk_wled_hw_on(struct led_classdev *cdev)
-+{
-+	struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
-+	struct mt6323_leds *leds = led->parent;
-+	const struct mt6323_regs *regs = leds->pdata->regs;
-+	struct regmap *regmap = leds->hw->regmap;
-+	int ret;
-+
-+	ret = regmap_clear_bits(regmap, regs->top_ckpdn[0], RG_VWLED_32K_CK_PDN);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_clear_bits(regmap, regs->top_ckpdn[0], RG_VWLED_6M_CK_PDN);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_clear_bits(regmap, regs->top_ckpdn[0], RG_VWLED_1M_CK_PDN);
-+	if (ret)
-+		return ret;
-+
-+	usleep_range(5000, 6000);
-+
-+	/* Enable WLED channel pair */
-+	ret = regmap_set_bits(regmap, regs->iwled_en_ctrl, BIT(led->id));
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_set_bits(regmap, regs->iwled_en_ctrl, BIT(led->id + 1));
-+	if (ret)
-+		return ret;
-+
-+	return 0;
-+}
-+
-+static int mtk_wled_hw_off(struct led_classdev *cdev)
-+{
-+	struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
-+	struct mt6323_leds *leds = led->parent;
-+	const struct mt6323_regs *regs = leds->pdata->regs;
-+	struct regmap *regmap = leds->hw->regmap;
-+	int ret;
-+
-+	ret = regmap_clear_bits(regmap, regs->iwled_en_ctrl, BIT(led->id + 1));
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_clear_bits(regmap, regs->iwled_en_ctrl, BIT(led->id));
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_set_bits(regmap, regs->top_ckpdn[0], RG_VWLED_32K_CK_PDN);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_set_bits(regmap, regs->top_ckpdn[0], RG_VWLED_6M_CK_PDN);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_set_bits(regmap, regs->top_ckpdn[0], RG_VWLED_1M_CK_PDN);
-+	if (ret)
-+		return ret;
-+
-+	return 0;
-+}
-+
-+static unsigned int mt6323_get_wled_brightness(struct led_classdev *cdev)
-+{
-+	struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
-+	struct mt6323_leds *leds = led->parent;
-+	const struct mt6323_regs *regs = leds->pdata->regs;
-+	struct regmap *regmap = leds->hw->regmap;
-+	unsigned int status;
-+	int ret;
-+
-+	ret = regmap_read(regmap, regs->iwled_en_ctrl, &status);
-+	if (ret)
-+		return 0;
-+
-+	/* Always two channels per WLED */
-+	status &= BIT(led->id) | BIT(led->id + 1);
-+
-+	return status ? led->current_brightness : 0;
-+}
-+
-+static int mt6323_wled_set_brightness(struct led_classdev *cdev,
-+				      unsigned int brightness)
-+{
-+	struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
-+	struct mt6323_leds *leds = led->parent;
-+	int ret = 0;
-+
-+	mutex_lock(&leds->lock);
-+
-+	if (brightness) {
-+		if (!led->current_brightness)
-+			ret = mtk_wled_hw_on(cdev);
-+		if (ret)
-+			goto out;
-+	} else {
-+		ret = mtk_wled_hw_off(cdev);
-+		if (ret)
-+			goto out;
-+	}
-+
-+	led->current_brightness = brightness;
-+out:
-+	mutex_unlock(&leds->lock);
-+
-+	return ret;
-+}
-+
- static int mt6323_led_set_dt_default(struct led_classdev *cdev,
- 				     struct device_node *np)
- {
-@@ -416,6 +536,7 @@ static int mt6323_led_probe(struct platform_device *pdev)
- 	int ret;
- 	unsigned int status;
- 	u32 reg;
-+	u8 max_leds;
- 
- 	leds = devm_kzalloc(dev, sizeof(*leds), GFP_KERNEL);
- 	if (!leds)
-@@ -426,6 +547,7 @@ static int mt6323_led_probe(struct platform_device *pdev)
- 	leds->pdata = device_get_match_data(dev);
- 	regs = leds->pdata->regs;
- 	spec = leds->pdata->spec;
-+	max_leds = spec->max_leds + spec->max_wleds;
- 
- 	/*
- 	 * leds->hw points to the underlying bus for the register
-@@ -445,6 +567,7 @@ static int mt6323_led_probe(struct platform_device *pdev)
- 
- 	for_each_available_child_of_node(np, child) {
- 		struct led_init_data init_data = {};
-+		bool is_wled;
- 
- 		ret = of_property_read_u32(child, "reg", &reg);
- 		if (ret) {
-@@ -452,7 +575,7 @@ static int mt6323_led_probe(struct platform_device *pdev)
- 			goto put_child_node;
- 		}
- 
--		if (reg >= spec->max_leds || reg >= MAX_SUPPORTED_LEDS ||
-+		if (reg >= max_leds || reg >= MAX_SUPPORTED_LEDS ||
- 		    leds->led[reg]) {
- 			dev_err(dev, "Invalid led reg %u\n", reg);
- 			ret = -EINVAL;
-@@ -465,14 +588,24 @@ static int mt6323_led_probe(struct platform_device *pdev)
- 			goto put_child_node;
- 		}
- 
-+		is_wled = of_property_read_bool(child, "mediatek,is-wled");
-+
- 		leds->led[reg] = led;
- 		leds->led[reg]->id = reg;
- 		leds->led[reg]->cdev.max_brightness = spec->max_brightness;
--		leds->led[reg]->cdev.brightness_set_blocking =
--					mt6323_led_set_brightness;
--		leds->led[reg]->cdev.blink_set = mt6323_led_set_blink;
--		leds->led[reg]->cdev.brightness_get =
--					mt6323_get_led_hw_brightness;
-+
-+		if (is_wled) {
-+			leds->led[reg]->cdev.brightness_set_blocking =
-+						mt6323_wled_set_brightness;
-+			leds->led[reg]->cdev.brightness_get =
-+						mt6323_get_wled_brightness;
-+		} else {
-+			leds->led[reg]->cdev.brightness_set_blocking =
-+						mt6323_led_set_brightness;
-+			leds->led[reg]->cdev.blink_set = mt6323_led_set_blink;
-+			leds->led[reg]->cdev.brightness_get =
-+						mt6323_get_led_hw_brightness;
-+		}
- 		leds->led[reg]->parent = leds;
- 
- 		ret = mt6323_led_set_dt_default(&leds->led[reg]->cdev, child);
-@@ -540,6 +673,17 @@ static const struct mt6323_regs mt6331_registers = {
- 	.isink_en_ctrl = 0x43a,
- };
- 
-+static const struct mt6323_regs mt6332_registers = {
-+	.top_ckpdn = (const u16[]){ 0x8094, 0x809a, 0x80a0 },
-+	.num_top_ckpdn = 3,
-+	.top_ckcon = (const u16[]){ 0x80a6, 0x80ac },
-+	.num_top_ckcon = 2,
-+	.isink_con = (const u16[]){ 0x8cd4 },
-+	.num_isink_con = 1,
-+	.isink_max_regs = 12, /* IWLED[0..2, 3..9] */
-+	.iwled_en_ctrl = 0x8cda,
-+};
-+
- static const struct mt6323_hwspec mt6323_spec = {
- 	.max_period = 10000,
- 	.max_leds = 4,
-@@ -547,6 +691,13 @@ static const struct mt6323_hwspec mt6323_spec = {
- 	.unit_duty = 3125,
- };
- 
-+static const struct mt6323_hwspec mt6332_spec = {
-+	/* There are no LEDs in MT6332. Only WLEDs are present. */
-+	.max_leds = 0,
-+	.max_wleds = 1,
-+	.max_brightness = 1024,
-+};
-+
- static const struct mt6323_data mt6323_pdata = {
- 	.regs = &mt6323_registers,
- 	.spec = &mt6323_spec,
-@@ -557,9 +708,15 @@ static const struct mt6323_data mt6331_pdata = {
- 	.spec = &mt6323_spec,
- };
- 
-+static const struct mt6323_data mt6332_pdata = {
-+	.regs = &mt6332_registers,
-+	.spec = &mt6332_spec,
-+};
-+
- static const struct of_device_id mt6323_led_dt_match[] = {
- 	{ .compatible = "mediatek,mt6323-led", .data = &mt6323_pdata},
- 	{ .compatible = "mediatek,mt6331-led", .data = &mt6331_pdata },
-+	{ .compatible = "mediatek,mt6332-led", .data = &mt6332_pdata },
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mt6323_led_dt_match);
--- 
-2.40.1
+On Fri, May 26, 2023 at 05:31:50PM +0800, Trevor Wu wrote:
 
+> +      dai-format:
+> +        description: audio format.
+> +        items:
+> +          enum:
+> +            - i2s
+> +            - right_j
+> +            - left_j
+> +            - dsp_a
+> +            - dsp_b
+
+Why is this a DT property - why not just pick one in the driver given
+that it's for a machine with a specific CODEC?
+
+--JmksfPfyy4Bj0Tfi
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmR4gREACgkQJNaLcl1U
+h9AxeAf/ehUGBygKINW6H+yy1gZ0HlpXhYS4swWucFmZqVQIaksZAUR2ly+8bPzD
+Puhp4M5k+HV/+H+VLnmi1MGn803l5bD1q3Y4Ecy5mMz8cSzQx3tNEwL+htYaUeg6
+pchi7gBYaiBd3nVWeEWelIsBx+1UYRURJ3r+YoCXRVAHaYCsbJynauBKCOAizCfG
+W7MItpvce9g75QWSuifAPhQOEggg5eo6eGlq7omEVkvzUrExfGSM5L8bCMdGar90
+dqHOrZSq0B0q2w6yGGG9KFvcqvSbnErkngpBeI33DBTDfCIhHuytcB+M3pLhFOnc
+nKhBAj+1yD+OMbQC+HYc94d+bsXErQ==
+=Zpw4
+-----END PGP SIGNATURE-----
+
+--JmksfPfyy4Bj0Tfi--
 
