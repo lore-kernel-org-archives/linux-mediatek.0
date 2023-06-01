@@ -4,155 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAF39C77B7E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jun 2023 20:18:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B996C7EE23
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jun 2023 20:32:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yaHcSqE7XlXrktBOTaCB5zFcGAm2dX2QUN4d5BhJxPU=; b=p/X6jZg6CivwF737u1HWD/qsNs
-	idTXgkgrthFJdEIsxi/jSX6yucdQ3Kp/7osrOwwl08MChZc+FX+esDlb7hxLeWSrnPhOYUv7uQiPo
-	T5nKcnDSrGFrLbe4YhDpHoY/mydcoZyjw/2ilWMAdfuNu3TgJAAn1UPlDCpfHd5s/dSuB2hrm5OyS
-	snHDOsFsZ8GnL2xt+ZkTjtbOr2uTkk4WURFO4JsJsAJWbrFnMX4dIChodb/FQ3wpCcIRKuq/K1eh5
-	JV5POcwkGFLnINtRIQ5ZqRoOFHt5ZZ0NvN2Q5AJtD914piffXNuZ29oncdV6uOB5WnakR/TXSqPbu
-	N2GT5v2g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=KoLlcWRHitZo6BJrrJwli9/MLgex7K5fSuGyfDAOY2o=; b=s0kxm5EdFyeryN5uj/TjL8J7nd
+	tKIthIVHwJSsUl6F74iXGGIypZY0mT/fEOiO6u49wSXwJTQRS8mamPdZqrSTOUUtND1U2R597d4dl
+	EjZqa57XKE0UTzhQK2QY8gN/w223QndsxSmbe6osoHCnq2WEmpf1bJvdRtIfCBRidskfdEN6kakyK
+	bRh/TFrCaRKCRD2RsqZVBtk2CO0SpGKuuQFjlBWkQmldDAy4HiL1ZKBSTmcyOAfonH9YlcJMbTcW3
+	4bwzekMpTTSbJdkyB0L7a9iURI5r/kvJVfiDAibs2WMUzcVZGM6cAaSeeuLJYoSdUcWmzphfdc3Bg
+	pQ2LPP3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4ok7-004qKH-2Y;
-	Thu, 01 Jun 2023 20:17:55 +0000
-Received: from mail-bn7nam10on20609.outbound.protection.outlook.com ([2a01:111:f400:7e8a::609] helo=NAM10-BN7-obe.outbound.protection.outlook.com)
+	id 1q4oyN-004sNa-17;
+	Thu, 01 Jun 2023 20:32:39 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4ok4-004qIt-1n;
-	Thu, 01 Jun 2023 20:17:53 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=m0v8+jjWoe80kSmSl3oShKYkNmkihfI0I0oGtkiOvkFD9BK/VoQoIkzWuUrViuD90/hJ2v8Z79bxoKulL7ihPm6I+L/cXnvpnGEZ63kZVRZ58SL1LQTDIVMBYd4Vmc1PjPrbJS1fNNP0nAoG4JXPn5s2Z5Qyqsnb+9B/SsblYSoLTn6F9mWADoYdfGcEENJeGajwBS7/v1JGJZLHXe3H9MCw/dy2AqZtIq2V6C5qlgT5OzjU/a6HTExhIArPdV2dAu4FdpBACJ3AoAdSsHQ0h4/jpKvAnicXni8WalvBFddbszB1LoRm0buKfBaPijrrwVrHaJ82J6EUeNvPDc1ctg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=yaHcSqE7XlXrktBOTaCB5zFcGAm2dX2QUN4d5BhJxPU=;
- b=jPIVaJIOHIp3fyK7uZWS+Mz3HCIxfyiQli8Z0u/4AThXczw+7br2I88QGp27o21qVxwUHSBfHwMAhgyF99UrTAaNCIXfMqhX8rT+xoMTqvCxTm2B0/Byh6rSsDJeGSUW5kjaS98em0mX5NiyTymC0oWiYr+K3Il/yrVhp6+7UHPl1xUp5CpDRmElTBLDdWUrBZ4ge8terk67oXlH4Y4cifu2O0m1FLGIu//b12nxD6XasCrzmxpm5EL1A8zmLR7fVVc1uUNzo5C/8tLP0WI44qK2wfvWWrxYbCPhYNbApfA4pC5IMKnCGT86io0YTXqGxnvkhryHxl+jJhiE6Cnxdw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=yaHcSqE7XlXrktBOTaCB5zFcGAm2dX2QUN4d5BhJxPU=;
- b=XIgA8EiZ0oR73xZ5ja3VdBHIAUkq2diJ//ARGJ5qD4rLD6k7PTdBz95M963YuEbhkqD4mppj5eqzU/3EFWE+5d/kg0gskK+cvadr4eS4YvAzLvD3K9Ldc2JRwN4uuFVVP8ngcqhbfvRc/To3J2P9q3VFQIbEzHh65s+t2+meTOVNI2CvkN9/rcOjAbMWQCR8+YVdxnE/xx2d8kNr61UF+QrCVxoY6fyPw92VG/2shV8FdbMdZKgFJ7InM4F7sfZVQKV+NzWwl2BbKL48rk8pToPUArfjCirdqoZG22La4XGrFTMrE5KH/HqseLi4kb6+K89TC5FeJzobM45sAJO7Hw==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
- by PH0PR12MB8008.namprd12.prod.outlook.com (2603:10b6:510:26f::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6433.23; Thu, 1 Jun
- 2023 20:17:38 +0000
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::f7a7:a561:87e9:5fab]) by LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::f7a7:a561:87e9:5fab%6]) with mapi id 15.20.6433.024; Thu, 1 Jun 2023
- 20:17:38 +0000
-Date: Thu, 1 Jun 2023 17:17:35 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: Andy Gross <agross@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Christophe Leroy <christophe.leroy@csgroup.eu>,
-	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
-	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Joerg Roedel <joro@8bytes.org>, Kevin Tian <kevin.tian@intel.com>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org, Russell King <linux@armlinux.org.uk>,
-	linuxppc-dev@lists.ozlabs.org,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Matthew Rosato <mjrosato@linux.ibm.com>,
-	Michael Ellerman <mpe@ellerman.id.au>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Orson Zhai <orsonzhai@gmail.com>, Rob Clark <robdclark@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Krishna Reddy <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
-	Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Lu Baolu <baolu.lu@linux.intel.com>,
-	Dmitry Osipenko <digetx@gmail.com>,
-	Nicolin Chen <nicolinc@nvidia.com>,
-	Niklas Schnelle <schnelle@linux.ibm.com>,
-	Steven Price <steven.price@arm.com>,
-	Thierry Reding <treding@nvidia.com>
-Subject: Re: [PATCH v2 09/25] iommu/fsl_pamu: Implement an IDENTITY domain
-Message-ID: <ZHj837tTEEi03lmZ@nvidia.com>
-References: <9-v2-8d1dc464eac9+10f-iommu_all_defdom_jgg@nvidia.com>
- <84aa0f5e-f13d-40f5-abe6-e8ac231e2d95@arm.com>
- <ZHj1kXMMf5iqxXOV@nvidia.com>
- <ef78fd49-4609-b947-b26d-f3f5ac66178f@arm.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ef78fd49-4609-b947-b26d-f3f5ac66178f@arm.com>
-X-ClientProxiedBy: BYAPR05CA0028.namprd05.prod.outlook.com
- (2603:10b6:a03:c0::41) To LV2PR12MB5869.namprd12.prod.outlook.com
- (2603:10b6:408:176::16)
+	id 1q4oyK-004sMQ-1C;
+	Thu, 01 Jun 2023 20:32:37 +0000
+Received: from notapiano.myfiosgateway.com (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id DF4F16605838;
+	Thu,  1 Jun 2023 21:32:31 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1685651553;
+	bh=5WpcqO9ifnLpSK4823RMglaY7WU6LjX8KXsVqXcIo4s=;
+	h=From:To:Cc:Subject:Date:From;
+	b=XZFdNEPRwzkK2c5Oc4RvBoc0pm4d2VDuObQZiOdl+YUlaUSGN3S3wjtBaWk7E2myv
+	 ToqDaqY3d+NW969Pl+e/oZQbpuNQ+18gHeB1Z4xzy6JAODnKrRCssCfoz5aIQD4Smt
+	 1fXf/2iLWd6Q+HqkZxVvG4TAVe0bQ2U0pCwq+s/dq1aqap29BbfbXpiYTbftZFmzNz
+	 cPpMl8Jf984hJL4GyH5DwY2I6Icb18pdJ4W0Qco5/LfTpNKAcSpBXVAC4ym1r0C+OC
+	 xGMWFCVov/SMe2PVuLhNdsVFNv6Dsy60sYtzDJ5QI6cOHYgHH4UkSKmQe5h9Yn+bX7
+	 gD7pFqr85ZPCA==
+From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	kernel@collabora.com,
+	Yong Wu <yong.wu@mediatek.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] arm64: dts: mediatek: mt8192: Add missing dma-ranges to soc node
+Date: Thu,  1 Jun 2023 16:32:21 -0400
+Message-Id: <20230601203221.3675915-1-nfraprado@collabora.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|PH0PR12MB8008:EE_
-X-MS-Office365-Filtering-Correlation-Id: 5ba30ab8-7fe3-4ee0-eb16-08db62dd3e5c
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 7hC8nokiV3oMPp1k03ODG27ycCii7VoTa+pGdomE5U+YjDzOP/XWh0SoemiBRIv135MBO1HHq9JY688IqJFe1f0rAZrPvWI6sFxSdw3NXP64AzIy4UCwUJBn75HEyEKxbHDsVoBCygsmgJ6TRUCZG2FPd7TqXrhafZ5JL3q4ob/50XXgiBBLvnU0oZUJRT4sz1MhEFOhNTPYUIRpqcfllFu33Mz8iJnY+dD2B66oRV5RSI3kRkvMPw3vJVWK7ygI0jrK6ZAgNjT0nAvMblxLfPTbX2DE8Xg4QeZCB+k1bKP04edGbHEDf2QsRpzqf8FfOvsrqxYrO4VpRNxgZAo0j83MnOVkJHKtEvJ+BtEN8vF8pgZ17cJch/ilsEvz+fv4tMjMRB0uYsPy/aIgEIDxpf+/ieQSutJk+JLRPAmXZ9nEAucsMJ6aYKBFTOgFSZbVGFn6/6qksZof1Ej9XpC/PYEaOGqD4qZi7CbSGxZGqVnELtEGoz1SVEn8SPEDEoEYJ8rUlD0MUbBHrQ7aQqS+7cWRVrya8ud+2sjTp9oblNpxTsgKynCcBQ7b+r456cq2
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV2PR12MB5869.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(136003)(39860400002)(396003)(376002)(366004)(346002)(451199021)(86362001)(36756003)(6486002)(6666004)(4326008)(478600001)(54906003)(316002)(66946007)(66476007)(6916009)(66556008)(5660300002)(2906002)(8936002)(7406005)(8676002)(7416002)(41300700001)(38100700002)(2616005)(6512007)(107886003)(53546011)(6506007)(26005)(186003)(83380400001);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?v/oosyQ/kXWhMoPBmR0mKUnKMYkzW2Z0E20X3N3WfbusLGbZgboytp1ZC3Ze?=
- =?us-ascii?Q?p6XVSL/Ju1VqunOb6quG5Wv/iJe1TvoBJdYDp4KPHEr8Kxi5LoO7pOlRfgJQ?=
- =?us-ascii?Q?JZ6sbnM2/655POXS6K8vFXw172ivXF2aBsO75Oex9JPTP8nJWqEz0IvxI6ta?=
- =?us-ascii?Q?zxLJe0YsUgWDKgJPryBZG9d9CwXgeqz1dO7MvxpLadq4rSGj27VNb6I0eP4s?=
- =?us-ascii?Q?upnZZKjVXO+Dy29YfAhGLWnxULr9I9wlVEaaOOw2t4WLjX2gCAMV3KXlztNV?=
- =?us-ascii?Q?20fGNPSw3gKSox1wDdMHUL5ezu5IafvTujPXw3v0x4T0VaVzBEX+cjtLUA2R?=
- =?us-ascii?Q?lylMBVhmbm9+3iU0D+tNGsAO5sDHpqGDuV+fcT6UMm87cJ0hS96ui2UzMhYZ?=
- =?us-ascii?Q?MKb3gJRP38SSDkO53YxIlXnl8Dd5kXi6Qksoj9lyU9MO3iZKzo4Dk+ayCxFP?=
- =?us-ascii?Q?z6cLa6zrhVq5ZruByqi3BJurviq1U0tUlr7RkKQUZGNmQZ0koAR/wDB1TSjJ?=
- =?us-ascii?Q?WbjPpAn18m0p67dRD50c68pRvqE+aCps8Na9cs15SHbAABb5/fEWteISiLMH?=
- =?us-ascii?Q?+EynKz/drwzGRIAgE9S+dDn679YExqKcxQ6DiUnJgHXPZdfUBB4qTRwm6bwZ?=
- =?us-ascii?Q?rmAXl8d1D61Dc1F1txIpLFl3+U3ZC2dLJ3QDPHv5V3VgSH40wNlQ524NjMK+?=
- =?us-ascii?Q?t7llx6U7cjfjAtiQbuREODGLil92pBMAwf2MrCeaRz0A1BneZq2ofwqP2Owx?=
- =?us-ascii?Q?kLYIWSrL8aLpP24RAEkATRdlyYt4r+tbSCw4vJOwCCm9tnILsyAO9UH2MDZH?=
- =?us-ascii?Q?CVUT3WQM5G6x6ASsXQ/LdRF3w84xzRoGmYeQO8r4SlMJvLYESZddbFils3ih?=
- =?us-ascii?Q?NR2hyFGtxiQvPTLal1XLTRelFx+MTq9SGdcE0ZhiNGdyML7WLk64MEr5qvW4?=
- =?us-ascii?Q?V5JBwHhrPy7SKWi5nHDvTIIXxs/FpKBo5CmKQBzyxNEB6Nkmn5JZd8CLmAQ9?=
- =?us-ascii?Q?Vj2OeOczzAuhkQwqcBW3ZOyEQBEPQ4Ml/BB8GKFDY4nLYQl1+CjIQXTSm6j6?=
- =?us-ascii?Q?oHtMIjhn8aQps+qy7d5B9UqO1GP/IMvHl53W7WcBgG5ZOTbVXTXAzR7WoPkv?=
- =?us-ascii?Q?vliYAf4XtQvJJk6yfcfcssBwl9wVozvkne/846egbRtPGQJz4hay6VKpLMMI?=
- =?us-ascii?Q?lRn/7E5mSqbc3SnEs7zErC3Yi0gGITJpjBqw8cdDMNLjT0KKu/F6d4Nt5Pd0?=
- =?us-ascii?Q?Dp74LWFOkr5/qLBVTJ85jPOJ4r0ulAkUMADmOUAQ85hap+KENZQM/JKEw/7U?=
- =?us-ascii?Q?jOhygIKB/xWk7+7GkVwO/ovmXRLRIkt2tZ8W5UG6zXWuhpATBOUxyO1jeKAn?=
- =?us-ascii?Q?YcAVobwIT6tJGz6uQHtasMK5oo1oi6JECsUWfRMdF96fNBytU2CfSQq2mrHH?=
- =?us-ascii?Q?5lRR9LcD2fJ50J51zogDAIIrGLDx1a/9fKVs1NIc2XacnXxHYvTIAJyfSo3j?=
- =?us-ascii?Q?9BUvJZnuNSwMcr90k8BxIchm3MMgwLPR9sa0d+Uq5ug2TkcyTu/Bsncxz6JE?=
- =?us-ascii?Q?mJoXYHa7O0xdCwnnPZfBhFxaZkLkhqWVtFVOasz7?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5ba30ab8-7fe3-4ee0-eb16-08db62dd3e5c
-X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Jun 2023 20:17:37.9572
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: ybFCKg7FlbHV+/BvRa5o0GzNp7rHXi27+pOfAcNZG0dFzV3u6jWD+sjhKl0GLkZV
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR12MB8008
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230601_131752_596311_A7971132 
-X-CRM114-Status: GOOD (  19.28  )
+X-CRM114-CacheID: sfid-20230601_133236_575753_23E82B42 
+X-CRM114-Status: GOOD (  12.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -167,34 +80,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 01, 2023 at 08:53:41PM +0100, Robin Murphy wrote:
-> On 2023-06-01 20:46, Jason Gunthorpe wrote:
-> > On Thu, Jun 01, 2023 at 08:37:45PM +0100, Robin Murphy wrote:
-> > > On 2023-05-16 01:00, Jason Gunthorpe wrote:
-> > > > Robin was able to check the documentation and what fsl_pamu has
-> > > > historically called detach_dev() is really putting the IOMMU into an
-> > > > IDENTITY mode.
-> > > 
-> > > Unfortunately it was the other way around - it's the call to
-> > > fsl_setup_liodns() from fsl_pamu_probe() which leaves everything in bypass
-> > > by default (the PAACE_ATM_NO_XLATE part, IIRC), whereas the detach_device()
-> > > call here ends up disabling the given device's LIODN altogether
-> > 
-> > Er, I see.. Let me think about it, you convinced me to change it from
-> > PLATFORM, so maybe we should go back to that if it is all wonky.
-> 
-> FWIW I was thinking more along the lines of a token nominal identity domain
-> where attach does nothing at all...
+In the series "Adjust the dma-ranges for MTK IOMMU", the mtk-iommu
+driver was adapted to separate the iova range based on the larb used,
+and a dma-ranges property was added to the soc node in the devicetree of
+the affected SoCs allowing the whole 16GB iova range to be used. Except
+that for mt8192, there was no patch adding dma-ranges.
 
-I'm worried that would create security problems for VFIO.. At least
-the driver currently wipes out the VFIO installed translation which
-sounds like the right thing to do.
+Add the missing dma-ranges property to the soc node like was done for
+mt8195 and mt8186. This fixes the usage of the vcodec, which would
+otherwise trigger iommu faults.
 
-So, I think my first patch was right, we should label this
-PLATFORM/PRIVATE/whatever and just leave it as is with some comments
-explaining this thread. Based on the same rational as my prior email
-that we should label things correctly and this detach_dev is doing
-BLOCKING.
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-Jason
+---
+Matthias,
+
+this is a very simple but important fix for the vcodec functionality.
+Since the vcodec node for mt8192 was just merged, can we please get this
+in in this merge window as well?
+
+Thanks,
+Nícolas
+
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+index 7ff183c35494..a3612de8e9d1 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+@@ -401,6 +401,7 @@ soc {
+ 		#address-cells = <2>;
+ 		#size-cells = <2>;
+ 		compatible = "simple-bus";
++		dma-ranges = <0x0 0x0 0x0 0x0 0x4 0x0>;
+ 		ranges;
+ 
+ 		gic: interrupt-controller@c000000 {
+-- 
+2.40.1
+
 
