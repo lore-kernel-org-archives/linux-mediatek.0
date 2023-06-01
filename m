@@ -4,71 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1760C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jun 2023 17:09:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1489DC7EE23
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jun 2023 17:15:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ocbIEO/buAl2V5qpMijhjFOCrVUowEEsiNtIJoo6zSY=; b=UvrYy6Y4SweMS2GhWS5obpWJDx
-	Xz3DhYhWgJuPZCNCMA/hYr2hrRAxQpaaRBIfthJbeGqyuBxKK2uDqLwRGi9LnZFbWLf6PR0s6hn0C
-	RdK2jmPEfxMvX3p/p1GjNgmCuDVpnEaoFhEt9YHe9FHdcs7kIM/z47h+4KAAKOOFwxkoeVjOsd4lN
-	mVe+Yvd7On1vY6fVWd2+g+mwuopjBUQhLq5OUYm16KllDHbfBvyU+vArWTwSeBtb0UZXX7kiL9mcn
-	8jc94xZDKIRRN7MJOFYDrSCfi+oKYw8TGLQyRwar4aYLZAvpBCT0a7ShRhgWu+3sX1Q4xaPZZBp4f
-	QobyJX3g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=dxQK2hEMGOO4n71nmEJ0/3GKd1uTS+Ys9UMnp+oUaHs=; b=chY39EhusFm8FE2zjJjvMi+wYJ
+	ZowY/aMqFVGrUBPFaq/Lv3Gbyf5dczeQelIjYe+4EfO8su81TW5LMnbQk3YCa/of+NTHMfbC3RC6p
+	fZS5JAcaNaRlzTHSzpJHMxcHl+4kl4oWYqkG1n9g5Zws7OwaGJZeDB0uMrLJOm8Jzt90GEZWKSz6s
+	dvHpo6QavzPJkbsI7ZhJTUEY/FvZ1A8PUUk4Msi67nIg6koP4v9EWpARCUDhOZ8Line/+feSw1C+t
+	t0f3TaHJ0xoe1jdlJzFPidoBJIX1icQsMpOBCnBEmd8Qm94YgA3hamdKagaRTJhlBZMnO1d2LQvYy
+	HpYH+4Pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4lni-004MmS-33;
-	Thu, 01 Jun 2023 17:09:26 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1q4ltW-004Np2-2X;
+	Thu, 01 Jun 2023 17:15:26 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4lnf-004MlG-0T;
-	Thu, 01 Jun 2023 17:09:24 +0000
-Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7B1ED6606ECA;
-	Thu,  1 Jun 2023 18:09:16 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1685639359;
-	bh=Y8F29vZfkHL4Cb3ef4MuhHy4Zp5QvDAZ2kfIEyGPM9A=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=djfaRrFbe5vpFwhkOMJQAaXxfPSn6juAwXkAr4/vbafpbvECworn4C6+M5gHXSwC/
-	 omKlx04ZB5h0aJdt1pRwK5f1fh/c0wVQDIoAhMR0OHegtLoUymiw1hnFy5Wg2yblOH
-	 SoizdaLsweDvPsQ+6QiYYYElLbHJf2pVZsRtIulNG1gHSYjfdSXdHwEoGnHsI9Nrwo
-	 kC9g+1xMF4lc+XJffyLIolrsX8Xe3yqm354tkULZ4uxHR3nYlYthbfVUEJ4gYxkZ+O
-	 2R+0K6KZb6diN81tPegpYjt0x83mMUvzIROFsegGI+kMLOEgnoDrS86IzX3s7IGG3U
-	 v3DweIR4ktFlg==
-Date: Thu, 1 Jun 2023 13:09:12 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Bernhard =?utf-8?Q?Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
-	daniel.lezcano@linaro.org, angelogioacchino.delregno@collabora.com,
-	rafael@kernel.org, amitk@kernel.org, rui.zhang@intel.com,
-	matthias.bgg@gmail.com, robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org, rdunlap@infradead.org,
-	ye.xingchen@zte.com.cn, p.zabel@pengutronix.de,
-	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	james.lo@mediatek.com, rex-bc.chen@mediatek.com,
-	abailon@baylibre.com, amergnat@baylibre.com, khilman@baylibre.com
-Subject: Re: [PATCH v4 0/5] Add LVTS support for mt8192
-Message-ID: <572f5a88-8c2e-4324-b477-836a5024ec67@notapiano>
-References: <20230530195132.2286163-1-bero@baylibre.com>
- <CAGXv+5EVfgEBDm=7MmQ=OsP322KmE23PwycJ-0LjU+3dEZygUQ@mail.gmail.com>
+	id 1q4ltT-004NnB-0L;
+	Thu, 01 Jun 2023 17:15:24 +0000
+X-UUID: e15e923e009f11ee83ed1395ce914268-20230601
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=dxQK2hEMGOO4n71nmEJ0/3GKd1uTS+Ys9UMnp+oUaHs=;
+	b=GnYY9sNCMpLAsdey6cencKQ83cZExVaL8n+pPhpjp9aiU8qvl6HzvsnaX7ksmnTRkWkhKIqSyOXTqavJChN14GqwW+ZNkfRoOmsxgabxS1t/46py/hYTL+0ADcMOyTqzJOupRZD6m3dAxM9NU2VBQv4T0qNOsy+BKxoFwX9pSKo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.25,REQID:61d1e2cf-7aac-4a7b-8b1b-f852f159cef6,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:95
+X-CID-INFO: VERSION:1.1.25,REQID:61d1e2cf-7aac-4a7b-8b1b-f852f159cef6,IP:0,URL
+	:0,TC:0,Content:-5,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
+	ON:quarantine,TS:95
+X-CID-META: VersionHash:d5b0ae3,CLOUDID:6099493d-7aa7-41f3-a6bd-0433bee822f3,B
+	ulkID:230602011516OP2YXXXY,BulkQuantity:2,Recheck:0,SF:29|28|17|19|48|38,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
+	OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: e15e923e009f11ee83ed1395ce914268-20230601
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 552964025; Thu, 01 Jun 2023 10:15:17 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 2 Jun 2023 01:15:15 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 2 Jun 2023 01:15:15 +0800
+From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Alexandre Mergnat
+	<amergnat@baylibre.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Rex-BC Chen
+	<rex-bc.chen@mediatek.com>, Jason-ch Chen <jason-ch.chen@mediatek.com>,
+	Johnson Wang <johnson.wang@mediatek.com>, "Jason-JH . Lin"
+	<jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Nancy
+ Lin <nancy.lin@mediatek.com>, Shawn Sung <shawn.sung@mediatek.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v4 0/2] Add dynamic connector selection mechanism
+Date: Fri, 2 Jun 2023 01:15:11 +0800
+Message-ID: <20230601171513.8533-1-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAGXv+5EVfgEBDm=7MmQ=OsP322KmE23PwycJ-0LjU+3dEZygUQ@mail.gmail.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230601_100923_349210_9C59EA61 
-X-CRM114-Status: GOOD (  19.98  )
+X-CRM114-CacheID: sfid-20230601_101523_157440_23F4250F 
+X-CRM114-Status: UNSURE (   8.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,53 +92,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 31, 2023 at 12:49:43PM +0800, Chen-Yu Tsai wrote:
-> On Wed, May 31, 2023 at 3:51 AM Bernhard Rosenkränzer <bero@baylibre.com> wrote:
-> >
-> > From: Balsam CHIHI <bchihi@baylibre.com>
-> >
-> > Add full LVTS support (MCU thermal domain + AP thermal domain) to MediaTek MT8192 SoC.
-> > Also, add Suspend and Resume support to LVTS Driver (all SoCs),
-> > and update the documentation that describes the Calibration Data Offsets.
-> >
-> > Changelog:
-> >     v4 :
-> >         - Shrink the lvts_ap thermal sensor I/O range to 0xc00 to make
-> >           room for SVS support, pointed out by
-> >           AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> >
-> >     v3 :
-> >         - Rebased :
-> >             base-commit: 6a3d37b4d885129561e1cef361216f00472f7d2e
-> >         - Fix issues in v2 pointed out by Nícolas F. R. A. Prado <nfraprado@collabora.com>:
-> >           Use filtered mode to make sure threshold interrupts are triggered,
-> 
-> I'm seeing sensor readout (either through sysfs/thermal/<x>/temp or hwmon)
-> fail frequently on MT8192. If I run `sensors` (lm-sensors), at least a couple
-> of the LVTS sensors would be N/A. Not sure if this is related to this change.
+To support DSI and eDP as main display connector without modifying
+mtk-drm driver, we add the dynamic connector selection mechanism.
 
-Yes, it is. Filtered mode has some delay associated with reading, meaning most
-of the time the value isn't ready, while immediate mode is, well, pretty much
-immediate and the read always succeeds.
+Change in v4:
+1. Change variable naming of connector routes number from conn_route_num to num_conn_routes.
+2. Chnage he encoder_index function return valuew from int to unsigned int.
 
-For temperature monitoring, filtered mode should be used. It supports triggering
-interrupts when crossing the thresholds. Immediate mode is meant for one-off
-readings of the temperature. This is why I suggested using filtered mode.
+Change in v3:
+1. Change max_num comparison statement to max().
 
-As far as the thermal framework goes, it's ok that filtered mode doesn't always
-return a value, as it will keep the old one. But of course, having the
-temperature readout always work would be a desired improvement.
+Change in v2:
+1. rebase on linux-next: next-20230426
+2. Fix alphabetical order and max_num condition check problem.
 
-As for ways to achieve that, I think the intended way would be to enable the
-interrupts that signal data ready on filtered mode (bits 19, 20, 21, 28), read
-the temperature and cache it so it is always available when the get_temp()
-callback is called. The issue with this is that it would cause *a lot* of
-interrupts, which doesn't seem worth it.
+Change in v1:
+1. based on mediatek-drm maintainer's tree / mediatek-drm-next branch:
+https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/log/?h=mediatek-drm-next
 
-Another option that comes to mind would be to enable immediate mode only during
-the get_temp() callback, to immediately read a value, and return to filtered
-mode at the end. That might work, but I haven't tried yet.
+Jason-JH.Lin (2):
+  drm/mediatek: Add ability to support dynamic connector selection
+  drm/mediatek: Add DSI support for mt8188 vdosys0
 
-Thanks,
-Nícolas
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h     |   2 +
+ drivers/gpu/drm/mediatek/mtk_dpi.c          |   9 ++
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 111 +++++++++++++++++++-
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.h     |   5 +-
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  28 +++++
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |   8 ++
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c      |  49 +++++++--
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h      |   8 ++
+ drivers/gpu/drm/mediatek/mtk_dsi.c          |   9 ++
+ 9 files changed, 218 insertions(+), 11 deletions(-)
+
+-- 
+2.18.0
+
 
