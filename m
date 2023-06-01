@@ -4,153 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83E4EC77B7A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jun 2023 20:47:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46EA1C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jun 2023 20:54:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k743byxuD2wT+TpNb/EB9MtEMFk0NC984MpixMsBONA=; b=NiimfjQvuGetOs9Esrn68hcwRx
-	ot8S+KZovHy9ABG2ksocPdTYtNPQ5QjQ7q7XQpJQSxYIfLinJAd6o+rgrNGflU7FvaxRjFL+Kos8J
-	wb6vPS3iTMmtsFH7BVBjmF1X2qZrp9JpinkwlkWt9/9k7sUwCtqkZCDxcQbbNaizYjVKUSIDKEhEo
-	+aSGAUvmOddOUKYfqZJ94zOB0kwHpIHYPWokqGkJDPNyxZgDYgZx7nVFfKMFQq+gz6I1ffup9MFS1
-	iF6nJWgxhqVbTi0Ry5BGUuIzBJp5pYWeLO8z+q8UpCOVE3ZxXkYeze2Hwj3uPe2YpzxID1kXrXYee
-	lLTXml9g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=aPwIIZji4mV+ZRru26BAK0A17cLTb3lSIzhJ0eieN5U=; b=RixddWTXQPIbZ23vu5KMdsCunU
+	2IE1mxyNtjThuExGxFL0ypc6fJJMLNWPrJYoD2jDTc8wx1dt2CZJ1NKsRvODRH/HbdJWNU0LdpxNu
+	9gvXmkQsYeIIjE46Oiv9kNzcFlJ3NW8Ckpx45E8pLFozsx3pq6zKiHKiqygx7mIH0Q8+XtKVKh06v
+	J1VNGlznsJNgW8EM2XXYKyci67LkfwISkSW+bqbY+xQYd/Oql51Qex86HqOJr+zk8wLbZ9wyfUBty
+	zoJjL3Ywv9joGL5YGMoaSMTc6Ph2KywRWf+llQaOni39fuWTmpNH8/0BwQGL1AqelWNrdGQFaWpKq
+	8cMESqXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4pCb-004uEP-1z;
-	Thu, 01 Jun 2023 20:47:21 +0000
-Received: from mail-dm6nam11on20622.outbound.protection.outlook.com ([2a01:111:f400:7eaa::622] helo=NAM11-DM6-obe.outbound.protection.outlook.com)
+	id 1q4pJl-004vBZ-1Z;
+	Thu, 01 Jun 2023 20:54:45 +0000
+Received: from mail-pl1-f176.google.com ([209.85.214.176])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4pCX-004uCM-2d;
-	Thu, 01 Jun 2023 20:47:19 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=JhOrcF03KmIscARw5Wh06SmtkTV4UPjdxq4eOOGkVkvFLFlhN0atFqgMACMGT1WlJT+YE1mu2RJ0tbKDrPYPBOtRb6Md9Rgwhm0nDGtLu/3FJyMIAfyZ8lHSwJ/REG4xm9QF3P8CKHKcxgqIZT0YYTd3zvX8+k1K7cu0TeFua5EfW2AD1dcoNlVv0C3MvFfrMUujnFFiO9a8UdusYXqOKKHkblA3TdfaTGarqFO2Gzj1Sh2IZWFlJOdMxO03wYkfFdB8sbO/+1mwz86Uoap0HtzKewEYcjXkKLU+Wq3gH/5YtHS8d/nUnfq+UjQiXNqIIEkZDcbk4ZquycVQoQHuVQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=k743byxuD2wT+TpNb/EB9MtEMFk0NC984MpixMsBONA=;
- b=S9g+e6QLvpNdpP2exJAJKz7ECWV+Etkixh7R6eIaLrtxmnXuP1fgani28Ok4mE0rx1AfkZP2+4vn18tiqTONnvhwrU4qXUUR1DxhpnlivpLS3Yeon8mwY+bcPqLqYvO1JGd7cajLxBjhCJLe5aDU2YR5DM6e5ielKb12OsTZsg5ePrXqjpMBPxt3SD52dya3RMw5PDoDNfW6ZkrP0U5OqYHZHFJHmT7jO4rt90RYBs0qt6aJk9FinTLzRcfQ47igY8E9Z/bPMtBVU8fFQvN7oZ5qn438FjEPHi4KUHqKPeD4MMX8sb6KHoApTB4FIbvKALNsU9M3glKkp1mNN+bK8w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=k743byxuD2wT+TpNb/EB9MtEMFk0NC984MpixMsBONA=;
- b=nlHrJP2IDSY+ejaUXqrGjdM8jZILN8jLeIyLq5tAPbVqR3n9UHHJDAzPi1709wKixbbV4A2oL3yqThwX+kBJ9SqYllPa4H/SMPEr8KbbPEMIJYYfWPg7aKQVL95wdSxlBQ59Q26OWHo9h2veMWfEoqdYYCZUdjI29Zht3FjxO9YTmDTfHMho1R0iDP5kcHqgzEEBu5zxK6C45HmWVpwObblaYaTlsoZOCA8RGRbOAEYAXA9nxxYnmDq922CtCXS78QNGZ03GMeIEzZ4WgH+1iJf3VdttXZCzlLQm3YX/S8rtbBX/UNBKgMoAjfL8b3zLMSt/GC0duZ0NcqSbIKRAwg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
- by PH7PR12MB5877.namprd12.prod.outlook.com (2603:10b6:510:1d5::17) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6433.16; Thu, 1 Jun
- 2023 20:47:04 +0000
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::f7a7:a561:87e9:5fab]) by LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::f7a7:a561:87e9:5fab%6]) with mapi id 15.20.6433.024; Thu, 1 Jun 2023
- 20:47:04 +0000
-Date: Thu, 1 Jun 2023 17:47:02 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: Andy Gross <agross@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Christophe Leroy <christophe.leroy@csgroup.eu>,
-	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
-	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Joerg Roedel <joro@8bytes.org>, Kevin Tian <kevin.tian@intel.com>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org, Russell King <linux@armlinux.org.uk>,
-	linuxppc-dev@lists.ozlabs.org,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Matthew Rosato <mjrosato@linux.ibm.com>,
-	Michael Ellerman <mpe@ellerman.id.au>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Orson Zhai <orsonzhai@gmail.com>, Rob Clark <robdclark@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Krishna Reddy <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
-	Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Lu Baolu <baolu.lu@linux.intel.com>,
-	Dmitry Osipenko <digetx@gmail.com>,
-	Nicolin Chen <nicolinc@nvidia.com>,
-	Niklas Schnelle <schnelle@linux.ibm.com>,
-	Steven Price <steven.price@arm.com>,
-	Thierry Reding <treding@nvidia.com>
-Subject: Re: [PATCH v2 23/25] iommu: Add ops->domain_alloc_paging()
-Message-ID: <ZHkDxgoKndFA6ixY@nvidia.com>
-References: <23-v2-8d1dc464eac9+10f-iommu_all_defdom_jgg@nvidia.com>
- <13fb6807-d8b9-9808-c528-6df6ae9ca78a@arm.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <13fb6807-d8b9-9808-c528-6df6ae9ca78a@arm.com>
-X-ClientProxiedBy: CH0PR03CA0041.namprd03.prod.outlook.com
- (2603:10b6:610:b3::16) To LV2PR12MB5869.namprd12.prod.outlook.com
- (2603:10b6:408:176::16)
+	id 1q4pJi-004vAw-2i;
+	Thu, 01 Jun 2023 20:54:44 +0000
+Received: by mail-pl1-f176.google.com with SMTP id d9443c01a7336-1b02497f4cfso8090315ad.3;
+        Thu, 01 Jun 2023 13:54:41 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1685652880; x=1688244880;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=aPwIIZji4mV+ZRru26BAK0A17cLTb3lSIzhJ0eieN5U=;
+        b=ZsrKck26M/93egYVOzkkcepE6oesk4BRkxl9P3NJYmxRLgYy4eDHUWJsJnNlYjKzvo
+         UkcwuZ/sIVwWbRf7M7pXFVRDIk9kQgBfUSO4NrLrsBClEcGz5SyEchYVGB/5OgLXWnam
+         DZAw7pUX9+2dFulybIqz/vQi0YAjn5kFy1uo5sde6j1GdEtHbwibuswlAD9L7etH6Xrq
+         5KKCyqrOoPXJTgDJ503EPgaTEoHO/SjubeOMeciWhrxVeGHXxR/PQwtaAI/OgWSkcl9/
+         mcLKwCO+iF8LbNRR17TpLLdS4GryWLNAfiLjnxsJyh2Qi0RnQc4bUkYa19HYOs7MJiGL
+         ORVQ==
+X-Gm-Message-State: AC+VfDy4uhYaNibnvZm1f+em55tVJgqBX4OPKhxFjCP6lbIQhdc+p1oq
+	5A86jC/mMKpQ5SfdpVuFejE=
+X-Google-Smtp-Source: ACHHUZ5hUChDXbEmqYIU8V8OQaDiPwT6USDEoTMPSLkgzUsyWLT/1zZYL1PVhpX7Lh14eAmy+9e7hw==
+X-Received: by 2002:a17:902:ab96:b0:1a9:bc13:7e20 with SMTP id f22-20020a170902ab9600b001a9bc137e20mr404142plr.44.1685652880497;
+        Thu, 01 Jun 2023 13:54:40 -0700 (PDT)
+Received: from [192.168.51.14] ([98.51.102.78])
+        by smtp.gmail.com with ESMTPSA id j13-20020a170902758d00b001a52c38350fsm3929463pll.169.2023.06.01.13.54.39
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 01 Jun 2023 13:54:40 -0700 (PDT)
+Message-ID: <f6a79164-944c-a355-40f3-0bddbcb37357@acm.org>
+Date: Thu, 1 Jun 2023 13:54:38 -0700
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|PH7PR12MB5877:EE_
-X-MS-Office365-Filtering-Correlation-Id: 908fc0c2-9966-41bf-7aef-08db62e15b11
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: vcHTKpxidrs7QW53DiiF0qICELUbi3TGT57FJuabKrx5EEAEx1I8LZKO0GvKQscJWB27SnLyqcUBl5TF9rbmwGkJpk8854k7xltrpzav1J2SVc4cFql+8Qv4TxxA46VXknQz15pIbjIaYG00OjAnghJgnxUkkda9PxCrVTHFS0z6nRxPApd+ZdlA/tLT14giQY92wFdGuKCfuAKlwbWcIh+ZTefLJrhTCKXnpqzMRY23IpZWo9HvW9jgZxRa2bbLZ4ytmwUK/4ucx0edexRoayYfu1eC7/80LKzvJrMnvb+8A1mKoaAhi5FqOBosXpcKnnx2JCXf15nn0p0gzfSpCyWYkYyjf1vPy5t6Zo7HalviDX7E3B1yTi+BYP2Yq7YxLhNwWixAYaFSkUDmypSeIQXikhpbl3Ja4C1pEwLdKSZO3uvbzRJ4v3wCpXDmnPvZORh/PNYGqg3IcItv4+Jmy9IOTCoZT7TFOIDQt3VfbTlpVTxEyjrjjv0sgfuB3W7Rt39RKQdfAdSm7NmTP6Gr9k5349PQ3R6zj3d4M4gaVmC9mzW0WVC7J6UOF1XZH42N
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV2PR12MB5869.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(346002)(39860400002)(376002)(366004)(136003)(396003)(451199021)(36756003)(54906003)(86362001)(66476007)(66946007)(66556008)(316002)(478600001)(6916009)(4326008)(8936002)(7416002)(6486002)(5660300002)(41300700001)(26005)(8676002)(38100700002)(186003)(107886003)(6512007)(6506007)(83380400001)(53546011)(7406005)(2616005)(2906002);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?UAR9S+2rU9YUgz2ZGQB7oxvAtwZ5+9UouIDM12l3v09J3vSjlQwF1YsyJOmD?=
- =?us-ascii?Q?ugPR2X19LXwT9ruaPTFiQoYpZ8MFW7PZ6CKYRUpxXIBeTosCkLNz3jkPTzyV?=
- =?us-ascii?Q?O2AzS1IpSxuamR9R6zyJM9sOfhlIzkir26WnNE/YL/F+GBXh72ONl70YbLbT?=
- =?us-ascii?Q?H280pOzpApQh94vl1nDb0LqVKEFJk1pZnecUSBN2zBZNBl4GVw57k59aZod9?=
- =?us-ascii?Q?iVmEoMKN8adhT7gWx9vi99UOzrwfQ9gfIlZ6WjhjolPogW+YWshFmuAw4/W3?=
- =?us-ascii?Q?/xG+mtBZjo6wrXr67o65JHgP0fNqNNqxX8exD+mgludygS1TZiUakAKUKsjM?=
- =?us-ascii?Q?4SDhOQSMF4S8EnRQMkJ9Z6h5WBMsl6T0Iy/3SjTHgmW1Xlv2eC1tX+yR+nax?=
- =?us-ascii?Q?Uuw25pSJaZAO0J20tX0YUHJ8GkBWIvo73iW9Z8zCpQ4fvlGYIUQwaoG9sjsi?=
- =?us-ascii?Q?/zpC5e7pIBXQ6EmleeAX3I5oCN3c43BsQVtFqqaPJSLcY1dTb4nNW+ei6Z9h?=
- =?us-ascii?Q?HqdUrZj5p9j9VWyTFJtLv7WE3fW/PpqjcNEL1mo2Eq89+pJjnBY+snxq8kzd?=
- =?us-ascii?Q?S1yDi9t/jl4Dlsa+pw9g2CN9jUh6Rq3MMcsS7izBo4qISDRSvzaDIPe5TPJ8?=
- =?us-ascii?Q?ZMweBujVPS3B/zoodzgACam/1es78dSSvBbM7GSc+MAbTnqxMPiR7dz/HWmx?=
- =?us-ascii?Q?+OWDv9EISkS/0/QOxonSX4E+dozpNxTOMlYn8HinBiHarLpTQlkSNEDXAULk?=
- =?us-ascii?Q?pWx91PfCpOJ89rWpCYzLfVj8/8VkN/kNAcb71wId/eFYonwOWu1RuMiUtwZz?=
- =?us-ascii?Q?3eQMvRxbC0YmUgQrb9P4c6Bb4RERrf9goGqfCeP97QaOXv2Dj21VodhP30Yy?=
- =?us-ascii?Q?g/c2le5yTwh8Gd79h4wSoMFOy2e+1kNDv8jMck8IWID/i1VVuUUO5OOj7stY?=
- =?us-ascii?Q?I696aVuVmlWqaLpOb7lu9TZnoGVJbKAaNfhPz3QcQ5JcqGjJGGUM7I2CASF5?=
- =?us-ascii?Q?BXpyI57uRPnHX2/AS2Iy8N+9PByXEpXTKVFj665NwqsxjYrM7YfbgyuMIZ+v?=
- =?us-ascii?Q?kwKncve2SDPyySeQ2hcqe4Yqn/t8LsCwRsGDD3HplLzXL5EUMu79ScU5gtFE?=
- =?us-ascii?Q?2UVcifsinE3HzCBqFbE04ONDqeyL/NZUjzQe2F/6dDe29o1e4qkZz13NBapO?=
- =?us-ascii?Q?akV9npqbPVyuPkXpn7Lv4Ole1oO0l4aanjDceGdmdyEdVpw1Xfr6fvycCQA2?=
- =?us-ascii?Q?Q3ee74TJMRFaLrZkn5x/L0q+si5898Q9mJQm84TjdVXncE0MYxz4qgdvGuOH?=
- =?us-ascii?Q?joiaruPvTUnnXSpzSC9Jnx1iGYbJmGlsLx5tBU31S6Y4QM+qCAk/fBniZHu7?=
- =?us-ascii?Q?mxMnC1KGqKWlhjMBPtioX+cOa9GOGhIaotCYr6JAWOJWFt7gPrG5d8TAu5MZ?=
- =?us-ascii?Q?zLsKwExVNxfimDLrwb40rfuVyLgVVsIFDCXAN9GrDXaKzfdz0fcIrtosvX1K?=
- =?us-ascii?Q?NmOsS8Oz0PQ2qZq6AZ1cJ42dGJ/v+NP3tSTpSljBUrjNzQRyJEDJHo4Eu5EY?=
- =?us-ascii?Q?u5RNf9sZJJPh5QrhvOyDT/IlxT9uKeopfSAJ9bNs?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 908fc0c2-9966-41bf-7aef-08db62e15b11
-X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Jun 2023 20:47:04.0568
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 0XIJCEqsupTawgyNlxcOjn7kuC1shHMtmucmEhEhDQQ+La+56Tlg1mm8BcLWnxzL
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR12MB5877
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH v2 1/3] scsi: ufs: core: Introduce mcq ops to config cqid
+Content-Language: en-US
+To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
+ =?UTF-8?B?UG93ZW4gS2FvICjpq5jkvK/mlocp?= <Powen.Kao@mediatek.com>,
+ "chu.stanley@gmail.com" <chu.stanley@gmail.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ =?UTF-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
+ =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
+ =?UTF-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
+ "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
+ wsd_upstream <wsd_upstream@mediatek.com>,
+ "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
+ "avri.altman@wdc.com" <avri.altman@wdc.com>,
+ =?UTF-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?= <Chun-hung.Wu@mediatek.com>,
+ "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
+ =?UTF-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?= <Naomi.Chu@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ =?UTF-8?B?U3RhbmxleSBDaHUgKOacseWOn+mZnik=?= <stanley.chu@mediatek.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>
+References: <20230530023227.16653-1-powen.kao@mediatek.com>
+ <20230530023227.16653-2-powen.kao@mediatek.com>
+ <1c182151-6e8c-5068-b38c-f8e842e6e13b@acm.org>
+ <CAGaU9a9TsoaUtoMX8cNmAhfBnCddRtWYEG8ACdRNJfri+sdasg@mail.gmail.com>
+ <ec9c378c-fedd-5a90-bb12-085395e0d22e@acm.org>
+ <fd0fceb04efa34e6d86f09c5554746cfcc5c993f.camel@mediatek.com>
+ <4ea8427d-8b09-d35f-0e2c-2df486b79692@acm.org>
+ <d5f239c6f104d9dd4e5493d5d06709e33f12226b.camel@mediatek.com>
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <d5f239c6f104d9dd4e5493d5d06709e33f12226b.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230601_134717_857100_182612B1 
-X-CRM114-Status: GOOD (  32.30  )
+X-CRM114-CacheID: sfid-20230601_135442_899702_CE0C9AC4 
+X-CRM114-Status: GOOD (  19.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -165,71 +107,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 01, 2023 at 08:17:56PM +0100, Robin Murphy wrote:
-> On 2023-05-16 01:00, Jason Gunthorpe wrote:
-> > This callback requests the driver to create only a __IOMMU_DOMAIN_PAGING
-> > domain, so it saves a few lines in a lot of drivers needlessly checking
-> > the type.
-> > 
-> > More critically, this allows us to sweep out all the
-> > IOMMU_DOMAIN_UNMANAGED and IOMMU_DOMAIN_DMA checks from a lot of the
-> > drivers, simplifying what is going on in the code and ultimately removing
-> > the now-unused special cases in drivers where they did not support
-> > IOMMU_DOMAIN_DMA.
-> > 
-> > domain_alloc_paging() should return a struct iommu_domain that is
-> > functionally compatible with ARM_DMA_USE_IOMMU, dma-iommu.c and iommufd.
-> > 
-> > Be forwards looking and pass in a 'struct device *' argument. We can
-> > provide this when allocating the default_domain. No drivers will look at
-> > this.
+On 6/1/23 07:41, Peter Wang (王信友) wrote:
+> On Thu, 2023-06-01 at 07:23 -0700, Bart Van Assche wrote:
+>> Thanks, I had overlooked this. Do you agree that the above shows that the
+>> flag I proposed in my previous email (UFSHCD_CAP_SINGLE_CQ) is sufficient
+>> to support the MediaTek use case? I want to keep the SQ-CQ association code
+>> in the UFS driver core because the next step will probably to switch from
+>> one CQ per SQ to one CQ per CPU core for UFS controllers that support
+>> multiple completion interrupts.
+>
+> If the UFS device speed is geting higher and higher, one CQ may not sufficient.
 > 
-> As mentioned before, we already know we're going to need additional flags
-> (and possibly data) to cover the existing set_pgtable_quirks use-case plus
-> new stuff like the proposed dirty-tracking enable, so I'd be inclined to
-> either add an extensible structure argument now to avoid future
-> churn,
+> So, UFSHCD_CAP_SINGLE_CQ is not flexible for us beacuse we may want to map to two CQs.
 
-I think I said this doesn't really work out because you still have to
-go into every driver and code up a 'does not support' check and fail
-if any new extension is added. Basically the same churn as adding a
-function argument.
+Hi Peter,
 
-Adding more ops is a possible smoother way to support this. Keep
-alloc_paging() for these simple drivers and we can add an op with a
-big signature and structure or whatever for the fewer fully featured
-drivers.
+Let's take a step back. The MediaTek UFSHCI 4.0 host controller only 
+supports a single completion interrupt. A significant disadvantage of 
+the single completion interrupt approach is that all completion 
+interrupts are processed by the same CPU core. This is known to cause 
+problems on Android. If sufficient time is spent in an interrupt 
+handler, threads that run on the same CPU core as the interrupt handler 
+may get scheduled too late. This can result in e.g. audio glitches 
+noticeable by humans. Hardware designers told me that the area occupied 
+by a single interrupt line is small. So I think it is fair to say that 
+the (nonstandard!) approach of only supporting a single completion 
+interrupt in an UFSHCI 4.0 controller is not a good choice.
 
-This way the core code can do the 'do not support' checks in one place
-based on the set ops and we keep boiler plate code out of alot of
-drivers.
+The UFS driver already supports multiple hardware queue types 
+(HCTX_TYPE_DEFAULT, READ and POLL). An interesting optimization would be 
+to combine the completion queues for at least the DEFAULT and READ queue 
+types. Introducing a vop to configure the completion queue ID would make 
+it almost impossible to implement this optimization in a generic way.
 
-> or just not bother adding the device argument either until drivers
-> can actually use it.
+Asking to add a vop that improves performance by only a few percent for 
+a *nonstandard* controller and at the same time that makes it very hard 
+to optimize the driver for standards compliant controllers is something 
+that I consider unreasonable.
 
-I debated this, I figured we'd use it pretty quickly, but certainly it
-can be taken out.
-
-> > @@ -1995,14 +1995,25 @@ void iommu_set_fault_handler(struct iommu_domain *domain,
-> >   EXPORT_SYMBOL_GPL(iommu_set_fault_handler);
-> >   static struct iommu_domain *__iommu_domain_alloc(const struct iommu_ops *ops,
-> > +						 struct device *dev,
-> >   						 unsigned int type)
-> >   {
-> >   	struct iommu_domain *domain;
-> >   	if (type == IOMMU_DOMAIN_IDENTITY && ops->identity_domain)
-> >   		return ops->identity_domain;
-> > +	else if ((type == IOMMU_DOMAIN_UNMANAGED || type == IOMMU_DOMAIN_DMA) &&
-> > +		 ops->domain_alloc_paging) {
-> > +		/*
-> > +		 * For now exclude DMA_FQ since it is still a driver policy
-> > +		 * decision through domain_alloc() if we can use FQ mode.
-> > +		 */
-> 
-> That's sorted now, so the type test can neatly collapse down to "type &
-> __IOMMU_DOMAIN_PAGING".
-
-Thanks, I rebase it on Joerg's tree with that series and fix it up
-
-Jason
+Bart.
 
