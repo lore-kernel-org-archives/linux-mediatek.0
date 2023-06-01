@@ -4,89 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 221FEC77B7E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jun 2023 16:54:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1760C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jun 2023 17:09:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=opz6VtahvCDdjyoo3Ecdy1ZlcAUEXCiP9UvfN37Ndpk=; b=crModgoY2LNTILMmWPdqa4zGjW
-	njT7kCcCPXR/aUx86WbiVzA9/TA/tA1WbtUsxWiFJhwVVi54zKc2rOJObqvmchE2p7Llrt4bvDJMe
-	oOmHnyUC2LM3xNzc6EZrQukeW8uRReqviV5/nabEPkyyVJaFce/6sDMYJEoOuAth6jluMyV/97g/0
-	vUf5VWdeBnT2zLC7b9Fug3UQBZ+PzyV2U8xu8z/PpfO7v4pJY+wgVKLxlbsz1kieIWqbrU7qolB3i
-	/KEjxMvX5J5V2VZGjdVb0hy6w97vKi22m4BHQf6ToMbUlu/lZHEUSMBO5+dPO84dT0x4z182Yolt8
-	alq4sSpQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ocbIEO/buAl2V5qpMijhjFOCrVUowEEsiNtIJoo6zSY=; b=UvrYy6Y4SweMS2GhWS5obpWJDx
+	Xz3DhYhWgJuPZCNCMA/hYr2hrRAxQpaaRBIfthJbeGqyuBxKK2uDqLwRGi9LnZFbWLf6PR0s6hn0C
+	RdK2jmPEfxMvX3p/p1GjNgmCuDVpnEaoFhEt9YHe9FHdcs7kIM/z47h+4KAAKOOFwxkoeVjOsd4lN
+	mVe+Yvd7On1vY6fVWd2+g+mwuopjBUQhLq5OUYm16KllDHbfBvyU+vArWTwSeBtb0UZXX7kiL9mcn
+	8jc94xZDKIRRN7MJOFYDrSCfi+oKYw8TGLQyRwar4aYLZAvpBCT0a7ShRhgWu+3sX1Q4xaPZZBp4f
+	QobyJX3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4lYy-004JvH-30;
-	Thu, 01 Jun 2023 16:54:12 +0000
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+	id 1q4lni-004MmS-33;
+	Thu, 01 Jun 2023 17:09:26 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4lYv-004Jtl-2V
-	for linux-mediatek@lists.infradead.org;
-	Thu, 01 Jun 2023 16:54:11 +0000
-Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-96fbe7fbdd4so151820666b.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 01 Jun 2023 09:54:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1685638447; x=1688230447;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=opz6VtahvCDdjyoo3Ecdy1ZlcAUEXCiP9UvfN37Ndpk=;
-        b=LWiOQG5gf2rvyRCi1hD+vLSYQSgpTH/vSRYQQhyNujIB/uPUK2XWADRlsvTql/4J82
-         BF2ybxrrQpTSvzQEwyxf22vytjqI225LKfzVGpHfDeHTVCI1DUka6VH7rTVPKJkqLdaa
-         3ZuJDNavqa52M9MqOU5RA9FWijgAoecjc72kyQ9uckeTvgyDm7jepG08wZvR/cnI5U8C
-         JnYsaTggc3a7wTwzU8FHddVovstp29IQQqjUvPsMzhVyJ5VGyDTDsOfTzfDaKO3aUX6K
-         6MQ8kenQ+HDkoAyDnOW+cdmWNNUThF0ZOdb1qhghqu/U9VOeO09+v4OneIN3iRFWWWly
-         6Eqg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685638447; x=1688230447;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=opz6VtahvCDdjyoo3Ecdy1ZlcAUEXCiP9UvfN37Ndpk=;
-        b=QCvXHhE2nbe72FA8Do35/acSKPGYVsclQR6rVX64WoqCiz7RCxIfHPS3AyEmO+2FhG
-         lk38EkWXXN/sPTOi837uZO1swNnQ4JKzq3ZDyj1mUQ/0Fahifodr4o+WgNNlbAl4jiHi
-         s1OzjBMnJLKyB+Wa0SvnR9r2G+Qb4tCr+oU2ARagAiKlB3W3SGOVqZjnexKtr1/I1HRQ
-         TcpFHLqd2CLlGhKpftvbZm96BXRNJr50ozYAZIYkM0rMusVMFRp2uZDHEJj3qqJZ5EwE
-         KK51CgPv6uELLwEY0fSg0zi3xFSeZD8mRfKCRDvCi6vyAzjJPfTtCWZWB1ZjcHRt49Rc
-         VR3A==
-X-Gm-Message-State: AC+VfDyUTLFeimXHjGQMvZUvU/7jEExK9gXrTWAJs9rhmS15WBiVrNuA
-	3hYN4sv3m+d73+V3dC9brOH8bn7k73OwlvcIhwU=
-X-Google-Smtp-Source: ACHHUZ6Ib6fkHHOhU4CvPzpBJDbe8lHmjCmfmV5pzq4uXm82lIkWnme3xzB+iaqpqS1+gQ5oQcjPPQ==
-X-Received: by 2002:a17:907:6e11:b0:958:801b:9945 with SMTP id sd17-20020a1709076e1100b00958801b9945mr8590711ejc.31.1685638446879;
-        Thu, 01 Jun 2023 09:54:06 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.199.204])
-        by smtp.gmail.com with ESMTPSA id j13-20020a170906474d00b0096a5d341b50sm10759628ejs.111.2023.06.01.09.54.03
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 01 Jun 2023 09:54:05 -0700 (PDT)
-Message-ID: <12fea13e-e2c3-487f-8d2b-cfd320c98ba7@linaro.org>
-Date: Thu, 1 Jun 2023 18:54:01 +0200
+	id 1q4lnf-004MlG-0T;
+	Thu, 01 Jun 2023 17:09:24 +0000
+Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7B1ED6606ECA;
+	Thu,  1 Jun 2023 18:09:16 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1685639359;
+	bh=Y8F29vZfkHL4Cb3ef4MuhHy4Zp5QvDAZ2kfIEyGPM9A=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=djfaRrFbe5vpFwhkOMJQAaXxfPSn6juAwXkAr4/vbafpbvECworn4C6+M5gHXSwC/
+	 omKlx04ZB5h0aJdt1pRwK5f1fh/c0wVQDIoAhMR0OHegtLoUymiw1hnFy5Wg2yblOH
+	 SoizdaLsweDvPsQ+6QiYYYElLbHJf2pVZsRtIulNG1gHSYjfdSXdHwEoGnHsI9Nrwo
+	 kC9g+1xMF4lc+XJffyLIolrsX8Xe3yqm354tkULZ4uxHR3nYlYthbfVUEJ4gYxkZ+O
+	 2R+0K6KZb6diN81tPegpYjt0x83mMUvzIROFsegGI+kMLOEgnoDrS86IzX3s7IGG3U
+	 v3DweIR4ktFlg==
+Date: Thu, 1 Jun 2023 13:09:12 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Bernhard =?utf-8?Q?Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
+	daniel.lezcano@linaro.org, angelogioacchino.delregno@collabora.com,
+	rafael@kernel.org, amitk@kernel.org, rui.zhang@intel.com,
+	matthias.bgg@gmail.com, robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, rdunlap@infradead.org,
+	ye.xingchen@zte.com.cn, p.zabel@pengutronix.de,
+	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	james.lo@mediatek.com, rex-bc.chen@mediatek.com,
+	abailon@baylibre.com, amergnat@baylibre.com, khilman@baylibre.com
+Subject: Re: [PATCH v4 0/5] Add LVTS support for mt8192
+Message-ID: <572f5a88-8c2e-4324-b477-836a5024ec67@notapiano>
+References: <20230530195132.2286163-1-bero@baylibre.com>
+ <CAGXv+5EVfgEBDm=7MmQ=OsP322KmE23PwycJ-0LjU+3dEZygUQ@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH 1/2] dt-bindings: i2c: i2c-mt65xx: add additional clocks
-Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>, devicetree@vger.kernel.org,
- linux-i2c@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Conor Dooley <conor+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Rob Herring <robh+dt@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Qii Wang <qii.wang@mediatek.com>,
- Sam Shih <sam.shih@mediatek.com>
-Cc: =?UTF-8?B?6YOt5bCP5qGl?= <joe@gainstrong.cn>
-References: <5f15212060f82fb94239174c4e4b46c151645fe8.1685549360.git.daniel@makrotopia.org>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <5f15212060f82fb94239174c4e4b46c151645fe8.1685549360.git.daniel@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAGXv+5EVfgEBDm=7MmQ=OsP322KmE23PwycJ-0LjU+3dEZygUQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230601_095409_816183_C9F7B025 
-X-CRM114-Status: GOOD (  13.95  )
+X-CRM114-CacheID: sfid-20230601_100923_349210_9C59EA61 
+X-CRM114-Status: GOOD (  19.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,29 +83,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 31/05/2023 18:10, Daniel Golle wrote:
-> Add pck and mck clocks which are needed to access I2C registers on MT7981.
+On Wed, May 31, 2023 at 12:49:43PM +0800, Chen-Yu Tsai wrote:
+> On Wed, May 31, 2023 at 3:51 AM Bernhard Rosenkränzer <bero@baylibre.com> wrote:
+> >
+> > From: Balsam CHIHI <bchihi@baylibre.com>
+> >
+> > Add full LVTS support (MCU thermal domain + AP thermal domain) to MediaTek MT8192 SoC.
+> > Also, add Suspend and Resume support to LVTS Driver (all SoCs),
+> > and update the documentation that describes the Calibration Data Offsets.
+> >
+> > Changelog:
+> >     v4 :
+> >         - Shrink the lvts_ap thermal sensor I/O range to 0xc00 to make
+> >           room for SVS support, pointed out by
+> >           AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> >
+> >     v3 :
+> >         - Rebased :
+> >             base-commit: 6a3d37b4d885129561e1cef361216f00472f7d2e
+> >         - Fix issues in v2 pointed out by Nícolas F. R. A. Prado <nfraprado@collabora.com>:
+> >           Use filtered mode to make sure threshold interrupts are triggered,
 > 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> ---
->  Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
-> index fda0467cdd954..550795f6573c5 100644
-> --- a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
-> +++ b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
-> @@ -78,6 +78,8 @@ properties:
->        - const: dma
->        - const: arb
->        - const: pmic
-> +      - const: mck
-> +      - const: pck
->  
+> I'm seeing sensor readout (either through sysfs/thermal/<x>/temp or hwmon)
+> fail frequently on MT8192. If I run `sensors` (lm-sensors), at least a couple
+> of the LVTS sensors would be N/A. Not sure if this is related to this change.
 
-Adding names does not magically add the clocks. This wasn't tested.
+Yes, it is. Filtered mode has some delay associated with reading, meaning most
+of the time the value isn't ready, while immediate mode is, well, pretty much
+immediate and the read always succeeds.
 
-Best regards,
-Krzysztof
+For temperature monitoring, filtered mode should be used. It supports triggering
+interrupts when crossing the thresholds. Immediate mode is meant for one-off
+readings of the temperature. This is why I suggested using filtered mode.
 
+As far as the thermal framework goes, it's ok that filtered mode doesn't always
+return a value, as it will keep the old one. But of course, having the
+temperature readout always work would be a desired improvement.
+
+As for ways to achieve that, I think the intended way would be to enable the
+interrupts that signal data ready on filtered mode (bits 19, 20, 21, 28), read
+the temperature and cache it so it is always available when the get_temp()
+callback is called. The issue with this is that it would cause *a lot* of
+interrupts, which doesn't seem worth it.
+
+Another option that comes to mind would be to enable immediate mode only during
+the get_temp() callback, to immediately read a value, and return to filtered
+mode at the end. That might work, but I haven't tried yet.
+
+Thanks,
+Nícolas
 
