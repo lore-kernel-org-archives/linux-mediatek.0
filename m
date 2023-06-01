@@ -4,72 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05AC1C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jun 2023 03:44:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6753C77B7E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jun 2023 04:00:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kq3fxPmyPxw0nJTherBUsZEQDy7iP5h2RMscsulCSdY=; b=BF1r3uwHBMw2WBA1GCoGtC+kwv
-	4fl3nBQTeBzsdKneeyJqybV9T4w47Vbb3yeOFmFCQNPhLB7hVZ+7TVsv9cUcEz68PHoX5PbSGdL7S
-	AEfEbtGgf3oL/bss7RKGfxJxMqEiQQTiwq6mhylShh8b0xl4dtlBS5stwT4LBTintKH1+xnSyPhhH
-	KrXyd8zVdPjvPVrN5kdqye8BQjtii3iKWWs7khIwaBm1APmjPbfEHxBGNBgp0fX6XL/TCt54CWwpK
-	TpTJTQjNUIAIWe7SFJvDJwE5m1IEP1jAbMkwWnnEzHzn7R/+gjrjHZSBKlMzjINurXL19vn1pMJVf
-	/0DGluNA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=82M3XZFSVg9xu9Y/PLltQ3G+pMTb3GNjE949LCJUeY0=; b=C3bIb9CLCg0FaW732yTr0tKT4T
+	GJxFmWyCBaIx5UpXX6ztiSg6gYbmMRBpbUIsfC3EwBHzENR+bn/+WHSQHXEN9dWr5xJpXnVmIfbrM
+	X0v/sS7AwVxhGNIkPim1wFmGYpBYlNTjwNtR+vDyozVim1WFVUvvMJnEcHnaG0DKeJbH7mAEe7LHZ
+	UsBooJ38+A3NUsbkvMs2NZVuJkrxpXXvBfEwSc7fcg3NDngolsdXapeXbgk+rSfy7tvnFo4059AOb
+	3CrWYhqSBMe9UiyngHb7gZe9S+c97qaKrQqTc6LnyPQAz0NhjtjqovBzieHqQEKQHqJ2Fi3BiGeTx
+	O8Kfy4og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4ZEL-001qjz-1P;
-	Thu, 01 Jun 2023 03:44:05 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1q4ZTe-001sWB-2Q;
+	Thu, 01 Jun 2023 03:59:54 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4ZEH-001qj4-1t;
-	Thu, 01 Jun 2023 03:44:03 +0000
-X-UUID: 88cf4d78002e11ee912e1518a6540028-20230531
+	id 1q4ZTa-001sVV-17;
+	Thu, 01 Jun 2023 03:59:52 +0000
+X-UUID: be33ca50003011ee83ed1395ce914268-20230531
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=kq3fxPmyPxw0nJTherBUsZEQDy7iP5h2RMscsulCSdY=;
-	b=Gy4e2H7tNR035Gvr5hR3swXO26b8NYZAgGbkZZPdBELzLH7Yn9QtRpfAgu93FcGdJ26MSDCsl62US82R6pk+E+fISAREjnBD883lT0+NXYnJnwxNNmjU2sYPbEC9igC769I9uUR2L5Xpl2kIeWwnzZS2XjWbfL0N580e3bmIe6A=;
+	h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=82M3XZFSVg9xu9Y/PLltQ3G+pMTb3GNjE949LCJUeY0=;
+	b=QA3HobOWL2rNdr6WpwTVrw8KCIKg8T6UaaFILcEeQScTXD7X0NlPb7yjQN22IOAMzTg1UPLTh2heeK5sefPacO+RBru1+QE2q+iHaji7wKbKWAYctOoQBrgI4ikCkaoXzZTG+2fkCD44UzW2bHwBcRnXhSqo9B7mOi+7T/UpJl4=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.25,REQID:57ddbcd3-b597-49a6-aadf-7df4a78e878e,IP:0,U
+X-CID-O-INFO: VERSION:1.1.25,REQID:e4806e66-e07f-4164-bddc-790548aeda84,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-25
-X-CID-META: VersionHash:d5b0ae3,CLOUDID:c534043d-de1e-4348-bc35-c96f92f1dcbb,B
+X-CID-META: VersionHash:d5b0ae3,CLOUDID:df9ca96d-2f20-4998-991c-3b78627e4938,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-UUID: 88cf4d78002e11ee912e1518a6540028-20230531
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: be33ca50003011ee83ed1395ce914268-20230531
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <trevor.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 72562100; Wed, 31 May 2023 20:43:55 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+	with ESMTP id 943500770; Wed, 31 May 2023 20:59:44 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 1 Jun 2023 11:33:19 +0800
+ 15.2.1118.26; Thu, 1 Jun 2023 11:49:41 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 1 Jun 2023 11:33:19 +0800
+ 15.2.1118.26 via Frontend Transport; Thu, 1 Jun 2023 11:49:41 +0800
 From: Trevor Wu <trevor.wu@mediatek.com>
-To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
+To: <pierre-louis.bossart@linux.intel.com>, <peter.ujfalusi@linux.intel.com>,
+	<yung-chuan.liao@linux.intel.com>, <ranjani.sridharan@linux.intel.com>,
+	<kai.vehmanen@linux.intel.com>, <daniel.baluta@nxp.com>,
+	<broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
 	<perex@perex.cz>, <matthias.bgg@gmail.com>,
 	<angelogioacchino.delregno@collabora.com>
-CC: <trevor.wu@mediatek.com>, <dianders@chromium.org>,
+CC: <trevor.wu@mediatek.com>, <yc.hung@mediatek.com>,
+	<tinghan.shen@mediatek.com>, <sound-open-firmware@alsa-project.org>,
 	<alsa-devel@alsa-project.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: [PATCH v2 2/2] ASoC: mediatek: mt8195: fix use-after-free in driver remove path
-Date: Thu, 1 Jun 2023 11:33:18 +0800
-Message-ID: <20230601033318.10408-3-trevor.wu@mediatek.com>
+Subject: [PATCH v3 1/1] ASoC: SOF: mediatek: add adsp debug dump
+Date: Thu, 1 Jun 2023 11:49:39 +0800
+Message-ID: <20230601034939.15802-2-trevor.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230601033318.10408-1-trevor.wu@mediatek.com>
-References: <20230601033318.10408-1-trevor.wu@mediatek.com>
+In-Reply-To: <20230601034939.15802-1-trevor.wu@mediatek.com>
+References: <20230601034939.15802-1-trevor.wu@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230531_204401_637804_C7FE03E2 
-X-CRM114-Status: GOOD (  18.21  )
+X-CRM114-CacheID: sfid-20230531_205950_410303_D828C048 
+X-CRM114-Status: GOOD (  11.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,163 +89,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-During mt8195_afe_init_clock(), mt8195_audsys_clk_register() was called
-followed by several other devm functions. At mt8195_afe_deinit_clock()
-located at mt8195_afe_pcm_dev_remove(), mt8195_audsys_clk_unregister()
-was called.
+Add mt8188 and mt8186 .dbg_dump callback to print some information when
+DSP panic occurs.
 
-However, there was an issue with the order in which these functions were
-called. Specifically, the remove callback of platform_driver was called
-before devres released the resource, resulting in a use-after-free issue
-during remove time.
-
-At probe time, the order of calls was:
-1. mt8195_audsys_clk_register
-2. afe_priv->clk = devm_kcalloc
-3. afe_priv->clk[i] = devm_clk_get
-
-At remove time, the order of calls was:
-1. mt8195_audsys_clk_unregister
-3. free afe_priv->clk[i]
-2. free afe_priv->clk
-
-To resolve the problem, we can utilize devm_add_action_or_reset() in
-mt8195_audsys_clk_register() so that the remove order can be changed to
-3->2->1.
-
-Fixes: 6746cc858259 ("ASoC: mediatek: mt8195: add platform driver")
 Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
+Reviewed-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+Reviewed-by: Yaochun Hung <yc.hung@mediatek.com>
+Reviewed-by: Péter Ujfalusi <peter.ujfalusi@linux.intel.com>
 ---
- sound/soc/mediatek/mt8195/mt8195-afe-clk.c    |  5 --
- sound/soc/mediatek/mt8195/mt8195-afe-clk.h    |  1 -
- sound/soc/mediatek/mt8195/mt8195-afe-pcm.c    |  4 --
- sound/soc/mediatek/mt8195/mt8195-audsys-clk.c | 47 ++++++++++---------
- sound/soc/mediatek/mt8195/mt8195-audsys-clk.h |  1 -
- 5 files changed, 24 insertions(+), 34 deletions(-)
+ sound/soc/sof/mediatek/mt8186/mt8186.c | 22 ++++++++++++++++++++++
+ sound/soc/sof/mediatek/mt8186/mt8186.h |  5 +++++
+ 2 files changed, 27 insertions(+)
 
-diff --git a/sound/soc/mediatek/mt8195/mt8195-afe-clk.c b/sound/soc/mediatek/mt8195/mt8195-afe-clk.c
-index 9ca2cb8c8a9c..f35318ae0739 100644
---- a/sound/soc/mediatek/mt8195/mt8195-afe-clk.c
-+++ b/sound/soc/mediatek/mt8195/mt8195-afe-clk.c
-@@ -410,11 +410,6 @@ int mt8195_afe_init_clock(struct mtk_base_afe *afe)
- 	return 0;
+diff --git a/sound/soc/sof/mediatek/mt8186/mt8186.c b/sound/soc/sof/mediatek/mt8186/mt8186.c
+index cc91c2928fb6..3e0ea0e109e2 100644
+--- a/sound/soc/sof/mediatek/mt8186/mt8186.c
++++ b/sound/soc/sof/mediatek/mt8186/mt8186.c
+@@ -24,6 +24,7 @@
+ #include "../../sof-of-dev.h"
+ #include "../../sof-audio.h"
+ #include "../adsp_helper.h"
++#include "../mtk-adsp-common.h"
+ #include "mt8186.h"
+ #include "mt8186-clk.h"
+ 
+@@ -473,6 +474,26 @@ static snd_pcm_uframes_t mt8186_pcm_pointer(struct snd_sof_dev *sdev,
+ 	return pos;
  }
  
--void mt8195_afe_deinit_clock(struct mtk_base_afe *afe)
--{
--	mt8195_audsys_clk_unregister(afe);
--}
--
- int mt8195_afe_enable_clk(struct mtk_base_afe *afe, struct clk *clk)
- {
- 	int ret;
-diff --git a/sound/soc/mediatek/mt8195/mt8195-afe-clk.h b/sound/soc/mediatek/mt8195/mt8195-afe-clk.h
-index 40663e31becd..a08c0ee6c860 100644
---- a/sound/soc/mediatek/mt8195/mt8195-afe-clk.h
-+++ b/sound/soc/mediatek/mt8195/mt8195-afe-clk.h
-@@ -101,7 +101,6 @@ int mt8195_afe_get_mclk_source_clk_id(int sel);
- int mt8195_afe_get_mclk_source_rate(struct mtk_base_afe *afe, int apll);
- int mt8195_afe_get_default_mclk_source_by_rate(int rate);
- int mt8195_afe_init_clock(struct mtk_base_afe *afe);
--void mt8195_afe_deinit_clock(struct mtk_base_afe *afe);
- int mt8195_afe_enable_clk(struct mtk_base_afe *afe, struct clk *clk);
- void mt8195_afe_disable_clk(struct mtk_base_afe *afe, struct clk *clk);
- int mt8195_afe_prepare_clk(struct mtk_base_afe *afe, struct clk *clk);
-diff --git a/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c b/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c
-index d22cf1664d8a..a0f2012211fb 100644
---- a/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c
-+++ b/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c
-@@ -3224,15 +3224,11 @@ static int mt8195_afe_pcm_dev_probe(struct platform_device *pdev)
- 
- static void mt8195_afe_pcm_dev_remove(struct platform_device *pdev)
- {
--	struct mtk_base_afe *afe = platform_get_drvdata(pdev);
--
- 	snd_soc_unregister_component(&pdev->dev);
- 
- 	pm_runtime_disable(&pdev->dev);
- 	if (!pm_runtime_status_suspended(&pdev->dev))
- 		mt8195_afe_runtime_suspend(&pdev->dev);
--
--	mt8195_afe_deinit_clock(afe);
- }
- 
- static const struct of_device_id mt8195_afe_pcm_dt_match[] = {
-diff --git a/sound/soc/mediatek/mt8195/mt8195-audsys-clk.c b/sound/soc/mediatek/mt8195/mt8195-audsys-clk.c
-index e0670e0dbd5b..38594bc3f2f7 100644
---- a/sound/soc/mediatek/mt8195/mt8195-audsys-clk.c
-+++ b/sound/soc/mediatek/mt8195/mt8195-audsys-clk.c
-@@ -148,6 +148,29 @@ static const struct afe_gate aud_clks[CLK_AUD_NR_CLK] = {
- 	GATE_AUD6(CLK_AUD_GASRC19, "aud_gasrc19", "top_asm_h", 19),
- };
- 
-+static void mt8195_audsys_clk_unregister(void *data)
++static void mt8186_adsp_dump(struct snd_sof_dev *sdev, u32 flags)
 +{
-+	struct mtk_base_afe *afe = data;
-+	struct mt8195_afe_private *afe_priv = afe->platform_priv;
-+	struct clk *clk;
-+	struct clk_lookup *cl;
-+	int i;
++	u32 dbg_pc, dbg_data, dbg_inst, dbg_ls0stat, dbg_status, faultinfo;
 +
-+	if (!afe_priv)
-+		return;
++	/* dump debug registers */
++	dbg_pc = snd_sof_dsp_read(sdev, DSP_REG_BAR, DSP_PDEBUGPC);
++	dbg_data = snd_sof_dsp_read(sdev, DSP_REG_BAR, DSP_PDEBUGDATA);
++	dbg_inst = snd_sof_dsp_read(sdev, DSP_REG_BAR, DSP_PDEBUGINST);
++	dbg_ls0stat = snd_sof_dsp_read(sdev, DSP_REG_BAR, DSP_PDEBUGLS0STAT);
++	dbg_status = snd_sof_dsp_read(sdev, DSP_REG_BAR, DSP_PDEBUGSTATUS);
++	faultinfo = snd_sof_dsp_read(sdev, DSP_REG_BAR, DSP_PFAULTINFO);
 +
-+	for (i = 0; i < CLK_AUD_NR_CLK; i++) {
-+		cl = afe_priv->lookup[i];
-+		if (!cl)
-+			continue;
++	dev_info(sdev->dev, "adsp dump : pc %#x, data %#x, dbg_inst %#x,",
++		 dbg_pc, dbg_data, dbg_inst);
++	dev_info(sdev->dev, "ls0stat %#x, status %#x, faultinfo %#x",
++		 dbg_ls0stat, dbg_status, faultinfo);
 +
-+		clk = cl->clk;
-+		clk_unregister_gate(clk);
-+
-+		clkdev_drop(cl);
-+	}
++	mtk_adsp_dump(sdev, flags);
 +}
 +
- int mt8195_audsys_clk_register(struct mtk_base_afe *afe)
+ static struct snd_soc_dai_driver mt8186_dai[] = {
  {
- 	struct mt8195_afe_private *afe_priv = afe->platform_priv;
-@@ -188,27 +211,5 @@ int mt8195_audsys_clk_register(struct mtk_base_afe *afe)
- 		afe_priv->lookup[i] = cl;
- 	}
+ 	.name = "SOF_DL1",
+@@ -555,6 +576,7 @@ static struct snd_sof_dsp_ops sof_mt8186_ops = {
+ 	.num_drv	= ARRAY_SIZE(mt8186_dai),
  
--	return 0;
--}
--
--void mt8195_audsys_clk_unregister(struct mtk_base_afe *afe)
--{
--	struct mt8195_afe_private *afe_priv = afe->platform_priv;
--	struct clk *clk;
--	struct clk_lookup *cl;
--	int i;
--
--	if (!afe_priv)
--		return;
--
--	for (i = 0; i < CLK_AUD_NR_CLK; i++) {
--		cl = afe_priv->lookup[i];
--		if (!cl)
--			continue;
--
--		clk = cl->clk;
--		clk_unregister_gate(clk);
--
--		clkdev_drop(cl);
--	}
-+	return devm_add_action_or_reset(afe->dev, mt8195_audsys_clk_unregister, afe);
- }
-diff --git a/sound/soc/mediatek/mt8195/mt8195-audsys-clk.h b/sound/soc/mediatek/mt8195/mt8195-audsys-clk.h
-index 239d31016ba7..69db2dd1c9e0 100644
---- a/sound/soc/mediatek/mt8195/mt8195-audsys-clk.h
-+++ b/sound/soc/mediatek/mt8195/mt8195-audsys-clk.h
-@@ -10,6 +10,5 @@
- #define _MT8195_AUDSYS_CLK_H_
+ 	/* Debug information */
++	.dbg_dump = mt8186_adsp_dump,
+ 	.debugfs_add_region_item = snd_sof_debugfs_add_region_item_iomem,
  
- int mt8195_audsys_clk_register(struct mtk_base_afe *afe);
--void mt8195_audsys_clk_unregister(struct mtk_base_afe *afe);
- 
- #endif
+ 	/* PM */
+diff --git a/sound/soc/sof/mediatek/mt8186/mt8186.h b/sound/soc/sof/mediatek/mt8186/mt8186.h
+index 5b521c60b4e3..91323f492a1e 100644
+--- a/sound/soc/sof/mediatek/mt8186/mt8186.h
++++ b/sound/soc/sof/mediatek/mt8186/mt8186.h
+@@ -38,6 +38,11 @@ struct snd_sof_dev;
+ #define DSP_MBOX3_IRQ_EN		BIT(3)
+ #define DSP_MBOX4_IRQ_EN		BIT(4)
+ #define DSP_PDEBUGPC			0x013C
++#define DSP_PDEBUGDATA			0x0140
++#define DSP_PDEBUGINST			0x0144
++#define DSP_PDEBUGLS0STAT		0x0148
++#define DSP_PDEBUGSTATUS		0x014C
++#define DSP_PFAULTINFO			0x0150
+ #define ADSP_CK_EN			0x1000
+ #define CORE_CLK_EN			BIT(0)
+ #define COREDBG_EN			BIT(1)
 -- 
 2.18.0
 
