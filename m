@@ -4,72 +4,164 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E4F8C7EE29
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jun 2023 08:34:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85638C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jun 2023 08:37:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Vf9TatAF6sSh3fLDSSbor/82eA6igm7hSnGjEYvZ33c=; b=OhAiP3eSWQ9OV824MxNGlm0cgm
-	rUJd0XWF0tr7Lfmz4EaAH+IxCAogqUzqR7stSu8n9hmcp4SbqXnMh+IP/tmUtKFpM9xKBxaTHQ1xB
-	PX4y965z78Nhh4ADB37HQi/Wy89TG5/i5Lq0jAMrbqCS9kbv4JNsqvMs+JkIjM9rFlzsd2d0dcVOT
-	SOk2jHE4Z276mOF36ay4ZDKAaNRRRR0Bhv3BaTVm6ggxWOxdEyzO6OyxroFOVnWTvqY5S5yxeqYHl
-	p3UUe4/rAfgpQ9YpWgED9X9Vuce7mxviu6VJ4p83RWtTd+fZq8NrjsRdKtoHKKuY+LlAH40u9jEkP
-	OSKvFE2w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:Message-ID:Date:Subject:CC:
+	To:From:Reply-To:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=vjyFzjP9TphCvKM0NGF2uUPsPops0yIbbZcd2ASLfXg=; b=gxXz8bkDE1k2GnejlQ11esKKzr
+	SRktdRnajdbF3OpBbvYeSVrXcJKBgryIAcIB41DuliwRs9XEGilJdMs42WaKS64rjkzX+ZfyyBoO0
+	t2Igw9Z2zI5ddyppQCpg11BRtVN44nl5fnx7FdlyPGsGFW1cAnCp7e+SbyDY1aDatZGGrNOVaHwsX
+	mVUkJISda7tKK6STids6AY8fLTFr6MqpKZT53N9ugL43IX1fPjrfZnaGrDNb6ba0P6j+pLQcXS8uy
+	ulNMB71bYXLtbEk5AcF3t1xx16sEKjIoFD/Ay+9qaMJPTn+KmFTuQMLKyfLCFrl0kfDEIFz96uQN0
+	6EgJgpxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4dlh-002aBI-1N;
-	Thu, 01 Jun 2023 08:34:49 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1q4do7-002auI-2w;
+	Thu, 01 Jun 2023 08:37:19 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4dle-002a8w-0z;
-	Thu, 01 Jun 2023 08:34:47 +0000
-Received: from pendragon.ideasonboard.com (om126205251136.34.openmobile.ne.jp [126.205.251.136])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 14E272B6;
-	Thu,  1 Jun 2023 10:34:19 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1685608460;
-	bh=gjjeif7oGjHL6hoGkZVclWwy0gG6mXm12g9c6do6TMY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=JUUnACbDpEB6bOR3h2O5ln8qOzpTqf9VBhkZ21myMqir6gqWJBUH2lhbgPljo3AUr
-	 ZLmbW7sTAYzT5ej8JCl0YnN2x2g7F+RvAmu0lgbeX4QT61LRIobNk04EA1PyP66ClH
-	 YW/Xq3c4rgNzXp9p+1Ol32sfvdB3/t8nHUJEqQMg=
-Date: Thu, 1 Jun 2023 11:34:38 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>, tfiga@chromium.org,
-	m.szyprowski@samsung.com, mchehab@kernel.org, ming.qian@nxp.com,
-	shijie.qin@nxp.com, eagle.zhou@nxp.com, bin.liu@mediatek.com,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com,
-	yunfei.dong@mediatek.com, stanimir.k.varbanov@gmail.com,
-	quic_vgarodia@quicinc.com, agross@kernel.org, andersson@kernel.org,
-	konrad.dybcio@linaro.org, ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de, daniel.almeida@collabora.com,
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v2 3/8] media: videobuf2: Add a module param to limit vb2
- queue buffer storage
-Message-ID: <20230601083438.GE22609@pendragon.ideasonboard.com>
-References: <20230321102855.346732-1-benjamin.gaignard@collabora.com>
- <20230321102855.346732-4-benjamin.gaignard@collabora.com>
- <6c4658fd-3a64-b3f8-67cd-17ed2d7d3567@xs4all.nl>
- <20230531080331.GB6496@pendragon.ideasonboard.com>
- <608ae7d6-3f3b-137d-08d2-d41a240be2c4@xs4all.nl>
- <20230531123945.GF27043@pendragon.ideasonboard.com>
- <6f53b5f6-6649-f194-1808-5f5757b449f4@collabora.com>
+	id 1q4do5-002arF-04
+	for linux-mediatek@lists.infradead.org;
+	Thu, 01 Jun 2023 08:37:18 +0000
+X-UUID: 786cda58005711ee912e1518a6540028-20230601
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:Message-ID:Date:Subject:CC:To:From; bh=vjyFzjP9TphCvKM0NGF2uUPsPops0yIbbZcd2ASLfXg=;
+	b=nzdGsrI5lAqR8236I+7ofISpZuct1EBgLQqUYyO3z6hwA5avuqLdE5AWz3jUQ7ARLJ6RatmVAIJXrqjwVgjxM01X7r3YI6SnNPmfbZI3pniJXGZdS3nR0gfsBT6fPVbGSuBCB3oXUNZ8ajFUtkZGzGiMPrZbwawaJSis2OM74s4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.25,REQID:4ba23c32-dcc2-4cf9-b6af-de36a4269f05,IP:0,U
+	RL:25,TC:0,Content:-5,EDM:0,RT:10,SF:-5,FILE:0,BULK:0,RULE:Release_Ham,ACT
+	ION:release,TS:25
+X-CID-INFO: VERSION:1.1.25,REQID:4ba23c32-dcc2-4cf9-b6af-de36a4269f05,IP:0,URL
+	:25,TC:0,Content:-5,EDM:0,RT:10,SF:-5,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:25
+X-CID-META: VersionHash:d5b0ae3,CLOUDID:8cc23e3d-7aa7-41f3-a6bd-0433bee822f3,B
+	ulkID:230601142845JQ3C03T1,BulkQuantity:4,Recheck:0,SF:17|19|102,TC:nil,Co
+	ntent:0,EDM:-3,IP:nil,URL:11|1,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,OSI:0
+	,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: 786cda58005711ee912e1518a6540028-20230601
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1804552970; Thu, 01 Jun 2023 01:36:57 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 1 Jun 2023 16:36:55 +0800
+Received: from APC01-TYZ-obe.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 1 Jun 2023 16:36:55 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=k/kGqOE8NmfQDxbnL8phxqf+bl8sItk/MfVVnlEg0IQXBu3lBjxgBAmWS89eLHorES1fRFcUbt+MgG7NJFAqttdNyeQ/H90BXXTA2jwAjMqNwZXgAs/QgTgBJwLUtWqqjmEC2Iu0oVQboFXErlHPStwHBDSZwkwJAX+//aKpTzd5Jc82OVn+SruUXic/4+LcLw3LphH63Eb+qbyVluiunR/ZuyW7mMYuIjsY1f17ysjnpADHcjB1NYElNcRgo+hwGgCPSDgNWBOihZgmq0yiG5eH4RXvwuEvRlpS+hno5PthIjz4/Kg7GEvoiuggzm0zbqz/T07Yzk9aW6PKHBnSWQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=vjyFzjP9TphCvKM0NGF2uUPsPops0yIbbZcd2ASLfXg=;
+ b=LYJ93VNNXjnBPrDdU0GK9+IcKDHx2SjPqkvSpwSXS0q97L8kUQP9x3klS2WJ0Nu3FenvdszpXDL9sJP8GJrILYWo08VPZcrRto4s61Ae6bxeut8uh+5SJF+PQcI0C527Cw74ncVzCQe6ihDiVaCLjXZ6JlqEuGB3qGcjByYyJxBOXHX+1005d4UNPtlzWk8jtfyxQq3u5BLxvxqn7F+q1BymZoNucDz1sIJM/0v+LQByPKAdhWBXylmeD47vfQFvivz816Jm10YGKbIhDNVz4Kp74yVXFP8lL85rQCuD3MQDcTwczoFqnH9XQtK2opphJVpxnULwl/DbTiR8W4nkkg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=vjyFzjP9TphCvKM0NGF2uUPsPops0yIbbZcd2ASLfXg=;
+ b=FmrBK9MVUoJig6FdmTVx2QiM77e4H3Vr+5/r1HCW+BSot5p9RTjvsZqtLlsgzZuTp4EQPdBl6XXhj5DV26arRgMbkQRGkL7nNK1Gyo6CPH8yDYEDRPpfn/X2nOaJSnuBM7/6VU2pEqRc/Vpa/g+WuZBLkrHpF8ixfnXsY05bdSw=
+Received: from SL2PR03MB4153.apcprd03.prod.outlook.com (2603:1096:100:4e::10)
+ by TYZPR03MB6672.apcprd03.prod.outlook.com (2603:1096:400:1f0::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6433.24; Thu, 1 Jun
+ 2023 08:36:52 +0000
+Received: from SL2PR03MB4153.apcprd03.prod.outlook.com
+ ([fe80::8fce:558a:2511:c41b]) by SL2PR03MB4153.apcprd03.prod.outlook.com
+ ([fe80::8fce:558a:2511:c41b%3]) with mapi id 15.20.6455.020; Thu, 1 Jun 2023
+ 08:36:52 +0000
+From: =?utf-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>
+To: "linux-firmware@kernel.org" <linux-firmware@kernel.org>
+CC: =?utf-8?B?VGluZ0hhbiBTaGVuICjmsojlu7fnv7Ap?= <TingHan.Shen@mediatek.com>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	=?utf-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>
+Subject: pull request: Update mt8195 SCP firmware to support hevc
+Thread-Topic: pull request: Update mt8195 SCP firmware to support hevc
+Thread-Index: AQHZlGQ2j/5t2d29tUqJnLEC0lJTeA==
+Date: Thu, 1 Jun 2023 08:36:52 +0000
+Message-ID: <e9f176279e56dba067ea00f45cf13e7d3ccc8f24.camel@mediatek.com>
+Accept-Language: zh-CN, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SL2PR03MB4153:EE_|TYZPR03MB6672:EE_
+x-ms-office365-filtering-correlation-id: 8905679e-677a-4370-7a8b-08db627b5946
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 4vzGwkONP6B7CynyyNqfdSGUr4igsb84shfbO1hxMU0xMpiB6IupF56ck3HAVaTjf6pZDCIkVfaPsQ1zjcK2RxQ8tTBmuItIWZGfzD9dUfxdcl5RoHy4SErfxIYFm5QgRXNB4+8KKBkgkbuOshWv4jSL/NE0EnWyW1aAXMWUG8LVqZfMFBwL1bc+jYtxdiagk9YWWVWCcrdTccm48bfFbxVHYL1OLLv759zsgTJruugaoS0WGgpb0TrSjkmLWY7b7Kq+49qWEZ4IQ7oWKp1+U8RKyP4VCxjCsC66caHhDuRZpVqbf4rUGjhh0gXx2HLEzoYmBvXqKN01q6rFfhs86bxLU0Nti3NS9ifiEb/UIvtvLTN5W6+/DXen9V+8jOtNhJVUen8xPUO11vANEEiJ/JQIxFN+1exq2obVItiR7U/YpdA01Et50TaZcxELx5S09PaPgckSxFy/nfW02Q13BXeJ5q+CNdC2CpMa90DCXDw8AiaC2EUsLdt2FdKjgIfjoCjn3Iq3XgStfUa1Wtcs01HeQAZp0eb6zovFaIGEPorxYt9bZS9iLVRwfuuHp6NBs/C+si4IM+mbxSRYKefqd3tZLzwTPD1eW+o9T1yk7SxV7jbq2UhWt9EG190q3epj
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SL2PR03MB4153.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(366004)(396003)(346002)(39860400002)(136003)(376002)(451199021)(966005)(316002)(6486002)(41300700001)(4744005)(2616005)(86362001)(6506007)(107886003)(83380400001)(6512007)(26005)(2906002)(15650500001)(186003)(38070700005)(122000001)(38100700002)(8936002)(36756003)(5660300002)(85182001)(6916009)(4326008)(478600001)(66946007)(66476007)(66446008)(76116006)(66556008)(64756008)(91956017)(71200400001)(8676002)(54906003)(99106002);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?QVNQVkFVOGJrVGVYNkg4ZG5PUFp0TWwwbWRXeVFmcEUvN2svaEM2M2FrNmlm?=
+ =?utf-8?B?aVFGUXNrdXRaT1ZCdmhaUVNCSGlKdHJqUGRTWnM0OUNlTjNnc3N2UzZSa01C?=
+ =?utf-8?B?S2FsS2U1MThNOVc3YkNKaFE5OW0zSFU3WkdUZlA3TmtQb2VaN3V3NVQvTm9I?=
+ =?utf-8?B?NnJ2RUNKbU4yTnhnek5TcUswdWd6YkVXdDlFd1NzaWxaUG5kdlZGeHJqaWM4?=
+ =?utf-8?B?RXBsTU9FWXMwS1F4NXJkNGNJMzg1bDJXVlFZUlBLSUQ4RFZxamE3Nk9GeVgw?=
+ =?utf-8?B?L2ZlZ0Yvemh3THVZZzdqdVZ4MGZkQy9uTzlDdTlEdjhib1hINWJpY1hpUnkz?=
+ =?utf-8?B?NlB1NU5NdGd5bEgxQmFSZHBXMjlVWXRON3hNaU51VnNrakQ4ejJlblNxc25H?=
+ =?utf-8?B?M2wrTFRBbHpmZUt4MEhPejV5RUFFWmVEbis4VGJrMEw5Q2szVXRSWWNWeUp3?=
+ =?utf-8?B?UEpEN0VWaFBhdVcxdWFKMVpSVHNXU0pTaXR3SExqSk5SU1ZIdnpMa2d1SE1D?=
+ =?utf-8?B?TEtQUVNPN3luYmQyWlVlaWlzYThlK1c4OEdMN1BTbm00bG1WZUVIVHpkRTZN?=
+ =?utf-8?B?dlBuZSt4TmIyRkQzenpWbkY4SGlRWlY2OU9WS2MwSGRrZjJBTE1ITk1vTmhh?=
+ =?utf-8?B?MHB1Z0J6SW53bjJISHNyQWVuUEFwRGJlNVZ2TjNKbGdHSEdOd3hZUGVkY1FP?=
+ =?utf-8?B?RzNpS1NQR1RlUWZWMnBkK3NJTkh1RFNVT0xwbnFyUHNBaUg5M3NTZ0VQUmpv?=
+ =?utf-8?B?UXlSTlJYdXVFZmp3bGxacXBCZmpjMmlucDIzcjh4VlVSZUNRZWtHNDVvL2VM?=
+ =?utf-8?B?SVlWTEdwR0k4TmdERFJJaksxc2JtTjZ5TzM0T1NEL1VybzdlVnhkaWl2UHJh?=
+ =?utf-8?B?ajU1OUM5bkUzZHVnZ2crYjhhaDJnZnlvZWk5ckdBdjdxVmhuR0puVjRCdlMz?=
+ =?utf-8?B?dFVqR2VLRWdINmVqTG01c0d4dzZGU0F3RnJ4NEdtRklSQzhKaUk2YU83dEQ2?=
+ =?utf-8?B?N25SNmpDckhkNTVYc21qWENoeXRIeHVTZDY4YWpQT3hrWTR1ZldkTE1KR1ZX?=
+ =?utf-8?B?NUtrU2lBclN4OGxDNitMaFgrS3NOVUN5b2JVWWkrZzBkaGtkdjJyUW9lVnFy?=
+ =?utf-8?B?TzhuQjFsd0NXVDhQQk5CcFFOVWZpU2cwYk5nUG85TDlyejNwNmEyUzZnMDB6?=
+ =?utf-8?B?RDFpZUcyZVgyV3ZGeFlqWjBabkI5YjV0bzhHT0g1OUsyTTR4bXJwVnE4cWJR?=
+ =?utf-8?B?bHF1dWxCYVByR2EveDlUcDUrWkRtWlZqeWNnVGk3OUpGWHlPRUNxWFNQcWVU?=
+ =?utf-8?B?YzBwVklIVDVEbUFPcWZmWDYwT1Vyc1hZZW42dmx5Z2xoTmFMQmNjUnhWR29V?=
+ =?utf-8?B?cjFsQUVXL2tjUkVqUEMvenYvM3liSnhnZGRvNnJiMG5Lb3BpOVoyWUtpU1FC?=
+ =?utf-8?B?V0lZQmJlcW1meXIvckxzNndLSG41NFVpeTdacnF2SWJldkxCRDJ3TFFkTVRw?=
+ =?utf-8?B?RWdEK3pqb1gwNWcxSnpKaVp2cjJhbDhqdDJqeFUzRVNrblp1bjN4NHpodDVN?=
+ =?utf-8?B?REN1bC9ZS3VHYlRiTk9CTnpCZmx4YWRlMjJheWl1L0NNSGg1YS9abmFiSXJ4?=
+ =?utf-8?B?bGlqMGtTS0pVTHJRdVZ4em9KajAxblZETTJuZmlOWnJOenBVMWdGUm5GWkZh?=
+ =?utf-8?B?WGRLR2tlWjFKZE9NYnc2L2J0UHpkMDYwc29BM1RoaVRTTnRtcFYyM1Q3V2dE?=
+ =?utf-8?B?VkNTSzFrYmJnWmZiWldQSi9zMGpnTUVEYU85c25PTW9VUjFRTEZnb3J0L1py?=
+ =?utf-8?B?WVlkUTlxa0ZhT3Jrem9adDN3WmYxWUF5dVlCRUZ1ekdnYys3aXplTEhXYjZ4?=
+ =?utf-8?B?VnZNWlJnSXVxWGJWRXpucjJic1pZV2twN1d4K0w1WEpWWTRRd1FNTnhEYUR6?=
+ =?utf-8?B?c2s3MUt1L2VGN1ZzdHUzclJpUXhkV1VzTnRkRWFiUE96d1pyWjlyZW9USEk4?=
+ =?utf-8?B?ZkNjR1RZUGxOVzdZcWh2NGlPdnNFd09OYS8xTVAyVW15bmtSZC83Q1c2Zzht?=
+ =?utf-8?B?WUxIWUdtM24vZllOL2Rtd1plUXRNZjN0endtTjVFaDl6WHVnbU1pb1d2ZUkz?=
+ =?utf-8?B?NGFqODJycnFlUTRKL3hSdEpFNEZpWXFHK09EUHBMcGwyZkptNjl1dnkzYXIx?=
+ =?utf-8?B?YUE9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <8E2E235A6A7B124B8686393D47FB25BD@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <6f53b5f6-6649-f194-1808-5f5757b449f4@collabora.com>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SL2PR03MB4153.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8905679e-677a-4370-7a8b-08db627b5946
+X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Jun 2023 08:36:52.1068
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: te58jwh293MLs9G9wu9nVPEfx0bk9vN69dCE0pf31ZawJFe2iFTg3aS7CuG9cU+YZHk0uEtUEX1wZt1ySc8vmXe2vgpOMIULnDb4yXR86Rc=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR03MB6672
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230601_013446_515124_9D77F7C1 
-X-CRM114-Status: GOOD (  37.90  )
+X-CRM114-CacheID: sfid-20230601_013717_069980_E0D0ED41 
+X-CRM114-Status: UNSURE (   7.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,91 +176,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Benjamin,
-
-On Thu, Jun 01, 2023 at 10:03:39AM +0200, Benjamin Gaignard wrote:
-> Le 31/05/2023 à 14:39, Laurent Pinchart a écrit :
-> > On Wed, May 31, 2023 at 10:30:36AM +0200, Hans Verkuil wrote:
-> >> On 5/31/23 10:03, Laurent Pinchart wrote:
-> >>> On Wed, May 31, 2023 at 08:36:59AM +0200, Hans Verkuil wrote:
-> >>>> On 21/03/2023 11:28, Benjamin Gaignard wrote:
-> >>>>> Add module parameter "max_vb_buffer_per_queue" to be able to limit
-> >>>>> the number of vb2 buffers store in queue.
-> >>>>>
-> >>>>> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> >>>>> ---
-> >>>>>   drivers/media/common/videobuf2/videobuf2-core.c | 15 +++------------
-> >>>>>   include/media/videobuf2-core.h                  | 11 +++++++++--
-> >>>>>   2 files changed, 12 insertions(+), 14 deletions(-)
-> >>>>>
-> >>>>> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-> >>>>> index ae9d72f4d181..f4da917ccf3f 100644
-> >>>>> --- a/drivers/media/common/videobuf2/videobuf2-core.c
-> >>>>> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
-> >>>>> @@ -34,6 +34,8 @@
-> >>>>>   static int debug;
-> >>>>>   module_param(debug, int, 0644);
-> >>>>>   
-> >>>>> +module_param(max_vb_buffer_per_queue, ulong, 0644);
-> >>>> There is no MODULE_PARM_DESC here? Please add. I see it is not there for
-> >>>> the debug param either, it should be added for that as well.
-> >>> Would this be the right time to consider resource accounting in V4L2 for
-> >>> buffers ? Having a module parameter doesn't sound very useful, an
-> >>> application could easily allocate more buffers by using buffer orphaning
-> >>> (allocating buffers, exporting them as dmabuf objects, and freeing them,
-> >>> which leaves the memory allocated). Repeating allocation cycles up to
-> >>> max_vb_buffer_per_queue will allow allocating an unbounded number of
-> >>> buffers, using all the available system memory. I'd rather not add a
-> >>> module argument that only gives the impression of some kind of safety
-> >>> without actually providing any value.
-> >> Does dmabuf itself provide some accounting mechanism? Just wondering.
-> >>
-> >> More specific to V4L2: I'm not so sure about this module parameter either.
-> >> It makes sense to have a check somewhere against ridiculous values (i.e.
-> >> allocating MAXINT buffers), but that can be a define as well. But otherwise
-> >> I am fine with allowing applications to allocate buffers until the memory
-> >> is full.
-> >>
-> >> The question is really: what is this parameter supposed to do? The only
-> >> thing it does is to sanitize unlikely inputs (e.g. allocating MAXINT buffers).
-> >>
-> >> I prefer that as a define, to be honest.
-> >>
-> >> I think it is perfectly fine for users to try to request more buffers than
-> >> memory allows. It will just fail in that case, not a problem.
-> >>
-> >> And if an application is doing silly things like buffer orphaning, then so
-> >> what? Is that any different than allocating memory and not freeing it?
-> >> Eventually it will run out of memory and crash, which is normal.
-> >
-> > Linux provides APIs to account for and limit usage of resources,
-> > including memory. A system administrator can prevent rogue processes
-> > from starving system resources. The memory consumed by vb2 buffer isn't
-> > taken into account, making V4L2 essentially unsafe for untrusted
-> > processes.
-> >
-> > Now, to be fair, there are many reasons why allowing access to v4L2
-> > devices to untrusted applications is a bad idea, and memory consumption
-> > is likely not even the worst one. Still, is this something we want to
-> > fix, or do we want to consider V4L2 to be priviledged API only ? Right
-> > now we can't do so, but with many Linux systems moving towards pipewire,
-> > we could possibly have a system daemon isolating untrusted applications
-> > from the rest of the system. We may thus not need to fix this in the
-> > V4L2 API.
-> 
-> I'm working in v3 where I'm using Xarray API.
-> 
-> Just to be sure to understand you well:
-> I can just remove VB2_MAX_FRAME limit without adding a new one ?
-
-As long as the code is protected against overflows (e.g. if it uses
-num_buffers + 1 in some calculations and allows num_buffers to be
-UINT_MAX, you'll have an issue), it should be fine for the vb2 and V4L2
-core. Limiting the number of buffers doesn't really protect against
-much.
-
--- 
-Regards,
-
-Laurent Pinchart
+SGksDQoNClRoaXMgaXMgdXNlZCB0byBhZGp1c3QgaGV2YyBoYXJkd2FyZSBkZWNvZGVyLg0KDQpQ
+bGVhc2UgbGV0IG1lIGtub3cgaWYgdGhlcmUgaXMgYW55IGlzc3VlLCB0aGFuayB5b3UuDQoNCi0t
+LQ0KDQpUaGUgZm9sbG93aW5nIGNoYW5nZXMgc2luY2UgY29tbWl0DQoxZjk2NjdlYmQ4ZTZhYWMy
+M2JhYjhlOTViMGQ1NTUxODFkZDQzMmJhOg0KDQogIE1lcmdlIGJyYW5jaCAnZm9yLXVwc3RyZWFt
+JyBvZiANCmh0dHA6Ly9naXQuY2hlbHNpby5uZXQvcHViL2dpdC9saW51eC1maXJtd2FyZSAoMjAy
+My0wNS0zMCAwNzo0NjoyMA0KLTA0MDApDQoNCmFyZSBhdmFpbGFibGUgaW4gdGhlIEdpdCByZXBv
+c2l0b3J5IGF0Og0KDQogIGh0dHBzOi8vZ2l0aHViLmNvbS95dW5mZWktbXRrL2xpbnV4X2Z3X3Nj
+cCB2Mi4wLjIxNDc4DQoNCmZvciB5b3UgdG8gZmV0Y2ggY2hhbmdlcyB1cCB0bw0KODAwMDZkOGM3
+Zjc5ZGUxNDkxY2ZkNGVhNWViYTI3ZTM3NDlmZTA2ODoNCg0KICBtZWRpYXRlazogVXBkYXRlIG10
+ODE5NSBTQ1AgZmlybXdhcmUgdG8gc3VwcG9ydCBoZXZjICgyMDIzLTA2LTAxDQoxMzo1MjozNCAr
+MDgwMCkNCg0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLQ0KWXVuZmVpIERvbmcgKDEpOg0KICAgICAgbWVkaWF0ZWs6IFVwZGF0
+ZSBtdDgxOTUgU0NQIGZpcm13YXJlIHRvIHN1cHBvcnQgaGV2Yw0KDQogV0hFTkNFICAgICAgICAg
+ICAgICAgICAgfCAgIDIgKy0NCiBtZWRpYXRlay9tdDgxOTUvc2NwLmltZyB8IEJpbiA1ODc4Mjgg
+LT4gNjM1NDEyIGJ5dGVzDQogMiBmaWxlcyBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxl
+dGlvbigtKQ0KDQotLS0NCkJlc3QgUmVnYXJkcywNCll1bmZlaSBEb25nDQo=
 
