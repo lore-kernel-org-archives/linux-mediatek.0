@@ -4,75 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CB08C77B7E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jun 2023 12:32:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45845C7EE2F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jun 2023 13:45:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QSKKYMozUuC95AWcxFWvHALkVtN1YC6gPJLaT1g8AaY=; b=ixWD5wRA/RkM4laOx6qZ029cq3
-	6ekOTClwXNuoIQ+ekU1m/y6kf67bD4HIXZPyzqzxdWvIzaHwJ+q8gbuS1Fk4Vj3GUeKnFj+5W3dON
-	bjig3l6eFlrLoGQBJp1ZEIIqRO/aKgdrBiWnnlrYtDkXKvS+Re9GADF5ctHUnIsfAcvk2NirfeF3v
-	6AzElPLfBQXYRJx4Ppf5BDislu1uTwmjtoQFxRMNYyYPacrUxX7Wsi1XDUHrba/fiWJV9Ljuzpejy
-	8/Da7JJYaWuGVWw814P5SpkqtP9me5DK0CXvKJuIrxbIjS+GfQ74v9MsPhe+4YbMEnMnecZN6a+i9
-	sQ8Hz8CA==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Tx3LRL13pvIq7TmTO5C99jvXvKyqHUaQmfVnHwqD2F8=; b=gBafG66zFb2idYNcz9jtd2TFoG
+	4fnylvnEC/8tclfxR9ZSnyV+j55n7vmyIIa7DpmCXtDKFLiy7L3XDWB/14/F4yrHpG8z9Xgn/BZfL
+	AMbsWSwWl7BqM7b/IdITysQUtsgoXFqRi/SFlL+D6UzRLaNpvKo6t1AR86f2cmTNRvOVbo0G+oMz4
+	BHz8CxJH1M6DR/u5j+WThvK5UiXIPJsXjYitabt2Hc0yBGr6QGgR9mGEhYyR+nHhviGmSJ2/IbV6e
+	+nm16Qy/+Nb6s8cfmxXOU7w//5+Eex19ziZI9CHkMPwzRjW3r/2U7aSl7JI4wTRE6KeW6rIaxEa5l
+	5TuqtDlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4hT7-003YgB-00;
-	Thu, 01 Jun 2023 12:31:53 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1q4ibi-003itG-14;
+	Thu, 01 Jun 2023 13:44:50 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4hIv-003T1y-1W;
-	Thu, 01 Jun 2023 12:21:23 +0000
-Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1q4ibc-003irS-0v;
+	Thu, 01 Jun 2023 13:44:46 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 971CD6606EBB;
-	Thu,  1 Jun 2023 13:21:19 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1685622080;
-	bh=g0F/yTGUo/tcmH4CEY4oyTpsVRTniihdhI6/BRkbobg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=KR1KaGFm8C/oEeoUO00ShKJSjCDFUzcimhUa8Wfg7sWUeVtnYGopHbKH4DqGVa7Nc
-	 nHg7lBJ61rK73Z29TpCQcbyQJky8CrhP0YvSjydLT4cZJhZ3NFu8sni4QZjASZOF37
-	 ieIu/xxlwoz2anIeXleW8w/bGgGbq9475T1DJZojNU1Ygg4IQRIMuxpXoFGRe5tPJs
-	 b69DibdcYLeMv7QryiEQQnqibokAq3qdq1jgYuI6E5QSfpSehHy8PCw19ChY41+AzO
-	 6o/v3OGSrUdhc1HK8oztvNI4/UOLvB5YKv3LRa7Q5AiH1uWc7k8X6T3QBSVu0QEV7x
-	 RJXLBXuWJ1i1Q==
-Message-ID: <8ad982ba-f8c0-4d15-3740-1883a5aefd29@collabora.com>
-Date: Thu, 1 Jun 2023 14:21:16 +0200
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 6A0486453D;
+	Thu,  1 Jun 2023 13:44:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E9AB1C433EF;
+	Thu,  1 Jun 2023 13:44:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1685627081;
+	bh=i9d2RUZUKNfyrbtB+Rn03BoaOzOiWiw7rxwB7rAOB7A=;
+	h=From:To:Cc:Subject:Date:From;
+	b=SRvKheduSKeo4K8bsY6U4I95jcrRsnS8RYMiMDiip2FiqtI6s8AwnUenOT/5VHcvA
+	 8oVXoZJ8LhUsHzUHTabmhxgCn0EdKx1P4o83tDpxkxh50DAQQLT0nSUoF9pPH64/XL
+	 +Y3TJud+5l16vGKHFSzBMy8rO8i+qcI1gIA8xr19RPWwFmlBn8abH6GJq5/q9HN2Je
+	 WIJlLNH90pHxkCSNjO/OU280CZhgruA8stn4RCVg3rQcn9bfG5Ds1fQYWn/1I4N+8H
+	 Xn69l65zOHgGQkatYQL7mxsk00saqzydlnH3BlkgHBxorY44pAlLg0saEeZzadUzZx
+	 0M5N8O4kHzNDg==
+From: matthias.bgg@kernel.org
+To: rafael@kernel.org,
+	Daniel Lezcano <daniel.lezcano@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org,
+	Amit Kucheria <amitk@kernel.org>,
+	linux-pm@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Zhang Rui <rui.zhang@intel.com>,
+	linux-arm-kernel@lists.infradead.org,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH v2 1/2] dt-bindings: thermal: mediatek: Move auxdac binding to yaml
+Date: Thu,  1 Jun 2023 15:44:24 +0200
+Message-Id: <20230601134425.29499-1-matthias.bgg@kernel.org>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.2
-Subject: Re: [PATCH v2] mmc: mtk-sd: reduce CIT for better performance
-To: =?UTF-8?B?V2VuYmluIE1laSAo5qKF5paH5b2sKQ==?= <Wenbin.Mei@mediatek.com>,
- "ulf.hansson@linaro.org" <ulf.hansson@linaro.org>
-Cc: "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?= <Chaotian.Jing@mediatek.com>
-References: <20230510015851.11830-1-wenbin.mei@mediatek.com>
- <0df3968e-da34-b36c-4cb4-92d66508a46a@collabora.com>
- <e682b8b66261a71601707a4e74af2829f86800dc.camel@mediatek.com>
- <7f5e14e5-a814-efd7-6082-c4eff697c536@collabora.com>
- <59568b9e6d50135787932cf8e92624914f29e27b.camel@mediatek.com>
- <c26f8cab-9509-1e8a-600f-4f61f38c8b17@collabora.com>
- <5844a9f47e4f9e23185da856cb24085a234cd7dd.camel@mediatek.com>
-Content-Language: en-US
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <5844a9f47e4f9e23185da856cb24085a234cd7dd.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230601_052121_776151_9E027D84 
-X-CRM114-Status: GOOD (  32.71  )
+X-CRM114-CacheID: sfid-20230601_064444_424676_50B49A76 
+X-CRM114-Status: GOOD (  21.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,402 +81,248 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 01/06/23 14:08, Wenbin Mei (梅文彬) ha scritto:
-> On Thu, 2023-06-01 at 12:00 +0200, AngeloGioacchino Del Regno wrote:
->>   	
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
->>   Il 01/06/23 05:16, Wenbin Mei (梅文彬) ha scritto:
->>> On Wed, 2023-05-31 at 10:18 +0200, AngeloGioacchino Del Regno
->> wrote:
->>> External email : Please do not click links or open attachments
->> until you have verified the sender or the content.
->>>
->>> Il 31/05/23 09:32, Wenbin Mei (梅文彬) ha scritto:
->>>
->>>> On Thu, 2023-05-18 at 11:13 +0200, AngeloGioacchino Del Regno
->> wrote:
->>>
->>>>> External email : Please do not click links or open attachments
->> until
->>>
->>>>> you have verified the sender or the content.
->>>
->>>>>
->>>
->>>>>
->>>
->>>>> Il 10/05/23 03:58, Wenbin Mei ha scritto:
->>>
->>>>>> CQHCI_SSC1 indicates to CQE the polling period to use when using
->>>
->>>>>> periodic
->>>
->>>>>> SEND_QUEUE_STATUS(CMD13) polling.
->>>
->>>>>> The default value 0x1000 that corresponds to 150us, let's
->> decrease
->>>
->>>>>> it to
->>>
->>>>>
->>>
->>>>> The default value 0x1000 (4096) corresponds to 4096 * 52.08uS =
->>>
->>>>> 231.33uS
->>>
->>>>> ...so the default is not 150uS.
->>>
->>>>>
->>>
->>>>> If I'm wrong, this means that the CQCAP field is not 0, which
->> would
->>>
->>>>> mean
->>>
->>>>> that the expected 3uS would be wrong.
->>>
->>>>>
->>>
->>>>> Also, since the calculation can be done dynamically, this is what
->> we
->>>
->>>>> should
->>>
->>>>> actually do in the driver, as this gives information to the next
->>>
->>>>> engineer
->>>
->>>>> checking this piece of code.
->>>
->>>>>
->>>
->>>>> Apart from this, by just writing 0x40 to the CQHCI_SSC1 register,
->> you
->>>
->>>>> are
->>>
->>>>> assuming that the CQCAP value requirement is fullfilled, but you
->>>
->>>>> cannot
->>>
->>>>> assume that the bootloader has set the CQCAP's ITCFVAL and
->> ITCFMUL
->>>
->>>>> fields
->>>
->>>>> as you expect on all platforms: this means that implementing this
->>>
->>>>> takes
->>>
->>>>> a little more effort.
->>>
->>>>>
->>>
->>>>> You have two ways to implement this:
->>>
->>>>>      *** First ***
->>>
->>>>>      1. Read ITCFMUL and ITCFVAL, then:
->>>
->>>>>         tclk_mul = itcfmul_to_mhz(ITCFMUL); /* pseudo function
->>>
->>>>> interprets reg value*/
->>>
->>>>>         tclk = ITCFVAL * tclk_mul;
->>>
->>>>>
->>>
->>>>>      2. Set SSC1 so that we get 3nS:
->>>
->>>>>         #define CQHCI_SSC1_CIT GENMASK(15, 0)
->>>
->>>>>         poll_time = cit_time_ns_to_regval(3);
->>>
->>>>>         sscit = FIELD_PREP(CQHCI_SSC1_CIT, poll_time)
->>>
->>>>>         cqhci_writel( ... )
->>>
->>>>>
->>>
->>>>>      *** Second **
->>>
->>>>>
->>>
->>>>>      1. Pre-set ITCFMUL and ITCFVAL to
->>>
->>>>>         ITCFVAL = 192 (decimal)
->>>
->>>>>         ITCFMUL = 2 (where 2 == 0.1MHz)
->>>
->>>>>
->>>
->>>>>      2. Set SSC1 so that we get 3nS:
->>>
->>>>>         #define CQHCI_SSC1_CIT GENMASK(15, 0)
->>>
->>>>>         poll_time = cit_time_ns_to_regval(3);
->>>
->>>>>         sscit = FIELD_PREP(CQHCI_SSC1_CIT, poll_time)
->>>
->>>>>         cqhci_writel( ... )
->>>
->>>>>
->>>
->>>>> I would implement the first way, as it paves the way to extend
->> this
->>>
->>>>> to different
->>>
->>>>> tclk values if needed in the future.
->>>
->>>>>
->>>
->>>>> Regards,
->>>
->>>>> Angelo
->>>
->>>> Hi Angelo,
->>>
->>>>
->>>
->>>> Sorry for lately reply.
->>>
->>>>
->>>
->>>> For Mediatek mmc host IP, ITCFMUL is 0x2(0x1MHz), ITVFVAL reports
->> 182,
->>>
->>>> and these fields are the same and are readonly for all IC, but
->> since
->>>
->>>> Mediatek CQE uses msdc_hclk(273MHz), CMD13'interval calculation
->> driver
->>>
->>>> should use 273MHz to get the actual time, so the actual clock is
->>>
->>>> 27.3MHz.
->>>
->>>>
->>>
->>>
->>> You're right, I've misread the datasheet, just rechecked and it
->> reports RO.
->>>
->>>
->>>> If CIT is 0x1000 by default, CMD idle time: 0x1000 * 1 / 27.3MHz =
->>>
->>>> around 150us.
->>>
->>>>
->>>
->>>> In addition the bootloader will not set the CQCAP's ITCFVAL and
->> ITCFMUL
->>>
->>>> fields, because these fields of CQCAP register is RO(readonly), so
->> we
->>>
->>>> can ignore the change for the CQCAP's ITCFVAL and ITCFMUL fields.
->>>
->>>>
->>>
->>>
->>> Yes, that's right, again - this means that you should go for the
->> first
->>>
->>> proposed implementation, as future MediaTek SoCs may (or may not)
->> change
->>>
->>> that: if you implement as proposed, this is going to be a one-time
->> thing
->>>
->>> and future SoCs won't need specific changes.
->>>
->>>
->>> That implementation also documents the flow about how we're getting
->> to
->>>
->>> the actual value, which is important for community people reading
->> this
->>>
->>> driver in the future for debugging purposes.
->>>
->>>
->>> Regards,
->>>
->>> Angelo
->>>
->>>
->>>
->>> Thanks for your proposal.
->>>
->>>
->>> I have discussed with our designer, and this fields of CQCAP's
->> ITCFVAL and ITCFMUL will not change.
->>> If we add more code for it, these codes will also affect the
->> execution efficiency, even if it has a very
->>> small effect.
->>> I think if it's just for reading convenience, we can add mode
->> comments to make it easier to read the code.
->>> Do you think it's okay to add more comments?
->>>
->>
->> This isn't a performance path, but anyway, if you think that it will
->> be at some
->> point, you can read the two registers at probe time as part of the
->> MMC_CAP2_CQE
->> if branch, and then cache the invariable values to `struct
->> msdc_host`: this
->> will make you able to never perform register reads for ITCFVAL/FMUL
->> in
->> msdc_cqe_enable(), resolving the efficiency issue.
->>
->> Even better, instead of caching ITCFVAL/FMUL to two variables, since
->> the idle
->> timer value likely won't ever change during runtime, you can directly
->> perform
->> the calculation for SSC1 at probe time and cache that value instead,
->> so that
->> in msdc_cqe_enable() you will have something like...
->>
->> /* Set the send status command idle timer */
->> cqhci_writel(cq_host, host->cq_ssc1_time, CQHCI_SSC1);
->>
->> where cq_ssc1_time is
->> struct msdc_host {
->> .......
->> u32 cq_ssc1_time;
->> ....
->> }
->>
->> and where your probe function is
->>
->> static int msdc_drv_probe(struct platform_device *pdev)
->> {
->> ......
->>
->> if (mmc->caps2 & MMC_CAP2_CQE) {
->> host->cq_host = ......
->> ........
->> read itcfval;
->> read itcfmul;
->> host->cq_ssc1_time = calculated-value;
->> ........
->> }
->>
->> .......
->> }
->>
-> Yes, I think it's okay for me.
-> Another problem, ITCFVAL reports 182 for MediaTek SoCs, but we can not
-> use it to calculate, as i said earlier, since our CQE uses
-> msdc_hclk(273MHz), CMD13' interval calculation drivers should use
-> 273MHz to get the actual time, not 182MHz.
-> If we use ITCFVAL, we will get a wrong value.
-> So I think it's meaningless.
+From: Matthias Brugger <matthias.bgg@gmail.com>
 
-clk_get_rate(msdc_hclk) gives you the current msdc_hclk clock rate: use it
-in place of reading ITCFVAL, that's your solution.
+Convert the older binding to yaml syntax.
+The thermal IP has several sensors, to reflect that
+thermal-sensors-cells is set to '1'. Apart optional regulator
+for bank supply wasn't part of the old binding description,
+this patch adds them.
 
-I would imagine that *at least* ITCFMUL is correct on MediaTek SoCs, so you
-can use that one as it is.
+Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-Regards,
-Angelo
+---
 
-> 
-> Begards,
-> Wenbin
->> Regards,
->> Angelo
->>
->>
->>> Begards,
->>> Wenbin
->>>
->>>> Thanks
->>>
->>>> Wenbin
->>>
->>>>>
->>>
->>>>>> 0x40 that corresponds to 3us, which can improve the performance
->> of
->>>
->>>>>> some
->>>
->>>>>> eMMC devices.
->>>
->>>>>>
->>>
->>>>>> Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
->>>
->>>>>> ---
->>>
->>>>>>      drivers/mmc/host/mtk-sd.c | 4 ++++
->>>
->>>>>>      1 file changed, 4 insertions(+)
->>>
->>>>>>
->>>
->>>>>> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-
->> sd.c
->>>
->>>>>> index edade0e54a0c..ffeccddcd028 100644
->>>
->>>>>> --- a/drivers/mmc/host/mtk-sd.c
->>>
->>>>>> +++ b/drivers/mmc/host/mtk-sd.c
->>>
->>>>>> @@ -2453,6 +2453,7 @@ static void
->> msdc_hs400_enhanced_strobe(struct
->>>
->>>>>> mmc_host *mmc,
->>>
->>>>>>      static void msdc_cqe_enable(struct mmc_host *mmc)
->>>
->>>>>>      {
->>>
->>>>>>          struct msdc_host *host = mmc_priv(mmc);
->>>
->>>>>> +     struct cqhci_host *cq_host = mmc->cqe_private;
->>>
->>>>>>
->>>
->>>>>>          /* enable cmdq irq */
->>>
->>>>>>          writel(MSDC_INT_CMDQ, host->base + MSDC_INTEN);
->>>
->>>>>> @@ -2462,6 +2463,9 @@ static void msdc_cqe_enable(struct
->> mmc_host
->>>
->>>>>> *mmc)
->>>
->>>>>>          msdc_set_busy_timeout(host, 20 * 1000000000ULL, 0);
->>>
->>>>>>          /* default read data timeout 1s */
->>>
->>>>>>          msdc_set_timeout(host, 1000000000ULL, 0);
->>>
->>>>>> +
->>>
->>>>>> +     /* decrease the send status command idle timer to 3us */
->>>
->>>>>> +     cqhci_writel(cq_host, 0x40, CQHCI_SSC1);
->>>
->>>>>>      }
->>>
->>>>>>
->>>
->>>>>>      static void msdc_cqe_disable(struct mmc_host *mmc, bool
->> recovery)
->>>
->>>>>
->>>
->>>>>
->>>
->>>
->>>
->>
+Changes in v2:
+- drop auxadc and apmixedsys nodes
+- maxItems for clocks
+- drop obvious description of reset
+- mention optional regulators in commit message
+- mention thermal-sensors-cells change in commit message
+
+ .../bindings/thermal/mediatek,thermal.yaml    | 152 ++++++++++++++++++
+ .../bindings/thermal/mediatek-thermal.txt     |  52 ------
+ 2 files changed, 152 insertions(+), 52 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/thermal/mediatek,thermal.yaml
+ delete mode 100644 Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
+
+diff --git a/Documentation/devicetree/bindings/thermal/mediatek,thermal.yaml b/Documentation/devicetree/bindings/thermal/mediatek,thermal.yaml
+new file mode 100644
+index 000000000000..bbc9c2935da0
+--- /dev/null
++++ b/Documentation/devicetree/bindings/thermal/mediatek,thermal.yaml
+@@ -0,0 +1,152 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/thermal/mediatek,thermal.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek Thermal Sensor
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++
++description: |
++  The MediaTek thermal controller measures the on-SoC temperatures.
++  This device does not have its own ADC, instead it directly controls
++  the AUXADC via AHB bus accesses. For this reason this device needs
++  phandles to the AUXADC. Also it controls a mux in the apmixedsys
++  register space via AHB bus accesses, so a phandle to the APMIXEDSYS
++  is also needed.
++
++properties:
++  compatible:
++    oneOf:
++      - enum:
++          - mediatek,mt2701-thermal
++          - mediatek,mt2712-thermal
++          - mediatek,mt7622-thermal
++          - mediatek,mt7986-thermal
++          - mediatek,mt8173-thermal
++          - mediatek,mt8183-thermal
++          - mediatek,mt8365-thermal
++      - items:
++          - const: mediatek,mt7981-thermal
++          - const: mediatek,mt7986-thermal
++      - items:
++          - const: mediatek,mt8516-thermal
++          - const: mediatek,mt2701-thermal
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  clocks:
++    maxItems: 2
++
++  clock-names:
++    items:
++      - const: therm
++      - const: auxadc
++
++  resets:
++    maxItems: 1
++
++  reset-names:
++    items:
++      - const: therm
++
++  nvmem-cells:
++    items:
++      - description: Calibration eFuse data. If unspecified default values are used.
++
++  nvmem-cell-names:
++    items:
++      - const: calibration-data
++
++  mediatek,auxadc:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      A phandle to the AUXADC which the thermal controller uses.
++
++  mediatek,apmixedsys:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      A phandle to the APMIXEDSYS controller.
++
++  "#thermal-sensor-cells":
++    const: 1
++
++  bank0-supply:
++    description: Regulator supplying voltage to the first bank
++
++  bank1-supply:
++    description: Regulator supplying voltage to the second bank
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - mediatek,auxadc
++  - mediatek,apmixedsys
++  - "#thermal-sensor-cells"
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/clock/mt8173-clk.h>
++    #include <dt-bindings/reset/mt8173-resets.h>
++
++    soc {
++      #address-cells = <2>;
++      #size-cells = <2>;
++
++      thermal: thermal@1100b000 {
++        #thermal-sensor-cells = <1>;
++        compatible = "mediatek,mt8173-thermal";
++        reg = <0 0x1100b000 0 0x1000>;
++        interrupts = <0 70 IRQ_TYPE_LEVEL_LOW>;
++        clocks = <&pericfg CLK_PERI_THERM>, <&pericfg CLK_PERI_AUXADC>;
++        clock-names = "therm", "auxadc";
++        resets = <&pericfg MT8173_PERI_THERM_SW_RST>;
++        reset-names = "therm";
++        mediatek,auxadc = <&auxadc>;
++        mediatek,apmixedsys = <&apmixedsys>;
++        nvmem-cells = <&thermal_calibration_data>;
++        nvmem-cell-names = "calibration-data";
++      };
++
++      thermal-zones {
++        cpu_thermal: cpu-thermal {
++          polling-delay-passive = <1000>;
++          polling-delay = <1000>;
++
++          thermal-sensors = <&thermal 0>;
++          sustainable-power = <1500>;
++
++          trips {
++            threshold: trip-point0 {
++              temperature = <68000>;
++              hysteresis = <2000>;
++              type = "passive";
++            };
++
++            target: trip-point1 {
++              temperature = <85000>;
++              hysteresis = <2000>;
++              type = "passive";
++            };
++
++            cpu_crit: cpu-crit0 {
++              temperature = <115000>;
++              hysteresis = <2000>;
++              type = "critical";
++            };
++          };
++        };
++      };
++    };
++...
+diff --git a/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt b/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
+deleted file mode 100644
+index ac39c7156fde..000000000000
+--- a/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
++++ /dev/null
+@@ -1,52 +0,0 @@
+-* Mediatek Thermal
+-
+-This describes the device tree binding for the Mediatek thermal controller
+-which measures the on-SoC temperatures. This device does not have its own ADC,
+-instead it directly controls the AUXADC via AHB bus accesses. For this reason
+-this device needs phandles to the AUXADC. Also it controls a mux in the
+-apmixedsys register space via AHB bus accesses, so a phandle to the APMIXEDSYS
+-is also needed.
+-
+-Required properties:
+-- compatible:
+-  - "mediatek,mt8173-thermal" : For MT8173 family of SoCs
+-  - "mediatek,mt2701-thermal" : For MT2701 family of SoCs
+-  - "mediatek,mt2712-thermal" : For MT2712 family of SoCs
+-  - "mediatek,mt7622-thermal" : For MT7622 SoC
+-  - "mediatek,mt7981-thermal", "mediatek,mt7986-thermal" : For MT7981 SoC
+-  - "mediatek,mt7986-thermal" : For MT7986 SoC
+-  - "mediatek,mt8183-thermal" : For MT8183 family of SoCs
+-  - "mediatek,mt8365-thermal" : For MT8365 family of SoCs
+-  - "mediatek,mt8516-thermal", "mediatek,mt2701-thermal : For MT8516 family of SoCs
+-- reg: Address range of the thermal controller
+-- interrupts: IRQ for the thermal controller
+-- clocks, clock-names: Clocks needed for the thermal controller. required
+-                       clocks are:
+-		       "therm":	 Main clock needed for register access
+-		       "auxadc": The AUXADC clock
+-- mediatek,auxadc: A phandle to the AUXADC which the thermal controller uses
+-- mediatek,apmixedsys: A phandle to the APMIXEDSYS controller.
+-- #thermal-sensor-cells : Should be 0. See Documentation/devicetree/bindings/thermal/thermal-sensor.yaml for a description.
+-
+-Optional properties:
+-- resets: Reference to the reset controller controlling the thermal controller.
+-- nvmem-cells: A phandle to the calibration data provided by a nvmem device. If
+-               unspecified default values shall be used.
+-- nvmem-cell-names: Should be "calibration-data"
+-
+-Example:
+-
+-	thermal: thermal@1100b000 {
+-		#thermal-sensor-cells = <1>;
+-		compatible = "mediatek,mt8173-thermal";
+-		reg = <0 0x1100b000 0 0x1000>;
+-		interrupts = <0 70 IRQ_TYPE_LEVEL_LOW>;
+-		clocks = <&pericfg CLK_PERI_THERM>, <&pericfg CLK_PERI_AUXADC>;
+-		clock-names = "therm", "auxadc";
+-		resets = <&pericfg MT8173_PERI_THERM_SW_RST>;
+-		reset-names = "therm";
+-		mediatek,auxadc = <&auxadc>;
+-		mediatek,apmixedsys = <&apmixedsys>;
+-		nvmem-cells = <&thermal_calibration_data>;
+-		nvmem-cell-names = "calibration-data";
+-	};
+-- 
+2.40.1
 
 
