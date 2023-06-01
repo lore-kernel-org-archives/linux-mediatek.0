@@ -4,80 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62DB3C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jun 2023 15:18:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6182DC7EE2E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jun 2023 15:44:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=om6vVqhUTGRoMD24byuluNyuAPSz+SZ7EzIEE6u+Ouk=; b=OidyUW8VJro9wC1CGzod2xQDsC
-	uZ5PR4UhSkLMylAsUjzduWBfdjN8ndYGxQvf9FqHskkulWgQ2PTrlrtAQTS84AkDJsoKIaNJGsAMm
-	ot/dySm2mSqZrEdf/L5KwolRmblcApBKhFOs3jIL0ZAlk+HVpSFpsPDnjaW6f81FwFeV02Nrj31PY
-	1Hnt5PEgiZKZTcLJ4TB0jJXcYDZRPZVLoaR0sO7/9qBYVUGDTqFgSVvIB6wu73eFAJBGI+j0NhKq9
-	aCnTw1xuoC3m+5xgNnuLWfpYMEPxPKngasdDPQRk/u/WJuOi7T75ROlc2csWk705rcU9FR22mowaI
-	oGyDT00w==;
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=e4YNmuyBGATqhYGar7laaTMgNiGK0zXBEB4EVYqcu1k=; b=odpfpWn7conrzHKBAsg9sa0Y0r
+	rClGrnl95Dae0PJmu/PXXdynsCCxJ8vDkkX8v981iOdxDXTojQ6XAfsg1hFUpmtLmlU/zH4uFhUr0
+	r6j1SqWX8TmGiDh4Ol/SfH2b5NOMFRJ93Rw2TrG5uDhmv2m0LhlMHXPYCIJCdHvYv4lLQ1ScKGW1a
+	B07mW9UEqhBBgh8m5W916PnM0+Hc74txEuv51T6qNZK9XPRj6jXUPEGETpDcu5IGfIWFuqiQJswe2
+	jmMu/n+zgMtp0WrZlf/dMA4SOxM8gkb7w+pWl8DuR0UiYnEEHgSinndIuB8ACuzlc8wiaZmJjb9ad
+	6SOCFzKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4k4j-00405a-0B;
-	Thu, 01 Jun 2023 15:18:53 +0000
+	id 1q4kTY-0045C8-25;
+	Thu, 01 Jun 2023 15:44:32 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4k4f-00403x-1j;
-	Thu, 01 Jun 2023 15:18:51 +0000
+	id 1q4kTV-0045Ae-1U;
+	Thu, 01 Jun 2023 15:44:30 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 5FC866468C;
-	Thu,  1 Jun 2023 15:18:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C525FC4339C;
-	Thu,  1 Jun 2023 15:18:42 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id C4F2C640E6;
+	Thu,  1 Jun 2023 15:44:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1C6FAC433EF;
+	Thu,  1 Jun 2023 15:44:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1685632727;
-	bh=zt7KZMmx/oJBYdfFdtNG8ZQh916ADU8eGaXVMVWxHLE=;
-	h=From:To:Cc:Subject:Date:From;
-	b=lOsYcDeZ6FDbxshIu7kdv+ump9fNlSvRpNRm6K6kLV3mxZKqoX7/SeZaOn5gv9gYd
-	 jUGbk6YWUoRlA6uXYqUPeKRY+B/G7Gtt6DRjGqb/rofNXy1cgD4lv6tend69ihuddC
-	 /Xs5cKYacjSj7o/Ch3PcbC+S5wqM/cwEt5cNvibv8wmRxcg74v43euAPEUPlY7fG5a
-	 I0xFlAuT7pGfRRlcmRdc3Ln/9JyPCzJ1R8eqd4eYbhqcuvyFxOQPjvsczQhU1vqyNd
-	 nWIyEt9HR0ur9SlpXBuqSzw77gRjWK2aT6fdvn0eK1AeOTk3eXPGF0sk7UpCqBMB8s
-	 Un4YXvEvE8kcg==
-From: Arnd Bergmann <arnd@kernel.org>
-To: kasan-dev@googlegroups.com,
-	ryabinin.a.a@gmail.com
-Cc: glider@google.com,
-	andreyknvl@gmail.com,
-	dvyukov@google.com,
-	vincenzo.frascino@arm.com,
-	elver@google.com,
-	linux-media@vger.kernel.org,
-	linux-crypto@vger.kernel.org,
-	herbert@gondor.apana.org.au,
-	ardb@kernel.org,
-	mchehab@kernel.org,
-	Arnd Bergmann <arnd@arndb.de>,
-	Dan Carpenter <dan.carpenter@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Nathan Chancellor <nathan@kernel.org>,
-	Nick Desaulniers <ndesaulniers@google.com>,
-	Tom Rix <trix@redhat.com>,
-	Kees Cook <keescook@chromium.org>,
-	Josh Poimboeuf <jpoimboe@kernel.org>,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	llvm@lists.linux.dev
-Subject: [PATCH] [RFC] ubsan: disallow bounds checking with gcov on broken gcc
-Date: Thu,  1 Jun 2023 17:18:11 +0200
-Message-Id: <20230601151832.3632525-1-arnd@kernel.org>
-X-Mailer: git-send-email 2.39.2
+	s=k20201202; t=1685634268;
+	bh=6wfuvEex59Ok6T5gRrkfMoK/HR47V0aNeFPlA0QEhM8=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=ZqvvUnO/0qfrMMhnw3xdHydTy+Y8BJRfv87V1KJ9TvwRrbOBm1vH4kx+bc/BXg0S4
+	 eR9mepejozTdE7nmqzwznxeTOrt32CR96/BljyQbeZlkZ7aEwBcxmcJ6ZN92DtCBXH
+	 GcVer9bs2bPDkAYjZsn6weI9nRIkxj2kAS0cZU8Mrmi8kNfPZz9mWnjL/0WsZTQBnS
+	 cGNKH0v+cCrodvUzd5XAiMLz4XBDCDta6EmixY2D4MsR8U+jysWux25USD2YV37sN+
+	 E/Pvpq4mNP9RoEVjJJmiT6jVUTETmwrcKGFrfXOX+Jsgum6Juz8ibk3AN/PiftsDtx
+	 H1ZIZuRUAxaQA==
+From: Mark Brown <broonie@kernel.org>
+To: lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, 
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+ Trevor Wu <trevor.wu@mediatek.com>
+Cc: dianders@chromium.org, alsa-devel@alsa-project.org, 
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+In-Reply-To: <20230601033318.10408-1-trevor.wu@mediatek.com>
+References: <20230601033318.10408-1-trevor.wu@mediatek.com>
+Subject: Re: [PATCH v2 0/2] ASoC: mediatek: fix use-after-free in driver
+ remove path
+Message-Id: <168563426581.132600.16426299018571667864.b4-ty@kernel.org>
+Date: Thu, 01 Jun 2023 16:44:25 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.13-dev-bfdf5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230601_081849_680416_7976BDFC 
-X-CRM114-Status: GOOD (  16.30  )
+X-CRM114-CacheID: sfid-20230601_084429_544577_88B3A108 
+X-CRM114-Status: GOOD (  14.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,57 +77,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arnd Bergmann <arnd@arndb.de>
+On Thu, 01 Jun 2023 11:33:16 +0800, Trevor Wu wrote:
+> These patches concern modifications made in mt8186[1]. The clock
+> unregistration mechanism used in mt8188 and mt8195 is similar with
+> mt8186, resulting in the same problem existing within the driver.
+> Therefore, the solution has also been applied to these two platforms.
+> 
+> [1] https://lore.kernel.org/all/20230511092437.1.I31cceffc8c45bb1af16eb613e197b3df92cdc19e@changeid/
+> 
+> [...]
 
-Combining UBSAN and GCOV in randconfig builds results in a number of
-stack frame size warnings, such as:
+Applied to
 
-crypto/twofish_common.c:683:1: error: the frame size of 2040 bytes is larger than 1024 bytes [-Werror=frame-larger-than=]
-drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c:1589:1: error: the frame size of 1696 bytes is larger than 1400 bytes [-Werror=frame-larger-than=]
-drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c:754:1: error: the frame size of 1260 bytes is larger than 1024 bytes [-Werror=frame-larger-than=]
-drivers/staging/media/ipu3/ipu3-css-params.c:1206:1: error: the frame size of 1080 bytes is larger than 1024 bytes [-Werror=frame-larger-than=]
-drivers/staging/media/rkvdec/rkvdec-vp9.c:1042:1: error: the frame size of 2176 bytes is larger than 2048 bytes [-Werror=frame-larger-than=]
-drivers/staging/media/rkvdec/rkvdec-vp9.c:995:1: error: the frame size of 1656 bytes is larger than 1024 bytes [-Werror=frame-larger-than=]
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-I managed to track this down to the -fsanitize=bounds option clashing
-with the -fprofile-arcs option, which leads a lot of spilled temporary
-variables in generated instrumentation code.
+Thanks!
 
-Hopefully this can be addressed in future gcc releases the same way
-that clang handles the combination, but for existing compiler releases,
-it seems best to disable one of the two flags. This can be done either
-globally by just not passing both at the same time, or locally using
-the no_sanitize or no_instrument_function attributes in the affected
-functions.
+[1/2] ASoC: mediatek: mt8188: fix use-after-free in driver remove path
+      commit: fd67a7a1a22ce47fcbc094c4b6e164c34c652cbe
+[2/2] ASoC: mediatek: mt8195: fix use-after-free in driver remove path
+      commit: dc93f0dcb436dfd24a06c5b3c0f4c5cd9296e8e5
 
-Try the simplest approach here, and turn off -fsanitize=bounds on
-gcc when GCOV is enabled, leaving the rest of UBSAN working. Doing
-this globally also helps avoid inefficient code from the same
-problem that did not push the build over the warning limit.
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-Reported-by: Dan Carpenter <dan.carpenter@linaro.org>
-Link: https://lore.kernel.org/stable/6b1a0ee6-c78b-4873-bfd5-89798fce9899@kili.mountain/
-Link: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110074
-Link: https://godbolt.org/z/zvf7YqK5K
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
----
- lib/Kconfig.ubsan | 2 ++
- 1 file changed, 2 insertions(+)
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-diff --git a/lib/Kconfig.ubsan b/lib/Kconfig.ubsan
-index f7cbbad2bb2f4..8f71ff8f27576 100644
---- a/lib/Kconfig.ubsan
-+++ b/lib/Kconfig.ubsan
-@@ -29,6 +29,8 @@ config UBSAN_TRAP
- 
- config CC_HAS_UBSAN_BOUNDS_STRICT
- 	def_bool $(cc-option,-fsanitize=bounds-strict)
-+	# work around https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110074
-+	depends on GCC_VERSION > 140000 || !GCOV_PROFILE_ALL
- 	help
- 	  The -fsanitize=bounds-strict option is only available on GCC,
- 	  but uses the more strict handling of arrays that includes knowledge
--- 
-2.39.2
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
