@@ -4,91 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F96AC7EE29
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jun 2023 07:12:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F1C8C7EE24
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jun 2023 08:07:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ID97egBGuXMI7J4GkeNsqWERFtG/jgBWuZXR0IgIwWE=; b=jEVRraksegxeLZAaJ9WH/35m7U
-	7oDNWKajTEnzS1kz9t9nX5NDZrwyJydrQkj9S8J60hgRvZ9XhHa5v42hZSQlzTwZfXoHmR4YQ+Irl
-	gehBtRRj8mylmeBQXfFzvYTwgveTpg72CXUTLYU2GRb/jeAQx7Cdq8H4n8vitVQ0opclQ+g0LaBxR
-	4daLXUqF8staSPZOHAltcLBRgKskBs7ws4rAZM89nXo/QzOf0IX/AawhNVxjoYywAL4Fy6EOqUtQh
-	DbAHGRW2nvu42RL1SSSbgkHq19wOztS7pHJFfSoVZ6fkQfsqoK5bBaDwzUde2UujRwA7rD39glHL7
-	iaC6Vd9w==;
+	bh=mO/RY3F3B8GPgwLB+7S4hwzVRXzzO6lIPxIO1gccjeg=; b=DzAQLsBjHf8sduFSr7en828NHi
+	EoqRL4lBuLj4jfSNn2LGlmHavPIujOhLzZ1EiC4ATxFGvCWGqKiYk4tCRQaWrXVOt4HACMPxbToER
+	Gd9Q3ncz++lDQX0rucxgtFmLIXblmJO3Y+OBSdenAAnp765ZSOnCimLXMeQxbTo/hf38CkxxEhocW
+	MWP61rAtFYE4JFb6wqYm62wAVKZ9oCSRuUXu8CaG5D1lbA4gvWTCSnVUWNfzfKwx9OSyvx/ksVRgx
+	RUY/R4ISaoDHb6CeLVpqIytwEDQBFwuPzSxeBlR1Xd3aK41Bpk0BuJKvgkle6GmWEFDEDtHDh28VY
+	ursQ3Kkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4yxL-005ytd-0U;
-	Fri, 02 Jun 2023 07:12:15 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1q4zow-0066S4-2H;
+	Fri, 02 Jun 2023 08:07:38 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4yxI-005yrh-0p
+	id 1q4zot-0066Qv-2E
 	for linux-mediatek@lists.infradead.org;
-	Fri, 02 Jun 2023 07:12:13 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-96f7bf29550so245547766b.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 02 Jun 2023 00:12:08 -0700 (PDT)
+	Fri, 02 Jun 2023 08:07:37 +0000
+Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-30ae4ec1ac7so1581899f8f.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 02 Jun 2023 01:07:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1685689928; x=1688281928;
+        d=linaro.org; s=google; t=1685693251; x=1688285251;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=ID97egBGuXMI7J4GkeNsqWERFtG/jgBWuZXR0IgIwWE=;
-        b=pJ6WxSKGbQ1lTXGYSx5AV6TgLnndwDX+mYc4xaGh0RzfzalUrq3xVEWx54oWvDi02I
-         z1fvVun1fQXFZBEdCACH3A6qBZmGWyjxGbOKud+dLG9w+/9DEIU1owODdv9vBALtlBrf
-         OXsvJ2jO/bxffy3BDljQJDG/GORMavqDuUvF6qtPv+yxO/+R3BQdJ3p6BTSbPay0Hxv7
-         dY53Bs3Z8PYwSd5WBPOuwBbVrXj+sbZYw7QtiuISgIKdt4FCeuBAoBXK6n1Pq6mUXacl
-         ZLN8o4wds8nM3S3H16LEMFHrkqTKHIWPKMnJARqQVdgy0rbl3V2ZrqlFi6a0s3q/rsLW
-         KusA==
+        bh=mO/RY3F3B8GPgwLB+7S4hwzVRXzzO6lIPxIO1gccjeg=;
+        b=A598VmaeQlIXU5K1gtsDSH/qH+2fNkD6meglLxmoet8DKTfui5H2P1hC+6+8TtYUOW
+         MnB9VrNtFdGkSFg/mEQ9TN1U2/FtVCU7hqcQ74JZWpxANY+fABdbkCnz68Zv0kuFqkO1
+         A1XgwUfJXRaIcHo73epEQZGz8+43hPhrR37OP4u1kG5lPH2M7bk6mQB7bADLWEt6GoUz
+         VD7/LilwTL4qKynoEcDLjk9Nwb+fRuhjY2W59L6SaO8K8ZSU8vT5BZ4908x4/t8tT1nu
+         1cvIHtGamhZCJp4HSp6kFt0K9ubiiiwsG8u8oRn8DiY/E1uiOdqr05TTbzeBb0zX7kTO
+         1xWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685689928; x=1688281928;
+        d=1e100.net; s=20221208; t=1685693251; x=1688285251;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ID97egBGuXMI7J4GkeNsqWERFtG/jgBWuZXR0IgIwWE=;
-        b=H5yocb/B30MZArrj0OnY1Z363C54gH3AULZSYanM6j93oABw/te3GmfJ4eC8d8Pvp0
-         TV6UcOzcj0HMt1RYoqT1KoHpCtLiS18lLC5jW6bDJnxjgTxiV/HXG60GhuTGIqcbA9Gz
-         oP+Kwgn0+ec/sTY2GdMI4FldH0mWrpRDacpCAYGNwNbSp8PX5AO8wKt6NIXBfpqE6MGY
-         1xBujjATKsegUwxzm1izIo8Y+izBwHJolMr2c+RdtaGjX0TH/HqpHeOziZmmAt53TqyQ
-         sOWPfZQ1Xqi8Xvtt7GIZolC+a0zczGwVYpym7hjNbZm7I+sOlWPX7OQlo7ZOwQmOIcvs
-         64vQ==
-X-Gm-Message-State: AC+VfDwOdYKiXGxzl+FJ+Y0clT6kaBBRbYofaCgvimT1q1VaYKqfcnKw
-	AKJnSxvrYOKqltS8Zy5Kl+l9GQ==
-X-Google-Smtp-Source: ACHHUZ4hbQaYX7U80wxKjvKgnV9pZX+PaiNP2lawdYjP7mjQi3B2eIAZoovKcl7m0wcRKYSz3aVP3Q==
-X-Received: by 2002:a17:906:6a16:b0:947:ebd5:c798 with SMTP id qw22-20020a1709066a1600b00947ebd5c798mr10173625ejc.54.1685689927791;
-        Fri, 02 Jun 2023 00:12:07 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.199.204])
-        by smtp.gmail.com with ESMTPSA id g4-20020a170906c18400b00969f13d886fsm397252ejz.71.2023.06.02.00.12.05
+        bh=mO/RY3F3B8GPgwLB+7S4hwzVRXzzO6lIPxIO1gccjeg=;
+        b=AWRkexhB3zwF80VEp/909QkHS5H5I53lCV3Ik2+p+f4wV+drdUf/CWdGJuJkIvgt/l
+         1aRXm9dofyQLgz2FsnG0GM/7UDejsSkSeGz8Jdd67uQPe1Uougx3MJuYlQK3eSWMtKaq
+         sul0ZC88Kv2zmeS2/HeBscMB5za9zjtfGFNNvmRXngqvVPcnwNHWZM1So2K7VRetvNmv
+         U0ayX/PpBXvS25HiOViuQrSZ1ZZsOoRnC59yqUOSbpyVO8Xg9ZDPqy7QtxYEe8nA3eBa
+         GhH17j7QoIIZTgwawG+tp1dGrKn1+OUU+Pa6WwBFWFhpGhrQkAh8IPlUCbGpSgn/lUST
+         0HPw==
+X-Gm-Message-State: AC+VfDyg7IC+hxXbBaLU2aWW6BGUs9WiSGLn1NJGIu12mKX/UM+zfNET
+	O4TKK91W9qjK57J3AjLJYk+xyA==
+X-Google-Smtp-Source: ACHHUZ4iJjab6zb7VKTRm84jdXYQvx32T3lqpuKG6BtYc68C7Lg6oyRp4fV/jUzSTe+AMMJXE2XPLw==
+X-Received: by 2002:adf:cd8b:0:b0:307:83a4:5860 with SMTP id q11-20020adfcd8b000000b0030783a45860mr3794370wrj.68.1685693250955;
+        Fri, 02 Jun 2023 01:07:30 -0700 (PDT)
+Received: from ?IPV6:2a05:6e02:1041:c10:548f:8f7e:a3c2:888a? ([2a05:6e02:1041:c10:548f:8f7e:a3c2:888a])
+        by smtp.googlemail.com with ESMTPSA id d8-20020adff848000000b0030ae849c70csm929300wrq.37.2023.06.02.01.07.30
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 02 Jun 2023 00:12:07 -0700 (PDT)
-Message-ID: <7dfc6241-ed72-d655-7400-fd8f9c413e69@linaro.org>
-Date: Fri, 2 Jun 2023 09:12:05 +0200
+        Fri, 02 Jun 2023 01:07:30 -0700 (PDT)
+Message-ID: <68393044-9d28-8402-e190-7cbb28442f6d@linaro.org>
+Date: Fri, 2 Jun 2023 10:07:29 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.2
-Subject: Re: [PATCH 1/2] dt-bindings: i2c: i2c-mt65xx: add additional clocks
+ Thunderbird/102.9.0
+Subject: Re: [PATCH 0/3] thermal/drivers/mediatek/lvts_thermal: Fixes to the
+ interrupt handling
 Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: devicetree@vger.kernel.org, linux-i2c@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Rob Herring <robh+dt@kernel.org>,
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Alexandre Bailon
+ <abailon@baylibre.com>, kernel@collabora.com,
+ Balsam CHIHI <bchihi@baylibre.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Qii Wang <qii.wang@mediatek.com>,
- Sam Shih <sam.shih@mediatek.com>, =?UTF-8?B?6YOt5bCP5qGl?=
- <joe@gainstrong.cn>
-References: <5f15212060f82fb94239174c4e4b46c151645fe8.1685549360.git.daniel@makrotopia.org>
- <12fea13e-e2c3-487f-8d2b-cfd320c98ba7@linaro.org>
- <ZHjtExYIdVFo3HnB@makrotopia.org>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <ZHjtExYIdVFo3HnB@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+ Alexandre Mergnat <amergnat@baylibre.com>, Amit Kucheria <amitk@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
+References: <20230428195347.3832687-1-nfraprado@collabora.com>
+ <20230502103344.GA3388518@google.com>
+ <87b0f5cd-67a8-fbd5-5ca7-a286b543d796@linaro.org>
+ <8a38a0da-3a4f-4e39-9f9e-42682edfd9bf@notapiano>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <8a38a0da-3a4f-4e39-9f9e-42682edfd9bf@notapiano>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230602_001212_315262_AAD0523B 
-X-CRM114-Status: GOOD (  14.62  )
+X-CRM114-CacheID: sfid-20230602_010735_726942_3D999FDF 
+X-CRM114-Status: GOOD (  17.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,41 +105,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 01/06/2023 21:10, Daniel Golle wrote:
-> On Thu, Jun 01, 2023 at 06:54:01PM +0200, Krzysztof Kozlowski wrote:
->> On 31/05/2023 18:10, Daniel Golle wrote:
->>> Add pck and mck clocks which are needed to access I2C registers on MT7981.
->>>
->>> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
->>> ---
->>>  Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml | 2 ++
->>>  1 file changed, 2 insertions(+)
->>>
->>> diff --git a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
->>> index fda0467cdd954..550795f6573c5 100644
->>> --- a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
->>> +++ b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
->>> @@ -78,6 +78,8 @@ properties:
->>>        - const: dma
->>>        - const: arb
->>>        - const: pmic
->>> +      - const: mck
->>> +      - const: pck
->>>  
+On 30/05/2023 21:46, Nícolas F. R. A. Prado wrote:
+> On Tue, May 30, 2023 at 02:27:36PM +0200, Daniel Lezcano wrote:
 >>
->> Adding names does not magically add the clocks. This wasn't tested.
+>> Hi,
+>>
+>> On 02/05/2023 12:33, Chen-Yu Tsai wrote:
+>>> On Fri, Apr 28, 2023 at 03:53:44PM -0400, Nícolas F. R. A. Prado wrote:
+>>>>
+>>>> Fixes in the interrupt handling of the LVTS thermal driver noticed while
+>>>> testing it on the Spherion Chromebook (mt8192-asurada-spherion) with the
+>>>> MT8192 support series [1].
+>>>>
+>>>> These are standalone fixes and don't depend on anything else.
+>>>>
+>>>> [1] https://lore.kernel.org/all/20230307163413.143334-1-bchihi@baylibre.com/
+>>>>
+>>>> Thanks,
+>>>> Nícolas
+>>>>
+>>>>
+>>>> Nícolas F. R. A. Prado (3):
+>>>>     thermal/drivers/mediatek/lvts_thermal: Handle IRQ on all controllers
+>>>>     thermal/drivers/mediatek/lvts_thermal: Honor sensors in immediate mode
+>>>>     thermal/drivers/mediatek/lvts_thermal: Disable undesired interrupts
+>>>
+>>> This series seems to have solved all interrupt storm issue I ran into, so
+>>>
+>>> Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+>>
+>> I gave a try on a mt8195 board and I don't see any interrupt firing when
+>> crossing the temperature thresholds.
+>>
+>> Did I miss something ?
 > 
-> Adding the clocks is done in patch 2/2 which just wasn't sent to
-> devicetree@ and dt maintainers, but to the relevant mailing lists
-> instead. Was that wrong and should I always send the complete series
-> also to devicetree@ as well as dt maintainers?
+> No, indeed interrupts seem to be completely disabled on mt8195, even after
+> setting the controllers to filtered mode (a requirement to get interrupts).
 
-I didn't mean implementation. I meant that you still do not allow more
-clocks! You can put into names whatever you wish but clocks are taken
-from "clocks" property, not from clock-names.
+Really? interrupts work only on filtered mode? That sounds strange
 
+What board are you using for testing?
 
-Best regards,
-Krzysztof
+> I
+> haven't investigated that further yet. This series was validated on mt8192,
+> which did have working interrupts, but they were being triggered too often.
+
+Ok.
+
+> Also note that I've sent a v2 with even more fixes:
+> https://lore.kernel.org/all/20230504004852.627049-1-nfraprado@collabora.com/
+
+Yes, I'm reviewing it closely
+
+-- 
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
 
 
