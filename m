@@ -4,77 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 072F5C7EE29
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jun 2023 09:13:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AA89C7EE24
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jun 2023 09:17:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wyQNmdwqYsBsEdW5bNjYzy56QmNTaVNLwlbO1xDaKDo=; b=J8W0QQRBES4yNjUli39dRQEDNM
-	LnrzWBOfE09LZ5U9igDl7Vw/8rCm7+VbC7i8M9aSKWlpu87y3CcNI9oEBBLJgY2ydIgDn6psROisN
-	lNaPKtGQVc8Dg4tcpvJKTUzDymh0xqG75NfRUx4e/6gOBDyiPsfb7WukkV0A9P6zZJXnJmGEuJWXZ
-	82vMWnD6BCwuvKD3QdN4tx/gr6l/HKskxkh3KxONFaIfNO/6953sO2yNPoqmxFQm8DiBif+NNrHHM
-	IG8R+rp9Fovx7VPjo1hx7FnYo0avY7dO/COTa3kB8y9icTzYPp6YfO/WQW6zSGgk5xdHkyyMbUaHj
-	KnRaN/UA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Wjb4y9f/OAblmhtUQxR2kzYBl3YoolTkNzcf3IrEYtY=; b=BC3zOQ7eBu2pdFT796P+2/0B5a
+	6uuhmXccM2NjoSxFE9xm6/EVg0yBUT/BbRQi32IlRCioecR+62Jvjn9b3Rn1VOFbWTzQZWwgeWDm6
+	ItGF6Gnu5jRX2IS/pmbFjnAAdbQUZbn8Re8VcgnF8yaqynilGDjxv/vonrsyWfyaxHLsboGxYuYj2
+	4ndqNeyAzEZMYluP2w2M71FqKYNNliNvDPzZkIsWujUNgrMIgQlXWH8YUBDoKBfBQJoGgN7jwo6XQ
+	sUDXopSBEncbdkUROAuEJG9MXPeuUepcHU9b22lTFWPmbGw97D6+8mBbqtfr1QnOjrS4E3ISdN52I
+	TDoOkBJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q50r0-006Kvq-0i;
-	Fri, 02 Jun 2023 09:13:50 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1q50uc-006Lz9-24;
+	Fri, 02 Jun 2023 09:17:34 +0000
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q50qw-006Kv7-2B;
-	Fri, 02 Jun 2023 09:13:48 +0000
-X-UUID: c403433e012511ee83ed1395ce914268-20230602
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=wyQNmdwqYsBsEdW5bNjYzy56QmNTaVNLwlbO1xDaKDo=;
-	b=TuUZ8CT/cbSxMuy/elTcxK1ScPDA5nA13QnLbitHWq8F20TnzDwHS5bwi6qkn2tL9Awx91VXbDOp/E3mslCzV+gms3lmOeNxTy6IZWdrwleaFEYeH7AGNssy2jfeuUAvefwKIfHYPOxYFLUZXUMX/LB5GQBDhno9V2s8zOOvZXQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.25,REQID:9c9b8ed2-680b-4283-b12d-ed6d308489fc,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:d5b0ae3,CLOUDID:1e1fd46d-2f20-4998-991c-3b78627e4938,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-UUID: c403433e012511ee83ed1395ce914268-20230602
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <yong.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 260692115; Fri, 02 Jun 2023 02:13:40 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 2 Jun 2023 17:03:06 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 2 Jun 2023 17:03:05 +0800
-From: Yong Wu <yong.wu@mediatek.com>
-To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, Rob Herring
-	<robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Yong Wu <yong.wu@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	<iommu@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <mingyuan.ma@mediatek.com>,
-	<yf.wang@mediatek.com>, <jianjiao.zeng@mediatek.com>,
-	<chengci.xu@mediatek.com>
-Subject: [PATCH v12 2/7] iommu/mediatek: Fix two IOMMU share pagetable issue
-Date: Fri, 2 Jun 2023 17:02:22 +0800
-Message-ID: <20230602090227.7264-3-yong.wu@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230602090227.7264-1-yong.wu@mediatek.com>
-References: <20230602090227.7264-1-yong.wu@mediatek.com>
+	id 1q50uZ-006Lxk-2Q
+	for linux-mediatek@lists.infradead.org;
+	Fri, 02 Jun 2023 09:17:33 +0000
+Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-4f122ff663eso2361214e87.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 02 Jun 2023 02:17:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1685697449; x=1688289449;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Wjb4y9f/OAblmhtUQxR2kzYBl3YoolTkNzcf3IrEYtY=;
+        b=PekzTB4NEY2nA9GPUJVIBcKeoQpV+aIEe2nmErsgiefDoj5ypbOd5+i40Prt5AoBe+
+         XfaBDNPpYu+LNX2YcHUnR0hv+g/YROhYw/V6jjmQuNYOF7ytCz5ke45oumzljt3p0phL
+         0Xm5ZoUjq5cbmeLsQ4ePpoEsAcziXxnkng8Un6QMi3fuThIXraxZtUWyRpOBnHPILUpr
+         3GjRlgfrT9/aklNsN1Lyrgv9rHsUDxUrqpZmZlnUrHhnHEQV9A2d6YoFWmtVrnqpA0LS
+         lAaeeKBbSVeKCCkB0NFBK1saaOAZJ50dp124wG3nM/KTjd4MPZ110pBsWuCEfXeCR9Xa
+         NdPA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1685697449; x=1688289449;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Wjb4y9f/OAblmhtUQxR2kzYBl3YoolTkNzcf3IrEYtY=;
+        b=LTW9WpQIIBncO+L9Luccj/ocDxsLyjUncU2IeMycQpxyWyQoQEL93J5DXUiacIifhA
+         P8z+4aDy4ng1VLuBdmwS9qhXPsYX8zB4qKPYNjbMdt0Q5T/mXxpcxOW4C/pq3MP8xKDJ
+         0dQ+xV8c66KGztDBa5vpe75Jq8cJPamqAP0C456uNFLb26ml7jIDfmwdK6/mXwZ5d2vo
+         q5IHOLJOIKpR0/fFBsLi1YbRN7qULC/igdH5vGqN0xSZQ5aRPOgXza5uDO53qp6uuQD/
+         2R/ExsJriNkNYrli/khN5yM/2i2l6sw8HGm99tzYbJxz93kdEr7IYmoKN5+zK5f0Tb89
+         Dsyg==
+X-Gm-Message-State: AC+VfDyZXireXRF+5Tm1Y/868yPPW9jsQnJhBabHCRMEJuLJkcMWmLhK
+	q8sglSoDSVpysDEyxsrqQxAM0w==
+X-Google-Smtp-Source: ACHHUZ4d9PtFuny6rQdn1Vgtvd/NuLyoJXiaApszdFajTfmb8wElIAA9bAtFoXQfDWguF0DecsIfmA==
+X-Received: by 2002:ac2:4a74:0:b0:4f4:26d8:3668 with SMTP id q20-20020ac24a74000000b004f426d83668mr1457320lfp.25.1685697448598;
+        Fri, 02 Jun 2023 02:17:28 -0700 (PDT)
+Received: from ?IPV6:2a05:6e02:1041:c10:548f:8f7e:a3c2:888a? ([2a05:6e02:1041:c10:548f:8f7e:a3c2:888a])
+        by smtp.googlemail.com with ESMTPSA id l18-20020a05600c1d1200b003f61177faffsm12498463wms.0.2023.06.02.02.17.27
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 02 Jun 2023 02:17:28 -0700 (PDT)
+Message-ID: <5d810151-3a3b-51af-bbc1-0ee45668bcc4@linaro.org>
+Date: Fri, 2 Jun 2023 11:17:27 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH v2 5/6] thermal/drivers/mediatek/lvts_thermal: Don't leave
+ threshold zeroed
+Content-Language: en-US
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: kernel@collabora.com, Alexandre Mergnat <amergnat@baylibre.com>,
+ Balsam CHIHI <bchihi@baylibre.com>, Chen-Yu Tsai <wenst@chromium.org>,
+ Alexandre Bailon <abailon@baylibre.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Amit Kucheria <amitk@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
+References: <20230504004852.627049-1-nfraprado@collabora.com>
+ <20230504004852.627049-6-nfraprado@collabora.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <20230504004852.627049-6-nfraprado@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230602_021346_720377_39CD3FB9 
-X-CRM114-Status: GOOD (  19.12  )
+X-CRM114-CacheID: sfid-20230602_021731_797597_B2193B86 
+X-CRM114-Status: GOOD (  22.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,93 +102,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Chengci.Xu" <chengci.xu@mediatek.com>
+On 04/05/2023 02:48, Nícolas F. R. A. Prado wrote:
+> The thermal framework might leave the low threshold unset if there
+> aren't any lower trip points. This leaves the register zeroed, which
+> translates to a very high temperature for the low threshold. The
+> interrupt for this threshold is then immediately triggered, and the
+> state machine gets stuck, preventing any other temperature monitoring
+> interrupts to ever trigger.
+> 
+> (The same happens by not setting the Cold or Hot to Normal thresholds
+> when using those)
+> 
+> Set the unused threshold to a valid low value. This value was chosen so
+> that for any valid golden temperature read from the efuse, when the
+> value is converted to raw and back again to milliCelsius, the result
+> doesn't underflow.
+> 
+> Fixes: f5f633b18234 ("thermal/drivers/mediatek: Add the Low Voltage Thermal Sensor driver")
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> 
+> ---
+> 
+> Changes in v2:
+> - Added this commit
+> 
+>   drivers/thermal/mediatek/lvts_thermal.c | 7 +++++++
+>   1 file changed, 7 insertions(+)
+> 
+> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+> index efd1e938e1c2..951a4cb75ef6 100644
+> --- a/drivers/thermal/mediatek/lvts_thermal.c
+> +++ b/drivers/thermal/mediatek/lvts_thermal.c
+> @@ -82,6 +82,8 @@
+>   #define LVTS_HW_SHUTDOWN_MT8195		105000
+>   #define LVTS_HW_SHUTDOWN_MT8192		105000
+>   
+> +#define LVTS_MINIUM_THRESHOLD		20000
 
-Prepare for mt8188 to fix a two IOMMU HWs share pagetable issue.
+MINIMUM
 
-We have two MM IOMMU HWs in mt8188, one is VPP-IOMMU, the other is
-VDO-IOMMU. The 2 MM IOMMU HWs share pagetable don't work in this case:
- a) VPP-IOMMU probe firstly.
- b) VDO-IOMMU probe.
- c) The master for VDO-IOMMU probe (means frstdata is vpp-iommu).
- d) The master in another domain probe. No matter it is vdo or vpp.
-Then it still create a new pagetable in step d). The problem is
-"frstdata->bank[0]->m4u_dom" was not initialized. Then when d) enter, it
-still create a new one.
+So if the thermal zone reaches 20°C, the interrupt fires, the set_trips 
+sets again 20°C but the interrupt won't fire until the temperature goes 
+above 20°C and then crosses the temperature low threshold the way down 
+again?
 
-In this patch, we create a new variable "share_dom" for this share
-pgtable case, it should be helpful for readable. and put all the share
-pgtable logic in the mtk_iommu_domain_finalise.
+>   static int golden_temp = LVTS_GOLDEN_TEMP_DEFAULT;
+>   static int coeff_b = LVTS_COEFF_B;
+>   
+> @@ -309,6 +311,11 @@ static int lvts_set_trips(struct thermal_zone_device *tz, int low, int high)
+>   		pr_debug("%s: Setting low limit temperature interrupt: %d\n",
+>   			 thermal_zone_device_type(tz), low);
+>   		writel(raw_low, LVTS_OFFSETL(base));
+> +	} else {
+> +		pr_debug("%s: Setting low limit temperature to minimum\n",
+> +			 thermal_zone_device_type(tz));
+> +		raw_low = lvts_temp_to_raw(LVTS_MINIUM_THRESHOLD);
+> +		writel(raw_low, LVTS_OFFSETL(base));
 
-In mt8195, the master of VPP-IOMMU probes before than VDO-IOMMU
-from its dtsi node sequence, we don't see this issue in it. Prepare for
-mt8188.
+That's duplicate code:
 
-Fixes: 645b87c190c9 ("iommu/mediatek: Fix 2 HW sharing pgtable issue")
-Signed-off-by: Chengci.Xu <chengci.xu@mediatek.com>
-Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/iommu/mtk_iommu.c | 22 ++++++++++++++--------
- 1 file changed, 14 insertions(+), 8 deletions(-)
+u32 raw_low = lvts_temp_to_raw(low != -INT_MAX ? low : 
+LVTS_MINIMUM_THRESHOLD);
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index aecc7d154f28..7287be67bd1f 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -258,6 +258,8 @@ struct mtk_iommu_data {
- 	struct device			*smicomm_dev;
- 
- 	struct mtk_iommu_bank_data	*bank;
-+	struct mtk_iommu_domain		*share_dom; /* For 2 HWs share pgtable */
-+
- 	struct regmap			*pericfg;
- 	struct mutex			mutex; /* Protect m4u_group/m4u_dom above */
- 
-@@ -620,15 +622,14 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom,
- 				     struct mtk_iommu_data *data,
- 				     unsigned int region_id)
- {
-+	struct mtk_iommu_domain	*share_dom = data->share_dom;
- 	const struct mtk_iommu_iova_region *region;
--	struct mtk_iommu_domain	*m4u_dom;
--
--	/* Always use bank0 in sharing pgtable case */
--	m4u_dom = data->bank[0].m4u_dom;
--	if (m4u_dom) {
--		dom->iop = m4u_dom->iop;
--		dom->cfg = m4u_dom->cfg;
--		dom->domain.pgsize_bitmap = m4u_dom->cfg.pgsize_bitmap;
-+
-+	/* Always use share domain in sharing pgtable case */
-+	if (MTK_IOMMU_HAS_FLAG(data->plat_data, SHARE_PGTABLE) && share_dom) {
-+		dom->iop = share_dom->iop;
-+		dom->cfg = share_dom->cfg;
-+		dom->domain.pgsize_bitmap = share_dom->cfg.pgsize_bitmap;
- 		goto update_iova_region;
- 	}
- 
-@@ -658,6 +659,9 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom,
- 	/* Update our support page sizes bitmap */
- 	dom->domain.pgsize_bitmap = dom->cfg.pgsize_bitmap;
- 
-+	if (MTK_IOMMU_HAS_FLAG(data->plat_data, SHARE_PGTABLE))
-+		data->share_dom = dom;
-+
- update_iova_region:
- 	/* Update the iova region for this domain */
- 	region = data->plat_data->iova_region + region_id;
-@@ -708,7 +712,9 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
- 		/* Data is in the frstdata in sharing pgtable case. */
- 		frstdata = mtk_iommu_get_frst_data(hw_list);
- 
-+		mutex_lock(&frstdata->mutex);
- 		ret = mtk_iommu_domain_finalise(dom, frstdata, region_id);
-+		mutex_unlock(&frstdata->mutex);
- 		if (ret) {
- 			mutex_unlock(&dom->mutex);
- 			return ret;
+And then the condition in the code goes away:
+         if (low != -INT_MAX) {
+	}
+
+>   	}
+>   
+>   	/*
+
 -- 
-2.25.1
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
 
 
