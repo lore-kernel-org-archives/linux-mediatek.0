@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9BC5C7EE2A
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jun 2023 15:22:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BFB1C7EE24
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jun 2023 15:22:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NNpqi9IUm/mxyXdLH1D/Oo70z7AziBjI1lWEM28tHw4=; b=4/rLVp92weu36s+E+O7ik31voG
-	/GnRU+icUrovvzVBYq7AWaPYhslQ0uvGDkJiXMoGBiQJAfIdnU+Bb0HSu+lJsnCmUX8qxsXt0HolQ
-	ijR6ra8qvWteV6nOu179xXpX+cxCXbkiDA4PJjEYRLd9wM30VsOSLmCKTwDz/37D8V8NkC55pSa09
-	PLqUxDk69i5qnrUA7QGASxlFBASEI0zxn9YCFBg4sWIPzt4v3jnwoI4Frp+KuI27mc/tgn+KSHhAo
-	myBHueFsV8BL8/Jj0ryf1DWgID6bwvjBxLCeGIywxlV8tVeee9FfoBw7JzD8KmsHzhkZ3BANQsqfR
-	zI5ZJx/A==;
+	bh=o/zl9/sAL/WSYQIUSpW5rr1GSMVilykdjXQeyrImSkE=; b=4D+23pm2azroiRHw60YD7/v9Fd
+	jwVuJDh/Fr/LVxmYfCbjJ+xvYfCqd2IVVEt03E/HQyTkPt5p3u1DiyNakMYuY7YdpyZHsBHaU1i1J
+	5fU3wFcNWoZjXBOiVSra0LlCpjR6yR/VRumAUF69AN3jthemGetZgDsVOShO1o643ovHDx0MYwKAh
+	sDUXMgbh62KbXW20pJr7+9kxfdf0SZr915HoYY5e01nrNwoEsb2iwCRWSrPxK/hRrKjc8OLnMW0zh
+	DoH/6FIqPCztL8vGPIGBi5XhGfUcy7nxHNNXQ6FJJXtMhhkdgTILHkc45Dmx85e8BpZnJZv7FOEfB
+	gVQbYSjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q56bu-007FFy-0G;
-	Fri, 02 Jun 2023 15:22:38 +0000
+	id 1q56bv-007FGh-1u;
+	Fri, 02 Jun 2023 15:22:39 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q56bq-007FE3-1G
+	id 1q56bq-007FDQ-2G
 	for linux-mediatek@lists.infradead.org;
 	Fri, 02 Jun 2023 15:22:36 +0000
-X-UUID: 48c57be0015911ee83ed1395ce914268-20230602
+X-UUID: 4963ee38015911ee83ed1395ce914268-20230602
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=NNpqi9IUm/mxyXdLH1D/Oo70z7AziBjI1lWEM28tHw4=;
-	b=PqOzYhttvcFylCtqbKZi4l06gl17bvrXm2wOFcIatZMbko13wAGa+zc00pELvcI1ryFdYkEgkNtsgI0GNA6fMobv+LcO0+6tWrCTsgnPFrxUhEDu+R/n1wva97E9zZs0H3xN/Dwnx426kBrqXASwwe/Ph4A40hleQdvqe+c3bAI=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=o/zl9/sAL/WSYQIUSpW5rr1GSMVilykdjXQeyrImSkE=;
+	b=t4NY04PIA0gjujoSRrqOKRINGbkEGg09j3LCSZ47ja6mAahMCF8HYhHjVYl3WSEwdJ8d4nyyFuDztFg4tF1htBr9qvDc98+EicBMmAd98SWGSOHuReFNbhf8UHUu9wPHcdKxvPq6+rDeBV2CLAYe1fvcQJrtrDxB0kZKj119NPo=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.25,REQID:eb54fe85-6438-458a-a904-68379c99283f,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:d5b0ae3,CLOUDID:37f5da6d-2f20-4998-991c-3b78627e4938,B
+X-CID-O-INFO: VERSION:1.1.25,REQID:e1839ee5-642a-4951-889f-6db372936356,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:d5b0ae3,CLOUDID:3bf1663d-7aa7-41f3-a6bd-0433bee822f3,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-UUID: 48c57be0015911ee83ed1395ce914268-20230602
+X-UUID: 4963ee38015911ee83ed1395ce914268-20230602
 Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
 	(envelope-from <shayne.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 33082765; Fri, 02 Jun 2023 08:22:27 -0700
+	with ESMTP id 2035598142; Fri, 02 Jun 2023 08:22:29 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.194) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 2 Jun 2023 23:21:50 +0800
+ 15.2.1118.26; Fri, 2 Jun 2023 23:21:51 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 2 Jun 2023 23:21:50 +0800
+ 15.2.1118.26 via Frontend Transport; Fri, 2 Jun 2023 23:21:51 +0800
 From: Shayne Chen <shayne.chen@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>
 CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
@@ -59,9 +59,9 @@ CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
 	<evelyn.tsai@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, linux-mediatek
 	<linux-mediatek@lists.infradead.org>, Peter Chiu
 	<chui-hao.chiu@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>
-Subject: [PATCH 03/12] wifi: mt76: mt7996: add dsp firmware download
-Date: Fri, 2 Jun 2023 23:20:59 +0800
-Message-ID: <20230602152108.26860-3-shayne.chen@mediatek.com>
+Subject: [PATCH 08/12] wifi: mt76: mt7996: set ifs time by mcu command
+Date: Fri, 2 Jun 2023 23:21:04 +0800
+Message-ID: <20230602152108.26860-8-shayne.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230602152108.26860-1-shayne.chen@mediatek.com>
 References: <20230602152108.26860-1-shayne.chen@mediatek.com>
@@ -69,8 +69,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230602_082234_433083_33FA9BFF 
-X-CRM114-Status: GOOD (  16.10  )
+X-CRM114-CacheID: sfid-20230602_082234_749489_D78041A4 
+X-CRM114-Status: GOOD (  14.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,181 +87,241 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Peter Chiu <chui-hao.chiu@mediatek.com>
 
-Add DSP firmware for phy-related control. The firmware is transparent to
-driver, but it's necessary for the firmware download process.
+There's a race between driver and fw on some tx/rx control registers
+when setting ifs, which will cause accidental hw queue pause problems.
+Avoid this by setting ifs time with bss_info mcu command.
 
 Reviewed-by: Shayne Chen <shayne.chen@mediatek.com>
 Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
 Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7996/mcu.c   | 94 ++++++++-----------
- .../wireless/mediatek/mt76/mt7996/mt7996.h    |  7 ++
- .../net/wireless/mediatek/mt76/mt7996/pci.c   |  1 +
- 3 files changed, 49 insertions(+), 53 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7996/mac.c   | 27 +----------
+ .../net/wireless/mediatek/mt76/mt7996/main.c  |  5 +-
+ .../net/wireless/mediatek/mt76/mt7996/mcu.c   | 47 +++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7996/mcu.h   | 17 +++++++
+ .../wireless/mediatek/mt76/mt7996/mt7996.h    |  3 +-
+ 5 files changed, 70 insertions(+), 29 deletions(-)
 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+index 130eb7b4fd91..78d9127e63ab 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+@@ -1604,20 +1604,19 @@ void mt7996_mac_reset_counters(struct mt7996_phy *phy)
+ 	mt7996_mcu_get_chan_mib_info(phy, true);
+ }
+ 
+-void mt7996_mac_set_timing(struct mt7996_phy *phy)
++void mt7996_mac_set_coverage_class(struct mt7996_phy *phy)
+ {
+ 	s16 coverage_class = phy->coverage_class;
+ 	struct mt7996_dev *dev = phy->dev;
+ 	struct mt7996_phy *phy2 = mt7996_phy2(dev);
+ 	struct mt7996_phy *phy3 = mt7996_phy3(dev);
+-	u32 val, reg_offset;
++	u32 reg_offset;
+ 	u32 cck = FIELD_PREP(MT_TIMEOUT_VAL_PLCP, 231) |
+ 		  FIELD_PREP(MT_TIMEOUT_VAL_CCA, 48);
+ 	u32 ofdm = FIELD_PREP(MT_TIMEOUT_VAL_PLCP, 60) |
+ 		   FIELD_PREP(MT_TIMEOUT_VAL_CCA, 28);
+ 	u8 band_idx = phy->mt76->band_idx;
+ 	int offset;
+-	bool a_band = !(phy->mt76->chandef.chan->band == NL80211_BAND_2GHZ);
+ 
+ 	if (!test_bit(MT76_STATE_RUNNING, &phy->mt76->state))
+ 		return;
+@@ -1630,34 +1629,12 @@ void mt7996_mac_set_timing(struct mt7996_phy *phy)
+ 		coverage_class = max_t(s16, coverage_class,
+ 				       phy3->coverage_class);
+ 
+-	mt76_set(dev, MT_ARB_SCR(band_idx),
+-		 MT_ARB_SCR_TX_DISABLE | MT_ARB_SCR_RX_DISABLE);
+-	udelay(1);
+-
+ 	offset = 3 * coverage_class;
+ 	reg_offset = FIELD_PREP(MT_TIMEOUT_VAL_PLCP, offset) |
+ 		     FIELD_PREP(MT_TIMEOUT_VAL_CCA, offset);
+ 
+ 	mt76_wr(dev, MT_TMAC_CDTR(band_idx), cck + reg_offset);
+ 	mt76_wr(dev, MT_TMAC_ODTR(band_idx), ofdm + reg_offset);
+-	mt76_wr(dev, MT_TMAC_ICR0(band_idx),
+-		FIELD_PREP(MT_IFS_EIFS_OFDM, a_band ? 84 : 78) |
+-		FIELD_PREP(MT_IFS_RIFS, 2) |
+-		FIELD_PREP(MT_IFS_SIFS, 10) |
+-		FIELD_PREP(MT_IFS_SLOT, phy->slottime));
+-
+-	if (!a_band)
+-		mt76_wr(dev, MT_TMAC_ICR1(band_idx),
+-			FIELD_PREP(MT_IFS_EIFS_CCK, 314));
+-
+-	if (phy->slottime < 20 || a_band)
+-		val = MT7996_CFEND_RATE_DEFAULT;
+-	else
+-		val = MT7996_CFEND_RATE_11B;
+-
+-	mt76_rmw_field(dev, MT_RATE_HRCR0(band_idx), MT_RATE_HRCR0_CFEND_RATE, val);
+-	mt76_clear(dev, MT_ARB_SCR(band_idx),
+-		   MT_ARB_SCR_TX_DISABLE | MT_ARB_SCR_RX_DISABLE);
+ }
+ 
+ void mt7996_mac_enable_nf(struct mt7996_dev *dev, u8 band)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+index 8a1edc5c1288..6001b534b657 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+@@ -287,7 +287,6 @@ int mt7996_set_channel(struct mt7996_phy *phy)
+ 	if (ret)
+ 		goto out;
+ 
+-	mt7996_mac_set_timing(phy);
+ 	ret = mt7996_dfs_init_radar_detector(phy);
+ 	mt7996_mac_cca_stats_reset(phy);
+ 
+@@ -565,7 +564,7 @@ static void mt7996_bss_info_changed(struct ieee80211_hw *hw,
+ 
+ 		if (slottime != phy->slottime) {
+ 			phy->slottime = slottime;
+-			mt7996_mac_set_timing(phy);
++			mt7996_mcu_set_timing(phy, vif);
+ 		}
+ 	}
+ 
+@@ -905,7 +904,7 @@ mt7996_set_coverage_class(struct ieee80211_hw *hw, s16 coverage_class)
+ 
+ 	mutex_lock(&dev->mt76.mutex);
+ 	phy->coverage_class = max_t(s16, coverage_class, 0);
+-	mt7996_mac_set_timing(phy);
++	mt7996_mac_set_coverage_class(phy);
+ 	mutex_unlock(&dev->mt76.mutex);
+ }
+ 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-index 88e2f9d0e513..243647dbd8c7 100644
+index db51b3023654..52c6c502e9b3 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-@@ -2155,7 +2155,7 @@ static int mt7996_load_patch(struct mt7996_dev *dev)
- static int
- mt7996_mcu_send_ram_firmware(struct mt7996_dev *dev,
- 			     const struct mt7996_fw_trailer *hdr,
--			     const u8 *data, bool is_wa)
-+			     const u8 *data, enum mt7996_ram_type type)
- {
- 	int i, offset = 0;
- 	u32 override = 0, option = 0;
-@@ -2167,8 +2167,10 @@ mt7996_mcu_send_ram_firmware(struct mt7996_dev *dev,
- 
- 		region = (const struct mt7996_fw_region *)((const u8 *)hdr -
- 			 (hdr->n_region - i) * sizeof(*region));
-+		/* DSP and WA use same mode */
- 		mode = mt76_connac_mcu_gen_dl_mode(&dev->mt76,
--						   region->feature_set, is_wa);
-+						   region->feature_set,
-+						   type != MT7996_RAM_TYPE_WM);
- 		len = le32_to_cpu(region->len);
- 		addr = le32_to_cpu(region->addr);
- 
-@@ -2195,8 +2197,10 @@ mt7996_mcu_send_ram_firmware(struct mt7996_dev *dev,
- 	if (override)
- 		option |= FW_START_OVERRIDE;
- 
--	if (is_wa)
-+	if (type == MT7996_RAM_TYPE_WA)
- 		option |= FW_START_WORKING_PDA_CR4;
-+	else if (type == MT7996_RAM_TYPE_DSP)
-+		option |= FW_START_WORKING_PDA_DSP;
- 
- 	return mt76_connac_mcu_start_firmware(&dev->mt76, override, option);
+@@ -701,6 +701,35 @@ mt7996_mcu_muar_config(struct mt7996_phy *phy, struct ieee80211_vif *vif,
+ 				 sizeof(req), true);
  }
-@@ -2207,56 +2211,40 @@ static int mt7996_load_ram(struct mt7996_dev *dev)
- 	const struct firmware *fw;
- 	int ret;
  
--	ret = request_firmware(&fw, MT7996_FIRMWARE_WM, dev->mt76.dev);
--	if (ret)
--		return ret;
--
--	if (!fw || !fw->data || fw->size < sizeof(*hdr)) {
--		dev_err(dev->mt76.dev, "Invalid firmware\n");
--		ret = -EINVAL;
--		goto out;
--	}
--
--	hdr = (const struct mt7996_fw_trailer *)(fw->data + fw->size - sizeof(*hdr));
--
--	dev_info(dev->mt76.dev, "WM Firmware Version: %.10s, Build Time: %.15s\n",
--		 hdr->fw_ver, hdr->build_date);
--
--	ret = mt7996_mcu_send_ram_firmware(dev, hdr, fw->data, false);
--	if (ret) {
--		dev_err(dev->mt76.dev, "Failed to start WM firmware\n");
--		goto out;
--	}
--
--	release_firmware(fw);
--
--	ret = request_firmware(&fw, MT7996_FIRMWARE_WA, dev->mt76.dev);
--	if (ret)
--		return ret;
--
--	if (!fw || !fw->data || fw->size < sizeof(*hdr)) {
--		dev_err(dev->mt76.dev, "Invalid firmware\n");
--		ret = -EINVAL;
--		goto out;
--	}
--
--	hdr = (const struct mt7996_fw_trailer *)(fw->data + fw->size - sizeof(*hdr));
--
--	dev_info(dev->mt76.dev, "WA Firmware Version: %.10s, Build Time: %.15s\n",
--		 hdr->fw_ver, hdr->build_date);
--
--	ret = mt7996_mcu_send_ram_firmware(dev, hdr, fw->data, true);
--	if (ret) {
--		dev_err(dev->mt76.dev, "Failed to start WA firmware\n");
--		goto out;
--	}
--
--	snprintf(dev->mt76.hw->wiphy->fw_version,
--		 sizeof(dev->mt76.hw->wiphy->fw_version),
--		 "%.10s-%.15s", hdr->fw_ver, hdr->build_date);
--
--out:
--	release_firmware(fw);
-+#define LOAD_RAM(_type) \
-+	do {									\
-+		ret = request_firmware(&fw, MT7996_FIRMWARE_##_type, dev->mt76.dev);\
-+		if (ret)							\
-+			return ret;						\
-+										\
-+		if (!fw || !fw->data || fw->size < sizeof(*hdr)) {		\
-+			dev_err(dev->mt76.dev, "Invalid firmware\n");		\
-+			release_firmware(fw);					\
-+			return -EINVAL;						\
-+		}								\
-+										\
-+		hdr = (const struct mt7996_fw_trailer *)			\
-+				(fw->data + fw->size - sizeof(*hdr));		\
-+										\
-+		dev_info(dev->mt76.dev,						\
-+			 "%s Firmware Version: %.10s, Build Time: %.15s\n",	\
-+			 #_type, hdr->fw_ver, hdr->build_date);			\
-+										\
-+		ret = mt7996_mcu_send_ram_firmware(dev, hdr, fw->data,		\
-+						   MT7996_RAM_TYPE_##_type);    \
-+		if (ret) {							\
-+			dev_err(dev->mt76.dev, "Failed to start %s firmware\n", #_type);\
-+			release_firmware(fw);					\
-+			return ret;						\
-+		}								\
-+										\
-+		release_firmware(fw);						\
-+	} while (0)
++static void
++mt7996_mcu_bss_ifs_timing_tlv(struct sk_buff *skb, struct ieee80211_vif *vif)
++{
++	struct mt7996_vif *mvif = (struct mt7996_vif *)vif->drv_priv;
++	struct mt7996_phy *phy = mvif->phy;
++	struct bss_ifs_time_tlv *ifs_time;
++	struct tlv *tlv;
++	bool a_band = !(phy->mt76->chandef.chan->band == NL80211_BAND_2GHZ);
++	u16 eifs_time = a_band ? 84 : 78;
 +
-+	LOAD_RAM(WM);
-+	LOAD_RAM(DSP);
-+	LOAD_RAM(WA);
-+#undef LOAD_RAM
++	tlv = mt7996_mcu_add_uni_tlv(skb, UNI_BSS_INFO_IFS_TIME, sizeof(*ifs_time));
++
++	ifs_time = (struct bss_ifs_time_tlv *)tlv;
++	ifs_time->slot_valid = true;
++	ifs_time->sifs_valid = true;
++	ifs_time->rifs_valid = true;
++	ifs_time->eifs_valid = true;
++
++	ifs_time->slot_time = cpu_to_le16(phy->slottime);
++	ifs_time->sifs_time = cpu_to_le16(10);
++	ifs_time->rifs_time = cpu_to_le16(2);
++	ifs_time->eifs_time = cpu_to_le16(eifs_time);
++
++	if (!a_band) {
++		ifs_time->eifs_cck_valid = true;
++		ifs_time->eifs_cck_time = cpu_to_le16(314);
++	}
++}
++
+ static int
+ mt7996_mcu_bss_basic_tlv(struct sk_buff *skb,
+ 			 struct ieee80211_vif *vif,
+@@ -826,6 +855,7 @@ int mt7996_mcu_add_bss_info(struct mt7996_phy *phy,
+ 		mt7996_mcu_bss_bmc_tlv(skb, vif, phy);
+ 		mt7996_mcu_bss_ra_tlv(skb, vif, phy);
+ 		mt7996_mcu_bss_txcmd_tlv(skb, true);
++		mt7996_mcu_bss_ifs_timing_tlv(skb, vif);
  
- 	return ret;
+ 		if (vif->bss_conf.he_support)
+ 			mt7996_mcu_bss_he_tlv(skb, vif, phy);
+@@ -838,6 +868,23 @@ int mt7996_mcu_add_bss_info(struct mt7996_phy *phy,
+ 				     MCU_WMWA_UNI_CMD(BSS_INFO_UPDATE), true);
  }
+ 
++int mt7996_mcu_set_timing(struct mt7996_phy *phy, struct ieee80211_vif *vif)
++{
++	struct mt7996_vif *mvif = (struct mt7996_vif *)vif->drv_priv;
++	struct mt7996_dev *dev = phy->dev;
++	struct sk_buff *skb;
++
++	skb = __mt7996_mcu_alloc_bss_req(&dev->mt76, &mvif->mt76,
++					 MT7996_BSS_UPDATE_MAX_SIZE);
++	if (IS_ERR(skb))
++		return PTR_ERR(skb);
++
++	mt7996_mcu_bss_ifs_timing_tlv(skb, vif);
++
++	return mt76_mcu_skb_send_msg(&dev->mt76, skb,
++				     MCU_WMWA_UNI_CMD(BSS_INFO_UPDATE), true);
++}
++
+ static int
+ mt7996_mcu_sta_ba(struct mt76_dev *dev, struct mt76_vif *mvif,
+ 		  struct ieee80211_ampdu_params *params,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
+index d7075a4d0667..078f82858621 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
+@@ -317,6 +317,22 @@ struct bss_sec_tlv {
+ 	u8 __rsv2[1];
+ } __packed;
+ 
++struct bss_ifs_time_tlv {
++	__le16 tag;
++	__le16 len;
++	u8 slot_valid;
++	u8 sifs_valid;
++	u8 rifs_valid;
++	u8 eifs_valid;
++	__le16 slot_time;
++	__le16 sifs_time;
++	__le16 rifs_time;
++	__le16 eifs_time;
++	u8 eifs_cck_valid;
++	u8 rsv;
++	__le16 eifs_cck_time;
++} __packed;
++
+ struct bss_power_save {
+ 	__le16 tag;
+ 	__le16 len;
+@@ -552,6 +568,7 @@ enum {
+ 					 sizeof(struct bss_txcmd_tlv) +		\
+ 					 sizeof(struct bss_power_save) +	\
+ 					 sizeof(struct bss_sec_tlv) +		\
++					 sizeof(struct bss_ifs_time_tlv) +	\
+ 					 sizeof(struct bss_mld_tlv))
+ 
+ #define MT7996_STA_UPDATE_MAX_SIZE	(sizeof(struct sta_req_hdr) +		\
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-index 4d7dcb95a620..7dfdc7384056 100644
+index 7dfdc7384056..42892f06faa7 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-@@ -29,6 +29,7 @@
- 
- #define MT7996_FIRMWARE_WA		"mediatek/mt7996/mt7996_wa.bin"
- #define MT7996_FIRMWARE_WM		"mediatek/mt7996/mt7996_wm.bin"
-+#define MT7996_FIRMWARE_DSP		"mediatek/mt7996/mt7996_dsp.bin"
- #define MT7996_ROM_PATCH		"mediatek/mt7996/mt7996_rom_patch.bin"
- 
- #define MT7996_EEPROM_DEFAULT		"mediatek/mt7996/mt7996_eeprom.bin"
-@@ -52,6 +53,12 @@ struct mt7996_sta;
- struct mt7996_dfs_pulse;
- struct mt7996_dfs_pattern;
- 
-+enum mt7996_ram_type {
-+	MT7996_RAM_TYPE_WM,
-+	MT7996_RAM_TYPE_WA,
-+	MT7996_RAM_TYPE_DSP,
-+};
-+
- enum mt7996_txq_id {
- 	MT7996_TXQ_FWDL = 16,
- 	MT7996_TXQ_MCU_WM,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/pci.c b/drivers/net/wireless/mediatek/mt76/mt7996/pci.c
-index 64aee3fb5445..c5301050ff8b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/pci.c
-@@ -219,4 +219,5 @@ MODULE_DEVICE_TABLE(pci, mt7996_pci_device_table);
- MODULE_DEVICE_TABLE(pci, mt7996_hif_device_table);
- MODULE_FIRMWARE(MT7996_FIRMWARE_WA);
- MODULE_FIRMWARE(MT7996_FIRMWARE_WM);
-+MODULE_FIRMWARE(MT7996_FIRMWARE_DSP);
- MODULE_FIRMWARE(MT7996_ROM_PATCH);
+@@ -463,6 +463,7 @@ int mt7996_mcu_set_radar_th(struct mt7996_dev *dev, int index,
+ 			    const struct mt7996_dfs_pattern *pattern);
+ int mt7996_mcu_set_radio_en(struct mt7996_phy *phy, bool enable);
+ int mt7996_mcu_set_rts_thresh(struct mt7996_phy *phy, u32 val);
++int mt7996_mcu_set_timing(struct mt7996_phy *phy, struct ieee80211_vif *vif);
+ int mt7996_mcu_get_chan_mib_info(struct mt7996_phy *phy, bool chan_switch);
+ int mt7996_mcu_rdd_cmd(struct mt7996_dev *dev, int cmd, u8 index,
+ 		       u8 rx_sel, u8 val);
+@@ -526,7 +527,7 @@ void mt7996_mac_write_txwi(struct mt7996_dev *dev, __le32 *txwi,
+ 			   struct sk_buff *skb, struct mt76_wcid *wcid,
+ 			   struct ieee80211_key_conf *key, int pid,
+ 			   enum mt76_txq_id qid, u32 changed);
+-void mt7996_mac_set_timing(struct mt7996_phy *phy);
++void mt7996_mac_set_coverage_class(struct mt7996_phy *phy);
+ int mt7996_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ 		       struct ieee80211_sta *sta);
+ void mt7996_mac_sta_remove(struct mt76_dev *mdev, struct ieee80211_vif *vif,
 -- 
 2.39.2
 
