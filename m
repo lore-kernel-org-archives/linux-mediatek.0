@@ -4,61 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6418EC7EE29
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jun 2023 09:27:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 861BCC7EE24
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jun 2023 10:13:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UICkD/bbfDOoa838wQ6g0g4Ra5Peq/4umKcIAg4dE/0=; b=OfrB5eW7AYH6tPao4XCOuJFqSo
-	LnAnRw+ruLgaEx2h7Bd1FYw54zV57mZBFVKctrnV2FWgzob0UsEOvkw2rqTc2n/py7USdSNZ8UO5L
-	lbVZaZDMbk9T/KSVJjdXW6c79bPhUQtJWaec94uNqClccXy0V/99M6FSjsAY4Z7dWj936Qlrq7z65
-	7qBo66DZXzQ3pntJzG3btI49pKHuT4ZFGv1IbY9co23nuURMUIY+39DiMU29xLS9N26LThFLFUIC5
-	rWmJT/has6eGpMEJByR5bmz5AUgJoKgsglg1imU8GtBzy4LurmsbtHaBrpctL4py6dOrRQHzt5t7I
-	U6wYoKKA==;
+	bh=M7GzoTaph3PJwwLQgPyik4Eh+bbnZRkPzskpAeL6aSA=; b=o2QhJ5kYNdYNqHXdK2X1Ewgz6d
+	LmORq8xlrLTp0+eXcoPLY1IQyKg4CsGaaXkHfgmcOt6EZFaPDYHsPpg17B8foKAqBK7ihnLeGtEDZ
+	NC8PKqXG66dQE7BqFZ2Viry8UQhIvPHBU8G9epVRKY9SE2vmd7V9hNsgVuhfIQFhEkWUt0NOMSp73
+	kCPvehXIHETMikU7aaVApX1xPMW6nUIStMoADqErGT/cE8jnQGXJySy1ux6Kcgr8gbpdZZnQH87t2
+	uVC7fr8bKNx7vacmngZi1Aj674fO8gSfLJjYW13WxejoUdvOKfZSDduA5DcduhW4otAhlhnArMe4d
+	bcjgWLMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q513t-006NmG-2Z;
-	Fri, 02 Jun 2023 09:27:09 +0000
-Received: from muru.com ([72.249.23.125])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q513q-006NlT-1J
+	id 1q51mu-006U5g-1O;
+	Fri, 02 Jun 2023 10:13:40 +0000
+Received: from galois.linutronix.de ([2a0a:51c0:0:12e:550::1])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1q51ms-006U3w-0x
 	for linux-mediatek@lists.infradead.org;
-	Fri, 02 Jun 2023 09:27:08 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by muru.com (Postfix) with ESMTPS id 8E8B78111;
-	Fri,  2 Jun 2023 09:27:02 +0000 (UTC)
-Date: Fri, 2 Jun 2023 12:27:01 +0300
-From: Tony Lindgren <tony@atomide.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Jiri Slaby <jirislaby@kernel.org>,
-	Andy Shevchenko <andriy.shevchenko@intel.com>,
-	Dhruva Gole <d-gole@ti.com>,
-	Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>,
-	John Ogness <john.ogness@linutronix.de>,
-	Johan Hovold <johan@kernel.org>,
-	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
-	Vignesh Raghavendra <vigneshr@ti.com>, linux-omap@vger.kernel.org,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
-	=?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org
+	Fri, 02 Jun 2023 10:13:39 +0000
+From: John Ogness <john.ogness@linutronix.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020; t=1685700812;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=M7GzoTaph3PJwwLQgPyik4Eh+bbnZRkPzskpAeL6aSA=;
+	b=GG3G5mL0bgKlxf6U+FJBDL6Q1lUEIKeL4TxsOPB4fSfBkk/fcfVyWWUUtHTLjysXvihtjX
+	dg/Seh5PS7j7QK8kubfn/HKaB7/ZGg32l+FqXnwtp/F2PYanop+GXVgwZaSB6EkgPisrPn
+	ggoMEaq4XMMOL2r2rylrdWLpFiOqzEBJD+mv+6BjNvwaq7B/HZguez5Q5EooMkyH84lBZv
+	14tq4SpYgp3gpUBXRKME+aWk0wr+c912N7Vn4rkCZf0UoVV8TlTC8NMG7Z6UCJViu5Ts2o
+	knwkQycTe/KoOm1C4W6hDbK2YxTF4GgwTOyOwQ4sVhhYA2FZ8QmEQGHOl0OasA==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020e; t=1685700812;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=M7GzoTaph3PJwwLQgPyik4Eh+bbnZRkPzskpAeL6aSA=;
+	b=mZtG4RT88sue4AZKYDqVM5VkrPwnXz/sPSOFAK7alYyAi80FpCRuwryq9FZ70KRmumsdmx
+	VsglgIllqcsaEDDA==
+To: Chen-Yu Tsai <wenst@chromium.org>, Tony Lindgren <tony@atomide.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby
+ <jirislaby@kernel.org>, Andy Shevchenko <andriy.shevchenko@intel.com>,
+ Dhruva Gole <d-gole@ti.com>, Ilpo =?utf-8?Q?J=C3=A4rvinen?=
+ <ilpo.jarvinen@linux.intel.com>, Johan Hovold <johan@kernel.org>,
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>, Vignesh Raghavendra
+ <vigneshr@ti.com>, linux-omap@vger.kernel.org, Andy Shevchenko
+ <andriy.shevchenko@linux.intel.com>, linux-kernel@vger.kernel.org,
+ linux-serial@vger.kernel.org, =?utf-8?Q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?=
+ <nfraprado@collabora.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,
+ linux-mediatek@lists.infradead.org
 Subject: Re: [PATCH v12 1/1] serial: core: Start managing serial controllers
  to enable runtime PM
-Message-ID: <20230602092701.GP14287@atomide.com>
+In-Reply-To: <20230602083335.GA181647@google.com>
 References: <20230525113034.46880-1-tony@atomide.com>
  <20230602083335.GA181647@google.com>
+Date: Fri, 02 Jun 2023 12:19:28 +0206
+Message-ID: <87a5xii33r.fsf@jogness.linutronix.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230602083335.GA181647@google.com>
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230602_022706_481414_59931C2B 
-X-CRM114-Status: GOOD (  17.04  )
+X-CRM114-CacheID: sfid-20230602_031338_475103_7B4AA399 
+X-CRM114-Status: UNSURE (   5.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,81 +86,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On 2023-06-02, Chen-Yu Tsai <wenst@chromium.org> wrote:
+> This patch, in linux-next since 20230601, unfortunately breaks
+> MediaTek based Chromebooks. The kernel hangs during the probe of the
+> serial ports, which use the 8250_mtk driver.
 
-* Chen-Yu Tsai <wenst@chromium.org> [230602 08:33]:
-> This patch, in linux-next since 20230601, unfortunately breaks MediaTek
-> based Chromebooks. The kernel hangs during the probe of the serial ports,
-> which use the 8250_mtk driver. This happens even with the subsequent
-> fixes in next-20230602 and on the mailing list:
-> 
->     serial: core: Fix probing serial_base_bus devices
->     serial: core: Don't drop port_mutex in serial_core_remove_one_port
->     serial: core: Fix error handling for serial_core_ctrl_device_add()
+Are you sure it is this patch? Have you bisected it?
 
-OK thanks for reporting it.
+Unfortunately next-20230601 also brought in a series that added
+spinlocking to the 8250 driver. That may be the issue here instead.
 
-> Without the fixes, the kernel gives "WARNING: bad unlock balance detected!"
-> With the fixes, it just silently hangs. The last messages seen on the
-> (serial) console are:
-> 
->     Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
->     printk: console [ttyS0] disabled
->     mt6577-uart 11002000.serial: using DT '/soc/serial@11002000' for 'rs485-term' GPIO lookup
->     of_get_named_gpiod_flags: can't parse 'rs485-term-gpios' property of node '/soc/serial@11002000[0]'
->     of_get_named_gpiod_flags: can't parse 'rs485-term-gpio' property of node '/soc/serial@11002000[0]'
->     mt6577-uart 11002000.serial: using lookup tables for GPIO lookup
->     mt6577-uart 11002000.serial: No GPIO consumer rs485-term found
->     mt6577-uart 11002000.serial: using DT '/soc/serial@11002000' for 'rs485-rx-during-tx' GPIO lookup
->     of_get_named_gpiod_flags: can't parse 'rs485-rx-during-tx-gpios' property of node '/soc/serial@11002000[0]'
->     of_get_named_gpiod_flags: can't parse 'rs485-rx-during-tx-gpio' property of node '/soc/serial@11002000[0]'
->     mt6577-uart 11002000.serial: using lookup tables for GPIO lookup
->     mt6577-uart 11002000.serial: No GPIO consumer rs485-rx-during-tx found
-> 
-> What can we do to help resolve this?
+For 8250 bug reports we really need to bisection.
 
-There may be something blocking serial_ctrl and serial_port from
-probing. That was the issue with the arch_initcall() using drivers.
-
-Not sure yet what the issue here might be, but the 8250_mtk should be
-fairly similar use case to the 8250_omap driver that I've tested with.
-But unfortunately I don't think I have any 8250_mtk using devices to
-test with.
-
-The following hack should allow you to maybe see more info on what goes
-wrong and allows adding some debug printk to serial_base_match() for
-example to see if that gets called for mt6577-uart.
-
-Hmm maybe early_mtk8250_setup() somehow triggers the issue? Not sure why
-early_serial8250_setup() would cause issues here though.
-
-Regards,
-
-Tony
-
-8< -----------------
-diff --git a/drivers/tty/serial/serial_core.c b/drivers/tty/serial/serial_core.c
---- a/drivers/tty/serial/serial_core.c
-+++ b/drivers/tty/serial/serial_core.c
-@@ -144,7 +144,7 @@ static void __uart_start(struct tty_struct *tty)
- 		return;
- 
- 	port_dev = port->port_dev;
--
-+#if 0
- 	/* Increment the runtime PM usage count for the active check below */
- 	err = pm_runtime_get(&port_dev->dev);
- 	if (err < 0) {
-@@ -161,6 +161,9 @@ static void __uart_start(struct tty_struct *tty)
- 		port->ops->start_tx(port);
- 	pm_runtime_mark_last_busy(&port_dev->dev);
- 	pm_runtime_put_autosuspend(&port_dev->dev);
-+#else
-+	port->ops->start_tx(port);
-+#endif
- }
- 
- static void uart_start(struct tty_struct *tty)
--- 
-2.41.0
+John Ogness
 
