@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA6E1C7EE2A
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jun 2023 09:03:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34BEBC77B7A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jun 2023 09:04:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hccH12XQDvu+D9MxMZdtGRvYZ6XWWknJx4CuX0wSWWc=; b=iZZCpLfWHioQjLyHCoQD/YtXA+
-	CgT41Iy5A8YmrNJwW6BEN5M6C73KOWxxcq+r4eI1/yi2Z6XM57h0/k+IZXPbuWckYBAU3LSC/F1FI
-	4T88krJQNiDaZtEfN6WwJSJMCI2tCbzV0cTsbLOwX1QW2HYMPWsQx0fVDlSBYUbxABBJNzyRLWa8D
-	o5b29R+SUZJGUu8pVT9BMAeu2cWhpLri2sZgb7VZxk7MWmzgm6Frn5tCO7vjkv+njYolXso++btiV
-	aP45TV119N1T7CXMCEdLvXjzBNG+LIFww298/IIHMhhUT9pbCWdZTaBzinGHmMDUzw6Tx8EqYppCL
-	AelWVfbw==;
+	bh=DCFWUdjviYmmYlgFSnIU9vsT+vPlbuNQol0JggDKPBM=; b=wn0lD3Qvl4RtUJH9rCjFzVCUvy
+	A7mX1pLLX7k6F0Sv7aJm/xylmbBwsZbAi5a80smn/yNzkgyZCHcaVIUc2mDlVhUSVMzCMjWT1CsVc
+	Shejt4O1fx7vxPuvVPTNQ+Cu3v8vBPSg9ZSWdtuWEKrA8JVQrglj7JZRYWCVobhRN5y0MrLPFFK/D
+	l+Xawu9NyhpQ+9NkeDwAIPE1WJEaib6rOvCBnv65RX+4mSI/XjqE0kxAHIU8oFekwOGVt/ySEDtxn
+	S2PTgMuO0TWvQ23K9YXgKGlFNqEqiCsWk3k3gqTxhWHwFIhEwsGjg1HvO50h5cqkg+sIcRJm42bsV
+	c1yWz/JA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q50hA-006ICV-1H;
-	Fri, 02 Jun 2023 09:03:40 +0000
+	id 1q50hO-006IKs-2a;
+	Fri, 02 Jun 2023 09:03:54 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q50h7-006IAr-06;
-	Fri, 02 Jun 2023 09:03:38 +0000
-X-UUID: 59a26688012411ee912e1518a6540028-20230602
+	id 1q50hM-006IIm-0D;
+	Fri, 02 Jun 2023 09:03:53 +0000
+X-UUID: 6347ea50012411ee912e1518a6540028-20230602
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=hccH12XQDvu+D9MxMZdtGRvYZ6XWWknJx4CuX0wSWWc=;
-	b=urLKSV7KuHijLDPSj1W86UJNgDyUysczDr0I8LlEopA3uIbB2o7/GrgNpB/oSU6H98jXXwtqHzibWRAd4g9MjzqMU7mFimXL5iE5iEi/Pp5/w+w0HnzmnIkKWJ1B5Pnezcw0FLJtmfoGI7n0d68V+R9AE9IKK1m9y/Oq0kY35fQ=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=DCFWUdjviYmmYlgFSnIU9vsT+vPlbuNQol0JggDKPBM=;
+	b=lw+FNxwTOMotQdSr4V1hXqd3Dqep/NAgLF7TUjpQEZyfalYSnb/1XSGa8Fzo79xuXHse9DatzhFWovpVzrM0lLfBqonT0E3Ig4Ik5Q+iCeGnFxwBGV2tnQJRlRnVx+MWJ/1Tf7IQ9YfqDndGoW5tOyiGN/GbE2uu2Cbx0Q/ymZk=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.25,REQID:502a9ba0-75d2-4311-8b6d-479383a641a6,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:d5b0ae3,CLOUDID:3ff22e3d-de1e-4348-bc35-c96f92f1dcbb,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+X-CID-O-INFO: VERSION:1.1.25,REQID:b6456013-f05f-46b3-8378-eb2960ee799f,IP:0,U
+	RL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-20
+X-CID-META: VersionHash:d5b0ae3,CLOUDID:77c6d36d-2f20-4998-991c-3b78627e4938,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:1,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-UUID: 59a26688012411ee912e1518a6540028-20230602
+X-UUID: 6347ea50012411ee912e1518a6540028-20230602
 Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
 	(envelope-from <yong.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1955562212; Fri, 02 Jun 2023 02:03:32 -0700
+	with ESMTP id 77033843; Fri, 02 Jun 2023 02:03:49 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 2 Jun 2023 17:03:30 +0800
+ 15.2.1118.26; Fri, 2 Jun 2023 17:03:46 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 2 Jun 2023 17:03:29 +0800
+ 15.2.1118.26 via Frontend Transport; Fri, 2 Jun 2023 17:03:45 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, Rob Herring
 	<robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
@@ -62,9 +62,9 @@ CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
 	<linux-arm-kernel@lists.infradead.org>, <mingyuan.ma@mediatek.com>,
 	<yf.wang@mediatek.com>, <jianjiao.zeng@mediatek.com>,
 	<chengci.xu@mediatek.com>
-Subject: [PATCH v12 4/7] iommu/mediatek: Add enable IOMMU SMC command for INFRA masters
-Date: Fri, 2 Jun 2023 17:02:24 +0800
-Message-ID: <20230602090227.7264-5-yong.wu@mediatek.com>
+Subject: [PATCH v12 6/7] iommu/mediatek: mt8188: Add iova_region_larb_msk
+Date: Fri, 2 Jun 2023 17:02:26 +0800
+Message-ID: <20230602090227.7264-7-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230602090227.7264-1-yong.wu@mediatek.com>
 References: <20230602090227.7264-1-yong.wu@mediatek.com>
@@ -73,8 +73,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230602_020337_079049_3812EC95 
-X-CRM114-Status: GOOD (  17.69  )
+X-CRM114-CacheID: sfid-20230602_020352_104910_D2BFC5A5 
+X-CRM114-Status: GOOD (  10.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,112 +89,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Chengci.Xu" <chengci.xu@mediatek.com>
+Add iova_region_larb_msk for mt8188. We separate the 16GB iova regions
+by each device's larbid/portid.
+Refer to include/dt-bindings/memory/mediatek,mt8188-memory-port.h
 
-Prepare for MT8188. In MT8188, the register which enables IOMMU for
-INFRA masters are in the secure world for security concerns, therefore we
-add a SMC command for INFRA masters to enable IOMMU in ATF.
+As commented in the code, larb19(21) means it's larb19 while its SW index
+is 21.
 
-Signed-off-by: Chengci.Xu <chengci.xu@mediatek.com>
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/iommu/mtk_iommu.c  | 32 ++++++++++++++++++++++----------
- include/soc/mediatek/smi.h |  1 +
- 2 files changed, 23 insertions(+), 10 deletions(-)
+ drivers/iommu/mtk_iommu.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 8cff85615d5e..9c89cf894a4d 100644
+index 5c66af0c45a8..b17d3e7288a7 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -3,6 +3,7 @@
-  * Copyright (c) 2015-2016 MediaTek Inc.
-  * Author: Yong Wu <yong.wu@mediatek.com>
-  */
-+#include <linux/arm-smccc.h>
- #include <linux/bitfield.h>
- #include <linux/bug.h>
- #include <linux/clk.h>
-@@ -27,6 +28,7 @@
- #include <linux/slab.h>
- #include <linux/spinlock.h>
- #include <linux/soc/mediatek/infracfg.h>
-+#include <linux/soc/mediatek/mtk_sip_svc.h>
- #include <asm/barrier.h>
- #include <soc/mediatek/smi.h>
- 
-@@ -143,6 +145,7 @@
- #define PGTABLE_PA_35_EN		BIT(17)
- #define TF_PORT_TO_ADDR_MT8173		BIT(18)
- #define INT_ID_PORT_WIDTH_6		BIT(19)
-+#define CFG_IFA_MASTER_IN_ATF		BIT(20)
- 
- #define MTK_IOMMU_HAS_FLAG_MASK(pdata, _x, mask)	\
- 				((((pdata)->flags) & (mask)) == (_x))
-@@ -580,6 +583,7 @@ static int mtk_iommu_config(struct mtk_iommu_data *data, struct device *dev,
- 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
- 	const struct mtk_iommu_iova_region *region;
- 	unsigned long portid_msk = 0;
-+	struct arm_smccc_res res;
- 	int i, ret = 0;
- 
- 	for (i = 0; i < fwspec->num_ids; ++i) {
-@@ -605,17 +609,24 @@ static int mtk_iommu_config(struct mtk_iommu_data *data, struct device *dev,
- 		else
- 			larb_mmu->mmu &= ~portid_msk;
- 	} else if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_INFRA)) {
--		/* PCI dev has only one output id, enable the next writing bit for PCIe */
--		if (dev_is_pci(dev)) {
--			if (fwspec->num_ids != 1) {
--				dev_err(dev, "PCI dev can only have one port.\n");
--				return -ENODEV;
-+		if (MTK_IOMMU_HAS_FLAG(data->plat_data, CFG_IFA_MASTER_IN_ATF)) {
-+			arm_smccc_smc(MTK_SIP_KERNEL_IOMMU_CONTROL,
-+				      IOMMU_ATF_CMD_CONFIG_INFRA_IOMMU,
-+				      portid_msk, enable, 0, 0, 0, 0, &res);
-+			ret = res.a0;
-+		} else {
-+			/* PCI dev has only one output id, enable the next writing bit for PCIe */
-+			if (dev_is_pci(dev)) {
-+				if (fwspec->num_ids != 1) {
-+					dev_err(dev, "PCI dev can only have one port.\n");
-+					return -ENODEV;
-+				}
-+				portid_msk |= BIT(portid + 1);
- 			}
--			portid_msk |= BIT(portid + 1);
--		}
- 
--		ret = regmap_update_bits(data->pericfg, PERICFG_IOMMU_1,
--					 (u32)portid_msk, enable ? (u32)portid_msk : 0);
-+			ret = regmap_update_bits(data->pericfg, PERICFG_IOMMU_1,
-+						 (u32)portid_msk, enable ? (u32)portid_msk : 0);
-+		}
- 		if (ret)
- 			dev_err(dev, "%s iommu(%s) inframaster 0x%lx fail(%d).\n",
- 				enable ? "enable" : "disable",
-@@ -1329,7 +1340,8 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 			dev_err_probe(dev, ret, "mm dts parse fail\n");
- 			goto out_runtime_disable;
- 		}
--	} else if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_INFRA)) {
-+	} else if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_INFRA) &&
-+		   !MTK_IOMMU_HAS_FLAG(data->plat_data, CFG_IFA_MASTER_IN_ATF)) {
- 		p = data->plat_data->pericfg_comp_str;
- 		data->pericfg = syscon_regmap_lookup_by_compatible(p);
- 		if (IS_ERR(data->pericfg)) {
-diff --git a/include/soc/mediatek/smi.h b/include/soc/mediatek/smi.h
-index dfd8efca5e60..000eb1cf68b7 100644
---- a/include/soc/mediatek/smi.h
-+++ b/include/soc/mediatek/smi.h
-@@ -13,6 +13,7 @@
- 
- enum iommu_atf_cmd {
- 	IOMMU_ATF_CMD_CONFIG_SMI_LARB,		/* For mm master to en/disable iommu */
-+	IOMMU_ATF_CMD_CONFIG_INFRA_IOMMU,	/* For infra master to enable iommu */
- 	IOMMU_ATF_CMD_MAX,
+@@ -1606,6 +1606,20 @@ static const struct mtk_iommu_plat_data mt8188_data_infra = {
+ 	.iova_region_nr   = ARRAY_SIZE(single_domain),
  };
  
++static const u32 mt8188_larb_region_msk[MT8192_MULTI_REGION_NR_MAX][MTK_LARB_NR_MAX] = {
++	[0] = {~0, ~0, ~0, ~0},               /* Region0: all ports for larb0/1/2/3 */
++	[1] = {0, 0, 0, 0, 0, 0, 0, 0,
++	       0, 0, 0, 0, 0, 0, 0, 0,
++	       0, 0, 0, 0, 0, ~0, ~0, ~0},    /* Region1: larb19(21)/21(22)/23 */
++	[2] = {0, 0, 0, 0, ~0, ~0, ~0, ~0,    /* Region2: the other larbs. */
++	       ~0, ~0, ~0, ~0, ~0, ~0, ~0, ~0,
++	       ~0, ~0, ~0, ~0, ~0, 0, 0, 0,
++	       0, ~0},
++	[3] = {0},
++	[4] = {[24] = BIT(0) | BIT(1)},       /* Only larb27(24) port0/1 */
++	[5] = {[24] = BIT(2) | BIT(3)},       /* Only larb27(24) port2/3 */
++};
++
+ static const struct mtk_iommu_plat_data mt8188_data_vdo = {
+ 	.m4u_plat       = M4U_MT8188,
+ 	.flags          = HAS_BCLK | HAS_SUB_COMM_3BITS | OUT_ORDER_WR_EN |
+@@ -1617,6 +1631,7 @@ static const struct mtk_iommu_plat_data mt8188_data_vdo = {
+ 	.banks_enable   = {true},
+ 	.iova_region    = mt8192_multi_dom,
+ 	.iova_region_nr = ARRAY_SIZE(mt8192_multi_dom),
++	.iova_region_larb_msk = mt8188_larb_region_msk,
+ 	.larbid_remap   = {{2}, {0}, {21}, {0}, {19}, {9, 10,
+ 			   11 /* 11a */, 25 /* 11c */},
+ 			   {13, 0, 29 /* 16b */, 30 /* 17b */, 0}, {5}},
+@@ -1633,6 +1648,7 @@ static const struct mtk_iommu_plat_data mt8188_data_vpp = {
+ 	.banks_enable   = {true},
+ 	.iova_region    = mt8192_multi_dom,
+ 	.iova_region_nr = ARRAY_SIZE(mt8192_multi_dom),
++	.iova_region_larb_msk = mt8188_larb_region_msk,
+ 	.larbid_remap   = {{1}, {3}, {23}, {7}, {MTK_INVALID_LARBID},
+ 			   {12, 15, 24 /* 11b */}, {14, MTK_INVALID_LARBID,
+ 			   16 /* 16a */, 17 /* 17a */, MTK_INVALID_LARBID,
 -- 
 2.25.1
 
