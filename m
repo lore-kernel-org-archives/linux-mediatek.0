@@ -4,92 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31AEBC7EE29
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jun 2023 11:48:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEF8CC7EE24
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jun 2023 13:22:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kUOBB+TNQjUJUkcVxMIwxG8p+H21R6sCSWyhJE+VjYY=; b=m9juFPTDwc22bPPR0sudLzzyu8
-	etI204FOQ1G+4GuRAiAcLTR4MaD50cyZEMybI3kDeiIohdHCEjS/UwpvJBGMKlu307LOgSKH4tx24
-	1X2qes2uyGHPeWthNEGXrovXVr2MAwtQ3MipIa9J9QxXOSjQpznRb1ZqubZIh4967S1wsPYSx/OTy
-	Y/QnZ5Z+1qY+82CCc/1GETBCUdndtOXOdN8tMR6N1Blbdfu6LPs2X4chALNjpYFlTnp0GLqA65wxc
-	pu1st1kfgYwYivyKwglE8Z7Wcoz/eRuMcYQOnE148GAygogLpsC+D0Z0BBwQ2cCVkW9vYiCJlGMZq
-	58ELWt+Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4eDlE7VsUf+shujEPMAVl+tm2R0mPz8qsAv8B1LJ9ro=; b=Awbexbbg4s0QejO1mhN1jFtgeQ
+	oo8fXRfDEO+Ha/go98tV2DkCUyLY6CKy0omgedT3QfJyDpGPLNChZHGCntJlWLRsbGSnCuwHcEEZy
+	S7FBbw8E16SSZTRTIIwwkUSlfSYE3tvnu9eAsvRRZCn5KbmAyVvqcovweK2pkZy6Yzkry3t0CE20K
+	6nFIzcDl8pdR4YBye4F81K+5zEjAeTeo3t8jcfH+fwIhY5jz0aMrFf7aAJPuTL7j+eoGDfxjmJ4lw
+	ROryi5w6Euyz0+qatfK/iEONrm3Chtyb5PSfQHALTpfU7BgIYCnm5XxDp1CBQuo9UseUyTmoJ/uX/
+	oACuxDSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q53Gx-006ncM-1n;
-	Fri, 02 Jun 2023 11:48:47 +0000
-Received: from mga09.intel.com ([134.134.136.24])
+	id 1q54jw-006zRa-1K;
+	Fri, 02 Jun 2023 13:22:48 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q53Gu-006nbX-39;
-	Fri, 02 Jun 2023 11:48:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1685706524; x=1717242524;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=i8q5tBCE9Tvk3bz/ntyQFinJphOO7qsaUk4tCQhQBX0=;
-  b=XLq0+TfgeSdRNr2b2nXgz/imNm6piwWAMjrGzXbZ7AT4hgKrnoQCiVD4
-   9Sgs9Ld3gJx90VX6Jy27stxbOaPwaQYzNymCC9tcdiQBp2iUYaEf4Vrsg
-   536yyctnDH+qjgHS2Rv/GUOyFTmzhS3gSortzrvCdKhZVoE7xTLVBKP65
-   MkTGa6jOFqIGURd/6mHR0mtA6+QlqFzunVQGqRRZ2AJpEEUYjfSoSbqEE
-   oZejGhRqeXZjmMOAe1J7NnjOTMa4Zdx40TwcJgkBFHKXF+eZ++d1G4jRF
-   5KNG9pcpdDhmZvxNr6hBeQRCHyURKbr+rvbbriCiS4WARa6RxFCJCnk75
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10728"; a="358279712"
-X-IronPort-AV: E=Sophos;i="6.00,212,1681196400"; 
-   d="scan'208";a="358279712"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
-  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Jun 2023 04:48:44 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10728"; a="707819498"
-X-IronPort-AV: E=Sophos;i="6.00,212,1681196400"; 
-   d="scan'208";a="707819498"
-Received: from rspatil-mobl3.gar.corp.intel.com (HELO ijarvine-MOBL2.ger.corp.intel.com) ([10.251.208.112])
-  by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Jun 2023 04:48:36 -0700
-From: =?UTF-8?q?Ilpo=20J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>
-To: linux-pci@vger.kernel.org,
-	Bjorn Helgaas <helgaas@kernel.org>,
-	Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
-	Rob Herring <robh@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
-	Lukas Wunner <lukas@wunner.de>,
-	"Rafael J . Wysocki" <rafael@kernel.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Emmanuel Grumbach <emmanuel.grumbach@intel.com>,
-	Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Kalle Valo <kvalo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1q54js-006zPx-2G;
+	Fri, 02 Jun 2023 13:22:46 +0000
+Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8E8C766056D4;
+	Fri,  2 Jun 2023 14:22:35 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1685712157;
+	bh=9gZsj5IAGBccJ98w1UVTDdhacpAgqlDEC1+urDUBzEs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=oL/F5giqODrgUiS/uhsae74g85EyeUwD1ZX68qa1dTMpzQbNImIx5mfhMIZAkafYJ
+	 btdZ7ZU85HXvpyOpFHbABF+QEBD19mj7HDOgPCyhZUgU2ROKFNkYM3pGyi9HBYXyW9
+	 QlkHh8Bnb1sQHmFvDm3D9judWVsN00Vo/KfT824aU9eIz1nmBvU+tUxpaK3R0jsfR7
+	 ojy5s8I0VCS+1SqG8vzIeWgjE3VOQhrBAlY+/Yn2QNorF+CmIJDekyxuWHwTfvj1E9
+	 BCKFiyboFStz/PbZGtinebUcJMyoK1JERCftTy5qVJVisvyXSekiAc56TZ5zOzRjDv
+	 QvDvPsEWdos8g==
+Date: Fri, 2 Jun 2023 09:22:31 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	Alexandre Bailon <abailon@baylibre.com>, kernel@collabora.com,
+	Balsam CHIHI <bchihi@baylibre.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org,
-	linux-wireless@vger.kernel.org,
-	netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: =?UTF-8?q?Ilpo=20J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>
-Subject: [RFC PATCH v1 07/13] mt76: Remove unreliable pci_disable_link_state() workaround
-Date: Fri,  2 Jun 2023 14:47:44 +0300
-Message-Id: <20230602114751.19671-8-ilpo.jarvinen@linux.intel.com>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20230602114751.19671-1-ilpo.jarvinen@linux.intel.com>
-References: <20230602114751.19671-1-ilpo.jarvinen@linux.intel.com>
+	Alexandre Mergnat <amergnat@baylibre.com>,
+	Amit Kucheria <amitk@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Zhang Rui <rui.zhang@intel.com>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
+Subject: Re: [PATCH 0/3] thermal/drivers/mediatek/lvts_thermal: Fixes to the
+ interrupt handling
+Message-ID: <aee68ead-fedd-4aa6-996f-a0274f7c5300@notapiano>
+References: <20230428195347.3832687-1-nfraprado@collabora.com>
+ <20230502103344.GA3388518@google.com>
+ <87b0f5cd-67a8-fbd5-5ca7-a286b543d796@linaro.org>
+ <8a38a0da-3a4f-4e39-9f9e-42682edfd9bf@notapiano>
+ <68393044-9d28-8402-e190-7cbb28442f6d@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <68393044-9d28-8402-e190-7cbb28442f6d@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230602_044845_055717_4037D404 
-X-CRM114-Status: GOOD (  20.74  )
+X-CRM114-CacheID: sfid-20230602_062244_872434_A511FD32 
+X-CRM114-Status: GOOD (  25.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,200 +87,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-pci_disable_link_state() was made reliable regardless of ASPM CONFIG
-and OS being disallowed to change ASPM states to allow drivers to rely
-on pci_disable_link_state() working.
+On Fri, Jun 02, 2023 at 10:07:29AM +0200, Daniel Lezcano wrote:
+> On 30/05/2023 21:46, Nícolas F. R. A. Prado wrote:
+> > On Tue, May 30, 2023 at 02:27:36PM +0200, Daniel Lezcano wrote:
+> > > 
+> > > Hi,
+> > > 
+> > > On 02/05/2023 12:33, Chen-Yu Tsai wrote:
+> > > > On Fri, Apr 28, 2023 at 03:53:44PM -0400, Nícolas F. R. A. Prado wrote:
+> > > > > 
+> > > > > Fixes in the interrupt handling of the LVTS thermal driver noticed while
+> > > > > testing it on the Spherion Chromebook (mt8192-asurada-spherion) with the
+> > > > > MT8192 support series [1].
+> > > > > 
+> > > > > These are standalone fixes and don't depend on anything else.
+> > > > > 
+> > > > > [1] https://lore.kernel.org/all/20230307163413.143334-1-bchihi@baylibre.com/
+> > > > > 
+> > > > > Thanks,
+> > > > > Nícolas
+> > > > > 
+> > > > > 
+> > > > > Nícolas F. R. A. Prado (3):
+> > > > >     thermal/drivers/mediatek/lvts_thermal: Handle IRQ on all controllers
+> > > > >     thermal/drivers/mediatek/lvts_thermal: Honor sensors in immediate mode
+> > > > >     thermal/drivers/mediatek/lvts_thermal: Disable undesired interrupts
+> > > > 
+> > > > This series seems to have solved all interrupt storm issue I ran into, so
+> > > > 
+> > > > Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+> > > 
+> > > I gave a try on a mt8195 board and I don't see any interrupt firing when
+> > > crossing the temperature thresholds.
+> > > 
+> > > Did I miss something ?
+> > 
+> > No, indeed interrupts seem to be completely disabled on mt8195, even after
+> > setting the controllers to filtered mode (a requirement to get interrupts).
+> 
+> Really? interrupts work only on filtered mode? That sounds strange
 
-Remove driver working around unreliable pci_disable_link_state() from
-mt76 driver and just call pci_disable_link_state() directly.
+Sorry my reply was confusing, let me clarify. What I meant to say is that
+the threshold interrupts (cold, hot2normal, hot, low offset, high offset) only
+trigger in filtered mode. AFAICT that's by design, since immediate mode is meant
+only for one-off temperature readings, and filtered mode is the one meant to be
+used for temperature monitoring. But in immediate mode you could still get the
+data ready for immediate mode (bits 16, 17, 18, 27) interrupts triggering.
+Though note that I have disabled those in my series, since they are triggered
+constantly.
 
-Signed-off-by: Ilpo JÃ¤rvinen <ilpo.jarvinen@linux.intel.com>
----
+> 
+> What board are you using for testing?
 
-It's a bit unclear which of these devices really need ASPM disabled.
-Probably all 76xx given the commit messages that added their disabling
-but 79xx seems a lot more uncertain and handwavy.
+I'm testing on the Acer Chromebook 514 (mt8192-asurada-spherion-r0). And noticed
+the interrupts aren't triggered on Acer Chromebook Spin 513
+(mt8195-cherry-tomato-r2).
 
-mt7915 was done without observing any issue in commit 03b3dedc5de1
-("mt76: mt7915: disable ASPM").
+> 
+> > I
+> > haven't investigated that further yet. This series was validated on mt8192,
+> > which did have working interrupts, but they were being triggered too often.
+> 
+> Ok.
+> 
+> > Also note that I've sent a v2 with even more fixes:
+> > https://lore.kernel.org/all/20230504004852.627049-1-nfraprado@collabora.com/
+> 
+> Yes, I'm reviewing it closely
 
-mt7921 re-enabled aspm in bf3747ae2e25 ("mt76: mt7921: enable aspm by
-default").
+Thanks!
 
-mt7996 was added with aspm disabled.
-
-I didn't convert these to quirk due to how unclear the situation
-currently is (but for 76xx quirk would seem justified as there is
-actually some evidence to back aspm being harmful).
----
- drivers/net/wireless/mediatek/mt76/Makefile   |  1 -
- drivers/net/wireless/mediatek/mt76/mt76.h     |  1 -
- .../net/wireless/mediatek/mt76/mt7615/pci.c   |  2 +-
- .../net/wireless/mediatek/mt76/mt76x0/pci.c   |  2 +-
- .../net/wireless/mediatek/mt76/mt76x2/pci.c   |  2 +-
- .../net/wireless/mediatek/mt76/mt7915/pci.c   |  2 +-
- .../net/wireless/mediatek/mt76/mt7921/pci.c   |  2 +-
- .../net/wireless/mediatek/mt76/mt7996/pci.c   |  2 +-
- drivers/net/wireless/mediatek/mt76/pci.c      | 47 -------------------
- 9 files changed, 6 insertions(+), 55 deletions(-)
- delete mode 100644 drivers/net/wireless/mediatek/mt76/pci.c
-
-diff --git a/drivers/net/wireless/mediatek/mt76/Makefile b/drivers/net/wireless/mediatek/mt76/Makefile
-index 84c99b7e57f9..220e711840d3 100644
---- a/drivers/net/wireless/mediatek/mt76/Makefile
-+++ b/drivers/net/wireless/mediatek/mt76/Makefile
-@@ -10,7 +10,6 @@ mt76-y := \
- 	mmio.o util.o trace.o dma.o mac80211.o debugfs.o eeprom.o \
- 	tx.o agg-rx.o mcu.o
- 
--mt76-$(CONFIG_PCI) += pci.o
- mt76-$(CONFIG_NL80211_TESTMODE) += testmode.o
- 
- mt76-usb-y := usb.o usb_trace.o
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 6b07b8fafec2..9beee339782e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -933,7 +933,6 @@ bool ____mt76_poll_msec(struct mt76_dev *dev, u32 offset, u32 mask, u32 val,
- #define mt76_poll_msec_tick(dev, ...) ____mt76_poll_msec(&((dev)->mt76), __VA_ARGS__)
- 
- void mt76_mmio_init(struct mt76_dev *dev, void __iomem *regs);
--void mt76_pci_disable_aspm(struct pci_dev *pdev);
- 
- static inline u16 mt76_chip(struct mt76_dev *dev)
- {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/pci.c b/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
-index 9f43e673518b..d43efe4bf9e3 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
-@@ -43,7 +43,7 @@ static int mt7615_pci_probe(struct pci_dev *pdev,
- 	if (ret)
- 		goto error;
- 
--	mt76_pci_disable_aspm(pdev);
-+	pci_disable_link_state(pdev, PCIE_LINK_STATE_L0S | PCIE_LINK_STATE_L1);
- 
- 	map = id->device == 0x7663 ? mt7663e_reg_map : mt7615e_reg_map;
- 	ret = mt7615_mmio_probe(&pdev->dev, pcim_iomap_table(pdev)[0],
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c b/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
-index 9277ff38b7a2..49c7a63cb1f6 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
-@@ -181,7 +181,7 @@ mt76x0e_probe(struct pci_dev *pdev, const struct pci_device_id *id)
- 	if (ret)
- 		return ret;
- 
--	mt76_pci_disable_aspm(pdev);
-+	pci_disable_link_state(pdev, PCIE_LINK_STATE_L0S | PCIE_LINK_STATE_L1);
- 
- 	mdev = mt76_alloc_device(&pdev->dev, sizeof(*dev), &mt76x0e_ops,
- 				 &drv_ops);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2/pci.c b/drivers/net/wireless/mediatek/mt76/mt76x2/pci.c
-index df85ebc6e1df..de6eb593ab59 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x2/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x2/pci.c
-@@ -85,7 +85,7 @@ mt76x2e_probe(struct pci_dev *pdev, const struct pci_device_id *id)
- 	/* RG_SSUSB_CDR_BR_PE1D = 0x3 */
- 	mt76_rmw_field(dev, 0x15c58, 0x3 << 6, 0x3);
- 
--	mt76_pci_disable_aspm(pdev);
-+	pci_disable_link_state(pdev, PCIE_LINK_STATE_L0S | PCIE_LINK_STATE_L1);
- 
- 	return 0;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/pci.c b/drivers/net/wireless/mediatek/mt76/mt7915/pci.c
-index 39132894e8ea..8cf9a1a6d851 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/pci.c
-@@ -122,7 +122,7 @@ static int mt7915_pci_probe(struct pci_dev *pdev,
- 	if (ret)
- 		return ret;
- 
--	mt76_pci_disable_aspm(pdev);
-+	pci_disable_link_state(pdev, PCIE_LINK_STATE_L0S | PCIE_LINK_STATE_L1);
- 
- 	if (id->device == 0x7916 || id->device == 0x790a)
- 		return mt7915_pci_hif2_probe(pdev);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-index ddb1fa4ee01d..c9862e808cbb 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-@@ -286,7 +286,7 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
- 		goto err_free_pci_vec;
- 
- 	if (mt7921_disable_aspm)
--		mt76_pci_disable_aspm(pdev);
-+		pci_disable_link_state(pdev, PCIE_LINK_STATE_L0S | PCIE_LINK_STATE_L1);
- 
- 	ops = mt7921_get_mac80211_ops(&pdev->dev, (void *)id->driver_data,
- 				      &features);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/pci.c b/drivers/net/wireless/mediatek/mt76/mt7996/pci.c
-index 64aee3fb5445..273b72c58878 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/pci.c
-@@ -111,7 +111,7 @@ static int mt7996_pci_probe(struct pci_dev *pdev,
- 	if (ret)
- 		return ret;
- 
--	mt76_pci_disable_aspm(pdev);
-+	pci_disable_link_state(pdev, PCIE_LINK_STATE_L0S | PCIE_LINK_STATE_L1);
- 
- 	if (id->device == 0x7991)
- 		return mt7996_pci_hif2_probe(pdev);
-diff --git a/drivers/net/wireless/mediatek/mt76/pci.c b/drivers/net/wireless/mediatek/mt76/pci.c
-deleted file mode 100644
-index 4c1c159fbb62..000000000000
---- a/drivers/net/wireless/mediatek/mt76/pci.c
-+++ /dev/null
-@@ -1,47 +0,0 @@
--// SPDX-License-Identifier: ISC
--/*
-- * Copyright (C) 2019 Lorenzo Bianconi <lorenzo@kernel.org>
-- */
--
--#include "mt76.h"
--#include <linux/pci.h>
--
--void mt76_pci_disable_aspm(struct pci_dev *pdev)
--{
--	struct pci_dev *parent = pdev->bus->self;
--	u16 aspm_conf, parent_aspm_conf = 0;
--
--	pcie_capability_read_word(pdev, PCI_EXP_LNKCTL, &aspm_conf);
--	aspm_conf &= PCI_EXP_LNKCTL_ASPMC;
--	if (parent) {
--		pcie_capability_read_word(parent, PCI_EXP_LNKCTL,
--					  &parent_aspm_conf);
--		parent_aspm_conf &= PCI_EXP_LNKCTL_ASPMC;
--	}
--
--	if (!aspm_conf && (!parent || !parent_aspm_conf)) {
--		/* aspm already disabled */
--		return;
--	}
--
--	dev_info(&pdev->dev, "disabling ASPM %s %s\n",
--		 (aspm_conf & PCI_EXP_LNKCTL_ASPM_L0S) ? "L0s" : "",
--		 (aspm_conf & PCI_EXP_LNKCTL_ASPM_L1) ? "L1" : "");
--
--	if (IS_ENABLED(CONFIG_PCIEASPM)) {
--		int err;
--
--		err = pci_disable_link_state(pdev, aspm_conf);
--		if (!err)
--			return;
--	}
--
--	/* both device and parent should have the same ASPM setting.
--	 * disable ASPM in downstream component first and then upstream.
--	 */
--	pcie_capability_clear_word(pdev, PCI_EXP_LNKCTL, aspm_conf);
--	if (parent)
--		pcie_capability_clear_word(parent, PCI_EXP_LNKCTL,
--					   aspm_conf);
--}
--EXPORT_SYMBOL_GPL(mt76_pci_disable_aspm);
--- 
-2.30.2
-
+Nícolas
 
