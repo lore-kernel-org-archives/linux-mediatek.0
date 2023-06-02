@@ -4,93 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F1C8C7EE24
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jun 2023 08:07:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73FBBC77B7A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jun 2023 08:33:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mO/RY3F3B8GPgwLB+7S4hwzVRXzzO6lIPxIO1gccjeg=; b=DzAQLsBjHf8sduFSr7en828NHi
-	EoqRL4lBuLj4jfSNn2LGlmHavPIujOhLzZ1EiC4ATxFGvCWGqKiYk4tCRQaWrXVOt4HACMPxbToER
-	Gd9Q3ncz++lDQX0rucxgtFmLIXblmJO3Y+OBSdenAAnp765ZSOnCimLXMeQxbTo/hf38CkxxEhocW
-	MWP61rAtFYE4JFb6wqYm62wAVKZ9oCSRuUXu8CaG5D1lbA4gvWTCSnVUWNfzfKwx9OSyvx/ksVRgx
-	RUY/R4ISaoDHb6CeLVpqIytwEDQBFwuPzSxeBlR1Xd3aK41Bpk0BuJKvgkle6GmWEFDEDtHDh28VY
-	ursQ3Kkw==;
+	bh=S6o32+EXqkQOwwvwWTyyFIWUzWvHCRd3bW8dtLzYc0M=; b=FxfYcYICiKFX3lvBSRzEeBCY31
+	W/rfczGIt9SgZEBhRX9ioRAx10110gRufyGf22YWjyakfHzE8QiQs6aPlFSGdT3Tu4/eKnsUCutxO
+	MEnu2CG6mwwtMvww1zQjaHtBy+Wa2Ft3cIjgFbAd/MPopxrWaBoz0LDapM8fd/bWoAGA+MnmKSmPe
+	yCrAyotlUBu94I28in3M7efc4+I9GOF8faoAWsmOJL4Rcpy3i63mYrd+iZnEFxxpCiPPUmvtEDXVH
+	+5jzt4n51HTj//tQbHIXObCIKWTcdhq1KVMQlo7U8FaZuT6r9/GMWTlhswPdV/hVbTvgJdZmbs5w0
+	lSsFbQlg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4zow-0066S4-2H;
-	Fri, 02 Jun 2023 08:07:38 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1q50DV-006ABJ-31;
+	Fri, 02 Jun 2023 08:33:01 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4zot-0066Qv-2E
+	id 1q50DS-006A9B-1s
 	for linux-mediatek@lists.infradead.org;
-	Fri, 02 Jun 2023 08:07:37 +0000
-Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-30ae4ec1ac7so1581899f8f.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 02 Jun 2023 01:07:32 -0700 (PDT)
+	Fri, 02 Jun 2023 08:32:59 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-97458c97333so128185066b.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 02 Jun 2023 01:32:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1685693251; x=1688285251;
+        d=linaro.org; s=google; t=1685694774; x=1688286774;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=mO/RY3F3B8GPgwLB+7S4hwzVRXzzO6lIPxIO1gccjeg=;
-        b=A598VmaeQlIXU5K1gtsDSH/qH+2fNkD6meglLxmoet8DKTfui5H2P1hC+6+8TtYUOW
-         MnB9VrNtFdGkSFg/mEQ9TN1U2/FtVCU7hqcQ74JZWpxANY+fABdbkCnz68Zv0kuFqkO1
-         A1XgwUfJXRaIcHo73epEQZGz8+43hPhrR37OP4u1kG5lPH2M7bk6mQB7bADLWEt6GoUz
-         VD7/LilwTL4qKynoEcDLjk9Nwb+fRuhjY2W59L6SaO8K8ZSU8vT5BZ4908x4/t8tT1nu
-         1cvIHtGamhZCJp4HSp6kFt0K9ubiiiwsG8u8oRn8DiY/E1uiOdqr05TTbzeBb0zX7kTO
-         1xWw==
+        bh=S6o32+EXqkQOwwvwWTyyFIWUzWvHCRd3bW8dtLzYc0M=;
+        b=SF+7px9QcZH1m1Vj1b2GfXALro+NdRTuZIllFGdKVav7TEBvES/2uDpWKVI9xCZWZj
+         Iv4bT38X4VR2ZAahaID8tl7YnfQCN+dfYwrgfbmTjOg1U7rD7NSOfjpjrWHShz7TJyZY
+         YcTLPTBP6SIuO7QCpCu72aRFZO6EQUipoA2O/r+AmyTKNT45OebGXlQrEew7g4fHcWMF
+         OVrAocSDqDleCKKAaH70gdYegshPK3bxyqFB5qSxqTmvtlaZcG4jmIc5e0rMFKGEzSJA
+         Tysc9o6h3haQDhWXsvkxQhM8zCT2RaiSSLJOfFY3rkol/FC7XZY12Jh9hC8Fk6fX5yEm
+         ajHA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685693251; x=1688285251;
+        d=1e100.net; s=20221208; t=1685694774; x=1688286774;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=mO/RY3F3B8GPgwLB+7S4hwzVRXzzO6lIPxIO1gccjeg=;
-        b=AWRkexhB3zwF80VEp/909QkHS5H5I53lCV3Ik2+p+f4wV+drdUf/CWdGJuJkIvgt/l
-         1aRXm9dofyQLgz2FsnG0GM/7UDejsSkSeGz8Jdd67uQPe1Uougx3MJuYlQK3eSWMtKaq
-         sul0ZC88Kv2zmeS2/HeBscMB5za9zjtfGFNNvmRXngqvVPcnwNHWZM1So2K7VRetvNmv
-         U0ayX/PpBXvS25HiOViuQrSZ1ZZsOoRnC59yqUOSbpyVO8Xg9ZDPqy7QtxYEe8nA3eBa
-         GhH17j7QoIIZTgwawG+tp1dGrKn1+OUU+Pa6WwBFWFhpGhrQkAh8IPlUCbGpSgn/lUST
-         0HPw==
-X-Gm-Message-State: AC+VfDyg7IC+hxXbBaLU2aWW6BGUs9WiSGLn1NJGIu12mKX/UM+zfNET
-	O4TKK91W9qjK57J3AjLJYk+xyA==
-X-Google-Smtp-Source: ACHHUZ4iJjab6zb7VKTRm84jdXYQvx32T3lqpuKG6BtYc68C7Lg6oyRp4fV/jUzSTe+AMMJXE2XPLw==
-X-Received: by 2002:adf:cd8b:0:b0:307:83a4:5860 with SMTP id q11-20020adfcd8b000000b0030783a45860mr3794370wrj.68.1685693250955;
-        Fri, 02 Jun 2023 01:07:30 -0700 (PDT)
-Received: from ?IPV6:2a05:6e02:1041:c10:548f:8f7e:a3c2:888a? ([2a05:6e02:1041:c10:548f:8f7e:a3c2:888a])
-        by smtp.googlemail.com with ESMTPSA id d8-20020adff848000000b0030ae849c70csm929300wrq.37.2023.06.02.01.07.30
+        bh=S6o32+EXqkQOwwvwWTyyFIWUzWvHCRd3bW8dtLzYc0M=;
+        b=Qvm/GU2z1wkIXjamZ3mZeTuXr0eTBQc8/QMWC2dDonFb5gylqpS4tb6nZeHns/sr89
+         z1V4hM6tuoVdzzBd2DQZrs+5E1l4e3jjA4DUM2AAW8iSXpz6X+03rUfl3r+Z+a8fOR9t
+         DhYpSPWgNeQF8n5wPXOYQ+N8etDmmBQ7VGru06AKVONq4DXwBsSW9W5JCnBKEP6AmYn8
+         mt5BXP25FUiUK51K91f6IsxC6G+GeFB+3A3/hKQ1zxrT/jj8h3YopvAIH8zYD6EDExLo
+         KnaS7V3YEsSLFvWurvN6f1Gmsg3DgTlq+qSM+Lji12r7fmCUcCX48R5p1AhooA3dU+Ww
+         4ttg==
+X-Gm-Message-State: AC+VfDzgwwwI8Cmz91CmC1Rj6Te5J9e6pHHmrtqAYEC5bRHUQh2BFbP4
+	/WnLkDC2wFgMzgMy0qwbkxSYXA==
+X-Google-Smtp-Source: ACHHUZ5bbkg1zhdbdLCCj6ww+0OpxboaT0r5ApjCE5h604Y3MUUFQIlVUcvBkPvczEmb5mkg4VqJdw==
+X-Received: by 2002:a17:907:a42a:b0:96f:912d:7922 with SMTP id sg42-20020a170907a42a00b0096f912d7922mr9551134ejc.53.1685694773958;
+        Fri, 02 Jun 2023 01:32:53 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.199.204])
+        by smtp.gmail.com with ESMTPSA id y26-20020a17090668da00b00947ed087a2csm461979ejr.154.2023.06.02.01.32.52
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 02 Jun 2023 01:07:30 -0700 (PDT)
-Message-ID: <68393044-9d28-8402-e190-7cbb28442f6d@linaro.org>
-Date: Fri, 2 Jun 2023 10:07:29 +0200
+        Fri, 02 Jun 2023 01:32:53 -0700 (PDT)
+Message-ID: <75d78713-fc8f-24a9-a422-2b4d57c5d488@linaro.org>
+Date: Fri, 2 Jun 2023 10:32:51 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH 0/3] thermal/drivers/mediatek/lvts_thermal: Fixes to the
- interrupt handling
+ Thunderbird/102.11.2
+Subject: Re: [PATCH v3 3/8] dt-bindings: leds: leds-mt6323: Support WLED
+ output
 Content-Language: en-US
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, Alexandre Bailon
- <abailon@baylibre.com>, kernel@collabora.com,
- Balsam CHIHI <bchihi@baylibre.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Alexandre Mergnat <amergnat@baylibre.com>, Amit Kucheria <amitk@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
-References: <20230428195347.3832687-1-nfraprado@collabora.com>
- <20230502103344.GA3388518@google.com>
- <87b0f5cd-67a8-fbd5-5ca7-a286b543d796@linaro.org>
- <8a38a0da-3a4f-4e39-9f9e-42682edfd9bf@notapiano>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <8a38a0da-3a4f-4e39-9f9e-42682edfd9bf@notapiano>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ pavel@ucw.cz
+Cc: lee@kernel.org, sean.wang@mediatek.com, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+ linux-leds@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com
+References: <20230601110813.2373764-1-angelogioacchino.delregno@collabora.com>
+ <20230601110813.2373764-4-angelogioacchino.delregno@collabora.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230601110813.2373764-4-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230602_010735_726942_3D999FDF 
-X-CRM114-Status: GOOD (  17.50  )
+X-CRM114-CacheID: sfid-20230602_013258_666778_58E00D55 
+X-CRM114-Status: GOOD (  12.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,63 +100,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 30/05/2023 21:46, Nícolas F. R. A. Prado wrote:
-> On Tue, May 30, 2023 at 02:27:36PM +0200, Daniel Lezcano wrote:
->>
->> Hi,
->>
->> On 02/05/2023 12:33, Chen-Yu Tsai wrote:
->>> On Fri, Apr 28, 2023 at 03:53:44PM -0400, Nícolas F. R. A. Prado wrote:
->>>>
->>>> Fixes in the interrupt handling of the LVTS thermal driver noticed while
->>>> testing it on the Spherion Chromebook (mt8192-asurada-spherion) with the
->>>> MT8192 support series [1].
->>>>
->>>> These are standalone fixes and don't depend on anything else.
->>>>
->>>> [1] https://lore.kernel.org/all/20230307163413.143334-1-bchihi@baylibre.com/
->>>>
->>>> Thanks,
->>>> Nícolas
->>>>
->>>>
->>>> Nícolas F. R. A. Prado (3):
->>>>     thermal/drivers/mediatek/lvts_thermal: Handle IRQ on all controllers
->>>>     thermal/drivers/mediatek/lvts_thermal: Honor sensors in immediate mode
->>>>     thermal/drivers/mediatek/lvts_thermal: Disable undesired interrupts
->>>
->>> This series seems to have solved all interrupt storm issue I ran into, so
->>>
->>> Tested-by: Chen-Yu Tsai <wenst@chromium.org>
->>
->> I gave a try on a mt8195 board and I don't see any interrupt firing when
->> crossing the temperature thresholds.
->>
->> Did I miss something ?
+On 01/06/2023 13:08, AngeloGioacchino Del Regno wrote:
+> Some PMICs have a separated WLED string output: add a property
+> `mediatek,is-wled` to indicate which LED string is a WLED.
 > 
-> No, indeed interrupts seem to be completely disabled on mt8195, even after
-> setting the controllers to filtered mode (a requirement to get interrupts).
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  Documentation/devicetree/bindings/leds/leds-mt6323.txt | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/leds/leds-mt6323.txt b/Documentation/devicetree/bindings/leds/leds-mt6323.txt
+> index 052dccb8f2ce..904b2222a5fe 100644
+> --- a/Documentation/devicetree/bindings/leds/leds-mt6323.txt
+> +++ b/Documentation/devicetree/bindings/leds/leds-mt6323.txt
+> @@ -30,6 +30,7 @@ Optional properties for the LED child node:
+>  - label : See Documentation/devicetree/bindings/leds/common.txt
+>  - linux,default-trigger : See Documentation/devicetree/bindings/leds/common.txt
+>  - default-state: See Documentation/devicetree/bindings/leds/common.txt
+> +- mediatek,is-wled: LED string is connected to WLED output
 
-Really? interrupts work only on filtered mode? That sounds strange
+Why would it matter to what the output is connected to?
 
-What board are you using for testing?
-
-> I
-> haven't investigated that further yet. This series was validated on mt8192,
-> which did have working interrupts, but they were being triggered too often.
-
-Ok.
-
-> Also note that I've sent a v2 with even more fixes:
-> https://lore.kernel.org/all/20230504004852.627049-1-nfraprado@collabora.com/
-
-Yes, I'm reviewing it closely
-
--- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+Best regards,
+Krzysztof
 
 
