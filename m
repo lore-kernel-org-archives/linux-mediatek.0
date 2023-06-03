@@ -4,85 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD213C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Jun 2023 12:27:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB1CDC7EE24
+	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Jun 2023 19:10:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZcxFciO+FgadEz/OB9cY/SNSRDrKptPDDCbhwYKKivw=; b=IM+zlJ1gBTUm2iVMMuHIm55i3V
-	k9dY3PVrDGmZ2hiWfiUx8Wd/AZD1smpTD1fbeTDh5KRgB6Ulm0ku0IJzMmkDs+KdT58gbg3B6iRRI
-	1Pts3Qij3aXs3XIDZxFKIIY34YTg3xjUpucmkaekEDcv0C/P4htlyDErW78J+f3denpbYxaQmuVcJ
-	G4zhbWevh0ZkqvmCLCE7v3TlaKzeNs4JZpWV4YHOjtjABenkbh54FwAw1G8ecEi2PVet6XD2yEisk
-	sOfJRGbjzsjsxCyFUgG1hwk7PjVUHAmjmPyh1GvPNrQNn0mlcoLympg/qVuuKWACQMvnaI/MONCFF
-	l9kmdeyA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=c/1fXZdlFrD4ZTMnSyIek5ravNGSg+bm7NeK4UcfZ5I=; b=4uDLxspSg5AXd2hd/2pGKP1ZJx
+	YDvAV5asLGHSZF5BKIw4sF4TfVkpPVWeKoKjDxjhmaFSWsLU62acBAE1jvEcvwfwaa0OHj0f9OLNT
+	LKY7HJu53FcfrhDpXK1YJWG4BbCqSLMpqh9uUCP7mSwimyQvkbvNHGSWtQPr4n32vqBR1Cs292mcC
+	LAWIqvXUJQvCy2bToFBrvab+NALaSGQPAcUrBIXUfC2HwLAWJJKgYGPwqkZ5nC3gUjTMTZ3EFlZye
+	wohJtHpvxqA1UwddI+pVDas6Zh8+lIw8q1t+rgIAL3wfA9GpCHwX4TMVeiAeS7D0nBVt0kZDup8GD
+	uAuBbMLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q5QM9-009jZB-0E;
-	Sat, 03 Jun 2023 12:27:41 +0000
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+	id 1q5Wdc-00AODZ-2E;
+	Sat, 03 Jun 2023 19:10:08 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q5QM5-009jXL-2G;
-	Sat, 03 Jun 2023 12:27:39 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-969f90d71d4so445734166b.3;
-        Sat, 03 Jun 2023 05:27:36 -0700 (PDT)
+	id 1q5WdY-00AOC7-1l
+	for linux-mediatek@lists.infradead.org;
+	Sat, 03 Jun 2023 19:10:05 +0000
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-9768fd99c0cso244203666b.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 03 Jun 2023 12:10:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1685795255; x=1688387255;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=ZcxFciO+FgadEz/OB9cY/SNSRDrKptPDDCbhwYKKivw=;
-        b=WFctNZ81xWIx29VG0DK7rYmLHHpVtkUKtme5W4sXiOd+y5tiNx8DVwPlILjCR9MqGD
-         1ZQXt+KjLQZjCdKWfIOC8SG18OvMxTMp4waGGA57Pk1Aq6aW0rL6usKrkKlpRQfg6hE/
-         YAC3MpkGe83ek2+JtCNqJoTCcFaiUOtfDDn99vsG9ObgB41Gilfyqz0xlp0ol+c3UC9P
-         ETn3m8nFzi61310h93OYSg9LmaisnjuaCT6S1NUK9hEVt58WyHtTD+9NjuWVAbw10NU9
-         hw2TjpMFqPMhxBsHjcjxbD/CF64+Q2wNjnCNcd+GqzNOG3L0ruCTlK5+fHjP/k8MHoCm
-         4Vsg==
+        d=linaro.org; s=google; t=1685819401; x=1688411401;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=c/1fXZdlFrD4ZTMnSyIek5ravNGSg+bm7NeK4UcfZ5I=;
+        b=XGWSGPhc+xt9lfYE3ElzKDuGrJr3WUc1F9NreSgchCvhk9+TGEXaB0X+FKeFhLa4Ul
+         dBWwVA0PU7u3A9Gb/r9/YacGuXlVlqHEu42aPrlpEXXDzJscOc1SF0ShHSQse0Oj/chT
+         QLovyIjmr92pscaSYQIt6uY5CA4K46N++1MwTW+XvEsqSbFTIBJVPKBUnQcFshqSmfQK
+         AlKleHL2WPQjWo13ySdvQFAtO3k6DRkLK4/THrSTOZf+p2O7ixH3ctDfYqgLUS+Hg85I
+         68k9+su4xAFbe2lICX5JB6tswOOT4SmDCXRpHWHpjtOEseiVoM9V54Gs8SlVtQ7YAqlA
+         6tmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685795255; x=1688387255;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
+        d=1e100.net; s=20221208; t=1685819401; x=1688411401;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZcxFciO+FgadEz/OB9cY/SNSRDrKptPDDCbhwYKKivw=;
-        b=QMoSnXBQUGwCsscf1y0Be6da/IzwWc8JcyYGzkbNP9bvk9yE2wKjCVqCFrXDhD1jiH
-         0vvLnoPSwaavFxgS6ZQUOUlIqYplY+4KjrDL1JFUXnzUM/zOlql6CSSQJCCXEMs1H88t
-         dAJlW9UkQCZBjdsaZ+Op/475DR5J26WZEo87U9wZyFwuJXCK6ECQLYTHKkg67YKAakkS
-         89xveW4feQMZCuvobvJmX/5eaYCzkDtub3S7oeVwUEWnHyHOfyP6mXaq20vcm+ZScmQi
-         YKDvuebOqA5Ujan2M/xBxXZiSsO8WNW3ho91LYQuh73rZCA5QNg2hAQMy4gLRCoNuj69
-         ma1w==
-X-Gm-Message-State: AC+VfDwJrBkoLFfo/eL4XB/8o6ppAQdivJjoJJs1nRL0RdFHJfM+HYVW
-	gVwvwTLUtk1a2WMn9mkrz5Y=
-X-Google-Smtp-Source: ACHHUZ6WkA2BZcESwcxlAeOsw3PJj/CPtyUZi607dceyCN4ixJQWx8ZldbdWd1nJQZzDpfz6MQ+R9w==
-X-Received: by 2002:a17:907:94d4:b0:975:bb0:5628 with SMTP id dn20-20020a17090794d400b009750bb05628mr1224998ejc.15.1685795254500;
-        Sat, 03 Jun 2023 05:27:34 -0700 (PDT)
-Received: from skbuf ([188.27.184.189])
-        by smtp.gmail.com with ESMTPSA id lh20-20020a170906f8d400b0094f698073e0sm1872588ejb.123.2023.06.03.05.27.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 03 Jun 2023 05:27:34 -0700 (PDT)
-Date: Sat, 3 Jun 2023 15:27:31 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Subject: Re: [PATCH net-next 08/30] net: dsa: mt7530: change p{5,6}_interface
- to p{5,6}_configured
-Message-ID: <20230603122731.bmo2r4jlwtwpcv3k@skbuf>
-References: <20230522121532.86610-1-arinc.unal@arinc9.com>
- <20230522121532.86610-1-arinc.unal@arinc9.com>
- <20230522121532.86610-9-arinc.unal@arinc9.com>
- <20230522121532.86610-9-arinc.unal@arinc9.com>
- <20230524175107.hwzygo7p4l4rvawj@skbuf>
- <576f92b0-1900-f6ff-e92d-4b82e3436ea1@arinc9.com>
- <20230526130145.7wg75yoe6ut4na7g@skbuf>
- <7117531f-a9f2-63eb-f69d-23267e5745d0@arinc9.com>
+        bh=c/1fXZdlFrD4ZTMnSyIek5ravNGSg+bm7NeK4UcfZ5I=;
+        b=lngopmqikgB+G4QkRJXoJeXL0HhQOmtTzMb+btY5BatfqGgmZ3K/Zbxi4HmRs2KOwL
+         hs3Z5duhCixFh8idEIsLdEHGCLSPkUbuIV3tsl4WTizqYhCaGA1LgP4JClZbfdcCCHZa
+         iEoqg4z4bIKeQXchl8UCRCvXz+j64H4EiXvDfF2y3VTMhrDxuQx6gbO4Db9+x3fdxBJv
+         iQL4pT3Zw75n1bK36jZ1EAU8TUafi3eInMs/2qNTFxCVDMMMCY0gcN1kHZdaqP7QfmIU
+         vyRZjGzaGvo4QvAngUMQ5lERgwHmddI8SBVjOgw6aL0W7LBCH2UIrAAEicV7N+ROTsD+
+         AFUA==
+X-Gm-Message-State: AC+VfDxylqU6vY7kml519dYKsJZNWzFRUY9WwjcybCa3d3CN8+IqUPc4
+	xPr/+tTswNgAr+7E3IxZN8+25A==
+X-Google-Smtp-Source: ACHHUZ4RopHcJJ7GF3SSU2ePLu5DlX+l9IkWhVj+EuFjvR5yyF0baMdpGCWtH8xOXILm4qx46Z8pUw==
+X-Received: by 2002:a17:906:5d0a:b0:974:5bd2:1807 with SMTP id g10-20020a1709065d0a00b009745bd21807mr2096976ejt.24.1685819401691;
+        Sat, 03 Jun 2023 12:10:01 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.199.204])
+        by smtp.gmail.com with ESMTPSA id bi1-20020a170906a24100b009664cdb3fc5sm2218126ejb.138.2023.06.03.12.09.59
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 03 Jun 2023 12:10:01 -0700 (PDT)
+Message-ID: <d354734e-c8d1-2d75-fec4-e91bb322bbe2@linaro.org>
+Date: Sat, 3 Jun 2023 21:09:58 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <7117531f-a9f2-63eb-f69d-23267e5745d0@arinc9.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.2
+Subject: Re: [PATCH v3 1/3] dt-bindings: phy: add PHY_TYPE_CDPHY definition
+Content-Language: en-US
+To: Julien Stephan <jstephan@baylibre.com>
+Cc: mkorpershoek@baylibre.com, khilman@baylibre.com,
+ Andy Hsieh <andy.hsieh@mediatek.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Kishon Vijay Abraham I <kishon@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
+ Vinod Koul <vkoul@kernel.org>
+References: <20230524083033.486490-1-jstephan@baylibre.com>
+ <20230524083033.486490-2-jstephan@baylibre.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230524083033.486490-2-jstephan@baylibre.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230603_052737_762336_A1316BE3 
-X-CRM114-Status: GOOD (  13.15  )
+X-CRM114-CacheID: sfid-20230603_121004_637935_F426E23E 
+X-CRM114-Status: GOOD (  14.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,23 +103,32 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, mithat.guner@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jun 03, 2023 at 03:15:52PM +0300, Arınç ÜNAL wrote:
-> On 26.05.2023 16:01, Vladimir Oltean wrote:
-> > Ok, but given the premise of this patch set, that phylink is always available,
-> > does it make sense for mt7531_cpu_port_config() and mt7988_cpu_port_config()
-> > to manually call phylink methods?
+On 24/05/2023 10:30, Julien Stephan wrote:
+> Add definition for CDPHY phy type that can be configured in either D-PHY
+> mode or C-PHY mode
 > 
-> All I know is that that's how the implementation of phylink's PCS support in
-> this driver works. It expects the MAC to be set up before calling
-> mt753x_phylink_pcs_link_up() and mt753x_phylink_mac_link_up().
+> Signed-off-by: Julien Stephan <jstephan@baylibre.com>
+> ---
+>  include/dt-bindings/phy/phy.h | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/include/dt-bindings/phy/phy.h b/include/dt-bindings/phy/phy.h
+> index 6b901b342348..a19d85dbbf16 100644
+> --- a/include/dt-bindings/phy/phy.h
+> +++ b/include/dt-bindings/phy/phy.h
+> @@ -23,5 +23,6 @@
+>  #define PHY_TYPE_DPHY		10
+>  #define PHY_TYPE_CPHY		11
+>  #define PHY_TYPE_USXGMII	12
+> +#define PHY_TYPE_CDPHY		13
 
-No, but I mean, won't phylink call mt7531_mac_config(), mt753x_phylink_pcs_link_up()
-and mt753x_phylink_mac_link_up() automatically and in the expected order already,
-and if not, what prevents that from happening? I just don't understand why the
-cpu_port_config() methods of MT7531 and MT7988 call phylink methods manually
-from the driver.
+I don't think there is CD phy. It is D-PHY or C-PHY. This is not for all
+possible combinations but just types of phy.
+
+Best regards,
+Krzysztof
+
 
