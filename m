@@ -4,94 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB1CDC7EE24
-	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Jun 2023 19:10:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48508C77B73
+	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Jun 2023 21:57:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c/1fXZdlFrD4ZTMnSyIek5ravNGSg+bm7NeK4UcfZ5I=; b=4uDLxspSg5AXd2hd/2pGKP1ZJx
-	YDvAV5asLGHSZF5BKIw4sF4TfVkpPVWeKoKjDxjhmaFSWsLU62acBAE1jvEcvwfwaa0OHj0f9OLNT
-	LKY7HJu53FcfrhDpXK1YJWG4BbCqSLMpqh9uUCP7mSwimyQvkbvNHGSWtQPr4n32vqBR1Cs292mcC
-	LAWIqvXUJQvCy2bToFBrvab+NALaSGQPAcUrBIXUfC2HwLAWJJKgYGPwqkZ5nC3gUjTMTZ3EFlZye
-	wohJtHpvxqA1UwddI+pVDas6Zh8+lIw8q1t+rgIAL3wfA9GpCHwX4TMVeiAeS7D0nBVt0kZDup8GD
-	uAuBbMLw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hJv1+07zztxnXaWB2lGLhpwvzjwzOPI66T01+jArZXQ=; b=oR3ZI19UOho+TM8vqi59h3Sx6G
+	5Es4NRcS4err1huCWBSDIUhJvh8cPVa9e6IqaVn1oSuUJ2io7is6KDockk6ilKq1NDwf9V1wEA2mK
+	1KQ/ea8yEyJpLLgmmK68K0i/W6MYt5YwSUcMcmtU6Gtm2INeOIx48JBtQ9quv4+8kEXTYddbJWh2e
+	inSp3VgPINQ2/gp0BNzXdjuNP//12kJ/QnpaD4ody37PxcZOdMKufGcBLigN3DIhNcGQ5dZYbF0k8
+	iwTdLOcTBT/T23RZhA/qcHGtomQnOlWeMQGRbcDUYVGT29CFYf+U/L8T0uB9RPA5ds3ufmdm4Urxr
+	vjhzQPxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q5Wdc-00AODZ-2E;
-	Sat, 03 Jun 2023 19:10:08 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	id 1q5ZFa-00AioV-1k;
+	Sat, 03 Jun 2023 21:57:30 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q5WdY-00AOC7-1l
+	id 1q5ZFX-00AinG-1B
 	for linux-mediatek@lists.infradead.org;
-	Sat, 03 Jun 2023 19:10:05 +0000
-Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-9768fd99c0cso244203666b.0
-        for <linux-mediatek@lists.infradead.org>; Sat, 03 Jun 2023 12:10:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1685819401; x=1688411401;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=c/1fXZdlFrD4ZTMnSyIek5ravNGSg+bm7NeK4UcfZ5I=;
-        b=XGWSGPhc+xt9lfYE3ElzKDuGrJr3WUc1F9NreSgchCvhk9+TGEXaB0X+FKeFhLa4Ul
-         dBWwVA0PU7u3A9Gb/r9/YacGuXlVlqHEu42aPrlpEXXDzJscOc1SF0ShHSQse0Oj/chT
-         QLovyIjmr92pscaSYQIt6uY5CA4K46N++1MwTW+XvEsqSbFTIBJVPKBUnQcFshqSmfQK
-         AlKleHL2WPQjWo13ySdvQFAtO3k6DRkLK4/THrSTOZf+p2O7ixH3ctDfYqgLUS+Hg85I
-         68k9+su4xAFbe2lICX5JB6tswOOT4SmDCXRpHWHpjtOEseiVoM9V54Gs8SlVtQ7YAqlA
-         6tmA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685819401; x=1688411401;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=c/1fXZdlFrD4ZTMnSyIek5ravNGSg+bm7NeK4UcfZ5I=;
-        b=lngopmqikgB+G4QkRJXoJeXL0HhQOmtTzMb+btY5BatfqGgmZ3K/Zbxi4HmRs2KOwL
-         hs3Z5duhCixFh8idEIsLdEHGCLSPkUbuIV3tsl4WTizqYhCaGA1LgP4JClZbfdcCCHZa
-         iEoqg4z4bIKeQXchl8UCRCvXz+j64H4EiXvDfF2y3VTMhrDxuQx6gbO4Db9+x3fdxBJv
-         iQL4pT3Zw75n1bK36jZ1EAU8TUafi3eInMs/2qNTFxCVDMMMCY0gcN1kHZdaqP7QfmIU
-         vyRZjGzaGvo4QvAngUMQ5lERgwHmddI8SBVjOgw6aL0W7LBCH2UIrAAEicV7N+ROTsD+
-         AFUA==
-X-Gm-Message-State: AC+VfDxylqU6vY7kml519dYKsJZNWzFRUY9WwjcybCa3d3CN8+IqUPc4
-	xPr/+tTswNgAr+7E3IxZN8+25A==
-X-Google-Smtp-Source: ACHHUZ4RopHcJJ7GF3SSU2ePLu5DlX+l9IkWhVj+EuFjvR5yyF0baMdpGCWtH8xOXILm4qx46Z8pUw==
-X-Received: by 2002:a17:906:5d0a:b0:974:5bd2:1807 with SMTP id g10-20020a1709065d0a00b009745bd21807mr2096976ejt.24.1685819401691;
-        Sat, 03 Jun 2023 12:10:01 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.199.204])
-        by smtp.gmail.com with ESMTPSA id bi1-20020a170906a24100b009664cdb3fc5sm2218126ejb.138.2023.06.03.12.09.59
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 03 Jun 2023 12:10:01 -0700 (PDT)
-Message-ID: <d354734e-c8d1-2d75-fec4-e91bb322bbe2@linaro.org>
-Date: Sat, 3 Jun 2023 21:09:58 +0200
+	Sat, 03 Jun 2023 21:57:28 +0000
+Received: from mercury (unknown [185.254.75.45])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 65E4A6602B7B;
+	Sat,  3 Jun 2023 22:57:21 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1685829441;
+	bh=hJv1+07zztxnXaWB2lGLhpwvzjwzOPI66T01+jArZXQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=i+6zwYvDfkcEW67V2s8wtEUsRo+LG6xkCsd1FhS3pQ7RyKPIZH8NGTpoWuJBnoFSj
+	 sWudrVLaPg3txEwfu/KRQNgJnDzqLlSSdUYB/7KKYl5xWXXrLKggqchaUhMDRNWaaM
+	 pKxfY9cJSLO+MHLf06v2q5S3T4grbhX7NUPGEdvkeZWoadv79OJKEWrez5VOIelpMe
+	 7BFzw7kOMgfvmU2YU/ZWjcNJRRSLa31JngHg2en7AyfyPGMTWmlUztaWRjStSEvh3v
+	 Y+U3iazDDbitswzonWPDBuC1OMqgfjvclRzPR7ZeCuGh5vJvLw00gkNP7zMHYKcL1O
+	 e7IEV8YEzXGTQ==
+Received: by mercury (Postfix, from userid 1000)
+	id 03463106090A; Sat,  3 Jun 2023 23:57:18 +0200 (CEST)
+Date: Sat, 3 Jun 2023 23:57:18 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Tony Lindgren <tony@atomide.com>
+Cc: John Ogness <john.ogness@linutronix.de>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Jiri Slaby <jirislaby@kernel.org>,
+	Andy Shevchenko <andriy.shevchenko@intel.com>,
+	Dhruva Gole <d-gole@ti.com>,
+	Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>,
+	Johan Hovold <johan@kernel.org>,
+	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+	Vignesh Raghavendra <vigneshr@ti.com>, linux-omap@vger.kernel.org,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
+	=?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v12 1/1] serial: core: Start managing serial controllers
+ to enable runtime PM
+Message-ID: <20230603215718.ca5hdzdsj4btnlc2@mercury.elektranox.org>
+References: <20230525113034.46880-1-tony@atomide.com>
+ <20230602083335.GA181647@google.com>
+ <87a5xii33r.fsf@jogness.linutronix.de>
+ <20230603054139.GR14287@atomide.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.2
-Subject: Re: [PATCH v3 1/3] dt-bindings: phy: add PHY_TYPE_CDPHY definition
-Content-Language: en-US
-To: Julien Stephan <jstephan@baylibre.com>
-Cc: mkorpershoek@baylibre.com, khilman@baylibre.com,
- Andy Hsieh <andy.hsieh@mediatek.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Kishon Vijay Abraham I <kishon@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
- Vinod Koul <vkoul@kernel.org>
-References: <20230524083033.486490-1-jstephan@baylibre.com>
- <20230524083033.486490-2-jstephan@baylibre.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230524083033.486490-2-jstephan@baylibre.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="tneo32rghtw2mwkv"
+Content-Disposition: inline
+In-Reply-To: <20230603054139.GR14287@atomide.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230603_121004_637935_F426E23E 
-X-CRM114-Status: GOOD (  14.34  )
+X-CRM114-CacheID: sfid-20230603_145727_570589_FE7D9F2F 
+X-CRM114-Status: GOOD (  11.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,29 +93,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 24/05/2023 10:30, Julien Stephan wrote:
-> Add definition for CDPHY phy type that can be configured in either D-PHY
-> mode or C-PHY mode
-> 
-> Signed-off-by: Julien Stephan <jstephan@baylibre.com>
-> ---
->  include/dt-bindings/phy/phy.h | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/include/dt-bindings/phy/phy.h b/include/dt-bindings/phy/phy.h
-> index 6b901b342348..a19d85dbbf16 100644
-> --- a/include/dt-bindings/phy/phy.h
-> +++ b/include/dt-bindings/phy/phy.h
-> @@ -23,5 +23,6 @@
->  #define PHY_TYPE_DPHY		10
->  #define PHY_TYPE_CPHY		11
->  #define PHY_TYPE_USXGMII	12
-> +#define PHY_TYPE_CDPHY		13
 
-I don't think there is CD phy. It is D-PHY or C-PHY. This is not for all
-possible combinations but just types of phy.
+--tneo32rghtw2mwkv
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Best regards,
-Krzysztof
+Hi,
 
+On Sat, Jun 03, 2023 at 08:41:39AM +0300, Tony Lindgren wrote:
+> Looking at the kernelci.org test boot results for Linux next [0], seems
+> this issue is somehow 8250_mtk specific. I don't think the rk3399 boot
+> issue is serial port related.
+
+The rk3399-gru-kevin board is broken because of a change from me
+renaming CONFIG_MFD_RK808 to CONFIG_MFD_RK8XX and forgetting to
+update the defconfig :( This means the board is missing its PMIC
+driver. It should be fixed once the defconfig update is queued:
+
+https://lore.kernel.org/all/20230518040541.299189-1-sebastian.reichel@collabora.com/
+
+Unfortuantely nobody seems to feel responsible for the generic arm
+defconfig files :(
+
+-- Sebastian
+
+--tneo32rghtw2mwkv
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmR7tzsACgkQ2O7X88g7
++pqWzQ//Uie7CBnwn5JUIsHsI4pPtgldOe3Z8n7rWBzZvYXWIfkk/BJg1Dw8i+Xx
+QFeJoehfNn02Lkznixt6ZsIL6iVQketP/BfKSFl/QFV/LkKqqRn8lqdwOtDi3ek5
+LVEN0nbMCI6KMNFZgnIU0Vg6L7RLKA/PgAZ9n0FT/rnKQBj3yJCE9/UaqdxFmZ2Q
+GMSOWPh21szOK9nd+9irXGLtJBirdSK+uzkwIt8zs/Ff2NiUPbHw+cArDb1qZwJ5
+t7fLF9HkbrDViQtJr5eHdmVhXT4WIPZbeob2tKUy37weZemNXd9LTOjJlAxu7voa
+swsc/jVZJCjQrySnn1MFmL8nV/Ae+MDq/EceDR5JpiiS/NN4AtdzV+ieRcqhf10a
+Amni6QCMoe4nqMEFAPsdOTe1obH5qiTYhRohkIBjrQQ4CgCUDk6fvlq7LFjpW+ZD
+BNsVHk9jlO+VKMclFLAmgWb4gV3HF68SE2cpOCtYINFmaAqxRfiboeIEsGDGOuA7
+869iSzU5Z1m9Cz0huFRH6QaDIMCI4+WWikekGuTT3vuFdh4OgH/1ZNdSz2RizkGi
+oQV08HqL8tkufUhFeiLUfDZhz6LmNzanlMcQZbEzlOyN9FOqXSZ4/BhPCLJtzMrT
+tjDdjj0wFg7NgAJI+v6n71GpVDzWMNufTt+ppYm7GNRsveW+Dt8=
+=oc53
+-----END PGP SIGNATURE-----
+
+--tneo32rghtw2mwkv--
 
