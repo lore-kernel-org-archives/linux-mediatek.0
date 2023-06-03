@@ -4,63 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 385EEC77B73
-	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Jun 2023 06:35:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C403C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Jun 2023 10:48:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uwgDaYrBzMoDJq6oWWGWHxHQ2gM4CZcpM55gukLW0Hg=; b=P6fM0eu1fE0jSkdv/aQubPcQhm
-	Op6qAbcWq/KWVUBy0W1jr1tCeXMFQ/zougCsPcRxnj6bCitwFMJ0A1MuzFjY6DyaYUDojVbdZz0mH
-	j+4x2qEtUkERFCj+J6npoT6EXI768feRU78/BbNAMvYbqK1YSTRZuY8jcBjaPjKqfAwEOJtX37QMg
-	HFk0dFV8TLuBHo2ZNagfPsaHIJZx2nJDhfBgRsOrMXwfMFrfs4A3mCBBRi163kbSLMGa8RwRJ2d+f
-	00N+q61Eazt/sXZuaCUx0bshPjeLQbvp8EC25L8BNX1D6UWDUW9DRx9ospUPyV/7O2KcQMWP8V4i+
-	C7rWdoiA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=l61RFDyIs8zaoxSjZ7niju+bNPjneBpOdbP7BVDn2+E=; b=RqopskXM4LvwtrtO5MVizg5Sgj
+	prKwUzDsd5Hus2KoewV6of2DHr6hEbOlXKPbaiai5NbCi080djOmZyXNqCzkhpLvztRWPz039hb6d
+	ZSU+U1BBYtuNQ0gprOt18dStReKs3pG5VKK4oixmRdk2RZ/f1P1VYdylFipDkSRvynx3BTK+OH7e4
+	0OooDWg5Dd5zYVGiigHPDJ9fyiAA27zICLhliCw7SAG9/af+iBKirsF4JGKDxwz9qWIKUmPMhBujd
+	anZS2m+Aje267KTs+UoeUaask9i8qdJp+PTr1nBlI8z8SmDbiDHUDsTR6asRDopCMqXecR5PCqfcb
+	rKooM39Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q5KrS-008vJb-2H;
-	Sat, 03 Jun 2023 06:35:38 +0000
-Received: from muru.com ([72.249.23.125])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q5KrP-008vJC-2e
-	for linux-mediatek@lists.infradead.org;
-	Sat, 03 Jun 2023 06:35:37 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by muru.com (Postfix) with ESMTPS id 668D4804D;
-	Sat,  3 Jun 2023 06:35:34 +0000 (UTC)
-Date: Sat, 3 Jun 2023 09:35:33 +0300
-From: Tony Lindgren <tony@atomide.com>
-To: John Ogness <john.ogness@linutronix.de>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Jiri Slaby <jirislaby@kernel.org>,
-	Andy Shevchenko <andriy.shevchenko@intel.com>,
-	Dhruva Gole <d-gole@ti.com>,
-	Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>,
-	Johan Hovold <johan@kernel.org>,
-	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
-	Vignesh Raghavendra <vigneshr@ti.com>, linux-omap@vger.kernel.org,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
-	=?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v12 1/1] serial: core: Start managing serial controllers
- to enable runtime PM
-Message-ID: <20230603063533.GS14287@atomide.com>
-References: <20230525113034.46880-1-tony@atomide.com>
- <20230602083335.GA181647@google.com>
- <87a5xii33r.fsf@jogness.linutronix.de>
- <20230603054139.GR14287@atomide.com>
+	id 1q5OoE-009ID3-2L;
+	Sat, 03 Jun 2023 10:48:34 +0000
+Received: from sender3-op-o19.zoho.com ([136.143.184.19])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1q5Onu-009IAG-1m;
+	Sat, 03 Jun 2023 10:48:16 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1685789288; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=jS6fwJbr/HNXViynisbTo4r6Q1ABQRB0Mu1vTIdDoBGJPYHzADX9Jo9RYa4yNVbKQrkuNyYHm/MgHBQAX4/1Tj1a4F3kcmBj/SKs36DU0LU5Hp7YtYsonuJdOpiZDIGFs+YfEXbgRhRVJww4uzEdXlaik6iTUI2ZF0OKgwHtVd0=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1685789288; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=l61RFDyIs8zaoxSjZ7niju+bNPjneBpOdbP7BVDn2+E=; 
+	b=U7hxRm/KA1M7wVkWyOmFm93scmItW8+Pq7pULn/ohJlQ1KUbL2ECSDeQuUF32RznLjWwWs55DauM3NTWBo3wHGbmpYVoq+T+28QL+2jYyrJgPahGgADDH7WRb4GZXLvyfgBSflIb/8dclxC42F6sdgZqJrtJZuGIIp+LPI1Wb2E=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1685789288;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=l61RFDyIs8zaoxSjZ7niju+bNPjneBpOdbP7BVDn2+E=;
+	b=D2K1fsn4m+1tEnBY4c1vHvyBUrrA22XpwYK195M7zSZA97MpI1rFBLqn4ZJ0Fz4I
+	n7ikZTHGNRP9OFQLgEV+PnOu5UmyVIBOCubjjeMwy5lquUu/XsCu9NKa8EgM3IUVFdE
+	2sU7XnfDNSajDIc8FJWdIxyTefctZ+B5W1QY8QuQ=
+Received: from [192.168.99.141] (178-147-169-233.haap.dm.cosmote.net [178.147.169.233]) by mx.zohomail.com
+	with SMTPS id 1685789286581102.0769329082168; Sat, 3 Jun 2023 03:48:06 -0700 (PDT)
+Message-ID: <8f27983d-0b1d-47f1-9219-f609423c9fb6@arinc9.com>
+Date: Sat, 3 Jun 2023 13:48:01 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230603054139.GR14287@atomide.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: Aw: Re: Re: Re: Re: Re: [PATCH v3 0/5] arm: dts: mt7623: relocate
+ gmacs, mt7530 switch, and add port@5
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+ Frank Wunderlich <frank-w@public-files.de>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ erkin.bozoglu@xeront.com
+References: <20230210182505.24597-1-arinc.unal@arinc9.com>
+ <c3ab9a9b-3eb2-8fb0-d5d7-c0b7c684d3a7@arinc9.com>
+ <trinity-dab715b9-3953-40da-bc25-c4c2a5e9b7c3-1676715866453@3c-app-gmx-bap53>
+ <27a26da8-8297-5327-7493-54d8359b6970@arinc9.com>
+ <trinity-dd260791-3637-4193-8f93-a9fcdb013dcb-1676722705920@3c-app-gmx-bap53>
+ <2dc2fc39-b0d5-c872-36bf-fde851debe4b@arinc9.com>
+ <A329B2DF-04B7-40FA-BBCE-1F1012A6DBBD@public-files.de>
+ <fb96d8eb-2eb7-db19-1135-1a833294dd67@arinc9.com>
+ <trinity-899c01a6-0fc5-4900-aea8-2b43802c8329-1676814734826@3c-app-gmx-bs35>
+ <trinity-3f46d325-bc45-4ee7-ae86-c8db4467aa94-1681303779505@3c-app-gmx-bap50>
+ <703ad8a8-f84e-6404-4cce-5386bfaa2bd7@arinc9.com>
+ <trinity-489cdc3b-e861-49d0-b1ec-e964f00388df-1681312277092@3c-app-gmx-bap50>
+ <0d242292-16b7-6837-7d1a-b70c41309e6b@arinc9.com>
+ <trinity-990f3b28-d67c-49ef-9094-c3b7d2059e36-1681318402336@3c-app-gmx-bap50>
+ <e08c5175-d771-5b87-d065-47942a800419@arinc9.com>
+ <0fa22575-18d8-5598-1377-7f66c56aa861@gmail.com>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <0fa22575-18d8-5598-1377-7f66c56aa861@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230602_233535_921016_E69462FA 
-X-CRM114-Status: GOOD (  13.48  )
+X-CRM114-CacheID: sfid-20230603_034814_622651_8626E17A 
+X-CRM114-Status: GOOD (  19.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,59 +100,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-* Tony Lindgren <tony@atomide.com> [230603 05:41]:
-> I don't think 8250_mtk needs to do register access before and after the
-> serial port registration, but if it does, then adding custom read/write
-> functions can be done that do not rely on initialized port like
-> serial_out().
+On 29.05.2023 16:40, Matthias Brugger wrote:
+> 
+> 
+> On 12/04/2023 19:06, Arınç ÜNAL wrote:
+>> On 12.04.2023 19:53, Frank Wunderlich wrote:
+>>> Hi
+>>>
+>>>> Gesendet: Mittwoch, 12. April 2023 um 18:21 Uhr
+>>>> Von: "Arınç ÜNAL" <arinc.unal@arinc9.com>
+>>>>> thanks, it changes the master when i upgrade iproute to 6.1 (from 
+>>>>> debian bullseye-backports), but i cannot do any traffic on it after 
+>>>>> switching to gmac1...
+>>>>>
+>>>>> 5: wan@eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc 
+>>>>> noqueue state UP group default qlen 1000
+>>>>>       link/ether f2:d2:51:56:cd:3d brd ff:ff:ff:ff:ff:ff
+>>>>>       inet 192.168.0.11/24 scope global wan
+>>>>>          valid_lft forever preferred_lft forever
+>>>>>
+>>>>> see no p5-TX/gmac-rx
+>>>
+>>>> Did you apply the vlan and flooding fix patches from Richard?
+>>>
+>>> have now applied all patches i've found from richard (which are all 
+>>> rejected):
+>>>
+>>> fe4495bb3cc2 2023-02-12 Fix setting up CPU and User ports to be in 
+>>> the correct mode during setup and when toggling vlan_filtering on a 
+>>> bridge port.  (HEAD -> 6.3-rc)
+>>> b0641f3e1a69 2023-02-12 Fix Flooding: Disable by default on User 
+>>> ports and Enable on CPU ports
+>>> cb04b3451524 2023-02-12 Do not add all User ports to the CPU by 
+>>> default. This will break Multi CPU when added a seperate patch. It 
+>>> will be overwritten by .port_enable and since we are forcing output 
+>>> to a port via the Special Tag this is not needed.
+>>>
+>>> and now it seems working and is clear ;)
+>>>
+>>> root@bpi-r2:~# ip l show wan
+>>> 5: wan@eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue 
+>>> state UP mode DEFAULT group default qlen 1000
+>>>      link/ether f2:d2:51:56:cd:3d brd ff:ff:ff:ff:ff:ff
+>>>
+>>> iperf3
+>>> [ ID] Interval           Transfer     Bitrate         Retr
+>>> [  5]   0.00-10.00  sec  1.09 GBytes   940 Mbits/sec    0             
+>>> sender
+>>> [  5]   0.00-10.03  sec  1.09 GBytes   936 Mbits/sec                  
+>>> receiver
+>>>
+>>>
+>>> iperf3 -R
+>>> [ ID] Interval           Transfer     Bitrate         Retr
+>>> [  5]   0.00-10.04  sec  1.09 GBytes   936 Mbits/sec    0             
+>>> sender
+>>> [  5]   0.00-10.00  sec  1.09 GBytes   938 Mbits/sec                  
+>>> receiver
+>>>
+>>>
+>>> how do you deal with these patches? do you include them into your 
+>>> mt7530 fixes series? they (and vladimirs preferred cpu-port) need to 
+>>> be applied before these DTS-changes
+>>
+>> Dealing with this is the last step on my tasklist. Take a look:
+>>
+>> https://arinc9.notion.site/mt7530-c-improvements-bbfdc2ceb958484b9627297b88bc6d4a
+>>
+> 
+> I'm a bit lost here. @frank can this be merged now or are there still 
+> oustanding issues. It seems to me that not, but just in case...
 
-Oh but mtk8250_runtime_suspend() calls serial_in(up, MTK_UART_DEBUG0), so
-yeah if that gets called before registration is complete it causes a NULL
-pointer exception. If the serial_ctrl and serial_port devices do runtime
-suspend before port registration completes, things will fail.
+I fixed the network connectivity issue on the MT7530 DSA sudriver which 
+was the main problem this patch series would cause. I don't see an issue 
+that should block this series anymore.
 
-Sounds like doing pm_runtime_resume_and_get() in mtk8250_probe() might
-fix the issue. Still seems that adding a custom read function for
-mtk8250_runtime_suspend() to use instead of calling serial_in() should
-not be needed.
+With the current MT7530 DSA sudriver, port 5 will be the active CPU port 
+instead of 6. I've got a patch series to prefer port 6 instead but in 
+the meantime, this patch series should be good to apply.
 
-An experimental untested patch below, maye it helps?
-
-Regards,
-
-Tony
-
-8< ------
-diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
---- a/drivers/tty/serial/8250/8250_mtk.c
-+++ b/drivers/tty/serial/8250/8250_mtk.c
-@@ -588,20 +588,24 @@ static int mtk8250_probe(struct platform_device *pdev)
- 	platform_set_drvdata(pdev, data);
- 
- 	pm_runtime_enable(&pdev->dev);
--	err = mtk8250_runtime_resume(&pdev->dev);
-+	err = pm_runtime_resume_and_get(&pdev->dev);
- 	if (err)
- 		goto err_pm_disable;
- 
- 	data->line = serial8250_register_8250_port(&uart);
- 	if (data->line < 0) {
- 		err = data->line;
--		goto err_pm_disable;
-+		goto err_pm_put;
- 	}
- 
- 	data->rx_wakeup_irq = platform_get_irq_optional(pdev, 1);
- 
-+	pm_runtime_put_sync(&pdev->dev);
-+
- 	return 0;
- 
-+err_pm_put:
-+	pm_runtime_put_sync(&pdev->dev);
- err_pm_disable:
- 	pm_runtime_disable(&pdev->dev);
- 
--- 
-2.41.0
+Arınç
 
