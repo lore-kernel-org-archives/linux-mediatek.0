@@ -4,54 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D67BC77B73
-	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Jun 2023 12:27:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD213C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Jun 2023 12:27:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NdKc/jMqGPx4GztP2rKQEhUYT+Xz1wkAFWT6ucRh7C8=; b=3dIHnQef0JmltUuah67bdwvGCB
-	G/bUg6ICHAU4QIfJNxWhupPsHgbr1c5lPqJEzrBCZfDWC6Ly+EZIFVWm4929myQiamQkzj8vhp4hR
-	fFzcnPqJVSyQ5xLcnq8w0lLdLtwZZTWUB5/cptblnjyi81Nv58AhueNIWkx8rUtZJ3TLs4ukMfCuZ
-	GZJy5avQFGJBvOkPmHQtoAZPNeZsdUdhmiPMlsExYHblIVSAqCFw9CTthM+qJ9gxhOTofIuP5uU5e
-	t7YD0ud9/oy/cABZmuQXqhNVsQALXEFXCxv3Au2YXhHKv7c0RgauUU8N5y8QhaKc1Kn24PfdIKOdV
-	QBzQGxbA==;
+	bh=ZcxFciO+FgadEz/OB9cY/SNSRDrKptPDDCbhwYKKivw=; b=IM+zlJ1gBTUm2iVMMuHIm55i3V
+	k9dY3PVrDGmZ2hiWfiUx8Wd/AZD1smpTD1fbeTDh5KRgB6Ulm0ku0IJzMmkDs+KdT58gbg3B6iRRI
+	1Pts3Qij3aXs3XIDZxFKIIY34YTg3xjUpucmkaekEDcv0C/P4htlyDErW78J+f3denpbYxaQmuVcJ
+	G4zhbWevh0ZkqvmCLCE7v3TlaKzeNs4JZpWV4YHOjtjABenkbh54FwAw1G8ecEi2PVet6XD2yEisk
+	sOfJRGbjzsjsxCyFUgG1hwk7PjVUHAmjmPyh1GvPNrQNn0mlcoLympg/qVuuKWACQMvnaI/MONCFF
+	l9kmdeyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q5QLi-009jQd-0S;
-	Sat, 03 Jun 2023 12:27:14 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1q5QM9-009jZB-0E;
+	Sat, 03 Jun 2023 12:27:41 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q5QLe-009jOm-2b;
-	Sat, 03 Jun 2023 12:27:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=NdKc/jMqGPx4GztP2rKQEhUYT+Xz1wkAFWT6ucRh7C8=; b=P2L+9i8tmKVnpGy9CqOUIgxeu0
-	jy2PAiKhDLB9S6If9z/dVeyWCDAJKL82PCEWUOoDZB/xTNfdx7Duowb0pEgh9y7dmmuGgNkHOp9CS
-	QghaBMsB5zwQFk7x0KRw/H11pn0N5bg2h7XeRbc4u4CsCPcGO4ivlNJQ9aODrZmtEGnGMEdkuMrKU
-	TigbbfjiWTXCG330nHW2bFL2GvGo+IZNaacpD3mAIXvF0xkgO3sueYhEGUR4S46vLFxBwE0ZNoIvv
-	SoqJ0kOX70n+Wn79QQzyIF+nUwCeRTo9SO64U4OtRKIuSENSrPpOHmYo+Y6936SdHTrSOG4fA5DK/
-	m+j9+J+w==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:47258)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1q5QL8-0001Fn-DH; Sat, 03 Jun 2023 13:26:38 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1q5QKz-00041Y-AO; Sat, 03 Jun 2023 13:26:29 +0100
-Date: Sat, 3 Jun 2023 13:26:29 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+	id 1q5QM5-009jXL-2G;
+	Sat, 03 Jun 2023 12:27:39 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-969f90d71d4so445734166b.3;
+        Sat, 03 Jun 2023 05:27:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1685795255; x=1688387255;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=ZcxFciO+FgadEz/OB9cY/SNSRDrKptPDDCbhwYKKivw=;
+        b=WFctNZ81xWIx29VG0DK7rYmLHHpVtkUKtme5W4sXiOd+y5tiNx8DVwPlILjCR9MqGD
+         1ZQXt+KjLQZjCdKWfIOC8SG18OvMxTMp4waGGA57Pk1Aq6aW0rL6usKrkKlpRQfg6hE/
+         YAC3MpkGe83ek2+JtCNqJoTCcFaiUOtfDDn99vsG9ObgB41Gilfyqz0xlp0ol+c3UC9P
+         ETn3m8nFzi61310h93OYSg9LmaisnjuaCT6S1NUK9hEVt58WyHtTD+9NjuWVAbw10NU9
+         hw2TjpMFqPMhxBsHjcjxbD/CF64+Q2wNjnCNcd+GqzNOG3L0ruCTlK5+fHjP/k8MHoCm
+         4Vsg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1685795255; x=1688387255;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ZcxFciO+FgadEz/OB9cY/SNSRDrKptPDDCbhwYKKivw=;
+        b=QMoSnXBQUGwCsscf1y0Be6da/IzwWc8JcyYGzkbNP9bvk9yE2wKjCVqCFrXDhD1jiH
+         0vvLnoPSwaavFxgS6ZQUOUlIqYplY+4KjrDL1JFUXnzUM/zOlql6CSSQJCCXEMs1H88t
+         dAJlW9UkQCZBjdsaZ+Op/475DR5J26WZEo87U9wZyFwuJXCK6ECQLYTHKkg67YKAakkS
+         89xveW4feQMZCuvobvJmX/5eaYCzkDtub3S7oeVwUEWnHyHOfyP6mXaq20vcm+ZScmQi
+         YKDvuebOqA5Ujan2M/xBxXZiSsO8WNW3ho91LYQuh73rZCA5QNg2hAQMy4gLRCoNuj69
+         ma1w==
+X-Gm-Message-State: AC+VfDwJrBkoLFfo/eL4XB/8o6ppAQdivJjoJJs1nRL0RdFHJfM+HYVW
+	gVwvwTLUtk1a2WMn9mkrz5Y=
+X-Google-Smtp-Source: ACHHUZ6WkA2BZcESwcxlAeOsw3PJj/CPtyUZi607dceyCN4ixJQWx8ZldbdWd1nJQZzDpfz6MQ+R9w==
+X-Received: by 2002:a17:907:94d4:b0:975:bb0:5628 with SMTP id dn20-20020a17090794d400b009750bb05628mr1224998ejc.15.1685795254500;
+        Sat, 03 Jun 2023 05:27:34 -0700 (PDT)
+Received: from skbuf ([188.27.184.189])
+        by smtp.gmail.com with ESMTPSA id lh20-20020a170906f8d400b0094f698073e0sm1872588ejb.123.2023.06.03.05.27.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 03 Jun 2023 05:27:34 -0700 (PDT)
+Date: Sat, 3 Jun 2023 15:27:31 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
 To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
 Subject: Re: [PATCH net-next 08/30] net: dsa: mt7530: change p{5,6}_interface
  to p{5,6}_configured
-Message-ID: <ZHsxdQZLkP/+5TF0@shell.armlinux.org.uk>
+Message-ID: <20230603122731.bmo2r4jlwtwpcv3k@skbuf>
 References: <20230522121532.86610-1-arinc.unal@arinc9.com>
  <20230522121532.86610-1-arinc.unal@arinc9.com>
  <20230522121532.86610-9-arinc.unal@arinc9.com>
@@ -66,8 +81,8 @@ Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
 In-Reply-To: <7117531f-a9f2-63eb-f69d-23267e5745d0@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230603_052711_117896_22C0BBAB 
-X-CRM114-Status: GOOD (  15.66  )
+X-CRM114-CacheID: sfid-20230603_052737_762336_A1316BE3 
+X-CRM114-Status: GOOD (  13.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,7 +94,7 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, mithat.guner@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>
+Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, mithat.guner@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
@@ -93,28 +108,9 @@ On Sat, Jun 03, 2023 at 03:15:52PM +0300, Arınç ÜNAL wrote:
 > this driver works. It expects the MAC to be set up before calling
 > mt753x_phylink_pcs_link_up() and mt753x_phylink_mac_link_up().
 
-First, do you see a message printed for the DSA device indicating that
-a link is up, without identifying the interface? For example, with
-mv88e6xxx:
-
-mv88e6085 f1072004.mdio-mii:04: Link is Up - 1Gbps/Full - flow control off
-
-as opposed to a user port which will look like this:
-
-mv88e6085 f1072004.mdio-mii:04 lan1: Link is Up - 1Gbps/Full - flow control rx/tx
-
-If you do, that's likely for the CPU port, and indicates that phylink
-is being used for the CPU port. If not, then you need to investigate
-whether you've provided the full description in DT for the CPU port.
-In other words, phy-mode and a fixed-link specification or in-band
-mode.
-
-Given that, you should have no need to make explicit calls to your
-mac_config, pcs_link_up and mac_link_up functions. If you need to
-make these calls, it suggests that phylink is not being used for the
-CPU port.
-
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+No, but I mean, won't phylink call mt7531_mac_config(), mt753x_phylink_pcs_link_up()
+and mt753x_phylink_mac_link_up() automatically and in the expected order already,
+and if not, what prevents that from happening? I just don't understand why the
+cpu_port_config() methods of MT7531 and MT7988 call phylink methods manually
+from the driver.
 
