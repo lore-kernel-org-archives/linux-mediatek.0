@@ -4,56 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F482C77B73
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jun 2023 16:00:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99789C77B73
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jun 2023 16:07:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FW0PNrpZQSnc0V/qoSieuydyaAZiDC60qUhOzf/ID5I=; b=SiMoz9QOgBksC0wky9vzMnemm0
-	Royo/dUzJfwIv4iJZGEpdQIchdmXISrSIOSG870kmu3rTIVZmnY+/BhghEAFCA4b6Vye340Wg7gOJ
-	+qlbJv/ztGWJLVTud19z4onR199Lu6pzS+oXHIYXr6bZ+R65u88JOesWDv12ciqjesu5W0fQp7nIu
-	6WwOxrewe9VA2Al/umu4pNqZUwxTQ7tk4sBdN+4TiMb2SEgp2YIwtmHdWlPz4jrlnlOYg1qL5Er8U
-	mTZn4m9l2AuHpYpQ02HLmmHjHvpMFDOd9LLABIwytP6jpLaFQmfp8D0BYj0mWhqtGYkPx6dftZu9o
-	gFkMK8xw==;
+	bh=3OUxATfYl8ZN5l6qgZVR1LuysKVqRTNjYsPk18jqhKc=; b=Gl+iTzB/i/R/qxcPO8kQUp7fBM
+	mWi1Jign8NhIXlaOEcYrXSOp5Kbd4V7S8raKgkiKAlCip/HP8TjMhSgVp3prRd/qhi2mByQSHtyli
+	PvOGVQN88RO5hVGxVmpgpvyiOJaZP7t9A8u9wOu+xUOoAq5gc+DhJq8YYpx7MRdAUx47kAkC+z5vb
+	JYGsAvAjNmvK7IYz9UjOtGAhCyThrqOOaHrbK8chAWBJIRnLgC+fvHj0Hc/PPcD0HDS7hMazeyHwY
+	efMqHovgydOUfFq0Jy0zyOJOUpArQL/khsZ2GYA/hfwN5QOEnkGgHh2Cs1qbYArLPQz4Kp/AJjWB5
+	JclRxsxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q5q9q-00CPxH-0I;
-	Sun, 04 Jun 2023 16:00:42 +0000
+	id 1q5qFw-00CQTK-1D;
+	Sun, 04 Jun 2023 16:07:00 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q5q9m-00CPwP-0u;
-	Sun, 04 Jun 2023 16:00:40 +0000
+	id 1q5qFr-00CQSQ-2n;
+	Sun, 04 Jun 2023 16:06:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
 	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=FW0PNrpZQSnc0V/qoSieuydyaAZiDC60qUhOzf/ID5I=; b=Mid5KCuEBlMUlRpRlOR3tdZP3l
-	nJv/UCtVBlZz7NDrr9QfEo1yis+07rntRNE4qS2qwDgvSffgn04435A4+dCNAG+2cXkCruwq+flDK
-	HDHMY0g6mzlOjbhi+M7qFWKEun3vikEcuRVPXcjfmO3n4xIhuwyFyJPNswYYhaZh1N59VpZWzwhl9
-	Mlxygn6J5SMA5l/SEKnZBMcQ1ggwtsLc+9DZ1rkmrQMKrVrgNX5K7E9YduLyao8DBAU8Kf7VzAZH6
-	ETjsIwOJGqdqBogXLve+tiY7JeE7L2tpjAN7GNyPkwfdLI3BM8Axa/W5pfAcUyVBcHPDKXdHdyP5d
-	KZkK2uUA==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:46044)
+	bh=3OUxATfYl8ZN5l6qgZVR1LuysKVqRTNjYsPk18jqhKc=; b=1ov/WgLqcog5fY90id+eITKa6U
+	K9a/bVdYZUI3ir9CehaZnXEIUNWlfbPpTG8V30H4lpNg2kexsIzRxsEY0vgYyoahYOnqKdYjPtXNb
+	tGtsvaYE5oEaQAxdUWKxWYt895f1AtUW483oebCgkIdr5fiQU6n/2krIX5dv4tErc07iK+6loaPYu
+	5OgrM5bUeejQ2/6lqqb3QbfpIrNwtJkYO0hXegPvsxLe8JR5mxJuFGr41mACgP1UlPsB6QQ8ij9v+
+	seCwohkM0SxhHdi1gwRRQfqziljeOyCz259ilbTA0Wmnkfh13VPHf679cLV0Qb20XXGygVZdO9xgu
+	j6KMVNkg==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:46988)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <linux@armlinux.org.uk>)
-	id 1q5q9R-0002lR-T1; Sun, 04 Jun 2023 17:00:17 +0100
+	id 1q5qFc-0002m4-Qf; Sun, 04 Jun 2023 17:06:40 +0100
 Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
 	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1q5q9L-0005Bb-QY; Sun, 04 Jun 2023 17:00:11 +0100
-Date: Sun, 4 Jun 2023 17:00:11 +0100
+	id 1q5qFZ-0005Bo-Aq; Sun, 04 Jun 2023 17:06:37 +0100
+Date: Sun, 4 Jun 2023 17:06:37 +0100
 From: "Russell King (Oracle)" <linux@armlinux.org.uk>
 To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
 Subject: Re: [PATCH net-next 08/30] net: dsa: mt7530: change p{5,6}_interface
  to p{5,6}_configured
-Message-ID: <ZHy1C7wzqaj5KCmy@shell.armlinux.org.uk>
-References: <576f92b0-1900-f6ff-e92d-4b82e3436ea1@arinc9.com>
- <20230526130145.7wg75yoe6ut4na7g@skbuf>
+Message-ID: <ZHy2jQLesdYFMQtO@shell.armlinux.org.uk>
+References: <20230526130145.7wg75yoe6ut4na7g@skbuf>
  <7117531f-a9f2-63eb-f69d-23267e5745d0@arinc9.com>
  <ZHsxdQZLkP/+5TF0@shell.armlinux.org.uk>
  <826fd2fc-fbf8-dab7-9c90-b726d15e2983@arinc9.com>
@@ -62,14 +61,15 @@ References: <576f92b0-1900-f6ff-e92d-4b82e3436ea1@arinc9.com>
  <ZHyMezyKizkz2+Wg@shell.armlinux.org.uk>
  <d269ac88-9923-c00c-8047-cc8c9f94ef2c@arinc9.com>
  <ZHyqI2oOI4KkvgB8@shell.armlinux.org.uk>
+ <ZHy1C7wzqaj5KCmy@shell.armlinux.org.uk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <ZHyqI2oOI4KkvgB8@shell.armlinux.org.uk>
+In-Reply-To: <ZHy1C7wzqaj5KCmy@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230604_090038_465945_6E67339B 
-X-CRM114-Status: GOOD (  44.38  )
+X-CRM114-CacheID: sfid-20230604_090656_047180_1F7C02B5 
+X-CRM114-Status: GOOD (  52.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,201 +85,211 @@ Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <ed
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jun 04, 2023 at 04:13:39PM +0100, Russell King (Oracle) wrote:
-> On Sun, Jun 04, 2023 at 04:14:31PM +0300, Arınç ÜNAL wrote:
-> > On 4.06.2023 16:07, Russell King (Oracle) wrote:
-> > > On Sun, Jun 04, 2023 at 03:55:17PM +0300, Vladimir Oltean wrote:
-> > > > On Sun, Jun 04, 2023 at 01:18:04PM +0100, Russell King (Oracle) wrote:
-> > > > > I don't remember whether Vladimir's firmware validator will fail for
-> > > > > mt753x if CPU ports are not fully described, but that would be well
-> > > > > worth checking. If it does, then we can be confident that phylink
-> > > > > will always be used, and those bypassing calls should not be necessary.
+On Sun, Jun 04, 2023 at 05:00:11PM +0100, Russell King (Oracle) wrote:
+> On Sun, Jun 04, 2023 at 04:13:39PM +0100, Russell King (Oracle) wrote:
+> > On Sun, Jun 04, 2023 at 04:14:31PM +0300, Arınç ÜNAL wrote:
+> > > On 4.06.2023 16:07, Russell King (Oracle) wrote:
+> > > > On Sun, Jun 04, 2023 at 03:55:17PM +0300, Vladimir Oltean wrote:
+> > > > > On Sun, Jun 04, 2023 at 01:18:04PM +0100, Russell King (Oracle) wrote:
+> > > > > > I don't remember whether Vladimir's firmware validator will fail for
+> > > > > > mt753x if CPU ports are not fully described, but that would be well
+> > > > > > worth checking. If it does, then we can be confident that phylink
+> > > > > > will always be used, and those bypassing calls should not be necessary.
+> > > > > 
+> > > > > It does, I've just retested this:
+> > > > > 
+> > > > > [    8.469152] mscc_felix 0000:00:00.5: OF node /soc/pcie@1f0000000/ethernet-switch@0,5/ports/port@4 of CPU port 4 lacks the required "phy-handle", "fixed-link" or "managed" properties
+> > > > > [    8.494571] mscc_felix 0000:00:00.5: error -EINVAL: Failed to register DSA switch
+> > > > > [    8.502151] mscc_felix: probe of 0000:00:00.5 failed with error -22
 > > > > 
-> > > > It does, I've just retested this:
+> > > > ... which isn't listed in dsa_switches_apply_workarounds[], and
+> > > > neither is mt753x. Thanks.
 > > > > 
-> > > > [    8.469152] mscc_felix 0000:00:00.5: OF node /soc/pcie@1f0000000/ethernet-switch@0,5/ports/port@4 of CPU port 4 lacks the required "phy-handle", "fixed-link" or "managed" properties
-> > > > [    8.494571] mscc_felix 0000:00:00.5: error -EINVAL: Failed to register DSA switch
-> > > > [    8.502151] mscc_felix: probe of 0000:00:00.5 failed with error -22
+> > > > So, that should be sufficient to know that the CPU port will always
+> > > > properly described, and thus bypassing phylink in mt753x for the CPU
+> > > > port should not be necessary.
 > > > 
-> > > ... which isn't listed in dsa_switches_apply_workarounds[], and
-> > > neither is mt753x. Thanks.
+> > > Perfect! If I understand correctly, there's this code - specific to MT7531
+> > > and MT7988 ports being used as CPU ports - which runs in addition to what's
+> > > in mt753x_phylink_mac_config():
 > > > 
-> > > So, that should be sufficient to know that the CPU port will always
-> > > properly described, and thus bypassing phylink in mt753x for the CPU
-> > > port should not be necessary.
+> > > 	mt7530_write(priv, MT7530_PMCR_P(port),
+> > > 		     PMCR_CPU_PORT_SETTING(priv->id));
+> > > 
+> > > This should be put on mt753x_phylink_mac_config(), under priv->id ==
+> > > ID_MT7531, priv->id == ID_MT7988, and dsa_is_cpu_port(ds, port) checks?
 > > 
-> > Perfect! If I understand correctly, there's this code - specific to MT7531
-> > and MT7988 ports being used as CPU ports - which runs in addition to what's
-> > in mt753x_phylink_mac_config():
+> > Please remember that I have very little knowledge of MT753x, so in
+> > order to answer this question, I've read through the mt7530 driver
+> > code.
 > > 
-> > 	mt7530_write(priv, MT7530_PMCR_P(port),
-> > 		     PMCR_CPU_PORT_SETTING(priv->id));
+> > Looking at mt7530.h:
 > > 
-> > This should be put on mt753x_phylink_mac_config(), under priv->id ==
-> > ID_MT7531, priv->id == ID_MT7988, and dsa_is_cpu_port(ds, port) checks?
+> > #define  PMCR_CPU_PORT_SETTING(id)      (PMCR_FORCE_MODE_ID((id)) | \
+> >                                          PMCR_IFG_XMIT(1) | PMCR_MAC_MODE | \
+> >                                          PMCR_BACKOFF_EN | PMCR_BACKPR_EN | \
+> >                                          PMCR_TX_EN | PMCR_RX_EN | \
+> >                                          PMCR_TX_FC_EN | PMCR_RX_FC_EN | \
+> >                                          PMCR_FORCE_SPEED_1000 | \
+> >                                          PMCR_FORCE_FDX | PMCR_FORCE_LNK)
+> > 
+> > This seems to be some kind of port control register that sets amongst
+> > other things parameters such as whether flow control is enabled, the
+> > port speed, the duplex setting, whether link is forced up, etc.
+> > 
+> > Looking at what mt753x_phylink_mac_link_up() does:
+> > 
+> > 1. it sets PMCR_RX_EN | PMCR_TX_EN | PMCR_FORCE_LNK.
+> > 2. it sets PMCR_FORCE_SPEED_1000 if speed was 1000Mbps, or if using
+> >    an internal, TRGMII, 1000base-X or 2500base-X phy interface mode.
+> > 3. it sets PMCR_FORCE_FDX if full duplex was requested.
+> > 4. it sets PMCR_TX_FC_EN if full duplex was requested with tx pause.
+> > 5. it sets PMCR_RX_FC_EN if full duplex was requested with rx pause.
+> > 
+> > So, provided this is called with the appropriate parameters, for a
+> > fixed link, that will leave the following:
+> > 
+> > 	PMCR_FORCE_MODE_ID(id)
+> > 	PMCR_IFG_XMIT(1)
+> > 	PMCR_MAC_MODE
+> > 	PMCR_BACKOFF_EN
+> > 	PMCR_BACKPR_EN
+> > 
+> > If we now look at mt753x_phylink_mac_config(), this sets
+> > PMCR_IFG_XMIT(1), PMCR_MAC_MODE, PMCR_BACKOFF_EN, PMCR_BACKPR_EN,
+> > and PMCR_FORCE_MODE_ID(priv->id), which I believe is everything that
+> > PMCR_CPU_PORT_SETTING(priv->id) is doing.
+> > 
+> > So, Wouldn't a fixed-link description indicating 1Gbps, full duplex
+> > with pause cause phylink to call both mt753x_phylink_mac_config() and
+> > mt753x_phylink_mac_link_up() with appropriate arguments to set all
+> > of these parameters in PMCR?
+> > 
+> > Now, I'm going to analyse something else. mt7531_cpu_port_config()
+> > is called from mt753x_cpu_port_enable(), which is itself called from
+> > mt7531_setup_common(). That is ultimately called from the DSA switch
+> > ops .setup() method.
+> > 
+> > This method is called from dsa_switch_setup() for each switch in the
+> > DSA tree. dsa_tree_setup_switches() calls this, and is called from
+> > dsa_tree_setup().  Once dsa_tree_setup_switches() finishes
+> > successfully, dsa_tree_setup_ports() will be called. This will then
+> > setup DSA and CPU ports, which will then setup a phylink instance
+> > for these ports. phylink will parse the firmware description for
+> > the port. DSA will then call dsa_port_enable().
+> > 
+> > dsa_port_enable() will then call any port_enable() method in the
+> > mt7530.c driver, which will be mt7530_port_enable(). This then...
+> > 
+> >         mt7530_clear(priv, MT7530_PMCR_P(port), PMCR_LINK_SETTINGS_MASK);
+> > 
+> > which is:
+> > 
+> > #define  PMCR_LINK_SETTINGS_MASK        (PMCR_TX_EN | PMCR_FORCE_SPEED_1000 | \
+> >                                          PMCR_RX_EN | PMCR_FORCE_SPEED_100 | \
+> >                                          PMCR_TX_FC_EN | PMCR_RX_FC_EN | \
+> >                                          PMCR_FORCE_FDX | PMCR_FORCE_LNK | \
+> >                                          PMCR_FORCE_EEE1G | PMCR_FORCE_EEE100)
+> > 
+> > So it wipes out all the PMCR settings that mt7531_cpu_port_config()
+> > performed - undoing *everything* below that switch() statement in
+> > mt7531_cpu_port_config()!
+> > 
+> > Once the port_enable() method returns, DSA will then call
+> > phylink_start(), which will trigger phylink to bring up the link
+> > according to the settings it has, which will mean phylink calls
+> > the mac_config(), pcs_config(), pcs_link_up() and mac_link_up()
+> > with the appropriate parameters for the firmware described link.
+> > 
+> > So I think I have the answer to my initial thought: do the calls in
+> > mt7531_cpu_port_config() to the phylink methods have any use what so
+> > ever? The answer is no, they are entirely useless. The same goes for
+> > the other cpu_port_config() methods that do something similar. The
+> > same goes for the PMCR register write that's changing any bits
+> > included in PMCR_LINK_SETTINGS_MASK.
+> > 
+> > What that means is that mt7988_cpu_port_config() can be entirely
+> > removed, it serves no useful purpose what so ever. For
+> > mt7531_cpu_port_config(), it only needs to set priv->p[56]_interface
+> > which, as far as I can see, probably only avoids mac_config() doing
+> > any pad setup (that's a guess.)
+> > 
+> > At least that's what I gather from reading through the driver and
+> > DSA code. It may be I've missed something, but currently, I think
+> > that these cpu_port_config() functions aren't doing too much that
+> > is actually useful work.
 > 
-> Please remember that I have very little knowledge of MT753x, so in
-> order to answer this question, I've read through the mt7530 driver
-> code.
+> Essentially, I think this change will have no effect at all on the
+> driver, because any effect this code has is totally undone when the
+> driver's port_enable() method is called:
 > 
-> Looking at mt7530.h:
-> 
-> #define  PMCR_CPU_PORT_SETTING(id)      (PMCR_FORCE_MODE_ID((id)) | \
->                                          PMCR_IFG_XMIT(1) | PMCR_MAC_MODE | \
->                                          PMCR_BACKOFF_EN | PMCR_BACKPR_EN | \
->                                          PMCR_TX_EN | PMCR_RX_EN | \
->                                          PMCR_TX_FC_EN | PMCR_RX_FC_EN | \
->                                          PMCR_FORCE_SPEED_1000 | \
->                                          PMCR_FORCE_FDX | PMCR_FORCE_LNK)
-> 
-> This seems to be some kind of port control register that sets amongst
-> other things parameters such as whether flow control is enabled, the
-> port speed, the duplex setting, whether link is forced up, etc.
-> 
-> Looking at what mt753x_phylink_mac_link_up() does:
-> 
-> 1. it sets PMCR_RX_EN | PMCR_TX_EN | PMCR_FORCE_LNK.
-> 2. it sets PMCR_FORCE_SPEED_1000 if speed was 1000Mbps, or if using
->    an internal, TRGMII, 1000base-X or 2500base-X phy interface mode.
-> 3. it sets PMCR_FORCE_FDX if full duplex was requested.
-> 4. it sets PMCR_TX_FC_EN if full duplex was requested with tx pause.
-> 5. it sets PMCR_RX_FC_EN if full duplex was requested with rx pause.
-> 
-> So, provided this is called with the appropriate parameters, for a
-> fixed link, that will leave the following:
-> 
-> 	PMCR_FORCE_MODE_ID(id)
-> 	PMCR_IFG_XMIT(1)
-> 	PMCR_MAC_MODE
-> 	PMCR_BACKOFF_EN
-> 	PMCR_BACKPR_EN
-> 
-> If we now look at mt753x_phylink_mac_config(), this sets
-> PMCR_IFG_XMIT(1), PMCR_MAC_MODE, PMCR_BACKOFF_EN, PMCR_BACKPR_EN,
-> and PMCR_FORCE_MODE_ID(priv->id), which I believe is everything that
-> PMCR_CPU_PORT_SETTING(priv->id) is doing.
-> 
-> So, Wouldn't a fixed-link description indicating 1Gbps, full duplex
-> with pause cause phylink to call both mt753x_phylink_mac_config() and
-> mt753x_phylink_mac_link_up() with appropriate arguments to set all
-> of these parameters in PMCR?
-> 
-> Now, I'm going to analyse something else. mt7531_cpu_port_config()
-> is called from mt753x_cpu_port_enable(), which is itself called from
-> mt7531_setup_common(). That is ultimately called from the DSA switch
-> ops .setup() method.
-> 
-> This method is called from dsa_switch_setup() for each switch in the
-> DSA tree. dsa_tree_setup_switches() calls this, and is called from
-> dsa_tree_setup().  Once dsa_tree_setup_switches() finishes
-> successfully, dsa_tree_setup_ports() will be called. This will then
-> setup DSA and CPU ports, which will then setup a phylink instance
-> for these ports. phylink will parse the firmware description for
-> the port. DSA will then call dsa_port_enable().
-> 
-> dsa_port_enable() will then call any port_enable() method in the
-> mt7530.c driver, which will be mt7530_port_enable(). This then...
-> 
->         mt7530_clear(priv, MT7530_PMCR_P(port), PMCR_LINK_SETTINGS_MASK);
-> 
-> which is:
-> 
-> #define  PMCR_LINK_SETTINGS_MASK        (PMCR_TX_EN | PMCR_FORCE_SPEED_1000 | \
->                                          PMCR_RX_EN | PMCR_FORCE_SPEED_100 | \
->                                          PMCR_TX_FC_EN | PMCR_RX_FC_EN | \
->                                          PMCR_FORCE_FDX | PMCR_FORCE_LNK | \
->                                          PMCR_FORCE_EEE1G | PMCR_FORCE_EEE100)
-> 
-> So it wipes out all the PMCR settings that mt7531_cpu_port_config()
-> performed - undoing *everything* below that switch() statement in
-> mt7531_cpu_port_config()!
-> 
-> Once the port_enable() method returns, DSA will then call
-> phylink_start(), which will trigger phylink to bring up the link
-> according to the settings it has, which will mean phylink calls
-> the mac_config(), pcs_config(), pcs_link_up() and mac_link_up()
-> with the appropriate parameters for the firmware described link.
-> 
-> So I think I have the answer to my initial thought: do the calls in
-> mt7531_cpu_port_config() to the phylink methods have any use what so
-> ever? The answer is no, they are entirely useless. The same goes for
-> the other cpu_port_config() methods that do something similar. The
-> same goes for the PMCR register write that's changing any bits
-> included in PMCR_LINK_SETTINGS_MASK.
-> 
-> What that means is that mt7988_cpu_port_config() can be entirely
-> removed, it serves no useful purpose what so ever. For
-> mt7531_cpu_port_config(), it only needs to set priv->p[56]_interface
-> which, as far as I can see, probably only avoids mac_config() doing
-> any pad setup (that's a guess.)
-> 
-> At least that's what I gather from reading through the driver and
-> DSA code. It may be I've missed something, but currently, I think
-> that these cpu_port_config() functions aren't doing too much that
-> is actually useful work.
+> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> index 9bc54e1348cb..447e63d74e0c 100644
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+> @@ -2859,8 +2859,6 @@ mt7531_cpu_port_config(struct dsa_switch *ds, int port)
+>  {
+>  	struct mt7530_priv *priv = ds->priv;
+>  	phy_interface_t interface;
+> -	int speed;
+> -	int ret;
+>  
+>  	switch (port) {
+>  	case 5:
+> @@ -2880,36 +2878,6 @@ mt7531_cpu_port_config(struct dsa_switch *ds, int port)
+>  		return -EINVAL;
+>  	}
+>  
+> -	if (interface == PHY_INTERFACE_MODE_2500BASEX)
+> -		speed = SPEED_2500;
+> -	else
+> -		speed = SPEED_1000;
+> -
+> -	ret = mt7531_mac_config(ds, port, MLO_AN_FIXED, interface);
+> -	if (ret)
+> -		return ret;
+> -	mt7530_write(priv, MT7530_PMCR_P(port),
+> -		     PMCR_CPU_PORT_SETTING(priv->id));
+> -	mt753x_phylink_pcs_link_up(&priv->pcs[port].pcs, MLO_AN_FIXED,
+> -				   interface, speed, DUPLEX_FULL);
+> -	mt753x_phylink_mac_link_up(ds, port, MLO_AN_FIXED, interface, NULL,
+> -				   speed, DUPLEX_FULL, true, true);
+> -
+> -	return 0;
+> -}
+> -
+> -static int
+> -mt7988_cpu_port_config(struct dsa_switch *ds, int port)
+> -{
+> -	struct mt7530_priv *priv = ds->priv;
+> -
+> -	mt7530_write(priv, MT7530_PMCR_P(port),
+> -		     PMCR_CPU_PORT_SETTING(priv->id));
+> -
+> -	mt753x_phylink_mac_link_up(ds, port, MLO_AN_FIXED,
+> -				   PHY_INTERFACE_MODE_INTERNAL, NULL,
+> -				   SPEED_10000, DUPLEX_FULL, true, true);
+> -
+>  	return 0;
+>  }
+>  
+> @@ -3165,7 +3133,6 @@ const struct mt753x_info mt753x_table[] = {
+>  		.phy_read_c45 = mt7531_ind_c45_phy_read,
+>  		.phy_write_c45 = mt7531_ind_c45_phy_write,
+>  		.pad_setup = mt7988_pad_setup,
+> -		.cpu_port_config = mt7988_cpu_port_config,
+>  		.mac_port_get_caps = mt7988_mac_port_get_caps,
+>  		.mac_port_config = mt7988_mac_config,
+>  	},
 
-Essentially, I think this change will have no effect at all on the
-driver, because any effect this code has is totally undone when the
-driver's port_enable() method is called:
+... and with that patch we can remove the definition of
+PMCR_CPU_PORT_SETTING() as well!
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 9bc54e1348cb..447e63d74e0c 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -2859,8 +2859,6 @@ mt7531_cpu_port_config(struct dsa_switch *ds, int port)
- {
- 	struct mt7530_priv *priv = ds->priv;
- 	phy_interface_t interface;
--	int speed;
--	int ret;
- 
- 	switch (port) {
- 	case 5:
-@@ -2880,36 +2878,6 @@ mt7531_cpu_port_config(struct dsa_switch *ds, int port)
- 		return -EINVAL;
- 	}
- 
--	if (interface == PHY_INTERFACE_MODE_2500BASEX)
--		speed = SPEED_2500;
--	else
--		speed = SPEED_1000;
--
--	ret = mt7531_mac_config(ds, port, MLO_AN_FIXED, interface);
--	if (ret)
--		return ret;
--	mt7530_write(priv, MT7530_PMCR_P(port),
--		     PMCR_CPU_PORT_SETTING(priv->id));
--	mt753x_phylink_pcs_link_up(&priv->pcs[port].pcs, MLO_AN_FIXED,
--				   interface, speed, DUPLEX_FULL);
--	mt753x_phylink_mac_link_up(ds, port, MLO_AN_FIXED, interface, NULL,
--				   speed, DUPLEX_FULL, true, true);
--
--	return 0;
--}
--
--static int
--mt7988_cpu_port_config(struct dsa_switch *ds, int port)
--{
--	struct mt7530_priv *priv = ds->priv;
--
--	mt7530_write(priv, MT7530_PMCR_P(port),
--		     PMCR_CPU_PORT_SETTING(priv->id));
--
--	mt753x_phylink_mac_link_up(ds, port, MLO_AN_FIXED,
--				   PHY_INTERFACE_MODE_INTERNAL, NULL,
--				   SPEED_10000, DUPLEX_FULL, true, true);
--
- 	return 0;
- }
- 
-@@ -3165,7 +3133,6 @@ const struct mt753x_info mt753x_table[] = {
- 		.phy_read_c45 = mt7531_ind_c45_phy_read,
- 		.phy_write_c45 = mt7531_ind_c45_phy_write,
- 		.pad_setup = mt7988_pad_setup,
--		.cpu_port_config = mt7988_cpu_port_config,
- 		.mac_port_get_caps = mt7988_mac_port_get_caps,
- 		.mac_port_config = mt7988_mac_config,
- 	},
+There is one possibility why we may not be able to remove this code -
+whether there's something in this which requires the CPU port to be
+setup prior to something else. Only someone knowledgeable of the
+hardware, or who has the hardware in front and can test would be able
+to work that out.
 
 -- 
 RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
