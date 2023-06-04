@@ -4,81 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F3CAC7EE23
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jun 2023 09:23:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CDB7C7EE29
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jun 2023 09:40:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nwyWMrJ3KHae90TffxL9AnX5OQPeP2x8dmjtNZo0s6Y=; b=HBeS6Uk8tP1NsxlzuZCZ3IFP7a
-	4qO7amL3eKzNA+HVorE5hIpKLUhQyWXVQPiWxA/ehieTOsodSPOYlbJMDlCaujRn+WDkyM/qVCg/h
-	JcHW1FqehSWB46+XEAH1jQ35c6AJytzFoFKxUaGdT2t7PiHnfRNrKErJj+1r5FMrbLJAgwkbb11nX
-	NUF1zKDjf+sFoZJpwekvnwzH9Oyz8H2Bblvu1CLdVGg7MhFkugY4UQC/GmTX6Q8vqR+63257HXlhf
-	AUYsuw4POv2gSsizG9Y96zGYqXH4p5Fg5sGxHGJgPOPrge+C/5bb8nTurAyS+GhDBxlR5u/01idkE
-	AKd9zB9A==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Fr/61BSJkRBxnPIU/JaeVp9SfOJCht1lutLoKEyNQ14=; b=fQafcbLR54S9h1
+	xB7fs0kpGWYWbxx7mEeXFEk2OYObFT41p/0QjFvXDlhRSv3mqDScSzuQKIX+7S1HKs2wHOUOMl1lB
+	cB0t+t1WwNm8rAUu8yg3qvrjtr7A8QOvAg8M84G5SHOLlPv4gzSAeVDp79Aj53c+ho6HFu7zIsquZ
+	RmgFETBz4qacUBtFNA+0+OY6DrHiADCytSB3fQvD3cSPB+cCEgOVe/0n1GzApg58CnnHoLU8frJlm
+	xodk2QpGj84qY1bVZJvWgWZhhxh4ZlPJ69D32bhYgt3FviEYUJRgDxa0Hx7h3nNAl7OoDWxDMRTAd
+	oBXv8++JSVP2JSTmUoUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q5jxC-00BiVo-27;
-	Sun, 04 Jun 2023 09:23:14 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1q5kDq-00BkRi-06;
+	Sun, 04 Jun 2023 09:40:26 +0000
+Received: from sender4-op-o10.zoho.com ([136.143.188.10])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q5jx8-00BiUC-2d;
-	Sun, 04 Jun 2023 09:23:11 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-9745c5fed21so399075666b.3;
-        Sun, 04 Jun 2023 02:23:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1685870588; x=1688462588;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=nwyWMrJ3KHae90TffxL9AnX5OQPeP2x8dmjtNZo0s6Y=;
-        b=FoOeFN0fzdLZT92B3gdASJ45MYDZrDwkWeqcje+rYQVfgQyrdEynZCciTcPmX3x8Am
-         YdWzbf9em1+B/GH1s2qsj5HxYLp6O72WalMOEGQ5iYLl81/YIj46d/dVzN9VtnkHnHtA
-         7R39jjqgjvcRZl9Dt++GpctRv9RZqTntHkRAYcV8d8uIgsBEhbsXYjeYOPzAKkO6vqRu
-         BqzpgnTMNCL2h79dZZNrNocELrF0hMGwsviQgZrY56YhzQ0p82bYkfJChZ8SrWNJbsaR
-         o3Wsbs4aLiO+KfvoM/eoadriqxzGWipaFlNKtyTycb71TklavcEnXfzfj4T0AYG+Tqc3
-         MpIQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685870588; x=1688462588;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=nwyWMrJ3KHae90TffxL9AnX5OQPeP2x8dmjtNZo0s6Y=;
-        b=EK7Su1MWiXO+jJ2Q7L/uB+kW6/ccztfYd1nsFq3pabfWJHhW4SH9UkO1QtE216nTTJ
-         WhNnFERJbjC6m5/bz51fKOPkkEROoLpGIS3hV8MOEW+Isg+AsaO+PQhCbxnF3+xgSDXH
-         mFH/Sg/3Tv9l/s1bpv7leOoWLISNsl1zi1bcGrPnSibccGYW/EZD0MqUw5ZrYpGLAitM
-         zpDFTsNEdhK2Fi+85Suf1E0PxUplQW/ZaAVck02yFWjM4eJFJcaCFajdv24Q2WpF1L7c
-         JXcmUdfirnIUtXNEoS5smXWkjaGmJsNil8t6dZAQL6KN/+hl4IHlFlKNGfWNjctIGgQt
-         6xuw==
-X-Gm-Message-State: AC+VfDxGriL/TslE5qwP+1toC0gH/NFYSerIG8Acsj4YQPTkO4S04oO5
-	bLAx8lN4i/JHVpDqIPoZ34I=
-X-Google-Smtp-Source: ACHHUZ4wQ0kbCG+SQb8rt+ZiQjciDpG8UJ4MAaHfXXLJmol3DdQ8D5D4YeCKTfTmC7SaWnQjmvQ8/g==
-X-Received: by 2002:a17:907:3189:b0:971:c931:3677 with SMTP id xe9-20020a170907318900b00971c9313677mr3281732ejb.68.1685870587648;
-        Sun, 04 Jun 2023 02:23:07 -0700 (PDT)
-Received: from skbuf ([188.27.184.189])
-        by smtp.gmail.com with ESMTPSA id dk23-20020a170906f0d700b009746394662asm2715323ejb.53.2023.06.04.02.23.06
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 04 Jun 2023 02:23:07 -0700 (PDT)
-Date: Sun, 4 Jun 2023 12:23:04 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+	id 1q5kDm-00BkQg-1n;
+	Sun, 04 Jun 2023 09:40:23 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1685871585; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=gSgzJn5CL+O8JRGQl9k63DOoj9fWKcId1L3nQggvd1gIHzIwYxWTywtLT/a02TJ7LRrecXnCC5c0dpEhZ8RSxBqZ/OjLSwZRIfpd8GOI9H6HafFgA6uVsz7ttsQWKJk0BS6JJxg6+l0Fj/9M56+7pBbcTXlfvYyzJgGN8EpIzAQ=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1685871585; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=Fr/61BSJkRBxnPIU/JaeVp9SfOJCht1lutLoKEyNQ14=; 
+	b=Pwa4aYUItn0lfVIAXIIQnf2PlKXweoSkeHOsX49H7wIgV177CfEaKoNKBTzfnYEtNnyq11QSRdyn3JCrLYF/8wIvAJg36yMkwyGK6MMrPRPX5Tbncl2UdmydgjidE/oPKMwK7Ul7HN1VF95Ps/VAH+8vDBZpogsN1V4gPafFdKE=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1685871585;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=Fr/61BSJkRBxnPIU/JaeVp9SfOJCht1lutLoKEyNQ14=;
+	b=XvCCgXYOXJbcaYICu8ov2yD6s6INX/5B14mgo4bFrS7DKgv688oGNU6UrBl7guFo
+	qf+VcpMlYJ3R+o34qTJEl8bHvzmL6fEffBFca7Mr5rbql59/kemX2VRIJts8NGkoedR
+	w6MH1IK7sKpbHy0T8Sn3cFFvoqjo5ku5EeACGQoY=
+Received: from [192.168.99.249] (178-147-169-233.haap.dm.cosmote.net [178.147.169.233]) by mx.zohomail.com
+	with SMTPS id 168587158327044.95124558097791; Sun, 4 Jun 2023 02:39:43 -0700 (PDT)
+Message-ID: <cc21196b-a18a-ce3c-e3f3-4303abf4b9a3@arinc9.com>
+Date: Sun, 4 Jun 2023 12:39:33 +0300
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
 Subject: Re: [PATCH net-next 27/30] net: dsa: mt7530: introduce BPDU trapping
  for MT7530 switch
-Message-ID: <20230604092304.gkcdccgfda5hjitf@skbuf>
+Content-Language: en-US
+To: Vladimir Oltean <olteanv@gmail.com>
 References: <20230522121532.86610-1-arinc.unal@arinc9.com>
  <20230522121532.86610-28-arinc.unal@arinc9.com>
  <20230526170223.gjdek6ob2w2kibzr@skbuf>
  <f22d1ddd-b3a4-25da-b681-e0790913f526@arinc9.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+ <20230604092304.gkcdccgfda5hjitf@skbuf>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <20230604092304.gkcdccgfda5hjitf@skbuf>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <f22d1ddd-b3a4-25da-b681-e0790913f526@arinc9.com>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230604_022310_856020_23D74E0A 
-X-CRM114-Status: GOOD (  10.64  )
+X-CRM114-CacheID: sfid-20230604_024022_652962_75B9F088 
+X-CRM114-Status: GOOD (  10.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,16 +83,22 @@ Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <ed
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jun 04, 2023 at 11:51:33AM +0300, Arınç ÜNAL wrote:
-> > If the switch doesn't currently trap BPDUs, isn't STP broken?
+On 4.06.2023 12:23, Vladimir Oltean wrote:
+> On Sun, Jun 04, 2023 at 11:51:33AM +0300, Arınç ÜNAL wrote:
+>>> If the switch doesn't currently trap BPDUs, isn't STP broken?
+>>
+>> No, the BPDU_PORT_FW bits are 0 after reset. The MT7620 programming guide
+>> states that frames with 01:80:C2:00:00:00 MAC DA (which is how the BPDU
+>> distinction is being made) will follow the system default which means the
+>> BPDUs will be treated as normal multicast frames.
+>>
+>> Only if all 3 bits are set will the BPDUs be dropped.
 > 
-> No, the BPDU_PORT_FW bits are 0 after reset. The MT7620 programming guide
-> states that frames with 01:80:C2:00:00:00 MAC DA (which is how the BPDU
-> distinction is being made) will follow the system default which means the
-> BPDUs will be treated as normal multicast frames.
-> 
-> Only if all 3 bits are set will the BPDUs be dropped.
+> Right, if you don't trap BPDUs just to the CPU but flood them, I believe
+> the STP protocol won't behave properly with switching loops. Worth testing.
 
-Right, if you don't trap BPDUs just to the CPU but flood them, I believe
-the STP protocol won't behave properly with switching loops. Worth testing.
+I've got no interest spending time playing around with STP at the moment 
+so I'm going to pass.
+
+Arınç
 
