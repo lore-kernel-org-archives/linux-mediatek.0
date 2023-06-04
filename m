@@ -4,72 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38D76C7EE29
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jun 2023 12:18:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE740C7EE29
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jun 2023 12:47:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=M7DP37lPI2Y7kMT7BCaNIjykdXMNnaQCjot38IYbWV0=; b=hKqAbXf00kyZqzwpHEJ7B/+agx
-	k5kZrrmdPNOURE67JACW87ylOTHQyn3qJzWS3LA6IWDigyWbhn2hwKGuC+w1gSrZRs4ccbbUUg5Z2
-	kercpDAvI0CyDSw/yC4VS28avVEFZz135sA+r6nUHecJ5Ellr/exFyzqrjmpJzeQ51yhTdkxPkPVh
-	tY04sUAhJC8aph8liKBp7uzrWNMPa8KCLl2trOWKXCrdWjSUpW+Xrdzq9h5p04CNFsgvwohSKXye/
-	k4Q4uAKmeNI4Deg9iBDS7zoB1K/WSFjK0BB5FWOIEXfn9Ut/Ud/qCahrKET7YSrfEP+lmriTrzJmt
-	wQ6K8gKw==;
+	bh=VeW0ngdO2nTxTyDY3vQxZmrgp8rm0aHNbRAt+SY2V/c=; b=il6HaZduD/Wjldf1FzZSUsihNN
+	VbdfuQpGxYYaINgE9gZiTCLyc9nzEwY0O++OJkXcY20RtstGmstbUtvoBJ3PNBj68DDP29spuq2cc
+	yk7xngtZWBjr99qiD0eZDOpdj/SKLfzRrcFGA9b5DUoWUka3dg/4d0cf1ElKDd0tQs/F0jQRYNDy5
+	nC3p6mTy0aO6KbyhA/PtFyns01zwIxVuYeGqxw5bqkbIm82qZdvYdscGTp20tx7+oCfUlDMIR5gXA
+	z6wRNNkPYvbba7igLLkTk82qj7xaQSjtYauUa3RsQP9fZQqEkJY+BgG8OEHvFt3SaIvge/zyCUUgL
+	Yd+mOSyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q5mh0-00C7iH-1J;
-	Sun, 04 Jun 2023 12:18:42 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1q5n8Y-00CA2R-31;
+	Sun, 04 Jun 2023 12:47:10 +0000
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q5mgw-00C7hV-2F;
-	Sun, 04 Jun 2023 12:18:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=M7DP37lPI2Y7kMT7BCaNIjykdXMNnaQCjot38IYbWV0=; b=bZgNEeZQDkY8VlU4xEniQTA4j2
-	/3dHH505sQJsoKvU9fx6ahMqNO7057sFg08gAhbLCezxVc6KReswaAQXSFVM1XlxEPyyEXveUkKQo
-	3mP3D+1dkAVrssu/6sQxGwzHsgFz/rZWZ8WtsQLG12JzKhxor5H+Ooi/xl/XuG6/lV4MRibLUZQjT
-	kVjhn3RlbPTt6JM9p1UMhopTsdkOHcCoIQp3g3d8eD5hcsJQ/i7AvBUhLTcI9TBTTPoPtDag6MH5n
-	LtgkkGZeyAa+fyLvcmtxTpejH4jSIZm980ktJBOTAmsuIiebuoAkSaj23M+MWdy3yilGWB1iY2We5
-	tajiqKyw==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:36806)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1q5mgX-0002Yy-1w; Sun, 04 Jun 2023 13:18:13 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1q5mgO-000533-KN; Sun, 04 Jun 2023 13:18:04 +0100
-Date: Sun, 4 Jun 2023 13:18:04 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+	id 1q5n8V-00CA1c-1o;
+	Sun, 04 Jun 2023 12:47:08 +0000
+Received: by mail-ed1-x532.google.com with SMTP id 4fb4d7f45d1cf-514953b3aa6so5159796a12.1;
+        Sun, 04 Jun 2023 05:47:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1685882825; x=1688474825;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=VeW0ngdO2nTxTyDY3vQxZmrgp8rm0aHNbRAt+SY2V/c=;
+        b=Lc86kryJmUdS3f9KEDgMu8GmU91p6Dl95GBJ5ExBnvRrOK8VynHk7QPTMc4G06DdRU
+         Z8oqnLFXJcpNXkChuykZVpbIarl411xL6RYhp1Ol8KVyFucaW7evW/3xYp7ZtfNj26lO
+         GLidJGA0HI0JR0njDkii/YD29HrGeku9RdD72dDchpjyUvwLXikL1Xea9xW6IaviiqlD
+         GIpZUXianGvPY72xpuLgy5/ngCzuhu+Qegb9xeokCdmrdceUIhw3QxDWI8WLkERX5uD6
+         vomPvSMXjbIAG6guy90SLkUIWZQMgeQtrlZn4Oqi3WaBMTCg9eJTwvYTWW4QBdk66L8o
+         SdBw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1685882825; x=1688474825;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=VeW0ngdO2nTxTyDY3vQxZmrgp8rm0aHNbRAt+SY2V/c=;
+        b=keuGq5G0PliqF6Ohsp3C3767bXvHTKVvc9nNNCooV0SBZskU7pVEfDNYgiRwcBmLnj
+         KISz6g6mB1am0fHH83VlwNgFAR2gZdXvv+oOzEkUq/2MHou8wNKVOqPvnVRfA4N4T1j+
+         P4hQqonhckvZpmwZozBDb0eZQf2CLGltkoNYqDRBNtRTNWlMSM+NQcVBJvhvr8jpOUHO
+         WJq1+xLO5g9GG3ccSeHxgLA2KguPLlKByHZvBuq7WTFnjmcolIadGbLy6g+MsQx/AIOf
+         R5VKAzZoNxxbAOt6Wo8R9Mr7usyBMbm8FYu2ay7eMGuz9cQxiMPPsLyorENNMeycJWev
+         fndQ==
+X-Gm-Message-State: AC+VfDyWOYU/8aqgYU9nil//tdMWsF09mOl1ov9TUuyRfKKJIGB9C28T
+	U7msPzUanPMSVTDTK1dRXvw=
+X-Google-Smtp-Source: ACHHUZ45xevqudBS5Bv4e4mltpxg64iuhAUgQWwQtUKMdW3S5ktWRXJXkJRQ4w5ZtlQdZLCfIHZjmQ==
+X-Received: by 2002:aa7:dcd9:0:b0:514:9e3e:4e4e with SMTP id w25-20020aa7dcd9000000b005149e3e4e4emr4992187edu.26.1685882824527;
+        Sun, 04 Jun 2023 05:47:04 -0700 (PDT)
+Received: from skbuf ([188.27.184.189])
+        by smtp.gmail.com with ESMTPSA id s20-20020a170906bc5400b009745b0cb326sm2985831ejv.109.2023.06.04.05.47.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 04 Jun 2023 05:47:04 -0700 (PDT)
+Date: Sun, 4 Jun 2023 15:47:01 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
 To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Subject: Re: [PATCH net-next 08/30] net: dsa: mt7530: change p{5,6}_interface
- to p{5,6}_configured
-Message-ID: <ZHyA/AmXmCxO6YMq@shell.armlinux.org.uk>
+Subject: Re: [PATCH net-next 27/30] net: dsa: mt7530: introduce BPDU trapping
+ for MT7530 switch
+Message-ID: <20230604124701.svt2r3aveyybajc3@skbuf>
 References: <20230522121532.86610-1-arinc.unal@arinc9.com>
- <20230522121532.86610-1-arinc.unal@arinc9.com>
- <20230522121532.86610-9-arinc.unal@arinc9.com>
- <20230522121532.86610-9-arinc.unal@arinc9.com>
- <20230524175107.hwzygo7p4l4rvawj@skbuf>
- <576f92b0-1900-f6ff-e92d-4b82e3436ea1@arinc9.com>
- <20230526130145.7wg75yoe6ut4na7g@skbuf>
- <7117531f-a9f2-63eb-f69d-23267e5745d0@arinc9.com>
- <ZHsxdQZLkP/+5TF0@shell.armlinux.org.uk>
- <826fd2fc-fbf8-dab7-9c90-b726d15e2983@arinc9.com>
+ <20230522121532.86610-28-arinc.unal@arinc9.com>
+ <20230526170223.gjdek6ob2w2kibzr@skbuf>
+ <f22d1ddd-b3a4-25da-b681-e0790913f526@arinc9.com>
+ <20230604092304.gkcdccgfda5hjitf@skbuf>
+ <cc21196b-a18a-ce3c-e3f3-4303abf4b9a3@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <826fd2fc-fbf8-dab7-9c90-b726d15e2983@arinc9.com>
+In-Reply-To: <cc21196b-a18a-ce3c-e3f3-4303abf4b9a3@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230604_051838_760688_AD545875 
-X-CRM114-Status: GOOD (  22.87  )
+X-CRM114-CacheID: sfid-20230604_054707_597288_2DAE4029 
+X-CRM114-Status: GOOD (  18.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,77 +92,30 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, mithat.guner@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>
+Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, mithat.guner@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jun 04, 2023 at 01:46:46PM +0300, Arınç ÜNAL wrote:
-> On 3.06.2023 15:26, Russell King (Oracle) wrote:
-> > Given that, you should have no need to make explicit calls to your
-> > mac_config, pcs_link_up and mac_link_up functions. If you need to
-> > make these calls, it suggests that phylink is not being used for the
-> > CPU port.
+On Sun, Jun 04, 2023 at 12:39:33PM +0300, Arınç ÜNAL wrote:
+> On 4.06.2023 12:23, Vladimir Oltean wrote:
+> > On Sun, Jun 04, 2023 at 11:51:33AM +0300, Arınç ÜNAL wrote:
+> > > > If the switch doesn't currently trap BPDUs, isn't STP broken?
+> > > 
+> > > No, the BPDU_PORT_FW bits are 0 after reset. The MT7620 programming guide
+> > > states that frames with 01:80:C2:00:00:00 MAC DA (which is how the BPDU
+> > > distinction is being made) will follow the system default which means the
+> > > BPDUs will be treated as normal multicast frames.
+> > > 
+> > > Only if all 3 bits are set will the BPDUs be dropped.
+> > 
+> > Right, if you don't trap BPDUs just to the CPU but flood them, I believe
+> > the STP protocol won't behave properly with switching loops. Worth testing.
 > 
-> Your own commit does this so I don't know what to tell you.
-> 
-> https://github.com/torvalds/linux/commit/cbd1f243bc41056c76fcfc5f3380cfac1f00d37b
+> I've got no interest spending time playing around with STP at the moment so
+> I'm going to pass.
 
-I would like to make a comment here to explain why in that commit I
-added a call into mt7531_cpu_port_config() to mt7531_cpu_port_config().
-
-When I'm making changes to drivers, then I follow a golden rule: do
-not change the behaviour unless it is an intentional change.
-
-This is exactly what is going on in this commit.
-mt7531_cpu_port_config() called mt753x_phylink_mac_link_up(), which
-then, as the very first thing, called mt753x_mac_pcs_link_up().
-mt753x_mac_pcs_link_up() called priv->info->mac_pcs_link_up() if
-it is defined.
-
-Since converting to phylink_pcs involves the removal of the direct
-call from mt753x_phylink_mac_link_up() to the
-priv->info->mac_pcs_link_up() method, in order to preserve the
-behaviour of the driver, it is necessary to ensure that
-mt7531_cpu_port_config() still makes that call.
-
-mt753x_phylink_pcs_link_up() is the new function replacing
-mt753x_mac_pcs_link_up() which makes that call, so it is entirely
-appropriate to add that call into mt7531_cpu_port_config() so that
-mt7531_cpu_port_config() behaves _precisely_ the same as it did
-before and after this change.
-
-In that sense, as far as mt7531_cpu_port_config() is concerned, this
-change is entirely idempotent.
-
-I don't know whether mt7531_cpu_port_config() is necessary to properly
-bring up a CPU port, or whether _all_ firmware descriptions for
-mt7531 include all the necessary properties so that DSA will always
-bring up a phylink instance for the CPU port - that really is not
-relevant for the change you point out.
-
-What is relevant is only making the intended change, and the intended
-change is to split the PCS-specific code from the MAC-specific code.
-
-This principle of only making one change in a patch, and ensuring that
-parts of the code which merely need to be re-organised to achieve that
-change are done in an idempotent way is fundamental to good code
-maintenance, especially when modifying drivers that one does not have
-the hardware to be able to test.
-
-You have provided new information - that basically indicates that
-phylink is used for your setup. If we can get to a position where we
-can confidently say that phylink will always be used for the CPU port,
-the code in mt7531_cpu_port_config() that bypasses phylink, calling
-methods in phylink's mac_ops and pcs_ops, should be removed.
-
-I don't remember whether Vladimir's firmware validator will fail for
-mt753x if CPU ports are not fully described, but that would be well
-worth checking. If it does, then we can be confident that phylink
-will always be used, and those bypassing calls should not be necessary.
-
-I hope this explains the situation better.
-
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+You can at the very least move it towards the beginning of the net-next patch
+set, so that we can be sure it doesn't depend on the other refactoring work,
+in case someone in the future makes a request for the patch to be backported
+to stable.
 
