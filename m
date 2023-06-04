@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B56BAC7EE23
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jun 2023 08:23:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1F23C77B73
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jun 2023 08:34:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pdL5Ne9Pz+dUQOaZMPqJzW+PoASYoCWnGHeubyQw/e4=; b=rB8BdtoFpN7hjj
-	uHT2EKgZKjjrGA/+xa3UcwhHNPjftZ7JUTNaXFv/NLjQlK1l3ovXglidc69erqYIQODa5bfnGRUvt
-	NHrPCUECOgwqMczEsiw2B2heZaoZ3oijn6aMlBu0681/5k/nRQYuTLm0KLdprsBqarC1baYo6gEGf
-	lhdgEtaCp/DK7LNb8wx3wCXe/ymoxJ3mFUDTSIVIFmzS+d9XqhwcAk/iuTp3WwfiXNFjDmGEPXOSs
-	CmUMutdi63JNXyXR8BlJPXaksH9r+HVpx7s+ekyE90ECtYsUGjFdZv1zznZdmBvsf9FET7I2DasN9
-	m6T1UUqLhAjm75wJYl5w==;
+	List-Owner; bh=eXArTeMtajRJZgcIvygJEd3UMrFsbSRTNGeqgF3+G08=; b=PDUNToLb9YqnOT
+	JorelbrRpfmviCERQqgb5ee40tdXDDg4jSfSDVv0hHuQLqHswI4cp64h98gpB2JCTXqwt34NOHP2Y
+	T9db3PIOcxxGi4B9vfAheF/zDCwDof6fLdzUzqflv9oR7uuJKa+GRDQZ44c/bOW06XN/S4qwAE0Jo
+	r22SjlJN11j980uWG0nYGsgJBy0yCoSgv8E6KxRrnaXO3q/Aqp6sHh21ejE3NLSi5PwEq1FV1ccWE
+	k9ChwyPQ0vWWmYBZdGvdYTPkT/ilkF8c5zXtKDYph4I67MnJrG8rvZ8JqFRGLDc+2iG0s3d4WH0tb
+	ODd7+Ryf4zhncYgOGkhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q5j13-00BcUS-03;
-	Sun, 04 Jun 2023 08:23:09 +0000
-Received: from sender4-op-o10.zoho.com ([136.143.188.10])
+	id 1q5jC0-00Bdca-3B;
+	Sun, 04 Jun 2023 08:34:28 +0000
+Received: from sender3-op-o18.zoho.com ([136.143.184.18])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q5j0z-00BcTe-2G;
-	Sun, 04 Jun 2023 08:23:07 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1685866925; cv=none; 
+	id 1q5jBx-00BdbX-0p;
+	Sun, 04 Jun 2023 08:34:26 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1685867627; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=AuCOY2I/0s6oDXBcar0ULPGQGW5nDQmOr0/LEQXwRC2d2eTZOGt0+zhjg3gKQUVjLAMkkqZ06BtGZ0VQCHSiOM2/nBsTOVr7CLFPRQ/AuZqXCfnrvpRwDRHpVOjgB1InSg2m65MM6jZ7Nt2nKEUjs809LNMfe2q+0yC8jzcm5NY=
+	b=nKTLRYoNYP4cstW8Dk0eXjFqT7Jx1ch3Kp9VG7YHBd8N0pzN4X5CNAYoM44KTswLyUKUCZRciFus9ZSOdzcXP9IzJPPOsRTmI3Ik3jKdtsEAB63nkKeKpBC94zigYE9QXEaRVZOELr5CUVvPVQWWqjnRGY/hQwnPvYNTRBQ/o8U=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1685866925; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=pdL5Ne9Pz+dUQOaZMPqJzW+PoASYoCWnGHeubyQw/e4=; 
-	b=ndWuuahEoBRtqPYBHvCX/C0T6zvmbXVHry2GbbxjoDW17DNJfbPf7qe6iPH/tZK8cJTBnfQOZENDpX3Z0/f6EOXU69KfPT48PdcbaqLCPNiqzu767Hkg/VLV8vEoycrbY5DiqOIAtF++2XIzAghylTW4w2vIrYsPBezMaV/g7NU=
+	t=1685867627; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=eXArTeMtajRJZgcIvygJEd3UMrFsbSRTNGeqgF3+G08=; 
+	b=Ud9Wr0gh1LQ1H8fpG+Pop8dL3O5i77sXchuvDimITRkF7+0mFavfYX+hvjuOIpL9j1tEy62bXZB65PnAotNqUMQDYlV6nPTfpfd3M/JvEpNOeEV6VOb4+z48aSGjwp/y1Dm0I/TJhKk6L31UQ1cpANyMPEYGXOPwi6ah+pqbm2s=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=arinc9.com;
 	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
 	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1685866924;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1685867627;
 	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
 	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=pdL5Ne9Pz+dUQOaZMPqJzW+PoASYoCWnGHeubyQw/e4=;
-	b=kSJKviUHmtkTO7jbJFz1KsvLJDxe6R3XyfQ+eC+JncMlzoUzlQlShmZPzD38tSSc
-	ur2WliWe8+vjbDR51ndPKOtlkW2iU9hN9bHlLZuO2BvoS3mLnRvI8/ddS7sJacSXOpy
-	j+qDwSoqXQVuLY8mHHxBs3Fowvz0xhKtxYC97hc4=
+	bh=eXArTeMtajRJZgcIvygJEd3UMrFsbSRTNGeqgF3+G08=;
+	b=Lkc9JOkNAPSzz1pr6j8GRIyBBA49zNH5D6tfCFG9aUYELYY19nqYvEja20xMqUaG
+	MLRnikrd7GoSGd3lq+gUcccxCoIWj5oY0lH7O50tpPtTYy9qAnYg6GRg4eQ0pyAdIbN
+	afNLmH0o1DWowFk/dmO8CYy4DwKJaqaFcATYQ+M8=
 Received: from [192.168.66.198] (178-147-169-233.haap.dm.cosmote.net [178.147.169.233]) by mx.zohomail.com
-	with SMTPS id 1685866922808204.7165874943779; Sun, 4 Jun 2023 01:22:02 -0700 (PDT)
-Message-ID: <9423a818-f9c0-d867-7f7d-27f05e1536b9@arinc9.com>
-Date: Sun, 4 Jun 2023 11:21:48 +0300
+	with SMTPS id 1685867627229424.1337302219724; Sun, 4 Jun 2023 01:33:47 -0700 (PDT)
+Message-ID: <7d07e930-56a7-3517-c560-c10291dbe92e@arinc9.com>
+Date: Sun, 4 Jun 2023 11:33:30 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.11.0
-Subject: Re: [PATCH net-next 25/30] net: dsa: mt7530: properly set
- MT7531_CPU_PMAP
+Subject: Re: [PATCH net-next 26/30] net: dsa: mt7530: properly set
+ MT7530_CPU_PORT
 Content-Language: en-US
 To: Vladimir Oltean <olteanv@gmail.com>
 References: <20230522121532.86610-1-arinc.unal@arinc9.com>
  <20230522121532.86610-1-arinc.unal@arinc9.com>
- <20230522121532.86610-26-arinc.unal@arinc9.com>
- <20230522121532.86610-26-arinc.unal@arinc9.com>
- <20230526155124.sps74wayui6bydao@skbuf>
+ <20230522121532.86610-27-arinc.unal@arinc9.com>
+ <20230522121532.86610-27-arinc.unal@arinc9.com>
+ <20230526165548.d6ewov743orxviz3@skbuf>
 From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20230526155124.sps74wayui6bydao@skbuf>
+In-Reply-To: <20230526165548.d6ewov743orxviz3@skbuf>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230604_012305_774895_860380AD 
-X-CRM114-Status: GOOD (  31.39  )
+X-CRM114-CacheID: sfid-20230604_013425_328946_E2820FDE 
+X-CRM114-Status: GOOD (  28.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,109 +83,59 @@ Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <ed
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 26.05.2023 18:51, Vladimir Oltean wrote:
-> On Mon, May 22, 2023 at 03:15:27PM +0300, arinc9.unal@gmail.com wrote:
+On 26.05.2023 19:55, Vladimir Oltean wrote:
+> On Mon, May 22, 2023 at 03:15:28PM +0300, arinc9.unal@gmail.com wrote:
 >> From: Arınç ÜNAL <arinc.unal@arinc9.com>
 >>
->> Every bit of the CPU port bitmap for MT7531 and the switch on the MT7988
->> SoC represents a CPU port to trap frames to. Currently only the bit that
->> corresponds to the first found CPU port is set on the bitmap. Introduce the
->> MT7531_CPU_PMAP macro to individually set the bits of the CPU port bitmap.
->> Set the CPU port bitmap for MT7531 and the switch on the MT7988 SoC on
->> mt753x_cpu_port_enable() which runs on a loop for each CPU port. Add
->> comments to explain this.
+>> The MT7530_CPU_PORT bits represent the CPU port to trap frames to for the
+>> MT7530 switch. There are two issues with the current way of setting these
+>> bits. ID_MT7530 which is for the standalone MT7530 switch is not included.
+> 
+> It's best to say in the commit title what the change does, rather than
+> the equivalent of "here, this way is proper!". Commit titles should be
+> uniquely identifiable, and "properly set MT7530_CPU_PORT" doesn't say a
+> lot about how proper it is. It's enough to imagine a future person
+> finding something else that's perfectible and writing another "net: dsa:
+> mt7530: properly set MT7530_CPU_PORT" commit. Try to be less definitive
+> and at the same time more specific.
+> 
+> If there are 2 issues, there should be 2 changes with individual titles
+> which each describes what was wrong and how that was changed.
+
+Got it, this is a bug fix for future devicetrees so I will send a 
+2-patch patch series to net. First one sets the MT7530_CPU_PORT bit to 
+the active CPU port, the other adds the ID_MT7530 check.
+
+> 
+>> When multiple CPU ports are being used, the trapped frames won't be
+>> received when the DSA conduit interface, which the frames are supposed to
+>> be trapped to, is down because it's not affine to any user port. This
+>> requires the DSA conduit interface to be manually set up for the trapped
+>> frames to be received.
 >>
->> According to the document MT7531 Reference Manual for Development Board
->> v1.0, the MT7531_CPU_PMAP bits are unset after reset so no need to clear it
->> beforehand. Since there's currently no public document for the switch on
->> the MT7988 SoC, I assume this is also the case for this switch.
+>> Address these issues by implementing ds->ops->master_state_change() on this
+>> subdriver and setting the MT7530_CPU_PORT bits there. Introduce the
+>> active_cpu_ports field to store the information of active CPU ports.
+>> Correct the macros, MT7530_CPU_PORT is bits 4 through 6 of the register.
+>>
+>> Any frames set for trapping to CPU port will be trapped to the numerically
+>> smallest CPU port which is affine to the DSA conduit interface that is set
+>> up. To make the understatement obvious, the frames won't necessarily be
+>> trapped to the CPU port the user port, which these frames are received
+>> from, is affine to. This operation is only there to make sure the trapped
+>> frames always reach the CPU.
 >>
 >> Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->> ---
+>> Co-developed-by: Vladimir Oltean <olteanv@gmail.com>
+>> Signed-off-by: Vladimir Oltean <olteanv@gmail.com>
 > 
-> Is this supposed to be a bug fix? (incompatibility with past or future
-> device trees also counts as bugs) If so, it needs a Fixes: tag and to be
-> targeted towards the "net" tree. Also, the impact of the current behavior
-> and of the change need to be explained better.
+> A single Suggested-by: is fine. As a rule of thumb, I would use Co-developed-by
+> when I'm working with a patch formally pre-formatted or committed by somebody else,
+> that I've changed in a significant manner. Since all I did was to comment with
+> a suggestion of how to handle this, and with a code snippet written in the email
+> client to a patch of yours, I don't believe that's necessary here.
 
-Yes, this fixes a bug for future devicetrees. I will send this to net 
-with a more detailed explanation, thanks.
-
-> 
->>   drivers/net/dsa/mt7530.c | 15 ++++++++-------
->>   drivers/net/dsa/mt7530.h |  3 ++-
->>   2 files changed, 10 insertions(+), 8 deletions(-)
->>
->> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
->> index 58d8738d94d3..0b513e3628fe 100644
->> --- a/drivers/net/dsa/mt7530.c
->> +++ b/drivers/net/dsa/mt7530.c
->> @@ -963,6 +963,13 @@ mt753x_cpu_port_enable(struct dsa_switch *ds, int port)
->>   		mt7530_rmw(priv, MT753X_MFC, MT7530_CPU_MASK, MT7530_CPU_EN |
->>   			   MT7530_CPU_PORT(port));
->>   
->> +	/* Add the CPU port to the CPU port bitmap for MT7531 and the switch on
->> +	 * the MT7988 SoC. Any frames set for trapping to CPU port will be
->> +	 * trapped to the CPU port the user port is affine to.
->> +	 */
->> +	if (priv->id == ID_MT7531 || priv->id == ID_MT7988)
->> +		mt7530_set(priv, MT7531_CFC, MT7531_CPU_PMAP(BIT(port)));
->> +
-> 
-> Stylistically, the existence of an indirect call to priv->info->cpu_port_config()
-> per switch family is a bit dissonant with an explicit check for device id later
-> in the same function.
-
-mt753x_cpu_port_enable() is not being called from 
-priv->info->cpu_port_config() though. I'm not sure how I would do this 
-without the device ID check here.
-
-> 
->>   	/* CPU port gets connected to all user ports of
->>   	 * the switch.
->>   	 */
->> @@ -2315,15 +2322,9 @@ static int
->>   mt7531_setup_common(struct dsa_switch *ds)
->>   {
->>   	struct mt7530_priv *priv = ds->priv;
->> -	struct dsa_port *cpu_dp;
->>   	int ret, i;
->>   
->> -	/* BPDU to CPU port */
->> -	dsa_switch_for_each_cpu_port(cpu_dp, ds) {
->> -		mt7530_rmw(priv, MT7531_CFC, MT7531_CPU_PMAP_MASK,
->> -			   BIT(cpu_dp->index));
->> -		break;
->> -	}
->> +	/* Trap BPDUs to the CPU port(s) */
->>   	mt7530_rmw(priv, MT753X_BPC, MT753X_BPDU_PORT_FW_MASK,
->>   		   MT753X_BPDU_CPU_ONLY);
->>   
->> diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
->> index 5ebb942b07ef..fd2a2f726b8a 100644
->> --- a/drivers/net/dsa/mt7530.h
->> +++ b/drivers/net/dsa/mt7530.h
->> @@ -53,7 +53,8 @@ enum mt753x_id {
->>   #define  MT7531_MIRROR_MASK		(0x7 << 16)
->>   #define  MT7531_MIRROR_PORT_GET(x)	(((x) >> 16) & 0x7)
->>   #define  MT7531_MIRROR_PORT_SET(x)	(((x) & 0x7) << 16)
->> -#define  MT7531_CPU_PMAP_MASK		GENMASK(7, 0)
->> +#define  MT7531_CPU_PMAP(x)		((x) & 0xff)
-> 
-> You can leave this as ((x) & GENMASK(7, 0))
-
-Now that I've read Russell's comment on the previous patch, the below 
-would be even better?
-
-MT7531_CPU_PMAP(x)		FIELD_PREP(MT7531_CPU_PMAP_MASK, x)
-
-> 
->> +#define  MT7531_CPU_PMAP_MASK		MT7531_CPU_PMAP(~0)
-> 
-> There's no other user of MT7531_CPU_PMAP_MASK, you can remove this.
-
-Should I do above or remove this?
+Will do, thanks.
 
 Arınç
 
