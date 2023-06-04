@@ -4,76 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BD04C77B73
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jun 2023 16:16:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FA7DC77B73
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jun 2023 16:23:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jDvl+5Gwb0Z1Fj/7pG7iYCRwIcEjBREw3uMwlZ2p9B0=; b=v/rU8dCYfy1jN4
-	m4SmHYPoDaczkJIrsGYfbQU+ybPirqNbQ6sMFptVE1WTHRQUeUgRhD8BqizsRPFyPXGPzk8Dg+B60
-	+Rjq4h74F0DX709mrrZ8nb9xCofpTGol6JkrBgatragvn0ac5ZlO3H1jXZ9SXOCElNTvV/HcsA5mK
-	HKe0W/dz30DRdR3R/8XonLecqJfN9s3SZkaHl97+wxTUWlF5NvL1Gz7ZiTkPaGlAj5hBAcR4PViKi
-	qUaUUnim7WEEBpww/p7j3V8RsA64mk8A6Orjy5uwqy6uonaCEOExG+NsAoobRYihBd9B8qk+A96k/
-	neotKbg/VDLu90flAd8A==;
+	List-Owner; bh=ZzKxESsGqIImQUDJUJYL+7PImeOTaIjTFkaL71n8Wq0=; b=hAKq/e62+HOotd
+	4qzpj87IFe+XQkPlbyYAqRT5iwBgd/matGarYZwQhIHxbkeMSk8LrzLpRdehgnnjOMtMv9jwPoW+s
+	9Jh6Wro5a/tLCZUq7t46GjAaWoSz9b/GJftqZS6CfOsmtmWveYPR2MQD7bd72SJwkAk0uZo/74TJ3
+	A+ASJOFmTFkUzaYieveJyR0fDbAiXoIP9VhqHEoPLsxknNdAZ1oRERha/kiwqGbwfklAAU9CmYf6C
+	y86qVR6r3kbW7pMSMRSDPl2LFSNb5FyJGvaMVAcdmUL4lpznv7R2gB6ZQTfwuWmrySnuJ5xvfN6cW
+	wfTScijH7lIwHrK1UsLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q5qOf-00CREk-2T;
-	Sun, 04 Jun 2023 16:16:01 +0000
-Received: from sender4-op-o10.zoho.com ([136.143.188.10])
+	id 1q5qW2-00CRv8-0u;
+	Sun, 04 Jun 2023 16:23:38 +0000
+Received: from sender3-op-o19.zoho.com ([136.143.184.19])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q5qOb-00CRCz-1E;
-	Sun, 04 Jun 2023 16:15:59 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1685895309; cv=none; 
+	id 1q5qVz-00CRty-1I;
+	Sun, 04 Jun 2023 16:23:36 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1685895784; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=SC1faauJLwgPgvkubwjC3WUExNQ05U8IPxBxXBr1oc87sJu0EvCm+1Zh+9YwqZvgzP2rCgFpMc2d6DVYxFxKk7WilzAF7WeQ4cHCL/xSntQ1ZhA0F/HdYWgFCPpZ7RqtSmRqUHr3d5Eq/tEglPVCTyzcnAIaNo69RzNFvAfDGLo=
+	b=UWW3l4ZrcaDK2YfhvoxoFmFsg1DALMulLu+BN8skX832dUHNBHhAWjNF5ANPKC1YP8diLkvT3zwrGWWh09g4Mnamo34/TKGXS52q65oEVs45++QDdQ1Rc5uuTnotO3O08h91usibr6u7I/FVJd8m+Xgll8+ixxiqDc1hcMkBxzI=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1685895309; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=jDvl+5Gwb0Z1Fj/7pG7iYCRwIcEjBREw3uMwlZ2p9B0=; 
-	b=ka1sFShCH/wf7qi4N8wSVHnP2xVSuBJMREyUQtfN9JfxTcwI0y5mkpPkgNxVgKKUMTdqN6viWUss47WwBIfwR+SZdY8gzIYf3aNLpJTNJihB7ab2dA/7vIROXsf3+s4N1mWgzmBMYSiVfJCDrIMl1vQ8/1MedPRCxhs76IGEkQQ=
+	t=1685895784; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=ZzKxESsGqIImQUDJUJYL+7PImeOTaIjTFkaL71n8Wq0=; 
+	b=CJdkPXxIlDoNsuHCySmE07J+PIr8E6P7NShHnueS+ADS6I0UV/FHeA05VYG1nim+Hfhqr/5H18qYJNbHGivB6EgdX2ttNdd9mv/ZuQ18zYaLbFXEKFXNVdcNDy7CtvhHa5UUPqo3Qw5AyVEsnKAqzJc9eU23cS7XRlKTqXcZu+o=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=arinc9.com;
 	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
 	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1685895309;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1685895784;
 	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
 	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=jDvl+5Gwb0Z1Fj/7pG7iYCRwIcEjBREw3uMwlZ2p9B0=;
-	b=fGw+0ugjnjBX+3SF5LgsRzl8U27NCxEwHRRcq6HAKMiIEA5zMc6/E5s99IVtE3mm
-	MccmoWMbRdEYePxXlifd69ouPwPhJSBVmiGgCWB8tzAiGDV7HoSHGULcvTr5eGxfhy3
-	kNx4wPGnBPOIXebFfKbM1aOMmr9yRhkV4ceahr00=
+	bh=ZzKxESsGqIImQUDJUJYL+7PImeOTaIjTFkaL71n8Wq0=;
+	b=Qr6/guytmsnwfXLB6YhzHVTWgNrE4sWgtNzNeWeA7hnenI5xRdAd6iFwYDKISEbp
+	gJ4gjJ5cQ/57ZRiO1xlZs6rVE+QzqgbeiVbuM/49u/96sXeit0gShlZs/WY7uYl3GwM
+	JzsSIiUILE0PlFv1ZBgyc343QpCws0EAF+tT5b/E=
 Received: from [192.168.66.198] (178-147-169-233.haap.dm.cosmote.net [178.147.169.233]) by mx.zohomail.com
-	with SMTPS id 1685895307084897.9178477634476; Sun, 4 Jun 2023 09:15:07 -0700 (PDT)
-Message-ID: <0542e150-5ff4-5f74-361a-1a531d19eb7d@arinc9.com>
-Date: Sun, 4 Jun 2023 19:14:55 +0300
+	with SMTPS id 1685895783375357.2741855678689; Sun, 4 Jun 2023 09:23:03 -0700 (PDT)
+Message-ID: <a60be212-7b81-20ea-8af4-eee70ac3ecd8@arinc9.com>
+Date: Sun, 4 Jun 2023 19:22:53 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.11.0
-Subject: Re: [PATCH net-next 08/30] net: dsa: mt7530: change p{5,6}_interface
- to p{5,6}_configured
+Subject: Re: [PATCH net-next 05/30] net: dsa: mt7530: read XTAL value from
+ correct register
 Content-Language: en-US
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-References: <20230526130145.7wg75yoe6ut4na7g@skbuf>
- <7117531f-a9f2-63eb-f69d-23267e5745d0@arinc9.com>
- <ZHsxdQZLkP/+5TF0@shell.armlinux.org.uk>
- <826fd2fc-fbf8-dab7-9c90-b726d15e2983@arinc9.com>
- <ZHyA/AmXmCxO6YMq@shell.armlinux.org.uk>
- <20230604125517.fwqh2uxzvsa7n5hu@skbuf>
- <ZHyMezyKizkz2+Wg@shell.armlinux.org.uk>
- <d269ac88-9923-c00c-8047-cc8c9f94ef2c@arinc9.com>
- <ZHyqI2oOI4KkvgB8@shell.armlinux.org.uk>
- <ZHy1C7wzqaj5KCmy@shell.armlinux.org.uk>
- <ZHy2jQLesdYFMQtO@shell.armlinux.org.uk>
+To: Vladimir Oltean <olteanv@gmail.com>
+References: <20230524165701.pbrcs4e74juzb4r3@skbuf>
+ <7c915d5b-56c9-430d-05ac-544f76966eb1@arinc9.com>
+ <20230525133140.xewm6g5rl7sm57d2@skbuf>
+ <20230522121532.86610-1-arinc.unal@arinc9.com>
+ <20230522121532.86610-6-arinc.unal@arinc9.com>
+ <20230524165701.pbrcs4e74juzb4r3@skbuf>
+ <7c915d5b-56c9-430d-05ac-544f76966eb1@arinc9.com>
+ <20230525133140.xewm6g5rl7sm57d2@skbuf>
+ <f9e29db7-7b95-290c-b44c-97cf95476141@arinc9.com>
+ <f9e29db7-7b95-290c-b44c-97cf95476141@arinc9.com>
+ <20230604071122.kb3xenjbptm6jebh@skbuf>
 From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <ZHy2jQLesdYFMQtO@shell.armlinux.org.uk>
+In-Reply-To: <20230604071122.kb3xenjbptm6jebh@skbuf>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230604_091557_479502_91A58B2B 
-X-CRM114-Status: GOOD (  32.54  )
+X-CRM114-CacheID: sfid-20230604_092335_471982_28C4F306 
+X-CRM114-Status: GOOD (  21.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,219 +85,109 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, mithat.guner@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>
+Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, mithat.guner@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 4.06.2023 19:06, Russell King (Oracle) wrote:
-> On Sun, Jun 04, 2023 at 05:00:11PM +0100, Russell King (Oracle) wrote:
->> On Sun, Jun 04, 2023 at 04:13:39PM +0100, Russell King (Oracle) wrote:
->>> On Sun, Jun 04, 2023 at 04:14:31PM +0300, Arınç ÜNAL wrote:
->>>> On 4.06.2023 16:07, Russell King (Oracle) wrote:
->>>>> On Sun, Jun 04, 2023 at 03:55:17PM +0300, Vladimir Oltean wrote:
->>>>>> On Sun, Jun 04, 2023 at 01:18:04PM +0100, Russell King (Oracle) wrote:
->>>>>>> I don't remember whether Vladimir's firmware validator will fail for
->>>>>>> mt753x if CPU ports are not fully described, but that would be well
->>>>>>> worth checking. If it does, then we can be confident that phylink
->>>>>>> will always be used, and those bypassing calls should not be necessary.
->>>>>>
->>>>>> It does, I've just retested this:
->>>>>>
->>>>>> [    8.469152] mscc_felix 0000:00:00.5: OF node /soc/pcie@1f0000000/ethernet-switch@0,5/ports/port@4 of CPU port 4 lacks the required "phy-handle", "fixed-link" or "managed" properties
->>>>>> [    8.494571] mscc_felix 0000:00:00.5: error -EINVAL: Failed to register DSA switch
->>>>>> [    8.502151] mscc_felix: probe of 0000:00:00.5 failed with error -22
->>>>>
->>>>> ... which isn't listed in dsa_switches_apply_workarounds[], and
->>>>> neither is mt753x. Thanks.
->>>>>
->>>>> So, that should be sufficient to know that the CPU port will always
->>>>> properly described, and thus bypassing phylink in mt753x for the CPU
->>>>> port should not be necessary.
->>>>
->>>> Perfect! If I understand correctly, there's this code - specific to MT7531
->>>> and MT7988 ports being used as CPU ports - which runs in addition to what's
->>>> in mt753x_phylink_mac_config():
->>>>
->>>> 	mt7530_write(priv, MT7530_PMCR_P(port),
->>>> 		     PMCR_CPU_PORT_SETTING(priv->id));
->>>>
->>>> This should be put on mt753x_phylink_mac_config(), under priv->id ==
->>>> ID_MT7531, priv->id == ID_MT7988, and dsa_is_cpu_port(ds, port) checks?
->>>
->>> Please remember that I have very little knowledge of MT753x, so in
->>> order to answer this question, I've read through the mt7530 driver
->>> code.
->>>
->>> Looking at mt7530.h:
->>>
->>> #define  PMCR_CPU_PORT_SETTING(id)      (PMCR_FORCE_MODE_ID((id)) | \
->>>                                           PMCR_IFG_XMIT(1) | PMCR_MAC_MODE | \
->>>                                           PMCR_BACKOFF_EN | PMCR_BACKPR_EN | \
->>>                                           PMCR_TX_EN | PMCR_RX_EN | \
->>>                                           PMCR_TX_FC_EN | PMCR_RX_FC_EN | \
->>>                                           PMCR_FORCE_SPEED_1000 | \
->>>                                           PMCR_FORCE_FDX | PMCR_FORCE_LNK)
->>>
->>> This seems to be some kind of port control register that sets amongst
->>> other things parameters such as whether flow control is enabled, the
->>> port speed, the duplex setting, whether link is forced up, etc.
->>>
->>> Looking at what mt753x_phylink_mac_link_up() does:
->>>
->>> 1. it sets PMCR_RX_EN | PMCR_TX_EN | PMCR_FORCE_LNK.
->>> 2. it sets PMCR_FORCE_SPEED_1000 if speed was 1000Mbps, or if using
->>>     an internal, TRGMII, 1000base-X or 2500base-X phy interface mode.
->>> 3. it sets PMCR_FORCE_FDX if full duplex was requested.
->>> 4. it sets PMCR_TX_FC_EN if full duplex was requested with tx pause.
->>> 5. it sets PMCR_RX_FC_EN if full duplex was requested with rx pause.
->>>
->>> So, provided this is called with the appropriate parameters, for a
->>> fixed link, that will leave the following:
->>>
->>> 	PMCR_FORCE_MODE_ID(id)
->>> 	PMCR_IFG_XMIT(1)
->>> 	PMCR_MAC_MODE
->>> 	PMCR_BACKOFF_EN
->>> 	PMCR_BACKPR_EN
->>>
->>> If we now look at mt753x_phylink_mac_config(), this sets
->>> PMCR_IFG_XMIT(1), PMCR_MAC_MODE, PMCR_BACKOFF_EN, PMCR_BACKPR_EN,
->>> and PMCR_FORCE_MODE_ID(priv->id), which I believe is everything that
->>> PMCR_CPU_PORT_SETTING(priv->id) is doing.
->>>
->>> So, Wouldn't a fixed-link description indicating 1Gbps, full duplex
->>> with pause cause phylink to call both mt753x_phylink_mac_config() and
->>> mt753x_phylink_mac_link_up() with appropriate arguments to set all
->>> of these parameters in PMCR?
->>>
->>> Now, I'm going to analyse something else. mt7531_cpu_port_config()
->>> is called from mt753x_cpu_port_enable(), which is itself called from
->>> mt7531_setup_common(). That is ultimately called from the DSA switch
->>> ops .setup() method.
->>>
->>> This method is called from dsa_switch_setup() for each switch in the
->>> DSA tree. dsa_tree_setup_switches() calls this, and is called from
->>> dsa_tree_setup().  Once dsa_tree_setup_switches() finishes
->>> successfully, dsa_tree_setup_ports() will be called. This will then
->>> setup DSA and CPU ports, which will then setup a phylink instance
->>> for these ports. phylink will parse the firmware description for
->>> the port. DSA will then call dsa_port_enable().
->>>
->>> dsa_port_enable() will then call any port_enable() method in the
->>> mt7530.c driver, which will be mt7530_port_enable(). This then...
->>>
->>>          mt7530_clear(priv, MT7530_PMCR_P(port), PMCR_LINK_SETTINGS_MASK);
->>>
->>> which is:
->>>
->>> #define  PMCR_LINK_SETTINGS_MASK        (PMCR_TX_EN | PMCR_FORCE_SPEED_1000 | \
->>>                                           PMCR_RX_EN | PMCR_FORCE_SPEED_100 | \
->>>                                           PMCR_TX_FC_EN | PMCR_RX_FC_EN | \
->>>                                           PMCR_FORCE_FDX | PMCR_FORCE_LNK | \
->>>                                           PMCR_FORCE_EEE1G | PMCR_FORCE_EEE100)
->>>
->>> So it wipes out all the PMCR settings that mt7531_cpu_port_config()
->>> performed - undoing *everything* below that switch() statement in
->>> mt7531_cpu_port_config()!
->>>
->>> Once the port_enable() method returns, DSA will then call
->>> phylink_start(), which will trigger phylink to bring up the link
->>> according to the settings it has, which will mean phylink calls
->>> the mac_config(), pcs_config(), pcs_link_up() and mac_link_up()
->>> with the appropriate parameters for the firmware described link.
->>>
->>> So I think I have the answer to my initial thought: do the calls in
->>> mt7531_cpu_port_config() to the phylink methods have any use what so
->>> ever? The answer is no, they are entirely useless. The same goes for
->>> the other cpu_port_config() methods that do something similar. The
->>> same goes for the PMCR register write that's changing any bits
->>> included in PMCR_LINK_SETTINGS_MASK.
->>>
->>> What that means is that mt7988_cpu_port_config() can be entirely
->>> removed, it serves no useful purpose what so ever. For
->>> mt7531_cpu_port_config(), it only needs to set priv->p[56]_interface
->>> which, as far as I can see, probably only avoids mac_config() doing
->>> any pad setup (that's a guess.)
->>>
->>> At least that's what I gather from reading through the driver and
->>> DSA code. It may be I've missed something, but currently, I think
->>> that these cpu_port_config() functions aren't doing too much that
->>> is actually useful work.
+On 4.06.2023 10:11, Vladimir Oltean wrote:
+> On Sun, Jun 04, 2023 at 09:34:38AM +0300, Arınç ÜNAL wrote:
+>>> I disagree as a matter of principle with the reasoning. The fact that
+>>> XTAL constants are defined under HWTRAP is not a reason to change the
+>>> code to read the XTAL values from the HWTRAP register. The fact that
+>>> XTAL_FSEL is read-only in MHWTRAP is indeed a reason why you *could*
+>>> read it from HWTRAP, but also not one why you *should* make a change.
 >>
->> Essentially, I think this change will have no effect at all on the
->> driver, because any effect this code has is totally undone when the
->> driver's port_enable() method is called:
+>> Makes sense. I have refactored the hardware trap constants definitions
+>> by looking at the documents for MT7530 and MT7531. The registers are the
+>> same on both switches so I combine the bits under MT753X_(M)HWTRAP.
 >>
+>> I put the r/w bits on MHWTRAP to MWHTRAP, the read-only bits on HWTRAP
+>> and MHWTRAP to HWTRAP. Mind that the MT7531_CHG_STRAP bit exists only on
+>> the MHWTRAP register.
+>>
+>> To follow this, I read XTAL for MT7530 from HWTRAP instead of MHWTRAP
+>> since the XTAL bits are read-only. Would this change make sense as a
+>> matter of refactoring?
+> 
+> Possibly. The maintainers of mt7530 have the definitive word on that.
+> Behavior changes (reading XTAL from HWTRAP instead of MHWTRAP) should
+> still have their separate change which isn't noisy, separate from the
+> renaming of constants.
+> 
 >> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
->> index 9bc54e1348cb..447e63d74e0c 100644
+>> index 5b77799f41cc..444fa97db7c0 100644
 >> --- a/drivers/net/dsa/mt7530.c
 >> +++ b/drivers/net/dsa/mt7530.c
->> @@ -2859,8 +2859,6 @@ mt7531_cpu_port_config(struct dsa_switch *ds, int port)
->>   {
+>> @@ -420,9 +420,9 @@ mt7530_setup_port6(struct dsa_switch *ds, phy_interface_t interface)
 >>   	struct mt7530_priv *priv = ds->priv;
->>   	phy_interface_t interface;
->> -	int speed;
->> -	int ret;
->>   
->>   	switch (port) {
->>   	case 5:
->> @@ -2880,36 +2878,6 @@ mt7531_cpu_port_config(struct dsa_switch *ds, int port)
->>   		return -EINVAL;
->>   	}
->>   
->> -	if (interface == PHY_INTERFACE_MODE_2500BASEX)
->> -		speed = SPEED_2500;
->> -	else
->> -		speed = SPEED_1000;
->> -
->> -	ret = mt7531_mac_config(ds, port, MLO_AN_FIXED, interface);
->> -	if (ret)
->> -		return ret;
->> -	mt7530_write(priv, MT7530_PMCR_P(port),
->> -		     PMCR_CPU_PORT_SETTING(priv->id));
->> -	mt753x_phylink_pcs_link_up(&priv->pcs[port].pcs, MLO_AN_FIXED,
->> -				   interface, speed, DUPLEX_FULL);
->> -	mt753x_phylink_mac_link_up(ds, port, MLO_AN_FIXED, interface, NULL,
->> -				   speed, DUPLEX_FULL, true, true);
->> -
->> -	return 0;
->> -}
->> -
->> -static int
->> -mt7988_cpu_port_config(struct dsa_switch *ds, int port)
->> -{
->> -	struct mt7530_priv *priv = ds->priv;
->> -
->> -	mt7530_write(priv, MT7530_PMCR_P(port),
->> -		     PMCR_CPU_PORT_SETTING(priv->id));
->> -
->> -	mt753x_phylink_mac_link_up(ds, port, MLO_AN_FIXED,
->> -				   PHY_INTERFACE_MODE_INTERNAL, NULL,
->> -				   SPEED_10000, DUPLEX_FULL, true, true);
->> -
->>   	return 0;
->>   }
->>   
->> @@ -3165,7 +3133,6 @@ const struct mt753x_info mt753x_table[] = {
->>   		.phy_read_c45 = mt7531_ind_c45_phy_read,
->>   		.phy_write_c45 = mt7531_ind_c45_phy_write,
->>   		.pad_setup = mt7988_pad_setup,
->> -		.cpu_port_config = mt7988_cpu_port_config,
->>   		.mac_port_get_caps = mt7988_mac_port_get_caps,
->>   		.mac_port_config = mt7988_mac_config,
->>   	},
+>>   	u32 ncpo1, ssc_delta, i, xtal;
+>> -	mt7530_clear(priv, MT7530_MHWTRAP, MHWTRAP_P6_DIS);
+>> +	mt7530_clear(priv, MT753X_MHWTRAP, MT7530_P6_DIS);
+>> -	xtal = mt7530_read(priv, MT7530_MHWTRAP) & HWTRAP_XTAL_MASK;
+>> +	xtal = mt7530_read(priv, MT753X_HWTRAP) & MT7530_XTAL_MASK;
+>>   	if (interface == PHY_INTERFACE_MODE_RGMII) {
+>>   		mt7530_rmw(priv, MT7530_P6ECR, P6_INTF_MODE_MASK,
+>> @@ -431,21 +431,21 @@ mt7530_setup_port6(struct dsa_switch *ds, phy_interface_t interface)
+>>   		mt7530_rmw(priv, MT7530_P6ECR, P6_INTF_MODE_MASK,
+>>   			   P6_INTF_MODE(1));
+>> -		if (xtal == HWTRAP_XTAL_25MHZ)
+>> +		if (xtal == MT7530_XTAL_25MHZ)
+>>   			ssc_delta = 0x57;
+>>   		else
+>>   			ssc_delta = 0x87;
+>>   		if (priv->id == ID_MT7621) {
+>>   			/* PLL frequency: 125MHz: 1.0GBit */
+>> -			if (xtal == HWTRAP_XTAL_40MHZ)
+>> +			if (xtal == MT7530_XTAL_40MHZ)
+>>   				ncpo1 = 0x0640;
+>> -			if (xtal == HWTRAP_XTAL_25MHZ)
+>> +			if (xtal == MT7530_XTAL_25MHZ)
+>>   				ncpo1 = 0x0a00;
+>>   		} else { /* PLL frequency: 250MHz: 2.0Gbit */
+>> -			if (xtal == HWTRAP_XTAL_40MHZ)
+>> +			if (xtal == MT7530_XTAL_40MHZ)
+>>   				ncpo1 = 0x0c80;
+>> -			if (xtal == HWTRAP_XTAL_25MHZ)
+>> +			if (xtal == MT7530_XTAL_25MHZ)
+>>   				ncpo1 = 0x1400;
+>>   		}
+>> @@ -487,12 +487,12 @@ mt7531_pll_setup(struct mt7530_priv *priv)
+>>   	val = mt7530_read(priv, MT7531_CREV);
+>>   	top_sig = mt7530_read(priv, MT7531_TOP_SIG_SR);
+>> -	hwstrap = mt7530_read(priv, MT7531_HWTRAP);
+>> +	hwstrap = mt7530_read(priv, MT753X_HWTRAP);
+>>   	if ((val & CHIP_REV_M) > 0)
+>> -		xtal = (top_sig & PAD_MCM_SMI_EN) ? HWTRAP_XTAL_FSEL_40MHZ :
+>> -						    HWTRAP_XTAL_FSEL_25MHZ;
+>> +		xtal = (top_sig & PAD_MCM_SMI_EN) ? MT7531_XTAL_FSEL_40MHZ :
+>> +						    MT7531_XTAL_FSEL_25MHZ;
+>>   	else
+>> -		xtal = hwstrap & HWTRAP_XTAL_FSEL_MASK;
+>> +		xtal = hwstrap & MT7531_XTAL25;
 > 
-> ... and with that patch we can remove the definition of
-> PMCR_CPU_PORT_SETTING() as well!
-> 
-> There is one possibility why we may not be able to remove this code -
-> whether there's something in this which requires the CPU port to be
-> setup prior to something else. Only someone knowledgeable of the
-> hardware, or who has the hardware in front and can test would be able
-> to work that out.
+> xtal = hwstrap & BIT(7). The "xtal" variable will either hold the value
+> of 0 or BIT(7), do you agree?
 
-I am on the same page with your explanation so far. I will test this out 
-on MT7531. Thanks a lot for looking at this!
+Yes I suppose the correct code should be:
+
+xtal = (hwstrap & MT7531_XTAL25) ? MT7531_XTAL_FSEL_25MHZ :
+				   MT7531_XTAL_FSEL_40MHZ;
+
+> 
+>>   	/* Step 1 : Disable MT7531 COREPLL */
+>>   	val = mt7530_read(priv, MT7531_PLLGP_EN);
+>> @@ -521,13 +521,13 @@ mt7531_pll_setup(struct mt7530_priv *priv)
+>>   	usleep_range(25, 35);
+>>   	switch (xtal) {
+>> -	case HWTRAP_XTAL_FSEL_25MHZ:
+>> +	case MT7531_XTAL_FSEL_25MHZ:
+> 
+> reworded:
+> 	case 1:
+> 
+> when will "xtal" be equal to 1?
+
+This should work correctly with my comment above.
 
 Arınç
 
