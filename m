@@ -4,54 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90418C7EE29
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jun 2023 13:09:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7344C7EE29
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jun 2023 13:15:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UzzrhBNawZ31nGxvXXuqa4J3SochyxihEmrfIV4DZvY=; b=Vcdw2NpKiZuQWW59zv6V/ThrRH
-	M5GmIKu0DeZ9tqaGAyS6sxAY21C5+jJjcJHWB+OgfAn6QrFkuSlFluqboldodgE5UlR2qXpjS11Cp
-	7CYtlPngnF9PFjHEtb4KhwEHgkFeHM68ihitUoqLwKKAwYu8mAoGwC13S7rY4d2ci3d48BXDeCoHO
-	MOujlif3gnRK7Ok8wHygjE+hlz1XonnjZAbdad2cgnzAn/Vl63lH2PrFg+DTPEZhVjiC+r3wGd+uk
-	ryy7kA97H3cAOSpBgydMw1kUE3tOq/wRG+ardQEjPDCY8IADn/xnteBYT8Yf3jAxEfmVMXZaeTW5e
-	wQjWLxFw==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=XxFo49ybuTfpddZUtYJZ63iLTBCwDcOWVYL/S1IUMQ8=; b=oZrwxxPtWd5uTu
+	yteH1qJ66oloKQ/yXj/gFq4jPvnlrPZ2pE/2WotDWiqoWGQFLx6HApkGQK4+va7tAJAkUsHlUKYVN
+	lhnnPJEqxKLx4ngWv8vIeojt6HuK/IoZQtz0G2tLhee6X0eGrZm3co/qFzT/GPPJGwW+X69ZcyxBv
+	Xbl+3BSic8eJnSVYQ+4tTsyoHy4yb1qBZAIclAl0uWPh24g4h3/S0PmcTv56SMK3hMSxIYUlnnqob
+	Msd9x0oXqF99fDdGZZPvESLvBDSIGjxkEwX1OuVJcI0XS+zqmpf2ewUXl4t4fQfB1ej+iJ9Kpw0l6
+	rUJKZlTeJV8ZxVhYBtSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q5nUO-00CCVC-2m;
-	Sun, 04 Jun 2023 13:09:44 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1q5nZs-00CCz8-3A;
+	Sun, 04 Jun 2023 13:15:24 +0000
+Received: from sender3-op-o18.zoho.com ([136.143.184.18])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q5nUL-00CC8W-0E;
-	Sun, 04 Jun 2023 13:09:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=UzzrhBNawZ31nGxvXXuqa4J3SochyxihEmrfIV4DZvY=; b=PelkEpSR3NnJ2cgM83e2WDHOll
-	K07RelK5yOLv8J8HBKdF4PjKS1SkWSDmh0aM/GN3rj9Po+21pkbm8ZHmV5kIt0quivrYckxH04EiK
-	mI1MgVfcMFmLFzY3ggf8RfPa3mzXd3eXaBrRDmy7z5L+mhMCqN/ZSDgGPws7EdlP72LEE7kE0nKcz
-	5iYspNj739l3n5PHgOsxOYfDIn7+ZAPay1zcnPaHHnaeC1WMmPikJDR3htiVWtbafIsvxmjBSAEHZ
-	qUdKdxUUkFtdLuVA/sxGTMvlfy12PskuB5qGj9LNbWg+eo8D3OXdWofb2nJSTEEIlOx0CCt/xFHci
-	Zwsje9xw==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:48974)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1q5nRx-0002cf-68; Sun, 04 Jun 2023 14:07:13 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1q5nRr-00054c-EH; Sun, 04 Jun 2023 14:07:07 +0100
-Date: Sun, 4 Jun 2023 14:07:07 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Vladimir Oltean <olteanv@gmail.com>
+	id 1q5nZp-00CCxN-1j;
+	Sun, 04 Jun 2023 13:15:22 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1685884484; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=Jje0df8P4zbwlbDhGie+2XTBnM9Bx4U05TGMcsKUwz2F4tc2lfStfjc/kX6wky73w6yKQ0Ji1uG06ii8G+R1BmIbbmlNpTO+ZbshQnoQh2Wvm1CDK1FQuA4iggXMY11G7gxn87EgYqsO6YiYD3qyiT3v0PvzhiNlc+q1oTveytE=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1685884484; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=XxFo49ybuTfpddZUtYJZ63iLTBCwDcOWVYL/S1IUMQ8=; 
+	b=ARbYLyMiA8dwgD+TSdxlbknWg2VBsHzu1jV8/jy9brYlxVeUWCIAogM8t5DFlMzAt3FNddMRpYlRXhP19nJbKWEC2WwmocrQYIAs8Kgaw0L5x5j8xTYYYipcguK2yl/mwITtf7nDs9TngZ3Y6pq4Mmm8pPFwuOM/kww8QBuKfB8=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1685884484;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=XxFo49ybuTfpddZUtYJZ63iLTBCwDcOWVYL/S1IUMQ8=;
+	b=hViB5voarrFviGYMJtj9R5ESpxU31WVKAvV8CNmBjxUKHuaAwPpnHWy7Ryogqr6S
+	IbUzck8jaTvVfe6p3a4qoSs1tE5vjjAMVLHtlOUtvwb41OUtnwna1abkemGM9hf5zv8
+	wKOb8YTBgvDgdxmhcI6XIxQgGTTj2o+9CJMGYc8M=
+Received: from [192.168.99.249] (178-147-169-233.haap.dm.cosmote.net [178.147.169.233]) by mx.zohomail.com
+	with SMTPS id 1685884483411181.65403632363302; Sun, 4 Jun 2023 06:14:43 -0700 (PDT)
+Message-ID: <d269ac88-9923-c00c-8047-cc8c9f94ef2c@arinc9.com>
+Date: Sun, 4 Jun 2023 16:14:31 +0300
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
 Subject: Re: [PATCH net-next 08/30] net: dsa: mt7530: change p{5,6}_interface
  to p{5,6}_configured
-Message-ID: <ZHyMezyKizkz2+Wg@shell.armlinux.org.uk>
+Content-Language: en-US
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>,
+ Vladimir Oltean <olteanv@gmail.com>
 References: <20230522121532.86610-9-arinc.unal@arinc9.com>
  <20230522121532.86610-9-arinc.unal@arinc9.com>
  <20230524175107.hwzygo7p4l4rvawj@skbuf>
@@ -62,13 +66,15 @@ References: <20230522121532.86610-9-arinc.unal@arinc9.com>
  <826fd2fc-fbf8-dab7-9c90-b726d15e2983@arinc9.com>
  <ZHyA/AmXmCxO6YMq@shell.armlinux.org.uk>
  <20230604125517.fwqh2uxzvsa7n5hu@skbuf>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230604125517.fwqh2uxzvsa7n5hu@skbuf>
+ <ZHyMezyKizkz2+Wg@shell.armlinux.org.uk>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <ZHyMezyKizkz2+Wg@shell.armlinux.org.uk>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230604_060941_207742_56266DCF 
-X-CRM114-Status: GOOD (  12.62  )
+X-CRM114-CacheID: sfid-20230604_061521_632574_FDDFC851 
+X-CRM114-Status: GOOD (  12.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,31 +86,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, mithat.guner@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, "David S. Miller" <davem@davemloft.net>
+Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, mithat.guner@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jun 04, 2023 at 03:55:17PM +0300, Vladimir Oltean wrote:
-> On Sun, Jun 04, 2023 at 01:18:04PM +0100, Russell King (Oracle) wrote:
-> > I don't remember whether Vladimir's firmware validator will fail for
-> > mt753x if CPU ports are not fully described, but that would be well
-> > worth checking. If it does, then we can be confident that phylink
-> > will always be used, and those bypassing calls should not be necessary.
+On 4.06.2023 16:07, Russell King (Oracle) wrote:
+> On Sun, Jun 04, 2023 at 03:55:17PM +0300, Vladimir Oltean wrote:
+>> On Sun, Jun 04, 2023 at 01:18:04PM +0100, Russell King (Oracle) wrote:
+>>> I don't remember whether Vladimir's firmware validator will fail for
+>>> mt753x if CPU ports are not fully described, but that would be well
+>>> worth checking. If it does, then we can be confident that phylink
+>>> will always be used, and those bypassing calls should not be necessary.
+>>
+>> It does, I've just retested this:
+>>
+>> [    8.469152] mscc_felix 0000:00:00.5: OF node /soc/pcie@1f0000000/ethernet-switch@0,5/ports/port@4 of CPU port 4 lacks the required "phy-handle", "fixed-link" or "managed" properties
+>> [    8.494571] mscc_felix 0000:00:00.5: error -EINVAL: Failed to register DSA switch
+>> [    8.502151] mscc_felix: probe of 0000:00:00.5 failed with error -22
 > 
-> It does, I've just retested this:
+> ... which isn't listed in dsa_switches_apply_workarounds[], and
+> neither is mt753x. Thanks.
 > 
-> [    8.469152] mscc_felix 0000:00:00.5: OF node /soc/pcie@1f0000000/ethernet-switch@0,5/ports/port@4 of CPU port 4 lacks the required "phy-handle", "fixed-link" or "managed" properties
-> [    8.494571] mscc_felix 0000:00:00.5: error -EINVAL: Failed to register DSA switch
-> [    8.502151] mscc_felix: probe of 0000:00:00.5 failed with error -22
+> So, that should be sufficient to know that the CPU port will always
+> properly described, and thus bypassing phylink in mt753x for the CPU
+> port should not be necessary.
 
-... which isn't listed in dsa_switches_apply_workarounds[], and
-neither is mt753x. Thanks.
+Perfect! If I understand correctly, there's this code - specific to 
+MT7531 and MT7988 ports being used as CPU ports - which runs in addition 
+to what's in mt753x_phylink_mac_config():
 
-So, that should be sufficient to know that the CPU port will always
-properly described, and thus bypassing phylink in mt753x for the CPU
-port should not be necessary.
+	mt7530_write(priv, MT7530_PMCR_P(port),
+		     PMCR_CPU_PORT_SETTING(priv->id));
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+This should be put on mt753x_phylink_mac_config(), under priv->id == 
+ID_MT7531, priv->id == ID_MT7988, and dsa_is_cpu_port(ds, port) checks?
+
+Arınç
 
