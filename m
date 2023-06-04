@@ -4,51 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48508C77B73
-	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Jun 2023 21:57:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B186C7EE23
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jun 2023 06:04:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hJv1+07zztxnXaWB2lGLhpwvzjwzOPI66T01+jArZXQ=; b=oR3ZI19UOho+TM8vqi59h3Sx6G
-	5Es4NRcS4err1huCWBSDIUhJvh8cPVa9e6IqaVn1oSuUJ2io7is6KDockk6ilKq1NDwf9V1wEA2mK
-	1KQ/ea8yEyJpLLgmmK68K0i/W6MYt5YwSUcMcmtU6Gtm2INeOIx48JBtQ9quv4+8kEXTYddbJWh2e
-	inSp3VgPINQ2/gp0BNzXdjuNP//12kJ/QnpaD4ody37PxcZOdMKufGcBLigN3DIhNcGQ5dZYbF0k8
-	iwTdLOcTBT/T23RZhA/qcHGtomQnOlWeMQGRbcDUYVGT29CFYf+U/L8T0uB9RPA5ds3ufmdm4Urxr
-	vjhzQPxw==;
+	bh=ABygB8GIbc3cPzvIop5r9YOrRdeKK4Mi8VAH/yukmyg=; b=J3CGizQn50x9hnRBeYhqfFXYrv
+	274bl0K1uljh9IOLsMsEuhY9bIQelJLG6HkWokt0k8JBKkzqNvWqAsCCwTLQcm3ScJvYL3YeoM/1o
+	1xYwjdR79ltRcKiVSXorhjhuI7s0Ncj1DoAuSL+t8WRXutoLdgDCcVBHgeDoDhQF+UXedd4Oy0UHt
+	zARWUmNOcsYzz2XqGfqw+ib9DoTswJXxt77jYwS2wvlbqdzu9gCc4pFizOkIzoetr/7/izEQTUOzE
+	InOiY6KdhzsFgKVF+r96+7NvbCowailSr7LJr1gWdf2MQuJ0doJDGrFJm9QxbV2QaRR1Kt8S4L9nf
+	dWvIpEzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q5ZFa-00AioV-1k;
-	Sat, 03 Jun 2023 21:57:30 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q5ZFX-00AinG-1B
+	id 1q5gr9-00BPyC-16;
+	Sun, 04 Jun 2023 06:04:47 +0000
+Received: from muru.com ([72.249.23.125])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1q5gr5-00BPxO-2W
 	for linux-mediatek@lists.infradead.org;
-	Sat, 03 Jun 2023 21:57:28 +0000
-Received: from mercury (unknown [185.254.75.45])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 65E4A6602B7B;
-	Sat,  3 Jun 2023 22:57:21 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1685829441;
-	bh=hJv1+07zztxnXaWB2lGLhpwvzjwzOPI66T01+jArZXQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=i+6zwYvDfkcEW67V2s8wtEUsRo+LG6xkCsd1FhS3pQ7RyKPIZH8NGTpoWuJBnoFSj
-	 sWudrVLaPg3txEwfu/KRQNgJnDzqLlSSdUYB/7KKYl5xWXXrLKggqchaUhMDRNWaaM
-	 pKxfY9cJSLO+MHLf06v2q5S3T4grbhX7NUPGEdvkeZWoadv79OJKEWrez5VOIelpMe
-	 7BFzw7kOMgfvmU2YU/ZWjcNJRRSLa31JngHg2en7AyfyPGMTWmlUztaWRjStSEvh3v
-	 Y+U3iazDDbitswzonWPDBuC1OMqgfjvclRzPR7ZeCuGh5vJvLw00gkNP7zMHYKcL1O
-	 e7IEV8YEzXGTQ==
-Received: by mercury (Postfix, from userid 1000)
-	id 03463106090A; Sat,  3 Jun 2023 23:57:18 +0200 (CEST)
-Date: Sat, 3 Jun 2023 23:57:18 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Tony Lindgren <tony@atomide.com>
+	Sun, 04 Jun 2023 06:04:45 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by muru.com (Postfix) with ESMTPS id B52C0804D;
+	Sun,  4 Jun 2023 06:04:37 +0000 (UTC)
+Date: Sun, 4 Jun 2023 09:04:36 +0300
+From: Tony Lindgren <tony@atomide.com>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
 Cc: John Ogness <john.ogness@linutronix.de>,
 	Chen-Yu Tsai <wenst@chromium.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -66,19 +50,19 @@ Cc: John Ogness <john.ogness@linutronix.de>,
 	linux-mediatek@lists.infradead.org
 Subject: Re: [PATCH v12 1/1] serial: core: Start managing serial controllers
  to enable runtime PM
-Message-ID: <20230603215718.ca5hdzdsj4btnlc2@mercury.elektranox.org>
+Message-ID: <20230604060436.GT14287@atomide.com>
 References: <20230525113034.46880-1-tony@atomide.com>
  <20230602083335.GA181647@google.com>
  <87a5xii33r.fsf@jogness.linutronix.de>
  <20230603054139.GR14287@atomide.com>
+ <20230603215718.ca5hdzdsj4btnlc2@mercury.elektranox.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="tneo32rghtw2mwkv"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230603054139.GR14287@atomide.com>
+In-Reply-To: <20230603215718.ca5hdzdsj4btnlc2@mercury.elektranox.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230603_145727_570589_FE7D9F2F 
-X-CRM114-Status: GOOD (  11.55  )
+X-CRM114-CacheID: sfid-20230603_230443_880643_C8A92DD9 
+X-CRM114-Status: GOOD (  13.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,49 +77,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---tneo32rghtw2mwkv
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
 Hi,
 
-On Sat, Jun 03, 2023 at 08:41:39AM +0300, Tony Lindgren wrote:
-> Looking at the kernelci.org test boot results for Linux next [0], seems
-> this issue is somehow 8250_mtk specific. I don't think the rk3399 boot
-> issue is serial port related.
+* Sebastian Reichel <sebastian.reichel@collabora.com> [230603 21:57]:
+> On Sat, Jun 03, 2023 at 08:41:39AM +0300, Tony Lindgren wrote:
+> > Looking at the kernelci.org test boot results for Linux next [0], seems
+> > this issue is somehow 8250_mtk specific. I don't think the rk3399 boot
+> > issue is serial port related.
+> 
+> The rk3399-gru-kevin board is broken because of a change from me
+> renaming CONFIG_MFD_RK808 to CONFIG_MFD_RK8XX and forgetting to
+> update the defconfig :( This means the board is missing its PMIC
+> driver. It should be fixed once the defconfig update is queued:
+> 
+> https://lore.kernel.org/all/20230518040541.299189-1-sebastian.reichel@collabora.com/
 
-The rk3399-gru-kevin board is broken because of a change from me
-renaming CONFIG_MFD_RK808 to CONFIG_MFD_RK8XX and forgetting to
-update the defconfig :( This means the board is missing its PMIC
-driver. It should be fixed once the defconfig update is queued:
+OK thanks for the info.
 
-https://lore.kernel.org/all/20230518040541.299189-1-sebastian.reichel@collabora.com/
+> Unfortuantely nobody seems to feel responsible for the generic arm
+> defconfig files :(
 
-Unfortuantely nobody seems to feel responsible for the generic arm
-defconfig files :(
+You could put together a git branch with the defconfig changes and
+send a pull request to the SoC maintainers if it does not get picked
+up before that.
 
--- Sebastian
+Regards,
 
---tneo32rghtw2mwkv
-Content-Type: application/pgp-signature; name="signature.asc"
+Tony
 
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmR7tzsACgkQ2O7X88g7
-+pqWzQ//Uie7CBnwn5JUIsHsI4pPtgldOe3Z8n7rWBzZvYXWIfkk/BJg1Dw8i+Xx
-QFeJoehfNn02Lkznixt6ZsIL6iVQketP/BfKSFl/QFV/LkKqqRn8lqdwOtDi3ek5
-LVEN0nbMCI6KMNFZgnIU0Vg6L7RLKA/PgAZ9n0FT/rnKQBj3yJCE9/UaqdxFmZ2Q
-GMSOWPh21szOK9nd+9irXGLtJBirdSK+uzkwIt8zs/Ff2NiUPbHw+cArDb1qZwJ5
-t7fLF9HkbrDViQtJr5eHdmVhXT4WIPZbeob2tKUy37weZemNXd9LTOjJlAxu7voa
-swsc/jVZJCjQrySnn1MFmL8nV/Ae+MDq/EceDR5JpiiS/NN4AtdzV+ieRcqhf10a
-Amni6QCMoe4nqMEFAPsdOTe1obH5qiTYhRohkIBjrQQ4CgCUDk6fvlq7LFjpW+ZD
-BNsVHk9jlO+VKMclFLAmgWb4gV3HF68SE2cpOCtYINFmaAqxRfiboeIEsGDGOuA7
-869iSzU5Z1m9Cz0huFRH6QaDIMCI4+WWikekGuTT3vuFdh4OgH/1ZNdSz2RizkGi
-oQV08HqL8tkufUhFeiLUfDZhz6LmNzanlMcQZbEzlOyN9FOqXSZ4/BhPCLJtzMrT
-tjDdjj0wFg7NgAJI+v6n71GpVDzWMNufTt+ppYm7GNRsveW+Dt8=
-=oc53
------END PGP SIGNATURE-----
-
---tneo32rghtw2mwkv--
 
