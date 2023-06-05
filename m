@@ -4,92 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F251C7EE23
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jun 2023 07:34:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BECD3C77B73
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jun 2023 07:36:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=DAgRq2EXmiJlw5QVvMbHQppFdqv5pzza5dzmoTwBNQ8=; b=mXWXTM9AbXxkgKGyLKlnu8UaYz
-	BxzXfg7QtkbOyg45sArmfMSWICQJy/W9GkLn8G25goCRyppkElVJ9manzCedu6bpdcjEl6/BxeXdx
-	Jaw8Pz7jIm3/CAjVdrx5tSl4D+/bT0P9GzIeaxIGW3Ok7uph/2FeSmQYMKJvJCozVoa6vnPejSqof
-	crUQ73LECl+lvxEQ6kEATn2SYkAq5/kdk4O+Enfn9T4S83Mb27xczCbNyGn8TNXOk9KAxF3ox7VUb
-	TK4xYdoaBCMht7n9AsJYw7BdAMYyK7Tdg2B76Qw2sBSEjOxWc115qbATaQAwGdYXW34H46kvcfnsJ
-	vLzD/U9g==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qwVXKWq5GNnWoTDUHcyAd8EJGBrIdQm1nCY/RZ844Ig=; b=yy9P31Cvyg0T28bpR3Ac0BIk7/
+	h6VkRkibNSlIKaG0EEbYSd/vZQPMmYboosDO35o7Q6ss+SJ49WuH95jfLN02AFUQ4TxieKNsgYt4d
+	oYRXMP1JQUwinJdE3ONzgXRt/RdgkBX4Dnr4vtLAZBFtwrNmeTBe+09ph+0uJdcbLxhPFTN5rRjBe
+	3xx/FQElfMYSMnOh6Hhw6HS1q9JtiDe6rI6BmXb+3ShuqpnbvZhNHrhjYYJ60Tg699Ahacg4FEpWM
+	BRTwyz6cTqjj9pn9sTvCEgOfDGUSypGosKapXp0BvdWEe9J9QHFgAuXR0iWC1a9OAFgOtrSPpdCNb
+	BW0hRcFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q64jp-00EYky-08;
-	Mon, 05 Jun 2023 07:34:49 +0000
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+	id 1q64lm-00EZCi-0w;
+	Mon, 05 Jun 2023 07:36:50 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q64jk-00EYiD-0p;
-	Mon, 05 Jun 2023 07:34:45 +0000
-Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-4f62b552751so634565e87.3;
-        Mon, 05 Jun 2023 00:34:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1685950480; x=1688542480;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=DAgRq2EXmiJlw5QVvMbHQppFdqv5pzza5dzmoTwBNQ8=;
-        b=GOPR4d+/UEzaru7bfg0RdVmwWCfzmOk0IQA91sr3KwRMPXT30HCwHUn05o8osUkDpD
-         MsA7L94HI7gZfq3ALkgV3RippOJKS26pkN/bdoRJPCCwr7GkxE4BELQdzz+/jiFCzj47
-         LutkrzD710untVOO5vy2jWpN3/4HCZv99+yPalk8MvgtcRMziJfLxNsR4GIugdW83XaK
-         u8oLh5kpyiDr1n44SQIuGNyMUQvqnSeddlU6ij+6RtpodwOZ7ENHZiUkGCL7qydhznuI
-         6RNnLnHKr8Qzd4ibaeAcm/tw0ObHcTOAA7muPFpKY/VxTLR7Y6kU0cV6lDEK+5JOB94w
-         vMGQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685950480; x=1688542480;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=DAgRq2EXmiJlw5QVvMbHQppFdqv5pzza5dzmoTwBNQ8=;
-        b=W5ftNuZb1+PYGPVJ/ErxcDdctQo0zL5baTPexqzMgEz1l1At+rZqsd5SJDMCQc+z/h
-         ggckcBDaoiT583WZlg9Bl6j+lc2si728Sn8VA+Y+P6zORCY4EgF0lnBcU4IgOcuBLaZo
-         2mwZ8+d8EMW+oAdoVHLz12gEjk+fNavk/Nx3yxgVtcnnxpEUMEzPBrchgEubRMDqVh2g
-         1cMwN4C72NdxUeHIZVgEGQHUuU7SUJyoLH8vvjEDCxe7SkuUdBFOCfzKI8meEKKLHt9L
-         dK8wCdJfsmFd/naW3s7KM3OapphJBmC98ixsP463vM5FFWe3MtXuFHvPf4RocVTASidu
-         tS2g==
-X-Gm-Message-State: AC+VfDyxhEh+lFxsEXcaGvmhYDyT/vindkgrtgCbtX2WE9NQbUJAZlRH
-	g0GqM1tN9DTgz7fgzZAkk2o=
-X-Google-Smtp-Source: ACHHUZ5IEYPCmzkGOJfS9ic1+YXKE8YtO6DZakUgS6piCmgDsgm+OHr8VSg70fHzplr4P2NyIUY0Sw==
-X-Received: by 2002:ac2:4281:0:b0:4f1:3d6c:d89b with SMTP id m1-20020ac24281000000b004f13d6cd89bmr4850910lfh.42.1685950479796;
-        Mon, 05 Jun 2023 00:34:39 -0700 (PDT)
-Received: from home.paul.comp (paulfertser.info. [2001:470:26:54b:226:9eff:fe70:80c2])
-        by smtp.gmail.com with ESMTPSA id w12-20020ac2598c000000b004f62225ffb6sm564382lfn.105.2023.06.05.00.34.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 05 Jun 2023 00:34:39 -0700 (PDT)
-Received: from home.paul.comp (home.paul.comp [IPv6:0:0:0:0:0:0:0:1])
-	by home.paul.comp (8.15.2/8.15.2/Debian-22) with ESMTP id 3557YZcg008744;
-	Mon, 5 Jun 2023 10:34:36 +0300
-Received: (from paul@localhost)
-	by home.paul.comp (8.15.2/8.15.2/Submit) id 3557YXaZ008743;
-	Mon, 5 Jun 2023 10:34:33 +0300
-From: Paul Fertser <fercerpav@gmail.com>
-To: linux-wireless@vger.kernel.org
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
-        Ryder Lee <ryder.lee@mediatek.com>,
-        Shayne Chen <shayne.chen@mediatek.com>,
-        Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
-        "David S. Miller" <davem@davemloft.net>,
-        Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
-        Paolo Abeni <pabeni@redhat.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Paul Fertser <fercerpav@gmail.com>, netdev@vger.kernel.org,
-        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-        linux-mediatek@lists.infradead.org, Rani Hod <rani.hod@gmail.com>,
-        stable@vger.kernel.org
-Subject: [PATCH] mt76: mt7615: do not advertise 5 GHz on first phy of MT7615D (DBDC)
-Date: Mon,  5 Jun 2023 10:34:07 +0300
-Message-Id: <20230605073408.8699-1-fercerpav@gmail.com>
-X-Mailer: git-send-email 2.30.2
+	id 1q64lj-00EZAt-0X;
+	Mon, 05 Jun 2023 07:36:48 +0000
+Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id CEA0A66056AA;
+	Mon,  5 Jun 2023 08:36:42 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1685950603;
+	bh=Vjm3ihthJvkZLq+tjlrnOh0IMA05G6NIKzps6uAqPq4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=D66lucLU60+oysiEO+49sOUc+ebQrmsgjhrN5JHtLefKmhNh8EhiilKzGFZBKl+YF
+	 ADZbnI9PEeGpHmNHyoQNuJjeVQLnOZR1ikTSW8FOD/5+kar0zhnIZXbcY/0sTpa1cZ
+	 gKj0lZ7vodDLmBNmGPorXC62hvzrSfFcwuZLJJ7MJTK8EtDCTc8VvgXiu2Sl2i06SM
+	 reLN219D71BIdCLGqlQjEIUPrJzV1fqQhKX0KkWg5SewHB4/r7HJC8+0TIK/QzkHZr
+	 v1+q8et83WMBojnOs3/jzayTvNAb8K5KbphnXvxwYQSlI7sc3YcMlCN4ZiFxktJTeW
+	 46o6fh5/WNHeQ==
+Message-ID: <0144a00a-aa87-58f0-9d49-6ce35e41c945@collabora.com>
+Date: Mon, 5 Jun 2023 09:36:40 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.2
+Subject: Re: [PATCH v2 1/2] dt-bindings: thermal: mediatek: Move auxdac
+ binding to yaml
+To: matthias.bgg@kernel.org, rafael@kernel.org,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>
+Cc: devicetree@vger.kernel.org, Amit Kucheria <amitk@kernel.org>,
+ linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Zhang Rui <rui.zhang@intel.com>,
+ linux-arm-kernel@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>
+References: <20230601134425.29499-1-matthias.bgg@kernel.org>
+Content-Language: en-US
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230601134425.29499-1-matthias.bgg@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230605_003444_293358_0564ECEF 
-X-CRM114-Status: UNSURE (   9.86  )
+X-CRM114-CacheID: sfid-20230605_003647_418397_D643CE92 
+X-CRM114-Status: UNSURE (   8.54  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -105,40 +83,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On DBDC devices the first (internal) phy is only capable of using
-2.4 GHz band, and the 5 GHz band is exposed via a separate phy object,
-so avoid the false advertising.
+Il 01/06/23 15:44, matthias.bgg@kernel.org ha scritto:
+> From: Matthias Brugger <matthias.bgg@gmail.com>
+> 
+> Convert the older binding to yaml syntax.
+> The thermal IP has several sensors, to reflect that
+> thermal-sensors-cells is set to '1'. Apart optional regulator
+> for bank supply wasn't part of the old binding description,
+> this patch adds them.
+> 
+> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-Reported-by: Rani Hod <rani.hod@gmail.com>
-Closes: https://github.com/openwrt/openwrt/pull/12361
-Fixes: 7660a1bd0c22 ("mt76: mt7615: register ext_phy if DBDC is detected")
-Cc: stable@vger.kernel.org
-Signed-off-by: Paul Fertser <fercerpav@gmail.com>
----
- drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c
-index 68e88224b8b1..ccedea7e8a50 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c
-@@ -128,12 +128,12 @@ mt7615_eeprom_parse_hw_band_cap(struct mt7615_dev *dev)
- 	case MT_EE_5GHZ:
- 		dev->mphy.cap.has_5ghz = true;
- 		break;
--	case MT_EE_2GHZ:
--		dev->mphy.cap.has_2ghz = true;
--		break;
- 	case MT_EE_DBDC:
- 		dev->dbdc_support = true;
- 		fallthrough;
-+	case MT_EE_2GHZ:
-+		dev->mphy.cap.has_2ghz = true;
-+		break;
- 	default:
- 		dev->mphy.cap.has_2ghz = true;
- 		dev->mphy.cap.has_5ghz = true;
--- 
-2.34.1
 
 
