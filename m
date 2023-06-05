@@ -4,67 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C98F8C7EE2A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jun 2023 08:22:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94C3EC77B73
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jun 2023 08:38:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hRw3+HkwFM91BzkQgi187ejXbu5qSj8dxBM7C8zuoOg=; b=EXF/yXKWg9DnAVyKxQpY7D4JL7
-	gnNt79+J56WQ7hHxRMXyODmJc8couC2crSBgsTXPSdEDG49yiqBKj8j2VpA6jg5CHI6f2bdwqWPxD
-	ZAq/vaFyAn1IN4YfPnVmUT0nOQBaHmatinIIyC5C3O8RVY2RHKHpv6FDVxviHc5dru3xGsIizGMNn
-	qhtpnPAlfsCLvptrVx4exlAqiSDVIfku+kxAkeGTcs/JUTNQPIo+obWifYiXP7Beqr9htGOVk/yvw
-	zLHDS4t1EAzUSVYhoU0m95IpLU6dArlNNiDN0pffCWA9KAeMclEdQqv0V2BROcmx6ZGXoTDtWAxfj
-	dfQOVrng==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3Azkl2p0peZCyoTp/t8AZZpzi+i1fCBOy4d1ReL+xhE=; b=aGloAdVInJLmVV1V4zxaAXATq0
+	bOYEzxmL+Bgpiv/9xIryx1x5DOUuZ0sZl3Haidb6aXacQ1iX5RyLAJgbPG4qw99aVVw4IGvDaQ7eJ
+	rxJq19c9i6SXlhHp4Xn1tTYj+Z/XWgu3I2p70Zv63C9GV4QFFnYENozo3T7kELDeOU31eYqRko5lJ
+	FfKxNnkuTHs04FmIs6B78cxpTP9fVL4dddos3hgXvzKXabPtS9N3KukC8UaXGsH6SXcOpogJ6LKLi
+	2fU7gB1THmd7wRsvssApF8GflPQ1wLKGxSlqkNyQY9l20DJkYelvfCoJayDpENrgtutjRsJC29rTV
+	dQz/dmgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q65TW-00EhMt-2Q;
-	Mon, 05 Jun 2023 08:22:02 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1q65jZ-00EjRo-0n;
+	Mon, 05 Jun 2023 08:38:37 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q65TT-00EhLM-2w;
-	Mon, 05 Jun 2023 08:22:01 +0000
-Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1q65jT-00EjQR-1j
+	for linux-mediatek@lists.infradead.org;
+	Mon, 05 Jun 2023 08:38:35 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B133066056AC;
-	Mon,  5 Jun 2023 09:21:57 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1685953318;
-	bh=VJJ5TugID6Q4W6b8RgUTwaQaM+UQcpqFmZpmE6t57EI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=c9Ck2tFBEAWtO399BEwFs1Yx0a6XkEl2E3oKh6tn7Q2OBeSI6MfSvGQ0ke/yUSRXj
-	 rSbfCLVzUMnrv5WvJK9KRhgERLPJFtFmRAgIZhYRCHJTbHdO4AOqMov1kYDCu1g91c
-	 akCSyrW7GspMYhDLgxL10cQDF/BzJr00mXnF6gQsl4EFD3xXZbnxvI6chKN65AKo4p
-	 WCqfaZmCaHTqI7AldbLAGHTWTxeLqMe9ebPTJjdhL7X8SgnREYSKQZh3DeBqtXXxMe
-	 Hs8MCZQmuezlwKPtDxljhKfvpwMW3wjJzmJwmjmUr3tKpqnLdv/T/NVqxnqfvdjL6L
-	 mW+KO9Qg7twfg==
-Message-ID: <01c88a42-274c-f8cf-73a6-29741579d9db@collabora.com>
-Date: Mon, 5 Jun 2023 10:21:54 +0200
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 4F51E60DDF;
+	Mon,  5 Jun 2023 08:38:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 374E7C433EF;
+	Mon,  5 Jun 2023 08:38:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1685954309;
+	bh=FpfnvUQhWVZaybmqz1YUMo//OZ9kl1EufoIqVMKrzbk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=jfUI7Iz2cw0pAgFr8VG6BTB4CP1ZUe6qhGfWPvstY8DFESSiwV+XUgZsielDD+aSd
+	 7b9yC0EPrvmchLLYUIvH7Bkazzemg9lZkx6SaUrszR5L/m50Xo0DueqkXp7J9TDWrG
+	 fDus9a4LQ+1uJlUQBvUv4bblG4BbM+9vnXH0UZIdMeQeXKjoUN7nn5qQQDyVTV3y4l
+	 rrmBYMDdooegXX6KyqmOHoc8WFnPTY+IF0ddY0pVsaWRommvTzfVgME5MP2WYAUWUs
+	 5eiaUHopT2O0Ca6MEI0ChqIf+ZnlsAg2G2c8PYw7FGwB3yIEAuWcQP94VkPeVAfJNy
+	 NdC0tC6+lY18A==
+Date: Mon, 5 Jun 2023 10:38:25 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Shayne Chen <shayne.chen@mediatek.com>
+Cc: Felix Fietkau <nbd@nbd.name>,
+	linux-wireless <linux-wireless@vger.kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	Bo Jiao <Bo.Jiao@mediatek.com>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>,
+	Peter Chiu <chui-hao.chiu@mediatek.com>
+Subject: Re: [PATCH v2 02/10] wifi: mt76: connac: add support for dsp
+ firmware download
+Message-ID: <ZH2fAWYfp2rdurwT@lore-desk>
+References: <20230605081947.12804-1-shayne.chen@mediatek.com>
+ <20230605081947.12804-2-shayne.chen@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.2
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8192: Fix CPUs capacity-dmips-mhz
-Content-Language: en-US
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: kernel@collabora.com, Conor Dooley <conor+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Rob Herring <robh+dt@kernel.org>, Seiya Wang <seiya.wang@mediatek.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20230602183515.3778780-1-nfraprado@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230602183515.3778780-1-nfraprado@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="BH+RWSTZYkM9p1ri"
+Content-Disposition: inline
+In-Reply-To: <20230605081947.12804-2-shayne.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230605_012200_115624_C7CEB246 
-X-CRM114-Status: GOOD (  11.15  )
+X-CRM114-CacheID: sfid-20230605_013831_677591_46FE5039 
+X-CRM114-Status: GOOD (  28.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,33 +81,240 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 02/06/23 20:35, Nícolas F. R. A. Prado ha scritto:
-> The capacity-dmips-mhz parameter was miscalculated: this SoC runs
-> the first (Cortex-A55) cluster at a maximum of 2000MHz and the
-> second (Cortex-A76) cluster at a maximum of 2200MHz.
-> 
-> In order to calculate the right capacity-dmips-mhz, the following
-> test was performed:
-> 1. CPUFREQ governor was set to 'performance' on both clusters
-> 2. Ran dhrystone with 500000000 iterations for 10 times on each cluster
-> 3. Calculated the mean result for each cluster
-> 4. Calculated DMIPS/MHz: dmips_mhz = dmips_per_second / cpu_mhz
-> 5. Scaled results to 1024:
->     result_c0 = dmips_mhz_c0 / dmips_mhz_c1 * 1024
-> 
-> The mean results for this SoC are:
-> Cluster 0 (LITTLE): 12016411 Dhry/s
-> Cluster 1 (BIG): 31702034 Dhry/s
-> 
-> The calculated scaled results are:
-> Cluster 0: 426.953226899238 (rounded to 427)
-> Cluster 1: 1024
-> 
-> Fixes: 48489980e27e ("arm64: dts: Add Mediatek SoC MT8192 and evaluation board dts and Makefile")
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> 
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+--BH+RWSTZYkM9p1ri
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+> From: Peter Chiu <chui-hao.chiu@mediatek.com>
+>=20
+> Add FW_START_WORKING_PDA_DSP for the indication of starting DSP
+> firmware download, which is for phy-related control.
+> The firmware is transparent to the driver, but it's necessary for the
+> firmware download process.
+>=20
+> Reviewed-by: Shayne Chen <shayne.chen@mediatek.com>
+> Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+> Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+> ---
+> v2:
+>   - merge two commits:
+>     - wifi: mt76: connac: add a setting bit for dsp firmware
+>     - wifi: mt76: mt7996: add dsp firmware download
+>   - move main code for loading ram to a regular function
+> ---
+>  .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  1 +
+>  .../net/wireless/mediatek/mt76/mt7996/mcu.c   | 70 +++++++++----------
+>  .../wireless/mediatek/mt76/mt7996/mt7996.h    |  7 ++
+>  .../net/wireless/mediatek/mt76/mt7996/pci.c   |  1 +
+>  4 files changed, 43 insertions(+), 36 deletions(-)
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drive=
+rs/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+> index ca1ce97a6d2f..4a21c237ea6e 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+> @@ -22,6 +22,7 @@
+> =20
+>  #define FW_START_OVERRIDE		BIT(0)
+>  #define FW_START_WORKING_PDA_CR4	BIT(2)
+> +#define FW_START_WORKING_PDA_DSP	BIT(3)
+> =20
+>  #define PATCH_SEC_NOT_SUPPORT		GENMASK(31, 0)
+>  #define PATCH_SEC_TYPE_MASK		GENMASK(15, 0)
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7996/mcu.c
+> index 88e2f9d0e513..28930693a75a 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+> @@ -2155,7 +2155,7 @@ static int mt7996_load_patch(struct mt7996_dev *dev)
+>  static int
+>  mt7996_mcu_send_ram_firmware(struct mt7996_dev *dev,
+>  			     const struct mt7996_fw_trailer *hdr,
+> -			     const u8 *data, bool is_wa)
+> +			     const u8 *data, enum mt7996_ram_type type)
+>  {
+>  	int i, offset =3D 0;
+>  	u32 override =3D 0, option =3D 0;
+> @@ -2167,8 +2167,10 @@ mt7996_mcu_send_ram_firmware(struct mt7996_dev *de=
+v,
+> =20
+>  		region =3D (const struct mt7996_fw_region *)((const u8 *)hdr -
+>  			 (hdr->n_region - i) * sizeof(*region));
+> +		/* DSP and WA use same mode */
+>  		mode =3D mt76_connac_mcu_gen_dl_mode(&dev->mt76,
+> -						   region->feature_set, is_wa);
+> +						   region->feature_set,
+> +						   type !=3D MT7996_RAM_TYPE_WM);
+>  		len =3D le32_to_cpu(region->len);
+>  		addr =3D le32_to_cpu(region->addr);
+> =20
+> @@ -2195,19 +2197,22 @@ mt7996_mcu_send_ram_firmware(struct mt7996_dev *d=
+ev,
+>  	if (override)
+>  		option |=3D FW_START_OVERRIDE;
+> =20
+> -	if (is_wa)
+> +	if (type =3D=3D MT7996_RAM_TYPE_WA)
+>  		option |=3D FW_START_WORKING_PDA_CR4;
+> +	else if (type =3D=3D MT7996_RAM_TYPE_DSP)
+> +		option |=3D FW_START_WORKING_PDA_DSP;
+> =20
+>  	return mt76_connac_mcu_start_firmware(&dev->mt76, override, option);
+>  }
+> =20
+> -static int mt7996_load_ram(struct mt7996_dev *dev)
+> +static int __mt7996_load_ram(struct mt7996_dev *dev, const char *fw_type,
+> +			     const char *fw_file, enum mt7996_ram_type ram_type)
+>  {
+>  	const struct mt7996_fw_trailer *hdr;
+>  	const struct firmware *fw;
+>  	int ret;
+> =20
+> -	ret =3D request_firmware(&fw, MT7996_FIRMWARE_WM, dev->mt76.dev);
+> +	ret =3D request_firmware(&fw, fw_file, dev->mt76.dev);
+>  	if (ret)
+>  		return ret;
+> =20
+> @@ -2217,48 +2222,41 @@ static int mt7996_load_ram(struct mt7996_dev *dev)
+>  		goto out;
+>  	}
+> =20
+> -	hdr =3D (const struct mt7996_fw_trailer *)(fw->data + fw->size - sizeof=
+(*hdr));
+> -
+> -	dev_info(dev->mt76.dev, "WM Firmware Version: %.10s, Build Time: %.15s\=
+n",
+> -		 hdr->fw_ver, hdr->build_date);
+> +	hdr =3D (const void *)(fw->data + fw->size - sizeof(*hdr));
+> +	dev_info(dev->mt76.dev, "%s Firmware Version: %.10s, Build Time: %.15s\=
+n",
+> +		 fw_type, hdr->fw_ver, hdr->build_date);
+> =20
+> -	ret =3D mt7996_mcu_send_ram_firmware(dev, hdr, fw->data, false);
+> +	ret =3D mt7996_mcu_send_ram_firmware(dev, hdr, fw->data, ram_type);
+>  	if (ret) {
+> -		dev_err(dev->mt76.dev, "Failed to start WM firmware\n");
+> +		dev_err(dev->mt76.dev, "Failed to start %s firmware\n", fw_type);
+>  		goto out;
+>  	}
+> =20
+> +out:
+>  	release_firmware(fw);
+> =20
+> -	ret =3D request_firmware(&fw, MT7996_FIRMWARE_WA, dev->mt76.dev);
+> -	if (ret)
+> -		return ret;
+> -
+> -	if (!fw || !fw->data || fw->size < sizeof(*hdr)) {
+> -		dev_err(dev->mt76.dev, "Invalid firmware\n");
+> -		ret =3D -EINVAL;
+> -		goto out;
+> -	}
+> -
+> -	hdr =3D (const struct mt7996_fw_trailer *)(fw->data + fw->size - sizeof=
+(*hdr));
+> -
+> -	dev_info(dev->mt76.dev, "WA Firmware Version: %.10s, Build Time: %.15s\=
+n",
+> -		 hdr->fw_ver, hdr->build_date);
+> +	return ret;
+> +}
+> =20
+> -	ret =3D mt7996_mcu_send_ram_firmware(dev, hdr, fw->data, true);
+> -	if (ret) {
+> -		dev_err(dev->mt76.dev, "Failed to start WA firmware\n");
+> -		goto out;
+> -	}
+> +static int mt7996_load_ram(struct mt7996_dev *dev)
+> +{
+> +	int ret;
+> =20
+> -	snprintf(dev->mt76.hw->wiphy->fw_version,
+> -		 sizeof(dev->mt76.hw->wiphy->fw_version),
+> -		 "%.10s-%.15s", hdr->fw_ver, hdr->build_date);
 
+doing so we do not advertise fw version through ethtool as before.
+
+> +#define LOAD_RAM(_type) \
+> +	do {								\
+> +		ret =3D __mt7996_load_ram(dev, #_type,			\
+> +					MT7996_FIRMWARE_##_type,	\
+> +					MT7996_RAM_TYPE_##_type);	\
+> +		if (ret)						\
+> +			return ret;					\
+> +	} while (0)
+> =20
+> -out:
+> -	release_firmware(fw);
+> +	LOAD_RAM(WM);
+> +	LOAD_RAM(DSP);
+> +	LOAD_RAM(WA);
+
+can you please run the function directly instead of using macros?
+
+Regards,
+Lorenzo
+
+> +#undef LOAD_RAM
+> =20
+> -	return ret;
+> +	return 0;
+>  }
+> =20
+>  static int
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers=
+/net/wireless/mediatek/mt76/mt7996/mt7996.h
+> index 4d7dcb95a620..7dfdc7384056 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+> @@ -29,6 +29,7 @@
+> =20
+>  #define MT7996_FIRMWARE_WA		"mediatek/mt7996/mt7996_wa.bin"
+>  #define MT7996_FIRMWARE_WM		"mediatek/mt7996/mt7996_wm.bin"
+> +#define MT7996_FIRMWARE_DSP		"mediatek/mt7996/mt7996_dsp.bin"
+>  #define MT7996_ROM_PATCH		"mediatek/mt7996/mt7996_rom_patch.bin"
+> =20
+>  #define MT7996_EEPROM_DEFAULT		"mediatek/mt7996/mt7996_eeprom.bin"
+> @@ -52,6 +53,12 @@ struct mt7996_sta;
+>  struct mt7996_dfs_pulse;
+>  struct mt7996_dfs_pattern;
+> =20
+> +enum mt7996_ram_type {
+> +	MT7996_RAM_TYPE_WM,
+> +	MT7996_RAM_TYPE_WA,
+> +	MT7996_RAM_TYPE_DSP,
+> +};
+> +
+>  enum mt7996_txq_id {
+>  	MT7996_TXQ_FWDL =3D 16,
+>  	MT7996_TXQ_MCU_WM,
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/pci.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7996/pci.c
+> index 64aee3fb5445..c5301050ff8b 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7996/pci.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/pci.c
+> @@ -219,4 +219,5 @@ MODULE_DEVICE_TABLE(pci, mt7996_pci_device_table);
+>  MODULE_DEVICE_TABLE(pci, mt7996_hif_device_table);
+>  MODULE_FIRMWARE(MT7996_FIRMWARE_WA);
+>  MODULE_FIRMWARE(MT7996_FIRMWARE_WM);
+> +MODULE_FIRMWARE(MT7996_FIRMWARE_DSP);
+>  MODULE_FIRMWARE(MT7996_ROM_PATCH);
+> --=20
+> 2.39.2
+>=20
+
+--BH+RWSTZYkM9p1ri
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZH2fAQAKCRA6cBh0uS2t
+rN0xAQCc/tEdcIcDtbomC+lWHkhiOCA+vTqvGAgwPgRIh2VrfQEArKxaJshTgBCE
+IDKOHKkWjVMByTTJc0/LNo/fx3O26wg=
+=+96M
+-----END PGP SIGNATURE-----
+
+--BH+RWSTZYkM9p1ri--
 
