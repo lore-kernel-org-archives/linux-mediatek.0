@@ -4,80 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFAFAC7EE23
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jun 2023 08:44:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA188C7EE2A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jun 2023 08:44:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xgz67U8OGPR8OxbpVwcl0tAWF1erfvr1egn1tMS4EyQ=; b=eo055AQFDOUQ5C6s5RnrkC+aM5
-	lpMEhhQwH/GEUfM7Mdr50zW/Jp9FIFGWv06jzSW2nZyUJbyK3vea3trAkcDpW82p7vxUDAdp2Ux6A
-	GTCeW9eUVDrQnE0Mkz4ABlL5jlfM0iwovJc1IwUAtDY0fOLDnv7QKiRdzlEo70Dm5LNMIobZN+Hrj
-	X/rdADusI+GI/iUgOxxAZEeuT5lsXgkiK+DocjNsBpj1t5Nrf3eTfKwvbOOsNy9QJAFWo9WwbJCoj
-	RxrMWc7ZnMvUw3z+4YB1nXozax06zXvUq59SEysO6dUArhuP5OLi3V201ZwgH2ZW0O2/LLwj5j/i3
-	zCpn1vqQ==;
+	bh=MrfUcOIoh78ZG5yS7R23juCUyPfE+5HsrCyM0YNurn4=; b=TX5xMCgRhnJm2W4zyjxV4Lv8fC
+	JtkeshJiSEypOBdfoyi3vkcSwDtki/qzFECvlXZKBoVbdAT55PhC5QnbokCcN/a6fbTNfOwTNbpBy
+	v4ya1Sjpfo0444IT9HdV7T2jeNmD6NAb+7MTwMfSnWVmtMsKj8I+eUJLLb4DveWRxkrSC6Vm969fQ
+	qnajsOYdsfW+Odh6o5f7Xpx8jHzkOl1ua9wom93n3X+MVx9ZQ5IveIdl3NskboI23Sbp9W0KweEeS
+	fRP373dPPGWaxX3AdhLRw+YiublWeWjxLXCXkVyDapGkTOnay1CAgXG1zWBdpiY4Dk1KDeSV5CRmr
+	zm8cuz1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q65os-00Ek9r-04;
-	Mon, 05 Jun 2023 08:44:06 +0000
-Received: from mga14.intel.com ([192.55.52.115])
+	id 1q65pH-00EkIz-0D;
+	Mon, 05 Jun 2023 08:44:31 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q65oo-00Ek7R-1o;
-	Mon, 05 Jun 2023 08:44:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1685954642; x=1717490642;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=ZKd1hojcEofK8WgGk5N5pRnS4q4s9sbyMNImCRd9UFk=;
-  b=T1R2WsjKp56jqiBxPQDy98DkBFqxZj2gzhhD8RMnHqHk9Eb2Las4LIJe
-   K7zQRv3au5E6GqoZ/ngy0AqHdwN4PuNO9x3uqZZsL9G4uxvFK/K/bgJCF
-   l+Mhds3TGp2kTCw9RqjBUrQiMH5GYqU7mCNoTLikkEnGi6elIRy5s3I1d
-   +BPP/f6SrpkebBgtuGsPqLzTYwe56hMwKqrXqm/3ZCz0E1xtIS6X8NDCT
-   c5bVxKvUmDULaQLI6/Ak5O5ECsmkP6xUaoQUqP+qLK3/WMgvqF09CNyUO
-   6ad/d/A3DpzLuy4DLTmh49M02gL+Leki3XFstXhbgX1byKK7yIEdWH7Gj
-   A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10731"; a="356327450"
-X-IronPort-AV: E=Sophos;i="6.00,217,1681196400"; 
-   d="scan'208";a="356327450"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
-  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Jun 2023 01:43:57 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10731"; a="798340337"
-X-IronPort-AV: E=Sophos;i="6.00,217,1681196400"; 
-   d="scan'208";a="798340337"
-Received: from lkp-server01.sh.intel.com (HELO 15ab08e44a81) ([10.239.97.150])
-  by FMSMGA003.fm.intel.com with ESMTP; 05 Jun 2023 01:43:54 -0700
-Received: from kbuild by 15ab08e44a81 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1q65of-00042B-25;
-	Mon, 05 Jun 2023 08:43:53 +0000
-Date: Mon, 5 Jun 2023 16:43:07 +0800
-From: kernel test robot <lkp@intel.com>
-To: Wenbin Mei <wenbin.mei@mediatek.com>,
-	Ulf Hansson <ulf.hansson@linaro.org>
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	Chaotian Jing <chaotian.jing@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Adrian Hunter <adrian.hunter@intel.com>,
-	Ritesh Harjani <riteshh@codeaurora.org>,
-	Asutosh Das <asutoshd@codeaurora.org>, linux-mmc@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Wenbin Mei <wenbin.mei@mediatek.com>
-Subject: Re: [PATCH v3] mmc: mtk-sd: reduce CIT for better performance
-Message-ID: <202306051634.orHLaQ9t-lkp@intel.com>
-References: <20230605060107.22044-1-wenbin.mei@mediatek.com>
+	id 1q65pC-00EkFt-1y
+	for linux-mediatek@lists.infradead.org;
+	Mon, 05 Jun 2023 08:44:29 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-30adc51b65cso4160777f8f.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 05 Jun 2023 01:44:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1685954663; x=1688546663;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=MrfUcOIoh78ZG5yS7R23juCUyPfE+5HsrCyM0YNurn4=;
+        b=IgSNkde0F2plrIXJephmlvFxedbx7tHM/IirdYyN8pIDo1/xuMRvfD3003V3SWGHl8
+         Xze9Y//QtV5Ftzj9fe4SKQCZtkWTeyO92TffXIgoNk/f0UTaEOLtvzh0OKVOfviV2ZDz
+         kaVgp5xNaUfGdZgx0+4PlUx5MlzbexzibYxSjDjpapVblsms1sKsRFLZRK2bdIb27J7i
+         H2fo5fxIYxiaQg/Oubg67FQ9i6jDMbwv4rC77dQ4G84nkEJ7alXmS0jKXSsLjo/AOmNJ
+         jnqpRhceRR89MCqgmvivmJ9Top5sIb3qzgDkyZzDvZIWBVvD85ieWL8lkmwaHMAQ3/pr
+         P5lA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1685954663; x=1688546663;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=MrfUcOIoh78ZG5yS7R23juCUyPfE+5HsrCyM0YNurn4=;
+        b=CeWCecDVA8sJ5i2lbdWIX8Gx3ghgBL7u6QndMkXNP85hYn/yRa4tMJbLPdAIw2JyIN
+         5FJ9noydW0rHp6xJQDaBdyJ+/WfSK1SCF7RjiWp0V4sV+cEkFLuePtRfetBeJztKZQSQ
+         iFNrKnjq+eEPBfseR98WQ+TuPxd7PVC42R1vNyU4abxssbMeR14xljwegYf4V6gFseGx
+         npxwm41S8CM/Cjo9MHHoP5Zq9c2w8LPg29sXzV8xZ7vBKEihXzc3uVsryjIUsXdgznJR
+         6RX79Ez6b95gj0rgAO5evAR1Y9dY7VQr6nUuc2mkVSEkpITza5xNuwEIm1qtORY/Wi5k
+         PUjg==
+X-Gm-Message-State: AC+VfDzXm/Wigl2B1el43FGnm1yxiWQPkij3X77wuztyZWOCYqKhb+rN
+	8gxWKK0W6P0E6WZKFW4n5UokKw==
+X-Google-Smtp-Source: ACHHUZ5lrv51N2yyyZvduWpzWmbtXLAxBQh2VfWJZNp02Pt1G+uTkEUIrAQWOBc93DFyD+N73N+83w==
+X-Received: by 2002:adf:f986:0:b0:2ff:6906:7169 with SMTP id f6-20020adff986000000b002ff69067169mr5341675wrr.68.1685954663499;
+        Mon, 05 Jun 2023 01:44:23 -0700 (PDT)
+Received: from localhost ([2a01:e0a:55f:21e0:9e19:4376:dea6:dbfa])
+        by smtp.gmail.com with ESMTPSA id p12-20020a5d458c000000b00307acec258esm9107444wrq.3.2023.06.05.01.44.22
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 05 Jun 2023 01:44:22 -0700 (PDT)
+Date: Mon, 5 Jun 2023 10:44:22 +0200
+From: Julien Stephan <jstephan@baylibre.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Kevin Hilman <khilman@baylibre.com>, robh@kernel.org, 
+	chunkuang.hu@kernel.org, linux-mediatek@lists.infradead.org, 
+	Florian Sylvestre <fsylvestre@baylibre.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, 
+	Andy Hsieh <andy.hsieh@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
+	Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	"moderated list:ARM/Mediatek USB3 PHY DRIVER" <linux-arm-kernel@lists.infradead.org>, 
+	"open list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>, 
+	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH v2 1/2] dt-bindings: phy: add mediatek mipi csi driver v
+ 0.5
+Message-ID: <totyr5bsupdv6y6muvndnhywbw5fl5kezoxie2hyz4g53yi34m@6geccwkjvupc>
+References: <20230515090551.1251389-2-jstephan@baylibre.com>
+ <ab9aa30f-82d7-1d14-5561-e19ff10af0b0@linaro.org>
+ <4yppinkucchwnwtnnpbqdn4bejmntjq3q6mx6es55f2pwyce3c@qdhdks47lpyt>
+ <1853f049-4f00-b7f0-973a-2c4e7b0b2634@linaro.org>
+ <7h353w2oug.fsf@baylibre.com>
+ <fbf1b0a6-f45d-69a0-5de6-8269567e15b3@linaro.org>
+ <7hwn18yndq.fsf@baylibre.com>
+ <c63ebd7e-8658-9cdd-4fc4-ade9c94dfa64@linaro.org>
+ <7hcz2snpnw.fsf@baylibre.com>
+ <10074d67-394b-3ddb-8bd1-fc051bdb7f79@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230605060107.22044-1-wenbin.mei@mediatek.com>
+In-Reply-To: <10074d67-394b-3ddb-8bd1-fc051bdb7f79@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230605_014402_611770_015D6002 
-X-CRM114-Status: GOOD (  15.93  )
+X-CRM114-CacheID: sfid-20230605_014426_873911_550A8195 
+X-CRM114-Status: GOOD (  45.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,240 +108,104 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Wenbin,
+On Tue, May 30, 2023 at 10:53:31AM +0200, Krzysztof Kozlowski wrote:
+> On 22/05/2023 21:15, Kevin Hilman wrote:
+> > Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org> writes:
+> >
+> >> On 16/05/2023 23:31, Kevin Hilman wrote:
+> >>
+> >>>> Third is to use versioned IP blocks.
+> >>>>
+> >>>> The second case also would work, if it is applicable to you (you really
+> >>>> have fallback matching all devices). Third solution depends on your
+> >>>> versioning and Rob expressed dislike about it many times.
+> >>>>
+> >>>> We had many discussions on mailing lists, thus simplifying the review -
+> >>>> I recommend the first choice. For a better recommendation you should say
+> >>>> a bit more about the block in different SoCs.
+> >>>
+> >>> I'll try to say a bit more about the PHY block, but in fact, it's not
+> >>> just about differences between SoCs. On the same SoC, 2 different PHYs
+> >>> may have different features/capabilities.
+> >>>
+> >>> For example, on MT8365, There are 2 PHYs: CSI0 and CSI1.  CSI0 can
+> >>> function as a C-PHY or a D-PHY, but CSI1 can only function as D-PHY
+> >>> (used as the example in the binding patch[1].)  On another related SoC,
+> >>> there are 3 PHYs, where CSI0 is C-D but CSI1 & CSI2 are only D.
+> >>>
+> >>> So that's why it seems (at least to me) that while we need SoC
+> >>> compatible, it's not enough.  We also need properties to describe
+> >>> PHY-specific features (e.g. C-D PHY)
+> >>
+> >> I recall the same or very similar case... It bugs me now, but
+> >> unfortunately I cannot find it.
+> >>
+> >>>
+> >>> Of course, we could rely only on SoC-specific compatibles describe this.
+> >>> But then driver will need an SoC-specific table with the number of PHYs
+> >>> and per-PHY features for each SoC encoded in the driver.  Since the
+> >>> driver otherwise doesn't (and shouldn't, IMHO) need to know how many
+> >>> PHYs are on each SoC, I suggested to Julien that perhaps the additional
+> >>> propery was the better solution.
+> >>
+> >> Phys were modeled as separate device instances, so you would need
+> >> difference in compatible to figure out which phy is it.
+> >>
+> >> Other way could be to create device for all phys and use phy-cells=1.
+> >> Whether it makes sense, depends on the actual datasheet - maybe the
+> >> split phy per device is artificial? There is one PHY block with two
+> >> address ranges for each PHY - CSI0 and CSI1 - but it is actually one
+> >> block? You should carefully check this because once design is chosen,
+> >> you won't be able to go back to other and it might be a problem (e.g.
+> >> there is some top-level block for powering on all CSI instances).
+> >
+> > We're pretty sure these are multiple instances of the IP block as they
+> > can operate completely independently.
+> >
+> >>>
+> >>> To me it seems redundant to have the driver encode PHYs-per-SoC info,
+> >>> when the per-SoC DT is going to have the same info, so my suggestion was
+> >>> to simplify the driver and have this kind of hardware description in the
+> >>> DT, and keep the driver simple, but we are definitely open to learning
+> >>> the "right way" of doing this.
+> >>
+> >> The property then is reasonable. It should not be bool, though, because
+> >> it does not scale. There can be next block which supports only D-PHY on
+> >> CSI0 and C-PHY on CSI1? Maybe some enum or list, depending on possible
+> >> configurations.
+> >
+> > OK, looks like include/dt-bindings/phy/phy.y already has
+> >
+> >   #define PHY_TYPE_DPHY		10
+> >   #define PHY_TYPE_CPHY		11
+> >
+> > we'll add a PHY_TYPE_CDPHY and use that.   Sound reasonable?
+>
+> Yes. Currently it is usually used as phy-cells argument (after the phy
+> number/lane/ID), but cdns,phy-type and intel,phy-mode use it directly as
+> property in provider. In both cases they have a bit different meaning
+> than yours. You want to list all supported modes or narrow/restrict
+> them. Maybe hisilicon,fixed-mode fits your purpose?
+>
 
-kernel test robot noticed the following build errors:
+Hi Krzysztof,
 
-[auto build test ERROR on linus/master]
-[also build test ERROR on ulf-hansson-mmc-mirror/next v6.4-rc5 next-20230605]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Thanks for the suggestion, using something like hisilicon,fixed-node
+looks like a good fit.
+With mediatek,fixed-node, by default CSI node will be considered as
+CD-PHY capable (unless the fixed-mode property is set.) so I won't need
+anymore the new define PHY_TYPE_CDPHY introduced in v3.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Wenbin-Mei/mmc-mtk-sd-reduce-CIT-for-better-performance/20230605-140238
-base:   linus/master
-patch link:    https://lore.kernel.org/r/20230605060107.22044-1-wenbin.mei%40mediatek.com
-patch subject: [PATCH v3] mmc: mtk-sd: reduce CIT for better performance
-config: x86_64-randconfig-a004-20230605 (https://download.01.org/0day-ci/archive/20230605/202306051634.orHLaQ9t-lkp@intel.com/config)
-compiler: clang version 15.0.7 (https://github.com/llvm/llvm-project.git 8dfdcc7b7bf66834a761bd8de445840ef68e4d1a)
-reproduce (this is a W=1 build):
-        mkdir -p ~/bin
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/225e46f420d48f7ad73253636a0553bd5f986435
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Wenbin-Mei/mmc-mtk-sd-reduce-CIT-for-better-performance/20230605-140238
-        git checkout 225e46f420d48f7ad73253636a0553bd5f986435
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang ~/bin/make.cross W=1 O=build_dir ARCH=x86_64 olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang ~/bin/make.cross W=1 O=build_dir ARCH=x86_64 SHELL=/bin/bash drivers/mmc/host/
+Also introducing mediatek,fixed-mode suggests that PHYs not declaring
+the fixed mode property support mode selection, so I suggest to add a
+phy argument (#phy-cells = <1>) to select the mode (D or C mode).
+Exactly what is done by the hsilicon driver.
 
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202306051634.orHLaQ9t-lkp@intel.com/
+How does that sound to you?
 
-All errors (new ones prefixed by >>):
-
->> drivers/mmc/host/mtk-sd.c:2489:4: error: expected expression
-           } else {
-             ^
->> drivers/mmc/host/mtk-sd.c:2495:1: error: function definition is not allowed here
-   {
-   ^
-   drivers/mmc/host/mtk-sd.c:2513:1: error: function definition is not allowed here
-   {
-   ^
-   drivers/mmc/host/mtk-sd.c:2539:1: error: function definition is not allowed here
-   {
-   ^
-   drivers/mmc/host/mtk-sd.c:2549:1: error: function definition is not allowed here
-   {
-   ^
->> drivers/mmc/host/mtk-sd.c:2577:20: error: use of undeclared identifier 'msdc_cqe_enable'
-           .enable         = msdc_cqe_enable,
-                             ^
->> drivers/mmc/host/mtk-sd.c:2578:20: error: use of undeclared identifier 'msdc_cqe_disable'
-           .disable        = msdc_cqe_disable,
-                             ^
->> drivers/mmc/host/mtk-sd.c:2579:16: error: use of undeclared identifier 'msdc_cqe_pre_enable'; did you mean 'msdc_cqe_cit_cal'?
-           .pre_enable = msdc_cqe_pre_enable,
-                         ^~~~~~~~~~~~~~~~~~~
-                         msdc_cqe_cit_cal
-   drivers/mmc/host/mtk-sd.c:2454:13: note: 'msdc_cqe_cit_cal' declared here
-   static void msdc_cqe_cit_cal(struct msdc_host *host, u64 timer_ns)
-               ^
->> drivers/mmc/host/mtk-sd.c:2580:18: error: use of undeclared identifier 'msdc_cqe_post_disable'
-           .post_disable = msdc_cqe_post_disable,
-                           ^
-   drivers/mmc/host/mtk-sd.c:2585:1: error: function definition is not allowed here
-   {
-   ^
-   drivers/mmc/host/mtk-sd.c:2616:1: error: function definition is not allowed here
-   {
-   ^
-   drivers/mmc/host/mtk-sd.c:2668:1: error: function definition is not allowed here
-   {
-   ^
-   drivers/mmc/host/mtk-sd.c:2892:1: error: function definition is not allowed here
-   {
-   ^
-   drivers/mmc/host/mtk-sd.c:2920:1: error: function definition is not allowed here
-   {
-   ^
-   drivers/mmc/host/mtk-sd.c:2947:1: error: function definition is not allowed here
-   {
-   ^
-   drivers/mmc/host/mtk-sd.c:2978:1: error: function definition is not allowed here
-   {
-   ^
-   drivers/mmc/host/mtk-sd.c:2997:1: error: function definition is not allowed here
-   {
-   ^
-   drivers/mmc/host/mtk-sd.c:3016:1: error: function definition is not allowed here
-   {
-   ^
-   drivers/mmc/host/mtk-sd.c:3041:1: error: function definition is not allowed here
-   {
-   ^
-   fatal error: too many errors emitted, stopping now [-ferror-limit=]
-   20 errors generated.
-
-
-vim +2489 drivers/mmc/host/mtk-sd.c
-
-  2453	
-  2454	static void msdc_cqe_cit_cal(struct msdc_host *host, u64 timer_ns)
-  2455	{
-  2456		struct mmc_host *mmc = mmc_from_priv(host);
-  2457		struct cqhci_host *cq_host = mmc->cqe_private;
-  2458		u8 itcfmul;
-  2459		u32 hclk_freq;
-  2460		u64 value;
-  2461	
-  2462		/* Since MSDC CQE uses msdc_hclk as ITCFVAL, so driver should use hclk
-  2463		 * frequency to get the actual time for CIT.
-  2464		 */
-  2465		if (host->h_clk) {
-  2466			hclk_freq = clk_get_rate(host->h_clk);
-  2467			itcfmul = CQHCI_CAP_ITCFMUL(cqhci_readl(cq_host, CQHCI_CAP));
-  2468			switch (itcfmul) {
-  2469			case 0x0:
-  2470				do_div(hclk_freq, 1000);
-  2471				break;
-  2472			case 0x1:
-  2473				do_div(hclk_freq, 100);
-  2474				break;
-  2475			case 0x2:
-  2476				do_div(hclk_freq, 10);
-  2477				break;
-  2478			case 0x3:
-  2479				break;
-  2480			case 0x4:
-  2481				hclk_freq = hclk_freq * 10;
-  2482				break;
-  2483			default:
-  2484				host->cq_ssc1_time = 0x40;
-  2485				return;
-  2486			value = hclk_freq * timer_ns;
-  2487			do_div(value, 1000000000ULL);
-  2488			host->cq_ssc1_time = value;
-> 2489		} else {
-  2490			host->cq_ssc1_time = 0x40;
-  2491		}
-  2492	}
-  2493	
-  2494	static void msdc_cqe_enable(struct mmc_host *mmc)
-> 2495	{
-  2496		struct msdc_host *host = mmc_priv(mmc);
-  2497		struct cqhci_host *cq_host = mmc->cqe_private;
-  2498	
-  2499		/* enable cmdq irq */
-  2500		writel(MSDC_INT_CMDQ, host->base + MSDC_INTEN);
-  2501		/* enable busy check */
-  2502		sdr_set_bits(host->base + MSDC_PATCH_BIT1, MSDC_PB1_BUSY_CHECK_SEL);
-  2503		/* default write data / busy timeout 20s */
-  2504		msdc_set_busy_timeout(host, 20 * 1000000000ULL, 0);
-  2505		/* default read data timeout 1s */
-  2506		msdc_set_timeout(host, 1000000000ULL, 0);
-  2507	
-  2508		/* Set the send status command idle timer */
-  2509		cqhci_writel(cq_host, host->cq_ssc1_time, CQHCI_SSC1);
-  2510	}
-  2511	
-  2512	static void msdc_cqe_disable(struct mmc_host *mmc, bool recovery)
-  2513	{
-  2514		struct msdc_host *host = mmc_priv(mmc);
-  2515		unsigned int val = 0;
-  2516	
-  2517		/* disable cmdq irq */
-  2518		sdr_clr_bits(host->base + MSDC_INTEN, MSDC_INT_CMDQ);
-  2519		/* disable busy check */
-  2520		sdr_clr_bits(host->base + MSDC_PATCH_BIT1, MSDC_PB1_BUSY_CHECK_SEL);
-  2521	
-  2522		val = readl(host->base + MSDC_INT);
-  2523		writel(val, host->base + MSDC_INT);
-  2524	
-  2525		if (recovery) {
-  2526			sdr_set_field(host->base + MSDC_DMA_CTRL,
-  2527				      MSDC_DMA_CTRL_STOP, 1);
-  2528			if (WARN_ON(readl_poll_timeout(host->base + MSDC_DMA_CTRL, val,
-  2529				!(val & MSDC_DMA_CTRL_STOP), 1, 3000)))
-  2530				return;
-  2531			if (WARN_ON(readl_poll_timeout(host->base + MSDC_DMA_CFG, val,
-  2532				!(val & MSDC_DMA_CFG_STS), 1, 3000)))
-  2533				return;
-  2534			msdc_reset_hw(host);
-  2535		}
-  2536	}
-  2537	
-  2538	static void msdc_cqe_pre_enable(struct mmc_host *mmc)
-  2539	{
-  2540		struct cqhci_host *cq_host = mmc->cqe_private;
-  2541		u32 reg;
-  2542	
-  2543		reg = cqhci_readl(cq_host, CQHCI_CFG);
-  2544		reg |= CQHCI_ENABLE;
-  2545		cqhci_writel(cq_host, reg, CQHCI_CFG);
-  2546	}
-  2547	
-  2548	static void msdc_cqe_post_disable(struct mmc_host *mmc)
-  2549	{
-  2550		struct cqhci_host *cq_host = mmc->cqe_private;
-  2551		u32 reg;
-  2552	
-  2553		reg = cqhci_readl(cq_host, CQHCI_CFG);
-  2554		reg &= ~CQHCI_ENABLE;
-  2555		cqhci_writel(cq_host, reg, CQHCI_CFG);
-  2556	}
-  2557	
-  2558	static const struct mmc_host_ops mt_msdc_ops = {
-  2559		.post_req = msdc_post_req,
-  2560		.pre_req = msdc_pre_req,
-  2561		.request = msdc_ops_request,
-  2562		.set_ios = msdc_ops_set_ios,
-  2563		.get_ro = mmc_gpio_get_ro,
-  2564		.get_cd = msdc_get_cd,
-  2565		.hs400_enhanced_strobe = msdc_hs400_enhanced_strobe,
-  2566		.enable_sdio_irq = msdc_enable_sdio_irq,
-  2567		.ack_sdio_irq = msdc_ack_sdio_irq,
-  2568		.start_signal_voltage_switch = msdc_ops_switch_volt,
-  2569		.card_busy = msdc_card_busy,
-  2570		.execute_tuning = msdc_execute_tuning,
-  2571		.prepare_hs400_tuning = msdc_prepare_hs400_tuning,
-  2572		.execute_hs400_tuning = msdc_execute_hs400_tuning,
-  2573		.card_hw_reset = msdc_hw_reset,
-  2574	};
-  2575	
-  2576	static const struct cqhci_host_ops msdc_cmdq_ops = {
-> 2577		.enable         = msdc_cqe_enable,
-> 2578		.disable        = msdc_cqe_disable,
-> 2579		.pre_enable = msdc_cqe_pre_enable,
-> 2580		.post_disable = msdc_cqe_post_disable,
-  2581	};
-  2582	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Best,
+Julien
+> Best regards,
+> Krzysztof
+>
 
