@@ -4,64 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A80CC7EE2A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jun 2023 06:15:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F251C7EE23
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jun 2023 07:34:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TUyIqUQifDO62Gro6LFCxIeF9NtsMS+Bralan0Ynn+w=; b=MH2+hUEfSNicfjDGImieIxGTrG
-	EVQMveS444hlT6s/1fYuAF8nnivJ+zHnzDUjYu429FIEnOrMxBY3JZZMROPvDI1lQPGPedeZtkX8Q
-	PKTUartY8r48r0Jl6dBFzY6Oe1Uo1RPidgrFjb6IrIwEd5DkNknhTS7I1PpyPaOIvptK2loLx0P0M
-	Uvfn+h2D9a4jjRoRHZzLaoEVW/aZAqUCcpuPzc834zG5GVkYLZ+TFf56JTJELPAnz+qMwUDY0bLbI
-	cfGtVK+tTLw6mnpi22MaOlHpq/1ptY6Y4ViBgACq9qtcctgoldILIc6kOTBBnvosJB3hTZS0wymG0
-	S0tQ8d3g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=DAgRq2EXmiJlw5QVvMbHQppFdqv5pzza5dzmoTwBNQ8=; b=mXWXTM9AbXxkgKGyLKlnu8UaYz
+	BxzXfg7QtkbOyg45sArmfMSWICQJy/W9GkLn8G25goCRyppkElVJ9manzCedu6bpdcjEl6/BxeXdx
+	Jaw8Pz7jIm3/CAjVdrx5tSl4D+/bT0P9GzIeaxIGW3Ok7uph/2FeSmQYMKJvJCozVoa6vnPejSqof
+	crUQ73LECl+lvxEQ6kEATn2SYkAq5/kdk4O+Enfn9T4S83Mb27xczCbNyGn8TNXOk9KAxF3ox7VUb
+	TK4xYdoaBCMht7n9AsJYw7BdAMYyK7Tdg2B76Qw2sBSEjOxWc115qbATaQAwGdYXW34H46kvcfnsJ
+	vLzD/U9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q63Uu-00EIc0-17;
-	Mon, 05 Jun 2023 06:15:20 +0000
-Received: from muru.com ([72.249.23.125])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q63Ur-00EIbO-1q
-	for linux-mediatek@lists.infradead.org;
-	Mon, 05 Jun 2023 06:15:19 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by muru.com (Postfix) with ESMTPS id 0E00A80C1;
-	Mon,  5 Jun 2023 06:15:13 +0000 (UTC)
-Date: Mon, 5 Jun 2023 09:15:11 +0300
-From: Tony Lindgren <tony@atomide.com>
-To: John Ogness <john.ogness@linutronix.de>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Jiri Slaby <jirislaby@kernel.org>,
-	Andy Shevchenko <andriy.shevchenko@intel.com>,
-	Dhruva Gole <d-gole@ti.com>,
-	Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>,
-	Johan Hovold <johan@kernel.org>,
-	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
-	Vignesh Raghavendra <vigneshr@ti.com>, linux-omap@vger.kernel.org,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
-	=?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v12 1/1] serial: core: Start managing serial controllers
- to enable runtime PM
-Message-ID: <20230605061511.GW14287@atomide.com>
-References: <20230525113034.46880-1-tony@atomide.com>
- <20230602083335.GA181647@google.com>
- <87a5xii33r.fsf@jogness.linutronix.de>
- <20230603054139.GR14287@atomide.com>
- <20230603063533.GS14287@atomide.com>
+	id 1q64jp-00EYky-08;
+	Mon, 05 Jun 2023 07:34:49 +0000
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1q64jk-00EYiD-0p;
+	Mon, 05 Jun 2023 07:34:45 +0000
+Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-4f62b552751so634565e87.3;
+        Mon, 05 Jun 2023 00:34:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1685950480; x=1688542480;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=DAgRq2EXmiJlw5QVvMbHQppFdqv5pzza5dzmoTwBNQ8=;
+        b=GOPR4d+/UEzaru7bfg0RdVmwWCfzmOk0IQA91sr3KwRMPXT30HCwHUn05o8osUkDpD
+         MsA7L94HI7gZfq3ALkgV3RippOJKS26pkN/bdoRJPCCwr7GkxE4BELQdzz+/jiFCzj47
+         LutkrzD710untVOO5vy2jWpN3/4HCZv99+yPalk8MvgtcRMziJfLxNsR4GIugdW83XaK
+         u8oLh5kpyiDr1n44SQIuGNyMUQvqnSeddlU6ij+6RtpodwOZ7ENHZiUkGCL7qydhznuI
+         6RNnLnHKr8Qzd4ibaeAcm/tw0ObHcTOAA7muPFpKY/VxTLR7Y6kU0cV6lDEK+5JOB94w
+         vMGQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1685950480; x=1688542480;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=DAgRq2EXmiJlw5QVvMbHQppFdqv5pzza5dzmoTwBNQ8=;
+        b=W5ftNuZb1+PYGPVJ/ErxcDdctQo0zL5baTPexqzMgEz1l1At+rZqsd5SJDMCQc+z/h
+         ggckcBDaoiT583WZlg9Bl6j+lc2si728Sn8VA+Y+P6zORCY4EgF0lnBcU4IgOcuBLaZo
+         2mwZ8+d8EMW+oAdoVHLz12gEjk+fNavk/Nx3yxgVtcnnxpEUMEzPBrchgEubRMDqVh2g
+         1cMwN4C72NdxUeHIZVgEGQHUuU7SUJyoLH8vvjEDCxe7SkuUdBFOCfzKI8meEKKLHt9L
+         dK8wCdJfsmFd/naW3s7KM3OapphJBmC98ixsP463vM5FFWe3MtXuFHvPf4RocVTASidu
+         tS2g==
+X-Gm-Message-State: AC+VfDyxhEh+lFxsEXcaGvmhYDyT/vindkgrtgCbtX2WE9NQbUJAZlRH
+	g0GqM1tN9DTgz7fgzZAkk2o=
+X-Google-Smtp-Source: ACHHUZ5IEYPCmzkGOJfS9ic1+YXKE8YtO6DZakUgS6piCmgDsgm+OHr8VSg70fHzplr4P2NyIUY0Sw==
+X-Received: by 2002:ac2:4281:0:b0:4f1:3d6c:d89b with SMTP id m1-20020ac24281000000b004f13d6cd89bmr4850910lfh.42.1685950479796;
+        Mon, 05 Jun 2023 00:34:39 -0700 (PDT)
+Received: from home.paul.comp (paulfertser.info. [2001:470:26:54b:226:9eff:fe70:80c2])
+        by smtp.gmail.com with ESMTPSA id w12-20020ac2598c000000b004f62225ffb6sm564382lfn.105.2023.06.05.00.34.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 05 Jun 2023 00:34:39 -0700 (PDT)
+Received: from home.paul.comp (home.paul.comp [IPv6:0:0:0:0:0:0:0:1])
+	by home.paul.comp (8.15.2/8.15.2/Debian-22) with ESMTP id 3557YZcg008744;
+	Mon, 5 Jun 2023 10:34:36 +0300
+Received: (from paul@localhost)
+	by home.paul.comp (8.15.2/8.15.2/Submit) id 3557YXaZ008743;
+	Mon, 5 Jun 2023 10:34:33 +0300
+From: Paul Fertser <fercerpav@gmail.com>
+To: linux-wireless@vger.kernel.org
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+        Ryder Lee <ryder.lee@mediatek.com>,
+        Shayne Chen <shayne.chen@mediatek.com>,
+        Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
+        "David S. Miller" <davem@davemloft.net>,
+        Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+        Paolo Abeni <pabeni@redhat.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Paul Fertser <fercerpav@gmail.com>, netdev@vger.kernel.org,
+        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org, Rani Hod <rani.hod@gmail.com>,
+        stable@vger.kernel.org
+Subject: [PATCH] mt76: mt7615: do not advertise 5 GHz on first phy of MT7615D (DBDC)
+Date: Mon,  5 Jun 2023 10:34:07 +0300
+Message-Id: <20230605073408.8699-1-fercerpav@gmail.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230603063533.GS14287@atomide.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230604_231517_675482_ACE0DA21 
-X-CRM114-Status: GOOD (  23.36  )
+X-CRM114-CacheID: sfid-20230605_003444_293358_0564ECEF 
+X-CRM114-Status: UNSURE (   9.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,145 +105,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-* Tony Lindgren <tony@atomide.com> [230603 06:35]:
-> * Tony Lindgren <tony@atomide.com> [230603 05:41]:
-> > I don't think 8250_mtk needs to do register access before and after the
-> > serial port registration, but if it does, then adding custom read/write
-> > functions can be done that do not rely on initialized port like
-> > serial_out().
-> 
-> Oh but mtk8250_runtime_suspend() calls serial_in(up, MTK_UART_DEBUG0), so
-> yeah if that gets called before registration is complete it causes a NULL
-> pointer exception. If the serial_ctrl and serial_port devices do runtime
-> suspend before port registration completes, things will fail.
-> 
-> Sounds like doing pm_runtime_resume_and_get() in mtk8250_probe() might
-> fix the issue. Still seems that adding a custom read function for
-> mtk8250_runtime_suspend() to use instead of calling serial_in() should
-> not be needed.
+On DBDC devices the first (internal) phy is only capable of using
+2.4 GHz band, and the 5 GHz band is exposed via a separate phy object,
+so avoid the false advertising.
 
-Looking at this again, if serial8250_register_8250_port() fails, then
-mtk8250_runtime_suspend() would again try to access uninitialized port.
+Reported-by: Rani Hod <rani.hod@gmail.com>
+Closes: https://github.com/openwrt/openwrt/pull/12361
+Fixes: 7660a1bd0c22 ("mt76: mt7615: register ext_phy if DBDC is detected")
+Cc: stable@vger.kernel.org
+Signed-off-by: Paul Fertser <fercerpav@gmail.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-Here's a better untested version of the patch to try.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c
+index 68e88224b8b1..ccedea7e8a50 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c
+@@ -128,12 +128,12 @@ mt7615_eeprom_parse_hw_band_cap(struct mt7615_dev *dev)
+ 	case MT_EE_5GHZ:
+ 		dev->mphy.cap.has_5ghz = true;
+ 		break;
+-	case MT_EE_2GHZ:
+-		dev->mphy.cap.has_2ghz = true;
+-		break;
+ 	case MT_EE_DBDC:
+ 		dev->dbdc_support = true;
+ 		fallthrough;
++	case MT_EE_2GHZ:
++		dev->mphy.cap.has_2ghz = true;
++		break;
+ 	default:
+ 		dev->mphy.cap.has_2ghz = true;
+ 		dev->mphy.cap.has_5ghz = true;
+-- 
+2.34.1
 
-Regards,
-
-Tony
-
-8< ---------------------------
-diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
---- a/drivers/tty/serial/8250/8250_mtk.c
-+++ b/drivers/tty/serial/8250/8250_mtk.c
-@@ -57,6 +57,8 @@
- #define MTK_UART_XON1		40	/* I/O: Xon character 1 */
- #define MTK_UART_XOFF1		42	/* I/O: Xoff character 1 */
- 
-+#define MTK_UART_REGSHIFT	2
-+
- #ifdef CONFIG_SERIAL_8250_DMA
- enum dma_rx_status {
- 	DMA_RX_START = 0,
-@@ -69,6 +71,7 @@ struct mtk8250_data {
- 	int			line;
- 	unsigned int		rx_pos;
- 	unsigned int		clk_count;
-+	void __iomem		*membase;
- 	struct clk		*uart_clk;
- 	struct clk		*bus_clk;
- 	struct uart_8250_dma	*dma;
-@@ -187,6 +190,17 @@ static void mtk8250_dma_enable(struct uart_8250_port *up)
- }
- #endif
- 
-+/* Read and write for register access before and after port registration */
-+static u32 __maybe_unused mtk8250_read(struct mtk8250_data *data, u32 reg)
-+{
-+	return readl(data->membase + (reg << MTK_UART_REGSHIFT));
-+}
-+
-+static void mtk8250_write(struct mtk8250_data *data, u32 reg, u32 val)
-+{
-+	writel(val, data->membase + (reg << MTK_UART_REGSHIFT));
-+}
-+
- static int mtk8250_startup(struct uart_port *port)
- {
- #ifdef CONFIG_SERIAL_8250_DMA
-@@ -425,11 +439,10 @@ mtk8250_set_termios(struct uart_port *port, struct ktermios *termios,
- static int __maybe_unused mtk8250_runtime_suspend(struct device *dev)
- {
- 	struct mtk8250_data *data = dev_get_drvdata(dev);
--	struct uart_8250_port *up = serial8250_get_port(data->line);
- 
- 	/* wait until UART in idle status */
- 	while
--		(serial_in(up, MTK_UART_DEBUG0));
-+		(mtk8250_read(data, MTK_UART_DEBUG0));
- 
- 	if (data->clk_count == 0U) {
- 		dev_dbg(dev, "%s clock count is 0\n", __func__);
-@@ -553,6 +566,7 @@ static int mtk8250_probe(struct platform_device *pdev)
- 	if (!data)
- 		return -ENOMEM;
- 
-+	data->membase = uart.port.membase;
- 	data->clk_count = 0;
- 
- 	if (pdev->dev.of_node) {
-@@ -570,7 +584,7 @@ static int mtk8250_probe(struct platform_device *pdev)
- 	uart.port.flags = UPF_BOOT_AUTOCONF | UPF_FIXED_PORT;
- 	uart.port.dev = &pdev->dev;
- 	uart.port.iotype = UPIO_MEM32;
--	uart.port.regshift = 2;
-+	uart.port.regshift = MTK_UART_REGSHIFT;
- 	uart.port.private_data = data;
- 	uart.port.shutdown = mtk8250_shutdown;
- 	uart.port.startup = mtk8250_startup;
-@@ -581,27 +595,30 @@ static int mtk8250_probe(struct platform_device *pdev)
- 		uart.dma = data->dma;
- #endif
- 
--	/* Disable Rate Fix function */
--	writel(0x0, uart.port.membase +
--			(MTK_UART_RATE_FIX << uart.port.regshift));
--
- 	platform_set_drvdata(pdev, data);
- 
- 	pm_runtime_enable(&pdev->dev);
--	err = mtk8250_runtime_resume(&pdev->dev);
-+	err = pm_runtime_resume_and_get(&pdev->dev);
- 	if (err)
- 		goto err_pm_disable;
- 
-+	/* Disable Rate Fix function */
-+	mtk8250_write(data, 0, MTK_UART_RATE_FIX);
-+
- 	data->line = serial8250_register_8250_port(&uart);
- 	if (data->line < 0) {
- 		err = data->line;
--		goto err_pm_disable;
-+		goto err_pm_put;
- 	}
- 
- 	data->rx_wakeup_irq = platform_get_irq_optional(pdev, 1);
- 
-+	pm_runtime_put_sync(&pdev->dev);
-+
- 	return 0;
- 
-+err_pm_put:
-+	pm_runtime_put_sync(&pdev->dev);
- err_pm_disable:
- 	pm_runtime_disable(&pdev->dev);
- 
-@@ -694,7 +711,7 @@ static int __init early_mtk8250_setup(struct earlycon_device *device,
- 		return -ENODEV;
- 
- 	device->port.iotype = UPIO_MEM32;
--	device->port.regshift = 2;
-+	device->port.regshift = MTK_UART_REGSHIFT;
- 
- 	return early_serial8250_setup(device, NULL);
- }
 
