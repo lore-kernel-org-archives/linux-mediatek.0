@@ -4,69 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB0B5C7EE23
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jun 2023 13:18:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9427CC7EE24
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jun 2023 13:22:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KhPAl5xRdDjhvHLhx4jX5pXoXFnxVRNqx5piaWbjIDw=; b=MUU1uDqiX21JA0ngq+Jyt5+y4Q
-	lUPXFyrKJ2kOVfPdu0eeo/kopqoKAEIQI6o0mJufAqa3uKXziewnddvdN/c4gNrL9TKWQI4Hnx0uU
-	EyPf3KCrvxXCZmWK7pu7Sd0iZWJLbU2mg2v1KgBL2zpPpoEU0U4K/UGc6y9ycWB8agQQ82hcTdX4x
-	9aI2q83T9uJmiF4xK4zOPf5uESSfO39CRp2h+DX10SH7YXsT5SNy/PXgpw9Nb1wI2RZBbn24tUkVU
-	/RNfFpO+5kd9u9J1tPObaBeDTVHqrYawyMcM9mtnFPlUag1GsT34SE/ua+vUwndUaKL7VLxmAAzfe
-	kNlPGzAg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AAVo5XJBmcZ1CILHNv8SMdAaagpninriUMxTg11Co/E=; b=haJN7QaQQELJYQD1qjtd/rvpOu
+	S7aw3sqH7Ijoob+UNd5WGjIPQigr6fbSFK2Lw/w8eNvO/QFANePtFMS//tWP44hfC482KuhLbmiHj
+	bNpRazRrl2CIXq7Q9gpJ5tUnw2G7HkBPDloYwHE5zPPlXhdl+fFcBU3Ud4ctw5EJt7DcYYJv2cTGI
+	0BdseeuAX5t9icFetcG3Ior3cjxX4KoIRbJeBWheKGbkq6DWXtKfbmVi/MFvGVr4O+0aM0h3Wn5uq
+	n1TtdXorFwc6YgcFt5Sd1Zsyudhb7ZlLluhgRG8N1PUViC//gGc36X8PB5YPjqaaOda2oyI7bBOdx
+	mak0iCVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6A64-00FaLQ-1K;
-	Mon, 05 Jun 2023 13:18:08 +0000
-Received: from muru.com ([72.249.23.125])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6A61-00FaKl-1U
+	id 1q6A9o-00Faws-1q;
+	Mon, 05 Jun 2023 13:22:00 +0000
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1q6A9l-00Fav5-16
 	for linux-mediatek@lists.infradead.org;
-	Mon, 05 Jun 2023 13:18:06 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by muru.com (Postfix) with ESMTPS id 9C03080FE;
-	Mon,  5 Jun 2023 13:18:04 +0000 (UTC)
-Date: Mon, 5 Jun 2023 16:18:03 +0300
-From: Tony Lindgren <tony@atomide.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: John Ogness <john.ogness@linutronix.de>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Jiri Slaby <jirislaby@kernel.org>,
-	Andy Shevchenko <andriy.shevchenko@intel.com>,
-	Dhruva Gole <d-gole@ti.com>,
-	Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>,
-	Johan Hovold <johan@kernel.org>,
-	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
-	Vignesh Raghavendra <vigneshr@ti.com>, linux-omap@vger.kernel.org,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
-	=?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v12 1/1] serial: core: Start managing serial controllers
- to enable runtime PM
-Message-ID: <20230605131803.GA14287@atomide.com>
-References: <20230525113034.46880-1-tony@atomide.com>
- <20230602083335.GA181647@google.com>
- <87a5xii33r.fsf@jogness.linutronix.de>
- <20230603054139.GR14287@atomide.com>
- <20230603063533.GS14287@atomide.com>
- <20230605061511.GW14287@atomide.com>
- <CAGXv+5Fbx7eTxP0ep6DV+jyronAWxYvu2M-g=MjHGRhjSXUc=w@mail.gmail.com>
- <20230605122447.GY14287@atomide.com>
- <CAGXv+5HwL+R5QpO3pHGQd9qAxu2pCMDjYvdni1HjiC8eEE38mg@mail.gmail.com>
+	Mon, 05 Jun 2023 13:21:59 +0000
+Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-4f619c2ba18so2609341e87.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 05 Jun 2023 06:21:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1685971315; x=1688563315;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=AAVo5XJBmcZ1CILHNv8SMdAaagpninriUMxTg11Co/E=;
+        b=3l13dOF1IYsdmxWjy4gVBxm9mP0dSRgkbeDydZj89p6KSERrNBrlgUF9ZiLQsu8ZMO
+         98veLuKCuihN2OluBxFYHCZOrQHvFcmSWlsu4AI2agA1zTprkYPIrXNNbnXtSsaWkLxH
+         O3/l2/5D6iYmYs0L4o5wHlW3ohDgh9t+BqY3w1Hh1fKtmmPh9L791z7SKtOZ74tKd40P
+         zxDFG+1ww5fWag616iq03kZ+TIre346llSOCOoHDNPjqa0HsCL1EzkpiszzgoLcIpuiB
+         nCJvRpf26t/XE2dsdWozdG/uHYPfL1zXYJbUvG1qNMH2BmuOdX6D5spT+3/m81kMlgoX
+         ys7A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1685971315; x=1688563315;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=AAVo5XJBmcZ1CILHNv8SMdAaagpninriUMxTg11Co/E=;
+        b=Y6Mbl6Y+wzxzJ5YpAGvF+PQgeciFRNR1pDEZnAMJXGelBnKYl31cS1cisn+qvsWL2h
+         D66409VD1LwwzWVaClJ34T2/xPhCBNJqrs53ydXt6J/DquPbUJOzT1anItKBlTso0JHs
+         8lchM8P1sE7xlZSGLy+rbU8Zp4iutclvDqu3mQK0k9+1RkcCRQErb6ngn2qwP0QdvHGU
+         MN0I9HM5Ip26kHOQMty2L/VfoemNvkDIBaIoqHBwMaw9GD3MXacxjQf839xFHNw2EZHD
+         m4JZdr8uh4uEUVPVI9WUEg+5m8xx4BXz+K8YTzWlwbdktUpljOrOPxtkCypNhdBRx8Gv
+         CxEA==
+X-Gm-Message-State: AC+VfDyOhrtwBufpIkbtRNwX+cYQKD892xmq51cqrSUdNsjLroHm+qkD
+	3Qs/ZqBlKKNp73YVT/9hoIjPQg==
+X-Google-Smtp-Source: ACHHUZ7Cp/Uhp6/Wpl9DeYjd1vvYra/v50oGeZW7mP1XrLzgq01OEH+9/gZgXDUd67xf7/rarGL7pw==
+X-Received: by 2002:a19:7609:0:b0:4f4:ca61:82ba with SMTP id c9-20020a197609000000b004f4ca6182bamr5030485lff.67.1685971315388;
+        Mon, 05 Jun 2023 06:21:55 -0700 (PDT)
+Received: from [192.168.1.172] (158.22.5.93.rev.sfr.net. [93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id l17-20020a1ced11000000b003f4266965fbsm14439285wmh.5.2023.06.05.06.21.53
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 05 Jun 2023 06:21:54 -0700 (PDT)
+Message-ID: <d94b5f07-aa37-f4ec-252b-ff1a96b89326@baylibre.com>
+Date: Mon, 5 Jun 2023 15:21:53 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAGXv+5HwL+R5QpO3pHGQd9qAxu2pCMDjYvdni1HjiC8eEE38mg@mail.gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH v2 1/2] ASoC: mediatek: mt8188: fix use-after-free in
+ driver remove path
+To: Trevor Wu <trevor.wu@mediatek.com>, broonie@kernel.org,
+ lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com
+Cc: dianders@chromium.org, alsa-devel@alsa-project.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20230601033318.10408-1-trevor.wu@mediatek.com>
+ <20230601033318.10408-2-trevor.wu@mediatek.com>
+Content-Language: en-US
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <20230601033318.10408-2-trevor.wu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230605_061805_540145_750173CC 
-X-CRM114-Status: GOOD (  37.23  )
+X-CRM114-CacheID: sfid-20230605_062157_590267_CDA8C38D 
+X-CRM114-Status: GOOD (  10.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,90 +99,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-* Chen-Yu Tsai <wenst@chromium.org> [230605 13:01]:
-> On Mon, Jun 5, 2023 at 8:24 PM Tony Lindgren <tony@atomide.com> wrote:
-> >
-> > * Chen-Yu Tsai <wenst@chromium.org> [230605 11:34]:
-> > > On Mon, Jun 5, 2023 at 2:15 PM Tony Lindgren <tony@atomide.com> wrote:
-> > > > diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
-> > > > --- a/drivers/tty/serial/8250/8250_mtk.c
-> > > > +++ b/drivers/tty/serial/8250/8250_mtk.c
-> > > > @@ -425,11 +439,10 @@ mtk8250_set_termios(struct uart_port *port, struct ktermios *termios,
-> > > >  static int __maybe_unused mtk8250_runtime_suspend(struct device *dev)
-> > > >  {
-> > > >         struct mtk8250_data *data = dev_get_drvdata(dev);
-> > > > -       struct uart_8250_port *up = serial8250_get_port(data->line);
-> > > >
-> > > >         /* wait until UART in idle status */
-> > > >         while
-> > > > -               (serial_in(up, MTK_UART_DEBUG0));
-> > > > +               (mtk8250_read(data, MTK_UART_DEBUG0));
-> > >
-> > > I believe it still gets stuck here sometimes.
-> >
-> > Hmm so maybe you need to mtk8250_write(data, 0, MTK_UART_RATE_FIX) in
-> > probe before pm_runtime_resume_and_get() that enables the baud clock?
-> > That's something I changed, so maybe it messes up things.
+On 01/06/2023 05:33, Trevor Wu wrote:
+> During mt8188_afe_init_clock(), mt8188_audsys_clk_register() was called
+> followed by several other devm functions. The caller of
+> mt8188_afe_init_clock() utilized devm_add_action_or_reset() to call
+> mt8188_afe_deinit_clock(). However, the order was incorrect, causing a
+> use-after-free issue during remove time.
 > 
-> I think it has something to do with the do_pm() function calling
-> the callbacks directly, then also calling runtime PM.
-
-Yeah I'm not following really what's going on there.. So then I guess the
-call for mtk8250_write(data, 0, MTK_UART_RATE_FIX) should be after the
-pm_runtime_resume_and_get() call.
-
-> > Looking at the 8250_mtk git log, it's runtime PM functions seem to only
-> > currently manage the baud clock so register access should be doable
-> > without runtime PM resume?
+> At probe time, the order of calls was:
+> 1. mt8188_audsys_clk_register
+> 2. afe_priv->clk = devm_kcalloc
+> 3. afe_priv->clk[i] = devm_clk_get
 > 
-> Actually it only manages the bus clock. The baud clock is simply the system
-> XTAL which is not gateble.
-
-OK
-
-> > > With your earlier patch, it could get through registering the port, and
-> > > the console would show
-> > >
-> > >     11002000.serial: ttyS0 at MMIO 0x11002000 (irq = 240, base_baud =
-> > > 1625000) is a ST16650V2
-> > >
-> > > for the console UART.
-> >
-> > OK
-> >
-> > > Angelo mentioned that we should be using SLEEP_REQ/SLEEP_ACK registers
-> > > in the MTK UART hardware.
-> > >
-> > > I tried reworking it into your patch here, but it causes issues with the
-> > > UART-based Bluetooth on one of my devices. After the UART runtime suspends
-> > > and resumes, something is off and causes the transfers during Bluetooth
-> > > init to become corrupt.
-> > >
-> > > I'll try some more stuff, but the existing code seems timing dependent.
-> > > If I add too many printk statements to the runtime suspend/resume
-> > > callbacks, things seem to work. One time I even ended up with broken
-> > > UARTs but otherwise booted up the system.
-> >
-> > Well another thing that now changes is that we now runtime suspend the
-> > port at the end of the probe. What the 8250_mtk probe was doing earlier
-> > it was leaving the port baud clock enabled, but runtime PM disabled
-> > until mtk8250_do_pm() I guess.
+> At remove time, the order of calls was:
+> 1. mt8188_audsys_clk_unregister
+> 3. free afe_priv->clk[i]
+> 2. free afe_priv->clk
 > 
-> I guess that's the biggest difference? Since the *bus* clock gets disabled,
-> any access will hang. Is it enough to just support runtime PM? Or do I have
-> to also have UART_CAP_RPM?
+> To resolve the problem, it's necessary to move devm_add_action_or_reset()
+> to the appropriate position so that the remove order can be 3->2->1.
 
-Maybe try changing pm_runtime_put_sync() at the end of the probe to just
-pm_runtime_put_noidle()? Then the driver should be back to where it was
-with clocks enabled but runtime PM suspended.
+Sounds good
 
-I don't think you need UART_CAP_RPM right now unless 8250_mtk adds support
-for autosuspend. That stuff will get replaced by the serial_core generic
-PM patch from Andy. I think in it's current form 8250_mtk just gets enabled
-when the port is opened, and disabled when the port is closed. And gets
-disabled for system suspend.
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
+-- 
 Regards,
+Alexandre
 
-Tony
 
