@@ -4,64 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04E5EC7EE2A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jun 2023 11:33:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C94FC77B73
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jun 2023 11:34:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xTlxXGdow/7xkZ1gyn9rYld59gTDefocGGkbHkRmMUE=; b=b6BoE8mJjID2tlH/oMwaUz4gsM
-	1NJqaCX9GPR1+I1TvlPGrrn7nvloE2LVFiMJnOaDrA2q7UM0BnpDxuTe1OclIgfQEPdjCRvIbsEkP
-	2RLIndqyAgFdJCH8T0zHEslP+bj0eP9TMM2SfPgXcm4JD1b3UBhv6NT8e+YpLmZCJ6JVM1MNJ49a8
-	x+yakWqZA8Vb01Y6S0TWShjj1c/QG16LKoeW4FwPzCDCMLeKjCAIQQkjle243wBe8GsxORxmZ5nE8
-	y9Svn1QRfjpiuTXeIEq7xepf6hYe3+JRbpd8UHncXbbARdiZPJIEKEyNEPtJ6Rd331bN+XLVsgBTX
-	9ASgbwdA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LJdL4VkR29ugHjJ0HNgiBAKMzVnr+Rqw/yJUI27DCh8=; b=Ss2udU/wZmqdBnxV5J4huISZCa
+	/QrARx2yq18Btdl8Wj+FbjUyDQ1gVUGkSBmdlk4gXk5+yp+s5qrYwFvA9G7y4owoGqpkJrDziAqU3
+	2tAh+MojdNXVzj683zm1ISRajeTH3PW10JcLY1SeCWyo3p6TNWZxdVmWiCmaVNW7GVmDJ2nWuFc4o
+	9o1aRTyqiE0GG6Hgg3hN6K6nVQBMJtjciOeVGEXkhL8fPMPihC1liSbZ7b+NdxYZ3f5F+n/fm24Oh
+	uiDeLhbVd7wrSAALximyjyTeUlNI30/4YOGZptvWSg+odp+L0kgSUZlm67XdqdeplTrj3qcGTtMU7
+	ryBl+2WA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q68Sm-00FI71-0z;
-	Mon, 05 Jun 2023 11:33:28 +0000
-Received: from s3.sipsolutions.net ([2a01:4f8:191:4433::2] helo=sipsolutions.net)
+	id 1q68Ti-00FIJT-0r;
+	Mon, 05 Jun 2023 11:34:26 +0000
+Received: from mail-ua1-x931.google.com ([2607:f8b0:4864:20::931])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q68Sj-00FI61-2Y
+	id 1q68Tf-00FIIo-2Z
 	for linux-mediatek@lists.infradead.org;
-	Mon, 05 Jun 2023 11:33:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
-	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
-	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
-	Resent-Cc:Resent-Message-ID; bh=xTlxXGdow/7xkZ1gyn9rYld59gTDefocGGkbHkRmMUE=;
-	t=1685964802; x=1687174402; b=L6aebVbw58yOOv4xiQvz8QdN+rQwxudHBYI8dtuLSoyBVSo
-	UidAyKSn/v8I+piIHjATwsN4Qm7/3wVu3y/qi1NGF1DbegqNR9fIMxUsBU9U3SVq8NUDuxGE9tl3l
-	1kij8CzfS3Zfrv9s5Un0tMlYX3i9rB5quOesMhYu/0uaLUS2Q9z+KHGVzOlWWKjwEPFKz5AQt1TPR
-	VmxhLOYI0PiGIVX9rCzxAwffAuMNFMUOYUnaJhcY54yT52iCVYvmPTTMjRLBOkFMoy/gKNzNI0wr0
-	lzvjvBkanNxuY6agVm/5qJLAHlbZRonjpewnrmrfYtVE+BuKxBfT3ycW8xWCfzdQ==;
-Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
-	(Exim 4.96)
-	(envelope-from <johannes@sipsolutions.net>)
-	id 1q68SU-00EQoP-2w;
-	Mon, 05 Jun 2023 13:33:11 +0200
-Message-ID: <2650eae9d006abb4021d4ef8e9e43bbde99d31fd.camel@sipsolutions.net>
-Subject: Re: [PATCH 2/2] wifi: mac80211: ageout BSS color bitmap
-From: Johannes Berg <johannes@sipsolutions.net>
-To: Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>, Felix Fietkau <nbd@nbd.name>
-Cc: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Ryder Lee
- <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Evelyn
- Tsai <evelyn.tsai@mediatek.com>, Money Wang <money.wang@mediatek.com>, 
- linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-Date: Mon, 05 Jun 2023 13:33:09 +0200
-In-Reply-To: <4e6b407ec7dba2baa2cbd739088ff78ab1b02756.1680553708.git.yi-chia.hsieh@mediatek.com>
-References: <774ab129159408a3f3e04b7e662cb559cf087c48.1680553706.git.yi-chia.hsieh@mediatek.com>
-	 <4e6b407ec7dba2baa2cbd739088ff78ab1b02756.1680553708.git.yi-chia.hsieh@mediatek.com>
+	Mon, 05 Jun 2023 11:34:25 +0000
+Received: by mail-ua1-x931.google.com with SMTP id a1e0cc1a2514c-786e637f06dso1020766241.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 05 Jun 2023 04:34:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1685964861; x=1688556861;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=LJdL4VkR29ugHjJ0HNgiBAKMzVnr+Rqw/yJUI27DCh8=;
+        b=ihefJeawzq1ba5J+Z+/a7Y64U3S0NsqLGOcE7NThRkDvJdvEYDj4FPxzesJ0tmifc8
+         HJdYDm5j0huFTYjBXUmyav0pA0qUGlrQ+T4iV/imFQCkaOm3sxgVSuEngjweANjzErP0
+         OHjjxg8O8cu3leRnxQ1749QLe72mwhyycBLuA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1685964861; x=1688556861;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=LJdL4VkR29ugHjJ0HNgiBAKMzVnr+Rqw/yJUI27DCh8=;
+        b=Z2zlad2yi/Z19luIYDkbHF79yXZU+EYtgYlerjNjOBHln9ljnC7jsZNwdWYd1jr57P
+         p1GNGsAn2ivNWe6NwdRl0+f3RO+JBHC7X/rN8H11ug18sOXB/XXgKByacuFpzIaWCUzQ
+         nKv4jjPmTGi+3SUdkyZOMeE25Qzzrr8NoRjjkLN3TKR0EYTJstqJv4vd8yhQ/M2PJqo1
+         P5BVxS4Yinn22uiD458g0QJgc4cZ6uojMQXzaeX7TYQGPKXKacv6gKaStekAkkp38zWx
+         gvIYDHpIgFzPKa1Fb2EJu2ZiRn+bI/4Or4+jfY1MqXS64nZE5pXVvkbv30d7Q5fuQFTl
+         nYIQ==
+X-Gm-Message-State: AC+VfDyTs7ZU9iMPXZ69FDodpM3quxzn9G8j5xbu/hvrYAn+s2hgValV
+	kJm5Bck+almuRaehSA7hYUGHeO70G3r/Aik2eBy2nQ==
+X-Google-Smtp-Source: ACHHUZ49/IwlrFEfmpxaOyF8JC+0bPRmojnDSDJVaGgnrnvtesB7m1brUpWGPmailAmLhyP097J0bYC1CjDJkP3zHAY=
+X-Received: by 2002:a1f:60d4:0:b0:463:c9b3:9e12 with SMTP id
+ u203-20020a1f60d4000000b00463c9b39e12mr1025388vkb.6.1685964861559; Mon, 05
+ Jun 2023 04:34:21 -0700 (PDT)
+MIME-Version: 1.0
+References: <20230525113034.46880-1-tony@atomide.com> <20230602083335.GA181647@google.com>
+ <87a5xii33r.fsf@jogness.linutronix.de> <20230603054139.GR14287@atomide.com>
+ <20230603063533.GS14287@atomide.com> <20230605061511.GW14287@atomide.com>
+In-Reply-To: <20230605061511.GW14287@atomide.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Mon, 5 Jun 2023 19:34:10 +0800
+Message-ID: <CAGXv+5Fbx7eTxP0ep6DV+jyronAWxYvu2M-g=MjHGRhjSXUc=w@mail.gmail.com>
+Subject: Re: [PATCH v12 1/1] serial: core: Start managing serial controllers
+ to enable runtime PM
+To: Tony Lindgren <tony@atomide.com>
+Cc: John Ogness <john.ogness@linutronix.de>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jirislaby@kernel.org>, 
+	Andy Shevchenko <andriy.shevchenko@intel.com>, Dhruva Gole <d-gole@ti.com>, 
+	=?UTF-8?Q?Ilpo_J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>, 
+	Johan Hovold <johan@kernel.org>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, 
+	Vignesh Raghavendra <vigneshr@ti.com>, linux-omap@vger.kernel.org, 
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, linux-kernel@vger.kernel.org, 
+	linux-serial@vger.kernel.org, 
+	=?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.48.2 (3.48.2-1.fc38) 
-MIME-Version: 1.0
-X-malware-bazaar: not-scanned
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230605_043325_826855_E650943B 
-X-CRM114-Status: GOOD (  15.20  )
+X-CRM114-CacheID: sfid-20230605_043423_861667_F1FA4057 
+X-CRM114-Status: GOOD (  34.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,65 +97,190 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2023-04-03 at 14:04 -0700, Yi-Chia Hsieh wrote:
+Hi,
 
-> +/* ageout time for OBSS BSS color */
-> +#define IEEE80211_BSS_COLOR_AGEOUT_TIME		10
-
-I don't think that should be in this file, it's implementation defined.
-Also it might be nicer to just define it in jiffies, i.e. (10 * HZ),
-directly.
-
-> +++ b/include/net/mac80211.h
-> @@ -750,6 +750,7 @@ struct ieee80211_bss_conf {
->  	bool color_change_active;
->  	u8 color_change_color;
->  	u64 used_color_bitmap;
-> +	unsigned long color_last_seen[IEEE80211_BSS_COLOR_MAX + 1];
-
-This is really big (512 bytes) and per link - might make sense to only
-allocate when needed.
-
-> +void ieee80211_color_aging_work(struct work_struct *work)
+On Mon, Jun 5, 2023 at 2:15=E2=80=AFPM Tony Lindgren <tony@atomide.com> wro=
+te:
+>
+> * Tony Lindgren <tony@atomide.com> [230603 06:35]:
+> > * Tony Lindgren <tony@atomide.com> [230603 05:41]:
+> > > I don't think 8250_mtk needs to do register access before and after t=
+he
+> > > serial port registration, but if it does, then adding custom read/wri=
+te
+> > > functions can be done that do not rely on initialized port like
+> > > serial_out().
+> >
+> > Oh but mtk8250_runtime_suspend() calls serial_in(up, MTK_UART_DEBUG0), =
+so
+> > yeah if that gets called before registration is complete it causes a NU=
+LL
+> > pointer exception. If the serial_ctrl and serial_port devices do runtim=
+e
+> > suspend before port registration completes, things will fail.
+> >
+> > Sounds like doing pm_runtime_resume_and_get() in mtk8250_probe() might
+> > fix the issue. Still seems that adding a custom read function for
+> > mtk8250_runtime_suspend() to use instead of calling serial_in() should
+> > not be needed.
+>
+> Looking at this again, if serial8250_register_8250_port() fails, then
+> mtk8250_runtime_suspend() would again try to access uninitialized port.
+>
+> Here's a better untested version of the patch to try.
+>
+> Regards,
+>
+> Tony
+>
+> 8< ---------------------------
+> diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250=
+/8250_mtk.c
+> --- a/drivers/tty/serial/8250/8250_mtk.c
+> +++ b/drivers/tty/serial/8250/8250_mtk.c
+> @@ -57,6 +57,8 @@
+>  #define MTK_UART_XON1          40      /* I/O: Xon character 1 */
+>  #define MTK_UART_XOFF1         42      /* I/O: Xoff character 1 */
+>
+> +#define MTK_UART_REGSHIFT      2
+> +
+>  #ifdef CONFIG_SERIAL_8250_DMA
+>  enum dma_rx_status {
+>         DMA_RX_START =3D 0,
+> @@ -69,6 +71,7 @@ struct mtk8250_data {
+>         int                     line;
+>         unsigned int            rx_pos;
+>         unsigned int            clk_count;
+> +       void __iomem            *membase;
+>         struct clk              *uart_clk;
+>         struct clk              *bus_clk;
+>         struct uart_8250_dma    *dma;
+> @@ -187,6 +190,17 @@ static void mtk8250_dma_enable(struct uart_8250_port=
+ *up)
+>  }
+>  #endif
+>
+> +/* Read and write for register access before and after port registration=
+ */
+> +static u32 __maybe_unused mtk8250_read(struct mtk8250_data *data, u32 re=
+g)
 > +{
-> +	struct ieee80211_sub_if_data *sdata =3D
-> +		container_of(work, struct ieee80211_sub_if_data,
-> +			     deflink.color_aging_work.work);
-> +	struct ieee80211_bss_conf *bss_conf =3D &sdata->vif.bss_conf;
-> +	int i;
+> +       return readl(data->membase + (reg << MTK_UART_REGSHIFT));
+> +}
 > +
-> +	sdata_lock(sdata);
+> +static void mtk8250_write(struct mtk8250_data *data, u32 reg, u32 val)
+> +{
+> +       writel(val, data->membase + (reg << MTK_UART_REGSHIFT));
+> +}
 > +
-> +	if (!ieee80211_sdata_running(sdata))
-> +		goto unlock;
+>  static int mtk8250_startup(struct uart_port *port)
+>  {
+>  #ifdef CONFIG_SERIAL_8250_DMA
+> @@ -425,11 +439,10 @@ mtk8250_set_termios(struct uart_port *port, struct =
+ktermios *termios,
+>  static int __maybe_unused mtk8250_runtime_suspend(struct device *dev)
+>  {
+>         struct mtk8250_data *data =3D dev_get_drvdata(dev);
+> -       struct uart_8250_port *up =3D serial8250_get_port(data->line);
+>
+>         /* wait until UART in idle status */
+>         while
+> -               (serial_in(up, MTK_UART_DEBUG0));
+> +               (mtk8250_read(data, MTK_UART_DEBUG0));
+
+I believe it still gets stuck here sometimes.
+
+With your earlier patch, it could get through registering the port, and
+the console would show
+
+    11002000.serial: ttyS0 at MMIO 0x11002000 (irq =3D 240, base_baud =3D
+1625000) is a ST16650V2
+
+for the console UART.
+
+Angelo mentioned that we should be using SLEEP_REQ/SLEEP_ACK registers
+in the MTK UART hardware.
+
+I tried reworking it into your patch here, but it causes issues with the
+UART-based Bluetooth on one of my devices. After the UART runtime suspends
+and resumes, something is off and causes the transfers during Bluetooth
+init to become corrupt.
+
+I'll try some more stuff, but the existing code seems timing dependent.
+If I add too many printk statements to the runtime suspend/resume
+callbacks, things seem to work. One time I even ended up with broken
+UARTs but otherwise booted up the system.
+
+ChenYu
+
+>
+>         if (data->clk_count =3D=3D 0U) {
+>                 dev_dbg(dev, "%s clock count is 0\n", __func__);
+> @@ -553,6 +566,7 @@ static int mtk8250_probe(struct platform_device *pdev=
+)
+>         if (!data)
+>                 return -ENOMEM;
+>
+> +       data->membase =3D uart.port.membase;
+>         data->clk_count =3D 0;
+>
+>         if (pdev->dev.of_node) {
+> @@ -570,7 +584,7 @@ static int mtk8250_probe(struct platform_device *pdev=
+)
+>         uart.port.flags =3D UPF_BOOT_AUTOCONF | UPF_FIXED_PORT;
+>         uart.port.dev =3D &pdev->dev;
+>         uart.port.iotype =3D UPIO_MEM32;
+> -       uart.port.regshift =3D 2;
+> +       uart.port.regshift =3D MTK_UART_REGSHIFT;
+>         uart.port.private_data =3D data;
+>         uart.port.shutdown =3D mtk8250_shutdown;
+>         uart.port.startup =3D mtk8250_startup;
+> @@ -581,27 +595,30 @@ static int mtk8250_probe(struct platform_device *pd=
+ev)
+>                 uart.dma =3D data->dma;
+>  #endif
+>
+> -       /* Disable Rate Fix function */
+> -       writel(0x0, uart.port.membase +
+> -                       (MTK_UART_RATE_FIX << uart.port.regshift));
+> -
+>         platform_set_drvdata(pdev, data);
+>
+>         pm_runtime_enable(&pdev->dev);
+> -       err =3D mtk8250_runtime_resume(&pdev->dev);
+> +       err =3D pm_runtime_resume_and_get(&pdev->dev);
+>         if (err)
+>                 goto err_pm_disable;
+>
+> +       /* Disable Rate Fix function */
+> +       mtk8250_write(data, 0, MTK_UART_RATE_FIX);
 > +
-> +	for (i =3D 1; i < IEEE80211_BSS_COLOR_MAX + 1; i++) {
-> +		/* ageout if not seen for a period */
-> +		if ((bss_conf->used_color_bitmap & BIT_ULL(i)) &&
-> +		    time_before(bss_conf->color_last_seen[i],
-> +				jiffies - IEEE80211_BSS_COLOR_AGEOUT_TIME * HZ)) {
-> +			bss_conf->used_color_bitmap &=3D ~BIT_ULL(i);
-> +		}
-> +	}
+>         data->line =3D serial8250_register_8250_port(&uart);
+>         if (data->line < 0) {
+>                 err =3D data->line;
+> -               goto err_pm_disable;
+> +               goto err_pm_put;
+>         }
+>
+>         data->rx_wakeup_irq =3D platform_get_irq_optional(pdev, 1);
+>
+> +       pm_runtime_put_sync(&pdev->dev);
 > +
-> +	ieee80211_queue_delayed_work(&sdata->local->hw,
-> +				     &sdata->deflink.color_aging_work, HZ);
-
-What? No ... you really can't do this. Just schedule the work properly
-at the right time, don't leave it running forever every 1 second!!
-
-
-> @@ -1430,6 +1431,11 @@ int ieee80211_do_open(struct wireless_dev *wdev, b=
-ool coming_up)
-> =20
->  	set_bit(SDATA_STATE_RUNNING, &sdata->state);
-> =20
-> +	if (sdata->vif.type =3D=3D NL80211_IFTYPE_AP)
-> +		ieee80211_queue_delayed_work(&sdata->local->hw,
-> +					     &sdata->deflink.color_aging_work,
-> +					     HZ);
-
-Again, no.
-
-johannes
+>         return 0;
+>
+> +err_pm_put:
+> +       pm_runtime_put_sync(&pdev->dev);
+>  err_pm_disable:
+>         pm_runtime_disable(&pdev->dev);
+>
+> @@ -694,7 +711,7 @@ static int __init early_mtk8250_setup(struct earlycon=
+_device *device,
+>                 return -ENODEV;
+>
+>         device->port.iotype =3D UPIO_MEM32;
+> -       device->port.regshift =3D 2;
+> +       device->port.regshift =3D MTK_UART_REGSHIFT;
+>
+>         return early_serial8250_setup(device, NULL);
+>  }
 
