@@ -4,96 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA188C7EE2A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jun 2023 08:44:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 745BBC77B73
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jun 2023 08:48:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MrfUcOIoh78ZG5yS7R23juCUyPfE+5HsrCyM0YNurn4=; b=TX5xMCgRhnJm2W4zyjxV4Lv8fC
-	JtkeshJiSEypOBdfoyi3vkcSwDtki/qzFECvlXZKBoVbdAT55PhC5QnbokCcN/a6fbTNfOwTNbpBy
-	v4ya1Sjpfo0444IT9HdV7T2jeNmD6NAb+7MTwMfSnWVmtMsKj8I+eUJLLb4DveWRxkrSC6Vm969fQ
-	qnajsOYdsfW+Odh6o5f7Xpx8jHzkOl1ua9wom93n3X+MVx9ZQ5IveIdl3NskboI23Sbp9W0KweEeS
-	fRP373dPPGWaxX3AdhLRw+YiublWeWjxLXCXkVyDapGkTOnay1CAgXG1zWBdpiY4Dk1KDeSV5CRmr
-	zm8cuz1A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZihwqM5o+bCJtJlhubSJ7l/YfAE16lsYI/v7efgdL3U=; b=IIu+DP+3fKbD8P2N410rIAMPrt
+	RbGCeU9nbaOqPjzW4TyVhACz97cqTZNj3b2AEHHvVTaC1AmEkCnSVL3KiaRL2trR+NAca90flIT2r
+	0RD/cyWDGsqYO83NV95HjrCOAZfoc+kKVHvl7bLgNfIiNJFGEE6OivOqqGtTgc6zkqiQVQWt2dPRY
+	yoAcFd4KVfoP2pa92dUUVwSnL3nH5Tm4Os0TPU2U9XQsMS4dy7vempKJOdcgjp4S15Z158OiBD9ng
+	bMzOey1nPhB8iODql2tASaOp8So/z1V9BbwWQi50kuWtLQZ/LfTnjXFHmG/oLu4i+hyUnFlessnDN
+	Q74DPDPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q65pH-00EkIz-0D;
-	Mon, 05 Jun 2023 08:44:31 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1q65sy-00Ekv0-3B;
+	Mon, 05 Jun 2023 08:48:20 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q65pC-00EkFt-1y
-	for linux-mediatek@lists.infradead.org;
-	Mon, 05 Jun 2023 08:44:29 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-30adc51b65cso4160777f8f.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 05 Jun 2023 01:44:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1685954663; x=1688546663;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=MrfUcOIoh78ZG5yS7R23juCUyPfE+5HsrCyM0YNurn4=;
-        b=IgSNkde0F2plrIXJephmlvFxedbx7tHM/IirdYyN8pIDo1/xuMRvfD3003V3SWGHl8
-         Xze9Y//QtV5Ftzj9fe4SKQCZtkWTeyO92TffXIgoNk/f0UTaEOLtvzh0OKVOfviV2ZDz
-         kaVgp5xNaUfGdZgx0+4PlUx5MlzbexzibYxSjDjpapVblsms1sKsRFLZRK2bdIb27J7i
-         H2fo5fxIYxiaQg/Oubg67FQ9i6jDMbwv4rC77dQ4G84nkEJ7alXmS0jKXSsLjo/AOmNJ
-         jnqpRhceRR89MCqgmvivmJ9Top5sIb3qzgDkyZzDvZIWBVvD85ieWL8lkmwaHMAQ3/pr
-         P5lA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685954663; x=1688546663;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=MrfUcOIoh78ZG5yS7R23juCUyPfE+5HsrCyM0YNurn4=;
-        b=CeWCecDVA8sJ5i2lbdWIX8Gx3ghgBL7u6QndMkXNP85hYn/yRa4tMJbLPdAIw2JyIN
-         5FJ9noydW0rHp6xJQDaBdyJ+/WfSK1SCF7RjiWp0V4sV+cEkFLuePtRfetBeJztKZQSQ
-         iFNrKnjq+eEPBfseR98WQ+TuPxd7PVC42R1vNyU4abxssbMeR14xljwegYf4V6gFseGx
-         npxwm41S8CM/Cjo9MHHoP5Zq9c2w8LPg29sXzV8xZ7vBKEihXzc3uVsryjIUsXdgznJR
-         6RX79Ez6b95gj0rgAO5evAR1Y9dY7VQr6nUuc2mkVSEkpITza5xNuwEIm1qtORY/Wi5k
-         PUjg==
-X-Gm-Message-State: AC+VfDzXm/Wigl2B1el43FGnm1yxiWQPkij3X77wuztyZWOCYqKhb+rN
-	8gxWKK0W6P0E6WZKFW4n5UokKw==
-X-Google-Smtp-Source: ACHHUZ5lrv51N2yyyZvduWpzWmbtXLAxBQh2VfWJZNp02Pt1G+uTkEUIrAQWOBc93DFyD+N73N+83w==
-X-Received: by 2002:adf:f986:0:b0:2ff:6906:7169 with SMTP id f6-20020adff986000000b002ff69067169mr5341675wrr.68.1685954663499;
-        Mon, 05 Jun 2023 01:44:23 -0700 (PDT)
-Received: from localhost ([2a01:e0a:55f:21e0:9e19:4376:dea6:dbfa])
-        by smtp.gmail.com with ESMTPSA id p12-20020a5d458c000000b00307acec258esm9107444wrq.3.2023.06.05.01.44.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 05 Jun 2023 01:44:22 -0700 (PDT)
-Date: Mon, 5 Jun 2023 10:44:22 +0200
-From: Julien Stephan <jstephan@baylibre.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Kevin Hilman <khilman@baylibre.com>, robh@kernel.org, 
-	chunkuang.hu@kernel.org, linux-mediatek@lists.infradead.org, 
-	Florian Sylvestre <fsylvestre@baylibre.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, 
-	Andy Hsieh <andy.hsieh@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
-	Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	"moderated list:ARM/Mediatek USB3 PHY DRIVER" <linux-arm-kernel@lists.infradead.org>, 
-	"open list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>, 
-	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH v2 1/2] dt-bindings: phy: add mediatek mipi csi driver v
- 0.5
-Message-ID: <totyr5bsupdv6y6muvndnhywbw5fl5kezoxie2hyz4g53yi34m@6geccwkjvupc>
-References: <20230515090551.1251389-2-jstephan@baylibre.com>
- <ab9aa30f-82d7-1d14-5561-e19ff10af0b0@linaro.org>
- <4yppinkucchwnwtnnpbqdn4bejmntjq3q6mx6es55f2pwyce3c@qdhdks47lpyt>
- <1853f049-4f00-b7f0-973a-2c4e7b0b2634@linaro.org>
- <7h353w2oug.fsf@baylibre.com>
- <fbf1b0a6-f45d-69a0-5de6-8269567e15b3@linaro.org>
- <7hwn18yndq.fsf@baylibre.com>
- <c63ebd7e-8658-9cdd-4fc4-ade9c94dfa64@linaro.org>
- <7hcz2snpnw.fsf@baylibre.com>
- <10074d67-394b-3ddb-8bd1-fc051bdb7f79@linaro.org>
+	id 1q65su-00Ektn-2L;
+	Mon, 05 Jun 2023 08:48:18 +0000
+Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A8DE76606E61;
+	Mon,  5 Jun 2023 09:48:13 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1685954894;
+	bh=W1Z9FGWYRPJybJJB4em5oiN/dt3EmYO8rUIMWewNKe8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=XAXDy3Hf6YkO4xBypwkj8hbqyAHfMiLoidvn7Qpmhi/ss6ns/tlnYYpmJM3EfAAAP
+	 C4COz69z1wYfKKxse/fUSoofgd3SPCU+C1diMshTruXTkkA3XNSZWjxMw6p9xTnrUR
+	 BoTdBkYIHQTzyplLrUiNUm06j5l/e57IG875OR5/kuSLBD+/uKQb7X2PXGGjFxDo8u
+	 s+VWlBrgiocqBnS25Cruf5NpqwvfqXSxJLYIIuQRZk6k+cG+N3HFkYHjXs3kE3q/lJ
+	 6ECGcIiarzQrs4sy+i/l7pCDezvJduiEa/bQyyOaYR38qlKHAg2cugJA74K/N+KgUC
+	 pkhlsYwQKdq1w==
+Message-ID: <47ee4c8b-dedf-d69a-dceb-dcaa34ddd0e1@collabora.com>
+Date: Mon, 5 Jun 2023 10:48:10 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <10074d67-394b-3ddb-8bd1-fc051bdb7f79@linaro.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.2
+Subject: Re: [PATCH v3] mmc: mtk-sd: reduce CIT for better performance
+Content-Language: en-US
+To: Wenbin Mei <wenbin.mei@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Chaotian Jing <chaotian.jing@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Adrian Hunter <adrian.hunter@intel.com>,
+ Ritesh Harjani <riteshh@codeaurora.org>,
+ Asutosh Das <asutoshd@codeaurora.org>, linux-mmc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20230605060107.22044-1-wenbin.mei@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230605060107.22044-1-wenbin.mei@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230605_014426_873911_550A8195 
-X-CRM114-Status: GOOD (  45.33  )
+X-CRM114-CacheID: sfid-20230605_014817_066289_92B2552B 
+X-CRM114-Status: GOOD (  26.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,104 +80,154 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 30, 2023 at 10:53:31AM +0200, Krzysztof Kozlowski wrote:
-> On 22/05/2023 21:15, Kevin Hilman wrote:
-> > Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org> writes:
-> >
-> >> On 16/05/2023 23:31, Kevin Hilman wrote:
-> >>
-> >>>> Third is to use versioned IP blocks.
-> >>>>
-> >>>> The second case also would work, if it is applicable to you (you really
-> >>>> have fallback matching all devices). Third solution depends on your
-> >>>> versioning and Rob expressed dislike about it many times.
-> >>>>
-> >>>> We had many discussions on mailing lists, thus simplifying the review -
-> >>>> I recommend the first choice. For a better recommendation you should say
-> >>>> a bit more about the block in different SoCs.
-> >>>
-> >>> I'll try to say a bit more about the PHY block, but in fact, it's not
-> >>> just about differences between SoCs. On the same SoC, 2 different PHYs
-> >>> may have different features/capabilities.
-> >>>
-> >>> For example, on MT8365, There are 2 PHYs: CSI0 and CSI1.  CSI0 can
-> >>> function as a C-PHY or a D-PHY, but CSI1 can only function as D-PHY
-> >>> (used as the example in the binding patch[1].)  On another related SoC,
-> >>> there are 3 PHYs, where CSI0 is C-D but CSI1 & CSI2 are only D.
-> >>>
-> >>> So that's why it seems (at least to me) that while we need SoC
-> >>> compatible, it's not enough.  We also need properties to describe
-> >>> PHY-specific features (e.g. C-D PHY)
-> >>
-> >> I recall the same or very similar case... It bugs me now, but
-> >> unfortunately I cannot find it.
-> >>
-> >>>
-> >>> Of course, we could rely only on SoC-specific compatibles describe this.
-> >>> But then driver will need an SoC-specific table with the number of PHYs
-> >>> and per-PHY features for each SoC encoded in the driver.  Since the
-> >>> driver otherwise doesn't (and shouldn't, IMHO) need to know how many
-> >>> PHYs are on each SoC, I suggested to Julien that perhaps the additional
-> >>> propery was the better solution.
-> >>
-> >> Phys were modeled as separate device instances, so you would need
-> >> difference in compatible to figure out which phy is it.
-> >>
-> >> Other way could be to create device for all phys and use phy-cells=1.
-> >> Whether it makes sense, depends on the actual datasheet - maybe the
-> >> split phy per device is artificial? There is one PHY block with two
-> >> address ranges for each PHY - CSI0 and CSI1 - but it is actually one
-> >> block? You should carefully check this because once design is chosen,
-> >> you won't be able to go back to other and it might be a problem (e.g.
-> >> there is some top-level block for powering on all CSI instances).
-> >
-> > We're pretty sure these are multiple instances of the IP block as they
-> > can operate completely independently.
-> >
-> >>>
-> >>> To me it seems redundant to have the driver encode PHYs-per-SoC info,
-> >>> when the per-SoC DT is going to have the same info, so my suggestion was
-> >>> to simplify the driver and have this kind of hardware description in the
-> >>> DT, and keep the driver simple, but we are definitely open to learning
-> >>> the "right way" of doing this.
-> >>
-> >> The property then is reasonable. It should not be bool, though, because
-> >> it does not scale. There can be next block which supports only D-PHY on
-> >> CSI0 and C-PHY on CSI1? Maybe some enum or list, depending on possible
-> >> configurations.
-> >
-> > OK, looks like include/dt-bindings/phy/phy.y already has
-> >
-> >   #define PHY_TYPE_DPHY		10
-> >   #define PHY_TYPE_CPHY		11
-> >
-> > we'll add a PHY_TYPE_CDPHY and use that.   Sound reasonable?
->
-> Yes. Currently it is usually used as phy-cells argument (after the phy
-> number/lane/ID), but cdns,phy-type and intel,phy-mode use it directly as
-> property in provider. In both cases they have a bit different meaning
-> than yours. You want to list all supported modes or narrow/restrict
-> them. Maybe hisilicon,fixed-mode fits your purpose?
->
+Il 05/06/23 08:01, Wenbin Mei ha scritto:
+> CQHCI_SSC1 indicates to CQE the polling period to use when using periodic
+> SEND_QUEUE_STATUS(CMD13) polling.
+> Since MSDC CQE uses msdc_hclk as ITCFVAL, so driver should use hclk
+> frequency to get the actual time.
+> The default value 0x1000 that corresponds to 150us for MediaTek SoCs, let's
+> decrease it to 0x40 that corresponds to 2.35us, which can improve the
+> performance of some eMMC devices.
+> 
+> Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
 
-Hi Krzysztof,
+OK! That's almost good now. There's only one consideration here: if MediaTek
+SoCs *require* msdc_hclk to calculate the CIT time, this means that this clock
+is critical for CQHCI functionality.
 
-Thanks for the suggestion, using something like hisilicon,fixed-node
-looks like a good fit.
-With mediatek,fixed-node, by default CSI node will be considered as
-CD-PHY capable (unless the fixed-mode property is set.) so I won't need
-anymore the new define PHY_TYPE_CDPHY introduced in v3.
+If msdc_hclk is not present, CQHCI cannot work correctly... so you don't have
+to cover the case in which there's no msdc_hclk clock: if that's not present,
+either fail probing, or disable CQHCI.
 
-Also introducing mediatek,fixed-mode suggests that PHYs not declaring
-the fixed mode property support mode selection, so I suggest to add a
-phy argument (#phy-cells = <1>) to select the mode (D or C mode).
-Exactly what is done by the hsilicon driver.
+> ---
+>   drivers/mmc/host/cqhci.h  |  1 +
+>   drivers/mmc/host/mtk-sd.c | 47 +++++++++++++++++++++++++++++++++++++++
+>   2 files changed, 48 insertions(+)
+> 
+> diff --git a/drivers/mmc/host/cqhci.h b/drivers/mmc/host/cqhci.h
+> index ba9387ed90eb..292b89ebd978 100644
+> --- a/drivers/mmc/host/cqhci.h
+> +++ b/drivers/mmc/host/cqhci.h
+> @@ -23,6 +23,7 @@
+>   /* capabilities */
+>   #define CQHCI_CAP			0x04
+>   #define CQHCI_CAP_CS			0x10000000 /* Crypto Support */
+> +#define CQHCI_CAP_ITCFMUL(x)		(((x) & GENMASK(15, 12)) >> 12)
+>   
+>   /* configuration */
+>   #define CQHCI_CFG			0x08
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index edade0e54a0c..c221ef8a6992 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -473,6 +473,7 @@ struct msdc_host {
+>   	struct msdc_tune_para def_tune_para; /* default tune setting */
+>   	struct msdc_tune_para saved_tune_para; /* tune result of CMD21/CMD19 */
+>   	struct cqhci_host *cq_host;
+> +	u32 cq_ssc1_time;
+>   };
+>   
+>   static const struct mtk_mmc_compatible mt2701_compat = {
+> @@ -2450,9 +2451,50 @@ static void msdc_hs400_enhanced_strobe(struct mmc_host *mmc,
+>   	}
+>   }
+>   
+> +static void msdc_cqe_cit_cal(struct msdc_host *host, u64 timer_ns)
 
-How does that sound to you?
+static int msdc_cqe_cit_cal(....)
 
-Best,
-Julien
-> Best regards,
-> Krzysztof
->
+> +{
+> +	struct mmc_host *mmc = mmc_from_priv(host);
+> +	struct cqhci_host *cq_host = mmc->cqe_private;
+> +	u8 itcfmul;
+> +	u32 hclk_freq;
+
+hclk_freq should be `unsigned long`, as that's what clk_get_rate() returns.
+
+> +	u64 value;
+> +
+> +	/* Since MSDC CQE uses msdc_hclk as ITCFVAL, so driver should use hclk
+> +	 * frequency to get the actual time for CIT.
+> +	 */
+
+	/*
+	 * On MediaTek SoCs the MSDC controller's CQE uses msdc_hclk as ITCFVAL
+	 * so we multiply/divide the HCLK frequency by ITCFMUL to calculate the
+	 * Send Status Command Idle Timer (CIT) value.
+	 */
+	if (!host->h_clk)
+		return -EINVAL;
+
+	hclk_freq = clk_get_rate(host->h_clk);
+	itcfmul = CQHCI_CAP_ITFCMUL(cqhci_readl(cq_host, CQHCI_CAP));
+	switch (itcfmul) {
+		....
+	}
+
+> +	if (host->h_clk) {
+> +		hclk_freq = clk_get_rate(host->h_clk);
+> +		itcfmul = CQHCI_CAP_ITCFMUL(cqhci_readl(cq_host, CQHCI_CAP));
+> +		switch (itcfmul) {
+> +		case 0x0:
+> +			do_div(hclk_freq, 1000);
+> +			break;
+> +		case 0x1:
+> +			do_div(hclk_freq, 100);
+> +			break;
+> +		case 0x2:
+> +			do_div(hclk_freq, 10);
+> +			break;
+> +		case 0x3:
+> +			break;
+> +		case 0x4:
+> +			hclk_freq = hclk_freq * 10;
+> +			break;
+> +		default:
+> +			host->cq_ssc1_time = 0x40;
+> +			return;
+> +		value = hclk_freq * timer_ns;
+> +		do_div(value, 1000000000ULL);
+> +		host->cq_ssc1_time = value;
+> +	} else {
+> +		host->cq_ssc1_time = 0x40;
+> +	}
+> +}
+> +
+>   static void msdc_cqe_enable(struct mmc_host *mmc)
+>   {
+>   	struct msdc_host *host = mmc_priv(mmc);
+> +	struct cqhci_host *cq_host = mmc->cqe_private;
+>   
+>   	/* enable cmdq irq */
+>   	writel(MSDC_INT_CMDQ, host->base + MSDC_INTEN);
+> @@ -2462,6 +2504,9 @@ static void msdc_cqe_enable(struct mmc_host *mmc)
+>   	msdc_set_busy_timeout(host, 20 * 1000000000ULL, 0);
+>   	/* default read data timeout 1s */
+>   	msdc_set_timeout(host, 1000000000ULL, 0);
+> +
+> +	/* Set the send status command idle timer */
+> +	cqhci_writel(cq_host, host->cq_ssc1_time, CQHCI_SSC1);
+>   }
+>   
+>   static void msdc_cqe_disable(struct mmc_host *mmc, bool recovery)
+> @@ -2803,6 +2848,8 @@ static int msdc_drv_probe(struct platform_device *pdev)
+>   		/* cqhci 16bit length */
+>   		/* 0 size, means 65536 so we don't have to -1 here */
+>   		mmc->max_seg_size = 64 * 1024;
+> +		/* Reduce CIT to 0x40 that corresponds to 2.35us */
+> +		msdc_cqe_cit_cal(host, 2350);
+
+		ret = msdc_cqe_cit_cal(...)
+		if (ret)
+			goto release;
+
+^^^^ either fail probe, or use the eMMC/SD without CQHCI support.
+
+Regards,
+Angelo
+
+>   	}
+>   
+>   	ret = devm_request_irq(&pdev->dev, host->irq, msdc_irq,
+
 
