@@ -4,73 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C32EC7EE2E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jun 2023 07:52:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9BD7C7EE2F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jun 2023 08:20:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1OxS0+MXhITTik1SZSy3CKfcdf4/DnOZHZgAyW//31c=; b=WKtaiV51tBcgDq8d4K8GSIa05d
-	wBc1aJdjFUBltpwhAbt8uXlA4P+BDxd+pXD/jLPWkta+xpqfYzpxFmO6BUVtX8gvPmgcRrkqkVaBw
-	j+snR7RKLk1VLen+GbHPjZMGUbQ1tSBhUmMZOPBWUQevnN1WeIhd5jJ9h9v6twI2IoouT3/8bn6EV
-	hoYlOz+8VAhRoxxEzEbSpdjXsZ2bG7lwaLzNwJJRa2EuoLgGbGDZqpUwrPPPeIrc3Qk7O3zs/e/p+
-	+yH2qp1hHmuutTRnE5U6X/AI4CZzdU7LIFP5gb4Oq9OtyyPMavENSb8T0Y6gkYq72UbO0qzZMR1Vl
-	8atj6Dpw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XxBk4ypnkqYXwOw44DslhDRSNb58MKb2UrCUgoOWTYg=; b=FHV8d3n3ft+Rhow96JCjYNHf71
+	8ewGxatCvEo+Q5VooKBqb7x6KmsirLJYbQ84bSSNCQCWvpCxB5hCbaEibUIDLe7XOB0NUEXEVyIf/
+	V0ZpEBHz9KplAu5mPT6Rgq37HM0hPwmns4m/bdZg7cO3o4irk2jgkADeyWV2/4JnSR7BTyOi/Hm97
+	3QOQnTXDlcAPKx2EPicmSt2YVlkQ+Q6C2z/uS290gHIfSGp3/ORbl9s9R2Sokm+OjuuUYbpRjy+/g
+	S1MAluHKjRDQ2s//z6g9+iFgsc9h45fwKDi4m+vvBM534eDsqdhP4W+VsNkQTgZSI/eQ6+zk1RSrx
+	e09jrdfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q651C-00EccO-39;
-	Mon, 05 Jun 2023 07:52:46 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1q65SN-00EgzS-2I;
+	Mon, 05 Jun 2023 08:20:51 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6518-00EcZw-1s;
-	Mon, 05 Jun 2023 07:52:45 +0000
-Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D2CF366056AA;
-	Mon,  5 Jun 2023 08:52:39 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1685951561;
-	bh=ma8BsYbgBg4IWVmjxVkOdcEeWuXb2Q5wJV89M9WEafQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=fPWZk0y1402kA+YZQ63ycsSDCF70dv82ThEZDWUKgjAM19Ezcmg9BuXaMBSW5r3eG
-	 v5HY8RyJPmXdjOpab1yj3AJGh0K1nZbygk9BYHkj2DBBrgljsi9bDpqQTvTVib2f0d
-	 IjlHgzHbpOkT7zvjeuyQty8h7zekYuuzxm3d1K6v+WhxfiKSjX94kMTfOerY4NuHz9
-	 42D14zFM+hwhGtvd9eRF6fb8M//9CH4Ybf1Sww1lUD9I8munXPK2+ORGJO7B+b4g2m
-	 t/rajBjUgz0i9YqDVFXZ7G/K1AK0kZotmW4GnVin4RAJPoYbeMrZxVmiwOj9fpV980
-	 NgAic0Zt1XTvw==
-Message-ID: <fdc3cfa9-3221-c422-a42b-602410dc22f4@collabora.com>
-Date: Mon, 5 Jun 2023 09:52:37 +0200
+	id 1q65SK-00EgxY-1K
+	for linux-mediatek@lists.infradead.org;
+	Mon, 05 Jun 2023 08:20:49 +0000
+X-UUID: de10a0c2037911ee912e1518a6540028-20230605
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=XxBk4ypnkqYXwOw44DslhDRSNb58MKb2UrCUgoOWTYg=;
+	b=tdjx+bWO6z8kOREJ9z6sTH0rbfXnBD40A8uyC2FA0hdpv5ceX9behbqt9p90TjFBWxNNV/zcXyOs3kOeccWo6sWc9RkQGksjG+f7r1tBqtufjuXEIGOytmJxDWvyf7HvZb+DLZdqd34FkOtRLvIFDzTnvMM1tEhr56fdmwh49R0=;
+X-CID-P-RULE: Spam_GS6885AD
+X-CID-O-INFO: VERSION:1.1.25,REQID:5a13e0b3-9f13-4ec2-ac64-b638bc24373c,IP:0,U
+	RL:0,TC:0,Content:31,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS6885AD,ACT
+	ION:quarantine,TS:126
+X-CID-INFO: VERSION:1.1.25,REQID:5a13e0b3-9f13-4ec2-ac64-b638bc24373c,IP:0,URL
+	:0,TC:0,Content:31,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
+	N:quarantine,TS:126
+X-CID-META: VersionHash:d5b0ae3,CLOUDID:db0f0c6e-2f20-4998-991c-3b78627e4938,B
+	ulkID:230605162046RU9HBT0C,BulkQuantity:0,Recheck:0,SF:29|28|17|19|48,TC:n
+	il,Content:3,EDM:-3,IP:nil,URL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+	,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: de10a0c2037911ee912e1518a6540028-20230605
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <shayne.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 675560491; Mon, 05 Jun 2023 01:20:44 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 5 Jun 2023 16:20:41 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 5 Jun 2023 16:20:41 +0800
+From: Shayne Chen <shayne.chen@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
+	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, StanleyYP Wang
+	<StanleyYP.Wang@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>
+Subject: [PATCH v2 07/10] wifi: mt76: mt7996: use correct phy for background radar event
+Date: Mon, 5 Jun 2023 16:19:44 +0800
+Message-ID: <20230605081947.12804-7-shayne.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230605081947.12804-1-shayne.chen@mediatek.com>
+References: <20230605081947.12804-1-shayne.chen@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.2
-Subject: Re: [PATCH v4 0/5] Add LVTS support for mt8192
-Content-Language: en-US
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Chen-Yu Tsai <wenst@chromium.org>
-Cc: =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
- daniel.lezcano@linaro.org, rafael@kernel.org, amitk@kernel.org,
- rui.zhang@intel.com, matthias.bgg@gmail.com, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, rdunlap@infradead.org,
- ye.xingchen@zte.com.cn, p.zabel@pengutronix.de, linux-pm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- james.lo@mediatek.com, rex-bc.chen@mediatek.com, abailon@baylibre.com,
- amergnat@baylibre.com, khilman@baylibre.com
-References: <20230530195132.2286163-1-bero@baylibre.com>
- <CAGXv+5EVfgEBDm=7MmQ=OsP322KmE23PwycJ-0LjU+3dEZygUQ@mail.gmail.com>
- <572f5a88-8c2e-4324-b477-836a5024ec67@notapiano>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <572f5a88-8c2e-4324-b477-836a5024ec67@notapiano>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230605_005242_748723_FD5997C3 
-X-CRM114-Status: GOOD (  25.33  )
+X-CRM114-CacheID: sfid-20230605_012048_448687_75FC7707 
+X-CRM114-Status: UNSURE (   9.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,72 +90,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 01/06/23 19:09, Nícolas F. R. A. Prado ha scritto:
-> On Wed, May 31, 2023 at 12:49:43PM +0800, Chen-Yu Tsai wrote:
->> On Wed, May 31, 2023 at 3:51 AM Bernhard Rosenkränzer <bero@baylibre.com> wrote:
->>>
->>> From: Balsam CHIHI <bchihi@baylibre.com>
->>>
->>> Add full LVTS support (MCU thermal domain + AP thermal domain) to MediaTek MT8192 SoC.
->>> Also, add Suspend and Resume support to LVTS Driver (all SoCs),
->>> and update the documentation that describes the Calibration Data Offsets.
->>>
->>> Changelog:
->>>      v4 :
->>>          - Shrink the lvts_ap thermal sensor I/O range to 0xc00 to make
->>>            room for SVS support, pointed out by
->>>            AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>>
->>>      v3 :
->>>          - Rebased :
->>>              base-commit: 6a3d37b4d885129561e1cef361216f00472f7d2e
->>>          - Fix issues in v2 pointed out by Nícolas F. R. A. Prado <nfraprado@collabora.com>:
->>>            Use filtered mode to make sure threshold interrupts are triggered,
->>
->> I'm seeing sensor readout (either through sysfs/thermal/<x>/temp or hwmon)
->> fail frequently on MT8192. If I run `sensors` (lm-sensors), at least a couple
->> of the LVTS sensors would be N/A. Not sure if this is related to this change.
-> 
-> Yes, it is. Filtered mode has some delay associated with reading, meaning most
-> of the time the value isn't ready, while immediate mode is, well, pretty much
-> immediate and the read always succeeds.
-> 
-> For temperature monitoring, filtered mode should be used. It supports triggering
-> interrupts when crossing the thresholds. Immediate mode is meant for one-off
-> readings of the temperature. This is why I suggested using filtered mode.
-> 
-> As far as the thermal framework goes, it's ok that filtered mode doesn't always
-> return a value, as it will keep the old one. But of course, having the
-> temperature readout always work would be a desired improvement.
-> 
-> As for ways to achieve that, I think the intended way would be to enable the
-> interrupts that signal data ready on filtered mode (bits 19, 20, 21, 28), read
-> the temperature and cache it so it is always available when the get_temp()
-> callback is called. The issue with this is that it would cause *a lot* of
-> interrupts, which doesn't seem worth it.
-> 
-> Another option that comes to mind would be to enable immediate mode only during
-> the get_temp() callback, to immediately read a value, and return to filtered
-> mode at the end. That might work, but I haven't tried yet.
-> 
+From: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
 
-The issue with keeping all as filtered mode comes when we want to add MediaTek
-SVS functionality which, on most SoCs, is used only for the GPU (apart from the
-MT8183 which has cpu+gpu svs).
+If driver directly uses the band_idx reported from the radar event to
+access mt76_phy array, it will get the wrong phy for background radar.
+Fix this by adjusting the statement.
 
-It makes sense to cache the readings, but I'm concerned about possible
-instabilities that we could get through the SVS voltage adjustment flows, as
-that algorithm takes current IP temperature to shape the DVFS "V" curve; please
-keep in mind that this concern is valid only if temperature readings get updated
-"very slowly" (>100ms would be too slow).
+Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices")
+Signed-off-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-So, point of the situation:
-  - Filtered mode, less than 100ms per temperature reading -> cache it, it's ok
-  - Filtered mode, more than 100ms per temp reading -> switch GPU to Immediate mode.
-
-Your call.
-
-Keep up the good work!
-- Angelo
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index 7eafb5c44a7f..398d27d522ef 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -339,7 +339,11 @@ mt7996_mcu_rx_radar_detected(struct mt7996_dev *dev, struct sk_buff *skb)
+ 	if (r->band_idx >= ARRAY_SIZE(dev->mt76.phys))
+ 		return;
+ 
+-	mphy = dev->mt76.phys[r->band_idx];
++	if (dev->rdd2_phy && r->band_idx == MT_RX_SEL2)
++		mphy = dev->rdd2_phy->mt76;
++	else
++		mphy = dev->mt76.phys[r->band_idx];
++
+ 	if (!mphy)
+ 		return;
+ 
+-- 
+2.39.2
 
 
