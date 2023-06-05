@@ -4,68 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 184E6C7EE24
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jun 2023 13:22:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1A77C7EE24
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jun 2023 13:27:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WRZ9KHspIkVuA1fweu2aiwwQvcx2+I81lAvrWgIqUps=; b=iPh2mtJLDt6VGjw/JrMgpBTjA2
-	c6USzfoSJ2tta2BnOSNX8Vi+ZiBp4ml+qiU1v1ZLB7Dk9/n/bw3qvVxa6anc6xwFYde7O9q2VLAh/
-	lzr7TKoYbgFketjerO3+0nFU1Ao5f1pFuHRDAuv30NwHav2LhYfPhxj4vWgEtJTWu3XVJHXYGR12X
-	IDuAtFeGGfp3PqwsEM0WaXSaYCuIktMWFlkzqmbJDlDW1pj24m3X+MmwHG6wh3xexfv9etER8bSqM
-	gGpaLOfgm1YD8Wdh1dn12hYNyESik2PBT+OmdABQn+U08J3UVNT2gEGNIhVZz7ffyXdiVH19qecVf
-	fJt+PsWA==;
+	bh=yKsqJloU0YBMoV3i0X0WKgMs82pe/pvJwGVG1B5dvuQ=; b=Eik2o75hXezWS9zQ/+DnjqMUwQ
+	AKBG68pt4Qfw1Q/OP14ozsaK0oRUWQxGYxRztz5lZ4S+Auz+Yck4LszlDAJkMNpNKqg7rKeoRIxWP
+	E9bWEPbzeGLDNowDEpnBS1vOTGr48vmhyzX2OsK7D1wwIbcPZ6TPutPWsGeTfbHLAaIyiV/1OFMNC
+	K0viJKhIdeiqm/GkoEsF1WnAh1k2sMm0FbJbIHSTNj2VWQJ3x45erKKj69BcsQCrZAi0BA3C93OHV
+	1wZW4YArzmCbfExjcxG4r+v9aUtnnfICLDTwVVBwOvaNUcEHlUpwNJkAv02cI7uyIJj4qpMc6mubx
+	fIe6NRLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6AAK-00FbAU-2Z;
-	Mon, 05 Jun 2023 13:22:32 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1q6AFT-00Fc2l-10;
+	Mon, 05 Jun 2023 13:27:51 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6AAG-00Fb7V-1W;
-	Mon, 05 Jun 2023 13:22:30 +0000
-Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 19AD96600873;
-	Mon,  5 Jun 2023 14:22:24 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1685971344;
-	bh=RG2Kt3+4ozztoOhFlOmXapSwh5NhAbY+1RJEl2K4ozQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=OLA2OivJ25y09pO+roLeddFRMu6LSd1Q0PEIDu/YaOtKkWMXj/njES/CulZwRSwHI
-	 7u+WQO2fJhhMEUKC81vvztQV9L66KTH8o8c3SZAnImqnEhC3rPwQOKiqMJmx0XrrXt
-	 kRkVGrAcD5R6eJef2Q6uh20WDD7IdWBawBAcD6/nBM4+Ijsrf+msjsntus73NId2Az
-	 fhF2ydFVx/6JIkjzjGQIMtBsCfyTil0xk5RAf+ay3eqA2U72ZaW6i3OaCK3bDcJbMb
-	 fGPn+4ncia+2b84m71876OcGpByXHDPjzpAjuoxo29GIDMHf5mbTNhT9Lc2qt+bJBh
-	 x3MSkF7CjDPxg==
-Message-ID: <2ef5a7e5-3772-f7ed-9aad-f51c53a7a24b@collabora.com>
-Date: Mon, 5 Jun 2023 15:22:21 +0200
+	id 1q6AFP-00Fc1X-2L
+	for linux-mediatek@lists.infradead.org;
+	Mon, 05 Jun 2023 13:27:49 +0000
+Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-3f6e13940daso49173055e9.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 05 Jun 2023 06:27:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1685971665; x=1688563665;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=yKsqJloU0YBMoV3i0X0WKgMs82pe/pvJwGVG1B5dvuQ=;
+        b=QeU3q9/jsyk58gL5sa26StZVON3JbuBqt9Nb52eU+8RxPdI6qLMECpE1uKsvUn+FzE
+         PSNLLarc31GkgZlUgl1U8ZDIjUjiO5ixz1IJIb5pJselR4t9UI2qCWbIz1bKmc772pJi
+         3TlMufzV4+d6M2gOF1/2csgEhQnZeAbH+OqgEVaq9ySSiJ9P1woR9ikC5HkPb0V36HWD
+         3tc+xdwssa0LKTyPA1s+2qKg2bFw3fhKJsbX8hQB+uhkVmXbOm9ccc8CFT9W6HPwc0Bq
+         69E2MZKnDx152ko8OFpqYDuIS/zpyn5sbJZ0AaJvMTlE3tXLCv/LN61gP9urV6Ly+zJM
+         v1hA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1685971665; x=1688563665;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=yKsqJloU0YBMoV3i0X0WKgMs82pe/pvJwGVG1B5dvuQ=;
+        b=GWWwkxInVT7UnCb3CjOftmrWn6g6TgNXHZ8M2wQk/utZTRxjqMAcb/jRouCPec61ks
+         2blvA0lHIjXHdhoAiW1dcrW0y46Bm9nCwEfUFWoHqU4QAbWIBSkYTChTfExCWmmYqakR
+         zRaRVD5NUEKtD0RbQhy29gjfP2ZD6Jp5agAPBpJZ8smj/kVEkXkq5kCUJXLJCxXxxNc8
+         jQUq6R8SVC26379+BEpRfL6fcOD6cNoxETBecfa4Tt60DMsw/NcDY4J6iQJ5mo2FS9Ec
+         WUOlQMy2ec9/PTCYF0MxBf3no/w/wqU738Xx+jzjQ9q8r31aNdisloKqfpT9zU8MBvJ+
+         qohA==
+X-Gm-Message-State: AC+VfDxh60lSBcAkTT8AO28Ex01UPb6c73V2LzhE4GiDeNCoEHYs+99s
+	g0INq9zLi7pLZ2QvTOLPDwDMuw==
+X-Google-Smtp-Source: ACHHUZ5szxWU0mg13BybwFHk4fZIjbLh1tqAUhrF9z1CMgnFJZCaLz5CiJur6zNPASDwHNrYHI+/xQ==
+X-Received: by 2002:adf:fb42:0:b0:306:2ef0:d223 with SMTP id c2-20020adffb42000000b003062ef0d223mr6185401wrs.62.1685971664845;
+        Mon, 05 Jun 2023 06:27:44 -0700 (PDT)
+Received: from [192.168.1.172] (158.22.5.93.rev.sfr.net. [93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id n8-20020a5d4c48000000b00301a351a8d6sm9779056wrt.84.2023.06.05.06.27.43
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 05 Jun 2023 06:27:44 -0700 (PDT)
+Message-ID: <a66c9e7c-3a8b-f32a-7ac2-5717024599a4@baylibre.com>
+Date: Mon, 5 Jun 2023 15:27:43 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.2
-Subject: Re: [PATCH v4] mmc: mtk-sd: reduce CIT for better performance
-To: Wenbin Mei <wenbin.mei@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Chaotian Jing <chaotian.jing@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Adrian Hunter <adrian.hunter@intel.com>,
- Ritesh Harjani <riteshh@codeaurora.org>,
- Asutosh Das <asutoshd@codeaurora.org>, linux-mmc@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20230605121442.23622-1-wenbin.mei@mediatek.com>
+ Thunderbird/102.11.0
+Subject: Re: [PATCH v2 2/2] ASoC: mediatek: mt8195: fix use-after-free in
+ driver remove path
 Content-Language: en-US
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230605121442.23622-1-wenbin.mei@mediatek.com>
+To: Trevor Wu <trevor.wu@mediatek.com>, broonie@kernel.org,
+ lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com
+Cc: dianders@chromium.org, alsa-devel@alsa-project.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20230601033318.10408-1-trevor.wu@mediatek.com>
+ <20230601033318.10408-3-trevor.wu@mediatek.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <20230601033318.10408-3-trevor.wu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230605_062228_789545_AC1681C0 
-X-CRM114-Status: GOOD (  23.92  )
+X-CRM114-CacheID: sfid-20230605_062747_765547_2BDD61B4 
+X-CRM114-Status: GOOD (  11.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,118 +99,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 05/06/23 14:14, Wenbin Mei ha scritto:
-> CQHCI_SSC1 indicates to CQE the polling period to use when using periodic
-> SEND_QUEUE_STATUS(CMD13) polling.
-> Since MSDC CQE uses msdc_hclk as ITCFVAL, so driver should use hclk
-> frequency to get the actual time.
-> The default value 0x1000 that corresponds to 150us for MediaTek SoCs, let's
-> decrease it to 0x40 that corresponds to 2.35us, which can improve the
-> performance of some eMMC devices.
+On 01/06/2023 05:33, Trevor Wu wrote:
+> During mt8195_afe_init_clock(), mt8195_audsys_clk_register() was called
+> followed by several other devm functions. At mt8195_afe_deinit_clock()
+> located at mt8195_afe_pcm_dev_remove(), mt8195_audsys_clk_unregister()
+> was called.
 > 
-> Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
+> However, there was an issue with the order in which these functions were
+> called. Specifically, the remove callback of platform_driver was called
+> before devres released the resource, resulting in a use-after-free issue
+> during remove time.
+> 
+> At probe time, the order of calls was:
+> 1. mt8195_audsys_clk_register
+> 2. afe_priv->clk = devm_kcalloc
+> 3. afe_priv->clk[i] = devm_clk_get
+> 
+> At remove time, the order of calls was:
+> 1. mt8195_audsys_clk_unregister
+> 3. free afe_priv->clk[i]
+> 2. free afe_priv->clk
+> 
+> To resolve the problem, we can utilize devm_add_action_or_reset() in
+> mt8195_audsys_clk_register() so that the remove order can be changed to
+> 3->2->1.
 
-You haven't addressed all my comments. Is there any reason for that?
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
+-- 
 Regards,
-Angelo
-
-> ---
->   drivers/mmc/host/cqhci.h  |  1 +
->   drivers/mmc/host/mtk-sd.c | 45 +++++++++++++++++++++++++++++++++++++++
->   2 files changed, 46 insertions(+)
-> 
-> diff --git a/drivers/mmc/host/cqhci.h b/drivers/mmc/host/cqhci.h
-> index ba9387ed90eb..292b89ebd978 100644
-> --- a/drivers/mmc/host/cqhci.h
-> +++ b/drivers/mmc/host/cqhci.h
-> @@ -23,6 +23,7 @@
->   /* capabilities */
->   #define CQHCI_CAP			0x04
->   #define CQHCI_CAP_CS			0x10000000 /* Crypto Support */
-> +#define CQHCI_CAP_ITCFMUL(x)		(((x) & GENMASK(15, 12)) >> 12)
->   
->   /* configuration */
->   #define CQHCI_CFG			0x08
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index edade0e54a0c..9f540973caff 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -473,6 +473,7 @@ struct msdc_host {
->   	struct msdc_tune_para def_tune_para; /* default tune setting */
->   	struct msdc_tune_para saved_tune_para; /* tune result of CMD21/CMD19 */
->   	struct cqhci_host *cq_host;
-> +	u32 cq_ssc1_time;
->   };
->   
->   static const struct mtk_mmc_compatible mt2701_compat = {
-> @@ -2450,9 +2451,48 @@ static void msdc_hs400_enhanced_strobe(struct mmc_host *mmc,
->   	}
->   }
->   
-> +static void msdc_cqe_cit_cal(struct msdc_host *host, u64 timer_ns)
-> +{
-> +	struct mmc_host *mmc = mmc_from_priv(host);
-> +	struct cqhci_host *cq_host = mmc->cqe_private;
-> +	u8 itcfmul;
-> +	u64 hclk_freq;
-> +	u64 value;
-> +
-> +	/* Since MSDC CQE uses msdc_hclk as ITCFVAL, so driver should use hclk
-> +	 * frequency to get the actual time for CIT.
-> +	 */
-> +	hclk_freq = clk_get_rate(host->h_clk);
-> +	itcfmul = CQHCI_CAP_ITCFMUL(cqhci_readl(cq_host, CQHCI_CAP));
-> +	switch (itcfmul) {
-> +	case 0x0:
-> +		do_div(hclk_freq, 1000);
-> +		break;
-> +	case 0x1:
-> +		do_div(hclk_freq, 100);
-> +		break;
-> +	case 0x2:
-> +		do_div(hclk_freq, 10);
-> +		break;
-> +	case 0x3:
-> +		break;
-> +	case 0x4:
-> +		hclk_freq = hclk_freq * 10;
-> +		break;
-> +	default:
-> +		host->cq_ssc1_time = 0x40;
-> +		return;
-> +	}
-> +
-> +	value = hclk_freq * timer_ns;
-> +	do_div(value, 1000000000);
-> +	host->cq_ssc1_time = value;
-> +}
-> +
->   static void msdc_cqe_enable(struct mmc_host *mmc)
->   {
->   	struct msdc_host *host = mmc_priv(mmc);
-> +	struct cqhci_host *cq_host = mmc->cqe_private;
->   
->   	/* enable cmdq irq */
->   	writel(MSDC_INT_CMDQ, host->base + MSDC_INTEN);
-> @@ -2462,6 +2502,9 @@ static void msdc_cqe_enable(struct mmc_host *mmc)
->   	msdc_set_busy_timeout(host, 20 * 1000000000ULL, 0);
->   	/* default read data timeout 1s */
->   	msdc_set_timeout(host, 1000000000ULL, 0);
-> +
-> +	/* Set the send status command idle timer */
-> +	cqhci_writel(cq_host, host->cq_ssc1_time, CQHCI_SSC1);
->   }
->   
->   static void msdc_cqe_disable(struct mmc_host *mmc, bool recovery)
-> @@ -2803,6 +2846,8 @@ static int msdc_drv_probe(struct platform_device *pdev)
->   		/* cqhci 16bit length */
->   		/* 0 size, means 65536 so we don't have to -1 here */
->   		mmc->max_seg_size = 64 * 1024;
-> +		/* Reduce CIT to 0x40 that corresponds to 2.35us */
-> +		msdc_cqe_cit_cal(host, 2350);
->   	}
->   
->   	ret = devm_request_irq(&pdev->dev, host->irq, msdc_irq,
+Alexandre
 
 
